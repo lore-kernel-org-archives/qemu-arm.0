@@ -1,115 +1,113 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5117667ejc;
-        Mon, 27 Feb 2023 15:02:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set8vz4tMX2SjcLgq+UNlM18WzGEjpmLtcZ7dGNM5ZNH0VINDTyboz/douqNpjdgsdC10T/AO
-X-Received: by 2002:a05:6214:20c1:b0:56e:a556:f28f with SMTP id 1-20020a05621420c100b0056ea556f28fmr2234708qve.34.1677538931246;
-        Mon, 27 Feb 2023 15:02:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677538931; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5117865ejc;
+        Mon, 27 Feb 2023 15:02:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set8BJn4nL4Dw37ohV/yMol8jq+M1gms5zF2Ykf1I+zwhWsYeWqhiMlpZsKZ9q4iv71p5bLpf
+X-Received: by 2002:a05:6214:246c:b0:56e:a4c5:9d82 with SMTP id im12-20020a056214246c00b0056ea4c59d82mr2189715qvb.12.1677538942767;
+        Mon, 27 Feb 2023 15:02:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677538942; cv=none;
         d=google.com; s=arc-20160816;
-        b=dkq7AzX6ebnbpHoi8Ng2ZBFzcWnXb8Gb8jZHfHNDIweHQNBxzZHyp30/HfDdRST2/W
-         5Wzl++Do4YcEiiPon/sYGqHaoCa+mHo3hMLSDkqK5LvekZzpMzugYQpYOYUYj0QXQgQM
-         PzTzDJisI2B3uwi3wtxJrww7JeJXtg5dWHVKHpuPYuyM3WEhfXc/nCQyuM3t2EQrysNw
-         92XgK1vk3aZIcoyAMKrm0cJRnpEnloyyS0AFdkdUah2Ou60hsSMFWStkWF+SAHsa1WGF
-         C8kXPPHvDCvcGzc9x66/kYoHguf5/uSu5Qkzw7MkZJPVaT7o/pg0MG59kv9c+DH6GTOF
-         g7FQ==
+        b=XaRRN7HXM69/oXpChDHu+0DBCWy2mwHO62lBxiLsp/gdLvIQ8zES3r730coAWyj8u0
+         nWzqWOQDsoOvvp5dzIOsVUSCS6NfzHOoJ5ThWUK2LPT437WHFSO/zNHH8/TmMV0MPmqd
+         LJHyNfcd/wxTtV2hUcBTWNeESOxSyE/zVXGutZA9cSPmIKfp94ETm+LlYp9KEoyvUL4o
+         I1mJRDeyDE+awKtxZeJeUn7cDw8l7O4J0/oeiCA4B5yDBKt6NLYCDH8zU20H+ltv0Nou
+         noVwYWM211JP6zsohJbIklgAH1x43OcUMF3eMS0ceZvlmCXOcDDBG3JlFxiMadjYU6FQ
+         MOqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YTNMbTWIUFHY2u2ZLT0n2ZG7eWfkLXxJ/1KtgwAcDkA=;
-        b=nAjNlFH4SYXgEVl1kDWYrRewBpFUWy5vk8JZb/mO94dBub3zVmtGsdS2QzyAoj+Ojs
-         42m4LJuNo/RCPXuL0sk6Dz9/ziT0pkav2kdwOzPzupbavcZBq34/E7f0zVPbtVEfiwAL
-         N5J7gZ5MavV0A4SgH/cAWZgbvGD8NdwCHwUb3Gq+VSFNj0ppL2BvCFplIppou1fdz9xG
-         jeGr71BJ2LI7RtCVZ/zFtdjVkPyI8U7fkbiY50hDfI/8zJdvXlNFiFSujVrKLiXn47I5
-         3fCjWT1V54ZhOf7bvanZhTQdU4+W6xzPFAOxZOWR01bDFPnVuLmuA9WQUKRKvtLj4kI9
-         EI+Q==
+        bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
+        b=FcN+HAiSAgU6USdbEmj18PsEXOMyW1JH6QuddZe7wOOKE/Nt3jSLDeC5PHWGpwE0q0
+         mplRkImfKyrGTyiMkGIVPVQiMA0/bgbfpnPr4U6NvFqOMBEcAKUnxbNCEceCPMMMOCn7
+         dSOSbF/L8Z1DgJFtzLK3o9h48hOhEl5VfQVyUp8KHASSLqQixM9/qvgMxzbAk7pmrS9S
+         XE/I46l36xMl6DrVS97qr+xTpHVk3VDQ/5unthHrfIvo2NdTfsU9duB2gOE0qwpSIc7k
+         jx4/c300MfbEgkzMDulS/+JXikcBKJHOPejb+lkZwi6OIOcmiZ5OxlZW+ZMEqOFcOn9R
+         Aq+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZuJeYqWb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SLophdP1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r6-20020a05620a298600b00742af9d4290si4154129qkp.550.2023.02.27.15.02.11
+        by mx.google.com with ESMTPS id m19-20020a0cf193000000b0053543310b13si7478430qvl.181.2023.02.27.15.02.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Feb 2023 15:02:11 -0800 (PST)
+        Mon, 27 Feb 2023 15:02:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZuJeYqWb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SLophdP1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pWmUu-0007Hr-5Z; Mon, 27 Feb 2023 18:01:32 -0500
+	id 1pWmVT-0000A8-PQ; Mon, 27 Feb 2023 18:02:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWmUs-0007GU-Hg
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:01:30 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+ id 1pWmVO-00089L-B1
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:02:02 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWmUq-0000x7-Qb
- for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:01:30 -0500
-Received: by mail-pl1-x644.google.com with SMTP id i5so6806809pla.2
- for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 15:01:28 -0800 (PST)
+ id 1pWmVM-00017i-H6
+ for qemu-devel@nongnu.org; Mon, 27 Feb 2023 18:02:01 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id n6so7116545plf.5
+ for <qemu-devel@nongnu.org>; Mon, 27 Feb 2023 15:02:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YTNMbTWIUFHY2u2ZLT0n2ZG7eWfkLXxJ/1KtgwAcDkA=;
- b=ZuJeYqWbal2zL5DnD/CMt8Z35P5rWhp+TxLrguhhMxcRDK2W0z4TAQc7fwp8w4SOth
- /2JJ30WZ+oGX5F9rXiej4WD8g3U30ZwMvxA7lGdNvUxgEYX7nN8Cm5uXWl5TEqMvWDLm
- 3yAWUpF6motFC4IT/IjaoqXMNZe40R2bY+06/907K6PhqVIbnqTMaQoTu8UR+ZWZPKJw
- 0QvaXGFgI9DNAa7q9cu6cyUwvHUu2t3oOQggKZzXj4Qsi1F0JKsD4aWy+MSJQ5n7GGxA
- Yo6lDW3Rtyc9mQQGnOXeAYc7vdLSmWMGF7P2zUEcBYdJSOTOL+2m5NIU2wIxxfAfHgJM
- UD4g==
+ bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
+ b=SLophdP1kfF7Ksr1o+Kuvk7AIgQlliVoQ9EE8Nojk1Oi63y4v0Mt0YQ4/Sc0T2ogHO
+ EXJZsmJB2AoyF/Qu+AZsxt3hfpPu5DeFD7c0gemd5nTj+SrwabnKk6srIthAXSUrk0cN
+ ecBbxv+bbDVuOg9FNJj5vJ71jbPlM1VzfWHkD3F7BSSoQPoM7Zzw4ypjm/rPQo00DoYr
+ rmkEu9zFx5tHi7fE7qThwvl29fC/RfRgadxCOer+xvJHq97FvRzz87SiaAqDbla94lGO
+ LulBnhZDeJNk/JF0HGwPEWINysV6DfysZKIfisoT9YIVNUYWgg4W7iAJDSKQ7oefsQvR
+ X5Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YTNMbTWIUFHY2u2ZLT0n2ZG7eWfkLXxJ/1KtgwAcDkA=;
- b=Wju45FmhJ+Bg9/ZebiK0UI7YUcAXrkcnEcDM9nRXNoXL5OYmin7aT4iYQlmmFGpfVp
- oI7qcoGlQyvkgOMavV4SpRViY6nBOE6U3lN+RUtJzWh/wg/pikvdzEQuj8YdDethuhw7
- 3bD9soT/Fa+azvMJn9syW3vL9qYLIP5ZFppsqaAJ7Du9mkU57Uk+tuSsWEyJuuHMhngu
- mfvbFI/eFVNZo9jcuXQz1sECMpBLonp72KfQZDOa6UQKU/A6o/q/oVom/f8ub5TkCRXM
- cJdJ57xaSuKOtXf/mLD2m7i6wkBVPxJPotawkmpE9BZpMBROByts/A4ZuQp+aHAlhi9l
- vHQw==
-X-Gm-Message-State: AO0yUKW/9YIrZhDl+e8/rrWdmbX52f5PcLarTQ7hEsDz7UoCep9VnI7E
- xsMF7959HKXcFK8GFY3HJtP7sTbiENY/pjGyx3wsnQ==
-X-Received: by 2002:a05:6a20:2445:b0:cc:f057:d3e2 with SMTP id
- t5-20020a056a20244500b000ccf057d3e2mr1161218pzc.9.1677538887548; 
- Mon, 27 Feb 2023 15:01:27 -0800 (PST)
+ bh=H9Qr7wA8wSIkfPgh/j+3hKBpjrPyoBLV3ksLdpb2kIs=;
+ b=e3+vcEO8hOIzOMBp7A3itJ+cp4wA+K4T4hc7uycePzUNSIBqJ4x0UzDq22w+wk9SVV
+ 8rb8OFllc7LjOCRLGW923PDy/ixZikGktyLgV4SRDw+nAJVpq01HSMn/i3Qf3M+fV4jU
+ 1nDtfhPqtbXbAl24rfJGS+WYQ28Bsbvp9Kfla9UWKdQTy+HtfeDC8W2G8QvZ/04vFiI6
+ RcSBbHKNaWQfIe9U83oqSWWTwkGTERF++beV1Er3ZylP5kojXJr5JmHQXoLQnIHO3vvx
+ XT4ZisUeftm0vTAdx6oInsZUtrSiJBi9jzao02JfkgTAqiNA+lWZyS/DvADc5Tl8FQK/
+ Y+fQ==
+X-Gm-Message-State: AO0yUKVZTfZy8Yb9EuN8eh/m+MCXvwFcWQ5WnYlIK4NtUt7Uscz74kO5
+ D4Agfi9T89O2djFsqqbUwSultZfiemzrAxWSKIU=
+X-Received: by 2002:a05:6a20:a11f:b0:cc:32a8:323d with SMTP id
+ q31-20020a056a20a11f00b000cc32a8323dmr7945737pzk.28.1677538918954; 
+ Mon, 27 Feb 2023 15:01:58 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- u2-20020a637902000000b0050301745a5dsm4406130pgc.50.2023.02.27.15.01.25
+ u2-20020a637902000000b0050301745a5dsm4406130pgc.50.2023.02.27.15.01.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Feb 2023 15:01:27 -0800 (PST)
+ Mon, 27 Feb 2023 15:01:58 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH for-8.0 v4 01/21] target/arm: Add isar_feature_aa64_rme
-Date: Mon, 27 Feb 2023 13:01:02 -1000
-Message-Id: <20230227230122.816702-2-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH for-8.0 v4 21/21] NOTFORMERGE hw/arm/virt: Add some memory for
+ Realm Management Monitor
+Date: Mon, 27 Feb 2023 13:01:22 -1000
+Message-Id: <20230227230122.816702-22-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227230122.816702-1-richard.henderson@linaro.org>
 References: <20230227230122.816702-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,58 +122,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jMuiDLvxQGAE
+X-TUID: 7bPhpMme8bFe
 
-Add the missing field for ID_AA64PFR0, and the predicate.
-Disable it if EL3 is forced off by the board or command-line.
+This is arbitrary, but used by the Huawei TF-A test code.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h | 6 ++++++
- target/arm/cpu.c | 4 ++++
- 2 files changed, 10 insertions(+)
+ include/hw/arm/virt.h |  2 ++
+ hw/arm/virt.c         | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index cb4e405f04..b046f96e4e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2190,6 +2190,7 @@ FIELD(ID_AA64PFR0, SEL2, 36, 4)
- FIELD(ID_AA64PFR0, MPAM, 40, 4)
- FIELD(ID_AA64PFR0, AMU, 44, 4)
- FIELD(ID_AA64PFR0, DIT, 48, 4)
-+FIELD(ID_AA64PFR0, RME, 52, 4)
- FIELD(ID_AA64PFR0, CSV2, 56, 4)
- FIELD(ID_AA64PFR0, CSV3, 60, 4)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index e1ddbea96b..5c0c8a67e4 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -86,6 +86,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_RMM_MEM,
+     VIRT_LOWMEMMAP_LAST,
+ };
  
-@@ -3808,6 +3809,11 @@ static inline bool isar_feature_aa64_sel2(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SEL2) != 0;
+@@ -159,6 +160,7 @@ struct VirtMachineState {
+     bool virt;
+     bool ras;
+     bool mte;
++    bool rmm;
+     bool dtb_randomness;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ac626b3bef..067f16cd77 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -159,6 +159,7 @@ static const MemMapEntry base_memmap[] = {
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+     [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
++    [VIRT_RMM_MEM] =            { 0x0f000000, 0x00100000 },
+     [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
+     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+@@ -1602,6 +1603,25 @@ static void create_secure_ram(VirtMachineState *vms,
+     g_free(nodename);
  }
  
-+static inline bool isar_feature_aa64_rme(const ARMISARegisters *id)
++static void create_rmm_ram(VirtMachineState *vms,
++                           MemoryRegion *sysmem,
++                           MemoryRegion *tag_sysmem)
 +{
-+    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, RME) != 0;
++    MemoryRegion *rmm_ram = g_new(MemoryRegion, 1);
++    hwaddr base = vms->memmap[VIRT_RMM_MEM].base;
++    hwaddr size = vms->memmap[VIRT_RMM_MEM].size;
++
++    memory_region_init_ram(rmm_ram, NULL, "virt.rmm-ram", size,
++                           &error_fatal);
++    memory_region_add_subregion(sysmem, base, rmm_ram);
++
++    /* do not fill in fdt to hide rmm from normal world guest */
++
++    if (tag_sysmem) {
++        create_tag_ram(tag_sysmem, base, size, "mach-virt.rmm-tag");
++    }
 +}
 +
- static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
+ static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
  {
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0b333a749f..5092450e5b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1950,6 +1950,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cpu->isar.id_dfr0 = FIELD_DP32(cpu->isar.id_dfr0, ID_DFR0, COPSDBG, 0);
-         cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
-                                            ID_AA64PFR0, EL3, 0);
-+
-+        /* Disable the realm management extension, which requires EL3. */
-+        cpu->isar.id_aa64pfr0 = FIELD_DP64(cpu->isar.id_aa64pfr0,
-+                                           ID_AA64PFR0, RME, 0);
+     const VirtMachineState *board = container_of(binfo, VirtMachineState,
+@@ -2283,6 +2303,10 @@ static void machvirt_init(MachineState *machine)
+                        machine->ram_size, "mach-virt.tag");
      }
  
-     if (!cpu->has_el2) {
++    if (vms->rmm) {
++        create_rmm_ram(vms, sysmem, tag_sysmem);
++    }
++
+     vms->highmem_ecam &= (!firmware_loaded || aarch64);
+ 
+     create_rtc(vms);
+@@ -2562,6 +2586,20 @@ static void virt_set_mte(Object *obj, bool value, Error **errp)
+     vms->mte = value;
+ }
+ 
++static bool virt_get_rmm(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->rmm;
++}
++
++static void virt_set_rmm(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->rmm = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -3115,6 +3153,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "guest CPU which implements the ARM "
+                                           "Memory Tagging Extension");
+ 
++    object_class_property_add_bool(oc, "rmm", virt_get_rmm, virt_set_rmm);
++    object_class_property_set_description(oc, "rmm",
++                                          "Set on/off to enable/disable ram "
++                                          "for the Realm Management Monitor");
++
+     object_class_property_add_bool(oc, "its", virt_get_its,
+                                    virt_set_its);
+     object_class_property_set_description(oc, "its",
 -- 
 2.34.1
 

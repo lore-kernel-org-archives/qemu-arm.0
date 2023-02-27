@@ -1,92 +1,93 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4293402ejc;
-        Sun, 26 Feb 2023 21:36:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set8W5P/5vcSq6IgpHIw58x7Sc6ybmdT26h67dRq2ah+VLOwTutBgNEgr7QdcF1+oevqsZ3fb
-X-Received: by 2002:a05:622a:138d:b0:3b9:173e:45de with SMTP id o13-20020a05622a138d00b003b9173e45demr15608453qtk.6.1677476181583;
-        Sun, 26 Feb 2023 21:36:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677476181; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4287861ejc;
+        Sun, 26 Feb 2023 21:26:27 -0800 (PST)
+X-Google-Smtp-Source: AK7set+rLZ9tXpRNGFRoViHjcxrPuVljn2yvOSZ9N4BlDJRb+9JJD3d/y2auSEW398OOp70GcboD
+X-Received: by 2002:a05:6214:2529:b0:56e:b1e0:3fef with SMTP id gg9-20020a056214252900b0056eb1e03fefmr45705540qvb.24.1677475587314;
+        Sun, 26 Feb 2023 21:26:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677475587; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jogskf/t+m5CHw+qfrMKll8rXDHgJzj0LVhvAviwA1re4wrsRQ+bFXMlayDeb5almC
-         4ifadzJ9EZf11KPFHS7EkoEBqaCtDxjOJqrFK1p46ANpCqGMsS1EIk+o4vSNH+MOyYG9
-         f8T2QVh8CvSpLrYlCns5ZqUl0cO2RQKEzreyre0Ho3udOpKs0zs2Si26VwzkgWygRboE
-         zJWCbBdCltrYMdX0ld6eMuslmenN+2kiPSnWlmRmsN7snKqS3SAEqdxyoGIP4vq3Kbre
-         aafKp0SJWjrsxkn1dr3Po6jXlAk6t0WlPYTD9VcvonfqSFkCVNF+aOZuzHp2DRG4YI/e
-         TRBA==
+        b=JsuvxIF6r2kEBZZj3O/A8/F4YU/SY6SSEbqzlsE7CQOawGwqRD/dq/S7vdEZct1z23
+         KZqz0qmgVI5WYx2OjV0r+R2gyNjAhlSpiMRwlyWLoEnfgKI5uFVk5H33iA8aBoLwsy5w
+         OoBbaSh2ATt+vWgU+2ZZMppV0b34w6yAHp7DSo8I2giZlLe57jYXoCorGuxys/uXWjYf
+         fnI/13YJ3l41Ki0FUKbKHXIBiL+FADKODNz48LpkwXVa1bpwIL4F2dAIFQILS+9Up6+s
+         m6CjvE54Ox4mxn2ubqRnukYXk7g5HW6qTVfyYBUa8XGCmr8FuvfzE93lS6dW7JZ9yjMj
+         ZTqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Mto8gZo3djU/h+euQ02hp/2HLo7eYXM2X3ttNgQzbL0=;
-        b=YRZWU0EQ9cvlId02fpfgFP9gFZ2d6nn7BI35Qx4fBhEt8OcCO/q3b3+2E47DXiqcj2
-         KVfPHwo1NiEQmwyBLicPiCMLeq3hT/XoJLnaIpq7+loLzc2Jb8TyWZGsjyKvjtSGHrCz
-         Qugb7uG7MRopJ7bgj32W78dr+jWh59rP2Divj+PPQooKsr1Fp8CESg0ZGM53o7Wa1NZh
-         j2FcHbhJelq1vRcT/y1MiJu/RBLV4xcRNbA08ipNpxkz0k10ONvIIymvOxaw2PDBcHAU
-         +w321gfBLDv+6/7kUBZO15lI5zk3IklFx9iISvamVT+9QqYBhMVHoDdTgVHdsfhh+0G9
-         YDiw==
+        bh=1VaFmmXL1EVKNQ+ZqOqeimp8aObM/yTnVcjTeVASrNc=;
+        b=E0bht5SjdQ7K0dNvBJCyLdpnLj5OebL31xsJTq8VPn9irbNDZS+lHvY5PzYcU+2i8u
+         MQYYlxeAA796bouwQcVmNQ4oXdWdR+UDlG0HCsXCw44EXXn7mG6sJc3IGUcSWgVoBkmW
+         i6rRhpQbniEiBS1eO4B0XDu+QBw+9sScavy4NfJDZN8nte9mdTS2tHHl8Mi7QL3qS1Z9
+         A8HGfgWKIo70bucX5m2q38RKPTwI+nVcyH5pbneHmZv5X9tiZPxHm8XjkVyIZ9E+aO6e
+         6v2XR+NOFMkW3Sm7k/tqIua/RhD/y40a8pmrEENg6rf3VBCFK8CyxxkWcIHYhD5UZxSQ
+         Yo9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dPMjuN51;
+       dkim=pass header.i=@linaro.org header.s=google header.b=blhxItn+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11-20020ac87c4b000000b003b9b98b50dfsi6070425qtv.185.2023.02.26.21.36.21
+        by mx.google.com with ESMTPS id j9-20020a05620a410900b00721402d1d76si5519144qko.712.2023.02.26.21.26.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Feb 2023 21:36:21 -0800 (PST)
+        Sun, 26 Feb 2023 21:26:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dPMjuN51;
+       dkim=pass header.i=@linaro.org header.s=google header.b=blhxItn+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pWW8E-0004iw-2q; Mon, 27 Feb 2023 00:33:02 -0500
+	id 1pWW1F-0006ym-B7; Mon, 27 Feb 2023 00:25:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW6w-00009Z-FG
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:31:43 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+ id 1pWW0u-0006fG-3J
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:25:30 -0500
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pWW6t-00012J-Oa
- for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:31:42 -0500
-Received: by mail-pl1-x642.google.com with SMTP id p6so4695734plf.0
- for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:31:39 -0800 (PST)
+ id 1pWW0o-0007Cs-O5
+ for qemu-arm@nongnu.org; Mon, 27 Feb 2023 00:25:27 -0500
+Received: by mail-pj1-x102c.google.com with SMTP id
+ qa18-20020a17090b4fd200b0023750b675f5so8835675pjb.3
+ for <qemu-arm@nongnu.org>; Sun, 26 Feb 2023 21:25:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Mto8gZo3djU/h+euQ02hp/2HLo7eYXM2X3ttNgQzbL0=;
- b=dPMjuN51uwbpJ4JmQ8SW7crleXCdFGo1x9CSDSYZra3JOiBT+/WAyRyZLkK5lVhY/h
- 8UoV0j0SIW5ynF0sHAeGj9BaR/U6CcNUDCCdYyDABGht9IY/gzgwmB/tzWEn7kSXb39D
- 3O2LdU2fsyviWlioVImh9/v1k/WhTokm9aWDFwMnGxVKK6OdG85HmfGCJ50goOcWAXI6
- +bVUUDUxyThZZY6Uiv1z5tqPZl4syciaEYk1sUb0GOOaFuZeldQhfQCo27cOBOPKf6fJ
- OaP3VIQ+QhDgATQIbyhhrPhe0clKDDN8YPInBKojC+7ERsAujgIm5agFdn0QBa8R+X44
- 4+1A==
+ bh=1VaFmmXL1EVKNQ+ZqOqeimp8aObM/yTnVcjTeVASrNc=;
+ b=blhxItn+e4d0L1sgDWHLlaL1/CFBOZ2hyoopvIoz912HhHGJ3ExhH3GP66E3MgEzBH
+ BIXSSJj97eB6ib78ED7mXECzLEfVPte/TAoZb4mmX41nZRK9L1y3nW7WBH21gFtrQKDm
+ FqEmvlIjPrBRm63s51k3u5VFmch2Atgupdp2KK23j1Mt5+atz/oKdi0P4bzpaYCj/KZY
+ 6KV3sMGuz16CbTUo2eJJLtKS/FTZGdNt6rq4aMx413JMnyZmBN/XRvUSNBEMefGfA5ge
+ RKBwXFzRZl+MBHu5bIqtINJEQZYCEt2Z1ntMqxjI/nbqMEKVGP2ab0lor3owfHnAeTDh
+ 93gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Mto8gZo3djU/h+euQ02hp/2HLo7eYXM2X3ttNgQzbL0=;
- b=gHlDHeRHCtdem1pecLVz99EELYR3G+ftY/P6W27bCQcVd4P0cmBsyNLsDGTm+kYIAb
- fuk8GsmbUtfRYZlBgO1wkoWqtXCqz/m3j9v7Xy9ABwzOFR5HF5+6GNTNTIk7AkjNyy09
- Uf4UPdcOmG2Y6/E8QTx7v6GrWUt6mbxYo94L/CyZQnSvBP8IU1UAcBjZAs6al6J9GXDM
- a514ylw1yG/BNvVigGkBc30myL6DIFgOhKXOGTWDG7RvBc3m7FxSCg9myW2/vXYzoMgl
- 3ogFuXTJFHF9iPrhW65MIypToecn9Cms37KX06GbPnzZn9r2z7f9pBXGRrcpK9t4L1Xv
- ApCQ==
-X-Gm-Message-State: AO0yUKXNy6jSru8c/UvyM0uMt/qqrSpl8vROt7Tsq/CxiFv3a85tLUin
- Zd9/FN1wyYfE4UwiybnfPmay7Q==
-X-Received: by 2002:a17:90b:1b09:b0:233:c3e7:bd37 with SMTP id
- nu9-20020a17090b1b0900b00233c3e7bd37mr7792845pjb.10.1677475898982; 
- Sun, 26 Feb 2023 21:31:38 -0800 (PST)
+ bh=1VaFmmXL1EVKNQ+ZqOqeimp8aObM/yTnVcjTeVASrNc=;
+ b=vos5Wj1kmDqfvm4jVXoB6BPXxzg0ozy9rc9Xm21TSM3gcbgUEtvhnejuaWpy83LvGD
+ 5J0sBe8/dLu+nerDcXdp5I3xMMNz5SzxPqNGHyKHbPnPmOWIiprzRvtp7GvpG+2oxez2
+ U51PQ7ry4hQBbHMM+0+65GDCRAAr+A0M6Ki+tTfYRotjOTrgPiViKXsn+cO5fpXh/wkr
+ fFdqnBRAnB9qsEAg5rH6gMTKSeHKZfSjRLPweqbni5VnTi4ohK1h74fsomm7GZIQIcHc
+ uFR1ZkZgt47aXK05A5fFrTPSampcKZhNdz0oke/0HYE9VY2pYFlk/oaxOk4rKxvbTTeQ
+ jOJg==
+X-Gm-Message-State: AO0yUKVD85EQGjTjUBpdXsRVyYOBBCCzz4Jk674D7L9xq8slxlZu+3jV
+ 9gcIGVMsJKXerTFZAPhAWIAr6A==
+X-Received: by 2002:a17:902:e547:b0:19a:7a02:7954 with SMTP id
+ n7-20020a170902e54700b0019a7a027954mr29986916plf.24.1677475521037; 
+ Sun, 26 Feb 2023 21:25:21 -0800 (PST)
 Received: from stoup.. (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
  by smtp.gmail.com with ESMTPSA id
- v4-20020a17090a520400b002369e16b276sm5172926pjh.32.2023.02.26.21.31.36
+ a14-20020a170902ecce00b0019a837be977sm3513341plh.271.2023.02.26.21.25.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Feb 2023 21:31:38 -0800 (PST)
+ Sun, 26 Feb 2023 21:25:20 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -94,24 +95,23 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com,
  edgar.iglesias@gmail.com
-Subject: [PATCH v2 74/76] tracing: remove transform.py
-Date: Sun, 26 Feb 2023 19:25:03 -1000
-Message-Id: <20230227052505.352889-75-richard.henderson@linaro.org>
+Subject: [PATCH v2 04/76] target/arm: Remove arm_free_cc, a64_free_cc
+Date: Sun, 26 Feb 2023 19:23:53 -1000
+Message-Id: <20230227052505.352889-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230227052505.352889-1-richard.henderson@linaro.org>
 References: <20230227052505.352889-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,254 +126,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VFfk7uYGkupx
+X-TUID: FdJEfoUonQzx
 
-This file, and a couple of uses, got left behind when the
-tcg stuff was removed from tracetool.
+Translators are no longer required to free tcg temporaries.
 
-Fixes: 126d4123c50a ("tracing: excise the tcg related from tracetool")
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- meson.build                    |   1 -
- scripts/tracetool/__init__.py  |  23 -----
- scripts/tracetool/transform.py | 168 ---------------------------------
- 3 files changed, 192 deletions(-)
- delete mode 100644 scripts/tracetool/transform.py
+ target/arm/translate.h     |  1 -
+ target/arm/translate-a64.c | 17 ++++-------------
+ target/arm/translate.c     |  9 ---------
+ 3 files changed, 4 insertions(+), 23 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 6cb2b1a42f..275399b8c2 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2861,7 +2861,6 @@ tracetool_depends = files(
-   'scripts/tracetool/format/log_stap.py',
-   'scripts/tracetool/format/stap.py',
-   'scripts/tracetool/__init__.py',
--  'scripts/tracetool/transform.py',
-   'scripts/tracetool/vcpu.py'
- )
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 3717824b75..7f52f08c5e 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -304,7 +304,6 @@ static inline void gen_a64_update_pc(DisasContext *s, target_long diff)
+ #endif
  
-diff --git a/scripts/tracetool/__init__.py b/scripts/tracetool/__init__.py
-index 5393c7fc5c..33cf85e2b0 100644
---- a/scripts/tracetool/__init__.py
-+++ b/scripts/tracetool/__init__.py
-@@ -18,7 +18,6 @@
+ void arm_test_cc(DisasCompare *cmp, int cc);
+-void arm_free_cc(DisasCompare *cmp);
+ void arm_jump_cc(DisasCompare *cmp, TCGLabel *label);
+ void arm_gen_test_cc(int cc, TCGLabel *label);
+ MemOp pow2_align(unsigned i);
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 98537bc2ef..2a0bba3815 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -319,18 +319,13 @@ static void a64_test_cc(DisasCompare64 *c64, int cc)
  
- import tracetool.format
- import tracetool.backend
--import tracetool.transform
+     arm_test_cc(&c32, cc);
  
+-    /* Sign-extend the 32-bit value so that the GE/LT comparisons work
+-       * properly.  The NE/EQ comparisons are also fine with this choice.  */
++    /*
++     * Sign-extend the 32-bit value so that the GE/LT comparisons work
++     * properly.  The NE/EQ comparisons are also fine with this choice.
++      */
+     c64->cond = c32.cond;
+     c64->value = tcg_temp_new_i64();
+     tcg_gen_ext_i32_i64(c64->value, c32.value);
+-
+-    arm_free_cc(&c32);
+-}
+-
+-static void a64_free_cc(DisasCompare64 *c64)
+-{
+-    tcg_temp_free_i64(c64->value);
+ }
  
- def error_write(*lines):
-@@ -190,18 +189,6 @@ def casted(self):
-         """List of argument names casted to their type."""
-         return ["(%s)%s" % (type_, name) for type_, name in self._args]
+ static void gen_rebuild_hflags(DisasContext *s)
+@@ -5315,7 +5310,6 @@ static void disas_cc(DisasContext *s, uint32_t insn)
+     tcg_t0 = tcg_temp_new_i32();
+     arm_test_cc(&c, cond);
+     tcg_gen_setcondi_i32(tcg_invert_cond(c.cond), tcg_t0, c.value, 0);
+-    arm_free_cc(&c);
  
--    def transform(self, *trans):
--        """Return a new Arguments instance with transformed types.
--
--        The types in the resulting Arguments instance are transformed according
--        to tracetool.transform.transform_type.
--        """
--        res = []
--        for type_, name in self._args:
--            res.append((tracetool.transform.transform_type(type_, *trans),
--                        name))
--        return Arguments(res)
--
+     /* Load the arguments for the new comparison.  */
+     if (is_imm) {
+@@ -5435,8 +5429,6 @@ static void disas_cond_select(DisasContext *s, uint32_t insn)
+         tcg_gen_movcond_i64(c.cond, tcg_rd, c.value, zero, t_true, t_false);
+     }
  
- class Event(object):
-     """Event description.
-@@ -358,16 +345,6 @@ def api(self, fmt=None):
-             fmt = Event.QEMU_TRACE
-         return fmt % {"name": self.name, "NAME": self.name.upper()}
+-    a64_free_cc(&c);
+-
+     if (!sf) {
+         tcg_gen_ext32u_i64(tcg_rd, tcg_rd);
+     }
+@@ -6256,7 +6248,6 @@ static void disas_fp_csel(DisasContext *s, uint32_t insn)
+     tcg_gen_movcond_i64(c.cond, t_true, c.value, tcg_constant_i64(0),
+                         t_true, t_false);
+     tcg_temp_free_i64(t_false);
+-    a64_free_cc(&c);
  
--    def transform(self, *trans):
--        """Return a new Event with transformed Arguments."""
--        return Event(self.name,
--                     list(self.properties),
--                     self.fmt,
--                     self.args.transform(*trans),
--                     self.lineno,
--                     self.filename,
--                     self)
--
+     /* Note that sregs & hregs write back zeros to the high bits,
+        and we've already done the zero-extension.  */
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 614c438786..a0a298f8f7 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -754,13 +754,6 @@ void arm_test_cc(DisasCompare *cmp, int cc)
+     cmp->value_global = global;
+ }
  
- def read_events(fobj, fname):
-     """Generate the output for the given (format, backends) pair.
-diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform.py
-deleted file mode 100644
-index ea8b27799d..0000000000
---- a/scripts/tracetool/transform.py
-+++ /dev/null
-@@ -1,168 +0,0 @@
--# -*- coding: utf-8 -*-
--
--"""
--Type-transformation rules.
--"""
--
--__author__     = "Lluís Vilanova <vilanova@ac.upc.edu>"
--__copyright__  = "Copyright 2012-2016, Lluís Vilanova <vilanova@ac.upc.edu>"
--__license__    = "GPL version 2 or (at your option) any later version"
--
--__maintainer__ = "Stefan Hajnoczi"
--__email__      = "stefanha@redhat.com"
--
--
--def _transform_type(type_, trans):
--    if isinstance(trans, str):
--        return trans
--    elif isinstance(trans, dict):
--        if type_ in trans:
--            return _transform_type(type_, trans[type_])
--        elif None in trans:
--            return _transform_type(type_, trans[None])
--        else:
--            return type_
--    elif callable(trans):
--        return trans(type_)
--    else:
--        raise ValueError("Invalid type transformation rule: %s" % trans)
--
--
--def transform_type(type_, *trans):
--    """Return a new type transformed according to the given rules.
--
--    Applies each of the transformation rules in trans in order.
--
--    If an element of trans is a string, return it.
--
--    If an element of trans is a function, call it with type_ as its only
--    argument.
--
--    If an element of trans is a dict, search type_ in its keys. If type_ is
--    a key, use the value as a transformation rule for type_. Otherwise, if
--    None is a key use the value as a transformation rule for type_.
--
--    Otherwise, return type_.
--
--    Parameters
--    ----------
--    type_ : str
--        Type to transform.
--    trans : list of function or dict
--        Type transformation rules.
--    """
--    if len(trans) == 0:
--        raise ValueError
--    res = type_
--    for t in trans:
--        res = _transform_type(res, t)
--    return res
--
--
--##################################################
--# tcg -> host
--
--def _tcg_2_host(type_):
--    if type_ == "TCGv":
--        # force a fixed-size type (target-independent)
--        return "uint64_t"
--    else:
--        return type_
--
--TCG_2_HOST = {
--    "TCGv_i32": "uint32_t",
--    "TCGv_i64": "uint64_t",
--    "TCGv_ptr": "void *",
--    None: _tcg_2_host,
+-void arm_free_cc(DisasCompare *cmp)
+-{
+-    if (!cmp->value_global) {
+-        tcg_temp_free_i32(cmp->value);
 -    }
+-}
 -
--
--##################################################
--# host -> host compatible with tcg sizes
--
--HOST_2_TCG_COMPAT = {
--    "uint8_t": "uint32_t",
--    "uint16_t": "uint32_t",
--    }
--
--
--##################################################
--# host/tcg -> tcg
--
--def _host_2_tcg(type_):
--    if type_.startswith("TCGv"):
--        return type_
--    raise ValueError("Don't know how to translate '%s' into a TCG type\n" % type_)
--
--HOST_2_TCG = {
--    "uint32_t": "TCGv_i32",
--    "uint64_t": "TCGv_i64",
--    "void *"  : "TCGv_ptr",
--    "CPUArchState *": "TCGv_env",
--    None: _host_2_tcg,
--    }
--
--
--##################################################
--# tcg -> tcg helper definition
--
--def _tcg_2_helper_def(type_):
--    if type_ == "TCGv":
--        return "target_ulong"
--    else:
--        return type_
--
--TCG_2_TCG_HELPER_DEF = {
--    "TCGv_i32": "uint32_t",
--    "TCGv_i64": "uint64_t",
--    "TCGv_ptr": "void *",
--    None: _tcg_2_helper_def,
--    }
--
--
--##################################################
--# tcg -> tcg helper declaration
--
--def _tcg_2_tcg_helper_decl_error(type_):
--    raise ValueError("Don't know how to translate type '%s' into a TCG helper declaration type\n" % type_)
--
--TCG_2_TCG_HELPER_DECL = {
--    "TCGv"    : "tl",
--    "TCGv_ptr": "ptr",
--    "TCGv_i32": "i32",
--    "TCGv_i64": "i64",
--    "TCGv_env": "env",
--    None: _tcg_2_tcg_helper_decl_error,
--    }
--
--
--##################################################
--# host/tcg -> tcg temporal constant allocation
--
--def _host_2_tcg_tmp_new(type_):
--    if type_.startswith("TCGv"):
--        return "tcg_temp_new_nop"
--    raise ValueError("Don't know how to translate type '%s' into a TCG temporal allocation" % type_)
--
--HOST_2_TCG_TMP_NEW = {
--    "uint32_t": "tcg_const_i32",
--    "uint64_t": "tcg_const_i64",
--    "void *"  : "tcg_const_ptr",
--    None: _host_2_tcg_tmp_new,
--    }
--
--
--##################################################
--# host/tcg -> tcg temporal constant deallocation
--
--def _host_2_tcg_tmp_free(type_):
--    if type_.startswith("TCGv"):
--        return "tcg_temp_free_nop"
--    raise ValueError("Don't know how to translate type '%s' into a TCG temporal deallocation" % type_)
--
--HOST_2_TCG_TMP_FREE = {
--    "uint32_t": "tcg_temp_free_i32",
--    "uint64_t": "tcg_temp_free_i64",
--    "void *"  : "tcg_temp_free_ptr",
--    None: _host_2_tcg_tmp_free,
--    }
+ void arm_jump_cc(DisasCompare *cmp, TCGLabel *label)
+ {
+     tcg_gen_brcondi_i32(cmp->cond, cmp->value, 0, label);
+@@ -771,7 +764,6 @@ void arm_gen_test_cc(int cc, TCGLabel *label)
+     DisasCompare cmp;
+     arm_test_cc(&cmp, cc);
+     arm_jump_cc(&cmp, label);
+-    arm_free_cc(&cmp);
+ }
+ 
+ void gen_set_condexec(DisasContext *s)
+@@ -9125,7 +9117,6 @@ static bool trans_CSEL(DisasContext *s, arg_CSEL *a)
+ 
+     arm_test_cc(&c, a->fcond);
+     tcg_gen_movcond_i32(c.cond, rn, c.value, zero, rn, rm);
+-    arm_free_cc(&c);
+ 
+     store_reg(s, a->rd, rn);
+     tcg_temp_free_i32(rm);
 -- 
 2.34.1
 

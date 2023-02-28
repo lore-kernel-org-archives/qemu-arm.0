@@ -1,121 +1,118 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5661889ejc;
-        Tue, 28 Feb 2023 03:45:45 -0800 (PST)
-X-Google-Smtp-Source: AK7set96DOveILicmURw0s9gIV1W1qR2qC/AxeWWRRqfDHhwE/f0ZscKpdlfpqajJ3Ug8RxPy/MB
-X-Received: by 2002:a05:622a:1184:b0:3b9:a42b:7099 with SMTP id m4-20020a05622a118400b003b9a42b7099mr4456499qtk.30.1677584745453;
-        Tue, 28 Feb 2023 03:45:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677584745; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5662835ejc;
+        Tue, 28 Feb 2023 03:47:01 -0800 (PST)
+X-Google-Smtp-Source: AK7set+34Ch4Mc/l8BbZOrpeHTX2miK4g1Xu9V3cjcsCPU35bpvQIAfFBFDHWbgpoSPm5XSVgnfU
+X-Received: by 2002:ac8:5b4e:0:b0:3a8:fdf:8ff8 with SMTP id n14-20020ac85b4e000000b003a80fdf8ff8mr4186908qtw.36.1677584821411;
+        Tue, 28 Feb 2023 03:47:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677584821; cv=none;
         d=google.com; s=arc-20160816;
-        b=cIojApUzrwitB60aihc9WxVYbr/St04skeEya+292Txk+WRl4cVlYKyG4l4YSPMVQJ
-         hBOWhX7jBVo+COt2uDRTKWBirxCBWt+XS8SIBKWR5YRxkp4UpRrcenK8AP9jLF05xOqY
-         /Z93U0lg86AKWsJjPIPExlWVQzumsHp3Hp6luf5lxif90lMFiQNMsi/DzaeIC3xRSLgO
-         7ZVgK/jzD740xmOwqaBluC1cQTALj/ZaocSsAytPfPmjMsn5vtQ1MgD3S6gw+0E4kIok
-         /Ei7N2UFdzsxuxE698DuyRhRiNWSQWJVQsSJiTXEH5yPG1NqGeVYPrnTVXsMMtHQD10V
-         2+7w==
+        b=zQpLkzNsaTO0gU56bsoRWqCviG79KXfInJf/gEAnPBuf5dp8Nh0WoRgEa3e5/luXwv
+         p7JTMVjSYo+WHFv4LxCSFQxJwYfpbqQjk3nLyTttweXGQf25HQwGi9Ar0g4pZfYZMC3/
+         80xMx+apeofDhqlMdMeqEtn6inDQjgIdESF1oWnamFQuAyji5w4Y+RpQx5bPn50zcm5w
+         8fK3NJWm6Mlxo3nsUtAL8Zr8QmOTJZnRljI/+tAqJQwNncV0NggCj0b+4crFmKD25Q4Y
+         hBVCzTaZ/zBKyBCUnBI6fQmIh7h6AzcNmuQKo873y3JiA9agR+wRmYjOmzb9WEjks41v
+         brlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=bpIC6p+UT+rHFct1wlfMFpw0g6TQL7FZQoQ34DKLJ2E=;
-        b=D1/IVD35ZEGN+XfeauYnTthmF6m4qbvH3ul5FAyK1rgy0U5KgPK+IH0JlyUqy6PtD4
-         tXUdVsMDp/W+yILBZK3XaIPpRRt6oD7qkXYIZA5N5gIEI8qlchyT9lmhHYtMDAp+6iib
-         0zOANEHvnnXkjpc+bL3tPDTOCPfVH5ugA1ZwPhoeOwNozi2MdioVKTOUIe9A6GS93Iuh
-         g3MxK+6EftlXfFaEaw5/6OJT1lqSsjMIWbEtcH1Ct7SRMKvz0lNBeuinWo6Erwp83bxr
-         UR5P+nqbt9MubBdwGg8B+f7vvbqQpDTRHYyJlVK8navOTsEg8CV+xr1WkMQdpIAgVT+e
-         7aJg==
+        h=content-transfer-encoding:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=0nS0+RyN/H1npg0C1JIbWHZZ4SfeTHMMRyD4io5maU0=;
+        b=RdWj4IoGbR7WhjkOFIqO4vqm5HvIU6180NfZHYMMy3hc30McJN/sQO4gnC6wHE1ZqF
+         Dy8rI6QS15JgkTDkXA5/Tjt9M8juY/113t/ep23GsIxq7FVPNTHaXSCYGDrhzpu5FgJd
+         rLOzqPsGkIz9bLIpiuo13QlI74DXO7XU90k9NWI8g1cbQ50VJUtv7dImY+W35bQn3GwB
+         y7PvdKkPXIexqYgO9uuII+XhVXuha28MnglggbR2nBpcBHVf6NwAzwav8/2s9aQR2oN/
+         IO8FP03nomEYbbLfiu1L2Z5UP0WCfcl8+NArUExVWaY+akZ04ITBwkzIrNCUNji7avCc
+         0AKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="PUL8jjB/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bkQOTDbV;
        spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <mst@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id p9-20020a05622a00c900b003b86cf0da6bsi8838044qtw.60.2023.02.28.03.45.45
+        by mx.google.com with ESMTPS id o11-20020ac87c4b000000b003ba201d92c0si9347007qtv.124.2023.02.28.03.47.01
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 03:45:45 -0800 (PST)
+        Tue, 28 Feb 2023 03:47:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="PUL8jjB/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bkQOTDbV;
        spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677584745;
+	s=mimecast20190719; t=1677584821;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=bpIC6p+UT+rHFct1wlfMFpw0g6TQL7FZQoQ34DKLJ2E=;
-	b=PUL8jjB/s5yd0j7B3EeLJ3hOZG+ASIcQhsDTKat4mz/DdCKwh9+aXCozH1mSMptABqA5aa
-	fJ2A/fzkr9v/5Z1U6CniGAcdjjMp1KeRnA+IJa91jx2OM/JsWjJKp6hWbgSKpKHAzWJiCO
-	cCaUl+zwTCFfrKYGvNggDVhYWLr0Yp8=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=0nS0+RyN/H1npg0C1JIbWHZZ4SfeTHMMRyD4io5maU0=;
+	b=bkQOTDbVvT59u8OUyKoZHI0fKCHpSdZlLa8iZd6dMoauHfRkGPE7SXPkRxjSMA6SZdZcJj
+	Q4nVxOJATEiI3eENvVVXiEs2VnxFBCquz+LQLfVpl+TbF9JzWJ1LwBWgjMdZaGfvW2naCa
+	L6jWj2y7CGIi+3yisrBlNOXMRLmtdlk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-321-nbqk5VZ6N_itXJAW9Iy8BQ-1; Tue, 28 Feb 2023 06:45:43 -0500
-X-MC-Unique: nbqk5VZ6N_itXJAW9Iy8BQ-1
-Received: by mail-wm1-f70.google.com with SMTP id l16-20020a05600c1d1000b003e77552705cso4146670wms.7
-        for <alex.bennee@linaro.org>; Tue, 28 Feb 2023 03:45:43 -0800 (PST)
+ us-mta-185-BkgKl6zWMTKmrFBO7zwi3w-1; Tue, 28 Feb 2023 06:46:59 -0500
+X-MC-Unique: BkgKl6zWMTKmrFBO7zwi3w-1
+Received: by mail-wr1-f69.google.com with SMTP id c30-20020adfa31e000000b002c59b266371so1481837wrb.6
+        for <alex.bennee@linaro.org>; Tue, 28 Feb 2023 03:46:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677584742;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bpIC6p+UT+rHFct1wlfMFpw0g6TQL7FZQoQ34DKLJ2E=;
-        b=wgDclolYnb0Pp4Atg6BP5FdJomu9q+9XqjxsmJ8A1Ch7uZQAqKDXA0ckdjWlTyJda5
-         z805nn1jel/AdF8e9q34x8ql38XliyTZ5IjwYEA001YAiCoTCah7dWQu1J/tfuUYeBZT
-         dE6c7nEW2VbRRkdnzIDNQXx6+N67LnZeUayVO/hFnBsz9csDfZ8zd2Sb/vP6dKDgLbgR
-         OaXf9kHabGZPIcbBzGuTqtEdgbyv27m8c6QKLZtfbop5fvhRi6oiiWFZyAR7PsHSvZ92
-         sVOWH+wUI9lhTkV0qF3K40D2QU+GrmpSH/STBPIm+Em7RUPUetR9z5ixHFl3cg5eg0BJ
-         G7RQ==
-X-Gm-Message-State: AO0yUKUUxgXGzpgGReg5I02pcgqOz56MG3ou7to6rHHEOIHufUMKiBPu
-	ESHuzfxb7jfhEQib4c8+YlQMIZNrpPfGa/sg1c+7LiNZhNjjiug0Djde2OS8tys0VpO9uncASug
-	zFk3bY7s5esaCRQa3
-X-Received: by 2002:a5d:558d:0:b0:2c7:694:aa18 with SMTP id i13-20020a5d558d000000b002c70694aa18mr1645855wrv.15.1677584742662;
-        Tue, 28 Feb 2023 03:45:42 -0800 (PST)
-X-Received: by 2002:a5d:558d:0:b0:2c7:694:aa18 with SMTP id i13-20020a5d558d000000b002c70694aa18mr1645837wrv.15.1677584742358;
-        Tue, 28 Feb 2023 03:45:42 -0800 (PST)
+        d=1e100.net; s=20210112; t=1677584818;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0nS0+RyN/H1npg0C1JIbWHZZ4SfeTHMMRyD4io5maU0=;
+        b=fxryidEioVG/92NQu1ANNq1pyN8qvJFX6gnjtG7o42FMUkT5VOK5TOcSGiSD9okEYZ
+         c9yEYnatafA3JG69LMUd0bxcA/S62jcTWL1HlZa3GBPmKH0n1kSQVImljNBsJOiKg1Nr
+         /m5+sRrJ5H9f6qQGAef9lTf3c9vur5+oPioflh2kaldim7Ff+ufu0GT7ONLRBtjdsf10
+         4QBJTMOZW0dr0Z8QEPsDPul5e1aEpCLcuIuJ/ghCJ2e8nQd6M41GJhpp6mf0A+smA79E
+         bZhfji1T/WtCGckYXHAqfUoZoWU/KD4TitCmrxlCn9T36jvGcDpy0UDvNgJ+RK9oi9K9
+         /Nag==
+X-Gm-Message-State: AO0yUKXpB0uKsCLkh6uD8aI+gspM7sKtobLd/ZFYbneNPY+OJwUOv8j9
+	PtSNsbEM5CY05aydcn5YxKvHCYArgyaIYB0YUC2VdcT+4wRfBOCjGBQPosL4ictQv75LpHsbLNd
+	DjsVmU+UaabhIrl2s
+X-Received: by 2002:a05:600c:3d8f:b0:3e2:d3:b2b6 with SMTP id bi15-20020a05600c3d8f00b003e200d3b2b6mr2040457wmb.14.1677584818556;
+        Tue, 28 Feb 2023 03:46:58 -0800 (PST)
+X-Received: by 2002:a05:600c:3d8f:b0:3e2:d3:b2b6 with SMTP id bi15-20020a05600c3d8f00b003e200d3b2b6mr2040437wmb.14.1677584818147;
+        Tue, 28 Feb 2023 03:46:58 -0800 (PST)
 Return-Path: <mst@redhat.com>
 Received: from redhat.com ([2.52.141.194])
-        by smtp.gmail.com with ESMTPSA id q5-20020adff505000000b002c70a0e2cd0sm9735429wro.101.2023.02.28.03.45.39
+        by smtp.gmail.com with ESMTPSA id z22-20020a1c4c16000000b003e206cc7237sm15096859wmf.24.2023.02.28.03.46.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 03:45:41 -0800 (PST)
-Date: Tue, 28 Feb 2023 06:45:37 -0500
+        Tue, 28 Feb 2023 03:46:57 -0800 (PST)
+Date: Tue, 28 Feb 2023 06:46:54 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org, Maxim Levitsky <mlevitsk@redhat.com>,
+	libvir-list@redhat.com,
 	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	xen-devel@lists.xenproject.org,
 	Reinoud Zandijk <reinoud@netbsd.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	xen-devel@lists.xenproject.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Maxim Levitsky <mlevitsk@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/2] docs/about: Deprecate 32-bit x86 hosts and
- qemu-system-i386
-Message-ID: <20230228064105-mutt-send-email-mst@kernel.org>
-References: <84d7d3e5-0da2-7506-44a7-047ebfcfc4da@redhat.com>
- <20230228031026-mutt-send-email-mst@kernel.org>
- <Y/3CiEKKoG06t9rr@redhat.com>
- <20230228040115-mutt-send-email-mst@kernel.org>
- <fe4626c6-6103-d5e5-6920-9dfb4777b979@redhat.com>
- <Y/3MIUDRBUSNg6C5@redhat.com>
- <20230228050908-mutt-send-email-mst@kernel.org>
- <87cz5uhy50.fsf@pond.sub.org>
- <20230228055016-mutt-send-email-mst@kernel.org>
- <87h6v6gh1g.fsf@pond.sub.org>
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH 0/2] Deprecate support for 32-bit x86 and arm hosts
+Message-ID: <20230228064623-mutt-send-email-mst@kernel.org>
+References: <20230227111050.54083-1-thuth@redhat.com>
+ <Y/z4rwv09Ckhbtfp@redhat.com>
+ <001bedba-b12f-4dd8-0866-7ccb9ce877d0@redhat.com>
+ <Y/3C+jC3Lk5MJxfu@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87h6v6gh1g.fsf@pond.sub.org>
+In-Reply-To: <Y/3C+jC3Lk5MJxfu@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-X-TUID: ABY8McVv0316
+Content-Transfer-Encoding: 8bit
+X-TUID: yFTglK/4X+9d
 
-On Tue, Feb 28, 2023 at 12:34:19PM +0100, Markus Armbruster wrote:
-> If it's not worth arguing, then we merge Thomas's patch.
+On Tue, Feb 28, 2023 at 09:01:46AM +0000, Daniel P. Berrangé wrote:
+> If we're merely wanting to drop CI support, we can do that any time and
+> deprecation is not required/expected.  We should only be using deprecation
+> where we're explicitly intending that the code will cease to work.
 
-I don't mind but it's just a doc patch isn't it? If what we want to do
-is to stop doing make check on a 32 bit container and just to do
-make then let's patch the relevant yaml.  I'd ack this, easy.
+Good point, IMO.
 
 -- 
 MST

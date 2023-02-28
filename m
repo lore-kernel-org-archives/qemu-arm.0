@@ -1,233 +1,161 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6099848ejc;
-        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set9rzas9PRJY5zuK0qop3UgQD6nrOkfrD94rOt8xHQt/Nrb3jHD/YIjq+FA5XdDJqW+TJBQC
-X-Received: by 2002:a05:600c:3b99:b0:3ea:fc95:7bf with SMTP id n25-20020a05600c3b9900b003eafc9507bfmr2846293wms.30.1677612532182;
-        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677612532; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6126404ejc;
+        Tue, 28 Feb 2023 12:05:24 -0800 (PST)
+X-Google-Smtp-Source: AK7set/NnolqnenRvRIdW3/5FvPEzN0jy+S0BJaxOovziYi2qvxGB9OiUMSCfg75huxTUmmKRP35
+X-Received: by 2002:ad4:5c46:0:b0:56e:c1f5:137d with SMTP id a6-20020ad45c46000000b0056ec1f5137dmr8618422qva.29.1677614724354;
+        Tue, 28 Feb 2023 12:05:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677614724; cv=none;
         d=google.com; s=arc-20160816;
-        b=cn9ZCuS+VDFwdQLyKYC5Jh7SprAwuc481fvOy8R9lHGwIBH+XE/f7K2bYVnuCrCQTO
-         Yi7UzQMNSXq1Ep9eCui9xQJfPeMFi2UMEXJ8HuTzliH2vO58T1TVhxD9/YM5az69rfgf
-         OnaoWq5IgUJ6GhHu2LPVtEOVWyGDfRbp4Vi9dXYYAN1MOcX69bZ79f6eslyvcoNV+N2F
-         kiGapwZhDdSHx8t+2IoUsuGcqweS6sTk6n87i24HdcmZlUI5rCnLSCVZqBnOkMvo39D4
-         X1ViYos0LyuGoNaLydP1An4Ox84F4xb1QyYj0QdcmeN5Ykw1a8eYYTqUPmR/7RqizKOe
-         aOqg==
+        b=l3yRS6kkeFyrJFqapb4eUppl4Sxq7Lv2QeLAnN4w0CtRCEdenKFzj5U/gzlQaMyP0C
+         WwMMQAvugTuCDEFIZ0MvxFbbCUjeQuB694RISFFe7Lh/+AyEMe7GXTp9n2gIDHYIaTki
+         82E+H358yd3Y6FZ68OqWFzAuOtGPupWwnwJFhRTauNSfYNxEsvJ07O0DecRBWuGQGCOq
+         Nt9foEBI02Ve8D+hqHHs125pO1kyY+Bo4dlhZ6oFGws14l6uwk5lZBbWIv51ZcBx2UED
+         tPap+wpYAhbE2BVC74G6YHiWf5E6WORaF+U2cEX2SRTxa7IQvs18e5Qj4HVn1P+4x7iP
+         WPnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-        b=c4CdEb+3alHl7OmdzVm657h/MMjRGnfpmOdpCdPUYUbV/I12pQLY2qHL0HkL7QhRGA
-         /06hkD5Dnwq0kFFchmah99s/WYWyyWWrSJUfN8BHevBpHdU2LsKEom/XMILlc7KYwZt4
-         BONdA92UyvMtkEnLwPBBuxE9fwpc+YRneTKC03paOsyoSD9rF0Rsa5a401XIyg0OFBsl
-         VfNj//e7qPaSRTBVzXFx7MBafISlq+5z6ekPXsaKZkLgPpIdo+uodAkubaXJu1RXWVeR
-         YbOCqif1iUd86FDPN3yiPaqNPzGF4+IVZXVTiNqueMuY8EO/CKE0r2e0XR13z040/V1m
-         kLuA==
+        h=content-transfer-encoding:content-language:in-reply-to:subject:from
+         :references:cc:to:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=nQd+QhpwRnF3wyVrQuuVP52v3cZ2QpqTThkyv4Fl8ik=;
+        b=lB8gxV7PQrZfCnPtEqOkUYhl3wTkrIW5IdGdsOE3wMLL75OxvQHQ63lCg8VtUMR09y
+         JP+KbEFE+jJEzY+EWfI10JOPW49VuNfnNuIYAcChYDING1j1uGOsl/PHD4Z/TCqfT6Ty
+         gPAW4aBSLlTdpAb4NBU0EdiugQP/AN0FM3cXoO1Bl+t5WRE+gfNnqKbNskxSqbXmYD/X
+         Wh9xTm6V6zh5YtdgtVvyCpMrPdj/jE4MMRp2ib0ogsPsj7O24TDgvIm+wH/twK4ETOJQ
+         DaPxYW+BcsfaVOzdKHsAkRxURmK6d2s8+yk//sKamG5GSxhAkqQLSimXxF2Kx3KnDYar
+         npnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=lAOrKPgp;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id fm18-20020a05600c0c1200b003e2091c7cd3si13253398wmb.10.2023.02.28.11.28.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iujQtoOg;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id m19-20020a0cf193000000b00571f474a2desi9726604qvl.349.2023.02.28.12.05.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Feb 2023 12:05:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=lAOrKPgp;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id C9B6B21A7D;
-	Tue, 28 Feb 2023 19:28:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677612531; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iujQtoOg;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677614723;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-	b=lAOrKPgpZIuEHO31wiToHn7f9s5GiWrRR3ZHxjTd0opX4ImlJSwy2krNKbP0ht0QMv0YaX
-	ozR43HewgcB4U9wDmGsFzsxYH3X0HzzzkUzlLCxWpxGHBRFcJgylVDJKL28ajcc6caySmo
-	+VrOimv49F/v0g7KhQ5Be4mIM3Sunjo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677612531;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-	b=A9DWuYJzZzoGAB9eFtKoGgGcbyvKs8SC/jLffZQBq3K40yxhYyWeegQ4QPOGyHwGi0XjjP
-	DNHnSl7u/15enUDA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3EDF31333C;
-	Tue, 28 Feb 2023 19:28:48 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id OJF6AvBV/mNBagAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 28 Feb 2023 19:28:48 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH RESEND v7 5/9] tests/avocado: Pass parameters to migration test
-Date: Tue, 28 Feb 2023 16:26:24 -0300
-Message-Id: <20230228192628.26140-6-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230228192628.26140-1-farosas@suse.de>
-References: <20230228192628.26140-1-farosas@suse.de>
+	bh=nQd+QhpwRnF3wyVrQuuVP52v3cZ2QpqTThkyv4Fl8ik=;
+	b=iujQtoOg/vphkJxwewKlF6Iu4LmW82xRr4skgeoBWVvqibnVw2LxCEcsyJqym3cbUYDMl4
+	u8SimHyaGZMAoJgevG8TW5QZZhdzJ90kAfQVpIasgt56o6HeYFF0ndRCGGkxhXdJt0QOAc
+	KB0spX596PlgiCpQ1Lj0wYs3hQw/4n0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-115-NqPPJrl6MBuY8DZHxZR-Tw-1; Tue, 28 Feb 2023 15:05:20 -0500
+X-MC-Unique: NqPPJrl6MBuY8DZHxZR-Tw-1
+Received: by mail-wm1-f71.google.com with SMTP id az12-20020a05600c600c00b003e8910ec2fdso4011890wmb.6
+        for <alex.bennee@linaro.org>; Tue, 28 Feb 2023 12:05:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=nQd+QhpwRnF3wyVrQuuVP52v3cZ2QpqTThkyv4Fl8ik=;
+        b=wcIP82bZCLsqQr1qIFVUOfGf/EAfS8xEO2UasMUc8HDIAczQLQ7OOVB4Xq5agkgA8A
+         91lthj4WQTdoS263GCbhJ4olAklaZjWK0PAc7yvXU8P1YFDYMqrLCbJ4bR7egylH8e+F
+         aoSJ9BgmfXSKH4pNnyUW20j/tcAsBaIOMzgcvUx/ZiQtvGqpQECMwuP32lT2t5n5paHg
+         9kHzhdtb5PjMs5YQQmasca3dQwc8kmLc3hHIpRlY4GutS/UPOjuOh9224VV9BjkjHrSI
+         fGa/lBNtIngI7O67HFkq5HFPnKKxGCrl/JCs4ijhkqYaYXKkR4naNFmthslNJM60S4Cg
+         Q3KA==
+X-Gm-Message-State: AO0yUKV3j8jFAMkqKSU070sQ1UbmA9LlcW3qgMuyM5VrfCOv3y2yFz4p
+	ve94OAB58BDPYsM2JvMLTyAFthCKs86dfY9ebvlqAVzaNatT2zEXCIe7vN1dmIaht/3AJG5QLw6
+	xNmPi3GRLMryfVP9g
+X-Received: by 2002:adf:e945:0:b0:2c7:17a0:c6b5 with SMTP id m5-20020adfe945000000b002c717a0c6b5mr2892265wrn.34.1677614719636;
+        Tue, 28 Feb 2023 12:05:19 -0800 (PST)
+X-Received: by 2002:adf:e945:0:b0:2c7:17a0:c6b5 with SMTP id m5-20020adfe945000000b002c717a0c6b5mr2892258wrn.34.1677614719335;
+        Tue, 28 Feb 2023 12:05:19 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.8.100] (tmo-112-221.customers.d1-online.com. [80.187.112.221])
+        by smtp.gmail.com with ESMTPSA id c16-20020a05600c0ad000b003e214803343sm16622509wmr.46.2023.02.28.12.05.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Feb 2023 12:05:18 -0800 (PST)
+Message-ID: <99a83e65-273a-ea1b-e7d9-bbdd8ca32145@redhat.com>
+Date: Tue, 28 Feb 2023 21:05:16 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Maxim Levitsky <mlevitsk@redhat.com>, libvir-list@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, Reinoud Zandijk <reinoud@netbsd.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20230227111050.54083-1-thuth@redhat.com>
+ <Y/z4rwv09Ckhbtfp@redhat.com>
+ <001bedba-b12f-4dd8-0866-7ccb9ce877d0@redhat.com>
+ <Y/3C+jC3Lk5MJxfu@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 0/2] Deprecate support for 32-bit x86 and arm hosts
+In-Reply-To: <Y/3C+jC3Lk5MJxfu@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: hjgtKjLWUm76
+X-TUID: UL+y5Ya0vJoB
 
-The migration tests are currently broken for an aarch64 host because
-the tests pass no 'machine' and 'cpu' options on the QEMU command
-line.
+On 28/02/2023 10.01, Daniel P. Berrangé wrote:
+> On Tue, Feb 28, 2023 at 08:39:49AM +0100, Thomas Huth wrote:
+>> On 27/02/2023 19.38, Daniel P. Berrangé wrote:
+>>> On Mon, Feb 27, 2023 at 12:10:48PM +0100, Thomas Huth wrote:
+>>>> We're struggling quite badly with our CI minutes on the shared
+>>>> gitlab runners, so we urgently need to think of ways to cut down
+>>>> our supported build and target environments. qemu-system-i386 and
+>>>> qemu-system-arm are not really required anymore, since nobody uses
+>>>> KVM on the corresponding systems for production anymore, and the
+>>>> -x86_64 and -arch64 variants are a proper superset of those binaries.
+>>>> So it's time to deprecate them and the corresponding 32-bit host
+>>>> environments now.
+>>>>
+>>>> This is a follow-up patch series from the previous discussion here:
+>>>>
+>>>>    https://lore.kernel.org/qemu-devel/20230130114428.1297295-1-thuth@redhat.com/
+>>>>
+>>>> where people still mentioned that there is still interest in certain
+>>>> support for 32-bit host hardware. But as far as I could see, there is
+>>>> no real need for 32-bit host support for system emulation on x86 and
+>>>> arm anymore, so it should be fine if we drop these host environments
+>>>> now (these are also the two architectures that contribute the most to
+>>>> the long test times in our CI, so we would benefit a lot by dropping
+>>>> those).
+>>>
+>>> Your description here is a little ambiguous about what's being
+>>> proposed. When you say dropping 32-bit host support do you mean
+>>> just for the system emulator binaries, or for QEMU entirely ?
+>>
+>> Just for system emulation. Some people said that user emulation still might
+>> be useful for some 32-bit environments.
+>>
+>>> And when the deprecation period is passed, are you proposing
+>>> to actively prevent 32-bit builds, or merely stopping CI testing
+>>> and leave 32-bit builds still working if people want them ?
+>>
+>> CI is the main pain point, so that's the most important thing. So whether we
+>> throw a warning or a hard error while configuring the build, I don't care
+>> too much.
+> 
+> If we're merely wanting to drop CI support, we can do that any time and
+> deprecation is not required/expected.  We should only be using deprecation
+> where we're explicitly intending that the code will cease to work.
 
-Add a separate class to each architecture so that we can specify
-'machine' and 'cpu' options instead of relying on defaults.
+Well, without CI, I assume that the code will bitrot quite fast (considering 
+that there are continuous improvements to TCG, for example). And who's then 
+still volunteering to fix bugs that have crept in months ago, for a host 
+architecture that nobody really uses anymore?
+Clearly, 32-bit x86 host is pretty much dead nowadays, especially for 
+programs like QEMU that need beefy host hardware. Why do we still waste our 
+time with this?
 
-Add a skip decorator to keep the current behavior of only running
-migration tests when the qemu target matches the host architecture.
-
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
- tests/avocado/migration.py | 83 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 78 insertions(+), 5 deletions(-)
-
-diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
-index 4b25680c50..8b2ec0e3c4 100644
---- a/tests/avocado/migration.py
-+++ b/tests/avocado/migration.py
-@@ -11,6 +11,8 @@
- 
- 
- import tempfile
-+import os
-+
- from avocado_qemu import QemuSystemTest
- from avocado import skipUnless
- 
-@@ -19,7 +21,7 @@
- from avocado.utils.path import find_command
- 
- 
--class Migration(QemuSystemTest):
-+class MigrationTest(QemuSystemTest):
-     """
-     :avocado: tags=migration
-     """
-@@ -62,20 +64,91 @@ def _get_free_port(self):
-             self.cancel('Failed to find a free port')
-         return port
- 
--
--    def test_migration_with_tcp_localhost(self):
-+    def migration_with_tcp_localhost(self):
-         dest_uri = 'tcp:localhost:%u' % self._get_free_port()
-         self.do_migrate(dest_uri)
- 
--    def test_migration_with_unix(self):
-+    def migration_with_unix(self):
-         with tempfile.TemporaryDirectory(prefix='socket_') as socket_path:
-             dest_uri = 'unix:%s/qemu-test.sock' % socket_path
-             self.do_migrate(dest_uri)
- 
-     @skipUnless(find_command('nc', default=False), "'nc' command not found")
--    def test_migration_with_exec(self):
-+    def migration_with_exec(self):
-         """The test works for both netcat-traditional and netcat-openbsd packages."""
-         free_port = self._get_free_port()
-         dest_uri = 'exec:nc -l localhost %u' % free_port
-         src_uri = 'exec:nc localhost %u' % free_port
-         self.do_migrate(dest_uri, src_uri)
-+
-+
-+@skipUnless('aarch64' in os.uname()[4], "host != target")
-+class Aarch64(MigrationTest):
-+    """
-+    :avocado: tags=arch:aarch64
-+    :avocado: tags=machine:virt
-+    :avocado: tags=cpu:max
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('x86_64' in os.uname()[4], "host != target")
-+class X86_64(MigrationTest):
-+    """
-+    :avocado: tags=arch:x86_64
-+    :avocado: tags=machine:pc
-+    :avocado: tags=cpu:qemu64
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('ppc64le' in os.uname()[4], "host != target")
-+class PPC64(MigrationTest):
-+    """
-+    :avocado: tags=arch:ppc64
-+    :avocado: tags=machine:pseries
-+    :avocado: tags=cpu:power9_v2.0
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('s390x' in os.uname()[4], "host != target")
-+class S390X(MigrationTest):
-+    """
-+    :avocado: tags=arch:s390x
-+    :avocado: tags=machine:s390-ccw-virtio
-+    :avocado: tags=cpu:qemu
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
--- 
-2.35.3
+  Thomas

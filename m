@@ -1,321 +1,177 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t3-20020a5d6903000000b002c56af32e8csm10765603wru.35.2023.02.28.11.14.20
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6099636ejc;
+        Tue, 28 Feb 2023 11:28:34 -0800 (PST)
+X-Google-Smtp-Source: AK7set+Tbazkqbh8KTJm/myly31x3Xtv0pzu54BJHBoesAjcVnHABnDwTpZaVB1qp6gXJT6Hso4g
+X-Received: by 2002:a05:600c:4b27:b0:3eb:38a2:2bcd with SMTP id i39-20020a05600c4b2700b003eb38a22bcdmr2828250wmp.28.1677612514468;
+        Tue, 28 Feb 2023 11:28:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677612514; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V8JJWpIWPQR52sRiHrlh/GjVBXbN5Lz0Ncat81f01w0qQJOCpr/TlGjmbugemCHOKw
+         jHeKhjudJMNVCHL7cIOCeWyKpVAw3q9/c2pfIDVbUyFZsuWN9HoeEJjwBYhkx3MQ2mxe
+         IX5S2XCwoCLHFKhdE/qi0A86+BM7uwIOhKaVpDS0+tEXsIhO5Qbua6RjL4jL03Lv7uM9
+         pEEgaH4l7E6F+il2kX7fpGtdmbuWLvUWnJ2VRW2Xo6Otu3pj3FQs89YFM3tNvA8W16tL
+         OsvuzvrAnXPEnjSEgvXCBeMs77FQNwK8cFKXOSOix4hroWRARjdvGtIPys+mWIAQ3iG0
+         1cxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:dkim-signature;
+        bh=BylTwKg8YlkwdSNNbKzlz0/+plpdoDjrEgBsGDbnAW4=;
+        b=oYiykKT/AVYYadi2cXfOP+VDzhwSw4VO6VSWoq0MRWGeThPmSY24FsBmyYeTjkB+IK
+         S/WIOGmc20eRuUcr36fshDdyLQ+4BP9Bg9t/nVdtQSDyPQJ/73nTUiQ837bXqWw+FvWf
+         raAVXKujAfyhHS6MvAnUkWvtLLRzPH0/6cgRWNSHHxJjTFfyWQbJQKVoFQrFcocFy55R
+         +Bm41kRXYJLywRcC5rdWHgdr0AS0c+sF3hse9Wi8VFAIbvaIKA532zQ0svuDVAARJVAg
+         yvyQGXDCWGEzAKhgOG0+NTxPa/H+D/n2oYbfGq9Aj/C/H3aQhv7B8MQcCMsNWF42a5hK
+         1Jkw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=baQ6YnmN;
+       dkim=neutral (no key) header.i=@suse.de header.b=994jBdmd;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id f18-20020adff8d2000000b002c70d74052csi9377770wrq.971.2023.02.28.11.28.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:14:22 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 257451FFC9;
-	Tue, 28 Feb 2023 19:06:56 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+        Tue, 28 Feb 2023 11:28:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=baQ6YnmN;
+       dkim=neutral (no key) header.i=@suse.de header.b=994jBdmd;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id D3D1821A7A;
+	Tue, 28 Feb 2023 19:28:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1677612513; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=BylTwKg8YlkwdSNNbKzlz0/+plpdoDjrEgBsGDbnAW4=;
+	b=baQ6YnmNCNEymFlLiqokgCVCKevsrtnwx6bY0KFZ4hIsdOP7F/1TivtxrurarKAh7c/eCs
+	Grxp5pxpB31OCMrjHw2O9ej7QtQRtrdsEFpEylnJ77FrucbX+iAo2f3YAeNAKR0Xxkd4SD
+	aorNa6rvArpy06RCTGoSZLZOoOiDkdw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1677612513;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=BylTwKg8YlkwdSNNbKzlz0/+plpdoDjrEgBsGDbnAW4=;
+	b=994jBdmduqDOwoR6XCi1/UtXrGsMqltBjqmcIeD3sKe8j1vnHwOqWMXvgZjfgQxmAMr1B1
+	V7HaTYMc4hx3dGBw==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 02B061333C;
+	Tue, 28 Feb 2023 19:28:30 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id +w07L95V/mNBagAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 28 Feb 2023 19:28:30 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
+Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Kevin Wolf <kwolf@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Beraldo Leal <bleal@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Ed Maste <emaste@freebsd.org>,
-	qemu-arm@nongnu.org,
-	Fam Zheng <fam@euphon.net>,
-	Thomas Huth <thuth@redhat.com>,
-	Yonggang Luo <luoyonggang@gmail.com>,
-	qemu-block@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Bandan Das <bsd@redhat.com>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 22/24] gitlab: move the majority of artefact handling to a template
-Date: Tue, 28 Feb 2023 19:06:51 +0000
-Message-Id: <20230228190653.1602033-23-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
-References: <20230228190653.1602033-1-alex.bennee@linaro.org>
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH RESEND v7 0/9] target/arm: Allow CONFIG_TCG=n builds
+Date: Tue, 28 Feb 2023 16:26:19 -0300
+Message-Id: <20230228192628.26140-1-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5DxRZ2Fb7Enn
+X-TUID: I/KsBsDD382w
 
-To avoid lots of copy and paste lets deal with artefacts in a
-template. This way we can filter out most of the pre-binary object and
-library files we no longer need as we have the final binaries.
+Resending with the remaining patches now that arm next was merged.
 
-build-system-alpine also saved .git-submodule-status so for simplicity
-we bring that into the template as well.
+CI run: https://gitlab.com/farosas/qemu/-/pipelines/791478895
 
-As an example the build-system-ubuntu artefacts before this patch
-where around 1.3 GB, after dropping the object files it comes to 970
-MB.
+v7:
+https://lore.kernel.org/r/20230223130841.25916-1-farosas@suse.de
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/buildtest-template.yml | 16 ++++++
- .gitlab-ci.d/buildtest.yml          | 81 +++++++++++------------------
- 2 files changed, 46 insertions(+), 51 deletions(-)
+Changes since v6:
 
-diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
-index cb96b55c3f..a6cfe9be97 100644
---- a/.gitlab-ci.d/buildtest-template.yml
-+++ b/.gitlab-ci.d/buildtest-template.yml
-@@ -25,6 +25,22 @@
-         make -j"$JOBS" $MAKE_CHECK_ARGS ;
-       fi
- 
-+# We jump some hoops in common_test_job_template to avoid
-+# rebuilding all the object files we skip in the artifacts
-+.native_build_artifact_template:
-+  artifacts:
-+    expire_in: 2 days
-+    paths:
-+      - build
-+      - .git-submodule-status
-+    exclude:
-+      - build/**/*.p
-+      - build/**/*.a.p
-+      - build/**/*.fa.p
-+      - build/**/*.c.o
-+      - build/**/*.c.o.d
-+      - build/**/*.fa
-+
- .common_test_job_template:
-   extends: .base_job_template
-   stage: test
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 43f9e4a81d..44b8275299 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -2,7 +2,9 @@ include:
-   - local: '/.gitlab-ci.d/buildtest-template.yml'
- 
- build-system-alpine:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     - job: amd64-alpine-container
-   variables:
-@@ -11,11 +13,6 @@ build-system-alpine:
-       microblazeel-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
-     CONFIGURE_ARGS: --enable-docs --enable-trace-backends=log,simple,syslog
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - .git-submodule-status
--      - build
- 
- check-system-alpine:
-   extends: .native_test_job_template
-@@ -36,7 +33,9 @@ avocado-system-alpine:
-     MAKE_CHECK_ARGS: check-avocado
- 
- build-system-ubuntu:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-ubuntu2204-container
-   variables:
-@@ -45,10 +44,6 @@ build-system-ubuntu:
-     TARGETS: alpha-softmmu cris-softmmu hppa-softmmu
-       microblazeel-softmmu mips64el-softmmu
-     MAKE_CHECK_ARGS: check-build
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-system-ubuntu:
-   extends: .native_test_job_template
-@@ -69,7 +64,9 @@ avocado-system-ubuntu:
-     MAKE_CHECK_ARGS: check-avocado
- 
- build-system-debian:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-debian-container
-   variables:
-@@ -78,10 +75,6 @@ build-system-debian:
-     TARGETS: arm-softmmu avr-softmmu i386-softmmu mipsel-softmmu
-       riscv64-softmmu sh4eb-softmmu sparc-softmmu xtensaeb-softmmu
-     MAKE_CHECK_ARGS: check-build
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-system-debian:
-   extends: .native_test_job_template
-@@ -114,7 +107,9 @@ crash-test-debian:
-     - tests/venv/bin/python3 scripts/device-crash-test -q ./qemu-system-i386
- 
- build-system-fedora:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-fedora-container
-   variables:
-@@ -123,10 +118,6 @@ build-system-fedora:
-     TARGETS: tricore-softmmu microblaze-softmmu mips-softmmu
-       xtensa-softmmu m68k-softmmu riscv32-softmmu ppc-softmmu sparc64-softmmu
-     MAKE_CHECK_ARGS: check-build
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-system-fedora:
-   extends: .native_test_job_template
-@@ -160,7 +151,9 @@ crash-test-fedora:
-     - tests/venv/bin/python3 scripts/device-crash-test -q ./qemu-system-riscv32
- 
- build-system-centos:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-centos8-container
-   variables:
-@@ -170,10 +163,6 @@ build-system-centos:
-     TARGETS: ppc64-softmmu or1k-softmmu s390x-softmmu
-       x86_64-softmmu rx-softmmu sh4-softmmu nios2-softmmu
-     MAKE_CHECK_ARGS: check-build
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-system-centos:
-   extends: .native_test_job_template
-@@ -194,17 +183,15 @@ avocado-system-centos:
-     MAKE_CHECK_ARGS: check-avocado
- 
- build-system-opensuse:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-opensuse-leap-container
-   variables:
-     IMAGE: opensuse-leap
-     TARGETS: s390x-softmmu x86_64-softmmu aarch64-softmmu
-     MAKE_CHECK_ARGS: check-build
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-system-opensuse:
-   extends: .native_test_job_template
-@@ -339,7 +326,9 @@ clang-user:
- # Split in three sets of build/check/avocado to limit the execution time of each
- # job
- build-cfi-aarch64:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-   - job: amd64-fedora-container
-   variables:
-@@ -355,10 +344,6 @@ build-cfi-aarch64:
-     # skipped until the situation has been solved.
-     QEMU_JOB_SKIPPED: 1
-   timeout: 90m
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-cfi-aarch64:
-   extends: .native_test_job_template
-@@ -379,7 +364,9 @@ avocado-cfi-aarch64:
-     MAKE_CHECK_ARGS: check-avocado
- 
- build-cfi-ppc64-s390x:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-   - job: amd64-fedora-container
-   variables:
-@@ -395,10 +382,6 @@ build-cfi-ppc64-s390x:
-     # skipped until the situation has been solved.
-     QEMU_JOB_SKIPPED: 1
-   timeout: 80m
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-cfi-ppc64-s390x:
-   extends: .native_test_job_template
-@@ -419,7 +402,9 @@ avocado-cfi-ppc64-s390x:
-     MAKE_CHECK_ARGS: check-avocado
- 
- build-cfi-x86_64:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-   - job: amd64-fedora-container
-   variables:
-@@ -431,10 +416,6 @@ build-cfi-x86_64:
-     TARGETS: x86_64-softmmu
-     MAKE_CHECK_ARGS: check-build
-   timeout: 70m
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- check-cfi-x86_64:
-   extends: .native_test_job_template
-@@ -564,7 +545,9 @@ build-libvhost-user:
- # No targets are built here, just tools, docs, and unit tests. This
- # also feeds into the eventual documentation deployment steps later
- build-tools-and-docs-debian:
--  extends: .native_build_job_template
-+  extends:
-+    - .native_build_job_template
-+    - .native_build_artifact_template
-   needs:
-     job: amd64-debian-container
-     # when running on 'master' we use pre-existing container
-@@ -574,10 +557,6 @@ build-tools-and-docs-debian:
-     MAKE_CHECK_ARGS: check-unit ctags TAGS cscope
-     CONFIGURE_ARGS: --disable-system --disable-user --enable-docs --enable-tools
-     QEMU_JOB_PUBLISH: 1
--  artifacts:
--    expire_in: 2 days
--    paths:
--      - build
- 
- # Prepare for GitLab pages deployment. Anything copied into the
- # "public" directory will be deployed to $USER.gitlab.io/$PROJECT
+Now using the same feature set for -cpu max for both qtests and
+TCG. This requires a slightly awkward code movement to expose
+aa32_max_features to non-tcg code, but we gain by not having a
+different environment for the tests.
+
+Also applied Richard's suggestion of creating a new cortex-regs.c
+file.
+
+CI run: https://gitlab.com/farosas/qemu/-/pipelines/786195517
+
+v6:
+https://lore.kernel.org/r/20230217201150.22032-1-farosas@suse.de
+
+v5 resend:
+https://lore.kernel.org/r/20230213202927.28992-1-farosas@suse.de
+
+v5:
+https://lore.kernel.org/r/20230120184825.31626-1-farosas@suse.de
+
+v4:
+https://lore.kernel.org/r/20230119135424.5417-1-farosas@suse.de
+
+v3:
+https://lore.kernel.org/r/20230113140419.4013-1-farosas@suse.de
+
+v2:
+https://lore.kernel.org/r/20230109224232.11661-1-farosas@suse.de
+
+v1:
+https://lore.kernel.org/r/20230104215835.24692-1-farosas@suse.de
+
+Claudio Fontana (1):
+  target/arm: move cpu_tcg to tcg/cpu32.c
+
+Fabiano Rosas (7):
+  target/arm: Move cortex sysregs into a separate file
+  target/arm: Move 64-bit TCG CPUs into tcg/
+  target/arm: Move aa32_max_features out of cpu_tcg.c
+  tests/avocado: Pass parameters to migration test
+  arm/Kconfig: Always select SEMIHOSTING when TCG is present
+  arm/Kconfig: Do not build TCG-only boards on a KVM-only build
+  tests/qtest: Fix tests when no KVM or TCG are present
+
+Philippe Mathieu-Daudé (1):
+  gitlab-ci: Check building KVM-only aarch64 target
+
+ .gitlab-ci.d/crossbuilds.yml                  |  11 +
+ .../custom-runners/ubuntu-22.04-aarch64.yml   |   4 -
+ configs/devices/aarch64-softmmu/default.mak   |   4 -
+ configs/devices/arm-softmmu/default.mak       |  39 --
+ hw/arm/Kconfig                                |  43 +-
+ hw/arm/virt.c                                 |   6 +-
+ target/arm/Kconfig                            |   7 +
+ target/arm/cortex-regs.c                      |  69 +++
+ target/arm/cpregs.h                           |   6 +
+ target/arm/cpu.c                              |  69 +++
+ target/arm/cpu64.c                            | 399 +---------------
+ target/arm/internals.h                        |   7 +-
+ target/arm/meson.build                        |   2 +-
+ target/arm/{cpu_tcg.c => tcg/cpu32.c}         | 141 +-----
+ target/arm/tcg/cpu64.c                        | 438 ++++++++++++++++++
+ target/arm/tcg/meson.build                    |   2 +
+ tests/avocado/migration.py                    |  83 +++-
+ tests/qtest/arm-cpu-features.c                |  12 +-
+ tests/qtest/bios-tables-test.c                |   4 +
+ tests/qtest/boot-serial-test.c                |  10 +
+ tests/qtest/migration-test.c                  |   5 +
+ tests/qtest/pxe-test.c                        |   6 +
+ tests/qtest/vmgenid-test.c                    |   6 +
+ 23 files changed, 772 insertions(+), 601 deletions(-)
+ create mode 100644 target/arm/cortex-regs.c
+ rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (87%)
+ create mode 100644 target/arm/tcg/cpu64.c
+
 -- 
-2.39.2
+2.35.3

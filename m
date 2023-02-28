@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id bi22-20020a05600c3d9600b003dc42d48defsm13548583wmb.6.2023.02.28.11.06.54
+        by smtp.gmail.com with ESMTPSA id z10-20020a5d44ca000000b002c6e8af1037sm10606277wrr.104.2023.02.28.11.06.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:06:55 -0800 (PST)
+        Tue, 28 Feb 2023 11:06:56 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D455A1FFBD;
-	Tue, 28 Feb 2023 19:06:53 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 1801D1FFB7;
+	Tue, 28 Feb 2023 19:06:54 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -38,52 +38,46 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 05/24] gitlab-ci: Use artifacts instead of dumping logs in the Cirrus-CI jobs
-Date: Tue, 28 Feb 2023 19:06:34 +0000
-Message-Id: <20230228190653.1602033-6-alex.bennee@linaro.org>
+Subject: [PATCH v3 07/24] tests: don't run benchmarks for the tsan build
+Date: Tue, 28 Feb 2023 19:06:36 +0000
+Message-Id: <20230228190653.1602033-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DnuVkcAHjPIr
+X-TUID: lgRX4QyM29uf
 
-From: Thomas Huth <thuth@redhat.com>
+All we are really doing here is checking that TSAN builds compile and are
+therefor a tool available to developers. The benchmarks are not
+representative of QEMU's actual threading behaviour and they burn
+precious CI time. Indeed switching to check-unit reveals many
+unaddressed issues which have been logged at:
 
-The meson log files can get very big, especially if running the tests in
-verbose mode. So dumping those logs to the console was a bad idea, since
-gitlab truncates the output if it is getting too big. Let's publish the
-logs as artifacts instead. This has the disadvantage that you have to
-look up the logs on cirrus-ci.com now instead, but that's still better
-than not having the important part of the log at all since it got
-truncated.
+  https://gitlab.com/qemu-project/qemu/-/issues/1496
 
-Fixes: 998f334722 ("gitlab: show testlog.txt contents ...")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230215142503.90660-1-thuth@redhat.com>
+So for now disable the make check and make this a build only
+test.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230221094558.2864616-7-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230221094558.2864616-9-alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/cirrus/build.yml | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ .gitlab-ci.d/buildtest.yml | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/cirrus/build.yml b/.gitlab-ci.d/cirrus/build.yml
-index 7ef6af8d33..a9444902ec 100644
---- a/.gitlab-ci.d/cirrus/build.yml
-+++ b/.gitlab-ci.d/cirrus/build.yml
-@@ -32,6 +32,9 @@ build_task:
-     - $MAKE -j$(sysctl -n hw.ncpu)
-     - for TARGET in $TEST_TARGETS ;
-       do
--        $MAKE -j$(sysctl -n hw.ncpu) $TARGET V=1
--        || { cat meson-logs/testlog.txt; exit 1; } ;
-+        $MAKE -j$(sysctl -n hw.ncpu) $TARGET V=1 ;
-       done
-+  always:
-+    build_result_artifacts:
-+      path: build/meson-logs/*log.txt
-+      type: text/plain
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index d903c42798..7b92767689 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -463,7 +463,6 @@ tsan-build:
+     CONFIGURE_ARGS: --enable-tsan --cc=clang-10 --cxx=clang++-10
+           --enable-trace-backends=ust --disable-slirp
+     TARGETS: x86_64-softmmu ppc64-softmmu riscv64-softmmu x86_64-linux-user
+-    MAKE_CHECK_ARGS: bench V=1
+ 
+ # gcov is a GCC features
+ gcov:
 -- 
 2.39.2

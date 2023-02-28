@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u4-20020adfed44000000b002c563b124basm10673883wro.103.2023.02.28.11.14.20
+        by smtp.gmail.com with ESMTPSA id v16-20020a5d4a50000000b002c5526234d2sm10694219wrs.8.2023.02.28.11.14.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 28 Feb 2023 11:14:20 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 399FC1FFC6;
-	Tue, 28 Feb 2023 19:06:55 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 0A4101FFC8;
+	Tue, 28 Feb 2023 19:06:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -38,55 +38,41 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 17/24] configure: expose the direct container command
-Date: Tue, 28 Feb 2023 19:06:46 +0000
-Message-Id: <20230228190653.1602033-18-alex.bennee@linaro.org>
+Subject: [PATCH v3 21/24] tests/docker: use direct RUNC call to run test jobs
+Date: Tue, 28 Feb 2023 19:06:50 +0000
+Message-Id: <20230228190653.1602033-22-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Yc9+DFYuW4Ov
+X-TUID: +z/iOMA+dM8y
 
-In the process of migrating away from using docker.py to build our
-containers we need to expose the command to the build environment. The
-script is still a useful way to probe which command works though.
+If we build them without the script we can certainly run them without
+it.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure | 3 +++
- 1 file changed, 3 insertions(+)
+ tests/docker/Makefile.include | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/configure b/configure
-index dccb5d4f96..1e36e05c37 100755
---- a/configure
-+++ b/configure
-@@ -1748,6 +1748,7 @@ fi
- # functions to probe cross compilers
- 
- container="no"
-+runc=""
- if test $use_containers = "yes" && (has "docker" || has "podman"); then
-     case $($python "$source_path"/tests/docker/docker.py probe) in
-         *docker) container=docker ;;
-@@ -1756,6 +1757,7 @@ if test $use_containers = "yes" && (has "docker" || has "podman"); then
-     esac
-     if test "$container" != "no"; then
-         docker_py="$python $source_path/tests/docker/docker.py --engine $container"
-+        runc=$($python "$source_path"/tests/docker/docker.py probe)
-     fi
- fi
- 
-@@ -2355,6 +2357,7 @@ fi
- 
- if test "$container" != no; then
-     echo "ENGINE=$container" >> $config_host_mak
-+    echo "RUNC=$runc" >> $config_host_mak
- fi
- echo "ROMS=$roms" >> $config_host_mak
- echo "MAKE=$make" >> $config_host_mak
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 680afff952..54ed77f671 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -224,8 +224,9 @@ docker-run: docker-qemu-src
+ 			$(IMAGE) --executable $(EXECUTABLE),		\
+ 			"  COPYING $(EXECUTABLE) to $(IMAGE)"))
+ 	$(call quiet-command,						\
+-		$(DOCKER_SCRIPT) run 					\
+-			$(if $(NOUSER),,--run-as-current-user) 		\
++		$(RUNC) run 						\
++			--rm						\
++			$(if $(NOUSER),,-u $(UID)) 			\
+ 			--security-opt seccomp=unconfined		\
+ 			$(if $(DEBUG),-ti,)				\
+ 			$(if $(NETWORK),$(if $(subst $(NETWORK),,1),--net=$(NETWORK)),--net=none) \
 -- 
 2.39.2

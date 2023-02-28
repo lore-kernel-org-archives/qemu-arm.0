@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e17-20020a05600c219100b003e7f1086660sm17005637wme.15.2023.02.28.11.06.53
+        by smtp.gmail.com with ESMTPSA id m15-20020a5d6a0f000000b002c707785da4sm10345454wru.107.2023.02.28.11.06.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 28 Feb 2023 11:06:54 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 83D671FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id BB21A1FFBC;
 	Tue, 28 Feb 2023 19:06:53 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,289 +38,107 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 02/24] tests: add socat dependency for tests
-Date: Tue, 28 Feb 2023 19:06:31 +0000
-Message-Id: <20230228190653.1602033-3-alex.bennee@linaro.org>
+Subject: [PATCH v3 04/24] tests: make fp-test less chatty when running from test suite
+Date: Tue, 28 Feb 2023 19:06:33 +0000
+Message-Id: <20230228190653.1602033-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kysSWGGl5Lkc
+X-TUID: u709Xpm+PQYe
 
-We only use it for test-io-channel-command at the moment.
-Unfortunately bringing socat into CI exposed an existing bug in the
-test-io-channel-command unit test so we disabled it for MacOS in the
-previous patch.
+As we like to run tests under CI with V=1 flags the softfloat tests
+can add up to a fair amount of extra log lines. With an update to the
+testfloat library we can now call fp-test with the -q flag and reduce
+the output to a terse one line per function tested.
+
+  make check-softfloat V=1 | wc -l
+  759
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Cc: Marc-André Lureau <marcandre.lureau@redhat.com>
-Message-Id: <20230221094558.2864616-4-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230221094558.2864616-6-alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/cirrus/freebsd-12.vars                   | 2 +-
- .gitlab-ci.d/cirrus/freebsd-13.vars                   | 2 +-
- .gitlab-ci.d/cirrus/macos-12.vars                     | 2 +-
- tests/docker/dockerfiles/alpine.docker                | 1 +
- tests/docker/dockerfiles/centos8.docker               | 1 +
- tests/docker/dockerfiles/debian-amd64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-amd64.docker          | 1 +
- tests/docker/dockerfiles/debian-arm64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armel-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armhf-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-mips64el-cross.docker | 1 +
- tests/docker/dockerfiles/debian-mipsel-cross.docker   | 1 +
- tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 1 +
- tests/docker/dockerfiles/debian-s390x-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win32-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win64-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora.docker                | 1 +
- tests/docker/dockerfiles/opensuse-leap.docker         | 1 +
- tests/docker/dockerfiles/ubuntu2004.docker            | 1 +
- tests/lcitool/projects/qemu.yml                       | 1 +
- 20 files changed, 20 insertions(+), 3 deletions(-)
+ tests/fp/fp-test.c            | 19 ++++++++++++++-----
+ tests/fp/berkeley-testfloat-3 |  2 +-
+ tests/fp/meson.build          |  2 +-
+ 3 files changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/.gitlab-ci.d/cirrus/freebsd-12.vars b/.gitlab-ci.d/cirrus/freebsd-12.vars
-index 8934e5d57f..44d8a2a511 100644
---- a/.gitlab-ci.d/cirrus/freebsd-12.vars
-+++ b/.gitlab-ci.d/cirrus/freebsd-12.vars
-@@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
- NINJA='/usr/local/bin/ninja'
- PACKAGING_COMMAND='pkg'
- PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract usbredir virglrenderer vte3 zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 zstd'
- PYPI_PKGS=''
- PYTHON='/usr/local/bin/python3'
-diff --git a/.gitlab-ci.d/cirrus/freebsd-13.vars b/.gitlab-ci.d/cirrus/freebsd-13.vars
-index 65ce456c48..7622c849b2 100644
---- a/.gitlab-ci.d/cirrus/freebsd-13.vars
-+++ b/.gitlab-ci.d/cirrus/freebsd-13.vars
-@@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
- NINJA='/usr/local/bin/ninja'
- PACKAGING_COMMAND='pkg'
- PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio spice-protocol tesseract usbredir virglrenderer vte3 zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 zstd'
- PYPI_PKGS=''
- PYTHON='/usr/local/bin/python3'
-diff --git a/.gitlab-ci.d/cirrus/macos-12.vars b/.gitlab-ci.d/cirrus/macos-12.vars
-index 65b78fa08f..da6aa6469b 100644
---- a/.gitlab-ci.d/cirrus/macos-12.vars
-+++ b/.gitlab-ci.d/cirrus/macos-12.vars
-@@ -11,6 +11,6 @@ MAKE='/opt/homebrew/bin/gmake'
- NINJA='/opt/homebrew/bin/ninja'
- PACKAGING_COMMAND='brew'
- PIP3='/opt/homebrew/bin/pip3'
--PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy sparse spice-protocol tesseract usbredir vde vte3 zlib zstd'
-+PKGS='bash bc bison bzip2 capstone ccache cmocka ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 jemalloc jpeg-turbo json-c libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson ncurses nettle ninja pixman pkg-config python3 rpm2cpio sdl2 sdl2_image snappy socat sparse spice-protocol tesseract usbredir vde vte3 zlib zstd'
- PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme'
- PYTHON='/opt/homebrew/bin/python3'
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 4a569d82f6..56cf14e553 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -94,6 +94,7 @@ RUN apk update && \
-         sed \
-         snappy-dev \
-         sndio-dev \
-+        socat \
-         sparse \
-         spice-dev \
-         spice-protocol \
-diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
-index fbc953c6dc..1291ae1b04 100644
---- a/tests/docker/dockerfiles/centos8.docker
-+++ b/tests/docker/dockerfiles/centos8.docker
-@@ -105,6 +105,7 @@ RUN dnf distro-sync -y && \
-         rpm \
-         sed \
-         snappy-devel \
-+        socat \
-         spice-protocol \
-         spice-server-devel \
-         systemd-devel \
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 5175095a85..856db95100 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian-amd64.docker
-index b61f664ea2..e3dba71ad5 100644
---- a/tests/docker/dockerfiles/debian-amd64.docker
-+++ b/tests/docker/dockerfiles/debian-amd64.docker
-@@ -120,6 +120,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       systemtap-sdt-dev \
-                       tar \
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index b69958c69f..b00e9e9bcf 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
-index 96b524fab6..fb1129f256 100644
---- a/tests/docker/dockerfiles/debian-armel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armel-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 08a75cebdb..7a2b864a38 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index 5930e6fa5d..5a3340e964 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index c65d9830e7..422fdebe8f 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 2ae56c978e..78d7ae6211 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index 0db86a0fcd..d06ea3605a 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -52,6 +52,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       tar \
-                       tesseract-ocr \
-diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index b659c0b8a8..21ed1c6081 100644
---- a/tests/docker/dockerfiles/fedora-win32-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
-@@ -52,6 +52,7 @@ exec "$@"' > /usr/bin/nosync && \
-                python3-sphinx_rtd_theme \
-                rpm \
-                sed \
-+               socat \
-                sparse \
-                spice-protocol \
-                tar \
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index 0a404c15bf..95d30e7936 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -52,6 +52,7 @@ exec "$@"' > /usr/bin/nosync && \
-                python3-sphinx_rtd_theme \
-                rpm \
-                sed \
-+               socat \
-                sparse \
-                spice-protocol \
-                tar \
-diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index 5d60a96141..8e06d080b8 100644
---- a/tests/docker/dockerfiles/fedora.docker
-+++ b/tests/docker/dockerfiles/fedora.docker
-@@ -113,6 +113,7 @@ exec "$@"' > /usr/bin/nosync && \
-                rpm \
-                sed \
-                snappy-devel \
-+               socat \
-                sparse \
-                spice-protocol \
-                spice-server-devel \
-diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 4b2c02d6ab..568c1c979f 100644
---- a/tests/docker/dockerfiles/opensuse-leap.docker
-+++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -104,6 +104,7 @@ RUN zypper update -y && \
-            sed \
-            snappy-devel \
-            sndio-devel \
-+           socat \
-            sparse \
-            spice-protocol-devel \
-            systemd-devel \
-diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
-index 13ab0b6887..f34d88d33d 100644
---- a/tests/docker/dockerfiles/ubuntu2004.docker
-+++ b/tests/docker/dockerfiles/ubuntu2004.docker
-@@ -119,6 +119,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       python3-yaml \
-                       rpm2cpio \
-                       sed \
-+                      socat \
-                       sparse \
-                       systemtap-sdt-dev \
-                       tar \
-diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
-index 6467bcf08a..2854748f49 100644
---- a/tests/lcitool/projects/qemu.yml
-+++ b/tests/lcitool/projects/qemu.yml
-@@ -101,6 +101,7 @@ packages:
-  - sed
-  - snappy
-  - sndio
-+ - socat
-  - sparse
-  - spice-protocol
-  - spice-server
+diff --git a/tests/fp/fp-test.c b/tests/fp/fp-test.c
+index 35829ad5f7..36b5712cda 100644
+--- a/tests/fp/fp-test.c
++++ b/tests/fp/fp-test.c
+@@ -106,7 +106,8 @@ static const char commands_string[] =
+     " -l = thoroughness level (1 (default), 2)\n"
+     " -r = rounding mode (even (default), zero, down, up, tieaway, odd)\n"
+     "      Set to 'all' to test all rounding modes, if applicable\n"
+-    " -s = stop when a test fails";
++    " -s = stop when a test fails\n"
++    " -q = minimise noise when testing, just show each function being tested";
+ 
+ static void usage_complete(int argc, char *argv[])
+ {
+@@ -190,9 +191,11 @@ static void do_testfloat(int op, int rmode, bool exact)
+     ab_f128M_z_bool true_ab_f128M_z_bool;
+     ab_f128M_z_bool subj_ab_f128M_z_bool;
+ 
+-    fputs(">> Testing ", stderr);
+-    verCases_writeFunctionName(stderr);
+-    fputs("\n", stderr);
++    if (verCases_verbosity) {
++        fputs(">> Testing ", stderr);
++        verCases_writeFunctionName(stderr);
++        fputs("\n", stderr);
++    }
+ 
+     if (!is_allowed(op, rmode)) {
+         not_implemented();
+@@ -837,7 +840,7 @@ static void parse_args(int argc, char *argv[])
+     int c;
+ 
+     for (;;) {
+-        c = getopt(argc, argv, "he:f:l:r:s");
++        c = getopt(argc, argv, "he:f:l:r:sq");
+         if (c < 0) {
+             break;
+         }
+@@ -874,9 +877,15 @@ static void parse_args(int argc, char *argv[])
+                 }
+             }
+             break;
++        /*
++         * The following flags are declared in testfloat/source/verCases_common.c
++         */
+         case 's':
+             verCases_errorStop = true;
+             break;
++        case 'q':
++            verCases_verbosity = 0;
++            break;
+         case '?':
+             /* invalid option or missing argument; getopt prints error info */
+             exit(EXIT_FAILURE);
+diff --git a/tests/fp/berkeley-testfloat-3 b/tests/fp/berkeley-testfloat-3
+index 5a59dcec19..40619cbb3b 160000
+--- a/tests/fp/berkeley-testfloat-3
++++ b/tests/fp/berkeley-testfloat-3
+@@ -1 +1 @@
+-Subproject commit 5a59dcec19327396a011a17fd924aed4fec416b3
++Subproject commit 40619cbb3bf32872df8c53cc457039229428a263
+diff --git a/tests/fp/meson.build b/tests/fp/meson.build
+index 312a4d301f..f9ca6a93b4 100644
+--- a/tests/fp/meson.build
++++ b/tests/fp/meson.build
+@@ -609,7 +609,7 @@ softfloat_tests = {
+ # The full test suite can take a bit of time, default to a quick run
+ # "-l 2 -r all" can take more than a day for some operations and is best
+ # run manually
+-fptest_args = ['-s', '-l', '1']
++fptest_args = ['-q', '-s', '-l', '1']
+ fptest_rounding_args = ['-r', 'all']
+ 
+ # Conversion Routines:
 -- 
 2.39.2

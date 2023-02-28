@@ -1,207 +1,186 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5607848ejc;
-        Tue, 28 Feb 2023 02:38:32 -0800 (PST)
-X-Google-Smtp-Source: AK7set/RolF7Xr4vu4A8hP6pIBOSpIalJkG5oyyNaonTqe7/GvJnYEsoF4KdNydvPL8RDw0tcMI1
-X-Received: by 2002:ac8:4904:0:b0:3ba:2b4:7b39 with SMTP id e4-20020ac84904000000b003ba02b47b39mr2799890qtq.46.1677580712082;
-        Tue, 28 Feb 2023 02:38:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677580712; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5608921ejc;
+        Tue, 28 Feb 2023 02:39:45 -0800 (PST)
+X-Google-Smtp-Source: AK7set9g9/POvPlFs1fDPSuuorYgQUHORREGeTGhVKzV/WZnobgcPwRzD1cABz0LPRewGxvtq/Dj
+X-Received: by 2002:a05:6214:300f:b0:56e:9298:7a1a with SMTP id ke15-20020a056214300f00b0056e92987a1amr19503090qvb.9.1677580785696;
+        Tue, 28 Feb 2023 02:39:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677580785; cv=none;
         d=google.com; s=arc-20160816;
-        b=XreefyLFzhQ13L1uG5VsZ6MTpV7DJ559H6sPVpb8FqoF3zbmrcHlEC40+p1/SoS6sl
-         g/smnI+hqBJdLPq3I+tHY6AMelvnq3VAnTVz7LjHppxC6jhaKp70ACf2GJMRDfaK7c5A
-         JNGgkMPuPQIr/Nldh5lxmIIN9apkSinvtEZh7gfJ+/y4WGuqUm/nacxItjOP8BhcHSNy
-         pfjX5C29zg5eL8T7ZAgufkIBEEMIFU9MXssfaRvihVdjiP2/CkvecJhR5lRu6VcN+XCX
-         63Jixi/OgMQScg/qXhc4K+9LlKDMC1Yts4XvBe994HUeVG70JjoMpdkEO8mcPy6miFny
-         oLcg==
+        b=QENw3BuWVQEsX6PdLev7/756J2FlM8ShQY1XPMrF5cUz04jChTe66QoJ5Haa0F/VDP
+         Sl0uHH3vL8v+Fl8ugCttXiKv0t8NVfiBZ677Z0SHbN3nsoVi8sPDvVzA/0MWxcYzbVe7
+         MfREDs4LYY3S58CkwmMy+HcmSB9VdtrG5PsjgcOkqR6ciJwAmAD4ca9wnilAu6BTleRj
+         SlYNDSBdy0sdaymA08BThUYNohnkFZFaw8cuQX6F4H7HmPNbpsI+92sm13CZj5ur1wVf
+         R5kJLtFjbQUnU7kr8kMv3x4vYFWw8yKPhL5HDn16oZ7BBI7/nsNNZmGIIvQIOOtMoWdV
+         LakA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=oEgNSVxFzIXU0kN/Ma+tLlR7sRWE/MFBauqEp+e7ZGE=;
-        b=B6gUB6ibGrSQfl100uT93Yzg5s4vNXQgFqFkzpHiT5K3knU7SyXFzHXwxeUhLZz3ea
-         0+meAgULJukVlkdmvKsmaid/cce2PQtPNHNa8l+TwCbW+lRbJeXf0WrYhWiW8e2/eufe
-         vAcZEu5Af+uIywufMIgB1KorMY4040ixeS0s39YrRgG9WzwzPqHurDz4AU+aCJX5gwTF
-         R6TlLjXvSi2QqA+jyjVQxvyi5TFT5/CVvcRJU4dc/6O/2w0Zy03A9HC9X4phtOsO/0KM
-         XCXkARj//0l0zKbEgPrKFkgg01rQxLwNbnAET10LD9NCAcr8RwIY1PAHEDGxjwLl1GkE
-         Sm9A==
+        h=content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
+        bh=NJr1v+Fg3X7rjMTnlf2Bt1V+Ic/mzwck/Xt/BL3vIn0=;
+        b=IFKeqR5N6l2jLZCo/g/iS989tE4fAg0w4GC1bSh2BmLjFVd7cjVSOTlY2GVZW7l10E
+         AAweJ8ucAUh2Jkg3+X6RsOloT13WqXtUKHpqJxtBrVXE7GnUcDH0fdb2P1dfJ8Ow1lW3
+         y7ZI66Rhbv/88zzL7bFZgc48Ksy6fB9J3gYgnYp0rl4XLKRRC0ThFS65vImjR752iQQx
+         j1Wft5HSXJFhmxJEXc6dYXwzfouEeIvNpvRuFFhqncI2hTqOyXiozSuk2O/gY7ighb+c
+         RoFNpC9m9/eEHMTmwWEZKH3PLvChGBUYcUrt4fTnXO21sPGLW/n14Y++8lX+LftSPC2f
+         UDng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TljR0Lp3;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cijT/e+3";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
+Return-Path: <armbru@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id y16-20020a05622a165000b003bfef95515bsi319126qtj.51.2023.02.28.02.38.31
+        by mx.google.com with ESMTPS id j12-20020a0ce00c000000b0056ec21e1722si7938540qvk.110.2023.02.28.02.39.45
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 02:38:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 28 Feb 2023 02:39:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TljR0Lp3;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cijT/e+3";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677580711;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
+	s=mimecast20190719; t=1677580785;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=oEgNSVxFzIXU0kN/Ma+tLlR7sRWE/MFBauqEp+e7ZGE=;
-	b=TljR0Lp39hcp87763ZMGZhK7+uE0hogRj1shRn+TVaSB33WedLZ0xqlEeE7nHUOXRjPjQ2
-	ni4bClyYQTJ9Adqi0HRikJ2EnMEKLBilX6Uvnv79/8NEnJLfkZHXZn5s/rfotCjKU6K78o
-	wgJReXAQxACOIlKf2J9L+T7wVDDOL+0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=NJr1v+Fg3X7rjMTnlf2Bt1V+Ic/mzwck/Xt/BL3vIn0=;
+	b=cijT/e+3xZ3lTiNxfmvQZjdIC/q7uuhlMhJZ7clSjoMRUaItlVTUXbkwfHp/N9Cu3PfTNW
+	PkKIfaARYi2eeUrIydFuZOzWb5edBAXAAkbeNzELnrvsd+OAyjmMZnWCq/dQLrhuWqEqU2
+	12fjMmuZ8uDfD6+ZdezVPSQo2//Gq84=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-339-Iu5r7JQrN_Sf8_GM_dAkvQ-1; Tue, 28 Feb 2023 05:38:28 -0500
-X-MC-Unique: Iu5r7JQrN_Sf8_GM_dAkvQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+ us-mta-329-lf9JwHrrNxiA7gTzVlLOEg-1; Tue, 28 Feb 2023 05:39:42 -0500
+X-MC-Unique: lf9JwHrrNxiA7gTzVlLOEg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 49627800B23;
-	Tue, 28 Feb 2023 10:38:27 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C2B7A1121318;
-	Tue, 28 Feb 2023 10:38:22 +0000 (UTC)
-Date: Tue, 28 Feb 2023 10:38:20 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>, Beraldo Leal <bleal@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
-	Yonggang Luo <luoyonggang@gmail.com>, Ed Maste <emaste@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	qemu-block@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	John Snow <jsnow@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>, Hanna Reitz <hreitz@redhat.com>,
-	Bandan Das <bsd@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-Subject: Re: [PATCH 3/7] tests/lcitool: append user setting stanza to
- dockerfiles
-Message-ID: <Y/3ZnMeOFKD7rNSy@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230224180857.1050220-1-alex.bennee@linaro.org>
- <20230224180857.1050220-4-alex.bennee@linaro.org>
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D422A293248C;
+	Tue, 28 Feb 2023 10:39:40 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.92])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 91E7E2026D68;
+	Tue, 28 Feb 2023 10:39:40 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7BCBB21E6A1F; Tue, 28 Feb 2023 11:39:39 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  libvir-list@redhat.com,  Richard Henderson
+ <richard.henderson@linaro.org>,  qemu-devel@nongnu.org,
+  qemu-arm@nongnu.org,  Reinoud Zandijk <reinoud@netbsd.org>,  Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>,  xen-devel@lists.xenproject.org,
+  Paolo Bonzini <pbonzini@redhat.com>,  Maxim Levitsky
+ <mlevitsk@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Subject: Re: [PATCH 1/2] docs/about: Deprecate 32-bit x86 hosts and
+ qemu-system-i386
+References: <20230227111050.54083-1-thuth@redhat.com>
+	<20230227111050.54083-2-thuth@redhat.com>
+	<Y/yY72L9wyjuv3Yz@redhat.com>
+	<20230227150858-mutt-send-email-mst@kernel.org>
+	<84d7d3e5-0da2-7506-44a7-047ebfcfc4da@redhat.com>
+	<20230228031026-mutt-send-email-mst@kernel.org>
+	<Y/3CiEKKoG06t9rr@redhat.com>
+	<20230228040115-mutt-send-email-mst@kernel.org>
+	<fe4626c6-6103-d5e5-6920-9dfb4777b979@redhat.com>
+	<Y/3MIUDRBUSNg6C5@redhat.com>
+	<20230228050908-mutt-send-email-mst@kernel.org>
+Date: Tue, 28 Feb 2023 11:39:39 +0100
+In-Reply-To: <20230228050908-mutt-send-email-mst@kernel.org> (Michael
+	S. Tsirkin's message of "Tue, 28 Feb 2023 05:11:20 -0500")
+Message-ID: <87cz5uhy50.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230224180857.1050220-4-alex.bennee@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-X-TUID: BgFX/+Pf7W/H
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-TUID: 7WjkKaWLCtid
 
-On Fri, Feb 24, 2023 at 06:08:53PM +0000, Alex Bennée wrote:
-> For the cross-compilation use-case it is important to add the host
-> user to the dockerfile so we can map them to the docker environment
-> when cross-building files.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  .gitlab-ci.d/cirrus/freebsd-12.vars                   |  5 +++++
->  .gitlab-ci.d/cirrus/freebsd-13.vars                   |  5 +++++
->  .gitlab-ci.d/cirrus/macos-12.vars                     |  5 +++++
->  tests/docker/dockerfiles/alpine.docker                |  5 +++++
->  tests/docker/dockerfiles/centos8.docker               |  5 +++++
->  tests/docker/dockerfiles/debian-amd64-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/debian-amd64.docker          |  5 +++++
->  tests/docker/dockerfiles/debian-arm64-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/debian-armel-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/debian-armhf-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/debian-mips64el-cross.docker |  5 +++++
->  tests/docker/dockerfiles/debian-mipsel-cross.docker   |  5 +++++
->  tests/docker/dockerfiles/debian-ppc64el-cross.docker  |  5 +++++
->  tests/docker/dockerfiles/debian-s390x-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/fedora-win32-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/fedora-win64-cross.docker    |  5 +++++
->  tests/docker/dockerfiles/fedora.docker                |  5 +++++
->  tests/docker/dockerfiles/opensuse-leap.docker         |  5 +++++
->  tests/docker/dockerfiles/ubuntu2004.docker            |  5 +++++
->  tests/docker/dockerfiles/ubuntu2204.docker            |  5 +++++
->  tests/lcitool/refresh                                 | 11 ++++++++++-
->  21 files changed, 110 insertions(+), 1 deletion(-)
+"Michael S. Tsirkin" <mst@redhat.com> writes:
 
+> On Tue, Feb 28, 2023 at 09:40:49AM +0000, Daniel P. Berrang=C3=A9 wrote:
+>> On Tue, Feb 28, 2023 at 10:14:52AM +0100, Thomas Huth wrote:
+>> > On 28/02/2023 10.03, Michael S. Tsirkin wrote:
+>> > > On Tue, Feb 28, 2023 at 08:59:52AM +0000, Daniel P. Berrang=C3=A9 wr=
+ote:
+>> > > > On Tue, Feb 28, 2023 at 03:19:20AM -0500, Michael S. Tsirkin wrote:
+>> > > > > On Tue, Feb 28, 2023 at 08:49:09AM +0100, Thomas Huth wrote:
+>> > > > > > On 27/02/2023 21.12, Michael S. Tsirkin wrote:
+>> > > > > > > On Mon, Feb 27, 2023 at 11:50:07AM +0000, Daniel P. Berrang=
+=C3=A9 wrote:
+>> > > > > > > > I feel like we should have separate deprecation entries fo=
+r the
+>> > > > > > > > i686 host support, and for qemu-system-i386 emulator binar=
+y, as
+>> > > > > > > > although they're related they are independant features with
+>> > > > > > > > differing impact. eg removing qemu-system-i386 affects all
+>> > > > > > > > host architectures, not merely 32-bit x86 host, so I think=
+ we
+>> > > > > > > > can explain the impact more clearly if we separate them.
+>> > > > > > >=20
+>> > > > > > > Removing qemu-system-i386 seems ok to me - I think qemu-syst=
+em-x86_64 is
+>> > > > > > > a superset.
+>> > > > > > >=20
+>> > > > > > > Removing support for building on 32 bit systems seems like a=
+ pity - it's
+>> > > > > > > one of a small number of ways to run 64 bit binaries on 32 b=
+it systems,
+>> > > > > > > and the maintainance overhead is quite small.
+>> > > > > >=20
+>> > > > > > Note: We're talking about 32-bit *x86* hosts here. Do you real=
+ly think that
+>> > > > > > someone is still using QEMU usermode emulation
+>> > > > > > to run 64-bit binaries on a 32-bit x86 host?? ... If so, I'd b=
+e very surprised!
+>> > > > >=20
+>> > > > > I don't know - why x86 specifically? One can build a 32 bit bina=
+ry on any host.
+>> > > > > I think 32 bit x86 environments are just more common in the clou=
+d.
+>> > > >=20
+>> > > > Can you point to anything that backs up that assertion. Clouds I've
+>> > > > seen always give you a 64-bit environment, and many OS no longer
+>> > > > even ship 32-bit installable media.
+>> > >=20
+>> > > Sorry about being unclear. I meant that it seems easier to run CI in=
+ the
+>> > > cloud in a 32 bit x64 environment than get a 32 bit ARM environment.
+>> >=20
+>> > It's still doable ... but for how much longer? We're currently dependi=
+ng on
+>> > Fedora, but they also slowly drop more and more support for this
+>> > environment, see e.g.:
+>>=20
+>> FWIW, we should cull our fedora-i386-cross.docker dockerfile and
+>> replace it with a debian i686 dockerfile generated by lcitool.
+>> There's no compelling reason why i686 should be different from
+>> all our other cross builds which are based on Debian. The Debian
+>> lcitool generated container would have access to a wider range
+>> of deps than our hand written Fedora one.
+>>=20
+>> >  https://www.theregister.com/2022/03/10/fedora_inches_closer_to_droppi=
+ng/
+>>=20
+>> With regards,
+>> Daniel
+>
+> ... and is closer to where 32 bit is likely to be deployed which is
+> systems like e.g. raspberry pi os which until recently was only
+> 32 bit.
 
-> 
-> diff --git a/.gitlab-ci.d/cirrus/freebsd-12.vars b/.gitlab-ci.d/cirrus/freebsd-12.vars
-> index 44d8a2a511..0bff53be44 100644
-> --- a/.gitlab-ci.d/cirrus/freebsd-12.vars
-> +++ b/.gitlab-ci.d/cirrus/freebsd-12.vars
-> @@ -14,3 +14,8 @@ PIP3='/usr/local/bin/pip-3.8'
->  PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 zstd'
->  PYPI_PKGS=''
->  PYTHON='/usr/local/bin/python3'
-> +# As a final step configure the user (if env is defined)
-> +ARG USER
-> +ARG UID
-> +RUN if [ "${USER}" ]; then \
-> +  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-> \ No newline at end of file
+32 bit ARM.  How is that an argument for continued maintenance of 32 bit
+x86?
 
-The cirrus/*.vars files aren't dockerfiles, they're shell
-scripts, so don't modify them
+If the argument goes like "32 bit x86 is easier to test in CI", then I
+don't buy it.  Testing 64 bit ARM + 32 bit x86 does not magically
+replace testing 32 bit ARM.
 
+The question to answer: Is 32 bit x86 worth its upkeep?  Two
+sub-questions: 1. Is it worth the human attention?  2. Is it worth
+(scarce!) CI minutes?
 
-> diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-> index 56cf14e553..7b82dec8e5 100644
-> --- a/tests/docker/dockerfiles/alpine.docker
-> +++ b/tests/docker/dockerfiles/alpine.docker
-> @@ -124,3 +124,8 @@ ENV LANG "en_US.UTF-8"
->  ENV MAKE "/usr/bin/make"
->  ENV NINJA "/usr/bin/ninja"
->  ENV PYTHON "/usr/bin/python3"
-> +# As a final step configure the user (if env is defined)
-> +ARG USER
-> +ARG UID
-> +RUN if [ "${USER}" ]; then \
-> +  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-> \ No newline at end of file
+I want to see an argument for benefits justifying the costs.
 
-Add a trailing newline to these perhaps ?
-
-
-> diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-> index cc9e34ac87..88bf33fb74 100755
-> --- a/tests/lcitool/refresh
-> +++ b/tests/lcitool/refresh
-> @@ -40,6 +40,15 @@ def atomic_write(filename, content):
->          tmp.unlink()
->          raise
->  
-> +# Optional user setting, this will always be the last thing added
-> +# so maximise the number of layers that are cached
-> +add_user_mapping = [
-> +    "# As a final step configure the user (if env is defined)",
-> +    "ARG USER",
-> +    "ARG UID",
-> +    "RUN if [ \"${USER}\" ]; then \\",
-> +    "  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi"
-> +]
->  
->  def generate(filename, cmd, trailer):
->      print("Generate %s" % filename)
-> @@ -51,9 +60,9 @@ def generate(filename, cmd, trailer):
->      content = lcitool.stdout.decode("utf8")
->      if trailer is not None:
->          content += trailer
-> +    content += "\n".join(add_user_mapping)
-
-  if filename.endswith(".docker"):
-       content += "\n".join(add_user_mapping)
-
-to avoid splattering the cirrus vars files
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+A benefit like "somebody out there might still want to use it" I'd value
+at zero.

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m4-20020a05600c4f4400b003e209b45f6bsm18218045wmq.29.2023.02.28.11.06.55
+        by smtp.gmail.com with ESMTPSA id ja6-20020a05600c556600b003dfefe115b9sm13569534wmb.0.2023.02.28.11.06.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:06:56 -0800 (PST)
+        Tue, 28 Feb 2023 11:06:58 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B15711FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id C7EEF1FFC3;
 	Tue, 28 Feb 2023 19:06:54 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,85 +38,54 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 12/24] tests: ensure we export job results for some cross builds
-Date: Tue, 28 Feb 2023 19:06:41 +0000
-Message-Id: <20230228190653.1602033-13-alex.bennee@linaro.org>
+Subject: [PATCH v3 13/24] cirrus.yml: Improve the windows_msys2_task
+Date: Tue, 28 Feb 2023 19:06:42 +0000
+Message-Id: <20230228190653.1602033-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ei1w3Uxo45VF
+X-TUID: hyPoME2a3HCR
 
-We do run tests on some cross builds. Provide a template to ensure we
-export the testlog to the build artefacts and report the test results
-via the junit.
+From: Thomas Huth <thuth@redhat.com>
 
+There's no need to run a full-blown bash just to create a directory.
+And we can skip the "cd build" each time by doing it once at the
+beginning.
+
+Additionally, let's exclude some targets (that we already compile-test
+with MinGW in the gitlab jobs) from the build, since the build time of
+this task is very long already (between 80 and 90 minutes).
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230208103046.618154-1-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230221094558.2864616-14-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230221094558.2864616-15-alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/crossbuild-template.yml | 11 +++++++++++
- .gitlab-ci.d/crossbuilds.yml         | 12 +++++++++---
- 2 files changed, 20 insertions(+), 3 deletions(-)
+ .cirrus.yml | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/.gitlab-ci.d/crossbuild-template.yml b/.gitlab-ci.d/crossbuild-template.yml
-index d07989e3b0..4f93b9e4e5 100644
---- a/.gitlab-ci.d/crossbuild-template.yml
-+++ b/.gitlab-ci.d/crossbuild-template.yml
-@@ -49,3 +49,14 @@
-           nios2-linux-user or1k-linux-user ppc-linux-user sparc-linux-user
-           xtensa-linux-user $CROSS_SKIP_TARGETS"
-     - make -j$(expr $(nproc) + 1) all check-build $MAKE_CHECK_ARGS
-+
-+# We can still run some tests on some of our cross build jobs. They can add this
-+# template to their extends to save the build logs and test results
-+.cross_test_artifacts:
-+  artifacts:
-+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
-+    expire_in: 7 days
-+    paths:
-+      - build/meson-logs/testlog.txt
-+    reports:
-+      junit: build/meson-logs/testlog.junit.xml
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 101416080c..d3a31a2112 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -44,7 +44,9 @@ cross-arm64-user:
-     IMAGE: debian-arm64-cross
- 
- cross-i386-system:
--  extends: .cross_system_build_job
-+  extends:
-+    - .cross_system_build_job
-+    - .cross_test_artifacts
-   needs:
-     job: i386-fedora-cross-container
-   variables:
-@@ -52,7 +54,9 @@ cross-i386-system:
-     MAKE_CHECK_ARGS: check-qtest
- 
- cross-i386-user:
--  extends: .cross_user_build_job
-+  extends:
-+    - .cross_user_build_job
-+    - .cross_test_artifacts
-   needs:
-     job: i386-fedora-cross-container
-   variables:
-@@ -60,7 +64,9 @@ cross-i386-user:
-     MAKE_CHECK_ARGS: check
- 
- cross-i386-tci:
--  extends: .cross_accel_build_job
-+  extends:
-+    - .cross_accel_build_job
-+    - .cross_test_artifacts
-   timeout: 60m
-   needs:
-     job: i386-fedora-cross-container
+diff --git a/.cirrus.yml b/.cirrus.yml
+index 4895987da4..5fb00da73d 100644
+--- a/.cirrus.yml
++++ b/.cirrus.yml
+@@ -100,9 +100,11 @@ windows_msys2_task:
+       tar xf C:\tools\archive\msys64.tar
+       Write-Output "Extract msys2 time taken: $((Get-Date).Subtract($start_time))"
+   script:
+-    - C:\tools\msys64\usr\bin\bash.exe -lc "mkdir build"
+-    - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && ../configure --python=python3"
+-    - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make -j8"
++    - mkdir build
++    - cd build
++    - C:\tools\msys64\usr\bin\bash.exe -lc "../configure --python=python3
++        --target-list-exclude=i386-softmmu,ppc64-softmmu,aarch64-softmmu,mips64-softmmu,mipsel-softmmu,sh4-softmmu"
++    - C:\tools\msys64\usr\bin\bash.exe -lc "make -j8"
+     - exit $LastExitCode
+   test_script:
+     - C:\tools\msys64\usr\bin\bash.exe -lc "cd build && make V=1 check"
 -- 
 2.39.2

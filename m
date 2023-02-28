@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o25-20020a05600c511900b003dfe549da4fsm18945545wms.18.2023.02.28.11.06.55
+        by smtp.gmail.com with ESMTPSA id a14-20020a5d4d4e000000b002c57475c375sm10580099wru.110.2023.02.28.11.06.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 28 Feb 2023 11:06:56 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 78CB11FFC0;
+	by zen.linaroharston (Postfix) with ESMTP id 979B31FFC1;
 	Tue, 28 Feb 2023 19:06:54 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,494 +37,108 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v3 10/24] tests: add tuxrun baseline test to avocado
-Date: Tue, 28 Feb 2023 19:06:39 +0000
-Message-Id: <20230228190653.1602033-11-alex.bennee@linaro.org>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: [PATCH v3 11/24] tests/docker: Use binaries for debian-tricore-cross
+Date: Tue, 28 Feb 2023 19:06:40 +0000
+Message-Id: <20230228190653.1602033-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kyGXV9Ju2qhG
+X-TUID: yKVR/lKtgqcn
 
-The TuxRun project (www.tuxrun.org) uses QEMU to run tests on a wide
-variety of kernel configurations on wide range of our emulated
-platforms. They publish a known good set of images at:
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 
-  https://storage.tuxboot.com/
+since binutils is pretty old, it fails our CI repeatedly during the
+compilation of tricore-binutils. We created a precompiled version using
+the debian docker image and download it instead of building it ourself.
 
-to help with bisecting regressions in either the kernel, firmware or
-QEMU itself. The tests are pretty lightweight as they contain just a
-kernel with a minimal rootfs which boots a lot faster than most of the
-distros. In time they might be persuaded to version their known good
-baselines and we can then enable proper checksums.
+We also updated the package to include a newer version of binutils, gcc,
+and newlib. The default TriCore ISA version used by tricore-as changed
+from the old version, so we have to specify it now. If we don't
+'test_fadd' fails with 'unknown opcode'.
 
-For a couple of tests we currently skip:
+The new assembler also picks a new encoding in ld.h which fails the
+'test_ld_h' test. We fix that by using the newest TriCore CPU for QEMU.
 
-  - mips64, a regression against previous stable release
-  - sh4, very unstable with intermittent oops
+The old assembler accepted an extra ')' in 'test_imask'. The new one
+does not, so lets remove it.
 
-Total run time: 340s (default) -> 890s (debug)
-
-Overall coverage rate (tested targets + disabled tests):
-  lines......: 16.1% (126894 of 789848 lines)
-  functions..: 20.6% (15954 of 77489 functions)
-  branches...: 9.3% (40727 of 439365 branches)
-
+Signed-off-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Message-Id: <20230209145812.46730-1-kbastian@mail.uni-paderborn.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Anders Roxell <anders.roxell@linaro.org>
-Acked-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230221094558.2864616-12-alex.bennee@linaro.org>
+Message-Id: <20230221094558.2864616-13-alex.bennee@linaro.org>
 ---
- MAINTAINERS                       |   1 +
- tests/avocado/tuxrun_baselines.py | 423 ++++++++++++++++++++++++++++++
- 2 files changed, 424 insertions(+)
- create mode 100644 tests/avocado/tuxrun_baselines.py
+ tests/tcg/tricore/macros.h                           |  2 +-
+ tests/docker/dockerfiles/debian-tricore-cross.docker | 10 +++-------
+ tests/tcg/tricore/Makefile.softmmu-target            |  6 +++---
+ 3 files changed, 7 insertions(+), 11 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c6e6549f06..a1a7e46ce7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3760,6 +3760,7 @@ F: scripts/ci/
- F: tests/docker/
- F: tests/vm/
- F: tests/lcitool/
-+F: tests/avocado/tuxrun_baselines.py
- F: scripts/archive-source.sh
- F: docs/devel/testing.rst
- W: https://gitlab.com/qemu-project/qemu/pipelines
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
-new file mode 100644
-index 0000000000..30aaefc1d3
---- /dev/null
-+++ b/tests/avocado/tuxrun_baselines.py
-@@ -0,0 +1,423 @@
-+# Functional test that boots known good tuxboot images the same way
-+# that tuxrun (www.tuxrun.org) does. This tool is used by things like
-+# the LKFT project to run regression tests on kernels.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import os
-+import time
-+
-+from avocado import skip, skipIf
-+from avocado_qemu import QemuSystemTest
-+from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
-+from avocado_qemu import wait_for_console_pattern
-+from avocado.utils import process
-+from avocado.utils.path import find_command
-+
-+class TuxRunBaselineTest(QemuSystemTest):
-+    """
-+    :avocado: tags=accel:tcg
-+    """
-+
-+    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0'
-+    # Tests are ~10-40s, allow for --debug/--enable-gcov overhead
-+    timeout = 100
-+
-+    def get_tag(self, tagname, default=None):
-+        """
-+        Get the metadata tag or return the default.
-+        """
-+        utag = self._get_unique_tag_val(tagname)
-+        print(f"{tagname}/{default} -> {utag}")
-+        if utag:
-+            return utag
-+
-+        return default
-+
-+    def setUp(self):
-+        super().setUp()
-+
-+        # We need zstd for all the tuxrun tests
-+        # See https://github.com/avocado-framework/avocado/issues/5609
-+        zstd = find_command('zstd', False)
-+        if zstd is False:
-+            self.cancel('Could not find "zstd", which is required to '
-+                        'decompress rootfs')
-+        self.zstd = zstd
-+
-+        # Process the TuxRun specific tags, most machines work with
-+        # reasonable defaults but we sometimes need to tweak the
-+        # config. To avoid open coding everything we store all these
-+        # details in the metadata for each test.
-+
-+        # The tuxboot tag matches the root directory
-+        self.tuxboot = self.get_tag('tuxboot')
-+
-+        # Most Linux's use ttyS0 for their serial port
-+        self.console = self.get_tag('console', "ttyS0")
-+
-+        # Does the machine shutdown QEMU nicely on "halt"
-+        self.shutdown = self.get_tag('shutdown')
-+
-+        # The name of the kernel Image file
-+        self.image = self.get_tag('image', "Image")
-+
-+        # The block device drive type
-+        self.drive = self.get_tag('drive', "virtio-blk-device")
-+
-+        self.root = self.get_tag('root', "vda")
-+
-+        # Occasionally we need extra devices to hook things up
-+        self.extradev = self.get_tag('extradev')
-+
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    def fetch_tuxrun_assets(self, dt=None):
-+        """
-+        Fetch the TuxBoot assets. They are stored in a standard way so we
-+        use the per-test tags to fetch details.
-+        """
-+        base_url = f"https://storage.tuxboot.com/{self.tuxboot}/"
-+        kernel_image =  self.fetch_asset(base_url + self.image)
-+        disk_image_zst = self.fetch_asset(base_url + "rootfs.ext4.zst")
-+
-+        cmd = f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs.ext4"
-+        process.run(cmd)
-+
-+        if dt:
-+            dtb = self.fetch_asset(base_url + dt)
-+        else:
-+            dtb = None
-+
-+        return (kernel_image, self.workdir + "/rootfs.ext4", dtb)
-+
-+    def prepare_run(self, kernel, disk, dtb=None, console_index=0):
-+        """
-+        Setup to run and add the common parameters to the system
-+        """
-+        self.vm.set_console(console_index=console_index)
-+
-+        # all block devices are raw ext4's
-+        blockdev = "driver=raw,file.driver=file," \
-+            + f"file.filename={disk},node-name=hd0"
-+
-+        kcmd_line = self.KERNEL_COMMON_COMMAND_LINE
-+        kcmd_line += f" root=/dev/{self.root}"
-+        kcmd_line += f" console={self.console}"
-+
-+        self.vm.add_args('-kernel', kernel,
-+                         '-append', kcmd_line,
-+                         '-blockdev', blockdev)
-+
-+        # Sometimes we need extra devices attached
-+        if self.extradev:
-+            self.vm.add_args('-device', self.extradev)
-+
-+        # Some machines already define a drive device
-+        if self.drive != "none":
-+            self.vm.add_args('-device',
-+                             f"{self.drive},drive=hd0")
-+
-+        # Some machines need an explicit DTB
-+        if dtb:
-+            self.vm.add_args('-dtb', dtb)
-+
-+    def run_tuxtest_tests(self, haltmsg):
-+        """
-+        Wait for the system to boot up, wait for the login prompt and
-+        then do a few things on the console. Trigger a shutdown and
-+        wait to exit cleanly.
-+        """
-+        self.wait_for_console_pattern("Welcome to TuxTest")
-+        time.sleep(0.2)
-+        exec_command(self, 'root')
-+        time.sleep(0.2)
-+        exec_command(self, 'cat /proc/interrupts')
-+        time.sleep(0.1)
-+        exec_command(self, 'cat /proc/self/maps')
-+        time.sleep(0.1)
-+        exec_command(self, 'uname -a')
-+        time.sleep(0.1)
-+        exec_command_and_wait_for_pattern(self, 'halt', haltmsg)
-+
-+        # Wait for VM to shut down gracefully if it can
-+        if self.shutdown == "nowait":
-+            self.vm.shutdown()
-+        else:
-+            self.vm.wait()
-+
-+    def common_tuxrun(self, dt=None, haltmsg="reboot: System halted",
-+                      console_index=0):
-+        """
-+        Common path for LKFT tests. Unless we need to do something
-+        special with the command line we can process most things using
-+        the tag metadata.
-+        """
-+        (kernel, disk, dtb) = self.fetch_tuxrun_assets(dt)
-+
-+        self.prepare_run(kernel, disk, dtb, console_index)
-+        self.vm.launch()
-+        self.run_tuxtest_tests(haltmsg)
-+
-+    #
-+    # The tests themselves. The configuration is derived from how
-+    # tuxrun invokes qemu (with minor tweaks like using -blockdev
-+    # consistently). The tuxrun equivalent is something like:
-+    #
-+    # tuxrun --device qemu-{ARCH} \
-+    #        --kernel https://storage.tuxboot.com/{TUXBOOT}/{IMAGE}
-+    #
-+
-+    def test_arm64(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=cpu:cortex-a57
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:arm64
-+        :avocado: tags=console:ttyAMA0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_arm64be(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=cpu:cortex-a57
-+        :avocado: tags=endian:big
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:arm64be
-+        :avocado: tags=console:ttyAMA0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_armv5(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=cpu:arm926
-+        :avocado: tags=machine:versatilepb
-+        :avocado: tags=tuxboot:armv5
-+        :avocado: tags=image:zImage
-+        :avocado: tags=drive:virtio-blk-pci
-+        :avocado: tags=console:ttyAMA0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun(dt="versatile-pb.dtb")
-+
-+    def test_armv7(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=cpu:cortex-a15
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:armv7
-+        :avocado: tags=image:zImage
-+        :avocado: tags=console:ttyAMA0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_armv7be(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=cpu:cortex-a15
-+        :avocado: tags=endian:big
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:armv7be
-+        :avocado: tags=image:zImage
-+        :avocado: tags=console:ttyAMA0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_i386(self):
-+        """
-+        :avocado: tags=arch:i386
-+        :avocado: tags=cpu:coreduo
-+        :avocado: tags=machine:q35
-+        :avocado: tags=tuxboot:i386
-+        :avocado: tags=image:bzImage
-+        :avocado: tags=drive:virtio-blk-pci
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_mips32(self):
-+        """
-+        :avocado: tags=arch:mips
-+        :avocado: tags=machine:malta
-+        :avocado: tags=cpu:mips32r6-generic
-+        :avocado: tags=endian:big
-+        :avocado: tags=tuxboot:mips32
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=root:sda
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_mips32el(self):
-+        """
-+        :avocado: tags=arch:mipsel
-+        :avocado: tags=machine:malta
-+        :avocado: tags=cpu:mips32r6-generic
-+        :avocado: tags=tuxboot:mips32el
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=root:sda
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    @skip("QEMU currently broken") # regression against stable QEMU
-+    def test_mips64(self):
-+        """
-+        :avocado: tags=arch:mips64
-+        :avocado: tags=machine:malta
-+        :avocado: tags=tuxboot:mips64
-+        :avocado: tags=endian:big
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=root:sda
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_mips64el(self):
-+        """
-+        :avocado: tags=arch:mips64el
-+        :avocado: tags=machine:malta
-+        :avocado: tags=tuxboot:mips64el
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=root:sda
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_ppc32(self):
-+        """
-+        :avocado: tags=arch:ppc
-+        :avocado: tags=machine:ppce500
-+        :avocado: tags=cpu:e500mc
-+        :avocado: tags=tuxboot:ppc32
-+        :avocado: tags=image:uImage
-+        :avocado: tags=drive:virtio-blk-pci
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_ppc64(self):
-+        """
-+        :avocado: tags=arch:ppc64
-+        :avocado: tags=machine:pseries
-+        :avocado: tags=cpu:POWER8
-+        :avocado: tags=endian:big
-+        :avocado: tags=console:hvc0
-+        :avocado: tags=tuxboot:ppc64
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=extradev:driver=spapr-vscsi
-+        :avocado: tags=drive:scsi-hd
-+        :avocado: tags=root:sda
-+        """
-+        self.common_tuxrun()
-+
-+    def test_ppc64le(self):
-+        """
-+        :avocado: tags=arch:ppc64
-+        :avocado: tags=machine:pseries
-+        :avocado: tags=cpu:POWER8
-+        :avocado: tags=console:hvc0
-+        :avocado: tags=tuxboot:ppc64le
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=extradev:driver=spapr-vscsi
-+        :avocado: tags=drive:scsi-hd
-+        :avocado: tags=root:sda
-+        """
-+        self.common_tuxrun()
-+
-+    def test_riscv32(self):
-+        """
-+        :avocado: tags=arch:riscv32
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:riscv32
-+        """
-+        self.common_tuxrun()
-+
-+    def test_riscv64(self):
-+        """
-+        :avocado: tags=arch:riscv64
-+        :avocado: tags=machine:virt
-+        :avocado: tags=tuxboot:riscv64
-+        """
-+        self.common_tuxrun()
-+
-+    def test_s390(self):
-+        """
-+        :avocado: tags=arch:s390x
-+        :avocado: tags=endian:big
-+        :avocado: tags=tuxboot:s390
-+        :avocado: tags=image:bzImage
-+        :avocado: tags=drive:virtio-blk-ccw
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun(haltmsg="Requesting system halt")
-+
-+    # Note: some segfaults caused by unaligned userspace access
-+    @skipIf(os.getenv('GITLAB_CI'), 'Skipping unstable test on GitLab')
-+    def test_sh4(self):
-+        """
-+        :avocado: tags=arch:sh4
-+        :avocado: tags=machine:r2d
-+        :avocado: tags=cpu:sh7785
-+        :avocado: tags=tuxboot:sh4
-+        :avocado: tags=image:zImage
-+        :avocado: tags=root:sda
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=console:ttySC1
-+        """
-+        # The test is currently too unstable to do much in userspace
-+        # so we skip common_tuxrun and do a minimal boot and shutdown.
-+        (kernel, disk, dtb) = self.fetch_tuxrun_assets()
-+
-+        # the console comes on the second serial port
-+        self.prepare_run(kernel, disk, console_index=1)
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern("Welcome to TuxTest")
-+        time.sleep(0.1)
-+        exec_command(self, 'root')
-+        time.sleep(0.1)
-+        exec_command_and_wait_for_pattern(self, 'halt',
-+                                          "reboot: System halted")
-+
-+    def test_sparc64(self):
-+        """
-+        :avocado: tags=arch:sparc64
-+        :avocado: tags=tuxboot:sparc64
-+        :avocado: tags=image:vmlinux
-+        :avocado: tags=root:sda
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
-+
-+    def test_x86_64(self):
-+        """
-+        :avocado: tags=arch:x86_64
-+        :avocado: tags=machine:q35
-+        :avocado: tags=cpu:Nehalem
-+        :avocado: tags=tuxboot:x86_64
-+        :avocado: tags=image:bzImage
-+        :avocado: tags=root:sda
-+        :avocado: tags=drive:driver=ide-hd,bus=ide.0,unit=0
-+        :avocado: tags=shutdown:nowait
-+        """
-+        self.common_tuxrun()
+diff --git a/tests/tcg/tricore/macros.h b/tests/tcg/tricore/macros.h
+index ec4f5bff52..3df2e0de82 100644
+--- a/tests/tcg/tricore/macros.h
++++ b/tests/tcg/tricore/macros.h
+@@ -174,7 +174,7 @@ test_ ## num:                                                    \
+     TEST_CASE_E(num, res_lo, res_hi,                           \
+     LI(DREG_RS1, rs1);                                         \
+     rstv;                                                      \
+-    insn EREG_CALC_RESULT, imm1, DREG_RS1, imm2);              \
++    insn EREG_CALC_RESULT, imm1, DREG_RS1, imm2;               \
+     )
+ 
+ 
+diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
+index 5ae58efa09..82e4576485 100644
+--- a/tests/docker/dockerfiles/debian-tricore-cross.docker
++++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
+@@ -20,6 +20,7 @@ RUN apt update && \
+        bzip2 \
+        ca-certificates \
+        ccache \
++       curl \
+        flex \
+        g++ \
+        gcc \
+@@ -34,13 +35,8 @@ RUN apt update && \
+        python3-setuptools \
+        python3-wheel
+ 
+-RUN git clone --single-branch \
+-        https://github.com/bkoppelmann/tricore-binutils.git \
+-        /usr/src/binutils && \
+-    cd /usr/src/binutils && chmod +x missing && \
+-    CFLAGS=-w ./configure --prefix=/usr/local --disable-nls --target=tricore && \
+-    make && make install && \
+-    rm -rf /usr/src/binutils
++RUN curl -#SL https://github.com/bkoppelmann/package_940/releases/download/tricore-toolchain-9.40/tricore-toolchain-9.4.0.tar.gz \
++    | tar -xzC /usr/local/
+ 
+ # This image can only build a very minimal QEMU as well as the tests
+ ENV DEF_TARGET_LIST tricore-softmmu
+diff --git a/tests/tcg/tricore/Makefile.softmmu-target b/tests/tcg/tricore/Makefile.softmmu-target
+index d2446af8b4..b3cd56fffc 100644
+--- a/tests/tcg/tricore/Makefile.softmmu-target
++++ b/tests/tcg/tricore/Makefile.softmmu-target
+@@ -1,7 +1,7 @@
+ TESTS_PATH = $(SRC_PATH)/tests/tcg/tricore
+ 
+-LDFLAGS = -T$(TESTS_PATH)/link.ld
+-ASFLAGS =
++LDFLAGS = -T$(TESTS_PATH)/link.ld --mcpu=tc162
++ASFLAGS = -mtc162
+ 
+ TESTS += test_abs.tst
+ TESTS += test_bmerge.tst
+@@ -19,7 +19,7 @@ TESTS += test_madd.tst
+ TESTS += test_msub.tst
+ TESTS += test_muls.tst
+ 
+-QEMU_OPTS += -M tricore_testboard -nographic -kernel
++QEMU_OPTS += -M tricore_testboard -cpu tc27x -nographic -kernel
+ 
+ %.pS: $(TESTS_PATH)/%.S
+ 	$(HOST_CC) -E -o $@ $<
 -- 
 2.39.2

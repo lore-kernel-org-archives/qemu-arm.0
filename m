@@ -1,337 +1,233 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z23-20020a1c4c17000000b003e2066a6339sm13120526wmf.5.2023.02.28.11.14.20
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6099848ejc;
+        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
+X-Google-Smtp-Source: AK7set9rzas9PRJY5zuK0qop3UgQD6nrOkfrD94rOt8xHQt/Nrb3jHD/YIjq+FA5XdDJqW+TJBQC
+X-Received: by 2002:a05:600c:3b99:b0:3ea:fc95:7bf with SMTP id n25-20020a05600c3b9900b003eafc9507bfmr2846293wms.30.1677612532182;
+        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677612532; cv=none;
+        d=google.com; s=arc-20160816;
+        b=cn9ZCuS+VDFwdQLyKYC5Jh7SprAwuc481fvOy8R9lHGwIBH+XE/f7K2bYVnuCrCQTO
+         Yi7UzQMNSXq1Ep9eCui9xQJfPeMFi2UMEXJ8HuTzliH2vO58T1TVhxD9/YM5az69rfgf
+         OnaoWq5IgUJ6GhHu2LPVtEOVWyGDfRbp4Vi9dXYYAN1MOcX69bZ79f6eslyvcoNV+N2F
+         kiGapwZhDdSHx8t+2IoUsuGcqweS6sTk6n87i24HdcmZlUI5rCnLSCVZqBnOkMvo39D4
+         X1ViYos0LyuGoNaLydP1An4Ox84F4xb1QyYj0QdcmeN5Ykw1a8eYYTqUPmR/7RqizKOe
+         aOqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
+        b=c4CdEb+3alHl7OmdzVm657h/MMjRGnfpmOdpCdPUYUbV/I12pQLY2qHL0HkL7QhRGA
+         /06hkD5Dnwq0kFFchmah99s/WYWyyWWrSJUfN8BHevBpHdU2LsKEom/XMILlc7KYwZt4
+         BONdA92UyvMtkEnLwPBBuxE9fwpc+YRneTKC03paOsyoSD9rF0Rsa5a401XIyg0OFBsl
+         VfNj//e7qPaSRTBVzXFx7MBafISlq+5z6ekPXsaKZkLgPpIdo+uodAkubaXJu1RXWVeR
+         YbOCqif1iUd86FDPN3yiPaqNPzGF4+IVZXVTiNqueMuY8EO/CKE0r2e0XR13z040/V1m
+         kLuA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=lAOrKPgp;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id fm18-20020a05600c0c1200b003e2091c7cd3si13253398wmb.10.2023.02.28.11.28.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:14:22 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 83DED1FFBA;
-	Tue, 28 Feb 2023 19:06:55 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+        Tue, 28 Feb 2023 11:28:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=lAOrKPgp;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id C9B6B21A7D;
+	Tue, 28 Feb 2023 19:28:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1677612531; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
+	b=lAOrKPgpZIuEHO31wiToHn7f9s5GiWrRR3ZHxjTd0opX4ImlJSwy2krNKbP0ht0QMv0YaX
+	ozR43HewgcB4U9wDmGsFzsxYH3X0HzzzkUzlLCxWpxGHBRFcJgylVDJKL28ajcc6caySmo
+	+VrOimv49F/v0g7KhQ5Be4mIM3Sunjo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1677612531;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
+	b=A9DWuYJzZzoGAB9eFtKoGgGcbyvKs8SC/jLffZQBq3K40yxhYyWeegQ4QPOGyHwGi0XjjP
+	DNHnSl7u/15enUDA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 3EDF31333C;
+	Tue, 28 Feb 2023 19:28:48 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id OJF6AvBV/mNBagAAMHmgww
+	(envelope-from <farosas@suse.de>); Tue, 28 Feb 2023 19:28:48 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
+Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Kevin Wolf <kwolf@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Beraldo Leal <bleal@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Ed Maste <emaste@freebsd.org>,
-	qemu-arm@nongnu.org,
-	Fam Zheng <fam@euphon.net>,
-	Thomas Huth <thuth@redhat.com>,
-	Yonggang Luo <luoyonggang@gmail.com>,
-	qemu-block@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Bandan Das <bsd@redhat.com>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH v3 18/24] tests/lcitool: append user setting stanza to dockerfiles
-Date: Tue, 28 Feb 2023 19:06:47 +0000
-Message-Id: <20230228190653.1602033-19-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230228190653.1602033-1-alex.bennee@linaro.org>
-References: <20230228190653.1602033-1-alex.bennee@linaro.org>
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH RESEND v7 5/9] tests/avocado: Pass parameters to migration test
+Date: Tue, 28 Feb 2023 16:26:24 -0300
+Message-Id: <20230228192628.26140-6-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20230228192628.26140-1-farosas@suse.de>
+References: <20230228192628.26140-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: B/mafTFYt1Ug
+X-TUID: hjgtKjLWUm76
 
-For the cross-compilation use-case it is important to add the host
-user to the dockerfile so we can map them to the docker environment
-when cross-building files.
+The migration tests are currently broken for an aarch64 host because
+the tests pass no 'machine' and 'cpu' options on the QEMU command
+line.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Add a separate class to each architecture so that we can specify
+'machine' and 'cpu' options instead of relying on defaults.
 
+Add a skip decorator to keep the current behavior of only running
+migration tests when the qemu target matches the host architecture.
+
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
-v2
-  - don't apply USER/UID to cirrus images
----
- tests/docker/dockerfiles/alpine.docker            |  5 +++++
- tests/docker/dockerfiles/centos8.docker           |  5 +++++
- .../docker/dockerfiles/debian-amd64-cross.docker  |  5 +++++
- tests/docker/dockerfiles/debian-amd64.docker      |  5 +++++
- .../docker/dockerfiles/debian-arm64-cross.docker  |  5 +++++
- .../docker/dockerfiles/debian-armel-cross.docker  |  5 +++++
- .../docker/dockerfiles/debian-armhf-cross.docker  |  5 +++++
- .../dockerfiles/debian-mips64el-cross.docker      |  5 +++++
- .../docker/dockerfiles/debian-mipsel-cross.docker |  5 +++++
- .../dockerfiles/debian-ppc64el-cross.docker       |  5 +++++
- .../docker/dockerfiles/debian-s390x-cross.docker  |  5 +++++
- .../docker/dockerfiles/fedora-win32-cross.docker  |  5 +++++
- .../docker/dockerfiles/fedora-win64-cross.docker  |  5 +++++
- tests/docker/dockerfiles/fedora.docker            |  5 +++++
- tests/docker/dockerfiles/opensuse-leap.docker     |  5 +++++
- tests/docker/dockerfiles/ubuntu2004.docker        |  5 +++++
- tests/docker/dockerfiles/ubuntu2204.docker        |  5 +++++
- tests/lcitool/refresh                             | 15 +++++++++++++++
- 18 files changed, 100 insertions(+)
+ tests/avocado/migration.py | 83 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 78 insertions(+), 5 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 56cf14e553..33e4823400 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -124,3 +124,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/centos8.docker b/tests/docker/dockerfiles/centos8.docker
-index 1291ae1b04..28c5e7e43c 100644
---- a/tests/docker/dockerfiles/centos8.docker
-+++ b/tests/docker/dockerfiles/centos8.docker
-@@ -134,3 +134,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 856db95100..5d03b5c22d 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -169,3 +169,8 @@ ENV ABI "x86_64-linux-gnu"
- ENV MESON_OPTS "--cross-file=x86_64-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-linux-gnu-
- ENV DEF_TARGET_LIST x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-amd64.docker b/tests/docker/dockerfiles/debian-amd64.docker
-index e3dba71ad5..febc46e700 100644
---- a/tests/docker/dockerfiles/debian-amd64.docker
-+++ b/tests/docker/dockerfiles/debian-amd64.docker
-@@ -155,3 +155,8 @@ RUN git clone https://github.com/luigirizzo/netmap.git /usr/src/netmap
- RUN cd /usr/src/netmap && git checkout v11.3
- RUN cd /usr/src/netmap/LINUX && ./configure --no-drivers --no-apps --kernel-dir=$(ls -d /usr/src/linux-headers-*-amd64) && make install
- ENV QEMU_CONFIGURE_OPTS --enable-netmap
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index b00e9e9bcf..b9501a21bc 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -168,3 +168,8 @@ ENV ABI "aarch64-linux-gnu"
- ENV MESON_OPTS "--cross-file=aarch64-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
- ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
-index fb1129f256..f21742ede5 100644
---- a/tests/docker/dockerfiles/debian-armel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armel-cross.docker
-@@ -167,3 +167,8 @@ ENV ABI "arm-linux-gnueabi"
- ENV MESON_OPTS "--cross-file=arm-linux-gnueabi"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabi-
- ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user,armeb-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 7a2b864a38..decdeda6f2 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -168,3 +168,8 @@ ENV ABI "arm-linux-gnueabihf"
- ENV MESON_OPTS "--cross-file=arm-linux-gnueabihf"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
- ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index 5a3340e964..1df05fcf20 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -165,3 +165,8 @@ ENV ABI "mips64el-linux-gnuabi64"
- ENV MESON_OPTS "--cross-file=mips64el-linux-gnuabi64"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=mips64el-linux-gnuabi64-
- ENV DEF_TARGET_LIST mips64el-softmmu,mips64el-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 422fdebe8f..019b8dcaff 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -165,3 +165,8 @@ ENV ABI "mipsel-linux-gnu"
- ENV MESON_OPTS "--cross-file=mipsel-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=mipsel-linux-gnu-
- ENV DEF_TARGET_LIST mipsel-softmmu,mipsel-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 78d7ae6211..3ceab4c502 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -167,3 +167,8 @@ ENV ABI "powerpc64le-linux-gnu"
- ENV MESON_OPTS "--cross-file=powerpc64le-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=powerpc64le-linux-gnu-
- ENV DEF_TARGET_LIST ppc64-softmmu,ppc64-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index d06ea3605a..6c216dde48 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -166,3 +166,8 @@ ENV ABI "s390x-linux-gnu"
- ENV MESON_OPTS "--cross-file=s390x-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=s390x-linux-gnu-
- ENV DEF_TARGET_LIST s390x-softmmu,s390x-linux-user
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index 21ed1c6081..a5689b616b 100644
---- a/tests/docker/dockerfiles/fedora-win32-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
-@@ -100,3 +100,8 @@ ENV ABI "i686-w64-mingw32"
- ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw32.meson"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=i686-w64-mingw32-
- ENV DEF_TARGET_LIST i386-softmmu
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index 95d30e7936..c066c20241 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -100,3 +100,8 @@ ENV ABI "x86_64-w64-mingw32"
- ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-w64-mingw32-
- ENV DEF_TARGET_LIST x86_64-softmmu
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index 8e06d080b8..4dd1fce890 100644
---- a/tests/docker/dockerfiles/fedora.docker
-+++ b/tests/docker/dockerfiles/fedora.docker
-@@ -146,3 +146,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 568c1c979f..7ea22a8c1e 100644
---- a/tests/docker/dockerfiles/opensuse-leap.docker
-+++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -137,3 +137,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/ubuntu2004.docker b/tests/docker/dockerfiles/ubuntu2004.docker
-index 75233064de..ed5855295f 100644
---- a/tests/docker/dockerfiles/ubuntu2004.docker
-+++ b/tests/docker/dockerfiles/ubuntu2004.docker
-@@ -146,3 +146,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/docker/dockerfiles/ubuntu2204.docker b/tests/docker/dockerfiles/ubuntu2204.docker
-index 30b9e56793..6fea090f02 100644
---- a/tests/docker/dockerfiles/ubuntu2204.docker
-+++ b/tests/docker/dockerfiles/ubuntu2204.docker
-@@ -145,3 +145,8 @@ ENV LANG "en_US.UTF-8"
- ENV MAKE "/usr/bin/make"
- ENV NINJA "/usr/bin/ninja"
- ENV PYTHON "/usr/bin/python3"
-+# As a final step configure the user (if env is defined)
-+ARG USER
-+ARG UID
-+RUN if [ "${USER}" ]; then \
-+  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index cc9e34ac87..c0d7ad5516 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -53,6 +53,15 @@ def generate(filename, cmd, trailer):
-         content += trailer
-     atomic_write(filename, content)
+diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
+index 4b25680c50..8b2ec0e3c4 100644
+--- a/tests/avocado/migration.py
++++ b/tests/avocado/migration.py
+@@ -11,6 +11,8 @@
  
-+# Optional user setting, this will always be the last thing added
-+# so maximise the number of layers that are cached
-+add_user_mapping = [
-+    "# As a final step configure the user (if env is defined)",
-+    "ARG USER",
-+    "ARG UID",
-+    "RUN if [ \"${USER}\" ]; then \\",
-+    "  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi\n"
-+]
  
- def generate_dockerfile(host, target, cross=None, trailer=None):
-     filename = Path(src_dir, "tests", "docker", "dockerfiles", host + ".docker")
-@@ -60,6 +69,12 @@ def generate_dockerfile(host, target, cross=None, trailer=None):
-     if cross is not None:
-         cmd.extend(["--cross", cross])
-     cmd.extend([target, "qemu"])
+ import tempfile
++import os
 +
-+    if trailer is not None:
-+        trailer += "\n".join(add_user_mapping)
-+    else:
-+        trailer = "\n".join(add_user_mapping)
+ from avocado_qemu import QemuSystemTest
+ from avocado import skipUnless
+ 
+@@ -19,7 +21,7 @@
+ from avocado.utils.path import find_command
+ 
+ 
+-class Migration(QemuSystemTest):
++class MigrationTest(QemuSystemTest):
+     """
+     :avocado: tags=migration
+     """
+@@ -62,20 +64,91 @@ def _get_free_port(self):
+             self.cancel('Failed to find a free port')
+         return port
+ 
+-
+-    def test_migration_with_tcp_localhost(self):
++    def migration_with_tcp_localhost(self):
+         dest_uri = 'tcp:localhost:%u' % self._get_free_port()
+         self.do_migrate(dest_uri)
+ 
+-    def test_migration_with_unix(self):
++    def migration_with_unix(self):
+         with tempfile.TemporaryDirectory(prefix='socket_') as socket_path:
+             dest_uri = 'unix:%s/qemu-test.sock' % socket_path
+             self.do_migrate(dest_uri)
+ 
+     @skipUnless(find_command('nc', default=False), "'nc' command not found")
+-    def test_migration_with_exec(self):
++    def migration_with_exec(self):
+         """The test works for both netcat-traditional and netcat-openbsd packages."""
+         free_port = self._get_free_port()
+         dest_uri = 'exec:nc -l localhost %u' % free_port
+         src_uri = 'exec:nc localhost %u' % free_port
+         self.do_migrate(dest_uri, src_uri)
 +
-     generate(filename, cmd, trailer)
- 
- 
++
++@skipUnless('aarch64' in os.uname()[4], "host != target")
++class Aarch64(MigrationTest):
++    """
++    :avocado: tags=arch:aarch64
++    :avocado: tags=machine:virt
++    :avocado: tags=cpu:max
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('x86_64' in os.uname()[4], "host != target")
++class X86_64(MigrationTest):
++    """
++    :avocado: tags=arch:x86_64
++    :avocado: tags=machine:pc
++    :avocado: tags=cpu:qemu64
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('ppc64le' in os.uname()[4], "host != target")
++class PPC64(MigrationTest):
++    """
++    :avocado: tags=arch:ppc64
++    :avocado: tags=machine:pseries
++    :avocado: tags=cpu:power9_v2.0
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('s390x' in os.uname()[4], "host != target")
++class S390X(MigrationTest):
++    """
++    :avocado: tags=arch:s390x
++    :avocado: tags=machine:s390-ccw-virtio
++    :avocado: tags=cpu:qemu
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
 -- 
-2.39.2
+2.35.3

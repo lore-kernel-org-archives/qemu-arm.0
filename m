@@ -1,126 +1,151 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5647933ejc;
-        Tue, 28 Feb 2023 03:27:51 -0800 (PST)
-X-Google-Smtp-Source: AK7set/KyR8jDI0f+lJ0mIPUQcvGke6Nl91Z9wIRKHlFIs62pcZBUmuP2g+nJ72Ou9gNSdOMHVI3
-X-Received: by 2002:ad4:5c4d:0:b0:56e:a07b:f4df with SMTP id a13-20020ad45c4d000000b0056ea07bf4dfmr5238849qva.13.1677583671565;
-        Tue, 28 Feb 2023 03:27:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677583671; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5659986ejc;
+        Tue, 28 Feb 2023 03:43:05 -0800 (PST)
+X-Received: by 2002:a05:600c:2ed3:b0:3ea:e4bb:33ef with SMTP id q19-20020a05600c2ed300b003eae4bb33efmr2262167wmn.9.1677584585599;
+        Tue, 28 Feb 2023 03:43:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677584585; cv=none;
         d=google.com; s=arc-20160816;
-        b=psXIyA+VcCdIzguqAxEoAknwrgOqIpjui7EbUxbHmkikZBLpFDp91eV3KB3UWKJYWq
-         KD8yTq+4+uuhiFf3HQgQ/osad1Ki3D+Nl/svZBObcHNTw8i0y6AV95FyqHtTaczHzoY3
-         4/rGHxFl2PF7ih5urMd6ipx/k84o9bpuJ+Qbkm5IRQ5CiNWys2BooxauDhsj0UttUQLG
-         tyXbnAXieo+6BvwSia0wKZYFs+Adtqji2MB/9JZ5ZM+myFir861Nud2Fh2BDt9WR54NB
-         1ohX9c9vDSnsWBZpEKlcs3Ca7KkZZo1GWj4lEbbGjZYemMTaJ10NgFUdwDccnnz+IE7A
-         DoqQ==
+        b=CtdtM1r50IaP+UmbBDNAs/E4R2bLG60x9pczK7dz8iukclcaraTbZaGB9s4yopb7Vi
+         kpqIf3UC5T0RNELFd3Fu/4yO4Jqie70AVAExZ/ESUurU/BVFCBuIN+R2Tf0atR6qnyKt
+         PbeIKI1ov/69JM1/7MTGOEjL9uCNTmi/YYVgYswsEI/Utqb/L8RqsSuBVLzsx5CoGA/q
+         yFyZ99FLwbZLM74fLDZW8WMaqiaNO+lqaHLNwRlHjD6t33C04/HFX2J3wMHZxwfz5Zto
+         SJOtNN3/nuX77Z0/FdABK+HJY06uefcXxMZFg9sAAq2f/kV3hxNBW55bTXZmxQHFC19U
+         orOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=4suh5lAbunuzTA9D1mz35nLVNbBw0W9grJdGWlluzWI=;
-        b=qrh1GVWRWVwYCkd71GFhvGMBvpB+2MTxlkzdUyRLTIx2AtaHyrE0CCKht58Qtu0h3B
-         DR810313ziu7aZuVY1f9deUX8f4vqKzIK26AhmFcMyC3qfTRYlI5J/cpPp2oe+hHoldx
-         w1u8pgH8D157jhhZZpRFyA92arZX+VNP4mGCZphJXyNzOjjn7g4qRy392zDupMtP0U9X
-         htH+ituNKqOadoHyJAcX3kw+CkhFDs/h+TUKTi5laUIZOOHOEyp7zDA2LOvjZgcTiK9e
-         FNfJkBE5ZCRJ27nNQx4sIjuWmk/AbHPIzZBYrWs6Vg/WvkqZlReXxkAeUYrVp3VQXHiD
-         xxLA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qn5/lqpKPK5mBQVAYHDZtB1pxdZNOLvZjdZjGZoXK5I=;
+        b=0OQJy+6Icd66lPO7iER72KSOnIhqJQOLfJtBX0MuEOrutuxXT9HOuufQdIM8A70JiM
+         PnU6eUkGm+0/GGpIYDD+s2Awwqp622EYpDXR2e067HNqCJJHo5NcbYBCWM7VzC5G+fnL
+         jRRcwgmoxOAxmSMV48GR/M4Ij9RmYZzL7PzFkq4Fhjq+yh966RTCQajY0g6oOnjyIMnA
+         1AJlM6z9fux3vusee0GjirYPoDdjmsmIrI3EXlYnyk96/KLMZJxzlhUkEr7kdPrLHNk+
+         no005InNhBSKc5uQlcG7Ddt0gO2TlkmWXQr9scuKtppbtMN/msHFv4hJU+AuJNcDiMJ9
+         S1sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R1tvVJAw;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id c145-20020a379a97000000b0071dbc4b56besi8017965qke.591.2023.02.28.03.27.51
+       dkim=pass header.i=@linaro.org header.s=google header.b=wi4DAfyx;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id fm15-20020a05600c0c0f00b003e222c98e48sor3635211wmb.21.2023.02.28.03.43.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 03:27:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 28 Feb 2023 03:43:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R1tvVJAw;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677583671;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=4suh5lAbunuzTA9D1mz35nLVNbBw0W9grJdGWlluzWI=;
-	b=R1tvVJAwh0i9LsxFmfOnrVA5nU8+FNqZInNqesyUI49pJAy1xtWc8+MyfQSj0Fjrwb61Ic
-	VhjV6SNsLWyNJDfWUvWbdR8Hwfrby44ECdavywer34+0MWu1QLJyrQPbc3N1+jkgzlq0VP
-	9+5CNsi9rfweFNMFYX+ilmQdoeLd+/0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-275-2t4bR2lEM160Ab5hxW9V_Q-1; Tue, 28 Feb 2023 06:27:49 -0500
-X-MC-Unique: 2t4bR2lEM160Ab5hxW9V_Q-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 370BA18A64E0;
-	Tue, 28 Feb 2023 11:27:49 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EA5A9404BEC5;
-	Tue, 28 Feb 2023 11:27:46 +0000 (UTC)
-Date: Tue, 28 Feb 2023 11:27:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	xen-devel@lists.xenproject.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Maxim Levitsky <mlevitsk@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/2] docs/about: Deprecate 32-bit x86 hosts and
- qemu-system-i386
-Message-ID: <Y/3lMFQl94rwTAR4@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230228031026-mutt-send-email-mst@kernel.org>
- <Y/3CiEKKoG06t9rr@redhat.com>
- <20230228040115-mutt-send-email-mst@kernel.org>
- <fe4626c6-6103-d5e5-6920-9dfb4777b979@redhat.com>
- <Y/3MIUDRBUSNg6C5@redhat.com>
- <20230228050908-mutt-send-email-mst@kernel.org>
- <87cz5uhy50.fsf@pond.sub.org>
- <20230228055016-mutt-send-email-mst@kernel.org>
- <072a7502-6061-12b2-f778-736c6a8f5912@redhat.com>
- <20230228061853-mutt-send-email-mst@kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=wi4DAfyx;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qn5/lqpKPK5mBQVAYHDZtB1pxdZNOLvZjdZjGZoXK5I=;
+        b=wi4DAfyx6P1YCx8EQjYk3jCSjunAaV/YdGGiFB+4DUqGBIzbR70gGgRNi+avUKBcYv
+         2gbry3YEI2itce20esRhEgrDCQuXVjdXZkjfqSgfrydB5PYO82kDTN5I/rsgg5zMiFEW
+         5jFtKeatSwiR6VYby2KhMyqPyiuXR1au4lDL+E0cdPCZfZ1KTxaILR5CclLOWSakQvKF
+         djZXTYWdc/mOZpD5Yqz59BakvhUIDZdzYzGwligU26DwCeVZnJ5Q1G6HoFFULvjDdEk8
+         rpHnAOPHoZPJUe/jyEEUlBJGPV2G1xrBmuTCrpAz6GpfrcNi2SsEZm4vtY5Cj8SZzVym
+         ei4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qn5/lqpKPK5mBQVAYHDZtB1pxdZNOLvZjdZjGZoXK5I=;
+        b=07aoVFp+3cw9klMyrVclnNUfSHw8w5wle34uiu9lP93/ksyWQbvj/oJOJfXsAeKBLU
+         YtaRPdqmHCGco4GOSLeQqbJMEVlapshF/Im2lVLz4+Te0uLAFhW2BbW7zVwdpRGaacoC
+         fMzzsyTsyvOQ18PnwVlTkCfI49W/n1Zy/Kn1UpU7npwzCXxvSNvzKAVro+rMI6EpEXsg
+         RoE0sZjYHS+vDiWHlSc434RGlJdbP9P9qitbOTxEmKGsvU9aSncq/qpyk2PCcUD243Yp
+         tYqE2Fl4ZF3M1Fdpsd4HJn7rpaW3ZNmc0grZcUlPnFVjDg3XpwlX3mPjHzxgbHDLvn/J
+         saSg==
+X-Gm-Message-State: AO0yUKVwk3beo+QyA1DwxBeFQOyyH+Uw3IiSoZ4S/Pg/GfK+k9FwY61M
+	niCjrF9gsc8236UiHicuF67O1Vd81oKdz3o9Q5E=
+X-Google-Smtp-Source: AK7set/wz5KbJ1nqBKk3Hpu5iolxSle3o866r+XrhpX9vHACDxivAFx32qsCAH7G1sIHU0rs7sBcLw==
+X-Received: by 2002:a05:600c:1652:b0:3eb:13d2:c32c with SMTP id o18-20020a05600c165200b003eb13d2c32cmr2165782wmn.40.1677584585011;
+        Tue, 28 Feb 2023 03:43:05 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id a10-20020adfe5ca000000b002c3dc4131f5sm9351025wrn.18.2023.02.28.03.43.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Feb 2023 03:43:04 -0800 (PST)
+Message-ID: <6a0a7246-e9fd-abfc-283e-b591000cfec7@linaro.org>
+Date: Tue, 28 Feb 2023 12:43:01 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230228061853-mutt-send-email-mst@kernel.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-TUID: 9cIL8GXy3SAq
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH 4/7] tests/docker: add USER stanzas to non-lci images
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Li-Wen Hsu <lwhsu@freebsd.org>, Thomas Huth <thuth@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Beraldo Leal <bleal@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>,
+ Ed Maste <emaste@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ John Snow <jsnow@redhat.com>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Hanna Reitz <hreitz@redhat.com>, Bandan Das <bsd@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Darren Kenny
+ <darren.kenny@oracle.com>, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+References: <20230224180857.1050220-1-alex.bennee@linaro.org>
+ <20230224180857.1050220-5-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230224180857.1050220-5-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: I0QhN5I2LD6E
 
-On Tue, Feb 28, 2023 at 06:24:02AM -0500, Michael S. Tsirkin wrote:
-> On Tue, Feb 28, 2023 at 12:12:22PM +0100, Thomas Huth wrote:
-> > On 28/02/2023 11.51, Michael S. Tsirkin wrote:
-> > > On Tue, Feb 28, 2023 at 11:39:39AM +0100, Markus Armbruster wrote:
-> > > > The question to answer: Is 32 bit x86 worth its upkeep?  Two
-> > > > sub-questions: 1. Is it worth the human attention?  2. Is it worth
-> > > > (scarce!) CI minutes?
-> > > 
-> > > 3. Is it worth arguing about?
-> > 
-> > You are aware of the problems we're currently struggeling with, aren't you?
-> > Darn, we're having *SEVERE* problems with the CI, the QEMU project ran out
-> > of CI minutes for the second time this year, and you ask whether it's worth
-> > arguing about??? You're not serious with this question, are you?
-> > 
-> >  Thomas
+On 24/2/23 19:08, Alex Bennée wrote:
+> These are flat but not generated by lcitool so we need to manually
+> update them with the `useradd` stanza.
 > 
-> Yah just couldn't resist. How many minutes do we use per month btw?
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/docker/dockerfiles/debian-all-test-cross.docker     | 5 +++++
+>   tests/docker/dockerfiles/debian-alpha-cross.docker        | 5 +++++
+>   tests/docker/dockerfiles/debian-hexagon-cross.docker      | 5 +++++
+>   tests/docker/dockerfiles/debian-hppa-cross.docker         | 5 +++++
+>   tests/docker/dockerfiles/debian-loongarch-cross.docker    | 5 +++++
+>   tests/docker/dockerfiles/debian-m68k-cross.docker         | 5 +++++
+>   tests/docker/dockerfiles/debian-mips-cross.docker         | 5 +++++
+>   tests/docker/dockerfiles/debian-mips64-cross.docker       | 5 +++++
+>   tests/docker/dockerfiles/debian-native.docker             | 5 +++++
+>   tests/docker/dockerfiles/debian-powerpc-test-cross.docker | 6 +++++-
+>   tests/docker/dockerfiles/debian-riscv64-cross.docker      | 5 +++++
+>   tests/docker/dockerfiles/debian-riscv64-test-cross.docker | 5 +++++
+>   tests/docker/dockerfiles/debian-sh4-cross.docker          | 5 +++++
+>   tests/docker/dockerfiles/debian-sparc64-cross.docker      | 5 +++++
+>   tests/docker/dockerfiles/debian-toolchain.docker          | 5 +++++
+>   tests/docker/dockerfiles/debian-tricore-cross.docker      | 5 +++++
+>   tests/docker/dockerfiles/debian-xtensa-cross.docker       | 5 +++++
+>   tests/docker/dockerfiles/fedora-cris-cross.docker         | 5 +++++
+>   tests/docker/dockerfiles/fedora-i386-cross.docker         | 5 +++++
+>   tests/docker/dockerfiles/python.docker                    | 5 +++++
+>   20 files changed, 100 insertions(+), 1 deletion(-)
+> 
+> diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
+> index 8dc5e1b5de..981e9bdc7b 100644
+> --- a/tests/docker/dockerfiles/debian-all-test-cross.docker
+> +++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
+> @@ -61,3 +61,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+>   
+>   ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
+>   ENV DEF_TARGET_LIST aarch64-linux-user,alpha-linux-user,arm-linux-user,hppa-linux-user,i386-linux-user,m68k-linux-user,mips-linux-user,mips64-linux-user,mips64el-linux-user,mipsel-linux-user,ppc-linux-user,ppc64-linux-user,ppc64le-linux-user,riscv64-linux-user,s390x-linux-user,sh4-linux-user,sparc64-linux-user
+> +# As a final step configure the user (if env is defined)
+> +ARG USER
+> +ARG UID
+> +RUN if [ "${USER}" ]; then \
+> +  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
 
-100,000 wall clock minutes lasted about 2+1/2 weeks this month, and
-similar in Jan too. Last year we were managing to get through the
-whole month on 100,000, but we got backlogged with merges due to
-the xmas / new year shutdown, and catching up is exhausting our
-allowance too quickly, as well as natural growth in amount of stuff
-we're testing per job.
+Is that intended for local image building?
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Personally I only use the image built by gitlab and mount the containers
+with -u $UID -v $HOME/.ccache -v $HOME/source/qemu. Would that still
+keep working, or do I have to map from gitlab user to mine?

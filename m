@@ -1,39 +1,39 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5668944ejc;
-        Tue, 28 Feb 2023 03:55:13 -0800 (PST)
-X-Received: by 2002:a05:600c:cc5:b0:3eb:2de9:8af1 with SMTP id fk5-20020a05600c0cc500b003eb2de98af1mr1966222wmb.32.1677585313215;
-        Tue, 28 Feb 2023 03:55:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677585313; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5671577ejc;
+        Tue, 28 Feb 2023 03:58:58 -0800 (PST)
+X-Received: by 2002:a05:600c:35c6:b0:3eb:4501:6c60 with SMTP id r6-20020a05600c35c600b003eb45016c60mr2156639wmq.5.1677585538459;
+        Tue, 28 Feb 2023 03:58:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677585538; cv=none;
         d=google.com; s=arc-20160816;
-        b=pG/iul1mQD1HQGzWFKu6xJaiJ3D8xJAdzKhDCcTkhIyU0AckcugTAPDtUkLD/HyEJh
-         0W2xcAHtnEuKTrcLR+jmnyZK0JwW/rFY3SbJojtaNKHDZX6Ef+cnsNdPLHrA/xgxluC5
-         8Unayo44u01uLLyAAFxNWqWmEwj8KJ2OlIy2zlelW3dLMUhjjYv/nGJAbu2+tD3skGRG
-         7CGT/jmx0AM5QYyc2gBmq8eafvg0/84ataJW7l8KUkrRW1ZsDbhHB94Irm0Z+9Quc1TR
-         imFFgKc+BsktKuiU/cHNfWSJYtVQ8E0OCdu4tWZRAHgkDGpoP2NuphnY6f0U+w0/BNjh
-         KxZg==
+        b=VvjyNzgbtEIUymp1Su8NVfhAsS4tB1A88MSQswWWramCN3TXgJXdP2j0hz850py8Fk
+         54V247PRLULiCrtiMypuGB1bjXJ9u2q9UDtSDMllSOw0XP+tXupY9sEUBOCB6gE7/cCz
+         Kk8hLlDzIMuxTif4kaPdeDzdrdn22mvRND8IZQDVrMxtO68DLLCMSabTAPDcTYzdLSdw
+         +l/6+Rub8jtjLM/F3rHumabas5BHfKKmL2lzkSrckJbZi0/DPAFPaIZaVeLKV4ga4HtX
+         XFOatcAyqHx+gphZyb62YARo/pG3LkMEP6s8WazrG3hmHO66khC2dYvRo1lOPRzuDSqM
+         XGNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=IWDV0voPLdjSoxMratg5IFm9JEg45iChyCwGiFkNcqA=;
-        b=PrhthFhxq32qsHwsIh7+4WH6ui/UKBPBKTUq/zY+L0FupAURXz57fJNAMcyUYuggTG
-         TTzklpCb03bjVz5zjhy1IHB1ZjjUstVzuitzFEy/BE+YMuALWsMev+ZzmasV14rAwQxV
-         z4+cDsaipCUzwSgk7R5y+o2kn22OlnLJ0bypvAQvWjweR8ZdV30b/y0PmXuqNC4zekkA
-         dlzQpJq3YXBRHCEY8XmKrvhCBPOEsjZv4SiFrwJHw0D9BBow1phYyuhq2BcMxy6ZxAW1
-         QPRkq7AhpndEYWo3VW8JVi03OFTUMQYpTcDun7/d9lYPd3JdSu1MYorPIcb8JiWII6fk
-         0JQA==
+        bh=Cu2HY+g3VzeC7uyCoEf0D0JLI5yrMiBoPgvJVLxHObg=;
+        b=Wx0XVrPhZZBOe2SVybCL2rlWwecKkbkR62dOolRf4ix1wdEpPpNl5yWtyyS8rjBdoe
+         aJWg9V4yndIRSuVWDmE0BkrnxsATUNmL0DhWXm0cVuFkmtEjNS1st1ENFcjClAlTnMSw
+         leiHRnB4axb3zPEVINM+SfSL/j/2sFDExg/ryglIdwhLdFKBj2gcXllJvjUEHNDnjqqI
+         Sw97fcZpqVVrqVAX9/+XNpzfsrtGf0wOdVL4QrUg328sJfHxMF2KtqpUAoJEzaX2gFYs
+         zeOelaTTwstOpr4lskLDnblNKnISaqiGbK3jhCuuL+l41tnt9KvbkdIx2Edz6r/ucF1Q
+         JsjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gc0cR8G9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h5gTV3+M;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s17-20020a7bc391000000b003dc46242c4asor2459788wmj.19.2023.02.28.03.55.13
+        by mx.google.com with SMTPS id bh20-20020a05600c3d1400b003e213413188sor3917655wmb.4.2023.02.28.03.58.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 28 Feb 2023 03:55:13 -0800 (PST)
+        Tue, 28 Feb 2023 03:58:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gc0cR8G9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=h5gTV3+M;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -41,42 +41,41 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=IWDV0voPLdjSoxMratg5IFm9JEg45iChyCwGiFkNcqA=;
-        b=Gc0cR8G9gX/q8IRHtcgAQoJBMhDelPYFwx+YZFw8svqGZ/0NJ6cr6CdifR++Wb/e4K
-         OeffGswJbiq2qMdVdKHQF6i1Daab5AsdDiiSncUF1VLuTAYzi2/NyBDhAYGE0V74a7JB
-         ArPcxcxjjx7OMtm27eVAqZRcy+GUvpVYYgWW4fI4mE9bHs2/NYdIWrea9h2lpK26630Q
-         /3NbiW8MFB0yDgjzg9PjdseWH8uUcs0MNivDKhejgYLFi2PPpSVvkkKzJSiOeq7IRoKD
-         ra71mZgr1UnS2ZlFIiSbVO6MFWxWJE+s33EjBR2ejUeCkUwTMXpIk3r7NHay67y77+/9
-         SPqg==
+        bh=Cu2HY+g3VzeC7uyCoEf0D0JLI5yrMiBoPgvJVLxHObg=;
+        b=h5gTV3+M0jFAcKNrhJwhcVnjKeZcT5o4APilOMlg45MVRZCAeN6VkGYCX6zOtWXcMF
+         h2/EvAI/ci4C8TM3/oMobol0t54ZIbQA5KwuoJvki8bbEDlXIca3xv2Tb4KM7yBk3UBH
+         +qgj9kPgZfkb+VtKZCEcF+Z3KZfKG+OcnbV/6ZnAwqZrLj08aZGeJDURiKCib7O8c0Wk
+         Jjihag3hcqyD6LKBYpUVT9o68ocD2uCs0vA47y6Dy+SecuyIBMSvmSmvk9ADutroK/g2
+         TfgyePhQMa4iEoMyNoDGQWg6FJn4eCaIcf3qzf9QWGekyJMJRBE94vMCfizqVpDdFQHK
+         AlIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IWDV0voPLdjSoxMratg5IFm9JEg45iChyCwGiFkNcqA=;
-        b=MgQJ9Hn9sQsOgjcwsOscaM0ZXngCFkKtJ43Nncoh949tgt136tjkiDESc1qUSMgKYN
-         800pKH4Jc5lCmCAJIE+1rLPSTdxMgpbU9qCj4oqCKeztU2ziRbwOExXdnVPiS1XblxRJ
-         dtOOBsZ2dqHm6PBFnEyyWDj/a2ifSwJPxlblkRvfWysg/wfIsQkJDXQ9Z7Mi+3F6miTs
-         i7PNjJtR0I8GQ1DsExZjKvjhCJ6cydKqzLXBc4g9DaoxpxJXOdSO9qaTRAmtVUOW7tXO
-         OlTj6cSiyZ9Az7gUhdSqTjeXk758vOmPxG/IJeALzUKleg4viuJH19YyTxLehlBq7JQm
-         3syw==
-X-Gm-Message-State: AO0yUKXOotwADAc7w63riuCyHC2NhK0ENYFqY9vKWLo2YdpqVDu/LbAT
-	YsJ3eYv//xFMqYPzoS/aAG8kTng4GoYcKvi5NLk=
-X-Google-Smtp-Source: AK7set+iHpaU9/SDwMytt4cNRQ7P2nYrrnDLhWN0aLOrEfncnN1tpMElKmubcm7VxbECIIbMbRh76Q==
-X-Received: by 2002:a05:600c:450f:b0:3ea:d620:570a with SMTP id t15-20020a05600c450f00b003ead620570amr1978546wmo.38.1677585312635;
-        Tue, 28 Feb 2023 03:55:12 -0800 (PST)
+        bh=Cu2HY+g3VzeC7uyCoEf0D0JLI5yrMiBoPgvJVLxHObg=;
+        b=rameXOIQlkRGNaICvlBNzW+DyotZpJI7RYTe2e2fexRdU48qdKe9EHGyc97QeTzadB
+         8gcrmMn8fdhVOWubmyjfL2RWF3YPfqxWjhKt6Pb2cgiH5/NMK1Ohx+EavlQOzjOXUeNz
+         fiKdFNmT2L39+3B1jDDSKoxv/ICbA+dI/1neMPbipGlFzyIZEdaMKAAHygH/+tFIzFi6
+         ykYxNTfHCqEFtsnJOhXKR9lvj/HH3Vxs3R1c2+kQ3S/KtGC/8sjbrY0brWgRVNJMbCLu
+         Qb8glxB2UBEOayIkTkmCmFPBGzuZUFuazkOXMRosPKzzT0ad2R3sQ0GH3UB8zyEDieOi
+         6glg==
+X-Gm-Message-State: AO0yUKVwXG0Y1SwqDgkn4ncz1sgMcRyi3MuMU7QVY4DmVg1e7GdzAtYG
+	dhNQwkG2M+ZLwXlsqgsBJ6yFqVObjyrWjXOwQMs=
+X-Google-Smtp-Source: AK7set/San4WGyyTQLKDreCmQvqDw1DBGczJLSFqL3CM8aRwh64BZf+xY8i6kt/18LeFzWd3y6sHow==
+X-Received: by 2002:a05:600c:3d8f:b0:3e2:d3:b2b6 with SMTP id bi15-20020a05600c3d8f00b003e200d3b2b6mr2064158wmb.14.1677585537952;
+        Tue, 28 Feb 2023 03:58:57 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id 13-20020a05600c020d00b003dc1d668866sm15777747wmi.10.2023.02.28.03.55.09
+        by smtp.gmail.com with ESMTPSA id r14-20020adff70e000000b002c567881dbcsm9635844wrp.48.2023.02.28.03.58.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 03:55:11 -0800 (PST)
-Message-ID: <1abd1c0a-4c9c-35e2-6f64-cc396b1a1856@linaro.org>
-Date: Tue, 28 Feb 2023 12:55:08 +0100
+        Tue, 28 Feb 2023 03:58:57 -0800 (PST)
+Message-ID: <c6081ec9-d192-aa24-f8f7-717d7957c67b@linaro.org>
+Date: Tue, 28 Feb 2023 12:58:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 5/7] tests/docker: use direct RUNC call to build
- containers
+Subject: Re: [PATCH 0/7] testing/next: docker.py removal and kaniko updates
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
@@ -96,21 +95,23 @@ Cc: Li-Wen Hsu <lwhsu@freebsd.org>, Thomas Huth <thuth@redhat.com>,
  <darren.kenny@oracle.com>, Wainer dos Santos Moschetta
  <wainersm@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
 References: <20230224180857.1050220-1-alex.bennee@linaro.org>
- <20230224180857.1050220-6-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230224180857.1050220-6-alex.bennee@linaro.org>
+In-Reply-To: <20230224180857.1050220-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: FjOVoXmWHP8B
+X-TUID: /zGId1PXUAmu
 
 On 24/2/23 19:08, Alex Bennée wrote:
-> We don't really need stuff from docker.py to do the build as we have
-> everything we need with a direct call. We do rely on the dockerfiles
-> being able to tweak the UID/name mapping as the last step.
+> This series attempts to remove our dependence on the docker.py script
+> and build things directly with the appropriate tool. I've been
+> noodling around with how we build images on gitlab to see if they can
+> cache better because the normal case should be we don't need to
+> rebuild everything if the upstream distro hasn't updated its package
+> list.
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/docker/Makefile.include | 22 +++++++++++++---------
->   1 file changed, 13 insertions(+), 9 deletions(-)
+> Anyway what do people think?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Removing dind limitation is interesting.
+
+Unrelated, can we tag registry.gitlab.com/qemu-project's
+docker images along with releases?

@@ -1,185 +1,290 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5818579ejc;
-        Tue, 28 Feb 2023 06:33:54 -0800 (PST)
-X-Received: by 2002:adf:d08c:0:b0:2c7:1210:feaa with SMTP id y12-20020adfd08c000000b002c71210feaamr2105088wrh.26.1677594834288;
-        Tue, 28 Feb 2023 06:33:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677594834; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5695263ejc;
+        Tue, 28 Feb 2023 04:23:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set/vhNrLPw6grQm6DrwhE6Bl/IYvAoFLhwuC1BzYlZ/GDMfHmMTaribqXvVhgMR6M3PcnZkk
+X-Received: by 2002:a05:6214:2426:b0:56e:b4e0:1bf3 with SMTP id gy6-20020a056214242600b0056eb4e01bf3mr5677530qvb.18.1677587028286;
+        Tue, 28 Feb 2023 04:23:48 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1677587028; cv=pass;
         d=google.com; s=arc-20160816;
-        b=SPs6bwAICndS2K5yq41ZTKBMZULM1VRrB263bC2GXpIsQ4xbtwcukrZ8VddfbwyAZm
-         9opdy6ftmBvyNk9nRz3EyLKqfxvZs9XuHtcQ9z6EciQmC8qY0gPfTa4S7MpCT0hedZIm
-         zLEWih2bBNGmNuzvj9etCeDAM3+jdcTCdqq/J8JePPZL+VJp9C+Av1ayvBW2wmQJbj/2
-         vchtAme8voOy8+pqZ9f5X5tZKiXeNPu9nfQH4EjkwfFhZoC8jbynRFpv4XNa4ktsQZcm
-         0vZ+tkVCbTge9UhnuKcNiUA9GM2ic2o4vPtIcgqDm30ED+2Ug8wYU2nPwcF+iYyupgrg
-         kUqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=gsTTVd8ms2cWlOoEtqbNNXxVnVJUKiJh8ITbyk1+Ivc=;
-        b=i9KhgErjqdP/WPC1miLFinrG/OFcX5WmHrsmBA1IPPJIGKDdBf9kGfzNh3lLC7+csu
-         L7+1NSJZV8XkTh0Rgc9BlAnCN00/1sKl+xS0nkiET49mxn7NwQJAfAEGV0YwCSqJkQFl
-         delcd/HureSeD/ycNmS0sfYVco4KHmonj3Jc9I+J+O+WeIQuRAULeVWnW47vUDcTjEOh
-         7JBnxls3VTTwSJSdnuX3QYwxKl+JDwE+jlMOM5wecQiilJqONjydDOY/ZkP3L/ouA2ZY
-         ZpBaOpXELZuDxd0Npf1NjsCkpMvWIuWQSkQYFzt435Qh55OHqyPQrLgwe5l6wbrMXst8
-         YMGw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v8fJOUn+;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o10-20020a1c750a000000b003eb3ed86a80sor1996387wmc.45.2023.02.28.06.33.54
+        b=I/ICLMQCt+iTYc6LSEATrf7KZxOrQXhDxa/oOPNsr9O6trUpwVPiaGfhl9Me8bogRH
+         LduPHaXUnnkeB32mdY4RAP7r8eY0L8DXSwzS4Xq/is0SOMuRAmwLNSU7iK8XZwK8CmjA
+         /YcrMfm2g1sC20VN+RON8+wAeH8fu26AtvVXqs0mirnwT41JFu5bsQNrSgXsCaLG7pRI
+         cUwC8bxXi2jIg+w8npXuS3sCp9tKQ/CZy5cORGR66iN5PFw73IXqLI0G6anYylReEp1m
+         hJmHQ18ITXurlyPHvwBxlybKLDTvxKrmY3bBPUg3mhoJBhLq6Ua6Md1pNuEA/2gHpjGB
+         euTg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=w+gRKAnbYfHSt9yPkTp6DRLWDUkP8s9MULLhiKruTa4=;
+        b=HDLqk1lVUHQevF+qbLL0jiYptd//D2n5Y1ljaxu87hNrX2E6B7G21mMJ8Vz2tlgDOr
+         L5CinfyvIROCNg28to/SAtsKhxqpDa51wmNioAWERx5NftJ4Fywvb0EVLfHi7l6VxUS7
+         TkLTaVLoMrM4EOKsXeSrWfZ2yYg2dhb9YDIUyzL9WJPiLYJ5RqsNOvcuLTdd0URSRK0q
+         LdU0IHXX7xZ9vHJR4dR/HBejaZVc1lJ611Hvfw2tMmTJQF4qsN4rMlEN9Z5aRLuYjCXD
+         kQWxKI9hGSobUOK/PBoiIbT890YxSMAsPS+Y3ccD/Of+XjgN4mh6AfvQ8RFgzawjI5p9
+         xpdg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=Rwph71ZC;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=yScVhW4T;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x28-20020a05620a0b5c00b006fea4686288si7980392qkg.265.2023.02.28.04.23.48
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Feb 2023 06:33:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Feb 2023 04:23:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v8fJOUn+;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=Rwph71ZC;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=yScVhW4T;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pWz15-0006F4-QR; Tue, 28 Feb 2023 07:23:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWz14-0006Ek-1X; Tue, 28 Feb 2023 07:23:34 -0500
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <miguel.luis@oracle.com>)
+ id 1pWz11-0000Ji-Om; Tue, 28 Feb 2023 07:23:33 -0500
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 31S5rJ6N026844; Tue, 28 Feb 2023 12:23:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-id : content-transfer-encoding : mime-version; s=corp-2022-7-12;
+ bh=w+gRKAnbYfHSt9yPkTp6DRLWDUkP8s9MULLhiKruTa4=;
+ b=Rwph71ZCJjHiLw9jNs4UMvxUBdVF5bhoien/ZbTBni6eBqiOAY3VXgsTkeV2a2ZDDpu0
+ b62MDusQRVS07aahtz1Ic08RZ0NoJazXWRQyaRAwtb1l6K0qb6gGi06j7GLFG6tdHt+M
+ +7LPRFz3BaNts91mKnQoX6hMfg4dQ6/J9vNRND9b+8VBzROS9KA2WBRvNS+oo4EIy3um
+ SFPLX2haT7epbmf+g1v3nprB7bOT+c2AqTDzjE66Yvzc6d+0nwvPpUqPEFnh9FZPitvx
+ K0ytTw42h72FGi5hCgV/dxwCeGqfoW8KkLLrvOrrboT88sivwyc/FPWTOiXS2fB1l3Pw Lw== 
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3nyb9ae0t7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 28 Feb 2023 12:23:25 +0000
+Received: from pps.filterd
+ (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5)
+ with ESMTP id 31SBMx1s000547; Tue, 28 Feb 2023 12:23:24 GMT
+Received: from nam02-bn1-obe.outbound.protection.outlook.com
+ (mail-bn1nam02lp2044.outbound.protection.outlook.com [104.47.51.44])
+ by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3ny8s6f6x1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 28 Feb 2023 12:23:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WOoH/tSfcRRDniHg7gyoKMKZSV0GW0rZ+jIE26SA2p2ygUg1/JMY6mixbBBam5a7vb6aikCQa+6v/rLfomnQVkjGrkDXoz2WxZsobnGjoH1ZxIW/FmJXBrHr+hatHG+CciXRmZdMZWOFSibMkoxokkLgW1f01CnFP46nxQB9G04RlaatwtZ43UUz6zBQRcS31hIvWQtgty9OQBq2e09agT8awDzEAQ9eVEJZ5/yoWYViVR1WRIDfrG7VPO4qGVksSVXInaN7NfAmgqPNErcfeVzpIOZhQvjCW8IZZzdmoqzW5YAdjAWBEHZcVeBscwJ5+iKwJDA5oqpgyRX7UTsuqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w+gRKAnbYfHSt9yPkTp6DRLWDUkP8s9MULLhiKruTa4=;
+ b=VtbfdLCB4LEr5V83t0mDnciOGT/qG0gH94cFbyGw5PecJWpoaKljadRCsy7jagynwAnX3LUu9C5zjuIq6XFA+6rpq+J1HIca4ayR4E3ftW+oZzLtj+F1+njIMtEggN0spEkhVTVYQ37MfcVCO6ZTWhKFev4VaN1sJaM/hren2NKXdq7Td4Wrr5zxvWYoat09U1IzZkjv8khKZ9KNToAcfePhtEw3/8CF3LaIRyEi4rBIw8taPht82f3swiSGt4n1y3i4JHPsu1sFwMfypu20yWMVQ7g2ZDXEUZhL9ZCefF1hzjYGK2CiRYmg6nC8fQDdwvX+Ds/RPqaVgSmdsIygFA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=gsTTVd8ms2cWlOoEtqbNNXxVnVJUKiJh8ITbyk1+Ivc=;
-        b=v8fJOUn+TqjAQKsvxDPdoX8A7jlIMbb5HgxMJow87asaQpUqHq7cKOqFAelCO8oGoa
-         SoHcjL6RMFkIIiBeVrSLFwTSnax0vJCrD6hmRqc0XZ3TZZP/d5+RrYYRAaqcROYZk075
-         HpnAS89w3kywJ42H2Xmn6/+P3MbhaEpQMc87cuTMNOX7z+f2vyL8QhDeII1tpKWSBh3h
-         rBfF5RcZfqp7sHGYndaa3mZMsmye4PgROtS+g9itg9vSjzZqCKl1qZlTnfrGkK5Mi6bW
-         yfHAbLV8dblkj/0LycC7OzNqNNMgoM0JZfgBsM+O665UjKfR6mQgPTIAasWeBTNiTQWF
-         hDkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gsTTVd8ms2cWlOoEtqbNNXxVnVJUKiJh8ITbyk1+Ivc=;
-        b=UFXgV4SS8+IYa1PJCA6TVO2Z7EH3hlFmy+m4gbt3e7XqaDH0Q+DAxXYKpz1gW9LR+D
-         o+ce6FHrqH+3bTibbhr9Btbk9L3h5VEbKJxdl5rf8zJXzoDEO8KH0y8qxT1KzJxT7eK9
-         aHQsYoFTew6BQvlP6yV39ZW65cKNkD7un/7zMbL/wGZt8+PtfKqoXw6YjHaNd7mlAZsP
-         UAgp44o2MPgfGl1blIrOz0ChOQ3cFCZEnxuCCJse+jkhNXSHRWtEZDySjHQ6XAt11woM
-         VusntM2HmdORDcQs07YcczBJt3aw8eT4zbGhFu7s/eWRSCg5KX4jQdKBOGxCAJMXhxs5
-         kj2g==
-X-Gm-Message-State: AO0yUKXArRfDak+IO1Wo2P1x0P4TvzImacPReReK9x2c1OulMV4aol5I
-	BalMOaxRPtPhI2395VBvhx+7yscG1NKx+j7zjTI=
-X-Google-Smtp-Source: AK7set8WHAYZ2V4LZowaKMbZLo5DBUh17llCp/Zk8rAc5/StHXKqLk/DUlY/kOXjtZ7zJCMqEJnepQ==
-X-Received: by 2002:a05:600c:4586:b0:3eb:376e:2ba5 with SMTP id r6-20020a05600c458600b003eb376e2ba5mr2314569wmo.3.1677594831455;
-        Tue, 28 Feb 2023 06:33:51 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id l21-20020a1c7915000000b003e21ba8684dsm12305343wme.26.2023.02.28.06.33.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 06:33:50 -0800 (PST)
-Message-ID: <134c78e8-8daf-0f8d-5a87-5c5ac4d73fce@linaro.org>
-Date: Tue, 28 Feb 2023 15:33:46 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 0/7] testing/next: docker.py removal and kaniko updates
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w+gRKAnbYfHSt9yPkTp6DRLWDUkP8s9MULLhiKruTa4=;
+ b=yScVhW4TXdkcwZGAzGtWcbh8QRfECLYJYy7EOP0JXrPWot1MdN0X98a5lP95iQRkWqY1JGmJN0SBwhQoQIEojSxijj5e3A1zzJqhsd1sdWMShbnkknLjpjlF8J4kyXHU3pwkYp1ukHqB+cVWasgnQSzmMd3MbxQyqsLFAp0SD5A=
+Received: from PH0PR10MB5433.namprd10.prod.outlook.com (2603:10b6:510:e0::9)
+ by CH2PR10MB4358.namprd10.prod.outlook.com (2603:10b6:610:a8::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.17; Tue, 28 Feb
+ 2023 12:23:21 +0000
+Received: from PH0PR10MB5433.namprd10.prod.outlook.com
+ ([fe80::a0c1:677d:5394:bf43]) by PH0PR10MB5433.namprd10.prod.outlook.com
+ ([fe80::a0c1:677d:5394:bf43%5]) with mapi id 15.20.6156.017; Tue, 28 Feb 2023
+ 12:23:21 +0000
+From: Miguel Luis <miguel.luis@oracle.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Haibo Xu
+ <haibo.xu@linaro.org>, Andrew Jones <drjones@redhat.com>, Marc Zyngier
+ <maz@kernel.org>
+Subject: Re: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if EL2
+ is supported
+Thread-Topic: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if
+ EL2 is supported
+Thread-Index: AQHZSsnNgqOjmf8mc0OfFMGPlH0ZNK7jLJMAgAEcsAA=
+Date: Tue, 28 Feb 2023 12:23:21 +0000
+Message-ID: <E2C1B0C9-589C-4B1D-B79B-DA19E27E8063@oracle.com>
+References: <20230227163718.62003-1-miguel.luis@oracle.com>
+ <20230227163718.62003-5-miguel.luis@oracle.com>
+ <fe4e7b11-c976-5f4f-87d6-60da1492dec6@linaro.org>
+In-Reply-To: <fe4e7b11-c976-5f4f-87d6-60da1492dec6@linaro.org>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
- Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Qiuhao Li <Qiuhao.Li@outlook.com>, Beraldo Leal <bleal@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>, Ed Maste <emaste@freebsd.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- John Snow <jsnow@redhat.com>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
- Hanna Reitz <hreitz@redhat.com>, Bandan Das <bsd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Darren Kenny
- <darren.kenny@oracle.com>, Wainer dos Santos Moschetta
- <wainersm@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-References: <20230224180857.1050220-1-alex.bennee@linaro.org>
- <c6081ec9-d192-aa24-f8f7-717d7957c67b@linaro.org>
- <Y/36fmORLIjpldXn@redhat.com>
- <791f2eca-1ab4-8f94-a810-1772f4fa49a6@linaro.org>
- <Y/4C74k7QTuIwz7v@redhat.com> <87cz5tgaaj.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <87cz5tgaaj.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: Almx+lGbAGkF
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR10MB5433:EE_|CH2PR10MB4358:EE_
+x-ms-office365-filtering-correlation-id: 248ac5e4-45d2-4dc9-a0aa-08db198694d0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: vCMibpwJAO+KtCun7sH2rk21xipv0j4Qv3ZqVCE6Q1t9dW4mL/157zooduEiM21N9rxwWhlCP9uVZvKiRCrIOJ3SZEMG0h6NKP5Vseh7hyHIEfGvbppDiTQau+ZvGnfwfYwiFL5wMEL2pzpSOeK1bhhoBi9cLBN3VFIergvcS6U+i4fzD9Nyt6wJX7ZS6XMW+T3qvLTngDhjYHImWB5CXkDCw59aGXrH34+SAXejkmQaKJBGRi3NXJbYHHzpXmRnDe3hlwdpEC1tG+s02lXgrQgokVoURBamDrumoH2dIQY+m93WmxEyUttTIGLDHqchYlmmIKnsD2it6iABZ3zYY1/2Z9IWiKYGnut8VH9hC13u+OqI9mLt1pNSNcPWbuBgx3yfwrFxdBW4IvMPvkvcvrVGSuRTKid6iX43KrXhHtqLeRgdc5WAW5OUwsYKoTkvBLFq8qSzotPVvneiEVLFGfJryQb+PN0pzTbYvNyv/i7qxxwiP/lBD5Xtaby7sWpMCngFhTwnjufNGsdsLIqgGuPqic2syKN053nqgRnxk16vaFxtldSGwaXH9OabRACldopmsc05TGLfRaqd5RD2cJzD5JAr0MxYb0VQn8hTsViJz3wqfvFuqrGkyOE/xuCeisQAoC9p/ku/UJ6pdwWo+PUbPSzpdgdfyl/nrD2ygeJUgm9JzcWubv+QJOq84kNj0l0Gk5D9GKVnaqFKie5fL+CdUTD+9G4LPhshEWoYjN8=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR10MB5433.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(366004)(136003)(346002)(396003)(39860400002)(376002)(451199018)(86362001)(8936002)(7416002)(5660300002)(44832011)(71200400001)(186003)(316002)(66556008)(66476007)(66446008)(8676002)(76116006)(66946007)(64756008)(41300700001)(6916009)(4326008)(91956017)(36756003)(54906003)(83380400001)(33656002)(966005)(6486002)(478600001)(2906002)(6506007)(6512007)(53546011)(38070700005)(2616005)(122000001)(38100700002)(45980500001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?vnLZhH1ZSxOj8SOjpObOxX3og4cEPgAAuddFR0GudqWZiiaDf1WYxWeQVWCM?=
+ =?us-ascii?Q?GW64Vj25BX8Ciz67JWCdsVDbC3XQjFJmUj5GROE0B8+vX4zeMwXfGrrtHxWf?=
+ =?us-ascii?Q?08F++nsyIJLWPjJmBZGo2G5EOB6THk81nAK+OT9UxRubJe93gh2n7p5GDApq?=
+ =?us-ascii?Q?VyKqBEz9SXPVZXIRzqTRwlYx+/0NXrXktsf9tXdwYWTrjb4b41a7mR3BHMH2?=
+ =?us-ascii?Q?UW5Zu0LsotQ6CDQa+90Y8B9N00LZatgYPYYTE565XIlqZnpP8LU5sl4R/NsV?=
+ =?us-ascii?Q?lShAtbrTzIdbfRDMONWmaf8hr/Jy68rSy93jb5R8+bsmy1E4aodHexdAA3lL?=
+ =?us-ascii?Q?Vs/1haqG6N6cxQ9BhSxXx7DaQiRPcTjNm9LQDq8ArS+tInh4gOKk8W2ZTMus?=
+ =?us-ascii?Q?EnbeJsGUadXBNPwS/JisEZlI1aSLWf/FXf4vmtd0Yo7jTCDN3LtG9gVZjYeC?=
+ =?us-ascii?Q?7XrjvBCp8ijWAifnhk4zOJVyzFkJRHUJG4L5RV92OKeAvRJlMRU633mCJxVv?=
+ =?us-ascii?Q?AwxRLVe9lgO46M5x6q43cUQVpUn+1enurzZINADZ6bcdNiQxO5OX0lHHqzit?=
+ =?us-ascii?Q?uZxf2bZBQK2ZWDTmfjmhDrUIt2TxeRpbXfJ+rbHphEXWNmXHkJrzMrX5nZyc?=
+ =?us-ascii?Q?4/9+xCSYq6okReXdU1M6DXPBeM5ZEtzMMXqlsuejR+VzlF/MGa2Dv3kz1BPw?=
+ =?us-ascii?Q?dhEqqaxDjyQv3HBL71TIrzlV3LLvUBsWHObiiU3TjJ9xM9/UK+84R6AF8X60?=
+ =?us-ascii?Q?uNhTGJcEgi+APGAuDeMRxMVNPGvepkhlP9m3dW7bUYJkm6w8GaTrBh3NYY+j?=
+ =?us-ascii?Q?f7xnlsxwT4wzyqZlY/dPNkqcefnHpSzhUK3mtTHpdxJqqdhQl4oXC6ZOQ3ih?=
+ =?us-ascii?Q?8kgMzEjtKEP3mtgBPpMhqI/59PCMgecLEeRGAKbNE7zX0GBWhLTlNJd1cSaS?=
+ =?us-ascii?Q?4mow67RDp4GZmkLrGmWKqxvhGPFsXvU/3DoWgISGC4w5AdcNFp8awanXLWNj?=
+ =?us-ascii?Q?/nJiTPNqEZO/BWQl6+2VimcAjZYm004G9q/IRz0GLZVxY2ue78kDgEuxnQ2d?=
+ =?us-ascii?Q?76sALhoadS8ChXEfAF9mteIpvq7zyoLckBYinxxE/l728j8wCe8dxhxzvMlQ?=
+ =?us-ascii?Q?c8wbnY46PiM/f+m7Kf8ispidQ2B/ERsWHthQxTBB4VbDfWEdziRx8CWFTfPb?=
+ =?us-ascii?Q?e/zEWNlq5SZBb//YzelrJdOrMLPT1yNZjdrOWLvc/0mxPSJRKxxHW3RwRL7m?=
+ =?us-ascii?Q?A9ZS465djP7glkRGFvzQ4y4k0/uQt+W6wvjKT0z9E0mqjJ5LaJTJPhh0sKuF?=
+ =?us-ascii?Q?GFa74MgFQYxEs9Ouq+qxGCmIZxJsK91TSPoRmXjrVfZwb0sj1vR8/DX+bbjk?=
+ =?us-ascii?Q?HLdUBFEVRrc0EQ8Wa8+cch6EMu9q+OouYXgZQTFQNDjALbw1x7LSJExcWLOT?=
+ =?us-ascii?Q?xzlF3XSAGc35V+97+cbS9L/Ez1hNr5R9TkbA4kdf3ARoFUUldIUzQMHv8rKb?=
+ =?us-ascii?Q?eu/+BAJQfI5q7eQ383aJLRZIpQjTHlKTdKuTFhYqwwKdrP6b607n/eZwj5Yb?=
+ =?us-ascii?Q?1mJ0GQ+DJBiC9joHCmUmIjiVt3LOSXpBJPKQejxeJxL+2Nzzw5n9M7kZznYl?=
+ =?us-ascii?Q?5OzVMdG6WEYS2A+2wkCI/4U=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <B9CFC6BF6335A84C96955F50524A1C97@namprd10.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: zHIDhQrU3/WbNRAKKguGBlZiCUS1PKfIqnvosnmnM6R++QU4GGoaZP4+EZX0PLI4KuAzp6AviKCR+wZrXgB4Qcnjh2D3HNbCfckL6AR7dUXq9MQ0kQz+L7ET6ErthxZsPs7M2X1sr1IY7YQDMVlD9OKae5L1oTf1h4PPkJMAmUYbyDnIyrtNN7/Ui5G3C4w2CZP/4qYtAFuQVhA7Qw/p2Y56zLO5ofd2UBeJjQSzsBOXzjp0Mc0M62ENubNhB/Q1CFTE3kseywMMrP+VSW8d8nN0WddcGabXLj4LcfBIEcRne6+m3nxX/3tGrniazw9PTwBfC9F9/dLDWhWsgk6ebMZN/oLlv4QidRcN6j3UPB0kqEBRVCHh7qV44bp7LUB2vticDWCmcNd2JihLqWPE+fakdBv1lXYowp84/sObdeVgYScbZ6B8m4NnyZpNh0PQuuEZ+sn1x5wPXKFDqDg59aPXIgAupA42WSQGDWPGZxN3N0uAUl0c6jEFl/6Oa6GEwu3tTRyD2ceIjflzN2Hy8RY5C+4cxcgjuF+juun0PNCSNq/OYHDm1yn8Zg9gosMQ26WXk5WAVpZXEvWdVRTKaWkXii3AV0n+HqZ9dM7ifCqT1xnXLFGhSy+4sJPrCb/i/1lB6xGXWmYvbkiwoY1K7DCVs+ScRd+eCe2sHvYaIaoC6uz+nfO+Yqn9tCExtcc+bG5ssAIHArETg8Mxp8N2G4BDcx1EZED2DFyMoMoJE3CRBNolIiTFxfzqcZKBGG1PcU1/7YWEeKXhHifPJy+8BBtuym3BrmNXiKdWoW843WOnp5gneVAAkcZfkjQOFnSFD8+ryjlI87vjD57V4AK2pw==
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB5433.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 248ac5e4-45d2-4dc9-a0aa-08db198694d0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2023 12:23:21.5757 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: c4H4QRC/aUC1BvfQ3lGir4A7HLMxjFQw6h5REgHVe5qjOxhQ2aA3lkF7VIE6KU0tMfYUCEwKRHQm8TKWjhrWsQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR10MB4358
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-02-28_08,2023-02-28_02,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ bulkscore=0
+ malwarescore=0 mlxlogscore=999 phishscore=0 spamscore=0 adultscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302280099
+X-Proofpoint-GUID: 9QeiyIvjIFv42Yks1Am_9NwtEvfDtqCd
+X-Proofpoint-ORIG-GUID: 9QeiyIvjIFv42Yks1Am_9NwtEvfDtqCd
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=miguel.luis@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jvPmJQFMsd9z
 
-On 28/2/23 14:57, Alex Bennée wrote:
-> 
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
->> On Tue, Feb 28, 2023 at 02:29:12PM +0100, Philippe Mathieu-Daudé wrote:
->>> On 28/2/23 13:58, Daniel P. Berrangé wrote:
->>>> On Tue, Feb 28, 2023 at 12:58:54PM +0100, Philippe Mathieu-Daudé wrote:
->>>>> On 24/2/23 19:08, Alex Bennée wrote:
->>>>>> This series attempts to remove our dependence on the docker.py script
->>>>>> and build things directly with the appropriate tool. I've been
->>>>>> noodling around with how we build images on gitlab to see if they can
->>>>>> cache better because the normal case should be we don't need to
->>>>>> rebuild everything if the upstream distro hasn't updated its package
->>>>>> list.
->>>>>>
->>>>>> Anyway what do people think?
->>>>>
->>>>> Removing dind limitation is interesting.
->>>>>
->>>>> Unrelated, can we tag registry.gitlab.com/qemu-project's
->>>>> docker images along with releases?
->>>>
->>>> Can you elaborate on this ?
->>>>
->>>> We're only using the images for CI purposes and they must always reflect
->>>> the current state of git master. We're using a fixed docker tag 'latest',
->>>> as that avoids the container registry growing arbitrarily large.
->>>>
->>>> Our CI rules should prevent the pipelines running on stable branches,
->>>> so we shouldn't need container tags for stable.
->>>
->>> I'm not suggesting keeping jobs to build, but doing a snapshot of the
->>> released containers.
->>>
->>> I.e. when we release 8.0, we should tag qemu/fedora:v8.0 and never touch
->>> it again. This is useful when bisecting pre-v8, but also to build pre-v8
->>> and do performance comparison. One shouldn't have to upgrade such
->>> container (in particular when package mirror disappear), since it
->>> already contains all we need.
->>
->> The main risk with this is the impact on our storage quota. With the
->> OSS Program membership IIUC we get Ultimate level features which
->> is 250 GB of storage, across git repos, pipeline cache/artifacts/logs,
->> container registry.
->>
->> Currently they have no way to enforce that since their accounting of
->> usage is not accurate enough. They're working on fixing that so at
->> somepoint we'll be subject to the 250 GB limit.
->>
->> What I don't know is how much storage we're currently using across
->> the /qemu-project namespace, and what extra is implied by taking
->> a snapshot of our container registry 3 times a year. I'm expecting
->> it to probably be in the high 10's of GB though for the container
->> registry.
+Hi Richard,
 
-Maybe we can keep (a subset of) the stable release container images
-and store them on a registry outside of gitlab. That would be nice,
-but if I'm the only one interested and nobody felt this was useful
-before, no need to spend more energy on this topic.
+> On 27 Feb 2023, at 18:24, Richard Henderson <richard.henderson@linaro.org=
+> wrote:
+>=20
+> On 2/27/23 06:37, Miguel Luis wrote:
+>> From: Haibo Xu <haibo.xu@linaro.org>
+>> KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
+>> EL2 bits on ID_AA64PFR0 state unsupported on the value 0b0000.
+>> Ref: https://lore.kernel.org/qemu-devel/b7c2626e6c720ccc43e57197dff3dac7=
+2d613640.1616052890.git.haibo.xu@linaro.org/
+>> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+>> [Miguel Luis: use of ID_AA64PFR0 for cpu features]
+>> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+>> ---
+>>  target/arm/cpu.h   |  2 +-
+>>  target/arm/kvm64.c | 16 ++++++++++++++++
+>>  2 files changed, 17 insertions(+), 1 deletion(-)
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index 9aeed3c848..de2a88b43e 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -3961,7 +3961,7 @@ static inline bool isar_feature_aa64_aa32_el1(cons=
+t ARMISARegisters *id)
+>>    static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *=
+id)
+>>  {
+>> -    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) >=3D 2;
+>> +    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) !=3D 0;
+>>  }
+>=20
+> No, this predicate is testing if EL2 supports AArch32 more.
+>=20
+>> @@ -714,6 +723,10 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatur=
+es *ahcf)
+>>      features |=3D 1ULL << ARM_FEATURE_PMU;
+>>      features |=3D 1ULL << ARM_FEATURE_GENERIC_TIMER;
+>>  +    if (el2_supported) {
+>> +        features |=3D 1ULL << ARM_FEATURE_EL2;
+>> +    }
+>=20
+> This is the test you want...
+>=20
+>> @@ -881,6 +894,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>          assert(kvm_arm_sve_supported());
+>>          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_SVE;
+>>      }
+>> +    if (cpu_isar_feature(aa64_aa32_el2, cpu)) {
+>> +        cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_HAS_EL2;
+>> +    }
+>=20
+> ... here.
+>=20
+> While you could add a new isar_feature predicate for EL2 supported in AAr=
+ch64 mode, the feature test is equivalent and good enough, and is more obvi=
+ously tied to the required KVM support.
+>=20
+>=20
 
-> Currently we are using:
-> 
-> 86.6 Gb of artefacts
+Thank you for the explanation. I will take it into consideration on the nex=
+t version.
 
-^ transient
+Miguel
 
-> 28.5 Gb of containers
+> r~
 
-^ constant
 
-> 220 Mb of file uploads
-> 24.8Mb of git repo
-> 
-> We could probably cut down a lot of usage of artefacts by either not
-> building full fat ones with debug symbols and passing between layers or
-> tweaking the build system to prevent re-building of object files if the
-> final binary is present in the file system.
-> 

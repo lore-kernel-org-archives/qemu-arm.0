@@ -1,130 +1,153 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5726880ejc;
-        Tue, 28 Feb 2023 04:58:51 -0800 (PST)
-X-Google-Smtp-Source: AK7set9vSSZp7fBU4xqZbi6wEYFi3vtQu7o7LV0n6uSUel9VzOJJkqwcoVm7Pry3DyRzDGEfpZWB
-X-Received: by 2002:a05:622a:1a24:b0:3bf:e13e:30d2 with SMTP id f36-20020a05622a1a2400b003bfe13e30d2mr4498089qtb.67.1677589131208;
-        Tue, 28 Feb 2023 04:58:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677589131; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5543209ejc;
+        Tue, 28 Feb 2023 01:15:04 -0800 (PST)
+X-Google-Smtp-Source: AK7set/hGZU5V8VZpl2QjliM24laK7QIb1CQjx/Csa8jLM6kYmHq5OjGHlW6Mki04cs/1hl63Hfz
+X-Received: by 2002:ad4:5c4d:0:b0:56e:a07b:f4df with SMTP id a13-20020ad45c4d000000b0056ea07bf4dfmr4728730qva.13.1677575704110;
+        Tue, 28 Feb 2023 01:15:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677575704; cv=none;
         d=google.com; s=arc-20160816;
-        b=SH3p5dKQTGeDUwOWL9iErVJl8g9zniMClZPXcRF8TIGs9lpCSPWXxVgqv77hd8iQzU
-         gH7cgn77lLy4CCTJYAIy6ybK1BW8OWhDptU3pFpXElGKiWRrr93XlWP0ao9CETI2xOpQ
-         5gk3YRFhBOStExB9q9MqSn7lj2mlraTvn5hEz2EmxdEpgfH7QAs6JP56TnuoDjR2jVHo
-         gm2SQgrT4rKRmL4X3Y3Q61fOyax65FND6/v7S2wsn3f1bUa+FN7vBcqo5WCxdPP5VI8n
-         vWjt8F/kbTU4h7QDcBfn2j6Wev2wxlXdygfpWAsGm3eZG+j8ond2mkGUkWbeDqCykK6r
-         Z8gA==
+        b=Lnz6dJHN6rkLGkZBAHCLidDWXRb/Oh8mZpgPqXlN+RS5UqQ+zN0ULiVbNTM66Mrdkn
+         rNgbXr/STMRYIFDmqrpJtg3cRLLIFmZuiw6vpmFGYQXvE1WlYpChBv/V94UfxRMgPZZt
+         DczwX4h0NKDdZ3lFaJBSMhrJtPf+s2kE5489SdzUunB0b9Kk0q+Rz+fZ4/AJCi6Xyx/m
+         vYNBvRZjKqN1i1ybejB5YDuXEpj4ic6mkqgIfjR88JgwcVVtNS+ne2DwNpCLv02dYaII
+         2eoerS1Tmxm68SXt1h3rty5QIF+06kIaDvktxJhiu6VJ+HmGbxr3GaNtB3RbUGL3v80I
+         uBmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=k3d/8/yP8XPH6VOnj6Filc0BXcoL7mySPSH07LGQ24Y=;
-        b=PB7ujOhhd/vnIW/Ma3ebglxYyA9XzfY2aq8t5rKGHBEWXQ6tM/aVzmQ2V++89S+wZM
-         p5KeFaAIvzxWTmNYC3uhaWGqSbcGAH46JPY5jQuBaINKLUidd9Pf1lhOFHjksxUJ0kdF
-         0Js+kyFObPYKv8t0AvJ4A/k9XRwDJFPIfflQgDMXfrOCK5im03coS1g38DvtDH/mDIig
-         Sm5RE8oVfxO71ADRvszTpK62hdGTf6PqJf8lfu5uXOCDEgXM79u6xQ5OuiZng0rLyGzn
-         7RbViXh3LylYG4OlP1hn7BDoKsToPZkMxzBl/fv9Q8ePCaupQBrR2/9vi0kXlf/jbQwF
-         JNSw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=NtPWLZOeXu1C5NyaeaHanhZFNS29T87n43afAPxa5So=;
+        b=n5QMOf1D1BirCoLyyhO+1RaMs1VBwRRijtqzqEmQDqv4/jRzTmmUOQUtg8pQNFMdyp
+         pfAxeYHlYwwXGE/PgoFL37Mhr8khMLhWjcasUlvm5MjscGEWrYPYAjOdd6IAtL/L0nJI
+         fLY99qRIZKoMYV47NKsW/bH9wCUEAZ8qlQaH4H4oyaU+stbUdnyL6JBtu6+xstcVJpOQ
+         eHFCo2tRT6qI3jZNpA7WH5vUF8uRla52cfdVO5YnJGmpAfCjH1WEKmKIaqZQ/di2LOcF
+         QAwMtenFoN5aQEgl0C320k798CAnOiCxyTyJATkssyPY17VO3PUQopN9KDjxC+ncz4SH
+         gRnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpG4LYUR;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b1EHtkKe;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id y14-20020ac85f4e000000b003bfb0f0b695si8498755qta.742.2023.02.28.04.58.50
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id r1-20020a0ccc01000000b0056ea051a8edsi8271597qvk.323.2023.02.28.01.15.03
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 04:58:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 28 Feb 2023 01:15:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LpG4LYUR;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b1EHtkKe;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677589130;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
+	s=mimecast20190719; t=1677575703;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=k3d/8/yP8XPH6VOnj6Filc0BXcoL7mySPSH07LGQ24Y=;
-	b=LpG4LYUR3xC0IFaW1GasJpUDLtt1S81ML8xpD6di4vGlyD0o7Q1sh/Zr19Jr1DQBNs1Baf
-	Qzo++PSfNqAY24fggk4V0xEkflQKiNuVSJMgmjuI1ss4aj8RGPBQ2EEGQKZaOQivaF39Ir
-	LlV/kG61yQtR5kKixJ4wKU1y/m82Dgs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-564-24nM39oCOyquhcN6KYYxiw-1; Tue, 28 Feb 2023 07:58:47 -0500
-X-MC-Unique: 24nM39oCOyquhcN6KYYxiw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0C28585CCE2;
-	Tue, 28 Feb 2023 12:58:47 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 975EB2166B26;
-	Tue, 28 Feb 2023 12:58:41 +0000 (UTC)
-Date: Tue, 28 Feb 2023 12:58:38 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
-	Thomas Huth <thuth@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>, Beraldo Leal <bleal@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
-	Yonggang Luo <luoyonggang@gmail.com>, Ed Maste <emaste@freebsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
-	qemu-block@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	John Snow <jsnow@redhat.com>,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>, Hanna Reitz <hreitz@redhat.com>,
-	Bandan Das <bsd@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-Subject: Re: [PATCH 0/7] testing/next: docker.py removal and kaniko updates
-Message-ID: <Y/36fmORLIjpldXn@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230224180857.1050220-1-alex.bennee@linaro.org>
- <c6081ec9-d192-aa24-f8f7-717d7957c67b@linaro.org>
+	bh=NtPWLZOeXu1C5NyaeaHanhZFNS29T87n43afAPxa5So=;
+	b=b1EHtkKewBQGQrwT6i/DLlXlPp+8vM/NNTWbCKr6euw2lrh/23jpf+P82xYOGeGFpvikec
+	lBoXTo3tpw5dQpMJqlGJoaA/zO+fcT2TcyeMpBTH1JJYsAeBY0jcv+0zLMHJjvuzXXtUWo
+	APrzI/IlDuQRmgP1+BP7m3gAp8UuAY4=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-155-ODN5MLm6NGmVM2eKh2LfqQ-1; Tue, 28 Feb 2023 04:15:02 -0500
+X-MC-Unique: ODN5MLm6NGmVM2eKh2LfqQ-1
+Received: by mail-qt1-f199.google.com with SMTP id w16-20020ac843d0000000b003bfe50a4105so1307476qtn.10
+        for <alex.bennee@linaro.org>; Tue, 28 Feb 2023 01:15:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NtPWLZOeXu1C5NyaeaHanhZFNS29T87n43afAPxa5So=;
+        b=UHynyi/aStvi/U3pUSLjHRkMXhnBKJzoDdbFGaSPJxuZxS4CoP6iOC3YvGhV8jCR5r
+         hc5wpwZ0IrM6DsgQfzjZymw5k3X3Y5s3SecXM9V1CwFJwdJQE0GiPDkkI4cvpSEP6j4s
+         xJTaopSaAkGV3HoU37wcrlSGhRxhlTOED/2PQ7rtQW2FWjxaREmKNPzg79K+bSzJoBMp
+         YaC5uKEYxNXx4DMaTNOgVO2/e/ck1jHXBrhgJ5zwFv6a/N7E75255WPwM2686BrjnvpY
+         G54V9PLPC+ynLGyHNQmQrSMpaPj3IAMSzt4ljlgTRmry0NUo4LVSRIJPHJU4HsgHFFO4
+         iHgw==
+X-Gm-Message-State: AO0yUKUNFTPgB9EmihgwzMxXo/SVeDoIeJkBaBHEfVzoDaLxjrs77k+X
+	1iNSlQVX/wrQsHZtHtyIylm7o2nMlNRtJRGS8pW/cHEi5fkHUuFsu7TxbMb9q7HeCHgpie+LfV9
+	nVrXrWcrCHqNHBYjh
+X-Received: by 2002:a05:622a:1aa0:b0:3bf:e4da:2367 with SMTP id s32-20020a05622a1aa000b003bfe4da2367mr4024640qtc.3.1677575701892;
+        Tue, 28 Feb 2023 01:15:01 -0800 (PST)
+X-Received: by 2002:a05:622a:1aa0:b0:3bf:e4da:2367 with SMTP id s32-20020a05622a1aa000b003bfe4da2367mr4024622qtc.3.1677575701703;
+        Tue, 28 Feb 2023 01:15:01 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.2] (ip-109-43-177-75.web.vodafone.de. [109.43.177.75])
+        by smtp.gmail.com with ESMTPSA id y24-20020ac87058000000b003b0766cd169sm6367904qtm.2.2023.02.28.01.14.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Feb 2023 01:15:01 -0800 (PST)
+Message-ID: <fe4626c6-6103-d5e5-6920-9dfb4777b979@redhat.com>
+Date: Tue, 28 Feb 2023 10:14:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 1/2] docs/about: Deprecate 32-bit x86 hosts and
+ qemu-system-i386
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, libvir-list@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Reinoud Zandijk <reinoud@netbsd.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ xen-devel@lists.xenproject.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Maxim Levitsky <mlevitsk@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+References: <20230227111050.54083-1-thuth@redhat.com>
+ <20230227111050.54083-2-thuth@redhat.com> <Y/yY72L9wyjuv3Yz@redhat.com>
+ <20230227150858-mutt-send-email-mst@kernel.org>
+ <84d7d3e5-0da2-7506-44a7-047ebfcfc4da@redhat.com>
+ <20230228031026-mutt-send-email-mst@kernel.org> <Y/3CiEKKoG06t9rr@redhat.com>
+ <20230228040115-mutt-send-email-mst@kernel.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230228040115-mutt-send-email-mst@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <c6081ec9-d192-aa24-f8f7-717d7957c67b@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-X-TUID: M/t7K02A8iLs
+X-TUID: ONyjcQt1xNXL
 
-On Tue, Feb 28, 2023 at 12:58:54PM +0100, Philippe Mathieu-Daudé wrote:
-> On 24/2/23 19:08, Alex Bennée wrote:
-> > This series attempts to remove our dependence on the docker.py script
-> > and build things directly with the appropriate tool. I've been
-> > noodling around with how we build images on gitlab to see if they can
-> > cache better because the normal case should be we don't need to
-> > rebuild everything if the upstream distro hasn't updated its package
-> > list.
-> > 
-> > Anyway what do people think?
+On 28/02/2023 10.03, Michael S. Tsirkin wrote:
+> On Tue, Feb 28, 2023 at 08:59:52AM +0000, Daniel P. Berrangé wrote:
+>> On Tue, Feb 28, 2023 at 03:19:20AM -0500, Michael S. Tsirkin wrote:
+>>> On Tue, Feb 28, 2023 at 08:49:09AM +0100, Thomas Huth wrote:
+>>>> On 27/02/2023 21.12, Michael S. Tsirkin wrote:
+>>>>> On Mon, Feb 27, 2023 at 11:50:07AM +0000, Daniel P. Berrangé wrote:
+>>>>>> I feel like we should have separate deprecation entries for the
+>>>>>> i686 host support, and for qemu-system-i386 emulator binary, as
+>>>>>> although they're related they are independant features with
+>>>>>> differing impact. eg removing qemu-system-i386 affects all
+>>>>>> host architectures, not merely 32-bit x86 host, so I think we
+>>>>>> can explain the impact more clearly if we separate them.
+>>>>>
+>>>>> Removing qemu-system-i386 seems ok to me - I think qemu-system-x86_64 is
+>>>>> a superset.
+>>>>>
+>>>>> Removing support for building on 32 bit systems seems like a pity - it's
+>>>>> one of a small number of ways to run 64 bit binaries on 32 bit systems,
+>>>>> and the maintainance overhead is quite small.
+>>>>
+>>>> Note: We're talking about 32-bit *x86* hosts here. Do you really think that
+>>>> someone is still using QEMU usermode emulation
+>>>> to run 64-bit binaries on a 32-bit x86 host?? ... If so, I'd be very surprised!
+>>>
+>>> I don't know - why x86 specifically? One can build a 32 bit binary on any host.
+>>> I think 32 bit x86 environments are just more common in the cloud.
+>>
+>> Can you point to anything that backs up that assertion. Clouds I've
+>> seen always give you a 64-bit environment, and many OS no longer
+>> even ship 32-bit installable media.
 > 
-> Removing dind limitation is interesting.
-> 
-> Unrelated, can we tag registry.gitlab.com/qemu-project's
-> docker images along with releases?
+> Sorry about being unclear. I meant that it seems easier to run CI in the
+> cloud in a 32 bit x64 environment than get a 32 bit ARM environment.
 
-Can you elaborate on this ?
+It's still doable ... but for how much longer? We're currently depending on 
+Fedora, but they also slowly drop more and more support for this 
+environment, see e.g.:
 
-We're only using the images for CI purposes and they must always reflect
-the current state of git master. We're using a fixed docker tag 'latest',
-as that avoids the container registry growing arbitrarily large.
+  https://www.theregister.com/2022/03/10/fedora_inches_closer_to_dropping/
 
-Our CI rules should prevent the pipelines running on stable branches,
-so we shouldn't need container tags for stable.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+  Thomas

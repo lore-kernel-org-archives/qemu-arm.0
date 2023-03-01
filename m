@@ -1,137 +1,160 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6967677ejc;
-        Wed, 1 Mar 2023 05:34:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set/oFjpM28UkBtlzqBlVqKg6RORagYYKDg5e6RnvbWvAodhcP6LWg0nHjN5UqTUS6itTseZm
-X-Received: by 2002:a05:600c:4da3:b0:3ea:e4f8:be09 with SMTP id v35-20020a05600c4da300b003eae4f8be09mr4853534wmp.30.1677677651511;
-        Wed, 01 Mar 2023 05:34:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677677651; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6973045ejc;
+        Wed, 1 Mar 2023 05:43:24 -0800 (PST)
+X-Google-Smtp-Source: AK7set83I+eQIzwWSkYmrCiWxvzJDUR62nUgiE24QuZLfx5xIzHCImmgLGdy+KjbavvTCcZ2k5ja
+X-Received: by 2002:a05:6000:1b81:b0:2c7:e26:97c2 with SMTP id r1-20020a0560001b8100b002c70e2697c2mr4785387wru.33.1677678204555;
+        Wed, 01 Mar 2023 05:43:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677678204; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kvsx0XtY2qpHbnEZGcg1eq1f9e1q16RZb5xLeJglmSbeKgMWTkuWYNyx1zo/RYQcj/
-         VzMkTDk7OiJdNcVHzc26WfN16lCUi356LD5S6HxRPf8I7arU4ZzucUZ56sMk0srSU4V8
-         jzKVLKNRwIgSZKc1utVbimud+Bk0nyZm7HRIOY1YeghnwYFRO+OBT6i8PZAJtqpl1GMP
-         pwlm5P35XTWbN9MAQmWTjllySHw7iXgYQZ1hCcy9TAGcNWHwp8yoWJoHosEn/iTWvwtR
-         sI8MTLMGavOXV9earZZRolZmHQbtRy7s1JSSY3i6PPa0YUZJcYmq0yYzGcXSz49J0HkG
-         nL/w==
+        b=tI3LcRBnEVSc3DCZvQGtTfoY2Hx8Z2QksFwbw3IJeSuDctrq5oeGodv7wjsRz+MokD
+         wst7h+YkxmwtFHmOvUQsblX5ZvuirrfoflY6gw/JbQ8Kr76dfvFt2Zsizo6uRRd6RpFO
+         hS1e6q49GI1241A38scejayMO7zgmXBwIbf4KGwRCBMk8KAJwoLYzWgNpDhK/E0dxn1g
+         Y3W7L3N1L6hSdFXRH0lFptqCMYDa3YyrIbK65/x275zHnZTwRiLVIYhKSJup04A5ifFl
+         gUiyI5rRVC8Y7f1103JsH3Vf3twJxDOj1XEfJ6AHyCE7QPCrwEPUWxJa8ajSH/nijUNF
+         qp3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=HQToDHtmwapBTDABhT2cShca3Pt9qH7zdZGlVftR1AI=;
-        b=FEx9MmJtqCHp6z46VeckqgPnDzp7YDUL+96meqSRdG6XL/BWirZi5atKougJvvJYsF
-         /jDLcffLL+9jvLgFhaefmbDRI+M+u7KQFNH5JiQoQRtczRCHMu6BBUJZTeqE88IN81lT
-         qq68R75aGGNOn2PZhdkm8imyntbOueWbE9KEUqhVmRAQ8/AigL6g5XuQU2t4cSEQ+xf6
-         7ZPYE+dNx8YSpjbNVRCmNFYgHIfaGgsL8kDJm3qS+QOC7UGjIjFglZUWW0HUVCK9MmaQ
-         Z6Z2ZIxkXv2uEtZhvcVnk764NC/VW/5BWVoELhfr73vadMLB+L7ztJt0exGU9Py7PfQA
-         pNHw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=q2cQhrtzPh68xvCEtMo+2lOAGLfGo7T8/hYfaExXG0k=;
+        b=cbxwQ69lvXdDYuaPY9RGvROWtx/3IK6jZjD0PNQXTI1pQ3WucSagr7Sxm41MNa+9ej
+         5tc0W22ZONXU+Qlsi7G+y6ChQTC7m0TodHddLPaKl3zKaophicrM84ln9F7bhiU6MlVk
+         1AcjPOBsQBK0ubwze2Q2G5UCtP194aKritPtOoCx3ZYKTCuW0jpc+kQ7h3/FQMVdPcuu
+         Xx7SvgpauKGj0jX705j5Fjujb/uln2scDpZpniAiNtK5OYVjQQ1Gmu1acgukC/jF3WYB
+         NaZaBwo62kbl0zHUgHyW910ZXYLF4NWXLBaO9PWp4JP3Xy4xlJiH99EOQ12St2ILdtox
+         spsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=fmru5pdb;
-       dkim=neutral (no key) header.i=@suse.de header.b=o+W5hIZM;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QBV5dztP;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id v11-20020a05600c444b00b003eb420f7cc8si9604652wmn.168.2023.03.01.05.34.11
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id h12-20020adfe98c000000b002c3bec9168bsi11505237wrm.769.2023.03.01.05.43.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Mar 2023 05:34:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+        Wed, 01 Mar 2023 05:43:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=fmru5pdb;
-       dkim=neutral (no key) header.i=@suse.de header.b=o+W5hIZM;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=QBV5dztP;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 1CB3921A92;
-	Wed,  1 Mar 2023 13:34:11 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id D8FE41FE14;
+	Wed,  1 Mar 2023 13:43:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677677651; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1677678203; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HQToDHtmwapBTDABhT2cShca3Pt9qH7zdZGlVftR1AI=;
-	b=fmru5pdbF0jewraO6ffVW0AIaPBBZp3aqYbiSTMu4DpSBJvJW6NFMzgCpK6I5EcveyVw4C
-	R5l2TYmMTisCdgsFEhsbyPRM3YWaxF3EsrfGGYcvgwBj2w/GW1RgVYBKb0GB47Nx7nCkCK
-	C1Yn6ZxOiDIemzi0DYGRN1NjWIIqDLg=
+	bh=q2cQhrtzPh68xvCEtMo+2lOAGLfGo7T8/hYfaExXG0k=;
+	b=QBV5dztPy0+2isxcwS5XREIsEdOEdxDQWacC4fwaM96kp27xJm3cbfN0lNb5UtcncrTr5f
+	DQC8SdHqA2YiALAIwhLp9E1aglM7pgO6VssF7MIQISR5Z3cqxvHdACTYevQ1tmNZ8OlGKx
+	nWjnX0F0hli54QjOVM4TRoWiyYe/5f4=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677677651;
+	s=susede2_ed25519; t=1677678203;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=HQToDHtmwapBTDABhT2cShca3Pt9qH7zdZGlVftR1AI=;
-	b=o+W5hIZMedZas0s+S6NnxbN3hqptpVo2M4mY+i8CtH+f20vs47Rp17CJy3X+WZicnlBI8Q
-	yCCwr9FL1v5bmABg==
+	bh=q2cQhrtzPh68xvCEtMo+2lOAGLfGo7T8/hYfaExXG0k=;
+	b=/zkKMxWqq3MwMzquArMUNVroZWYdGOs1oBamfcL/j6/WasA+YH/DDOx8Lyi444tVdYeyGO
+	VbWiuIESfKRGBzCA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A021813A3E;
-	Wed,  1 Mar 2023 13:34:10 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 5C34B13A3E;
+	Wed,  1 Mar 2023 13:43:23 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 44Z+GlJU/2NKGAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 01 Mar 2023 13:34:10 +0000
+	id 31f/CXtW/2NoHgAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 01 Mar 2023 13:43:23 +0000
 From: Fabiano Rosas <farosas@suse.de>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: quintela@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, Peter
- Maydell <peter.maydell@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio  Fontana <cfontana@suse.de>,
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
  Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
  Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, Thomas
- Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, "Dr. David
- Alan  Gilbert" <dgilbert@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>, Laurent
+ Vivier <lvivier@redhat.com>, Juan Quintela <quintela@redhat.com>, "Dr.
+ David Alan Gilbert" <dgilbert@redhat.com>
 Subject: Re: [PATCH RESEND v7 9/9] tests/qtest: Fix tests when no KVM or TCG
  are present
-In-Reply-To: <87bklcd3x1.fsf@linaro.org>
+In-Reply-To: <87v8jkk37n.fsf@suse.de>
 References: <20230228192628.26140-1-farosas@suse.de>
- <20230228192628.26140-10-farosas@suse.de> <87a60wk6st.fsf@secure.mitica>
- <87zg8wk69m.fsf@suse.de> <87bklcd3x1.fsf@linaro.org>
-Date: Wed, 01 Mar 2023 10:34:08 -0300
-Message-ID: <87sfeok33j.fsf@suse.de>
+ <20230228192628.26140-10-farosas@suse.de>
+ <11be1f6c-2fc3-f6cd-bbf6-c6bdd790dec8@redhat.com> <87v8jkk37n.fsf@suse.de>
+Date: Wed, 01 Mar 2023 10:43:20 -0300
+Message-ID: <87o7pck2o7.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 0wSXZwrFoXN0
+Content-Type: text/plain
+X-TUID: ucv+cXlhjl+i
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Fabiano Rosas <farosas@suse.de> writes:
 
-> Fabiano Rosas <farosas@suse.de> writes:
+> Thomas Huth <thuth@redhat.com> writes:
 >
->> Juan Quintela <quintela@redhat.com> writes:
+>> On 28/02/2023 20.26, Fabiano Rosas wrote:
+>>> It is possible to have a build with both TCG and KVM disabled due to
+>>> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+>>> host.
+>>> 
+>>> If we build with --disable-tcg on the aarch64 host, we will end-up
+>>> with a QEMU binary (x86) that does not support TCG nor KVM.
+>>> 
+>>> Fix tests that crash or hang in the above scenario. Do not include any
+>>> test cases if TCG and KVM are missing.
+>>> 
+>>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>>> ---
+>> ...
+>>> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+>>> index 3aef3a97a9..45490f5931 100644
+>>> --- a/tests/qtest/boot-serial-test.c
+>>> +++ b/tests/qtest/boot-serial-test.c
+>>> @@ -17,6 +17,9 @@
+>>>   #include "libqtest.h"
+>>>   #include "libqos/libqos-spapr.h"
+>>>   
+>>> +static bool has_tcg;
+>>> +static bool has_kvm;
 >>
->>> Fabiano Rosas <farosas@suse.de> wrote:
->>>> It is possible to have a build with both TCG and KVM disabled due to
->>>> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
->>>> host.
->>>
->>> Ouch.
->>>
->>> Just curious: why are they needed?
->>>
+>> Any special reason for putting these here instead of making them local 
+>> variables in the main() function?
 >>
->> From https://wiki.xenproject.org/wiki/QEMU_Upstream:
->>
->>   Why is qemu-system-i386 used even on x86_64 and even non-x86?
->>=20=20=20
->>   QEMU in a Xen system only provides device model (DM) emulation and not
->>   any CPU instruction emulation, so the nominal arch doesn't actually
->>   matter and Xen builds i386 everywhere as a basically arbitrary choice.
->>=20=20=20
->>   It happens that the Xen DM part of QEMU is quite closely tied to the x=
-86
->>   scaffolding for various historical reasons, so we end up using
->>   qemu-system-i386 even e.g. on ARM!  There is no practical difference
->>   between qemu-system-i386 and qemu-system-x86_64, they should be
->>   interchangeable. However only qemu-system-i386 is regularly tested by
->>   Xen Project (via osstest).
 >
-> That said with the xenpvh model that was added recently we should be
-> able to finally build a Xen only qemu-system-aarch64 which while
-> functionally the same will be less head scratching for users.
+> Yes, Phillipe was doing work in the same file and I put it here to
+> minimize conflicts.
 >
+> https://lore.kernel.org/r/20230119145838.41835-5-philmd@linaro.org
+>
+>>>   static const uint8_t bios_avr[] = {
+>>>       0x88, 0xe0,             /* ldi r24, 0x08   */
+>>>       0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
+>>> @@ -285,6 +288,13 @@ int main(int argc, char *argv[])
+>>>       const char *arch = qtest_get_arch();
+>>>       int i;
+>>>   
+>>> +    has_tcg = qtest_has_accel("tcg");
+>>> +    has_kvm = qtest_has_accel("kvm");
+>>> +
+>>> +    if (!has_tcg && !has_kvm) {
+>>> +        return 0;
+>>> +    }
+>>> +
+>>>       g_test_init(&argc, &argv, NULL);
+>>
+>> Could you please put the new code below the g_test_init() ?
+>> Just to avoid the problem that has been reported here:
+>>
+>>   https://lists.gnu.org/archive/html/qemu-devel/2023-02/msg08331.html
+>>
+>
+> I could, but I don't understand why we need this. What does having
+> "code" before g_test_init() causes? Should I move the qtest_get_arch()
+> that's already there as well?
 
-It would be nice if we could eventually restrict the x86 build to the
-x86 host and the aarch64 build to the aarch64 host like we do for the
-other HW accels.
+Oh, the issue is the early return? I guess it makes sense.

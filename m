@@ -1,187 +1,323 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6977505ejc;
-        Wed, 1 Mar 2023 05:50:06 -0800 (PST)
-X-Google-Smtp-Source: AK7set+LIzhS/o38MoJ5ZciP5HK5i/ndub7L/BVJ3GVEFJUs/IARpDEM8Wirpc8aFkVinUN9oEwk
-X-Received: by 2002:ac8:7e82:0:b0:3bf:c994:c9b6 with SMTP id w2-20020ac87e82000000b003bfc994c9b6mr11882596qtj.29.1677678606700;
-        Wed, 01 Mar 2023 05:50:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677678606; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7189051ejc;
+        Wed, 1 Mar 2023 09:03:55 -0800 (PST)
+X-Google-Smtp-Source: AK7set962R6izT/yy0+bJmUkSfHqiX5qxth4D8FOqzy/p/CE0eI8GyiUGWR0GB1X8DLgCJu65wSC
+X-Received: by 2002:ac8:5f08:0:b0:3bd:11a5:c129 with SMTP id x8-20020ac85f08000000b003bd11a5c129mr10183691qta.34.1677690235733;
+        Wed, 01 Mar 2023 09:03:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677690235; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZM3H1IcntDsJ16X8TuYIE3947U6FNy/B1T+uaso+hLiDEk1Dqj9u3yP92rAFDt9xTx
-         XsOZdtBPJ610WdGnHlpPvxVpp45DsvG+XIK6+r+gh0HxvyTfKjkqf3BURf+TOl9prc7g
-         XcMWVECKDluBrdD7HluBFrhnivGRR8LXpK4w60sj//XzKFKG+230M51u0hGhsBBfjLbF
-         Ab94ZlDdWy59pROJVjmZT+yXxb8mnEUmHCXBVMgoWZe6wkmF0DBNJwBJkzQPfCuhsGVJ
-         aw3P3fCKulKBSTduOXx4epKui2FW3jytlraqMLiLL5Y/fW2RC3lSHgHWKELrKVmlqX7v
-         jkcA==
+        b=YiYEr9JrR0IEgeAswL/SL5itP1Aj8lDf0ykGsjBIcWuB4JmMPyAdcB8ktOKhkpsmS5
+         Pv4jjP5TT8eK7boUaDb2pxTpso5Br2BffBfvDC81UUwNBDUmk9Vi4ZRQloah1eYS9e92
+         h9JVV5vnBAZNnUkwD3z6x+guawG9suc4l9e9PxLMLeD98mJeJK1xkTXDscf1e210zVYP
+         omU6mt5y8gCu6BIQu6vFrY1rD6uIcpKRMEtdFMcdMtaTaXcuYJYbPZmS5VZpl3QsR8wN
+         yaSZp880+jm0HVlZ2N//orcotp1tIFWhlvsD/PcYnDZTJT+lwd0EyzWzoHUMIDfyQMfN
+         RLgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=ARl01kO4NQHL5LufhXit3RCoBBsu55tMIA+2UZWr3wE=;
-        b=X+3O/2nfj5/gVkYPRj/A36YdSXF4VjEbi8ywRcOLoNFRslhgYjfbau7unS5K4aXKwF
-         W4IevP8e3syQW+CMXdh6xzrbrLGJOQKANwMPOLWF9dZE+t2uUXtx8IG6IPGEV4geeJCI
-         Gv6njOegUE3Kzezh/P55h2AhxWK9j2mWrH6z53Et80CPRQtfT5HgPbk1TCxW2UVGwr2H
-         CbWZsVQpJFuj8OjEsTwUBux8nXBbrtlbZq9QK9G9rqOPb/WZeaWCJ+IxWBYGlp8SYitK
-         UPWn5M9BvVJfVXMd8zChpHnTgp6OCsWZ69cGk0pjORiGZo0TTlUIDULHZPHxe4vyRIbE
-         jf+w==
+        bh=Mr19QZi7L1E7pg6vpF/yhsdmvgzt83cxZ8+vt+D0rUs=;
+        b=uRQfN5KA/dgLOxwN0SvZX5LtOth/2dIax5q76YhhqSz2tfvosNiJxgCGYJZijKDpHe
+         K14MT6pmN60YmM4JwzgsYKods1Wv58KkEOOJvASnwrIQrFWwi5feZ7k5O1g56lE8qwU7
+         YmCEiCW+vvdMTrXC5/va7I375XGY4mI3U4E1ZauemdCWXahEwiZkkiofdSIINVe1v3Iz
+         3k5Ds4UjzRwF4aq0NbQnx00kfV4cjIRQppBwlG8C7bVgUdNpIiRw4MCsRjSNKyldqWCQ
+         9F2x1C96gCthQ9nbvswPoQ2zOvow6IWzrHSOwRf0yyFmgsDAk3PiUHGV0riOopubk2m9
+         GAng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hLrB8fbi;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id g11-20020ac87d0b000000b003b634a2268esi12166872qtb.643.2023.03.01.05.50.06
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="icJno/dP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g13-20020a05620a40cd00b0071e5e631d8asi12191218qko.739.2023.03.01.09.03.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Mar 2023 05:50:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 01 Mar 2023 09:03:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hLrB8fbi;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677678606;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ARl01kO4NQHL5LufhXit3RCoBBsu55tMIA+2UZWr3wE=;
-	b=hLrB8fbie+YeLsilVON9j7iH1yYvTiR3Ho5A90uK3pRuDoukkKGgbLmk1YpuHNS2S7AGxI
-	+GlOE0pSkrWxgH3UjVHAdQPV2KLmXU4293Mn2TsnmTCghX10ZCcF3lG0Gg7+8zZ8On4EHy
-	A14W+yZEFD9jUH2EIKzhmpiNK0Wgd4s=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-655-H3Y9OooTNZyanPpWrprIkA-1; Wed, 01 Mar 2023 08:50:05 -0500
-X-MC-Unique: H3Y9OooTNZyanPpWrprIkA-1
-Received: by mail-wm1-f72.google.com with SMTP id x18-20020a1c7c12000000b003e1e7d3cf9fso8372026wmc.3
-        for <alex.bennee@linaro.org>; Wed, 01 Mar 2023 05:50:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ARl01kO4NQHL5LufhXit3RCoBBsu55tMIA+2UZWr3wE=;
-        b=gdp8h0e/1r9ILdDw3jo/Ii3sx4IWk46Bv0AZE3u94lGfd+sq6lyYTNg82E7nS19YQ3
-         z9Id02JLtqQowyqTRPPi8rL83UxL5PnaypoioMlN/yA7eCsGtwVYQP3d4XirFsh0JnC/
-         NhUiluPJeDY0koJ9CxrtGbnS5dtUc7vLDoLymmDu65hbtlZisVyw+CIy51o3R0GDAw2V
-         H3vsaLXI4O7Xffgh8vxzQ6VumMlLezzhpdCDoFCQNISYSaiKTHzvUqtr7MVARJejPOHy
-         mVHyEEW1gllzYqrj4VbTWoiOEPbyeHonvFQ/yefUXHnaFQfU+tF18/OHGZZk09So8L+0
-         tsHg==
-X-Gm-Message-State: AO0yUKW+2WmnnwNl4zdxJ8ixhp8jhUV18exOCEl9zAdXckp5sVXGR2YM
-	hRDrCKT5u0/y3hw9wYR9Sa7SBGfFcoOlsHIg7PAnkg5nbzjKljLmEDccyIlHETrwGvPbM/jssFn
-	y+TcOVUdwYo6UAfCU
-X-Received: by 2002:a05:600c:1817:b0:3da:28a9:a900 with SMTP id n23-20020a05600c181700b003da28a9a900mr5151728wmp.41.1677678604165;
-        Wed, 01 Mar 2023 05:50:04 -0800 (PST)
-X-Received: by 2002:a05:600c:1817:b0:3da:28a9:a900 with SMTP id n23-20020a05600c181700b003da28a9a900mr5151715wmp.41.1677678603817;
-        Wed, 01 Mar 2023 05:50:03 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.8.101] (tmo-122-219.customers.d1-online.com. [80.187.122.219])
-        by smtp.gmail.com with ESMTPSA id c20-20020a7bc854000000b003dd1bd66e0dsm15663143wml.3.2023.03.01.05.50.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Mar 2023 05:50:03 -0800 (PST)
-Message-ID: <eae501c0-ae00-e357-e04d-d34832c5a85e@redhat.com>
-Date: Wed, 1 Mar 2023 14:50:01 +0100
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b="icJno/dP";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pXPq7-0002RW-Gp; Wed, 01 Mar 2023 12:02:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPq0-0002Fu-P0; Wed, 01 Mar 2023 12:02:00 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPpy-0000UX-G2; Wed, 01 Mar 2023 12:01:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Mr19QZi7L1E7pg6vpF/yhsdmvgzt83cxZ8+vt+D0rUs=; b=icJno/dPOWBtfADrqLaa280Vp3
+ RlT9ghpXEhSHFpfkwLSQHoYv7tJFg17rs9eaCjtexruMKdqPE1mI/IvX4U+SoEQik6R+aVhSPcieu
+ r5+FRPB2XhGNg/Fwnz9aNPGU8IxO2+Uc9BcwtS3WFXivcK+9EYju3Gs3xgIaI7OWuQx2SzqvD7M31
+ bsDACvtaTcgbe/q5byZUGz5nSpXX6nhyuv8bvkmkCaDx6RD4ssRvlTnYi5IIemNatAiHSIDnaIwt7
+ REJKQKk40LKksdV/MrhvegX1Ys2taEj/ZjrwOvq9UaFi9yYyKI06t596ENUxAr9iDlNoPPSmjnzhI
+ jwYrVZFmtftzsw4rWbfo2/VNPopu2E5hnM5T097F0EkcnBXPXTNZ7sQdaqYoNl7BgOf0oJZRhPUXx
+ 5IZYcXIzVJvWICNxv1oxZ7y4UIGqapsHFQ8vkNAl36IRWyjk/9+kBLLDz5MFgFfijn8mH8gv1jwI0
+ EFI7p48h/wjWjFMdTF4ydoBgNHLd/glenlgsgyuBKTLsALfX3wkza8gZuhPl22wvMN9JpzoQrRz4H
+ 6xDjAp0cHOR3/Ew2so7CAFY114H8+ijjoKwV50cvFVV1Hxbsi8s6QRgMze7eytfFOOLOmx+wRO+Cq
+ ck7egMaX9khjG9KLagqyuL4n5taVmSXfLXIPhZIdg=;
+Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPpD-0002a4-70; Wed, 01 Mar 2023 17:01:11 +0000
+Message-ID: <6031007d-b052-4609-2592-412ffc275497@ilande.co.uk>
+Date: Wed, 1 Mar 2023 17:01:41 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH RESEND v7 9/9] tests/qtest: Fix tests when no KVM or TCG
- are present
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
- Laurent Vivier <lvivier@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-References: <20230228192628.26140-1-farosas@suse.de>
- <20230228192628.26140-10-farosas@suse.de>
- <11be1f6c-2fc3-f6cd-bbf6-c6bdd790dec8@redhat.com> <87v8jkk37n.fsf@suse.de>
- <87o7pck2o7.fsf@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <87o7pck2o7.fsf@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
+ ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
+References: <20230227052505.352889-1-richard.henderson@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20230227052505.352889-1-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: 8H5Zw/aa3Zdt
+X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2 00/76] tcg: Drop tcg_temp_free from translators
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8vaHXvCTbCSM
 
-On 01/03/2023 14.43, Fabiano Rosas wrote:
-> Fabiano Rosas <farosas@suse.de> writes:
+On 27/02/2023 05:23, Richard Henderson wrote:
+
+> Based-on: 20230225085945.1798188-1-richard.henderson@linaro.org
+> ("[PATCH v3 00/30] tcg: Simplify temporary usage")
 > 
->> Thomas Huth <thuth@redhat.com> writes:
->>
->>> On 28/02/2023 20.26, Fabiano Rosas wrote:
->>>> It is possible to have a build with both TCG and KVM disabled due to
->>>> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
->>>> host.
->>>>
->>>> If we build with --disable-tcg on the aarch64 host, we will end-up
->>>> with a QEMU binary (x86) that does not support TCG nor KVM.
->>>>
->>>> Fix tests that crash or hang in the above scenario. Do not include any
->>>> test cases if TCG and KVM are missing.
->>>>
->>>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->>>> ---
->>> ...
->>>> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
->>>> index 3aef3a97a9..45490f5931 100644
->>>> --- a/tests/qtest/boot-serial-test.c
->>>> +++ b/tests/qtest/boot-serial-test.c
->>>> @@ -17,6 +17,9 @@
->>>>    #include "libqtest.h"
->>>>    #include "libqos/libqos-spapr.h"
->>>>    
->>>> +static bool has_tcg;
->>>> +static bool has_kvm;
->>>
->>> Any special reason for putting these here instead of making them local
->>> variables in the main() function?
->>>
->>
->> Yes, Phillipe was doing work in the same file and I put it here to
->> minimize conflicts.
->>
->> https://lore.kernel.org/r/20230119145838.41835-5-philmd@linaro.org
->>
->>>>    static const uint8_t bios_avr[] = {
->>>>        0x88, 0xe0,             /* ldi r24, 0x08   */
->>>>        0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
->>>> @@ -285,6 +288,13 @@ int main(int argc, char *argv[])
->>>>        const char *arch = qtest_get_arch();
->>>>        int i;
->>>>    
->>>> +    has_tcg = qtest_has_accel("tcg");
->>>> +    has_kvm = qtest_has_accel("kvm");
->>>> +
->>>> +    if (!has_tcg && !has_kvm) {
->>>> +        return 0;
->>>> +    }
->>>> +
->>>>        g_test_init(&argc, &argv, NULL);
->>>
->>> Could you please put the new code below the g_test_init() ?
->>> Just to avoid the problem that has been reported here:
->>>
->>>    https://lists.gnu.org/archive/html/qemu-devel/2023-02/msg08331.html
->>>
->>
->> I could, but I don't understand why we need this. What does having
->> "code" before g_test_init() causes? Should I move the qtest_get_arch()
->> that's already there as well?
+> In the above patch set, we changed the lifetime of the temps
+> allocated by the guest translators, and eliminated their reuse,
+> so that we have the best chance of reducing their strength.
 > 
-> Oh, the issue is the early return? I guess it makes sense.
+> That we don't reuse them means that we gain nothing by freeing them.
+> Therefore, drop all mention of tcg_temp_free from target/.
+> 
+> Changes for v2:
+>    * Apply r-b.
+>    * Fix 74/76 "tracing: remove transform.py".
+> 
+> 
+> r~
+> 
+> 
+> Richard Henderson (76):
+>    tcg: Remove tcg_check_temp_count, tcg_clear_temp_count
+>    accel/tcg: Remove translator_loop_temp_check
+>    target/alpha: Drop tcg_temp_free
+>    target/arm: Remove arm_free_cc, a64_free_cc
+>    target/arm: Remove value_global from DisasCompare
+>    target/arm: Drop tcg_temp_free from translator.c
+>    target/arm: Drop DisasContext.tmp_a64
+>    target/arm: Drop new_tmp_a64
+>    target/arm: Drop new_tmp_a64_zero
+>    target/arm: Drop tcg_temp_free from translator-a64.c
+>    target/arm: Drop tcg_temp_free from translator-m-nocp.c
+>    target/arm: Drop tcg_temp_free from translator-mve.c
+>    target/arm: Drop tcg_temp_free from translator-neon.c
+>    target/arm: Drop tcg_temp_free from translator-sme.c
+>    target/arm: Drop tcg_temp_free from translator-sve.c
+>    target/arm: Drop tcg_temp_free from translator-vfp.c
+>    target/arm: Drop tcg_temp_free from translator.h
+>    target/avr: Drop DisasContext.free_skip_var0
+>    target/avr: Drop R from trans_COM
+>    target/avr: Drop tcg_temp_free
+>    target/cris: Drop cris_alu_free_temps
+>    target/cris: Drop cris_alu_m_free_temps
+>    target/cris: Drop addr from dec10_ind_move_m_pr
+>    target/cris: Drop tcg_temp_free
+>    target/hexagon: Drop tcg_temp_free from C code
+>    target/hexagon: Drop tcg_temp_free from gen_tcg_funcs.py
+>    target/hexagon/idef-parser: Drop tcg_temp_free
+>    target/hexagon/idef-parser: Drop HexValue.is_manual
+>    target/hppa: Drop tcg_temp_free
+>    target/i386: Drop tcg_temp_free
+>    target/loongarch: Drop temp_new
+>    target/loongarch: Drop tcg_temp_free
+>    target/m68k: Drop mark_to_release
+>    target/m68k: Drop free_cond
+>    target/m68k: Drop tcg_temp_free
+>    target/microblaze: Drop tcg_temp_free
+>    target/mips: Drop tcg_temp_free from micromips_translate.c.inc
+>    target/mips: Drop tcg_temp_free from mips16e_translate.c.inc
+>    target/mips: Drop tcg_temp_free from msa_translate.c
+>    target/mips: Drop tcg_temp_free from mxu_translate.c
+>    target/mips: Drop tcg_temp_free from nanomips_translate.c.inc
+>    target/mips: Drop tcg_temp_free from octeon_translate.c
+>    target/mips: Drop tcg_temp_free from translate_addr_const.c
+>    target/mips: Drop tcg_temp_free from tx79_translate.c
+>    target/mips: Fix trans_mult_acc return
+>    target/mips: Drop tcg_temp_free from vr54xx_translate.c
+>    target/mips: Drop tcg_temp_free from translate.c
+>    target/nios2: Drop tcg_temp_free
+>    target/openrisc: Drop tcg_temp_free
+>    target/ppc: Drop tcg_temp_free
+>    target/riscv: Drop ftemp_new
+>    target/riscv: Drop temp_new
+>    target/riscv: Drop tcg_temp_free
+>    target/rx: Drop tcg_temp_free
+>    target/s390x: Use tcg_constant_* in local contexts
+>    target/s390x: Use tcg_constant_* for DisasCompare
+>    target/s390x: Use tcg_constant_i32 for fpinst_extract_m34
+>    target/s390x: Use tcg_constant_* in translate_vx.c.inc
+>    target/s390x: Drop free_compare
+>    target/s390x: Drop tcg_temp_free from translate_vx.c.inc
+>    target/s390x: Drop tcg_temp_free from translate.c
+>    target/s390x: Remove assert vs g_in2
+>    target/s390x: Remove g_out, g_out2, g_in1, g_in2 from DisasContext
+>    target/sh4: Drop tcg_temp_free
+>    target/sparc: Drop get_temp_tl
+>    target/sparc: Drop get_temp_i32
+>    target/sparc: Remove egress label in disas_sparc_context
+>    target/sparc: Drop free_compare
+>    target/sparc: Drop tcg_temp_free
+>    target/tricore: Drop tcg_temp_free
+>    target/xtensa: Drop reset_sar_tracker
+>    target/xtensa: Drop tcg_temp_free
+>    include/exec/gen-icount: Drop tcg_temp_free in gen_tb_start
+>    tracing: remove transform.py
+>    tcg: Create tcg/tcg-temp-internal.h
+>    docs/devel/tcg-ops: Drop recommendation to free temps
+> 
+>   docs/devel/tcg-ops.rst                        |   4 -
+>   target/hexagon/idef-parser/README.rst         |   8 -
+>   meson.build                                   |   1 -
+>   include/exec/gen-icount.h                     |   2 -
+>   include/exec/translator.h                     |   2 -
+>   include/tcg/tcg-temp-internal.h               |  83 +++
+>   include/tcg/tcg.h                             |  68 --
+>   target/arm/translate-a64.h                    |   2 -
+>   target/arm/translate.h                        |   7 -
+>   target/hexagon/gen_tcg.h                      |  29 -
+>   target/hexagon/gen_tcg_hvx.h                  |  15 -
+>   target/hexagon/idef-parser/idef-parser.h      |   1 -
+>   target/hexagon/idef-parser/parser-helpers.h   |   4 -
+>   target/hexagon/macros.h                       |   7 -
+>   target/loongarch/translate.h                  |   3 -
+>   accel/tcg/plugin-gen.c                        |   1 +
+>   accel/tcg/translator.c                        |  16 -
+>   target/alpha/translate.c                      |  71 --
+>   target/arm/translate-a64.c                    | 594 ++--------------
+>   target/arm/translate-m-nocp.c                 |  20 -
+>   target/arm/translate-mve.c                    |  52 --
+>   target/arm/translate-neon.c                   | 131 +---
+>   target/arm/translate-sme.c                    |  28 -
+>   target/arm/translate-sve.c                    | 206 +-----
+>   target/arm/translate-vfp.c                    | 193 -----
+>   target/arm/translate.c                        | 281 +-------
+>   target/avr/translate.c                        | 251 -------
+>   target/cris/translate.c                       | 113 ---
+>   target/hexagon/genptr.c                       |  58 --
+>   target/hexagon/idef-parser/parser-helpers.c   | 157 ----
+>   target/hexagon/translate.c                    |   7 -
+>   target/hppa/translate.c                       |  93 +--
+>   target/i386/tcg/translate.c                   |  41 --
+>   target/loongarch/translate.c                  |  21 +-
+>   target/m68k/translate.c                       | 276 +-------
+>   target/microblaze/translate.c                 |  54 --
+>   target/mips/tcg/msa_translate.c               |   9 -
+>   target/mips/tcg/mxu_translate.c               |  51 --
+>   target/mips/tcg/octeon_translate.c            |  23 -
+>   target/mips/tcg/translate.c                   | 537 +-------------
+>   target/mips/tcg/translate_addr_const.c        |   7 -
+>   target/mips/tcg/tx79_translate.c              |  41 --
+>   target/mips/tcg/vr54xx_translate.c            |   6 +-
+>   target/nios2/translate.c                      |  15 -
+>   target/openrisc/translate.c                   |  39 -
+>   target/ppc/translate.c                        | 285 --------
+>   target/riscv/translate.c                      |  61 +-
+>   target/rx/translate.c                         |  84 ---
+>   target/s390x/tcg/translate.c                  | 668 +++++-------------
+>   target/sh4/translate.c                        | 110 ---
+>   target/sparc/translate.c                      | 259 +------
+>   target/tricore/translate.c                    | 540 +-------------
+>   target/xtensa/translate.c                     | 121 +---
+>   tcg/tcg-op-gvec.c                             |   1 +
+>   tcg/tcg-op-vec.c                              |   1 +
+>   tcg/tcg-op.c                                  |   1 +
+>   tcg/tcg.c                                     |  55 +-
+>   target/cris/translate_v10.c.inc               |  49 +-
+>   target/i386/tcg/decode-new.c.inc              |  15 -
+>   target/i386/tcg/emit.c.inc                    |   6 -
+>   target/loongarch/insn_trans/trans_arith.c.inc |  12 -
+>   .../loongarch/insn_trans/trans_atomic.c.inc   |   3 -
+>   target/loongarch/insn_trans/trans_bit.c.inc   |  12 -
+>   target/loongarch/insn_trans/trans_fcmp.c.inc  |   3 -
+>   .../loongarch/insn_trans/trans_fmemory.c.inc  |  20 +-
+>   target/loongarch/insn_trans/trans_fmov.c.inc  |   6 -
+>   .../loongarch/insn_trans/trans_memory.c.inc   |  34 +-
+>   .../insn_trans/trans_privileged.c.inc         |   6 +-
+>   target/loongarch/insn_trans/trans_shift.c.inc |  11 -
+>   target/mips/tcg/micromips_translate.c.inc     |   8 -
+>   target/mips/tcg/mips16e_translate.c.inc       |   6 -
+>   target/mips/tcg/nanomips_translate.c.inc      | 127 +---
+>   target/ppc/power8-pmu-regs.c.inc              |  16 -
+>   target/ppc/translate/dfp-impl.c.inc           |  20 -
+>   target/ppc/translate/fixedpoint-impl.c.inc    |  16 -
+>   target/ppc/translate/fp-impl.c.inc            | 122 +---
+>   target/ppc/translate/spe-impl.c.inc           |  59 --
+>   target/ppc/translate/storage-ctrl-impl.c.inc  |   2 -
+>   target/ppc/translate/vmx-impl.c.inc           | 296 +-------
+>   target/ppc/translate/vsx-impl.c.inc           | 287 +-------
+>   target/riscv/insn_trans/trans_rvb.c.inc       |  24 -
+>   target/riscv/insn_trans/trans_rvd.c.inc       |   2 -
+>   target/riscv/insn_trans/trans_rvf.c.inc       |   9 -
+>   target/riscv/insn_trans/trans_rvi.c.inc       |  37 -
+>   target/riscv/insn_trans/trans_rvk.c.inc       |  15 -
+>   target/riscv/insn_trans/trans_rvm.c.inc       |  33 -
+>   target/riscv/insn_trans/trans_rvv.c.inc       |  55 --
+>   target/riscv/insn_trans/trans_rvzfh.c.inc     |  12 +-
+>   target/riscv/insn_trans/trans_xthead.c.inc    |  24 +-
+>   target/s390x/tcg/translate_vx.c.inc           | 188 +----
+>   scripts/tracetool/__init__.py                 |  23 -
+>   scripts/tracetool/transform.py                | 168 -----
+>   target/hexagon/README                         |   5 -
+>   target/hexagon/gen_tcg_funcs.py               |  79 +--
+>   target/hexagon/idef-parser/idef-parser.y      |  12 -
+>   95 files changed, 471 insertions(+), 7165 deletions(-)
+>   create mode 100644 include/tcg/tcg-temp-internal.h
+>   delete mode 100644 scripts/tracetool/transform.py
 
-Yes, as far as I've undrestood the issue: If we call a function that starts 
-a QEMU subprocess (like qtest_has_device() or qtest_has_accel()), then this 
-could spoil the output since the TAP version from g_test_init() should come 
-first.
+For the SPARC parts:
 
-qtest_get_arch() is not a problem, since it does not start a QEMU subprocess.
+Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-  Thomas
 
+ATB,
+
+Mark.

@@ -1,84 +1,106 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7184707ejc;
-        Wed, 1 Mar 2023 08:59:24 -0800 (PST)
-X-Google-Smtp-Source: AK7set86f/KWBNg+bjEGZ6tcIPL5dV+KEKw/A4PLcPeUe+pP2nsteyd8mcpFsFE5JvN3LE8/7rlH
-X-Received: by 2002:ac8:5bc4:0:b0:3bf:d7f8:4f85 with SMTP id b4-20020ac85bc4000000b003bfd7f84f85mr14441457qtb.12.1677689964760;
-        Wed, 01 Mar 2023 08:59:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677689964; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7188276ejc;
+        Wed, 1 Mar 2023 09:03:21 -0800 (PST)
+X-Google-Smtp-Source: AK7set9pUF9nUB7maHSIlDbWrCOZ4p7bR4F8XSa0DQFJWVOVNke/ZGB0SbL6pVYsFVy6dPTBFpiX
+X-Received: by 2002:a2e:9787:0:b0:295:9659:e323 with SMTP id y7-20020a2e9787000000b002959659e323mr2030162lji.50.1677690201334;
+        Wed, 01 Mar 2023 09:03:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677690201; cv=none;
         d=google.com; s=arc-20160816;
-        b=UpEvQXo3OBSy9KYMypqPw0aLFRW0iX09gh9A9lnW887vpYKXh5XMsmJ+fZ1m4vXRZ4
-         L/wHTyTVtwslQvrTPtC72DEufQGVyDQC4AhWvSRRJfDh7XPZPM7fmCHTvMWFjiRKpJCT
-         bzT6Fmf1A5938KZLWefilVLhyC+C8xyZJ2NEiqTIy7vd/nUHaKDP9X4ZVJ7N6Jo6lPAv
-         LhMOCdEJVvuFrv0N0rHYbATYkaTCEu7yi1KStxubRif5gYL/7F0UmKZTgq1k/+fKdl+W
-         99Ro6SXs7ym7JpU4j1f9RVgv7TJjja7Mj0p42VP/0MuPzmguW3xkFbcrVrMjb1Upo3Fn
-         4ehg==
+        b=d1ug9eLg4FO2oAyzgIsdGDtqyWhwV2vGpHCS4OFLYfREFy+k0YvSIOWuQCeEk2kI19
+         3tPVp/sYINBgjpzFck/GtK2AiZgCZ+1D7aY83lywnu8F3h8KDAo3sStA7+jpRG7nTNNm
+         cMsdOC5IGm4IDhGYfVavpbrpDDk57H8PQcUOeRmTYaLCXyqQ+0849lqAzDBypYYjvtxN
+         hL6mAzWR6etTO98hl0zKU+MamOldKGEdOD19DsFECPyJZ7aPuc8Zq8ykG7Eeg6yIaoie
+         Zs/dZI9/8SzKYophahOm1T96+EwmicRBnAe3AWAV+P7yrSfCfTw28TmmaA3buu1q25qs
+         T5gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=WXgnSl2n/9kLyAnnyQ/FBhaZmAMxALv70qrF85KJVK4=;
-        b=x2m/mCsUUhMTfjKeEEf4d+ILdcC1uX5m7+mOlEHcX+LBRkFN8v3MJZMa3Ewg2e1wq6
-         yVKXfxd/IDVSgTKrRKZlXKzTSXWCcjtTlj7c4E39/tOI5pue43YJHGS2OKfFH1YcWQvL
-         OaT3nmwy0hRoWKXNeJJmnVmcaqmsA6QzEvDdcg9r3LIncSXE62DNbFBqyqlfSh9BYzSZ
-         Bk9RJW8+Nzfmh1XKqTBLSZuONmXRJMxcWQkOxStpppsce13N4OmD1BD5zzf+Lbn/lbEE
-         oQMdAXtV9CLL7Siakb2sb6R5Nx+nsycuUOjlOYTnSXZcVjF1mUZjlzhAnbyAZaTgN9e2
-         Me4A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=xZKM4q0f9aPHbo0kvvOKBzsA2Iuo1Vk6cQ0bSvg/CRY=;
+        b=w3DsGajxlLIgTgdUPDg4C1bKhojQ+euzZtdjP9foKzwUO+2KjRTudhlIOUwE6Zjxb8
+         ywU6g0L5ojs46u036bFpbCxyyrTvRwLO2gr1PpPfWdCV3ik0wMhyjV/L9Y6xoegATbZH
+         q+mFgNgzJJ0+lslEWshUyrA5BPqbJyNKQa/DQp28vkQ3nuVFrCjbtH0//haNHbY5JzVx
+         bWGrLJCf2vUB2z6NUinJez+DDNJhTGNHmL47Qqc0TPMjTiDvrXPSPhdLcKIjpG2D0XTo
+         F2B7QP/Hs/uJ7T2CwRnezrgtynKSa1McG/1GrDzNIBY15tWs20G5CUyyk2RouQrgyXTW
+         yNQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=05+FCQzc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z18-20020a05622a061200b003b63338abc6si12099183qta.12.2023.03.01.08.59.24
+        by mx.google.com with ESMTPS id w6-20020a2e9986000000b00295a33e92b5si6378703lji.61.2023.03.01.09.03.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 08:59:24 -0800 (PST)
+        Wed, 01 Mar 2023 09:03:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=05+FCQzc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXPl5-0000hs-AL; Wed, 01 Mar 2023 11:56:51 -0500
+	id 1pXPrC-0004EX-3N; Wed, 01 Mar 2023 12:03:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPl4-0000hK-BO; Wed, 01 Mar 2023 11:56:50 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPr3-00044Q-V0; Wed, 01 Mar 2023 12:03:02 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPl2-0007eu-C1; Wed, 01 Mar 2023 11:56:50 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPV0Zn6z4xDl;
- Thu,  2 Mar 2023 03:56:46 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgPR5lvlz4x5Y;
- Thu,  2 Mar 2023 03:56:43 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>,
- Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 05/11] hw/arm/aspeed: Adding new machine Yosemitev2 in QEMU
-Date: Wed,  1 Mar 2023 17:56:13 +0100
-Message-Id: <20230301165619.2171090-6-clg@kaod.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230301165619.2171090-1-clg@kaod.org>
-References: <20230301165619.2171090-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPr1-0000hF-Mm; Wed, 01 Mar 2023 12:03:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=xZKM4q0f9aPHbo0kvvOKBzsA2Iuo1Vk6cQ0bSvg/CRY=; b=05+FCQzcws4DRtv04vJJfghpkk
+ f0lJoH4NLVgn8UXUwXJJ7Sh2KIrCq48CYgkHR5weDHeO7mKGnUgl4dGaT5kUKXJpPb5TIWNbiv2kA
+ TktqfrM6OhcEUQ1FRFuZJ5oYn3tvoMTM5b4T7FUGcoNMNbLUX/a58CyGvwyNJYGqVbXmNJsrHLh8h
+ gSKJkpRgVH50ozcOqnUqpH2WNqecnKmV8oF8MXF4IMNaa2sfbVBIYEvyRD0GvgEFP8nOznXsUx+Xj
+ +KkDQhe0CXDYJrxefGBiX1tupi5gHLe/AOQ7IuGpp2cBi7MsAstZrIZz1RGcNjeLoijtRQ067phLC
+ FeCnv7AXGdSykfj/dRD2H7b7vTsAzXosNb77Z4fs8co0HAyJstJNSDTcKabt4P+op6W5PCMhAcBh/
+ YgIrMORqAT38om2Xgwb9w25XIqS6Jt2nS/4DLJz0P0oMDBDDv/nl5hv5Q0RoR2tpVo8Ewonco/Ewb
+ W8zzf9Gj7fInyuLPkj2L9PLXiNsAV880yPe2KgX9tHuswCe3IiuzSZLsC75K6YS7vmO8n9ff/OyiQ
+ 0Tf7iE0JesikxIsefSqN5/ywrzMnMyh2Mwewg3YZ08ECjz+BMUN3IPdGyGwhb+YgJu+q1P48Rcy0k
+ Uhupy3+8lo/yp69YoUGHBQxP9EcYnG6+qAgTZ9Qqw=;
+Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPqF-0002bA-4K; Wed, 01 Mar 2023 17:02:15 +0000
+Message-ID: <195c75eb-136d-57d9-cf08-bbfc339cac51@ilande.co.uk>
+Date: Wed, 1 Mar 2023 17:02:44 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=znpK=6Z=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
+ ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
+References: <20230227054233.390271-1-richard.henderson@linaro.org>
+ <20230227054233.390271-56-richard.henderson@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20230227054233.390271-56-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 55/70] target/sparc: Avoid tcg_const_{tl,i32}
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,141 +115,292 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yGegYmvvfMf8
+X-TUID: /ydZXJaxxmrQ
 
-From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+On 27/02/2023 05:42, Richard Henderson wrote:
 
-This patch support Yosemitev2 in QEMU environment.
-and introduced EEPROM BMC FRU data support "add fbyv2_bmc_fruid data"
-along with the machine support.
+> All remaining uses are strictly read-only.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/sparc/translate.c | 80 +++++++++++++++++++---------------------
+>   1 file changed, 38 insertions(+), 42 deletions(-)
+> 
+> diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+> index 925023adef..137bdc5159 100644
+> --- a/target/sparc/translate.c
+> +++ b/target/sparc/translate.c
+> @@ -550,7 +550,7 @@ static inline void gen_op_mulscc(TCGv dst, TCGv src1, TCGv src2)
+>       if (!(env->y & 1))
+>           T1 = 0;
+>       */
+> -    zero = tcg_const_tl(0);
+> +    zero = tcg_constant_tl(0);
+>       tcg_gen_andi_tl(cpu_cc_src, src1, 0xffffffff);
+>       tcg_gen_andi_tl(r_temp, cpu_y, 0x1);
+>       tcg_gen_andi_tl(cpu_cc_src2, src2, 0xffffffff);
+> @@ -928,8 +928,8 @@ static void gen_branch_n(DisasContext *dc, target_ulong pc1)
+>           tcg_gen_mov_tl(cpu_pc, cpu_npc);
+>   
+>           tcg_gen_addi_tl(cpu_npc, cpu_npc, 4);
+> -        t = tcg_const_tl(pc1);
+> -        z = tcg_const_tl(0);
+> +        t = tcg_constant_tl(pc1);
+> +        z = tcg_constant_tl(0);
+>           tcg_gen_movcond_tl(TCG_COND_NE, cpu_npc, cpu_cond, z, t, cpu_npc);
+>   
+>           dc->pc = DYNAMIC_PC;
+> @@ -938,9 +938,9 @@ static void gen_branch_n(DisasContext *dc, target_ulong pc1)
+>   
+>   static inline void gen_generic_branch(DisasContext *dc)
+>   {
+> -    TCGv npc0 = tcg_const_tl(dc->jump_pc[0]);
+> -    TCGv npc1 = tcg_const_tl(dc->jump_pc[1]);
+> -    TCGv zero = tcg_const_tl(0);
+> +    TCGv npc0 = tcg_constant_tl(dc->jump_pc[0]);
+> +    TCGv npc1 = tcg_constant_tl(dc->jump_pc[1]);
+> +    TCGv zero = tcg_constant_tl(0);
+>   
+>       tcg_gen_movcond_tl(TCG_COND_NE, cpu_npc, cpu_cond, zero, npc0, npc1);
+>   }
+> @@ -981,18 +981,14 @@ static inline void save_state(DisasContext *dc)
+>   
+>   static void gen_exception(DisasContext *dc, int which)
+>   {
+> -    TCGv_i32 t;
+> -
+>       save_state(dc);
+> -    t = tcg_const_i32(which);
+> -    gen_helper_raise_exception(cpu_env, t);
+> +    gen_helper_raise_exception(cpu_env, tcg_constant_i32(which));
+>       dc->base.is_jmp = DISAS_NORETURN;
+>   }
+>   
+>   static void gen_check_align(TCGv addr, int mask)
+>   {
+> -    TCGv_i32 r_mask = tcg_const_i32(mask);
+> -    gen_helper_check_align(cpu_env, addr, r_mask);
+> +    gen_helper_check_align(cpu_env, addr, tcg_constant_i32(mask));
+>   }
+>   
+>   static inline void gen_mov_pc_npc(DisasContext *dc)
+> @@ -1074,7 +1070,7 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+>           cmp->cond = logic_cond[cond];
+>       do_compare_dst_0:
+>           cmp->is_bool = false;
+> -        cmp->c2 = tcg_const_tl(0);
+> +        cmp->c2 = tcg_constant_tl(0);
+>   #ifdef TARGET_SPARC64
+>           if (!xcc) {
+>               cmp->c1 = tcg_temp_new();
+> @@ -1127,7 +1123,7 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
+>           cmp->cond = TCG_COND_NE;
+>           cmp->is_bool = true;
+>           cmp->c1 = r_dst = tcg_temp_new();
+> -        cmp->c2 = tcg_const_tl(0);
+> +        cmp->c2 = tcg_constant_tl(0);
+>   
+>           switch (cond) {
+>           case 0x0:
+> @@ -1192,7 +1188,7 @@ static void gen_fcompare(DisasCompare *cmp, unsigned int cc, unsigned int cond)
+>       cmp->cond = TCG_COND_NE;
+>       cmp->is_bool = true;
+>       cmp->c1 = r_dst = tcg_temp_new();
+> -    cmp->c2 = tcg_const_tl(0);
+> +    cmp->c2 = tcg_constant_tl(0);
+>   
+>       switch (cc) {
+>       default:
+> @@ -1307,7 +1303,7 @@ static void gen_compare_reg(DisasCompare *cmp, int cond, TCGv r_src)
+>       cmp->cond = tcg_invert_cond(gen_tcg_cond_reg[cond]);
+>       cmp->is_bool = false;
+>       cmp->c1 = r_src;
+> -    cmp->c2 = tcg_const_tl(0);
+> +    cmp->c2 = tcg_constant_tl(0);
+>   }
+>   
+>   static inline void gen_cond_reg(TCGv r_dst, int cond, TCGv r_src)
+> @@ -1908,7 +1904,7 @@ static void gen_swap(DisasContext *dc, TCGv dst, TCGv src,
+>   
+>   static void gen_ldstub(DisasContext *dc, TCGv dst, TCGv addr, int mmu_idx)
+>   {
+> -    TCGv m1 = tcg_const_tl(0xff);
+> +    TCGv m1 = tcg_constant_tl(0xff);
+>       gen_address_mask(dc, addr);
+>       tcg_gen_atomic_xchg_tl(dst, addr, m1, mmu_idx, MO_UB);
+>   }
+> @@ -2163,8 +2159,8 @@ static void gen_ld_asi(DisasContext *dc, TCGv dst, TCGv addr,
+>           break;
+>       default:
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(memop);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(memop);
+>   
+>               save_state(dc);
+>   #ifdef TARGET_SPARC64
+> @@ -2217,7 +2213,7 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
+>           {
+>               TCGv saddr = tcg_temp_new();
+>               TCGv daddr = tcg_temp_new();
+> -            TCGv four = tcg_const_tl(4);
+> +            TCGv four = tcg_constant_tl(4);
+>               TCGv_i32 tmp = tcg_temp_new_i32();
+>               int i;
+>   
+> @@ -2236,8 +2232,8 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
+>   #endif
+>       default:
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(memop & MO_SIZE);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(memop & MO_SIZE);
+>   
+>               save_state(dc);
+>   #ifdef TARGET_SPARC64
+> @@ -2313,15 +2309,15 @@ static void gen_ldstub_asi(DisasContext *dc, TCGv dst, TCGv addr, int insn)
+>           if (tb_cflags(dc->base.tb) & CF_PARALLEL) {
+>               gen_helper_exit_atomic(cpu_env);
+>           } else {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(MO_UB);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UB);
+>               TCGv_i64 s64, t64;
+>   
+>               save_state(dc);
+>               t64 = tcg_temp_new_i64();
+>               gen_helper_ld_asi(t64, cpu_env, addr, r_asi, r_mop);
+>   
+> -            s64 = tcg_const_i64(0xff);
+> +            s64 = tcg_constant_i64(0xff);
+>               gen_helper_st_asi(cpu_env, addr, s64, r_asi, r_mop);
+>   
+>               tcg_gen_trunc_i64_tl(dst, t64);
+> @@ -2382,7 +2378,7 @@ static void gen_ldf_asi(DisasContext *dc, TCGv addr,
+>   
+>               /* The first operation checks required alignment.  */
+>               memop = da.memop | MO_ALIGN_64;
+> -            eight = tcg_const_tl(8);
+> +            eight = tcg_constant_tl(8);
+>               for (i = 0; ; ++i) {
+>                   tcg_gen_qemu_ld_i64(cpu_fpr[rd / 2 + i], addr,
+>                                       da.mem_idx, memop);
+> @@ -2409,8 +2405,8 @@ static void gen_ldf_asi(DisasContext *dc, TCGv addr,
+>   
+>       default:
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
+>   
+>               save_state(dc);
+>               /* According to the table in the UA2011 manual, the only
+> @@ -2491,7 +2487,7 @@ static void gen_stf_asi(DisasContext *dc, TCGv addr,
+>   
+>               /* The first operation checks required alignment.  */
+>               memop = da.memop | MO_ALIGN_64;
+> -            eight = tcg_const_tl(8);
+> +            eight = tcg_constant_tl(8);
+>               for (i = 0; ; ++i) {
+>                   tcg_gen_qemu_st_i64(cpu_fpr[rd / 2 + i], addr,
+>                                       da.mem_idx, memop);
+> @@ -2566,8 +2562,8 @@ static void gen_ldda_asi(DisasContext *dc, TCGv addr, int insn, int rd)
+>              real hardware allows others.  This can be seen with e.g.
+>              FreeBSD 10.3 wrt ASI_IC_TAG.  */
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
+>               TCGv_i64 tmp = tcg_temp_new_i64();
+>   
+>               save_state(dc);
+> @@ -2625,8 +2621,8 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
+>           /* ??? In theory we've handled all of the ASIs that are valid
+>              for stda, and this should raise DAE_invalid_asi.  */
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
+>               TCGv_i64 t64 = tcg_temp_new_i64();
+>   
+>               /* See above.  */
+> @@ -2686,8 +2682,8 @@ static void gen_ldda_asi(DisasContext *dc, TCGv addr, int insn, int rd)
+>           break;
+>       default:
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(MO_UQ);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UQ);
+>   
+>               save_state(dc);
+>               gen_helper_ld_asi(t64, cpu_env, addr, r_asi, r_mop);
+> @@ -2724,7 +2720,7 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
+>              as a cacheline-style operation.  */
+>           {
+>               TCGv d_addr = tcg_temp_new();
+> -            TCGv eight = tcg_const_tl(8);
+> +            TCGv eight = tcg_constant_tl(8);
+>               int i;
+>   
+>               tcg_gen_andi_tl(d_addr, addr, -8);
+> @@ -2736,8 +2732,8 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
+>           break;
+>       default:
+>           {
+> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
+> -            TCGv_i32 r_mop = tcg_const_i32(MO_UQ);
+> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
+> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UQ);
+>   
+>               save_state(dc);
+>               gen_helper_st_asi(cpu_env, addr, t64, r_asi, r_mop);
+> @@ -2786,7 +2782,7 @@ static void gen_fmovs(DisasContext *dc, DisasCompare *cmp, int rd, int rs)
+>       s1 = gen_load_fpr_F(dc, rs);
+>       s2 = gen_load_fpr_F(dc, rd);
+>       dst = gen_dest_fpr_F(dc);
+> -    zero = tcg_const_i32(0);
+> +    zero = tcg_constant_i32(0);
+>   
+>       tcg_gen_movcond_i32(TCG_COND_NE, dst, c32, zero, s1, s2);
+>   
+> @@ -3215,7 +3211,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+>                           TCGv_i32 r_const;
+>   
+>                           r_tickptr = tcg_temp_new_ptr();
+> -                        r_const = tcg_const_i32(dc->mem_idx);
+> +                        r_const = tcg_constant_i32(dc->mem_idx);
+>                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
+>                                          offsetof(CPUSPARCState, tick));
+>                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
+> @@ -3267,7 +3263,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+>                           TCGv_i32 r_const;
+>   
+>                           r_tickptr = tcg_temp_new_ptr();
+> -                        r_const = tcg_const_i32(dc->mem_idx);
+> +                        r_const = tcg_constant_i32(dc->mem_idx);
+>                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
+>                                          offsetof(CPUSPARCState, stick));
+>                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
+> @@ -3397,7 +3393,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+>                           TCGv_i32 r_const;
+>   
+>                           r_tickptr = tcg_temp_new_ptr();
+> -                        r_const = tcg_const_i32(dc->mem_idx);
+> +                        r_const = tcg_constant_i32(dc->mem_idx);
+>                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
+>                                          offsetof(CPUSPARCState, tick));
+>                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
 
-Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: - commit log topic update
-       - Documentation update ]
-Message-Id: <20230216133326.216017-1-pkarthikeyan1509@gmail.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- docs/system/arm/aspeed.rst |  1 +
- hw/arm/aspeed_eeprom.h     |  3 +++
- hw/arm/aspeed.c            | 31 +++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c     | 23 +++++++++++++++++++++++
- 4 files changed, 58 insertions(+)
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 6c5b05128e..1d69b68591 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -24,6 +24,7 @@ AST2500 SoC based machines :
- - ``sonorapass-bmc``       OCP SonoraPass BMC
- - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
- - ``g220a-bmc``            Bytedance G220A BMC
-+- ``yosemitev2-bmc``       Facebook YosemiteV2 BMC
- 
- AST2600 SoC based machines :
- 
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index a0f848fa6e..edf18e9685 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -16,4 +16,7 @@ extern const size_t fby35_nic_fruid_len;
- extern const size_t fby35_bb_fruid_len;
- extern const size_t fby35_bmc_fruid_len;
- 
-+extern const uint8_t yosemitev2_bmc_fruid[];
-+extern const size_t yosemitev2_bmc_fruid_len;
-+
- #endif
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 27dda58338..3f992fea46 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -521,6 +521,15 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
-                      TYPE_TMP105, 0x4d);
- }
- 
-+static void yosemitev2_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x51, 128 * KiB);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 128 * KiB,
-+                          yosemitev2_bmc_fruid, yosemitev2_bmc_fruid_len);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -1174,6 +1183,24 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_yosemitev2_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook YosemiteV2 BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
-+    amc->hw_strap2 = 0;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = yosemitev2_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1562,6 +1589,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_yosemitev2_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index 04463acc9d..7006794654 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -77,6 +77,29 @@ const uint8_t fby35_bmc_fruid[] = {
-     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
- };
- 
-+/* Yosemite V2 BMC FRU */
-+const uint8_t yosemitev2_bmc_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
-+    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
-+    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-+    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
-+    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-+    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
-+};
-+
- const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
- const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
- const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
-+
-+const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
--- 
-2.39.2
 
+ATB,
+
+Mark.

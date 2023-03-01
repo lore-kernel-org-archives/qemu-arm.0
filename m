@@ -1,224 +1,182 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6100052ejc;
-        Tue, 28 Feb 2023 11:29:07 -0800 (PST)
-X-Google-Smtp-Source: AK7set8yUosfF7nV/Yr4juHGhA3DKBZu3+nWmZFECwGV0zlcS6AnWro8TMcFqRFfpIPjY+Cwne2A
-X-Received: by 2002:a5d:6844:0:b0:2c7:a39:6e2d with SMTP id o4-20020a5d6844000000b002c70a396e2dmr2732851wrw.67.1677612547682;
-        Tue, 28 Feb 2023 11:29:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677612547; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6651640ejc;
+        Tue, 28 Feb 2023 23:46:55 -0800 (PST)
+X-Received: by 2002:a17:906:190b:b0:8f2:da10:c69e with SMTP id a11-20020a170906190b00b008f2da10c69emr6419484eje.52.1677656815763;
+        Tue, 28 Feb 2023 23:46:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677656815; cv=none;
         d=google.com; s=arc-20160816;
-        b=qGPPbeMDOYuE0AqS4pBdIUv9vYc/xIXD/WwIWuGiNXjRxvSXhyWAFSZ+IWmHY0+CnP
-         LCoSfA0k0L53s3wZA15iCMvi4Tu6dU7jQBmkKGhTYbFOfQE6oib+4mjQzLw3NgQl0PUJ
-         sJ7hH+fzpIMbvI8DoSUHvhKyrz3bdDFFd7YMgcCNLgalfcnAHvvef5JbhuyOdyLZNtoA
-         r3VS18aNdOe4JOm3T/doeRKTCQOVfEzAxwXCxgKNci9GJmBGV9vEwtJ91LZqInvyvFnG
-         8OcstUahFwDIW81zMrjIJuig/RiAQUhFBFUWN3O3j0zjUGKTtUpg0PL/MJ0m+WVxQvr4
-         euCA==
+        b=R9xUo02+NOam9n0M8S+nDmZvaBgIszkrvywTH3uPvN9wFTx4BaJoSoltOpaFhaI+uY
+         5ZnO9bevlkNCNH59wK/drQaq+fZyuL3Wjn8WIdtuyzLgOlSvCAsR1vVlNp1UnmMfckZU
+         xaE3BTDBxeveCIjdk6GptD/oHSZ0OmAKB24bGdUf9mskKEYW2RzGt6RG77qLCRY8mkG0
+         7yjnBLHj6F94fBYp991Lcf0JiDQD+WkFJs+hQnreVo52xlSAgk/4tGB+DlW6QnN5p2mS
+         KSQpKSo4dZUm0rkt5pJevh/BMhmYHQeSqAYdvJwOrxihm+WGmbg9p3FB3oKYmquf1bGp
+         n32w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-        b=GCUcpEqZO9gDsupG6dD04LFpLM+67ijm8qQXanFhVFK0Jzx+Hq2b4UIhm+RJnKasNf
-         jt4Yy7REQY+4q/qSyY5cAjgKeBPLtC5ubPm747qms9hBJ84/3bNNauSmi3zP05RXym8+
-         LCTsND93Ykq+C93ZIKtv6a5nO+bRSt3U4bLxxNjzVQhmhSLaaXub5SGlwZ552JCV3nM8
-         OQ5Bohjb/ZpZTpy7F3sqnnNnjplcvRpPoZQmue3LhSNIijtDPQtFif/QDOFSwt88jN39
-         fv4dEtb2M3kyHAxTtBsC2C1eAGXSbp6+dijnMgDE15AS/amp9SOqULIVpo8adN08Ij5o
-         FB3Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Cfq7VAbovSYEGhbTr8+sp2WCCI5QenroDgBC6jwW7mY=;
+        b=z2sQRudWn8xl2MmcJqnXCtj1+Y6/TAgdlg9jN8rxoPbWcIhks++8/DzRAP/sjD4M6H
+         qciicUjin0+LwKXGWlIRdxxwN69MHp6FoSCRfOa3vpfXCh5T1oR5gjFZqTrTXwMEkRFx
+         0HKNX2Fn0fkSG40kxjwkz/M4JnbrfcvIQBx+/Z4XdITIKlMa0pghN3XikBLTWSsOj1PN
+         7Fk78lvOeiUDj9bf9kIHPFWo2tG1spBPKDrmJxRWBJazS/XV380msGJFdOXRtoAeL48j
+         sV8N+H0JrUHCwxkkpJ5TMRlZPwr4waE41/bFKxo8Yy3V7IkZcoVitZEtU+jpmeRuwkBe
+         Kyzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=MmI+AY9V;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4jsoDVNm;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id g16-20020a5d46d0000000b002c54d18e8f9si9998096wrs.88.2023.02.28.11.29.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Feb 2023 11:29:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b="zEstVKS/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
+Return-Path: <wlosh@bsdimp.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y13-20020a170906914d00b008ed90f08125sor6381135ejw.66.2023.02.28.23.46.55
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 28 Feb 2023 23:46:55 -0800 (PST)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=MmI+AY9V;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=4jsoDVNm;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 4EBB91FDEF;
-	Tue, 28 Feb 2023 19:29:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1677612547; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-	b=MmI+AY9VDxZ6HRaquiMo1c9BiUqGUyX1/xOVubGxdfpXHbTbfPtzstZhpT8ozG5oUAJMYa
-	nNU/epdC9iKrqbZraQnd1rODT+Rue3PDFWwzC0ksyYOmXvMTb8JZ7HjBCKdEwwYQsk8W16
-	whYcIN/dZoNHtkJKU8Zi1w0tWYv8xAI=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1677612547;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=IZIy8Z3iGPcCgRkuMHF+6DkhbdLUaHXoLVg5l0Z77Vk=;
-	b=4jsoDVNmNAhzQlQoGcwt/2F5hTZQGNsn505ZYYON9ASM9x6HF5L75J+fLso5TJSCFcaety
-	kUhamn91KDUJHUBg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D7C661333C;
-	Tue, 28 Feb 2023 19:29:02 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id GGeQJ/5V/mNBagAAMHmgww
-	(envelope-from <farosas@suse.de>); Tue, 28 Feb 2023 19:29:02 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Ani Sinha <ani@anisinha.ca>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH RESEND v7 9/9] tests/qtest: Fix tests when no KVM or TCG are present
-Date: Tue, 28 Feb 2023 16:26:28 -0300
-Message-Id: <20230228192628.26140-10-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230228192628.26140-1-farosas@suse.de>
-References: <20230228192628.26140-1-farosas@suse.de>
+       dkim=pass header.i=@bsdimp-com.20210112.gappssmtp.com header.s=20210112 header.b="zEstVKS/";
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of wlosh@bsdimp.com) smtp.mailfrom=wlosh@bsdimp.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bsdimp-com.20210112.gappssmtp.com; s=20210112; t=1677656815;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Cfq7VAbovSYEGhbTr8+sp2WCCI5QenroDgBC6jwW7mY=;
+        b=zEstVKS/Z5vha8LsphOuaTag7FUglNdwKD021RCr5SUvVkHEczdn1DWKuFM2dg3nha
+         JsxNpSZQv4o0bz9XajPO7kBAXW94Tt7mKVkddv+zJIOlRj2XjhESQPf0CSQBMH9T5bP7
+         2pAU4ozocqkZriv4mZvR658u7hoGJTjzdpjRUJh6EpSv1mej0rQ9n6LoRO1OecODKkOu
+         guSrRGcxY8aX04vbR5m4wL+H8lIVf7TCRJArQYNdoKhLkl1SmRmNp3sehXLrVLXQxZtA
+         3liJXpnLCDVMzUhmc2Kzv/O2iXrtpRKLG4U8orl7bEIhFcleD9oxTkivgbNAyn0Ok89o
+         Fbfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1677656815;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Cfq7VAbovSYEGhbTr8+sp2WCCI5QenroDgBC6jwW7mY=;
+        b=6yR/wdIzazbc0Q96mqQ/RWgP4IjUcdMm8IL+m4zhLKYsPskZp6QOwWhKTFBny8b/pF
+         Fg2fBOmrLwgNfdmsu7BbMzQJDEEbReaA2oJkggQWBT9FsyWZLI1NEePFj3fz1G5UYbh6
+         i9IwBloPjNUJSD0voKWVcKcu5nvHbVlCHYvGGIzryIkDuJYL2X1Quy5HIlnd4nssR9zo
+         rvoPGU9OL7QyzbXzhC+fA4cCov19ShYXuuVPycMlO7YgaXUOKvgSxQnWgIH7AV3ujKHw
+         C9u8B++1VN2vvW1yhHWZrcgz47kOPbuJdUUMhvxOsUWHRmcdF13UkmV1QgNBAHAKcQB1
+         +Xgw==
+X-Gm-Message-State: AO0yUKV3thhHVKiLRoDxgnLs0OoDLxFkgrwBeZXxDa4tfpnNmgoIa/MQ
+	tDwHFddvlOt0xyKwN4ICKtu3WN0K+UCbI1kKwtnAAA==
+X-Google-Smtp-Source: AK7set96k+5nSlBDhxrzgJTFNfFejbYzJ9QxIgrHSF+mJN22yC5dkY07Y1PoiKTk9vEeEAwybYN7rOTzg/E29xdw+m8=
+X-Received: by 2002:a17:906:7199:b0:8b1:3298:c587 with SMTP id
+ h25-20020a170906719900b008b13298c587mr2782109ejk.2.1677656815203; Tue, 28 Feb
+ 2023 23:46:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: dD6BMT73vT59
+References: <20230227111050.54083-1-thuth@redhat.com> <Y/z4rwv09Ckhbtfp@redhat.com>
+ <001bedba-b12f-4dd8-0866-7ccb9ce877d0@redhat.com> <Y/3C+jC3Lk5MJxfu@redhat.com>
+ <99a83e65-273a-ea1b-e7d9-bbdd8ca32145@redhat.com> <20230228162938-mutt-send-email-mst@kernel.org>
+ <87lekg53gn.fsf@pond.sub.org>
+In-Reply-To: <87lekg53gn.fsf@pond.sub.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Wed, 1 Mar 2023 00:46:44 -0700
+Message-ID: <CANCZdfpdjBk63BVFqA3E3BJCkdgX0Z53G_=ktwKYLqHbgXxhqw@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Deprecate support for 32-bit x86 and arm hosts
+To: Markus Armbruster <armbru@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Maxim Levitsky <mlevitsk@redhat.com>, libvir-list@redhat.com, 
+	Richard Henderson <richard.henderson@linaro.org>, xen-devel@lists.xenproject.org, 
+	Reinoud Zandijk <reinoud@netbsd.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000086894d05f5d1ea38"
+X-TUID: BYxePPATsL3w
 
-It is possible to have a build with both TCG and KVM disabled due to
-Xen requiring the i386 and x86_64 binaries to be present in an aarch64
-host.
+--00000000000086894d05f5d1ea38
+Content-Type: text/plain; charset="UTF-8"
 
-If we build with --disable-tcg on the aarch64 host, we will end-up
-with a QEMU binary (x86) that does not support TCG nor KVM.
+On Wed, Mar 1, 2023, 12:36 AM Markus Armbruster <armbru@redhat.com> wrote:
 
-Fix tests that crash or hang in the above scenario. Do not include any
-test cases if TCG and KVM are missing.
+> "Michael S. Tsirkin" <mst@redhat.com> writes:
+>
+> > On Tue, Feb 28, 2023 at 09:05:16PM +0100, Thomas Huth wrote:
+> >> Well, without CI, I assume that the code will bitrot quite fast
+> (considering
+> >> that there are continuous improvements to TCG, for example).
+> >
+> > We have lots of hosts which we don't test with CI.  They don't bitrot
+> > because people do testing before release. This is what RCs are for.
+> > We did releases before CI - it is a cost/benefit thing.
+>
+> Dropping 32-bit x86 from CI feels like a no-brainer in the current
+> situation.
+>
+> As to deprecating 32-bit x86: the people by far most qualified to judge
+> the "cost/benefit thing" are the regulars who are bearing the cost,
+> i.e. the people who are actually maintaining it.  Their opinion should
+> overrule any "but somebody out there might still want to use it".
+>
+> Maintainers, please state your opinion, if any: aye or nay.
+>
+> Richard tells us "the maint overhead is large."  Makes me think he's in
+> favour of dropping 32-bit x86.  Richard?
+>
+> Peter seems to be reluctant to drop 32-bit ARM at this point.  Peter?
+>
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
-This currently affects Arm, but will also affect x86 after the xenpvh
-series gets merged. This patch fixes both scenarios.
----
- tests/qtest/bios-tables-test.c |  4 ++++
- tests/qtest/boot-serial-test.c | 10 ++++++++++
- tests/qtest/migration-test.c   |  5 +++++
- tests/qtest/pxe-test.c         |  6 ++++++
- tests/qtest/vmgenid-test.c     |  6 ++++++
- 5 files changed, 31 insertions(+)
+For FreeBSD systen we have no 32bit arm host users. There may be a few i386
+host users left, but they are a tiny sliver of users. The overwhelming bulk
+of our users for qemu-system- are on x86-64 or aarch64 hosts.
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index d29a4e47af..f6c2a010d2 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2114,6 +2114,10 @@ int main(int argc, char *argv[])
-     char *v_env = getenv("V");
-     int ret;
- 
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     if (v_env) {
-         verbosity_level = atoi(v_env);
-     }
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index 3aef3a97a9..45490f5931 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -17,6 +17,9 @@
- #include "libqtest.h"
- #include "libqos/libqos-spapr.h"
- 
-+static bool has_tcg;
-+static bool has_kvm;
-+
- static const uint8_t bios_avr[] = {
-     0x88, 0xe0,             /* ldi r24, 0x08   */
-     0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
-@@ -285,6 +288,13 @@ int main(int argc, char *argv[])
-     const char *arch = qtest_get_arch();
-     int i;
- 
-+    has_tcg = qtest_has_accel("tcg");
-+    has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     g_test_init(&argc, &argv, NULL);
- 
-     for (i = 0; tests[i].arch != NULL; i++) {
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index 109bc8e7b1..a6e3ca9f7d 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -2460,11 +2460,16 @@ static bool kvm_dirty_ring_supported(void)
- int main(int argc, char **argv)
- {
-     const bool has_kvm = qtest_has_accel("kvm");
-+    const bool has_tcg = qtest_has_accel("tcg");
-     const bool has_uffd = ufd_version_check();
-     const char *arch = qtest_get_arch();
-     g_autoptr(GError) err = NULL;
-     int ret;
- 
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
-+
-     g_test_init(&argc, &argv, NULL);
- 
-     /*
-diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
-index 62b6eef464..05575f7687 100644
---- a/tests/qtest/pxe-test.c
-+++ b/tests/qtest/pxe-test.c
-@@ -130,6 +130,12 @@ int main(int argc, char *argv[])
- {
-     int ret;
-     const char *arch = qtest_get_arch();
-+    bool has_tcg = qtest_has_accel("tcg");
-+    bool has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
- 
-     ret = boot_sector_init(disk);
-     if(ret)
-diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
-index efba76e716..8045d3d706 100644
---- a/tests/qtest/vmgenid-test.c
-+++ b/tests/qtest/vmgenid-test.c
-@@ -164,6 +164,12 @@ static void vmgenid_query_monitor_test(void)
- int main(int argc, char **argv)
- {
-     int ret;
-+    bool has_tcg = qtest_has_accel("tcg");
-+    bool has_kvm = qtest_has_accel("kvm");
-+
-+    if (!has_tcg && !has_kvm) {
-+        return 0;
-+    }
- 
-     ret = boot_sector_init(disk);
-     if (ret) {
--- 
-2.35.3
+For bsd-user, there is no 32 bit host support at all. It was dropped as
+part of the push to prune old code and upstream.
+
+Warner
+
+>
+
+--00000000000086894d05f5d1ea38
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, Mar 1, 2023, 12:36 AM Markus Armbruster &lt;<a=
+ href=3D"mailto:armbru@redhat.com">armbru@redhat.com</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex">&quot;Michael S. Tsirkin&quot; &lt;<a href=
+=3D"mailto:mst@redhat.com" target=3D"_blank" rel=3D"noreferrer">mst@redhat.=
+com</a>&gt; writes:<br>
+<br>
+&gt; On Tue, Feb 28, 2023 at 09:05:16PM +0100, Thomas Huth wrote:<br>
+&gt;&gt; Well, without CI, I assume that the code will bitrot quite fast (c=
+onsidering<br>
+&gt;&gt; that there are continuous improvements to TCG, for example).<br>
+&gt;<br>
+&gt; We have lots of hosts which we don&#39;t test with CI.=C2=A0 They don&=
+#39;t bitrot<br>
+&gt; because people do testing before release. This is what RCs are for.<br=
+>
+&gt; We did releases before CI - it is a cost/benefit thing.<br>
+<br>
+Dropping 32-bit x86 from CI feels like a no-brainer in the current<br>
+situation.<br>
+<br>
+As to deprecating 32-bit x86: the people by far most qualified to judge<br>
+the &quot;cost/benefit thing&quot; are the regulars who are bearing the cos=
+t,<br>
+i.e. the people who are actually maintaining it.=C2=A0 Their opinion should=
+<br>
+overrule any &quot;but somebody out there might still want to use it&quot;.=
+<br>
+<br>
+Maintainers, please state your opinion, if any: aye or nay.<br>
+<br>
+Richard tells us &quot;the maint overhead is large.&quot;=C2=A0 Makes me th=
+ink he&#39;s in<br>
+favour of dropping 32-bit x86.=C2=A0 Richard?<br>
+<br>
+Peter seems to be reluctant to drop 32-bit ARM at this point.=C2=A0 Peter?<=
+br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">F=
+or FreeBSD systen we have no 32bit arm host users. There may be a few i386 =
+host users left, but they are a tiny sliver of users. The overwhelming bulk=
+ of our users for qemu-system- are on x86-64 or aarch64 hosts.</div><div di=
+r=3D"auto"><br></div><div dir=3D"auto">For bsd-user, there is no 32 bit hos=
+t support at all. It was dropped as part of the push to prune old code and =
+upstream.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Warner=C2=A0</=
+div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail=
+_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
+1ex">
+</blockquote></div></div></div>
+
+--00000000000086894d05f5d1ea38--

@@ -1,191 +1,426 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7041808ejc;
-        Wed, 1 Mar 2023 06:54:29 -0800 (PST)
-X-Google-Smtp-Source: AK7set9MYEBUhz6l7ILBoKxqFhLc1L4dVe10bDi24OF+/EnkUrMTKapNDKfi+3Oin2XxQ6CKe6E2
-X-Received: by 2002:a05:6214:27ef:b0:56e:fef4:7ff1 with SMTP id jt15-20020a05621427ef00b0056efef47ff1mr11246619qvb.21.1677682469620;
-        Wed, 01 Mar 2023 06:54:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677682469; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7166275ejc;
+        Wed, 1 Mar 2023 08:38:29 -0800 (PST)
+X-Google-Smtp-Source: AK7set+OGKFWf/XesWdasOisrdeQ6RlalpyH73XXuXksRZDMnDhXaidtf+RU5oaQfgrtZVy2gb99
+X-Received: by 2002:ac8:5b4e:0:b0:3bf:b8b9:1b45 with SMTP id n14-20020ac85b4e000000b003bfb8b91b45mr11795791qtw.41.1677688709788;
+        Wed, 01 Mar 2023 08:38:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677688709; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eed9PVhL0YnGBNS1ABLMGyUIRvmwaAcbFb6B7uqrUaLSGQFUOOJqq2qboItKv6Qv4a
-         WtrssVDXKG+yZPoR5pcZy+x6V4ApAiEHNwnR9HiVWozjsi2nC18s0yRIivsIf9jaHv6P
-         hCakBKwXKTyiYIvTcBuUGwy/E2GZJ2Y3+0VSTrBkUV8g+10iROq4mFe/7Py5DASEstVE
-         cyryfb8Ujku5/9uWo0pp6GxuFB8+JHifBquz3hm5DHsq63v6Ud60+FWcP6BEWW/ODGJY
-         4bjyj5D3wnn/nGeJN8h5ZVNN5m9ypkuFqbU7T0O/9I4IoG0GenUuzE4OSyW92UUuWhkG
-         6jww==
+        b=iJC+XHfQzvCAZ360iy/jSCND7zbEnhstcHaD+TlwR/UoIGohHnJvWsCx/CZO/d3CfR
+         ehaar7eL0h2mkK5TvPP60T+SURU+2LITQEifqz/8aemgieEyufhxkOun4W/CMAZ7TifH
+         7HzQiN/tlyMiJCV8O3nEPiGBm5OGQxWnDmeG96+3X69qtnsKRXssIhIubkWfqSPIjo1z
+         mgQEqPCBcvNcQrt6HbnCujER7OLTSLv7RQqgZHQJ4bKRkFydRckRoIt61e0sdYeuFxbz
+         u1bauZFUlvBVN5hfgkJRxo3kAUPDExqnxnizQPMLjyhmE0Y40mjmgvBCzZCxLjQd9iU7
+         EIRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :in-reply-to:mime-version:references:from:dkim-signature;
-        bh=hWNCgXdqBl1EHkw9a463OBU72rcKYVy1UAU7KZqXFjc=;
-        b=QeLiWxV/TRj13zUFrkFAa0XKnbxs6PTOS4fSElRfr1M2qxHKaG3rYxoWGUdpNpMdWr
-         3pIDHORWJHcmzAzsDyUSPhXIPoO9HxzKcAQ+swLGKtFy2jOpKDxdBHGzDYFK4eKNlZND
-         k9PHrMPyG/c0i8NV7wGzHLUFeYolqS7pcdNVA00AS6+48olK5e9x3oF41veZpsj8HBzh
-         frNnNHnGtBbsDkinGqLJ7ABcB9456cXL7aDKCy89Zt2xPeebyIWHNPya9SzHBxTFrpLO
-         WC3EafYmAD0OcCrg8DHQ9batf8djlnywuTLA/Rupk/ZAAjZbYbrdGwis5VTDHXJTDffb
-         X0Qw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=6GM6f65FcIcoAv3QJ7AHeEUXyr/zk7arns/ksKx7rUQ=;
+        b=WDUagi3UxGZPwv3MEb7Sm3VumwctjmZr+Rs1yXnouNSoDapbmaI1FAUEblO7dgPr9N
+         kAUwIvjntzZFVdBwtZ+YKKVP+MdfSt43lNS/bQJ3367rpkp2wzQaB7NikKXapfkwL94E
+         Jf0fEPnlGTv5eTUfO7+gRThHwWIfuLlTYYV7FVUptBfXJDBnhOG+GJ47YI2j8pScIpKI
+         W4IRbnxFZCgyPWnva9D2jQ32Wr+CdcgwSZPRtWZ0XYCkDO0VyS2fvUz84LKkkUcZuoNv
+         MeR93T8CnhEjyk6p5URYfXb8h+RofpL1VP0APLGC2ifr00OwW02686e9qvRLtOlcSiPd
+         z+Zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MrNQ5AG3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=vvxmW0Xg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs42-20020a05620a472a00b0071f5483e964si12506203qkb.348.2023.03.01.06.54.29
+        by mx.google.com with ESMTPS id v9-20020a05622a130900b003bfc38fefbdsi11162094qtk.95.2023.03.01.08.38.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 06:54:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 01 Mar 2023 08:38:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MrNQ5AG3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=vvxmW0Xg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pXNqT-000422-Ka; Wed, 01 Mar 2023 09:54:17 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pXPSx-0008Nf-El; Wed, 01 Mar 2023 11:38:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
- id 1pXNqR-0003qL-Ra
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 09:54:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPSv-0008Ih-1C; Wed, 01 Mar 2023 11:38:05 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
- id 1pXNqQ-0000Cw-9R
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 09:54:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677682453;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hWNCgXdqBl1EHkw9a463OBU72rcKYVy1UAU7KZqXFjc=;
- b=MrNQ5AG3IzMyC017opmX4SWcnibFkviJwvwXjy0N6bXVsTf4bY7MSWMXP4FYnaPipeJF3W
- yFaDJl14cPRBYka2Dp0Hc8zEGKW23Vrm3FgWHwWtJDL1LzSbsdoD1uESrHJLuA3D8gh+53
- 8VdnraV/o0IEcXXF+7Vy+uEWQav/FqM=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-654-KxCUuG6iPcmJ6YmeMU66RA-1; Wed, 01 Mar 2023 09:54:12 -0500
-X-MC-Unique: KxCUuG6iPcmJ6YmeMU66RA-1
-Received: by mail-pj1-f69.google.com with SMTP id
- i6-20020a17090a650600b002372da4819eso4611177pjj.0
- for <qemu-devel@nongnu.org>; Wed, 01 Mar 2023 06:54:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:in-reply-to:mime-version:references
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hWNCgXdqBl1EHkw9a463OBU72rcKYVy1UAU7KZqXFjc=;
- b=24AyUboiDOqbwNyuzTWylTyuEUinGoe4GxT4wbO00XkrCJiB+9krDxwb1ii6zKQAiG
- LDykU1biJf1CBMGKUQPacDV9mbURL5TEZOOqy4+XSvLzKegpvBuHwAwP/DuaEu5xABnR
- +HoIOJ5f9UgRDHojTcIPHkD5w02txiChS8n89uS/FtlunPiMGeEqyeky+olpJN98pTat
- Fi8xBynq3/uadNNuCxfmUOEnG4gGVZATHAS5+NMmA+4ANymu0x6CwPbvQjkkmOzeF6Ux
- SSGrVFM+hYvonVx1WSCheo8e/oImiYzi5/XgN/kGPHOFLpt7IEzJxtsZLF5Cn+pCJ0HZ
- GCPw==
-X-Gm-Message-State: AO0yUKXnHfACBEYdP3ImUNgBSbmztSGDenpRiNU6EF4wQxYnjJwCPbXt
- sp7nxDiDzrQXSQ8TZ37F2cSdpJWg/RALeP9NzMtUu69ciJU4VOSuWDafBOQ5KbQLdmkgbAdO84X
- V7HZOWvFFEcDpZaLIJO30FNYWA/zO9wM=
-X-Received: by 2002:a62:8281:0:b0:5df:9809:6220 with SMTP id
- w123-20020a628281000000b005df98096220mr2649496pfd.3.1677682451400; 
- Wed, 01 Mar 2023 06:54:11 -0800 (PST)
-X-Received: by 2002:a62:8281:0:b0:5df:9809:6220 with SMTP id
- w123-20020a628281000000b005df98096220mr2649478pfd.3.1677682451116; Wed, 01
- Mar 2023 06:54:11 -0800 (PST)
-Received: from 744723338238 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 1 Mar 2023 06:54:10 -0800
-From: Andrea Bolognani <abologna@redhat.com>
-References: <20230228150216.77912-1-cohuck@redhat.com>
- <20230228150216.77912-2-cohuck@redhat.com>
- <CABJz62OHjrq_V1QD4g4azzLm812EJapPEja81optr8o7jpnaHQ@mail.gmail.com>
- <874jr4dbcr.fsf@redhat.com>
- <CABJz62MQH2U1QM26PcC3F1cy7t=53_mxkgViLKjcUMVmi29w+Q@mail.gmail.com>
- <87sfeoblsa.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPSs-0003Ru-Vh; Wed, 01 Mar 2023 11:38:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=6GM6f65FcIcoAv3QJ7AHeEUXyr/zk7arns/ksKx7rUQ=; b=vvxmW0XgNO1IeBqUtXiaRlz1g0
+ de/rrZ4Y6gxNaUejAXB0rQILFiJ4HhU1aCj0Io4ZImh+GIqPQPyYwWnXZVS9aeEFuvHPJeYLzT0QZ
+ ovPDcLGPeUXdavdATbw2MJFt4MQs57ubXlSVy8XUa3foFFkNxYduPgqipdoJ4olRjxkgDl3P6XB0Z
+ CEZNK/aAhd9s9kaOPMByuMXp4yaspyYtNM3vT87sWgXFhifP1aiOq7jox0x8G/gayN80WLHcrT5XW
+ qMhGqyUlZvWg/Iw+vcbVSMPpZafUQ/Y0z3ejjXxKZBUzEJeMTo56yukXDm1DNolaKPbOModPB6cjC
+ zwlJhwmQZAj+p3x4/B+FLxXV5PV36jKFX0UWYPYPnU1wKCdR0yXZBQVBQa275uodppwTcaFfsDlJ4
+ Ya/KFFKXF90M6HC1oK+poRsIDj738phMgS4oVkwmIbTZtBo55BNCGZ9/qtg5cvmp7gcrz9IlzTXN8
+ XagWWz6Tgk8NZWMN0SnHBPwXVMefy3eDTlbiDjI402ZccEbYppPqZpfHFfv9sqTAdcH0WUvD6FDx4
+ zu86GUelWNIGpS8BeR4a3qTI3+bis5tlvWuqZ5zQr6N41YinpGWkmxttxmnf13CG8lhmagc7sZxtA
+ 1sXcZjR4hC545J/rugNYS99lSDOqNfHzvPJoGX6Ho=;
+Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1pXPSC-0002IQ-HY; Wed, 01 Mar 2023 16:37:24 +0000
+Message-ID: <b4695b14-661e-6cef-bbd9-abc912b64cc0@ilande.co.uk>
+Date: Wed, 1 Mar 2023 16:37:55 +0000
 MIME-Version: 1.0
-In-Reply-To: <87sfeoblsa.fsf@redhat.com>
-Date: Wed, 1 Mar 2023 06:54:10 -0800
-Message-ID: <CABJz62PbzFMB3ifg7OvTXe34TS5b3xDHJk8XGs-inA5t5UEAtA@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] arm/kvm: add support for MTE
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- kvm@vger.kernel.org, Eric Auger <eauger@redhat.com>, 
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=abologna@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20230223204342.1093632-1-richard.henderson@linaro.org>
+ <20230223204342.1093632-2-richard.henderson@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20230223204342.1093632-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH 01/13] target/sparc: Use tlb_set_page_full
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R7McTSywUpCr
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WNXLudHxLsGS
 
-On Wed, Mar 01, 2023 at 03:15:17PM +0100, Cornelia Huck wrote:
-> On Wed, Mar 01 2023, Andrea Bolognani <abologna@redhat.com> wrote:
-> > I'm actually a bit confused. The documentation for the mte property
-> > of the virt machine type says
-> >
-> >   mte
-> >     Set on/off to enable/disable emulating a guest CPU which implements
-> >     the Arm Memory Tagging Extensions. The default is off.
-> >
-> > So why is there a need to have a CPU property in addition to the
-> > existing machine type property?
->
-> I think the state prior to my patches is actually a bit confusing: the
-> user needs to set a machine type property (causing tag memory to be
-> allocated), which in turn enables a cpu feature. Supporting the machine
-> type property for KVM does not make much sense IMHO: we don't allocate
-> tag memory for KVM (in fact, that would not work). We have to keep the
-> previous behaviour, and explicitly instructing QEMU to create cpus with
-> a certain feature via a cpu property makes the most sense to me.
+On 23/02/2023 20:43, Richard Henderson wrote:
 
-I agree that a CPU feature makes more sense.
+> Pass CPUTLBEntryFull to get_physical_address instead
+> of a collection of pointers.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> ---
+>   target/sparc/mmu_helper.c | 121 +++++++++++++++++---------------------
+>   1 file changed, 54 insertions(+), 67 deletions(-)
+> 
+> diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
+> index 158ec2ae8f..a98dd0abd4 100644
+> --- a/target/sparc/mmu_helper.c
+> +++ b/target/sparc/mmu_helper.c
+> @@ -64,10 +64,9 @@ static const int perm_table[2][8] = {
+>       }
+>   };
+>   
+> -static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+> -                                int *prot, int *access_index, MemTxAttrs *attrs,
+> -                                target_ulong address, int rw, int mmu_idx,
+> -                                target_ulong *page_size)
+> +static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+> +                                int *access_index, target_ulong address,
+> +                                int rw, int mmu_idx)
+>   {
+>       int access_perms = 0;
+>       hwaddr pde_ptr;
+> @@ -80,20 +79,20 @@ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+>       is_user = mmu_idx == MMU_USER_IDX;
+>   
+>       if (mmu_idx == MMU_PHYS_IDX) {
+> -        *page_size = TARGET_PAGE_SIZE;
+> +        full->lg_page_size = TARGET_PAGE_BITS;
+>           /* Boot mode: instruction fetches are taken from PROM */
+>           if (rw == 2 && (env->mmuregs[0] & env->def.mmu_bm)) {
+> -            *physical = env->prom_addr | (address & 0x7ffffULL);
+> -            *prot = PAGE_READ | PAGE_EXEC;
+> +            full->phys_addr = env->prom_addr | (address & 0x7ffffULL);
+> +            full->prot = PAGE_READ | PAGE_EXEC;
+>               return 0;
+>           }
+> -        *physical = address;
+> -        *prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> +        full->phys_addr = address;
+> +        full->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+>           return 0;
+>       }
+>   
+>       *access_index = ((rw & 1) << 2) | (rw & 2) | (is_user ? 0 : 1);
+> -    *physical = 0xffffffffffff0000ULL;
+> +    full->phys_addr = 0xffffffffffff0000ULL;
+>   
+>       /* SPARC reference MMU table walk: Context table->L1->L2->PTE */
+>       /* Context base + context number */
+> @@ -157,16 +156,17 @@ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+>                   case 2: /* L3 PTE */
+>                       page_offset = 0;
+>                   }
+> -                *page_size = TARGET_PAGE_SIZE;
+> +                full->lg_page_size = TARGET_PAGE_BITS;
+>                   break;
+>               case 2: /* L2 PTE */
+>                   page_offset = address & 0x3f000;
+> -                *page_size = 0x40000;
+> +                full->lg_page_size = 18;
+>               }
+>               break;
+>           case 2: /* L1 PTE */
+>               page_offset = address & 0xfff000;
+> -            *page_size = 0x1000000;
+> +            full->lg_page_size = 24;
+> +            break;
+>           }
+>       }
+>   
+> @@ -188,16 +188,16 @@ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+>       }
+>   
+>       /* the page can be put in the TLB */
+> -    *prot = perm_table[is_user][access_perms];
+> +    full->prot = perm_table[is_user][access_perms];
+>       if (!(pde & PG_MODIFIED_MASK)) {
+>           /* only set write access if already dirty... otherwise wait
+>              for dirty access */
+> -        *prot &= ~PAGE_WRITE;
+> +        full->prot &= ~PAGE_WRITE;
+>       }
+>   
+>       /* Even if large ptes, we map only one 4KB page in the cache to
+>          avoid filling it too fast */
+> -    *physical = ((hwaddr)(pde & PTE_ADDR_MASK) << 4) + page_offset;
+> +    full->phys_addr = ((hwaddr)(pde & PTE_ADDR_MASK) << 4) + page_offset;
+>       return error_code;
+>   }
+>   
+> @@ -208,11 +208,9 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>   {
+>       SPARCCPU *cpu = SPARC_CPU(cs);
+>       CPUSPARCState *env = &cpu->env;
+> -    hwaddr paddr;
+> +    CPUTLBEntryFull full = {};
+>       target_ulong vaddr;
+> -    target_ulong page_size;
+> -    int error_code = 0, prot, access_index;
+> -    MemTxAttrs attrs = {};
+> +    int error_code = 0, access_index;
+>   
+>       /*
+>        * TODO: If we ever need tlb_vaddr_to_host for this target,
+> @@ -223,16 +221,15 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>       assert(!probe);
+>   
+>       address &= TARGET_PAGE_MASK;
+> -    error_code = get_physical_address(env, &paddr, &prot, &access_index, &attrs,
+> -                                      address, access_type,
+> -                                      mmu_idx, &page_size);
+> +    error_code = get_physical_address(env, &full, &access_index,
+> +                                      address, access_type, mmu_idx);
+>       vaddr = address;
+>       if (likely(error_code == 0)) {
+>           qemu_log_mask(CPU_LOG_MMU,
+>                         "Translate at %" VADDR_PRIx " -> "
+>                         HWADDR_FMT_plx ", vaddr " TARGET_FMT_lx "\n",
+> -                      address, paddr, vaddr);
+> -        tlb_set_page(cs, vaddr, paddr, prot, mmu_idx, page_size);
+> +                      address, full.phys_addr, vaddr);
+> +        tlb_set_page_full(cs, mmu_idx, vaddr, &full);
+>           return true;
+>       }
+>   
+> @@ -247,8 +244,8 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>              permissions. If no mapping is available, redirect accesses to
+>              neverland. Fake/overridden mappings will be flushed when
+>              switching to normal mode. */
+> -        prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> -        tlb_set_page(cs, vaddr, paddr, prot, mmu_idx, TARGET_PAGE_SIZE);
+> +        full.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> +        tlb_set_page_full(cs, mmu_idx, vaddr, &full);
+>           return true;
+>       } else {
+>           if (access_type == MMU_INST_FETCH) {
+> @@ -545,8 +542,7 @@ static uint64_t build_sfsr(CPUSPARCState *env, int mmu_idx, int rw)
+>       return sfsr;
+>   }
+>   
+> -static int get_physical_address_data(CPUSPARCState *env, hwaddr *physical,
+> -                                     int *prot, MemTxAttrs *attrs,
+> +static int get_physical_address_data(CPUSPARCState *env, CPUTLBEntryFull *full,
+>                                        target_ulong address, int rw, int mmu_idx)
+>   {
+>       CPUState *cs = env_cpu(env);
+> @@ -579,11 +575,12 @@ static int get_physical_address_data(CPUSPARCState *env, hwaddr *physical,
+>   
+>       for (i = 0; i < 64; i++) {
+>           /* ctx match, vaddr match, valid? */
+> -        if (ultrasparc_tag_match(&env->dtlb[i], address, context, physical)) {
+> +        if (ultrasparc_tag_match(&env->dtlb[i], address, context,
+> +                                 &full->phys_addr)) {
+>               int do_fault = 0;
+>   
+>               if (TTE_IS_IE(env->dtlb[i].tte)) {
+> -                attrs->byte_swap = true;
+> +                full->attrs.byte_swap = true;
+>               }
+>   
+>               /* access ok? */
+> @@ -616,9 +613,9 @@ static int get_physical_address_data(CPUSPARCState *env, hwaddr *physical,
+>               }
+>   
+>               if (!do_fault) {
+> -                *prot = PAGE_READ;
+> +                full->prot = PAGE_READ;
+>                   if (TTE_IS_W_OK(env->dtlb[i].tte)) {
+> -                    *prot |= PAGE_WRITE;
+> +                    full->prot |= PAGE_WRITE;
+>                   }
+>   
+>                   TTE_SET_USED(env->dtlb[i].tte);
+> @@ -645,8 +642,7 @@ static int get_physical_address_data(CPUSPARCState *env, hwaddr *physical,
+>       return 1;
+>   }
+>   
+> -static int get_physical_address_code(CPUSPARCState *env, hwaddr *physical,
+> -                                     int *prot, MemTxAttrs *attrs,
+> +static int get_physical_address_code(CPUSPARCState *env, CPUTLBEntryFull *full,
+>                                        target_ulong address, int mmu_idx)
+>   {
+>       CPUState *cs = env_cpu(env);
+> @@ -681,7 +677,7 @@ static int get_physical_address_code(CPUSPARCState *env, hwaddr *physical,
+>       for (i = 0; i < 64; i++) {
+>           /* ctx match, vaddr match, valid? */
+>           if (ultrasparc_tag_match(&env->itlb[i],
+> -                                 address, context, physical)) {
+> +                                 address, context, &full->phys_addr)) {
+>               /* access ok? */
+>               if (TTE_IS_PRIV(env->itlb[i].tte) && is_user) {
+>                   /* Fault status register */
+> @@ -708,7 +704,7 @@ static int get_physical_address_code(CPUSPARCState *env, hwaddr *physical,
+>   
+>                   return 1;
+>               }
+> -            *prot = PAGE_EXEC;
+> +            full->prot = PAGE_EXEC;
+>               TTE_SET_USED(env->itlb[i].tte);
+>               return 0;
+>           }
+> @@ -722,14 +718,13 @@ static int get_physical_address_code(CPUSPARCState *env, hwaddr *physical,
+>       return 1;
+>   }
+>   
+> -static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+> -                                int *prot, int *access_index, MemTxAttrs *attrs,
+> -                                target_ulong address, int rw, int mmu_idx,
+> -                                target_ulong *page_size)
+> +static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
+> +                                int *access_index, target_ulong address,
+> +                                int rw, int mmu_idx)
+>   {
+>       /* ??? We treat everything as a small page, then explicitly flush
+>          everything when an entry is evicted.  */
+> -    *page_size = TARGET_PAGE_SIZE;
+> +    full->lg_page_size = TARGET_PAGE_BITS;
+>   
+>       /* safety net to catch wrong softmmu index use from dynamic code */
+>       if (env->tl > 0 && mmu_idx != MMU_NUCLEUS_IDX) {
+> @@ -747,17 +742,15 @@ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+>       }
+>   
+>       if (mmu_idx == MMU_PHYS_IDX) {
+> -        *physical = ultrasparc_truncate_physical(address);
+> -        *prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> +        full->phys_addr = ultrasparc_truncate_physical(address);
+> +        full->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+>           return 0;
+>       }
+>   
+>       if (rw == 2) {
+> -        return get_physical_address_code(env, physical, prot, attrs, address,
+> -                                         mmu_idx);
+> +        return get_physical_address_code(env, full, address, mmu_idx);
+>       } else {
+> -        return get_physical_address_data(env, physical, prot, attrs, address,
+> -                                         rw, mmu_idx);
+> +        return get_physical_address_data(env, full, address, rw, mmu_idx);
+>       }
+>   }
+>   
+> @@ -768,25 +761,17 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>   {
+>       SPARCCPU *cpu = SPARC_CPU(cs);
+>       CPUSPARCState *env = &cpu->env;
+> -    target_ulong vaddr;
+> -    hwaddr paddr;
+> -    target_ulong page_size;
+> -    MemTxAttrs attrs = {};
+> -    int error_code = 0, prot, access_index;
+> +    CPUTLBEntryFull full = {};
+> +    int error_code = 0, access_index;
+>   
+>       address &= TARGET_PAGE_MASK;
+> -    error_code = get_physical_address(env, &paddr, &prot, &access_index, &attrs,
+> -                                      address, access_type,
+> -                                      mmu_idx, &page_size);
+> +    error_code = get_physical_address(env, &full, &access_index,
+> +                                      address, access_type, mmu_idx);
+>       if (likely(error_code == 0)) {
+> -        vaddr = address;
+> -
+> -        trace_mmu_helper_mmu_fault(address, paddr, mmu_idx, env->tl,
+> +        trace_mmu_helper_mmu_fault(address, full.phys_addr, mmu_idx, env->tl,
+>                                      env->dmmu.mmu_primary_context,
+>                                      env->dmmu.mmu_secondary_context);
+> -
+> -        tlb_set_page_with_attrs(cs, vaddr, paddr, attrs, prot, mmu_idx,
+> -                                page_size);
+> +        tlb_set_page_full(cs, mmu_idx, address, &full);
+>           return true;
+>       }
+>       if (probe) {
+> @@ -888,12 +873,14 @@ void dump_mmu(CPUSPARCState *env)
+>   static int cpu_sparc_get_phys_page(CPUSPARCState *env, hwaddr *phys,
+>                                      target_ulong addr, int rw, int mmu_idx)
+>   {
+> -    target_ulong page_size;
+> -    int prot, access_index;
+> -    MemTxAttrs attrs = {};
+> +    CPUTLBEntryFull full = {};
+> +    int access_index, ret;
+>   
+> -    return get_physical_address(env, phys, &prot, &access_index, &attrs, addr,
+> -                                rw, mmu_idx, &page_size);
+> +    ret = get_physical_address(env, &full, &access_index, addr, rw, mmu_idx);
+> +    if (ret == 0) {
+> +        *phys = full.phys_addr;
+> +    }
+> +    return ret;
+>   }
+>   
+>   #if defined(TARGET_SPARC64)
 
-> We might want to tweak the documentation for the machine property to
-> indicate that it creates tag memory and only implicitly enables mte but
-> is a pre-req for it -- thoughts?
+Acked-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-I wonder if it would be possible to flip things around, so that the
-machine property is retained with its existing behavior for backwards
-compatibility, but both for KVM and for TCG the CPU property can be
-used on its own?
 
-Basically, keeping the default of machine.mte to off when cpu.mte is
-not specified, but switching it to on when it is. This way, you'd be
-able to simply use
+ATB,
 
-  -machine virt -cpu xxx,mte=on
-
-to enable MTE, regardless of whether you're using KVM or TCG, instead
-of requiring the above for KVM and
-
-  -machine virt,mte=on -cpu xxx
-
-for TCG.
-
-Note that, from libvirt's point of view, there's no advantage to
-doing things that way instead of what you already have. Handling the
-additional machine property is a complete non-issue. But it would
-make things nicer for people running QEMU directly, I think.
-
--- 
-Andrea Bolognani / Red Hat / Virtualization
-
+Mark.

@@ -1,168 +1,120 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6645838ejc;
-        Tue, 28 Feb 2023 23:38:05 -0800 (PST)
-X-Received: by 2002:adf:ee85:0:b0:2c7:1a86:aecd with SMTP id b5-20020adfee85000000b002c71a86aecdmr4328255wro.2.1677656285133;
-        Tue, 28 Feb 2023 23:38:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677656285; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6712787ejc;
+        Wed, 1 Mar 2023 01:08:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set8q/vm110MLApUBVqd0N0pPTDa7SCwz1PBY2bCNiwcM2eFPFIaW9LrKOSuwDfnlz5YBPr4H
+X-Received: by 2002:ac8:5dd1:0:b0:3bf:daae:7ee3 with SMTP id e17-20020ac85dd1000000b003bfdaae7ee3mr9947225qtx.53.1677661728702;
+        Wed, 01 Mar 2023 01:08:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677661728; cv=none;
         d=google.com; s=arc-20160816;
-        b=tWDWM7W7Vh+LVbsTwTtf3qCYkwdFQ4YRLc9YSmPriVp3qjZCHwvj6OQXDh0Nyo2Lq0
-         Vqz/o10qZU7d5OU3ADX/4cYQVWsJOR7einK1qZXA0BH5n5jZg8FdHD2CH0QvL5NzSPTw
-         KVsf/3jPKDDugzCv7VycgmJqpR/1Crp7WPzcqaxqNJcn//BRyUAg/hQbD+dE25IuSzns
-         V2AXRVNbMw++/RyIaJdcI5WTQK3tcDwstcKyorfd4n16jYpxajmcpGXXlkQRkdosRq3n
-         /hR1ZBi4iH/hvjCAcuGcSRdp/aTdkpgNQqFGZaQYnyIDLyHx4LZI6099FKdNzPYGo3GP
-         +6IA==
+        b=Luhjdyn+R/6kG4I7WHj3fRkGvwK3VXJvOv6dNN02EmgwrTZj2dzNp1awmxRySzyupf
+         n2NgTUvgEBoQtc5P1/cryYklgscpHAUC39jaXXU2iEUtZ2XwOuk0GfA+9S3CKZHr23zl
+         rZhbMeEAHbQ99spsybRzVxz5VWXfAIeNuAEA1KNnHf23mQYOvT7wZfKunBpEbRdJSxXe
+         KsKajeaC7JKucZxEV2aBMaugGAi2IoT9IQrinN341YtX1VBPWIds0dllG69NBzWPMqja
+         2QjGVBf39Skk/1wykIY8hQSzyQ8d2wPYh7KmgC4Uq9BHRHltudsDq6b36lNgoBETRnGg
+         OnDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=XUpEQ/uHIC4kK9X3lf1DvjLD7Irehy2VfpQRNjmVuAs=;
-        b=suN4k7R35AzBo+0YAC8TbsGOu5GAkMrpLttNFRm0mL7HQMFP53iFB3g73vZOe4/ZnU
-         KzYxpGhRQwTjOL7tf7tSZ2EbyXsm+veYDfoi42tUJKqM+x61RuhTkYB55JBfzUKbYoiV
-         d5RmFaStBc0S2+lO5UDUhrlrzS2+16JXvchjgl98Anod8uBOWu/x9sBS7gAEZq69DIeU
-         fejBFBBzVfy9IsHcsTAKtqgGfWLk9ZZmuFnjeyc0p8LbxoPY9NxDjX3JaJ4Za8R3SLck
-         Vk6iLccbeWpVVRbgkEV3TFIN5owvrkquo4DpINB6ldU0MYPJL4y5jN0VXRb6DM9KhHSG
-         VN8Q==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=lPzlzuhZo7jbP4j/6AirVJDAHwfGqwks6gPz80Ytb3c=;
+        b=H/eXwLVqsRXH4vc5+zxyCvbpjOSQao3K35l2G1NiXAYqMgZi0VE58ThV1uu4IAAvoh
+         NDR+sdDppoq1QDEkGr5Exr1XPGxvC+/8BFamc93gfK11O4SXsk9UK0dnTQR9gObL5+mu
+         KMyuqtH/qeCBnLgNBWISadn1uqvq9bPn0KMdBPxa6cQRXkSDvlfSES55TLMr4hCmIK4J
+         15GWB9zFBfGNwpmObb23pR/ljCoToKyRqGELhAGTEqtWqEHxzvgNXObsl6ZygdRU/jw6
+         a8p04Ble5La3lNLk8sprJ7+9/q9G8Wh5PwrAT3A/6cOWVmFJa/m5vBA80KNniH4Dl/Tq
+         V3oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="T/k+yPnE";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t11-20020a5d42cb000000b002c54d9b8295sor4442833wrr.19.2023.02.28.23.38.05
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="f8TVA//b";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c7-20020ac87dc7000000b003bd15ffddfbsi10351676qte.214.2023.03.01.01.08.48
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Feb 2023 23:38:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="T/k+yPnE";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1677656284;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XUpEQ/uHIC4kK9X3lf1DvjLD7Irehy2VfpQRNjmVuAs=;
-        b=T/k+yPnEnNDGWwtdfjmSYseiBlXFDUZJKGYIF8GG2G1lzHTmmHEw28MBXuXr5ngjB+
-         9ra3OS0tjmaoz4aeChGke5yaugWPw4DwC92JHHyPLG/3TRT8UeTxDn3KmbTU5nxHL9RJ
-         C5RGB4PsoBmOROlbmCWDroZCwYhXp8hr9k1U766/fQHMX37LHQs6C9LFNDItYSj4KPqr
-         Kh3cDQrXwH/IJEIQhCMXXo88784ZKyQeuJs+TPHy1yrwRJ/5KvIMvrAx7txmf6xG8w4/
-         bKxnlSiWjucYlH5x7GOPIoklYucSDpEVEtsGEFYbRhPa1CZAZ1YIWVesMSzRmBN8AuDb
-         wyeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677656284;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XUpEQ/uHIC4kK9X3lf1DvjLD7Irehy2VfpQRNjmVuAs=;
-        b=eyTvn+uVOMQhPyhyJFJTgGvqnzx7zRZbYY/8Csr4HR+i6lH3oEqDCPLL9cLNF+J0os
-         wgQRhj/7mO7tZU+HfJE1ZPWzZ7kvt/wTkpVVA4iSGZ2mYuLAQxIEZMc+hMevTJJARILb
-         O0h9TprSTSJPKdqKMaEtsHevSCqqOd0i2cWZrBYKiaF2Ma6dS7UJPV7NlaMJC/baxPWz
-         ZJJy3vTH7KZjLv4IEpjF+O/cKdd9QcklFU4SrYHkDRIUvnV3ZKeNXPtGCCdxI5uSyHHU
-         dxMrdoxSMtx9RtxxP56bXAQNz4tUlkcDAiZS0fo24uaT/sI+eIvnKbs3Hhawou+tQ7UK
-         S3bw==
-X-Gm-Message-State: AO0yUKXn5U+bPX2se1hHF6FTXWgmifKeos2TdbfF9bRsmjJILYXSESx3
-	DVNAcb/mWr1MG46kgGQoWFCTwgvNskAuvyNyg2Q=
-X-Google-Smtp-Source: AK7set+rXwvHDB1VgYk4qgSRVgkEWkfsYaTY0AHsrala+3ya5lCvJOOtfFyhWYGrZixe9aBZeGZxCA==
-X-Received: by 2002:adf:f44b:0:b0:2c8:5f9d:9f6f with SMTP id f11-20020adff44b000000b002c85f9d9f6fmr4938814wrp.10.1677656284511;
-        Tue, 28 Feb 2023 23:38:04 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.18.115] ([91.219.21.246])
-        by smtp.gmail.com with ESMTPSA id y18-20020adffa52000000b002c55efa9cbesm11643744wrr.39.2023.02.28.23.38.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 23:38:03 -0800 (PST)
-Message-ID: <db096848-11a3-b6da-93f1-b53a26a477f9@linaro.org>
-Date: Wed, 1 Mar 2023 08:38:01 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v3 22/24] gitlab: move the majority of artefact handling
- to a template
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Peter Maydell
- <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
- Aurelien Jarno <aurelien@aurel32.net>, Markus Armbruster
- <armbru@redhat.com>, Darren Kenny <darren.kenny@oracle.com>,
- Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- John Snow <jsnow@redhat.com>, Ed Maste <emaste@freebsd.org>,
- qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- Thomas Huth <thuth@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>,
- qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
- Li-Wen Hsu <lwhsu@freebsd.org>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Laurent Vivier <lvivier@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Qiuhao Li <Qiuhao.Li@outlook.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
+        Wed, 01 Mar 2023 01:08:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="f8TVA//b";
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677661728;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lPzlzuhZo7jbP4j/6AirVJDAHwfGqwks6gPz80Ytb3c=;
+	b=f8TVA//b4QANNq/9lKJt2n2Ip4+6wFh0FkNze5xkYYd9HiMYMndsgCtMsQW9u/YO+Z9By2
+	8xkM1mXCJAUdJ3e8ZuKMlZrrqi8YfQv9IXI1vBrjfaQI9Vce8RR1w9So44JnqNK0jyZpjh
+	/DVIocqE35BygG78/8ndIr8gWNZSbuY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-121-_AYkG7GBNFybBNFvkp4hHQ-1; Wed, 01 Mar 2023 04:08:47 -0500
+X-MC-Unique: _AYkG7GBNFybBNFvkp4hHQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0E52A800B23;
+	Wed,  1 Mar 2023 09:08:46 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.74])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ED1A42166B2A;
+	Wed,  1 Mar 2023 09:08:39 +0000 (UTC)
+Date: Wed, 1 Mar 2023 09:08:37 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Markus Armbruster <armbru@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+	John Snow <jsnow@redhat.com>, Ed Maste <emaste@freebsd.org>,
+	qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Yonggang Luo <luoyonggang@gmail.com>, qemu-block@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Subject: Re: [PATCH v3 18/24] tests/lcitool: append user setting stanza to
+ dockerfiles
+Message-ID: <Y/8WFQhfnFkLjTT8@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
- <20230228190653.1602033-23-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230228190653.1602033-23-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20230228190653.1602033-19-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: D1FJ9RzxY63S
+In-Reply-To: <20230228190653.1602033-19-alex.bennee@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-TUID: Fn0dxuVfUlPp
 
-On 28/2/23 20:06, Alex Bennée wrote:
-> To avoid lots of copy and paste lets deal with artefacts in a
-> template. This way we can filter out most of the pre-binary object and
-> library files we no longer need as we have the final binaries.
-> 
-> build-system-alpine also saved .git-submodule-status so for simplicity
-> we bring that into the template as well.
-> 
-> As an example the build-system-ubuntu artefacts before this patch
-> where around 1.3 GB, after dropping the object files it comes to 970
-> MB.
+On Tue, Feb 28, 2023 at 07:06:47PM +0000, Alex Bennée wrote:
+> For the cross-compilation use-case it is important to add the host
+> user to the dockerfile so we can map them to the docker environment
+> when cross-building files.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   .gitlab-ci.d/buildtest-template.yml | 16 ++++++
->   .gitlab-ci.d/buildtest.yml          | 81 +++++++++++------------------
->   2 files changed, 46 insertions(+), 51 deletions(-)
-> 
-> diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
-> index cb96b55c3f..a6cfe9be97 100644
-> --- a/.gitlab-ci.d/buildtest-template.yml
-> +++ b/.gitlab-ci.d/buildtest-template.yml
-> @@ -25,6 +25,22 @@
->           make -j"$JOBS" $MAKE_CHECK_ARGS ;
->         fi
->   
-> +# We jump some hoops in common_test_job_template to avoid
-> +# rebuilding all the object files we skip in the artifacts
-> +.native_build_artifact_template:
-> +  artifacts:
-> +    expire_in: 2 days
-> +    paths:
-> +      - build
-> +      - .git-submodule-status
-> +    exclude:
-> +      - build/**/*.p
-> +      - build/**/*.a.p
-> +      - build/**/*.fa.p
-> +      - build/**/*.c.o
-> +      - build/**/*.c.o.d
-> +      - build/**/*.fa
-> +
->   .common_test_job_template:
->     extends: .base_job_template
->     stage: test
-> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-> index 43f9e4a81d..44b8275299 100644
-> --- a/.gitlab-ci.d/buildtest.yml
-> +++ b/.gitlab-ci.d/buildtest.yml
-> @@ -2,7 +2,9 @@ include:
->     - local: '/.gitlab-ci.d/buildtest-template.yml'
->   
->   build-system-alpine:
-> -  extends: .native_build_job_template
-> +  extends:
-> +    - .native_build_job_template
-> +    - .native_build_artifact_template
 
-I'm confused... Apparently this doesn't work:
-https://gitlab.com/stsquad/qemu/-/jobs/3847747681/artifacts/browse
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

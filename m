@@ -1,116 +1,118 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6973236ejc;
-        Wed, 1 Mar 2023 05:43:48 -0800 (PST)
-X-Google-Smtp-Source: AK7set/tyN3rCcRZIzaz7jvYcrBRLo4QzQUAn8K5CnvNi8sFKtVTlG47cr6dbAFNesuh1R5pe2pi
-X-Received: by 2002:a05:622a:1baa:b0:3a8:e9e:e194 with SMTP id bp42-20020a05622a1baa00b003a80e9ee194mr11481158qtb.40.1677678228719;
-        Wed, 01 Mar 2023 05:43:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677678228; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6979616ejc;
+        Wed, 1 Mar 2023 05:52:24 -0800 (PST)
+X-Google-Smtp-Source: AK7set8yTrqIp8F7x6Ft9CFAeDEGJ1Z6FiFNLNK5C48Hd8+1PyKwdNvc9AV4kUhronKtBP4keYIE
+X-Received: by 2002:a05:6214:c46:b0:56e:ad32:2d58 with SMTP id r6-20020a0562140c4600b0056ead322d58mr11007184qvj.6.1677678744229;
+        Wed, 01 Mar 2023 05:52:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677678744; cv=none;
         d=google.com; s=arc-20160816;
-        b=doXFnYCTVFVdiSgfIC/qdgA2v0D6b185cicZDoOf//kTKLKapopXhxjJK4MG7Fq2Ut
-         ulUse4ivpOEmVC5BuBp+TvZFe2pgAkjLvYI1rcLuFj2uEOeDimP6OTG2BE3bG1yPO7Jh
-         d/b6cycu0PCdmF7JiC6cHSo1r1RaOjqey3C7JPABGooXXZfzuRFNrGrxSrFg81aIMlr5
-         KlS32peRcY4topL6nq0ZKKbM3iRVxtZmSBfOsts5ZGESc8xvRbwxTPYIi7kmSXG18YTv
-         jtaH+p62iL2Q1oU1ZFbfIEd0f77JQ3HVotmjFihIIfx7da1dMaHx2rKlFwl9Iujs9FlZ
-         ncqQ==
+        b=HyG5taSVRIdvwSzQsjVkUSxawcSrsOJNXs6NQ8RVUhve53Y4gN/rTl4dz8UV3c+oFl
+         BaVy0ok4Z2feuQrIx+gxocsMyd51eJr5dkvDYT+M9y4BzzfLqN9vDysidUMIEV677Qqb
+         Ucq9BLE6zUJ0zwYdJ3bSae7RWfA5NjqzR30DIBynCx5Y/tLjqrqIPou1as6vceVUdZ1P
+         bqdp2HpfOXpZspW1kAV3OBBVSTwELEobXtoD2gCnlgXb5wvFePvA15DtGaYvwbqo/PP1
+         RMJH6/ennhS0js+kXg6E+W7ZU95TaZoqudwBow+feW7SWzMFTGl+NqJXTXBNTPoOHnCj
+         LVYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
-        b=kgIUPK4GcqtcQH0H3H92Z3Sk/EDXgwTdFnnYZKtiWPBRS22gLA6s8IFO2/uAKAkvFC
-         9AYf+5a9Ersx7TRJ8dHLTVQL6TveTDCYJxbpfy83x4h4pjo208W+6XQp9tSgrnu3pUoD
-         nEzh/Xz5zWVwzH1PMsaHewALqsOP5vG/kjj02f8neX5cu56iJMWexgVUCOcDI/XF979o
-         JEXx4q0vMR0VmrnLmb/zhjl+NB2cURdUXAWcixcDhHQwYZ496QDnuNjQbYnnPhtkCvLf
-         G9Y58afPAITT+/MYImS+zHm4WzGSU43hl8t5cbVckDnuRRB42PUZsEDQ0rO3M8ynvyII
-         sofQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :in-reply-to:mime-version:references:from:dkim-signature;
+        bh=mftfQEi9wdaH6McKuPClmRUmMChN2OhoG+1UjGPOpjw=;
+        b=dva1lt3Fm94WTf/Rnb79tTjn13yDbSyhaf/bQjvdyA9ek96VsswohofGP7txngd7dI
+         jGloQyMeBmUhELOsZXhILEnkiQxZLZq38P93Rb/Z/19LGc7+grZY6Ll1bV2S4eiwRFWC
+         BWm9TxWXKYNbNX4jphVVzwlzEv79Q2h54pGfDfMAtglob3OxeeAWFikspCnbseyi9ekT
+         5yVpGOr7lezk5ZO48yGTt4+/eEm/enTmPTC7b9/1CV9ZpNc5yXD0oBUiCEbzRNPlpYby
+         FBnyZhPCBkqHhsSAN5Z0TRym8eB2LGO7bLsXylVGdl9mX+Ex6p4mizeetL++1sseBIj1
+         MVCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YT64k8GS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AIXUY9ap;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e19-20020ac85dd3000000b003bfe796bfcasi3814812qtx.390.2023.03.01.05.43.48
+        by mx.google.com with ESMTPS id o6-20020a0c8c46000000b0056e97e16218si10927983qvb.526.2023.03.01.05.52.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 05:43:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 01 Mar 2023 05:52:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YT64k8GS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AIXUY9ap;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pXMjL-000089-FY; Wed, 01 Mar 2023 08:42:51 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pXMsH-0007p6-IG; Wed, 01 Mar 2023 08:52:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pXMjJ-00006n-11
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:42:49 -0500
+ (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
+ id 1pXMsD-0007oc-VZ
+ for qemu-arm@nongnu.org; Wed, 01 Mar 2023 08:52:01 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pXMjH-0008RX-Dj
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:42:48 -0500
+ (Exim 4.90_1) (envelope-from <abologna@redhat.com>)
+ id 1pXMsC-0002gN-A6
+ for qemu-arm@nongnu.org; Wed, 01 Mar 2023 08:52:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677678166;
+ s=mimecast20190719; t=1677678719;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
- b=YT64k8GShMNxgqw+6DeHMOPvzbuFjMbbC6smT1y3xMQUMqFFPv7ckPPvCIaDoomRshi0r3
- b+mMuO4x20DSboOKWDSDF0wkmWWWsEfnw6sx3FOPzNIAbDDXZOaQ20QT3MTwtHbtGxLzjY
- N3AVDA9QHYiGpCfbJ7LXu510jugZorU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-31-tQ_cRtHcMs6QEqYM9aGSKA-1; Wed, 01 Mar 2023 08:42:43 -0500
-X-MC-Unique: tQ_cRtHcMs6QEqYM9aGSKA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- bi21-20020a05600c3d9500b003e836e354e0so5339444wmb.5
- for <qemu-devel@nongnu.org>; Wed, 01 Mar 2023 05:42:42 -0800 (PST)
+ bh=mftfQEi9wdaH6McKuPClmRUmMChN2OhoG+1UjGPOpjw=;
+ b=AIXUY9apdKrVPNzPQ9jpLaG/2Mi1Pw3tcexix89ipHBAYuIABqpcaYGP2D3KonbWDr9Gfw
+ ncP5ZsALiGDTjWrGbKcD6qYCZfCM41dG2da61/HZ4EirRhsfbdacCZ4mW+UFpSGznUSQAp
+ 3i6nmynfCkbpl+z7pZaR/9+3BoISo5Y=
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
+ [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-479-6UWNQMp9PRqL0TTj6whSAQ-1; Wed, 01 Mar 2023 08:51:58 -0500
+X-MC-Unique: 6UWNQMp9PRqL0TTj6whSAQ-1
+Received: by mail-pf1-f197.google.com with SMTP id
+ h14-20020aa786ce000000b005a89856900eso291250pfo.14
+ for <qemu-arm@nongnu.org>; Wed, 01 Mar 2023 05:51:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1677678162;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
- b=ZMlFQo7p8i+xNfZCR3OM/qpVHbxcX7YOWQRoyDO8WOsu7RnRWXcqf9WbXanmyXiTAn
- neAA4PwCsjCHI6d1xKmCV24VOiztDJVjlBHhVKazsjQz4Y0ya6X96QFLb7d/xHS8s3Hg
- hQV/tv3s4gg3txhqxq3xZaoYlx36nE+pIr8vqW6AyHyIJDgSrvu1KRcozl8OmnS3MFeV
- tMQlWYLP8F3Sm+mmDAjwzz6/kIyAKRmbFlxXZ6Fs9E6x+A8Odi1DX8kdvVkQ/wjBi65o
- 63oxV9HJUsYfJVdlSgnpwRHhEBvNsJBndua3Pcj0nNJB6j3YBJZlT62L7eCbBEXq9jB8
- ddYQ==
-X-Gm-Message-State: AO0yUKX3nD6ZySz7BaySEq3EQvzBHUMd7cU6xY1hagxlFv8ZZcYJ6a+G
- nFeIK66ISElDYLS+pqK+lhBXSqlmTfTtWM7QHUXIwGblsyOjOxCF3Iq5zwMoCXhFMhOyT7KJaMT
- ihrsNBCnnfEUyIFg=
-X-Received: by 2002:a05:600c:4fd4:b0:3eb:cf1:f2b6 with SMTP id
- o20-20020a05600c4fd400b003eb0cf1f2b6mr5570416wmq.14.1677678161826; 
- Wed, 01 Mar 2023 05:42:41 -0800 (PST)
-X-Received: by 2002:a05:600c:4fd4:b0:3eb:cf1:f2b6 with SMTP id
- o20-20020a05600c4fd400b003eb0cf1f2b6mr5570397wmq.14.1677678161472; 
- Wed, 01 Mar 2023 05:42:41 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
- by smtp.gmail.com with ESMTPSA id
- p4-20020a05600c358400b003dc5b59ed7asm17555933wmq.11.2023.03.01.05.42.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Mar 2023 05:42:40 -0800 (PST)
-Date: Wed, 1 Mar 2023 14:42:39 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Markus Armbruster
- <armbru@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- qemu-riscv@nongnu.org
-Subject: Re: [PATCH 00/19] hw: Set QDev properties using QDev API (part 1/3)
-Message-ID: <20230301144239.7dc58097@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230203180914.49112-1-philmd@linaro.org>
-References: <20230203180914.49112-1-philmd@linaro.org>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20210112;
+ h=cc:to:subject:message-id:date:in-reply-to:mime-version:references
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mftfQEi9wdaH6McKuPClmRUmMChN2OhoG+1UjGPOpjw=;
+ b=tjCQORVzi7mP2GDEhFqH2ZohnMf9Hq2t/RAxhdlCnnQMJ0BR3OeEOPYD43v5w3UzIN
+ Uwe8fSL0zcV4LEgncEslQinyxtjRC3a9F1V070WNoF8p6QD/q4Fa/Apm/FJEdD6iFLqZ
+ UVmWl3/k5O/fbWEr1wCXpQAOkKcxAWP2OGViMK/hJCAc7Vzxz4iTlsxEbyOhdM7bQpmW
+ bENB49nnyVa39GX5PV/fiH2LCKmWxWXqfZlKUqIR1JctudlS5z8m+VIfSUGSd6MlpTY3
+ /z/Oi1byXNwWvMrIqPnFcdHJLaf5E2M04u3OcXCHsVXTFWMSOOjUb0HJ3gkuuGFnEUEC
+ QOGg==
+X-Gm-Message-State: AO0yUKUPHebpWYwKl1njmnUJR+ZUYCC1yvudeFBRE4+fq3W4fR1DnAfx
+ 4WKRiIIxT3hcw5a9B06kMdeAtUElfkEUuw5OfzRG/ivPEdNk9fm+jE+PQqzxYmCnnEkq73VNxYV
+ FjT66skZL3aQaDiylWmOPn3QY9lys
+X-Received: by 2002:a17:902:a3cd:b0:19c:be03:ce10 with SMTP id
+ q13-20020a170902a3cd00b0019cbe03ce10mr2318744plb.9.1677678717057; 
+ Wed, 01 Mar 2023 05:51:57 -0800 (PST)
+X-Received: by 2002:a17:902:a3cd:b0:19c:be03:ce10 with SMTP id
+ q13-20020a170902a3cd00b0019cbe03ce10mr2318736plb.9.1677678716764; Wed, 01 Mar
+ 2023 05:51:56 -0800 (PST)
+Received: from 744723338238 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 1 Mar 2023 05:51:56 -0800
+From: Andrea Bolognani <abologna@redhat.com>
+References: <20230228150216.77912-1-cohuck@redhat.com>
+ <20230228150216.77912-2-cohuck@redhat.com>
+ <CABJz62OHjrq_V1QD4g4azzLm812EJapPEja81optr8o7jpnaHQ@mail.gmail.com>
+ <874jr4dbcr.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+In-Reply-To: <874jr4dbcr.fsf@redhat.com>
+Date: Wed, 1 Mar 2023 05:51:56 -0800
+Message-ID: <CABJz62MQH2U1QM26PcC3F1cy7t=53_mxkgViLKjcUMVmi29w+Q@mail.gmail.com>
+Subject: Re: [PATCH v6 1/2] arm/kvm: add support for MTE
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, 
+ kvm@vger.kernel.org, Eric Auger <eauger@redhat.com>, 
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=abologna@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -120,121 +122,53 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FSu4xjGYsioS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7d4AEuAL06gL
 
-On Fri,  3 Feb 2023 19:08:55 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+On Wed, Mar 01, 2023 at 11:17:40AM +0100, Cornelia Huck wrote:
+> On Tue, Feb 28 2023, Andrea Bolognani <abologna@redhat.com> wrote:
+> > On Tue, Feb 28, 2023 at 04:02:15PM +0100, Cornelia Huck wrote:
+> >> +MTE CPU Property
+> >> +================
+> >> +
+> >> +The ``mte`` property controls the Memory Tagging Extension. For TCG, it requires
+> >> +presence of tag memory (which can be turned on for the ``virt`` machine via
+> >> +``mte=on``). For KVM, it requires the ``KVM_CAP_ARM_MTE`` capability; until
+> >> +proper migration support is implemented, enabling MTE will install a migration
+> >> +blocker.
+> >
+> > Is it okay to use -machine virt,mte=on unconditionally for both KVM
+> > and TCG guests when MTE support is requested, or will that not work
+> > for the former?
+>
+> QEMU will error out if you try this with KVM (basically, same behaviour
+> as before.) Is that a problem for libvirt, or merely a bit inconvinient?
 
-> QEMU provides the QOM API for core objects.
-> Devices are modelled on top of QOM as QDev objects.
->=20
-> There is no point in using the lower level QOM API with
-> QDev; it makes the code more complex and harder to review.
->=20
-> I first converted all the calls using errp=3D&error_abort or
-> &errp=3DNULL, then noticed the other uses weren't really
-> consistent.
->=20
-> A QDev property defined with the DEFINE_PROP_xxx() macros
-> is always available, thus can't fail. When using hot-plug
-> devices, we only need to check for optional properties
-> registered at runtime with the object_property_add_XXX()
-> API. Some are even always registered in device instance_init.
->=20
-> I have probably been overzealous, so I tagged the patches
-> not using errp=3D&error_abort|&error_fatal|NULL as RFC.
+I'm actually a bit confused. The documentation for the mte property
+of the virt machine type says
 
-such patches are wrong (12/19 is definitely broken),
-you can do above only if failure is not expected
-otherwise you are killing QEMU process during runtime.
+  mte
+    Set on/off to enable/disable emulating a guest CPU which implements
+    the Arm Memory Tagging Extensions. The default is off.
 
-So if you do this, plse describe in commit message why
-it isn't breaking anything for each case.
+So why is there a need to have a CPU property in addition to the
+existing machine type property?
 
->=20
-> PPC and ARM conversions will follow as two different series.
->=20
-> Philippe Mathieu-Daud=C3=A9 (19):
->   scripts/coccinelle: Add qom-qdev-prop.cocci
->   hw/qdev: Introduce qdev_prop_set_link()
->   hw/acpi: Set QDev properties using QDev API
->   hw/audio: Set QDev properties using QDev API
->   hw/core/numa: Set QDev properties using QDev API
->   hw/core/gpio: Set QDev properties using QDev API
->   hw/scsi: Set QDev properties using QDev API
->   hw/usb: Set QDev properties using QDev API
->   hw/virtio: Set QDev properties using QDev API
->   hw/avr: Set QDev properties using QDev API
->   hw/hppa: Set QDev properties using QDev API
->   hw/i386: Set QDev properties using QDev API
->   hw/m68k: Set QDev properties using QDev API
->   hw/microblaze: Set QDev properties using QDev API
->   hw/mips: Set QDev properties using QDev API
->   hw/nios2: Set QDev properties using QDev API
->   hw/riscv: Set QDev properties using QDev API
->   hw/rx: Set QDev properties using QDev API
->   hw/sparc: Set QDev properties using QDev API
->=20
->  hw/acpi/cpu_hotplug.c                    |  7 ++--
->  hw/acpi/ich9.c                           |  4 +--
->  hw/acpi/piix4.c                          |  4 +--
->  hw/avr/arduino.c                         |  4 +--
->  hw/avr/atmega.c                          |  4 +--
->  hw/core/gpio.c                           |  8 ++---
->  hw/core/numa.c                           |  4 +--
->  hw/core/qdev-properties.c                |  5 +++
->  hw/display/virtio-gpu-pci.c              |  4 +--
->  hw/display/virtio-vga.c                  |  4 +--
->  hw/dma/sparc32_dma.c                     |  6 ++--
->  hw/hppa/machine.c                        |  3 +-
->  hw/i386/pc.c                             |  8 ++---
->  hw/i386/pc_q35.c                         | 25 +++++++-------
->  hw/i386/sgx.c                            |  3 +-
->  hw/i386/x86.c                            | 12 +++----
->  hw/m68k/next-cube.c                      |  2 +-
->  hw/m68k/q800.c                           |  7 ++--
->  hw/mem/pc-dimm.c                         |  5 ++-
->  hw/microblaze/petalogix_ml605_mmu.c      | 40 ++++++++++------------
->  hw/microblaze/petalogix_s3adsp1800_mmu.c |  2 +-
->  hw/microblaze/xlnx-zynqmp-pmu.c          | 40 +++++++++-------------
->  hw/mips/boston.c                         |  6 ++--
->  hw/mips/cps.c                            | 42 ++++++++----------------
->  hw/mips/jazz.c                           |  3 +-
->  hw/mips/malta.c                          |  6 ++--
->  hw/nios2/10m50_devboard.c                |  2 +-
->  hw/riscv/microchip_pfsoc.c               |  8 ++---
->  hw/riscv/opentitan.c                     |  9 ++---
->  hw/riscv/shakti_c.c                      |  7 ++--
->  hw/riscv/sifive_e.c                      |  8 ++---
->  hw/riscv/sifive_u.c                      |  9 ++---
->  hw/riscv/spike.c                         | 10 +++---
->  hw/riscv/virt.c                          |  9 ++---
->  hw/rx/rx-gdbsim.c                        | 11 +++----
->  hw/scsi/scsi-bus.c                       |  6 +---
->  hw/sparc/sun4m.c                         | 10 +++---
->  hw/sparc64/sun4u.c                       |  3 +-
->  hw/usb/hcd-xhci-pci.c                    |  2 +-
->  hw/usb/hcd-xhci-sysbus.c                 |  2 +-
->  hw/virtio/virtio-iommu-pci.c             |  3 +-
->  hw/virtio/virtio-rng.c                   |  3 +-
->  include/hw/audio/pcspk.h                 |  2 +-
->  include/hw/qdev-properties.h             |  1 +
->  target/i386/cpu.c                        |  6 ++--
->  target/i386/host-cpu.c                   |  7 ++--
->  46 files changed, 155 insertions(+), 221 deletions(-)
->  create mode 100644 scripts/coccinelle/qom-qdev-prop.cocci
->=20
+From the libvirt integration point of view, setting the machine type
+property only for TCG is not a problem.
+
+-- 
+Andrea Bolognani / Red Hat / Virtualization
 

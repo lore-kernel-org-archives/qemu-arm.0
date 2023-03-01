@@ -1,96 +1,123 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6962096ejc;
-        Wed, 1 Mar 2023 05:28:06 -0800 (PST)
-X-Google-Smtp-Source: AK7set92YLWx4PKP/h0zHcCZAJ65WMbElwq2LAQj2fRXV+Lfl6DKAQ7oxq1c89uMUIBU1Oe7vSVg
-X-Received: by 2002:a05:6214:cc3:b0:56b:7ec7:b158 with SMTP id 3-20020a0562140cc300b0056b7ec7b158mr13046587qvx.36.1677677286271;
-        Wed, 01 Mar 2023 05:28:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677677286; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6973236ejc;
+        Wed, 1 Mar 2023 05:43:48 -0800 (PST)
+X-Google-Smtp-Source: AK7set/tyN3rCcRZIzaz7jvYcrBRLo4QzQUAn8K5CnvNi8sFKtVTlG47cr6dbAFNesuh1R5pe2pi
+X-Received: by 2002:a05:622a:1baa:b0:3a8:e9e:e194 with SMTP id bp42-20020a05622a1baa00b003a80e9ee194mr11481158qtb.40.1677678228719;
+        Wed, 01 Mar 2023 05:43:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677678228; cv=none;
         d=google.com; s=arc-20160816;
-        b=lrzcXXKVMTbs7vQFmc5GpCLPOOenV3m1pGttOUnkPIwRAY8lvEsPkZ2eT99o4ZFAMz
-         sJxKhqDCy4eedh4wxaIrbxKIfgUdMpZ3t5MBIMx/KEJS526i/u0G6upObPiO60ThSVJ0
-         aMIqTXkXjROq2DOELuXrFeg6PhrCycKxgwm8KE/34kxci7kgAUcP6uYUGObK8YiAK7QR
-         ge9TLu0L/mSJ+7uj5dbIfyYAP9gmQe9i5nf+lXPBsmQXTdumatq/bmSRgrrKY+eFPlM8
-         3CNK0Oh6LUxa4kZNhNoVl8V4Qarb1SMk8Ot2r3BCknq4tdm7jTi3FceB1ie4e/9a6Tjc
-         lvcw==
+        b=doXFnYCTVFVdiSgfIC/qdgA2v0D6b185cicZDoOf//kTKLKapopXhxjJK4MG7Fq2Ut
+         ulUse4ivpOEmVC5BuBp+TvZFe2pgAkjLvYI1rcLuFj2uEOeDimP6OTG2BE3bG1yPO7Jh
+         d/b6cycu0PCdmF7JiC6cHSo1r1RaOjqey3C7JPABGooXXZfzuRFNrGrxSrFg81aIMlr5
+         KlS32peRcY4topL6nq0ZKKbM3iRVxtZmSBfOsts5ZGESc8xvRbwxTPYIi7kmSXG18YTv
+         jtaH+p62iL2Q1oU1ZFbfIEd0f77JQ3HVotmjFihIIfx7da1dMaHx2rKlFwl9Iujs9FlZ
+         ncqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=xG9qUn8hx6I2gows7lMvl5DZWk+FFcz/j5sf2lfepw8=;
-        b=eO2YCSUdyqX1dlhsBIL9vuC9vOBPcoPdivifbsa/uuAgFOk0leu8WzYPLzhoZt17pa
-         tLT21Sz6tG5S6wK7zwhfKKUL/Mh1fpDHnrrUbMqamAmClFjF3+ORZNWy1P7di2+XqN1v
-         MIUAGf7uzUMZvOhQxHMF2xwhKQ1/4qhRT3/2yMvCvMSX76gtORI8wB9tQ7x328sCUfny
-         LYfFEWIRX31WhIwZTFqh/n3i+0gB9vYzsfySVb92iYCUmOWYYZKzk6Bs0cYY12El7EOc
-         KrEIdv2WYBPeqgYr1br67AyPoV9fSfkRhutfEl5Qc/UzZbKYSENQudl1BQKqdCbe0rEM
-         8mww==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
+        b=kgIUPK4GcqtcQH0H3H92Z3Sk/EDXgwTdFnnYZKtiWPBRS22gLA6s8IFO2/uAKAkvFC
+         9AYf+5a9Ersx7TRJ8dHLTVQL6TveTDCYJxbpfy83x4h4pjo208W+6XQp9tSgrnu3pUoD
+         nEzh/Xz5zWVwzH1PMsaHewALqsOP5vG/kjj02f8neX5cu56iJMWexgVUCOcDI/XF979o
+         JEXx4q0vMR0VmrnLmb/zhjl+NB2cURdUXAWcixcDhHQwYZ496QDnuNjQbYnnPhtkCvLf
+         G9Y58afPAITT+/MYImS+zHm4WzGSU43hl8t5cbVckDnuRRB42PUZsEDQ0rO3M8ynvyII
+         sofQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YT64k8GS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 80-20020a370453000000b006ffd3e1339esi10682186qke.444.2023.03.01.05.28.06
+        by mx.google.com with ESMTPS id e19-20020ac85dd3000000b003bfe796bfcasi3814812qtx.390.2023.03.01.05.43.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 05:28:06 -0800 (PST)
+        Wed, 01 Mar 2023 05:43:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YT64k8GS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pXMUs-0008OA-T6; Wed, 01 Mar 2023 08:27:56 -0500
+	id 1pXMjL-000089-FY; Wed, 01 Mar 2023 08:42:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pXMUr-0008N7-9F
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:27:53 -0500
-Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pXMjJ-00006n-11
+ for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:42:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pXMUo-0003am-7T
- for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:27:53 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.235])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 076932A7B1;
- Wed,  1 Mar 2023 13:27:44 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Wed, 1 Mar
- 2023 14:27:44 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001755528a9-9b36-4a35-befc-f088aff4e89f,
- BA6511934B6943C3167A88A21852BB5F3FADB7F3) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <9d2cc891-9316-ccd4-ca33-035073bec256@kaod.org>
-Date: Wed, 1 Mar 2023 14:27:43 +0100
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pXMjH-0008RX-Dj
+ for qemu-devel@nongnu.org; Wed, 01 Mar 2023 08:42:48 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677678166;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
+ b=YT64k8GShMNxgqw+6DeHMOPvzbuFjMbbC6smT1y3xMQUMqFFPv7ckPPvCIaDoomRshi0r3
+ b+mMuO4x20DSboOKWDSDF0wkmWWWsEfnw6sx3FOPzNIAbDDXZOaQ20QT3MTwtHbtGxLzjY
+ N3AVDA9QHYiGpCfbJ7LXu510jugZorU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-31-tQ_cRtHcMs6QEqYM9aGSKA-1; Wed, 01 Mar 2023 08:42:43 -0500
+X-MC-Unique: tQ_cRtHcMs6QEqYM9aGSKA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ bi21-20020a05600c3d9500b003e836e354e0so5339444wmb.5
+ for <qemu-devel@nongnu.org>; Wed, 01 Mar 2023 05:42:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1677678162;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MScLB+8lbFGwRQBY52TOhEDcemJszYTl7LVgeyNiOxI=;
+ b=ZMlFQo7p8i+xNfZCR3OM/qpVHbxcX7YOWQRoyDO8WOsu7RnRWXcqf9WbXanmyXiTAn
+ neAA4PwCsjCHI6d1xKmCV24VOiztDJVjlBHhVKazsjQz4Y0ya6X96QFLb7d/xHS8s3Hg
+ hQV/tv3s4gg3txhqxq3xZaoYlx36nE+pIr8vqW6AyHyIJDgSrvu1KRcozl8OmnS3MFeV
+ tMQlWYLP8F3Sm+mmDAjwzz6/kIyAKRmbFlxXZ6Fs9E6x+A8Odi1DX8kdvVkQ/wjBi65o
+ 63oxV9HJUsYfJVdlSgnpwRHhEBvNsJBndua3Pcj0nNJB6j3YBJZlT62L7eCbBEXq9jB8
+ ddYQ==
+X-Gm-Message-State: AO0yUKX3nD6ZySz7BaySEq3EQvzBHUMd7cU6xY1hagxlFv8ZZcYJ6a+G
+ nFeIK66ISElDYLS+pqK+lhBXSqlmTfTtWM7QHUXIwGblsyOjOxCF3Iq5zwMoCXhFMhOyT7KJaMT
+ ihrsNBCnnfEUyIFg=
+X-Received: by 2002:a05:600c:4fd4:b0:3eb:cf1:f2b6 with SMTP id
+ o20-20020a05600c4fd400b003eb0cf1f2b6mr5570416wmq.14.1677678161826; 
+ Wed, 01 Mar 2023 05:42:41 -0800 (PST)
+X-Received: by 2002:a05:600c:4fd4:b0:3eb:cf1:f2b6 with SMTP id
+ o20-20020a05600c4fd400b003eb0cf1f2b6mr5570397wmq.14.1677678161472; 
+ Wed, 01 Mar 2023 05:42:41 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+ by smtp.gmail.com with ESMTPSA id
+ p4-20020a05600c358400b003dc5b59ed7asm17555933wmq.11.2023.03.01.05.42.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Mar 2023 05:42:40 -0800 (PST)
+Date: Wed, 1 Mar 2023 14:42:39 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Markus Armbruster
+ <armbru@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ qemu-riscv@nongnu.org
+Subject: Re: [PATCH 00/19] hw: Set QDev properties using QDev API (part 1/3)
+Message-ID: <20230301144239.7dc58097@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230203180914.49112-1-philmd@linaro.org>
+References: <20230203180914.49112-1-philmd@linaro.org>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.2
-Subject: Re: [PATCH 7/8] aspeed: Introduce a spi_boot region under the SoC
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <qemu-block@nongnu.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery
- <andrew@aj.id.au>, Markus Armbruster <armbru@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>
-References: <20230214171830.681594-1-clg@kaod.org>
- <20230214171830.681594-8-clg@kaod.org>
- <49213633-802b-afdd-d54d-e40a866e3fc2@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <49213633-802b-afdd-d54d-e40a866e3fc2@linaro.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 7083b5dd-809b-411d-a2a7-3fc6e0814d26
-X-Ovh-Tracer-Id: 5967269506860092268
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudelhedggeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehphhhilhhmugeslhhinhgrrhhordhorhhgpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhqvghmuhdqsghlohgtkhesnhhonhhgnhhurdhorhhgpdhjohgvlhesjhhmshdrihgurdgruhdprghnughrvgifsegrjhdrihgurdgruhdprghrmhgsrhhusehrvgguhhgrthdrtghomhdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
- helo=9.mo552.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -106,67 +133,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zcnAxw4FGOMK
+X-TUID: FSu4xjGYsioS
 
-On 2/15/23 12:02, Philippe Mathieu-Daudé wrote:
-> On 14/2/23 18:18, Cédric Le Goater wrote:
->> The default boot of the Aspeed SoCs is address 0x0. For this reason,
->> the FMC flash device contents are remapped by HW on the first 256MB of
->> the address space. In QEMU, this is currently done in the machine init
->> with the setup of a region alias.
->>
->> Move this code to the SoC and introduce an extra container to prepare
->> ground for the boot ROM region which will overlap the FMC flash
->> remapping.
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   include/hw/arm/aspeed_soc.h |  3 +++
->>   hw/arm/aspeed.c             | 13 +------------
->>   hw/arm/aspeed_ast2600.c     | 13 +++++++++++++
->>   hw/arm/aspeed_soc.c         | 14 ++++++++++++++
->>   hw/arm/fby35.c              |  8 +-------
->>   5 files changed, 32 insertions(+), 19 deletions(-)
-> 
->>   enum {
->> +    ASPEED_DEV_SPI_BOOT,
->>       ASPEED_DEV_IOMEM,
->>       ASPEED_DEV_UART1,
->>       ASPEED_DEV_UART2,
-> 
-> 
->>   #define ASPEED_SOC_DPMCU_SIZE       0x00040000
->>   static const hwaddr aspeed_soc_ast2600_memmap[] = {
->> +    [ASPEED_DEV_SPI_BOOT]  = 0x0,
-> 
-> Isn't this a constant address for this Soc family?
-> If so, we can define ASPEED_SOC_RESET_ADDR once ...
+On Fri,  3 Feb 2023 19:08:55 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-I will introduce :
+> QEMU provides the QOM API for core objects.
+> Devices are modelled on top of QOM as QDev objects.
+>=20
+> There is no point in using the lower level QOM API with
+> QDev; it makes the code more complex and harder to review.
+>=20
+> I first converted all the calls using errp=3D&error_abort or
+> &errp=3DNULL, then noticed the other uses weren't really
+> consistent.
+>=20
+> A QDev property defined with the DEFINE_PROP_xxx() macros
+> is always available, thus can't fail. When using hot-plug
+> devices, we only need to check for optional properties
+> registered at runtime with the object_property_add_XXX()
+> API. Some are even always registered in device instance_init.
+>=20
+> I have probably been overzealous, so I tagged the patches
+> not using errp=3D&error_abort|&error_fatal|NULL as RFC.
 
-   #define ASPEED_SPI_BOOT_ADDR 0x0
+such patches are wrong (12/19 is definitely broken),
+you can do above only if failure is not expected
+otherwise you are killing QEMU process during runtime.
 
-and use it every where it makes sense. This should replace FIRMWARE_ADDR
-in aspeed.c also.
+So if you do this, plse describe in commit message why
+it isn't breaking anything for each case.
 
-Thanks,
-
-C.
-
-> 
->>       [ASPEED_DEV_SRAM]      = 0x10000000,
->>       [ASPEED_DEV_DPMCU]     = 0x18000000,
->>       /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
->> @@ -282,6 +283,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>       qemu_irq irq;
->>       g_autofree char *sram_name = NULL;
->> +    /* Default boot region (SPI memory or ROMs) */
->> +    memory_region_init(&s->spi_boot_container, OBJECT(s),
->> +                       "aspeed.spi_boot_container", 0x10000000);
->> +    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SPI_BOOT],
-> 
-> ... and use it here.
-> 
->> +                                &s->spi_boot_container);
-> 
+>=20
+> PPC and ARM conversions will follow as two different series.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (19):
+>   scripts/coccinelle: Add qom-qdev-prop.cocci
+>   hw/qdev: Introduce qdev_prop_set_link()
+>   hw/acpi: Set QDev properties using QDev API
+>   hw/audio: Set QDev properties using QDev API
+>   hw/core/numa: Set QDev properties using QDev API
+>   hw/core/gpio: Set QDev properties using QDev API
+>   hw/scsi: Set QDev properties using QDev API
+>   hw/usb: Set QDev properties using QDev API
+>   hw/virtio: Set QDev properties using QDev API
+>   hw/avr: Set QDev properties using QDev API
+>   hw/hppa: Set QDev properties using QDev API
+>   hw/i386: Set QDev properties using QDev API
+>   hw/m68k: Set QDev properties using QDev API
+>   hw/microblaze: Set QDev properties using QDev API
+>   hw/mips: Set QDev properties using QDev API
+>   hw/nios2: Set QDev properties using QDev API
+>   hw/riscv: Set QDev properties using QDev API
+>   hw/rx: Set QDev properties using QDev API
+>   hw/sparc: Set QDev properties using QDev API
+>=20
+>  hw/acpi/cpu_hotplug.c                    |  7 ++--
+>  hw/acpi/ich9.c                           |  4 +--
+>  hw/acpi/piix4.c                          |  4 +--
+>  hw/avr/arduino.c                         |  4 +--
+>  hw/avr/atmega.c                          |  4 +--
+>  hw/core/gpio.c                           |  8 ++---
+>  hw/core/numa.c                           |  4 +--
+>  hw/core/qdev-properties.c                |  5 +++
+>  hw/display/virtio-gpu-pci.c              |  4 +--
+>  hw/display/virtio-vga.c                  |  4 +--
+>  hw/dma/sparc32_dma.c                     |  6 ++--
+>  hw/hppa/machine.c                        |  3 +-
+>  hw/i386/pc.c                             |  8 ++---
+>  hw/i386/pc_q35.c                         | 25 +++++++-------
+>  hw/i386/sgx.c                            |  3 +-
+>  hw/i386/x86.c                            | 12 +++----
+>  hw/m68k/next-cube.c                      |  2 +-
+>  hw/m68k/q800.c                           |  7 ++--
+>  hw/mem/pc-dimm.c                         |  5 ++-
+>  hw/microblaze/petalogix_ml605_mmu.c      | 40 ++++++++++------------
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c |  2 +-
+>  hw/microblaze/xlnx-zynqmp-pmu.c          | 40 +++++++++-------------
+>  hw/mips/boston.c                         |  6 ++--
+>  hw/mips/cps.c                            | 42 ++++++++----------------
+>  hw/mips/jazz.c                           |  3 +-
+>  hw/mips/malta.c                          |  6 ++--
+>  hw/nios2/10m50_devboard.c                |  2 +-
+>  hw/riscv/microchip_pfsoc.c               |  8 ++---
+>  hw/riscv/opentitan.c                     |  9 ++---
+>  hw/riscv/shakti_c.c                      |  7 ++--
+>  hw/riscv/sifive_e.c                      |  8 ++---
+>  hw/riscv/sifive_u.c                      |  9 ++---
+>  hw/riscv/spike.c                         | 10 +++---
+>  hw/riscv/virt.c                          |  9 ++---
+>  hw/rx/rx-gdbsim.c                        | 11 +++----
+>  hw/scsi/scsi-bus.c                       |  6 +---
+>  hw/sparc/sun4m.c                         | 10 +++---
+>  hw/sparc64/sun4u.c                       |  3 +-
+>  hw/usb/hcd-xhci-pci.c                    |  2 +-
+>  hw/usb/hcd-xhci-sysbus.c                 |  2 +-
+>  hw/virtio/virtio-iommu-pci.c             |  3 +-
+>  hw/virtio/virtio-rng.c                   |  3 +-
+>  include/hw/audio/pcspk.h                 |  2 +-
+>  include/hw/qdev-properties.h             |  1 +
+>  target/i386/cpu.c                        |  6 ++--
+>  target/i386/host-cpu.c                   |  7 ++--
+>  46 files changed, 155 insertions(+), 221 deletions(-)
+>  create mode 100644 scripts/coccinelle/qom-qdev-prop.cocci
+>=20
 

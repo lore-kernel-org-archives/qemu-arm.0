@@ -1,82 +1,85 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7183424ejc;
-        Wed, 1 Mar 2023 08:57:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set/rD1PjtdrFJxDPbTiyevTSRua5mnGuSiO1zW5nKdFVjXojUZjJO+WRHDT0iD2JMmyMEE/e
-X-Received: by 2002:a05:622a:143:b0:3b9:e3fc:5689 with SMTP id v3-20020a05622a014300b003b9e3fc5689mr12386286qtw.58.1677689836693;
-        Wed, 01 Mar 2023 08:57:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677689836; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7183447ejc;
+        Wed, 1 Mar 2023 08:57:18 -0800 (PST)
+X-Google-Smtp-Source: AK7set8p4IDs9QrMv+X4o1Kh1ktumDcJPF/MUbnJeuKQsnIFvr6nO0z3pgLNeEyeE4ez6ExGvvJG
+X-Received: by 2002:a05:6214:246a:b0:56e:bb46:fc72 with SMTP id im10-20020a056214246a00b0056ebb46fc72mr13799494qvb.45.1677689838658;
+        Wed, 01 Mar 2023 08:57:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677689838; cv=none;
         d=google.com; s=arc-20160816;
-        b=jiUQrzKT94a5mBqGEdva9vKcolyVQv6l0Fr8+8WRopd4eXLJgJj/NQyajk2XBC+XdN
-         OaIw1ESL2d6vWwYacZ8V6xt5mi6OwKIjre+hFgXmOGPvcxeTKjXtjzrZg0Lxm34pEk3a
-         inisbI7hany7Tx/seZTvxX8JxqIN7wa2UoMepeBjvtx/CixgLHJFP9U1Hvc+nwl41SWS
-         VKCuFUocTrDyZDJRhOXztbs7CzRB5u0jhqyyj72dGAb4NYxQV9P/bjHtDhH3qel2biAz
-         +bhdDEPPdNZTEMl9sgabWiYqW9Hn/T0TDFqF65hQLsVZu1h2jKeqOjZMf5rcTyMBmp/d
-         iuzw==
+        b=NOzPNtBUFIT4zTvIq4p1e/KwSYz4brTjajpN/xyxx+mGtaZ2XGoTNA3/4iudmK75v7
+         WOs1lqAj2C4yYPF9nvHMW8cBLBzoNSzjhZiJxZg011ZzexhffLfxuBGeImGrCdQo4aRh
+         Qwv/proVbDkFY8AjBa1IKeVfi/WLyhDhdel9QY4FPr4/pl4HEn879D5XF+D3Bd80IHBA
+         2Y0ZAtehbbke7iFrM3PqQNVwAyq5CCnAfufJvY5ktfQu5aF799op+3H+V/01MewBmTgI
+         lAmnLvT866hCkJL8pvLiX3pNz0YC0Og4RZHEGvBgrMshzucjsMA506lJEB6XkHpxPC7G
+         rFKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=U2rEDnLYjVBTn+AMqJMdsfpZ8g92IifRZgudwpv2hR4=;
-        b=y7ARb/3f1nNbNgj/ED3wbLy4U7Fl8HbPXvN5PPNVFkHIZ6wkn6mg6R/S2DxHAjF6S+
-         JcCZG9D1UTsxKCuUscC3855kEPUWp6AuQ+31hf1mQnpXeTS54hJs1+nb9Rmi8ZqN0Oa1
-         KBo1bKcwg5iYVlOxp8VfFMQVuEjFtSlfUU1riSHviHmBZnbtTFFj4yCKxXiwRERGv0Gi
-         oSP77r7oMmxMmzVLusMYV3sj8ovS5G85qiC4gaCS/3J0v0QosoN/K4dyS6EuVgYMHE7q
-         JigC+ZPfJWrgZKoEuT9a+O3RhYOR5UXmTrYMB5Ug1fQLJx0qDMQKNM94J+yqGSTPm9se
-         YbyA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=sRi5NMipYO5J3iz4b7Ts2FDCWK+mEsDRirV4jeIl1io=;
+        b=VJWJjGc3YYXgQLfIzauIex82FYEhoF+sS3tsZaCUdAhGWEq0GcLpWiBlX7sIckJrQx
+         AptSvRvOqr4WDqhN48W83gBVfgi4AHTH7n2oIJSU7qzy9PO643ocT0Onm96MNHKcWvU2
+         Y8GTb48YzrQaJB1fbXieX1xqbjcJ9yCtveib8w/ucBSkw8x6Do184a2jCDzDakTW5Gyy
+         xS75+GvzuwA3tO1Ff3I3VyhpjeJANBej6lWK7bzC0REtGBmUt4OqHfFMgdyuvMoEiTSs
+         tZ3vpd3IZ81s2B3xe2P44LwvYLzLBKTTwbFDgQ0INRCmguG8/jP1XJJFhZRLzOs8XwDT
+         40og==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10-20020ac85a0a000000b003b860983966si10934067qta.219.2023.03.01.08.57.16
+        by mx.google.com with ESMTPS id f2-20020a05620a280200b00725375894b5si677111qkp.519.2023.03.01.08.57.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 08:57:16 -0800 (PST)
+        Wed, 01 Mar 2023 08:57:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXPkz-0000ds-6k; Wed, 01 Mar 2023 11:56:45 -0500
+	id 1pXPlC-0000iy-Ik; Wed, 01 Mar 2023 11:56:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPkv-0000dQ-On; Wed, 01 Mar 2023 11:56:44 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1pXPl7-0000iC-AR; Wed, 01 Mar 2023 11:56:53 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPkt-0007bN-RK; Wed, 01 Mar 2023 11:56:41 -0500
+ id 1pXPl5-0007h0-6x; Wed, 01 Mar 2023 11:56:53 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPB1PHKz4x7v;
- Thu,  2 Mar 2023 03:56:30 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPX64ynz4x7x;
+ Thu,  2 Mar 2023 03:56:48 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgP76H3pz4x1R;
- Thu,  2 Mar 2023 03:56:27 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgPV47d5z4x1R;
+ Thu,  2 Mar 2023 03:56:46 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Andrew Jeffery <andrew@aj.id.au>,
+ Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 00/11] aspeed queue
-Date: Wed,  1 Mar 2023 17:56:08 +0100
-Message-Id: <20230301165619.2171090-1-clg@kaod.org>
+Subject: [PATCH v2 06/11] hw/arm/aspeed: Adding new machine Tiogapass in QEMU
+Date: Wed,  1 Mar 2023 17:56:14 +0100
+Message-Id: <20230301165619.2171090-7-clg@kaod.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230301165619.2171090-1-clg@kaod.org>
+References: <20230301165619.2171090-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=znpK=6Z=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,64 +94,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nubQXM1zHgCz
+X-TUID: ITSzEkG50HA7
 
-Hello,
+From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
 
-Here is the aspeed series I plan to send as a PR this week.
+This patch support Tiogapass in QEMU environment.
+and introduced EEPROM BMC FRU data support "add tiogapass_bmc_fruid data"
+along with the machine support.
 
- - fix for the Aspeed I2C slave mode, an I2C echo device from Klaus
-   and its associated test in avocado.   
- - initial cleanups to allow the use of block devices instead of
-   drives on the command line.
- - new facebook machines and eeprom fixes for the Fuji
- - readline fix ! 
+Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+[ clg: - commit log topic update
+       - checkpatch issues
+       - Documentation update ]
+Message-Id: <20230216184342.253868-1-pkarthikeyan1509@gmail.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ docs/system/arm/aspeed.rst |  1 +
+ hw/arm/aspeed_eeprom.h     |  3 +++
+ hw/arm/aspeed.c            | 32 ++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c     | 22 ++++++++++++++++++++++
+ 4 files changed, 58 insertions(+)
 
-Thanks,
-
-C.
-
-Cédric Le Goater (4):
-  tests/avocado/machine_aspeed.py: Add an I2C slave test
-  aspeed: Introduce a spi_boot region under the SoC
-  aspeed: Add a boot_rom overlap region in the SoC spi_boot container
-  aspeed/smc: Replace SysBus IRQs with GPIO lines
-
-Dongli Zhang (1):
-  readline: fix hmp completion issue
-
-Karthikeyan Pasupathi (2):
-  hw/arm/aspeed: Adding new machine Yosemitev2 in QEMU
-  hw/arm/aspeed: Adding new machine Tiogapass in QEMU
-
-Klaus Jensen (2):
-  hw/i2c: only schedule pending master when bus is idle
-  hw/misc: add a toy i2c echo device
-
-Sittisak Sinprem (2):
-  hw/at24c : modify at24c to support 1 byte address mode
-  aspeed/fuji : correct the eeprom size
-
- docs/system/arm/aspeed.rst      |   2 +
- hw/arm/aspeed_eeprom.h          |   6 ++
- include/hw/arm/aspeed_soc.h     |   5 +
- include/hw/i2c/i2c.h            |   2 +
- hw/arm/aspeed.c                 | 159 ++++++++++++++++++++++----------
- hw/arm/aspeed_ast2600.c         |  13 +++
- hw/arm/aspeed_eeprom.c          |  45 +++++++++
- hw/arm/aspeed_soc.c             |  14 +++
- hw/arm/fby35.c                  |   8 +-
- hw/i2c/aspeed_i2c.c             |   2 +
- hw/i2c/core.c                   |  37 +++++---
- hw/misc/i2c-echo.c              | 156 +++++++++++++++++++++++++++++++
- hw/nvram/eeprom_at24c.c         |  30 +++++-
- hw/ssi/aspeed_smc.c             |   5 +-
- monitor/hmp.c                   |   8 +-
- hw/misc/meson.build             |   2 +
- tests/avocado/machine_aspeed.py |  10 ++
- 17 files changed, 421 insertions(+), 83 deletions(-)
- create mode 100644 hw/misc/i2c-echo.c
-
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 1d69b68591..d4e293e7f9 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -25,6 +25,7 @@ AST2500 SoC based machines :
+ - ``fp5280g2-bmc``         Inspur FP5280G2 BMC
+ - ``g220a-bmc``            Bytedance G220A BMC
+ - ``yosemitev2-bmc``       Facebook YosemiteV2 BMC
++- ``tiogapass-bmc``        Facebook Tiogapass BMC
+ 
+ AST2600 SoC based machines :
+ 
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index edf18e9685..86db6f0479 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -9,6 +9,9 @@
+ 
+ #include "qemu/osdep.h"
+ 
++extern const uint8_t tiogapass_bmc_fruid[];
++extern const size_t tiogapass_bmc_fruid_len;
++
+ extern const uint8_t fby35_nic_fruid[];
+ extern const uint8_t fby35_bb_fruid[];
+ extern const uint8_t fby35_bmc_fruid[];
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 3f992fea46..6bafeb8fdd 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -539,6 +539,15 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+ }
+ 
++static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 * KiB);
++    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB,
++                          tiogapass_bmc_fruid, tiogapass_bmc_fruid_len);
++}
++
+ static void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+ {
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+@@ -1218,6 +1227,25 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_tiogapass_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
++    amc->hw_strap2 = 0;
++    amc->fmc_model = "n25q256a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->i2c_init  = tiogapass_bmc_i2c_init;
++    mc->default_ram_size       = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1597,6 +1625,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_tacoma_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_tiogapass_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index 7006794654..2fb2d5dbb7 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -6,6 +6,27 @@
+ 
+ #include "aspeed_eeprom.h"
+ 
++/* Tiogapass BMC FRU */
++const uint8_t tiogapass_bmc_fruid[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
++    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
++    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
++    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
++    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0x6f, 0x67, 0x61,
++    0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65,
++    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0xcd, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
++    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
++};
++
+ const uint8_t fby35_nic_fruid[] = {
+     0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
+     0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
+@@ -98,6 +119,7 @@ const uint8_t yosemitev2_bmc_fruid[] = {
+     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+ };
+ 
++const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
 -- 
 2.39.2
 

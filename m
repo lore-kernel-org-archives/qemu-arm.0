@@ -1,85 +1,85 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7184265ejc;
-        Wed, 1 Mar 2023 08:58:38 -0800 (PST)
-X-Google-Smtp-Source: AK7set/KBHxnfNw5aLwEah4r86Zo8UuCBoyUQjn9PvMqnIcQ4I3p32AgqRPXA6FEDyEWbBrFFydT
-X-Received: by 2002:a05:6214:262f:b0:56c:25dd:f739 with SMTP id gv15-20020a056214262f00b0056c25ddf739mr13892125qvb.24.1677689918484;
-        Wed, 01 Mar 2023 08:58:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677689918; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7184483ejc;
+        Wed, 1 Mar 2023 08:59:02 -0800 (PST)
+X-Google-Smtp-Source: AK7set8GcroXQT8iXiuaHw5qh/N4txvw5lDmCP6KzbQOn5p/Zt27dVgwqPRqWq8y7+EcPGpNLT4V
+X-Received: by 2002:a05:622a:1ba4:b0:3b9:b1eb:ad38 with SMTP id bp36-20020a05622a1ba400b003b9b1ebad38mr11967261qtb.50.1677689942705;
+        Wed, 01 Mar 2023 08:59:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677689942; cv=none;
         d=google.com; s=arc-20160816;
-        b=Si2BdFLjqweqxc5FaptwACQYTdIzPPMIrTCTzhR2x26kUZAeDo+iuDJVQzTNMkPYDm
-         mPAhy0HNi1cht/gOywl7ZhWHyi+pe8W9+BxwZUVBiVe2NpkoP72a6Cl5t+J08BLUl1e5
-         OmW9QWE9qwIVZAfh+LyBHUmvgEOoqQc3muaeZZAcqv8ao+3k90Seq7U30QaE2781w5AR
-         jG9pbb6vskHpYaLD8sPlbDwPVX9hgeFdHCNggntXjNqXZ7sO6DzfFY4WYRt7Fn3d9u6L
-         XVZBCD6pZvM9jeLIU5Z4Yw1LFUQjJqUkSFO+bxwbtA/TnWDA2FMdXOJBqJe1DyNt8I2G
-         DF8Q==
+        b=IbgzddN3hffFN7X1hufd+78Zezv2kG9k9gCvUkxdYHt4ceb5fgHIA2+xd3uLUa+IZk
+         Vs7vped1EvUIGJqd25TvcP7ESbWhNKHlkXyIPiaJ0jEVPuqGYNqsp7YpzXnwf9XMjBNx
+         pCMsBZAtV//nWpLL3eXMd5cH1OsLu68qlQGtOtviVawMpQLJ9Awmp0NpmJAzI2gJ4c1H
+         31hYkYCVwCEJM8Jj1zjY0sfPqy7x0BI9G0rX0RO0AVldREcSIIVLRWmV32exXzYujMdm
+         9HYcm3UbI2iLgv8X1nXK7KAP7aZyC/uEuX1Ys3zLIpK6BvZRq12VG/53xsTPO5r24nRX
+         nciw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=Jwzt73+AOuDjJkzgExGQp3qaEDfJmRtwphnTwwWn78A=;
-        b=iRAsAGV5oI7f04H9ZEk8fO/LMH3g6JXSV8XvHIzAC6VvKbk3liVHpt04PvvV26oxcB
-         maC1Q/z/5GhtHoip0c7qLz9EKXN4HxZ+FaWxdiVAtu/tHNWKPmueKHAQTsW1u/6LXOJD
-         e+Nm7YFoyM8atFSfG9KpYGqkxiFm3QQ/sFYh/eQkFH4GCLk2NUrE72x2ypklgVHaWbMu
-         NqDtMDkMCuHtEw2+0q3MlnpLQpaOyBcuf2uxsOfGi1tjzHIagWGGoUGyya+EomExtTra
-         S9M3OBn2ZL928XAyoSN2g064PTOXqWKteHhonSWGkEFCjOvZfOCsxLqhY9fRKvPaAQ2b
-         TvqA==
+        bh=JX/9qtQ65g5d0LpShPQsvg/m3I2RRKUnY8AJi4PyGuQ=;
+        b=rlFxZtVM2Gq68PE4gE5i4x4+9jRcPiiHduVyNt+k4OwpC286OEOkDs4oeHDjS6CZLx
+         cW200BtfLJxFYZsxIgJTPixGAdzPOwMEmL3PGvx+ugydFZ6KXoqCS9dAjJwsnzGr5J7R
+         fb5ax8IdJiN2R7/1fTaY0WLVsd1ZT/mYqkP8muIfXuUyYaU1ZjOA/zaUwtqgKwqPbbV/
+         4yI15nj9tnTqxhJA/bDPaWitDTDtgPR+vH0hcYhWa9e09HSg8FFiq5nRYr67m68MxU05
+         Hw04BKPVeaTou5hjqZ/KNShqEsceaUF+2rQ62xStNQP1ikDqtKL1LzcYzjhmGKPh+AOf
+         HFFA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16-20020a0cf250000000b0056eb1aa8734si11075080qvl.405.2023.03.01.08.58.38
+        by mx.google.com with ESMTPS id e2-20020a05620a014200b0073ba21ad790si11166982qkn.287.2023.03.01.08.59.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 08:58:38 -0800 (PST)
+        Wed, 01 Mar 2023 08:59:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXPl1-0000fl-Vk; Wed, 01 Mar 2023 11:56:48 -0500
+	id 1pXPlH-0000lO-Bk; Wed, 01 Mar 2023 11:57:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPl0-0000eW-I6; Wed, 01 Mar 2023 11:56:46 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1pXPlF-0000kY-Ei; Wed, 01 Mar 2023 11:57:01 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPky-0007cv-LV; Wed, 01 Mar 2023 11:56:46 -0500
+ id 1pXPlD-0007hd-6p; Wed, 01 Mar 2023 11:57:01 -0500
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPK57Vbz4x7x;
- Thu,  2 Mar 2023 03:56:37 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPk1D7Gz4xDl;
+ Thu,  2 Mar 2023 03:56:58 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgPG5GS4z4x1R;
- Thu,  2 Mar 2023 03:56:34 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgPh15Hsz4x5Y;
+ Thu,  2 Mar 2023 03:56:55 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, Klaus Jensen <k.jensen@samsung.com>,
- Corey Minyard <cminyard@mvista.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 02/11] hw/i2c: only schedule pending master when bus is idle
-Date: Wed,  1 Mar 2023 17:56:10 +0100
-Message-Id: <20230301165619.2171090-3-clg@kaod.org>
+Subject: [PATCH v2 09/11] aspeed: Introduce a spi_boot region under the SoC
+Date: Wed,  1 Mar 2023 17:56:17 +0100
+Message-Id: <20230301165619.2171090-10-clg@kaod.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230301165619.2171090-1-clg@kaod.org>
 References: <20230301165619.2171090-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=znpK=6Z=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,116 +94,183 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N8HjF47elngT
+X-TUID: kWiWQuX4Hvh2
 
-From: Klaus Jensen <k.jensen@samsung.com>
+The default boot address of the Aspeed SoCs is 0x0. For this reason,
+the FMC flash device contents are remapped by HW on the first 256MB of
+the address space. In QEMU, this is currently done in the machine init
+with the setup of a region alias.
 
-It is not given that the current master will release the bus after a
-transfer ends. Only schedule a pending master if the bus is idle.
+Move this code to the SoC and introduce an extra container to prepare
+ground for the boot ROM region which will overlap the FMC flash
+remapping.
 
-Fixes: 37fa5ca42623 ("hw/i2c: support multiple masters")
-Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-Acked-by: Corey Minyard <cminyard@mvista.com>
-Message-Id: <20221116084312.35808-2-its@irrelevant.dk>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- include/hw/i2c/i2c.h |  2 ++
- hw/i2c/aspeed_i2c.c  |  2 ++
- hw/i2c/core.c        | 37 ++++++++++++++++++++++---------------
- 3 files changed, 26 insertions(+), 15 deletions(-)
+ include/hw/arm/aspeed_soc.h |  5 +++++
+ hw/arm/aspeed.c             | 13 +------------
+ hw/arm/aspeed_ast2600.c     | 13 +++++++++++++
+ hw/arm/aspeed_soc.c         | 14 ++++++++++++++
+ hw/arm/fby35.c              |  8 +-------
+ 5 files changed, 34 insertions(+), 19 deletions(-)
 
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 9b9581d230..2a3abacd1b 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -141,6 +141,8 @@ int i2c_start_send(I2CBus *bus, uint8_t address);
-  */
- int i2c_start_send_async(I2CBus *bus, uint8_t address);
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index bd1e03e78a..8adff70072 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -58,6 +58,8 @@ struct AspeedSoCState {
+     MemoryRegion *dram_mr;
+     MemoryRegion dram_container;
+     MemoryRegion sram;
++    MemoryRegion spi_boot_container;
++    MemoryRegion spi_boot;
+     AspeedVICState vic;
+     AspeedRtcState rtc;
+     AspeedTimerCtrlState timerctrl;
+@@ -120,6 +122,7 @@ struct AspeedSoCClass {
  
-+void i2c_schedule_pending_master(I2CBus *bus);
+ 
+ enum {
++    ASPEED_DEV_SPI_BOOT,
+     ASPEED_DEV_IOMEM,
+     ASPEED_DEV_UART1,
+     ASPEED_DEV_UART2,
+@@ -190,6 +193,8 @@ enum {
+     ASPEED_DEV_JTAG1,
+ };
+ 
++#define ASPEED_SOC_SPI_BOOT_ADDR 0x0
 +
- void i2c_end_transfer(I2CBus *bus);
- void i2c_nack(I2CBus *bus);
- void i2c_ack(I2CBus *bus);
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index c166fd20fa..1f071a3811 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -550,6 +550,8 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t value)
-         }
-         SHARED_ARRAY_FIELD_DP32(bus->regs, reg_cmd, M_STOP_CMD, 0);
-         aspeed_i2c_set_state(bus, I2CD_IDLE);
+ qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
+ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
+ void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr);
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index cb59a37b07..4a2814b7ea 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -388,18 +388,7 @@ static void aspeed_machine_init(MachineState *machine)
+         MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
+         uint64_t size = memory_region_size(&fl->mmio);
+ 
+-        /*
+-         * create a ROM region using the default mapping window size of
+-         * the flash module. The window size is 64MB for the AST2400
+-         * SoC and 128MB for the AST2500 SoC, which is twice as big as
+-         * needed by the flash modules of the Aspeed machines.
+-         */
+-        if (ASPEED_MACHINE(machine)->mmio_exec) {
+-            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+-                                     &fl->mmio, 0, size);
+-            memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+-                                        boot_rom);
+-        } else {
++        if (!ASPEED_MACHINE(machine)->mmio_exec) {
+             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+                                    size, &error_abort);
+             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index bb2769df04..1bf1246148 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -21,6 +21,7 @@
+ #define ASPEED_SOC_DPMCU_SIZE       0x00040000
+ 
+ static const hwaddr aspeed_soc_ast2600_memmap[] = {
++    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
+     [ASPEED_DEV_SRAM]      = 0x10000000,
+     [ASPEED_DEV_DPMCU]     = 0x18000000,
+     /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
+@@ -282,6 +283,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     qemu_irq irq;
+     g_autofree char *sram_name = NULL;
+ 
++    /* Default boot region (SPI memory or ROMs) */
++    memory_region_init(&s->spi_boot_container, OBJECT(s),
++                       "aspeed.spi_boot_container", 0x10000000);
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SPI_BOOT],
++                                &s->spi_boot_container);
 +
-+        i2c_schedule_pending_master(bus->bus);
-     }
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+                                   sc->memmap[ASPEED_DEV_IOMEM],
+@@ -431,6 +438,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
  
-     if (aspeed_i2c_bus_pkt_mode_en(bus)) {
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index d4ba8146bf..bed594fe59 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -185,22 +185,39 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, bool is_recv)
- 
- void i2c_bus_master(I2CBus *bus, QEMUBH *bh)
- {
--    if (i2c_bus_busy(bus)) {
--        I2CPendingMaster *node = g_new(struct I2CPendingMaster, 1);
--        node->bh = bh;
-+    I2CPendingMaster *node = g_new(struct I2CPendingMaster, 1);
-+    node->bh = bh;
++    /* Set up an alias on the FMC CE0 region (boot default) */
++    MemoryRegion *fmc0_mmio = &s->fmc.flashes[0].mmio;
++    memory_region_init_alias(&s->spi_boot, OBJECT(s), "aspeed.spi_boot",
++                             fmc0_mmio, 0, memory_region_size(fmc0_mmio));
++    memory_region_add_subregion(&s->spi_boot_container, 0x0, &s->spi_boot);
 +
-+    QSIMPLEQ_INSERT_TAIL(&bus->pending_masters, node, entry);
-+}
+     /* SPI */
+     for (i = 0; i < sc->spis_num; i++) {
+         object_property_set_link(OBJECT(&s->spi[i]), "dram",
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index e884d6badc..bf22258de9 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -25,6 +25,7 @@
+ #define ASPEED_SOC_IOMEM_SIZE       0x00200000
+ 
+ static const hwaddr aspeed_soc_ast2400_memmap[] = {
++    [ASPEED_DEV_SPI_BOOT]  =  ASPEED_SOC_SPI_BOOT_ADDR,
+     [ASPEED_DEV_IOMEM]  = 0x1E600000,
+     [ASPEED_DEV_FMC]    = 0x1E620000,
+     [ASPEED_DEV_SPI1]   = 0x1E630000,
+@@ -59,6 +60,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
+ };
+ 
+ static const hwaddr aspeed_soc_ast2500_memmap[] = {
++    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
+     [ASPEED_DEV_IOMEM]  = 0x1E600000,
+     [ASPEED_DEV_FMC]    = 0x1E620000,
+     [ASPEED_DEV_SPI1]   = 0x1E630000,
+@@ -245,6 +247,12 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     Error *err = NULL;
+     g_autofree char *sram_name = NULL;
+ 
++    /* Default boot region (SPI memory or ROMs) */
++    memory_region_init(&s->spi_boot_container, OBJECT(s),
++                       "aspeed.spi_boot_container", 0x10000000);
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SPI_BOOT],
++                                &s->spi_boot_container);
 +
-+void i2c_schedule_pending_master(I2CBus *bus)
-+{
-+    I2CPendingMaster *node;
+     /* IO space */
+     aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
+                                   sc->memmap[ASPEED_DEV_IOMEM],
+@@ -354,6 +362,12 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_FMC));
  
--        QSIMPLEQ_INSERT_TAIL(&bus->pending_masters, node, entry);
-+    if (i2c_bus_busy(bus)) {
-+        /* someone is already controlling the bus; wait for it to release it */
-+        return;
-+    }
- 
-+    if (QSIMPLEQ_EMPTY(&bus->pending_masters)) {
-         return;
-     }
- 
--    bus->bh = bh;
-+    node = QSIMPLEQ_FIRST(&bus->pending_masters);
-+    bus->bh = node->bh;
++    /* Set up an alias on the FMC CE0 region (boot default) */
++    MemoryRegion *fmc0_mmio = &s->fmc.flashes[0].mmio;
++    memory_region_init_alias(&s->spi_boot, OBJECT(s), "aspeed.spi_boot",
++                             fmc0_mmio, 0, memory_region_size(fmc0_mmio));
++    memory_region_add_subregion(&s->spi_boot_container, 0x0, &s->spi_boot);
 +
-+    QSIMPLEQ_REMOVE_HEAD(&bus->pending_masters, entry);
-+    g_free(node);
-+
-     qemu_bh_schedule(bus->bh);
- }
+     /* SPI */
+     for (i = 0; i < sc->spis_num; i++) {
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
+diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
+index 90c04bbc33..f4600c290b 100644
+--- a/hw/arm/fby35.c
++++ b/hw/arm/fby35.c
+@@ -100,13 +100,7 @@ static void fby35_bmc_init(Fby35State *s)
+         MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
+         uint64_t size = memory_region_size(&fl->mmio);
  
- void i2c_bus_release(I2CBus *bus)
- {
-     bus->bh = NULL;
-+
-+    i2c_schedule_pending_master(bus);
- }
- 
- int i2c_start_recv(I2CBus *bus, uint8_t address)
-@@ -234,16 +251,6 @@ void i2c_end_transfer(I2CBus *bus)
-         g_free(node);
-     }
-     bus->broadcast = false;
+-        if (s->mmio_exec) {
+-            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+-                                     &fl->mmio, 0, size);
+-            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
+-                                        boot_rom);
+-        } else {
 -
--    if (!QSIMPLEQ_EMPTY(&bus->pending_masters)) {
--        I2CPendingMaster *node = QSIMPLEQ_FIRST(&bus->pending_masters);
--        bus->bh = node->bh;
--
--        QSIMPLEQ_REMOVE_HEAD(&bus->pending_masters, entry);
--        g_free(node);
--
--        qemu_bh_schedule(bus->bh);
--    }
- }
- 
- int i2c_send(I2CBus *bus, uint8_t data)
++        if (!s->mmio_exec) {
+             memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+                                    size, &error_abort);
+             memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
 -- 
 2.39.2
 

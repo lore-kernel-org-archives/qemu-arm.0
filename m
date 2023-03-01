@@ -1,86 +1,86 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6790783ejc;
-        Wed, 1 Mar 2023 02:36:33 -0800 (PST)
-X-Received: by 2002:a05:600c:444e:b0:3eb:40de:9838 with SMTP id v14-20020a05600c444e00b003eb40de9838mr4622316wmn.7.1677666993051;
-        Wed, 01 Mar 2023 02:36:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677666993; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6795599ejc;
+        Wed, 1 Mar 2023 02:41:32 -0800 (PST)
+X-Received: by 2002:a05:600c:4929:b0:3ea:ea8a:a94a with SMTP id f41-20020a05600c492900b003eaea8aa94amr4903244wmp.27.1677667292900;
+        Wed, 01 Mar 2023 02:41:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677667292; cv=none;
         d=google.com; s=arc-20160816;
-        b=Oy6bHOiXSpBZA8yhzaJ+zteGGdJI1HFbxvda0JHfZlvgJ9iDJN5K365H3ydyV7E/y8
-         8AG8Fry13RCn+iM+jrHv0gKWU3EP5JpQj8V7C1WU7hDvQ9SAVFbXGvSuBLn2RcYnLUtT
-         oiQ3kqjiy61xRmEt3w3/JEt/S5162/IqygkK4NdVcw9ywiW+8RZ3TfZ61IdB4elK4DjZ
-         QB1spve0OaRQ9Tfc2u3W7qypFT6+2DepUplBgYFnnM5n9pPj2bkg4hyg3/CQkFfK2blc
-         iF9MFHzWjitVPdEIyeQ9WKGeVems47FXovei8SzQ3rp9ERWA+s0kBtlWVqsZ8I8qQy8d
-         xsWw==
+        b=yT/S9J436/sU0n+gIABM5KBw+7BzPOKG2J8lxEORtYPmY0OAtu2ZtO+JnuPx6WkJQk
+         rNqtEBM/1/lnVBgfcWfZIrqCivZ28VIoWrAMHr8oLqafG+4x2TplAR5W/WBRCKhhtazu
+         Vnr16R1nKGkQhiDf0aZXjwatt2AkVD0NgDIvcNM4uV4ONBWrDkABjRAtar2LtuxnbrSw
+         xNQMQp0GIJa0JjKo4UMUirHPFiURUzSXwrXqEqh4xegyK2xUIirJPYIJkYHW2lxYMVOT
+         3KLN5gdfagG+pmzf6ZqJwKUSCMJY1lUGzYdCv1U/9UCZavOANiRC5UD9QcsUxEAWVdeB
+         R0sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=2Azoh8xSU5TJ2zojXyKIHJjeHgyY2Otsjeo2O616Z/E=;
-        b=KNVXP9cDv5zZbphGAw8tUcTOpmhfPtU6Lnafo04QSEqLL4UD4u9Va6RaMYCBPo6wY6
-         FV0BmxvCYciwGuNWiRO3bKaHLfY00N7FYKf86dACoDt7G39kwxUT0btwIGmNPmdec+kZ
-         Di+r1wr+9tLwv+oWgfpUMUcbzfbuK/Trs+WYm/WEDJMZ0OwQ71tZXwHOBWrWSsqu4ea/
-         p2taPWfVUzINn+U6ivvErCTDL1vfzBnPn1yyE8Ighh3TbpT6SqHKtOr8qkv9OkSD9eyc
-         B2U84qHCtxDOQ1ZGcnUlL8u1f/UuXJw/xozgsno2lTP7cYzctnx1nfAdcO3JVbvdGpL5
-         6BUQ==
+        bh=ox2O2OK4aGI1BMllSXrqC/7z82S+aWOv7xmHwuOpN9Q=;
+        b=xDC/zDF15g4j7QUbJFGNGap861BpvkXX91cGLafXH94RMFhgYPOvRh1CUwwrzoRtup
+         nXEbEQjwK9tXklwd8PAAk40Bnu0JSoI6db4++LW/LiX8JEj1V77ZtM9WkTnVao9Fm2R3
+         RWkhLKQhWjOs8JmzPn1lkTpor3vSgUdIZEp3eNzx16V5gD805uMbEuBMh59NZz6vxHvY
+         f2zYnU8UyThYPulV97dKNA6djkIGijAUg7k3MFRm5lTSGChOztCS10wqujC9DpQvAHSM
+         /tHnVtKPiWRw9NmvrKfYVfEOe1ywXRHdmsMYo98yLaYWRwHim7t/S+iICNIiI7QZQSMC
+         2Vdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MomJXPLw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m37rx2y9;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f6-20020a05600c4e8600b003e206c8065asor3582860wmq.8.2023.03.01.02.36.33
+        by mx.google.com with SMTPS id f17-20020a7bc8d1000000b003d23e842d39sor3542793wml.18.2023.03.01.02.41.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 01 Mar 2023 02:36:33 -0800 (PST)
+        Wed, 01 Mar 2023 02:41:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MomJXPLw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m37rx2y9;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1677666992;
+        d=linaro.org; s=google; t=1677667292;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2Azoh8xSU5TJ2zojXyKIHJjeHgyY2Otsjeo2O616Z/E=;
-        b=MomJXPLw6+iDG4sN17aGuvICmyfpwP31iyI5zx6XY5gqQQhf/8wJt3wlkPK2hzzX9R
-         if+afbT5jmbXAkEBFgk4mR6ALEIQ+TKygiBgSaZoA8i/5h9J1IS5eKgtYKNgM2OTk2EC
-         htZM4Qp+Jpt+5OhxyHFWjUvKSMgCJ6xM9JjI1JJ9skacX7jiMfi1GLxUoYbpYvJVW811
-         poAxvaMy3BdG/sJMY1noHRfmtxj81KsBQBB/ePgIJWxVRv6FSknW6R7U6/mykRLUKi9H
-         74Dt/ThY48ExkGh2Aho+fW46PJQ4cULf+9Zc9MkteZ2CCbmJ0sKu3fXTmI3E08re8YgZ
-         nlZg==
+        bh=ox2O2OK4aGI1BMllSXrqC/7z82S+aWOv7xmHwuOpN9Q=;
+        b=m37rx2y9i3lVaNOMCAyMa03HMk8N6BhAIvXqeALWeMFCKD3g/9i115DosgX01kLCOe
+         UI3php34U1JVTHFNJO/ZqN3Ace6ZRH7Jfp9+rkoRKQobzMksQskx5qMv8WVuwhQy3J79
+         Sfcoqr1DDBB3h/xKNS0cZ4jAqgXBaxZJdEcNg1u8FlEuL2qfoah6JhyWl2JCXSIkKemQ
+         cdfbVfZfH77P1E4sZVmWDYrh1vBffad8jyf94nex905l0u148PpA6kwu4CRYhRXeDX25
+         EBgzR2Kmcsodvs0wda2fg9Hk5B9fwkrV+uYGnfcCEpJX2AkCXpbSmHJwRK6a3thi1wsZ
+         qvEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677666992;
+        d=1e100.net; s=20210112; t=1677667292;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2Azoh8xSU5TJ2zojXyKIHJjeHgyY2Otsjeo2O616Z/E=;
-        b=KHFauuc3xhOOZf+K5irWKv9xrRViSMbtez/lbUe1GMmrqG+xUpffS6uvvBffo8xphz
-         15QMV5WgqMyv12Q7Mn41k3Gr5ETyxmQB63E0GZTMkVXulwW9CY2lt20t+z+6/mOahkci
-         +BAwu1chV3QgTNBleldIbTeEdkBIhrEWHipKBEeICI/dOz5gUe8qJsLcidz4ju/3tmgq
-         r/e9hgK/mU8j+NhyeLWgVhPxy6ScQam74pl40YNWHZTlWs4diIffZ+rHkX7HBr63Rtnm
-         m4Qxdt7pDe49X9ZP3dckjSGcdXvMPVg/rhA1BHLN1reDO2O0uL8s97Gz6qEVeVx3k+vu
-         XhbA==
-X-Gm-Message-State: AO0yUKUkwGkulryhFS/4a8BrxGql7zws0Xgu6W1ycU0IcOfjDCf1whlv
-	/xz1GsTHJ0g4SsiQrofa/wEnOE3TJyT2ZEctCe0=
-X-Google-Smtp-Source: AK7set8g/7p+t7QJoU73e1BpHuSpVY4QWxYvgCy8MekatUiMFjrnBeNyJGweicw0Xa5AOL2Ipn7oxA==
-X-Received: by 2002:a05:600c:3495:b0:3de:a525:1d05 with SMTP id a21-20020a05600c349500b003dea5251d05mr4832350wmq.8.1677666992518;
-        Wed, 01 Mar 2023 02:36:32 -0800 (PST)
+        bh=ox2O2OK4aGI1BMllSXrqC/7z82S+aWOv7xmHwuOpN9Q=;
+        b=m0ptYMdoMLcGB/WMJTDpR0r2D/VqaYosPmqBBTJ0CoCj6RWRPiZHN5YNHIPQK3DZrp
+         rFPxlJYo0vtYgkcqcRoIKiZPlViYEqP4f+uaKq5sbp1sy1ZwmlMsp8ceGqYZ9EGkmCwz
+         SP+5Fr1fLAiEHZtjLRFpC6y9p3D5O22k0cq6eg36rCTcmN0/P+xMM/urHSJhD/kxME2u
+         otqK2kVNxMXdJp0B4jz3cb8gQLaH2v4PL7FfT3Qyg3QG7wMfAHDDQYAF07EdaDuDJ4q6
+         FAcpsunWGockmKsaOCV7ER5IwGmxyie4snYTwF+e8lOe7/ZBAGPY7NqjyuQnU+7DYbqo
+         6eRg==
+X-Gm-Message-State: AO0yUKXqVGqdYgwiIZX/hxXJoWs9hQswQlDg8qlRW4PdcecYaQHO4iLV
+	CFMI/dtbJJHlR/zq8O/1Jy+81erlFGEeimQhc98=
+X-Google-Smtp-Source: AK7set9vDR3SdaGOC1yPodzAbyAFrlrQrUT+VUQiEf1VjNUrmHjmEtOAbPY2OSdLDBUfqxZpFLoIfw==
+X-Received: by 2002:a05:600c:4fc5:b0:3ea:e7e7:a2f9 with SMTP id o5-20020a05600c4fc500b003eae7e7a2f9mr4932789wmq.13.1677667292350;
+        Wed, 01 Mar 2023 02:41:32 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id v20-20020a1cf714000000b003db03725e86sm15236841wmh.8.2023.03.01.02.36.29
+        by smtp.gmail.com with ESMTPSA id n41-20020a05600c3ba900b003e20fa01a86sm16635528wms.13.2023.03.01.02.41.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Mar 2023 02:36:31 -0800 (PST)
-Message-ID: <02a2118a-badf-29a9-716d-44f5a6c2923d@linaro.org>
-Date: Wed, 1 Mar 2023 11:36:27 +0100
+        Wed, 01 Mar 2023 02:41:31 -0800 (PST)
+Message-ID: <d2513416-4378-f107-9fbc-d55f3640df5a@linaro.org>
+Date: Wed, 1 Mar 2023 11:41:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH v3 23/24] tests/docker: add zstdtools to the images
- (!AWAITING UPSTREAM)
+Subject: Re: [PATCH v3 22/24] gitlab: move the majority of artefact handling
+ to a template
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Peter Maydell
  <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
@@ -90,52 +90,82 @@ Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
  John Snow <jsnow@redhat.com>, Ed Maste <emaste@freebsd.org>,
  qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- Thomas Huth <thuth@redhat.com>, Yonggang Luo <luoyonggang@gmail.com>,
- qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Bandan Das <bsd@redhat.com>,
- Li-Wen Hsu <lwhsu@freebsd.org>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Yonggang Luo <luoyonggang@gmail.com>, qemu-block@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Bandan Das <bsd@redhat.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
  Laurent Vivier <lvivier@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Qiuhao Li <Qiuhao.Li@outlook.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>
 References: <20230228190653.1602033-1-alex.bennee@linaro.org>
- <20230228190653.1602033-24-alex.bennee@linaro.org>
+ <20230228190653.1602033-23-alex.bennee@linaro.org>
+ <85fa3961-eb23-8d93-b4e4-e3e4227fac26@linaro.org>
+ <199f0714-901a-a15d-690a-2a2f56db015a@redhat.com>
+ <3aa65498-4d4e-429e-44f4-bbeb34a0e21e@linaro.org> <87wn40dc48.fsf@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230228190653.1602033-24-alex.bennee@linaro.org>
+In-Reply-To: <87wn40dc48.fsf@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: tLW5160/vtAs
+X-TUID: rPlstXbGYePs
 
-On 28/2/23 20:06, Alex Bennée wrote:
-> We need this to be able to run the tuxrun_baseline tests in CI which
-> in turn helps us reduce overhead running other tests.
+On 1/3/23 11:00, Alex Bennée wrote:
 > 
-> [See https://gitlab.com/libvirt/libvirt-ci/-/merge_requests/361]
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/docker/dockerfiles/alpine.docker                | 1 +
->   tests/docker/dockerfiles/centos8.docker               | 3 ++-
->   tests/docker/dockerfiles/debian-amd64-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/debian-amd64.docker          | 3 ++-
->   tests/docker/dockerfiles/debian-arm64-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/debian-armel-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/debian-armhf-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/debian-mips64el-cross.docker | 3 ++-
->   tests/docker/dockerfiles/debian-mipsel-cross.docker   | 3 ++-
->   tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 3 ++-
->   tests/docker/dockerfiles/debian-s390x-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/fedora-win32-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/fedora-win64-cross.docker    | 3 ++-
->   tests/docker/dockerfiles/fedora.docker                | 3 ++-
->   tests/docker/dockerfiles/opensuse-leap.docker         | 3 ++-
->   tests/docker/dockerfiles/ubuntu2004.docker            | 3 ++-
->   tests/docker/dockerfiles/ubuntu2204.docker            | 3 ++-
->   tests/lcitool/projects/qemu.yml                       | 1 +
->   18 files changed, 34 insertions(+), 16 deletions(-)
+>> On 1/3/23 07:51, Thomas Huth wrote:
+>>> On 28/02/2023 22.41, Philippe Mathieu-Daudé wrote:
+>>>> On 28/2/23 20:06, Alex Bennée wrote:
+>>>>> To avoid lots of copy and paste lets deal with artefacts in a
+>>>>> template. This way we can filter out most of the pre-binary object and
+>>>>> library files we no longer need as we have the final binaries.
+>>>>>
+>>>>> build-system-alpine also saved .git-submodule-status so for simplicity
+>>>>> we bring that into the template as well.
+>>>>>
+>>>>> As an example the build-system-ubuntu artefacts before this patch
+>>>>> where around 1.3 GB, after dropping the object files it comes to 970
+>>>>> MB.
+>>>>>
+>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>>> ---
+>>>>>    .gitlab-ci.d/buildtest-template.yml | 16 ++++++
+>>>>>    .gitlab-ci.d/buildtest.yml          | 81 +++++++++++------------------
+>>>>>    2 files changed, 46 insertions(+), 51 deletions(-)
+>>>>
+>>>> This is still kludging the fact that 'make check-qtest' rebuild
+>>>> the world even if QEMU binaries are present.
+>>> Did you try? ... if so, that would kill even more CI minutes, i.e.
+>>> it would IMHO be a show-stopper for this patch.
+>>
+>> I remember we had to pass all build/ otherwise calling 'make
+>> check-qtest check-tcg' would rebuild the same binaries, it it
+>> was pointless to split the jobs in 2 stages. I might have missed
+>> when that was fixed.
+>>
+>> I haven't tried, however I see in Alex job:
+>>
+>> $ scripts/git-submodule.sh update $(sed -n '/GIT_SUBMODULES=/ s/.*=//
+>> p' build/config-host.mak)
+>> sed: can't read build/config-host.mak: No such file or directory
+>> $ cd build
+>> /bin/bash: line 144: cd: build: No such file or directory
+>> ERROR: Job failed: exit code 1
+>>
+>> https://gitlab.com/stsquad/qemu/-/jobs/3847747769
+> 
+> That was an older run of the job where I thought the skip path would
+> merge from the template. In the end I've just include git-submodules in
+> all the build aretfacts instead of just for alpine.
+> 
+> It ran fine:
+> 
+>    https://gitlab.com/stsquad/qemu/-/jobs/3849512854
 
-You simply ran 'lcitool-refresh', right? (not obvious from the
-commit desc).
+Indeed:
+https://gitlab.com/stsquad/qemu/-/jobs/3849512800/artifacts/browse/build/
 
-If #361 got merged, this patch should also change the
-tests/lcitool/libvirt-ci submodule to include it, isn't it?
+So a good improvement, but I'd prefer having a stricter "only include
+what we need" policy rather than "exclude what we don't". The former
+will catch missing additions, while the later won't notice until someone
+spend time excluding pointless files manually again.

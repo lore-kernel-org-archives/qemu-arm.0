@@ -1,106 +1,119 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7188276ejc;
-        Wed, 1 Mar 2023 09:03:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set9pUF9nUB7maHSIlDbWrCOZ4p7bR4F8XSa0DQFJWVOVNke/ZGB0SbL6pVYsFVy6dPTBFpiX
-X-Received: by 2002:a2e:9787:0:b0:295:9659:e323 with SMTP id y7-20020a2e9787000000b002959659e323mr2030162lji.50.1677690201334;
-        Wed, 01 Mar 2023 09:03:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677690201; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7234790ejc;
+        Wed, 1 Mar 2023 09:45:22 -0800 (PST)
+X-Google-Smtp-Source: AK7set8vGvN/p/cea6Lpw6jC4/t8BjYxjLP31NYPoAYqGdV+mYXJ6JI3mFFn7t1CThaWcMkjkS1+
+X-Received: by 2002:a05:6214:238e:b0:56e:9551:1980 with SMTP id fw14-20020a056214238e00b0056e95511980mr12596263qvb.5.1677692721852;
+        Wed, 01 Mar 2023 09:45:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677692721; cv=none;
         d=google.com; s=arc-20160816;
-        b=d1ug9eLg4FO2oAyzgIsdGDtqyWhwV2vGpHCS4OFLYfREFy+k0YvSIOWuQCeEk2kI19
-         3tPVp/sYINBgjpzFck/GtK2AiZgCZ+1D7aY83lywnu8F3h8KDAo3sStA7+jpRG7nTNNm
-         cMsdOC5IGm4IDhGYfVavpbrpDDk57H8PQcUOeRmTYaLCXyqQ+0849lqAzDBypYYjvtxN
-         hL6mAzWR6etTO98hl0zKU+MamOldKGEdOD19DsFECPyJZ7aPuc8Zq8ykG7Eeg6yIaoie
-         Zs/dZI9/8SzKYophahOm1T96+EwmicRBnAe3AWAV+P7yrSfCfTw28TmmaA3buu1q25qs
-         T5gw==
+        b=K9mhzoKwztw11sCq4BRafTDl5mK+W+8QrXSGjSDt2AL+Y5/sy5aA5uPdP0BY8NfG3H
+         e/W6ffskiKVZNlR5Kbh7J4O7eXPsT0qGSL8eqqoQGQMu4CdLZJp618KVbeAQoAIvFVPU
+         wgrUPHEhvOuzc0yOn6tUse6lHc4gMzj++aSlEum6HpNOrOhLrkO5OK7LaOxccDnGMMbZ
+         m6NDngINcrZ1tKnKCQvk8nxnhCJn2W+pDZFv4w3eRYuQI1I75C67KEzgARDPqQ4V12uX
+         8CKiCNY5Rt+fHgayRBJRSqxwpbuFOirvoVrUkDSAcW3gAIwF4x88A7VriV4cZV25Z6KT
+         ll/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=xZKM4q0f9aPHbo0kvvOKBzsA2Iuo1Vk6cQ0bSvg/CRY=;
-        b=w3DsGajxlLIgTgdUPDg4C1bKhojQ+euzZtdjP9foKzwUO+2KjRTudhlIOUwE6Zjxb8
-         ywU6g0L5ojs46u036bFpbCxyyrTvRwLO2gr1PpPfWdCV3ik0wMhyjV/L9Y6xoegATbZH
-         q+mFgNgzJJ0+lslEWshUyrA5BPqbJyNKQa/DQp28vkQ3nuVFrCjbtH0//haNHbY5JzVx
-         bWGrLJCf2vUB2z6NUinJez+DDNJhTGNHmL47Qqc0TPMjTiDvrXPSPhdLcKIjpG2D0XTo
-         F2B7QP/Hs/uJ7T2CwRnezrgtynKSa1McG/1GrDzNIBY15tWs20G5CUyyk2RouQrgyXTW
-         yNQA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bzBn+hBJ3rtUcWEeK3vX5NNyXIZ1owxoMMx2e5CQIBA=;
+        b=mtBSNT7moq0ie/DtM2fEUXsvwUxsi6TYj1YAq7PVOpYCkvXBPPGGxF0jxsUapfhxVp
+         BML3LW41UvkkrmWrXBxqfE6iQcD7mVtZLvWpmMKhnRWXEXmzFFgELpmGtKPEaBzbmdj2
+         kdAHjJ4Qa5WI/7iLeESBpK4zoe1tqcpR9mUa+249GrR9lAQba5PSFRzezB2BF84LZAn3
+         ER0FM4jJQbGgi4QxzF5W8KRhbbFsKBEC+Rkk2b3raVEzIOpj67cVdj8rOhr9dDWla4Lt
+         R2r7ocqbw3wcreljhynAX6BqNJnezSnSSCctHm7EZvyv/wkg//cCO/W0X0c2PHg44GCe
+         s0IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=05+FCQzc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojvRsWsP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6-20020a2e9986000000b00295a33e92b5si6378703lji.61.2023.03.01.09.03.21
+        by mx.google.com with ESMTPS id x28-20020a05620a0b5c00b0073b9cead6f9si10230955qkg.76.2023.03.01.09.45.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Mar 2023 09:03:21 -0800 (PST)
+        Wed, 01 Mar 2023 09:45:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=05+FCQzc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ojvRsWsP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXPrC-0004EX-3N; Wed, 01 Mar 2023 12:03:10 -0500
+	id 1pXQVl-0001Z9-4V; Wed, 01 Mar 2023 12:45:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pXPr3-00044Q-V0; Wed, 01 Mar 2023 12:03:02 -0500
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pXPr1-0000hF-Mm; Wed, 01 Mar 2023 12:03:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xZKM4q0f9aPHbo0kvvOKBzsA2Iuo1Vk6cQ0bSvg/CRY=; b=05+FCQzcws4DRtv04vJJfghpkk
- f0lJoH4NLVgn8UXUwXJJ7Sh2KIrCq48CYgkHR5weDHeO7mKGnUgl4dGaT5kUKXJpPb5TIWNbiv2kA
- TktqfrM6OhcEUQ1FRFuZJ5oYn3tvoMTM5b4T7FUGcoNMNbLUX/a58CyGvwyNJYGqVbXmNJsrHLh8h
- gSKJkpRgVH50ozcOqnUqpH2WNqecnKmV8oF8MXF4IMNaa2sfbVBIYEvyRD0GvgEFP8nOznXsUx+Xj
- +KkDQhe0CXDYJrxefGBiX1tupi5gHLe/AOQ7IuGpp2cBi7MsAstZrIZz1RGcNjeLoijtRQ067phLC
- FeCnv7AXGdSykfj/dRD2H7b7vTsAzXosNb77Z4fs8co0HAyJstJNSDTcKabt4P+op6W5PCMhAcBh/
- YgIrMORqAT38om2Xgwb9w25XIqS6Jt2nS/4DLJz0P0oMDBDDv/nl5hv5Q0RoR2tpVo8Ewonco/Ewb
- W8zzf9Gj7fInyuLPkj2L9PLXiNsAV880yPe2KgX9tHuswCe3IiuzSZLsC75K6YS7vmO8n9ff/OyiQ
- 0Tf7iE0JesikxIsefSqN5/ywrzMnMyh2Mwewg3YZ08ECjz+BMUN3IPdGyGwhb+YgJu+q1P48Rcy0k
- Uhupy3+8lo/yp69YoUGHBQxP9EcYnG6+qAgTZ9Qqw=;
-Received: from [2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pXPqF-0002bA-4K; Wed, 01 Mar 2023 17:02:15 +0000
-Message-ID: <195c75eb-136d-57d9-cf08-bbfc339cac51@ilande.co.uk>
-Date: Wed, 1 Mar 2023 17:02:44 +0000
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pXQVj-0001YW-QG
+ for qemu-arm@nongnu.org; Wed, 01 Mar 2023 12:45:03 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pXQVi-0007cI-2b
+ for qemu-arm@nongnu.org; Wed, 01 Mar 2023 12:45:03 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ l7-20020a05600c4f0700b003e79fa98ce1so9018wmq.2
+ for <qemu-arm@nongnu.org>; Wed, 01 Mar 2023 09:45:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1677692700;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=bzBn+hBJ3rtUcWEeK3vX5NNyXIZ1owxoMMx2e5CQIBA=;
+ b=ojvRsWsPuQDFimAx+ThmNB+4RMI/+TLEyG+jjMWCDtro8WjRZvnn25LTKRcHULLxvo
+ d/wtaoQ+LgA58hWWw76rfcifN/QbQro5EsVsHu2kDzkxHxFvNW9kK6F7iFHii+nVba4v
+ gfN9l9O4dzc9SVWMjFKgChstQb7mB9bpzZkAZhf6oDTw1HYh/i/gE120FOKU977nK1K2
+ a/zj2kFn18aupuoZtR6Iyp4XJVTR7RlLS76XJoFxLFk1S9n5dVA+UbLxHZr61++rLqGt
+ B3O5TtQ9g+g6TzdzioNvFnO1Z/iBBs/ITwihCWkRTC1v8vfjFXsxBYhUjDzD22mvgAdA
+ nDPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1677692700;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=bzBn+hBJ3rtUcWEeK3vX5NNyXIZ1owxoMMx2e5CQIBA=;
+ b=QWCs5PNDP5wmNQc3YLA3AivILiyjHb+g3ukeFfUbJycEPH9aMuG6JxjPu7bjJ/4PUu
+ K3kzoYyUNDpF7WjI1Xu9aQK6tJuBg8vVr4ujNS6o/Dh5Jok6qz26cipSo/F8sfZzP+6q
+ ZTm045hV1C5ZcMLRgpGPOJhEZqL7yx72Cy0LpRldrYjs5dY370b2uAThhhmDnPP5hJjM
+ gNvFdaYy5nUiRH2TUKNx3P4qblpwni3N//PGNJ+mBPqUPItEHPTr4HHL5k+z4oFy8bMu
+ 4OefdI2Mn75S8CanyAtatXTUE9iH/SDGfDHPq9hU9W0LdwEYvZxeMYGNz7XQ3ibKcG3+
+ QKEw==
+X-Gm-Message-State: AO0yUKUrHun3RBT6VTN60H4tWf1xjlqoYZyCmQnPsPmBm4R/rEmfX0pE
+ X+Pt66td6jz3WhVnJzwWo3ha2g==
+X-Received: by 2002:a05:600c:3acb:b0:3eb:38e6:f64f with SMTP id
+ d11-20020a05600c3acb00b003eb38e6f64fmr5469288wms.8.1677692700459; 
+ Wed, 01 Mar 2023 09:45:00 -0800 (PST)
+Received: from [192.168.45.175] (41.red-88-29-167.dynamicip.rima-tde.net.
+ [88.29.167.41]) by smtp.gmail.com with ESMTPSA id
+ p8-20020a7bcde8000000b003dc521f336esm258930wmj.14.2023.03.01.09.44.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Mar 2023 09:44:59 -0800 (PST)
+Message-ID: <36f0544a-7fe5-1154-d339-f0162b715a13@linaro.org>
+Date: Wed, 1 Mar 2023 18:44:57 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v2 04/11] tests/avocado/machine_aspeed.py: Add an I2C
+ slave test
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
- ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
-References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-56-richard.henderson@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230227054233.390271-56-richard.henderson@linaro.org>
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, Klaus Jensen <k.jensen@samsung.com>
+References: <20230301165619.2171090-1-clg@kaod.org>
+ <20230301165619.2171090-5-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230301165619.2171090-5-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8baa:d400:877:cbd2:6fe8:34fc
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 55/70] target/sparc: Avoid tcg_const_{tl,i32}
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,292 +128,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /ydZXJaxxmrQ
+X-TUID: uFcqJuZNOT5z
 
-On 27/02/2023 05:42, Richard Henderson wrote:
-
-> All remaining uses are strictly read-only.
+On 1/3/23 17:56, Cédric Le Goater wrote:
+> The Aspeed 2600 I2C controller supports a slave mode which can be
+> tested with the I2C echo device. Test extracted from :
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>    https://lists.nongnu.org/archive/html/qemu-devel/2022-06/msg00183.html
+> 
+> Suggested-by: Klaus Jensen <k.jensen@samsung.com>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->   target/sparc/translate.c | 80 +++++++++++++++++++---------------------
->   1 file changed, 38 insertions(+), 42 deletions(-)
-> 
-> diff --git a/target/sparc/translate.c b/target/sparc/translate.c
-> index 925023adef..137bdc5159 100644
-> --- a/target/sparc/translate.c
-> +++ b/target/sparc/translate.c
-> @@ -550,7 +550,7 @@ static inline void gen_op_mulscc(TCGv dst, TCGv src1, TCGv src2)
->       if (!(env->y & 1))
->           T1 = 0;
->       */
-> -    zero = tcg_const_tl(0);
-> +    zero = tcg_constant_tl(0);
->       tcg_gen_andi_tl(cpu_cc_src, src1, 0xffffffff);
->       tcg_gen_andi_tl(r_temp, cpu_y, 0x1);
->       tcg_gen_andi_tl(cpu_cc_src2, src2, 0xffffffff);
-> @@ -928,8 +928,8 @@ static void gen_branch_n(DisasContext *dc, target_ulong pc1)
->           tcg_gen_mov_tl(cpu_pc, cpu_npc);
->   
->           tcg_gen_addi_tl(cpu_npc, cpu_npc, 4);
-> -        t = tcg_const_tl(pc1);
-> -        z = tcg_const_tl(0);
-> +        t = tcg_constant_tl(pc1);
-> +        z = tcg_constant_tl(0);
->           tcg_gen_movcond_tl(TCG_COND_NE, cpu_npc, cpu_cond, z, t, cpu_npc);
->   
->           dc->pc = DYNAMIC_PC;
-> @@ -938,9 +938,9 @@ static void gen_branch_n(DisasContext *dc, target_ulong pc1)
->   
->   static inline void gen_generic_branch(DisasContext *dc)
->   {
-> -    TCGv npc0 = tcg_const_tl(dc->jump_pc[0]);
-> -    TCGv npc1 = tcg_const_tl(dc->jump_pc[1]);
-> -    TCGv zero = tcg_const_tl(0);
-> +    TCGv npc0 = tcg_constant_tl(dc->jump_pc[0]);
-> +    TCGv npc1 = tcg_constant_tl(dc->jump_pc[1]);
-> +    TCGv zero = tcg_constant_tl(0);
->   
->       tcg_gen_movcond_tl(TCG_COND_NE, cpu_npc, cpu_cond, zero, npc0, npc1);
->   }
-> @@ -981,18 +981,14 @@ static inline void save_state(DisasContext *dc)
->   
->   static void gen_exception(DisasContext *dc, int which)
->   {
-> -    TCGv_i32 t;
-> -
->       save_state(dc);
-> -    t = tcg_const_i32(which);
-> -    gen_helper_raise_exception(cpu_env, t);
-> +    gen_helper_raise_exception(cpu_env, tcg_constant_i32(which));
->       dc->base.is_jmp = DISAS_NORETURN;
->   }
->   
->   static void gen_check_align(TCGv addr, int mask)
->   {
-> -    TCGv_i32 r_mask = tcg_const_i32(mask);
-> -    gen_helper_check_align(cpu_env, addr, r_mask);
-> +    gen_helper_check_align(cpu_env, addr, tcg_constant_i32(mask));
->   }
->   
->   static inline void gen_mov_pc_npc(DisasContext *dc)
-> @@ -1074,7 +1070,7 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
->           cmp->cond = logic_cond[cond];
->       do_compare_dst_0:
->           cmp->is_bool = false;
-> -        cmp->c2 = tcg_const_tl(0);
-> +        cmp->c2 = tcg_constant_tl(0);
->   #ifdef TARGET_SPARC64
->           if (!xcc) {
->               cmp->c1 = tcg_temp_new();
-> @@ -1127,7 +1123,7 @@ static void gen_compare(DisasCompare *cmp, bool xcc, unsigned int cond,
->           cmp->cond = TCG_COND_NE;
->           cmp->is_bool = true;
->           cmp->c1 = r_dst = tcg_temp_new();
-> -        cmp->c2 = tcg_const_tl(0);
-> +        cmp->c2 = tcg_constant_tl(0);
->   
->           switch (cond) {
->           case 0x0:
-> @@ -1192,7 +1188,7 @@ static void gen_fcompare(DisasCompare *cmp, unsigned int cc, unsigned int cond)
->       cmp->cond = TCG_COND_NE;
->       cmp->is_bool = true;
->       cmp->c1 = r_dst = tcg_temp_new();
-> -    cmp->c2 = tcg_const_tl(0);
-> +    cmp->c2 = tcg_constant_tl(0);
->   
->       switch (cc) {
->       default:
-> @@ -1307,7 +1303,7 @@ static void gen_compare_reg(DisasCompare *cmp, int cond, TCGv r_src)
->       cmp->cond = tcg_invert_cond(gen_tcg_cond_reg[cond]);
->       cmp->is_bool = false;
->       cmp->c1 = r_src;
-> -    cmp->c2 = tcg_const_tl(0);
-> +    cmp->c2 = tcg_constant_tl(0);
->   }
->   
->   static inline void gen_cond_reg(TCGv r_dst, int cond, TCGv r_src)
-> @@ -1908,7 +1904,7 @@ static void gen_swap(DisasContext *dc, TCGv dst, TCGv src,
->   
->   static void gen_ldstub(DisasContext *dc, TCGv dst, TCGv addr, int mmu_idx)
->   {
-> -    TCGv m1 = tcg_const_tl(0xff);
-> +    TCGv m1 = tcg_constant_tl(0xff);
->       gen_address_mask(dc, addr);
->       tcg_gen_atomic_xchg_tl(dst, addr, m1, mmu_idx, MO_UB);
->   }
-> @@ -2163,8 +2159,8 @@ static void gen_ld_asi(DisasContext *dc, TCGv dst, TCGv addr,
->           break;
->       default:
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(memop);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(memop);
->   
->               save_state(dc);
->   #ifdef TARGET_SPARC64
-> @@ -2217,7 +2213,7 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
->           {
->               TCGv saddr = tcg_temp_new();
->               TCGv daddr = tcg_temp_new();
-> -            TCGv four = tcg_const_tl(4);
-> +            TCGv four = tcg_constant_tl(4);
->               TCGv_i32 tmp = tcg_temp_new_i32();
->               int i;
->   
-> @@ -2236,8 +2232,8 @@ static void gen_st_asi(DisasContext *dc, TCGv src, TCGv addr,
->   #endif
->       default:
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(memop & MO_SIZE);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(memop & MO_SIZE);
->   
->               save_state(dc);
->   #ifdef TARGET_SPARC64
-> @@ -2313,15 +2309,15 @@ static void gen_ldstub_asi(DisasContext *dc, TCGv dst, TCGv addr, int insn)
->           if (tb_cflags(dc->base.tb) & CF_PARALLEL) {
->               gen_helper_exit_atomic(cpu_env);
->           } else {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(MO_UB);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UB);
->               TCGv_i64 s64, t64;
->   
->               save_state(dc);
->               t64 = tcg_temp_new_i64();
->               gen_helper_ld_asi(t64, cpu_env, addr, r_asi, r_mop);
->   
-> -            s64 = tcg_const_i64(0xff);
-> +            s64 = tcg_constant_i64(0xff);
->               gen_helper_st_asi(cpu_env, addr, s64, r_asi, r_mop);
->   
->               tcg_gen_trunc_i64_tl(dst, t64);
-> @@ -2382,7 +2378,7 @@ static void gen_ldf_asi(DisasContext *dc, TCGv addr,
->   
->               /* The first operation checks required alignment.  */
->               memop = da.memop | MO_ALIGN_64;
-> -            eight = tcg_const_tl(8);
-> +            eight = tcg_constant_tl(8);
->               for (i = 0; ; ++i) {
->                   tcg_gen_qemu_ld_i64(cpu_fpr[rd / 2 + i], addr,
->                                       da.mem_idx, memop);
-> @@ -2409,8 +2405,8 @@ static void gen_ldf_asi(DisasContext *dc, TCGv addr,
->   
->       default:
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
->   
->               save_state(dc);
->               /* According to the table in the UA2011 manual, the only
-> @@ -2491,7 +2487,7 @@ static void gen_stf_asi(DisasContext *dc, TCGv addr,
->   
->               /* The first operation checks required alignment.  */
->               memop = da.memop | MO_ALIGN_64;
-> -            eight = tcg_const_tl(8);
-> +            eight = tcg_constant_tl(8);
->               for (i = 0; ; ++i) {
->                   tcg_gen_qemu_st_i64(cpu_fpr[rd / 2 + i], addr,
->                                       da.mem_idx, memop);
-> @@ -2566,8 +2562,8 @@ static void gen_ldda_asi(DisasContext *dc, TCGv addr, int insn, int rd)
->              real hardware allows others.  This can be seen with e.g.
->              FreeBSD 10.3 wrt ASI_IC_TAG.  */
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
->               TCGv_i64 tmp = tcg_temp_new_i64();
->   
->               save_state(dc);
-> @@ -2625,8 +2621,8 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
->           /* ??? In theory we've handled all of the ASIs that are valid
->              for stda, and this should raise DAE_invalid_asi.  */
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(da.memop);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(da.memop);
->               TCGv_i64 t64 = tcg_temp_new_i64();
->   
->               /* See above.  */
-> @@ -2686,8 +2682,8 @@ static void gen_ldda_asi(DisasContext *dc, TCGv addr, int insn, int rd)
->           break;
->       default:
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(MO_UQ);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UQ);
->   
->               save_state(dc);
->               gen_helper_ld_asi(t64, cpu_env, addr, r_asi, r_mop);
-> @@ -2724,7 +2720,7 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
->              as a cacheline-style operation.  */
->           {
->               TCGv d_addr = tcg_temp_new();
-> -            TCGv eight = tcg_const_tl(8);
-> +            TCGv eight = tcg_constant_tl(8);
->               int i;
->   
->               tcg_gen_andi_tl(d_addr, addr, -8);
-> @@ -2736,8 +2732,8 @@ static void gen_stda_asi(DisasContext *dc, TCGv hi, TCGv addr,
->           break;
->       default:
->           {
-> -            TCGv_i32 r_asi = tcg_const_i32(da.asi);
-> -            TCGv_i32 r_mop = tcg_const_i32(MO_UQ);
-> +            TCGv_i32 r_asi = tcg_constant_i32(da.asi);
-> +            TCGv_i32 r_mop = tcg_constant_i32(MO_UQ);
->   
->               save_state(dc);
->               gen_helper_st_asi(cpu_env, addr, t64, r_asi, r_mop);
-> @@ -2786,7 +2782,7 @@ static void gen_fmovs(DisasContext *dc, DisasCompare *cmp, int rd, int rs)
->       s1 = gen_load_fpr_F(dc, rs);
->       s2 = gen_load_fpr_F(dc, rd);
->       dst = gen_dest_fpr_F(dc);
-> -    zero = tcg_const_i32(0);
-> +    zero = tcg_constant_i32(0);
->   
->       tcg_gen_movcond_i32(TCG_COND_NE, dst, c32, zero, s1, s2);
->   
-> @@ -3215,7 +3211,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
->                           TCGv_i32 r_const;
->   
->                           r_tickptr = tcg_temp_new_ptr();
-> -                        r_const = tcg_const_i32(dc->mem_idx);
-> +                        r_const = tcg_constant_i32(dc->mem_idx);
->                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
->                                          offsetof(CPUSPARCState, tick));
->                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
-> @@ -3267,7 +3263,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
->                           TCGv_i32 r_const;
->   
->                           r_tickptr = tcg_temp_new_ptr();
-> -                        r_const = tcg_const_i32(dc->mem_idx);
-> +                        r_const = tcg_constant_i32(dc->mem_idx);
->                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
->                                          offsetof(CPUSPARCState, stick));
->                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
-> @@ -3397,7 +3393,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
->                           TCGv_i32 r_const;
->   
->                           r_tickptr = tcg_temp_new_ptr();
-> -                        r_const = tcg_const_i32(dc->mem_idx);
-> +                        r_const = tcg_constant_i32(dc->mem_idx);
->                           tcg_gen_ld_ptr(r_tickptr, cpu_env,
->                                          offsetof(CPUSPARCState, tick));
->                           if (tb_cflags(dc->base.tb) & CF_USE_ICOUNT) {
+>   tests/avocado/machine_aspeed.py | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-
-ATB,
-
-Mark.

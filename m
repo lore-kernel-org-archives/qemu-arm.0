@@ -1,115 +1,154 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6362485ejc;
-        Tue, 28 Feb 2023 17:21:27 -0800 (PST)
-X-Received: by 2002:a17:903:24d:b0:19c:eb9a:770d with SMTP id j13-20020a170903024d00b0019ceb9a770dmr5244517plh.53.1677633687510;
-        Tue, 28 Feb 2023 17:21:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677633687; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6629900ejc;
+        Tue, 28 Feb 2023 23:14:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set/2UjCvm2VPFg9VYgKfvAqFJxZ9rzYlNz1S+AyrfvlitWbSMEXrfwSUKuelS2G05zJPhaif
+X-Received: by 2002:a05:622a:155:b0:3bf:bb87:2470 with SMTP id v21-20020a05622a015500b003bfbb872470mr9676080qtw.23.1677654873335;
+        Tue, 28 Feb 2023 23:14:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677654873; cv=none;
         d=google.com; s=arc-20160816;
-        b=WdAzuZy24VdNrSEnxDMIfwiuqScG3VmYXLA89bHSMRm0OEgc7NKrR1QZoa7csPG3kP
-         F3H8YYNgTwmnLnlY3OIMPfnhIaaPLvTiKLtLNGXIkw7JEazIKDL8NxADYMXK56h8LNLw
-         AxFqBvX+wWf/jKGGFuLEBQoaU7EOckOigKJx+T0ihVb0r12iY3SfM74Lc0G+PhWYOvdq
-         YuCD51OUK6Cofw40PhYyc6uB1s9DB5HnaX/2Fs1Gve6dWpYhIxxAarqy4c2UjGndehaq
-         cmF/G9RYRxRp3g3pvMmgGwGS4tHvrnxcmOoHiHpzuM2FAaK3VUt6D5HaqDcPq/rgDvYY
-         Ey9Q==
+        b=u3sS33waxuAM92mqLtI66kd+9Xwu7EZz7/Fxi7z5THdRO40siQ5WG4grMH8/3HxdYL
+         T6bSaHJU4DB4ZWHp/MfOv7ZmIL5Epvp4ccqJKXGzFnCh4NsZU38tBXntBQxAhECSndbC
+         IqmLLDUDUach6OdjAREZcuVhsN/JUeB+uBxerVxYQcLqPIbeHGY4E4TU3rNWvSYtWYMT
+         z367cfPmzbprMXd95ZUNw1Kpy/m4o0ZYZnT+oREeyZteKFH02vN/AI71TMc4hH/gTjAF
+         g6iT0aCGlva81DtFbvkfyMhsxWM4b7G4JzK9PFeQP71oNltwZbR+N9P0qTaXfB/Bxb7O
+         G71A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:content-language:in-reply-to:subject:from
+         :references:cc:to:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=PcFqs96t+/JGXoAq6gVLOXrsvN2eBSdItU0v2+/hoGo=;
-        b=TxMHYB8uy66u+z4VnjkXOcIBAJVLEczEt0FDeeX/i7LZQgki3P1ESpayyQhCyCQbMq
-         Mdk4b1bdvbmA8alNwWRVlnFigxt/f/4XohYDwG2utoRMUiooQKO16NKqWXUQAk9rNnn3
-         Rn5eLslxVBh0VKyW2zLoC6o13wD10kEWd0bgbmJBO2J7Ou3LFmsjgDPJAy7cNSSOqSgD
-         Xpj+xnv9gBPF/CwS/F/mSmOWQbvqBti8eoerPiMy50qL00rXMjDvaf0kNNGfkQH0wRD0
-         ClJE7h0Du2XMVnnBpLG9uaY1d/l6W5tk8ozQ5QxMA6IAULoboo/r3RBisqg+dE73x47Y
-         1QeA==
+        bh=v2QEBpwPNgq/Y/SIC0d9P/Jht3hesebq1EPx+baJhZA=;
+        b=c1M2Kx9D522vSdJCnihoDDVQndA31rj5dJ0He75oOlpgQBKipmxv4Dq/B/xEfOu0U8
+         zNLmzgOg7+ZN8bOx+BQz+LaJoLCcsmp/+YL3HZF5hYdXPFO6bColyN0i7yU4f49qSwPv
+         LWzUJG5mth1RA8U0iAauZ4zNnm1i4nkEMBWeHQ7xWOHhB6OyNpgmdESvRkpeiCxsanlH
+         enFkhoGnoVfEe5RnjFJOlO2O17IUsMa70orM3bAk7Z/6dCLuwsVvKJzpHgxGZn+pX7C2
+         k2D1D2RBqgbQhn/PJ8Bnz8akpRCgHrQBnw37dopuccplvlpM+b5eGvoUaf+cr4/kVzIE
+         Y8aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=paODFKRj;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jf18-20020a170903269200b0019adbf360c1sor4252309plb.120.2023.02.28.17.21.27
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkCKGReA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id w4-20020ac857c4000000b003bb7c3c7963si10972568qta.498.2023.02.28.23.14.33
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Feb 2023 17:21:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Feb 2023 23:14:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=paODFKRj;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=PcFqs96t+/JGXoAq6gVLOXrsvN2eBSdItU0v2+/hoGo=;
-        b=paODFKRjey7o7P1jgwuM3Zjx2TypXm/YjSco45/Haz6Z/tmUW+Aj4IP+jSf9p0GyG/
-         ExGvlim6SfRHhtPghyY1ttbYgMTMZFx49h/Nn7BcacfUEsANCzZYHlDVPXa/B78mDs4t
-         /45+XUlXuJJml620niCU68i/44//z7J+2hLuOC6CCUIiFBEqo+DBK/VvIiWIjw4ZsJAK
-         34clCQTM7ujsdpde5ScMy+DzkIDLiimF5NwuLXtAnFCHlmMqrj1W4pMonW2DoC8FAM2D
-         TZau5XGchAIqH75ONKEAto6AruDTmcF9CJjRr2fVV0aQc6QdqxwLikh5e1J2jaDF5EhC
-         CfSg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JkCKGReA;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677654872;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v2QEBpwPNgq/Y/SIC0d9P/Jht3hesebq1EPx+baJhZA=;
+	b=JkCKGReA+KyY0MJcYg/ZK4BluFv63PQYyKDDdyvkbX3141UVcARseJ7DTnEG81awDwZd/b
+	NMQ3dxY4hURIQ/8IpKFDx9dn0pj1ljBDxwNtVzpO/ao3uayPqzw2PQBbNWbd2kb6Uzp6ii
+	5ya1P42GY8yDb5wU15w4cFNBXlMb3w4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-616-fKS9kh9ANjmfnO-BeuzEUA-1; Wed, 01 Mar 2023 02:14:32 -0500
+X-MC-Unique: fKS9kh9ANjmfnO-BeuzEUA-1
+Received: by mail-wr1-f72.google.com with SMTP id m15-20020adfa3cf000000b002be0eb97f4fso2257036wrb.8
+        for <alex.bennee@linaro.org>; Tue, 28 Feb 2023 23:14:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PcFqs96t+/JGXoAq6gVLOXrsvN2eBSdItU0v2+/hoGo=;
-        b=Dwf309iL5xZ2G6Up37NOr2nU8cT+xnUljHqU4x5Ho9SHEbrq+5FUpyAfAaKzl7SXob
-         nKyBsklaPij4mr/vLg/frVNZGRvJTnxbvCcSryEprJXsEUCwMiMVODB2aiymwjctpusM
-         cX/sjD0FLsY6nWC39zzh9e75PlflofvcbBbyCjn0GIAI68BXvrIOE7Php6bid2JUnxVb
-         tHMGi2I6RUKKqhYKYc9lbMDunKDmaCqYi6gQkRpx3MkIMuQXG9yEQaCMrf8APwY53wUm
-         SIDShvWFJ7AWO4K40VmZjR+CTQB0IUvgLJj1JS8wbeQrkwvECFPSDjyK6Rp8/XF8yRce
-         IWYQ==
-X-Gm-Message-State: AO0yUKUY2U4uRxmqEGqG7i2m9Pzy8I2r8K8QBHNrsBsMDOJ/s31rvDyo
-	FcaOxHtx097i/83gmqL50npsQoJA
-X-Google-Smtp-Source: AK7set+G+oqBAZVWEI9qJdHdFShSHbt6tYFqMoZMLiCWAXGiaVKxUrnN0P49EB+HrL2KrZ6rGEYT9g==
-X-Received: by 2002:a05:6a21:3395:b0:cc:786d:2128 with SMTP id yy21-20020a056a21339500b000cc786d2128mr6111913pzb.53.1677633687013;
-        Tue, 28 Feb 2023 17:21:27 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.6.128] (rrcs-173-198-77-218.west.biz.rr.com. [173.198.77.218])
-        by smtp.gmail.com with ESMTPSA id s13-20020a65690d000000b004fcda0e59c3sm6292424pgq.69.2023.02.28.17.21.24
+        bh=v2QEBpwPNgq/Y/SIC0d9P/Jht3hesebq1EPx+baJhZA=;
+        b=Z0KP91VyGW7AWfWJS3InMAYWZJk8uulEkDrNQ+GPBIC+d76vNDVwQZxmaGBRrfVSiZ
+         IfNg7JN5ZrjpuSi2vLET9Q2n15uUHtC+fhkb4IpxaJCchb7ObN2BFyfqqSye5y2JVln/
+         qrrCDpLDn6F9efqpsM1VdzkVG4sV5C/Pi9YnU+e0KNvcKkqx/eQptcAkFb9VfWmLl83F
+         JTgcDSIxEyG1ebCi2lsOtgyNp0YpgJvnSLMRqrA5QtPDy2TvWGrwSvoScjCcY8HhTzN2
+         vWcFthcB4owitIJNdVyl3/eZXlq/hT9p6exOitVAGMYytCQJUEc7oZrknJN8sRsR0uIC
+         nlQQ==
+X-Gm-Message-State: AO0yUKUJaDq5ewk+A8hjohTs6FuZuhTRAcXGAB/ZodrMWpQeVBoTz/T3
+	w33Cn0AnvZWhkKlpiI/6UuLZuKSnC72O5f6HtD+pk0oLPKNCqeIalDpRHFnVk5OFPozyoNkZGGH
+	GUXrE8CWYT17k4P6cuwk5oiJhMniwfX88NlxXBqhYA84sFnC6wKi8VOitHBuvS7zB9hBoLqTN
+X-Received: by 2002:a05:600c:4d97:b0:3eb:29fe:f922 with SMTP id v23-20020a05600c4d9700b003eb29fef922mr3894062wmp.29.1677654870896;
+        Tue, 28 Feb 2023 23:14:30 -0800 (PST)
+X-Received: by 2002:a05:600c:4d97:b0:3eb:29fe:f922 with SMTP id v23-20020a05600c4d9700b003eb29fef922mr3894022wmp.29.1677654870569;
+        Tue, 28 Feb 2023 23:14:30 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.8.100] (tmo-114-247.customers.d1-online.com. [80.187.114.247])
+        by smtp.gmail.com with ESMTPSA id m9-20020a05600c4f4900b003dec22de1b1sm16231030wmq.10.2023.02.28.23.14.27
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Feb 2023 17:21:26 -0800 (PST)
-Message-ID: <4d42d401-9049-afc0-a5d3-9de28457afc2@linaro.org>
-Date: Tue, 28 Feb 2023 15:21:19 -1000
+        Tue, 28 Feb 2023 23:14:29 -0800 (PST)
+Message-ID: <72580c0e-353b-bb91-444e-b56d4c6ff7ba@redhat.com>
+Date: Wed, 1 Mar 2023 08:14:26 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH RESEND v7 1/9] target/arm: Move cortex sysregs into a
- separate file
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Aurelien Jarno <aurelien@aurel32.net>, Markus Armbruster
+ <armbru@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, Darren Kenny <darren.kenny@oracle.com>,
+ Hanna Reitz <hreitz@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ John Snow <jsnow@redhat.com>, Ed Maste <emaste@freebsd.org>,
+ qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
+ Yonggang Luo <luoyonggang@gmail.com>, qemu-block@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Bandan Das <bsd@redhat.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Qiuhao Li <Qiuhao.Li@outlook.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+References: <20230228190653.1602033-1-alex.bennee@linaro.org>
+ <20230228190653.1602033-25-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH v3 24/24] tests/avocado: disable BootLinuxPPC64 test in CI
+In-Reply-To: <20230228190653.1602033-25-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>
-References: <20230228192628.26140-1-farosas@suse.de>
- <20230228192628.26140-2-farosas@suse.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230228192628.26140-2-farosas@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: YmE6TNSeRXpe
+Content-Transfer-Encoding: 8bit
+X-TUID: hdWd28IY67OU
 
-On 2/28/23 09:26, Fabiano Rosas wrote:
-> The file cpu_tcg.c is about to be moved into the tcg/ directory, so
-> move the register definitions into a new file.
+On 28/02/2023 20.06, Alex Bennée wrote:
+> This test is exceptionally heavyweight (nearly 330s) compared to the
+> two (both endians) TuxRun baseline tests which complete in under 160s.
+> The coverage is slightly reduced but a more directed test could make
+> up the difference.
 > 
-> Also move the function declaration to the more appropriate cpregs.h.
+> tests/avocado/tuxrun_baselines.py:TuxRunBaselineTest.test_ppc64:
 > 
-> Signed-off-by: Fabiano Rosas<farosas@suse.de>
-> ---
->   target/arm/cortex-regs.c | 69 ++++++++++++++++++++++++++++++++++++++++
->   target/arm/cpregs.h      |  6 ++++
->   target/arm/cpu64.c       |  1 +
->   target/arm/cpu_tcg.c     | 59 ----------------------------------
->   target/arm/internals.h   |  6 ----
->   target/arm/meson.build   |  1 +
->   6 files changed, 77 insertions(+), 65 deletions(-)
->   create mode 100644 target/arm/cortex-regs.c
+> Overall coverage rate:
+>    lines......: 9.6% (44110 of 458817 lines)
+>    functions..: 16.5% (6767 of 41054 functions)
+>    branches...: 6.0% (13395 of 222634 branches)
+> 
+> tests/avocado/boot_linux.py:BootLinuxPPC64.test_pseries_tcg:
+> 
+> Overall coverage rate:
+>    lines......: 11.6% (53408 of 458817 lines)
+>    functions..: 18.7% (7691 of 41054 functions)
+>    branches...: 7.9% (17692 of 224218 branches)
+> 
+> So lets skip for GITLAB_CI and also unless AVOCADO_TIMEOUT_EXPECTED is
+> specified by the user.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+The explanation sounds somewhat implausible to me. AVOCADO_TIMEOUT_EXPECTED 
+should be for jobs where we are not sure whether the job really finishes in 
+time, e.g. when compiling QEMU with debug flags enabled, and not for jobs 
+that simply run a little bit longer (in the latter case, it would be enough 
+to simply bump the timeout setting a little bit if necessary). So did you 
+check whether you really run into timeout issues here when compiling QEMU 
+with debug flags?
 
-r~
+Anyway, if you add AVOCADO_TIMEOUT_EXPECTED, then I think you don't need 
+GITLAB_CI anymore, since we certainly don't set AVOCADO_TIMEOUT_EXPECTED in 
+the gitlab CI.
+
+  Thomas

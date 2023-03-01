@@ -1,76 +1,71 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7183419ejc;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp7183424ejc;
         Wed, 1 Mar 2023 08:57:16 -0800 (PST)
-X-Google-Smtp-Source: AK7set+hzvEh4GkXvG2+RPsQf4Fb5bkx9Eq1AteM1QrUaEW+TcZtCghzD0HzEBtpT5Z94wXzapeS
-X-Received: by 2002:a05:6214:250a:b0:56b:fb58:c350 with SMTP id gf10-20020a056214250a00b0056bfb58c350mr15133402qvb.26.1677689836023;
+X-Google-Smtp-Source: AK7set/rD1PjtdrFJxDPbTiyevTSRua5mnGuSiO1zW5nKdFVjXojUZjJO+WRHDT0iD2JMmyMEE/e
+X-Received: by 2002:a05:622a:143:b0:3b9:e3fc:5689 with SMTP id v3-20020a05622a014300b003b9e3fc5689mr12386286qtw.58.1677689836693;
         Wed, 01 Mar 2023 08:57:16 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1677689836; cv=none;
         d=google.com; s=arc-20160816;
-        b=x5fCOomjzgX7YyN9x48K3PbFWAP/YTQypZ+2IGIg9RjvvuT+E3g6djjX58fsgS0739
-         Q4ZYprQQxZ3Pi40n1njTjuC+qnf+HU/wkA4hz4ZKgO2nrxOQTIS6oarddKjra8ClQZcR
-         kfoYZ+2L48CNTxjBPb1GTbDOXVtb0BZxkCvweRuGEbR0qEeakYswXWw/W0XghOKu+iLw
-         qLeI0MHlwI9VhTKi7WD6NzkhJUYbJTVwl9euLS2tCEkDZpdAceVpwM7I7hxnkUGh8rDB
-         m+GNVtbQiiI4rUMXZPPHmLGnYiKnp8fHblNPUYl5AZy5N2t9jscaYtrkBCk4IY4u6oHd
-         vcHQ==
+        b=jiUQrzKT94a5mBqGEdva9vKcolyVQv6l0Fr8+8WRopd4eXLJgJj/NQyajk2XBC+XdN
+         OaIw1ESL2d6vWwYacZ8V6xt5mi6OwKIjre+hFgXmOGPvcxeTKjXtjzrZg0Lxm34pEk3a
+         inisbI7hany7Tx/seZTvxX8JxqIN7wa2UoMepeBjvtx/CixgLHJFP9U1Hvc+nwl41SWS
+         VKCuFUocTrDyZDJRhOXztbs7CzRB5u0jhqyyj72dGAb4NYxQV9P/bjHtDhH3qel2biAz
+         +bhdDEPPdNZTEMl9sgabWiYqW9Hn/T0TDFqF65hQLsVZu1h2jKeqOjZMf5rcTyMBmp/d
+         iuzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=xJGG12o+OdvOFTdFTMI1e4WsxTinazTPA4ozkbXFTt0=;
-        b=CKDDYFutlA3uCCwZzLIxxeG7e3nHIFomV5trUXz5vQdQ/X07XFHkqxbRoeYJhI3rTz
-         3E447Rr4wY4FpQKa+k3Fav/RdXyGq+m3VNx4Q+I9ijwPjbEQcFVE1EhGyEQ0gpDgBNmy
-         IND1seTgvnuRIbSK2n34THupvs5iUqWFflCECzByc2zcl91IguNiRLRkEn+lKD+nb4yg
-         O4sN//vjw6MvrMMajykrDQuRUJe93tMc3DS/fV0Id6Lz6hXDVF/0xnPxmga1sAXpZSGr
-         u20aB+EtruTzZapUGIwm62xhT/7fv5EfzDVWFV9vM31YCYVNLYlfyW71W3RNa5lLEbaX
-         zJAw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=U2rEDnLYjVBTn+AMqJMdsfpZ8g92IifRZgudwpv2hR4=;
+        b=y7ARb/3f1nNbNgj/ED3wbLy4U7Fl8HbPXvN5PPNVFkHIZ6wkn6mg6R/S2DxHAjF6S+
+         JcCZG9D1UTsxKCuUscC3855kEPUWp6AuQ+31hf1mQnpXeTS54hJs1+nb9Rmi8ZqN0Oa1
+         KBo1bKcwg5iYVlOxp8VfFMQVuEjFtSlfUU1riSHviHmBZnbtTFFj4yCKxXiwRERGv0Gi
+         oSP77r7oMmxMmzVLusMYV3sj8ovS5G85qiC4gaCS/3J0v0QosoN/K4dyS6EuVgYMHE7q
+         JigC+ZPfJWrgZKoEuT9a+O3RhYOR5UXmTrYMB5Ug1fQLJx0qDMQKNM94J+yqGSTPm9se
+         YbyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4-20020a05620a430400b00742d6543ffdsi3921857qko.634.2023.03.01.08.57.15
+        by mx.google.com with ESMTPS id n10-20020ac85a0a000000b003b860983966si10934067qta.219.2023.03.01.08.57.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 01 Mar 2023 08:57:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pXPkz-0000eN-Vq; Wed, 01 Mar 2023 11:56:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pXPkz-0000ds-6k; Wed, 01 Mar 2023 11:56:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPky-0000db-J1; Wed, 01 Mar 2023 11:56:44 -0500
+ id 1pXPkv-0000dQ-On; Wed, 01 Mar 2023 11:56:44 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=znpK=6Z=kaod.org=clg@ozlabs.org>)
- id 1pXPku-0007bu-QL; Wed, 01 Mar 2023 11:56:42 -0500
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPG1hXYz4x8x;
- Thu,  2 Mar 2023 03:56:34 +1100 (AEDT)
+ id 1pXPkt-0007bN-RK; Wed, 01 Mar 2023 11:56:41 -0500
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4PRgPB1PHKz4x7v;
+ Thu,  2 Mar 2023 03:56:30 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgPB4yjMz4x5Y;
- Thu,  2 Mar 2023 03:56:30 +1100 (AEDT)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4PRgP76H3pz4x1R;
+ Thu,  2 Mar 2023 03:56:27 +1100 (AEDT)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, Dongli Zhang <dongli.zhang@oracle.com>,
- Joe Jin <joe.jin@oracle.com>, Thomas Huth <thuth@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 01/11] readline: fix hmp completion issue
-Date: Wed,  1 Mar 2023 17:56:09 +0100
-Message-Id: <20230301165619.2171090-2-clg@kaod.org>
+Subject: [PATCH v2 00/11] aspeed queue
+Date: Wed,  1 Mar 2023 17:56:08 +0100
+Message-Id: <20230301165619.2171090-1-clg@kaod.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230301165619.2171090-1-clg@kaod.org>
-References: <20230301165619.2171090-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -83,78 +78,77 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ExDGiP+8lsYI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nubQXM1zHgCz
 
-From: Dongli Zhang <dongli.zhang@oracle.com>
+Hello,
 
-The auto completion does not work in some cases.
+Here is the aspeed series I plan to send as a PR this week.
 
-Case 1.
+ - fix for the Aspeed I2C slave mode, an I2C echo device from Klaus
+   and its associated test in avocado.   
+ - initial cleanups to allow the use of block devices instead of
+   drives on the command line.
+ - new facebook machines and eeprom fixes for the Fuji
+ - readline fix ! 
 
-1. (qemu) info reg
-2. Press 'Tab'.
-3. It does not auto complete.
+Thanks,
 
-Case 2.
+C.
 
-1. (qemu) block_resize flo
-2. Press 'Tab'.
-3. It does not auto complete 'floppy0'.
+Cédric Le Goater (4):
+  tests/avocado/machine_aspeed.py: Add an I2C slave test
+  aspeed: Introduce a spi_boot region under the SoC
+  aspeed: Add a boot_rom overlap region in the SoC spi_boot container
+  aspeed/smc: Replace SysBus IRQs with GPIO lines
 
-Since the readline_add_completion_of() may add any completion when
-strlen(pfx) is zero, we remove the check with (name[0] == '\0') because
-strlen() always returns zero in that case.
+Dongli Zhang (1):
+  readline: fix hmp completion issue
 
-Fixes: 52f50b1e9f8f ("readline: Extract readline_add_completion_of() from monitor")
-Cc: Joe Jin <joe.jin@oracle.com>
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- monitor/hmp.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+Karthikeyan Pasupathi (2):
+  hw/arm/aspeed: Adding new machine Yosemitev2 in QEMU
+  hw/arm/aspeed: Adding new machine Tiogapass in QEMU
 
-diff --git a/monitor/hmp.c b/monitor/hmp.c
-index 2aa85d3982..fee410362f 100644
---- a/monitor/hmp.c
-+++ b/monitor/hmp.c
-@@ -1189,9 +1189,7 @@ static void cmd_completion(MonitorHMP *mon, const char *name, const char *list)
-         }
-         memcpy(cmd, pstart, len);
-         cmd[len] = '\0';
--        if (name[0] == '\0') {
--            readline_add_completion_of(mon->rs, name, cmd);
--        }
-+        readline_add_completion_of(mon->rs, name, cmd);
-         if (*p == '\0') {
-             break;
-         }
-@@ -1335,9 +1333,7 @@ static void monitor_find_completion_by_table(MonitorHMP *mon,
-             /* block device name completion */
-             readline_set_completion_index(mon->rs, strlen(str));
-             while ((blk = blk_next(blk)) != NULL) {
--                if (str[0] == '\0') {
--                    readline_add_completion_of(mon->rs, str, blk_name(blk));
--                }
-+                readline_add_completion_of(mon->rs, str, blk_name(blk));
-             }
-             break;
-         case 's':
+Klaus Jensen (2):
+  hw/i2c: only schedule pending master when bus is idle
+  hw/misc: add a toy i2c echo device
+
+Sittisak Sinprem (2):
+  hw/at24c : modify at24c to support 1 byte address mode
+  aspeed/fuji : correct the eeprom size
+
+ docs/system/arm/aspeed.rst      |   2 +
+ hw/arm/aspeed_eeprom.h          |   6 ++
+ include/hw/arm/aspeed_soc.h     |   5 +
+ include/hw/i2c/i2c.h            |   2 +
+ hw/arm/aspeed.c                 | 159 ++++++++++++++++++++++----------
+ hw/arm/aspeed_ast2600.c         |  13 +++
+ hw/arm/aspeed_eeprom.c          |  45 +++++++++
+ hw/arm/aspeed_soc.c             |  14 +++
+ hw/arm/fby35.c                  |   8 +-
+ hw/i2c/aspeed_i2c.c             |   2 +
+ hw/i2c/core.c                   |  37 +++++---
+ hw/misc/i2c-echo.c              | 156 +++++++++++++++++++++++++++++++
+ hw/nvram/eeprom_at24c.c         |  30 +++++-
+ hw/ssi/aspeed_smc.c             |   5 +-
+ monitor/hmp.c                   |   8 +-
+ hw/misc/meson.build             |   2 +
+ tests/avocado/machine_aspeed.py |  10 ++
+ 17 files changed, 421 insertions(+), 83 deletions(-)
+ create mode 100644 hw/misc/i2c-echo.c
+
 -- 
 2.39.2
 

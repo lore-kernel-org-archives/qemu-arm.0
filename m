@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t16-20020a05600001d000b002c558869934sm132379wrx.81.2023.03.02.11.08.47
+        by smtp.gmail.com with ESMTPSA id h17-20020a05600c351100b003e4326a6d53sm4241899wmq.35.2023.03.02.11.08.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 02 Mar 2023 11:08:47 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id ADBDB1FFB8;
+	by zen.linaroharston (Postfix) with ESMTP id C8E001FFBA;
 	Thu,  2 Mar 2023 19:08:46 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -56,49 +56,62 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	David Hildenbrand <david@redhat.com>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Bin Meng <bmeng.cn@gmail.com>
-Subject: [PATCH v4 01/26] gdbstub/internals.h: clean up include guard
-Date: Thu,  2 Mar 2023 19:08:21 +0000
-Message-Id: <20230302190846.2593720-2-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v4 02/26] gdbstub: fix-up copyright and license files
+Date: Thu,  2 Mar 2023 19:08:22 +0000
+Message-Id: <20230302190846.2593720-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
 References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WQ5t20TN8DTS
+X-TUID: WArYkWv1iOjU
 
-Use something more specific to avoid name clashes.
+When I started splitting gdbstub apart I was a little too boilerplate
+with my file headers. Fix up to carry over Fabrice's copyright and the
+LGPL license header.
 
-Reviewed-by: Bin Meng <bmeng.cn@gmail.com>
+Fixes: ae7467b1ac (gdbstub: move breakpoint logic to accel ops)
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ gdbstub/softmmu.c | 3 ++-
+ gdbstub/user.c    | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index b23999f951..7df0e11c47 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -6,8 +6,8 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 129575e510..05db6f8a9f 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -4,9 +4,10 @@
+  * Debug integration depends on support from the individual
+  * accelerators so most of this involves calling the ops helpers.
+  *
++ * Copyright (c) 2003-2005 Fabrice Bellard
+  * Copyright (c) 2022 Linaro Ltd
+  *
+- * SPDX-License-Identifier: GPL-2.0-or-later
++ * SPDX-License-Identifier: LGPL-2.0+
   */
  
--#ifndef _INTERNALS_H_
--#define _INTERNALS_H_
-+#ifndef GDBSTUB_INTERNALS_H
-+#define GDBSTUB_INTERNALS_H
+ #include "qemu/osdep.h"
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 484bd8f461..09a18fb23b 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -3,9 +3,10 @@
+  *
+  * We know for user-mode we are using TCG so we can call stuff directly.
+  *
++ * Copyright (c) 2003-2005 Fabrice Bellard
+  * Copyright (c) 2022 Linaro Ltd
+  *
+- * SPDX-License-Identifier: GPL-2.0-or-later
++ * SPDX-License-Identifier: LGPL-2.0+
+  */
  
- #include "exec/cpu-common.h"
- 
-@@ -16,4 +16,4 @@ int gdb_breakpoint_insert(CPUState *cs, int type, vaddr addr, vaddr len);
- int gdb_breakpoint_remove(CPUState *cs, int type, vaddr addr, vaddr len);
- void gdb_breakpoint_remove_all(CPUState *cs);
- 
--#endif /* _INTERNALS_H_ */
-+#endif /* GDBSTUB_INTERNALS_H */
+ #include "qemu/osdep.h"
 -- 
 2.39.2

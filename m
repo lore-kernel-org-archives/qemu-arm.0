@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z6-20020adfd0c6000000b002c55efa9cbesm154762wrh.39.2023.03.02.11.08.46
+        by smtp.gmail.com with ESMTPSA id a10-20020a5d508a000000b002c54241b4fesm125929wrt.80.2023.03.02.11.08.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Mar 2023 11:08:47 -0800 (PST)
+        Thu, 02 Mar 2023 11:08:48 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 93EAA1FFB7;
-	Thu,  2 Mar 2023 19:08:46 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 07E891FFBC;
+	Thu,  2 Mar 2023 19:08:47 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
@@ -57,168 +57,70 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 00/26] gdbstub/next: re-organise and split build
-Date: Thu,  2 Mar 2023 19:08:20 +0000
-Message-Id: <20230302190846.2593720-1-alex.bennee@linaro.org>
+Subject: [PATCH v4 04/26] gdbstub: clean-up indent on gdb_exit
+Date: Thu,  2 Mar 2023 19:08:24 +0000
+Message-Id: <20230302190846.2593720-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
+References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: K7v1tbv02/qD
+X-TUID: HnyURELvL6yU
 
-I was motivated to sort this out while working on my register API
-which is target agnostic but ran into the weeds when trying to link up
-with the gdbstub. This was due to us building gdbstub for every single
-target we support due to a few ABI sensitive bits that require CPU
-specific information. This series does a bunch of surgery to break the
-monolithic file apart into its constituent parts as well as simplify
-the headers to users can avoid bringing in more dependencies than they
-need.
+Otherwise checkpatch will throw a hissy fit on the later patches that
+split this function up.
 
-I had hoped to go all the way and conditionally compile syscalls only
-for the two ABIs (32 and 64 bit) unfortunately I was unable to the
-appropriate meson-foo to make that happen.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ gdbstub/gdbstub.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-This version is mostly just minor clean-ups and tag updates including
-a few extra code motion and checkpatch cleanup patches. The biggest
-change is replacing the probe shell script with a slightly smarter
-python one and adding Mad's accelops patch.
-
-The following patches need review:
-
- - gdbstub: split out softmmu/user specifics for syscall handling
- - testing: probe gdb for supported architectures ahead of time
- - gdbstub: only compile gdbstub twice for whole build
- - gdbstub: clean-up indent on gdb_exit
-
-Alex Bennée (24):
-  gdbstub/internals.h: clean up include guard
-  gdbstub: fix-up copyright and license files
-  gdbstub: clean-up indent on gdb_exit
-  gdbstub: define separate user/system structures
-  gdbstub: move GDBState to shared internals header
-  includes: move tb_flush into its own header
-  gdbstub: move fromhex/tohex routines to internals
-  gdbstub: make various helpers visible to the rest of the module
-  gdbstub: move chunk of softmmu functionality to own file
-  gdbstub: move chunks of user code into own files
-  gdbstub: rationalise signal mapping in softmmu
-  gdbstub: abstract target specific details from gdb_put_packet_binary
-  gdbstub: specialise handle_query_attached
-  gdbstub: specialise target_memory_rw_debug
-  gdbstub: introduce gdb_get_max_cpus
-  gdbstub: specialise stub_can_reverse
-  gdbstub: fix address type of gdb_set_cpu_pc
-  gdbstub: don't use target_ulong while handling registers
-  gdbstub: move register helpers into standalone include
-  gdbstub: move syscall handling to new file
-  gdbstub: only compile gdbstub twice for whole build
-  testing: probe gdb for supported architectures ahead of time
-  include: split target_long definition from cpu-defs
-  gdbstub: split out softmmu/user specifics for syscall handling
-
-Mads Ynddal (1):
-  gdbstub: move update guest debug to accel ops
-
-Philippe Mathieu-Daudé (1):
-  gdbstub: Make syscall_complete/[gs]et_reg target-agnostic typedefs
-
- MAINTAINERS                                   |    4 +
- configure                                     |    8 +
- gdbstub/internals.h                           |  214 ++-
- include/exec/cpu-defs.h                       |   19 +-
- include/exec/exec-all.h                       |    1 -
- include/exec/gdbstub.h                        |  208 ---
- include/exec/target_long.h                    |   42 +
- include/exec/tb-flush.h                       |   26 +
- include/gdbstub/helpers.h                     |  103 +
- include/gdbstub/syscalls.h                    |  124 ++
- include/gdbstub/user.h                        |   43 +
- include/sysemu/accel-ops.h                    |    1 +
- linux-user/user-internals.h                   |    1 +
- accel/kvm/kvm-accel-ops.c                     |    8 +
- accel/stubs/tcg-stub.c                        |    1 +
- accel/tcg/tb-maint.c                          |    1 +
- accel/tcg/translate-all.c                     |    1 +
- cpu.c                                         |   12 +-
- gdbstub/gdbstub.c                             | 1655 ++---------------
- gdbstub/softmmu.c                             |  613 +++++-
- gdbstub/syscalls.c                            |  221 +++
- gdbstub/user-target.c                         |  283 +++
- gdbstub/user.c                                |  433 ++++-
- hw/ppc/spapr_hcall.c                          |    1 +
- linux-user/exit.c                             |    2 +-
- linux-user/main.c                             |    1 +
- linux-user/signal.c                           |    2 +-
- plugins/core.c                                |    1 +
- plugins/loader.c                              |    2 +-
- semihosting/arm-compat-semi.c                 |    1 +
- semihosting/guestfd.c                         |    2 +-
- semihosting/syscalls.c                        |    3 +-
- softmmu/runstate.c                            |    2 +-
- target/alpha/gdbstub.c                        |    2 +-
- target/alpha/sys_helper.c                     |    1 +
- target/arm/gdbstub.c                          |    1 +
- target/arm/gdbstub64.c                        |    2 +-
- target/arm/tcg/helper-a64.c                   |    2 +-
- target/arm/tcg/m_helper.c                     |    1 +
- target/avr/gdbstub.c                          |    2 +-
- target/cris/gdbstub.c                         |    2 +-
- target/hexagon/gdbstub.c                      |    2 +-
- target/hppa/gdbstub.c                         |    2 +-
- target/i386/gdbstub.c                         |    2 +-
- target/i386/whpx/whpx-all.c                   |    2 +-
- target/loongarch/gdbstub.c                    |    1 +
- target/m68k/gdbstub.c                         |    2 +-
- target/m68k/helper.c                          |    1 +
- target/m68k/m68k-semi.c                       |    3 +-
- target/microblaze/gdbstub.c                   |    2 +-
- target/mips/gdbstub.c                         |    2 +-
- target/mips/tcg/sysemu/mips-semi.c            |    3 +-
- target/nios2/cpu.c                            |    2 +-
- target/nios2/nios2-semi.c                     |    3 +-
- target/openrisc/gdbstub.c                     |    2 +-
- target/openrisc/interrupt.c                   |    2 +-
- target/openrisc/mmu.c                         |    2 +-
- target/ppc/cpu_init.c                         |    2 +-
- target/ppc/gdbstub.c                          |    1 +
- target/riscv/csr.c                            |    1 +
- target/riscv/gdbstub.c                        |    1 +
- target/rx/gdbstub.c                           |    2 +-
- target/s390x/gdbstub.c                        |    1 +
- target/s390x/helper.c                         |    2 +-
- target/sh4/gdbstub.c                          |    2 +-
- target/sparc/gdbstub.c                        |    2 +-
- target/tricore/gdbstub.c                      |    2 +-
- target/xtensa/core-dc232b.c                   |    2 +-
- target/xtensa/core-dc233c.c                   |    2 +-
- target/xtensa/core-de212.c                    |    2 +-
- target/xtensa/core-de233_fpu.c                |    2 +-
- target/xtensa/core-dsp3400.c                  |    2 +-
- target/xtensa/core-fsf.c                      |    2 +-
- target/xtensa/core-lx106.c                    |    2 +-
- target/xtensa/core-sample_controller.c        |    2 +-
- target/xtensa/core-test_kc705_be.c            |    2 +-
- target/xtensa/core-test_mmuhifi_c3.c          |    2 +-
- target/xtensa/gdbstub.c                       |    2 +-
- target/xtensa/helper.c                        |    2 +-
- gdbstub/meson.build                           |   35 +-
- gdbstub/trace-events                          |    4 +-
- scripts/probe-gdb-support.py                  |   88 +
- target/xtensa/import_core.sh                  |    2 +-
- tests/tcg/aarch64/Makefile.target             |    2 +-
- tests/tcg/multiarch/Makefile.target           |    5 +
- .../multiarch/system/Makefile.softmmu-target  |    6 +-
- tests/tcg/s390x/Makefile.target               |    2 +-
- 87 files changed, 2470 insertions(+), 1799 deletions(-)
- create mode 100644 include/exec/target_long.h
- create mode 100644 include/exec/tb-flush.h
- create mode 100644 include/gdbstub/helpers.h
- create mode 100644 include/gdbstub/syscalls.h
- create mode 100644 include/gdbstub/user.h
- create mode 100644 gdbstub/syscalls.c
- create mode 100644 gdbstub/user-target.c
- create mode 100755 scripts/probe-gdb-support.py
-
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index fb9c49e0fd..63b56f0027 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -3021,27 +3021,27 @@ static void gdb_read_byte(uint8_t ch)
+ /* Tell the remote gdb that the process has exited.  */
+ void gdb_exit(int code)
+ {
+-  char buf[4];
++    char buf[4];
+ 
+-  if (!gdbserver_state.init) {
+-      return;
+-  }
++    if (!gdbserver_state.init) {
++        return;
++    }
+ #ifdef CONFIG_USER_ONLY
+-  if (gdbserver_state.socket_path) {
+-      unlink(gdbserver_state.socket_path);
+-  }
+-  if (gdbserver_state.fd < 0) {
+-      return;
+-  }
++    if (gdbserver_state.socket_path) {
++        unlink(gdbserver_state.socket_path);
++    }
++    if (gdbserver_state.fd < 0) {
++        return;
++    }
+ #endif
+ 
+-  trace_gdbstub_op_exiting((uint8_t)code);
++    trace_gdbstub_op_exiting((uint8_t)code);
+ 
+-  snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
+-  put_packet(buf);
++    snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
++    put_packet(buf);
+ 
+ #ifndef CONFIG_USER_ONLY
+-  qemu_chr_fe_deinit(&gdbserver_state.chr, true);
++    qemu_chr_fe_deinit(&gdbserver_state.chr, true);
+ #endif
+ }
+ 
 -- 
 2.39.2

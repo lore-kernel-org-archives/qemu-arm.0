@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h17-20020a05600c351100b003e4326a6d53sm4241899wmq.35.2023.03.02.11.08.47
+        by smtp.gmail.com with ESMTPSA id x8-20020a1c7c08000000b003eb2e33f327sm6700116wmc.2.2023.03.02.11.08.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 02 Mar 2023 11:08:47 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C8E001FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id E33201FFBB;
 	Thu,  2 Mar 2023 19:08:46 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -57,61 +57,61 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 02/26] gdbstub: fix-up copyright and license files
-Date: Thu,  2 Mar 2023 19:08:22 +0000
-Message-Id: <20230302190846.2593720-3-alex.bennee@linaro.org>
+Subject: [PATCH v4 03/26] gdbstub: Make syscall_complete/[gs]et_reg target-agnostic typedefs
+Date: Thu,  2 Mar 2023 19:08:23 +0000
+Message-Id: <20230302190846.2593720-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
 References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: WArYkWv1iOjU
+X-TUID: XNqdsukYR9fo
 
-When I started splitting gdbstub apart I was a little too boilerplate
-with my file headers. Fix up to carry over Fabrice's copyright and the
-LGPL license header.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Fixes: ae7467b1ac (gdbstub: move breakpoint logic to accel ops)
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Prototypes using gdb_syscall_complete_cb() or gdb_?et_reg_cb()
+don't depend on "cpu.h", thus are not target-specific.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20221214143659.62133-1-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/softmmu.c | 3 ++-
- gdbstub/user.c    | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ include/exec/gdbstub.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 129575e510..05db6f8a9f 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -4,9 +4,10 @@
-  * Debug integration depends on support from the individual
-  * accelerators so most of this involves calling the ops helpers.
-  *
-+ * Copyright (c) 2003-2005 Fabrice Bellard
-  * Copyright (c) 2022 Linaro Ltd
-  *
-- * SPDX-License-Identifier: GPL-2.0-or-later
-+ * SPDX-License-Identifier: LGPL-2.0+
-  */
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index f667014888..1636fb3841 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -71,9 +71,6 @@ struct gdb_timeval {
+   uint64_t tv_usec;   /* microsecond */
+ } QEMU_PACKED;
  
- #include "qemu/osdep.h"
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 484bd8f461..09a18fb23b 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -3,9 +3,10 @@
-  *
-  * We know for user-mode we are using TCG so we can call stuff directly.
-  *
-+ * Copyright (c) 2003-2005 Fabrice Bellard
-  * Copyright (c) 2022 Linaro Ltd
-  *
-- * SPDX-License-Identifier: GPL-2.0-or-later
-+ * SPDX-License-Identifier: LGPL-2.0+
-  */
+-#ifdef NEED_CPU_H
+-#include "cpu.h"
+-
+ typedef void (*gdb_syscall_complete_cb)(CPUState *cpu, uint64_t ret, int err);
  
- #include "qemu/osdep.h"
+ /**
+@@ -126,6 +123,7 @@ int gdb_handlesig(CPUState *, int);
+ void gdb_signalled(CPUArchState *, int);
+ void gdbserver_fork(CPUState *);
+ #endif
++
+ /* Get or set a register.  Returns the size of the register.  */
+ typedef int (*gdb_get_reg_cb)(CPUArchState *env, GByteArray *buf, int reg);
+ typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
+@@ -133,6 +131,9 @@ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               int num_regs, const char *xml, int g_pos);
+ 
++#ifdef NEED_CPU_H
++#include "cpu.h"
++
+ /*
+  * The GDB remote protocol transfers values in target byte order. As
+  * the gdbstub may be batching up several register values we always
 -- 
 2.39.2

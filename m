@@ -1,108 +1,171 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp40000ejc;
-        Thu, 2 Mar 2023 10:10:11 -0800 (PST)
-X-Google-Smtp-Source: AK7set8CcNsLaiiSaBLpR8IUygM3BFseprwyuOQ1JXUUj+9DbGPy5JcLszmo8bWrUJfGz41fksD7
-X-Received: by 2002:a17:906:4088:b0:8f7:68ca:c004 with SMTP id u8-20020a170906408800b008f768cac004mr12278510ejj.64.1677780611203;
-        Thu, 02 Mar 2023 10:10:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677780611; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp50332ejc;
+        Thu, 2 Mar 2023 10:19:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set8zEUOHyKdzLzcsioJpl/vlCVtdUHBvkJcPW751HijNlJFveJGUPvvmIT1L4N0jIwWdUKyL
+X-Received: by 2002:ad4:5d61:0:b0:56f:d8:dbb4 with SMTP id fn1-20020ad45d61000000b0056f00d8dbb4mr22011815qvb.2.1677781145824;
+        Thu, 02 Mar 2023 10:19:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677781145; cv=none;
         d=google.com; s=arc-20160816;
-        b=X6EOYD+O6kukcVIu+nmM24T4Q0AoY5K3XoWKBjwyT9AHXD9EuP/h6t8jO4wEta1bzi
-         U38joJu8kPwF157VsDwcDRMTXuySWOOZd8GIUO91n5S6o0+3Q8QeOqIbNKtiIf5S5Nwo
-         06Yei1HUoK1SrqL8Lc1SW4UVoTuP8E8Rhqt+tspjtmxWW80OWB7Py5Xosn3Ipw5mhGbp
-         z3IqE/IZxrudEtwYEvcf0yoy38MTFc+ywYfdhix7sy+R+vsLWpyOXmBPWL6LHOf7cFc9
-         NdVnsOr4lm5lwzo2izuB51NXZ9zHbIaAB/FrkWlSOCAypmZ4VW3z2sfiVW+6yNl5eluJ
-         9KCg==
+        b=ekiYEy/p3xJpFjDfBIDgAeCi/q9nqIdvREe8HJcbx3jblBOkWww4r3i4UTcW9bGVMa
+         ycRS3227oWH/o973gRrQA3+MWDxjISlwllOKW0OMuWzn8hjZuzmKrJK/izRMHhjJEskK
+         Wi2Xr81ljb/9DsEOaOCsrtykW4dbhX8XV5nHCgluj/Do2V3EXsNzXrAKoneJAj+gigZ+
+         qWMjsVaD1UlxUi+48ZqtrOKwSCjmQUAJM8XILzxHOAXIdMJYn2XCELrMv2xfgmwrVkvZ
+         dHKatXBBvWzdnYKWwEVfMIs9pBQ1twZCtmTGkx/EECzXzgm80Oym5qLlg9xtBYtADnz7
+         i2DQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=ngKE3Va+D6TiTHVaZkVdc/7zS2c2sZqOpC+5wqr8Y4I=;
-        b=zTp9zFAjDwloxoA5OURczqpHGPttW+kbHdT6v+D4THPDxui/I0pQ+HAhVKGn5EJ7RL
-         xfNskzLVvdQB6SdroIicWtmoFiDSODls364QvH6/koGXTSU0cyY1+4Yl647paiUOg0Es
-         +sOvves74Ymki5jyesCAiARDldgI5rHal3yJFjlb8rpfCznccb4BwpYwEVOmJCu+RRd8
-         OwJhYvvREohR4bf6NSxBouczxg87C2d/Ol5C/3OCgt4mTmXA5vZqOnVEl2MbkP2eq5gS
-         EtFKlEKpfarI6TkTrtXQ3Zg/iApUGhLf/DRjxvAm8h335WJ1bkMf1Xn3I+dy75GuUsiC
-         +ioQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=LP61L6H0LKKqmzGDJgIX+wMOicPIwPYdG6cm36iXHZ0=;
+        b=uV1+ofNDoX0ELgrP9T79V/GUaZmpUrhNNknrnHYZ+DS2KMHnhD+J4B0NgoDv9Ul3lm
+         WDepk3qxEaKhHBbg6Q9/8YFN42UcMnSYQtRJiZBSagJCy//B5EkCNEFO2P6QkKta3LNG
+         pQOKXnIYg3wwbMmaa7K06pRUAjtcWDBdINhGqMLVmtvStKskL7fVG/TO4KOMnJTt+VE8
+         haoD2VATOTedv4X2IMl1w+rSsXPj7zpcBCOuZnMdfq0DdcJL5jDRoQwKVUhqr2uRfu13
+         tSbVaiE0Z8wOy7mLHo2oQmgIiIDfAuiqjt95MPgjsaBv4CfeTIM56UvHAzN1CXObZ2ix
+         RK5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pa76C06h;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id g11-20020aa7c58b000000b004bf9e2889ebsi328167edq.93.2023.03.02.10.10.10
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=p0gUzph3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d2-20020a0ce442000000b0056ea575940esi14004956qvm.227.2023.03.02.10.19.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Mar 2023 10:10:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 Mar 2023 10:19:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pa76C06h;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677780610;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ngKE3Va+D6TiTHVaZkVdc/7zS2c2sZqOpC+5wqr8Y4I=;
-	b=Pa76C06hpCy8+LlqEHKWu1iLT1MpTXNh8tZ2G9kOUlHLbLW4jz/GLXdaf1ht98Wo8WzRqy
-	aRiWIJBxgii7Iek28MyoHJYfxi8LR2yI/hAkt//nD4FogIvn23yIt+jyW+sY8sW9woA5TU
-	IZAZUAWKnYXKFPIYAKtvK+sLc8FWkL0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-438-1s8TYNS-Pt68aPSkZZ8vRQ-1; Thu, 02 Mar 2023 13:10:08 -0500
-X-MC-Unique: 1s8TYNS-Pt68aPSkZZ8vRQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5517C101A55E;
-	Thu,  2 Mar 2023 18:10:08 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.46])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B83421121315;
-	Thu,  2 Mar 2023 18:10:04 +0000 (UTC)
-Date: Thu, 2 Mar 2023 18:10:01 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org, Maxim Levitsky <mlevitsk@redhat.com>,
-	libvir-list@redhat.com,
-	Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org,
-	Reinoud Zandijk <reinoud@netbsd.org>
-Subject: Re: [PATCH v2 6/6] gitlab-ci.d/crossbuilds: Drop the 32-bit arm
- system emulation jobs
-Message-ID: <ZADmebAnfclbRoXI@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20230302163106.465559-1-thuth@redhat.com>
- <20230302163106.465559-7-thuth@redhat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=p0gUzph3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pXnVo-0004JK-Fg; Thu, 02 Mar 2023 13:18:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1pXnVn-0004J4-6N; Thu, 02 Mar 2023 13:18:39 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1pXnVl-0001jz-Fd; Thu, 02 Mar 2023 13:18:38 -0500
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 322IGZVe009284; Thu, 2 Mar 2023 18:18:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=LP61L6H0LKKqmzGDJgIX+wMOicPIwPYdG6cm36iXHZ0=;
+ b=p0gUzph3M+MXzVuuQcDBOGyx/anq8Z5zi2wOABIINiWtSY/iXU2v0Zx9fPBjJBQHbSpA
+ W1Y5ENIvLK3zVVVVqztGClVR3CkHiS9NnxbGxG773yTw5Upd5SxS79jVFpqyFJD82ziW
+ 7VxbR3KUet+Fc8r7pD/e4Vqj4q4OKlv+rWy3W1uWncZYLDqWuf72w6pzAuqVU3+EVZov
+ NZSVYhzChM0+jEUMtuh9NTaMSX5faXknw8n8Z0jbcdgh6W1gj7amN0feHT4lOXaMC5sY
+ bOtr0fW8E6Yyv6ZS8qrnvRD8UJSJDd+zNPsgIqYlACB0lWn1AieTd/81GukZeAYdBWIU dg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p30xg01dh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 02 Mar 2023 18:18:23 +0000
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 322IGYsw009245;
+ Thu, 2 Mar 2023 18:18:22 GMT
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p30xg01cy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 02 Mar 2023 18:18:22 +0000
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 322GNfuq020103;
+ Thu, 2 Mar 2023 18:18:21 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([9.208.129.114])
+ by ppma02wdc.us.ibm.com (PPS) with ESMTPS id 3nybe26cnr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 02 Mar 2023 18:18:21 +0000
+Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
+ [10.39.53.233])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 322IIKm420251276
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 2 Mar 2023 18:18:20 GMT
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3680D58054;
+ Thu,  2 Mar 2023 18:18:20 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0D34E5803F;
+ Thu,  2 Mar 2023 18:18:17 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu,  2 Mar 2023 18:18:16 +0000 (GMT)
+Message-ID: <98707b7f-3bfe-3687-0e70-5f92af532af3@linux.ibm.com>
+Date: Thu, 2 Mar 2023 13:18:16 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v3 05/16] error: add global &error_warn destination
+Content-Language: en-US
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Joel Stanley <joel@jms.id.au>, Hanna Reitz <hreitz@redhat.com>
+References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
+ <20230221124802.4103554-6-marcandre.lureau@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20230221124802.4103554-6-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230302163106.465559-7-thuth@redhat.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-X-TUID: 85ln0mUnwtUN
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: HAX2DK3iA6WbE6WCFMP3oAd7zue6pZhF
+X-Proofpoint-ORIG-GUID: mpvtzgShsHev9UQijmLlK8xdlYbmay70
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-03-02_11,2023-03-02_02,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 clxscore=1015
+ impostorscore=0 malwarescore=0 priorityscore=1501 phishscore=0
+ suspectscore=0 mlxlogscore=779 adultscore=0 lowpriorityscore=0 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2303020156
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8Jjkhs93RH6f
 
-On Thu, Mar 02, 2023 at 05:31:06PM +0100, Thomas Huth wrote:
-> Hardly anybody still uses 32-bit arm environments for running QEMU,
-> so let's stop wasting our scarce CI minutes with these jobs.
+
+
+On 2/21/23 07:47, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  .gitlab-ci.d/crossbuilds.yml | 14 --------------
->  1 file changed, 14 deletions(-)
+> This can help debugging issues or develop, when error handling is
+> introduced.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>

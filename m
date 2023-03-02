@@ -1,159 +1,224 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp10841ejc;
-        Thu, 2 Mar 2023 09:42:39 -0800 (PST)
-X-Google-Smtp-Source: AK7set/I0Nu201PWTMPeJNcFwEI/PO/sQWLtq28YkkHLTdVNCxNs+QtX/zKS0iuAbiOOfsbPQvBP
-X-Received: by 2002:a05:6214:528f:b0:56a:d94d:6deb with SMTP id kj15-20020a056214528f00b0056ad94d6debmr18527984qvb.25.1677778959567;
-        Thu, 02 Mar 2023 09:42:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677778959; cv=none;
-        d=google.com; s=arc-20160816;
-        b=cJghNKxkoG0LJYebqY2iinvn6AP8hwmll61bwui1mpWaoCITWApCLyxVQWFR9iyGYW
-         asWJKyBHQMH2JRbV2Y+JFfmwcCnqnHTOyfpM9F0Cj2Rcf8/KkYU4nTeDtO6KEJPxQeDn
-         Hzo24PN2G/p27fZsiJ1r5irG97f3gIY+PYtY2BVlhm4G4oLwoj7bk6Qq2rTOQuPFXtRs
-         mwwEIVw9YfbLwpYAsQhQbgAFKfCQDr3Ssht+NwtfxbAfRxuZorAGErDi8xNjaUSmUArv
-         n9tgQXbqvmz1Q0/G+zhQMW8kyOeNppWc874uvLL33oM3fdtIbgmxEkggq3pGRWzEcIJV
-         pX4A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=xJGG12o+OdvOFTdFTMI1e4WsxTinazTPA4ozkbXFTt0=;
-        b=UKWrRZjfS+7WZ7TQpgdJ4qbIr7xRh1lBDoHLbrhTslBFRDi8JyWpexxxYgLqa5LocA
-         8Igu5iXDab+WFpMk6U2mJyK3nhtvOBfTrR06K6zxVuNY2fEfNJq+8SlspRzWnsNWm/ei
-         ZF/ANEmGaO/ufKRZo4ulQmLarxAjT4eSAsfenw396BzMp0WbMQv5vea7oBv7b23WNCrE
-         TFojcxE1cCdoiLivui882qll/rSo57rpn6zlg2wZoHzJO5P/gwNze0VJbtKvnfIdOBmd
-         Ddndt++ZS9M4mgqT4g6OPHkCzkbNMZ8vX8Fw42263slaZLHceYjrrcag9jE1xy0b4WJX
-         5Nxw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l6-20020a0ce086000000b00571a3b7791bsi14221800qvk.162.2023.03.02.09.42.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Mar 2023 09:42:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXmws-0004rf-Q5; Thu, 02 Mar 2023 12:42:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Cwst=62=kaod.org=clg@ozlabs.org>)
- id 1pXmwf-0004WG-LN; Thu, 02 Mar 2023 12:42:22 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=Cwst=62=kaod.org=clg@ozlabs.org>)
- id 1pXmwd-0002ji-Sr; Thu, 02 Mar 2023 12:42:21 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PSJMX1jXRz4x86;
- Fri,  3 Mar 2023 04:42:16 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PSJMT1Cn9z4x5X;
- Fri,  3 Mar 2023 04:42:12 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Dongli Zhang <dongli.zhang@oracle.com>, Joe Jin <joe.jin@oracle.com>,
- Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 01/11] readline: fix hmp completion issue
-Date: Thu,  2 Mar 2023 18:41:56 +0100
-Message-Id: <20230302174206.2434673-2-clg@kaod.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id z6-20020adfd0c6000000b002c55efa9cbesm154762wrh.39.2023.03.02.11.08.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Mar 2023 11:08:47 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 93EAA1FFB7;
+	Thu,  2 Mar 2023 19:08:46 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	nicolas.eder@lauterbach.com,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	kvm@vger.kernel.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	qemu-s390x@nongnu.org,
+	Stafford Horne <shorne@gmail.com>,
+	Bin Meng <bin.meng@windriver.com>,
+	Marek Vasut <marex@denx.de>,
+	Greg Kurz <groug@kaod.org>,
+	Song Gao <gaosong@loongson.cn>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	qemu-riscv@nongnu.org,
+	Michael Rolnik <mrolnik@gmail.com>,
+	qemu-arm@nongnu.org,
+	Cleber Rosa <crosa@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	mads@ynddal.dk,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-ppc@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	John Snow <jsnow@redhat.com>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	David Hildenbrand <david@redhat.com>,
+	Taylor Simpson <tsimpson@quicinc.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v4 00/26] gdbstub/next: re-organise and split build
+Date: Thu,  2 Mar 2023 19:08:20 +0000
+Message-Id: <20230302190846.2593720-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230302174206.2434673-1-clg@kaod.org>
-References: <20230302174206.2434673-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=Cwst=62=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fb4IhBlaZ/zL
+X-TUID: K7v1tbv02/qD
 
-From: Dongli Zhang <dongli.zhang@oracle.com>
+I was motivated to sort this out while working on my register API
+which is target agnostic but ran into the weeds when trying to link up
+with the gdbstub. This was due to us building gdbstub for every single
+target we support due to a few ABI sensitive bits that require CPU
+specific information. This series does a bunch of surgery to break the
+monolithic file apart into its constituent parts as well as simplify
+the headers to users can avoid bringing in more dependencies than they
+need.
 
-The auto completion does not work in some cases.
+I had hoped to go all the way and conditionally compile syscalls only
+for the two ABIs (32 and 64 bit) unfortunately I was unable to the
+appropriate meson-foo to make that happen.
 
-Case 1.
+This version is mostly just minor clean-ups and tag updates including
+a few extra code motion and checkpatch cleanup patches. The biggest
+change is replacing the probe shell script with a slightly smarter
+python one and adding Mad's accelops patch.
 
-1. (qemu) info reg
-2. Press 'Tab'.
-3. It does not auto complete.
+The following patches need review:
 
-Case 2.
+ - gdbstub: split out softmmu/user specifics for syscall handling
+ - testing: probe gdb for supported architectures ahead of time
+ - gdbstub: only compile gdbstub twice for whole build
+ - gdbstub: clean-up indent on gdb_exit
 
-1. (qemu) block_resize flo
-2. Press 'Tab'.
-3. It does not auto complete 'floppy0'.
+Alex Bennée (24):
+  gdbstub/internals.h: clean up include guard
+  gdbstub: fix-up copyright and license files
+  gdbstub: clean-up indent on gdb_exit
+  gdbstub: define separate user/system structures
+  gdbstub: move GDBState to shared internals header
+  includes: move tb_flush into its own header
+  gdbstub: move fromhex/tohex routines to internals
+  gdbstub: make various helpers visible to the rest of the module
+  gdbstub: move chunk of softmmu functionality to own file
+  gdbstub: move chunks of user code into own files
+  gdbstub: rationalise signal mapping in softmmu
+  gdbstub: abstract target specific details from gdb_put_packet_binary
+  gdbstub: specialise handle_query_attached
+  gdbstub: specialise target_memory_rw_debug
+  gdbstub: introduce gdb_get_max_cpus
+  gdbstub: specialise stub_can_reverse
+  gdbstub: fix address type of gdb_set_cpu_pc
+  gdbstub: don't use target_ulong while handling registers
+  gdbstub: move register helpers into standalone include
+  gdbstub: move syscall handling to new file
+  gdbstub: only compile gdbstub twice for whole build
+  testing: probe gdb for supported architectures ahead of time
+  include: split target_long definition from cpu-defs
+  gdbstub: split out softmmu/user specifics for syscall handling
 
-Since the readline_add_completion_of() may add any completion when
-strlen(pfx) is zero, we remove the check with (name[0] == '\0') because
-strlen() always returns zero in that case.
+Mads Ynddal (1):
+  gdbstub: move update guest debug to accel ops
 
-Fixes: 52f50b1e9f8f ("readline: Extract readline_add_completion_of() from monitor")
-Cc: Joe Jin <joe.jin@oracle.com>
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- monitor/hmp.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+Philippe Mathieu-Daudé (1):
+  gdbstub: Make syscall_complete/[gs]et_reg target-agnostic typedefs
 
-diff --git a/monitor/hmp.c b/monitor/hmp.c
-index 2aa85d3982..fee410362f 100644
---- a/monitor/hmp.c
-+++ b/monitor/hmp.c
-@@ -1189,9 +1189,7 @@ static void cmd_completion(MonitorHMP *mon, const char *name, const char *list)
-         }
-         memcpy(cmd, pstart, len);
-         cmd[len] = '\0';
--        if (name[0] == '\0') {
--            readline_add_completion_of(mon->rs, name, cmd);
--        }
-+        readline_add_completion_of(mon->rs, name, cmd);
-         if (*p == '\0') {
-             break;
-         }
-@@ -1335,9 +1333,7 @@ static void monitor_find_completion_by_table(MonitorHMP *mon,
-             /* block device name completion */
-             readline_set_completion_index(mon->rs, strlen(str));
-             while ((blk = blk_next(blk)) != NULL) {
--                if (str[0] == '\0') {
--                    readline_add_completion_of(mon->rs, str, blk_name(blk));
--                }
-+                readline_add_completion_of(mon->rs, str, blk_name(blk));
-             }
-             break;
-         case 's':
+ MAINTAINERS                                   |    4 +
+ configure                                     |    8 +
+ gdbstub/internals.h                           |  214 ++-
+ include/exec/cpu-defs.h                       |   19 +-
+ include/exec/exec-all.h                       |    1 -
+ include/exec/gdbstub.h                        |  208 ---
+ include/exec/target_long.h                    |   42 +
+ include/exec/tb-flush.h                       |   26 +
+ include/gdbstub/helpers.h                     |  103 +
+ include/gdbstub/syscalls.h                    |  124 ++
+ include/gdbstub/user.h                        |   43 +
+ include/sysemu/accel-ops.h                    |    1 +
+ linux-user/user-internals.h                   |    1 +
+ accel/kvm/kvm-accel-ops.c                     |    8 +
+ accel/stubs/tcg-stub.c                        |    1 +
+ accel/tcg/tb-maint.c                          |    1 +
+ accel/tcg/translate-all.c                     |    1 +
+ cpu.c                                         |   12 +-
+ gdbstub/gdbstub.c                             | 1655 ++---------------
+ gdbstub/softmmu.c                             |  613 +++++-
+ gdbstub/syscalls.c                            |  221 +++
+ gdbstub/user-target.c                         |  283 +++
+ gdbstub/user.c                                |  433 ++++-
+ hw/ppc/spapr_hcall.c                          |    1 +
+ linux-user/exit.c                             |    2 +-
+ linux-user/main.c                             |    1 +
+ linux-user/signal.c                           |    2 +-
+ plugins/core.c                                |    1 +
+ plugins/loader.c                              |    2 +-
+ semihosting/arm-compat-semi.c                 |    1 +
+ semihosting/guestfd.c                         |    2 +-
+ semihosting/syscalls.c                        |    3 +-
+ softmmu/runstate.c                            |    2 +-
+ target/alpha/gdbstub.c                        |    2 +-
+ target/alpha/sys_helper.c                     |    1 +
+ target/arm/gdbstub.c                          |    1 +
+ target/arm/gdbstub64.c                        |    2 +-
+ target/arm/tcg/helper-a64.c                   |    2 +-
+ target/arm/tcg/m_helper.c                     |    1 +
+ target/avr/gdbstub.c                          |    2 +-
+ target/cris/gdbstub.c                         |    2 +-
+ target/hexagon/gdbstub.c                      |    2 +-
+ target/hppa/gdbstub.c                         |    2 +-
+ target/i386/gdbstub.c                         |    2 +-
+ target/i386/whpx/whpx-all.c                   |    2 +-
+ target/loongarch/gdbstub.c                    |    1 +
+ target/m68k/gdbstub.c                         |    2 +-
+ target/m68k/helper.c                          |    1 +
+ target/m68k/m68k-semi.c                       |    3 +-
+ target/microblaze/gdbstub.c                   |    2 +-
+ target/mips/gdbstub.c                         |    2 +-
+ target/mips/tcg/sysemu/mips-semi.c            |    3 +-
+ target/nios2/cpu.c                            |    2 +-
+ target/nios2/nios2-semi.c                     |    3 +-
+ target/openrisc/gdbstub.c                     |    2 +-
+ target/openrisc/interrupt.c                   |    2 +-
+ target/openrisc/mmu.c                         |    2 +-
+ target/ppc/cpu_init.c                         |    2 +-
+ target/ppc/gdbstub.c                          |    1 +
+ target/riscv/csr.c                            |    1 +
+ target/riscv/gdbstub.c                        |    1 +
+ target/rx/gdbstub.c                           |    2 +-
+ target/s390x/gdbstub.c                        |    1 +
+ target/s390x/helper.c                         |    2 +-
+ target/sh4/gdbstub.c                          |    2 +-
+ target/sparc/gdbstub.c                        |    2 +-
+ target/tricore/gdbstub.c                      |    2 +-
+ target/xtensa/core-dc232b.c                   |    2 +-
+ target/xtensa/core-dc233c.c                   |    2 +-
+ target/xtensa/core-de212.c                    |    2 +-
+ target/xtensa/core-de233_fpu.c                |    2 +-
+ target/xtensa/core-dsp3400.c                  |    2 +-
+ target/xtensa/core-fsf.c                      |    2 +-
+ target/xtensa/core-lx106.c                    |    2 +-
+ target/xtensa/core-sample_controller.c        |    2 +-
+ target/xtensa/core-test_kc705_be.c            |    2 +-
+ target/xtensa/core-test_mmuhifi_c3.c          |    2 +-
+ target/xtensa/gdbstub.c                       |    2 +-
+ target/xtensa/helper.c                        |    2 +-
+ gdbstub/meson.build                           |   35 +-
+ gdbstub/trace-events                          |    4 +-
+ scripts/probe-gdb-support.py                  |   88 +
+ target/xtensa/import_core.sh                  |    2 +-
+ tests/tcg/aarch64/Makefile.target             |    2 +-
+ tests/tcg/multiarch/Makefile.target           |    5 +
+ .../multiarch/system/Makefile.softmmu-target  |    6 +-
+ tests/tcg/s390x/Makefile.target               |    2 +-
+ 87 files changed, 2470 insertions(+), 1799 deletions(-)
+ create mode 100644 include/exec/target_long.h
+ create mode 100644 include/exec/tb-flush.h
+ create mode 100644 include/gdbstub/helpers.h
+ create mode 100644 include/gdbstub/syscalls.h
+ create mode 100644 include/gdbstub/user.h
+ create mode 100644 gdbstub/syscalls.c
+ create mode 100644 gdbstub/user-target.c
+ create mode 100755 scripts/probe-gdb-support.py
+
 -- 
 2.39.2
-

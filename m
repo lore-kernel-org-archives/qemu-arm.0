@@ -1,64 +1,64 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8139869ejc;
-        Thu, 2 Mar 2023 03:42:35 -0800 (PST)
-X-Google-Smtp-Source: AK7set+WTaOa7Kv8Ul7KNdlBn2dzmeq64eXFPx9YoGR8nCRcuJjcFj6sNx7/z5z1JiaauF7Ab1yO
-X-Received: by 2002:a05:622a:134e:b0:3bf:d0d2:142d with SMTP id w14-20020a05622a134e00b003bfd0d2142dmr13814061qtk.24.1677757355283;
-        Thu, 02 Mar 2023 03:42:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677757355; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8140276ejc;
+        Thu, 2 Mar 2023 03:43:00 -0800 (PST)
+X-Google-Smtp-Source: AK7set++OhKqRBnwxSGi6zjMVpvPotopbKfOpS1TLSbOnZhu3Q4lHyauEaXRGgya3/9C7VG9DTBY
+X-Received: by 2002:ad4:5de4:0:b0:56e:a07b:f4d4 with SMTP id jn4-20020ad45de4000000b0056ea07bf4d4mr16891832qvb.3.1677757380619;
+        Thu, 02 Mar 2023 03:43:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677757380; cv=none;
         d=google.com; s=arc-20160816;
-        b=Of/JtmEQlpJgc0QFk4Kp2ME4gIRXuSb6NfVLppW8qpCm8lgsMvgCzxDB3QBT1jWGod
-         8IbKeu5QB+9E6rFwe07CFzM2G072fpOYAn8idQtWLSZYaOXO8VPYcslDRjTrPE6/YTOL
-         2UaBwuNSunb/HAzY0epO1SUvbaJyPc1NowbHCRMU/zJRc3e7l8KElUI6nbVu4sNKx4G4
-         ZNUOy//gCWBYqVH9X2chwHfcitDaQIbIBoc6BZ1BO8gVTRzn8TcpYVTApV3pLp9SwHUl
-         7/ClPZ8Tb76Mx5VOaI4da8BxCFXljxaQBn4Hq2W77effChaM5dhNPEJOkhZO4FUzL0Un
-         V5iw==
+        b=WtoY/8Hr/U0+8I+82J8EPctUb6/n5adi2jgElMGUYMGLvW2tSE1J0EY70ukspwfLYL
+         J05024zkrqeQ4clN9FIK8LiLom+HNxa14KMUVcZCRrTA35y3tANH6Tgd1f3d8E4m8jtz
+         QpfyxkW4tp1JyFs/N7Ddx+5+eWLx+1RcYtLVD4yO+6N5mXonXk/OTap8p8nQLfqIXDnA
+         bmzI8GCnSBtWOSLiSBcWnN0t0ymjEVkNRIEbHJLkbzRL8pD0fjJFd0hwZzpR75q0IwIL
+         SlcRmLlB7ObquDPVjFWL1kuVzTAA8rUJPz/aKIIsMrVDGw63DAsCZi9QQK4RBBUE3zXD
+         OsJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=98v0bx1Nyr2oo8U+zExkS2GPhCRTha3RYg56Tqk4YuA=;
-        b=UIfs/T2FGwo6jIGfMibbd9hnPhplrMZYmT8f1gorfXHBU3Q5HyStf798EDJMVXL0dd
-         BdmFpNRdO9IHs5iC6lytxMLIL0/wlUnvCulgZm6sG2tcK3w5+wgMVokMP/z+s7zlQ3rR
-         r/qrDVrdA98TYDoomXif31iwgg+LD/rfwvykpfYqcUdBvxJxtD2U3lSFrthTwpm237Qo
-         0Rt0aO1OWSBoPEMZSCJgneWxZvFm7Q8aMgBVYJCHwr+QEWZKidkrFDZDS/onFg3eN5Po
-         tMl6iwMnEVsp0tJ/0rBaARFiNhzkkbRoKcsW3RzJMs/tByGhMdZDhwnoMp7KG0pchpio
-         Kj+A==
+        bh=CK7ljy0+Rnk6tRS1HPnauFUkh+art3pR5pFHzdONKsA=;
+        b=pgYR4e/5NjgV3zO3H9gFf/1B0g11VmqA8R7Cs0S+dOPi87eOCCvwdvpfgMT2X4Zk62
+         FlXezxvnzRU60utAHI/dpEK7QLjzzwuJqE6Wt4XDU7j/VCgb2xWRklOzcxbcvKxjfkeN
+         GpkTCxGEshi03HIbixjAtoT5engQrYjYleCWvzso39bAeF4fTq9gZxF4g36xqfpA3myr
+         XL7AYoBjyFp6f9xcAVFvq8yCS5DUOPds8YcoX2XW9xVlF5w6xciIdRfcFsR6tmqX+xAp
+         HN3dXnik8/7T3Bw/i379ZOkaYu4fD9iXt4QY/KV3vMNa+OC53KG8C14iSj7VLQ7M3YiY
+         3naQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=dLnfMGcI;
+       dkim=pass header.i=@163.com header.s=s110527 header.b="njrJ/lXz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g11-20020ac87d0b000000b003a824014810si13499134qtb.112.2023.03.02.03.42.35
+        by mx.google.com with ESMTPS id r17-20020a05620a299100b0073b76feea9dsi13242533qkp.110.2023.03.02.03.43.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Mar 2023 03:42:35 -0800 (PST)
+        Thu, 02 Mar 2023 03:43:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=dLnfMGcI;
+       dkim=pass header.i=@163.com header.s=s110527 header.b="njrJ/lXz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pXhJf-00045F-Vc; Thu, 02 Mar 2023 06:41:44 -0500
+	id 1pXhJg-00046j-Ou; Thu, 02 Mar 2023 06:41:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pXhJd-00042Q-8y; Thu, 02 Mar 2023 06:41:41 -0500
-Received: from m12.mail.163.com ([123.126.96.234])
+ id 1pXhJd-00042r-Jp; Thu, 02 Mar 2023 06:41:41 -0500
+Received: from m12.mail.163.com ([123.126.96.233])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pXhJY-00069a-DG; Thu, 02 Mar 2023 06:41:40 -0500
+ id 1pXhJZ-0006AS-79; Thu, 02 Mar 2023 06:41:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=98v0b
- x1Nyr2oo8U+zExkS2GPhCRTha3RYg56Tqk4YuA=; b=dLnfMGcIJ24pj/7xeVU31
- /UASLodfWRQA0MOcto7ZpzqohVdiHeda3E9bOGyAwAmpj/PGuFefd023rtp4bFv6
- lZDJcfwhFIKA80AspkFlyhiOcwq6cTYufxd0Cbm2zkF+9b3KICr1b4aEnCxrT6yu
- wW6T1Vxh97S6z/dsxeJXKw=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=CK7lj
+ y0+Rnk6tRS1HPnauFUkh+art3pR5pFHzdONKsA=; b=njrJ/lXz2FsaXwQ8pYQ9q
+ rIVW6sLF5EV6g4AZAQokct2qK9SF1Uf/V+8y3wJl/5X8LqLTeRcAKLvqTseHdNQb
+ T/InPmdSoz8WiFpbtut+KgG3DQdJtKr1LQrPR/ywJ38tYBCE/gDjamlCcmJKXGun
+ nwHccWNs0Zdw2LmMtGtzBQ=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [144.123.156.254])
- by smtp20 (Coremail) with SMTP id H91pCgBni79OiwBknjVaGA--.63318S6;
- Thu, 02 Mar 2023 19:41:05 +0800 (CST)
+ by smtp20 (Coremail) with SMTP id H91pCgBni79OiwBknjVaGA--.63318S10;
+ Thu, 02 Mar 2023 19:41:07 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -68,23 +68,22 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [RFC PATCH v1 04/12] hw: arm: Add bananapi M2-Ultra and allwinner-r40
- support
-Date: Thu,  2 Mar 2023 19:40:53 +0800
-Message-Id: <20230302114102.32236-5-qianfanguijin@163.com>
+Subject: [RFC PATCH v1 08/12] hw/misc: AXP221 PMU Emulation
+Date: Thu,  2 Mar 2023 19:40:57 +0800
+Message-Id: <20230302114102.32236-9-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230302114102.32236-1-qianfanguijin@163.com>
 References: <20230302114102.32236-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: H91pCgBni79OiwBknjVaGA--.63318S6
-X-Coremail-Antispam: 1Uf129KBjvAXoWfXF1DXr47tw17Aw17KryxAFb_yoW5Jw4xJo
- WfWFsYq3y8K39rWFyrKw409rWUuw1kWa17AwsruFWxuw1UJr47Gry5C3s7ZF43Xr40kF97
- X34FvrWfu3y7twn5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
- AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRZdb1UUUUU
+X-CM-TRANSID: H91pCgBni79OiwBknjVaGA--.63318S10
+X-Coremail-Antispam: 1Uf129KBjvJXoW3AFWDKFykGrW7Kw1xCryxuFg_yoWfArW5pr
+ 9YkFn8trykWFW7JrZ3XrsrWFy3Grs7Wr15Cr18ZwsakF4fAa43CFyvgwn8tFy8CrWDXw15
+ X39xWFW3AwsIvw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRT5lbUUUUU=
 X-Originating-IP: [144.123.156.254]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXBEm7VXl5ytw8QAAs7
-Received-SPF: pass client-ip=123.126.96.234;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGhQm7VaEEb8QXQAAs0
+Received-SPF: pass client-ip=123.126.96.233;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -107,741 +106,302 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 803sGtmXltO1
+X-TUID: qF1aRc1P8/OO
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-Allwinner R40 (sun8i) SoC features a Quad-Core Cortex-A7 ARM CPU,
-and a Mali400 MP2 GPU from ARM. It's also known as the Allwinner T3
-for In-Car Entertainment usage, A40i and A40pro are variants that
-differ in applicable temperatures range (industrial and military).
-
-This patch is a draft and provides very few features that we will
-improve late.
+This patch adds minimal support for AXP-221 PMU and connect it to
+bananapi M2U board.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- configs/devices/arm-softmmu/default.mak |   1 +
- hw/arm/Kconfig                          |   9 +
- hw/arm/allwinner-r40.c                  | 424 ++++++++++++++++++++++++
- hw/arm/bananapi_m2u.c                   | 116 +++++++
- hw/arm/meson.build                      |   1 +
- include/hw/arm/allwinner-r40.h          | 111 +++++++
- 6 files changed, 662 insertions(+)
- create mode 100644 hw/arm/allwinner-r40.c
- create mode 100644 hw/arm/bananapi_m2u.c
- create mode 100644 include/hw/arm/allwinner-r40.h
+ hw/arm/Kconfig        |   1 +
+ hw/arm/bananapi_m2u.c |   5 ++
+ hw/misc/Kconfig       |   4 +
+ hw/misc/axp221.c      | 196 ++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build   |   1 +
+ hw/misc/trace-events  |   5 ++
+ 6 files changed, 212 insertions(+)
+ create mode 100644 hw/misc/axp221.c
 
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 1b49a7830c..76a43add23 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -43,3 +43,4 @@ CONFIG_FSL_IMX6UL=y
- CONFIG_SEMIHOSTING=y
- CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
- CONFIG_ALLWINNER_H3=y
-+CONFIG_ALLWINNER_R40=y
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 2d157de9b8..8eabedce43 100644
+index 8eabedce43..5d2c10cb18 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -344,6 +344,15 @@ config ALLWINNER_H3
-     select USB_EHCI_SYSBUS
-     select SD
- 
-+config ALLWINNER_R40
-+    bool
-+    select ALLWINNER_A10_PIT
-+    select SERIAL
-+    select ARM_TIMER
-+    select ARM_GIC
-+    select UNIMP
-+    select SD
-+
- config RASPI
+@@ -347,6 +347,7 @@ config ALLWINNER_H3
+ config ALLWINNER_R40
      bool
-     select FRAMEBUFFER
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+     select ALLWINNER_A10_PIT
++    select AXP221_PMU
+     select SERIAL
+     select ARM_TIMER
+     select ARM_GIC
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 1b6241719d..bdee12efd3 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -22,6 +22,7 @@
+ #include "exec/address-spaces.h"
+ #include "qapi/error.h"
+ #include "hw/boards.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-r40.h"
+ 
+@@ -91,6 +92,10 @@ static void bpim2u_init(MachineState *machine)
+                      &bootroom_loaded);
+     mmc_attach_drive(r40, &r40->mmc3, 3, false, NULL);
+ 
++    /* Connect AXP221 */
++    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
++    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
++
+     /* SDRAM */
+     memory_region_add_subregion(get_system_memory(), r40->memmap[AW_R40_DEV_SDRAM],
+                                 machine->ram);
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 2ef5781ef8..f66ac390b1 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -180,4 +180,8 @@ config AXP209_PMU
+     bool
+     depends on I2C
+ 
++config AXP221_PMU
++    bool
++    depends on I2C
++
+ source macio/Kconfig
+diff --git a/hw/misc/axp221.c b/hw/misc/axp221.c
 new file mode 100644
-index 0000000000..082b97f3b8
+index 0000000000..47784bb085
 --- /dev/null
-+++ b/hw/arm/allwinner-r40.c
-@@ -0,0 +1,424 @@
++++ b/hw/misc/axp221.c
+@@ -0,0 +1,196 @@
 +/*
-+ * Allwinner R40/A40i/T3 System on Chip emulation
++ * AXP-221/221s PMU Emulation
 + *
 + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
 + *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
++ * Permission is hereby granted, free of charge, to any person obtaining a
++ * copy of this software and associated documentation files (the "Software"),
++ * to deal in the Software without restriction, including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following conditions:
 + *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
 + *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++ * DEALINGS IN THE SOFTWARE.
++ *
++ * SPDX-License-Identifier: MIT
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "qemu/bswap.h"
-+#include "qemu/module.h"
-+#include "qemu/units.h"
-+#include "hw/qdev-core.h"
-+#include "hw/sysbus.h"
-+#include "hw/char/serial.h"
-+#include "hw/misc/unimp.h"
-+#include "hw/usb/hcd-ehci.h"
-+#include "hw/loader.h"
-+#include "sysemu/sysemu.h"
-+#include "hw/arm/allwinner-r40.h"
++#include "qemu/log.h"
++#include "qemu/bitops.h"
++#include "trace.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
 +
-+/* Memory map */
-+const hwaddr allwinner_r40_memmap[] = {
-+    [AW_R40_DEV_SRAM_A1]    = 0x00000000,
-+    [AW_R40_DEV_SRAM_A2]    = 0x00004000,
-+    [AW_R40_DEV_SRAM_A3]    = 0x00008000,
-+    [AW_R40_DEV_SRAM_A4]    = 0x0000b400,
-+    [AW_R40_DEV_MMC0]       = 0x01c0f000,
-+    [AW_R40_DEV_MMC1]       = 0x01c10000,
-+    [AW_R40_DEV_MMC2]       = 0x01c11000,
-+    [AW_R40_DEV_MMC3]       = 0x01c12000,
-+    [AW_R40_DEV_PIT]        = 0x01c20c00,
-+    [AW_R40_DEV_UART0]      = 0x01c28000,
-+    [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
-+    [AW_R40_DEV_GIC_CPU]    = 0x01c82000,
-+    [AW_R40_DEV_GIC_HYP]    = 0x01c84000,
-+    [AW_R40_DEV_GIC_VCPU]   = 0x01c86000,
-+    [AW_R40_DEV_SDRAM]      = 0x40000000
-+};
++#define TYPE_AXP221_PMU "axp221_pmu"
 +
-+/* List of unimplemented devices */
-+struct AwR40Unimplemented {
-+    const char *device_name;
-+    hwaddr base;
-+    hwaddr size;
-+};
++#define AXP221(obj) \
++    OBJECT_CHECK(AXP221I2CState, (obj), TYPE_AXP221_PMU)
 +
-+static struct AwR40Unimplemented r40_unimplemented[] = {
-+    { "d-engine",   0x01000000, 4 * MiB },
-+    { "d-inter",    0x01400000, 128 * KiB },
-+    { "sram-c",     0x01c00000, 4 * KiB },
-+    { "dma",        0x01c02000, 4 * KiB },
-+    { "nfdc",       0x01c03000, 4 * KiB },
-+    { "ts",         0x01c04000, 4 * KiB },
-+    { "spi0",       0x01c05000, 4 * KiB },
-+    { "spi1",       0x01c06000, 4 * KiB },
-+    { "cs0",        0x01c09000, 4 * KiB },
-+    { "keymem",     0x01c0a000, 4 * KiB },
-+    { "emac",       0x01c0b000, 4 * KiB },
-+    { "usb0-otg",   0x01c13000, 4 * KiB },
-+    { "usb0-host",  0x01c14000, 4 * KiB },
-+    { "crypto",     0x01c15000, 4 * KiB },
-+    { "spi2",       0x01c17000, 4 * KiB },
-+    { "sata",       0x01c18000, 4 * KiB },
-+    { "usb1-host",  0x01c19000, 4 * KiB },
-+    { "sid",        0x01c1b000, 4 * KiB },
-+    { "usb2-host",  0x01c1c000, 4 * KiB },
-+    { "cs1",        0x01c1d000, 4 * KiB },
-+    { "spi3",       0x01c1f000, 4 * KiB },
-+    { "ccu",        0x01c20000, 1 * KiB },
-+    { "rtc",        0x01c20400, 1 * KiB },
-+    { "pio",        0x01c20800, 1 * KiB },
-+    { "owa",        0x01c21000, 1 * KiB },
-+    { "ac97",       0x01c21400, 1 * KiB },
-+    { "cir0",       0x01c21800, 1 * KiB },
-+    { "cir1",       0x01c21c00, 1 * KiB },
-+    { "pcm0",       0x01c22000, 1 * KiB },
-+    { "pcm1",       0x01c22400, 1 * KiB },
-+    { "pcm2",       0x01c22800, 1 * KiB },
-+    { "audio",      0x01c22c00, 1 * KiB },
-+    { "keypad",     0x01c23000, 1 * KiB },
-+    { "pwm",        0x01c23400, 1 * KiB },
-+    { "keyadc",     0x01c24400, 1 * KiB },
-+    { "ths",        0x01c24c00, 1 * KiB },
-+    { "rtp",        0x01c25000, 1 * KiB },
-+    { "pmu",        0x01c25400, 1 * KiB },
-+    { "cpu-cfg",    0x01c25c00, 1 * KiB },
-+    { "uart0",      0x01c28000, 1 * KiB },
-+    { "uart1",      0x01c28400, 1 * KiB },
-+    { "uart2",      0x01c28800, 1 * KiB },
-+    { "uart3",      0x01c28c00, 1 * KiB },
-+    { "uart4",      0x01c29000, 1 * KiB },
-+    { "uart5",      0x01c29400, 1 * KiB },
-+    { "uart6",      0x01c29800, 1 * KiB },
-+    { "uart7",      0x01c29c00, 1 * KiB },
-+    { "ps20",       0x01c2a000, 1 * KiB },
-+    { "ps21",       0x01c2a400, 1 * KiB },
-+    { "twi0",       0x01c2ac00, 1 * KiB },
-+    { "twi1",       0x01c2b000, 1 * KiB },
-+    { "twi2",       0x01c2b400, 1 * KiB },
-+    { "twi3",       0x01c2b800, 1 * KiB },
-+    { "twi4",       0x01c2c000, 1 * KiB },
-+    { "scr",        0x01c2c400, 1 * KiB },
-+    { "tvd-top",    0x01c30000, 4 * KiB },
-+    { "tvd0",       0x01c31000, 4 * KiB },
-+    { "tvd1",       0x01c32000, 4 * KiB },
-+    { "tvd2",       0x01c33000, 4 * KiB },
-+    { "tvd3",       0x01c34000, 4 * KiB },
-+    { "gpu",        0x01c40000, 64 * KiB },
-+    { "gmac",       0x01c50000, 64 * KiB },
-+    { "hstmr",      0x01c60000, 4 * KiB },
-+    { "dram-com",   0x01c62000, 4 * KiB },
-+    { "dram-ctl",   0x01c63000, 4 * KiB },
-+    { "tcon-top",   0x01c70000, 4 * KiB },
-+    { "lcd0",       0x01c71000, 4 * KiB },
-+    { "lcd1",       0x01c72000, 4 * KiB },
-+    { "tv0",        0x01c73000, 4 * KiB },
-+    { "tv1",        0x01c74000, 4 * KiB },
-+    { "tve-top",    0x01c90000, 16 * KiB },
-+    { "tve0",       0x01c94000, 16 * KiB },
-+    { "tve1",       0x01c98000, 16 * KiB },
-+    { "mipi_dsi",   0x01ca0000, 4 * KiB },
-+    { "mipi_dphy",  0x01ca1000, 4 * KiB },
-+    { "ve",         0x01d00000, 1024 * KiB },
-+    { "me",         0x01e80000, 128 * KiB },
-+    { "prcm",       0x01f01400, 1 * KiB },
-+    { "debug",      0x3f500000, 64 * KiB },
-+    { "cpubist",    0x3f501000, 4 * KiB },
-+    { "dcu",        0x3fff0000, 64 * KiB },
-+    { "hstmr",      0x01c60000, 4 * KiB },
-+    { "brom",       0xffff0000, 36 * KiB }
-+};
++#define NR_REGS                         0xff
 +
-+/* Per Processor Interrupts */
-+enum {
-+    AW_R40_GIC_PPI_MAINT     =  9,
-+    AW_R40_GIC_PPI_HYPTIMER  = 10,
-+    AW_R40_GIC_PPI_VIRTTIMER = 11,
-+    AW_R40_GIC_PPI_SECTIMER  = 13,
-+    AW_R40_GIC_PPI_PHYSTIMER = 14
-+};
++/* A simple I2C slave which returns values of ID or CNT register. */
++typedef struct AXP221I2CState {
++    /*< private >*/
++    I2CSlave i2c;
++    /*< public >*/
++    uint8_t regs[NR_REGS];  /* peripheral registers */
++    uint8_t ptr;            /* current register index */
++    uint8_t count;          /* counter used for tx/rx */
++} AXP221I2CState;
 +
-+/* Shared Processor Interrupts */
-+enum {
-+    AW_R40_GIC_SPI_UART0     =  1,
-+    AW_R40_GIC_SPI_UART1     =  2,
-+    AW_R40_GIC_SPI_UART2     =  3,
-+    AW_R40_GIC_SPI_UART3     =  4,
-+    AW_R40_GIC_SPI_TIMER0    = 22,
-+    AW_R40_GIC_SPI_TIMER1    = 23,
-+    AW_R40_GIC_SPI_MMC0      = 32,
-+    AW_R40_GIC_SPI_MMC1      = 33,
-+    AW_R40_GIC_SPI_MMC2      = 34,
-+    AW_R40_GIC_SPI_MMC3      = 35,
-+};
++#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
++#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
++#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
++#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
++#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
++#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
 +
-+/* Allwinner R40 general constants */
-+enum {
-+    AW_R40_GIC_NUM_SPI       = 128
-+};
-+
-+#define BOOT0_MAGIC             "eGON.BT0"
-+
-+/* The low 8-bits of the 'boot_media' field in the SPL header */
-+#define SUNXI_BOOTED_FROM_MMC0  0
-+#define SUNXI_BOOTED_FROM_NAND  1
-+#define SUNXI_BOOTED_FROM_MMC2  2
-+#define SUNXI_BOOTED_FROM_SPI   3
-+
-+struct boot_file_head {
-+    uint32_t            b_instruction;
-+    uint8_t             magic[8];
-+    uint32_t            check_sum;
-+    uint32_t            length;
-+    uint32_t            pub_head_size;
-+    uint32_t            fel_script_address;
-+    uint32_t            fel_uEnv_length;
-+    uint32_t            dt_name_offset;
-+    uint32_t            dram_size;
-+    uint32_t            boot_media;
-+    uint32_t            string_pool[13];
-+};
-+
-+bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int unit)
++/* Reset all counters and load ID register */
++static void axp221_reset_enter(Object *obj, ResetType type)
 +{
-+    const int64_t rom_size = 32 * KiB;
-+    g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
-+    struct boot_file_head *head = (struct boot_file_head *)buffer;
++    AXP221I2CState *s = AXP221(obj);
 +
-+    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
-+        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
-+                   __func__);
-+        return false;
-+    }
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
 +
-+    /* we only check the magic string here. */
-+    if (memcmp(head->magic, BOOT0_MAGIC, sizeof(head->magic)))
-+        return false;
++    /* input power status register */
++    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
++                    | AXP221_PWR_STATUS_ACIN_AVAIL
++                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
 +
-+    /* fix the boot media */
-+    switch (unit) {
-+    case 2:
-+        head->boot_media = cpu_to_le32(SUNXI_BOOTED_FROM_MMC2);
-+        break;
-+    default:
-+        head->boot_media = cpu_to_le32(SUNXI_BOOTED_FROM_MMC0);
-+        break;
-+    }
++    s->regs[0x01] = 0x00; /* no battery is connected */
 +
-+    rom_add_blob("allwinner-r40.bootrom", buffer, rom_size,
-+                  rom_size, s->memmap[AW_R40_DEV_SRAM_A1],
-+                  NULL, NULL, NULL, NULL, false);
-+    return true;
-+}
-+
-+static void allwinner_r40_init(Object *obj)
-+{
-+    AwR40State *s = AW_R40(obj);
-+
-+    s->memmap = allwinner_r40_memmap;
-+
-+    for (int i = 0; i < AW_R40_NUM_CPUS; i++) {
-+        object_initialize_child(obj, "cpu[*]", &s->cpus[i],
-+                                ARM_CPU_TYPE_NAME("cortex-a7"));
-+    }
-+
-+    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GIC);
-+
-+    object_initialize_child(obj, "timer", &s->timer, TYPE_AW_A10_PIT);
-+    object_property_add_alias(obj, "clk0-freq", OBJECT(&s->timer),
-+                              "clk0-freq");
-+    object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-+                              "clk1-freq");
-+
-+    object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN5I);
-+    object_initialize_child(obj, "mmc1", &s->mmc1, TYPE_AW_SDHOST_SUN5I);
-+    object_initialize_child(obj, "mmc2", &s->mmc2, TYPE_AW_SDHOST_SUN5I);
-+    object_initialize_child(obj, "mmc3", &s->mmc3, TYPE_AW_SDHOST_SUN5I);
-+}
-+
-+static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-+{
-+    AwR40State *s = AW_R40(dev);
-+    unsigned i;
-+
-+    /* CPUs */
-+    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
-+
-+        /*
-+         * Disable secondary CPUs. Guest EL3 firmware will start
-+         * them via CPU reset control registers.
-+         */
-+        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
-+                          i > 0);
-+
-+        /* All exception levels required */
-+        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el3", true);
-+        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el2", true);
-+
-+        /* Mark realized */
-+        qdev_realize(DEVICE(&s->cpus[i]), NULL, &error_fatal);
-+    }
-+
-+    /* Generic Interrupt Controller */
-+    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_R40_GIC_NUM_SPI +
-+                                                     GIC_INTERNAL);
-+    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
-+    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_R40_NUM_CPUS);
-+    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false);
-+    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", true);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->gic), &error_fatal);
-+
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0, s->memmap[AW_R40_DEV_GIC_DIST]);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1, s->memmap[AW_R40_DEV_GIC_CPU]);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2, s->memmap[AW_R40_DEV_GIC_HYP]);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3, s->memmap[AW_R40_DEV_GIC_VCPU]);
-+
-+    /*
-+     * Wire the outputs from each CPU's generic timer and the GICv3
-+     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
++    /* CHIPID register, no documented on datasheet, but it is checked in
++     * u-boot spl. I had read it from AXP221s and got 0x06 value.
++     * So leave 06h here.
 +     */
-+    for (i = 0; i < AW_R40_NUM_CPUS; i++) {
-+        DeviceState *cpudev = DEVICE(&s->cpus[i]);
-+        int ppibase = AW_R40_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_SGIS;
-+        int irq;
-+        /*
-+         * Mapping from the output timer irq lines from the CPU to the
-+         * GIC PPI inputs used for this board.
-+         */
-+        const int timer_irq[] = {
-+            [GTIMER_PHYS] = AW_R40_GIC_PPI_PHYSTIMER,
-+            [GTIMER_VIRT] = AW_R40_GIC_PPI_VIRTTIMER,
-+            [GTIMER_HYP]  = AW_R40_GIC_PPI_HYPTIMER,
-+            [GTIMER_SEC]  = AW_R40_GIC_PPI_SECTIMER,
-+        };
++    s->regs[0x03] = 0x06;
 +
-+        /* Connect CPU timer outputs to GIC PPI inputs */
-+        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-+            qdev_connect_gpio_out(cpudev, irq,
-+                                  qdev_get_gpio_in(DEVICE(&s->gic),
-+                                                   ppibase + timer_irq[irq]));
-+        }
++    s->regs[0x10] = 0xbf;
++    s->regs[0x13] = 0x01;
++    s->regs[0x30] = 0x60;
++    s->regs[0x31] = 0x03;
++    s->regs[0x32] = 0x43;
++    s->regs[0x33] = 0xc6;
++    s->regs[0x34] = 0x45;
++    s->regs[0x35] = 0x0e;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x80] = 0x80;
++    s->regs[0x82] = 0xe0;
++    s->regs[0x84] = 0x32;
++    s->regs[0x8f] = 0x01;
 +
-+        /* Connect GIC outputs to CPU interrupt inputs */
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_R40_NUM_CPUS,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 * AW_R40_NUM_CPUS),
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 * AW_R40_NUM_CPUS),
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0x1f;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x1f;
 +
-+        /* GIC maintenance signal */
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 * AW_R40_NUM_CPUS),
-+                           qdev_get_gpio_in(DEVICE(&s->gic),
-+                                            ppibase + AW_R40_GIC_PPI_MAINT));
-+    }
++    s->regs[0x40] = 0xd8;
++    s->regs[0x41] = 0xff;
++    s->regs[0x42] = 0x03;
++    s->regs[0x43] = 0x03;
 +
-+    /* Timer */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->timer), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_R40_DEV_PIT]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_TIMER0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_TIMER1));
-+
-+    /* SRAM */
-+    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
-+                            16 * KiB, &error_abort);
-+    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
-+                            16 * KiB, &error_abort);
-+    memory_region_init_ram(&s->sram_a3, OBJECT(dev), "sram A3",
-+                            13 * KiB, &error_abort);
-+    memory_region_init_ram(&s->sram_a4, OBJECT(dev), "sram A4",
-+                            3 * KiB, &error_abort);
-+    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DEV_SRAM_A1],
-+                                &s->sram_a1);
-+    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DEV_SRAM_A2],
-+                                &s->sram_a2);
-+    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DEV_SRAM_A3],
-+                                &s->sram_a3);
-+    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DEV_SRAM_A4],
-+                                &s->sram_a4);
-+
-+    /* SD/MMC */
-+    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, s->memmap[AW_R40_DEV_MMC0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_MMC0));
-+
-+    object_property_set_link(OBJECT(&s->mmc1), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc1), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc1), 0, s->memmap[AW_R40_DEV_MMC1]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc1), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_DEV_MMC1));
-+
-+    object_property_set_link(OBJECT(&s->mmc2), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc2), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc2), 0, s->memmap[AW_R40_DEV_MMC2]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc2), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_MMC2));
-+
-+    object_property_set_link(OBJECT(&s->mmc3), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mmc3), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc3), 0, s->memmap[AW_R40_DEV_MMC3]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc3), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_MMC3));
-+
-+    /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
-+    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART0], 2,
-+                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART0),
-+                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-+
-+    /* Unimplemented devices */
-+    for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-+        create_unimplemented_device(r40_unimplemented[i].device_name,
-+                                    r40_unimplemented[i].base,
-+                                    r40_unimplemented[i].size);
-+    }
++    s->regs[0xb8] = 0xc0;
++    s->regs[0xb9] = 0x64;
++    s->regs[0xe6] = 0xa0;
 +}
 +
-+static void allwinner_r40_class_init(ObjectClass *oc, void *data)
++/* Handle events from master. */
++static int axp221_event(I2CSlave *i2c, enum i2c_event event)
++{
++    AXP221I2CState *s = AXP221(i2c);
++
++    s->count = 0;
++
++    return 0;
++}
++
++/* Called when master requests read */
++static uint8_t axp221_rx(I2CSlave *i2c)
++{
++    AXP221I2CState *s = AXP221(i2c);
++    uint8_t ret = 0xff;
++
++    if (s->ptr < NR_REGS) {
++        ret = s->regs[s->ptr];
++        trace_axp221_rx(s->ptr, ret);
++        s->ptr++;
++    }
++
++    return ret;
++}
++
++/*
++ * Called when master sends write.
++ * Update ptr with byte 0, then perform write with second byte.
++ */
++static int axp221_tx(I2CSlave *i2c, uint8_t data)
++{
++    AXP221I2CState *s = AXP221(i2c);
++
++    if (s->count == 0) {
++        /* Store register address */
++        s->ptr = data;
++        s->count++;
++        trace_axp221_select(data);
++    } else {
++        trace_axp221_tx(s->ptr, data);
++        s->regs[s->ptr++] = data;
++    }
++
++    return 0;
++}
++
++static const VMStateDescription vmstate_axp221 = {
++    .name = TYPE_AXP221_PMU,
++    .version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(regs, AXP221I2CState, NR_REGS),
++        VMSTATE_UINT8(count, AXP221I2CState),
++        VMSTATE_UINT8(ptr, AXP221I2CState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void axp221_class_init(ObjectClass *oc, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
 +
-+    dc->realize = allwinner_r40_realize;
-+    /* Reason: uses serial_hd() in realize function */
-+    dc->user_creatable = false;
++    rc->phases.enter = axp221_reset_enter;
++    dc->vmsd = &vmstate_axp221;
++    isc->event = axp221_event;
++    isc->recv = axp221_rx;
++    isc->send = axp221_tx;
 +}
 +
-+static const TypeInfo allwinner_r40_type_info = {
-+    .name = TYPE_AW_R40,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(AwR40State),
-+    .instance_init = allwinner_r40_init,
-+    .class_init = allwinner_r40_class_init,
++static const TypeInfo axp221_info = {
++    .name = TYPE_AXP221_PMU,
++    .parent = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(AXP221I2CState),
++    .class_init = axp221_class_init
 +};
 +
-+static void allwinner_r40_register_types(void)
++static void axp221_register_devices(void)
 +{
-+    type_register_static(&allwinner_r40_type_info);
++    type_register_static(&axp221_info);
 +}
 +
-+type_init(allwinner_r40_register_types)
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-new file mode 100644
-index 0000000000..1b6241719d
---- /dev/null
-+++ b/hw/arm/bananapi_m2u.c
-@@ -0,0 +1,116 @@
-+/*
-+ * Bananapi M2U emulation
-+ *
-+ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
++type_init(axp221_register_devices);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index b19b44841a..6b81670641 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -46,6 +46,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+ softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
++softmmu_ss.add(when: 'CONFIG_AXP221_PMU', if_true: files('axp221.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index c47876a902..63b072d2d8 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -28,6 +28,11 @@ axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
+ axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+ axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
+ 
++# axp221.c
++axp221_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
++axp221_select(uint8_t reg) "Accessing reg 0x%" PRIx8
++axp221_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
 +
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "exec/address-spaces.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/arm/allwinner-r40.h"
-+
-+static struct arm_boot_info bpim2u_binfo;
-+
-+static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit,
-+                             bool load_bootroom, bool *bootroom_loaded)
-+{
-+    DriveInfo *di = drive_get(IF_SD, 0, unit);
-+    BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
-+    BusState *bus;
-+    DeviceState *carddev;
-+
-+    bus = qdev_get_child_bus(DEVICE(mmc), "sd-bus");
-+    if (bus == NULL) {
-+        error_report("No SD bus found in SOC object");
-+        exit(1);
-+    }
-+
-+    carddev = qdev_new(TYPE_SD_CARD);
-+    qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-+    qdev_realize_and_unref(carddev, bus, &error_fatal);
-+
-+    if (load_bootroom && blk && blk_is_available(blk)) {
-+        /* Use Boot ROM to copy data from SD card to SRAM */
-+        *bootroom_loaded = allwinner_r40_bootrom_setup(s, blk, unit);
-+    }
-+}
-+
-+static void bpim2u_init(MachineState *machine)
-+{
-+    bool bootroom_loaded = false;
-+    AwR40State *r40;
-+    I2CBus *i2c;
-+
-+    /* BIOS is not supported by this board */
-+    if (machine->firmware) {
-+        error_report("BIOS not supported for this machine");
-+        exit(1);
-+    }
-+
-+    /* Only allow Cortex-A7 for this board */
-+    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) != 0) {
-+        error_report("This board can only be used with cortex-a7 CPU");
-+        exit(1);
-+    }
-+
-+    r40 = AW_R40(object_new(TYPE_AW_R40));
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(r40));
-+    object_unref(OBJECT(r40));
-+
-+    /* Setup timer properties */
-+    object_property_set_int(OBJECT(r40), "clk0-freq", 32768, &error_abort);
-+    object_property_set_int(OBJECT(r40), "clk1-freq", 24 * 1000 * 1000,
-+                            &error_abort);
-+
-+    /* Mark R40 object realized */
-+    qdev_realize(DEVICE(r40), NULL, &error_abort);
-+
-+    /* Plug in SD card and try load bootrom, R40 can boot from mmc0 and mmc2 */
-+    mmc_attach_drive(r40, &r40->mmc0, 0,
-+                     !machine->kernel_filename && !bootroom_loaded,
-+                     &bootroom_loaded);
-+    mmc_attach_drive(r40, &r40->mmc1, 1, false, NULL);
-+    mmc_attach_drive(r40, &r40->mmc2, 2,
-+                     !machine->kernel_filename && !bootroom_loaded,
-+                     &bootroom_loaded);
-+    mmc_attach_drive(r40, &r40->mmc3, 3, false, NULL);
-+
-+    /* SDRAM */
-+    memory_region_add_subregion(get_system_memory(), r40->memmap[AW_R40_DEV_SDRAM],
-+                                machine->ram);
-+
-+    bpim2u_binfo.loader_start = r40->memmap[AW_R40_DEV_SDRAM];
-+    bpim2u_binfo.ram_size = machine->ram_size;
-+    bpim2u_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-+    arm_load_kernel(ARM_CPU(first_cpu), machine, &bpim2u_binfo);
-+}
-+
-+static void bpim2u_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "Bananapi M2U (Cortex-A7)";
-+    mc->init = bpim2u_init;
-+    mc->min_cpus = AW_R40_NUM_CPUS;
-+    mc->max_cpus = AW_R40_NUM_CPUS;
-+    mc->default_cpus = AW_R40_NUM_CPUS;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
-+    mc->default_ram_size = 1 * GiB;
-+    mc->default_ram_id = "bpim2u.ram";
-+}
-+
-+DEFINE_MACHINE("bpim2u", bpim2u_machine_init)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index b545ba0e4f..870ec67376 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -37,6 +37,7 @@ arm_ss.add(when: 'CONFIG_OMAP', if_true: files('omap1.c', 'omap2.c'))
- arm_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c', 'cubieboard.c'))
- arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c', 'orangepi.c'))
-+arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c', 'bananapi_m2u.c'))
- arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
- arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c'))
- arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c'))
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-new file mode 100644
-index 0000000000..46bda2c54e
---- /dev/null
-+++ b/include/hw/arm/allwinner-r40.h
-@@ -0,0 +1,111 @@
-+/*
-+ * Allwinner R40/A40i/T3 System on Chip emulation
-+ *
-+ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_ARM_ALLWINNER_R40_H
-+#define HW_ARM_ALLWINNER_R40_H
-+
-+#include "qom/object.h"
-+#include "hw/arm/boot.h"
-+#include "hw/timer/allwinner-a10-pit.h"
-+#include "hw/intc/arm_gic.h"
-+#include "hw/sd/allwinner-sdhost.h"
-+#include "target/arm/cpu.h"
-+#include "sysemu/block-backend.h"
-+
-+enum {
-+    AW_R40_DEV_SRAM_A1,
-+    AW_R40_DEV_SRAM_A2,
-+    AW_R40_DEV_SRAM_A3,
-+    AW_R40_DEV_SRAM_A4,
-+    AW_R40_DEV_MMC0,
-+    AW_R40_DEV_MMC1,
-+    AW_R40_DEV_MMC2,
-+    AW_R40_DEV_MMC3,
-+    AW_R40_DEV_CCU,
-+    AW_R40_DEV_PIT,
-+    AW_R40_DEV_UART0,
-+    AW_R40_DEV_GIC_DIST,
-+    AW_R40_DEV_GIC_CPU,
-+    AW_R40_DEV_GIC_HYP,
-+    AW_R40_DEV_GIC_VCPU,
-+    AW_R40_DEV_SDRAM
-+};
-+
-+#define AW_R40_NUM_CPUS      (4)
-+
-+/**
-+ * Allwinner R40 object model
-+ * @{
-+ */
-+
-+/** Object type for the Allwinner R40 SoC */
-+#define TYPE_AW_R40 "allwinner-r40"
-+
-+/** Convert input object to Allwinner R40 state object */
-+OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner R40 object
-+ *
-+ * This struct contains the state of all the devices
-+ * which are currently emulated by the R40 SoC code.
-+ */
-+struct AwR40State {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+    /*< public >*/
-+
-+    ARMCPU cpus[AW_R40_NUM_CPUS];
-+    const hwaddr *memmap;
-+    AwA10PITState timer;
-+    AwSdHostState mmc0;
-+    AwSdHostState mmc1;
-+    AwSdHostState mmc2;
-+    AwSdHostState mmc3;
-+    GICState gic;
-+    MemoryRegion sram_a1;
-+    MemoryRegion sram_a2;
-+    MemoryRegion sram_a3;
-+    MemoryRegion sram_a4;
-+};
-+
-+/**
-+ * Emulate Boot ROM firmware setup functionality.
-+ *
-+ * A real Allwinner R40 SoC contains a Boot ROM
-+ * which is the first code that runs right after
-+ * the SoC is powered on. The Boot ROM is responsible
-+ * for loading user code (e.g. a bootloader) from any
-+ * of the supported external devices and writing the
-+ * downloaded code to internal SRAM. After loading the SoC
-+ * begins executing the code written to SRAM.
-+ *
-+ * This function emulates the Boot ROM by copying 32 KiB
-+ * of data from the given block device and writes it to
-+ * the start of the first internal SRAM memory.
-+ *
-+ * @s: Allwinner R40 state object pointer
-+ * @blk: Block backend device object pointer
-+ * @unit: the mmc control's unit
-+ */
-+bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int unit);
-+
-+#endif /* HW_ARM_ALLWINNER_R40_H */
+ # eccmemctl.c
+ ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+ ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
 -- 
 2.25.1
 

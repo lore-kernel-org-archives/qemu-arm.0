@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ip21-20020a05600ca69500b003eb596cbc54sm450210wmb.0.2023.03.02.11.14.21
+        by smtp.gmail.com with ESMTPSA id k8-20020a5d66c8000000b002c573a6216fsm162582wrw.37.2023.03.02.11.14.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 02 Mar 2023 11:14:21 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E698E1FFC6;
+	by zen.linaroharston (Postfix) with ESMTP id A73881FFC4;
 	Thu,  2 Mar 2023 19:08:48 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -57,115 +57,274 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 17/26] gdbstub: specialise stub_can_reverse
-Date: Thu,  2 Mar 2023 19:08:37 +0000
-Message-Id: <20230302190846.2593720-18-alex.bennee@linaro.org>
+Subject: [PATCH v4 15/26] gdbstub: specialise target_memory_rw_debug
+Date: Thu,  2 Mar 2023 19:08:35 +0000
+Message-Id: <20230302190846.2593720-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
 References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: c/hKwf74uI8O
+X-TUID: lihs1+d2c+R2
 
-Currently we only support replay for softmmu mode so it is a constant
-false for user-mode.
+The two implementations are different enough to encourage having a
+specialisation and we can move some of the softmmu only stuff out of
+gdbstub.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - rename gdb_stub_can_revers -> gdb_can_reverse
----
- gdbstub/internals.h |  1 +
- gdbstub/gdbstub.c   | 13 ++-----------
- gdbstub/softmmu.c   |  5 +++++
- gdbstub/user.c      |  5 +++++
- 4 files changed, 13 insertions(+), 11 deletions(-)
+ gdbstub/internals.h | 19 ++++++++++++
+ gdbstub/gdbstub.c   | 73 +++++++--------------------------------------
+ gdbstub/softmmu.c   | 51 +++++++++++++++++++++++++++++++
+ gdbstub/user.c      | 15 ++++++++++
+ 4 files changed, 96 insertions(+), 62 deletions(-)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 26a6468a69..be0eef4850 100644
+index 20caacd744..d8c0292d99 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -130,6 +130,7 @@ CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
- int gdb_get_cpu_index(CPUState *cpu);
- unsigned int gdb_get_max_cpus(void); /* both */
-+bool gdb_can_reverse(void); /* softmmu, stub for user */
+@@ -185,6 +185,10 @@ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
  
- void gdb_create_default_process(GDBState *s);
+ void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
  
++/* softmmu only */
++void gdb_handle_query_qemu_phy_mem_mode(GArray *params, void *user_ctx);
++void gdb_handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx);
++
+ /*
+  * Break/Watch point support - there is an implementation for softmmu
+  * and user mode.
+@@ -194,4 +198,19 @@ int gdb_breakpoint_insert(CPUState *cs, int type, vaddr addr, vaddr len);
+ int gdb_breakpoint_remove(CPUState *cs, int type, vaddr addr, vaddr len);
+ void gdb_breakpoint_remove_all(CPUState *cs);
+ 
++/**
++ * gdb_target_memory_rw_debug() - handle debug access to memory
++ * @cs: CPUState
++ * @addr: nominal address, could be an entire physical address
++ * @buf: data
++ * @len: length of access
++ * @is_write: is it a write operation
++ *
++ * This function is specialised depending on the mode we are running
++ * in. For softmmu guests we can switch the interpretation of the
++ * address to a physical address.
++ */
++int gdb_target_memory_rw_debug(CPUState *cs, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write);
++
+ #endif /* GDBSTUB_INTERNALS_H */
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 1b783100c2..7301466ff5 100644
+index 52d1769f57..ed38ab0aaa 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -113,15 +113,6 @@ int use_gdb_syscalls(void)
-     return gdb_syscall_mode == GDB_SYS_ENABLED;
- }
+@@ -46,33 +46,6 @@
  
--static bool stub_can_reverse(void)
--{
--#ifdef CONFIG_USER_ONLY
--    return false;
--#else
--    return replay_mode == REPLAY_MODE_PLAY;
+ #include "internals.h"
+ 
+-#ifndef CONFIG_USER_ONLY
+-static int phy_memory_mode;
 -#endif
+-
+-static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                                         uint8_t *buf, int len, bool is_write)
+-{
+-    CPUClass *cc;
+-
+-#ifndef CONFIG_USER_ONLY
+-    if (phy_memory_mode) {
+-        if (is_write) {
+-            cpu_physical_memory_write(addr, buf, len);
+-        } else {
+-            cpu_physical_memory_read(addr, buf, len);
+-        }
+-        return 0;
+-    }
+-#endif
+-
+-    cc = CPU_GET_CLASS(cpu);
+-    if (cc->memory_rw_debug) {
+-        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
+-    }
+-    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
 -}
 -
- /* writes 2*len+1 bytes in buf */
- void gdb_memtohex(GString *buf, const uint8_t *mem, int len)
- {
-@@ -1308,7 +1299,7 @@ static void handle_step(GArray *params, void *user_ctx)
- 
- static void handle_backward(GArray *params, void *user_ctx)
- {
--    if (!stub_can_reverse()) {
-+    if (!gdb_can_reverse()) {
-         gdb_put_packet("E22");
-     }
-     if (params->len == 1) {
-@@ -1559,7 +1550,7 @@ static void handle_query_supported(GArray *params, void *user_ctx)
-         g_string_append(gdbserver_state.str_buf, ";qXfer:features:read+");
+ typedef struct GDBRegisterState {
+     int base_reg;
+     int num_regs;
+@@ -1195,11 +1168,11 @@ static void handle_write_mem(GArray *params, void *user_ctx)
      }
  
--    if (stub_can_reverse()) {
-+    if (gdb_can_reverse()) {
-         g_string_append(gdbserver_state.str_buf,
-             ";ReverseStep+;ReverseContinue+");
+     gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 2)->data,
+-             get_param(params, 1)->val_ull);
+-    if (target_memory_rw_debug(gdbserver_state.g_cpu,
+-                               get_param(params, 0)->val_ull,
+-                               gdbserver_state.mem_buf->data,
+-                               gdbserver_state.mem_buf->len, true)) {
++                 get_param(params, 1)->val_ull);
++    if (gdb_target_memory_rw_debug(gdbserver_state.g_cpu,
++                                   get_param(params, 0)->val_ull,
++                                   gdbserver_state.mem_buf->data,
++                                   gdbserver_state.mem_buf->len, true)) {
+         gdb_put_packet("E14");
+         return;
      }
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 3a5587d387..d2863d0663 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -450,6 +450,11 @@ unsigned int gdb_get_max_cpus(void)
-     return ms->smp.max_cpus;
+@@ -1223,10 +1196,10 @@ static void handle_read_mem(GArray *params, void *user_ctx)
+     g_byte_array_set_size(gdbserver_state.mem_buf,
+                           get_param(params, 1)->val_ull);
+ 
+-    if (target_memory_rw_debug(gdbserver_state.g_cpu,
+-                               get_param(params, 0)->val_ull,
+-                               gdbserver_state.mem_buf->data,
+-                               gdbserver_state.mem_buf->len, false)) {
++    if (gdb_target_memory_rw_debug(gdbserver_state.g_cpu,
++                                   get_param(params, 0)->val_ull,
++                                   gdbserver_state.mem_buf->data,
++                                   gdbserver_state.mem_buf->len, false)) {
+         gdb_put_packet("E14");
+         return;
+     }
+@@ -1676,30 +1649,6 @@ static void handle_query_qemu_supported(GArray *params, void *user_ctx)
+     gdb_put_strbuf();
  }
  
-+bool gdb_can_reverse(void)
+-#ifndef CONFIG_USER_ONLY
+-static void handle_query_qemu_phy_mem_mode(GArray *params,
+-                                           void *user_ctx)
+-{
+-    g_string_printf(gdbserver_state.str_buf, "%d", phy_memory_mode);
+-    gdb_put_strbuf();
+-}
+-
+-static void handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx)
+-{
+-    if (!params->len) {
+-        gdb_put_packet("E22");
+-        return;
+-    }
+-
+-    if (!get_param(params, 0)->val_ul) {
+-        phy_memory_mode = 0;
+-    } else {
+-        phy_memory_mode = 1;
+-    }
+-    gdb_put_packet("OK");
+-}
+-#endif
+-
+ static const GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
+     /* Order is important if has same prefix */
+     {
+@@ -1790,7 +1739,7 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+     },
+ #ifndef CONFIG_USER_ONLY
+     {
+-        .handler = handle_query_qemu_phy_mem_mode,
++        .handler = gdb_handle_query_qemu_phy_mem_mode,
+         .cmd = "qemu.PhyMemMode",
+     },
+ #endif
+@@ -1806,7 +1755,7 @@ static const GdbCmdParseEntry gdb_gen_set_table[] = {
+     },
+ #ifndef CONFIG_USER_ONLY
+     {
+-        .handler = handle_set_qemu_phy_mem_mode,
++        .handler = gdb_handle_set_qemu_phy_mem_mode,
+         .cmd = "qemu.PhyMemMode:",
+         .cmd_startswith = 1,
+         .schema = "l0"
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 7c180b779a..ab2d182654 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -413,9 +413,60 @@ void gdb_exit(int code)
+     qemu_chr_fe_deinit(&gdbserver_system_state.chr, true);
+ }
+ 
++/*
++ * Memory access
++ */
++static int phy_memory_mode;
++
++int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write)
 +{
-+    return replay_mode == REPLAY_MODE_PLAY;
++    CPUClass *cc;
++
++    if (phy_memory_mode) {
++        if (is_write) {
++            cpu_physical_memory_write(addr, buf, len);
++        } else {
++            cpu_physical_memory_read(addr, buf, len);
++        }
++        return 0;
++    }
++
++    cc = CPU_GET_CLASS(cpu);
++    if (cc->memory_rw_debug) {
++        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
++    }
++
++    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
 +}
++
 +
  /*
   * Softmmu specific command helpers
   */
++
++void gdb_handle_query_qemu_phy_mem_mode(GArray *params,
++                                        void *user_ctx)
++{
++    g_string_printf(gdbserver_state.str_buf, "%d", phy_memory_mode);
++    gdb_put_strbuf();
++}
++
++void gdb_handle_set_qemu_phy_mem_mode(GArray *params, void *user_ctx)
++{
++    if (!params->len) {
++        gdb_put_packet("E22");
++        return;
++    }
++
++    if (!get_param(params, 0)->val_ul) {
++        phy_memory_mode = 0;
++    } else {
++        phy_memory_mode = 1;
++    }
++    gdb_put_packet("OK");
++}
++
+ void gdb_handle_query_rcmd(GArray *params, void *user_ctx)
+ {
+     const guint8 zero = 0;
 diff --git a/gdbstub/user.c b/gdbstub/user.c
-index e10988a62b..3f6183e66a 100644
+index c0fd83b373..92663d971c 100644
 --- a/gdbstub/user.c
 +++ b/gdbstub/user.c
-@@ -409,6 +409,11 @@ unsigned int gdb_get_max_cpus(void)
-     return max_cpus;
+@@ -378,6 +378,21 @@ int gdb_continue_partial(char *newstates)
+     return res;
  }
  
-+/* replay not supported for user-mode */
-+bool gdb_can_reverse(void)
++/*
++ * Memory access helpers
++ */
++int gdb_target_memory_rw_debug(CPUState *cpu, hwaddr addr,
++                               uint8_t *buf, int len, bool is_write)
 +{
-+    return false;
++    CPUClass *cc;
++
++    cc = CPU_GET_CLASS(cpu);
++    if (cc->memory_rw_debug) {
++        return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
++    }
++    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
 +}
- 
++
  /*
   * Break/Watch point helpers
+  */
 -- 
 2.39.2

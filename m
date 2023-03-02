@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h18-20020a5d4312000000b002c7107ce17fsm186010wrq.3.2023.03.02.11.14.22
+        by smtp.gmail.com with ESMTPSA id b5-20020a05600c150500b003e91b9a92c9sm384899wmg.24.2023.03.02.11.14.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Mar 2023 11:14:23 -0800 (PST)
+        Thu, 02 Mar 2023 11:14:24 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 80B491FFCA;
-	Thu,  2 Mar 2023 19:08:50 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 234561FFC7;
+	Thu,  2 Mar 2023 19:08:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
@@ -57,168 +57,82 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 25/26] gdbstub: split out softmmu/user specifics for syscall handling
-Date: Thu,  2 Mar 2023 19:08:45 +0000
-Message-Id: <20230302190846.2593720-26-alex.bennee@linaro.org>
+Subject: [PATCH v4 19/26] gdbstub: don't use target_ulong while handling registers
+Date: Thu,  2 Mar 2023 19:08:39 +0000
+Message-Id: <20230302190846.2593720-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
 References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: csrQlsike3Du
+X-TUID: XWwIrneXgUF8
 
-Most of the syscall code is config agnostic aside from the size of
-target_ulong. In preparation for the next patch move the final bits of
-specialisation into the appropriate user and softmmu helpers.
+This is a hangover from the original code. addr is misleading as it is
+only really a register id. While len will never exceed
+MAX_PACKET_LENGTH I've used size_t as that is what strlen returns.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
+v3
+  - fix commit message
+  - use unsigned for regid
 v4
-  - checkpatch cleanups
+  - revert unsigned change
 ---
- gdbstub/internals.h |  5 +++++
- gdbstub/softmmu.c   | 24 ++++++++++++++++++++++++
- gdbstub/syscalls.c  | 35 +++++++++++------------------------
- gdbstub/user.c      | 24 ++++++++++++++++++++++++
- 4 files changed, 64 insertions(+), 24 deletions(-)
+ gdbstub/gdbstub.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 8db61f7fb4..65d75d9435 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -195,6 +195,11 @@ bool gdb_handled_syscall(void);
- void gdb_disable_syscalls(void);
- void gdb_syscall_reset(void);
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index b8aead03bd..f1504af44f 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1193,7 +1193,8 @@ static void handle_read_mem(GArray *params, void *user_ctx)
  
-+/* user/softmmu specific signal handling */
-+void gdb_pre_syscall_handling(void);
-+bool gdb_send_syscall_now(void);
-+void gdb_post_syscall_handling(void);
-+
- /*
-  * Break/Watch point support - there is an implementation for softmmu
-  * and user mode.
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index d3152fb6e7..02f3b41095 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -103,6 +103,30 @@ static void gdb_chr_event(void *opaque, QEMUChrEvent event)
-     }
- }
- 
-+/*
-+ * In softmmu mode we stop the VM and wait to send the syscall packet
-+ * until notification that the CPU has stopped. This must be done
-+ * because if the packet is sent now the reply from the syscall
-+ * request could be received while the CPU is still in the running
-+ * state, which can cause packets to be dropped and state transition
-+ * 'T' packets to be sent while the syscall is still being processed.
-+ */
-+
-+void gdb_pre_syscall_handling(void)
-+{
-+    vm_stop(RUN_STATE_DEBUG);
-+}
-+
-+bool gdb_send_syscall_now(void)
-+{
-+    return false;
-+}
-+
-+void gdb_post_syscall_handling(void)
-+{
-+    qemu_cpu_kick(gdbserver_state.c_cpu);
-+}
-+
- static void gdb_vm_state_change(void *opaque, bool running, RunState state)
+ static void handle_write_all_regs(GArray *params, void *user_ctx)
  {
-     CPUState *cpu = gdbserver_state.c_cpu;
-diff --git a/gdbstub/syscalls.c b/gdbstub/syscalls.c
-index f15b210958..1ca3d81305 100644
---- a/gdbstub/syscalls.c
-+++ b/gdbstub/syscalls.c
-@@ -104,9 +104,10 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-     }
+-    target_ulong addr, len;
++    int reg_id;
++    size_t len;
+     uint8_t *registers;
+     int reg_size;
  
-     gdbserver_syscall_state.current_syscall_cb = cb;
--#ifndef CONFIG_USER_ONLY
--    vm_stop(RUN_STATE_DEBUG);
--#endif
-+
-+    /* user/softmmu specific handling */
-+    gdb_pre_syscall_handling();
-+
-     p = &gdbserver_syscall_state.syscall_buf[0];
-     p_end = &gdbserver_syscall_state.syscall_buf[sizeof(gdbserver_syscall_state.syscall_buf)];
-     *(p++) = 'F';
-@@ -141,27 +142,13 @@ void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_list va)
-         }
+@@ -1205,9 +1206,10 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
+     len = strlen(get_param(params, 0)->data) / 2;
+     gdb_hextomem(gdbserver_state.mem_buf, get_param(params, 0)->data, len);
+     registers = gdbserver_state.mem_buf->data;
+-    for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
+-         addr++) {
+-        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, addr);
++    for (reg_id = 0;
++         reg_id < gdbserver_state.g_cpu->gdb_num_g_regs && len > 0;
++         reg_id++) {
++        reg_size = gdb_write_register(gdbserver_state.g_cpu, registers, reg_id);
+         len -= reg_size;
+         registers += reg_size;
      }
-     *p = 0;
--#ifdef CONFIG_USER_ONLY
--    gdb_put_packet(gdbserver_syscall_state.syscall_buf);
--    /*
--     * Return control to gdb for it to process the syscall request.
--     * Since the protocol requires that gdb hands control back to us
--     * using a "here are the results" F packet, we don't need to check
--     * gdb_handlesig's return value (which is the signal to deliver if
--     * execution was resumed via a continue packet).
--     */
--    gdb_handlesig(gdbserver_state.c_cpu, 0);
--#else
--    /*
--     * In this case wait to send the syscall packet until notification that
--     * the CPU has stopped.  This must be done because if the packet is sent
--     * now the reply from the syscall request could be received while the CPU
--     * is still in the running state, which can cause packets to be dropped
--     * and state transition 'T' packets to be sent while the syscall is still
--     * being processed.
--     */
--    qemu_cpu_kick(gdbserver_state.c_cpu);
--#endif
-+
-+    if (gdb_send_syscall_now()) { /* true only for *-user */
-+        gdb_put_packet(gdbserver_syscall_state.syscall_buf);
-+    }
-+
-+    /* user/softmmu specific handling */
-+    gdb_post_syscall_handling();
- }
+@@ -1216,15 +1218,16 @@ static void handle_write_all_regs(GArray *params, void *user_ctx)
  
- void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 3da410e221..583cc83898 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -472,3 +472,27 @@ void gdb_breakpoint_remove_all(CPUState *cs)
+ static void handle_read_all_regs(GArray *params, void *user_ctx)
  {
-     cpu_breakpoint_remove_all(cs, BP_GDB);
- }
-+
-+/*
-+ * For user-mode syscall support we send the system call immediately
-+ * and then return control to gdb for it to process the syscall request.
-+ * Since the protocol requires that gdb hands control back to us
-+ * using a "here are the results" F packet, we don't need to check
-+ * gdb_handlesig's return value (which is the signal to deliver if
-+ * execution was resumed via a continue packet).
-+ */
-+
-+void gdb_pre_syscall_handling(void)
-+{
-+    return;
-+}
-+
-+bool gdb_send_syscall_now(void)
-+{
-+    return true;
-+}
-+
-+void gdb_post_syscall_handling(void)
-+{
-+    gdb_handlesig(gdbserver_state.c_cpu, 0);
-+}
+-    target_ulong addr, len;
++    int reg_id;
++    size_t len;
+ 
+     cpu_synchronize_state(gdbserver_state.g_cpu);
+     g_byte_array_set_size(gdbserver_state.mem_buf, 0);
+     len = 0;
+-    for (addr = 0; addr < gdbserver_state.g_cpu->gdb_num_g_regs; addr++) {
++    for (reg_id = 0; reg_id < gdbserver_state.g_cpu->gdb_num_g_regs; reg_id++) {
+         len += gdb_read_register(gdbserver_state.g_cpu,
+                                  gdbserver_state.mem_buf,
+-                                 addr);
++                                 reg_id);
+     }
+     g_assert(len == gdbserver_state.mem_buf->len);
+ 
 -- 
 2.39.2

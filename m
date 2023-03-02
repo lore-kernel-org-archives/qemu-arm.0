@@ -1,196 +1,218 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8240665ejc;
-        Thu, 2 Mar 2023 05:26:47 -0800 (PST)
-X-Google-Smtp-Source: AK7set+4EgdNsjxoJWZfQqsQ0dyUcsEubl1aiRk1yudew8ppSrt76kKga/ZGwHZz0yNegxy6U6DN
-X-Received: by 2002:a05:6214:2627:b0:56e:a7cc:ea82 with SMTP id gv7-20020a056214262700b0056ea7ccea82mr19038607qvb.39.1677763607231;
-        Thu, 02 Mar 2023 05:26:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677763607; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8140533ejc;
+        Thu, 2 Mar 2023 03:43:17 -0800 (PST)
+X-Google-Smtp-Source: AK7set91NvNue0WpEhndLTOul0vhuLlmVQjnWBufDjaSMoPUJCCwxOcN5t+rtbkJqnj820GEzxv0
+X-Received: by 2002:ac8:58c5:0:b0:3b8:6db0:7565 with SMTP id u5-20020ac858c5000000b003b86db07565mr18128846qta.11.1677757397178;
+        Thu, 02 Mar 2023 03:43:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677757397; cv=none;
         d=google.com; s=arc-20160816;
-        b=w53634Ty9sQKdj1v+UR2FkkHpa5qu95hC9boNh0LWHwh16clWA49J+JMBDC68vTzAo
-         b1jAiGZY7C8Gq/aDrcnc0E/uHLoDPApzTiNX9+ocxhwJCscR+oPsqBtuxc6Onogj5gTJ
-         dPaLGIynUHN12kVFIZFBMUNhAhzSrlECd9umNh9/K28NBQA+vuSdvIIomWffS2lKqCjB
-         Rsy+nbCTIzB1l/5nQhk2SK025x9YMP5znVuUTYwlGELSqO7Mz+XDUkMhaIFTjIFn34Lm
-         LP7vYAzJwA8TwZjFF7bHYzn2GLaS3HkZ44zIbQdwWJL7NPe8XKeYEUgFFTCobDTc4R+6
-         08Fg==
+        b=ycB+74rO8YEjXDjR2d4SVs+w7TUkA60lBrUKpcPXD/y51QziK5WtUC+b9gfPvOk7SM
+         2w2Yoac1SoiPmObvgo5ZU2nGJ9SQXM+5SBTznRkWBMTaSRLhbN/NSXKW9LUsdsxsq8j6
+         xr/lWBpfRDvRInHXPkSZ+GNaDeNXrZXCgmAF/CGUtIM1fNHLCmGHrLf7GiUo61VZpXk1
+         z+pW1IzHa/23z6id/o08HQ4+f67FuKqwUfYKELjLW/fFDfbbJvkxoK1v5rJZlGSWWa6q
+         FAtu2PJvuBCy4arr8NRk8av0GUgogBl2ZMLI3Y5ko11v2e3eBTU2AffHXkBRV/bh9heN
+         LJsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=a2nxODxGNCf2GEDTesp0abZC6ZU/bJOaxWOZgcF9cDk=;
-        b=zF5owixfnY3/Jag3Zkp3uGdlrLb8njXFWUiiHojbPIhN1wneT4+VLbrVF79Y3K+KzT
-         iXiiyMII+9ppRFqflnaWnJzWcJKd+mVsUGosietgvFEOPhsmS8pWy9+uYCgsQaUaNY6Q
-         UPUCN5kzGNKpZKEdpk9q4UJ+jpuZ7y9l8ust0Jih8Ts9PTTaZhwhEuJQOGyKU/ZJ2jKb
-         6uoW6wv5NR5qMk37IC9+dJ35EjjMK+OpVi3qwGxVWj8521vTj10Rd2s1iJnBlY84IJSg
-         zZXkGtEcd3ygAS6O0AgJI4HKU6QYj/vP8cdhOSfUpHplfBxMIp/1qFGLNs/BWxpeD0k/
-         w5lA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=W8oseXLLoGmg6ep9d/aMwd6HC+YABeP2tHYrtdkhkk4=;
+        b=a2LZHKj4zIIrNARdHLkGnLbX9Xs8C2+m97RE7Rd0PRoWw5GAZgY8BcdmfPTZgtCPFL
+         T77GdnNCSF8eRDb4WLHBNIYCSuFGyKjIiwe3j3wrKKuC7lO26CmNtcFJ0OGRaInX+O9i
+         7w8D/0nuvR24L3AsF8kRl4uhuaGsPuu0SfZvYFyf4bHQDlTliKd/y6y+Zg4AlgmQtwMV
+         A5E4EdzTqCPUf7r/MASQY+uzURZ/eBGAg5XKUhVTUehijKUcg+EAqLGg3/0iEIQ0DY+s
+         R7sY1Uxz2OYYeaThTJZkN9cxzR2bv0dUjt56B3sTx339ddmK2cYIbl2nr9r0HORC0HD8
+         SmVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YF1xeOy+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@163.com header.s=s110527 header.b=KSRrRfZG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b66-20020ae9eb45000000b0071017f8baaesi12829506qkg.9.2023.03.02.05.26.47
+        by mx.google.com with ESMTPS id b1-20020ac87fc1000000b003b9a61a45a9si14271147qtk.470.2023.03.02.03.43.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Mar 2023 05:26:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Mar 2023 03:43:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YF1xeOy+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@163.com header.s=s110527 header.b=KSRrRfZG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXix4-0003bq-Fh; Thu, 02 Mar 2023 08:26:30 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pXhJe-00044V-Ko; Thu, 02 Mar 2023 06:41:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pXiws-0003RG-Kv
- for qemu-arm@nongnu.org; Thu, 02 Mar 2023 08:26:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pXiwr-0004Wl-49
- for qemu-arm@nongnu.org; Thu, 02 Mar 2023 08:26:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677763570;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=a2nxODxGNCf2GEDTesp0abZC6ZU/bJOaxWOZgcF9cDk=;
- b=YF1xeOy+yZbr1BtYb79mouQyE2p22I7B+jImUa9c6zfaqJJ+mZzTjOXSUowuwwByvkqFDP
- khqhZBx/PFKI3Cs/E/ZJcC/jiClknDafWeAU1cmDh9Xa0gu81qVhCHDkA2+bwuDx1M5kWo
- HVBn2F1iyHhzfBUpYaLFDv8lVvipBN8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-314-f5WNOqXyO6-aa48-cPrfJg-1; Thu, 02 Mar 2023 08:26:09 -0500
-X-MC-Unique: f5WNOqXyO6-aa48-cPrfJg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1B06F800B23;
- Thu,  2 Mar 2023 13:26:09 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.174])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BEDC740C83B6;
- Thu,  2 Mar 2023 13:26:08 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Andrea Bolognani <abologna@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth
- <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
- Auger <eauger@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Gavin Shan <gshan@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v6 1/2] arm/kvm: add support for MTE
-In-Reply-To: <CABJz62PbzFMB3ifg7OvTXe34TS5b3xDHJk8XGs-inA5t5UEAtA@mail.gmail.com>
-Organization: Red Hat GmbH
-References: <20230228150216.77912-1-cohuck@redhat.com>
- <20230228150216.77912-2-cohuck@redhat.com>
- <CABJz62OHjrq_V1QD4g4azzLm812EJapPEja81optr8o7jpnaHQ@mail.gmail.com>
- <874jr4dbcr.fsf@redhat.com>
- <CABJz62MQH2U1QM26PcC3F1cy7t=53_mxkgViLKjcUMVmi29w+Q@mail.gmail.com>
- <87sfeoblsa.fsf@redhat.com>
- <CABJz62PbzFMB3ifg7OvTXe34TS5b3xDHJk8XGs-inA5t5UEAtA@mail.gmail.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Thu, 02 Mar 2023 14:26:06 +0100
-Message-ID: <87fsanmgi9.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1pXhJb-00041X-P6; Thu, 02 Mar 2023 06:41:39 -0500
+Received: from m12.mail.163.com ([123.126.96.233])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1pXhJZ-00069R-2b; Thu, 02 Mar 2023 06:41:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=W8ose
+ XLLoGmg6ep9d/aMwd6HC+YABeP2tHYrtdkhkk4=; b=KSRrRfZGpY3W7JVvTIkVf
+ P9m8lRoD7EVKd+TXHaDnATOVf7/7iKB1iXyDc9ffzfuM9486oir9FSg3jFVzYBl9
+ IbeCkroxAYXLZr9hK8MxImXO0bUNlCRKBM8SyulnIKAz8lpS/GAi1hepY+phwQ/I
+ erN0vxIFSMItJs1TpsGJvE=
+Received: from DESKTOP-B1R4FVG.localdomain (unknown [144.123.156.254])
+ by smtp20 (Coremail) with SMTP id H91pCgBni79OiwBknjVaGA--.63318S4;
+ Thu, 02 Mar 2023 19:41:03 +0800 (CST)
+From: qianfanguijin@163.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qianfan Zhao <qianfanguijin@163.com>
+Subject: [RFC PATCH v1 02/12] hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on
+ SUN6i SoCs
+Date: Thu,  2 Mar 2023 19:40:51 +0800
+Message-Id: <20230302114102.32236-3-qianfanguijin@163.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230302114102.32236-1-qianfanguijin@163.com>
+References: <20230302114102.32236-1-qianfanguijin@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: H91pCgBni79OiwBknjVaGA--.63318S4
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGFyxCFW3KFyrAFWUWF43Awb_yoW5Kw4rpF
+ Wqgr45KF4Yqa97WrnIqFn8GF18Jry8C3y8Krsa9FyIvFnrW3ZFqr1ktrWakrn8GrWrJw43
+ tFs8tFyxWFn0qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pi2YLDUUUUU=
+X-Originating-IP: [144.123.156.254]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRAm7VWBoxmNGAAAs9
+Received-SPF: pass client-ip=123.126.96.233;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y/eKF5J9a21X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bb7unSr0uR0c
 
-On Wed, Mar 01 2023, Andrea Bolognani <abologna@redhat.com> wrote:
+From: qianfan Zhao <qianfanguijin@163.com>
 
-> On Wed, Mar 01, 2023 at 03:15:17PM +0100, Cornelia Huck wrote:
->> On Wed, Mar 01 2023, Andrea Bolognani <abologna@redhat.com> wrote:
->> > I'm actually a bit confused. The documentation for the mte property
->> > of the virt machine type says
->> >
->> >   mte
->> >     Set on/off to enable/disable emulating a guest CPU which implements
->> >     the Arm Memory Tagging Extensions. The default is off.
->> >
->> > So why is there a need to have a CPU property in addition to the
->> > existing machine type property?
->>
->> I think the state prior to my patches is actually a bit confusing: the
->> user needs to set a machine type property (causing tag memory to be
->> allocated), which in turn enables a cpu feature. Supporting the machine
->> type property for KVM does not make much sense IMHO: we don't allocate
->> tag memory for KVM (in fact, that would not work). We have to keep the
->> previous behaviour, and explicitly instructing QEMU to create cpus with
->> a certain feature via a cpu property makes the most sense to me.
->
-> I agree that a CPU feature makes more sense.
->
->> We might want to tweak the documentation for the machine property to
->> indicate that it creates tag memory and only implicitly enables mte but
->> is a pre-req for it -- thoughts?
->
-> I wonder if it would be possible to flip things around, so that the
-> machine property is retained with its existing behavior for backwards
-> compatibility, but both for KVM and for TCG the CPU property can be
-> used on its own?
->
-> Basically, keeping the default of machine.mte to off when cpu.mte is
-> not specified, but switching it to on when it is. This way, you'd be
-> able to simply use
->
->   -machine virt -cpu xxx,mte=on
->
-> to enable MTE, regardless of whether you're using KVM or TCG, instead
-> of requiring the above for KVM and
->
->   -machine virt,mte=on -cpu xxx
->
-> for TCG.
+TWI_CNTR_INT_FLAG is W1C(write 1 to clear and write 0 has non-effect)
+register on SUN6i based SoCs, we should lower interrupt when the guest
+set this bit.
 
-The machine prop is a bool; that means that we cannot distinguish
-between "user did not set mte at all" and "user explicitly set
-mte=off" -- I think we want
+The linux kernel will hang in irq handler(mv64xxx_i2c_intr) if no
+device connected on the i2c bus, next is the trace log:
 
-  -machine virt,mte=off -cpu xxx,mte=on
+allwinner_i2c_write write   CNTR(0x0c): 0xc4 A_ACK BUS_EN INT_EN
+allwinner_i2c_write write   CNTR(0x0c): 0xcc A_ACK INT_FLAG BUS_EN INT_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0xcc A_ACK INT_FLAG BUS_EN INT_EN
+allwinner_i2c_read  read    STAT(0x10): 0x20 STAT_M_ADDR_WR_NACK
+allwinner_i2c_write write   CNTR(0x0c): 0x54 A_ACK M_STP BUS_EN
+allwinner_i2c_write write   CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    STAT(0x10): 0xf8 STAT_IDLE
+allwinner_i2c_write write   CNTR(0x0c): 0x54 A_ACK M_STP BUS_EN
+allwinner_i2c_write write   CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    CNTR(0x0c): 0x4c A_ACK INT_FLAG BUS_EN
+allwinner_i2c_read  read    STAT(0x10): 0xf8 STAT_IDLE
+...
 
-to generate an error, but that would still imply that we'd need to error
-out for
+Fix it.
 
-  -machine virt -cpu xxx,mte=on
+Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+---
+ hw/i2c/allwinner-i2c.c         | 26 ++++++++++++++++++++++++--
+ include/hw/i2c/allwinner-i2c.h |  6 ++++++
+ 2 files changed, 30 insertions(+), 2 deletions(-)
 
-as well.
-
-We could make the machine prop OnOffAuto, but that looks like overkill
-to me.
-
->
-> Note that, from libvirt's point of view, there's no advantage to
-> doing things that way instead of what you already have. Handling the
-> additional machine property is a complete non-issue. But it would
-> make things nicer for people running QEMU directly, I think.
-
-I'm tempted to simply consider this to be another wart of the QEMU
-command line :)
+diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
+index fa650e7e02..819638d740 100644
+--- a/hw/i2c/allwinner-i2c.c
++++ b/hw/i2c/allwinner-i2c.c
+@@ -463,10 +463,16 @@ static void allwinner_i2c_write(void *opaque, hwaddr offset,
+                 s->stat = STAT_FROM_STA(STAT_IDLE);
+                 s->cntr &= ~TWI_CNTR_M_STP;
+             }
+-            if ((s->cntr & TWI_CNTR_INT_FLAG) == 0) {
+-                /* Interrupt flag cleared */
++
++            if (!s->irq_clear_inverted && !(s->cntr & TWI_CNTR_INT_FLAG)) {
++                /* Write 0 to clear this flag */
++                qemu_irq_lower(s->irq);
++            } else if (s->irq_clear_inverted && (s->cntr & TWI_CNTR_INT_FLAG)) {
++                /* Write 1 to clear this flag */
++                s->cntr &= ~TWI_CNTR_INT_FLAG;
+                 qemu_irq_lower(s->irq);
+             }
++
+             if ((s->cntr & TWI_CNTR_A_ACK) == 0) {
+                 if (STAT_TO_STA(s->stat) == STAT_M_DATA_RX_ACK) {
+                     s->stat = STAT_FROM_STA(STAT_M_DATA_RX_NACK);
+@@ -557,9 +563,25 @@ static const TypeInfo allwinner_i2c_type_info = {
+     .class_init = allwinner_i2c_class_init,
+ };
+ 
++static void allwinner_i2c_sun6i_init(Object *obj)
++{
++    AWI2CState *s = AW_I2C(obj);
++
++    s->irq_clear_inverted = true;
++}
++
++static const TypeInfo allwinner_i2c_sun6i_type_info = {
++    .name = TYPE_AW_I2C_SUN6I,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AWI2CState),
++    .instance_init = allwinner_i2c_sun6i_init,
++    .class_init = allwinner_i2c_class_init,
++};
++
+ static void allwinner_i2c_register_types(void)
+ {
+     type_register_static(&allwinner_i2c_type_info);
++    type_register_static(&allwinner_i2c_sun6i_type_info);
+ }
+ 
+ type_init(allwinner_i2c_register_types)
+diff --git a/include/hw/i2c/allwinner-i2c.h b/include/hw/i2c/allwinner-i2c.h
+index 4f378b86ba..0e325d265e 100644
+--- a/include/hw/i2c/allwinner-i2c.h
++++ b/include/hw/i2c/allwinner-i2c.h
+@@ -28,6 +28,10 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_AW_I2C "allwinner.i2c"
++
++/** Allwinner I2C sun6i family and newer (A31, H2+, H3, etc) */
++#define TYPE_AW_I2C_SUN6I    TYPE_AW_I2C "-sun6i"
++
+ OBJECT_DECLARE_SIMPLE_TYPE(AWI2CState, AW_I2C)
+ 
+ #define AW_I2C_MEM_SIZE         0x24
+@@ -50,6 +54,8 @@ struct AWI2CState {
+     uint8_t srst;
+     uint8_t efr;
+     uint8_t lcr;
++
++    bool irq_clear_inverted;
+ };
+ 
+ #endif /* ALLWINNER_I2C_H */
+-- 
+2.25.1
 

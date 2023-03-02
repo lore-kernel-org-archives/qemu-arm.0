@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f9-20020adfdb49000000b002c59c6abc10sm115801wrj.115.2023.03.02.11.08.48
+        by smtp.gmail.com with ESMTPSA id r4-20020a5d4944000000b002c56013c07fsm114369wrs.109.2023.03.02.11.08.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 02 Mar 2023 11:08:48 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3E7901FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id 941401FFB7;
 	Thu,  2 Mar 2023 19:08:47 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -57,159 +57,100 @@ Cc: Weiwei Li <liweiwei@iscas.ac.cn>,
 	Taylor Simpson <tsimpson@quicinc.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 06/26] gdbstub: move GDBState to shared internals header
-Date: Thu,  2 Mar 2023 19:08:26 +0000
-Message-Id: <20230302190846.2593720-7-alex.bennee@linaro.org>
+Subject: [PATCH v4 08/26] gdbstub: move fromhex/tohex routines to internals
+Date: Thu,  2 Mar 2023 19:08:28 +0000
+Message-Id: <20230302190846.2593720-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230302190846.2593720-1-alex.bennee@linaro.org>
 References: <20230302190846.2593720-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8TdzH+c5CD52
+X-TUID: KsLt8vWDLhgS
 
-We are about to split softmmu and user mode helpers into different
-files. To facilitate this we will need to share access to the GDBState
-between those files.
+These will be needed from multiple places in the code. They are
+declared as inline so move to the header and fix up to modern coding
+style.
+
+The only other place that messes with hex stuff at the moment is the
+URI handling in utils but that would be more code churn so leave for
+now.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - as we split user/system state earlier we can remove the #define hack
----
- gdbstub/internals.h | 50 +++++++++++++++++++++++++++++++++++++++++++++
- gdbstub/gdbstub.c   | 42 -------------------------------------
- 2 files changed, 50 insertions(+), 42 deletions(-)
+ gdbstub/internals.h | 27 +++++++++++++++++++++++++++
+ gdbstub/gdbstub.c   | 20 --------------------
+ 2 files changed, 27 insertions(+), 20 deletions(-)
 
 diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 7df0e11c47..32daaf73a3 100644
+index 32daaf73a3..b4620f99c4 100644
 --- a/gdbstub/internals.h
 +++ b/gdbstub/internals.h
-@@ -11,6 +11,56 @@
+@@ -57,6 +57,33 @@ typedef struct GDBState {
+     int supported_sstep_flags;
+ } GDBState;
  
- #include "exec/cpu-common.h"
- 
-+#define MAX_PACKET_LENGTH 4096
 +
 +/*
-+ * Shared structures and definitions
++ * Inline utility function, convert from int to hex and back
 + */
 +
-+typedef struct GDBProcess {
-+    uint32_t pid;
-+    bool attached;
++static inline int fromhex(int v)
++{
++    if (v >= '0' && v <= '9') {
++        return v - '0';
++    } else if (v >= 'A' && v <= 'F') {
++        return v - 'A' + 10;
++    } else if (v >= 'a' && v <= 'f') {
++        return v - 'a' + 10;
++    } else {
++        return 0;
++    }
++}
 +
-+    char target_xml[1024];
-+} GDBProcess;
++static inline int tohex(int v)
++{
++    if (v < 10) {
++        return v + '0';
++    } else {
++        return v - 10 + 'a';
++    }
++}
 +
-+enum RSState {
-+    RS_INACTIVE,
-+    RS_IDLE,
-+    RS_GETLINE,
-+    RS_GETLINE_ESC,
-+    RS_GETLINE_RLE,
-+    RS_CHKSUM1,
-+    RS_CHKSUM2,
-+};
-+
-+typedef struct GDBState {
-+    bool init;       /* have we been initialised? */
-+    CPUState *c_cpu; /* current CPU for step/continue ops */
-+    CPUState *g_cpu; /* current CPU for other ops */
-+    CPUState *query_cpu; /* for q{f|s}ThreadInfo */
-+    enum RSState state; /* parsing state */
-+    char line_buf[MAX_PACKET_LENGTH];
-+    int line_buf_index;
-+    int line_sum; /* running checksum */
-+    int line_csum; /* checksum at the end of the packet */
-+    GByteArray *last_packet;
-+    int signal;
-+    bool multiprocess;
-+    GDBProcess *processes;
-+    int process_num;
-+    char syscall_buf[256];
-+    gdb_syscall_complete_cb current_syscall_cb;
-+    GString *str_buf;
-+    GByteArray *mem_buf;
-+    int sstep_flags;
-+    int supported_sstep_flags;
-+} GDBState;
-+
-+/*
-+ * Break/Watch point support - there is an implementation for softmmu
-+ * and user mode.
-+ */
- bool gdb_supports_guest_debug(void);
- int gdb_breakpoint_insert(CPUState *cs, int type, vaddr addr, vaddr len);
- int gdb_breakpoint_remove(CPUState *cs, int type, vaddr addr, vaddr len);
+ /*
+  * Break/Watch point support - there is an implementation for softmmu
+  * and user mode.
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 1e6f8978b5..ef506faa8e 100644
+index abb1777e73..ba46ed73b3 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -41,8 +41,6 @@
- #include "hw/boards.h"
+@@ -546,26 +546,6 @@ static void put_buffer(const uint8_t *buf, int len)
  #endif
+ }
  
--#define MAX_PACKET_LENGTH 4096
+-static inline int fromhex(int v)
+-{
+-    if (v >= '0' && v <= '9')
+-        return v - '0';
+-    else if (v >= 'A' && v <= 'F')
+-        return v - 'A' + 10;
+-    else if (v >= 'a' && v <= 'f')
+-        return v - 'a' + 10;
+-    else
+-        return 0;
+-}
 -
- #include "qemu/sockets.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
-@@ -325,23 +323,6 @@ typedef struct GDBRegisterState {
-     struct GDBRegisterState *next;
- } GDBRegisterState;
- 
--typedef struct GDBProcess {
--    uint32_t pid;
--    bool attached;
+-static inline int tohex(int v)
+-{
+-    if (v < 10)
+-        return v + '0';
+-    else
+-        return v - 10 + 'a';
+-}
 -
--    char target_xml[1024];
--} GDBProcess;
--
--enum RSState {
--    RS_INACTIVE,
--    RS_IDLE,
--    RS_GETLINE,
--    RS_GETLINE_ESC,
--    RS_GETLINE_RLE,
--    RS_CHKSUM1,
--    RS_CHKSUM2,
--};
--
- #ifdef CONFIG_USER_ONLY
- typedef struct {
-     int fd;
-@@ -357,29 +338,6 @@ typedef struct {
- static GDBSystemState gdbserver_system_state;
- #endif
- 
--typedef struct GDBState {
--    bool init;       /* have we been initialised? */
--    CPUState *c_cpu; /* current CPU for step/continue ops */
--    CPUState *g_cpu; /* current CPU for other ops */
--    CPUState *query_cpu; /* for q{f|s}ThreadInfo */
--    enum RSState state; /* parsing state */
--    char line_buf[MAX_PACKET_LENGTH];
--    int line_buf_index;
--    int line_sum; /* running checksum */
--    int line_csum; /* checksum at the end of the packet */
--    GByteArray *last_packet;
--    int signal;
--    bool multiprocess;
--    GDBProcess *processes;
--    int process_num;
--    char syscall_buf[256];
--    gdb_syscall_complete_cb current_syscall_cb;
--    GString *str_buf;
--    GByteArray *mem_buf;
--    int sstep_flags;
--    int supported_sstep_flags;
--} GDBState;
--
- static GDBState gdbserver_state;
- 
- static void init_gdbserver_state(void)
+ /* writes 2*len+1 bytes in buf */
+ static void memtohex(GString *buf, const uint8_t *mem, int len)
+ {
 -- 
 2.39.2

@@ -1,174 +1,120 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8006042ejc;
-        Thu, 2 Mar 2023 01:25:44 -0800 (PST)
-X-Google-Smtp-Source: AK7set8sPzNZ7WFpkOwu/YT5+j+EsFqrHDB9Nn+WfOVVkyEActBeG4lrI4PD6UOzCDGiRdFRHuKj
-X-Received: by 2002:a05:6214:da4:b0:56e:a93e:2300 with SMTP id h4-20020a0562140da400b0056ea93e2300mr19410390qvh.40.1677749144450;
-        Thu, 02 Mar 2023 01:25:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677749144; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8409231ejc;
+        Thu, 2 Mar 2023 08:31:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set8ULgmT8KLoqmoYqoUW3Hy/r683+t9R8a7PT14NtWO5vI7xGckRUEI+Kpw1ZVjSp3O5Kg3n
+X-Received: by 2002:aa7:d6cf:0:b0:4af:593d:9ce5 with SMTP id x15-20020aa7d6cf000000b004af593d9ce5mr11495197edr.16.1677774673559;
+        Thu, 02 Mar 2023 08:31:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677774673; cv=none;
         d=google.com; s=arc-20160816;
-        b=ihgi9xBlAbcSrQInatO5BTbnF2BcVt1DoEace0+6SsDuFI7s4xZrnyUBA9XCax8CqF
-         9nC5/TSycgIp/tLtZ0b/v051cBqDr1gheyNuqPjy1kqyK5MG1o8hbgVw2ZYkgTAm531L
-         R+Fh3QvdjKbTGUPhcBc1tfBzmVHSLMje/+x/bH1Ih48qrHToooJUZtGTxTz9NoUis3Kh
-         2mG/M1myCxUtOZ27kzRSENeDRaMi45eJX3pXhe5HGznQN6eMQ1tLt1361NGrR0WLjZNK
-         l/n1Z8bjaEa5V/2HeKt3DtSPTW/T6KpgwR8isVuYcrvYJaXBzlzG1uDpuDNNAnDGoToh
-         QSZw==
+        b=nGZe03uNWLwKuMUjYU/hNGG2jE2dTJZqRl6opqFqJgr7LdT4RhvZM5JmlkirT0hhp8
+         WGEnlBu6ZIam6uGikB8MSqg1EyO3MWbhdEZD2nDdBxR8UGjPGDQWBawMo+aQt+9Ga1iK
+         hcXsLLYRD9EDlp3KJfaVtzd6G4jqdx7/4HHJTjhIG1IsCdeewys/hXRA1MXLB7Jc33gY
+         RooAM6x3ivYOUx4RmlUfmBF4uybYbnuBTqSid+hKOLx9zKYlFffnnTwgH64sqbfz1M4N
+         ZOJ3DMhPdKhWvnp3DrUFNKbEJfTUwl+ylCI9XsD9oH/s4a5vIN1YwSIm8hhlNu4Hd7hF
+         jiDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:organization:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:dkim-signature;
-        bh=UgUMEt+prO6c8gKv0UVNWeB2aWOakOZG0Q9kLxhGLG4=;
-        b=bq5kFcHzj6mrPOZEcFgBtIU8p/z83ZN1DFCc0ZgERm0Xq4XNeKEtWlBAVYsPOR6TSI
-         hgnAzKI93904Xq936bZ0up6QzcOdlgkuWNciiP0rr10r5caNxsXZYe1NyhmTrBfqWSsI
-         9hqDMYMBsEjy+zdML9CWKd8F37sWZRhVuROo2QzVaZ7OnW71JT4s5AdIGfjpmaurkwrG
-         Wb77n+tNZOkPvRjhOtpCZMmJHoNzliyBdcyUacnrleHVKnH7dlo/bLsFGxTYq6jZV82f
-         dcaiyXbt5Y9jzlgtehNwE5HGxISl4I/j4FGh3IJgRcKXy+msDXjoeysgA9SzCfMBN732
-         7o7A==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ZDJm0qbzU2JdESu0wAQDuLmy0wi+765V7K8ePbWUcC0=;
+        b=dtIOBe3QvejGvcajsFAi8z3PP8rOUSsrs3BIpzG4kEDVY1IqsxCECGrT5rAY9kP3vb
+         z1SSvmCtgKGW5EXhh43Ry5R51XVJVc7iP9RTdW6fAQnpIDpOWziHt5vlI6JLR170ku77
+         wkp7z8aGa3zLzVRSdWVOfu9qFs7dIYfTmouX1d2idlv+bZueSA31VNeUvyRkhvSrTIPZ
+         ETE/XSM7Zdgp7Xjnv+Hc4r16xRDAhK3N4Gb1kg1yOFYcO1l/oPFrkEPc3fAcyMniow/v
+         +rm4aUXRg7v3vgzfrudo24N44cRrNa7FBiJXqz341q9gSRRuOq59fAHeqtaIaPARDeUv
+         4T4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HyKcX4ZH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j10-20020a0c9cca000000b0056f079ac110si12652891qvf.124.2023.03.02.01.25.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KELoklWd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id b13-20020aa7d48d000000b004af67b75fe7si71605edr.453.2023.03.02.08.31.13
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Mar 2023 01:25:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Mar 2023 08:31:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=HyKcX4ZH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXfBy-0000ao-NI; Thu, 02 Mar 2023 04:25:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1pXfBc-0000Cs-SE; Thu, 02 Mar 2023 04:25:17 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
- id 1pXfBZ-0003K6-SI; Thu, 02 Mar 2023 04:25:15 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- j19-20020a05600c191300b003eb3e1eb0caso1229906wmq.1; 
- Thu, 02 Mar 2023 01:25:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:in-reply-to:organization:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:from:from:to:cc:subject:date:message-id:reply-to;
- bh=UgUMEt+prO6c8gKv0UVNWeB2aWOakOZG0Q9kLxhGLG4=;
- b=HyKcX4ZHkkLBYAq3Cg96RXW3o4GQXr3Gdhv6X4bin2xWdwTo9fe4px1QtV1jgjLg2p
- NkX1mGSXsHmeaXQqJLJHBiI+WosGNhMt8sLHrBw9u7MAFp1lAq9vlVQ15m5o7bWv6ct5
- 222lY4uSauT0/S53otZEO6UY+o1PPBIMievqtNaCA5umyHeO51Q5IRBNX9YHSttqb+lD
- g/fdLkKFSc5i1/ysQ79PR9XX+jwKTOOpzjAS71yppz+Gt/PQfpylJdrflf755r9iUrAZ
- aveN8pvHx5kwAptAxbbxEXi7pvl9sQZVh+jbXzIXurU/Z8Mg80xbYSSo1SdYvpsj7mVe
- rXiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:in-reply-to:organization:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:from:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UgUMEt+prO6c8gKv0UVNWeB2aWOakOZG0Q9kLxhGLG4=;
- b=BicWIUx0yXh6jC9NBTNbPrHqmMGFQu+2yhlzOTgOstN466qbdMJDy0qi5nHrh4K2NB
- ahDolIiOxqAZvJZBjyeorLKV2lParInu8BsMntTsBOWfQNVjhkPKfAg0CksA0GvWphJL
- 1OjYR13zg+MEwkEVDM7vPu/F2HlE/45a5u30nzufZZfA+0H5lFp/ip81/biAJpU39Swi
- A+Loy2VCMKReobbZB0nsOMui0OemAyT7bHmMZmvJNhXl9kIIV8Q+kOI7ub9jTCS6raAo
- bNp+Rtb8N9dM3Wth+uaUTd5rZCNqeQ9Ty9HPGE8v3/C3sLLLbvk1xyO4SA0OLtinjsbc
- mE4Q==
-X-Gm-Message-State: AO0yUKWjBLQcHpe5xrdR9z2Vpqmvxms5a1TVnKaUUHIUaR2sJ4HIQyKJ
- Vt3VBB3+SU7dL/vUZKIFMIM=
-X-Received: by 2002:a05:600c:81e:b0:3e2:201a:5bce with SMTP id
- k30-20020a05600c081e00b003e2201a5bcemr7299439wmp.40.1677749110852; 
- Thu, 02 Mar 2023 01:25:10 -0800 (PST)
-Received: from [192.168.18.179] (54-240-197-239.amazon.com. [54.240.197.239])
- by smtp.gmail.com with ESMTPSA id
- h8-20020adff188000000b002c54241b4fesm14573977wro.80.2023.03.02.01.25.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Mar 2023 01:25:10 -0800 (PST)
-From: Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: Paul Durrant <paul@xen.org>
-Message-ID: <c5ba665d-f385-8ed5-9f4e-acac9b7c6f62@xen.org>
-Date: Thu, 2 Mar 2023 09:25:05 +0000
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KELoklWd;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677774672;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=ZDJm0qbzU2JdESu0wAQDuLmy0wi+765V7K8ePbWUcC0=;
+	b=KELoklWdvJV31z3aa66Ve11RVWES2tCTfpF73UpVURx/6oSgMjjpJKjEMAZR9+4rxMmyDB
+	/MVfhKzqy3fnRSUTDpn9C3gVz2LEGg7XwZs/eTAt9+5vCi8nikeI6tQHI4B4JDBsQ3I/OS
+	kw2DwjIQnxWhb8OopqjpnYarUDT6wTQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-108-FfzftseYMeyd-EeORqC0WQ-1; Thu, 02 Mar 2023 11:31:11 -0500
+X-MC-Unique: FfzftseYMeyd-EeORqC0WQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8C87A18E0044;
+	Thu,  2 Mar 2023 16:31:10 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.93])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 31BB74010E86;
+	Thu,  2 Mar 2023 16:31:08 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Daniel Berrange <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	Maxim Levitsky <mlevitsk@redhat.com>,
+	libvir-list@redhat.com,
+	Richard Henderson <richard.henderson@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	Reinoud Zandijk <reinoud@netbsd.org>
+Subject: [PATCH v2 0/6] Deprecate support for 32-bit x86 and arm hosts
+Date: Thu,  2 Mar 2023 17:31:00 +0100
+Message-Id: <20230302163106.465559-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v6 4/4] hw: replace most qemu_bh_new calls with
- qemu_bh_new_guarded
-Content-Language: en-US
-To: "Michael S. Tsirkin" <mst@redhat.com>, Alexander Bulekov <alxndr@bu.edu>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Mauro Matteo Cascella <mcascell@redhat.com>, Peter Xu <peterx@redhat.com>,
- Jason Wang <jasowang@redhat.com>, David Hildenbrand <david@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Bandan Das <bsd@redhat.com>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Darren Kenny <darren.kenny@oracle.com>, Bin Meng <bin.meng@windriver.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Jon Maloy <jmaloy@redhat.com>,
- Siqi Chen <coc.cyqh@gmail.com>, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Amit Shah <amit@kernel.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Fam Zheng <fam@euphon.net>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- "open list:X86 Xen CPUs" <xen-devel@lists.xenproject.org>,
- "open list:virtio-blk" <qemu-block@nongnu.org>,
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>,
- "open list:Old World (g3beige)" <qemu-ppc@nongnu.org>
-References: <20230205040737.3567731-1-alxndr@bu.edu>
- <20230205040737.3567731-5-alxndr@bu.edu>
- <20230301155442-mutt-send-email-mst@kernel.org>
-Organization: Xen Project
-In-Reply-To: <20230301155442-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=xadimgnik@gmail.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: paul@xen.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VKmMAt2+wNkB
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-TUID: leZAPnyfA5af
 
-On 01/03/2023 20:54, Michael S. Tsirkin wrote:
-> On Sat, Feb 04, 2023 at 11:07:37PM -0500, Alexander Bulekov wrote:
->> This protects devices from bh->mmio reentrancy issues.
->>
->> Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
->> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
->> Signed-off-by: Alexander Bulekov <alxndr@bu.edu>
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
+We're struggling quite badly with our CI minutes on the shared
+gitlab runners, so we urgently need to think of ways to cut down
+our supported build and target environments. qemu-system-i386 and
+qemu-system-arm are not really required anymore, since nobody uses
+KVM on the corresponding systems for production anymore, and the
+-x86_64 and -arch64 variants are a proper superset of those binaries.
+So it's time to deprecate them and the corresponding 32-bit host
+environments now.
 
-Xen parts...
+This is a follow-up patch series from the previous discussion here:
 
-Reviewed-by: Paul Durrant <paul@xen.org>
+ https://lore.kernel.org/qemu-devel/20230130114428.1297295-1-thuth@redhat.com/
 
+where people still mentioned that there is still interest in certain
+support for 32-bit host hardware. But as far as I could see, there is
+no real need for 32-bit x86 host support and for system emulation on
+32-bit arm hosts anymore, so it should be fine if we drop these host
+environments soon (these are also the two architectures that contribute
+the most to the long test times in our CI, so we would benefit a lot by
+dropping those).
+
+v2:
+- Split binary and host deprecation into separate patches
+- Added patches to immediately drop the jobs from the CI
+
+Thomas Huth (6):
+  docs/about/deprecated: Deprecate the qemu-system-i386 binary
+  docs/about/deprecated: Deprecate 32-bit x86 hosts
+  gitlab-ci.d/crossbuilds: Drop the i386 jobs
+  docs/about/deprecated: Deprecate the qemu-system-arm binary
+  docs/about/deprecated: Deprecate 32-bit arm hosts
+  gitlab-ci.d/crossbuilds: Drop the 32-bit arm system emulation jobs
+
+ docs/about/deprecated.rst    | 43 ++++++++++++++++++++++++++++++++++++
+ .gitlab-ci.d/crossbuilds.yml | 30 -------------------------
+ 2 files changed, 43 insertions(+), 30 deletions(-)
+
+-- 
+2.31.1

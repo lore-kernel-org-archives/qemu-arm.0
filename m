@@ -1,109 +1,110 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp68965ejc;
-        Thu, 2 Mar 2023 10:37:48 -0800 (PST)
-X-Google-Smtp-Source: AK7set8ChFfQnZnceLXVED8EpHulK29NfjL6gH8nox5Qhq+U8dRFc6RFIDMvkv5dK8iMDrkAk5yV
-X-Received: by 2002:ac8:5795:0:b0:3bf:ce15:ff25 with SMTP id v21-20020ac85795000000b003bfce15ff25mr20605555qta.12.1677782267869;
-        Thu, 02 Mar 2023 10:37:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677782267; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp74656ejc;
+        Thu, 2 Mar 2023 10:44:15 -0800 (PST)
+X-Google-Smtp-Source: AK7set+mdxqWNMAzjFJbgCzPV7k86G9IxdblSRZ5GoNEwZcKzIaYzrfG8Rgk4ODtEOHsmvhHydyH
+X-Received: by 2002:a05:6214:e89:b0:56f:728:19d4 with SMTP id hf9-20020a0562140e8900b0056f072819d4mr23351290qvb.26.1677782655110;
+        Thu, 02 Mar 2023 10:44:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677782655; cv=none;
         d=google.com; s=arc-20160816;
-        b=iZL9T8vBNjdUY/wLP5+GOYPznzBZMq/Liqwg6lPoBBd1his8KF5VqQlaU+Ai6g9sDV
-         osISd/KsNr2aTPZ0kkZfRFVfFo1e2mz8GTeEIiiqLakWP4tW3DBjdobxIs+hb3RftAnD
-         CtPZzCQazaE7xgm/AwnCRXszszhaHeg1+zzT2g+/OAWRTp6vxqubV3jQYeow8A7D8Q9x
-         Nf7FgTDBAJQnWlAFOOZy6aldE6gkAI930y/qcyy5lupaYpCVJmYs6yFO1OvCCCXLOM4W
-         G5mKoOkEmLIRRmMN+XN1fy2YXVwN9ICPlxZualmB1+VmCEotLSMavf9gAZ0UhBpiZ9Qk
-         AJQw==
+        b=ZOib9r6dQykupYbHhGrVzoOcnDIJRLTOWl6bIfbsnP7x9ZdHicr/61yB8mADH5H6lT
+         7eccD4su3lD59Qla626fCtbinoEmBdQOWiNBPFfkQWn/U2aeT9QV3o8/urY6Yb8TEttl
+         dHV8EQiEgVvpGbb9axmFRfj8NsDseJLVWfThoE0gYdxTHLu51uLcFsGVoYzBHop/Nx/1
+         AimB9pBUBu/KP3FMR46aJKPgjoNEcgQ8q3IIgs848oChnnBEgOr0ld2OWK+xN7jnV5BO
+         XLyd6qWsFPg0DaCaRx0kIOMcfuFgZE1YdH9coKGqG5s3nMc89jHhJXERzVk2Rudoa/Sb
+         lUJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=25CfS7lwWYvDDvKtRhRbaLVpcIZswQ42QYIQzZX/dvw=;
-        b=Fqx/xyji+sysckvSenmcGa+c7i27xAnwp49KNmyXYNdIjXmWT1gWT4Klen1OXwUbBC
-         qn+IH10/vkXp+bZUOD287PjWHncIpitWVBvzTe1an2vY2ICqVfaxTuxonepW2ItCsbq3
-         V46/LA8+LEEb5Xel2brhnJ1Y1gBFK+1F3zu9AfzR/CFfg46+IA1lpfIqtlSvMA/2gpBb
-         2CAu/ernXgNFBTDhIPb0Kf+60j58g4/OCgNz7FdbqRWG606+Lc7JiXq/lM2vflvJCQtu
-         u+hOd5kpkiSK/vXd/wJgSwZ+0mgwykRhOgydzG8xE86bTaBfunz42qTQdqSth3dMJPvy
-         B7Mw==
+        bh=KoPxG8P6lj+Q5Yg2dXfk1BUZF559TeTU2JYjSvciw88=;
+        b=V00RePno6IXkt/zBUUpK+RIkWIlC1UD6gipqNy3QJFNVzvLGOGMoV/gv0oIvAP4dQ5
+         VbV/3VheGYsP7IHVL8kF0t7dugbNkyGmXOv20BOqQMZqJrN6/uemT0NsD3nAcuzWSP8Y
+         UEHK2YEeB/aAB8+AGA8mqFtfs03RzkxbH+gVpYt7iu2xiTPqzoAmAGdcS0tRcsWvfpsL
+         1E7edxASLL0sjVF8vQc4A4goe2tiDkVWXGaqJ8UBnsUknIDGgEYCcBePoHejCWcJhJVU
+         F1z/umhh+Kae3iDtq+rMNeQVMrTitJvv8Iu6mH7kDzNKcMz09O04zIrSbW2jo5XZRkYR
+         nQOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OaWfU1u1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OGWesrOZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3-20020a05622a00c300b003afd04be9basi186458qtw.525.2023.03.02.10.37.47
+        by mx.google.com with ESMTPS id p3-20020a0c8c83000000b005743e1c4376si10666803qvb.577.2023.03.02.10.44.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Mar 2023 10:37:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Mar 2023 10:44:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OaWfU1u1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OGWesrOZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pXno1-0007RY-5F; Thu, 02 Mar 2023 13:37:29 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pXnuF-0000LM-R8; Thu, 02 Mar 2023 13:43:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1pXnnz-0007JZ-D9; Thu, 02 Mar 2023 13:37:27 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ id 1pXnuA-0000FM-O8; Thu, 02 Mar 2023 13:43:51 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1pXnnw-000306-RY; Thu, 02 Mar 2023 13:37:26 -0500
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 322HkvOb022903; Thu, 2 Mar 2023 18:37:14 GMT
+ id 1pXnu8-0003rU-1W; Thu, 02 Mar 2023 13:43:50 -0500
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 322IMx9q023057; Thu, 2 Mar 2023 18:43:36 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=pp1;
- bh=25CfS7lwWYvDDvKtRhRbaLVpcIZswQ42QYIQzZX/dvw=;
- b=OaWfU1u1mnt+ryNLCDdaenx8uWTRLgK8PPecB+OB6pQKC2lpV6CTQaLoF1nF3h6r84Rp
- eT6ygIHiWuK7bt4N8qaMUO4EDy4k15EjZBDBzY7RRzLRolJKBLip2G9P168p7Ev1Xn00
- JfuGirj1Wb3G4zT7FlecW3gkNkzNqaZvFSQVYtflXiT1zVlw8UborQ3Pt5AXvpjmP7cF
- D91GGLODvfs/JcWHeSk6vR2B6IJ5LBoHBoKOI/SKwXb+kTkaZOhh5z/gauBMPkPUkOlt
- b8czXyPPzQS+KW6mOJIVTxf51Ap0gTepYo2VBP4C+AIyW04Roo3iU9Iu7of3hmSC3J3R CQ== 
+ bh=KoPxG8P6lj+Q5Yg2dXfk1BUZF559TeTU2JYjSvciw88=;
+ b=OGWesrOZS2n4ro7/SjCSdrrXHxmFb9fGI8T5JLMUkh4MFUk1RogyBjxKc0SgXDCYTbDK
+ QaHN/hmj6AUIYlVwIXfVQiDgM3nhe40IDBT58b4I85Fl2ugTSTUpWLRhgZpGey8gu5In
+ wBtkeH4M/pLIG2uDWviI2F4x0NSW8zaeXpngj6q7/BItGSJl/QROKSnpcmI2VsSkIuy3
+ aAQEW1aQBLmRKjbXqGLMRh/iOG5zJ6qxRGeh35frXVx3MqI2wTojkEWYqT3nyrxaXbY/
+ IFZqeb2pwPNzcE42LbtdrcbqgwcGHPtd3ZFsbcyjc/NFF8eQ+HspK/ulwbY1G2IAXiS8 UA== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p30ge9dgt-1
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3p311e8g9d-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Mar 2023 18:37:13 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 322IL6tK002882;
- Thu, 2 Mar 2023 18:37:13 GMT
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.11])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p30ge9dfu-1
+ Thu, 02 Mar 2023 18:43:36 +0000
+Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 322IPcwR032754;
+ Thu, 2 Mar 2023 18:43:35 GMT
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3p311e8g95-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Mar 2023 18:37:13 +0000
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 322HnUfE029693;
- Thu, 2 Mar 2023 18:37:11 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([9.208.129.120])
- by ppma03dal.us.ibm.com (PPS) with ESMTPS id 3nybcmx0ep-1
+ Thu, 02 Mar 2023 18:43:35 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 322Hx8Cb017424;
+ Thu, 2 Mar 2023 18:43:34 GMT
+Received: from smtprelay07.wdc07v.mail.ibm.com ([9.208.129.116])
+ by ppma01dal.us.ibm.com (PPS) with ESMTPS id 3nybchwx9w-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 02 Mar 2023 18:37:11 +0000
-Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
- [10.241.53.102])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 322IbA8416908828
+ Thu, 02 Mar 2023 18:43:34 +0000
+Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
+ [10.241.53.105])
+ by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 322IhWcJ63963544
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 2 Mar 2023 18:37:10 GMT
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0B47258056;
- Thu,  2 Mar 2023 18:37:10 +0000 (GMT)
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E84335803F;
- Thu,  2 Mar 2023 18:37:08 +0000 (GMT)
+ Thu, 2 Mar 2023 18:43:33 GMT
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 92B6A5805E;
+ Thu,  2 Mar 2023 18:43:32 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7205C58043;
+ Thu,  2 Mar 2023 18:43:31 +0000 (GMT)
 Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Thu,  2 Mar 2023 18:37:08 +0000 (GMT)
-Message-ID: <6f26e0b8-0f11-8161-6f16-e96443e0696c@linux.ibm.com>
-Date: Thu, 2 Mar 2023 13:37:08 -0500
+ by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu,  2 Mar 2023 18:43:31 +0000 (GMT)
+Message-ID: <59ec2ec5-cb8f-a82b-d48e-b04baf2a6214@linux.ibm.com>
+Date: Thu, 2 Mar 2023 13:43:31 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.7.1
-Subject: Re: [PATCH v3 09/16] aio/win32: aio_set_fd_handler() only supports
- SOCKET
+Subject: Re: [PATCH v3 11/16] main-loop: remove qemu_fd_register(),
+ win32/slirp/socket specific
 Content-Language: en-US
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
@@ -118,55 +119,92 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
  Stefan Berger <stefanb@linux.vnet.ibm.com>,
  Joel Stanley <joel@jms.id.au>, Hanna Reitz <hreitz@redhat.com>
 References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
- <20230221124802.4103554-10-marcandre.lureau@redhat.com>
+ <20230221124802.4103554-12-marcandre.lureau@redhat.com>
 From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20230221124802.4103554-10-marcandre.lureau@redhat.com>
+In-Reply-To: <20230221124802.4103554-12-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 7jY893kxwK8v6-pFl7_Mb-haOzi3MbIY
-X-Proofpoint-ORIG-GUID: YCFizhgKWLe7S87AJdHp3Q7bwojkuAEq
+X-Proofpoint-ORIG-GUID: 2XJaZL--RBArlGo7twCecMTtrCPlzxcZ
+X-Proofpoint-GUID: IzVWkD4bjel82egZ2QEZkKB3FDsFjk6_
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-02_12,2023-03-02_02,2023-02-09_01
+ definitions=2023-03-02_11,2023-03-02_02,2023-02-09_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 malwarescore=0
- mlxscore=0 lowpriorityscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0
- adultscore=0 impostorscore=0 phishscore=0 clxscore=1015 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2303020160
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ spamscore=0
+ priorityscore=1501 suspectscore=0 impostorscore=0 mlxscore=0
+ malwarescore=0 bulkscore=0 phishscore=0 mlxlogscore=999 adultscore=0
+ clxscore=1015 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2212070000 definitions=main-2303020156
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.092,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wGmdD/GeDJW3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ChtzKj4+tSq5
 
 
 
 On 2/21/23 07:47, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Let's check if the argument is actually a SOCKET, else report an error
-> and return.
+> Open-code the socket registration where it's needed, to avoid
+> artificially used or unclear generic interface.
+> 
+> Furthermore, the following patches are going to make socket handling use
+> FD-only inside QEMU, but we need to handle win32 SOCKET from libslirp.
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   include/qemu/main-loop.h |  2 --
+>   net/slirp.c              |  8 +++++++-
+>   util/main-loop.c         | 11 -----------
+>   3 files changed, 7 insertions(+), 14 deletions(-)
+> 
+> diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
+> index c25f390696..b3e54e00bc 100644
+> --- a/include/qemu/main-loop.h
+> +++ b/include/qemu/main-loop.h
+> @@ -387,8 +387,6 @@ void qemu_cond_timedwait_iothread(QemuCond *cond, int ms);
+> 
+>   /* internal interfaces */
+> 
+> -void qemu_fd_register(int fd);
+> -
+>   #define qemu_bh_new(cb, opaque) \
+>       qemu_bh_new_full((cb), (opaque), (stringify(cb)))
+>   QEMUBH *qemu_bh_new_full(QEMUBHFunc *cb, void *opaque, const char *name);
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 2ee3f1a0d7..0730a935ba 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -248,7 +248,13 @@ static void net_slirp_timer_mod(void *timer, int64_t expire_timer,
+> 
+>   static void net_slirp_register_poll_fd(int fd, void *opaque)
+>   {
+> -    qemu_fd_register(fd);
+> +#ifdef WIN32
+
+_WIN32 ?
+
+With this fixed:
 
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>

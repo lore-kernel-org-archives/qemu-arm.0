@@ -1,64 +1,64 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8409401ejc;
-        Thu, 2 Mar 2023 08:31:20 -0800 (PST)
-X-Google-Smtp-Source: AK7set84kqQ/eE1Mr9fES4OsxKt+1smd2TFF9q/atGJZFlCwur6h3YSmWuRBf55sfvDsfPuaTGn5
-X-Received: by 2002:ac8:5bd6:0:b0:3bf:b8ae:fa7d with SMTP id b22-20020ac85bd6000000b003bfb8aefa7dmr19124045qtb.55.1677774680184;
-        Thu, 02 Mar 2023 08:31:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677774680; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8409533ejc;
+        Thu, 2 Mar 2023 08:31:25 -0800 (PST)
+X-Google-Smtp-Source: AK7set8Xe2v6NgOUPuuShVHH6f48c6MMfAKYJXbm7ZlQlgba489+PGBvr7qL/pr+YikusdUYuP9I
+X-Received: by 2002:a67:f897:0:b0:412:a93:ec50 with SMTP id h23-20020a67f897000000b004120a93ec50mr5861970vso.29.1677774685638;
+        Thu, 02 Mar 2023 08:31:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677774685; cv=none;
         d=google.com; s=arc-20160816;
-        b=amhaC4mP/Y5uC0E6iHiFzvIBvrDenTOnc7/NEawk7DF8avBzbsdh5x4h0iGnfVZJOy
-         9WiTbzc5iTTJTcAMuZ3g+fAsU9yYcB7BmzLH2LLzRvBKDFotf079eZ32Bqy3EDYQH68e
-         zpjdGO/xweAbiPaeGyF9/iPC/PRrZbGJ9hkI1TyL0qECdpr93s4CUslqJ2Vx1q8rAK33
-         53lX0GlDwj+pjUao2bXdpCgU3INhzVFkxu8fNJJ1inYA97x1yvQ3qMoMkcSel4r4WMXq
-         IvtxWWsbyvD6gDIJVWf8o3SxQsvtS8HBw9PGJnlvWO00cNtLlnd4ACTSJFEiSv+1f0+C
-         W11g==
+        b=G5Ejle2nrUnmyX81puSzDxUZnm/CbXO3QuYhoalK8sZcHa1xJVH3qEE0NDPJ+Z5wAx
+         YQY+NsfGetNPnkFa6pZ1dE546LidSh+kXsxu04k26NRzYwo/63iKlZB6jODekaR4hP9L
+         2NWpXr2K4a4pktiGueZP6ERwK/tSYFalcs6+FP1l1W4JCk7VM7WCGh0EsoYsUNNuWcc0
+         YrU4GTzZFDT/gPOw4LewpEq/H7NeR4muQ+OHHMQP+Kx7I00nUDHSXLZqC5PaUPt1WpQQ
+         J8DBTBoR7/JlqcBkZuV//qpwJ7WKHm8yJT4DZvdEAETRZg/405TJqqi8YVjwOSwkMeL6
+         iRGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3psyEgJRau2Jh1sB5FoWnPWnwz10rj9WAfK8OXPQ0lI=;
-        b=NyD0SipiKgPChd6g16RcSZt8wLB69nPNS4ImY9fVjXNUFvy1u1/CpDsCQ0Otv/JINs
-         1Aam6o2VmEW4n+lcsnJS081k4/3bG8zYVeGszjnD7aScKvb7Rux6a+XIUvs/VYstg5YW
-         5THcCqWl7x+8QSdpQziIwS10fZ8KxlsiMf63CxgMg7yAltdpWypMvWMtk85R9r9CU39K
-         K3C/75i6aeZRIUFDocc8c6Bw3hDjVeFZZ4HyRQhSaodVpw0MYXR3Gr67cSbSUjRcT1d6
-         jkHf8Blmxx4dpifB1yeRC4wjIMvlUlLqksYRpt5EXjGCoTHSam9iEwXUzXqJCjNdrO+q
-         Ik/Q==
+        bh=1se1EgyXTtHuqpHB7dBmmrL51sYg+NfS/rBJP2j3pQw=;
+        b=PgCVeNiY358+E5OQ1DufarcoaunvDU0FSt1Yssg2dmbPg6vgwNxUbFmuMefUleuTqx
+         JfT+Iotd9XwTRS/ifQy+Aap9mdg/6CvhwBIYCccQLx9d4P1HlPEW87Dk7aZPixiU77FO
+         q7oTl6ik1/NRtSSweX1euI1yyS3bh4uq27CgbMmR6iT1+0d8k20/FNpMu3s/jjJiiAVP
+         WiFfAAhgOmWhwo1CdP+tdy1vLm8tfEjDISxNoPn3NMDlabvCDwyNqhJ8f4wgL4pyu6WS
+         abz7UvvvVYo++fYvN85K+9crSWRw+b/9Dsk0ycE+nyOzq60ZqRGadP/NrIwtDQFabbIF
+         XIrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LHKGtQjn;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Etut81HP;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a20-20020a05622a02d400b003ba1d2fd43bsi13142225qtx.195.2023.03.02.08.31.19
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id w8-20020a67e248000000b003ffa417077fsi4867373vse.613.2023.03.02.08.31.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 02 Mar 2023 08:31:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 02 Mar 2023 08:31:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LHKGtQjn;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Etut81HP;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677774679;
+	s=mimecast20190719; t=1677774685;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3psyEgJRau2Jh1sB5FoWnPWnwz10rj9WAfK8OXPQ0lI=;
-	b=LHKGtQjnsBGqMoAminepeLVN4MLwuBFl5nke6s7Orf5OTiIO9AVwdWrJMD78FF8uWYxvUz
-	TdQZ73JwPX56ArQMpBeuPai6X+IXRH5qOceV3nUeROA1BI/jkEXGRPQCLBf2yiob2nt/+H
-	Udl35ry5Pb7hfDPxWlWrVvi6PogCtOE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=1se1EgyXTtHuqpHB7dBmmrL51sYg+NfS/rBJP2j3pQw=;
+	b=Etut81HP4wAgWGR1WmSLqU05m5ERBxVJ8tdvkT/xsKHYS9vrnuOJLWnbZ+NkUy1ke5kGoq
+	RfhWVYHT4GJcdzWInd3SzX5ImFLaiRBnENKrCzoWszXA/w2J0hmTCDp9TKOxekg/wJrUuD
+	U8973dbpM7w84xxGOStHWajTGkCHEmg=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-112-FcfOwdQLOLq8Nr9yu7kRsA-1; Thu, 02 Mar 2023 11:31:16 -0500
-X-MC-Unique: FcfOwdQLOLq8Nr9yu7kRsA-1
+ us-mta-517-ZxoOLkewNeO0183HdIaMUA-1; Thu, 02 Mar 2023 11:31:22 -0500
+X-MC-Unique: ZxoOLkewNeO0183HdIaMUA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E59C9802C18;
-	Thu,  2 Mar 2023 16:31:15 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3EF7938012E7;
+	Thu,  2 Mar 2023 16:31:21 +0000 (UTC)
 Received: from thuth.com (unknown [10.39.192.93])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 697CD400EA93;
-	Thu,  2 Mar 2023 16:31:13 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D2FE6400EA93;
+	Thu,  2 Mar 2023 16:31:18 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
@@ -72,52 +72,47 @@ Cc: Markus Armbruster <armbru@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	xen-devel@lists.xenproject.org,
 	Reinoud Zandijk <reinoud@netbsd.org>
-Subject: [PATCH v2 2/6] docs/about/deprecated: Deprecate 32-bit x86 hosts
-Date: Thu,  2 Mar 2023 17:31:02 +0100
-Message-Id: <20230302163106.465559-3-thuth@redhat.com>
+Subject: [PATCH v2 4/6] docs/about/deprecated: Deprecate the qemu-system-arm binary
+Date: Thu,  2 Mar 2023 17:31:04 +0100
+Message-Id: <20230302163106.465559-5-thuth@redhat.com>
 In-Reply-To: <20230302163106.465559-1-thuth@redhat.com>
 References: <20230302163106.465559-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-TUID: M8uvQH8KqU0q
+X-TUID: OIW0nPoFLT8b
 
-Hardly anybody still uses 32-bit x86 hosts today, so we should start
-deprecating them to stop wasting our time and CI minutes here.
-For example, there are also still some unresolved problems with these:
-When emulating 64-bit binaries in user mode, TCG does not honor atomicity
-for 64-bit accesses, which is "perhaps worse than not working at all"
-(quoting Richard). Let's simply make it clear that people should use
-64-bit x86 hosts nowadays and we do not intend to fix/maintain the old
-32-bit stuff.
+qemu-system-aarch64 is a proper superset of qemu-system-arm,
+and the latter was mainly still required for 32-bit KVM support.
+But this 32-bit KVM arm support has been dropped in the Linux
+kernel a couple of years ago already, so we don't really need
+qemu-system-arm anymore, thus deprecated it now.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- docs/about/deprecated.rst | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ docs/about/deprecated.rst | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 11700adac9..a30aa8dfdf 100644
+index a30aa8dfdf..21ce70b5c9 100644
 --- a/docs/about/deprecated.rst
 +++ b/docs/about/deprecated.rst
-@@ -208,6 +208,18 @@ CI coverage support may bitrot away before the deprecation process
- completes. The little endian variants of MIPS (both 32 and 64 bit) are
- still a supported host architecture.
+@@ -45,6 +45,16 @@ run 32-bit guests by selecting a 32-bit CPU model, including KVM support
+ on x86_64 hosts. Thus users are recommended to reconfigure their systems
+ to use the ``qemu-system-x86_64`` binary instead.
  
-+32-bit x86 hosts (since 8.0)
-+''''''''''''''''''''''''''''
++``qemu-system-arm`` binary (since 8.0)
++''''''''''''''''''''''''''''''''''''''
 +
-+Support for 32-bit x86 host deployments is increasingly uncommon in
-+mainstream OS distributions given the widespread availability of 64-bit
-+x86 hardware. The QEMU project no longer considers 32-bit x86 support
-+to be an effective use of its limited resources, and thus intends to
-+discontinue it. Since all recent x86 hardware from the past >10 years
-+is capable of the 64-bit x86 extensions, a corresponding 64-bit OS
-+should be used instead.
++``qemu-system-aarch64`` is a proper superset of ``qemu-system-arm``. The
++latter was mainly a requirement for running KVM on 32-bit arm hosts, but
++this 32-bit KVM support has been removed some years ago already (see:
++https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=541ad0150ca4
++). Thus the QEMU project will drop the ``qemu-system-arm`` binary in a
++future release. Use ``qemu-system-aarch64`` instead.
 +
-+
- QEMU API (QAPI) events
- ----------------------
  
+ System emulator command line arguments
+ --------------------------------------
 -- 
 2.31.1

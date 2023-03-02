@@ -1,140 +1,125 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8378176ejc;
-        Thu, 2 Mar 2023 08:00:45 -0800 (PST)
-X-Google-Smtp-Source: AK7set+q97hUznbycEm5tohx3Won3f1L8gtK3lkDuQDFJ5rzHDQ+I87v6l+I0vbziBM2XlCfN5O6
-X-Received: by 2002:a62:6346:0:b0:5db:c07e:9e4d with SMTP id x67-20020a626346000000b005dbc07e9e4dmr9123776pfb.6.1677772844959;
-        Thu, 02 Mar 2023 08:00:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677772844; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp8409265ejc;
+        Thu, 2 Mar 2023 08:31:15 -0800 (PST)
+X-Google-Smtp-Source: AK7set9PerKmGSqlRWfS7WoqXXrbMW6GsQK2hebCSHch1VCqQcjGBz/wArt5c0s8pd5EPl6BftMJ
+X-Received: by 2002:a05:6214:20c4:b0:56e:a88f:70ef with SMTP id 4-20020a05621420c400b0056ea88f70efmr22966181qve.23.1677774675435;
+        Thu, 02 Mar 2023 08:31:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677774675; cv=none;
         d=google.com; s=arc-20160816;
-        b=eWHlbHxyrD2bjxEzz74zXYi2EhvmFvE+RNzgclaPRMYPnI0W1rBe96Oqp1KybMGhJ2
-         rTV5kWIjtW+7HUo8f3dEkphrT7lQV3b32nGOedsSpTo3EZzCeUvPKyO1qrgRqfqJkOtL
-         WCLVccSA4mnqnZmxU9sgzTF49x4t4xpTL8knTOGqoem9KVBD287Xp5UmDSL9mVaJPwGI
-         6UxrzVbwYDdg92Kz6UlSCAafy4KK/q1X5m6cNLbAfKQnlSr+5We6I7W0wuohixh85eU6
-         nSL5PysnV6ceQaFEt4AOb6sn4vV29+Mhwu/zRTpqCOoJ/DFkIoBO+/ofvYQwKURHkXLk
-         P0Ig==
+        b=uttjpiPvO/3ybPv3ckLScrkTjBHa0q6fgXhlABl2q2VRqewhoW9xud132Q5c83+1B9
+         PXbpK+KJLiGkYRGmuE/EipA2loauP6F3gcjvhlJwY/oxAH0uZpRdBx6dLO4xf/hzC269
+         fNmeu6kSwrZSra25xczNMG+hHmSpVLDI09C7rsCYwDiTC+YMYrUxHGAXu6fShFOWaH/K
+         n/i8SiOAmcKM6xDrLgxPhHbgUGaAs6FKzjQ+EI7KPumdn+BKuB2bQJa0bPHNVrf+8QjY
+         eEjMNFKLmNPsCYJn8cCl86/ib0aJRH4BGtSwLGA5KDWobD3Afr8xwQPi5Wu/ziEQotGG
+         u3hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=+n7+f74EnVFCcHgcGtgX5vTUUV3I+JQc1+ADtcVp6/U=;
-        b=eJy5tcwaDFkoIdburue2w7lTbi9qFjRlw0l/aL/0ePvDOVmUFMviwp7qSLzD+Q7UVx
-         ai14pJxy3khymFMyx+hMTrJ3EdfpB8UMTFh2sstPYvUGgopELZ4GsCx8w7jkknnr4mxX
-         kOOzXHPkgqzLUOOUxxU6NCPUvkFp2OeBbEoEm5BzB6i71Pj5TMI4WbvdFzkYq4m+nfgM
-         rqEFsxR4z7dKQdKT/+46tQ2iXoYMhRL++OTYncqhaa26MJqkHkjFD37GfBmfeTwLJNYL
-         ll3TBmwmjCrmM22hbTQf0hTe9r7uKmda1NSf/yj8+xS+77ZjnEuIOouukdmZLM2VENTx
-         2rXw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mrgkRdNE+AcdsZ+zHYLBFAXiQu5tjayM7At8EKmQNNc=;
+        b=SM6wAKeGWBem+Dhv7qiR6U8GOqj0YhtJYodP8ukmYxuQAMEpyk2MVDj8fe4wwc+ypM
+         jgpSH8q8Kkwx2DEbQzKUsK8BOk4ON90YMgloM250V8ob+OBFRz+8ptDuA6RlgAPwsqlZ
+         UJ02WVjfBJkgAhbA687r/RXmP51LspL9idtNMOrsgH38PmSGNW+a/cgCwYscZZ3rYXz7
+         KhOv/+J70rlVoYm5rdeTf3vxia7BBDbXauW8NfIsyzcz1Qsq+68XPIncq054nyKvouiM
+         jmOxmKZTAG1RXSg7phs90GhuEjhyHCl+bSAfKFy0bIqvvGgFUoPi1CXbZ1iYUa2bTcaS
+         6B1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HEbbJ8jE;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id b28-20020a62a11c000000b005a8c6714ffesi15067081pff.96.2023.03.02.08.00.44;
-        Thu, 02 Mar 2023 08:00:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J+8NCMDx;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c145-20020a379a97000000b0071d9bff7703si13300084qke.329.2023.03.02.08.31.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Mar 2023 08:31:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HEbbJ8jE;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229617AbjCBQAn (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 2 Mar 2023 11:00:43 -0500
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:58768 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229456AbjCBQAl (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 2 Mar 2023 11:00:41 -0500
-Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com [IPv6:2607:f8b0:4864:20::42b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id C1CED4E5CA
-        for <kvm@vger.kernel.org>; Thu,  2 Mar 2023 08:00:40 -0800 (PST)
-Received: by mail-pf1-x42b.google.com with SMTP id b20so10399363pfo.6
-        for <kvm@vger.kernel.org>; Thu, 02 Mar 2023 08:00:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1677772840;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=+n7+f74EnVFCcHgcGtgX5vTUUV3I+JQc1+ADtcVp6/U=;
-        b=HEbbJ8jEIaxHHVU/1ku69muhqUjhzqfva6ClGyoPAPPJ3bBgMu+ZAM5VjpeVj0L35i
-         typM3nlHCyHHbyE73JuAAix3JMiVQE2TZpvJQpqft31CA6lRQQzf3TXWd3oXaVpwWTNu
-         bDKt2FBVxVrdwGQFcmQkSTIpsjyMw++Hz3O0Jfzf7+TAyodureJkx1NKZX/E30Q5H+pB
-         gOC80DAjMM6vN8TTXIXa32+YIW0a0C3cwTHJ244us5paBpVvKoAODtiu+jHpxUUcog+I
-         /08myzzKe8GSsJCRU+TurrhAdbEmdIyOP3EN+KDiNnGdtbQ6HXL2g2jSW7SmWbDHmLLI
-         Mbxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677772840;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+n7+f74EnVFCcHgcGtgX5vTUUV3I+JQc1+ADtcVp6/U=;
-        b=LlPdfiP6exh6nbX6v0faKa7PUlJ3DEgw1isw0PoycmIcSDr6tjWZbAcJvcVQI4yKnq
-         HJ2NoNVqABxoV92Dxb+pq4mMNRP1b4v3hQKyah80tk0A4k5TWXi65zxtdYyfYR+TYQ0E
-         /MIHgaycDalRGc+NoDr1IfXFG6vU+nnOmHjuckBCLMTOVyLP4yEWppBz+4hAEdL50L7N
-         jXQfMbJpkQMzFZSGjER+FFpUzTU4/kw5QWG7/XTt9kEsSSpy9LDBvUZvPb2X3/iQTuK4
-         E92yGH5fD+RuP36QpTd4qACw/yJ5u2oHP4hsDbl4FX6OeVCOke8mwiKYhPhYu8+ChvNl
-         NOBg==
-X-Gm-Message-State: AO0yUKUhQ7lw/UY0tRBfX1XW+/8wOKlWo/NHhUEd17c0OwiVWXkbPx4g
-        ZVJHAQyLPhMI6oL3JdOFd7cP5CRbpAdXOa/1wbYKSg==
-X-Received: by 2002:a63:3347:0:b0:503:7cc9:3f8d with SMTP id
- z68-20020a633347000000b005037cc93f8dmr3395682pgz.9.1677772840177; Thu, 02 Mar
- 2023 08:00:40 -0800 (PST)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J+8NCMDx;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1677774675;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mrgkRdNE+AcdsZ+zHYLBFAXiQu5tjayM7At8EKmQNNc=;
+	b=J+8NCMDx7Z4vDSmg+MQcdvTF71JD4DNVbxV39lEBh6cyxMdfbXMUncK9VkdO5C7K5LoITO
+	JyMAiqRJwlo1uci4MIBuwjaDPwA7krp0/rH3wehFS4HWgBWxIyCWG3xVje1J1IFEXM2mrn
+	zWQLVyhU+hmV6Mp7K9Jmr5pUFhh5qX0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-323-YDXKNcPTNsmtB1atJEVCHg-1; Thu, 02 Mar 2023 11:31:13 -0500
+X-MC-Unique: YDXKNcPTNsmtB1atJEVCHg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 25DA51C04349;
+	Thu,  2 Mar 2023 16:31:13 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.93])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D9A7440B3F12;
+	Thu,  2 Mar 2023 16:31:10 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Daniel Berrange <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	Maxim Levitsky <mlevitsk@redhat.com>,
+	libvir-list@redhat.com,
+	Richard Henderson <richard.henderson@linaro.org>,
+	xen-devel@lists.xenproject.org,
+	Reinoud Zandijk <reinoud@netbsd.org>
+Subject: [PATCH v2 1/6] docs/about/deprecated: Deprecate the qemu-system-i386 binary
+Date: Thu,  2 Mar 2023 17:31:01 +0100
+Message-Id: <20230302163106.465559-2-thuth@redhat.com>
+In-Reply-To: <20230302163106.465559-1-thuth@redhat.com>
+References: <20230302163106.465559-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20230228150216.77912-1-cohuck@redhat.com> <20230228150216.77912-2-cohuck@redhat.com>
- <CABJz62OHjrq_V1QD4g4azzLm812EJapPEja81optr8o7jpnaHQ@mail.gmail.com>
- <874jr4dbcr.fsf@redhat.com> <CABJz62MQH2U1QM26PcC3F1cy7t=53_mxkgViLKjcUMVmi29w+Q@mail.gmail.com>
- <87sfeoblsa.fsf@redhat.com> <CAFEAcA8z9mS55oBySDYA6PHB=qcRQRH1Aa4WJidG8B=n+6CyEQ@mail.gmail.com>
- <87cz5rmdlg.fsf@redhat.com>
-In-Reply-To: <87cz5rmdlg.fsf@redhat.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 2 Mar 2023 16:00:28 +0000
-Message-ID: <CAFEAcA-Q6hzgW-B52X5XEtZsvBX64qSr9wSKizLVYu58mPdXKw@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] arm/kvm: add support for MTE
-To:     Cornelia Huck <cohuck@redhat.com>
-Cc:     Andrea Bolognani <abologna@redhat.com>,
-        Thomas Huth <thuth@redhat.com>,
-        Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Eric Auger <eauger@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Gavin Shan <gshan@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: AdrWHTubK66Z
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-TUID: RjzLUqK+fCO9
 
-On Thu, 2 Mar 2023 at 14:29, Cornelia Huck <cohuck@redhat.com> wrote:
->
-> On Thu, Mar 02 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > I think having MTE in the specific case of KVM behave differently
-> > to how we've done all these existing properties and how we've
-> > done MTE for TCG would be confusing. The simplest thing is to just
-> > follow the existing UI for TCG MTE.
-> >
-> > The underlying reason for this is that MTE in general is not a feature
-> > only of the CPU, but also of the whole system design. It happens
-> > that KVM gives us tagged RAM "for free" but that's an oddity
-> > of the KVM implementation -- in real hardware there needs to
-> > be system level support for tagging.
->
-> Hm... the Linux kernel actually seems to consider MTE to be a cpu
-> feature (at least, it lists it in the cpu features).
->
-> So, is your suggestion to use the 'mte' prop of the virt machine to mean
-> "enable all prereqs for MTE, i.e. allocate tag memory for TCG and enable
-> MTE in the kernel for KVM"? For TCG, we'll get MTE for the max cpu
-> model; for KVM, we'd get MTE for host (== max), but I'm wondering what
-> should happen if we get named cpu models and the user specifies one
-> where we won't have MTE (i.e. some pre-8.5 one)?
+Hardly anybody really requires the i386 binary anymore, since the
+qemu-system-x86_64 binary is a proper superset. So let's deprecate
+the 32-bit variant now, so that we can finally stop wasting our time
+and CI minutes with this.
 
-I think we can probably cross that bridge when we get to it,
-but I imagine the semantics would be "cortex-foo plus MTE"
-(in the same way that -cpu cortex-foo,+x,-y can add and
-subtract features from a baseline).
+With regards to 32-bit KVM support in the x86 Linux kernel,
+the developers confirmed that they do not need a recent
+qemu-system-i386 binary here:
 
-thanks
--- PMM
+ https://lore.kernel.org/kvm/Y%2ffkTs5ajFy0hP1U@google.com/
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/about/deprecated.rst | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 15084f7bea..11700adac9 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -34,6 +34,18 @@ deprecating the build option and no longer defend it in CI. The
+ ``--enable-gcov`` build option remains for analysis test case
+ coverage.
+ 
++``qemu-system-i386`` binary (since 8.0)
++'''''''''''''''''''''''''''''''''''''''
++
++The ``qemu-system-i386`` binary was mainly useful for running with KVM
++on 32-bit x86 hosts, but most Linux distributions already removed their
++support for 32-bit x86 kernels, so hardly anybody still needs this. The
++``qemu-system-x86_64`` binary is a proper superset and can be used to
++run 32-bit guests by selecting a 32-bit CPU model, including KVM support
++on x86_64 hosts. Thus users are recommended to reconfigure their systems
++to use the ``qemu-system-x86_64`` binary instead.
++
++
+ System emulator command line arguments
+ --------------------------------------
+ 
+-- 
+2.31.1

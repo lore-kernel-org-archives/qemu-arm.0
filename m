@@ -1,134 +1,119 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp946489ejc;
-        Fri, 3 Mar 2023 03:22:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set89Bvat7xqEz1oTdjbe6+HL1cdiFssT9AZjgtKkfAbmhm23MrTnY9no3QyQk7tAXJzMqOjg
-X-Received: by 2002:a05:622a:1806:b0:3be:36c7:a15c with SMTP id t6-20020a05622a180600b003be36c7a15cmr2225445qtc.49.1677842537284;
-        Fri, 03 Mar 2023 03:22:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677842537; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp949008ejc;
+        Fri, 3 Mar 2023 03:24:58 -0800 (PST)
+X-Received: by 2002:aa7:9735:0:b0:5e5:6eea:5956 with SMTP id k21-20020aa79735000000b005e56eea5956mr1810785pfg.3.1677842698569;
+        Fri, 03 Mar 2023 03:24:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677842698; cv=none;
         d=google.com; s=arc-20160816;
-        b=cD+bfXfuWVekkOdMFhBcbftRWwQ2y79gV+taCOy8GxzmT0aodRGPwS3iTVdbqrZR7J
-         A5ukDotesZhXB0VVvzCvIs1hQIU08yMdog7GNaFny2mOR4+8qCoSzno+uHWD4t5pOh2Y
-         iESmkSX4qEX2yZCPxVrM/oy9v3EU0iSipEbt2L9tiBUfmiFuMLhelK9hxljWbVQWXoFN
-         BOJ2a4yc1pTG6DL1rEocNTFLCUm4kP43bKhdwpUwR01iMU1tPBcXooAGabmHxP47gf7R
-         A9sHflv+nH/KstO9uXKI/hjI27Tmznuse6GKK70lajjdLFMuB4vWm2AFbj8WebCGoyh9
-         06Bg==
+        b=wYffrrONdGN7hxoaLWSl8kEsRSJLlT14rmCvVJoL7fhoVB/rlzQlY1aFVg5NXSG+gt
+         SNVN2PaVWArDwh0vax1yh2juzkC9TGHjboWJCsrfRY+bSaBtOi02qhQ7gKMpZce2CH5n
+         AN1KXAU9n2iabsuww7oSj51wVQ4c/eLBhlUPYTbqh0TIw/VSOdi56wXFZRiJQLZmML6/
+         yM/s0fICCBwJdFioMoQR5/xDwH2YImV641xZLOwNoC7wU/u7qbxDcmLwGxbHIsITbLQn
+         ++Q8u+NqYa5o4dXSU+xe66zN4/pkaSJLB1N3ogJUjMcf1uANGQ3Osv/r/UBsxILAs5Lp
+         CH3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:subject:from
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=n8X5aQaOrBWXpjTROsAMx9ppByyxH1Rsy+EUt4R2/2I=;
-        b=np/cOHiv88tBCBjYUn59b+2mSJZEnWKzUC9mQpE2m1uugJM9Virb7dkFgmlYDwtqZf
-         XMI6KrAO0uMhl+CRo5MDvmYiw8HPJy6s5U7QdX6LQ28QvYOpjXZo+lJZW4NURQEzk6Yn
-         CUb3OtHrBfckNMWr/i2Ca/wzAJJedaTZ1MrfUawom+H/5TLyLbk9v+MJFdl8tb8FNWgb
-         AxmoH9BbeaM9eoOkOF0G22wC8PATgRgXgAi/I3n56r8nni0X4vfwG8W8/bDNdGT3Hv9L
-         fxJvP/mAW/qg0JubXHVnqIzcxZk9dnIEy/4LzwMApaVPZ7uufkjLqVEgLeS2UvllyYVn
-         PAUQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=aT5E5FQuhkYZHN7xCNC3IujwXcdIeJdZVQgTLRWi92M=;
+        b=WpUTzjCvtNv6Jdo3NSRzwX7ZTU89iCixyoBhNaDtGSDyyxcwD4VM7ndFkKve+hi7AO
+         1PYc4Y0iFlA3NhLBVx6zWkL0buGxv3BfVLPEMg+7+2fZSNpf/k+klNZHS9b8ei9ROL1D
+         ac/A/OLSku7ebYkEBKZLVqW/UzDzmlZkwPneJ0Yi0KqlrJrS2DYMtHKn4K+YRoA/+TS1
+         OMlgUUqzX2Q5lykQa+4engqyNGIKKTmc1XfE0ysYsQ+cmPivxNuhXkQf0BvFULcn+o85
+         bJcInjVVWuBS3dj66uL4hI9NgYGA90ZHgImjIGads8rUg2y75BuEoahvkcwi1Ix4cI0t
+         TFMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KaOyuFRJ;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id b75-20020ae9eb4e000000b0073b65d10881si1477870qkg.4.2023.03.03.03.22.17
+       dkim=pass header.i=@linaro.org header.s=google header.b=JdlLeBN9;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i126-20020a628784000000b005943c2743c1sor959142pfe.33.2023.03.03.03.24.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Mar 2023 03:22:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Fri, 03 Mar 2023 03:24:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KaOyuFRJ;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1677842536;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=n8X5aQaOrBWXpjTROsAMx9ppByyxH1Rsy+EUt4R2/2I=;
-	b=KaOyuFRJxe3Dd8G/VxaLdMwGZq2XvodNFCXkkPvdcdJl5/t0+MVImb5CF3ffNARSuVqgwT
-	9Bx/wedUb8FJaYTsdejgVBUOpGnN0nYV9weMwjfGb3GxbTjNWJmIkxB+p5PIZKVlZdlsAS
-	ZluOAVINW+WIZLhQH/dm9+o5LvLtvkk=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-161-xN4lhAR1Px-DOkoCHz_UKw-1; Fri, 03 Mar 2023 06:22:15 -0500
-X-MC-Unique: xN4lhAR1Px-DOkoCHz_UKw-1
-Received: by mail-wm1-f71.google.com with SMTP id l16-20020a05600c1d1000b003e77552705cso854622wms.7
-        for <alex.bennee@linaro.org>; Fri, 03 Mar 2023 03:22:15 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=JdlLeBN9;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1677842698;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=aT5E5FQuhkYZHN7xCNC3IujwXcdIeJdZVQgTLRWi92M=;
+        b=JdlLeBN9mZJKEzV2VH1S1A56dOCzQMFoF3EFCCzNeJhuZ0/DcQj0FSt6e+TAwbQ8a/
+         9sFQyrtfC3y9X0+7Ge7TFkFeBBu/HfLMyCr0TD5vmRswBGNsMR0KuPPcC/t+0Nxkyg94
+         akiDWvTZlsZ6o+AnhgnxbxN5VJXTOyAXd8wiBQ9bH4agHMMI1JenET0Q5kr13rdOXADZ
+         G0bd5vBN/KVFmaFe7hiFRlnnaJ3W1II1jZJrGujsdTk4ORgorIXvETWuDQmhj5fNAi6M
+         LPDGI+bWQc7wCa2g+Sz+/eaGH3DArOygO9P4pmwO7LKLsiOARMLG0eSFMnIF41229i2A
+         HYTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n8X5aQaOrBWXpjTROsAMx9ppByyxH1Rsy+EUt4R2/2I=;
-        b=uMyvoYObRJ1qVB1M2eveVG86dAUjL30X7nQAkqkWs4dE4xKGxtJ4kbIk6XKAueziJ4
-         0Mqf3DsuUKILR5D9zuplP6Dj51Xzn249a4uEopcijFbbelt4C4jlsPapZa0Fnzu5TzzC
-         MaqovMYukC62GApDmcPuC40pXuOUoq5I598BcD4Ex1TRep2gdlLqNAZfIldJGA7FvDje
-         OkYP61fYx5bOID9IjDcSSgHyt2rGM5W/ZSF3hMyoAtNpuXGIDqFJKGXucl7Vm8wpnAge
-         TCYRAYgfoxNn0WwtWYcKWVDjvZZy5daYszQCHBJlSP/6MgQDyu1fj2gcH8f530yBAKB6
-         qh9Q==
-X-Gm-Message-State: AO0yUKWUpp3ddjRKN+TED4ikgLq2RtKFZNbgUKqbFiyvLniAgBCi2FCl
-	yDi0w3pAMlHidFaQjGS38gRk1i9yK9hCDAOZwxgEfmz5e3yNhbYuYhN9CKi6mM+fV+eDSzIhU0u
-	zpQPl0AbGVIaSwxsH
-X-Received: by 2002:a05:600c:3b07:b0:3ea:ea3e:2d36 with SMTP id m7-20020a05600c3b0700b003eaea3e2d36mr1407150wms.24.1677842534868;
-        Fri, 03 Mar 2023 03:22:14 -0800 (PST)
-X-Received: by 2002:a05:600c:3b07:b0:3ea:ea3e:2d36 with SMTP id m7-20020a05600c3b0700b003eaea3e2d36mr1407120wms.24.1677842534612;
-        Fri, 03 Mar 2023 03:22:14 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.2] (ip-109-43-176-203.web.vodafone.de. [109.43.176.203])
-        by smtp.gmail.com with ESMTPSA id p16-20020a05600c359000b003e209b45f6bsm6595277wmq.29.2023.03.03.03.22.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Mar 2023 03:22:14 -0800 (PST)
-Message-ID: <2c7f837f-c156-8525-005f-f47d50591a85@redhat.com>
-Date: Fri, 3 Mar 2023 12:22:12 +0100
+        d=1e100.net; s=20210112; t=1677842698;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=aT5E5FQuhkYZHN7xCNC3IujwXcdIeJdZVQgTLRWi92M=;
+        b=jIsQiB+TV+pao8MgR2YhdDwspOvFZydKAW282RnLLdaRU0U4pICySVYC/1yG2togOP
+         KK9SJL6SeyybFMpgMArrqgydb79LZm+eFAXeJPPR1LBmNR+jnOJ9bAcehprtu7Hh8UHS
+         kVS7JwZYLA8tcrKrfTAA2hTW9ADmT3bWVuZZZOBdQgtBny1HdcUQvWDs/QY7iI44ZWGC
+         kY7fl+wogvadgKGOE4LSUr1IHJ1oNafk6p+4jsmgHmXPy83zcYdxAz1wBjux0q4oCcaD
+         +hyyqKdJ0JTV6f8N5T81XLipsV0jKH8AszT/DEtWwvBGfN9w7ZnEPLv8gKBbK/f/Jib4
+         TMJA==
+X-Gm-Message-State: AO0yUKUnv8TC135fQXatzZcfuQyiYEEt2KYN3+wzScU8/5yafzUJDRL1
+	K/2YPw/FItVkVYTv8yTcjxEh1ybjvh7V2JpD5Fwgh8I4
+X-Google-Smtp-Source: AK7set9TFhgmzEYff5a5Y/FhcSMZ3q7NzK7FxjJZYmiBpcpZypyz3OwZzAn3/jSFaGTGPE0QrSfYtgRzKg7q/DB7Eps=
+X-Received: by 2002:a62:ce4e:0:b0:606:6380:98da with SMTP id
+ y75-20020a62ce4e000000b00606638098damr729699pfg.5.1677842698016; Fri, 03 Mar
+ 2023 03:24:58 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-To: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Daniel Berrange <berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Maxim Levitsky <mlevitsk@redhat.com>, libvir-list@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>,
- xen-devel@lists.xenproject.org, Reinoud Zandijk <reinoud@netbsd.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Helge Deller <deller@gmx.de>,
- Laurent Vivier <lvivier@redhat.com>
-References: <20230302163106.465559-1-thuth@redhat.com>
- <4bed38c3-ab4f-cd32-05a4-afa090ad8b9a@linaro.org>
- <6c1f0d05-924e-854e-0175-5e345945e086@redhat.com>
- <89fd1c916b6c8094ea1a7a52396b3f91025c75c1.camel@physik.fu-berlin.de>
-From: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2 0/6] Deprecate support for 32-bit x86 and arm hosts
+References: <20230302163106.465559-1-thuth@redhat.com> <4bed38c3-ab4f-cd32-05a4-afa090ad8b9a@linaro.org>
+ <6c1f0d05-924e-854e-0175-5e345945e086@redhat.com> <89fd1c916b6c8094ea1a7a52396b3f91025c75c1.camel@physik.fu-berlin.de>
 In-Reply-To: <89fd1c916b6c8094ea1a7a52396b3f91025c75c1.camel@physik.fu-berlin.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: IVufBulFjNJf
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Mar 2023 11:24:46 +0000
+Message-ID: <CAFEAcA9cE087cowTodqAb2mkzGxxnAcBGZsMNu6uj_Nsa2v-dw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] Deprecate support for 32-bit x86 and arm hosts
+To: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	qemu-devel@nongnu.org, Daniel Berrange <berrange@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
+	Maxim Levitsky <mlevitsk@redhat.com>, libvir-list@redhat.com, 
+	Richard Henderson <richard.henderson@linaro.org>, xen-devel@lists.xenproject.org, 
+	Reinoud Zandijk <reinoud@netbsd.org>, Michael Tokarev <mjt@tls.msk.ru>, Helge Deller <deller@gmx.de>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: u21kK5ulDtdA
 
-On 03/03/2023 12.09, John Paul Adrian Glaubitz wrote:
+On Fri, 3 Mar 2023 at 11:09, John Paul Adrian Glaubitz
+<glaubitz@physik.fu-berlin.de> wrote:
+>
 > Hello!
-> 
+>
 > On Fri, 2023-03-03 at 10:48 +0100, Thomas Huth wrote:
->> x86 ==> deprecate both, user and system emulation support on
->>           32-bit hosts
->> arm ==> deprecate only system emulation on 32-bit hosts.
-> 
+> > x86 ==> deprecate both, user and system emulation support on
+> >          32-bit hosts
+> > arm ==> deprecate only system emulation on 32-bit hosts.
+>
 > I would recommend against dropping support for 32-bit hosts for qemu-user
 > as there are some cases where the emulation of 32-bit user code on 64-bit
 > hosts does not work properly [1].
-> 
+>
 > Adrian
-> 
->> [1] https://sourceware.org/bugzilla/show_bug.cgi?id=23960
+>
+> > [1] https://sourceware.org/bugzilla/show_bug.cgi?id=23960
 
-The ticket is very long and hard to read, but ... oh my, does that mean you 
-need to compile qemu-user in 32-bit mode on a 64-bit x86 host to properly 
-run 32-bit binaries from other architectures? ... uh, that's ugly ... and 
-sounds like bug in QEMU's user mode emulation ... and what if you're running 
-a distro (or different 64-bit host architecutre) that does not support 
-32-bit userspace libraries anymore? Then you're lost?
+I failed entirely to get any traction with persuading the
+kernel folks to provide an API to let QEMU work in that
+"32-bit guest wants a 32-bit dirent but the kernel is
+providing a 64-bit hash value as a dirent" case. Somebody kindly
+wrote some kernel patches but they went absolutely nowhere.
 
-  Thomas
+It seems to only happen for certain kinds of 32-bit guest, where
+the guest libc is not also using 64-bit dirents. So at least as
+far as Arm guests are concerned the effective result was "the
+older arm binaries that were built to need a 32-bit dirent are
+just not around any more, so very few people run into the problem".
+You can also work around it by using a different host filesystem
+type, I think.
+
+thanks
+-- PMM

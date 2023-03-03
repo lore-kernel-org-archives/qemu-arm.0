@@ -1,159 +1,136 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o10-20020a1c750a000000b003e00c453447sm5290606wmc.48.2023.03.03.03.39.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Mar 2023 03:39:04 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 907B31FFB7;
-	Fri,  3 Mar 2023 11:39:03 +0000 (GMT)
-References: <20230302191146.1790560-1-marcin.juszkiewicz@linaro.org>
- <20230302191146.1790560-3-marcin.juszkiewicz@linaro.org>
-User-agent: mu4e 1.9.21; emacs 29.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: Radoslaw Biernacki <rad@semihalf.com>, Peter Maydell
- <peter.maydell@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-Da?=
- =?utf-8?Q?ud=C3=A9?=
- <philmd@linaro.org>
-Subject: Re: [PATCH 3/3] tests/avocado: add Alpine Linux boot on
- AArch64/sbsa-ref
-Date: Fri, 03 Mar 2023 11:38:31 +0000
-In-reply-to: <20230302191146.1790560-3-marcin.juszkiewicz@linaro.org>
-Message-ID: <87bkla9i94.fsf@linaro.org>
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1059680ejc;
+        Fri, 3 Mar 2023 05:24:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set/PBg+l9NoEBQPPesf+gPk/25FSRvQeQ3qxBoOn/sfa0BXECJrIeHfPPwtL+0gl+p0re/ql
+X-Received: by 2002:ad4:5ba5:0:b0:56e:9dd8:47f3 with SMTP id 5-20020ad45ba5000000b0056e9dd847f3mr2565725qvq.13.1677849845608;
+        Fri, 03 Mar 2023 05:24:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677849845; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x3C4K3zJA0uy+NHFk6IGK8ph0n586a0CMvrLLWU3wb+JSLuZGXtsIfG9U9lz4jwt7F
+         nQJsV9U9lb5Fpm75c9cZAIJlvOusBTcZbVEGFtc/5L0L7vSGZtxTHoFMbZYryiVy1R3B
+         PRgNr7ZIshlrZQL31oUXlA+EgcnRLbG0OgPXm1nax2cWIjFJIHJCbq2DNYPIme0Z0UXL
+         R84D8PwlMJBcK0X3kQXMV5WYtASYymCT6bro6p4lYNxRDvFUpcPM5NCpErXxJ6DPY34h
+         OBPd3Gp2uwnIc29hOXU30m5TOTedc9a5zNECYDWEd4b1xB5qKBQ2JvSYo2q3FiAB55/Q
+         A1qA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=vY6brOEP/DXoCROxB1kV4HEQhVJBPpkS7zYoyza2yGM=;
+        b=nng+A2gefKQPMiuXQph77WnZOFEDVghalsb4+6z3wtiSh0b1Vl6mXXscwya5UYAWh2
+         W0i3uU6hX/3yUzOutDK/QO6zT4R9aCfppDuYxjHo/wFTQkdKiPycCFvsAdMh9mvwHST6
+         UjO2sMnbXUjqn/TZ/X33TYo4u/Pwz6C7k0wrr+npUiQgx6oRX58YAVBZhxxnLBdCnjD4
+         IDnleczUoaO64ss8HB7BjO5FS4U5L1fLM01P/Q8kR0hYXzpvHEWbmj5wjZsLyVBBWxyI
+         XWGYY5bV0P+ku2xdIShx9F7EmpeWmCo/no45RYRBP66CZcC2X1EQBHt15QtTfNZYH8zH
+         qV+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i25-20020a0cab59000000b005722e511e72si1453819qvb.582.2023.03.03.05.24.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Mar 2023 05:24:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pY5O3-0003uh-Qq; Fri, 03 Mar 2023 08:23:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pY5Ns-0003jC-BZ
+ for qemu-arm@nongnu.org; Fri, 03 Mar 2023 08:23:40 -0500
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pY5Nq-0002w4-0x
+ for qemu-arm@nongnu.org; Fri, 03 Mar 2023 08:23:39 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.52])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id A1B1E2CA55;
+ Fri,  3 Mar 2023 13:23:25 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Fri, 3 Mar
+ 2023 14:23:25 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G0063ec08ae6-643c-4ac0-8dd3-e6d8038f2ce0,
+ D247C90D5DACFD620130D6A3F59DE8A1FE9C6D23) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <840ae915-390e-5cb9-3186-360856ecf407@kaod.org>
+Date: Fri, 3 Mar 2023 14:23:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: KCu4ZydKirJG
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PULL 00/11] aspeed queue
+Content-Language: en-US
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>
+References: <20230302174206.2434673-1-clg@kaod.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230302174206.2434673-1-clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 597aa1e2-462e-4de4-8a78-5d5aebddfeb6
+X-Ovh-Tracer-Id: 17639755318039710685
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrudelledggeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpedukeeuheegtdekvdegveelvdffieegveevheeukeetgeekfeeivefgheduieekteenucffohhmrghinhepghhithhlrggsrdgtohhmpdhgihhthhhusgdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdfovfetjfhoshhtpehmohehhedvpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nBf2+trz8v9b
 
+Hello Peter,
 
-Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org> writes:
+On 3/2/23 18:41, Cédric Le Goater wrote:
+> The following changes since commit a2b5f8b8ab7b2c947823088103a40f0ff11fe06b:
+> 
+>    Merge tag 'pull-tcg-20230301' of https://gitlab.com/rth7680/qemu into staging (2023-03-01 19:19:20 +0000)
+> 
+> are available in the Git repository at:
+> 
+>    https://github.com/legoater/qemu/ tags/pull-aspeed-20230302
+> 
+> for you to fetch changes up to b22a2d409b1acfdf0d63d1bb3595194ceb3d94da:
+> 
+>    aspeed/smc: Replace SysBus IRQs with GPIO lines (2023-03-02 13:57:50 +0100)
+> 
+> ----------------------------------------------------------------
+> aspeed queue:
+> 
+> * fix for the Aspeed I2C slave mode
+> * a new I2C echo device from Klaus and its associated test in avocado.
+> * initial SoC cleanups to allow the use of block devices instead of
+>    drives on the command line.
+> * new facebook machines and eeprom fixes for the Fuji
+> * readline fix
 
-> To unify tests for AArch64/virt and AArch64/sbsa-ref we boot
-> same Alpine Linux image on both.
->
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> ---
->  tests/avocado/machine_aarch64_sbsaref.py | 29 ++++++++++++++++++++++++
->  1 file changed, 29 insertions(+)
->
-> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/mac=
-hine_aarch64_sbsaref.py
-> index e36e53d4d5..fdbde4b891 100644
-> --- a/tests/avocado/machine_aarch64_sbsaref.py
-> +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> @@ -148,3 +148,32 @@ def test_sbsaref_linux_max(self):
->          :avocado: tags=3Dcpu:max
->          """
->          self.boot_linux('max')
-> +
-> +    # This tests the whole boot chain from EFI to Userspace
-> +    # We only boot a whole OS for the current top level CPU and GIC
-> +    # Other test profiles should use more minimal boots
-> +    def test_alpine_sbsaref_max(self):
-> +        """
-> +        :avocado: tags=3Darch:aarch64
-> +        :avocado: tags=3Dmachine:sbsa-ref
-> +        """
-> +        self.fetch_firmware()
-> +
-> +        iso_url =3D ('https://dl-cdn.alpinelinux.org/'
-> +                   'alpine/v3.17/releases/aarch64/'
-> +                   'alpine-standard-3.17.2-aarch64.iso')
-> +
-> +        # Alpine use sha256 so I recalculated this myself
-> +        iso_sha1 =3D '76284fcd7b41fe899b0c2375ceb8470803eea839'
-> +        iso_path =3D self.fetch_asset(iso_url, asset_hash=3Diso_sha1)
-> +
-> +        self.vm.set_console()
-> +        self.vm.add_args("-cpu", "max,pauth-impdef=3Don")
-> +        self.vm.add_args("-machine", "sbsa-ref")
-> +        self.vm.add_args("-drive", f"file=3D{iso_path},format=3Draw")
-> +        self.vm.add_args('-device', 'virtio-rng-pci,rng=3Drng0')
-> +        self.vm.add_args('-object', 'rng-random,id=3Drng0,filename=3D/de=
-v/urandom')
-> +
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, 'Welcome to Alpine Linux 3.17')
-> +
+This one was merged already. Would you prefer an updated PR instead ?
 
-This seems to get to grub before hanging:
+Thanks,
 
-  2023-03-03 11:35:53,696 protocol         L0495 DEBUG| Transitioning from =
-'Runstate.CONNECTING' to 'Runstate.RUNNING'.
-  2023-03-03 11:35:53,700 __init__         L0153 DEBUG| NOTICE:  Booting Tr=
-usted Firmware
-  2023-03-03 11:35:53,700 __init__         L0153 DEBUG| NOTICE:  BL1: v2.8(=
-release):v2.8-335-g6264643a0
-  2023-03-03 11:35:53,700 __init__         L0153 DEBUG| NOTICE:  BL1: Built=
- : 17:51:50, Feb  8 2023
-  2023-03-03 11:35:53,703 __init__         L0153 DEBUG| NOTICE:  BL1: Booti=
-ng BL2
-  2023-03-03 11:35:53,707 __init__         L0153 DEBUG| NOTICE:  BL2: v2.8(=
-release):v2.8-335-g6264643a0
-  2023-03-03 11:35:53,707 __init__         L0153 DEBUG| NOTICE:  BL2: Built=
- : 17:51:50, Feb  8 2023
-  2023-03-03 11:35:53,722 __init__         L0153 DEBUG| NOTICE:  BL1: Booti=
-ng BL31
-  2023-03-03 11:35:53,727 __init__         L0153 DEBUG| NOTICE:  BL31: v2.8=
-(release):v2.8-335-g6264643a0
-  2023-03-03 11:35:53,727 __init__         L0153 DEBUG| NOTICE:  BL31: Buil=
-t : 17:51:50, Feb  8 2023
-  2023-03-03 11:35:53,732 __init__         L0153 DEBUG| UEFI firmware (vers=
-ion 1.0 built at 16:17:37 on Feb  9 2023)
-  2023-03-03 11:35:57,556 __init__         L0153 DEBUG| ESC[2JESC[04DESC[=
-=3D3hESC[2JESC[09DESC[0mESC[30mESC[47mWelcome to GRUB!
-  2023-03-03 11:35:57,599 __init__         L0153 DEBUG| ESC[0mESC[37mESC[40=
-mESC[0mESC[30mESC[40mESC[2JESC[01;01HESC[0mESC[37mESC[40mESC[02;30HGNU GRUB=
-  version 2.06
-  2023-03-03 11:35:57,624 __init__         L0153 DEBUG| ESC[01C/-----------=
------------------------------------------------------------------\ESC[05;02=
-H|ESC[76C|ESC[06;02H|ESC[76C|ESC[07;02H|ESC[76C|ESC[08;02H|ESC[76C|ESC[09;0=
-2H|ESC[76C|ESC[10;02H|ESC[76C|ESC[11;02H|ESC[76C|ESC[12;02H|ESC[76C|ESC[13;=
-02H|ESC[76C|ESC[14;02H|ESC[76C|ESC[15;02H|ESC[76C|ESC[16;02H|ESC[76C|ESC[17=
-;02H|ESC[76C|ESC[18;02H\---------------------------------------------------=
--------------------------/ESC[19;02HESC[20;02H     Use the ^ and v keys to =
-select which entry is highlighted.
-  2023-03-03 11:35:57,628 __init__         L0153 DEBUG| Press enter to boot=
- the selected OS, `e' to edit the commands
-  2023-03-03 11:35:57,632 __init__         L0153 DEBUG| before booting or `=
-c' for a command-line.                           ESC[05;80H
-  2023-03-03 11:35:57,698 __init__         L0153 DEBUG| ESC[0mESC[30mESC[47=
-mESC[05;03H*Linux lts                                                      =
-            ESC[0mESC[37mESC[40mESC[01DESC[06;03H                          =
-                                                  ESC[01DESC[07;03H        =
-                                                                    ESC[01D=
-ESC[08;03H                                                                 =
-           ESC[01DESC[09;03H                                               =
-                             ESC[01DESC[10;03H                             =
-                                               ESC[01DESC[11;03H           =
-                                                                 ESC[01DESC=
-[12;03H                                                                    =
-        ESC[01DESC[13;03H                                                  =
-                          ESC[01DESC[14;03H                                =
-                                            ESC[01DESC[15;03H              =
-                                                              ESC[01DESC[16=
-;03H                                                                       =
-     ESC[01D
-  ESC[17;03H                                                               =
-             ESC[01DESC[02C
-  2023-03-03 11:35:58,724 __init__         L0153 DEBUG| ESC[05;78HESC[23;01=
-H   The highlighted entry will be executed automatically in 1s.            =
-     ESC[05;78HESC[23;01H   The highlighted entry will be executed automati=
-cally in 0s.                 ESC[05;78HESC[0mESC[30mESC[40mESC[2JESC[01;01H=
-ESC[0mESC[37mESC[40mESC[0mESC[30mESC[40mESC[2J
-  ESC[04DESC[0mESC[37mESC[40m  Booting `Linux lts'
-  2023-03-03 11:37:51,367 stacktrace       L0039 ERROR|=20
-  2023-03-03 11:37:51,368 stacktrace       L0041 ERROR| Reproduced tracebac=
-k from: /home/alex/lsrc/qemu.git/builds/arm.all/tests/venv/lib/python3.9/si=
-te-packages/avocado/core/test.py:770
-  2023-03-03 11:37:51,368 stacktrace       L0045 ERROR| Traceback (most rec=
-ent call last):
-  2023-03-03 11:37:51,368 stacktrace       L0045 ERROR|   File "/home/alex/=
-lsrc/qemu.git/builds/arm.all/tests/avocado/machine_aarch64_sbsaref.py", lin=
-e 178, in test_alpine_sbsaref_max
+C.
 
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

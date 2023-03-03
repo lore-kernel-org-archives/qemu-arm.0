@@ -1,127 +1,299 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1126955ejc;
-        Fri, 3 Mar 2023 06:30:21 -0800 (PST)
-X-Google-Smtp-Source: AK7set8MvY2f7Js92ZO800JCvOLA30PFBRSPf6TDgHxpmcx607vihiAlsZmDIUpDbMLEHTOXxFMq
-X-Received: by 2002:a05:6214:d6c:b0:53c:5e57:cd02 with SMTP id 12-20020a0562140d6c00b0053c5e57cd02mr3510152qvs.38.1677853821053;
-        Fri, 03 Mar 2023 06:30:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677853821; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1140966ejc;
+        Fri, 3 Mar 2023 06:42:13 -0800 (PST)
+X-Google-Smtp-Source: AK7set9kSyEWPcZAgDJDPYYhmyOg0rnxJlNaemRt2VhZt3aJWDD61XV8Dp4eTL+YkvNtgE8jD2EW
+X-Received: by 2002:a05:6871:546:b0:172:29ce:f7ee with SMTP id t6-20020a056871054600b0017229cef7eemr1063182oal.43.1677854533701;
+        Fri, 03 Mar 2023 06:42:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677854533; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nqc5yQVKrdMM4CwE/4ppYbsahPA3Qeeg6xmGBnO8+I6CrHTMgLsSOu28NVMWH4bzap
-         UGvqk4KfzdCDNe37v/tU8aw92m7tw0ucdENcCq+yFZEmMoRMuj6nysH924AS2ciTEbcv
-         w98hpZb7BBjxdQ76iYHLyMkkCLcNjDtHtCApdsqdpvqg8SFhuHmTYPJaX83/E4J1uRpg
-         AHT2nYrzO/rZHZx3WwQuUIEm7lNlANFY5ij2LmFVC8+f7XgWqi7Yw4MO7gGq+6ASrTRC
-         jvT/hwl0WQqJgEjcMgy20Mwc3/dM58cDyKnyBi9zEPn7QAxAypFPjf9LU/NSPUnWWMb8
-         HyIA==
+        b=NpK6Q8ZoHJz9WyrJVMAYuA+IHkXd2PcHxbL7Z6qwXMiQyKG7rmytJj9NIUKeELawlk
+         eV3xoOlaL/fSg2hrOXf1aMhmt3zZrvc4sDn7rG+8Shh3L9KHXuDCbxP71880G2vA6bDH
+         nUR9FhnCXoCTpa+1m/M0xiZTsfktgUesKAZrx/tQW/pEy/pwNU5Ietexx+VwWdY70XCX
+         fDsWu/Ug7cY4VqV4vbKCYac3u7pGxCXGCpKrwQIzUkr1LPYidBA9HGG96gIDl5TkZPU2
+         RpfRu6vrcdbgNsqrJa7fRqCmDEl406GHXaIaqwL2pZQzufXnj4S6ksHLW0AQpmeZ2r/0
+         MWCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=51IZpA1dynVt+5lRDC2bcX9f9rBMfnCJq3VatCa8Z6k=;
-        b=FBpFC3ijvqoOxQAHzoKQfRHjLgEbsXCEfcpF8KIK/Coa3gwdXwOr+XTUjjCJr6GAbb
-         RJ3oGqjGZMm4u7w0pPLZji+F1zH7sAfEsH/9PJJAfR2HBANk79LGDVeG2X+Su+8/rgsh
-         yFwgT3kZUPkbWcvi43RcDJK4CqqA81ZaxTo2D+LLbtvXoNAawVfRY3nv7oUU0MBcOZfZ
-         hW+aaZKc5nZENtiGlJXlFiTShUQAA+xPIZYh6gjlXfGuDs+MNMXR0CqgAYu437K9pLtu
-         YShdR3p5v2R4extoD1ZA42IZN40x5SCT8hOoL56RvCZVN8CcQrdBz8FRF73PevDgRLPH
-         L7TQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=0W4DjC/C/55MXxSDk0u68ynMzJEKeFnaJ8PybW6/rls=;
+        b=jtextnLP82NdzMwk9X8w1iZrY5FEg/pgR/BYmGdPzxfJbAFgfK+uNklQ2ZHsvkoeHU
+         u9VAZU/fuHnZEvWZTUFQIl4LIWD3+2BDO/r5mUCsKb7fq5LWYOkbB/fZguF29vDI7ipa
+         EwOpe1OduyLKUGXOhnLRKAmbct/L9nn2H5bndAj6/xtSLwpJtVGfuSV4RQOkbv5OhqCA
+         5ByDiUPdgglk78teiYFNj3VbBjT9Yik/8H1n2SU2jbqbfzhSnFtcEJ+C0RhTYbBOa2Gq
+         i/qvfJm1aT3eJGtIiBCATqmBgrin38pXDsAv0GqFmMgPz3zpIK7C5Ea6bWFN/McZkeew
+         7o9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CReS4wOG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16-20020a0cf3d0000000b0056fedcf9dbfsi1695219qvm.487.2023.03.03.06.30.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Mar 2023 06:30:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=bfSIhSaY;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id z5-20020a544585000000b0037ab610638bsi2086447oib.220.2023.03.03.06.42.13
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 03 Mar 2023 06:42:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CReS4wOG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pY6Py-0006wm-Kx; Fri, 03 Mar 2023 09:29:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pY6Pw-0006wH-Ti
- for qemu-devel@nongnu.org; Fri, 03 Mar 2023 09:29:52 -0500
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pY6Pv-0007Cz-E2
- for qemu-devel@nongnu.org; Fri, 03 Mar 2023 09:29:52 -0500
-Received: by mail-pf1-x436.google.com with SMTP id fd25so1682120pfb.1
- for <qemu-devel@nongnu.org>; Fri, 03 Mar 2023 06:29:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1677853790;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=51IZpA1dynVt+5lRDC2bcX9f9rBMfnCJq3VatCa8Z6k=;
- b=CReS4wOGDBN7SRTYiIHw/qWimjWe+WZ/YwchiUe3XGhfs2O6NhiVHQiqSlbsTqxJKb
- eBKeDkkV1zMl9PDtBa7SIJUKGbwIOLxk61eMOPcbpcVGPeaIpVo/ji3L2UYJThI1xb09
- QVaPE59WdYEKxOOu7mJJEk0ODF9Dz5VNjHrcTI56p2OHXF9pPUPAawHAo0rw9coRx8nU
- 2+Lg33p+lcja1auKXj4AGEElQqqvQ7zwNR8e1f72OqgpCtXIuvRCQOEx2CVB3HX2//Ok
- QYQ5kQqCUfkNmSt1w6Etyv3uEgPPy8jXxzOMrhPSAuE/Sg0ti/43HINKgYuXj5QffZsU
- KLxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1677853790;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=51IZpA1dynVt+5lRDC2bcX9f9rBMfnCJq3VatCa8Z6k=;
- b=ZmtdUYupUxPPjmrQ5hmBnfGOTn+ckzGs0qKQ2j+jZ8P8Fx96S7eE+ILF0F3Uq9ghI3
- ZiO60Ma+9m1YD6ls6HIl6qlIx7INY7agQ9f5nVx8kX9NZ1rWhDarDDf89JNoUZwe6j5f
- kO9fadrTBb9yRpsx5A/ma6QeH9XSO497D08QDVM3bFtJ+Ef+7myxTPHpD5ZcWzJaQdEo
- 86nS7F3XbT8mHDGqwtBlni8kXZPGrpTk12aX6V5iHQKnlN9ELn27hsjN8orhVgT333DC
- 3fTK6egCdOAmrzCG3l2POmhWn/br4grgIhx7dkJI/Tw14jqfGnMSF2EOHsSVCOCZdeVm
- bpgA==
-X-Gm-Message-State: AO0yUKXz3ufeFMKd8bzOfrZVkFz0A9vDOtjeWtySTlzM63W5f2PnR1Bs
- hF3ZTOplNxGXTBtpmU4ku4h4eMV0qhy6j88GCDq08A==
-X-Received: by 2002:a63:7d03:0:b0:503:4a2c:5f0 with SMTP id
- y3-20020a637d03000000b005034a2c05f0mr522760pgc.9.1677853789825; Fri, 03 Mar
- 2023 06:29:49 -0800 (PST)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=bfSIhSaY;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 5BEE16183C;
+	Fri,  3 Mar 2023 14:42:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0301C433EF;
+	Fri,  3 Mar 2023 14:42:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1677854532;
+	bh=0JM10F5PMODKCvEmazXYPgxh7xrkgs21jXZOuwT5VdE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=bfSIhSaYKk4H2IvHZ2P8IwqynUsNtVLU0+qrAwQfNTkJyEul50x541XZSx737XbQG
+	 zioogvuxxOKJuZw1AaToRpVV/uBldT96uvRlnpeU235ilrLbjYwX2/Y8OhbGngx9fz
+	 +Q+nOpc4YJ2BRRfIx+rB2ht/JjVm1Ym5y8h5fIvgDecxQ03yTCOtl/0SVbzdMj5Iq9
+	 TS+2OWzcKh7QLbrGBdFGin6GA7HrCzOSOEi5RWH/llGCiyvq3HJwpMdP5027UF59C/
+	 6i1jR1a0FOAtuqhkWmki0+dwgmGB/c42fwEYRUg60IlZKIzme1JkANz6hj5alKvTUY
+	 5sGc888iGLcOA==
+Received: by mail-lf1-f47.google.com with SMTP id i28so3968748lfv.0;
+        Fri, 03 Mar 2023 06:42:12 -0800 (PST)
+X-Gm-Message-State: AO0yUKX77z2nchqLE81tcCNMeBLi7OvhFk7WPX55RtUFNu74OF1p8cHW
+	cjvRRDSk/2QVWrrzAE2qmtxyHC9ezyuh/u7hTBM=
+X-Received: by 2002:ac2:54b9:0:b0:4d8:62e5:4f66 with SMTP id
+ w25-20020ac254b9000000b004d862e54f66mr710260lfk.7.1677854530770; Fri, 03 Mar
+ 2023 06:42:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20230227230122.816702-1-richard.henderson@linaro.org>
- <a5b66aee-0c97-96f7-81ca-44fac1289733@linaro.org>
-In-Reply-To: <a5b66aee-0c97-96f7-81ca-44fac1289733@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Mar 2023 14:29:38 +0000
-Message-ID: <CAFEAcA-fMVab0e0CG_uep49+JPZ=tfJgJXJmbtJeepGBSLsLhA@mail.gmail.com>
-Subject: Re: [PATCH for-8.0 v4 00/21] target/arm: Implement FEAT_RME
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20230223105308.559632-1-ardb@kernel.org> <CAFEAcA8Nd+Eq8iGGSLgzoOAXB_GoumETKZMnSEz6cBa7ZOfSWw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8Nd+Eq8iGGSLgzoOAXB_GoumETKZMnSEz6cBa7ZOfSWw@mail.gmail.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Fri, 3 Mar 2023 15:41:59 +0100
+X-Gmail-Original-Message-ID: <CAMj1kXFPdL-zMnsrwg-MH9-AP8oHMJMJ_GPDxfr17RwmWj2sJg@mail.gmail.com>
+Message-ID: <CAMj1kXFPdL-zMnsrwg-MH9-AP8oHMJMJ_GPDxfr17RwmWj2sJg@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw: arm: Support direct boot for Linux/arm64 EFI
+ zboot images
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: liwskphDzTlT
+Content-Transfer-Encoding: quoted-printable
+X-TUID: wtHrUTLrrDkn
 
-On Mon, 27 Feb 2023 at 23:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 3 Mar 2023 at 15:25, Peter Maydell <peter.maydell@linaro.org> wrote=
+:
 >
-> Gah!  I didn't mean to tag this one with for-8.0.
+> On Thu, 23 Feb 2023 at 10:53, Ard Biesheuvel <ardb@kernel.org> wrote:
+> >
+> > Fedora 39 will ship its arm64 kernels in the new generic EFI zboot
+> > format, using gzip compression for the payload.
+> >
+> > For doing EFI boot in QEMU, this is completely transparent, as the
+> > firmware or bootloader will take care of this. However, for direct
+> > kernel boot without firmware, we will lose the ability to boot such
+> > distro kernels unless we deal with the new format directly.
+> >
+> > EFI zboot images contain metadata in the header regarding the placement
+> > of the compressed payload inside the image, and the type of compression
+> > used. This means we can wire up the existing gzip support without too
+> > much hassle, by parsing the header and grabbing the payload from inside
+> > the loaded zboot image.
+>
+> Seems reasonable to me. Any particular reason for marking the
+> patch RFC ?
+>
 
-Ah; I was wondering :-)
+Nothing except for the fact that I contribute so rarely that I may
+have violated some coding style rules inadvertently.
 
--- PMM
+> > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > Cc: Richard Henderson <richard.henderson@linaro.org>
+> > Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+> > ---
+> >  hw/arm/boot.c       |  4 ++
+> >  hw/core/loader.c    | 64 ++++++++++++++++++++
+> >  include/hw/loader.h |  2 +
+> >  3 files changed, 70 insertions(+)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index 3d7d11f782feb5da..dc10a0788227443e 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -924,6 +924,10 @@ static uint64_t load_aarch64_image(const char *fil=
+ename, hwaddr mem_base,
+> >          size =3D len;
+> >      }
+> >
+> > +    if (unpack_efi_zboot_image(&buffer, &size)) {
+> > +        return -1;
+> > +    }
+>
+> It seems a bit odd that we will now accept a gzipped file, unzip
+> it and then look inside it for the EFI zboot image that tells us
+> to do a second unzip step. Is that intentional/useful?
+
+No and no.
+
+> If not, probably better to do something like "if this is an
+> EFI zboot image, load-and-decompress, otherwise if a plain gzipped
+> file, load-and-decompress, otherwise assume a raw file".
+>
+> > +
+> >      /* check the arm64 magic header value -- very old kernels may not =
+have it */
+> >      if (size > ARM64_MAGIC_OFFSET + 4 &&
+> >          memcmp(buffer + ARM64_MAGIC_OFFSET, "ARM\x64", 4) =3D=3D 0) {
+> > diff --git a/hw/core/loader.c b/hw/core/loader.c
+> > index 173f8f67f6e3e79c..7e7f49261a309012 100644
+> > --- a/hw/core/loader.c
+> > +++ b/hw/core/loader.c
+> > @@ -857,6 +857,70 @@ ssize_t load_image_gzipped(const char *filename, h=
+waddr addr, uint64_t max_sz)
+> >      return bytes;
+> >  }
+>
+> I assume there's a spec somewhere that defines the file format;
+> this would be a good place for a comment giving a reference to it
+> (URL, document name, etc).
+>
+
+It is de facto defined by the Linux kernel's EFI stub - I can link to
+the right file here
+
+> > +// The Linux header magic number for a EFI PE/COFF
+> > +// image targetting an unspecified architecture.
+> > +#define LINUX_EFI_PE_MAGIC        "\xcd\x23\x82\x81"
+> > +
+> > +struct linux_efi_zboot_header {
+> > +    uint8_t     msdos_magic[4];         // PE/COFF 'MZ' magic number
+> > +    uint8_t     zimg[4];                // "zimg" for Linux EFI zboot =
+images
+> > +    uint32_t    payload_offset;         // LE offset to the compressed=
+ payload
+> > +    uint32_t    payload_size;           // LE size of the compressed p=
+ayload
+> > +    uint8_t     reserved[8];
+> > +    char        compression_type[32];   // Compression type, e.g., "gz=
+ip"
+> > +    uint8_t     linux_magic[4];         // Linux header magic
+> > +    uint32_t    pe_header_offset;       // LE offset to the PE header
+> > +};
+>
+> QEMU coding standard doesn't use '//' style comments.
+>
+
+OK
+
+> > +
+> > +/*
+> > + * Check whether *buffer points to a Linux EFI zboot image in memory.
+> > + *
+> > + * If it does, attempt to decompress it to a new buffer, and free the =
+old one.
+> > + * If any of this fails, return an error to the caller.
+> > + *
+> > + * If the image is not a Linux EFI zboot image, do nothing and return =
+success.
+> > + */
+> > +int unpack_efi_zboot_image(uint8_t **buffer, int *size)
+> > +{
+> > +    const struct linux_efi_zboot_header *header;
+> > +    uint8_t *data =3D NULL;
+> > +    ssize_t bytes;
+> > +
+> > +    /* ignore if this is too small to be a EFI zboot image */
+> > +    if (*size < sizeof(*header)) {
+> > +        return 0;
+> > +    }
+> > +
+> > +    header =3D (struct linux_efi_zboot_header *)*buffer;
+>
+> This isn't valid, because *buffer might not be properly aligned.
+> You can deal with that by defining your uint32_t fields to be uint8_t[]
+> and accessing the contents via ldl_le_p().
+>
+
+OK
+
+> > +
+> > +    /* ignore if this is not a Linux EFI zboot image */
+> > +    if (memcmp(&header->zimg, "zimg", 4) !=3D 0 ||
+> > +        memcmp(&header->linux_magic, LINUX_EFI_PE_MAGIC, 4) !=3D 0) {
+>
+> Do we not care about checking the msdos_magic[] ?
+>
+
+We could check it as well, sure, although LINUX_EFI_PE_MAGIC implies
+that it is a PE/COFF image so it would be more of a sanity check.
+
+> > +        return 0;
+> > +    }
+> > +
+> > +    if (strncmp(header->compression_type, "gzip", 4) !=3D 0) {
+>
+> Is this field supposed to be NUL-terminated? If I am not confused
+> about strncmp(), I think this is comparing only the first 4
+> characters and so would match both "gzip" and "gzip-but-not-really".
+>
+
+We've already checked the header size, so I suppose a plain strcmp()
+is fine, with one argument being a literal NUL terminated string.
+
+> > +        fprintf(stderr, "unable to handle EFI zboot image with \"%s\" =
+compression\n",
+> > +                header->compression_type);
+>
+> This assumes the field is NUL-terminated and will do something
+> silly if fed a file where it is not.
+>
+
+It should be, but I can limit it in the printf() i suppose - will fix.
+
+> > +        return -1;
+> > +    }
+> > +
+> > +    data =3D g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
+> > +    bytes =3D gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES,
+> > +                   *buffer + le32_to_cpu(header->payload_offset),
+> > +                   le32_to_cpu(header->payload_size));
+>
+> I think we should bounds-check that the payload offset and size
+> are actually all within the input buffer first.
+>
+
+Good point.
+
+> > +    if (bytes < 0) {
+> > +        fprintf(stderr, "failed to decompress EFI zboot image\n");
+> > +        g_free(data);
+> > +        return -1;
+> > +    }
+> > +
+> > +    g_free(*buffer);
+> > +    *buffer =3D g_realloc(data, bytes);
+> > +    *size =3D bytes;
+> > +    return 0;
+> > +}
+> > +
+> >  /*
+> >   * Functions for reboot-persistent memory regions.
+> >   *  - used for vga bios and option roms.
+> > diff --git a/include/hw/loader.h b/include/hw/loader.h
+> > index 70248e0da77908c1..d1092c8bfbd903c7 100644
+> > --- a/include/hw/loader.h
+> > +++ b/include/hw/loader.h
+> > @@ -86,6 +86,8 @@ ssize_t load_image_gzipped_buffer(const char *filenam=
+e, uint64_t max_sz,
+> >                                    uint8_t **buffer);
+> >  ssize_t load_image_gzipped(const char *filename, hwaddr addr, uint64_t=
+ max_sz);
+> >
+> > +int unpack_efi_zboot_image(uint8_t **buffer, int *size);
+> > +
+>
+> New global functions should have a doc-comment format comment
+> describing them in the header file. (This is one of those areas where
+> we have a bunch of legacy code that doesn't conform to our ideals and
+> are trying to gradually ratchet up by imposing a standard on new
+> contributions.)
+>
+
+Fair enough.

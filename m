@@ -1,226 +1,178 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1265679ejc;
-        Fri, 3 Mar 2023 08:23:01 -0800 (PST)
-X-Received: by 2002:a17:902:ce8a:b0:19c:f698:8564 with SMTP id f10-20020a170902ce8a00b0019cf6988564mr3065013plg.17.1677860581097;
-        Fri, 03 Mar 2023 08:23:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677860581; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1317527ejc;
+        Fri, 3 Mar 2023 09:09:11 -0800 (PST)
+X-Google-Smtp-Source: AK7set9A5Ml6cMOGmweHNrYJXYSe+rg3R46OCF0BVtG7djrKrG7SHP5R1XNBw+TjbzoVODNfOdwb
+X-Received: by 2002:ac8:5801:0:b0:3b6:2f31:efc4 with SMTP id g1-20020ac85801000000b003b62f31efc4mr4054052qtg.66.1677863350762;
+        Fri, 03 Mar 2023 09:09:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1677863350; cv=none;
         d=google.com; s=arc-20160816;
-        b=D3PBIzm/CXLSfjPymHqX2MXJI/u9lWnunu8Y2evBJqlvo1pu5ocynMmd4zD6Bzeron
-         2G6An1uaK+WTrVl7PYaLw2vdVaatt4sR9s4du8lO+p4oof/9ydhepsPotbC8nzGZPfhj
-         Sf+f9w2gTOm7ZWw+rf0+m60itrvJzhzfae3HnYHFWiAS20ClnSQBCVhFeZz76U1QFn2U
-         4D8jJa9drTUGZH26c3QPpT0xbjkXpqrO8MzkEtC1copQpYDBhBV072AjG/2+Cs81uylK
-         keTstvkTEw+dayPkMVZUxc/evP6WRY9de/lMnsJcO/UzFK5Z+s3JwT0WI0Cm7gMhhv+P
-         jYMw==
+        b=w6o9ffDFi8pGrv2moB0GUb6fdwgE+ur0HmprsEp4eeiuSaYW84m2PHvsQQFGrkqvYt
+         QXr9DF6hc5Ri0FThBnUuAjVKrlkTJyszvhUjSSma6MyBNUY/R6Ie4vqYJDTfBY108nSH
+         mhUg+OJUrtd0MMLjmeCP8mb2lQWpK+NmkbvfcCx9jnVDTMYbT4vuEfLS1jb2GUQCvuwJ
+         t8dW9kRsYWbONw44ioYqbim1QIKSU0z4Hh1TdlTXJq0pTtwnKZbZGJUr7L2Ev2ZnD9dy
+         xzyeI5zIaTrVoYp6TYdumXUQ8NLw110m1yU9hkxeRe06Yx0PNgnavq13L10C2PyPhr5+
+         jdsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=R+qkRF9syQ20v+D5pFmgveVeurPXd0ylLRUaVU6Vo48=;
-        b=sTLbq+isLPsxy8JQbzon3nT6SoOdvWoNNwIw1mpHFmOEn0dg9QPgEFfQIK4SadsNHz
-         sMdckJbNfK7ZxqeKuN7a4FcPm78buOx8b2wX5ZAjo5QA8cQTfAQY58zQZriRwvpAeijG
-         ocBYbdTzCbM9YZJ4bTuiLSUIgEadVy1gwGhHO2UKyM2TiPgzDKP3yo5mfU9WBjruauU8
-         RycxQlvgzqLT3Hvdob/6xa4l0IBzcljsXxHf5dzof5fu4V9HI1C7Cvj/XjHA5SGzdpJ4
-         UN9qXOxi1GKRchWdqPAZQQ5yJYtPuFhFWLkczFGuVmTl1E6ma4XcgpQtrvm6mcSF2sF0
-         5xgw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=FyX+b2pVD0ac/8BAhuMTfIITPUwLTbv4JPqSb4fIT2E=;
+        b=aAunmu+vBHe6X/XfX5vC+aftFeJjOeTZFH5qWubxosFJxb/Vn6Ot23aTPKemuvACRj
+         wuHloqQblq4b5JnNia4GMjUT3Xr/c/L/MD5/kmSMJFLDeopwsRPvyn5UEIerJTO2hUuq
+         fQyu3drPuVkB+oQEV5vRWg/NmSWdL37lltOgx6Sy1wLboeaHBLWrAGVcYlN1G98JsSLy
+         eVBWr/WTHWjcDTdrZs0WontDbQttJ8Qr9xvxuwC+iplsLkqJeWyiAoQjz8JnZWQdkKke
+         H8OGgtExfmVyxGkbG8hrVDxL93qTNtoJWPYo5SQediKm0ff7RT5oRi2zdoLpx5145ePH
+         zTMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XnQvDTRN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id iw9-20020a170903044900b0019a9d2b345fsor1193261plb.193.2023.03.03.08.23.00
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x131-20020a376389000000b0072fd5e31f18si1989617qkb.390.2023.03.03.09.09.10
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Mar 2023 08:23:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 Mar 2023 09:09:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XnQvDTRN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1677860580;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=R+qkRF9syQ20v+D5pFmgveVeurPXd0ylLRUaVU6Vo48=;
-        b=XnQvDTRNYsewSp/+73Kl5wLRtM9Gj02pMM1jyJvfl65e1FbXVCmNPsuiPFv+wqiZMO
-         DpctuFAnPm0wuq5Lmhy5lsnXDr3k1jzu4HNq8C2d7A9wpby3WiDY0lxqmcWdD/nNyNCV
-         l6w362w3N+94JhNEISawxxxcCE+WtE58gRrJpwM/M4tHy9umMYVkoKyL5YyxXCV2ONax
-         47RQ68Dr8qeIwOwJyVz2quD5uUG8UrVReFVnbQGrWxsVvpfX2sCBjCS6r2JTTcjflGLA
-         UgrpdJ/fRg1PYyiZeRQv+4p0CvGi7aGsHdcJG0O1U9pIBpmkCXm7k8w82wM7HqACj7AV
-         f7lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677860580;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=R+qkRF9syQ20v+D5pFmgveVeurPXd0ylLRUaVU6Vo48=;
-        b=PlT9elJltnbG+lGFmdWKKqo+yHwcOUmCfmu6bZoOMkfuEGb2tkVbTsrbxzYHfWxplD
-         puRGr+D7XsP4z8SfNiHoPs4JjhVmjRebNOE3ErWWPSY2peHwAETuzH9U9S+0p5B0bR3u
-         ag//Y8RuEeaCK75c7nsJSy8juEgbrIAZNQy/vjcY1sYkWCRwAYk/V0ajdUtc1qxBd+Zr
-         NFPDsOkVwwWDNyNsneFTy3HoTrYXYW5cCbjp+UYhtFESq2wpjSSP/FppLgZTD42RwtjP
-         DB/fwcnPuX/dOMRwLc7CVfHEtoqznutmhuGhsn9KffvbZRsJwoOhSKuzTJjBh9/oXn8a
-         /Kpg==
-X-Gm-Message-State: AO0yUKUd9zJXWTKeOjiY0Jbdtd7aU6WC838gNDlkw2sAV6KIWx5T03ST
-	DODFwQkPdlogLD66gtZ2j/qbZeMb1uYbZsiq88QNHnAf
-X-Google-Smtp-Source: AK7set/3XlioQDaMHjrQLvd1Umm5xd4S9xCFzDu+kRcpSaKJC+8YnaSD3k6eaTdFkgFjx4/Lm3dTJRa5pOdlA6jBpwM=
-X-Received: by 2002:a17:903:258f:b0:19a:98ea:5ef1 with SMTP id
- jb15-20020a170903258f00b0019a98ea5ef1mr898960plb.13.1677860580621; Fri, 03
- Mar 2023 08:23:00 -0800 (PST)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pY8ts-000647-03; Fri, 03 Mar 2023 12:08:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chenbaozi@phytium.com.cn>)
+ id 1pY84p-0007RA-UW; Fri, 03 Mar 2023 11:16:12 -0500
+Received: from azure-sdnproxy.icoremail.net ([20.232.28.96])
+ by eggs.gnu.org with smtp (Exim 4.90_1)
+ (envelope-from <chenbaozi@phytium.com.cn>)
+ id 1pY84i-0008VH-VF; Fri, 03 Mar 2023 11:16:11 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBHEJUaHQJkBzv_BQ--.41741S2;
+ Sat, 04 Mar 2023 00:15:22 +0800 (CST)
+Received: from localhost (unknown [113.247.214.165])
+ by mail (Coremail) with SMTP id AQAAfwCHZPQ7HQJks4AAAA--.564S2;
+ Sat, 04 Mar 2023 00:16:01 +0800 (CST)
+From: Chen Baozi <chenbaozi@phytium.com.cn>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH 2/2] target/arm: Add DynamIQ Shared Unit control registers
+Date: Sat,  4 Mar 2023 00:15:18 +0800
+Message-Id: <20230303161518.3411149-3-chenbaozi@phytium.com.cn>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20230303161518.3411149-1-chenbaozi@phytium.com.cn>
+References: <20230303161518.3411149-1-chenbaozi@phytium.com.cn>
 MIME-Version: 1.0
-References: <20230228192628.26140-1-farosas@suse.de> <20230228192628.26140-6-farosas@suse.de>
-In-Reply-To: <20230228192628.26140-6-farosas@suse.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Mar 2023 16:22:49 +0000
-Message-ID: <CAFEAcA8p86BdbbO-thyov+A-dc98iygPx6nyCmnxinCRCuKviA@mail.gmail.com>
-Subject: Re: [PATCH RESEND v7 5/9] tests/avocado: Pass parameters to migration test
-To: Fabiano Rosas <farosas@suse.de>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>, 
-	Cleber Rosa <crosa@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: VqawAepqXf4t
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwCHZPQ7HQJks4AAAA--.564S2
+X-CM-SenderInfo: hfkh0updr2xqxsk13x1xpou0fpof0/1tbiAQAHEWQA7A0IoQALsw
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=chenbaozi@
+ phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxAr4Uur45Gr48tr4ktFyrJFb_yoWrJw45pF
+ nrJry5WFy2qFsxJF4xCw12kaykAa4F9rWjkrsFgr9a9F4aq3y5KFyqqa45Kr98Ka1kA34j
+ ka1jqryj9w47ZrUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=20.232.28.96;
+ envelope-from=chenbaozi@phytium.com.cn; helo=azure-sdnproxy.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 03 Mar 2023 12:08:53 -0500
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /iGOF8M0qRsL
 
-On Tue, 28 Feb 2023 at 19:28, Fabiano Rosas <farosas@suse.de> wrote:
->
-> The migration tests are currently broken for an aarch64 host because
-> the tests pass no 'machine' and 'cpu' options on the QEMU command
-> line.
->
-> Add a separate class to each architecture so that we can specify
-> 'machine' and 'cpu' options instead of relying on defaults.
->
-> Add a skip decorator to keep the current behavior of only running
-> migration tests when the qemu target matches the host architecture.
+DynamIQ Shared Unit (DSU) contains system control registers in the SCU
+and L3 logic which are implemented as the system registers for the cores
+in the cluster. Add DSU control registers and enable it to the supported
+cores.
 
-I still don't understand this patch. Don't we run the
-migration-test on all hosts already? David ?
+Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
+---
+ target/arm/cpu_tcg.c | 52 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
-> ---
->  tests/avocado/migration.py | 83 +++++++++++++++++++++++++++++++++++---
->  1 file changed, 78 insertions(+), 5 deletions(-)
->
-> diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
-> index 4b25680c50..8b2ec0e3c4 100644
-> --- a/tests/avocado/migration.py
-> +++ b/tests/avocado/migration.py
-> @@ -11,6 +11,8 @@
->
->
->  import tempfile
-> +import os
-> +
->  from avocado_qemu import QemuSystemTest
->  from avocado import skipUnless
->
-> @@ -19,7 +21,7 @@
->  from avocado.utils.path import find_command
->
->
-> -class Migration(QemuSystemTest):
-> +class MigrationTest(QemuSystemTest):
->      """
->      :avocado: tags=migration
->      """
-> @@ -62,20 +64,91 @@ def _get_free_port(self):
->              self.cancel('Failed to find a free port')
->          return port
->
-> -
-> -    def test_migration_with_tcp_localhost(self):
-> +    def migration_with_tcp_localhost(self):
->          dest_uri = 'tcp:localhost:%u' % self._get_free_port()
->          self.do_migrate(dest_uri)
->
-> -    def test_migration_with_unix(self):
-> +    def migration_with_unix(self):
->          with tempfile.TemporaryDirectory(prefix='socket_') as socket_path:
->              dest_uri = 'unix:%s/qemu-test.sock' % socket_path
->              self.do_migrate(dest_uri)
->
->      @skipUnless(find_command('nc', default=False), "'nc' command not found")
-> -    def test_migration_with_exec(self):
-> +    def migration_with_exec(self):
->          """The test works for both netcat-traditional and netcat-openbsd packages."""
->          free_port = self._get_free_port()
->          dest_uri = 'exec:nc -l localhost %u' % free_port
->          src_uri = 'exec:nc localhost %u' % free_port
->          self.do_migrate(dest_uri, src_uri)
-> +
-> +
-> +@skipUnless('aarch64' in os.uname()[4], "host != target")
-> +class Aarch64(MigrationTest):
-> +    """
-> +    :avocado: tags=arch:aarch64
-> +    :avocado: tags=machine:virt
-> +    :avocado: tags=cpu:max
-> +    """
-> +
-> +    def test_migration_with_tcp_localhost(self):
-> +        self.migration_with_tcp_localhost()
-> +
-> +    def test_migration_with_unix(self):
-> +        self.migration_with_unix()
-> +
-> +    def test_migration_with_exec(self):
-> +        self.migration_with_exec()
-> +
-> +
-> +@skipUnless('x86_64' in os.uname()[4], "host != target")
-> +class X86_64(MigrationTest):
-> +    """
-> +    :avocado: tags=arch:x86_64
-> +    :avocado: tags=machine:pc
-> +    :avocado: tags=cpu:qemu64
-> +    """
-> +
-> +    def test_migration_with_tcp_localhost(self):
-> +        self.migration_with_tcp_localhost()
-> +
-> +    def test_migration_with_unix(self):
-> +        self.migration_with_unix()
-> +
-> +    def test_migration_with_exec(self):
-> +        self.migration_with_exec()
-> +
-> +
-> +@skipUnless('ppc64le' in os.uname()[4], "host != target")
-> +class PPC64(MigrationTest):
-> +    """
-> +    :avocado: tags=arch:ppc64
-> +    :avocado: tags=machine:pseries
-> +    :avocado: tags=cpu:power9_v2.0
-> +    """
-> +
-> +    def test_migration_with_tcp_localhost(self):
-> +        self.migration_with_tcp_localhost()
-> +
-> +    def test_migration_with_unix(self):
-> +        self.migration_with_unix()
-> +
-> +    def test_migration_with_exec(self):
-> +        self.migration_with_exec()
-> +
-> +
-> +@skipUnless('s390x' in os.uname()[4], "host != target")
-> +class S390X(MigrationTest):
-> +    """
-> +    :avocado: tags=arch:s390x
-> +    :avocado: tags=machine:s390-ccw-virtio
-> +    :avocado: tags=cpu:qemu
-> +    """
-> +
-> +    def test_migration_with_tcp_localhost(self):
-> +        self.migration_with_tcp_localhost()
-> +
-> +    def test_migration_with_unix(self):
-> +        self.migration_with_unix()
-> +
-> +    def test_migration_with_exec(self):
-> +        self.migration_with_exec()
-> --
-> 2.35.3
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index 6a1bb56b25..db6163ede2 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -208,9 +208,61 @@ static const ARMCPRegInfo neoverse_n1_cp_reginfo[] = {
+       .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+ };
+ 
++static const ARMCPRegInfo dsu_cp_reginfo[] = {
++    { .name = "CLUSTERCFR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERIDR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 1,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERREVIDR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 2,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERACTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 3,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERECTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 4,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERPWRCTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 5,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERPWRDN_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 6,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERPWRSTAT_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 3, .opc2 = 7,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERTHREADSID_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERACPSID_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 1,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERSTASHSID_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 2,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERPARTCR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 3,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERBUSQOS_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 4,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERL3HIT_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 5,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERL3MISS_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 6,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CLUSTERTHREADSIDOVR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 4, .opc2 = 7,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++};
++
+ void define_neoverse_n1_cp_reginfo(ARMCPU *cpu)
+ {
+     define_arm_cp_regs(cpu, neoverse_n1_cp_reginfo);
++    define_arm_cp_regs(cpu, dsu_cp_reginfo);
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+-- 
+2.37.3
 
-thanks
--- PMM

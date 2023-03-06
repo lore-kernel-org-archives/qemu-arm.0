@@ -1,117 +1,147 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4765514ejc;
-        Mon, 6 Mar 2023 07:16:17 -0800 (PST)
-X-Google-Smtp-Source: AK7set+936SL/i/CAkWbpNpoVEhtMa2XL0cEE/Ofcl7V4eD0IsOUV7lACTH7NQRQOK/ovWDEkDcv
-X-Received: by 2002:a05:6214:1d2e:b0:56e:a918:a4ed with SMTP id f14-20020a0562141d2e00b0056ea918a4edmr18091182qvd.1.1678115777211;
-        Mon, 06 Mar 2023 07:16:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678115777; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4728047ejc;
+        Mon, 6 Mar 2023 06:46:25 -0800 (PST)
+X-Google-Smtp-Source: AK7set+xibrFcnaaNgkboGB0D9HooY11IUjpWPMNsoAV3QXMkVafJPLjZBsJuujbAY+nHJO907y3
+X-Received: by 2002:a05:6214:d41:b0:56f:8ef:686 with SMTP id 1-20020a0562140d4100b0056f08ef0686mr18305872qvr.8.1678113985264;
+        Mon, 06 Mar 2023 06:46:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678113985; cv=none;
         d=google.com; s=arc-20160816;
-        b=cnjpvEAhv/IJP83KL3bqLPv/wilw9KZmBunMVJMCurv0PuDk4f9hVF/9T6dM07V9JT
-         Ofl3n+sZp4pG9A3IEoShx0+yCpeIRJHC/htUR7heQOqARR2LzITJ2npee7Zx/b6Mym1h
-         xabXqftvvxBbgZHLqffmfojuiVmsNQD463d1FjB2f/Z+FKk3UIIJbyuwC9cj/u2tK39g
-         hQWZzVTekrQ5ZRd5KCCZz6F/rOh8kjOu9aEGoUMzaWh4EZW5hN6cxXNIu04hzHIxnLkx
-         TosiBaOUSgpxZjdCetehk0BIbhWYdAjVBtkstCfheCaHczG4ivjTeMbSPwApoeIef/ID
-         crdg==
+        b=xcaUoscolXWVgwQKlK4WTpMOQHIA/tg2VmQaJRDbl67Rc2ZWZR6kzE33XB/8bAroQ3
+         XeMgS5tLi0iDrDVIiDY9m2Kaxe7LGQ1IcSsrfJiAcZDjqmApCzOpO3PdfC20nf7U/rI3
+         wTti42TcjV8s28ALFftABYgUBLGN5M0qklJjK/Y7B80d0fDcWj6+2iL43gPJkKET0ueC
+         MWPxCZzznoxD3TJ8rCtGpybdtfQrsvvbK75AcPXIhKujtq5QWqrpaf8eKsFHbtI/HxXu
+         DLby1xKOxeXBIiK/nUrO4BNAmF9Mx0ICBiZsry8t0wG1564vvMxySNfmYZ09lhAIx78Q
+         7oRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=yRQl9IavSP2ECC7Npy1kkvDd7fq8yF3XjhXOCTQ7O94=;
-        b=i8++OgTCiNkDD/QrfBbsyQkOT6LBVd6tUZ6tddDInP4iFPjrjzepFYmXJNnxQNFa9X
-         bFsQDDCOhn3S3GxA7ioqqNW+y2GEktjIC2lPoer78+yGrs6q93Hsdpa+nxyBZwyqfgTW
-         4JnPt1ra/8CUir66iLz3N5M3vGe0+1emWFuiIx0f4iUIyRgL0lDGAKcYqN+r5Bu501ME
-         n0fILMga7BlaRlFNU9T445aEjtNOIpfvwfahj+zoPERq85D8zjDV4xoaIlWhoqAhDDEA
-         kCMSM1JezvAFvJBmBbGaIYkOiiIq+uKTmZWYsTkmY+ZtABfEO4EUBfVd2d7iyBUSaFf5
-         mKVg==
+        bh=8HCDlRjtNpAvDsHPhbPNMJnymF3BvY40fQgZdH7OnJ8=;
+        b=beYaKmrnIaUB+qUbKGp7Fe6h3tzdtL9h0oPTyORvpyonmOCyb8fDeJHgGhNDiVyNik
+         v0jOxY8VBiMKpVFPXV2Ls6tt3hIq/bCCIaT9ivAD4VnUtd85ApnoVOzqq+GBAxbgVUel
+         Y4s+vJRKB3lXwaH7QEW6hcGE6l05qDAvpiLTzGUW//xB+wqiMYmnfFCd6UxHurf3zoMo
+         6eJ2kmaD3d9y4nXwUCVzkzEs9ynj9P+uMcOZhIXAVuC6c2ME0cyOWJFdidjOaEBp27r2
+         RYPO595l8Yzq9s/IUpWqiztfnX4LUcVfmIuznBV9sadh5iNfO5Yp8IfegdJNEMX1X/8R
+         L1CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YquRDKbK;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=i1lNUe85;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fi16-20020a0562141a5000b0056ea7de3446si7315641qvb.587.2023.03.06.07.16.17
+        by mx.google.com with ESMTPS id e9-20020a0ce3c9000000b0056ea051a8f6si6908353qvl.321.2023.03.06.06.46.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Mar 2023 07:16:17 -0800 (PST)
+        Mon, 06 Mar 2023 06:46:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YquRDKbK;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=i1lNUe85;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pZCZ9-0000Cr-CZ; Mon, 06 Mar 2023 10:15:55 -0500
+	id 1pZC5o-0003Cp-LT; Mon, 06 Mar 2023 09:45:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZCZ7-0000BN-HU
- for qemu-arm@nongnu.org; Mon, 06 Mar 2023 10:15:53 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZCZ6-0006Y2-3Y
- for qemu-arm@nongnu.org; Mon, 06 Mar 2023 10:15:53 -0500
-Received: by mail-wr1-x431.google.com with SMTP id h11so9187674wrm.5
- for <qemu-arm@nongnu.org>; Mon, 06 Mar 2023 07:15:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678115750;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=yRQl9IavSP2ECC7Npy1kkvDd7fq8yF3XjhXOCTQ7O94=;
- b=YquRDKbKEtYWh2bDDkqMNyQreLSxV4TO/zSf+aL6uxzZPmB/VPMKvw23JlSZ7TKT2t
- Xfv/wAgD3jbXBNqUpiVkNHoccaGMi7v7QFK8m/jR9yySZG7Y3kCZopRJdrvQtfjr3K/Q
- Y9pvgboZPkj44EY6xbwzsSIft1ThrNplVhqg/El6vN0yY0GmKB3Xaneb6s2b7LiBDedM
- u3XRqtbjMNbYdmMt5V0+pzAisjju9HKET16dnBWmUIL7ZE+VxuRZfRYodQ9EPvlROzFX
- 9ytFi2q0/AxIJwOAT5ljYLwvDFtm21FYSJfwD9KyCI3gpuwnnxEWnRi0fA1NyGChwUDB
- dsuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678115750;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yRQl9IavSP2ECC7Npy1kkvDd7fq8yF3XjhXOCTQ7O94=;
- b=7FmhTLL1Iha/r78KSd1PGduG1p1BiXLwKthtHwgW5pDeYzl1vuhREpX0Vk3J6l/M16
- /Ximva0hQqJ+zkWJJ9yDPf1/BmgVlkqGe7XFOd/ftyq/P42xWc3hCk/WhfF8j3YJueyB
- yZyC8XlDvqiIXCBP5T1ouCD0wbj6GK2SKbrK9akSxJpr72MbuyP533QTzhBLga2WN8JC
- IaYC7Cwq1ez64YZ0qsWcj3xT8WJW6WmUcSTEPrshZzmYvwBOhliqvDAkV9SyqJUTE+iJ
- tHYwCdeDi14zocSDlpHiFSz85XMVAA0hXyGDZlNgz0s3O4KFebgGjXL3c9X05PhANAMo
- pAzg==
-X-Gm-Message-State: AO0yUKX0mK38NoXTZRGVmXVWUqfVOYNH8mi/ppu4iBgfwj8TcWCJpnNF
- nvVVceBbOhKxFCsY9LkoHHJQng==
-X-Received: by 2002:adf:f20d:0:b0:2c7:e60:a41d with SMTP id
- p13-20020adff20d000000b002c70e60a41dmr7235515wro.61.1678115750559; 
- Mon, 06 Mar 2023 07:15:50 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- n1-20020adffe01000000b002c4084d3472sm10349148wrr.58.2023.03.06.07.15.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Mar 2023 07:15:50 -0800 (PST)
-Message-ID: <c5541883-df72-90ac-88d3-ecc01c78058d@linaro.org>
-Date: Mon, 6 Mar 2023 16:15:47 +0100
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1pZC5m-00038z-EK; Mon, 06 Mar 2023 09:45:34 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1pZC5k-0008Fj-9b; Mon, 06 Mar 2023 09:45:34 -0500
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 326E7V80001475; Mon, 6 Mar 2023 14:45:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=8HCDlRjtNpAvDsHPhbPNMJnymF3BvY40fQgZdH7OnJ8=;
+ b=i1lNUe85Ph5dAS8AHeEs6Q+RKvMifXvN42ZMpLX+C4BiWjRUQjH7AVuIhuPD89tL7Jst
+ WFcMGn8nIPHxXiEIiLL+6yejDw/2jg1SwwAfM08q7FynfK0oAgwJeg9My8gFOKV5Xt4J
+ vWuMxW3v8QiApAZMKunHclDBXsQrdSwtsuuFQGzrawYc8xZjiLI81dbLhep/ddB+S5Pt
+ 9SJBpLR0QCh9Wxcp/Cl8LM8EjD+VqNVwPKwHThlnw5yJ7gpDsMBl+5tTk9eY5mIulTrR
+ ZzmAgw2nz8pkg47xh2JxCgVD/AlipjE6XFXkyF5KtHo/rcW5LTTArzSmIr4mrK301gO5 cw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p507nxccd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Mar 2023 14:45:18 +0000
+Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 326EcSrY018324;
+ Mon, 6 Mar 2023 14:45:17 GMT
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
+ [169.55.85.253])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p507nxcc2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Mar 2023 14:45:17 +0000
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+ by ppma01wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 326Ch4Ye005012;
+ Mon, 6 Mar 2023 14:45:17 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([9.208.129.118])
+ by ppma01wdc.us.ibm.com (PPS) with ESMTPS id 3p41845p41-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Mar 2023 14:45:17 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 326EjGo058130872
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 6 Mar 2023 14:45:16 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EA53E5805D;
+ Mon,  6 Mar 2023 14:45:15 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DE7CC58053;
+ Mon,  6 Mar 2023 14:45:13 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Mon,  6 Mar 2023 14:45:13 +0000 (GMT)
+Message-ID: <1ecbfe9f-402a-1af0-cac9-170ae17a1ceb@linux.ibm.com>
+Date: Mon, 6 Mar 2023 09:45:13 -0500
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 10/70] target/arm: Avoid tcg_const_ptr in
- handle_vec_simd_sqshrn
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v3 16/16] win32: replace closesocket() with close() wrapper
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
- ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
-References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-11-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230227054233.390271-11-richard.henderson@linaro.org>
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Joel Stanley <joel@jms.id.au>, Hanna Reitz <hreitz@redhat.com>
+References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
+ <20230221124802.4103554-17-marcandre.lureau@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20230221124802.4103554-17-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: SzArglpmQBKBayfnUbfYtG7Jz3rPHZer
+X-Proofpoint-ORIG-GUID: 37ViK0TidUpvJdmo6BlBJTGUumHuwlR8
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-03-06_08,2023-03-06_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 spamscore=0
+ adultscore=0 phishscore=0 mlxlogscore=999 bulkscore=0 lowpriorityscore=0
+ suspectscore=0 clxscore=1015 impostorscore=0 mlxscore=0 priorityscore=1501
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
+ definitions=main-2303060128
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -127,17 +157,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ns98qvbzPtWh
+X-TUID: nI6bZwXpp1sZ
 
-On 27/2/23 06:41, Richard Henderson wrote:
-> It is easy enough to use mov instead of or-with-zero
-> and relying on the optimizer to fold away the or.
+
+
+On 2/21/23 07:48, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   target/arm/translate-a64.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
+> Use a close() wrapper instead, so that we don't need to worry about
+> closesocket() vs close() anymore, let's hope.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> diff --git a/util/oslib-win32.c b/util/oslib-win32.c
+> index 7836fb0be3..29a667ae3d 100644
+> --- a/util/oslib-win32.c
+> +++ b/util/oslib-win32.c
+> @@ -370,39 +370,39 @@ int qemu_bind_wrap(int sockfd, const struct sockaddr *addr,
+>   }
+> 
+> 
+> -#undef closesocket
+> -int qemu_closesocket_wrap(int fd)
+> +#undef close
+> +int qemu_close_wrap(int fd)
+>   {
+>       int ret;
+>       DWORD flags = 0;
+> -    SOCKET s = _get_osfhandle(fd);
+> +    SOCKET s = INVALID_SOCKET;
+> 
+> -    if (s == INVALID_SOCKET) {
+> -        return -1;
+> -    }
+> +    if (fd_is_socket(fd)) {
+> +        s = _get_osfhandle(fd);
+> 
+> -    /*
+> -     * If we were to just call _close on the descriptor, it would close the
+> -     * HANDLE, but it wouldn't free any of the resources associated to the
+> -     * SOCKET, and we can't call _close after calling closesocket, because
+> -     * closesocket has already closed the HANDLE, and _close would attempt to
+> -     * close the HANDLE again, resulting in a double free. We can however
+> -     * protect the HANDLE from actually being closed long enough to close the
+> -     * file descriptor, then close the socket itself.
+> -     */
+> -    if (!GetHandleInformation((HANDLE)s, &flags)) {
+> -        errno = EACCES;
+> -        return -1;
+> -    }
+> +        /*
+> +         * If we were to just call _close on the descriptor, it would close the
+> +         * HANDLE, but it wouldn't free any of the resources associated to the
+> +         * SOCKET, and we can't call _close after calling closesocket, because
+> +         * closesocket has already closed the HANDLE, and _close would attempt to
+> +         * close the HANDLE again, resulting in a double free. We can however
+> +         * protect the HANDLE from actually being closed long enough to close the
+> +         * file descriptor, then close the socket itself.
+> +         */
+> +        if (!GetHandleInformation((HANDLE)s, &flags)) {
+> +            errno = EACCES;
+> +            return -1;
+> +        }
+> 
+> -    if (!SetHandleInformation((HANDLE)s, HANDLE_FLAG_PROTECT_FROM_CLOSE, HANDLE_FLAG_PROTECT_FROM_CLOSE)) {
+> -        errno = EACCES;
+> -        return -1;
+> +        if (!SetHandleInformation((HANDLE)s, HANDLE_FLAG_PROTECT_FROM_CLOSE, HANDLE_FLAG_PROTECT_FROM_CLOSE)) {
+> +            errno = EACCES;
+> +            return -1;
+> +        }
+>       }
+> 
+>       ret = close(fd);
+> 
+> -    if (!SetHandleInformation((HANDLE)s, flags, flags)) {
+> +    if (s != INVALID_SOCKET && !SetHandleInformation((HANDLE)s, flags, flags)) {
+>           errno = EACCES;
+>           return -1;
+>       }
+> @@ -411,13 +411,15 @@ int qemu_closesocket_wrap(int fd)
+>        * close() returns EBADF since we PROTECT_FROM_CLOSE the underlying handle,
+>        * but the FD is actually freed
+>        */
+> -    if (ret < 0 && errno != EBADF) {
+> +    if (ret < 0 && (s == INVALID_SOCKET || errno != EBADF)) {
+>           return ret;
+>       }
+> 
+> -    ret = closesocket(s);
+> -    if (ret < 0) {
+> -        errno = socket_error();
+> +    if (s != INVALID_SOCKET) {
+> +        ret = closesocket(s);
+> +        if (ret < 0) {
+> +            errno = socket_error();
+> +        }
+>       }
 
 
+if (fs_is_socket()) {{
+     ...
+     close()
+     ...
+     closesocket()
+     ...
+} else {
+     ...
+     close()
+     ...
+}
+
+would avoid the threading and make this function look a bit simpler.
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>

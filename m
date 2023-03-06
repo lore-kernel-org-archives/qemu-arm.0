@@ -1,224 +1,150 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4730043ejc;
-        Mon, 6 Mar 2023 06:48:22 -0800 (PST)
-X-Google-Smtp-Source: AK7set8rMSaYQVBrxwM0liPVuJuZfvMcHWNJYrY2thnVXI8uPOoL3no2eGdOuIZVwjVkqGxyaVNt
-X-Received: by 2002:ad4:5f49:0:b0:56e:9551:196a with SMTP id p9-20020ad45f49000000b0056e9551196amr19811334qvg.1.1678114102244;
-        Mon, 06 Mar 2023 06:48:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678114102; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4739006ejc;
+        Mon, 6 Mar 2023 06:56:08 -0800 (PST)
+X-Received: by 2002:a05:600c:444a:b0:3eb:4162:7344 with SMTP id v10-20020a05600c444a00b003eb41627344mr9999453wmn.22.1678114568445;
+        Mon, 06 Mar 2023 06:56:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678114568; cv=none;
         d=google.com; s=arc-20160816;
-        b=oPFVyUK5CzRx+FQwQSdP4+pz0fntJJgpE5D7HRkzfWU74UPNTGW/3MNV1PJ8Mrx0da
-         YLtd8Hbupd9C6SCXga/MKSzQg0ZgZUc/oZgSB1BUcMSf1AS+CeBXxbnAObD/Zo8Njp+C
-         i8yi8thsAi/uPPCVVGBJAmVKquZ2fSJRMbk7G6I5on0rboobj6iIGyD5JcNhvQkBTqhd
-         dqUsRyf2hJ6NekL7q1x+37TChuIQp3dyHLP5zhqLDAiZJeNBs2dMKOw1YoaTxw+epxHw
-         A5rnjuMEducIo1jbM3dO9g8Tq/hWX3Y4mV5i7ivJ+I3sLcyjCBsSF3vTJO8XpIxQrC3r
-         l+PA==
+        b=FExnL8bnrq5hYIIhDNebIyZEuHM625kPgvGie1oc/qhvnDgOib3iDUS6ZcXrIOjVFD
+         oCA8Ycrkd7pHB+aLOKOz3TQFlNCLyUkHTLjuiI6KlrXZtFW33dO0iLwpjq0eYrsq5Myl
+         GcqCTGByHvc8pBgcTU1+89EguoWVixB3eULXwp3+CdMx9bcB6AZnAtkoCj/PuOrxpa53
+         f2AgRBQ2M+uZ3y3tNIvW9V0CH1k00Dj1Vr34WVTqEb2+VYZBaX1rlzOy3Ok4qcbmoiIX
+         T+pdpzcP9vTq79BAOXuOdyj3skDRQ2SQ3lIGX8ywdBIL4nGe0nM+nW+dQ57L6b0o1rrk
+         ktUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature;
-        bh=iRn2YKOlw9SXoVONvJPaRBrRDWNanZ+2fc5hsCqJbao=;
-        b=08eyyiK/SzqWIP+gyA4mL+Zfej8nC9zEK92IyIvcY0LzQNcxfdF5wd0HTFMyEXsIXF
-         yHzyRuEUVTKutgW+QVxyTsdYH1K7UDw8uYhKvqqZ0HPWSRVhQSi5dgsbR9Kp2NDpm4yg
-         fHMNMB+PtBuRr5rG76N+Zk8dqI5fztfc3X7uzs9NGK3SoZhPXtDtqdNQPVyPRliVKFYh
-         1PmRjUDw/I3/z9u2E2uFUb4/Na+t4LBahJm5+SYYodm2asSSppINM0woHDWXGp56f3m6
-         RjWLjBuR2bQjkuYyY+MPXCmMgQRoUJSiesCGPSZd7L7RBbP+xcbD7aJtqxcQcVtYFD47
-         E2wQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=HSNlvtsNsid6WJj6EyGrAe6WXlCiD/g/Bz4qeivUmY0=;
+        b=c52KDnDxDbJvLYqyPGMF6OETtSU8Gzv7n1nvEicT4e1yM36KPPqoXj5PbQ8rqEpfVb
+         FKHbMWFLoxFM3gjzpRBCZaXqAps0sJt0aikwmfNK139GXN04DXbMmK1Vk+G5NocqcPts
+         5JRtmW5rEbBSSkAy3Kk5ea30M8XncNA5i5ZmUDiSLViQbwd+mDhApN2GcqgmbkQknLFI
+         /1otySBwdsvxwK+37vQbWw32kunsi+dloNoH83tRDMBux9mK3hEDy0WZVDflCgwZgrgV
+         fEmwG003L9nx3NJDzPit0dAxhcAzZodFn/54alAl9rqbrNGIm4oGohcAzPxMSfFAVWHz
+         FX4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=PGsH4EIX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1-20020a0cf481000000b0055148785043si7040059qvm.584.2023.03.06.06.48.22
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oqt2bb8e;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k14-20020a05600c1c8e00b003d9ebbd0e50sor3960025wms.34.2023.03.06.06.56.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Mar 2023 06:48:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 06 Mar 2023 06:56:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=PGsH4EIX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pZC8T-0004hj-0E; Mon, 06 Mar 2023 09:48:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1pZC8R-0004h8-HZ; Mon, 06 Mar 2023 09:48:19 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1pZC8P-0000DO-JJ; Mon, 06 Mar 2023 09:48:18 -0500
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 326EFKVG000993; Mon, 6 Mar 2023 14:47:55 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=iRn2YKOlw9SXoVONvJPaRBrRDWNanZ+2fc5hsCqJbao=;
- b=PGsH4EIXA0KpsPc18CRHHu6u941vd5x2gjF2VF74OKwMzm9RY1aRWeKpZQPEVvR/bW9N
- wcEVcrZTOu6mGl73CabubcWQ4ClnthnzeVZn8yOzs2nlx9Z5hzoY58y7fPMKtYBPB8nR
- nSUL75j6XZ7F0xSwJwF5nbR8yjU8Tr1SStCMDuH2i6tAyGc3VZciXmT0JZwIDXM2vkxV
- VcODFVVEjL3n26QMEi59V80SGM0MZ2+XBaskqSlW77MWC1yhhyR1Emn3RIKoSZoosouS
- k9qnm5/Ve1g2weaZqhtUPklt20+DlK6JzOqPvQYLuZl1VWq/L/t+Z9hEzmxNl93amaiR FA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p4ysdpwt1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Mar 2023 14:47:54 +0000
-Received: from m0098409.ppops.net (m0098409.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 326D09Lh025863;
- Mon, 6 Mar 2023 14:47:54 GMT
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p4ysdpwsc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Mar 2023 14:47:54 +0000
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 326D50Xv028672;
- Mon, 6 Mar 2023 14:47:52 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([9.208.129.117])
- by ppma05wdc.us.ibm.com (PPS) with ESMTPS id 3p419v5nyc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Mar 2023 14:47:52 +0000
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
- [10.241.53.104])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 326ElpCn64553388
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 6 Mar 2023 14:47:51 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 18CA658056;
- Mon,  6 Mar 2023 14:47:51 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A4A3058052;
- Mon,  6 Mar 2023 14:47:49 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  6 Mar 2023 14:47:49 +0000 (GMT)
-Message-ID: <b0956b45-db73-9fb8-b962-b48375710822@linux.ibm.com>
-Date: Mon, 6 Mar 2023 09:47:49 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v3 13/16] slirp: open-code qemu_socket_(un)select()
-Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Roth <michael.roth@amd.com>, qemu-arm@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Fam Zheng <fam@euphon.net>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Joel Stanley <joel@jms.id.au>, Hanna Reitz <hreitz@redhat.com>
-References: <20230221124802.4103554-1-marcandre.lureau@redhat.com>
- <20230221124802.4103554-14-marcandre.lureau@redhat.com>
- <3a828966-2032-a432-ad44-b8198fb95945@linux.ibm.com>
- <CAMxuvaz_ij7aY0U=EpMiDg=sj7qaUZyky0w6Rr1WqETK9HYyNA@mail.gmail.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <CAMxuvaz_ij7aY0U=EpMiDg=sj7qaUZyky0w6Rr1WqETK9HYyNA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 5Gk0LckX-AtKRXMmZTEcSK_8DXXAcChe
-X-Proofpoint-GUID: Qg9uyV7mCHYzWM5jOiOtw0Ig2aiaCrJM
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oqt2bb8e;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678114568;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HSNlvtsNsid6WJj6EyGrAe6WXlCiD/g/Bz4qeivUmY0=;
+        b=Oqt2bb8ePN1P2UfEps2tUjKOfsG9rH27VORr8popXmXXRgGHVPyBtt8DnmmiwrLf45
+         eQk9WIsrg/C/vofTE5oPgmUVBiGwxQXMW8EvZK1UZP2JhJBQIXx9UAlGAIudq+v4IL7D
+         W53M1f7Ers2pi/HtcHdWfZObZH5SxaB2t6UcgXPWpuWxJMStEsqQxkXt34BXYQZXXfsl
+         DjuA+SFDKMeeWYEZVJroEL+cMlPNwC20OYsrzF9qBr2oH6C9TW7Av0O92i8kqB6eVbeH
+         HIpU/31mqlE476m7BH9B68Tvf3cDyjCQdBWDNXZinEUXKPWeRBqFoYoc/cn2He3TeKHY
+         p5yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678114568;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HSNlvtsNsid6WJj6EyGrAe6WXlCiD/g/Bz4qeivUmY0=;
+        b=Bu+0DtJA+XbDULpGgHdBNgyPFIiKeo0mrws24l1saDto5xlc73DPd7aD1W/Jy99RXR
+         fjXc8RH3HZGBL5lRS3OG/7NDuAinj/kn+ceU0hLhoUTdElxfAKo7WT0ETBBJFKshS5Xd
+         S/wJqxT1kndEwebHvhpXwzbWbYJVIQt440Nf4zWhYIPti2xjlBWjJipxRIY6DR2d0pjL
+         4a+EJgjLCjaaFel1WB9C6xEep119ew8o99MQ72OZI6fl2RgnzjP1NghVdWGzKN6Wc5jO
+         C8soDjwjaISIbgiAWIbgB64VyrD0hPh+Dit3YGrVf+iXRtjnYs6K3cogJ+MSzL3z2V35
+         8GMQ==
+X-Gm-Message-State: AO0yUKVEkJs8oIfhEOciH1meKcj8q+Wj76DPTDXQ/RjO5pvRcvm4IUOa
+	eKUfKTIDLqTI7Fk0waqzN840jR5+
+X-Google-Smtp-Source: AK7set/s8L1UGgm9AiWwMENrcTLfGMTYfkneJNyQl1C+0XtXj8LbERh8o6P6UbeKmtlIgI33BKq6+w==
+X-Received: by 2002:a05:600c:4e90:b0:3da:fc30:bfc5 with SMTP id f16-20020a05600c4e9000b003dafc30bfc5mr9417698wmq.13.1678114568128;
+        Mon, 06 Mar 2023 06:56:08 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id w17-20020adfd4d1000000b002c6d0462163sm10121537wrk.100.2023.03.06.06.56.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 06 Mar 2023 06:56:07 -0800 (PST)
+Message-ID: <5470384c-d720-26fc-3b3f-78e32e804b4d@linaro.org>
+Date: Mon, 6 Mar 2023 15:56:05 +0100
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-06_07,2023-03-06_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 clxscore=1015
- malwarescore=0 adultscore=0 spamscore=0 impostorscore=0 lowpriorityscore=0
- mlxlogscore=999 suspectscore=0 bulkscore=0 priorityscore=1501 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2303060120
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lBA8MeJzKLGw
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH v4 2/5] docs/about/deprecated: Deprecate the
+ qemu-system-i386 binary
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Maxim Levitsky <mlevitsk@redhat.com>, libvir-list@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>,
+ xen-devel@lists.xenproject.org, Reinoud Zandijk <reinoud@netbsd.org>,
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+ John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+References: <20230306084658.29709-1-thuth@redhat.com>
+ <20230306084658.29709-3-thuth@redhat.com> <ZAWx5eBskd1cItDx@redhat.com>
+ <a97c8b6d-8e58-82b5-d73f-72a7061fb5d4@redhat.com>
+ <ZAXzUIs6wODe7/hf@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <ZAXzUIs6wODe7/hf@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 6ylxc02gZW/T
 
+On 6/3/23 15:06, Daniel P. Berrangé wrote:
+> On Mon, Mar 06, 2023 at 02:48:16PM +0100, Thomas Huth wrote:
+>> On 06/03/2023 10.27, Daniel P. Berrangé wrote:
+>>> On Mon, Mar 06, 2023 at 09:46:55AM +0100, Thomas Huth wrote:
+>>>> [...] If a 32-bit CPU guest
+>>>> +environment should be enforced, you can switch off the "long mode" CPU
+>>>> +flag, e.g. with ``-cpu max,lm=off``.
+>>>
+>>> I had the idea to check this today and this is not quite sufficient,
+>> [...]
+>>> A further difference is that qemy-system-i686 does not appear to enable
+>>> the 'syscall' flag, but I've not figured out where that difference is
+>>> coming from in the code.
+>>
+>> I think I just spotted this by accident in target/i386/cpu.c
+>> around line 637:
+>>
+>> #ifdef TARGET_X86_64
+>> #define TCG_EXT2_X86_64_FEATURES (CPUID_EXT2_SYSCALL | CPUID_EXT2_LM)
+>> #else
+>> #define TCG_EXT2_X86_64_FEATURES 0
+>> #endif
+> 
+> Hmm, so right now the difference between qemu-system-i386 and
+> qemu-system-x86_64 is based on compile time conditionals. So we
+> have the burden of building everything twice and also a burden
+> of testing everything twice.
+> 
+> If we eliminate qemu-system-i386 we get rid of our own burden,
+> but users/mgmt apps need to adapt to force qemu-system-x86_64
+> to present a 32-bit system.
+> 
+> What about if we had qemu-system-i386 be a hardlink to
+> qemu-system-x86_64, and then changed behaviour based off the
+> executed binary name ?
+> 
+> ie if running qemu-system-i386, we could present a 32-bit CPU by
+> default. We eliminate all of our double compilation burden still.
+> We still have extra testing burden, but it is in a fairly narrow
+> area, so does not imply x2 the testing burden just $small-percentage
+> extra testing ?  That would means apps/users would not need to change
+> at all, but we still get most of the win we're after on the
+> QEMU side
+> 
+> Essentially #ifdef TARGET_X86_64  would be change  'if (is_64bit) {...}'
+> in a handful of places, with 'bool is_64bit' initialized in main() from
+> argv[0] ?
 
-
-On 3/6/23 09:03, Marc-André Lureau wrote:
-
-> 
-> On Mon, Mar 6, 2023 at 5:59 PM Stefan Berger <stefanb@linux.ibm.com <mailto:stefanb@linux.ibm.com>> wrote:
-> 
-> 
-> 
->     On 2/21/23 07:47, marcandre.lureau@redhat.com <mailto:marcandre.lureau@redhat.com> wrote:
->      > From: Marc-André Lureau <marcandre.lureau@redhat.com <mailto:marcandre.lureau@redhat.com>>
->      >
->      > We are about to make the QEMU socket API use file-descriptor space only,
->      > but libslirp gives us SOCKET as fd, still.
->      >
->      > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com <mailto:marcandre.lureau@redhat.com>>
->      > ---
->      >   net/slirp.c | 10 +++++++---
->      >   1 file changed, 7 insertions(+), 3 deletions(-)
->      >
->      > diff --git a/net/slirp.c b/net/slirp.c
->      > index a7c35778a6..c33b3e02e7 100644
->      > --- a/net/slirp.c
->      > +++ b/net/slirp.c
->      > @@ -251,16 +251,20 @@ static void net_slirp_register_poll_fd(int fd, void *opaque)
-> 
->     Shouldn't this int fd rather be a SOCKET s instead? Or do you get compiler warnings then?
-> 
-> 
-> Yes, you would get compiler warnings, because the "int fd" argument is from the slirp API, whether it is posix or win32.
-
-
-Right, this is shared code.
-
-> 
->      >   #ifdef WIN32
->      >       AioContext *ctxt = qemu_get_aio_context();
->      >
->      > -    qemu_socket_select(fd, event_notifier_get_handle(&ctxt->notifier),
->      > +    if (WSAEventSelect(fd, event_notifier_get_handle(&ctxt->notifier),
->      >                          FD_READ | FD_ACCEPT | FD_CLOSE |
->      > -                       FD_CONNECT | FD_WRITE | FD_OOB, NULL);
->      > +                       FD_CONNECT | FD_WRITE | FD_OOB) != 0) {
->      > +        error_setg_win32(&error_warn, WSAGetLastError(), "failed to WSAEventSelect()");
->      > +    }
->      >   #endif
->      >   }
->      > >   static void net_slirp_unregister_poll_fd(int fd, void *opaque)
-> 
->     Same here.
-> 
->      >   {
->      >   #ifdef WIN32
->      > -    qemu_socket_unselect(fd, NULL);
->      > +    if (WSAEventSelect(fd, NULL, 0) != 0) {
->      > +        error_setg_win32(&error_warn, WSAGetLastError(), "failed to WSAEventSelect()");
->      > +    }
->      >   #endif
->      >   }
->      >
-> 
+That is what Alex suggested me to do with ARM binaries as a prototype
+of unifying 32/64-bit binaries, avoiding to break users scripts.

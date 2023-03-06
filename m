@@ -1,151 +1,150 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4891210ejc;
-        Mon, 6 Mar 2023 09:06:49 -0800 (PST)
-X-Google-Smtp-Source: AK7set+4wHvNO0VLZmQd/+tufaaW/+A8WoH0mL4j6584bWI/VGeGRjdZFqlMz+LxZf6MAa/k6Zo2
-X-Received: by 2002:a05:600c:3148:b0:3eb:3fea:a2ac with SMTP id h8-20020a05600c314800b003eb3feaa2acmr10192358wmo.22.1678122409437;
-        Mon, 06 Mar 2023 09:06:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678122409; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4899960ejc;
+        Mon, 6 Mar 2023 09:14:19 -0800 (PST)
+X-Google-Smtp-Source: AK7set8WwisV0vDUf7pSwi5pCTNSMgOM5WOOYCMKAVAGq4XuK3SJo6URxt/THEMi2XsjODkIhcMs
+X-Received: by 2002:a05:6214:2423:b0:56e:fe7b:8bcd with SMTP id gy3-20020a056214242300b0056efe7b8bcdmr21547108qvb.37.1678122859012;
+        Mon, 06 Mar 2023 09:14:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678122858; cv=none;
         d=google.com; s=arc-20160816;
-        b=rIU5XZFmwamdZ1b9J2qtRp3oeohAEmeyPvTLml++CVtdVDJ4b4niBxMSaFwNNlknAc
-         ZeDpdEQD+Oh+IWHtApwKLfQr5jgvc1numfAFAQSThOkBMxIiWtGCSo/YRhySHXwkCyb4
-         6flPV4wcvKwdPh8jiywI5eJVTfm9Kc56Fxz58cQxk0wEcna//FhKyck2gvc/+mUPqYnw
-         h91n3gS/QIuEv4Bmxhz9HcJYoa51FIy3Qr+Kn1QYA0S/BX+LqMXePpklcHjv/9Y7Ta5D
-         tiHLbnqE95kft9k1XC/3k01Pn5iKdOa7asYzh98NTCVE8o+wicsWacnPl4VFNunGCUp4
-         pXNQ==
+        b=qHWq791bzuHJU29yHgdfSWbr8mwhXFdMbYjbINQ59BA5fPu5sRvy/8n8kbjiKsa175
+         P5IRHdjO+hwU0Zaot7ff/a8Vsuwn2vOVq0cV4RErcwOg/GlFLgmJef4wrPRnOtxINvYJ
+         FWEOGbyRN/1g/maHBMOi2TgZ21ceY/t0N+mbSfcx9TBcd/Oqgr+IrHSCf1fUWybs1Qht
+         Ks1/quU1RX1DNAy/BsB5K54Z8RlzGxk0ZKaQLY3iR3MTWNb/U2yaZ5KeJUFLrs7SCaYo
+         rjU+BYTi++IGfz1Y8nb64K/dOkmiIXFJfCv72kNhX8n+pvefApEH2jBja4VkeeOB3B/A
+         TuPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=SY+TKppUIcSBDyyUoeQbDlkZUeIJF/QuMMulTiWFZWM=;
-        b=tMqf8LXETMR4ynwJQUXa+pEs+Pci3WJQugPaEVi2HaaU1O1LupPrhQDgJnX8Bfgxvo
-         JfX/vHcLjw6ztxu20syuU0CnnbUGnh0XSkvbJrV1GdCMq2O8+QWikCPpfX2qiJsDd+ys
-         H8zPQHIQ5qrOdssP7qdIbFmlmLJ/f167JRTUnzVjYctp8Xn0aTQ0rSctly12TPbYva/o
-         P8Xpgc1y8PF/eyfw7oO9y54erRKp1fdmgdK9fQujfbUTJvpEyIk0Xv0LGv2g/S8nEJ3O
-         JBSAcdfQ701ms/5vN3cGn/4ISmo2f6hXrJS1fbA9fCTQH94OqDCwWDPTYghW8gp3zgcM
-         T5HQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=AFiIub8XE/3t+YIcf9GDFhgI+Gh55WxmhVjHooAGFXQ=;
+        b=EVpjZxqygkfsnIG2NtExXpxMSFZIcA+HqZIKM5cdBr372ffnYCCjvYxuYibLdUJNxT
+         y5zVeHZk9SJll0t4HNO2Ejn+hYDou+rhSuX0/h5KVgBiUAFnKx8y5uysaoi8+3SIdP8Q
+         /yeUnfecFO6pVCayLyLLy2jtQ5zRAaWTiAeeli9dwZHMmWL4A03RHgQ9D5yFw5DWwE/I
+         arbmUCjQ4q2vcTfs3TFW3U77i98rkRRkzw40Y3PI+/VwNc46ZAwd0nltA4LNXafghhEZ
+         5IxMgiiMMdci7zS6w3U4ah8zLxFOzGn/mkKes1XzCMvbVZ8YuTfpxPTdfF2xDSldLO6u
+         uIqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="bwg/7eKH";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id i4-20020a05600c354400b003eaee9e0d31si10679319wmq.85.2023.03.06.09.06.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Mar 2023 09:06:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mJCAHhWR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 79-20020a370b52000000b0070671b50913si7149644qkl.702.2023.03.06.09.14.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 06 Mar 2023 09:14:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="bwg/7eKH";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id EDC231FDE3;
-	Mon,  6 Mar 2023 17:06:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678122408; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SY+TKppUIcSBDyyUoeQbDlkZUeIJF/QuMMulTiWFZWM=;
-	b=bwg/7eKHQ/SijSmlNBTza/TrgfVVgyJIKJ199kCJDvJs3MXP/sRgUGMsiqtUwIhr6h1MUo
-	HGWyn3MYrlAutn6/SxDD1OsRuF57wB6khVP8CUFOg208g3EQYkG9vZYrrlzhrkuMDn9SFv
-	QUApvRhWTrPehsdFGfKKekgGQLnyPqM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678122408;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SY+TKppUIcSBDyyUoeQbDlkZUeIJF/QuMMulTiWFZWM=;
-	b=KSkOPCDKvnUUDjZNfnAapupiAN6DqRdzUu3cdy/CV2oBvgw6tDUg3OUJx+zfeICnO7pELg
-	0TENqACOa4ncc3AQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7694B13A66;
-	Mon,  6 Mar 2023 17:06:48 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id EdT+D6gdBmTrZQAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 06 Mar 2023 17:06:48 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
- Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Wainer dos Santos Moschetta
- <wainersm@redhat.com>, Beraldo Leal <bleal@redhat.com>
-Subject: Re: [PATCH RESEND v7 5/9] tests/avocado: Pass parameters to
- migration test
-In-Reply-To: <CAFEAcA_aw6mc_FM00MqOcOzqFP=xktpq6+Z-_uhhEHKbw-bKNA@mail.gmail.com>
-References: <20230228192628.26140-1-farosas@suse.de>
- <20230228192628.26140-6-farosas@suse.de>
- <CAFEAcA8p86BdbbO-thyov+A-dc98iygPx6nyCmnxinCRCuKviA@mail.gmail.com>
- <87pm9pwnym.fsf@suse.de>
- <CAFEAcA_aw6mc_FM00MqOcOzqFP=xktpq6+Z-_uhhEHKbw-bKNA@mail.gmail.com>
-Date: Mon, 06 Mar 2023 14:06:45 -0300
-Message-ID: <87jzztstay.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mJCAHhWR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pZEPV-00009e-Oj; Mon, 06 Mar 2023 12:14:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pZEPQ-0008V6-Bm
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 12:14:02 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pZEPO-0004xS-NP
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 12:14:00 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id g17so13732522lfv.4
+ for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 09:13:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1678122837;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=AFiIub8XE/3t+YIcf9GDFhgI+Gh55WxmhVjHooAGFXQ=;
+ b=mJCAHhWRZKmPh493Sl1ZEWwidUEevb8hiyjWvY8OSzNLa2yP4cO14I7CrN1RPsGKzl
+ yZyvjx59V+JO3wA++zn8NBZLWQ8nVsysoNhtxFdvbZAl1Ebun4UzaSPvWRNJeOU69clQ
+ lYe5mhULCb5mymWFDidZ3zyNhdzNA1Gqv8EvVP6AH6Mwfizd20UA1ZEzwMUhv5mipLti
+ wrT7KyicfmEaprx2eZ54fnUne/bU3IpK5tkROX+19naTuFVvT1XaGLh8i2+VMgqGE/TR
+ 2ayiqTvIwk7I0sg1aGZ2gli29+vTJHuzE2JhTPn0J67JjZc6ZZEw3UBl2wLFBZYZW9eC
+ kfXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678122837;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AFiIub8XE/3t+YIcf9GDFhgI+Gh55WxmhVjHooAGFXQ=;
+ b=FH2FVv7rRIFwRq5nAz/XrBB6ZL4Nh+Wp/C3prPb6vl5717MCE8tcnzp7hImqlPYsQ6
+ LHVsF/saRiFfVrPKuvxwnnTwBASAcElpfH+mNsRJHPDSM4xaeybfm0vPj7qSfUA0+sps
+ GhixDTjjfghzpHyXhsi2/j2/x8bufKIF1KDBlwUb9oAtxeQFg+cbRTzadiAKCPQcQAg2
+ /TKkt6LzDiTyEAkl9d5ttNH60t4d93UC6+SpEpWzqqwLWgDB/QazknzQmWDWKkSp+gCi
+ n81ncatG4OweC2Z6KLWL5vXJJqCbjnSTmsB2sC7lY/E6J71f9Bz1zUGHmIBYiCrOxEBt
+ Fu2A==
+X-Gm-Message-State: AO0yUKXLzcdAcgHboKqn1pzVgAuojdzqDEhFXiaDRa1RLTaabSIwzxIU
+ E2mNN0dcoYdRee8LL/MVJ4UEjQ==
+X-Received: by 2002:ac2:46f8:0:b0:4e0:a7cb:33fd with SMTP id
+ q24-20020ac246f8000000b004e0a7cb33fdmr2710445lfo.27.1678122836696; 
+ Mon, 06 Mar 2023 09:13:56 -0800 (PST)
+Received: from [192.168.200.206] (83.11.36.13.ipv4.supernova.orange.pl.
+ [83.11.36.13]) by smtp.gmail.com with ESMTPSA id
+ a11-20020a05651c030b00b002959aecb63bsm1793544ljp.53.2023.03.06.09.13.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Mar 2023 09:13:56 -0800 (PST)
+Message-ID: <5f8a1a7a-2971-029e-adc2-eef8a3c121ab@linaro.org>
+Date: Mon, 6 Mar 2023 18:13:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: 8QYzSw8iYjhR
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2] target/arm: Add Neoverse-N1 registers
+Content-Language: pl-PL, en-GB, en-HK
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Chen Baozi <chenbaozi@phytium.com.cn>
+Cc: qemu-devel@nongnu.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20230306151243.3877250-1-chenbaozi@phytium.com.cn>
+ <CAFEAcA8BJO2iVG_KQaFBV0hvAmWn4cV-vC8QA5CC+iChMuHyXA@mail.gmail.com>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Organization: Linaro
+In-Reply-To: <CAFEAcA8BJO2iVG_KQaFBV0hvAmWn4cV-vC8QA5CC+iChMuHyXA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JN1akn+QlGWC
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+W dniu 6.03.2023 o 16:37, Peter Maydell pisze:
+ > On Mon, 6 Mar 2023 at 15:12, Chen Baozi <chenbaozi@phytium.com.cn> wrote:
+ >>
+ >> Add implementation defined registers for neoverse-n1 which
+ >> would be accessed by TF-A. Since there is no DSU in Qemu,
+ >> CPUCFR_EL1.SCU bit is set to 1 to avoid DSU registers definition.
+ >>
+ >> Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
+ >> Tested-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+ >
+ > Did Marcin test this version of the patch ?
 
-> On Fri, 3 Mar 2023 at 20:59, Fabiano Rosas <farosas@suse.de> wrote:
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->> > On Tue, 28 Feb 2023 at 19:28, Fabiano Rosas <farosas@suse.de> wrote:
->> >>
->> >> The migration tests are currently broken for an aarch64 host because
->> >> the tests pass no 'machine' and 'cpu' options on the QEMU command
->> >> line.
->> >>
->> >> Add a separate class to each architecture so that we can specify
->> >> 'machine' and 'cpu' options instead of relying on defaults.
->> >>
->> >> Add a skip decorator to keep the current behavior of only running
->> >> migration tests when the qemu target matches the host architecture.
->> >
->> > I still don't understand this patch. Don't we run the
->> > migration-test on all hosts already? David ?
->> >
->>
->> We run on all hosts but for each host we only take the QEMU binary that
->> matches the host architecture. So if you want to test aarch64 migration,
->> you need an aarch64 host.
->>
->> If you run on an x86_64 host (without this patch):
->> $ ../configure #all targets
->> $ make check-avocado AVOCADO_TESTS=../tests/avocado/migration.py
->>
->> You'll see:
->>
->>  (1/3) ... migration.py:Migration.test_migration_with_tcp_localhost: PASS (0.21 s)
->>  (2/3) ... migration.py:Migration.test_migration_with_unix: PASS (0.18 s)
->>  (3/3) ... migration.py:Migration.test_migration_with_exec: PASS (0.21 s)
->>
->> All three tests ran using qemu-system-x86_64.
->>
->> The issue I'm trying to solve is that when run on a aarch64 host, the
->> test will fail because (being generic) it doesn't pass the '-machine
->> virt' option and there is no architecture-specific information in it at
->> all.
->
-> But my point is that we already CI on aarch64 hosts, so what is
-> happening there that means the test doesn't fail already ?
->
+Hard to test it without updating TF-A first to not use DSU. Older TF-A 
+starts and then hangs.
 
-I don't see check-avocado on the custom runners job descriptions
-(.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml). It seems we
-don't run avocado there at all.
+Waiting for Chen to provide patch to TF-A and will test.
 
-For the regular jobs, there's the avocado-cfi-aarch64 job which depends
-on the build-cfi-aarch64 job that is being skipped at the moment. But
-that wouldn't catch this bug because it runs on an x86 host and this
-particular test gets skipped.

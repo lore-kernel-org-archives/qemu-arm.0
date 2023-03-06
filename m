@@ -1,176 +1,148 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4714269ejc;
-        Mon, 6 Mar 2023 06:33:03 -0800 (PST)
-X-Google-Smtp-Source: AK7set91BP7Z1UdtsXcuBlzng4o5dg86GZe8VCzaW4dRvErJKo4mftyEj6+ql6TlYhAm5zdTcYnV
-X-Received: by 2002:a05:622a:44c:b0:3bf:bdb8:c64a with SMTP id o12-20020a05622a044c00b003bfbdb8c64amr18993161qtx.49.1678113183116;
-        Mon, 06 Mar 2023 06:33:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678113183; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4844899ejc;
+        Mon, 6 Mar 2023 08:22:35 -0800 (PST)
+X-Google-Smtp-Source: AK7set8J9eYucXdXvjxJRjzPYpq0Rf02h1WZ8YQXFd+H/u96L1IbDPX3vgdZ8bwj8bps72TTZtsB
+X-Received: by 2002:a05:622a:1a8c:b0:3b9:bc8c:c1fb with SMTP id s12-20020a05622a1a8c00b003b9bc8cc1fbmr24536206qtc.6.1678119755249;
+        Mon, 06 Mar 2023 08:22:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678119755; cv=none;
         d=google.com; s=arc-20160816;
-        b=mwPXv6tDF5jVUVvrROwZ3Fvhm6e1XIoWseehAnlvx3lzar3Oay4mqq0SwiQy91PYOp
-         BmvNNAJz8yGL/q/hBe8dJgJh9s8fXH+SLNRDjDiK9HSCP7bJObahLO4Sckkw1lwpDrxu
-         G0Ps7A+YEN/TitCJ929hyea3hgs1IlyXPizRI90ZGznym38Ryqu6msS8DXUf2juSVfP8
-         6YGYUIjfogRtIXF2S7vj2z2RFvAEDvnsVp3tWL8DKZGVDIPUt/BJIJrKD4eS+IskvTUd
-         TZIZCsYaHc/NTWwuJmAk73Jd+FAg0pRjjBo1y3mU0IJBrzw1X051dfLXFOULZ/o4mkLM
-         zlfQ==
+        b=vggiOwib7IY/f9fnQm38Plawl9Edu8EB81WS96+edT55pTftq7BskRmoGAsTY2KeCo
+         a2xFZpZ97C0P+X+zt5vTnQLEXUqM5g7LAoRpmlxmoqItLrgS576Yt/Qb2Qiina4MgRA2
+         PtwUZJB1nu+g9cZ1tpEwxcx6Jmlfyh5wc65D3ejBP1A7A5wZ/qLdr5ijKr02JdMJUdGw
+         SjD4ITNRS15r/G1vMTmvwUPl1MVNJ7q+6F5S30XnE9xjpTa/rYkGg1dfF0eEhObWN/K3
+         dcz7HgRtIGgyi4BeLvifTX+uFrF4GPdo3ue08ojR4fkuGq+NO43OvTmdd1/ir7bZyFS+
+         zXWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:in-reply-to:subject:cc:to:from:message-id:date
-         :dkim-signature;
-        bh=29EixLpyxHxsE1C8b/OtrcUeP5cl8l/f7KkXpG6RoSQ=;
-        b=ZbnbBtlSZnfsy+9gbO9G9ZJdMFRHGnn2z5wvuvwehP/OcZHEe6F3P5r5my9tso97Hv
-         Kn/f7AqahVXWYxtpZIoSYUNb5rCioRp5XfbCtvxe7oR9pJzek3N1KU7m3rnB8/Kl64Fj
-         oe5yoYUlu7tGN1h3OIvW4d4nlQiPhuLNytiKJOa1aNTUna4aDomw7w/5bsC0RCb6clx5
-         P0ZfvIAImaELge7a2vT0eOfGCLxY4MLSdh/vU+rF44y+B7si8w0G7HUJJ9RaEe0eMyRY
-         /G7MEfgXuO2yf5rUGE/74SgKQeyMyticxCLeyXKCiTjIqLi+vL50n2suR/kbvufgTXw8
-         hlQg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=F2rIuIzeQjQU6QZpMhrypLZXkxARjX9ri2kzsNKD58M=;
+        b=1G45f20gAoya6KhJ2O4Q7eAjOjXQvQtSm/mxD/bBkXzZPs/BoTvb+a3Hn/HiNsUgef
+         Zdb2pHtXOmkddU/KTTWL02jqVYNGxU5I4PLmN4x5iOVxHijgfoIrgmxSPhSnbn2nggKK
+         mk1YcvvikG6yKeFU2X5/yOQrm0dFkS6F635wjW4tQsf+SrmQP+ZKo4fXVMdDuCGQhJs4
+         RtXCLa2vuIhqni+uFw2ahBJBlLdL5KTCmWJtxUIyCalGSlrRbAwU0o9Ea6gRXV43lXzU
+         4giD0CKEbdDrgl4gG/J+4nmnRWczTQrgT7TWRL/dtz0ZL2vcpLy2YkyJyXkbZk8rqyKB
+         IR9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=mxA8CViU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="uZZ2U/De";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g20-20020ac85814000000b003aedf4417fdsi7312899qtg.614.2023.03.06.06.33.02
+        by mx.google.com with ESMTPS id az40-20020a05620a172800b00708fd79fac9si8252782qkb.122.2023.03.06.08.22.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Mar 2023 06:33:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Mar 2023 08:22:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=mxA8CViU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b="uZZ2U/De";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pZBtS-0004hJ-UV; Mon, 06 Mar 2023 09:32:50 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pZD03-00083J-Ax; Mon, 06 Mar 2023 10:43:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1pZBtS-0004gE-Ad; Mon, 06 Mar 2023 09:32:50 -0500
-Received: from ams.source.kernel.org ([145.40.68.75])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1pZBtP-00054U-Ta; Mon, 06 Mar 2023 09:32:49 -0500
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id B8C2AB80E55;
- Mon,  6 Mar 2023 14:32:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BC30C433EF;
- Mon,  6 Mar 2023 14:32:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1678113158;
- bh=6metGQJLLrMIQV46HL1rHuWCjpPItz5EEpI2mdssYmI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=mxA8CViUGcBd5JTsSkVRDV1Ju3DwDKl0DYjS1Cod2g9WsXItj3yq68ptU7Q5DHj6S
- wwTRqUpyv3NnHz3OqVq3+q25+Hd6Inaswfx8SBY7VjRGSyz8VcghiNofu+iZENy9pt
- NP4QR5lfX2BJfYevphtARkGkJS8IFwD55SE7e0JzJcAwUdN8Cg6zf77RTrycwKRUQ9
- 6rhQ/xIskhYtwGkWLdK/M1q98XN7qIqO7l2EfnzeB6gdwD1yGORjCbQzHOr9cNPEhQ
- u1xXB/tkN0p9BdwnGeui44vFmkn9F83DyOG/uuXesXCGL7B4k+3qYVR1cwZhMjGBnm
- z4wpUsKjZdmig==
-Received: from sofa.misterjones.org ([185.219.108.64]
- helo=goblin-girl.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
- (envelope-from <maz@kernel.org>) id 1pZBtE-00FEK3-Ax;
- Mon, 06 Mar 2023 14:32:36 +0000
-Date: Mon, 06 Mar 2023 14:32:36 +0000
-Message-ID: <864jqyympn.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Miguel Luis <miguel.luis@oracle.com>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>,
- Andrew Jones <drjones@redhat.com>
-Subject: Re: [RFC PATCH 2/5] hw/intc/gicv3: add support for setting KVM vGIC
- maintenance IRQ
-In-Reply-To: <CAFEAcA9ZzN0Xokh4kFcxtpv9hU512Km1EcaJHLG3JznVDF=Tew@mail.gmail.com>
-References: <20230227163718.62003-1-miguel.luis@oracle.com>
- <20230227163718.62003-3-miguel.luis@oracle.com>
- <CAFEAcA9ZzN0Xokh4kFcxtpv9hU512Km1EcaJHLG3JznVDF=Tew@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/28.2
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, miguel.luis@oracle.com,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, haibo.xu@linaro.org, drjones@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=145.40.68.75; envelope-from=maz@kernel.org;
- helo=ams.source.kernel.org
-X-Spam_score_int: -70
-X-Spam_score: -7.1
-X-Spam_bar: -------
-X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pZD02-00082m-L5
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 10:43:42 -0500
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pZD00-0003nC-Bw
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 10:43:42 -0500
+Received: by mail-pg1-x533.google.com with SMTP id y19so5802856pgk.5
+ for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 07:43:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1678117419;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=F2rIuIzeQjQU6QZpMhrypLZXkxARjX9ri2kzsNKD58M=;
+ b=uZZ2U/DeaKY7Yasu8fbCf6bF721FUnmzxurM8v3B+omxv2iCnNno/nI7hjJAxc1KqL
+ gMsNBkqDzotoHgb95Dcfhwp0yFYOBYpnXZHIZPB9ZIKt1y3hjkF1hlvBCH/9D0pG7lZp
+ PIvbZeAasKUJXi1QRy4au7Ne5MkKUunp6725TUkCgDGhHeFWBboq7afA49zloS+FP5IA
+ 2V7LaNst0nfBVPVPQ3q01FR4PQO/clm8d0G077qCPiW5cp6O3KsAuTJPSd46Mj3qnI5K
+ B85ekyJRBgTZkVAhM30oaJjPLtkOdC8S30F/q+2TdVW+Z7vF8ATCZlpN0WxWdue1Pr7Q
+ 4gMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678117419;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=F2rIuIzeQjQU6QZpMhrypLZXkxARjX9ri2kzsNKD58M=;
+ b=hA0YAwcu+GLW8mzyyAZojlooeTzsUi5TcL9v1vhZ7gwmok70VQe1HN7U9JRtQC50Qu
+ t8oB/bfFcYbvcJMaj5bwtgwEraXfNhzVGJuresW2FRsBYs2Exs00dUYSNdfmQOuW8fe7
+ ccAoh+Y5+OuTamC6Yz5ceAFCDNhfuVfm6JNdXwAqMhKoS+wyoG6lb1hI3b4tO+vGNTgH
+ yErShQR++zh58uFgRS21AUEZLNAdvUcWUQ5lX/VND1KYOJcbyUji4ARIXJ8CGu0pnOH/
+ YYuvRDAL0Xs2omJDmaI30iRyowtPTswf+P0lSLnndP36gc6gXcX4ntrnNo6nQSlXBYgF
+ NjOg==
+X-Gm-Message-State: AO0yUKXTKAs2aRI8CMW/guDnc7PE/h0jz6zhAbcnPN2MlLTlwNfeK0Ri
+ +ZH2wElvJxIyKkA1V6bDPn1QsaJ+UwyUt0h0xDOqOA==
+X-Received: by 2002:a63:ee12:0:b0:503:2583:effb with SMTP id
+ e18-20020a63ee12000000b005032583effbmr4034731pgi.9.1678117418670; Mon, 06 Mar
+ 2023 07:43:38 -0800 (PST)
+MIME-Version: 1.0
+References: <20230306151243.3877250-1-chenbaozi@phytium.com.cn>
+In-Reply-To: <20230306151243.3877250-1-chenbaozi@phytium.com.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Mar 2023 15:43:27 +0000
+Message-ID: <CAFEAcA8saKA2zHXpPLHVSB3ya=HFG2ayPZCvD3BUut76NAmQCw@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Add Neoverse-N1 registers
+To: Chen Baozi <chenbaozi@phytium.com.cn>
+Cc: qemu-devel@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pg1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dVbSj7xfP9/b
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kIqvKLXKozMd
 
-On Mon, 06 Mar 2023 14:02:33 +0000,
-Peter Maydell <peter.maydell@linaro.org> wrote:
-> 
-> On Mon, 27 Feb 2023 at 16:37, Miguel Luis <miguel.luis@oracle.com> wrote:
-> >
-> > From: Haibo Xu <haibo.xu@linaro.org>
-> >
-> > Use the VGIC maintenance IRQ if VHE is requested. As per the ARM GIC
-> > Architecture Specification for GICv3 and GICv4 Arm strongly recommends that
-> > maintenance interrupts are configured to use INTID 25 matching the
-> > Server Base System Architecture (SBSA) recomendation.
-> 
-> What does this mean for QEMU, though? If the issue is
-> "KVM doesn't support the maintenance interrupt being anything
-> other than INTID 25" then we should say so (and have our code
-> error out if the board tries to use some other value).
+On Mon, 6 Mar 2023 at 15:12, Chen Baozi <chenbaozi@phytium.com.cn> wrote:
+>
+> Add implementation defined registers for neoverse-n1 which
+> would be accessed by TF-A. Since there is no DSU in Qemu,
+> CPUCFR_EL1.SCU bit is set to 1 to avoid DSU registers definition.
+>
+> Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
+> Tested-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> ---
+>  target/arm/cpu64.c     |  2 ++
+>  target/arm/cpu_tcg.c   | 62 ++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/internals.h |  2 ++
+>  3 files changed, 66 insertions(+)
 
-No, KVM doesn't give two hoots about the INTID, as long as this is a
-PPI that is otherwise unused.
+We should add a comment here:
+  /*
+   * Report CPUCFR_EL1.SCU as 1, as we do not implement the DSU
+   * (and in particular its system registers).
+   */
 
-> If the
-> issue is "the *host* has to be using the right INTID" then I
-> would hope that KVM simply doesn't expose the capability if
-> the host h/w won't let it work correctly.
+If that's the only issue with this version of the patch
+I'll fix it up when I add this into target-arm.next.
 
-No host maintenance interrupt, no NV. This is specially mandatory as
-the L1 guest is in (almost) complete control of the ICH_*_EL2
-registers and expects MIs to be delivered.
+> +    { .name = "CPUCFR_EL1", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 0, .opc2 = 0,
+> +      .access = PL1_R, .type = ARM_CP_CONST, .resetvalue = 4 },
 
-> If KVM can happily
-> use any maintenance interrupt ID that the board model wants,
-> then we should make that work, rather than hardcoding 25 into
-> our gicv3 code.
-
-+1.
-
-I'd eliminate any reference to SBSA, as it has no bearing on either
-KVM nor the QEMU GIC code.
-
-I also question the "if VHE is requested". Not having VHE doesn't
-preclude virtualisation. Was that supposed to be "virtualisation
-extension" instead?
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+thanks
+-- PMM

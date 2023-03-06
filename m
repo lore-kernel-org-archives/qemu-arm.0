@@ -1,110 +1,136 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4502422ejc;
-        Mon, 6 Mar 2023 02:56:13 -0800 (PST)
-X-Received: by 2002:a17:90b:4a92:b0:237:50b6:983d with SMTP id lp18-20020a17090b4a9200b0023750b6983dmr10253536pjb.8.1678100173605;
-        Mon, 06 Mar 2023 02:56:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678100173; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp4512953ejc;
+        Mon, 6 Mar 2023 03:07:19 -0800 (PST)
+X-Google-Smtp-Source: AK7set+JQ6sPzwzMz9aq6lBdSQz9nW+XVEIxnUdtgzpYxYqlBWl4JlmY8LaJTiYOHRYFbXnOUzTq
+X-Received: by 2002:ac8:5c47:0:b0:3bf:c25c:838 with SMTP id j7-20020ac85c47000000b003bfc25c0838mr17296591qtj.68.1678100839481;
+        Mon, 06 Mar 2023 03:07:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678100839; cv=none;
         d=google.com; s=arc-20160816;
-        b=LgIooRxHZdoz8Zb9Xxl2lCL8nOGrLb2WD0Nq2tAJlgCu6jy9c5JrbaaPWLZgQ1ylIB
-         t8kY4zjnuKlTOlBfVVfLyhj3EF0TV6YCShARkzkZMFSgimiR9qGGJL1pgBKa2HhZRKYZ
-         QvBPIIlAHBb8lrpflogbEwLUvVY/+8DEKCSj75m+MIpiGXA7P7eOm+lsEUd7mbqnmqb1
-         5SPAKF8OEwO1xQgWssFEcdJ+gekBpyKD/ooVey9PvPNANtdD51ArQDyWrOiyr24d7VIQ
-         uoehh73I4Sy+8GovdboxMsgjcwI4dR8S+kIuU3+iXrgm6sQGjEf4YX8SUH/cJm1aoyTl
-         x5lQ==
+        b=s5eqbFsXsXpPHE1e8oqAjEzFk9+sDwmFjPFOJtP/NV6LQCIvaidxH8FsEbzRbBbyGD
+         Q9otO2KQ5+tv/cqOL0FczvF6DV+uPDB5C7a5o4aaYmG2HsKFhR0/n7+WFmj6WUPLTYti
+         WSuj9voKTLBWrwqwC1Whc4wcm/aqLLMGIRcwoFitk4ZEcwbNJHhv7hSeaMIx/DVWKQC4
+         2fALRAqotosS7ATRVklZ/B+Rqoeipj32twbhG75r1Vftf+Q/eu5uIrxaN2KvMrmhfqC+
+         JSxbKkIb3mOIYgSUzNgmqFic9KWsqks2/+v3ZkkqwzvjCK/7+q2uZVgerhga5Zv6YSCk
+         pKWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6+WoYORE9OMrBiSUYAnQLFIV76lFUiJemJwY5hzx2c8=;
-        b=GAqhGyKTD6EfhpcyHu6i8jqXjYbxJIENPp1AIECfN/DO2/AkQ3kkl6+A5cYfFM6Du2
-         9qMPYIBEkpVjOJ+LYW9fbg8WW9EOzMNY4BmTlOhbLNehpieUN9fXuqC9kgMDPenTwTrZ
-         CPfQdkZoTBU/NeYKbBPHFbAm8atrhiGloZrGb1/l+/lv3h7oU9Hhs5KzjpW25uCbg78a
-         N2tLh5Ox8gP3zc7NDFtAaWDqpwDzm47rUEOMrbyYa+k/PXafXYZ7SIYiHRJSyGaEZ8KS
-         FLjj+SkMDEnNuoocX22DP+lgffCnDiWVhEQ67eC2NgTZuwvMp4K26xybMcsnQF03i+yJ
-         k3sg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Rr4V+jrFwQrumf1QPMJF3igThABONkkyboUK/mCNsDY=;
+        b=WKudhEWjLsLbaVsgcDmlB72ZcNNZQ1Bv+z0kELqlcFNNnCQnHX1Lwg9FMWvBhu6WF1
+         Y4HslzOiVnumKuB0yAVF0/+EvkKnsxZBmRmTPbuzJSBMakIstiUtST3njZdyzayhc2J9
+         dZLIK+wRZHsTukuHlnSfLm8w6hsad8rol4Zn4bleWRY93fkHNiBxiQk3u+MEMAJWDtXe
+         VxnMELeecH7EsBckCfPW7Vk2maSFLjej8aeyY3w91f7PqTLNyNoYpEry+uyN8J2SPVcL
+         PYZffBINNigSAJ6Cweg7DCf1Y07ZBZelq0S4CRGxOOSc5UW+UgMxV5CHBesvmyQBU4Xj
+         8WCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zP/OAoG7";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kahk+iGE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d3-20020a17090aa68300b00233d8af0841sor5115861pjq.33.2023.03.06.02.56.13
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 21-20020ac85715000000b003bbd8bdb936si7120955qtw.794.2023.03.06.03.07.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 06 Mar 2023 02:56:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 06 Mar 2023 03:07:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zP/OAoG7";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kahk+iGE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pZ8gT-0000WE-QM; Mon, 06 Mar 2023 06:07:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pZ8gS-0000VR-Nx
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 06:07:12 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pZ8gR-0003nD-5L
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 06:07:12 -0500
+Received: by mail-pl1-x633.google.com with SMTP id p6so9926207plf.0
+ for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 03:07:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678100173;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6+WoYORE9OMrBiSUYAnQLFIV76lFUiJemJwY5hzx2c8=;
-        b=zP/OAoG7Vp5q6gaNv8q8YGgfhpLYHkbeUQMaVIuEolHyYKThc7F0M7WyonthCsjA6F
-         GQ/p8qhRGlETfIVWL4Srw+VaTkE3z5LBA6l0doox8zyVBUgaYCe6pZEHFuHRfLknSbPG
-         abfa6UGuGCRksu1ftCkHfOID2/p8vCPYTtA9yaJp9CdCfYgFqWWeryv+iwRIVImrTWpW
-         arve414bDeNDBpSg3UspvWlYdvXcU7iYQ3oBjcJ6PlOaEdQ1qlLyMOnyAgzpGcIo98L6
-         9zp0R+EG4EztxFIWrIhO7brO/yoQnuMtP3aWyliZh4mDoR5B4btzuO4jwdE+rOTpe+a2
-         cboA==
+ d=linaro.org; s=google; t=1678100829;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Rr4V+jrFwQrumf1QPMJF3igThABONkkyboUK/mCNsDY=;
+ b=kahk+iGEqDvcel2IBsIpnhLOm+6bufbLAwYN8KNLSSRN5jGKwSlHauIHiMclk2nov6
+ jSx4pgmHaVCzbyVca26xtFNMOrnUG1Kzn1H8f7vQ+DvMKW7JqVU3TVYCzACR/9IEb9zT
+ JuT+U37YYUm1LspNwfIm4MMDDr2QT2lilBXyENTRawqXVqxvgpx1lt/QpuVakWsm052A
+ bmSNqKp9x+Q62kqbDlbjLqwwgZwhl3HtQKmGvxX5a87f1BeboqSbPh83TKVLDePclRQb
+ UHmoV8LPAhVWknJZdSvqvM5L9ihPL9ChGv5LPmDyFm6XoUaLYk3pMs9g3roAFt+jOncP
+ bRNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678100173;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6+WoYORE9OMrBiSUYAnQLFIV76lFUiJemJwY5hzx2c8=;
-        b=3C6ghilIGnMTMM4EsIBRTKmk+E3b4rIq6xyhLLJsa47XcN8f9mcfzuE7MEmtTI09YX
-         RRgZbEHEerv+LtMYI6+N/B/Ow3sVGvY2z7z5gIDnUP8CTwz25k6wIpEEmUY6kCliad3t
-         lPUNDUKftBZG+UB0iyGZxH5EG4AoM0G/jlEi0OR93uqR/LciP2ZIIVKa/LhylG3uVUrD
-         6UwmtY0qQUt5jqRUJXcfBgk6+HCznyhN06nQ2OxE3Pwd4ZozS78HqW/b6Hm8V5MwhqGD
-         Qn7tk0Q+MGukPRYiwjF4e9thFwRyg/0oGd+DWZq3RSY5NsDAvA+xbpTZK0oeeGVNwL7k
-         9YAQ==
-X-Gm-Message-State: AO0yUKW5omTO0ihcc/mejsX9ClAN9UHCBKNNvTd1HJXJdUK7z5aczgwN
-	QuKV9usX3BpAVTgGiV6nlTs0zCjPLgtkgOWC9mfEOIXmK7YOaoU8ITE=
-X-Google-Smtp-Source: AK7set9+yutBX+OqK3KGkW5gqvHtNOjzkIRwTukQYFL+fFCA4XEfEfa1Na/z07VLIUzGpR7+ZnlTIXqg88/61jvQUFE=
-X-Received: by 2002:a17:90a:dd86:b0:233:be3d:8a42 with SMTP id
- l6-20020a17090add8600b00233be3d8a42mr3674365pjv.0.1678100172949; Mon, 06 Mar
- 2023 02:56:12 -0800 (PST)
+ d=1e100.net; s=20210112; t=1678100829;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Rr4V+jrFwQrumf1QPMJF3igThABONkkyboUK/mCNsDY=;
+ b=WGauJ8rbY4cHXD+kNYHD82Nam6LEs3bQ1FUM3DMzEFkCbzUP/D7PNB21+6sN6fuW+G
+ IGXiDpHiPUr6clELyTcYs6LRJaJZA5MFChgRF7fD836CMUpSXWp+y4UPAvUxwSDlnmsw
+ aFXyfsDaUYHloJMjsevPfLufhrgFd5cGmtkMrRcLOph2GBWQCJnfNYM0HgJ+D/C21Xb3
+ O+miLk4Z5JBOEpIoY/DBaFY3GUuBZCRZZbf2/nbg3B/USTIDOT8IacPIrudmYjU6gkF/
+ XqPPQ2aEFZb1/09P0yHB1EdzJOX0z6yPiZZ+vRVu79+OhmBIKrrrUgkCjwC5naIPzH85
+ Q4Kw==
+X-Gm-Message-State: AO0yUKXO7IXBqLeuNqGSFgTzmU06Iu3TXXtQ8R1fyiQ1g8v9k2OYKXKf
+ GQSIY5qukAlZCLLk0lgS2GIDoE697NywrgW1ZFFOdQ==
+X-Received: by 2002:a17:90a:9512:b0:237:50b6:9a09 with SMTP id
+ t18-20020a17090a951200b0023750b69a09mr3883110pjo.0.1678100829526; Mon, 06 Mar
+ 2023 03:07:09 -0800 (PST)
 MIME-Version: 1.0
-References: <20230303160109.3626966-1-ardb@kernel.org>
-In-Reply-To: <20230303160109.3626966-1-ardb@kernel.org>
+References: <20230228003713.861168-1-richard.henderson@linaro.org>
+ <20230228003713.861168-4-richard.henderson@linaro.org>
+In-Reply-To: <20230228003713.861168-4-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Mar 2023 10:56:01 +0000
-Message-ID: <CAFEAcA9v5QsPjt3u8SrXx60-5KXrPRrOcZG6DnnA=hknMHvU8w@mail.gmail.com>
-Subject: Re: [PATCH v2] hw: arm: Support direct boot for Linux/arm64 EFI zboot images
-To: Ard Biesheuvel <ardb@kernel.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 6 Mar 2023 11:06:58 +0000
+Message-ID: <CAFEAcA9RJ0YTPG52tazPBvo7=DnmotgpoXKPyS=SD3d63ifwjg@mail.gmail.com>
+Subject: Re: [PATCH 3/3] target/arm: Support reading ZA[] from gdbstub
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: A4B0H0tt8npT
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9ot3YN6GHmty
 
-On Fri, 3 Mar 2023 at 16:01, Ard Biesheuvel <ardb@kernel.org> wrote:
+On Tue, 28 Feb 2023 at 00:37, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Fedora 39 will ship its arm64 kernels in the new generic EFI zboot
-> format, using gzip compression for the payload.
+> Mirror the existing support for SVE.
 >
-> For doing EFI boot in QEMU, this is completely transparent, as the
-> firmware or bootloader will take care of this. However, for direct
-> kernel boot without firmware, we will lose the ability to boot such
-> distro kernels unless we deal with the new format directly.
->
-> EFI zboot images contain metadata in the header regarding the placement
-> of the compressed payload inside the image, and the type of compression
-> used. This means we can wire up the existing gzip support without too
-> much hassle, by parsing the header and grabbing the payload from inside
-> the loaded zboot image.
->
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
 
 
+> +    g_string_printf(s, "<?xml version=\"1.0\"?>");
+> +    g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
+> +    g_string_append_printf(s, "<feature name=\"org.gnu.qemu.aarch64.za\">");
 
-Applied to target-arm.next, thanks.
+Isn't there an upstream-gdb-defined way to access the SME matrix ?
 
+thanks
 -- PMM

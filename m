@@ -1,674 +1,152 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o1-20020a5d4081000000b002c71a32394dsm12415137wrp.64.2023.03.07.03.28.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 03:28:47 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 18A801FFBE;
-	Tue,  7 Mar 2023 11:28:46 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: kvmarm@lists.cs.columbia.edu
-Cc: kvm@vger.kernel.org,
-	qemu-devel@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Andrew Jones <andrew.jones@linux.dev>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	kvmarm@lists.linux.dev,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Will Deacon <will@kernel.org>
-Subject: [kvm-unit-tests PATCH v10 6/7] arm/barrier-litmus-tests: add simple mp and sal litmus tests
-Date: Tue,  7 Mar 2023 11:28:44 +0000
-Message-Id: <20230307112845.452053-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230307112845.452053-1-alex.bennee@linaro.org>
-References: <20230307112845.452053-1-alex.bennee@linaro.org>
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5972944ejc;
+        Tue, 7 Mar 2023 05:53:19 -0800 (PST)
+X-Google-Smtp-Source: AK7set/slTjo7ZFewa3/w//rb8jg423CgWC9ieJNzy9oc0+llpRCykjly4NDgMr7AWwAaJ5bbCcn
+X-Received: by 2002:a05:6214:2a88:b0:56e:b91f:aec4 with SMTP id jr8-20020a0562142a8800b0056eb91faec4mr25683346qvb.11.1678197199796;
+        Tue, 07 Mar 2023 05:53:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678197199; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lVWFtWB17HxsVXow48XYpGYFxxQPSQNAgawNnc4KObIshFE4YLSDseYWka4FVvpODa
+         U0O1FGuBc5/rP8K1qPiy8sdnfza2mfCrE4YvVeNG+mBtmjou7BTrRrm2c2BhgZ85H43X
+         YEm/V/e3TfbsIxwvEnE45JM26cMLIVfuAeKqQoua1gGK0yO0f1M+ZBKCwKUSvHaSn/nS
+         +uCn8DvaULUw/JmWJbjpTkkNSW22xeszEq8Idx7oqwb2xwaLzK9bBpSPslpjQaVNMIIs
+         T42Dq6KOAqDE3Uep+zhw9HO2eWHhX/WcA2D6XbdVqOENus7fI6MBofVQJZGvYl63lzFc
+         eG4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id;
+        bh=F/hNAZvHc74eUVXsyHDBeq5u44S36SXXr5L/78medyk=;
+        b=Lu37Hoe/gQi0s5Ap7eCTFEXxhaCNo7fm22SiYjRnbbJbh8U3BcrqiN+EtEYwLIZhRM
+         cnw3eeGaTmNMJsmCr2+SJx8uUZhm58BYHHuJ7D9ifuOSRtUgwztubtRjQgzt+UJdsXm8
+         zDgVo0PnqoWgZW3Y1WjUhinb+0iXIB+YtsOCr3aUMFDdCGfde31VsF2LeaYQeH7Efv90
+         QjBGpjTwg6t/uTJYyU3FHkK+YnYhMIJX21z2bwYi41U3uL90GE5nqelb5K6IA1BMohf7
+         GM1mrAn30U8mDhmbW2GEhrHEgoh0PCIaQXpVjfHsKgRcxan0yTJw0/lPkeALeOs3I+Az
+         mMmw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b140-20020ae9eb92000000b0073b9e5fb99esi9160718qkg.105.2023.03.07.05.53.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 Mar 2023 05:53:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pZXke-0007JW-U6; Tue, 07 Mar 2023 08:53:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pZXka-0007CU-Kr
+ for qemu-arm@nongnu.org; Tue, 07 Mar 2023 08:53:11 -0500
+Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pZXkY-0008DT-Sj
+ for qemu-arm@nongnu.org; Tue, 07 Mar 2023 08:53:08 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.124])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 04CC821C7B;
+ Tue,  7 Mar 2023 13:53:01 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Tue, 7 Mar
+ 2023 14:53:00 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0025f14cfa3-a352-453f-9496-bd86f13d554a,
+ D586700EEA543FC8D630564B717DAE7078976E4F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <d64e4dcf-17e4-ae20-5794-855e7f914ebe@kaod.org>
+Date: Tue, 7 Mar 2023 14:52:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v1] Modified BMC FRU byte data in yosemitev2
+Content-Language: en-US
+To: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <joel@jms.id.au>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20230307104833.3587947-1-pkarthikeyan1509@gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230307104833.3587947-1-pkarthikeyan1509@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: tL+FM0Uo/0bR
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 9686a4ec-eadb-4ffe-94fb-7e3bc07030b0
+X-Ovh-Tracer-Id: 4736660912351841062
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrvddutddgheduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepteeghedugeeiffekfedtlefftdejleefgeegteelgfdujeeggfefieevuedtffehnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphhkrghrthhhihhkvgihrghnudehtdelsehgmhgrihhlrdgtohhmpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
+ helo=2.mo548.mail-out.ovh.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pjsbH4q3KPqG
 
-This adds a framework for adding simple barrier litmus tests against
-ARM. The litmus tests aren't as comprehensive as the academic exercises
-which will attempt to do all sorts of things to keep racing CPUs synced
-up. These tests do honour the "sync" parameter to do a poor-mans
-equivalent.
+On 3/7/23 11:48, Karthikeyan Pasupathi wrote:
+> Modified BMC FRU data in yosemite v2 platform.
+> 
+> Tested: Tested and Verified in yosemitev2 platform.
+> 
+> Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
 
-The two litmus tests are:
-  - message passing
-  - store-after-load
+Fixes: 34f73a81e6 ("hw/arm/aspeed: Adding new machine Yosemitev2 in QEMU")
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-They both have case that should fail (although won't on single-threaded
-TCG setups). If barriers aren't working properly the store-after-load
-test will fail even on an x86 backend as x86 allows re-ording of non
-aliased stores.
+Thanks,
 
-I've imported a few more of the barrier primatives from the Linux source
-tree so we consistently use macros.
+C.
 
-The arm64 barrier primitives trip up on -Wstrict-aliasing so this is
-disabled in the Makefile.
+> ---
+>   hw/arm/aspeed_eeprom.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+> index 2fb2d5dbb7..dc33a88a54 100644
+> --- a/hw/arm/aspeed_eeprom.c
+> +++ b/hw/arm/aspeed_eeprom.c
+> @@ -101,17 +101,17 @@ const uint8_t fby35_bmc_fruid[] = {
+>   /* Yosemite V2 BMC FRU */
+>   const uint8_t yosemitev2_bmc_fruid[] = {
+>       0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+> -    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+> -    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+> -    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x61,
+> +    0x73, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x4d, 0x50, 0x00, 0x00,
+> +    0x00, 0x00, 0x00, 0x00, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+>       0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+> -    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
+> -    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+> +    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x20, 0x4d, 0x50, 0x00, 0x00, 0x00,
+> +    0x00, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+>       0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+>       0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-CC: Will Deacon <will@kernel.org>
-Message-Id: <20211118184650.661575-9-alex.bennee@linaro.org>
-
----
-v9
-  - return to unittests.cfg, drop accel=tcg
-  - use compiler.h for barriers instead of defining outselves
-  - s/printf/report_info/
-v10
-  - use compiler WRITE/READ_ONCE macros
----
- arm/Makefile.common       |   1 +
- lib/arm/asm/barrier.h     |  19 ++
- lib/arm64/asm/barrier.h   |  50 +++++
- arm/barrier-litmus-test.c | 450 ++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg         |  31 +++
- 5 files changed, 551 insertions(+)
- create mode 100644 arm/barrier-litmus-test.c
-
-diff --git a/arm/Makefile.common b/arm/Makefile.common
-index 3089e3bf..0a2bdcfc 100644
---- a/arm/Makefile.common
-+++ b/arm/Makefile.common
-@@ -13,6 +13,7 @@ tests-common += $(TEST_DIR)/sieve.flat
- tests-common += $(TEST_DIR)/pl031.flat
- tests-common += $(TEST_DIR)/tlbflush-code.flat
- tests-common += $(TEST_DIR)/locking-test.flat
-+tests-common += $(TEST_DIR)/barrier-litmus-test.flat
- 
- tests-all = $(tests-common) $(tests)
- all: directories $(tests-all)
-diff --git a/lib/arm/asm/barrier.h b/lib/arm/asm/barrier.h
-index 7f868314..0f3670b8 100644
---- a/lib/arm/asm/barrier.h
-+++ b/lib/arm/asm/barrier.h
-@@ -8,6 +8,9 @@
-  * This work is licensed under the terms of the GNU GPL, version 2.
-  */
- 
-+#include <stdint.h>
-+#include <linux/compiler.h>
-+
- #define sev()		asm volatile("sev" : : : "memory")
- #define wfe()		asm volatile("wfe" : : : "memory")
- #define wfi()		asm volatile("wfi" : : : "memory")
-@@ -25,4 +28,20 @@
- #define smp_rmb()	smp_mb()
- #define smp_wmb()	dmb(ishst)
- 
-+extern void abort(void);
-+
-+#define smp_store_release(p, v)						\
-+do {									\
-+	smp_mb();							\
-+	WRITE_ONCE(*p, v);						\
-+} while (0)
-+
-+
-+#define smp_load_acquire(p)						\
-+({									\
-+	typeof(*p) ___p1 = READ_ONCE(*p);				\
-+	smp_mb();							\
-+	___p1;								\
-+})
-+
- #endif /* _ASMARM_BARRIER_H_ */
-diff --git a/lib/arm64/asm/barrier.h b/lib/arm64/asm/barrier.h
-index 0e1904cf..5e405190 100644
---- a/lib/arm64/asm/barrier.h
-+++ b/lib/arm64/asm/barrier.h
-@@ -24,4 +24,54 @@
- #define smp_rmb()	dmb(ishld)
- #define smp_wmb()	dmb(ishst)
- 
-+#define smp_store_release(p, v)						\
-+do {									\
-+	switch (sizeof(*p)) {						\
-+	case 1:								\
-+		asm volatile ("stlrb %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 2:								\
-+		asm volatile ("stlrh %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 4:								\
-+		asm volatile ("stlr %w1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	case 8:								\
-+		asm volatile ("stlr %1, %0"				\
-+				: "=Q" (*p) : "r" (v) : "memory");	\
-+		break;							\
-+	}								\
-+} while (0)
-+
-+#define smp_load_acquire(p)						\
-+({									\
-+	union { typeof(*p) __val; char __c[1]; } __u;			\
-+	switch (sizeof(*p)) {						\
-+	case 1:								\
-+		asm volatile ("ldarb %w0, %1"				\
-+			: "=r" (*(u8 *)__u.__c)				\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 2:								\
-+		asm volatile ("ldarh %w0, %1"				\
-+			: "=r" (*(u16 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 4:								\
-+		asm volatile ("ldar %w0, %1"				\
-+			: "=r" (*(u32 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	case 8:								\
-+		asm volatile ("ldar %0, %1"				\
-+			: "=r" (*(u64 *)__u.__c)			\
-+			: "Q" (*p) : "memory");				\
-+		break;							\
-+	}								\
-+	__u.__val;							\
-+})
-+
- #endif /* _ASMARM64_BARRIER_H_ */
-diff --git a/arm/barrier-litmus-test.c b/arm/barrier-litmus-test.c
-new file mode 100644
-index 00000000..5d7e61d1
---- /dev/null
-+++ b/arm/barrier-litmus-test.c
-@@ -0,0 +1,450 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * ARM Barrier Litmus Tests
-+ *
-+ * This test provides a framework for testing barrier conditions on
-+ * the processor. It's simpler than the more involved barrier testing
-+ * frameworks as we are looking for simple failures of QEMU's TCG not
-+ * weird edge cases the silicon gets wrong.
-+ */
-+
-+#include <libcflat.h>
-+#include <asm/smp.h>
-+#include <asm/cpumask.h>
-+#include <asm/barrier.h>
-+#include <asm/mmu.h>
-+
-+#define MAX_CPUS 8
-+
-+/* Array size and access controls */
-+static int array_size = 100000;
-+static int wait_if_ahead;
-+
-+static cpumask_t cpu_mask;
-+
-+/*
-+ * These test_array_* structures are a contiguous array modified by two or more
-+ * competing CPUs. The padding is to ensure the variables do not share
-+ * cache lines.
-+ *
-+ * All structures start zeroed.
-+ */
-+
-+typedef struct test_array {
-+	volatile unsigned int x;
-+	uint8_t dummy[64];
-+	volatile unsigned int y;
-+	uint8_t dummy2[64];
-+	volatile unsigned int r[MAX_CPUS];
-+} test_array;
-+
-+volatile test_array *array;
-+
-+/* Test definition structure
-+ *
-+ * The first function will always run on the primary CPU, it is
-+ * usually the one that will detect any weirdness and trigger the
-+ * failure of the test.
-+ */
-+
-+typedef void (*test_fn)(void);
-+
-+typedef struct {
-+	const char *test_name;
-+	bool  should_pass;
-+	test_fn main_fn;
-+	test_fn secondary_fns[MAX_CPUS-1];
-+} test_descr_t;
-+
-+/* Litmus tests */
-+
-+static unsigned long sync_start(void)
-+{
-+	const unsigned long gate_mask = ~0x3ffff;
-+	unsigned long gate, now;
-+
-+	gate = get_cntvct() & gate_mask;
-+	do {
-+		now = get_cntvct();
-+	} while ((now & gate_mask) == gate);
-+
-+	return now;
-+}
-+
-+/* Simple Message Passing
-+ *
-+ * x is the message data
-+ * y is the flag to indicate the data is ready
-+ *
-+ * Reading x == 0 when y == 1 is a failure.
-+ */
-+
-+static void message_passing_write(void)
-+{
-+	int i;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		entry->y = 1;
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = entry->y;
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+		ready += y;
-+	}
-+
-+	/*
-+	 * We expect this to fail but with STO backends you often get
-+	 * away with it. Fudge xfail if we did actually pass.
-+	 */
-+	report_xfail(errors == 0 ? false : true, errors == 0,
-+		     "mp: %d errors, %d ready", errors, ready);
-+}
-+
-+/* Simple Message Passing with barriers */
-+static void message_passing_write_barrier(void)
-+{
-+	int i;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		smp_wmb();
-+		entry->y = 1;
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read_barrier(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0, not_ready = 0;
-+
-+	sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = entry->y;
-+		smp_rmb();
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+
-+		if (y) {
-+			ready++;
-+		} else {
-+			not_ready++;
-+
-+			if (not_ready > 2) {
-+				entry = &array[i+1];
-+				do {
-+					not_ready = 0;
-+				} while (wait_if_ahead && !entry->y);
-+			}
-+		}
-+	}
-+
-+	report(errors == 0, "mp barrier: %d errors, %d ready", errors, ready);
-+}
-+
-+/* Simple Message Passing with Acquire/Release */
-+static void message_passing_write_release(void)
-+{
-+	int i;
-+
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		entry->x = 1;
-+		smp_store_release(&entry->y, 1);
-+	}
-+
-+	halt();
-+}
-+
-+static void message_passing_read_acquire(void)
-+{
-+	int i;
-+	int errors = 0, ready = 0, not_ready = 0;
-+
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int x, y;
-+
-+		y = smp_load_acquire(&entry->y);
-+		x = entry->x;
-+
-+		if (y && !x)
-+			errors++;
-+
-+		if (y) {
-+			ready++;
-+		} else {
-+			not_ready++;
-+
-+			if (not_ready > 2) {
-+				entry = &array[i+1];
-+				do {
-+					not_ready = 0;
-+				} while (wait_if_ahead && !entry->y);
-+			}
-+		}
-+	}
-+
-+	report(errors == 0, "mp acqrel: %d errors, %d ready", errors, ready);
-+}
-+
-+/*
-+ * Store after load
-+ *
-+ * T1: write 1 to x, load r from y
-+ * T2: write 1 to y, load r from x
-+ *
-+ * Without memory fence r[0] && r[1] == 0
-+ * With memory fence both == 0 should be impossible
-+ */
-+
-+static void check_store_and_load_results(const char *name, int thread,
-+					 bool xfail, unsigned long start,
-+					 unsigned long end)
-+{
-+	int i;
-+	int neither = 0;
-+	int only_first = 0;
-+	int only_second = 0;
-+	int both = 0;
-+
-+	for ( i= 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+
-+		if (entry->r[0] == 0 &&
-+		    entry->r[1] == 0)
-+			neither++;
-+		else if (entry->r[0] &&
-+			entry->r[1])
-+			both++;
-+		else if (entry->r[0])
-+			only_first++;
-+		else
-+			only_second++;
-+	}
-+
-+	report_info("T%d: %08lx->%08lx neither=%d only_t1=%d only_t2=%d both=%d\n",
-+		    thread, start, end, neither, only_first, only_second, both);
-+
-+	if (thread == 1)
-+		report_xfail(xfail, neither==0, "%s: errors=%d", name, neither);
-+
-+}
-+
-+/*
-+ * This attempts to synchronise the start of both threads to roughly
-+ * the same time. On real hardware there is a little latency as the
-+ * secondary vCPUs are powered up however this effect it much more
-+ * exaggerated on a TCG host.
-+ *
-+ * Busy waits until the we pass a future point in time, returns final
-+ * start time.
-+ */
-+
-+static void store_and_load_1(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->x = 1;
-+		r = entry->y;
-+		entry->r[0] = r;
-+	}
-+	end = get_cntvct();
-+
-+	smp_mb();
-+
-+	while (!cpumask_test_cpu(1, &cpu_mask))
-+		cpu_relax();
-+
-+	check_store_and_load_results("sal", 1, true, start, end);
-+}
-+
-+static void store_and_load_2(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->y = 1;
-+		r = entry->x;
-+		entry->r[1] = r;
-+	}
-+	end = get_cntvct();
-+
-+	check_store_and_load_results("sal", 2, true, start, end);
-+
-+	cpumask_set_cpu(1, &cpu_mask);
-+
-+	halt();
-+}
-+
-+static void store_and_load_barrier_1(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->x = 1;
-+		smp_mb();
-+		r = entry->y;
-+		entry->r[0] = r;
-+	}
-+	end = get_cntvct();
-+
-+	smp_mb();
-+
-+	while (!cpumask_test_cpu(1, &cpu_mask))
-+		cpu_relax();
-+
-+	check_store_and_load_results("sal_barrier", 1, false, start, end);
-+}
-+
-+static void store_and_load_barrier_2(void)
-+{
-+	int i;
-+	unsigned long start, end;
-+
-+	start = sync_start();
-+	for (i = 0; i < array_size; i++) {
-+		volatile test_array *entry = &array[i];
-+		unsigned int r;
-+
-+		entry->y = 1;
-+		smp_mb();
-+		r = entry->x;
-+		entry->r[1] = r;
-+	}
-+	end = get_cntvct();
-+
-+	check_store_and_load_results("sal_barrier", 2, false, start, end);
-+
-+	cpumask_set_cpu(1, &cpu_mask);
-+
-+	halt();
-+}
-+
-+
-+/* Test array */
-+static test_descr_t tests[] = {
-+
-+	{ "mp",         false,
-+	  message_passing_read,
-+	  { message_passing_write }
-+	},
-+
-+	{ "mp_barrier", true,
-+	  message_passing_read_barrier,
-+	  { message_passing_write_barrier }
-+	},
-+
-+	{ "mp_acqrel", true,
-+	  message_passing_read_acquire,
-+	  { message_passing_write_release }
-+	},
-+
-+	{ "sal",       false,
-+	  store_and_load_1,
-+	  { store_and_load_2 }
-+	},
-+
-+	{ "sal_barrier", true,
-+	  store_and_load_barrier_1,
-+	  { store_and_load_barrier_2 }
-+	},
-+};
-+
-+
-+static void setup_and_run_litmus(test_descr_t *test)
-+{
-+	array = calloc(array_size, sizeof(test_array));
-+
-+	if (array) {
-+		int i = 0;
-+
-+		report_info("Allocated test array @ %p", array);
-+
-+		while (test->secondary_fns[i]) {
-+			smp_boot_secondary(i+1, test->secondary_fns[i]);
-+			i++;
-+		}
-+
-+		test->main_fn();
-+	} else
-+		report(false, "%s: failed to allocate memory", test->test_name);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+	int i;
-+	unsigned int j;
-+	test_descr_t *test = NULL;
-+
-+	for (i = 0; i < argc; i++) {
-+		char *arg = argv[i];
-+
-+		for (j = 0; j < ARRAY_SIZE(tests); j++) {
-+			if (strcmp(arg, tests[j].test_name) == 0)
-+				test = &tests[j];
-+		}
-+
-+		/* Test modifiers */
-+		if (strstr(arg, "count=") != NULL) {
-+			char *p = strstr(arg, "=");
-+
-+			array_size = atol(p+1);
-+		} else if (strcmp(arg, "wait") == 0) {
-+			wait_if_ahead = 1;
-+		}
-+	}
-+
-+	if (test)
-+		setup_and_run_litmus(test);
-+	else
-+		report(false, "Unknown test");
-+
-+	return report_summary();
-+}
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 45ac61c8..3d73e308 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -330,3 +330,34 @@ smp = $(($MAX_SMP>4?4:$MAX_SMP))
- extra_params = -append 'excl'
- groups = nodefault mttcg locking
- 
-+# Barrier Litmus tests
-+[barrier-litmus::mp]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp'
-+groups = nodefault mttcg barrier
-+
-+[barrier-litmus::mp-barrier]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp_barrier'
-+groups = nodefault mttcg barrier
-+
-+[barrier-litmus::mp-acqrel]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'mp_acqrel'
-+groups = nodefault mttcg barrier
-+
-+[barrier-litmus::sal]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'sal'
-+groups = nodefault mttcg barrier
-+
-+[barrier-litmus::sal-barrier]
-+file = barrier-litmus-test.flat
-+smp = 2
-+extra_params = -append 'sal_barrier'
-+groups = nodefault mttcg barrier
-+
--- 
-2.39.2

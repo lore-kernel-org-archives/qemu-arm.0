@@ -1,84 +1,116 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6106273ejc;
-        Tue, 7 Mar 2023 07:57:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set99HiD8hzRTNnCuhuSN3uTmy3Ukdnz0UvhZSsYtn0h9VqeuxsuwaXCm2N0dc8UKQjvyJdIe
-X-Received: by 2002:a05:622a:5c9:b0:3bf:d366:50d5 with SMTP id d9-20020a05622a05c900b003bfd36650d5mr21596105qtb.56.1678204659842;
-        Tue, 07 Mar 2023 07:57:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678204659; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp6138167ejc;
+        Tue, 7 Mar 2023 08:23:42 -0800 (PST)
+X-Google-Smtp-Source: AK7set/GMLcadzRP/A/GJiun01Y8z4YFCPk3NPLhVZBXWmwpaS+G3uxAa+0+LAvC+jOtFbTy2NEC
+X-Received: by 2002:a05:622a:130e:b0:3b9:b6b7:90c5 with SMTP id v14-20020a05622a130e00b003b9b6b790c5mr23820999qtk.49.1678206222238;
+        Tue, 07 Mar 2023 08:23:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678206222; cv=none;
         d=google.com; s=arc-20160816;
-        b=su6359BG6YSYueLsjRdmTc7+Xq5H90AEFMY2pIRk1BmLk7z38O//rJ/9xN9tEiCLp1
-         Z3hEbxaZMpCvONylhXnezUcMc9BTZbkxEGESKaDMStGtQoKmQ+RtMUSXLw7pva3udxiC
-         GgvzrNr3pqORERKww9VB4QExLUTiiD6V9FjUpZ6pqBf54X14MhwsFowFa6p3wHoqE0Ka
-         XGaix2otjPOyfv1tW51U9yt2ee9hsYOxQpadZIyn+8wDzafabmXsxyLPlEen0GF5D70m
-         Y5Kwk3IxK9eD8inmTafTk0AVaBEgClNMhYIgBVehrX2IG46NAEY/iq/Ij7pmDkMe87qz
-         RE3Q==
+        b=N+2+CRcdTmWGU1uQ0Afi2JvGLQjNX5zSxhps5Y3z0EQXyvT0xKsm0ON/lfl9L/gTyw
+         qTaX2sA5Hwg3JadupFxRZa9xf3tqEvs+0ZvtPKjQu9NmHuBxAgu2oFZ1jlnJzEuauKj/
+         HDnWDKmHkKorXdwvzbltoIMUUIc2kvrcsdwSRbDOmBXU/Ns2xI5VprPBFEQoVBksT3Fd
+         IZuPCpuCgtvssTSuEuXHgdh8QnI6KViuD+QA2y/i/3MikdZi0mEZMCRo8UvIberQESKe
+         aFeWbHIdFzb/rip5oICW3+K6dxSCiIc4Visz11Tl4ssLIFcDp/wt8M7JlKmR/7CEaXOV
+         GPBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=Tdbn9uA/PPCiSoucdFqvNnsLtgJxlNqEvmfoM+EFyso=;
-        b=Sq6yfqXAiZXDXvKpmy1/I3t9YzEsScrXROz6EXJAFU38/ZAEFWDKnk+7nHGwOT9tW7
-         /TG14lvJnc/lsvqLJPsV2CbA4TcT4Xba7UbK99yx+fIsbmq4c4e6INiOPu9+6v0+1lN7
-         Sw3I1+IBwVBe6LHjQ8Un+RzyDJaQULeYUEkz0mcVB29jWP2ctLUBWlijeVUx+19TM+Wq
-         GbmQ9fW7byzcnQwe7Zj8lEJ6VKCofYcEdl8ZsnmAOy9xZzPlmpD8TsoBsK2VF05k9Ykx
-         MDMG64vxis2Qo3brqL9BizATIADF42yuQ4Sp8kyHW4y4k9VXHCdj3ZfFmHACg2P6OFA6
-         Q5GA==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=VIrWk4nWVqSR5TEG7FXgNEWAkkmhywsMHnAZ1uAxCT0=;
+        b=PPT/4B73n2r72ADToda9Hf1d6VPdX+IF1QCCf7Gsx6d+aJD++hjFtw3kwuYZ8CalIo
+         pH/SwH08SFWB3vRy1JW0/wfJbOViiYVlcIzlNV7bSTkuv107yPed5ol8ZVUaekt6hm/Z
+         uesQSZnVTeETlvuQXq8W4YT9YZirVdlMsNass+8ah1l0s31h1vhNo0ZSShgrducyQWYf
+         T1H923F7MLyCK9YFJ2ti3WB2XWuD0YE/sL9yR++aStMlSz2w/IF7LtMbP2LwywMEeIuq
+         /ASMd48PJTDOlDY1YYOog5zRqLsmBv04XlYFj1cQtre1jc9FQOPPtP0o7jA7mMIdzVPn
+         jeDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=hpHTQUQD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m6-20020a05620a290600b0073baf97bb4bsi10088574qkp.190.2023.03.07.07.57.39
+        by mx.google.com with ESMTPS id f7-20020a05622a104700b003b9b407f4b4si10212950qte.591.2023.03.07.08.23.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Mar 2023 07:57:39 -0800 (PST)
+        Tue, 07 Mar 2023 08:23:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=hpHTQUQD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pZZfZ-0006N0-IN; Tue, 07 Mar 2023 10:56:05 -0500
+	id 1pZa5i-0003KL-4u; Tue, 07 Mar 2023 11:23:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rbq/=67=kaod.org=clg@ozlabs.org>)
- id 1pZZfW-0006Ke-Bq; Tue, 07 Mar 2023 10:56:02 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=rbq/=67=kaod.org=clg@ozlabs.org>)
- id 1pZZfU-0000Tq-N9; Tue, 07 Mar 2023 10:56:02 -0500
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4PWKmM5VVhz4xDv;
- Wed,  8 Mar 2023 02:55:47 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4PWKmK6lLwz4x8y;
- Wed,  8 Mar 2023 02:55:45 +1100 (AEDT)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 5/5] hw/arm/aspeed: Modified BMC FRU byte data in yosemitev2
-Date: Tue,  7 Mar 2023 16:55:28 +0100
-Message-Id: <20230307155528.3655534-6-clg@kaod.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230307155528.3655534-1-clg@kaod.org>
-References: <20230307155528.3655534-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZa5g-0003Fv-ML
+ for qemu-devel@nongnu.org; Tue, 07 Mar 2023 11:23:04 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZa5e-0007PL-Vl
+ for qemu-devel@nongnu.org; Tue, 07 Mar 2023 11:23:04 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id g3so12712376wri.6
+ for <qemu-devel@nongnu.org>; Tue, 07 Mar 2023 08:23:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1678206181;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=VIrWk4nWVqSR5TEG7FXgNEWAkkmhywsMHnAZ1uAxCT0=;
+ b=hpHTQUQDkCLPM8JiOVwmIqboJYVjmss/CCNT+uDSEVtX/rp9dsth6ABGQuQJ5hWVbp
+ s5h8+aa5qT/3w3wJTiVGsF6EwCcSqNtpeBqHPB3xmaitF/0r18Q6KHep15cX+n9WGw7V
+ wWERoV/of3qRsqY7fknAhKef0ayQZrWurl+jgBlI6GNf+ZHb2Nwf9MrrFvAxA9jVyuZP
+ iVNVxlABEh+jnOUYHssJUql/hkfmTrJRJLecNStNvbF0mU9KIDn5cfA5AVez4gm0trx2
+ clTPkq3/PG3ECVnAZTN2pQVSIpVWPY9Yk/esBfOCOPLpke5IzwCG3n4APDj3fIOghC/G
+ Naqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678206181;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=VIrWk4nWVqSR5TEG7FXgNEWAkkmhywsMHnAZ1uAxCT0=;
+ b=FHZbQRlZqasIMSBZuhqI3c26Q+re+jNFxFAOB1ermWKnN888hojh7F6wmcxKRYuVmy
+ 8QNDWCq75OUcT4qg6zxFaKi4peTC//Mj7akRv0iIFZ3kmK1VjUHnPe3OMe/ZI1j9RV97
+ DAbvLYkwYsA54b7nRv1PSYSnn13j/gOs+vW39RcZ/dvuS+iiPs2MX6gJuKOJ+aJQhDlW
+ RNgNPqDgOxQ247FkJmuT1Pcnf4xh8wwWQVST5FOeqwn1CrwOUDkZKdpe9s0GkkMPHPbQ
+ 9vZVGTv4+Yg+w1bO7VxSKLaHuBpk3nQ0ceWSNvHr0wEKQCXr68/14UsidE3ipSvNE8hD
+ /RDg==
+X-Gm-Message-State: AO0yUKWnZA3eCRWaLYa4hihm6gGSK2AIMgFu3C73/vJ0HUTWkI3YZtMc
+ NL/OheqfNY8/k+gFoyshNehiBhMJwcNZlJsLUN4=
+X-Received: by 2002:adf:f6c6:0:b0:2c5:5d15:4e25 with SMTP id
+ y6-20020adff6c6000000b002c55d154e25mr9288814wrp.16.1678206181530; 
+ Tue, 07 Mar 2023 08:23:01 -0800 (PST)
+Received: from [192.168.248.175] (131.red-95-127-34.staticip.rima-tde.net.
+ [95.127.34.131]) by smtp.gmail.com with ESMTPSA id
+ p13-20020a5d48cd000000b002c5598c14acsm12929544wrs.6.2023.03.07.08.23.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Mar 2023 08:23:01 -0800 (PST)
+Message-ID: <be44cfd0-d107-76a3-abe5-fba82d15a646@linaro.org>
+Date: Tue, 7 Mar 2023 17:22:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PULL 2/5] pflash: Fix blk_pread_nonzeroes()
+Content-Language: en-US
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>
+References: <20230307155528.3655534-1-clg@kaod.org>
+ <20230307155528.3655534-3-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230307155528.3655534-3-clg@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=rbq/=67=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,50 +125,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: V91M1i6/cjys
+X-TUID: cSOtgKq9mzbs
 
-From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+On 7/3/23 16:55, Cédric Le Goater wrote:
+> From: Kevin Wolf <kwolf@redhat.com>
+> 
+> Commit a4b15a8b introduced a new function blk_pread_nonzeroes(). Instead
+> of reading directly from the root node of the BlockBackend, it reads
+> from its 'file' child node. This can happen to mostly work for raw
+> images (as long as the 'raw' format driver is in use, but not actually
+> doing anything), but it breaks everything else.
+> 
+> Fix it to read from the root node instead.
+> 
+> Fixes: a4b15a8b9ef25b44fa92a4825312622600c1f37c
 
-Modified BMC FRU data in yosemite v2 platform.
+You missed:
 
-Tested: Tested and Verified in yosemitev2 platform.
+Tested-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+Fixes: a4b15a8b9e ("pflash: Only read non-zero parts of backend image")
 
-Fixes: 34f73a81e6 ("hw/arm/aspeed: Adding new machine Yosemitev2 in QEMU")
-Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20230307104833.3587947-1-pkarthikeyan1509@gmail.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed_eeprom.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+by 3min:
+https://lore.kernel.org/qemu-devel/c5c82d88-df2a-e968-4d81-0da1cfa2ab09@maciej.szmigiero.name/
 
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index 2fb2d5dbb7..dc33a88a54 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -101,17 +101,17 @@ const uint8_t fby35_bmc_fruid[] = {
- /* Yosemite V2 BMC FRU */
- const uint8_t yosemitev2_bmc_fruid[] = {
-     0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
--    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
--    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
--    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x61,
-+    0x73, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x4d, 0x50, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-     0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
--    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x2e, 0x30, 0x20, 0x45, 0x56, 0x54,
--    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x32, 0x20, 0x4d, 0x50, 0x00, 0x00, 0x00,
-+    0x00, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-     0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-     0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
--- 
-2.39.2
+> Reported-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+> Message-Id: <20230307140230.59158-1-kwolf@redhat.com>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>   hw/block/block.c | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/block/block.c b/hw/block/block.c
+> index af0710e477..9f52ee6e72 100644
+> --- a/hw/block/block.c
+> +++ b/hw/block/block.c
+> @@ -39,8 +39,7 @@ static int blk_pread_nonzeroes(BlockBackend *blk, hwaddr size, void *buf)
+>               return ret;
+>           }
+>           if (!(ret & BDRV_BLOCK_ZERO)) {
+> -            ret = bdrv_pread(bs->file, offset, bytes,
+> -                             (uint8_t *) buf + offset, 0);
+> +            ret = blk_pread(blk, offset, bytes, (uint8_t *) buf + offset, 0);
+>               if (ret < 0) {
+>                   return ret;
+>               }
 

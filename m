@@ -1,121 +1,110 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5765448ejc;
-        Tue, 7 Mar 2023 02:20:55 -0800 (PST)
-X-Google-Smtp-Source: AK7set86ju71NsV3LxHrCdXdDQraTcCS8JK5Nl3/jhBPJFlqrHEc0yG5U+WEy2qTEcKXsO6fpFdX
-X-Received: by 2002:a05:622a:14e:b0:3b9:e0b2:9a49 with SMTP id v14-20020a05622a014e00b003b9e0b29a49mr22970758qtw.60.1678184455708;
-        Tue, 07 Mar 2023 02:20:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678184455; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5766027ejc;
+        Tue, 7 Mar 2023 02:21:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set+4rRAElSIWxRHj8X4mBBv9FrsNueoFRd8yWGzNynX0CackZSfBrCMiEGeYiffBu37WNPGz
+X-Received: by 2002:a05:622a:1651:b0:3bf:e129:856b with SMTP id y17-20020a05622a165100b003bfe129856bmr25886362qtj.61.1678184493494;
+        Tue, 07 Mar 2023 02:21:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678184493; cv=none;
         d=google.com; s=arc-20160816;
-        b=QfFolG5wEJkdt7/X+9aDISYcfy+dl9WZHDt7QJAP2sAlUwAl61VX2sPvX2oSUWjFV1
-         FSz6gab2/4atLVob4vmROX9fQcI8hiNKuajCr9LCaOppVbQqfqw0qm4xmEZkg7M9CyHd
-         JoN3p1RLBh6Ra0ois5gD/Zwxa727s/qCEDUVq309jCLIyGufYzlaSaY+YdpHAdesXXov
-         C6mM1lcrVd7RRoumqKnSbiurawG9lezBFcRXGpBE6wndJOR2gAlxiw7NDkDGdKs82VDK
-         4M76e56Wo1F2fCm0R9XqfNU58c8xTx3gOnIio7aB0WTZCJvqiItyO6j7eORLroSKL0Tp
-         G0sA==
+        b=kPrWQHnAWcMUaC72Y0wLsLUXMa22ib8Xit1hhCI304AoX27NsJ8UJ5hkb33pBmZc4D
+         DUgqQxyD+cQt0/1T6cjaPKu7cPnfMph+fMpxj8PtPSOmhuHMsmfervMcr8IZn080N+eV
+         ofQG4XJiXSYjB+Kvzk10B4ndguBUFOrteo+Qp/lwsyNkGdzfb+LukScm9Vdo+jTNfNI3
+         jskPgzSQ/e1628iiq+/7BM+ogcHAEyY0waGP8Uue9pNWmQ/2n858HuLCNkcwT1udOIis
+         E46ARaeJ5eDcjYnIxBh4wcHlCZo1X8QndWKQgtT7R8tzHlB/mNyIaagFUMtd11yrP3Dz
+         tMdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=nd2pP82VOrof6Dr9h5TInYkB/PdoTc53dKkO0RJjdtM=;
-        b=VWnz7MH2vOtsOSsFFBQpxr5FprwiL4ovbKYMzslXwbDOSnLOPQOtW9DVoWz5RPhj1M
-         uVYgppBJ2MwCHAbSzsu4oodSx9Rp7jBMlXY0xBO/JgJeFKd55I+IguVI2XPtQAYFjMda
-         R6YsHZi7ARGZ4tJexuSWk3HM7LUgsBNL4Jby7IcHnMKl4aD56Y2L463ATGsLBSffqQ8X
-         7UcRYP1bNkEUvl6QWIhu7IKEYykWmhgkshKGqd3vvsDwhRFb6VZiZy3Q1je951KF0oR+
-         Zell1eJ2zfJFz5L1b7ZqE1rZm6DDOXz9I439M0tKQYUyMoVFUDJ3PbG3kUbPsgDmx/2f
-         SRsw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Wgj5yCHBB2uTnUrJAR6aIpgh6i8dZtTTVqJfv6vkg+I=;
+        b=Q0hpvRT3FFo93iUVYubSMIaoapc/ml3oAcweytig5kYx6gfwqETl5RDeAvxECJmLlq
+         1gjerlZ/Czd7SCF4MAtFnQUrbkWC19Fb2Qv/OC1FTctRGeU3215ID9xNnbiOPJ0d7P5i
+         gTUgFXw3iuSSGPakt7pa6Osc15gax58qKcH/ayJ1fR6NtbBPKepobRq13n15fgiNffeV
+         xJLQSuQ4nCxpBMzQqWUnEyDnXMBdPl/RVGspeaSEQvDZ8N+yP9pA5QVetn0SlblhR+0w
+         ZFG/L6cEphedoGDv3HDEMqfOsv3v1ZHXWlP4sJRYoK20z9Dv0H+1Gnpv7lGk1XGgRzwJ
+         1zrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S353QH+K;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ieMV+xyp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11-20020ac87fcb000000b003ba31a4972bsi9468070qtk.532.2023.03.07.02.20.55
+        by mx.google.com with ESMTPS id c6-20020ae9ed06000000b006ee9af422b6si8846581qkg.226.2023.03.07.02.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Mar 2023 02:20:55 -0800 (PST)
+        Tue, 07 Mar 2023 02:21:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S353QH+K;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ieMV+xyp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pZUR1-0005SI-Ga; Tue, 07 Mar 2023 05:20:43 -0500
+	id 1pZURg-0005sv-4D; Tue, 07 Mar 2023 05:21:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZUQz-0005QL-60
- for qemu-arm@nongnu.org; Tue, 07 Mar 2023 05:20:41 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pZURZ-0005pt-UZ; Tue, 07 Mar 2023 05:21:18 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZUQw-000342-HO
- for qemu-arm@nongnu.org; Tue, 07 Mar 2023 05:20:40 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- fm20-20020a05600c0c1400b003ead37e6588so10038369wmb.5
- for <qemu-arm@nongnu.org>; Tue, 07 Mar 2023 02:20:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pkarthikeyan1509@gmail.com>)
+ id 1pZURY-0003FP-9p; Tue, 07 Mar 2023 05:21:17 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ me6-20020a17090b17c600b0023816b0c7ceso16061858pjb.2; 
+ Tue, 07 Mar 2023 02:21:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678184437;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nd2pP82VOrof6Dr9h5TInYkB/PdoTc53dKkO0RJjdtM=;
- b=S353QH+KJ7rJoyMNiMkT3JIQSA2sSPJXFpRZ8B/7xjBAlg8ytrmH56AdLtnlXGOlOK
- Cu7p3DjNzsDHPthTy1mXNa/GJMkt1Zr1Dbb2bwQvKuYfSgivsSe1LpratZBKndaUrFnC
- 0KvwNR+sPU6r6Te7yiDy57kJ7nXM04XnxtqjeP2CB9veBXLYWZ/p7ogd1hmNk6A96buc
- yPcE6Am+6UFbDzhiwdgyXiBFNBrvcUFkex2ksXa4uH7PVcbNA68gySyh7Sp1pHLFQFmp
- n+Mk5k+Q/PuhXXGjq9y4Qe2u6rAO7MAwHLgDKqJ+kqhunIGigQB7+0Lw6iRzbnuRP4+p
- faRw==
+ d=gmail.com; s=20210112; t=1678184474;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Wgj5yCHBB2uTnUrJAR6aIpgh6i8dZtTTVqJfv6vkg+I=;
+ b=ieMV+xypKR5gZcHtvU8yigo8Cgx46+ptKXkPL2f9p/ba5EBgP9iYNNvc0eZ6vJQmc8
+ yh95I/lYTBPQYccaLE4RNWlR1Eb8lXnLakT/k0kRVCDUVvNRH8kEhOCvB1I2v4xiLrSK
+ 5r+/ysNvrC7xBblY3fDKmYF30CwOtWwRigt0D1hrdfKGDEiG1Hgb4OiMLwlzRPy3z+w9
+ 9n26yyfbOLa0tEsPwd93lmI8y49SHgyOEgpmYRAmuW9868eysYFt3tWJEFVSfnl6f9FN
+ YPwNnZXEVKLeon81SOvwufzktz3eSozd48dA1vuKs0oBnsUOiBlUJPBpQCFuMR2WgO6b
+ W/tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678184437;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nd2pP82VOrof6Dr9h5TInYkB/PdoTc53dKkO0RJjdtM=;
- b=vMqbLohA7g82GyCX8Bjp+YB7vIMz4DPmFYJ0xaZ0tCqh8wpMBGud3fein7Uk99IG+l
- 3nAE81K3B/MQUYGfaXh9016MOwIbmUNOaOeB3sCxaiMup6ASUgjnjL4j7vhyAPgT48jS
- REuWUdo7AxRyLcYfrUwuE6lxc2Fd8SdonXhJ3cFM9CWpgcmNF1gS871YsDnEBFVLlBH5
- jv9FtlsCLWJ6u1O7MLgUoFxLAGM8MmoeUGiHV4zd6e/ZQ9Rmr+Egxp3oJ2UrL1RFntGS
- 2vqXYawLI0Tbg1rnSygd2PVI+MHsmuV0tZfm28cWZafAofzlGP8x3sC/4wXkT39K+XN+
- GMdg==
-X-Gm-Message-State: AO0yUKWb9VbVhynu83qkjRoRPrLXp5PA9+8LS+bgliNFdnxZc0BVg1v6
- dETHgL+2rtZ5ZP9nVZLxLwUzOA==
-X-Received: by 2002:a05:600c:1c12:b0:3eb:389d:156c with SMTP id
- j18-20020a05600c1c1200b003eb389d156cmr12138843wms.37.1678184437232; 
- Tue, 07 Mar 2023 02:20:37 -0800 (PST)
-Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- q10-20020a5d658a000000b002c70851fdd8sm12199678wru.75.2023.03.07.02.20.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Mar 2023 02:20:36 -0800 (PST)
-Message-ID: <47807f32-72e5-0b57-ebf5-620149a0895a@linaro.org>
-Date: Tue, 7 Mar 2023 11:20:34 +0100
+ d=1e100.net; s=20210112; t=1678184474;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Wgj5yCHBB2uTnUrJAR6aIpgh6i8dZtTTVqJfv6vkg+I=;
+ b=3mzAWw0R194AtqpsrUTR0ou+zGkajwoHuGN7SQfq874uscqJPmkPmM0pasMW5+1/ZD
+ J+KFXAzAMO92rQMW8D4saeudJP3xNoyHV/Nn32RPHsUsJBpL2ihFUjPPkbf9gJhu/pU5
+ InoXo+SkBKFxfe/RhZi4C5E01uT19x5uclldJXGsUUw7gXm9igIufJducdoPRR0hFNn2
+ 3HC7ntkPDzej60Y8wABibaIJNR4/jXA3Qtkq/cFgerAsRImwX8UwohuxnrKa14STL4ik
+ l3s2/EQFkZ7rU7VUpcG8HSPLe4ymsTOOhH8DRlZ0Bvq6qwgwbFoprnm4kzf5rVyr+orG
+ A2zQ==
+X-Gm-Message-State: AO0yUKUmXv85lLle5X1YrWre+gRHdh8Y5dX9RgfU3vQ8Zt/7bX+SztUC
+ Dxrc9QHVe+yOijFv389wz98=
+X-Received: by 2002:a17:902:e84b:b0:19c:b7da:fc44 with SMTP id
+ t11-20020a170902e84b00b0019cb7dafc44mr17359495plg.34.1678184474255; 
+ Tue, 07 Mar 2023 02:21:14 -0800 (PST)
+Received: from hcl-ThinkPad-T495.. ([2401:4900:1ce1:a87f:e556:a76c:ebd0:7cad])
+ by smtp.gmail.com with ESMTPSA id
+ i18-20020a170902eb5200b001991e4e0bdcsm8123358pli.233.2023.03.07.02.21.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Mar 2023 02:21:13 -0800 (PST)
+From: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+Subject: [PATCH v1] Added TMP421 type sensor's support in tiogapass
+Date: Tue,  7 Mar 2023 15:49:14 +0530
+Message-Id: <20230307101913.3585785-1-pkarthikeyan1509@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 56/70] target/tricore: Split t_n as constant from temp as
- variable
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, jcmvbkbc@gmail.com, kbastian@mail.uni-paderborn.de,
- ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
-References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-57-richard.henderson@linaro.org>
- <38504dfd-e253-0efe-2188-b4b43a7bffe2@linaro.org>
- <fb9062cf-3a01-9b6e-669f-a6ae2c10c25b@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <fb9062cf-3a01-9b6e-669f-a6ae2c10c25b@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=pkarthikeyan1509@gmail.com; helo=mail-pj1-x1030.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,20 +119,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: k8QFA1wWgdaa
+X-TUID: OcSLIa+kkWP0
 
-On 7/3/23 03:24, Richard Henderson wrote:
-> On 3/6/23 16:19, Philippe Mathieu-Daudé wrote:
->> On 27/2/23 06:42, Richard Henderson wrote:
->>> As required, allocate temp separately.
->>
->> Hmm not quite accurate; this patch contains functions
->> which don't require separate temp and belong to the
->> next "All remaining uses are strictly read-only."
->> patch.
-> 
-> But they're all renaming, in the similar contexts.
-> That's what I meant by "As required...".
+Added TMP421 type sensor support in tiogapass platform.
 
-Ah, I guess I get it now, it makes more sense when following the
-subject with this sentence. Patch content is fine.
+Tested: Tested and verified in tiogapass platform.
+
+Signed-off-by: Karthikeyan Pasupathi <pkarthikeyan1509@gmail.com>
+---
+ hw/arm/aspeed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index e985ce85e5..c1843693fa 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -545,7 +545,7 @@ static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
+     /* TMP421 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "tmp421", 0x1f);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e); 
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e);
+ }
+ 
+ static void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+-- 
+2.34.1
+

@@ -1,98 +1,98 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5271885ejc;
-        Mon, 6 Mar 2023 16:19:54 -0800 (PST)
-X-Google-Smtp-Source: AK7set8340aHCCjKp4g3v6Ie23fDEjK9lfffbLGD6sDuSq4wekEo0nveMT5jI/oBjhxqnB69uRM7
-X-Received: by 2002:a05:6214:623:b0:56f:1cc:120d with SMTP id a3-20020a056214062300b0056f01cc120dmr14524586qvx.26.1678148393944;
-        Mon, 06 Mar 2023 16:19:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678148393; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5272871ejc;
+        Mon, 6 Mar 2023 16:21:15 -0800 (PST)
+X-Google-Smtp-Source: AK7set8ymTQQTGJXTeWvPZu0H02xcTso5/Jd+ROetOd7IvkTG6yC0zlFOzK7OlYNwCfabZ/B0JJa
+X-Received: by 2002:a05:6214:27c2:b0:577:5ed6:392f with SMTP id ge2-20020a05621427c200b005775ed6392fmr21343794qvb.11.1678148475368;
+        Mon, 06 Mar 2023 16:21:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678148475; cv=none;
         d=google.com; s=arc-20160816;
-        b=I8J9wTofD+4ZOyDpjDZSWYYFxp/dhTpigqG8FBrDwA82kqtgMvubDoP7jvtuCINrWU
-         NrEQuy6SQuJvKwZeAhfwgnOjrI03HP23dQq0rd5B5smd0pX5va+nXxfEsGVdUsVh81PW
-         Ai7z6QhyMUHpXkg59DEgv6NhSbX2UUL+8Adl91dEXgFtvq347e67sstPI4D/z7yTsQWq
-         Pfbgx+GKKx0DViIVTQQBDqTlQGa/uo8oN9NeurJdOKeeYREqENKArrIzjHnBFekrxSHA
-         jDuvL5WoAB43HqCS2Jit7ar70CBj5vK4A5LCh5F8cMwsaYid/7gyRozpWYhIP38ieZJ/
-         Hh5w==
+        b=bhBd1yunyCgPOOv8HsuEJbPqFMRBVaGzLBHA+zkvgm3mz273r4VGFbkxkUwuNchpIG
+         QduJ8vBT0yuU7+Kyd8v1WkfqfQIUILNYP+VD6TDfgtEurnrBNE4mb7bzShTiE+EIv2ol
+         5cqvZNdrD12z3WcOQjrfjh/clW5GZLsXrR4vXefjFAeQ6cwGVQfC2dMW7PSY1iaMX0sk
+         2VVXHEs+fPFstfU7ck9aF+9MJIS/HNULYqUoEm3d1GjjP7cmelJAoaRMN/+leBTX8tWt
+         /xbvHkrdraDEHWwZfh6JtvhZ+Nk0mlLw5kuNiSE6u98QwFUoNENu18FIxFa4kH2fTwLs
+         w1CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
-        b=J98xX0Vpr6Jjyi0vzXSeE/bvV1L3W7MphoB3q9WFEtGcDBtLOXwXaZ0l94aUHn2g+n
-         9Nyq+u06558f2JxZE1YYNXa/aEfFNOUwczXOjpnP6S675/t83g5jcH2Z/Sivp/acaPJo
-         txtqz9NOfC+8s3kd62X5pOtvnzVoqTKqSZkN7t9EiLozew9L6XvOe45QYDOubY2eLpct
-         M5Ygu145D92fTcucazg91QlL4F1RfvtTeqIoU41nrZGQxrO3lS71jf298HSuFcWhKXEQ
-         N3aWlpUx5JnsYdsTQJC9yyf33wTIQntBuni1bo01hwHeaHpaQjNkV1lU4Pyt1dJ01XOA
-         BNKw==
+        bh=dtYEa9/CxvYqQU1XQr6rH8g9YtE9rvyEDB+5Y9LAaIE=;
+        b=BwWQLXwZWZkWTAwaCEAlokhrhghC19eqBJyASfQF5d/88z/5rdBQavepXkKLchbHCi
+         UOgm1BIf7cSI+5QZqsOZrvyXcPVomD3+ALXhPGKdaKx0vjw/4EPeQrprv7XtWsalUISW
+         2oO/Og4IzSd01nXd9g5kElFYEzXy7vKJk0CpVKbc/YyprNhyY9/nPfFW3JYUq4cFkeoP
+         /d8iego3CAji8E1YxjOWxQqrXvm2mHU+FlFMRmU20Wrftg+SQgN98KnFxvHEw2+NJLhU
+         KGS2AD1RnBlg9GFUG9J7PaKk/DOHOU0hAOjtcSatd1Jm60W1Iz6JfweKZcZcdYfovXD3
+         i55A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FmdbJQUP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i2LABxSa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7-20020a0ce207000000b0056e9493e972si8539962qvl.441.2023.03.06.16.19.53
+        by mx.google.com with ESMTPS id w20-20020a0cdf94000000b0056ef8ad869fsi8491471qvl.556.2023.03.06.16.21.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Mar 2023 16:19:53 -0800 (PST)
+        Mon, 06 Mar 2023 16:21:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FmdbJQUP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i2LABxSa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pZL36-0006i2-V4; Mon, 06 Mar 2023 19:19:25 -0500
+	id 1pZL4n-0008Mt-Tj; Mon, 06 Mar 2023 19:21:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL33-0006hG-9S
- for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:19:22 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL4n-0008K4-0z
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:21:09 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL2z-0005D0-RW
- for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:19:20 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id k37so6827111wms.0
- for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 16:19:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL4k-0005jR-HC
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:21:08 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ l7-20020a05600c4f0700b003e79fa98ce1so6258188wmq.2
+ for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 16:21:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678148356;
+ d=linaro.org; s=google; t=1678148465;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
- b=FmdbJQUPbz1N5HG4AOsZP+aJx5z1UpMAU9p1xzLX7okoWYN1oYYPoPlqF1BO/NyxsH
- ZiUwlYtMQsyn/UMqzQqzze6DF0ke8147jyoQIaAAhJ0aUlQgxplqpHLB8czbIWiBnQpa
- ttZYRW5ow2m5CPK5Le04cN5+ZQ6/h01GPA9HEN9c4vHPM1zSnIjbiSe8Opkz2D5hPCCT
- 7UCl/CBrC3j7SUEDC+ffZVzqeMj4KFhlkjG2Dfrb+eb+4k6Mti1LDO+CjfHvuQ3OnZjb
- OJNcIsFAr1s+Jn9virZ1mwRDZnLOJM0zB5KUaY3ntmEsv4yjca7BhCdIoRE7V6ovXumL
- bNsA==
+ bh=dtYEa9/CxvYqQU1XQr6rH8g9YtE9rvyEDB+5Y9LAaIE=;
+ b=i2LABxSazVZwaBALKOrjb5qdIoLewC8EdTvUHh3k540pZ9ut4Ybc10bI0lLYEShkSN
+ ofKDKSs8UHHhlRKk7SZr900+F7UDKoBakkAFrRxosb233c/YUr0dvrE3+rUiTSMtxPKO
+ 4elFN7hgN6AvRG1p/ekge75pnwQmmgRM+Vhi0eLMy5etNRzMJGPSfFYTisQ+xvsKjhz+
+ l9qrEn8iB8laH2h3uIyC9/e5qwCbAb3YY1SMqXNX8yiwY++syilDfcUU4sxBYQ5YZpIT
+ xvWOkPjLxDWmMkKlLjJLndhXbwGxNtY8QddyFBKXJft+J19Uj2Dc44yyFHRy3/1SQHF8
+ LrlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678148356;
+ d=1e100.net; s=20210112; t=1678148465;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
- b=RiYinlx6TiZGQaXnaLPfvoFQDKQ8zmnTGbeAFfNPl59sbXrM00LkMw24JP8H5gObAf
- rwXbKj5zpK3mN0otxLbL+CV7FvS40qvKBojmOekqx+V8QD+NNzJyu5A6BLPrPYiuhR5Q
- M8T5x82z5TqksyFNXszYRsWwd5H5ZSLVhWcHdZXUlYwH+coj0dXwEuaw4yRr7Mgdq9jc
- aSpiMM0K9esGVcJGS8K3+wdXCdc7dDvDywvd047q4sSxXMpMbOelyaqpYxe+u9Lb0ZIO
- v8fgLu4NkGK78LRKC8MssneL6TL7HKH1FXvh4hVljebmzpqqNWNzj6Z1VTsTrR+3Niu3
- OySg==
-X-Gm-Message-State: AO0yUKXH01IE6hyca8t5E5g7uz3kw2yzEvzjHLzXd8G7Yj1UGDz/mHUA
- H4RNbSW9Dj/vG+OCPBPHYLOT1w==
-X-Received: by 2002:a05:600c:1c20:b0:3dc:5b88:e6dd with SMTP id
- j32-20020a05600c1c2000b003dc5b88e6ddmr11946725wms.10.1678148356032; 
- Mon, 06 Mar 2023 16:19:16 -0800 (PST)
+ bh=dtYEa9/CxvYqQU1XQr6rH8g9YtE9rvyEDB+5Y9LAaIE=;
+ b=SIqtx1a42nRJX2fVWVEUkWXt+a2p4E3yo8W0dWquhHyjP0brlb8qIor2Quf7Yxhhq4
+ rPsOcHbyFVYUM+c/ZZgM9/jxF270vrEbqrXXqsFA3wYKT8lT0rZPq4WvwRPg3s+TcpqE
+ OWlf8tcm86wX1AY3bnYrp0gq84aPVp5klhisge9PbtXV662wWp6iodw5wtPbuqMsqVrW
+ DvdRr/wPCxneQf4DE1G76cKZoAAVbMDTzRfAaOyhD/nIfrZdSk2LTXs2KiMvQzmhX28s
+ KHPJkDOh7xbNWA+cIMZQnCJQHNcj4Ef4JlTNn1pXB4qqgRzXG7jCjxkn2MsQgkHq/k09
+ AJ7A==
+X-Gm-Message-State: AO0yUKXZIdZQFJ1jBf7k0jaPKDwJIodqO7QHVeOjrups/w91O+mHBWEi
+ MTN/yeKUV8F8jNCNu2BEmb1ZDw==
+X-Received: by 2002:a7b:c5c9:0:b0:3eb:2de9:8aea with SMTP id
+ n9-20020a7bc5c9000000b003eb2de98aeamr11839885wmk.35.1678148464937; 
+ Mon, 06 Mar 2023 16:21:04 -0800 (PST)
 Received: from [192.168.1.115] (138.red-88-29-178.dynamicip.rima-tde.net.
  [88.29.178.138]) by smtp.gmail.com with ESMTPSA id
- w7-20020a05600c474700b003e204fdb160sm16286552wmo.3.2023.03.06.16.19.13
+ l10-20020a7bc44a000000b003e21dcccf9fsm14993444wmi.16.2023.03.06.16.21.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Mar 2023 16:19:15 -0800 (PST)
-Message-ID: <38504dfd-e253-0efe-2188-b4b43a7bffe2@linaro.org>
-Date: Tue, 7 Mar 2023 01:19:11 +0100
+ Mon, 06 Mar 2023 16:21:04 -0800 (PST)
+Message-ID: <dc010853-fa99-7aa0-4c1b-bf471ea84a9d@linaro.org>
+Date: Tue, 7 Mar 2023 01:21:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 56/70] target/tricore: Split t_n as constant from temp as
- variable
+Subject: Re: [PATCH 53/70] target/sh4: Avoid tcg_const_i32
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -100,20 +100,20 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
 References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-57-richard.henderson@linaro.org>
+ <20230227054233.390271-54-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230227054233.390271-57-richard.henderson@linaro.org>
+In-Reply-To: <20230227054233.390271-54-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,358 +128,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgy7dv5Jjyab
+X-TUID: ZFrgFSmJftfZ
 
 On 27/2/23 06:42, Richard Henderson wrote:
-> As required, allocate temp separately.
-
-Hmm not quite accurate; this patch contains functions
-which don't require separate temp and belong to the
-next "All remaining uses are strictly read-only."
-patch.
-
+> All remaining uses are strictly read-only.
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/tricore/translate.c | 268 +++++++++++++++++++------------------
->   1 file changed, 140 insertions(+), 128 deletions(-)
+>   target/sh4/translate.c | 26 +++++++++++++-------------
+>   1 file changed, 13 insertions(+), 13 deletions(-)
 
-
-> @@ -647,22 +649,22 @@ static inline void
->   gen_maddsum_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->                 TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
-
-"strictly read-only"
-
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->       TCGv_i64 temp64_3 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_concat_i32_i64(temp64_3, r1_low, r1_high);
-
-
-
-> @@ -752,22 +756,22 @@ static inline void
->   gen_maddsums_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->                  TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
-
-Ditto,
-
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->   
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_sari_i64(temp64_2, temp64, 32); /* high */
-> @@ -785,22 +789,22 @@ static inline void
->   gen_maddm_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->              TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
-
-etc...
-
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->       TCGv_i64 temp64_3 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
-> @@ -813,21 +817,21 @@ static inline void
->   gen_maddms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->              TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
-> @@ -839,20 +843,20 @@ static inline void
->   gen_maddr64_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3, uint32_t n,
->                 uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       gen_helper_addr_h(ret, cpu_env, temp64, r1_low, r1_high);
-> @@ -872,21 +876,22 @@ gen_maddr32_h(TCGv ret, TCGv r1, TCGv r2, TCGv r3, uint32_t n, uint32_t mode)
-
-
-
-> @@ -899,20 +904,20 @@ static inline void
->   gen_maddr64s_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3,
->                  uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       gen_helper_addr_h_ssov(ret, cpu_env, temp64, r1_low, r1_high);
-
-
-> @@ -1604,21 +1612,21 @@ static inline void
->   gen_msubms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->                TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
-> @@ -1630,20 +1638,20 @@ static inline void
->   gen_msubr64_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3, uint32_t n,
->                 uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       gen_helper_subr_h(ret, cpu_env, temp64, r1_low, r1_high);
-> @@ -1664,20 +1672,20 @@ static inline void
->   gen_msubr64s_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3,
->                  uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       gen_helper_subr_h_ssov(ret, cpu_env, temp64, r1_low, r1_high);
-> @@ -1912,10 +1920,10 @@ gen_msubs64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
->                TCGv arg3, uint32_t n)
->   {
->       TCGv_i64 r1 = tcg_temp_new_i64();
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->   
->       tcg_gen_concat_i32_i64(r1, arg1_low, arg1_high);
-> -    gen_helper_msub64_q_ssov(r1, cpu_env, r1, arg2, arg3, temp);
-> +    gen_helper_msub64_q_ssov(r1, cpu_env, r1, arg2, arg3, t_n);
->       tcg_gen_extr_i64_i32(rl, rh, r1);
->   }
->   
-
-
-> @@ -1949,22 +1958,22 @@ static inline void
->   gen_msubadm_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->                 TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->       TCGv_i64 temp64_3 = tcg_temp_new_i64();
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_concat_i32_i64(temp64_3, r1_low, r1_high);
-
-
-
-> @@ -2041,22 +2052,22 @@ static inline void
->   gen_msubadms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
->                  TCGv r3, uint32_t n, uint32_t mode)
->   {
-> -    TCGv temp = tcg_const_i32(n);
-> +    TCGv t_n = tcg_constant_i32(n);
->       TCGv_i64 temp64 = tcg_temp_new_i64();
->       TCGv_i64 temp64_2 = tcg_temp_new_i64();
->   
->       switch (mode) {
->       case MODE_LL:
-> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_LU:
-> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UL:
-> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
->           break;
->       case MODE_UU:
-> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
-> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
->           break;
->       }
->       tcg_gen_sari_i64(temp64_2, temp64, 32); /* high */
-Regardless you split this patch, move parts to the
-next patch, or keep as-is:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

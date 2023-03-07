@@ -1,97 +1,98 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5265373ejc;
-        Mon, 6 Mar 2023 16:11:05 -0800 (PST)
-X-Google-Smtp-Source: AK7set/HVrydmm3sDYSApTzoISb0tPQ78ic+9NjP11gYQ4H06dk14xBWMSqFCDiooV7cclEAE9Mt
-X-Received: by 2002:a05:622a:314:b0:3b6:8bc3:a09c with SMTP id q20-20020a05622a031400b003b68bc3a09cmr19442728qtw.25.1678147865754;
-        Mon, 06 Mar 2023 16:11:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678147865; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp5271885ejc;
+        Mon, 6 Mar 2023 16:19:54 -0800 (PST)
+X-Google-Smtp-Source: AK7set8340aHCCjKp4g3v6Ie23fDEjK9lfffbLGD6sDuSq4wekEo0nveMT5jI/oBjhxqnB69uRM7
+X-Received: by 2002:a05:6214:623:b0:56f:1cc:120d with SMTP id a3-20020a056214062300b0056f01cc120dmr14524586qvx.26.1678148393944;
+        Mon, 06 Mar 2023 16:19:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678148393; cv=none;
         d=google.com; s=arc-20160816;
-        b=m1P8Sin1KtH/X2EQXUcBx5soq2w6R7fQ6E06UOX9XRhX++CyWDm3gu1vpIOv5jfmzI
-         rDRjN5z7HgvyUfrwr4bWUsY1SuSDBCyc8cuV6DP+7bZNflB3ewC57vzdCDZN2OxJe+sR
-         Vo9lh9VwNc5GO663n4oZu1HsL+J2lGwe/gsRmKN5hy1MEuF981aGHppm0SHWmiwELH2b
-         2ixyn8+ZEcbSCGAgHvrCMihEN2BYP9sOf3XRvBF7HJXrD+hGzr2oqGZTE8gOVdYbdJih
-         QoidAgprNRahdt0F7cc1NqmayMAfxhTRO1F+d0wqVNml61VNIRLLvYyqt1P3c6+iBD6q
-         ikrw==
+        b=I8J9wTofD+4ZOyDpjDZSWYYFxp/dhTpigqG8FBrDwA82kqtgMvubDoP7jvtuCINrWU
+         NrEQuy6SQuJvKwZeAhfwgnOjrI03HP23dQq0rd5B5smd0pX5va+nXxfEsGVdUsVh81PW
+         Ai7z6QhyMUHpXkg59DEgv6NhSbX2UUL+8Adl91dEXgFtvq347e67sstPI4D/z7yTsQWq
+         Pfbgx+GKKx0DViIVTQQBDqTlQGa/uo8oN9NeurJdOKeeYREqENKArrIzjHnBFekrxSHA
+         jDuvL5WoAB43HqCS2Jit7ar70CBj5vK4A5LCh5F8cMwsaYid/7gyRozpWYhIP38ieZJ/
+         Hh5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CGdLL4ZiKt/zu1Fn9z2hcTBNyHakwL7rYXL/fjIqxxY=;
-        b=ZNz6puRL7gjFzoh3xuKfJnH0F/DAyu1GEdVGtTYmEQKSbcrLSZsesgbEucj2Wv7/aY
-         wAkTMYZqQiMdgseRsIkHumoKWPf1oa4+5Irowmc58X/gHSqPFoiZ7lb2fM3MOKBVD/W9
-         uTYKAEslV+ENPMrkO5zZY0jS3mBQUDyenBY+aR/kXRqOzgzDWVq9aBeKD1B3z4Xl8AZV
-         twUFIsvTkZ7RwQ3Mdb4FYvXMm/2eTMlQpdAGLE+piM/p9ROWSYQqnUb6yIqLMvD7Cl2I
-         WxOzTHLVzgGagPa1mLBWcJoavZHESsHGNTCXQWHQg+FzefFVohv/8xITihi+KPzcJP9s
-         GV2g==
+        bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
+        b=J98xX0Vpr6Jjyi0vzXSeE/bvV1L3W7MphoB3q9WFEtGcDBtLOXwXaZ0l94aUHn2g+n
+         9Nyq+u06558f2JxZE1YYNXa/aEfFNOUwczXOjpnP6S675/t83g5jcH2Z/Sivp/acaPJo
+         txtqz9NOfC+8s3kd62X5pOtvnzVoqTKqSZkN7t9EiLozew9L6XvOe45QYDOubY2eLpct
+         M5Ygu145D92fTcucazg91QlL4F1RfvtTeqIoU41nrZGQxrO3lS71jf298HSuFcWhKXEQ
+         N3aWlpUx5JnsYdsTQJC9yyf33wTIQntBuni1bo01hwHeaHpaQjNkV1lU4Pyt1dJ01XOA
+         BNKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vzgOA+OS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FmdbJQUP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8-20020ac85f88000000b003b3e31a8791si8838596qta.443.2023.03.06.16.11.05
+        by mx.google.com with ESMTPS id q7-20020a0ce207000000b0056e9493e972si8539962qvl.441.2023.03.06.16.19.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Mar 2023 16:11:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Mar 2023 16:19:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vzgOA+OS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=FmdbJQUP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pZKuW-00039Y-Gc; Mon, 06 Mar 2023 19:10:32 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pZL36-0006i2-V4; Mon, 06 Mar 2023 19:19:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZKuU-00038x-Le
- for qemu-arm@nongnu.org; Mon, 06 Mar 2023 19:10:30 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL33-0006hG-9S
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:19:22 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZKuT-0003mV-38
- for qemu-arm@nongnu.org; Mon, 06 Mar 2023 19:10:30 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id k37so6819959wms.0
- for <qemu-arm@nongnu.org>; Mon, 06 Mar 2023 16:10:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pZL2z-0005D0-RW
+ for qemu-devel@nongnu.org; Mon, 06 Mar 2023 19:19:20 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id k37so6827111wms.0
+ for <qemu-devel@nongnu.org>; Mon, 06 Mar 2023 16:19:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678147827;
+ d=linaro.org; s=google; t=1678148356;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=CGdLL4ZiKt/zu1Fn9z2hcTBNyHakwL7rYXL/fjIqxxY=;
- b=vzgOA+OSKxB9fApnlof5ULvSeu2t64srJXtfraY2c2uNvPcIdcW/Dnri5aZcamyMV4
- /c2c39azhnLKxbqBsA9Ig+iYvJFFgdzG0dgBjlPMkWLgvP03NB24xVvpvvcO15ysTvq6
- QEq9ppT2OxlFs3HLJFjSpO9V0SO3iWSBpoL7DbS2+Suihj/QSDZfbigjHHKKokZEkKBv
- YY0+FwGrI1PRMGt/2RGKDwBz5nWhnbPVgNNR1AOL8tpb+ZeyOF/8QI2fVXvDmjSAILMm
- Jw6ZrUSuYSZRT3IXEjLW37QcOWw1C6ASBrqp47/OuK7QalYe/qXVOeRm9M1gjyEXYL5F
- 2y7w==
+ bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
+ b=FmdbJQUPbz1N5HG4AOsZP+aJx5z1UpMAU9p1xzLX7okoWYN1oYYPoPlqF1BO/NyxsH
+ ZiUwlYtMQsyn/UMqzQqzze6DF0ke8147jyoQIaAAhJ0aUlQgxplqpHLB8czbIWiBnQpa
+ ttZYRW5ow2m5CPK5Le04cN5+ZQ6/h01GPA9HEN9c4vHPM1zSnIjbiSe8Opkz2D5hPCCT
+ 7UCl/CBrC3j7SUEDC+ffZVzqeMj4KFhlkjG2Dfrb+eb+4k6Mti1LDO+CjfHvuQ3OnZjb
+ OJNcIsFAr1s+Jn9virZ1mwRDZnLOJM0zB5KUaY3ntmEsv4yjca7BhCdIoRE7V6ovXumL
+ bNsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678147827;
+ d=1e100.net; s=20210112; t=1678148356;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CGdLL4ZiKt/zu1Fn9z2hcTBNyHakwL7rYXL/fjIqxxY=;
- b=g3gQgfADhYV96mQAmSOcx6G1Tnk/69YAnfRe/f81CZmA5R6dnK3v1pce8U+iwvhjbs
- cSXelDdF7vkd1AQE6tesXIppsGgUs2UHJVqQxi7FTAwlRb0J/TjHG81uZBfqtOePvtlU
- G1kJTRBIu95GcqvXclZ7NahZPn1rH2WecMGFCXDdSW8uuKA2T4nOL0Sm5YVJTG18SPaC
- v4KYvsqg6F1+4AJM/xLVlrrNnAQBtePrc0SbU+THyNxDv7B2EqZyMg+69Q3alHoZWtDF
- LUeA3Ii3Gr6+42cAHBYZp8aBELdjiZErSwTaeWShu+fC0JuAJnBTKMgn++mWqV02/ZJB
- zUVw==
-X-Gm-Message-State: AO0yUKXmi75qlD0eIC4Rnc9AFPQu4Zlur0qXDfTmQQRUl4DtdqiXc5vp
- 2FDgjaMyBBXE3R7hk5AuDwlqcA==
-X-Received: by 2002:a05:600c:3b27:b0:3e2:6c6:31ba with SMTP id
- m39-20020a05600c3b2700b003e206c631bamr11332895wms.11.1678147827504; 
- Mon, 06 Mar 2023 16:10:27 -0800 (PST)
+ bh=SqdsILCaxyD5q9MmfIvFe7Uk40Cg52xItVmecJLLHZw=;
+ b=RiYinlx6TiZGQaXnaLPfvoFQDKQ8zmnTGbeAFfNPl59sbXrM00LkMw24JP8H5gObAf
+ rwXbKj5zpK3mN0otxLbL+CV7FvS40qvKBojmOekqx+V8QD+NNzJyu5A6BLPrPYiuhR5Q
+ M8T5x82z5TqksyFNXszYRsWwd5H5ZSLVhWcHdZXUlYwH+coj0dXwEuaw4yRr7Mgdq9jc
+ aSpiMM0K9esGVcJGS8K3+wdXCdc7dDvDywvd047q4sSxXMpMbOelyaqpYxe+u9Lb0ZIO
+ v8fgLu4NkGK78LRKC8MssneL6TL7HKH1FXvh4hVljebmzpqqNWNzj6Z1VTsTrR+3Niu3
+ OySg==
+X-Gm-Message-State: AO0yUKXH01IE6hyca8t5E5g7uz3kw2yzEvzjHLzXd8G7Yj1UGDz/mHUA
+ H4RNbSW9Dj/vG+OCPBPHYLOT1w==
+X-Received: by 2002:a05:600c:1c20:b0:3dc:5b88:e6dd with SMTP id
+ j32-20020a05600c1c2000b003dc5b88e6ddmr11946725wms.10.1678148356032; 
+ Mon, 06 Mar 2023 16:19:16 -0800 (PST)
 Received: from [192.168.1.115] (138.red-88-29-178.dynamicip.rima-tde.net.
  [88.29.178.138]) by smtp.gmail.com with ESMTPSA id
- z17-20020a5d44d1000000b002c58ca558b6sm10993073wrr.88.2023.03.06.16.10.24
+ w7-20020a05600c474700b003e204fdb160sm16286552wmo.3.2023.03.06.16.19.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Mar 2023 16:10:27 -0800 (PST)
-Message-ID: <b176860d-a62a-20f0-ef9e-084617497346@linaro.org>
-Date: Tue, 7 Mar 2023 01:10:23 +0100
+ Mon, 06 Mar 2023 16:19:15 -0800 (PST)
+Message-ID: <38504dfd-e253-0efe-2188-b4b43a7bffe2@linaro.org>
+Date: Tue, 7 Mar 2023 01:19:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 61/70] target/tricore: Avoid tcg_const_i32
+Subject: Re: [PATCH 56/70] target/tricore: Split t_n as constant from temp as
+ variable
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -99,13 +100,13 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  ysato@users.sourceforge.jp, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  tsimpson@quicinc.com, ale@rev.ng, mrolnik@gmail.com, edgar.iglesias@gmail.com
 References: <20230227054233.390271-1-richard.henderson@linaro.org>
- <20230227054233.390271-62-richard.henderson@linaro.org>
+ <20230227054233.390271-57-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230227054233.390271-62-richard.henderson@linaro.org>
+In-Reply-To: <20230227054233.390271-57-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,30 +115,371 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /gBrSYDTvKIp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qgy7dv5Jjyab
 
 On 27/2/23 06:42, Richard Henderson wrote:
-> All remaining uses are strictly read-only.
+> As required, allocate temp separately.
+
+Hmm not quite accurate; this patch contains functions
+which don't require separate temp and belong to the
+next "All remaining uses are strictly read-only."
+patch.
+
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/tricore/translate.c | 127 +++++++++++++++++++------------------
->   1 file changed, 64 insertions(+), 63 deletions(-)
+>   target/tricore/translate.c | 268 +++++++++++++++++++------------------
+>   1 file changed, 140 insertions(+), 128 deletions(-)
 
-Long patch but friendly enough.
 
+> @@ -647,22 +649,22 @@ static inline void
+>   gen_maddsum_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>                 TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+
+"strictly read-only"
+
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_3 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_concat_i32_i64(temp64_3, r1_low, r1_high);
+
+
+
+> @@ -752,22 +756,22 @@ static inline void
+>   gen_maddsums_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>                  TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+
+Ditto,
+
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>   
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_sari_i64(temp64_2, temp64, 32); /* high */
+> @@ -785,22 +789,22 @@ static inline void
+>   gen_maddm_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>              TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+
+etc...
+
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_3 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
+> @@ -813,21 +817,21 @@ static inline void
+>   gen_maddms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>              TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
+> @@ -839,20 +843,20 @@ static inline void
+>   gen_maddr64_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3, uint32_t n,
+>                 uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       gen_helper_addr_h(ret, cpu_env, temp64, r1_low, r1_high);
+> @@ -872,21 +876,22 @@ gen_maddr32_h(TCGv ret, TCGv r1, TCGv r2, TCGv r3, uint32_t n, uint32_t mode)
+
+
+
+> @@ -899,20 +904,20 @@ static inline void
+>   gen_maddr64s_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3,
+>                  uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       gen_helper_addr_h_ssov(ret, cpu_env, temp64, r1_low, r1_high);
+
+
+> @@ -1604,21 +1612,21 @@ static inline void
+>   gen_msubms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>                TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mulm_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mulm_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_concat_i32_i64(temp64_2, r1_low, r1_high);
+> @@ -1630,20 +1638,20 @@ static inline void
+>   gen_msubr64_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3, uint32_t n,
+>                 uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       gen_helper_subr_h(ret, cpu_env, temp64, r1_low, r1_high);
+> @@ -1664,20 +1672,20 @@ static inline void
+>   gen_msubr64s_h(TCGv ret, TCGv r1_low, TCGv r1_high, TCGv r2, TCGv r3,
+>                  uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       gen_helper_subr_h_ssov(ret, cpu_env, temp64, r1_low, r1_high);
+> @@ -1912,10 +1920,10 @@ gen_msubs64_q(TCGv rl, TCGv rh, TCGv arg1_low, TCGv arg1_high, TCGv arg2,
+>                TCGv arg3, uint32_t n)
+>   {
+>       TCGv_i64 r1 = tcg_temp_new_i64();
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>   
+>       tcg_gen_concat_i32_i64(r1, arg1_low, arg1_high);
+> -    gen_helper_msub64_q_ssov(r1, cpu_env, r1, arg2, arg3, temp);
+> +    gen_helper_msub64_q_ssov(r1, cpu_env, r1, arg2, arg3, t_n);
+>       tcg_gen_extr_i64_i32(rl, rh, r1);
+>   }
+>   
+
+
+> @@ -1949,22 +1958,22 @@ static inline void
+>   gen_msubadm_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>                 TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_3 = tcg_temp_new_i64();
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_concat_i32_i64(temp64_3, r1_low, r1_high);
+
+
+
+> @@ -2041,22 +2052,22 @@ static inline void
+>   gen_msubadms_h(TCGv ret_low, TCGv ret_high, TCGv r1_low, TCGv r1_high, TCGv r2,
+>                  TCGv r3, uint32_t n, uint32_t mode)
+>   {
+> -    TCGv temp = tcg_const_i32(n);
+> +    TCGv t_n = tcg_constant_i32(n);
+>       TCGv_i64 temp64 = tcg_temp_new_i64();
+>       TCGv_i64 temp64_2 = tcg_temp_new_i64();
+>   
+>       switch (mode) {
+>       case MODE_LL:
+> -        GEN_HELPER_LL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_LU:
+> -        GEN_HELPER_LU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_LU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UL:
+> -        GEN_HELPER_UL(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UL(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       case MODE_UU:
+> -        GEN_HELPER_UU(mul_h, temp64, r2, r3, temp);
+> +        GEN_HELPER_UU(mul_h, temp64, r2, r3, t_n);
+>           break;
+>       }
+>       tcg_gen_sari_i64(temp64_2, temp64, 32); /* high */
+Regardless you split this patch, move parts to the
+next patch, or keep as-is:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -1,869 +1,379 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id o6-20020a5d6706000000b002c573778432sm13170452wru.102.2023.03.07.13.29.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Mar 2023 13:29:24 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2C3D81FFBB;
-	Tue,  7 Mar 2023 21:21:42 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Taylor Simpson <tsimpson@quicinc.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Song Gao <gaosong@loongson.cn>,
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Stafford Horne <shorne@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Greg Kurz <groug@kaod.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Bin Meng <bin.meng@windriver.com>,
-	Weiwei Li <liweiwei@iscas.ac.cn>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
-	qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs),
-	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PULL 20/30] gdbstub: move register helpers into standalone include
-Date: Tue,  7 Mar 2023 21:21:29 +0000
-Message-Id: <20230307212139.883112-21-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230307212139.883112-1-alex.bennee@linaro.org>
-References: <20230307212139.883112-1-alex.bennee@linaro.org>
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1120609ejc;
+        Wed, 8 Mar 2023 12:47:40 -0800 (PST)
+X-Google-Smtp-Source: AK7set9LLzsBLZZZ4rFBK8V7evC04qNaUHxN3JC4+lmvmH5ATlQH331/DGLFMAU7pbkVgKatu1o/
+X-Received: by 2002:ad4:5aa5:0:b0:579:5dbc:ab8b with SMTP id u5-20020ad45aa5000000b005795dbcab8bmr38488058qvg.52.1678308460107;
+        Wed, 08 Mar 2023 12:47:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678308460; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iWoVp5/vki6CfApVb4slLkzKTOifTpFnZfcLcdPtSPTKLrECDAaG9ToW1YziV3UZhO
+         ULj9kA+tgjDi5rd9YL8oOwdMqw187t/ov94StB4KYiXXxQ0/fbRrUOqmm7A0I17KW7hJ
+         0IVzIfmxro28nPVqzbLZIo/+lkmkMpz5vf140fh/H+9rGZPbgUY8gSmzqCJfNiszHsWs
+         WOkru8fu80EXCj/El0OJibnkwuHc6SNLyhfVtqdSzeimOVF/15XzfyN9NdkhNnZ560Fi
+         3OUD3k2yywQWX9mpyf+dUnW102OJnqMS1fgEkMJZAz2Bkb9gtbDOpZiXTsNCc1c8hGM7
+         /otg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
+        b=JXCm7MpAB7vJwjh52lD0j2KmD48928zth9Av3LPiWugK5Eb7on/XwiOzXXZE2KJ2fn
+         Pjq4ohaK/2pS5Vi0ogQF8x1sObmvM1u+/ekdplSThkJbl2I6wFAoE21jFFK3yyUNnf1M
+         AXr0zUB1sTrEtqADxVX2KiNd8DjIwvtTFnWIWypXECPHcQPW2Pf1VgftwDVegqzhnsmw
+         GvQYj2m4NRqYkeMY8+cYahxt7HEGZWPCcPJhnQG8EisHuUUiW1QyiN1bQk5pwrCc6Aow
+         asPR2ypZjqXqy0W61I9qTlKtZk5v75FePox3rFenBV+o6kQ2Geq1FnjRCcuP/nKHNpFy
+         Cz+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="j/uTd/UN";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n140-20020a374092000000b007426fc20ee0si11554690qka.535.2023.03.08.12.47.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 Mar 2023 12:47:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="j/uTd/UN";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pa0gy-0004qE-Nj; Wed, 08 Mar 2023 15:47:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1pa0gx-0004pr-5r; Wed, 08 Mar 2023 15:47:19 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1pa0gu-0000mV-ML; Wed, 08 Mar 2023 15:47:18 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id t39so15938766ybi.3;
+ Wed, 08 Mar 2023 12:47:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1678308435;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
+ b=j/uTd/UNigJrBZ9WwfA3DTIKN4lkdM/szbwPxg7tP1GAxxRWQU39Bb19LGY0zAG3am
+ uDL/NPazX0Vmi+penkHthh0FJ5YW8f0wnHZN3PiWcXeO0pHvW0KigMQQ9LozPYA+Wg+a
+ vRf2cy204ATvnKz/dw0LE+3KYbaNcxN/3cmAntnSYzlSUYPDPCSJ3Ms4pv3LOQ9I4UkE
+ KJBK3wNw3owlwnpalDmylQiH4435exvaHz673gOxNaUbxpsRpg36SaKwVFV7N65c8Zw3
+ +cz7/Gn2mfSXxUrHKYgpOfpgbfa+BIi6SC6GFAhj4vUkUA68JCvUbFafBZq6jXRrAqSb
+ Ulqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678308435;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
+ b=YL3g0J88KI508oZi5foXH7O6s3hNuYQIFkWeGfPW0lQEcLr38m/K2hRy9eXQncASSt
+ 0EmtIEkjSpp+Z73wlfYdSHBSMn1ALpqPYV7jZMEmy/zlO6v41QeCiB+Ix2Wb9VMH9bF8
+ gR6WIYTb3kQ9iR9Lz3twJqZli/XErhmubism0fXxhhPePUrjmN3KgVwyKPFWWuLVTFNr
+ e05aW7jLYpnZy69Zo8FzupU1FluW3Skhu/+CYVXwS/wSX64ElIPHc2gTxpHpy9F235nO
+ Zhzq7bb8f2W9lAUACIAavaS0UPBMOxCfg98y372BqgEssNLxVPNEDL/6G8Sh/U9cjGSu
+ Vj2A==
+X-Gm-Message-State: AO0yUKVVEUWrFywmMAWuVAOtst6CYUYyII9prOeGmZkvtZj0QHPBI9fn
+ NvNecI4l1Aoi8vbCuqBF8Ao8nX0VX1WIkefAenQ=
+X-Received: by 2002:a05:6902:208:b0:a98:bd27:91de with SMTP id
+ j8-20020a056902020800b00a98bd2791demr11765922ybs.7.1678308434977; Wed, 08 Mar
+ 2023 12:47:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: YloX/7lLu571
+References: <20230302114102.32236-1-qianfanguijin@163.com>
+In-Reply-To: <20230302114102.32236-1-qianfanguijin@163.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Wed, 8 Mar 2023 21:47:04 +0100
+Message-ID: <CAPan3Wr=jqP5CVzsMtNmUTj-NvPZouxPWwC9DivY=GL65XJX4Q@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 00/12] *** Add allwinner R40 device support ***
+To: qianfanguijin@163.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000017280605f669a297"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-yb1-xb30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SBXo8DRvch6q
 
-These inline helpers are all used by target specific code so move them
-out of the general header so we don't needlessly pollute the rest of
-the API with target specific stuff.
+--00000000000017280605f669a297
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Note we have to include cpu.h in semihosting as it was relying on a
-side effect before.
+Hello Qianfan Zhao,
 
-Reviewed-by: Taylor Simpson <tsimpson@quicinc.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Thanks for contributing this work to Qemu! With your contribution, we would
+get yet another Allwinner SoC supported, making it three in total
+(A10/H3/R40). That's great.
+My thoughts are that maybe we should try to re-use commonality between
+these SoCs where we can. Ofcourse, that may be difficult as the
+internals/peripherals of these SoCs often really are different.
 
-Message-Id: <20230302190846.2593720-21-alex.bennee@linaro.org>
-Message-Id: <20230303025805.625589-21-richard.henderson@linaro.org>
+Your patches look good already, and I saw patches 02 and 03 are already
+merged too. I did a quick regression test with
+avocado for cubieboard/orangepi-pc with your patches applied and that went
+OK:
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 8fff5450ed..bb8a3928dd 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -110,92 +110,6 @@ void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               int num_regs, const char *xml, int g_pos);
- 
--#ifdef NEED_CPU_H
--#include "cpu.h"
--
--/*
-- * The GDB remote protocol transfers values in target byte order. As
-- * the gdbstub may be batching up several register values we always
-- * append to the array.
-- */
--
--static inline int gdb_get_reg8(GByteArray *buf, uint8_t val)
--{
--    g_byte_array_append(buf, &val, 1);
--    return 1;
--}
--
--static inline int gdb_get_reg16(GByteArray *buf, uint16_t val)
--{
--    uint16_t to_word = tswap16(val);
--    g_byte_array_append(buf, (uint8_t *) &to_word, 2);
--    return 2;
--}
--
--static inline int gdb_get_reg32(GByteArray *buf, uint32_t val)
--{
--    uint32_t to_long = tswap32(val);
--    g_byte_array_append(buf, (uint8_t *) &to_long, 4);
--    return 4;
--}
--
--static inline int gdb_get_reg64(GByteArray *buf, uint64_t val)
--{
--    uint64_t to_quad = tswap64(val);
--    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
--    return 8;
--}
--
--static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
--                                 uint64_t val_lo)
--{
--    uint64_t to_quad;
--#if TARGET_BIG_ENDIAN
--    to_quad = tswap64(val_hi);
--    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
--    to_quad = tswap64(val_lo);
--    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
--#else
--    to_quad = tswap64(val_lo);
--    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
--    to_quad = tswap64(val_hi);
--    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
--#endif
--    return 16;
--}
--
--static inline int gdb_get_zeroes(GByteArray *array, size_t len)
--{
--    guint oldlen = array->len;
--    g_byte_array_set_size(array, oldlen + len);
--    memset(array->data + oldlen, 0, len);
--
--    return len;
--}
--
--/**
-- * gdb_get_reg_ptr: get pointer to start of last element
-- * @len: length of element
-- *
-- * This is a helper function to extract the pointer to the last
-- * element for additional processing. Some front-ends do additional
-- * dynamic swapping of the elements based on CPU state.
-- */
--static inline uint8_t * gdb_get_reg_ptr(GByteArray *buf, int len)
--{
--    return buf->data + buf->len - len;
--}
--
--#if TARGET_LONG_BITS == 64
--#define gdb_get_regl(buf, val) gdb_get_reg64(buf, val)
--#define ldtul_p(addr) ldq_p(addr)
--#else
--#define gdb_get_regl(buf, val) gdb_get_reg32(buf, val)
--#define ldtul_p(addr) ldl_p(addr)
--#endif
--
--#endif /* NEED_CPU_H */
--
- /**
-  * gdbserver_start: start the gdb server
-  * @port_or_device: connection spec for gdb
-diff --git a/include/gdbstub/helpers.h b/include/gdbstub/helpers.h
-new file mode 100644
-index 0000000000..c573aef2dc
---- /dev/null
-+++ b/include/gdbstub/helpers.h
-@@ -0,0 +1,103 @@
-+/*
-+ * gdbstub helpers
-+ *
-+ * These are all used by the various frontends and have to be host
-+ * aware to ensure things are store in target order.
-+ *
-+ * Copyright (c) 2022 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef _GDBSTUB_HELPERS_H_
-+#define _GDBSTUB_HELPERS_H_
-+
-+#ifdef NEED_CPU_H
-+#include "cpu.h"
-+
-+/*
-+ * The GDB remote protocol transfers values in target byte order. As
-+ * the gdbstub may be batching up several register values we always
-+ * append to the array.
-+ */
-+
-+static inline int gdb_get_reg8(GByteArray *buf, uint8_t val)
-+{
-+    g_byte_array_append(buf, &val, 1);
-+    return 1;
-+}
-+
-+static inline int gdb_get_reg16(GByteArray *buf, uint16_t val)
-+{
-+    uint16_t to_word = tswap16(val);
-+    g_byte_array_append(buf, (uint8_t *) &to_word, 2);
-+    return 2;
-+}
-+
-+static inline int gdb_get_reg32(GByteArray *buf, uint32_t val)
-+{
-+    uint32_t to_long = tswap32(val);
-+    g_byte_array_append(buf, (uint8_t *) &to_long, 4);
-+    return 4;
-+}
-+
-+static inline int gdb_get_reg64(GByteArray *buf, uint64_t val)
-+{
-+    uint64_t to_quad = tswap64(val);
-+    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-+    return 8;
-+}
-+
-+static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
-+                                 uint64_t val_lo)
-+{
-+    uint64_t to_quad;
-+#if TARGET_BIG_ENDIAN
-+    to_quad = tswap64(val_hi);
-+    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-+    to_quad = tswap64(val_lo);
-+    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-+#else
-+    to_quad = tswap64(val_lo);
-+    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-+    to_quad = tswap64(val_hi);
-+    g_byte_array_append(buf, (uint8_t *) &to_quad, 8);
-+#endif
-+    return 16;
-+}
-+
-+static inline int gdb_get_zeroes(GByteArray *array, size_t len)
-+{
-+    guint oldlen = array->len;
-+    g_byte_array_set_size(array, oldlen + len);
-+    memset(array->data + oldlen, 0, len);
-+
-+    return len;
-+}
-+
-+/**
-+ * gdb_get_reg_ptr: get pointer to start of last element
-+ * @len: length of element
-+ *
-+ * This is a helper function to extract the pointer to the last
-+ * element for additional processing. Some front-ends do additional
-+ * dynamic swapping of the elements based on CPU state.
-+ */
-+static inline uint8_t *gdb_get_reg_ptr(GByteArray *buf, int len)
-+{
-+    return buf->data + buf->len - len;
-+}
-+
-+#if TARGET_LONG_BITS == 64
-+#define gdb_get_regl(buf, val) gdb_get_reg64(buf, val)
-+#define ldtul_p(addr) ldq_p(addr)
-+#else
-+#define gdb_get_regl(buf, val) gdb_get_reg32(buf, val)
-+#define ldtul_p(addr) ldl_p(addr)
-+#endif
-+
-+#else
-+#error "gdbstub helpers should only be included by target specific code"
-+#endif
-+
-+#endif /* _GDBSTUB_HELPERS_H_ */
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index e89992cf90..d69078899a 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -8,6 +8,7 @@
- 
- #include "qemu/osdep.h"
- #include "exec/gdbstub.h"
-+#include "cpu.h"
- #include "semihosting/guestfd.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/console.h"
-diff --git a/target/alpha/gdbstub.c b/target/alpha/gdbstub.c
-index 7db14f4431..0f8fa150f8 100644
---- a/target/alpha/gdbstub.c
-+++ b/target/alpha/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int alpha_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 3f799f5d05..78105b8078 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -20,6 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "internals.h"
- #include "cpregs.h"
- 
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 3bee892fb7..ec1e07f139 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -20,7 +20,7 @@
- #include "qemu/log.h"
- #include "cpu.h"
- #include "internals.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 0972a4bdd0..c3edf163be 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -20,7 +20,7 @@
- #include "qemu/osdep.h"
- #include "qemu/units.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "exec/helper-proto.h"
- #include "qemu/host-utils.h"
- #include "qemu/log.h"
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index 081fc3f5f7..9758f225d6 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -9,6 +9,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "internals.h"
-+#include "gdbstub/helpers.h"
- #include "exec/helper-proto.h"
- #include "qemu/main-loop.h"
- #include "qemu/bitops.h"
-diff --git a/target/avr/gdbstub.c b/target/avr/gdbstub.c
-index 1c1b908c92..150344d8b9 100644
---- a/target/avr/gdbstub.c
-+++ b/target/avr/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int avr_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/cris/gdbstub.c b/target/cris/gdbstub.c
-index 2418d575b1..25c0ca33a5 100644
---- a/target/cris/gdbstub.c
-+++ b/target/cris/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int crisv10_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/hexagon/gdbstub.c b/target/hexagon/gdbstub.c
-index d152d01bfe..46083da620 100644
---- a/target/hexagon/gdbstub.c
-+++ b/target/hexagon/gdbstub.c
-@@ -16,7 +16,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "cpu.h"
- #include "internal.h"
- 
-diff --git a/target/hppa/gdbstub.c b/target/hppa/gdbstub.c
-index 729c37b2ca..48a514384f 100644
---- a/target/hppa/gdbstub.c
-+++ b/target/hppa/gdbstub.c
-@@ -19,7 +19,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int hppa_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-index 786971284a..ebb000df6a 100644
---- a/target/i386/gdbstub.c
-+++ b/target/i386/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "include/gdbstub/helpers.h"
- 
- #ifdef TARGET_X86_64
- static const int gpr_map[16] = {
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 3d0c0b375f..52af81683c 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -12,7 +12,7 @@
- #include "cpu.h"
- #include "exec/address-spaces.h"
- #include "exec/ioport.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/accel.h"
- #include "sysemu/whpx.h"
- #include "sysemu/cpus.h"
-diff --git a/target/loongarch/gdbstub.c b/target/loongarch/gdbstub.c
-index a4d1e28e36..fa3e034d15 100644
---- a/target/loongarch/gdbstub.c
-+++ b/target/loongarch/gdbstub.c
-@@ -10,6 +10,7 @@
- #include "cpu.h"
- #include "internals.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- uint64_t read_fcc(CPULoongArchState *env)
- {
-diff --git a/target/m68k/gdbstub.c b/target/m68k/gdbstub.c
-index eb2d030e14..1e5f033a12 100644
---- a/target/m68k/gdbstub.c
-+++ b/target/m68k/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int m68k_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 4621cf2402..3b3a6ea8bd 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -23,6 +23,7 @@
- #include "exec/exec-all.h"
- #include "exec/gdbstub.h"
- #include "exec/helper-proto.h"
-+#include "gdbstub/helpers.h"
- #include "fpu/softfloat.h"
- #include "qemu/qemu-print.h"
- 
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index 87b1314925..f753710d7d 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -21,6 +21,7 @@
- 
- #include "cpu.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/softmmu-uaccess.h"
- #include "hw/boards.h"
-diff --git a/target/microblaze/gdbstub.c b/target/microblaze/gdbstub.c
-index 8143fcae88..29ac6e9c0f 100644
---- a/target/microblaze/gdbstub.c
-+++ b/target/microblaze/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- /*
-  * GDB expects SREGs in the following order:
-diff --git a/target/mips/gdbstub.c b/target/mips/gdbstub.c
-index f1c2a2cf6d..62d7b72407 100644
---- a/target/mips/gdbstub.c
-+++ b/target/mips/gdbstub.c
-@@ -20,7 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "internal.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "fpu_helper.h"
- 
- int mips_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-diff --git a/target/mips/tcg/sysemu/mips-semi.c b/target/mips/tcg/sysemu/mips-semi.c
-index 85f0567a7f..4e6e759057 100644
---- a/target/mips/tcg/sysemu/mips-semi.c
-+++ b/target/mips/tcg/sysemu/mips-semi.c
-@@ -21,6 +21,7 @@
- #include "cpu.h"
- #include "qemu/log.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "semihosting/softmmu-uaccess.h"
- #include "semihosting/semihost.h"
- #include "semihosting/console.h"
-diff --git a/target/nios2/cpu.c b/target/nios2/cpu.c
-index cff30823da..bc5cbf81c2 100644
---- a/target/nios2/cpu.c
-+++ b/target/nios2/cpu.c
-@@ -23,7 +23,7 @@
- #include "qapi/error.h"
- #include "cpu.h"
- #include "exec/log.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "hw/qdev-properties.h"
- 
- static void nios2_cpu_set_pc(CPUState *cs, vaddr value)
-diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
-index f76e8588c5..113b3f22aa 100644
---- a/target/nios2/nios2-semi.c
-+++ b/target/nios2/nios2-semi.c
-@@ -24,6 +24,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "semihosting/syscalls.h"
- #include "semihosting/softmmu-uaccess.h"
- #include "qemu/log.h"
-diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
-index 095bf76c12..d1074a0581 100644
---- a/target/openrisc/gdbstub.c
-+++ b/target/openrisc/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int openrisc_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
-index c31c6f12c4..3887812810 100644
---- a/target/openrisc/interrupt.c
-+++ b/target/openrisc/interrupt.c
-@@ -21,7 +21,7 @@
- #include "qemu/log.h"
- #include "cpu.h"
- #include "exec/exec-all.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- #ifndef CONFIG_USER_ONLY
- #include "hw/loader.h"
-diff --git a/target/openrisc/mmu.c b/target/openrisc/mmu.c
-index 0b8afdbacf..603c26715e 100644
---- a/target/openrisc/mmu.c
-+++ b/target/openrisc/mmu.c
-@@ -22,7 +22,7 @@
- #include "qemu/log.h"
- #include "cpu.h"
- #include "exec/exec-all.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- #include "hw/loader.h"
- 
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index d62ffe8a6f..0ce2e3c91d 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -20,7 +20,7 @@
- 
- #include "qemu/osdep.h"
- #include "disas/dis-asm.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "kvm_ppc.h"
- #include "sysemu/cpus.h"
- #include "sysemu/hw_accel.h"
-diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-index 1a0b9ca82c..d2bc1d7c53 100644
---- a/target/ppc/gdbstub.c
-+++ b/target/ppc/gdbstub.c
-@@ -20,6 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "internal.h"
- 
- static int ppc_gdb_register_len_apple(int n)
-diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-index 6048541606..840d1ec5c6 100644
---- a/target/riscv/gdbstub.c
-+++ b/target/riscv/gdbstub.c
-@@ -18,6 +18,7 @@
- 
- #include "qemu/osdep.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "cpu.h"
- 
- struct TypeSize {
-diff --git a/target/rx/gdbstub.c b/target/rx/gdbstub.c
-index 7eb2059a84..d7e0e6689b 100644
---- a/target/rx/gdbstub.c
-+++ b/target/rx/gdbstub.c
-@@ -17,7 +17,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- int rx_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
- {
-diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
-index a5d69d0e0b..0cb69395b4 100644
---- a/target/s390x/gdbstub.c
-+++ b/target/s390x/gdbstub.c
-@@ -23,6 +23,7 @@
- #include "s390x-internal.h"
- #include "exec/exec-all.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/bitops.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/tcg.h"
-diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-index 473c8e51b0..2b363aa959 100644
---- a/target/s390x/helper.c
-+++ b/target/s390x/helper.c
-@@ -21,7 +21,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "s390x-internal.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/timer.h"
- #include "hw/s390x/ioinst.h"
- #include "hw/s390x/pv.h"
-diff --git a/target/sh4/gdbstub.c b/target/sh4/gdbstub.c
-index 3488f68e32..d8e199fc06 100644
---- a/target/sh4/gdbstub.c
-+++ b/target/sh4/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- /* Hint: Use "set architecture sh4" in GDB to see fpu registers */
- /* FIXME: We should use XML for this.  */
-diff --git a/target/sparc/gdbstub.c b/target/sparc/gdbstub.c
-index 5d1e808e8c..a1c8fdc4d5 100644
---- a/target/sparc/gdbstub.c
-+++ b/target/sparc/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- #ifdef TARGET_ABI32
- #define gdb_get_rega(buf, val) gdb_get_reg32(buf, val)
-diff --git a/target/tricore/gdbstub.c b/target/tricore/gdbstub.c
-index 3a27a7e65d..e8f8e5e6ea 100644
---- a/target/tricore/gdbstub.c
-+++ b/target/tricore/gdbstub.c
-@@ -18,7 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- 
- 
- #define LCX_REGNUM         32
-diff --git a/target/xtensa/core-dc232b.c b/target/xtensa/core-dc232b.c
-index c982d09c24..9aba2667e3 100644
---- a/target/xtensa/core-dc232b.c
-+++ b/target/xtensa/core-dc232b.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- #include "qemu/timer.h"
- 
-diff --git a/target/xtensa/core-dc233c.c b/target/xtensa/core-dc233c.c
-index 595ab9a90f..9b0a625063 100644
---- a/target/xtensa/core-dc233c.c
-+++ b/target/xtensa/core-dc233c.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-dc233c/core-isa.h"
-diff --git a/target/xtensa/core-de212.c b/target/xtensa/core-de212.c
-index 50c995ba79..b08fe22e65 100644
---- a/target/xtensa/core-de212.c
-+++ b/target/xtensa/core-de212.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-de212/core-isa.h"
-diff --git a/target/xtensa/core-de233_fpu.c b/target/xtensa/core-de233_fpu.c
-index 41af8057fb..8845cdb592 100644
---- a/target/xtensa/core-de233_fpu.c
-+++ b/target/xtensa/core-de233_fpu.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-de233_fpu/core-isa.h"
-diff --git a/target/xtensa/core-dsp3400.c b/target/xtensa/core-dsp3400.c
-index 81e425c568..c0f94b9e27 100644
---- a/target/xtensa/core-dsp3400.c
-+++ b/target/xtensa/core-dsp3400.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-dsp3400/core-isa.h"
-diff --git a/target/xtensa/core-fsf.c b/target/xtensa/core-fsf.c
-index 3327c50b4f..310be8d61f 100644
---- a/target/xtensa/core-fsf.c
-+++ b/target/xtensa/core-fsf.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-fsf/core-isa.h"
-diff --git a/target/xtensa/core-lx106.c b/target/xtensa/core-lx106.c
-index 7a771d09a6..7f71d088f3 100644
---- a/target/xtensa/core-lx106.c
-+++ b/target/xtensa/core-lx106.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-lx106/core-isa.h"
-diff --git a/target/xtensa/core-sample_controller.c b/target/xtensa/core-sample_controller.c
-index fd5de5576b..8867001aac 100644
---- a/target/xtensa/core-sample_controller.c
-+++ b/target/xtensa/core-sample_controller.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-sample_controller/core-isa.h"
-diff --git a/target/xtensa/core-test_kc705_be.c b/target/xtensa/core-test_kc705_be.c
-index 294c16f2f4..bd082f49aa 100644
---- a/target/xtensa/core-test_kc705_be.c
-+++ b/target/xtensa/core-test_kc705_be.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-test_kc705_be/core-isa.h"
-diff --git a/target/xtensa/core-test_mmuhifi_c3.c b/target/xtensa/core-test_mmuhifi_c3.c
-index c0e5d32d1e..3090dd01ed 100644
---- a/target/xtensa/core-test_mmuhifi_c3.c
-+++ b/target/xtensa/core-test_mmuhifi_c3.c
-@@ -27,7 +27,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-test_mmuhifi_c3/core-isa.h"
-diff --git a/target/xtensa/gdbstub.c b/target/xtensa/gdbstub.c
-index b6696063e5..4b3bfb7e59 100644
---- a/target/xtensa/gdbstub.c
-+++ b/target/xtensa/gdbstub.c
-@@ -19,7 +19,7 @@
-  */
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/log.h"
- 
- enum {
-diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
-index 2aa9777a8e..dbeb97a953 100644
---- a/target/xtensa/helper.c
-+++ b/target/xtensa/helper.c
-@@ -29,7 +29,7 @@
- #include "qemu/log.h"
- #include "cpu.h"
- #include "exec/exec-all.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "exec/helper-proto.h"
- #include "qemu/error-report.h"
- #include "qemu/qemu-print.h"
-diff --git a/target/xtensa/import_core.sh b/target/xtensa/import_core.sh
-index b4c15556c2..17dfec8957 100755
---- a/target/xtensa/import_core.sh
-+++ b/target/xtensa/import_core.sh
-@@ -41,7 +41,7 @@ tar -xf "$OVERLAY" -O binutils/xtensa-modules.c | \
- cat <<EOF > "${TARGET}.c"
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/helpers.h"
- #include "qemu/host-utils.h"
- 
- #include "core-$NAME/core-isa.h"
--- 
-2.39.2
+$ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
+./build/tests/venv/bin/avocado --show=3Dapp,console run -t
+machine:orangepi-pc -t machine:cubieboard
+tests/avocado/boot_linux_console.py
+...
+PASS (22.09 s)
+RESULTS    : PASS 8 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
+CANCEL 0
+JOB TIME   : 169.73 s
+
+For now, I have only two suggestions for you to consider:
+1) You could add a new acceptance test for the new bananapi board to
+./tests/avocado/boot_linux_console.py.
+This helps in your current work to (re)test your code quickly, and after
+the code is merged it helps to keep to board working when other changes are
+done.
+2) If time permits, it may be interesting to document your board for
+example in a new file at ./docs/system/arm/bananapi.rst
+   If you do this, it will make the board a lot more valuable for other
+people to use, since you can add some basic instructions on how to use the
+board with qemu there.
+   Additionally, it also helps yourself to store this information
+somewhere, since it can be easy to forget all the specific
+commands/flags/arguments and links to board specific images.
+
+Once you have progressed with your patches beyond the RFC stage, I'll try
+to find some time for a more detailed review of your patches.
+
+Kind regards,
+Niek Linnenbank
+
+On Thu, Mar 2, 2023 at 12:41=E2=80=AFPM <qianfanguijin@163.com> wrote:
+
+> From: qianfan Zhao <qianfanguijin@163.com>
+>
+> v1: 2023-03-02
+>
+> The first three patches try fix allwinner i2c driver and I already send
+> them
+> as a standalone PR and can read it from:
+>
+>
+> https://patchwork.kernel.org/project/qemu-devel/patch/20230220081252.2534=
+8-3-qianfanguijin@163.com/
+>
+> Hope that patch can merged first before this.
+>
+> The next patches will add allwinner R40 device support, including ccu,
+> mmc, i2c,
+> axp221 pmic, sdram controller, emac and gmac. Now the mainline u-boot and
+> kernel can work fine (It doesn't support booting allwinner bsp code and
+> there
+> are no plans to support it now).
+>
+> qianfan Zhao (12):
+>   hw: allwinner-i2c: Make the trace message more readable
+>   hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on SUN6i SoCs
+>   hw: arm: allwinner-h3: Fix and complete H3 i2c devices
+>   hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
+>   hw/arm/allwinner-r40: add Clock Control Unit
+>   hw: allwinner-r40: Complete uart devices
+>   hw: arm: allwinner-r40: Add 5 TWI controllers
+>   hw/misc: AXP221 PMU Emulation
+>   hw/arm/allwinner-r40: add SDRAM controller device
+>   hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
+>   hw: arm: allwinner-r40: Fix the mmc controller's type
+>   hw: arm: allwinner-r40: Add emac and gmac support
+>
+>  configs/devices/arm-softmmu/default.mak |   1 +
+>  hw/arm/Kconfig                          |  10 +
+>  hw/arm/allwinner-h3.c                   |  29 +-
+>  hw/arm/allwinner-r40.c                  | 555 ++++++++++++++++++++++++
+>  hw/arm/bananapi_m2u.c                   | 128 ++++++
+>  hw/arm/meson.build                      |   1 +
+>  hw/i2c/allwinner-i2c.c                  | 136 +++++-
+>  hw/i2c/trace-events                     |   5 +-
+>  hw/misc/Kconfig                         |   4 +
+>  hw/misc/allwinner-r40-ccu.c             | 207 +++++++++
+>  hw/misc/allwinner-r40-dramc.c           | 499 +++++++++++++++++++++
+>  hw/misc/axp221.c                        | 196 +++++++++
+>  hw/misc/meson.build                     |   3 +
+>  hw/misc/trace-events                    |  19 +
+>  hw/sd/allwinner-sdhost.c                |  70 ++-
+>  include/hw/arm/allwinner-h3.h           |   6 +
+>  include/hw/arm/allwinner-r40.h          | 148 +++++++
+>  include/hw/i2c/allwinner-i2c.h          |   6 +
+>  include/hw/misc/allwinner-r40-ccu.h     |  65 +++
+>  include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
+>  include/hw/sd/allwinner-sdhost.h        |   9 +
+>  21 files changed, 2191 insertions(+), 14 deletions(-)
+>  create mode 100644 hw/arm/allwinner-r40.c
+>  create mode 100644 hw/arm/bananapi_m2u.c
+>  create mode 100644 hw/misc/allwinner-r40-ccu.c
+>  create mode 100644 hw/misc/allwinner-r40-dramc.c
+>  create mode 100644 hw/misc/axp221.c
+>  create mode 100644 include/hw/arm/allwinner-r40.h
+>  create mode 100644 include/hw/misc/allwinner-r40-ccu.h
+>  create mode 100644 include/hw/misc/allwinner-r40-dramc.h
+>
+> --
+> 2.25.1
+>
+>
+
+--=20
+Niek Linnenbank
+
+--00000000000017280605f669a297
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hello Qianfan Zhao,</div><div><br></=
+div><div>Thanks for contributing this work to Qemu! With your contribution,=
+ we would get yet another Allwinner SoC supported, making it three in total=
+ (A10/H3/R40). That&#39;s great.<br></div><div>My thoughts are that maybe w=
+e should try to re-use commonality between these SoCs where we can. Ofcours=
+e, that may be difficult as the internals/peripherals of these SoCs often r=
+eally are different.</div><div><br></div><div>Your patches look good alread=
+y, and I saw patches 02 and 03 are already merged too. I did a quick regres=
+sion test with</div><div>avocado for cubieboard/orangepi-pc with your patch=
+es applied and that went OK:</div><div><br></div><div>$ ARMBIAN_ARTIFACTS_C=
+ACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./build/tests/venv/bin/avocad=
+o --show=3Dapp,console run -t machine:orangepi-pc -t machine:cubieboard tes=
+ts/avocado/boot_linux_console.py</div><div>...<br></div><div>PASS (22.09 s)=
+<br>RESULTS =C2=A0 =C2=A0: PASS 8 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | IN=
+TERRUPT 0 | CANCEL 0<br>JOB TIME =C2=A0 : 169.73 s</div><div><br></div><div=
+>For now, I have only two suggestions for you to consider:</div><div>1) You=
+ could add a new acceptance test for the new bananapi board to ./tests/avoc=
+ado/boot_linux_console.py.</div><div>This helps in your current work to (re=
+)test your code quickly, and after the code is merged it helps to keep to b=
+oard working when other changes are done.</div><div>2) If time permits, it =
+may be interesting to document your board for example in a new file at ./do=
+cs/system/arm/bananapi.rst</div><div>=C2=A0=C2=A0 If you do this, it will m=
+ake the board a lot more valuable for other people to use, since you can ad=
+d some basic instructions on how to use the board with qemu there.</div><di=
+v>=C2=A0=C2=A0 Additionally, it also helps yourself to store this informati=
+on somewhere, since it can be easy to forget all the specific commands/flag=
+s/arguments and links to board specific images.</div><div><br></div><div>On=
+ce you have progressed with your patches beyond the RFC stage, I&#39;ll try=
+ to find some time for a more detailed review of your patches.</div><div><b=
+r></div><div>Kind regards,</div><div>Niek Linnenbank<br></div></div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 2=
+, 2023 at 12:41=E2=80=AFPM &lt;<a href=3D"mailto:qianfanguijin@163.com">qia=
+nfanguijin@163.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">From: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@16=
+3.com" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
+<br>
+v1: 2023-03-02<br>
+<br>
+The first three patches try fix allwinner i2c driver and I already send the=
+m<br>
+as a standalone PR and can read it from: <br>
+<br>
+<a href=3D"https://patchwork.kernel.org/project/qemu-devel/patch/2023022008=
+1252.25348-3-qianfanguijin@163.com/" rel=3D"noreferrer" target=3D"_blank">h=
+ttps://patchwork.kernel.org/project/qemu-devel/patch/20230220081252.25348-3=
+-qianfanguijin@163.com/</a><br>
+<br>
+Hope that patch can merged first before this.<br>
+<br>
+The next patches will add allwinner R40 device support, including ccu, mmc,=
+ i2c,<br>
+axp221 pmic, sdram controller, emac and gmac. Now the mainline u-boot and<b=
+r>
+kernel can work fine (It doesn&#39;t support booting allwinner bsp code and=
+ there<br>
+are no plans to support it now).<br>
+<br>
+qianfan Zhao (12):<br>
+=C2=A0 hw: allwinner-i2c: Make the trace message more readable<br>
+=C2=A0 hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on SUN6i SoCs<br>
+=C2=A0 hw: arm: allwinner-h3: Fix and complete H3 i2c devices<br>
+=C2=A0 hw: arm: Add bananapi M2-Ultra and allwinner-r40 support<br>
+=C2=A0 hw/arm/allwinner-r40: add Clock Control Unit<br>
+=C2=A0 hw: allwinner-r40: Complete uart devices<br>
+=C2=A0 hw: arm: allwinner-r40: Add 5 TWI controllers<br>
+=C2=A0 hw/misc: AXP221 PMU Emulation<br>
+=C2=A0 hw/arm/allwinner-r40: add SDRAM controller device<br>
+=C2=A0 hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
+=C2=A0 hw: arm: allwinner-r40: Fix the mmc controller&#39;s type<br>
+=C2=A0 hw: arm: allwinner-r40: Add emac and gmac support<br>
+<br>
+=C2=A0configs/devices/arm-softmmu/default.mak |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 10 +<br>
+=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0|=C2=A0 29 +-<br>
+=C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 | 555 ++++++++++++++++++++++++<br>
+=C2=A0hw/arm/bananapi_m2u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0| 128 ++++++<br>
+=C2=A0hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/i2c/allwinner-i2c.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 | 136 +++++-<br>
+=C2=A0hw/i2c/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
+=C2=A0hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
+=C2=A0hw/misc/allwinner-r40-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 207 +++++++++<br>
+=C2=A0hw/misc/allwinner-r40-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0| 499 +++++++++++++++++++++<br>
+=C2=A0hw/misc/axp221.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 196 +++++++++<br>
+=C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
+=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 |=C2=A0 19 +<br>
+=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 |=C2=A0 70 ++-<br>
+=C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A06 +<br>
+=C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 14=
+8 +++++++<br>
+=C2=A0include/hw/i2c/allwinner-i2c.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
+=A0 =C2=A06 +<br>
+=C2=A0include/hw/misc/allwinner-r40-ccu.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 65 +++=
+<br>
+=C2=A0include/hw/misc/allwinner-r40-dramc.h=C2=A0 =C2=A0| 108 +++++<br>
+=C2=A0include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
+=C2=A09 +<br>
+=C2=A021 files changed, 2191 insertions(+), 14 deletions(-)<br>
+=C2=A0create mode 100644 hw/arm/allwinner-r40.c<br>
+=C2=A0create mode 100644 hw/arm/bananapi_m2u.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-r40-ccu.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-r40-dramc.c<br>
+=C2=A0create mode 100644 hw/misc/axp221.c<br>
+=C2=A0create mode 100644 include/hw/arm/allwinner-r40.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-r40-ccu.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-r40-dramc.h<br>
+<br>
+-- <br>
+2.25.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
+tr"><div>Niek Linnenbank<br><br></div></div></div></div>
+
+--00000000000017280605f669a297--

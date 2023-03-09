@@ -1,107 +1,108 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1120609ejc;
-        Wed, 8 Mar 2023 12:47:40 -0800 (PST)
-X-Google-Smtp-Source: AK7set9LLzsBLZZZ4rFBK8V7evC04qNaUHxN3JC4+lmvmH5ATlQH331/DGLFMAU7pbkVgKatu1o/
-X-Received: by 2002:ad4:5aa5:0:b0:579:5dbc:ab8b with SMTP id u5-20020ad45aa5000000b005795dbcab8bmr38488058qvg.52.1678308460107;
-        Wed, 08 Mar 2023 12:47:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678308460; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp711230ejc;
+        Thu, 9 Mar 2023 05:14:03 -0800 (PST)
+X-Google-Smtp-Source: AK7set/ggfig2zD31SsnuUgDGRSFQrDs5rjVhIg1evOQZhWkIqkWoym33RgcIe3aCg/l0+eI5Yxf
+X-Received: by 2002:a05:622a:104c:b0:3bf:d8e2:ab0e with SMTP id f12-20020a05622a104c00b003bfd8e2ab0emr3494929qte.23.1678367643752;
+        Thu, 09 Mar 2023 05:14:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678367643; cv=none;
         d=google.com; s=arc-20160816;
-        b=iWoVp5/vki6CfApVb4slLkzKTOifTpFnZfcLcdPtSPTKLrECDAaG9ToW1YziV3UZhO
-         ULj9kA+tgjDi5rd9YL8oOwdMqw187t/ov94StB4KYiXXxQ0/fbRrUOqmm7A0I17KW7hJ
-         0IVzIfmxro28nPVqzbLZIo/+lkmkMpz5vf140fh/H+9rGZPbgUY8gSmzqCJfNiszHsWs
-         WOkru8fu80EXCj/El0OJibnkwuHc6SNLyhfVtqdSzeimOVF/15XzfyN9NdkhNnZ560Fi
-         3OUD3k2yywQWX9mpyf+dUnW102OJnqMS1fgEkMJZAz2Bkb9gtbDOpZiXTsNCc1c8hGM7
-         /otg==
+        b=JtpXzOI+xt+zwWcHMZmLplPhwKATN1OJ5BpobZu9bnjb5TjFIVwk0C6KW5xJbQT0qK
+         SfAcE8DncuQT/iEl6RL4IzRzhYyo3IAy4B33QyqDWABzM+7ZVGOM+2bttTiCqrNuoWlf
+         5oMbuWv1jGanfR5ACZFS6ujpAWUvG5vF+G3wdI/MlCiSHAOQPwV2q+n2zG3atzpacVek
+         AyXBko5DnnSFe6IH+iTRwTaAkrIE94iYxBDzgInp8raZy9hXIsKZBlrY7jtFuGD3MDSY
+         MhQHtxvcI/9D08gEkjkVg8Unsrbp/+/y34ANaoh0vNrwBQjMroTitBX0tcYoHaTKl3Wv
+         Ot5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
-        b=JXCm7MpAB7vJwjh52lD0j2KmD48928zth9Av3LPiWugK5Eb7on/XwiOzXXZE2KJ2fn
-         Pjq4ohaK/2pS5Vi0ogQF8x1sObmvM1u+/ekdplSThkJbl2I6wFAoE21jFFK3yyUNnf1M
-         AXr0zUB1sTrEtqADxVX2KiNd8DjIwvtTFnWIWypXECPHcQPW2Pf1VgftwDVegqzhnsmw
-         GvQYj2m4NRqYkeMY8+cYahxt7HEGZWPCcPJhnQG8EisHuUUiW1QyiN1bQk5pwrCc6Aow
-         asPR2ypZjqXqy0W61I9qTlKtZk5v75FePox3rFenBV+o6kQ2Geq1FnjRCcuP/nKHNpFy
-         Cz+g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=hPxDwA2qP+yUNTcYliT3FEziP29T0fTAryen8DS7d1A=;
+        b=iJPzWF7Jo+MsoNluQ6h8oXw58vwtEpJQpwL5syw7ux6tbq4lx2USWOed45VZBMfUB0
+         7iVPZcW+K6KZMnWA3k91YknhjjfQc5KG0DlvpVoYKnx1TnRGi2EbZuK49FZUOLE2sXni
+         dMxV41/YmK4ThbAuo1nCJj8IfbyMuF07hf6KaeuvhCN3Pa81fYfAx3Seb81zbp1aYp0I
+         NJVjhduChV7ScNsW6nr4Fx8QJa6lIhAlskNy4mFqTE+XZdO5zAIWLO7l4L1iMvccMUKM
+         t4lg7P89gdXI1oFATh2JT2d/yvFijLe/IDWWgJpxhebsMiu1YaSMZTOZleuMStdSWXff
+         K88A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="j/uTd/UN";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fd23fv1m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n140-20020a374092000000b007426fc20ee0si11554690qka.535.2023.03.08.12.47.39
+        by mx.google.com with ESMTPS id w19-20020a05622a135300b003b6953fbb9asi15002940qtk.348.2023.03.09.05.14.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Mar 2023 12:47:40 -0800 (PST)
+        Thu, 09 Mar 2023 05:14:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b="j/uTd/UN";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Fd23fv1m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pa0gy-0004qE-Nj; Wed, 08 Mar 2023 15:47:20 -0500
+	id 1paG5I-0008OL-9i; Thu, 09 Mar 2023 08:13:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pa0gx-0004pr-5r; Wed, 08 Mar 2023 15:47:19 -0500
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1paG5G-0008Ns-TW
+ for qemu-arm@nongnu.org; Thu, 09 Mar 2023 08:13:26 -0500
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pa0gu-0000mV-ML; Wed, 08 Mar 2023 15:47:18 -0500
-Received: by mail-yb1-xb30.google.com with SMTP id t39so15938766ybi.3;
- Wed, 08 Mar 2023 12:47:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1paG5E-0000AP-9H
+ for qemu-arm@nongnu.org; Thu, 09 Mar 2023 08:13:26 -0500
+Received: by mail-pj1-x102d.google.com with SMTP id nn12so2070445pjb.5
+ for <qemu-arm@nongnu.org>; Thu, 09 Mar 2023 05:13:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678308435;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
- b=j/uTd/UNigJrBZ9WwfA3DTIKN4lkdM/szbwPxg7tP1GAxxRWQU39Bb19LGY0zAG3am
- uDL/NPazX0Vmi+penkHthh0FJ5YW8f0wnHZN3PiWcXeO0pHvW0KigMQQ9LozPYA+Wg+a
- vRf2cy204ATvnKz/dw0LE+3KYbaNcxN/3cmAntnSYzlSUYPDPCSJ3Ms4pv3LOQ9I4UkE
- KJBK3wNw3owlwnpalDmylQiH4435exvaHz673gOxNaUbxpsRpg36SaKwVFV7N65c8Zw3
- +cz7/Gn2mfSXxUrHKYgpOfpgbfa+BIi6SC6GFAhj4vUkUA68JCvUbFafBZq6jXRrAqSb
- Ulqg==
+ d=linaro.org; s=google; t=1678367603;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hPxDwA2qP+yUNTcYliT3FEziP29T0fTAryen8DS7d1A=;
+ b=Fd23fv1mR5IvA0kVHDDH/JFxyZQ0A5VO8sy0pYMfk/hXcMI0h8vlgFBr7PVHBfOfCu
+ qkIIafO3oTxft82W7WgHCVeoHTSLmWXJBYLWiRnd8kgBKPNBDSafjurWcBElqgraGC2g
+ iA1XVRoSRnuW35rKmGYZCgVvmc+UE93EsGvLExzO645vQaIDJee0Jd2awBOx8P7T+1ve
+ W0vZdsf3V8NuGYvmycxWfG/vwRjezoQA1UE7wH7+dFt0uuJbyg1A0xKT5Nc18E2x4BqD
+ 9K4ZeSQUFPk1Eb2WLFlwQvbz7Xy7RBsMFNoTVolRXp7kWiN4BL/f1zOuxLPqV931fTVo
+ O7XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678308435;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1JV9rHvhdNcPHoyIUpDY7JoMjgv7bnm2rNU1uVCStf0=;
- b=YL3g0J88KI508oZi5foXH7O6s3hNuYQIFkWeGfPW0lQEcLr38m/K2hRy9eXQncASSt
- 0EmtIEkjSpp+Z73wlfYdSHBSMn1ALpqPYV7jZMEmy/zlO6v41QeCiB+Ix2Wb9VMH9bF8
- gR6WIYTb3kQ9iR9Lz3twJqZli/XErhmubism0fXxhhPePUrjmN3KgVwyKPFWWuLVTFNr
- e05aW7jLYpnZy69Zo8FzupU1FluW3Skhu/+CYVXwS/wSX64ElIPHc2gTxpHpy9F235nO
- Zhzq7bb8f2W9lAUACIAavaS0UPBMOxCfg98y372BqgEssNLxVPNEDL/6G8Sh/U9cjGSu
- Vj2A==
-X-Gm-Message-State: AO0yUKVVEUWrFywmMAWuVAOtst6CYUYyII9prOeGmZkvtZj0QHPBI9fn
- NvNecI4l1Aoi8vbCuqBF8Ao8nX0VX1WIkefAenQ=
-X-Received: by 2002:a05:6902:208:b0:a98:bd27:91de with SMTP id
- j8-20020a056902020800b00a98bd2791demr11765922ybs.7.1678308434977; Wed, 08 Mar
- 2023 12:47:14 -0800 (PST)
+ d=1e100.net; s=20210112; t=1678367603;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=hPxDwA2qP+yUNTcYliT3FEziP29T0fTAryen8DS7d1A=;
+ b=UO4NbmuYyJtiaOv6Izpz0RYnFS5h6F+SUGxd4+EbDENkmZ5s7ghPLbWtQNQAYkxr/K
+ ljMGnXL+g6w5OZev0sZS0WNyME+n8ZXh7ZSErryYE/Lk3LXp28Mih5uzZfUx4yr9ngHq
+ ByhjkUP46UoymyjFJ12b1LHlgD+hWlfXt3ARFaPSB8iffbIMzk/IhlQFEXNc8BxQlev+
+ PwBstlFVD3jm6vi4E9zdEcP0Vm9dXV/TtCCtRuDEHv1nh2P6WY2zE3hMZGZd61Itod/N
+ dAgxK1bqhkMb/Mq+bfZ6vTxqrSDxjhEUN7ub34sUN/hcrq8ydIKmQanAUF2Zttfp5wBd
+ oClA==
+X-Gm-Message-State: AO0yUKWpizh3CfEPc5ORpmgWkdu06IDhSTutHTBlSgj/yunOTxctuVF8
+ 2IoEFhvN7NaW2DXV5DvTNI55mrphBK6eN0Jltrzp5w==
+X-Received: by 2002:a17:902:7e09:b0:199:6fd:ecf6 with SMTP id
+ b9-20020a1709027e0900b0019906fdecf6mr8173178plm.9.1678367601712; Thu, 09 Mar
+ 2023 05:13:21 -0800 (PST)
 MIME-Version: 1.0
-References: <20230302114102.32236-1-qianfanguijin@163.com>
-In-Reply-To: <20230302114102.32236-1-qianfanguijin@163.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Wed, 8 Mar 2023 21:47:04 +0100
-Message-ID: <CAPan3Wr=jqP5CVzsMtNmUTj-NvPZouxPWwC9DivY=GL65XJX4Q@mail.gmail.com>
-Subject: Re: [RFC PATCH v1 00/12] *** Add allwinner R40 device support ***
-To: qianfanguijin@163.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000017280605f669a297"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-yb1-xb30.google.com
+References: <20230307155528.3655534-1-clg@kaod.org>
+In-Reply-To: <20230307155528.3655534-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Mar 2023 13:13:10 +0000
+Message-ID: <CAFEAcA_f3LP_nVrN2oi6xwxY6JpuWruZSdFG7pf1ttfY7d5ZTQ@mail.gmail.com>
+Subject: Re: [PULL 0/5] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,264 +117,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SBXo8DRvch6q
+X-TUID: J+ytn8HSQc/r
 
---00000000000017280605f669a297
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hello Qianfan Zhao,
-
-Thanks for contributing this work to Qemu! With your contribution, we would
-get yet another Allwinner SoC supported, making it three in total
-(A10/H3/R40). That's great.
-My thoughts are that maybe we should try to re-use commonality between
-these SoCs where we can. Ofcourse, that may be difficult as the
-internals/peripherals of these SoCs often really are different.
-
-Your patches look good already, and I saw patches 02 and 03 are already
-merged too. I did a quick regression test with
-avocado for cubieboard/orangepi-pc with your patches applied and that went
-OK:
-
-$ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
-./build/tests/venv/bin/avocado --show=3Dapp,console run -t
-machine:orangepi-pc -t machine:cubieboard
-tests/avocado/boot_linux_console.py
-...
-PASS (22.09 s)
-RESULTS    : PASS 8 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
-CANCEL 0
-JOB TIME   : 169.73 s
-
-For now, I have only two suggestions for you to consider:
-1) You could add a new acceptance test for the new bananapi board to
-./tests/avocado/boot_linux_console.py.
-This helps in your current work to (re)test your code quickly, and after
-the code is merged it helps to keep to board working when other changes are
-done.
-2) If time permits, it may be interesting to document your board for
-example in a new file at ./docs/system/arm/bananapi.rst
-   If you do this, it will make the board a lot more valuable for other
-people to use, since you can add some basic instructions on how to use the
-board with qemu there.
-   Additionally, it also helps yourself to store this information
-somewhere, since it can be easy to forget all the specific
-commands/flags/arguments and links to board specific images.
-
-Once you have progressed with your patches beyond the RFC stage, I'll try
-to find some time for a more detailed review of your patches.
-
-Kind regards,
-Niek Linnenbank
-
-On Thu, Mar 2, 2023 at 12:41=E2=80=AFPM <qianfanguijin@163.com> wrote:
-
-> From: qianfan Zhao <qianfanguijin@163.com>
+On Tue, 7 Mar 2023 at 15:55, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> v1: 2023-03-02
+> The following changes since commit 817fd33836e73812df2f1907612b57750fcb94=
+91:
 >
-> The first three patches try fix allwinner i2c driver and I already send
-> them
-> as a standalone PR and can read it from:
+>   Merge tag 'audio-pull-request' of https://gitlab.com/marcandre.lureau/q=
+emu into staging (2023-03-06 14:06:06 +0000)
 >
+> are available in the Git repository at:
 >
-> https://patchwork.kernel.org/project/qemu-devel/patch/20230220081252.2534=
-8-3-qianfanguijin@163.com/
+>   https://github.com/legoater/qemu/ tags/pull-aspeed-20230307
 >
-> Hope that patch can merged first before this.
+> for you to fetch changes up to 7840ba985a7c0fcf90a7318ff1f827f89571cb3c:
 >
-> The next patches will add allwinner R40 device support, including ccu,
-> mmc, i2c,
-> axp221 pmic, sdram controller, emac and gmac. Now the mainline u-boot and
-> kernel can work fine (It doesn't support booting allwinner bsp code and
-> there
-> are no plans to support it now).
+>   hw/arm/aspeed: Modified BMC FRU byte data in yosemitev2 (2023-03-07 16:=
+53:18 +0100)
 >
-> qianfan Zhao (12):
->   hw: allwinner-i2c: Make the trace message more readable
->   hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on SUN6i SoCs
->   hw: arm: allwinner-h3: Fix and complete H3 i2c devices
->   hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
->   hw/arm/allwinner-r40: add Clock Control Unit
->   hw: allwinner-r40: Complete uart devices
->   hw: arm: allwinner-r40: Add 5 TWI controllers
->   hw/misc: AXP221 PMU Emulation
->   hw/arm/allwinner-r40: add SDRAM controller device
->   hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
->   hw: arm: allwinner-r40: Fix the mmc controller's type
->   hw: arm: allwinner-r40: Add emac and gmac support
+> ----------------------------------------------------------------
+> aspeed queue:
 >
->  configs/devices/arm-softmmu/default.mak |   1 +
->  hw/arm/Kconfig                          |  10 +
->  hw/arm/allwinner-h3.c                   |  29 +-
->  hw/arm/allwinner-r40.c                  | 555 ++++++++++++++++++++++++
->  hw/arm/bananapi_m2u.c                   | 128 ++++++
->  hw/arm/meson.build                      |   1 +
->  hw/i2c/allwinner-i2c.c                  | 136 +++++-
->  hw/i2c/trace-events                     |   5 +-
->  hw/misc/Kconfig                         |   4 +
->  hw/misc/allwinner-r40-ccu.c             | 207 +++++++++
->  hw/misc/allwinner-r40-dramc.c           | 499 +++++++++++++++++++++
->  hw/misc/axp221.c                        | 196 +++++++++
->  hw/misc/meson.build                     |   3 +
->  hw/misc/trace-events                    |  19 +
->  hw/sd/allwinner-sdhost.c                |  70 ++-
->  include/hw/arm/allwinner-h3.h           |   6 +
->  include/hw/arm/allwinner-r40.h          | 148 +++++++
->  include/hw/i2c/allwinner-i2c.h          |   6 +
->  include/hw/misc/allwinner-r40-ccu.h     |  65 +++
->  include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
->  include/hw/sd/allwinner-sdhost.h        |   9 +
->  21 files changed, 2191 insertions(+), 14 deletions(-)
->  create mode 100644 hw/arm/allwinner-r40.c
->  create mode 100644 hw/arm/bananapi_m2u.c
->  create mode 100644 hw/misc/allwinner-r40-ccu.c
->  create mode 100644 hw/misc/allwinner-r40-dramc.c
->  create mode 100644 hw/misc/axp221.c
->  create mode 100644 include/hw/arm/allwinner-r40.h
->  create mode 100644 include/hw/misc/allwinner-r40-ccu.h
->  create mode 100644 include/hw/misc/allwinner-r40-dramc.h
->
-> --
-> 2.25.1
->
+> * Small adjustments for the newest Meta machines
+> * blk_pread_nonzeroes() fix required for pflash and m25p80 devices
+> * Improve error reporting on file size for m25p80 devices
 >
 
---=20
-Niek Linnenbank
 
---00000000000017280605f669a297
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Applied, thanks.
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div>Hello Qianfan Zhao,</div><div><br></=
-div><div>Thanks for contributing this work to Qemu! With your contribution,=
- we would get yet another Allwinner SoC supported, making it three in total=
- (A10/H3/R40). That&#39;s great.<br></div><div>My thoughts are that maybe w=
-e should try to re-use commonality between these SoCs where we can. Ofcours=
-e, that may be difficult as the internals/peripherals of these SoCs often r=
-eally are different.</div><div><br></div><div>Your patches look good alread=
-y, and I saw patches 02 and 03 are already merged too. I did a quick regres=
-sion test with</div><div>avocado for cubieboard/orangepi-pc with your patch=
-es applied and that went OK:</div><div><br></div><div>$ ARMBIAN_ARTIFACTS_C=
-ACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./build/tests/venv/bin/avocad=
-o --show=3Dapp,console run -t machine:orangepi-pc -t machine:cubieboard tes=
-ts/avocado/boot_linux_console.py</div><div>...<br></div><div>PASS (22.09 s)=
-<br>RESULTS =C2=A0 =C2=A0: PASS 8 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | IN=
-TERRUPT 0 | CANCEL 0<br>JOB TIME =C2=A0 : 169.73 s</div><div><br></div><div=
->For now, I have only two suggestions for you to consider:</div><div>1) You=
- could add a new acceptance test for the new bananapi board to ./tests/avoc=
-ado/boot_linux_console.py.</div><div>This helps in your current work to (re=
-)test your code quickly, and after the code is merged it helps to keep to b=
-oard working when other changes are done.</div><div>2) If time permits, it =
-may be interesting to document your board for example in a new file at ./do=
-cs/system/arm/bananapi.rst</div><div>=C2=A0=C2=A0 If you do this, it will m=
-ake the board a lot more valuable for other people to use, since you can ad=
-d some basic instructions on how to use the board with qemu there.</div><di=
-v>=C2=A0=C2=A0 Additionally, it also helps yourself to store this informati=
-on somewhere, since it can be easy to forget all the specific commands/flag=
-s/arguments and links to board specific images.</div><div><br></div><div>On=
-ce you have progressed with your patches beyond the RFC stage, I&#39;ll try=
- to find some time for a more detailed review of your patches.</div><div><b=
-r></div><div>Kind regards,</div><div>Niek Linnenbank<br></div></div><br><di=
-v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 2=
-, 2023 at 12:41=E2=80=AFPM &lt;<a href=3D"mailto:qianfanguijin@163.com">qia=
-nfanguijin@163.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">From: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@16=
-3.com" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-<br>
-v1: 2023-03-02<br>
-<br>
-The first three patches try fix allwinner i2c driver and I already send the=
-m<br>
-as a standalone PR and can read it from: <br>
-<br>
-<a href=3D"https://patchwork.kernel.org/project/qemu-devel/patch/2023022008=
-1252.25348-3-qianfanguijin@163.com/" rel=3D"noreferrer" target=3D"_blank">h=
-ttps://patchwork.kernel.org/project/qemu-devel/patch/20230220081252.25348-3=
--qianfanguijin@163.com/</a><br>
-<br>
-Hope that patch can merged first before this.<br>
-<br>
-The next patches will add allwinner R40 device support, including ccu, mmc,=
- i2c,<br>
-axp221 pmic, sdram controller, emac and gmac. Now the mainline u-boot and<b=
-r>
-kernel can work fine (It doesn&#39;t support booting allwinner bsp code and=
- there<br>
-are no plans to support it now).<br>
-<br>
-qianfan Zhao (12):<br>
-=C2=A0 hw: allwinner-i2c: Make the trace message more readable<br>
-=C2=A0 hw: allwinner-i2c: Fix TWI_CNTR_INT_FLAG on SUN6i SoCs<br>
-=C2=A0 hw: arm: allwinner-h3: Fix and complete H3 i2c devices<br>
-=C2=A0 hw: arm: Add bananapi M2-Ultra and allwinner-r40 support<br>
-=C2=A0 hw/arm/allwinner-r40: add Clock Control Unit<br>
-=C2=A0 hw: allwinner-r40: Complete uart devices<br>
-=C2=A0 hw: arm: allwinner-r40: Add 5 TWI controllers<br>
-=C2=A0 hw/misc: AXP221 PMU Emulation<br>
-=C2=A0 hw/arm/allwinner-r40: add SDRAM controller device<br>
-=C2=A0 hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
-=C2=A0 hw: arm: allwinner-r40: Fix the mmc controller&#39;s type<br>
-=C2=A0 hw: arm: allwinner-r40: Add emac and gmac support<br>
-<br>
-=C2=A0configs/devices/arm-softmmu/default.mak |=C2=A0 =C2=A01 +<br>
-=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 10 +<br>
-=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0|=C2=A0 29 +-<br>
-=C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 | 555 ++++++++++++++++++++++++<br>
-=C2=A0hw/arm/bananapi_m2u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0| 128 ++++++<br>
-=C2=A0hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-=C2=A0hw/i2c/allwinner-i2c.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 | 136 +++++-<br>
-=C2=A0hw/i2c/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
-=C2=A0hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 +<br>
-=C2=A0hw/misc/allwinner-r40-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 207 +++++++++<br>
-=C2=A0hw/misc/allwinner-r40-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0| 499 +++++++++++++++++++++<br>
-=C2=A0hw/misc/axp221.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 196 +++++++++<br>
-=C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
-=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 19 +<br>
-=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 |=C2=A0 70 ++-<br>
-=C2=A0include/hw/arm/allwinner-h3.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0|=C2=A0 =C2=A06 +<br>
-=C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 14=
-8 +++++++<br>
-=C2=A0include/hw/i2c/allwinner-i2c.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
-=A0 =C2=A06 +<br>
-=C2=A0include/hw/misc/allwinner-r40-ccu.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 65 +++=
-<br>
-=C2=A0include/hw/misc/allwinner-r40-dramc.h=C2=A0 =C2=A0| 108 +++++<br>
-=C2=A0include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
-=C2=A09 +<br>
-=C2=A021 files changed, 2191 insertions(+), 14 deletions(-)<br>
-=C2=A0create mode 100644 hw/arm/allwinner-r40.c<br>
-=C2=A0create mode 100644 hw/arm/bananapi_m2u.c<br>
-=C2=A0create mode 100644 hw/misc/allwinner-r40-ccu.c<br>
-=C2=A0create mode 100644 hw/misc/allwinner-r40-dramc.c<br>
-=C2=A0create mode 100644 hw/misc/axp221.c<br>
-=C2=A0create mode 100644 include/hw/arm/allwinner-r40.h<br>
-=C2=A0create mode 100644 include/hw/misc/allwinner-r40-ccu.h<br>
-=C2=A0create mode 100644 include/hw/misc/allwinner-r40-dramc.h<br>
-<br>
--- <br>
-2.25.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
-tr"><div>Niek Linnenbank<br><br></div></div></div></div>
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
+for any user-visible changes.
 
---00000000000017280605f669a297--
+-- PMM

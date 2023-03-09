@@ -1,233 +1,116 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1122287ejc;
-        Thu, 9 Mar 2023 12:15:13 -0800 (PST)
-X-Google-Smtp-Source: AK7set9/uaExGWS9RRl4pOZ7MqD8yPk3iCbNqqlCUnEW12LInsuqGZ+Z2b3FtpbhmLLreOseCha1
-X-Received: by 2002:a05:600c:190c:b0:3ea:c110:55ba with SMTP id j12-20020a05600c190c00b003eac11055bamr469567wmq.18.1678392913848;
-        Thu, 09 Mar 2023 12:15:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678392913; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1167491ejc;
+        Thu, 9 Mar 2023 13:08:32 -0800 (PST)
+X-Received: by 2002:a17:90b:180d:b0:22b:b375:ec3f with SMTP id lw13-20020a17090b180d00b0022bb375ec3fmr24436693pjb.21.1678396112326;
+        Thu, 09 Mar 2023 13:08:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678396112; cv=none;
         d=google.com; s=arc-20160816;
-        b=hDzcmgIXQHTDG9khGFtYvIKxnCx4TxIWnLlloNA6rmEeBiFdezbJStFwnz79f44s+b
-         qfvAO1UOjTbDtrOQJP0q9cyY3nY5OLWsnaJd4K4L7DUbVNwTqHWb3WLvP/foYGmtJh+L
-         RrQOQUwI5o8IuHSeGm0TZuC6zQD4gFVsxPf3A+5f3RYntUIbqlPUxb9vXEs3OAgP/Cur
-         YDt+QB9n97CAKZ3AwXr09Ia8Pa1vD0akCX9DdQtPTAAw5Sc5BM7Bavm0rmm+A6H9r933
-         x07/qvI8V19KmepJe7z80KT5+6ZajfWneEEi33XgttQL2clWdA5+ktWI82SaAKP62Z5D
-         58Yw==
+        b=StoFLThIGAVENAnR2bG5WwtYuWm+kVtu3vKcsfvUh3HyMQNylHG9SkHwDQ08+83ekY
+         /NHLbE87W3aegpJrGS/0Ewy5L90Ci163gEbHPAJj0olX4TQ7c9k6pbp/NLLEK62SsXRF
+         UUV4PJbE+8gUNlePvGsudIG0gzNbhcc2wQGVJS/edbhyqcwk8lS4zl8zhRxctRxYfbm4
+         Cg1lgpx1YzARouK1jfKI6o4kMyTJnyQf4w0HNdMQsUia6NgQo98mnQfe2TJZ/UtTEnrJ
+         WdIl2zYcI3LqO72XkiThZk769l4Bl7BMyXAGz57GwRUY2IBxsfUvmgkUbsXN1iz3S3lM
+         zblQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-        b=jhk4+x13WULVIvq70cQigDydYtUWCMgy6Olyq2E0nQGfr6f0SV65r8/DklZMu+PD4G
-         hoas3P/KBN3Qh8HpmibGP9+DhX1Sss0NAzENteBDkeNN3TokAePXyhOanZV6Rq5BmwQJ
-         UhLjCVT6CTGUZEwbqG0BYJC+hvs7xJaSmXDrAMdL7TQ4ZTePwOPZZoCYwrtOAbmxIK3+
-         NNCEc2SS7+cB9QrKM8dHs5G4rSm4p1iaQ93hWv8DVjP9RHhR++MX+90l1a2cOAEq5guQ
-         TWEOgtYBNiDgBXmxXKv+JmpD6tpwl18e96uEeqKQwO0u6gPvYGH0n24SwrVayJc633Db
-         xaIA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=tQgIRPCOvB+FFaD16a2KBOxq1e9Afym3b0gP0+ZSGXw=;
+        b=pE2JncSYNZ+MSf0Nvi8AjyzBf+sOqpSLgcBzSBLCpx2CaIqaMSkvZA0Wml1dvwguN2
+         8RSaqGDGi0Difdv+iYVanvmsjRMr2V96eOtwnBQ1D47TIh5x3ioXRVesBzq+jMWUARuV
+         j/uTcmFm38DXje4AOX3mNsnLVHuPvBI84MDUxRihAnH/vWoIkF9OQ0AcQZqe55osb3TO
+         vcl1PL5OX5P+aJXqivCXqLVCbXh6LjX0hel4Kam+oxuNUwXGHR1TXSazcZH8H2AT5CRf
+         g4IUHP2nLpyoSQPGuAtiu8risj09ywbOGJjL493oNvitMa8KoDfYypXqXNAHGRv+ibj8
+         wXNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uhenQ2YD;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id ay16-20020a05600c1e1000b003da0d302eb6si681457wmb.27.2023.03.09.12.15.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 12:15:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DaDW8qaC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o64-20020a17090a0a4600b00230870cc957sor344005pjo.39.2023.03.09.13.08.32
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 09 Mar 2023 13:08:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=uhenQ2YD;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 75AF7202A3;
-	Thu,  9 Mar 2023 20:15:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678392913; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-	b=uhenQ2YDm2K6R72W2//4a0tPwsnyGWfQB3TLK8idO6rvh1jKMtyZ6ZKFRdxkqeB5gXYNRe
-	QKHBmJ/1UeEwVzN/XhLqvpTAgdoMp0f1tCc+69B29Aoq9e7qAXqU/boRovsgyl+E5xc+77
-	JQ2oVvmy6mWjIsw3x0mbl7r+prveIoE=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678392913;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=p5YrNMxmCSXKAAgShoRgMvoDqaxZU1WpdCJ0XHKi6qI=;
-	b=vPDfMsZLDTXehPjivClesGfQv5OHi1qo2O8Zrn8QjDihjLCIdAkmjIeYD4tcf0ga8GdFof
-	fqBtIHDB9o+vrJDA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D164C1391B;
-	Thu,  9 Mar 2023 20:15:09 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id cPoFJk0+CmTUZwAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 09 Mar 2023 20:15:09 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH v8 09/11] tests/avocado: Pass parameters to migration test
-Date: Thu,  9 Mar 2023 17:14:32 -0300
-Message-Id: <20230309201434.10831-10-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230309201434.10831-1-farosas@suse.de>
-References: <20230309201434.10831-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=DaDW8qaC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678396112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tQgIRPCOvB+FFaD16a2KBOxq1e9Afym3b0gP0+ZSGXw=;
+        b=DaDW8qaCdRR/B8oR3xDOF6825s1YPo9AWgzt7YK0fWEk45T+CxesdX9EVsqUmog9Tn
+         hi/GJTqTnMZkjsX0taXYIOTcvi1zZrY8hmZX9QhMjkhRQLQeWghPqMZrCW/sy2mfUokk
+         1d6oP710ALIgMXuqTkQZdnqrvAr4AatFpUvre68NdU6ONeX7BoBn65ri4TD5imqBzH+7
+         A0o8JZIWjqi0lXs/UKs1CxBYdDI2EP/JywCezRu2r9xkl3v4SBkzaf8vNuY5OvmS5EvV
+         JN6HS0FXshC7jeIqtwjwFF8S8RQJpu6R6+cyPm+8Cg8AAVckkuLFOu49e1J+WTo8U2ub
+         6QNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678396112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tQgIRPCOvB+FFaD16a2KBOxq1e9Afym3b0gP0+ZSGXw=;
+        b=bra/D00nZBe+q7GiWKtEuGFUF7u+lRXEPmj9ae5rlXEBd/dnwdDKIg8NW9iCtNfz/X
+         5g8lhGTeH2nj2IWj9xc+CD1zlA1QjNNr7Aw0IWPX/RmUU4iDzLIGEBBa3agUWnDy26Nj
+         6jsxwF0uGIBckidJ0cZEbhcx+DK9lOtsSwNLP7hjlnyTksEmwAcz4eBVhGUjRSzZUsOG
+         rF2IIkSE5IxZlKsteK3CkeL/EusvZbQcEVlfRhrdiikPNEdYZGiq5BO2rpbmhjKhZcw4
+         deESxkQpTH/cuXMSwsnFo1M1sZBC5YjOYPMZaOvj1b/yrfwWA6A8cejt+H8BBjU4tpgC
+         epFA==
+X-Gm-Message-State: AO0yUKXYwsaX/giqdtouCGmXlqoB+dSs44b7PvoJ5oPJlsMg3QdOJzPP
+	HCFDY38JzUWYGrudFiWM/GRhUXK/
+X-Google-Smtp-Source: AK7set8p9nj7Bqlw/gkdiEB6HptenghYiKjKpKITfN8xpPnqWjVNqcTjvwYixgAe84nH5AF5J3NqaA==
+X-Received: by 2002:a17:90b:38d0:b0:237:24eb:99d8 with SMTP id nn16-20020a17090b38d000b0023724eb99d8mr24701999pjb.19.1678396111782;
+        Thu, 09 Mar 2023 13:08:31 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:ae:154a:9f01:bf7f:79a0:a976:bdaf? ([2602:ae:154a:9f01:bf7f:79a0:a976:bdaf])
+        by smtp.gmail.com with ESMTPSA id u2-20020a170902bf4200b001991d6c6c64sm82696pls.185.2023.03.09.13.08.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Mar 2023 13:08:31 -0800 (PST)
+Message-ID: <3f660759-b37a-6b9e-3eaa-1f879db5ed48@linaro.org>
+Date: Thu, 9 Mar 2023 13:08:29 -0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 3mdvyLGGYxoN
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH v8 03/11] target/arm: Move aa32_max_features out of
+ cpu_tcg.c
+Content-Language: en-US
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Cornelia Huck <cohuck@redhat.com>
+References: <20230309201434.10831-1-farosas@suse.de>
+ <20230309201434.10831-4-farosas@suse.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230309201434.10831-4-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: PsWKz6auapV7
 
-The migration tests are currently broken for an aarch64 host because
-the tests pass no 'machine' and 'cpu' options on the QEMU command
-line.
+On 3/9/23 12:14, Fabiano Rosas wrote:
+> In preparation to moving the cpu_tcg.c code into a 32-bit, tcg-only
+> file, move the aa32_max_features function which is shared between
+> 32/64/tcg/non-tcg into cpu.c.
+> 
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   target/arm/cpu.c     | 69 ++++++++++++++++++++++++++++++++++++++++++++
+>   target/arm/cpu_tcg.c | 69 --------------------------------------------
+>   2 files changed, 69 insertions(+), 69 deletions(-)
 
-Add a separate class to each architecture so that we can specify
-'machine' and 'cpu' options instead of relying on defaults.
+I'm not keen on this, as it's completely tcg.
 
-Add a skip decorator to keep the current behavior of only running
-migration tests when the qemu target matches the host architecture.
+Perhaps it would be better to let -cpu max devolve to aarch64_a57_initfn when tcg is not 
+available (i.e. qtest_enabled())?  Move all of the tcg stuff out of aarch64_max_initfn 
+into tcg/cpu64.c.
 
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
- tests/avocado/migration.py | 83 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 78 insertions(+), 5 deletions(-)
+Thoughts?
 
-diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
-index 4b25680c50..8b2ec0e3c4 100644
---- a/tests/avocado/migration.py
-+++ b/tests/avocado/migration.py
-@@ -11,6 +11,8 @@
- 
- 
- import tempfile
-+import os
-+
- from avocado_qemu import QemuSystemTest
- from avocado import skipUnless
- 
-@@ -19,7 +21,7 @@
- from avocado.utils.path import find_command
- 
- 
--class Migration(QemuSystemTest):
-+class MigrationTest(QemuSystemTest):
-     """
-     :avocado: tags=migration
-     """
-@@ -62,20 +64,91 @@ def _get_free_port(self):
-             self.cancel('Failed to find a free port')
-         return port
- 
--
--    def test_migration_with_tcp_localhost(self):
-+    def migration_with_tcp_localhost(self):
-         dest_uri = 'tcp:localhost:%u' % self._get_free_port()
-         self.do_migrate(dest_uri)
- 
--    def test_migration_with_unix(self):
-+    def migration_with_unix(self):
-         with tempfile.TemporaryDirectory(prefix='socket_') as socket_path:
-             dest_uri = 'unix:%s/qemu-test.sock' % socket_path
-             self.do_migrate(dest_uri)
- 
-     @skipUnless(find_command('nc', default=False), "'nc' command not found")
--    def test_migration_with_exec(self):
-+    def migration_with_exec(self):
-         """The test works for both netcat-traditional and netcat-openbsd packages."""
-         free_port = self._get_free_port()
-         dest_uri = 'exec:nc -l localhost %u' % free_port
-         src_uri = 'exec:nc localhost %u' % free_port
-         self.do_migrate(dest_uri, src_uri)
-+
-+
-+@skipUnless('aarch64' in os.uname()[4], "host != target")
-+class Aarch64(MigrationTest):
-+    """
-+    :avocado: tags=arch:aarch64
-+    :avocado: tags=machine:virt
-+    :avocado: tags=cpu:max
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('x86_64' in os.uname()[4], "host != target")
-+class X86_64(MigrationTest):
-+    """
-+    :avocado: tags=arch:x86_64
-+    :avocado: tags=machine:pc
-+    :avocado: tags=cpu:qemu64
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('ppc64le' in os.uname()[4], "host != target")
-+class PPC64(MigrationTest):
-+    """
-+    :avocado: tags=arch:ppc64
-+    :avocado: tags=machine:pseries
-+    :avocado: tags=cpu:power9_v2.0
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
-+
-+
-+@skipUnless('s390x' in os.uname()[4], "host != target")
-+class S390X(MigrationTest):
-+    """
-+    :avocado: tags=arch:s390x
-+    :avocado: tags=machine:s390-ccw-virtio
-+    :avocado: tags=cpu:qemu
-+    """
-+
-+    def test_migration_with_tcp_localhost(self):
-+        self.migration_with_tcp_localhost()
-+
-+    def test_migration_with_unix(self):
-+        self.migration_with_unix()
-+
-+    def test_migration_with_exec(self):
-+        self.migration_with_exec()
--- 
-2.35.3
+
+r~

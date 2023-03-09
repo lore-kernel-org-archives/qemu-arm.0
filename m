@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1121900ejc;
-        Thu, 9 Mar 2023 12:14:50 -0800 (PST)
-X-Google-Smtp-Source: AK7set94fB4/gnLr+6IqgJQbAiEsblRWOGj1lSC6NYCx2clY+mxbegIDNxZsPZpiJsAK6ieehn/Q
-X-Received: by 2002:a5d:5489:0:b0:2c7:17db:bf5a with SMTP id h9-20020a5d5489000000b002c717dbbf5amr16046554wrv.5.1678392890275;
-        Thu, 09 Mar 2023 12:14:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678392890; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1122214ejc;
+        Thu, 9 Mar 2023 12:15:09 -0800 (PST)
+X-Google-Smtp-Source: AK7set8QvHCEh5Y7lPkllDfhHtUO/9lk7d1fopnsewKEZOwSlYuDGsx1NBTye3OWPmgtIGtjElAp
+X-Received: by 2002:adf:e5c3:0:b0:2c5:4659:3e76 with SMTP id a3-20020adfe5c3000000b002c546593e76mr16408692wrn.18.1678392909782;
+        Thu, 09 Mar 2023 12:15:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678392909; cv=none;
         d=google.com; s=arc-20160816;
-        b=OJ7gnQs3vHBw0eC25jtZx9NhS4tRBIpj9ZA9lVONXsnbTbgUDKRs1dmB4CB99OUabn
-         HJshLg2gJqNVjSpjLWJLhHtfH81yTqL9WXbxC2SKd5g3JG7Y4oPDVKjQ/cd6vzCfBHrv
-         Stqzz34Jo1L5b0aBVWCy31ziEsJ1ME27LX4Dg851EgdAuViPpZUgEP5+aK0ON2feB7Ja
-         Mfws4BMgKKvkxKE5+MDojDBiu+EatBNx+5Ypvv7pKFecn75tXWO3BkuzMAkKlPH/N84b
-         dUB1BKKkCC52aOpXf8mfADpWUcHh7Kr2NddjFqqpeN6Y8U2S8jxtCsFXwhunytQzTwqw
-         dp9A==
+        b=AQnYBQU+z5v+/hvDneA8DDN/AF/EC6G/QAN5sF1uwo0K+E2EphpGmy+oaFT+iYI8lO
+         5Te0i1v0m1tqI6BqYq/VzjalT+FRpzItZB48IcPURV85lwYwAuK6u078RVX1lmFWlfLo
+         Va80mTxaMfJwvImc+KUHAjOn6axlItnQw53aapwtryrc036OgwejWzTANyQcZ9doBHu3
+         5g0YoDLI2GMDuxdaqI/OlIFDCK9HQIbY9deNbslzwiS5OngMuonvNw7Z01BSDgdHGLBE
+         n/Ty8qUdyu+uDrMIakmYn78cDStHw6ePxJyVVx0oCPUrlSJp74IrHG/4TECGMsO/sknX
+         gU6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=xlfXR7yI6epTVEgJoIFGrnyMo6sRdWeNp6PeIYEg/3U=;
-        b=D9yiVWnpY5I6zKahxR3lRfG0IIK3X+xNdef+TMuYzECKP8YjuZRPpYIO98zyepKJkB
-         qpYVrR5qGg49pRw5w/BAQEIpPr0SQqWfLsx95Fs8Yv18WwiEHs1RlTzgy4yGU5dPvsJs
-         pUWH74g5Uhy8Q6uJ1alcDXSug/k2vecgHd1VWsCzmOedlucHnwnW4COeDWo61RI6IMpx
-         caCV+4b7lI6gJqJNTlXQHBeulUh3PjhFte06IWgcGyfNViAiaxwrSmVVp/TPzwszJpK2
-         xu2Y0jWqBdqBQrrXPlX7QblaXFRJmGISOHkvwFog4iBDAQm4Kq4yKKHtdw/GsyJ+bJ2Q
-         hCfQ==
+        bh=nd8VaW1irxQb3bqzXlXlLymmUu5RWg8W4Szo9bph6gI=;
+        b=RxIjaZoQpXd/K7vDvFgBOBINO6i3Mr1KMh2oIV3REQAKncakzlKeBKyftPxGgbtNGp
+         zBcqIrJHQy8t4PdTnBZVRe7d4VoQHRM9bJfeaCCDYgE80T++i7+SsWqN30zWFDiFSHfk
+         UfeVehQIUB+veenl1seCYgO86OkXyC3b6q8ST4NU4PiQ1NZGvzsJFfmPiCAQed6F5Gma
+         9vffmh7hMw2rAA6FqIKu3iIxOu358ONpgOeXgfTjmBDlgxBV73NykMtDz/KGvwZdhmAj
+         bavmK9oGF2cIaSmNuyinsqwhOeq1TCNyaFhzcDb2DmhtQRiwTSLLiVihg+RYA2ngJdGZ
+         zj8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Iiatu5YN;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=snF7s8vY;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=NoI5im4f;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=11pG4uhz;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id w15-20020adfd4cf000000b002c55b2265b7si258868wrk.829.2023.03.09.12.14.50
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id m2-20020adffa02000000b002bdea63db39si279848wrr.834.2023.03.09.12.15.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 12:14:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+        Thu, 09 Mar 2023 12:15:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Iiatu5YN;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=snF7s8vY;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=NoI5im4f;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=11pG4uhz;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id D6A0D223D1;
-	Thu,  9 Mar 2023 20:14:49 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 641B7223D2;
+	Thu,  9 Mar 2023 20:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678392889; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1678392909; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=xlfXR7yI6epTVEgJoIFGrnyMo6sRdWeNp6PeIYEg/3U=;
-	b=Iiatu5YNZ8gopb2aS6O+swd6h1cZkpAzH718AuvogrtwOPHv6eaWYZLQN4Age6xGuHgZil
-	KBEFAmhbrhoNUWncvoNw0FxQkcPA1usFODg3z9m2rptatdCTK5d8U1+6D3hqEpVl0I+OJJ
-	Y1zglo1y7CE9NIzVS/8N0AfRC762TrY=
+	bh=nd8VaW1irxQb3bqzXlXlLymmUu5RWg8W4Szo9bph6gI=;
+	b=NoI5im4fE5OSM4b3yCy2rUm8b5WQWGWd4nQ9IZDjedeLyqyJYh4bMuzUyprNvGUBl6UTWJ
+	LfI4ftOXkMAwJY9fuCROvpLUB6oVwlZUCfWA8SSIHxQ1pIQeFLtDVwQGiSbjSe1gY5n9IT
+	ncRrVxrpOJYfpZYbLdyG+E4DA346GX4=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678392889;
+	s=susede2_ed25519; t=1678392909;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=xlfXR7yI6epTVEgJoIFGrnyMo6sRdWeNp6PeIYEg/3U=;
-	b=snF7s8vY2vNVgNZXBxDbWHNIi7phrD/HDNELOmrPBdvtkZLs8synCSWpZFcTW7BZFuXX1j
-	cWni5LcS32eEdKCg==
+	bh=nd8VaW1irxQb3bqzXlXlLymmUu5RWg8W4Szo9bph6gI=;
+	b=11pG4uhzUYiWwq+HZkxQ5LupO3yw9iwVqSpZUBT40qZ1iap7N3oWCUPRnqGHOnXnvuBHL5
+	pb6gO4MttWLo/1DA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id ED8541391B;
-	Thu,  9 Mar 2023 20:14:46 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E4FD01391B;
+	Thu,  9 Mar 2023 20:15:04 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id WJjsLDY+CmTUZwAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 09 Mar 2023 20:14:46 +0000
+	id UNDhKkg+CmTUZwAAMHmgww
+	(envelope-from <farosas@suse.de>); Thu, 09 Mar 2023 20:15:04 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -82,186 +82,179 @@ Cc: qemu-arm@nongnu.org,
 	Claudio Fontana <cfontana@suse.de>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v8 03/11] target/arm: Move aa32_max_features out of cpu_tcg.c
-Date: Thu,  9 Mar 2023 17:14:26 -0300
-Message-Id: <20230309201434.10831-4-farosas@suse.de>
+	Cornelia Huck <cohuck@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <ani@anisinha.ca>,
+	Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PATCH v8 08/11] tests/qtest: Fix tests when no KVM or TCG are present
+Date: Thu,  9 Mar 2023 17:14:31 -0300
+Message-Id: <20230309201434.10831-9-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230309201434.10831-1-farosas@suse.de>
 References: <20230309201434.10831-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 8s4yAqaFY9+e
+X-TUID: U168HOeiwgob
 
-In preparation to moving the cpu_tcg.c code into a 32-bit, tcg-only
-file, move the aa32_max_features function which is shared between
-32/64/tcg/non-tcg into cpu.c.
+It is possible to have a build with both TCG and KVM disabled due to
+Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+host.
+
+If we build with --disable-tcg on the aarch64 host, we will end-up
+with a QEMU binary (x86) that does not support TCG nor KVM.
+
+Fix tests that crash or hang in the above scenario. Do not include any
+test cases if TCG and KVM are missing.
+
+Make sure that calls to qtest_has_accel are placed after g_test_init
+in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
+printed before other messages") to avoid TAP parsing errors.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 ---
- target/arm/cpu.c     | 69 ++++++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu_tcg.c | 69 --------------------------------------------
- 2 files changed, 69 insertions(+), 69 deletions(-)
+This currently affects Arm, but will also affect x86 after the xenpvh
+series gets merged. This patch fixes both scenarios.
+---
+ tests/qtest/bios-tables-test.c | 10 ++++++++--
+ tests/qtest/boot-serial-test.c | 10 ++++++++++
+ tests/qtest/migration-test.c   |  9 ++++++++-
+ tests/qtest/pxe-test.c         |  7 ++++++-
+ tests/qtest/vmgenid-test.c     |  8 ++++++--
+ 5 files changed, 38 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5182ed0c91..eccbb8f123 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2158,6 +2158,75 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     acc->parent_realize(dev, errp);
- }
- 
-+/* Share AArch32 -cpu max features with AArch64. */
-+void aa32_max_features(ARMCPU *cpu)
-+{
-+    uint32_t t;
-+
-+    /* Add additional features supported by QEMU */
-+    t = cpu->isar.id_isar5;
-+    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
-+    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
-+    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
-+    t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
-+    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
-+    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
-+    cpu->isar.id_isar5 = t;
-+
-+    t = cpu->isar.id_isar6;
-+    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
-+    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
-+    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
-+    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
-+    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
-+    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
-+    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
-+    cpu->isar.id_isar6 = t;
-+
-+    t = cpu->isar.mvfr1;
-+    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
-+    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
-+    cpu->isar.mvfr1 = t;
-+
-+    t = cpu->isar.mvfr2;
-+    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
-+    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
-+    cpu->isar.mvfr2 = t;
-+
-+    t = cpu->isar.id_mmfr3;
-+    t = FIELD_DP32(t, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
-+    cpu->isar.id_mmfr3 = t;
-+
-+    t = cpu->isar.id_mmfr4;
-+    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1);         /* FEAT_AA32HPD */
-+    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
-+    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
-+    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
-+    t = FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT */
-+    cpu->isar.id_mmfr4 = t;
-+
-+    t = cpu->isar.id_mmfr5;
-+    t = FIELD_DP32(t, ID_MMFR5, ETS, 1);          /* FEAT_ETS */
-+    cpu->isar.id_mmfr5 = t;
-+
-+    t = cpu->isar.id_pfr0;
-+    t = FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CVS2 */
-+    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
-+    t = FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
-+    cpu->isar.id_pfr0 = t;
-+
-+    t = cpu->isar.id_pfr2;
-+    t = FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
-+    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
-+    cpu->isar.id_pfr2 = t;
-+
-+    t = cpu->isar.id_dfr0;
-+    t = FIELD_DP32(t, ID_DFR0, COPDBG, 9);        /* FEAT_Debugv8p4 */
-+    t = FIELD_DP32(t, ID_DFR0, COPSDBG, 9);       /* FEAT_Debugv8p4 */
-+    t = FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
-+    cpu->isar.id_dfr0 = t;
-+}
-+
- static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index d29a4e47af..5cbad2f29f 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2109,8 +2109,7 @@ static void test_acpi_virt_oem_fields(void)
+ int main(int argc, char *argv[])
  {
-     ObjectClass *oc;
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index 6ce728134f..5a2690f56e 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -24,75 +24,6 @@
- #endif
+     const char *arch = qtest_get_arch();
+-    const bool has_kvm = qtest_has_accel("kvm");
+-    const bool has_tcg = qtest_has_accel("tcg");
++    bool has_kvm, has_tcg;
+     char *v_env = getenv("V");
+     int ret;
  
+@@ -2120,6 +2119,13 @@ int main(int argc, char *argv[])
  
--/* Share AArch32 -cpu max features with AArch64. */
--void aa32_max_features(ARMCPU *cpu)
--{
--    uint32_t t;
--
--    /* Add additional features supported by QEMU */
--    t = cpu->isar.id_isar5;
--    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
--    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
--    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
--    t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
--    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
--    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
--    cpu->isar.id_isar5 = t;
--
--    t = cpu->isar.id_isar6;
--    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
--    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
--    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
--    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
--    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
--    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
--    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
--    cpu->isar.id_isar6 = t;
--
--    t = cpu->isar.mvfr1;
--    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
--    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
--    cpu->isar.mvfr1 = t;
--
--    t = cpu->isar.mvfr2;
--    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
--    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
--    cpu->isar.mvfr2 = t;
--
--    t = cpu->isar.id_mmfr3;
--    t = FIELD_DP32(t, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
--    cpu->isar.id_mmfr3 = t;
--
--    t = cpu->isar.id_mmfr4;
--    t = FIELD_DP32(t, ID_MMFR4, HPDS, 1);         /* FEAT_AA32HPD */
--    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
--    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
--    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
--    t = FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT */
--    cpu->isar.id_mmfr4 = t;
--
--    t = cpu->isar.id_mmfr5;
--    t = FIELD_DP32(t, ID_MMFR5, ETS, 1);          /* FEAT_ETS */
--    cpu->isar.id_mmfr5 = t;
--
--    t = cpu->isar.id_pfr0;
--    t = FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CVS2 */
--    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
--    t = FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
--    cpu->isar.id_pfr0 = t;
--
--    t = cpu->isar.id_pfr2;
--    t = FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
--    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
--    cpu->isar.id_pfr2 = t;
--
--    t = cpu->isar.id_dfr0;
--    t = FIELD_DP32(t, ID_DFR0, COPDBG, 9);        /* FEAT_Debugv8p4 */
--    t = FIELD_DP32(t, ID_DFR0, COPSDBG, 9);       /* FEAT_Debugv8p4 */
--    t = FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
--    cpu->isar.id_dfr0 = t;
--}
--
- /* CPU models. These are not needed for the AArch64 linux-user build. */
- #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+     g_test_init(&argc, &argv, NULL);
  
++    has_kvm = qtest_has_accel("kvm");
++    has_tcg = qtest_has_accel("tcg");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
++
+     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+         ret = boot_sector_init(disk);
+         if (ret) {
+diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+index 3aef3a97a9..406b4421cc 100644
+--- a/tests/qtest/boot-serial-test.c
++++ b/tests/qtest/boot-serial-test.c
+@@ -17,6 +17,9 @@
+ #include "libqtest.h"
+ #include "libqos/libqos-spapr.h"
+ 
++static bool has_tcg;
++static bool has_kvm;
++
+ static const uint8_t bios_avr[] = {
+     0x88, 0xe0,             /* ldi r24, 0x08   */
+     0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
+@@ -287,6 +290,13 @@ int main(int argc, char *argv[])
+ 
+     g_test_init(&argc, &argv, NULL);
+ 
++    has_tcg = qtest_has_accel("tcg");
++    has_kvm = qtest_has_accel("kvm");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
++
+     for (i = 0; tests[i].arch != NULL; i++) {
+         if (g_str_equal(arch, tests[i].arch) &&
+             qtest_has_machine(tests[i].machine)) {
+diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+index d4ab3934ed..7eedee7b2d 100644
+--- a/tests/qtest/migration-test.c
++++ b/tests/qtest/migration-test.c
+@@ -2459,7 +2459,7 @@ static bool kvm_dirty_ring_supported(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const bool has_kvm = qtest_has_accel("kvm");
++    bool has_kvm, has_tcg;
+     const bool has_uffd = ufd_version_check();
+     const char *arch = qtest_get_arch();
+     g_autoptr(GError) err = NULL;
+@@ -2467,6 +2467,13 @@ int main(int argc, char **argv)
+ 
+     g_test_init(&argc, &argv, NULL);
+ 
++    has_kvm = qtest_has_accel("kvm");
++    has_tcg = qtest_has_accel("tcg");
++
++    if (!has_tcg && !has_kvm) {
++        return 0;
++    }
++
+     /*
+      * On ppc64, the test only works with kvm-hv, but not with kvm-pr and TCG
+      * is touchy due to race conditions on dirty bits (especially on PPC for
+diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+index 62b6eef464..935b661dac 100644
+--- a/tests/qtest/pxe-test.c
++++ b/tests/qtest/pxe-test.c
+@@ -131,11 +131,16 @@ int main(int argc, char *argv[])
+     int ret;
+     const char *arch = qtest_get_arch();
+ 
++    g_test_init(&argc, &argv, NULL);
++
++    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
++        return 0;
++    }
++
+     ret = boot_sector_init(disk);
+     if(ret)
+         return ret;
+ 
+-    g_test_init(&argc, &argv, NULL);
+ 
+     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+         test_batch(x86_tests, false);
+diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
+index efba76e716..9eb6371ae8 100644
+--- a/tests/qtest/vmgenid-test.c
++++ b/tests/qtest/vmgenid-test.c
+@@ -165,13 +165,17 @@ int main(int argc, char **argv)
+ {
+     int ret;
+ 
++    g_test_init(&argc, &argv, NULL);
++
++    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
++        return 0;
++    }
++
+     ret = boot_sector_init(disk);
+     if (ret) {
+         return ret;
+     }
+ 
+-    g_test_init(&argc, &argv, NULL);
+-
+     qtest_add_func("/vmgenid/vmgenid/set-guid",
+                    vmgenid_set_guid_test);
+     qtest_add_func("/vmgenid/vmgenid/set-guid-auto",
 -- 
 2.35.3

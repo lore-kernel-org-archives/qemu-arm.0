@@ -1,107 +1,262 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ja4-20020a05600c556400b003ebff290a40sm1701125wmb.21.2023.03.10.02.31.24
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1776301ejc;
+        Fri, 10 Mar 2023 03:04:06 -0800 (PST)
+X-Google-Smtp-Source: AK7set83+WPBoUpjXbhPaF1/bTNnihNrJZ9s8GsdzjNFkCkvtCwocCUlREKvUb0P9HVwu73qXkA6
+X-Received: by 2002:a5d:4534:0:b0:2c7:16c3:1756 with SMTP id j20-20020a5d4534000000b002c716c31756mr19626957wra.61.1678446246584;
+        Fri, 10 Mar 2023 03:04:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678446246; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sWwh1BZW+KI8kg5HNaKjk7/V8n2DaXCmVbp80BWesyaIZ9ag5dh9j8Op3OVvg9uFwu
+         dkZEqgzqJMTQjwRgTIU5sqB552HOtbZoCfTxza5dHy+Q+uc1vRE7e/5P3Ti1NAO1wVi1
+         W17l5aZO0Zqa77W+4Sz81Fl/MbreRFv+LAZJF0P4CEqpgBB1XOFDnUfi2Kof2/mUa///
+         dYv7ej1uy/gH2QfN7rWT1WjKdV0izoJvrZbQyCe3KPK08OgFs2fL+zfD4dpIwUfJ2j4C
+         po1raE4DKlaDBvcR8TvZCXsRdyQnfnZd5QFh2Q1TkXA14CKpafZtCwVNx9FWzIhjwIzH
+         LKKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=CkPYT3sjpZEPsaCy0mckmW9riEHzfKwCEVMV/Jrdiw4=;
+        b=tKFqetVobW2U013L2uZXPPx3WokU5JAdiE9qLF9Zt4QTJAjIOIJlAWhKU8WgB9s0Dy
+         sIBLqYa8r/WEBb8fyrRgAsWSlPrYw2ZlHxgfHdKgv8A3PFiBeJk7/5EGaGzslucM6f0E
+         /uu9m4YBfScDKg8jTREc3nGhd5t/2OIY8ZnLPSPQ6Xt19qFmTAWle+yONbJ+M+VvkIuE
+         LiRhh79m8AVr3xCv31dmCB3F8uWfSAajsW6fVbV3sHGApsrcd/KQxsZ5mx4eWzZr2K1B
+         d1h5GWjtW/mkL6rgD4U3xBz3kO6UuUd9S1oZKYN/7l5lmKFTNUD+9j9MKevgktSfZZva
+         bp6w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=eo8XlUX+;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+1265cd07cee6da11af5a+7138+infradead.org+dwmw2@casper.srs.infradead.org
+Return-Path: <BATV+1265cd07cee6da11af5a+7138+infradead.org+dwmw2@casper.srs.infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by mx.google.com with ESMTPS id e3-20020a5d5003000000b002c5607e4eb2si1800246wrt.286.2023.03.10.03.04.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 02:31:25 -0800 (PST)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3CAE61FFBF;
-	Fri, 10 Mar 2023 10:31:24 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-arm@nongnu.org,
-	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 07/11] tcg: Clear plugin_mem_cbs on TB exit
-Date: Fri, 10 Mar 2023 10:31:19 +0000
-Message-Id: <20230310103123.2118519-8-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230310103123.2118519-1-alex.bennee@linaro.org>
+        Fri, 10 Mar 2023 03:04:06 -0800 (PST)
+Received-SPF: none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) client-ip=2001:8b0:10b:1236::1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=eo8XlUX+;
+       spf=none (google.com: casper.srs.infradead.org does not designate permitted sender hosts) smtp.mailfrom=BATV+1265cd07cee6da11af5a+7138+infradead.org+dwmw2@casper.srs.infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=CkPYT3sjpZEPsaCy0mckmW9riEHzfKwCEVMV/Jrdiw4=; b=eo8XlUX+tvWFkbCg40Dqi6lIZL
+	5q9Yb/3ntc0b+gC4TLy/m7CCvTCnrwJSUmLdPW54ZHFeWBsozte+20ldjIzExs90D+Arw4Q5prpts
+	zAo0AMTjQQcZs55hsTjefoq8rz8AMnK2KjZQFpEGnnHanIcOuGLqybH8P+T3wpSKlDeiSkYAFGcwR
+	yVAx4Vhd9EQoFAIaRtUHn5c8gl9GhejpxHVp5VPEASup5h8JU1rmBpj3logsFJf7MSa1nDbZ5sCOG
+	jXv1z4a0P+s6UeGqY4A0tFOhIJNXX2tl3Do/jO85BcLS99DvkBtpfAD6iKht4uOOzkxqmfFDFgyfP
+	qE/+PXyg==;
+Received: from [2001:8b0:10b:5:fea5:d438:64bd:2b44] (helo=u3832b3a9db3152.ant.amazon.com)
+	by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1paaXb-009KC7-8p; Fri, 10 Mar 2023 11:04:03 +0000
+Message-ID: <239508a12b6384131ccebe484ffed624a69ff3a1.camel@infradead.org>
+Subject: Re: [PATCH 11/11] tests/avocado: don't use tags to define drive
+From: David Woodhouse <dwmw2@infradead.org>
+To: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, 
+	qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>, Wainer dos Santos Moschetta
+	 <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, 
+	qemu-arm@nongnu.org, Peter Xu <peterx@redhat.com>, Philippe
+	=?ISO-8859-1?Q?Mathieu-Daud=E9?=
+	 <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa
+	 <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini
+	 <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
+Date: Fri, 10 Mar 2023 11:04:02 +0000
+In-Reply-To: <20230310103123.2118519-12-alex.bennee@linaro.org>
 References: <20230310103123.2118519-1-alex.bennee@linaro.org>
+	 <20230310103123.2118519-12-alex.bennee@linaro.org>
+Content-Type: multipart/signed; micalg="sha-256"; protocol="application/pkcs7-signature";
+	boundary="=-XFDYvDNiOi8//2Obgha9"
+User-Agent: Evolution 3.44.4-0ubuntu1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: oN6J93AFiVsA
+X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by casper.infradead.org. See http://www.infradead.org/rpr.html
+X-TUID: K7Dab/WeX1ik
 
-From: Richard Henderson <richard.henderson@linaro.org>
 
-Do this in cpu_tb_exec (normal exit) and cpu_loop_exit (exception),
-adjacent to where we reset can_do_io.
+--=-XFDYvDNiOi8//2Obgha9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1381
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230301024737.1210851-2-richard.henderson@linaro.org>
-[AJB: use plugin_gen_disable_mem_helpers()]
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+On Fri, 2023-03-10 at 10:31 +0000, Alex Benn=C3=A9e wrote:
+> We are abusing the avocado tags which are intended to provide test
+> selection metadata to provide parameters to our test. This works OK
+> up
+> until the point you need to have ,'s in the field as this is the tag
+> separator character which is the case for a number of the drive
+> parameters. Fix this by making drive a parameter to the common helper
+> function.
+>=20
+> Fixes: 267fe57c23 (tests: add tuxrun baseline test to avocado)
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: David Woodhouse <dwmw2@infradead.org>
+
+
+Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
+
+Thanks! Now this works (and I should update the commit message)...
+
+
+=46rom 8b9e04d1c7c942f51b575b94fd280bd2353f76b6 Mon Sep 17 00:00:00 2001
+From: David Woodhouse <dwmw@amazon.co.uk>
+Date: Thu, 9 Mar 2023 17:34:44 +0000
+Subject: [PATCH] Boot KVM/Xen guest with tuxrun
+
+The drive tag doesn't work right, and drops extra args. And we're
+using a temporary kernel build.
+
+Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
 ---
- accel/tcg/cpu-exec-common.c | 3 +++
- accel/tcg/cpu-exec.c        | 4 ++--
- 2 files changed, 5 insertions(+), 2 deletions(-)
+ tests/avocado/tuxrun_baselines.py | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index c7bc8c6efa..e5847e9731 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -21,6 +21,7 @@
- #include "sysemu/cpus.h"
- #include "sysemu/tcg.h"
- #include "exec/exec-all.h"
-+#include "exec/plugin-gen.h"
- 
- bool tcg_allowed;
- 
-@@ -65,6 +66,8 @@ void cpu_loop_exit(CPUState *cpu)
- {
-     /* Undo the setting in cpu_tb_exec.  */
-     cpu->can_do_io = 1;
-+    /* Undo any setting in generated code. */
-+    plugin_gen_disable_mem_helpers();
-     siglongjmp(cpu->jmp_env, 1);
- }
- 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 56aaf58b9d..e8a48dbd93 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -39,6 +39,7 @@
- #include "exec/replay-core.h"
- #include "sysemu/tcg.h"
- #include "exec/helper-proto.h"
-+#include "exec/plugin-gen.h"
- #include "tb-jmp-cache.h"
- #include "tb-hash.h"
- #include "tb-context.h"
-@@ -459,6 +460,7 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
-     qemu_thread_jit_execute();
-     ret = tcg_qemu_tb_exec(env, tb_ptr);
-     cpu->can_do_io = 1;
-+    plugin_gen_disable_mem_helpers();
-     /*
-      * TODO: Delay swapping back to the read-write region of the TB
-      * until we actually need to modify the TB.  The read-only copy,
-@@ -526,7 +528,6 @@ static void cpu_exec_exit(CPUState *cpu)
-     if (cc->tcg_ops->cpu_exec_exit) {
-         cc->tcg_ops->cpu_exec_exit(cpu);
-     }
--    QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
- }
- 
- void cpu_exec_step_atomic(CPUState *cpu)
-@@ -1004,7 +1005,6 @@ cpu_exec_loop(CPUState *cpu, SyncClocks *sc)
- 
-             cpu_loop_exec_tb(cpu, tb, pc, &last_tb, &tb_exit);
- 
--            QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
-             /* Try to align the host and virtual clocks
-                if the guest is in advance */
-             align_clocks(sc, cpu);
--- 
-2.39.2
+diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_basel=
+ines.py
+index c3fb67f5dc..0abb77023d 100644
+--- a/tests/avocado/tuxrun_baselines.py
++++ b/tests/avocado/tuxrun_baselines.py
+@@ -83,7 +83,8 @@ def fetch_tuxrun_assets(self, dt=3DNone):
+         use the per-test tags to fetch details.
+         """
+         base_url =3D f"https://storage.tuxboot.com/{self.tuxboot}/"
+-        kernel_image =3D  self.fetch_asset(base_url + self.image)
++        #kernel_image =3D  self.fetch_asset(base_url + self.image)
++        kernel_image =3D self.fetch_asset('https://storage.tuxsuite.com/pu=
+blic/linaro/alex/builds/2MmnfXeo73oWy3oaJx1bxliw8z4/bzImage')
+         disk_image_zst =3D self.fetch_asset(base_url + "rootfs.ext4.zst")
+=20
+         cmd =3D f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs=
+.ext4"
+@@ -409,3 +410,17 @@ def test_x86_64(self):
+         :avocado: tags=3Dshutdown:nowait
+         """
+         self.common_tuxrun(drive=3D"driver=3Dide-hd,bus=3Dide.0,unit=3D0")
++
++    def test_x86_64_kvm_xen(self):
++        """
++        :avocado: tags=3Darch:x86_64
++        :avocado: tags=3Dmachine:q35
++        :avocado: tags=3Dcpu:Nehalem
++        :avocado: tags=3Dtuxboot:x86_64
++        :avocado: tags=3Dimage:bzImage
++        :avocado: tags=3Droot:xvda
++        :avocado: tags=3Dshutdown:nowait
++        """
++        self.require_accelerator("kvm")
++        self.vm.add_args("-accel", "kvm,xen-version=3D0x4000a,kernel-irqch=
+ip=3Dsplit")
++        self.common_tuxrun(drive=3D"driver=3Dxen-disk,vdev=3Dxvda")
+--=20
+2.34.1
+
+
+
+--=-XFDYvDNiOi8//2Obgha9
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Transfer-Encoding: base64
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
+ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
+EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
+FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
+aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
+EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
+VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
+aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
+ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
+QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
+rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
+ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
+U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
+DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
+BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
+dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
+BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
+QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
+CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
+xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
+IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
+kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
+eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
+KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
+1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
+OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
+x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
+5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
+DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
+VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
+UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
+MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
+ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
+oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
+SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
+xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
+RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
+bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
+NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
+KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
+5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
+C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
+gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
+VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
+MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
+by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
+b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
+BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
+QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
+c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
+AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
+qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
+v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
+Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
+tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
+Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
+YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
+ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
+IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
+ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
+GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
+h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
+9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
+P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
+2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
+BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
+7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
+lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
+lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
+AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
+Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
+FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
+BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
+cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
+aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
+LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
+BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
+cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
+Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
+lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
+WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
+hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
+IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
+dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
+NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
+xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMwMzEwMTEwNDAyWjAvBgkqhkiG9w0BCQQxIgQgnb/Rg2JA
+t8FD+4/WI/+/awk0Xi3wyIP6drayeJi01gYwgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
+A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
+dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
+DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
+MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
+Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCdA24zmCURq6GJY/5e5X6oXhdHajT1iWNZ
+S1XJ5Uj2zm0JKgYemfNXD9UJPkMVi/gPWJZX+QgLrS/4DbJWaZ+zKbjCo8y1+sJtXmOZM56cUHxL
+rki63Zwp01XzbWr9vaFCA3M/EDvCW6fZcLlVlNFpRgNvvrFeFjWuUXy2KEVlHE+Ykd/UHiwgIk6T
+1nHyPgTaPz1BMgM7w7Fsg2Ft81jllm32z6//QqIaZYKfyJOAe6RoAdsH4iSmLpE7m2QBHFPVsSWD
+CustnxBI1g02liOnehWqdD/Z0HVdByWHws4lF1Ze8dg6G7LU8j+0LL9gFymNP3ikg26DlM8QQbv8
+LhY6X79SSGfkGpM1SjcHn9A1k+/WcaZu+aWC8Y1dHTHmctzKuqsq9gJ+VfZWhfsCNv4h7La0J4ye
+SdH1dgLnBWeKR0XV0KxG+WqvbjLAA4VUB9QCGQ+Ub0T8/YRRW5M75REBLIEJdTl4+b3jnVyfRpFx
+PLkKstdILIEU6I6/7N83yJ7KHKL92IjAJka1mBN/zJVoDsy0Vkb1LuYqCvNTVi21LN6//8NW0Vql
+s8rVywnxFtkuzS9x6a+Zgs01/ptiEXKzA4ID8zuTzJin/KSr71sbDr9AY/8xeJ/upMOE6+ACpEc3
+XGfX6sOZDWLmZO7UYV7Y5WrHISARf/qR1CWbCHQUpQAAAAAAAA==
+
+
+--=-XFDYvDNiOi8//2Obgha9--

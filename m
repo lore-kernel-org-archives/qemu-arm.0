@@ -1,113 +1,117 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2178988ejc;
-        Fri, 10 Mar 2023 09:59:04 -0800 (PST)
-X-Received: by 2002:a05:6a20:c126:b0:cd:74aa:df55 with SMTP id bh38-20020a056a20c12600b000cd74aadf55mr21560708pzb.25.1678471144681;
-        Fri, 10 Mar 2023 09:59:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678471144; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2180147ejc;
+        Fri, 10 Mar 2023 10:00:24 -0800 (PST)
+X-Google-Smtp-Source: AK7set9JoWrN1shi4lVoDtIPJ1Lh6IR1iOCu3D0w3YCK/rB1KpBI+p8KYHJ+wMghFHQS6/5h40Ce
+X-Received: by 2002:a05:600c:3b04:b0:3e2:147f:ac16 with SMTP id m4-20020a05600c3b0400b003e2147fac16mr3624589wms.10.1678471224023;
+        Fri, 10 Mar 2023 10:00:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678471224; cv=none;
         d=google.com; s=arc-20160816;
-        b=olFgEatZsZUQjAvjF9uc+TcFPtAJeOO1ZKttulzhRIvu+KJaYY+dRlaSQka5IE6VHZ
-         tYHdYC676LS9/iiBUYpyYrM5RNgmCLbyraUdtXykshHXyAJcxl9wJVum1RlmXL1lQAAD
-         pMXp2qYAVv3SWspMScnhiULsz5myFzCqwUJog2K0ioXjk77OnDIgqT5vH+JMXMJMkQSM
-         Ht06IpkhWAXX9ze1Z8N2Pj37hYhiSn9kRFkFRh8PwxRxuncZCRzHPRP7OULe47FfnT5J
-         8j1cS7ObkPork54870+ZuRkfNKexJnYTI7sl4HXF2fAmolJJcCuDF5FSH9HZyLXW3pgC
-         JJeg==
+        b=nd2VjNBemixlmggfR0Ckfe6ti3d2B6BXa7KSmEzljiFI6/prTfNY+ApFvwvnSGRyNV
+         T44AON8OoizkvByGdXHmxvb7/EsPwjUy++j2CKGGLEERUobMq84SCqMrzba48Lntz+sV
+         n408qIQiHVqPsxjyEfG8yQ+5Ah3mQoLIiUegXTzi7rbDHArzPa2J9oqQUmj3st9rnpYW
+         j8re7v4NbNive9ozpWg4NtT27LU0c/eezl8mW82qchHvV/5coUypXUe1+yvZE0jnvNWr
+         OMpzQDlKDFpC0co/f9TGekuc57z2IPg8+5IB8y8W7o7KrMY6h65ViFu029XCtSi0zVev
+         +XUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=kIQjnojWqKH45Bp/4zcQWFEmnDrl7qLSAucD5qtgmTg=;
-        b=fAtXtb+SilxV5Wq1cgGUZ2wCc7WBlPwUCwMRiFTb6aw5JJZp5jjj3sFGjklX+/L8H7
-         6Oqohe5oKEgl+qddnoI0zOouz9PG4OhFa0AL+cb1ar361jp+UrcuwokYQcV06d7PTJIr
-         IjaZ/O0tvIBkLkZAp3ZQ0NnM0X6tgzvpX8rFYyBkAc7d42Mp7LTMJPVKUvMLs6oQHn+z
-         94otxRXmwW3lixipvlkYczOGizS7D99cUGXCNJSQ1KuO4Bl65XRgppW+hAvRgfP8hfRY
-         nTngW+Byze5QLGw4gxODWs+Dd9znRah9deTbFty0XAESZkrCuTNJp46D093uRPdIVVxj
-         /ZHw==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=E/saJCBwrEs1HH5uGjAvb60G8XbPyPe24BP9OJOZZIA=;
+        b=cJNGEQEdC3E2o1TJ/SXJ1B9HpnSHEAiHM0XICvpLHvYg/3rhUItsnukXggk+xSVcuB
+         QZFwgcYVdhZDFhP9gF4Vquwvm4ZLxMgSr8v/ehXE6y+7xTHowARuUJBdqQGNz7vgrndV
+         5+5BF15vD1yzf5gMs+kRv0mRFBtZFFOTfRtkXGymCC/rNrf+ESEWrSWtxgJZq9OneNPo
+         t40visaBAq2Lo+a/d9pfztfkcGSK+PRX9KL14bwFszIBp5AFLdu5lj8XVuzvxRUXo1OF
+         E65JASYAo0dwhhqxy2NY4ZIv3TeSXnLxBV8vxHK9PRwqCpzbOCFzN/Sc2aut5XZExtPo
+         8smw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W3zZn5H9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i62-20020a625441000000b005a91ddba759sor148019pfb.5.2023.03.10.09.59.04
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 Mar 2023 09:59:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JcETQc7O;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id q13-20020a05600c46cd00b003eb01dc046bsi502216wmo.124.2023.03.10.10.00.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Mar 2023 10:00:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W3zZn5H9;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678471144;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=kIQjnojWqKH45Bp/4zcQWFEmnDrl7qLSAucD5qtgmTg=;
-        b=W3zZn5H93npBJj7aD3kcbeyEKs724K94ENr/GpXylXdh2nDGDl72J9eAHXPfbvw8i/
-         zh26rqIMC/SXLFpQXeM/Cg98S8wZhYu8RWr/P44tkgtWBG2OUzo7ZJK7wrLTGTqMlhiL
-         MGpNuNVLeNLJx+rt0ZvnDaB2gpAiLvPITSRmYrAS7fUsfDHi5U0OLNQ1JYDndMdQr7yS
-         1MPRXg8Iqum6/KD5Z7uDXMElAx71SXmhLzVOl0yMffNWe5Vz48DJ1l49ykkaasg/Ftbz
-         vSy6D8qFSGb6g8T4mKlBSIoTGMGB75N2coBtTvCDpauArQlJM3E2Ta2RipY7kG99vpfG
-         XGCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678471144;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=kIQjnojWqKH45Bp/4zcQWFEmnDrl7qLSAucD5qtgmTg=;
-        b=wHk7Nl6vD41r4zOgwezcyidhn4BbI26YDRWQ/b8lsojaMxkua0R/UAo1RjgHzF/TdH
-         o5viE6Oq4KVvUHy1ACoM1aBDiM7BnkhKQijpGksUZPjv5ZMG4HDosWjxix9jsROoiQxK
-         iBGnQv1WlRPPNhKqkCQqxwgpZDyMsS1dpSzF9DTyZwuHqTzspbDPaJ7PMAqAJ4ipGEIp
-         00F49kzmot4OjEGk7HIvgO8HPkmUVUIdNRQmpPMVPJeBgAXZh5nTRofS8+7eQwBeDpHZ
-         mnIfMn4V0ccaKqNbQNPtZ+HKZE/IedA71sF9IiA+fjatEKJ9HfY14i+FO/Y9RaomsFa5
-         BgYQ==
-X-Gm-Message-State: AO0yUKUxEycv8Zat5Gj6GzL0GwCUe0gUkcRgJvJjwuazmW5huaL12qk2
-	5O0Whvgaepa9EBMmbH9rMqfRMZBuuxAVnAaSQdMdWQ==
-X-Google-Smtp-Source: AK7set+McK1RPe3GpBWu3P7MFEwQKjsLDWG7Oa1cAEE/O5XaEGzDSYcoeFxsRg7zC9IZ0s73C10b/g==
-X-Received: by 2002:a62:844c:0:b0:5db:db1c:37f9 with SMTP id k73-20020a62844c000000b005dbdb1c37f9mr27032665pfd.10.1678471144160;
-        Fri, 10 Mar 2023 09:59:04 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:154a:9f01:cc1c:ced1:1ec5:bd62? ([2602:ae:154a:9f01:cc1c:ced1:1ec5:bd62])
-        by smtp.gmail.com with ESMTPSA id h4-20020a62b404000000b00592591d1634sm113723pfn.97.2023.03.10.09.59.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Mar 2023 09:59:03 -0800 (PST)
-Message-ID: <10c75176-64b7-f35f-b035-c2a69801e0f2@linaro.org>
-Date: Fri, 10 Mar 2023 09:59:01 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 07/11] tcg: Clear plugin_mem_cbs on TB exit
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JcETQc7O;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 5CBED20664;
+	Fri, 10 Mar 2023 18:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1678471223; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=E/saJCBwrEs1HH5uGjAvb60G8XbPyPe24BP9OJOZZIA=;
+	b=JcETQc7O7fdvlqWc5Ru4K+2HHB/8wjclWifQ88JAzO1lYpYgBQQOJHJ82vEB/X1ZQRklAw
+	En6sKg9j7hYoqZ4mnXtwZYmFp+7e7y7kthIXmuweh5HAOUcvgeyc66xQ6QxumYaCjjfoZ9
+	hgc3Rle+br5INJNf1V8rPi5O/vR9pkw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1678471223;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=E/saJCBwrEs1HH5uGjAvb60G8XbPyPe24BP9OJOZZIA=;
+	b=ODlDWOLKWMbKvaGZNwmuneSzxcpt4reANqKfPk3nvTmYiHc7svScIVWRH1Yo69SA7IdOzY
+	wDsIfVG1x6LRhzBg==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id DA45E134F7;
+	Fri, 10 Mar 2023 18:00:22 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id GFYQKDZwC2SAUAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 10 Mar 2023 18:00:22 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Peter Maydell <peter.maydell@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, Wainer dos
+ Santos Moschetta <wainersm@redhat.com>, Richard Henderson
+ <richard.henderson@linaro.org>, qemu-arm@nongnu.org, Peter Xu
+ <peterx@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Cleber
+ Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
+Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
+In-Reply-To: <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
 References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-8-alex.bennee@linaro.org>
- <97cbb69d-eae9-e7e9-cabd-afdba875aed8@linaro.org>
- <766cc218-dcbc-b6bf-d172-bb4d4ad0b7e2@linaro.org> <87wn3olcbw.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <87wn3olcbw.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: ARIiXly9YTHG
+ <20230310103123.2118519-10-alex.bennee@linaro.org>
+ <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
+Date: Fri, 10 Mar 2023 15:00:20 -0300
+Message-ID: <87wn3ocwqz.fsf@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: UQEvF+IMkfxN
 
-On 3/10/23 09:56, Alex Bennée wrote:
-> 
-> Richard Henderson <richard.henderson@linaro.org> writes:
-> 
->> On 3/10/23 09:39, Richard Henderson wrote:
->>> +    /* Undo any setting in generated code. */
->>> +    plugin_gen_disable_mem_helpers();
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On Fri, 10 Mar 2023 at 10:31, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
 >>
->> Oh!  And this is the wrong function.  Should be
->> qemu_plugin_disable_mem_helpers.
-> 
-> Did I miss a newer version of the patches?
+>> You need a very new gdb to be able to run with pauth support otherwise
+>> your likely to hit asserts and aborts. Disable pauth for now until we
+>> can properly probe support in gdb.
+>>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> If it makes gdb fall over, then shouldn't we be disabling
+> the pauth gdbstub stuff entirely ? Otherwise even if our
+> tests are fine our users will not be...
+>
 
-No, I never posted one, since you already said you picked it up with the requested changes.
-
-
-r~
+Have you seem my message on IRC about changing the feature name in the
+XML? I think the issue is that we're putting the .xml in a "namespace"
+where GDB expects to only find stuff which it has code to
+support. Changing from "org.gnu.gdb.aarch64.pauth" to
+"org.qemu.aarch64.pauth" made it stop crashing and I can read the
+registers just fine.

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id s11-20020a5d4ecb000000b002c55efa9cbesm1779916wrv.39.2023.03.10.02.31.24
+        by smtp.gmail.com with ESMTPSA id v16-20020a7bcb50000000b003eb192787bfsm1715958wmj.25.2023.03.10.02.31.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 10 Mar 2023 02:31:25 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 859DA1FFC0;
+	by zen.linaroharston (Postfix) with ESMTP id 542941FFB7;
 	Fri, 10 Mar 2023 10:31:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -20,37 +20,43 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 10/11] include/exec: fix kerneldoc definition
-Date: Fri, 10 Mar 2023 10:31:22 +0000
-Message-Id: <20230310103123.2118519-11-alex.bennee@linaro.org>
+Subject: [PATCH 08/11] tests/tcg: add some help output for running individual tests
+Date: Fri, 10 Mar 2023 10:31:20 +0000
+Message-Id: <20230310103123.2118519-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230310103123.2118519-1-alex.bennee@linaro.org>
 References: <20230310103123.2118519-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rCBqU7DacqDZ
+X-TUID: sErG0sEuujRI
 
-The kerneldoc processor complains about the mismatched variable name.
-Fix it.
+So you can do:
+
+  cd tests/tcg/aarch64-linux-user
+  make -f ../Makefile.target help
+
+To see the list of tests. You can then run each one individually.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/exec/memory.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/Makefile.target | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 6fa0b071f0..15ade918ba 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
-  *
-  * @notifier: the notifier to be notified
-  */
--void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
-+void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index a3b0aaf8af..8318caf924 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -201,3 +201,10 @@ clean:
  
- 
- /**
+ distclean:
+ 	rm -f config-cc.mak config-target.mak ../config-$(TARGET).mak
++
++.PHONY: help
++help:
++	@echo "TCG tests help $(TARGET_NAME)"
++	@echo "Built with $(CC)"
++	@echo "Available tests:"
++	@$(foreach t,$(RUN_TESTS),echo "  $t";)
 -- 
 2.39.2

@@ -1,119 +1,126 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1905379ejc;
-        Fri, 10 Mar 2023 05:28:52 -0800 (PST)
-X-Google-Smtp-Source: AK7set+p6Rba6+59O9gmmoM6ArUy2x+zagDgTNhh0lxdfxDvDcW1J5TTcIOULPJPx9bVXO2PFbQU
-X-Received: by 2002:a05:600c:5493:b0:3eb:39e7:3607 with SMTP id iv19-20020a05600c549300b003eb39e73607mr2808340wmb.4.1678454932621;
-        Fri, 10 Mar 2023 05:28:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678454932; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1923891ejc;
+        Fri, 10 Mar 2023 05:49:33 -0800 (PST)
+X-Google-Smtp-Source: AK7set8tjfV7OS6BntzuKC/fc6UUFxwM6g9sE30Wt7ldQP+ppdTvAAZc2z8/kTA2Qjp9e/wSM3ro
+X-Received: by 2002:ac8:7dd6:0:b0:3ba:3ac7:ccf1 with SMTP id c22-20020ac87dd6000000b003ba3ac7ccf1mr42380727qte.58.1678456173004;
+        Fri, 10 Mar 2023 05:49:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678456172; cv=none;
         d=google.com; s=arc-20160816;
-        b=d52+8PtH/w9nuoQ3vJWxlRCTuhnvZoSYoMlxbC0sI50vU4+N5OIic46ZrIRJ7d0iS3
-         vEQq3a9iqyIEQdWeujRmesghfGopcYCWHxsAbiGFY0HNqfJ1hiT9hYyq6gBOO54/beRX
-         gNcZQLbsJpEtR2CLHbBxQ4H1eB/gJwreklW7niOXhyzTh8ZLsk9kkGsqh42PzIWggCBN
-         BWV/i0PQm7I3bVj782AkE8M2l/UKelh3rZ+/BC4NzEHo8sREKawGr7RaUJXxjkZtPxHw
-         AvVmk9bg7PUTBWWsuWR9zQ7/sWnyd3C2KTLEhFkBs03s4m/DTv7tosqhog3W4fUwdIYI
-         m5Ng==
+        b=XcSbuBckaelR8ulZ2TSIz04gFnNtQL0M7AhO69QApKt5SnoMkscO/sT6FQfk3YdKcE
+         NV6t9F4k/fP4drW9LOgIGxQhN7+h08EdOiDzst3NPJiX6aizEfVjHGQuj/Eg65KHbPEf
+         huy5TlWYnMiLNPVemXuLh5BRmwM2FxW8jhjZOjQ3JsXMYLJ6mCuTHNrdwKE7M6XFYShQ
+         CHZV3vrshVc4icbQj7OIVMGrZX0CKPLI7nry6FHkKGh5vFtryQL8dlCI0CX6aRJT6SKp
+         oVSQfJ4JgtVADKz8BBxJlNQ+D5JFCcnjbzfncV66U1s6GFLz+SOoCW2NNwHdSO6oa48a
+         OloQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=2iPqXMUfIsAEqeZcV1a6ZwbIfCpqSP8BIPD4RI9e2so=;
-        b=hSS2x7TA7EsciysGKxPG/OOJd4SBVGvKAK0zRgyvLwfdCOHFsuN54B2hIyRgq41S8R
-         /cWSFElfn/8dfIbvTJWwqWDxIDhNmfbDvfRBfitziicWa41cMT2MiyTgcH9YpWNVfaMF
-         Nxk73QfNWCFVsLZUMimlb9rgrfkgaK2LbDPFbm4tj01fVVTcvJ6/9VtmkUo+js2XJMEa
-         QXt7UICuuZPWgmimbb8GpxFov7u1LsJtQmeiNMfiy1sjZgX/bJhZYfRPSABPEwa3GM/e
-         brtpAzmfN16dK4HqBlyMwNeBve3WIbMfOhZC3NXfrvh808JVuF46YiddtHCg1IDTxhp6
-         AqSA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=oi9DJgYRGOxRK2boYk9yZZ1jBscShlzbluATUYS2c6k=;
+        b=wDhqWoFWWMfITe6Y2GFwnvGJsQ7sbIFPc0E9f4q400QXsRO8JDSYQ7rH2MeVx+8XSg
+         J39o110mpFUwLZIHr2aCPqgTvk7GMJIjOiYR772uaxzaOlpEbwaKnrSRkqaHFrUV0bU5
+         A/uQIi5Lwf1KyjLEUb4AEpogbAAy/GKAS+adVxWA58CLS79whJhq4NifrJ5lWbrKiNap
+         hKH/1PgXATopxtRtdUwe5bWvoUPA6t82cOXF92l7j8PaH0s/MytN6KfNpeZ4TZL3u+XA
+         Xmsap/J15XEXmpQcbanu3T2+0ZLY7fAgMRKrEYegpi8EkBU2XmX8ej8p92dIO2XCttB0
+         0uDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=YHhYI9uG;
-       dkim=neutral (no key) header.i=@suse.de header.b=D9fy2D2z;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id m13-20020a5d6a0d000000b002c5584b8e9dsi2092364wru.740.2023.03.10.05.28.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 05:28:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s202-20020a37a9d3000000b00739136cc027si1355803qke.358.2023.03.10.05.49.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 10 Mar 2023 05:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=YHhYI9uG;
-       dkim=neutral (no key) header.i=@suse.de header.b=D9fy2D2z;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 0E87420653;
-	Fri, 10 Mar 2023 13:28:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678454932; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2iPqXMUfIsAEqeZcV1a6ZwbIfCpqSP8BIPD4RI9e2so=;
-	b=YHhYI9uG371mP1QYPcJ9xVB08b01zdzwhEZqgg3fLAv3e3tvdy5ufIKGmWJ5r31OjUsitA
-	krGRXHUqSeSc7L+l6837xTH4wvAvGP8ACglv87nc5f8/jGjU3QQvv7Exz6cfOtJ/TqJeKN
-	x2qOxPBR8wmE/4vgPYJFbIGuAs8dVSM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678454932;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2iPqXMUfIsAEqeZcV1a6ZwbIfCpqSP8BIPD4RI9e2so=;
-	b=D9fy2D2zhNLX58Ton9MXA/MrMybNuLBAIFruMMIiOSyO5V80eQ+MtbYVrl4sDJWzLDciQj
-	gI24rWNWBnIjo/Dw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 90BAC134F7;
-	Fri, 10 Mar 2023 13:28:51 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id vSWJFpMwC2TxQAAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 10 Mar 2023 13:28:51 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH v8 03/11] target/arm: Move aa32_max_features out of
- cpu_tcg.c
-In-Reply-To: <3f660759-b37a-6b9e-3eaa-1f879db5ed48@linaro.org>
-References: <20230309201434.10831-1-farosas@suse.de>
- <20230309201434.10831-4-farosas@suse.de>
- <3f660759-b37a-6b9e-3eaa-1f879db5ed48@linaro.org>
-Date: Fri, 10 Mar 2023 10:28:49 -0300
-Message-ID: <87a60kenvy.fsf@suse.de>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pad7R-0007IP-CK; Fri, 10 Mar 2023 08:49:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1pad7P-0007Hn-RP; Fri, 10 Mar 2023 08:49:11 -0500
+Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1pad7N-00068h-G1; Fri, 10 Mar 2023 08:49:11 -0500
+Received: from [0.0.0.0] (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com
+ [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id 8CA486080292;
+ Fri, 10 Mar 2023 14:48:57 +0100 (CET)
+Message-ID: <44c6459b-f17f-8cb7-ba2d-a9187f32cde0@csgraf.de>
+Date: Fri, 10 Mar 2023 14:48:56 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: H0UrpnIcWPbw
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.8.0
+Subject: Re: [PATCH 0/2] hw/intc/arm_gicv3: Bump ITT entry size to 16
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Shashi Mallela <shashi.mallela@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>, Neil Armstrong <narmstrong@baylibre.com>
+References: <20221223085047.94832-1-agraf@csgraf.de>
+ <CAFEAcA-1PUCFZPAF25uy1VqjgciKXiYmfW-89q6QqKhf1io7Lw@mail.gmail.com>
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <CAFEAcA-1PUCFZPAF25uy1VqjgciKXiYmfW-89q6QqKhf1io7Lw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: v0A0ADUrLqwk
 
-Richard Henderson <richard.henderson@linaro.org> writes:
 
-> On 3/9/23 12:14, Fabiano Rosas wrote:
->> In preparation to moving the cpu_tcg.c code into a 32-bit, tcg-only
->> file, move the aa32_max_features function which is shared between
->> 32/64/tcg/non-tcg into cpu.c.
->> 
->> Signed-off-by: Fabiano Rosas <farosas@suse.de>
->> ---
->>   target/arm/cpu.c     | 69 ++++++++++++++++++++++++++++++++++++++++++++
->>   target/arm/cpu_tcg.c | 69 --------------------------------------------
->>   2 files changed, 69 insertions(+), 69 deletions(-)
->
-> I'm not keen on this, as it's completely tcg.
->
-> Perhaps it would be better to let -cpu max devolve to aarch64_a57_initfn when tcg is not 
-> available (i.e. qtest_enabled())?  Move all of the tcg stuff out of aarch64_max_initfn 
-> into tcg/cpu64.c.
->
-> Thoughts?
->
+On 03.01.23 18:41, Peter Maydell wrote:
+> On Fri, 23 Dec 2022 at 08:50, Alexander Graf <agraf@csgraf.de> wrote:
+>> While trying to make Windows work with GICv3 emulation, I stumbled over
+>> the fact that it only supports ITT entry sizes that are power of 2 sized.
+>>
+>> While the spec allows arbitrary sizes, in practice hardware will always
+>> expose power of 2 sizes and so this limitation is not really a problem
+>> in real world scenarios. However, we only expose a 12 byte ITT entry size
+>> which makes Windows blue screen on boot.
+>>
+>> The easy way to get around that problem is to bump the size to 16. That
+>> is a power of 2, basically is what hardware would expose given the amount
+>> of bits we need per entry and doesn't break any existing scenarios. To
+>> play it safe, this patch set only bumps them on newer machine types.
+> This is a Windows bug and should IMHO be fixed in that guest OS.
+> Changing the ITT entry size of QEMU's implementation introduces
+> an unnecessary incompatibility in migration and wastes memory
+> (we're already a bit unnecessarily profligate with ITT entries
+> compared to real hardware).
 
-That's what I had in v6. I would prefer it that way as well. Perhaps I
-was too quick in changing it.
 
-https://lore.kernel.org/all/20230217201150.22032-20-farosas@suse.de/
+Follow-up on this: Microsoft has fixed the issue in Windows. That won't 
+make older versions work, but the current should be fine with GICv3:
 
-Unless anyone says otherwise, I'll revert back to that state.
+https://fosstodon.org/@itanium/109909281184181276
+
+
+Alex
+
+

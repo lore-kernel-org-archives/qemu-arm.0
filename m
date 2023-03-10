@@ -1,83 +1,45 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x6-20020adff646000000b002c5694aef92sm436473wrp.21.2023.03.10.10.20.07
+        by smtp.gmail.com with ESMTPSA id q11-20020a05600c46cb00b003ebf73acf9asm830403wmo.3.2023.03.10.09.56.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 10:20:07 -0800 (PST)
+        Fri, 10 Mar 2023 09:56:36 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 20B8C1FFB7;
-	Fri, 10 Mar 2023 18:20:07 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 9CD461FFB7;
+	Fri, 10 Mar 2023 17:56:35 +0000 (GMT)
 References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-10-alex.bennee@linaro.org>
- <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
- <87wn3ocwqz.fsf@suse.de>
+ <20230310103123.2118519-8-alex.bennee@linaro.org>
+ <97cbb69d-eae9-e7e9-cabd-afdba875aed8@linaro.org>
+ <766cc218-dcbc-b6bf-d172-bb4d4ad0b7e2@linaro.org>
 User-agent: mu4e 1.9.21; emacs 29.0.60
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, David
- Hildenbrand <david@redhat.com>, Wainer dos  Santos Moschetta
- <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm@nongnu.org, Peter Xu <peterx@redhat.com>, Philippe =?utf-8?Q?Mat?=
- =?utf-8?Q?hieu-Daud=C3=A9?=
- <philmd@linaro.org>, Cleber  Rosa <crosa@redhat.com>, Thomas Huth
- <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal
- <bleal@redhat.com>, gdb <gdb@gnu.org>, Thiago Jung Bauermann
- <thiago.bauermann@linaro.org>, Omair Javaid <omair.javaid@linaro.org>
-Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
-Date: Fri, 10 Mar 2023 18:14:12 +0000
-In-reply-to: <87wn3ocwqz.fsf@suse.de>
-Message-ID: <87sfeclb8o.fsf@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, Wainer dos
+ Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org, Peter Xu
+ <peterx@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Peter
+ Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, Thomas
+ Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal
+ <bleal@redhat.com>
+Subject: Re: [PATCH 07/11] tcg: Clear plugin_mem_cbs on TB exit
+Date: Fri, 10 Mar 2023 17:56:22 +0000
+In-reply-to: <766cc218-dcbc-b6bf-d172-bb4d4ad0b7e2@linaro.org>
+Message-ID: <87wn3olcbw.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: STvsUkN7FaAX
+X-TUID: /8cKUrl043Ju
 
 
-(adding some more gdb types to CC)
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-Fabiano Rosas <farosas@suse.de> writes:
-
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> On 3/10/23 09:39, Richard Henderson wrote:
+>> +=C2=A0=C2=A0=C2=A0 /* Undo any setting in generated code. */
+>> +=C2=A0=C2=A0=C2=A0 plugin_gen_disable_mem_helpers();
 >
->> On Fri, 10 Mar 2023 at 10:31, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->>>
->>> You need a very new gdb to be able to run with pauth support otherwise
->>> your likely to hit asserts and aborts. Disable pauth for now until we
->>> can properly probe support in gdb.
->>>
->>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>
->> If it makes gdb fall over, then shouldn't we be disabling
->> the pauth gdbstub stuff entirely ? Otherwise even if our
->> tests are fine our users will not be...
->>
->
-> Have you seem my message on IRC about changing the feature name in the
-> XML? I think the issue is that we're putting the .xml in a "namespace"
-> where GDB expects to only find stuff which it has code to
-> support. Changing from "org.gnu.gdb.aarch64.pauth" to
-> "org.qemu.aarch64.pauth" made it stop crashing and I can read the
-> registers just fine.
+> Oh!  And this is the wrong function.  Should be
+> qemu_plugin_disable_mem_helpers.
 
-That would work, although I would prefer to probe support so we can use
-the official namespace. We went through something similar with SVE
-until:
-
-  797920b952 (target/arm: use official org.gnu.gdb.aarch64.sve layout for r=
-egisters)
-
-which required:
-
-  b1863ccc95 (configure: gate our use of GDB to 8.3.1 or above)
-
-Since then we've introduced:
-
- ./scripts/probe-gdb-support.py
-
-which given the runes to check for pauth support in gdb could expose a
-symbol and we get the best of both worlds. Of course if this keeps
-happening we could throw up our hands and just use custom XML for all
-the extra register sets.
+Did I miss a newer version of the patches?
 
 --=20
 Alex Benn=C3=A9e

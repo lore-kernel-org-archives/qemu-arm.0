@@ -1,82 +1,82 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1741513ejc;
-        Fri, 10 Mar 2023 02:08:46 -0800 (PST)
-X-Google-Smtp-Source: AK7set+Iol+iislW+VINfUIy1oFdoxs9KbMKBC9Le7bEnW0iZ1wbecMu2FJDg30H+mSWkza0H+w/
-X-Received: by 2002:ac8:5803:0:b0:3bf:cf23:7e21 with SMTP id g3-20020ac85803000000b003bfcf237e21mr42391328qtg.48.1678442926762;
-        Fri, 10 Mar 2023 02:08:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678442926; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1745361ejc;
+        Fri, 10 Mar 2023 02:13:45 -0800 (PST)
+X-Google-Smtp-Source: AK7set9kLJaW468z1emfjsey1sRdM0t0Gy4a3hpTf7wGpYTi0n9EgRW7R2jx2b4SuohLubshTPdA
+X-Received: by 2002:ac8:5d88:0:b0:3bf:cc89:9c8f with SMTP id d8-20020ac85d88000000b003bfcc899c8fmr42346808qtx.68.1678443225086;
+        Fri, 10 Mar 2023 02:13:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678443225; cv=none;
         d=google.com; s=arc-20160816;
-        b=W5txQHneQWhNtLsZU328FuacsthIRpFBREvcp/hooqvTU7A+Wz5GZF4XEiepF0k+k/
-         HjYllzTLgcXKmzzrtopKdQuiTyeyWgMnRloUMfoGRmqDoa+8MvKBj1Nn/IK4yVxjEULr
-         mksb9xVije9ixGzPHri1E8BaYGJzq6wL+8ESR+rXQp1D1M+356FIixg/deJEudJsJCaV
-         4ftgRTvir4pA4IUqgLMHvjeeie+l3nqcrKaf4UHuT34HmSO0phixPZgbXG74OT4HwMG+
-         J3aIOZtqTtKuupFO54aFfA1VLO+gfyfgtiqv4QGTqFQgClvbOG2T+YXqw9j4aAV0TboN
-         uwjg==
+        b=yqDoR8z5xTub2v7amk2hovIVDTmF0xY7SdIBOTxqyuuMe6eOja7hp4rW76XXPJCy7f
+         6yYP/3Zk7fui142K8G7txPTqgdTQaOzKfyYBSrlrOhKQL3DCz8duD5k4yAqzTg3wTOI2
+         8hjs/4XhgiMsnFYWuJ9lxi69C5FzgPVKdMJ9vCHxFA6cZmbB4sG2JDfxm26GKvp2CIV7
+         9CkZ2MSZAfOQVzAHhX0d5QJCLWrwuzorLTTkdM92AEWXOnXe1Sq1neoahqtndjkU8At/
+         ClPc+uW+0b8uxmK7MS5cO0t221oxF0gt05SOEYzjoApIvEYr1Ibz7TPfCSVEoI4wu8+K
+         iAWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-disposition:in-reply-to:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=RUpaRZtvDE6dumiX9MCrj7jilPejIULl9NYGQmI8ieI=;
-        b=oT9XsKpLZVRMm0rWqgQnWJa3CvHmnouZB+x8YqCKjS6pwox4lu4HwnegIfx1iEnnsI
-         3QvC0j1xw/I9Xq+Tx5tcor95lqEQ2s7Es9VQXHORSFXKE7WzhJCzXwxnlNFTSpWgE8ny
-         YW/BcFptnNWVj14wgBBQKEgSjR9EocZeCC9aQr1jTE3vG12c9rPrOOpULu7UoOJffm5c
-         CQWErpttGeKtpcnoVpVY9kZC6TrwP+9QlCXAStPpOkuxdHdEzJOgjF5TpNvlAtr5uFPf
-         g58/cs6JSum6+glxi6YVfqvIP6NXFBotVjqxvM9mslCfPgSkXa9nemO92BpPJKHbKa6G
-         7w9A==
+        bh=c6dyfBbHrQmIFXX548DwdbrYMJG/HPnUsCZBuj1Qkiw=;
+        b=PdHJOtAM/tqWRx1DGCKYM2sceZ63qQSa2Ne6kv4/GXNciLUzyLrjUli31laFH3BUe8
+         vjNalfPpGw1O9DNceY/UsLZHJqWqrvcsgOjoZ84up9Le/QfbU4dPm1Kl6UbdVLVi/lE3
+         L1R8+S7/WlFp3eiAB3cZ6sZ9dn38e2SgSBltQTDRAqIdPf+BJGrEY+3blC9MEZa7c/7Q
+         eXx9JuT3iyDPIA9KpA1wM0/nM55//o9H2GeoVW6v83pROaguLfNAYm+8ti909Sss5lua
+         /k9UzyX3p3Y+EX8jlOpqgdrMA6PSCLYuyFV7QrAbmZ7+LIG5Kk/KM1P0+vZFb2JA1vQo
+         po3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D31w49ks;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GnHxF3U3;
        spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <mst@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id g12-20020ac87d0c000000b003bfc2921bdcsi1280322qtb.123.2023.03.10.02.08.46
+        by mx.google.com with ESMTPS id m15-20020ac85b0f000000b003ba393221ddsi1258810qtw.362.2023.03.10.02.13.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 02:08:46 -0800 (PST)
+        Fri, 10 Mar 2023 02:13:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D31w49ks;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GnHxF3U3;
        spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678442926;
+	s=mimecast20190719; t=1678443224;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=RUpaRZtvDE6dumiX9MCrj7jilPejIULl9NYGQmI8ieI=;
-	b=D31w49kstUENrdtgowT44c41GdS/Fe8IVrmHax8X/tvo9oMdIq8m72lV6eQsFXR2A87IDT
-	ed5nY6jVE6xDDMtP7460JqPjC9Dd9j4vDf10EmgW5bM08BiThh62qjZZhyUFZV5Ma9Cx48
-	1bmAAO7YiWqtNMTa98fX8RlOLbUUgyQ=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=c6dyfBbHrQmIFXX548DwdbrYMJG/HPnUsCZBuj1Qkiw=;
+	b=GnHxF3U3rzUKavQu/HtP2azHW+OBnLKRgbHVxcjngb5RWOhCYAZPlw078wcl63k/NkSsHd
+	KqPK55GyqIl37UlRzWIDuLgRKL6Sr1qk6RmUZt14eh3nu+R/JV6sBj769EFqkT3eUUWuH9
+	TflQ9TMdWcrerw2UeM41m7OPzxRw2VQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-541-PZlGf7HyNsCXu_dLKauamA-1; Fri, 10 Mar 2023 05:08:45 -0500
-X-MC-Unique: PZlGf7HyNsCXu_dLKauamA-1
-Received: by mail-wr1-f72.google.com with SMTP id r14-20020a0560001b8e00b002cdb76f7e80so961292wru.19
-        for <alex.bennee@linaro.org>; Fri, 10 Mar 2023 02:08:44 -0800 (PST)
+ us-mta-263-RAxDuDPtOBSo6VIAETMBkQ-1; Fri, 10 Mar 2023 05:13:43 -0500
+X-MC-Unique: RAxDuDPtOBSo6VIAETMBkQ-1
+Received: by mail-wm1-f71.google.com with SMTP id j6-20020a05600c1c0600b003eaf882cb85so1785303wms.9
+        for <alex.bennee@linaro.org>; Fri, 10 Mar 2023 02:13:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678442923;
+        d=1e100.net; s=20210112; t=1678443222;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RUpaRZtvDE6dumiX9MCrj7jilPejIULl9NYGQmI8ieI=;
-        b=3xbiwnpQIAmy2YaMRpcF/XiD9Xm23Te2EALkcLKa69uqGToQROEvMDFML9jRS6IY3F
-         eUnTiJJnh6H2lXp2PKAoV0NkoNMEHE9r02qc/YjWH3CjXzXdzx6ltGyD8ffMgUWHbVwD
-         WzVyhpK/WWLZ3xhlc/0J5GKGYtk/WgdsPoKU7+i1FENHnsixRso4BvI44wASC8/OFwtw
-         2Kn092XBD8wrKAurEHmOg0irvuIoTPxp8sbbuHrSXD0ghnpLDSlte10UaqbC7wIOG+zA
-         f15DOSv1oAbsqVqA2/A5pjNLlu1Cxy37GyWqmHUuRa+qRyftaCFKirWIlaYhjcMAdjM/
-         zd9Q==
-X-Gm-Message-State: AO0yUKV3QSv+GxdgJs+Uy4UgF4WLwwnhCvNfhq6rFjI9WH42oFtvKbVx
-	H8LW3H1dHmWnZmpu7Vh6QxPbehDBf6SukobtEwCwPADdg25voEoywRb+tvYG4+x2NpTFhXLJPzO
-	l0JGrWrMsobYFgZrNxdlfMUfj
-X-Received: by 2002:a05:600c:4f08:b0:3ea:e554:7815 with SMTP id l8-20020a05600c4f0800b003eae5547815mr2083791wmq.9.1678442923394;
-        Fri, 10 Mar 2023 02:08:43 -0800 (PST)
-X-Received: by 2002:a05:600c:4f08:b0:3ea:e554:7815 with SMTP id l8-20020a05600c4f0800b003eae5547815mr2083767wmq.9.1678442923057;
-        Fri, 10 Mar 2023 02:08:43 -0800 (PST)
+        bh=c6dyfBbHrQmIFXX548DwdbrYMJG/HPnUsCZBuj1Qkiw=;
+        b=fn3yJebvpgsUbzgwoubGZ/fDArsNs/FVhIwB92Lho0CuDlxxtE27WLoTB7Argajqkv
+         qy8lFfF0CYgv2eGKzA9zBZGuaQY7/6KeJLhDxBrh2AUaiR9pghepSPmznKhrYLGeKKcV
+         zAAjplGgFpr0bzJfaWi4xW5a/X/HVRdQ6Hpj5uP2F9ZVvNGfuC4IDficgsppaG+WQ0mt
+         bEBGEYNfv+IOsTV5vf6SubyUrTmyiAt3/2lAIskJkBI8ytl2/AmndJr8eL5INyQo2RkK
+         ep/EcfYpxLtw9zdXbksBpPCFTZ/g7sCvYesJDGFwTMA/e6s+4K9Jeu9e1r0lEM5wbFXX
+         lLFg==
+X-Gm-Message-State: AO0yUKV0e3vJ/jOaG0OMkZCdCpFfb6fa6VPJaNS+YKYR2mzWNWLBvHMC
+	yJAUshsoE8fgErx8vTHzcA99/yqC4rQSqH1Up9IXjBtpJdDBScaHI9t7Qhf5hCUXHENTJZeFIJk
+	r49mHcdLMzrQH49BM
+X-Received: by 2002:a1c:4b13:0:b0:3dc:16d2:ae5e with SMTP id y19-20020a1c4b13000000b003dc16d2ae5emr2070348wma.32.1678443222480;
+        Fri, 10 Mar 2023 02:13:42 -0800 (PST)
+X-Received: by 2002:a1c:4b13:0:b0:3dc:16d2:ae5e with SMTP id y19-20020a1c4b13000000b003dc16d2ae5emr2070327wma.32.1678443222179;
+        Fri, 10 Mar 2023 02:13:42 -0800 (PST)
 Return-Path: <mst@redhat.com>
 Received: from redhat.com ([2.52.9.88])
-        by smtp.gmail.com with ESMTPSA id l11-20020a05600c2ccb00b003e0015c8618sm2789642wmc.6.2023.03.10.02.08.40
+        by smtp.gmail.com with ESMTPSA id x20-20020a1c7c14000000b003eb5ce1b734sm1683520wmc.7.2023.03.10.02.13.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 02:08:42 -0800 (PST)
-Date: Fri, 10 Mar 2023 05:08:37 -0500
+        Fri, 10 Mar 2023 02:13:41 -0800 (PST)
+Date: Fri, 10 Mar 2023 05:13:37 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Fabiano Rosas <farosas@suse.de>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -94,7 +94,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Subject: Re: [PATCH v8 08/11] tests/qtest: Fix tests when no KVM or TCG are
  present
-Message-ID: <20230310050550-mutt-send-email-mst@kernel.org>
+Message-ID: <20230310050853-mutt-send-email-mst@kernel.org>
 References: <20230309201434.10831-1-farosas@suse.de>
  <20230309201434.10831-9-farosas@suse.de>
 MIME-Version: 1.0
@@ -103,7 +103,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-TUID: X1cjdCrLzOJz
+X-TUID: Dag3qqUc1h5A
 
 On Thu, Mar 09, 2023 at 05:14:31PM -0300, Fabiano Rosas wrote:
 > It is possible to have a build with both TCG and KVM disabled due to
@@ -123,8 +123,17 @@ On Thu, Mar 09, 2023 at 05:14:31PM -0300, Fabiano Rosas wrote:
 > Signed-off-by: Fabiano Rosas <farosas@suse.de>
 > Reviewed-by: Juan Quintela <quintela@redhat.com>
 
-I don't like it that we are hard-coding the list of accelerators
-like this. Make a wrapper?
+I don't like it that it's a pass not a skip.
+
+Also, if we are not testing acpi should we not
+skip building acpi?
+
+Also, a misconfigured qemu would previously be caught,
+now it will seem to pass tests.
+How about a special make check target that will just test
+xen things?
+
+
 
 > ---
 > This currently affects Arm, but will also affect x86 after the xenpvh
@@ -158,10 +167,6 @@ like this. Make a wrapper?
 > +    has_kvm = qtest_has_accel("kvm");
 > +    has_tcg = qtest_has_accel("tcg");
 > +
-
-why are you moving these? init at declaration time is
-generally cleaner.
-
 > +    if (!has_tcg && !has_kvm) {
 > +        return 0;
 > +    }
@@ -190,9 +195,6 @@ generally cleaner.
 > +    has_tcg = qtest_has_accel("tcg");
 > +    has_kvm = qtest_has_accel("kvm");
 > +
-
-and here why do we need them global?
-
 > +    if (!has_tcg && !has_kvm) {
 > +        return 0;
 > +    }
@@ -220,9 +222,6 @@ and here why do we need them global?
 > +    has_kvm = qtest_has_accel("kvm");
 > +    has_tcg = qtest_has_accel("tcg");
 > +
-
-same. why the move?
-
 > +    if (!has_tcg && !has_kvm) {
 > +        return 0;
 > +    }

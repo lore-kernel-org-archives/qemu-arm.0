@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d7-20020adffd87000000b002c59e001631sm1845103wrr.77.2023.03.10.02.31.24
+        by smtp.gmail.com with ESMTPSA id f21-20020a7bcc15000000b003e20a6fd604sm1675768wmh.4.2023.03.10.02.31.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 02:31:24 -0800 (PST)
+        Fri, 10 Mar 2023 02:31:25 -0800 (PST)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E448E1FFBC;
-	Fri, 10 Mar 2023 10:31:23 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 23A101FFBE;
+	Fri, 10 Mar 2023 10:31:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -20,64 +20,89 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH 04/11] scripts/ci: update gitlab-runner playbook to handle CentOS
-Date: Fri, 10 Mar 2023 10:31:16 +0000
-Message-Id: <20230310103123.2118519-5-alex.bennee@linaro.org>
+Subject: [PATCH 06/11] include/qemu: add documentation for memory callbacks
+Date: Fri, 10 Mar 2023 10:31:18 +0000
+Message-Id: <20230310103123.2118519-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230310103123.2118519-1-alex.bennee@linaro.org>
 References: <20230310103123.2118519-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: C+OzRXeNktUo
+X-TUID: wSEGiKSZB/aK
 
-This was broken when we moved to using the pre-built packages as we
-didn't take care to ensure we used RPMs where required.
+Some API documentation was missed, rectify that.
 
-NB: I could never get this to complete on my test setup but I suspect
-this was down to network connectivity and timeouts while downloading.
-
-Fixes: 69c4befba1 (scripts/ci: update gitlab-runner playbook to use latest runner)
+Fixes: https://gitlab.com/qemu-project/qemu/-/issues/1497
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/gitlab-runner.yml | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ include/qemu/qemu-plugin.h | 47 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 43 insertions(+), 4 deletions(-)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 95d4199c03..1a1b270ff2 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -48,13 +48,29 @@
-     - debug:
-         msg: gitlab-runner arch is {{ gitlab_runner_arch }}
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index d0e9d03adf..50a9957279 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -481,17 +481,56 @@ uint64_t qemu_plugin_hwaddr_phys_addr(const struct qemu_plugin_hwaddr *haddr);
+  */
+ const char *qemu_plugin_hwaddr_device_name(const struct qemu_plugin_hwaddr *h);
  
--    - name: Download the matching gitlab-runner
-+    - name: Download the matching gitlab-runner (DEB)
-       get_url:
-         dest: "/root/"
-         url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    - name: Download the matching gitlab-runner (RPM)
-+      get_url:
-+        dest: "/root/"
-+        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+      when:
-+        - ansible_facts['distribution'] == 'CentOS'
+-typedef void
+-(*qemu_plugin_vcpu_mem_cb_t)(unsigned int vcpu_index,
+-                             qemu_plugin_meminfo_t info, uint64_t vaddr,
+-                             void *userdata);
++/**
++ * typedef qemu_plugin_vcpu_mem_cb_t - memory callback function type
++ * @vcpu_index: the executing vCPU
++ * @info: an opaque handle for further queries about the memory
++ * @vaddr: the virtual address of the transaction
++ * @userdata: any user data attached to the callback
++ */
++typedef void (*qemu_plugin_vcpu_mem_cb_t) (unsigned int vcpu_index,
++                                           qemu_plugin_meminfo_t info,
++                                           uint64_t vaddr,
++                                           void *userdata);
  
--    - name: Install gitlab-runner via package manager
-+    - name: Install gitlab-runner via package manager (DEB)
-       apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    - name: Install gitlab-runner via package manager (RPM)
-+      yum: name="/root/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+      when:
-+        - ansible_facts['distribution'] == 'CentOS'
++/**
++ * qemu_plugin_register_vcpu_mem_cb() - register memory access callback
++ * @insn: handle for instruction to instrument
++ * @cb: callback of type qemu_plugin_vcpu_mem_cb_t
++ * @flags: (currently unused) callback flags
++ * @rw: monitor reads, writes or both
++ * @userdata: opaque pointer for userdata
++ *
++ * This registers a full callback for every memory access generated by
++ * an instruction. If the instruction doesn't access memory no
++ * callback will be made.
++ *
++ * The callback reports the vCPU the access took place on, the virtual
++ * address of the access and a handle for further queries. The user
++ * can attach some userdata to the callback for additional purposes.
++ *
++ * Other execution threads will continue to execute during the
++ * callback so the plugin is responsible for ensuring it doesn't get
++ * confused by making appropriate use of locking if required.
++ */
+ void qemu_plugin_register_vcpu_mem_cb(struct qemu_plugin_insn *insn,
+                                       qemu_plugin_vcpu_mem_cb_t cb,
+                                       enum qemu_plugin_cb_flags flags,
+                                       enum qemu_plugin_mem_rw rw,
+                                       void *userdata);
  
-     - name: Register the gitlab-runner
-       command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
++/**
++ * qemu_plugin_register_vcpu_mem_inline() - register an inline op to any memory access
++ * @insn: handle for instruction to instrument
++ * @rw: apply to reads, writes or both
++ * @op: the op, of type qemu_plugin_op
++ * @ptr: pointer memory for the op
++ * @imm: immediate data for @op
++ *
++ * This registers a inline op every memory access generated by the
++ * instruction. This provides for a lightweight but not thread-safe
++ * way of counting the number of operations done.
++ */
+ void qemu_plugin_register_vcpu_mem_inline(struct qemu_plugin_insn *insn,
+                                           enum qemu_plugin_mem_rw rw,
+                                           enum qemu_plugin_op op, void *ptr,
 -- 
 2.39.2

@@ -1,127 +1,297 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1860062ejc;
-        Fri, 10 Mar 2023 04:43:03 -0800 (PST)
-X-Received: by 2002:a5d:5651:0:b0:2c9:c90d:6869 with SMTP id j17-20020a5d5651000000b002c9c90d6869mr16146305wrw.42.1678452182918;
-        Fri, 10 Mar 2023 04:43:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678452182; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1883837ejc;
+        Fri, 10 Mar 2023 05:06:05 -0800 (PST)
+X-Google-Smtp-Source: AK7set9cS5BANuOCnVAla5NNU2NiMtIZ3h5mM35LjSF3X3lWBNw+cJlQhoD0jueFlYDe0mKTpxs2
+X-Received: by 2002:a05:600c:3ba3:b0:3e2:91c:7cb7 with SMTP id n35-20020a05600c3ba300b003e2091c7cb7mr2781760wms.39.1678453565534;
+        Fri, 10 Mar 2023 05:06:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678453565; cv=none;
         d=google.com; s=arc-20160816;
-        b=K/OTKQxnTe0yP9PYnwxWpgRzTiI6WtJZ9Kcrua404PZErcNUGV8tZfYKAxu9rqaL9V
-         TT8gy2+f+g4qAYZ7hngkGAq7hrvCifzQ+UB6Kem1HtfmYpbkq1HfPFAg2IpnHyGmIXdc
-         RFnP9wkrdLDiXAnmsttsw4vfR22o7rijmN6veFXPeK2thsNkKGQ3Ou1atg4/m8m7VgxF
-         AH8j4QjbovR7+nJnvxgsJd0mxabGT8AZ8SdF4r/J4jEIzGYypdLGuhlwBPVhTVUyk8Bd
-         05pJyZZy5sx+hoy1qRTW3OLiDYX2RJYh5O8upAlwvsrO0RIaHciTaHCuYNuT9rr6R3dx
-         KqZQ==
+        b=nhqHV5isj49N7rMg7olOjmE9d1L0gWxNgJJmr0xhwlYKuOMXES6xheid75Vk4NKhtK
+         Ykxt/1S7y2oNltMIDvgQBXdGwwAuX8UyJZEcc6w92suq6Vuhxy5wZT9+VdUc4Eb6cN0w
+         XSb5tWpT8ua3bUfGrQV4WIWp89Sl4CwcWEY451zMf+7fDLSOzAHzmyb+pNQigSDfBN7H
+         TihitsWsnL68qzCymRAAhCXOAztiQUl86w+cHr0KS9Z+xy4to82OSJqYpB/GkBQdrFHm
+         U4rZYW55NKJTjWP6PIyIOAaKRH5VKvmTKht4K4fGKFMtCNj/1IcxrXTvHfufePPDiyWz
+         MIAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=iwJ6KP4qgwdAuCXE7G/5v1FQEfFrIi5j1Uvcr9rJKbY=;
-        b=lMjRsjxk3LbKkp7644Ad2idXojGxvGwe5fLzmY6FOPq9N7PTalPvGS9wjK7+BQATlZ
-         k5gKeyLqEyaqTTfoRsizqYP0NRKjqIoe3/09i5M1ZzFc/lfp/oXJTbXDgfH8sc++gQFV
-         EKXCQJP2xaBYIQgphtAj0+AMgw1Q42DclBu7U6MuxI6L6EE+b/rqwODZbjrZUiVepOli
-         5u/LM1dhDrEWnm1/gZ8rTk4PjTtDfyYyA8DMO8hPY2QJAB17ex0i8uV/9fh/DS3ckmNx
-         1PBuVb8+l2eoCxtprlSVfV5hVtoarLXd1H12MsB49+8D1Yio4jv0HTCxA4+vOyIWYz5h
-         0rJA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=2k9+tpCAeN/8/On3DVhNJslrvVdEZxM6eN5p2uLU9rA=;
+        b=kpFpv0ZwQeMMpL5cZbdxb/DMeT8HTJqjVmi5hvWyoDU+UdXfrrwER94cNSKwMkGxgq
+         XEcqHYTk/F+QHj7aq3//D1Zb2LqwWx158iyRHJgcLzXdtzjReO16SEW5jYP4QHvUQmdH
+         CbrxQXp3p2Wof+EAqdPQMSGmFMpx8oxPq+n6SARpjGAZ9SMvtc1DEK+Lhlj2lZNwDXwA
+         svOdmj5NpS2yxzEQSqFhcYJqaRwD9LqmPObRzDmoPfpL3ZX9JAnRrKcV/P5MftYEsIMz
+         IEgZ+ADPZ0tXbV7Pb01hG81rMDl8280Rkg8rLDdQJ2C4/EF8ip9LxzXGcmvgddEY4fPN
+         yFEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vspqxqd4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c2-20020adfed82000000b002be31f35ea3sor870862wro.63.2023.03.10.04.43.02
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 Mar 2023 04:43:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="nYI/2EjY";
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=vnzeLboL;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id iv14-20020a05600c548e00b003e00e77305asi1921952wmb.75.2023.03.10.05.06.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Mar 2023 05:06:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vspqxqd4;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678452182;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=iwJ6KP4qgwdAuCXE7G/5v1FQEfFrIi5j1Uvcr9rJKbY=;
-        b=Vspqxqd4Gk8LECVh/Cu0jmLIKhYh1rd8mkkcH+6emtzRnv5VXqBYCXSogzpBjzL8H0
-         AWO5dAw/2g7OCDy8BA97aD3OD4dKlas9OzwA0rsKDMGcAT59yfwh2b9MNIOK+L7hIsZc
-         +jw5Yk/wzH4F5n4s8H+DwGQxLZUAyifF9JDVTNjqFpANvYy9CTGcRnMqEaZMdT+ySfdO
-         6DRwxdWN/nyfYZ6cTllmru/fMJ4Hp0aI9hGzup5Xyc3BXh8xfRY4G9U9rnX7iXuEwrQm
-         2BIg5IFyggfhqOCObXzF+MtJ8Yh1Rq8f+4Vkaj9YuAdyQSaSVAmUnJXC1bQbo6XQOYJ9
-         bFsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678452182;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iwJ6KP4qgwdAuCXE7G/5v1FQEfFrIi5j1Uvcr9rJKbY=;
-        b=SEJ6d7dXpShvDzIjKEtR7/amn5wevgi459j5Y/WjAWKDZ+DFpfMJTor7B5xNKDtLD7
-         EamgiqVFzQa+GHzm591nNbQEhqT0Is56lxDh4BKQBbN8/D96yBYLo720TmBbiurx6/T2
-         /Db63IqnKYmnPeWY9UbAOqQ53ijDsw/fTJV3RSwfAOwkbFq7srJNGVXwPEk39UyujK32
-         Ud1WtEKjpJbgJHvrjPEXXvgZQF+IKDPQ7jl8LiqgG+7cR5qlD6ijwrLygDdHzqAnCJQt
-         Kh8uWtrBbTQ2pBtSnLVOuBnXjEryiIC7jtVtMrqTwvoUzIthxYiZDr8w1yxq0SOToqwo
-         u2IA==
-X-Gm-Message-State: AO0yUKWExKTHGpcXtnqJe04iVYt+Svb/kVBU8VhrFwFIwYCfUy6bxkl3
-	kp2KyTBrw04j5NSTmD48vCVaTWJUNEw++7s50bkUvA==
-X-Google-Smtp-Source: AK7set/aEVcdVqGHS9nOa57VBe3dG32DdJb+uI5tVrKlL+yOVQCkuupMMp0OpSfv9v7WhS0hPlGodQ==
-X-Received: by 2002:adf:eac7:0:b0:2c7:161e:702f with SMTP id o7-20020adfeac7000000b002c7161e702fmr17304499wrn.47.1678452182146;
-        Fri, 10 Mar 2023 04:43:02 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.115] (169.red-88-28-29.dynamicip.rima-tde.net. [88.28.29.169])
-        by smtp.gmail.com with ESMTPSA id s11-20020a5d4ecb000000b002c55efa9cbesm2069371wrv.39.2023.03.10.04.42.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Mar 2023 04:43:01 -0800 (PST)
-Message-ID: <bccf80e1-d4ed-248c-5702-885951ffe730@linaro.org>
-Date: Fri, 10 Mar 2023 13:42:58 +0100
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="nYI/2EjY";
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=vnzeLboL;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id DF1E820659;
+	Fri, 10 Mar 2023 13:06:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1678453564; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2k9+tpCAeN/8/On3DVhNJslrvVdEZxM6eN5p2uLU9rA=;
+	b=nYI/2EjYkdQ8q7VdzUc/CEWOCc2kMDRFV8NyoA3iXjCvI50T8rBkPf3bhEbWWJ6iMmEaz0
+	0VzQxyhZplFzEZANe26YsHMPRmn21PK5pQq0qrEcn8KBbqqzxZd3yzFUe1u98Ujx3uTIfl
+	GSdCQA2Pi0/yM/InHjr39ifPS1eDVSk=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1678453564;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2k9+tpCAeN/8/On3DVhNJslrvVdEZxM6eN5p2uLU9rA=;
+	b=vnzeLboL+aKoH6y59nC3FmrgR+xq3JoRJspjhURS0nI6WR1HBAHQFsagQbJ8sd0eabQfaM
+	NqkzfL/Hf6tAPsDQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 647EB13592;
+	Fri, 10 Mar 2023 13:06:04 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id GH7GCzwrC2SvNAAAMHmgww
+	(envelope-from <farosas@suse.de>); Fri, 10 Mar 2023 13:06:04 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Peter Maydell
+ <peter.maydell@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?=
+ <alex.bennee@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, Claudio
+ Fontana <cfontana@suse.de>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>, Juan
+ Quintela <quintela@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani
+ Sinha <ani@anisinha.ca>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: [PATCH v8 08/11] tests/qtest: Fix tests when no KVM or TCG are
+ present
+In-Reply-To: <20230310050550-mutt-send-email-mst@kernel.org>
+References: <20230309201434.10831-1-farosas@suse.de>
+ <20230309201434.10831-9-farosas@suse.de>
+ <20230310050550-mutt-send-email-mst@kernel.org>
+Date: Fri, 10 Mar 2023 10:06:01 -0300
+Message-ID: <87h6useoxy.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.8.0
-Subject: Re: [PATCH 11/11] tests/avocado: don't use tags to define drive
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>
-References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-12-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230310103123.2118519-12-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: sKbUsDJ1f3lV
+Content-Type: text/plain
+X-TUID: UO7a3zUDrli3
 
-On 10/3/23 11:31, Alex Bennée wrote:
-> We are abusing the avocado tags which are intended to provide test
-> selection metadata to provide parameters to our test.
+"Michael S. Tsirkin" <mst@redhat.com> writes:
 
-Oh I missed that, good point.
+> On Thu, Mar 09, 2023 at 05:14:31PM -0300, Fabiano Rosas wrote:
+>> It is possible to have a build with both TCG and KVM disabled due to
+>> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+>> host.
+>> 
+>> If we build with --disable-tcg on the aarch64 host, we will end-up
+>> with a QEMU binary (x86) that does not support TCG nor KVM.
+>> 
+>> Fix tests that crash or hang in the above scenario. Do not include any
+>> test cases if TCG and KVM are missing.
+>> 
+>> Make sure that calls to qtest_has_accel are placed after g_test_init
+>> in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
+>> printed before other messages") to avoid TAP parsing errors.
+>> 
+>> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+>> Reviewed-by: Juan Quintela <quintela@redhat.com>
+>
+> I don't like it that we are hard-coding the list of accelerators
+> like this. Make a wrapper?
+>
 
-> This works OK up
-> until the point you need to have ,'s in the field as this is the tag
-> separator character which is the case for a number of the drive
-> parameters. Fix this by making drive a parameter to the common helper
-> function.
-> 
-> Fixes: 267fe57c23 (tests: add tuxrun baseline test to avocado)
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: David Woodhouse <dwmw2@infradead.org>
-> ---
->   tests/avocado/tuxrun_baselines.py | 60 +++++++++++++------------------
->   1 file changed, 24 insertions(+), 36 deletions(-)
+Are you thinking of some sort of "has_any_accel" wrapper?
 
-These also need to be cleaned:
+Some of the code uses has_tcg/kvm for other purposes, so there would be
+slight duplication. And the issue really is !tcg && !kvm, i.e. other
+accelerators are not taken into account.
 
->           :avocado: tags=tuxboot:armv5
->           :avocado: tags=image:zImage
->           :avocado: tags=console:ttyAMA0
->           :avocado: tags=root:sda
->           :avocado: tags=shutdown:nowait
->           :avocado: tags=extradev:driver=spapr-vscsi
+>> ---
+>> This currently affects Arm, but will also affect x86 after the xenpvh
+>> series gets merged. This patch fixes both scenarios.
+>> ---
+>>  tests/qtest/bios-tables-test.c | 10 ++++++++--
+>>  tests/qtest/boot-serial-test.c | 10 ++++++++++
+>>  tests/qtest/migration-test.c   |  9 ++++++++-
+>>  tests/qtest/pxe-test.c         |  7 ++++++-
+>>  tests/qtest/vmgenid-test.c     |  8 ++++++--
+>>  5 files changed, 38 insertions(+), 6 deletions(-)
+>> 
+>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+>> index d29a4e47af..5cbad2f29f 100644
+>> --- a/tests/qtest/bios-tables-test.c
+>> +++ b/tests/qtest/bios-tables-test.c
+>> @@ -2109,8 +2109,7 @@ static void test_acpi_virt_oem_fields(void)
+>>  int main(int argc, char *argv[])
+>>  {
+>>      const char *arch = qtest_get_arch();
+>> -    const bool has_kvm = qtest_has_accel("kvm");
+>> -    const bool has_tcg = qtest_has_accel("tcg");
+>> +    bool has_kvm, has_tcg;
+>>      char *v_env = getenv("V");
+>>      int ret;
+>>  
+>> @@ -2120,6 +2119,13 @@ int main(int argc, char *argv[])
+>>  
+>>      g_test_init(&argc, &argv, NULL);
+>>  
+>> +    has_kvm = qtest_has_accel("kvm");
+>> +    has_tcg = qtest_has_accel("tcg");
+>> +
+>
+> why are you moving these? init at declaration time is
+> generally cleaner.
+>
 
-Can be done on top, so:
+Thomas had asked me to put calls to qtest_has_accel after g_test_init. I
+just brought the existing one along for consistency. From the commit
+message:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+ "Make sure that calls to qtest_has_accel are placed after g_test_init
+ in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
+ printed before other messages") to avoid TAP parsing errors."
+
+>> +    if (!has_tcg && !has_kvm) {
+>> +        return 0;
+>> +    }
+>> +
+>>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>>          ret = boot_sector_init(disk);
+>>          if (ret) {
+>> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+>> index 3aef3a97a9..406b4421cc 100644
+>> --- a/tests/qtest/boot-serial-test.c
+>> +++ b/tests/qtest/boot-serial-test.c
+>> @@ -17,6 +17,9 @@
+>>  #include "libqtest.h"
+>>  #include "libqos/libqos-spapr.h"
+>>  
+>> +static bool has_tcg;
+>> +static bool has_kvm;
+>> +
+>>  static const uint8_t bios_avr[] = {
+>>      0x88, 0xe0,             /* ldi r24, 0x08   */
+>>      0x80, 0x93, 0xc1, 0x00, /* sts 0x00C1, r24 ; Enable tx */
+>> @@ -287,6 +290,13 @@ int main(int argc, char *argv[])
+>>  
+>>      g_test_init(&argc, &argv, NULL);
+>>  
+>> +    has_tcg = qtest_has_accel("tcg");
+>> +    has_kvm = qtest_has_accel("kvm");
+>> +
+>
+> and here why do we need them global?
+>
+
+I was trying to make things easier when merging this other series that
+puts the variables there as well:
+https://lore.kernel.org/r/20230119145838.41835-5-philmd@linaro.org
+
+Second time I get asked this so I'll change it for the next version =)
+
+>> +    if (!has_tcg && !has_kvm) {
+>> +        return 0;
+>> +    }
+>> +
+>>      for (i = 0; tests[i].arch != NULL; i++) {
+>>          if (g_str_equal(arch, tests[i].arch) &&
+>>              qtest_has_machine(tests[i].machine)) {
+>> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+>> index d4ab3934ed..7eedee7b2d 100644
+>> --- a/tests/qtest/migration-test.c
+>> +++ b/tests/qtest/migration-test.c
+>> @@ -2459,7 +2459,7 @@ static bool kvm_dirty_ring_supported(void)
+>>  
+>>  int main(int argc, char **argv)
+>>  {
+>> -    const bool has_kvm = qtest_has_accel("kvm");
+>> +    bool has_kvm, has_tcg;
+>>      const bool has_uffd = ufd_version_check();
+>>      const char *arch = qtest_get_arch();
+>>      g_autoptr(GError) err = NULL;
+>> @@ -2467,6 +2467,13 @@ int main(int argc, char **argv)
+>>  
+>>      g_test_init(&argc, &argv, NULL);
+>>  
+>> +    has_kvm = qtest_has_accel("kvm");
+>> +    has_tcg = qtest_has_accel("tcg");
+>> +
+>
+> same. why the move?
+>
+
+g_test_init
+
+>> +    if (!has_tcg && !has_kvm) {
+>> +        return 0;
+>> +    }
+>> +
+>>      /*
+>>       * On ppc64, the test only works with kvm-hv, but not with kvm-pr and TCG
+>>       * is touchy due to race conditions on dirty bits (especially on PPC for
+>> diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+>> index 62b6eef464..935b661dac 100644
+>> --- a/tests/qtest/pxe-test.c
+>> +++ b/tests/qtest/pxe-test.c
+>> @@ -131,11 +131,16 @@ int main(int argc, char *argv[])
+>>      int ret;
+>>      const char *arch = qtest_get_arch();
+>>  
+>> +    g_test_init(&argc, &argv, NULL);
+>> +
+>> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+>> +        return 0;
+>> +    }
+>> +
+>>      ret = boot_sector_init(disk);
+>>      if(ret)
+>>          return ret;
+>>  
+>> -    g_test_init(&argc, &argv, NULL);
+>>  
+>>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>>          test_batch(x86_tests, false);
+>> diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
+>> index efba76e716..9eb6371ae8 100644
+>> --- a/tests/qtest/vmgenid-test.c
+>> +++ b/tests/qtest/vmgenid-test.c
+>> @@ -165,13 +165,17 @@ int main(int argc, char **argv)
+>>  {
+>>      int ret;
+>>  
+>> +    g_test_init(&argc, &argv, NULL);
+>> +
+>> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+>> +        return 0;
+>> +    }
+>> +
+>>      ret = boot_sector_init(disk);
+>>      if (ret) {
+>>          return ret;
+>>      }
+>>  
+>> -    g_test_init(&argc, &argv, NULL);
+>> -
+>>      qtest_add_func("/vmgenid/vmgenid/set-guid",
+>>                     vmgenid_set_guid_test);
+>>      qtest_add_func("/vmgenid/vmgenid/set-guid-auto",
+>> -- 
+>> 2.35.3

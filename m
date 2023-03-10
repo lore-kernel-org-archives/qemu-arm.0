@@ -1,123 +1,98 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2166586ejc;
-        Fri, 10 Mar 2023 09:44:08 -0800 (PST)
-X-Received: by 2002:a05:6a20:748d:b0:d3:45f8:256 with SMTP id p13-20020a056a20748d00b000d345f80256mr662414pzd.60.1678470247905;
-        Fri, 10 Mar 2023 09:44:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678470247; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2169946ejc;
+        Fri, 10 Mar 2023 09:47:52 -0800 (PST)
+X-Received: by 2002:a17:902:e851:b0:19a:839f:435 with SMTP id t17-20020a170902e85100b0019a839f0435mr3184538plg.3.1678470472576;
+        Fri, 10 Mar 2023 09:47:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678470472; cv=none;
         d=google.com; s=arc-20160816;
-        b=zTjb2UaHQdiM9aNLcaJJ10is9xvti6qbWxPrmreg4vHdvRDVqBf5FasD9OrJavs0zy
-         xP9jbNBH2HYvXTcplkxR96v4XBCFUAMeOEdPYtC7XZkHznQ4d32ZlQiYBPTA13M6gEka
-         X7yg9TRqaZRnWLZGOwtgCcdFo4eg9uQS9F+ugfWBSdh1l4tkc5BRJ9TpzDqLwibYEnWb
-         VkGRKJTAwjOPLxgXVoOvprfOZUFpamMW6p3nnZreeM6SLKUcAp4wsWOvjt0gT7bUBykh
-         i1EyKgK2qsuIBE4ejh4ZUvGRIxjtTK0i3a4EVNkDyd1Qvba4ieo4G5692gbgabdlRxFY
-         Hdfg==
+        b=I3LBrnCmC+8P1tH7B63o+yRE8UZ67T7gBHCiPmoQqFEvyYcoPZ1dERTBik/Sip8Jtt
+         8CpWcevo8H5aWDhIVTZrEMTkvZpjXZmmEelQTOTuRTl8T7bufzC8Sf70jMZBDsxbKa4w
+         JtAyIjE06Ifs1OZl6bLTD7Hc9/zC3o+6uBDipPBLR4/kgsPMDzAE43JEy8Hw2IAN7Dxy
+         La5Yn8jG5qPleE07p2BNXlsV5zethKn3ijDeYIgBc/HIAdkt4liqj19kTbyh/iEKLcpD
+         ZL1r9dy1pn8t7OntjT/vr7TYAOT2fQQqoD7J67Et5P+H/hd7amLX1AtJVFrkxnG3WITO
+         HpSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=tuiZ9a/hiVQeQ2ApwACp7vp+tO3Kq9zcHFaznjM4hZM=;
-        b=H8YrCtBqOhilZYJUDIVvmxFxPKCBZUuYq3R4RVAllO3FEXIyopBFJHQ4eMKyk4U1PA
-         RCtZPhGl9ILSkukrg1G2j1beMdYhFbuV7o+8WPg/mfNLXiSKI11Mxpus7dRjXXXvRZYH
-         eaKP4jPWBrCMW7tcMKYhsQitFNmNqXLi07cRq6ad0qM9jujlgn0BG2sfQKSgHXYb2r5o
-         KkgSS6T98+2h9wzEcfLn6wMh9AeiyaDtbEdfLAvGy/koJ4YxM0hJ3xjsRWqJfPGEKjlI
-         SfGEEDS6v9w0NQs0Kp2JnGXjjP+/kuc0YdYjWxPbmyCSkIN4o/iK08WD+vHj4NY3rz1L
-         FgNA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=mHuLcW6CZXp2/G/8uZuBsbRnSfvMp9s/ev/CpMxHZxQ=;
+        b=DEb1JeLA0rn80FPuawglneXXN3Arfk2ikXasFJMvyuPU3/xfcJiRJ3f9kQEGw0PePZ
+         G6/9WthgrAq3KSSj8kp5nCqd4upy010HhQOxJwS9SXzWPrwG2uQZPX9KOdWA8KuDkpVj
+         crPm+yz3FnafbF/GjZfxkX3Aux0kQD+JqH+ha6wLfvlLZS3SO0wK5Q0XL3HjZ36n6MgJ
+         rYSiQ4/TdBI+xJVP1Q2p6qOQYZhs5wJNAkreDOyEV7JQO/P2Tl0Cg6lMy5A28YWQXGXd
+         wnGPVAW2gDuDPMrhODS9J9x7LjRjekNnZf1VFyAgJGOJ1vE8hFOg5f+ZseM+Bl42Een1
+         P61A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="WtmnzrB/";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NQ5d4Eo7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y4-20020aa79e04000000b005a8c1b3fbbesor118069pfq.31.2023.03.10.09.44.07
+        by mx.google.com with SMTPS id q5-20020a170902b10500b0019ea6406ddcsor266207plr.202.2023.03.10.09.47.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 10 Mar 2023 09:44:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 10 Mar 2023 09:47:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="WtmnzrB/";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NQ5d4Eo7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678470247;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tuiZ9a/hiVQeQ2ApwACp7vp+tO3Kq9zcHFaznjM4hZM=;
-        b=WtmnzrB/6NPKmeSOvsh5H+YOnGmthqOy41Lzhg4FU0P6R4lR8YhzHxGvnPiD9Rbodh
-         qFhkl6dwbaVOX2cmOM9QBAu0EK5KRWfwvmRh0X1sGtPzUsyQOTn1nAkaHcBwo+W5phcC
-         1EBnfTzwGXUWBz74fgMJKjKWJ9BuCi5po71XQWxGnoqkZMxmeEwI4DmysQ5kFIpBaLzv
-         sQl7nvZd1UWpOVKFngezMHSDpKjk+04fw8fUVof7AxDxZjZz9gkzzN2OMAHC63TQdUDy
-         C5UyI4Eh2WLUYLXtA68XZ+xyjhLTWqKMGzjb52XM86/1mqxpZs88v+q8AIOIjMKeWBUA
-         irqQ==
+        d=linaro.org; s=google; t=1678470472;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mHuLcW6CZXp2/G/8uZuBsbRnSfvMp9s/ev/CpMxHZxQ=;
+        b=NQ5d4Eo76GkedUQMuZrll6ChJUhe8z6xVM7d/HFQV4PBgtu0aEL0jQNRgwFAsCehQy
+         dKG5jtmzZcM3biU7DuCchIyeHoeGTwn70YpqUul5FPIN8yzucR/y1mKVLzbqortIr2dj
+         MnGosMM0DlkrBqxKPO47RWFUq8IdFLWnFjJJrMwuffVM9kLXb2a2ARC5ychDq2FP+int
+         izqOBEwJywho2ryHbhqf9QCOCLAbQZYZ9bxCCQ2KWltGsCOrJFhtBBc+H4D+8qGK1kC7
+         260PzE1ds/SXHKVeABIxeuc5eoDb9MA+O45AsfT6LkrMB6WFwBJy5L00MPvTLcYxze/k
+         v5Xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678470247;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tuiZ9a/hiVQeQ2ApwACp7vp+tO3Kq9zcHFaznjM4hZM=;
-        b=0a1X3NtpHGL3BbkbA5lxNedKBctkt+757SrRayRpzFD4A/LoCSWvrccdPzjZqJ0tAf
-         iAVatMBOAkxrbAxfA4eSu99edkNsKzfqEIiDFLBJk7j+ZGgyD3ZCIzg4DniBhLykyUNp
-         42hsLbH2qDaE+aNBkdldHTgjObDA9oLeid3qvQSZ9vKOYi7+Dy9+IVAAxfmE69cj6vQJ
-         7KQzzjsK3ws/kER7v+0QW1+sxfulVm1npPB7djwAis6Gmsxt/I06ZMRedHNnTtXTU9DO
-         buFPCpesLvBMXi9c7mJTkHKpGrQ/H7br4EX+h1qJyOmx3kJTOsbV8Jctqkhj3vNCfz0/
-         7etQ==
-X-Gm-Message-State: AO0yUKUj+zNKxCgb4erNFErXZI509RfVJCAtnUtrKcqLlVPnaeKBCdDY
-	1Rzu57AQs98v7q4C6Iugr58RdDQuMhwEKKs3iRKvCw==
-X-Google-Smtp-Source: AK7set8MBn5nQNQ614WDNWoo8iSCmywBaGJphcvecesaLxN4Hju68G1x5ZI+6XzgIp4QCgcJrE5RxQ==
-X-Received: by 2002:a62:63c2:0:b0:5de:3c49:b06 with SMTP id x185-20020a6263c2000000b005de3c490b06mr5360858pfb.3.1678470247266;
-        Fri, 10 Mar 2023 09:44:07 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:154a:9f01:cc1c:ced1:1ec5:bd62? ([2602:ae:154a:9f01:cc1c:ced1:1ec5:bd62])
-        by smtp.gmail.com with ESMTPSA id 25-20020aa79219000000b005825b8e0540sm76177pfo.204.2023.03.10.09.44.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Mar 2023 09:44:06 -0800 (PST)
-Message-ID: <133f7c48-8b10-8b41-2b33-d593e46eea70@linaro.org>
-Date: Fri, 10 Mar 2023 09:44:04 -0800
+        d=1e100.net; s=20210112; t=1678470472;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mHuLcW6CZXp2/G/8uZuBsbRnSfvMp9s/ev/CpMxHZxQ=;
+        b=EpCuvOjEoSpOX6HFFoLPypZB0GZOQymGxhuYes+rYnnnBJgkbY+r2TVOEpgRfbRHOt
+         ga/7OX2cCXdUKdPnCM+v5GcCqTz+icsDa30+xiaxuTYEK3vVpKBMjtgm6nvSchXkEYJH
+         TFOeqVTo14ARR07pWb3WJ7vYuceFbokLqWYIssgI2tGYmuZGx4IKEte7NqvdoZusaVUr
+         pziqScA2WMYxYkDQwUY46U4YAPgIkHsKBQojc7x1bCBiLLI5Iqscc7MjuTrKGmv6OMmz
+         iMP5Xp2ok18cCh1cM+XNj19G2NvC0n0ZZY8ESH6/bedMksbeq3+MjhAiCm52mI7ai+Rk
+         09Ew==
+X-Gm-Message-State: AO0yUKUhs/5dkSVXoPk+YaLk6LuVsRiFm7mTzjMfR9RSqMtET6VVn2Nl
+	w/bA+Kv1hpgFIDdr/cUVtFuDgPi/8qxzvOSddZ1ySA044SmQJvR+upY=
+X-Google-Smtp-Source: AK7set/jslrXIKNTCbdQtVQtE4rxyAgOIAwvvA+PjcLOJG5yCaazrNa84XoIom/22PAtpr2keNE1KSAh/rey1vcmaK0=
+X-Received: by 2002:a17:903:1243:b0:19a:b151:eb83 with SMTP id
+ u3-20020a170903124300b0019ab151eb83mr9865747plh.13.1678470472141; Fri, 10 Mar
+ 2023 09:47:52 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
-References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-10-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
+References: <20230310103123.2118519-1-alex.bennee@linaro.org> <20230310103123.2118519-10-alex.bennee@linaro.org>
 In-Reply-To: <20230310103123.2118519-10-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: gaNtC6tH6LgW
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Mar 2023 17:47:41 +0000
+Message-ID: <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
+Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+	Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Beraldo Leal <bleal@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: krP2XPHu9Q9F
 
-On 3/10/23 02:31, Alex Bennée wrote:
+On Fri, 10 Mar 2023 at 10:31, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
 > You need a very new gdb to be able to run with pauth support otherwise
 > your likely to hit asserts and aborts. Disable pauth for now until we
 > can properly probe support in gdb.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/tcg/aarch64/Makefile.target | 2 ++
->   1 file changed, 2 insertions(+)
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+If it makes gdb fall over, then shouldn't we be disabling
+the pauth gdbstub stuff entirely ? Otherwise even if our
+tests are fine our users will not be...
 
-r~
-
-> 
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-> index 9e91a20b0d..8ffde3b0ed 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -84,6 +84,8 @@ TESTS += sha512-vector
->   ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
->   GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
->   
-> +run-gdbstub-%: QEMU_OPTS=-cpu max,pauth=off
-> +
->   run-gdbstub-sysregs: sysregs
->   	$(call run-test, $@, $(GDB_SCRIPT) \
->   		--gdb $(HAVE_GDB_BIN) \
+-- PMM

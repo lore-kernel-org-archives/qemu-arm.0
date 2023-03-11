@@ -1,178 +1,121 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp710635ejc;
-        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
-X-Google-Smtp-Source: AK7set+jHYBvVRiGg1Z2b7onjONyfBFVfSy1hNzCOdFXeZUKQ12EyGD79K9HDwFKGyqYZB7sWdZ4
-X-Received: by 2002:a05:622a:1aa7:b0:3b9:bc8c:c210 with SMTP id s39-20020a05622a1aa700b003b9bc8cc210mr9310212qtc.27.1678545806184;
-        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678545806; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp913076ejc;
+        Sat, 11 Mar 2023 11:28:26 -0800 (PST)
+X-Google-Smtp-Source: AK7set/D8laaCferM1I9lbo9zGQCnw14CCFvSj47aQydqeyQBCg63ruwmI1QZD/cs01/dMnSnE1Y
+X-Received: by 2002:ac8:7f4d:0:b0:3b9:a441:37f4 with SMTP id g13-20020ac87f4d000000b003b9a44137f4mr49247808qtk.52.1678562905887;
+        Sat, 11 Mar 2023 11:28:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678562905; cv=none;
         d=google.com; s=arc-20160816;
-        b=k538yw+AG0KmnXFehDMl9JkDghnoc2tdB6UsoPmzmDqy5HnJbFl1YuGmP+TgyCk6xp
-         UCWtXUPr97sqLj8+volsA/ZVK5fGocwSRzDMzAhlP/BztAj7HnwGZyg4bvSyOrQFWVLW
-         9963fgLrpCa3Tjf9VnuobKJo2AzAsr0od3YEn46W6UH3c/k6HyTl8wLVmbqjB/xio49x
-         tXZQ9CSVHy5VHsOvu8vSun9Xa5IxcRUJlgB2AsXuyIdKm7sOnptKoFjrVe2UxO4iYK8M
-         yCZVtDP4r00Zn5ykqaeAAfiM7gUzooMciEdAf+L8mu0iYv08UwW49i3LGYVsUNi/WD09
-         gZhQ==
+        b=gGlKnMNSM9iQ8+dk2Cxj8gMAd3vjtaWlg4wUaID3IswzAf3yFP4oBJ3xWI9VaAqsnP
+         O7yP8vNIUfx11tt8lztleoWgZLtLISTst0cTm6agk1LveE8lwwtY+9WCixmsVbqOKx8w
+         Fac0wG5gRYHb1E/zWdISY5jIiTAUpgX2/C0ZsFW0OZWiy6i+3qqlpV/43vcNK0QKlPN6
+         EIqxlLhLNqwhA1uWfLhPrecPoIRArTlfgNkf4f1KGzzb75ahD29MavLQ04A7XeJvZwRi
+         pQtUpz97DwT+lG3WiIY4F8UjRJcOTny6X8gVz509G420nPN67S5Imlh/y6LmXG9GOE+x
+         Gmxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
-        b=dDFOhfmHNAYkPZFIB0qJvKndvixXF2VaY3KWWuLonxVuPOIfX0Tx3QpBbcLLiaMwTh
-         5nP8sfU8ItkuS3aorlcfq7MyHzMg640XEd0o5gSEHfI+G4D7uBTxnaQRDYXWoDZR/s90
-         eemf6G+mOp/hqugT8XAOfBJ9CYxprRorOdJZ8RkFkUA7ON0JhkFunr3e9MS5w6Rk9G1d
-         bo/sbrWK30FmWpIYsWFVce065LW/5+wNYLKSy7ImK4s29iBhU38ugK0CMMg0Ph3ZA6Ph
-         DlWWc6SBkSY1VDXQU/tIv63AdngpQJkAmdE/Qnk6f4I42+rr26OkikUzhlMPuVW4C+s0
-         ylmw==
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Z7XHoCGtuSnMa/aJBKnvHHObzRB44rWPBs6WD3Kn4vM=;
+        b=VSkPWXTAA7mNLmzqnM+skK5RXS2WnADk1D1BziXX0+DinLfTp3rN65MZ2WWf++Ave7
+         PqKoM5MT25WTrPgzMkzWWLn9FByfVwBNw284hS6XklQBSgSSd1AVtNOV0SUlceashTl9
+         aBmuBFXosdbTT6K29zpaAKLGAhHkuyYySZrEoWVPgjDA0IB1rgl+wvu+7DBlnZgzXpHb
+         heltd60IRqxZYNT81++rhHBee1myQ0jk2psEFLh3KZwza8O6YxlDO6mHgEJriC9B2+I1
+         /dk8ogVX4sxqDlES4ic4U6wCDBpAF9bxP9i82VvQN2S/i0EiyjZJzfI3r1rChK5ere6N
+         PKwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Lj4iNaMz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s3-20020a05620a0bc300b0073baab85585si1900672qki.297.2023.03.11.06.43.26
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GMU+GY2p;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id c4-20020ac87dc4000000b003bd1bc1038dsi2139725qte.751.2023.03.11.11.28.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 11 Mar 2023 11:28:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Lj4iNaMz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pb0QH-00044V-Ay; Sat, 11 Mar 2023 09:42:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pb0QF-000447-PY; Sat, 11 Mar 2023 09:42:11 -0500
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pb0QE-0002oV-Aj; Sat, 11 Mar 2023 09:42:11 -0500
-Received: by mail-lf1-x12f.google.com with SMTP id g17so10345143lfv.4;
- Sat, 11 Mar 2023 06:42:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678545728;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
- b=Lj4iNaMzqa/v/A+STR+Dj5nnJr+XvEVcFc90JaILI9RZP2QRybu6AP6WXWCK5vhRX+
- wQ4sX0mqcYvmVytXH55ACcIm8kfbk+BCTnwRg+lgaqrUrIjLB8wsGE4yRUT1TGSD6+Bg
- hk2tP6ljEPLflJ974OqPUujJeO9kMKWIKGAcJRzVmRi01wTRv7zo0JssThQW3Ybi5NE4
- uICF3wMLDKbU6GrFpmJuSQLMLqOYE9cOtnXbBCn+JBZrtw0ZrZvnGm2G4pTu/ItsT6PD
- +R+uwVXKeb0Beea5y036M+RQFB8r95aMqZnuQ4CByNEK60PW2qVGtjbhiv95q13fs0lO
- ID+w==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GMU+GY2p;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1678562905;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Z7XHoCGtuSnMa/aJBKnvHHObzRB44rWPBs6WD3Kn4vM=;
+	b=GMU+GY2puURLp3tD89/mzG5HD86FlmZ5nEdmUJpmIzGoxslMyncll89yTOrSxCe9JvCq79
+	0rfxT1VWBnrM3a0/5nrlDliYml1J2Ssu5t7huo4o67Y+K6JGGi0fiDUnPaERfv1vbEBKuq
+	v0Ypf+H7zcFEuLdkFge3eM8fcyPjbzw=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-125-skOWol_KPyeu7sSjU8CsfA-1; Sat, 11 Mar 2023 14:28:24 -0500
+X-MC-Unique: skOWol_KPyeu7sSjU8CsfA-1
+Received: by mail-wm1-f71.google.com with SMTP id p22-20020a7bcc96000000b003e2036a1516so5501288wma.7
+        for <alex.bennee@linaro.org>; Sat, 11 Mar 2023 11:28:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678545728;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
- b=YPQIuOwCKBIT8eST8oMqbSv8tye39ZuBprUlLkIgaAB6Sdm+bgVaKNrLVPO1/L3TAi
- V6XGM1Xv5YiToKxm+xwFoiSu30SLcUFC5ZKJ0NnpA1PzvMRiNXXIC3fbJCguzxBBNyc/
- fAtbcjZjSaseXL6BxTx/UYmstUFSkxFvhCvpugWUxVz6jtes/lZ/Fom/nAwGidFWExrE
- rgdFQAKWsYVYIrtALObZm6r/GRUAnaydMPBu3d8FpMb5OT1Bdk2gKBJTOfT0fC0w/a2P
- CZ0N+sY0jaZafKmmM6J/EFz0h1xtcUuL6UqEjNGjYk3EzfzWCVTAjcGe4PAcUn3OZ1ov
- PjLg==
-X-Gm-Message-State: AO0yUKWnJfraH6SWYu0wMX84HT4eiicVQD4BY8hQW2ADwIOLI3RHsLcQ
- QpXdSoog6+fz7AzICbcBH9s=
-X-Received: by 2002:ac2:532c:0:b0:4bb:9415:38a2 with SMTP id
- f12-20020ac2532c000000b004bb941538a2mr7985705lfh.51.1678545728311; 
- Sat, 11 Mar 2023 06:42:08 -0800 (PST)
-Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
- [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- g15-20020a19ee0f000000b004d887e0e9edsm333320lfb.168.2023.03.11.06.42.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Mar 2023 06:42:08 -0800 (PST)
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH 4/4] tests/avocado: Add reboot tests to Cubieboard
-Date: Sat, 11 Mar 2023 15:41:11 +0100
-Message-Id: <20230311144111.30468-5-strahinja.p.jankovic@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
-References: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
+        d=1e100.net; s=20210112; t=1678562903;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z7XHoCGtuSnMa/aJBKnvHHObzRB44rWPBs6WD3Kn4vM=;
+        b=mQrriPY/V1KXahk4ROGbMQnBY4S9ivaMk3pSFYywfAhXmuA4vBVydq9ECFL5bWXKYr
+         uqyLNvBK2Ctt6tsxqCxs0R58QPQ1vnj5331UtF1YwE5hMx3htr1n82zIML46+LIsPGle
+         n+3vrT4Sxm/zuRa10cgqjuVbx+92JouGIZldmB8T0RCEH34yTsNOIfD9GSdhDn9mxJgF
+         Q1rPiBh/vxctdXwQNlBCgEBvClCRFGCzAkB1ghjyC2rG8gn/PP72wDwTgDoBWgI82M/m
+         EAQZP6aRrqcx2S6QaPxh90hXyzl9KSH3ITWBYPiHmjyqaaAdBuFotQWt7F55KIt29hBL
+         X0Ow==
+X-Gm-Message-State: AO0yUKXddG/KQlG8RcDSWVEqId2zoBSi39CWPnZdkikOGwJ5rmo5Q4TL
+	atWHfbZ0he9sC9bNCFmLJbYf1rm0JJLYHmI3/P9UcfvrFumGNoEgV0o4BOx9MFEAYrxk9P7tJ+D
+	VNzIU4PnK6gOB2za/
+X-Received: by 2002:adf:f58b:0:b0:2cc:4dac:fe3e with SMTP id f11-20020adff58b000000b002cc4dacfe3emr20331965wro.62.1678562903212;
+        Sat, 11 Mar 2023 11:28:23 -0800 (PST)
+X-Received: by 2002:adf:f58b:0:b0:2cc:4dac:fe3e with SMTP id f11-20020adff58b000000b002cc4dacfe3emr20331961wro.62.1678562902926;
+        Sat, 11 Mar 2023 11:28:22 -0800 (PST)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2.52.29.35])
+        by smtp.gmail.com with ESMTPSA id o15-20020a5d4a8f000000b002c70e60abd4sm3164093wrq.2.2023.03.11.11.28.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 11 Mar 2023 11:28:22 -0800 (PST)
+Date: Sat, 11 Mar 2023 14:28:18 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Ani Sinha <ani@anisinha.ca>,
+	Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: [PATCH v8 08/11] tests/qtest: Fix tests when no KVM or TCG are
+ present
+Message-ID: <20230311142752-mutt-send-email-mst@kernel.org>
+References: <20230309201434.10831-1-farosas@suse.de>
+ <20230309201434.10831-9-farosas@suse.de>
+ <20230310050853-mutt-send-email-mst@kernel.org>
+ <87edpweo4q.fsf@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JpQOZ8UQOLnP
+In-Reply-To: <87edpweo4q.fsf@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: xKc0vbWfmrQI
 
-Cubieboard tests end with comment "reboot not functioning; omit test".
-Fix this so reboot is done at the end of each test.
+On Fri, Mar 10, 2023 at 10:23:33AM -0300, Fabiano Rosas wrote:
+> > How about a special make check target that will just test
+> > xen things?
+> >
+> 
+> Probably overkill for this particular issue. I don't see any
+> Xen-specific tests yet. It would run almost the same set of tests.
 
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
----
- tests/avocado/boot_linux_console.py | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+Well, a subset for now.
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 574609bf43..c0675809e6 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -581,7 +581,10 @@ def test_arm_cubieboard_initrd(self):
-                                                 'Allwinner sun4i/sun5i')
-         exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-                                                 'system-control@1c00000')
--        # cubieboard's reboot is not functioning; omit reboot test.
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
- 
-     def test_arm_cubieboard_sata(self):
-         """
-@@ -625,7 +628,10 @@ def test_arm_cubieboard_sata(self):
-                                                 'Allwinner sun4i/sun5i')
-         exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
-                                                 'sda')
--        # cubieboard's reboot is not functioning; omit reboot test.
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
- 
-     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
-     def test_arm_cubieboard_openwrt_22_03_2(self):
-@@ -672,7 +678,10 @@ def test_arm_cubieboard_openwrt_22_03_2(self):
- 
-         exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-                                                 'Allwinner sun4i/sun5i')
--        # cubieboard's reboot is not functioning; omit reboot test.
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
- 
-     @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
-     def test_arm_quanta_gsj(self):
 -- 
-2.30.2
-
+MST

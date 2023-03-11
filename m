@@ -1,107 +1,107 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp710610ejc;
-        Sat, 11 Mar 2023 06:43:24 -0800 (PST)
-X-Google-Smtp-Source: AK7set8nWHrKVe86FyCiuuLvD9/9GYsgPQTkANa2tYfqFm6wpOMA7XyZpObAgxn9nPnaUd83X4D9
-X-Received: by 2002:ad4:5cee:0:b0:56b:ee79:aacf with SMTP id iv14-20020ad45cee000000b0056bee79aacfmr4065297qvb.42.1678545804797;
-        Sat, 11 Mar 2023 06:43:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1678545804; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp710635ejc;
+        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
+X-Google-Smtp-Source: AK7set+jHYBvVRiGg1Z2b7onjONyfBFVfSy1hNzCOdFXeZUKQ12EyGD79K9HDwFKGyqYZB7sWdZ4
+X-Received: by 2002:a05:622a:1aa7:b0:3b9:bc8c:c210 with SMTP id s39-20020a05622a1aa700b003b9bc8cc210mr9310212qtc.27.1678545806184;
+        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1678545806; cv=none;
         d=google.com; s=arc-20160816;
-        b=hjMUy5F1lTrhCMmnFJ0KR4T0kjcHUxYZYbqJfsp1caZwu+gpFtJa81YlFYzG8yGDdF
-         Y79VjLtNOt9dVK2icbBbsEUa6gZZTRcqPzFZPxaui9qpb6mpnbauqHlhvE9IaOS/8r8o
-         Vlve0t841ZrvxngyOF8QUdqt0zoDaybgzefSZJOKIc1vRFt/i1IH/TJXWnQEBSca3yiA
-         eKb83KWTVR7PwP2PW4NhzJ8sjqbfNDOc4LcnCUYyuYClVTNoXr4VU2bC1Bkqz9/q/y2D
-         INwUIgPbAPSKn5rq8axIIeaXJW9yNWRZCkZTq1thzdNyUU6AvEl60gkLI47G/LTUvLsu
-         LfBw==
+        b=k538yw+AG0KmnXFehDMl9JkDghnoc2tdB6UsoPmzmDqy5HnJbFl1YuGmP+TgyCk6xp
+         UCWtXUPr97sqLj8+volsA/ZVK5fGocwSRzDMzAhlP/BztAj7HnwGZyg4bvSyOrQFWVLW
+         9963fgLrpCa3Tjf9VnuobKJo2AzAsr0od3YEn46W6UH3c/k6HyTl8wLVmbqjB/xio49x
+         tXZQ9CSVHy5VHsOvu8vSun9Xa5IxcRUJlgB2AsXuyIdKm7sOnptKoFjrVe2UxO4iYK8M
+         yCZVtDP4r00Zn5ykqaeAAfiM7gUzooMciEdAf+L8mu0iYv08UwW49i3LGYVsUNi/WD09
+         gZhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UQyfudqt+hsBlbV+O4406nNeH2P74SLw55o4TH/T4p0=;
-        b=OC1USUu0JswiQGW/EHusKrtDYqYWN7ydaE4Ak0Nql0bzfcw4HwNYl+4GNIcS2JIKe+
-         LAehG85NH6DcKZRQSFbh0+ELv88PEi2BCPsdffKt3ZmwMZBuisjROCGoXe1gx9WaCk88
-         X0gBZ0NuSh7l5qQm4tgj+148bBqUn++cY0xH8YgaXC9g5KUzmveSNzoUk3yLwBl8SIeb
-         NxX86b2oDwaF4hEpiWlSU7d9TPLKqeLrmD2rIWFedO8zzkfs8xNEYBOI/hBQCtnyjNGj
-         pxKGNfnsihtxSiJI5NO5D5h7uTr916AZAZe2vS7z90vK6sMyZr8SnBd/I+vonbGpw+Ar
-         g6dg==
+        bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
+        b=dDFOhfmHNAYkPZFIB0qJvKndvixXF2VaY3KWWuLonxVuPOIfX0Tx3QpBbcLLiaMwTh
+         5nP8sfU8ItkuS3aorlcfq7MyHzMg640XEd0o5gSEHfI+G4D7uBTxnaQRDYXWoDZR/s90
+         eemf6G+mOp/hqugT8XAOfBJ9CYxprRorOdJZ8RkFkUA7ON0JhkFunr3e9MS5w6Rk9G1d
+         bo/sbrWK30FmWpIYsWFVce065LW/5+wNYLKSy7ImK4s29iBhU38ugK0CMMg0Ph3ZA6Ph
+         DlWWc6SBkSY1VDXQU/tIv63AdngpQJkAmdE/Qnk6f4I42+rr26OkikUzhlMPuVW4C+s0
+         ylmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V8WS1qPV;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Lj4iNaMz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r21-20020ae9d615000000b0073b412c98f0si1540992qkk.756.2023.03.11.06.43.24
+        by mx.google.com with ESMTPS id s3-20020a05620a0bc300b0073baab85585si1900672qki.297.2023.03.11.06.43.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Mar 2023 06:43:24 -0800 (PST)
+        Sat, 11 Mar 2023 06:43:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V8WS1qPV;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Lj4iNaMz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pb0QD-00042i-Hb; Sat, 11 Mar 2023 09:42:09 -0500
+	id 1pb0QH-00044V-Ay; Sat, 11 Mar 2023 09:42:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pb0QB-00041m-FV; Sat, 11 Mar 2023 09:42:07 -0500
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ id 1pb0QF-000447-PY; Sat, 11 Mar 2023 09:42:11 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pb0Q9-0002o1-PH; Sat, 11 Mar 2023 09:42:07 -0500
-Received: by mail-lf1-x133.google.com with SMTP id bp27so36718lfb.6;
- Sat, 11 Mar 2023 06:42:05 -0800 (PST)
+ id 1pb0QE-0002oV-Aj; Sat, 11 Mar 2023 09:42:11 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id g17so10345143lfv.4;
+ Sat, 11 Mar 2023 06:42:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678545724;
+ d=gmail.com; s=20210112; t=1678545728;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UQyfudqt+hsBlbV+O4406nNeH2P74SLw55o4TH/T4p0=;
- b=V8WS1qPVHiCeE5xxmsk2/3db0/6S541wZ4vC6HsCK30T68N+R2/dlqzYRlLLeJ2GRG
- dnEYRZCpvQn2ste3gNN4JIxgtWj6lWY92GF8qg0X9+jL1TE8qv/4HQw9DI2cWDAxISD/
- yw7wv92iJtqgtaYis+E5PkY9O7IiTheQr7/8HaUNEzXcVruLeYttZeyrkJLIDLXxg5LQ
- D05sx2iRj9YY9VG6lsVY4OC3yeaSgxGp+/8nfczRg6e2ezZg1lg8iQbBQ7DNCYveGauP
- T9gm47m5bumRBkkE5+sgu1K3S2npVNT0cETHTQ00xROq1hrlUh6AR2EDvs5rwrWLlg6D
- Ng3w==
+ bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
+ b=Lj4iNaMzqa/v/A+STR+Dj5nnJr+XvEVcFc90JaILI9RZP2QRybu6AP6WXWCK5vhRX+
+ wQ4sX0mqcYvmVytXH55ACcIm8kfbk+BCTnwRg+lgaqrUrIjLB8wsGE4yRUT1TGSD6+Bg
+ hk2tP6ljEPLflJ974OqPUujJeO9kMKWIKGAcJRzVmRi01wTRv7zo0JssThQW3Ybi5NE4
+ uICF3wMLDKbU6GrFpmJuSQLMLqOYE9cOtnXbBCn+JBZrtw0ZrZvnGm2G4pTu/ItsT6PD
+ +R+uwVXKeb0Beea5y036M+RQFB8r95aMqZnuQ4CByNEK60PW2qVGtjbhiv95q13fs0lO
+ ID+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678545724;
+ d=1e100.net; s=20210112; t=1678545728;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UQyfudqt+hsBlbV+O4406nNeH2P74SLw55o4TH/T4p0=;
- b=fRzdc7BHrcpjYGpRUFXVvedyZ9OJuq4HN3fWToA5PVCM6YTL1uqU6qBPCvQuTXUwso
- Ff4qck7EuYTUGAe8ZXDIEM+OO8/O30+cqi+8Zd65M+aVUZm7yCq8RrHg8z1W610SthP4
- 5d2qqPMR3P+gcajrs9HH8u6eurQm8LbKPGdMuMi9Mh9vpr6DPB4KkKWhB5ZRTZzrEP2j
- u938eaH3O74yA2N73ob8m0l1Vs/vN8rDygV7U5aUXeMAVTR7513atGo5F2Nce0aHIYiR
- J04lzYJkje8hUKJQPNoCQC5T/DOecakPW8Uif2l7jxkDh92zSIL6VAY3RmN9rQh4DwR5
- wN3g==
-X-Gm-Message-State: AO0yUKWObOV/7E7tRB9BRLmYqsJCDXQgXMsi77HO+KoRkIuWj1Asliap
- easVqOAwXidJXC4aSBRPUOe+2+pxfwYgJdKq+cc=
-X-Received: by 2002:ac2:5fa7:0:b0:4b5:26f3:2247 with SMTP id
- s7-20020ac25fa7000000b004b526f32247mr7664918lfe.69.1678545723802; 
- Sat, 11 Mar 2023 06:42:03 -0800 (PST)
+ bh=05gxZng6cM0+++4MWfWu/fgzS6pU8/MchkJ/uXLX1ZU=;
+ b=YPQIuOwCKBIT8eST8oMqbSv8tye39ZuBprUlLkIgaAB6Sdm+bgVaKNrLVPO1/L3TAi
+ V6XGM1Xv5YiToKxm+xwFoiSu30SLcUFC5ZKJ0NnpA1PzvMRiNXXIC3fbJCguzxBBNyc/
+ fAtbcjZjSaseXL6BxTx/UYmstUFSkxFvhCvpugWUxVz6jtes/lZ/Fom/nAwGidFWExrE
+ rgdFQAKWsYVYIrtALObZm6r/GRUAnaydMPBu3d8FpMb5OT1Bdk2gKBJTOfT0fC0w/a2P
+ CZ0N+sY0jaZafKmmM6J/EFz0h1xtcUuL6UqEjNGjYk3EzfzWCVTAjcGe4PAcUn3OZ1ov
+ PjLg==
+X-Gm-Message-State: AO0yUKWnJfraH6SWYu0wMX84HT4eiicVQD4BY8hQW2ADwIOLI3RHsLcQ
+ QpXdSoog6+fz7AzICbcBH9s=
+X-Received: by 2002:ac2:532c:0:b0:4bb:9415:38a2 with SMTP id
+ f12-20020ac2532c000000b004bb941538a2mr7985705lfh.51.1678545728311; 
+ Sat, 11 Mar 2023 06:42:08 -0800 (PST)
 Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
  [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- g15-20020a19ee0f000000b004d887e0e9edsm333320lfb.168.2023.03.11.06.42.03
+ g15-20020a19ee0f000000b004d887e0e9edsm333320lfb.168.2023.03.11.06.42.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Mar 2023 06:42:03 -0800 (PST)
+ Sat, 11 Mar 2023 06:42:08 -0800 (PST)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH 2/4] hw/arm: Add WDT to Allwinner-A10 and Cubieboard
-Date: Sat, 11 Mar 2023 15:41:09 +0100
-Message-Id: <20230311144111.30468-3-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH 4/4] tests/avocado: Add reboot tests to Cubieboard
+Date: Sat, 11 Mar 2023 15:41:11 +0100
+Message-Id: <20230311144111.30468-5-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
 References: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x133.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,92 +123,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fu9Qls+2x4hZ
+X-TUID: JpQOZ8UQOLnP
 
-This patch adds WDT to Allwinner-A10 and Cubieboard.
-WDT is added as an overlay to the Timer module memory map.
+Cubieboard tests end with comment "reboot not functioning; omit test".
+Fix this so reboot is done at the end of each test.
 
 Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 ---
- docs/system/arm/cubieboard.rst | 1 +
- hw/arm/Kconfig                 | 1 +
- hw/arm/allwinner-a10.c         | 7 +++++++
- include/hw/arm/allwinner-a10.h | 2 ++
- 4 files changed, 11 insertions(+)
+ tests/avocado/boot_linux_console.py | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
-index 8d485f5435..58c4a2d3ea 100644
---- a/docs/system/arm/cubieboard.rst
-+++ b/docs/system/arm/cubieboard.rst
-@@ -15,3 +15,4 @@ Emulated devices:
- - USB controller
- - SATA controller
- - TWI (I2C) controller
-+- Watchdog timer
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b5aed4aff5..ec15248536 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -325,6 +325,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_PIC
-     select ALLWINNER_A10_CCM
-     select ALLWINNER_A10_DRAMC
-+    select ALLWINNER_WDT
-     select ALLWINNER_EMAC
-     select ALLWINNER_I2C
-     select AXP209_PMU
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index b7ca795c71..b0ea3f7f66 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -38,6 +38,7 @@
- #define AW_A10_EHCI_BASE        0x01c14000
- #define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
-+#define AW_A10_WDT_BASE         0x01c20c90
- #define AW_A10_RTC_BASE         0x01c20d00
- #define AW_A10_I2C0_BASE        0x01c2ac00
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index 574609bf43..c0675809e6 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -581,7 +581,10 @@ def test_arm_cubieboard_initrd(self):
+                                                 'Allwinner sun4i/sun5i')
+         exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
+                                                 'system-control@1c00000')
+-        # cubieboard's reboot is not functioning; omit reboot test.
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++        # Wait for VM to shut down gracefully
++        self.vm.wait()
  
-@@ -92,6 +93,8 @@ static void aw_a10_init(Object *obj)
-     object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN4I);
+     def test_arm_cubieboard_sata(self):
+         """
+@@ -625,7 +628,10 @@ def test_arm_cubieboard_sata(self):
+                                                 'Allwinner sun4i/sun5i')
+         exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
+                                                 'sda')
+-        # cubieboard's reboot is not functioning; omit reboot test.
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++        # Wait for VM to shut down gracefully
++        self.vm.wait()
  
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_AW_RTC_SUN4I);
-+
-+    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
- }
+     @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_cubieboard_openwrt_22_03_2(self):
+@@ -672,7 +678,10 @@ def test_arm_cubieboard_openwrt_22_03_2(self):
  
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -203,6 +206,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, AW_A10_I2C0_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0, qdev_get_gpio_in(dev, 7));
-+
-+    /* WDT */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
- }
+         exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
+                                                 'Allwinner sun4i/sun5i')
+-        # cubieboard's reboot is not functioning; omit reboot test.
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++        # Wait for VM to shut down gracefully
++        self.vm.wait()
  
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 095afb225d..cd1465c613 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -13,6 +13,7 @@
- #include "hw/misc/allwinner-a10-ccm.h"
- #include "hw/misc/allwinner-a10-dramc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/watchdog/allwinner-wdt.h"
- #include "sysemu/block-backend.h"
- 
- #include "target/arm/cpu.h"
-@@ -41,6 +42,7 @@ struct AwA10State {
-     AwSdHostState mmc0;
-     AWI2CState i2c0;
-     AwRtcState rtc;
-+    AwWdtState wdt;
-     MemoryRegion sram_a;
-     EHCISysBusState ehci[AW_A10_NUM_USB];
-     OHCISysBusState ohci[AW_A10_NUM_USB];
+     @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+     def test_arm_quanta_gsj(self):
 -- 
 2.30.2
 

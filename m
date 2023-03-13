@@ -1,123 +1,122 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp483258ejb;
-        Mon, 13 Mar 2023 10:03:20 -0700 (PDT)
-X-Received: by 2002:a17:90a:c218:b0:23d:1143:1e3c with SMTP id e24-20020a17090ac21800b0023d11431e3cmr3053398pjt.44.1678727000670;
-        Mon, 13 Mar 2023 10:03:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678727000; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp488901ejb;
+        Mon, 13 Mar 2023 10:09:29 -0700 (PDT)
+X-Received: by 2002:a17:903:41c3:b0:19e:699e:9b64 with SMTP id u3-20020a17090341c300b0019e699e9b64mr44409263ple.65.1678727368932;
+        Mon, 13 Mar 2023 10:09:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678727368; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cj2Sn/X4+xzuCm8m8NM+Q3kXwXg4ad9h2vf6fAKwKG2+8MTesM72XWf1snpJdoTfZ/
-         FwC/f4mnB29GL3Qqygfn49+wlH7upFnXjg8o6SS4iBUZJqVEUGx8yG1BuD2OErvJDjp2
-         BGsGtUgGcvKbWd/2smVbGN0dpaDnaF3QQLL3+OmAbUl/SxULk4Q/kXc2RXeXrsPobIB6
-         Lh6uUWBayKRSDLR8J8qtptyZq2m5QQ8ULflHG5dHFCBF0vFtrEQliz+pLpOmLdVjdqgt
-         k156WYeuo8C3Y9fje/GErr+PjJ2z2eO5hNFNnrAsMDtV30q2/fijW+OQAheNeJ6QLMJY
-         oPcg==
+        b=M9cnzI0nMB58WooEhWdaFc+o1/jRi8jbsQ5yabrGpsWwM8Cs3SfvcBYhtcwJJQe/Ao
+         WBwtbjGrEckoY2g9SfVWTyY86KLTds87JlXxokToWlELhSJ3cfMzvG+aY/6S5ai0Zq0z
+         g1PK6fqJpcCYnniUSxOdXMPcLQ1MG52YxcQLAsQ9T2KsXbqHOcW06jFdfZCbzH+/L2VT
+         DQsW4GMpAinWR1n6Oe0AYVPYnaxsiX66MomqjFqHNM3B+a5aBJNabERvQU1AeXNiDek1
+         CyrJnTbdxeJf80bh/txUzPZoar0USRkNZNhYsztWfzkYKOb3U3/I0RGY6cNLNh31xeCy
+         +9xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=9A4VG1yBsYex5nOTA4gFK3TUgwE2wOw9iF2IMNEylVY=;
-        b=Tmh8iEJiAV7MBhVbdF/J9gn6tCvydSlv9njfDFZrsaEDfDYhVXOwh8ugguM3gABXzy
-         Tp+ow+3BScuxkTgUP5k29hJI4iZur4ZFXe8aK/OhDqQXkuibBmDf6STqlmGRK0+UbJ6N
-         7npyoT688sgu/N8SBFZj47od2uDArlNOazmvmNS7xEXWj0KodowQqGog0HQS12wHgQk/
-         QAMaYzvK2Je3KPLqWiQ6Q16r1iviIk1q/NmGUQ4RZPsdpMhiqpOzCt7w58JOMo/rdzTW
-         fhpfkTqhvbB7G3XfSp5ZW854CAt748jo06sgeBN6FSVwFebqfdCx5ExclWHdWDav2KRC
-         hAWQ==
+        bh=03IQcUsRg7qASUmrF84Q3wh2BxDd5m4j8ye3VrsXtVA=;
+        b=fvWVc5mDUYmENyG3J0taQiHBGopMPPBxJLF7/jUO80nzlDIWk+llaR4KF3rDyIkZPE
+         HWenf9R5dMMArEXL2ceVdZs83xsWNitddpxrsesXOZ06SVB0imfuye1oCVsda8zrHx1o
+         9ICNLMCabnAa1hUgF99J6i54nQihGIHMUfHzuv/Ab8hcn/99vxHZwGynP+smF3p+Es7m
+         8WKlPB9vXtMf7CdX2reSxOBXudU4QFum+Lta5vGB3Lpgcwe2MBPadPNnOX8+yI8Toqer
+         LxM8PACoeiP6umZtTCaLQ7Gjb6lvjKj3/cnYwV07UeVAtiOmfXXY5nCyRzZRe1Vh///S
+         wrAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JHZBBW6D;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gcgiXaJo;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l1-20020a17090a72c100b0023d059fa83asor86837pjk.43.2023.03.13.10.03.20
+        by mx.google.com with SMTPS id kt7-20020a170903088700b0019cbcb1d786sor138517plb.63.2023.03.13.10.09.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 13 Mar 2023 10:03:20 -0700 (PDT)
+        Mon, 13 Mar 2023 10:09:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JHZBBW6D;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gcgiXaJo;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678727000;
+        d=linaro.org; s=google; t=1678727368;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9A4VG1yBsYex5nOTA4gFK3TUgwE2wOw9iF2IMNEylVY=;
-        b=JHZBBW6DDm+xsN/yzcjHr1we4dIeB9+QjNbJAf+NyWRw2hzNzdlzHR6MWC89l+3UVl
-         rrOaE/rv8E0mWez6QqRWd78HYdXIxngzqZlWrs2Cl1dIb5rq1jpgrNXtYT3tEWcQAZEf
-         3MNeXzxc1ARpZU3FNJXW5DFnA5UNON8zbQA77VIEckR5tN65/7dZ0AtB6zn/VAC7nnFV
-         XgpJhDfGGPPcui1h1rxTvn4Ryauc2ggt7OXQ8v8/Kv7O/riv3jnS2+Z1SjAXPXAT1Dvs
-         nbxjdEBPyT3iOtng9o0lRutC3V51NAHk9iRa++ze2Z2AZrgtpl7iLLhyhk1gD7ZJPhhh
-         LZeQ==
+        bh=03IQcUsRg7qASUmrF84Q3wh2BxDd5m4j8ye3VrsXtVA=;
+        b=gcgiXaJoyPtvXyi7fGs/gX/RuWlo5k1MTekBtjKlnWcKmPxtu+wq2KvSmO9kvnvIJn
+         m6TnWAZCM9kDfX5DhouxGHKn11wJva8dmApIS0mMsbJNSntUMUSIBsJuzeJr9lsIjhsC
+         MMrEOmBTgN1sU5jIOH4SoBTZx8Fs+64BOWE3kHvhgowncRFMWiehF3HiQgokUJWZHbmn
+         opg9cm2SbEYZsxrkNSoxf6PzAeyp9oSVn9k8Se06qq2HC/I5+AcOEnZ/in3CpEZYXnw6
+         GTOk9yLSGGicr6v+gk6p5mtbPBuea+DRPmGkYqi1qYVVoPNYE6tBToXLtnmr7nC+YuKj
+         F+9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678727000;
+        d=1e100.net; s=20210112; t=1678727368;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9A4VG1yBsYex5nOTA4gFK3TUgwE2wOw9iF2IMNEylVY=;
-        b=wgLBMtZLGZpx4Tq458mr1OgkTHO/eypwRi2rg5b/rbewcItUiAXz7UdummHC9saBe2
-         EaM/AkNEsAZtqfF4c0vTc9+/hnVLqasUbhpQTvEXH6ZdXHJF1WclQkaPNXeQQWuAjoWM
-         lq9M2BNShTmwlI6ReCbxWXJ6KDIqaibuj+fOKFHrvbhE795RwT1z+UncexCQM+mSxrai
-         z3tpfVIADh2V/2frzhHxJEt9cAXnfzklLLlIXojdC8Tj3cgZu8yo3IuvHreJDlHsTGrN
-         8BALTFvK0I09bHeps46RUkmjQVyply+rpYoNFxwp0+tTqu+hm1TdUo/sVqsIA9SNzEXu
-         gy6A==
-X-Gm-Message-State: AO0yUKWG8z4OvGqm/duKLiQiUcd6EaepZBB5jFCF+0a6/WDMiMXIPBaR
-	YgeYTs+N9xBlrh1qzeo9VdaWoa7NSbobt5co6ESr3WDT
-X-Google-Smtp-Source: AK7set+/DX2wljqRUN7vSYNOtpgXecZrTGpExHPS/JDlLBLjyUy4riZFdDctw/rkb/angUHA0q7G+nWYJ8x6dl1cO5s=
-X-Received: by 2002:a17:90a:dd86:b0:233:be3d:8a42 with SMTP id
- l6-20020a17090add8600b00233be3d8a42mr12520900pjv.0.1678727000188; Mon, 13 Mar
- 2023 10:03:20 -0700 (PDT)
+        bh=03IQcUsRg7qASUmrF84Q3wh2BxDd5m4j8ye3VrsXtVA=;
+        b=3vrtcl15YUtQjgRHu0oXn4d+9Yl/t+2sNO6p3zl5v3/uLomxqVfMzIHWuho+esjt8A
+         HBVsnu5kQLwSs8NADoNX4P/MgBiKMqONZH9CRG46V+YBkAX/VGlkev2uF1iJKSET53Lo
+         /kzwV/60fVZlk26rnSqwy8OwyP4LZkTEHd3ojmrYWD+ydIghRVHwwbkrgkMht+6rIfdg
+         A2kn8U0rqDAmBOoSCkYU0r44F4nqDOShLJmDE2ixGL/8rcnC3TYa63HZNQD7gIh/huG0
+         m/8OKUAo5czkeX2p+9D9GPqVqL818LPCYWzghi16tCUxL8CJpl92H2Lh70IMRfAzt1qJ
+         +hxg==
+X-Gm-Message-State: AO0yUKW9BDtSbxhmnskIz45ghZbc5ZD0AcstvcYeK6hMSMUY1jtdqcM5
+	c34+FIfnMxzwGaWRkD96e+9IopigiomZ6j562vD4bP/e
+X-Google-Smtp-Source: AK7set/4d7hQmuZDoG5vUjUiFeuGELCFVp0ln3zUzjXs2zx2X9XrDdSOpKsjUt7LWWA3qBf1YE0ixkdh7oG9Q98u70U=
+X-Received: by 2002:a17:903:807:b0:19f:87b5:186d with SMTP id
+ kr7-20020a170903080700b0019f87b5186dmr2134515plb.9.1678727368487; Mon, 13 Mar
+ 2023 10:09:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-11-alex.bennee@linaro.org> <c57c82bf-1b05-f29b-80fa-04a7279b5d39@redhat.com>
-In-Reply-To: <c57c82bf-1b05-f29b-80fa-04a7279b5d39@redhat.com>
+References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Mar 2023 17:03:08 +0000
-Message-ID: <CAFEAcA94DQ9rhCwhXHUKQQG6QdWTVOLNEUcKk12t=_WVMtG--A@mail.gmail.com>
-Subject: Re: [PATCH 10/11] include/exec: fix kerneldoc definition
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
-	Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
+Date: Mon, 13 Mar 2023 17:09:17 +0000
+Message-ID: <CAFEAcA9WO57pN2bD47wgV0W3o3pUr26N1-iEbkXmDxgFCztpfA@mail.gmail.com>
+Subject: Re: [PULL v2 00/25] Win socket patches
+To: marcandre.lureau@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Eric Blake <eblake@redhat.com>, Samuel Thibault <samuel.thibault@ens-lyon.org>, 
+	Hanna Reitz <hreitz@redhat.com>, Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>, 
+	Fam Zheng <fam@euphon.net>, Beraldo Leal <bleal@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Michael Roth <michael.roth@amd.com>, 
+	Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-arm@nongnu.org, 
+	Joel Stanley <joel@jms.id.au>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: yyGDrbrvopZB
+X-TUID: E+eanFaP2KZ0
 
-On Mon, 13 Mar 2023 at 17:00, Thomas Huth <thuth@redhat.com> wrote:
+On Mon, 13 Mar 2023 at 11:46, <marcandre.lureau@redhat.com> wrote:
 >
-> On 10/03/2023 11.31, Alex Benn=C3=A9e wrote:
-> > The kerneldoc processor complains about the mismatched variable name.
-> > Fix it.
-> >
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > ---
-> >   include/exec/memory.h | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/include/exec/memory.h b/include/exec/memory.h
-> > index 6fa0b071f0..15ade918ba 100644
-> > --- a/include/exec/memory.h
-> > +++ b/include/exec/memory.h
-> > @@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier=
- *notifier,
-> >    *
-> >    * @notifier: the notifier to be notified
-> >    */
-> > -void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
-> > +void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier)=
-;
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 >
-> I also keep running into this problem ... I wonder whether we should run
-> sphinx with "-W" to turn warnings into errors when configure has been run
-> with --enable-werror ...?
+> The following changes since commit 29c8a9e31a982874ce4e2c15f2bf82d5f8dc35=
+17:
+>
+>   Merge tag 'linux-user-for-8.0-pull-request' of https://gitlab.com/laure=
+nt_vivier/qemu into staging (2023-03-12 10:57:00 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/marcandre.lureau/qemu.git tags/win-socket-pull-reque=
+st
+>
+> for you to fetch changes up to 4bf21c7f748bee42b6f4692f8c37a11d1033b2d1:
+>
+>   monitor: restrict command getfd to POSIX hosts (2023-03-13 15:46:09 +04=
+00)
+>
+> ----------------------------------------------------------------
+> QMP command to import win32 sockets
+>
+> ----------------------------------------------------------------
 
-We certainly try to do that: docs/meson.build says:
 
-  # If we're making warnings fatal, apply this to Sphinx runs as well
-  if get_option('werror')
-    SPHINX_ARGS +=3D [ '-W' ]
-  endif
+Applied, thanks.
 
-Has that broken ?
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.0
+for any user-visible changes.
 
 -- PMM

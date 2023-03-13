@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171448ejb;
-        Mon, 13 Mar 2023 04:47:00 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9Qlr1k3mChfaOM7UlWsBI73d9cn7tlyS9OCwKuUsEDwITxsFchPZfBGbe7ypwM/e4bbbBv
-X-Received: by 2002:a05:6214:d66:b0:56f:c948:411b with SMTP id 6-20020a0562140d6600b0056fc948411bmr14227795qvs.29.1678708020632;
-        Mon, 13 Mar 2023 04:47:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708020; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171503ejb;
+        Mon, 13 Mar 2023 04:47:05 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/hVc1MTUpaTnqTqFR2uBG7+tkU1BVF+g6M7DqvK2q7z2l4IOXBKOm7HhEZZiksMk4thos/
+X-Received: by 2002:a17:906:3087:b0:8b1:7eda:702e with SMTP id 7-20020a170906308700b008b17eda702emr34202568ejv.32.1678708025111;
+        Mon, 13 Mar 2023 04:47:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678708025; cv=none;
         d=google.com; s=arc-20160816;
-        b=lMCgroV+v68dKKYUMGPqRfSFRgcBpYigtduCdELlp4+jjFmysuT8QUMDLmUmWK9ZhK
-         ASZJu9SJKmK0a/oBRS/1z0Yqx4GK18Qpsv7F8js2VL0GXFIx1cQt4RVaN3cxqYbUt93h
-         loqvqyWfgaEdzQbPtGDLpVvFU6ZhMDoO4bKGlF20IEE9ZMV3ECzRs+wP/54ElIccxF1y
-         tDo1aicqapJ/uOmvI0XTrwxw2YTVJm6X2B7T9RPYHz8uRhORtndMLXjm8nYP/K5KCWaT
-         +o3EQWUpVo/ekLAPetEXM26W3VbnI1m/3kd2QZUsGI3PB6ZTq+9SWBe5qR8nQhrUApdd
-         gbpw==
+        b=Ldmki3VKXNOOgl95DVG0nifaOoh1EDBbq0A3IWCmyG7jaRRI5VDmCZiHzGP8Cv8n4R
+         1fHEzPGPoh2Zyf8nKLex/LrxI6nFvjgVBIxQzhoHVaaIqaWurlWtJa4B++0ODQqhnEtQ
+         XCcTokp+gHGLkGJPNEM6KTrZEmsroas9gwDQSHTYVEHWr6EPCzzHeZvArKxJ/B8Y7BV1
+         TguNtf/cSyVwoNE9uzn8reTMpqAZ0nSJ+RWUOpxV5NPp9domTDmSnLv6QmsVQXPqwYTW
+         6SdExsQETTLU8zjAGdH6cutwgy42yCDKi0vUc3ZLQPDxYAGRdVNzHkiKs/eLMr5rkG7r
+         0Jgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9CDG1QAa4TCDbCNsqeNWyQrEnH8MUpubsGVfZYyi7So=;
-        b=X5vF+ssyKVj4Z9wfngCLC+TCpD6yym7MhxwAHAoqbkeFTqgpmLYh4RPuOXUX5cPKGA
-         i/SVMCcdHsV8AI2UnN0AwYL8I3ctLCW047FrgFbIAPJFBKK3YiDKKI5UPLocWXDetHBj
-         R9SXeK+CQm2R1zBTGl3eDKnKpTE0bYX75ZtGddzg1quyNNwOefncfCPhXKcwQ7PHBE+0
-         PQ4ljFJ8fKiMl7t6CAGaWsTh+aeYkD8ngUBAJQ65/nR9w17InMA8WtSsC+FdqBHik1mS
-         JBfAq45FqaNyUs5ZBu9t7Khe0sn3/3MlMNiCfNuEEg5tEqROPcE/WBLKAXz8YrT2NfXw
-         SOmA==
+        bh=kXF6xwhHvbGVEA39/svzIufoa5QlnPAUqyPSW/tB6aw=;
+        b=AGw+kd0+3DQE+SOdPSE+qpQkSOzNqUWqAQeY3RUmMM0OA1nqczHvrxwRjHBiFwuhdw
+         DTfhC/+9qCIclYLkIKK72qobIAx+IPs7YEyIBYx3Lx/ReGF+HpIaRU1EwWhJ9+5iYwP9
+         QpgTSxdOOihG6wxbwuSN0n2Rd/2jE4GNg70/GqW+KDWROXMQ91sCyY2sN6FX7rKbiz9O
+         cyuGmLP9KJbPNO9Oer9ER6M72wmy6f52OIcXSbODsBsC8FVPCErk3Dms4JiqwLtfnict
+         cpiD7S9KhgKJk9TwhEYfMgbR587BGNpJBYObTWEt2vpRplLyLgjLNVF7xFXp3FID99aL
+         wOdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aYiP0ONO;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C1zqenTK;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id j14-20020a0cf30e000000b005a7c7e9dedfsi1635810qvl.404.2023.03.13.04.47.00
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id lc21-20020a170906dff500b008d02052ed2asi5136849ejc.637.2023.03.13.04.47.04
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:47:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 13 Mar 2023 04:47:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aYiP0ONO;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C1zqenTK;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708020;
+	s=mimecast20190719; t=1678708024;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9CDG1QAa4TCDbCNsqeNWyQrEnH8MUpubsGVfZYyi7So=;
-	b=aYiP0ONO/F4nqMJR8OYl/r+Zdq7RtPeR1iIfaDoZoce4ugno7lTYsZTdHy0khOuSbkp1wv
-	Bb4EensBIukkGjznmqvaR/dwYzboSOwmM1S/vU+ZFTQT0ZdxC7yU4+ykAAN8+vHrDurYKa
-	6ustyGRKKdVRMFtCfzKolzloicXabq0=
+	bh=kXF6xwhHvbGVEA39/svzIufoa5QlnPAUqyPSW/tB6aw=;
+	b=C1zqenTKXOBHC2qihzmresYFs3KBFLolc9+Szs/oVrKEuQpyYJw4A7udXwHLsl4dd0z7+b
+	VhInLtTZTgkH7VuKP631GtR2D27xmwNLbcOYEfPJ4dJewUP/PbqTO8v0t28EWHyoPxmv7u
+	jfGQKLAfmFOW9BlBVeX1Tfp0aCTnrcc=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-299-emax2tfLMTmqTd_2NZBT8A-1; Mon, 13 Mar 2023 07:46:57 -0400
-X-MC-Unique: emax2tfLMTmqTd_2NZBT8A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+ us-mta-610-lB2I-ezaPMGQyzKaN3P_Fw-1; Mon, 13 Mar 2023 07:47:01 -0400
+X-MC-Unique: lB2I-ezaPMGQyzKaN3P_Fw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 761871C04180;
-	Mon, 13 Mar 2023 11:46:56 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 72CC21C04183;
+	Mon, 13 Mar 2023 11:47:00 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 24BA21410F1B;
-	Mon, 13 Mar 2023 11:46:54 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AA4C91121315;
+	Mon, 13 Mar 2023 11:46:59 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -86,157 +86,48 @@ Cc: qemu-block@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 01/25] util: drop qemu_fork()
-Date: Mon, 13 Mar 2023 15:46:24 +0400
-Message-Id: <20230313114648.426607-2-marcandre.lureau@redhat.com>
+Subject: [PULL v2 02/25] tests: use closesocket()
+Date: Mon, 13 Mar 2023 15:46:25 +0400
+Message-Id: <20230313114648.426607-3-marcandre.lureau@redhat.com>
 In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-X-TUID: Cwrc3riERZZV
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+X-TUID: oCrOJhx1k6+F
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Fortunately, qemu_fork() is no longer used since commit
-a95570e3e4d6 ("io/command: use glib GSpawn, instead of open-coding
-fork/exec"). (GSpawn uses posix_spawn() whenever possible instead)
+Because they are actually sockets...
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230221124802.4103554-2-marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230221124802.4103554-3-marcandre.lureau@redhat.com>
 ---
- include/qemu/osdep.h | 14 ---------
- util/oslib-posix.c   | 70 --------------------------------------------
- util/oslib-win32.c   |  9 ------
- 3 files changed, 93 deletions(-)
+ tests/unit/socket-helpers.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 88c9facbf2..f68b5d8708 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -665,20 +665,6 @@ void qemu_prealloc_mem(int fd, char *area, size_t sz, int max_threads,
-  */
- char *qemu_get_pid_name(pid_t pid);
+diff --git a/tests/unit/socket-helpers.c b/tests/unit/socket-helpers.c
+index eecadf3a3c..914b3aa0cf 100644
+--- a/tests/unit/socket-helpers.c
++++ b/tests/unit/socket-helpers.c
+@@ -117,13 +117,13 @@ static int socket_can_bind_connect(const char *hostname, int family)
  
--/**
-- * qemu_fork:
-- *
-- * A version of fork that avoids signal handler race
-- * conditions that can lead to child process getting
-- * signals that are otherwise only expected by the
-- * parent. It also resets all signal handlers to the
-- * default settings.
-- *
-- * Returns 0 to child process, pid number to parent
-- * or -1 on failure.
-- */
--pid_t qemu_fork(Error **errp);
--
- /* Using intptr_t ensures that qemu_*_page_mask is sign-extended even
-  * when intptr_t is 32-bit and we are aligning a long long.
-  */
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 77d882e681..760390b31e 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -583,76 +583,6 @@ char *qemu_get_pid_name(pid_t pid)
- }
- 
- 
--pid_t qemu_fork(Error **errp)
--{
--    sigset_t oldmask, newmask;
--    struct sigaction sig_action;
--    int saved_errno;
--    pid_t pid;
--
--    /*
--     * Need to block signals now, so that child process can safely
--     * kill off caller's signal handlers without a race.
--     */
--    sigfillset(&newmask);
--    if (pthread_sigmask(SIG_SETMASK, &newmask, &oldmask) != 0) {
--        error_setg_errno(errp, errno,
--                         "cannot block signals");
--        return -1;
--    }
--
--    pid = fork();
--    saved_errno = errno;
--
--    if (pid < 0) {
--        /* attempt to restore signal mask, but ignore failure, to
--         * avoid obscuring the fork failure */
--        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
--        error_setg_errno(errp, saved_errno,
--                         "cannot fork child process");
--        errno = saved_errno;
--        return -1;
--    } else if (pid) {
--        /* parent process */
--
--        /* Restore our original signal mask now that the child is
--         * safely running. Only documented failures are EFAULT (not
--         * possible, since we are using just-grabbed mask) or EINVAL
--         * (not possible, since we are using correct arguments).  */
--        (void)pthread_sigmask(SIG_SETMASK, &oldmask, NULL);
--    } else {
--        /* child process */
--        size_t i;
--
--        /* Clear out all signal handlers from parent so nothing
--         * unexpected can happen in our child once we unblock
--         * signals */
--        sig_action.sa_handler = SIG_DFL;
--        sig_action.sa_flags = 0;
--        sigemptyset(&sig_action.sa_mask);
--
--        for (i = 1; i < NSIG; i++) {
--            /* Only possible errors are EFAULT or EINVAL The former
--             * won't happen, the latter we expect, so no need to check
--             * return value */
--            (void)sigaction(i, &sig_action, NULL);
--        }
--
--        /* Unmask all signals in child, since we've no idea what the
--         * caller's done with their signal mask and don't want to
--         * propagate that to children */
--        sigemptyset(&newmask);
--        if (pthread_sigmask(SIG_SETMASK, &newmask, NULL) != 0) {
--            Error *local_err = NULL;
--            error_setg_errno(&local_err, errno,
--                             "cannot unblock signals");
--            error_report_err(local_err);
--            _exit(1);
--        }
--    }
--    return pid;
--}
--
- void *qemu_alloc_stack(size_t *sz)
- {
-     void *ptr, *guardpage;
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index 07ade41800..528c9ee156 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -283,15 +283,6 @@ char *qemu_get_pid_name(pid_t pid)
- }
- 
- 
--pid_t qemu_fork(Error **errp)
--{
--    errno = ENOSYS;
--    error_setg_errno(errp, errno,
--                     "cannot fork child process");
--    return -1;
--}
--
--
- #undef connect
- int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
+  cleanup:
+     if (afd != -1) {
+-        close(afd);
++        closesocket(afd);
+     }
+     if (cfd != -1) {
+-        close(cfd);
++        closesocket(cfd);
+     }
+     if (lfd != -1) {
+-        close(lfd);
++        closesocket(lfd);
+     }
+     if (res) {
+         freeaddrinfo(res);
 -- 
 2.39.2

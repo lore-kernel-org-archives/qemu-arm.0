@@ -1,641 +1,198 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp1830284ejc;
-        Sun, 12 Mar 2023 14:07:29 -0700 (PDT)
-X-Google-Smtp-Source: AK7set97YsqqGplXXVkcMlrK0ijyFXFd/DqInTXHv60Xweya3jok7NzypYzePE4MIxu8jFeIoLva
-X-Received: by 2002:a05:622a:13ca:b0:3c0:3be7:8c91 with SMTP id p10-20020a05622a13ca00b003c03be78c91mr36939225qtk.37.1678655249446;
-        Sun, 12 Mar 2023 14:07:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678655249; cv=none;
+Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp2166216ejc;
+        Mon, 13 Mar 2023 00:14:17 -0700 (PDT)
+X-Google-Smtp-Source: AK7set92IFq8IECOV84DfBetad2+pJ/a7vOqwC8Yh0hyY6cCO9MyafCnRe8DBR5phVOyBQJNVNKE
+X-Received: by 2002:ad4:5d4e:0:b0:573:c1d9:df40 with SMTP id jk14-20020ad45d4e000000b00573c1d9df40mr12552152qvb.49.1678691657013;
+        Mon, 13 Mar 2023 00:14:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678691657; cv=none;
         d=google.com; s=arc-20160816;
-        b=jwutkHRLjJlrRvQ4jVk6LvM9NYeW+3GC11ZnZ+alveT6vx0Vn/xgAZI0m60gOw+g+C
-         Gj/m1uaRACh51mrT40Viyp5o+CmzhqHYrFkezQZQPBnfqIscC24uh9wvnuGgSZHEgwBz
-         OV8YT8itrIA+e1HBg4csbGT0RbuSr/pn3ZHrYL36mYqjIp4e+GK+M6b1TKIr4LZSBeYf
-         SAtWBS+FyzTmiptuBJpGO55tS+w3eUAKsTmKemdgsz83fD8tlloShk0ts5elWUhjBCS3
-         Kt2SsYcDtZfohNl9dRxEtaO70ZNyftqTirBVFKmGxj5ubIZh3YVXsxYSfvQundWyUKpw
-         iC+w==
+        b=DldfC+Nj5nxXdXo4lB5N2HBG+i2UVko+IpCRZ4DnqOisf3bmYHat+5cExVoY1ZyE2t
+         DW+Z4lAt3xT1d+lv+H1BdItFjENlADTFdbJ0/f3FFEXIvAVxprO1syf0rtIuVHBIvivt
+         0ZAyjErWOY4xyvH/i0cUCKGTUN1cI+/rSNB/fQ3qsvKauR4pduL2nHHDcSKoMqR4jfi1
+         75ycvCPjPx87bqQeVfC5kF51C9Jd0FJAJyQvSwOFT2883UR5LrNNjIs249YA2of8DBE3
+         Yauvqx+i9Ijb5Vw8Zsgq3aTtIr7EDjrHSaCU5xA/mF6pdovaGGb76iPUcdPnTsfd3LZ8
+         Fhiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=kRmbM9npo3sh3L3bARAvEs6tLmNBnK0JuHhyiaI3nn0=;
-        b=aSffhSIvHCdvGtEms6hVuEyGC/ygAPyLcZm1lY2KW1HQ69pdWCBN71KyMLNxPuyzTL
-         5I3gYKom/UOsTgXbBG/vJwpcTrXh5qa5fLAvYCvOcSIYGy50eP43NyHGBqy1MAxL5z8j
-         RMHIX9Ts5e0k/cFUGUvls1GJNzXNBuuryEvY0Z0uWNEwi1ESZatNyHF9Qk24G4JWUFpW
-         eK9h1E2HHEMgz2hfQB+bf0KKvb86VgEKpa3WElg1TCaa6Ghmxp3e/Z1aR7sElqT2QYfL
-         SV4KTPnuCrIr8dLkNhO3pu+HGSpnEDRjB6hcpUJnJ4I+yVf2ZlrgWk+mJ7Hp/H3PYvBT
-         ctcw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:from:subject:dkim-signature;
+        bh=cmRyXnIOyTjX7zkKLutbdXbLKJaXUEBZfMK37m3cVUQ=;
+        b=azMEbuffMTbjrJhj3hd1fpl9d+QdU453UEpvprT+ZOa/xCGEyUQww04ek9qLuSet1L
+         ujSAVhAaYgsqWSljXFpLlMGbCBzYNFyFByz8rLEjgi161tAIZVj/cDYRbNhOyCtchMg2
+         HrmWZdu87BpOgMMZqi+ViO4uJww5haDdUYi5VJi49I1LiiB+XMCIeMp5kUGdpN/M57Ll
+         /IYAxFn9l1jy731fQyWu1KwY76aC1DmAZvA5Zs85aUA6SWxLmk3DhGhUeXXjeO2t63ZA
+         Bz5TjEHGwBJpxnieLjzQQz+GkIy+kQzlCGCHX5yHe5pDDgJqHJMk1gg4ch4KpSab/kgz
+         DHtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=M8z5ny3X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ATG2346H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c2-20020a05622a024200b003b9fbc9642dsi4066969qtx.182.2023.03.12.14.07.29
+        by mx.google.com with ESMTPS id s18-20020ac85cd2000000b003b86aa56ae9si4952817qta.635.2023.03.13.00.14.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Mar 2023 14:07:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Mar 2023 00:14:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=M8z5ny3X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ATG2346H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pbSu9-0000WC-Hk; Sun, 12 Mar 2023 17:06:57 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pbcNP-00041u-QL; Mon, 13 Mar 2023 03:13:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pbSu7-0000Vd-RF; Sun, 12 Mar 2023 17:06:55 -0400
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pbSu5-0006kz-AN; Sun, 12 Mar 2023 17:06:55 -0400
-Received: by mail-qt1-x834.google.com with SMTP id r16so11370697qtx.9;
- Sun, 12 Mar 2023 14:06:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678655211;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=kRmbM9npo3sh3L3bARAvEs6tLmNBnK0JuHhyiaI3nn0=;
- b=M8z5ny3X7H5BnuqUv9Ndz3mnZK7aNAK3hBN4WrRP7lopMl3fbxN1UB1rj6Q2JdIhWg
- GkDXayn0ysss2LQq5+O5CdQ1payedOEsXxCLANijOtIqywm6PLcCi3bnq/fmdGu2uLRr
- kur9rhBlxG/Bwb5/Rz/73NvO1TX/4qQ10ENXmlPtFeM2ZBx/3zJgvV7qoTx961Qd7AhR
- GAWEeFvY0IncEe+/cwWJ0+aumIqJcsjMX9nB6GFcaTdhCAW8GC9INtFYnUTXO73W+s31
- BdJRu+1WLVWKetEk026+oVZM8QbG+lCZ0uZJEHWnLARkmOCmlSEgtk/rklvZWVAoLodN
- eR9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678655211;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=kRmbM9npo3sh3L3bARAvEs6tLmNBnK0JuHhyiaI3nn0=;
- b=t0Lgi1fUD1Yjr/rqP02X9Z2NKjMhqCi59zbmj6Pwg7oGC8l7xKea/LONS0kpov/NSL
- 4IvEvmqvM3eFAf7RJQlAVOqihMPR0lYKDdDs8IxMgYcp5t20BFM+rBdhthJ32bWvSKau
- xJERjIsXDVFu5fHMLIAyELHLh4eG+GQbb4HYZGzpgWY76Eac2zRC2ixuspZ4DyHOyUQ7
- MN+9MPxGPY21aMiYifMpykGHL72SWfH/2n2+I+N3Wj8NY54Bz0LEpp7xsIJu+gYNWWZd
- ygY14dEvPQOSETnwxH4u45922cGgNSSYlNT+E+/C5Y9RAPxWwybw2l+NxPkyZ3PBVwn8
- IdSQ==
-X-Gm-Message-State: AO0yUKU7Q46wQDdZ9cA8K7I9cq47f4/hlRN5vjKoLFO7dNSfLFPGCws2
- bzUs1HLqCA2JwRbIOaYAxmkaviNQEOqvkw==
-X-Received: by 2002:ac8:5888:0:b0:3c0:3d56:8c40 with SMTP id
- t8-20020ac85888000000b003c03d568c40mr34683144qta.62.1678655210958; 
- Sun, 12 Mar 2023 14:06:50 -0700 (PDT)
-Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::675])
- by smtp.gmail.com with ESMTPSA id
- s17-20020a05622a019100b003b86b088755sm4291290qtw.15.2023.03.12.14.06.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Mar 2023 14:06:50 -0700 (PDT)
-From: Dinah Baum <dinahbaum123@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Dinah Baum <dinahbaum123@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PATCH 1/2] cpu, qapi, target/arm, i386,
- s390x: Refactor query-cpu-model-expansion
-Date: Sun, 12 Mar 2023 17:06:23 -0400
-Message-Id: <20230312210624.2326264-2-dinahbaum123@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230312210624.2326264-1-dinahbaum123@gmail.com>
-References: <20230312210624.2326264-1-dinahbaum123@gmail.com>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pbcNO-00041X-Ng
+ for qemu-arm@nongnu.org; Mon, 13 Mar 2023 03:13:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pbcNM-0004es-0j
+ for qemu-arm@nongnu.org; Mon, 13 Mar 2023 03:13:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1678691623;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cmRyXnIOyTjX7zkKLutbdXbLKJaXUEBZfMK37m3cVUQ=;
+ b=ATG2346Hw3pTm9KV4WgrjzjLJyGJil7zNy5L7I/NIlMKZN4dP/ERUcl66ErefJmAlPgq31
+ 30edVlPsV9dUhu6FET33M7jV7b8AGjj3RH1deCZ6wPNrI1VMA6CxQAtsFKhdZjqc0Xq04Y
+ nrZFDpq18gPevDuStFPnljKUz6p/XlI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-47-dfdI401PMTWjg5cvvLN3cA-1; Mon, 13 Mar 2023 03:13:36 -0400
+X-MC-Unique: dfdI401PMTWjg5cvvLN3cA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 58200101A55E;
+ Mon, 13 Mar 2023 07:13:36 +0000 (UTC)
+Received: from [10.72.13.125] (ovpn-13-125.pek2.redhat.com [10.72.13.125])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D61F40C20FA;
+ Mon, 13 Mar 2023 07:13:29 +0000 (UTC)
+Subject: Re: [PATCH v2 0/4] hw/arm/virt: Support dirty ring
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
+ cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com, maz@kernel.org,
+ zhenyzha@redhat.com, shan.gavin@gmail.com
+References: <20230227042629.339747-1-gshan@redhat.com>
+Message-ID: <a4a28aca-449e-0b95-c3ca-e036b82d76e7@redhat.com>
+Date: Mon, 13 Mar 2023 15:13:26 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
- envelope-from=dinahbaum123@gmail.com; helo=mail-qt1-x834.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20230227042629.339747-1-gshan@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GLYOEXKGcEyt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CVSQrUNuYau9
 
-This patch enables 'query-cpu-model-expansion' on all
-architectures. Only architectures that implement
-the command will return results, others will return an
-error message as before.
+On 2/27/23 12:26 PM, Gavin Shan wrote:
+> This series intends to support dirty ring for live migration for arm64. The
+> dirty ring use discrete buffer to track dirty pages. For arm64, the speciality
+> is to use backup bitmap to track dirty pages when there is no-running-vcpu
+> context. It's known that the backup bitmap needs to be synchronized when
+> KVM device "kvm-arm-gicv3" or "arm-its-kvm" has been enabled. The backup
+> bitmap is collected in the last stage of migration. The policy here is to
+> always enable the backup bitmap extension. The overhead to synchronize the
+> backup bitmap in the last stage of migration, when those two devices aren't
+> used, is introduced. However, the overhead should be very small and acceptable.
+> The benefit is to support future cases where those two devices are used without
+> modifying the code.
+> 
+> PATCH[1] add migration last stage indicator
+> PATCH[2] synchronize the backup bitmap in the last stage of migration
+> PATCH[3] add helper kvm_dirty_ring_init() to enable dirty ring
+> PATCH[4] enable dirty ring for arm64
+> 
+>     v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00434.html
+> RFCv1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00171.html
+> 
+> Testing
+> =======
+> (1) kvm-unit-tests/its-pending-migration and kvm-unit-tests/its-migration with
+>      dirty ring or normal dirty page tracking mechanism. All test cases passed.
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+>      ./its-pending-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+>      ./its-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+>      ./its-pending-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+>      ./its-migration
+> 
+> (2) Combinations of migration, post-copy migration, e1000e and virtio-net
+>      devices. All test cases passed.
+> 
+>      -netdev tap,id=net0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown  \
+>      -device e1000e,bus=pcie.5,netdev=net0,mac=52:54:00:f1:26:a0
+> 
+>      -netdev tap,id=vnet0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+>      -device virtio-net-pci,bus=pcie.6,netdev=vnet0,mac=52:54:00:f1:26:b0
+> 
+> Changelog
+> =========
+> v2:
+>    * Drop PATCH[v1 1/6] to synchronize linux-headers                            (Gavin)
+>    * More restrictive comments about struct MemoryListener::log_sync_global     (PeterX)
+>    * Always enable the backup bitmap extension                                  (PeterM)
+> v1:
+>    * Combine two patches into one PATCH[v1 2/6] for the last stage indicator    (PeterX)
+>    * Drop the secondary bitmap and use the original one directly                (Juan)
+>    * Avoid "goto out" in helper kvm_dirty_ring_init()                           (Juan)
+> 
 
-This patch lays the groundwork for parsing a
--cpu cpu,help option as specified in
-https://gitlab.com/qemu-project/qemu/-/issues/1480
+Ping, Paolo and Peter Maydell. Please take a look to see if it can be
+merged, thanks!
 
-Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
----
- MAINTAINERS                      |   1 +
- cpu.c                            |  20 +++++
- include/exec/cpu-common.h        |   8 ++
- qapi/machine-target-common.json  | 129 +++++++++++++++++++++++++++++++
- qapi/machine-target.json         | 129 +------------------------------
- qapi/meson.build                 |   1 +
- target/arm/arm-qmp-cmds.c        |   7 +-
- target/arm/cpu.h                 |   7 +-
- target/i386/cpu-sysemu.c         |   7 +-
- target/i386/cpu.h                |   6 ++
- target/s390x/cpu.h               |   7 ++
- target/s390x/cpu_models_sysemu.c |   6 +-
- 12 files changed, 189 insertions(+), 139 deletions(-)
- create mode 100644 qapi/machine-target-common.json
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2f2f4de7cc..d025df477e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1750,6 +1750,7 @@ F: hw/core/numa.c
- F: hw/cpu/cluster.c
- F: qapi/machine.json
- F: qapi/machine-target.json
-+F: qapi/machine-target-common.json
- F: include/hw/boards.h
- F: include/hw/core/cpu.h
- F: include/hw/cpu/cluster.h
-diff --git a/cpu.c b/cpu.c
-index 567b23af46..c09edc4556 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -291,6 +291,26 @@ void list_cpus(const char *optarg)
- #endif
- }
- 
-+CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
-+                                                    CpuModelInfo *model,
-+                                                    Error **errp)
-+{
-+    /* XXX: implement cpu_model_expansion for targets that still miss it */
-+#if defined(cpu_model_expansion)
-+    return cpu_model_expansion(type, model, errp);
-+#else
-+    error_setg(errp, "Could not query cpu model information");
-+    return NULL;
-+#endif
-+}
-+
-+CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-+                                                     CpuModelInfo *model,
-+                                                     Error **errp)
-+{
-+    return get_cpu_model_expansion_info(type, model, errp);
-+}
-+
- #if defined(CONFIG_USER_ONLY)
- void tb_invalidate_phys_addr(target_ulong addr)
- {
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 6feaa40ca7..ec6024dfde 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -7,6 +7,8 @@
- #include "exec/hwaddr.h"
- #endif
- 
-+#include "qapi/qapi-commands-machine-target-common.h"
-+
- /**
-  * vaddr:
-  * Type wide enough to contain any #target_ulong virtual address.
-@@ -166,5 +168,11 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
- extern int singlestep;
- 
- void list_cpus(const char *optarg);
-+typedef void (*cpu_model_expansion_func)(CpuModelExpansionType type,
-+                                         CpuModelInfo *model,
-+                                         Error **errp);
-+CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
-+                                                    CpuModelInfo *model,
-+                                                    Error **errp);
- 
- #endif /* CPU_COMMON_H */
-diff --git a/qapi/machine-target-common.json b/qapi/machine-target-common.json
-new file mode 100644
-index 0000000000..e0374c5366
---- /dev/null
-+++ b/qapi/machine-target-common.json
-@@ -0,0 +1,129 @@
-+# -*- Mode: Python -*-
-+# vim: filetype=python
-+
-+##
-+# = Common data types for machine target commands
-+##
-+
-+##
-+# @CpuModelInfo:
-+#
-+# Virtual CPU model.
-+#
-+# A CPU model consists of the name of a CPU definition, to which
-+# delta changes are applied (e.g. features added/removed). Most magic values
-+# that an architecture might require should be hidden behind the name.
-+# However, if required, architectures can expose relevant properties.
-+#
-+# @name: the name of the CPU definition the model is based on
-+# @props: a dictionary of QOM properties to be applied
-+#
-+# Since: 2.8
-+##
-+{ 'struct': 'CpuModelInfo',
-+'data': { 'name': 'str',
-+          '*props': 'any' } }
-+
-+##
-+# @CpuModelExpansionType:
-+#
-+# An enumeration of CPU model expansion types.
-+#
-+# @static: Expand to a static CPU model, a combination of a static base
-+#          model name and property delta changes. As the static base model will
-+#          never change, the expanded CPU model will be the same, independent of
-+#          QEMU version, machine type, machine options, and accelerator options.
-+#          Therefore, the resulting model can be used by tooling without having
-+#          to specify a compatibility machine - e.g. when displaying the "host"
-+#          model. The @static CPU models are migration-safe.
-+
-+# @full: Expand all properties. The produced model is not guaranteed to be
-+#        migration-safe, but allows tooling to get an insight and work with
-+#        model details.
-+#
-+# Note: When a non-migration-safe CPU model is expanded in static mode, some
-+#       features enabled by the CPU model may be omitted, because they can't be
-+#       implemented by a static CPU model definition (e.g. cache info passthrough and
-+#       PMU passthrough in x86). If you need an accurate representation of the
-+#       features enabled by a non-migration-safe CPU model, use @full. If you need a
-+#       static representation that will keep ABI compatibility even when changing QEMU
-+#       version or machine-type, use @static (but keep in mind that some features may
-+#       be omitted).
-+#
-+# Since: 2.8
-+##
-+{ 'enum': 'CpuModelExpansionType',
-+  'data': [ 'static', 'full' ] }
-+
-+##
-+# @CpuModelCompareResult:
-+#
-+# An enumeration of CPU model comparison results. The result is usually
-+# calculated using e.g. CPU features or CPU generations.
-+#
-+# @incompatible: If model A is incompatible to model B, model A is not
-+#                guaranteed to run where model B runs and the other way around.
-+#
-+# @identical: If model A is identical to model B, model A is guaranteed to run
-+#             where model B runs and the other way around.
-+#
-+# @superset: If model A is a superset of model B, model B is guaranteed to run
-+#            where model A runs. There are no guarantees about the other way.
-+#
-+# @subset: If model A is a subset of model B, model A is guaranteed to run
-+#          where model B runs. There are no guarantees about the other way.
-+#
-+# Since: 2.8
-+##
-+{ 'enum': 'CpuModelCompareResult',
-+  'data': [ 'incompatible', 'identical', 'superset', 'subset' ] }
-+
-+##
-+# @CpuModelExpansionInfo:
-+#
-+# The result of a cpu model expansion.
-+#
-+# @model: the expanded CpuModelInfo.
-+#
-+# Since: 2.8
-+##
-+{ 'struct': 'CpuModelExpansionInfo',
-+  'data': { 'model': 'CpuModelInfo' } }
-+
-+##
-+# @query-cpu-model-expansion:
-+#
-+# Expands a given CPU model (or a combination of CPU model + additional options)
-+# to different granularities, allowing tooling to get an understanding what a
-+# specific CPU model looks like in QEMU under a certain configuration.
-+#
-+# This interface can be used to query the "host" CPU model.
-+#
-+# The data returned by this command may be affected by:
-+#
-+# * QEMU version: CPU models may look different depending on the QEMU version.
-+#   (Except for CPU models reported as "static" in query-cpu-definitions.)
-+# * machine-type: CPU model  may look different depending on the machine-type.
-+#   (Except for CPU models reported as "static" in query-cpu-definitions.)
-+# * machine options (including accelerator): in some architectures, CPU models
-+#   may look different depending on machine and accelerator options. (Except for
-+#   CPU models reported as "static" in query-cpu-definitions.)
-+# * "-cpu" arguments and global properties: arguments to the -cpu option and
-+#   global properties may affect expansion of CPU models. Using
-+#   query-cpu-model-expansion while using these is not advised.
-+#
-+# Some architectures may not support all expansion types. s390x supports
-+# "full" and "static". Arm only supports "full".
-+#
-+# Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
-+#          not supported, if the model cannot be expanded, if the model contains
-+#          an unknown CPU definition name, unknown properties or properties
-+#          with a wrong type. Also returns an error if an expansion type is
-+#          not supported.
-+#
-+# Since: 2.8
-+##
-+{ 'command': 'query-cpu-model-expansion',
-+  'data': { 'type': 'CpuModelExpansionType',
-+  'model': 'CpuModelInfo' },
-+  'returns': 'CpuModelExpansionInfo' }
-diff --git a/qapi/machine-target.json b/qapi/machine-target.json
-index 2e267fa458..cfc8b0c7f8 100644
---- a/qapi/machine-target.json
-+++ b/qapi/machine-target.json
-@@ -4,78 +4,7 @@
- # This work is licensed under the terms of the GNU GPL, version 2 or later.
- # See the COPYING file in the top-level directory.
- 
--##
--# @CpuModelInfo:
--#
--# Virtual CPU model.
--#
--# A CPU model consists of the name of a CPU definition, to which
--# delta changes are applied (e.g. features added/removed). Most magic values
--# that an architecture might require should be hidden behind the name.
--# However, if required, architectures can expose relevant properties.
--#
--# @name: the name of the CPU definition the model is based on
--# @props: a dictionary of QOM properties to be applied
--#
--# Since: 2.8
--##
--{ 'struct': 'CpuModelInfo',
--  'data': { 'name': 'str',
--            '*props': 'any' } }
--
--##
--# @CpuModelExpansionType:
--#
--# An enumeration of CPU model expansion types.
--#
--# @static: Expand to a static CPU model, a combination of a static base
--#          model name and property delta changes. As the static base model will
--#          never change, the expanded CPU model will be the same, independent of
--#          QEMU version, machine type, machine options, and accelerator options.
--#          Therefore, the resulting model can be used by tooling without having
--#          to specify a compatibility machine - e.g. when displaying the "host"
--#          model. The @static CPU models are migration-safe.
--
--# @full: Expand all properties. The produced model is not guaranteed to be
--#        migration-safe, but allows tooling to get an insight and work with
--#        model details.
--#
--# Note: When a non-migration-safe CPU model is expanded in static mode, some
--#       features enabled by the CPU model may be omitted, because they can't be
--#       implemented by a static CPU model definition (e.g. cache info passthrough and
--#       PMU passthrough in x86). If you need an accurate representation of the
--#       features enabled by a non-migration-safe CPU model, use @full. If you need a
--#       static representation that will keep ABI compatibility even when changing QEMU
--#       version or machine-type, use @static (but keep in mind that some features may
--#       be omitted).
--#
--# Since: 2.8
--##
--{ 'enum': 'CpuModelExpansionType',
--  'data': [ 'static', 'full' ] }
--
--##
--# @CpuModelCompareResult:
--#
--# An enumeration of CPU model comparison results. The result is usually
--# calculated using e.g. CPU features or CPU generations.
--#
--# @incompatible: If model A is incompatible to model B, model A is not
--#                guaranteed to run where model B runs and the other way around.
--#
--# @identical: If model A is identical to model B, model A is guaranteed to run
--#             where model B runs and the other way around.
--#
--# @superset: If model A is a superset of model B, model B is guaranteed to run
--#            where model A runs. There are no guarantees about the other way.
--#
--# @subset: If model A is a subset of model B, model A is guaranteed to run
--#          where model B runs. There are no guarantees about the other way.
--#
--# Since: 2.8
--##
--{ 'enum': 'CpuModelCompareResult',
--  'data': [ 'incompatible', 'identical', 'superset', 'subset' ] }
-+{ 'include': 'machine-target-common.json' }
- 
- ##
- # @CpuModelBaselineInfo:
-@@ -201,62 +130,6 @@
-   'returns': 'CpuModelBaselineInfo',
-   'if': 'TARGET_S390X' }
- 
--##
--# @CpuModelExpansionInfo:
--#
--# The result of a cpu model expansion.
--#
--# @model: the expanded CpuModelInfo.
--#
--# Since: 2.8
--##
--{ 'struct': 'CpuModelExpansionInfo',
--  'data': { 'model': 'CpuModelInfo' },
--  'if': { 'any': [ 'TARGET_S390X',
--                   'TARGET_I386',
--                   'TARGET_ARM' ] } }
--
--##
--# @query-cpu-model-expansion:
--#
--# Expands a given CPU model (or a combination of CPU model + additional options)
--# to different granularities, allowing tooling to get an understanding what a
--# specific CPU model looks like in QEMU under a certain configuration.
--#
--# This interface can be used to query the "host" CPU model.
--#
--# The data returned by this command may be affected by:
--#
--# * QEMU version: CPU models may look different depending on the QEMU version.
--#   (Except for CPU models reported as "static" in query-cpu-definitions.)
--# * machine-type: CPU model  may look different depending on the machine-type.
--#   (Except for CPU models reported as "static" in query-cpu-definitions.)
--# * machine options (including accelerator): in some architectures, CPU models
--#   may look different depending on machine and accelerator options. (Except for
--#   CPU models reported as "static" in query-cpu-definitions.)
--# * "-cpu" arguments and global properties: arguments to the -cpu option and
--#   global properties may affect expansion of CPU models. Using
--#   query-cpu-model-expansion while using these is not advised.
--#
--# Some architectures may not support all expansion types. s390x supports
--# "full" and "static". Arm only supports "full".
--#
--# Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
--#          not supported, if the model cannot be expanded, if the model contains
--#          an unknown CPU definition name, unknown properties or properties
--#          with a wrong type. Also returns an error if an expansion type is
--#          not supported.
--#
--# Since: 2.8
--##
--{ 'command': 'query-cpu-model-expansion',
--  'data': { 'type': 'CpuModelExpansionType',
--            'model': 'CpuModelInfo' },
--  'returns': 'CpuModelExpansionInfo',
--  'if': { 'any': [ 'TARGET_S390X',
--                   'TARGET_I386',
--                   'TARGET_ARM' ] } }
--
- ##
- # @CpuDefinitionInfo:
- #
-diff --git a/qapi/meson.build b/qapi/meson.build
-index 9fd480c4d8..48be47170f 100644
---- a/qapi/meson.build
-+++ b/qapi/meson.build
-@@ -38,6 +38,7 @@ qapi_all_modules = [
-   'job',
-   'machine',
-   'machine-target',
-+  'machine-target-common',
-   'migration',
-   'misc',
-   'misc-target',
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index c8fa524002..e591e7c362 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -21,6 +21,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "cpu.h"
- #include "hw/boards.h"
- #include "kvm_arm.h"
- #include "qapi/error.h"
-@@ -99,9 +100,9 @@ static const char *cpu_model_advertised_features[] = {
-     NULL
- };
- 
--CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                     CpuModelInfo *model,
--                                                     Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     CpuModelExpansionInfo *expansion_info;
-     const QDict *qdict_in = NULL;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c097cae988..d5dcc2ef11 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2660,7 +2660,12 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
- 
- #define cpu_list arm_cpu_list
--
-+#ifdef CONFIG_SOFTMMU
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- /* ARM has the following "translation regimes" (as the ARM ARM calls them):
-  *
-  * If EL3 is 64-bit:
-diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-index 28115edf44..c01c85839c 100644
---- a/target/i386/cpu-sysemu.c
-+++ b/target/i386/cpu-sysemu.c
-@@ -176,10 +176,9 @@ out:
-     return xc;
- }
- 
--CpuModelExpansionInfo *
--qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                      CpuModelInfo *model,
--                                                      Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     X86CPU *xc = NULL;
-     Error *err = NULL;
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index d243e290d3..7ab633c642 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -2209,6 +2209,12 @@ uint64_t cpu_get_tsc(CPUX86State *env);
- #endif
- 
- #define cpu_list x86_cpu_list
-+#ifdef CONFIG_SOFTMMU
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- 
- /* MMU modes definitions */
- #define MMU_KSMAP_IDX   0
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index 7d6d01325b..e67a2b386e 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -799,6 +799,13 @@ void s390_cpu_list(void);
- void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
-                              const S390FeatInit feat_init);
- 
-+#ifdef CONFIG_SOFTMMU
-+/* cpu_models-sysemu.c */
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- 
- /* helper.c */
- #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
-diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
-index 63981bf36b..ef3845f11c 100644
---- a/target/s390x/cpu_models_sysemu.c
-+++ b/target/s390x/cpu_models_sysemu.c
-@@ -213,9 +213,9 @@ static void cpu_info_from_model(CpuModelInfo *info, const S390CPUModel *model,
-     }
- }
- 
--CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                      CpuModelInfo *model,
--                                                      Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     Error *err = NULL;
-     CpuModelExpansionInfo *expansion_info = NULL;
--- 
-2.30.2
+> 
+> Gavin Shan (4):
+>    migration: Add last stage indicator to global dirty log
+>      synchronization
+>    kvm: Synchronize the backup bitmap in the last stage
+>    kvm: Add helper kvm_dirty_ring_init()
+>    kvm: Enable dirty ring for arm64
+> 
+>   accel/kvm/kvm-all.c      | 108 ++++++++++++++++++++++++++++-----------
+>   include/exec/memory.h    |   7 ++-
+>   include/sysemu/kvm_int.h |   1 +
+>   migration/dirtyrate.c    |   4 +-
+>   migration/ram.c          |  20 ++++----
+>   softmmu/memory.c         |  10 ++--
+>   6 files changed, 101 insertions(+), 49 deletions(-)
+> 
 

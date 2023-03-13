@@ -1,217 +1,152 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp148804ejb;
-        Mon, 13 Mar 2023 04:17:16 -0700 (PDT)
-X-Google-Smtp-Source: AK7set86SdbiMyk/HwxvNUPSg187TvFEJE6fo5UpIrznbhscB9XIkLUgQzP4ULRQI6hDhrw1V9/Q
-X-Received: by 2002:a17:906:2756:b0:878:79e6:4672 with SMTP id a22-20020a170906275600b0087879e64672mr29793939ejd.42.1678706236282;
-        Mon, 13 Mar 2023 04:17:16 -0700 (PDT)
-Return-Path: <Luis.Machado@arm.com>
-Received: from EUR02-DB5-obe.outbound.protection.outlook.com (mail-db5eur02on20629.outbound.protection.outlook.com. [2a01:111:f400:fe12::629])
-        by mx.google.com with ESMTPS id f11-20020a170906084b00b008ce03a3825esi6906674ejd.138.2023.03.13.04.17.16
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 Mar 2023 04:17:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of luis.machado@arm.com designates 2a01:111:f400:fe12::629 as permitted sender) client-ip=2a01:111:f400:fe12::629;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp153099ejb;
+        Mon, 13 Mar 2023 04:22:32 -0700 (PDT)
+X-Received: by 2002:a17:90b:4d8a:b0:233:d181:5b75 with SMTP id oj10-20020a17090b4d8a00b00233d1815b75mr34433956pjb.31.1678706552156;
+        Mon, 13 Mar 2023 04:22:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678706552; cv=none;
+        d=google.com; s=arc-20160816;
+        b=y1EDOatElHPbWQhaMS69/4Uglmq0W3lza6aQDNFrYPZ5/fBHW0LOgwhY1q852h8F/l
+         S/zqQ3YfHMS1zhT35fqjWxPDU7A1oN9ptnNXpKoO7hsSsh2yKPxAcnJOqEseT5PZClLS
+         E/BboJNfBZ9Era8cADWt0zd1CYrMoUPGTk+6347AmrAGIfIwviPpu2YPfsHaY45obG3q
+         2wJl/rL7zyyPRMHidsbQ+LgTBfKugXXez8iv/1/rruHFNd5bdyZn+rF4XD4a+c2UrW6D
+         yfMn21Ba8GOoYtyppa3+rnFr/+LwG2OhKehqW0KMB6p1hvwZIl61+L0UZxJW/6SNk/dh
+         VlRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=4Jjp0IPjDVjgkZ8bmvKpZIv0/9hsebzJcUCPvBP48yQ=;
+        b=GcCL7OJLaFtWEpYIEHhag1s+O+3eTUtLuK8ctwKcYJxmK1NyWhS8sQuKFswSMDGCyn
+         lrGhs+xxbzdQy8VL50+ech4G3fhVGaSAtn4jIaXBqXlpTTfZPT97PJ4+f97MVR7x1mAu
+         0u+WLr6wPBkS1m3L3oDmXJcyIZ/8BeQOxa2scVG6OrTjk3YRVbodX99u0+4ORW+neG+H
+         yq+Fom9XD6HmVvJ+waKaDWdoo6hs3p6bezXzIhPBwQOH985lcIx36cAKq4tRG2J4qevy
+         CJPTeL7zhq0wagM0qkrZz3f/RiUDPsFR8uotqCHxXSfcH50Fd1GHnZRORbOpthT+sKGK
+         4U0w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AMYDPaSj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x24-20020a17090aca1800b0023b3a78aef1sor1663370pjt.29.2023.03.13.04.22.31
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 13 Mar 2023 04:22:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@armh.onmicrosoft.com header.s=selector2-armh-onmicrosoft-com header.b=tGhAp4DZ;
-       dkim=pass header.i=@armh.onmicrosoft.com header.s=selector2-armh-onmicrosoft-com header.b=tGhAp4DZ;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of luis.machado@arm.com designates 2a01:111:f400:fe12::629 as permitted sender) smtp.mailfrom=Luis.Machado@arm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com;
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LWZGioujfaAhTBBKE+UsXQw2yEoGFBszdJhcFKOEYP4=;
- b=tGhAp4DZs+jy7yzeyT2JZ8QkELJS6q4GcXFh+T10a43ivu4dFaUPDxXb4ZAaZl2DmUd17c+6ZTgvElaGz2UR/KXcUuTaQJHYfApraZQY57fEwSJ1R5jYPje2IUni/O4Q3Aat95736IZCb5Ed1IP2hXHm9+fUO+0TmYZ08h9foMY=
-Received: from AM6PR02CA0032.eurprd02.prod.outlook.com (2603:10a6:20b:6e::45)
- by DU0PR08MB7788.eurprd08.prod.outlook.com (2603:10a6:10:3b7::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Mon, 13 Mar
- 2023 11:17:05 +0000
-Received: from VI1EUR03FT055.eop-EUR03.prod.protection.outlook.com
- (2603:10a6:20b:6e:cafe::a5) by AM6PR02CA0032.outlook.office365.com
- (2603:10a6:20b:6e::45) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.25 via Frontend
- Transport; Mon, 13 Mar 2023 11:17:05 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 63.35.35.123)
- smtp.mailfrom=arm.com; dkim=pass (signature was verified)
- header.d=armh.onmicrosoft.com;dmarc=pass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 63.35.35.123 as permitted sender) receiver=protection.outlook.com;
- client-ip=63.35.35.123; helo=64aa7808-outbound-1.mta.getcheckrecipient.com;
- pr=C
-Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
- VI1EUR03FT055.mail.protection.outlook.com (100.127.144.130) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6199.11 via Frontend Transport; Mon, 13 Mar 2023 11:17:05 +0000
-Received: ("Tessian outbound 2ba0ed2ebb9f:v135"); Mon, 13 Mar 2023 11:17:04 +0000
-X-CheckRecipientChecked: true
-X-CR-MTA-CID: b42f859e155cd76d
-X-CR-MTA-TID: 64aa7808
-Received: from ff3b6723b420.1
-	by 64aa7808-outbound-1.mta.getcheckrecipient.com id 1D0BE1B6-9708-4D7F-B454-DD15F5728F64.1;
-	Mon, 13 Mar 2023 11:16:57 +0000
-Received: from EUR05-AM6-obe.outbound.protection.outlook.com
-    by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id ff3b6723b420.1
-    (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384);
-    Mon, 13 Mar 2023 11:16:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XS3fi8Hb6Tx0ron0GcGew9SnY+FCbhRMRmKdIAftfd1UlD/sDO5kZ4XSpDf+oiGOoQJ14Ycxa4fGVmGjJ/ypAADiOGZ81ALMhKXrZjBSeRm6O5hXGGu7Jw0CQVpt6wgEbo/X2VcVSkwmdDJDpcKOUt1OQKK6+pULjgcg/fPeLk0ToJI/ao8xxhoNxn49Sn8p+bOCIjxU2H2pxMe0vKYiPsbMILZivLUTexJgYtLuU0Jv6zRW78hdXzxxl05GLiribu8SBoXE9aFDC4J8hLG7PdcYYyzCjQC/3W+mWiPvHg3slUrsNVrxC/whvy9yuQvS2x6YP807Zy/8bn4oJJxthg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LWZGioujfaAhTBBKE+UsXQw2yEoGFBszdJhcFKOEYP4=;
- b=esJI9kjOu+PqBS0eFpBpuzXRNydeBmtKfJttxSUz7UKIbK9bem9VMJqlgLqd9e06/xpvwLGYMXyIIHhxInYyblYXHpIdY+99JzhqbImCaPDN3+6S4GPakE8b4mb3dtN3NDS6pd5zX2DSchGg7trmFi6i8TAr8BS0ftYqRCq8otYveOhyopthBOhowZgddWTBZz3Uzeh3qbqFrz2VFQ95iKK1sHvJaat8RO4WNBySwKOMXlSEL55w3euHTEJA3PLcXZ/Ll6ouFGzCf9a7R4F1PGgcN1FpsyztGai1+cipQ3NP6kJOKibYXGoWQlh1beKjqzbMV39GmDJwGzj8zDEj6g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com;
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LWZGioujfaAhTBBKE+UsXQw2yEoGFBszdJhcFKOEYP4=;
- b=tGhAp4DZs+jy7yzeyT2JZ8QkELJS6q4GcXFh+T10a43ivu4dFaUPDxXb4ZAaZl2DmUd17c+6ZTgvElaGz2UR/KXcUuTaQJHYfApraZQY57fEwSJ1R5jYPje2IUni/O4Q3Aat95736IZCb5Ed1IP2hXHm9+fUO+0TmYZ08h9foMY=
-Authentication-Results-Original: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=arm.com;
-Received: from VI1PR08MB3919.eurprd08.prod.outlook.com (2603:10a6:803:c4::31)
- by PAXPR08MB6367.eurprd08.prod.outlook.com (2603:10a6:102:15b::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Mon, 13 Mar
- 2023 11:16:55 +0000
-Received: from VI1PR08MB3919.eurprd08.prod.outlook.com
- ([fe80::bced:32a3:b77e:90a6]) by VI1PR08MB3919.eurprd08.prod.outlook.com
- ([fe80::bced:32a3:b77e:90a6%3]) with mapi id 15.20.6178.024; Mon, 13 Mar 2023
- 11:16:55 +0000
-Message-ID: <0603036f-ac1c-3b04-4ea2-eb3967768df2@arm.com>
-Date: Mon, 13 Mar 2023 11:16:42 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, Cleber Rosa <crosa@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-10-alex.bennee@linaro.org>
- <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
- <87wn3ocwqz.fsf@suse.de>
- <CAFEAcA_bjTPO+68gV0V7436S2n=iJAoH3qXGw1v9-xhG2N0CLA@mail.gmail.com>
-From: Luis Machado <luis.machado@arm.com>
-In-Reply-To: <CAFEAcA_bjTPO+68gV0V7436S2n=iJAoH3qXGw1v9-xhG2N0CLA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-ClientProxiedBy: SN7P222CA0028.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:124::9) To VI1PR08MB3919.eurprd08.prod.outlook.com
- (2603:10a6:803:c4::31)
+       dkim=pass header.i=@linaro.org header.s=google header.b=AMYDPaSj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1678706551;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4Jjp0IPjDVjgkZ8bmvKpZIv0/9hsebzJcUCPvBP48yQ=;
+        b=AMYDPaSjO1y7vsQs9thCPMwWmmNap9e/HKQiPeVnKN7HD0n17Dj+mRwUca4pzqmTsn
+         OibzLZQJ/LTPjoI+rSeKhI2myVuv+CxghYJvNCK3r9gNQrDPrI6qFvwk9EBwqXXKBP71
+         4QunV9KdboQ3LfBkVD+LcysKBUEQVvY5lrjeAa8BLYPTp8+43xO/z1bCVNUs79rIAtdw
+         FBV4mTE+p+P+loUk0CvuN0SdboxkgyLTt5OlRCaCWJx1nRlp9lUbfTg/1TffFCIegw06
+         gY41+4ulT0vOcFwl6psUs7Af2crQpGSHEX4k4+YpxKFwWl1ti2j+IT0JTlW3yRAFlKGy
+         Zx4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678706551;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4Jjp0IPjDVjgkZ8bmvKpZIv0/9hsebzJcUCPvBP48yQ=;
+        b=Z5lSEub1maVH+DErSB0tWGJNK0wTZLM6LV1ayWvn5ILZzNFJ2DUKzyhOjhIT14dWR8
+         efLU0l0UYwqaGDp6zhGFCIAb6Kb+6KCQm9ey2WV8qSvwiTsF3E7tqxHH3KGdlqqp+eno
+         2wPu97u7RUlCOT3BRlBfqNeFXpVKbLWtWrjWBG9qucgNgf+p8uBjpcO8Ccs2N/CZT2sF
+         et9h9b5CxQZdW3e2eMI8wmjnfmvBlTzvJLMSzgN+lYSx3SMr4btfgBOLbUiODAZCJinh
+         R9PpheGCnpq2NjrqvNVXuCbpC4t53hco2Nf9rsNibThoAzouP5RJcITXwjQSDQG9Ak6r
+         vOsg==
+X-Gm-Message-State: AO0yUKX2FYmYOeXW3OxguHdNcYVhqVIUBTuvGdYMdNpetc+5HrD++dQx
+	a6k9/k1luQO4ITOXN9dYPuxYtpSSel7Gjtu0ghtD9fLnUqcmkGmG7zI=
+X-Google-Smtp-Source: AK7set/68yCaI9xux4n/yisEv3YmWfA8kifJI6mmxM/y5Y+d/JTxDSR77mEmBGnxMJqDzra5DCVbwDfKw2iKdfS9rXI=
+X-Received: by 2002:a17:90b:23d2:b0:23d:20c:2065 with SMTP id
+ md18-20020a17090b23d200b0023d020c2065mr1135077pjb.1.1678706551656; Mon, 13
+ Mar 2023 04:22:31 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-TrafficTypeDiagnostic:
-	VI1PR08MB3919:EE_|PAXPR08MB6367:EE_|VI1EUR03FT055:EE_|DU0PR08MB7788:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1eec47dc-80c1-4c89-47f2-08db23b47a26
-x-checkrecipientrouted: true
-NoDisclaimer: true
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;
-X-Microsoft-Antispam-Message-Info-Original:
- lgFnQsXaKSXRRrV4lRyYBy6wgLpftoHECEmOB968QdNPP+pRwiTBklwFlRpVzIWYJei6DVv6k1pAP/8t1cyApew8VQ6D1TQ4YaIOtanJDuD5ZokkbHJGyiJ5ls9tXCjBFf9YqNhSr7xN8m7lH43zdQB5o8pdjug9D9MYL2MU5cRgp54W8YHYhHgbHyBhj11L+340Q/6LRKYiLz94ubjbMKYFd+PYmc/ENb2st3onor6JUPJcrnuE3VJ2kzzLdkqPUU+LG2BLCY4mUZu/mPhxlf2V5eTPRHjPylnudlrxKtcuWYs4qBB73XQeMJAz2ShrkFBV4JTdndDYZHScygOmZe5i2Yr550zSGH6i5OJlkSXsBE7FQTFnsHw5jVE44DhkxYEaSY3Bo/zBSTZvKWlWU2y6u6x8VTBd94URWwqmEp8haHv72gvrLYY84TYUivmbWCYvsH7CBffhJw3F0TA8q+jV5twuGO0LDhydOeFrXDWHxNsDGxNx+z5EYgnz/9PmOTrFxRc9H89GjKMcjqrDrZwjtL0kMXXeKk9AY/rjA+lOx+irdLZtKpGU6mH8X61OoHNGcR0nC4hZOLq5EyoZT2eCNvdhX24zPeRi2xCWQ9x5A8cix5ikhgoI3SzQdYF9FVlabnqgcD53QcsPzDq/eYQiEJoxN4C7gZGHs7pN9skPipiia2GQMmaIvY8W6K3QID5CPXTnndeHilOD1oPpL8jTWCsTW0y7B34EYoOxkxM=
-X-Forefront-Antispam-Report-Untrusted:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR08MB3919.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(136003)(376002)(396003)(346002)(39860400002)(366004)(451199018)(31686004)(5660300002)(4326008)(7416002)(8936002)(2616005)(41300700001)(186003)(6512007)(53546011)(26005)(6506007)(36756003)(31696002)(86362001)(83380400001)(2906002)(44832011)(66574015)(6666004)(66556008)(66946007)(8676002)(66476007)(6486002)(110136005)(316002)(54906003)(478600001)(38100700002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR08MB6367
-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=arm.com;
-Return-Path: Luis.Machado@arm.com
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped:
- VI1EUR03FT055.eop-EUR03.prod.protection.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs:
-	cc573814-0dfd-4813-d93d-08db23b473cd
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	aX6S4YCebNEgfSozOzWja4taV+6p7nM+bvcIycXyvs6BqF+IbnyZJQ9OZqb/uuh2S65uApuCF18w8IX09Pi94nKVwJjyOiY/FAZycBZTe0DfO4w8juXJWqtFDSET8yuD1TruunXGLSJ+uOZtz2mge6mRymPKrS9UM13xfH0vkXKheuKs60QTXPdKECeVJrazfC75sbEOlRRx+JCFEMc8WQbeQU8UaAl600ZX6XOIpcD971GFKOaOP9nJmVNz/aJCTMYlXyw73bZEZJiAjJVx7IZuoF0aFFML44IYulLF7/KxD7YWM0xexgA0zU55BKpLsQPXJg64lpiiH+JwEZimTj4iiLRBhZfOFBsZCzljpgMSGN0X/8H2u89qoy1uLRJNd4lSZwhubpeWbtYNDWWMGkQfYTfDa0zzhk997zVV+ra5GKBNL896fz568NyY2mpb+bIBWYfclKI1O2uYFdCtaf6009JFXUw5JFhrsZuVBYY0LtWFN5IBf/syAhcDlo0Y1RcvX2f3fGXsTGpiMx5Wv60K9abXZ26O79jPmLbF36ntaLDyhOSHmrOdiA2yUN2SWwIlQl/xtmA6pWiJj3ylaB+LoQVQE3pqmVzBAg4pYgJQB3QoTDuxHVJGvuzBfa5tgo6Ns/1WlYG9AHUb9ucEZiRxVmxzEWoLg6DqHEtw73C2AhEQ7GzSVyKdCJuG4vGVQFEizPSXqiioEdOYx+szqPO8Sl4NlzD8kuQKI+6CzrQ=
-X-Forefront-Antispam-Report:
-	CIP:63.35.35.123;CTRY:IE;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:64aa7808-outbound-1.mta.getcheckrecipient.com;PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com;CAT:NONE;SFS:(13230025)(4636009)(396003)(136003)(39860400002)(376002)(346002)(451199018)(40470700004)(46966006)(36840700001)(356005)(86362001)(31696002)(82310400005)(81166007)(36860700001)(82740400003)(40480700001)(36756003)(40460700003)(450100002)(8676002)(4326008)(70206006)(70586007)(41300700001)(54906003)(110136005)(8936002)(478600001)(316002)(2906002)(44832011)(5660300002)(66574015)(336012)(47076005)(2616005)(83380400001)(6486002)(186003)(107886003)(6666004)(26005)(53546011)(6512007)(6506007)(31686004)(43740500002);DIR:OUT;SFP:1101;
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2023 11:17:05.1440
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1eec47dc-80c1-4c89-47f2-08db23b47a26
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d;Ip=[63.35.35.123];Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
-X-MS-Exchange-CrossTenant-AuthSource:
-	VI1EUR03FT055.eop-EUR03.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR08MB7788
-X-TUID: PwcHo2+vMUT+
+References: <20230310103123.2118519-1-alex.bennee@linaro.org>
+ <20230310103123.2118519-10-alex.bennee@linaro.org> <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
+ <87wn3ocwqz.fsf@suse.de> <87sfeclb8o.fsf@linaro.org>
+In-Reply-To: <87sfeclb8o.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Mar 2023 11:22:20 +0000
+Message-ID: <CAFEAcA8SFtzMAFPaE=_CJtwXDYiJQ8rDWgEE+Nx2Qz=-FjCmMA@mail.gmail.com>
+Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, 
+	David Hildenbrand <david@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+	Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Beraldo Leal <bleal@redhat.com>, gdb <gdb@gnu.org>, 
+	Thiago Jung Bauermann <thiago.bauermann@linaro.org>, Omair Javaid <omair.javaid@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: KjH7IbwWxjd6
 
-On 3/10/23 18:07, Peter Maydell wrote:
-> On Fri, 10 Mar 2023 at 18:00, Fabiano Rosas <farosas@suse.de> wrote:
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> On Fri, 10 Mar 2023 at 10:31, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
->>>>
->>>> You need a very new gdb to be able to run with pauth support otherwise
->>>> your likely to hit asserts and aborts. Disable pauth for now until we
->>>> can properly probe support in gdb.
->>>>
->>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>
->>> If it makes gdb fall over, then shouldn't we be disabling
->>> the pauth gdbstub stuff entirely ? Otherwise even if our
->>> tests are fine our users will not be...
->>>
->>
->> Have you seem my message on IRC about changing the feature name in the
->> XML? I think the issue is that we're putting the .xml in a "namespace"
->> where GDB expects to only find stuff which it has code to
->> support. Changing from "org.gnu.gdb.aarch64.pauth" to
->> "org.qemu.aarch64.pauth" made it stop crashing and I can read the
->> registers just fine.
-
-It might be a better option to emit a pauth feature in the qemu namespace t=
-o dodge the crashing bug from older
-gdb's (a latent pauth-related bug in gdb that is triggered by having gdb id=
-entify that a target supports
-pauth and at the same time having a target description containing system re=
-gisters gdb doesn't
-care about).
-
+On Fri, 10 Mar 2023 at 18:20, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> But then presumably a pauth-aware GDB won't actually know
-> the values it needs to be able to convert between with-PAC
-> and without-PAC addresses for backtracing?
 >
-> Luis, how is this intended to work? Is there some way the
-> stub can check with the gdb that's connected whether the
-> gdb is able to cope with the pauth XML, so it can avoid
-> sending it to a gdb that is going to crash if it sees it ?
-
-There isn't a probing mechanism unfortunately, and gdb isn't supposed to cr=
-ash in this case.
-
-With the changes from commit 6d0020873deb2f2c4e0965dc2ebf227bc1db3140, gdb =
-now unmasks signed
-addresses using the additional pauth registers. If gdb doesn't detect the p=
-auth feature, it will
-still mask out the top bits using a default mask of 0xff80000000000000.
-
-While that should be enough for user addresses, it won't help with "kernel"=
- addresses (when the VA select bit is 1).
-
-To dodge the crashing bug of older gdb's, I can adjust gdb to also look for=
- the pauth registers in the qemu namespace and
-document that accordingly.
-
+> (adding some more gdb types to CC)
 >
-> thanks
-> -- PMM
+> Fabiano Rosas <farosas@suse.de> writes:
+>
+> > Peter Maydell <peter.maydell@linaro.org> writes:
+> >
+> >> On Fri, 10 Mar 2023 at 10:31, Alex Benn=C3=A9e <alex.bennee@linaro.org=
+> wrote:
+> >>>
+> >>> You need a very new gdb to be able to run with pauth support otherwis=
+e
+> >>> your likely to hit asserts and aborts. Disable pauth for now until we
+> >>> can properly probe support in gdb.
+> >>>
+> >>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> >>
+> >> If it makes gdb fall over, then shouldn't we be disabling
+> >> the pauth gdbstub stuff entirely ? Otherwise even if our
+> >> tests are fine our users will not be...
+> >>
+> >
+> > Have you seem my message on IRC about changing the feature name in the
+> > XML? I think the issue is that we're putting the .xml in a "namespace"
+> > where GDB expects to only find stuff which it has code to
+> > support. Changing from "org.gnu.gdb.aarch64.pauth" to
+> > "org.qemu.aarch64.pauth" made it stop crashing and I can read the
+> > registers just fine.
+>
+> That would work, although I would prefer to probe support so we can use
+> the official namespace.
 
-IMPORTANT NOTICE: The contents of this email and any attachments are confid=
-ential and may also be privileged. If you are not the intended recipient, p=
-lease notify the sender immediately and do not disclose the contents to any=
- other person, use it for any purpose, or store or copy the information in =
-any medium. Thank you.
+I don't think there's a way to probe for this problem. I spoke
+to Luis about this, and apparently it's a bug in how gdb handles
+the pauth XML description (fixed in gdb commit 1ba3a3222039eb25).
+A gdb without any pauth support at all will be fine; a gdb with
+the bug will report that it has pauth support but will crash
+if you feed it the whole set of XML that QEMU has; a gdb
+with the bug fixed will also report pauth support but won't crash.
+(The bug only manifests if the full XML includes registers that GDB
+doesn't care about, like the system registers; if the stub sends
+only registers GDB knows about then it won't crash.)
+
+Luis and I came up with two options:
+
+(1) leave QEMU outputting the pauth xml as-is, and tell people
+whose gdb 12 crashes that they should upgrade to a newer gdb
+
+(2) make QEMU output the pauth info under a different XML namespace,
+and tell people who need backtraces when pauth is enabled
+that they should upgrade to a newer gdb
+
+Neither of these feel great, but on balance I guess 2 is better?
+
+Luis: I think that rather than doing (2) with a QEMU namespace,
+we should define a gdb namespace for this. That makes it clear
+that this is still a gdb-upstream-sanctioned way of exposing
+the pauth registers.
+
+thanks
+-- PMM

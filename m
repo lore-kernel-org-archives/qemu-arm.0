@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171612ejb;
-        Mon, 13 Mar 2023 04:47:14 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/jFBThNltc55K2o4k0Dm6nk4QRp7mPpqfVy0NxMcKQgUnZGFskGTTdcndsfnWBYx/HFfAe
-X-Received: by 2002:a05:622a:38d:b0:3b9:c889:ec24 with SMTP id j13-20020a05622a038d00b003b9c889ec24mr61336867qtx.12.1678708034433;
-        Mon, 13 Mar 2023 04:47:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708034; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171691ejb;
+        Mon, 13 Mar 2023 04:47:20 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9a82KBCBnP9CdKF+ElPNc2Ndbclt55NF32dXCzl2btm78DOw6dHUf2iJuTpsFdxh2zDZQD
+X-Received: by 2002:a05:6214:27c1:b0:56e:a6c6:445a with SMTP id ge1-20020a05621427c100b0056ea6c6445amr13155261qvb.31.1678708040234;
+        Mon, 13 Mar 2023 04:47:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678708040; cv=none;
         d=google.com; s=arc-20160816;
-        b=ANeZf70PgKjre2X02HzRgR1iDugVwsX5cBQdX87aq9Xfm62oL6/9iEulaQ94eRmikH
-         cE0PIRQ6huDcUilS+oSMuixddbeJ5MV69mYNC8/XhpzOu5nawK4/CU5PoyPJwMGXUSRh
-         U1ND2ZFIkq10A7aBrixn7s+QQjxFe9hJY6Zn1JPsKLuvuhY9S0Ny3btQhvBW7HRgX/Az
-         dkrX8XosiGyVf7h/yeDZRFO/VF4eE7oCrLZExayVztuZVlBD97lQ7kuF4xRI56kKgHpr
-         CK7yhsnch+Rl4f6zQKvQtPUkyfPDjpj4lLN4l4ajVqY7f9dL1kHTzNV3GR95kmBBdAk5
-         LLVw==
+        b=ywX6qthtJArQP6QT3EefZ2NmzdJ3OGJtLaNaq1duwoOpTGT2X7QVkH7IKZKpmor0D8
+         xbYCcQ3qynJJsD1h4F9VgG6zJkUOCLGUN7eUdj0n2JfBlAPhqYGE5ZgYXvjZpK0cfmWm
+         WE3FMBu+m89eMPbjXfq5JvgvKdVlUp0v0uR73YbTglh1m0hKlv0/ALjiSJYWOU5nXRAz
+         kEypWrgXW6RtHlw/qBn0aKRdNDVjNytXauYs9PLoMQttKp3PVN4/0M7I12MpIgNhcd8u
+         O8tuzY8AeKbLD7gAtRuQZQTiTqH1moTTWhN2cMAmWOtdMctrXVe3Hmh1V5/mhYH4PnHZ
+         jKOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cfNV7RjaIOfN3Dn3L+A2QafZQ00IrJbP8L8rITkyTzs=;
-        b=TEK7xQWyinb2VF5yBrlvzahUwV+9d6vOF3EIy12Hg9AAyGVt90X0YU9pZFtVxR9J3/
-         GtiTEDqVOvM8GlgUh6Ukyrvt/tVOgk8QdrCr8BhvzQXxOdkPntIy6tZ+s/1hJPdzd4cz
-         RQxXrxhm+T5fjGTyAgbGxolw9fFWUxfI0hiOA1XahDM3zI6TOjBYFQRinqiSnRg8esXx
-         3a93m8yBxaA8CF4+jRnySqnC4uppCsA8VevSd+TH1rS19FsWCBRd0BJ1uVRJiECOueoh
-         fCRVxHfaRm2Hje1RI2t2hkuhlh09LE+pRJxssR7kfV+Spaw6tgyYlxErG3teXuF9PM2+
-         Hcsg==
+        bh=4gzdeG8JG14oBGCiEmZ9KbDQRdYnK6I+do8sqYfYSKI=;
+        b=RLOItBC7DgsTUOiRYgtorqZTtklf8pQHKs2mk7N+y6/LPnAx7W4ZuK1wFkSRW4DrpY
+         929746Oa4Dm2UlWuTD/EsZF35ZigMQNcEff+znY8kNEb9XA4FixVe4bjjEybZdsOUFmf
+         NgIVGQ/zTa5gpdAgMdsIHaW5li0ApbI2xF/G1Ekzn1Y0z6EFfxfr1DAdzHwU2HSWVjs7
+         exPY2f0P+nje4jq/tCWwMPNe0lSfiQXj/Q8etbXVel8P2cFRtrOuX9tZTQDonqqC07BC
+         S+GqoSM/v64qF+8msiJVQ6AfYu8AIW+YCGUbZ5+5jlKVCt4ZKg5mMzhkVSl6oBeoNiA4
+         rQ/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aeH4hRcE;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2w6Ttdj;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id v11-20020a05622a130b00b003bfba5b73fesi5119709qtk.369.2023.03.13.04.47.14
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id q3-20020a0c9a43000000b005a1ad63b3d4si4659541qvd.65.2023.03.13.04.47.20
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:47:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 13 Mar 2023 04:47:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aeH4hRcE;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a2w6Ttdj;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708034;
+	s=mimecast20190719; t=1678708039;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=cfNV7RjaIOfN3Dn3L+A2QafZQ00IrJbP8L8rITkyTzs=;
-	b=aeH4hRcEz/1Ku+jh/8ygqmPR006XbCCPykeYiEpQmCYTr0utEWKqazqjlPOI7kpbmi65Ry
-	fbjDGLKSnmT/YmkWkrc2tsaX2sXX8Igb8n8wM2YyJVcSrF7DHBnKMQmEkIgsvW/nFILWSx
-	z/GfGWnHL9rTelTzQlPqdVEWMc0hqqk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=4gzdeG8JG14oBGCiEmZ9KbDQRdYnK6I+do8sqYfYSKI=;
+	b=a2w6Ttdj/SmaxVmRUf5kiThCGSr7mjIVlMrslLyLt3cSzKsa/Xif6/HMxbLBO2ECTax4bY
+	MrxepoTVI6NMHuHBGZbkPYIXtJBlkYEdxiRO3Yjs5CGiPEgRLRCcOizPnDvsazZD+1So/u
+	AAr/0HgM0QnFygQNjc5okp77YSlIa3s=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-507-SV6MaOKuNhavlkg6HEpVrg-1; Mon, 13 Mar 2023 07:47:11 -0400
-X-MC-Unique: SV6MaOKuNhavlkg6HEpVrg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+ us-mta-474-EzeXC2bTPLaWFNivBwP3kQ-1; Mon, 13 Mar 2023 07:47:14 -0400
+X-MC-Unique: EzeXC2bTPLaWFNivBwP3kQ-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4970A857A87;
-	Mon, 13 Mar 2023 11:47:10 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 109A03C10227;
+	Mon, 13 Mar 2023 11:47:14 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EF85F202701E;
-	Mon, 13 Mar 2023 11:47:08 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 151BE47507A;
+	Mon, 13 Mar 2023 11:47:12 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -86,166 +86,133 @@ Cc: qemu-block@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 04/25] tests: add test-error-report
-Date: Mon, 13 Mar 2023 15:46:27 +0400
-Message-Id: <20230313114648.426607-5-marcandre.lureau@redhat.com>
+Subject: [PULL v2 05/25] error: add global &error_warn destination
+Date: Mon, 13 Mar 2023 15:46:28 +0400
+Message-Id: <20230313114648.426607-6-marcandre.lureau@redhat.com>
 In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-TUID: EV8cFt+6GGCe
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+X-TUID: IWEvHOjpUxCP
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
+This can help debugging issues or develop, when error handling is
+introduced.
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Message-Id: <20230221124802.4103554-5-marcandre.lureau@redhat.com>
+Message-Id: <20230221124802.4103554-6-marcandre.lureau@redhat.com>
 ---
- tests/unit/test-error-report.c | 121 +++++++++++++++++++++++++++++++++
- tests/unit/meson.build         |   1 +
- 2 files changed, 122 insertions(+)
- create mode 100644 tests/unit/test-error-report.c
+ include/qapi/error.h           |  6 ++++++
+ tests/unit/test-error-report.c | 18 ++++++++++++++++++
+ util/error.c                   | 10 +++++++---
+ 3 files changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/tests/unit/test-error-report.c b/tests/unit/test-error-report.c
-new file mode 100644
-index 0000000000..b09650687b
---- /dev/null
-+++ b/tests/unit/test-error-report.c
-@@ -0,0 +1,121 @@
+diff --git a/include/qapi/error.h b/include/qapi/error.h
+index d798faeec3..f21a231bb1 100644
+--- a/include/qapi/error.h
++++ b/include/qapi/error.h
+@@ -519,6 +519,12 @@ static inline void error_propagator_cleanup(ErrorPropagator *prop)
+ 
+ G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
+ 
 +/*
-+ * Error reporting test
-+ *
-+ * Copyright (C) 2022 Red Hat Inc.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
++ * Special error destination to warn on error.
++ * See error_setg() and error_propagate() for details.
 + */
++extern Error *error_warn;
 +
-+#include "qemu/osdep.h"
-+#include "glib-compat.h"
-+#include <locale.h>
-+
-+#include "qemu/error-report.h"
-+
+ /*
+  * Special error destination to abort on error.
+  * See error_setg() and error_propagate() for details.
+diff --git a/tests/unit/test-error-report.c b/tests/unit/test-error-report.c
+index b09650687b..54319c86c9 100644
+--- a/tests/unit/test-error-report.c
++++ b/tests/unit/test-error-report.c
+@@ -12,6 +12,7 @@
+ #include <locale.h>
+ 
+ #include "qemu/error-report.h"
++#include "qapi/error.h"
+ 
+ static void
+ test_error_report_simple(void)
+@@ -103,6 +104,22 @@ test_error_report_timestamp(void)
+ ");
+ }
+ 
 +static void
-+test_error_report_simple(void)
++test_error_warn(void)
 +{
 +    if (g_test_subprocess()) {
-+        error_report("%s", "test error");
-+        warn_report("%s", "test warn");
-+        info_report("%s", "test info");
++        error_setg(&error_warn, "Testing &error_warn");
 +        return;
 +    }
 +
 +    g_test_trap_subprocess(NULL, 0, 0);
 +    g_test_trap_assert_passed();
 +    g_test_trap_assert_stderr("\
-+test-error-report: test error*\
-+test-error-report: warning: test warn*\
-+test-error-report: info: test info*\
++test-error-report: warning: Testing &error_warn*\
 +");
 +}
 +
-+static void
-+test_error_report_loc(void)
-+{
-+    if (g_test_subprocess()) {
-+        loc_set_file("some-file.c", 7717);
-+        error_report("%s", "test error1");
-+        loc_set_none();
-+        error_report("%s", "test error2");
-+        return;
++
+ int
+ main(int argc, char *argv[])
+ {
+@@ -116,6 +133,7 @@ main(int argc, char *argv[])
+     g_test_add_func("/error-report/glog", test_error_report_glog);
+     g_test_add_func("/error-report/once", test_error_report_once);
+     g_test_add_func("/error-report/timestamp", test_error_report_timestamp);
++    g_test_add_func("/error-report/warn", test_error_warn);
+ 
+     return g_test_run();
+ }
+diff --git a/util/error.c b/util/error.c
+index 1e7af665b8..5537245da6 100644
+--- a/util/error.c
++++ b/util/error.c
+@@ -27,8 +27,9 @@ struct Error
+ 
+ Error *error_abort;
+ Error *error_fatal;
++Error *error_warn;
+ 
+-static void error_handle_fatal(Error **errp, Error *err)
++static void error_handle(Error **errp, Error *err)
+ {
+     if (errp == &error_abort) {
+         fprintf(stderr, "Unexpected error in %s() at %s:%d:\n",
+@@ -43,6 +44,9 @@ static void error_handle_fatal(Error **errp, Error *err)
+         error_report_err(err);
+         exit(1);
+     }
++    if (errp == &error_warn) {
++        warn_report_err(err);
 +    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+test-error-report:some-file.c:7717: test error1*\
-+test-error-report: test error2*\
-+");
-+}
-+
-+static void
-+test_error_report_glog(void)
-+{
-+    if (g_test_subprocess()) {
-+        g_message("gmessage");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("test-error-report: info: gmessage*");
-+}
-+
-+static void
-+test_error_report_once(void)
-+{
-+    int i;
-+
-+    if (g_test_subprocess()) {
-+        for (i = 0; i < 3; i++) {
-+            warn_report_once("warn");
-+            error_report_once("err");
-+        }
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+test-error-report: warning: warn*\
-+test-error-report: err*\
-+");
-+}
-+
-+static void
-+test_error_report_timestamp(void)
-+{
-+    if (g_test_subprocess()) {
-+        message_with_timestamp = true;
-+        warn_report("warn");
-+        error_report("err");
-+        return;
-+    }
-+
-+    g_test_trap_subprocess(NULL, 0, 0);
-+    g_test_trap_assert_passed();
-+    g_test_trap_assert_stderr("\
-+*-*-*:*:* test-error-report: warning: warn*\
-+*-*-*:*:* test-error-report: err*\
-+");
-+}
-+
-+int
-+main(int argc, char *argv[])
-+{
-+    setlocale(LC_ALL, "");
-+
-+    g_test_init(&argc, &argv, NULL);
-+    error_init("test-error-report");
-+
-+    g_test_add_func("/error-report/simple", test_error_report_simple);
-+    g_test_add_func("/error-report/loc", test_error_report_loc);
-+    g_test_add_func("/error-report/glog", test_error_report_glog);
-+    g_test_add_func("/error-report/once", test_error_report_once);
-+    g_test_add_func("/error-report/timestamp", test_error_report_timestamp);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index d9c0a7eae6..fa63cfe6ff 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -11,6 +11,7 @@ tests = {
-   'check-qobject': [],
-   'check-qjson': [],
-   'check-qlit': [],
-+  'test-error-report': [],
-   'test-qobject-output-visitor': [testqapi],
-   'test-clone-visitor': [testqapi],
-   'test-qobject-input-visitor': [testqapi],
+ }
+ 
+ G_GNUC_PRINTF(6, 0)
+@@ -71,7 +75,7 @@ static void error_setv(Error **errp,
+     err->line = line;
+     err->func = func;
+ 
+-    error_handle_fatal(errp, err);
++    error_handle(errp, err);
+     *errp = err;
+ 
+     errno = saved_errno;
+@@ -284,7 +288,7 @@ void error_propagate(Error **dst_errp, Error *local_err)
+     if (!local_err) {
+         return;
+     }
+-    error_handle_fatal(dst_errp, local_err);
++    error_handle(dst_errp, local_err);
+     if (dst_errp && !*dst_errp) {
+         *dst_errp = local_err;
+     } else {
 -- 
 2.39.2

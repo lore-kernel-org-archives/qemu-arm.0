@@ -1,198 +1,315 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp172840ejb;
-        Mon, 13 Mar 2023 04:48:50 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8Icl1+zkutHFTAtQ1PShWTVrLkzufnwwIUqL5lAlemmdAsjJSOKifLqxVOlzOmRT6rs3+O
-X-Received: by 2002:ac8:4e90:0:b0:3b6:2e12:4d25 with SMTP id 16-20020ac84e90000000b003b62e124d25mr20086855qtp.31.1678708130641;
-        Mon, 13 Mar 2023 04:48:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708130; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp378538ejb;
+        Mon, 13 Mar 2023 08:11:08 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+lO01LDFODHX0ZFkebquNadzoLKqVJ42u7L5eOe7UQPX8i/ra2z8wtzU0FMaJ4++YIEdTd
+X-Received: by 2002:a05:600c:1d97:b0:3ea:f132:63d8 with SMTP id p23-20020a05600c1d9700b003eaf13263d8mr11613613wms.5.1678720268488;
+        Mon, 13 Mar 2023 08:11:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678720268; cv=none;
         d=google.com; s=arc-20160816;
-        b=UkSb39Nj+xEU+pr9YiKGYAJ9WfLX6jEeZwAddcb2P5DSUFDKxyPh14Ln4bg823M59Y
-         Yjjbfr4+/rO17TBb/w/1+vgfw/J7Vbpj7HBC8ZeN+4WtKAKYKRRPNh/mOSB1SSq6vhYE
-         jckH4bbhecVg1GfQFUCGJ6mOqGuSbIIibcLXwicLGbcfcIG6xrnGYeEXk62vJ983TNRr
-         FkY/uym3pIEIf5pSnU/EXOBfnwe5Q+VIubt8OPeIHP664eDhoVOUrEb9NXAD7/g5Jh/x
-         KwoQwV8oZKe3WMW9mlmd5y6p/WpsKQDAgR+ZbWNy4RI/WILfK5h6A/BoYysUdnad1TgM
-         HJIQ==
+        b=kqb6rlBDWWMd+ur3ndgtMYldql3+4kqVUbh/qXfCPoQ3eshd/nK+a2SJ+XDSt+OAJ7
+         +hg0OeDFCvHSIC7tTyj7rNMdu4RXrmlQGCl5l5ApSbWp0JpNUrygWyQdMhR7EBcaKZ7y
+         /UID22MhinbNwb/vhmqW4UjJXGbsvcKzylYQIwMVc1d68mqv9ylEmDEFIdNTgJaB7Fty
+         YK26ZxC/3+/797/1S1sz+EDKct67KKnheBw7siqoJ4tPkjQsWLrewnL5YT3/N7OhCL2E
+         OkxxAlblEmVCgXeAtNEW+gLQuE6QA4lrQSAGMptYXM15fYYLrs7S/bWhel5JiVZN45Ly
+         oWag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8SMSiKbHRECIjx1vILPEIMZcCmojGbLhRPWW6JR2gVQ=;
-        b=dN06yJXtkVr/C3O87Uj1K3SrHbJHY/mrmOy7pjChx75BtJViq0ZIe9n1WLLP24mQHy
-         eTQJHBbWhOrckXSxqfDOr+LdhxalNM8kDAF7vuc+EhEpOD38eRQwOGelZRA1XjR0kfsE
-         XjjErEB0GI4mYkbQUVfFMcL4PkVieeaEsSBCu0OM+k4ZJ4MQuQWh8ACzINBO6vYo6uas
-         bOzRMKs6WJ0sibyMCFY2hD23FHtQu4NjAZNTqBFldMxgCQ1ztD+pk8rGFerEy3CWqCiJ
-         GvJCrbXihzKZus1fUr3XGeuDVX20jd7Kr09u4g+lEUz/J6ytUPMEbZOZTCmIyhnD9gL9
-         zeYA==
+         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=nptKRQnsHpIdNNKIq92B/YnmPkxjddmyC7pfo4kLYZI=;
+        b=TURQH7aUxKsCkQbGbZVftMalkxpEHu7C1x/YWYqqGG1TRhxPos8lbh2qPnfcRCHc9y
+         /D2pJg/evn0lXFqbz+1Tpox0DrShBlqNNGcSbxqTFTTI/pp25JSCdwhIeWaDBP/pNCfU
+         Yz9OqCj8aR+2aAVlHet064CBwXETKkxqBcWjWZqeaouAk5hG5+sN8bEqrfgbgGLCVa3r
+         XSpbri7MdIYIgfolqNspK6pBPvw+GgwjZKgz5ldC2jMFLmPQb5XlhgYgEezDfuHDAO8r
+         7gzSH5mF0vhlak/+49gcBjdKqwCBEoQmAUTdlRtbsL1N0sflXnYpKMcpsR/uHwvVCKCT
+         E6RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gUWdC03S;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <marcandre.lureau@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id f3-20020a05622a104300b003a51b82f290si4998288qte.495.2023.03.13.04.48.50
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zSVtpe+B;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=+FAt7f0h;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
+        by mx.google.com with ESMTPS id s6-20020a05600c384600b003dd1a489258si6308985wmr.226.2023.03.13.08.11.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:48:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 13 Mar 2023 08:11:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gUWdC03S;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708130;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zSVtpe+B;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=+FAt7f0h;
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id D314B22ADB;
+	Mon, 13 Mar 2023 15:11:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1678720267; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=8SMSiKbHRECIjx1vILPEIMZcCmojGbLhRPWW6JR2gVQ=;
-	b=gUWdC03SEcgSaO+eaZYLGl/gBvhzdJekWP+2msbSi+2Psib8rzPkw3jQfwSgJkipjKjNL4
-	88RZhvsXevYtTCtVLbcjZqke31GZFi+YZ1JH+EC9I1HeISA00vwLESSZ8RchxikDxAauUF
-	NqeVEA19pmYa+jwQUDl6cNVRH4hOpIw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-647-Gw97UR-TMO-e43WqiPCO8w-1; Mon, 13 Mar 2023 07:48:48 -0400
-X-MC-Unique: Gw97UR-TMO-e43WqiPCO8w-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	bh=nptKRQnsHpIdNNKIq92B/YnmPkxjddmyC7pfo4kLYZI=;
+	b=zSVtpe+BEX6qfweF8OHBlqlL1aWqTEuilrheoYDdJ7qz1T/SO0JJmYCPLrQQ5FbNQIl+2D
+	/t1I6fggvxjtYj5VmS991YoDXTSI+yLHvb9rLm2zo/vUr9oTfcucNfQuIzoYKe57/QeF01
+	TBzaL8+z8oTa6urYGfwtvQGWHbGA1YM=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1678720267;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nptKRQnsHpIdNNKIq92B/YnmPkxjddmyC7pfo4kLYZI=;
+	b=+FAt7f0hvZkRAbonQfIb3SSj+2KoEBqctLKY+vRu4i/4PemzwaPWPNRtthxFFqhdsNodZN
+	+5/puTl8arWTUeCA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5B2173828887;
-	Mon, 13 Mar 2023 11:48:47 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 462AE1410F1C;
-	Mon, 13 Mar 2023 11:48:45 +0000 (UTC)
-From: marcandre.lureau@redhat.com
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id F324213582;
+	Mon, 13 Mar 2023 15:11:04 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id INk3Lgg9D2R1YwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:04 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Hanna Reitz <hreitz@redhat.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Fam Zheng <fam@euphon.net>,
-	Beraldo Leal <bleal@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 25/25] monitor: restrict command getfd to POSIX hosts
-Date: Mon, 13 Mar 2023 15:46:48 +0400
-Message-Id: <20230313114648.426607-26-marcandre.lureau@redhat.com>
-In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
-References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v9 01/10] target/arm: Move cortex sysregs into a separate file
+Date: Mon, 13 Mar 2023 12:10:49 -0300
+Message-Id: <20230313151058.19645-2-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20230313151058.19645-1-farosas@suse.de>
+References: <20230313151058.19645-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-X-TUID: EHWMDa0Yhbca
+X-TUID: 4SCn4cPAPo+Y
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+The file cpu_tcg.c is about to be moved into the tcg/ directory, so
+move the register definitions into a new file.
 
-Currently, the function will simply fail if ancillary fds are not
-provided, for ex on unsupported platforms.
+Also move the function declaration to the more appropriate cpregs.h.
 
-This changes the failure from:
-
-    {"error": {"class": "GenericError", "desc": "No file descriptor
-    supplied via SCM_RIGHTS"}}
-
-to:
-
-    {"error": {"class": "CommandNotFound", "desc": "The command getfd
-    has not been found"}}
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- qapi/misc.json     | 2 +-
- monitor/fds.c      | 2 ++
- monitor/hmp-cmds.c | 2 ++
- hmp-commands.hx    | 2 ++
- 4 files changed, 7 insertions(+), 1 deletion(-)
+ target/arm/cortex-regs.c | 69 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpregs.h      |  6 ++++
+ target/arm/cpu64.c       |  1 +
+ target/arm/cpu_tcg.c     | 59 ----------------------------------
+ target/arm/internals.h   |  6 ----
+ target/arm/meson.build   |  1 +
+ 6 files changed, 77 insertions(+), 65 deletions(-)
+ create mode 100644 target/arm/cortex-regs.c
 
-diff --git a/qapi/misc.json b/qapi/misc.json
-index 5ef6286af3..6ddd16ea28 100644
---- a/qapi/misc.json
-+++ b/qapi/misc.json
-@@ -273,7 +273,7 @@
- # <- { "return": {} }
- #
- ##
--{ 'command': 'getfd', 'data': {'fdname': 'str'} }
-+{ 'command': 'getfd', 'data': {'fdname': 'str'}, 'if': 'CONFIG_POSIX' }
- 
- ##
- # @get-win32-socket:
-diff --git a/monitor/fds.c b/monitor/fds.c
-index 9ed4197358..d86c2c674c 100644
---- a/monitor/fds.c
-+++ b/monitor/fds.c
-@@ -98,6 +98,7 @@ static bool monitor_add_fd(Monitor *mon, int fd, const char *fdname, Error **err
-     return true;
+diff --git a/target/arm/cortex-regs.c b/target/arm/cortex-regs.c
+new file mode 100644
+index 0000000000..17708480e7
+--- /dev/null
++++ b/target/arm/cortex-regs.c
+@@ -0,0 +1,69 @@
++/*
++ * ARM Cortex-A registers
++ *
++ * This code is licensed under the GNU GPL v2 or later.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "cpregs.h"
++
++
++static uint64_t l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    ARMCPU *cpu = env_archcpu(env);
++
++    /* Number of cores is in [25:24]; otherwise we RAZ */
++    return (cpu->core_count - 1) << 24;
++}
++
++static const ARMCPRegInfo cortex_a72_a57_a53_cp_reginfo[] = {
++    { .name = "L2CTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 2,
++      .access = PL1_RW, .readfn = l2ctlr_read,
++      .writefn = arm_cp_write_ignore },
++    { .name = "L2CTLR",
++      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 2,
++      .access = PL1_RW, .readfn = l2ctlr_read,
++      .writefn = arm_cp_write_ignore },
++    { .name = "L2ECTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 3,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "L2ECTLR",
++      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 3,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "L2ACTLR", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 0, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUACTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUACTLR",
++      .cp = 15, .opc1 = 0, .crm = 15,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++    { .name = "CPUECTLR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 1,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUECTLR",
++      .cp = 15, .opc1 = 1, .crm = 15,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++    { .name = "CPUMERRSR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 2,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUMERRSR",
++      .cp = 15, .opc1 = 2, .crm = 15,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++    { .name = "L2MERRSR_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 3,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "L2MERRSR",
++      .cp = 15, .opc1 = 3, .crm = 15,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
++};
++
++void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu)
++{
++    define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
++}
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 1ee64e99de..b04d344a9f 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -1071,4 +1071,10 @@ static inline bool arm_cpreg_in_idspace(const ARMCPRegInfo *ri)
+                                       ri->crn, ri->crm);
  }
  
-+#ifdef CONFIG_POSIX
- void qmp_getfd(const char *fdname, Error **errp)
- {
-     Monitor *cur_mon = monitor_cur();
-@@ -111,6 +112,7 @@ void qmp_getfd(const char *fdname, Error **errp)
- 
-     monitor_add_fd(cur_mon, fd, fdname, errp);
- }
++#ifdef CONFIG_USER_ONLY
++static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
++#else
++void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu);
 +#endif
++
+ #endif /* TARGET_ARM_CPREGS_H */
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 4066950da1..9f193927d8 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -29,6 +29,7 @@
+ #include "qapi/visitor.h"
+ #include "hw/qdev-properties.h"
+ #include "internals.h"
++#include "cpregs.h"
  
- void qmp_closefd(const char *fdname, Error **errp)
+ static void aarch64_a35_initfn(Object *obj)
  {
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 34bd8c67d7..6c559b48c8 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -192,6 +192,7 @@ void hmp_change(Monitor *mon, const QDict *qdict)
-     hmp_handle_error(mon, err);
+diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
+index df0c45e523..6ce728134f 100644
+--- a/target/arm/cpu_tcg.c
++++ b/target/arm/cpu_tcg.c
+@@ -93,65 +93,6 @@ void aa32_max_features(ARMCPU *cpu)
+     cpu->isar.id_dfr0 = t;
  }
  
-+#ifdef CONFIG_POSIX
- void hmp_getfd(Monitor *mon, const QDict *qdict)
- {
-     const char *fdname = qdict_get_str(qdict, "fdname");
-@@ -200,6 +201,7 @@ void hmp_getfd(Monitor *mon, const QDict *qdict)
-     qmp_getfd(fdname, &err);
-     hmp_handle_error(mon, err);
- }
-+#endif
+-#ifndef CONFIG_USER_ONLY
+-static uint64_t l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+-{
+-    ARMCPU *cpu = env_archcpu(env);
+-
+-    /* Number of cores is in [25:24]; otherwise we RAZ */
+-    return (cpu->core_count - 1) << 24;
+-}
+-
+-static const ARMCPRegInfo cortex_a72_a57_a53_cp_reginfo[] = {
+-    { .name = "L2CTLR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 2,
+-      .access = PL1_RW, .readfn = l2ctlr_read,
+-      .writefn = arm_cp_write_ignore },
+-    { .name = "L2CTLR",
+-      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 2,
+-      .access = PL1_RW, .readfn = l2ctlr_read,
+-      .writefn = arm_cp_write_ignore },
+-    { .name = "L2ECTLR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 0, .opc2 = 3,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "L2ECTLR",
+-      .cp = 15, .opc1 = 1, .crn = 9, .crm = 0, .opc2 = 3,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "L2ACTLR", .state = ARM_CP_STATE_BOTH,
+-      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 0, .opc2 = 0,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "CPUACTLR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 0,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "CPUACTLR",
+-      .cp = 15, .opc1 = 0, .crm = 15,
+-      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-    { .name = "CPUECTLR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 1,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "CPUECTLR",
+-      .cp = 15, .opc1 = 1, .crm = 15,
+-      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-    { .name = "CPUMERRSR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 2,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "CPUMERRSR",
+-      .cp = 15, .opc1 = 2, .crm = 15,
+-      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-    { .name = "L2MERRSR_EL1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 2, .opc2 = 3,
+-      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+-    { .name = "L2MERRSR",
+-      .cp = 15, .opc1 = 3, .crm = 15,
+-      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_64BIT, .resetvalue = 0 },
+-};
+-
+-void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu)
+-{
+-    define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+-}
+-#endif /* !CONFIG_USER_ONLY */
+-
+ /* CPU models. These are not needed for the AArch64 linux-user build. */
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
  
- void hmp_closefd(Monitor *mon, const QDict *qdict)
- {
-diff --git a/hmp-commands.hx b/hmp-commands.hx
-index b87c250e23..bb85ee1d26 100644
---- a/hmp-commands.hx
-+++ b/hmp-commands.hx
-@@ -1486,6 +1486,7 @@ SRST
-   Inject an MCE on the given CPU (x86 only).
- ERST
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index b1ef05963f..46a1d06e15 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1370,12 +1370,6 @@ uint32_t arm_v7m_mrs_control(CPUARMState *env, uint32_t secure);
+ uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure,
+                              bool threadmode, bool spsel);
  
-+#ifdef CONFIG_POSIX
-     {
-         .name       = "getfd",
-         .args_type  = "fdname:s",
-@@ -1501,6 +1502,7 @@ SRST
-   mechanism on unix sockets, it is stored using the name *fdname* for
-   later use by other monitor commands.
- ERST
-+#endif
+-#ifdef CONFIG_USER_ONLY
+-static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
+-#else
+-void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu);
+-#endif
+-
+ bool el_is_in_host(CPUARMState *env, int el);
  
-     {
-         .name       = "closefd",
+ void aa32_max_features(ARMCPU *cpu);
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 6226098ad5..3469926295 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -21,6 +21,7 @@ arm_softmmu_ss.add(files(
+   'arch_dump.c',
+   'arm-powerctl.c',
+   'arm-qmp-cmds.c',
++  'cortex-regs.c',
+   'machine.c',
+   'ptw.c',
+ ))
 -- 
-2.39.2
+2.35.3

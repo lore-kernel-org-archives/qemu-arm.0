@@ -1,135 +1,150 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp387588ejb;
-        Mon, 13 Mar 2023 08:19:03 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/vVrNDSAwe40P40r2qJXdXLXFs8lJWAEDyZKibhtwA01debUjJo1AIREXa8qytq22XiX1Y
-X-Received: by 2002:a05:6214:3006:b0:56e:961a:b454 with SMTP id ke6-20020a056214300600b0056e961ab454mr20096609qvb.21.1678720743482;
-        Mon, 13 Mar 2023 08:19:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678720743; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp493083ejb;
+        Mon, 13 Mar 2023 10:14:13 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+eFkDUtvvbt5+MNiOx8ZeYL+tRaUckWAvj6ioE6svrsYx9iOLO/HWZfJ5RroeM7usM3LJ+
+X-Received: by 2002:ac8:5fc1:0:b0:3ab:ceb9:10fd with SMTP id k1-20020ac85fc1000000b003abceb910fdmr59396208qta.25.1678727653380;
+        Mon, 13 Mar 2023 10:14:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678727653; cv=none;
         d=google.com; s=arc-20160816;
-        b=zvJY2GZP+7cWYe8qYxH+80PdvczlySxvDRx4mqH3Eia/WOfnlCaZXOPRjq0oo3XfBC
-         70g4DKvIaGM5s/0SgZGxtmdzMSNkUbWOLvFr+FJJtvkG6/cwiSbvSRahvwm53/mfrmPi
-         VFP8VHikFPcJ7sYwIb8ZhVN/fuWOFIqFJKBlvvLpPlIatjg0XoKVyfgYQ5hnxVz25Byo
-         aMFlSgtT1JYvY3Z6mEEVKIblxkRpvLsM7Z+NUFTzGvjSFTyBk2L94r5otHiCv69RVK6D
-         9SHYhXN46eFAH7e99wDAxDC3jkIBltqYYMnYpyYdIiNZ71ICL0TUbXyBBEKVYJOAKtxy
-         NcVQ==
+        b=dDEdfcFUYEwdEN0b8AnvTDHpWahOGcVapmpx/A9R7i9z9ux/m6UNzglBq2kn2ZlFap
+         /MbqQEY5raUBXif5ysA+U30hVOqOVkvZt+IPNpZsWqGX0DzT2OWYzg9w6N+jGXB/p6lj
+         69O9hSEpJullrgFawrkiJ/s3PWEFdvCG0w7ELT1e61tdX2YuTfqQHZM+Nm3RbyCaxzT1
+         I3j5ReG2Azxrbf1zmhgT/oQ064GqQRYhlDqmd1XoUkDdxefn21ZFDkxCs/+UvjRSPKB8
+         +aE9+hTyUn53iPL0mpn1yq/5HXsgQsjRaF7zsLiFCqFRZ+kcrA5/M6t9CYAFZynfGGpJ
+         mhuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/FxbcIBMjcx3ILsGfqyiSecPE4Nz/JkkWnxGE3Y/Py4=;
-        b=D8k/p0uKxPcUux3jpox+L/2lX3dXNaZe8/O5hlW6h102ttHXU8l8Xvyt69zxRVvLjV
-         QxEc2bvpfKDSoYr+9ZP4opmIdXKf/PiFjlW4AiA+vksy3eFV0Ij8l5XjRzQN/qebeYCG
-         K7fvd7xw3OuFe+KGk25vq3/yfDVU0yPZE5SP/P3f/IAzp84DLH/Wf9+9GDtho/WM+k9w
-         5z8RKj2bRFVnSdrsfphyPS/3GJVCmqYvCbLytnGw+UxNd5wDlSZVW1YhcmLBGChdmK7h
-         WLM0Lv4rWo412JSGUWYgpLBk1L+XrBa5140bHIVF2WfNomBptSumb90etm7lxSdb2OQ8
-         TxMQ==
+        h=content-transfer-encoding:content-language:in-reply-to:subject:from
+         :references:cc:to:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=tJP6VUkwFGYAY1BpgXT9Iu7NR1d5+Kne1UwV2XxOSPc=;
+        b=tC4kQ3u/RupmX30OGgaklCgketT1biVeFj7ToX8QUis4kkishBSPFHQsgRVf6PpGfe
+         KaK9ApLqLS17DxXDZoO83SGWfgupKG9aqQcSyoOy3UaxnwScL7c+6Vi8eejspp4GCTpR
+         +hKPgBtEc+ntA8qgJ3cbaKHxFQ8gfBKAGh/kA74yfG5L+Z2ZliLz2NYrhZvJDIYCD1+d
+         T56xxvuxu9yxAV2os6igSRyCqUxwSXpUuU4WEhB4/9empZYVSF7fByHuY075Eea5lHpO
+         IGxxmPdvs+bNO0BH/NsFV7vwnuBQT+R57ovpXtqT5aiEel8B3TKpeNKxOoyb0NFUVRuw
+         /HGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qvAg/fWU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9-20020a0cdd89000000b005a6040a842bsi2347803qvk.544.2023.03.13.08.19.03
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hV7BPfto;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id p7-20020a05622a13c700b003a98930e7c0si239695qtk.118.2023.03.13.10.14.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Mar 2023 08:19:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Mar 2023 10:14:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qvAg/fWU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pbjwJ-0004QW-Gx; Mon, 13 Mar 2023 11:18:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pbjwB-0004PG-5x
- for qemu-arm@nongnu.org; Mon, 13 Mar 2023 11:18:11 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pbjw9-0001IM-Iw
- for qemu-arm@nongnu.org; Mon, 13 Mar 2023 11:18:10 -0400
-Received: by mail-pf1-x436.google.com with SMTP id ce7so7824759pfb.9
- for <qemu-arm@nongnu.org>; Mon, 13 Mar 2023 08:18:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678720684;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/FxbcIBMjcx3ILsGfqyiSecPE4Nz/JkkWnxGE3Y/Py4=;
- b=qvAg/fWUFeEj+bEwEK4c6yCpsQ7NtphUoaxaT75guRa5BTsZW6rlFVygw6H7taXyg5
- K5zMmyDRKsOMzG7gY8jNouIn4pEcRHaSWLPRGPXLvEq1RYBySPOLVyACVtn+2PRlmQA3
- b5Gwv9rdtzHeUOa3/+cQDHKHxvaTE7NIUgXb011Br6ozbNoGLzPinab5dhLPRq0zb03X
- PLiFlmgqV6fuQZ119fazTsICoSFb/j74QiYTLFM0uaRmr7K3Mt5EF+2Jnk5Ih5bxi8Tb
- 6oaYcKfZSCUymeQqgp37YZPVciU0XxKSPHUvVjPHOkOIRJgQtbd/9sY+GFvqeDc3bDD5
- HoLg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hV7BPfto;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1678727652;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tJP6VUkwFGYAY1BpgXT9Iu7NR1d5+Kne1UwV2XxOSPc=;
+	b=hV7BPftoe8D5XBZQst7PDYrYJH7I0jwOd1OWIanQqJWFvM2PHeoal4+0KxMVHq1VxdCrDh
+	KXUqS5cXjV2FwF5tn8zheZNS1k6+7nhQ2ZhJyDcVMKCk64ugUhzDcEvMXAkye+MMP7NiWQ
+	83Wo5oZkzBqubxjp4IW6XvLeuF8GkKc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-65-0yztyDK4OIm2nFzpwSGqnQ-1; Mon, 13 Mar 2023 13:14:11 -0400
+X-MC-Unique: 0yztyDK4OIm2nFzpwSGqnQ-1
+Received: by mail-wr1-f71.google.com with SMTP id h18-20020adfa4d2000000b002cea098a651so1064597wrb.3
+        for <alex.bennee@linaro.org>; Mon, 13 Mar 2023 10:14:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678720684;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/FxbcIBMjcx3ILsGfqyiSecPE4Nz/JkkWnxGE3Y/Py4=;
- b=fPidxMC2hJ93VgXJ/8CRi5hRcjNaQpM3PT0ZIAhh8k8P9b8zZkVPuGM/HGNrx5O/gx
- mVtvf3wqUTxfiUj6Td2Y7lbLfd8wJiqlba3PRk/AH3HCIK56654VKiGKZDFL5nygv12T
- nJpFTT1yw9bkB5XnlICjMptPHDsZ1nN4mFLmt1ldFFNfHbIu2OoWPT6OZqQg9DIY01oG
- lkamLoqL7mGPVC/cPufEJom2upgq+R112tdKXDFvb6CWMkrmLHKt2VdO/L0rWGXimoAW
- hYBDi1Mw+S+B37SnvfXR/C4Nf/4qh9uf+BTU1fbii+bpFt1h+egvn/E9/MbIuWy9B/9k
- YTpA==
-X-Gm-Message-State: AO0yUKXDG2dcVvnVfkrFjbXf+nLnwUU4TMpFwV1ERthS+n8OPLyIlOVj
- lLk6NV6KVemGUxEcaZPfbBXID3n0eDPa0ICSA/mVzw==
-X-Received: by 2002:a63:7e11:0:b0:503:913f:77b9 with SMTP id
- z17-20020a637e11000000b00503913f77b9mr11725676pgc.6.1678720684203; Mon, 13
- Mar 2023 08:18:04 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1678727650;
+        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tJP6VUkwFGYAY1BpgXT9Iu7NR1d5+Kne1UwV2XxOSPc=;
+        b=VVss07DBpiFIfcnP+PdL8MIcWIal7HmLcWcWVhmiRh+nja1C+/0v3LT5ZbcLESGR/O
+         lURpvW2L3A+iDUsmId7aoBkrQ9sb5aah0BmsDqZuhtb/lyRbLYXgYb5EEFNn8itOEJz8
+         EEZsIXKBF9xfC4RGPsjghQ6kOqqc692BkaxpVtM3B2urQ5e5OBtlhyWMWeQLzYMcqi7l
+         yAc/cKd3y1rgJoPA06hFhVTDahBDC88cAcqgw+0N1vc3BsWvzdrVvVnTDyj4loZTrf8h
+         Ex5AoD7L92or6k1f7G0YBOFCPi0Y4te7FfEs4GDMAPpcBhl28e9pk3YQTK0cC+GPCCKy
+         oHnw==
+X-Gm-Message-State: AO0yUKWBzOWCL8Picz2BJ+at5E6VTnDfbPKARNxMj80oyHlzyRvNtfME
+	O+N+GoeTYxSugdX+wnb3cHLihSHCePlqZYEDhFpfSg79/jktd1nGNGtiHJrDtN9mPHMbeB9cIsv
+	aJVhZRX9Rp6VuSB1y
+X-Received: by 2002:a5d:4f83:0:b0:2ce:a8e2:f89e with SMTP id d3-20020a5d4f83000000b002cea8e2f89emr4376256wru.46.1678727650508;
+        Mon, 13 Mar 2023 10:14:10 -0700 (PDT)
+X-Received: by 2002:a5d:4f83:0:b0:2ce:a8e2:f89e with SMTP id d3-20020a5d4f83000000b002cea8e2f89emr4376247wru.46.1678727650220;
+        Mon, 13 Mar 2023 10:14:10 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.2] (ip-109-43-179-26.web.vodafone.de. [109.43.179.26])
+        by smtp.gmail.com with ESMTPSA id t18-20020a5d42d2000000b002ceb7a11eb9sm7986wrr.42.2023.03.13.10.14.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 13 Mar 2023 10:14:09 -0700 (PDT)
+Message-ID: <b23fcfab-cc1b-a861-94ed-217af69f1ef8@redhat.com>
+Date: Mon, 13 Mar 2023 18:14:08 +0100
 MIME-Version: 1.0
-References: <20230313033936.585669-1-chenbaozi@phytium.com.cn>
-In-Reply-To: <20230313033936.585669-1-chenbaozi@phytium.com.cn>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Mar 2023 15:17:52 +0000
-Message-ID: <CAFEAcA9zQeop9NTJb6W-fSZ+rdODRvE19914syS9sDApEiHpfw@mail.gmail.com>
-Subject: Re: [PATCH v4] target/arm: Add Neoverse-N1 registers
-To: Chen Baozi <chenbaozi@phytium.com.cn>
-Cc: qemu-devel@nongnu.org, richard.henderson@linaro.org, 
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mydFZB/24T/H
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, Cleber Rosa <crosa@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Beraldo Leal <bleal@redhat.com>
+References: <20230310103123.2118519-1-alex.bennee@linaro.org>
+ <20230310103123.2118519-11-alex.bennee@linaro.org>
+ <c57c82bf-1b05-f29b-80fa-04a7279b5d39@redhat.com>
+ <CAFEAcA94DQ9rhCwhXHUKQQG6QdWTVOLNEUcKk12t=_WVMtG--A@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 10/11] include/exec: fix kerneldoc definition
+In-Reply-To: <CAFEAcA94DQ9rhCwhXHUKQQG6QdWTVOLNEUcKk12t=_WVMtG--A@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: w+5No62QNc8T
 
-On Mon, 13 Mar 2023 at 03:39, Chen Baozi <chenbaozi@phytium.com.cn> wrote:
->
-> Add implementation defined registers for neoverse-n1 which
-> would be accessed by TF-A. Since there is no DSU in Qemu,
-> CPUCFR_EL1.SCU bit is set to 1 to avoid DSU registers definition.
->
-> Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn>
-> ---
->  target/arm/cpu64.c | 69 ++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 69 insertions(+)
->
+On 13/03/2023 18.03, Peter Maydell wrote:
+> On Mon, 13 Mar 2023 at 17:00, Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> On 10/03/2023 11.31, Alex Bennée wrote:
+>>> The kerneldoc processor complains about the mismatched variable name.
+>>> Fix it.
+>>>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> ---
+>>>    include/exec/memory.h | 2 +-
+>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/include/exec/memory.h b/include/exec/memory.h
+>>> index 6fa0b071f0..15ade918ba 100644
+>>> --- a/include/exec/memory.h
+>>> +++ b/include/exec/memory.h
+>>> @@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+>>>     *
+>>>     * @notifier: the notifier to be notified
+>>>     */
+>>> -void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
+>>> +void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
+>>
+>> I also keep running into this problem ... I wonder whether we should run
+>> sphinx with "-W" to turn warnings into errors when configure has been run
+>> with --enable-werror ...?
+> 
+> We certainly try to do that: docs/meson.build says:
+> 
+>    # If we're making warnings fatal, apply this to Sphinx runs as well
+>    if get_option('werror')
+>      SPHINX_ARGS += [ '-W' ]
+>    endif
+> 
+> Has that broken ?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+It apparently does not work in our CI, see e.g.:
 
-thanks
--- PMM
+https://gitlab.com/qemu-project/qemu/-/jobs/3922732898#L1420
+
+... there is a warning here, but the job succeeded happily.
+
+  Thomas

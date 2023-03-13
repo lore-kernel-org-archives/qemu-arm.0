@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp172482ejb;
-        Mon, 13 Mar 2023 04:48:22 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8iW3zfp1WnpXdrMMBGFnkUfB/zYETD6sADdEOC7Ys8vQCx+IHf5reVFk6AgSpSiQr8bZCX
-X-Received: by 2002:a05:6214:621:b0:557:a5c5:7e01 with SMTP id a1-20020a056214062100b00557a5c57e01mr15198074qvx.25.1678708102765;
-        Mon, 13 Mar 2023 04:48:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708102; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp172583ejb;
+        Mon, 13 Mar 2023 04:48:31 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9vKeIKkjb13QYeIBAN9OkKM2x2RCjx7kcfML/W/HQQDH+TJuk/qjEZKOBzCLWmFPqsM/Q/
+X-Received: by 2002:a05:622a:178b:b0:3bf:daae:7f34 with SMTP id s11-20020a05622a178b00b003bfdaae7f34mr28634911qtk.41.1678708111726;
+        Mon, 13 Mar 2023 04:48:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678708111; cv=none;
         d=google.com; s=arc-20160816;
-        b=AtemnKIq0eLx8KSbYocllafcTVQMtJLCZNAx/BXNSAjsunyeqWmCAEY4T8s/uPXSXP
-         QvBlQG5uq1cvjX5RIHQJTf1InDUFW3RpAJE5dqSOalhJsEyaAlgHAuiZQYiBZFhqWnr1
-         sjSq02NMRClUZP8+YlIVJ6Bb2Mlr/stPyOBBTU1qALHnSJoBmQf+Hi2GEqWQebqsPkl3
-         zxMOuWlmbJ4irEJnoGuPVRlq0tXhPLHlsQ9lxhfQY6HiqwAKvt3gQQ169to2cxlIIU2+
-         oQqOPA1HdIFP7hT0P65+z/VN1DvmMAjM4IlR9t4zoYwJ1Y9A0VqZ8ehMN9L3OAkrpqMz
-         fj5Q==
+        b=e9EyylAsKK6SzBZ7Nd4fgrOLBQRI6r2J22Tq9FhPrvsTIxfIr0+BMKUCHb0UebIADV
+         DMEJ2JeCaWKKeLAY/jxJSeFq7smsDhtAuqH/pzIG8Gx8OHtp9/1F20BPrYJWQgWwmzRU
+         wNSTKyNrmimGU3gchl82RZZxvlh2msVHmPRosyw5lmamFoG+KVKK5OatY6w1NPbKoM0r
+         NKsEWgNe7Z25yOCdmqxcChsJP2nmRhPa7DglvKFJ98QSywqlFwWdieZ2rBEbf6/gPqIF
+         Q8uvRujuvNW5E1/R/C04pVd0Qjhqg4Jkeg4ET6pC7csRjdV8FZT8zclejP694KMHS6z+
+         7tcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DlJpWzkaAkR3sDdRMPNxntR2XIIAqQPPi8tpLQwnpcQ=;
-        b=L5RghYCdJYcyaJ+J9IFAjyYKheP+JsIeWlW5Q68t/Vshwxo6wGcO38W7a3zQ4beR/d
-         JSr7rrCSFWq2CkYuTdVN2KU1gYEaYGXas5JQdWNmMi8JjQEzxLMkF9PK9CALwMUxLllp
-         kx6OcL0dW4GKdVSwhTU/J+csBvDou64fjENSGJ8bWfHNnN1TUgnUscD4kIeXRXimhI4Y
-         kBLNiqip7S0xRebsbmQMOvB8XDpbZnFoWoDDGkhMmZFtRrmeOAW98xE9gjk2u9adwSbW
-         79VWVR4sLPIc9XuqG6bzO6YpfDkK+3G7j4f6NrM6MJxx/AkaLivCiScJ7y0lUK0SaJyK
-         HATQ==
+        bh=QVXYek2aD1GDbLaBzwM+PhSho8Hk9PdY3riLVXeSemU=;
+        b=dkhevrJk5mW276VBgU2qB+glPu0vOdLU4GD7+HWh+bejUSWA5XMCBLQkVH5UWLbEG3
+         +kyg6QHooMV0KJpxdCqwFVsyWmV/DVf7Fwbup6WD6d9qQC1IOjB0QzfjpbqRX0DKYM4g
+         QvijxbJpTYzEyVx4j3rDxq5LN/WbPUGi8HpKcmnSWo75SAD+749qECZDePS9yiBQ+Ss5
+         3M62vre7+ZKQhYBdaB908a0KELZXo4vLcjJmkPIsb14qXzl3E3rWjvtpV4fkMt99FWzN
+         380Jq4v6YD4r4psJ+i6eIfDlGPfvNF37SF+hbB+8rQvnq58TJ9XmIEWLNC6vMbJClnn0
+         w4eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aNTXNkh7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WXpS37n5;
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id e20-20020ac85994000000b003ba124164bbsi5298786qte.315.2023.03.13.04.48.22
+        by mx.google.com with ESMTPS id u3-20020a05622a010300b003b81b32738dsi5188258qtw.393.2023.03.13.04.48.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:48:22 -0700 (PDT)
+        Mon, 13 Mar 2023 04:48:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aNTXNkh7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WXpS37n5;
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708102;
+	s=mimecast20190719; t=1678708111;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=DlJpWzkaAkR3sDdRMPNxntR2XIIAqQPPi8tpLQwnpcQ=;
-	b=aNTXNkh7xFhTMb+ml/hOoAj3N8Y7ZQ9BE1xVsTLX2jlC/xu5mcnI8SuLH0XlYqjfaG2jsS
-	dyTVwAHC1GwVmPh2umkCl5pEymWZXugD0vT2hNUJni6csQ/VnvN66fGAnhtR+o6C3JdXBC
-	pebU+NVsGxvU45KgHNo86Ek8+cx4jao=
+	bh=QVXYek2aD1GDbLaBzwM+PhSho8Hk9PdY3riLVXeSemU=;
+	b=WXpS37n5h4YNqaums9l6I89CCuUx79n/YfrcpXak+Sn7lgKUL8+P7dqRxRNoJ75bbidcF0
+	JAdtYAGC6VIZQUHUbShvSY/aT6fTioy9gpfmlpbUp+eQd3e5DvrXFpbEt3KBRCxpCQiXof
+	kHD/LlLmCfZ6qaMqfscnMQ4BMb+BenY=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-355-u3T5ybbpNraMe-mSMBt9Ww-1; Mon, 13 Mar 2023 07:48:21 -0400
-X-MC-Unique: u3T5ybbpNraMe-mSMBt9Ww-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+ us-mta-609-hlgN0zGXMp6p_UK9W3nVbQ-1; Mon, 13 Mar 2023 07:48:25 -0400
+X-MC-Unique: hlgN0zGXMp6p_UK9W3nVbQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5A3C286C164;
-	Mon, 13 Mar 2023 11:48:20 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7D66A811E9C;
+	Mon, 13 Mar 2023 11:48:24 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D2C961410F1B;
-	Mon, 13 Mar 2023 11:48:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9761C4042AC8;
+	Mon, 13 Mar 2023 11:48:23 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -86,174 +86,79 @@ Cc: qemu-block@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 19/25] osdep: implement qemu_socketpair() for win32
-Date: Mon, 13 Mar 2023 15:46:42 +0400
-Message-Id: <20230313114648.426607-20-marcandre.lureau@redhat.com>
+Subject: [PULL v2 20/25] qmp: 'add_client' actually expects sockets
+Date: Mon, 13 Mar 2023 15:46:43 +0400
+Message-Id: <20230313114648.426607-21-marcandre.lureau@redhat.com>
 In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-X-TUID: 928voZ/SBgkg
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-TUID: eG19GHFgPMWj
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Manually implement a socketpair() function, using UNIX sockets and
-simple peer credential checking.
+Whether it is SPICE, VNC, D-Bus, or the socket chardev, they all
+actually expect a socket kind or will fail in different ways at runtime.
 
-QEMU doesn't make much use of socketpair, beside vhost-user which is not
-available for win32 at this point. However, I intend to use it for
-writing some new portable tests.
+Throw an error early if the given 'add_client' fd is not a socket, and
+close it to avoid leaks.
+
+This allows to replace the close() call with a more correct & portable
+closesocket() version.
+
+(this will allow importing sockets on Windows with a specialized command
+in the following patch, while keeping the remaining monitor associated
+sockets/add_client code & usage untouched)
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230306122751.2355515-5-marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20230306122751.2355515-6-marcandre.lureau@redhat.com>
 ---
- include/qemu/sockets.h |   2 -
- util/oslib-win32.c     | 110 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 110 insertions(+), 2 deletions(-)
+ qapi/misc.json     | 3 +++
+ monitor/qmp-cmds.c | 7 +++++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/include/qemu/sockets.h b/include/qemu/sockets.h
-index 2b0698a7c9..d935fd80da 100644
---- a/include/qemu/sockets.h
-+++ b/include/qemu/sockets.h
-@@ -15,7 +15,6 @@ int inet_aton(const char *cp, struct in_addr *ia);
- bool fd_is_socket(int fd);
- int qemu_socket(int domain, int type, int protocol);
- 
--#ifndef WIN32
- /**
-  * qemu_socketpair:
-  * @domain: specifies a communication domain, such as PF_UNIX
-@@ -30,7 +29,6 @@ int qemu_socket(int domain, int type, int protocol);
-  * Return 0 on success.
+diff --git a/qapi/misc.json b/qapi/misc.json
+index 27ef5a2b20..f0217cfba0 100644
+--- a/qapi/misc.json
++++ b/qapi/misc.json
+@@ -14,6 +14,9 @@
+ # Allow client connections for VNC, Spice and socket based
+ # character devices to be passed in to QEMU via SCM_RIGHTS.
+ #
++# If the FD associated with @fdname is not a socket, the command will fail and
++# the FD will be closed.
++#
+ # @protocol: protocol name. Valid names are "vnc", "spice", "@dbus-display" or
+ #            the name of a character device (eg. from -chardev id=XXXX)
+ #
+diff --git a/monitor/qmp-cmds.c b/monitor/qmp-cmds.c
+index 859012aef4..b0f948d337 100644
+--- a/monitor/qmp-cmds.c
++++ b/monitor/qmp-cmds.c
+@@ -14,6 +14,7 @@
   */
- int qemu_socketpair(int domain, int type, int protocol, int sv[2]);
--#endif
  
- int qemu_accept(int s, struct sockaddr *addr, socklen_t *addrlen);
- /*
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index 29a667ae3d..16f8a67f7e 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -310,6 +310,116 @@ bool qemu_socket_unselect(int sockfd, Error **errp)
-     return qemu_socket_select(sockfd, NULL, 0, errp);
- }
+ #include "qemu/osdep.h"
++#include "qemu/sockets.h"
+ #include "monitor-internal.h"
+ #include "monitor/qdev.h"
+ #include "monitor/qmp-helpers.h"
+@@ -139,6 +140,12 @@ void qmp_add_client(const char *protocol, const char *fdname,
+         return;
+     }
  
-+int qemu_socketpair(int domain, int type, int protocol, int sv[2])
-+{
-+    struct sockaddr_un addr = {
-+        0,
-+    };
-+    socklen_t socklen;
-+    int listener = -1;
-+    int client = -1;
-+    int server = -1;
-+    g_autofree char *path = NULL;
-+    int tmpfd;
-+    u_long arg;
-+    int ret = -1;
-+
-+    g_return_val_if_fail(sv != NULL, -1);
-+
-+    addr.sun_family = AF_UNIX;
-+    socklen = sizeof(addr);
-+
-+    tmpfd = g_file_open_tmp(NULL, &path, NULL);
-+    if (tmpfd == -1 || !path) {
-+        errno = EACCES;
-+        goto out;
++    if (!fd_is_socket(fd)) {
++        error_setg(errp, "parameter @fdname must name a socket");
++        close(fd);
++        return;
 +    }
 +
-+    close(tmpfd);
-+
-+    if (strlen(path) >= sizeof(addr.sun_path)) {
-+        errno = EINVAL;
-+        goto out;
-+    }
-+
-+    strncpy(addr.sun_path, path, sizeof(addr.sun_path) - 1);
-+
-+    listener = socket(domain, type, protocol);
-+    if (listener == -1) {
-+        goto out;
-+    }
-+
-+    if (DeleteFile(path) == 0 && GetLastError() != ERROR_FILE_NOT_FOUND) {
-+        errno = EACCES;
-+        goto out;
-+    }
-+    g_clear_pointer(&path, g_free);
-+
-+    if (bind(listener, (struct sockaddr *)&addr, socklen) == -1) {
-+        goto out;
-+    }
-+
-+    if (listen(listener, 1) == -1) {
-+        goto out;
-+    }
-+
-+    client = socket(domain, type, protocol);
-+    if (client == -1) {
-+        goto out;
-+    }
-+
-+    arg = 1;
-+    if (ioctlsocket(client, FIONBIO, &arg) != NO_ERROR) {
-+        goto out;
-+    }
-+
-+    if (connect(client, (struct sockaddr *)&addr, socklen) == -1 &&
-+        WSAGetLastError() != WSAEWOULDBLOCK) {
-+        goto out;
-+    }
-+
-+    server = accept(listener, NULL, NULL);
-+    if (server == -1) {
-+        goto out;
-+    }
-+
-+    arg = 0;
-+    if (ioctlsocket(client, FIONBIO, &arg) != NO_ERROR) {
-+        goto out;
-+    }
-+
-+    arg = 0;
-+    if (ioctlsocket(client, SIO_AF_UNIX_GETPEERPID, &arg) != NO_ERROR) {
-+        goto out;
-+    }
-+
-+    if (arg != GetCurrentProcessId()) {
-+        errno = EPERM;
-+        goto out;
-+    }
-+
-+    sv[0] = server;
-+    server = -1;
-+    sv[1] = client;
-+    client = -1;
-+    ret = 0;
-+
-+out:
-+    if (listener != -1) {
-+        close(listener);
-+    }
-+    if (client != -1) {
-+        close(client);
-+    }
-+    if (server != -1) {
-+        close(server);
-+    }
-+    if (path) {
-+        DeleteFile(path);
-+    }
-+    return ret;
-+}
-+
- #undef connect
- int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
+     for (i = 0; i < ARRAY_SIZE(protocol_table); i++) {
+         if (!strcmp(protocol, protocol_table[i].name)) {
+             if (!protocol_table[i].add_client(fd, has_skipauth, skipauth,
 -- 
 2.39.2

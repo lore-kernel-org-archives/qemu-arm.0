@@ -1,39 +1,39 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp378961ejb;
-        Mon, 13 Mar 2023 08:11:27 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9PqgLQVg0k+rgp/SSMem2tdaBB5uqGVDF+INTuXWD3Y+UITzR2uZDhhkSKcixhnz0JoKwU
-X-Received: by 2002:a05:600c:384f:b0:3eb:2b79:a40 with SMTP id s15-20020a05600c384f00b003eb2b790a40mr10790017wmr.20.1678720287013;
-        Mon, 13 Mar 2023 08:11:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678720287; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp379044ejb;
+        Mon, 13 Mar 2023 08:11:31 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+/xZF8cPHbHfRmBlrGn6Ph4ko74qMYCM/bkFnN140SMhkHyZIgo4ZDcC/SeZo3qEo68nUW
+X-Received: by 2002:a05:600c:3c9e:b0:3e1:f8af:8772 with SMTP id bg30-20020a05600c3c9e00b003e1f8af8772mr10890874wmb.9.1678720291033;
+        Mon, 13 Mar 2023 08:11:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678720291; cv=none;
         d=google.com; s=arc-20160816;
-        b=qzr65khus1D0z7PtwZ+aTIZzDxhKtxEgXXYayXmVVhoLkp14lhS7iAZqw8vUhdBN0G
-         zgMpR/NIBXo48F23snlLI2E8zkLGPF5i0MfJnHHRcBhcmj2o7qecKb0YmbY3a4o5u6SA
-         nhh547XsONV/AbAMfvDG+//9AC2Sf/1ZisIG2/Ixvxrs+PtHl6yUDZYYvtnlVbHScyM+
-         3Rps7wsqilSiNB3FEsGYz+5EtzKNEoTd4EfM1wNpPJOofVVPUemOMYN39rEU6fsjZldz
-         DbbL0tvhj7cr7jvvlq4vQFUYkRO4dsN+yIHeJjubRczjjYUhR7rApNYy+IBTOrDGWnZo
-         hf0w==
+        b=rPWJu3MJrS0d50py7EuztdndHq8TksHOkkMgkogplCbV4JPvCcXRV6UfoFBlno88bn
+         PSvXJ6Jd3/3DWPI2uYmutD0eBbWnptG+HEEAgzgShuy9APHo8V0GMKKuMrq83U6WJjhS
+         sl+CVV0p5VC/M5MXcIKbhlEkP68fz9UH6dC3kmV8PE7EdCC88En5LAfUmlvN6JWxHttq
+         rsdTJNWNhJFwVlM4XcYlEEzWkJDMmIBmUz8Sih88hm1fAPjISQA0MdxwZQAf1uMqluss
+         nya/bNH+lGihw7WDdK05S3jgQUpzg8pH5yrHbo9ECNqV4T6YT6k+Nfh2MNMlRRXtTWK+
+         eNIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=2c86UeFI5T202M1tHwei5hS8KjfbDU7y+PlNk4ESHNk=;
-        b=SAUUYbwLl3wufvBpjgr45XFQxu6PV40ZVjqI3kMIMUDlOslTygIG22Q72rPFRpkPPM
-         G9AYnSK2SB4ijYZhioFVPAlerCXZPB8ndVnS5COkrqThtiSoI5r8HkJNcenErh8Xhwed
-         di/T09F8FfFeeAAgtRr+wo/f8bHsHBCg72EMQzrBzA6povHGRBJjlkOmHKcSx/ePjLVS
-         4w4BtwTcXJmFnNmE6sI2xxTsOO1XT/aOL2/MDRSudDIF5B8vvCL61NYJbBII1zRj/dcH
-         qZ248+ggeWy7i+Z3zAAlIgUuXEghr9jcXtfQyF49sb8D5nKp1Jcm6ODSNlcreT8Ft1t0
-         jNaQ==
+        bh=ZCOAS0vQXowBIJe92VLBvZoxnirVxTpR/QiG8LHn7rk=;
+        b=cmWDPIMsaSGLMguTLsdhAHULGlVf6xa+uN83zMp4gh2yLxFu3rk95NICRRwh9sErUn
+         y/pXMCaEl227xZJMX4H6e8Xx6223P6uvrTGIdMbAeikQjVTTUjYeGl95Zxu70rEBOCgK
+         H7fIj7d8IcDFb8jm3m26RGMcs1ODAxVg9mPoPW6HoTB6xbyZmM3VJN73Jg6d8wQ1cJ6l
+         5TjA+oYMd0lMzqnh+lGu1vCvdWzVrC6ce2YKl9oKJWwjp3B4F9KUdrnCYrOxU9c+szEF
+         gupGZ3Y5Y9Knxf74xwljPdk8RSuSbSP/PpbQctIpvS+M1aGsJxvYCoXmb/rzKlS34u/6
+         uFcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=IibIn4Sv;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rEaCfRHZ;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
        spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
 Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id p11-20020adfce0b000000b002ce9f0e4a90si6103516wrn.1016.2023.03.13.08.11.26
+        by mx.google.com with ESMTPS id m5-20020a05600c3b0500b003d96bdce176si190752wms.0.2023.03.13.08.11.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 08:11:26 -0700 (PDT)
+        Mon, 13 Mar 2023 08:11:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=IibIn4Sv;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rEaCfRHZ;
        dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
        spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
@@ -41,36 +41,36 @@ Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id A96281FE0D;
-	Mon, 13 Mar 2023 15:11:26 +0000 (UTC)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 9F6001FE0A;
+	Mon, 13 Mar 2023 15:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678720286; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
+	t=1678720290; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2c86UeFI5T202M1tHwei5hS8KjfbDU7y+PlNk4ESHNk=;
-	b=IibIn4Svz3w5gx9xS2zWpN0iwOPEfjR6lrUmS6V33W4eSoHyux6g34LGaRe49fj84KHThj
-	fvXJ5CXLBcTJ1Q7o/FvYqD7C72fM7Tl2Dvb2FjM9NG/zFgyf7I28GBz7N0bKqjPHMnL9gS
-	+0ZDi9L6bM94ImupTwRr5O834o70/L0=
+	bh=ZCOAS0vQXowBIJe92VLBvZoxnirVxTpR/QiG8LHn7rk=;
+	b=rEaCfRHZqz1KpN0O40OxVfshpsXN8sh8FxSdokAARdJ55gubmMpS3/m/AWtl0D5qVxeN5B
+	a3wr+vamgANv3xPdUXGyde5vn7cdU5eLd3OW46qIs5pwSlDW8oJ8iZaZOD0k6HSfwzIPec
+	Pp+YnNSqqMsgmBRWDdu9l4zsZabPKdE=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678720286;
+	s=susede2_ed25519; t=1678720290;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
+	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2c86UeFI5T202M1tHwei5hS8KjfbDU7y+PlNk4ESHNk=;
-	b=RzjHjj8OWG1/egyyMrUJOkvdDy366hBiSVY9vfekB9XJJx0/GQ4mbNQ/0bEMWc8UcNL49B
-	PdIlG6DUNzfltKCA==
+	bh=ZCOAS0vQXowBIJe92VLBvZoxnirVxTpR/QiG8LHn7rk=;
+	b=bafirbJlk7VMg7u74r+PIMnTM9ZXUDqIAQgS1kg1JVC8X0prkYwmexZQI4j5dkkhmL+eJF
+	+SQjJ0y65dc1EWCQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 44E2A13582;
-	Mon, 13 Mar 2023 15:11:22 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 2470713582;
+	Mon, 13 Mar 2023 15:11:26 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id cCeSAxo9D2R1YwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:22 +0000
+	id 4KCXNx49D2R1YwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:26 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,167 +83,153 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Ani Sinha <ani@anisinha.ca>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH v9 06/10] tests/qtest: Fix tests when no KVM or TCG are present
-Date: Mon, 13 Mar 2023 12:10:54 -0300
-Message-Id: <20230313151058.19645-7-farosas@suse.de>
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH v9 07/10] tests/avocado: Pass parameters to migration test
+Date: Mon, 13 Mar 2023 12:10:55 -0300
+Message-Id: <20230313151058.19645-8-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230313151058.19645-1-farosas@suse.de>
 References: <20230313151058.19645-1-farosas@suse.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7UsD7S/U7W6r
+X-TUID: 6jroOqAX7ALY
 
-It is possible to have a build with both TCG and KVM disabled due to
-Xen requiring the i386 and x86_64 binaries to be present in an aarch64
-host.
+The migration tests are currently broken for an aarch64 host because
+the tests pass no 'machine' and 'cpu' options on the QEMU command
+line.
 
-If we build with --disable-tcg on the aarch64 host, we will end-up
-with a QEMU binary (x86) that does not support TCG nor KVM.
+Add a separate class to each architecture so that we can specify
+'machine' and 'cpu' options instead of relying on defaults.
 
-Skip tests that crash or hang in the above scenario. Do not include
-any test cases if TCG and KVM are missing.
+Add a skip decorator to keep the current behavior of only running
+migration tests when the qemu target matches the host architecture.
 
-Make sure that calls to qtest_has_accel are placed after g_test_init
-in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
-printed before other messages") to avoid TAP parsing errors.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
 ---
- tests/qtest/bios-tables-test.c | 11 +++++++++--
- tests/qtest/boot-serial-test.c |  5 +++++
- tests/qtest/migration-test.c   | 10 +++++++++-
- tests/qtest/pxe-test.c         |  8 +++++++-
- tests/qtest/vmgenid-test.c     |  9 +++++++--
- 5 files changed, 37 insertions(+), 6 deletions(-)
+ tests/avocado/migration.py | 83 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 78 insertions(+), 5 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 76d5100911..2315adc70c 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2082,8 +2082,7 @@ static void test_acpi_virt_oem_fields(void)
- int main(int argc, char *argv[])
- {
-     const char *arch = qtest_get_arch();
--    const bool has_kvm = qtest_has_accel("kvm");
--    const bool has_tcg = qtest_has_accel("tcg");
-+    bool has_kvm, has_tcg;
-     char *v_env = getenv("V");
-     int ret;
+diff --git a/tests/avocado/migration.py b/tests/avocado/migration.py
+index 4b25680c50..8b2ec0e3c4 100644
+--- a/tests/avocado/migration.py
++++ b/tests/avocado/migration.py
+@@ -11,6 +11,8 @@
  
-@@ -2093,6 +2092,14 @@ int main(int argc, char *argv[])
  
-     g_test_init(&argc, &argv, NULL);
- 
-+    has_kvm = qtest_has_accel("kvm");
-+    has_tcg = qtest_has_accel("tcg");
+ import tempfile
++import os
 +
-+    if (!has_tcg && !has_kvm) {
-+        g_test_skip("No accelerator available");
-+        return 0;
-+    }
-+
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-         ret = boot_sector_init(disk);
-         if (ret) {
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index 3aef3a97a9..28bab3d5e4 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -287,6 +287,11 @@ int main(int argc, char *argv[])
+ from avocado_qemu import QemuSystemTest
+ from avocado import skipUnless
  
-     g_test_init(&argc, &argv, NULL);
+@@ -19,7 +21,7 @@
+ from avocado.utils.path import find_command
  
-+    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
-+        g_test_skip("No accelerator available");
-+        return 0;
-+    }
-+
-     for (i = 0; tests[i].arch != NULL; i++) {
-         if (g_str_equal(arch, tests[i].arch) &&
-             qtest_has_machine(tests[i].machine)) {
-diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-index d4ab3934ed..5e4d562f0b 100644
---- a/tests/qtest/migration-test.c
-+++ b/tests/qtest/migration-test.c
-@@ -2459,7 +2459,7 @@ static bool kvm_dirty_ring_supported(void)
  
- int main(int argc, char **argv)
- {
--    const bool has_kvm = qtest_has_accel("kvm");
-+    bool has_kvm, has_tcg;
-     const bool has_uffd = ufd_version_check();
-     const char *arch = qtest_get_arch();
-     g_autoptr(GError) err = NULL;
-@@ -2467,6 +2467,14 @@ int main(int argc, char **argv)
+-class Migration(QemuSystemTest):
++class MigrationTest(QemuSystemTest):
+     """
+     :avocado: tags=migration
+     """
+@@ -62,20 +64,91 @@ def _get_free_port(self):
+             self.cancel('Failed to find a free port')
+         return port
  
-     g_test_init(&argc, &argv, NULL);
- 
-+    has_kvm = qtest_has_accel("kvm");
-+    has_tcg = qtest_has_accel("tcg");
-+
-+    if (!has_tcg && !has_kvm) {
-+        g_test_skip("No accelerator available");
-+        return 0;
-+    }
-+
-     /*
-      * On ppc64, the test only works with kvm-hv, but not with kvm-pr and TCG
-      * is touchy due to race conditions on dirty bits (especially on PPC for
-diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
-index 62b6eef464..5813adcf56 100644
---- a/tests/qtest/pxe-test.c
-+++ b/tests/qtest/pxe-test.c
-@@ -131,11 +131,17 @@ int main(int argc, char *argv[])
-     int ret;
-     const char *arch = qtest_get_arch();
- 
-+    g_test_init(&argc, &argv, NULL);
-+
-+    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
-+        g_test_skip("No accelerator available");
-+        return 0;
-+    }
-+
-     ret = boot_sector_init(disk);
-     if(ret)
-         return ret;
- 
--    g_test_init(&argc, &argv, NULL);
- 
-     if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
-         test_batch(x86_tests, false);
-diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
-index efba76e716..a597cde707 100644
---- a/tests/qtest/vmgenid-test.c
-+++ b/tests/qtest/vmgenid-test.c
-@@ -165,13 +165,18 @@ int main(int argc, char **argv)
- {
-     int ret;
- 
-+    g_test_init(&argc, &argv, NULL);
-+
-+    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
-+        g_test_skip("No accelerator available");
-+        return 0;
-+    }
-+
-     ret = boot_sector_init(disk);
-     if (ret) {
-         return ret;
-     }
- 
--    g_test_init(&argc, &argv, NULL);
 -
-     qtest_add_func("/vmgenid/vmgenid/set-guid",
-                    vmgenid_set_guid_test);
-     qtest_add_func("/vmgenid/vmgenid/set-guid-auto",
+-    def test_migration_with_tcp_localhost(self):
++    def migration_with_tcp_localhost(self):
+         dest_uri = 'tcp:localhost:%u' % self._get_free_port()
+         self.do_migrate(dest_uri)
+ 
+-    def test_migration_with_unix(self):
++    def migration_with_unix(self):
+         with tempfile.TemporaryDirectory(prefix='socket_') as socket_path:
+             dest_uri = 'unix:%s/qemu-test.sock' % socket_path
+             self.do_migrate(dest_uri)
+ 
+     @skipUnless(find_command('nc', default=False), "'nc' command not found")
+-    def test_migration_with_exec(self):
++    def migration_with_exec(self):
+         """The test works for both netcat-traditional and netcat-openbsd packages."""
+         free_port = self._get_free_port()
+         dest_uri = 'exec:nc -l localhost %u' % free_port
+         src_uri = 'exec:nc localhost %u' % free_port
+         self.do_migrate(dest_uri, src_uri)
++
++
++@skipUnless('aarch64' in os.uname()[4], "host != target")
++class Aarch64(MigrationTest):
++    """
++    :avocado: tags=arch:aarch64
++    :avocado: tags=machine:virt
++    :avocado: tags=cpu:max
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('x86_64' in os.uname()[4], "host != target")
++class X86_64(MigrationTest):
++    """
++    :avocado: tags=arch:x86_64
++    :avocado: tags=machine:pc
++    :avocado: tags=cpu:qemu64
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('ppc64le' in os.uname()[4], "host != target")
++class PPC64(MigrationTest):
++    """
++    :avocado: tags=arch:ppc64
++    :avocado: tags=machine:pseries
++    :avocado: tags=cpu:power9_v2.0
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
++
++
++@skipUnless('s390x' in os.uname()[4], "host != target")
++class S390X(MigrationTest):
++    """
++    :avocado: tags=arch:s390x
++    :avocado: tags=machine:s390-ccw-virtio
++    :avocado: tags=cpu:qemu
++    """
++
++    def test_migration_with_tcp_localhost(self):
++        self.migration_with_tcp_localhost()
++
++    def test_migration_with_unix(self):
++        self.migration_with_unix()
++
++    def test_migration_with_exec(self):
++        self.migration_with_exec()
 -- 
 2.35.3

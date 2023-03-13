@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171864ejb;
-        Mon, 13 Mar 2023 04:47:34 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+MndnCvQ5skTsvSIRJhIm+O1KNpxdTWCCfErODgLOKqbRU0VnEXmQ10HsytRy++3IgY+Q8
-X-Received: by 2002:ac8:58cb:0:b0:3b8:68df:fc75 with SMTP id u11-20020ac858cb000000b003b868dffc75mr25826887qta.31.1678708053986;
-        Mon, 13 Mar 2023 04:47:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708053; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171899ejb;
+        Mon, 13 Mar 2023 04:47:37 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/zF5e+A8vfcLq7Y5lO4ZyTp86XQhSS8Ei0OsWPHHzQbLvngkWUWOhCpwuLG2HVB+lYzwN8
+X-Received: by 2002:a05:6214:2422:b0:56e:b1e0:3fef with SMTP id gy2-20020a056214242200b0056eb1e03fefmr14865811qvb.24.1678708056907;
+        Mon, 13 Mar 2023 04:47:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678708056; cv=none;
         d=google.com; s=arc-20160816;
-        b=uCnFMujdjS4xcYsdjdupk/M0GMRTi+t98k7qNXLWSDLwRrVbIjFr8fG9mq0URSqMNh
-         3zcKkaMi8oENjzdE6GUqlHV8EnNFJq6KxgrDtbLjaYv3DUay1gCQTZY0xCG8U+vOfbLy
-         wwPi13/5tv3b2kWpc0P0gJQTC0F+WWdsCeEVe0z9M0WTK6Y54pYUMUzDoXzLZ7GXO65K
-         Hy3B8kpQ8zoCScpjyEqWAW+7A0XjNkAoyoHwImlqfIHN8ElPTy5Pyjkb+qMLaMIOwq76
-         FUkrlfDD5Pj1Yle6WWq0gJhF5Q06ntZdvbi1ObOUNROqvvwxfeGnZ8AOU1btktFG97EM
-         Vqqw==
+        b=xDbOhFURB1F6DmbtUnofSxVvg4fK/OuPEOotLJ8a28RrJyO5MDbWZn6PB1iPNo7qlj
+         OXuAbXJuSG/u63d/afdJlzbnEOhUWVLp4u1vTgSje3DfbqKMsFvQP5/q+locjdGR67xY
+         ntkz4Tpcrg4V0aYHx2J/w2hXVlVOmwjGzrAM2CVuJH5RUejkI7a2GJb+TP6loA4b8t+h
+         k89suUN0VTKaZR/nqxnfXzuFjv7P7l3UskbK10TIPlftzTaNYeylO88wjVdrjNc+txmk
+         +AfKKSg5rH4INNn0Wwy/UQCwDNKUmsGhOHyDEK9mfHat83W0D8jh+vjjambmEeJ+jkpJ
+         SWpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+WQwSwzIT10nPJnT3+0kLlVrIxZlCbistZ5wXabtCUE=;
-        b=KS7Zq4nibamdHPcX5cRX6tGs+WQURWBha/Ao87wEa6jaZyZoAtTqPhGiqBcHVAS3Py
-         U90ZLKZOkUKR4F4AfceTVFEgi0+rcsjSYTfVftwfmAHyV2kW5aW6sJFUNMRoPiiXK/oa
-         33UQ9vtrtELkMrk+LdSQoSVJwk5ocukHQzkRDs/8BbvPak4hV2gn5e9C8yT8ob32/5IF
-         lrFUgzXfTBCgL63byqgvXg74ID5xQKAYFE57q5/dBWzx+fm8Zcgk1zqkH8JMMO7FXx9e
-         GerXkNrYZ89QSHI+vr5IieeZntv6Q6x1aUTGBqVDOBLK2VgRj+qno131s4UsidJwkSzf
-         HRyA==
+        bh=BqxGsWxXmu7LEVQhkjkpbn+02NihnK+bVamWmx0KeA4=;
+        b=V1zjFBZzu1rkM5dbcYCIQWB3wuPSvewCuy85+t5DhxNZvszV4ex1qG3poDEtCtIHu2
+         NdaescvKBYWTcXgFQewyoWrcsSByMSkdlEmz8PJK2uWnmUF+1gbv1j01WOXhaedORA8Z
+         cNZ/Zb0kPtW387x7tvi0p3g6306FarVahcilsm6rvQKCKTEMYuuX4duKlufYPvtFxb/b
+         4xu3d5nk3jf0ORCXFTqST2dQPXVVL4toBmzbCG+kDBToFDLfIfXLpf/lnEpJ0NRkTqcN
+         T0a5iYgYTNeWn5zAPdKKCH/4mH5o5e5hf3f5DSeMCxypxydXjwMQog/eS2Nu10SYb14L
+         Q2Hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLUi15QU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TnoSdSK7;
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 12-20020a370c0c000000b0073b9b15d8e8si4871228qkm.149.2023.03.13.04.47.33
+        by mx.google.com with ESMTPS id l15-20020a0cac0f000000b005a5226116fesi2347832qvb.497.2023.03.13.04.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:47:33 -0700 (PDT)
+        Mon, 13 Mar 2023 04:47:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLUi15QU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TnoSdSK7;
        spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708053;
+	s=mimecast20190719; t=1678708056;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=+WQwSwzIT10nPJnT3+0kLlVrIxZlCbistZ5wXabtCUE=;
-	b=FLUi15QUX6SqBdgMrmiZyaMYsiC2y2+OvJdWapoG7NA7XiGFIOU3Csmrq+Il/WuxnDnzWQ
-	HuZ6mXvHZPQdxkOiFRBTzYvPJapK6Zne7+fKoNfgABVlAhbMq4XIhUXSEsCFi4K0s1sWVP
-	TodTqYHvMiTRMlXuDm/LslHXwxIJ73w=
+	bh=BqxGsWxXmu7LEVQhkjkpbn+02NihnK+bVamWmx0KeA4=;
+	b=TnoSdSK7BZrkXYkAl/NRvdawnVkMpiR/WHRZdyG6hEsnlFCKNRkuW1fyWZiLqlJIBhwjXx
+	7R3Qamm4o+1ZQMOG7NYFFi+OcNPQ/2tU97jzq5+c+XX6YcTrN0FURSF8mcwXC35hhRPohG
+	+sdTVdocRPgy2qkyUulCol9dVdF1sVI=
 Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
  [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-215-FeLLXPnzPzyNMe7x3XRYBQ-1; Mon, 13 Mar 2023 07:47:29 -0400
-X-MC-Unique: FeLLXPnzPzyNMe7x3XRYBQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+ us-mta-601-i4CaWVyjMPKajD6p4fYC_A-1; Mon, 13 Mar 2023 07:47:33 -0400
+X-MC-Unique: i4CaWVyjMPKajD6p4fYC_A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 921B129DD987;
-	Mon, 13 Mar 2023 11:47:28 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D3503828887;
+	Mon, 13 Mar 2023 11:47:32 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7D8894042AC0;
-	Mon, 13 Mar 2023 11:47:26 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 94CE61410F1D;
+	Mon, 13 Mar 2023 11:47:31 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -86,81 +86,56 @@ Cc: qemu-block@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 08/25] aio: make aio_set_fd_poll() static to aio-posix.c
-Date: Mon, 13 Mar 2023 15:46:31 +0400
-Message-Id: <20230313114648.426607-9-marcandre.lureau@redhat.com>
+Subject: [PULL v2 09/25] aio/win32: aio_set_fd_handler() only supports SOCKET
+Date: Mon, 13 Mar 2023 15:46:32 +0400
+Message-Id: <20230313114648.426607-10-marcandre.lureau@redhat.com>
 In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-X-TUID: CxLiXVnKAXZp
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+X-TUID: 3cND0byV+1xS
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
+Let's check if the argument is actually a SOCKET, else report an error
+and return.
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Message-Id: <20230221124802.4103554-9-marcandre.lureau@redhat.com>
+Message-Id: <20230221124802.4103554-10-marcandre.lureau@redhat.com>
 ---
- include/block/aio.h | 8 --------
- util/aio-posix.c    | 6 +++---
- util/aio-win32.c    | 7 -------
- 3 files changed, 3 insertions(+), 18 deletions(-)
+ util/aio-win32.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/include/block/aio.h b/include/block/aio.h
-index 8fba6a3584..543717f294 100644
---- a/include/block/aio.h
-+++ b/include/block/aio.h
-@@ -482,14 +482,6 @@ void aio_set_fd_handler(AioContext *ctx,
-                         IOHandler *io_poll_ready,
-                         void *opaque);
- 
--/* Set polling begin/end callbacks for a file descriptor that has already been
-- * registered with aio_set_fd_handler.  Do nothing if the file descriptor is
-- * not registered.
-- */
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end);
--
- /* Register an event notifier and associated callbacks.  Behaves very similarly
-  * to event_notifier_set_handler.  Unlike event_notifier_set_handler, these callbacks
-  * will be invoked when using aio_poll().
-diff --git a/util/aio-posix.c b/util/aio-posix.c
-index 6cc6256d53..a8be940f76 100644
---- a/util/aio-posix.c
-+++ b/util/aio-posix.c
-@@ -180,9 +180,9 @@ void aio_set_fd_handler(AioContext *ctx,
-     }
- }
- 
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end)
-+static void aio_set_fd_poll(AioContext *ctx, int fd,
-+                            IOHandler *io_poll_begin,
-+                            IOHandler *io_poll_end)
- {
-     AioHandler *node = find_aio_handler(ctx, fd);
- 
 diff --git a/util/aio-win32.c b/util/aio-win32.c
-index be5136e486..74d63fa21e 100644
+index 74d63fa21e..08e8f5615d 100644
 --- a/util/aio-win32.c
 +++ b/util/aio-win32.c
-@@ -125,13 +125,6 @@ void aio_set_fd_handler(AioContext *ctx,
-     aio_notify(ctx);
- }
+@@ -22,6 +22,7 @@
+ #include "qemu/sockets.h"
+ #include "qapi/error.h"
+ #include "qemu/rcu_queue.h"
++#include "qemu/error-report.h"
  
--void aio_set_fd_poll(AioContext *ctx, int fd,
--                     IOHandler *io_poll_begin,
--                     IOHandler *io_poll_end)
--{
--    /* Not implemented */
--}
--
- void aio_set_event_notifier(AioContext *ctx,
-                             EventNotifier *e,
-                             bool is_external,
+ struct AioHandler {
+     EventNotifier *e;
+@@ -70,10 +71,14 @@ void aio_set_fd_handler(AioContext *ctx,
+                         IOHandler *io_poll_ready,
+                         void *opaque)
+ {
+-    /* fd is a SOCKET in our case */
+     AioHandler *old_node;
+     AioHandler *node = NULL;
+ 
++    if (!fd_is_socket(fd)) {
++        error_report("fd=%d is not a socket, AIO implementation is missing", fd);
++        return;
++    }
++
+     qemu_lockcnt_lock(&ctx->list_lock);
+     QLIST_FOREACH(old_node, &ctx->aio_handlers, node) {
+         if (old_node->pfd.fd == fd && !old_node->deleted) {
 -- 
 2.39.2

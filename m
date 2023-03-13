@@ -1,152 +1,191 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp379270ejb;
-        Mon, 13 Mar 2023 08:11:41 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+cq+XxK30oFnijeBfDUu2iRcUmklaj8zC9WMSq+ORe8mubMBz9nnDTQ2KNjSuHUBAOeBbZ
-X-Received: by 2002:adf:e5c9:0:b0:2ce:a299:a1ea with SMTP id a9-20020adfe5c9000000b002cea299a1eamr5899468wrn.24.1678720301571;
-        Mon, 13 Mar 2023 08:11:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678720301; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp384518ejb;
+        Mon, 13 Mar 2023 08:16:08 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8DiL28zQq5Wj/xj/fY46Ue6YC4xaL52Ibt0vfCM0r4OPUyKiekaVQKksc4rjprLL4dhnor
+X-Received: by 2002:a9d:17f0:0:b0:68b:c938:878a with SMTP id j103-20020a9d17f0000000b0068bc938878amr17010770otj.16.1678720568458;
+        Mon, 13 Mar 2023 08:16:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678720568; cv=none;
         d=google.com; s=arc-20160816;
-        b=r8vdfQ4CelX1EA5P7DU4/lTYHHNUSm0Rvc3oKu2o5WvyxVH1wWDkxawkLp9BwnidgZ
-         9mbJy4ROmD0DFzgqSUvYbebj9aDcJZm6Qc0xU8xzHYD0VPUmrODL9q7YDURBfBYZsF27
-         OgehtjVfZIDHmXh/6mDF3m0C/iXnhMHuZQA6FCvkbXTM0exltcFyt5T6YaD0RonemFvv
-         Ifpeu6gwkolfM9SoVP6eADKaRX87/ajVXoDvdTvxLyysrzqXpNu9LDSG4evlsg0EZgK4
-         oIgJXM3b84UI4AVtvZAKjA5TFfz485Gv1SOBVPsi8Hm/nrx9Vkr2aZ1DhlRDDeEGsN94
-         5WMw==
+        b=1JEyiumi7KegNIgiTuy2yg5rwmvoDqpwTzUxCJEXtq6w67unFH3CPq5VUIO0NB0b7s
+         ginIBJX1UDu9C1uNa/1as+2DsTP/psOfUFQ7xwm74kYMEhrVcvrtY5i6t/qUHENcdh9I
+         Tmw2wC1Ai21tERnnJdMzIMvXNuOuFg6PDHZ0A74ZOi58GlpCmEjdEq6oYZV8kvSUevrb
+         u4G4tN0pl7h7PPhpMHi/oHbMVeH7tX4viHxs0th4yyjPLKuVsbzsJ9XKxR2ANZmw7hPc
+         92+ygqymPk8iIDy5EHfgMHe/nUEnEDqDvdIOBpTTSJHz1UU/MqyQgc/FS2QQZNY/g7AX
+         w2yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-        b=sGeNB1uIjuCHJoJCiqtaoHRpqHCgEGlc6hyduzQLluWQd2ELbX1YkZ845eAQTsPTAK
-         65lHEm55T9axH0k++lE2uY0bIY12GQbk/CqVWL8dAtlyGvRnP9kx6QCVIbp8QYKDd9XN
-         dNKF5PuggABT2wZ6y0hwYtvoCvU7JvbXwgH1Do/UNxBYrpSksZ+hUiF9cxPNXNSHYouI
-         jUwlv43PzLWQjiOn/e/lJnqIW1NtAp3WYoB0nWzkgk5UcJKTE/Ey5ZpCtP5oLoK9yall
-         9nPG+X3dIo8iAvBPPnbirHz18YLqX7PAUDgneywqUJhpFx3iFcTR8cXePJ8wMDphPAY0
-         LTWQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=a8AiZjlSnYImiU6voMEmmw3aJiJ1GxkAA5gesDrv5S8=;
+        b=WoR+12HFtyFQmqYkeY0LOwZPmEZ9x05V6lSJjq3W/Kx9H6L+N5pe6vpFxVYgb58CFe
+         z9AL6fK0F/I2oVmRxZwpPmUQ3SrGIu+9ACb/S/sM0wZmW61Xt1Q9jJiQvq01muY9v6mQ
+         mS1nX4ZnLPnvjIgFEMzXsOD59g4OkHBo7xbCY6OjZ2p/SziNzMIS3kmZQ+J90aIRgbHt
+         bCvlHunSAhnpV9mXc8bbe6oBoxvMbn93SlJVyqSe+y6GwNu7cfo7DSvSedz4la8LFspk
+         qp1hPuNPcywt+MgBS33ScSAc8kLTtqfU6lAPFGR8pCIQWymZ5Tcstrr2vrYUAtS94hPa
+         TDRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=LRzMY5+T;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id q7-20020a056000136700b002c7040f049esi7320951wrz.1015.2023.03.13.08.11.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 08:11:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AWfedV6L;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l2-20020a37f902000000b00742e01cbda1si5273539qkj.365.2023.03.13.08.16.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 13 Mar 2023 08:16:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=LRzMY5+T;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 3EE6022ADB;
-	Mon, 13 Mar 2023 15:11:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678720301; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-	b=LRzMY5+TsrkhFYpmzGgxC1jUohaXZZE/fLEIHF8Efl4DC1xjm5ls9dMGdcfqtbIBvWvDK5
-	iPLMdOVqhh22/CkukauWFYg0L6JG082c/86S6kx4oAovWwo0ErLBqMzXo90A0FNR8tUKUU
-	/ClY0rV70C4LtRgxm/Edldtr1foE6P8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678720301;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-	b=La9o1KNKpkGZUUDY4hBePlBxOS/MK3yUOKge6/onrHOfyet9oS0DFAYVmphjGMeweNYFwb
-	ocbMZk6f/YToimCg==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id ADF9F13582;
-	Mon, 13 Mar 2023 15:11:37 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id KDGdHSk9D2R1YwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:37 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH v9 10/10] gitlab-ci: Check building KVM-only aarch64 target
-Date: Mon, 13 Mar 2023 12:10:58 -0300
-Message-Id: <20230313151058.19645-11-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230313151058.19645-1-farosas@suse.de>
-References: <20230313151058.19645-1-farosas@suse.de>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AWfedV6L;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pbju0-0003IV-Rv; Mon, 13 Mar 2023 11:15:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pbjta-0003CW-Fj; Mon, 13 Mar 2023 11:15:40 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pbjtX-0000sQ-Rf; Mon, 13 Mar 2023 11:15:29 -0400
+Received: by mail-ed1-x530.google.com with SMTP id j11so50114037edq.4;
+ Mon, 13 Mar 2023 08:15:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1678720515;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=a8AiZjlSnYImiU6voMEmmw3aJiJ1GxkAA5gesDrv5S8=;
+ b=AWfedV6LO+ytF2dWn8jobzlgDKTMuLK1ZmIHWBvQTqTFACCELjQrJ3C4dB6N+tjrPc
+ t++LG2eSMFGqf4QBLWJZr7FHDysqP6OL7+9pRGcjItXq9/wWv4FdjV7+i1LsBAF5/9gH
+ WSwbnSQRB9kBHgVei7WDA2FltzdqGJkqLA7gexYlkD8BGnKBzxKFBnHfEjfFBvyBbPK/
+ VSjwRU0p2Kf1MlAvH49hKrUpLSYP1qMHg21WoU6B1lL8yRgG4MN7U5qHtqCixretbUjN
+ 8DN/61vgNd+IZLeYVN7I2n32dqq2R80/F5MmT2sv+mWqhKkP+kHYGBavdUiah31zC/CF
+ /bcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678720515;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=a8AiZjlSnYImiU6voMEmmw3aJiJ1GxkAA5gesDrv5S8=;
+ b=YKsM2JsEeWakyXsYy28tEiqzDl+0a0BwOvnWeHQxaTyjW3tez4jz5Ic8Vibc5Vu0SC
+ RWz5VOnMC+8RFz1QF79uzs4tzd9w75l4svVPljLemURA+2RwvPUQa1nnqMQ/0IM6A2QZ
+ uv4AdUr+bXiN+ue9iRJkMFUauWtX96Fj1i8a3OZksJvPq2RlLna2ftq8RVDvDrUiGiZv
+ Auc3YOiEMUSsq70pAQYzvbdtzqlIV9PDtWLePuzYvPC50v0yKXJJhfI8rma/fAoIYtsh
+ IuqvUXUKG5QmPuRkh8BaI7zKkkZbpB0a4aO6amf78hErXw0moq1XkOfEP8cxjlJiwa1y
+ WMVg==
+X-Gm-Message-State: AO0yUKUexQaFJp/JoExtcfRoUk26pya42nlkg/fpi+UYiGwyFBu5zs2M
+ mafDUwDphPHx4c7GIEhz7S/UJ1KbI2fr0PLny2E=
+X-Received: by 2002:a50:9f44:0:b0:4fb:3549:a708 with SMTP id
+ b62-20020a509f44000000b004fb3549a708mr3056321edf.6.1678720515070; Mon, 13 Mar
+ 2023 08:15:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: +OWc9tLdNUpB
+References: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
+ <20230311144111.30468-4-strahinja.p.jankovic@gmail.com>
+ <a63469d1-e163-43b2-c39c-c3b7c0a6eacc@linaro.org>
+In-Reply-To: <a63469d1-e163-43b2-c39c-c3b7c0a6eacc@linaro.org>
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Date: Mon, 13 Mar 2023 16:15:03 +0100
+Message-ID: <CABtshVR-wrjJQ1kMNRVGjJuJdg1341carpbdiM91tiwfZE_Qxg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/arm: Add WDT to Allwinner-H3 and Orangepi-PC
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, 
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Jk+3C1H+RcSv
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi,
 
-Add a manual new job to cross-build the aarch64 target with
-only the KVM accelerator enabled (in particular, no TCG).
+On Mon, Mar 13, 2023 at 8:53=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> Hi,
+>
+> On 11/3/23 15:41, Strahinja Jankovic wrote:
+> > This patch adds WDT to Allwinner-H3 and Orangepi-PC.
+> > WDT is added as an overlay to the Timer module memory area.
+> >
+> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> > ---
+> >   docs/system/arm/orangepi.rst  | 1 +
+> >   hw/arm/Kconfig                | 1 +
+> >   hw/arm/allwinner-h3.c         | 8 ++++++++
+> >   include/hw/arm/allwinner-h3.h | 5 ++++-
+> >   4 files changed, 14 insertions(+), 1 deletion(-)
+>
+>
+> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> > index 69d0ad6f50..f05afddf7e 100644
+> > --- a/hw/arm/allwinner-h3.c
+> > +++ b/hw/arm/allwinner-h3.c
+> > @@ -49,6 +49,7 @@ const hwaddr allwinner_h3_memmap[] =3D {
+> >       [AW_H3_DEV_OHCI3]      =3D 0x01c1d400,
+> >       [AW_H3_DEV_CCU]        =3D 0x01c20000,
+> >       [AW_H3_DEV_PIT]        =3D 0x01c20c00,
+> > +    [AW_H3_DEV_WDT]        =3D 0x01c20ca0,
+> >       [AW_H3_DEV_UART0]      =3D 0x01c28000,
+> >       [AW_H3_DEV_UART1]      =3D 0x01c28400,
+> >       [AW_H3_DEV_UART2]      =3D 0x01c28800,
+> > @@ -234,6 +235,8 @@ static void allwinner_h3_init(Object *obj)
+> >       object_initialize_child(obj, "twi1",  &s->i2c1,  TYPE_AW_I2C_SUN6=
+I);
+> >       object_initialize_child(obj, "twi2",  &s->i2c2,  TYPE_AW_I2C_SUN6=
+I);
+> >       object_initialize_child(obj, "r_twi", &s->r_twi, TYPE_AW_I2C_SUN6=
+I);
+> > +
+> > +    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN6I);
+> >   }
+> >
+> >   static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+> > @@ -453,6 +456,11 @@ static void allwinner_h3_realize(DeviceState *dev,=
+ Error **errp)
+> >       sysbus_connect_irq(SYS_BUS_DEVICE(&s->r_twi), 0,
+> >                          qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SP=
+I_R_TWI));
+> >
+> > +    /* WDT */
+> > +    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+> > +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
+> > +                            s->memmap[AW_H3_DEV_WDT], 1);
+>
+> Why do you need to overlap?
+>
 
-Re-enable running the similar job on the project Aarch64
-custom runner.
+The WDT is part of the Timer component and it lies in the part of
+memory already initialized by the AW_H3_DEV_PIT.
+I saw the overlay approach used for RTC in Allwinner A10 (same issue,
+in A10 both RTC and WDT are part of Timer), so I just reused it.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- .gitlab-ci.d/crossbuilds.yml                         | 11 +++++++++++
- .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml |  4 ----
- 2 files changed, 11 insertions(+), 4 deletions(-)
+If there is a better way to handle it, I can update the implementation.
 
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 61b8ac86ee..da787ea9bf 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -196,3 +196,14 @@ cross-arm64-xen-only:
-     IMAGE: debian-arm64-cross
-     ACCEL: xen
-     EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-kvm
-+
-+# Similar job is run by qemu-project's custom runner by default
-+cross-arm64-kvm-only:
-+  extends: .cross_accel_build_job
-+  needs:
-+    job: arm64-debian-cross-container
-+  variables:
-+    QEMU_JOB_OPTIONAL: 1
-+    IMAGE: debian-arm64-cross
-+    ACCEL: kvm
-+    EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-xen --without-default-devices
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 13e14a0f87..c61be46b82 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -115,11 +115,7 @@ ubuntu-22.04-aarch64-notcg:
-  - aarch64
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--   when: manual
--   allow_failure: true
-  - if: "$AARCH64_RUNNER_AVAILABLE"
--   when: manual
--   allow_failure: true
-  script:
-  - mkdir build
-  - cd build
--- 
-2.35.3
+Best regards,
+Strahinja

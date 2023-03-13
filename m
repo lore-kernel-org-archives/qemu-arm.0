@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp378749ejb;
-        Mon, 13 Mar 2023 08:11:18 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8OHMJrU92AOWXN6wrBBWhjLUlsNl9frm8pvVJ72ZPBD9ct+VC2g02ickeiKaHlulpUD4qE
-X-Received: by 2002:a05:600c:4f02:b0:3eb:39c3:8844 with SMTP id l2-20020a05600c4f0200b003eb39c38844mr11757022wmq.12.1678720278795;
-        Mon, 13 Mar 2023 08:11:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678720278; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp378827ejb;
+        Mon, 13 Mar 2023 08:11:22 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9luFqnk5awHpw5k7hQmrISpCY88WymmOmI1VIFsFoAQJlUH2RO1Av0yrVSAxGYKFyoI+So
+X-Received: by 2002:a05:600c:548e:b0:3eb:2708:86ca with SMTP id iv14-20020a05600c548e00b003eb270886camr12368280wmb.28.1678720282225;
+        Mon, 13 Mar 2023 08:11:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678720282; cv=none;
         d=google.com; s=arc-20160816;
-        b=o3zc4MxWTwNo/GWu9ntrxj9xfSjZtKktgUrnNtQPEImHDDyCtzOCfez/hr0zz24f3k
-         jv1LwkDYdsYb/sWabCy5W3qxj0H8Lq7wV2bolej9F1yit6QN5vzK1IjQTfpG1GFyG2kc
-         ljcga3DdTULJSZWSHxUVX8KP4z5vqq7E5YTzCFWhFh8Y0Bc8abBeKEohcG0nvaFdLINN
-         Y6zZ5w4KMCVJ07VzmMW1+Gh1XIQK9NKpeGIvIF0L6TeM2aFEz9DUyWtj1GOx44fGFHEa
-         EfMGnboOjVjZa21RdqztN4EuU6JD5X42gmDVGNxc1f45zIzMRqjXV8fa/R889BfKa1EX
-         7AoA==
+        b=1J1lVNsQE5GjrVbk9abW6BTQoJk3G2gPZP/Nz63cXB8P2eq6la6fH6B6YsAuQ0zxv1
+         t/GZiZl1JDBXSptmtkgBhPSpxnjOvG5jsFNvbzemFdTmZ0ZlBP8HYv0BJMNoVhgisDaY
+         phjK1i0KMFNCnw4mcTSS0fF9CQcU0MxWp/301zDlEWdTVb9Ss47iXVBl+JdrcNDPhNcC
+         el+OT3GlIvsGtkJRlGyAZ1TjLfOBS+qZv9VgadoKX58P6m4OdXML95PYkCQvrOGMc7gi
+         CwBRD1xpwx3AutoGhy/A1/tb+/NAR0flq23K6oIsm0CSEWC4Wn0KgAVO9VEfktmW/Xjj
+         lYDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=PSIQn4qmrmgg/w3VwS88pHN3LpWrryUnRIkyIj+D7qA=;
-        b=Jwd+Gh0fT8Ujx3ft9YLLIKJogpOOVAmAd25G/IUUY9TzZoLT6wGP2bgrid9JLhHWzB
-         jd8WJGsVNAC35/H+rGPrW8uBNP2K2IbmCaHEMr8aOg0E987JssRtda+pzB0K+obGkvjc
-         n106ryFkFdNjCh2QiW2k0j8f9fK39B5vDAXRRO7+KahLx2XrCnUq9yr18c8tH5UQV2tU
-         AsLDwwxdguQDUFzz9I68hN9GTqI/sNs8mOlur+9/1oGcUK5yXYWAZkFF3i9NGB/bCiAD
-         oSbSH+ml6+upwz5UnFzL+khlO9poDOlMKFZnthjgNYGeU19/lUmTDCJFB3Gx6KTFA0Da
-         54mA==
+        bh=n6Q0GraW1WT1dpCp5ROo0whUmfGSr130gbFRRKJ3YsU=;
+        b=0iNk8Idf/e5ThCylDsWKGlyCT+4FMvyot9yYtR3BZmi5nulvxWSnVj3Up17nHu2h5V
+         9r2wFt5dw9N3SjQxmi/ZVOKj1OSrDKPETKyXjYRY1MWkmkT7VIxPT6UI/DQDIH6e6FyY
+         +qX8cYaHNV6FaCOxVLeHmq6hRZyoZvLE1U4MagnUxER1XdhynfSRMyPVHLaChPnPPDyu
+         ukwJSsSqLIWkfNWUzCaNcEGKvW7MdUd/IFBcNlr+YccfcWPvo4QQFWbGhcLo6/4cH0Ss
+         95O8kGU7wQkQ0gvQcXDhp8CHUjD5iZ0u+Ejv7FoKQ4DDElCp2i63b2rGytt60LXEN3SN
+         PCZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="MnyEtKH/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=VriTWFpG;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id f2-20020adff442000000b002c704c5038dsi4508509wrp.456.2023.03.13.08.11.18
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id f12-20020a05600c4e8c00b003e215fe5887si7556452wmq.218.2023.03.13.08.11.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 08:11:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Mon, 13 Mar 2023 08:11:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="MnyEtKH/";
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=VriTWFpG;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 735BE1FE0D;
-	Mon, 13 Mar 2023 15:11:18 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id C221222ADA;
+	Mon, 13 Mar 2023 15:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1678720278; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	t=1678720281; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PSIQn4qmrmgg/w3VwS88pHN3LpWrryUnRIkyIj+D7qA=;
-	b=MnyEtKH/Y0E7d/fZP33vu0sQXX6S9qUY3aj6KuBLp32B0w4y329sbHiZpvLpvkWIbxQ3jz
-	J41Ud2ca9Qn0G/GotzIeORzsEeUpYCb/gh27DwOyyqiUwtEgJc7w2NA5uWrH35ozMoKXc4
-	HosGK7+IPM6AqzCauKzhEh5jUz8lAkU=
+	bh=n6Q0GraW1WT1dpCp5ROo0whUmfGSr130gbFRRKJ3YsU=;
+	b=VriTWFpGorj6DiMpvU50XYbXynfnf6wNFuV/WehIR7yBPQLNOfPsMNT9PLuyTw8GSBZiqI
+	VkB6GbMAMYhFaQ0rqD0+c/MtalXxJ6wDUuvpNyh2j1yJ2yBCYnJI/Zv/gjuvi3BhjsyD8o
+	M0wkEM9emPQ13mQBl54OEuw1DnroM/E=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1678720278;
+	s=susede2_ed25519; t=1678720281;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
+	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=PSIQn4qmrmgg/w3VwS88pHN3LpWrryUnRIkyIj+D7qA=;
-	b=aeH39iMeuIOUCgK/5L3NDiY3wfihuyVqXAudzVXeNKQk02ZLRcsEtvtvk1VHabDHauNgvF
-	xWGUUn57fO1MWVAQ==
+	bh=n6Q0GraW1WT1dpCp5ROo0whUmfGSr130gbFRRKJ3YsU=;
+	b=IINf7NUj3oFmt7LJa9Xum1xlTklHitTxGU8C3h0ObY6AMeXgjrkSY1+FOQ69/RT02ZM9QA
+	+20rH5MIf+y6EkAA==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9452A13582;
-	Mon, 13 Mar 2023 15:11:15 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id E260C13582;
+	Mon, 13 Mar 2023 15:11:18 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id gEBGFxM9D2R1YwAAMHmgww
-	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:15 +0000
+	id 2K9DKhY9D2R1YwAAMHmgww
+	(envelope-from <farosas@suse.de>); Mon, 13 Mar 2023 15:11:18 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,64 +83,72 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v9 04/10] target/arm: gdbstub: Guard M-profile code with CONFIG_TCG
-Date: Mon, 13 Mar 2023 12:10:52 -0300
-Message-Id: <20230313151058.19645-5-farosas@suse.de>
+Subject: [PATCH v9 05/10] target/arm: gdbstub: Guard pauth code with CONFIG_TCG
+Date: Mon, 13 Mar 2023 12:10:53 -0300
+Message-Id: <20230313151058.19645-6-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230313151058.19645-1-farosas@suse.de>
 References: <20230313151058.19645-1-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bN/VcwKW8qsO
+X-TUID: dilVt76jDPYt
 
-This code is only relevant when TCG is present in the build. We're
-about to enable the build with --disable-tcg, so avoid the error:
+We currently don't have the reading of pauth regs implemented for KVM
+so wrap the pauth registration with CONFIG_TCG.
 
-libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub.c.o: in function
-`m_sysreg_ptr': ../target/arm/gdbstub.c:356: undefined reference to
-`arm_v7m_get_sp_ptr'
+This avoids the build error when using --disable-tcg:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub64.c.o: in function
+`aarch64_gdb_get_pauth_reg': ../target/arm/gdbstub64.c:233: undefined
+reference to `pauth_ptr_mask'
+
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- target/arm/gdbstub.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ target/arm/gdbstub.c   | 4 +++-
+ target/arm/gdbstub64.c | 2 ++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 78105b8078..36a1d7dbc5 100644
+index 36a1d7dbc5..3ea50bcaaf 100644
 --- a/target/arm/gdbstub.c
 +++ b/target/arm/gdbstub.c
-@@ -323,6 +323,7 @@ static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
-     return cpu->dyn_sysreg_xml.num;
- }
+@@ -23,6 +23,7 @@
+ #include "gdbstub/helpers.h"
+ #include "internals.h"
+ #include "cpregs.h"
++#include "sysemu/tcg.h"
  
-+#ifdef CONFIG_TCG
- typedef enum {
-     M_SYSREG_MSP,
-     M_SYSREG_PSP,
-@@ -480,6 +481,7 @@ static int arm_gen_dynamic_m_secextreg_xml(CPUState *cs, int orig_base_reg)
-     return cpu->dyn_m_secextreg_xml.num;
- }
- #endif
-+#endif /* CONFIG_TCG */
- 
- const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
- {
-@@ -554,6 +556,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
-                              arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
-                              "system-registers.xml", 0);
- 
-+#ifdef CONFIG_TCG
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         gdb_register_coprocessor(cs,
-             arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
-@@ -568,4 +571,5 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+ typedef struct RegisterSysregXmlParam {
+     CPUState *cs;
+@@ -522,7 +523,8 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      aarch64_gdb_set_fpu_reg,
+                                      34, "aarch64-fpu.xml", 0);
          }
- #endif
-     }
-+#endif
+-        if (isar_feature_aa64_pauth(&cpu->isar)) {
++
++        if (tcg_enabled() && isar_feature_aa64_pauth(&cpu->isar)) {
+             gdb_register_coprocessor(cs, aarch64_gdb_get_pauth_reg,
+                                      aarch64_gdb_set_pauth_reg,
+                                      4, "aarch64-pauth.xml", 0);
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index ec1e07f139..104a43e471 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -210,6 +210,7 @@ int aarch64_gdb_set_sve_reg(CPUARMState *env, uint8_t *buf, int reg)
+     return 0;
  }
+ 
++#ifdef CONFIG_TCG
+ int aarch64_gdb_get_pauth_reg(CPUARMState *env, GByteArray *buf, int reg)
+ {
+     switch (reg) {
+@@ -243,6 +244,7 @@ int aarch64_gdb_set_pauth_reg(CPUARMState *env, uint8_t *buf, int reg)
+     /* All pseudo registers are read-only. */
+     return 0;
+ }
++#endif
+ 
+ static void output_vector_union_type(GString *s, int reg_width,
+                                      const char *name)
 -- 
 2.35.3

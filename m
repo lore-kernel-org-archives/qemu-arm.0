@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171786ejb;
-        Mon, 13 Mar 2023 04:47:27 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8C4aqDiZvWaHc3BOh/mPnQHanKEmVagkVLYKHhINqYpRGJ8769O3/kB8waW0jXL8NugPRF
-X-Received: by 2002:aa7:c781:0:b0:4fb:fd9f:737a with SMTP id n1-20020aa7c781000000b004fbfd9f737amr3871042eds.4.1678708047645;
-        Mon, 13 Mar 2023 04:47:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678708047; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp171864ejb;
+        Mon, 13 Mar 2023 04:47:34 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+MndnCvQ5skTsvSIRJhIm+O1KNpxdTWCCfErODgLOKqbRU0VnEXmQ10HsytRy++3IgY+Q8
+X-Received: by 2002:ac8:58cb:0:b0:3b8:68df:fc75 with SMTP id u11-20020ac858cb000000b003b868dffc75mr25826887qta.31.1678708053986;
+        Mon, 13 Mar 2023 04:47:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678708053; cv=none;
         d=google.com; s=arc-20160816;
-        b=cV5olEHRnrsH7nR3ZjjNLOYd1IAi9QqBVXnFKvGjXKtSeFav+ZTKbfFqxKCNGgHj5+
-         BkBlU90rJd0pHc2DTh/C6Y+oFfZmuLJ0/E0PJF3oqYwq1DWFirhzgIZwNp41oGgwAPcD
-         yDo9v2A/DYB+xYGddoyVH1RkPq3lsgH/1CGtgYgjENntIRtkqxW16dJxGxECfxY7g3Li
-         /lh5cUW2DptLsa0sqV+pbjQYYXFf6Kb2nn4OH1LM+FZ9WSvBF3bzWzEl9gA6E4JCbwEM
-         cWSdh7wiBWtKUFAt5wz+GZ6MwPoeM4wCVFInAVACNNLnB1ConJLFdb3f3K8XP4tdzq2F
-         CuyQ==
+        b=uCnFMujdjS4xcYsdjdupk/M0GMRTi+t98k7qNXLWSDLwRrVbIjFr8fG9mq0URSqMNh
+         3zcKkaMi8oENjzdE6GUqlHV8EnNFJq6KxgrDtbLjaYv3DUay1gCQTZY0xCG8U+vOfbLy
+         wwPi13/5tv3b2kWpc0P0gJQTC0F+WWdsCeEVe0z9M0WTK6Y54pYUMUzDoXzLZ7GXO65K
+         Hy3B8kpQ8zoCScpjyEqWAW+7A0XjNkAoyoHwImlqfIHN8ElPTy5Pyjkb+qMLaMIOwq76
+         FUkrlfDD5Pj1Yle6WWq0gJhF5Q06ntZdvbi1ObOUNROqvvwxfeGnZ8AOU1btktFG97EM
+         Vqqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ctK4P0EoigpL6m8TzkfXT3GOpy1xxNQXZQbM5oEWJQs=;
-        b=B/ZSMtpqAG53ZuV3Qe50QNT3mPfYPzp3Kk0DEErRSc9eDtOrza+T+EY4Fkkg+CgZ7C
-         ++qaszScGj9dvqdRT79f7Er4Ig/FpzYYsmt0i/d7uHTnfRvcrQqNIa/yCL6+syqtAUXA
-         JtuYNJBAe6as7fIh1npS0BBdWxqoqSSpjFmDMaqzNVLySlf7A9DwJosIQ0NItdrsutmQ
-         3kJvXq62CyBlX1d40vraWJvCzvflx6zpRYIYh8hsWXaEJ2Go8J3PvQ6r5uhKc9hbM9w6
-         cEcgxLmdmBZdW/fZHIUa07eVboUlqu9rlmz5q2ngh0JJH8Iijqeg9CK3u5EJv2Y+73Nk
-         6opw==
+        bh=+WQwSwzIT10nPJnT3+0kLlVrIxZlCbistZ5wXabtCUE=;
+        b=KS7Zq4nibamdHPcX5cRX6tGs+WQURWBha/Ao87wEa6jaZyZoAtTqPhGiqBcHVAS3Py
+         U90ZLKZOkUKR4F4AfceTVFEgi0+rcsjSYTfVftwfmAHyV2kW5aW6sJFUNMRoPiiXK/oa
+         33UQ9vtrtELkMrk+LdSQoSVJwk5ocukHQzkRDs/8BbvPak4hV2gn5e9C8yT8ob32/5IF
+         lrFUgzXfTBCgL63byqgvXg74ID5xQKAYFE57q5/dBWzx+fm8Zcgk1zqkH8JMMO7FXx9e
+         GerXkNrYZ89QSHI+vr5IieeZntv6Q6x1aUTGBqVDOBLK2VgRj+qno131s4UsidJwkSzf
+         HRyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dcoj7Z74;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLUi15QU;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <marcandre.lureau@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id g20-20020a056402181400b004fd228408c9si625276edy.222.2023.03.13.04.47.27
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 12-20020a370c0c000000b0073b9b15d8e8si4871228qkm.149.2023.03.13.04.47.33
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 04:47:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 13 Mar 2023 04:47:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dcoj7Z74;
-       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FLUi15QU;
+       spf=pass (google.com: domain of marcandre.lureau@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=marcandre.lureau@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1678708046;
+	s=mimecast20190719; t=1678708053;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ctK4P0EoigpL6m8TzkfXT3GOpy1xxNQXZQbM5oEWJQs=;
-	b=Dcoj7Z74CxHEe94mT4XQZ/IS0j2dqhhIqQfbDD85aY1jsppvTLhY5e6iGwgKk+CzabBcXd
-	CcCHRIqVHQQGugbUsyzXgpAgQLaCRmcBijZRiVaNIF+vjSmOxd9IQs+kiNgDKl7VXLvo+d
-	gq+eixDO/dmVknrXsv8DaRjC7rQMNqw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=+WQwSwzIT10nPJnT3+0kLlVrIxZlCbistZ5wXabtCUE=;
+	b=FLUi15QUX6SqBdgMrmiZyaMYsiC2y2+OvJdWapoG7NA7XiGFIOU3Csmrq+Il/WuxnDnzWQ
+	HuZ6mXvHZPQdxkOiFRBTzYvPJapK6Zne7+fKoNfgABVlAhbMq4XIhUXSEsCFi4K0s1sWVP
+	TodTqYHvMiTRMlXuDm/LslHXwxIJ73w=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-534-3MRgM9vJNA6nr-hhT6Sc7w-1; Mon, 13 Mar 2023 07:47:23 -0400
-X-MC-Unique: 3MRgM9vJNA6nr-hhT6Sc7w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+ us-mta-215-FeLLXPnzPzyNMe7x3XRYBQ-1; Mon, 13 Mar 2023 07:47:29 -0400
+X-MC-Unique: FeLLXPnzPzyNMe7x3XRYBQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 10B6D86C164;
-	Mon, 13 Mar 2023 11:47:23 +0000 (UTC)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 921B129DD987;
+	Mon, 13 Mar 2023 11:47:28 +0000 (UTC)
 Received: from localhost (unknown [10.39.208.8])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F0BE41121318;
-	Mon, 13 Mar 2023 11:47:21 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7D8894042AC0;
+	Mon, 13 Mar 2023 11:47:26 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -86,89 +86,81 @@ Cc: qemu-block@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PULL v2 07/25] win32/socket: introduce qemu_socket_unselect() helper
-Date: Mon, 13 Mar 2023 15:46:30 +0400
-Message-Id: <20230313114648.426607-8-marcandre.lureau@redhat.com>
+Subject: [PULL v2 08/25] aio: make aio_set_fd_poll() static to aio-posix.c
+Date: Mon, 13 Mar 2023 15:46:31 +0400
+Message-Id: <20230313114648.426607-9-marcandre.lureau@redhat.com>
 In-Reply-To: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 References: <20230313114648.426607-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-X-TUID: voU+17Upoz+o
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+X-TUID: CxLiXVnKAXZp
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-A more explicit version of qemu_socket_select() with no events.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Message-Id: <20230221124802.4103554-8-marcandre.lureau@redhat.com>
+Message-Id: <20230221124802.4103554-9-marcandre.lureau@redhat.com>
 ---
- include/sysemu/os-win32.h | 2 ++
- io/channel-socket.c       | 4 ++--
- util/oslib-win32.c        | 7 ++++++-
- 3 files changed, 10 insertions(+), 3 deletions(-)
+ include/block/aio.h | 8 --------
+ util/aio-posix.c    | 6 +++---
+ util/aio-win32.c    | 7 -------
+ 3 files changed, 3 insertions(+), 18 deletions(-)
 
-diff --git a/include/sysemu/os-win32.h b/include/sysemu/os-win32.h
-index 9f842ae643..504a8966c3 100644
---- a/include/sysemu/os-win32.h
-+++ b/include/sysemu/os-win32.h
-@@ -169,6 +169,8 @@ static inline void qemu_funlockfile(FILE *f)
- bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-                         long lNetworkEvents, Error **errp);
+diff --git a/include/block/aio.h b/include/block/aio.h
+index 8fba6a3584..543717f294 100644
+--- a/include/block/aio.h
++++ b/include/block/aio.h
+@@ -482,14 +482,6 @@ void aio_set_fd_handler(AioContext *ctx,
+                         IOHandler *io_poll_ready,
+                         void *opaque);
  
-+bool qemu_socket_unselect(SOCKET s, Error **errp);
-+
- /* We wrap all the sockets functions so that we can
-  * set errno based on WSAGetLastError()
-  */
-diff --git a/io/channel-socket.c b/io/channel-socket.c
-index 0bc29c4808..03757c7a7e 100644
---- a/io/channel-socket.c
-+++ b/io/channel-socket.c
-@@ -442,7 +442,7 @@ static void qio_channel_socket_finalize(Object *obj)
-             }
-         }
- #ifdef WIN32
--        qemu_socket_select(ioc->fd, NULL, 0, NULL);
-+        qemu_socket_unselect(ioc->fd, NULL);
- #endif
-         closesocket(ioc->fd);
-         ioc->fd = -1;
-@@ -846,7 +846,7 @@ qio_channel_socket_close(QIOChannel *ioc,
+-/* Set polling begin/end callbacks for a file descriptor that has already been
+- * registered with aio_set_fd_handler.  Do nothing if the file descriptor is
+- * not registered.
+- */
+-void aio_set_fd_poll(AioContext *ctx, int fd,
+-                     IOHandler *io_poll_begin,
+-                     IOHandler *io_poll_end);
+-
+ /* Register an event notifier and associated callbacks.  Behaves very similarly
+  * to event_notifier_set_handler.  Unlike event_notifier_set_handler, these callbacks
+  * will be invoked when using aio_poll().
+diff --git a/util/aio-posix.c b/util/aio-posix.c
+index 6cc6256d53..a8be940f76 100644
+--- a/util/aio-posix.c
++++ b/util/aio-posix.c
+@@ -180,9 +180,9 @@ void aio_set_fd_handler(AioContext *ctx,
+     }
+ }
  
-     if (sioc->fd != -1) {
- #ifdef WIN32
--        qemu_socket_select(sioc->fd, NULL, 0, NULL);
-+        qemu_socket_unselect(sioc->fd, NULL);
- #endif
-         if (qio_channel_has_feature(ioc, QIO_CHANNEL_FEATURE_LISTEN)) {
-             socket_listen_cleanup(sioc->fd, errp);
-diff --git a/util/oslib-win32.c b/util/oslib-win32.c
-index df752fc762..dbd32acc98 100644
---- a/util/oslib-win32.c
-+++ b/util/oslib-win32.c
-@@ -180,7 +180,7 @@ static int socket_error(void)
- void qemu_socket_set_block(int fd)
+-void aio_set_fd_poll(AioContext *ctx, int fd,
+-                     IOHandler *io_poll_begin,
+-                     IOHandler *io_poll_end)
++static void aio_set_fd_poll(AioContext *ctx, int fd,
++                            IOHandler *io_poll_begin,
++                            IOHandler *io_poll_end)
  {
-     unsigned long opt = 0;
--    qemu_socket_select(fd, NULL, 0, NULL);
-+    qemu_socket_unselect(fd, NULL);
-     ioctlsocket(fd, FIONBIO, &opt);
+     AioHandler *node = find_aio_handler(ctx, fd);
+ 
+diff --git a/util/aio-win32.c b/util/aio-win32.c
+index be5136e486..74d63fa21e 100644
+--- a/util/aio-win32.c
++++ b/util/aio-win32.c
+@@ -125,13 +125,6 @@ void aio_set_fd_handler(AioContext *ctx,
+     aio_notify(ctx);
  }
  
-@@ -298,6 +298,11 @@ bool qemu_socket_select(SOCKET s, WSAEVENT hEventObject,
-     return true;
- }
- 
-+bool qemu_socket_unselect(SOCKET s, Error **errp)
-+{
-+    return qemu_socket_select(s, NULL, 0, errp);
-+}
-+
- #undef connect
- int qemu_connect_wrap(int sockfd, const struct sockaddr *addr,
-                       socklen_t addrlen)
+-void aio_set_fd_poll(AioContext *ctx, int fd,
+-                     IOHandler *io_poll_begin,
+-                     IOHandler *io_poll_end)
+-{
+-    /* Not implemented */
+-}
+-
+ void aio_set_event_notifier(AioContext *ctx,
+                             EventNotifier *e,
+                             bool is_external,
 -- 
 2.39.2

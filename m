@@ -1,388 +1,314 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp1668816ejb;
-        Tue, 14 Mar 2023 10:37:05 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/uOGYl8QxQJuYm8azUrEvuzXZuWFNT5I5F3EwmkZGFPSH8rdqZA6x12/PH0FUuqWWLS9B5
-X-Received: by 2002:ac8:58cb:0:b0:3bf:c431:ea65 with SMTP id u11-20020ac858cb000000b003bfc431ea65mr64988909qta.64.1678815424859;
-        Tue, 14 Mar 2023 10:37:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678815424; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp1784825ejb;
+        Tue, 14 Mar 2023 13:03:12 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/GtowbX6l4rnxwDKJeO8GUxgyCcj52mzBNEcOKIzBRKSbv81TmXvgQFXcwEukHJb+vpW0q
+X-Received: by 2002:ad4:5aa9:0:b0:5aa:fd43:1fbe with SMTP id u9-20020ad45aa9000000b005aafd431fbemr10412845qvg.46.1678824192475;
+        Tue, 14 Mar 2023 13:03:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678824192; cv=none;
         d=google.com; s=arc-20160816;
-        b=EBRsDdoFT667ssw+vO06ZS2tDT5g0hDmBk5LQqYN11zS98n4T8Fh+D4eRZynFUZxDC
-         UMHLOobyfRx7QfD+lLo/tmW00UDv0raBUfFRu41cNxaZHqdMA5eVsV0CgsqujNtvkcG6
-         leHbC35608icSfqvaGj74AbLijo6CuD4hipy2eYCSV3xgPedhWyxnjW07WQzn6cFieVH
-         IEMZ61Zrl+frYGbLpBLrWZ2Hr5JEmhPkTNJa9hqq9JjA+NQ7+kanHs3HvoNNrxneA3M/
-         fmCvvFO/NUTCSvjRAdI5jHrkYcGXiVKdClrISH98yjhC/0acX/ikxcd33csTldqQTPKZ
-         4W2Q==
+        b=Q8W+BXLnX8USa40j8pi1inh6eX3O9mt8AMKIKIHPysKEWtMr2//949gPWAlY1nOUvL
+         i1LeyF2WLlNAdOQyuOtvjhK+Rzc9YJ4CwHwwvBilr/8aM52wz2dCoQKHuocbBefodwvR
+         5+gkuOGcKbH5fsc9SMdeZSgM678T+phPRdH0CMi5r7+n5Bnwuhs/d0DENHOT7pfd2T5n
+         b8EwxFMIpGIW6VKyptWxooqsO0zde1B6rzUeNj1LQtGIlRI/011EZvfKxM9zHDosMPHu
+         VDDzVlnRG76Vu0Onh1+NGp7D6hvO8v63WMaRFZyOy6YvD8m9xMotnryRD+9iDDzwE+lZ
+         b2qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ENnQdBTvn0HEoh5BCvwooMsd0FFs/sIQ3C/8ftFSOI0=;
-        b=tr6aO6yIXLiMWyR4PkSsExkRjNI0q+a+DRY7EFs72gBX9nk7udJ905Xg2QYZp9lScE
-         vzNaTJZA2bJghfDYT8g3flWD/6HU8gLWs8TIju+v6X/MR3MQqVcV5ARkAHjerthqeZ8X
-         cVMn6m0IoVrR5RIdIqV0Pm7SpQ1MRgjEoAx2YiUdRQcEjfnRyra4jVXpbT0rvQmxqlV+
-         7ruV52sc+SXZnP1U4Vpw8ERLtgynU7C80kmncFDtefGsS4zoqx2uANQ/0I2A5fsUKxxw
-         b3iN554seS9AanXhmDI8x4hQ+i6eK6Oy60qirPDq06bnv96F7sWAEmdAbrqGI/2mqlje
-         Ht0A==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=V9LHoOomVCXSbu8tUWUGIJnQ6wR9qt/imnB9X1WcVVA=;
+        b=PgxEDo7xHtqdJ7ifkfif4OA8EChP1XYMF8CZjMgAVfVFKpz8KXRSHSBrGupnElLL9y
+         zjGCttaxLySRsf7Bh5+fe2gmbfa2UEYaki8FJGGdllS3StJfjifwQmHAMwH0pcZB5D4G
+         mtof2TeBEA6KWdqxn/3pzRUy0oC/PE/6Yahn11KHCgY/r18cmF0c1nZJASytEQ4FDWHE
+         mugtDdhcBfRlLLw+7SH58DpkIZesF7Kkf30+kn0SjBvp9FQ4ZlnAYhqLSrDFM7l3LvJX
+         zKjj73zHjVC9FuZ08AkPywcL9RN95/Me3mVvVSbIYUlov9/niKTkR47sf+03+ctsL6oy
+         eeJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ezyBV3kZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17-20020ac85e51000000b003b63c88f5e2si2522280qtx.345.2023.03.14.10.37.04
+        by mx.google.com with ESMTPS id s13-20020a05620a0bcd00b0073ba88f6df5si2656092qki.341.2023.03.14.13.03.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Mar 2023 10:37:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 14 Mar 2023 13:03:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ezyBV3kZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pc8Zc-00083d-F5; Tue, 14 Mar 2023 13:36:32 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pcArQ-0004P5-Vn; Tue, 14 Mar 2023 16:03:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pc8Zb-00081T-7C; Tue, 14 Mar 2023 13:36:31 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1pc8ZZ-0002NY-5X; Tue, 14 Mar 2023 13:36:30 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.5])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 19C4B208C5;
- Tue, 14 Mar 2023 17:36:15 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.21; Tue, 14 Mar
- 2023 18:36:14 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0029051faf2-e37e-4819-9be6-aed727a0ff51,
- BE9B9C72B5668688B8F45BC97132BF8BBFD962E0) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <543cd299-5ebb-2db3-39d4-2af3c6dae4de@kaod.org>
-Date: Tue, 14 Mar 2023 18:36:13 +0100
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1pcArK-0004Np-RL; Tue, 14 Mar 2023 16:03:00 -0400
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1pcArG-0002Js-Vo; Tue, 14 Mar 2023 16:02:57 -0400
+Received: by mail-yb1-xb34.google.com with SMTP id r1so4290656ybu.5;
+ Tue, 14 Mar 2023 13:02:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1678824170;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=V9LHoOomVCXSbu8tUWUGIJnQ6wR9qt/imnB9X1WcVVA=;
+ b=ezyBV3kZ0gOuWEXxHIXQ4yukobkipKnEjLAuVWOvry8Y9Q/3mpikRTO/CCeU6D0c6f
+ Ct3GI5Dl+ifFfq2mmh44oVB4zjD+uJrCpNkbWjFyKTQc4Bx9E1oiWKyZXn0rEJ+h3DTK
+ MMYEydxUgLdV6YlmkImFG88RMyPhNXV1m5k0cCtDrkOyN0xUCqfaONL7DpSo94K0WL3C
+ Y65df6WpryVLo3A/GB/m1UQyDZ9BuWrnnIbcQygR0PnQddBSqNpeEE6IlRuRzpwxJaZ0
+ 9Mou5+Wjix7OB5+0TQi5PrhpRHtg+JEVk8WQawmLhfneXufayGykjngyTcOngusI0jVd
+ 4Odw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1678824170;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=V9LHoOomVCXSbu8tUWUGIJnQ6wR9qt/imnB9X1WcVVA=;
+ b=PBdkwAn5qMTLJA+lbDEX1TlC02oe56oSEGSxdSDLNqWe69zxo6Xu8vSuWK8QmI7N9W
+ MeBar7Fsie7kB2bC8c8fbu3jQRNnW0oQTaqXo3r8yDnV7WPaOa2d9zfih1unJYwORGXW
+ ThEIuZANIpyw8D3gHGfrH9ImZ51LsjGYTtSrohoG1LWG/vDzMfBRXRYwouryEDh3SSnn
+ eJnXminl1WRsXfNAoJ/1yRAXdam0YEUoMHuedaW6i7n5AT90nO5qCy2t0olndzzP46Rf
+ 30wdnWsYCwwyeREb3lilO8KpP9EEUS6HVMn5axSmQcNVF9HyK94Hxk903ZVuhDxT/EWS
+ BItg==
+X-Gm-Message-State: AO0yUKWCxZcxbYdDlYgISCy9CTP3jm6ijHNx01aRS7rcjQc6+cCqvF3O
+ HT+8wDBRyvOcZ1gllZ/RV8dnCxaDMzR0uUjBOUel+A/kpp4=
+X-Received: by 2002:a05:6902:1024:b0:b4a:3896:bc17 with SMTP id
+ x4-20020a056902102400b00b4a3896bc17mr744166ybt.0.1678824169830; Tue, 14 Mar
+ 2023 13:02:49 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH for-8.1] hw: Add compat machines for 8.1
-Content-Language: en-US
-To: Cornelia Huck <cohuck@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Eduardo Habkost <eduardo@habkost.net>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, Yanan Wang
- <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, Richard
- Henderson <richard.henderson@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>, Daniel Henrique Barboza
- <danielhb413@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, Greg
- Kurz <groug@kaod.org>, Halil Pasic <pasic@linux.ibm.com>, Christian
- Borntraeger <borntraeger@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>, Ilya
- Leoshkevich <iii@linux.ibm.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>,
- <qemu-s390x@nongnu.org>
-References: <20230314173009.152667-1-cohuck@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230314173009.152667-1-cohuck@redhat.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 6f3afe29-4e33-4948-a6ca-19a877597b12
-X-Ovh-Tracer-Id: 12722106000449375129
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrvddviedguddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdelkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtoheptghohhhutghksehrvgguhhgrthdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpihhiiheslhhinhhugidrihgsmhdrtghomhdpuggrvhhiugesrhgvughhrghtrdgtohhmpdhthhhuthhhsehrvgguhhgrthdrtghomhdpfhgrrhhmrghnsehlihhnuhigrdhisghmrdgtohhmpdgsohhrnhhtrhgrvghgvghrsehlihhnuhigrdhisghmrdgtohhmpdhprghsihgtsehlihhnuhigrdhisghmrdgtohhmpdhqvg
- hmuhdqphhptgesnhhonhhgnhhurdhorhhgpdgurghvihgusehgihgsshhonhdrughrohhpsggvrghrrdhiugdrrghupdhlrghurhgvnhhtsehvihhvihgvrhdrvghupdhmshhtsehrvgguhhgrthdrtghomhdprhhitghhrghrugdrhhgvnhguvghrshhonheslhhinhgrrhhordhorhhgpdhpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdifrghnghihrghnrghnheehsehhuhgrfigvihdrtghomhdpphhhihhlmhgusehlihhnrghrohdrohhrghdpmhgrrhgtvghlrdgrphhfvghlsggruhhmsehgmhgrihhlrdgtohhmpdgvughurghrughosehhrggskhhoshhtrdhnvghtpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpuggrnhhivghlhhgsgedufeesghhmrghilhdrtghomhdpqhgvmhhuqdhsfeeltdigsehnohhnghhnuhdrohhrghdpghhrohhugheskhgrohgurdhorhhgpdfovfetjfhoshhtpehmohehvdelpdhmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
+ <20230311144111.30468-5-strahinja.p.jankovic@gmail.com>
+In-Reply-To: <20230311144111.30468-5-strahinja.p.jankovic@gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 14 Mar 2023 21:02:38 +0100
+Message-ID: <CAPan3WpQUsz9rRbpYAAYtEOM=s7SF_VqMcXK+rR5k7dta2epQA@mail.gmail.com>
+Subject: Re: [PATCH 4/4] tests/avocado: Add reboot tests to Cubieboard
+To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000487bf005f6e1b682"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b34;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-yb1-xb34.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0RcPC5eAq1jc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +QPIfwveVNwi
 
-On 3/14/23 18:30, Cornelia Huck wrote:
-> Add 8.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+--000000000000487bf005f6e1b682
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-For ppc,
+Hi Strahinja,
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Looks good! I re-ran the tests on my machine, and they work fine:
 
-Thanks,
+ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
+./build/tests/venv/bin/avocado --show=3Dapp,console run -t
+machine:orangepi-pc -t machine:cubieboard
+tests/avocado/boot_linux_console.py
+...
+|console: Tue Mar 14 19:56:37 UTC 2023
+\console: Starting root file system check:
+PASS (22.45 s)
+RESULTS    : PASS 8 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
+CANCEL 0
+JOB TIME   : 189.23 s
 
-C.
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
+On Sat, Mar 11, 2023 at 3:42=E2=80=AFPM Strahinja Jankovic <
+strahinjapjankovic@gmail.com> wrote:
 
+> Cubieboard tests end with comment "reboot not functioning; omit test".
+> Fix this so reboot is done at the end of each test.
+>
+> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 > ---
->   hw/arm/virt.c              |  9 ++++++++-
->   hw/core/machine.c          |  3 +++
->   hw/i386/pc.c               |  3 +++
->   hw/i386/pc_piix.c          | 16 +++++++++++++---
->   hw/i386/pc_q35.c           | 14 ++++++++++++--
->   hw/m68k/virt.c             |  9 ++++++++-
->   hw/ppc/spapr.c             | 15 +++++++++++++--
->   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->   include/hw/boards.h        |  3 +++
->   include/hw/i386/pc.h       |  3 +++
->   10 files changed, 79 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ac626b3bef74..267fe56fae76 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -3232,10 +3232,17 @@ static void machvirt_machine_init(void)
->   }
->   type_init(machvirt_machine_init);
->   
-> +static void virt_machine_8_1_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(8, 1)
-> +
->   static void virt_machine_8_0_options(MachineClass *mc)
->   {
-> +    virt_machine_8_1_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
->   }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(8, 0)
-> +DEFINE_VIRT_MACHINE(8, 0)
->   
->   static void virt_machine_7_2_options(MachineClass *mc)
->   {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 45e3d24fdc89..5bda87fc7d91 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -39,6 +39,9 @@
->   #include "hw/virtio/virtio.h"
->   #include "hw/virtio/virtio-pci.h"
->   
-> +GlobalProperty hw_compat_8_0[] = {};
-> +const size_t hw_compat_8_0_len = G_N_ELEMENTS(hw_compat_8_0);
-> +
->   GlobalProperty hw_compat_7_2[] = {
->       { "e1000e", "migrate-timadj", "off" },
->       { "virtio-mem", "x-early-migration", "false" },
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 1489abf010a6..615e1d3d06ad 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -116,6 +116,9 @@
->       { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
->       { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
->   
-> +GlobalProperty pc_compat_8_0[] = {};
-> +const size_t pc_compat_8_0_len = G_N_ELEMENTS(pc_compat_8_0);
-> +
->   GlobalProperty pc_compat_7_2[] = {
->       { "ICH9-LPC", "noreboot", "true" },
->   };
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 30eedd62a3a0..21591dad8d92 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -454,21 +454,31 @@ static void pc_i440fx_machine_options(MachineClass *m)
->       machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
->   }
->   
-> -static void pc_i440fx_8_0_machine_options(MachineClass *m)
-> +static void pc_i440fx_8_1_machine_options(MachineClass *m)
->   {
->       pc_i440fx_machine_options(m);
->       m->alias = "pc";
->       m->is_default = true;
->   }
->   
-> +DEFINE_I440FX_MACHINE(v8_1, "pc-i440fx-8.1", NULL,
-> +                      pc_i440fx_8_1_machine_options);
-> +
-> +static void pc_i440fx_8_0_machine_options(MachineClass *m)
-> +{
-> +    pc_i440fx_8_1_machine_options(m);
-> +    m->alias = NULL;
-> +    m->is_default = false;
-> +    compat_props_add(m->compat_props, hw_compat_8_0, hw_compat_8_0_len);
-> +    compat_props_add(m->compat_props, pc_compat_8_0, pc_compat_8_0_len);
-> +}
-> +
->   DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
->                         pc_i440fx_8_0_machine_options);
->   
->   static void pc_i440fx_7_2_machine_options(MachineClass *m)
->   {
->       pc_i440fx_8_0_machine_options(m);
-> -    m->alias = NULL;
-> -    m->is_default = false;
->       compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
->       compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
->   }
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 797ba347fd05..f02919d92c46 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -373,19 +373,29 @@ static void pc_q35_machine_options(MachineClass *m)
->       m->max_cpus = 288;
->   }
->   
-> -static void pc_q35_8_0_machine_options(MachineClass *m)
-> +static void pc_q35_8_1_machine_options(MachineClass *m)
->   {
->       pc_q35_machine_options(m);
->       m->alias = "q35";
->   }
->   
-> +DEFINE_Q35_MACHINE(v8_1, "pc-q35-8.1", NULL,
-> +                   pc_q35_8_1_machine_options);
-> +
-> +static void pc_q35_8_0_machine_options(MachineClass *m)
-> +{
-> +    pc_q35_8_1_machine_options(m);
-> +    m->alias = NULL;
-> +    compat_props_add(m->compat_props, hw_compat_8_0, hw_compat_8_0_len);
-> +    compat_props_add(m->compat_props, pc_compat_8_0, pc_compat_8_0_len);
-> +}
-> +
->   DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
->                      pc_q35_8_0_machine_options);
->   
->   static void pc_q35_7_2_machine_options(MachineClass *m)
->   {
->       pc_q35_8_0_machine_options(m);
-> -    m->alias = NULL;
->       compat_props_add(m->compat_props, hw_compat_7_2, hw_compat_7_2_len);
->       compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
->   }
-> diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-> index 4cb5beef1a0c..f5ca2ca9054c 100644
-> --- a/hw/m68k/virt.c
-> +++ b/hw/m68k/virt.c
-> @@ -346,10 +346,17 @@ type_init(virt_machine_register_types)
->       } \
->       type_init(machvirt_machine_##major##_##minor##_init);
->   
-> +static void virt_machine_8_1_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE(8, 1, true)
-> +
->   static void virt_machine_8_0_options(MachineClass *mc)
->   {
-> +    virt_machine_8_1_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
->   }
-> -DEFINE_VIRT_MACHINE(8, 0, true)
-> +DEFINE_VIRT_MACHINE(8, 0, false)
->   
->   static void virt_machine_7_2_options(MachineClass *mc)
->   {
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 4921198b9d6f..ddc9c7b1a1e2 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4734,15 +4734,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
->       }                                                                \
->       type_init(spapr_machine_register_##suffix)
->   
-> +/*
-> + * pseries-8.1
-> + */
-> +static void spapr_machine_8_1_class_options(MachineClass *mc)
-> +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
-> +}
-> +
-> +DEFINE_SPAPR_MACHINE(8_1, "8.1", true);
-> +
->   /*
->    * pseries-8.0
->    */
->   static void spapr_machine_8_0_class_options(MachineClass *mc)
->   {
-> -    /* Defaults for the latest behaviour inherited from the base class */
-> +    spapr_machine_8_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
->   }
->   
-> -DEFINE_SPAPR_MACHINE(8_0, "8.0", true);
-> +DEFINE_SPAPR_MACHINE(8_0, "8.0", false);
->   
->   /*
->    * pseries-7.2
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index 503f212a3131..e6f2c626254c 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -826,14 +826,26 @@ bool css_migration_enabled(void)
->       }                                                                         \
->       type_init(ccw_machine_register_##suffix)
->   
-> +static void ccw_machine_8_1_instance_options(MachineState *machine)
-> +{
-> +}
-> +
-> +static void ccw_machine_8_1_class_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_CCW_MACHINE(8_1, "8.1", true);
-> +
->   static void ccw_machine_8_0_instance_options(MachineState *machine)
->   {
-> +    ccw_machine_8_1_instance_options(machine);
->   }
->   
->   static void ccw_machine_8_0_class_options(MachineClass *mc)
->   {
-> +    ccw_machine_8_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
->   }
-> -DEFINE_CCW_MACHINE(8_0, "8.0", true);
-> +DEFINE_CCW_MACHINE(8_0, "8.0", false);
->   
->   static void ccw_machine_7_2_instance_options(MachineState *machine)
->   {
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 6fbbfd56c808..bf5fc9e3e759 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -381,6 +381,9 @@ struct MachineState {
->       } \
->       type_init(machine_initfn##_register_types)
->   
-> +extern GlobalProperty hw_compat_8_0[];
-> +extern const size_t hw_compat_8_0_len;
-> +
->   extern GlobalProperty hw_compat_7_2[];
->   extern const size_t hw_compat_7_2_len;
->   
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 8206d5405a20..eb668e90344d 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -195,6 +195,9 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
->   /* sgx.c */
->   void pc_machine_init_sgx_epc(PCMachineState *pcms);
->   
-> +extern GlobalProperty pc_compat_8_0[];
-> +extern const size_t pc_compat_8_0_len;
-> +
->   extern GlobalProperty pc_compat_7_2[];
->   extern const size_t pc_compat_7_2_len;
->   
+>  tests/avocado/boot_linux_console.py | 15 ++++++++++++---
+>  1 file changed, 12 insertions(+), 3 deletions(-)
+>
+> diff --git a/tests/avocado/boot_linux_console.py
+> b/tests/avocado/boot_linux_console.py
+> index 574609bf43..c0675809e6 100644
+> --- a/tests/avocado/boot_linux_console.py
+> +++ b/tests/avocado/boot_linux_console.py
+> @@ -581,7 +581,10 @@ def test_arm_cubieboard_initrd(self):
+>                                                  'Allwinner sun4i/sun5i')
+>          exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
+>                                                  'system-control@1c00000'=
+)
+> -        # cubieboard's reboot is not functioning; omit reboot test.
+> +        exec_command_and_wait_for_pattern(self, 'reboot',
+> +                                                'reboot: Restarting
+> system')
+> +        # Wait for VM to shut down gracefully
+> +        self.vm.wait()
+>
+>      def test_arm_cubieboard_sata(self):
+>          """
+> @@ -625,7 +628,10 @@ def test_arm_cubieboard_sata(self):
+>                                                  'Allwinner sun4i/sun5i')
+>          exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
+>                                                  'sda')
+> -        # cubieboard's reboot is not functioning; omit reboot test.
+> +        exec_command_and_wait_for_pattern(self, 'reboot',
+> +                                                'reboot: Restarting
+> system')
+> +        # Wait for VM to shut down gracefully
+> +        self.vm.wait()
+>
+>      @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage
+> limited')
+>      def test_arm_cubieboard_openwrt_22_03_2(self):
+> @@ -672,7 +678,10 @@ def test_arm_cubieboard_openwrt_22_03_2(self):
+>
+>          exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
+>                                                  'Allwinner sun4i/sun5i')
+> -        # cubieboard's reboot is not functioning; omit reboot test.
+> +        exec_command_and_wait_for_pattern(self, 'reboot',
+> +                                                'reboot: Restarting
+> system')
+> +        # Wait for VM to shut down gracefully
+> +        self.vm.wait()
+>
+>      @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might
+> timeout')
+>      def test_arm_quanta_gsj(self):
+> --
+> 2.30.2
+>
+>
 
+--=20
+Niek Linnenbank
+
+--000000000000487bf005f6e1b682
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Strahinja,</div><div><br></div><div>Looks good! I =
+re-ran the tests on my machine, and they work fine:</div><div><br></div><di=
+v>ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./build/=
+tests/venv/bin/avocado --show=3Dapp,console run -t machine:orangepi-pc -t m=
+achine:cubieboard tests/avocado/boot_linux_console.py</div><div>...<br></di=
+v><div>|console: Tue Mar 14 19:56:37 UTC 2023<br>\console: Starting root fi=
+le system check:<br>PASS (22.45 s)<br>RESULTS =C2=A0 =C2=A0: PASS 8 | ERROR=
+ 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0<br>JOB TIME =C2=A0 :=
+ 189.23 s</div><div><br></div><div>Reviewed-by: Niek Linnenbank &lt;<a href=
+=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div>=
+<div>Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.=
+com">nieklinnenbank@gmail.com</a>&gt;<br></div></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Mar 11, 2023 at 3:42=
+=E2=80=AFPM Strahinja Jankovic &lt;<a href=3D"mailto:strahinjapjankovic@gma=
+il.com">strahinjapjankovic@gmail.com</a>&gt; wrote:<br></div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">Cubieboard tests end with comment &quot=
+;reboot not functioning; omit test&quot;.<br>
+Fix this so reboot is done at the end of each test.<br>
+<br>
+Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.jankovi=
+c@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<br>
+---<br>
+=C2=A0tests/avocado/boot_linux_console.py | 15 ++++++++++++---<br>
+=C2=A01 file changed, 12 insertions(+), 3 deletions(-)<br>
+<br>
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux=
+_console.py<br>
+index 574609bf43..c0675809e6 100644<br>
+--- a/tests/avocado/boot_linux_console.py<br>
++++ b/tests/avocado/boot_linux_console.py<br>
+@@ -581,7 +581,10 @@ def test_arm_cubieboard_initrd(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;Allwinner sun4i/sun5i&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exec_command_and_wait_for_pattern(self, &=
+#39;cat /proc/iomem&#39;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;system-control@1c00000&#39;)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 # cubieboard&#39;s reboot is not functioning; =
+omit reboot test.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;r=
+eboot&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;reboot: Restarting system&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 # Wait for VM to shut down gracefully<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.wait()<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0def test_arm_cubieboard_sata(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;&quot;&quot;<br>
+@@ -625,7 +628,10 @@ def test_arm_cubieboard_sata(self):<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;Allwinner sun4i/sun5i&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exec_command_and_wait_for_pattern(self, &=
+#39;cat /proc/partitions&#39;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;sda&#39;)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 # cubieboard&#39;s reboot is not functioning; =
+omit reboot test.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;r=
+eboot&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;reboot: Restarting system&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 # Wait for VM to shut down gracefully<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.wait()<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0@skipUnless(os.getenv(&#39;AVOCADO_ALLOW_LARGE_STORAGE&=
+#39;), &#39;storage limited&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0def test_arm_cubieboard_openwrt_22_03_2(self):<br>
+@@ -672,7 +678,10 @@ def test_arm_cubieboard_openwrt_22_03_2(self):<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exec_command_and_wait_for_pattern(self, &=
+#39;cat /proc/cpuinfo&#39;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;Allwinner sun4i/sun5i&#39;)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 # cubieboard&#39;s reboot is not functioning; =
+omit reboot test.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 exec_command_and_wait_for_pattern(self, &#39;r=
+eboot&#39;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &#39;reboot: Restarting system&#39;)<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 # Wait for VM to shut down gracefully<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.wait()<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0@skipUnless(os.getenv(&#39;AVOCADO_TIMEOUT_EXPECTED&#39=
+;), &#39;Test might timeout&#39;)<br>
+=C2=A0 =C2=A0 =C2=A0def test_arm_quanta_gsj(self):<br>
+-- <br>
+2.30.2<br>
+<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
+tr"><div>Niek Linnenbank<br><br></div></div></div>
+
+--000000000000487bf005f6e1b682--

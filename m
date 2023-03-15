@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id j15-20020adff00f000000b002cea9d931e6sm5333889wro.78.2023.03.15.10.43.46
+        by smtp.gmail.com with ESMTPSA id x2-20020a05600c21c200b003e1f2e43a1csm2491206wmj.48.2023.03.15.10.49.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:47 -0700 (PDT)
+        Wed, 15 Mar 2023 10:49:19 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7E9E11FFD0;
-	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 9D4761FFC3;
+	Wed, 15 Mar 2023 17:43:32 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -76,83 +76,41 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Sunil Muthuswamy <sunilmut@microsoft.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 25/32] iotests: remove the check-block.sh script
-Date: Wed, 15 Mar 2023 17:43:24 +0000
-Message-Id: <20230315174331.2959-26-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 12/32] tcg: Drop plugin_gen_disable_mem_helpers from tcg_gen_exit_tb
+Date: Wed, 15 Mar 2023 17:43:11 +0000
+Message-Id: <20230315174331.2959-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: evgvI0LIQNQZ
+X-TUID: bT25u/eObxJL
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Now that meson directly invokes the individual I/O tests, the
-check-block.sh wrapper script is no longer required.
+Now that we call qemu_plugin_disable_mem_helpers in cpu_tb_exec,
+we don't need to do this in generated code as well.
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Hanna Czenczek <hreitz@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230303160727.3977246-9-berrange@redhat.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230310195252.210956-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/check-block.sh | 43 -------------------------------------------
- 1 file changed, 43 deletions(-)
- delete mode 100755 tests/check-block.sh
+ tcg/tcg-op.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/tests/check-block.sh b/tests/check-block.sh
-deleted file mode 100755
-index 5de2c1ba0b..0000000000
---- a/tests/check-block.sh
-+++ /dev/null
-@@ -1,43 +0,0 @@
--#!/bin/sh
--
--if [ "$#" -eq 0 ]; then
--    echo "Usage: $0 fmt..." >&2
--    exit 99
--fi
--
--# Honor the SPEED environment variable, just like we do it for "meson test"
--format_list="$@"
--if [ "$SPEED" = "slow" ] || [ "$SPEED" = "thorough" ]; then
--    group=
--else
--    group="-g auto"
--fi
--
--skip() {
--    echo "1..0 #SKIP $*"
--    exit 0
--}
--
--if [ -z "$(find . -name 'qemu-system-*' -print)" ]; then
--    skip "No qemu-system binary available ==> Not running the qemu-iotests."
--fi
--
--cd tests/qemu-iotests
--
--# QEMU_CHECK_BLOCK_AUTO is used to disable some unstable sub-tests
--export QEMU_CHECK_BLOCK_AUTO=1
--export PYTHONUTF8=1
--# If make was called with -jN we want to call ./check with -j N. Extract the
--# flag from MAKEFLAGS, so that if it absent (or MAKEFLAGS is not defined), JOBS
--# would be an empty line otherwise JOBS is prepared string of flag with value:
--# "-j N"
--# Note, that the following works even if make was called with "-j N" or even
--# "--jobs N", as all these variants becomes simply "-jN" in MAKEFLAGS variable.
--JOBS=$(echo "$MAKEFLAGS" | sed -n 's/\(^\|.* \)-j\([0-9]\+\)\( .*\|$\)/-j \2/p')
--
--ret=0
--for fmt in $format_list ; do
--    ${PYTHON} ./check $JOBS -tap -$fmt $group || ret=1
--done
--
--exit $ret
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index ddab20a6a6..3136cef81a 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -2808,7 +2808,6 @@ void tcg_gen_exit_tb(const TranslationBlock *tb, unsigned idx)
+         tcg_debug_assert(idx == TB_EXIT_REQUESTED);
+     }
+ 
+-    plugin_gen_disable_mem_helpers();
+     tcg_gen_op1i(INDEX_op_exit_tb, val);
+ }
+ 
 -- 
 2.39.2

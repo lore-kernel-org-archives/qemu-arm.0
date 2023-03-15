@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r6-20020a05600c458600b003ebff290a52sm2868114wmo.28.2023.03.15.10.49.20
+        by smtp.gmail.com with ESMTPSA id n5-20020a05600c4f8500b003b47b80cec3sm2522328wmq.42.2023.03.15.10.49.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:49:20 -0700 (PDT)
+        Wed, 15 Mar 2023 10:49:22 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 36CF21FFD5;
-	Wed, 15 Mar 2023 17:43:45 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 45E101FFC0;
+	Wed, 15 Mar 2023 17:43:32 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -76,44 +76,40 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Sunil Muthuswamy <sunilmut@microsoft.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Bernhard Beschow <shentey@gmail.com>,
-	Amarjargal Gundjalam <amarjargal16@gmail.com>,
-	Bin Meng <bmeng@tinylab.org>,
-	"Jason A . Donenfeld" <Jason@zx2c4.com>
-Subject: [PATCH v2 31/32] contrib/gitdm: add more individual contributors
-Date: Wed, 15 Mar 2023 17:43:30 +0000
-Message-Id: <20230315174331.2959-32-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 09/32] include/exec: fix kerneldoc definition
+Date: Wed, 15 Mar 2023 17:43:08 +0000
+Message-Id: <20230315174331.2959-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TCfY6cFo8reJ
+X-TUID: g6pfotHkVeS5
 
-I've only added the names explicitly acked.
+The kerneldoc processor complains about the mismatched variable name.
+Fix it.
 
+Message-Id: <20230310103123.2118519-11-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Bernhard Beschow <shentey@gmail.com>
-Cc: Amarjargal Gundjalam <amarjargal16@gmail.com>
-Cc: Bin Meng <bmeng@tinylab.org>
-Cc: Jason A. Donenfeld <Jason@zx2c4.com>
-Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Acked-by: Bernhard Beschow <shentey@gmail.com>
-Message-Id: <20230310180332.2274827-10-alex.bennee@linaro.org>
 ---
- contrib/gitdm/group-map-individuals | 1 +
- 1 file changed, 1 insertion(+)
+ include/exec/memory.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/contrib/gitdm/group-map-individuals b/contrib/gitdm/group-map-individuals
-index e2263a5ee3..3264c7383d 100644
---- a/contrib/gitdm/group-map-individuals
-+++ b/contrib/gitdm/group-map-individuals
-@@ -38,3 +38,4 @@ paul@nowt.org
- git@xen0n.name
- simon@simonsafar.com
- research_trasio@irq.a4lg.com
-+shentey@gmail.com
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 6fa0b071f0..15ade918ba 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1738,7 +1738,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+  *
+  * @notifier: the notifier to be notified
+  */
+-void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *n);
++void memory_region_unmap_iommu_notifier_range(IOMMUNotifier *notifier);
+ 
+ 
+ /**
 -- 
 2.39.2

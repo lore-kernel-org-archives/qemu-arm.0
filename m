@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h3-20020a1ccc03000000b003eb192787bfsm2556244wmb.25.2023.03.15.10.43.44
+        by smtp.gmail.com with ESMTPSA id x2-20020a05600c21c200b003e1f2e43a1csm2478386wmj.48.2023.03.15.10.43.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:43:45 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8D4BF1FFC9;
+	by zen.linaroharston (Postfix) with ESMTP id AC4E31FFCA;
 	Wed, 15 Mar 2023 17:43:43 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -76,77 +76,128 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Sunil Muthuswamy <sunilmut@microsoft.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 17/32] include/qemu/plugin: Inline qemu_plugin_disable_mem_helpers
-Date: Wed, 15 Mar 2023 17:43:16 +0000
-Message-Id: <20230315174331.2959-18-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 18/32] iotests: explicitly pass source/build dir to 'check' command
+Date: Wed, 15 Mar 2023 17:43:17 +0000
+Message-Id: <20230315174331.2959-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mP5MTF1bJO/9
+X-TUID: YNCySPdGnl4s
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Now that we've broken the include loop with cpu.h,
-we can bring this inline.
+The 'check' script has some rather dubious logic whereby it assumes
+that if invoked as a symlink, then it is running from a separate
+source tree and build tree, otherwise it assumes the current working
+directory is a combined source and build tree.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230310195252.210956-8-richard.henderson@linaro.org>
+This doesn't work if you want to invoke the 'check' script using
+its full source tree path while still using a split source and build
+tree layout. This would be a typical situation with meson if you ask
+it to find the 'check' script path using files('check').
+
+Rather than trying to make the logic more magical, add support for
+explicitly passing the dirs using --source-dir and --build-dir. If
+either is omitted the current logic is maintained.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Hanna Czenczek <hreitz@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230303160727.3977246-2-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h |  6 +++++-
- plugins/core.c        | 11 -----------
- 2 files changed, 5 insertions(+), 12 deletions(-)
+ tests/qemu-iotests/check      | 25 +++++++++++++++++++++++--
+ tests/qemu-iotests/testenv.py | 13 ++++---------
+ 2 files changed, 27 insertions(+), 11 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 6bf4bce188..bc0781cab8 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -14,6 +14,7 @@
- #include "qemu/option.h"
- #include "qemu/plugin-event.h"
- #include "exec/memopidx.h"
-+#include "hw/core/cpu.h"
+diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
+index 9bdda1394e..da7e8a87fe 100755
+--- a/tests/qemu-iotests/check
++++ b/tests/qemu-iotests/check
+@@ -26,9 +26,23 @@ from findtests import TestFinder
+ from testenv import TestEnv
+ from testrunner import TestRunner
  
- /*
-  * Option parsing/processing.
-@@ -204,7 +205,10 @@ void qemu_plugin_atexit_cb(void);
++def get_default_path(follow_link=False):
++    """
++    Try to automagically figure out the path we are running from.
++    """
++    # called from the build tree?
++    if os.path.islink(sys.argv[0]):
++        if follow_link:
++            return os.path.dirname(os.readlink(sys.argv[0]))
++        else:
++            return os.path.dirname(os.path.abspath(sys.argv[0]))
++    else:  # or source tree?
++        return os.getcwd()
  
- void qemu_plugin_add_dyn_cb_arr(GArray *arr);
+ def make_argparser() -> argparse.ArgumentParser:
+-    p = argparse.ArgumentParser(description="Test run options")
++    p = argparse.ArgumentParser(
++        description="Test run options",
++        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
  
--void qemu_plugin_disable_mem_helpers(CPUState *cpu);
-+static inline void qemu_plugin_disable_mem_helpers(CPUState *cpu)
-+{
-+    cpu->plugin_mem_cbs = NULL;
-+}
+     p.add_argument('-n', '--dry-run', action='store_true',
+                    help='show me, do not run tests')
+@@ -113,6 +127,11 @@ def make_argparser() -> argparse.ArgumentParser:
+                        'middle of the process.')
+     g_sel.add_argument('tests', metavar='TEST_FILES', nargs='*',
+                        help='tests to run, or "--" followed by a command')
++    g_sel.add_argument('--build-dir', default=get_default_path(),
++                       help='Path to iotests build directory')
++    g_sel.add_argument('--source-dir',
++                       default=get_default_path(follow_link=True),
++                       help='Path to iotests build directory')
  
- /**
-  * qemu_plugin_user_exit(): clean-up callbacks before calling exit callbacks
-diff --git a/plugins/core.c b/plugins/core.c
-index 04632886b9..9912f2cfdb 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -553,17 +553,6 @@ void qemu_plugin_user_postfork(bool is_child)
-     }
- }
+     return p
  
--
--/*
-- * Call this function after longjmp'ing to the main loop. It's possible that the
-- * last instruction of a TB might have used helpers, and therefore the
-- * "disable" instruction will never execute because it ended up as dead code.
-- */
--void qemu_plugin_disable_mem_helpers(CPUState *cpu)
--{
--    cpu->plugin_mem_cbs = NULL;
--}
--
- static bool plugin_dyn_cb_arr_cmp(const void *ap, const void *bp)
- {
-     return ap == bp;
+@@ -120,7 +139,9 @@ def make_argparser() -> argparse.ArgumentParser:
+ if __name__ == '__main__':
+     args = make_argparser().parse_args()
+ 
+-    env = TestEnv(imgfmt=args.imgfmt, imgproto=args.imgproto,
++    env = TestEnv(source_dir=args.source_dir,
++                  build_dir=args.build_dir,
++                  imgfmt=args.imgfmt, imgproto=args.imgproto,
+                   aiomode=args.aiomode, cachemode=args.cachemode,
+                   imgopts=args.imgopts, misalign=args.misalign,
+                   debug=args.debug, valgrind=args.valgrind,
+diff --git a/tests/qemu-iotests/testenv.py b/tests/qemu-iotests/testenv.py
+index a864c74b12..aa9d735414 100644
+--- a/tests/qemu-iotests/testenv.py
++++ b/tests/qemu-iotests/testenv.py
+@@ -170,7 +170,8 @@ def root(*names: str) -> str:
+             if not isxfile(b):
+                 sys.exit('Not executable: ' + b)
+ 
+-    def __init__(self, imgfmt: str, imgproto: str, aiomode: str,
++    def __init__(self, source_dir: str, build_dir: str,
++                 imgfmt: str, imgproto: str, aiomode: str,
+                  cachemode: Optional[str] = None,
+                  imgopts: Optional[str] = None,
+                  misalign: bool = False,
+@@ -211,14 +212,8 @@ def __init__(self, imgfmt: str, imgproto: str, aiomode: str,
+         # which are needed to initialize some environment variables. They are
+         # used by init_*() functions as well.
+ 
+-        if os.path.islink(sys.argv[0]):
+-            # called from the build tree
+-            self.source_iotests = os.path.dirname(os.readlink(sys.argv[0]))
+-            self.build_iotests = os.path.dirname(os.path.abspath(sys.argv[0]))
+-        else:
+-            # called from the source tree
+-            self.source_iotests = os.getcwd()
+-            self.build_iotests = self.source_iotests
++        self.source_iotests = source_dir
++        self.build_iotests = build_dir
+ 
+         self.build_root = os.path.join(self.build_iotests, '..', '..')
+ 
 -- 
 2.39.2

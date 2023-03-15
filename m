@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f15-20020a5d4dcf000000b002c70e60abd4sm5324559wru.2.2023.03.15.10.43.46
+        by smtp.gmail.com with ESMTPSA id f6-20020a1c6a06000000b003ed2fb86f85sm2498909wmc.47.2023.03.15.10.43.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:47 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B70CA1FFD1;
-	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 562151FFD6;
+	Wed, 15 Mar 2023 17:43:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -77,40 +77,75 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Milica Lazarevic <milica.lazarevic@syrmia.com>
-Subject: [PATCH v2 27/32] contrib/gitdm: Add SYRMIA to the domain map
-Date: Wed, 15 Mar 2023 17:43:26 +0000
-Message-Id: <20230315174331.2959-28-alex.bennee@linaro.org>
+	Vikram Garhwal <vikram.garhwal@amd.com>,
+	Stefano Stabellini <stefano.stabellini@amd.com>,
+	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+	Tong Ho <tong.ho@xilinx.com>,
+	Francisco Iglesias <francisco.iglesias@amd.com>
+Subject: [PATCH v2 32/32] contrib/gitdm: add group map for AMD
+Date: Wed, 15 Mar 2023 17:43:31 +0000
+Message-Id: <20230315174331.2959-33-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oyELA3cxjhNM
+X-TUID: QHJA0+rQRLxI
 
-The company website lists QEMU amongst the things they work on so I
-assume these are corporate contributions.
+AMD recently acquired Xilinx and contributors have been transitioning
+their emails across.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Milica Lazarevic <milica.lazarevic@syrmia.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230310180332.2274827-6-alex.bennee@linaro.org>
+Cc: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: Stefano Stabellini <stefano.stabellini@amd.com>
+Cc: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Cc: Tong Ho <tong.ho@xilinx.com>
+Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+Message-Id: <20230310180332.2274827-11-alex.bennee@linaro.org>
 ---
- contrib/gitdm/domain-map | 1 +
- 1 file changed, 1 insertion(+)
+ contrib/gitdm/domain-map    | 1 -
+ contrib/gitdm/group-map-amd | 8 ++++++++
+ gitdm.config                | 1 +
+ 3 files changed, 9 insertions(+), 1 deletion(-)
+ create mode 100644 contrib/gitdm/group-map-amd
 
 diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
-index 65e40fe8e1..4a988c5b5f 100644
+index fa9cb5430f..f78c69fa54 100644
 --- a/contrib/gitdm/domain-map
 +++ b/contrib/gitdm/domain-map
-@@ -39,6 +39,7 @@ siemens.com     Siemens
- sifive.com      SiFive
- suse.com        SUSE
- suse.de         SUSE
-+syrmia.com      SYRMIA
- ventanamicro.com Ventana Micro Systems
- virtuozzo.com   Virtuozzo
+@@ -49,6 +49,5 @@ virtuozzo.com   Virtuozzo
  vrull.eu        VRULL
+ wdc.com         Western Digital
+ windriver.com   Wind River
+-xilinx.com      Xilinx
+ yadro.com       YADRO
+ yandex-team.ru  Yandex
+diff --git a/contrib/gitdm/group-map-amd b/contrib/gitdm/group-map-amd
+new file mode 100644
+index 0000000000..bda4239a8a
+--- /dev/null
++++ b/contrib/gitdm/group-map-amd
+@@ -0,0 +1,8 @@
++# AMD acquired Xilinx and contributors have been slowly updating emails
++
++edgar.iglesias@xilinx.com
++fnu.vikram@xilinx.com
++francisco.iglesias@xilinx.com
++sai.pavan.boddu@xilinx.com
++stefano.stabellini@xilinx.com
++tong.ho@xilinx.com
+diff --git a/gitdm.config b/gitdm.config
+index df4ba829ca..9db43ca142 100644
+--- a/gitdm.config
++++ b/gitdm.config
+@@ -32,6 +32,7 @@ EmailMap contrib/gitdm/domain-map
+ #
+ 
+ GroupMap contrib/gitdm/group-map-alibaba Alibaba
++GroupMap contrib/gitdm/group-map-amd AMD
+ GroupMap contrib/gitdm/group-map-cadence Cadence Design Systems
+ GroupMap contrib/gitdm/group-map-codeweavers CodeWeavers
+ GroupMap contrib/gitdm/group-map-facebook Facebook
 -- 
 2.39.2

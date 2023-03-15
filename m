@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p9-20020a1c5449000000b003dc1d668866sm2529134wmi.10.2023.03.15.10.43.32
+        by smtp.gmail.com with ESMTPSA id hn37-20020a05600ca3a500b003ed2002fa6dsm2483791wmb.17.2023.03.15.10.43.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:43:33 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A873D1FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 8D4A31FFBB;
 	Wed, 15 Mar 2023 17:43:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,64 +77,37 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 04/32] scripts/ci: update gitlab-runner playbook to handle CentOS
-Date: Wed, 15 Mar 2023 17:43:03 +0000
-Message-Id: <20230315174331.2959-5-alex.bennee@linaro.org>
+Subject: [PATCH v2 03/32] scripts/ci: add libslirp-devel to build-environment
+Date: Wed, 15 Mar 2023 17:43:02 +0000
+Message-Id: <20230315174331.2959-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: f2ibJjNvW5y7
+X-TUID: G/jzweQp6d2U
 
-This was broken when we moved to using the pre-built packages as we
-didn't take care to ensure we used RPMs where required.
+Without libslip enabled we won't have user networking which means the
+KVM tests won't run.
 
-NB: I could never get this to complete on my test setup but I suspect
-this was down to network connectivity and timeouts while downloading.
-
-Fixes: 69c4befba1 (scripts/ci: update gitlab-runner playbook to use latest runner)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/gitlab-runner.yml | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ scripts/ci/org.centos/stream/8/build-environment.yml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 95d4199c03..1a1b270ff2 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -48,13 +48,29 @@
-     - debug:
-         msg: gitlab-runner arch is {{ gitlab_runner_arch }}
- 
--    - name: Download the matching gitlab-runner
-+    - name: Download the matching gitlab-runner (DEB)
-       get_url:
-         dest: "/root/"
-         url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    - name: Download the matching gitlab-runner (RPM)
-+      get_url:
-+        dest: "/root/"
-+        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+      when:
-+        - ansible_facts['distribution'] == 'CentOS'
- 
--    - name: Install gitlab-runner via package manager
-+    - name: Install gitlab-runner via package manager (DEB)
-       apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+
-+    - name: Install gitlab-runner via package manager (RPM)
-+      yum: name="/root/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
-+      when:
-+        - ansible_facts['distribution'] == 'CentOS'
- 
-     - name: Register the gitlab-runner
-       command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
+diff --git a/scripts/ci/org.centos/stream/8/build-environment.yml b/scripts/ci/org.centos/stream/8/build-environment.yml
+index 0d094d70c3..1ead77e2cb 100644
+--- a/scripts/ci/org.centos/stream/8/build-environment.yml
++++ b/scripts/ci/org.centos/stream/8/build-environment.yml
+@@ -55,6 +55,7 @@
+           - librados-devel
+           - librbd-devel
+           - libseccomp-devel
++          - libslirp-devel
+           - libssh-devel
+           - libxkbcommon-devel
+           - lzo-devel
 -- 
 2.39.2

@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp2958808ejb;
-        Wed, 15 Mar 2023 15:00:19 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+Fur9+a4FqyJ2MMhoRfIPaK+TPPJDVasrP7uX5upBSplgBsCY0aKjx7gXfjSBbc3N5NEyg
-X-Received: by 2002:a05:6214:1d01:b0:56f:b28f:cc30 with SMTP id e1-20020a0562141d0100b0056fb28fcc30mr31873589qvd.4.1678917619704;
-        Wed, 15 Mar 2023 15:00:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678917619; cv=none;
+Received: by 2002:a17:906:faca:b0:92b:dcda:f23e with SMTP id lu10csp2960640ejb;
+        Wed, 15 Mar 2023 15:02:15 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+6paStnnm2maA2XPJd4H+7kK3i+irQVCswDUUGa3RscJqKZ/zK4JSPtVjHIUv4cRUEO66V
+X-Received: by 2002:ac2:5623:0:b0:4db:38a2:e985 with SMTP id b3-20020ac25623000000b004db38a2e985mr2259641lff.62.1678917734871;
+        Wed, 15 Mar 2023 15:02:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678917734; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sew4BH1BU2By4EVnWlI0zwwuBwEfHZLex3IfhN8DY0llEQBPx5sXMBseC90w08GcDb
-         0Wzf3aT6BSRhAjmP5OTEPbnztt8f16MNfcANBKu2qUJVoHSglrSE1T2AYcOa5b6L55PD
-         TFFP3dAlfzGLnQ2hIPjye8CrX4O7KKrVz8Q+a3NtBDZjn9QLkQRjyuJHS4U6N8SQiBHF
-         ZahDdJkG6DmXAtZ0yLQxi8MaOof6GiQK1h2wdKa7xW8cab2y3d6tm9c14s9rWdjzTHCi
-         M4fn+xEKhPiBmaOrosXL9mUORSBknYN9QrPzgLDxuXjtkgHRuvx9XsMM5DilCpcWDw68
-         4aCg==
+        b=Y/QgLrV9J/6aDBrGA+7tkyVQLDrvqyDUMvcBKwOTOt1G3NNcov19HJ3fSbNH3eZ333
+         3yA+2VL76WMmipRVQuhDB/iKrLbBkqiVtJjcRqdLN09DdjGFpp5OKyGJ62/2bvyvhqmZ
+         TDtV6mETjhe1UUmSYZGmeRIMRsv2Ab5dfUTMAujYKBdr1W9zDmkglKIpMymkMm58HDI5
+         PShR7dmInakuXoP57JXG2Gk6NvfGUjodH/bfR7MkdVbUIgkGl1H67N/sDqHM9DH0W5Ua
+         tjMyTs98B8LJY5pYri6/+GVvI+UDyv5aDrPHCLzHSp2WEvRZTXUXhGzrZcXNtgaNmznd
+         gdLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=l5kroLLBOe0B41TAYkcWZnw9geDsD1JwG4TVmC5rCSc=;
-        b=nO3x5kFx1ZnViXjSgm5z9BuFeoTbLvWjm+oXmk5upuy9VLF6ovU1bo8CPbJkAIZ/AD
-         EyuoucwpdkwIuQJrG6Z0GaA6DXFcu6tLbeX5peE/s3tkkqPAmAzCniLW8mlmwT7/mNM8
-         pLKJ7PvV9fevJavzKDwIVRdY9qJZNX7TnE0pUdf1aijmKj66+YzwaLMbF9adJKYK5eeM
-         W9Ynqdk15rKU194Av05t5aYtC7e0yZsmM8mgDqHmwiXso74TomTKYgynJs6czGkWvJfp
-         QAjAL7bazKPqD/tEaqQITFmbgiQeLFHyalkFuuLC5xTiCdthgWwh14O6k1jc8I2IDBtv
-         eJ6A==
+        bh=Q06fum3tUyWfyTWXccn9THf4GzY/CnrOjvQsomQDCxo=;
+        b=L5UThqA8xGzjuXq04mIPv0iWCDQaHvEo7BgYC11rqgNr37+fqKjEiuO4bgJLZFYk+s
+         dyjv3YCCHcYa7+q6+dMJ6qR1qMoqgoSC7aNj6s3OSiYFesovZV21ku+CxwYDyS+KlIqD
+         0bwPe1ejRfym0CoZJFf/SzAwrJIHqUZGZas6+LIWLp6KL6E4yNCuA3nqUuylCZ7OdB1D
+         kY4P450YctoHyKovf9hklarCncuyQlILV4xGwJuU51D/ghbm4eAQbW500g4MQzYXi7s0
+         4UOf9qBcKinFvwmKPtrqU46mgwxtfGI7mDyR5rpjA6s7bM4guWslkWCVAD3ppjR9TzgQ
+         I3eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KHvZMJbh;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=n3wkDUwd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay8-20020a05620a178800b007437d58315dsi5867471qkb.682.2023.03.15.15.00.19
+        by mx.google.com with ESMTPS id q13-20020ac246ed000000b004db2bda951csi1793470lfo.166.2023.03.15.15.02.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Mar 2023 15:00:19 -0700 (PDT)
+        Wed, 15 Mar 2023 15:02:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=KHvZMJbh;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=n3wkDUwd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pcZ9i-0007Ch-0c; Wed, 15 Mar 2023 17:59:34 -0400
+	id 1pcZC1-0008JA-Q9; Wed, 15 Mar 2023 18:01:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pcZ9g-0007CF-Hj; Wed, 15 Mar 2023 17:59:32 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1pcZC0-0008Ix-44; Wed, 15 Mar 2023 18:01:56 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pcZ9d-0005Zq-FU; Wed, 15 Mar 2023 17:59:32 -0400
-Received: by mail-ed1-x536.google.com with SMTP id eh3so87449edb.11;
- Wed, 15 Mar 2023 14:59:28 -0700 (PDT)
+ id 1pcZBx-000620-0z; Wed, 15 Mar 2023 18:01:55 -0400
+Received: by mail-ed1-x532.google.com with SMTP id w9so253156edc.3;
+ Wed, 15 Mar 2023 15:01:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678917566;
+ d=gmail.com; s=20210112; t=1678917711;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=l5kroLLBOe0B41TAYkcWZnw9geDsD1JwG4TVmC5rCSc=;
- b=KHvZMJbhtoe1xGPmsogrvIyrH97ejsIZUFaobvwJqHzCyPJkP5CV/OMnqNn/vZepKC
- IxhrJsGq/KXbfrb4c/ybE/vRa3YUNu4y2kV3akw1bAQGca0yxQb24idR07YlJI+Bapc/
- CT9doE1yp98YVSTH1OJuSyDkKjOZXSUjant+ovbaOD31bYg0hwRnRlAbAauYVLcHLSkn
- FQ7Kg/JNot45YKTAH+x2fSt/0DurE/bXif6PxL7dsJvbdxx56k0hd8HM34E2hFmeuWZl
- O+FywwLkAEUaFgEE5c1kyc/BLiaQVpDjiQ8S2+U2pllR11wpVEQON3L7yFzUnQY42jeu
- rV9g==
+ bh=Q06fum3tUyWfyTWXccn9THf4GzY/CnrOjvQsomQDCxo=;
+ b=n3wkDUwdN51hUNhVbzWxxTtd+XObyVg94OI3PflvgMQopRsTY2Sgk0WXVwDOrBKgXo
+ STEpCxs3xCFN2tfBlocIxDXOutQulkLPRHgi3oGc1MXCWQoinPrL6YsQLhBiZTk+cGrj
+ AQlKwEeALwe3tChWXnth8DtcEcY1CV07YVfZjDV/v4j7xnA8Bnvfjmg+Hl37KlzlA4mm
+ 8USrLVCLBOuDEBaiZUTt5aTmJtmd/+1XuSu4Ra8W1vhPJsoNLTngLfVYQqOdd9j3fdK5
+ oX18LzfXvg2CsXxFmX9Crq6ZHbVDoFx2WFomH+5GY/RTberUxjqOOoqQBe4a4reePdQ7
+ 9+TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678917566;
+ d=1e100.net; s=20210112; t=1678917711;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=l5kroLLBOe0B41TAYkcWZnw9geDsD1JwG4TVmC5rCSc=;
- b=Vlu74eQgBnUeIb59O7QWTAoziLkRFB5YrLbyx0aFid7RzltmmpfMpoV75Ck0nBeAgy
- 0XP+x3VLOvEGNqzWxf9JHCn2fFFrYt8Kk2VgN1LRy2Z1JNgWiRXC+5+tYjbJkeYn1t6V
- 7whCkyVJHoDD9VvgJHAWKSiZuqsvpkpIqje5lTZYQZnyavF2qY+gqv+QBkV0tz0J7QKc
- jZSmtHAfcOeR8N0eK2EJwvuJMQwMXxN0c853BFPwjZQ+Og2VLzO16HfoasIVS7V6t1QC
- WXqifoQMFvSRmB+cEgNnuPTiCSwX89UPdx6TvNvoJLa6hZK9pCSXvkp5CM6pFYI80YLB
- aVvQ==
-X-Gm-Message-State: AO0yUKXneWXSGc0MWJc6OiA57SlnSOfXT289ClNj+93Z1hb4bkblxZ+P
- UutbLVnjUbv/qfi2473QQTxjv7E5CXxMw17i4kQ=
-X-Received: by 2002:a17:906:390c:b0:92f:fc27:8ea0 with SMTP id
- f12-20020a170906390c00b0092ffc278ea0mr530913eje.9.1678917566254; Wed, 15 Mar
- 2023 14:59:26 -0700 (PDT)
+ bh=Q06fum3tUyWfyTWXccn9THf4GzY/CnrOjvQsomQDCxo=;
+ b=wtcNCtMeYxZfzDMeLCON4HMNfp4aQ2BxIPuZdSG/dREHQeSZ19+qBr+VfPZ/iaFTGV
+ joulx/TonwKp8skFMN3BRQ282ZWKg3pCQTcIKAsgnhT2wllwu6wmfdrRjePb4qDssWBs
+ QnMiaPs2t1Z0YJ6MSYcRNJeCEt1rZaK4wZk8RTN6WwqE85whgqCIfcETBVSN/pGL37NG
+ MCBVRy99QZAJW93aKEFpLSJbbYQtMyJIh3jssn7/5qrgTLiHkulZH4Hzo4K+T8r1s579
+ f9W1/16YA/GsG02X/y9rmcxgDO/kD7wXth4Nm0iytxiyQgZ7st0zIkA22SjDo+WVxKGn
+ G8eQ==
+X-Gm-Message-State: AO0yUKXxIjvcWpkYB4iV2yvrX5HvfuRWW7Ey+TfpIRQc8IgJd+DL4e6Q
+ tggL8FpA33fMkDbqwp3oAQilSW3lqw5RFXBS0pw=
+X-Received: by 2002:a17:906:6994:b0:923:c37:15bd with SMTP id
+ i20-20020a170906699400b009230c3715bdmr4021884ejr.9.1678917710708; Wed, 15 Mar
+ 2023 15:01:50 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230311144111.30468-1-strahinja.p.jankovic@gmail.com>
- <20230311144111.30468-2-strahinja.p.jankovic@gmail.com>
- <CAPan3Wr-hXYy2OX0uuhqpQHzVKhArCATz=mRNFHyHct56jXvTA@mail.gmail.com>
-In-Reply-To: <CAPan3Wr-hXYy2OX0uuhqpQHzVKhArCATz=mRNFHyHct56jXvTA@mail.gmail.com>
+ <20230311144111.30468-3-strahinja.p.jankovic@gmail.com>
+ <CAPan3Wp0ExihSkk64RFPAS0iw-FoTt2qFZMm=sQ04jr4jTiRMA@mail.gmail.com>
+In-Reply-To: <CAPan3Wp0ExihSkk64RFPAS0iw-FoTt2qFZMm=sQ04jr4jTiRMA@mail.gmail.com>
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Wed, 15 Mar 2023 22:59:15 +0100
-Message-ID: <CABtshVRAhq+BwnAjb5m_FQTjWtCY11eG5ER6s5vaUTzoq09ZwQ@mail.gmail.com>
-Subject: Re: [PATCH 1/4] hw/watchdog: Allwinner WDT emulation for system reset
+Date: Wed, 15 Mar 2023 23:01:39 +0100
+Message-ID: <CABtshVRdt=W=WkWV2-FU0nA366KYNVQ+8bLaOjih=d2Qf=sYvA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/arm: Add WDT to Allwinner-A10 and Cubieboard
 To: Niek Linnenbank <nieklinnenbank@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org, 
  qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,736 +119,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EMwQhRdWMVrh
+X-TUID: ys4iIrbjZ40T
 
-)Hi Niek,
+Hi Niek,
 
-On Tue, Mar 14, 2023 at 10:14=E2=80=AFPM Niek Linnenbank
+On Tue, Mar 14, 2023 at 10:21=E2=80=AFPM Niek Linnenbank
 <nieklinnenbank@gmail.com> wrote:
 >
 > Hi Strahinja,
 >
 >
-> On Sat, Mar 11, 2023 at 3:41=E2=80=AFPM Strahinja Jankovic <strahinjapjan=
+> On Sat, Mar 11, 2023 at 3:42=E2=80=AFPM Strahinja Jankovic <strahinjapjan=
 kovic@gmail.com> wrote:
 >>
->> This patch adds basic support for Allwinner WDT.
->> Both sun4i and sun6i variants are supported.
->> However, interrupt generation is not supported, so WDT can be used only =
-to trigger system reset.
+>> This patch adds WDT to Allwinner-A10 and Cubieboard.
+>> WDT is added as an overlay to the Timer module memory map.
 >>
 >> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 >> ---
->>  hw/watchdog/Kconfig                 |   4 +
->>  hw/watchdog/allwinner-wdt.c         | 428 ++++++++++++++++++++++++++++
->>  hw/watchdog/meson.build             |   1 +
->>  hw/watchdog/trace-events            |   7 +
->>  include/hw/watchdog/allwinner-wdt.h | 123 ++++++++
->>  5 files changed, 563 insertions(+)
->>  create mode 100644 hw/watchdog/allwinner-wdt.c
->>  create mode 100644 include/hw/watchdog/allwinner-wdt.h
+>>  docs/system/arm/cubieboard.rst | 1 +
+>>  hw/arm/Kconfig                 | 1 +
+>>  hw/arm/allwinner-a10.c         | 7 +++++++
+>>  include/hw/arm/allwinner-a10.h | 2 ++
+>>  4 files changed, 11 insertions(+)
 >>
->> diff --git a/hw/watchdog/Kconfig b/hw/watchdog/Kconfig
->> index 66e1d029e3..861fd00334 100644
->> --- a/hw/watchdog/Kconfig
->> +++ b/hw/watchdog/Kconfig
->> @@ -20,3 +20,7 @@ config WDT_IMX2
->>
->>  config WDT_SBSA
->>      bool
->> +
->> +config ALLWINNER_WDT
->> +    bool
->> +    select PTIMER
->> diff --git a/hw/watchdog/allwinner-wdt.c b/hw/watchdog/allwinner-wdt.c
->> new file mode 100644
->> index 0000000000..cf16ec7a56
->> --- /dev/null
->> +++ b/hw/watchdog/allwinner-wdt.c
->> @@ -0,0 +1,428 @@
->> +/*
->> + * Allwinner Watchdog emulation
->> + *
->> + * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.co=
-m>
->> + *
->> + *  This file is derived from Allwinner RTC,
->> + *  by Niek Linnenbank.
->> + *
->> + * This program is free software: you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation, either version 2 of the License, or
->> + * (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> + * along with this program.  If not, see <http://www.gnu.org/licenses/>=
-.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/log.h"
->> +#include "qemu/units.h"
->> +#include "qemu/module.h"
->> +#include "trace.h"
->> +#include "hw/sysbus.h"
->> +#include "hw/registerfields.h"
->> +#include "hw/watchdog/allwinner-wdt.h"
->> +#include "sysemu/watchdog.h"
->> +#include "migration/vmstate.h"
->> +
->> +/* WDT registers */
->> +enum {
->> +    REG_IRQ_EN =3D 0,     /* Watchdog interrupt enable */
+>> diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard=
+.rst
+>> index 8d485f5435..58c4a2d3ea 100644
+>> --- a/docs/system/arm/cubieboard.rst
+>> +++ b/docs/system/arm/cubieboard.rst
+>> @@ -15,3 +15,4 @@ Emulated devices:
+>>  - USB controller
+>>  - SATA controller
+>>  - TWI (I2C) controller
+>> +- Watchdog timer
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index b5aed4aff5..ec15248536 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -325,6 +325,7 @@ config ALLWINNER_A10
+>>      select ALLWINNER_A10_PIC
+>>      select ALLWINNER_A10_CCM
+>>      select ALLWINNER_A10_DRAMC
+>> +    select ALLWINNER_WDT
+>>      select ALLWINNER_EMAC
+>>      select ALLWINNER_I2C
+>>      select AXP209_PMU
+>> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+>> index b7ca795c71..b0ea3f7f66 100644
+>> --- a/hw/arm/allwinner-a10.c
+>> +++ b/hw/arm/allwinner-a10.c
+>> @@ -38,6 +38,7 @@
+>>  #define AW_A10_EHCI_BASE        0x01c14000
+>>  #define AW_A10_OHCI_BASE        0x01c14400
+>>  #define AW_A10_SATA_BASE        0x01c18000
+>> +#define AW_A10_WDT_BASE         0x01c20c90
 >
 >
-> Since we are doing a check "if (!c->regmap[offset])" below, should the en=
-um values begin with 1 instead?
+> Unfortunately I couldn't find any details about the watchdog in the Allwi=
+nner A10 datasheet "A10_Datasheet.pdf", except for a very brief
+> summary in chapter 9.1 in the Timer Controller. But I did find that linux=
+ is using this same base address and registers with the shared driver code =
+in drivers/watchdog/sunxi_wdt.c.
 
-Yes, you are correct. I will fix this.
-
->
->>
->> +    REG_IRQ_STA,        /* Watchdog interrupt status */
->> +    REG_CTRL,           /* Watchdog control register */
->> +    REG_CFG,            /* Watchdog configuration register */
->> +    REG_MODE,           /* Watchdog mode register */
->> +};
->> +
->> +/* Universal WDT register flags */
->> +#define WDT_RESTART_MASK    (1 << 0)
->> +#define WDT_EN_MASK         (1 << 0)
->> +
->> +/* sun4i specific WDT register flags */
->> +#define RST_EN_SUN4I_MASK       (1 << 1)
->> +#define INTV_VALUE_SUN4I_SHIFT  (3)
->> +#define INTV_VALUE_SUN4I_MASK   (0xfu << INTV_VALUE_SUN4I_SHIFT)
->> +
->> +/* sun6i specific WDT register flags */
->> +#define RST_EN_SUN6I_MASK       (1 << 0)
->> +#define KEY_FIELD_SUN6I_SHIFT   (1)
->> +#define KEY_FIELD_SUN6I_MASK    (0xfffu << KEY_FIELD_SUN6I_SHIFT)
->> +#define KEY_FIELD_SUN6I         (0xA57u)
->> +#define INTV_VALUE_SUN6I_SHIFT  (4)
->> +#define INTV_VALUE_SUN6I_MASK   (0xfu << INTV_VALUE_SUN6I_SHIFT)
->> +
->> +/* Map of INTV_VALUE to 0.5s units. */
->> +static const uint8_t allwinner_wdt_count_map[] =3D {
->> +    1,
->> +    2,
->> +    4,
->> +    6,
->> +    8,
->> +    10,
->> +    12,
->> +    16,
->> +    20,
->> +    24,
->> +    28,
->> +    32
->> +};
->> +
->> +/* WDT sun4i register map (offset to name) */
->> +const uint8_t allwinner_wdt_sun4i_regmap[] =3D {
->> +    [0x0000] =3D REG_CTRL,
->> +    [0x0004] =3D REG_MODE,
->> +};
->> +
->> +/* WDT sun6i register map (offset to name) */
->> +const uint8_t allwinner_wdt_sun6i_regmap[] =3D {
->> +    [0x0000] =3D REG_IRQ_EN,
->> +    [0x0004] =3D REG_IRQ_STA,
->> +    [0x0010] =3D REG_CTRL,
->> +    [0x0014] =3D REG_CFG,
->> +    [0x0018] =3D REG_MODE,
->> +};
->> +
->> +static bool allwinner_wdt_sun4i_read(AwWdtState *s, uint32_t offset)
->> +{
->> +    /* no sun4i specific registers currently implemented */
->> +    return false;
->> +}
->> +
->> +static bool allwinner_wdt_sun4i_write(AwWdtState *s, uint32_t offset,
->> +                                      uint32_t data)
->> +{
->> +    /* no sun4i specific registers currently implemented */
->> +    return false;
->> +}
->> +
->> +static bool allwinner_wdt_sun4i_can_reset_system(AwWdtState *s)
->> +{
->> +    if (s->regs[REG_MODE] & RST_EN_SUN6I_MASK) {
->> +        return true;
->> +    } else {
->> +        return false;
->> +    }
->> +}
->> +
->> +static bool allwinner_wdt_sun4i_is_key_valid(AwWdtState *s, uint32_t va=
-l)
->> +{
->> +    /* sun4i has no key */
->> +    return true;
->> +}
->> +
->> +static uint8_t allwinner_wdt_sun4i_get_intv_value(AwWdtState *s)
->> +{
->> +    return ((s->regs[REG_MODE] & INTV_VALUE_SUN4I_MASK) >>
->> +            INTV_VALUE_SUN4I_SHIFT);
->> +}
->> +
->> +static bool allwinner_wdt_sun6i_read(AwWdtState *s, uint32_t offset)
->> +{
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +
->> +    switch (c->regmap[offset]) {
->> +    case REG_IRQ_EN:
->> +    case REG_IRQ_STA:
->> +    case REG_CFG:
->> +        return true;
->> +    default:
->> +        break;
->> +    }
->> +    return false;
->> +}
->> +
->> +static bool allwinner_wdt_sun6i_write(AwWdtState *s, uint32_t offset,
->> +                                      uint32_t data)
->> +{
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +
->> +    switch (c->regmap[offset]) {
->> +    case REG_IRQ_EN:
->> +    case REG_IRQ_STA:
->> +    case REG_CFG:
->> +        return true;
->> +    default:
->> +        break;
->> +    }
->> +    return false;
->> +}
->> +
->> +static bool allwinner_wdt_sun6i_can_reset_system(AwWdtState *s)
->> +{
->> +    if (s->regs[REG_CFG] & RST_EN_SUN6I_MASK) {
->> +        return true;
->> +    } else {
->> +        return false;
->> +    }
->> +}
->> +
->> +static bool allwinner_wdt_sun6i_is_key_valid(AwWdtState *s, uint32_t va=
-l)
->> +{
->> +    uint16_t key =3D (val & KEY_FIELD_SUN6I_MASK) >> KEY_FIELD_SUN6I_SH=
-IFT;
->> +    return (key =3D=3D KEY_FIELD_SUN6I);
->> +}
->> +
->> +static uint8_t allwinner_wdt_sun6i_get_intv_value(AwWdtState *s)
->> +{
->> +    return ((s->regs[REG_MODE] & INTV_VALUE_SUN6I_MASK) >>
->> +            INTV_VALUE_SUN6I_SHIFT);
->> +}
->> +
->> +static void allwinner_wdt_update_timer(AwWdtState *s)
->> +{
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +    uint8_t count =3D c->get_intv_value(s);
->> +
->> +    ptimer_transaction_begin(s->timer);
->> +    ptimer_stop(s->timer);
->> +
->> +    /* Use map to convert. */
->> +    if (count < sizeof(allwinner_wdt_count_map)) {
->> +        ptimer_set_count(s->timer, allwinner_wdt_count_map[count]);
->> +    } else {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: incorrect INTV_VALUE 0x%02x=
-\n",
->> +                __func__, count);
->> +    }
->> +
->> +    ptimer_run(s->timer, 1);
->> +    ptimer_transaction_commit(s->timer);
->> +
->> +    trace_allwinner_wdt_update_timer(count);
->> +}
->> +
->> +static uint64_t allwinner_wdt_read(void *opaque, hwaddr offset,
->> +                                       unsigned size)
->> +{
->> +    AwWdtState *s =3D AW_WDT(opaque);
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +    uint64_t r;
->> +
->> +    if (offset >=3D c->regmap_size) {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x=
-\n",
->> +                      __func__, (uint32_t)offset);
->> +        return 0;
->> +    }
->> +
->> +    if (!c->regmap[offset]) {
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid register 0x%04x=
-\n",
->> +                          __func__, (uint32_t)offset);
->> +        return 0;
->> +    }
->> +
->> +    switch (c->regmap[offset]) {
->> +    case REG_CTRL:
->> +    case REG_MODE:
->> +        r =3D s->regs[c->regmap[offset]];
->> +        break;
->> +    default:
->> +        if (!c->read(s, offset)) {
->> +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x=
-\n",
->> +                            __func__, (uint32_t)offset);
->> +            return 0;
->> +        }
->> +        r =3D s->regs[c->regmap[offset]];
->> +        break;
->> +    }
->> +
->> +    trace_allwinner_wdt_read(offset, r, size);
->> +
->> +    return r;
->> +}
->> +
->> +static void allwinner_wdt_write(void *opaque, hwaddr offset,
->> +                                   uint64_t val, unsigned size)
->> +{
->> +    AwWdtState *s =3D AW_WDT(opaque);
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +    uint32_t old_val;
->> +
->> +    if (offset >=3D c->regmap_size) {
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x=
-\n",
->> +                      __func__, (uint32_t)offset);
->> +        return;
->> +    }
->> +
->> +    if (!c->regmap[offset]) {
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid register 0x%04x=
-\n",
->> +                          __func__, (uint32_t)offset);
->> +        return;
->> +    }
->> +
->> +   trace_allwinner_wdt_write(offset, val, size);
->> +
->> +    switch (c->regmap[offset]) {
->> +    case REG_CTRL:
->> +        if (c->is_key_valid(s, val)) {
->> +            if (val & WDT_RESTART_MASK) {
->> +                /* Kick timer */
->> +                allwinner_wdt_update_timer(s);
->> +            }
->> +        }
->> +        break;
->> +    case REG_MODE:
->> +        old_val =3D s->regs[REG_MODE];
->> +        s->regs[REG_MODE] =3D (uint32_t)val;
->> +
->> +        /* Check for rising edge on WDOG_MODE_EN */
->> +        if ((s->regs[REG_MODE] & ~old_val) & WDT_EN_MASK) {
->> +            allwinner_wdt_update_timer(s);
->> +        }
->> +        break;
->> +    default:
->> +        if (!c->write(s, offset, val)) {
->> +            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x=
-\n",
->> +                          __func__, (uint32_t)offset);
->> +        }
->> +        s->regs[c->regmap[offset]] =3D (uint32_t)val;
->> +        break;
->> +    }
->> +}
->> +
->> +static const MemoryRegionOps allwinner_wdt_ops =3D {
->> +    .read =3D allwinner_wdt_read,
->> +    .write =3D allwinner_wdt_write,
->> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
->> +    .valid =3D {
->> +        .min_access_size =3D 4,
->> +        .max_access_size =3D 4,
->> +    },
->> +    .impl.min_access_size =3D 4,
->> +};
->> +
->> +static void allwinner_wdt_expired(void *opaque)
->> +{
->> +    AwWdtState *s =3D AW_WDT(opaque);
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +
->> +    bool enabled =3D s->regs[REG_MODE] & WDT_EN_MASK;
->> +    bool reset_enabled =3D c->can_reset_system(s);
->> +
->> +    trace_allwinner_wdt_expired(enabled, reset_enabled);
->> +
->> +    /* Perform watchdog action if watchdog is enabled and can trigger r=
-eset */
->> +    if (enabled && reset_enabled) {
->> +        watchdog_perform_action();
->> +    }
->> +}
->> +
->> +static void allwinner_wdt_reset_enter(Object *obj, ResetType type)
->> +{
->> +    AwWdtState *s =3D AW_WDT(obj);
->> +
->> +    trace_allwinner_wdt_reset_enter();
->> +
->> +    /* Clear registers */
->> +    memset(s->regs, 0, sizeof(s->regs));
->> +}
->> +
->> +static const VMStateDescription allwinner_wdt_vmstate =3D {
->> +    .name =3D "allwinner-wdt",
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_PTIMER(timer, AwWdtState),
->> +        VMSTATE_UINT32_ARRAY(regs, AwWdtState, AW_WDT_REGS_NUM),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static void allwinner_wdt_init(Object *obj)
->> +{
->> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
->> +    AwWdtState *s =3D AW_WDT(obj);
->> +    const AwWdtClass *c =3D AW_WDT_GET_CLASS(s);
->> +
->> +    /* Memory mapping */
->> +    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_wdt_ops, s,
->> +                          TYPE_AW_WDT, c->regmap_size * 4);
->> +    sysbus_init_mmio(sbd, &s->iomem);
->> +}
->> +
->> +static void allwinner_wdt_realize(DeviceState *dev, Error **errp)
->> +{
->> +    AwWdtState *s =3D AW_WDT(dev);
->> +
->> +    s->timer =3D ptimer_init(allwinner_wdt_expired, s,
->> +                           PTIMER_POLICY_NO_IMMEDIATE_TRIGGER |
->> +                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
->> +                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
->> +
->> +    ptimer_transaction_begin(s->timer);
->> +    /* Set to 2Hz (0.5s period) */
->> +    ptimer_set_freq(s->timer, 2);
->
->
-> Just wondering here where the 0.5s / 2Hz as the value come from?
-> I do see that wdt_imx2.c is also using the same value, but no code commen=
-t is provided to clarify.
-
-The User manual for A10
-(https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf)
-and H3 say that interval values can be configured in the range from
-0.5 to 16s (table is on page 100).
-Since 0.5s is the shortest period (highest frequency), then 2Hz is set
-as the timer frequency, and the array in allwinner_wdt_count_map is
-used to map count values to register contents.
-
->
->>
->> +    ptimer_set_limit(s->timer, 0xff, 1);
->> +    ptimer_transaction_commit(s->timer);
->> +}
->> +
->> +static void allwinner_wdt_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
->> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
->> +
->> +    rc->phases.enter =3D allwinner_wdt_reset_enter;
->> +    dc->realize =3D allwinner_wdt_realize;
->> +    dc->vmsd =3D &allwinner_wdt_vmstate;
->> +}
->> +
->> +static void allwinner_wdt_sun4i_class_init(ObjectClass *klass, void *da=
-ta)
->> +{
->> +    AwWdtClass *awc =3D AW_WDT_CLASS(klass);
->> +
->> +    awc->regmap =3D allwinner_wdt_sun4i_regmap;
->> +    awc->regmap_size =3D sizeof(allwinner_wdt_sun4i_regmap);
->> +    awc->read =3D allwinner_wdt_sun4i_read;
->> +    awc->write =3D allwinner_wdt_sun4i_write;
->> +    awc->can_reset_system =3D allwinner_wdt_sun4i_can_reset_system;
->> +    awc->is_key_valid =3D allwinner_wdt_sun4i_is_key_valid;
->> +    awc->get_intv_value =3D allwinner_wdt_sun4i_get_intv_value;
->> +}
->> +
->> +static void allwinner_wdt_sun6i_class_init(ObjectClass *klass, void *da=
-ta)
->> +{
->> +    AwWdtClass *awc =3D AW_WDT_CLASS(klass);
->> +
->> +    awc->regmap =3D allwinner_wdt_sun6i_regmap;
->> +    awc->regmap_size =3D sizeof(allwinner_wdt_sun6i_regmap);
->> +    awc->read =3D allwinner_wdt_sun6i_read;
->> +    awc->write =3D allwinner_wdt_sun6i_write;
->> +    awc->can_reset_system =3D allwinner_wdt_sun6i_can_reset_system;
->> +    awc->is_key_valid =3D allwinner_wdt_sun6i_is_key_valid;
->> +    awc->get_intv_value =3D allwinner_wdt_sun6i_get_intv_value;
->> +}
->> +
->> +static const TypeInfo allwinner_wdt_info =3D {
->> +    .name          =3D TYPE_AW_WDT,
->> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
->> +    .instance_init =3D allwinner_wdt_init,
->> +    .instance_size =3D sizeof(AwWdtState),
->> +    .class_init    =3D allwinner_wdt_class_init,
->> +    .class_size    =3D sizeof(AwWdtClass),
->> +    .abstract      =3D true,
->> +};
->> +
->> +static const TypeInfo allwinner_wdt_sun4i_info =3D {
->> +    .name          =3D TYPE_AW_WDT_SUN4I,
->> +    .parent        =3D TYPE_AW_WDT,
->> +    .class_init    =3D allwinner_wdt_sun4i_class_init,
->> +};
->> +
->> +static const TypeInfo allwinner_wdt_sun6i_info =3D {
->> +    .name          =3D TYPE_AW_WDT_SUN6I,
->> +    .parent        =3D TYPE_AW_WDT,
->> +    .class_init    =3D allwinner_wdt_sun6i_class_init,
->> +};
->> +
->> +static void allwinner_wdt_register(void)
->> +{
->> +    type_register_static(&allwinner_wdt_info);
->> +    type_register_static(&allwinner_wdt_sun4i_info);
->> +    type_register_static(&allwinner_wdt_sun6i_info);
->> +}
->> +
->> +type_init(allwinner_wdt_register)
->> diff --git a/hw/watchdog/meson.build b/hw/watchdog/meson.build
->> index 8974b5cf4c..5dcd4fbe2f 100644
->> --- a/hw/watchdog/meson.build
->> +++ b/hw/watchdog/meson.build
->> @@ -1,4 +1,5 @@
->>  softmmu_ss.add(files('watchdog.c'))
->> +softmmu_ss.add(when: 'CONFIG_ALLWINNER_WDT', if_true: files('allwinner-=
-wdt.c'))
->>  softmmu_ss.add(when: 'CONFIG_CMSDK_APB_WATCHDOG', if_true: files('cmsdk=
--apb-watchdog.c'))
->>  softmmu_ss.add(when: 'CONFIG_WDT_IB6300ESB', if_true: files('wdt_i6300e=
-sb.c'))
->>  softmmu_ss.add(when: 'CONFIG_WDT_IB700', if_true: files('wdt_ib700.c'))
->> diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
->> index 54371ae075..b1227860c4 100644
->> --- a/hw/watchdog/trace-events
->> +++ b/hw/watchdog/trace-events
->> @@ -1,5 +1,12 @@
->>  # See docs/devel/tracing.rst for syntax documentation.
->>
->> +# allwinner-wdt.c
->> +allwinner_wdt_read(uint64_t offset, uint64_t data, unsigned size) "Allw=
-inner watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
->> +allwinner_wdt_write(uint64_t offset, uint64_t data, unsigned size) "All=
-winner watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
->> +allwinner_wdt_reset_enter(void) "Allwinner watchdog: reset"
->> +allwinner_wdt_update_timer(uint32_t count) "Allwinner watchdog: count %=
-" PRIu32
->
->
-> should the type for count be uint8_t and PRIu8 instead? In the function a=
-llwinner_wdt_update_timer() above,
-> the variable 'uint8_t count' is passed, which is filled by the call to c-=
->get_intv_value().
-
-Yes, I will correct this.
-
->
->>
->> +allwinner_wdt_expired(bool enabled, bool reset_enabled) "Allwinner watc=
-hdog: enabled %u reset_enabled %u"
->> +
->>  # cmsdk-apb-watchdog.c
->>  cmsdk_apb_watchdog_read(uint64_t offset, uint64_t data, unsigned size) =
-"CMSDK APB watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
->>  cmsdk_apb_watchdog_write(uint64_t offset, uint64_t data, unsigned size)=
- "CMSDK APB watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u=
-"
->> diff --git a/include/hw/watchdog/allwinner-wdt.h b/include/hw/watchdog/a=
-llwinner-wdt.h
->> new file mode 100644
->> index 0000000000..37b49e77ee
->> --- /dev/null
->> +++ b/include/hw/watchdog/allwinner-wdt.h
->> @@ -0,0 +1,123 @@
->> +/*
->> + * Allwinner Watchdog emulation
->> + *
->> + * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.co=
-m>
->> + *
->> + *  This file is derived from Allwinner RTC,
->> + *  by Niek Linnenbank.
->> + *
->> + * This program is free software: you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation, either version 2 of the License, or
->> + * (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> + * along with this program.  If not, see <http://www.gnu.org/licenses/>=
-.
->> + */
->
->
-> Although technically it doesn't matter, in my opinion the most logical pl=
-ace for this
-> comment would be a bit lower in the file, right after the ifdef/define/in=
-clude.
-
-I saw how it was it was done in the CMSDK APB header file and did it
-in the same way, but I can move the comment below as you suggested.
-
->
->> +/*
->> + * This is a model of the Allwinner watchdog.
->> + * Since watchdog registers belong to the timer module (and are shared =
-with the
->> + * RTC module), the interrupt line from watchdog is not handled right n=
-ow.
->> + * In QEMU, we just wire up the watchdog reset to watchdog_perform_acti=
-on(),
->> + * at least for the moment.
->> + */
->> +
->> +#ifndef HW_WATCHDOG_ALLWINNER_WDT_H
->> +#define HW_WATCHDOG_ALLWINNER_WDT_H
->> +
->> +#include "qom/object.h"
->> +#include "hw/ptimer.h"
->> +#include "hw/sysbus.h"
->> +
->> +
->> +#define TYPE_AW_WDT    "allwinner-wdt"
->> +
->> +/** Allwinner WDT sun4i family (A10, A12), also sun7i (A20) */
->> +#define TYPE_AW_WDT_SUN4I    TYPE_AW_WDT "-sun4i"
->> +
->> +/** Allwinner WDT sun6i family and newer (A31, H2+, H3, etc) */
->> +#define TYPE_AW_WDT_SUN6I    TYPE_AW_WDT "-sun6i"
->> +
->> +/** Number of WDT registers */
->> +#define AW_WDT_REGS_NUM      (5)
->> +
->> +OBJECT_DECLARE_TYPE(AwWdtState, AwWdtClass, AW_WDT)
->> +
->> +/**
->> + * Allwinner A10 WDT object instance state.
->
->
-> In principle, the "A10" here can be removed, since we've modelled it as a=
- generic allwinner driver.
-
-Thanks, this was left over from initial implementation, since I
-started with A10... I will remove it.
+Thanks for the review. The User Manual for Allwinner A10 is available
+at https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf,
+watchdog registers are on pages 99-100.
 
 Best regards,
 Strahinja
 
 
 >
+> Looks good to me.
+>
+> Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>
 >>
->> + */
->> +struct AwWdtState {
->> +    /*< private >*/
->> +    SysBusDevice parent_obj;
->> +
->> +    /*< public >*/
->> +    MemoryRegion iomem;
->> +    struct ptimer_state *timer;
->> +
->> +    uint32_t regs[AW_WDT_REGS_NUM];
->> +};
->> +
->> +/**
->> + * Allwinner WDT class-level struct.
->> + *
->> + * This struct is filled by each sunxi device specific code
->> + * such that the generic code can use this struct to support
->> + * all devices.
->> + */
->> +struct AwWdtClass {
->> +    /*< private >*/
->> +    SysBusDeviceClass parent_class;
->> +    /*< public >*/
->> +
->> +    /** Defines device specific register map */
->> +    const uint8_t *regmap;
->> +
->> +    /** Size of the regmap in bytes */
->> +    size_t regmap_size;
->> +
->> +    /**
->> +     * Read device specific register
->> +     *
->> +     * @offset: register offset to read
->> +     * @return true if register read successful, false otherwise
->> +     */
->> +    bool (*read)(AwWdtState *s, uint32_t offset);
+>>  #define AW_A10_RTC_BASE         0x01c20d00
+>>  #define AW_A10_I2C0_BASE        0x01c2ac00
 >>
+>> @@ -92,6 +93,8 @@ static void aw_a10_init(Object *obj)
+>>      object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN4I=
+);
+>>
+>>      object_initialize_child(obj, "rtc", &s->rtc, TYPE_AW_RTC_SUN4I);
 >> +
->> +    /**
->> +     * Write device specific register
->> +     *
->> +     * @offset: register offset to write
->> +     * @data: value to set in register
->> +     * @return true if register write successful, false otherwise
->> +     */
->> +    bool (*write)(AwWdtState *s, uint32_t offset, uint32_t data);
+>> +    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
+>>  }
+>>
+>>  static void aw_a10_realize(DeviceState *dev, Error **errp)
+>> @@ -203,6 +206,10 @@ static void aw_a10_realize(DeviceState *dev, Error =
+**errp)
+>>      sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
+>>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, AW_A10_I2C0_BASE);
+>>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0, qdev_get_gpio_in(de=
+v, 7));
 >> +
->> +    /**
->> +     * Check if watchdog can generate system reset
->> +     *
->> +     * @return true if watchdog can generate system reset
->> +     */
->> +    bool (*can_reset_system)(AwWdtState *s);
->> +
->> +    /**
->> +     * Check if provided key is valid
->> +     *
->> +     * @value: value written to register
->> +     * @return true if key is valid, false otherwise
->> +     */
->> +    bool (*is_key_valid)(AwWdtState *s, uint32_t val);
->> +
->> +    /**
->> +     * Get current INTV_VALUE setting
->> +     *
->> +     * @return current INTV_VALUE (0-15)
->> +     */
->> +    uint8_t (*get_intv_value)(AwWdtState *s);
->> +};
->> +
->> +#endif /* HW_WATCHDOG_ALLWINNER_WDT_H */
+>> +    /* WDT */
+>> +    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+>> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE=
+, 1);
+>>  }
+>>
+>>  static void aw_a10_class_init(ObjectClass *oc, void *data)
+>> diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a=
+10.h
+>> index 095afb225d..cd1465c613 100644
+>> --- a/include/hw/arm/allwinner-a10.h
+>> +++ b/include/hw/arm/allwinner-a10.h
+>> @@ -13,6 +13,7 @@
+>>  #include "hw/misc/allwinner-a10-ccm.h"
+>>  #include "hw/misc/allwinner-a10-dramc.h"
+>>  #include "hw/i2c/allwinner-i2c.h"
+>> +#include "hw/watchdog/allwinner-wdt.h"
+>>  #include "sysemu/block-backend.h"
+>>
+>>  #include "target/arm/cpu.h"
+>> @@ -41,6 +42,7 @@ struct AwA10State {
+>>      AwSdHostState mmc0;
+>>      AWI2CState i2c0;
+>>      AwRtcState rtc;
+>> +    AwWdtState wdt;
+>>      MemoryRegion sram_a;
+>>      EHCISysBusState ehci[AW_A10_NUM_USB];
+>>      OHCISysBusState ohci[AW_A10_NUM_USB];
 >> --
 >> 2.30.2
 >>
 >
-> Regards,
-> Niek
 >
 > --
 > Niek Linnenbank

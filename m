@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c15-20020adfef4f000000b002c55ec7f661sm5352712wrp.5.2023.03.15.10.43.33
+        by smtp.gmail.com with ESMTPSA id e25-20020a05600c219900b003ed1fa34bd3sm2505608wme.13.2023.03.15.10.43.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:43:35 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0CD8D1FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 2998A1FFB7;
 	Wed, 15 Mar 2023 17:43:32 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,43 +77,40 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 07/32] tests/tcg: add some help output for running individual tests
-Date: Wed, 15 Mar 2023 17:43:06 +0000
-Message-Id: <20230315174331.2959-8-alex.bennee@linaro.org>
+Subject: [PATCH v2 08/32] tests/tcg: disable pauth for aarch64 gdb tests
+Date: Wed, 15 Mar 2023 17:43:07 +0000
+Message-Id: <20230315174331.2959-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RV1O4kgk+E0a
+X-TUID: k24PHamvdwUF
 
-So you can do:
+You need a very new gdb to be able to run with pauth support otherwise
+your likely to hit asserts and aborts. Disable pauth for now until we
+can properly probe support in gdb.
 
-  cd tests/tcg/aarch64-linux-user
-  make -f ../Makefile.target help
-
-To see the list of tests. You can then run each one individually.
-
+Message-Id: <20230310103123.2118519-10-alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/Makefile.target | 7 +++++++
- 1 file changed, 7 insertions(+)
+ tests/tcg/aarch64/Makefile.target | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index a3b0aaf8af..8318caf924 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -201,3 +201,10 @@ clean:
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 9e91a20b0d..8ffde3b0ed 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -84,6 +84,8 @@ TESTS += sha512-vector
+ ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
  
- distclean:
- 	rm -f config-cc.mak config-target.mak ../config-$(TARGET).mak
++run-gdbstub-%: QEMU_OPTS=-cpu max,pauth=off
 +
-+.PHONY: help
-+help:
-+	@echo "TCG tests help $(TARGET_NAME)"
-+	@echo "Built with $(CC)"
-+	@echo "Available tests:"
-+	@$(foreach t,$(RUN_TESTS),echo "  $t";)
+ run-gdbstub-sysregs: sysregs
+ 	$(call run-test, $@, $(GDB_SCRIPT) \
+ 		--gdb $(HAVE_GDB_BIN) \
 -- 
 2.39.2

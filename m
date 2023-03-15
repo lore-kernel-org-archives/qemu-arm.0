@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id k6-20020a05600c1c8600b003e209b45f6bsm2909515wms.29.2023.03.15.10.49.20
+        by smtp.gmail.com with ESMTPSA id y16-20020a05600c365000b003ed23845666sm2459424wmq.45.2023.03.15.10.49.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:49:22 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id F30251FFD3;
+	by zen.linaroharston (Postfix) with ESMTP id 4650A1FFCE;
 	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,72 +77,93 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Guo Ren <guoren@kernel.org>,
-	Xuan Zhuo <xuanzhuo@linux.alibaba.com>
-Subject: [PATCH v2 29/32] contrib/gitdm: add Alibaba to the domain-map
-Date: Wed, 15 Mar 2023 17:43:28 +0000
-Message-Id: <20230315174331.2959-30-alex.bennee@linaro.org>
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 23/32] iotests: always use a unique sub-directory per test
+Date: Wed, 15 Mar 2023 17:43:22 +0000
+Message-Id: <20230315174331.2959-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Od66OoMdAQxl
+X-TUID: iWjaZFjmSWi1
 
-This replaces the previous attempt to add c-sky.com. Group everything
-under Alibaba now.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Added as requested by LIU Zhiwei.
+The current test runner is only safe against parallel execution within
+a single instance of the 'check' process, and only if -j is given a
+value greater than 2. This prevents running multiple copies of the
+'check' process for different test scenarios.
 
+This change switches the output / socket directories to always include
+the test name, image format and image protocol. This should allow full
+parallelism of all distinct test scenarios. eg running both qcow2 and
+raw tests at the same time, or both file and nbd tests at the same
+time.
+
+It would be possible to allow for parallelism of the same test scenario
+by including the pid, but that would potentially let many directories
+accumulate over time on failures, so is not done.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Hanna Czenczek <hreitz@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20230303160727.3977246-7-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Guo Ren <guoren@kernel.org>
-Reviewed-by: Xuan Zhuo <xuanzhuo@linux.alibaba.com>
-Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
-Message-Id: <20230310180332.2274827-8-alex.bennee@linaro.org>
 ---
- contrib/gitdm/domain-map        | 1 +
- contrib/gitdm/group-map-alibaba | 7 +++++++
- gitdm.config                    | 1 +
- 3 files changed, 9 insertions(+)
- create mode 100644 contrib/gitdm/group-map-alibaba
+ tests/qemu-iotests/testrunner.py | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
-index 8dce276a1c..0b6c77eee0 100644
---- a/contrib/gitdm/domain-map
-+++ b/contrib/gitdm/domain-map
-@@ -4,6 +4,7 @@
- # This maps email domains to nice easy to read company names
- #
+diff --git a/tests/qemu-iotests/testrunner.py b/tests/qemu-iotests/testrunner.py
+index 81519ed6e2..7b322272e9 100644
+--- a/tests/qemu-iotests/testrunner.py
++++ b/tests/qemu-iotests/testrunner.py
+@@ -228,13 +228,11 @@ def find_reference(self, test: str) -> str:
  
-+linux.alibaba.com Alibaba
- amazon.com      Amazon
- amazon.co.uk    Amazon
- amd.com         AMD
-diff --git a/contrib/gitdm/group-map-alibaba b/contrib/gitdm/group-map-alibaba
-new file mode 100644
-index 0000000000..0ebbe6b06e
---- /dev/null
-+++ b/contrib/gitdm/group-map-alibaba
-@@ -0,0 +1,7 @@
-+#
-+# Alibaba contributors including its subsidiaries 
-+#
+         return f'{test}.out'
+ 
+-    def do_run_test(self, test: str, mp: bool) -> TestResult:
++    def do_run_test(self, test: str) -> TestResult:
+         """
+         Run one test
+ 
+         :param test: test file path
+-        :param mp: if true, we are in a multiprocessing environment, use
+-                   personal subdirectories for test run
+ 
+         Note: this method may be called from subprocess, so it does not
+         change ``self`` object in any way!
+@@ -257,12 +255,14 @@ def do_run_test(self, test: str, mp: bool) -> TestResult:
+ 
+         args = [str(f_test.resolve())]
+         env = self.env.prepare_subprocess(args)
+-        if mp:
+-            # Split test directories, so that tests running in parallel don't
+-            # break each other.
+-            for d in ['TEST_DIR', 'SOCK_DIR']:
+-                env[d] = os.path.join(env[d], f_test.name)
+-                Path(env[d]).mkdir(parents=True, exist_ok=True)
 +
-+# c-sky.com, now part of T-Head, wholly-owned entity of Alibaba Group
-+ren_guo@c-sky.com
-+zhiwei_liu@c-sky.com
-diff --git a/gitdm.config b/gitdm.config
-index 907ffde017..df4ba829ca 100644
---- a/gitdm.config
-+++ b/gitdm.config
-@@ -31,6 +31,7 @@ EmailMap contrib/gitdm/domain-map
- # identifiable corporate emails. Please keep this list sorted.
- #
++        # Split test directories, so that tests running in parallel don't
++        # break each other.
++        for d in ['TEST_DIR', 'SOCK_DIR']:
++            env[d] = os.path.join(
++                env[d],
++                f"{self.env.imgfmt}-{self.env.imgproto}-{f_test.name}")
++            Path(env[d]).mkdir(parents=True, exist_ok=True)
  
-+GroupMap contrib/gitdm/group-map-alibaba Alibaba
- GroupMap contrib/gitdm/group-map-cadence Cadence Design Systems
- GroupMap contrib/gitdm/group-map-codeweavers CodeWeavers
- GroupMap contrib/gitdm/group-map-facebook Facebook
+         test_dir = env['TEST_DIR']
+         f_bad = Path(test_dir, f_test.name + '.out.bad')
+@@ -347,7 +347,7 @@ def run_test(self, test: str,
+             testname = os.path.basename(test)
+             print(f'# running {self.env.imgfmt} {testname}')
+ 
+-        res = self.do_run_test(test, mp)
++        res = self.do_run_test(test)
+ 
+         end = datetime.datetime.now().strftime('%H:%M:%S')
+         self.test_print_one_line(test=test,
 -- 
 2.39.2

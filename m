@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r6-20020a05600c458600b003ebff290a52sm2854958wmo.28.2023.03.15.10.43.43
+        by smtp.gmail.com with ESMTPSA id c15-20020adfef4f000000b002c55ec7f661sm5353013wrp.5.2023.03.15.10.43.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:43 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:44 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 484EF1FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id 6D4C51FFC8;
 	Wed, 15 Mar 2023 17:43:43 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,94 +77,106 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 15/32] *: Add missing includes of qemu/plugin.h
-Date: Wed, 15 Mar 2023 17:43:14 +0000
-Message-Id: <20230315174331.2959-16-alex.bennee@linaro.org>
+Subject: [PATCH v2 16/32] include/qemu: Split out plugin-event.h
+Date: Wed, 15 Mar 2023 17:43:15 +0000
+Message-Id: <20230315174331.2959-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SN+iNb6yAZ4B
+X-TUID: wUg7bq/tmucg
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-This had been pulled in from hw/core/cpu.h,
-but that will be removed.
+The usage in hw/core/cpu.h only requires QEMU_PLUGIN_EV_MAX.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230310195252.210956-6-richard.henderson@linaro.org>
-[AJB: also syscall-trace.h]
+Message-Id: <20230310195252.210956-7-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/user/syscall-trace.h | 1 +
- accel/tcg/cpu-exec-common.c  | 1 +
- cpu.c                        | 1 +
- linux-user/exit.c            | 1 +
- linux-user/syscall.c         | 1 +
- 5 files changed, 5 insertions(+)
+ include/hw/core/cpu.h       |  2 +-
+ include/qemu/plugin-event.h | 26 ++++++++++++++++++++++++++
+ include/qemu/plugin.h       | 17 +----------------
+ 3 files changed, 28 insertions(+), 17 deletions(-)
+ create mode 100644 include/qemu/plugin-event.h
 
-diff --git a/include/user/syscall-trace.h b/include/user/syscall-trace.h
-index c5a220da34..90bda7631c 100644
---- a/include/user/syscall-trace.h
-+++ b/include/user/syscall-trace.h
-@@ -11,6 +11,7 @@
- #define SYSCALL_TRACE_H
- 
- #include "exec/user/abitypes.h"
-+#include "qemu/plugin.h"
- #include "trace/trace-root.h"
- 
- /*
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index 176ea57281..e7962c9348 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -21,6 +21,7 @@
- #include "sysemu/cpus.h"
- #include "sysemu/tcg.h"
- #include "exec/exec-all.h"
-+#include "qemu/plugin.h"
- 
- bool tcg_allowed;
- 
-diff --git a/cpu.c b/cpu.c
-index 567b23af46..849bac062c 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -42,6 +42,7 @@
- #include "hw/core/accel-cpu.h"
- #include "trace/trace-root.h"
- #include "qemu/accel.h"
-+#include "qemu/plugin.h"
- 
- uintptr_t qemu_host_page_size;
- intptr_t qemu_host_page_mask;
-diff --git a/linux-user/exit.c b/linux-user/exit.c
-index fd49d76f45..3017d28a3c 100644
---- a/linux-user/exit.c
-+++ b/linux-user/exit.c
-@@ -21,6 +21,7 @@
- #include "gdbstub/syscalls.h"
- #include "qemu.h"
- #include "user-internals.h"
-+#include "qemu/plugin.h"
- #ifdef CONFIG_GPROF
- #include <sys/gmon.h>
- #endif
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 24cea6fb6a..27871641f4 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -22,6 +22,7 @@
- #include "qemu/path.h"
- #include "qemu/memfd.h"
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 75689bff02..821e937020 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -30,7 +30,7 @@
+ #include "qemu/rcu_queue.h"
  #include "qemu/queue.h"
-+#include "qemu/plugin.h"
- #include "target_mman.h"
- #include <elf.h>
- #include <endian.h>
+ #include "qemu/thread.h"
+-#include "qemu/plugin.h"
++#include "qemu/plugin-event.h"
+ #include "qom/object.h"
+ 
+ typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
+diff --git a/include/qemu/plugin-event.h b/include/qemu/plugin-event.h
+new file mode 100644
+index 0000000000..7056d8427b
+--- /dev/null
++++ b/include/qemu/plugin-event.h
+@@ -0,0 +1,26 @@
++/*
++ * Copyright (C) 2017, Emilio G. Cota <cota@braap.org>
++ *
++ * License: GNU GPL, version 2 or later.
++ *   See the COPYING file in the top-level directory.
++ */
++#ifndef QEMU_PLUGIN_EVENT_H
++#define QEMU_PLUGIN_EVENT_H
++
++/*
++ * Events that plugins can subscribe to.
++ */
++enum qemu_plugin_event {
++    QEMU_PLUGIN_EV_VCPU_INIT,
++    QEMU_PLUGIN_EV_VCPU_EXIT,
++    QEMU_PLUGIN_EV_VCPU_TB_TRANS,
++    QEMU_PLUGIN_EV_VCPU_IDLE,
++    QEMU_PLUGIN_EV_VCPU_RESUME,
++    QEMU_PLUGIN_EV_VCPU_SYSCALL,
++    QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
++    QEMU_PLUGIN_EV_FLUSH,
++    QEMU_PLUGIN_EV_ATEXIT,
++    QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
++};
++
++#endif /* QEMU_PLUGIN_EVENT_H */
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index e0ebedef84..6bf4bce188 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -12,24 +12,9 @@
+ #include "qemu/error-report.h"
+ #include "qemu/queue.h"
+ #include "qemu/option.h"
++#include "qemu/plugin-event.h"
+ #include "exec/memopidx.h"
+ 
+-/*
+- * Events that plugins can subscribe to.
+- */
+-enum qemu_plugin_event {
+-    QEMU_PLUGIN_EV_VCPU_INIT,
+-    QEMU_PLUGIN_EV_VCPU_EXIT,
+-    QEMU_PLUGIN_EV_VCPU_TB_TRANS,
+-    QEMU_PLUGIN_EV_VCPU_IDLE,
+-    QEMU_PLUGIN_EV_VCPU_RESUME,
+-    QEMU_PLUGIN_EV_VCPU_SYSCALL,
+-    QEMU_PLUGIN_EV_VCPU_SYSCALL_RET,
+-    QEMU_PLUGIN_EV_FLUSH,
+-    QEMU_PLUGIN_EV_ATEXIT,
+-    QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
+-};
+-
+ /*
+  * Option parsing/processing.
+  * Note that we can load an arbitrary number of plugins.
 -- 
 2.39.2

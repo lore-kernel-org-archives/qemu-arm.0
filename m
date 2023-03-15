@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f12-20020a5d568c000000b002cfe3f842c8sm5176145wrv.56.2023.03.15.10.43.32
+        by smtp.gmail.com with ESMTPSA id r6-20020a05600c458600b003ebff290a52sm2854958wmo.28.2023.03.15.10.43.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:33 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:43 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C89341FFBD;
-	Wed, 15 Mar 2023 17:43:31 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 484EF1FFBE;
+	Wed, 15 Mar 2023 17:43:43 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -77,65 +77,94 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 05/32] gitlab: update centos-8-stream job
-Date: Wed, 15 Mar 2023 17:43:04 +0000
-Message-Id: <20230315174331.2959-6-alex.bennee@linaro.org>
+Subject: [PATCH v2 15/32] *: Add missing includes of qemu/plugin.h
+Date: Wed, 15 Mar 2023 17:43:14 +0000
+Message-Id: <20230315174331.2959-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FlTbJsqjT/Q0
+X-TUID: SN+iNb6yAZ4B
 
-A couple of clean-ups here:
+From: Richard Henderson <richard.henderson@linaro.org>
 
-  - inherit from the custom runners job for artefacts
-  - call check-avocado directly
-  - add some comments to the top about setup
+This had been pulled in from hw/core/cpu.h,
+but that will be removed.
 
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230310195252.210956-6-richard.henderson@linaro.org>
+[AJB: also syscall-trace.h]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .../custom-runners/centos-stream-8-x86_64.yml  | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ include/user/syscall-trace.h | 1 +
+ accel/tcg/cpu-exec-common.c  | 1 +
+ cpu.c                        | 1 +
+ linux-user/exit.c            | 1 +
+ linux-user/syscall.c         | 1 +
+ 5 files changed, 5 insertions(+)
 
-diff --git a/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml b/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml
-index 068b0c4335..367424db78 100644
---- a/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml
-+++ b/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml
-@@ -1,4 +1,9 @@
-+# All centos-stream-8 jobs should run successfully in an environment
-+# setup by the scripts/ci/setup/stream/8/build-environment.yml task
-+# "Installation of extra packages to build QEMU"
-+
- centos-stream-8-x86_64:
-+ extends: .custom_runner_template
-  allow_failure: true
-  needs: []
-  stage: build
-@@ -8,15 +13,6 @@ centos-stream-8-x86_64:
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-  - if: "$CENTOS_STREAM_8_x86_64_RUNNER_AVAILABLE"
-- artifacts:
--   name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
--   when: on_failure
--   expire_in: 7 days
--   paths:
--     - build/tests/results/latest/results.xml
--     - build/tests/results/latest/test-results
--   reports:
--     junit: build/tests/results/latest/results.xml
-  before_script:
-  - JOBS=$(expr $(nproc) + 1)
-  script:
-@@ -25,6 +21,4 @@ centos-stream-8-x86_64:
-  - ../scripts/ci/org.centos/stream/8/x86_64/configure
-    || { cat config.log meson-logs/meson-log.txt; exit 1; }
-  - make -j"$JOBS"
-- - make NINJA=":" check
--   || { cat meson-logs/testlog.txt; exit 1; } ;
-- - ../scripts/ci/org.centos/stream/8/x86_64/test-avocado
-+ - make NINJA=":" check check-avocado
+diff --git a/include/user/syscall-trace.h b/include/user/syscall-trace.h
+index c5a220da34..90bda7631c 100644
+--- a/include/user/syscall-trace.h
++++ b/include/user/syscall-trace.h
+@@ -11,6 +11,7 @@
+ #define SYSCALL_TRACE_H
+ 
+ #include "exec/user/abitypes.h"
++#include "qemu/plugin.h"
+ #include "trace/trace-root.h"
+ 
+ /*
+diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
+index 176ea57281..e7962c9348 100644
+--- a/accel/tcg/cpu-exec-common.c
++++ b/accel/tcg/cpu-exec-common.c
+@@ -21,6 +21,7 @@
+ #include "sysemu/cpus.h"
+ #include "sysemu/tcg.h"
+ #include "exec/exec-all.h"
++#include "qemu/plugin.h"
+ 
+ bool tcg_allowed;
+ 
+diff --git a/cpu.c b/cpu.c
+index 567b23af46..849bac062c 100644
+--- a/cpu.c
++++ b/cpu.c
+@@ -42,6 +42,7 @@
+ #include "hw/core/accel-cpu.h"
+ #include "trace/trace-root.h"
+ #include "qemu/accel.h"
++#include "qemu/plugin.h"
+ 
+ uintptr_t qemu_host_page_size;
+ intptr_t qemu_host_page_mask;
+diff --git a/linux-user/exit.c b/linux-user/exit.c
+index fd49d76f45..3017d28a3c 100644
+--- a/linux-user/exit.c
++++ b/linux-user/exit.c
+@@ -21,6 +21,7 @@
+ #include "gdbstub/syscalls.h"
+ #include "qemu.h"
+ #include "user-internals.h"
++#include "qemu/plugin.h"
+ #ifdef CONFIG_GPROF
+ #include <sys/gmon.h>
+ #endif
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 24cea6fb6a..27871641f4 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -22,6 +22,7 @@
+ #include "qemu/path.h"
+ #include "qemu/memfd.h"
+ #include "qemu/queue.h"
++#include "qemu/plugin.h"
+ #include "target_mman.h"
+ #include <elf.h>
+ #include <endian.h>
 -- 
 2.39.2

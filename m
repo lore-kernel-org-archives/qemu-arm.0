@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id x2-20020a05600c21c200b003e1f2e43a1csm2491206wmj.48.2023.03.15.10.49.19
+        by smtp.gmail.com with ESMTPSA id e10-20020adffc4a000000b002cfed482e9asm4453518wrs.61.2023.03.15.10.49.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:49:19 -0700 (PDT)
+        Wed, 15 Mar 2023 10:49:20 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9D4761FFC3;
-	Wed, 15 Mar 2023 17:43:32 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 199A31FFD4;
+	Wed, 15 Mar 2023 17:43:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -76,41 +76,43 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Sunil Muthuswamy <sunilmut@microsoft.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 12/32] tcg: Drop plugin_gen_disable_mem_helpers from tcg_gen_exit_tb
-Date: Wed, 15 Mar 2023 17:43:11 +0000
-Message-Id: <20230315174331.2959-13-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
+	=?UTF-8?q?Niccol=C3=B2=20Izzo?= <nizzo@rev.ng>,
+	Paolo Montesel <babush@rev.ng>,
+	Alessandro Di Federico <ale@rev.ng>
+Subject: [PATCH v2 30/32] contrib/gitdm: add revng to domain map
+Date: Wed, 15 Mar 2023 17:43:29 +0000
+Message-Id: <20230315174331.2959-31-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: bT25u/eObxJL
+X-TUID: AWIfJXPKMj+i
 
-From: Richard Henderson <richard.henderson@linaro.org>
-
-Now that we call qemu_plugin_disable_mem_helpers in cpu_tb_exec,
-we don't need to do this in generated code as well.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230310195252.210956-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Anton Johansson <anjo@rev.ng>
+Cc: Niccolò Izzo <nizzo@rev.ng>
+Cc: Paolo Montesel <babush@rev.ng>
+Reviewed-by: Alessandro Di Federico <ale@rev.ng>
+Message-Id: <20230310180332.2274827-9-alex.bennee@linaro.org>
 ---
- tcg/tcg-op.c | 1 -
- 1 file changed, 1 deletion(-)
+ contrib/gitdm/domain-map | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index ddab20a6a6..3136cef81a 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -2808,7 +2808,6 @@ void tcg_gen_exit_tb(const TranslationBlock *tb, unsigned idx)
-         tcg_debug_assert(idx == TB_EXIT_REQUESTED);
-     }
- 
--    plugin_gen_disable_mem_helpers();
-     tcg_gen_op1i(INDEX_op_exit_tb, val);
- }
- 
+diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
+index 0b6c77eee0..fa9cb5430f 100644
+--- a/contrib/gitdm/domain-map
++++ b/contrib/gitdm/domain-map
+@@ -36,6 +36,7 @@ oracle.com      Oracle
+ proxmox.com     Proxmox
+ quicinc.com     Qualcomm Innovation Center
+ redhat.com      Red Hat
++rev.ng          revng
+ rt-rk.com       RT-RK
+ samsung.com     Samsung
+ siemens.com     Siemens
 -- 
 2.39.2

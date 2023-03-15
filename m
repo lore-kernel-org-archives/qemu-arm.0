@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e10-20020adffc4a000000b002cfed482e9asm4453518wrs.61.2023.03.15.10.49.20
+        by smtp.gmail.com with ESMTPSA id r6-20020a05600c458600b003ebff290a52sm2868114wmo.28.2023.03.15.10.49.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:49:20 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 199A31FFD4;
+	by zen.linaroharston (Postfix) with ESMTP id 36CF21FFD5;
 	Wed, 15 Mar 2023 17:43:45 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,42 +77,43 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anton Johansson <anjo@rev.ng>,
-	=?UTF-8?q?Niccol=C3=B2=20Izzo?= <nizzo@rev.ng>,
-	Paolo Montesel <babush@rev.ng>,
-	Alessandro Di Federico <ale@rev.ng>
-Subject: [PATCH v2 30/32] contrib/gitdm: add revng to domain map
-Date: Wed, 15 Mar 2023 17:43:29 +0000
-Message-Id: <20230315174331.2959-31-alex.bennee@linaro.org>
+	Bernhard Beschow <shentey@gmail.com>,
+	Amarjargal Gundjalam <amarjargal16@gmail.com>,
+	Bin Meng <bmeng@tinylab.org>,
+	"Jason A . Donenfeld" <Jason@zx2c4.com>
+Subject: [PATCH v2 31/32] contrib/gitdm: add more individual contributors
+Date: Wed, 15 Mar 2023 17:43:30 +0000
+Message-Id: <20230315174331.2959-32-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AWIfJXPKMj+i
+X-TUID: TCfY6cFo8reJ
+
+I've only added the names explicitly acked.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Anton Johansson <anjo@rev.ng>
-Cc: Niccolò Izzo <nizzo@rev.ng>
-Cc: Paolo Montesel <babush@rev.ng>
-Reviewed-by: Alessandro Di Federico <ale@rev.ng>
-Message-Id: <20230310180332.2274827-9-alex.bennee@linaro.org>
+Cc: Bernhard Beschow <shentey@gmail.com>
+Cc: Amarjargal Gundjalam <amarjargal16@gmail.com>
+Cc: Bin Meng <bmeng@tinylab.org>
+Cc: Jason A. Donenfeld <Jason@zx2c4.com>
+Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Acked-by: Bernhard Beschow <shentey@gmail.com>
+Message-Id: <20230310180332.2274827-10-alex.bennee@linaro.org>
 ---
- contrib/gitdm/domain-map | 1 +
+ contrib/gitdm/group-map-individuals | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
-index 0b6c77eee0..fa9cb5430f 100644
---- a/contrib/gitdm/domain-map
-+++ b/contrib/gitdm/domain-map
-@@ -36,6 +36,7 @@ oracle.com      Oracle
- proxmox.com     Proxmox
- quicinc.com     Qualcomm Innovation Center
- redhat.com      Red Hat
-+rev.ng          revng
- rt-rk.com       RT-RK
- samsung.com     Samsung
- siemens.com     Siemens
+diff --git a/contrib/gitdm/group-map-individuals b/contrib/gitdm/group-map-individuals
+index e2263a5ee3..3264c7383d 100644
+--- a/contrib/gitdm/group-map-individuals
++++ b/contrib/gitdm/group-map-individuals
+@@ -38,3 +38,4 @@ paul@nowt.org
+ git@xen0n.name
+ simon@simonsafar.com
+ research_trasio@irq.a4lg.com
++shentey@gmail.com
 -- 
 2.39.2

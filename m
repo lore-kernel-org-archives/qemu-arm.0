@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id u25-20020a7bc059000000b003e21f959453sm2460485wmc.32.2023.03.15.10.43.31
+        by smtp.gmail.com with ESMTPSA id p9-20020a1c5449000000b003dc1d668866sm2529134wmi.10.2023.03.15.10.43.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:32 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:33 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 714F61FFBA;
+	by zen.linaroharston (Postfix) with ESMTP id A873D1FFBC;
 	Wed, 15 Mar 2023 17:43:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -76,40 +76,65 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Sunil Muthuswamy <sunilmut@microsoft.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH v2 02/32] tests/docker: all add DOCKER_BUILDKIT to RUNC environment
-Date: Wed, 15 Mar 2023 17:43:01 +0000
-Message-Id: <20230315174331.2959-3-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 04/32] scripts/ci: update gitlab-runner playbook to handle CentOS
+Date: Wed, 15 Mar 2023 17:43:03 +0000
+Message-Id: <20230315174331.2959-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ep9IFhhZlPNi
+X-TUID: f2ibJjNvW5y7
 
-It seems we also need to pass DOCKER_BUILDKIT as an argument to docker
-itself to get the full benefit of caching.
+This was broken when we moved to using the pre-built packages as we
+didn't take care to ensure we used RPMs where required.
 
+NB: I could never get this to complete on my test setup but I suspect
+this was down to network connectivity and timeouts while downloading.
+
+Fixes: 69c4befba1 (scripts/ci: update gitlab-runner playbook to use latest runner)
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Suggested-by: Fabiano Rosas <farosas@suse.de>
 ---
- tests/docker/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/ci/setup/gitlab-runner.yml | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 54ed77f671..9401525325 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -39,7 +39,7 @@ docker-qemu-src: $(DOCKER_SRC_COPY)
- # General rule for building docker images.
- docker-image-%: $(DOCKER_FILES_DIR)/%.docker
- 	  $(call quiet-command,			\
--		$(RUNC) build				\
-+		DOCKER_BUILDKIT=1 $(RUNC) build		\
- 		$(if $V,,--quiet)			\
- 		$(if $(NOCACHE),--no-cache,		\
- 			$(if $(DOCKER_REGISTRY),--cache-from $(DOCKER_REGISTRY)/qemu/$*)) \
+diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
+index 95d4199c03..1a1b270ff2 100644
+--- a/scripts/ci/setup/gitlab-runner.yml
++++ b/scripts/ci/setup/gitlab-runner.yml
+@@ -48,13 +48,29 @@
+     - debug:
+         msg: gitlab-runner arch is {{ gitlab_runner_arch }}
+ 
+-    - name: Download the matching gitlab-runner
++    - name: Download the matching gitlab-runner (DEB)
+       get_url:
+         dest: "/root/"
+         url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_{{ gitlab_runner_arch }}.deb"
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++
++    - name: Download the matching gitlab-runner (RPM)
++      get_url:
++        dest: "/root/"
++        url: "https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
++      when:
++        - ansible_facts['distribution'] == 'CentOS'
+ 
+-    - name: Install gitlab-runner via package manager
++    - name: Install gitlab-runner via package manager (DEB)
+       apt: deb="/root/gitlab-runner_{{ gitlab_runner_arch }}.deb"
++      when:
++        - ansible_facts['distribution'] == 'Ubuntu'
++
++    - name: Install gitlab-runner via package manager (RPM)
++      yum: name="/root/gitlab-runner_{{ gitlab_runner_arch }}.rpm"
++      when:
++        - ansible_facts['distribution'] == 'CentOS'
+ 
+     - name: Register the gitlab-runner
+       command: "/usr/bin/gitlab-runner register --non-interactive --url {{ gitlab_runner_server_url }} --registration-token {{ gitlab_runner_registration_token }} --executor shell --tag-list {{ ansible_facts[\"architecture\"] }},{{ ansible_facts[\"distribution\"]|lower }}_{{ ansible_facts[\"distribution_version\"] }} --description '{{ ansible_facts[\"distribution\"] }} {{ ansible_facts[\"distribution_version\"] }} {{ ansible_facts[\"architecture\"] }} ({{ ansible_facts[\"os_family\"] }})'"
 -- 
 2.39.2

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t8-20020a1c7708000000b003ed2276cd0dsm2489997wmi.38.2023.03.15.10.43.45
+        by smtp.gmail.com with ESMTPSA id a5-20020a056000100500b002cea299a575sm5090268wrx.101.2023.03.15.10.43.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:43:47 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0C44A1FFCD;
+	by zen.linaroharston (Postfix) with ESMTP id 9B5881FFBE;
 	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,48 +77,46 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 21/32] iotests: print TAP protocol version when reporting tests
-Date: Wed, 15 Mar 2023 17:43:20 +0000
-Message-Id: <20230315174331.2959-22-alex.bennee@linaro.org>
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Troy Lee <troy_lee@aspeedtech.com>,
+	Howard Chiu <howard_chiu@aspeedtech.com>,
+	Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 26/32] contrib/gitdm: Add ASPEED Technology to the domain map
+Date: Wed, 15 Mar 2023 17:43:25 +0000
+Message-Id: <20230315174331.2959-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: N78yuynp43KT
+X-TUID: 1UnJvm1EBv7u
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+We have a number of contributors from this domain which is a corporate
+endeavour.
 
-Recently meson started complaining that TAP test reports don't include
-the TAP protocol version. While this warning is bogus and has since been
-removed from Meson, it looks like good practice to include this header
-going forward. The GLib library test harness has started unconditionally
-printing the version, so this brings the I/O tests into line.
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Acked-by: Hanna Czenczek <hreitz@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230303160727.3977246-5-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Steven Lee <steven_lee@aspeedtech.com>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+Cc: Howard Chiu <howard_chiu@aspeedtech.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Troy Lee <troy_lee@aspeedtech.com>
+Message-Id: <20230310180332.2274827-4-alex.bennee@linaro.org>
 ---
- tests/qemu-iotests/testrunner.py | 1 +
+ contrib/gitdm/domain-map | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/tests/qemu-iotests/testrunner.py b/tests/qemu-iotests/testrunner.py
-index 5a771da86e..e734800b3d 100644
---- a/tests/qemu-iotests/testrunner.py
-+++ b/tests/qemu-iotests/testrunner.py
-@@ -391,6 +391,7 @@ def run_tests(self, tests: List[str], jobs: int = 1) -> bool:
-         casenotrun = []
+diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
+index 8913a886c9..65e40fe8e1 100644
+--- a/contrib/gitdm/domain-map
++++ b/contrib/gitdm/domain-map
+@@ -5,6 +5,7 @@
+ #
  
-         if self.tap:
-+            print('TAP version 13')
-             self.env.print_env('# ')
-             print('1..%d' % len(tests))
-         else:
+ amd.com         AMD
++aspeedtech.com  ASPEED Technology Inc.
+ baidu.com       Baidu
+ bytedance.com   ByteDance
+ cmss.chinamobile.com China Mobile
 -- 
 2.39.2

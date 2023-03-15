@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c10-20020adffb0a000000b002d1bfe3269esm105850wrr.59.2023.03.15.10.59.20
+        by smtp.gmail.com with ESMTPSA id u3-20020a5d5143000000b002c70c99db74sm5125243wrt.86.2023.03.15.10.43.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:59:20 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:31 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 80FD31FFC2;
-	Wed, 15 Mar 2023 17:43:32 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 35C221FFB7;
+	Wed, 15 Mar 2023 17:43:31 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -77,87 +77,168 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 11/32] tcg: Clear plugin_mem_cbs on TB exit
-Date: Wed, 15 Mar 2023 17:43:10 +0000
-Message-Id: <20230315174331.2959-12-alex.bennee@linaro.org>
+Subject: [PATCH v2 00/32] tweaks and fixes for 8.0-rc1 (tests, plugins, docs)
+Date: Wed, 15 Mar 2023 17:42:59 +0000
+Message-Id: <20230315174331.2959-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
-References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: yT+BNjnvxb8b
+X-TUID: qiaz9qLGfcWA
 
-From: Richard Henderson <richard.henderson@linaro.org>
+As usual for softfreeze I switch from my usual maintainer trees to
+collecting up miscellaneous fixes and tweaks as we stabilise the
+build. I was intending to send it as a PR but I had to squash a number
+of CI failures by adding stuff to:
 
-Do this in cpu_tb_exec (normal exit) and cpu_loop_exit (exception),
-adjacent to where we reset can_do_io.
+      *: Add missing includes of qemu/error-report.h
+      *: Add missing includes of qemu/plugin.h
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1381
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230310195252.210956-2-richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- accel/tcg/cpu-exec-common.c | 2 ++
- accel/tcg/cpu-exec.c        | 5 +----
- 2 files changed, 3 insertions(+), 4 deletions(-)
+so I thought it was worth another spin and I can cut the PR from this
+if the reviews are ok.
 
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index c7bc8c6efa..176ea57281 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -65,6 +65,8 @@ void cpu_loop_exit(CPUState *cpu)
- {
-     /* Undo the setting in cpu_tb_exec.  */
-     cpu->can_do_io = 1;
-+    /* Undo any setting in generated code.  */
-+    qemu_plugin_disable_mem_helpers(cpu);
-     siglongjmp(cpu->jmp_env, 1);
- }
- 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 56aaf58b9d..c815f2dbfd 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -459,6 +459,7 @@ cpu_tb_exec(CPUState *cpu, TranslationBlock *itb, int *tb_exit)
-     qemu_thread_jit_execute();
-     ret = tcg_qemu_tb_exec(env, tb_ptr);
-     cpu->can_do_io = 1;
-+    qemu_plugin_disable_mem_helpers(cpu);
-     /*
-      * TODO: Delay swapping back to the read-write region of the TB
-      * until we actually need to modify the TB.  The read-only copy,
-@@ -526,7 +527,6 @@ static void cpu_exec_exit(CPUState *cpu)
-     if (cc->tcg_ops->cpu_exec_exit) {
-         cc->tcg_ops->cpu_exec_exit(cpu);
-     }
--    QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
- }
- 
- void cpu_exec_step_atomic(CPUState *cpu)
-@@ -580,7 +580,6 @@ void cpu_exec_step_atomic(CPUState *cpu)
-             qemu_mutex_unlock_iothread();
-         }
-         assert_no_pages_locked();
--        qemu_plugin_disable_mem_helpers(cpu);
-     }
- 
-     /*
-@@ -1004,7 +1003,6 @@ cpu_exec_loop(CPUState *cpu, SyncClocks *sc)
- 
-             cpu_loop_exec_tb(cpu, tb, pc, &last_tb, &tb_exit);
- 
--            QEMU_PLUGIN_ASSERT(cpu->plugin_mem_cbs == NULL);
-             /* Try to align the host and virtual clocks
-                if the guest is in advance */
-             align_clocks(sc, cpu);
-@@ -1029,7 +1027,6 @@ static int cpu_exec_setjmp(CPUState *cpu, SyncClocks *sc)
-         if (qemu_mutex_iothread_locked()) {
-             qemu_mutex_unlock_iothread();
-         }
--        qemu_plugin_disable_mem_helpers(cpu);
- 
-         assert_no_pages_locked();
-     }
+Since v1:
+  - grabbed Daniel's iotest cleanup for CI
+  - new version of Richard's plugin fix
+  - a number of gitdm updates
+
+I've left:
+  tests/tcg: disable pauth for aarch64 gdb tests
+
+in for now, but I can easily drop it for the PR as it seems the
+consensus is there will be stable updates to gdb that no longer crash
+on our pauth support.
+
+The following still need review:
+
+ - contrib/gitdm: add more individual contributors (1 acks, 1 sobs)
+ - tests/tcg: add some help output for running individual tests
+ - include/qemu: add documentation for memory callbacks
+ - gitlab: update centos-8-stream job
+ - scripts/ci: update gitlab-runner playbook to handle CentOS
+ - tests/docker: all add DOCKER_BUILDKIT to RUNC environment
+
+Alex Bennée (16):
+  tests/docker: all add DOCKER_BUILDKIT to RUNC environment
+  scripts/ci: add libslirp-devel to build-environment
+  scripts/ci: update gitlab-runner playbook to handle CentOS
+  gitlab: update centos-8-stream job
+  include/qemu: add documentation for memory callbacks
+  tests/tcg: add some help output for running individual tests
+  tests/tcg: disable pauth for aarch64 gdb tests
+  include/exec: fix kerneldoc definition
+  tests/avocado: don't use tags to define drive
+  contrib/gitdm: Add ASPEED Technology to the domain map
+  contrib/gitdm: Add SYRMIA to the domain map
+  contrib/gitdm: add Amazon to the domain map
+  contrib/gitdm: add Alibaba to the domain-map
+  contrib/gitdm: add revng to domain map
+  contrib/gitdm: add more individual contributors
+  contrib/gitdm: add group map for AMD
+
+Daniel P. Berrangé (8):
+  iotests: explicitly pass source/build dir to 'check' command
+  iotests: allow test discovery before building
+  iotests: strip subdir path when listing tests
+  iotests: print TAP protocol version when reporting tests
+  iotests: connect stdin to /dev/null when running tests
+  iotests: always use a unique sub-directory per test
+  iotests: register each I/O test separately with meson
+  iotests: remove the check-block.sh script
+
+Marcin Juszkiewicz (1):
+  tests/avocado: update AArch64 tests to Alpine 3.17.2
+
+Richard Henderson (7):
+  tcg: Clear plugin_mem_cbs on TB exit
+  tcg: Drop plugin_gen_disable_mem_helpers from tcg_gen_exit_tb
+  include/qemu/plugin: Remove QEMU_PLUGIN_ASSERT
+  *: Add missing includes of qemu/error-report.h
+  *: Add missing includes of qemu/plugin.h
+  include/qemu: Split out plugin-event.h
+  include/qemu/plugin: Inline qemu_plugin_disable_mem_helpers
+
+ include/exec/memory.h                         |  2 +-
+ include/hw/core/cpu.h                         |  2 +-
+ include/qemu/plugin-event.h                   | 26 ++++++++
+ include/qemu/plugin.h                         | 27 ++-------
+ include/qemu/qemu-plugin.h                    | 47 +++++++++++++--
+ include/user/syscall-trace.h                  |  1 +
+ accel/accel-softmmu.c                         |  2 +-
+ accel/tcg/cpu-exec-common.c                   |  3 +
+ accel/tcg/cpu-exec.c                          |  5 +-
+ block/monitor/block-hmp-cmds.c                |  1 +
+ cpu.c                                         |  1 +
+ dump/dump.c                                   |  1 +
+ dump/win_dump.c                               |  1 +
+ gdbstub/gdbstub.c                             |  1 +
+ hw/arm/collie.c                               |  2 +
+ hw/arm/cubieboard.c                           |  1 +
+ hw/arm/musicpal.c                             |  2 +
+ hw/arm/npcm7xx_boards.c                       |  2 +
+ hw/arm/nseries.c                              |  2 +
+ hw/arm/omap_sx1.c                             |  2 +
+ hw/arm/orangepi.c                             |  1 +
+ hw/arm/palm.c                                 |  2 +
+ hw/core/loader.c                              |  1 +
+ hw/core/machine-smp.c                         |  2 +
+ hw/i386/kvm/xen_xenstore.c                    |  1 +
+ hw/i386/sgx.c                                 |  1 +
+ hw/intc/apic.c                                |  1 +
+ hw/loongarch/acpi-build.c                     |  1 +
+ hw/loongarch/virt.c                           |  2 +
+ hw/m68k/next-cube.c                           |  1 +
+ hw/m68k/q800.c                                |  1 +
+ hw/m68k/virt.c                                |  1 +
+ hw/mem/memory-device.c                        |  1 +
+ hw/mem/sparse-mem.c                           |  1 +
+ hw/openrisc/boot.c                            |  1 +
+ hw/ppc/spapr_softmmu.c                        |  2 +
+ hw/riscv/opentitan.c                          |  1 +
+ hw/riscv/shakti_c.c                           |  1 +
+ hw/riscv/virt-acpi-build.c                    |  1 +
+ hw/vfio/display.c                             |  1 +
+ hw/vfio/igd.c                                 |  1 +
+ hw/vfio/migration.c                           |  1 +
+ linux-user/elfload.c                          |  1 +
+ linux-user/exit.c                             |  1 +
+ linux-user/syscall.c                          |  1 +
+ migration/dirtyrate.c                         |  1 +
+ migration/exec.c                              |  1 +
+ plugins/core.c                                | 11 ----
+ target/i386/cpu.c                             |  1 +
+ target/i386/host-cpu.c                        |  1 +
+ target/i386/sev.c                             |  1 +
+ target/i386/whpx/whpx-apic.c                  |  1 +
+ target/mips/cpu.c                             |  1 +
+ target/s390x/cpu-sysemu.c                     |  1 +
+ target/s390x/cpu_models.c                     |  1 +
+ target/s390x/diag.c                           |  2 +
+ tcg/tcg-op.c                                  |  1 -
+ .../custom-runners/centos-stream-8-x86_64.yml | 18 ++----
+ contrib/gitdm/domain-map                      |  7 ++-
+ contrib/gitdm/group-map-alibaba               |  7 +++
+ contrib/gitdm/group-map-amd                   |  8 +++
+ contrib/gitdm/group-map-individuals           |  1 +
+ gitdm.config                                  |  2 +
+ .../org.centos/stream/8/build-environment.yml |  1 +
+ scripts/ci/setup/gitlab-runner.yml            | 20 ++++++-
+ tests/avocado/machine_aarch64_virt.py         |  8 +--
+ tests/avocado/tuxrun_baselines.py             | 60 ++++++++-----------
+ tests/check-block.sh                          | 43 -------------
+ tests/docker/Makefile.include                 |  2 +-
+ tests/qemu-iotests/check                      | 30 ++++++++--
+ tests/qemu-iotests/meson.build                | 35 +++++++++--
+ tests/qemu-iotests/testenv.py                 | 20 +++----
+ tests/qemu-iotests/testrunner.py              | 43 ++++---------
+ tests/tcg/Makefile.target                     |  7 +++
+ tests/tcg/aarch64/Makefile.target             |  2 +
+ ui/cocoa.m                                    |  1 +
+ 76 files changed, 305 insertions(+), 193 deletions(-)
+ create mode 100644 include/qemu/plugin-event.h
+ create mode 100644 contrib/gitdm/group-map-alibaba
+ create mode 100644 contrib/gitdm/group-map-amd
+ delete mode 100755 tests/check-block.sh
+
 -- 
 2.39.2

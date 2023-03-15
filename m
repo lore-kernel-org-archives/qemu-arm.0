@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a5-20020a056000100500b002cea299a575sm5090268wrx.101.2023.03.15.10.43.46
+        by smtp.gmail.com with ESMTPSA id f15-20020a5d4dcf000000b002c70e60abd4sm5324559wru.2.2023.03.15.10.43.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 15 Mar 2023 10:43:47 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9B5881FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id B70CA1FFD1;
 	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,46 +77,40 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Hanna Reitz <hreitz@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Steven Lee <steven_lee@aspeedtech.com>,
-	Troy Lee <troy_lee@aspeedtech.com>,
-	Howard Chiu <howard_chiu@aspeedtech.com>,
-	Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PATCH v2 26/32] contrib/gitdm: Add ASPEED Technology to the domain map
-Date: Wed, 15 Mar 2023 17:43:25 +0000
-Message-Id: <20230315174331.2959-27-alex.bennee@linaro.org>
+	Milica Lazarevic <milica.lazarevic@syrmia.com>
+Subject: [PATCH v2 27/32] contrib/gitdm: Add SYRMIA to the domain map
+Date: Wed, 15 Mar 2023 17:43:26 +0000
+Message-Id: <20230315174331.2959-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1UnJvm1EBv7u
+X-TUID: oyELA3cxjhNM
 
-We have a number of contributors from this domain which is a corporate
-endeavour.
+The company website lists QEMU amongst the things they work on so I
+assume these are corporate contributions.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Steven Lee <steven_lee@aspeedtech.com>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-Cc: Howard Chiu <howard_chiu@aspeedtech.com>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Troy Lee <troy_lee@aspeedtech.com>
-Message-Id: <20230310180332.2274827-4-alex.bennee@linaro.org>
+Cc: Milica Lazarevic <milica.lazarevic@syrmia.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230310180332.2274827-6-alex.bennee@linaro.org>
 ---
  contrib/gitdm/domain-map | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
-index 8913a886c9..65e40fe8e1 100644
+index 65e40fe8e1..4a988c5b5f 100644
 --- a/contrib/gitdm/domain-map
 +++ b/contrib/gitdm/domain-map
-@@ -5,6 +5,7 @@
- #
- 
- amd.com         AMD
-+aspeedtech.com  ASPEED Technology Inc.
- baidu.com       Baidu
- bytedance.com   ByteDance
- cmss.chinamobile.com China Mobile
+@@ -39,6 +39,7 @@ siemens.com     Siemens
+ sifive.com      SiFive
+ suse.com        SUSE
+ suse.de         SUSE
++syrmia.com      SYRMIA
+ ventanamicro.com Ventana Micro Systems
+ virtuozzo.com   Virtuozzo
+ vrull.eu        VRULL
 -- 
 2.39.2

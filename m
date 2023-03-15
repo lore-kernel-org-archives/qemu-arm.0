@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id w17-20020adfd4d1000000b002c70ce264bfsm5141188wrk.76.2023.03.15.10.43.44
+        by smtp.gmail.com with ESMTPSA id q3-20020a1cf303000000b003ed341d2d68sm2297850wmq.16.2023.03.15.10.43.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Mar 2023 10:43:45 -0700 (PDT)
+        Wed, 15 Mar 2023 10:43:47 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E53981FFCC;
-	Wed, 15 Mar 2023 17:43:43 +0000 (GMT)
+	by zen.linaroharston (Postfix) with ESMTP id 62DC01FFCF;
+	Wed, 15 Mar 2023 17:43:44 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -78,53 +78,97 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
 	Peter Xu <peterx@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 20/32] iotests: strip subdir path when listing tests
-Date: Wed, 15 Mar 2023 17:43:19 +0000
-Message-Id: <20230315174331.2959-21-alex.bennee@linaro.org>
+Subject: [PATCH v2 24/32] iotests: register each I/O test separately with meson
+Date: Wed, 15 Mar 2023 17:43:23 +0000
+Message-Id: <20230315174331.2959-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230315174331.2959-1-alex.bennee@linaro.org>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vra5nPAt3stI
+X-TUID: VBVdsC0kIM8O
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-When asking 'check' to list individual tests by invoking it in dry run
-mode, it prints the paths to the tests relative to the base of the
-I/O test directory.
+Currently meson registers a single test that invokes an entire group of
+I/O tests, hiding the test granularity from meson. There are various
+downsides of doing this
 
-When asking 'check' to run an individual test, however, it mandates that
-only the unqualified test name is given, without any path prefix. This
-inconsistency makes it harder to ask for a list of tests and then invoke
-each one.
+ * You cannot ask 'meson test' to invoke a single I/O test
+ * The meson test timeout can't be applied to the individual
+   tests
+ * Meson only gets a pass/fail for the overall I/O test group
+   not individual tests
+ * If a CI job gets killed by the GitLab timeout, we don't
+   get visibility into how far through the I/O tests
+   execution got.
 
-Thus the test listing code is change to flatten the test names, by
-printing only the base name, which can be directly invoked.
+This switches meson to perform test discovery by invoking 'check' in
+dry-run mode. It then registers one meson test case for each I/O
+test. Parallel execution remains disabled since the I/O tests do not
+use self contained execution environments and thus conflict with
+each other.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Acked-by: Hanna Czenczek <hreitz@redhat.com>
 Tested-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230303160727.3977246-4-berrange@redhat.com>
+Message-Id: <20230303160727.3977246-8-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/qemu-iotests/check | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qemu-iotests/meson.build | 35 ++++++++++++++++++++++++++++------
+ 1 file changed, 29 insertions(+), 6 deletions(-)
 
-diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
-index bb294ef556..f2e9d27dcf 100755
---- a/tests/qemu-iotests/check
-+++ b/tests/qemu-iotests/check
-@@ -184,7 +184,7 @@ if __name__ == '__main__':
-         sys.exit(str(e))
+diff --git a/tests/qemu-iotests/meson.build b/tests/qemu-iotests/meson.build
+index 323a4acb6a..a162f683ef 100644
+--- a/tests/qemu-iotests/meson.build
++++ b/tests/qemu-iotests/meson.build
+@@ -32,16 +32,39 @@ foreach k, v : emulators
+   endif
+ endforeach
  
-     if args.dry_run:
--        print('\n'.join(tests))
-+        print('\n'.join([os.path.basename(t) for t in tests]))
-     else:
-         with TestRunner(env, tap=args.tap,
-                         color=args.color) as tr:
++qemu_iotests_check_cmd = files('check')
++
+ foreach format, speed: qemu_iotests_formats
+   if speed == 'quick'
+     suites = 'block'
+   else
+     suites = ['block-' + speed, speed]
+   endif
+-  test('qemu-iotests ' + format, sh, args: [files('../check-block.sh'), format],
+-       depends: qemu_iotests_binaries, env: qemu_iotests_env,
+-       protocol: 'tap',
+-       suite: suites,
+-       timeout: 0,
+-       is_parallel: false)
++
++  args = ['-tap', '-' + format]
++  if speed == 'quick'
++      args += ['-g', 'auto']
++  endif
++
++  rc = run_command(
++      [qemu_iotests_check_cmd] + args + ['-n'],
++      check: true,
++  )
++
++  foreach item: rc.stdout().strip().split()
++      args = ['-tap', '-' + format, item,
++              '--source-dir', meson.current_source_dir(),
++              '--build-dir', meson.current_build_dir()]
++      # Some individual tests take as long as 45 seconds
++      # Bump the timeout to 3 minutes for some headroom
++      # on slow machines to minimize spurious failures
++      test('io-' + format + '-' + item,
++           qemu_iotests_check_cmd,
++           args: args,
++           depends: qemu_iotests_binaries,
++           env: qemu_iotests_env,
++           protocol: 'tap',
++           timeout: 180,
++           suite: suites)
++  endforeach
+ endforeach
 -- 
 2.39.2

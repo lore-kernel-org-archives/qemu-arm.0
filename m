@@ -1,165 +1,126 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp199176ejb;
-        Thu, 16 Mar 2023 04:42:00 -0700 (PDT)
-X-Google-Smtp-Source: AK7set86MnrRBk1lSlZraWOksGxx5xg7FqWWj/9vTOUmleYeDpTCCU163M+3VT+nVdpjq87636lI
-X-Received: by 2002:ac8:5d8a:0:b0:3ba:1d8d:f6eb with SMTP id d10-20020ac85d8a000000b003ba1d8df6ebmr5620254qtx.58.1678966920744;
-        Thu, 16 Mar 2023 04:42:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678966920; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp455109ejb;
+        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
+X-Received: by 2002:a05:6a20:49af:b0:d6:d880:dcc6 with SMTP id fs47-20020a056a2049af00b000d6d880dcc6mr44991pzb.19.1678985465095;
+        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678985465; cv=none;
         d=google.com; s=arc-20160816;
-        b=HVdqFBw9ZC/nMBpZNe7MfzpHRCIxhZCr0GQwUMFhxG87ygiGsCNl4BCJHwXGdDMwly
-         RwOrgzJmB+Gmwi7xWqxq1mSEiZw4SHwxGf7FTrYvJdTzpDGCYhZteyDaQHQ67BzeqP8n
-         4VwNW1kSDbHMZ6RS1gGAJFBY9mEXmw8bfmQsry9vbA7WCrVaHX4f62AoBfPnLoj8vQ82
-         XsQnciHjZNH+2MNs08eyDjcHOMsMkH66cUrCeqZz+8weHXtGw7irJoGxSouDWDgvZM+J
-         H+ChM0nlcZytY4PLAsUh4+TNrvypOe5egQ/cgo3A8FOGYjetvzcFxvvOTmCq/ITZ0Cwr
-         rDvw==
+        b=mbBlK6n4fbss/zJ/SXiYTlrRHHIqMCq2sLRBec7xeyD2pMsmm/Q+vySxGSVLW9wfNw
+         ytIVe7Ge2OKrSaAqP+52WVVvQ67Te1I4s3ZetqcUznD2bNx5cTcI2F7zNToXZGSE+b/h
+         9abRUJCaMBEZUcPPq79CtHsEHFHhdXeM0UoMa+OJGoipH2JfVVrmJbu3tJnr9NJlnxoa
+         wUTZQQsBINdBWOM6Hr3NGS/xoIjb3SIPxxgx6a17QX9WMB7RcUEAbTm0I50tWQQrnKj3
+         Q2asxMLxVH0Cv2Iz1bWtaUY98FdouIHvhcebrB0LKCc0LBdJNYhSQCnRdI75wIlayVBs
+         4xuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/Zj39akCcROzUmrFX9bcj8Cao2d39Tn/yjMgtiFgGpM=;
-        b=NB/FhmGJmcsWt1m7bJndl2miQFDN1YoopVllYKIG1MusBJAJHIjU/yZTjjVBUAJhRk
-         zvgthpIx4t4CWkw6Ngsj+/KMXg0l2psLt0gRVBVwMgdbj1jD8ul6jPuiPVPFVAEf7p9C
-         CT0Tf/xRdRYUKipTHFH6e00yppodqsRaC+PTTnUOfsKjrgjxuNlfvCb9PmgY2Nifcldx
-         iJUJP5LeDYJJjX28WdbiHzN2UefZneIKqIa2U9E6y3TA7jwizUzdjj40rvjWN3dTwKe9
-         deJhWOe+P/LxTXGViPsgZB/48Lqthe5RrU4pfY9HM01nnvSF0CagwtFJA7WfnLc03/t0
-         U57Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
+        b=axPDIR9D13Piz+lN/BgvBCit/Rsj9+jffC2Norb5hG0P/eM1883kGU1fFdOabD31vy
+         7RKJtG99ne+xn/4+XYngQoGcmqr4/lK+0PGikTk7YaAmDBl7aWxueK0YuA48gvUzNqOu
+         QPjAdPlxGrObnSspPTNtmCv2KqgK7TaD4KIAp7erbXmu3kUGKHxYyoFm6h66oX9937ax
+         4OyFPZ5UwVqxQW5pIAXvu2nX5eK6+ToXe11+/l34Ganfz9a1DvEnBz9qQATtEZ8WzS0H
+         jygWHvL8guU2MP7k3cwV6meAFN2WUddSO7F+1w1rCZb5halrI9DPWXjqt/axZwFtUH1O
+         9DIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WIljQG9b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rV2RPyNV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v30-20020a05622a189e00b003b639a807b1si7158144qtc.748.2023.03.16.04.42.00
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l1-20020a654481000000b005030ad58e19sor3036920pgq.61.2023.03.16.09.51.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Mar 2023 04:42:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WIljQG9b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rV2RPyNV;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pclzX-0005eQ-Jb; Thu, 16 Mar 2023 07:41:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pclzS-0005Yi-Gd
- for qemu-arm@nongnu.org; Thu, 16 Mar 2023 07:41:51 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pclzQ-0000EX-2g
- for qemu-arm@nongnu.org; Thu, 16 Mar 2023 07:41:50 -0400
-Received: by mail-pf1-x431.google.com with SMTP id ay18so938815pfb.2
- for <qemu-arm@nongnu.org>; Thu, 16 Mar 2023 04:41:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678966905;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/Zj39akCcROzUmrFX9bcj8Cao2d39Tn/yjMgtiFgGpM=;
- b=WIljQG9bsr3o+HZAcTZmV9RAMbqlbbnmVsloieiQ9bUnnZjapqP287L3BHbEGqpgzI
- vxezI42O/xJ0ePQPUOcvzENoSTEkAkLWjHjmFCo10DgfFrMLD+Yofop5tRHE877AJhvc
- 2z1ewuxYMC6R3fPkwUq4YtlA8uKp96MksBqe/G85EpoOxiyLMhuq37dkOuntF3gCI61s
- dAT8JKmWPnzSY4bkGpJ161PwmasNxC0AWKCSyPmzXaX7+F7UwumxsIaejY6J8A+6kJox
- rNniBlWtZCIp51yN/rWXSItqtdZdjGCAOjBJPJqTS61OZj0ryuUttJss9ho5n741FdQm
- aLFw==
+        d=linaro.org; s=google; t=1678985464;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
+        b=rV2RPyNV7i7XCEgyngu2kJfmH7H5NqrndfnfhE49dCw6eCf5wgkaWB7FL53P1xto5g
+         C7hHhuXvlhE9/3HnJHgCB8HRiOoLjlmGwiqllTjFUhkOYeMJwTrq77w4aAqkpHK1iFG0
+         OZvmaJOWw467AWUs/CeDr5be5c+F3DUw+eL09eXkjZgI32YGx0vxvljstwfr1vMEaoBl
+         qcUvBQA0CIolEZPqvBrmgNEop2iOe1fQOgRT7WC4WIAOyJ2S6k5I/37mdHrXnJZXPljX
+         AvKX3jzTpR9Rmu0xCOQHE2k5QT1uFG7GWGD5GoXxq755If4B+/MkPNKoyTXsIB9sPX/y
+         PYzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678966905;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/Zj39akCcROzUmrFX9bcj8Cao2d39Tn/yjMgtiFgGpM=;
- b=w4IsCcUjzb+wh4HBwWQJSrpeao+8sx8sA1zUY9BdGfhIwvONPqkW6T3dqYl/BdffKJ
- vv6jlpfKUHGmmi9Eg1AXm8Crdycc84IhS+xTSBoESRzo0BYji2RROfe9LBy7Aout2g0U
- tMxYiCYQY+iUTnMZOdaienbZU2sPaq1zpBOhvNb3/5tXmz+Q6NJdQ21kVrP76BXzSvxY
- Ch7z3j0Ssvo3JQyrx3blqUtkpDQ9c/S5Qc21f//joPbsmExq7zcb+9hzxHxfKrGncra1
- F2oQRp2xTB7IHKzmCRq9HSCDYrPYswRXht+inxcDcI8YW4OEZFoyooUgFt6BL72cJtkF
- Mt8Q==
-X-Gm-Message-State: AO0yUKUAJD08No/ya5Ag7lFBbkS+YVF6fseTGt6U0iY0NPp2PGnsTMRP
- +rPjveIls3W/sXDj1jjx96p5n9J7yLxhs/hjEN3d+A==
-X-Received: by 2002:a05:6a00:1904:b0:623:129f:6269 with SMTP id
- y4-20020a056a00190400b00623129f6269mr1411466pfi.1.1678966905403; Thu, 16 Mar
- 2023 04:41:45 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1678985464;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
+        b=BtOZGpJQ4/6gysXHdT1OS/LMw6VyDQ7A+WocQmiOyfyCmEwgRAl4bQYJjlZ8pjPxm6
+         1TcGUC15wpiA+noHZtgm5l4dVCFIj8QHop3luAr3HmxNRZScXX9t1NhQry2LLimPB8zv
+         pjrL/q6Xw52Y2rKwWn5mkfsncYO7v6NBSAlPaSiFJ5D+JERI55Kqo4hXZuJGYy8lmSzZ
+         T8ChuT4Hi2USnBr9JnYjmrgc2plnH+RvneWGNYrtrXmqfjlmburWGhgL7UTVQc8PgFzE
+         BaZObA3qmH6vN9ikVir3IC+vxAU4X5S9BCJN6mGqqzVDyBSzLK4psPUuAsTNRy6d3e7/
+         B9gg==
+X-Gm-Message-State: AO0yUKWRrQFpyXjGP0rihD6vHDAWof8PXAc/vpIGpuekbGQusX4n7ZqB
+	X5oifFXHHdt3S1jrv9np/CzzAFb1uKVph2GGy851TbMTrMEfVNPoNz0=
+X-Google-Smtp-Source: AK7set+yMtUwfJnUezoj1siuD4khSSeqSY4t45K8vxDk+2zyPdUA99HNtW02GHb5+PDoyOx8835cM428WnOYhAeHdZA=
+X-Received: by 2002:a65:4183:0:b0:503:913f:77b9 with SMTP id
+ a3-20020a654183000000b00503913f77b9mr1063888pgq.6.1678985464567; Thu, 16 Mar
+ 2023 09:51:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230316105808.1414003-1-peter.maydell@linaro.org>
- <87h6ul0x4m.fsf@redhat.com>
-In-Reply-To: <87h6ul0x4m.fsf@redhat.com>
+References: <20230315174331.2959-1-alex.bennee@linaro.org> <20230315174331.2959-10-alex.bennee@linaro.org>
+In-Reply-To: <20230315174331.2959-10-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Mar 2023 11:41:34 +0000
-Message-ID: <CAFEAcA_NiizU4RjRDNFU2==sHSAMZxYJm9dkAXw6M1AZGGyA0w@mail.gmail.com>
-Subject: Re: [PATCH for-8.0] docs/system/arm/cpu-features.rst: Fix formatting
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 16 Mar 2023 16:50:53 +0000
+Message-ID: <CAFEAcA_EMVs5gPm6MYKOCYyMXfeJ4whKg0Q8WUNYmVk7fY3+Fg@mail.gmail.com>
+Subject: Re: [PATCH v2 09/32] include/exec: fix kerneldoc definition
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@gmail.com>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	qemu-riscv@nongnu.org, Riku Voipio <riku.voipio@iki.fi>, 
+	Igor Mammedov <imammedo@redhat.com>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>, 
+	Thomas Huth <thuth@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, 
+	Hao Wu <wuhaotsh@google.com>, Cleber Rosa <crosa@redhat.com>, 
+	Daniel Henrique Barboza <danielhb413@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
+	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
+	Marcelo Tosatti <mtosatti@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
+	Alexandre Iooss <erdnaxe@crans.org>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Ilya Leoshkevich <iii@linux.ibm.com>, qemu-ppc@nongnu.org, 
+	Juan Quintela <quintela@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Stafford Horne <shorne@gmail.com>, 
+	Weiwei Li <liweiwei@iscas.ac.cn>, Sunil V L <sunilvl@ventanamicro.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Thomas Huth <huth@tuxfamily.org>, 
+	Vijai Kumar K <vijai@behindbytes.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+	David Gibson <david@gibson.dropbear.id.au>, Song Gao <gaosong@loongson.cn>, 
+	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>, 
+	Laurent Vivier <laurent@vivier.eu>, Qiuhao Li <Qiuhao.Li@outlook.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Alexander Bulekov <alxndr@bu.edu>, Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-block@nongnu.org, 
+	Yanan Wang <wangyanan55@huawei.com>, David Woodhouse <dwmw2@infradead.org>, qemu-s390x@nongnu.org, 
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, Bandan Das <bsd@redhat.com>, 
+	Alistair Francis <Alistair.Francis@wdc.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
+	Tyrone Ting <kfting@nuvoton.com>, Kevin Wolf <kwolf@redhat.com>, 
+	David Hildenbrand <david@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
+	Beniamino Galvani <b.galvani@gmail.com>, Paul Durrant <paul@xen.org>, Bin Meng <bin.meng@windriver.com>, 
+	Sunil Muthuswamy <sunilmut@microsoft.com>, Hanna Reitz <hreitz@redhat.com>, Peter Xu <peterx@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QId7HrXsjpU1
+Content-Transfer-Encoding: quoted-printable
+X-TUID: Y5OxoSbCxpOw
 
-On Thu, 16 Mar 2023 at 11:11, Cornelia Huck <cohuck@redhat.com> wrote:
+On Wed, 15 Mar 2023 at 17:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> On Thu, Mar 16 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The kerneldoc processor complains about the mismatched variable name.
+> Fix it.
 >
-> > The markup for the Arm CPU feature documentation is incorrect,
-> > and results in the HTML not rendering correctly -- the first
-> > line of each description is rendered in boldface as if it
-> > were part of the option name.
-> >
-> > Reformat to match the styling used in cpu-models-x86.rst.inc.
-> >
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1479
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  docs/system/arm/cpu-features.rst | 68 ++++++++++++++------------------
-> >  1 file changed, 30 insertions(+), 38 deletions(-)
->
-> (...)
->
-> > @@ -217,16 +210,15 @@ TCG VCPU Features
-> >  TCG VCPU features are CPU features that are specific to TCG.
-> >  Below is the list of TCG VCPU features and their descriptions.
-> >
-> > -  pauth-impdef             When ``FEAT_Pauth`` is enabled, either the
-> > -                           *impdef* (Implementation Defined) algorithm
-> > -                           is enabled or the *architected* QARMA algorithm
-> > -                           is enabled.  By default the impdef algorithm
-> > -                           is disabled, and QARMA is enabled.
-> > +``pauth-impdef``
-> > +  When ``FEAT_Pauth`` is enabled, either the *impdef* (Implementation
-> > +  Defined) algorithm is enabled or the *architected* QARMA algorithm
-> > +  is enabled.  By default the impdef algorithm is disabled, and QARMA
-> > +  is enabled.
-> >
-> > -                           The architected QARMA algorithm has good
-> > -                           cryptographic properties, but can be quite slow
-> > -                           to emulate.  The impdef algorithm used by QEMU
-> > -                           is non-cryptographic but significantly faster.
-> > +  The architected QARMA algorithm has good ryptographic properties,
->
-> You dropped a 'c' here ----------------------^
+> Message-Id: <20230310103123.2118519-11-alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Well spotted...
+Note that Laurent has picked up a different variant of this
+fix into the -trivial tree...
 
-thanks
 -- PMM

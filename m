@@ -1,108 +1,99 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp165473ejb;
-        Thu, 16 Mar 2023 03:58:34 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+lBLSHrFG0THCXEaoKucvkA3eXZTnBynGJrbCIeqzhrWAQLDg90ED3ZSkijySQ8f7ND47P
-X-Received: by 2002:a05:622a:1909:b0:3b6:2e9b:cf2b with SMTP id w9-20020a05622a190900b003b62e9bcf2bmr5688877qtc.14.1678964314353;
-        Thu, 16 Mar 2023 03:58:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678964314; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp176631ejb;
+        Thu, 16 Mar 2023 04:11:49 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8B2ixngdrEkpdVlEyC7w7YtbikWwIswD8vbYvJ+SIWkovPztoTYCHhMZMIILo3LpQxrT/4
+X-Received: by 2002:a05:622a:19a6:b0:3d7:dfb7:a7fa with SMTP id u38-20020a05622a19a600b003d7dfb7a7famr2988206qtc.21.1678965109444;
+        Thu, 16 Mar 2023 04:11:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1678965109; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q/gtXNbR42HnNFEvKoiqsX6DZPy63B9KDy1UfkPDLwjE2Um0D3QLh/mVB34+yU105x
-         VS5DTph4b68urTNiyLkcZRf1fAJ47StZg7pAGCqcXpNPg8WFEwoOc9jZ1y1L5WQnLXL6
-         lhbrysk16BxHUvqMIiE0JBi1/aHLQ1q/tKyvYzb63q3r481hJmYfmq5tIXA9yK4S1SLh
-         HhOsXQ8fJkNkYrvMKEefpCOK9pZ2mDwa6XlnJraas0D2gN8vPbZZgIm/StBaNvaTOaJt
-         rIRW/gSxDCVV0YxR1ft6uW/WQmvIHFSvVHSgpxeYSGRKh5MIMdRJdvnDEO1KEzEO71y7
-         NgvQ==
+        b=iYaeBK+K+UvzF2vI2a8W5niZZ08bHGYFx8ZFKakcqPY0sUMVlclWF0AODYEhcU58Ht
+         SePoY93Mh3tMZrONv2TS1ZClYqiqRhE2UUwebsMNq+AU80VOF3fubo0wC1AEnjnFu12I
+         pqBkqLa+ASK3ywqK4waq8McmT4YvQXlok5wvxXdpzp47mKKe1Qnge8VDMplvxr0GaY6G
+         QQnvzldhZN3jWFPXvswKSoNFIwTdvVPXfOfnlJAJpX5F/6SQnaL4X+XMcGt8XnJf8nmr
+         LDQ7XV9dQNL67PSpxxshSEkRBWqtH/MbmAyMQ+mhIBplWywujLexeTX4mzjRnWFiGjcz
+         21bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Pg1jZON4duZyKMHBrOX8HJjuZRqYcy7K1Mi69iN6ey8=;
-        b=SsgpO3pg3uuo1+kIq4GWsMYyYcXWzo3F7GXrbOSRjZq+zmf5hiOklzDSu+Qelrrkww
-         s+8os8kG0lrTb9AyPLiKqsCfzGXEcub3k3ihn6tMiiGGnQUdINNWSfLr9BcinAUwjq5k
-         HGW0cLdPiqpWxUqGBvK2cqdzaNjEKcWHRxE1oPWArSZQWSyXCpiV+aqkjkICkWbOlIM5
-         15OqI82fK0W2XE8tXxL8nY+cETtup3x8C5j+rpR9otvf3RNVz0fHn9KT4ST1jDcsEM6H
-         8mhTfRS7dTJcNSCIOjKZZkzKMNJcmFLTXzzkR/5J2DHXSYHIOOhnvOPgwg0uXG3CazlA
-         jLsw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:to:from
+         :dkim-signature;
+        bh=TLGVNfmXJ9FDHlv3EKjAeCupIl0pZdR+fA40ANpVWJg=;
+        b=Ebx1RLAmju+8BoDhS7owp0C/AHBddsIVJVhSLZRC+jubPpx3HCRtjCk9ryZ+3/rBYW
+         mKqJIalDJPddbaq5MrG0uIxaEsxpvtvp6SEFCq0gBvRDfMVyudrwQltKAdW+IOYqj/vD
+         CrbEFYXh+sSXwzie7AjWzPuIQc6B7th+Tzu1LHy280zedsYYe4fhGDZlOLzZyPiVhECP
+         i+r1nTQWLyWg4gk3Oxn9LF+Cb7GkG2beLOA/717pQRCrxTQ0LD2xGsWslqAYIzuDhKCl
+         S2Ab3lL3r2xkZUtBBwS4DRKchGDaHIjGZbSRqpxEy4Z6/X84azmI/tqSJLuxkKHUVQqv
+         7wUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qgwKpFjM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9znd3KR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c16-20020a05622a059000b003b85176c841si7088808qtb.527.2023.03.16.03.58.34
+        by mx.google.com with ESMTPS id 125-20020a370683000000b0071ab9598fd0si6231689qkg.330.2023.03.16.04.11.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Mar 2023 03:58:34 -0700 (PDT)
+        Thu, 16 Mar 2023 04:11:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qgwKpFjM;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9znd3KR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pclJI-0005oh-AU; Thu, 16 Mar 2023 06:58:16 -0400
+	id 1pclVz-00053z-9U; Thu, 16 Mar 2023 07:11:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pclJG-0005ih-NJ
- for qemu-arm@nongnu.org; Thu, 16 Mar 2023 06:58:14 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pclJE-0003vX-Iv
- for qemu-arm@nongnu.org; Thu, 16 Mar 2023 06:58:14 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- bh21-20020a05600c3d1500b003ed1ff06fb0so784379wmb.3
- for <qemu-arm@nongnu.org>; Thu, 16 Mar 2023 03:58:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1678964291;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=Pg1jZON4duZyKMHBrOX8HJjuZRqYcy7K1Mi69iN6ey8=;
- b=qgwKpFjMB6nDA380I9G5u5OhhkIF4tU2dV/MCsOoTVubrZV50UCsD0n8aoWS18AOr+
- xuNz2Y4GFKcuovDhvK37Ft2TYphZIHZQ6l2m0qaiRBK1Jl8XD6jXMcMhIXvlWrn1budr
- pkY1+yspqWW1+N+naQ5bEVff96dJVUor2kPfiKGNoRwipnwjtS2Z/1jB3Orgtn2ZBakG
- XyaipPV42dh1rMzONcgOCloq+YiSVg75Ew/ucRSw4XS4ByW5jVx5L0dXrisjAvB7qbd3
- oU6+1IZTSmMojyEPepQiIEViuyLH3P+FvaHLo2Hu4f+vSi2krmQoZiWl14lgsRfMjLFb
- yWqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678964291;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Pg1jZON4duZyKMHBrOX8HJjuZRqYcy7K1Mi69iN6ey8=;
- b=LL6kXviTh5tRvGxXwwJF/hQRcUyGnMvdLlOhTqIbv5qTpnke4y8KqrzEnGmpB68Nc4
- BDbaBjlsCV/K/2S67hTpYvlYm68r07zVwGNNYBPXtCWvYwu7wgN3x2Pw+ZzIqHjXgeWP
- QWSefeD0brez1EAkqiktWqm0gmN1bcBJPGgOdZY1yPWkLVMQBzhSaQhtokndS3CyYOm/
- w6O/EDIL04FNErsDwwQaDdZmBgnUtKeCMlkZot7n80vwiSbUajLqcgGLU6MUEJ89m1DK
- 75sYe+k8Up2MNyJNz/xo9mcGrhCDbw/xF8CY2SMiJYXVzIjG1dUox+QXMLjKZBQgP1kd
- YhOg==
-X-Gm-Message-State: AO0yUKWDlekkEQMbYCwIFykpam0KE2d0AsVBFfmckOzTwyvxaLsgp0Kw
- bjqNZjox4DOkmnhhX/ePDcGWSd2a5feeoUwuFew=
-X-Received: by 2002:a05:600c:1d1c:b0:3ed:3038:b9b5 with SMTP id
- l28-20020a05600c1d1c00b003ed3038b9b5mr6260364wms.4.1678964290673; 
- Thu, 16 Mar 2023 03:58:10 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- r6-20020a05600c458600b003ebff290a52sm4996764wmo.28.2023.03.16.03.58.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Mar 2023 03:58:10 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-8.0] docs/system/arm/cpu-features.rst: Fix formatting
-Date: Thu, 16 Mar 2023 10:58:08 +0000
-Message-Id: <20230316105808.1414003-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pclVu-00052l-Qn
+ for qemu-arm@nongnu.org; Thu, 16 Mar 2023 07:11:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pclVn-0004wf-Ii
+ for qemu-arm@nongnu.org; Thu, 16 Mar 2023 07:11:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1678965069;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TLGVNfmXJ9FDHlv3EKjAeCupIl0pZdR+fA40ANpVWJg=;
+ b=B9znd3KRLfw2c3KN7FGytq5i6wboPzIQ6rBNOEkTZGnnM6nouHMh68/U6WzxKN89oriFaq
+ 2fo8B5W9tyhx2W3h8rc8nMrPvcCLYXmGgztYNPtpntT8D9PrbjK1vmA57Zy+pGGfqcBdQJ
+ g1kY4RVCuQE08mBhK68RUHT8XIQz8cQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-577-NaPBLgXLPJK08RSTx5XkCg-1; Thu, 16 Mar 2023 07:11:07 -0400
+X-MC-Unique: NaPBLgXLPJK08RSTx5XkCg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 66408858F0E;
+ Thu, 16 Mar 2023 11:11:07 +0000 (UTC)
+Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E223202701E;
+ Thu, 16 Mar 2023 11:11:06 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH for-8.0] docs/system/arm/cpu-features.rst: Fix formatting
+In-Reply-To: <20230316105808.1414003-1-peter.maydell@linaro.org>
+Organization: Red Hat GmbH
+References: <20230316105808.1414003-1-peter.maydell@linaro.org>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Thu, 16 Mar 2023 12:11:05 +0100
+Message-ID: <87h6ul0x4m.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,112 +109,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DSUzMxcXnfKp
+X-TUID: XTO+tEskIhfS
 
-The markup for the Arm CPU feature documentation is incorrect,
-and results in the HTML not rendering correctly -- the first
-line of each description is rendered in boldface as if it
-were part of the option name.
+On Thu, Mar 16 2023, Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Reformat to match the styling used in cpu-models-x86.rst.inc.
+> The markup for the Arm CPU feature documentation is incorrect,
+> and results in the HTML not rendering correctly -- the first
+> line of each description is rendered in boldface as if it
+> were part of the option name.
+>
+> Reformat to match the styling used in cpu-models-x86.rst.inc.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1479
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  docs/system/arm/cpu-features.rst | 68 ++++++++++++++------------------
+>  1 file changed, 30 insertions(+), 38 deletions(-)
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1479
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- docs/system/arm/cpu-features.rst | 68 ++++++++++++++------------------
- 1 file changed, 30 insertions(+), 38 deletions(-)
+(...)
 
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index 00c444042ff..2b1a28422fb 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -177,39 +177,32 @@ are named with the prefix "kvm-".  KVM VCPU features may be probed,
- enabled, and disabled in the same way as other CPU features.  Below is
- the list of KVM VCPU features and their descriptions.
- 
--  kvm-no-adjvtime          By default kvm-no-adjvtime is disabled.  This
--                           means that by default the virtual time
--                           adjustment is enabled (vtime is not *not*
--                           adjusted).
-+``kvm-no-adjvtime``
-+  By default kvm-no-adjvtime is disabled.  This means that by default
-+  the virtual time adjustment is enabled (vtime is not *not* adjusted).
- 
--                           When virtual time adjustment is enabled each
--                           time the VM transitions back to running state
--                           the VCPU's virtual counter is updated to ensure
--                           stopped time is not counted.  This avoids time
--                           jumps surprising guest OSes and applications,
--                           as long as they use the virtual counter for
--                           timekeeping.  However it has the side effect of
--                           the virtual and physical counters diverging.
--                           All timekeeping based on the virtual counter
--                           will appear to lag behind any timekeeping that
--                           does not subtract VM stopped time.  The guest
--                           may resynchronize its virtual counter with
--                           other time sources as needed.
-+  When virtual time adjustment is enabled each time the VM transitions
-+  back to running state the VCPU's virtual counter is updated to
-+  ensure stopped time is not counted.  This avoids time jumps
-+  surprising guest OSes and applications, as long as they use the
-+  virtual counter for timekeeping.  However it has the side effect of
-+  the virtual and physical counters diverging.  All timekeeping based
-+  on the virtual counter will appear to lag behind any timekeeping
-+  that does not subtract VM stopped time.  The guest may resynchronize
-+  its virtual counter with other time sources as needed.
- 
--                           Enable kvm-no-adjvtime to disable virtual time
--                           adjustment, also restoring the legacy (pre-5.0)
--                           behavior.
-+  Enable kvm-no-adjvtime to disable virtual time adjustment, also
-+  restoring the legacy (pre-5.0) behavior.
- 
--  kvm-steal-time           Since v5.2, kvm-steal-time is enabled by
--                           default when KVM is enabled, the feature is
--                           supported, and the guest is 64-bit.
-+``kvm-steal-time``
-+  Since v5.2, kvm-steal-time is enabled by default when KVM is
-+  enabled, the feature is supported, and the guest is 64-bit.
- 
--                           When kvm-steal-time is enabled a 64-bit guest
--                           can account for time its CPUs were not running
--                           due to the host not scheduling the corresponding
--                           VCPU threads.  The accounting statistics may
--                           influence the guest scheduler behavior and/or be
--                           exposed to the guest userspace.
-+  When kvm-steal-time is enabled a 64-bit guest can account for time
-+  its CPUs were not running due to the host not scheduling the
-+  corresponding VCPU threads.  The accounting statistics may influence
-+  the guest scheduler behavior and/or be exposed to the guest
-+  userspace.
- 
- TCG VCPU Features
- =================
-@@ -217,16 +210,15 @@ TCG VCPU Features
- TCG VCPU features are CPU features that are specific to TCG.
- Below is the list of TCG VCPU features and their descriptions.
- 
--  pauth-impdef             When ``FEAT_Pauth`` is enabled, either the
--                           *impdef* (Implementation Defined) algorithm
--                           is enabled or the *architected* QARMA algorithm
--                           is enabled.  By default the impdef algorithm
--                           is disabled, and QARMA is enabled.
-+``pauth-impdef``
-+  When ``FEAT_Pauth`` is enabled, either the *impdef* (Implementation
-+  Defined) algorithm is enabled or the *architected* QARMA algorithm
-+  is enabled.  By default the impdef algorithm is disabled, and QARMA
-+  is enabled.
- 
--                           The architected QARMA algorithm has good
--                           cryptographic properties, but can be quite slow
--                           to emulate.  The impdef algorithm used by QEMU
--                           is non-cryptographic but significantly faster.
-+  The architected QARMA algorithm has good ryptographic properties,
-+  but can be quite slow to emulate.  The impdef algorithm used by QEMU
-+  is non-cryptographic but significantly faster.
- 
- SVE CPU Properties
- ==================
--- 
-2.34.1
+> @@ -217,16 +210,15 @@ TCG VCPU Features
+>  TCG VCPU features are CPU features that are specific to TCG.
+>  Below is the list of TCG VCPU features and their descriptions.
+>  
+> -  pauth-impdef             When ``FEAT_Pauth`` is enabled, either the
+> -                           *impdef* (Implementation Defined) algorithm
+> -                           is enabled or the *architected* QARMA algorithm
+> -                           is enabled.  By default the impdef algorithm
+> -                           is disabled, and QARMA is enabled.
+> +``pauth-impdef``
+> +  When ``FEAT_Pauth`` is enabled, either the *impdef* (Implementation
+> +  Defined) algorithm is enabled or the *architected* QARMA algorithm
+> +  is enabled.  By default the impdef algorithm is disabled, and QARMA
+> +  is enabled.
+>  
+> -                           The architected QARMA algorithm has good
+> -                           cryptographic properties, but can be quite slow
+> -                           to emulate.  The impdef algorithm used by QEMU
+> -                           is non-cryptographic but significantly faster.
+> +  The architected QARMA algorithm has good ryptographic properties,
+
+You dropped a 'c' here ----------------------^
+
+> +  but can be quite slow to emulate.  The impdef algorithm used by QEMU
+> +  is non-cryptographic but significantly faster.
+>  
+>  SVE CPU Properties
+>  ==================
 

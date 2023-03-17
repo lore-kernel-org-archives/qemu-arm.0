@@ -1,126 +1,168 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp455109ejb;
-        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
-X-Received: by 2002:a05:6a20:49af:b0:d6:d880:dcc6 with SMTP id fs47-20020a056a2049af00b000d6d880dcc6mr44991pzb.19.1678985465095;
-        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1678985465; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp288812ejb;
+        Thu, 16 Mar 2023 17:12:46 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+JSvq5k+XzdUZF+hEee59iew0BoLhJ6nkw5Sen6b8ETOEuE6RMhdGJyzh6qpeMYAEaoH29
+X-Received: by 2002:ac8:7c50:0:b0:3bf:d4c3:365d with SMTP id o16-20020ac87c50000000b003bfd4c3365dmr9435887qtv.14.1679011966256;
+        Thu, 16 Mar 2023 17:12:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679011966; cv=none;
         d=google.com; s=arc-20160816;
-        b=mbBlK6n4fbss/zJ/SXiYTlrRHHIqMCq2sLRBec7xeyD2pMsmm/Q+vySxGSVLW9wfNw
-         ytIVe7Ge2OKrSaAqP+52WVVvQ67Te1I4s3ZetqcUznD2bNx5cTcI2F7zNToXZGSE+b/h
-         9abRUJCaMBEZUcPPq79CtHsEHFHhdXeM0UoMa+OJGoipH2JfVVrmJbu3tJnr9NJlnxoa
-         wUTZQQsBINdBWOM6Hr3NGS/xoIjb3SIPxxgx6a17QX9WMB7RcUEAbTm0I50tWQQrnKj3
-         Q2asxMLxVH0Cv2Iz1bWtaUY98FdouIHvhcebrB0LKCc0LBdJNYhSQCnRdI75wIlayVBs
-         4xuw==
+        b=bvOFEUY7DtxCS68gl2fRuhfm5sRQ9u0UM4uqyXhQD0A6k5fO2Q6Q+RuGEdqwoPJytE
+         RLgW2SWzu+vaAR0b5VSMyJqKi91oSwA+YHhyTdCJ1XF/QcVe08hwso7veRU27dOWmCHG
+         B3h58shoNyY1l0NL/7gj9VPBW89jC0Sp4jARLTzZTg7rucHq3gN4viZn7yVNT8LscK4e
+         SxlXaSY8D87J8iHsEP0QUyiQwkMki6KM4PfnB93KzDyqXsruMyvSXoDSIyZQZgCJ+nio
+         v/2A4rYsnzKZdl1QeEURd5M6y6ImbAnaN92Nr+SDE+cLNTYdn8R+acMDtaEowmK2G3TO
+         Lz8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
-        b=axPDIR9D13Piz+lN/BgvBCit/Rsj9+jffC2Norb5hG0P/eM1883kGU1fFdOabD31vy
-         7RKJtG99ne+xn/4+XYngQoGcmqr4/lK+0PGikTk7YaAmDBl7aWxueK0YuA48gvUzNqOu
-         QPjAdPlxGrObnSspPTNtmCv2KqgK7TaD4KIAp7erbXmu3kUGKHxYyoFm6h66oX9937ax
-         4OyFPZ5UwVqxQW5pIAXvu2nX5eK6+ToXe11+/l34Ganfz9a1DvEnBz9qQATtEZ8WzS0H
-         jygWHvL8guU2MP7k3cwV6meAFN2WUddSO7F+1w1rCZb5halrI9DPWXjqt/axZwFtUH1O
-         9DIw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Lnwa9qDSsWLgPjNOqOTLvZ+BcqJAJ0FHBtMv7PwqLns=;
+        b=cczYUHhSjVuDjSneSqnTlPwiPQiYi+StzITJv3EBhIo+HnntygZP6tp6ZdhJjaGtA3
+         I6zaGK5mv2frlX2MKA3s2XKdTvBr3uZKwNquo7daDso/M3TEStzvYk/kZzhlM1Fcv7Xt
+         TjzsgCJj/TRNsfcJdTaCrPunMbGd5SrqRK9o66SkIlDzAuoH8HzNjxP+qhTUtQaurT3a
+         H75S9eRssS7s2K7PVY6ITGNjP+rRovnUqtiTr+x2I+Lx1Rj11us1GyHMvfzxNTNDZksk
+         kUntAq7PjLfF82SLMSq6E0aHzaKOVvFpcSZvi3AsmvBuYBHHrtWxfnk8tJ3GRBPjcSFi
+         S/bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rV2RPyNV;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l1-20020a654481000000b005030ad58e19sor3036920pgq.61.2023.03.16.09.51.04
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CE0bGJ5e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z9-20020ac87f89000000b003b81d85ee94si435016qtj.689.2023.03.16.17.12.46
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 16 Mar 2023 09:51:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 16 Mar 2023 17:12:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rV2RPyNV;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=CE0bGJ5e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pcxhq-0005A3-N6; Thu, 16 Mar 2023 20:12:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pcxhp-00059p-S8; Thu, 16 Mar 2023 20:12:25 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1pcxho-0003vd-1O; Thu, 16 Mar 2023 20:12:25 -0400
+Received: by mail-lf1-x136.google.com with SMTP id b10so3311852lfb.9;
+ Thu, 16 Mar 2023 17:12:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1678985464;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
-        b=rV2RPyNV7i7XCEgyngu2kJfmH7H5NqrndfnfhE49dCw6eCf5wgkaWB7FL53P1xto5g
-         C7hHhuXvlhE9/3HnJHgCB8HRiOoLjlmGwiqllTjFUhkOYeMJwTrq77w4aAqkpHK1iFG0
-         OZvmaJOWw467AWUs/CeDr5be5c+F3DUw+eL09eXkjZgI32YGx0vxvljstwfr1vMEaoBl
-         qcUvBQA0CIolEZPqvBrmgNEop2iOe1fQOgRT7WC4WIAOyJ2S6k5I/37mdHrXnJZXPljX
-         AvKX3jzTpR9Rmu0xCOQHE2k5QT1uFG7GWGD5GoXxq755If4B+/MkPNKoyTXsIB9sPX/y
-         PYzw==
+ d=gmail.com; s=20210112; t=1679011939;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Lnwa9qDSsWLgPjNOqOTLvZ+BcqJAJ0FHBtMv7PwqLns=;
+ b=CE0bGJ5eYrDRiqgwrVFkES2e1UqZyXeBBS1mkdoU12JWa2XisvDknBP3ujj2PA415f
+ CdPniyMZu/u/IBP0dchtZuUsm9j+ZvIYaALOHAnEAU6tvAu+0nipW6YX/QAQht9ePpMo
+ rh+IZ8vGiid9hIZSoTy0mUD7z0Lbn9LgKugRuYmO9+gsXUXfdNZryL8I3FU5JGq6O2yz
+ VExtGBTlPvKFT9PD7BvXEDKJL+4SEIp22Y3YG/x5EmLRHdGo+DQx9RAZ0WQVS0CXgIiO
+ ncvjQX/lgd1jLUzQZjClvmULHNbL7lZeXu3w8adVXb1pNbLfQm2yMvnv/OB2lJTSoJO/
+ kGMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678985464;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7AgjnkZ2ngDrnmfTbD/UWVVgINk3vM6fF6Eu3gWYAfQ=;
-        b=BtOZGpJQ4/6gysXHdT1OS/LMw6VyDQ7A+WocQmiOyfyCmEwgRAl4bQYJjlZ8pjPxm6
-         1TcGUC15wpiA+noHZtgm5l4dVCFIj8QHop3luAr3HmxNRZScXX9t1NhQry2LLimPB8zv
-         pjrL/q6Xw52Y2rKwWn5mkfsncYO7v6NBSAlPaSiFJ5D+JERI55Kqo4hXZuJGYy8lmSzZ
-         T8ChuT4Hi2USnBr9JnYjmrgc2plnH+RvneWGNYrtrXmqfjlmburWGhgL7UTVQc8PgFzE
-         BaZObA3qmH6vN9ikVir3IC+vxAU4X5S9BCJN6mGqqzVDyBSzLK4psPUuAsTNRy6d3e7/
-         B9gg==
-X-Gm-Message-State: AO0yUKWRrQFpyXjGP0rihD6vHDAWof8PXAc/vpIGpuekbGQusX4n7ZqB
-	X5oifFXHHdt3S1jrv9np/CzzAFb1uKVph2GGy851TbMTrMEfVNPoNz0=
-X-Google-Smtp-Source: AK7set+yMtUwfJnUezoj1siuD4khSSeqSY4t45K8vxDk+2zyPdUA99HNtW02GHb5+PDoyOx8835cM428WnOYhAeHdZA=
-X-Received: by 2002:a65:4183:0:b0:503:913f:77b9 with SMTP id
- a3-20020a654183000000b00503913f77b9mr1063888pgq.6.1678985464567; Thu, 16 Mar
- 2023 09:51:04 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1679011939;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Lnwa9qDSsWLgPjNOqOTLvZ+BcqJAJ0FHBtMv7PwqLns=;
+ b=BUS+3LRSO52+A8lbsaCPZ5WZTWo2/+OTC6FsbWKscxP2uYwIo7LX49QvIZEAQxvuPE
+ uWNrxz7RiT7Jti24EoOZoE1AwEkaoTOhkQ7uiXvMlkhqPy80ZI096HA7G1TsaanniJiA
+ 2U7ddXS7XBcNTPCRTAk0Zac6sVn7QtmQzPuBlv2SwFf/stes+395xBZewKjHHqBL2JMK
+ 2LgMbQBJCEFTBxmqYMxkXZOVmub3QJw5PoB8i0yWG3847R46OkDHiyZ8UjESmlugaR4J
+ el8t7b19XvGs4xmBV7axAj64mP5MsLvsw9OxdNLxe2CwIH0r1SGR7V9a/n5RPcwB8qkV
+ TUwQ==
+X-Gm-Message-State: AO0yUKWCbNGt0bUBqXGhsjFu3pq3bmY5ttbugd4lHKRSMtAvqQ23aHhV
+ FhBgnzhkUKUKg/2SlIE/PAY=
+X-Received: by 2002:ac2:488f:0:b0:4d5:95c9:4eb9 with SMTP id
+ x15-20020ac2488f000000b004d595c94eb9mr3433039lfc.44.1679011939572; 
+ Thu, 16 Mar 2023 17:12:19 -0700 (PDT)
+Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
+ [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
+ y17-20020ac24211000000b004ddaea30ba6sm97776lfh.235.2023.03.16.17.12.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Mar 2023 17:12:19 -0700 (PDT)
+From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v2 0/4] Basic Allwinner WDT emulation
+Date: Fri, 17 Mar 2023 01:11:59 +0100
+Message-Id: <20230317001203.18425-1-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20230315174331.2959-1-alex.bennee@linaro.org> <20230315174331.2959-10-alex.bennee@linaro.org>
-In-Reply-To: <20230315174331.2959-10-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Mar 2023 16:50:53 +0000
-Message-ID: <CAFEAcA_EMVs5gPm6MYKOCYyMXfeJ4whKg0Q8WUNYmVk7fY3+Fg@mail.gmail.com>
-Subject: Re: [PATCH v2 09/32] include/exec: fix kerneldoc definition
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Akihiko Odaki <akihiko.odaki@gmail.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	qemu-riscv@nongnu.org, Riku Voipio <riku.voipio@iki.fi>, 
-	Igor Mammedov <imammedo@redhat.com>, Xiao Guangrong <xiaoguangrong.eric@gmail.com>, 
-	Thomas Huth <thuth@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, 
-	Hao Wu <wuhaotsh@google.com>, Cleber Rosa <crosa@redhat.com>, 
-	Daniel Henrique Barboza <danielhb413@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
-	Marcelo Tosatti <mtosatti@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
-	Alexandre Iooss <erdnaxe@crans.org>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Ilya Leoshkevich <iii@linux.ibm.com>, qemu-ppc@nongnu.org, 
-	Juan Quintela <quintela@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, Stafford Horne <shorne@gmail.com>, 
-	Weiwei Li <liweiwei@iscas.ac.cn>, Sunil V L <sunilvl@ventanamicro.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Thomas Huth <huth@tuxfamily.org>, 
-	Vijai Kumar K <vijai@behindbytes.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
-	David Gibson <david@gibson.dropbear.id.au>, Song Gao <gaosong@loongson.cn>, 
-	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>, 
-	Laurent Vivier <laurent@vivier.eu>, Qiuhao Li <Qiuhao.Li@outlook.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Xiaojuan Yang <yangxiaojuan@loongson.cn>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
-	Alexander Bulekov <alxndr@bu.edu>, Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-block@nongnu.org, 
-	Yanan Wang <wangyanan55@huawei.com>, David Woodhouse <dwmw2@infradead.org>, qemu-s390x@nongnu.org, 
-	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, Bandan Das <bsd@redhat.com>, 
-	Alistair Francis <Alistair.Francis@wdc.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
-	Tyrone Ting <kfting@nuvoton.com>, Kevin Wolf <kwolf@redhat.com>, 
-	David Hildenbrand <david@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
-	Beniamino Galvani <b.galvani@gmail.com>, Paul Durrant <paul@xen.org>, Bin Meng <bin.meng@windriver.com>, 
-	Sunil Muthuswamy <sunilmut@microsoft.com>, Hanna Reitz <hreitz@redhat.com>, Peter Xu <peterx@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: Y5OxoSbCxpOw
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IN/hS8/CdV1a
 
-On Wed, 15 Mar 2023 at 17:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> The kerneldoc processor complains about the mismatched variable name.
-> Fix it.
->
-> Message-Id: <20230310103123.2118519-11-alex.bennee@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+This patch set introduces basic emulation of Allwinner WDT.
+Since WDT in both A10 and H3 is part of Timer module, the WDT
+functionality is added as an overlay in the memory map.
 
-Note that Laurent has picked up a different variant of this
-fix into the -trivial tree...
+The focus was to enable reboot functionality, so WDT interrupt handling
+is not covered in this patch set.
 
--- PMM
+With these patches the `reboot` command can be used for both Cubieboard
+and Orangepi-PC in order to restart the system.
+
+Also, Cubieboard avocado tests have been improved to include reboot
+steps as well.
+
+v2:
+- Cleaned up WDT implementation (changes only in patch 01/04)
+- Removed unnecessary checks - instead of changing enum to start from 1,
+  removed if (!c->regmap[offset]) since it was conflicting enum values
+- Reorganized comments
+
+Strahinja Jankovic (4):
+  hw/watchdog: Allwinner WDT emulation for system reset
+  hw/arm: Add WDT to Allwinner-A10 and Cubieboard
+  hw/arm: Add WDT to Allwinner-H3 and Orangepi-PC
+  tests/avocado: Add reboot tests to Cubieboard
+
+ docs/system/arm/cubieboard.rst      |   1 +
+ docs/system/arm/orangepi.rst        |   1 +
+ hw/arm/Kconfig                      |   2 +
+ hw/arm/allwinner-a10.c              |   7 +
+ hw/arm/allwinner-h3.c               |   8 +
+ hw/watchdog/Kconfig                 |   4 +
+ hw/watchdog/allwinner-wdt.c         | 416 ++++++++++++++++++++++++++++
+ hw/watchdog/meson.build             |   1 +
+ hw/watchdog/trace-events            |   7 +
+ include/hw/arm/allwinner-a10.h      |   2 +
+ include/hw/arm/allwinner-h3.h       |   5 +-
+ include/hw/watchdog/allwinner-wdt.h | 123 ++++++++
+ tests/avocado/boot_linux_console.py |  15 +-
+ 13 files changed, 588 insertions(+), 4 deletions(-)
+ create mode 100644 hw/watchdog/allwinner-wdt.c
+ create mode 100644 include/hw/watchdog/allwinner-wdt.h
+
+-- 
+2.30.2
+

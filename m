@@ -1,216 +1,159 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp290176ejb;
-        Thu, 16 Mar 2023 17:14:34 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9k29TUhGwW4fwbeu3XVKXQlGaU/sj3FtXzIOXrlcvDOrBGDu7stv68ctmeJ2mlUpLedfZe
-X-Received: by 2002:ac8:5f07:0:b0:3bf:c575:3f42 with SMTP id x7-20020ac85f07000000b003bfc5753f42mr11170918qta.33.1679012074584;
-        Thu, 16 Mar 2023 17:14:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679012074; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp584835ejb;
+        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+aho+d1OOanS/Bll4tSgrXS6A+D85SkJl/YUyS/36hGlbeE8eC3Fszb6hYkpg1jkFED1/5
+X-Received: by 2002:ac8:5f53:0:b0:3bf:da97:87dd with SMTP id y19-20020ac85f53000000b003bfda9787ddmr11772829qta.38.1679037879426;
+        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679037879; cv=none;
         d=google.com; s=arc-20160816;
-        b=dR3yzGS6l31JQU9GZqHpZn1sX0vpQuBWuo3ojXwo32CqUSiHmUvb/OUbwR0GEQcoe2
-         e81pNSNgDKrRKWpiWX66eWbA4Mh53L4+kmoribddt5x3BDMzV7EXuxrK2fWP1ZJRW5OU
-         vVg04/d4OlruG3hWF3j7vBsLXvrvFnFb9ER15Uac7WQXnXivSNSdx+FDAlRSqzrj/r2S
-         R1UML6FXnHW2Aa+/95o+KEJu7u6Xh/s/uunf4XSUQZT2IdlOeX+Uhu5t3IRoAwAAOioY
-         J483puVMUvy5WpcBICHgsZrluClpCeqhwGsFBFp/PIrKCR6jwLoC0A5qGnzU4wyrxsRD
-         GYYw==
+        b=emXrKxQvkt2jj5GEUHbZwFZCS6osLDhkoC+LfewUE4zj4qii2BUmDmhZwaFqtfejxh
+         EExT8AkaWOQ5DzWaiRe3lN+XdC75UardFZRZWLQUUqMdaUt/QsoZwO2OEUKCD19qS4Op
+         BToZhkpemsYjRnKNFzlIXl96oSc2QfuZk1kmMl8AuMYfQNaV4XRbKSi39AvkVmWawdET
+         v/va9tny3BhvbEkyyR4yW6/CmZKUC5mwsExShcmOdS0fz2mjndcVBNP8uNQzqx8Hqtpk
+         7UY40VJgjENuXUa7bLaySCRX5m6oZnqd9fXKBVcgfFpHicH/A05C2P+WzqLO+RRP5nJW
+         IgEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
-        b=XQeFripC8I1y9H0LRzXjwcVQyyIXC14Olf9smRQHuMAVJSNFq5HBNeI2ttO8D3GKmz
-         7okRqY7DjxM52/O9rSwuTsty8Rm441LQkQOiR+JVWM8X+eYk6yeTftk9tBnx1YrSBg6Z
-         Bv9UiXqx8jqIbZ/thDBdb20s5ktCYFKIESYtOThomVStCqbzdw5vTjUksmdUZF+bESry
-         A9ZzkdsUYmspU+v6Vblaocbdg2WcfvCo5X7b5Npe8EW7JfiIOoQIWYNkH2Rdwhq97hvA
-         8qoG2O3j4Imf/bMIjig3Vi4CSULPZTNFup1WJtyC/lJUcQXCd0A7eSXH6h3LXF36um+p
-         jIzA==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
+        b=pmEwAYpVpf0U+Ag524pTLHmNHfi9kiOoeMTlUE0b5FAlh79FSCLNep34F1jdbiDkc+
+         jXezowPjI/Si1qc7b1hGlCv+NqSM3B2F1GEakawPkb2fnILTt49IX57eR54udfmJdH1k
+         9smIFjSmoO4tup1PRbl5m7c2eZpbTgJFJWhYJxu/sjj9DN7BIA4MxCpHxcnn2ZdC5QDS
+         LRdyLCF15YNYHoTs6fNM9BPj3AjdgvPoDf+w+JTaX5Gxmn90bFF7LZO+4pHT9aLQLHby
+         aGetZc2nwk40HaD1/m2JEFNBygrctc15ZfiNH5HPh3PcW+VbR9jVSVBkvmRq7DXY87C9
+         SbOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WNYFb6NJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9-20020a05620a284900b00742c45460dcsi644414qkp.460.2023.03.16.17.14.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gwcMA/IU";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 15-20020a370c0f000000b007459b3cb681si1110858qkm.98.2023.03.17.00.24.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Mar 2023 17:14:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WNYFb6NJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pcxir-0005Yc-3j; Thu, 16 Mar 2023 20:13:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pcxip-0005XD-80; Thu, 16 Mar 2023 20:13:27 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pcxin-0004PX-Bx; Thu, 16 Mar 2023 20:13:26 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id o8so4567854lfo.0;
- Thu, 16 Mar 2023 17:13:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679012003;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
- b=WNYFb6NJ27vYiKs4ZbCIVgbQRT9TR0/xH7sli9sDXrodzcj/qWqsDLWcJXgWP9UUfv
- vlzRT/pvhmnFYjopcAz7u6URuMKjqthOoCx+NTnh5zPf+A7ixJl+gISr5B2hzULoPBnj
- sGA3Nma/C+ZSh3iNF+n7At89653ueYsnANOXJhwum/Uon4nUEmMByFnxv6gsP6AvZMp2
- GdkyS1SaI+aS1FeG/zOr3vrdvNvX+RuPYbmUdKGHE+uYIuZTXca7RAHz/cLIDQM/XWwL
- j5KQuwcMKXhz5YB0dpMEcXw690ntcZBq8A0xVTnD/2q6djVrs9Ss6REdmNCjObZv7wOu
- NOSw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gwcMA/IU";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1679037879;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
+	b=gwcMA/IUdv51HkstsR1bt7ANKx8zXjulE/i4IIPuhB20Yk4+lPmXzjBzo4ewkmsodyip1a
+	oRwKJo3RozYTXsUHuNZjTdQ9TzhvSSPtssUpU0OmDmiM+y/FJFc/tZAGRwaWXfPrx0wH/W
+	i4I00SRZtC3jGaGFptrg6AkxWRE/TxU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-396-UVHJgaWYOTaDuBhihruZKQ-1; Fri, 17 Mar 2023 03:24:35 -0400
+X-MC-Unique: UVHJgaWYOTaDuBhihruZKQ-1
+Received: by mail-wm1-f69.google.com with SMTP id j36-20020a05600c1c2400b003ed245a452fso1885778wms.3
+        for <alex.bennee@linaro.org>; Fri, 17 Mar 2023 00:24:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679012003;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
- b=IjP8Bbm8+EkRDykI3jODyTgFZY8eOEc3qJ1Gv0c0tnE+spZ+BMHELK99ldWgM/lAjs
- HfGdZlSxOCtztPXFHlc2hD0cHGnoPLPQ7qzYwL/N/LBmgYhEdsGAcYUKRyTMHQrVE82W
- L/tQDjBWTB+yUHY0XQ0ay0/9dQuVofFg5b/VTR+ay99PvInh/kubRvuhOugyxn2Vn7Dd
- oaRfdEvMdtrbbUpUTMQj64IyOoXpHb0F9+/xbYdWSCOIM51qWuUY5sxeyDt2WZvCMXQa
- 55Y03PSqsqtv75i5wTQ/VqqdMekQGWv2Kn9iuD/IF4pouorSHoSfPxg+03W8Xj2nwGE2
- JG2w==
-X-Gm-Message-State: AO0yUKULDUvqHV05OW4982R7AHStAldnpe/ntbLkGvRYH3cFj9cE73P6
- cWU/0bJ4ChKGi8BdoJVqBP8kJMRnQmvwFvlwU8w=
-X-Received: by 2002:ac2:44cb:0:b0:4e8:5f9d:13d5 with SMTP id
- d11-20020ac244cb000000b004e85f9d13d5mr2565868lfm.43.1679012002676; 
- Thu, 16 Mar 2023 17:13:22 -0700 (PDT)
-Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
- [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- y17-20020ac24211000000b004ddaea30ba6sm97776lfh.235.2023.03.16.17.13.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Mar 2023 17:13:22 -0700 (PDT)
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v2 2/4] hw/arm: Add WDT to Allwinner-A10 and Cubieboard
-Date: Fri, 17 Mar 2023 01:12:03 +0100
-Message-Id: <20230317001203.18425-3-strahinja.p.jankovic@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230317001203.18425-1-strahinja.p.jankovic@gmail.com>
-References: <20230317001203.18425-1-strahinja.p.jankovic@gmail.com>
+        d=1e100.net; s=20210112; t=1679037874;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
+        b=0Ki4iosQo/Cwo40Aua4lfaGdhpyRCcYbdcaLSQnf43Q2rOBac92XvLfTxufNoHYylS
+         4Q6OBSh/w7TW8uqox8rlBIhiGRVt7/WZ7mMWdsNCJW9vKxdWq4NdSawulOahcXW89smU
+         nlX/verebffMb1c4CnqMKortHIG7v+i7VYD9EBMIY/nARgTU7cUMoHT2If63pm8y1AH8
+         F7mByMj5/qM+i2ffBBmuiPiapGQlts6zYrb1JLw36QiX6nIlo5KN8/BVY3IT1zN3MdCk
+         i27kKrvBET8L6yv8U0wF7H1+8F/fmi4Fgvaj5rz166EdaCODg4BtCwKvkHzuVzwFrMSn
+         j3eA==
+X-Gm-Message-State: AO0yUKUqzzJQJ4T6OexLCUIoVxvziri20jTTYjIdGvTwLSL52T7TXsgE
+	JX1Uhy71mfGtciZu4o+qjVcMGZbSVwfJrFTMfXrLbWAM2fuExCGUf9YxCgzht1CU2luVc2Yb6wW
+	KI8J8cRy/44sRK5BQ+RaJyYcaXqfjhUGSl+SRe1kuSTcTdjcaspnNgMl/aSt8BltnHDghUQVpDZ
+	s=
+X-Received: by 2002:a5d:4d06:0:b0:2c7:daa:1c56 with SMTP id z6-20020a5d4d06000000b002c70daa1c56mr5851993wrt.4.1679037874844;
+        Fri, 17 Mar 2023 00:24:34 -0700 (PDT)
+X-Received: by 2002:a5d:4d06:0:b0:2c7:daa:1c56 with SMTP id z6-20020a5d4d06000000b002c70daa1c56mr5851904wrt.4.1679037874240;
+        Fri, 17 Mar 2023 00:24:34 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.3] (ip-109-43-176-33.web.vodafone.de. [109.43.176.33])
+        by smtp.gmail.com with ESMTPSA id y1-20020a5d4ac1000000b002ceaeb24c0asm1262440wrs.58.2023.03.17.00.24.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Mar 2023 00:24:32 -0700 (PDT)
+Message-ID: <95ef3696-f934-376e-ee88-687477a32242@redhat.com>
+Date: Fri, 17 Mar 2023 08:24:28 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v2 05/32] gitlab: update centos-8-stream job
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-riscv@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, Hao Wu <wuhaotsh@google.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-arm@nongnu.org, Marcelo Tosatti <mtosatti@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Alexandre Iooss <erdnaxe@crans.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-ppc@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Darren Kenny <darren.kenny@oracle.com>, kvm@vger.kernel.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Sunil V L <sunilvl@ventanamicro.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>, Vijai Kumar K <vijai@behindbytes.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Song Gao <gaosong@loongson.cn>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Greg Kurz <groug@kaod.org>,
+ Laurent Vivier <laurent@vivier.eu>, Qiuhao Li <Qiuhao.Li@outlook.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Alexander Bulekov <alxndr@bu.edu>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-block@nongnu.org,
+ Yanan Wang <wangyanan55@huawei.com>, David Woodhouse <dwmw2@infradead.org>,
+ qemu-s390x@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Bandan Das <bsd@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Kevin Wolf <kwolf@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Paul Durrant <paul@xen.org>,
+ Bin Meng <bin.meng@windriver.com>, Sunil Muthuswamy
+ <sunilmut@microsoft.com>, Hanna Reitz <hreitz@redhat.com>,
+ Peter Xu <peterx@redhat.com>
+References: <20230315174331.2959-1-alex.bennee@linaro.org>
+ <20230315174331.2959-6-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230315174331.2959-6-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q4ZerfU0RPiv
+X-TUID: WTmwCOR9XIEr
 
-This patch adds WDT to Allwinner-A10 and Cubieboard.
-WDT is added as an overlay to the Timer module memory map.
+On 15/03/2023 18.43, Alex Bennée wrote:
+> A couple of clean-ups here:
+> 
+>    - inherit from the custom runners job for artefacts
 
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+I know, it's a difference between BE and AE, but in case you want to be 
+consistent with the yml: s/artefacts/artifacts/
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- docs/system/arm/cubieboard.rst | 1 +
- hw/arm/Kconfig                 | 1 +
- hw/arm/allwinner-a10.c         | 7 +++++++
- include/hw/arm/allwinner-a10.h | 2 ++
- 4 files changed, 11 insertions(+)
+>    - call check-avocado directly
+>    - add some comments to the top about setup
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   .../custom-runners/centos-stream-8-x86_64.yml  | 18 ++++++------------
+>   1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
-index 8d485f5435..58c4a2d3ea 100644
---- a/docs/system/arm/cubieboard.rst
-+++ b/docs/system/arm/cubieboard.rst
-@@ -15,3 +15,4 @@ Emulated devices:
- - USB controller
- - SATA controller
- - TWI (I2C) controller
-+- Watchdog timer
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b5aed4aff5..ec15248536 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -325,6 +325,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_PIC
-     select ALLWINNER_A10_CCM
-     select ALLWINNER_A10_DRAMC
-+    select ALLWINNER_WDT
-     select ALLWINNER_EMAC
-     select ALLWINNER_I2C
-     select AXP209_PMU
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index b7ca795c71..b0ea3f7f66 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -38,6 +38,7 @@
- #define AW_A10_EHCI_BASE        0x01c14000
- #define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
-+#define AW_A10_WDT_BASE         0x01c20c90
- #define AW_A10_RTC_BASE         0x01c20d00
- #define AW_A10_I2C0_BASE        0x01c2ac00
- 
-@@ -92,6 +93,8 @@ static void aw_a10_init(Object *obj)
-     object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN4I);
- 
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_AW_RTC_SUN4I);
-+
-+    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
- }
- 
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -203,6 +206,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, AW_A10_I2C0_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0, qdev_get_gpio_in(dev, 7));
-+
-+    /* WDT */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
- }
- 
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 095afb225d..cd1465c613 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -13,6 +13,7 @@
- #include "hw/misc/allwinner-a10-ccm.h"
- #include "hw/misc/allwinner-a10-dramc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/watchdog/allwinner-wdt.h"
- #include "sysemu/block-backend.h"
- 
- #include "target/arm/cpu.h"
-@@ -41,6 +42,7 @@ struct AwA10State {
-     AwSdHostState mmc0;
-     AWI2CState i2c0;
-     AwRtcState rtc;
-+    AwWdtState wdt;
-     MemoryRegion sram_a;
-     EHCISysBusState ehci[AW_A10_NUM_USB];
-     OHCISysBusState ohci[AW_A10_NUM_USB];
--- 
-2.30.2
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

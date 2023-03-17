@@ -1,116 +1,106 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp694271ejb;
-        Fri, 17 Mar 2023 02:52:50 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+he8nik6F5GlAoin0FGEzQf8QSrvZsUjUnNJDWikW8fU49DViAxUwAfMHA0vzMAiKnlY4A
-X-Received: by 2002:a05:6214:2a8a:b0:5b5:a816:6b27 with SMTP id jr10-20020a0562142a8a00b005b5a8166b27mr8420503qvb.8.1679046770189;
-        Fri, 17 Mar 2023 02:52:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679046770; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp878505ejb;
+        Fri, 17 Mar 2023 06:46:58 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+I/O+hHObsW3PUF2vREBBnf/bXkcjU4vQQ0DDLIqtlMUINbVH7UT0i3bgG0wJuTryiBBgK
+X-Received: by 2002:ac2:5de4:0:b0:4e8:49c7:9956 with SMTP id z4-20020ac25de4000000b004e849c79956mr4594843lfq.51.1679060818083;
+        Fri, 17 Mar 2023 06:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679060818; cv=none;
         d=google.com; s=arc-20160816;
-        b=sGKIeXJ7gjU0UYr8DDmT/CPPXbZbOzGqddM9gaJSYMEd+3GApevoEoeMgZYuA1HoVe
-         hF3yQJywz43Vd3+zEAkLLuunwyeT3jNR8G0EFleefGBXDGGHxiZ/4CbbKjy43IDkcvhb
-         uMkl6oope1HG5qvfCNV7h7nvtozD+c/kTNaIOjpk/LAxu+8L77AQTYUY1sFWYx1SfHw/
-         ad/XSyQJMQB5ipc4ucRapJyjOgvm0HADi8ypIlVX8n+2n/bb1aMOhBz8ZajCga0jB7Hy
-         WtQ9vphMAF/HKJ0P0onbdZqFKNrxLTc7wYNj9nSUungYO6JrBdAcUti+MoVYcP65Vbz4
-         ag+w==
+        b=ew7c5FYEw/b4npcIO6NHZ+JXjGLdvLh3qztquZT5x54sNhIDN8JqM6oZU59Ah8vNFx
+         967/9gJp4MNeiUmCgK8O2KBbkW+T4cMLK6WngnWhQmjC2Y/yVgHalHWCyYd818sJPRjl
+         DopmdWQ78tatOgdGYphrQd2DbMfOvV8Y9wo0dKjR72Sx6t1hDvgQXJp3zoabcC5UAWEe
+         +9Pwmgh0SI1G8Fx8uv1MAWOfUKY8Cz+Gq4ycmf+9Obl7HCCXJT2Lpael6AIoLv13E43K
+         gKyV+LObe5nxfMUg1bCoDnf8Aj5oK1RG1Ah9va++P5v0qF96tCj+NU/B+pHoTl3cX1sc
+         TyEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=sjgbpFHlkv3OCW/kDiuhRBpCwwQK5Ur+NEG1DXRNQck=;
-        b=GrNnTMW4Jc8c2/NVX8045gaaBjGQ4BqvzG2Tqf2bXpn3Qk0W5e7kdu1q4eOpywWfpP
-         ggcgLjMsdD6G+xonCMie3KjQUufvi+sS+fL4OTqLG2HGDU84KxIWa1T2xobbqIrtsN7N
-         d+Gzov5nsH4o6eSN1wuNMVoDvUxb0/aS03MduNh92iF/7ovhU4cJZ8RFtvUZUn3poIwI
-         nCAWUsQSCNvTx3MF1Vso57uoEOb4RXGKza4Qluw5b5sg39EOlCYHmNPmsTfW5NGE3dW/
-         JQm/WIfGgrrr91S0mRnKacHxTHQi3srr8oYo6q1x0FcVmo1R8FrYIxAfPbyXlrRvki0m
-         sW5Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=aI5/+qbhXbb9yXfNr6krILKSD+1O4FNP+tPqZ99lLPc=;
+        b=G37Yst+AwvNIWdtHKz9QgHcjK9dOqSA4MT+yAu6nRW+ImxM2fwkVf3Mthr8tP5K5yx
+         m9uRTKi2yZHq5a2+TCah9Cx8bJctCzrxg0QJYmtBfISlSgILhWWe14k1X5bQh8BhvXTl
+         S0dKM1JzJD9R4JeQjJZiQP776pX3M8/lywD+zBzht/bXYHV+gCrIxqznZS7jnmxV46kk
+         pXSXjqHZ5pcseNpirqWuEC590khr7xtoBysqjVEXkRrsBHS1rWK0sRlX/EgUW3UnJYM2
+         1/4EO50rV0cmbXR/FcifeG7rr/Rj0jYWZxcOWryH8QGWxxeSISiqmpZCBJBW0w5NjzXU
+         194w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c5raEpId;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a84BR6tN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p62-20020a0c90c4000000b0056eb1bfcb22si1032828qvp.173.2023.03.17.02.52.50
+        by mx.google.com with ESMTPS id v17-20020a056512049100b004d850003122si1118514lfq.50.2023.03.17.06.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Mar 2023 02:52:50 -0700 (PDT)
+        Fri, 17 Mar 2023 06:46:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c5raEpId;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a84BR6tN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pd6ks-0003oX-OA; Fri, 17 Mar 2023 05:52:10 -0400
+	id 1pdAPx-00069C-T4; Fri, 17 Mar 2023 09:46:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1pd6kr-0003o6-G0; Fri, 17 Mar 2023 05:52:09 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pdAPw-00068I-Ap
+ for qemu-arm@nongnu.org; Fri, 17 Mar 2023 09:46:48 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cyruscyliu@gmail.com>)
- id 1pd6kp-0003e4-FN; Fri, 17 Mar 2023 05:52:09 -0400
-Received: by mail-ed1-x535.google.com with SMTP id x3so18024107edb.10;
- Fri, 17 Mar 2023 02:52:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pdAPu-0004cs-LM
+ for qemu-arm@nongnu.org; Fri, 17 Mar 2023 09:46:48 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id h8so5321849plf.10
+ for <qemu-arm@nongnu.org>; Fri, 17 Mar 2023 06:46:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679046725;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sjgbpFHlkv3OCW/kDiuhRBpCwwQK5Ur+NEG1DXRNQck=;
- b=c5raEpId8ZqshW+z/np6d1JDqfzKq42OqX/HvqpGXyPGRT8oNXhAb5AJzoCMg/9A1q
- fW3a6fDq89DqVU/qj6IoDOXZChLbi+SZ3iRzilon0o3lRmVMZzYPbw8hgeRKd1S/SrNb
- O4eWadlvRMdO8Bz9ugfIDIxDojtQez5v6nRtwnMXjU/ya2glyKQ67vVs2IVXwe+AGMAy
- xNgwguU0VJFtU0a5DU/IL7qkRMq6D1TCBrOz6XWXQ+BVBv5vKQ06m2j4FCq/iCN6uPoc
- iNC/leZ/V9l+wV2wBeXLf9uck5Wq5DVvxm4+w5FIS58EGN5mJ748ffS+qdJspvxRE3CX
- EhlA==
+ d=linaro.org; s=google; t=1679060805;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=aI5/+qbhXbb9yXfNr6krILKSD+1O4FNP+tPqZ99lLPc=;
+ b=a84BR6tNGq/qAjsfekCdyNBec5bPstuYRnQlJCBURRUjIQ+9CCQp3zHgG9tDTt+3w8
+ eRGepkEv7q8N1XOEMlFIhvQ25xEGwcTC1gweT8GUffWD5OUO1rQt9zjvGt4SgEkpK8NG
+ v5P05W/rVL9zTXkJkGyWRsgH7JohrhAKg7a77tgMNZGapJrObCul/pNL25AcoaYV52kA
+ PEq7NKRRfYF8+BxvVgfWiplNZsJTtYLeBLUTPvYSjMk7UueGd4AolafRx1EoiATH8TTx
+ 0jESGf6uvQEWUpW5G1OUPh8+299840fG4DYWueASHJgEV5a3/Vi6XV1LLf3kZLfEo5oJ
+ Hz/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679046725;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sjgbpFHlkv3OCW/kDiuhRBpCwwQK5Ur+NEG1DXRNQck=;
- b=Xy9GBMnLCWNqTcVwkyRktV9JVHVFTr8UK2j2qWMS54jNPmhJVKEzjBf3hwTQ9W/KNY
- LoFRTsx7BXq7nfq28GnsdD24TCMC3xKf2BOm+PvlBhQpZLB4vBmEDE/KFLxAkG6GxMUi
- odu7VlqpbbT4RVcJpITSNdjjvN6fQT8qoock2n9DO3HgtTpe8b5x1IdZ4tsxMLPgUX30
- 39guNXlUn4iAWUCQx9lMMb7LcggjR1e6/PrOD2Ll45BvDO3CszVRUe0JeaIYivWLy1Pp
- Z+8+j0imziu0FS+EkPKfU02/sQAXQB+O/HzJGnDOxwI/Ue4Q6e30kvVxgK+UW3ulMzFo
- bOQg==
-X-Gm-Message-State: AO0yUKUGEvA4MjoY91eW+aXQaJbPT47XGWk9pjExkQu70bOAtYrUzRZ1
- ke6v3IPQkAhK/KhlWX9CaEw=
-X-Received: by 2002:aa7:c44c:0:b0:4bc:7eb9:4b2c with SMTP id
- n12-20020aa7c44c000000b004bc7eb94b2cmr2427814edr.35.1679046725076; 
- Fri, 17 Mar 2023 02:52:05 -0700 (PDT)
-Received: from [128.178.122.40] (dhcp-122-dist-b-040.epfl.ch. [128.178.122.40])
- by smtp.gmail.com with ESMTPSA id
- gu12-20020a170906f28c00b008b17de9d1f2sm785318ejb.15.2023.03.17.02.52.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Mar 2023 02:52:04 -0700 (PDT)
-Message-ID: <7e7876e3-67f1-9202-2182-72e93ebc4b9a@gmail.com>
-Date: Fri, 17 Mar 2023 10:52:02 +0100
+ d=1e100.net; s=20210112; t=1679060805;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=aI5/+qbhXbb9yXfNr6krILKSD+1O4FNP+tPqZ99lLPc=;
+ b=Ow9sM+Pl7bUtHZNZvuzKlGJ4zRL9UnCGjSK9RJ9M8308YYgGFWVGNOKIP/19vXWD3g
+ NWks62Oi0HqatrnIm+62HQG9Mn97udP5o6HICJlxEgDcAxCUxQvw9PU0DPrKH1n0y7zT
+ teDcRgRIcn12Gc6Z24yEy+OAMYY1yHizGsKyIjehpbPqgWkz3IsZNEvnBdcN54ucjQ1/
+ 13l+FSxsUiWyX6hDuh7Yp63MnxUnHj7arakDebPjNPddLC7OSEzJ7Qln2vEHnC636+nY
+ wBeZqOk7TvEEDkdunwWq5JkkEDJtUDLsrxAh0j/pfPbu4gVYcvBes0Dr3fvCt573kMun
+ ianw==
+X-Gm-Message-State: AO0yUKUipiCEO+zkfrAFHHdGEDhAn1L5RtB2P0uudPMEoD1OjS9vsM6x
+ huJe5XgZXQgD6KQXGkAhI6qP5mEbTLRWUV+bKEUchA==
+X-Received: by 2002:a17:90b:3747:b0:23d:2de7:717d with SMTP id
+ ne7-20020a17090b374700b0023d2de7717dmr2378550pjb.0.1679060804891; Fri, 17 Mar
+ 2023 06:46:44 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] hw/usb/imx: Fix out of bounds access in imx_usbphy_read()
-Content-Language: en-US
-To: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
 References: <20230316234926.208874-1-linux@roeck-us.net>
-From: Qiang Liu <cyruscyliu@gmail.com>
 In-Reply-To: <20230316234926.208874-1-linux@roeck-us.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=cyruscyliu@gmail.com; helo=mail-ed1-x535.google.com
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Mar 2023 13:46:33 +0000
+Message-ID: <CAFEAcA_jcAaSdfF1CK=EW1XgzuFBiVvK8t1dGjobRahQWkw64w@mail.gmail.com>
+Subject: Re: [PATCH] hw/usb/imx: Fix out of bounds access in imx_usbphy_read()
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Qiang Liu <cyruscyliu@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,9 +116,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z6/bg+V/gHJf
+X-TUID: dblGQ+N4O5c/
 
-On 3/17/23 12:49 AM, Guenter Roeck wrote:
+On Thu, 16 Mar 2023 at 23:49, Guenter Roeck <linux@roeck-us.net> wrote:
+>
 > The i.MX USB Phy driver does not check register ranges, resulting in out of
 > bounds accesses if an attempt is made to access non-existing PHY registers.
 > Add range check and conditionally report bad accesses to fix the problem.
@@ -140,54 +131,9 @@ On 3/17/23 12:49 AM, Guenter Roeck wrote:
 > Link: https://gitlab.com/qemu-project/qemu/-/issues/1408
 > Fixes: 0701a5efa015 ("hw/usb: Add basic i.MX USB Phy support")
 > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->   hw/usb/imx-usb-phy.c | 19 +++++++++++++++++--
->   1 file changed, 17 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/usb/imx-usb-phy.c b/hw/usb/imx-usb-phy.c
-> index 5d7a549e34..1a97b36a11 100644
-> --- a/hw/usb/imx-usb-phy.c
-> +++ b/hw/usb/imx-usb-phy.c
-> @@ -13,6 +13,7 @@
->   #include "qemu/osdep.h"
->   #include "hw/usb/imx-usb-phy.h"
->   #include "migration/vmstate.h"
-> +#include "qemu/log.h"
->   #include "qemu/module.h"
->   
->   static const VMStateDescription vmstate_imx_usbphy = {
-> @@ -90,7 +91,15 @@ static uint64_t imx_usbphy_read(void *opaque, hwaddr offset, unsigned size)
->           value = s->usbphy[index - 3];
->           break;
->       default:
-> -        value = s->usbphy[index];
-> +        if (index < USBPHY_MAX) {
-> +            value = s->usbphy[index];
-> +        } else {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: Read from non-existing USB PHY register 0x%"
-> +                          HWADDR_PRIx "\n",
-> +                          __func__, offset);
-> +            value = 0;
-> +        }
->           break;
->       }
->       return (uint64_t)value;
-> @@ -168,7 +177,13 @@ static void imx_usbphy_write(void *opaque, hwaddr offset, uint64_t value,
->           s->usbphy[index - 3] ^= value;
->           break;
->       default:
-> -        /* Other registers are read-only */
-> +        /* Other registers are read-only or do not exist */
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Write to %s USB PHY register 0x%"
-> +                      HWADDR_PRIx "\n",
-> +                      __func__,
-> +                      index >= USBPHY_MAX ? "non-existing" : "read-only",
-> +                      offset);
->           break;
->       }
->   }
 
-Tested-by: Qiang Liu <cyruscyliu@gmail.com>
 
+
+Applied to target-arm.next, thanks.
+
+-- PMM

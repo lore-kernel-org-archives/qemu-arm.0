@@ -1,90 +1,90 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp584835ejb;
-        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+aho+d1OOanS/Bll4tSgrXS6A+D85SkJl/YUyS/36hGlbeE8eC3Fszb6hYkpg1jkFED1/5
-X-Received: by 2002:ac8:5f53:0:b0:3bf:da97:87dd with SMTP id y19-20020ac85f53000000b003bfda9787ddmr11772829qta.38.1679037879426;
-        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679037879; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp586215ejb;
+        Fri, 17 Mar 2023 00:26:20 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9ZDVTWFjDN4hXH95EmB/wU9a6ckYRftmLcGwcvEkXLQ6PzzZ9FgCRDuTV33rHYEPmnVLLh
+X-Received: by 2002:a05:6214:258e:b0:5ad:13a6:b45b with SMTP id fq14-20020a056214258e00b005ad13a6b45bmr19285198qvb.11.1679037979782;
+        Fri, 17 Mar 2023 00:26:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679037979; cv=none;
         d=google.com; s=arc-20160816;
-        b=emXrKxQvkt2jj5GEUHbZwFZCS6osLDhkoC+LfewUE4zj4qii2BUmDmhZwaFqtfejxh
-         EExT8AkaWOQ5DzWaiRe3lN+XdC75UardFZRZWLQUUqMdaUt/QsoZwO2OEUKCD19qS4Op
-         BToZhkpemsYjRnKNFzlIXl96oSc2QfuZk1kmMl8AuMYfQNaV4XRbKSi39AvkVmWawdET
-         v/va9tny3BhvbEkyyR4yW6/CmZKUC5mwsExShcmOdS0fz2mjndcVBNP8uNQzqx8Hqtpk
-         7UY40VJgjENuXUa7bLaySCRX5m6oZnqd9fXKBVcgfFpHicH/A05C2P+WzqLO+RRP5nJW
-         IgEQ==
+        b=SKPBY3xTMxOees1V7OhnZ9rC0q93vHzjyVrNhanbIaiFWQE0QyU9hxHmTYN8NLPi34
+         puYg6Vxb6R2KOSokk8RoO4FLWYFbYC7kjo7Xtkz/Vp+ISWrOBnNiJfN8cg/JU0PEId80
+         csHqpOv8tWErfVJVHLqwrWv6q6QhmbiEkGuOYXJrXMF1P99rJvnsNh1nQg+kmvpAEb5U
+         868IVZOgxrlpPTLWxaqiToBGr8J3sWuU7+lIfK8buwfuAWFb0l0Nit8j0e5M0rjpftdc
+         WCAhyPbCskscDxPfpSXEU57XLsxDGOyuJonZS2TARRacZ0vETX81cJ0ZHbDpNi2xAKaG
+         PmBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
-        b=pmEwAYpVpf0U+Ag524pTLHmNHfi9kiOoeMTlUE0b5FAlh79FSCLNep34F1jdbiDkc+
-         jXezowPjI/Si1qc7b1hGlCv+NqSM3B2F1GEakawPkb2fnILTt49IX57eR54udfmJdH1k
-         9smIFjSmoO4tup1PRbl5m7c2eZpbTgJFJWhYJxu/sjj9DN7BIA4MxCpHxcnn2ZdC5QDS
-         LRdyLCF15YNYHoTs6fNM9BPj3AjdgvPoDf+w+JTaX5Gxmn90bFF7LZO+4pHT9aLQLHby
-         aGetZc2nwk40HaD1/m2JEFNBygrctc15ZfiNH5HPh3PcW+VbR9jVSVBkvmRq7DXY87C9
-         SbOw==
+        bh=HqrnyekWZtj3autRtqGDoL7x0MtC0GOcxCuc87fpusU=;
+        b=whmTbs6p5+THJnATXWKeeQRnJlAEm3UDWkLd/wuj1HBCXBBsiHnVHA+bPosHb7s9Ms
+         CbxKYkJ3q2AdG0J7xwq4RKMiEwhaPpx9biU3RPb992P36zzXzCUGuU/mGGP1Jomyv7AL
+         jAKNcV2Y2lCb7PMI8PE5dhKYumhM71YtKWrUBoc+D8SLq8tp5w3SckkY1cQSQ3AEgkEC
+         6ROKcjJtS+JSrsddeojiUIV76L5YIrKgnVeaffTDuZ4Ee/93+Ul/4xlFCh51zb51LrA2
+         pfzPMQaZ+vcu4UD6bXwbreZIvpYy0HcgEXc+cCN+IQNaKiLt4iMKKkI53CC0Dt3z88NN
+         9sSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gwcMA/IU";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AW+tEcn3;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 15-20020a370c0f000000b007459b3cb681si1110858qkm.98.2023.03.17.00.24.39
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id es15-20020a056214192f00b0056ed12c0f13si840159qvb.374.2023.03.17.00.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 00:24:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 17 Mar 2023 00:26:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="gwcMA/IU";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AW+tEcn3;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1679037879;
+	s=mimecast20190719; t=1679037979;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
-	b=gwcMA/IUdv51HkstsR1bt7ANKx8zXjulE/i4IIPuhB20Yk4+lPmXzjBzo4ewkmsodyip1a
-	oRwKJo3RozYTXsUHuNZjTdQ9TzhvSSPtssUpU0OmDmiM+y/FJFc/tZAGRwaWXfPrx0wH/W
-	i4I00SRZtC3jGaGFptrg6AkxWRE/TxU=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=HqrnyekWZtj3autRtqGDoL7x0MtC0GOcxCuc87fpusU=;
+	b=AW+tEcn3kmIynANQ+AHSVugdjps7Qny298cQ+RBmwmEEIgDIHf3ynCkZzWrgDQLi7W2Hh5
+	eUZjUG68K9sRSGHU2t0h8uXZfx2hQADtRFxIwxdLkZ/n7D6wAlQgJKHQj5oHl6ICdGiPQm
+	Vn/q7lR40lwYhcnW4wiN3i6ahoMuF28=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-396-UVHJgaWYOTaDuBhihruZKQ-1; Fri, 17 Mar 2023 03:24:35 -0400
-X-MC-Unique: UVHJgaWYOTaDuBhihruZKQ-1
-Received: by mail-wm1-f69.google.com with SMTP id j36-20020a05600c1c2400b003ed245a452fso1885778wms.3
-        for <alex.bennee@linaro.org>; Fri, 17 Mar 2023 00:24:35 -0700 (PDT)
+ us-mta-381-LBr3He5sMca95ULMBd8vVA-1; Fri, 17 Mar 2023 03:26:17 -0400
+X-MC-Unique: LBr3He5sMca95ULMBd8vVA-1
+Received: by mail-wm1-f72.google.com with SMTP id p21-20020a05600c1d9500b003ed34032a01so1890542wms.2
+        for <alex.bennee@linaro.org>; Fri, 17 Mar 2023 00:26:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679037874;
+        d=1e100.net; s=20210112; t=1679037976;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xW5YRWUqoI7YaHI7gPZKm4zvNmnVkp4WxZPUXFEvJBo=;
-        b=0Ki4iosQo/Cwo40Aua4lfaGdhpyRCcYbdcaLSQnf43Q2rOBac92XvLfTxufNoHYylS
-         4Q6OBSh/w7TW8uqox8rlBIhiGRVt7/WZ7mMWdsNCJW9vKxdWq4NdSawulOahcXW89smU
-         nlX/verebffMb1c4CnqMKortHIG7v+i7VYD9EBMIY/nARgTU7cUMoHT2If63pm8y1AH8
-         F7mByMj5/qM+i2ffBBmuiPiapGQlts6zYrb1JLw36QiX6nIlo5KN8/BVY3IT1zN3MdCk
-         i27kKrvBET8L6yv8U0wF7H1+8F/fmi4Fgvaj5rz166EdaCODg4BtCwKvkHzuVzwFrMSn
-         j3eA==
-X-Gm-Message-State: AO0yUKUqzzJQJ4T6OexLCUIoVxvziri20jTTYjIdGvTwLSL52T7TXsgE
-	JX1Uhy71mfGtciZu4o+qjVcMGZbSVwfJrFTMfXrLbWAM2fuExCGUf9YxCgzht1CU2luVc2Yb6wW
-	KI8J8cRy/44sRK5BQ+RaJyYcaXqfjhUGSl+SRe1kuSTcTdjcaspnNgMl/aSt8BltnHDghUQVpDZ
-	s=
-X-Received: by 2002:a5d:4d06:0:b0:2c7:daa:1c56 with SMTP id z6-20020a5d4d06000000b002c70daa1c56mr5851993wrt.4.1679037874844;
-        Fri, 17 Mar 2023 00:24:34 -0700 (PDT)
-X-Received: by 2002:a5d:4d06:0:b0:2c7:daa:1c56 with SMTP id z6-20020a5d4d06000000b002c70daa1c56mr5851904wrt.4.1679037874240;
-        Fri, 17 Mar 2023 00:24:34 -0700 (PDT)
+        bh=HqrnyekWZtj3autRtqGDoL7x0MtC0GOcxCuc87fpusU=;
+        b=aOkECjogw5go2zUQA3f8+rGgD89WqB4ZMQmeYWTm7HgI9HH2HnX0pKcR/fSApJRgNV
+         1F0HqxGUHQ2kTf3gD1CshY2w0jFWmX8x9TqxvhjP2m56wPvzmVI3xw0antfJVjNKnPZA
+         /5UqE5aPE0LTXXHfrYFhYRwFTSX9k02kTHOK3JNjJEOJ8MG955FSnpDzkGRrNsLvCSFS
+         8Nf5BVPljTkpjTgWWewySgSGdBaCUmABE8ZJVZlvx1kU5+X4ZcF4bCxRvLEQPSdXoQvj
+         Jt38fDJNoQiu3PEMhr4fi1Os//5Xq78DjFOGvRESIM4JmixhUEt4fWdgk8tkwLj9m+YT
+         knHQ==
+X-Gm-Message-State: AO0yUKU2BzEUfNGyqHc7oUiWl65PGMEXmv7Ea+KT3GBe2/MNXPTAXRvD
+	f+wqVEYvMemimSJqGdxtnaE+KX2fc7/0ymkg7uxSFumlUKR+4S+8fkl3swOvSUUrP2xJSqMRSm3
+	E5Eo65bYPa5fAnUIr6Cl9KC2wmkIeihjyAAUzguktp1YmxOlcQvVkoG8s/eK5uNtajrIakN5Bmg
+	U=
+X-Received: by 2002:a05:600c:4fce:b0:3ed:24f6:1089 with SMTP id o14-20020a05600c4fce00b003ed24f61089mr16092914wmq.15.1679037976158;
+        Fri, 17 Mar 2023 00:26:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:4fce:b0:3ed:24f6:1089 with SMTP id o14-20020a05600c4fce00b003ed24f61089mr16092826wmq.15.1679037975745;
+        Fri, 17 Mar 2023 00:26:15 -0700 (PDT)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.3] (ip-109-43-176-33.web.vodafone.de. [109.43.176.33])
-        by smtp.gmail.com with ESMTPSA id y1-20020a5d4ac1000000b002ceaeb24c0asm1262440wrs.58.2023.03.17.00.24.29
+        by smtp.gmail.com with ESMTPSA id c22-20020a7bc856000000b003dc42d48defsm1479979wml.6.2023.03.17.00.26.09
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Mar 2023 00:24:32 -0700 (PDT)
-Message-ID: <95ef3696-f934-376e-ee88-687477a32242@redhat.com>
-Date: Fri, 17 Mar 2023 08:24:28 +0100
+        Fri, 17 Mar 2023 00:26:14 -0700 (PDT)
+Message-ID: <e3e19ba8-6574-c989-ad02-25fabe5956f9@redhat.com>
+Date: Fri, 17 Mar 2023 08:26:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.0
-Subject: Re: [PATCH v2 05/32] gitlab: update centos-8-stream job
+Subject: Re: [PATCH v2 31/32] contrib/gitdm: add more individual contributors
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
@@ -128,32 +128,44 @@ Cc: Akihiko Odaki <akihiko.odaki@gmail.com>,
  Beniamino Galvani <b.galvani@gmail.com>, Paul Durrant <paul@xen.org>,
  Bin Meng <bin.meng@windriver.com>, Sunil Muthuswamy
  <sunilmut@microsoft.com>, Hanna Reitz <hreitz@redhat.com>,
- Peter Xu <peterx@redhat.com>
+ Peter Xu <peterx@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Amarjargal Gundjalam <amarjargal16@gmail.com>, Bin Meng <bmeng@tinylab.org>,
+ "Jason A . Donenfeld" <Jason@zx2c4.com>
 References: <20230315174331.2959-1-alex.bennee@linaro.org>
- <20230315174331.2959-6-alex.bennee@linaro.org>
+ <20230315174331.2959-32-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230315174331.2959-6-alex.bennee@linaro.org>
+In-Reply-To: <20230315174331.2959-32-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: WTmwCOR9XIEr
+X-TUID: LByql/RvOrw7
 
 On 15/03/2023 18.43, Alex Bennée wrote:
-> A couple of clean-ups here:
-> 
->    - inherit from the custom runners job for artefacts
-
-I know, it's a difference between BE and AE, but in case you want to be 
-consistent with the yml: s/artefacts/artifacts/
-
->    - call check-avocado directly
->    - add some comments to the top about setup
+> I've only added the names explicitly acked.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Bernhard Beschow <shentey@gmail.com>
+> Cc: Amarjargal Gundjalam <amarjargal16@gmail.com>
+> Cc: Bin Meng <bmeng@tinylab.org>
+> Cc: Jason A. Donenfeld <Jason@zx2c4.com>
+> Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> Acked-by: Bernhard Beschow <shentey@gmail.com>
+> Message-Id: <20230310180332.2274827-10-alex.bennee@linaro.org>
 > ---
->   .../custom-runners/centos-stream-8-x86_64.yml  | 18 ++++++------------
->   1 file changed, 6 insertions(+), 12 deletions(-)
+>   contrib/gitdm/group-map-individuals | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/contrib/gitdm/group-map-individuals b/contrib/gitdm/group-map-individuals
+> index e2263a5ee3..3264c7383d 100644
+> --- a/contrib/gitdm/group-map-individuals
+> +++ b/contrib/gitdm/group-map-individuals
+> @@ -38,3 +38,4 @@ paul@nowt.org
+>   git@xen0n.name
+>   simon@simonsafar.com
+>   research_trasio@irq.a4lg.com
+> +shentey@gmail.com
 
+FWIW:
 Reviewed-by: Thomas Huth <thuth@redhat.com>

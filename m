@@ -1,143 +1,127 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1054246ejb;
-        Fri, 17 Mar 2023 09:37:41 -0700 (PDT)
-X-Received: by 2002:a05:6a20:4299:b0:bf:58d1:ce98 with SMTP id o25-20020a056a20429900b000bf58d1ce98mr3712884pzj.23.1679071061349;
-        Fri, 17 Mar 2023 09:37:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679071061; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1065661ejb;
+        Fri, 17 Mar 2023 09:51:00 -0700 (PDT)
+X-Received: by 2002:a05:600c:3c83:b0:3ea:ed4d:38eb with SMTP id bg3-20020a05600c3c8300b003eaed4d38ebmr24571519wmb.24.1679071860690;
+        Fri, 17 Mar 2023 09:51:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679071860; cv=none;
         d=google.com; s=arc-20160816;
-        b=W6Dm5+vnrfQGUKrQoiqV6GabN3xBoqAdGaT0YweTkBvnY2h9NvR0arQVURTbXIw+N/
-         vLTzyyV6OgOGjgVnB33gX03eku0cp4Jl2zaP6Jt/RsnyyEPR6DRlyYVb+IzWAvz/yAxc
-         gXV1zo0822QV9EgZhy/JgaM/vOYIcEUGPTvAs8xHEGRnbnj1Jp3rSCcSSFjZmeudLLNT
-         f+4Ltyu9CIYG0HgPOtHspETzSNMhjGb6SEytXSLtvR+ibAY3nyJmLDQ8w1j0WSLp0rHg
-         cMY58EKi6hymXf2Uug4kqoV82/0X0/wvsjIQFCU+5B9hoduhQn4oyZDmSI0qkv/aPzQr
-         QtnA==
+        b=ol3seEeZD02ZhNs7HE2LtbA0kwFGK7ShnDt+XZx8i8//y7zXPLE2kPWCLSKReVmMwG
+         YZi4qkpPsumFRK+n19E53xA+myQro5pIKxrLlqBEbN42JS+MCPP1NNA4yxgPyF5mWnQP
+         VLwkxzUJf0VydHIP5ahSNn0ZFbnXGNGji4WAIGvZKtA7rl0RNsCCqvnt8lCh5gEptjr6
+         ThBYsHZvILHuTx4Erxqnm/OmbE9STpN82g2EbSiXGoGqBlD20/PXTAwmLGNEnL2TPBQg
+         fniK5F3RFREtLv1VlQ5QMkrDVjUVdlFldt6wA4hdiTi0yEe5Dx7lmKXNy/DpZOz/rpJy
+         8g9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=bXjDhVXGMhnumxyVHUzpj0olGsdargOsMsFYmhE4nEk=;
-        b=rnB6jus7jVrOu1IUeceP3Fo4IZxkxSSBmaDdV6P/jSP18LInPtohmZwncdCjGAaRyI
-         +O/fwEt5M7dzPOvBaG67/pwCXsSCBap4zDIsgrUYS8qRFjxgswso6m9IY0fvN8OetC18
-         vA/k6qd5FP+owvwzjglSy9+AmxTjx0LhJGWFxhrUZu3L8qb789xbTh5zQHU6MVl4ad5Z
-         JaOordzcnLKLytXPi4AjEwHUFv0N7EAY3VGC9TR4YvS/TN79CLBTVnCGzwpnlanjryt/
-         Jj+EzJvi/uN8PA5aW4+RKnmvh2tr6Lb/AWQslSYShWaEmGsuqKVzHZc41BHnNa+GzCbA
-         bdGA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=pcjeNQpYtfjnbCVp1jPfUN6yC3n9EwkQ1XDGv0Ar4fQ=;
+        b=Za1H8tEY4RPuAsZriVxAreSz5WvJNyb3uLZlyhcRoe/ya0XLOwEqspGhuX2qNolcBR
+         LPfQvLlA/+P7lLJI77VMw7V5vmTo107CYZ4cucKHcLi4cCCDoWbXG7aPa9wqjQRltiHZ
+         +ITriCkBkQo2QUT22828KtNc/yodpDArbkfSXfgsr3WhOO7H7sJiffX3D7h1ZLCW2Dbd
+         12sVU19NtRCdWkU7NScLAyOyoFbWqVPB5ScgqV6+j899Yl/2uwJPNI5hKpIVgHMNGBCF
+         4Pfa0JSk+PF1non7enP5rcAKO1krnOsOqsJWgpiJEzELMC5833njrRq4QYq00NQnDx1i
+         SjUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EAsZfvAc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="IR4T/+vw";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n184-20020a6327c1000000b0050bd9c8c53fsor1001341pgn.49.2023.03.17.09.37.41
+        by mx.google.com with SMTPS id l3-20020a1ced03000000b003e1faaaa3a1sor2656841wmh.2.2023.03.17.09.51.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 17 Mar 2023 09:37:41 -0700 (PDT)
+        Fri, 17 Mar 2023 09:51:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EAsZfvAc;
+       dkim=pass header.i=@linaro.org header.s=google header.b="IR4T/+vw";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679071061;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=bXjDhVXGMhnumxyVHUzpj0olGsdargOsMsFYmhE4nEk=;
-        b=EAsZfvAcqTW192AqI28UuUCFzeJ/Y1isNdi+8QpeTQV9rN8WhBTt2X/dDDGF3EWXq6
-         cai7r2bikB5MKpJjrEHaOh7JLshA4yOpY8jFo+dQN1H9UG1XIWDbZuOoeTGw2AvE5Cv5
-         OnZ4M0epayxXujbs32XOfMMrREmJ+dSDXvNBEDlWRwIMBaXbii6ky+zIm6agVq3AseVQ
-         tuQod8byxNUuaTBnPULHyha9edEooAuI6D6mxZ76Ov1k+EY6Cd5OsOSkt9grGKqXQLBb
-         VJBAX9SLko5acaMYFJvSsYOQp2ummKKZZ1HMGBiNzorxjWKz00kvnhjK5JmevZGNXsBC
-         fRcg==
+        d=linaro.org; s=google; t=1679071860;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pcjeNQpYtfjnbCVp1jPfUN6yC3n9EwkQ1XDGv0Ar4fQ=;
+        b=IR4T/+vwPMsWe13l5Ri/VHW+QLrQi+hBBZq2nUG/G1I7bUM55W3uFiErbJT03HYtM0
+         5KO9W0MpwMFbFq8jg/zLda7UtCnHfPLA3tKD38J0/aPkUV6p6xSulVygC2HVsQdsP2pi
+         AdHrekxgCFAnH3NID6OdO9AwRgU1aVgpV9Jf+9kjDDJxU7wLXiJI8lv//WCuzCeqE0Iq
+         6YyQrL8jcXPLaH8D8sZ95UM1/0W8aEvy57lZy4fQhSHN2YT/yv8ef4VZMsVlyVLc1RCE
+         +S8Eg08fK5lV0jX1eHDvshNaiR1eFm3eTMOSf1Vk7mFR9bnIlP2D+IpzaIpHs9RcFG4/
+         gYhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679071061;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20210112; t=1679071860;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=bXjDhVXGMhnumxyVHUzpj0olGsdargOsMsFYmhE4nEk=;
-        b=xVxnnJYmChamArY+840C7mO9kZfWrwMGbVaKdlRIwn3QAQsFR+G34Kq2lRgTdjkMKf
-         WHPYA2yga9MGvADAjxUjyoERYOsubMMFmFyweu9SxQQSDSqiMoSGRWWF2FJ9OAapf16W
-         t8mhFO4L+vizCmxJywksWcPkBLxP/VYGtuErljcL6e9VXeFwoY88gj7/GKW/Lp3D9UuE
-         oWkszxwDhJxXxUaefUCzAltNP5GEfrHDYUyldCr2uQaRdm3u0BBlXcaO6P9G4R2rD8J3
-         8y1Xjxjfz3tUcF/vFMKHIl+9KdCHlQwwgMknNcvXnFVlKEiBZ0Gm3zCrPB+/HSbAbsCB
-         8c0w==
-X-Gm-Message-State: AO0yUKUDjl9D3GZBFcpsELltsA+q/A49enXUPijTM7nYHaB36VzLHjMw
-	qcgfGl5US8KNaj7TwXwNeVfOaXCVTA+dRLYCGdEK+dOi
-X-Google-Smtp-Source: AK7set8rCN/moXRSQZiutfvZ8gC+LveEcdQh80LRcFgwNHE9ebfl7xe5nhSJG73LV00oRxPpkc5p9lHEWXDIeLkZ9dk=
-X-Received: by 2002:a65:4544:0:b0:4fc:2369:811 with SMTP id
- x4-20020a654544000000b004fc23690811mr2035530pgr.6.1679071060848; Fri, 17 Mar
- 2023 09:37:40 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230310103123.2118519-1-alex.bennee@linaro.org>
- <20230310103123.2118519-10-alex.bennee@linaro.org> <CAFEAcA89K6_-Uc0XmEa1q+_z_yuppq1kvh=uPfv9V80MBH=aQg@mail.gmail.com>
- <87wn3ocwqz.fsf@suse.de> <87sfeclb8o.fsf@linaro.org> <CAFEAcA8SFtzMAFPaE=_CJtwXDYiJQ8rDWgEE+Nx2Qz=-FjCmMA@mail.gmail.com>
- <9bb8ab52-c6ae-95a7-e6c8-64bcce166c19@arm.com> <caf97353-d116-976c-72c7-953b0cad956c@arm.com>
-In-Reply-To: <caf97353-d116-976c-72c7-953b0cad956c@arm.com>
+        bh=pcjeNQpYtfjnbCVp1jPfUN6yC3n9EwkQ1XDGv0Ar4fQ=;
+        b=c/cyeNozb7BnZXucWQqh8+oee34wSeQu792hlwFANVZAylJc7Axf7BOGtkNTYR/jCA
+         /WBlCFeWrxfVBJFwtQJCzaSFAVxY9vnK/rHa21pAwbVmRuUo8wEaMEdFvdXOZKzBlnZk
+         /x6XYpNrh2xNKF5A3xCduLdhYP8iJxg0dUi2ryJ8KUplKs6CvSVKGXvJ9O1v6GVX4IAj
+         eyKHuIcoc7pPSJ5wPfW0PPh9yEai7UFuasQumt/LIpn23PCm+hjF6qEZ2+FHyZXwSB8W
+         J8zy2upabF9e5fhormkZMWVNRyFaz5OROpKOrn1yPusDP1tipQRx2FmDecYV+1Fr1rRV
+         qqDw==
+X-Gm-Message-State: AO0yUKV6lLptBv8QNJZaRl6jRGOkbh+AHeAwWDCrQ3WZcoo2BCP8PpQ5
+	87qfzsmKPff6OoHMCrG9F0bIMByn
+X-Google-Smtp-Source: AK7set9sq2bZPzy4KLStvSM2/bgSJXJIMkLMG5tGNW4TW0+MUHdsy8OyL9fr8AKgiq5kJIcDzpjZcQ==
+X-Received: by 2002:a05:600c:3c83:b0:3ea:ed4d:38eb with SMTP id bg3-20020a05600c3c8300b003eaed4d38ebmr24571505wmb.24.1679071860295;
+        Fri, 17 Mar 2023 09:51:00 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by smtp.gmail.com with ESMTPSA id y6-20020a05600c364600b003ed2c0a0f37sm2460106wmq.35.2023.03.17.09.50.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Mar 2023 09:50:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Mar 2023 16:37:29 +0000
-Message-ID: <CAFEAcA9WbEaCUXWcGT1+nj5u+zjWrm_+58X1-ZyrvUoeWcOdZQ@mail.gmail.com>
-Subject: Re: [PATCH 09/11] tests/tcg: disable pauth for aarch64 gdb tests
-To: Luis Machado <luis.machado@arm.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, 
-	David Hildenbrand <david@redhat.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
-	Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Beraldo Leal <bleal@redhat.com>, gdb <gdb@gnu.org>, 
-	Thiago Jung Bauermann <thiago.bauermann@linaro.org>, Omair Javaid <omair.javaid@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: w3xkM7d3ZsSm
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Luis Machado <luis.machado@arm.com>
+Subject: [PATCH for-8.0] target/arm: Don't advertise aarch64-pauth.xml to gdb
+Date: Fri, 17 Mar 2023 16:50:57 +0000
+Message-Id: <20230317165057.1522743-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: VSQhMWSGDpaB
 
-On Wed, 15 Mar 2023 at 09:51, Luis Machado <luis.machado@arm.com> wrote:
-> On 3/13/23 11:44, Luis Machado wrote:
-> > On 3/13/23 11:22, Peter Maydell via Gdb wrote:
-> >> Luis and I came up with two options:
-> >>
-> >> (1) leave QEMU outputting the pauth xml as-is, and tell people
-> >> whose gdb 12 crashes that they should upgrade to a newer gdb
-> >>
-> >> (2) make QEMU output the pauth info under a different XML namespace,
-> >> and tell people who need backtraces when pauth is enabled
-> >> that they should upgrade to a newer gdb
-> >>
-> >> Neither of these feel great, but on balance I guess 2 is better?
-> >>
-> >> Luis: I think that rather than doing (2) with a QEMU namespace,
-> >> we should define a gdb namespace for this. That makes it clear
-> >> that this is still a gdb-upstream-sanctioned way of exposing
-> >> the pauth registers.
-> >
-> > That should be fine as well, and would work to side-step the gdb 12 bug so it doesn't crash.
-> >
-> > We could name the feature "org.gnu.gdb.aarch64.pauth_v2" or somesuch, and slowly stop using the original
-> > "org.gnu.gdb.aarch64.pauth" feature. I can document the requirements for a compliant pauth_v2.
-> >
-> > FYI, I've pushed a better documentation for the arm/aarch64 xml descriptions here:
-> >
-> > https://sourceware.org/git?p=binutils-gdb.git;a=commit;h=d7001b29e9f256dfc60acb481d9df8f91f2ee623
-> > https://sourceware.org/git?p=binutils-gdb.git;a=commit;h=e0994165d1b8469dfc27b09b62ac74862d535812
+Unfortunately a bug in older versions of gdb means that they will
+crash if QEMU sends them the aarch64-pauth.xml.  This bug is fixed in
+gdb commit 1ba3a3222039eb25, and there are plans to backport that to
+affected gdb release branches, but since the bug affects gdb 9
+through 12 it is very widely deployed (for instance by distros).
 
-> Just an update on this. I had a chat with Richard Henderson yesterday, and it might actually be easier and more convenient to backport
-> fixes to older gdb versions (at least gdb-12 and gdb-11, but gdb-10 and gdb-9 are also affected). This will ensure those won't crash when
-> they connect to a qemu that advertises the pauth feature.
->
-> It also means we won't need qemu-side changes. My understanding is that we're close to the 8.0.0 release, and the code is already in place.
+It is not currently clear what the best way to deal with this is; it
+has been proposed to define a new XML feature name that old gdb will
+ignore but newer gdb can handle.  Since QEMU's 8.0 release is
+imminent and at least one of our CI runners is now falling over this,
+disable the pauth XML for the moment.  We can follow up with a more
+considered fix either in time for 8.0 or else for the 8.1 release.
 
-Having run into this problem in another couple of situations, one of
-which involved gdb 10, I think I'm increasingly favouring option
-2 here. The affected gdbs seem to be quite widely deployed, and
-the bug results in crashes even for users who didn't really
-care about pauth. So I'd rather we didn't release a QEMU 8.0
-which crashes these affected deployed gdbs.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/gdbstub.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-So:
- (a) if on the gdb side you can define (within the next week) a
-suitable new XML name you want QEMU to expose, we can commit a
-change to switch to that before we do the 8.0 release
- (b) if that's too tight a timescale, we can commit a patch which
-just stops QEMU from exposing the pauth.xml, and we can come up
-with a better solution after 8.0 releases
-
-In fact, I think I'm going to submit a patch to do (b) for
-now and we can follow up with a patch for (a) if we want.
-
-thanks
--- PMM
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 78105b8078b..3bd86cee979 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -520,11 +520,18 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+                                      aarch64_gdb_set_fpu_reg,
+                                      34, "aarch64-fpu.xml", 0);
+         }
++#if 0
++        /*
++         * GDB versions 9 through 12 have a bug which means they will
++         * crash if they see this XML from QEMU; disable it for the 8.0
++         * release, pending a better solution.
++         */
+         if (isar_feature_aa64_pauth(&cpu->isar)) {
+             gdb_register_coprocessor(cs, aarch64_gdb_get_pauth_reg,
+                                      aarch64_gdb_set_pauth_reg,
+                                      4, "aarch64-pauth.xml", 0);
+         }
++#endif
+ #endif
+     } else {
+         if (arm_feature(env, ARM_FEATURE_NEON)) {
+-- 
+2.34.1

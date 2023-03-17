@@ -1,253 +1,107 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1108138ejb;
-        Fri, 17 Mar 2023 10:37:00 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+wXJ/cxj/L9fFPYFHYUgBYRIREIATvijSn78Gbu47YISPz1cifPClMb5dZqBfaGTawlX/2
-X-Received: by 2002:a67:edd6:0:b0:412:ac6:57c7 with SMTP id e22-20020a67edd6000000b004120ac657c7mr607860vsp.13.1679074620677;
-        Fri, 17 Mar 2023 10:37:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679074620; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1099019ejb;
+        Fri, 17 Mar 2023 10:26:41 -0700 (PDT)
+X-Received: by 2002:a17:902:e80c:b0:19a:acc2:73e4 with SMTP id u12-20020a170902e80c00b0019aacc273e4mr8892682plg.22.1679074000918;
+        Fri, 17 Mar 2023 10:26:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679074000; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sy9dP5I19nmKBPI43WGYD1xkH3wWb+frSEaRMm04FUW2S2tDrP5pfBtIx5EsmRKSxb
-         IDyXIXPRur9dPmDPrS88JqXiUWm9nm8cve9iMoIfUTEsPgaGc4+qmi1snP3c6F5PGRgR
-         4zCTUKGFRhmyyIsJQz0gQr61DsPe37U5w3QPWRcjWQ9v0hMXZO8pjDJxppd3HGyjLTyn
-         Zsubwj8p35SQvfy6phFMGDEPazujhNWjuhP2QB4SbpVU5MW+pwMJHCMhLHkpPDrPr4dI
-         yWo1roQMtpcuf30CrIB73X5BBEIr+LMmSizY8ygG4AkBzdQMBbKBmzlqE3jji7LRKFh1
-         1v2g==
+        b=dsKkBgt8Wr09vOM6BvveroPVOXtDC2xWP0xWDZU98Jw9j1Ph2/YUmB+bFa451QEnCw
+         EdIFI4Mwn/KzJEvRVORRFYT2hIGkSPOjcaG7hqoQnYFix9CSrVpKwoCnnvHRvuKiBE5+
+         8kAJH6mp0OZYPmtrsJ1iwap04/d2CGB3ER941nhsqKg34jHdHQ/+AQ+GGtdv/FjWgs3D
+         mE6CTgQeI73SM6dDuQhdHf9lJGCj3WFL7F8YgK/ic6d/S+ItEFdbTeOHtiPbiy9wc3h+
+         3idBHqjYqgAaOyxzLJNWWxRV/NA+ITwglzkQOlbkHZw9Q5z8yjj9OBTI1wo5GkUa62hr
+         WkTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=wvJ2Bj5igWJHkhlKgwXphX2XEEepvMEsNXVHe8pcWJA=;
-        b=SYsvnIokgKNaxkAyBjKedR7yqv+f+qTektVCjNtgpQu2oSmkz4pWMp0+PzgccMaEBy
-         OyKkcxD8zqmjfQL9Nn+q4dmAAGy2+p0TsVHnreaos/Jcako6OIqhQTKsgy3QyK8qCHah
-         jfeBmA6C6nJuQwaFl1Kc9cZKSqGcgiG4soup4ZNNGHiDlbRpVlgYCZUVfNQCW45UsQcy
-         jRe4SzIq+hGdxX6uueeRwq4ap4wS/Q/qV7JIjFnWLxjSvx+xX3LDeeQmEXiT6ftMb/9Q
-         cdBxgpw0Js+5lXhG7Uqu9f1mAY8fQISIcYSTLKL4ajGcwwR38evrUOKPJk8OHgEgDq1r
-         /9+Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5pcs5rVYYWTe1wsOB9ATbEmtsmSIbU5zUtrKNqRUMnQ=;
+        b=G8nmAdElfAAh4rz2AO6xv/PhFZG/Eb/lEPLkbWSZ6U9QB11e+F8/n49z9CjjlS/j5f
+         VKf5ApDlRyK/NNKjT2vMJ6k8ZGFHZoxIE6Ar7F6B8defyLja9GA4mH4iDCVg1N0P7RrY
+         V7M0J1O4La+zhvspde8OCZLnJydA05E7iU32qV8OiNe9mlXdkwJGcT7BUR8T/Ij9Vs+f
+         JYs8dTuCsdKdJCP1LrYmsB55FtGOoxNJC9hIXh59CyonPNMpYTEfFBOj3OB0kHQT+hR1
+         vaavUPNa/E2auve8s5MTmccmO00EFMO4MFiIjnCWjh1/4nZVrGxvVrHGvmOrcpLhOhpC
+         6Rvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa71TTKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r12-20020a67cd8c000000b00425bfba0cf9si830421vsl.510.2023.03.17.10.37.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrJWeBSP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e19-20020a170902ed9300b001a05156bd1asor1209637plj.188.2023.03.17.10.26.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Mar 2023 10:37:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 17 Mar 2023 10:26:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fa71TTKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pdE0F-0006cA-2q; Fri, 17 Mar 2023 13:36:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pdE0D-0006bj-MU
- for qemu-arm@nongnu.org; Fri, 17 Mar 2023 13:36:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pdE0C-0005MH-31
- for qemu-arm@nongnu.org; Fri, 17 Mar 2023 13:36:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1679074587;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wvJ2Bj5igWJHkhlKgwXphX2XEEepvMEsNXVHe8pcWJA=;
- b=Fa71TTKUGyOsNnHwzV+EJW5cTjMJju7Sxlu/GOYqTam3poPZW7jDrmW/Xu0vcEZE8V2xxD
- OOXMzTG5nqwwIT9c8TULRDw7DhkFix9TaJJuQwmIz1QZ6oLRkccQSClIHP0QXVrbm07tY5
- C28TQgdQF4JXrXj46YtEr8q1gtQ0wh4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-615-p5rLG8DkNXq7E-pqhnp7Vw-1; Fri, 17 Mar 2023 13:36:26 -0400
-X-MC-Unique: p5rLG8DkNXq7E-pqhnp7Vw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- bi27-20020a05600c3d9b00b003e9d0925341so2549814wmb.8
- for <qemu-arm@nongnu.org>; Fri, 17 Mar 2023 10:36:25 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrJWeBSP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679074000;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5pcs5rVYYWTe1wsOB9ATbEmtsmSIbU5zUtrKNqRUMnQ=;
+        b=SrJWeBSPWydRGoa15c33zsI+mNdxjSBmmiHrWu3nZfAMzSP6dkKFdLvRGdz2mZE5tx
+         igN1CR10p1nLPYZ3kGRJBWt195ZhIEv+Gi5KM9AMPF/5LEqPGriZNrqYrb7um/RDaBkR
+         6rz/5IrToRLBxQfFfulTs29W+InF05+oGU7GyNY/KLQyDA8a6TWB/8+ESGCPg5veFcWP
+         Cxc4VsjTANFeGY4BQ8mrXJVv6pgisrQ9got6wuuujmTvpXVKIwG47NETbd5lp1KdPSSZ
+         kdXBxSWU9o5ACT6UrG5gQ/M895VKh/rbmXIX8YNmE5L37FZ4+Pa2fi0TG9oV7M6kYJnc
+         KULA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679074585;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wvJ2Bj5igWJHkhlKgwXphX2XEEepvMEsNXVHe8pcWJA=;
- b=ZCxXEM4LBh/v8R0Qs0gD3+1oHdfXfMmfdAJKOC7/r32YCOjHWlYm4q2VbQap00klVq
- fc+5EAJ4CQS2IYsOjSj650+mAlg27Fvh+scex11PshTvsb5MG94Oc2GO5bTJUFrynAtn
- qGvCh43a5vksAy1br5+SFQpN0vSpRQ3c6CdvMnVDX7Jc21ubUAe6XBjtOrqkcoqizdC7
- fY0kCsojguXotIcgZFUsR/FeLml8V22wpIU0hUSl0+0JN4zscJmjjyGH3G0BXT8KE60J
- ASWO89Qm9V6trSCBZC4hnMyIctyZYjuEuwkxQ0Ql4aSjEE+b+oByHazdeuG7O7Y+E8i0
- bC2w==
-X-Gm-Message-State: AO0yUKXEBexY7JmAU5kOXweH7fAiQbOym6jcmOh1lVqFNF8j6bKpYR7K
- Buunl5An3+K/hDFmkmYP9GDmyaApERUxYAxEXirnkcQUvjJZfJHUAh2x/8H7MgygPg2wSrq4Y86
- g2rKXCSrrU1tA
-X-Received: by 2002:adf:e941:0:b0:2ce:e571:5cc3 with SMTP id
- m1-20020adfe941000000b002cee5715cc3mr3261675wrn.28.1679074585155; 
- Fri, 17 Mar 2023 10:36:25 -0700 (PDT)
-X-Received: by 2002:adf:e941:0:b0:2ce:e571:5cc3 with SMTP id
- m1-20020adfe941000000b002cee5715cc3mr3261660wrn.28.1679074584883; 
- Fri, 17 Mar 2023 10:36:24 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- n2-20020adffe02000000b002cfeffb442bsm2449773wrr.57.2023.03.17.10.36.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Mar 2023 10:36:24 -0700 (PDT)
-Message-ID: <afcc10e8-b983-1b67-c4fb-38fdcb3acd6d@redhat.com>
-Date: Fri, 17 Mar 2023 18:36:22 +0100
+        d=1e100.net; s=20210112; t=1679074000;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5pcs5rVYYWTe1wsOB9ATbEmtsmSIbU5zUtrKNqRUMnQ=;
+        b=YcFQXtvfd8LGULwE73yTtDgaTXjG0JiCBCr9Pg2lz6J1Y7ngJcM+tMbmc/we8tPwSg
+         lSINChz9B2Sc5tg0LyikbwApqN0g5BHP3rfp8BV7S0aMgmig/GSHnaWgSpQBJe/UmVx8
+         6o4tRym5aWhM5B4cmI1lBG4MM5vaL6VWkWpeNq67ebZivcYepA5KDgLumfDAHsvjsQeh
+         Kxfu0igO+aICUvF+IzR1FLC8SIA6MhKRudhg+XXR9xPWc1TO0U1efq77jBb0sT2f/trY
+         QzDIquuSBPEuFWslNku/OpfP64jH2NndbgcTG/WgYgvf42NUB3bSjJCiGqNTWtYRBIQ2
+         Cvbw==
+X-Gm-Message-State: AO0yUKXHkTVD9lQXl5ADgJXi1b8YG3zYqg6DW0nNHalOJ3qrrw93ehg5
+	8XCGaJ3oHnwd6MSQK4KQcNXbcJlF5N7XSGZADrtes+CdjtBf+sZam28=
+X-Google-Smtp-Source: AK7set/FX6uHPZzkdm2rj6m+WnLJQrvP8NuuqcuC/2JWBLVt/kVuZ64qZhDLriL8YOzL8aANKLe2WkhUDBMtTk/qF3o=
+X-Received: by 2002:a17:903:234e:b0:19a:5953:e85c with SMTP id
+ c14-20020a170903234e00b0019a5953e85cmr1582123plh.1.1679074000396; Fri, 17 Mar
+ 2023 10:26:40 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [RFC PATCH v2 02/11] hw/arm/smmuv3: Update translation config to
- hold stage-2
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-References: <20230226220650.1480786-1-smostafa@google.com>
- <20230226220650.1480786-3-smostafa@google.com>
- <0f65997a-9b35-6e41-3960-c5de6ac13ec9@redhat.com>
- <ZBR8rjjP+qQoNUaC@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <ZBR8rjjP+qQoNUaC@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: giufBz75I07m
+References: <20230317165057.1522743-1-peter.maydell@linaro.org> <87ilez70mt.fsf@linaro.org>
+In-Reply-To: <87ilez70mt.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Mar 2023 17:26:29 +0000
+Message-ID: <CAFEAcA9qt9UToEjX7r2MWCLZ3i-zyPPgQHFvFUyLXCHF6QUKXg@mail.gmail.com>
+Subject: Re: [PATCH for-8.0] target/arm: Don't advertise aarch64-pauth.xml to gdb
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	Richard Henderson <richard.henderson@linaro.org>, Luis Machado <luis.machado@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: k8F+x+dRQL6V
 
-Hi Mostafa,
+On Fri, 17 Mar 2023 at 17:23, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > Unfortunately a bug in older versions of gdb means that they will
+> > crash if QEMU sends them the aarch64-pauth.xml.  This bug is fixed in
+> > gdb commit 1ba3a3222039eb25, and there are plans to backport that to
+> > affected gdb release branches, but since the bug affects gdb 9
+> > through 12 it is very widely deployed (for instance by distros).
+> >
+> > It is not currently clear what the best way to deal with this is; it
+> > has been proposed to define a new XML feature name that old gdb will
+> > ignore but newer gdb can handle.  Since QEMU's 8.0 release is
+> > imminent and at least one of our CI runners is now falling over this,
+> > disable the pauth XML for the moment.  We can follow up with a more
+> > considered fix either in time for 8.0 or else for the 8.1 release.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Queued to pr/170323-for-8.0-1, thanks.
 
-On 3/17/23 15:43, Mostafa Saleh wrote:
-> Hi Eric,
->
-> Thanks for reviewing the patch.
->
-> On Fri, Mar 17, 2023 at 12:37:11PM +0100, Eric Auger wrote:
->> Hi Mostafa,
->>
->> On 2/26/23 23:06, Mostafa Saleh wrote:
->>> In preparation for adding stage-2 support, add a S2 config
->>> struct(SMMUS2Cfg), composed of the following fields and embedded in
->>> the main SMMUTransCfg:
->>>  -tsz: Input range
->>>  -sl0: start level of translation
->>>  -affd: AF fault disable
->>>  -granule_sz: Granule page shift
->>>  -vmid: VMID
->>>  -vttb: PA of translation table
->>>  -oas: Output address size
->>>
->>> They will be used in the next patches in stage-2 address translation.
->>>
->>> No functional change intended.
->>>
->>> Signed-off-by: Mostafa Saleh <smostafa@google.com>
->>> ---
->>> Changes in v2:
->>> -Add oas
->>> ---
->>>  include/hw/arm/smmu-common.h | 11 +++++++++++
->>>  1 file changed, 11 insertions(+)
->>>
->>> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
->>> index 9fcff26357..2deead08d6 100644
->>> --- a/include/hw/arm/smmu-common.h
->>> +++ b/include/hw/arm/smmu-common.h
->>> @@ -58,6 +58,16 @@ typedef struct SMMUTLBEntry {
->>>      uint8_t granule;
->>>  } SMMUTLBEntry;
->>>  
->>> +typedef struct SMMUS2Cfg {
->>> +    uint8_t tsz;            /* Input range */
->> nit: Size of IPA input region. Called t0sz
-> I named it this way to be similar to stage-1, as SMMUTransTableInfo
-> just calls it tsz, I guess that is because it can hold either t0sz or
-> t1sz.
-> I can rename it for stage-2 to t0sz.
-no strong opinion though, you can simply add this in the comment
->
->>> +    uint8_t sl0;            /* Start level of translation */
->>> +    bool affd;              /* AF Fault Disable */
->>> +    uint8_t granule_sz;     /* Granule page shift */
->>> +    uint8_t oas;            /* Output address size */
->> called s2ps. if you don't want to rename you may add this in the comment.
-> This is not the S2PS parsed from the STE, but the effective value which is
-> capped to SMMU_IDR5.OAS, which is used for checking output size, I can add
-> a clarifying comment.
-ok
->
->> I am suprised to not see S2R which would match S1 record_faults.
-> I was thinking about this also, right now we piggy back on record_faults
-> in SMMUTransCfg.
-> But it makes more sense to separate this from the beginning as other
-> fields. I will update that by adding record_faults field in SMMUS2Cfg.
-ok
->
->> Also without further reading we can wonder wheter the parent
->> iotlb_hits/misses also record S2 events?
-> For iotlb_*, they are shared also. However, I think this is not important for now as
-> it is not architectural, and it produces the correct output as only one
-> stage is advertised at the moment.
-> When nesting is supported, TLB implementation might change and then we
-> can take a decision about this.
->
->> I think we need to be/make clear what fields of the original S1 parent
->> struct also are relevant for the S2 only case.
->> Maybe tag them with a specific comment S1-only or S1 | S2. It may be
->> cleaner to introduce a union and common fields in the parent struct though.
-> I agree, maybe we encapsulate stage-1 only fields in a similar struct
-> and leave common fields outside.
->
-> struct SMMUTransCfg:
-> 	stage, bypassed, disabled, iotlb_* //common fields
-> 	struct SMMUS2Cfg
-> 	struct SMMUS1Cfg
-> 		ttb,asid....
->
-> Or we can add SMMUS1Cfg and SMMUS2Cfg in a union for now and when nesting is supported we
-> separate them.
+I'll take this via target-arm.next, so please unqueue this one.
 
-yeah that would be cleaner but it is also more invasive. At least make
-it clear in the comments and commit msg what is used for each stage.
-
-Thanks
-
-Eric
->
->
-> Thanks,
-> Mostafa
->
-
+-- PMM

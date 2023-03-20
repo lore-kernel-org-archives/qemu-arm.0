@@ -1,169 +1,202 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2832519ejb;
-        Mon, 20 Mar 2023 06:51:29 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9P1VOqhMkC9LrEMMQVaxkWscbdk9vEemjKvbIupIfvOyE1xll3rzM7blgqHOjan48v9XNG
-X-Received: by 2002:a05:622a:1a82:b0:3e3:7368:b0f1 with SMTP id s2-20020a05622a1a8200b003e37368b0f1mr1832563qtc.19.1679320289007;
-        Mon, 20 Mar 2023 06:51:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679320288; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2867124ejb;
+        Mon, 20 Mar 2023 07:23:54 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9DgBMgOQxjlDtgdgP2vuWA20PeCv9XZkIlsTe9QjE8n01G03u8RsGcWVXAISjUWtjQCKMH
+X-Received: by 2002:a17:902:c701:b0:198:adc4:229d with SMTP id p1-20020a170902c70100b00198adc4229dmr10585308plp.24.1679322233717;
+        Mon, 20 Mar 2023 07:23:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679322233; cv=none;
         d=google.com; s=arc-20160816;
-        b=lRZjL00LtBeihjQQRdEhqKJ2OPkRkPhPmtsj4WLzgCV3SPiRejy6oiHEKZlmH/BKB9
-         xM4Ra5cdbk7kYHGmZm7HDTN9ZcpI7nI1VQac9kvIAABKD5WeFnWvu5a6FLcEtHGIo3eu
-         a/6pRkQfDrd6btJsE22M3uUQFqSCNADdOetiGd1T7sS4AO3bT5XJoneV6ExSJe3ByvCA
-         Bb6pleXJ1azoBWlgdHb0zPYvlL7ZM5OHFTuI+5oFMiJbMqXt8AC5tpNkBy6NwrsJtyRw
-         LY27mhzTYF16USqMABj1TwlWNkJvH26qZjCo3A3db8Oj2IeGRW2VE07eanXNi0FEnke8
-         /LwA==
+        b=t09QIQSkI0C4wy1nRvg6hdq9PXor0o3yJo1HF1pmeiOHe3dT6dUwY6891RvSxYta9B
+         uuEY0VPr1OI0txf9tDlfEATaHnuxnZiQSkMYRF2WHDFfoGXrpkjwBMn244xbAO62KvXt
+         MpwMFy6CyjYEbvDI5tyXoLw/nv5X2IUU2Z0BtB6dJUbbJIG7Ark+XPdJScgSULCknbI2
+         pYCazL7UuRCxiAy9yQ+vdbyoCaVhP/wwpO7pR7+We2GGO/xKjwC6uMtZpGSgn0SW+DRQ
+         Yn8UE21Nf16hs4AmaEccZv//PIoWmTT7LhftmG6Z2AzZO+Abc3aSGpvCywHereVU5JGF
+         ZQpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=kZu15T6cOb/YejN29+2I7YkNefrgcEHThEcYNk3wON0=;
-        b=VCWT+zJfe7QX3IrKaweWeht1c0jMJIZsIBgmwCQnfcrEyZ0664khYrHai0vc0cA71V
-         74d5b0KU99su2Rlck/fm6KIVZFNLb0amQGOjCA1gfTr0kQO8sfxy6GFjzFAJ4w6uFbha
-         O/Nh7fAz8J9+ioz0kQsfNJb+bM2mh1mfSLLDgwdUwFSuu20I6EJa9WchNZSAiJHpUR0V
-         jLPzPkri/i2Ia3S84o5AlE325CwZ2Ho183WJLsxu8Igr5PnewkwYRynM8WOoKP/iy0up
-         0lZqY4V5HqgZL+y8VbihIqD+/UcvYYJP4dD5C4sGLiw5JAoUv+j6vC29jxsKsxuTQhzs
-         I8gg==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=wDFPVnK26gTPvQ7OQnmaMHAo8uxTCxn0wjupc66n0+g=;
+        b=nQApjc56gW4r4hGOqkbX5jEURQu1SeePan8ftX3vGFqiog11r9o/Iwi7UVZhe0RqEu
+         QWwCQmZ4xzmsyou8itjmu56owT4AeMU1ETL4Zbp15nUSLQr1DDuu2aVvSpiOO/EbPQ9x
+         6SkOxAcbIiRMnO2eTWTIdzKX9qY3rqegx/mdJlq+D3CCRdtdtOU+y5KDMVxhNNZVnfQp
+         4IUoRtEOQBt9Bf1i3pjH83UJkfOW0Y7nZ/tqwRNZPMdNcP5aWpEa9uIsf8f62BfOOLpX
+         s0v8/5BLOiHRPe3LC78bMtim4G2sgfE+rRT4YFnutXvfEXxx20ab3FiZQ7kKy3W0yQhL
+         /NDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HGaIIyDG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs17-20020a05620a471100b0074576196164si6369376qkb.549.2023.03.20.06.51.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Mar 2023 06:51:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iupUAOLO;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id c20-20020a6566d4000000b005006397721fsi6112155pgw.859.2023.03.20.07.23.53;
+        Mon, 20 Mar 2023 07:23:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HGaIIyDG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1peFui-0000Cu-1J; Mon, 20 Mar 2023 09:51:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1peFug-0000Bv-TZ
- for qemu-arm@nongnu.org; Mon, 20 Mar 2023 09:51:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1peFuf-0006qY-9V
- for qemu-arm@nongnu.org; Mon, 20 Mar 2023 09:51:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1679320260;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kZu15T6cOb/YejN29+2I7YkNefrgcEHThEcYNk3wON0=;
- b=HGaIIyDGuE+zo7sCJyes0pZFBl/R6kGaPv4mj1L0RFEA9/AhTnqsbBpH+VUuVJ0ClsLPYH
- XwfhW5q06cd4skfzQRtGayxsqbijRDSby7PP8QKy//S3dSQKEBnmraHnfuMwBcv5EzlHux
- ptnAjpH2xojveTdwKgsXMmN0nONASFk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-135-gj-QwdmxNiasJTWFS99vTA-1; Mon, 20 Mar 2023 09:50:57 -0400
-X-MC-Unique: gj-QwdmxNiasJTWFS99vTA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 06BA9885621;
- Mon, 20 Mar 2023 13:50:57 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C20F8140EBF4;
- Mon, 20 Mar 2023 13:50:55 +0000 (UTC)
-Date: Mon, 20 Mar 2023 13:50:53 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH-for-8.1 2/5] block/dmg: Remove duplicated prototype
- declarations
-Message-ID: <ZBhkvQ1xt1m9VRJM@redhat.com>
-References: <20230320134219.22489-1-philmd@linaro.org>
- <20230320134219.22489-3-philmd@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=iupUAOLO;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S231688AbjCTOXv (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Mon, 20 Mar 2023 10:23:51 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:50376 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S231466AbjCTOXo (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 20 Mar 2023 10:23:44 -0400
+Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com [IPv6:2a00:1450:4864:20::331])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 70BBA1C330
+        for <kvm@vger.kernel.org>; Mon, 20 Mar 2023 07:23:42 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id i10-20020a05600c354a00b003ee0da1132eso1036773wmq.4
+        for <kvm@vger.kernel.org>; Mon, 20 Mar 2023 07:23:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1679322221;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wDFPVnK26gTPvQ7OQnmaMHAo8uxTCxn0wjupc66n0+g=;
+        b=iupUAOLOVvIo5M2FeGbu2pABScMqZ1WtjEgwgzAmbLp8n1wBphdMsJVh/nBr2ctxaq
+         niYu4FF+KJTk+QSzJev4lNK//Wy/Yhv2xD0lLuBLZslRJqBIMiTdxNYJxSEs1KxrsHJR
+         HXKgVtUZ7tM96cRGbKte3pAoXlUVUeGIklTPLppMnqAsDyzgnvesrxlGGjLmAxHwP2Z8
+         oOTJXlxwRgHOZRq+NQU2XjlOeW0QinUZw0n+V/hg5OrnJccCE8/JVuMQzPi0BC01UBxH
+         +gRQI2RsNKHxJHJ8loygXyNNQB1Q6krKKZ6IgKVxC7ORtE9QtzBgoDcVrwecwQ2JsPM+
+         E8LQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679322221;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wDFPVnK26gTPvQ7OQnmaMHAo8uxTCxn0wjupc66n0+g=;
+        b=tje68CDGxUsI55v8WqR5ed3fFgQBNwXYpn9f5H96iBNFui/emI4yvC5hNxgYdtxTkp
+         uNJFHQH6lxG6Q3qkgDvE4xzShAd81HmknxU5jDd30f0JHJfk7EtqLO2nqOoVZjPdZldG
+         EqroMUxGBbMa4/Bk1Cm4HIZ1eKoD8NGCw/NPisn8IetcZKjp8Izi30V4E7YoAiwgPiP3
+         UGIZLiPVL29MM376VFg5dxVyilkwh4JqOzCcE8/I463eweE35xeZq01kxkPX/WRJo8zj
+         Jt4G+ZD0RUvgTJA7+wbnzi5g8cpcrjRBARyCg7TxioOGwtHjE8UJkyizCbC5jDdLJuwc
+         D13Q==
+X-Gm-Message-State: AO0yUKWlVcWBmOtoUQ+kyIF80+zKdizZ9Pg7S6nvdDFCNz7KF851SaZs
+        7jVHZWQ+q65Ffs7uhVQBuvTIzg==
+X-Received: by 2002:a05:600c:3b24:b0:3ed:296b:4899 with SMTP id m36-20020a05600c3b2400b003ed296b4899mr26844308wms.15.1679322220744;
+        Mon, 20 Mar 2023 07:23:40 -0700 (PDT)
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id p9-20020a1c5449000000b003dc1d668866sm16596895wmi.10.2023.03.20.07.23.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 07:23:40 -0700 (PDT)
+Message-ID: <cdf53d5e-d74d-9316-f1bc-3efc36e1c3bc@linaro.org>
+Date:   Mon, 20 Mar 2023 15:23:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.9.0
+Subject: Re: [PATCH-for-8.1 4/5] bulk: Do not declare function prototypes
+ using extern keyword
+Content-Language: en-US
+To:     =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+        Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+        Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Paul Durrant <paul@xen.org>,
+        =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Andrew Jeffery <andrew@aj.id.au>,
+        Joel Stanley <joel@jms.id.au>,
+        Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Eduardo Habkost <eduardo@habkost.net>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Stefan Weil <sw@weilnetz.de>, Riku Voipio <riku.voipio@iki.fi>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        xen-devel@lists.xenproject.org, kvm@vger.kernel.org
+References: <20230320134219.22489-1-philmd@linaro.org>
+ <20230320134219.22489-5-philmd@linaro.org> <ZBhkIjelEtR7lckj@redhat.com>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <ZBhkIjelEtR7lckj@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230320134219.22489-3-philmd@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l5OOy9DuqcH2
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Bes+VlmuTvIP
 
-On Mon, Mar 20, 2023 at 02:42:16PM +0100, Philippe Mathieu-Daudé wrote:
-> Both dmg_uncompress_bz2 / dmg_uncompress_lzfse are declared
-> in "dmg.h", included 1 line before.
+On 20/3/23 14:48, Daniel P. Berrangé wrote:
+> On Mon, Mar 20, 2023 at 02:42:18PM +0100, Philippe Mathieu-Daudé wrote:
+>> By default, C function prototypes declared in headers are visible,
+>> so there is no need to declare them as 'extern' functions.
+>> Remove this redundancy in a single bulk commit; do not modify:
+>>
+>>    - meson.build (used to check function availability at runtime)
+>>    - pc-bios
+>>    - libdecnumber
+>>    - *.c
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   block/dmg.h                    |  8 +++----
+>>   bsd-user/bsd-file.h            |  6 ++---
+>>   crypto/hmacpriv.h              | 13 +++++------
+>>   hw/xen/xen_pt.h                |  8 +++----
+>>   include/crypto/secret_common.h | 14 +++++-------
+>>   include/exec/page-vary.h       |  4 ++--
+>>   include/hw/misc/aspeed_scu.h   |  2 +-
+>>   include/hw/nvram/npcm7xx_otp.h |  4 ++--
+>>   include/hw/qdev-core.h         |  4 ++--
+>>   include/qemu/crc-ccitt.h       |  4 ++--
+>>   include/qemu/osdep.h           |  2 +-
+>>   include/qemu/rcu.h             | 14 ++++++------
+>>   include/qemu/sys_membarrier.h  |  4 ++--
+>>   include/qemu/uri.h             |  6 ++---
+>>   include/sysemu/accel-blocker.h | 14 ++++++------
+>>   include/sysemu/os-win32.h      |  4 ++--
+>>   include/user/safe-syscall.h    |  4 ++--
+>>   target/i386/sev.h              |  6 ++---
+>>   target/mips/cpu.h              |  4 ++--
+>>   tcg/tcg-internal.h             |  4 ++--
+>>   tests/tcg/minilib/minilib.h    |  2 +-
+>>   include/exec/memory_ldst.h.inc | 42 +++++++++++++++++-----------------
+>>   roms/seabios                   |  2 +-
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  block/dmg.c | 6 ------
->  1 file changed, 6 deletions(-)
+> Accidental submodule commit.,
 > 
-> diff --git a/block/dmg.c b/block/dmg.c
-> index e10b9a2ba5..a5d22fb8f9 100644
-> --- a/block/dmg.c
-> +++ b/block/dmg.c
-> @@ -31,12 +31,6 @@
->  #include "qemu/memalign.h"
->  #include "dmg.h"
->  
-> -int (*dmg_uncompress_bz2)(char *next_in, unsigned int avail_in,
-> -                          char *next_out, unsigned int avail_out);
-> -
-> -int (*dmg_uncompress_lzfse)(char *next_in, unsigned int avail_in,
-> -                            char *next_out, unsigned int avail_out);
-
-These aren't prototypes, they are variables that hold a funtion
-pointer. The header has them as 'extern' to avoid the variables
-being instantiated more than once if the header is included many
-times. This code is correct as-is, and so this change is not
-desirable.
-
-> -
->  enum {
->      /* Limit chunk sizes to prevent unreasonable amounts of memory being used
->       * or truncating when converting to 32-bit types
-> -- 
-> 2.38.1
+>>   23 files changed, 84 insertions(+), 91 deletions(-)
+>>
+>> diff --git a/block/dmg.h b/block/dmg.h
+>> index e488601b62..ed209b5dec 100644
+>> --- a/block/dmg.h
+>> +++ b/block/dmg.h
+>> @@ -51,10 +51,10 @@ typedef struct BDRVDMGState {
+>>       z_stream zstream;
+>>   } BDRVDMGState;
+>>   
+>> -extern int (*dmg_uncompress_bz2)(char *next_in, unsigned int avail_in,
+>> -                                 char *next_out, unsigned int avail_out);
+>> +int (*dmg_uncompress_bz2)(char *next_in, unsigned int avail_in,
+>> +                          char *next_out, unsigned int avail_out);
+>>   
+>> -extern int (*dmg_uncompress_lzfse)(char *next_in, unsigned int avail_in,
+>> -                                   char *next_out, unsigned int avail_out);
+>> +int (*dmg_uncompress_lzfse)(char *next_in, unsigned int avail_in,
+>> +                            char *next_out, unsigned int avail_out);
 > 
+> These are variable declarations, so with this change you'll get multiple
+> copies of the variable if this header is included from multiple source
+> files. IOW, the 'extern' usage is correct.
+
+Doh indeed, good catch, thanks.
+
+>> diff --git a/roms/seabios b/roms/seabios
+>> index ea1b7a0733..3208b098f5 160000
+>> --- a/roms/seabios
+>> +++ b/roms/seabios
+>> @@ -1 +1 @@
+>> -Subproject commit ea1b7a0733906b8425d948ae94fba63c32b1d425
+>> +Subproject commit 3208b098f51a9ef96d0dfa71d5ec3a3eaec88f0a
 > 
+> Nope !
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Oops...

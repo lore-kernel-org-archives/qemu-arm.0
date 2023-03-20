@@ -1,112 +1,111 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3145363ejb;
-        Mon, 20 Mar 2023 11:53:27 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/9VJ5HB3nHmwy66EYBQMd/PlaeD4CU11FFDIz4s7fwm5NtY8QAKM5cmIDQKWCx6VRXXbQX
-X-Received: by 2002:ac8:5941:0:b0:3df:6b5:d12c with SMTP id 1-20020ac85941000000b003df06b5d12cmr324352qtz.32.1679338407354;
-        Mon, 20 Mar 2023 11:53:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679338407; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3162499ejb;
+        Mon, 20 Mar 2023 12:11:34 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/OWIkY476Flt54pFxeDAT1d7KTrB8jppVLRpaPTumimCmCe+vJ4s8gOzTuo/9i+eT5og/V
+X-Received: by 2002:a05:622a:11:b0:3bf:d950:efc4 with SMTP id x17-20020a05622a001100b003bfd950efc4mr436395qtw.26.1679339493726;
+        Mon, 20 Mar 2023 12:11:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679339493; cv=none;
         d=google.com; s=arc-20160816;
-        b=NAoxHJP226p5bxluAOXdfdz5hRXB6K7nz8rEy7duEar92Y7xR3GHqi5an5C9xRSKPF
-         BV8ClYT9I2Z10Gg4VQ48PrmFj6PXCXOna/DGdI7vAM/2A+NAJefc11tJU6zMa2D5LIBb
-         58nVT8qZlyFEm/iZWrKByhxDkKiDyRzQni4KBfV2dteuEwD6GJ5pzMLAe9mSV1+UYzyg
-         J+Zvr+S7YRivXchwH7e2Hk53sA0K2Q3ySPpeL0uR6NmxmyKBNkzXCHIehjKuxq4bsbHH
-         HhxFe0h7I2RXt1KkxjvaswewatlMByxODvFy9o2Hf7FaIRKE7q5AvNxqf101PnvVxupV
-         2JSg==
+        b=INkmY1X6ppy+Swe4wYAXsfBsfZUaCNxbGmk1LNVRXJJgvRJj7tmOOz4O6ZmDec5SIr
+         HzeMxRkYPuJwvV6qO82O20W2U5eF6JOirMvbnpNg8RQ46a1funL/yD/xCpS11Y0ikpUO
+         CYntUD2jhnO0OuGYIreAp6CiBxu3N3hGok4GBhEzBhdQEkNknOoZCVtRwV4rH0eR3R49
+         N0Qr2W8xArrsSsAtCtBG+KbueqXR/49IpVQEL9v+3WS0MF0voTN+OXqK6hcIVvx8SSdq
+         eVmWr5xIwEjJmOOtDTihh9wwd+MpQJwf980JHsUGo4jk2o8xSkJUNsNiZ1bo3HjRk4bB
+         Jcjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=PmHDZ0OSX45EnJkygiw9fM3a/jrVjyyOOyV2AmOTDyo=;
-        b=oTKuqtgsCymphKh4PUq/VHBegBYmrfJaASvFd2BUud1czmeAZv1553AjB4f5+/FUV8
-         5spj//sUUkN6aN/9CwkpuLp2Cxz2grGafD6H3vzJBx2VGSbQWLgfmnop565VErNjuXO7
-         up78AWd1ho/q2qFBUc0WSHjvnqM/UBvwV072NTwcPkRjKCBAleUMEc8UFnxroF7/xqf7
-         Dzr6CPKNCwSw4ZB/oQAgdlrFwVmVXHksv7mepoXPfWfxTTVUaaYvmbUFfVsPku24zfns
-         NjDy3+eYBw5whe8aNAwaqFDHvPQzma4M0Cemv0dwmL4giA2BenLXEfh1YVSNSXRejMfj
-         9hcg==
+        bh=3k2pufkI2RN8MkooSlodlD8P4CIEqGF0dM0yG36Lhek=;
+        b=u1GkkM6vfiq8+dWBCkNEUuxarmo1aK778nYuibwyoTok3rMm24k/m/pzBi1dEih+zz
+         4ua1b2/eAR+8Jf1akNPq5Gd+yrTLP3sCpSfuunWBdV88iKJxjQE+jf+koFz/djBdPyFQ
+         dnXO6o20CL+wRyOTQUzf549TQGlaH6W43y3f9QaSQkCMWe5qr1SYL9sZKSL7r329u3Ft
+         j9E5ONxGlfrtirsitqyrLLZWKNBIlr1p78ah3ow9Py6fHjLCCOsQTsYfx1xqGK2lmVKn
+         hqPGX8DeXIqYdHJG4+9DPcfubbEybvUWJZNLu0oWIVi21m3ndecoUK2kYNrImYOnPN7C
+         1bgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dZbiDhWn;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=loNpJBQa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x22-20020a05622a001600b003b9f2bffbbasi1864370qtw.327.2023.03.20.11.53.27
+        by mx.google.com with ESMTPS id b4-20020ae9eb04000000b007469b69c915si21128qkg.314.2023.03.20.12.11.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Mar 2023 11:53:27 -0700 (PDT)
+        Mon, 20 Mar 2023 12:11:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=dZbiDhWn;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=loNpJBQa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1peKct-0006p0-Hi; Mon, 20 Mar 2023 14:52:59 -0400
+	id 1peKuh-0003sO-KL; Mon, 20 Mar 2023 15:11:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1peKcs-0006ob-8K
- for qemu-arm@nongnu.org; Mon, 20 Mar 2023 14:52:58 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1peKuf-0003s3-D8
+ for qemu-arm@nongnu.org; Mon, 20 Mar 2023 15:11:21 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1peKcq-0007vA-7F
- for qemu-arm@nongnu.org; Mon, 20 Mar 2023 14:52:58 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3ec1e8c4cacso100065e9.1
- for <qemu-arm@nongnu.org>; Mon, 20 Mar 2023 11:52:55 -0700 (PDT)
+ id 1peKud-0006Gu-FW
+ for qemu-arm@nongnu.org; Mon, 20 Mar 2023 15:11:21 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3ed2a586c34so173555e9.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Mar 2023 12:11:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1679338374;
+ d=google.com; s=20210112; t=1679339478;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date:from:to
  :cc:subject:date:message-id:reply-to;
- bh=PmHDZ0OSX45EnJkygiw9fM3a/jrVjyyOOyV2AmOTDyo=;
- b=dZbiDhWnp89Xo9mP9tl7A4G3EPTKUbC1Hu6fCVlN1ws0Jb/luOstnN2pxieac9r9Zd
- dAVJcoL9srlKXgnsvpa2o9XfDpxVBloqjdSBjU9ETpGXaRYMpObkXhCSHbldDEbdKtlI
- dcduPYGIEEoaceX/eczB5ZAuV1x67Co8pumMTEdUoJFWOfNyNnmjRQpfqKqEJKLBGKaJ
- Fak90O+riguFxx5HXOr9g9cGGFEqGG92ArXkBQ+D2o5nhOz+UhsHOn3SUr2EW9pTmAbk
- Jo8k+iwqudabv1pXywZyvZKFDM24z/t2OVZVCXNguzDcyHjAY0bTRN0wHQ5Zm2RXlLuE
- ieBQ==
+ bh=3k2pufkI2RN8MkooSlodlD8P4CIEqGF0dM0yG36Lhek=;
+ b=loNpJBQarXegEUu73aMra6cWxNwfAHLWwqt0cv2sUckAwSN3gr8snU3BvyUxDnKHT+
+ wugcF9HZpyPrgEzoYjPWB+XBJZyzjVQpLwQU3ipy1XqQzrkrd42s3h6jVKEd0iOU8FN0
+ oHk23lzcsgSScP7UUiDiYqFYgVnTJI0iEff75ojmXDXrdSP2Q710w4kyLlM29jrUvrSQ
+ 9IP3GxXzMQbOzo/a0+7MAPkB+tp2XjxzVd1hnMCaFQ12IXjw5s1u7kfIl1l624yXzc6I
+ sKSuGdSkxwr7h6lV8YVa8/40lCwxhLu4CkyCjDyaSWplqZGJmRtHkW5sSNpRCRc3N1e+
+ Kthw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679338374;
+ d=1e100.net; s=20210112; t=1679339478;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PmHDZ0OSX45EnJkygiw9fM3a/jrVjyyOOyV2AmOTDyo=;
- b=4wAnxcSI5eognitHodwqvNx3SOJH7LiJZK9T81nDs6hvZHgJdA2vogQvsXt6lpOSot
- tRlfGxVtwcXbs1Wq2ohi6WAMQQIXSd3UHxnL9UZfLJ7VlJo8ZjLcaN7mnoGk8n90i988
- H4H1LoDEcROSBZYpd3SqsBBe46iCmMXcEBR3LM3K3YamX6i3Ga0M688BWPKq4TBjhsIg
- sABFpOslvzJ3J/uy6jrPgsyqwBncYOCMAw6eEKKoGVQVY3BuUJ8CVrv3EJWz1qXRcFyJ
- xXyudWeA6wuDGdT8iJbVqhT1516Borv0203ZZqpZ4fhjzEZg9M5OtgQaZWrCFUjKh1V7
- g66w==
-X-Gm-Message-State: AO0yUKVGRpndhzm3jwEnPA2zyRJuohXWHWYKOfnIEoo3pvbs0nGCTKck
- GrmAMQH1ssjnkfVPUPrw2+2c7g==
-X-Received: by 2002:a05:600c:4744:b0:3ed:8826:256e with SMTP id
- w4-20020a05600c474400b003ed8826256emr23752wmo.1.1679338374015; 
- Mon, 20 Mar 2023 11:52:54 -0700 (PDT)
+ bh=3k2pufkI2RN8MkooSlodlD8P4CIEqGF0dM0yG36Lhek=;
+ b=XGaHGfeSlqupQDeV5JzqTNlvrYS/4M/xe84F76KJF0+813KL3+eB8W4KAatOgBjl64
+ V1agK5sc2g4sH/LcUGWGcWfbglkc4S+Hk4P/Ajvt6yucDdUk8JoLTFSS2jhtnWlWYTne
+ mwOxYYAVTslzw4DbwWc9uhZypK7Gh5b1q9Bwv55W1fIiOn43GwmZKQFOEBu1HG1qZtDk
+ PovWNEgA0YQBc9vqP4uMk0npj4y03YV+p3LihimLOY94sbchBh5cmaWrnDj7+9zFHKRF
+ Frlrl4NYDwkqkyg9IaJoeca1EhlWVXgHx9gzHp49lm7M8E+cNXrqm1M8IiKnCmHGSroK
+ 0d7A==
+X-Gm-Message-State: AO0yUKVAk+jhO4+eOlgrtyJTHo/zt7sMDq2ej1Fi0JYGSRKLxCyUZlwN
+ KWCgAoU1ygpO6kRvQyP64I0LdQ==
+X-Received: by 2002:a05:600c:45c3:b0:3df:f3ce:be47 with SMTP id
+ s3-20020a05600c45c300b003dff3cebe47mr29468wmo.6.1679339477732; 
+ Mon, 20 Mar 2023 12:11:17 -0700 (PDT)
 Received: from google.com (44.232.78.34.bc.googleusercontent.com.
  [34.78.232.44]) by smtp.gmail.com with ESMTPSA id
- q13-20020a05600c46cd00b003e1202744f2sm17637628wmo.31.2023.03.20.11.52.53
+ n1-20020a5d67c1000000b002cfe685bfd6sm9575281wrw.108.2023.03.20.12.11.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Mar 2023 11:52:53 -0700 (PDT)
-Date: Mon, 20 Mar 2023 18:52:49 +0000
+ Mon, 20 Mar 2023 12:11:17 -0700 (PDT)
+Date: Mon, 20 Mar 2023 19:11:12 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
  peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-Subject: Re: [RFC PATCH v2 04/11] hw/arm/smmuv3: Add page table walk for
- stage-2
-Message-ID: <ZBirgXmGvvJ4Cguu@google.com>
+Subject: Re: [RFC PATCH v2 05/11] hw/arm/smmuv3: Parse STE config for stage-2
+Message-ID: <ZBiv0ChrGV6Fkca+@google.com>
 References: <20230226220650.1480786-1-smostafa@google.com>
- <20230226220650.1480786-5-smostafa@google.com>
- <2432f1f4-6cb8-3811-86cf-ee856fe9b3d8@redhat.com>
+ <20230226220650.1480786-6-smostafa@google.com>
+ <de65ac97-7566-98a1-052c-f175a950e995@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2432f1f4-6cb8-3811-86cf-ee856fe9b3d8@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=smostafa@google.com; helo=mail-wm1-x331.google.com
+In-Reply-To: <de65ac97-7566-98a1-052c-f175a950e995@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -129,181 +128,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sduqJO/v24Vr
+X-TUID: DYM4rtQgq0Gl
 
 Hi Eric,
 
-On Mon, Mar 20, 2023 at 03:56:26PM +0100, Eric Auger wrote:
+On Mon, Mar 20, 2023 at 04:14:48PM +0100, Eric Auger wrote:
 > Hi Mostafa,
 > 
 > On 2/26/23 23:06, Mostafa Saleh wrote:
-> > In preparation for adding stage-2 support, add Stage-2 PTW code.
-> > Only Aarch64 format is supported as stage-1.
+> > Parse stage-2 configuration from STE and populate it in SMMUS2Cfg.
+> > Validity of these value are checked when possible.
+> s/these value/field values
+Will do.
+
 > >
-> > Nesting stage-1 and stage-2 is not supported right now.
+> > Only AA64 tables are supported and STT is not supported.
+> Small Translation Tables (STT)
+Will do.
 > >
-> > HTTU is not supported, SW is expected to maintain the Access flag.
-> > This is described in the SMMUv3 manual "5.2. Stream Table Entry" in
-> > "[181] S2AFFD".
-> > This flag determines the behavior on access of a stage-2 page whose
-> > descriptor has AF == 0:
-> > - 0b0: An Access flag fault occurs (stall not supported).
-> > - 0b1: An Access flag fault never occurs.
-> > An Access fault takes priority over a Permission fault.
+> > According to SMMUv3 user manual "5.2 Stream Table Entry": All fields
+> it is not a user manual but rather an IP architecture spec. put the full
+> ref?
+This is mentioned in the SMMU manual with the same wording “All fields
+with an S2 prefix (with the exception of S2VMID) are IGNORED when stage
+2 bypasses translation (Config[1] == 0)” in “5.2 Stream Table Entry”
+in page 179, ARM IHI0070.E.a
+
+> >  3 files changed, 145 insertions(+)
 > >
-> > Checks for IPA and output PA are done according to the user manual
-> > "3.4 Address sizes".
-> replace user manual by the exact ref of the doc. I guess this is IHI0070E
-Will do.
+> > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> > index 183d5ac8dc..3388e1a5f8 100644
+> > --- a/hw/arm/smmuv3-internal.h
+> > +++ b/hw/arm/smmuv3-internal.h
+> > @@ -526,9 +526,13 @@ typedef struct CD {
+> >  #define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
+> >  #define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
+> >  #define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
+> > +#define STE_S2ENDI(x)      extract32((x)->word[5], 20, 1)
+> > +#define STE_S2AFFD(x)      extract32((x)->word[5], 21, 1)
+> I am afraid there is a shift in the fields below. S2HD should be 23
+> (problem in the original code) and everything is shifted.
+Oh, yes, I should have checked that, I just relied they are next to it.
+I will fix them.
 
-> > + * Return 0 on success, < 0 on error. In case of error, @info is filled
-> > + * and tlbe->perm is set to IOMMU_NONE.
-> > + * Upon success, @tlbe is filled with translated_addr and entry
-> > + * permission rights.
-> > + */
-> > +static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
-> > +                          dma_addr_t iova, IOMMUAccessFlags perm,
-> Rename iova into ipa?
-Will do.
-
-> > +                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-> > +{
-> > +    const int stage = 2;
-> > +    int granule_sz = cfg->s2cfg.granule_sz;
-> > +    /* ARM ARM: Table D8-7. */
-> You may refer the full reference
-> in  DDI0487I.a as the chapter/table may vary. For instance in
-> ARM DDI 0487F.c D8 corresponds to the activity monitor extensions
-Will do.
-
-> > +    int inputsize = 64 - cfg->s2cfg.tsz;
-> > +    int level = get_start_level(cfg->s2cfg.sl0, granule_sz);
-> > +    int stride = SMMU_STRIDE(granule_sz);
-> > +    int idx = pgd_idx(level, granule_sz, iova);
-> > +    /*
-> > +     * Get the ttb from concatenated structure.
-> > +     * The offset is the idx * size of each ttb(number of ptes * (sizeof(pte))
-> > +     */
-> what I don't get is the spec that concatenated tables are used if the
-> initial lookup level would require less or equal than 16 entries. I
-> don't see such kind of check or is done implicitly somewhere else?
-Yes, this is checked in the STE patch in function
-s2_pgtable_config_valid, where it checks that the max input will not
-need more than 16 tables which means that the pagetable config is
-inconsistent, which means the STE is ILLEGAL.
-
-> > +    uint64_t baseaddr = extract64(cfg->s2cfg.vttb, 0, 48) + (1 << stride) *
-> > +                                  idx * sizeof(uint64_t);
-> > +    dma_addr_t indexmask = SMMU_IDXMSK(inputsize, stride, level);
-> > +
-> > +    baseaddr &= ~indexmask;
-> > +
-> > +    /*
-> > +     * If the input address of a transaction exceeds the size of the IAS, a
-> > +     * stage 1 Address Size fault occurs.
-> > +     * For AA64, IAS = OAS
-> then you may use a local variable max_as = cfg->s2cfg.oas used below and
-> in 
-> 
-> if (gpa >= (1ULL << cfg->s2cfg.oas)) {
-> this is not obvious though that the ias = oas. Where does it come from?
-> 
-> In implementations of SMMUv3.1 and later, this value is Reserved and S2PS behaves as 0b110 (52 bits).
-> Effective_S2PS = MIN(STE.S2PS, SMMU_IDR5.OAS);
-> OAS is a maximum of 52 bits in SMMUv3.1 and later
-IAS = OAS for AA64. Described in "3.4 Address sizes".
-The first check is actually not correct, as input address should be
-compared to IAS(or OAS) while s2cfg.oas is effective PS.
-I will rename s2cfg.oas to s2cfg.eff_ps to avoid confusion.
-I will change the check here to be against s2t0sz and in this case it
-causes stage-2 addr size fault.
-
-I think the check for the IAS shouldn't be done here.
-
-> > +     */
-> > +    if (iova >= (1ULL << cfg->s2cfg.oas)) {
-> > +        info->type = SMMU_PTW_ERR_ADDR_SIZE;
-> > +        info->stage = 1;
-> > +        goto error_no_stage;
-> > +    }
-> > +
-> > +    while (level < SMMU_LEVELS) {
-> I would rename SMMU_LEVELs
-You mean replace SMMU_LEVELS with SMMU_LEVELs?
-
-> >  
-> > +#define PTE_AF(pte) \
-> > +    (extract64(pte, 10, 1))
-> >  /*
-> >   * TODO: At the moment all transactions are considered as privileged (EL1)
-> >   * as IOMMU translation callback does not pass user/priv attributes.
-> > @@ -73,6 +75,9 @@
-> >  #define is_permission_fault(ap, perm) \
-> >      (((perm) & IOMMU_WO) && ((ap) & 0x2))
-> >  
-> > +#define is_permission_fault_s2(ap, perm) \
-> I would rename ap param into s2ap. This is the name of the field in the spec
-Will do.
-
-> > +    (!((ap & perm) == perm))
-> > +
-> >  #define PTE_AP_TO_PERM(ap) \
-> >      (IOMMU_ACCESS_FLAG(true, !((ap) & 0x2)))
-> >  
-> > @@ -96,6 +101,40 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
-> >              MAKE_64BIT_MASK(0, gsz - 3);
-> >  }
-> >  
-> > +#define SMMU_MAX_S2_CONCAT    16
-> it is not really an SMMU property (same as SMMU_LEVELS by the way). This
-> is rather something related to VMSA spec, no?.
-Yes, they are part of VMSA, however they are named this way as they are
-part of SMMU headers, should we rename them to something else?
-
-> > +
 > > +/*
-> > + * Relies on correctness of gran and sl0 from caller.
-> I would remove the above line as we generally expect the caller to
-> behave properly or do you mean we do not handle any sanity check?
-> I refer to some of them in target/arm/ptw.c:check_s2_mmu_setup()
-We do sanity check in STE parsing, I added this line as this function
-is in a header file and anyone can use it, so to make it clear.
-However, it is very trivial, I will remove the comment.
-
-> > + * FEAT_LPA2 and FEAT_TTST are not implemented.
+> > + * Max valid value is 39 when SMMU_IDR3.STT == 0.
+> > + * In architectures after SMMUv3.0:
+> > + * - If STE.S2TG selects a 4KB or 16KB granule, the minimum valid value for this
+> > + * field is MAX(16, 64-IAS)
+> > + * - If STE.S2TG selects a 64KB granule, the minimum valid value for this field
+> > + * is (64-IAS).
+> > + * As we only support AA64, IAS = OAS.
+> OK this comes from STE.S2T0SZ description on the SMMU arch spec. You can
+> add this in previous patch too.
 > > + */
-> > +static inline int get_start_level(int sl0 , int gran)
+> > +static bool t0sz_valid(SMMUTransCfg *cfg)
+> use S2t0sz to avoid confusion with S1 stuff
+Will do.
+
 > > +{
-> > +    /* ARM ARM: Table D8-12. */
-> > +    if (gran == 12) {
-> > +        return 2 - sl0;
+> > +    if (cfg->s2cfg.tsz > 39) {
+> > +        return false;
 > > +    }
-> > +    /* ARM ARM: Table D8-22 and Table D8-31. */
-> > +    return 3 - sl0;
+> > +
+> > +    if (cfg->s2cfg.granule_sz == 16) {
+> > +        return (cfg->s2cfg.tsz >= 64 - cfg->s2cfg.oas);
+> > +    }
+> > +
+> > +    return (cfg->s2cfg.tsz >= MAX(64 - cfg->s2cfg.oas, 16));
 > > +}
+> 
+> this chapter also states:
+> "The usable range of values is further constrained by a function of the
+> starting level set by S2SL0 and, if S2AA64 == 1, granule size set by
+> S2TG as described by the Armv8 translation system. Use of a value of
+> S2T0SZ that is inconsistent with the permitted range (given S2SL0 and
+> S2TG) is ILLEGAL."
+Yes, my understanding is that with some configurations the values of
+S2SL0 and S2T0SZ are correct but the final configuration will lead to
+input address that needs more than 16 concatenated tables which is
+invalid, this is checked in s2_pgtable_config_valid()
+
+For example:
+A configuration with granularity 4K (granule_sz = 12)
+SL0 = 1 (start level = 1)
+S2T0SZ = 16 (48 bits)
+This means that the 3 levels would cover 3*9 = 27 + 12 = 39 bits
+So there are extra 48-39 = 9 bits which requires 512 concatenated
+tables. This is invalid.
+
 > > +
 > > +/*
-> > + * Index in a concatenated first level stage-2 page table.
-> > + * ARM ARM: D8.2.2 Concatenated translation tables.
-> > + */
-> > +static inline int pgd_idx(int start_level, int granule, dma_addr_t iova)
-> then the name of the function may better reflect what is does?
-This returns the index of the page table descriptor in a concatenated
-structure, this is actually close to what kvm calls it
-“kvm_pgd_page_idx()”, however, I can call it something more clear as
-pgd_concatenated_idx()?
+> > + * Return true if s2 page table config is valid.
+> > + * This checks with the configured start level, ias_bits and granularity we can
+> > + * have a valid page table as described in ARM ARM D8.2 Translation process.
+> > + * The idea here is to see for the highest possible number of IPA bits, how
+> > + * many concatenated tables we would need, if it is more than 16, then this is
+> > + * not possible.
+> why? in that case doesn't it mean that we can't use concatanated tables?
+Yes, that means that we would need more than 16 tables, as mentioned
+above this is illegal.
 
-> > +{
-> > +    uint64_t ret;
-> > +    /*
-> > +     * Get the number of bits handled by next levels, then any extra bits in
-> > +     * the address should index the concatenated tables. This relation can
-> > +     * deduced from tables in ARM ARM: D8.2.7-9
-> > +     */
-> > +    int shift = (SMMU_LEVELS - start_level) * (granule - 3) + granule;
-> this looks like level_shift() with level = start_level - 1, no.
-Yes, I will use level_shift() instead.
-> s/granule_sz/gsz or granule_sz to match the rest of the code
+> > +        goto bad_ste;
+> > +    }
+> > +
+> > +    if (STAGE2_SUPPORTED(s)) {
+> > +        /* VMID is considered even if s2 is disabled. */
+> > +        cfg->s2cfg.vmid = STE_S2VMID(ste);
+> > +    } else {
+> > +        /* Default to -1 */
+> > +        cfg->s2cfg.vmid = -1;
+> > +    }
+> > +
+> >      if (STE_CFG_S2_ENABLED(config)) {
+> I think it would improve the readability to introduce a separate
+> function decode_ste_s2_cftg() taking the s2cfg to be populated
+Yes, will do.
+
+> > +
+> > +        if (!s2_pgtable_config_valid(cfg->s2cfg.sl0, cfg->s2cfg.tsz,
+> > +                                     cfg->s2cfg.granule_sz)) {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                          "SMMUv3 STE stage 2 config not valid!\n");
+> > +            goto bad_ste;
+> > +        }
+> > +
+> > +        /* Only LE supported(IDR0.TTENDIAN). */
+> > +        if (STE_S2ENDI(ste)) {
+> qemu_log
 Will do.
 
 Thanks,

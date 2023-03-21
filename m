@@ -1,63 +1,64 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3888329ejb;
-        Tue, 21 Mar 2023 03:27:14 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+nRQftxGLO/MiRQuKIcxp/fRNkjuXr+IT+jo+ZeY5zU79YgtvTVVwVtEdR3JAGF9cI1bCr
-X-Received: by 2002:a05:622a:1d5:b0:3e3:8035:7bf5 with SMTP id t21-20020a05622a01d500b003e380357bf5mr2340052qtw.20.1679394433963;
-        Tue, 21 Mar 2023 03:27:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679394433; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3888791ejb;
+        Tue, 21 Mar 2023 03:27:48 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/z5zxE6E8aIxzS4EEPsksImpqCnH0do8Nvp5OaPy7KMbhg8QduePO0GxYCj9LsoyS2xSLM
+X-Received: by 2002:a05:6214:1cc5:b0:5a9:c0a1:d31a with SMTP id g5-20020a0562141cc500b005a9c0a1d31amr2547945qvd.49.1679394468400;
+        Tue, 21 Mar 2023 03:27:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679394468; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDA1lZtdYJqD4pvA6FX9ypDHavSVQpFsO85rws2GkWgPUAizB/chMldGKIXS6CwLnu
-         JW6tHPZqG7yrrbRfWO0pGA9fXEMUQjGZouyVVFs4bUqDOhjGPjO+tA72nqkLYeNLo/kD
-         CA3F1W/xwdqmaQ1P1HRiJpApBnnf16TCWRS+gSIhrxowLhwW4UuB+EivkDNbJngDXVTR
-         XFUmkn9bJVFqlOKfgTLIyie8Di+KBb0b3ML1VkGDcLKEy/4WGOqb9OfWpKYKwzMfV9Qw
-         H68YXoF08Qzcfwi0FdFaOAKfMQp3XPBc6IwwcbwaZUMv2DxGoKKvLaENH+rbRo24IE8g
-         OjQw==
+        b=KTVHoTslcRGDCX0CpJ4+wIiaQgwCPZLryIvZNXL8aEUZC73NsV2shsEM2xc6sU9KoE
+         QLLA/1mNnGHWh7H6GX729mlxQlRMnqQMyHS1D5AJdGAXiTkrJmAHvgXF7qwUGtpQAX9E
+         cQVNstvLZS0xDhw+7zwEFZ1I9Bs9XiRrHI+sJnljOk9Jr2lLnGEFj5wecS9hBerlxBeh
+         NCocVkY3sVoef5eLMzeXg0CLMUVPH3lqRmIFSL0frcxIrjJQ9PpicbEtPiWCUZxU2eDu
+         nOXyPdHdLNab6LuBubb4PdnyDhqxT8X/i7QPyMcswD/nYgZEKCWyspWe0TeaCd1a0BJ1
+         6rzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8fSOj9FHLD20tnFbzWLo8vjwarYRhtlzUZh39dyHPG8=;
-        b=r8I/ix2+OIavpIRiPZWxRE/t4Plsl2bnXXrU+eUpwLuzeuVdViJjgZkigluQWqzSi/
-         y7KOvnNWxJSuNtaJbh/JwPkily45wQkXKOiZBi8VJWuHcERVtH/A3YDf3AKDAJV4kIz9
-         I/5t7HXN5U6KxiXmw8J59vSK70wiPUr8xeNl3ARt1W122O7LkozNske+QT/5C8d+XCMm
-         t4ClSDdI2MgGzlt4ET0d0jltgXhn5ZwIzUYLTcGMvVU6WqdKUdQbVRepLa9cThoMe5fP
-         895silqO166GLRqPsoG7Brp7IuYo/4wLyMkz7FNutr5ATOHsX9GQGNFseX3pZQ8lPYYQ
-         TADg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=vKsMI23OF1k9QGYwyYptwCK0mjhZAEBMEtDzE1bPJRE=;
+        b=Yg0aiA2wTsz5/gyZ1qWlmEudrd32mM0T431hgXIpMcMk9UZY2ta/jmexe7LoFEefjB
+         uaNp+AibiI+merXJm41yg4pbPtr/22CWspunCCXz/PH9RnZ4GiN1LDZc1xLksMXFnEco
+         s/9SOXJ3gaRVorfKNBNuClmqYGpLYdgpSFUassMfhsdVJMdBsNpYkrFG+Aq9ehvWrDHO
+         ocFs5YT1PZGPOexm+XCcWQGnX6Bbp/k3+SJNpy9uCXJcmkpPkCh0RZ3c49xKacDFd61N
+         SDPRsL1qoNfRRDB24v0wu7TeA14Il2P5YLozPbVVYLglUMJXBOyMMaCMU0svFT5kmyQZ
+         DbFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=ENXLtr1o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=Qx+8nqS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q33-20020a05620a2a6100b00723b9fa217bsi4582411qkp.490.2023.03.21.03.27.13
+        by mx.google.com with ESMTPS id l4-20020a056214028400b005726afd5ceasi7924867qvv.246.2023.03.21.03.27.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Mar 2023 03:27:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Mar 2023 03:27:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=ENXLtr1o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=Qx+8nqS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1peZCy-0004fr-3D; Tue, 21 Mar 2023 06:27:12 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1peZBV-0000T2-VU; Tue, 21 Mar 2023 06:25:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1peZCw-0004VL-Nl; Tue, 21 Mar 2023 06:27:10 -0400
-Received: from m12.mail.163.com ([220.181.12.217])
+ id 1peZBR-0000Qp-3x; Tue, 21 Mar 2023 06:25:37 -0400
+Received: from m12.mail.163.com ([220.181.12.196])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1peZCu-0000JI-2y; Tue, 21 Mar 2023 06:27:10 -0400
+ id 1peZBK-0008OS-He; Tue, 21 Mar 2023 06:25:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=8fSOj
- 9FHLD20tnFbzWLo8vjwarYRhtlzUZh39dyHPG8=; b=ENXLtr1oOSGfAUGsBO8Cg
- /7M/4H9+GVzptEIO+dIT630yaHa/bYd+2z4OrHYeqnd+PF+R82CKDHeP7aWZyVXv
- kj2Id7vkLQawzFsb0vm497RP4JbP+k8EBZR8Brjx1W6vRdF5vVVdPdR5mm987piY
- e3yig0uL0u3NZ2kWI15WNU=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=vKsMI
+ 23OF1k9QGYwyYptwCK0mjhZAEBMEtDzE1bPJRE=; b=Qx+8nqS2cafQEDUBQBg1k
+ Z7Py+o60Cx7/sTyXbw31pjiXbYrG2pXVm0jEePPwZSDNsrDPxolyvr6E75TPBHam
+ y7OEKOpOfI5ptsHuhfwTZyvCM9VgL7GVUrXLkQmsp2KJgjXW2clGofbQ6/EYt6vJ
+ Q/kKCuHi2gjwkrewwtVT/Q=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g1-0 (Coremail) with SMTP id _____wDXaolehhlkADcWAA--.8313S2; 
- Tue, 21 Mar 2023 18:26:38 +0800 (CST)
+ by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wBnznIHhhlk7VIWAA--.11160S4;
+ Tue, 21 Mar 2023 18:25:13 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -67,198 +68,421 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v1 11/11] docs: system: arm: Introduce bananapi_m2u
-Date: Tue, 21 Mar 2023 18:26:13 +0800
-Message-Id: <20230321102613.16856-1-qianfanguijin@163.com>
+Subject: [PATCH v1 02/11] hw/arm/allwinner-r40: add Clock Control Unit
+Date: Tue, 21 Mar 2023 18:25:01 +0800
+Message-Id: <20230321102510.16754-3-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230321102510.16754-1-qianfanguijin@163.com>
+References: <20230321102510.16754-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDXaolehhlkADcWAA--.8313S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuw4fCF4ruF4fCr1xZw47urg_yoW7Aw4fpF
- yvka15KrWkJF1Fya97Kw1fWFy5Xas5ArWUJF1kJ34rtF98Kr1vvwn3Kwn8Wasrtw4Ivw10
- qrW7GF12gwn8J3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zKYLdrUUUUU=
+X-CM-TRANSID: _____wBnznIHhhlk7VIWAA--.11160S4
+X-Coremail-Antispam: 1Uf129KBjvAXoW3Zw43AFyDGw4ktF1DGryUWrg_yoW8JF1DJo
+ WSqF48Zw4Ik3s3Jr1xC342yr17WFnY93yUJw4YyFWfC3WUJr4DK395tw4fXr4Sgw4jkF4k
+ JFW3ZryfZFWkX3Z5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRQdbbUUUUU
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQgE57VaEEu4H5QAAsb
-Received-SPF: pass client-ip=220.181.12.217;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGg057VaEEpMWagAAss
+Received-SPF: pass client-ip=220.181.12.196;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL=1.31, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ubm4gW6QTz4E
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Isl9oggdjDw5
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-Add documents for Banana Pi M2U
+The CCU provides the registers to program the PLLs and the controls
+most of the clock generation, division, distribution, synchronization
+and gating.
+
+This commit adds support for the Clock Control Unit which emulates
+a simple read/write register interface.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- docs/system/arm/bananapi_m2u.rst | 138 +++++++++++++++++++++++++++++++
- 1 file changed, 138 insertions(+)
- create mode 100644 docs/system/arm/bananapi_m2u.rst
+ hw/arm/allwinner-r40.c              |   7 +-
+ hw/misc/allwinner-r40-ccu.c         | 207 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                 |   1 +
+ include/hw/arm/allwinner-r40.h      |   2 +
+ include/hw/misc/allwinner-r40-ccu.h |  65 +++++++++
+ 5 files changed, 281 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/allwinner-r40-ccu.c
+ create mode 100644 include/hw/misc/allwinner-r40-ccu.h
 
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index d0516f4e96..3517682aed 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -42,6 +42,7 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_MMC1]       = 0x01c10000,
+     [AW_R40_DEV_MMC2]       = 0x01c11000,
+     [AW_R40_DEV_MMC3]       = 0x01c12000,
++    [AW_R40_DEV_CCU]        = 0x01c20000,
+     [AW_R40_DEV_PIT]        = 0x01c20c00,
+     [AW_R40_DEV_UART0]      = 0x01c28000,
+     [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
+@@ -80,7 +81,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
+     { "usb2-host",  0x01c1c000, 4 * KiB },
+     { "cs1",        0x01c1d000, 4 * KiB },
+     { "spi3",       0x01c1f000, 4 * KiB },
+-    { "ccu",        0x01c20000, 1 * KiB },
+     { "rtc",        0x01c20400, 1 * KiB },
+     { "pio",        0x01c20800, 1 * KiB },
+     { "owa",        0x01c21000, 1 * KiB },
+@@ -246,6 +246,7 @@ static void allwinner_r40_init(Object *obj)
+     object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+                               "clk1-freq");
+ 
++    object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
+     object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN5I);
+     object_initialize_child(obj, "mmc1", &s->mmc1, TYPE_AW_SDHOST_SUN5I);
+     object_initialize_child(obj, "mmc2", &s->mmc2, TYPE_AW_SDHOST_SUN5I);
+@@ -358,6 +359,10 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DEV_SRAM_A4],
+                                 &s->sram_a4);
+ 
++    /* Clock Control Unit */
++    sysbus_realize(SYS_BUS_DEVICE(&s->ccu), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_R40_DEV_CCU]);
++
+     /* SD/MMC */
+     object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
+                              OBJECT(get_system_memory()), &error_fatal);
+diff --git a/hw/misc/allwinner-r40-ccu.c b/hw/misc/allwinner-r40-ccu.c
 new file mode 100644
-index 0000000000..ae7194a9df
+index 0000000000..0abe006874
 --- /dev/null
-+++ b/docs/system/arm/bananapi_m2u.rst
-@@ -0,0 +1,138 @@
-+Banana Pi BPI-M2U (``bpim2u``)
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++++ b/hw/misc/allwinner-r40-ccu.c
+@@ -0,0 +1,207 @@
++/*
++ * Allwinner R40 Clock Control Unit emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
 +
-+Banana Pi BPI-M2 Ultra is a quad-core mini single board computer built with
-+Allwinner A40i/R40/V40 SoC. It features 2GB of RAM and 8GB eMMC. It also
-+has onboard WiFi and BT. On the ports side, the BPI-M2 Ultra has 2 USB A
-+2.0 ports, 1 USB OTG port, 1 HDMI port, 1 audio jack, a DC power port,
-+and last but not least, a SATA port.
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/misc/allwinner-r40-ccu.h"
 +
-+Supported devices
-+"""""""""""""""""
++/* CCU register offsets */
++enum {
++    REG_PLL_CPUX_CTRL           = 0x0000,
++    REG_PLL_AUDIO_CTRL          = 0x0008,
++    REG_PLL_VIDEO0_CTRL         = 0x0010,
++    REG_PLL_VE_CTRL             = 0x0018,
++    REG_PLL_DDR0_CTRL           = 0x0020,
++    REG_PLL_PERIPH0_CTRL        = 0x0028,
++    REG_PLL_PERIPH1_CTRL        = 0x002c,
++    REG_PLL_VIDEO1_CTRL         = 0x0030,
++    REG_PLL_SATA_CTRL           = 0x0034,
++    REG_PLL_GPU_CTRL            = 0x0038,
++    REG_PLL_MIPI_CTRL           = 0x0040,
++    REG_PLL_DE_CTRL             = 0x0048,
++    REG_PLL_DDR1_CTRL           = 0x004c,
++    REG_AHB1_APB1_CFG           = 0x0054,
++    REG_APB2_CFG                = 0x0058,
++    REG_MMC0_CLK                = 0x0088,
++    REG_MMC1_CLK                = 0x008c,
++    REG_MMC2_CLK                = 0x0090,
++    REG_MMC3_CLK                = 0x0094,
++    REG_USBPHY_CFG              = 0x00cc,
++    REG_PLL_DDR_AUX             = 0x00f0,
++    REG_DRAM_CFG                = 0x00f4,
++    REG_PLL_DDR1_CFG            = 0x00f8,
++    REG_DRAM_CLK_GATING         = 0x0100,
++    REG_GMAC_CLK                = 0x0164,
++    REG_SYS_32K_CLK             = 0x0310,
++    REG_PLL_LOCK_CTRL           = 0x0320,
++};
 +
-+The Banana Pi M2U machine supports the following devices:
++#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
 +
-+ * SMP (Quad Core Cortex-A7)
-+ * Generic Interrupt Controller configuration
-+ * SRAM mappings
-+ * SDRAM controller
-+ * Timer device (re-used from Allwinner A10)
-+ * UART
-+ * SD/MMC storage controller
-+ * EMAC ethernet
-+ * GMAC ethernet
-+ * Clock Control Unit
-+ * TWI (I2C)
++/* CCU register flags */
++enum {
++    REG_PLL_ENABLE           = (1 << 31),
++    REG_PLL_LOCK             = (1 << 28),
++};
 +
-+Limitations
-+"""""""""""
++static uint64_t allwinner_r40_ccu_read(void *opaque, hwaddr offset,
++                                       unsigned size)
++{
++    const AwR40ClockCtlState *s = AW_R40_CCU(opaque);
++    const uint32_t idx = REG_INDEX(offset);
 +
-+Currently, Banana Pi M2U does *not* support the following features:
++    switch (offset) {
++    case 0x324 ... AW_R40_CCU_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
 +
-+- Graphical output via HDMI, GPU and/or the Display Engine
-+- Audio output
-+- Hardware Watchdog
-+- Real Time Clock
-+- USB 2.0 interfaces
++    return s->regs[idx];
++}
 +
-+Also see the 'unimplemented' array in the Allwinner R40 SoC module
-+for a complete list of unimplemented I/O devices: ``./hw/arm/allwinner-r40.c``
++static void allwinner_r40_ccu_write(void *opaque, hwaddr offset,
++                                    uint64_t val, unsigned size)
++{
++    AwR40ClockCtlState *s = AW_R40_CCU(opaque);
 +
-+Boot options
-+""""""""""""
++    switch (offset) {
++    case REG_DRAM_CFG:    /* DRAM Configuration(for DDR0) */
++        /* bit16: SDRCLK_UPD (SDRCLK configuration 0 update) */
++        val &= ~(1 << 16);
++        break;
++    case REG_PLL_DDR1_CTRL: /* DDR1 Control register */
++        /* bit30: SDRPLL_UPD */
++        val &= ~(1 << 30);
++        if (val & REG_PLL_ENABLE)
++            val |= REG_PLL_LOCK;
++        break;
++    case REG_PLL_CPUX_CTRL:
++    case REG_PLL_AUDIO_CTRL:
++    case REG_PLL_VE_CTRL:
++    case REG_PLL_VIDEO0_CTRL:
++    case REG_PLL_DDR0_CTRL:
++    case REG_PLL_PERIPH0_CTRL:
++    case REG_PLL_PERIPH1_CTRL:
++    case REG_PLL_VIDEO1_CTRL:
++    case REG_PLL_SATA_CTRL:
++    case REG_PLL_GPU_CTRL:
++    case REG_PLL_MIPI_CTRL:
++    case REG_PLL_DE_CTRL:
++        if (val & REG_PLL_ENABLE)
++            val |= REG_PLL_LOCK;
++        break;
++    case 0x324 ... AW_R40_CCU_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
++    }
 +
-+The Banana Pi M2U machine can start using the standard -kernel functionality
-+for loading a Linux kernel or ELF executable. Additionally, the Banana Pi M2U
-+machine can also emulate the BootROM which is present on an actual Allwinner R40
-+based SoC, which loads the bootloader from a SD card, specified via the -sd
-+argument to qemu-system-arm.
++    s->regs[REG_INDEX(offset)] = (uint32_t) val;
++}
 +
-+Running mainline Linux
-+""""""""""""""""""""""
++static const MemoryRegionOps allwinner_r40_ccu_ops = {
++    .read = allwinner_r40_ccu_read,
++    .write = allwinner_r40_ccu_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
 +
-+To build a Linux mainline kernel that can be booted by the Banana Pi M2U machine,
-+simply configure the kernel using the sunxi_defconfig configuration:
++static void allwinner_r40_ccu_reset(DeviceState *dev)
++{
++    AwR40ClockCtlState *s = AW_R40_CCU(dev);
 +
-+.. code-block:: bash
++    memset(s->regs, 0, sizeof(s->regs));
 +
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make mrproper
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make sunxi_defconfig
++    /* Set default values for registers */
++    s->regs[REG_INDEX(REG_PLL_CPUX_CTRL)]       = 0x00001000;
++    s->regs[REG_INDEX(REG_PLL_AUDIO_CTRL)]      = 0x00035514;
++    s->regs[REG_INDEX(REG_PLL_VIDEO0_CTRL)]     = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_VE_CTRL)]         = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_DDR0_CTRL)]       = 0x00001000,
++    s->regs[REG_INDEX(REG_PLL_PERIPH0_CTRL)]    = 0x00041811;
++    s->regs[REG_INDEX(REG_PLL_PERIPH1_CTRL)]    = 0x00041811;
++    s->regs[REG_INDEX(REG_PLL_VIDEO1_CTRL)]     = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_SATA_CTRL)]       = 0x00001811;
++    s->regs[REG_INDEX(REG_PLL_GPU_CTRL)]        = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_MIPI_CTRL)]       = 0x00000515;
++    s->regs[REG_INDEX(REG_PLL_DE_CTRL)]         = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_DDR1_CTRL)]       = 0x00001800;
++    s->regs[REG_INDEX(REG_AHB1_APB1_CFG)]       = 0x00001010;
++    s->regs[REG_INDEX(REG_APB2_CFG)]            = 0x01000000;
++    s->regs[REG_INDEX(REG_PLL_DDR_AUX)]         = 0x00000001;
++    s->regs[REG_INDEX(REG_PLL_DDR1_CFG)]        = 0x0ccca000;
++    s->regs[REG_INDEX(REG_SYS_32K_CLK)]         = 0x0000000f;
++}
 +
-+To boot the newly build linux kernel in QEMU with the Banana Pi M2U machine, use:
++static void allwinner_r40_ccu_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwR40ClockCtlState *s = AW_R40_CCU(obj);
 +
-+.. code-block:: bash
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_r40_ccu_ops, s,
++                          TYPE_AW_R40_CCU, AW_R40_CCU_IOSIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
 +
-+  $ qemu-system-arm -M bpim2u -nographic \
-+      -kernel /path/to/linux/arch/arm/boot/zImage \
-+      -append 'console=ttyS0,115200' \
-+      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-r40-bananapi-m2-ultra.dtb
++static const VMStateDescription allwinner_r40_ccu_vmstate = {
++    .name = "allwinner-r40-ccu",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AwR40ClockCtlState, AW_R40_CCU_REGS_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
-+Banana Pi M2U images
-+""""""""""""""""""""
++static void allwinner_r40_ccu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+Note that the mainline kernel does not have a root filesystem. You can choose
-+to build you own image with buildroot using the bananapi_m2_ultra_defconfig.
-+Also see https://buildroot.org for more information.
++    dc->reset = allwinner_r40_ccu_reset;
++    dc->vmsd = &allwinner_r40_ccu_vmstate;
++}
 +
-+Another possibility is to run an OpenWrt image for Banana Pi M2U which
-+can be downloaded from:
++static const TypeInfo allwinner_r40_ccu_info = {
++    .name          = TYPE_AW_R40_CCU,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_r40_ccu_init,
++    .instance_size = sizeof(AwR40ClockCtlState),
++    .class_init    = allwinner_r40_ccu_class_init,
++};
 +
-+   https://downloads.openwrt.org/releases/22.03.3/targets/sunxi/cortexa7/
++static void allwinner_r40_ccu_register(void)
++{
++    type_register_static(&allwinner_r40_ccu_info);
++}
 +
-+When using an image as an SD card, it must be resized to a power of two. This can be
-+done with the ``qemu-img`` command. It is recommended to only increase the image size
-+instead of shrinking it to a power of two, to avoid loss of data. For example,
-+to prepare a downloaded Armbian image, first extract it and then increase
-+its size to one gigabyte as follows:
++type_init(allwinner_r40_ccu_register)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index a40245ad44..96e35f1cdb 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -44,6 +44,7 @@ specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+ softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
+index 46bda2c54e..b355af2c4f 100644
+--- a/include/hw/arm/allwinner-r40.h
++++ b/include/hw/arm/allwinner-r40.h
+@@ -25,6 +25,7 @@
+ #include "hw/timer/allwinner-a10-pit.h"
+ #include "hw/intc/arm_gic.h"
+ #include "hw/sd/allwinner-sdhost.h"
++#include "hw/misc/allwinner-r40-ccu.h"
+ #include "target/arm/cpu.h"
+ #include "sysemu/block-backend.h"
+ 
+@@ -80,6 +81,7 @@ struct AwR40State {
+     AwSdHostState mmc1;
+     AwSdHostState mmc2;
+     AwSdHostState mmc3;
++    AwR40ClockCtlState ccu;
+     GICState gic;
+     MemoryRegion sram_a1;
+     MemoryRegion sram_a2;
+diff --git a/include/hw/misc/allwinner-r40-ccu.h b/include/hw/misc/allwinner-r40-ccu.h
+new file mode 100644
+index 0000000000..ceb74eff92
+--- /dev/null
++++ b/include/hw/misc/allwinner-r40-ccu.h
+@@ -0,0 +1,65 @@
++/*
++ * Allwinner R40 Clock Control Unit emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
 +
-+.. code-block:: bash
++#ifndef HW_MISC_ALLWINNER_R40_CCU_H
++#define HW_MISC_ALLWINNER_R40_CCU_H
 +
-+  $ qemu-img resize \
-+    openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img \
-+    1G
++#include "qom/object.h"
++#include "hw/sysbus.h"
 +
-+Instead of providing a custom Linux kernel via the -kernel command you may also
-+choose to let the Banana Pi M2U machine load the bootloader from SD card, just like
-+a real board would do using the BootROM. Simply pass the selected image via the -sd
-+argument and remove the -kernel, -append, -dbt and -initrd arguments:
++/**
++ * @name Constants
++ * @{
++ */
 +
-+.. code-block:: bash
++/** Size of register I/O address space used by CCU device */
++#define AW_R40_CCU_IOSIZE        (0x400)
 +
-+  $ qemu-system-arm -M bpim2u -nic user -nographic \
-+    -sd openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img
++/** Total number of known registers */
++#define AW_R40_CCU_REGS_NUM      (AW_R40_CCU_IOSIZE / sizeof(uint32_t))
 +
-+Running U-Boot
-+""""""""""""""
++/** @} */
 +
-+U-Boot mainline can be build and configured using the Bananapi_M2_Ultra_defconfig
-+using similar commands as describe above for Linux. Note that it is recommended
-+for development/testing to select the following configuration setting in U-Boot:
++/**
++ * @name Object model
++ * @{
++ */
 +
-+  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
++#define TYPE_AW_R40_CCU    "allwinner-r40-ccu"
++OBJECT_DECLARE_SIMPLE_TYPE(AwR40ClockCtlState, AW_R40_CCU)
 +
-+The BootROM of allwinner R40 loading u-boot from the 8KiB offset of sdcard.
-+Let's create an bootable disk image:
++/** @} */
 +
-+.. code-block:: bash
++/**
++ * Allwinner R40 CCU object instance state.
++ */
++struct AwR40ClockCtlState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
 +
-+  $ dd if=/dev/zero of=sd.img bs=32M count=1
-+  $ dd if=u-boot-sunxi-with-spl.bin of=sd.img bs=1k seek=8 conv=notrunc
++    /** Maps I/O registers in physical memory */
++    MemoryRegion iomem;
 +
-+And then boot it.
++    /** Array of hardware registers */
++    uint32_t regs[AW_R40_CCU_REGS_NUM];
 +
-+.. code-block:: bash
-+  $ qemu-system-arm -M bpim2u -nographic -sd sd.img
++};
 +
-+Banana Pi M2U integration tests
-+""""""""""""""""""""""""""""""
-+
-+The Banana Pi M2U machine has several integration tests included.
-+To run the whole set of tests, build QEMU from source and simply
-+provide the following command:
-+
-+.. code-block:: bash
-+
-+  $ cd qemu-build-dir
-+  $ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
-+    --verbose --show=app,console run -t machine:bpim2u \
-+    ../tests/avocado/boot_linux_console.py
++#endif /* HW_MISC_ALLWINNER_R40_CCU_H */
 -- 
 2.25.1
 

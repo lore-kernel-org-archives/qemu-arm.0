@@ -1,63 +1,64 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3887994ejb;
-        Tue, 21 Mar 2023 03:26:50 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/92Ycp53UTCJfEuwnbJhMHZurftKYri4kiOAT/YyNSlguFGrrQj8UECsxThpvFivxZrryT
-X-Received: by 2002:a05:622a:20c:b0:3da:e3a8:b01a with SMTP id b12-20020a05622a020c00b003dae3a8b01amr3649914qtx.0.1679394409794;
-        Tue, 21 Mar 2023 03:26:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679394409; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3888069ejb;
+        Tue, 21 Mar 2023 03:26:56 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8wxZNryF7Pj7b6R8lKp40l5uQ3e9/vzT86pPwO7Yin0qc3oKgC5bQha3id/nhf8RV4AJ/E
+X-Received: by 2002:ac8:5a91:0:b0:3bf:da79:6703 with SMTP id c17-20020ac85a91000000b003bfda796703mr3676535qtc.3.1679394416621;
+        Tue, 21 Mar 2023 03:26:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679394416; cv=none;
         d=google.com; s=arc-20160816;
-        b=lOUCVz3naqQvMqP3N7NsDVUx3ghhOwzKrxzXE4CBHNTnwlkrk3m5/5BWNmRAdjMyOC
-         XbX4HUK+D/JDg1YZ0p5/CKG1GrBbBr5AQP0BUpUEcc/43fLtkdM5U0bDIYMFsoRwkXze
-         pWZdoNTxZsrh3w5DCqI42wL0lM/XpOwz8JzaGeGfIFVfYIPD2uetqq8Z4N+RJTMeV630
-         7h/syLy5yjDVHJb1p3y7jM+38b0Q2IV1Dw26zmqOj5X+NotOeU5XJW/84emZxIyzrwlJ
-         rPeK1J9YFwYQVhmQLh+2iiIafbN3QI1L2mgyM1H5E5bpQvSTYDi5rQjHuX8tAtBvBElb
-         q+vg==
+        b=KBE9znZU/hTKmSBYowXiMS4A5EdOjQhIUbdIQl3FJ/9pT+fprGAjugxNcCe05JksuE
+         XYa21unpFehXwieMGWWIdN5qfoJgIAfpPiQ4j10/2mMhKJryTNzAlnws29KCKpn/qg9g
+         XQtKpg4Kh0vOeHUJMci6UqVqbrY+XmHkBkZ9CcrPa/48vjGoTfp9JNhf7C8Uz58tM5UJ
+         s6ny+dKIJ8mwqfiYtisSA2wjnzWCt/T1nJgcwLT8pIuyMvCKEYBM0HEI6Dx4D8z4Buze
+         5YPD1MJRJQBvIcCd64H+zAiosrbkdcUG8L5TsTnnhWo1FQHUYQzQ4x8yIM846uriHnLI
+         d/WA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Q7IctvYEntp8REioPeWzSgXU06FNaS+arlTH5Xz6zgg=;
-        b=Z3PV1o1B8OJRpDx7isOnc5nvBAWlULWBnTn25d7pb8DCzteU5xMVu9gSLyXF/ZdwSt
-         HbAkWANUdZzOA6XEHBGB8EnN4BrznfZl86nO3HA2QDiOgFVpy3XrrpNUwb+xq+tEugsK
-         rqZRzhDevZq0d1fjc36gAQWZMVaqPmlt2I3GSTTSKbs4lJDWcIRH7K2lrR7aSeATW700
-         ugr5/M5Q/kMfMjENVyPVkW47NxLOgmxv5i/Mxr3rWiulSAHQfQAlEQ7yc9BMxs2VAFpH
-         NDuiT1wsaTntKnwrYFsNwYUI0B2GhF28NCgkMQ8bti2nA62t4twuUDUy+vY6HsBH5uTf
-         D8ig==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mYMyVmOsxfmw7rjUFPXUzfGpyXcb43lBzhAFQKfYMS0=;
+        b=i9idNWkdDZNvsiK4m6zWsBc61foOtIPtDyPaOhtT4scfnFHb/ZtVOgDhkJMs4LIEVb
+         4gWe9OXXoGKIinjImN4cu0SRtXJxERVSy1HCyCpKYSsaP+NOwYXmbt8CTB8F3Q1WyPt5
+         5u3ehr3W2FcKDvGyF0qSYn8opVAjQlaB14gPLGw7zkO+3eWjsGBo7bPFWNOBZz4qDjJB
+         Qybr0A1kAz2K3G74a5cc0Ivt1EkZiUlOqpiDMzcPBSCkrWI/fT1b7GwqjyE8UwQhNre7
+         vpLQltbFMLcNVB8XZdf0IneB+vtIzAKo0TBk04WszY8jA4DqM1vgOfiuWhywN2hosUlz
+         swlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b="MN7e9v/I";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=DCsT9upA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20-20020a05622a14d400b003b69dd120b1si4538892qtx.312.2023.03.21.03.26.49
+        by mx.google.com with ESMTPS id w21-20020a05620a445500b00718e35db8f5si8657512qkp.88.2023.03.21.03.26.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Mar 2023 03:26:49 -0700 (PDT)
+        Tue, 21 Mar 2023 03:26:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b="MN7e9v/I";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=DCsT9upA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1peZBW-0000TX-PY; Tue, 21 Mar 2023 06:25:42 -0400
+	id 1peZBU-0000SN-Gb; Tue, 21 Mar 2023 06:25:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1peZBP-0000PP-OI; Tue, 21 Mar 2023 06:25:35 -0400
-Received: from m12.mail.163.com ([220.181.12.197])
+ id 1peZBP-0000PL-NP; Tue, 21 Mar 2023 06:25:35 -0400
+Received: from m12.mail.163.com ([220.181.12.196])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1peZBK-0008NJ-He; Tue, 21 Mar 2023 06:25:34 -0400
+ id 1peZBK-0008QL-BS; Tue, 21 Mar 2023 06:25:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=Q7Ict
- vYEntp8REioPeWzSgXU06FNaS+arlTH5Xz6zgg=; b=MN7e9v/Ig7F0+Ki0WatUI
- p+/eSndJyrppLHs5GZrtd1cZ0FDD5S8FGJ1NIx1TIvyxQpHlDCmg2DtPMk15ux9v
- UQPxwhK+0Ij8VuBEDj1INfw9nQu2GY9mma5khmOynXSk5iUPkgl/WI03r9METDCV
- 0CgeS1IX7ejrGZWTMlJeZ4=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=mYMyV
+ mOsxfmw7rjUFPXUzfGpyXcb43lBzhAFQKfYMS0=; b=DCsT9upAZ7WIRxYI+1+Uy
+ f8dMvmftmxsejAFMP8iRNC775Rirb6oMFAOjatqDlRcnwIbhL7BRYJ2Tr58eo8Vr
+ n0R4DSx28efsSFLNObL2OjK6kMdaEawvzkQko9JNIPCprtTkdP3u/0XldZXDQUq3
+ GSr0xkcXzpUq8RokKbH0RM=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wBnznIHhhlk7VIWAA--.11160S2;
- Tue, 21 Mar 2023 18:25:13 +0800 (CST)
+ by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wBnznIHhhlk7VIWAA--.11160S7;
+ Tue, 21 Mar 2023 18:25:14 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -67,28 +68,30 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v1 00/11] *** add allwinner-r40 support ***
-Date: Tue, 21 Mar 2023 18:24:59 +0800
-Message-Id: <20230321102510.16754-1-qianfanguijin@163.com>
+Subject: [PATCH v1 05/11] hw/misc: AXP221 PMU Emulation
+Date: Tue, 21 Mar 2023 18:25:04 +0800
+Message-Id: <20230321102510.16754-6-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20230321102510.16754-1-qianfanguijin@163.com>
+References: <20230321102510.16754-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnznIHhhlk7VIWAA--.11160S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw4rJFyDWw1rtw45Cw15Arb_yoW8KrWrpa
- n0k345Kr1rAa13JFWaqFs7JFyrJa4kGr4Utrn2vFy7AryfKa1Yvr1UK3ZagrWfGFZFqw47
- ZrZIqFy3Ww45taDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRAbbiUUUUU=
+X-CM-TRANSID: _____wBnznIHhhlk7VIWAA--.11160S7
+X-Coremail-Antispam: 1Uf129KBjvJXoW3AFWDKFykGrW7Kw1xCryxuFg_yoWfArW5pr
+ 9YkFn8trykWFW7JrZ3XrsxWFy3Grs7Wr15ur18Z39akF4fAa43CFyvgwn8tFy8CrWkXw15
+ X39xWay3CwsIvw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRTUDJUUUUU=
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXQc57VWBo+uC8QACsj
-Received-SPF: pass client-ip=220.181.12.197;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQhA57VaEEu4FNwABsb
+Received-SPF: pass client-ip=220.181.12.196;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL=1.31, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,71 +106,302 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZBxC2ExNlqSN
+X-TUID: LS0iu+fYU3Pi
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-*** history ***
+This patch adds minimal support for AXP-221 PMU and connect it to
+bananapi M2U board.
 
-# v1: 2023-03-21
-
-The first version which add allwinner-r40 support, supported features:
-
-+ ccu
-+ dram controller
-+ uart
-+ i2c and pmic(axp221)
-+ sdcard
-+ emac/gmac
-
-Also provide a test case under avocado, running quickly test:
-
-$ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
-    --verbose --show=app,console run -t machine:bpim2u \
-    ../tests/avocado/boot_linux_console.py
-
-qianfan Zhao (11):
-  hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
-  hw/arm/allwinner-r40: add Clock Control Unit
-  hw: allwinner-r40: Complete uart devices
-  hw: arm: allwinner-r40: Add 5 TWI controllers
-  hw/misc: AXP221 PMU Emulation
-  hw/arm/allwinner-r40: add SDRAM controller device
-  hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
-  hw: arm: allwinner-r40: Fix the mmc controller's type
-  hw: arm: allwinner-r40: Add emac and gmac support
-  tests: avocado: boot_linux_console: Add test case for bpim2u
-  docs: system: arm: Introduce bananapi_m2u
-
- configs/devices/arm-softmmu/default.mak |   1 +
- docs/system/arm/bananapi_m2u.rst        | 138 ++++++
- hw/arm/Kconfig                          |  10 +
- hw/arm/allwinner-r40.c                  | 558 ++++++++++++++++++++++++
- hw/arm/bananapi_m2u.c                   | 131 ++++++
- hw/arm/meson.build                      |   1 +
- hw/misc/Kconfig                         |   4 +
- hw/misc/allwinner-r40-ccu.c             | 207 +++++++++
- hw/misc/allwinner-r40-dramc.c           | 499 +++++++++++++++++++++
- hw/misc/axp221.c                        | 196 +++++++++
- hw/misc/meson.build                     |   3 +
- hw/misc/trace-events                    |  19 +
- hw/sd/allwinner-sdhost.c                |  70 ++-
- include/hw/arm/allwinner-r40.h          | 148 +++++++
- include/hw/misc/allwinner-r40-ccu.h     |  65 +++
- include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
- include/hw/sd/allwinner-sdhost.h        |   9 +
- tests/avocado/boot_linux_console.py     | 173 ++++++++
- 18 files changed, 2337 insertions(+), 3 deletions(-)
- create mode 100644 docs/system/arm/bananapi_m2u.rst
- create mode 100644 hw/arm/allwinner-r40.c
- create mode 100644 hw/arm/bananapi_m2u.c
- create mode 100644 hw/misc/allwinner-r40-ccu.c
- create mode 100644 hw/misc/allwinner-r40-dramc.c
+Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+---
+ hw/arm/Kconfig        |   1 +
+ hw/arm/bananapi_m2u.c |   5 ++
+ hw/misc/Kconfig       |   4 +
+ hw/misc/axp221.c      | 196 ++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build   |   1 +
+ hw/misc/trace-events  |   5 ++
+ 6 files changed, 212 insertions(+)
  create mode 100644 hw/misc/axp221.c
- create mode 100644 include/hw/arm/allwinner-r40.h
- create mode 100644 include/hw/misc/allwinner-r40-ccu.h
- create mode 100644 include/hw/misc/allwinner-r40-dramc.h
 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 9e14c3427e..cf8fb083f8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -347,6 +347,7 @@ config ALLWINNER_H3
+ config ALLWINNER_R40
+     bool
+     select ALLWINNER_A10_PIT
++    select AXP221_PMU
+     select SERIAL
+     select ARM_TIMER
+     select ARM_GIC
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 1b6241719d..bdee12efd3 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -22,6 +22,7 @@
+ #include "exec/address-spaces.h"
+ #include "qapi/error.h"
+ #include "hw/boards.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-r40.h"
+ 
+@@ -91,6 +92,10 @@ static void bpim2u_init(MachineState *machine)
+                      &bootroom_loaded);
+     mmc_attach_drive(r40, &r40->mmc3, 3, false, NULL);
+ 
++    /* Connect AXP221 */
++    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
++    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
++
+     /* SDRAM */
+     memory_region_add_subregion(get_system_memory(), r40->memmap[AW_R40_DEV_SDRAM],
+                                 machine->ram);
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 2ef5781ef8..f66ac390b1 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -180,4 +180,8 @@ config AXP209_PMU
+     bool
+     depends on I2C
+ 
++config AXP221_PMU
++    bool
++    depends on I2C
++
+ source macio/Kconfig
+diff --git a/hw/misc/axp221.c b/hw/misc/axp221.c
+new file mode 100644
+index 0000000000..47784bb085
+--- /dev/null
++++ b/hw/misc/axp221.c
+@@ -0,0 +1,196 @@
++/*
++ * AXP-221/221s PMU Emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a
++ * copy of this software and associated documentation files (the "Software"),
++ * to deal in the Software without restriction, including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++ * DEALINGS IN THE SOFTWARE.
++ *
++ * SPDX-License-Identifier: MIT
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/bitops.h"
++#include "trace.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
++
++#define TYPE_AXP221_PMU "axp221_pmu"
++
++#define AXP221(obj) \
++    OBJECT_CHECK(AXP221I2CState, (obj), TYPE_AXP221_PMU)
++
++#define NR_REGS                         0xff
++
++/* A simple I2C slave which returns values of ID or CNT register. */
++typedef struct AXP221I2CState {
++    /*< private >*/
++    I2CSlave i2c;
++    /*< public >*/
++    uint8_t regs[NR_REGS];  /* peripheral registers */
++    uint8_t ptr;            /* current register index */
++    uint8_t count;          /* counter used for tx/rx */
++} AXP221I2CState;
++
++#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
++#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
++#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
++#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
++#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
++#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
++
++/* Reset all counters and load ID register */
++static void axp221_reset_enter(Object *obj, ResetType type)
++{
++    AXP221I2CState *s = AXP221(obj);
++
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
++
++    /* input power status register */
++    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
++                    | AXP221_PWR_STATUS_ACIN_AVAIL
++                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
++
++    s->regs[0x01] = 0x00; /* no battery is connected */
++
++    /* CHIPID register, no documented on datasheet, but it is checked in
++     * u-boot spl. I had read it from AXP221s and got 0x06 value.
++     * So leave 06h here.
++     */
++    s->regs[0x03] = 0x06;
++
++    s->regs[0x10] = 0xbf;
++    s->regs[0x13] = 0x01;
++    s->regs[0x30] = 0x60;
++    s->regs[0x31] = 0x03;
++    s->regs[0x32] = 0x43;
++    s->regs[0x33] = 0xc6;
++    s->regs[0x34] = 0x45;
++    s->regs[0x35] = 0x0e;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x80] = 0x80;
++    s->regs[0x82] = 0xe0;
++    s->regs[0x84] = 0x32;
++    s->regs[0x8f] = 0x01;
++
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0x1f;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x1f;
++
++    s->regs[0x40] = 0xd8;
++    s->regs[0x41] = 0xff;
++    s->regs[0x42] = 0x03;
++    s->regs[0x43] = 0x03;
++
++    s->regs[0xb8] = 0xc0;
++    s->regs[0xb9] = 0x64;
++    s->regs[0xe6] = 0xa0;
++}
++
++/* Handle events from master. */
++static int axp221_event(I2CSlave *i2c, enum i2c_event event)
++{
++    AXP221I2CState *s = AXP221(i2c);
++
++    s->count = 0;
++
++    return 0;
++}
++
++/* Called when master requests read */
++static uint8_t axp221_rx(I2CSlave *i2c)
++{
++    AXP221I2CState *s = AXP221(i2c);
++    uint8_t ret = 0xff;
++
++    if (s->ptr < NR_REGS) {
++        ret = s->regs[s->ptr];
++        trace_axp221_rx(s->ptr, ret);
++        s->ptr++;
++    }
++
++    return ret;
++}
++
++/*
++ * Called when master sends write.
++ * Update ptr with byte 0, then perform write with second byte.
++ */
++static int axp221_tx(I2CSlave *i2c, uint8_t data)
++{
++    AXP221I2CState *s = AXP221(i2c);
++
++    if (s->count == 0) {
++        /* Store register address */
++        s->ptr = data;
++        s->count++;
++        trace_axp221_select(data);
++    } else {
++        trace_axp221_tx(s->ptr, data);
++        s->regs[s->ptr++] = data;
++    }
++
++    return 0;
++}
++
++static const VMStateDescription vmstate_axp221 = {
++    .name = TYPE_AXP221_PMU,
++    .version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(regs, AXP221I2CState, NR_REGS),
++        VMSTATE_UINT8(count, AXP221I2CState),
++        VMSTATE_UINT8(ptr, AXP221I2CState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void axp221_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
++
++    rc->phases.enter = axp221_reset_enter;
++    dc->vmsd = &vmstate_axp221;
++    isc->event = axp221_event;
++    isc->recv = axp221_rx;
++    isc->send = axp221_tx;
++}
++
++static const TypeInfo axp221_info = {
++    .name = TYPE_AXP221_PMU,
++    .parent = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(AXP221I2CState),
++    .class_init = axp221_class_init
++};
++
++static void axp221_register_devices(void)
++{
++    type_register_static(&axp221_info);
++}
++
++type_init(axp221_register_devices);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 96e35f1cdb..d407a2df50 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -46,6 +46,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+ softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
++softmmu_ss.add(when: 'CONFIG_AXP221_PMU', if_true: files('axp221.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index c47876a902..63b072d2d8 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -28,6 +28,11 @@ axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
+ axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+ axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
+ 
++# axp221.c
++axp221_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
++axp221_select(uint8_t reg) "Accessing reg 0x%" PRIx8
++axp221_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
++
+ # eccmemctl.c
+ ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+ ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
 -- 
 2.25.1
 

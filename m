@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3887364ejb;
-        Tue, 21 Mar 2023 03:26:02 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9crM+3Vxm9EzjeoRcjMFrpQjusNAG+O2dU3vvmZdHdX8YIIaBqH3jvNMrL7pLfRghjKss+
-X-Received: by 2002:ad4:5dcd:0:b0:56e:b16d:ec93 with SMTP id m13-20020ad45dcd000000b0056eb16dec93mr2873579qvh.4.1679394362792;
-        Tue, 21 Mar 2023 03:26:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679394362; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp3887564ejb;
+        Tue, 21 Mar 2023 03:26:18 -0700 (PDT)
+X-Google-Smtp-Source: AK7set99bnc8HAfxnN7Wp+WZvMRv/WIxkP81zMoIKCl7TKxqssMrCHLsSqMUED5cw8pLHcV80+zu
+X-Received: by 2002:ac8:7f4c:0:b0:3bf:d1da:114b with SMTP id g12-20020ac87f4c000000b003bfd1da114bmr3606977qtk.47.1679394378352;
+        Tue, 21 Mar 2023 03:26:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679394378; cv=none;
         d=google.com; s=arc-20160816;
-        b=yfCOHRp9/VQIQ2gbGDnTO/FQGa4KbD5d8P+usFOnqRKrDTr0DIK2bFszGKnKJo2q2G
-         dWDXbjGieh0Mp+1HignoNbGdQ/YRsf6VLMUU5TqaFppgjt1Pheioj879naG+Jag7k8xC
-         ed7Kzx6/6S0m2zWkT5g9YiSiff0frCphEjIm/LALcpV6Y1ysFsdTDUGXny8Xuzcr9Hz3
-         oCC3WEW7J2156JCTrViXI2qs4Wmo6z95deTofWTYID7pcM7j0XtPpfRuuHHT06koUZpg
-         RTMxorAP5GWg432E/AeLKypPcbV5kWMWFBiwyoPSLk3tiO6G/301wcqAlWkQJSS3Cf/a
-         /2xA==
+        b=Nomm8SlVOuAjjfh7T9WEIgQEeGU94UxlFvf136kV0jVJu1u6zey4Lf50T0TUZUH5Ho
+         oyDKHwKlPE++LxmKA4TKlhhoIziEVAmqVQhzNtve/tp32hwkPgER5LbCYXYcqInjroZ3
+         flhqrJlee/t1h6MqY6BVJiE96uprnhF+zHwkBqx91Pltj+cm/nHEP+5p10EIGO5GSROO
+         2RIgpYZFpQVHhtQEmZVK/9dAIvRi/ZvG19BGqnf+xkjpPj0mcwSvvXEViqDVwk+xK1d0
+         vHOPnWOt1dEc9JoS0VEgM4aRITk5kMe4v7Aefv+wzwlhKI6Kj+XfPKdFRGroe4YhYZCd
+         577g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gZ00j0RL6EPyiOjEg/gcT8mV4sWyhdEWLnycoYVAHvE=;
-        b=vB16JPuNSt4l/JEhm0Kh+JyKlJJGcMudYLQ1T2kBgKB4TYhrPM7FFEuyA1/GoPsOHI
-         ZWfwzkm52QW2eClrjFUG3KD5eY28IEJlgra05mYPvrpECWxxU5+2pnC/IY62QqvY7x+Y
-         s0Y8lganHRuW2eOFXE/G60KnERzlrkmmQ5N/yPKVO7Ex70062aoz2VcR9Eu790s6G0pe
-         PYKDA2v5D3g+9CSZTp7uY4SHaj5qobXrz3lBG5SUldQy6VajvPDlxL3uOfeCME+K0qML
-         6bN+vN0OPdDzdANS+12e9XbJ/FxKka3ac5TjvMPfO6audXYrFEQAp7uCAg781im7DA8G
-         JSyg==
+        bh=TWqgsTdAvDy0ymsx/v7VDLpMlJ2UMoSQafpO22Z5oWQ=;
+        b=RmKQCTIIbyS3scC8yb8L6tI1j0byt+9Co+9LUo90l11sLqXTz9wIcVc6pa6lrKETZg
+         5o6FL4Mgpg+Lgy+x8g4YSxudGc5DZCnrij2Z6+aNtV7l5ksoE0UgvlTnLSMs9seL/Sle
+         fYxtBv7+5vRJZvO9AuUdzFB5bWZMj6N7QrHdwfOW7XaARgMqPjp/CCo4svwlWe1GDre/
+         xl8ON0GTChvcKjamziRzbp5xvF0DJpjP6cBqs0sortNlf2k6mrEHir9bRTkshTBXplA2
+         EX7Cqj6az6oDbmBqH3Ka2fO+BXg3cQdOaePttauwmQa02L6HbcxInL321xAMpOyfZke9
+         /xog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=Gftr5ivw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=hggicGls;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z2-20020a0cfec2000000b005ad7c569519si7582830qvs.210.2023.03.21.03.26.02
+        by mx.google.com with ESMTPS id m17-20020a05620a24d100b00746a5623849si215306qkn.463.2023.03.21.03.26.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Mar 2023 03:26:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Mar 2023 03:26:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=Gftr5ivw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=hggicGls;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1peZBS-0000Re-VH; Tue, 21 Mar 2023 06:25:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1peZBc-0000XW-Kd; Tue, 21 Mar 2023 06:25:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1peZBP-0000PD-FB; Tue, 21 Mar 2023 06:25:35 -0400
-Received: from m12.mail.163.com ([220.181.12.215])
+ id 1peZBa-0000WH-9y; Tue, 21 Mar 2023 06:25:46 -0400
+Received: from m12.mail.163.com ([220.181.12.216])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1peZBK-0008Nw-Da; Tue, 21 Mar 2023 06:25:33 -0400
+ id 1peZBX-00007a-N2; Tue, 21 Mar 2023 06:25:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=gZ00j
- 0RL6EPyiOjEg/gcT8mV4sWyhdEWLnycoYVAHvE=; b=Gftr5ivwBpJkNTDbyWMP8
- Wo76d/WMb0y5FCu6rs6qOAy+y+BdMy1TZail63CgOg+6+5hmZ/zd8Z4BP1snl0rh
- UjCAr867wzmtazzWC4sN5Xr0V7eJVcBSC7gwl+dyjZkHlux7TKdBQ6NfHOIqcQjx
- iNw/TIS+FvbpiskvDYxDV0=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=TWqgs
+ TdAvDy0ymsx/v7VDLpMlJ2UMoSQafpO22Z5oWQ=; b=hggicGlslkGPgTmjKq/dQ
+ SC1WWEh2qN4Ru8FGNZUN6krKEJBubF+diU05NyDhAKLIc/UcNkURZQdqlj113YVQ
+ csA8HQttK2MUTpdMOz/vH7gXhvzfM8iu4ecKFgOsTXwsIeSmh6Wv7NX3oD3brocE
+ COZeterzL9RhFywfrdJwmo=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wBnznIHhhlk7VIWAA--.11160S9;
- Tue, 21 Mar 2023 18:25:15 +0800 (CST)
+ by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wBnznIHhhlk7VIWAA--.11160S5;
+ Tue, 21 Mar 2023 18:25:14 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -68,257 +68,131 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v1 07/11] hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
-Date: Tue, 21 Mar 2023 18:25:06 +0800
-Message-Id: <20230321102510.16754-8-qianfanguijin@163.com>
+Subject: [PATCH v1 03/11] hw: allwinner-r40: Complete uart devices
+Date: Tue, 21 Mar 2023 18:25:02 +0800
+Message-Id: <20230321102510.16754-4-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230321102510.16754-1-qianfanguijin@163.com>
 References: <20230321102510.16754-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnznIHhhlk7VIWAA--.11160S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW3WFWkCry7XFWrWF4kAr48Xrb_yoWxZrW5pF
- ZYkw45GF45Gan3Jr47tF1DKF1rGa4kCF4UKrn3uF97Ar1DG3WYqa1qgay5JF4DGFZ8CF4U
- Aan0qFy5uFsxtaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pR-AwcUUUUU=
+X-CM-TRANSID: _____wBnznIHhhlk7VIWAA--.11160S5
+X-Coremail-Antispam: 1Uf129KBjvJXoWxXFy7trWfGF43Gw1xCrWrAFb_yoWrJryDpr
+ 9YkrZ5Kr1jgw13Ar1fKws3Z34fK3W8KrnrK3WIyFW3Jr48Xr4Fvry29a1UGrsrKrs3JFW3
+ Wr9xGrWIk3WIvwUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0z_GYLDUUUUU=
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQg057VaEEu4FIwAAsT
-Received-SPF: pass client-ip=220.181.12.215;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzg057WI0Xtc8nwAAsr
+Received-SPF: pass client-ip=220.181.12.216;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3fNIqMr2i5p1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 630JjRQbE+1a
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-A64's sd register was similar to H3, and it introduced a new register
-named SAMP_DL_REG location at 0x144. The dma descriptor buffer size of
-mmc2 is only 8K and the other mmc controllers has 64K.
+R40 has eight UARTs, support both 16450 and 16550 compatible modes.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/sd/allwinner-sdhost.c         | 70 ++++++++++++++++++++++++++++++--
- include/hw/sd/allwinner-sdhost.h |  9 ++++
- 2 files changed, 76 insertions(+), 3 deletions(-)
+ hw/arm/allwinner-r40.c         | 32 ++++++++++++++++++++++++++++++++
+ include/hw/arm/allwinner-r40.h |  7 +++++++
+ 2 files changed, 39 insertions(+)
 
-diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-index 51e5e90830..38e7844399 100644
---- a/hw/sd/allwinner-sdhost.c
-+++ b/hw/sd/allwinner-sdhost.c
-@@ -77,6 +77,7 @@ enum {
-     REG_SD_DATA1_CRC  = 0x12C, /* CRC Data 1 from card/eMMC */
-     REG_SD_DATA0_CRC  = 0x130, /* CRC Data 0 from card/eMMC */
-     REG_SD_CRC_STA    = 0x134, /* CRC status from card/eMMC during write */
-+    REG_SD_SAMP_DL    = 0x144, /* Sample Delay Control (sun50i-a64) */
-     REG_SD_FIFO       = 0x200, /* Read/Write FIFO */
- };
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index 3517682aed..fde01783b1 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -45,6 +45,13 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_CCU]        = 0x01c20000,
+     [AW_R40_DEV_PIT]        = 0x01c20c00,
+     [AW_R40_DEV_UART0]      = 0x01c28000,
++    [AW_R40_DEV_UART1]      = 0x01c28400,
++    [AW_R40_DEV_UART2]      = 0x01c28800,
++    [AW_R40_DEV_UART3]      = 0x01c28c00,
++    [AW_R40_DEV_UART4]      = 0x01c29000,
++    [AW_R40_DEV_UART5]      = 0x01c29400,
++    [AW_R40_DEV_UART6]      = 0x01c29800,
++    [AW_R40_DEV_UART7]      = 0x01c29c00,
+     [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
+     [AW_R40_DEV_GIC_CPU]    = 0x01c82000,
+     [AW_R40_DEV_GIC_HYP]    = 0x01c84000,
+@@ -160,6 +167,10 @@ enum {
+     AW_R40_GIC_SPI_UART1     =  2,
+     AW_R40_GIC_SPI_UART2     =  3,
+     AW_R40_GIC_SPI_UART3     =  4,
++    AW_R40_GIC_SPI_UART4     = 17,
++    AW_R40_GIC_SPI_UART5     = 18,
++    AW_R40_GIC_SPI_UART6     = 19,
++    AW_R40_GIC_SPI_UART7     = 20,
+     AW_R40_GIC_SPI_TIMER0    = 22,
+     AW_R40_GIC_SPI_TIMER1    = 23,
+     AW_R40_GIC_SPI_MMC0      = 32,
+@@ -396,6 +407,27 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+     serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART0], 2,
+                    qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART0),
+                    115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART1], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART1),
++                   115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART2], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART2),
++                   115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART3], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART3),
++                   115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART4], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART4),
++                   115200, serial_hd(4), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART5], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART5),
++                   115200, serial_hd(5), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART6], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART6),
++                   115200, serial_hd(6), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART7], 2,
++                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART7),
++                   115200, serial_hd(7), DEVICE_NATIVE_ENDIAN);
  
-@@ -158,6 +159,7 @@ enum {
-     REG_SD_RES_CRC_RST      = 0x0,
-     REG_SD_DATA_CRC_RST     = 0x0,
-     REG_SD_CRC_STA_RST      = 0x0,
-+    REG_SD_SAMPLE_DL_RST    = 0x00002000,
-     REG_SD_FIFO_RST         = 0x0,
- };
- 
-@@ -438,6 +440,7 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
- {
-     AwSdHostState *s = AW_SDHOST(opaque);
-     AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
-+    bool out_of_bounds = false;
-     uint32_t res = 0;
- 
-     switch (offset) {
-@@ -556,13 +559,24 @@ static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
-     case REG_SD_FIFO:      /* Read/Write FIFO */
-         res = allwinner_sdhost_fifo_read(s);
-         break;
-+    case REG_SD_SAMP_DL: /* Sample Delay */
-+        if (sc->can_calibrate) {
-+            res = s->sample_delay;
-+        } else {
-+            out_of_bounds = true;
-+        }
-+        break;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
--                      HWADDR_PRIx"\n", __func__, offset);
-+        out_of_bounds = true;
-         res = 0;
-         break;
-     }
- 
-+    if (out_of_bounds) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
-+                      HWADDR_PRIx"\n", __func__, offset);
-+    }
-+
-     trace_allwinner_sdhost_read(offset, res, size);
-     return res;
- }
-@@ -581,6 +595,7 @@ static void allwinner_sdhost_write(void *opaque, hwaddr offset,
- {
-     AwSdHostState *s = AW_SDHOST(opaque);
-     AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
-+    bool out_of_bounds = false;
- 
-     trace_allwinner_sdhost_write(offset, value, size);
- 
-@@ -704,10 +719,21 @@ static void allwinner_sdhost_write(void *opaque, hwaddr offset,
-     case REG_SD_DATA0_CRC: /* CRC Data 0 from card/eMMC */
-     case REG_SD_CRC_STA:   /* CRC status from card/eMMC in write operation */
-         break;
-+    case REG_SD_SAMP_DL: /* Sample delay control */
-+        if (sc->can_calibrate) {
-+            s->sample_delay = value;
-+        } else {
-+            out_of_bounds = true;
-+        }
-+        break;
-     default:
-+        out_of_bounds = true;
-+        break;
-+    }
-+
-+    if (out_of_bounds) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
-                       HWADDR_PRIx"\n", __func__, offset);
--        break;
-     }
- }
- 
-@@ -756,6 +782,7 @@ static const VMStateDescription vmstate_allwinner_sdhost = {
-         VMSTATE_UINT32(response_crc, AwSdHostState),
-         VMSTATE_UINT32_ARRAY(data_crc, AwSdHostState, 8),
-         VMSTATE_UINT32(status_crc, AwSdHostState),
-+        VMSTATE_UINT32(sample_delay, AwSdHostState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -794,6 +821,7 @@ static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)
- static void allwinner_sdhost_reset(DeviceState *dev)
- {
-     AwSdHostState *s = AW_SDHOST(dev);
-+    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
- 
-     s->global_ctl = REG_SD_GCTL_RST;
-     s->clock_ctl = REG_SD_CKCR_RST;
-@@ -834,6 +862,10 @@ static void allwinner_sdhost_reset(DeviceState *dev)
-     }
- 
-     s->status_crc = REG_SD_CRC_STA_RST;
-+
-+    if (sc->can_calibrate) {
-+        s->sample_delay = REG_SD_SAMPLE_DL_RST;
-+    }
- }
- 
- static void allwinner_sdhost_bus_class_init(ObjectClass *klass, void *data)
-@@ -867,6 +899,24 @@ static void allwinner_sdhost_sun5i_class_init(ObjectClass *klass, void *data)
-     sc->is_sun4i = false;
- }
- 
-+static void allwinner_sdhost_sun50i_a64_class_init(ObjectClass *klass,
-+                                                   void *data)
-+{
-+    AwSdHostClass *sc = AW_SDHOST_CLASS(klass);
-+    sc->max_desc_size = 64 * KiB;
-+    sc->is_sun4i = false;
-+    sc->can_calibrate = true;
-+}
-+
-+static void allwinner_sdhost_sun50i_a64_emmc_class_init(ObjectClass *klass,
-+                                                        void *data)
-+{
-+    AwSdHostClass *sc = AW_SDHOST_CLASS(klass);
-+    sc->max_desc_size = 8 * KiB;
-+    sc->is_sun4i = false;
-+    sc->can_calibrate = true;
-+}
-+
- static const TypeInfo allwinner_sdhost_info = {
-     .name          = TYPE_AW_SDHOST,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-@@ -889,6 +939,18 @@ static const TypeInfo allwinner_sdhost_sun5i_info = {
-     .class_init    = allwinner_sdhost_sun5i_class_init,
- };
- 
-+static const TypeInfo allwinner_sdhost_sun50i_a64_info = {
-+    .name          = TYPE_AW_SDHOST_SUN50I_A64,
-+    .parent        = TYPE_AW_SDHOST,
-+    .class_init    = allwinner_sdhost_sun50i_a64_class_init,
-+};
-+
-+static const TypeInfo allwinner_sdhost_sun50i_a64_emmc_info = {
-+    .name          = TYPE_AW_SDHOST_SUN50I_A64_EMMC,
-+    .parent        = TYPE_AW_SDHOST,
-+    .class_init    = allwinner_sdhost_sun50i_a64_emmc_class_init,
-+};
-+
- static const TypeInfo allwinner_sdhost_bus_info = {
-     .name = TYPE_AW_SDHOST_BUS,
-     .parent = TYPE_SD_BUS,
-@@ -901,6 +963,8 @@ static void allwinner_sdhost_register_types(void)
-     type_register_static(&allwinner_sdhost_info);
-     type_register_static(&allwinner_sdhost_sun4i_info);
-     type_register_static(&allwinner_sdhost_sun5i_info);
-+    type_register_static(&allwinner_sdhost_sun50i_a64_info);
-+    type_register_static(&allwinner_sdhost_sun50i_a64_emmc_info);
-     type_register_static(&allwinner_sdhost_bus_info);
- }
- 
-diff --git a/include/hw/sd/allwinner-sdhost.h b/include/hw/sd/allwinner-sdhost.h
-index 30c1e60404..1b951177dd 100644
---- a/include/hw/sd/allwinner-sdhost.h
-+++ b/include/hw/sd/allwinner-sdhost.h
-@@ -38,6 +38,12 @@
- /** Allwinner sun5i family and newer (A13, H2+, H3, etc) */
- #define TYPE_AW_SDHOST_SUN5I TYPE_AW_SDHOST "-sun5i"
- 
-+/** Allwinner sun50i-a64 */
-+#define TYPE_AW_SDHOST_SUN50I_A64 TYPE_AW_SDHOST "-sun50i-a64"
-+
-+/** Allwinner sun50i-a64 emmc */
-+#define TYPE_AW_SDHOST_SUN50I_A64_EMMC  TYPE_AW_SDHOST "-sun50i-a64-emmc"
-+
- /** @} */
- 
- /**
-@@ -110,6 +116,7 @@ struct AwSdHostState {
-     uint32_t startbit_detect;   /**< eMMC DDR Start Bit Detection Control */
-     uint32_t response_crc;      /**< Response CRC */
-     uint32_t data_crc[8];       /**< Data CRC */
-+    uint32_t sample_delay;      /**< Sample delay control */
-     uint32_t status_crc;        /**< Status CRC */
- 
-     /** @} */
-@@ -132,6 +139,8 @@ struct AwSdHostClass {
-     size_t max_desc_size;
-     bool   is_sun4i;
- 
-+    /** does the IP block support autocalibration? */
-+    bool can_calibrate;
- };
- 
- #endif /* HW_SD_ALLWINNER_SDHOST_H */
+     /* Unimplemented devices */
+     for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
+diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
+index b355af2c4f..dfb5eb609c 100644
+--- a/include/hw/arm/allwinner-r40.h
++++ b/include/hw/arm/allwinner-r40.h
+@@ -41,6 +41,13 @@ enum {
+     AW_R40_DEV_CCU,
+     AW_R40_DEV_PIT,
+     AW_R40_DEV_UART0,
++    AW_R40_DEV_UART1,
++    AW_R40_DEV_UART2,
++    AW_R40_DEV_UART3,
++    AW_R40_DEV_UART4,
++    AW_R40_DEV_UART5,
++    AW_R40_DEV_UART6,
++    AW_R40_DEV_UART7,
+     AW_R40_DEV_GIC_DIST,
+     AW_R40_DEV_GIC_CPU,
+     AW_R40_DEV_GIC_HYP,
 -- 
 2.25.1
 

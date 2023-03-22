@@ -1,156 +1,170 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp4106316ejb;
-        Tue, 21 Mar 2023 07:08:35 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+gZzyYJnqoXVSsgb6KinhbXMGBB5EYPHsm2NE1N+gB961tGqlXTydq2lBWLVvWQh78v/aC
-X-Received: by 2002:ad4:5cc3:0:b0:56e:b16d:ec93 with SMTP id iu3-20020ad45cc3000000b0056eb16dec93mr78038qvb.4.1679407715045;
-        Tue, 21 Mar 2023 07:08:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679407715; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp5714475ejb;
+        Wed, 22 Mar 2023 13:26:10 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8H6GCw4CByjC1D/K/ZFWuUTwAw0tPYbGh1R63SBnyKIhM0MD97iJDRcwywWXMP52Zz93Hx
+X-Received: by 2002:a17:906:7f99:b0:931:59f:d42 with SMTP id f25-20020a1709067f9900b00931059f0d42mr7556498ejr.29.1679516769851;
+        Wed, 22 Mar 2023 13:26:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1679516769; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qEJLxl1ZpRcUhLHO8Xsp5hsHdIFXKTQ/TTg76ALmHHeg1gCLtAeU+fEyeD1/Y9sPpm
-         XWErOFw/KbTjWsoAEJrL7K875ZWjOQG5Xi08bKYZGbIEnqv/kLcGt5voKwOAtGXC8FNZ
-         NgVb38EHw9f1yqQahL9SYfddK/yvrk/yVWg3FiVuITWaI5lEumOEbKxu9hTNCb5PCTrn
-         b8CPT//3sK3RvS/GWeVBmFp3+DU8+aRT191Qj+Kepn2wW7iOZXzeEH8MBRiaIigGpEIe
-         NerVUSOFWiUWv0hhMZv9DvufMT6itspPSks3E1xSi8bpEBIfNxijLEii1b8aJa0CAwJY
-         btEQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=2Q3NUziH0RZqPAJ/+dGBLw7E5Cd/nWPiwlHzkRcnVio=;
-        b=rEcfVsfRKqXJjLOK/CRmIYdB3VstXOMKomQgr7hwRRE+u+KEQ6c6RDzgWrDWdzfW4d
-         LxiA43dKlP8OtOz41DK+00KSkYtp1ZFCeavHCIj2zGzK2+B8S5wAQYVW0OTgfGgnHv35
-         wmu6nLdl6Pe0dZTQpcglw7JwY+2n+GKuGWS6+cLkfYucTTHMKIqXXXOF+pyPXHybDmu7
-         +S5W4SXcU1xl08glp731GCx0UrJ+bP0arb+n/aD3c0O3H0FEuoJ6m44dtFTG/B8CZFwX
-         fbdFIUUYf9LEvMMHus7l005ES9rGZWA4XdSt6pCkkkh9r0KDFgdvgtyWRB0bUXXk8gDr
-         xgGA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qk3N0dx2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24-20020a37ea18000000b0074661e63711si6654750qkj.241.2023.03.21.07.08.34
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Mar 2023 07:08:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=QObe1RsP2RQx91N1E0jv6Ai4oyh0FQ94KiqoJ7DP27mttw4V8pyzY4MneepZPxwV+S
+         2pAk54XUcLTsud2J+GJmh3CEBOTWNgpSykqOwKEfnxMxV0i2zEEpt0lTA4bV0FwNwMo3
+         HV+LZrxB26nT11XRpCZOT2SYKHb3cWLboP74Qq8aL7tPTtQ89c45WbRTvrQvrXkxz0Q4
+         90u6cpZ12+U5fsowShY62JgAabvummykgDFiZXRhCWukKIBe4irZRJBejtzQE/JNw+FC
+         zlWndZvv9QkpwoIruiHNy5JHSIxZWXd4MqRSEbkVgi0uYETk6Hu7Bw7/CpV+9JLxeXFK
+         HJbA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=qPOwCVqe3dZFbpOwYxdKtOpzpvTHW25wUv/V0X77WF4=;
+        b=LayMmMMVuaGCV8BNnVm3/LEZffX0P+UrTGB1jH9DtyKXA+iZnEdZ+v93bEla47JRw7
+         h2Ju0iWqcxYff5mO4+HO50pbDLhy6mdYGPCd7tCAadin2kY3Kh/iT2otAQ/qomlOczx/
+         LPB6AJYdbt7KpoBRG2Do31kpaPp7fcdVnxNZZbMO8d25dJghMUmSZ72jjJ+mGhxpo4jK
+         ioBtAvQR8sQZTR3MfZgh+bzrcJEbzu1BVGTW8gUr18RWfJKB+nS17npBsnE7/5/RV0Je
+         n5bu7npw4ihZL+F0eOWzEzE/10wozSaed6Z+ibKjayzcvsLns/yDHQMyeuEzFkFYWEAu
+         9lZA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Gwe0boHB;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::723 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (mail-mw2nam04on20723.outbound.protection.outlook.com. [2a01:111:f400:7e8c::723])
+        by mx.google.com with ESMTPS id hz2-20020a1709072ce200b00931d3414a47si12563812ejc.200.2023.03.22.13.26.09
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Mar 2023 13:26:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::723 as permitted sender) client-ip=2a01:111:f400:7e8c::723;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Qk3N0dx2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pecf2-0007Oy-IG; Tue, 21 Mar 2023 10:08:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pecf1-0007JA-Gg
- for qemu-arm@nongnu.org; Tue, 21 Mar 2023 10:08:23 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pecez-0004Vz-Lv
- for qemu-arm@nongnu.org; Tue, 21 Mar 2023 10:08:23 -0400
-Received: by mail-pf1-x435.google.com with SMTP id dw14so3650952pfb.6
- for <qemu-arm@nongnu.org>; Tue, 21 Mar 2023 07:08:20 -0700 (PDT)
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=Gwe0boHB;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e8c::723 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gVN5auXcAWrVrqP+Ln7pvHvBYhRq5DVmQoy0XZ8p0zwUBxv+7zgzMbizWD38YBEziUxOp4ZxjsRf8VDwGdj7WTkbJ26K19pDGS3ZfOKLaoVWA+d2dMiickESHjBz1762WXph/Fcr2EixmpNBp8nbODF9cE05/+iftyaESbcDWrDN5+ZqmMccuNOWu7cJiznsM0+tB3jChZtbncbJqF35tPVSoy6PLZ0bisjLLstaAPwWx+ebZjiQ/SnMGdV5GCoCrzr0dkl8AwAdQ9b+6P0CKG9gKazqndr83N/eNh47+nc0o2l/MXH1IkfoE/OFGMhjDVEqmITsq+LxJRCyeajH6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qPOwCVqe3dZFbpOwYxdKtOpzpvTHW25wUv/V0X77WF4=;
+ b=K6Wt9hWWzyxIMHsNeqMMfYoz43LT8QQ4v3/MvM670YtfmiXLqVaZ7uqsgAQCuFgetM5ITuQAksPR3Vr8aQlX6JhbZODDjHNejlOOHaXO6Ntaksw6a3WWyyRJrkL5iQJCP393zVYxS8F7E4AVrSqavb0164ujdqMlEr1ybj/+IHRFUIv3P3JugBNkkh8zakNTW7961nhVYnenTkzX2rjQHoJhh5KtVPyHj8Cu4QTkRoPYWjVdWK1eUDYZ5tGgmYrGh8lq1DT2AVldY6LBGxEwA6efwcgd+KgPXyT7aEe7Uc/pEk6QJr6PHqQW9DhYxb1uh/wHGOUFu5VBA0yqIIQjrg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1679407699;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2Q3NUziH0RZqPAJ/+dGBLw7E5Cd/nWPiwlHzkRcnVio=;
- b=Qk3N0dx27L5w3bYcVz1k3+V3+e8HbzbjIBaYrSOX+SYJM/3G7NSiMEtXVZ5C6msjg1
- e05d4jYLDe+8YBJPxghdljMVYNh8ZxFJfgVxGKFb3gluAG5OKPDj2R1Os6yjTUJJVIDn
- jfdxWr4Cpm2CBx6xQBxNdnMYRF5E+JLC2pQJ/j3y3cTYSdSZmQhP9q+7Z9Xucn/IF9C5
- P6gk9PVXBZoCiX0s8Jr/6D1YYKfmVKaQc2od7X1VECa4zBF7u7ECZw8ip8YcPLwu/lGZ
- GPqtZUz2ZjZuGXMe4OoJLTRgsHTiMvigPxYw9td6tfXr2DqZHs2SRBBoM2W6KnndzJ47
- uvgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679407699;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=2Q3NUziH0RZqPAJ/+dGBLw7E5Cd/nWPiwlHzkRcnVio=;
- b=8DVLP0fVQc2bByu7K5bjJLG4jx6SjABhx6Q/GnQgIUNYqo/78hQ2Kj4uzLoTdNGYjb
- GXFmla39lhTNhj3cqXER2wy72ItNd1UxwnBMK5PCUGnY0dh7bsdnx8htbhoVwK2lMGNm
- Vqsn+q4DTp3hgFlezHSTUlAHIDFGxTv0VGMb3/ZivNPYJkzXuRZz8iITZfaMSbjBcnxT
- /E5csV/hrJgbA+CHDTInvBTIWAXmkp+/RQQzmDCs+xPATluDcGKpzEpHmTcX97IgGSRM
- R9Nkqr5FIJfX/jjKO4YRIgMnuuRUjeE7WmnUYHCsLoKob7zGC6EgRRhYPnplPv049pMB
- JYlA==
-X-Gm-Message-State: AO0yUKUeE5TYN2XrrtwlJjuLA4UaV5nBd/YcFaawJJi0Xv8WwYawK53n
- nm5a3x6d/qimzhqlFF6MsEVdhYaKOBJCeSlAnYrYug==
-X-Received: by 2002:a05:6a00:2449:b0:625:659e:65c with SMTP id
- d9-20020a056a00244900b00625659e065cmr17747pfj.1.1679407699365; Tue, 21 Mar
- 2023 07:08:19 -0700 (PDT)
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qPOwCVqe3dZFbpOwYxdKtOpzpvTHW25wUv/V0X77WF4=;
+ b=Gwe0boHB2lNYkCoT7LsQBq2Q9CytAJNIP1wHa7HjMzRMptz5tkx/GEey1ZqtpOUeYwmahfSKN71WHPgdy88Hy7YJRPKe0axMO/zx9UOdLfC2zRaeUfwIMn5xj/jFmfS1lW9CtPM2aZc0HRozvNypdW8LWM40081tiEAXAPBXGKs=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ SA1PR01MB7342.prod.exchangelabs.com (2603:10b6:806:1f5::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6222.8; Wed, 22 Mar 2023 20:26:05 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::cf62:d511:8228:b39c]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::cf62:d511:8228:b39c%8]) with mapi id 15.20.6222.010; Wed, 22 Mar 2023
+ 20:26:04 +0000
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vincent Dehors <vincent.dehors@smile.fr>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+Subject: [PATCH v3 0/8] Implement Most ARMv8.3 Pointer Authentication Features
+Date: Wed, 22 Mar 2023 16:25:33 -0400
+Message-Id: <20230322202541.1404058-1-aaron@os.amperecomputing.com>
+X-Mailer: git-send-email 2.39.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: CH2PR03CA0008.namprd03.prod.outlook.com
+ (2603:10b6:610:59::18) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
+Return-Path: aaron@os.amperecomputing.com
 MIME-Version: 1.0
-References: <20230226220650.1480786-1-smostafa@google.com>
- <20230226220650.1480786-11-smostafa@google.com>
- <6e6810c3-c01a-5a2f-4fed-64c9391e22ba@redhat.com>
- <ZBmruj7OME3Pfbh1@google.com>
- <d2e9d8d5-1cf6-67fe-e780-41038fcaa376@redhat.com>
- <CAFEAcA_NZiby7=DWaDBu7b5Dbo5sXF9N7T-0_wskZ46FR9Esxw@mail.gmail.com>
- <ZBm3M7A8nnBweDE3@google.com>
-In-Reply-To: <ZBm3M7A8nnBweDE3@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Mar 2023 14:08:07 +0000
-Message-ID: <CAFEAcA96cg-7Et3OpA_xxCRYFNjGAGoeQJAuoieqExw689O68w@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 10/11] hw/arm/smmuv3: Populate OAS based on CPU
- PARANGE
-To: Mostafa Saleh <smostafa@google.com>
-Cc: eric.auger@redhat.com, qemu-devel@nongnu.org, jean-philippe@linaro.org, 
- qemu-arm@nongnu.org, richard.henderson@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kYkLjtCT2cOf
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|SA1PR01MB7342:EE_
+X-MS-Office365-Filtering-Correlation-Id: ee99ce9d-e90a-4dbd-7387-08db2b13a91a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	RaJx9qvYoYsjYSa6AYJZktEWAWoYLFcU3n46ALEMRw73MSjFGwZKwVNRdFCfrC8vorVi6Ji1KnKTPbH6MRW4wv975pzIxOWOqyz14ZOerDHWaLr6GyP1knk7fLgCOVtB7UIZEZSn508G6K74D8sbGSfDE1hOrxfpNThKdHPPd+qXByGX/NvLOydCIpibHIiJ/Gmx9zQYmsGpybIaeBF21Y1nSCWZ6UNYneUzjg/87ha+JcJy5Ovu0mpUjzXXyXGGfT2OngfYizg+alcMsQoYeALYjL/8SHsZqC5QdeCEOJOEt8iOMkjNqsfLY5QKMNa1nC4wCCz4Eul//pGS8lc/OQuleDmNjOkJsa1uiOqpbufSkG2qXU5d9vk/O2N52qflDNBpMCYglov69TSvrP6cW/biO9hrIfcroBQIip+8szSC1wDt5y3GcVIUdGMP8T9n+c0Vkynw0OL6Qwf8OYOYpjCqlzINqnKoXMglJ23XLGde7HGVKwNl3zTjCjgDJhPNRynr0xRk5NN1PKxdDJqMJh7h8MXjpvmJ++a8ey6456FFksZopduWhOzSBLm7JqMKX9P4iQvEza5DyobrVhG2wf1WDx7++RcUyHp07xq9jdr3R2h7aNilD7jTGNR+sXcxIDyfr646qAj2lHvJzgL+HnaKGH9Qj3JTTOmbtAdv8VLZAKvVoM0Fd2SocctIZAP+
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230025)(4636009)(346002)(136003)(366004)(396003)(376002)(39850400004)(451199018)(966005)(83380400001)(38350700002)(6486002)(186003)(6506007)(86362001)(26005)(6512007)(2616005)(1076003)(38100700002)(6666004)(107886003)(5660300002)(4326008)(52116002)(66476007)(41300700001)(110136005)(66946007)(478600001)(8936002)(2906002)(8676002)(316002)(66556008);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?FMA4PAwYHQgDveo+yeZKatadO+bsaMwhtdAlLy0mnakjN3HCJDbD58+yA34I?=
+ =?us-ascii?Q?8TkXu/aHoHVOOd2IErk8UIvNSh2/Lp0yuwAtmqC4Ki2S41Ve7G1CCaGfbB4X?=
+ =?us-ascii?Q?Rm8PEOoGKk5ZyOKWvrufA0pF5yXYazj8BXYiwgEUrsBj13rrN49rRvuLm2nw?=
+ =?us-ascii?Q?2ABjYaqsXHwGagcY+1k3VZqF9Lzb4OlJKxBRqT7NqyLzao78b25SSeHZwBSg?=
+ =?us-ascii?Q?dZ5vHIvv4qNZ6d+a8r6LBGse3Kanj9MZ3C3kv/j9cofy7xIvIZTvUsO2MTnq?=
+ =?us-ascii?Q?5oPhTQlIbr6tyQOWQklb42bTk23K5h8HAR9mGGsLp+THQIHxxsYvP408qyoC?=
+ =?us-ascii?Q?Vf6wjk0JI2KFCfmlKN+YxWPYN9JD0jhbxXsfCKJU4EvwMFv3FbONx6LFuo5G?=
+ =?us-ascii?Q?Lwf319JkDjOJ6F3le+IqXJ+CYxLpeDwZksCydaw//KJkZqaLKdbcpCWizd3z?=
+ =?us-ascii?Q?f5TpNuLiDfWmBGLOq9gPtqNkpMkDkemMNRILuRIdGpo/Sx2k5PLNRVGSAEGp?=
+ =?us-ascii?Q?Rp6TAZ66cRIgTPSN5LyTyTDu9I0cYIkE57SlAO8Tl9H2eSYOw/X4CjZN6nvz?=
+ =?us-ascii?Q?MHTK98Vuga43Q2Gyr2wJ8TA9khRi80tZaavTpO/S7i+Z7663zFzSwRMuL5dI?=
+ =?us-ascii?Q?ghKpGDhve++AB2+wyhJI3KDytKIGRLE9iK47N9Vdp5XFR+UG/b+dfCZcNnro?=
+ =?us-ascii?Q?luXzWQWygzb/wu/oH5Q1I9Q68njh84xV6jbKhCf/dIFseyhC9UhBylGBsM57?=
+ =?us-ascii?Q?8IzpnMx0IZrZ0LtMbowc4l5Cpprmup/MrsMvxpz38rYwra9kvso6Bel0PjUU?=
+ =?us-ascii?Q?BCA9h4bLbI1r+/kMGLKPeBhlUsyeVa6Xu6AfphAdBdQJv4s53u1EyMR6erPa?=
+ =?us-ascii?Q?mELJsoUIY5BjvSsfhSS72K7SkVSwmsI4WHDEn/nVbUeJlMnDAn/fsUruq+7l?=
+ =?us-ascii?Q?TMbOBcTOAkyTP5MdB6wLhg4TT1/w+mWUOEpd58mjBtPcR3y4o45guTmCGaUU?=
+ =?us-ascii?Q?/lSW+Uw2GBM/y6Y3t4gj1TOI82ikEIlUKeaOq9mguBOHppAsC99HM1ohOxgR?=
+ =?us-ascii?Q?m81qRWt0yMJCxqU8O8VGAHbWY0OXIIbhfco2d7r5A+Sh0jMkpoq7nBqr+yzi?=
+ =?us-ascii?Q?fZbszjtwcTqgajoWPqzmsiZoOGO1aEYeK9nuuMbcagsv3JqKgwRbQZsvNvud?=
+ =?us-ascii?Q?kJAcWWUmBapqzGxCjYp4TUGcNwvYUzCFmPukgTSFLGJ792O+Xj25j2t4LhU/?=
+ =?us-ascii?Q?Y3lOKCxNJXkWNKtbUOCZt1R2b1eHfa6OsGZ1CIfZj4tgw9Ktki6v/NOxRgcw?=
+ =?us-ascii?Q?3ui3Nz6g/Ow53pdhQJrjMKs0ep/SK4/7sz5fJNSeEnRRx1ErZUK+h1gc7afK?=
+ =?us-ascii?Q?/LzKUlaJjqyPgfNoKiDjiAzbZ7koVZ0H5RwuFRE57470yok2bUHrtXDUzshr?=
+ =?us-ascii?Q?yGwpZk+loyNT7wtyJo5yUpb55wR4F+JUll+AONpdjNUC9Kb2fOFzGSPYENOI?=
+ =?us-ascii?Q?3A3T+srjBb4eDZ5LboqVjor2LVCjPPMmyhLWun5Ktsl1Z7OZ/NMw4i5JWF6A?=
+ =?us-ascii?Q?ndzaFnsv+/3OH0S5aPqDgM3GyWiXx6ZSQ+VxVx1N8qYe4QrjCTR9JFetPAzb?=
+ =?us-ascii?Q?Mlh1LIrbNxWeH/tAycSVRGM=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee99ce9d-e90a-4dbd-7387-08db2b13a91a
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Mar 2023 20:26:04.6758
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zGIekWrOk35hPQuz2J8+8e1VlB1SnqLZFkaf1+SbC2dubKEvXSkul/9LIPZu5PLHWjckWgzjIoWvF/Vm60MeFRijxWN/i1z58+5GLLQLnhRMuJe8cZRZ9KWS9fYV43xK
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR01MB7342
+X-TUID: DPKK6keVDCFq
 
-On Tue, 21 Mar 2023 at 13:55, Mostafa Saleh <smostafa@google.com> wrote:
->
-> Hi Peter,
->
-> On Tue, Mar 21, 2023 at 01:34:55PM +0000, Peter Maydell wrote:
-> > > >>> +     */
-> > > >>> +    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
-> > > >>> +    uint8_t oas = FIELD_EX64(armcpu->isar.id_aa64mmfr0, ID_AA64MMFR0, PARANGE);
-> > > >> is this working in accelerated mode?
-> > > > I didn't try with accel, I will give it a try, but from what I see, that
-> > > > ARM_CPU() is used to get the CPU in traget/arm/kvm.c which is used from
-> > > > accel/kvm-all.c, so it seems this would work for accelerated mode.
-> > >
-> > > yeah I ma not familiar enough with that code but it is worth to be checked.
-> >
-> > I'm a bit unsure about fishing around in the CPU ID registers for this.
-> > That's not what you would do in real hardware, you'd just say "the
-> > system is supposed to configure the CPU and the SMMU correctly".
-> >
-> > Also, there is no guarantee that CPU 0 is related to this SMMU in
-> > particular.
-> Sorry, missed this point in last email.
->
-> So, we leave it this way, or there is a better way to discover PARANGE?
+Changes from v2 of this patchset [0]:
+- Remove properties for EPAC, Pauth2, FPAC, FPACCombined
+- Put aa64isar2 addition/initialization into separate patch
+- Clarified several comments (particularly one regarding our divergence
+  from ARM's pseudocode around EPAC feature-detection)
+- Several code formatting fixes and logic simplifications
 
-If you really need to know it, put a QOM property on the SMMU device
-and have the board code set it. (This is analogous to how it works
-in hardware: there are tie-off signals on the SMMU for the OAS value.)
+[0] - https://lists.nongnu.org/archive/html/qemu-devel/2023-02/msg06494.html
 
--- PMM
+Aaron Lindsay (8):
+  target/arm: Add ID_AA64ISAR2_EL1
+  target/arm: v8.3 PAC ID_AA64ISAR[12] feature-detection
+  target/arm: Implement v8.3 QARMA3 PAC cipher
+  target/arm: Implement v8.3 EnhancedPAC
+  target/arm: Implement v8.3 Pauth2
+  targer/arm: Inform helpers whether a PAC instruction is 'combined'
+  target/arm: Implement v8.3 FPAC and FPACCOMBINE
+  target/arm: Add CPU property for QARMA3, enable FPACCombined by
+    default
+
+ target/arm/cpu.h               |  67 +++++++++++-
+ target/arm/cpu64.c             |  48 ++++++---
+ target/arm/helper-a64.h        |   4 +
+ target/arm/helper.c            |   4 +-
+ target/arm/hvf/hvf.c           |   1 +
+ target/arm/kvm64.c             |   2 +
+ target/arm/syndrome.h          |   7 ++
+ target/arm/tcg/pauth_helper.c  | 189 ++++++++++++++++++++++++++-------
+ target/arm/tcg/translate-a64.c |  20 ++--
+ 9 files changed, 274 insertions(+), 68 deletions(-)
+
+-- 
+2.25.1

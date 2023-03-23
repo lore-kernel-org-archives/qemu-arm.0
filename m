@@ -1,202 +1,155 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp38111ejb;
-        Thu, 23 Mar 2023 10:55:02 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9gwJcJyiSA9xLd8sFVLxOYVhH/kc8lMlr2wb55IY6U0OlYRtZffFhvEyjaqebL1xdjrhoV
-X-Received: by 2002:ad4:5fc8:0:b0:570:5389:2216 with SMTP id jq8-20020ad45fc8000000b0057053892216mr10580787qvb.22.1679594102782;
-        Thu, 23 Mar 2023 10:55:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679594102; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp42612ejb;
+        Thu, 23 Mar 2023 11:00:02 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/1K2G8Rc7NXCUdbv7DlnKHs91SrHHEJlGcEoe1goLQC/ObkydKB3Mh0FevcqYZIsaM1+bd
+X-Received: by 2002:ac8:5fc4:0:b0:3e3:8032:908c with SMTP id k4-20020ac85fc4000000b003e38032908cmr282123qta.45.1679594402410;
+        Thu, 23 Mar 2023 11:00:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679594402; cv=none;
         d=google.com; s=arc-20160816;
-        b=FB97bygFIOWSzcGnfB1i6b7FNxQDr8lpSNj99+7VljFzW5LLHU3eMrpmytFXvGZG0U
-         U6cLz20emH/oIKBugJ3ZkMu2K5E13P1MME4qlQwUWV/NSdZ+nIfxRyqN0+AZQmtg5fAt
-         08c7c9Ho5Kp9n5IxovgL7uXyr1hSSfalkCZL4F9N71uhofNWZhB2k9n0evmoGMamf8W/
-         h01qyWBL4CuK1TPgHI5kOtbihuki1+UBMkj+vW7ACLZMdCF2iFcRc5mYwNLG6QbiYbf5
-         5zPGvASWANXalmizhYXOz2qGk4SPS7LvGLAaNb+fXXnzFEyeSkF6JI9Y3edoX49nRqkw
-         C2CA==
+        b=Jk1ddMkrWfxvTVL+1iO3mTkyyVyj2aAdLhDcnZOBfFmvj6iohvrSjzo0qBVw4q7I3q
+         8gMl2e3Cjs265SeeJTTrOA3NUxBaCJ5xON+uduWuT7KI4IproOWYKLT4Vk4boV29G1al
+         KkFpIOZOxTcQmqNAoj+eCQbNPrnWrYCiZWgnx5jzAy4fYyUaWxeJaTrQajRC1b/ACb+L
+         oWEXTgjywS8eHAP514g1mr98XKytghsDxrvffNUXpgkmJuoy57uVDR1xiIb5SCvw0xU7
+         8XE3D14y7c43/sH9mpF3AGnXFKlaSnpCnHzgVB3Thqw6TM0nUf48PH5No86mi0wukNpJ
+         qO0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=rUmY+8+NxN3rU9m1IhlleCo7Y63Iu5sY7RsqdUJ7D5Q=;
-        b=PFk53f61hy3B6OVWmzYzRKnE4c6gwHLHjGo/+NVVlZ1kzNw+nzNvb6pPMCbwbrrwdl
-         FF0n0aPqaqXUC1ITXTzeQqgJcCFv0VN/kv7vlozOOgebBmrcF9ZV9ZZcavwxh/3GJopL
-         XTZw0X4l1X0F8dKgy4aG7qbXnyiNPdBeKrTUb7JOg9F95VcNsc2k+j3UMVJu9Tx857Q8
-         AUamJuiT6+9B3LtrB5lIKUAbuctIM7/C3ussvYpMJQHJQM8KybBiLXAkCOCeaoWIrFYm
-         m85LxElvjMBso7VOF3DWDRXBhi5pvTBeLQy5nBuBT96IM5mquw74QpiRjItgwi8EI7AY
-         tgPA==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=edPREUHUsUeV6RMoNQ/B/Q+71/SbtA+YJ418Q+PnN/Y=;
+        b=kmUX55jRRYQxWbHFM8CdjEhqY0MG9CuyUZMAY3UQ1z1idakQ/LOVt+jE5DccrXBHJk
+         0IDEgXQ8f2VrqEfNjV7sDM+ptCt9muoryrFPh2927CZ3n7qaBKAFuB/t21NK195ROB5W
+         JmkCJR243CjYbcOi2DbWceoHWFKyslUYjkTd7AbILXbEM0KJR2kzzt8AuCSZ6Q3v9duW
+         dNePedWFusskYpyGn94PRONPDS1vahyLWaeI8++4YMT93nfXk36dx7RaEJ2jiONZ33/A
+         YgZDaFBTrIZTRGDG5YsjD4I5xYX4cd4RTT9ZdTvqdC99oOui5t3feYoyiZgl+Tg57xLU
+         y0FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cxSFv+XN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=nIMBsGly;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n21-20020a05620a295500b007464262b8b6si13146186qkp.636.2023.03.23.10.55.02
+        by mx.google.com with ESMTPS id bm22-20020a05620a199600b00746abc156e7si3571674qkb.332.2023.03.23.11.00.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Mar 2023 10:55:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Mar 2023 11:00:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cxSFv+XN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=nIMBsGly;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pfP9L-0007Gg-26; Thu, 23 Mar 2023 13:54:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pfPE4-0008WV-Lc; Thu, 23 Mar 2023 13:59:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pfP9F-0007Eu-Ge; Thu, 23 Mar 2023 13:54:51 -0400
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pfPE2-0008Vq-Nf
+ for qemu-arm@nongnu.org; Thu, 23 Mar 2023 13:59:46 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pfP9B-0003Ab-6S; Thu, 23 Mar 2023 13:54:46 -0400
-Received: by mail-oa1-x31.google.com with SMTP id
- 586e51a60fabf-17ab3a48158so23516296fac.1; 
- Thu, 23 Mar 2023 10:54:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pfPE1-0004q9-6H
+ for qemu-arm@nongnu.org; Thu, 23 Mar 2023 13:59:46 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id ew6so27361963edb.7
+ for <qemu-arm@nongnu.org>; Thu, 23 Mar 2023 10:59:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679594083;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rUmY+8+NxN3rU9m1IhlleCo7Y63Iu5sY7RsqdUJ7D5Q=;
- b=cxSFv+XNIJhcAi0UzokT472f0w4OhQYl09zLrgaavPk3UjSUg9EUjb0R1mgjreGiba
- Kzk04jReYhIf4oa65yhl8KZSCCJv7XJJMUcDQEyAYbO9i9siFr8NbysuzteinHufwJp0
- 2nWkznh1cuNpANun+b4adoJVHTNGGEJRaGq1k47dJxMakSfbtlp7kkkEAiL7XeKJm2EH
- eimjF9c+VY8k5AIx1LNZbSIwbAKnfNJdbdvBbfQ4mDwwQb2HOg3YaWSJfgrhXfjldPgU
- H4Q3uPDpFDThAxu4+20KxKDY4Q+fspktMu71dpKhE7t4vv7rTqcBrhet9DT3L1+8oZWU
- dH6Q==
+ d=linaro.org; s=google; t=1679594381;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=edPREUHUsUeV6RMoNQ/B/Q+71/SbtA+YJ418Q+PnN/Y=;
+ b=nIMBsGly4w3mORR2xE0oYdNEW739HGq7rEjsaO40UuLrFB7vC+iJiuLJqAdPBfsZva
+ Gb3exHYjpIF3RuSLGkG1PbT9P0NLaBPYKbLVbKBcU+LMJAJMEaZzm2xd6rA9BVfU2ESP
+ jbLcOtceYpyc7BkqfJWCavRSr9dJCIz9N5jjqHpCh/SNkz2c3qtEkdMNiKO9n1tJjUy5
+ t/7at83Y2Wc0b5Zdq9rwsPe80WoQwh8LKRW1Y+DIefLzkbifvP3tqir2W13+Be8Oe4NJ
+ jYnCYA7l0NN3/uXZ+8KrLenrso3ioDxH/8hM7xrck8GfIwD/5njpX4EwTRlKMciDE/nK
+ X98Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679594083;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rUmY+8+NxN3rU9m1IhlleCo7Y63Iu5sY7RsqdUJ7D5Q=;
- b=K4gjSRa53gfq5eE/ZOyQOnOfKxR+HiX/ZWbfbnJJkYOtRcHv+VzoFAbnsMfleP2a8D
- k0IYlUP3pBqy51jW25OS1QuDg02mGj1rYCHLBDgGveK9TuHV3sIxB8eQ08B6BAarwFw0
- +zIG7EqdETzNCYYWW98I9wbjLukSV96Mj07IrxIHPMSK3z9YZ7CndMTM8GaHmw4+1YdX
- BtpjopGT7rGtEQ6/AzSifiP6mJK7EtMKqw0LgiaIZ5L4eQZuFOJXVDdw3tYgxNHkcSNb
- YhunRWeElnuldM3XT6QBBbirzfQPQ3kit+Cdpb5ZNbvfYeP8uqu4xm96GVv7CJrOaByB
- 5SKw==
-X-Gm-Message-State: AAQBX9cn2daF3xSEhI4b0Py0MA5nXp5stGx9CftwILCvPlfu/u5xEvzH
- MtGYz9gsvTRsT+qrbyghbdY=
-X-Received: by 2002:a05:6870:c6a8:b0:17a:c838:24d2 with SMTP id
- cv40-20020a056870c6a800b0017ac83824d2mr2281411oab.27.1679594083448; 
- Thu, 23 Mar 2023 10:54:43 -0700 (PDT)
-Received: from [192.168.68.107] ([177.95.89.231])
- by smtp.gmail.com with ESMTPSA id
- az15-20020a05687c230f00b0016a37572d17sm6483900oac.2.2023.03.23.10.54.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Mar 2023 10:54:43 -0700 (PDT)
-Message-ID: <fda401e9-608d-a74b-9ff5-aa977d900cd5@gmail.com>
-Date: Thu, 23 Mar 2023 14:54:40 -0300
+ d=1e100.net; s=20210112; t=1679594381;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=edPREUHUsUeV6RMoNQ/B/Q+71/SbtA+YJ418Q+PnN/Y=;
+ b=8RQasgZQQFbxjpkjwRFrGwCG6a6SWSTIAUA+hw3Pd4HSayu9mCMHm5ZXZfFYRPQzp3
+ 3kl/KmHRzRCA31bMXAu7aurZYkkq1BLP1jtVkm2LD7PWXPXe3MV5s11FyiMTS6KeqgHe
+ j6nXf5FPxEHCV4Bk2CyczGDwQvX5kZiyBLDp8IIz035TYfTheZ7hwFfvfaA2OJ9m+FlJ
+ 53LjCn91y+2O9f9mE+T/SO3Tf5y8L8zHMB0yhhEofydLCOBjKe9ZkPxz1c5qe8QtesMp
+ jQha3dOLxvwrZfYMiDxXcMIKKiTNTRPkhw+nWjNdneL2gIgeieVadxL5617T8mswZYgV
+ +rlw==
+X-Gm-Message-State: AAQBX9fBfX0+FORQkyHi/R734x6mZQhkAFshat/aWtPU1No1GJl6oJ9o
+ QYl9PVrwbDr4fZ/KHx+AayO6sPFLDoLDHriEmbR2MA==
+X-Received: by 2002:a50:bb0d:0:b0:4fa:e897:7467 with SMTP id
+ y13-20020a50bb0d000000b004fae8977467mr147133ede.6.1679594381678; Thu, 23 Mar
+ 2023 10:59:41 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org
 References: <20230323161053.412356-1-danielhb413@gmail.com>
  <20230323161053.412356-2-danielhb413@gmail.com>
  <CAFEAcA89KN5SEi5hFoKKpzVSo=xV3gCn7b2bMBhb5qoQ=U9_mg@mail.gmail.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <CAFEAcA89KN5SEi5hFoKKpzVSo=xV3gCn7b2bMBhb5qoQ=U9_mg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::31;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x31.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ <fda401e9-608d-a74b-9ff5-aa977d900cd5@gmail.com>
+In-Reply-To: <fda401e9-608d-a74b-9ff5-aa977d900cd5@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Mar 2023 17:59:30 +0000
+Message-ID: <CAFEAcA_MXhG7-J9qAv-9cmHKC-qx5nKfZPHi7jXyqdoYumH5-A@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8Vn+Ms+wb1G2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3A7yMHmFUADE
 
+On Thu, 23 Mar 2023 at 17:54, Daniel Henrique Barboza
+<danielhb413@gmail.com> wrote:
+>
+>
+>
+> On 3/23/23 14:38, Peter Maydell wrote:
+> > On Thu, 23 Mar 2023 at 16:11, Daniel Henrique Barboza
+> > <danielhb413@gmail.com> wrote:
+> >> -    g_free(fdt);
+> >> +    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
+> >> +    ms->fdt = fdt;
+> >
+> > With this we're now setting ms->fdt twice for the virt board: we set
+> > it in create_fdt() in hw/arm/virt.c, and then we set it again here.
+> > Which is the right place to set it?
+> >
+> > Is the QMP 'dumpdtb' command intended to dump the DTB only for
+> > board types where the DTB is created at runtime by QEMU? Or
+> > is it supposed to also work for DTBs that were originally
+> > provided by the user using the '-dtb' command line? The docs
+> > don't say. If we want the former, then we should be setting
+> > ms->fdt in the board code; if the latter, then here is right.
+>
+> My original intent with this command was to dump the current state of the FDT,
+> regardless of whether the FDT was loaded via -dtb or at runtime.
 
+Mmm. I think that makes sense; we do make a few tweaks to the DTB
+even if it was user-provided and you might want to check those
+for debug purposes. So we should keep this assignment, and remove
+the now-unneeded setting of ms->fdt in create_fdt().
 
-On 3/23/23 14:38, Peter Maydell wrote:
-> On Thu, 23 Mar 2023 at 16:11, Daniel Henrique Barboza
-> <danielhb413@gmail.com> wrote:
->>
->> At this moment, arm_load_dtb() can free machine->fdt when
->> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
->> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
->> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
->> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
->> arm_load_dtb() will make machine->fdt point to an invalid memory region.
->>
->> After the command 'dumpdtb' were introduced a couple of releases ago,
->> running it with any ARM machine that uses arm_load_dtb() will crash
->> QEMU.
->>
->> One alternative would be to mark machine->fdt = NULL when exiting
->> arm_load_dtb() when freeing the fdt. Another is to not free the fdt and,
->> instead, update machine->fdt with the new fdt generated. This will
->> enable dumpdtb for all ARM machines that uses arm_load_dtb(), regardless
->> of having 'dtb_filename' or not.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: qemu-arm@nongnu.org
->> Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
->> Reported-by: Markus Armbruster <armbru@redhat.com>i
->> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
->> ---
->>   hw/arm/boot.c | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index 50e5141116..9418cc3373 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -689,7 +689,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>       qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
->>                                          rom_ptr_for_as(as, addr, size));
->>
->> -    g_free(fdt);
->> +    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
->> +    ms->fdt = fdt;
-> 
-> With this we're now setting ms->fdt twice for the virt board: we set
-> it in create_fdt() in hw/arm/virt.c, and then we set it again here.
-> Which is the right place to set it?
-> 
-> Is the QMP 'dumpdtb' command intended to dump the DTB only for
-> board types where the DTB is created at runtime by QEMU? Or
-> is it supposed to also work for DTBs that were originally
-> provided by the user using the '-dtb' command line? The docs
-> don't say. If we want the former, then we should be setting
-> ms->fdt in the board code; if the latter, then here is right.
-
-My original intent with this command was to dump the current state of the FDT,
-regardless of whether the FDT was loaded via -dtb or at runtime.
-
-Ideally it would also reflect hotplug changes that affects the FDT as well, although
-I'm aware of only one board that does that (ppc64 pseries) and we would need some
-work done that to update ms->fdt after the hotplug/hotunplug path.
-
-Perhaps a doc path would also be good.
-
-
-Daniel
-
-> 
-> thanks
-> -- PMM
+thanks
+-- PMM

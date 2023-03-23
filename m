@@ -1,106 +1,102 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp183497ejb;
-        Thu, 23 Mar 2023 13:44:45 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9ciHFie3EfpN0w1U+iZlRJ+qiEhPNYP2yEY78rIGgD3qEjQRLJoKBXD93EwC5KDuyjFMV0
-X-Received: by 2002:a05:622a:189b:b0:3dd:8323:1ed5 with SMTP id v27-20020a05622a189b00b003dd83231ed5mr1165175qtc.62.1679604285558;
-        Thu, 23 Mar 2023 13:44:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679604285; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp183729ejb;
+        Thu, 23 Mar 2023 13:45:03 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZBpz83Mup471Pr1KrF7sl4Shk2qMKj2BHBf2SUNT//RHKYXXp4NgLrUhcXghK4YgAAIPgb
+X-Received: by 2002:a05:6214:23c8:b0:5c6:ab93:6112 with SMTP id hr8-20020a05621423c800b005c6ab936112mr254704qvb.30.1679604302951;
+        Thu, 23 Mar 2023 13:45:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679604302; cv=none;
         d=google.com; s=arc-20160816;
-        b=jb9eOOkK7wJMLvM/xuBeDvcM06d68LlFITwn7twfFe5llFEHmjgJqUANK9OLyTHcdv
-         PIZ0PeigkAx45AMVa3nbG5oFisNjzDywQsZulqZxIibwpBCfD8mp3OS7EDgi1f7PNjgk
-         EFypbUkZQ0OeALz/ZaWQ71SXf+IElhKAfBtC/HqKUctwkajdozRqiq/qFt+JMZiajnPx
-         zzA/Ijx/fa4f9IqBEKZf23ls7zqcZI2/Xjkchcngk46dBoBtmpT2u0g3oRWZ0Pc4S92H
-         3mBiyty4CgQVE4r7FXyrm3y6gD0QfFgCjTrCdTY83JyRi+5T6BvZpg+b9JY3Yjpyrxuu
-         7pgA==
+        b=vpZnOfSIkUuTmYwTm0LK+1AYhCyNshDarKIQ3tUtZUnyK+TPKGxjCWOxUHjjh2AEPC
+         aqqtz1X3njWFdisQ0D1d4JNj0cB5jn4v+0LrPwr+WdoIpyU82sK4uHSld3YaRN1rlVvE
+         6XzrCcGsVe34OU2VQvgajMoWk7+Q6XpKRr/eEpSfluM6Iw8BC0b95F6VDte5764jwi59
+         blsXVb0HeY/2IIe2ltJ1ubeknEjSwi3V7lHHTdxI1htAFXIHXn3Dk3he0W/vrNDLqmX2
+         Vh415peLBdPRUNiDH4mboh6C0a7ZVNOOJZpuJG55ZT87yQLfWv+OchF+eOZSqzavh+/C
+         4zYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=znoAB/+DZD4lDjofu/rLoyYbQId/Knw6hOu3UZCCyXU=;
-        b=XyTsxN3J/DSZf9gmrRyKvMdYDaerF2F41vXRbrubR8yaQDT5WYuHpH2nXUGk39LgNp
-         8TKeaiY8h+4e1uhAYPJYCTz1p8ui1NrRQQrTbht2JG/SF0TEWxR9qFiuTbNR1ufVuFFM
-         kagUQEIzSK0fsbQZqPpc5UXKSFiS7P8Q7T1RtFIezfakxlOknDHWEIedb7oC3RuncWO1
-         Xqb0NTMrvoJoyLyX7BVBRFupwl/nPL3dCAcZ0tQxBi3IgYsZvrotYE34HgEIlZRK4Riz
-         5jC+Is/4b8q9ztZ072SGXzU1NbZ1ZWgxvqNiG5jFcNhwA9/5CHolKdQDuJoFAqm/BCiz
-         LA5A==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=FPKiv4Av7DAX9okuawoFHj/Q4H5V/HnL1U0OAze6R6A=;
+        b=V4Scif4XqF9wZWZrxoLpE+PRh9ID5kerQg+IEddztjNPj7tJYJkiTtD6qFiG1xVRBY
+         uGcYPI6dzMRE7w3PrTI9cj5rphJfkovM9FVQfDOoxU84+lmihpr2q9K2oKA+x6WSo1sG
+         jOyP1/fVB25pPUo1qeMIVFrwTK9kLtSi5Z2qFeTjidDL7+cyR6cwEFMpfvJDQj+3B5fz
+         wx+ixWe9XLMzEKNrHTARIdHspN2vCOn1sbpxTHnAYCtxsOMoRn/kZ6fTpsR49L1GAb3c
+         qf6jv5/bZ9GJTypYKn70e7r68x7dmNO2JE7xmj9NyoQiWTLOFREN4e6J/402qbsHnCpm
+         vmtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WnmpbDaT;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GFkexIHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b188-20020ae9ebc5000000b00746a8d2b83fsi4172479qkg.315.2023.03.23.13.44.45
+        by mx.google.com with ESMTPS id o10-20020a0cfa8a000000b0057e60499689si11997671qvn.208.2023.03.23.13.45.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Mar 2023 13:44:45 -0700 (PDT)
+        Thu, 23 Mar 2023 13:45:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=WnmpbDaT;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=GFkexIHL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pfRnS-0004Mg-1S; Thu, 23 Mar 2023 16:44:30 -0400
+	id 1pfRnO-0004LR-S1; Thu, 23 Mar 2023 16:44:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pfRnQ-0004MO-LO; Thu, 23 Mar 2023 16:44:28 -0400
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+ id 1pfRnN-0004K8-74; Thu, 23 Mar 2023 16:44:25 -0400
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pfRnM-0006tL-HX; Thu, 23 Mar 2023 16:44:26 -0400
-Received: by mail-oa1-x32.google.com with SMTP id
- 586e51a60fabf-17786581fe1so23887482fac.10; 
- Thu, 23 Mar 2023 13:44:23 -0700 (PDT)
+ id 1pfRnK-0006sR-7k; Thu, 23 Mar 2023 16:44:24 -0400
+Received: by mail-oa1-x2b.google.com with SMTP id
+ 586e51a60fabf-17786581fe1so23887343fac.10; 
+ Thu, 23 Mar 2023 13:44:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679604262;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=znoAB/+DZD4lDjofu/rLoyYbQId/Knw6hOu3UZCCyXU=;
- b=WnmpbDaTpXjRq6UkDecPUfRJ7lA+5ZqQnHelK+7RLm32pSB8vJa+mTpuv0gRv3x7So
- BCgc7r6C0KUo/gEh72TGoFlTZV716S4O54Y60Wb4so5Nsu0nkt8UcJ5NJ9Am8enwa8Ff
- d3egojeklGq5z+Foiha6/hWjYN+iZ1HVjEyv7LivlsUnA0JJwsPWN+GPUuyxuyc05SKF
- CKDhboUjTdrC3E0H3C7AzqU9ewRyFudxa4VuXxzH0fFWMcNHmlyefAnjxMGtlyTGAbA8
- wauoR7Wm8dh/3bMVm32cs2GMfOYC5gnVTkv+QXnaLOyL92r9iMJX2YbnvbmRwNOq8w1H
- W9/Q==
+ d=gmail.com; s=20210112; t=1679604260;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=FPKiv4Av7DAX9okuawoFHj/Q4H5V/HnL1U0OAze6R6A=;
+ b=GFkexIHLBI2Wo7k8NTIHWT65yb7WV5wiTX5waO/ckcRp0aLTAs17fTCgm0ETxekFSN
+ 7rP7NoA9deJBFlQDrBztAP+HvmGcDehGwXpIApUCaObX9mnLPOQ/58qQtK0W/i+DZMJ1
+ muaFtH/YpTVk2CRsLpoiCZXQFxuOziVu5il5YbcFy0dbKZpO0B3mRj9KGxZYs/on7fup
+ qpr3O7gqzyaarRMZKjd7xLbhI0pNq12i9NQCvUzyvNAtsAG9s9hb+Qy03TkZUQZz44WJ
+ SlZZeocTWvW3QoRskjuPuGKkiwyqMpnqOzHT0iEY4lgqSlyO2jFaovNnOhm8gUTZO9UA
+ +DEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679604262;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=znoAB/+DZD4lDjofu/rLoyYbQId/Knw6hOu3UZCCyXU=;
- b=LSYZFJbvlrgHZexfa+G97jJUuMKauMwZr5bTK1TxHkf/JA2FiLo6Pn9nJeyvN0nazp
- JnEtodgw3Vo8wVi+DsqwTSfFIvWflT/ewbrMfjcDbbnTwpZIIKC+I0KoqzLhluAgcppP
- dO8Q/0RsYL9VHptNYxUMoMRiel3fpK9ISPqtTGZnUo2sP886jJ+w26bsGEBaXxBHPp6I
- Uz5TWzZP8QE5FOnhfveMr0NmlFcc8sVSnzhCCMurFmaGQEqGOTv2GwPnlXvIHF5Hm3Fg
- osHEzO9UjYpw5GEOIUL5wfW2Kmkn5QhFEw/A7vawOyU0vvJ3zCr64JZwBc3N9kyxitZf
- kHIg==
-X-Gm-Message-State: AAQBX9e81zaN7hl/W2eDPECvOYPXzvRpDhvocd9B0ZCSzE8O7moYY/4G
- 9/AzDiN7Cf1pHjQfhpk7l2CjOwgtMB8=
-X-Received: by 2002:a05:6870:e88a:b0:17a:c7ff:ccf7 with SMTP id
- q10-20020a056870e88a00b0017ac7ffccf7mr519639oan.28.1679604262732; 
- Thu, 23 Mar 2023 13:44:22 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1679604260;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FPKiv4Av7DAX9okuawoFHj/Q4H5V/HnL1U0OAze6R6A=;
+ b=jVFkcmbGdpuaex2N6zoN3hLKAU1EDUnB7W+QudbEC2ceEu7Bj6rrzzWbeZLXWlh+1n
+ tPqUwnSF90VzBIXDKzjTheXfse8xke2rJ6elB76f2jOXgHHTf/u1YT38XZMSqhA2Wo+n
+ atw0M7F9p4vMY/xhWecrgXFJ06DWnv8CMqyg2KHCSGXOetRSeWnYv+ZgYGar2shsKEP8
+ IOYtSouvIjIHr1IUkowN3RNK0txBqiIyIXOcGva/CI0nhNG1+0hAp4JRmjUJK0ZczlFw
+ Nlrn30zNN42Qi09d3RU3Gs+KX+e2xJm/OT9kojJcACdY25b26muVv61PRYDxf3ocwcF7
+ omSQ==
+X-Gm-Message-State: AAQBX9eMZxAwec/sN87YJilDZbb/QB3JFPXRNd+H0fyagHSD4d9uTG2E
+ E9m8CJUM2Kj4Q6APXNib+1hrpdoRJE0=
+X-Received: by 2002:a05:6870:972c:b0:177:a8a8:660 with SMTP id
+ n44-20020a056870972c00b00177a8a80660mr446308oaq.9.1679604260328; 
+ Thu, 23 Mar 2023 13:44:20 -0700 (PDT)
 Received: from grind.. ([177.95.89.231]) by smtp.gmail.com with ESMTPSA id
- vd21-20020a0568708f9500b0017ae1aede32sm6442081oab.46.2023.03.23.13.44.20
+ vd21-20020a0568708f9500b0017ae1aede32sm6442081oab.46.2023.03.23.13.44.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Mar 2023 13:44:22 -0700 (PDT)
+ Thu, 23 Mar 2023 13:44:19 -0700 (PDT)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org
-Subject: [PATCH v2 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
-Date: Thu, 23 Mar 2023 17:44:14 -0300
-Message-Id: <20230323204414.423412-2-danielhb413@gmail.com>
+Subject: [PATCH v2 0/1] fix dumpdtb crash with ARM machines
+Date: Thu, 23 Mar 2023 17:44:13 -0300
+Message-Id: <20230323204414.423412-1-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230323204414.423412-1-danielhb413@gmail.com>
-References: <20230323204414.423412-1-danielhb413@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::32;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x32.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2b;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x2b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -123,65 +119,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uXObuhnbnc+U
+X-TUID: OxTLZSvArgEv
 
-At this moment, arm_load_dtb() can free machine->fdt when
-binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
-retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
-the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
-machine->fdt. And, in that case, the existing g_free(fdt) at the end of
-arm_load_dtb() will make machine->fdt point to an invalid memory region.
+Hi,
 
-After the command 'dumpdtb' were introduced a couple of releases ago,
-running it with any ARM machine that uses arm_load_dtb() will crash
-QEMU.
+In this version I fixed a mem leak that was happening if the user inputs
+a fdt via '-dtb'. In that case we would assign the updated FDT on top of
+the existing board FDT that was already assigned to ms->fdt.
 
-Let's enable all arm_load_dtb() callers to use dumpdtb properly. Instead
-of freeing 'fdt', assign it back to ms->fdt.
+Tested as follows:
 
-Note that all current callers (sbsa-ref.c, virt.c, xlnx-versal-virt.c)
-are assigning ms->fdt before arm_load_dtb() is called, regardless of
-whether the user is inputting an external FDT via '-dtb'. To avoid
-leaking the board FDT if '-dtb' is used (since we're assigning ms->fdt
-in the end), free ms->fdt before load_device_tree().
+$ ./qemu-system-aarch64 -S -M virt -display none -qmp stdio
+{"QMP": {"version": {"qemu": {"micro": 91, "minor": 2, "major": 7}, "package": "v8.0.0-rc1-37-ge573ef31e7-dirty"}, "capabilities": ["oob"]}}
+{"execute": "qmp_capabilities", "arguments": {"enable": ["oob"]}}
+{"return": {}}
+
+{"execute": "dumpdtb", "arguments": {"filename": "fdt.dtb"}}
+{"return": {}}
+
+^Cqemu-system-aarch64: terminating on signal 2
+{"timestamp": {"seconds": 1679603324, "microseconds": 62159}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-signal"}}
+$ 
+
+
+$ ./qemu-system-aarch64 -S -M virt -display none -qmp stdio -dtb fdt.dtb 
+{"QMP": {"version": {"qemu": {"micro": 91, "minor": 2, "major": 7}, "package": "v8.0.0-rc1-37-ge573ef31e7-dirty"}, "capabilities": ["oob"]}}
+{"execute": "qmp_capabilities", "arguments": {"enable": ["oob"]}}
+{"return": {}}
+
+{"execute": "dumpdtb", "arguments": {"filename": "fdt.dtb"}}
+{"return": {}}
+^Cqemu-system-aarch64: terminating on signal 2
+{"timestamp": {"seconds": 1679603344, "microseconds": 145748}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-signal"}}
+$ 
+
+
+First we use 'dumpdtb' to dump the board FDT in fdt.dtb, then we use it as
+an argument to '-dtb' and do the test again. This covers both code paths.
+
+
+Changes from v1:
+- g_free(ms->fdt) before load_device_tree()
+- v1 link: https://lists.gnu.org/archive/html/qemu-devel/2023-03/msg05930.html
 
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-arm@nongnu.org
-Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
-Reported-by: Markus Armbruster <armbru@redhat.com>i
-Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
----
+
+Daniel Henrique Barboza (1):
+  hw/arm: do not free machine->fdt in arm_load_dtb()
+
  hw/arm/boot.c | 10 +++++++++-
  1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 50e5141116..de18c0a969 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -549,6 +549,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-             goto fail;
-         }
- 
-+        /*
-+         * If we're here we won't be using the ms->fdt from the board.
-+         * We'll assign a new ms->fdt at the end, so free it now to
-+         * avoid leaking the board FDT.
-+         */
-+        g_free(ms->fdt);
-+
-         fdt = load_device_tree(filename, &size);
-         if (!fdt) {
-             fprintf(stderr, "Couldn't open dtb file %s\n", filename);
-@@ -689,7 +696,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-     qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
-                                        rom_ptr_for_as(as, addr, size));
- 
--    g_free(fdt);
-+    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
-+    ms->fdt = fdt;
- 
-     return size;
- 
 -- 
 2.39.2
 

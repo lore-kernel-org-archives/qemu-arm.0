@@ -1,125 +1,163 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp5825037ejb;
-        Wed, 22 Mar 2023 15:39:33 -0700 (PDT)
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nOv+CREb
-X-Received: by 2002:a17:90b:3141:b0:23f:e165:3452 with SMTP id ip1-20020a17090b314100b0023fe1653452mr5618557pjb.0.1679524773314;
-        Wed, 22 Mar 2023 15:39:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679524773; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp6660983ejb;
+        Thu, 23 Mar 2023 09:11:15 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8ulxBZuyxJrRwwz99M562rh2UxwdB7gU5z2J7ew6crOJvOeTkVXXAERIagVz2CjK8Ix8yJ
+X-Received: by 2002:ad4:5d62:0:b0:5c2:29f1:d677 with SMTP id fn2-20020ad45d62000000b005c229f1d677mr14892704qvb.23.1679587875358;
+        Thu, 23 Mar 2023 09:11:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679587875; cv=none;
         d=google.com; s=arc-20160816;
-        b=LkslVmoQJaEQZJiBlrhJXSrG8TDd9XyUhGvLrYtIyG43WLNgw8GO3f7cbQ7EAm95KA
-         Hugnoj7wA/8rDYgXNpwPWLIg+yPfIbDGEag2wDD9zVMxM0Mm42tsf3ngYr3F3Ddc5udG
-         q18sF5wdqqLEIputrPR/b5TwpCAKser00s+KiffHP9UnLCnYTaraBbCuoQySBEpGfnVr
-         6lwteFDfnXv11hc92aOiP0FKNvW5IwhaYRoo1+f6xEL8G/VcWEVPACCc0fAGRf0NWBg7
-         p0kW28aL5dv1A4nTvwG1g0VaiyT5IXvoPcfDENOz/Fcbey4qENnBQm5EZiit3sEpPu1I
-         Tqmg==
+        b=DXlB1kyOVVf+IoliosNWgcrjQxdNBCUCIyYXR+a9VzM0YDtHzny06aIMJ4HyOBErwb
+         dgmY5YB9tUtpr6c0bzC8GxNqy7iYoHH/TyESvUd7tBBtCqk2CuVwa5h+oekN52JJBl0+
+         jQ0liUTMC4mwvRJNAaWoH9jGvPQkspo7jSMG13yXx9IXxGwMC+VfXPYKj+s43YD0Q8PK
+         Qa9CDNkEFnRYS7q3dkcW6WQyXS68MSPGfwuFOV6TX7uvnBSyQGEVBcrlWKe8h9PGsyaP
+         KI4R+hdz1mbblWB03Qdo2Nb8YieY35YWwJLOPpC7KV0b8EQdeJmN9rFyzpNyd+LYmSu/
+         i7TA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=JkdAZHib7lR8FysgoNWuV/psgaBBczZUKNI5U8fBuUU=;
-        b=bFKT5rUMmHhGBWJsxy/vCHC2V8K8jTNM8dsGKHc5kmB9okqg3ek+tBJ/wYGIOHIerK
-         /JtMsJ7pR1U1BrLFbJqlP7C1as5UaZ7bxwpLuwWQ3YJw/2FXjRz3zYsLM/xurxhX5Qfg
-         2T1QJQK9a5iN7oToDCWR9f7AMcHausY5WbYNjnfigxlTcqu+2mlRBlnyEO0KPzIoVLzu
-         QhWJao02jcfaFr563et2O4yP1K7C7lPn8e08A3QfsFf8xDxYxi1Eqbb3GmysRMSWNESu
-         taXxYmbm+dEYQJLuDqylxWJeWfsE0brgBOaCvMEVgbD6wRARMznK77w0KjMt34OZXz0p
-         z3NA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ThJVkvAmJ1u7DqjAudIv1Cf4fo6zpPb+9sotSpn8cd8=;
+        b=PhqvwnqR4uEHX/FeiwNd7N38aZGlUS/VlX8aReVu8Fc2XcQ2bxrZUdQjRq5CwDIHbD
+         mbEBAuIC1G5lravjOvxUuKdB8XxVdLxDHbVxZRjvNGwX5jquQEBrnbendnH3yljJShl5
+         SgVT9pdvOXn0jwDD93V6tuCioqSlOUQshOCKy2ZTOj8cX1ZAuV9/l1njv3L/103QIVcV
+         YT07bwMjtxGK/uV8jZnS3JXkG/o91E+8l6PQSKYzh/Omg0XmUWpLnRbGAO7PGlfFjQr4
+         pnFvLzIpLNwyq9DBMeTIYg2XEBsOL8/KQVqd7y1Bqz/8+9LyY2zp+/hmBXI0q91H7J/b
+         LS+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nOv+CREb;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h11-20020a17090ac38b00b0023f529f40b1sor24007pjt.21.2023.03.22.15.39.33
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JU71fnCy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g124-20020a37b682000000b00746879c4749si7415619qkf.258.2023.03.23.09.11.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 22 Mar 2023 15:39:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Mar 2023 09:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nOv+CREb;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=JU71fnCy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pfNWq-0005g8-Kz; Thu, 23 Mar 2023 12:11:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pfNWp-0005fP-LV; Thu, 23 Mar 2023 12:11:03 -0400
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pfNWo-0005eX-2S; Thu, 23 Mar 2023 12:11:03 -0400
+Received: by mail-oi1-x232.google.com with SMTP id v17so6777942oic.5;
+ Thu, 23 Mar 2023 09:11:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1679524773;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=JkdAZHib7lR8FysgoNWuV/psgaBBczZUKNI5U8fBuUU=;
-        b=nOv+CREbCvKaW4xH7cTQl19e64E1d0MA81XhLqKanWCBHZkxqEQRJpvSXfayZpSHwZ
-         5SWOI4k38Cftb8lOQOp4pUFDIZKPmfar37WsrpYAJMaNX8b6MoxzOEuzDAymJY/fLCmT
-         aEdy2VlMKfe7N0NoWN3rdH/FcjDofm1qf7DTFBpp47r6OOkMZVqR2LIHduQh+n8PYPkq
-         RihV90K9QiHTQEGeiC0LJL5u1wDt2komdiDx/X3cWRHRAkF5T0JGrt1cWiF4SaCv3LAO
-         T46zTOXvYphjIcArt0CyXvjx+8h8bP4/hbzYQdHsR0chohfjPLMyqq/3OJ2FPEnJCVMT
-         blFA==
+ d=gmail.com; s=20210112; t=1679587859;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ThJVkvAmJ1u7DqjAudIv1Cf4fo6zpPb+9sotSpn8cd8=;
+ b=JU71fnCylfvk6ECE9WAx7WKO0KHHEZ1+GYACU9Peg86g4JV9AEIqnOMw/pBcGpp2Q7
+ oJlBbWV2G8PgGtYyC7RlOhYo+3BUWQfwBWWvLmaNOAUX/Il1HJTY4Cchvn0nESQFzoWV
+ es1BALJ1TcyImxoNj2LUUWFTLeTBaquJaWYRYxly6Mt4Pkug3ybP+ilqc1xk1khlh94I
+ 2iMV6lIeJXGh919Da9f7zGVaPk8+cH9eoLNDd+8+TDPRjaE+0Z0h5i1w2NSA5fLuA4Qh
+ daofw2ZOZdvxcVpVN12QHQH+eo3oiFr32B++Vdbr0rYTEi6R+xIOVYLyY5ZnP2pc5QOS
+ 7jgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679524773;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JkdAZHib7lR8FysgoNWuV/psgaBBczZUKNI5U8fBuUU=;
-        b=3gb6YPKay7gglk1eQ+RxElsEC7pTwh7gSFSo1OkJu4GtxbbRPYhJwtfKyBomMF6Qzp
-         BfEApO7cpcjH4F81bb6O0wVjeUQHWG6t92K9YXT31BJpwtGjnbhvMSDd7M5Bu8APv9S3
-         sZY7AMh0N22QC5cDADCgjrKQgHvs8aQKQhbNeWhVUCeHdXXrtjSuSrRfpMuESW/4uRN8
-         0Jmm3rD3J5PMfXpSr4KHJg6c33V9WFH1aXXFT7YM7bnDJ1wGeCQfL0gv3sFTCREdS/tx
-         5UvbTWrlltjZVkVrWum3l52a58DgzGongi4pivEZOJrVbnb/bEtlj8VteEXNJw+yQOIR
-         p1nw==
-X-Gm-Message-State: AO0yUKVGavTX7Iz/mCBJb/o1cv+IGZ1TxPd7sDXigZPRwdlNOwLzbI4U
-	ko336aquoNtFCS19Feq/29hsC9iuzHTawAPQLJKTLA==
-X-Google-Smtp-Source: AK7set++Aq8+vn/mx9+Tn5xja0Qah2o1vUKjgZpN4mxLRLsNHyrBqRfO+k8a5mVyhIXUTmjlsCkgUg==
-X-Received: by 2002:a17:90a:195b:b0:23f:8752:98c0 with SMTP id 27-20020a17090a195b00b0023f875298c0mr5513258pjh.19.1679524772738;
-        Wed, 22 Mar 2023 15:39:32 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:1544:6601:226e:47e1:b8cd:a957? ([2602:ae:1544:6601:226e:47e1:b8cd:a957])
-        by smtp.gmail.com with ESMTPSA id x15-20020a17090a6b4f00b0023acdac248dsm32804pjl.15.2023.03.22.15.39.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Mar 2023 15:39:32 -0700 (PDT)
-Message-ID: <976fc94f-ad21-3130-014a-4da848d1cfbf@linaro.org>
-Date: Wed, 22 Mar 2023 15:39:30 -0700
+ d=1e100.net; s=20210112; t=1679587859;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ThJVkvAmJ1u7DqjAudIv1Cf4fo6zpPb+9sotSpn8cd8=;
+ b=NpIqNBLXYyZ6oNFLs/OR1mAmWRJ7i3v7OSIoqeLG0eIoQuTDY7V0BJgr+Kv9bAT9Gl
+ 9Qb+73jjSv7HsNVFzXZTTWu7em9dMNIdWLKL3UgWZweDafDhQHzU3RevCpk7FtFXgprG
+ HRSzMryqyApeSFQogjkTmfBeKj8dqIN+yAm5wjhHFe8ec6KK1PecyP06qwuZZWD6O4og
+ 98xL7TK3krkl8YmNKHDUO2AT0lcy3+OtrriMX6OF5fHI2w4xfe9Oa/BCVqEGeiLnc2C2
+ 1DXmj6uOpJhICMMIo8Bhplrz4KteH+8hIalC7xXPB3KHraXK3Wyuldt/U5wWV4wj1pov
+ T3CA==
+X-Gm-Message-State: AO0yUKXZ9MV+DZUycs79gSbvTB8pNbrQ6z707DNZlFjzlQTZyi2QNO6j
+ YypwdPcE+82OJk/WEM9ccqrXZWJJAO4=
+X-Received: by 2002:a05:6808:280d:b0:37f:b11c:7525 with SMTP id
+ et13-20020a056808280d00b0037fb11c7525mr2696128oib.29.1679587858951; 
+ Thu, 23 Mar 2023 09:10:58 -0700 (PDT)
+Received: from grind.. ([177.95.89.231]) by smtp.gmail.com with ESMTPSA id
+ q32-20020a4a9623000000b0051a6cb524b6sm7575504ooi.2.2023.03.23.09.10.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Mar 2023 09:10:58 -0700 (PDT)
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org
+Subject: [PATCH 0/1] fix dumpdtb crash with ARM machines
+Date: Thu, 23 Mar 2023 13:10:52 -0300
+Message-Id: <20230323161053.412356-1-danielhb413@gmail.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2 6/7] target/arm: Implement v8.3 FPAC and FPACCOMBINE
-To: Aaron Lindsay <aaron@os.amperecomputing.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Vincent Dehors <vincent.dehors@smile.fr>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230222193544.3392713-1-aaron@os.amperecomputing.com>
- <20230222193544.3392713-7-aaron@os.amperecomputing.com>
- <989f380e-9d70-a377-9f56-6d42935459c2@linaro.org>
- <ZBtmAEYfI8T8Y/zT@strawberry.localdomain>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <ZBtmAEYfI8T8Y/zT@strawberry.localdomain>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: qiheAKXVN7LT
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::232;
+ envelope-from=danielhb413@gmail.com; helo=mail-oi1-x232.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hTuJaZiG89II
 
-On 3/22/23 13:33, Aaron Lindsay wrote:
-> On Feb 22 11:37, Richard Henderson wrote:
->> On 2/22/23 09:35, Aaron Lindsay wrote:
->>> @@ -406,6 +421,16 @@ static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
->>>            uint64_t xor_mask = MAKE_64BIT_MASK(bot_bit, top_bit - bot_bit + 1) &
->>>                ~MAKE_64BIT_MASK(55, 1);
->>>            result = ((ptr ^ pac) & xor_mask) | (ptr & ~xor_mask);
->>> +        if (cpu_isar_feature(aa64_fpac_combine, env_archcpu(env)) ||
->>> +                (cpu_isar_feature(aa64_fpac, env_archcpu(env)) &&
->>> +                 !is_combined)) {
->>
->> Indentation is off.
-> 
-> I pulled `env_archcpu(env)` out of this if-statement in my latest
-> patchset in addition to the indentation, but am not confident I have
-> done what you intended. The QEMU Coding Style guide doesn't seem to
-> address longer statements like this in its section on indentation, so I
-> attempted to follow other examples in the code, but I'll take further
-> direction here.
+Hi,
 
+This is a re-post of "[PATCH v8 03/16] hw/arm: do not free machine->fdt
+in arm_load_dtb()":
 
-     if (function(a) ||
-         (function(b) &&
-          function(c))) {
-         ...
-1234567890
+https://lists.gnu.org/archive/html/qemu-devel/2022-09/msg04201.html
 
+Turns out that I drop the ball and left this patch behind. Aside from
+some patches of that series that were optional, the way ARM code is
+working ATM is causing 'dumpdtb' to crash QEMU, as reported by Markus in
+https://lists.gnu.org/archive/html/qemu-devel/2023-03/msg05858.html .
 
-r~
+Applying this patch fixes the reported crash:
+
+$ ./qemu-system-aarch64 -S -M virt -display none -qmp stdio
+{"QMP": {"version": {"qemu": {"micro": 91, "minor": 2, "major": 7}, "package": "v8.0.0-rc1-37-g298c4469cf"}, "capabilities": ["oob"]}}
+{"execute": "qmp_capabilities", "arguments": {"enable": ["oob"]}}
+{"return": {}}
+{"execute": "dumpdtb", "arguments": {"filename": "fdt.dtb"}}
+{"return": {}}
+^Cqemu-system-aarch64: terminating on signal 2
+{"timestamp": {"seconds": 1679587153, "microseconds": 714319}, "event": "SHUTDOWN", "data": {"guest": false, "reason": "host-signal"}}
+$ 
+$ dtc -I dtb -O dts fdt.dtb | grep timer
+	timer {
+		compatible = "arm,armv7-timer";
+$
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-arm@nongnu.org
+
+Daniel Henrique Barboza (1):
+  hw/arm: do not free machine->fdt in arm_load_dtb()
+
+ hw/arm/boot.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+-- 
+2.39.2
+

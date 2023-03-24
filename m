@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1496354ejb;
-        Fri, 24 Mar 2023 16:12:22 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/SQTLFsHEoK6MQ4cVS4SPmqaKdyPVQ//MMdb8fRm9wQcw5RWTsGbSJput75mFk2wD4wBdU
-X-Received: by 2002:ac8:7f4c:0:b0:3e2:10e:d33 with SMTP id g12-20020ac87f4c000000b003e2010e0d33mr8440899qtk.66.1679699541786;
-        Fri, 24 Mar 2023 16:12:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679699541; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1496739ejb;
+        Fri, 24 Mar 2023 16:12:51 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+16jXuMCKZZRiw19eSpmYFgVY0Vzkl5JmRfvsy7jZd54xD6HK/SQt8jOQfg23MT7kKxtj6
+X-Received: by 2002:ac8:5d91:0:b0:3bf:e39f:a9aa with SMTP id d17-20020ac85d91000000b003bfe39fa9aamr6360375qtx.27.1679699571119;
+        Fri, 24 Mar 2023 16:12:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679699571; cv=none;
         d=google.com; s=arc-20160816;
-        b=DqyROt4/BydRC6H3oQ1t6XlYgX236EcwiNSWAupo9HDNXe7iQIqCexL49NdQEYV0BC
-         wJEcQMbN/SLVe7F1gbDG2Bmg0zGnXsJSRwpQ/iGGArzwSEAKugRoiTCn4sUfDb3RRKu3
-         TboNAwlVKkeDM1Znj25vd90fSfZMwD91R3mX6Y05zQlruMqoS7TfzIZalTm0QVYYnWx9
-         e8TzcSZ6AxHddvoF23gVeeF7qjqZPH6eLdaQmzrdnqJcubGlSwhEy0wnKsDwYJqQWM6C
-         2zsOg7t2S344ka7lZi/F+ypiywZvDxdQBwx06RccjE1HCM6DVJGtvsg1/l8W20Jr2rSZ
-         aJzQ==
+        b=elIfJ7pDv/qFlplngOD/rDkcc62xePk8Qc8L6voyQZgVTrzxOa2q5wngqH4fo5WBt/
+         nLcnLTkjdoq6YZJw25Xz50P5IJ1gp1zE7Gpg1H861tAcxKHCAn9vpkG7Ngqx3gE+9/J9
+         nS0PI8slB+F3KnZnQXV5TvOUtBK4WyvHaB7KM2KsKbYnzrmsbZF8ipkYOGxjlwZjdro1
+         2w4bEAn/+mOM3u0al3RmOcbTanJwW0kWLS4IbLJ4BLRo6UqXZDzQj8G6S8y051/y3bko
+         GDOK8yAawDgam4tS6byLy4jwSmbJHDuhTeqYfUdl1oQGOX+p1fxOjuzokcQCqtzEgrfZ
+         LjjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=BPaOfu7m+eYd7o19NPhS9EwzZa/C/i3nEo2Kt/5u10g=;
-        b=XsAJRKsgkDjft+3hKQS99NoraBLFtvar99n192AvDbGnTrpofime/w1fqDhVyII6WH
-         kcUI/W5fI81zrhLBJCNFwSlZbaHEVSvTLHi73PsaOLVKk6k//51F/m9UM0Jb7YsdG4ix
-         10YyCF7u/5LWYRx5kewT3Edgx7B712Lu/nN+sHVXkImYtlWrJFiVy/167R2L7qrLA23S
-         wfVOSEiRt3fRLa/T6eAdMqoHKXK/p91th9JVkopJbeXGPEITy+RtWGO5f7lv+2voAZKw
-         e7iNZukPiIi3F+Y2PMRi+jJ8PwmX8NwaP1ybAnRYjXv99GlkNzty4GQuhmfoR/Wq9jK2
-         18Pg==
+        bh=QL2MJQQL8qFEbAA1H9T0t2e2oDfsoIl2YXa2v5Ws5n4=;
+        b=TgjLjaQGJ9Lit9I4amEAahqa/bU44Tsd/QsxRLmGuOYQEhpbBigfl67APDIo84tUhg
+         lFyQ3vLgn+29SnyuTi6ohdB1fYTyrh38ql7VMi5n/46isi2VnMWpM/twQ3YzTmEqCGsG
+         dXtQpji5PQzZbGYZP3vRb2vlR8uinqu+gYmDXUM0lXIsYAwVpa+FVLfapjo5X7GKut/r
+         2Wrov23b/U7uxz7Lrw0jgnfAQ0MmFRUd4B63YVFAruaDC3RVn83T0lX/vNV1Wy1n/tmb
+         fquW/4mJqUbtxXxGpRq2ugFLbEjIqhqRyHu3Gmq0k7Ecxp/+/6OpCa0xWPlex7qxxJBE
+         j42g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aHwjuNOG;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=h+dcPsFj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8-20020a05622a00c800b003e38f231618si4542286qtw.712.2023.03.24.16.12.21
+        by mx.google.com with ESMTPS id a4-20020ac85b84000000b003e4dafcc275si669794qta.592.2023.03.24.16.12.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Mar 2023 16:12:21 -0700 (PDT)
+        Fri, 24 Mar 2023 16:12:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aHwjuNOG;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=h+dcPsFj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pfqY5-0002eH-0x; Fri, 24 Mar 2023 19:10:17 -0400
+	id 1pfqY0-0002bF-Ak; Fri, 24 Mar 2023 19:10:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3uS0eZAgKCrQqobUinmbaiiafY.WigkYgo-XYpYfhihaho.ila@flex--wuhaotsh.bounces.google.com>)
- id 1pfqXl-0002T8-Ir
- for qemu-devel@nongnu.org; Fri, 24 Mar 2023 19:09:58 -0400
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
+ <3vi0eZAgKCrkvtgZnsrgfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--wuhaotsh.bounces.google.com>)
+ id 1pfqXp-0002Uc-5g
+ for qemu-devel@nongnu.org; Fri, 24 Mar 2023 19:10:02 -0400
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3uS0eZAgKCrQqobUinmbaiiafY.WigkYgo-XYpYfhihaho.ila@flex--wuhaotsh.bounces.google.com>)
- id 1pfqXf-000846-6x
- for qemu-devel@nongnu.org; Fri, 24 Mar 2023 19:09:57 -0400
-Received: by mail-pf1-x449.google.com with SMTP id
- d4-20020a056a00198400b00628000145bcso1651895pfl.0
- for <qemu-devel@nongnu.org>; Fri, 24 Mar 2023 16:09:46 -0700 (PDT)
+ <3vi0eZAgKCrkvtgZnsrgfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--wuhaotsh.bounces.google.com>)
+ id 1pfqXl-00085O-8J
+ for qemu-devel@nongnu.org; Fri, 24 Mar 2023 19:10:00 -0400
+Received: by mail-pl1-x64a.google.com with SMTP id
+ u11-20020a170902e80b00b001a043e84bdfso1960719plg.23
+ for <qemu-devel@nongnu.org>; Fri, 24 Mar 2023 16:09:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1679699385;
+ d=google.com; s=20210112; t=1679699391;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=BPaOfu7m+eYd7o19NPhS9EwzZa/C/i3nEo2Kt/5u10g=;
- b=aHwjuNOGNUSZdWpQLxD+8j91dzv7fw3rVc/IKgrDZGCoh88AdLbW1d+wBjeLn5n58B
- cFuHrMkfQGtUUTDoMx/6hJYHnvzGJNEIjoXWyiI3+g9oQJifYVEhCTA49LX+dbGN55ZR
- mw0WNR20bXtMdWBv0SOxOyaX/wg8H+7kYabaJxc4JHreuF1XzIC4agnp4tImT13gamqj
- UNyM9cu8ztbDk1ccVIzYAsrk4h6h7S31YoW+7FtgryPCwBuD9BEEcKNL+yWHpcJ0TBwY
- +JF/ilrc2vNxWLy3MCdtC2zWVLKZY56ZkldjxMLsBdeErFWODkNx4hkKlTZRrAkkXjhy
- YqCA==
+ bh=QL2MJQQL8qFEbAA1H9T0t2e2oDfsoIl2YXa2v5Ws5n4=;
+ b=h+dcPsFj1E0bTNOCtjr0ZGS4TMxonBiZS2XJffK4Qzq3W8zx8HGEHDs3jaUk/h1Y9n
+ PD2UsSAJMQpoPoEhtBBswKIGnryDVmAS3Z61hujXPP8sBmcRNll0uyZamrywej2MjAdP
+ czldha6C57hoDwvBB2f1jvKw8iVOb+uWUxMfTi3LQOhZitLmi+t2TTLDjdLDX8LuUBdh
+ ykq+Be5DJrMceY4feNOFujfIZ3UMMPKDsHIG2uN8hf3b6e1VXIfKuyxyrrS+z8OO+kG/
+ 0tllkAANDGeYnEHKAxiVp0x/lSXE2jAnRrU4VhNXJIkrkjL5EoV3TDEwv7ftVA4tCcLJ
+ vVyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679699385;
+ d=1e100.net; s=20210112; t=1679699391;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BPaOfu7m+eYd7o19NPhS9EwzZa/C/i3nEo2Kt/5u10g=;
- b=GTnBirf1ulKC8iRCSEHJgBUpkaBEd12Vpw+2PTdAL8K7vBl/wPDmYZYhq/3IygcGtY
- gT8anzsy+6R7Ws3ynXk2kXP9di8UByO1kOSC/eyEvMiFnuSoH6swkj6SUNlBgex3ARQS
- CeC+D2nk5Uf9BrXEXkkmu/gS/pDVQ9ucRXPVwRkXIyX3YRgR6aUFzaKOJjAGxrkN2rWZ
- 6s/WtZghV/MZQ4CyrR1TmkubNmVTfJe3XTYO42yb8G4gUPG350XFBNWlpKll/2aNypvn
- wwCfp2QiTOjQg03OEhnPMeIV/+4gSGLmp/8LBNdgP3tI749SIC5NmTUTMbJZbPNDy+ss
- 7l2g==
-X-Gm-Message-State: AAQBX9ccACLUavmcsHh2yJfVlrSjMSPUfCGGTCkST9eDbZ9zGjE0Y/IH
- Dhyu0snr7O3fEiZNTwARm0rFkd78nuzsZw==
+ bh=QL2MJQQL8qFEbAA1H9T0t2e2oDfsoIl2YXa2v5Ws5n4=;
+ b=R6j5yeANl2FfJ+SFjaBWiUbfNxI9KUozBzr5nvgv+8igRVbV+ecil4XqruLQwqCjCr
+ VJ+Ej7F998K3rqKB4FAl9tnou/SSinvjPROsMIhvJYiCiz8EQsJy1dpm6e5NovMCIz7h
+ VeO3mlLloypM7/qE7X/Fj+btEhH3JplIsVbbJGeZMUHbYGqfjJeV1iakldzPK6O4/UWH
+ uJ0iUkLJILIOfTYSPk2rhNx2G8mR052E5pFlKwywdiQ5hRsc2a0b5nCYgnlNvUiRjrpo
+ 9xGXIy35uHILJm9mVUibr4AN4AbekQS8jiNrUF7JLIiyOfyOkCqAMKTiytUwJFCSxJMe
+ Ef/w==
+X-Gm-Message-State: AAQBX9eKI56TehNuDICvPDNTSdwv7/OwMR4y/8r120H9qmdTFheovow6
+ ppOjX22nXPYCHjz4HcuHMViQJvw30EZDoA==
 X-Received: from mimik.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:4e])
- (user=wuhaotsh job=sendgmr) by 2002:a17:90b:2789:b0:233:c921:ab7e with SMTP
- id pw9-20020a17090b278900b00233c921ab7emr4458718pjb.4.1679699385312; Fri, 24
- Mar 2023 16:09:45 -0700 (PDT)
-Date: Fri, 24 Mar 2023 16:09:01 -0700
+ (user=wuhaotsh job=sendgmr) by 2002:a05:6a00:1a46:b0:625:c7de:48c1 with SMTP
+ id h6-20020a056a001a4600b00625c7de48c1mr2411019pfv.4.1679699390950; Fri, 24
+ Mar 2023 16:09:50 -0700 (PDT)
+Date: Fri, 24 Mar 2023 16:09:04 -0700
 In-Reply-To: <20230324230904.3710289-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20230324230904.3710289-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
-Message-ID: <20230324230904.3710289-5-wuhaotsh@google.com>
-Subject: [PATCH v2 4/7] hw/ipmi: Refactor IPMI interface
+Message-ID: <20230324230904.3710289-8-wuhaotsh@google.com>
+Subject: [PATCH v2 7/7] hw/ipmi: Add a KCS Module for NPCM7XX
 From: Hao Wu <wuhaotsh@google.com>
 To: minyard@acm.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wuhaotsh@google.com, 
  venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
  hskinnemoen@google.com, titusr@google.com, peter.maydell@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::449;
- envelope-from=3uS0eZAgKCrQqobUinmbaiiafY.WigkYgo-XYpYfhihaho.ila@flex--wuhaotsh.bounces.google.com;
- helo=mail-pf1-x449.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
+ envelope-from=3vi0eZAgKCrkvtgZnsrgfnnfkd.bnlpdlt-cdudkmnmfmt.nqf@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x64a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -121,1510 +121,865 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UO2/J4f8+HzU
+X-TUID: WtRuJts5eX1E
 
-This patch refactors the IPMI interface so that it can be used by both
-the BMC side and core-side simulation.
+Add a KCS module for NPCM7xx SoC. This module implements the IPMI
+responder interface and is responsible to communicate with an external
+host via the KCS channels in an NPCM7xx SoC.
 
-Detail changes:
-(1) Split IPMIInterface into IPMIInterfaceHost (for host side
-    simulation) and IPMIInterfaceClient (for BMC side simulation).
-(2) rename handle_rsp -> handle_msg so the name fits both BMC side and
-    Core side.
-(3) Add a new class IPMICore. This class represents a simulator/external
-    connection for both BMC and Core side emulation.
-(4) Change the original IPMIBmc to IPMIBmcHost, representing host side
-    simulation.
-(5) Add a new type IPMIBmcClient representing BMC side simulation.
-(6) Appy the changes to  the entire IPMI library.
+Note that we cannot directly use ipmi_kcs.c since the communication
+direction is the opposite. For example, in READ_STATE, ipmi_kcs.c (core
+side emulation) reads a message from BMC while npcm7xx_kcs.c
+(BMC-side emulation) sends a message to the core.
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 ---
- hw/acpi/ipmi.c             |   4 +-
- hw/ipmi/ipmi.c             |  60 +++++++++++++----
- hw/ipmi/ipmi_bmc_extern.c  |  67 ++++++++++--------
- hw/ipmi/ipmi_bmc_sim.c     |  78 ++++++++++++---------
- hw/ipmi/ipmi_bt.c          |  33 +++++----
- hw/ipmi/ipmi_kcs.c         |  31 +++++----
- hw/ipmi/isa_ipmi_bt.c      |  18 ++---
- hw/ipmi/isa_ipmi_kcs.c     |  13 ++--
- hw/ipmi/pci_ipmi_bt.c      |   8 +--
- hw/ipmi/pci_ipmi_kcs.c     |   8 +--
- hw/ipmi/smbus_ipmi.c       |  26 +++----
- hw/ppc/pnv.c               |   4 +-
- hw/ppc/pnv_bmc.c           |  22 +++---
- hw/smbios/smbios_type_38.c |  11 +--
- include/hw/ipmi/ipmi.h     | 135 ++++++++++++++++++++++++++-----------
- include/hw/ipmi/ipmi_bt.h  |   2 +-
- include/hw/ipmi/ipmi_kcs.h |   2 +-
- include/hw/ppc/pnv.h       |  12 ++--
- 18 files changed, 332 insertions(+), 202 deletions(-)
+ docs/system/arm/nuvoton.rst   |   1 -
+ hw/arm/npcm7xx.c              |  10 +-
+ hw/ipmi/meson.build           |   1 +
+ hw/ipmi/npcm7xx_kcs.c         | 590 ++++++++++++++++++++++++++++++++++
+ hw/ipmi/trace-events          |   8 +
+ hw/ipmi/trace.h               |   1 +
+ include/hw/arm/npcm7xx.h      |   2 +
+ include/hw/ipmi/npcm7xx_kcs.h | 103 ++++++
+ meson.build                   |   1 +
+ 9 files changed, 715 insertions(+), 2 deletions(-)
+ create mode 100644 hw/ipmi/npcm7xx_kcs.c
+ create mode 100644 hw/ipmi/trace-events
+ create mode 100644 hw/ipmi/trace.h
+ create mode 100644 include/hw/ipmi/npcm7xx_kcs.h
 
-diff --git a/hw/acpi/ipmi.c b/hw/acpi/ipmi.c
-index a20e57d465..e6d2cd790b 100644
---- a/hw/acpi/ipmi.c
-+++ b/hw/acpi/ipmi.c
-@@ -66,8 +66,8 @@ void build_ipmi_dev_aml(AcpiDevAmlIf *adev, Aml *scope)
- {
-     Aml *dev;
-     IPMIFwInfo info = {};
--    IPMIInterface *ii = IPMI_INTERFACE(adev);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *ii = IPMI_INTERFACE_HOST(adev);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
-     uint16_t version;
+diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+index 0424cae4b0..5ed0afa06e 100644
+--- a/docs/system/arm/nuvoton.rst
++++ b/docs/system/arm/nuvoton.rst
+@@ -57,7 +57,6 @@ Missing devices
+  * LPC/eSPI host-to-BMC interface, including
  
-     iic->get_fwinfo(ii, &info);
-diff --git a/hw/ipmi/ipmi.c b/hw/ipmi/ipmi.c
-index bbb07b151e..1be923ffb8 100644
---- a/hw/ipmi/ipmi.c
-+++ b/hw/ipmi/ipmi.c
-@@ -38,7 +38,7 @@ uint32_t ipmi_next_uuid(void)
-     return ipmi_current_uuid++;
- }
+    * Keyboard and mouse controller interface (KBCI)
+-   * Keyboard Controller Style (KCS) channels
+    * BIOS POST code FIFO
+    * System Wake-up Control (SWC)
+    * Shared memory (SHM)
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 15ff21d047..1937a0e9b1 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -45,6 +45,7 @@
+ #define NPCM7XX_CLK_BA          (0xf0801000)
+ #define NPCM7XX_MC_BA           (0xf0824000)
+ #define NPCM7XX_RNG_BA          (0xf000b000)
++#define NPCM7XX_KCS_BA          (0xf0007000)
  
--static int ipmi_do_hw_op(IPMIInterface *s, enum ipmi_op op, int checkonly)
-+static int ipmi_do_hw_op(IPMIInterfaceHost *s, enum ipmi_op op, int checkonly)
- {
-     switch (op) {
-     case IPMI_RESET_CHASSIS:
-@@ -78,9 +78,9 @@ static int ipmi_do_hw_op(IPMIInterface *s, enum ipmi_op op, int checkonly)
+ /* USB Host modules */
+ #define NPCM7XX_EHCI_BA         (0xf0806000)
+@@ -83,6 +84,7 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_UART1_IRQ,
+     NPCM7XX_UART2_IRQ,
+     NPCM7XX_UART3_IRQ,
++    NPCM7XX_KCS_HIB_IRQ         = 9,
+     NPCM7XX_EMC1RX_IRQ          = 15,
+     NPCM7XX_EMC1TX_IRQ,
+     NPCM7XX_MMC_IRQ             = 26,
+@@ -431,6 +433,7 @@ static void npcm7xx_init(Object *obj)
+                                 TYPE_NPCM7XX_SMBUS);
      }
- }
  
--static void ipmi_interface_class_init(ObjectClass *class, void *data)
-+static void ipmi_interface_host_class_init(ObjectClass *class, void *data)
- {
--    IPMIInterfaceClass *ik = IPMI_INTERFACE_CLASS(class);
-+    IPMIInterfaceHostClass *ik = IPMI_INTERFACE_HOST_CLASS(class);
++    object_initialize_child(obj, "kcs", &s->kcs, TYPE_NPCM7XX_KCS);
+     object_initialize_child(obj, "ehci", &s->ehci, TYPE_NPCM7XX_EHCI);
+     object_initialize_child(obj, "ohci", &s->ohci, TYPE_SYSBUS_OHCI);
  
-     ik->do_hw_op = ipmi_do_hw_op;
- }
-@@ -89,27 +89,48 @@ static const TypeInfo ipmi_interface_type_info = {
-     .name = TYPE_IPMI_INTERFACE,
-     .parent = TYPE_INTERFACE,
-     .class_size = sizeof(IPMIInterfaceClass),
--    .class_init = ipmi_interface_class_init,
+@@ -612,6 +615,12 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+                            npcm7xx_irq(s, NPCM7XX_SMBUS0_IRQ + i));
+     }
+ 
++    /* KCS modules*/
++    sysbus_realize(SYS_BUS_DEVICE(&s->kcs), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->kcs), 0, NPCM7XX_KCS_BA);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->kcs), 0,
++                       npcm7xx_irq(s, NPCM7XX_KCS_HIB_IRQ));
++
+     /* USB Host */
+     object_property_set_bool(OBJECT(&s->ehci), "companion-enable", true,
+                              &error_abort);
+@@ -741,7 +750,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
+-    create_unimplemented_device("npcm7xx.kcs",          0xf0007000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.gfxi",         0xf000e000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.espi",         0xf009f000,   4 * KiB);
+     create_unimplemented_device("npcm7xx.peci",         0xf0100000,   4 * KiB);
+diff --git a/hw/ipmi/meson.build b/hw/ipmi/meson.build
+index b1dd4710dc..3d8b030ba5 100644
+--- a/hw/ipmi/meson.build
++++ b/hw/ipmi/meson.build
+@@ -8,5 +8,6 @@ ipmi_ss.add(when: 'CONFIG_ISA_IPMI_BT', if_true: files('isa_ipmi_bt.c'))
+ ipmi_ss.add(when: 'CONFIG_PCI_IPMI_BT', if_true: files('pci_ipmi_bt.c'))
+ ipmi_ss.add(when: 'CONFIG_IPMI_SSIF', if_true: files('smbus_ipmi.c'))
+ ipmi_ss.add(when: 'CONFIG_IPMI_HOST', if_true: files('ipmi_host_extern.c'))
++ipmi_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_kcs.c'))
+ 
+ softmmu_ss.add_all(when: 'CONFIG_IPMI', if_true: ipmi_ss)
+diff --git a/hw/ipmi/npcm7xx_kcs.c b/hw/ipmi/npcm7xx_kcs.c
+new file mode 100644
+index 0000000000..d46f053b2c
+--- /dev/null
++++ b/hw/ipmi/npcm7xx_kcs.c
+@@ -0,0 +1,590 @@
++/*
++ * Nuvoton NPCM7xx KCS Module
++ *
++ * Copyright 2021 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/ipmi/npcm7xx_kcs.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qemu/units.h"
++#include "trace.h"
++
++/* Registers in each KCS channel. */
++typedef enum NPCM7xxKCSRegister {
++    NPCM7XX_KCSST,
++    NPCM7XX_KCSDO,
++    NPCM7XX_KCSDI,
++    NPCM7XX_KCSDOC,
++    NPCM7XX_KCSDOM,
++    NPCM7XX_KCSDIC,
++    NPCM7XX_KCSCTL,
++    NPCM7XX_KCSIC,
++    NPCM7XX_KCSIE,
++    NPCM7XX_KCS_REGS_END,
++} NPCM7xxKCSRegister;
++
++static const hwaddr npcm7xx_kcs_channel_base[] = {
++    0x0c, 0x1e, 0x30, 0x42
 +};
 +
-+static const TypeInfo ipmi_interface_host_type_info = {
-+    .name = TYPE_IPMI_INTERFACE_HOST,
-+    .parent = TYPE_IPMI_INTERFACE,
-+    .class_size = sizeof(IPMIInterfaceHostClass),
-+    .class_init = ipmi_interface_host_class_init,
++#define NPCM7XX_KCS_REG_DIFF    2
++
++/* Register field definitions. */
++#define NPCM7XX_CTL_OBEIE       BIT(1)
++#define NPCM7XX_CTL_IBFIE       BIT(0)
++
++/* IPMI 2.0 Table 9.1 status register bits */
++#define KCS_ST_STATE(rv)    extract8(rv, 6, 2)
++#define KCS_ST_CMD          BIT(3)
++#define KCS_ST_SMS_ATN      BIT(2)
++#define KCS_ST_IBF          BIT(1)
++#define KCS_ST_OBF          BIT(0)
++
++/* IPMI 2.0 Table 9.2 state bits */
++enum KCSState {
++    IDLE_STATE,
++    READ_STATE,
++    WRITE_STATE,
++    ERROR_STATE,
 +};
 +
-+static const TypeInfo ipmi_interface_client_type_info = {
-+    .name = TYPE_IPMI_INTERFACE_CLIENT,
-+    .parent = TYPE_IPMI_INTERFACE,
-+    .class_size = sizeof(IPMIInterfaceClientClass),
-+};
++/* IPMI 2.0 Table 9.3 control codes */
++#define KCS_CMD_GET_STATUS_ABORT    0x60
++#define KCS_CMD_WRITE_START         0x61
++#define KCS_CMD_WRITE_END           0x62
++#define KCS_CMD_READ                0x68
 +
-+static const TypeInfo ipmi_core_type_info = {
-+    .name = TYPE_IPMI_CORE,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(IPMICore),
-+    .class_size = sizeof(IPMICoreClass),
-+    .abstract = true,
- };
- 
- static void isa_ipmi_bmc_check(const Object *obj, const char *name,
-                                Object *val, Error **errp)
- {
--    IPMIBmc *bmc = IPMI_BMC(val);
-+    IPMICore *ic = IPMI_CORE(val);
- 
--    if (bmc->intf)
-+    if (ic->intf) {
-         error_setg(errp, "BMC object is already in use");
++/* Host Side Operations. */
++
++static uint8_t npcm7xx_kcs_host_read_byte(NPCM7xxKCSChannel *c)
++{
++    uint8_t v;
++
++    v = c->dbbout;
++    c->status &= ~KCS_ST_OBF;
++    if (c->ctl & NPCM7XX_CTL_OBEIE) {
++        qemu_irq_raise(c->owner->irq);
 +    }
- }
- 
- void ipmi_bmc_find_and_link(Object *obj, Object **bmc)
- {
--    object_property_add_link(obj, "bmc", TYPE_IPMI_BMC, bmc,
-+    object_property_add_link(obj, "bmc", TYPE_IPMI_BMC_HOST, bmc,
-                              isa_ipmi_bmc_check,
-                              OBJ_PROP_LINK_STRONG);
- }
- 
- static Property ipmi_bmc_properties[] = {
--    DEFINE_PROP_UINT8("slave_addr",  IPMIBmc, slave_addr, 0x20),
-+    DEFINE_PROP_UINT8("slave_addr",  IPMIBmcHost, slave_addr, 0x20),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-@@ -120,19 +141,30 @@ static void bmc_class_init(ObjectClass *oc, void *data)
-     device_class_set_props(dc, ipmi_bmc_properties);
- }
- 
--static const TypeInfo ipmi_bmc_type_info = {
--    .name = TYPE_IPMI_BMC,
--    .parent = TYPE_DEVICE,
--    .instance_size = sizeof(IPMIBmc),
-+static const TypeInfo ipmi_bmc_host_type_info = {
-+    .name = TYPE_IPMI_BMC_HOST,
-+    .parent = TYPE_IPMI_CORE,
-+    .instance_size = sizeof(IPMIBmcHost),
-     .abstract = true,
--    .class_size = sizeof(IPMIBmcClass),
-+    .class_size = sizeof(IPMIBmcHostClass),
-     .class_init = bmc_class_init,
- };
- 
-+static const TypeInfo ipmi_bmc_client_type_info = {
-+    .name = TYPE_IPMI_BMC_CLIENT,
-+    .parent = TYPE_IPMI_CORE,
-+    .instance_size = sizeof(IPMIBmcClient),
-+    .abstract = true,
++
++    trace_npcm7xx_kcs_host_read_byte(DEVICE(c)->canonical_path, v);
++    return v;
++}
++
++static void npcm7xx_kcs_host_write_byte(NPCM7xxKCSChannel *c, uint8_t value,
++        bool is_cmd)
++{
++    trace_npcm7xx_kcs_host_write_byte(DEVICE(c)->canonical_path, value);
++    c->dbbin = value;
++    c->status |= KCS_ST_IBF;
++    if (is_cmd) {
++        c->status |= KCS_ST_CMD;
++    } else {
++        c->status &= ~KCS_ST_CMD;
++    }
++    if (c->ctl & NPCM7XX_CTL_IBFIE) {
++        qemu_irq_raise(c->owner->irq);
++    }
++}
++
++static void npcm7xx_kcs_handle_event(NPCM7xxKCSChannel *c)
++{
++    uint8_t v;
++    IPMICoreClass *hk;
++
++    trace_npcm7xx_kcs_handle_event(DEVICE(c)->canonical_path,
++                                   KCS_ST_STATE(c->status));
++    switch (KCS_ST_STATE(c->status)) {
++    case IDLE_STATE:
++        if (c->status & KCS_ST_OBF) {
++            /* Read a dummy byte. */
++            npcm7xx_kcs_host_read_byte(c);
++            if (c->outlen > 0) {
++                /* Send to ipmi host when msg ends. */
++                if (c->host) {
++                    hk = IPMI_CORE_GET_CLASS(c->host);
++                    hk->handle_command(c->host, c->outmsg, c->outlen,
++                            MAX_IPMI_MSG_SIZE, c->last_msg_id);
++                }
++                /* The last byte has been read. return to empty state. */
++                c->outlen = 0;
++            }
++        }
++        if (c->inlen > 0) {
++            /* Send to bmc the next request */
++            npcm7xx_kcs_host_write_byte(c, KCS_CMD_WRITE_START, true);
++            c->last_byte_not_ready = true;
++        }
++        break;
++
++    case READ_STATE:
++        if (c->status & KCS_ST_OBF) {
++            /* Read in a byte from BMC */
++            v = npcm7xx_kcs_host_read_byte(c);
++            if (c->outlen < MAX_IPMI_MSG_SIZE) {
++                c->outmsg[c->outlen++] = v;
++            }
++            npcm7xx_kcs_host_write_byte(c, KCS_CMD_READ, false);
++        }
++        break;
++
++    case WRITE_STATE:
++        if (c->status & KCS_ST_IBF) {
++            /* The guest hasn't read the byte yet. We'll wait. */
++            break;
++        }
++        /* Clear OBF. */
++        c->status &= ~KCS_ST_OBF;
++        /* If it's the last byte written, we need to first send a command. */
++        if (c->last_byte_not_ready && c->inpos == c->inlen - 1) {
++            npcm7xx_kcs_host_write_byte(c, KCS_CMD_WRITE_END, true);
++            c->last_byte_not_ready = false;
++        } else {
++            npcm7xx_kcs_host_write_byte(c, c->inmsg[c->inpos++], false);
++            if (!c->last_byte_not_ready) {
++                /* The last byte has been sent. */
++                c->inlen = 0;
++                c->inpos = 0;
++            }
++        }
++        break;
++
++    case ERROR_STATE:
++        if (c->status & KCS_ST_OBF) {
++            /* Read in error byte from BMC */
++            npcm7xx_kcs_host_read_byte(c);
++        }
++        /* Force abort */
++        c->outlen = 0;
++        c->inlen = 0;
++        c->inpos = 0;
++        c->status = 0;
++        break;
++
++    default:
++        g_assert_not_reached();
++    }
++}
++
++/* Received a request from the host and send it to BMC core. */
++static void npcm7xx_kcs_handle_req(IPMIInterface *ii, uint8_t msg_id,
++                                unsigned char *req, unsigned req_len)
++{
++    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
++    NPCM7xxKCSChannel *c = iic->get_backend_data(ii);
++
++    /* Drop the request if the last request is still not handled. */
++    if (c->inlen > 0) {
++        return;
++    }
++    if (req_len == 0) {
++        return;
++    }
++    if (req_len > MAX_IPMI_MSG_SIZE) {
++        /* Truncate the extra bytes that don't fit. */
++        req_len = MAX_IPMI_MSG_SIZE;
++    }
++    memcpy(c->inmsg, req, req_len);
++    c->inpos = 0;
++    c->inlen = req_len;
++
++    c->last_msg_id = msg_id;
++
++    npcm7xx_kcs_handle_event(c);
++}
++
++/* Core Side Operations. */
++/* Return the channel index for addr. If the addr is out of range, return -1. */
++static int npcm7xx_kcs_channel_index(hwaddr addr)
++{
++    int index;
++
++    if (unlikely(addr < npcm7xx_kcs_channel_base[0])) {
++        return -1;
++    }
++    if (unlikely(addr >= npcm7xx_kcs_channel_base[NPCM7XX_KCS_NR_CHANNELS])) {
++        return -1;
++    }
++    if (unlikely(addr % NPCM7XX_KCS_REG_DIFF)) {
++        return -1;
++    }
++
++    for (index = 0; index < NPCM7XX_KCS_NR_CHANNELS; ++index) {
++        if (addr < npcm7xx_kcs_channel_base[index + 1]) {
++            return index;
++        }
++    }
++
++    g_assert_not_reached();
++}
++
++static NPCM7xxKCSRegister npcm7xx_kcs_reg_index(hwaddr addr, int channel)
++{
++    NPCM7xxKCSRegister reg;
++
++    reg = (addr - npcm7xx_kcs_channel_base[channel]) / NPCM7XX_KCS_REG_DIFF;
++    return reg;
++}
++
++static uint8_t npcm7xx_kcs_read_byte(NPCM7xxKCSChannel *c,
++        NPCM7xxKCSRegister reg)
++{
++    uint8_t v = 0;
++
++    v = c->dbbin;
++
++    c->status &= ~KCS_ST_IBF;
++    if (c->ctl & NPCM7XX_CTL_IBFIE) {
++        qemu_irq_lower(c->owner->irq);
++    }
++
++    if (reg == NPCM7XX_KCSDIC) {
++        qemu_log_mask(LOG_UNIMP,
++                "%s: Host nSCIPME interrupt is not implemented.\n",
++                __func__);
++    }
++
++    npcm7xx_kcs_handle_event(c);
++    return v;
++}
++
++static void npcm7xx_kcs_write_byte(NPCM7xxKCSChannel *c,
++        NPCM7xxKCSRegister reg, uint8_t value)
++{
++    c->dbbout = value;
++
++    c->status |= KCS_ST_OBF;
++    if (c->ctl & NPCM7XX_CTL_OBEIE) {
++        qemu_irq_lower(c->owner->irq);
++    }
++
++    if (reg == NPCM7XX_KCSDOC) {
++        qemu_log_mask(LOG_UNIMP,
++                "%s: Host nSCIPME interrupt is not implemented.\n",
++                __func__);
++    } else if (reg == NPCM7XX_KCSDOM) {
++        qemu_log_mask(LOG_UNIMP,
++                "%s: Host nSMI interrupt is not implemented.\n",
++                __func__);
++    }
++
++    npcm7xx_kcs_handle_event(c);
++}
++
++static uint8_t npcm7xx_kcs_read_status(NPCM7xxKCSChannel *c)
++{
++    uint8_t status = c->status;
++
++    return status;
++}
++
++static void npcm7xx_kcs_write_status(NPCM7xxKCSChannel *c, uint8_t value)
++{
++    static const uint8_t mask =
++        KCS_ST_CMD | KCS_ST_IBF | KCS_ST_OBF;
++
++    if (value & mask) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: read-only bits in 0x%02x ignored\n",
++                      __func__, value);
++        value &= ~mask;
++    }
++
++    c->status = (c->status & mask) | value;
++}
++
++static void npcm7xx_kcs_write_ctl(NPCM7xxKCSChannel *c, uint8_t value)
++{
++    if (value & ~(NPCM7XX_CTL_OBEIE | NPCM7XX_CTL_IBFIE)) {
++        qemu_log_mask(LOG_UNIMP, "%s: Host interrupts are not implemented.\n",
++                __func__);
++    }
++
++    c->ctl = value;
++}
++
++static uint64_t npcm7xx_kcs_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    NPCM7xxKCSState *s = opaque;
++    uint8_t value = 0;
++    int channel;
++    NPCM7xxKCSRegister reg;
++
++    channel = npcm7xx_kcs_channel_index(addr);
++    if (channel < 0 || channel >= NPCM7XX_KCS_NR_CHANNELS) {
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: read from addr 0x%04" HWADDR_PRIx
++                      " is invalid or unimplemented.\n",
++                      __func__, addr);
++        return value;
++    }
++
++    reg = npcm7xx_kcs_reg_index(addr, channel);
++    switch (reg) {
++    case NPCM7XX_KCSDI:
++    case NPCM7XX_KCSDIC:
++        value = npcm7xx_kcs_read_byte(&s->channels[channel], reg);
++        break;
++    case NPCM7XX_KCSDO:
++    case NPCM7XX_KCSDOC:
++    case NPCM7XX_KCSDOM:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: register @ 0x%04" HWADDR_PRIx " is write-only\n",
++                      __func__, addr);
++        break;
++    case NPCM7XX_KCSST:
++        value = npcm7xx_kcs_read_status(&s->channels[channel]);
++        break;
++    case NPCM7XX_KCSCTL:
++        value = s->channels[channel].ctl;
++        break;
++    case NPCM7XX_KCSIC:
++        value = s->channels[channel].ic;
++        break;
++    case NPCM7XX_KCSIE:
++        value = s->channels[channel].ie;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: read from invalid addr 0x%04" HWADDR_PRIx "\n",
++                      __func__, addr);
++    }
++
++    trace_npcm7xx_kcs_read(DEVICE(s)->canonical_path, channel, reg, value);
++    return value;
++}
++
++static void npcm7xx_kcs_write(void *opaque, hwaddr addr, uint64_t v,
++                                    unsigned int size)
++{
++    NPCM7xxKCSState *s = opaque;
++    int channel;
++    NPCM7xxKCSRegister reg;
++
++    channel = npcm7xx_kcs_channel_index(addr);
++    if (channel < 0 || channel >= NPCM7XX_KCS_NR_CHANNELS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: write to addr 0x%04" HWADDR_PRIx
++                      " is invalid or unimplemented.\n",
++                      __func__, addr);
++        return;
++    }
++
++    reg = npcm7xx_kcs_reg_index(addr, channel);
++    trace_npcm7xx_kcs_write(DEVICE(s)->canonical_path, channel, reg,
++                            (uint8_t)v);
++    switch (reg) {
++    case NPCM7XX_KCSDI:
++    case NPCM7XX_KCSDIC:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n",
++                      __func__, addr);
++        break;
++    case NPCM7XX_KCSDO:
++    case NPCM7XX_KCSDOC:
++    case NPCM7XX_KCSDOM:
++        npcm7xx_kcs_write_byte(&s->channels[channel], reg, v);
++        break;
++    case NPCM7XX_KCSST:
++        npcm7xx_kcs_write_status(&s->channels[channel], v);
++        break;
++    case NPCM7XX_KCSCTL:
++        npcm7xx_kcs_write_ctl(&s->channels[channel], v);
++        break;
++    case NPCM7XX_KCSIC:
++        qemu_log_mask(LOG_UNIMP, "%s: Host interrupts are not implemented.\n",
++                __func__);
++        break;
++    case NPCM7XX_KCSIE:
++        qemu_log_mask(LOG_UNIMP, "%s: Host interrupts are not implemented.\n",
++                __func__);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: read from invalid addr 0x%04" HWADDR_PRIx "\n",
++                      __func__, addr);
++    }
++}
++
++static const MemoryRegionOps npcm7xx_kcs_ops = {
++    .read = npcm7xx_kcs_read,
++    .write = npcm7xx_kcs_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 1, /* KCS registers are 8-bits. */
++        .max_access_size = 1, /* KCS registers are 8-bits. */
++        .unaligned = false,
++    },
 +};
 +
- static void ipmi_register_types(void)
- {
-     type_register_static(&ipmi_interface_type_info);
--    type_register_static(&ipmi_bmc_type_info);
-+    type_register_static(&ipmi_interface_host_type_info);
-+    type_register_static(&ipmi_interface_client_type_info);
-+    type_register_static(&ipmi_core_type_info);
-+    type_register_static(&ipmi_bmc_host_type_info);
-+    type_register_static(&ipmi_bmc_client_type_info);
- }
- 
- type_init(ipmi_register_types)
-diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-index acf2bab35f..67f6a5d829 100644
---- a/hw/ipmi/ipmi_bmc_extern.c
-+++ b/hw/ipmi/ipmi_bmc_extern.c
-@@ -65,7 +65,7 @@
- #define TYPE_IPMI_BMC_EXTERN "ipmi-bmc-extern"
- OBJECT_DECLARE_SIMPLE_TYPE(IPMIBmcExtern, IPMI_BMC_EXTERN)
- struct IPMIBmcExtern {
--    IPMIBmc parent;
-+    IPMIBmcHost parent;
- 
-     CharBackend chr;
- 
-@@ -147,8 +147,9 @@ static void continue_send(IPMIBmcExtern *ibe)
- 
- static void extern_timeout(void *opaque)
- {
-+    IPMICore *ic = opaque;
-     IPMIBmcExtern *ibe = opaque;
--    IPMIInterface *s = ibe->parent.intf;
-+    IPMIInterface *s = ic->intf;
- 
-     if (ibe->connected) {
-         if (ibe->waiting_rsp && (ibe->outlen == 0)) {
-@@ -158,7 +159,7 @@ static void extern_timeout(void *opaque)
-             ibe->inbuf[1] = ibe->outbuf[1] | 0x04;
-             ibe->inbuf[2] = ibe->outbuf[2];
-             ibe->inbuf[3] = IPMI_CC_TIMEOUT;
--            k->handle_rsp(s, ibe->outbuf[0], ibe->inbuf + 1, 3);
-+            k->handle_msg(s, ibe->outbuf[0], ibe->inbuf + 1, 3);
-         } else {
-             continue_send(ibe);
-         }
-@@ -181,13 +182,13 @@ static void addchar(IPMIBmcExtern *ibe, unsigned char ch)
-     }
- }
- 
--static void ipmi_bmc_extern_handle_command(IPMIBmc *b,
-+static void ipmi_bmc_extern_handle_command(IPMICore *ic,
-                                        uint8_t *cmd, unsigned int cmd_len,
-                                        unsigned int max_cmd_len,
-                                        uint8_t msg_id)
- {
--    IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(b);
--    IPMIInterface *s = ibe->parent.intf;
-+    IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(ic);
-+    IPMIInterface *s = ic->intf;
-     uint8_t err = 0, csum;
-     unsigned int i;
- 
-@@ -213,7 +214,7 @@ static void ipmi_bmc_extern_handle_command(IPMIBmc *b,
-         rsp[1] = cmd[1];
-         rsp[2] = err;
-         ibe->waiting_rsp = false;
--        k->handle_rsp(s, msg_id, rsp, 3);
-+        k->handle_msg(s, msg_id, rsp, 3);
-         goto out;
-     }
- 
-@@ -236,8 +237,11 @@ static void ipmi_bmc_extern_handle_command(IPMIBmc *b,
- 
- static void handle_hw_op(IPMIBmcExtern *ibe, unsigned char hw_op)
- {
--    IPMIInterface *s = ibe->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibe);
-+    IPMIInterface *s = ic->intf;
-+    IPMIInterfaceHost *hs = IPMI_INTERFACE_HOST(s);
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMIInterfaceHostClass *hk = IPMI_INTERFACE_HOST_GET_CLASS(s);
- 
-     switch (hw_op) {
-     case VM_CMD_VERSION:
-@@ -257,34 +261,36 @@ static void handle_hw_op(IPMIBmcExtern *ibe, unsigned char hw_op)
-         break;
- 
-     case VM_CMD_POWEROFF:
--        k->do_hw_op(s, IPMI_POWEROFF_CHASSIS, 0);
-+        hk->do_hw_op(hs, IPMI_POWEROFF_CHASSIS, 0);
-         break;
- 
-     case VM_CMD_RESET:
--        k->do_hw_op(s, IPMI_RESET_CHASSIS, 0);
-+        hk->do_hw_op(hs, IPMI_RESET_CHASSIS, 0);
-         break;
- 
-     case VM_CMD_ENABLE_IRQ:
--        k->set_irq_enable(s, 1);
-+        hk->set_irq_enable(hs, 1);
-         break;
- 
-     case VM_CMD_DISABLE_IRQ:
--        k->set_irq_enable(s, 0);
-+        hk->set_irq_enable(hs, 0);
-         break;
- 
-     case VM_CMD_SEND_NMI:
--        k->do_hw_op(s, IPMI_SEND_NMI, 0);
-+        hk->do_hw_op(hs, IPMI_SEND_NMI, 0);
-         break;
- 
-     case VM_CMD_GRACEFUL_SHUTDOWN:
--        k->do_hw_op(s, IPMI_SHUTDOWN_VIA_ACPI_OVERTEMP, 0);
-+        hk->do_hw_op(hs, IPMI_SHUTDOWN_VIA_ACPI_OVERTEMP, 0);
-         break;
-     }
- }
- 
- static void handle_msg(IPMIBmcExtern *ibe)
- {
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(ibe->parent.intf);
-+    IPMICore *ic = IPMI_CORE(ibe);
-+    IPMIInterface *s = ic->intf;
-+    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
- 
-     if (ibe->in_escape) {
-         ipmi_debug("msg escape not ended\n");
-@@ -306,7 +312,7 @@ static void handle_msg(IPMIBmcExtern *ibe)
- 
-     timer_del(ibe->extern_timer);
-     ibe->waiting_rsp = false;
--    k->handle_rsp(ibe->parent.intf, ibe->inbuf[0], ibe->inbuf + 1, ibe->inpos - 1);
-+    k->handle_msg(s, ibe->inbuf[0], ibe->inbuf + 1, ibe->inpos - 1);
- }
- 
- static int can_receive(void *opaque)
-@@ -382,9 +388,12 @@ static void receive(void *opaque, const uint8_t *buf, int size)
- 
- static void chr_event(void *opaque, QEMUChrEvent event)
- {
-+    IPMICore *ic = opaque;
-     IPMIBmcExtern *ibe = opaque;
--    IPMIInterface *s = ibe->parent.intf;
-+    IPMIInterface *s = ic->intf;
-+    IPMIInterfaceHost *hs = IPMI_INTERFACE_HOST(s);
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMIInterfaceHostClass *hk = IPMI_INTERFACE_HOST_GET_CLASS(s);
-     unsigned char v;
- 
-     switch (event) {
-@@ -398,17 +407,17 @@ static void chr_event(void *opaque, QEMUChrEvent event)
-         ibe->outlen++;
-         addchar(ibe, VM_CMD_CAPABILITIES);
-         v = VM_CAPABILITIES_IRQ | VM_CAPABILITIES_ATTN;
--        if (k->do_hw_op(ibe->parent.intf, IPMI_POWEROFF_CHASSIS, 1) == 0) {
-+        if (hk->do_hw_op(hs, IPMI_POWEROFF_CHASSIS, 1) == 0) {
-             v |= VM_CAPABILITIES_POWER;
-         }
--        if (k->do_hw_op(ibe->parent.intf, IPMI_SHUTDOWN_VIA_ACPI_OVERTEMP, 1)
-+        if (hk->do_hw_op(hs, IPMI_SHUTDOWN_VIA_ACPI_OVERTEMP, 1)
-             == 0) {
-             v |= VM_CAPABILITIES_GRACEFUL_SHUTDOWN;
-         }
--        if (k->do_hw_op(ibe->parent.intf, IPMI_RESET_CHASSIS, 1) == 0) {
-+        if (hk->do_hw_op(hs, IPMI_RESET_CHASSIS, 1) == 0) {
-             v |= VM_CAPABILITIES_RESET;
-         }
--        if (k->do_hw_op(ibe->parent.intf, IPMI_SEND_NMI, 1) == 0) {
-+        if (hk->do_hw_op(hs, IPMI_SEND_NMI, 1) == 0) {
-             v |= VM_CAPABILITIES_NMI;
-         }
-         addchar(ibe, v);
-@@ -433,7 +442,7 @@ static void chr_event(void *opaque, QEMUChrEvent event)
-             ibe->inbuf[1] = ibe->outbuf[1] | 0x04;
-             ibe->inbuf[2] = ibe->outbuf[2];
-             ibe->inbuf[3] = IPMI_CC_BMC_INIT_IN_PROGRESS;
--            k->handle_rsp(s, ibe->outbuf[0], ibe->inbuf + 1, 3);
-+            k->handle_msg(s, ibe->outbuf[0], ibe->inbuf + 1, 3);
-         }
-         break;
- 
-@@ -445,7 +454,7 @@ static void chr_event(void *opaque, QEMUChrEvent event)
-     }
- }
- 
--static void ipmi_bmc_extern_handle_reset(IPMIBmc *b)
-+static void ipmi_bmc_extern_handle_reset(IPMIBmcHost *b)
- {
-     IPMIBmcExtern *ibe = IPMI_BMC_EXTERN(b);
- 
-@@ -475,14 +484,15 @@ static int ipmi_bmc_extern_post_migrate(void *opaque, int version_id)
-      * error on the interface if a response was being waited for.
-      */
-     if (ibe->waiting_rsp) {
--        IPMIInterface *ii = ibe->parent.intf;
-+        IPMICore *ic = opaque;
-+        IPMIInterface *ii = ic->intf;
-         IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
- 
-         ibe->waiting_rsp = false;
-         ibe->inbuf[1] = ibe->outbuf[1] | 0x04;
-         ibe->inbuf[2] = ibe->outbuf[2];
-         ibe->inbuf[3] = IPMI_CC_BMC_INIT_IN_PROGRESS;
--        iic->handle_rsp(ii, ibe->outbuf[0], ibe->inbuf + 1, 3);
-+        iic->handle_msg(ii, ibe->outbuf[0], ibe->inbuf + 1, 3);
-     }
-     return 0;
- }
-@@ -522,9 +532,10 @@ static Property ipmi_bmc_extern_properties[] = {
- static void ipmi_bmc_extern_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
--    IPMIBmcClass *bk = IPMI_BMC_CLASS(oc);
-+    IPMICoreClass *ck = IPMI_CORE_CLASS(oc);
-+    IPMIBmcHostClass *bk = IPMI_BMC_HOST_CLASS(oc);
- 
--    bk->handle_command = ipmi_bmc_extern_handle_command;
-+    ck->handle_command = ipmi_bmc_extern_handle_command;
-     bk->handle_reset = ipmi_bmc_extern_handle_reset;
-     dc->hotpluggable = false;
-     dc->realize = ipmi_bmc_extern_realize;
-@@ -533,7 +544,7 @@ static void ipmi_bmc_extern_class_init(ObjectClass *oc, void *data)
- 
- static const TypeInfo ipmi_bmc_extern_type = {
-     .name          = TYPE_IPMI_BMC_EXTERN,
--    .parent        = TYPE_IPMI_BMC,
-+    .parent        = TYPE_IPMI_BMC_HOST,
-     .instance_size = sizeof(IPMIBmcExtern),
-     .instance_init = ipmi_bmc_extern_init,
-     .instance_finalize = ipmi_bmc_extern_finalize,
-diff --git a/hw/ipmi/ipmi_bmc_sim.c b/hw/ipmi/ipmi_bmc_sim.c
-index 905e091094..6296e5cfed 100644
---- a/hw/ipmi/ipmi_bmc_sim.c
-+++ b/hw/ipmi/ipmi_bmc_sim.c
-@@ -178,7 +178,7 @@ typedef struct IPMIRcvBufEntry {
- } IPMIRcvBufEntry;
- 
- struct IPMIBmcSim {
--    IPMIBmc parent;
-+    IPMIBmcHost parent;
- 
-     QEMUTimer *timer;
- 
-@@ -384,7 +384,7 @@ static int sdr_find_entry(IPMISdr *sdr, uint16_t recid,
-     return 1;
- }
- 
--int ipmi_bmc_sdr_find(IPMIBmc *b, uint16_t recid,
-+int ipmi_bmc_sdr_find(IPMIBmcHost *b, uint16_t recid,
-                       const struct ipmi_sdr_compact **sdr, uint16_t *nextrec)
- 
- {
-@@ -448,10 +448,11 @@ static int attn_irq_enabled(IPMIBmcSim *ibs)
-             IPMI_BMC_MSG_FLAG_EVT_BUF_FULL_SET(ibs));
- }
- 
--void ipmi_bmc_gen_event(IPMIBmc *b, uint8_t *evt, bool log)
-+void ipmi_bmc_gen_event(IPMIBmcHost *b, uint8_t *evt, bool log)
- {
-     IPMIBmcSim *ibs = IPMI_BMC_SIMULATOR(b);
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
- 
-     if (!IPMI_BMC_EVENT_MSG_BUF_ENABLED(ibs)) {
-@@ -475,7 +476,8 @@ void ipmi_bmc_gen_event(IPMIBmc *b, uint8_t *evt, bool log)
- static void gen_event(IPMIBmcSim *ibs, unsigned int sens_num, uint8_t deassert,
-                       uint8_t evd1, uint8_t evd2, uint8_t evd3)
- {
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-     uint8_t evt[16];
-     IPMISensor *sens = ibs->sensors + sens_num;
-@@ -638,13 +640,14 @@ static void next_timeout(IPMIBmcSim *ibs)
-     timer_mod_ns(ibs->timer, next);
- }
- 
--static void ipmi_sim_handle_command(IPMIBmc *b,
-+static void ipmi_sim_handle_command(IPMICore *b,
-                                     uint8_t *cmd, unsigned int cmd_len,
-                                     unsigned int max_cmd_len,
-                                     uint8_t msg_id)
- {
-     IPMIBmcSim *ibs = IPMI_BMC_SIMULATOR(b);
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-     const IPMICmdHandler *hdl;
-     RspBuffer rsp = RSP_BUFFER_INITIALIZER;
-@@ -690,15 +693,18 @@ static void ipmi_sim_handle_command(IPMIBmc *b,
-     hdl->cmd_handler(ibs, cmd, cmd_len, &rsp);
- 
-  out:
--    k->handle_rsp(s, msg_id, rsp.buffer, rsp.len);
-+    k->handle_msg(s, msg_id, rsp.buffer, rsp.len);
- 
-     next_timeout(ibs);
- }
- 
- static void ipmi_sim_handle_timeout(IPMIBmcSim *ibs)
- {
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-+    IPMIInterfaceHost *hs = IPMI_INTERFACE_HOST(s);
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMIInterfaceHostClass *hk = IPMI_INTERFACE_HOST_CLASS(k);
- 
-     if (!ibs->watchdog_running) {
-         goto out;
-@@ -708,7 +714,7 @@ static void ipmi_sim_handle_timeout(IPMIBmcSim *ibs)
-         switch (IPMI_BMC_WATCHDOG_GET_PRE_ACTION(ibs)) {
-         case IPMI_BMC_WATCHDOG_PRE_NMI:
-             ibs->msg_flags |= IPMI_BMC_MSG_FLAG_WATCHDOG_TIMEOUT_MASK;
--            k->do_hw_op(s, IPMI_SEND_NMI, 0);
-+            hk->do_hw_op(hs, IPMI_SEND_NMI, 0);
-             sensor_set_discrete_bit(ibs, IPMI_WATCHDOG_SENSOR, 8, 1,
-                                     0xc8, (2 << 4) | 0xf, 0xff);
-             break;
-@@ -743,19 +749,19 @@ static void ipmi_sim_handle_timeout(IPMIBmcSim *ibs)
-     case IPMI_BMC_WATCHDOG_ACTION_RESET:
-         sensor_set_discrete_bit(ibs, IPMI_WATCHDOG_SENSOR, 1, 1,
-                                 0xc1, ibs->watchdog_use & 0xf, 0xff);
--        k->do_hw_op(s, IPMI_RESET_CHASSIS, 0);
-+        hk->do_hw_op(hs, IPMI_RESET_CHASSIS, 0);
-         break;
- 
-     case IPMI_BMC_WATCHDOG_ACTION_POWER_DOWN:
-         sensor_set_discrete_bit(ibs, IPMI_WATCHDOG_SENSOR, 2, 1,
-                                 0xc2, ibs->watchdog_use & 0xf, 0xff);
--        k->do_hw_op(s, IPMI_POWEROFF_CHASSIS, 0);
-+        hk->do_hw_op(hs, IPMI_POWEROFF_CHASSIS, 0);
-         break;
- 
-     case IPMI_BMC_WATCHDOG_ACTION_POWER_CYCLE:
-         sensor_set_discrete_bit(ibs, IPMI_WATCHDOG_SENSOR, 2, 1,
-                                 0xc3, ibs->watchdog_use & 0xf, 0xff);
--        k->do_hw_op(s, IPMI_POWERCYCLE_CHASSIS, 0);
-+        hk->do_hw_op(hs, IPMI_POWERCYCLE_CHASSIS, 0);
-         break;
-     }
- 
-@@ -788,8 +794,9 @@ static void chassis_control(IPMIBmcSim *ibs,
-                             uint8_t *cmd, unsigned int cmd_len,
-                             RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterfaceHost *s = IPMI_INTERFACE_HOST(ic->intf);
-+    IPMIInterfaceHostClass *k = IPMI_INTERFACE_HOST_GET_CLASS(s);
- 
-     switch (cmd[2] & 0xf) {
-     case 0: /* power down */
-@@ -845,8 +852,9 @@ static void get_device_id(IPMIBmcSim *ibs,
- 
- static void set_global_enables(IPMIBmcSim *ibs, uint8_t val)
- {
--    IPMIInterface *s = ibs->parent.intf;
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterfaceHost *s = IPMI_INTERFACE_HOST(ic->intf);
-+    IPMIInterfaceHostClass *k = IPMI_INTERFACE_HOST_GET_CLASS(s);
-     bool irqs_on;
- 
-     ibs->bmc_global_enables = val;
-@@ -861,8 +869,9 @@ static void cold_reset(IPMIBmcSim *ibs,
-                        uint8_t *cmd, unsigned int cmd_len,
-                        RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterfaceHost *s = IPMI_INTERFACE_HOST(ic->intf);
-+    IPMIInterfaceHostClass *k = IPMI_INTERFACE_HOST_GET_CLASS(s);
- 
-     /* Disable all interrupts */
-     set_global_enables(ibs, 1 << IPMI_BMC_EVENT_LOG_BIT);
-@@ -876,8 +885,9 @@ static void warm_reset(IPMIBmcSim *ibs,
-                        uint8_t *cmd, unsigned int cmd_len,
-                        RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterfaceHost *s = IPMI_INTERFACE_HOST(ic->intf);
-+    IPMIInterfaceHostClass *k = IPMI_INTERFACE_HOST_GET_CLASS(s);
- 
-     if (k->reset) {
-         k->reset(s, false);
-@@ -939,7 +949,8 @@ static void clr_msg_flags(IPMIBmcSim *ibs,
-                           uint8_t *cmd, unsigned int cmd_len,
-                           RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
- 
-     ibs->msg_flags &= ~cmd[2];
-@@ -957,7 +968,8 @@ static void read_evt_msg_buf(IPMIBmcSim *ibs,
-                              uint8_t *cmd, unsigned int cmd_len,
-                              RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-     unsigned int i;
- 
-@@ -989,7 +1001,8 @@ static void get_msg(IPMIBmcSim *ibs,
-     g_free(msg);
- 
-     if (QTAILQ_EMPTY(&ibs->rcvbufs)) {
--        IPMIInterface *s = ibs->parent.intf;
-+        IPMICore *ic = IPMI_CORE(ibs);
-+        IPMIInterface *s = ic->intf;
-         IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
- 
-         ibs->msg_flags &= ~IPMI_BMC_MSG_FLAG_RCV_MSG_QUEUE;
-@@ -1014,7 +1027,8 @@ static void send_msg(IPMIBmcSim *ibs,
-                      uint8_t *cmd, unsigned int cmd_len,
-                      RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterface *s = ic->intf;
-     IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-     IPMIRcvBufEntry *msg;
-     uint8_t *buf;
-@@ -1130,8 +1144,9 @@ static void set_watchdog_timer(IPMIBmcSim *ibs,
-                                uint8_t *cmd, unsigned int cmd_len,
-                                RspBuffer *rsp)
- {
--    IPMIInterface *s = ibs->parent.intf;
--    IPMIInterfaceClass *k = IPMI_INTERFACE_GET_CLASS(s);
-+    IPMICore *ic = IPMI_CORE(ibs);
-+    IPMIInterfaceHost *s = IPMI_INTERFACE_HOST(ic->intf);
-+    IPMIInterfaceHostClass *k = IPMI_INTERFACE_HOST_GET_CLASS(s);
-     unsigned int val;
- 
-     val = cmd[2] & 0x7; /* Validate use */
-@@ -2159,9 +2174,8 @@ out:
- 
- static void ipmi_sim_realize(DeviceState *dev, Error **errp)
- {
--    IPMIBmc *b = IPMI_BMC(dev);
-     unsigned int i;
--    IPMIBmcSim *ibs = IPMI_BMC_SIMULATOR(b);
-+    IPMIBmcSim *ibs = IPMI_BMC_SIMULATOR(dev);
- 
-     QTAILQ_INIT(&ibs->rcvbufs);
- 
-@@ -2209,17 +2223,17 @@ static Property ipmi_sim_properties[] = {
- static void ipmi_sim_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
--    IPMIBmcClass *bk = IPMI_BMC_CLASS(oc);
-+    IPMICoreClass *ck = IPMI_CORE_CLASS(oc);
- 
-     dc->hotpluggable = false;
-     dc->realize = ipmi_sim_realize;
-     device_class_set_props(dc, ipmi_sim_properties);
--    bk->handle_command = ipmi_sim_handle_command;
-+    ck->handle_command = ipmi_sim_handle_command;
- }
- 
- static const TypeInfo ipmi_sim_type = {
-     .name          = TYPE_IPMI_BMC_SIMULATOR,
--    .parent        = TYPE_IPMI_BMC,
-+    .parent        = TYPE_IPMI_BMC_HOST,
-     .instance_size = sizeof(IPMIBmcSim),
-     .class_init    = ipmi_sim_class_init,
- };
-diff --git a/hw/ipmi/ipmi_bt.c b/hw/ipmi/ipmi_bt.c
-index 22f94fb98d..1363098753 100644
---- a/hw/ipmi/ipmi_bt.c
-+++ b/hw/ipmi/ipmi_bt.c
-@@ -92,8 +92,9 @@ static void ipmi_bt_lower_irq(IPMIBT *ib)
-     }
- }
- 
--static void ipmi_bt_handle_event(IPMIInterface *ii)
-+static void ipmi_bt_handle_event(IPMIInterfaceHost *iih)
- {
-+    IPMIInterface *ii = IPMI_INTERFACE(iih);
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-     IPMIBT *ib = iic->get_backend_data(ii);
- 
-@@ -141,8 +142,8 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
-     ib->waiting_seq = ib->inmsg[2];
-     ib->inmsg[2] = ib->inmsg[1];
-     {
--        IPMIBmcClass *bk = IPMI_BMC_GET_CLASS(ib->bmc);
--        bk->handle_command(ib->bmc, ib->inmsg + 2, ib->inlen - 2,
-+        IPMICoreClass *ck = IPMI_CORE_GET_CLASS(ib->bmc);
-+        ck->handle_command(IPMI_CORE(ib->bmc), ib->inmsg + 2, ib->inlen - 2,
-                            sizeof(ib->inmsg), ib->waiting_rsp);
-     }
-  out:
-@@ -215,9 +216,9 @@ static uint64_t ipmi_bt_ioport_read(void *opaque, hwaddr addr, unsigned size)
-     return ret;
- }
- 
--static void ipmi_bt_signal(IPMIBT *ib, IPMIInterface *ii)
-+static void ipmi_bt_signal(IPMIBT *ib, IPMIInterfaceHost *ii)
- {
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     ib->do_wake = 1;
-     while (ib->do_wake) {
-@@ -254,7 +255,7 @@ static void ipmi_bt_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-         }
-         if (IPMI_BT_GET_H2B_ATN(val)) {
-             IPMI_BT_SET_BBUSY(ib->control_reg, 1);
--            ipmi_bt_signal(ib, ii);
-+            ipmi_bt_signal(ib, IPMI_INTERFACE_HOST(ii));
-         }
-         break;
- 
-@@ -329,10 +330,10 @@ static void ipmi_bt_set_atn(IPMIInterface *ii, int val, int irq)
-     }
- }
- 
--static void ipmi_bt_handle_reset(IPMIInterface *ii, bool is_cold)
-+static void ipmi_bt_handle_reset(IPMIInterfaceHost *ii, bool is_cold)
- {
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
--    IPMIBT *ib = iic->get_backend_data(ii);
-+    IPMIBT *ib = iic->get_backend_data(IPMI_INTERFACE(ii));
- 
-     if (is_cold) {
-         /* Disable the BT interrupt on reset */
-@@ -344,16 +345,18 @@ static void ipmi_bt_handle_reset(IPMIInterface *ii, bool is_cold)
-     }
- }
- 
--static void ipmi_bt_set_irq_enable(IPMIInterface *ii, int val)
-+static void ipmi_bt_set_irq_enable(IPMIInterfaceHost *ii, int val)
- {
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
--    IPMIBT *ib = iic->get_backend_data(ii);
-+    IPMIBT *ib = iic->get_backend_data(IPMI_INTERFACE(ii));
- 
-     ib->irqs_enabled = val;
- }
- 
--static void ipmi_bt_init(IPMIInterface *ii, unsigned int min_size, Error **errp)
-+static void ipmi_bt_init(IPMIInterfaceHost *iih, unsigned int min_size,
-+                         Error **errp)
- {
-+    IPMIInterface *ii = IPMI_INTERFACE(iih);
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-     IPMIBT *ib = iic->get_backend_data(ii);
- 
-@@ -426,11 +429,13 @@ void ipmi_bt_get_fwinfo(struct IPMIBT *ib, IPMIFwInfo *info)
-     info->irq_type = IPMI_LEVEL_IRQ;
- }
- 
--void ipmi_bt_class_init(IPMIInterfaceClass *iic)
-+void ipmi_bt_class_init(IPMIInterfaceClass *ic)
- {
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_CLASS(ic);
-+
-     iic->init = ipmi_bt_init;
--    iic->set_atn = ipmi_bt_set_atn;
--    iic->handle_rsp = ipmi_bt_handle_rsp;
-+    ic->set_atn = ipmi_bt_set_atn;
-+    ic->handle_msg = ipmi_bt_handle_rsp;
-     iic->handle_if_event = ipmi_bt_handle_event;
-     iic->set_irq_enable = ipmi_bt_set_irq_enable;
-     iic->reset = ipmi_bt_handle_reset;
-diff --git a/hw/ipmi/ipmi_kcs.c b/hw/ipmi/ipmi_kcs.c
-index a77612946a..771f2bc0b2 100644
---- a/hw/ipmi/ipmi_kcs.c
-+++ b/hw/ipmi/ipmi_kcs.c
-@@ -94,18 +94,20 @@ static void ipmi_kcs_lower_irq(IPMIKCS *ik)
- 
- static void ipmi_kcs_signal(IPMIKCS *ik, IPMIInterface *ii)
- {
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *iih = IPMI_INTERFACE_HOST(ii);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     ik->do_wake = 1;
-     while (ik->do_wake) {
-         ik->do_wake = 0;
--        iic->handle_if_event(ii);
-+        iic->handle_if_event(iih);
-     }
- }
- 
--static void ipmi_kcs_handle_event(IPMIInterface *ii)
-+static void ipmi_kcs_handle_event(IPMIInterfaceHost *iih)
- {
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterface *ii = IPMI_INTERFACE(iih);
-+    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(iih);
-     IPMIKCS *ik = iic->get_backend_data(ii);
- 
-     if (ik->cmd_reg == IPMI_KCS_ABORT_STATUS_CMD) {
-@@ -162,12 +164,12 @@ static void ipmi_kcs_handle_event(IPMIInterface *ii)
-             ik->inlen++;
-         }
-         if (ik->write_end) {
--            IPMIBmcClass *bk = IPMI_BMC_GET_CLASS(ik->bmc);
-+            IPMICoreClass *ck = IPMI_CORE_GET_CLASS(ik->bmc);
-             ik->outlen = 0;
-             ik->write_end = 0;
-             ik->outpos = 0;
--            bk->handle_command(ik->bmc, ik->inmsg, ik->inlen, sizeof(ik->inmsg),
--                               ik->waiting_rsp);
-+            ck->handle_command(IPMI_CORE(ik->bmc), ik->inmsg, ik->inlen,
-+                               sizeof(ik->inmsg), ik->waiting_rsp);
-             goto out_noibf;
-         } else if (ik->cmd_reg == IPMI_KCS_WRITE_END_CMD) {
-             ik->cmd_reg = -1;
-@@ -321,18 +323,19 @@ static void ipmi_kcs_set_atn(IPMIInterface *ii, int val, int irq)
-     }
- }
- 
--static void ipmi_kcs_set_irq_enable(IPMIInterface *ii, int val)
-+static void ipmi_kcs_set_irq_enable(IPMIInterfaceHost *ii, int val)
- {
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
--    IPMIKCS *ik = iic->get_backend_data(ii);
-+    IPMIKCS *ik = iic->get_backend_data(IPMI_INTERFACE(ii));
- 
-     ik->irqs_enabled = val;
- }
- 
- /* min_size must be a power of 2. */
--static void ipmi_kcs_init(IPMIInterface *ii, unsigned int min_size,
-+static void ipmi_kcs_init(IPMIInterfaceHost *iih, unsigned int min_size,
-                           Error **errp)
- {
-+    IPMIInterface *ii = IPMI_INTERFACE(iih);
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-     IPMIKCS *ik = iic->get_backend_data(ii);
- 
-@@ -413,11 +416,13 @@ void ipmi_kcs_get_fwinfo(IPMIKCS *ik, IPMIFwInfo *info)
-     info->irq_type = IPMI_LEVEL_IRQ;
- }
- 
--void ipmi_kcs_class_init(IPMIInterfaceClass *iic)
-+void ipmi_kcs_class_init(IPMIInterfaceClass *ic)
- {
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_CLASS(ic);
-+
-     iic->init = ipmi_kcs_init;
--    iic->set_atn = ipmi_kcs_set_atn;
--    iic->handle_rsp = ipmi_kcs_handle_rsp;
-+    ic->set_atn = ipmi_kcs_set_atn;
-+    ic->handle_msg = ipmi_kcs_handle_rsp;
-     iic->handle_if_event = ipmi_kcs_handle_event;
-     iic->set_irq_enable = ipmi_kcs_set_irq_enable;
- }
-diff --git a/hw/ipmi/isa_ipmi_bt.c b/hw/ipmi/isa_ipmi_bt.c
-index a83e7243d6..a298f5f981 100644
---- a/hw/ipmi/isa_ipmi_bt.c
-+++ b/hw/ipmi/isa_ipmi_bt.c
-@@ -44,7 +44,8 @@ struct ISAIPMIBTDevice {
-     uint32_t uuid;
- };
- 
--static void isa_ipmi_bt_get_fwinfo(struct IPMIInterface *ii, IPMIFwInfo *info)
-+static void isa_ipmi_bt_get_fwinfo(struct IPMIInterfaceHost *ii,
-+                                   IPMIFwInfo *info)
- {
-     ISAIPMIBTDevice *iib = ISA_IPMI_BT(ii);
- 
-@@ -73,8 +74,8 @@ static void isa_ipmi_bt_realize(DeviceState *dev, Error **errp)
-     Error *err = NULL;
-     ISADevice *isadev = ISA_DEVICE(dev);
-     ISAIPMIBTDevice *iib = ISA_IPMI_BT(dev);
--    IPMIInterface *ii = IPMI_INTERFACE(dev);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *ii = IPMI_INTERFACE_HOST(dev);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     if (!iib->bt.bmc) {
-         error_setg(errp, "IPMI device requires a bmc attribute to be set");
-@@ -83,7 +84,7 @@ static void isa_ipmi_bt_realize(DeviceState *dev, Error **errp)
- 
-     iib->uuid = ipmi_next_uuid();
- 
--    iib->bt.bmc->intf = ii;
-+    IPMI_CORE(iib->bt.bmc)->intf = IPMI_INTERFACE(ii);
-     iib->bt.opaque = iib;
- 
-     iic->init(ii, 0, &err);
-@@ -144,14 +145,15 @@ static Property ipmi_isa_properties[] = {
- static void isa_ipmi_bt_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_CLASS(oc);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_CLASS(oc);
-+    IPMIInterfaceClass *ic = IPMI_INTERFACE_CLASS(oc);
-     AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(oc);
- 
-     dc->realize = isa_ipmi_bt_realize;
-     device_class_set_props(dc, ipmi_isa_properties);
- 
--    iic->get_backend_data = isa_ipmi_bt_get_backend_data;
--    ipmi_bt_class_init(iic);
-+    ic->get_backend_data = isa_ipmi_bt_get_backend_data;
-+    ipmi_bt_class_init(ic);
-     iic->get_fwinfo = isa_ipmi_bt_get_fwinfo;
-     adevc->build_dev_aml = build_ipmi_dev_aml;
- }
-@@ -163,7 +165,7 @@ static const TypeInfo isa_ipmi_bt_info = {
-     .instance_init = isa_ipmi_bt_init,
-     .class_init    = isa_ipmi_bt_class_init,
-     .interfaces = (InterfaceInfo[]) {
--        { TYPE_IPMI_INTERFACE },
-+        { TYPE_IPMI_INTERFACE_HOST },
-         { TYPE_ACPI_DEV_AML_IF },
-         { }
-     }
-diff --git a/hw/ipmi/isa_ipmi_kcs.c b/hw/ipmi/isa_ipmi_kcs.c
-index b2ed70b9da..a1372ae448 100644
---- a/hw/ipmi/isa_ipmi_kcs.c
-+++ b/hw/ipmi/isa_ipmi_kcs.c
-@@ -44,7 +44,7 @@ struct ISAIPMIKCSDevice {
-     uint32_t uuid;
- };
- 
--static void isa_ipmi_kcs_get_fwinfo(IPMIInterface *ii, IPMIFwInfo *info)
-+static void isa_ipmi_kcs_get_fwinfo(IPMIInterfaceHost *ii, IPMIFwInfo *info)
- {
-     ISAIPMIKCSDevice *iik = ISA_IPMI_KCS(ii);
- 
-@@ -72,8 +72,8 @@ static void ipmi_isa_realize(DeviceState *dev, Error **errp)
-     Error *err = NULL;
-     ISADevice *isadev = ISA_DEVICE(dev);
-     ISAIPMIKCSDevice *iik = ISA_IPMI_KCS(dev);
--    IPMIInterface *ii = IPMI_INTERFACE(dev);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *ii = IPMI_INTERFACE_HOST(dev);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     if (!iik->kcs.bmc) {
-         error_setg(errp, "IPMI device requires a bmc attribute to be set");
-@@ -82,7 +82,7 @@ static void ipmi_isa_realize(DeviceState *dev, Error **errp)
- 
-     iik->uuid = ipmi_next_uuid();
- 
--    iik->kcs.bmc->intf = ii;
-+    IPMI_CORE(iik->kcs.bmc)->intf = IPMI_INTERFACE(ii);
-     iik->kcs.opaque = iik;
- 
-     iic->init(ii, 0, &err);
-@@ -152,6 +152,7 @@ static void isa_ipmi_kcs_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     IPMIInterfaceClass *iic = IPMI_INTERFACE_CLASS(oc);
-+    IPMIInterfaceHostClass *iihc = IPMI_INTERFACE_HOST_CLASS(oc);
-     AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(oc);
- 
-     dc->realize = ipmi_isa_realize;
-@@ -159,7 +160,7 @@ static void isa_ipmi_kcs_class_init(ObjectClass *oc, void *data)
- 
-     iic->get_backend_data = isa_ipmi_kcs_get_backend_data;
-     ipmi_kcs_class_init(iic);
--    iic->get_fwinfo = isa_ipmi_kcs_get_fwinfo;
-+    iihc->get_fwinfo = isa_ipmi_kcs_get_fwinfo;
-     adevc->build_dev_aml = build_ipmi_dev_aml;
- }
- 
-@@ -170,7 +171,7 @@ static const TypeInfo isa_ipmi_kcs_info = {
-     .instance_init = isa_ipmi_kcs_init,
-     .class_init    = isa_ipmi_kcs_class_init,
-     .interfaces = (InterfaceInfo[]) {
--        { TYPE_IPMI_INTERFACE },
-+        { TYPE_IPMI_INTERFACE_HOST },
-         { TYPE_ACPI_DEV_AML_IF },
-         { }
-     }
-diff --git a/hw/ipmi/pci_ipmi_bt.c b/hw/ipmi/pci_ipmi_bt.c
-index 633931b825..883bbda8f1 100644
---- a/hw/ipmi/pci_ipmi_bt.c
-+++ b/hw/ipmi/pci_ipmi_bt.c
-@@ -56,8 +56,8 @@ static void pci_ipmi_bt_realize(PCIDevice *pd, Error **errp)
- {
-     Error *err = NULL;
-     PCIIPMIBTDevice *pik = PCI_IPMI_BT(pd);
--    IPMIInterface *ii = IPMI_INTERFACE(pd);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *ii = IPMI_INTERFACE_HOST(pd);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     if (!pik->bt.bmc) {
-         error_setg(errp, "IPMI device requires a bmc attribute to be set");
-@@ -66,7 +66,7 @@ static void pci_ipmi_bt_realize(PCIDevice *pd, Error **errp)
- 
-     pik->uuid = ipmi_next_uuid();
- 
--    pik->bt.bmc->intf = ii;
-+    IPMI_CORE(pik->bt.bmc)->intf = IPMI_INTERFACE(ii);
-     pik->bt.opaque = pik;
- 
-     pci_config_set_prog_interface(pd->config, 0x02); /* BT */
-@@ -134,7 +134,7 @@ static const TypeInfo pci_ipmi_bt_info = {
-     .instance_init = pci_ipmi_bt_instance_init,
-     .class_init    = pci_ipmi_bt_class_init,
-     .interfaces = (InterfaceInfo[]) {
--        { TYPE_IPMI_INTERFACE },
-+        { TYPE_IPMI_INTERFACE_HOST },
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { }
-     }
-diff --git a/hw/ipmi/pci_ipmi_kcs.c b/hw/ipmi/pci_ipmi_kcs.c
-index 1a581413c2..40f8da95af 100644
---- a/hw/ipmi/pci_ipmi_kcs.c
-+++ b/hw/ipmi/pci_ipmi_kcs.c
-@@ -56,8 +56,8 @@ static void pci_ipmi_kcs_realize(PCIDevice *pd, Error **errp)
- {
-     Error *err = NULL;
-     PCIIPMIKCSDevice *pik = PCI_IPMI_KCS(pd);
--    IPMIInterface *ii = IPMI_INTERFACE(pd);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_GET_CLASS(ii);
-+    IPMIInterfaceHost *ii = IPMI_INTERFACE_HOST(pd);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_GET_CLASS(ii);
- 
-     if (!pik->kcs.bmc) {
-         error_setg(errp, "IPMI device requires a bmc attribute to be set");
-@@ -66,7 +66,7 @@ static void pci_ipmi_kcs_realize(PCIDevice *pd, Error **errp)
- 
-     pik->uuid = ipmi_next_uuid();
- 
--    pik->kcs.bmc->intf = ii;
-+    IPMI_CORE(pik->kcs.bmc)->intf = IPMI_INTERFACE(ii);
-     pik->kcs.opaque = pik;
- 
-     pci_config_set_prog_interface(pd->config, 0x01); /* KCS */
-@@ -134,7 +134,7 @@ static const TypeInfo pci_ipmi_kcs_info = {
-     .instance_init = pci_ipmi_kcs_instance_init,
-     .class_init    = pci_ipmi_kcs_class_init,
-     .interfaces = (InterfaceInfo[]) {
--        { TYPE_IPMI_INTERFACE },
-+        { TYPE_IPMI_INTERFACE_HOST },
-         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { }
-     }
-diff --git a/hw/ipmi/smbus_ipmi.c b/hw/ipmi/smbus_ipmi.c
-index d0991ab7f9..f61b260f58 100644
---- a/hw/ipmi/smbus_ipmi.c
-+++ b/hw/ipmi/smbus_ipmi.c
-@@ -49,7 +49,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(SMBusIPMIDevice, SMBUS_IPMI)
- struct SMBusIPMIDevice {
-     SMBusDevice parent;
- 
--    IPMIBmc *bmc;
-+    IPMIBmcHost *bmc;
- 
-     uint8_t outmsg[MAX_SSIF_IPMI_MSG_SIZE];
-     uint32_t outlen;
-@@ -71,7 +71,7 @@ struct SMBusIPMIDevice {
-     uint32_t uuid;
- };
- 
--static void smbus_ipmi_handle_event(IPMIInterface *ii)
-+static void smbus_ipmi_handle_event(IPMIInterfaceHost *ii)
- {
-     /* No interrupts, so nothing to do here. */
- }
-@@ -100,7 +100,7 @@ static void smbus_ipmi_set_atn(IPMIInterface *ii, int val, int irq)
-     /* This is where PEC would go. */
- }
- 
--static void smbus_ipmi_set_irq_enable(IPMIInterface *ii, int val)
-+static void smbus_ipmi_set_irq_enable(IPMIInterfaceHost *ii, int val)
- {
- }
- 
-@@ -108,7 +108,7 @@ static void smbus_ipmi_send_msg(SMBusIPMIDevice *sid)
- {
-     uint8_t *msg = sid->inmsg;
-     uint32_t len = sid->inlen;
--    IPMIBmcClass *bk = IPMI_BMC_GET_CLASS(sid->bmc);
-+    IPMICoreClass *ck = IPMI_CORE_GET_CLASS(sid->bmc);
- 
-     sid->outlen = 0;
-     sid->outpos = 0;
-@@ -136,8 +136,8 @@ static void smbus_ipmi_send_msg(SMBusIPMIDevice *sid)
-         return;
-     }
- 
--    bk->handle_command(sid->bmc, sid->inmsg, sid->inlen, sizeof(sid->inmsg),
--                       sid->waiting_rsp);
-+    ck->handle_command(IPMI_CORE(sid->bmc), sid->inmsg, sid->inlen,
-+                       sizeof(sid->inmsg), sid->waiting_rsp);
- }
- 
- static uint8_t ipmi_receive_byte(SMBusDevice *dev)
-@@ -326,7 +326,7 @@ static void smbus_ipmi_realize(DeviceState *dev, Error **errp)
- 
-     sid->uuid = ipmi_next_uuid();
- 
--    sid->bmc->intf = ii;
-+    IPMI_CORE(sid->bmc)->intf = ii;
- }
- 
- static void smbus_ipmi_init(Object *obj)
-@@ -336,7 +336,8 @@ static void smbus_ipmi_init(Object *obj)
-     ipmi_bmc_find_and_link(obj, (Object **) &sid->bmc);
- }
- 
--static void smbus_ipmi_get_fwinfo(struct IPMIInterface *ii, IPMIFwInfo *info)
-+static void smbus_ipmi_get_fwinfo(struct IPMIInterfaceHost *ii,
-+                                  IPMIFwInfo *info)
- {
-     SMBusIPMIDevice *sid = SMBUS_IPMI(ii);
- 
-@@ -354,7 +355,8 @@ static void smbus_ipmi_get_fwinfo(struct IPMIInterface *ii, IPMIFwInfo *info)
- static void smbus_ipmi_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
--    IPMIInterfaceClass *iic = IPMI_INTERFACE_CLASS(oc);
-+    IPMIInterfaceHostClass *iic = IPMI_INTERFACE_HOST_CLASS(oc);
-+    IPMIInterfaceClass *ic = IPMI_INTERFACE_CLASS(oc);
-     SMBusDeviceClass *sc = SMBUS_DEVICE_CLASS(oc);
-     AcpiDevAmlIfClass *adevc = ACPI_DEV_AML_IF_CLASS(oc);
- 
-@@ -362,8 +364,8 @@ static void smbus_ipmi_class_init(ObjectClass *oc, void *data)
-     sc->write_data = ipmi_write_data;
-     dc->vmsd = &vmstate_smbus_ipmi;
-     dc->realize = smbus_ipmi_realize;
--    iic->set_atn = smbus_ipmi_set_atn;
--    iic->handle_rsp = smbus_ipmi_handle_rsp;
-+    ic->set_atn = smbus_ipmi_set_atn;
-+    ic->handle_msg = smbus_ipmi_handle_rsp;
-     iic->handle_if_event = smbus_ipmi_handle_event;
-     iic->set_irq_enable = smbus_ipmi_set_irq_enable;
-     iic->get_fwinfo = smbus_ipmi_get_fwinfo;
-@@ -377,7 +379,7 @@ static const TypeInfo smbus_ipmi_info = {
-     .instance_init = smbus_ipmi_init,
-     .class_init    = smbus_ipmi_class_init,
-     .interfaces = (InterfaceInfo[]) {
--        { TYPE_IPMI_INTERFACE },
-+        { TYPE_IPMI_INTERFACE_HOST },
-         { TYPE_ACPI_DEV_AML_IF },
-         { }
-     }
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 11cb48af2f..a39cbdaa38 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -595,7 +595,7 @@ static void pnv_powerdown_notify(Notifier *n, void *opaque)
- static void pnv_reset(MachineState *machine, ShutdownCause reason)
- {
-     PnvMachineState *pnv = PNV_MACHINE(machine);
--    IPMIBmc *bmc;
-+    IPMIBmcHost *bmc;
-     void *fdt;
- 
-     qemu_devices_reset(reason);
-@@ -746,7 +746,7 @@ static bool pnv_match_cpu(const char *default_type, const char *cpu_type)
-     return ppc_default->pvr_match(ppc_default, ppc->pvr, false);
- }
- 
--static void pnv_ipmi_bt_init(ISABus *bus, IPMIBmc *bmc, uint32_t irq)
-+static void pnv_ipmi_bt_init(ISABus *bus, IPMIBmcHost *bmc, uint32_t irq)
- {
-     ISADevice *dev = isa_new("isa-ipmi-bt");
- 
-diff --git a/hw/ppc/pnv_bmc.c b/hw/ppc/pnv_bmc.c
-index 99f1e8d7f9..6e8a6f545b 100644
---- a/hw/ppc/pnv_bmc.c
-+++ b/hw/ppc/pnv_bmc.c
-@@ -50,12 +50,12 @@ typedef struct OemSel {
- #define SOFT_OFF        0x00
- #define SOFT_REBOOT     0x01
- 
--static bool pnv_bmc_is_simulator(IPMIBmc *bmc)
-+static bool pnv_bmc_is_simulator(IPMIBmcHost *bmc)
- {
-     return object_dynamic_cast(OBJECT(bmc), TYPE_IPMI_BMC_SIMULATOR);
- }
- 
--static void pnv_gen_oem_sel(IPMIBmc *bmc, uint8_t reboot)
-+static void pnv_gen_oem_sel(IPMIBmcHost *bmc, uint8_t reboot)
- {
-     /* IPMI SEL Event are 16 bytes long */
-     OemSel sel = {
-@@ -71,12 +71,12 @@ static void pnv_gen_oem_sel(IPMIBmc *bmc, uint8_t reboot)
-     ipmi_bmc_gen_event(bmc, (uint8_t *) &sel, 0 /* do not log the event */);
- }
- 
--void pnv_bmc_powerdown(IPMIBmc *bmc)
-+void pnv_bmc_powerdown(IPMIBmcHost *bmc)
- {
-     pnv_gen_oem_sel(bmc, SOFT_OFF);
- }
- 
--void pnv_dt_bmc_sensors(IPMIBmc *bmc, void *fdt)
-+void pnv_dt_bmc_sensors(IPMIBmcHost *bmc, void *fdt)
- {
-     int offset;
-     int i;
-@@ -249,7 +249,7 @@ static const IPMINetfn hiomap_netfn = {
- };
- 
- 
--void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pnor)
-+void pnv_bmc_set_pnor(IPMIBmcHost *bmc, PnvPnor *pnor)
- {
-     if (!pnv_bmc_is_simulator(bmc)) {
-         return;
-@@ -267,15 +267,15 @@ void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pnor)
-  * Instantiate the machine BMC. PowerNV uses the QEMU internal
-  * simulator but it could also be external.
-  */
--IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
-+IPMIBmcHost *pnv_bmc_create(PnvPnor *pnor)
- {
-     Object *obj;
- 
-     obj = object_new(TYPE_IPMI_BMC_SIMULATOR);
-     qdev_realize(DEVICE(obj), NULL, &error_fatal);
--    pnv_bmc_set_pnor(IPMI_BMC(obj), pnor);
-+    pnv_bmc_set_pnor(IPMI_BMC_HOST(obj), pnor);
- 
--    return IPMI_BMC(obj);
-+    return IPMI_BMC_HOST(obj);
- }
- 
- typedef struct ForeachArgs {
-@@ -296,9 +296,9 @@ static int bmc_find(Object *child, void *opaque)
-     return 0;
- }
- 
--IPMIBmc *pnv_bmc_find(Error **errp)
-+IPMIBmcHost *pnv_bmc_find(Error **errp)
- {
--    ForeachArgs args = { TYPE_IPMI_BMC, NULL };
-+    ForeachArgs args = { TYPE_IPMI_BMC_HOST, NULL };
-     int ret;
- 
-     ret = object_child_foreach_recursive(object_get_root(), bmc_find, &args);
-@@ -308,5 +308,5 @@ IPMIBmc *pnv_bmc_find(Error **errp)
-         return NULL;
-     }
- 
--    return args.obj ? IPMI_BMC(args.obj) : NULL;
-+    return args.obj ? IPMI_BMC_HOST(args.obj) : NULL;
- }
-diff --git a/hw/smbios/smbios_type_38.c b/hw/smbios/smbios_type_38.c
-index 168b886647..81a1cf09ea 100644
---- a/hw/smbios/smbios_type_38.c
-+++ b/hw/smbios/smbios_type_38.c
-@@ -83,16 +83,17 @@ static void smbios_add_ipmi_devices(BusState *bus)
- 
-     QTAILQ_FOREACH(kid, &bus->children,  sibling) {
-         DeviceState *dev = kid->child;
--        Object *obj = object_dynamic_cast(OBJECT(dev), TYPE_IPMI_INTERFACE);
-+        Object *obj = object_dynamic_cast(OBJECT(dev),
-+                                          TYPE_IPMI_INTERFACE_HOST);
-         BusState *childbus;
- 
-         if (obj) {
--            IPMIInterface *ii;
--            IPMIInterfaceClass *iic;
-+            IPMIInterfaceHost *ii;
-+            IPMIInterfaceHostClass *iic;
-             IPMIFwInfo info;
- 
--            ii = IPMI_INTERFACE(obj);
--            iic = IPMI_INTERFACE_GET_CLASS(obj);
-+            ii = IPMI_INTERFACE_HOST(obj);
-+            iic = IPMI_INTERFACE_HOST_GET_CLASS(obj);
-             memset(&info, 0, sizeof(info));
-             if (!iic->get_fwinfo) {
-                 continue;
-diff --git a/include/hw/ipmi/ipmi.h b/include/hw/ipmi/ipmi.h
-index 77a7213ed9..5ead2467f5 100644
---- a/include/hw/ipmi/ipmi.h
-+++ b/include/hw/ipmi/ipmi.h
-@@ -109,99 +109,156 @@ uint32_t ipmi_next_uuid(void);
-  * and the BMC.
-  */
- #define TYPE_IPMI_INTERFACE "ipmi-interface"
--#define IPMI_INTERFACE(obj) \
--     INTERFACE_CHECK(IPMIInterface, (obj), TYPE_IPMI_INTERFACE)
--typedef struct IPMIInterfaceClass IPMIInterfaceClass;
--DECLARE_CLASS_CHECKERS(IPMIInterfaceClass, IPMI_INTERFACE,
--                       TYPE_IPMI_INTERFACE)
-+OBJECT_DECLARE_TYPE(IPMIInterface, IPMIInterfaceClass, IPMI_INTERFACE)
- 
-+typedef struct IPMIInterfaceClass IPMIInterfaceClass;
- typedef struct IPMIInterface IPMIInterface;
- 
- struct IPMIInterfaceClass {
-     InterfaceClass parent;
- 
-+    /*
-+     * The interfaces use this to perform certain ops
-+     */
-+    void (*set_atn)(struct IPMIInterface *s, int val, int irq);
-+
-+    /*
-+     * Set by the owner to hold the backend data for the interface.
-+     */
-+    void *(*get_backend_data)(struct IPMIInterface *s);
-+
-+    /*
-+     * Handle a message between the host and the BMC.
-+     */
-+    void (*handle_msg)(struct IPMIInterface *s, uint8_t msg_id,
-+                       unsigned char *msg, unsigned int msg_len);
++static const VMStateDescription vmstate_npcm7xx_kcs_channel = {
++    .name = "npcm7xx-kcs-channel",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8(status, NPCM7xxKCSChannel),
++        VMSTATE_UINT8(dbbout, NPCM7xxKCSChannel),
++        VMSTATE_UINT8(dbbin, NPCM7xxKCSChannel),
++        VMSTATE_UINT8(ctl, NPCM7xxKCSChannel),
++        VMSTATE_UINT8(ic, NPCM7xxKCSChannel),
++        VMSTATE_UINT8(ie, NPCM7xxKCSChannel),
++        VMSTATE_END_OF_LIST(),
++    },
 +};
 +
++static void npcm7xx_kcs_channel_realize(DeviceState *dev, Error **errp)
++{
++    IPMIInterface *ii = IPMI_INTERFACE(dev);
++    NPCM7xxKCSChannel *c = NPCM7XX_KCS_CHANNEL(ii);
++
++    if (c->host) {
++        c->host->intf = ii;
++    }
++}
++
++static void *npcm7xx_kcs_get_backend_data(IPMIInterface *ii)
++{
++    NPCM7xxKCSChannel *c = NPCM7XX_KCS_CHANNEL(ii);
++
++    return c;
++}
++
++static void npcm7xx_kcs_set_ipmi_handler(IPMIInterface *ii, IPMICore *h)
++{
++    NPCM7xxKCSChannel *c = NPCM7XX_KCS_CHANNEL(ii);
++
++    c->host = h;
++}
++
++static void npcm7xx_kcs_set_atn(struct IPMIInterface *s, int val, int irq)
++{
++}
++
++static void npcm7xx_kcs_channel_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    IPMIInterfaceClass *iic = IPMI_INTERFACE_CLASS(klass);
++    IPMIInterfaceClientClass *iicc = IPMI_INTERFACE_CLIENT_CLASS(klass);
++
++    QEMU_BUILD_BUG_ON(NPCM7XX_KCS_REGS_END != NPCM7XX_KCS_CHANNEL_NR_REGS);
++
++    dc->desc = "NPCM7xx KCS Channel";
++    dc->vmsd = &vmstate_npcm7xx_kcs_channel;
++    dc->realize = npcm7xx_kcs_channel_realize;
++
++    iic->get_backend_data = npcm7xx_kcs_get_backend_data;
++    iic->handle_msg = npcm7xx_kcs_handle_req;
++    iic->set_atn = npcm7xx_kcs_set_atn;
++    iicc->set_ipmi_handler = npcm7xx_kcs_set_ipmi_handler;
++}
++
++static const TypeInfo npcm7xx_kcs_channel_info = {
++    .name               = TYPE_NPCM7XX_KCS_CHANNEL,
++    .parent             = TYPE_DEVICE,
++    .instance_size      = sizeof(NPCM7xxKCSChannel),
++    .class_init         = npcm7xx_kcs_channel_class_init,
++    .interfaces         = (InterfaceInfo[]) {
++        { TYPE_IPMI_INTERFACE_CLIENT },
++        { },
++    },
++};
++
++static void npcm7xx_kcs_enter_reset(Object *obj, ResetType type)
++{
++    NPCM7xxKCSState *s = NPCM7XX_KCS(obj);
++    int i;
++
++    for (i = 0; i < NPCM7XX_KCS_NR_CHANNELS; i++) {
++        NPCM7xxKCSChannel *c = &s->channels[i];
++
++        c->status = 0x00;
++        c->ctl = 0xc0;
++        c->ic = 0x41;
++        c->ie = 0x00;
++    }
++}
++
++static void npcm7xx_kcs_hold_reset(Object *obj)
++{
++    NPCM7xxKCSState *s = NPCM7XX_KCS(obj);
++
++    qemu_irq_lower(s->irq);
++}
++
++static const VMStateDescription vmstate_npcm7xx_kcs = {
++    .name = "npcm7xx-kcs",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
++static void npcm7xx_kcs_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxKCSState *s = NPCM7XX_KCS(dev);
++    SysBusDevice *sbd = &s->parent;
++    int i;
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &npcm7xx_kcs_ops, s,
++                          TYPE_NPCM7XX_KCS, 4 * KiB);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++
++    for (i = 0; i < NPCM7XX_KCS_NR_CHANNELS; i++) {
++        s->channels[i].owner = s;
++        if (!qdev_realize(DEVICE(&s->channels[i]), NULL, errp)) {
++            return;
++        }
++    }
++}
++
++static void npcm7xx_kcs_init(Object *obj)
++{
++    NPCM7xxKCSState *s = NPCM7XX_KCS(obj);
++    int i;
++
++    for (i = 0; i < NPCM7XX_KCS_NR_CHANNELS; i++) {
++        object_initialize_child(obj, g_strdup_printf("channels[%d]", i),
++                &s->channels[i], TYPE_NPCM7XX_KCS_CHANNEL);
++    }
++}
++
++static void npcm7xx_kcs_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "NPCM7xx Timer Controller";
++    dc->vmsd = &vmstate_npcm7xx_kcs;
++    dc->realize = npcm7xx_kcs_realize;
++    rc->phases.enter = npcm7xx_kcs_enter_reset;
++    rc->phases.hold = npcm7xx_kcs_hold_reset;
++}
++
++static const TypeInfo npcm7xx_kcs_info = {
++    .name               = TYPE_NPCM7XX_KCS,
++    .parent             = TYPE_SYS_BUS_DEVICE,
++    .instance_size      = sizeof(NPCM7xxKCSState),
++    .class_init         = npcm7xx_kcs_class_init,
++    .instance_init      = npcm7xx_kcs_init,
++};
++
++static void npcm7xx_kcs_register_type(void)
++{
++    type_register_static(&npcm7xx_kcs_channel_info);
++    type_register_static(&npcm7xx_kcs_info);
++}
++type_init(npcm7xx_kcs_register_type);
+diff --git a/hw/ipmi/trace-events b/hw/ipmi/trace-events
+new file mode 100644
+index 0000000000..66d40bccbc
+--- /dev/null
++++ b/hw/ipmi/trace-events
+@@ -0,0 +1,8 @@
++# See docs/devel/tracing.txt for syntax documentation.
++
++# npcm7xx_kcs.c
++npcm7xx_kcs_read(const char *id, int channel, int reg, uint8_t value) " %s channel: %" PRIi32 ", reg: %" PRIi32 ", value 0x%02" PRIx8
++npcm7xx_kcs_write(const char *id, int channel, int reg, uint8_t value) " %s channel: %" PRIi32 ", reg: %" PRIi32 ", value 0x%02" PRIx8
++npcm7xx_kcs_handle_event(const char *id, uint8_t status) " %s: %" PRIu8
++npcm7xx_kcs_host_read_byte(const char *id, uint8_t value) " %s: value 0x%02" PRIx8
++npcm7xx_kcs_host_write_byte(const char *id, uint8_t value) " %s: value 0x%02" PRIx8
+diff --git a/hw/ipmi/trace.h b/hw/ipmi/trace.h
+new file mode 100644
+index 0000000000..60a72fb4be
+--- /dev/null
++++ b/hw/ipmi/trace.h
+@@ -0,0 +1 @@
++#include "trace/trace-hw_ipmi.h"
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index 72c7722096..199144e9d4 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -22,6 +22,7 @@
+ #include "hw/cpu/a9mpcore.h"
+ #include "hw/gpio/npcm7xx_gpio.h"
+ #include "hw/i2c/npcm7xx_smbus.h"
++#include "hw/ipmi/npcm7xx_kcs.h"
+ #include "hw/mem/npcm7xx_mc.h"
+ #include "hw/misc/npcm7xx_clk.h"
+ #include "hw/misc/npcm7xx_gcr.h"
+@@ -100,6 +101,7 @@ struct NPCM7xxState {
+     NPCM7xxRNGState     rng;
+     NPCM7xxGPIOState    gpio[8];
+     NPCM7xxSMBusState   smbus[16];
++    NPCM7xxKCSState     kcs;
+     EHCISysBusState     ehci;
+     OHCISysBusState     ohci;
+     NPCM7xxFIUState     fiu[2];
+diff --git a/include/hw/ipmi/npcm7xx_kcs.h b/include/hw/ipmi/npcm7xx_kcs.h
+new file mode 100644
+index 0000000000..5954772ef1
+--- /dev/null
++++ b/include/hw/ipmi/npcm7xx_kcs.h
+@@ -0,0 +1,103 @@
 +/*
-+ * An IPMI Interface representing host side communication to a
-+ * remote BMC, either simulated or an IPMI BMC client.
++ * Nuvoton NPCM7xx KCS Module
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
 + */
-+#define TYPE_IPMI_INTERFACE_HOST "ipmi-interface-host"
-+OBJECT_DECLARE_TYPE(IPMIInterfaceHost, IPMIInterfaceHostClass, \
-+                    IPMI_INTERFACE_HOST)
++#ifndef NPCM7XX_KCS_H
++#define NPCM7XX_KCS_H
 +
-+typedef struct IPMIInterfaceHostClass IPMIInterfaceHostClass;
-+typedef struct IPMIInterfaceHost IPMIInterfaceHost;
++#include "exec/memory.h"
++#include "hw/ipmi/ipmi.h"
++#include "hw/irq.h"
++#include "hw/sysbus.h"
 +
-+struct IPMIInterfaceHostClass {
-+    IPMIInterfaceClass parent;
-+
-     /*
-      * min_size is the requested I/O size and must be a power of 2.
-      * This is so PCI (or other busses) can request a bigger range.
-      * Use 0 for the default.
-      */
--    void (*init)(struct IPMIInterface *s, unsigned int min_size, Error **errp);
-+    void (*init)(struct IPMIInterfaceHost *s, unsigned int min_size,
-+                 Error **errp);
- 
-     /*
-      * Perform various operations on the hardware.  If checkonly is
-      * true, it will return if the operation can be performed, but it
-      * will not do the operation.
-      */
--    int (*do_hw_op)(struct IPMIInterface *s, enum ipmi_op op, int checkonly);
-+    int (*do_hw_op)(struct IPMIInterfaceHost *s, enum ipmi_op op,
-+                    int checkonly);
- 
-     /*
-      * Enable/disable irqs on the interface when the BMC requests this.
-      */
--    void (*set_irq_enable)(struct IPMIInterface *s, int val);
-+    void (*set_irq_enable)(struct IPMIInterfaceHost *s, int val);
- 
-     /*
-      * Handle an event that occurred on the interface, generally the.
-      * target writing to a register.
-      */
--    void (*handle_if_event)(struct IPMIInterface *s);
--
--    /*
--     * The interfaces use this to perform certain ops
--     */
--    void (*set_atn)(struct IPMIInterface *s, int val, int irq);
-+    void (*handle_if_event)(struct IPMIInterfaceHost *s);
- 
-     /*
-      * Got an IPMI warm/cold reset.
-      */
--    void (*reset)(struct IPMIInterface *s, bool is_cold);
-+    void (*reset)(struct IPMIInterfaceHost *s, bool is_cold);
- 
-     /*
--     * Handle a response from the bmc.
-+     * Return the firmware info for a device.
-      */
--    void (*handle_rsp)(struct IPMIInterface *s, uint8_t msg_id,
--                       unsigned char *rsp, unsigned int rsp_len);
-+    void (*get_fwinfo)(struct IPMIInterfaceHost *s, IPMIFwInfo *info);
-+};
- 
--    /*
--     * Set by the owner to hold the backend data for the interface.
--     */
--    void *(*get_backend_data)(struct IPMIInterface *s);
++#define NPCM7XX_KCS_NR_CHANNELS             3
 +/*
-+ * An IPMI Interface representing BMC side communication to a
-+ * remote host running `ipmi-bmc-extern`.
++ * Number of registers in each KCS channel. Don't change this without
++ * incrementing the version_id in the vmstate.
 + */
-+#define TYPE_IPMI_INTERFACE_CLIENT "ipmi-interface-client"
-+OBJECT_DECLARE_TYPE(IPMIInterfaceClient, IPMIInterfaceClientClass,
-+                    IPMI_INTERFACE_CLIENT)
- 
--    /*
--     * Return the firmware info for a device.
--     */
--    void (*get_fwinfo)(struct IPMIInterface *s, IPMIFwInfo *info);
-+typedef struct IPMIInterfaceClientClass IPMIInterfaceClientClass;
-+typedef struct IPMIInterfaceClient IPMIInterfaceClient;
++#define NPCM7XX_KCS_CHANNEL_NR_REGS         9
 +
-+struct IPMIInterfaceClientClass {
-+    IPMIInterfaceClass parent;
- };
- 
- /*
-- * Define a BMC simulator (or perhaps a connection to a real BMC)
-+ * Define an IPMI core (Either BMC or Host simulator.)
-  */
--#define TYPE_IPMI_BMC "ipmi-bmc"
--OBJECT_DECLARE_TYPE(IPMIBmc, IPMIBmcClass,
--                    IPMI_BMC)
-+#define TYPE_IPMI_CORE "ipmi-core"
-+OBJECT_DECLARE_TYPE(IPMICore, IPMICoreClass, IPMI_CORE)
- 
--struct IPMIBmc {
-+struct IPMICore {
-     DeviceState parent;
- 
--    uint8_t slave_addr;
--
-     IPMIInterface *intf;
- };
- 
--struct IPMIBmcClass {
-+struct IPMICoreClass {
-     DeviceClass parent;
- 
--    /* Called when the system resets to report to the bmc. */
--    void (*handle_reset)(struct IPMIBmc *s);
-+    /*
-+     * Handle a hardware command.
-+     */
-+    void (*handle_hw_op)(struct IPMICore *s, uint8_t hw_op, uint8_t operand);
- 
-     /*
-      * Handle a command to the bmc.
-      */
--    void (*handle_command)(struct IPMIBmc *s,
-+    void (*handle_command)(struct IPMICore *s,
-                            uint8_t *cmd, unsigned int cmd_len,
-                            unsigned int max_cmd_len,
-                            uint8_t msg_id);
- };
- 
-+/*
-+ * Define a BMC simulator (or perhaps a connection to a real BMC)
++typedef struct NPCM7xxKCSState NPCM7xxKCSState;
++
++/**
++ * struct NPCM7xxKCSChannel - KCS Channel that can be read or written by the
++ * host.
++ * @parent: Parent device.
++ * @owner: The KCS module that manages this KCS channel.
++ * @status: The status of this KCS module.
++ * @dbbout: The output buffer to the host.
++ * @dbbin: The input buffer from the host.
++ * @ctl: The control register.
++ * @ic: The host interrupt control register. Not implemented.
++ * @ie: The host interrupt enable register. Not implemented.
++ * @inmsg: The input message from the host. To be put in dbbin.
++ * @inpos: The current position of input message.
++ * @inlen: The length of input message.
++ * @outmsg: The input message from the host. To be put in dbbout.
++ * @outpos: The current position of output message.
++ * @outlen: The length of output message.
++ * @last_byte_not_ready: The last byte in inmsg is not ready to be sent.
++ * @last_msg_id: The message id of last incoming request from host.
 + */
-+#define TYPE_IPMI_BMC_HOST "ipmi-bmc-host"
-+OBJECT_DECLARE_TYPE(IPMIBmcHost, IPMIBmcHostClass, IPMI_BMC_HOST)
++typedef struct NPCM7xxKCSChannel {
++    DeviceState             parent;
 +
-+struct IPMIBmcHost {
-+    IPMICore parent;
++    NPCM7xxKCSState         *owner;
++    IPMICore                *host;
++    /* Core side registers. */
++    uint8_t                 status;
++    uint8_t                 dbbout;
++    uint8_t                 dbbin;
++    uint8_t                 ctl;
++    uint8_t                 ic;
++    uint8_t                 ie;
 +
-+    uint8_t slave_addr;
++    /* Host side buffers. */
++    uint8_t                 inmsg[MAX_IPMI_MSG_SIZE];
++    uint32_t                inpos;
++    uint32_t                inlen;
++    uint8_t                 outmsg[MAX_IPMI_MSG_SIZE];
++    uint32_t                outpos;
++    uint32_t                outlen;
++
++    /* Flags. */
++    bool                    last_byte_not_ready;
++    uint8_t                 last_msg_id;
++} NPCM7xxKCSChannel;
++
++/**
++ * struct NPCM7xxKCSState - Keyboard Control Style (KCS) Module device state.
++ * @parent: System bus device.
++ * @iomem: Memory region through which registers are accessed.
++ * @irq: GIC interrupt line to fire on reading or writing the buffer.
++ * @channels: The KCS channels this module manages.
++ */
++struct NPCM7xxKCSState {
++    SysBusDevice            parent;
++
++    MemoryRegion            iomem;
++
++    qemu_irq                irq;
++    NPCM7xxKCSChannel       channels[NPCM7XX_KCS_NR_CHANNELS];
 +};
 +
-+struct IPMIBmcHostClass {
-+    IPMICoreClass parent;
++#define TYPE_NPCM7XX_KCS_CHANNEL "npcm7xx-kcs-channel"
++#define NPCM7XX_KCS_CHANNEL(obj)                                      \
++    OBJECT_CHECK(NPCM7xxKCSChannel, (obj), TYPE_NPCM7XX_KCS_CHANNEL)
 +
-+    /* Called when the system resets to report to the bmc. */
-+    void (*handle_reset)(struct IPMIBmcHost *s);
++#define TYPE_NPCM7XX_KCS "npcm7xx-kcs"
++#define NPCM7XX_KCS(obj)                                              \
++    OBJECT_CHECK(NPCM7xxKCSState, (obj), TYPE_NPCM7XX_KCS)
 +
-+};
-+
-+/*
-+ * Define a BMC side client that responds to an `ipmi-bmc-extern`.
-+ */
-+#define TYPE_IPMI_BMC_CLIENT "ipmi-bmc-client"
-+OBJECT_DECLARE_SIMPLE_TYPE(IPMIBmcClient, IPMI_BMC_CLIENT)
-+struct IPMIBmcClient {
-+    IPMICore parent;
-+};
-+
- /*
-  * Add a link property to obj that points to a BMC.
-  */
-@@ -259,9 +316,9 @@ struct ipmi_sdr_compact {
- 
- typedef uint8_t ipmi_sdr_compact_buffer[sizeof(struct ipmi_sdr_compact)];
- 
--int ipmi_bmc_sdr_find(IPMIBmc *b, uint16_t recid,
-+int ipmi_bmc_sdr_find(IPMIBmcHost *b, uint16_t recid,
-                       const struct ipmi_sdr_compact **sdr, uint16_t *nextrec);
--void ipmi_bmc_gen_event(IPMIBmc *b, uint8_t *evt, bool log);
-+void ipmi_bmc_gen_event(IPMIBmcHost *b, uint8_t *evt, bool log);
- 
- #define TYPE_IPMI_BMC_SIMULATOR "ipmi-bmc-sim"
- OBJECT_DECLARE_SIMPLE_TYPE(IPMIBmcSim, IPMI_BMC_SIMULATOR)
-diff --git a/include/hw/ipmi/ipmi_bt.h b/include/hw/ipmi/ipmi_bt.h
-index 8a4316ea7c..237dbb4599 100644
---- a/include/hw/ipmi/ipmi_bt.h
-+++ b/include/hw/ipmi/ipmi_bt.h
-@@ -28,7 +28,7 @@
- #include "hw/ipmi/ipmi.h"
- 
- typedef struct IPMIBT {
--    IPMIBmc *bmc;
-+    IPMIBmcHost *bmc;
- 
-     bool do_wake;
- 
-diff --git a/include/hw/ipmi/ipmi_kcs.h b/include/hw/ipmi/ipmi_kcs.h
-index 6e6ef4c539..1f491b7243 100644
---- a/include/hw/ipmi/ipmi_kcs.h
-+++ b/include/hw/ipmi/ipmi_kcs.h
-@@ -28,7 +28,7 @@
- #include "hw/ipmi/ipmi.h"
- 
- typedef struct IPMIKCS {
--    IPMIBmc *bmc;
-+    IPMIBmcHost *bmc;
- 
-     bool do_wake;
- 
-diff --git a/include/hw/ppc/pnv.h b/include/hw/ppc/pnv.h
-index 409f3bf763..b712a7e8d5 100644
---- a/include/hw/ppc/pnv.h
-+++ b/include/hw/ppc/pnv.h
-@@ -91,7 +91,7 @@ struct PnvMachineState {
-     ISABus       *isa_bus;
-     uint32_t     cpld_irqstate;
- 
--    IPMIBmc      *bmc;
-+    IPMIBmcHost  *bmc;
-     Notifier     powerdown_notifier;
- 
-     PnvPnor      *pnor;
-@@ -108,11 +108,11 @@ PnvChip *pnv_chip_add_phb(PnvChip *chip, PnvPHB *phb);
- /*
-  * BMC helpers
-  */
--void pnv_dt_bmc_sensors(IPMIBmc *bmc, void *fdt);
--void pnv_bmc_powerdown(IPMIBmc *bmc);
--IPMIBmc *pnv_bmc_create(PnvPnor *pnor);
--IPMIBmc *pnv_bmc_find(Error **errp);
--void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pnor);
-+void pnv_dt_bmc_sensors(IPMIBmcHost *bmc, void *fdt);
-+void pnv_bmc_powerdown(IPMIBmcHost *bmc);
-+IPMIBmcHost *pnv_bmc_create(PnvPnor *pnor);
-+IPMIBmcHost *pnv_bmc_find(Error **errp);
-+void pnv_bmc_set_pnor(IPMIBmcHost *bmc, PnvPnor *pnor);
- 
- /*
-  * POWER8 MMIO base addresses
++#endif /* NPCM7XX_KCS_H */
+diff --git a/meson.build b/meson.build
+index 29f8644d6d..3a9d009d72 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2985,6 +2985,7 @@ if have_system
+     'hw/ide',
+     'hw/input',
+     'hw/intc',
++    'hw/ipmi',
+     'hw/isa',
+     'hw/mem',
+     'hw/mips',
 -- 
 2.40.0.348.gf938b09366-goog
 

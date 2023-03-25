@@ -1,93 +1,95 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp545361ejb;
-        Sat, 25 Mar 2023 07:37:33 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9oF8lRylg0BJiUBXa84iQsgnXWkQU3LAGKRotL+JzJdYtDLnXqtGRY64XjGLX+IWycaCNA
-X-Received: by 2002:a05:622a:20c:b0:3de:1891:1d04 with SMTP id b12-20020a05622a020c00b003de18911d04mr10965574qtx.63.1679755053021;
-        Sat, 25 Mar 2023 07:37:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679755053; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp775608ejb;
+        Sat, 25 Mar 2023 13:59:53 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Yx7FSdKH/uM2GHc6TbNE8qED8AxhrMRV1AdYf5ry8fvkGZQcJhHj/lPXivAaKkpk/rzu01
+X-Received: by 2002:a05:6214:400a:b0:53a:bf63:b053 with SMTP id kd10-20020a056214400a00b0053abf63b053mr11618972qvb.45.1679777992921;
+        Sat, 25 Mar 2023 13:59:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679777992; cv=none;
         d=google.com; s=arc-20160816;
-        b=V3rcqI6VsYz3GZLFhJmdlUjZ8e5INSC5BnlBWW4O1UWAWp9u4oDrWMITYvbnWDgJb0
-         +C6OPsDBHLDeSSrJGCSVtuL/xknM42gNSJN2sruC4gK2gQv3iesxeSMwwGNYBVeji4tc
-         2RZzWtn/nadWitEFfYEbNyzkANysI51nh0I5KQUAJAifTRZ3I7xNJIEGK4n2uMy5MxFP
-         /+mP7rVu32atWQ9+D8CFw95hjIJnBDaDQMoSkFQlao7xBsjR6st/x8howRz0l8Wo+qQR
-         XooP4a7wQbCqizKLIRknIINeR30qToOs/jF0P1Mt2HiIwU9OxmqCcPZOCh2Of1M/aXVP
-         w5NA==
+        b=KUyx2WpKTg3abPcLN/qMd4tKw4I0YsdMMma5B9zvdt21HF20SIMt6nqOZMddaJMQgl
+         4FSh1HCukRKnrt7q46RwKRRfaXNNCM077pMU6boocBN1aIbDCqcItFeIO6e6uYGM19QK
+         6pVFz2iDLPE3tttgvAAGV02jj7jgFE1+YABj9xfKqdpH3RjwD3L1OkvT9kQy5AGEX2rV
+         vqYpeCVqJStUmYt8KQBX7x80ibOjDdWFgdthd4JtiV5TOA35iSOO01VymmfqKxatxWrg
+         FnJmvQP59UYHeCmZ6IXBjIn9sps4+o7amS3D7mKrbAQJOhJYMeLRAuw3q85FW8NicFRH
+         5Z4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=n7Cv4zkNYLwlN2HRN2oc7iJJ5/jpmpDogpwXth5l/Ic=;
-        b=FzyAGl+QwpdDGLH0ViO0GPAEchTxo849qqF0l8a5u8/7xywVwSS0c8IaACcZr5Aa0l
-         0CYpGAbHf1kDYnYIU3Py9o8vZOEPUPExkN/nzupWVKrjaEj4OcptFHfgfX+jo8W8qz+B
-         G5B3zeWRsTs1jwz9uLpH3J5jJDa3kZL+m+t/Bt6TO2Fsl1u+hIR4BbhMy5jAjzc+fenk
-         a524mcO8VNGkfCqsvQXxLpcG46LqGRLRcwndj7XBu84PwGXhvemZ5RXHTIy3fzh3qLIw
-         OZqnghmBvIWN+1gjqdfzA9YAV0FKosSYvyMYfvfCwmAaa329y5u/S25uHu+g6mhd4aVD
-         SoZw==
+        bh=5PaRcNajMOJqjod1IaGBqwYdOcC4ruCnB1FqHu/bcbY=;
+        b=trDfgdNsvPhLtt9A+NrT6ARNplj4bnTerHzNSfMGa0NekmuYeV4lX5aOA10bovTfCP
+         5hJzyt0AAjL+DhhraeQVMAfU5qwxlvQY3pMemKAyPNxWmF8NbJZPkBkf551Y87n2l7RV
+         /GmxYeasF1iXLyEjB2tthQQGe3gS5VSNeIR2DtMH70sW9nvCqLcKmDkTeIpdRUgNZIOv
+         PMUH2qdlmwrxewAYsGDY+779Q5OzA181XscKDl+AECgYmJNg4mvv1dVD1wudYec+Bris
+         z7MsMVIM9qTwe3xkZYca8EPdQbr4jkK+7Yiyo7WnMhD+PkNAPm2moDf0CfD5aPeL76Lk
+         OPzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DDfcWuHx;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hr6mBdgO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7-20020a05622a11c700b003b9cb0a15d7si16219824qtk.100.2023.03.25.07.37.32
+        by mx.google.com with ESMTPS id s4-20020a372c04000000b0071dbc4b56besi12643070qkh.591.2023.03.25.13.59.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Mar 2023 07:37:32 -0700 (PDT)
+        Sat, 25 Mar 2023 13:59:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=DDfcWuHx;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hr6mBdgO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pg50n-0006wm-0O; Sat, 25 Mar 2023 10:36:53 -0400
+	id 1pgAzF-000206-Qx; Sat, 25 Mar 2023 16:59:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pg50l-0006wM-IX; Sat, 25 Mar 2023 10:36:51 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1pgAzE-0001zr-9H; Sat, 25 Mar 2023 16:59:40 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pg50g-00070r-U1; Sat, 25 Mar 2023 10:36:51 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id cn12so18761123edb.4;
- Sat, 25 Mar 2023 07:36:44 -0700 (PDT)
+ id 1pgAzA-0001El-Dg; Sat, 25 Mar 2023 16:59:40 -0400
+Received: by mail-ed1-x536.google.com with SMTP id eg48so21013109edb.13;
+ Sat, 25 Mar 2023 13:59:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679755003;
+ d=gmail.com; s=20210112; t=1679777974;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=n7Cv4zkNYLwlN2HRN2oc7iJJ5/jpmpDogpwXth5l/Ic=;
- b=DDfcWuHxgoxD0b26c0bt7mjNVJO0n3x6lt6qhbaiaQLId2ja0tDlkvOZWimnrmgdUO
- 8tqxk8RJ5aV5TUs45trAck/DAM3vudup5iEUSwAREhVbhOElQevny7NQ7bXD/e6PLJA5
- 12Ye7zkK+Sm9i06TQXSP1PKulKNVRaSBoTdX9EQP9gaUKpmwNzXCBX+3bafSe7gE+KnG
- T8+T2PlE6Zky23gH9pLh4x+6pLi99gz1V5Ysg+ZtIKd7dFDRhuWt3lxXO8Zxi08FHIyx
- 6dvKKbzHbR88oPDW2JnSykdPhWlSxOjchoSKg4p0ZVRmH/qKmiSYxd5ERSFQb+/+2d6m
- u3SA==
+ bh=5PaRcNajMOJqjod1IaGBqwYdOcC4ruCnB1FqHu/bcbY=;
+ b=hr6mBdgOalfVurNOh6hy78b+kSCtIccidbE5BeOFMLMF8IXR5Jz4r/V97Zvr1oaVa9
+ 1iEfX1srphNWcI1udlsWwZX+a10beQxqdW+mrZB/LUmUY5fNi1pv4HM+Fk0VQPtligaT
+ RBbDorM/aSFAFsvhJ+PqZ3hrqpk0vrt0uyrJPSho1NZqLECZ9GQaSsBzUuNnDlWf47+9
+ AgKoQNMT5pbv4Ymms8WZwRDjH54VnY4sj5KuwUfa6O9WsucS6JyCARyrRHW0T2Xqxihb
+ Qg0UtEnnZoUjzNfwHaQhzUKmF6wKfj15JuvEctfxwzFomo7Tb8Atfz7sUjJE6VgT1+cB
+ wNGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679755003;
+ d=1e100.net; s=20210112; t=1679777974;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=n7Cv4zkNYLwlN2HRN2oc7iJJ5/jpmpDogpwXth5l/Ic=;
- b=Ddiql496xW4GBnhGNOa7VWgpYnqir/oKk6x2Dfe5lBoQzEzQ5dey7qysp1btvixtfW
- Jpmnm0g09PbNBKOFvaMnOPaJ6LqWf5dqbUBeoG73bNaS0bTbyPO5MLnCWqT7bE1YgdPZ
- jnf0N5ofG8tK+TLg1od1/3bXRDbXfRU/ClgD5cOVApwlrIj1G6ZmXI4h6KK2AuaNztIe
- lnj7vAR07S4o7ATt9LFXWfd20uLEOz77Q6DOl3D3JZpb/nYMHk+IwaGEbMWjaUCr8FGh
- 1sYwAONOXEKavJqCwsCBXhgsLuhFs5j0uvMwVw+EYnS7dTTzt98ikGmZfMEgH9X5hfVI
- jVuQ==
-X-Gm-Message-State: AO0yUKW9aSZJVnoCPLE2yMwzqL+p3s7UMEoexB2tYCQfjkKFTczBoluv
- +gUaxGlu1BwO5J0LzEbv7I50eIZ5GzR/lecXV70=
-X-Received: by 2002:a17:906:ca41:b0:939:a51a:dc30 with SMTP id
- jx1-20020a170906ca4100b00939a51adc30mr6932117ejb.2.1679755003259; Sat, 25 Mar
- 2023 07:36:43 -0700 (PDT)
+ bh=5PaRcNajMOJqjod1IaGBqwYdOcC4ruCnB1FqHu/bcbY=;
+ b=P5GSuCOpTkqSuMyaga1vHNMaq/VLmwjVztfkcdJlfNEUjzXmlQ7PXD6VDWg1Dt25HD
+ uCgs+RfkkWB2DJEblZuxQa0k4bzvlsLNuDQmW3O808dOzHaHjB+LLSl1TxTBO5OrTdJY
+ 2H4n/DcupyLO/x59G7CavptdBSQoSe5EkQZ+ddMXH7Sib3OroCF+SNBp++2CbUsv+Trm
+ YV3VJZ0rKV6JPR2gp3pBaW0TM9HWLdgArbj5N5wjGQu3UXjze9K0irSyGAgCuZjuL67q
+ lfGEHCxZOpfVJn1V10HbKP1iJc/aF1hiOAEikJjfetHv8kwac5vAPGj2NMdTPeOmm/2H
+ 3E0Q==
+X-Gm-Message-State: AAQBX9eBiYvWEBCbyFyH1EJD7ObJFhQqsabdRi2igwtYEjGNd0S6eS6c
+ eXUFYeoFtQCyckabLcMmzjYTeqWmn5IadOGB1VU=
+X-Received: by 2002:a50:9e89:0:b0:500:547b:4e1b with SMTP id
+ a9-20020a509e89000000b00500547b4e1bmr3507916edf.6.1679777974064; Sat, 25 Mar
+ 2023 13:59:34 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230321102510.16754-1-qianfanguijin@163.com>
-In-Reply-To: <20230321102510.16754-1-qianfanguijin@163.com>
+ <20230321102510.16754-2-qianfanguijin@163.com>
+In-Reply-To: <20230321102510.16754-2-qianfanguijin@163.com>
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sat, 25 Mar 2023 15:36:33 +0100
-Message-ID: <CABtshVTop2nuF7E0exASFYgV012PC0d31sVMQ-ZehCt4REO7HQ@mail.gmail.com>
-Subject: Re: [PATCH v1 00/11] *** add allwinner-r40 support ***
+Date: Sat, 25 Mar 2023 21:59:25 +0100
+Message-ID: <CABtshVTNwJP_mx3fvqd2DjV6y_QHwemqUVVE=um6osNxEuGBPQ@mail.gmail.com>
+Subject: Re: [PATCH v1 01/11] hw: arm: Add bananapi M2-Ultra and allwinner-r40
+ support
 To: qianfanguijin@163.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>,
@@ -96,8 +98,8 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Niek Linnenbank <nieklinnenbank@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,226 +121,826 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CIIxh8VTCh/I
+X-TUID: NAaqiHJ3goI2
 
 Hi,
-
-It's great that you are adding support for a new SoC/Board!
 
 On Tue, Mar 21, 2023 at 11:25=E2=80=AFAM <qianfanguijin@163.com> wrote:
 >
 > From: qianfan Zhao <qianfanguijin@163.com>
 >
-> *** history ***
+> Allwinner R40 (sun8i) SoC features a Quad-Core Cortex-A7 ARM CPU,
+> and a Mali400 MP2 GPU from ARM. It's also known as the Allwinner T3
+> for In-Car Entertainment usage, A40i and A40pro are variants that
+> differ in applicable temperatures range (industrial and military).
 >
-> # v1: 2023-03-21
+> This patch is a draft and provides very few features that we will
+> improve late.
 >
-> The first version which add allwinner-r40 support, supported features:
+> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+
+Please run the `scripts/checkpatch.pl` on all patches before
+resubmitting, there are several coding style items that should be
+fixed.
+
+> ---
+>  configs/devices/arm-softmmu/default.mak |   1 +
+>  hw/arm/Kconfig                          |   9 +
+>  hw/arm/allwinner-r40.c                  | 425 ++++++++++++++++++++++++
+>  hw/arm/bananapi_m2u.c                   | 116 +++++++
+>  hw/arm/meson.build                      |   1 +
+>  include/hw/arm/allwinner-r40.h          | 111 +++++++
+>  6 files changed, 663 insertions(+)
+>  create mode 100644 hw/arm/allwinner-r40.c
+>  create mode 100644 hw/arm/bananapi_m2u.c
+>  create mode 100644 include/hw/arm/allwinner-r40.h
 >
-> + ccu
-> + dram controller
-> + uart
-> + i2c and pmic(axp221)
-> + sdcard
-> + emac/gmac
+> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/ar=
+m-softmmu/default.mak
+> index 1b49a7830c..76a43add23 100644
+> --- a/configs/devices/arm-softmmu/default.mak
+> +++ b/configs/devices/arm-softmmu/default.mak
+> @@ -43,3 +43,4 @@ CONFIG_FSL_IMX6UL=3Dy
+>  CONFIG_SEMIHOSTING=3Dy
+>  CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy
+>  CONFIG_ALLWINNER_H3=3Dy
+> +CONFIG_ALLWINNER_R40=3Dy
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index b5aed4aff5..9e14c3427e 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -344,6 +344,15 @@ config ALLWINNER_H3
+>      select USB_EHCI_SYSBUS
+>      select SD
 >
-> Also provide a test case under avocado, running quickly test:
->
-> $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \
->     --verbose --show=3Dapp,console run -t machine:bpim2u \
->     ../tests/avocado/boot_linux_console.py
+> +config ALLWINNER_R40
+> +    bool
+> +    select ALLWINNER_A10_PIT
+> +    select SERIAL
+> +    select ARM_TIMER
+> +    select ARM_GIC
+> +    select UNIMP
+> +    select SD
+> +
+>  config RASPI
+>      bool
+>      select FRAMEBUFFER
+> diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+> new file mode 100644
+> index 0000000000..d0516f4e96
+> --- /dev/null
+> +++ b/hw/arm/allwinner-r40.c
+> @@ -0,0 +1,425 @@
+> +/*
+> + * Allwinner R40/A40i/T3 System on Chip emulation
+> + *
+> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+> + *
+> + * This program is free software: you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/error-report.h"
+> +#include "qemu/bswap.h"
+> +#include "qemu/module.h"
+> +#include "qemu/units.h"
+> +#include "hw/qdev-core.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/char/serial.h"
+> +#include "hw/misc/unimp.h"
+> +#include "hw/usb/hcd-ehci.h"
+> +#include "hw/loader.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/arm/allwinner-r40.h"
+> +
+> +/* Memory map */
+> +const hwaddr allwinner_r40_memmap[] =3D {
+> +    [AW_R40_DEV_SRAM_A1]    =3D 0x00000000,
+> +    [AW_R40_DEV_SRAM_A2]    =3D 0x00004000,
+> +    [AW_R40_DEV_SRAM_A3]    =3D 0x00008000,
+> +    [AW_R40_DEV_SRAM_A4]    =3D 0x0000b400,
+> +    [AW_R40_DEV_MMC0]       =3D 0x01c0f000,
+> +    [AW_R40_DEV_MMC1]       =3D 0x01c10000,
+> +    [AW_R40_DEV_MMC2]       =3D 0x01c11000,
+> +    [AW_R40_DEV_MMC3]       =3D 0x01c12000,
+> +    [AW_R40_DEV_PIT]        =3D 0x01c20c00,
+> +    [AW_R40_DEV_UART0]      =3D 0x01c28000,
+> +    [AW_R40_DEV_GIC_DIST]   =3D 0x01c81000,
+> +    [AW_R40_DEV_GIC_CPU]    =3D 0x01c82000,
+> +    [AW_R40_DEV_GIC_HYP]    =3D 0x01c84000,
+> +    [AW_R40_DEV_GIC_VCPU]   =3D 0x01c86000,
+> +    [AW_R40_DEV_SDRAM]      =3D 0x40000000
+> +};
+> +
+> +/* List of unimplemented devices */
+> +struct AwR40Unimplemented {
+> +    const char *device_name;
+> +    hwaddr base;
+> +    hwaddr size;
+> +};
+> +
+> +static struct AwR40Unimplemented r40_unimplemented[] =3D {
+> +    { "d-engine",   0x01000000, 4 * MiB },
+> +    { "d-inter",    0x01400000, 128 * KiB },
+> +    { "sram-c",     0x01c00000, 4 * KiB },
+> +    { "dma",        0x01c02000, 4 * KiB },
+> +    { "nfdc",       0x01c03000, 4 * KiB },
+> +    { "ts",         0x01c04000, 4 * KiB },
+> +    { "spi0",       0x01c05000, 4 * KiB },
+> +    { "spi1",       0x01c06000, 4 * KiB },
+> +    { "cs0",        0x01c09000, 4 * KiB },
+> +    { "keymem",     0x01c0a000, 4 * KiB },
+> +    { "emac",       0x01c0b000, 4 * KiB },
+> +    { "usb0-otg",   0x01c13000, 4 * KiB },
+> +    { "usb0-host",  0x01c14000, 4 * KiB },
+> +    { "crypto",     0x01c15000, 4 * KiB },
+> +    { "spi2",       0x01c17000, 4 * KiB },
+> +    { "sata",       0x01c18000, 4 * KiB },
+> +    { "usb1-host",  0x01c19000, 4 * KiB },
+> +    { "sid",        0x01c1b000, 4 * KiB },
+> +    { "usb2-host",  0x01c1c000, 4 * KiB },
+> +    { "cs1",        0x01c1d000, 4 * KiB },
+> +    { "spi3",       0x01c1f000, 4 * KiB },
+> +    { "ccu",        0x01c20000, 1 * KiB },
+> +    { "rtc",        0x01c20400, 1 * KiB },
+> +    { "pio",        0x01c20800, 1 * KiB },
+> +    { "owa",        0x01c21000, 1 * KiB },
+> +    { "ac97",       0x01c21400, 1 * KiB },
+> +    { "cir0",       0x01c21800, 1 * KiB },
+> +    { "cir1",       0x01c21c00, 1 * KiB },
+> +    { "pcm0",       0x01c22000, 1 * KiB },
+> +    { "pcm1",       0x01c22400, 1 * KiB },
+> +    { "pcm2",       0x01c22800, 1 * KiB },
+> +    { "audio",      0x01c22c00, 1 * KiB },
+> +    { "keypad",     0x01c23000, 1 * KiB },
+> +    { "pwm",        0x01c23400, 1 * KiB },
+> +    { "keyadc",     0x01c24400, 1 * KiB },
+> +    { "ths",        0x01c24c00, 1 * KiB },
+> +    { "rtp",        0x01c25000, 1 * KiB },
+> +    { "pmu",        0x01c25400, 1 * KiB },
+> +    { "cpu-cfg",    0x01c25c00, 1 * KiB },
+> +    { "uart0",      0x01c28000, 1 * KiB },
+> +    { "uart1",      0x01c28400, 1 * KiB },
+> +    { "uart2",      0x01c28800, 1 * KiB },
+> +    { "uart3",      0x01c28c00, 1 * KiB },
+> +    { "uart4",      0x01c29000, 1 * KiB },
+> +    { "uart5",      0x01c29400, 1 * KiB },
+> +    { "uart6",      0x01c29800, 1 * KiB },
+> +    { "uart7",      0x01c29c00, 1 * KiB },
+> +    { "ps20",       0x01c2a000, 1 * KiB },
+> +    { "ps21",       0x01c2a400, 1 * KiB },
+> +    { "twi0",       0x01c2ac00, 1 * KiB },
+> +    { "twi1",       0x01c2b000, 1 * KiB },
+> +    { "twi2",       0x01c2b400, 1 * KiB },
+> +    { "twi3",       0x01c2b800, 1 * KiB },
+> +    { "twi4",       0x01c2c000, 1 * KiB },
+> +    { "scr",        0x01c2c400, 1 * KiB },
+> +    { "tvd-top",    0x01c30000, 4 * KiB },
+> +    { "tvd0",       0x01c31000, 4 * KiB },
+> +    { "tvd1",       0x01c32000, 4 * KiB },
+> +    { "tvd2",       0x01c33000, 4 * KiB },
+> +    { "tvd3",       0x01c34000, 4 * KiB },
+> +    { "gpu",        0x01c40000, 64 * KiB },
+> +    { "gmac",       0x01c50000, 64 * KiB },
+> +    { "hstmr",      0x01c60000, 4 * KiB },
+> +    { "dram-com",   0x01c62000, 4 * KiB },
+> +    { "dram-ctl",   0x01c63000, 4 * KiB },
+> +    { "tcon-top",   0x01c70000, 4 * KiB },
+> +    { "lcd0",       0x01c71000, 4 * KiB },
+> +    { "lcd1",       0x01c72000, 4 * KiB },
+> +    { "tv0",        0x01c73000, 4 * KiB },
+> +    { "tv1",        0x01c74000, 4 * KiB },
+> +    { "tve-top",    0x01c90000, 16 * KiB },
+> +    { "tve0",       0x01c94000, 16 * KiB },
+> +    { "tve1",       0x01c98000, 16 * KiB },
+> +    { "mipi_dsi",   0x01ca0000, 4 * KiB },
+> +    { "mipi_dphy",  0x01ca1000, 4 * KiB },
+> +    { "ve",         0x01d00000, 1024 * KiB },
+> +    { "mp",         0x01e80000, 128 * KiB },
+> +    { "hdmi",       0x01ee0000, 128 * KiB },
+> +    { "prcm",       0x01f01400, 1 * KiB },
+> +    { "debug",      0x3f500000, 64 * KiB },
+> +    { "cpubist",    0x3f501000, 4 * KiB },
+> +    { "dcu",        0x3fff0000, 64 * KiB },
+> +    { "hstmr",      0x01c60000, 4 * KiB },
+> +    { "brom",       0xffff0000, 36 * KiB }
+> +};
+> +
+> +/* Per Processor Interrupts */
+> +enum {
+> +    AW_R40_GIC_PPI_MAINT     =3D  9,
+> +    AW_R40_GIC_PPI_HYPTIMER  =3D 10,
+> +    AW_R40_GIC_PPI_VIRTTIMER =3D 11,
+> +    AW_R40_GIC_PPI_SECTIMER  =3D 13,
+> +    AW_R40_GIC_PPI_PHYSTIMER =3D 14
+> +};
+> +
+> +/* Shared Processor Interrupts */
+> +enum {
+> +    AW_R40_GIC_SPI_UART0     =3D  1,
+> +    AW_R40_GIC_SPI_UART1     =3D  2,
+> +    AW_R40_GIC_SPI_UART2     =3D  3,
+> +    AW_R40_GIC_SPI_UART3     =3D  4,
+> +    AW_R40_GIC_SPI_TIMER0    =3D 22,
+> +    AW_R40_GIC_SPI_TIMER1    =3D 23,
+> +    AW_R40_GIC_SPI_MMC0      =3D 32,
+> +    AW_R40_GIC_SPI_MMC1      =3D 33,
+> +    AW_R40_GIC_SPI_MMC2      =3D 34,
+> +    AW_R40_GIC_SPI_MMC3      =3D 35,
+> +};
+> +
+> +/* Allwinner R40 general constants */
+> +enum {
+> +    AW_R40_GIC_NUM_SPI       =3D 128
+> +};
+> +
+> +#define BOOT0_MAGIC             "eGON.BT0"
+> +
+> +/* The low 8-bits of the 'boot_media' field in the SPL header */
+> +#define SUNXI_BOOTED_FROM_MMC0  0
+> +#define SUNXI_BOOTED_FROM_NAND  1
+> +#define SUNXI_BOOTED_FROM_MMC2  2
+> +#define SUNXI_BOOTED_FROM_SPI   3
+> +
+> +struct boot_file_head {
+> +    uint32_t            b_instruction;
+> +    uint8_t             magic[8];
+> +    uint32_t            check_sum;
+> +    uint32_t            length;
+> +    uint32_t            pub_head_size;
+> +    uint32_t            fel_script_address;
+> +    uint32_t            fel_uEnv_length;
+> +    uint32_t            dt_name_offset;
+> +    uint32_t            dram_size;
+> +    uint32_t            boot_media;
+> +    uint32_t            string_pool[13];
+> +};
+> +
+> +bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int u=
+nit)
+> +{
+> +    const int64_t rom_size =3D 32 * KiB;
+> +    g_autofree uint8_t *buffer =3D g_new0(uint8_t, rom_size);
+> +    struct boot_file_head *head =3D (struct boot_file_head *)buffer;
+> +
+> +    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
+> +        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
+> +                   __func__);
+> +        return false;
+> +    }
+> +
+> +    /* we only check the magic string here. */
+> +    if (memcmp(head->magic, BOOT0_MAGIC, sizeof(head->magic)))
 
-I tried running this on the latest QEMU source and compilation fails with
+Braces are missing.
 
-[1758/2912] Compiling C object libqemu-arm-softmmu.fa.p/hw_arm_bananapi_m2u=
-.c.o
-FAILED: libqemu-arm-softmmu.fa.p/hw_arm_bananapi_m2u.c.o
-cc -m64 -mcx16 -Ilibqemu-arm-softmmu.fa.p -I. -I../.. -Itarget/arm
--I../../target/arm -Iqapi -Itrace -Iui -Iui/shader
--I/usr/include/pixman-1 -I/usr/include/capstone
--I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
--fdiagnostics-color=3Dauto -Wall -Winvalid-pch -Werror -std=3Dgnu11 -O2 -g
--isystem /home/strahinja/work/qemu/linux-headers -isystem
-linux-headers -iquote . -iquote /home/strahinja/work/qemu -iquote
-/home/strahinja/work/qemu/include -iquote
-/home/strahinja/work/qemu/tcg/i386 -pthread -U_FORTIFY_SOURCE
--D_FORTIFY_SOURCE=3D2 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64
--D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-common -fwrapv -Wundef
--Wwrite-strings -Wmissing-prototypes -Wstrict-prototypes
--Wredundant-decls -Wold-style-declaration -Wold-style-definition
--Wtype-limits -Wformat-security -Wformat-y2k -Winit-self
--Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels
--Wexpansion-to-defined -Wimplicit-fallthrough=3D2
--Wmissing-format-attribute -Wno-missing-include-dirs
--Wno-shift-negative-value -Wno-psabi -fstack-protector-strong -fPIE
--isystem../../linux-headers -isystemlinux-headers -DNEED_CPU_H
-'-DCONFIG_TARGET=3D"arm-softmmu-config-target.h"'
-'-DCONFIG_DEVICES=3D"arm-softmmu-config-devices.h"' -MD -MQ
-libqemu-arm-softmmu.fa.p/hw_arm_bananapi_m2u.c.o -MF
-libqemu-arm-softmmu.fa.p/hw_arm_bananapi_m2u.c.o.d -o
-libqemu-arm-softmmu.fa.p/hw_arm_bananapi_m2u.c.o -c
-../../hw/arm/bananapi_m2u.c
-../../hw/arm/bananapi_m2u.c: In function =E2=80=98mmc_attach_drive=E2=80=99=
-:
-../../hw/arm/bananapi_m2u.c:41:9: error: implicit declaration of
-function =E2=80=98error_report=E2=80=99; did you mean =E2=80=98error_report=
-_err=E2=80=99?
-[-Werror=3Dimplicit-function-declaration]
-   41 |         error_report("No SD bus found in SOC object");
-      |         ^~~~~~~~~~~~
-      |         error_report_err
-../../hw/arm/bananapi_m2u.c:41:9: error: nested extern declaration of
-=E2=80=98error_report=E2=80=99 [-Werror=3Dnested-externs]
-cc1: all warnings being treated as errors
+> +        return false;
+> +
+> +    /* fix the boot media */
 
-After adding
+It would be good if more comments were added on why boot media is fixed.
 
-#include "qemu/error-report.h"
+> +    switch (unit) {
 
-to hw/arm/bananapi_m2u.c, it passed and I was able to run avocado
-tests for this board, as well as for cubieboard and orangepi-pc.
+This would look nicer as if-else.
 
-* Bananapi
+> +    case 2:
+> +        head->boot_media =3D cpu_to_le32(SUNXI_BOOTED_FROM_MMC2);
+> +        break;
+> +    default:
+> +        head->boot_media =3D cpu_to_le32(SUNXI_BOOTED_FROM_MMC0);
+> +        break;
+> +    }
+> +
+> +    rom_add_blob("allwinner-r40.bootrom", buffer, rom_size,
+> +                  rom_size, s->memmap[AW_R40_DEV_SRAM_A1],
+> +                  NULL, NULL, NULL, NULL, false);
+> +    return true;
+> +}
+> +
+> +static void allwinner_r40_init(Object *obj)
+> +{
+> +    AwR40State *s =3D AW_R40(obj);
+> +
+> +    s->memmap =3D allwinner_r40_memmap;
+> +
+> +    for (int i =3D 0; i < AW_R40_NUM_CPUS; i++) {
+> +        object_initialize_child(obj, "cpu[*]", &s->cpus[i],
+> +                                ARM_CPU_TYPE_NAME("cortex-a7"));
+> +    }
+> +
+> +    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GIC);
+> +
+> +    object_initialize_child(obj, "timer", &s->timer, TYPE_AW_A10_PIT);
+> +    object_property_add_alias(obj, "clk0-freq", OBJECT(&s->timer),
+> +                              "clk0-freq");
+> +    object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+> +                              "clk1-freq");
+> +
+> +    object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN5I)=
+;
+> +    object_initialize_child(obj, "mmc1", &s->mmc1, TYPE_AW_SDHOST_SUN5I)=
+;
+> +    object_initialize_child(obj, "mmc2", &s->mmc2, TYPE_AW_SDHOST_SUN5I)=
+;
+> +    object_initialize_child(obj, "mmc3", &s->mmc3, TYPE_AW_SDHOST_SUN5I)=
+;
+> +}
+> +
+> +static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AwR40State *s =3D AW_R40(dev);
+> +    unsigned i;
+> +
+> +    /* CPUs */
+> +    for (i =3D 0; i < AW_R40_NUM_CPUS; i++) {
+> +
+> +        /*
+> +         * Disable secondary CPUs. Guest EL3 firmware will start
+> +         * them via CPU reset control registers.
+> +         */
+> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
+> +                          i > 0);
+> +
+> +        /* All exception levels required */
+> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el3", true);
+> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el2", true);
+> +
+> +        /* Mark realized */
+> +        qdev_realize(DEVICE(&s->cpus[i]), NULL, &error_fatal);
+> +    }
+> +
+> +    /* Generic Interrupt Controller */
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_R40_GIC_NUM_SPI =
++
+> +                                                     GIC_INTERNAL);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_R40_NUM_CPUS);
+> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false)=
+;
+> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions", =
+true);
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->gic), &error_fatal);
+> +
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0, s->memmap[AW_R40_DEV_GIC=
+_DIST]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1, s->memmap[AW_R40_DEV_GIC=
+_CPU]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2, s->memmap[AW_R40_DEV_GIC=
+_HYP]);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3, s->memmap[AW_R40_DEV_GIC=
+_VCPU]);
+> +
+> +    /*
+> +     * Wire the outputs from each CPU's generic timer and the GICv3
 
- AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado     --verbose
---show=3Dapp,console run -t machine:bpim2u
-tests/avocado/boot_linux_console.py
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_initrd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_initrd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_gmac
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_gmac
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_openwr=
-t_22_03_3
-JOB ID     : ed47ffc59b1f9ceb8b68a87405040d3af2fb9156
-JOB LOG    : /home/strahinja/avocado/job-results/job-2023-03-25T15.24-ed47f=
-fc/job.log
-...
- RESULTS    : PASS 4 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT
-0 | CANCEL 0
-JOB TIME   : 70.79 s
+I see that GIC revision is set to 2, but here it says GICv3. Maybe the
+comment should be updated?
 
-* Cubieboard
+> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
+> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's in=
+puts.
+> +     */
+> +    for (i =3D 0; i < AW_R40_NUM_CPUS; i++) {
+> +        DeviceState *cpudev =3D DEVICE(&s->cpus[i]);
+> +        int ppibase =3D AW_R40_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_S=
+GIS;
+> +        int irq;
+> +        /*
+> +         * Mapping from the output timer irq lines from the CPU to the
+> +         * GIC PPI inputs used for this board.
+> +         */
+> +        const int timer_irq[] =3D {
+> +            [GTIMER_PHYS] =3D AW_R40_GIC_PPI_PHYSTIMER,
+> +            [GTIMER_VIRT] =3D AW_R40_GIC_PPI_VIRTTIMER,
+> +            [GTIMER_HYP]  =3D AW_R40_GIC_PPI_HYPTIMER,
+> +            [GTIMER_SEC]  =3D AW_R40_GIC_PPI_SECTIMER,
+> +        };
+> +
+> +        /* Connect CPU timer outputs to GIC PPI inputs */
+> +        for (irq =3D 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+> +            qdev_connect_gpio_out(cpudev, irq,
+> +                                  qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                                   ppibase + timer_irq[i=
+rq]));
+> +        }
+> +
+> +        /* Connect GIC outputs to CPU interrupt inputs */
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_R40_NUM_CPUS,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 * AW_R40_NUM_=
+CPUS),
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 * AW_R40_NUM_=
+CPUS),
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> +
+> +        /* GIC maintenance signal */
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 * AW_R40_NUM_=
+CPUS),
+> +                           qdev_get_gpio_in(DEVICE(&s->gic),
+> +                                            ppibase + AW_R40_GIC_PPI_MAI=
+NT));
+> +    }
+> +
+> +    /* Timer */
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->timer), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_R40_DEV_P=
+IT]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_=
+TIMER0));
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_=
+TIMER1));
+> +
+> +    /* SRAM */
+> +    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
+> +                            16 * KiB, &error_abort);
+> +    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
+> +                            16 * KiB, &error_abort);
+> +    memory_region_init_ram(&s->sram_a3, OBJECT(dev), "sram A3",
+> +                            13 * KiB, &error_abort);
+> +    memory_region_init_ram(&s->sram_a4, OBJECT(dev), "sram A4",
+> +                            3 * KiB, &error_abort);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DE=
+V_SRAM_A1],
+> +                                &s->sram_a1);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DE=
+V_SRAM_A2],
+> +                                &s->sram_a2);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DE=
+V_SRAM_A3],
+> +                                &s->sram_a3);
+> +    memory_region_add_subregion(get_system_memory(), s->memmap[AW_R40_DE=
+V_SRAM_A4],
+> +                                &s->sram_a4);
+> +
+> +    /* SD/MMC */
+> +    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, s->memmap[AW_R40_DEV_MM=
+C0]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_=
+MMC0));
+> +
+> +    object_property_set_link(OBJECT(&s->mmc1), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->mmc1), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc1), 0, s->memmap[AW_R40_DEV_MM=
+C1]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc1), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_DEV_MMC1=
+));
+> +
+> +    object_property_set_link(OBJECT(&s->mmc2), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->mmc2), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc2), 0, s->memmap[AW_R40_DEV_MM=
+C2]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc2), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_=
+MMC2));
+> +
+> +    object_property_set_link(OBJECT(&s->mmc3), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+> +    sysbus_realize(SYS_BUS_DEVICE(&s->mmc3), &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc3), 0, s->memmap[AW_R40_DEV_MM=
+C3]);
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc3), 0,
+> +                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_=
+MMC3));
+> +
+> +    /* UART0. For future clocktree API: All UARTS are connected to APB2_=
+CLK. */
+> +    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART0], 2,
+> +                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART=
+0),
+> +                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+> +
+> +    /* Unimplemented devices */
+> +    for (i =3D 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
+> +        create_unimplemented_device(r40_unimplemented[i].device_name,
+> +                                    r40_unimplemented[i].base,
+> +                                    r40_unimplemented[i].size);
+> +    }
+> +}
+> +
+> +static void allwinner_r40_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
+> +
+> +    dc->realize =3D allwinner_r40_realize;
+> +    /* Reason: uses serial_hd() in realize function */
+> +    dc->user_creatable =3D false;
+> +}
+> +
+> +static const TypeInfo allwinner_r40_type_info =3D {
+> +    .name =3D TYPE_AW_R40,
+> +    .parent =3D TYPE_DEVICE,
+> +    .instance_size =3D sizeof(AwR40State),
+> +    .instance_init =3D allwinner_r40_init,
+> +    .class_init =3D allwinner_r40_class_init,
+> +};
+> +
+> +static void allwinner_r40_register_types(void)
+> +{
+> +    type_register_static(&allwinner_r40_type_info);
+> +}
+> +
+> +type_init(allwinner_r40_register_types)
+> diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+> new file mode 100644
+> index 0000000000..1b6241719d
+> --- /dev/null
+> +++ b/hw/arm/bananapi_m2u.c
+> @@ -0,0 +1,116 @@
+> +/*
+> + * Bananapi M2U emulation
+> + *
+> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+> + *
+> + * This program is free software: you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/units.h"
+> +#include "exec/address-spaces.h"
+> +#include "qapi/error.h"
 
- AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado     --verbose
---show=3Dapp,console run -t machine:cubieboard
-tests/avocado/boot_linux_console.py
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_in=
-itrd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_in=
-itrd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_sa=
-ta
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_sa=
-ta
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_cubieboard_op=
-enwrt_22_03_2
-JOB ID     : 1510a9b5f36b74dc1378d50dbb40553e6fb76316
-JOB LOG    : /home/strahinja/avocado/job-results/job-2023-03-25T15.27-1510a=
-9b/job.log
-...
- RESULTS    : PASS 3 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT
-0 | CANCEL 0
-JOB TIME   : 42.69 s
+Missing #include "qemu/error-report.h"
 
-* OrangePi PC
+> +#include "hw/boards.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/arm/allwinner-r40.h"
+> +
+> +static struct arm_boot_info bpim2u_binfo;
+> +
+> +static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit=
+,
+> +                             bool load_bootroom, bool *bootroom_loaded)
 
-AVOCADO_ALLOW_LARGE_STORAGE=3Dyes avocado     --verbose
---show=3Dapp,console run -t machine:orangepi-pc
-tests/avocado/boot_linux_console.py
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_init=
-rd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_init=
-rd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_sd
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_bion=
-ic_20_08
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboo=
-t_netbsd9
-Fetching asset from
-tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_uboo=
-t_netbsd9
-JOB ID     : 6655d0df3c2eecf2181d7fa2d7cd8aee9e4b504c
-JOB LOG    : /home/strahinja/avocado/job-results/job-2023-03-25T15.31-6655d=
-0d/job.log
-...
-RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0
-| CANCEL 0
-JOB TIME   : 248.93 s
+A comment for this function would be useful.
 
-So I can add
+> +{
+> +    DriveInfo *di =3D drive_get(IF_SD, 0, unit);
+> +    BlockBackend *blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
+> +    BusState *bus;
+> +    DeviceState *carddev;
+> +
+> +    bus =3D qdev_get_child_bus(DEVICE(mmc), "sd-bus");
+> +    if (bus =3D=3D NULL) {
+> +        error_report("No SD bus found in SOC object");
+> +        exit(1);
+> +    }
+> +
+> +    carddev =3D qdev_new(TYPE_SD_CARD);
+> +    qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
+> +    qdev_realize_and_unref(carddev, bus, &error_fatal);
+> +
+> +    if (load_bootroom && blk && blk_is_available(blk)) {
+> +        /* Use Boot ROM to copy data from SD card to SRAM */
+> +        *bootroom_loaded =3D allwinner_r40_bootrom_setup(s, blk, unit);
+> +    }
+> +}
+> +
+> +static void bpim2u_init(MachineState *machine)
+> +{
+> +    bool bootroom_loaded =3D false;
+> +    AwR40State *r40;
+> +    I2CBus *i2c;
+> +
+> +    /* BIOS is not supported by this board */
+> +    if (machine->firmware) {
+> +        error_report("BIOS not supported for this machine");
+> +        exit(1);
+> +    }
+> +
+> +    /* Only allow Cortex-A7 for this board */
+> +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) !=3D 0=
+) {
+> +        error_report("This board can only be used with cortex-a7 CPU");
+> +        exit(1);
+> +    }
+> +
+> +    r40 =3D AW_R40(object_new(TYPE_AW_R40));
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(r40));
+> +    object_unref(OBJECT(r40));
+> +
+> +    /* Setup timer properties */
+> +    object_property_set_int(OBJECT(r40), "clk0-freq", 32768, &error_abor=
+t);
+> +    object_property_set_int(OBJECT(r40), "clk1-freq", 24 * 1000 * 1000,
+> +                            &error_abort);
+> +
+> +    /* Mark R40 object realized */
+> +    qdev_realize(DEVICE(r40), NULL, &error_abort);
+> +
+> +    /* Plug in SD card and try load bootrom, R40 can boot from mmc0 and =
+mmc2 */
+> +    mmc_attach_drive(r40, &r40->mmc0, 0,
+> +                     !machine->kernel_filename && !bootroom_loaded,
+> +                     &bootroom_loaded);
+> +    mmc_attach_drive(r40, &r40->mmc1, 1, false, NULL);
+> +    mmc_attach_drive(r40, &r40->mmc2, 2,
+> +                     !machine->kernel_filename && !bootroom_loaded,
+> +                     &bootroom_loaded);
+> +    mmc_attach_drive(r40, &r40->mmc3, 3, false, NULL);
+> +
+> +    /* SDRAM */
+> +    memory_region_add_subregion(get_system_memory(), r40->memmap[AW_R40_=
+DEV_SDRAM],
+> +                                machine->ram);
+> +
+> +    bpim2u_binfo.loader_start =3D r40->memmap[AW_R40_DEV_SDRAM];
+> +    bpim2u_binfo.ram_size =3D machine->ram_size;
+> +    bpim2u_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;
+> +    arm_load_kernel(ARM_CPU(first_cpu), machine, &bpim2u_binfo);
+> +}
+> +
+> +static void bpim2u_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc =3D "Bananapi M2U (Cortex-A7)";
+> +    mc->init =3D bpim2u_init;
+> +    mc->min_cpus =3D AW_R40_NUM_CPUS;
+> +    mc->max_cpus =3D AW_R40_NUM_CPUS;
+> +    mc->default_cpus =3D AW_R40_NUM_CPUS;
+> +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
+> +    mc->default_ram_size =3D 1 * GiB;
+> +    mc->default_ram_id =3D "bpim2u.ram";
+> +}
+> +
+> +DEFINE_MACHINE("bpim2u", bpim2u_machine_init)
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index b545ba0e4f..870ec67376 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -37,6 +37,7 @@ arm_ss.add(when: 'CONFIG_OMAP', if_true: files('omap1.c=
+', 'omap2.c'))
+>  arm_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
+>  arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true: files('allwinner-a10.c=
+', 'cubieboard.c'))
+>  arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c',=
+ 'orangepi.c'))
+> +arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40.c=
+', 'bananapi_m2u.c'))
+>  arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
+>  arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true: files('stm32f100_soc.c=
+'))
+>  arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true: files('stm32f205_soc.c=
+'))
+> diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r4=
+0.h
+> new file mode 100644
+> index 0000000000..46bda2c54e
+> --- /dev/null
+> +++ b/include/hw/arm/allwinner-r40.h
+> @@ -0,0 +1,111 @@
+> +/*
+> + * Allwinner R40/A40i/T3 System on Chip emulation
+> + *
+> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+> + *
+> + * This program is free software: you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef HW_ARM_ALLWINNER_R40_H
+> +#define HW_ARM_ALLWINNER_R40_H
+> +
+> +#include "qom/object.h"
+> +#include "hw/arm/boot.h"
+> +#include "hw/timer/allwinner-a10-pit.h"
+> +#include "hw/intc/arm_gic.h"
+> +#include "hw/sd/allwinner-sdhost.h"
+> +#include "target/arm/cpu.h"
+> +#include "sysemu/block-backend.h"
+> +
+> +enum {
+> +    AW_R40_DEV_SRAM_A1,
+> +    AW_R40_DEV_SRAM_A2,
+> +    AW_R40_DEV_SRAM_A3,
+> +    AW_R40_DEV_SRAM_A4,
+> +    AW_R40_DEV_MMC0,
+> +    AW_R40_DEV_MMC1,
+> +    AW_R40_DEV_MMC2,
+> +    AW_R40_DEV_MMC3,
+> +    AW_R40_DEV_CCU,
+> +    AW_R40_DEV_PIT,
+> +    AW_R40_DEV_UART0,
+> +    AW_R40_DEV_GIC_DIST,
+> +    AW_R40_DEV_GIC_CPU,
+> +    AW_R40_DEV_GIC_HYP,
+> +    AW_R40_DEV_GIC_VCPU,
+> +    AW_R40_DEV_SDRAM
+> +};
+> +
+> +#define AW_R40_NUM_CPUS      (4)
+> +
+> +/**
+> + * Allwinner R40 object model
+> + * @{
+> + */
+> +
+> +/** Object type for the Allwinner R40 SoC */
+> +#define TYPE_AW_R40 "allwinner-r40"
+> +
+> +/** Convert input object to Allwinner R40 state object */
+> +OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)
+> +
+> +/** @} */
+> +
+> +/**
+> + * Allwinner R40 object
+> + *
+> + * This struct contains the state of all the devices
+> + * which are currently emulated by the R40 SoC code.
+> + */
+> +struct AwR40State {
+> +    /*< private >*/
+> +    DeviceState parent_obj;
+> +    /*< public >*/
+> +
+> +    ARMCPU cpus[AW_R40_NUM_CPUS];
+> +    const hwaddr *memmap;
+> +    AwA10PITState timer;
+> +    AwSdHostState mmc0;
+> +    AwSdHostState mmc1;
+> +    AwSdHostState mmc2;
+> +    AwSdHostState mmc3;
 
-Tested-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-
-I will go through the individual commits during the weekend.
+I think this would look nicer if it were an array.
 
 Best regards,
 Strahinja
 
-
->
-> qianfan Zhao (11):
->   hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
->   hw/arm/allwinner-r40: add Clock Control Unit
->   hw: allwinner-r40: Complete uart devices
->   hw: arm: allwinner-r40: Add 5 TWI controllers
->   hw/misc: AXP221 PMU Emulation
->   hw/arm/allwinner-r40: add SDRAM controller device
->   hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
->   hw: arm: allwinner-r40: Fix the mmc controller's type
->   hw: arm: allwinner-r40: Add emac and gmac support
->   tests: avocado: boot_linux_console: Add test case for bpim2u
->   docs: system: arm: Introduce bananapi_m2u
->
->  configs/devices/arm-softmmu/default.mak |   1 +
->  docs/system/arm/bananapi_m2u.rst        | 138 ++++++
->  hw/arm/Kconfig                          |  10 +
->  hw/arm/allwinner-r40.c                  | 558 ++++++++++++++++++++++++
->  hw/arm/bananapi_m2u.c                   | 131 ++++++
->  hw/arm/meson.build                      |   1 +
->  hw/misc/Kconfig                         |   4 +
->  hw/misc/allwinner-r40-ccu.c             | 207 +++++++++
->  hw/misc/allwinner-r40-dramc.c           | 499 +++++++++++++++++++++
->  hw/misc/axp221.c                        | 196 +++++++++
->  hw/misc/meson.build                     |   3 +
->  hw/misc/trace-events                    |  19 +
->  hw/sd/allwinner-sdhost.c                |  70 ++-
->  include/hw/arm/allwinner-r40.h          | 148 +++++++
->  include/hw/misc/allwinner-r40-ccu.h     |  65 +++
->  include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
->  include/hw/sd/allwinner-sdhost.h        |   9 +
->  tests/avocado/boot_linux_console.py     | 173 ++++++++
->  18 files changed, 2337 insertions(+), 3 deletions(-)
->  create mode 100644 docs/system/arm/bananapi_m2u.rst
->  create mode 100644 hw/arm/allwinner-r40.c
->  create mode 100644 hw/arm/bananapi_m2u.c
->  create mode 100644 hw/misc/allwinner-r40-ccu.c
->  create mode 100644 hw/misc/allwinner-r40-dramc.c
->  create mode 100644 hw/misc/axp221.c
->  create mode 100644 include/hw/arm/allwinner-r40.h
->  create mode 100644 include/hw/misc/allwinner-r40-ccu.h
->  create mode 100644 include/hw/misc/allwinner-r40-dramc.h
->
+> +    GICState gic;
+> +    MemoryRegion sram_a1;
+> +    MemoryRegion sram_a2;
+> +    MemoryRegion sram_a3;
+> +    MemoryRegion sram_a4;
+> +};
+> +
+> +/**
+> + * Emulate Boot ROM firmware setup functionality.
+> + *
+> + * A real Allwinner R40 SoC contains a Boot ROM
+> + * which is the first code that runs right after
+> + * the SoC is powered on. The Boot ROM is responsible
+> + * for loading user code (e.g. a bootloader) from any
+> + * of the supported external devices and writing the
+> + * downloaded code to internal SRAM. After loading the SoC
+> + * begins executing the code written to SRAM.
+> + *
+> + * This function emulates the Boot ROM by copying 32 KiB
+> + * of data from the given block device and writes it to
+> + * the start of the first internal SRAM memory.
+> + *
+> + * @s: Allwinner R40 state object pointer
+> + * @blk: Block backend device object pointer
+> + * @unit: the mmc control's unit
+> + */
+> +bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int u=
+nit);
+> +
+> +#endif /* HW_ARM_ALLWINNER_R40_H */
 > --
 > 2.25.1
 >

@@ -1,104 +1,107 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp789788ejb;
-        Sat, 25 Mar 2023 14:25:53 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bwgg94whCLY8tRDgJZOJIvaAL5PV0F+PA22p2/a2560ZsziAnVYwOLV0sWy9ltGQCVFR0g
-X-Received: by 2002:a05:6214:48e:b0:5c2:7d8d:ed0f with SMTP id pt14-20020a056214048e00b005c27d8ded0fmr13525219qvb.12.1679779553032;
-        Sat, 25 Mar 2023 14:25:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679779553; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1446122ejb;
+        Sun, 26 Mar 2023 13:23:51 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/iJ9XCU6ihokfFK+dWqh1E6f6wcekf2vbl/qyJWUvnBd9JX4aaRDTNz+cxGNg4SKCNJjMy
+X-Received: by 2002:a05:6214:f2e:b0:5a7:b334:72e1 with SMTP id iw14-20020a0562140f2e00b005a7b33472e1mr28921642qvb.15.1679862230958;
+        Sun, 26 Mar 2023 13:23:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679862230; cv=none;
         d=google.com; s=arc-20160816;
-        b=lmRlB6+aC0J+NGf8a4DIufoydUrOEZnbIqB6jtj1GsFEoZC8u6wbbU0+g4mNGdcxUA
-         0hDtVgGS2v1+n4jPwpT4IZR6gyq50BBAOKG8Fz3mXgFLvFfAmGf2NiTsL2dp8bZRwB9J
-         LbFxXVQwN9ZWOSzYYnc9vesPMM17Oakc1qabKiplIAaDevilDw/+ebNx/r6TLq9mt+NQ
-         kz0Smh1sKFIub9aEDl9xDBN4+l6FR9FmEgQYOiZr/CDiQSe0pjMMhgc67h20IsGURYRk
-         g1wedWBY0lUrWvrGfV90V5APYXGRyDR0dmBv6tQN2kSGL/Ha5jnnAtHpfdWEiSzBHenL
-         cGMA==
+        b=m4aS20gdWbYlguoM6NqrwkaJu7M5Gi6K+Jy2iWxbR9w08Y5nRQljWMj1IAaPxXw4Zo
+         ODqRcbSuavulnM6jQaeT5Kb+bHUpGURKiUCzaxNftZoqUyym4j42Hl5r/hLz2xOqOVUa
+         3trCMyKDPKd5MlWmrDGPNmBq0G/9RVjuOrz2Pfaw9y84WpBJPTfYBowIMe6Nd6g7JBAZ
+         8K5wt3MfnpvV8QSBsQVUfhcw1wYR7ESWO1RHqXDB3IO4l9KWNyGcs4WRoJtNmY7GD8QK
+         KytFt1lk+0OqMSePB/oAzUqxFTmFHNucajK8HDKIgL+HG3EJ3ftpzdNLrU/MgKbRLUBY
+         DzdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Czl03zsxMG7vksUdBLSuneiprjNWyiqb2amGnmUhh6Q=;
-        b=uI9ljgEzQH3CPmyfM0c2Gk67vABwJaHUAGdUaVOILJcASMB2zL87R4di8G8nf4rO6S
-         jHdBbid1mCvBcengOBJ2h75SBLV0vPWOJoQJRlVYprte1SX/FPJg+W9FARMdwZi6AOzP
-         Xw42zlFGb5CYm0qI3TvUKDJdD01xSwCvKXXiMrXiJkaDqzEiMMDZI66b1M3LWSHppfQp
-         yxxbDMLZsqkyroNz1z0MUrCG8n/y0vxtEyv75AvGmje8/lPif5P2pcYoheDXH7o6o33t
-         Gpy//DiZxLFwI0FlO3mx/GQzEc9Yp9VZDa4sU2TBCK6GtCOUd81HnNa8Vi8OPqxWCUrd
-         PD/Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=1qKmOF0kGCtL6maKftCGN0/x8w0CqBwnRgukN0d1Jqo=;
+        b=dBcIoHGvi3N0TY0mKPwaIiV4R/8Ni1R0pZZOj1OzKL35K+R48l8tLFRcoJ5oXekrry
+         zQggJYR+88AExI25BucA4KyFis+MROE9oC6aqDHkT1ad7klzXRLhE8nsFIw1Lddi/syz
+         mBnVdRVfapSwsEMY2fux2HRLDUApqVmShz/US74NOYmdlcH6Gx+ReTsC9LPjFF1x7gjC
+         TRChS1FLvcyyHoLKg/BoqhmHth32aJG6N4AsR9uSG56/Fdh9Pq77IaDJ/RqN9aIjUmeG
+         wdOq9sXqxaFT9C4H7FsWOaF/F/IgR1fKUAOfHBWCkWf38geaxcA0kMQo5K24FIDL+LWw
+         FUiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AnUl0w7p;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="idER97g/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15-20020a05620a414f00b0074610b64425si17319707qko.693.2023.03.25.14.25.52
+        by mx.google.com with ESMTPS id y9-20020a05620a44c900b0073baa13dd98si18657078qkp.147.2023.03.26.13.23.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Mar 2023 14:25:53 -0700 (PDT)
+        Sun, 26 Mar 2023 13:23:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AnUl0w7p;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b="idER97g/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pgBOP-0005ix-AZ; Sat, 25 Mar 2023 17:25:41 -0400
+	id 1pgWtc-0001p3-A3; Sun, 26 Mar 2023 16:23:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgBON-0005iU-Uo; Sat, 25 Mar 2023 17:25:40 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1pgWtb-0001nw-2g; Sun, 26 Mar 2023 16:23:19 -0400
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgBOL-0008Lt-61; Sat, 25 Mar 2023 17:25:39 -0400
-Received: by mail-ed1-x529.google.com with SMTP id cn12so21281622edb.4;
- Sat, 25 Mar 2023 14:25:36 -0700 (PDT)
+ id 1pgWtY-0003nj-3d; Sun, 26 Mar 2023 16:23:18 -0400
+Received: by mail-lj1-x231.google.com with SMTP id s20so6897638ljp.1;
+ Sun, 26 Mar 2023 13:23:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679779535;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=gmail.com; s=20210112; t=1679862194;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Czl03zsxMG7vksUdBLSuneiprjNWyiqb2amGnmUhh6Q=;
- b=AnUl0w7pTvyE0LuqAL99Mw+m3wVmQmyu5zc9s+g2A6JomqmOJwEQ68+9dMl/suvfUr
- EY6/aMqlnqs+npbFvsw9pVDFdJSmhW7Cd/aLmYjyL2v2/A7C//PJ8Na4K2H84tmOqXsh
- EKhTS6OtSsVJFXxsR8jVne4d7yNKakl/PIID93jYEfiC7UEV4lLWv/7ZahLGY+2POU5o
- /lV96qWisGH7ph9mH6ZTwuQMT7XdMa61WuYCHtnHHA5Ap+VnsRLmpQezx3nM5KKGynnq
- 8/06WgsGI6jyUC09jQSLj3mK7MPS7hReCLMkS6mdbxEIuM75EKMBDTwnbxWxkiOHaW2A
- 27og==
+ bh=1qKmOF0kGCtL6maKftCGN0/x8w0CqBwnRgukN0d1Jqo=;
+ b=idER97g/L3pvuf/YOVLGwn8vYjIYj69zJV/9Di5eIdWIws4R46wcNC4/PfHnSaaeRM
+ xt7M+KGk23184foFaf7MlRSUrKabj8QwoVJvI4X85mVX4e/QX5piWGm+jI3/JteWoru9
+ X2mLXzOeHiWxTGddIaQkg1p8HFjmTBF9ZIg91xgane/wHtKn328lJoudeI4jFDoT7T/M
+ JqwaGsIXlFy5BqvUD/sPYMJGa3zn6xgEQA4VsWHEs2WLAGsrZTPMZgvI7M9zYuvENeVQ
+ 2ZpTKtB3Sou8MF7cWOCM2b+oBEKMxlvhjRm+oKi/iXyAk979cpA5XCF7MrYeg6IecpgX
+ dJUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679779535;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20210112; t=1679862194;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Czl03zsxMG7vksUdBLSuneiprjNWyiqb2amGnmUhh6Q=;
- b=sWCNBPv19O7teptQvUEZhFOiuD4FVBRQrd1stiJJJaunbBrj9mSoCvGnro7cocfTP6
- FEqGGH7TG77yr3UAy2ZzD7W/yCNfAvDAdQ4GqJSsyvJbHKxIlqmUT86O1J87BdfdR2vO
- PlxIkeMDrGSUyEXW34EOsHJQ5Ud4wK8gZNB16+IC7Vcqtn3uYWUDMcF5HZTMjkCmiiuO
- XFTEkbpVZMubtpqa5iJGdkVOSa6u0tAr03LVxxLoOVP0YxN4t9Og0DOKr/teGyUW88QS
- Z7a40Os9UGuQ4WKAWFdj0nx6QnGo96Nkp84HNz5+xHPMETwtvnE8wRiH4b37tchjWOMp
- Korg==
-X-Gm-Message-State: AO0yUKWKWgA4voISF8cX4RT/jiD+PG8CiSq+WEdeO/yyMxDwE2wZ0YSO
- wtt05ri2cIC07EIcmNuyAt63a4oC/iqSsEX25S06WUIP6pI=
-X-Received: by 2002:a17:906:ca41:b0:939:a51a:dc30 with SMTP id
- jx1-20020a170906ca4100b00939a51adc30mr7300803ejb.2.1679779535131; Sat, 25 Mar
- 2023 14:25:35 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230321102510.16754-1-qianfanguijin@163.com>
- <20230321102510.16754-6-qianfanguijin@163.com>
-In-Reply-To: <20230321102510.16754-6-qianfanguijin@163.com>
+ bh=1qKmOF0kGCtL6maKftCGN0/x8w0CqBwnRgukN0d1Jqo=;
+ b=BB1q1DE7td2/oWNF1W1Vqj3CPZw9g1NaXcPXvFUbdt9BpQ2cLBza2p7YJpgFFpkTl0
+ 86TBKkSXYHcrL301uJYOL/2hPI2W84za8/rJ79ePuYzcs+8KR3dTqlvhkDDfHVTrdWUn
+ qGKXClP1SpLMyW1HfsADV8ZfIrM2Xt1bYp/K3FN8fE+BglZZIXytrDW6Rq5DuXj9r1q2
+ 9Aia4Vms59pJcMxIrXEqwBhY2hyaERmAY9iAHgGv+dhl6T37WbrgHPArmOLAqW+yOS3q
+ yNf85eKbcUv8cw/w5kH/wYkuF0ahCkJoBUi3Bp9iRvJVAlsIb64LYvlIfVnk3G1OqcBl
+ nBww==
+X-Gm-Message-State: AAQBX9cJ05f/y1tnJC1sp8tuNcfPz8CG/ug6UFHvo1dLfXN5mg3jIDye
+ LZCDa53huWnAKaTzAP6U3Vnj0V0GNPJ00crs
+X-Received: by 2002:a2e:b686:0:b0:2a2:c618:1f4d with SMTP id
+ l6-20020a2eb686000000b002a2c6181f4dmr2758347ljo.17.1679862193748; 
+ Sun, 26 Mar 2023 13:23:13 -0700 (PDT)
+Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
+ [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
+ u3-20020a2e9f03000000b002a2b9d9429esm1427773ljk.117.2023.03.26.13.23.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Mar 2023 13:23:13 -0700 (PDT)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-Date: Sat, 25 Mar 2023 22:25:26 +0100
-Message-ID: <CABtshVT3JvYShbwLD66Vk_jF7v2zV9fh1o46ejLdR4ma+k16og@mail.gmail.com>
-Subject: Re: [PATCH v1 05/11] hw/misc: AXP221 PMU Emulation
-To: qianfanguijin@163.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Niek Linnenbank <nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-ed1-x529.google.com
+X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v3 1/4] hw/watchdog: Allwinner WDT emulation for system reset
+Date: Sun, 26 Mar 2023 22:22:53 +0200
+Message-Id: <20230326202256.22980-2-strahinja.p.jankovic@gmail.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
+References: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lj1-x231.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,333 +123,616 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q3hQGSAUfd1D
+X-TUID: RT86hk+to4ru
 
-Hi,
+This patch adds basic support for Allwinner WDT.
+Both sun4i and sun6i variants are supported.
+However, interrupt generation is not supported, so WDT can be used only to trigger system reset.
 
-On Tue, Mar 21, 2023 at 11:25=E2=80=AFAM <qianfanguijin@163.com> wrote:
->
-> From: qianfan Zhao <qianfanguijin@163.com>
->
-> This patch adds minimal support for AXP-221 PMU and connect it to
-> bananapi M2U board.
->
-> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 
-As I wrote in the RFC patch, I would suggest renaming the axp209.c
-file to axp2xx_pmu.c and extending it with support for AXP-221.
-The difference in emulated AXP-209 and AXP-221 is only in registers,
-so they can share the functions.
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ hw/watchdog/Kconfig                 |   4 +
+ hw/watchdog/allwinner-wdt.c         | 416 ++++++++++++++++++++++++++++
+ hw/watchdog/meson.build             |   1 +
+ hw/watchdog/trace-events            |   7 +
+ include/hw/watchdog/allwinner-wdt.h | 123 ++++++++
+ 5 files changed, 551 insertions(+)
+ create mode 100644 hw/watchdog/allwinner-wdt.c
+ create mode 100644 include/hw/watchdog/allwinner-wdt.h
 
-Best regards,
-Strahinja
+diff --git a/hw/watchdog/Kconfig b/hw/watchdog/Kconfig
+index 66e1d029e3..861fd00334 100644
+--- a/hw/watchdog/Kconfig
++++ b/hw/watchdog/Kconfig
+@@ -20,3 +20,7 @@ config WDT_IMX2
+ 
+ config WDT_SBSA
+     bool
++
++config ALLWINNER_WDT
++    bool
++    select PTIMER
+diff --git a/hw/watchdog/allwinner-wdt.c b/hw/watchdog/allwinner-wdt.c
+new file mode 100644
+index 0000000000..6205765efe
+--- /dev/null
++++ b/hw/watchdog/allwinner-wdt.c
+@@ -0,0 +1,416 @@
++/*
++ * Allwinner Watchdog emulation
++ *
++ * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ *
++ *  This file is derived from Allwinner RTC,
++ *  by Niek Linnenbank.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/units.h"
++#include "qemu/module.h"
++#include "trace.h"
++#include "hw/sysbus.h"
++#include "hw/registerfields.h"
++#include "hw/watchdog/allwinner-wdt.h"
++#include "sysemu/watchdog.h"
++#include "migration/vmstate.h"
++
++/* WDT registers */
++enum {
++    REG_IRQ_EN = 0,     /* Watchdog interrupt enable */
++    REG_IRQ_STA,        /* Watchdog interrupt status */
++    REG_CTRL,           /* Watchdog control register */
++    REG_CFG,            /* Watchdog configuration register */
++    REG_MODE,           /* Watchdog mode register */
++};
++
++/* Universal WDT register flags */
++#define WDT_RESTART_MASK    (1 << 0)
++#define WDT_EN_MASK         (1 << 0)
++
++/* sun4i specific WDT register flags */
++#define RST_EN_SUN4I_MASK       (1 << 1)
++#define INTV_VALUE_SUN4I_SHIFT  (3)
++#define INTV_VALUE_SUN4I_MASK   (0xfu << INTV_VALUE_SUN4I_SHIFT)
++
++/* sun6i specific WDT register flags */
++#define RST_EN_SUN6I_MASK       (1 << 0)
++#define KEY_FIELD_SUN6I_SHIFT   (1)
++#define KEY_FIELD_SUN6I_MASK    (0xfffu << KEY_FIELD_SUN6I_SHIFT)
++#define KEY_FIELD_SUN6I         (0xA57u)
++#define INTV_VALUE_SUN6I_SHIFT  (4)
++#define INTV_VALUE_SUN6I_MASK   (0xfu << INTV_VALUE_SUN6I_SHIFT)
++
++/* Map of INTV_VALUE to 0.5s units. */
++static const uint8_t allwinner_wdt_count_map[] = {
++    1,
++    2,
++    4,
++    6,
++    8,
++    10,
++    12,
++    16,
++    20,
++    24,
++    28,
++    32
++};
++
++/* WDT sun4i register map (offset to name) */
++const uint8_t allwinner_wdt_sun4i_regmap[] = {
++    [0x0000] = REG_CTRL,
++    [0x0004] = REG_MODE,
++};
++
++/* WDT sun6i register map (offset to name) */
++const uint8_t allwinner_wdt_sun6i_regmap[] = {
++    [0x0000] = REG_IRQ_EN,
++    [0x0004] = REG_IRQ_STA,
++    [0x0010] = REG_CTRL,
++    [0x0014] = REG_CFG,
++    [0x0018] = REG_MODE,
++};
++
++static bool allwinner_wdt_sun4i_read(AwWdtState *s, uint32_t offset)
++{
++    /* no sun4i specific registers currently implemented */
++    return false;
++}
++
++static bool allwinner_wdt_sun4i_write(AwWdtState *s, uint32_t offset,
++                                      uint32_t data)
++{
++    /* no sun4i specific registers currently implemented */
++    return false;
++}
++
++static bool allwinner_wdt_sun4i_can_reset_system(AwWdtState *s)
++{
++    if (s->regs[REG_MODE] & RST_EN_SUN4I_MASK) {
++        return true;
++    } else {
++        return false;
++    }
++}
++
++static bool allwinner_wdt_sun4i_is_key_valid(AwWdtState *s, uint32_t val)
++{
++    /* sun4i has no key */
++    return true;
++}
++
++static uint8_t allwinner_wdt_sun4i_get_intv_value(AwWdtState *s)
++{
++    return ((s->regs[REG_MODE] & INTV_VALUE_SUN4I_MASK) >>
++            INTV_VALUE_SUN4I_SHIFT);
++}
++
++static bool allwinner_wdt_sun6i_read(AwWdtState *s, uint32_t offset)
++{
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++
++    switch (c->regmap[offset]) {
++    case REG_IRQ_EN:
++    case REG_IRQ_STA:
++    case REG_CFG:
++        return true;
++    default:
++        break;
++    }
++    return false;
++}
++
++static bool allwinner_wdt_sun6i_write(AwWdtState *s, uint32_t offset,
++                                      uint32_t data)
++{
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++
++    switch (c->regmap[offset]) {
++    case REG_IRQ_EN:
++    case REG_IRQ_STA:
++    case REG_CFG:
++        return true;
++    default:
++        break;
++    }
++    return false;
++}
++
++static bool allwinner_wdt_sun6i_can_reset_system(AwWdtState *s)
++{
++    if (s->regs[REG_CFG] & RST_EN_SUN6I_MASK) {
++        return true;
++    } else {
++        return false;
++    }
++}
++
++static bool allwinner_wdt_sun6i_is_key_valid(AwWdtState *s, uint32_t val)
++{
++    uint16_t key = (val & KEY_FIELD_SUN6I_MASK) >> KEY_FIELD_SUN6I_SHIFT;
++    return (key == KEY_FIELD_SUN6I);
++}
++
++static uint8_t allwinner_wdt_sun6i_get_intv_value(AwWdtState *s)
++{
++    return ((s->regs[REG_MODE] & INTV_VALUE_SUN6I_MASK) >>
++            INTV_VALUE_SUN6I_SHIFT);
++}
++
++static void allwinner_wdt_update_timer(AwWdtState *s)
++{
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++    uint8_t count = c->get_intv_value(s);
++
++    ptimer_transaction_begin(s->timer);
++    ptimer_stop(s->timer);
++
++    /* Use map to convert. */
++    if (count < sizeof(allwinner_wdt_count_map)) {
++        ptimer_set_count(s->timer, allwinner_wdt_count_map[count]);
++    } else {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: incorrect INTV_VALUE 0x%02x\n",
++                __func__, count);
++    }
++
++    ptimer_run(s->timer, 1);
++    ptimer_transaction_commit(s->timer);
++
++    trace_allwinner_wdt_update_timer(count);
++}
++
++static uint64_t allwinner_wdt_read(void *opaque, hwaddr offset,
++                                       unsigned size)
++{
++    AwWdtState *s = AW_WDT(opaque);
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++    uint64_t r;
++
++    if (offset >= c->regmap_size) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
++
++    switch (c->regmap[offset]) {
++    case REG_CTRL:
++    case REG_MODE:
++        r = s->regs[c->regmap[offset]];
++        break;
++    default:
++        if (!c->read(s, offset)) {
++            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x\n",
++                            __func__, (uint32_t)offset);
++            return 0;
++        }
++        r = s->regs[c->regmap[offset]];
++        break;
++    }
++
++    trace_allwinner_wdt_read(offset, r, size);
++
++    return r;
++}
++
++static void allwinner_wdt_write(void *opaque, hwaddr offset,
++                                   uint64_t val, unsigned size)
++{
++    AwWdtState *s = AW_WDT(opaque);
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++    uint32_t old_val;
++
++    if (offset >= c->regmap_size) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return;
++    }
++
++   trace_allwinner_wdt_write(offset, val, size);
++
++    switch (c->regmap[offset]) {
++    case REG_CTRL:
++        if (c->is_key_valid(s, val)) {
++            if (val & WDT_RESTART_MASK) {
++                /* Kick timer */
++                allwinner_wdt_update_timer(s);
++            }
++        }
++        break;
++    case REG_MODE:
++        old_val = s->regs[REG_MODE];
++        s->regs[REG_MODE] = (uint32_t)val;
++
++        /* Check for rising edge on WDOG_MODE_EN */
++        if ((s->regs[REG_MODE] & ~old_val) & WDT_EN_MASK) {
++            allwinner_wdt_update_timer(s);
++        }
++        break;
++    default:
++        if (!c->write(s, offset, val)) {
++            qemu_log_mask(LOG_UNIMP, "%s: unimplemented register 0x%04x\n",
++                          __func__, (uint32_t)offset);
++        }
++        s->regs[c->regmap[offset]] = (uint32_t)val;
++        break;
++    }
++}
++
++static const MemoryRegionOps allwinner_wdt_ops = {
++    .read = allwinner_wdt_read,
++    .write = allwinner_wdt_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static void allwinner_wdt_expired(void *opaque)
++{
++    AwWdtState *s = AW_WDT(opaque);
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++
++    bool enabled = s->regs[REG_MODE] & WDT_EN_MASK;
++    bool reset_enabled = c->can_reset_system(s);
++
++    trace_allwinner_wdt_expired(enabled, reset_enabled);
++
++    /* Perform watchdog action if watchdog is enabled and can trigger reset */
++    if (enabled && reset_enabled) {
++        watchdog_perform_action();
++    }
++}
++
++static void allwinner_wdt_reset_enter(Object *obj, ResetType type)
++{
++    AwWdtState *s = AW_WDT(obj);
++
++    trace_allwinner_wdt_reset_enter();
++
++    /* Clear registers */
++    memset(s->regs, 0, sizeof(s->regs));
++}
++
++static const VMStateDescription allwinner_wdt_vmstate = {
++    .name = "allwinner-wdt",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_PTIMER(timer, AwWdtState),
++        VMSTATE_UINT32_ARRAY(regs, AwWdtState, AW_WDT_REGS_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void allwinner_wdt_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwWdtState *s = AW_WDT(obj);
++    const AwWdtClass *c = AW_WDT_GET_CLASS(s);
++
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_wdt_ops, s,
++                          TYPE_AW_WDT, c->regmap_size * 4);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void allwinner_wdt_realize(DeviceState *dev, Error **errp)
++{
++    AwWdtState *s = AW_WDT(dev);
++
++    s->timer = ptimer_init(allwinner_wdt_expired, s,
++                           PTIMER_POLICY_NO_IMMEDIATE_TRIGGER |
++                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
++                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
++
++    ptimer_transaction_begin(s->timer);
++    /* Set to 2Hz (0.5s period); other periods are multiples of 0.5s. */
++    ptimer_set_freq(s->timer, 2);
++    ptimer_set_limit(s->timer, 0xff, 1);
++    ptimer_transaction_commit(s->timer);
++}
++
++static void allwinner_wdt_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    rc->phases.enter = allwinner_wdt_reset_enter;
++    dc->realize = allwinner_wdt_realize;
++    dc->vmsd = &allwinner_wdt_vmstate;
++}
++
++static void allwinner_wdt_sun4i_class_init(ObjectClass *klass, void *data)
++{
++    AwWdtClass *awc = AW_WDT_CLASS(klass);
++
++    awc->regmap = allwinner_wdt_sun4i_regmap;
++    awc->regmap_size = sizeof(allwinner_wdt_sun4i_regmap);
++    awc->read = allwinner_wdt_sun4i_read;
++    awc->write = allwinner_wdt_sun4i_write;
++    awc->can_reset_system = allwinner_wdt_sun4i_can_reset_system;
++    awc->is_key_valid = allwinner_wdt_sun4i_is_key_valid;
++    awc->get_intv_value = allwinner_wdt_sun4i_get_intv_value;
++}
++
++static void allwinner_wdt_sun6i_class_init(ObjectClass *klass, void *data)
++{
++    AwWdtClass *awc = AW_WDT_CLASS(klass);
++
++    awc->regmap = allwinner_wdt_sun6i_regmap;
++    awc->regmap_size = sizeof(allwinner_wdt_sun6i_regmap);
++    awc->read = allwinner_wdt_sun6i_read;
++    awc->write = allwinner_wdt_sun6i_write;
++    awc->can_reset_system = allwinner_wdt_sun6i_can_reset_system;
++    awc->is_key_valid = allwinner_wdt_sun6i_is_key_valid;
++    awc->get_intv_value = allwinner_wdt_sun6i_get_intv_value;
++}
++
++static const TypeInfo allwinner_wdt_info = {
++    .name          = TYPE_AW_WDT,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_wdt_init,
++    .instance_size = sizeof(AwWdtState),
++    .class_init    = allwinner_wdt_class_init,
++    .class_size    = sizeof(AwWdtClass),
++    .abstract      = true,
++};
++
++static const TypeInfo allwinner_wdt_sun4i_info = {
++    .name          = TYPE_AW_WDT_SUN4I,
++    .parent        = TYPE_AW_WDT,
++    .class_init    = allwinner_wdt_sun4i_class_init,
++};
++
++static const TypeInfo allwinner_wdt_sun6i_info = {
++    .name          = TYPE_AW_WDT_SUN6I,
++    .parent        = TYPE_AW_WDT,
++    .class_init    = allwinner_wdt_sun6i_class_init,
++};
++
++static void allwinner_wdt_register(void)
++{
++    type_register_static(&allwinner_wdt_info);
++    type_register_static(&allwinner_wdt_sun4i_info);
++    type_register_static(&allwinner_wdt_sun6i_info);
++}
++
++type_init(allwinner_wdt_register)
+diff --git a/hw/watchdog/meson.build b/hw/watchdog/meson.build
+index 8974b5cf4c..5dcd4fbe2f 100644
+--- a/hw/watchdog/meson.build
++++ b/hw/watchdog/meson.build
+@@ -1,4 +1,5 @@
+ softmmu_ss.add(files('watchdog.c'))
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_WDT', if_true: files('allwinner-wdt.c'))
+ softmmu_ss.add(when: 'CONFIG_CMSDK_APB_WATCHDOG', if_true: files('cmsdk-apb-watchdog.c'))
+ softmmu_ss.add(when: 'CONFIG_WDT_IB6300ESB', if_true: files('wdt_i6300esb.c'))
+ softmmu_ss.add(when: 'CONFIG_WDT_IB700', if_true: files('wdt_ib700.c'))
+diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
+index 54371ae075..2739570652 100644
+--- a/hw/watchdog/trace-events
++++ b/hw/watchdog/trace-events
+@@ -1,5 +1,12 @@
+ # See docs/devel/tracing.rst for syntax documentation.
+ 
++# allwinner-wdt.c
++allwinner_wdt_read(uint64_t offset, uint64_t data, unsigned size) "Allwinner watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++allwinner_wdt_write(uint64_t offset, uint64_t data, unsigned size) "Allwinner watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++allwinner_wdt_reset_enter(void) "Allwinner watchdog: reset"
++allwinner_wdt_update_timer(uint8_t count) "Allwinner watchdog: count %" PRIu8
++allwinner_wdt_expired(bool enabled, bool reset_enabled) "Allwinner watchdog: enabled %u reset_enabled %u"
++
+ # cmsdk-apb-watchdog.c
+ cmsdk_apb_watchdog_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_watchdog_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+diff --git a/include/hw/watchdog/allwinner-wdt.h b/include/hw/watchdog/allwinner-wdt.h
+new file mode 100644
+index 0000000000..7fe41e20f2
+--- /dev/null
++++ b/include/hw/watchdog/allwinner-wdt.h
+@@ -0,0 +1,123 @@
++/*
++ * Allwinner Watchdog emulation
++ *
++ * Copyright (C) 2023 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ *
++ *  This file is derived from Allwinner RTC,
++ *  by Niek Linnenbank.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_WATCHDOG_ALLWINNER_WDT_H
++#define HW_WATCHDOG_ALLWINNER_WDT_H
++
++#include "qom/object.h"
++#include "hw/ptimer.h"
++#include "hw/sysbus.h"
++
++/*
++ * This is a model of the Allwinner watchdog.
++ * Since watchdog registers belong to the timer module (and are shared with the
++ * RTC module), the interrupt line from watchdog is not handled right now.
++ * In QEMU, we just wire up the watchdog reset to watchdog_perform_action(),
++ * at least for the moment.
++ */
++
++#define TYPE_AW_WDT    "allwinner-wdt"
++
++/** Allwinner WDT sun4i family (A10, A12), also sun7i (A20) */
++#define TYPE_AW_WDT_SUN4I    TYPE_AW_WDT "-sun4i"
++
++/** Allwinner WDT sun6i family and newer (A31, H2+, H3, etc) */
++#define TYPE_AW_WDT_SUN6I    TYPE_AW_WDT "-sun6i"
++
++/** Number of WDT registers */
++#define AW_WDT_REGS_NUM      (5)
++
++OBJECT_DECLARE_TYPE(AwWdtState, AwWdtClass, AW_WDT)
++
++/**
++ * Allwinner WDT object instance state.
++ */
++struct AwWdtState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++    struct ptimer_state *timer;
++
++    uint32_t regs[AW_WDT_REGS_NUM];
++};
++
++/**
++ * Allwinner WDT class-level struct.
++ *
++ * This struct is filled by each sunxi device specific code
++ * such that the generic code can use this struct to support
++ * all devices.
++ */
++struct AwWdtClass {
++    /*< private >*/
++    SysBusDeviceClass parent_class;
++    /*< public >*/
++
++    /** Defines device specific register map */
++    const uint8_t *regmap;
++
++    /** Size of the regmap in bytes */
++    size_t regmap_size;
++
++    /**
++     * Read device specific register
++     *
++     * @offset: register offset to read
++     * @return true if register read successful, false otherwise
++     */
++    bool (*read)(AwWdtState *s, uint32_t offset);
++
++    /**
++     * Write device specific register
++     *
++     * @offset: register offset to write
++     * @data: value to set in register
++     * @return true if register write successful, false otherwise
++     */
++    bool (*write)(AwWdtState *s, uint32_t offset, uint32_t data);
++
++    /**
++     * Check if watchdog can generate system reset
++     *
++     * @return true if watchdog can generate system reset
++     */
++    bool (*can_reset_system)(AwWdtState *s);
++
++    /**
++     * Check if provided key is valid
++     *
++     * @value: value written to register
++     * @return true if key is valid, false otherwise
++     */
++    bool (*is_key_valid)(AwWdtState *s, uint32_t val);
++
++    /**
++     * Get current INTV_VALUE setting
++     *
++     * @return current INTV_VALUE (0-15)
++     */
++    uint8_t (*get_intv_value)(AwWdtState *s);
++};
++
++#endif /* HW_WATCHDOG_ALLWINNER_WDT_H */
+-- 
+2.30.2
 
-
-> ---
->  hw/arm/Kconfig        |   1 +
->  hw/arm/bananapi_m2u.c |   5 ++
->  hw/misc/Kconfig       |   4 +
->  hw/misc/axp221.c      | 196 ++++++++++++++++++++++++++++++++++++++++++
->  hw/misc/meson.build   |   1 +
->  hw/misc/trace-events  |   5 ++
->  6 files changed, 212 insertions(+)
->  create mode 100644 hw/misc/axp221.c
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 9e14c3427e..cf8fb083f8 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -347,6 +347,7 @@ config ALLWINNER_H3
->  config ALLWINNER_R40
->      bool
->      select ALLWINNER_A10_PIT
-> +    select AXP221_PMU
->      select SERIAL
->      select ARM_TIMER
->      select ARM_GIC
-> diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-> index 1b6241719d..bdee12efd3 100644
-> --- a/hw/arm/bananapi_m2u.c
-> +++ b/hw/arm/bananapi_m2u.c
-> @@ -22,6 +22,7 @@
->  #include "exec/address-spaces.h"
->  #include "qapi/error.h"
->  #include "hw/boards.h"
-> +#include "hw/i2c/i2c.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-r40.h"
->
-> @@ -91,6 +92,10 @@ static void bpim2u_init(MachineState *machine)
->                       &bootroom_loaded);
->      mmc_attach_drive(r40, &r40->mmc3, 3, false, NULL);
->
-> +    /* Connect AXP221 */
-> +    i2c =3D I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
-> +    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
-> +
->      /* SDRAM */
->      memory_region_add_subregion(get_system_memory(), r40->memmap[AW_R40_=
-DEV_SDRAM],
->                                  machine->ram);
-> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-> index 2ef5781ef8..f66ac390b1 100644
-> --- a/hw/misc/Kconfig
-> +++ b/hw/misc/Kconfig
-> @@ -180,4 +180,8 @@ config AXP209_PMU
->      bool
->      depends on I2C
->
-> +config AXP221_PMU
-> +    bool
-> +    depends on I2C
-> +
->  source macio/Kconfig
-> diff --git a/hw/misc/axp221.c b/hw/misc/axp221.c
-> new file mode 100644
-> index 0000000000..47784bb085
-> --- /dev/null
-> +++ b/hw/misc/axp221.c
-> @@ -0,0 +1,196 @@
-> +/*
-> + * AXP-221/221s PMU Emulation
-> + *
-> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining=
- a
-> + * copy of this software and associated documentation files (the "Softwa=
-re"),
-> + * to deal in the Software without restriction, including without limita=
-tion
-> + * the rights to use, copy, modify, merge, publish, distribute, sublicen=
-se,
-> + * and/or sell copies of the Software, and to permit persons to whom the
-> + * Software is furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be includ=
-ed in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
-SS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
-TY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
-LL THE
-> + * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHE=
-R
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
-NG
-> + * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-> + * DEALINGS IN THE SOFTWARE.
-> + *
-> + * SPDX-License-Identifier: MIT
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qemu/bitops.h"
-> +#include "trace.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "migration/vmstate.h"
-> +
-> +#define TYPE_AXP221_PMU "axp221_pmu"
-> +
-> +#define AXP221(obj) \
-> +    OBJECT_CHECK(AXP221I2CState, (obj), TYPE_AXP221_PMU)
-> +
-> +#define NR_REGS                         0xff
-> +
-> +/* A simple I2C slave which returns values of ID or CNT register. */
-> +typedef struct AXP221I2CState {
-> +    /*< private >*/
-> +    I2CSlave i2c;
-> +    /*< public >*/
-> +    uint8_t regs[NR_REGS];  /* peripheral registers */
-> +    uint8_t ptr;            /* current register index */
-> +    uint8_t count;          /* counter used for tx/rx */
-> +} AXP221I2CState;
-> +
-> +#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
-> +#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
-> +#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
-> +#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
-> +#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
-> +#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
-> +
-> +/* Reset all counters and load ID register */
-> +static void axp221_reset_enter(Object *obj, ResetType type)
-> +{
-> +    AXP221I2CState *s =3D AXP221(obj);
-> +
-> +    memset(s->regs, 0, NR_REGS);
-> +    s->ptr =3D 0;
-> +    s->count =3D 0;
-> +
-> +    /* input power status register */
-> +    s->regs[0x00] =3D AXP221_PWR_STATUS_ACIN_PRESENT
-> +                    | AXP221_PWR_STATUS_ACIN_AVAIL
-> +                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
-> +
-> +    s->regs[0x01] =3D 0x00; /* no battery is connected */
-> +
-> +    /* CHIPID register, no documented on datasheet, but it is checked in
-> +     * u-boot spl. I had read it from AXP221s and got 0x06 value.
-> +     * So leave 06h here.
-> +     */
-> +    s->regs[0x03] =3D 0x06;
-> +
-> +    s->regs[0x10] =3D 0xbf;
-> +    s->regs[0x13] =3D 0x01;
-> +    s->regs[0x30] =3D 0x60;
-> +    s->regs[0x31] =3D 0x03;
-> +    s->regs[0x32] =3D 0x43;
-> +    s->regs[0x33] =3D 0xc6;
-> +    s->regs[0x34] =3D 0x45;
-> +    s->regs[0x35] =3D 0x0e;
-> +    s->regs[0x36] =3D 0x5d;
-> +    s->regs[0x37] =3D 0x08;
-> +    s->regs[0x38] =3D 0xa5;
-> +    s->regs[0x39] =3D 0x1f;
-> +    s->regs[0x3c] =3D 0xfc;
-> +    s->regs[0x3d] =3D 0x16;
-> +    s->regs[0x80] =3D 0x80;
-> +    s->regs[0x82] =3D 0xe0;
-> +    s->regs[0x84] =3D 0x32;
-> +    s->regs[0x8f] =3D 0x01;
-> +
-> +    s->regs[0x90] =3D 0x07;
-> +    s->regs[0x91] =3D 0x1f;
-> +    s->regs[0x92] =3D 0x07;
-> +    s->regs[0x93] =3D 0x1f;
-> +
-> +    s->regs[0x40] =3D 0xd8;
-> +    s->regs[0x41] =3D 0xff;
-> +    s->regs[0x42] =3D 0x03;
-> +    s->regs[0x43] =3D 0x03;
-> +
-> +    s->regs[0xb8] =3D 0xc0;
-> +    s->regs[0xb9] =3D 0x64;
-> +    s->regs[0xe6] =3D 0xa0;
-> +}
-> +
-> +/* Handle events from master. */
-> +static int axp221_event(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    AXP221I2CState *s =3D AXP221(i2c);
-> +
-> +    s->count =3D 0;
-> +
-> +    return 0;
-> +}
-> +
-> +/* Called when master requests read */
-> +static uint8_t axp221_rx(I2CSlave *i2c)
-> +{
-> +    AXP221I2CState *s =3D AXP221(i2c);
-> +    uint8_t ret =3D 0xff;
-> +
-> +    if (s->ptr < NR_REGS) {
-> +        ret =3D s->regs[s->ptr];
-> +        trace_axp221_rx(s->ptr, ret);
-> +        s->ptr++;
-> +    }
-> +
-> +    return ret;
-> +}
-> +
-> +/*
-> + * Called when master sends write.
-> + * Update ptr with byte 0, then perform write with second byte.
-> + */
-> +static int axp221_tx(I2CSlave *i2c, uint8_t data)
-> +{
-> +    AXP221I2CState *s =3D AXP221(i2c);
-> +
-> +    if (s->count =3D=3D 0) {
-> +        /* Store register address */
-> +        s->ptr =3D data;
-> +        s->count++;
-> +        trace_axp221_select(data);
-> +    } else {
-> +        trace_axp221_tx(s->ptr, data);
-> +        s->regs[s->ptr++] =3D data;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static const VMStateDescription vmstate_axp221 =3D {
-> +    .name =3D TYPE_AXP221_PMU,
-> +    .version_id =3D 1,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT8_ARRAY(regs, AXP221I2CState, NR_REGS),
-> +        VMSTATE_UINT8(count, AXP221I2CState),
-> +        VMSTATE_UINT8(ptr, AXP221I2CState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void axp221_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> +    I2CSlaveClass *isc =3D I2C_SLAVE_CLASS(oc);
-> +    ResettableClass *rc =3D RESETTABLE_CLASS(oc);
-> +
-> +    rc->phases.enter =3D axp221_reset_enter;
-> +    dc->vmsd =3D &vmstate_axp221;
-> +    isc->event =3D axp221_event;
-> +    isc->recv =3D axp221_rx;
-> +    isc->send =3D axp221_tx;
-> +}
-> +
-> +static const TypeInfo axp221_info =3D {
-> +    .name =3D TYPE_AXP221_PMU,
-> +    .parent =3D TYPE_I2C_SLAVE,
-> +    .instance_size =3D sizeof(AXP221I2CState),
-> +    .class_init =3D axp221_class_init
-> +};
-> +
-> +static void axp221_register_devices(void)
-> +{
-> +    type_register_static(&axp221_info);
-> +}
-> +
-> +type_init(axp221_register_devices);
-> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> index 96e35f1cdb..d407a2df50 100644
-> --- a/hw/misc/meson.build
-> +++ b/hw/misc/meson.build
-> @@ -46,6 +46,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: fi=
-les('allwinner-h3-sysctrl
->  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-si=
-d.c'))
->  softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r=
-40-ccu.c'))
->  softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
-> +softmmu_ss.add(when: 'CONFIG_AXP221_PMU', if_true: files('axp221.c'))
->  softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
->  softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
->  softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
-> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> index c47876a902..63b072d2d8 100644
-> --- a/hw/misc/trace-events
-> +++ b/hw/misc/trace-events
-> @@ -28,6 +28,11 @@ axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PR=
-Ix8 " : 0x%" PRIx8
->  axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
->  axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx=
-8
->
-> +# axp221.c
-> +axp221_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
-> +axp221_select(uint8_t reg) "Accessing reg 0x%" PRIx8
-> +axp221_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx=
-8
-> +
->  # eccmemctl.c
->  ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
->  ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
-> --
-> 2.25.1
->

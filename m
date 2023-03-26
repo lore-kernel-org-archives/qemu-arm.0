@@ -1,230 +1,171 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1446137ejb;
-        Sun, 26 Mar 2023 13:23:53 -0700 (PDT)
-X-Google-Smtp-Source: AKy350agkOYZSSujkLcdQPU8gE60wzDPZXzaAhpaw408eB2VnqmZNUI5Tq/mZ86XQD7YaIdnU82x
-X-Received: by 2002:a05:6214:5084:b0:5a3:2f3c:4ee2 with SMTP id kk4-20020a056214508400b005a32f3c4ee2mr13835299qvb.42.1679862233146;
-        Sun, 26 Mar 2023 13:23:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679862233; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1446247ejb;
+        Sun, 26 Mar 2023 13:24:07 -0700 (PDT)
+X-Google-Smtp-Source: AK7set83ziOQNIcjM/VweRqLruIxTKT7IgPtL+jpNiDAvpivLETpT30AGrQ3u+VvOq1T7mKJv4qo
+X-Received: by 2002:a05:622a:1387:b0:3e3:7d35:7899 with SMTP id o7-20020a05622a138700b003e37d357899mr15356847qtk.43.1679862246995;
+        Sun, 26 Mar 2023 13:24:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679862246; cv=none;
         d=google.com; s=arc-20160816;
-        b=IsqsxhWFiKwD4AnIE+BOwauuB/82mP16rZrtR/i5Tyob4FxZhv+fjeSUppEliEA8Y7
-         e/AvlbiTzkao9izQD+quTGpambod78h5NWSjTkSvzZ/P540IYGe205vs007E7asd1fMD
-         nr82RPZQTcm6ATGxnF9jsmEMtblU5orT5Y9UbomD34Zh4qBcWi24d1zPDYyWSRm3iBet
-         sJidQkYTEG7gHW8fB7TV+ZmqIOjUuLe7GQsghh84XUXAUzS9GA3J8uHLYsBfyjZ+Jrpy
-         wE1fIXRiXe/Ecx5pdT5YC/6RgBIC2CCCMh0I+oWSAttOIxCtUSLeTrkn6KYJY8jg85ga
-         zm6w==
+        b=0E/+sZ7tfrIBAN29ePIIY4lE9Io4yZOUqWRmV5ELnz8L17xNGpMgDksAIUoVKqZNg9
+         prP/xxm433qf6xolhuQMGfC8GcFf8X7BQIlHgON6gS3UlISbTNAAgh2k+g7iyYn6YhJN
+         3SxCpn3zaxNkTbNrqheF/gsdQ7v8ERgQGUDyGsJj4PmhPgU6qlvbC8Ydhap6aBiI+XzF
+         GQNhTLvPuMbAlyTZBsvRHS3tfooEyNynabdas9I4Jh/jEJ9LlXDF/KZgR2EV1w2gcItK
+         WXQPKAY0TNQtHkc9r5LJ6dcMv/DDWC6NBNwcxatsSVKl0PcOa4ETsCLnyTxsdxuWdnPm
+         uFYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=J+9drRYcPap8x0rvwcbFK9iA3EPw67rquBQoOyVcYNs=;
-        b=ZVV3YL0zhBwmf68Thi+V8dwzemj4MsOrdXYl878zAyClpAF5TZiACFhUP17R0kffZZ
-         bvindQCNynv40pGrlowPCwDrqjft7mdWydLEzi93pwwEbzPNedCq4sdHlDNjHkDmaLa+
-         izO2SoOGGajvY93msXc+DlgUCuQ4K0ctyTrTnIRXh5WqhVW+jUTwhczcOUvX8o3fyqJr
-         aQTkKSJqWcHTps7+etyluuHXwStwUMqTpRIDTGj2enOCo9lOPLyeu5A+3jhtNOpc9Ba8
-         IcFB+B3d/ByUHN3cvTXxaejuj7vpfsMbCDWYqtzkocTfD+tm+uNtDqFOpRzMHwPEsR6p
-         Lt8Q==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=YdCK1YmxLjHTb0W4pjTT+uFHFQ5SmQxn8EiBB9hc9Tk=;
+        b=b3Yl2rmUfU5tcVia+b4pELND65nZf2m/O4wFq+bn44atJHBAiHPFNo7c4HnHPmyj0J
+         TnKKkKT4ZDATobNfuPO2RSY/aRFvcODnAvapHwqHmd/Zec7IpUwsFi8DFnOX52d/PitL
+         VeuHc32hnZ2c/UymCuEaahBa3X6LvORgXyIgzK9H0tEHH94sdNwsXP2kHj818qXWUWZC
+         30/OvDeE1ww/eF+InUe/wEGQfTXNCHAdoWSNOfqGCZ0wleXCmLuG7Z7OLsmtT5yHm2qT
+         cbxDkZyuj0bTwTBIu5VxnlfUKTyKo0zGGm3ch229Spg9gDaLeUi6RnjAL7qxRAZQZz9i
+         G5/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d89m837M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RfgYpqfB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f6-20020ac859c6000000b003b9bb33ef8dsi5000185qtf.432.2023.03.26.13.23.52
+        by mx.google.com with ESMTPS id j15-20020a05620a288f00b00745dc0d7f72si17728933qkp.622.2023.03.26.13.24.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Mar 2023 13:23:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 26 Mar 2023 13:24:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d89m837M;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=RfgYpqfB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pgWtf-0001qy-5k; Sun, 26 Mar 2023 16:23:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pgWtT-0001kc-HS; Sun, 26 Mar 2023 16:23:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgWtc-0001pb-Py; Sun, 26 Mar 2023 16:23:20 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ id 1pgWtR-0001k9-GS; Sun, 26 Mar 2023 16:23:09 -0400
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgWtb-0003pk-4i; Sun, 26 Mar 2023 16:23:20 -0400
-Received: by mail-lf1-x129.google.com with SMTP id br6so8673596lfb.11;
- Sun, 26 Mar 2023 13:23:18 -0700 (PDT)
+ id 1pgWtP-0003bz-SA; Sun, 26 Mar 2023 16:23:09 -0400
+Received: by mail-lj1-x22d.google.com with SMTP id o20so3968916ljp.3;
+ Sun, 26 Mar 2023 13:23:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679862197;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=J+9drRYcPap8x0rvwcbFK9iA3EPw67rquBQoOyVcYNs=;
- b=d89m837MjZMyo0BMzlsajrm+d3D6DtUlGOVF3P8PDsbvHGeFcM8jbo/UY5bfDPwL9B
- YDts53cniUujGZJ8tjncpNWjeIY2wNJN4BohNb2ekCPfPg1qy5yieDSGXZI/66GA3f/s
- 2iH92VcE3ILuaA/AruhxuB9an0uAGKKTkH6bJI2KVzlHgB4jkwYvll19YTdCzOyI0IIt
- GQ4AtVK6luL1H4yr1mihB4QJF/GMPVdrG3m1vvaRdE2mt6EC9GHaugwNDo3V4XcWKMvg
- 1/eaoLTtLXcly1eQxkRwSBX77//EMvQZrq3oD0+CD45Jx3aEGv1pp0kDYsim5BNvubXh
- kFCw==
+ d=gmail.com; s=20210112; t=1679862186;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=YdCK1YmxLjHTb0W4pjTT+uFHFQ5SmQxn8EiBB9hc9Tk=;
+ b=RfgYpqfBVwDwgUBBxqZOiZXTUx2Sn2Xn6Ov09c6ASMImp3PQ7OyK1AzGIdBEIJsiFC
+ PUnRBRiXIR+yOANryaUpIuykH6PqX2zwUHaoEzcwfZSXQ0w5hCvKHxUI60TJEc7RBwr8
+ yvKvZEQu9psWVgEX2tjWms2AyaLFjluHNt2LEaKMKIabd/zhYGZSRUtZx1WQ2FTtz+CY
+ thotnDOT0V37+KpWWw5x3A4c1xUJ/ajRdA6mimCN6iUyoEjkLzRgT1o24rAq9wz4IO5y
+ leaKqDl3rL8k12dtOqLKNm8QdiYTz+pkG0OhTTQwq8aQbTuPPkIv8EDzh03Qmddv/wDb
+ fCqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679862197;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=J+9drRYcPap8x0rvwcbFK9iA3EPw67rquBQoOyVcYNs=;
- b=7Wvc3qvaAGoYXGCCmoOt43n9zWrUkwXs/MZL290L0vdsUM+n+/vjZb9bPPr4wRm3tu
- AsnbmDbSI1cLSXYbgA2QEG3wJQC2sL5+zx3gN4zNOZ6ohJOzRaQTfi7JL2PUFvHORjTH
- htrnzRnhwOc9N30HXgdlCUwJ6NWg++oL+ywYbeMZuLllVxDjyu1C/dlUZZKm3Uw3RYRW
- /iadmf3fQDjXoGQI+9jp8EyvhaatevWFlMmKCnA1hD9iQC6ymzr8KoovZYmRNoT8W+/+
- B931xrlwXXKBxXnva4AeWgjsfP+wDORegS7ApHdD3vEuQCCKsJTG3tUmaemGPRaea51n
- uIBQ==
-X-Gm-Message-State: AAQBX9dn1UpqYGCVaVQqrPZyc5BS7/RuJi+TRw78d6VbaGDr1RDm8KMQ
- XC3Gwnea9IForZZJjCcgrUU=
-X-Received: by 2002:ac2:55b8:0:b0:4e0:6e01:7ebf with SMTP id
- y24-20020ac255b8000000b004e06e017ebfmr2967784lfg.52.1679862197102; 
- Sun, 26 Mar 2023 13:23:17 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1679862186;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YdCK1YmxLjHTb0W4pjTT+uFHFQ5SmQxn8EiBB9hc9Tk=;
+ b=S22QKbbVSXuhOaWUHRx2VXOgS03Y6kfgPOfZAZuVpgW+k/lzY+i1ddzJHmAnkAnoze
+ yYY+VETm6E555ksbEXJ8i+TmQI+xM05D2DxwRzgNa0zlgca+uJ6LokejkCu6b0oA8RBj
+ 4yjbEB34E711MYDuvht/Z4TxcBrY/QPibJ428knH/6d1D7BuftnchH5dV4WkvAX0/HJm
+ SQ1xk/ItGjXIgkfxHsKAoegaW+nOUaPgMhqA/0ds82YkloJRDYQHdqRoNI8Ljf1JG68y
+ etbhAnTPFG93R+IpwPvgM58J5LmXOrALHAd0uuHTHJBN0loAfi6E2GbYWeoc+U4jjg1j
+ 0cxg==
+X-Gm-Message-State: AO0yUKXx5o+UD6lTVwMY9pz8sQbglhIDtkhYZWCP+0nL/X79B+2II549
+ Zl1AAhuEETXVSmCoVgxw9Ro=
+X-Received: by 2002:a05:651c:10b6:b0:2a0:3848:6b27 with SMTP id
+ k22-20020a05651c10b600b002a038486b27mr4536463ljn.23.1679862185640; 
+ Sun, 26 Mar 2023 13:23:05 -0700 (PDT)
 Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
  [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- u3-20020a2e9f03000000b002a2b9d9429esm1427773ljk.117.2023.03.26.13.23.16
+ u3-20020a2e9f03000000b002a2b9d9429esm1427773ljk.117.2023.03.26.13.23.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Mar 2023 13:23:16 -0700 (PDT)
+ Sun, 26 Mar 2023 13:23:05 -0700 (PDT)
 From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
 X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v3 3/4] hw/arm: Add WDT to Allwinner-H3 and Orangepi-PC
-Date: Sun, 26 Mar 2023 22:22:55 +0200
-Message-Id: <20230326202256.22980-4-strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v3 0/4] Basic Allwinner WDT emulation
+Date: Sun, 26 Mar 2023 22:22:52 +0200
+Message-Id: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
-References: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lf1-x129.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-lj1-x22d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aKzWch0YnSIm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bhGOdYQ2zWV7
 
-This patch adds WDT to Allwinner-H3 and Orangepi-PC.
-WDT is added as an overlay to the Timer module memory area.
+This patch set introduces basic emulation of Allwinner WDT.
+Since WDT in both A10 and H3 is part of Timer module, the WDT
+functionality is added as an overlay in the memory map.
 
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+The focus was to enable reboot functionality, so WDT interrupt handling
+is not covered in this patch set.
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- docs/system/arm/orangepi.rst  | 1 +
- hw/arm/Kconfig                | 1 +
- hw/arm/allwinner-h3.c         | 8 ++++++++
- include/hw/arm/allwinner-h3.h | 5 ++++-
- 4 files changed, 14 insertions(+), 1 deletion(-)
+With these patches the `reboot` command can be used for both Cubieboard
+and Orangepi-PC in order to restart the system.
 
-diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
-index e5973600a1..9afa54213b 100644
---- a/docs/system/arm/orangepi.rst
-+++ b/docs/system/arm/orangepi.rst
-@@ -26,6 +26,7 @@ The Orange Pi PC machine supports the following devices:
-  * System Control module
-  * Security Identifier device
-  * TWI (I2C)
-+ * Watchdog timer
- 
- Limitations
- """""""""""
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index ec15248536..7d916f5450 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -337,6 +337,7 @@ config ALLWINNER_H3
-     select ALLWINNER_A10_PIT
-     select ALLWINNER_SUN8I_EMAC
-     select ALLWINNER_I2C
-+    select ALLWINNER_WDT
-     select SERIAL
-     select ARM_TIMER
-     select ARM_GIC
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 69d0ad6f50..f05afddf7e 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -49,6 +49,7 @@ const hwaddr allwinner_h3_memmap[] = {
-     [AW_H3_DEV_OHCI3]      = 0x01c1d400,
-     [AW_H3_DEV_CCU]        = 0x01c20000,
-     [AW_H3_DEV_PIT]        = 0x01c20c00,
-+    [AW_H3_DEV_WDT]        = 0x01c20ca0,
-     [AW_H3_DEV_UART0]      = 0x01c28000,
-     [AW_H3_DEV_UART1]      = 0x01c28400,
-     [AW_H3_DEV_UART2]      = 0x01c28800,
-@@ -234,6 +235,8 @@ static void allwinner_h3_init(Object *obj)
-     object_initialize_child(obj, "twi1",  &s->i2c1,  TYPE_AW_I2C_SUN6I);
-     object_initialize_child(obj, "twi2",  &s->i2c2,  TYPE_AW_I2C_SUN6I);
-     object_initialize_child(obj, "r_twi", &s->r_twi, TYPE_AW_I2C_SUN6I);
-+
-+    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN6I);
- }
- 
- static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-@@ -453,6 +456,11 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->r_twi), 0,
-                        qdev_get_gpio_in(DEVICE(&s->gic), AW_H3_GIC_SPI_R_TWI));
- 
-+    /* WDT */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0,
-+                            s->memmap[AW_H3_DEV_WDT], 1);
-+
-     /* Unimplemented devices */
-     for (i = 0; i < ARRAY_SIZE(unimplemented); i++) {
-         create_unimplemented_device(unimplemented[i].device_name,
-diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-index 59e0f822d2..f15d6d7cc7 100644
---- a/include/hw/arm/allwinner-h3.h
-+++ b/include/hw/arm/allwinner-h3.h
-@@ -48,6 +48,7 @@
- #include "hw/net/allwinner-sun8i-emac.h"
- #include "hw/rtc/allwinner-rtc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/watchdog/allwinner-wdt.h"
- #include "target/arm/cpu.h"
- #include "sysemu/block-backend.h"
- 
-@@ -96,7 +97,8 @@ enum {
-     AW_H3_DEV_RTC,
-     AW_H3_DEV_CPUCFG,
-     AW_H3_DEV_R_TWI,
--    AW_H3_DEV_SDRAM
-+    AW_H3_DEV_SDRAM,
-+    AW_H3_DEV_WDT
- };
- 
- /** Total number of CPU cores in the H3 SoC */
-@@ -141,6 +143,7 @@ struct AwH3State {
-     AWI2CState r_twi;
-     AwSun8iEmacState emac;
-     AwRtcState rtc;
-+    AwWdtState wdt;
-     GICState gic;
-     MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
+Also, Cubieboard avocado tests have been improved to include reboot
+steps as well.
+
+v3:
+- Fixed allwinner_wdt_sun4i_can_reset_system function to use RST_EN_SUN4I_MASK
+
+v2:
+- Cleaned up WDT implementation (changes only in patch 01/04)
+- Removed unnecessary checks - instead of changing enum to start from 1,
+  removed if (!c->regmap[offset]) since it was conflicting enum values
+- Reorganized comments
+
+Strahinja Jankovic (4):
+  hw/watchdog: Allwinner WDT emulation for system reset
+  hw/arm: Add WDT to Allwinner-A10 and Cubieboard
+  hw/arm: Add WDT to Allwinner-H3 and Orangepi-PC
+  tests/avocado: Add reboot tests to Cubieboard
+
+ docs/system/arm/cubieboard.rst      |   1 +
+ docs/system/arm/orangepi.rst        |   1 +
+ hw/arm/Kconfig                      |   2 +
+ hw/arm/allwinner-a10.c              |   7 +
+ hw/arm/allwinner-h3.c               |   8 +
+ hw/watchdog/Kconfig                 |   4 +
+ hw/watchdog/allwinner-wdt.c         | 416 ++++++++++++++++++++++++++++
+ hw/watchdog/meson.build             |   1 +
+ hw/watchdog/trace-events            |   7 +
+ include/hw/arm/allwinner-a10.h      |   2 +
+ include/hw/arm/allwinner-h3.h       |   5 +-
+ include/hw/watchdog/allwinner-wdt.h | 123 ++++++++
+ tests/avocado/boot_linux_console.py |  15 +-
+ 13 files changed, 588 insertions(+), 4 deletions(-)
+ create mode 100644 hw/watchdog/allwinner-wdt.c
+ create mode 100644 include/hw/watchdog/allwinner-wdt.h
+
 -- 
 2.30.2
 

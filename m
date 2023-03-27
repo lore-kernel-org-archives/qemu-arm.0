@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2066020ejb;
-        Mon, 27 Mar 2023 10:12:12 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9oSE8/t4DsOz/ZElf+Z6msGU/cW5XwWEhCZftTnIiTj96SD2bRBBmScgQcxTCIR/eQnTtt
-X-Received: by 2002:a05:6214:f2e:b0:5a7:b334:72e1 with SMTP id iw14-20020a0562140f2e00b005a7b33472e1mr33644807qvb.15.1679937132520;
-        Mon, 27 Mar 2023 10:12:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679937132; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2066840ejb;
+        Mon, 27 Mar 2023 10:13:32 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YoGq1yZHfc4X8F+qJ7ePYfnI+XoVWX0O4GHc8L3oR6epM1j6sXhohTByflDC1sj1M2X7Ao
+X-Received: by 2002:ac8:59cf:0:b0:3e4:d889:bc64 with SMTP id f15-20020ac859cf000000b003e4d889bc64mr17457747qtf.5.1679937212680;
+        Mon, 27 Mar 2023 10:13:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679937212; cv=none;
         d=google.com; s=arc-20160816;
-        b=xOqjmNFSP4LBy15GTAc3QL3g8M8pL09SkgbJrybAkzge8SBetxGBpDSGx3m4spzvZw
-         PdRpMWScaM6OaQEAEDnELevwLqcTnPIyTNW9cBh+PJujlgeNlztKUKdCA/89W7mjNV1F
-         MgL6uPyTwow+eoK5NKAypUDGE7nPrypt0NlU7Pln12gukAldIq4+sSUEEGgx8euPWMmI
-         dfqFMYhQyL1LVmRqXZZQunYq7hbhzjP+QqV/Fc/xnZHMpIua4xC2EBreSojo/Kgtiu7l
-         S+DdFn4Ogrh5XvAaPywOUvrFt8LdVjDS+yRL7nMn4MJPZdwwjg8S4WVziaX6CI8xUEqb
-         EVVg==
+        b=hTE0IwuFidZVNXIlDxHzf4z+0OYMx4j1/1hIjTBIw69zkCcPXpMHLFXEeJKV8776vt
+         mGVIfhcHMggm19+RPznDsi2n2fsbEEzooKOmSvTn9OTA0+eTwJQ1X4PeqOfcOrSnZjkh
+         sJPR/D09D6tbejmJQnUEfCS/E7zT3BQ45QPBICxfSAyDl0j8w1np9yqWS8Dow/fz5nQm
+         eQvJrvWmuBXVGELoC2rrhEo5y/f3N0bz1uJChAHkxMq0miOJwS3mUZaMcl4ydMh4TWwU
+         bETe8XsZf9s7m1RTIVJfRJAtHIWpGUExIBh35YMulunfT7SrticrL+7RxUeFzsuU+rAv
+         fy5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cqkzZJEl7/qe/O8J466bPKcuBIvlXvoUrtgOOgCX6r8=;
-        b=XRFX+5JLE4/OeaeJUap7IkPmqgZAPRMmOChukQC6Y6sDBTtnhWTaruSTEAargTWJP0
-         V6LMkL6fc4Wzji7KFjAAqMHda5SnMf5El/OV5M0uIYVGguOz5aD2v2BgYUVUdbQKe1JV
-         m/75CZLI3b6dqPHAZHV3bIlhPF0TvR+zg4BOIi2lJwpOfM+Vs730gwRCZfc91ARgSoUW
-         VSBrUW5ojWjrZ5C1rZNbNJUkfZK/b5xixY4oc4KO3pXl8EiQ9hQsdLAl734KKs2U3JuI
-         vZGb6bkY7mNh+7djq/ry2stMU2Z4gLeJSArBXBB8dV9ssotnouthiba0i7FFKAN4CzEG
-         9ggg==
+        bh=a6UhbdcSfRciNpaU00Qv3gaD9lQ1xfIXxaXQ7/wsO9U=;
+        b=0XHC0qQYkhZk8r3G+chH4IU0lp6p5PQOW+Wj1F5eHNoDJfAox2wiN24x6rFUQ8DhwK
+         04ytuYyQmcnPCLggQOoD7mGaSB3GCNi3J8ynvWjx+K0tAD5R8eiYm44LePaSjeR+71xO
+         itUhD6BK//u1R9yFWZ7EYSrfoVyVqsKLipBVLxuUGCBlDEKR9808awWZ+471w0nynTRT
+         hfPp5iGQQoepAQnvUbi2O/4oVaecTHDGrJVDBaGcKKA0ZVmZDytOnRZohpu9n9RgX/ug
+         qHqtPjfyV8KdyEe1HovKBXMYjhtOl9zGZxK+2EMmylho/BLcdz3E+SYe/5k8j1XR9C96
+         H6Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aJd5aBoG;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=pa5lqMDI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10-20020a0cc3ca000000b0056ea329d455si18330143qvi.16.2023.03.27.10.12.12
+        by mx.google.com with ESMTPS id v29-20020a05622a189d00b003d6cdb3f764si4756844qtc.373.2023.03.27.10.13.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Mar 2023 10:12:12 -0700 (PDT)
+        Mon, 27 Mar 2023 10:13:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=aJd5aBoG;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=pa5lqMDI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pgqOA-00082x-IS; Mon, 27 Mar 2023 13:12:10 -0400
+	id 1pgqPA-0000RC-48; Mon, 27 Mar 2023 13:13:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pgqO8-00082h-OV
- for qemu-devel@nongnu.org; Mon, 27 Mar 2023 13:12:08 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1pgqP6-0000QZ-Tx
+ for qemu-devel@nongnu.org; Mon, 27 Mar 2023 13:13:08 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
- id 1pgqO5-0006vv-Sx
- for qemu-devel@nongnu.org; Mon, 27 Mar 2023 13:12:08 -0400
-Received: by mail-wr1-x431.google.com with SMTP id r11so9538327wrr.12
- for <qemu-devel@nongnu.org>; Mon, 27 Mar 2023 10:12:05 -0700 (PDT)
+ id 1pgqP5-00079w-6s
+ for qemu-devel@nongnu.org; Mon, 27 Mar 2023 13:13:08 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ i5-20020a05600c354500b003edd24054e0so7846210wmq.4
+ for <qemu-devel@nongnu.org>; Mon, 27 Mar 2023 10:13:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1679937124;
+ d=google.com; s=20210112; t=1679937185;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cqkzZJEl7/qe/O8J466bPKcuBIvlXvoUrtgOOgCX6r8=;
- b=aJd5aBoG37HYFehm51vNLgLJWJE5rW7PVR2eCMlnQyEfquAI4aPVaZ9f71X3LEUmtO
- mOA2ladTPbj/FkeH35U7qpVEGleGDdrazUGStwy017mCatbkOkmRKJZp5RgNIRxHmS8V
- wZnAJXwbbRuwG5IMmFgSSAdYc3dotTMX5++JA+vIpik8oTHlgmv5mi7QclKKI1TMOabx
- oTYBEJJtGKP0aCBaVhoW6sCteWAlxg4iAwJw2cnfkcfXAhRUj5h7wMAvGF2/tsL4baW1
- 5ke7SjzPewH+KeIhKYTB/g8nmBL03935F5zoSBxpQO440waoWh52SUA7AvmPUxPSzhRz
- LOCg==
+ bh=a6UhbdcSfRciNpaU00Qv3gaD9lQ1xfIXxaXQ7/wsO9U=;
+ b=pa5lqMDISqsrV31n27P/gSW+D9yGBp0V4VFHi2csDW/vwFfeH3xU2PcSavQCicdZhW
+ pf9Ef/KrtYLfbUg0QvxD80/uu600BC/HzWgyg4OMZSzJqZwitgdUpJe5JgXz5LB18KOM
+ bhLKTv6TFWrWvlFtwRJ3MNdj86x2aI3atT+fGCNgOfHnC/vYS0cfmtHbOhmzhZ2iKiuS
+ QHH1VILyH8wWlfsqW2zzqrvZmlxCUeG5BXNZhW0RawR/pcHsDwewDXmglB7Bmiohw0bE
+ lwwpqQRraGvnoIEO7B8r6qFwiC2+jIqrrIztmooV+AEWmqEqmJMP/QsX+ZS/4JS7hA5g
+ i81w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679937124;
+ d=1e100.net; s=20210112; t=1679937185;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=cqkzZJEl7/qe/O8J466bPKcuBIvlXvoUrtgOOgCX6r8=;
- b=UTlgNVuJ7e4aRS3gMw8gFPNOQeUDBBf75HO6wZY4Tv+BHGxIaSSQ8oPSC2ud+vN1rR
- cQPmQAItC3e2gRADqD9vTv4R7mNaHgiYtPhiPiBsXj6mjwIRbJ7BMJcYIob8dmTKyX4j
- ogCmX5ObkFL/xE67d3WICctOK9x7z+H8pmVCh5celqgVFGnBbtf+pNPLhRTpDwx0rcUM
- +3GCRDYBd6S8EtTH6WQvnV5VClxY1O/FkvFeC5n7dfsc5ONJirAvE8wBWtRssvrmsvfw
- ErAUytow219Mu3QapDN8t5510iNcxW2e9TvqXNTwK7N7EjrieiQfRMvvaY2sB+BEGSTT
- UnDg==
-X-Gm-Message-State: AAQBX9cqk7BTNUM/AI50zIoJJ4BNR961XVbC8JV7i1bxWr5STnOJgsH6
- rUBrfqjYZGb+CjgcQiIgURFn49O5heaHDLak7lRiIw==
-X-Received: by 2002:adf:fc84:0:b0:2cf:f053:a32e with SMTP id
- g4-20020adffc84000000b002cff053a32emr2481854wrr.6.1679937124160; Mon, 27 Mar
- 2023 10:12:04 -0700 (PDT)
+ bh=a6UhbdcSfRciNpaU00Qv3gaD9lQ1xfIXxaXQ7/wsO9U=;
+ b=MPkcIxWbnXf9q/uEuVGxSZOC7H38oNST01YKR2hkxTW9qJ/vtcxxSG+MutzFQtIO+n
+ HqnPnTr6t314A8J/cMWoQkhmypfOlXMPhVhOrtlR0b0JE/0vxbnIjKqNWZ98CtzH2RGw
+ iR13bMQgfm52uObWXMd3oUijgpuCIyysYCT5Uzka0+Rj8wEr4WculcWrzLobty0JsJ2P
+ 25XQcK+ejlqHuaa7R/av14+VLOvMir6mNsyudAm13BVb49iabzZLYt5irYX0iOT6krIB
+ SoglQGOm19Cs6GxEAHwNBAP46IJljZfG3hm9swJZ8NgcQ6Ik29kt6zVIlKB/n1QUdJPC
+ PhLA==
+X-Gm-Message-State: AO0yUKXhL3FAxZ1mKs/EdY00m5MuL0tKGguVXPV8oR2iLp6PxivaMI1j
+ L4aM63aqPq61cuxND/a+Nsg9g7H66TLA4GGddqR5CA==
+X-Received: by 2002:a1c:4c01:0:b0:3ed:a25d:8ae0 with SMTP id
+ z1-20020a1c4c01000000b003eda25d8ae0mr2686578wmf.5.1679937185491; Mon, 27 Mar
+ 2023 10:13:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230324230904.3710289-1-wuhaotsh@google.com>
- <20230324230904.3710289-5-wuhaotsh@google.com>
- <29f7e479-2e2c-a9d6-d5f1-440cdfce0cb7@kaod.org>
-In-Reply-To: <29f7e479-2e2c-a9d6-d5f1-440cdfce0cb7@kaod.org>
+ <20230324230904.3710289-3-wuhaotsh@google.com>
+ <ZB+KK/RuLEOB6+c5@minyard.net>
+In-Reply-To: <ZB+KK/RuLEOB6+c5@minyard.net>
 From: Hao Wu <wuhaotsh@google.com>
-Date: Mon, 27 Mar 2023 10:11:50 -0700
-Message-ID: <CAGcCb13gHDdO=hqo_UztH1=BOZVMbXNYKNKcdVEZmqT8gBuBmg@mail.gmail.com>
-Subject: Re: [PATCH v2 4/7] hw/ipmi: Refactor IPMI interface
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: minyard@acm.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- venture@google.com, Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- hskinnemoen@google.com, titusr@google.com, peter.maydell@linaro.org, 
- Joel Stanley <joel@jms.id.au>, Frederic Barrat <frederic.barrat@fr.ibm.com>
-Content-Type: multipart/alternative; boundary="00000000000088759905f7e4d70d"
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=wuhaotsh@google.com; helo=mail-wr1-x431.google.com
+Date: Mon, 27 Mar 2023 10:12:52 -0700
+Message-ID: <CAGcCb13qXsaRcs6t29OdT4y6=JLpwugxVKntzFpuUTUQ2NYqWw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/7] docs/specs: IPMI device emulation: main processor
+To: minyard@acm.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, venture@google.com, 
+ Avi.Fishman@nuvoton.com, kfting@nuvoton.com, hskinnemoen@google.com, 
+ titusr@google.com, peter.maydell@linaro.org
+Content-Type: multipart/alternative; boundary="00000000000030098c05f7e4db70"
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=wuhaotsh@google.com; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -120,160 +120,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CXy9HX/jW8IE
+X-TUID: C3Sjo11QC42c
 
---00000000000088759905f7e4d70d
+--00000000000030098c05f7e4db70
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi, Cedric
+Thank you. I'll include the change in the next patch set when I refactor
+patch v4 (which might take a while.)
 
-The naming scheme is suggested by Corey in a previous review:
+On Sat, Mar 25, 2023 at 4:56=E2=80=AFPM Corey Minyard <minyard@acm.org> wro=
+te:
 
-https://lists.gnu.org/archive/html/qemu-devel/2021-09/msg02691.html
-
-I originally kept "IpmIBmc" for the host side code talking to BMC but it
-might also cause confusion as well. I'm not sure which name is the best
-here. Maybe Corey can shed some light on this one? Thank you!
-
-Best Regards,
-
-On Mon, Mar 27, 2023 at 5:34=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
-> wrote:
-
-> Hello Hao,
->
-> On 3/25/23 00:09, Hao Wu wrote:
-> > This patch refactors the IPMI interface so that it can be used by both
-> > the BMC side and core-side simulation.
+> On Fri, Mar 24, 2023 at 04:08:59PM -0700, Hao Wu wrote:
+> > From: Havard Skinnemoen <hskinnemoen@google.com>
 > >
-> > Detail changes:
-> > (1) Split IPMIInterface into IPMIInterfaceHost (for host side
-> >      simulation) and IPMIInterfaceClient (for BMC side simulation).
-> > (2) rename handle_rsp -> handle_msg so the name fits both BMC side and
-> >      Core side.
-> > (3) Add a new class IPMICore. This class represents a simulator/externa=
-l
-> >      connection for both BMC and Core side emulation.
-> > (4) Change the original IPMIBmc to IPMIBmcHost, representing host side
-> >      simulation.
-> > (5) Add a new type IPMIBmcClient representing BMC side simulation.
-> > (6) Appy the changes to  the entire IPMI library.
->
-> 'IPMIBmcHost' is a BMC object model (internal or external) and
-> 'IPMIBmcClient' is a host object model ?
->
-> [ ... ]
->
-> > @@ -267,15 +267,15 @@ void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pnor=
-)
-> >    * Instantiate the machine BMC. PowerNV uses the QEMU internal
-> >    * simulator but it could also be external.
-> >    */
-> > -IPMIBmc *pnv_bmc_create(PnvPnor *pnor)
-> > +IPMIBmcHost *pnv_bmc_create(PnvPnor *pnor)
-> >   {
-> >       Object *obj;
+> > This document is an attempt to briefly document the existing IPMI
+> > emulation support on the main processor. It provides the necessary
+> > background for the BMC-side IPMI emulation proposed by the next patch.
 > >
-> >       obj =3D object_new(TYPE_IPMI_BMC_SIMULATOR);
-> >       qdev_realize(DEVICE(obj), NULL, &error_fatal);
-> > -    pnv_bmc_set_pnor(IPMI_BMC(obj), pnor);
-> > +    pnv_bmc_set_pnor(IPMI_BMC_HOST(obj), pnor);
-> >
-> > -    return IPMI_BMC(obj);
-> > +    return IPMI_BMC_HOST(obj);
+> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> > Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> > ---
+> > +* An external BMC simulator or emulator, connected over a chardev
+> > +  (``ipmi-bmc-extern``). `ipmi_sim
+> > +  <
+> https://sourceforge.net/p/openipmi/code/ci//master/tree/lanserv/README.ip=
+mi_sim
+> >`_
 >
-> QEMU PowerNV machines model the host side of OpenPOWER systems which
-> have an Aspeed SoC based BMC for management. The routine above creates
-> an Aspeed *BMC* object model for the PowerNV *host* machine. I find
-> 'IPMIBmcHost' confusing. It shouldn't have a 'Host' suffix I think.
+> Nit, you have a double slash above.
 >
-> 'IPMIBmcClient' sounds ok, or 'IPMIBmcPeer' maybe.
+> Other than that, this does a good job of explaining things.  I'm good
+> with these docs.
 >
-> Thanks,
->
-> C.
->
+> -corey
 >
 
---00000000000088759905f7e4d70d
+--00000000000030098c05f7e4db70
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hi, Cedric<div><br></div><div>The naming scheme is suggest=
-ed by Corey in a previous review:</div><div><br></div><div><a href=3D"https=
-://lists.gnu.org/archive/html/qemu-devel/2021-09/msg02691.html">https://lis=
-ts.gnu.org/archive/html/qemu-devel/2021-09/msg02691.html</a><br></div><div>=
-<br></div><div>I originally kept &quot;IpmIBmc&quot; for the host side code=
- talking to BMC but it might also cause confusion as well. I&#39;m not sure=
- which name is the best here. Maybe Corey can shed some light on this one? =
-Thank you!</div><div><br></div><div>Best Regards,</div></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Mar 27, 2023=
- at 5:34=E2=80=AFAM C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.or=
-g">clg@kaod.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
-ding-left:1ex">Hello Hao,<br>
-<br>
-On 3/25/23 00:09, Hao Wu wrote:<br>
-&gt; This patch refactors the IPMI interface so that it can be used by both=
-<br>
-&gt; the BMC side and core-side simulation.<br>
+<div dir=3D"ltr">Thank you. I&#39;ll include the change in the next patch s=
+et when I refactor patch v4 (which might take a while.)</div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Mar 25, 2023=
+ at 4:56=E2=80=AFPM Corey Minyard &lt;<a href=3D"mailto:minyard@acm.org">mi=
+nyard@acm.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex">On Fri, Mar 24, 2023 at 04:08:59PM -0700, Hao Wu wrote:<br>
+&gt; From: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com" =
+target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
 &gt; <br>
-&gt; Detail changes:<br>
-&gt; (1) Split IPMIInterface into IPMIInterfaceHost (for host side<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 simulation) and IPMIInterfaceClient (for BMC side =
-simulation).<br>
-&gt; (2) rename handle_rsp -&gt; handle_msg so the name fits both BMC side =
-and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Core side.<br>
-&gt; (3) Add a new class IPMICore. This class represents a simulator/extern=
-al<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 connection for both BMC and Core side emulation.<b=
-r>
-&gt; (4) Change the original IPMIBmc to IPMIBmcHost, representing host side=
+&gt; This document is an attempt to briefly document the existing IPMI<br>
+&gt; emulation support on the main processor. It provides the necessary<br>
+&gt; background for the BMC-side IPMI emulation proposed by the next patch.=
 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 simulation.<br>
-&gt; (5) Add a new type IPMIBmcClient representing BMC side simulation.<br>
-&gt; (6) Appy the changes to=C2=A0 the entire IPMI library.<br>
+&gt; <br>
+&gt; Signed-off-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@goo=
+gle.com" target=3D"_blank">hskinnemoen@google.com</a>&gt;<br>
+&gt; Signed-off-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com" targe=
+t=3D"_blank">wuhaotsh@google.com</a>&gt;<br>
+&gt; ---<br>
+&gt; +* An external BMC simulator or emulator, connected over a chardev<br>
+&gt; +=C2=A0 (``ipmi-bmc-extern``). `ipmi_sim<br>
+&gt; +=C2=A0 &lt;<a href=3D"https://sourceforge.net/p/openipmi/code/ci//mas=
+ter/tree/lanserv/README.ipmi_sim" rel=3D"noreferrer" target=3D"_blank">http=
+s://sourceforge.net/p/openipmi/code/ci//master/tree/lanserv/README.ipmi_sim=
+</a>&gt;`_<br>
 <br>
-&#39;IPMIBmcHost&#39; is a BMC object model (internal or external) and<br>
-&#39;IPMIBmcClient&#39; is a host object model ?<br>
+Nit, you have a double slash above.<br>
 <br>
-[ ... ]<br>
+Other than that, this does a good job of explaining things.=C2=A0 I&#39;m g=
+ood<br>
+with these docs.<br>
 <br>
-&gt; @@ -267,15 +267,15 @@ void pnv_bmc_set_pnor(IPMIBmc *bmc, PnvPnor *pno=
-r)<br>
-&gt;=C2=A0 =C2=A0 * Instantiate the machine BMC. PowerNV uses the QEMU inte=
-rnal<br>
-&gt;=C2=A0 =C2=A0 * simulator but it could also be external.<br>
-&gt;=C2=A0 =C2=A0 */<br>
-&gt; -IPMIBmc *pnv_bmc_create(PnvPnor *pnor)<br>
-&gt; +IPMIBmcHost *pnv_bmc_create(PnvPnor *pnor)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0Object *obj;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0obj =3D object_new(TYPE_IPMI_BMC_SIMULATOR);=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_realize(DEVICE(obj), NULL, &amp;error_f=
-atal);<br>
-&gt; -=C2=A0 =C2=A0 pnv_bmc_set_pnor(IPMI_BMC(obj), pnor);<br>
-&gt; +=C2=A0 =C2=A0 pnv_bmc_set_pnor(IPMI_BMC_HOST(obj), pnor);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 return IPMI_BMC(obj);<br>
-&gt; +=C2=A0 =C2=A0 return IPMI_BMC_HOST(obj);<br>
-<br>
-QEMU PowerNV machines model the host side of OpenPOWER systems which<br>
-have an Aspeed SoC based BMC for management. The routine above creates<br>
-an Aspeed *BMC* object model for the PowerNV *host* machine. I find<br>
-&#39;IPMIBmcHost&#39; confusing. It shouldn&#39;t have a &#39;Host&#39; suf=
-fix I think.<br>
-<br>
-&#39;IPMIBmcClient&#39; sounds ok, or &#39;IPMIBmcPeer&#39; maybe.<br>
-<br>
-Thanks,<br>
-<br>
-C.<br>
-<br>
+-corey<br>
 </blockquote></div>
 
---00000000000088759905f7e4d70d--
+--00000000000030098c05f7e4db70--

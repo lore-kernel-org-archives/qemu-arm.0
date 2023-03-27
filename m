@@ -1,114 +1,129 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1446333ejb;
-        Sun, 26 Mar 2023 13:24:18 -0700 (PDT)
-X-Google-Smtp-Source: AK7set9Mq0eDfR4yHCvJg8+zhowpllRWq8Zkkmu9W2c89D6LeviRvJ/OUETnm2r1fJHOZQAPrzuZ
-X-Received: by 2002:a05:622a:1491:b0:3e3:9502:8dfc with SMTP id t17-20020a05622a149100b003e395028dfcmr16192325qtx.9.1679862258142;
-        Sun, 26 Mar 2023 13:24:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679862258; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1906899ejb;
+        Mon, 27 Mar 2023 06:27:30 -0700 (PDT)
+X-Google-Smtp-Source: AK7set/nbVWLGQLNu7cvonwyT4XTPCaTnIaX17B4QSdoA0yflQqNg1pb/Rvg5HLGK4XnsuGM6wLg
+X-Received: by 2002:a05:622a:148e:b0:3a9:818f:db3d with SMTP id t14-20020a05622a148e00b003a9818fdb3dmr20928434qtx.53.1679923650263;
+        Mon, 27 Mar 2023 06:27:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679923650; cv=none;
         d=google.com; s=arc-20160816;
-        b=w+pP9yPzakMR+vNYYinNi14Zc5EBUig2fK01oAoPcfG3Fq+ypJzX9HWQnRGAVMvjq3
-         wg34l/BO+FE40jsqzmbs0BIRCmrte0VsqN2UY99OkRClFSfghriedOB9oWtMBpf/nLiE
-         y1ic4wDDLGOmVYH/SwzbiZMjuWkA0HAjcGICf7/0J6w/H6efD2HR7YYmnFAwtZvEP1jV
-         TtwSwVgn9UV2j+JUEvg9Tf3xq8u1zWFO3FF8lE7NztY4lGYuAbBlmQ+d2tQc2l4zDhZO
-         4Efoz/kK19rdGnUp3Aj0Gz/9jM5B9zL519fv/bW2ktr+H1yZkXDpL2ZUmE64lWRtRFW/
-         h/Wg==
+        b=ZRhoKxVrAVztEAWFaVe2+RgnznAuA7Ibi4XVD8jL9KsFiPMpm0S8Mj2BCQtmF+7JSw
+         TZCk9rBGMPPxHWUSB6mnK/CMUI+DfITiDEAukYqrJv478clRY1uZj8qIb9H1fHdvndLG
+         9q6LSm16STKzCW7wRsGEyrQbcunF38fH/Ce2yHQAGjPBwoF1ejJe77dplajFqbMbWn4v
+         lLDmIohTK4SwPcKXAoOCVwEx5ArTfWqvl/9ZmS56xb8y5PLz9OoWMi6z28G7hJnMRazs
+         crTIrrYCsVQiNO2o6ssqswR1rGiO9W/N85gbpu99J8Ct34sWhc7eh8lOLmr1x8Wroh54
+         AudQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
-        b=YlepWad2Z/PO3l0zM9OMY2ivH2lOC39fMP6empcHVu3WPhkcKHH5GZ/MOqt0ibaC6y
-         tRZStgsxO0nt2reqkSCGe4F+hfGNQYsULHF+P5Nd2UTnJXHTJ9xL1thRbvZz7wVWvFwb
-         0puZ5H9kTBTGFiIwZ0mLh+eVhlhqqyrt9ovodbXPUlVWJpAnHEL3QzG/MRybS4CNwAkX
-         ZiyyWHVJ0XhSUHf2X/KVe8crJdHv+i1P7hv4OzQv4ouLEas+mkJ+B3TmJ5+/Tt8FYybP
-         Zz2/AbnZzWeEnOdHlcDwOqV7XjZNVbwlkcOj4nU1cas8oJG2QkafwtyNPRN5Vw27qk8f
-         WqOA==
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=tIV5AmjSgvW36JeCgOM80cPe8HGqbh3Z/tQwUTluUJ8=;
+        b=vvdd9bxbLcLmYuahZSlGVR34ok/ApvnUJ4HWKIMIOzHxmYt+biuTGZPioc4eRpXMfi
+         6Xr9DS+j03mI2CahEf9yyB6vq2QcFn8swon6uI5lPmAB3tJzYlwa8tfzwENDWfm6xv8d
+         ZpW2E314Gf+vcIYit76AJanVruQ+4kbp9DOaURUqab/vt07/bQoqYWyicd9PrDKdwrLu
+         u6DfK1e3jRNoLRN5ixABfwpwvz3YhCd0fn5NDk7BvaJG+/pRD4hKQL/GolYcaLFdkwnS
+         fu/A1kwy0yMQvW/Bv9lvQ4gRjcG7HYyUBFumnGoC+qGEGPGjPPcqDlyN0MpK4KdEbxvb
+         ytOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fJwFQC9m;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gc+kZDXz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o18-20020ac87c52000000b003df3af3305bsi8543255qtv.533.2023.03.26.13.24.18
+        by mx.google.com with ESMTPS id d64-20020a376843000000b007467d89155dsi14821822qkc.445.2023.03.27.06.27.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 26 Mar 2023 13:24:18 -0700 (PDT)
+        Mon, 27 Mar 2023 06:27:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=fJwFQC9m;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gc+kZDXz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pgWtd-0001pw-DD; Sun, 26 Mar 2023 16:23:21 -0400
+	id 1pgmsQ-00032l-KN; Mon, 27 Mar 2023 09:27:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgWtb-0001oB-ET; Sun, 26 Mar 2023 16:23:19 -0400
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1pgWtZ-0003ol-Nm; Sun, 26 Mar 2023 16:23:19 -0400
-Received: by mail-lj1-x233.google.com with SMTP id t14so6895884ljd.5;
- Sun, 26 Mar 2023 13:23:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679862196;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
- b=fJwFQC9marXJpg9H5cQS/7x7mMJvZzAVnxAPyaK8+/dGpbPHUQUO8upbsf/qFLRhBi
- JHWe3bsYycGQ+NIQX18W9ESCtxkLfyQ5LgkJwyN5A5fpyUmI4Nq2w1EQ3cGaiDcyCsUA
- ijZKpr0ae7DzfUCx6aRLNaAmUhIQ0n+PT2fdKEEz9MXPeFVmHcp/p+csFFykOZSKaU8b
- 0s/SEAHlAw6rZkrlz1RcL6dPfsFu8fWAvaJg/qRAFpnGUzJixUTVjJKwN7Dy0jPm3BzW
- 2RLJIfSflLF64lpQs4BkUzN0lufQWHYgcMb1UAt5xGzH8pF0dKevTPvunqTKLj3WD2rl
- AfZA==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pgmsK-00031q-PQ
+ for qemu-devel@nongnu.org; Mon, 27 Mar 2023 09:27:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pgmsI-0001hz-T5
+ for qemu-devel@nongnu.org; Mon, 27 Mar 2023 09:27:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1679923622;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tIV5AmjSgvW36JeCgOM80cPe8HGqbh3Z/tQwUTluUJ8=;
+ b=gc+kZDXziCrCr60xHmsml/RbFTu5Yr/giUHKH1xzIdp8IjfWXurvphvhB0if3MBt/ayY1N
+ OQh/hioElWNSL63iDEyZXFvxeLHZffV4DM/QdaJjWfwPbmtfpfEZq/SvO5ofig1DCceRlo
+ kdeyAa8Q7V56crn7xUFh4jZg6fQbCjA=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-630-AnaF0ZRQNTSihsQqQ77tsw-1; Mon, 27 Mar 2023 09:26:58 -0400
+X-MC-Unique: AnaF0ZRQNTSihsQqQ77tsw-1
+Received: by mail-qt1-f197.google.com with SMTP id
+ n10-20020a05622a11ca00b003e4e30c6c98so3255405qtk.19
+ for <qemu-devel@nongnu.org>; Mon, 27 Mar 2023 06:26:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679862196;
+ d=1e100.net; s=20210112; t=1679923618;
  h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gibIWHp2DjKhjqmF4CDIwlJs//RfjUNBpQ15/PPbVXI=;
- b=YwhoUn+W4ZPHhsGozNSkA5fb3amm0P/W8Id9BlHFq2AcGypJs6MffZdmO1xVZmm6qh
- ht/zJNahrYwqrkfx+rVfw1+6PMGE8wZmIMzZ8+bcB0rwrbPLIbnJl4oIbkhe0XRTHYjs
- UuhyxtKIoDsLHYFXrm5yzy2/6/2+e18lYMvu7BQPTXtKXSz/ItNPATOqcE7+V1co270t
- E5v1yKW1xBjscOuLz5WXTacGYvB80ujqU561gQ5LIUk+PU3wnHhbm3zrx5B37LQtKoWS
- uj2SHcEoRxo25LmvNtw60fA2dW+em2drxkeOnkaT3wwua2OSnyyfII1LaF3OSs+PpyG8
- wZSQ==
-X-Gm-Message-State: AAQBX9dSzWwhrKWFzHGax8TM1AQO1nyabHdKc1hRkEmMh29F6hD1AFZl
- rbhIy7wBJtN/hW64D4+gZTSMoWGogZr5UFCx
-X-Received: by 2002:a2e:7405:0:b0:295:9d05:4a56 with SMTP id
- p5-20020a2e7405000000b002959d054a56mr2737623ljc.9.1679862195862; 
- Sun, 26 Mar 2023 13:23:15 -0700 (PDT)
-Received: from penguin.lxd (213-67-202-254-no43.tbcn.telia.com.
- [213.67.202.254]) by smtp.googlemail.com with ESMTPSA id
- u3-20020a2e9f03000000b002a2b9d9429esm1427773ljk.117.2023.03.26.13.23.15
+ bh=tIV5AmjSgvW36JeCgOM80cPe8HGqbh3Z/tQwUTluUJ8=;
+ b=uBIBv/57CcY1c44LBX/5erpz9jbc+tMcxuShBCoFL+f+tvNMgHLiUpGkYxN96J5vS1
+ T5cMxJ32mfqykFZYaSkElayiBARlMD41zLEA56tTy0kj9kHvBKP/txpRia6kk74hLt2y
+ HsLvNrd8Xz4kfiDQcYGtSxZysEsCd3qHIk5NTQZwELqTps1TPe7p8KXZymWM4D9VrRWU
+ Y2WipZR+GH99d7iBOkqDRCJaJHJs63dexcdjU7yOElnqXyCzawZ2UDdDzWCz89SyInXc
+ yXwOLZ61ljSZvaJUI3OH8Sq4XqIrDMs3TqRsy7v8SuRib8NqKlpMzmVnh/8afwqXqiTe
+ WUoQ==
+X-Gm-Message-State: AO0yUKWtAnMdk6nlPfK8v+wMOsFu1J2Ptbl1piK+Q0dWvMtbs4NudI3E
+ 80GfyxRGYtxtszaLZVFHG1FNT57NOVjfihx3OZrmMg4VNS6LZxy5DY3xQD558bCuIGwQnor0ZYQ
+ Dewv1/GXhnfNuCRU=
+X-Received: by 2002:a05:622a:14c8:b0:3de:4296:2bcc with SMTP id
+ u8-20020a05622a14c800b003de42962bccmr21908051qtx.49.1679923618028; 
+ Mon, 27 Mar 2023 06:26:58 -0700 (PDT)
+X-Received: by 2002:a05:622a:14c8:b0:3de:4296:2bcc with SMTP id
+ u8-20020a05622a14c800b003de42962bccmr21907998qtx.49.1679923617633; 
+ Mon, 27 Mar 2023 06:26:57 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+ by smtp.gmail.com with ESMTPSA id
+ t126-20020ae9df84000000b0073b4a55a2d1sm16704086qkf.124.2023.03.27.06.26.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Mar 2023 13:23:15 -0700 (PDT)
-From: Strahinja Jankovic <strahinjapjankovic@gmail.com>
-X-Google-Original-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH v3 2/4] hw/arm: Add WDT to Allwinner-A10 and Cubieboard
-Date: Sun, 26 Mar 2023 22:22:54 +0200
-Message-Id: <20230326202256.22980-3-strahinja.p.jankovic@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
-References: <20230326202256.22980-1-strahinja.p.jankovic@gmail.com>
+ Mon, 27 Mar 2023 06:26:56 -0700 (PDT)
+Date: Mon, 27 Mar 2023 15:26:51 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
+ wangyanan55@huawei.com, palmer@dabbelt.com, alistair.francis@wdc.com,
+ bin.meng@windriver.com, thuth@redhat.com, lvivier@redhat.com,
+ pbonzini@redhat.com, ajones@ventanamicro.com, berrange@redhat.com,
+ dbarboza@ventanamicro.com, yihyu@redhat.com, shan.gavin@gmail.com
+Subject: Re: [PATCH v4 0/3] NUMA: Apply cluster-NUMA-node boundary for
+ aarch64 and riscv machines
+Message-ID: <20230327152651.41f22ac0@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230317062542.61061-1-gshan@redhat.com>
+References: <20230317062542.61061-1-gshan@redhat.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.36; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::233;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-lj1-x233.google.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,94 +138,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FBR9oImDDrI6
+X-TUID: crTppD4rPiQp
 
-This patch adds WDT to Allwinner-A10 and Cubieboard.
-WDT is added as an overlay to the Timer module memory map.
+On Fri, 17 Mar 2023 14:25:39 +0800
+Gavin Shan <gshan@redhat.com> wrote:
 
-Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+> For arm64 and riscv architecture, the driver (/base/arch_topology.c) is
+> used to populate the CPU topology in the Linux guest. It's required that
+> the CPUs in one cluster can't span mutiple NUMA nodes. Otherwise, the Linux
+> scheduling domain can't be sorted out, as the following warning message
+> indicates. To avoid the unexpected confusion, this series attempts to
+> warn about such kind of irregular configurations.
+> 
+>    -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+>    -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+>    -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+>    -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
+> 
+>    ------------[ cut here ]------------
+>    WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
+>    Modules linked in:
+>    CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
+>    pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>    pc : build_sched_domains+0x284/0x910
+>    lr : build_sched_domains+0x184/0x910
+>    sp : ffff80000804bd50
+>    x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
+>    x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
+>    x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
+>    x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
+>    x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
+>    x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
+>    x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
+>    x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
+>    x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
+>    x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
+>    Call trace:
+>     build_sched_domains+0x284/0x910
+>     sched_init_domains+0xac/0xe0
+>     sched_init_smp+0x48/0xc8
+>     kernel_init_freeable+0x140/0x1ac
+>     kernel_init+0x28/0x140
+>     ret_from_fork+0x10/0x20
+> 
+> PATCH[1] Warn about the irregular configuration if required
+> PATCH[2] Enable the validation for aarch64 machines
+> PATCH[3] Enable the validation for riscv machines
+> 
+> v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01226.html
+> v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01080.html
+> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00886.html
+> 
+> Changelog
+> =========
+> v4:
+>   * Pick r-b and ack-b from Daniel/Philippe                   (Gavin)
+>   * Replace local variable @len with possible_cpus->len in
+>     validate_cpu_cluster_to_numa_boundary()                   (Philippe)
+> v3:
+>   * Validate cluster-to-NUMA instead of socket-to-NUMA
+>     boundary                                                  (Gavin)
+>   * Move the switch from MachineState to MachineClass         (Philippe)
+>   * Warning instead of rejecting the irregular configuration  (Daniel)
+>   * Comments to mention cluster-to-NUMA is platform instead
+>     of architectural choice                                   (Drew)
+>   * Drop PATCH[v2 1/4] related to qtests/numa-test            (Gavin)
+> v2:
+>   * Fix socket-NUMA-node boundary issues in qtests/numa-test  (Gavin)
+>   * Add helper set_numa_socket_boundary() and validate the
+>     boundary in the generic path                              (Philippe)
+> 
+> Gavin Shan (3):
+>   numa: Validate cluster and NUMA node boundary if required
+>   hw/arm: Validate cluster and NUMA node boundary
+>   hw/riscv: Validate cluster and NUMA node boundary
+> 
+>  hw/arm/sbsa-ref.c   |  2 ++
+>  hw/arm/virt.c       |  2 ++
+>  hw/core/machine.c   | 42 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/riscv/spike.c    |  2 ++
+>  hw/riscv/virt.c     |  2 ++
+>  include/hw/boards.h |  1 +
+>  6 files changed, 51 insertions(+)
+> 
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
----
- docs/system/arm/cubieboard.rst | 1 +
- hw/arm/Kconfig                 | 1 +
- hw/arm/allwinner-a10.c         | 7 +++++++
- include/hw/arm/allwinner-a10.h | 2 ++
- 4 files changed, 11 insertions(+)
-
-diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
-index 8d485f5435..58c4a2d3ea 100644
---- a/docs/system/arm/cubieboard.rst
-+++ b/docs/system/arm/cubieboard.rst
-@@ -15,3 +15,4 @@ Emulated devices:
- - USB controller
- - SATA controller
- - TWI (I2C) controller
-+- Watchdog timer
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b5aed4aff5..ec15248536 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -325,6 +325,7 @@ config ALLWINNER_A10
-     select ALLWINNER_A10_PIC
-     select ALLWINNER_A10_CCM
-     select ALLWINNER_A10_DRAMC
-+    select ALLWINNER_WDT
-     select ALLWINNER_EMAC
-     select ALLWINNER_I2C
-     select AXP209_PMU
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index b7ca795c71..b0ea3f7f66 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -38,6 +38,7 @@
- #define AW_A10_EHCI_BASE        0x01c14000
- #define AW_A10_OHCI_BASE        0x01c14400
- #define AW_A10_SATA_BASE        0x01c18000
-+#define AW_A10_WDT_BASE         0x01c20c90
- #define AW_A10_RTC_BASE         0x01c20d00
- #define AW_A10_I2C0_BASE        0x01c2ac00
- 
-@@ -92,6 +93,8 @@ static void aw_a10_init(Object *obj)
-     object_initialize_child(obj, "mmc0", &s->mmc0, TYPE_AW_SDHOST_SUN4I);
- 
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_AW_RTC_SUN4I);
-+
-+    object_initialize_child(obj, "wdt", &s->wdt, TYPE_AW_WDT_SUN4I);
- }
- 
- static void aw_a10_realize(DeviceState *dev, Error **errp)
-@@ -203,6 +206,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, AW_A10_I2C0_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0, qdev_get_gpio_in(dev, 7));
-+
-+    /* WDT */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
- }
- 
- static void aw_a10_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index 095afb225d..cd1465c613 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -13,6 +13,7 @@
- #include "hw/misc/allwinner-a10-ccm.h"
- #include "hw/misc/allwinner-a10-dramc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/watchdog/allwinner-wdt.h"
- #include "sysemu/block-backend.h"
- 
- #include "target/arm/cpu.h"
-@@ -41,6 +42,7 @@ struct AwA10State {
-     AwSdHostState mmc0;
-     AWI2CState i2c0;
-     AwRtcState rtc;
-+    AwWdtState wdt;
-     MemoryRegion sram_a;
-     EHCISysBusState ehci[AW_A10_NUM_USB];
-     OHCISysBusState ohci[AW_A10_NUM_USB];
--- 
-2.30.2
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 

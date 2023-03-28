@@ -1,178 +1,243 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp369544ejb;
-        Mon, 13 Feb 2023 08:59:36 -0800 (PST)
-X-Received: by 2002:a17:90b:1896:b0:230:9f49:4334 with SMTP id mn22-20020a17090b189600b002309f494334mr27932299pjb.31.1676307576616;
-        Mon, 13 Feb 2023 08:59:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676307576; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2509504ejb;
+        Tue, 28 Mar 2023 02:35:00 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bkq3DzATEE1yge+PPz9w3xY0yvKR+8zEn4NnONWsCz6tihmOeicqX1IltYzC41vfZTDhP1
+X-Received: by 2002:a05:6214:2388:b0:579:5dbc:ab8b with SMTP id fw8-20020a056214238800b005795dbcab8bmr24975681qvb.52.1679996100092;
+        Tue, 28 Mar 2023 02:35:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679996100; cv=none;
         d=google.com; s=arc-20160816;
-        b=TYJP7InyklJfezAd+mqt+u1AbWaGAzvWTuqaCdeU88DQW0Oxlbno5DExDX+g9x5/R3
-         PClBwwT9GPVm7oVco3J9EFU9CFA+ngtCilHdghykykKlIcwYKwp/NQEE59EIoOHngbMb
-         xWMK8My6lYVrWUff4jTsLrV1UftV99dhHTobZd7htuHi++T8KpGKRIbP3yy8gbdCzAqa
-         9/DYeg959pVA1iTwIwTS9GPHwb32rdbZpsD6/GR1woLUVYPMxa0nQ1FEXHc2LTU1uVUJ
-         0HWWMNcD+4aMnrsQzcunQDRFxzlYzRx0vDLIA5Jm0o5uWFgvQG5igUIju78AlAQO6hR7
-         VhZw==
+        b=SH+AIwmZoUbhOKlClYPZfQIaCGVY05WH0j9V2DceSEE9cJyvl2prg6d2YBNRAU6zgV
+         XyNjrr5flsd1dBH4Ikn+0f2Tzw2UDy8L5+AEm6U7aZl2BDzVjhe9xIr/o6xoBSaXXMsC
+         F/xVonYhD3V4Pc40k7MSyaCX1T/B8+im44cjXT/8cnJuTD+IC0oWL/kySV8p4/Dy8+Ek
+         m4QJC8z6fp7qPG0SWNys32wPQlNBJ8lC2NuSYtGV/oZtSMXzUtwUUvMvPPVmqe0xcuFp
+         yw0Q+jBg9tyjg7V7m2q4nXs+JIbxxXoMjje+QF+kchIjLU9KQUi4CjIeqFXrIq4ruOjc
+         3jig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=NsvtVvw7T1GMc9kMqiVnYI0aKhZu9oU9cluMSV24Bbc=;
-        b=kOZOHvW4wrZKGWWxCxyNO/oibSGPOL+HrhNgIL0LrnEYsKhjkra2F7njDGc10nKV2T
-         FwwJvPQtHCINsFhVRAPC3IVfo1Ai+wtiY4UEGPpsMVRoneX2xTDJvxvKoAsJhwdG2tjE
-         vq+5YHRGB3FmF3M2xp6S6RBg/cVyCx37p3yV5sTY1Sp0UGLxgGwzUtNewNpvDuCKj7VR
-         c53UlURlW7IYhwmP8sq9uX6pAElOjOwisaXmZtkiVLb2xmkYgpCy3Yh4BuLXpbeULpkO
-         DWBLwKCktmztObPAskzyp60d3Up3UJ+zH5HOafGX/l4r6165/qQ5vflSYB6szdoPmDCx
-         mxfQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=M9UTbfuV4KIr39wHK1mQkt25e/f5WxE4YQdfYqU8CTE=;
+        b=bSVsmo+k6HsFJCFijjFolOky8xwL2NCw/LYdicULRLRjyva/TOUrkni9QLy1AWRhiP
+         Z6lYe1Vgvf6MwaVSTrMpXeQ1H6RMFl+uqKqdmC3oQLLSjrweQXSHnMvJsgQId8ZsfVH7
+         nmvGO9E4vLgpGqZ9neWNYEERLR7lpeeU7KcstxCR0lH38q2ziZasUJbHcvmwf4W3noqn
+         nA501h8kI8cxqToxUhRMvUlJ+q3lYff3WWITDZkjeDEE6PRLVW+ka25eMi5A7ygOqrC1
+         27tdkYpCGw6G1F4gN8oTHT4XmIBo/GY8eQI1MsF6NvVP/xLzpzL2wasrYQlgvji5Yxws
+         flkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PA6gOXQ9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u22-20020a17090a0c5600b00228e5d8a8fdsor6768220pje.15.2023.02.13.08.59.36
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SjInGqOm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p16-20020a0cfd90000000b0056cbb225837si19618688qvr.274.2023.03.28.02.34.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 Feb 2023 08:59:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Mar 2023 02:35:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PA6gOXQ9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SjInGqOm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ph5it-0001ra-U1; Tue, 28 Mar 2023 05:34:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ph5it-0001rH-43; Tue, 28 Mar 2023 05:34:35 -0400
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1ph5ir-0000gZ-Ce; Tue, 28 Mar 2023 05:34:34 -0400
+Received: by mail-oa1-x29.google.com with SMTP id
+ 586e51a60fabf-17786581fe1so12044994fac.10; 
+ Tue, 28 Mar 2023 02:34:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=NsvtVvw7T1GMc9kMqiVnYI0aKhZu9oU9cluMSV24Bbc=;
-        b=PA6gOXQ9Npf/QsQ5qXhZbIjfiBjehHiDP98K8KjDMBFzZiM+DUTiaj/xI78daqfUtV
-         exC5V07HW9ygnVNOe+mQFmtyGKNAVm45y6DFIID4Z00VSX40hpkmQ4PDdD2gt8ShIzlN
-         Wp1iGJxcgXngC4XvUe5iUMxZykJUKZDn35U/4NClzdULiFcVzT4IUMVB7bTL7OsjFDRm
-         CQPOUPBgpvzQntX1OvFHyQ8hZtzuX5DB8b0wLT3k9ope7kv6QASSJMPnkLnud4vSXHAe
-         EGZVJFXuL95ELsTclQ+Yi6LwYT86q3Yp2ZoWR2N4T4f6coLiToLx6b9UcLvZ9zh+2MrZ
-         85Kw==
+ d=gmail.com; s=20210112; t=1679996071;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=M9UTbfuV4KIr39wHK1mQkt25e/f5WxE4YQdfYqU8CTE=;
+ b=SjInGqOm30IxMry9aBVlVtgFFy9ynNQHzIG8IAsAS7lq6nIpiMAb7G3pzYroHL7R9j
+ nTBIfv1SBhzVy/eky4c/G6VyT2SgbIUGUJ9jVotXOhQUOElzAL3pPX2t44THZBG9Uwbg
+ Z8ffujoesHG+ApR20ZoAtKbtH+/VT/1DZ57rx+J599HxXQr3ZgDCVcpSYO3fIFLDlN0B
+ Bb4UrFAd0J8xrZ0diYjkhGTBvtFcI4pm4HopBOG/KNbekHH8P0WTHG5nDokO62yE8o2h
+ f2+yABiGseJ0b/FPqHQYkBJ8yQ5p/bYJ2K7tTpzTdLsByXjmDQsXw6ckpFo0QramCLD3
+ kdGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NsvtVvw7T1GMc9kMqiVnYI0aKhZu9oU9cluMSV24Bbc=;
-        b=Rwv8PF29tlocMmJVF4eVNQdnsE1JubaGSU+ye4ae9HDfSvFngpUBbb+dJSlVON9jy0
-         1Ko8LmF68yZQuj5wQz7uEFlySxzDvp1tNAtSMdCV6gZyANbLpwX6XdpMxxe+7ugMxFXj
-         9hMmgPI60kubwS6b5hN7S+qeNoUs5CWGx90QK9mtnzdXoia35/C8yy+uLixnez+GzolU
-         c7FoOc0S9xVOKUujKVGfjGo+ZHaXEaaBH2q8s0JQmtTeiGCyQrGavqgEdZvnA8QXM1oG
-         SXDN64OVWx6ZqA2p9fnFos0qw2r02XG+ZAPS8vY+hcp/f4JVRSwxTBuO3kJglm/lkEdT
-         Bcdg==
-X-Gm-Message-State: AO0yUKXdpKft2EiPKyvq/gXTMpr8j0avKPtihlewhJ2CTsW5Ms+YL/a4
-	dCJygaRBGUbgExQQIR3KXvYsIJuDKqFkWUMoEJ0OLONC
-X-Google-Smtp-Source: AK7set9B2He/riW52EJ9DOMBhNIHTE9r2V8WCim/fYUAsYxzSxXz1HNe+BGykFh0iYpCP38+mwoQ4YEzkEaFp1fGstI=
-X-Received: by 2002:a17:90a:3cc5:b0:229:fe24:91c with SMTP id
- k5-20020a17090a3cc500b00229fe24091cmr4676856pjd.16.1676307576004; Mon, 13 Feb
- 2023 08:59:36 -0800 (PST)
+ d=1e100.net; s=20210112; t=1679996071;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=M9UTbfuV4KIr39wHK1mQkt25e/f5WxE4YQdfYqU8CTE=;
+ b=a7ZmpsQmcBhL9h/v9QATH3wCvjiMe8F43vOKoXtOhnPWxpxw/XSTBpphhx1gU+QHk1
+ I3ilj5IQVTfOj0cEzvWSoelgZnhMRIX57PVMCo8EK/gJVkfXZ/Hhs4w5JQmHkUR6T2XE
+ u/NnyFf9P/DyxgkHLbUhek2DijJ0J60Em2b0WdixRAQABVOe7PSjXXHcws9PDVCWRt48
+ IbbBjUXTzSL6u9v/IqwEJwPQX9GD6lo4DRDgodC29vnOTSoDty0c9KKjWwA9NoDohZ1E
+ 72L9dEwxUDkmD7iWKZIGrOhKTr4Wir+CseEoqdIIvQxrMFxcj3MXevJZPyh6mtu5gxy2
+ 2Qnw==
+X-Gm-Message-State: AO0yUKW7KCw1jnVbSkhtBuGTujas+HfrvYUz6TvECrbnJ1X0qGO45OGm
+ fFc9jyrOcNWM+N4KmSkXPJk=
+X-Received: by 2002:a05:6870:b622:b0:177:badc:6777 with SMTP id
+ cm34-20020a056870b62200b00177badc6777mr9454086oab.44.1679996071379; 
+ Tue, 28 Mar 2023 02:34:31 -0700 (PDT)
+Received: from [192.168.68.107] ([177.95.89.231])
+ by smtp.gmail.com with ESMTPSA id
+ g13-20020a056830160d00b0069fa35f05aesm6870779otr.28.2023.03.28.02.34.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Mar 2023 02:34:31 -0700 (PDT)
+Message-ID: <49e58c51-fca4-6b6f-db4a-27e4cfefacd4@gmail.com>
+Date: Tue, 28 Mar 2023 06:34:28 -0300
 MIME-Version: 1.0
-References: <20230202211129.984060-1-aaron@os.amperecomputing.com> <20230202211129.984060-7-aaron@os.amperecomputing.com>
-In-Reply-To: <20230202211129.984060-7-aaron@os.amperecomputing.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Feb 2023 16:59:24 +0000
-Message-ID: <CAFEAcA_Vyi7EaEC92WZGT0vujxuiUoZLorXdVhux8A2PASsWeQ@mail.gmail.com>
-Subject: Re: [PATCH 6/7] target/arm: Implement v8.3 FPAC and FPACCOMBINE
-To: Aaron Lindsay <aaron@os.amperecomputing.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	Richard Henderson <richard.henderson@linaro.org>, Vincent Dehors <vincent.dehors@smile.fr>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: elZ610xEJIfD
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+References: <20230323204414.423412-1-danielhb413@gmail.com>
+ <20230323204414.423412-2-danielhb413@gmail.com> <87zg7x2wca.fsf@pond.sub.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <87zg7x2wca.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::29;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x29.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d9T35HWXf5B3
 
-On Thu, 2 Feb 2023 at 21:13, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
->
-> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> ---
->  target/arm/pauth_helper.c | 26 ++++++++++++++++++++++++++
->  target/arm/syndrome.h     |  6 ++++++
->  2 files changed, 32 insertions(+)
->
-> diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
-> index 66dc90a289..3a2772de0e 100644
-> --- a/target/arm/pauth_helper.c
-> +++ b/target/arm/pauth_helper.c
-> @@ -385,6 +385,21 @@ static uint64_t pauth_original_ptr(uint64_t ptr, ARMVAParameters param)
->      return deposit64(ptr, bot_pac_bit, top_pac_bit - bot_pac_bit, extfield);
->  }
->
-> +static G_NORETURN
-> +void pauth_fail_exception(CPUARMState *env, int error_code)
-> +{
-> +    int target_el = arm_current_el(env);
-> +    if (target_el == 0) {
-> +        uint64_t hcr = arm_hcr_el2_eff(env);
-> +        if (arm_is_el2_enabled(env) && (hcr & HCR_TGE))
-> +            target_el = 2;
-> +        else
-> +            target_el = 1;
-> +    }
-> +
-> +    raise_exception_ra(env, EXCP_UDEF, syn_pacfail(error_code), target_el, GETPC());
 
-This won't work -- you must call GETPC() from the top-level helper
-function directly called from JITted code, so that it can get the
-PC of the callsite in the JITted code. Otherwise you'll get a PC
-somewhere inside QEMU's C code, which won't do the right thing.
-This is why pauth_check_trap() takes an 'ra' argument (for
-'return address') and all the top level helper functions call
-GETPC() to get the value to pass.
 
-> +}
-> +
->  static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
->                             ARMPACKey *key, bool data, int keynumber,
->                             bool is_combined)
-> @@ -403,6 +418,17 @@ static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
->          uint64_t xor_mask = MAKE_64BIT_MASK(bot_bit, top_bit - bot_bit + 1) &
->              ~MAKE_64BIT_MASK(55, 1);
->          result = ((ptr ^ pac) & xor_mask) | (ptr & ~xor_mask);
-> +        if (cpu_isar_feature(aa64_fpac_combine, env_archcpu(env)) ||
-> +                (cpu_isar_feature(aa64_fpac, env_archcpu(env)) &&
-> +                 !is_combined)) {
-> +            int fpac_top = param.tbi ? 55 : 64;
-> +            uint64_t fpac_mask = MAKE_64BIT_MASK(bot_bit, fpac_top - bot_bit);
-> +            test = (result ^ sextract64(result, 55, 1)) & fpac_mask;
-> +            if (unlikely(test)) {
-> +                int error_code = ((data ? 1 : 0) << 1) | (keynumber);
-> +                pauth_fail_exception(env, error_code);
-> +            }
-> +        }
->      } else {
->          test = (pac ^ ptr) & ~MAKE_64BIT_MASK(55, 1);
->          if (unlikely(extract64(test, bot_bit, top_bit - bot_bit))) {
-> diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-> index 73df5e3793..885a85735c 100644
-> --- a/target/arm/syndrome.h
-> +++ b/target/arm/syndrome.h
-> @@ -48,6 +48,7 @@ enum arm_exception_class {
->      EC_AA64_SMC               = 0x17,
->      EC_SYSTEMREGISTERTRAP     = 0x18,
->      EC_SVEACCESSTRAP          = 0x19,
-> +    EC_PACFAIL                = 0x1c,
->      EC_SMETRAP                = 0x1d,
->      EC_INSNABORT              = 0x20,
->      EC_INSNABORT_SAME_EL      = 0x21,
-> @@ -221,6 +222,11 @@ static inline uint32_t syn_smetrap(SMEExceptionType etype, bool is_16bit)
->          | (is_16bit ? 0 : ARM_EL_IL) | etype;
->  }
->
-> +static inline uint32_t syn_pacfail(int error_code)
-> +{
-> +    return (EC_PACFAIL << ARM_EL_EC_SHIFT) | error_code;
+On 3/28/23 04:01, Markus Armbruster wrote:
+> Daniel Henrique Barboza <danielhb413@gmail.com> writes:
+> 
+>> At this moment, arm_load_dtb() can free machine->fdt when
+>> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+>> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+>> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+>> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+>> arm_load_dtb() will make machine->fdt point to an invalid memory region.
+>>
+>> After the command 'dumpdtb' were introduced a couple of releases ago,
+>> running it with any ARM machine that uses arm_load_dtb() will crash
+>> QEMU.
+>>
+>> Let's enable all arm_load_dtb() callers to use dumpdtb properly. Instead
+>> of freeing 'fdt', assign it back to ms->fdt.
+>>
+>> Note that all current callers (sbsa-ref.c, virt.c, xlnx-versal-virt.c)
+>> are assigning ms->fdt before arm_load_dtb() is called, regardless of
+>> whether the user is inputting an external FDT via '-dtb'. To avoid
+>> leaking the board FDT if '-dtb' is used (since we're assigning ms->fdt
+>> in the end), free ms->fdt before load_device_tree().
+>>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: qemu-arm@nongnu.org
+>> Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
+>> Reported-by: Markus Armbruster <armbru@redhat.com>i
+>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> ---
+>>   hw/arm/boot.c | 10 +++++++++-
+>>   1 file changed, 9 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>> index 50e5141116..de18c0a969 100644
+>> --- a/hw/arm/boot.c
+>> +++ b/hw/arm/boot.c
+>> @@ -549,6 +549,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>               goto fail;
+>>           }
+>>   
+>> +        /*
+>> +         * If we're here we won't be using the ms->fdt from the board.
+>> +         * We'll assign a new ms->fdt at the end, so free it now to
+>> +         * avoid leaking the board FDT.
+>> +         */
+>> +        g_free(ms->fdt);
+>> +
+> 
+> "We will" is not true: we will not if we goto fail.  Leaves ms->fdt
+> dangling, doesn't it?
 
-You need ARM_EL_IL here too, I think.
+We can postpone this g_free() to execute after "if (!fdt) {}" to be sure that we're
+not freeing ms->fdt right before 'goto fail'.
 
-I would suggest that you make the syn_pacfail() function take
-two arguments (bool data and int keynumber), and put them in to
-bits 0 and 1 in this function. That avoids the need to
-construct an error code at the callsite.
+> 
+>>           fdt = load_device_tree(filename, &size);
+>>           if (!fdt) {
+>>               fprintf(stderr, "Couldn't open dtb file %s\n", filename);
+>                 g_free(filename);
+>                 goto fail;
+>             }
+>             g_free(filename);
+>         } else {
+>             fdt = binfo->get_dtb(binfo, &size);
+>             if (!fdt) {
+>                 fprintf(stderr, "Board was unable to create a dtb blob\n");
+>                 goto fail;
+>             }
+> 
+> If we succeed, we'll assign @fdt to ms->fdt (next hunk).  Won't this
+> leak old ms->fdt?
 
-> +}
-> +
->  static inline uint32_t syn_pactrap(void)
->  {
->      return EC_PACTRAP << ARM_EL_EC_SHIFT;
-> --
-> 2.25.1
 
-thanks
--- PMM
+For all callers binfo->get_dtb() is returning ms->fdt, i.e. this line:
+
+              fdt = binfo->get_dtb(binfo, &size);
+
+Is equal to this:
+
+              fdt = ms->fdt;
+
+And this is why we can't unconditionally do a g_free(ms->fdt).
+
+
+I believe we can improve the ARM boot code to not create ms->fdt at init(),
+leaving it unassigned, and make get_dtb() return the machine FDT on a common
+"void *" pointer. That would spare us from having go g_free(ms->fdt) to avoid
+leaks and we would assign ms->fdt at the end of arm_load_dtb() normally. I made
+a quick attempt at that but the ARM init() code is a little tricker than I've
+anticipated. I might have a crack at it later.
+
+
+Thanks,
+
+Daniel
+
+
+> 
+>         }
+> 
+>> @@ -689,7 +696,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>       qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
+>>                                          rom_ptr_for_as(as, addr, size));
+>>   
+>> -    g_free(fdt);
+>> +    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
+>> +    ms->fdt = fdt;
+>>   
+>>       return size;
+> 

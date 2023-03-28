@@ -1,187 +1,196 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2407445ejb;
-        Mon, 27 Mar 2023 22:50:29 -0700 (PDT)
-X-Google-Smtp-Source: AKy350adYGjUyw0AVMxehdR0PUnCAUZRnXtropRvSTRG5Of5Qugp87hgmPindd3V+zY7nBH3awR+
-X-Received: by 2002:ad4:5c85:0:b0:577:4ea5:243f with SMTP id o5-20020ad45c85000000b005774ea5243fmr30894443qvh.7.1679982628832;
-        Mon, 27 Mar 2023 22:50:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679982628; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2439511ejb;
+        Tue, 28 Mar 2023 00:01:53 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YihWKWgmWNRS95BvoQ3Ytt1sCL9cSkcdk4uznf7YXcRYFdNVr6dXnQia8uER0MJOHsK9yh
+X-Received: by 2002:a05:6214:1d03:b0:5c0:51f0:eb45 with SMTP id e3-20020a0562141d0300b005c051f0eb45mr25852350qvd.15.1679986913452;
+        Tue, 28 Mar 2023 00:01:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679986913; cv=none;
         d=google.com; s=arc-20160816;
-        b=WX8tq6duInrC12/V2mDSdBP8D/jIgsYLYZtlJSk6wroW0oaluSAjF3v+F9Gck4fgPZ
-         N/f7GI6LeHPF8dCiMG8lP2V3btigcgfdmp4pj+N6NBetVSKaxQ6/CEvzVxL7qFZpvZ0j
-         mjfL8bEotkwptqmB5aCO9oltkb0EWrRfxS9asJqB66mQm0Vxfq77GynP5DSVsm/w8QzG
-         My3ggzTk1om2ZsIoRIBWNPrzHpfHZKkMZqcj3nYkFmJIXJuHSYMFVCbrsPM8ifYONGXv
-         7M/nokjPHUfhBdG8e1IlianhvjCFbycFrnM8+JfMMQOHrWWJgt085Cznz3erjLlIpMPp
-         dmfQ==
+        b=oF3wr0J142nhUATSB40uJbml6gVoBQJtQKESmaKDgAS7Nae5EH15gQOlQRoYHQTySC
+         OiRnvaHIEP4Vhg7HOigBqWFTHf9yeWD15JUpquFcOa8pF81AD8rfSHhLqCeSVwD1AnKm
+         ss5W8DIbZN2WU4Y5H0gRhjzEF3j0bEeqKH2aIFWxp950TIU7ZrcEC8gU2tJpEzYs7iLO
+         9MzFJcge4YDQSGINL7J+os8ayn60AyJ5f9Aqy1YwivspohaEl9y51bCQgsMSaZqNn/Kb
+         FkZB4flGP0jem6xksGpigs/sDMhU39Drv4COlV/6MU2Idk5t5jz80ZQSx4jlPObLOU+A
+         SMIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=G4HiDP2QHQSefVSMWofZpPtDYC20Pxvuc/H+qVQjo0A=;
-        b=ghBnwwmu+T/+NJMUZcGbsH//7EkhoRDRhiz8zkc7yqesX3a3UCa74UP5xqAT0Lwszm
-         ZsxDohBYB/mLaW3zq+hjfgI54FPmJi0rjDoJOcZRVAYKMcwZenKY0QTJJp5G0un3OQPC
-         MBsu0za98UvT1GPXEKH5sdeuSWNRGTX43hbOOLHROpZSOwAlDoHYwj30crxk7HeXT7SP
-         8DvYDXQUeDnsDAJfwKMurnDjpaFyS1JSSqSG7Lnkk7zItYdOixCIr1xyXbotjLlLtd2d
-         7E9pwwxEGe3M2AcxVxmr+nR/JFlRY48Ezkd4lpSBPiHlR1cvWt6jsWw0/iZsNYBV9U1V
-         8nOQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=QrsGDXkgH2s5fVZvHEGR02tMqiFQ0isT4B/W2SRMmgM=;
+        b=HUu+ilxqp6rvQFUs+IEULvbmfn8leb1ioJsfO+HXipnyPoryROPcrLh7B2DAEK8mLI
+         h9eirSLz6d7pdtuAzye9a+hvdm28qoJUQVvDnDZe7fvoAD4hFL/yRkUjqNwdXjADJ3JX
+         znMPQ9LYkrbnCPk2xbiLh2kiEUVkXtdTc402KURAmMip4yfMAI/ydRVecmnueMdpeveS
+         IRRDDbdZX7R9kvOrJocTSD/0vfYDh7FYgRnOYyuwrkq+qih1TW/3U+wQNtadZeMjvBGH
+         zsw9xqyDYMf9QoJbQVwJjqzcIj9nljMn88k+Li1ivI7LPBPXYkxi8CWorbkOrzLlscqv
+         e3jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=KKauKHUn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UuCttaa8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n9-20020a056214008900b0058c14817fa5si20576027qvr.84.2023.03.27.22.50.28
+        by mx.google.com with ESMTPS id db14-20020a056214170e00b005a595776004si19187870qvb.198.2023.03.28.00.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Mar 2023 22:50:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Mar 2023 00:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=KKauKHUn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UuCttaa8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ph2B2-0000sb-T0; Tue, 28 Mar 2023 01:47:24 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ph3Kr-0008O1-7g; Tue, 28 Mar 2023 03:01:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1ph2Az-0000q2-LQ; Tue, 28 Mar 2023 01:47:21 -0400
-Received: from m12.mail.163.com ([220.181.12.217])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qianfanguijin@163.com>)
- id 1ph2Au-0005DA-Pn; Tue, 28 Mar 2023 01:47:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=G4HiD
- P2QHQSefVSMWofZpPtDYC20Pxvuc/H+qVQjo0A=; b=KKauKHUn8MHV648huFFOD
- 3MKlV0LWQPBmoTMrd4LGPATLkRKg8aEERW/yWTRz2pShlT90funIvi27mY6scGY2
- W0JtR81sxVbj0IHDdQpuqCOSth5YlnTUuRLY93gMgz+avU1LW+/Z0e8v/V6u0jDz
- xyRxWErITfS8/hGY+ChPxs=
-Received: from DESKTOP-B1R4FVG.localdomain (unknown [112.224.194.92])
- by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBHtBBOfyJkWfxRAg--.23168S2;
- Tue, 28 Mar 2023 13:46:56 +0800 (CST)
-From: qianfanguijin@163.com
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v2 00/12] *** add allwinner-r40 support ***
-Date: Tue, 28 Mar 2023 13:46:40 +0800
-Message-Id: <20230328054654.18620-1-qianfanguijin@163.com>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ph3Kp-0008Nf-Km
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 03:01:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ph3Kn-0005FS-Rt
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 03:01:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1679986892;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=QrsGDXkgH2s5fVZvHEGR02tMqiFQ0isT4B/W2SRMmgM=;
+ b=UuCttaa8Y9SlGrampDKs3Z9agGNf1uWcrAvk613sS6x0GQZTtt+TnFj9YCCwAAhr+UeuRe
+ 4ZUqbTfqOPkTSMR+K2I/5LE1lsQmQQad2EJPCfxpVydz2uwUvUxSd+sQtEsPqA4o9blwTG
+ /yd4tliTCifVv/XbdsbRATFMCteXt4Y=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-379-uZDe_cguOUC3w1cB3BcoaQ-1; Tue, 28 Mar 2023 03:01:27 -0400
+X-MC-Unique: uZDe_cguOUC3w1cB3BcoaQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 175E1101A531;
+ Tue, 28 Mar 2023 07:01:27 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DC7DE492C13;
+ Tue, 28 Mar 2023 07:01:26 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B0FE421E6926; Tue, 28 Mar 2023 09:01:25 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
+References: <20230323204414.423412-1-danielhb413@gmail.com>
+ <20230323204414.423412-2-danielhb413@gmail.com>
+Date: Tue, 28 Mar 2023 09:01:25 +0200
+In-Reply-To: <20230323204414.423412-2-danielhb413@gmail.com> (Daniel Henrique
+ Barboza's message of "Thu, 23 Mar 2023 17:44:14 -0300")
+Message-ID: <87zg7x2wca.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBHtBBOfyJkWfxRAg--.23168S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCr4DZFWDKF48Wr4UJFW7twb_yoW5AFyUpa
- n0k343Kr1rta43JFWaq3ZrJFyrJa4kGr4UJrn7ZryxAryaka1Yvr1UK3WfKrWfGFW2qanr
- ZrZIqF13Wws0qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_wZ7dUUUUU=
-X-Originating-IP: [112.224.194.92]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRVA7VWBpDWFlAAAsx
-Received-SPF: pass client-ip=220.181.12.217;
- envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ULO8tfAvxpPn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NHjbDN5O/KMc
 
-From: qianfan Zhao <qianfanguijin@163.com>
+Daniel Henrique Barboza <danielhb413@gmail.com> writes:
 
-*** history ***
+> At this moment, arm_load_dtb() can free machine->fdt when
+> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+> arm_load_dtb() will make machine->fdt point to an invalid memory region.
+>
+> After the command 'dumpdtb' were introduced a couple of releases ago,
+> running it with any ARM machine that uses arm_load_dtb() will crash
+> QEMU.
+>
+> Let's enable all arm_load_dtb() callers to use dumpdtb properly. Instead
+> of freeing 'fdt', assign it back to ms->fdt.
+>
+> Note that all current callers (sbsa-ref.c, virt.c, xlnx-versal-virt.c)
+> are assigning ms->fdt before arm_load_dtb() is called, regardless of
+> whether the user is inputting an external FDT via '-dtb'. To avoid
+> leaking the board FDT if '-dtb' is used (since we're assigning ms->fdt
+> in the end), free ms->fdt before load_device_tree().
+>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
+> Reported-by: Markus Armbruster <armbru@redhat.com>i
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
+>  hw/arm/boot.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 50e5141116..de18c0a969 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -549,6 +549,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>              goto fail;
+>          }
+>  
+> +        /*
+> +         * If we're here we won't be using the ms->fdt from the board.
+> +         * We'll assign a new ms->fdt at the end, so free it now to
+> +         * avoid leaking the board FDT.
+> +         */
+> +        g_free(ms->fdt);
+> +
 
-# v1: 2023-03-21
+"We will" is not true: we will not if we goto fail.  Leaves ms->fdt
+dangling, doesn't it?
 
-The first version which add allwinner-r40 support, supported features:
+>          fdt = load_device_tree(filename, &size);
+>          if (!fdt) {
+>              fprintf(stderr, "Couldn't open dtb file %s\n", filename);
+               g_free(filename);
+               goto fail;
+           }
+           g_free(filename);
+       } else {
+           fdt = binfo->get_dtb(binfo, &size);
+           if (!fdt) {
+               fprintf(stderr, "Board was unable to create a dtb blob\n");
+               goto fail;
+           }
 
-+ ccu
-+ dram controller
-+ uart
-+ i2c and pmic(axp221)
-+ sdcard
-+ emac/gmac
+If we succeed, we'll assign @fdt to ms->fdt (next hunk).  Won't this
+leak old ms->fdt?
 
-Also provide a test case under avocado, running quickly test:
+       }
 
-$ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
-    --verbose --show=app,console run -t machine:bpim2u \
-    ../tests/avocado/boot_linux_console.py
-
-# v2: 2023-03-28
-
-1. Fix the waring and error reported by checkpatch.pl
-2. Remove the other i2c controllers except that i2c0
-3. Use an array to register mmc and uart devices
-4. Rename axp209 to axp22x and add axp221 support
-5. Add a basic SRAM controller
-
-qianfan Zhao (12):
-  hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
-  hw/arm/allwinner-r40: add Clock Control Unit
-  hw: allwinner-r40: Complete uart devices
-  hw: arm: allwinner-r40: Add i2c0 device
-  hw/misc: Rename axp209 to axp22x and add support AXP221 PMU
-  hw/arm/allwinner-r40: add SDRAM controller device
-  hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
-  hw: arm: allwinner-r40: Fix the mmc controller's type
-  hw: arm: allwinner-r40: Add emac and gmac support
-  hw: arm: allwinner-sramc: Add SRAM Controller support for R40
-  tests: avocado: boot_linux_console: Add test case for bpim2u
-  docs: system: arm: Introduce bananapi_m2u
-
- configs/devices/arm-softmmu/default.mak |   1 +
- docs/system/arm/bananapi_m2u.rst        | 138 +++++++
- hw/arm/Kconfig                          |  13 +-
- hw/arm/allwinner-r40.c                  | 526 ++++++++++++++++++++++++
- hw/arm/bananapi_m2u.c                   | 145 +++++++
- hw/arm/meson.build                      |   1 +
- hw/misc/Kconfig                         |   5 +-
- hw/misc/allwinner-r40-ccu.c             | 209 ++++++++++
- hw/misc/allwinner-r40-dramc.c           | 513 +++++++++++++++++++++++
- hw/misc/allwinner-sramc.c               | 184 +++++++++
- hw/misc/axp209.c                        | 238 -----------
- hw/misc/axp2xx.c                        | 283 +++++++++++++
- hw/misc/meson.build                     |   5 +-
- hw/misc/trace-events                    |  26 +-
- hw/sd/allwinner-sdhost.c                |  70 +++-
- include/hw/arm/allwinner-r40.h          | 143 +++++++
- include/hw/misc/allwinner-r40-ccu.h     |  65 +++
- include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
- include/hw/misc/allwinner-sramc.h       |  69 ++++
- include/hw/sd/allwinner-sdhost.h        |   9 +
- tests/avocado/boot_linux_console.py     | 176 ++++++++
- 21 files changed, 2679 insertions(+), 248 deletions(-)
- create mode 100644 docs/system/arm/bananapi_m2u.rst
- create mode 100644 hw/arm/allwinner-r40.c
- create mode 100644 hw/arm/bananapi_m2u.c
- create mode 100644 hw/misc/allwinner-r40-ccu.c
- create mode 100644 hw/misc/allwinner-r40-dramc.c
- create mode 100644 hw/misc/allwinner-sramc.c
- delete mode 100644 hw/misc/axp209.c
- create mode 100644 hw/misc/axp2xx.c
- create mode 100644 include/hw/arm/allwinner-r40.h
- create mode 100644 include/hw/misc/allwinner-r40-ccu.h
- create mode 100644 include/hw/misc/allwinner-r40-dramc.h
- create mode 100644 include/hw/misc/allwinner-sramc.h
-
--- 
-2.25.1
+> @@ -689,7 +696,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>      qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
+>                                         rom_ptr_for_as(as, addr, size));
+>  
+> -    g_free(fdt);
+> +    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
+> +    ms->fdt = fdt;
+>  
+>      return size;
 

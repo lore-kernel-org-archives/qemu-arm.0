@@ -1,184 +1,251 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2764301ejb;
-        Tue, 28 Mar 2023 09:02:27 -0700 (PDT)
-X-Received: by 2002:a7b:c00f:0:b0:3eb:3945:d3fd with SMTP id c15-20020a7bc00f000000b003eb3945d3fdmr12550629wmb.14.1680019347105;
-        Tue, 28 Mar 2023 09:02:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680019347; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2775125ejb;
+        Tue, 28 Mar 2023 09:15:35 -0700 (PDT)
+X-Received: by 2002:a7b:cb02:0:b0:3ef:672a:2c93 with SMTP id u2-20020a7bcb02000000b003ef672a2c93mr9179229wmj.36.1680020135555;
+        Tue, 28 Mar 2023 09:15:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680020135; cv=none;
         d=google.com; s=arc-20160816;
-        b=BG6aGDXiiRdsrRAMx1a3frMmLgpOiWBOKTTcUxeTymVopBwZ07rOyY/tHmRFmyjSQD
-         nMCYSLRucGO9OWudLMUq8kM8cmFeHlOEWyS27GUz1VBjAo0i8ZVBJuuzdktZw5E3u56N
-         ykFsvGTB7ctMkxQImFATFODeU1N8lPTasLCHXewy22FfOYdpnpN8aqNL8hUHNqtyWSJg
-         NEnG4fs7AOT/LzOFL7WLkrperCOwekIna9IgRJOnQFpMQFXACngtlYxDEtF6fmD+TWOH
-         82VJRksuDvlYBm7tdsR4t5UqC2bMTzwt8hJNnvFy28WEVTh37CeU92buUdtvInRwZ0M7
-         xUHQ==
+        b=YMsJ55qe6UqAAqQLsohFRO0W+NoPlgkBU6QBtVtpC5oA+HD8wTtHymNtgD32WfzA68
+         +NyET+PeMqwSVolUbmujgOicfVQA8EIAmjfS42w8omEOdzsrKM8iIIXhJs0G18Ih5Ogf
+         +bkWSsDSGw4ALNyB1rGztNWyID0oY1UgyGSWyctQc6UsCnaRbApNOu6ikNdSAQxeogFb
+         dZ1wmR4m3E1BioBMyLfALizZLm24zlZQScxazlk+honUKMeaPKBrI5da0zgT1w2CnhIf
+         WVFTt2ipi4nyziSoJh+3hZLRmrX31tR7RfJoksYX7R6CblW51eZ+x/JnUTPCwG4TFubq
+         P7bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6MbnN+0f617dsehwYtlh7IWt8dwxE1cjBMBOmowF/jo=;
-        b=hG3gXhn0bPUwJOIrRNYomRT+Qpqcb72BsNk4UPYo9dVjBGUX5unCHCziEI1hsGaP3Z
-         fnBBLRe1Ak4cLJWTrAgCCfwQwiBUA16Be3c8qpwZWzLTrvvpgBRwKJ/jPm9vI4B761um
-         t+TKGbNqVNQ9QtZxf6b6SNoBgKmz6XqjXdkCwq8M5EMTjxj0Xba/FqA6VFvQ6qT4gDQJ
-         YdaH07g5vS/lbXyG6JHFE9Hr4vgoUgbK0bhuwy5OWchiWFIQJBlysXmhmIL5A1BD6sL6
-         mLNYVuH0dRQR0jNOPWFxSc6Rteia4mmsE+GVDubP/EI9T9EM0CvGG76UvL8tMDl9W5uh
-         J11g==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=DWKWWkSsnpfRn2+LYEIqq1vAGExKdFNDPfBo77h5+cM=;
+        b=gKSE6TQ80QAEYQWFnqz88NUEcXjDbveN4VIVIPtp3hMBt90SveRj9fuYDCPRAd9H5w
+         6lUEfa1PIyddpnihE6w/OO5+1L64LqHQpBaGJgO3comK5vMA7fiV7EPEW18jKyjq/U4K
+         prd9l2NDu4rff5NLoAcy0qKCoi/ky+whKkcKiBSE01fP9i4w4yq1OrKqXpZIF369BBNk
+         YjzMQGAZd9Earfceb3nT0pPWQ5smQ4KifOp4U90HjxJ9zXl0M9YtxSZNHQPET50rr9fk
+         r95rMaG4d1TfydpJFkuOV+0ZgJWfkLjwSWso9SUeaywAtYvLkqTALNy3e6PCcmocLy+n
+         +hrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VJZ0iiE8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XifWTcm1;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o5-20020adfe805000000b002c55870b58esor12342791wrm.30.2023.03.28.09.02.27
+        by mx.google.com with SMTPS id n23-20020a7bc5d7000000b003ee032b1cb3sor4497771wmk.27.2023.03.28.09.15.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 28 Mar 2023 09:02:27 -0700 (PDT)
+        Tue, 28 Mar 2023 09:15:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VJZ0iiE8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XifWTcm1;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680019347;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6MbnN+0f617dsehwYtlh7IWt8dwxE1cjBMBOmowF/jo=;
-        b=VJZ0iiE81gahmAHh33wdnxu9f+fm7PWswjCh7eESenZk4qw+MBxuSDrdCRJA0VrjEI
-         +C7aKvPD13wY3jABL63HkqOa9uMkiu9Mbn2+aR07oiNg+xMVJQrsjvj4hLMsKVcydEBY
-         nwiqU5BDc6N6afTuF03JZqD8tCyzkYo3IEfdUUPofFV4GZMfjkRzf6rM6AHXt6J9wY2r
-         HMQigzyW+2RXu4nay6XAGfMfQXkEWxNc2j8yR2sEAbCMcg6+rBtCdJvepi60ZidtWN9n
-         c0gEDCsuxeLXDQAbKpXAHz6BYiGfYjVotey3OfXSQsTFqFBrXE/2h/6xbGPnvH2z/hHT
-         0Cpw==
+        d=linaro.org; s=google; t=1680020135;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DWKWWkSsnpfRn2+LYEIqq1vAGExKdFNDPfBo77h5+cM=;
+        b=XifWTcm1xnu6f9aPouPR7VpIbR1N50dcIM54qN5Mlbel5sTiLdbYCmSrtLw+KEdPPn
+         1cF9OK2tzNRfBtBzKhUWKFrzydK8HB4RjTKxG3lRQznlJeHEt9b18xI81tjKIDcLO6Eo
+         YZN+JIkHNrswH2apXYp8qCAmDm1e5xx0qqkC15FhCIwF6ikGsN0usjVkw1cSN9SUrgnK
+         8eYG+LVZqlmkc8PnWAVpdiGIvfXNjoI6Yim82jOq/aaqYsae+Z9+beMNWCNpH65ymKQM
+         Iq0Ggbxz0pC8gHx8Yu7TY2O7CoIbWyEFj/IQVWk10QxRBgFl8Cd+FqnAsOaeBP7S7dNP
+         Oebw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680019347;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6MbnN+0f617dsehwYtlh7IWt8dwxE1cjBMBOmowF/jo=;
-        b=qM3NnVGVp0kGzQMlwJnMM+fuXPpf8LAonesLzNAkBydcfwumVou+UkKuXaO8fS6jC2
-         15kq6LsB59U7QncpeoJsMnJI4SYqVCuh+VU/BkKE8Z1MHXAIrsL/p9rzOfn8uWvmM3t+
-         al2l3AMDO42BZ5hcSJZn6UB311eegbyN58wOxKAVHhXHT5FWf4uEH9krt+p+kmUy5Odl
-         fVCyN4142VKTHpja5NTHCtCKa3uSCba1/gD4uSL1+ucDqWfrMQ2rb+awt5kUoWCLiqjZ
-         ooGEaT90lH/6/RVdO+FtbCzcfF/Yd0t6NfZ5m+K9CtuK0CIF2WqtCTHpSsEpC37UnXu8
-         0/Ug==
-X-Gm-Message-State: AAQBX9dIfrOUD7ASvAbT25mnJEq5fmFRvcrqh8Q+Zn+oDlgRTSL+rmi3
-	O1UyHpIY6q0edhxu9FK0H/tWIJ1l
-X-Google-Smtp-Source: AKy350ZFQOfZ6NGkv37Y8Zyt4NAfhytXhLygwXOKe3bf5X+CGLXdwq0Za3H95yZDpyNDB1L/YK+wcg==
-X-Received: by 2002:adf:f4c2:0:b0:2ce:ad40:7705 with SMTP id h2-20020adff4c2000000b002cead407705mr13934370wrp.25.1680019346740;
-        Tue, 28 Mar 2023 09:02:26 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1680020135;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DWKWWkSsnpfRn2+LYEIqq1vAGExKdFNDPfBo77h5+cM=;
+        b=DOLrPDMbntsoN1FDe+vM7fjyNQuSlSKwC1GjRWreg0AK/hRTRyxkBpgziE5pZ7aR6T
+         Rn3tk/TD4xfZZlq6K6TVaHE57DUQHSkzf/8vCOeQKPKwMA3x3EnbydDGURBf14fKIJWV
+         k07PonWEsf4IMQoTvLbGx0eqgyWpIxLJP7jQX0zGDtefSzS6rBYjRqnjQygO5O4l43s7
+         tImQmFpKqLmbNTXFehnEDCG3lz0WfKV3XDWGVWZ+sQfuJrgeemy/FhmiEUJy6/XxQYmv
+         j+Wy8pX2a5GYpoOLdF1nbcCPZwU2eo3NXcHJgEBizIKv2mL6WcDjhZoKTjZi6VxUt4YQ
+         rzHQ==
+X-Gm-Message-State: AO0yUKX408aMbDp9Cie5Tmyny+ZLdAjRp79A7C4DivZrXHWQzMuRNotD
+	AOnDA17XV/G5VUeZMCTPUOXGRzT+
+X-Google-Smtp-Source: AK7set9OcnlChpyZKYyxyXwjedxJze5iXZPnnxbaugRBy5012tIcIyFoZkfRD1TZBGXun9T1yu26jg==
+X-Received: by 2002:a05:600c:2199:b0:3ee:3fd7:5f84 with SMTP id e25-20020a05600c219900b003ee3fd75f84mr12627963wme.6.1680020135178;
+        Tue, 28 Mar 2023 09:15:35 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain ([176.187.210.212])
-        by smtp.gmail.com with ESMTPSA id f11-20020a5d4dcb000000b002cfe3f842c8sm27713200wru.56.2023.03.28.09.02.24
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 28 Mar 2023 09:02:26 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
-	kvm@vger.kernel.org,
-	qemu-s390x@nongnu.org,
-	Fabiano Rosas <farosas@suse.de>,
-	David Hildenbrand <david@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Greg Kurz <groug@kaod.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	qemu-ppc@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-8.0 3/3] softmmu: Restore use of CPU watchpoint for all accelerators
-Date: Tue, 28 Mar 2023 18:02:03 +0200
-Message-Id: <20230328160203.13510-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230328160203.13510-1-philmd@linaro.org>
-References: <20230328160203.13510-1-philmd@linaro.org>
+Received: from [192.168.69.115] ([176.187.210.212])
+        by smtp.gmail.com with ESMTPSA id l10-20020a7bc44a000000b003ed246c1d28sm17270217wmi.44.2023.03.28.09.15.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Mar 2023 09:15:34 -0700 (PDT)
+Message-ID: <fff8236b-831c-c844-06d4-7eb417367e23@linaro.org>
+Date: Tue, 28 Mar 2023 18:15:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.9.0
+Subject: Re: [PATCH-for-8.0 2/3] softmmu: Restrict cpu_check_watchpoint /
+ address_matches to TCG accel
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>, kvm@vger.kernel.org,
+ qemu-s390x@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+ David Hildenbrand <david@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Yanan Wang <wangyanan55@huawei.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
+References: <20230328160203.13510-1-philmd@linaro.org>
+ <20230328160203.13510-3-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230328160203.13510-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: AQouwHzrfI3I
+X-TUID: 72dCfwDkAAVw
 
-CPU watchpoints can be use by non-TCG accelerators.
+On 28/3/23 18:02, Philippe Mathieu-Daudé wrote:
+> Both cpu_check_watchpoint() and cpu_watchpoint_address_matches()
+> are specific to TCG system emulation. Declare them in "tcg-cpu-ops.h"
+> to be sure accessing them from non-TCG code is a compilation error.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/core/cpu.h         | 37 ------------------------------
+>   include/hw/core/tcg-cpu-ops.h | 43 +++++++++++++++++++++++++++++++++++
+>   2 files changed, 43 insertions(+), 37 deletions(-)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 821e937020..ce312745d5 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -970,17 +970,6 @@ static inline void cpu_watchpoint_remove_by_ref(CPUState *cpu,
+>   static inline void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
+>   {
+>   }
+> -
+> -static inline void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+> -                                        MemTxAttrs atr, int fl, uintptr_t ra)
+> -{
+> -}
+> -
+> -static inline int cpu_watchpoint_address_matches(CPUState *cpu,
+> -                                                 vaddr addr, vaddr len)
+> -{
+> -    return 0;
+> -}
+>   #else
+>   int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
+>                             int flags, CPUWatchpoint **watchpoint);
+> @@ -988,32 +977,6 @@ int cpu_watchpoint_remove(CPUState *cpu, vaddr addr,
+>                             vaddr len, int flags);
+>   void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
+>   void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
+> -
+> -/**
+> - * cpu_check_watchpoint:
+> - * @cpu: cpu context
+> - * @addr: guest virtual address
+> - * @len: access length
+> - * @attrs: memory access attributes
+> - * @flags: watchpoint access type
+> - * @ra: unwind return address
+> - *
+> - * Check for a watchpoint hit in [addr, addr+len) of the type
+> - * specified by @flags.  Exit via exception with a hit.
+> - */
+> -void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+> -                          MemTxAttrs attrs, int flags, uintptr_t ra);
+> -
+> -/**
+> - * cpu_watchpoint_address_matches:
+> - * @cpu: cpu context
+> - * @addr: guest virtual address
+> - * @len: access length
+> - *
+> - * Return the watchpoint flags that apply to [addr, addr+len).
+> - * If no watchpoint is registered for the range, the result is 0.
+> - */
+> -int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
+>   #endif
+>   
+>   /**
+> diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-ops.h
+> index 20e3c0ffbb..0ae08df47e 100644
+> --- a/include/hw/core/tcg-cpu-ops.h
+> +++ b/include/hw/core/tcg-cpu-ops.h
+> @@ -175,4 +175,47 @@ struct TCGCPUOps {
+>   
+>   };
+>   
+> +#if defined(CONFIG_USER_ONLY)
+> +
+> +static inline void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+> +                                        MemTxAttrs atr, int fl, uintptr_t ra)
+> +{
+> +}
+> +
+> +static inline int cpu_watchpoint_address_matches(CPUState *cpu,
+> +                                                 vaddr addr, vaddr len)
+> +{
+> +    return 0;
+> +}
+> +
+> +#else
+> +
+> +/**
+> + * cpu_check_watchpoint:
+> + * @cpu: cpu context
+> + * @addr: guest virtual address
+> + * @len: access length
+> + * @attrs: memory access attributes
+> + * @flags: watchpoint access type
+> + * @ra: unwind return address
+> + *
+> + * Check for a watchpoint hit in [addr, addr+len) of the type
+> + * specified by @flags.  Exit via exception with a hit.
+> + */
+> +void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+> +                          MemTxAttrs attrs, int flags, uintptr_t ra);
+> +
+> +/**
+> + * cpu_watchpoint_address_matches:
+> + * @cpu: cpu context
+> + * @addr: guest virtual address
+> + * @len: access length
+> + *
+> + * Return the watchpoint flags that apply to [addr, addr+len).
+> + * If no watchpoint is registered for the range, the result is 0.
+> + */
+> +int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
+> +
+> +#endif
+> +
+>   #endif /* TCG_CPU_OPS_H */
 
-KVM uses them:
+This hunk is missing:
 
-  $ git grep CPUWatchpoint|fgrep kvm
-  target/arm/kvm64.c:1558:        CPUWatchpoint *wp = find_hw_watchpoint(cs, debug_exit->far);
-  target/i386/kvm/kvm.c:5216:static CPUWatchpoint hw_watchpoint;
-  target/ppc/kvm.c:443:static CPUWatchpoint hw_watchpoint;
-  target/s390x/kvm/kvm.c:139:static CPUWatchpoint hw_watchpoint;
+-- >8 --
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index fee3c7eb96..22802b659d 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -29,2 +29,3 @@
+  #include "qemu/guest-random.h"
++#include "hw/core/tcg-cpu-ops.h"
 
-See for example commit e4482ab7e3 ("target-arm: kvm - add support
-for HW assisted debug"):
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 9a8951afa4..ace2d88f8d 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -29,3 +29,3 @@
+  #include "sve_ldst_internal.h"
+-
++#include "hw/core/tcg-cpu-ops.h"
 
-     This adds basic support for HW assisted debug. The ioctl interface
-     to KVM allows us to pass an implementation defined number of break
-     and watch point registers. [...]
-
-This partially reverts commit 2609ec2868e6c286e755a73b4504714a0296a.
-
-Fixes: 2609ec2868 ("softmmu: Extract watchpoint API from physmem.c")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+index b93dbd3dad..1e7f72a2f2 100644
+--- a/target/s390x/tcg/mem_helper.c
++++ b/target/s390x/tcg/mem_helper.c
+@@ -30,2 +30,3 @@
+  #include "qemu/atomic128.h"
++#include "hw/core/tcg-cpu-ops.h"
+  #include "trace.h"
 ---
- include/hw/core/cpu.h | 2 +-
- softmmu/watchpoint.c  | 4 ++++
- softmmu/meson.build   | 2 +-
- 3 files changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index ce312745d5..397fd3ac68 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -949,7 +949,7 @@ static inline bool cpu_breakpoint_test(CPUState *cpu, vaddr pc, int mask)
-     return false;
- }
- 
--#if !defined(CONFIG_TCG) || defined(CONFIG_USER_ONLY)
-+#if defined(CONFIG_USER_ONLY)
- static inline int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
-                                         int flags, CPUWatchpoint **watchpoint)
- {
-diff --git a/softmmu/watchpoint.c b/softmmu/watchpoint.c
-index 9d6ae68499..5350163385 100644
---- a/softmmu/watchpoint.c
-+++ b/softmmu/watchpoint.c
-@@ -104,6 +104,8 @@ void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
-     }
- }
- 
-+#ifdef CONFIG_TCG
-+
- /*
-  * Return true if this watchpoint address matches the specified
-  * access (ie the address range covered by the watchpoint overlaps
-@@ -220,3 +222,5 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
-         }
-     }
- }
-+
-+#endif /* CONFIG_TCG */
-diff --git a/softmmu/meson.build b/softmmu/meson.build
-index 0180577517..1a7c7ac089 100644
---- a/softmmu/meson.build
-+++ b/softmmu/meson.build
-@@ -5,11 +5,11 @@ specific_ss.add(when: 'CONFIG_SOFTMMU', if_true: [files(
-   'physmem.c',
-   'qtest.c',
-   'dirtylimit.c',
-+  'watchpoint.c',
- )])
- 
- specific_ss.add(when: ['CONFIG_SOFTMMU', 'CONFIG_TCG'], if_true: [files(
-   'icount.c',
--  'watchpoint.c',
- )])
- 
- softmmu_ss.add(files(
--- 
-2.38.1

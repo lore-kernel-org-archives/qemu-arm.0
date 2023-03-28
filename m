@@ -1,64 +1,65 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2406622ejb;
-        Mon, 27 Mar 2023 22:48:29 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8LAr0sEfqa0Ru8W9vWJrIwsLSjvyBC9JLSy1wGg8bc1a/NQ2v1+y7Ah1Vf8/R55jQGpgj/
-X-Received: by 2002:ac8:5cd2:0:b0:3c0:3b79:9fb0 with SMTP id s18-20020ac85cd2000000b003c03b799fb0mr24605580qta.47.1679982509136;
-        Mon, 27 Mar 2023 22:48:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679982509; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2406635ejb;
+        Mon, 27 Mar 2023 22:48:32 -0700 (PDT)
+X-Google-Smtp-Source: AK7set98JH69oPh7+Worn8eqnPEkbnJLT1osBIdiK/wiMfAX7UUce2pKvvuuy+WrllA1XEkhyenr
+X-Received: by 2002:a05:622a:1648:b0:3d3:7032:1f55 with SMTP id y8-20020a05622a164800b003d370321f55mr22935850qtj.1.1679982512236;
+        Mon, 27 Mar 2023 22:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679982512; cv=none;
         d=google.com; s=arc-20160816;
-        b=aLR06dutQklNalqlomcAGtgq3TFNI5/IV4EXilRzavgWU4HeZGcRenIGZSBn2NpccD
-         H/VN4boimlRs1tw6n47avpyZYu/lsVZD0DW/1QoVatuxB9A278nrbUaoD+lfxyQUsK8y
-         tKAR2g8qOFvBoOkqw0mpsDKcGKJukBdo8jiOf5Z0iyhx85Ez4RTSCFixRQsW6K4Ju3Lw
-         v9oJTbWIasb4Xgxpw7VZTezOlOQ58qnjxi8gVpaB6KU4vAyGu0u/nEc+lhyB4O1Gw0oK
-         NQ9VTQGw70ctKr8saAcqIUrjJy/b0F9rtERe4jKXgmyQvMCVV9TWiwIvNz+Q+ay0gI7o
-         JtHg==
+        b=jrdwJz7O0AF1MaIS/5IzUwJXk47bSC6cnbEr5tmYzcO7zImQruAydt7ZSWqjOLieB0
+         udQitrzvpFFny75SIdtNORFBqYSDnIYisSB6l+ewxKBfe1Fk0TbFK6yRCQqBCpDWgsJM
+         M1ZQflSvrXCKWdUjfCVWp4V45z/+EJ6Kyh/U5IpbbzUD4sS17C9cJ9V0GaDXqvccUK55
+         BkGKvC/3/Zxrq/Xrghpkmsz+5tVP17R/gFIukiECXggkb2BNhvFqd9gxmkAnCsy9S36N
+         npIai183GBjLggFc8lNW1L3JlnakFHWO/2gq6IDq7U8zzftkdZ2cY9CFrZue7fFFO42s
+         llSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ssr3YcMfBRQyrFgA16vA9luoUvtonw5w3L+xZwG8/4A=;
-        b=Cj2LO/uGkCqb31HvRUt5URcwjk6b5VFK2fqSwzlaM+AdcNDI5dzbqzgKDdCMprsT0R
-         OokmFakPIDdgzkmdf2Wcv883Vi1W6u0EQN8z5o6vc/KvQkhm5NNlIuJuGZY3jKDX3Zms
-         JZHcSEGwvd9DufHEbeAqAA76Nl6aqXslj8cUkrsRDzwERHHOoTzqbK5jbSL9heBtmZMU
-         6A1W15V5WkqbIC8Ws3l1v5WScEe+UjTpj51YbIF7VrsCqLinlGqSdUWZO0Q7X7SOSHL9
-         uyNImJF8noI09y+irKMjoU1hCzsEU1Mgf3//Dj6P6a/8XK4ZiaEXze90tjt0icUhLnVc
-         omGw==
+        bh=MWWuioOXnTpytSCK8RnY986MV8JnG7Dt5l/n9qkzGUQ=;
+        b=UVpKploQmLyvkGvuh4mofElrMKHCKVwd4y4pZxUn/fVpiJG9dkd2nIJz6B0jFqq0pP
+         gQeIHJ67Q+UMS7BCRP/rZ3jK0SI326wkQMVFuZHzla7xaQEOxaBa5xVtL7iICJgq/LaN
+         aVy66pj80bmNx/U+X8m82ryo1Zq5Pqrw9PMPizGBLSuM4MUhKNJm6ft6cp+c6HrNIgrw
+         9TwlAgg4l6AuEzae/tzgMZt65CZ+4ajI3Y8DXNlsTJ/q1XTSwCncpEYD7gRGQZziNLbR
+         AUkDSqke5zGqwwVhP8B/LRuq9PBO/C91Zg0UMiXvRnMxOjpP3ODWnEbp49q29mRe55rN
+         yQ4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=UkVagT5y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=TPNJcefg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13-20020ac85dcd000000b003e00fa858b5si16834208qtx.765.2023.03.27.22.48.28
+        by mx.google.com with ESMTPS id t127-20020ae9df85000000b0074642e92e1dsi19398624qkf.402.2023.03.27.22.48.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Mar 2023 22:48:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Mar 2023 22:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=UkVagT5y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=TPNJcefg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ph2B3-0000t3-3n; Tue, 28 Mar 2023 01:47:25 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ph2BK-0000yS-1q; Tue, 28 Mar 2023 01:47:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1ph2Az-0000q0-H1; Tue, 28 Mar 2023 01:47:21 -0400
-Received: from m12.mail.163.com ([220.181.12.217])
+ id 1ph2B2-0000sJ-Mt; Tue, 28 Mar 2023 01:47:24 -0400
+Received: from m12.mail.163.com ([220.181.12.196])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1ph2Au-0005Cu-Ln; Tue, 28 Mar 2023 01:47:21 -0400
+ id 1ph2Az-0005J4-I1; Tue, 28 Mar 2023 01:47:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ssr3Y
- cMfBRQyrFgA16vA9luoUvtonw5w3L+xZwG8/4A=; b=UkVagT5y2vhzow5Pfk3oC
- BkMh5bq2F/GTEAAZWl02ae7e/DknbVHlBxWC6XN3Nj2aHdTjgWjLv6UleQNuE/R0
- oB2RTkZX9ck3MK2mcZR+F4O+cKPHDcORr3+raxFRf3boTi3iMX1yqAITyTBVwYsK
- 5WE7hAxlCMa05x2LPY7j3g=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=MWWui
+ oOXnTpytSCK8RnY986MV8JnG7Dt5l/n9qkzGUQ=; b=TPNJcefgSGDChEcSypZyP
+ 5iQcbC4NXNIFZIf6ONteNcRWX6+c12m5RNyEccJNdK0LnEOM4dWT3D7uHWbgzEe6
+ 8J0VZjdrP78cYQMHPQSx2O/cOmPw3feTdIY4sM7gXdJEOAhSdI8s3xW4PYvQ7JKY
+ UATGDn5cHtnlk+hw2tKLRM=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [112.224.194.92])
- by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBHtBBOfyJkWfxRAg--.23168S6;
- Tue, 28 Mar 2023 13:47:01 +0800 (CST)
+ by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id
+ _____wBHtBBOfyJkWfxRAg--.23168S12; 
+ Tue, 28 Mar 2023 13:47:08 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -68,136 +69,451 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v2 04/12] hw: arm: allwinner-r40: Add i2c0 device
-Date: Tue, 28 Mar 2023 13:46:44 +0800
-Message-Id: <20230328054654.18620-5-qianfanguijin@163.com>
+Subject: [PATCH v2 10/12] hw: arm: allwinner-sramc: Add SRAM Controller
+ support for R40
+Date: Tue, 28 Mar 2023 13:46:50 +0800
+Message-Id: <20230328054654.18620-11-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230328054654.18620-1-qianfanguijin@163.com>
 References: <20230328054654.18620-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBHtBBOfyJkWfxRAg--.23168S6
-X-Coremail-Antispam: 1Uf129KBjvJXoWxCw4fXFW3JFWkCw13JFyDAwb_yoW5Zw43pF
- W5C398Gryjg3WrAFW8Kws3Zry8t348Grnrt3W0kFWxtF1jgF4v9r4Iqa1UGF45KFZ7Wa17
- XrZxtFW7W3W2qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zic18dUUUUU=
+X-CM-TRANSID: _____wBHtBBOfyJkWfxRAg--.23168S12
+X-Coremail-Antispam: 1Uf129KBjvAXoWfJFWDtr18GFyrAry3Wr17Jrb_yoW8JF1kZo
+ WSgF45XrWIg3s7ZrnYkw1ayr17WwnxKr4xAw4YkF4aka45Awsrt348t393Ja1fWr4FyFn7
+ JaySgryfCrWkG3s5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RzBTzUUUUU
 X-Originating-IP: [112.224.194.92]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGhZA7VaEEtiI1QAAsk
-Received-SPF: pass client-ip=220.181.12.217;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRxA7VWBpDWF6QABsE
+Received-SPF: pass client-ip=220.181.12.196;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rxOzS81j+kQx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MA5tqhmB4E86
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-TWI(i2c) is designed to be used as an interface between CPU host and the
-serial 2-Wire bus. It can support all standard 2-Wire transfer, can be
-operated in standard mode(100kbit/s) or fast-mode, supporting data rate
-up to 400kbit/s.
+Only a few important registers are added, especially the SRAM_VER
+register.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/allwinner-r40.c         | 11 ++++++++++-
- include/hw/arm/allwinner-r40.h |  3 +++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ hw/arm/Kconfig                    |   1 +
+ hw/arm/allwinner-r40.c            |   7 +-
+ hw/misc/Kconfig                   |   3 +
+ hw/misc/allwinner-sramc.c         | 184 ++++++++++++++++++++++++++++++
+ hw/misc/meson.build               |   1 +
+ hw/misc/trace-events              |   4 +
+ include/hw/arm/allwinner-r40.h    |   3 +
+ include/hw/misc/allwinner-sramc.h |  69 +++++++++++
+ 8 files changed, 271 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/allwinner-sramc.c
+ create mode 100644 include/hw/misc/allwinner-sramc.h
 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 85ded354ed..f3a4eb3f78 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -346,6 +346,7 @@ config ALLWINNER_H3
+ 
+ config ALLWINNER_R40
+     bool
++    select ALLWINNER_SRAMC
+     select ALLWINNER_A10_PIT
+     select AXP2XX_PMU
+     select SERIAL
 diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index 537a90b23d..4bc582630c 100644
+index c018ad231a..7d29eb224f 100644
 --- a/hw/arm/allwinner-r40.c
 +++ b/hw/arm/allwinner-r40.c
-@@ -52,6 +52,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_UART5]      = 0x01c29400,
-     [AW_R40_DEV_UART6]      = 0x01c29800,
-     [AW_R40_DEV_UART7]      = 0x01c29c00,
-+    [AW_R40_DEV_TWI0]       = 0x01c2ac00,
-     [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
-     [AW_R40_DEV_GIC_CPU]    = 0x01c82000,
-     [AW_R40_DEV_GIC_HYP]    = 0x01c84000,
-@@ -115,7 +116,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "uart7",      0x01c29c00, 1 * KiB },
-     { "ps20",       0x01c2a000, 1 * KiB },
-     { "ps21",       0x01c2a400, 1 * KiB },
--    { "twi0",       0x01c2ac00, 1 * KiB },
-     { "twi1",       0x01c2b000, 1 * KiB },
-     { "twi2",       0x01c2b400, 1 * KiB },
-     { "twi3",       0x01c2b800, 1 * KiB },
-@@ -167,6 +167,7 @@ enum {
-     AW_R40_GIC_SPI_UART1     =  2,
-     AW_R40_GIC_SPI_UART2     =  3,
-     AW_R40_GIC_SPI_UART3     =  4,
-+    AW_R40_GIC_SPI_TWI0      =  7,
-     AW_R40_GIC_SPI_UART4     = 17,
-     AW_R40_GIC_SPI_UART5     = 18,
-     AW_R40_GIC_SPI_UART6     = 19,
-@@ -270,6 +271,8 @@ static void allwinner_r40_init(Object *obj)
-         object_initialize_child(obj, mmc_names[i], &s->mmc[i],
-                                 TYPE_AW_SDHOST_SUN5I);
-     }
+@@ -39,6 +39,7 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_SRAM_A2]    = 0x00004000,
+     [AW_R40_DEV_SRAM_A3]    = 0x00008000,
+     [AW_R40_DEV_SRAM_A4]    = 0x0000b400,
++    [AW_R40_DEV_SRAMC]      = 0x01c00000,
+     [AW_R40_DEV_EMAC]       = 0x01c0b000,
+     [AW_R40_DEV_MMC0]       = 0x01c0f000,
+     [AW_R40_DEV_MMC1]       = 0x01c10000,
+@@ -76,7 +77,6 @@ struct AwR40Unimplemented {
+ static struct AwR40Unimplemented r40_unimplemented[] = {
+     { "d-engine",   0x01000000, 4 * MiB },
+     { "d-inter",    0x01400000, 128 * KiB },
+-    { "sram-c",     0x01c00000, 4 * KiB },
+     { "dma",        0x01c02000, 4 * KiB },
+     { "nfdc",       0x01c03000, 4 * KiB },
+     { "ts",         0x01c04000, 4 * KiB },
+@@ -288,6 +288,8 @@ static void allwinner_r40_init(Object *obj)
+                              "ram-addr");
+     object_property_add_alias(obj, "ram-size", OBJECT(&s->dramc),
+                               "ram-size");
 +
-+    object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
++    object_initialize_child(obj, "sramc", &s->sramc, TYPE_AW_SRAMC_SUN8I_R40);
  }
  
  static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-@@ -416,6 +419,12 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-                        115200, serial_hd(i), DEVICE_NATIVE_ENDIAN);
-     }
+@@ -382,6 +384,9 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+                        AW_R40_GIC_SPI_TIMER1));
  
-+    /* I2C */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, s->memmap[AW_R40_DEV_TWI0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_TWI0));
+     /* SRAM */
++    sysbus_realize(SYS_BUS_DEVICE(&s->sramc), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sramc), 0, s->memmap[AW_R40_DEV_SRAMC]);
 +
-     /* Unimplemented devices */
-     for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-         create_unimplemented_device(r40_unimplemented[i].device_name,
+     memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
+                             16 * KiB, &error_abort);
+     memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index efeb430a6c..e4c2149175 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -170,6 +170,9 @@ config VIRT_CTRL
+ config LASI
+     bool
+ 
++config ALLWINNER_SRAMC
++    bool
++
+ config ALLWINNER_A10_CCM
+     bool
+ 
+diff --git a/hw/misc/allwinner-sramc.c b/hw/misc/allwinner-sramc.c
+new file mode 100644
+index 0000000000..a8b731f8f2
+--- /dev/null
++++ b/hw/misc/allwinner-sramc.c
+@@ -0,0 +1,184 @@
++/*
++ * Allwinner R40 SRAM controller emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-properties-system.h"
++#include "hw/misc/allwinner-sramc.h"
++#include "trace.h"
++
++/*
++ * register offsets
++ * https://linux-sunxi.org/SRAM_Controller_Register_Guide
++ */
++enum {
++    REG_SRAM_CTL1_CFG               = 0x04, /* SRAM Control register 1 */
++    REG_SRAM_VER                    = 0x24, /* SRAM Version register */
++    REG_SRAM_R40_SOFT_ENTRY_REG0    = 0xbc,
++};
++
++/* REG_SRAMC_VERSION bit defines */
++#define SRAM_VER_READ_ENABLE            (1 << 15)
++#define SRAM_VER_VERSION_SHIFT          16
++#define SRAM_VERSION_SUN8I_R40          0x1701
++
++static uint64_t allwinner_sramc_read(void *opaque, hwaddr offset,
++                                     unsigned size)
++{
++    AwSRAMCState *s = AW_SRAMC(opaque);
++    AwSRAMCClass *sc = AW_SRAMC_GET_CLASS(s);
++    uint64_t val = 0;
++
++    switch (offset) {
++    case REG_SRAM_CTL1_CFG:
++        val = s->sram_ctl1;
++        break;
++    case REG_SRAM_VER:
++        /* bit15: lock bit, set this bit before reading this register */
++        if (s->sram_ver & SRAM_VER_READ_ENABLE) {
++            val = SRAM_VER_READ_ENABLE |
++                    (sc->sram_version_code << SRAM_VER_VERSION_SHIFT);
++        }
++        break;
++    case REG_SRAM_R40_SOFT_ENTRY_REG0:
++        val = s->sram_soft_entry_reg0;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
++
++    trace_allwinner_sramc_read(offset, val);
++
++    return val;
++}
++
++static void allwinner_sramc_write(void *opaque, hwaddr offset,
++                                  uint64_t val, unsigned size)
++{
++    AwSRAMCState *s = AW_SRAMC(opaque);
++
++    trace_allwinner_sramc_write(offset, val);
++
++    switch (offset) {
++    case REG_SRAM_CTL1_CFG:
++        s->sram_ctl1 = val;
++        break;
++    case REG_SRAM_VER:
++        /* Only the READ_ENABLE bit is writeable */
++        s->sram_ver = val & SRAM_VER_READ_ENABLE;
++        break;
++    case REG_SRAM_R40_SOFT_ENTRY_REG0:
++        s->sram_soft_entry_reg0 = val;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps allwinner_sramc_ops = {
++    .read = allwinner_sramc_read,
++    .write = allwinner_sramc_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static const VMStateDescription allwinner_sramc_vmstate = {
++    .name = "allwinner-sramc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(sram_ver, AwSRAMCState),
++        VMSTATE_UINT32(sram_soft_entry_reg0, AwSRAMCState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void allwinner_sramc_reset(DeviceState *dev)
++{
++    AwSRAMCState *s = AW_SRAMC(dev);
++    AwSRAMCClass *sc = AW_SRAMC_GET_CLASS(s);
++
++    switch (sc->sram_version_code) {
++    case SRAM_VERSION_SUN8I_R40:
++        s->sram_ctl1 = 0x1300;
++        break;
++    }
++}
++
++static void allwinner_sramc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = allwinner_sramc_reset;
++    dc->vmsd = &allwinner_sramc_vmstate;
++}
++
++static void allwinner_sramc_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwSRAMCState *s = AW_SRAMC(obj);
++
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_sramc_ops, s,
++                           TYPE_AW_SRAMC, 1 * KiB);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const TypeInfo allwinner_sramc_info = {
++    .name          = TYPE_AW_SRAMC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_sramc_init,
++    .instance_size = sizeof(AwSRAMCState),
++    .class_init    = allwinner_sramc_class_init,
++};
++
++static void allwinner_r40_sramc_class_init(ObjectClass *klass, void *data)
++{
++    AwSRAMCClass *sc = AW_SRAMC_CLASS(klass);
++
++    sc->sram_version_code = SRAM_VERSION_SUN8I_R40;
++}
++
++static const TypeInfo allwinner_r40_sramc_info = {
++    .name          = TYPE_AW_SRAMC_SUN8I_R40,
++    .parent        = TYPE_AW_SRAMC,
++    .class_init    = allwinner_r40_sramc_class_init,
++};
++
++static void allwinner_sramc_register(void)
++{
++    type_register_static(&allwinner_sramc_info);
++    type_register_static(&allwinner_r40_sramc_info);
++}
++
++type_init(allwinner_sramc_register)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index b04d43e05a..78ca857c9d 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -37,6 +37,7 @@ subdir('macio')
+ 
+ softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
+ 
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_SRAMC', if_true: files('allwinner-sramc.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 8b68f07765..4d1a0e17af 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -33,6 +33,10 @@ allwinner_r40_dramphy_write(uint64_t offset, uint64_t data, unsigned size) "writ
+ allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+ 
++# allwinner-sramc.c
++allwinner_sramc_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
++allwinner_sramc_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
++
+ # avr_power.c
+ avr_power_read(uint8_t value) "power_reduc read value:%u"
+ avr_power_write(uint8_t value) "power_reduc write value:%u"
 diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 959b5dc4e0..95366f4eee 100644
+index 5f2d08489e..72710d3edc 100644
 --- a/include/hw/arm/allwinner-r40.h
 +++ b/include/hw/arm/allwinner-r40.h
-@@ -26,6 +26,7 @@
- #include "hw/intc/arm_gic.h"
+@@ -27,6 +27,7 @@
  #include "hw/sd/allwinner-sdhost.h"
  #include "hw/misc/allwinner-r40-ccu.h"
-+#include "hw/i2c/allwinner-i2c.h"
- #include "target/arm/cpu.h"
- #include "sysemu/block-backend.h"
+ #include "hw/misc/allwinner-r40-dramc.h"
++#include "hw/misc/allwinner-sramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
+ #include "hw/net/allwinner_emac.h"
+ #include "hw/net/allwinner-sun8i-emac.h"
+@@ -38,6 +39,7 @@ enum {
+     AW_R40_DEV_SRAM_A2,
+     AW_R40_DEV_SRAM_A3,
+     AW_R40_DEV_SRAM_A4,
++    AW_R40_DEV_SRAMC,
+     AW_R40_DEV_EMAC,
+     AW_R40_DEV_MMC0,
+     AW_R40_DEV_MMC1,
+@@ -102,6 +104,7 @@ struct AwR40State {
  
-@@ -48,6 +49,7 @@ enum {
-     AW_R40_DEV_UART5,
-     AW_R40_DEV_UART6,
-     AW_R40_DEV_UART7,
-+    AW_R40_DEV_TWI0,
-     AW_R40_DEV_GIC_DIST,
-     AW_R40_DEV_GIC_CPU,
-     AW_R40_DEV_GIC_HYP,
-@@ -89,6 +91,7 @@ struct AwR40State {
+     ARMCPU cpus[AW_R40_NUM_CPUS];
+     const hwaddr *memmap;
++    AwSRAMCState sramc;
      AwA10PITState timer;
      AwSdHostState mmc[AW_R40_NUM_MMCS];
      AwR40ClockCtlState ccu;
-+    AWI2CState i2c0;
-     GICState gic;
-     MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
+diff --git a/include/hw/misc/allwinner-sramc.h b/include/hw/misc/allwinner-sramc.h
+new file mode 100644
+index 0000000000..66b01b8d04
+--- /dev/null
++++ b/include/hw/misc/allwinner-sramc.h
+@@ -0,0 +1,69 @@
++/*
++ * Allwinner SRAM controller emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_MISC_ALLWINNER_SRAMC_H
++#define HW_MISC_ALLWINNER_SRAMC_H
++
++#include "qom/object.h"
++#include "hw/sysbus.h"
++#include "qemu/uuid.h"
++
++/**
++ * Object model
++ * @{
++ */
++#define TYPE_AW_SRAMC               "allwinner-sramc"
++#define TYPE_AW_SRAMC_SUN8I_R40     TYPE_AW_SRAMC "-sun8i-r40"
++OBJECT_DECLARE_TYPE(AwSRAMCState, AwSRAMCClass, AW_SRAMC)
++
++/** @} */
++
++/**
++ * Allwinner SRAMC object instance state
++ */
++struct AwSRAMCState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    /** Maps I/O registers in physical memory */
++    MemoryRegion iomem;
++
++    /* registers */
++    uint32_t sram_ctl1;
++    uint32_t sram_ver;
++    uint32_t sram_soft_entry_reg0;
++};
++
++/**
++ * Allwinner SRAM Controller class-level struct.
++ *
++ * This struct is filled by each sunxi device specific code
++ * such that the generic code can use this struct to support
++ * all devices.
++ */
++struct AwSRAMCClass {
++    /*< private >*/
++    SysBusDeviceClass parent_class;
++    /*< public >*/
++
++    uint32_t sram_version_code;
++};
++
++#endif /* HW_MISC_ALLWINNER_SRAMC_H */
 -- 
 2.25.1
 

@@ -1,190 +1,178 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2652578ejb;
-        Tue, 28 Mar 2023 06:31:08 -0700 (PDT)
-X-Received: by 2002:adf:f44f:0:b0:2cf:e3c7:596e with SMTP id f15-20020adff44f000000b002cfe3c7596emr11933625wrp.35.1680010268699;
-        Tue, 28 Mar 2023 06:31:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680010268; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2802426ejb;
+        Tue, 28 Mar 2023 09:59:19 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aepWhw0/N/3GGKzwWIO+bDmgZarqWwjf/s776I8dqNeyemCvD1f5nDjPaKDBw+ThVi5t+h
+X-Received: by 2002:a05:6214:d84:b0:5a6:9028:7b89 with SMTP id e4-20020a0562140d8400b005a690287b89mr26297675qve.35.1680022759219;
+        Tue, 28 Mar 2023 09:59:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680022759; cv=none;
         d=google.com; s=arc-20160816;
-        b=UESQ7lFSBvQ9EtV1qskj/V5dIMNI1gpjiuOQ0FerQdp5ETvb1MJa2csmXJ1Bp9tsze
-         rbapGeXaZ2FqqyQAdzhtLFXDoPBmlcwdUYPMe5VbZ2rU+geSzZiJ+FE7bbEdQjdwDuQM
-         QDtjGX5H1Tt5y2e498d+SzThifIzby3N0IcobjFcD91aE0TDTs8DtnRgIO5UjDovre5h
-         fU23ObZsSckQ3YHvpV7oah2DB1dr5U9TTBOBiDfK4D4z+BqCNmKXoL3hDcoEcn3Kl6ss
-         vl02SXawQ63g/LhkTVFsdP2E4IhcSQ/GCKOnW8r3rldBlv1cSjecdRr+cpEKNGT0exxd
-         aTRQ==
+        b=m8d0BwSosU2323jP91ZTCBZEiUkh8nUZY4qGNfCrMql2JNkUztg97XC/NK5oJdHX+F
+         vFi4X+BBsrgWP5+YMCgHyxM3w5Ddak+CRkDsA58K55coQYu+bFTVzq6iIKdEp9UsHrNb
+         culwXsdGHoDL18fyDzjkJ8rFtL2H0NHBNDfw+VqakfG6184bnaGpNpUAxdhl1Bpv0Vyt
+         oCs1QxpGKKFmhtYZV0rbzNIMxxAFM8H9AWToPcoT8lMmeNRcR/MJlpbGuCYTkmO6MSfl
+         52R/rn4qMN70IWsfdKD/OR99xvHAc2H9r5UG/iWWvxb6nYQG698TDMdXF/KFDHfNHYwZ
+         RV5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=RpHBQbQwV/0NgNdAldoL5xQrOqOCQXGkNEOw37fpu/Y=;
-        b=q+k8/j0AgQH7bAu9OayjkMTVImDcvZ8m8BdS41I3sfwU3qxdICvi7zgODY8tmcZ01b
-         cg99q4FBeNAeymPXLmYXjLE0tcfr3nip5GxTbFFUFrNwqmUzEnc6So/4xGU5bleF6kWn
-         8M2s+VELhzoE7AdzL6cCa8e7w0hyOPBoLNSJeeAt845ezyii8AxActmgu+8lhm6Vr1Gg
-         PSaTm0+r5jWlYM992p7vVmPi/dlmWa3zn41uXdKj24w3gGqg/QxxJakAbA/NI4g3f0tf
-         JM+M1nMD8GBlAtLX6njrbOrzaa2YGf5HX4fqVCotBWD2g9oNi+S/Zwnw5vEolvhBhrQ8
-         Tfsg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:cc:to:from
+         :dkim-signature;
+        bh=fzBMtKXlc4JDfuHrDq7UsszjrhTAq698GnqgTTtuYYs=;
+        b=dOKRuhErfG2macjEDBzWgtKFvNyS2iEvu1pvk99JYvUPdzLQnJbKJZ7/R507Sqo72U
+         8NoLfWQYc8Uumtq9vGGRUnWGPXKtvMVdFWq41lu9PM212sNgOHJ+D2rYAMJkvGGhdZjT
+         mQDXE5OBo452wn8m9QKk+QGyZE/sw7DgKFNjb5iTAAKPuiWlaOdYLaXbMZK7cqZUSxyf
+         hmaoJXd3Gq+cbVeqXVYjAKXfwSy6kj6iqNKtuBRyBVsdFUDyV7byn99z/TzL6N7bESAr
+         DYCr6ViDTNM26MT5Lz+IiP304uEBB5w6HtP7HFePbY0gem7DIT9mdIJjCEm+Tf0YzZck
+         3xFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hjBnVEWp;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h15-20020a5d688f000000b002daf67768b9sor6687101wru.15.2023.03.28.06.31.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UJ8T5C6m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o14-20020a05622a008e00b003ba1ccba50fsi5048827qtw.557.2023.03.28.09.59.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 28 Mar 2023 06:31:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Mar 2023 09:59:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hjBnVEWp;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680010268;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RpHBQbQwV/0NgNdAldoL5xQrOqOCQXGkNEOw37fpu/Y=;
-        b=hjBnVEWp873waT3n+FTbt3LDEjNNsjlHMKTcsa5Yw7EuXTPxhK4ieLE8qLXMEShd3N
-         rqYCzYlH4Je0J7Zo5M5nkpv5fcQz31Y3LGlY0nE7GytIsLVovVXTVXeyEe8bWHWKarbV
-         1Yz/QPmk6ZcPNmceOKbrYfpDyGwKejxSHNBA1wV7t51rvxzmG/QiFeBAiI6erORLh7I+
-         cv3OuNG6HiQ9F5rjpfJ6XcrljbkN/I2M5BwvWP1lMlAmv1vFB+oNpRnaldqD2/fNtL5g
-         XLnCSRFhGk7AWnuLKiHmZQZMCh9BUHTE6JcTkV2s2wc7YMfg4bWj+LQRyTTpXGRSzcIG
-         09tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680010268;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RpHBQbQwV/0NgNdAldoL5xQrOqOCQXGkNEOw37fpu/Y=;
-        b=B0euX/Z01k0HC/ntLWEIDY6Z2j3oFXrmOZ5tigh4clxgU41AyfLQYl3BER83uC9NSB
-         axucQhI6DBebYQaX5A3QcBrSIrqQi+Zq6feaAsWHkptXL4YKXy++Onbk8fs/Xvr1Pw7V
-         2NnIevgxd6xIpaOjYNgT6aq2EDSY2FhAxlKksn1kpBieB8tnCy75ga56Fz+vZYV3YtQn
-         yzXjQjmsn7Hfe7VCtlISu3YHg0RdM2+ZXFWZvaP+HYCo4en7WG78L2N/GLaichAHW4sG
-         P9GieZoxNVHmxC96x3Wr3um8P+cJ3O358V6BFHIAZm47oeeS3PVTuLNLbKz/gHrWUeSZ
-         i37Q==
-X-Gm-Message-State: AAQBX9f85yfmL92jcog3BzgIHSVkgeKSN1HdeYXzkSKrkhZz/AVq9QnA
-	/DO3rS5NpgcfKlUG+WWxryMH0Lm/
-X-Google-Smtp-Source: AKy350ZpZeqOVAwUeVVnQce07pMDfOuvgDYq3HcnXrGqWSBegup0aOz5b26XpvePZ1DFsfz/GMjf6g==
-X-Received: by 2002:a5d:4d11:0:b0:2d2:d324:e44f with SMTP id z17-20020a5d4d11000000b002d2d324e44fmr12287363wrt.16.1680010268143;
-        Tue, 28 Mar 2023 06:31:08 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain ([176.187.210.212])
-        by smtp.gmail.com with ESMTPSA id v6-20020a5d6106000000b002c55521903bsm27530836wrt.51.2023.03.28.06.31.07
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 28 Mar 2023 06:31:07 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Claudio Fontana <cfontana@suse.de>,
-	Fabiano Rosas <farosas@suse.de>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-8.0 v2 2/2] target/arm/pauth: Inline pauth_param_mask() and pauth_ptr_mask()
-Date: Tue, 28 Mar 2023 15:30:54 +0200
-Message-Id: <20230328133054.6553-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230328133054.6553-1-philmd@linaro.org>
-References: <20230328133054.6553-1-philmd@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UJ8T5C6m;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1phCep-0006td-Cz; Tue, 28 Mar 2023 12:58:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1phCen-0006tJ-Db
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 12:58:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1phCel-0004vR-TT
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 12:58:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1680022727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=fzBMtKXlc4JDfuHrDq7UsszjrhTAq698GnqgTTtuYYs=;
+ b=UJ8T5C6mAYxGpP/EQRmVWUjm4jFiN7bfGRwKfnHzhyqZl6F+ATIhQHe3EvJL2TabgZ/Oza
+ +FPDaECjvfil35k1WRu3haco2SwT2lcGC2z6KDDJluXv+BOgWeyrSWWMP/YQq6X87+QQsR
+ uWypawqiakDmbuckPRzsWso7iQazLuw=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-557-e_sCve1qMeCVejWG3WMA-Q-1; Tue, 28 Mar 2023 12:58:43 -0400
+X-MC-Unique: e_sCve1qMeCVejWG3WMA-Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 679AE1C05157;
+ Tue, 28 Mar 2023 16:58:43 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D3F2202701E;
+ Tue, 28 Mar 2023 16:58:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 24AEA21E6926; Tue, 28 Mar 2023 18:58:42 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH v2 1/1] hw/arm: do not free machine->fdt in arm_load_dtb()
+References: <20230323204414.423412-1-danielhb413@gmail.com>
+ <20230323204414.423412-2-danielhb413@gmail.com>
+ <87zg7x2wca.fsf@pond.sub.org>
+ <49e58c51-fca4-6b6f-db4a-27e4cfefacd4@gmail.com>
+ <87v8il19sz.fsf@pond.sub.org>
+ <f00b7e27-4c9f-226d-d727-241430be1d4c@gmail.com>
+Date: Tue, 28 Mar 2023 18:58:42 +0200
+In-Reply-To: <f00b7e27-4c9f-226d-d727-241430be1d4c@gmail.com> (Daniel Henrique
+ Barboza's message of "Tue, 28 Mar 2023 09:54:13 -0300")
+Message-ID: <87a5zwx16l.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: MNsHGje/k1Fa
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nZrBWtPwFWrc
 
-aarch64_gdb_get_pauth_reg() -- although disabled since commit
-5787d17a42 ("target/arm: Don't advertise aarch64-pauth.xml to
-gdb") is still compiled in. It calls pauth_ptr_mask() which is
-located in target/arm/tcg/pauth_helper.c, a TCG specific helper.
+Daniel Henrique Barboza <danielhb413@gmail.com> writes:
 
-To avoid a linking error when TCG is not enabled:
+> On 3/28/23 06:53, Markus Armbruster wrote:
+>> Daniel Henrique Barboza <danielhb413@gmail.com> writes:
 
-  Undefined symbols for architecture arm64:
-    "_pauth_ptr_mask", referenced from:
-        _aarch64_gdb_get_pauth_reg in target_arm_gdbstub64.c.o
-  ld: symbol(s) not found for architecture arm64
-  clang: error: linker command failed with exit code 1 (use -v to see invocation)
+[...]
 
-- Rename pauth_ptr_mask_internal() as pauth_param_mask() and
-  inline it in "internals.h",
-- Inline pauth_ptr_mask() in "internals.h".
+>>> I believe we can improve the ARM boot code to not create ms->fdt at init(),
+>>> leaving it unassigned, and make get_dtb() return the machine FDT on a common
+>>> "void *" pointer. That would spare us from having go g_free(ms->fdt) to avoid
+>>> leaks and we would assign ms->fdt at the end of arm_load_dtb() normally. I made
+>>> a quick attempt at that but the ARM init() code is a little tricker than I've
+>>> anticipated. I might have a crack at it later.
+>>
+>> Do we want a quick interim fix for 8.0?
+>> Have a careful look at the untested patch below.
+>> 
+>>> Thanks,
+>>>
+>>> Daniel
+>>>
+>>>
+>>>>
+>>>>          }
+>>>>
+>>>>> @@ -689,7 +696,8 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>>>>        qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
+>>>>>                                           rom_ptr_for_as(as, addr, size));
+>>>>>    -    g_free(fdt);
+>>>>> +    /* Set ms->fdt for 'dumpdtb' QMP/HMP command */
+>>>>> +    ms->fdt = fdt;
+>>>>>           return size;
+>>>>
+>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>> index 50e5141116..54f6a3e0b3 100644
+>> --- a/hw/arm/boot.c
+>> +++ b/hw/arm/boot.c
+>> @@ -689,7 +689,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>       qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
+>>                                          rom_ptr_for_as(as, addr, size));
+>>   -    g_free(fdt);
+>> +    if (fdt != ms->fdt) {
+>> +        g_free(ms->fdt);
+>> +        ms->fdt = fdt;
+>> +    }
+>>         return size;
+>
+> This looks better than what I've been proposing here because it centers everything in
+> the same spot. It'll also make it easier to change/remove it when we have the chance
+> to take a look at the ARM boot code.
+>
+> Just tested it here and it works fine. Feel free to format it into a patch and send
+> it. I'll give my r-b.
 
-Fixes: e995d5cce4 ("target/arm: Implement gdbstub pauth extension")
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/internals.h        | 16 +++++++++++++++-
- target/arm/tcg/pauth_helper.c | 18 +-----------------
- 2 files changed, 16 insertions(+), 18 deletions(-)
+I'm going to send it as v3 with your S-o-B, because I'm stealing most of
+your commit message.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 673519a24a..a617466fa8 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1389,6 +1389,14 @@ int exception_target_el(CPUARMState *env);
- bool arm_singlestep_active(CPUARMState *env);
- bool arm_generate_debug_exceptions(CPUARMState *env);
- 
-+static inline uint64_t pauth_param_mask(ARMVAParameters param)
-+{
-+    int bot_pac_bit = 64 - param.tsz;
-+    int top_pac_bit = 64 - 8 * param.tbi;
-+
-+    return MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
-+}
-+
- /**
-  * pauth_ptr_mask:
-  * @env: cpu context
-@@ -1397,7 +1405,13 @@ bool arm_generate_debug_exceptions(CPUARMState *env);
-  *
-  * Return a mask of the bits of @ptr that contain the authentication code.
-  */
--uint64_t pauth_ptr_mask(CPUARMState *env, uint64_t ptr, bool data);
-+static inline uint64_t pauth_ptr_mask(CPUARMState *env, uint64_t ptr, bool data)
-+{
-+    ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
-+    ARMVAParameters param = aa64_va_parameters(env, ptr, mmu_idx, data);
-+
-+    return pauth_param_mask(param);
-+}
- 
- /* Add the cpreg definitions for debug related system registers */
- void define_debug_regs(ARMCPU *cpu);
-diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
-index 20f347332d..c78dafda4e 100644
---- a/target/arm/tcg/pauth_helper.c
-+++ b/target/arm/tcg/pauth_helper.c
-@@ -339,17 +339,9 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
-     return pac | ext | ptr;
- }
- 
--static uint64_t pauth_ptr_mask_internal(ARMVAParameters param)
--{
--    int bot_pac_bit = 64 - param.tsz;
--    int top_pac_bit = 64 - 8 * param.tbi;
--
--    return MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
--}
--
- static uint64_t pauth_original_ptr(uint64_t ptr, ARMVAParameters param)
- {
--    uint64_t mask = pauth_ptr_mask_internal(param);
-+    uint64_t mask = pauth_param_mask(param);
- 
-     /* Note that bit 55 is used whether or not the regime has 2 ranges. */
-     if (extract64(ptr, 55, 1)) {
-@@ -359,14 +351,6 @@ static uint64_t pauth_original_ptr(uint64_t ptr, ARMVAParameters param)
-     }
- }
- 
--uint64_t pauth_ptr_mask(CPUARMState *env, uint64_t ptr, bool data)
--{
--    ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
--    ARMVAParameters param = aa64_va_parameters(env, ptr, mmu_idx, data);
--
--    return pauth_ptr_mask_internal(param);
--}
--
- static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
-                            ARMPACKey *key, bool data, int keynumber)
- {
--- 
-2.38.1

@@ -1,118 +1,99 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2820831ejb;
-        Tue, 28 Mar 2023 10:26:02 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YzLUxuKMUt/NFay8T5BIW/7i0J35TjreX0cKTTOpaDWannj9PtSNBZ9V+FvrXbzcwPP6H/
-X-Received: by 2002:a05:6214:2385:b0:5df:44ed:b85 with SMTP id fw5-20020a056214238500b005df44ed0b85mr4759285qvb.3.1680024362132;
-        Tue, 28 Mar 2023 10:26:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680024362; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2802687ejb;
+        Tue, 28 Mar 2023 09:59:53 -0700 (PDT)
+X-Google-Smtp-Source: AK7set9SH39DxV6S8mfawbiHikHxyH2mkmr2yaYfamUkWJlfwj106/p5Aqd40TpEBjML9IoSbTpd
+X-Received: by 2002:a05:622a:314:b0:3e1:90e4:c20 with SMTP id q20-20020a05622a031400b003e190e40c20mr29186757qtw.66.1680022792877;
+        Tue, 28 Mar 2023 09:59:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680022792; cv=none;
         d=google.com; s=arc-20160816;
-        b=t0r8qIrHh4tnse+FaszdeFJ1Ix9LogHb/YwtbWozMaqQ5F00CiZ+wcq+rapINoOhfS
-         t/XtUIubO7yoG8+2FnwgQXhHOuCI6CpDIK7vQaIe7IQFjCM8x0D750me+HszhTFnlMAR
-         34ehrrJt4TCNErzAz6AdH3yKXX9iiK1/8E4Ma+7C8CCgRrDrGSnq92n5oLV9x18rMG6U
-         PuBuPw+70uHEN6znIF+YTtqGFvdS4SKFK+ZzBd+4Q9rZb4ERgQCxX8f/yNnrR/xgBu0Y
-         smV3uRHYz9LnuMKX9ACnF3qLb5trZRUC3xPB1S8JnJtIxw8ZTjjtYqm/3gLKlKBopWhY
-         uJLA==
+        b=nxFvFb4skgoM25OmdJ+m+qFuNWkBndtexW+2YxRtsb7qi3Qf7ZH3+ljppyid7Efj9B
+         tt/X2/SC3Kq480X9ZmTWcBPl36r1Yp6SzcluGqNjst3qZfziVt4C/T9JbukBwqwEY2LK
+         Zv5ajsSU9Zd4SKzRK+5LfUF6rTF5ze6Z+Xmnvpm3D3pN2LikMp41wIvvaXzhc4QDa6Y+
+         7dgG5xyS+nje+LVv9C0CDhmzMoQNYqD8hVvsv0Yrdh9qDI29+4hI1LW4wDB1zCv91/fo
+         khUpwwiNSwrJYfrq89yr4QMOcuP2YiywvD/2+3b4idB74SafS6HrMOPKH5KRZOO4pgFT
+         mFuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=C0+HFPKP/OUeqWjwHBiPcSbOPtd80c8Y0RyMRoEOTiM=;
-        b=BmERHDuA6Dyh50Tb3iUWZ80Wc1iLYDoG8Smghu6hlamaiiXXY9XGLcuw7i9KpwePNH
-         dvqYeLTAyi1Ffwy8vD5h57gWklM851v0l+NbHCRF6/5K5zVYW5InTaOy4huJKIrAUXAc
-         2qmJcwP/OGW2y4+1mw2gPJ0DVdTFsmG+rQtJpv4qK2QNyVsrk8iyyOxan5SgVYUnPmS4
-         cZyTC7KXPBbbYIMPNdsA8Ad8C0aT9CvYPWuo/daRSWBjYkNAPGgyPODQJ1mNtxmk6vnY
-         NyMPUGpHPLGGEos9i2s656a5GdFcUA1/oNjqq5AngnOVewcE3ZsyoH9YrV8oeF1RuGp9
-         C0Rg==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ZX54ST6vtoGysVY6Zx2mPJQ+6LQziA8dRagxLmo8s/Y=;
+        b=iWJgaWAvD8UdPBIyVshFYTC3fe2o1agWLRkVGiCUsj00YlAcvQgRTOMTwMGly6qFbd
+         VGrFLKDPnZUJrk705zz/ChZQ53/1kLIlE54VryHmfnh8JV+YnitLqV5Phzw2soAUEgvh
+         MvR/2XX+JrCU52s4f4lUh0eacIc3xHaRI3r9KlLfLiiy39wcvZi4rT7AoE4hm58+nym1
+         Q0+pe7DrjiNLq1R9mrzyKt4fgQNLy+nijTT34ETm8BGmq0bHWO7NCRGqSy0x4jF+PiOt
+         kpTOA5xUQ1Sc9oQ8kkR+gGOoW+3IkvTtCvMQTxCetPezg0gH0GiqwtYZSnDoD9qBPnBV
+         Wa1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vTvjvCFL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xh0cFCzG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18-20020a0cc3d2000000b0056eb4a9abcesi19868001qvi.371.2023.03.28.10.26.01
+        by mx.google.com with ESMTPS id c17-20020a05622a025100b003ba35839eabsi21116375qtx.451.2023.03.28.09.59.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Mar 2023 10:26:02 -0700 (PDT)
+        Tue, 28 Mar 2023 09:59:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vTvjvCFL;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xh0cFCzG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1phD54-0002LL-Dz; Tue, 28 Mar 2023 13:25:58 -0400
+	id 1phCfg-0007TW-3y; Tue, 28 Mar 2023 12:59:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1phD52-0002Kv-3k
- for qemu-arm@nongnu.org; Tue, 28 Mar 2023 13:25:56 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1phD50-0000pb-F7
- for qemu-arm@nongnu.org; Tue, 28 Mar 2023 13:25:55 -0400
-Received: by mail-pl1-x629.google.com with SMTP id o2so12390174plg.4
- for <qemu-arm@nongnu.org>; Tue, 28 Mar 2023 10:25:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1680024352;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=C0+HFPKP/OUeqWjwHBiPcSbOPtd80c8Y0RyMRoEOTiM=;
- b=vTvjvCFLfUtZ832bO4Z41SwgstudP/lvgcs1R3+6YRj3pUIvbp2KcSebaLCUDrgXVg
- ABnz88XI/uu97cTvORBYHPEKyV1ryPKIBqdoGQVgN7roOzZcKIOn3R/3to0lqLSpznv3
- TCPwuaIgp8x/KbY1opkmQR9cAlqFP2gDxdLEFIG0GmFiCX6yRy8xZFVwPQxPxpOZH64A
- nzjcP0o88lW0rXtrvHlpSId7vhP/d657FUOH0UhY5BPeiqeDg5asFSL/OLqzRtTgZ25L
- ivObvMksAWTFtNFWD+ZU5VBZx3st160311M8MCMlPxedrdHwiSoQDpfx6/vipeA1ZNQ6
- Atlw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680024352;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=C0+HFPKP/OUeqWjwHBiPcSbOPtd80c8Y0RyMRoEOTiM=;
- b=NL0YyAD3xC/EOW5DRkTEWu1ZaOwMp7G+Pappsv7luHQh5JrJBEwlTfbNlSeT+ZURR/
- l1vyUJdDoHo5lmYr4Wi3esVM/G3oZ4bNIR0s5kN030Fuj1E6hz71dmYIDMVh09U4+ccf
- xCEmLAjgpKpNvJ4JWmOd1vVSvGLaAA0TAFhZDchuMJlvC0CaFolI0HOc7q9cJZFGFVgG
- VMw2/7DSKUwlEm8ehKy0jzx0fHovgutbal9CkS2Cw8a7WAqDvyRqcP0TroNDlGGI2ta8
- NtPQ5M5poyhwzwFQS8MO49eHK+bGKLYdO/a0adf1LoPanh/rdflA2HaZZlbGCpsrVR1q
- 5AXw==
-X-Gm-Message-State: AO0yUKXw+2T1wSgBjViW8Ec9+KT0M3a9D6SeUnlFpxBokkkM4a03bWBl
- QnZpjc5FHCaeG2SMd7i0kaggCQ==
-X-Received: by 2002:a05:6a20:1790:b0:db:ae75:c70e with SMTP id
- bl16-20020a056a20179000b000dbae75c70emr14832391pzb.15.1680024352525; 
- Tue, 28 Mar 2023 10:25:52 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1541:f901:396:9f0d:afc2:978e?
- ([2602:ae:1541:f901:396:9f0d:afc2:978e])
- by smtp.gmail.com with ESMTPSA id
- j1-20020aa78d01000000b006260526cf0csm21253519pfe.116.2023.03.28.10.25.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Mar 2023 10:25:52 -0700 (PDT)
-Message-ID: <5884a90d-20da-6634-5f1b-cb0a4911cb90@linaro.org>
-Date: Tue, 28 Mar 2023 10:25:50 -0700
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1phCfe-0007TB-Ku
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 12:59:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1phCfd-00058e-6o
+ for qemu-arm@nongnu.org; Tue, 28 Mar 2023 12:59:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1680022780;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ZX54ST6vtoGysVY6Zx2mPJQ+6LQziA8dRagxLmo8s/Y=;
+ b=Xh0cFCzGDRSpolyeedU+RvlmA0QB2s2wLRqfrBVGnOlzu2uclPGtMHRd0vFsIMJZnM/apb
+ 0cVzk37KKQsTyfLan6w+9/dMuz7dOmG9/XACpKhXVb5BMYZYDYixduRPJvzW25cYRLGYbn
+ 4/X29iQl8zRv1K3/SamDVUbmkd5mXQA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-307-E5DR60d5OuKBx7JuIq3fmw-1; Tue, 28 Mar 2023 12:59:36 -0400
+X-MC-Unique: E5DR60d5OuKBx7JuIq3fmw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 36919801779;
+ Tue, 28 Mar 2023 16:59:36 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1706C18EC6;
+ Tue, 28 Mar 2023 16:59:36 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0B80621E6926; Tue, 28 Mar 2023 18:59:35 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: [PATCH v3] hw/arm: do not free machine->fdt in arm_load_dtb()
+Date: Tue, 28 Mar 2023 18:59:35 +0200
+Message-Id: <20230328165935.1512846-1-armbru@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH for-8.0] target/arm: Fix generated code for cpreg reads
- when HSTR is active
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230328162814.2190220-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230328162814.2190220-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,47 +108,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CLD0G8sIZKsQ
+X-TUID: 37wPJO5xOSfd
 
-On 3/28/23 09:28, Peter Maydell wrote:
-> In commit 049edada we added some code to handle HSTR_EL2 traps, which
-> we did as an inline "conditionally branch over a
-> gen_exception_insn()".  Unfortunately this fails to take account of
-> the fact that gen_exception_insn() will set s->base.is_jmp to
-> DISAS_NORETURN.  That means that at the end of the TB we won't
-> generate the necessary code to handle the "branched over the trap and
-> continued normal execution" codepath.  The result is that the TCG
-> main loop thinks that we stopped execution of the TB due to a
-> situation that only happens when icount is enabled, and hits an
-> assertion.
-> 
-> Note that this only happens for cpreg reads; writes will call
-> gen_lookup_tb() which generates a valid end-of-TB.
-> 
-> Fixes: 049edada ("target/arm: Make HSTR_EL2 traps take priority over UNDEF-at-EL1")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1551
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> saving and restoring is_jmp around the call seems super
-> clunky -- is there a better way ? I think mostly we avoid
-> this by not doing conditional exception-generation in
-> inline TCG code...
-> ---
->   target/arm/tcg/translate.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+At this moment, arm_load_dtb() can free machine->fdt when
+binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
+retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
+the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
+machine->fdt. And, in that case, the existing g_free(fdt) at the end of
+arm_load_dtb() will make machine->fdt point to an invalid memory region.
 
-You could also do
+Since monitor command 'dumpdtb' was introduced a couple of releases
+ago, running it with any ARM machine that uses arm_load_dtb() will
+crash QEMU.
 
-     /* Branch over conditional exception: continue. */
-     if (s->base.is_jmp == DISAS_NORETURN) {
-         s->base.is_jmp = DISAS_NEXT;
-     }
+Let's enable all arm_load_dtb() callers to use dumpdtb properly. Instead
+of freeing 'fdt', assign it back to ms->fdt.
 
-within set_disas_label.  Any other is_jmp value will be preserved to exit the TB "normally".
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
+Reported-by: Markus Armbruster <armbru@redhat.com>i
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/arm/boot.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-This is similar to hppa nullify_end().  For a moment I thought we already had something 
-similar for arm conditional illegal insns, but I see those handled via code at the end of 
-arm_tr_tb_stop.
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 50e5141116..54f6a3e0b3 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -689,7 +689,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     qemu_register_reset_nosnapshotload(qemu_fdt_randomize_seeds,
+                                        rom_ptr_for_as(as, addr, size));
+ 
+-    g_free(fdt);
++    if (fdt != ms->fdt) {
++        g_free(ms->fdt);
++        ms->fdt = fdt;
++    }
+ 
+     return size;
+ 
+-- 
+2.39.2
 
-
-r~

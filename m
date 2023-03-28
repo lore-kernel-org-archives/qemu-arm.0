@@ -1,63 +1,63 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2407381ejb;
-        Mon, 27 Mar 2023 22:50:20 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8zMdYNF6SMHVBdpv0igkZcLXitWlyr71EA6d9rBQz4wfkH13Y42Hbnqu6eAX9x1vYvqSVd
-X-Received: by 2002:a05:622a:103:b0:3e3:8a0b:8c80 with SMTP id u3-20020a05622a010300b003e38a0b8c80mr23554988qtw.41.1679982619964;
-        Mon, 27 Mar 2023 22:50:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1679982619; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp2407445ejb;
+        Mon, 27 Mar 2023 22:50:29 -0700 (PDT)
+X-Google-Smtp-Source: AKy350adYGjUyw0AVMxehdR0PUnCAUZRnXtropRvSTRG5Of5Qugp87hgmPindd3V+zY7nBH3awR+
+X-Received: by 2002:ad4:5c85:0:b0:577:4ea5:243f with SMTP id o5-20020ad45c85000000b005774ea5243fmr30894443qvh.7.1679982628832;
+        Mon, 27 Mar 2023 22:50:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1679982628; cv=none;
         d=google.com; s=arc-20160816;
-        b=V4gIEuXOWKtUX3NJKBKzRdElu0GFolK4sX5gLZD/8vVv/9rdfEydk0U+tJOKQn9VhA
-         aPmRRxhG5mHkxC3g//ifmtqg9uTrpR3ZLOdCNnw3Kk8bsg8SDtjx9x3xXQMPt93mM43U
-         S7h/buRs2uvSpl2SDwo/Hg8HFye2CMQUoO4sWS/yKL+qWg4xpxMreszAh/IfrW4Ti6VL
-         xadHl0p60ZK51C6bRyYhz4v2HaiwiYk8jaLvRf1OWc8aa+U+ZlR2C5mjcwYVX4VyI0Eh
-         LTB6/RBU/VjsLNKeoCSICGDirVXMQqw666+uyeuZLK3WIbgHeihO7I0TvCJ9oRZxFlAz
-         spig==
+        b=WX8tq6duInrC12/V2mDSdBP8D/jIgsYLYZtlJSk6wroW0oaluSAjF3v+F9Gck4fgPZ
+         N/f7GI6LeHPF8dCiMG8lP2V3btigcgfdmp4pj+N6NBetVSKaxQ6/CEvzVxL7qFZpvZ0j
+         mjfL8bEotkwptqmB5aCO9oltkb0EWrRfxS9asJqB66mQm0Vxfq77GynP5DSVsm/w8QzG
+         My3ggzTk1om2ZsIoRIBWNPrzHpfHZKkMZqcj3nYkFmJIXJuHSYMFVCbrsPM8ifYONGXv
+         7M/nokjPHUfhBdG8e1IlianhvjCFbycFrnM8+JfMMQOHrWWJgt085Cznz3erjLlIpMPp
+         dmfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8fSOj9FHLD20tnFbzWLo8vjwarYRhtlzUZh39dyHPG8=;
-        b=VYAu9Q3itRBcMRTYltLumV18zzS7cSeWD+NOihTn4Ydo1PeJ5DZsbxfPS+fIrYqrUn
-         lgNCq0AGR1C6v4pCxLhM8Pn+ubM0CudCK5//Ev5xsT3mIhUM5zFOlTTW8ZnUCCm0S0I1
-         B6iQ2bscaZ0AXdf8CpKGsBNmf1lWpApCN4DcVEVQVV8J6AcSoYPgWpgaSZgWHIta0O3n
-         0Bg5b3o5tEe0OORnHbvJR294oRda/4uOlkkoqA3Iqn0W+w5MCKNdLmdLC+5ecq/+LjUO
-         XSzipL3arF3sCrlVj9JQniZrLzO0tKmuKGBXY/bJKIAQAr8Gm+8mY+6sMmgqXYYBL66z
-         5ixQ==
+        bh=G4HiDP2QHQSefVSMWofZpPtDYC20Pxvuc/H+qVQjo0A=;
+        b=ghBnwwmu+T/+NJMUZcGbsH//7EkhoRDRhiz8zkc7yqesX3a3UCa74UP5xqAT0Lwszm
+         ZsxDohBYB/mLaW3zq+hjfgI54FPmJi0rjDoJOcZRVAYKMcwZenKY0QTJJp5G0un3OQPC
+         MBsu0za98UvT1GPXEKH5sdeuSWNRGTX43hbOOLHROpZSOwAlDoHYwj30crxk7HeXT7SP
+         8DvYDXQUeDnsDAJfwKMurnDjpaFyS1JSSqSG7Lnkk7zItYdOixCIr1xyXbotjLlLtd2d
+         7E9pwwxEGe3M2AcxVxmr+nR/JFlRY48Ezkd4lpSBPiHlR1cvWt6jsWw0/iZsNYBV9U1V
+         8nOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=NpeQThxw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=KKauKHUn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w2-20020a05620a444200b00745b81d4878si21316972qkp.661.2023.03.27.22.50.19
+        by mx.google.com with ESMTPS id n9-20020a056214008900b0058c14817fa5si20576027qvr.84.2023.03.27.22.50.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Mar 2023 22:50:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Mar 2023 22:50:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=NpeQThxw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=KKauKHUn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ph2CV-0003Q8-5x; Tue, 28 Mar 2023 01:48:55 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ph2B2-0000sb-T0; Tue, 28 Mar 2023 01:47:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1ph2CJ-000359-ON; Tue, 28 Mar 2023 01:48:46 -0400
-Received: from m12.mail.163.com ([220.181.12.214])
+ id 1ph2Az-0000q2-LQ; Tue, 28 Mar 2023 01:47:21 -0400
+Received: from m12.mail.163.com ([220.181.12.217])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1ph2CH-0006Hs-7o; Tue, 28 Mar 2023 01:48:43 -0400
+ id 1ph2Au-0005DA-Pn; Tue, 28 Mar 2023 01:47:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=8fSOj
- 9FHLD20tnFbzWLo8vjwarYRhtlzUZh39dyHPG8=; b=NpeQThxwTLIHrynDxMGer
- ZDZ1ublyDp1GXrAp5HLnmdaEAd+an03koHU5xLsn0ZZJWDnPbh50BSPYWspB5A8L
- dU5A8SZEL3SDKAyMQoirHkSve2Scuqr+GaWPTHCN89rLVYZEPWXTOpAWdmHLFe0J
- lQvjebE7jKpo7eoFX9E4NA=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=G4HiD
+ P2QHQSefVSMWofZpPtDYC20Pxvuc/H+qVQjo0A=; b=KKauKHUn8MHV648huFFOD
+ 3MKlV0LWQPBmoTMrd4LGPATLkRKg8aEERW/yWTRz2pShlT90funIvi27mY6scGY2
+ W0JtR81sxVbj0IHDdQpuqCOSth5YlnTUuRLY93gMgz+avU1LW+/Z0e8v/V6u0jDz
+ xyRxWErITfS8/hGY+ChPxs=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [112.224.194.92])
- by zwqz-smtp-mta-g5-0 (Coremail) with SMTP id _____wAXeyWxfyJkjwpOAg--.23105S2;
- Tue, 28 Mar 2023 13:48:34 +0800 (CST)
+ by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBHtBBOfyJkWfxRAg--.23168S2;
+ Tue, 28 Mar 2023 13:46:56 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -67,198 +67,121 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v2 11/11] docs: system: arm: Introduce bananapi_m2u
-Date: Tue, 28 Mar 2023 13:48:30 +0800
-Message-Id: <20230328054832.18790-1-qianfanguijin@163.com>
+Subject: [PATCH v2 00/12] *** add allwinner-r40 support ***
+Date: Tue, 28 Mar 2023 13:46:40 +0800
+Message-Id: <20230328054654.18620-1-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wAXeyWxfyJkjwpOAg--.23105S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuw4fCF4ruF4fCr1xZw47urg_yoW7Aw4fpF
- yvka15KrWkJF1Fya97Kw1fWFy5Xas5ArWUJF1kJ34rtF98Kr1vvwn3Kwn8Wasrtw4Ivw10
- qrW7GF12gwn8J3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zKYLdrUUUUU=
+X-CM-TRANSID: _____wBHtBBOfyJkWfxRAg--.23168S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCr4DZFWDKF48Wr4UJFW7twb_yoW5AFyUpa
+ n0k343Kr1rta43JFWaq3ZrJFyrJa4kGr4UJrn7ZryxAryaka1Yvr1UK3WfKrWfGFW2qanr
+ ZrZIqF13Wws0qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_wZ7dUUUUU=
 X-Originating-IP: [112.224.194.92]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQhNA7VaEEzNtBQAAsm
-Received-SPF: pass client-ip=220.181.12.214;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRVA7VWBpDWFlAAAsx
+Received-SPF: pass client-ip=220.181.12.217;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Czs1Q4+ZC+6D
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ULO8tfAvxpPn
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-Add documents for Banana Pi M2U
+*** history ***
 
-Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
----
- docs/system/arm/bananapi_m2u.rst | 138 +++++++++++++++++++++++++++++++
- 1 file changed, 138 insertions(+)
+# v1: 2023-03-21
+
+The first version which add allwinner-r40 support, supported features:
+
++ ccu
++ dram controller
++ uart
++ i2c and pmic(axp221)
++ sdcard
++ emac/gmac
+
+Also provide a test case under avocado, running quickly test:
+
+$ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
+    --verbose --show=app,console run -t machine:bpim2u \
+    ../tests/avocado/boot_linux_console.py
+
+# v2: 2023-03-28
+
+1. Fix the waring and error reported by checkpatch.pl
+2. Remove the other i2c controllers except that i2c0
+3. Use an array to register mmc and uart devices
+4. Rename axp209 to axp22x and add axp221 support
+5. Add a basic SRAM controller
+
+qianfan Zhao (12):
+  hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
+  hw/arm/allwinner-r40: add Clock Control Unit
+  hw: allwinner-r40: Complete uart devices
+  hw: arm: allwinner-r40: Add i2c0 device
+  hw/misc: Rename axp209 to axp22x and add support AXP221 PMU
+  hw/arm/allwinner-r40: add SDRAM controller device
+  hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
+  hw: arm: allwinner-r40: Fix the mmc controller's type
+  hw: arm: allwinner-r40: Add emac and gmac support
+  hw: arm: allwinner-sramc: Add SRAM Controller support for R40
+  tests: avocado: boot_linux_console: Add test case for bpim2u
+  docs: system: arm: Introduce bananapi_m2u
+
+ configs/devices/arm-softmmu/default.mak |   1 +
+ docs/system/arm/bananapi_m2u.rst        | 138 +++++++
+ hw/arm/Kconfig                          |  13 +-
+ hw/arm/allwinner-r40.c                  | 526 ++++++++++++++++++++++++
+ hw/arm/bananapi_m2u.c                   | 145 +++++++
+ hw/arm/meson.build                      |   1 +
+ hw/misc/Kconfig                         |   5 +-
+ hw/misc/allwinner-r40-ccu.c             | 209 ++++++++++
+ hw/misc/allwinner-r40-dramc.c           | 513 +++++++++++++++++++++++
+ hw/misc/allwinner-sramc.c               | 184 +++++++++
+ hw/misc/axp209.c                        | 238 -----------
+ hw/misc/axp2xx.c                        | 283 +++++++++++++
+ hw/misc/meson.build                     |   5 +-
+ hw/misc/trace-events                    |  26 +-
+ hw/sd/allwinner-sdhost.c                |  70 +++-
+ include/hw/arm/allwinner-r40.h          | 143 +++++++
+ include/hw/misc/allwinner-r40-ccu.h     |  65 +++
+ include/hw/misc/allwinner-r40-dramc.h   | 108 +++++
+ include/hw/misc/allwinner-sramc.h       |  69 ++++
+ include/hw/sd/allwinner-sdhost.h        |   9 +
+ tests/avocado/boot_linux_console.py     | 176 ++++++++
+ 21 files changed, 2679 insertions(+), 248 deletions(-)
  create mode 100644 docs/system/arm/bananapi_m2u.rst
+ create mode 100644 hw/arm/allwinner-r40.c
+ create mode 100644 hw/arm/bananapi_m2u.c
+ create mode 100644 hw/misc/allwinner-r40-ccu.c
+ create mode 100644 hw/misc/allwinner-r40-dramc.c
+ create mode 100644 hw/misc/allwinner-sramc.c
+ delete mode 100644 hw/misc/axp209.c
+ create mode 100644 hw/misc/axp2xx.c
+ create mode 100644 include/hw/arm/allwinner-r40.h
+ create mode 100644 include/hw/misc/allwinner-r40-ccu.h
+ create mode 100644 include/hw/misc/allwinner-r40-dramc.h
+ create mode 100644 include/hw/misc/allwinner-sramc.h
 
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
-new file mode 100644
-index 0000000000..ae7194a9df
---- /dev/null
-+++ b/docs/system/arm/bananapi_m2u.rst
-@@ -0,0 +1,138 @@
-+Banana Pi BPI-M2U (``bpim2u``)
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+
-+Banana Pi BPI-M2 Ultra is a quad-core mini single board computer built with
-+Allwinner A40i/R40/V40 SoC. It features 2GB of RAM and 8GB eMMC. It also
-+has onboard WiFi and BT. On the ports side, the BPI-M2 Ultra has 2 USB A
-+2.0 ports, 1 USB OTG port, 1 HDMI port, 1 audio jack, a DC power port,
-+and last but not least, a SATA port.
-+
-+Supported devices
-+"""""""""""""""""
-+
-+The Banana Pi M2U machine supports the following devices:
-+
-+ * SMP (Quad Core Cortex-A7)
-+ * Generic Interrupt Controller configuration
-+ * SRAM mappings
-+ * SDRAM controller
-+ * Timer device (re-used from Allwinner A10)
-+ * UART
-+ * SD/MMC storage controller
-+ * EMAC ethernet
-+ * GMAC ethernet
-+ * Clock Control Unit
-+ * TWI (I2C)
-+
-+Limitations
-+"""""""""""
-+
-+Currently, Banana Pi M2U does *not* support the following features:
-+
-+- Graphical output via HDMI, GPU and/or the Display Engine
-+- Audio output
-+- Hardware Watchdog
-+- Real Time Clock
-+- USB 2.0 interfaces
-+
-+Also see the 'unimplemented' array in the Allwinner R40 SoC module
-+for a complete list of unimplemented I/O devices: ``./hw/arm/allwinner-r40.c``
-+
-+Boot options
-+""""""""""""
-+
-+The Banana Pi M2U machine can start using the standard -kernel functionality
-+for loading a Linux kernel or ELF executable. Additionally, the Banana Pi M2U
-+machine can also emulate the BootROM which is present on an actual Allwinner R40
-+based SoC, which loads the bootloader from a SD card, specified via the -sd
-+argument to qemu-system-arm.
-+
-+Running mainline Linux
-+""""""""""""""""""""""
-+
-+To build a Linux mainline kernel that can be booted by the Banana Pi M2U machine,
-+simply configure the kernel using the sunxi_defconfig configuration:
-+
-+.. code-block:: bash
-+
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make mrproper
-+  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make sunxi_defconfig
-+
-+To boot the newly build linux kernel in QEMU with the Banana Pi M2U machine, use:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M bpim2u -nographic \
-+      -kernel /path/to/linux/arch/arm/boot/zImage \
-+      -append 'console=ttyS0,115200' \
-+      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-r40-bananapi-m2-ultra.dtb
-+
-+Banana Pi M2U images
-+""""""""""""""""""""
-+
-+Note that the mainline kernel does not have a root filesystem. You can choose
-+to build you own image with buildroot using the bananapi_m2_ultra_defconfig.
-+Also see https://buildroot.org for more information.
-+
-+Another possibility is to run an OpenWrt image for Banana Pi M2U which
-+can be downloaded from:
-+
-+   https://downloads.openwrt.org/releases/22.03.3/targets/sunxi/cortexa7/
-+
-+When using an image as an SD card, it must be resized to a power of two. This can be
-+done with the ``qemu-img`` command. It is recommended to only increase the image size
-+instead of shrinking it to a power of two, to avoid loss of data. For example,
-+to prepare a downloaded Armbian image, first extract it and then increase
-+its size to one gigabyte as follows:
-+
-+.. code-block:: bash
-+
-+  $ qemu-img resize \
-+    openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img \
-+    1G
-+
-+Instead of providing a custom Linux kernel via the -kernel command you may also
-+choose to let the Banana Pi M2U machine load the bootloader from SD card, just like
-+a real board would do using the BootROM. Simply pass the selected image via the -sd
-+argument and remove the -kernel, -append, -dbt and -initrd arguments:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -M bpim2u -nic user -nographic \
-+    -sd openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img
-+
-+Running U-Boot
-+""""""""""""""
-+
-+U-Boot mainline can be build and configured using the Bananapi_M2_Ultra_defconfig
-+using similar commands as describe above for Linux. Note that it is recommended
-+for development/testing to select the following configuration setting in U-Boot:
-+
-+  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
-+
-+The BootROM of allwinner R40 loading u-boot from the 8KiB offset of sdcard.
-+Let's create an bootable disk image:
-+
-+.. code-block:: bash
-+
-+  $ dd if=/dev/zero of=sd.img bs=32M count=1
-+  $ dd if=u-boot-sunxi-with-spl.bin of=sd.img bs=1k seek=8 conv=notrunc
-+
-+And then boot it.
-+
-+.. code-block:: bash
-+  $ qemu-system-arm -M bpim2u -nographic -sd sd.img
-+
-+Banana Pi M2U integration tests
-+""""""""""""""""""""""""""""""
-+
-+The Banana Pi M2U machine has several integration tests included.
-+To run the whole set of tests, build QEMU from source and simply
-+provide the following command:
-+
-+.. code-block:: bash
-+
-+  $ cd qemu-build-dir
-+  $ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
-+    --verbose --show=app,console run -t machine:bpim2u \
-+    ../tests/avocado/boot_linux_console.py
 -- 
 2.25.1
 

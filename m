@@ -1,76 +1,76 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp522175ejb;
-        Wed, 29 Mar 2023 06:57:10 -0700 (PDT)
-X-Google-Smtp-Source: AKy350acOJLjq2JXjQD1UfSsJl26qf/fc558uTnJQ3mRZOxFhA6axUUhgdIScmH+2dPEe6E3UaLk
-X-Received: by 2002:adf:e9c3:0:b0:2da:90a8:7180 with SMTP id l3-20020adfe9c3000000b002da90a87180mr14929765wrn.3.1680098230372;
-        Wed, 29 Mar 2023 06:57:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680098230; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp522843ejb;
+        Wed, 29 Mar 2023 06:58:23 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8HNLspZaC8N5545FMCb3N9UCdMU3HWhFE7djmpZa1N94C1Owni4slI+9hi3JzTmZk4qxle
+X-Received: by 2002:a7b:c5d4:0:b0:3ed:b349:e473 with SMTP id n20-20020a7bc5d4000000b003edb349e473mr16727719wmk.37.1680098303270;
+        Wed, 29 Mar 2023 06:58:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680098303; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQ/3733AEcbJ384kzvijhlCMhNBpmoZoWqTWYbYR6cx86M+dU9R4QD4BS/TOPgawpH
-         CMtMUIy6/2wQ7FeV8X3C+7QKOkFXTks86wpJL0Sr4bQ7qflzPmXnG9NnkbCLQAsW4Lje
-         /XvH8dlm1KTmtY1boDfGLE5JdKy6RxEr/PmuNXfGXslZZH3GlWhVy1lcf5VhV/BqwsBm
-         9aM+X6by939vQxq901gO9EezE8ow+OCSSPJyex30rl8UcVgL0fR8NPNfg+pWBm5MKo6q
-         eyVkXDgDb9vf6Motuo9KC56HBwmxjSXU4L4tBqA4mbRRapTOhIYjWDKHmk1ZRHUxMDKz
-         SmMw==
+        b=bB6+fkKtuNW+qNf4aXXLt0GjGfo3wmwF6TOL3fkx7BhMAA7RqF26NC9NIdfsU6d3hN
+         h9ENAPP0963BXWEwM2O8kRkQLbIkoSeDktS4YtxylcjEPYSq4GrTBNYC69s9FhiSWdz0
+         YNvaqUkHh6YflP6M1fplJ+v/XY4KNrR11uzvAUiPihsRFfbViSsHzNU9E4CRC5FeGSew
+         2hdwm1i4Wj6KqtTilyeI1poPolLsABsYJImP4IcNkzvJVxdA3VPIORk9nEUlWRlniCZi
+         Kmyj2PZS6tny9ZshuUs8HKbrrr63KKsrTEhSP698NzF6d40gP1Mj+qQFXRsaeCFr4je7
+         IizA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:references
          :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=G4zDWPpQKlg/1synQOq2eKCiMKJAG5BFd3bkstfjsAc=;
-        b=s4M79jEr/6gLw4XCOaxWIoZCJHZRTHu8Rv/77+qWnWkI4TSr2qhJq0I7foyLdMJVeQ
-         5QDlc3rK8ZVXUvUgqFBLAk5uDxuTKK4ycLDQVPDxGO3J2VFsfZ5woTGk/N9Bx/eN4y3A
-         oClnxWlCrGYSpcFBnyz5lk8XMWyk2zO0hCc/ON3oSFqYd2KxEIocm+K4kpUUOR2qJpEN
-         270hrNZl2J4zmYRY4bNYX7Pu/EGjExgUid8n5xY5WDIIlT28eGU7FwQ5o+PFe8KASlIX
-         92KwzgjnDwZXCAlFlE3YBR720PrhZK8vLRb3RSzpeu/CifxhEMwmT0CFw5Oow37SxE1i
-         4g3g==
+        bh=95YmYhA7ki+TZC4T3l9Mr5muPYJroIXUV9t1BWvU/2E=;
+        b=jWDEDR1XavafxInwbFDhK1bG+gtOGZoo22Te+a4RoCF++mSms9LwytxjlMk9is+YSe
+         sccvUkyrwhNEyBQCK/WcsAB6q2fqz+TsSbZPh+RiroS5kmV/+yKFRgmr2DOcsEdRHyVS
+         r7OwojDsoPATRBJs9/XKzM21gVXx2QpnWCHrOjtjpLAseFACl+TI5W3apoCVTilBRwyR
+         Io0tNgq3xRM9C5r3h9oiMGRrxvv2IlWApHZaT18vxb/4J7bwOtp/zZ1CRdccAlKvfoIt
+         u3MRRA7oB9dR3ffUkt6TjXJdLmBy73sf1HCOxdjzVXQh+zZilWB/0+M5cThq6KhFVkKU
+         tuzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=AmzL6iqp;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Gq+mnb1J;
+       dkim=neutral (no key) header.i=@suse.de header.b=J97+9T98;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id t15-20020a5d49cf000000b002c58b77e532si28772224wrs.880.2023.03.29.06.57.10
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id p15-20020a7bcc8f000000b003dd1c4bc1c4si1301606wma.84.2023.03.29.06.58.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Mar 2023 06:57:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+        Wed, 29 Mar 2023 06:58:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=AmzL6iqp;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=Gq+mnb1J;
+       dkim=neutral (no key) header.i=@suse.de header.b=J97+9T98;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id BC4B61F7AB;
-	Wed, 29 Mar 2023 13:57:09 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id E6794219E8;
+	Wed, 29 Mar 2023 13:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1680098229; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1680098302; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=G4zDWPpQKlg/1synQOq2eKCiMKJAG5BFd3bkstfjsAc=;
-	b=AmzL6iqpeiEK1id6TL32sQnm6Y374nlnEH4osl6hzdXuGdhmbHNJfy+Q2No4asqepf/cy9
-	08eRMENqQfxW+9pTmwzMs1f5wp9dh1hx/J+RuH7P7yBn9dqeuAY4QxjeMPs3gpRegi/vH3
-	NnRaNflIQV6mJjDgOCJhTGzf9XL1yS8=
+	bh=95YmYhA7ki+TZC4T3l9Mr5muPYJroIXUV9t1BWvU/2E=;
+	b=Gq+mnb1JfEitGhapUj7FK7mZpU+Xx08N6ihNcNSUmmRhrEDeX5IX5rO3mlbwlg7+x2E5IH
+	S5PNjTZ95Wuuag/oVErhHv4XiJueY7Im025nHsobi9VYPOnACPQU+joPtcZp2WowW9YN/O
+	2eEzLzNrE6oiUtw11YFEFryaV86S1fw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1680098229;
+	s=susede2_ed25519; t=1680098302;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=G4zDWPpQKlg/1synQOq2eKCiMKJAG5BFd3bkstfjsAc=;
-	b=dmJBKyEsBUIhf/3xrr9UgbldMiNEhI//bUZR++vDYMfWkzRVgwhmiRPUCAWntK/75+zeXS
-	R+z/Kyram2p449Aw==
+	bh=95YmYhA7ki+TZC4T3l9Mr5muPYJroIXUV9t1BWvU/2E=;
+	b=J97+9T98Z6FPs4nNyGEWVKcCxRt8GKLT/wF/YDjGrAUbN4FcJfOOxCZ0HejscxaDkV4zXS
+	biE/DhAUdcKuphAQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 34C04138FF;
-	Wed, 29 Mar 2023 13:57:08 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6A9B1138FF;
+	Wed, 29 Mar 2023 13:58:22 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id HfrvOrRDJGSBJAAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 29 Mar 2023 13:57:08 +0000
+	id um1fDP5DJGQoJQAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 29 Mar 2023 13:58:22 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -88,23 +88,37 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, David Gibson
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathieu-Da?=
  =?utf-8?Q?ud=C3=A9?=
  <philmd@linaro.org>, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH-for-8.0 v2 1/3] softmmu: Restrict cpu_check_watchpoint /
- address_matches to TCG accel
-In-Reply-To: <20230328173117.15226-2-philmd@linaro.org>
+Subject: Re: [PATCH-for-8.0 v2 2/3] softmmu/watchpoint: Add missing
+ 'qemu/error-report.h' include
+In-Reply-To: <20230328173117.15226-3-philmd@linaro.org>
 References: <20230328173117.15226-1-philmd@linaro.org>
- <20230328173117.15226-2-philmd@linaro.org>
-Date: Wed, 29 Mar 2023 10:57:06 -0300
-Message-ID: <87v8ijy825.fsf@suse.de>
+ <20230328173117.15226-3-philmd@linaro.org>
+Date: Wed, 29 Mar 2023 10:58:19 -0300
+Message-ID: <87sfdny804.fsf@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: ToH+5AiWv3y8
+X-TUID: yvZtFi3r1Z5P
 
 Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-> Both cpu_check_watchpoint() and cpu_watchpoint_address_matches()
-> are specific to TCG system emulation. Declare them in "tcg-cpu-ops.h"
-> to be sure accessing them from non-TCG code is a compilation error.
+> cpu_watchpoint_insert() calls error_report() which is declared
+> in "qemu/error-report.h". When moving this code in commit 2609ec2868
+> ("softmmu: Extract watchpoint API from physmem.c") we neglected to
+> include this header. This works so far because it is indirectly
+> included by TCG headers -> "qemu/plugin.h" -> "qemu/error-report.h".
+>
+> Currently cpu_watchpoint_insert() is only built with the TCG
+> accelerator. When building it with other ones (or without TCG)
+> we get:
+>
+>   softmmu/watchpoint.c:38:9: error: implicit declaration of function 'err=
+or_report' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+>         error_report("tried to set invalid watchpoint at %"
+>         ^
+>
+> Include "qemu/error-report.h" in order to fix this for non-TCG
+> builds.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 

@@ -1,109 +1,116 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp53496ejb;
-        Thu, 30 Mar 2023 09:31:40 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZM8uvErcW8KYaMlHz+u1bd5OWaoRPHTCBa6PpofCMkDzjN42RopB4jFKijviOhJGbGUyV5
-X-Received: by 2002:a67:e3ad:0:b0:426:d40:2bb7 with SMTP id j13-20020a67e3ad000000b004260d402bb7mr8689007vsm.20.1680193900534;
-        Thu, 30 Mar 2023 09:31:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680193900; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp80215ejb;
+        Thu, 30 Mar 2023 10:16:05 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZXZVX7JAMG6V8dTKvQJ8Yt+yL0vM67yiBxbFBu3w3o0O1xzmvNBOYl+RgMaXaR89XbC6Br
+X-Received: by 2002:a05:622a:11c1:b0:3e4:e2f3:3776 with SMTP id n1-20020a05622a11c100b003e4e2f33776mr31182254qtk.16.1680196564768;
+        Thu, 30 Mar 2023 10:16:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680196564; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2hyyEjfXaw/dW22kYGA23S4tChue66Q36qCBUYshlTOR6MF865oR5rW+C8Ke/VX+2
-         j4hctJkszz8mKZBzVmQ7ksKJPA1NIgg0dMMgBSMTPnXTzr+clsO7s6Vgew9plCTV4t57
-         MvgadFFDCX82D4tNheDpJfu3/UBdifYSFchDJwV0wrlR7FfQl6pSCfVqTG5+UmE2omel
-         aKIr4Z9mU+mO5TjKqaNy1SmWtoCp/zH0bcdGgrwV8mhm/v+Levq2QfyUTgRRtQxsDPiM
-         6c/Jugna6deqqyfggwQd9LchQB/PpgwfPHU7MScmiZTHmjIdCsdTcGMiOud//dJUcOKq
-         JSEQ==
+        b=sYdbuqJpj6+sMm8VYIywJ6HOw0irOtdFc8j2Q5RhT9HUk+fJarYcWJOMr50tV+lLNj
+         NjlTmL6PJXMxF+J+1Zf4+332sdrPG8ZmEwkW49UUw7J3dvjXV7vZzy1wlIb1NhupvtU0
+         ztZtfqYghMBHgW/W39B7nM0494JmfIue9nFHARBL+FfPlvMV9QKpkGdg9+Db9mWvaxng
+         9CWmXVSt4kkw+6SzZTt1OUm8/itfBcyuQd0g+j0p6EsWOlMAWQ7RptaYffQfMHjmEoM1
+         vy2VXQwLNAvOdbKlsr5f6gKuhpXoVVzPbTzrU+V4Me522w53BcmnScJUqcoHFH14q/bq
+         xDQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8PNdonIV4iHbxLXT7tt0I71+I9CCRTsiaRCVsBkuP70=;
-        b=HaXU/G8L2lKgBE7lhz6q4rcKQBxaXwv8VXE0aMh9yZu7Imiim1yIPgiAKmvSDuqghb
-         hfi1Kidc129D1iZ6exXi/Vn4MUYrFmhhILqmrUsDQhN8kcI4G4MR7HcgNtpiSxz4CDGf
-         EBxeDHeOaNCNr527+W94VzPl76lJya/ZtIkNVYoxcoPD5A7vdsTDR9kpMcqRcvrTg5Oc
-         m1q/nhbgA29AqwnFx6hQJBChJtyNwVXOf2/p3IsJzpmT/Dp4b5Btuc8cXhHz/ghNMxwk
-         mkhP+naz104C1YZxM85hJz6V2F30ZVz+Zho5/iuuHJQeG6KogAuBDiqUbrTJs2Tf/ryi
-         oIww==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=RmnUNt2fv7zIJyYexWKIRPZpeYxc2O4UwrnTDCVAxl0=;
+        b=kMmsOkptxI8fHIIqZb7sDh9+jVDOtcDvm/RCwoO8QePRMtEKKTRT9i9k3dSQZdMQkJ
+         G3eP9Ai7JvDNn3066Vp9jLXlnSgwHzqjjlDJrgpgLIeAbFkmSTnGdYP+iaAT5kWh+SM1
+         XPwEIpHzmrfMRILeiOy9oVeiKZ4IwkHg8qYYJsphE2g1aiG6jwnTLL+V5++e0/wvOMzh
+         gMhbq/GUox0HQ8IabmDbT6Gw89X7rsSd7Mq4ppM4tuhoMGEMQHwONXOPNbzQNvJzVVnA
+         FAUpaGXaksaNGokFWtOecLYeVjhNDRJMfM0U2MomL2wLt0Q2awApmX7YzMHlvJBxoq00
+         PI1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pSn73KTm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VgGqgcb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26-20020a67f99a000000b00425c8e198e5si8138833vsq.667.2023.03.30.09.31.40
+        by mx.google.com with ESMTPS id 1-20020ac85901000000b003e49520052esi12085903qty.805.2023.03.30.10.16.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Mar 2023 09:31:40 -0700 (PDT)
+        Thu, 30 Mar 2023 10:16:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pSn73KTm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=VgGqgcb5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1phvBT-0001Eb-6M; Thu, 30 Mar 2023 12:31:31 -0400
+	id 1phvsU-0007Jv-Rv; Thu, 30 Mar 2023 13:15:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1phvBQ-0001Dt-8a
- for qemu-arm@nongnu.org; Thu, 30 Mar 2023 12:31:28 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1phvsT-0007HS-7q; Thu, 30 Mar 2023 13:15:57 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1phvBO-00040g-LN
- for qemu-arm@nongnu.org; Thu, 30 Mar 2023 12:31:28 -0400
-Received: by mail-ed1-x531.google.com with SMTP id t10so78626904edd.12
- for <qemu-arm@nongnu.org>; Thu, 30 Mar 2023 09:31:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1phvsR-0007Wp-9X; Thu, 30 Mar 2023 13:15:57 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-54601d90118so211174187b3.12; 
+ Thu, 30 Mar 2023 10:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1680193884;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8PNdonIV4iHbxLXT7tt0I71+I9CCRTsiaRCVsBkuP70=;
- b=pSn73KTmGvkY6SCuQt/pKKxqb05gX8e4/U0uc3TEHST1n3xWHWtde+6IAvXJHVyDHf
- tkp9N6qPoHdLBG28yICxbXsBOLivf6X3al5ZqkgcoVd0T4LGO90kNJskb5JRNgNykMcb
- mC7jlOV6eD6geDJtQMzE9nMubbmz5nK3e+CvzHp0IToBmrTxDw6bwOBRHq6ptNDr64Mr
- rORbe1Y+cD52snZBFgxhEXELZ7nnvE2TxMbILQZ2QGZC+698s1pZH6lr3TiJpkvQiYYl
- RWj9ZodvbpNs53sfy6a47NziHHwOyj8pkNBOV090jWwgIY6q1w4TMy0l063Z6Mzv2nuT
- 4XKA==
+ d=gmail.com; s=20210112; t=1680196553;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+ :reply-to; bh=RmnUNt2fv7zIJyYexWKIRPZpeYxc2O4UwrnTDCVAxl0=;
+ b=VgGqgcb57SAtqW3kYkGNf/JsLUtNoltHuDZRKIl9hWHUazYU2Lg/zYiSjfTemMrs9G
+ /QZX9sOnLd3iGJhPzUFVYKB2+vVc1WcJNtOSaEIlxstfLwyoVwUEkzHAdYjcBAKqDJsq
+ Uw1qaWATlLYkSu1Q0FmGaDtliZJnhM9Tuo3al+aZ2jUA6n0R3zKAJau+ndN8lunQPJEx
+ fzlG9cUFELMIvAlntf/RVnWqnMZIwXFCLsSVXGh9CaIAzq8+t6Pu5AmVW8ATNo70OjSN
+ rZunoU8taj8CCGado+wgRbDl6paWjcSTh8dhzu99Drf+Lq9PrHywblL+aVDUtbpTIq+u
+ qsFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680193884;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8PNdonIV4iHbxLXT7tt0I71+I9CCRTsiaRCVsBkuP70=;
- b=QVpy6YgZ0U5IfslqybbgqYCWuE3CVGRah7xeoZNNLjYnxQh3wGLFNiO9ixObVuG3UT
- 267qYQhp0NdPz3vkUmfrxka8PA8uK6iBe9qDOm5bvp87k0Ah4U1mkzLrCF38JfX67HM9
- w6TyteypYsiSeIksobvU5KmJIJPazAnKgA3ZbbmGASTpeVpkGzco3FeT2isTfHlOPQm8
- 3dbb0E9FoPCunMvsqu71J5EwfUco+MKp0/7lJmR+WWa17jIUgqv4Nq68sJeZ38mhIokJ
- iRAiZOFY4sH9EW4upXh8cu5ZJT1+zYcdeX5GVbqUDkpfAnDMVdK85p7/eGZusPDXkvzJ
- tbSA==
-X-Gm-Message-State: AAQBX9dqGBVsgOYXox3a1fm4Mr6KYzyDzfiNPGNomVucplKrd7M426fV
- 3az2RpLLuK6dZWys1kMOzIhm1cyZ6KKbroXBVyCvWA==
-X-Received: by 2002:a17:906:6a03:b0:930:90ce:a1a6 with SMTP id
- qw3-20020a1709066a0300b0093090cea1a6mr12145665ejc.6.1680193884087; Thu, 30
- Mar 2023 09:31:24 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230315145248.1639364-1-linux@roeck-us.net>
- <20230315145248.1639364-2-linux@roeck-us.net>
-In-Reply-To: <20230315145248.1639364-2-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Mar 2023 17:31:13 +0100
-Message-ID: <CAFEAcA8=0m-UFj9noTa+J69sEMP5cqTvaMoVoqHVd4V2JF3Oxw@mail.gmail.com>
+ d=1e100.net; s=20210112; t=1680196553;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RmnUNt2fv7zIJyYexWKIRPZpeYxc2O4UwrnTDCVAxl0=;
+ b=qHgwG1oeDPemg6OXo41k9ngtlUsMQ6yutIBpHO4HVMKHtV57U6+cCRziAX6SueW2a9
+ PT88U8B1wVHAZ+4trSvhlgdYys/irn+7+1ERtIBNL698jxp2M87/Hd2Eh1oLIYpcGvuY
+ 3puqOYtdOhQ6ss9YbrSRUa7mOMGblnqZ892X1f2im5ETguxkdQrEj2yOr+kp7vqw8lSX
+ 75affR05VGnndFR8Q0PYsmi5ylzl0vxlol+SmfWnju4u5cPvojluDSX3WgnGmneTldgl
+ FY2EibA5LhI9XVi/2G/rKCZOxdne7XtYpruHyGW/IlEcxUQhqWZlLaS8q5l7w4CJewmX
+ n0Gw==
+X-Gm-Message-State: AAQBX9cWBPZ1osVhcbheELIrdkCgNaK74upb1oM2xTFpRicXTWsh9Fv/
+ uvFI7btW7q6wqzI3SGvyWI8=
+X-Received: by 2002:a0d:f7c1:0:b0:544:c7e0:9706 with SMTP id
+ h184-20020a0df7c1000000b00544c7e09706mr20607110ywf.42.1680196553040; 
+ Thu, 30 Mar 2023 10:15:53 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ b2-20020a81bc42000000b00545a08184a7sm3610966ywl.55.2023.03.30.10.15.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Mar 2023 10:15:52 -0700 (PDT)
+Date: Thu, 30 Mar 2023 10:15:51 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Subject: Re: [PATCH 1/5] hw/net/imx_fec: Support two Ethernet interfaces
  connected to single MDIO bus
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Message-ID: <a1824028-7aba-4b17-910b-6845834d73f7@roeck-us.net>
+References: <20230315145248.1639364-1-linux@roeck-us.net>
+ <20230315145248.1639364-2-linux@roeck-us.net>
+ <CAFEAcA8=0m-UFj9noTa+J69sEMP5cqTvaMoVoqHVd4V2JF3Oxw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8=0m-UFj9noTa+J69sEMP5cqTvaMoVoqHVd4V2JF3Oxw@mail.gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=groeck7@gmail.com; helo=mail-yw1-x112f.google.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,51 +125,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 30sprUZ6OiUH
+X-TUID: M/8QjJCP4gsq
 
-On Wed, 15 Mar 2023 at 14:52, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> The SOC on i.MX6UL and i.MX7 has 2 Ethernet interfaces. The PHY on each may
-> be connected to separate MDIO busses, or both may be connected on the same
-> MDIO bus using different PHY addresses. Commit 461c51ad4275 ("Add a phy-num
-> property to the i.MX FEC emulator") added support for specifying PHY
-> addresses, but it did not provide support for linking the second PHY on
-> a given MDIO bus to the other Ethernet interface.
->
-> To be able to support two PHY instances on a single MDIO bus, two properties
-> are needed: First, there needs to be a flag indicating if the MDIO bus on
-> a given Ethernet interface is connected. If not, attempts to read from this
-> bus must always return 0xffff. Implement this property as phy-connected.
-> Second, if the MDIO bus on an interface is active, it needs a link to the
-> consumer interface to be able to provide PHY access for it. Implement this
-> property as phy-consumer.
->
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+On Thu, Mar 30, 2023 at 05:31:13PM +0100, Peter Maydell wrote:
+> On Wed, 15 Mar 2023 at 14:52, Guenter Roeck <linux@roeck-us.net> wrote:
+> >
+> > The SOC on i.MX6UL and i.MX7 has 2 Ethernet interfaces. The PHY on each may
+> > be connected to separate MDIO busses, or both may be connected on the same
+> > MDIO bus using different PHY addresses. Commit 461c51ad4275 ("Add a phy-num
+> > property to the i.MX FEC emulator") added support for specifying PHY
+> > addresses, but it did not provide support for linking the second PHY on
+> > a given MDIO bus to the other Ethernet interface.
+> >
+> > To be able to support two PHY instances on a single MDIO bus, two properties
+> > are needed: First, there needs to be a flag indicating if the MDIO bus on
+> > a given Ethernet interface is connected. If not, attempts to read from this
+> > bus must always return 0xffff. Implement this property as phy-connected.
+> > Second, if the MDIO bus on an interface is active, it needs a link to the
+> > consumer interface to be able to provide PHY access for it. Implement this
+> > property as phy-consumer.
+> >
+> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> 
+> > @@ -282,11 +282,19 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+> >      uint32_t val;
+> >      uint32_t phy = reg / 32;
+> >
+> > -    if (phy != s->phy_num) {
+> > -        trace_imx_phy_read_num(phy, s->phy_num);
+> > +    if (!s->phy_connected) {
+> >          return 0xffff;
+> >      }
+> >
+> > +    if (phy != s->phy_num) {
+> > +        if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
+> > +            s = s->phy_consumer;
+> 
+> This does work, but it leaves me wondering if we should really
+> be modelling the phy as a separate device object, so that we
+> can use link properties to connect the right phy to the right
+> IMXFECState rather than having this odd "actually use the pointer
+> to this other instance of the device"... A quick glance through
 
-> @@ -282,11 +282,19 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
->      uint32_t val;
->      uint32_t phy = reg / 32;
->
-> -    if (phy != s->phy_num) {
-> -        trace_imx_phy_read_num(phy, s->phy_num);
-> +    if (!s->phy_connected) {
->          return 0xffff;
->      }
->
-> +    if (phy != s->phy_num) {
-> +        if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
-> +            s = s->phy_consumer;
+Possibly, but I don't understand well enough how this would work
+to be able to implement it. I'll be happy to test patches from others,
+of course.
 
-This does work, but it leaves me wondering if we should really
-be modelling the phy as a separate device object, so that we
-can use link properties to connect the right phy to the right
-IMXFECState rather than having this odd "actually use the pointer
-to this other instance of the device"... A quick glance through
-the code suggests that the phy and the ethernet controller
-proper don't really care about each others' internals.
-(imx_phy_update_irq() does call imx_eth_update() but AFAICT
-that is unnecessary because imx_eth_update() doesn't care about
-any of the phy state...)
+Thanks,
+Guenter
 
-thanks
--- PMM
+> the code suggests that the phy and the ethernet controller
+> proper don't really care about each others' internals.
+> (imx_phy_update_irq() does call imx_eth_update() but AFAICT
+> that is unnecessary because imx_eth_update() doesn't care about
+> any of the phy state...)
+> 
+> thanks
+> -- PMM

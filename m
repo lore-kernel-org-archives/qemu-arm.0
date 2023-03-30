@@ -1,162 +1,173 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1194416ejb;
-        Thu, 30 Mar 2023 05:10:29 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YAWZlUMJre0OQ5TcU4ZpgDT+kPo9AiAp7VGHwOojhl2DwMp6IUVloyIVO33jPQdESlIWYN
-X-Received: by 2002:a05:6214:dcc:b0:5df:4d3e:b8e0 with SMTP id 12-20020a0562140dcc00b005df4d3eb8e0mr11615296qvt.4.1680178228828;
-        Thu, 30 Mar 2023 05:10:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680178228; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp1222144ejb;
+        Thu, 30 Mar 2023 06:00:03 -0700 (PDT)
+X-Received: by 2002:adf:f8c3:0:b0:2d2:3dc8:767f with SMTP id f3-20020adff8c3000000b002d23dc8767fmr17559067wrq.29.1680181203706;
+        Thu, 30 Mar 2023 06:00:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680181203; cv=none;
         d=google.com; s=arc-20160816;
-        b=JjNlQD9tnQ+jHIVG1ih1/vM5RJfNzJgPB+0SDOeDg87wzteZSEsK5fUoEx3JqnRnD7
-         Egd7m+RMfkaC/JPlL36aNTAPCpf77eGs6vS0ct4/cescKcwYvRTrMElT54MWzfQbrW+x
-         vEsT6etLRqWnHoGfW1IUA0OZ5ZuQ9pv8WAG8+UNgeCu8sqKiim9j8DZ/0hi9UHQ08jw6
-         T7Pq61uQtnbRlOnF+uJYsKv+FfIbh3P5ZyuvZuS5peRJxojMwgl6cw7yeSLwifcnav/N
-         dkdH9prKIvgManJ+Bvcg2JvaV7KbKxyLhSRFsyXdhw6LL74sWS5AM4ZlK6EJXNWGEfzb
-         TrCQ==
+        b=ih9lpEIu2/dsWKy/chedVbn19CYMubIJ7qVPQhLfebDbVj75y434AKRqsFgM1jQSYN
+         QfbuJFRbeah7SOrne9pSan5gXGOVaSltYRKrAOjoYKSAaOdlgbeioFNQv+41fA6Ut8cw
+         wde/PMzSFCEICg17MmAVOFLzBq9g/p3uOe2g+EHFcvdPguDyeUdC+MwIPKb0XEDSRpKY
+         mz32kmwHw4dwiaVHavF4L8w/SxsfVgny7c549tOzbGAO1OAMuOsM1dLNq5oGLvepJjKB
+         78EhjLXsy2MXAQnGmKz0WYTUjb+lWQDeQM+iH8viL+zhudcVIg2vbKUNK+u28tyf3hqm
+         wHXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=eSwrjbjEtfQhB/Q3VIoA612PGO5lvJ8dps+42mp++4I=;
-        b=SyjHTAchD/Cxd26L9n4rKp8VlfjJR1XzBKU9wU63QBs6x5jEIBSR+VUtvNv7FtZZY7
-         W4vySfAxCxXLCl/FrVgQc5L98i5AODp5pQdnLGZa/0R9tAqxISxhnHvLy+eYgapr0ty+
-         WVJ3jYevnC4Hf1JHWCB1j7++zOUaWOoa9+N9d84F04uQ/ukIVHNOj9LGihb+roGg6zWr
-         SO6rNSORcDDxJz6dSw1C2Hd8hCo8aQLRI+MZQH6qEALNY3ZM21I0/Rjpw1kQLKJmc8PC
-         HMS1EIhdvuWSxi70KQ2VRV77P6SlPuAsLvqjGFt+rUcap0nzp1L/tJUi3YyFNdWv/WJx
-         yyXg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ma3XDkiSXLvZWrR7r8V15Ik0qYtB7paYBPWPXT8XiT0=;
+        b=TrqKdB3uIcmAJB17PP2OwZ2BQvJK+rvomzeOpLD+cRAVUGEJ2oXdA2zONMYI+w/7Gq
+         JK6qefrNsuwQss0wNVuR+7qnIZaxyTFDEzD/Jcpku/VgZMPzJOlkgt78eZrtPaeAKJ+2
+         zRRFg+W73lwrV9AKnbUcVWnViRKoOgYb4GEpqIB9/VsWNDnmRbK9JaxIaUI/4Y5OeYoo
+         Ggkb6RSckIVyET3L2p935ZD/hHZjHVMRijdQcxkvybkRaDqP235ZWLI8u4a2QJPsPYOE
+         2RJ0gdoe5TOlF8+rxbxwY8LmjyauwsAq1OBV/f99WIg4Hk3Fv5roXm/cbUQ0fTXfI52G
+         SDow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=TlFUbsFg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pm9-20020ad446c9000000b005ae63b24e24si24789307qvb.53.2023.03.30.05.10.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZwVtkTxO;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z17-20020a5d6411000000b002d87a775b52sor10992594wru.41.2023.03.30.06.00.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Mar 2023 05:10:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 30 Mar 2023 06:00:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=TlFUbsFg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1phr6i-0003bh-JJ; Thu, 30 Mar 2023 08:10:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1phr6d-0003b3-Nt; Thu, 30 Mar 2023 08:10:15 -0400
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1phr6c-0006M8-3D; Thu, 30 Mar 2023 08:10:15 -0400
-Received: by mail-oa1-x31.google.com with SMTP id
- 586e51a60fabf-17ebba88c60so19463576fac.3; 
- Thu, 30 Mar 2023 05:10:13 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZwVtkTxO;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1680178212;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=eSwrjbjEtfQhB/Q3VIoA612PGO5lvJ8dps+42mp++4I=;
- b=TlFUbsFgKDsDvXO2AkIoeM/CAxmhODcXjABFyR6a8R786BrY/Rn+LA2r6ATq0Pws3H
- s17IGHvuOc+8fbz1D4IB7LrUuQGnH94kgfF0mtWmwZMuWUQrKtHLHMrnujO21HLoGcLV
- kKgB1XPcP7Sj70LJkdfsi9m5dWueqvs+cMU2HGkLfQZ3P7n+yznInDV3b1PthBh8grfS
- MlnQWWADm12xq0ZhqOu1FCS7+/GGIrVX/qLfq6onD2AYlfOR4Bp/l7HAzKEybQdJzg1B
- xkU2VeyEZTTQ09i/R8u/utOY3FcvhwdhaL840poJVYePmejvW+oHIsRTr4SzrvC7l4Kg
- PHkw==
+        d=linaro.org; s=google; t=1680181203;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ma3XDkiSXLvZWrR7r8V15Ik0qYtB7paYBPWPXT8XiT0=;
+        b=ZwVtkTxOTovMciFYRHG7xiGL9T7xT8+xbgshuQPsLPF2xNKMq+0mOjR/G3hXmnkHxb
+         VqxgHzPmXkE7Z27tX5XMBYwf0faLMtUxDgT7LBwgdG4amVLQD1ynYnnyXgtBpmh381XA
+         uG8Hq4CJ80hYheKM1KjEWA7xo4Alh1HcRpjYJPrKkyhrGCxmQxAvwdOP5qDPOhMMpScs
+         QRmfHB9VOoSi6GJJqQGS2ZDo0aTXzaqBDYxtrWsooL4r+COZQa7bKm4bc4J2RLcYwbLa
+         Ge6WhEPS8+5dseH1faDX5u+y9CzLgNCqZ6NQmCAyY1Zy5uM6UH/Nff6BVJpK5bzcXdpv
+         kMhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680178212;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eSwrjbjEtfQhB/Q3VIoA612PGO5lvJ8dps+42mp++4I=;
- b=f8KguNxUMxOxmrWErIxxsaUQb0UFw5qt3sN7E7tsfakrHg2rTQba1Sm0ZPPvkVvDjk
- FNZQb1zfxLMcpgOgSJKB4DhngZzMbHBSd+uYzgP3kX/B5NPyKggzw7PR+8+siyGvFIWd
- i8O/oIOEuoASsnLDS49QbtLOtIdV9jvs9stryL+s8F907n/3yUna3xr/GeLX/UlR0jju
- JjLwRJIQjfyo6YeB5bQFaKFvk23HaZ36/O5sQkD1PLfaUNpT2HbWzZHWHCZjyRiBcQlx
- NKqm6ZiSzQSJCBC70c6n+ZCklcAW3eMCQ0Z0Nsr+KVHzoFrGBmHJGbLBaM6XyvNzF1Wy
- RQwA==
-X-Gm-Message-State: AAQBX9eGAwAy57Y8wN3qMMI6tp869XO2D851qtUSvmlpVnPK8VwCZxah
- J9ybA2ZTjo4e1VbUzXizqRk=
-X-Received: by 2002:a05:6870:8a0d:b0:177:be6c:f4df with SMTP id
- p13-20020a0568708a0d00b00177be6cf4dfmr13772168oaq.46.1680178212235; 
- Thu, 30 Mar 2023 05:10:12 -0700 (PDT)
-Received: from ?IPV6:2804:14c:f435:9162::100d? ([2804:14c:f435:9162::100d])
- by smtp.gmail.com with ESMTPSA id
- ta10-20020a056871868a00b0017197629658sm12671382oab.56.2023.03.30.05.10.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Mar 2023 05:10:11 -0700 (PDT)
-Message-ID: <ee3d4b74-9e88-20aa-cb97-18d570043aa6@gmail.com>
-Date: Thu, 30 Mar 2023 09:10:05 -0300
+        d=1e100.net; s=20210112; t=1680181203;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ma3XDkiSXLvZWrR7r8V15Ik0qYtB7paYBPWPXT8XiT0=;
+        b=HGYnV1umSpP1AdulEJGgCZtG6TIZUBfWJuIPNQZTHWiGiJfyIiqKqMijdFRLILtntO
+         hVfw2c3ow8UcugwrxmhtyT4SlbTOefkB6A/ujPW/8NBtz2pQ0JHItNbldTROMD591GHY
+         dEwxorxymMx+KS6ue1fGEgijwemHjhTX/yFpCQzpeyQPrxHwa3Gz3cx8FnDaDtRT97Mw
+         UNR0nfwjg480n1moRQYJzwtegwVs5WaAuDS7QVrY8c20vFhjcDzSBHgYPC3U8rvXV8Wx
+         z8jgI4HXAEDF3AMnSQlDTrDislW0uRkIu8dIvShowZoQ92wzBhEjM9oxyYCk6K7jvNpD
+         Ra9Q==
+X-Gm-Message-State: AAQBX9d80g6eWrIaq9Oj1BqM4SvZ/WPa2yUfudkHBh7BM8njjrzaYDsv
+	vUUb5+3dozIkAgMtX5t7IWmMdtgGwsVPkah1k7Lu3A==
+X-Google-Smtp-Source: AKy350ZDUVbHj88EJiY9u0RdwFigGUru2sysBe981rTiRJBJ3G3n/XuE8VHZ376pO6pPfLzJPk+IYQ==
+X-Received: by 2002:adf:f544:0:b0:2cf:f2f9:5aab with SMTP id j4-20020adff544000000b002cff2f95aabmr18948384wrp.20.1680181203327;
+        Thu, 30 Mar 2023 06:00:03 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.30.216] ([81.0.6.76])
+        by smtp.gmail.com with ESMTPSA id o10-20020a5d684a000000b002d89e113691sm23797137wrw.52.2023.03.30.06.00.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Mar 2023 06:00:02 -0700 (PDT)
+Message-ID: <6ac0c848-6206-c2f2-f718-68a08b5fe001@linaro.org>
+Date: Thu, 30 Mar 2023 15:00:01 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v3] hw/arm: do not free machine->fdt in arm_load_dtb()
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.9.0
+Subject: Re: [PATCH-for-8.0 v3] target/arm: Fix non-TCG build failure by
+ inlining pauth_ptr_mask()
 Content-Language: en-US
-To: Alexander Bulekov <alxndr@bu.edu>, Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20230328165935.1512846-1-armbru@redhat.com>
- <20230330115830.gj5ntltek3auh4sz@mozz.bu.edu>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230330115830.gj5ntltek3auh4sz@mozz.bu.edu>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm@nongnu.org, Claudio Fontana <cfontana@suse.de>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>
+References: <20230328212516.29592-1-philmd@linaro.org>
+ <CAFEAcA_yP9ibO2NOC0pL4SNbPmHtB+TfPm0A06YfC4Mwec5xAQ@mail.gmail.com>
+ <CAFEAcA9w0H+j2EbgFDXACno1OF-dCFcb1OuCNksci9vHqW=RPw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9w0H+j2EbgFDXACno1OF-dCFcb1OuCNksci9vHqW=RPw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::31;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x31.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: izaJo2ZukgMQ
+Content-Transfer-Encoding: 8bit
+X-TUID: ur18V6yqZt4F
 
-
-
-On 3/30/23 08:58, Alexander Bulekov wrote:
-> On 230328 1859, Markus Armbruster wrote:
->> At this moment, arm_load_dtb() can free machine->fdt when
->> binfo->dtb_filename is NULL. If there's no 'dtb_filename', 'fdt' will be
->> retrieved by binfo->get_dtb(). If get_dtb() returns machine->fdt, as is
->> the case of machvirt_dtb() from hw/arm/virt.c, fdt now has a pointer to
->> machine->fdt. And, in that case, the existing g_free(fdt) at the end of
->> arm_load_dtb() will make machine->fdt point to an invalid memory region.
+On 30/3/23 12:34, Peter Maydell wrote:
+> On Thu, 30 Mar 2023 at 11:31, Peter Maydell <peter.maydell@linaro.org> wrote:
 >>
->> Since monitor command 'dumpdtb' was introduced a couple of releases
->> ago, running it with any ARM machine that uses arm_load_dtb() will
->> crash QEMU.
+>> On Tue, 28 Mar 2023 at 22:25, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>>
+>>> aarch64_gdb_get_pauth_reg() -- although disabled since commit
+>>> 5787d17a42 ("target/arm: Don't advertise aarch64-pauth.xml to
+>>> gdb") is still compiled in. It calls pauth_ptr_mask() which is
+>>> located in target/arm/tcg/pauth_helper.c, a TCG specific helper.
+>>>
+>>> To avoid a linking error when TCG is not enabled:
+>>>
+>>>    Undefined symbols for architecture arm64:
+>>>      "_pauth_ptr_mask", referenced from:
+>>>          _aarch64_gdb_get_pauth_reg in target_arm_gdbstub64.c.o
+>>>    ld: symbol(s) not found for architecture arm64
+>>>    clang: error: linker command failed with exit code 1 (use -v to see invocation)
+>>>
+>>> - Inline pauth_ptr_mask() in aarch64_gdb_get_pauth_reg()
+>>>    (this is the single user),
+>>> - Rename pauth_ptr_mask_internal() as pauth_ptr_mask() and
+>>>    inline it in "internals.h",
+>>>
+>>> Fixes: e995d5cce4 ("target/arm: Implement gdbstub pauth extension")
+>>> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Reviewed-by: Fabiano Rosas <farosas@suse.de>
+>>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>> Supersedes: <20230328133054.6553-1-philmd@linaro.org>
+>>>
+>>> Since v2:
+>>> - Rebased (patch #1 merged)
+>>> - Addressed rth's comments
+>>> - Added R-b tags
+>>> ---
+>>>   target/arm/internals.h        | 16 +++++++---------
+>>>   target/arm/gdbstub64.c        |  7 +++++--
+>>>   target/arm/tcg/pauth_helper.c | 18 +-----------------
+>>>   3 files changed, 13 insertions(+), 28 deletions(-)
+>>>
+>>> diff --git a/target/arm/internals.h b/target/arm/internals.h
+>>> index 673519a24a..71f4c6d8a2 100644
+>>> --- a/target/arm/internals.h
+>>> +++ b/target/arm/internals.h
+>>> @@ -1389,15 +1389,13 @@ int exception_target_el(CPUARMState *env);
+>>>   bool arm_singlestep_active(CPUARMState *env);
+>>>   bool arm_generate_debug_exceptions(CPUARMState *env);
+>>>
+>>> -/**
+>>> - * pauth_ptr_mask:
+>>> - * @env: cpu context
+>>> - * @ptr: selects between TTBR0 and TTBR1
+>>> - * @data: selects between TBI and TBID
+>>> - *
+>>> - * Return a mask of the bits of @ptr that contain the authentication code.
+>>> - */
+>>> -uint64_t pauth_ptr_mask(CPUARMState *env, uint64_t ptr, bool data);
+>>> +static inline uint64_t pauth_ptr_mask(ARMVAParameters param)
+>>> +{
+>>> +    int bot_pac_bit = 64 - param.tsz;
+>>> +    int top_pac_bit = 64 - 8 * param.tbi;
+>>> +
+>>> +    return MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
+>>> +}
 >>
->> Let's enable all arm_load_dtb() callers to use dumpdtb properly. Instead
->> of freeing 'fdt', assign it back to ms->fdt.
->>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: qemu-arm@nongnu.org
->> Fixes: bf353ad55590f ("qmp/hmp, device_tree.c: introduce dumpdtb")
->> Reported-by: Markus Armbruster <armbru@redhat.com>i
->                                                      ^ Seems like a typo
+>> Any reason for deleting the doc comment ?
 > 
->                                                      -Alex
+> Applied to target-arm.next with a doc comment:
+> 
+> /**
+>   * pauth_ptr_mask:
+>   * @param: parameters defining the MMU setup
+>   *
+>   * Return a mask of the address bits that contain the authentication code,
+>   * given the MMU config defined by @param.
+>   */
 
-Yeah it is. Persisted ever since v2 :D
-
-Nice catch!
-
-
-Daniel
+Thank you!

@@ -1,207 +1,377 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp281952ejb;
-        Thu, 30 Mar 2023 17:10:25 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+e32XjvbKLybYZSQWLFvJDSjfDeg0WPP4r/crszDWQLTZPA60VTxvddPZLvjs3vDQcyjKY
-X-Received: by 2002:a05:622a:1109:b0:3e3:82c4:db44 with SMTP id e9-20020a05622a110900b003e382c4db44mr44802578qty.52.1680221425458;
-        Thu, 30 Mar 2023 17:10:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680221425; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp648651ejb;
+        Fri, 31 Mar 2023 06:51:31 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Z3qv9M/Ao0zjXSaeH/uanBK/9bpHvn4MtZTomEQ1i42oOTMpypZVfqGGecxxMiPp42OZFY
+X-Received: by 2002:a05:6214:5194:b0:5c1:b4f6:57ee with SMTP id kl20-20020a056214519400b005c1b4f657eemr36529697qvb.28.1680270691207;
+        Fri, 31 Mar 2023 06:51:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680270691; cv=none;
         d=google.com; s=arc-20160816;
-        b=RCTzN5PcIACndsRR9wmvTMjfhA7/CP7ue/btfJeP+6BGArLa0AObKqjovFc0zLYBfb
-         i8YsFRKYa/56Izy8wE3/DiS+VYe+yr+3mh9VCwnY0ud4xA+dLzWeC59/0EFS8rkIrjV/
-         aH8Tt1ZKUEQ/ZYSTXHcvzXDrmvoIAw/Gm9Yah7pJfznRINXCRsbTv1xrCidqyfisMkFL
-         vzhsOr7C/DNNOyD2CvkVsLWmYLbc3BwjVbfeyrodCY6it0oyvQMyOjXlo2f0Q58vRrZe
-         1qurqq2UYx51+R01iMvOpKJEyhow4Hp7csjLWW0AVF9psLwVpIpZ5/G1Z1lZnQyPjUYX
-         UwIg==
+        b=xGwrk7kksE8DM71CvULkZKzr7RMR5B25KQ/g8wWAwUtS013eWID6J0+KDYWAhER3jP
+         uJlgkjQvaFb7l/0J07xn2/mnnP5QpxR0wORVVZuxdzRI2v8nPH3PhGjBkEu1w7WsZXvE
+         eBqq7uH45OAAx7n7VJ5CvxntQocb/Z1WiTKOZNxz/80CiYJs5+CkDgQ++27ZJMG8BLkQ
+         r2/XFnxCbZxS9mS4evqSAbfF/JvzoJNihF7tIXSvspejdVFVEB7IKy6ZTzuw2bk4OJGZ
+         kJBsJ83OVH/I08mKsA62SkTCXOzTnHG+yvH6t1g+ay05DC2E6n+haTcN49fxy5L2yn6Z
+         M22w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=tMsLrklx39gsFoa2tmyIQkWi/3Q/pCg3SBebIkEyC/c=;
-        b=zRxsEMWK9x9mgGwGOLPqH2xvQmZWbv+hHy50Lf0gneRmlx6FYdy1QEN2B4MMNFvzVY
-         xz3S5WiWeGDqAgt/IfdXHhlm/RLYdkIvJKGxhnvodBdVGybHdUaWRQvNmQmzjXlN5/Np
-         Y4nckru4f5+/iJAhOs6U/SQ7T/Ot1ll3ZQEVi/V1sjTQygI7wD539FZ9IFRGdXlssffG
-         Y23W7QEsJ5yNxjwushXvOKNAIjVOoH2BtQ7g8vZVLnRHYRB3JXUvXyzx2gh7siBVJ7HU
-         F1jnej+bsmtrvOHbEfdUuA318MsO5w3xafTAPaasPINtqfQRTYy/WY/pGqBILEtDaDes
-         LmYA==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=D5dcSQeCM3vIMs1GqZNc67z2JlfWzP6tTS9ULkS+O1g=;
+        b=R2S26AC3XaBfq4OMYeHoy6w5RB6MxN4+OxnfByWhnqrjtuOJ7ODSpJ4Re0Z8JRNicT
+         7OnV0//c02o7Ypl/bHyaoNe7/uzz+pX7S9jGJTVgLVEx33tpVQOz7AeZqWam+c/oL/8P
+         NcIwVSnKYiYwcxvnk1VIR80v0tyjbsvairUCjdBdGV0Njd49laPzh43OfWY/li+6w0T1
+         bcmwYFHpQmsfYI46kNvnWjjLO/JWuSJXVdu/nx9wjpYx1Y1qmGlLZTDljaem/tXIWpAz
+         ARquvMMwFaVd5MBq+5oxP79RomDx4Ig4M0fFgVrkMJufICXYB/H0uQmOylXforBQKxBv
+         RZwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=YOR0rQQX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SMRZLITL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i4-20020a378604000000b00742820e752dsi525493qkd.316.2023.03.30.17.10.25
+        by mx.google.com with ESMTPS id gw11-20020a0562140f0b00b0053779d55561si1515522qvb.107.2023.03.31.06.51.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Mar 2023 17:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 31 Mar 2023 06:51:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=YOR0rQQX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@gmail.com header.s=20210112 header.b=SMRZLITL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pi2Jr-00076o-4i; Thu, 30 Mar 2023 20:08:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1piFA3-0005kf-F6; Fri, 31 Mar 2023 09:51:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3gSQmZAYKCoo7w7865u22uzs.q204s08-rs9sz121u18.25u@flex--titusr.bounces.google.com>)
- id 1pi2Jo-00075h-TL
- for qemu-devel@nongnu.org; Thu, 30 Mar 2023 20:08:36 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1piFA2-0005kR-Rj; Fri, 31 Mar 2023 09:51:22 -0400
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3gSQmZAYKCoo7w7865u22uzs.q204s08-rs9sz121u18.25u@flex--titusr.bounces.google.com>)
- id 1pi2Jm-0005m1-H9
- for qemu-devel@nongnu.org; Thu, 30 Mar 2023 20:08:35 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- j11-20020a25230b000000b00b6871c296bdso20171900ybj.5
- for <qemu-devel@nongnu.org>; Thu, 30 Mar 2023 17:08:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1piFA0-0005W7-Tk; Fri, 31 Mar 2023 09:51:22 -0400
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-5456249756bso415821087b3.5; 
+ Fri, 31 Mar 2023 06:51:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1680221313;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=tMsLrklx39gsFoa2tmyIQkWi/3Q/pCg3SBebIkEyC/c=;
- b=YOR0rQQX40HtnSABalOFeGLmSxX72wjhJWQn/E7Mn+Y3G0t+r/VbP94/DK6gd2HhIt
- XNIJPZgEARfctJi4seRG9exwvo00KGiLfpNSTwL2L+p2VM7IjmWipmyqSLMmDdmdU2Ba
- 3REW6czvpc150qPD0PfpR6/jNK+Cmpr3A7rYHRKwLuu0/mbB5ClsAv79lhlHQ30uRtEs
- LWCApt4nkNzheUFnbJoOv1m5I0YnTbMVLlfqCsKQvecbUQJPrv/fxGBLWl03IjESsxqM
- +j/Cwyki8ap4ynz2Z6F7fZStEHf1HY30/SlZuiij2gk2AbepJQaBkLFhlv2bhU7MnlCc
- jfSA==
+ d=gmail.com; s=20210112; t=1680270679; x=1682862679;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=D5dcSQeCM3vIMs1GqZNc67z2JlfWzP6tTS9ULkS+O1g=;
+ b=SMRZLITLESOEftlWe/18PotuACrfVn7M4QFbWBVOm/Jx9GgD9fA1IJBrbw5G6KE44+
+ k9gFDfP1iRBRfRFRCzjTToTg7rHZYT/nQXoGQ09ERRlY8F9S72F7VZQvfCokLnL7RtKs
+ 481VR/MhWfGDGb4sTDmJTyiu7EeLPo4Ycc8jrEUXmsMYZPVi+JB2Ut+8H8EYoa2PSTc9
+ guoxFCeUVDgTS8R0oxDntCkxe/6RnL/I/LZ8RRis3L0iGF+ffAb9cx1Z7xvAopsbYYWZ
+ zQCbdi3rWrZffvntI7YPDOUFDtYMxwtH+aXVnoTNx54Y9LWaMN+RlBU5UK5OpsabeNUG
+ G1OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680221313;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tMsLrklx39gsFoa2tmyIQkWi/3Q/pCg3SBebIkEyC/c=;
- b=OG97mgI/sDNzC0FJ6JK2hSW7+tsFeZ/Pi0JPHHeZ9YXD3r5aEcgyeM+lL7jrTOSMzs
- n+hAB35VSb3pfnAd3bBGda78DoDJZcYUJ8DmizoWpu+ihT6myc85zuqeZgvQrnDFrDbQ
- To0OuKusuLUeK57bqWo5gFh/t0yOHP3Ob+6CNs4KU87iiw/OzKRTLwZreWOILLpepBZS
- nFbQRitbvATm4FZbqoJeq2xV+zkVsWxn4SUMt5/AIA18NfC/xM96DbL0uF9O8l/U8sUB
- jnjtm4CuVFvEivM4dSCuiiCl2FoCccJ2aOiqaCk2K/KVFMPV+jd5cN0r1yHjnuA0wY9O
- 1RCg==
-X-Gm-Message-State: AAQBX9dpZGpohkfn3EuSUMC51Mocys991m/5M6Obblcen0SbLBj9cCbG
- YgBi89qQ7mz7DUtdVebVUcWDcWfOo94=
-X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:14:4d90:c0a8:22b8])
- (user=titusr job=sendgmr) by 2002:a81:a84a:0:b0:544:bce8:980f with SMTP id
- f71-20020a81a84a000000b00544bce8980fmr12687664ywh.6.1680221313116; Thu, 30
- Mar 2023 17:08:33 -0700 (PDT)
-Date: Fri, 31 Mar 2023 00:07:50 +0000
-In-Reply-To: <20230331000756.1712787-1-titusr@google.com>
-Mime-Version: 1.0
+ d=1e100.net; s=20210112; t=1680270679; x=1682862679;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=D5dcSQeCM3vIMs1GqZNc67z2JlfWzP6tTS9ULkS+O1g=;
+ b=UmJVclX8VD/DEDfpe6w5XkME7Cf1P4mlTs55vVMIqG0JF/MXkbkOc7ua5aeVFAmScM
+ rNisIZh+4WM4Ud2RWOu9bi8hMO0M4y5o0d8ElcPvp7qVuubF+glMH5hIvRjqwNDCjgQe
+ tjm7r5HcLrzi9Fdi6E6mL+hwpAZPrXJ9NCibvA8aX2Cb3idQuEXiluYe09kPrB7Z7N37
+ 4R+QTjVxtd67uXaxcCVH/p6rvRtU8MNIsiSjuhbzJWv2Hn9oBUV9hdV/CRCf+ZmXfagm
+ 62G9z15bitmpfM7N12gJWa33S+ge6HCSoze9YpvDLDe4H8EzDQvC3jgBNIzXvi/4+vPx
+ ByGA==
+X-Gm-Message-State: AAQBX9dUJWrjhplC2eWdlaQI+BJtWVimiEvJqtawW+rDUOspE+JHM9/r
+ cIGuyo+G8WV3GwrTXdMYtA==
+X-Received: by 2002:a0d:d415:0:b0:545:62d7:6fac with SMTP id
+ w21-20020a0dd415000000b0054562d76facmr23745456ywd.10.1680270679355; 
+ Fri, 31 Mar 2023 06:51:19 -0700 (PDT)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ by smtp.gmail.com with ESMTPSA id
+ j11-20020a81ec0b000000b0054640a352f2sm534566ywm.20.2023.03.31.06.51.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Mar 2023 06:51:18 -0700 (PDT)
+Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:4b5:7e28:63da:3be])
+ by serve.minyard.net (Postfix) with ESMTPSA id D79EE1800BB;
+ Fri, 31 Mar 2023 13:51:17 +0000 (UTC)
+Date: Fri, 31 Mar 2023 08:51:16 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Titus Rwantare <titusr@google.com>
+Cc: philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Stephen Longfield <slongfield@google.com>
+Subject: Re: [PATCH 3/7] hw/i2c: pmbus: add fan support
+Message-ID: <ZCblVOZMVIKSG2M/@minyard.net>
 References: <20230331000756.1712787-1-titusr@google.com>
-X-Mailer: git-send-email 2.40.0.423.gd6c402a77b-goog
-Message-ID: <20230331000756.1712787-2-titusr@google.com>
-Subject: [PATCH 1/7] hw/i2c: pmbus add support for block receive
-From: Titus Rwantare <titusr@google.com>
-To: philmd@linaro.org, minyard@acm.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Titus Rwantare <titusr@google.com>, Hao Wu <wuhaotsh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3gSQmZAYKCoo7w7865u22uzs.q204s08-rs9sz121u18.25u@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ <20230331000756.1712787-4-titusr@google.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230331000756.1712787-4-titusr@google.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=tcminyard@gmail.com; helo=mail-yw1-x1129.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JHLjEfZNzd+S
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TLYtCLHKzuHl
 
-PMBus devices can send and receive variable length data using the
-block read and write format, with the first byte in the payload
-denoting the length.
+On Fri, Mar 31, 2023 at 12:07:52AM +0000, Titus Rwantare wrote:
+> PMBus devices may integrate fans whose operation is configurable
+> over PMBus. This commit allows the driver to read and write the
+> fan control registers but does not model the operation of fans.
+> 
+> Reviewed-by: Stephen Longfield <slongfield@google.com>
+> Signed-off-by: Titus Rwantare <titusr@google.com>
 
-This is mostly used for strings and on-device logs. Devices can
-respond to a block read with an empty string.
+Acked-by: Corey Minyard <cminyard@mvista.com>
 
-Reviewed-by: Hao Wu <wuhaotsh@google.com>
-Signed-off-by: Titus Rwantare <titusr@google.com>
----
- hw/i2c/pmbus_device.c         | 30 +++++++++++++++++++++++++++++-
- include/hw/i2c/pmbus_device.h |  7 +++++++
- 2 files changed, 36 insertions(+), 1 deletion(-)
-
-diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-index c3d6046784..02647769cd 100644
---- a/hw/i2c/pmbus_device.c
-+++ b/hw/i2c/pmbus_device.c
-@@ -95,7 +95,6 @@ void pmbus_send64(PMBusDevice *pmdev, uint64_t data)
- void pmbus_send_string(PMBusDevice *pmdev, const char *data)
- {
-     size_t len = strlen(data);
--    g_assert(len > 0);
-     g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-     pmdev->out_buf[len + pmdev->out_buf_len] = len;
- 
-@@ -105,6 +104,35 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
-     pmdev->out_buf_len += len + 1;
- }
- 
-+uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len)
-+{
-+    /* dest may contain data from previous writes */
-+    memset(dest, 0, len);
-+
-+    /* Exclude command code from return value */
-+    pmdev->in_buf++;
-+    pmdev->in_buf_len--;
-+
-+    /* The byte after the command code denotes the length */
-+    uint8_t sent_len = pmdev->in_buf[0];
-+
-+    if (sent_len != pmdev->in_buf_len - 1) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: length mismatch. Expected %d bytes, got %d bytes\n",
-+                      __func__, sent_len, pmdev->in_buf_len - 1);
-+    }
-+
-+    /* exclude length byte */
-+    pmdev->in_buf++;
-+    pmdev->in_buf_len--;
-+
-+    if (pmdev->in_buf_len < len) {
-+        len = pmdev->in_buf_len;
-+    }
-+    memcpy(dest, pmdev->in_buf, len);
-+    return len;
-+}
-+
- 
- static uint64_t pmbus_receive_uint(PMBusDevice *pmdev)
- {
-diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-index 93f5d57c9d..7dc00cc4d9 100644
---- a/include/hw/i2c/pmbus_device.h
-+++ b/include/hw/i2c/pmbus_device.h
-@@ -501,6 +501,13 @@ void pmbus_send64(PMBusDevice *state, uint64_t data);
-  */
- void pmbus_send_string(PMBusDevice *state, const char *data);
- 
-+/**
-+ * @brief Receive data sent with Block Write.
-+ * @param dest - memory with enough capacity to receive the write
-+ * @param len - the capacity of dest
-+ */
-+uint8_t pmbus_receive_block(PMBusDevice *pmdev, uint8_t *dest, size_t len);
-+
- /**
-  * @brief Receive data over PMBus
-  * These methods help track how much data is being received over PMBus
--- 
-2.40.0.423.gd6c402a77b-goog
-
+> ---
+>  hw/i2c/pmbus_device.c         | 176 ++++++++++++++++++++++++++++++++++
+>  include/hw/i2c/pmbus_device.h |   1 +
+>  2 files changed, 177 insertions(+)
+> 
+> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+> index 02647769cd..bb42e410b4 100644
+> --- a/hw/i2c/pmbus_device.c
+> +++ b/hw/i2c/pmbus_device.c
+> @@ -490,6 +490,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+>          }
+>          break;
+>  
+> +    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].fan_config_1_2);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_1:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].fan_command_1);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_2:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].fan_command_2);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].fan_config_3_4);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_3:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].fan_command_3);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_4:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].fan_command_4);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+>      case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
+>          if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
+>              pmbus_send16(pmdev, pmdev->pages[index].vout_ov_fault_limit);
+> @@ -800,6 +848,22 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+>          pmbus_send8(pmdev, pmdev->pages[index].status_mfr_specific);
+>          break;
+>  
+> +    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+>      case PMBUS_READ_EIN:                  /* Read-Only block 5 bytes */
+>          if (pmdev->pages[index].page_flags & PB_HAS_EIN) {
+>              pmbus_send(pmdev, pmdev->pages[index].read_ein, 5);
+> @@ -872,6 +936,54 @@ static uint8_t pmbus_receive_byte(SMBusDevice *smd)
+>          }
+>          break;
+>  
+> +    case PMBUS_READ_FAN_SPEED_1:          /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_1);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_READ_FAN_SPEED_2:          /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_2);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_READ_FAN_SPEED_3:          /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_3);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_READ_FAN_SPEED_4:          /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_fan_speed_4);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_READ_DUTY_CYCLE:           /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_duty_cycle);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_READ_FREQUENCY:            /* Read-Only word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send16(pmdev, pmdev->pages[index].read_frequency);
+> +        } else {
+> +            goto passthough;
+> +        }
+> +        break;
+> +
+>      case PMBUS_READ_POUT:                 /* Read-Only word */
+>          if (pmdev->pages[index].page_flags & PB_HAS_POUT) {
+>              pmbus_send16(pmdev, pmdev->pages[index].read_pout);
+> @@ -1295,6 +1407,54 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+>          }
+>          break;
+>  
+> +    case PMBUS_FAN_CONFIG_1_2:            /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_config_1_2 = pmbus_receive8(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_1:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_command_1 = pmbus_receive16(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_2:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_command_2 = pmbus_receive16(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_CONFIG_3_4:            /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_config_3_4 = pmbus_receive8(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_3:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_command_3 = pmbus_receive16(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_FAN_COMMAND_4:             /* R/W word */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmdev->pages[index].fan_command_4 = pmbus_receive16(pmdev);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+>      case PMBUS_VOUT_OV_FAULT_LIMIT:       /* R/W word */
+>          if (pmdev->pages[index].page_flags & PB_HAS_VOUT) {
+>              pmdev->pages[index].vout_ov_fault_limit = pmbus_receive16(pmdev);
+> @@ -1600,6 +1760,22 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+>          pmdev->pages[index].status_mfr_specific = pmbus_receive8(pmdev);
+>          break;
+>  
+> +    case PMBUS_STATUS_FANS_1_2:           /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].status_fans_1_2);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+> +    case PMBUS_STATUS_FANS_3_4:           /* R/W byte */
+> +        if (pmdev->pages[index].page_flags & PB_HAS_FAN) {
+> +            pmbus_send8(pmdev, pmdev->pages[index].status_fans_3_4);
+> +        } else {
+> +            goto passthrough;
+> +        }
+> +        break;
+> +
+>      case PMBUS_PAGE_PLUS_READ:            /* Block Read-only */
+>      case PMBUS_CAPABILITY:                /* Read-Only byte */
+>      case PMBUS_COEFFICIENTS:              /* Read-only block 5 bytes */
+> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+> index 2e95164aa1..ad431bdc7c 100644
+> --- a/include/hw/i2c/pmbus_device.h
+> +++ b/include/hw/i2c/pmbus_device.h
+> @@ -258,6 +258,7 @@ OBJECT_DECLARE_TYPE(PMBusDevice, PMBusDeviceClass,
+>  #define PB_HAS_TEMP2               BIT_ULL(41)
+>  #define PB_HAS_TEMP3               BIT_ULL(42)
+>  #define PB_HAS_TEMP_RATING         BIT_ULL(43)
+> +#define PB_HAS_FAN                 BIT_ULL(44)
+>  #define PB_HAS_MFR_INFO            BIT_ULL(50)
+>  #define PB_HAS_STATUS_MFR_SPECIFIC BIT_ULL(51)
+>  
+> -- 
+> 2.40.0.423.gd6c402a77b-goog
+> 

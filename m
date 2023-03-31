@@ -1,101 +1,105 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp690311ejb;
-        Fri, 31 Mar 2023 07:51:41 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YsRJn47pFB3qMulFBvg7Q0B8cVPKDLRMQB7EKvE2kxeVexgzOanXmvPn0eCjLdR4g0/XlT
-X-Received: by 2002:ac8:5c88:0:b0:3e4:eb03:687d with SMTP id r8-20020ac85c88000000b003e4eb03687dmr27187428qta.44.1680274301377;
-        Fri, 31 Mar 2023 07:51:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680274301; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp690441ejb;
+        Fri, 31 Mar 2023 07:51:55 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZfrBDQvJ+SAfMhmuEEtDQgLLMJ7eJFVyiUrVqWqGGO4JM+PTBfE7SbpX8G4k92TToL7ATi
+X-Received: by 2002:ac8:5ad1:0:b0:3e3:8abd:dcb2 with SMTP id d17-20020ac85ad1000000b003e38abddcb2mr48121727qtd.48.1680274315077;
+        Fri, 31 Mar 2023 07:51:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680274315; cv=none;
         d=google.com; s=arc-20160816;
-        b=p2Jrwk3iYP+gU/fMh0W9dBkZN5yIXIoC7MUVoeJU+5hBYAtYFr04gL/VmLwTcXdk9K
-         lMexLnM7h6NSk3z94CZFo0ke9i1zfJsAxKwyy6VHZvcCwsrQxAyg01IlmR0iLBoKoimy
-         wrFbIRVon6F6ETft0lRPBjxxNOC1cp9j1jNgKoBUxqDhSEREFBIonlJdLjbJ8Ls/+RTE
-         EENRRWr4BH31qv0ZGLW7QAXMvul0bkVVv9EWS/hEyPpdQ66lCBYql1RyAGXNvEQfgXeM
-         SanN/1GXQr1bCK6HHK38MELvghZOQfAWkCayNVM+uP1UZKatw0LcVtSqcJTzpayaYILW
-         KOZQ==
+        b=F8WiD0rRJ99uj2xpBvtr4po9pijeebv8Z6ytqGuKzA/cKIhRTxSz+Tlrm9/GteJ3Ub
+         hyy1yUhefmRT5Lx5Rnt3U9182QjcBdZsVqeSWOAj7oWoO1oDeCNvDpBcGp55Cy4dDCqa
+         ye/N3tJXivxWaktYtKMgcrtoyAyH8ucWVisFaKnyxk+PaokuENfUrk3NwBLawAtnoD24
+         h/TnaNS2Gg65Zv+wjWVU2gf1NxTp1DE7ElRO1HjvG7gpfrVnkhC+/sWzc4PZ2ibWynXm
+         mCondi8SmnAsxW+nm2cTOp0GHtAxZ0KgJOftXM03V6IgLSavEVBuYFacMOLaDFot0G//
+         zP1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=BOarpuRm+IrqDu6sABKN3WM6NwFaVVCdOuZfwYDzPeU=;
-        b=z1rV2kB20fcM2T+tR0mG+4trLjX9P4kwiSPOxaNuRnJpLy8CNJys63yGkiGszuOAu6
-         HanIeC1tc2we01GHwp8L3TQabFD+Bk/MkKd4nVtug3jUv2DCbkEHm0fcuUveYQ1tBvjv
-         o2HWagV659UaiJLlXvzgU3q8Xr0uPZzgj3BPWWJwSHr0btYmByENTkX5Gf7LTnSiA9Du
-         osKw9DOr2C+dr/K73/qQn/aIjsMWCEdHKQpciPbr19s9Rry0hOc2yyFfDVrVouoaz0EF
-         stO3Y+GU2Fm3baA06S6bC6NJ5eloYVIg6yt+eDU1+PDmUFZuE2NCE/rOgT9qhUavS1Iy
-         FGVg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=aMsJpOiutF8EzuYcJAT/HhM6ChC4opwqxSHP+TBtq/M=;
+        b=rM85fvRgI9e1uj4u/MTiLpVh1Ou+aczG2CCcVPDGalg4NEOpIbIpQ8A5WSfkVXJwsJ
+         QZkm1OJ5czEV7ap8HtXWRyqifqIEkj17SEvlLQHqlh3G2F9OvThettznwfEmf7tOPzFp
+         It91bqwz7ngqa9oDV37DKLIv5Zgoy2mmXyIDhAGjLumbQR31VWfFWXMfXhSF3L56Uizn
+         aP2e9gtIgztr8nUfqQAgIB19T4xDmokwtm0fdzxhSygZWPDdfLrvaYjZzDOeprhQbQ+B
+         udN3LbKMVMFHR0fLAxG8KbRFgDCOgwQdyamBK6yRiIRXuyPwmfhHxxeRe8lA/L43j/qn
+         q/WA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n1JOJE1J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nwn8Qs8J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q22-20020a05622a031600b003e4e4725b94si1682251qtw.565.2023.03.31.07.51.41
+        by mx.google.com with ESMTPS id c129-20020a379a87000000b00746ea8f87c3si1583448qke.76.2023.03.31.07.51.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 Mar 2023 07:51:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 31 Mar 2023 07:51:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n1JOJE1J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nwn8Qs8J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1piG5c-0000ZM-41; Fri, 31 Mar 2023 10:50:52 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1piG5h-0000b3-Tq; Fri, 31 Mar 2023 10:50:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1piG5a-0000Z4-A1
- for qemu-arm@nongnu.org; Fri, 31 Mar 2023 10:50:50 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1piG5d-0000a7-4i
+ for qemu-devel@nongnu.org; Fri, 31 Mar 2023 10:50:53 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1piG5Y-0000bR-MS
- for qemu-arm@nongnu.org; Fri, 31 Mar 2023 10:50:50 -0400
-Received: by mail-wr1-x435.google.com with SMTP id t4so17460778wra.7
- for <qemu-arm@nongnu.org>; Fri, 31 Mar 2023 07:50:48 -0700 (PDT)
+ id 1piG5Z-0000bl-9O
+ for qemu-devel@nongnu.org; Fri, 31 Mar 2023 10:50:52 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id e18so22690624wra.9
+ for <qemu-devel@nongnu.org>; Fri, 31 Mar 2023 07:50:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1680274247;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=BOarpuRm+IrqDu6sABKN3WM6NwFaVVCdOuZfwYDzPeU=;
- b=n1JOJE1Je+HZ8lb87dYTbgKp0VQ9bh0p2LVnr95M5Qz6QUshiGF2jqWbVsH8Rt7RxJ
- O0k1LgokcipvLe7d/tgaST2rQCNymXA6pTEHlM0eH/QijDetKoLg4iWEcZRPx0pSePmP
- TbFXLKZz9lfhcLkigdTMZSWp3coOUWx3qwf0mg6O8bGMkJXw5yVwQGJpOSFvNnOPeh6F
- VCqheVBglzK5nWATNnySsl7F0mDxPPN0MeRWXPJPhbDIOQf7eViwTrpLHlzAttffDZNR
- yOtYg6OiwUGqSecUvdyWb8+ZUCjy3j1CQhnmyXROactxbecJ7ucOcsU9i8dzrvXNXEb6
- FqFA==
+ d=linaro.org; s=google; t=1680274248;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=aMsJpOiutF8EzuYcJAT/HhM6ChC4opwqxSHP+TBtq/M=;
+ b=nwn8Qs8JNNLY3nGW4c4MGpvxPMJJO3q7h9TngWbPGG1PUcpVET5Zry4Xz1TcEA4RmR
+ AHu5tP6X1XcPQcZJ6Zs8sO/htvUGIEpl9+03+6ixRiYDcpJAbbuKIFwEz6RSb6pjJ4Bh
+ 7/rYw7nB3VA8EWq4f7S3slaKaP39hL02SQnWmO0OMh+VBy+69gOaAbRs46LMjW1R2AVr
+ CxXAOcYvSCbcAURTXRr1B/cSVEQXsXY8O3Wdxcww2P8f3q4rTfH+rHG3bXHCdWkDsbb5
+ QjX/qGZzlPznbIumCha+sqzQUNNYIe3UNbZOXxhH6DjmJ/5xjg+N0ZtgRWg85ZiMqBxI
+ F30Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680274247;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BOarpuRm+IrqDu6sABKN3WM6NwFaVVCdOuZfwYDzPeU=;
- b=1GceeHkaNR42kPje2eoh8NE0ON6RjXOmumzoS1PPqfHY77J87yLX/D/JEAGzCkPhH+
- 4+V/tYJu3VWzNydVXLsI2QaMNTY9TxvWTpwHB06sy6uc+sjlPAcBzR1C99sqpZPNRFkk
- csMBNx3FwfsD0q4TXm2kFCakt5R1QBJipLpG/f8QoxBO14ylrfYaUnnvRleYK2J2QyUl
- Rtwt+zYw3WZu8lP9SZmCUH1iYgR/aMYWobqCz8CRYKOgcB7/9bPSEHHJ+ON5AP8EtE//
- oWjce/1yTIWffqC+qsiJkp1y43l3T+WtclSpWH/o8IdeNUxM8yDz5u9lF0lCqb3LMRDA
- vG8w==
-X-Gm-Message-State: AAQBX9fUdbe5RBPpxrPKVBHtVJWJhffcLLzMioYQIrXayQasCBRtZsve
- i787+Ng4IiTQl6RPEzucj2i2jwW8O9U6NIRCzcU=
-X-Received: by 2002:a5d:5392:0:b0:2db:9ccf:f9f5 with SMTP id
- d18-20020a5d5392000000b002db9ccff9f5mr21601955wrv.0.1680274246907; 
- Fri, 31 Mar 2023 07:50:46 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1680274248;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aMsJpOiutF8EzuYcJAT/HhM6ChC4opwqxSHP+TBtq/M=;
+ b=sSbDHuLpTfaKhZJFVGqJB9uzJiBhICSX0Z2mjNssP70QUYXG/EiHOyXwk+CHpCYgNi
+ 6CvF26dr6kbi0BfFNw5Ea9eDusF2PFpzcif0e602kD54ftn9CYTO6/bcSxsVde4ahytO
+ psywcAyVExiqjXIY3omGVKZ9jPr51jBADdKVvosQ/74PblyHkRKhRS/Ugdi/ufY5RsPj
+ ow5JF5DNtdUHUO0/XNL/WZJZSlcV7a6yIdX98e9fruPXpiYg1ay0TIyoK/ci2ljgaddZ
+ IzY6Iju4Zbx7WAfEr5PuXdKI5EA6C+s4Zs89jry92z/cV5mEuFsmqWOriIJKzduQVv0r
+ S2qA==
+X-Gm-Message-State: AAQBX9f5XRDMuEzRUF1h/wvgb2UXACBvWWxFFgLYdFvbqHH4rX9tPpnN
+ fCMvOaIPTkypV9/EVfd93ddLgNgRyASpZo56v/k=
+X-Received: by 2002:a5d:440e:0:b0:2e5:6441:2d16 with SMTP id
+ z14-20020a5d440e000000b002e564412d16mr2610695wrq.42.1680274248009; 
+ Fri, 31 Mar 2023 07:50:48 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- l12-20020a5d560c000000b002cfe685bfd6sm2339831wrv.108.2023.03.31.07.50.46
+ l12-20020a5d560c000000b002cfe685bfd6sm2339831wrv.108.2023.03.31.07.50.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Mar 2023 07:50:46 -0700 (PDT)
+ Fri, 31 Mar 2023 07:50:47 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/3] target/arm: Fix ESR_EL2 buglet, implement FEAT_PAN3
-Date: Fri, 31 Mar 2023 15:50:42 +0100
-Message-Id: <20230331145045.2584941-1-peter.maydell@linaro.org>
+Subject: [PATCH 3/3] target/arm: Implement FEAT_PAN3
+Date: Fri, 31 Mar 2023 15:50:45 +0100
+Message-Id: <20230331145045.2584941-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230331145045.2584941-1-peter.maydell@linaro.org>
+References: <20230331145045.2584941-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,55 +108,109 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uqf9AoerJ8rO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8hx7tnzUKHpg
 
-The main purpose of this patchset is to implement FEAT_PAN3,
-which allows the guest to force privileged code to not be able
-to access memory that can be executed by user code. (This is
-an extension of the existing FEAT_PAN which denies access
-if user code could read or write the memory.) That is all
-done in patch 3.
+FEAT_PAN3 adds an EPAN bit to SCTLR_EL1 and SCTLR_EL2, which allows
+the PAN bit to make memory non-privileged-read/write if it is
+user-executable as well as if it is user-read/write.
 
-Patches 1 and 2 fix a buglet in our ESR_EL2 syndrome reporting
-that I happened to notice while testing the FEAT_PAN3 code:
-we were reporting the detailed instruction syndrome information
-for all data aborts reported to EL2, whereas the architecture
-requires this to happen only for stage-2 aborts, not stage-1
-aborts.
+Implement this feature and enable it in the AArch64 'max' CPU.
 
-This is all for-8.1 material -- the syndrome bug is minor
-and has been around forever so isn't worth trying to fix
-for 8.0 at this point in the release cycle.
-
-thanks
--- PMM
-
-Peter Maydell (3):
-  target/arm: Pass ARMMMUFaultInfo to merge_syn_data_abort()
-  target/arm: Don't set ISV when reporting stage 1 faults in ESR_EL2
-  target/arm: Implement FEAT_PAN3
-
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
  docs/system/arm/emulation.rst |  1 +
  target/arm/cpu.h              |  5 +++++
  target/arm/cpu64.c            |  2 +-
  target/arm/ptw.c              | 14 +++++++++++++-
- target/arm/tcg/tlb_helper.c   | 26 ++++++++++++++++----------
- 5 files changed, 36 insertions(+), 12 deletions(-)
+ 4 files changed, 20 insertions(+), 2 deletions(-)
 
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 2062d712610..73389878755 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -56,6 +56,7 @@ the following architecture extensions:
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
+ - FEAT_PAN (Privileged access never)
+ - FEAT_PAN2 (AT S1E1R and AT S1E1W instruction variants affected by PSTATE.PAN)
++- FEAT_PAN3 (Support for SCTLR_ELx.EPAN)
+ - FEAT_PAuth (Pointer authentication)
+ - FEAT_PMULL (PMULL, PMULL2 instructions)
+ - FEAT_PMUv3p1 (PMU Extensions v3.1)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c097cae9882..d469a2637b3 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3823,6 +3823,11 @@ static inline bool isar_feature_aa64_ats1e1(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, PAN) >= 2;
+ }
+ 
++static inline bool isar_feature_aa64_pan3(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, PAN) >= 3;
++}
++
+ static inline bool isar_feature_aa64_hcx(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HCX) != 0;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 0fb07cc7b6d..735ca541634 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -1302,7 +1302,7 @@ static void aarch64_max_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);       /* FEAT_VHE */
+     t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1);     /* FEAT_HPDS */
+     t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);       /* FEAT_LOR */
+-    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 2);      /* FEAT_PAN2 */
++    t = FIELD_DP64(t, ID_AA64MMFR1, PAN, 3);      /* FEAT_PAN3 */
+     t = FIELD_DP64(t, ID_AA64MMFR1, XNX, 1);      /* FEAT_XNX */
+     t = FIELD_DP64(t, ID_AA64MMFR1, ETS, 1);      /* FEAT_ETS */
+     t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index ec3f51782aa..499308fcb07 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -947,6 +947,7 @@ static int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
+ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+                       int ap, int ns, int xn, int pxn)
+ {
++    ARMCPU *cpu = env_archcpu(env);
+     bool is_user = regime_is_user(env, mmu_idx);
+     int prot_rw, user_rw;
+     bool have_wxn;
+@@ -958,8 +959,19 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+     if (is_user) {
+         prot_rw = user_rw;
+     } else {
++        /*
++         * PAN controls can forbid data accesses but don't affect insn fetch.
++         * Plain PAN forbids data accesses if EL0 has data permissions;
++         * PAN3 forbids data accesses if EL0 has either data or exec perms.
++         * Note that for AArch64 the 'user can exec' case is exactly !xn.
++         * We make the IMPDEF choices that SCR_EL3.SIF and Realm EL2&0
++         * do not affect EPAN.
++         */
+         if (user_rw && regime_is_pan(env, mmu_idx)) {
+-            /* PAN forbids data accesses but doesn't affect insn fetch */
++            prot_rw = 0;
++        } else if (cpu_isar_feature(aa64_pan3, cpu) && is_aa64 &&
++                   regime_is_pan(env, mmu_idx) &&
++                   (regime_sctlr(env, mmu_idx) & SCTLR_EPAN) && !xn) {
+             prot_rw = 0;
+         } else {
+             prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
 -- 
 2.34.1
 
- 

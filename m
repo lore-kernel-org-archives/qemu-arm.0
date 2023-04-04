@@ -1,100 +1,103 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp759793ejb;
-        Tue, 4 Apr 2023 08:45:22 -0700 (PDT)
-X-Google-Smtp-Source: AKy350at13bp95FlWxSFW3ASE5+bMux4sffprBdoLEMkFRLM+cu51B5JzF5nzg1UQviz+LIrBwVh
-X-Received: by 2002:a05:6214:e44:b0:5a1:a8c6:77a6 with SMTP id o4-20020a0562140e4400b005a1a8c677a6mr4157979qvc.21.1680623122541;
-        Tue, 04 Apr 2023 08:45:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680623122; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp765080ejb;
+        Tue, 4 Apr 2023 08:54:40 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Y9LDymoGsDO8SrIPY/vlml6HJs0GuB57Fs5j6dPZYUPscaHqmApnwynmOQ4eZBTlP+0BDi
+X-Received: by 2002:ac8:5fc3:0:b0:3e3:8770:bee3 with SMTP id k3-20020ac85fc3000000b003e38770bee3mr4459756qta.1.1680623680794;
+        Tue, 04 Apr 2023 08:54:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680623680; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4ISOSjpEBwf3V3rU9AC7eC1P39HfFFPuOOvzMYyNKx7TdQQIwVGHIt9ZasEGW+Wkl
-         Nvo52INP0ikF6meNOyQTXiZQZ5d3eH0loC0j2D+NEQNUzAYUJ1Vk9TmjG3HNKg4erb0O
-         OBXfPnO9TJS2eYz7Mo59qfHE8BQPgw+s2PkWnKuLMkZKFdcqHpmiGg0cEb6UkdOv8ilj
-         9zQLTh8INXyYvG8cD7Jhw67l4zYSVvDQpUWWXx2a6uyiHqgToEh+Wqe7ZIP3kde5XNM0
-         fkID/TZKJ73hldIOLrGMHwufga82kNv7GWhxhFGVdRK6l/x/cget2goCzFljxUBLcqFX
-         SuGg==
+        b=UDxlP4k7fzI1tbnfRIbyylBVqrCPlCnPvjIi0tzFNCINmBwCI8hHhApEXBIhlJSo1S
+         iRpp/YsogeJ1v4SACzaJ4KQ6C5VX+72XZdh/y78Z+73StWBQzm1LnZpq1lnwa4mOiisJ
+         6JcerEao7AAFSZib+GcE9koEEb0ZbHC2NE0vwnd+4pG8aAcRtz+xqv9p8p27mSLd7uo2
+         LwY0yQM+4HZen7JWRte4Up3G4eO/9Q5dqKFRnglXefIicPfuj4ZFcc3N3teuJxcswS0I
+         nPnDI4dLCBsNRdtvDPcAQtcnlv3k0l9hUIMJVtKSADaZ2UfAaqpHIvIHTpjl4RpaoPbX
+         IVYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=uB+NUxhB2f9O1zfRnJO76Hbw627RcL7S8kpnJ5Esk2c=;
-        b=iFy8gXzMi4WD0lTzf0ekoBQJRXCsNADFLBzyzqESGo/hxWvA0WkhJo8l++XrudlPpM
-         CD3WbCQhFD5kJe6gvXKED65HfzSdgIr9Kl9PnzlyekyVvvwlUfb4R6p/IokZpB9jn3DL
-         JBt/mZCpTIpfceGnyZpCo3ioefRnjhm41ILxGFu3cenpQzJgqK9SxvT5Z828vEWabGQD
-         Hr+kGlDfoS0OEMutd16JJWkNbdT8VCsYcEw01JTvRsDm6RcfJQhrvJawx0+KSdbC2JY8
-         niZ79c1vi+EHsTPFttwGMfDW/fgae55LAFMNDDOnS2XM16yLvrWoRL9tQ68p0LGwZRXH
-         dauw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=C7uN3p4wwSGCEqw4iaI9GVBzbptRL9e8O3Et6SZgxKw=;
+        b=jGbd1o2kQBrUPT4XO3+VfY0mJ84pR2eGH7/AgPqcOsgCRod4WeVDC3eBtUEYgb3eF7
+         0Lv4hV5TGaw559jDe0tDXIAurWig5FsAVaSv63yL1qhxR4ueRWIeZh6299mdQkZjSGQx
+         G3OJJNyC+135OvrCvxEI0jTBxaz5zREn5UEoLKvi5ud1jTbGtstz8fJO1B+ibQ/tf+AD
+         wy202OsY+Pw3orDL/sIhPumnmiHHoqEHRXfmFOdyr886FpMttuMnS8EzFAH8nz8gZx9q
+         DvkqlamFHY6U00N7qKfmSkyRIhfFwgkvbJW9BpFfFiOaP3VyERjYbVQiJk2TxNLyup8n
+         VTNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VLKPsGbt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgFYX01A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id im3-20020a056214246300b005a927154b59si8125731qvb.354.2023.04.04.08.45.22
+        by mx.google.com with ESMTPS id t3-20020ae9df03000000b00746a54f25besi7957744qkf.194.2023.04.04.08.54.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Apr 2023 08:45:22 -0700 (PDT)
+        Tue, 04 Apr 2023 08:54:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VLKPsGbt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgFYX01A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pjiqO-0004IC-J5; Tue, 04 Apr 2023 11:45:12 -0400
+	id 1pjizB-0002Ll-Oh; Tue, 04 Apr 2023 11:54:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pjiqE-0004HS-W5
- for qemu-arm@nongnu.org; Tue, 04 Apr 2023 11:45:04 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ id 1pjizA-0002L3-Lu
+ for qemu-arm@nongnu.org; Tue, 04 Apr 2023 11:54:16 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pjiqC-000254-CX
- for qemu-arm@nongnu.org; Tue, 04 Apr 2023 11:45:02 -0400
-Received: by mail-ed1-x532.google.com with SMTP id b20so132440292edd.1
- for <qemu-arm@nongnu.org>; Tue, 04 Apr 2023 08:44:58 -0700 (PDT)
+ id 1pjiz8-0005Oi-Tq
+ for qemu-arm@nongnu.org; Tue, 04 Apr 2023 11:54:16 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id ew6so132449059edb.7
+ for <qemu-arm@nongnu.org>; Tue, 04 Apr 2023 08:54:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1680623096;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=uB+NUxhB2f9O1zfRnJO76Hbw627RcL7S8kpnJ5Esk2c=;
- b=VLKPsGbt5OCIQ9qu4KmoelgwWbofEkhiQ0gHYRNTkCy0bPCFDsSQtf9kvftrfiUia/
- 208d5XBRPB7cYv6tNDzGmEdtiq0ZiQn35azf4wzlGKX8hFjnaWGWpQLXyIs5O3TRvQlW
- 1QnX6hDiWjKoWWE/+Kmh0i3mWJZwJaf4KteF8WC95YefY8fw9+IZ9ye9IZLNpMvaCUud
- YUHJz8C3A1zLT8LI2hO1B4ylJv9zuhevvKthHfKXKS2qPHIjakBEH6mrtT0HjGdKGF/D
- +5dN3UeEN1u/XDcE8Lof6d9svF0WvKFdSSrjsh1d1sjv9ZC5RP+LGQL1SczCYt3Oh5we
- FcGw==
+ d=linaro.org; s=google; t=1680623653;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=C7uN3p4wwSGCEqw4iaI9GVBzbptRL9e8O3Et6SZgxKw=;
+ b=tgFYX01ADPRskN/UQEXeGyefwrH+5K2Hb7IoJ6hS4nNVri87/pLqMvEiBUmKm0/qNO
+ UKuAKGCiDWQ/Q0gIgYTdLSAJmYMsXQ5JVw9eVLJ31WGqUJ8XCGnNQqSFUYQMbM/NmqHi
+ THZXKcAHBi+OlwHaylinBhNK0rRnJ9FUYEU/t0R77AniBoQRCTQUo9DgD9hOJ/sR8LjO
+ V9bD/RlrjxQRmQ3Xpf+74W9pbN5mpqAjS3D+9I/bJ3Mh2tZCmAKg0floIMlzH9c8Pg6o
+ ed3fRE3Mh6QSwBwAzU165ThkiGvoNGWvJ2OxPL9v+mqQ7yE73iLJx/BF1oZTiGURv/Mt
+ Cl4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680623096;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uB+NUxhB2f9O1zfRnJO76Hbw627RcL7S8kpnJ5Esk2c=;
- b=7nCQjz8bx2IdUti6dUoegegcUfS9tmAhy+TbjdvGPiAkjUIzmTbCmSF9PC30D/TY/O
- phBd9dK17Pvjz9iJZF9zAnfrwvwaRRXMkPZBrmSawu+5CU/ht48KA3mA9WycGC6h0O3s
- pe+f6jb2nhxhmP9gRy9bxNi6yBK2GvyoUx0A+YL6FezgPMW7ukbYxKsQ8NLTnhzDHmef
- VlalHp+h+keTbE0GoJdBUIRhMLo3X+Zm6YCbVPLl/TlNCNQl7KwKZFZNAC5UMmTWEnTn
- SJhWOwk5Cb4JqGooptjXiXSHmZxGrOZmmSnbol1eOftW2WrKSI3cqJAfn5ddwaMof2XJ
- 6C3Q==
-X-Gm-Message-State: AAQBX9c9OUXKx10nwpX9KHNRudhg5xsiZO94Mxd3goj7WcIZQ95Vl5Sx
- 2CKzwPaXgWw04TOWIM3+QhTxxRM9jthmCWTQ3UJH+VtUtPZFOQtSKSQ=
-X-Received: by 2002:a50:a457:0:b0:4fb:3549:a708 with SMTP id
- v23-20020a50a457000000b004fb3549a708mr1593195edb.6.1680623096284; Tue, 04 Apr
- 2023 08:44:56 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1680623653;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=C7uN3p4wwSGCEqw4iaI9GVBzbptRL9e8O3Et6SZgxKw=;
+ b=2PxYKPzTYHo9xCfq3S1DXlo1U9QXrAwHin1bryXQv9g85mZiETVloerMtd480TLsAb
+ i2zxeSAMLtDUK/RLcFNaXGoBxQGyIMcE9sW/knXJU8wVtIH654jgL5vivTgZOloZdTYi
+ zvRFZHmv27ueG7eHvZ0Zh1zVYT1MBcX5Eo3hOISrvliJH2dpmVRcM2gV4h8N8Qk7eh5b
+ MU+4IsiUn0+akmz7rmlCcY6KQxhDteVlZsXt8TfYv6bHKEMiTbBy2yk5ShciZ079tmJD
+ tQXItGUbOSKNlqHqO2J8c1S7vsYBzSo72cuj2pWcXEt3/Ng1PRTrfilmKuVltHZeSl3N
+ aVvw==
+X-Gm-Message-State: AAQBX9d25XdQAjnVpSDFCr0DvAOAPudBOS7B3t8Yy/o9dKeXCOhbT4gO
+ cP9lhNBAHWOcH5aV9pFnR9KJfCskettIXoJiGTxoYg==
+X-Received: by 2002:a05:6402:a47:b0:502:3e65:44f7 with SMTP id
+ bt7-20020a0564020a4700b005023e6544f7mr12059156edb.3.1680623653341; Tue, 04
+ Apr 2023 08:54:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <166990932074.29941.8709118178538288040-0@git.sr.ht>
- <166990932074.29941.8709118178538288040-8@git.sr.ht>
-In-Reply-To: <166990932074.29941.8709118178538288040-8@git.sr.ht>
+References: <20220714154456.2565189-1-clg@kaod.org>
+ <20220714154456.2565189-11-clg@kaod.org>
+In-Reply-To: <20220714154456.2565189-11-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Apr 2023 16:44:45 +0100
-Message-ID: <CAFEAcA9JLOhxa3LeiFJ8YqinuSV33N4Vbj2m4ZnoOxry0=YGGA@mail.gmail.com>
-Subject: Re: [PATCH qemu.git v3 8/8] hw/timer/imx_epit: fix compare timer
- handling
-To: "~axelheider" <axelheider@gmx.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Tue, 4 Apr 2023 16:54:02 +0100
+Message-ID: <CAFEAcA_yYuWgsSKc9N7PvHeAWjtSqWwM1z+qJQ1swv3cwCghPg@mail.gmail.com>
+Subject: Re: [PULL 10/19] aspeed: fby35: Add a bootrom for the BMC
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Peter Delevoryas <peter@pjd.dev>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,128 +119,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ONb9TPPDKWAx
+X-TUID: QiBvOk8GZV6v
 
-On Thu, 1 Dec 2022 at 15:42, ~axelheider <axelheider@git.sr.ht> wrote:
+On Thu, 14 Jul 2022 at 16:45, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> From: Axel Heider <axel.heider@hensoldt.net>
+> The BMC boots from the first flash device by fetching instructions
+> from the flash contents. Add an alias region on 0x0 for this
+> purpose. There are currently performance issues with this method (TBs
+> being flushed too often), so as a faster alternative, install the
+> flash contents as a ROM in the BMC memory space.
 >
-> - fix #1263 for CR writes
-> - rework compare time handling
->   - The compare timer has to run even if CR.OCIEN is not set,
->     as SR.OCIF must be updated.
->   - The compare timer fires exactly once when the
->     compare value is less than the current value, but the
->     reload values is less than the compare value.
->   - The compare timer will never fire if the reload value is
->     less than the compare value. Disable it in this case.
+> See commit 1a15311a12fa ("hw/arm/aspeed: add a 'execute-in-place'
+> property to boot directly from CE0")
 >
-> Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+> [ clg: blk_pread() fixes ]
+> Message-Id: <20220705191400.41632-8-peter@pjd.dev>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Hi; Coverity has just noticed an issue with this patch:
+Hi; Coverity has noticed a trivial "memory leak" (CID 1508061) in this code=
+:
 
-
-> -/* Must be called from ptimer_transaction_begin/commit block for s->timer_cmp */
-> -static void imx_epit_reload_compare_timer(IMXEPITState *s)
-> +/*
-> + * Must be called from a ptimer_transaction_begin/commit block for
-> + * s->timer_cmp, but outside of a transaction block of s->timer_reload,
-> + * so the proper counter value is read.
-> + */
-> +static void imx_epit_update_compare_timer(IMXEPITState *s)
+>  static void fby35_bmc_init(Fby35State *s)
 >  {
-> -    if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN))  {
-> -        /* if the compare feature is on and timers are running */
-> -        uint32_t tmp = ptimer_get_count(s->timer_reload);
-> -        uint64_t next;
-> -        if (tmp > s->cmp) {
-> -            /* It'll fire in this round of the timer */
-> -            next = tmp - s->cmp;
-> -        } else { /* catch it next time around */
-> -            next = tmp - s->cmp + ((s->cr & CR_RLD) ? EPIT_TIMER_MAX : s->lr);
-> +    uint64_t counter = 0;
-> +    bool is_oneshot = false;
+> +    DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
+> +
+>      memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_M=
+AX);
+>      memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
+>                             FBY35_BMC_RAM_SIZE, &error_abort);
+> @@ -48,6 +86,28 @@ static void fby35_bmc_init(Fby35State *s)
+>      qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
+>
+>      aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
+> +
+> +    /* Install first FMC flash content as a boot rom. */
+> +    if (drive0) {
+> +        AspeedSMCFlash *fl =3D &s->bmc.fmc.flashes[0];
+> +        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
 
-Here we declare the is_oneshot variable...
+Here we allocate a new MemoryRegion...
 
-> +    /* The compare timer only has to run if the timer peripheral is active
-> +     * and there is an input clock, Otherwise it can be switched off.
-> +     */
-> +    bool is_active = (s->cr & CR_EN) && imx_epit_get_freq(s);
-> +    if (is_active) {
-> +        /*
-> +         * Calculate next timeout for compare timer. Reading the reload
-> +         * counter returns proper results only if pending transactions
-> +         * on it are committed here. Otherwise stale values are be read.
-> +         */
-> +        counter = ptimer_get_count(s->timer_reload);
-> +        uint64_t limit = ptimer_get_limit(s->timer_cmp);
-> +        /*
-> +         * The compare timer is a periodic timer if the limit is at least
-> +         * the compare value. Otherwise it may fire at most once in the
-> +         * current round.
-> +         */
-> +        bool is_oneshot = (limit >= s->cmp);
-
-...but here we declare another is_oneshot, which shadows the first
-declaration...
-
-> +        if (counter >= s->cmp) {
-> +            /* The compare timer fires in the current round. */
-> +            counter -= s->cmp;
-> +        } else if (!is_oneshot) {
-> +            /*
-> +             * The compare timer fires after a reload, as it below the
-> +             * compare value already in this round. Note that the counter
-> +             * value calculated below can be above the 32-bit limit, which
-> +             * is legal here because the compare timer is an internal
-> +             * helper ptimer only.
-> +             */
-> +            counter += limit - s->cmp;
+> +        uint64_t size =3D memory_region_size(&fl->mmio);
+> +
+> +        if (s->mmio_exec) {
+> +            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+> +                                     &fl->mmio, 0, size);
+> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWA=
+RE_ADDR,
+> +                                        boot_rom);
 > +        } else {
-> +            /*
-> +             * The compare timer won't fire in this round, and the limit is
-> +             * set to a value below the compare value. This practically means
-> +             * it will never fire, so it can be switched off.
-> +             */
-> +            is_active = false;
->          }
-> -        ptimer_set_count(s->timer_cmp, next);
->      }
 > +
-> +    /*
-> +     * Set the compare timer and let it run, or stop it. This is agnostic
-> +     * of CR.OCIEN bit, as this bit affects interrupt generation only. The
-> +     * compare timer needs to run even if no interrupts are to be generated,
-> +     * because the SR.OCIF bit must be updated also.
-> +     * Note that the timer might already be stopped or be running with
-> +     * counter values. However, finding out when an update is needed and
-> +     * when not is not trivial. It's much easier applying the setting again,
-> +     * as this does not harm either and the overhead is negligible.
-> +     */
-> +    if (is_active) {
-> +        ptimer_set_count(s->timer_cmp, counter);
-> +        ptimer_run(s->timer_cmp, is_oneshot ? 1 : 0);
+> +            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+> +                                   size, &error_abort);
+> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWA=
+RE_ADDR,
+> +                                        boot_rom);
+> +            fby35_bmc_write_boot_rom(drive0, boot_rom, FBY35_BMC_FIRMWAR=
+E_ADDR,
+> +                                     size, &error_abort);
+> +        }
 
-...so here when the inner variable is no longer in scope, the
-value of the outer is_oneshot variable must always be 'false',
-because there's never any assignment to it.
+...but we never keep a pointer to it anywhere, so Coverity classes
+this as a "memory leak". (It's not really one, because the memory
+has to stay live for the whole of QEMU's execution anyway.)
 
-> +    } else {
-> +        ptimer_stop(s->timer_cmp);
-> +    }
-> +
->  }
-
-What was the intention here? My guess is that there should only
-have been one 'is_oneshot', not two.
-
-There's also been this bug report:
-https://gitlab.com/qemu-project/qemu/-/issues/1491
-which suggests that the condition for setting is_oneshot
-should be "(limit <= s->cmp)" rather than ">=".
-
-What do you think ?
+The easy fix is not to allocate a new MR, but instead use
+a MemoryRegion field in the Fby35State struct, the way we
+do for all the other MRs this function sets up. Conveniently,
+there already is a "MemoryRegion bmc_boot_rom" in the struct
+which is currently completely unused :-)
 
 thanks
 -- PMM

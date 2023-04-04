@@ -1,115 +1,95 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp791026ejb;
-        Tue, 4 Apr 2023 09:27:23 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bek0MrVdmSBBoq8E0Aqh8yY2tbkPgWp7JO2sVtaY+4iey3PlL6tICdEznEQllu3XQcnyQS
-X-Received: by 2002:ad4:5bc5:0:b0:568:c5e3:a0ce with SMTP id t5-20020ad45bc5000000b00568c5e3a0cemr4399448qvt.20.1680625643085;
-        Tue, 04 Apr 2023 09:27:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680625643; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp792752ejb;
+        Tue, 4 Apr 2023 09:30:05 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YHOGLKMtTtaCLLKB6EB33U9OdlAGlY8yDJNWuVscV5+UwhcSEDvo3KydeKn/qPOuehJzsg
+X-Received: by 2002:a05:622a:12:b0:3e4:e5bf:a24c with SMTP id x18-20020a05622a001200b003e4e5bfa24cmr4357399qtw.62.1680625805450;
+        Tue, 04 Apr 2023 09:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680625805; cv=none;
         d=google.com; s=arc-20160816;
-        b=iYK7cdj8OYO8Ai7oyUCykjatUUj94KoO5uNC9D13zM/JXJe+z1ozRmRogmhA2bCfqv
-         vSJtU+JZ5W7+6sKiCbPk18A47fCscHeWoq/dFme+FBZwFMShsplxjEuDiPnj2+t4dW7V
-         yI9ffl3wAgVQxZnHG/FHgNzsEZoQYZqbabMYryI36jPnOLJh8mL+lYIZ/A4fxUjExfUX
-         B1bM9idCLiN1CxV7JBmTQ+Peu1F9DPt31lrwxTFRMwqI1pAtKSeykhAywNv8cXJVXDOJ
-         Z4TWHohtzzINYZMkrU2nj+ZWbiK4/9LkWSqg/Py/EtgUHo3NpaJJ94v+PCNcpER5ZQfl
-         gV2Q==
+        b=cOMkLqm7kZ/zp+vCFx1Ggden8AOfQCCU2gXrJ0PBCZjvRSwh0Mn3L8OJTfESxzFTNg
+         j24tDCtG2hGucgsTT5ZxaxOCJ3PBjUCGK9vLxZnUHf+LyMAoST8oem8czl8oVyD1GsPu
+         igyk1j37ntum0m73DMrV+KsXXyU10kmTpyEXXnB7vUnhigpFD12uC6ZlfLJ/8Edum0T6
+         dw1J53sl+5sSGNqTPD5mCadDMWPWT8ugI7k/4r09f8aQ3GozAiYRrvH1xKvmBr1aXQAw
+         TMbMH7nlf+NmWnrMBbG1eKvohM5ORuKeeplJNKLYfX1PWFtKc2IhldbiFOr7dS0eAumU
+         3FXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:ui-outboundreport
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=QgcTG/L39fN5XsY15DUy97fsvXEO6bd6AgJMk2vVYVY=;
-        b=jWLJnuqe5BVXr6EROXWBUtSryc1NeiYDE7kF1X+rfuMLrZ5kuIWZk8q2XaVIDtK9AH
-         RLrO7xlsP+JvVJVGUq0d8K7vC7ZDiSSNVliTtLhmH5nosySkfuRLpHEOcFtygqxnYqi9
-         b86KQQK9AX+n/B/2WhI1DOxxRUn+liBts8FVBV7InztWsEqLuxzkp5PN4FCL7m0CuFlg
-         wHb11GVjoF0rtJZzCXKMMhdOQBg/x4q5FYhd8f5t9h1dlfpFZhw/OzYVMP9DBvi21RXr
-         jsnZxqpnYd2z7hw2MUeK8a09PzVpAv00XuErCduX21cd22vWc8NTbMMafM5GfAfu9t1n
-         x1jg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=RzFdSRicHHhS+c72HnUQSWhLTcV59cTcrjCud3RUIGU=;
+        b=NX9/xpd4dBUW8A8kK9yzW+pjbl3ukd4lEzlt8741fTaPMvHNo+t2vWCrkFqtLpNvLI
+         I/juud+jeiOdV2BZh8qJHrOixiIvjVRzdVtZM8wHFjVid8yTbY/Fe1AF6NjHdtfBy3lA
+         UTsxw5+9KU4C3NGVMyVkARM/q9r4Gc5EZtJL+JNie7Fvsn5TloA9ND5mdxYWOW4Ic6DT
+         n1v9Nsnf7OVpH/ikm6TuUUBZp5RrO4q8urGVgQ7UDipMZbsJuquG5s8x4rbqRGX1mPF4
+         NqK2vSBEoEWjDJNlQmduVudGEE0655v5UQHh4lBsYFDsLsZHp4iCpJ84IR5uJcJOQ94R
+         hG+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=bUPPqWnw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hu1-20020a056214234100b005a3ad4d0a4csi8010377qvb.482.2023.04.04.09.27.22
+        by mx.google.com with ESMTPS id d15-20020a05622a15cf00b003c009d75e43si8340504qty.196.2023.04.04.09.30.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Apr 2023 09:27:23 -0700 (PDT)
+        Tue, 04 Apr 2023 09:30:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmx.de header.s=s31663417 header.b=bUPPqWnw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmx.de
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pjjUm-0001GG-O5; Tue, 04 Apr 2023 12:26:56 -0400
+	id 1pjjXe-0002K7-D2; Tue, 04 Apr 2023 12:29:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1pjjUl-0001G3-8g; Tue, 04 Apr 2023 12:26:55 -0400
-Received: from mout.gmx.net ([212.227.15.19])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pjjXc-0002J4-2g
+ for qemu-arm@nongnu.org; Tue, 04 Apr 2023 12:29:52 -0400
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <axelheider@gmx.de>)
- id 1pjjUj-0001Zr-7W; Tue, 04 Apr 2023 12:26:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1680625608; i=axelheider@gmx.de;
- bh=QgcTG/L39fN5XsY15DUy97fsvXEO6bd6AgJMk2vVYVY=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:In-Reply-To;
- b=bUPPqWnwYY1YBZ9dc/eK5gnW+tWHlYVjKWVn/F9Itst5xTSmGpt7IkmghlW6pbR27
- efGpNOI6X8+ezzS0NVLoHQgZKeha3HEZ84wDk7IwW8hakWJIzqY3neofYljZ0y+3by
- 9+xIouHjGbpfSvOMCtjq+bdbpjUGWbF08i1McA8DBAmwdOjAAc6SIgb/xBBawvjbPG
- /dQLvar3Je5SvhjOQF9xdovWdRcG+WHT2D2SRjjErjklWusO6OpR68LprGvmqEmK7S
- cfTZ2zVfs8gaTqfpSfyIYtwPQ3duUsLjtgKGjbOB/4BN3cw1El1++sSeOS+O74BY0u
- 5WjqIXQsQ8ANg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.178.125] ([5.199.177.82]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MsHns-1qYw8Q1NpS-00tn2q; Tue, 04
- Apr 2023 18:26:48 +0200
-Message-ID: <941a4787-6a24-c2e0-fd01-51b489512831@gmx.de>
-Date: Tue, 4 Apr 2023 18:26:47 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pjjXC-00021R-DN
+ for qemu-arm@nongnu.org; Tue, 04 Apr 2023 12:29:36 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 0CFDC21EB6;
+ Tue,  4 Apr 2023 16:29:23 +0000 (UTC)
+Received: from kaod.org (37.59.142.110) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Tue, 4 Apr
+ 2023 18:29:22 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-110S004dd354537-2539-48f5-8241-b13109ee3d01,
+ 85507D0075A56E5AD4EA03BF56E5282CC2D8C3A6) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <42909658-3a6d-69b0-1607-182728e2ac70@kaod.org>
+Date: Tue, 4 Apr 2023 18:29:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH qemu.git v3 8/8] hw/timer/imx_epit: fix compare timer
- handling
+ Thunderbird/102.9.1
+Subject: Re: [PULL 10/19] aspeed: fby35: Add a bootrom for the BMC
+Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <166990932074.29941.8709118178538288040-0@git.sr.ht>
- <166990932074.29941.8709118178538288040-8@git.sr.ht>
- <CAFEAcA9JLOhxa3LeiFJ8YqinuSV33N4Vbj2m4ZnoOxry0=YGGA@mail.gmail.com>
-Content-Language: de-DE
-From: Axel Heider <axelheider@gmx.de>
-In-Reply-To: <CAFEAcA9JLOhxa3LeiFJ8YqinuSV33N4Vbj2m4ZnoOxry0=YGGA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:983sZNNfx6CrfuiV1PSGdn8aoh1UEthYhkBYeiuIIHUyAE43aBh
- 2qW8KjVbaD5edYhc5U2EvVkfxf57NZM9ExTupoCLgXl0a5TY3GuRtTEUN3nOVJ5teXTUsOs
- s/M0bw3LFzl+G3gkvu3ARLN1lnFABZvHRg5RxXXDHYLNNCdq1R2P05PSy9V+Ki5BQRUUgdS
- DgKz2F3J/rdaiuZwRK0pA==
-UI-OutboundReport: notjunk:1;M01:P0:ihYQ6Wt/Lis=;soz0Nrt/mLqtzCaAl1j5NcZnWAU
- QGeIAV2/I8Z/aTddFNwzWQgHgxAN9qiqKGPheap4N0u8Ue6UhRaKOvVtYUBYBPTAXApw0zd/2
- wGpNwr5DrzU03oQ47eQxCaSkMTtRMG3q2g1ze2hDWk4NO1+uzUb8kMAn1jSytGSN+wguJePbS
- Wpb3qwNYyEIBzDN7namsOfXxqs5senf5pjownvLH76V2Dwkz/cxqZmAaJKag3ZjeOnpol/iOc
- J4G4cusq4x/DWirLyDXUUxZJyuXtKCiHxv2FpcqiAjM2uhYsUWXgldWTWvfHTJzeqikvrYBQ3
- bqWSF6LYa4xmED7K2t7ckSF3y19hdMWkvWhWdtvxaN6ZfKIIM/TZcx1Vt5I+77m0WDwNh2gvZ
- cDbMUKW6xKciE2Ig4BRKqjka/b2GsOSZ8cKOKGqc6EYcz3dUcMoeq/rGyuN2dYghvUx+evXjY
- okI5eVQgT2P6fgkUtrx9+vbQI3ybs4ifjDHXQVkdCXk3FB6TqFDgSfuexUBLSwrii7MPGK1jC
- rXXKf2WwYICtHEHg18t4DnqzTv6kL3kte0M3ErBRHThoKbviNpt0M1JRFzbrObeYXYMuVmi/p
- uJmRXBadk2KspPJtJ33vPkMsexYUuCV5xouxzCtnU2zBwR80gxcaBKCQbxMVS8vmWzuFrGOHK
- 3FWo3tjLiYTKyDW5+VZuXw8Hk9f+7Ps6zFDk+DmxwrgOhTSve/FJ5+zOaCneszNlczabeU4dF
- qqiIGlvanaWDO9p1eYoivrfImpIEIl1M/QMqpMYwFkkJOf2zXGBIjzFOiqUwD9RIQoX5qInLY
- bfEyMIM21wHJnxDZOjir7KFr61K1IzIuQXuZ52M0xEVDEx+Psk52ynpmBmzbuib7cMu96zcEp
- bUSSRrI4k8PXt0qKQpAX+Q+ojkjUSCV9xqG/nqpsV/1n+7jaqpirmLsH7g31fJIEYuAzAEZK0
- C6OIng==
-Received-SPF: pass client-ip=212.227.15.19; envelope-from=axelheider@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-1.925, RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Delevoryas
+ <peter@pjd.dev>
+References: <20220714154456.2565189-1-clg@kaod.org>
+ <20220714154456.2565189-11-clg@kaod.org>
+ <CAFEAcA_yYuWgsSKc9N7PvHeAWjtSqWwM1z+qJQ1swv3cwCghPg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CAFEAcA_yYuWgsSKc9N7PvHeAWjtSqWwM1z+qJQ1swv3cwCghPg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.110]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 8539e7d6-1868-434c-93b5-d0c8c7b09024
+X-Ovh-Tracer-Id: 5792192071044729824
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledguddtudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdduuddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhesphhjugdruggvvhdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.925,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,39 +104,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6d95bro5MmWw
+X-TUID: OTBOeuQ99UBo
 
-Peter,
+On 4/4/23 17:54, Peter Maydell wrote:
+> On Thu, 14 Jul 2022 at 16:45, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> The BMC boots from the first flash device by fetching instructions
+>> from the flash contents. Add an alias region on 0x0 for this
+>> purpose. There are currently performance issues with this method (TBs
+>> being flushed too often), so as a faster alternative, install the
+>> flash contents as a ROM in the BMC memory space.
+>>
+>> See commit 1a15311a12fa ("hw/arm/aspeed: add a 'execute-in-place'
+>> property to boot directly from CE0")
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
+>> [ clg: blk_pread() fixes ]
+>> Message-Id: <20220705191400.41632-8-peter@pjd.dev>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> 
+> Hi; Coverity has noticed a trivial "memory leak" (CID 1508061) in this code:
+> 
+>>   static void fby35_bmc_init(Fby35State *s)
+>>   {
+>> +    DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+>> +
+>>       memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
+>>       memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
+>>                              FBY35_BMC_RAM_SIZE, &error_abort);
+>> @@ -48,6 +86,28 @@ static void fby35_bmc_init(Fby35State *s)
+>>       qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
+>>
+>>       aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
+>> +
+>> +    /* Install first FMC flash content as a boot rom. */
+>> +    if (drive0) {
+>> +        AspeedSMCFlash *fl = &s->bmc.fmc.flashes[0];
+>> +        MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
+> 
+> Here we allocate a new MemoryRegion...
+> 
+>> +        uint64_t size = memory_region_size(&fl->mmio);
+>> +
+>> +        if (s->mmio_exec) {
+>> +            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
+>> +                                     &fl->mmio, 0, size);
+>> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
+>> +                                        boot_rom);
+>> +        } else {
+>> +
+>> +            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
+>> +                                   size, &error_abort);
+>> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
+>> +                                        boot_rom);
+>> +            fby35_bmc_write_boot_rom(drive0, boot_rom, FBY35_BMC_FIRMWARE_ADDR,
+>> +                                     size, &error_abort);
+>> +        }
+> 
+> ...but we never keep a pointer to it anywhere, so Coverity classes
+> this as a "memory leak". (It's not really one, because the memory
+> has to stay live for the whole of QEMU's execution anyway.)
+> 
+> The easy fix is not to allocate a new MR, but instead use
+> a MemoryRegion field in the Fby35State struct, the way we
+> do for all the other MRs this function sets up. Conveniently,
+> there already is a "MemoryRegion bmc_boot_rom" in the struct
+> which is currently completely unused :-)
 
-> Hi; Coverity has just noticed an issue with this patch:
-> [...]
-> Here we declare the is_oneshot variable...
-> [...]
-> ...but here we declare another is_oneshot, which shadows the first
-> declaration...
-> ...so here when the inner variable is no longer in scope, the
-> value of the outer is_oneshot variable must always be 'false',
-> because there's never any assignment to it.
-> What was the intention here? My guess is that there should only
-> have been one 'is_oneshot', not two.
+hey :) Indeed.
 
-The shadowing is not intended, as this does not make any sense. There
-is only one instance of this variable, it is FALSE by default and can
-become TRUE.
+I have recently taken another approach in the aspeed machines, which is
+to introduce a spi_boot region since it is part of the SoC address space.
+There is also an extra container to overlap a rom region to speed up boot
+because the "execute-in-place mode" is a bit slow (~30 s to reach FW).
+So the aspeed code is different now :
 
-> [...]
-> There's also been this bug report:
-> https://gitlab.com/qemu-project/qemu/-/issues/1491
-> which suggests that the condition for setting is_oneshot
-> should be "(limit <=3D s->cmp)" rather than ">=3D".
-> What do you think ?
+    if (!bmc->mmio_exec) {
+         DriveInfo *mtd0 = drive_get(IF_MTD, 0, 0);
 
-The Bug report is right, that the check should be
-"(limit <=3D s->cmp)", as it's about the on-shot characteristic and not
-the periodic characteristic (which earler version of the patch had).
+         if (mtd0) {
+             uint64_t rom_size = memory_region_size(&bmc->soc.spi_boot);
+             aspeed_install_boot_rom(&bmc->soc, blk_by_legacy_dinfo(mtd0),
+                                     rom_size);
+         }
+     }
 
+and we should report the same code in fby35 (which was a copy paste)
 
-I will provide a patch to fix this.
+The benefits are that we will (soon) be able to create SPI flash devices
+from the command line, such as :
 
+         -blockdev node-name=fmc0,driver=file,filename=./flash.img \
+         -device mx66u51235f,addr=0x0,bus=ssi.0,drive=fmc0 \
 
-Axel
+and boot from them. That said, the memory leak is still there in
+aspeed_install_boot_rom() :
+
+     MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
+
+     memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom", rom_size,
+                            &error_abort);
+     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
+                                         boot_rom, 1);
+     write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
+
+and coverity didn't catch it ? Anyhow we can use a MemoryRegion under the
+machine state to remove the warning like you suggested. I will add that on
+the 8.1 TODO list.
+
+Thanks,
+
+C.
+

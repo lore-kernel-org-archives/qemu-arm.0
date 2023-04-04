@@ -1,124 +1,103 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp339146ejb;
-        Mon, 3 Apr 2023 18:22:25 -0700 (PDT)
-X-Google-Smtp-Source: AKy350b4pKIFumr9ZCPIYdnaLicTVtIXKzgDcQIueL1Pjk73OoiOstqF8PmvGrkXqQkSPi6wiNc3
-X-Received: by 2002:a05:622a:24e:b0:3e3:8a0b:8c80 with SMTP id c14-20020a05622a024e00b003e38a0b8c80mr798047qtx.41.1680571344918;
-        Mon, 03 Apr 2023 18:22:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680571344; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp459064ejb;
+        Mon, 3 Apr 2023 23:23:43 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a5jrNoLWohjO/0ONhNlY+6cLoalVbvGElAuje36fXFp1ZsrHKg2U9eseeGxBUZhIqdEfYG
+X-Received: by 2002:a05:6214:5199:b0:5c7:fe3f:e33 with SMTP id kl25-20020a056214519900b005c7fe3f0e33mr1681288qvb.23.1680589422633;
+        Mon, 03 Apr 2023 23:23:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680589422; cv=none;
         d=google.com; s=arc-20160816;
-        b=j4OBNYP1K3H03wP3SDkrf0c/44QyZLqX0DasM2WcXUmb7l11Xi8IX0U6HfzfWR2EaU
-         ibRRaXVyFA6vox7wxBLwWjf+ipV4TNU5iDMApJxMrp3IlYHy+tvHmC5DMn4xkO3NgP1n
-         FCdGjau42CoNaZI2Ju/hzsA4OQwQSKLiyGwKgXXqZ0p7CNPR9YY3AcOZ/usJgim7WVhu
-         vRopoNpeX2jWrGFnojMOg0sV3wyCjG1MRU3pnjMvCuUFuCEF51Ou+lMr6ENSpS+GsNW2
-         djk7fiY18pdgLoDDVXCjmevlSmKUIZBujYe+JrG6Tw8USTL9WalCx50GLVCwvXF5v43l
-         fs5g==
+        b=LCiLmwbXW8coHPLcP1eN9ZX96fPeeFp7+wRufwg51MHYxjftmP5RfOlhX64r4LAKpH
+         ND1I971z1RVoawSdSF64Sf81s2sS6br4eyQsWoNtifHG5B/qZF/R74bMxns2RqtThH8R
+         y+dDZjHPBAo8UI2zne6q8rogAKR04+S7qOEgN8npFir29QXdioXVYMo78uEu8jv/+0cZ
+         hUKHSiJZWkkBZUnEzN1ihh7gqlrmiRbRrjtJhP5zkYZu3h1OgYKVE+QkTlAykSTJmLHY
+         P6xhF/5Vdn+3TuvmYjZZRIQ1gRXYa/ikiTM3WkV7lV+/+ZBlCuYjhZ3g7tIXHnNtEW6x
+         ncjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=PbNNAu6sioZa4QEMdyfnNXIk/zn+0eeWx+CgkgrwYeg=;
-        b=a2El/8EVfcCuvu6T7LZHNs4JeLtZr512JPP9vIci4+ynfR7DjbBFU0swgw+cz8HBrz
-         v7kVozfM7cBIicQilV7lkiwJE05r0Est1qMwevQdoewOfWcuVJRmjxmXvSQCDgqM2TWG
-         cQwJCEvM3u498cQhuvVKUJq9JCLwmDI75UhvuWAKN+EuAW/lloBDWuHl/gCh+MFatoRk
-         s5S/ZwSQ5UuioxKnUyHoq2EHgm2Ek+DXFxL/cxUrNOK6/aa13cMLDMtkZf9+2fzzpiwM
-         389umuG3FROi7oMX4RHD1LcQNISadKobmA/jzjKvuaN3eUnec7Ssg4EJ1Qj1/bxFh2Vb
-         j/Yw==
+         :list-unsubscribe:list-id:precedence:in-reply-to:subject
+         :organization:from:references:cc:to:content-language:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=Fj25J7vboI1OAuzqs9WhgF682ENnfIJoNrbt8d/MnxE=;
+        b=OTJXUpiwQBbw6MBmwXb/jH2jr0WC47GDU27iOXw63jdpSbUBUFa/zzHWCDtn50Cze8
+         bwRVSG2+9ZZCPxIyzhxgxrez0Z8bxU2tHkIJm5OkXU7DF6knNDKNbGMFWOCcop5WtQ83
+         Zm40VH7BIuIaaHV2jD4wRSrOn4QtyZT1zbSGHfYCUX2q0kVCEjpuVzKGEVpnXcdlLeL0
+         /JX4wT/34fx/brCsEIQ2G+MtiGMKVt93iVZIUTyF2n7EYFXpSVb2GXBSpjvoqdAh4IsX
+         IGKnF6gNrZsYYUR3nQgwDbHXKsbaQjHhMRCmaIE88v56/RFaiqUkC/d7Edn7Rn+Edynb
+         iAWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IQDoblr3;
+       dkim=pass header.i=@crans.org header.s=mail header.b=ecYjFCGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 17-20020ac85911000000b003e38a0b8c73si7082931qty.453.2023.04.03.18.22.24
+        by mx.google.com with ESMTPS id v15-20020a05622a188f00b003e4da8a50a9si7589479qtc.372.2023.04.03.23.23.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Apr 2023 18:22:24 -0700 (PDT)
+        Mon, 03 Apr 2023 23:23:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=IQDoblr3;
+       dkim=pass header.i=@crans.org header.s=mail header.b=ecYjFCGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=crans.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pjVMk-0001pM-Si; Mon, 03 Apr 2023 21:21:44 -0400
+	id 1pja4f-0008AZ-Lj; Tue, 04 Apr 2023 02:23:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pjVMf-0001oU-Iv; Mon, 03 Apr 2023 21:21:38 -0400
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dinahbaum123@gmail.com>)
- id 1pjVLd-0004mM-Sg; Mon, 03 Apr 2023 21:21:37 -0400
-Received: by mail-qv1-xf2e.google.com with SMTP id t13so22533162qvn.2;
- Mon, 03 Apr 2023 18:20:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1680571218;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PbNNAu6sioZa4QEMdyfnNXIk/zn+0eeWx+CgkgrwYeg=;
- b=IQDoblr3JwTF9BoPrChQJprwQ7crh64vdKzeqlAwPsfw8LLfEkhBjYdFFXBoAxSpoO
- 46eSSYIRxCqHU5Dnlt1NbkbuT7vLnYsgZRiCAIiEqXdU/OSeP8yXdQtthB1fdcP18/0U
- GQtoAggYjM7WXcVK/6mwM0MeoB/VD3IxHq+OPgG7eJmfstArnXs64iroKqTm1SzxpYWh
- UeZO7E3M6N3b/syu0bfKIRp4G7ZE/IsGC6EF2FcNgkbmZzMwQfXBS91WKhxBiv8wdbfY
- 6qNK+wB5wl4P6+bVu/11cYdeLr3dp5KcLAxKGozQ2JhCQXWy6oeWSb+EFODo4/qplBPr
- ev1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680571218;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PbNNAu6sioZa4QEMdyfnNXIk/zn+0eeWx+CgkgrwYeg=;
- b=NPGcc29FqAXV9/N0wNRRjPxwI3Z92dyAG9F+8V4Sm6TRCLU/TpE+k18dEq8vReXkoN
- 5LCkh4SyFWHZR9JlfuBzxb7V36KVZ1ORw9vGfyWnMtsovmcFPgwbtqxbrgQID2rTHisZ
- rBkJSlMv8wOoUTartWRds82BOAHAXcJldrXkadhPDcuY7+jl1kZlx0FTo68HD/DaRpGN
- f7FCxaGS4Nya8E17kMUcWXXzEOWXDELTIQW/eUvcPGC6c0MZNaRuXPiJDIWYeDsEC/+F
- B2wj6/2+VNpxSMVxqY5VlbfE+9nQP58s8dqNpv1yfCgsKZ+IKN5LYUcycz1IAnKd6dst
- Acmg==
-X-Gm-Message-State: AAQBX9demEDr9e50yLVknk43rH3D39A9eZCXuUe5jc6MEjbZgu7c3wp/
- YvVC5rFpdrQBmPPUx+PepAcga9tTlpcxew==
-X-Received: by 2002:a05:6214:d83:b0:5df:3310:c1f9 with SMTP id
- e3-20020a0562140d8300b005df3310c1f9mr996086qve.5.1680571217796; 
- Mon, 03 Apr 2023 18:20:17 -0700 (PDT)
-Received: from debian.hsd1.ma.comcast.net ([2601:182:cc00:77b0::3e69])
- by smtp.gmail.com with ESMTPSA id
- i4-20020a05620a248400b0074865a9cb34sm3229909qkn.28.2023.04.03.18.20.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Apr 2023 18:20:17 -0700 (PDT)
-From: Dinah Baum <dinahbaum123@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Dinah Baum <dinahbaum123@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PATCH v2 2/3] cpu, qapi, target/arm, i386,
- s390x: Generalize query-cpu-model-expansion
-Date: Mon,  3 Apr 2023 21:19:55 -0400
-Message-Id: <20230404011956.90375-3-dinahbaum123@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230404011956.90375-1-dinahbaum123@gmail.com>
-References: <20230404011956.90375-1-dinahbaum123@gmail.com>
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1pja4d-0008AN-NU; Tue, 04 Apr 2023 02:23:19 -0400
+Received: from redisdead.crans.org ([185.230.79.39])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
+ id 1pja4b-0003Fh-K7; Tue, 04 Apr 2023 02:23:19 -0400
+Received: from [192.168.1.21] (41.169.89.92.rev.sfr.net [92.89.169.41])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by redisdead.crans.org (Postfix) with ESMTPSA id D137A218;
+ Tue,  4 Apr 2023 08:23:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
+ t=1680589385; bh=Fj25J7vboI1OAuzqs9WhgF682ENnfIJoNrbt8d/MnxE=;
+ h=Date:To:Cc:References:From:Subject:In-Reply-To:From;
+ b=ecYjFCGc3DBazoiEb15I8gy5+4YHd8q8TN1c2xeA/mD3fmhUWTUdv/lIqy2xuqOzx
+ 2kcefe/Qkk/JfshIuZGahqpL9RAa2+mQVs1ECTxCp5qWZPYOk6Y/oH04LtRtg3GW+s
+ CdEk4Dev2Co/DAQZD7xI36qFCNs/kIIaHnDSqg+JjetniS6e6L3i7fzdrksUVkjgKI
+ +Tu4DkBvGQlup3N+guduui+5qASBiMHjacBcSPwddmcu2/oTulweUlDTTw+WozPyxQ
+ QboYHF/VZEnavLJnzPp3/zwikQHrF/517TVCmOg/KaQfPu1e9YXciS1cflked0kPMY
+ oFAsUh7HPefKAcNIZ/KoDX3ozrWdBlguKcRXBcxbP0/K++F6iLBfg0Z5LYwd6Q7VGz
+ wWFNXOGga9fhOEola6Gn6K5Dwos/xcyXGzZ9ZuxgFwOcVz+Xl/+E6Lozib2Nq6R2U/
+ UkDRPiodOZIT7Y+8eUGI9gbu8g4oakrG6gjUI1os3CA/af2E8campwP9SGuZ9dRA79
+ o+8SWLLR48qE3Ny9KY36q+KJ2pl9T+Pqnk3DE+IlO9lhuAiz5VFKcMpqqYabG2nrRw
+ Wg+5zT0VypajeNH8UtbkLNdXcatLgmcPTPB01a3F5VWylRh5rMrh96MPCsItl2wrJb
+ flDkG/LRih+pjoumSl7pJoko=
+Message-ID: <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
+Date: Tue, 4 Apr 2023 08:22:59 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2e;
- envelope-from=dinahbaum123@gmail.com; helo=mail-qv1-xf2e.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Content-Language: en-US
+To: "Lucas C. Villa Real" <lucas@osdyne.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Lucas Villa Real <lucasvr@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230403121537.71320-1-lucas@osdyne.com>
+ <CAFEAcA9ERb4a8kwcgtr3VAxnjaCuOVnKFJ56FfkNx=F73a0o-A@mail.gmail.com>
+ <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
+From: Alexandre IOOSS <erdnaxe@crans.org>
+Organization: Crans
+Subject: Re: [PATCH] stm32vldiscovery: allow overriding of RAM size
+In-Reply-To: <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------tX0bH3ZA9cAGF3U44ywBdPca"
+Received-SPF: pass client-ip=185.230.79.39; envelope-from=erdnaxe@crans.org;
+ helo=redisdead.crans.org
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.349,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,326 +112,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5DepuyDkMF5e
+X-TUID: GGOQM+wveLaX
 
-This patch enables 'query-cpu-model-expansion' on all
-architectures. Only architectures that implement
-the command will return results, others will return an
-error message as before.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------tX0bH3ZA9cAGF3U44ywBdPca
+Content-Type: multipart/mixed; boundary="------------UZ4pqPR89vgxN08KixPcU1us";
+ protected-headers="v1"
+From: Alexandre IOOSS <erdnaxe@crans.org>
+To: "Lucas C. Villa Real" <lucas@osdyne.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Lucas Villa Real <lucasvr@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Message-ID: <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
+Subject: Re: [PATCH] stm32vldiscovery: allow overriding of RAM size
+References: <20230403121537.71320-1-lucas@osdyne.com>
+ <CAFEAcA9ERb4a8kwcgtr3VAxnjaCuOVnKFJ56FfkNx=F73a0o-A@mail.gmail.com>
+ <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
+In-Reply-To: <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
 
-This patch lays the groundwork for parsing a
--cpu cpu,help option as specified in
-https://gitlab.com/qemu-project/qemu/-/issues/1480
+--------------UZ4pqPR89vgxN08KixPcU1us
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-Signed-off-by: Dinah Baum <dinahbaum123@gmail.com>
----
- cpu.c                            | 20 ++++++++++++
- include/exec/cpu-common.h        |  8 +++++
- qapi/machine-target-common.json  | 51 +++++++++++++++++++++++++++++
- qapi/machine-target.json         | 56 --------------------------------
- target/arm/arm-qmp-cmds.c        |  7 ++--
- target/arm/cpu.h                 |  7 +++-
- target/i386/cpu-sysemu.c         |  7 ++--
- target/i386/cpu.h                |  6 ++++
- target/s390x/cpu.h               |  7 ++++
- target/s390x/cpu_models_sysemu.c |  6 ++--
- 10 files changed, 108 insertions(+), 67 deletions(-)
+T24gNC8zLzIzIDE2OjQ4LCBMdWNhcyBDLiBWaWxsYSBSZWFsIHdyb3RlOg0KPiBPbiBNb24s
+IEFwciAzLCAyMDIzIGF0IDEwOjU04oCvQU0gUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVs
+bEBsaW5hcm8ub3JnIA0KPiA8bWFpbHRvOnBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4+IHdy
+b3RlOg0KPiANCj4gICAgIE9uIE1vbiwgMyBBcHIgMjAyMyBhdCAxMzo1MSwgTHVjYXMgVmls
+bGEgUmVhbCA8bHVjYXN2ckBnbWFpbC5jb20NCj4gICAgIDxtYWlsdG86bHVjYXN2ckBnbWFp
+bC5jb20+PiB3cm90ZToNCj4gICAgICA+DQo+ICAgICAgPiBzdG0zMnZsZGlzY292ZXJ5IGNv
+bWVzIHdpdGggOEtCIG9mIFNSQU0sIHdoaWNoIG1heSBiZSB0b28gbG93IHdoZW4NCj4gICAg
+ICA+IHJ1bm5pbmcgc29tZSB3b3JrbG9hZHMgb24gUUVNVS4gVGhlIGNvbW1hbmQgbGluZSBh
+cmd1bWVudCAiLW0NCj4gICAgIG1lbV9zaXplIg0KPiAgICAgID4gaXMgbm90IHJlY29nbml6
+ZWQgYnkgdGhlIGN1cnJlbnQgaW1wbGVtZW50YXRpb24sIHRob3VnaCwgc28gb25lDQo+ICAg
+ICBjYW5ub3QNCj4gICAgICA+IGVhc2lseSBvdmVycmlkZSB0aGUgZGVmYXVsdCBtZW1vcnkg
+c2l6ZS4NCj4gICAgICA+DQo+ICAgICAgPiBUaGlzIHBhdGNoIGZpeGVzIHRoYXQgYnkgYWRk
+aW5nIGEgbWVtb3J5IHN1YnJlZ2lvbiBhY2NvcmRpbmcgdG8gdGhlDQo+ICAgICAgPiB2YWx1
+ZSBwcm92aWRlZCBvbiB0aGF0IGNvbW1hbmQgbGluZSBhcmd1bWVudC4gSWYgYWJzZW50LCB0
+aGUgZGVmYXVsdA0KPiAgICAgID4gdmFsdWUgb2YgOEtCIHN0aWxsIGFwcGxpZXMuDQo+ICAg
+ICAgPg0KPiAgICAgID4gU2lnbmVkLW9mZi1ieTogTHVjYXMgVmlsbGEgUmVhbCA8bHVjYXNA
+b3NkeW5lLmNvbQ0KPiAgICAgPG1haWx0bzpsdWNhc0Bvc2R5bmUuY29tPj4NCj4gDQo+ICAg
+ICBEb2VzIHRoZSByZWFsIGhhcmR3YXJlIGhhdmUgKG9wdGlvbnMgZm9yKSBtb3JlIHRoYW4g
+OEsgb2YgU1JBTSBoZXJlID8NCj4gDQo+ICAgICB0aGFua3MNCj4gICAgIC0tIFBNTQ0KPiAN
+Cj4gDQo+IFllcywgaXQncyBwb3NzaWJsZSB0byBhZGQgbW9yZSAocClTUkFNIHZpYSB0aGUg
+U1RNMzJGMTB4eHgncyBGU01DIA0KPiAoZmxleGlibGUgc3RhdGljIG1lbW9yeSBjb250cm9s
+bGVyKS4gVGhlIG5ldyBtZW1vcnkgaXMgbWFwcGVkIHRvIEZTTUMgDQo+IGJhbmsgMSBhdCAw
+eDYwMDBfMDAwMCwgdGhvdWdoIChhcyBvcHBvc2VkIHRvIHRoZSBlbWJlZGRlZCBTUkFNJ3Mg
+Zml4ZWQgDQo+IGFkZHJlc3MgYXQgMHgyMDAwXzAwMDApLCBhcyBJIGhhdmUgbm93IHJlYWxp
+emVkLiBJJ20gaGFwcHkgdG8gc2VuZCBhbiANCj4gdXBkYXRlZCBwYXRjaCBzbyB0aGF0ICIt
+bSBtZW1fc2l6ZSIgY3JlYXRlcyBhIG1lbW9yeSBzdWJyZWdpb24gYXQgDQo+IDB4NjAwMF8w
+MDAwIGluc3RlYWQuDQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IEx1Y2FzDQo+IA0KDQpMb29r
+aW5nIGF0IHRoZSBTVE0zMkYxMDB4eCByZWZlcmVuY2UgbWFudWFsIHBhZ2UgNDk0IA0KKGh0
+dHBzOi8vd3d3LnN0LmNvbS9yZXNvdXJjZS9lbi9yZWZlcmVuY2VfbWFudWFsL3JtMDA0MS1z
+dG0zMmYxMDB4eC1hZHZhbmNlZC1hcm1iYXNlZC0zMmJpdC1tY3VzLXN0bWljcm9lbGVjdHJv
+bmljcy5wZGYpLCANCkZTTUMgaXMgb25seSBwcmVzZW50IG9uIGhpZ2gtZGVuc2l0eSB2YWx1
+ZSBsaW5lIGRldmljZXMgb25seS4gVGhpcyBpcyANCm5vdCB0aGUgY2FzZSBvZiB0aGUgU1RN
+MzJWTERJU0NPVkVSWSB3aGljaCB1c2VzIGEgU1RNMzJGMTAwUkIgDQoobG93L21lZGl1bS1k
+ZW5zaXR5IHZhbHVlIGxpbmUpLg0KDQpDb3JyZWN0IG1lIGlmIEknbSB3cm9uZywgYnV0IEkg
+YmVsaWV2ZSB5b3UgY2Fubm90IGJ1eSBhIFNUTTMyVkxESVNDT1ZFUlkgDQp0aGF0IGNvdWxk
+IHN1cHBvcnQgRlNNQyBvciBoYXZlIG1vcmUgdGhhbiA4S0Igb2Ygb24tY2hpcCBTUkFNLg0K
+DQpIb3dldmVyLCBjb3VsZCBpdCBiZSBhIGdvb2QgaWRlYSB0byBpbXBsZW1lbnQgYSBnZW5l
+cmljIFNUTTMyRjEwMHh4IA0KbWFjaGluZSBpbiBRRU1VIHRoYXQgaXMgImhpZ2gtZGVuc2l0
+eSIgYnkgZGVmYXVsdCBhbmQgdGhhdCBjb3VsZCBiZSANCmNvbmZpZ3VyZWQgdXNpbmcgY29t
+bWFuZCBsaW5lIG9wdGlvbnMgPyBUaGlzIGNvdWxkIGNvdmVyIGEgd2lkZSByYW5nZSBvZiAN
+CmNhc2VzIHdpdGggYSBzaW5nbGUgbWFjaGluZS4NCg0KVGhhbmtzLA0KLS0gDQpBbGV4YW5k
+cmUNCg==
 
-diff --git a/cpu.c b/cpu.c
-index 849bac062c..daf4e1ff0d 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -292,6 +292,26 @@ void list_cpus(const char *optarg)
- #endif
- }
- 
-+CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
-+                                                    CpuModelInfo *model,
-+                                                    Error **errp)
-+{
-+    /* XXX: implement cpu_model_expansion for targets that still miss it */
-+#if defined(cpu_model_expansion)
-+    return cpu_model_expansion(type, model, errp);
-+#else
-+    error_setg(errp, "Could not query cpu model information");
-+    return NULL;
-+#endif
-+}
-+
-+CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-+                                                     CpuModelInfo *model,
-+                                                     Error **errp)
-+{
-+    return get_cpu_model_expansion_info(type, model, errp);
-+}
-+
- #if defined(CONFIG_USER_ONLY)
- void tb_invalidate_phys_addr(target_ulong addr)
- {
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 6feaa40ca7..ec6024dfde 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -7,6 +7,8 @@
- #include "exec/hwaddr.h"
- #endif
- 
-+#include "qapi/qapi-commands-machine-target-common.h"
-+
- /**
-  * vaddr:
-  * Type wide enough to contain any #target_ulong virtual address.
-@@ -166,5 +168,11 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
- extern int singlestep;
- 
- void list_cpus(const char *optarg);
-+typedef void (*cpu_model_expansion_func)(CpuModelExpansionType type,
-+                                         CpuModelInfo *model,
-+                                         Error **errp);
-+CpuModelExpansionInfo *get_cpu_model_expansion_info(CpuModelExpansionType type,
-+                                                    CpuModelInfo *model,
-+                                                    Error **errp);
- 
- #endif /* CPU_COMMON_H */
-diff --git a/qapi/machine-target-common.json b/qapi/machine-target-common.json
-index 1e6da3177d..44713e9935 100644
---- a/qapi/machine-target-common.json
-+++ b/qapi/machine-target-common.json
-@@ -77,3 +77,54 @@
- ##
- { 'enum': 'CpuModelCompareResult',
-   'data': [ 'incompatible', 'identical', 'superset', 'subset' ] }
-+
-+##
-+# @CpuModelExpansionInfo:
-+#
-+# The result of a cpu model expansion.
-+#
-+# @model: the expanded CpuModelInfo.
-+#
-+# Since: 2.8
-+##
-+{ 'struct': 'CpuModelExpansionInfo',
-+  'data': { 'model': 'CpuModelInfo' } }
-+
-+##
-+# @query-cpu-model-expansion:
-+#
-+# Expands a given CPU model (or a combination of CPU model + additional options)
-+# to different granularities, allowing tooling to get an understanding what a
-+# specific CPU model looks like in QEMU under a certain configuration.
-+#
-+# This interface can be used to query the "host" CPU model.
-+#
-+# The data returned by this command may be affected by:
-+#
-+# * QEMU version: CPU models may look different depending on the QEMU version.
-+#   (Except for CPU models reported as "static" in query-cpu-definitions.)
-+# * machine-type: CPU model  may look different depending on the machine-type.
-+#   (Except for CPU models reported as "static" in query-cpu-definitions.)
-+# * machine options (including accelerator): in some architectures, CPU models
-+#   may look different depending on machine and accelerator options. (Except for
-+#   CPU models reported as "static" in query-cpu-definitions.)
-+# * "-cpu" arguments and global properties: arguments to the -cpu option and
-+#   global properties may affect expansion of CPU models. Using
-+#   query-cpu-model-expansion while using these is not advised.
-+#
-+# Some architectures may not support all expansion types. s390x supports
-+# "full" and "static". Arm only supports "full".
-+#
-+# Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
-+#          not supported, if the model cannot be expanded, if the model contains
-+#          an unknown CPU definition name, unknown properties or properties
-+#          with a wrong type. Also returns an error if an expansion type is
-+#          not supported.
-+#
-+# Since: 2.8
-+##
-+{ 'command': 'query-cpu-model-expansion',
-+  'data': { 'type': 'CpuModelExpansionType',
-+  'model': 'CpuModelInfo' },
-+  'returns': 'CpuModelExpansionInfo' }
-+
-diff --git a/qapi/machine-target.json b/qapi/machine-target.json
-index 1cacfde88e..cfc8b0c7f8 100644
---- a/qapi/machine-target.json
-+++ b/qapi/machine-target.json
-@@ -130,62 +130,6 @@
-   'returns': 'CpuModelBaselineInfo',
-   'if': 'TARGET_S390X' }
- 
--##
--# @CpuModelExpansionInfo:
--#
--# The result of a cpu model expansion.
--#
--# @model: the expanded CpuModelInfo.
--#
--# Since: 2.8
--##
--{ 'struct': 'CpuModelExpansionInfo',
--  'data': { 'model': 'CpuModelInfo' },
--  'if': { 'any': [ 'TARGET_S390X',
--                   'TARGET_I386',
--                   'TARGET_ARM' ] } }
--
--##
--# @query-cpu-model-expansion:
--#
--# Expands a given CPU model (or a combination of CPU model + additional options)
--# to different granularities, allowing tooling to get an understanding what a
--# specific CPU model looks like in QEMU under a certain configuration.
--#
--# This interface can be used to query the "host" CPU model.
--#
--# The data returned by this command may be affected by:
--#
--# * QEMU version: CPU models may look different depending on the QEMU version.
--#   (Except for CPU models reported as "static" in query-cpu-definitions.)
--# * machine-type: CPU model  may look different depending on the machine-type.
--#   (Except for CPU models reported as "static" in query-cpu-definitions.)
--# * machine options (including accelerator): in some architectures, CPU models
--#   may look different depending on machine and accelerator options. (Except for
--#   CPU models reported as "static" in query-cpu-definitions.)
--# * "-cpu" arguments and global properties: arguments to the -cpu option and
--#   global properties may affect expansion of CPU models. Using
--#   query-cpu-model-expansion while using these is not advised.
--#
--# Some architectures may not support all expansion types. s390x supports
--# "full" and "static". Arm only supports "full".
--#
--# Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
--#          not supported, if the model cannot be expanded, if the model contains
--#          an unknown CPU definition name, unknown properties or properties
--#          with a wrong type. Also returns an error if an expansion type is
--#          not supported.
--#
--# Since: 2.8
--##
--{ 'command': 'query-cpu-model-expansion',
--  'data': { 'type': 'CpuModelExpansionType',
--            'model': 'CpuModelInfo' },
--  'returns': 'CpuModelExpansionInfo',
--  'if': { 'any': [ 'TARGET_S390X',
--                   'TARGET_I386',
--                   'TARGET_ARM' ] } }
--
- ##
- # @CpuDefinitionInfo:
- #
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index c8fa524002..e591e7c362 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -21,6 +21,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "cpu.h"
- #include "hw/boards.h"
- #include "kvm_arm.h"
- #include "qapi/error.h"
-@@ -99,9 +100,9 @@ static const char *cpu_model_advertised_features[] = {
-     NULL
- };
- 
--CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                     CpuModelInfo *model,
--                                                     Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     CpuModelExpansionInfo *expansion_info;
-     const QDict *qdict_in = NULL;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c097cae988..d5dcc2ef11 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2660,7 +2660,12 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
- 
- #define cpu_list arm_cpu_list
--
-+#ifdef CONFIG_SOFTMMU
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- /* ARM has the following "translation regimes" (as the ARM ARM calls them):
-  *
-  * If EL3 is 64-bit:
-diff --git a/target/i386/cpu-sysemu.c b/target/i386/cpu-sysemu.c
-index 28115edf44..c01c85839c 100644
---- a/target/i386/cpu-sysemu.c
-+++ b/target/i386/cpu-sysemu.c
-@@ -176,10 +176,9 @@ out:
-     return xc;
- }
- 
--CpuModelExpansionInfo *
--qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                      CpuModelInfo *model,
--                                                      Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     X86CPU *xc = NULL;
-     Error *err = NULL;
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index d243e290d3..7ab633c642 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -2209,6 +2209,12 @@ uint64_t cpu_get_tsc(CPUX86State *env);
- #endif
- 
- #define cpu_list x86_cpu_list
-+#ifdef CONFIG_SOFTMMU
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- 
- /* MMU modes definitions */
- #define MMU_KSMAP_IDX   0
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index c47e7adcb1..da5d9b4bf9 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -810,6 +810,13 @@ void s390_cpu_list(void);
- void s390_set_qemu_cpu_model(uint16_t type, uint8_t gen, uint8_t ec_ga,
-                              const S390FeatInit feat_init);
- 
-+#ifdef CONFIG_SOFTMMU
-+/* cpu_models-sysemu.c */
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp);
-+#define cpu_model_expansion get_cpu_model_expansion
-+#endif
- 
- /* helper.c */
- #define S390_CPU_TYPE_SUFFIX "-" TYPE_S390_CPU
-diff --git a/target/s390x/cpu_models_sysemu.c b/target/s390x/cpu_models_sysemu.c
-index 63981bf36b..ef3845f11c 100644
---- a/target/s390x/cpu_models_sysemu.c
-+++ b/target/s390x/cpu_models_sysemu.c
-@@ -213,9 +213,9 @@ static void cpu_info_from_model(CpuModelInfo *info, const S390CPUModel *model,
-     }
- }
- 
--CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
--                                                      CpuModelInfo *model,
--                                                      Error **errp)
-+CpuModelExpansionInfo *get_cpu_model_expansion(CpuModelExpansionType type,
-+                                               CpuModelInfo *model,
-+                                               Error **errp)
- {
-     Error *err = NULL;
-     CpuModelExpansionInfo *expansion_info = NULL;
--- 
-2.30.2
+--------------UZ4pqPR89vgxN08KixPcU1us--
 
+--------------tX0bH3ZA9cAGF3U44ywBdPca
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmQrwkMFAwAAAAAACgkQbHknjz/NzAKH
+6hAAj0fFC0AbOd9epjFsXrc48B461Mmgx+XsK/1b0cdoFQc67g5HVTAV+ZKu4TDIDawQRld60xVr
+HqkY8ojbgrvrGHJxhNmyKdfL1TYicMTAMbKa+LbJ/SvnQTBSbsDsROzMubzUjjCmE7dVB1sO4l6F
+yqFTSoSeE96L9f3fEB0s6BOQuNErM94qERfJj1mwiJoe53aCkE28ms6e+eXfA7JHLMN3DehHupYy
+iIls4kV2puFplgtWod1XFt9S/p7XzczyBPCWatO7X0YA00CZKsk9hVFW6ZGhTW4uJe9wqnHlbHJA
+3E76UEEYUro+4wPeR/K8vPoUckpW4u3g6as5zqQlaZRfrXIA4rxk7Zvo4wswv90t0AwN3EPjHf/V
+uZs4/astBZIkIEgEr8hPQppYCG9ot5WNFusJ/V+4AHOnuyz2C/+ZfE49jnz6mD7l8L4ihyxp3vmx
+qpM/8cUVyJL1cJGdG15kCF40kahZjDNBbQgbrfGX1zhfjNZqwhms0i862lIWgW0eXbPG75hubWPk
+kJLEFAg9vQEQaKx0X4BFFD2p4BuqjUqoDwNWtLCh4jdvlgI3hcj/pOGZNHDjjGa3zL3PZbPz3AX3
+TZD5OPzedWrzmHXKZyimOlu4QOE19YxNNl28JEpI4tk2xvH8na+174RgbiAUnR5GoFLt2uj/EEYE
+xoY=
+=Apdd
+-----END PGP SIGNATURE-----
+
+--------------tX0bH3ZA9cAGF3U44ywBdPca--

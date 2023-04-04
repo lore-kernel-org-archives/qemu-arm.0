@@ -1,95 +1,108 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp792752ejb;
-        Tue, 4 Apr 2023 09:30:05 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YHOGLKMtTtaCLLKB6EB33U9OdlAGlY8yDJNWuVscV5+UwhcSEDvo3KydeKn/qPOuehJzsg
-X-Received: by 2002:a05:622a:12:b0:3e4:e5bf:a24c with SMTP id x18-20020a05622a001200b003e4e5bfa24cmr4357399qtw.62.1680625805450;
-        Tue, 04 Apr 2023 09:30:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680625805; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp799390ejb;
+        Tue, 4 Apr 2023 09:40:11 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a/N1v/6NGL/FPRk0s6nj4tedhd9oAgml+mLuLLLzkqBestrTcPyB/nizg8aXX49pouglST
+X-Received: by 2002:a05:622a:52:b0:3e1:6c7e:2ee0 with SMTP id y18-20020a05622a005200b003e16c7e2ee0mr118686qtw.11.1680626411386;
+        Tue, 04 Apr 2023 09:40:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680626411; cv=none;
         d=google.com; s=arc-20160816;
-        b=cOMkLqm7kZ/zp+vCFx1Ggden8AOfQCCU2gXrJ0PBCZjvRSwh0Mn3L8OJTfESxzFTNg
-         j24tDCtG2hGucgsTT5ZxaxOCJ3PBjUCGK9vLxZnUHf+LyMAoST8oem8czl8oVyD1GsPu
-         igyk1j37ntum0m73DMrV+KsXXyU10kmTpyEXXnB7vUnhigpFD12uC6ZlfLJ/8Edum0T6
-         dw1J53sl+5sSGNqTPD5mCadDMWPWT8ugI7k/4r09f8aQ3GozAiYRrvH1xKvmBr1aXQAw
-         TMbMH7nlf+NmWnrMBbG1eKvohM5ORuKeeplJNKLYfX1PWFtKc2IhldbiFOr7dS0eAumU
-         3FXw==
+        b=i/sFBitg01Oe4N1ji7oF3OaannaFLvNWOrzMSGS6Ps5VFAkjSWeaqNRZpDIInf/iBi
+         D6f/y1erUQuc/8RbFJiyA/IVpVHVQErmR5xRWKlzvy5RPR6QS394S6ok5AOuHD2Er+EG
+         oREDetQral9H/QXHxO3SjCZViqkW0wfaxGNeD4nV6ow8vwAH5Eh+dju5VPUTr0zIc6Lu
+         PQkWyHzL10Unh7k8GQ+RGPPHdMbaF0bjOq9L3e0n3qI0vmcne7nHt5Vl0Fb+MznIZZtc
+         eakTEYFV7opufU/1yGOYqFsQMQGbJtVDwQ5+yqWtP+SvHHi6nAg4VOTt7eQTjueM+Gq+
+         Z00Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=RzFdSRicHHhS+c72HnUQSWhLTcV59cTcrjCud3RUIGU=;
-        b=NX9/xpd4dBUW8A8kK9yzW+pjbl3ukd4lEzlt8741fTaPMvHNo+t2vWCrkFqtLpNvLI
-         I/juud+jeiOdV2BZh8qJHrOixiIvjVRzdVtZM8wHFjVid8yTbY/Fe1AF6NjHdtfBy3lA
-         UTsxw5+9KU4C3NGVMyVkARM/q9r4Gc5EZtJL+JNie7Fvsn5TloA9ND5mdxYWOW4Ic6DT
-         n1v9Nsnf7OVpH/ikm6TuUUBZp5RrO4q8urGVgQ7UDipMZbsJuquG5s8x4rbqRGX1mPF4
-         NqK2vSBEoEWjDJNlQmduVudGEE0655v5UQHh4lBsYFDsLsZHp4iCpJ84IR5uJcJOQ94R
-         hG+Q==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
+        b=z6bnWMVQ9oQPELe7hLTGW9Po5rAIri5RRqZzQLMqvPiyu7s58onuljnBivbDByJxbx
+         YWToXo8hSFEE2JoKDVZYAm4+qhiVJj53bsPc/VysXWYmo21wdudFzOI1tizwx3LCz83V
+         xWgebTT0Ap8TeDbPsYhCSvm/2u984L5QpKUVC74BJygBk58879jHqHstZD82AaWDaCcw
+         DbvV2cCbGfHBQOePY+Bk8NFDjpRe21CwtG1xGDHoKAFZZ4Z1JwiilUS2I+Khbw9FdgLm
+         CPBXU2MslMik3oJbh3Bx4RHpEIHuuVE+PA/5KPQvMpBCpR3TWCg6JKj4NJKQxMDzqZ1f
+         lPrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V0VrQ2Nl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15-20020a05622a15cf00b003c009d75e43si8340504qty.196.2023.04.04.09.30.05
+        by mx.google.com with ESMTPS id o19-20020a05622a045300b003d96fa7bf88si7978284qtx.301.2023.04.04.09.40.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Apr 2023 09:30:05 -0700 (PDT)
+        Tue, 04 Apr 2023 09:40:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V0VrQ2Nl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pjjXe-0002K7-D2; Tue, 04 Apr 2023 12:29:54 -0400
+	id 1pjjhT-0005Y4-75; Tue, 04 Apr 2023 12:40:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pjjXc-0002J4-2g
- for qemu-arm@nongnu.org; Tue, 04 Apr 2023 12:29:52 -0400
-Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1pjjXC-00021R-DN
- for qemu-arm@nongnu.org; Tue, 04 Apr 2023 12:29:36 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.6])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 0CFDC21EB6;
- Tue,  4 Apr 2023 16:29:23 +0000 (UTC)
-Received: from kaod.org (37.59.142.110) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Tue, 4 Apr
- 2023 18:29:22 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004dd354537-2539-48f5-8241-b13109ee3d01,
- 85507D0075A56E5AD4EA03BF56E5282CC2D8C3A6) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <42909658-3a6d-69b0-1607-182728e2ac70@kaod.org>
-Date: Tue, 4 Apr 2023 18:29:21 +0200
+ (Exim 4.90_1) (envelope-from <lucasvr@gmail.com>)
+ id 1pjjhR-0005WX-TR; Tue, 04 Apr 2023 12:40:01 -0400
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lucasvr@gmail.com>)
+ id 1pjjhG-0000KT-Hw; Tue, 04 Apr 2023 12:39:54 -0400
+Received: by mail-lf1-x130.google.com with SMTP id g19so29993357lfr.9;
+ Tue, 04 Apr 2023 09:39:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1680626375;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
+ b=V0VrQ2Nlu0Y37CNNEr6Rap9c19N20We28sEE/N0m+9HybafFWPATL8xtEeBfC7oNcp
+ C0Xduvv8El9fAXC0f6cBmZadwbMd4eOeVEoMAZERgVH5/y8iiKMJb60s0cv236WJCbwy
+ AWzf0z02pCduyoryLtDWIm6ixZPkrlhUkJmfswtFSm85ZeWBvFYNsEW4GsAK0oSxqqB4
+ 0d/WIKnDOpXQX4OZbR9BpuQm4ogGfsZ5EXy0N63KWZdFDDm55y5MNE/UOqrcjfi7/uW/
+ wNIVEWgDJkJfa9RqzBHMvVL3BdHawNVbSmZ8rVpkcbA1ItTPoMlCSkGEzkYyvLK6nUHk
+ 5fTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680626375;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
+ b=rg2W0QfIPBAR1wU9yq6Ql9uIzmLHqpbwjhh6vIp6VlMkmI43yu3XGWdqtHl9Z1BjDo
+ xJuDnGQqFrmiwqmt73+laz/VrWXDs33mhvRiyTGhkbmrIMZa7FEpECnRb2n2qY1GosUK
+ dFIYaF2gL7hbcTB5kt5C1/ZwmknDqlUro+hrMa0axBeyYyoHYMG6T/ZeGHyNR8/mk/4t
+ C4qnCBETwagqJceH/39xMByyqRNTfP0Alp1sHXzq6ERuLu6Jp3iTD1nBKXKsXtIxaXNr
+ w0JpWx8EaGNOYVRp7WNTmFxPOi81KmFgnlb3U8IJ2Iu2VPmjxLykV1QAnbXuzVIedy36
+ WXLQ==
+X-Gm-Message-State: AAQBX9d04lAtZ4ra7HZmIqFN8bmjB8hgQ7iJR9jeOLeSvorXccD0uMIQ
+ nZerN8Y8m8XqS/BHaVKermM8x1j3KjhRtlLZOtw=
+X-Received: by 2002:a19:740f:0:b0:4e9:c027:5be6 with SMTP id
+ v15-20020a19740f000000b004e9c0275be6mr927976lfe.12.1680626374861; Tue, 04 Apr
+ 2023 09:39:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PULL 10/19] aspeed: fby35: Add a bootrom for the BMC
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Peter Delevoryas
- <peter@pjd.dev>
-References: <20220714154456.2565189-1-clg@kaod.org>
- <20220714154456.2565189-11-clg@kaod.org>
- <CAFEAcA_yYuWgsSKc9N7PvHeAWjtSqWwM1z+qJQ1swv3cwCghPg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAFEAcA_yYuWgsSKc9N7PvHeAWjtSqWwM1z+qJQ1swv3cwCghPg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 8539e7d6-1868-434c-93b5-d0c8c7b09024
-X-Ovh-Tracer-Id: 5792192071044729824
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrvdeiledguddtudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepffdufeeliedujeeffffhjeffiefghffhhfdvkeeijeehledvueffhfejtdehgeegnecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrdduuddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhesphhjugdruggvvhdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
- helo=10.mo548.mail-out.ovh.net
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.925,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20230403121537.71320-1-lucas@osdyne.com>
+ <CAFEAcA9ERb4a8kwcgtr3VAxnjaCuOVnKFJ56FfkNx=F73a0o-A@mail.gmail.com>
+ <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
+ <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
+In-Reply-To: <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
+From: "Lucas C. Villa Real" <lucasvr@gmail.com>
+Date: Tue, 4 Apr 2023 13:39:23 -0300
+Message-ID: <CAAvzgtbP4+fLqMdo=Q_QboOPznVnJhuoihdjyARG7V=JCmj+hw@mail.gmail.com>
+Subject: Re: [PATCH] stm32vldiscovery: allow overriding of RAM size
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Cc: "Lucas C. Villa Real" <lucas@osdyne.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000012e8e605f8855263"
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=lucasvr@gmail.com; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,116 +117,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OTBOeuQ99UBo
+X-TUID: N3GGqBW5vFxL
 
-On 4/4/23 17:54, Peter Maydell wrote:
-> On Thu, 14 Jul 2022 at 16:45, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> The BMC boots from the first flash device by fetching instructions
->> from the flash contents. Add an alias region on 0x0 for this
->> purpose. There are currently performance issues with this method (TBs
->> being flushed too often), so as a faster alternative, install the
->> flash contents as a ROM in the BMC memory space.
->>
->> See commit 1a15311a12fa ("hw/arm/aspeed: add a 'execute-in-place'
->> property to boot directly from CE0")
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> Signed-off-by: Peter Delevoryas <peter@pjd.dev>
->> [ clg: blk_pread() fixes ]
->> Message-Id: <20220705191400.41632-8-peter@pjd.dev>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> 
-> Hi; Coverity has noticed a trivial "memory leak" (CID 1508061) in this code:
-> 
->>   static void fby35_bmc_init(Fby35State *s)
->>   {
->> +    DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
->> +
->>       memory_region_init(&s->bmc_memory, OBJECT(s), "bmc-memory", UINT64_MAX);
->>       memory_region_init_ram(&s->bmc_dram, OBJECT(s), "bmc-dram",
->>                              FBY35_BMC_RAM_SIZE, &error_abort);
->> @@ -48,6 +86,28 @@ static void fby35_bmc_init(Fby35State *s)
->>       qdev_realize(DEVICE(&s->bmc), NULL, &error_abort);
->>
->>       aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
->> +
->> +    /* Install first FMC flash content as a boot rom. */
->> +    if (drive0) {
->> +        AspeedSMCFlash *fl = &s->bmc.fmc.flashes[0];
->> +        MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
-> 
-> Here we allocate a new MemoryRegion...
-> 
->> +        uint64_t size = memory_region_size(&fl->mmio);
->> +
->> +        if (s->mmio_exec) {
->> +            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
->> +                                     &fl->mmio, 0, size);
->> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
->> +                                        boot_rom);
->> +        } else {
->> +
->> +            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
->> +                                   size, &error_abort);
->> +            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWARE_ADDR,
->> +                                        boot_rom);
->> +            fby35_bmc_write_boot_rom(drive0, boot_rom, FBY35_BMC_FIRMWARE_ADDR,
->> +                                     size, &error_abort);
->> +        }
-> 
-> ...but we never keep a pointer to it anywhere, so Coverity classes
-> this as a "memory leak". (It's not really one, because the memory
-> has to stay live for the whole of QEMU's execution anyway.)
-> 
-> The easy fix is not to allocate a new MR, but instead use
-> a MemoryRegion field in the Fby35State struct, the way we
-> do for all the other MRs this function sets up. Conveniently,
-> there already is a "MemoryRegion bmc_boot_rom" in the struct
-> which is currently completely unused :-)
+--00000000000012e8e605f8855263
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-hey :) Indeed.
+On Tue, Apr 4, 2023 at 3:23=E2=80=AFAM Alexandre IOOSS <erdnaxe@crans.org> =
+wrote:
 
-I have recently taken another approach in the aspeed machines, which is
-to introduce a spi_boot region since it is part of the SoC address space.
-There is also an extra container to overlap a rom region to speed up boot
-because the "execute-in-place mode" is a bit slow (~30 s to reach FW).
-So the aspeed code is different now :
+> On 4/3/23 16:48, Lucas C. Villa Real wrote:
+> > On Mon, Apr 3, 2023 at 10:54=E2=80=AFAM Peter Maydell <peter.maydell@li=
+naro.org
+> > <mailto:peter.maydell@linaro.org>> wrote:
+> >
+> >     On Mon, 3 Apr 2023 at 13:51, Lucas Villa Real <lucasvr@gmail.com
+> >     <mailto:lucasvr@gmail.com>> wrote:
+> >      >
+> >      > stm32vldiscovery comes with 8KB of SRAM, which may be too low wh=
+en
+> >      > running some workloads on QEMU. The command line argument "-m
+> >     mem_size"
+> >      > is not recognized by the current implementation, though, so one
+> >     cannot
+> >      > easily override the default memory size.
+> >      >
+> >      > This patch fixes that by adding a memory subregion according to
+> the
+> >      > value provided on that command line argument. If absent, the
+> default
+> >      > value of 8KB still applies.
+> >      >
+> >      > Signed-off-by: Lucas Villa Real <lucas@osdyne.com
+> >     <mailto:lucas@osdyne.com>>
+> >
+> >     Does the real hardware have (options for) more than 8K of SRAM here=
+ ?
+> >
+> >     thanks
+> >     -- PMM
+> >
+> >
+> > Yes, it's possible to add more (p)SRAM via the STM32F10xxx's FSMC
+> > (flexible static memory controller). The new memory is mapped to FSMC
+> > bank 1 at 0x6000_0000, though (as opposed to the embedded SRAM's fixed
+> > address at 0x2000_0000), as I have now realized. I'm happy to send an
+> > updated patch so that "-m mem_size" creates a memory subregion at
+> > 0x6000_0000 instead.
+> >
+> > Best regards,
+> > Lucas
+> >
+>
+> Looking at the STM32F100xx reference manual page 494
+> (
+> https://www.st.com/resource/en/reference_manual/rm0041-stm32f100xx-advanc=
+ed-armbased-32bit-mcus-stmicroelectronics.pdf),
+>
+> FSMC is only present on high-density value line devices only. This is
+> not the case of the STM32VLDISCOVERY which uses a STM32F100RB
+> (low/medium-density value line).
+>
+> Correct me if I'm wrong, but I believe you cannot buy a STM32VLDISCOVERY
+> that could support FSMC or have more than 8KB of on-chip SRAM.
+>
+> However, could it be a good idea to implement a generic STM32F100xx
+> machine in QEMU that is "high-density" by default and that could be
+> configured using command line options ? This could cover a wide range of
+> cases with a single machine.
+>
 
-    if (!bmc->mmio_exec) {
-         DriveInfo *mtd0 = drive_get(IF_MTD, 0, 0);
+Oh, you're right: FSMC is only featured on high-density STM32F100xx
+devices. Since I'm mostly dealing with QEMU (i.e., no real hardware) at
+this point in time I wasn't aware of that limitation. Thanks for the heads
+up.
 
-         if (mtd0) {
-             uint64_t rom_size = memory_region_size(&bmc->soc.spi_boot);
-             aspeed_install_boot_rom(&bmc->soc, blk_by_legacy_dinfo(mtd0),
-                                     rom_size);
-         }
-     }
+Given that the current STM32 port doesn't implement many devices, I presume
+that adding support for a "high-density" machine would come down to making
+changes to the flash and register boundary addresses, mostly? If that's the
+case, then it makes sense to support such a generic machine. I've limited
+time to work on that, but I can give it a kick start and we can coordinate
+offline if that's OK with you.
 
-and we should report the same code in fby35 (which was a copy paste)
+Lucas
 
-The benefits are that we will (soon) be able to create SPI flash devices
-from the command line, such as :
+--00000000000012e8e605f8855263
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-         -blockdev node-name=fmc0,driver=file,filename=./flash.img \
-         -device mx66u51235f,addr=0x0,bus=ssi.0,drive=fmc0 \
+<div dir=3D"ltr"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"fon=
+t-size:small">On Tue, Apr 4, 2023 at 3:23=E2=80=AFAM Alexandre IOOSS &lt;<a=
+ href=3D"mailto:erdnaxe@crans.org">erdnaxe@crans.org</a>&gt; wrote:</div></=
+div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On 4/3/23 16:48, Lucas C. Villa Real wrote:<br>
+&gt; On Mon, Apr 3, 2023 at 10:54=E2=80=AFAM Peter Maydell &lt;<a href=3D"m=
+ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
+/a> <br>
+&gt; &lt;mailto:<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blan=
+k">peter.maydell@linaro.org</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0On Mon, 3 Apr 2023 at 13:51, Lucas Villa Real &lt;<=
+a href=3D"mailto:lucasvr@gmail.com" target=3D"_blank">lucasvr@gmail.com</a>=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:lucasvr@gmail.com" tar=
+get=3D"_blank">lucasvr@gmail.com</a>&gt;&gt; wrote:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; stm32vldiscovery comes with 8KB of SRAM, whic=
+h may be too low when<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; running some workloads on QEMU. The command l=
+ine argument &quot;-m<br>
+&gt;=C2=A0 =C2=A0 =C2=A0mem_size&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; is not recognized by the current implementati=
+on, though, so one<br>
+&gt;=C2=A0 =C2=A0 =C2=A0cannot<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; easily override the default memory size.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; This patch fixes that by adding a memory subr=
+egion according to the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; value provided on that command line argument.=
+ If absent, the default<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; value of 8KB still applies.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Lucas Villa Real &lt;<a href=
+=3D"mailto:lucas@osdyne.com" target=3D"_blank">lucas@osdyne.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:lucas@osdyne.com" targ=
+et=3D"_blank">lucas@osdyne.com</a>&gt;&gt;<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Does the real hardware have (options for) more than=
+ 8K of SRAM here ?<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0thanks<br>
+&gt;=C2=A0 =C2=A0 =C2=A0-- PMM<br>
+&gt; <br>
+&gt; <br>
+&gt; Yes, it&#39;s possible to add more (p)SRAM via the STM32F10xxx&#39;s F=
+SMC <br>
+&gt; (flexible static memory controller). The new memory is mapped to FSMC =
+<br>
+&gt; bank 1 at 0x6000_0000, though (as opposed to the embedded SRAM&#39;s f=
+ixed <br>
+&gt; address at 0x2000_0000), as I have now realized. I&#39;m happy to send=
+ an <br>
+&gt; updated patch so that &quot;-m mem_size&quot; creates a memory subregi=
+on at <br>
+&gt; 0x6000_0000 instead.<br>
+&gt; <br>
+&gt; Best regards,<br>
+&gt; Lucas<br>
+&gt; <br>
+<br>
+Looking at the STM32F100xx reference manual page 494 <br>
+(<a href=3D"https://www.st.com/resource/en/reference_manual/rm0041-stm32f10=
+0xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf" rel=3D"noreferrer"=
+ target=3D"_blank">https://www.st.com/resource/en/reference_manual/rm0041-s=
+tm32f100xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf</a>), <br>
+FSMC is only present on high-density value line devices only. This is <br>
+not the case of the STM32VLDISCOVERY which uses a STM32F100RB <br>
+(low/medium-density value line).<br>
+<br>
+Correct me if I&#39;m wrong, but I believe you cannot buy a STM32VLDISCOVER=
+Y <br>
+that could support FSMC or have more than 8KB of on-chip SRAM.<br>
+<br>
+However, could it be a good idea to implement a generic STM32F100xx <br>
+machine in QEMU that is &quot;high-density&quot; by default and that could =
+be <br>
+configured using command line options ? This could cover a wide range of <b=
+r>
+cases with a single machine.<br></blockquote><div>=C2=A0</div><div style=3D=
+"font-size:small" class=3D"gmail_default">Oh, you&#39;re right: FSMC is onl=
+y featured on high-density STM32F100xx devices. Since I&#39;m mostly dealin=
+g with QEMU (i.e., no real hardware) at this point in time I wasn&#39;t awa=
+re of that limitation. Thanks for the heads up.</div><div style=3D"font-siz=
+e:small" class=3D"gmail_default"><br></div><div style=3D"font-size:small" c=
+lass=3D"gmail_default">Given that the current STM32 port doesn&#39;t implem=
+ent many devices, I presume that adding support for a &quot;high-density&qu=
+ot; machine would come down to making changes to the flash and register bou=
+ndary addresses, mostly? If that&#39;s the case, then it  makes sense to su=
+pport such a generic machine. I&#39;ve limited time to work on that, but I =
+can give it a kick start and we can coordinate offline if that&#39;s OK wit=
+h you.</div><div style=3D"font-size:small" class=3D"gmail_default"><br></di=
+v><div style=3D"font-size:small" class=3D"gmail_default">Lucas<br></div><di=
+v style=3D"font-size:small" class=3D"gmail_default"><br></div><div style=3D=
+"font-size:small" class=3D"gmail_default"><br></div><div style=3D"font-size=
+:small" class=3D"gmail_default"><br></div><div style=3D"font-size:small" cl=
+ass=3D"gmail_default"><br></div><br></div></div>
 
-and boot from them. That said, the memory leak is still there in
-aspeed_install_boot_rom() :
-
-     MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
-
-     memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom", rom_size,
-                            &error_abort);
-     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
-                                         boot_rom, 1);
-     write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
-
-and coverity didn't catch it ? Anyhow we can use a MemoryRegion under the
-machine state to remove the warning like you suggested. I will add that on
-the 8.1 TODO list.
-
-Thanks,
-
-C.
-
+--00000000000012e8e605f8855263--

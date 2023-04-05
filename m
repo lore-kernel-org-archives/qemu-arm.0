@@ -1,547 +1,172 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp724753ejb;
-        Tue, 4 Apr 2023 07:53:02 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZjRRC7EsDmWUd2JMb5pwsjqWTzHorZ3s733Pf1tPkZrw/tRHzbJSPs+5TD/PxEY8+YJi3w
-X-Received: by 2002:a05:6214:e41:b0:5e3:d150:3168 with SMTP id o1-20020a0562140e4100b005e3d1503168mr3530036qvc.18.1680619982127;
-        Tue, 04 Apr 2023 07:53:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1680619982; cv=pass;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp58996ejb;
+        Tue, 4 Apr 2023 18:56:13 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YLh/7GqBLnhknvdD3+X5XcYxJyZlC9ffWTsGySMcJrDDa2BRmy7IYrdBhw9+d5KXcRrZEp
+X-Received: by 2002:ac8:5750:0:b0:3db:8942:cbd2 with SMTP id 16-20020ac85750000000b003db8942cbd2mr2651983qtx.61.1680659773665;
+        Tue, 04 Apr 2023 18:56:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680659773; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mskz0FP0szjB6dTM1Po3e1cPpVBYDganWfsACa0SpnmmXD+Xqw6hSqlwIhYMZuCARZ
-         yCH/0Nv3KaHrORpSkx9kY/0NPd9mmOwqDhKDuNRAYysLhSDD6TILEnzVJGF0tDxkVVex
-         Mj//UkbFqkHnuBP6jvn9IH2Dd0xqfVsJLPPy6SPUAa50L59Tr0+cyiTMQWQArmTD//Ls
-         bYyZPmG5WQ/BzzXxdI7gHHGPAanR0LtDpj0PtMpLq/NYaBBmPKiyCeGfjo5NQwS7kC0o
-         qZeld+SgZHEWa29s6iWFv21pgzf61q/FjMLVyDivx9yQcLF0A3UOuE1UkiceqnV6YVYU
-         H0hg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=T5x7EOlXnmnkhiVHhKU7OiJbwhUG8MSiMMRjppfpnv7IPhWt1ECwA7UY3WlvhFo0Gi
+         vtot2DYoraG9pSpTehvyh/pd19C63Hcajtv4C6q5HCkoEDNJI3pbaWjzh22acR+ftAOB
+         tqYnMkEGoSmF7+3MfKostv98DxNTa/PRiiPF022JdKEulMvPFLqoyEZBk19mwHRohTU0
+         yuCqeOJUOHwV3Nehnnqia6V3A5eGmf3kZaST8MKTqhBpQEIuHSuWjNfvQBtzSGWWAcut
+         Zaio58G8Z1Vi1SJkNW35aiNnira7CnEbY3XHIJuXZqZCzvkWEIFRx6VtaF2upg3UU+NS
+         NpxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=MDd35Xe+ZPsxpPYoAJshAr7H4mLsf+hYa0IQYcTxV5U=;
-        b=wCpha2pGqD5phaRxVKATHAYoSjVz5xcXJonxbnsTXDK8pLEcHjkS8KDz9RhYdRfLgp
-         NawCgksjINn2yTIVFdi+1zHse3NDFSAqqLPnGS6gnNzhsNj0AfLn+B+059ngHcHP4L5V
-         z86/8W7LAoafZnTbNKKiQiTnzXiVrFpbZosRFsAnl3i+dcv/U0eXVTwNn/kthe5bFnE/
-         K2MAYhsuwkgVTjeuqLq0NIJrxJSEQLUfOCqi/rqRHxoeFx6uI5+8q8LNQojJ7CQKKwzi
-         QVNzVn579r/eCkbKodMprsExV1+fp4YP8EX+swim5cTiB0oOldrc/16T5nZulPcRh3sj
-         E38w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=Vy4SEesX;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Gxyza1C2;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        bh=hE26xBUkZTmwH4Je9IXwsxW8wh3Zr3I7UAwXgzrFqjM=;
+        b=wIKk6eGORGyu2quL4lnXNoe3Id2e1VcnlyNKjrIEtG0QZnJ6rLmE5MJYEaArnCDIjD
+         h2tWoeUJ+pN/dKqosHQrsWm+z7FGMnrh+pm7mkbKy3FGRfSlknENvqsC+9JPe047eGwX
+         oP0KJqSbhkrxehX3BcJIqx5ZyXbm0nrN1ovhra92JzChdz7ZycpVitHOAcID7qZboSfd
+         37Dt6nVXAmfrQAmXYlmiahHVNOSOj/XIL++KHo8bCOavIg2tSAPJkPGoQKygYq0Cyskj
+         BxyXxYeXFmkJz+iXp/e9OYZW2Kea0fgrrPdQfd51tdiSKVBp73/tP65mmjD9O9bYIifY
+         WnNA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=FQPGW9VY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib13-20020a0562141c8d00b005acf7be4867si8003019qvb.361.2023.04.04.07.53.01
+        by mx.google.com with ESMTPS id h4-20020ac87d44000000b003e4cd82ba4fsi8912845qtb.302.2023.04.04.18.56.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Apr 2023 07:53:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Apr 2023 18:56:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2022-7-12 header.b=Vy4SEesX;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Gxyza1C2;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dkim=pass header.i=@google.com header.s=20210112 header.b=FQPGW9VY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pji1V-0007Xj-Sy; Tue, 04 Apr 2023 10:52:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pjsMx-00085N-H4; Tue, 04 Apr 2023 21:55:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1pji1T-0007Wv-Jh; Tue, 04 Apr 2023 10:52:35 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1pji1P-0000pE-DI; Tue, 04 Apr 2023 10:52:35 -0400
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 334Du4qS028335; Tue, 4 Apr 2023 14:52:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=corp-2022-7-12;
- bh=MDd35Xe+ZPsxpPYoAJshAr7H4mLsf+hYa0IQYcTxV5U=;
- b=Vy4SEesXfR4ht97Y7AodWaOlFe3JVY+7YTubfKY8Jy1i9HIhb6kXdkfnS9dNfyWcZmyM
- BevS8Jc7IlRYYYVscVg3lhLi45LeAxTWuo4POtw+THRuiswzAWwEMuWdbnrHUbeAWEgA
- WsfLrciws2oJowfgOR4+i7IjVX2plTGuN8gM7fAgSb19//j1c9p5+PV6fSHgtHZ5OQNQ
- uBk5zeW4nxuv0u/Amoug1cXdvZkKziBBF6dcpYIP3TUJPyktXRaR5Ab8K6qvBbwQ7txA
- rMgU8bVqn240zZG6T6IUIrJGA/l+u/BQCAd0fg7BQCI/yPVvvRdNG2XgKmola7K3ikBr qg== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3ppd5ue17f-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 04 Apr 2023 14:52:22 +0000
-Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 334EcaED039503; Tue, 4 Apr 2023 14:52:21 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2169.outbound.protection.outlook.com [104.47.59.169])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3ppt26g1wr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 04 Apr 2023 14:52:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MIxMwz+FeqkNy9Arbp1HxeY1NHYDRGFMC6y4khVVoT6JYz6MyqRYjDsSShZmaCnBheVnZZm+WaFmzRDEKtM5iCRsZAD0RpX3L7vp001jy0xEivEFg64L9DZyfrx9nMy+ulU9kDy16/q1uFViCjQKCVvkcMwTv4++dUQc/EFFOAy5D4siydVS4UQpUEmLNNg1xg/Z1SANLGhlxVeUGQPia8WRycmPHrYQ7MoXmgw+zLCgn2yHfoQrK4el/A2hRraM3LmMr1NaiHryxQukbvnV2x1xIbaGa1+7D4t0csdnf1GtycRKs1aHVALpaAF0fGaPUOV2yUdCkUh5iaB1iN9yzg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MDd35Xe+ZPsxpPYoAJshAr7H4mLsf+hYa0IQYcTxV5U=;
- b=V66F4jcnHpHeurCTCxsqnq1v7dj/Oks8SKM5/92+UsVES801sP8JAKs21LifwYV9o8NYzLaiLK60CGWfC7LstJBhCzcwmRGKxfcMH5BQbA+H+uTB1YLjbGEnuIErKyLYHpeflZsYSsYKjqz75gW+hBxJbrl+KqVmLsa40oq3bkrmJwd+QLtNOIWABs5zuNWz0/okZvMCujy3d7k6fD8FdLgUCEAxm3ET6+jyZ38zPFEQ0+d8pLHn033oWF2Vkjt2TBT+brfFwPNaiULC8nP17qPeIrtV8CSPxbJDG8u5yE4xIgfdFLwKXOSXk+PjbKEGlxD+JIfUXoBM4Mr5BAtD9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ (Exim 4.90_1) (envelope-from <komlodi@google.com>)
+ id 1pjsMw-00084y-3D
+ for qemu-devel@nongnu.org; Tue, 04 Apr 2023 21:55:26 -0400
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <komlodi@google.com>)
+ id 1pjsMu-0002CZ-CV
+ for qemu-devel@nongnu.org; Tue, 04 Apr 2023 21:55:25 -0400
+Received: by mail-qk1-x735.google.com with SMTP id u15so11163662qkk.4
+ for <qemu-devel@nongnu.org>; Tue, 04 Apr 2023 18:55:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MDd35Xe+ZPsxpPYoAJshAr7H4mLsf+hYa0IQYcTxV5U=;
- b=Gxyza1C2caoFdBDJS95RNbr7uEKU3I20K/PrHpQazVmrGRJ4LLVOnjXYDZUlE/xkYW3ofVTl4OreiNVUwJOdNuq6eKktCq4PvsePyBF9v2xPkMDxmSQkCesFTx0UaWZHu8qlV7cFz8wK14sb38hAlZdyWh/ECO6kaiKsz4Bcaoc=
-Received: from CO1PR10MB4531.namprd10.prod.outlook.com (2603:10b6:303:6c::22)
- by DM4PR10MB6160.namprd10.prod.outlook.com (2603:10b6:8:bc::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.28; Tue, 4 Apr
- 2023 14:52:13 +0000
-Received: from CO1PR10MB4531.namprd10.prod.outlook.com
- ([fe80::e9ed:8782:64cb:cfc3]) by CO1PR10MB4531.namprd10.prod.outlook.com
- ([fe80::e9ed:8782:64cb:cfc3%9]) with mapi id 15.20.6254.028; Tue, 4 Apr 2023
- 14:52:13 +0000
-Message-ID: <bae30149-0f0a-750a-a050-88e40fc1e4c1@oracle.com>
-Date: Tue, 4 Apr 2023 09:52:09 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH 0/2] hw/acpi: bump MADT to revision 5
-Content-Language: en-US
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Cc: shannon.zhaosl@gmail.com, ani@anisinha.ca, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, marcel.apfelbaum@gmail.com,
- pbonzini@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net,
- boris.ostrovsky@oracle.com
-References: <20230328155926.2277-1-eric.devolder@oracle.com>
- <20230329010406-mutt-send-email-mst@kernel.org>
- <96144a1b-efa7-ecc2-3e35-56825fcf48c6@oracle.com>
- <20230329124442-mutt-send-email-mst@kernel.org>
- <20230331182538.15980cc9@imammedo.users.ipa.redhat.com>
-From: Eric DeVolder <eric.devolder@oracle.com>
-In-Reply-To: <20230331182538.15980cc9@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SJ0PR05CA0046.namprd05.prod.outlook.com
- (2603:10b6:a03:33f::21) To CO1PR10MB4531.namprd10.prod.outlook.com
- (2603:10b6:303:6c::22)
+ d=google.com; s=20210112; t=1680659722;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hE26xBUkZTmwH4Je9IXwsxW8wh3Zr3I7UAwXgzrFqjM=;
+ b=FQPGW9VYInUKhNltbdc11MLP7nVe1QuIkk7pDBXRY7RABe/DcZ1SXn/B4IRzv3NNMb
+ WzrEDJYyY7tO/QVC7eQSQElL4DSX/xX9S8z6QG0c6PGIAlW8KSIuwvHMekBJ7AMMizSB
+ u30MoheshhQKyo2WQA1F9dzHFmnQX36H4qcq2qJGFnIS4JDgoChTbp1eI4wEFdnuJbx+
+ ktclUbfjbwZpBomLjlp0+OEnqQpF0ZBIZPEYD1ffqOyRF0tSuYg9TXyI1S7rI6plTpTp
+ Ar0Mv8nY6I5l7WgFj/1oDCNwZR7ZeruGtMssAZlOPIrNzy765/WhEO7+lnKOaYKqqRML
+ ay+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680659722;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=hE26xBUkZTmwH4Je9IXwsxW8wh3Zr3I7UAwXgzrFqjM=;
+ b=OVzMuNaOD7+rYtNPCfNSbliNSN9IEAsg1xz49brOHWkP6dMifDpdmYo9QLl3yHAtxm
+ i7iDQASa/BwerQoYbtZPNpyS3FjNUgJD5HVXTulvnZyJVvYM/qA4tBIQn73m/eW2Ryoj
+ Qu+zOphNIXLTWt5Zbq/G7h11uz7ShFY3cY5FHUmF1xSa7RYLH1/I4SbmxdmHy0NGeROJ
+ MSKPus380axR13JpLiCtP4Xj9vaQKJFXcR/ElVJqxt/GSoMrDVxZo9VHBiRoDd1CFwji
+ c6hVtabFE8VY5kfiKoR4dYVcUHfK3ovOjFwr0DvnH7r5ZfK5UYeDZpHHwt3bKziwgReu
+ C3tQ==
+X-Gm-Message-State: AAQBX9c/+5vRV/Z+zPTr2R0EpadgEvfKN4eUQMbt1ubtl3J0XbbL5qPT
+ 2bq828khr+BPihiFf4Y75Scr/RFSW61u4Q+8/VJroQ==
+X-Received: by 2002:a05:620a:1709:b0:746:977f:3aef with SMTP id
+ az9-20020a05620a170900b00746977f3aefmr715114qkb.1.1680659722599; Tue, 04 Apr
+ 2023 18:55:22 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR10MB4531:EE_|DM4PR10MB6160:EE_
-X-MS-Office365-Filtering-Correlation-Id: d2881bab-bdba-4575-a264-08db351c2d1c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR10MB4531.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(39860400002)(376002)(346002)(136003)(366004)(396003)(451199021)(31686004)(66946007)(966005)(6486002)(4326008)(66556008)(8676002)(66476007)(110136005)(41300700001)(316002)(31696002)(36756003)(86362001)(53546011)(6512007)(6506007)(6666004)(2616005)(83380400001)(478600001)(107886003)(8936002)(2906002)(5660300002)(7416002)(186003)(38100700002)(30864003)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d2881bab-bdba-4575-a264-08db351c2d1c
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR10MB4531.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2023 14:52:13.7485 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IBePpZs3Vza5w0AYZa4CzA2W/80KQKVqJWsJR0+tqm8SGkSRy9fc0F/H+ldROW0QBopunlrFbRLVo354GKuNGxePsfRe4LqKLWJBjUvZwP8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR10MB6160
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-04-04_06,2023-04-04_04,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0
- malwarescore=0 adultscore=0 bulkscore=0 mlxlogscore=999 phishscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2303200000 definitions=main-2304040137
-X-Proofpoint-ORIG-GUID: 6OKhAiCjYlF2HyQJdZAp_hxlGRZQg6Dj
-X-Proofpoint-GUID: 6OKhAiCjYlF2HyQJdZAp_hxlGRZQg6Dj
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=eric.devolder@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.925,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230331010131.1412571-1-komlodi@google.com>
+ <20230401172825.tvmfms6qbh3tmi5s@hetzy.fluff.org>
+ <74148c47-8232-02d3-2c37-d12c1fe156e2@kaod.org>
+ <50b19eb8929da77f150c34585f805345e460daed.camel@codeconstruct.com.au>
+In-Reply-To: <50b19eb8929da77f150c34585f805345e460daed.camel@codeconstruct.com.au>
+From: Joe Komlodi <komlodi@google.com>
+Date: Tue, 4 Apr 2023 18:55:11 -0700
+Message-ID: <CAGDLtxv3z69dmDMpA=7dk8ADHwTaMPT-a3BceTvyidXk66+8oA@mail.gmail.com>
+Subject: Re: [PATCH 00/16] i3c: aspeed: Add I3C support
+To: Jeremy Kerr <jk@codeconstruct.com.au>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Ben Dooks <qemu@fluff.org>, qemu-devel@nongnu.org, venture@google.com, 
+ peter.maydell@linaro.org, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>, 
+ qemu-arm <qemu-arm@nongnu.org>, Troy Lee <troy_lee@aspeedtech.com>, 
+ Graeme Gregory <quic_ggregory@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
+ envelope-from=komlodi@google.com; helo=mail-qk1-x735.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GkrCrzDXvuyE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vkFOqJQIMC6X
 
-I'm back from travel and catching up. More info below.
-eric
+Hi all,
 
+On Sun, Apr 2, 2023 at 1:11=E2=80=AFAM Jeremy Kerr <jk@codeconstruct.com.au=
+> wrote:
+>
+> Hi C=C3=A9dric,
+>
+> > > Isn't this the designware i3c ip block, and as such could we name
+> > > it so?
+> >
+> > Currently, QEMU only has a model for a dummy Aspeed I3C variant so
+> > this is a great addition.
+>
+> [...]
+>
+> > According to recent work on the kernel, it is indeed based on
+> > designware I3C :
+> >
+> > https://lore.kernel.org/all/20230331091501.3800299-1-jk@codeconstruct.c=
+om.au/
+> >
+> > Jeremy, how different is it ? Could we introduce properties or sub
+> > classes, to support both.
+>
+> The differences (at least from the view of the current Linux driver
+> implementation) are very minor; unless we want to be errata-compatible,
+> you could use the dw driver directly, plus the ast2600-specific global
+> register space.
+>
 
-On 3/31/23 11:25, Igor Mammedov wrote:
-> On Wed, 29 Mar 2023 12:47:05 -0400
-> "Michael S. Tsirkin" <mst@redhat.com> wrote:
-> 
->> On Wed, Mar 29, 2023 at 08:14:37AM -0500, Eric DeVolder wrote:
->>>
->>>
->>> On 3/29/23 00:19, Michael S. Tsirkin wrote:
->>>> Hmm I don't think we can reasonably make such a change for 8.0.
->>>> Seems too risky.
->>>> Also, I feel we want to have an internal (with "x-" prefix") flag to
->>>> revert to old behaviour, in case of breakage on some guests.  and maybe
->>>> we want to keep old revision for old machine types.
->>> Ok, what option name, for keeping old behavior, would you like?
->>
->> Don't much care. x-madt-rev?
-> 
-> if it works fine (cold & hot-plug) with older linux/windows guests
-> I'd rather avoid adding compat knob (we typically do that in ACPI tables
-> only when change breaks something).
-> 
-> (as old guest I'd define WinXP sp3 (/me wonders if we  still care about
-> dead EOLed OS) perhaps WS2008 would be a better minimum target these days
-> and RHEL6 (or some older ACPI enabled kernel with hotplug support))
+This is my understanding as well from an outside look.
+From a QEMU standpoint I could split off the dwc portion into a
+dwc_i3c model, which the aspeed_i3c portion inherits from. I can do
+that in a v2 if that sounds good with everyone.
 
-Thus far I've tested this patch series with the following guests. In both cases below,
-the guest started with -smp 8,maxcpus=16, and I simply attempted to hot plug and unplug
-cpu8, with: device_add id=cpu8 driver=host-x86_64-cpu socket-id=0 core-id=8 thread-id=0.
+Thanks,
+Joe
 
-1) Windows Server 2008.
-  In Windows, after logging-in, I close the first full-screen window
-  and then "Server Manager" window pops up. I navigate to left hand
-  pane and choose Diagnostics -> Device Manager -> Processors.
-  I count them before and after.
-  When hotplugging a cpu, you can see the new processor show up in the
-  processor list. That is, it goes from 8 to 9.
-  When hot unplugging the CPU, Windows refuses:
-
-   The 'Intel(R) Xeon(R) CPU D-1533 @ 2.10GHz' device is not
-   removable and cannot be ejected or unplugged.
-
-2) RHEL 6.9
-  From dmesg:
-  ACPI: APIC 000000007ffe32f0 000F0 (v05 BOCHS  BXPC    00000001 BXPC 00000001)
-  SMP: Allowing 16 CPUs, 8 hotplug CPUs
-
-  # cat /sys/devices/system/cpu/online
-  0-7
-
-  (QEMU) device_add ...
-
-  CPU 8 got hotplugged
-  Booting Node 0 Processor 8 APIC 0x8
-  kvm-clock: cpu 8, msr 2830ed00
-  Will online and init hotplugged CPU: 8
-  microcode: CPU8 sig=0x50663, pf=0x1, revision=0x700001c
-  platform microcode: firmware: requesting intel-ucode/06-56-03
-
-  # cat /sys/devices/system/cpu/online
-  0-8
-
-  (QEMU) device_del ...
-
-  Broke affinity for irq 24
-  CPU 8 is now offline
-
-  # cat /sys/devices/system/cpu/online
-  0-7
-
-  RHEL 6.9
-  kernel 2.6.32-696.el6.x86_64
-  build Feb 21 2017
-
-
-So with these two older guest OS, it appears to still work. If there are others to be tested, let me 
-know.
-
-
-> 
->>
->>>>
->>>>
->>>> On Tue, Mar 28, 2023 at 11:59:24AM -0400, Eric DeVolder wrote:
->>>>> The following Linux kernel change broke CPU hotplug for MADT revision
->>>>> less than 5.
->>>>>
->>>>>    commit e2869bd7af60 ("x86/acpi/boot: Do not register processors that cannot be onlined for x2APIC")
->>>>
->>>> Presumably it's being fixed? Link to discussion? Patch fixing that in
->>>> Linux?
->>>
->>> https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devolder@oracle.com/T/#t
->>
->> Great! Maybe stick a Link: tag in the commit log.
-
-Sure, will include that with v2.
-
-> 
-> So it's guest bug which is in process of being fixed.
-> (i.e. QEMU technically correct as long as MADT revision < 5)
-
-Iiuc, if QEMU generates x2apic tables with .revision = 1, that is not correct
-(as x2APIC shows up in .revision=3).
-But if QEMU generates, apic, sapic, or x2apic tables with .revision = 5, that
-is correct (as all are valid options thru .revision 5).
-
-> 
-> In this case I'd not touch x86 MADT at all (It should be upto
-> downstream distros to fix guest kernel).
-
-Fwiw, this has been fixed and should show up in 6.3-rc6 this weekend.
-
-> 
-> Probably the same applies to ARM variant
-> i.e. we should bump rev only when current one gets in the way
-> (aka we are pulling in new fields/definitions from new version)
-> 
->     
->>>>> As part of the investigation into resolving this breakage, I learned
->>>>> that i386 QEMU reports revision 1, while technically it is at revision 3.
->>>>> (Arm QEMU reports revision 4, and that is valid/correct.)
->>>>>
->>>>> ACPI 6.3 bumps MADT revision to 5 as it introduces an Online Capable
->>>>> flag that the above Linux patch utilizes to denote hot pluggable CPUs.
->>>>>
->>>>> So in order to bump MADT to the current revision of 5, need to
->>>>> validate that all MADT table changes between 1 and 5 are present
->>>>> in QEMU.
->>>>>
->>>>> Below is a table summarizing the changes to the MADT. This information
->>>>> gleamed from the ACPI specs on uefi.org.
->>>>>
->>>>> ACPI    MADT    What
->>>>> Version Version
->>>>> 1.0             MADT not present
->>>>> 2.0     1       Section 5.2.10.4
->>>>> 3.0     2       Section 5.2.11.4
->>>>>                    5.2.11.13 Local SAPIC Structure added two new fields:
->>>>>                     ACPI Processor UID Value
->>>>>                     ACPI Processor UID String
->>>>>                    5.2.10.14 Platform Interrupt Sources Structure:
->>>>>                     Reserved changed to Platform Interrupt Sources Flags
->>>>> 3.0b    2       Section 5.2.11.4
->>>>>                    Added a section describing guidelines for the ordering of
->>>>>                    processors in the MADT to support proper boot processor
->>>>>                    and multi-threaded logical processor operation.
->>>>> 4.0     3       Section 5.2.12
->>>>>                    Adds Processor Local x2APIC structure type 9
->>>>>                    Adds Local x2APIC NMI structure type 0xA
->>>>> 5.0     3       Section 5.2.12
->>>>> 6.0     3       Section 5.2.12
->>>>> 6.0a    4       Section 5.2.12
->>>>>                    Adds ARM GIC structure types 0xB-0xF
->>>>> 6.2a    45      Section 5.2.12   <--- yep it says version 45!
->>>>> 6.2b    5       Section 5.2.12
->>>>>                    GIC ITS last Reserved offset changed to 16 from 20 (typo)
->>>>> 6.3     5       Section 5.2.12
->>>>>                    Adds Local APIC Flags Online Capable!
->>>>>                    Adds GICC SPE Overflow Interrupt field
->>>>> 6.4     5       Section 5.2.12
->>>>>                    Adds Multiprocessor Wakeup Structure type 0x10
->>>>>                    (change notes says structure previously misplaced?)
->>>>> 6.5     5       Section 5.2.12
->>>>>
->>>>> For the MADT revision change 1 -> 2, the spec has a change to the
->>>>> SAPIC structure. In general, QEMU does not generate/support SAPIC.
->>>>> So the QEMU i386 MADT revision can safely be moved to 2.
->>>>>
->>>>> For the MADT revision change 2 -> 3, the spec adds Local x2APIC
->>>>> structures. QEMU has long supported x2apic ACPI structures. A simple
->>>>> search of x2apic within QEMU source and hw/i386/acpi-common.c
->>>>> specifically reveals this.
->>>>
->>>> But not unconditionally.
->>>
->>> I don't think that reporting revision 3 requires that generation of x2apic;
->>> one could still see apic, x2apic, or sapic in theory. I realize qemu doesn't
->>> do sapic...
->>>    
->>>>    
->>>>> So the QEMU i386 MADT revision can safely
->>>>> be moved to 3.
->>>>>
->>>>> For the MADT revision change 3 -> 4, the spec adds support for the ARM
->>>>> GIC structures. QEMU ARM does in fact generate and report revision 4.
->>>>> As these will not be used by i386 QEMU, so then the QEMU i386 MADT
->>>>> revision can safely be moved to 4 as well.
->>>>>
->>>>> Now for the MADT revision change 4 -> 5, the spec adds the Online
->>>>> Capable flag to the Local APIC structure, and the ARM GICC SPE
->>>>> Overflow Interrupt field.
->>>>>
->>>>> For the ARM SPE, an existing 3-byte Reserved field is broken into a 1-
->>>>> byte Reserved field and a 2-byte SPE field.  The spec says that is SPE
->>>>> Overflow is not supported, it should be zero.
->>>>>
->>>>> For the i386 Local APIC flag Online Capable, the spec has certain rules
->>>>> about this value. And in particuar setting this value now explicitly
->>>>> indicates a hotpluggable CPU.
->>>>>
->>>>> So this patch makes the needed changes to move both ARM and i386 MADT
->>>>> to revision 5. These are not complicated, thankfully.
->>>>>
->>>>> Without these changes, the information below shows "how" CPU hotplug
->>>>> breaks with the current upstream Linux kernel 6.3.  For example, a Linux
->>>>> guest started with:
->>>>>
->>>>>    qemu-system-x86_64 -smp 30,maxcpus=32 ...
->>>>>
->>>>> and then attempting to hotplug a CPU:
->>>>>
->>>>>     (QEMU) device_add id=cpu30 driver=host-x86_64-cpu socket-id=0 core-id=30 thread-id=0
->>>>>
->>>>> fails with the following:
->>>>>
->>>>>     APIC: NR_CPUS/possible_cpus limit of 30 reached. Processor 30/0x.
->>>>>     ACPI: Unable to map lapic to logical cpu number
->>>>>     acpi LNXCPU:1e: Enumeration failure
->>>>>
->>>>>     # dmesg | grep smpboot
->>>>>     smpboot: Allowing 30 CPUs, 0 hotplug CPUs
->>>>>     smpboot: CPU0: Intel(R) Xeon(R) CPU D-1533 @ 2.10GHz (family: 0x)
->>>>>     smpboot: Max logical packages: 1
->>>>>     smpboot: Total of 30 processors activated (125708.76 BogoMIPS)
->>>>>
->>>>>     # iasl -d /sys/firmware/tables/acpi/APIC
->>>>>     [000h 0000   4]                    Signature : "APIC"    [Multiple APIC Descript
->>>>>     [004h 0004   4]                 Table Length : 00000170
->>>>>     [008h 0008   1]                     Revision : 01          <=====
->>>>>     [009h 0009   1]                     Checksum : 9C
->>>>>     [00Ah 0010   6]                       Oem ID : "BOCHS "
->>>>>     [010h 0016   8]                 Oem Table ID : "BXPC    "
->>>>>     [018h 0024   4]                 Oem Revision : 00000001
->>>>>     [01Ch 0028   4]              Asl Compiler ID : "BXPC"
->>>>>     [020h 0032   4]        Asl Compiler Revision : 00000001
->>>>>
->>>>>     ...
->>>>>
->>>>>     [114h 0276   1]                Subtable Type : 00 [Processor Local APIC]
->>>>>     [115h 0277   1]                       Length : 08
->>>>>     [116h 0278   1]                 Processor ID : 1D
->>>>>     [117h 0279   1]                Local Apic ID : 1D
->>>>>     [118h 0280   4]        Flags (decoded below) : 00000001
->>>>>                                Processor Enabled : 1          <=====
->>>>>
->>>>>     [11Ch 0284   1]                Subtable Type : 00 [Processor Local APIC]
->>>>>     [11Dh 0285   1]                       Length : 08
->>>>>     [11Eh 0286   1]                 Processor ID : 1E
->>>>>     [11Fh 0287   1]                Local Apic ID : 1E
->>>>>     [120h 0288   4]        Flags (decoded below) : 00000000
->>>>>                                Processor Enabled : 0          <=====
->>>>>
->>>>>     [124h 0292   1]                Subtable Type : 00 [Processor Local APIC]
->>>>>     [125h 0293   1]                       Length : 08
->>>>>     [126h 0294   1]                 Processor ID : 1F
->>>>>     [127h 0295   1]                Local Apic ID : 1F
->>>>>     [128h 0296   4]        Flags (decoded below) : 00000000
->>>>>                                Processor Enabled : 0          <=====
->>>>>
->>>>> The (latest upstream) Linux kernel sees 30 Enabled processors, and
->>>>> does not consider processors 31 and 32 to be hotpluggable.
->>>>>
->>>>> With this patch series applied, by bumping MADT to revision 5, the
->>>>> latest upstream Linux kernel correctly identifies 30 CPUs plus 2
->>>>> hotpluggable CPUS.
->>>>>
->>>>>     CPU30 has been hot-added
->>>>>     smpboot: Booting Node 0 Processor 30 APIC 0x1e
->>>>>     Will online and init hotplugged CPU: 30
->>>>>
->>>>>     # dmesg | grep smpboot
->>>>>     smpboot: Allowing 32 CPUs, 2 hotplug CPUs
->>>>>     smpboot: CPU0: Intel(R) Xeon(R) CPU D-1533 @ 2.10GHz (family: 0x6, model: 0x56, stepping: 0x3)
->>>>>     smpboot: Max logical packages: 2
->>>>>     smpboot: Total of 30 processors activated (125708.76 BogoMIPS)
->>>>>
->>>>>     # iasl -d /sys/firmware/tables/acpi/APIC
->>>>>     [000h 0000 004h]                   Signature : "APIC"    [Multiple APIC Descript
->>>>>     [004h 0004 004h]                Table Length : 00000170
->>>>>     [008h 0008 001h]                    Revision : 05          <=====
->>>>>     [009h 0009 001h]                    Checksum : 94
->>>>>     [00Ah 0010 006h]                      Oem ID : "BOCHS "
->>>>>     [010h 0016 008h]                Oem Table ID : "BXPC    "
->>>>>     [018h 0024 004h]                Oem Revision : 00000001
->>>>>     [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
->>>>>     [020h 0032 004h]       Asl Compiler Revision : 00000001
->>>>>
->>>>>     ...
->>>>>
->>>>>     [114h 0276 001h]               Subtable Type : 00 [Processor Local APIC]
->>>>>     [115h 0277 001h]                      Length : 08
->>>>>     [116h 0278 001h]                Processor ID : 1D
->>>>>     [117h 0279 001h]               Local Apic ID : 1D
->>>>>     [118h 0280 004h]       Flags (decoded below) : 00000001
->>>>>                                Processor Enabled : 1          <=====
->>>>>                           Runtime Online Capable : 0          <=====
->>>>>
->>>>>     [11Ch 0284 001h]               Subtable Type : 00 [Processor Local APIC]
->>>>>     [11Dh 0285 001h]                      Length : 08
->>>>>     [11Eh 0286 001h]                Processor ID : 1E
->>>>>     [11Fh 0287 001h]               Local Apic ID : 1E
->>>>>     [120h 0288 004h]       Flags (decoded below) : 00000002
->>>>>                                Processor Enabled : 0          <=====
->>>>>                           Runtime Online Capable : 1          <=====
->>>>>
->>>>>     [124h 0292 001h]               Subtable Type : 00 [Processor Local APIC]
->>>>>     [125h 0293 001h]                      Length : 08
->>>>>     [126h 0294 001h]                Processor ID : 1F
->>>>>     [127h 0295 001h]               Local Apic ID : 1F
->>>>>     [128h 0296 004h]       Flags (decoded below) : 00000002
->>>>>                                Processor Enabled : 0          <=====
->>>>>                           Runtime Online Capable : 1          <=====
->>>>>
->>>>> Regards,
->>>>> Eric
->>>>
->>>> Can you please report which guests were tested?
->>>
->>> I've been using primarily upstream Linux. Kernels at and before 6.2.0 didn't
->>> have the "broken" patch mentioned above, and worked (for the reasons cited
->>> in the patch discussion to "fix" that patch). Any kernel since has the
->>> "broken" patch and will exhibit the issue.
->>>
->>> I've been using q35.
->>>
->>> If there are other samples you'd like to see, let me know and I'll try.
->>>
->>> Also, my responses will be delayed as I'm traveling the remainder of the week.
->>>
->>> Thanks!
->>> eric
->>
->> As a minimum some windows versions. The older the better.
->>
->>
->>>    
->>>>
->>>>    
->>>>>
->>>>> Eric DeVolder (2):
->>>>>     hw/acpi: arm: bump MADT to revision 5
->>>>>     hw/acpi: i386: bump MADT to revision 5
->>>>>
->>>>>    hw/arm/virt-acpi-build.c |  6 ++++--
->>>>>    hw/i386/acpi-common.c    | 13 ++++++++++---
->>>>>    2 files changed, 14 insertions(+), 5 deletions(-)
->>>>>
->>>>> -- 
->>>>> 2.31.1
->>>>>
->>>>>
->>>>>    
->>>>    
->>
-> 
+> Cheers,
+>
+>
+> Jeremy

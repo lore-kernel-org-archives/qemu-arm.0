@@ -1,167 +1,185 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp497808ejb;
-        Wed, 5 Apr 2023 09:30:23 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bBoiEa1rRO5ackQNosU/VuDPVIYU4lP08sJRX3NVT9bwW/3iBY8rjTFq2mgbKdS4SGHER8
-X-Received: by 2002:aa7:d292:0:b0:501:c547:2135 with SMTP id w18-20020aa7d292000000b00501c5472135mr2366343edq.36.1680712223251;
-        Wed, 05 Apr 2023 09:30:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680712223; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp639839ejb;
+        Wed, 5 Apr 2023 13:44:41 -0700 (PDT)
+X-Received: by 2002:a05:6870:4587:b0:17a:a737:9f08 with SMTP id y7-20020a056870458700b0017aa7379f08mr4063394oao.39.1680727481066;
+        Wed, 05 Apr 2023 13:44:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680727481; cv=none;
         d=google.com; s=arc-20160816;
-        b=JwJ5zPT44zQPsIKlcLlWpJ/J4nT6Rt0Cd8xESKlyABU/GNm2My7w5QqamRqFhjm91P
-         f7gfnIdwnEtAEF0GKvSOznokclE+G7KpmXH58SGtnReWbUgPQuYkvhd6Yyk9i4EBz41I
-         HzVT6Ss4ADj/ZcNfsPq5ZWh8WRcXz1Q1AbonHLOx1Xgh17bfIWZLKoOypn+8Ubjm8owQ
-         TG/gsMaR8so2dXXPHKxFUnIje7posKUIxGmhjhLSXeffy+tTiy/9n4lGxizPG1wRBvrQ
-         EajNSgGBA0FVpCDn9tmNSlCnciCJMyKpjNbVYN5CEiUu09pGKMgGimmCJINydoApMIyw
-         8qtw==
+        b=P83sksyT71KnbWBTZ8nzhtH2c6VDaYedO3zk7ZIPeMa0/PKpTdJNhbHnksovNoUiu7
+         mtfQ+zmBkaFS777HO3av9HN0IUYIUcZx8Z/1A/nQA41YgNboW6PghE4Ed3UNu4W034S2
+         MguaYrA1Wi6FZVYYGVRN6xzeGNxSbHdzMfRp5UKJyrUQCGoIaXfwlvJ7+7yORGT0tuyk
+         CP+iEuEavCOFhvZqbHKvIXPSyZhcwG7OE14IOryWj5Xx3pP3866b8p5zndwUlc7qQm6K
+         c2ZBqDOthva/fuQBmy0MB5g8UmwSlBZgdg/MxevpBhZic45CjXslutcXwD0J1r+FCave
+         ksfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=PrAcn5qN38B5YaoSS7J2RY/lmyONQENb+5lQU26NZ94=;
-        b=y/PF5iGFj0d1Cp51lJxMsQpkqNUz69oohxh4caCNAoS/4NHGP7PlWL+OyIlF3PvxrP
-         C5ahkXzCfjDZvSwxMKhHb89Cw6yzMr+iNFKidASuBvLuyY2chQoiJbEwGT1Q1CYTMMW6
-         QxndeuAnvvDEjZ5aOJZM2QXPNNMCR2VeJ5tdIRR1puVmg1D8tR/gYwp0LBII4Qn/kRPP
-         6yGY42IbHcumEQsDQqQhOj1/VW1WepPW5PPrlcgrDoTEj0AzVoOYC6LNLKofW1gWPBUU
-         zHktrvT/3438mWlT08kZLBk8GZLF4hekVA60UExNt9L//Fqjy+SUITewuT/3X5iLcSlL
-         Qvog==
+        bh=ZqWfb2PPnDpc2PEqcd7YpJ7M16hWDtl2fWp2jjEorwo=;
+        b=k5gP9xIIWaXJqQbM7zxXsCuzM8rPGRYRJDJ++AfKd58/vXsciVSdhDBCPHB0U9Abtf
+         7S/SaSto/BRVqpfCWF4dUmTVgeNFckj1K51ScdsooYuntovKoqVzi0wTmGgADreu8Kiw
+         bKSew36GkdpSjfZRH6tZSXWebt58Q/9jSvwLRiGahJ+AWCNvceEUQzrNTECfbcHKyDWE
+         rSzuWeUUM2Qx/H1unAs6w0eA5Tj8z3HIOzcdd6xtr/ge9Cqnp17agBTHJHcEEi5XHDqV
+         2cOlm/lEnqZUyRNJM0hMTmupasLOLz3aIyzaWdQKxhsUiQ+mS/eM4WdZ5QdoSPOHf8AT
+         d0Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltah4l+p;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id e22-20020a50ec96000000b004fe968996c7si901499edr.216.2023.04.05.09.30.23;
-        Wed, 05 Apr 2023 09:30:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=TNOuzQOD;
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p6-20020a056820044600b0052019034383sor1640944oou.12.2023.04.05.13.44.40
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 05 Apr 2023 13:44:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltah4l+p;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229699AbjDEQaW (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Wed, 5 Apr 2023 12:30:22 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38512 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233314AbjDEQaU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 5 Apr 2023 12:30:20 -0400
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com [IPv6:2a00:1450:4864:20::431])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id DBBF540F4
-        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 09:30:18 -0700 (PDT)
-Received: by mail-wr1-x431.google.com with SMTP id e18so36794024wra.9
-        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 09:30:18 -0700 (PDT)
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=TNOuzQOD;
+       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680712217;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PrAcn5qN38B5YaoSS7J2RY/lmyONQENb+5lQU26NZ94=;
-        b=ltah4l+p7FJg9oAXXwCVBTw0T1SM3CGmlUjbZnWSMo+SWFV02mqjr/KQ0SOeD1mHlo
-         0fwAhWUy80/AAZfa6r0U2GiGZrIYk1eglek0E2nytTJwN1bnmj+yzSFwVKvh1PvEUpny
-         MF9LCkH7wBWmM9aWOgcwUz4K+5zjltGVQ2EtPzJGP9UWF+VctR/sRiZZwUsabMgRg/jS
-         t5kUbvD6v6PmbJ1beYmnS3+qDEj1EOcvKCK/wDvTWQjL96fdXiHcg9IWbqyD1mFVgQ0o
-         Xke5O4fLv2nu9Y+mVedL7ITgOHXOPQyha5158IQ2/KU34Hg8y3y3ZIQ5PwrKsE06vH5E
-         5sbQ==
+        d=ventanamicro.com; s=google; t=1680727480;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZqWfb2PPnDpc2PEqcd7YpJ7M16hWDtl2fWp2jjEorwo=;
+        b=TNOuzQODBFw4w+EKPw8H+hz/E1aFLDuz22IVxMRnSrjb96aaHbwmAL33xIMmsa9gvT
+         iQp4A+/cHZmTKQDilGfL91aI/DfMj/G4wqLu1ET9xijR7swBv3vTXJrJj8TmNGA7S2Wv
+         I2JUjyx6LNQ0MuLEQqZ0rTJGi44n1a2kWz1l/eM7zNNXDxXZaolcM9jdrg2Wwwx0V3gq
+         upJ4sQdYAzdREj76KzCbvrFdw4HQmzfe/DMlJEtP8AoCCIbKzxEHrOAI75X1/3Qrwetp
+         UjBxAFpe4rHKutfCkfjc7G0Sil1Fd+40EFqphuSetm2R1vMJ7pYfF7Wi3XT1HhpMA8GJ
+         DUrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680712217;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PrAcn5qN38B5YaoSS7J2RY/lmyONQENb+5lQU26NZ94=;
-        b=fe58Wtd+rY1BDU2gQ6K46h+FFhQ9lQ8nsyhcW+00MVAvJ0Cb6BrdPQBh5GsovBljFY
-         v86i/VkQGPjHlP9PemUuUXNZmCaUy01jCijsNo+zVR8/1gObPd6I5/Exm22eum9lIVel
-         TtmJBfXwhzz9CoriIIFo47e3xMd+RYgWXxZ9EDs8opxN9vh4Qu+W7fsNN9tSE1sqypi/
-         JiB74Ue9LBzt8h91lrcR3eE1TmnRhBMu4vOkD6TAOZGKzZimmb+QH8q2okryQ7tpdqHg
-         Hs+HFKZAoID2njDRcZ1dOQBd/HyZ5zAb5Dzp0OVETY6ZIW7VVtROeVUlFsfuq+UqfXTj
-         v68Q==
-X-Gm-Message-State: AAQBX9eiDR+dzhqauVvBXtp1+wkJtkPvrAk4SRkOPdp/Q58I+CQrVpE5
-        7cpw/AvAyhLvqRAEE6DQZW9fDA==
-X-Received: by 2002:a05:6000:1364:b0:2ce:a7b3:1c73 with SMTP id q4-20020a056000136400b002cea7b31c73mr4244101wrz.21.1680712217198;
-        Wed, 05 Apr 2023 09:30:17 -0700 (PDT)
-Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
-        by smtp.gmail.com with ESMTPSA id a5-20020adffb85000000b002c794495f6fsm15280822wrr.117.2023.04.05.09.30.16
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 05 Apr 2023 09:30:16 -0700 (PDT)
-From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To:     qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc:     qemu-arm@nongnu.org, kvm@vger.kernel.org, qemu-s390x@nongnu.org,
-        qemu-ppc@nongnu.org,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH 2/2] accel/kvm: Declare kvm_arch_irqchip_create() in 'sysemu/kvm_int.h'
-Date:   Wed,  5 Apr 2023 18:30:01 +0200
-Message-Id: <20230405163001.98573-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230405163001.98573-1-philmd@linaro.org>
-References: <20230405163001.98573-1-philmd@linaro.org>
+        d=1e100.net; s=20210112; t=1680727480;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZqWfb2PPnDpc2PEqcd7YpJ7M16hWDtl2fWp2jjEorwo=;
+        b=B5G5NQWielph2T0/6LnlWaoSK6BJXglJtXaEHkcXMLd4ahSVuZqJqFGwsZOm0CaoxL
+         rpS9MayURcq6XSAMSXtWEg2orluce9u6Trb/b6fK5AgEZ9TYJcYh+znqS541Uqlb0TDT
+         gj42T/q2fgd0/f2ARfgfTx3Woot61zE0fLLZYPXUGeueepgNP0w++LFZ45oXtPV3lYQk
+         o82LLdDvQVgGLQQFKIJZo74u2tytyfAFUI/zUgYTlyzcdJrmi4Cs/y1yf6BBla6YPqi1
+         cD4NLwl7G+uqY7i1YYdLUXZjr2a8nQ/3A/A/UyZ26pYsG42cD+yq8H+uID/h1ACZIyaa
+         D35g==
+X-Gm-Message-State: AAQBX9dbhCDxM/OFMZn5d6zWt8HDPQgAYpDkVy19SRnDrMAhB64El9w/
+	f9bIR+ooxahbfUYu61n4vySyZA==
+X-Google-Smtp-Source: AKy350Zpo5917s3wwJGg0D4GjQAAqZMwM4zNUds49ooFSWmxGSeohhLZSBKl2stDGqytkYYe+q1+OA==
+X-Received: by 2002:a4a:5241:0:b0:537:b1ad:1c7c with SMTP id d62-20020a4a5241000000b00537b1ad1c7cmr3544290oob.0.1680727480668;
+        Wed, 05 Apr 2023 13:44:40 -0700 (PDT)
+Return-Path: <dbarboza@ventanamicro.com>
+Received: from [192.168.68.107] ([191.255.108.232])
+        by smtp.gmail.com with ESMTPSA id u1-20020a056830118100b0069fb749271bsm7192106otq.15.2023.04.05.13.44.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 Apr 2023 13:44:39 -0700 (PDT)
+Message-ID: <984d3eda-1efd-f39d-8930-3a8ea5226ad5@ventanamicro.com>
+Date: Wed, 5 Apr 2023 17:44:34 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [RFC PATCH 09/10] target/riscv: Restrict KVM-specific fields from
+ ArchCPU
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org, qemu-ppc@nongnu.org, Palmer Dabbelt
+ <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+References: <20230405160454.97436-1-philmd@linaro.org>
+ <20230405160454.97436-10-philmd@linaro.org>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20230405160454.97436-10-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-0.2 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
-        DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS
-        autolearn=unavailable autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: VW1wMxI/Nmd7
+X-TUID: oJh6fUeN8k/i
 
-kvm_arch_irqchip_create() is irrelevant for hardware device
-models (files under the hw/ directory), it is meant for the
-generic KVM code (files in accel/kvm/) and the target
-implementation (files under target/ directory).
 
-"sysemu/kvm.h" header is meant to contain the 'external' KVM
-API. Move kvm_arch_irqchip_create() prototype declaration to
-"sysemu/kvm_int.h" which should contain the KVM 'internal' API.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/sysemu/kvm.h     | 12 ------------
- include/sysemu/kvm_int.h | 13 +++++++++++++
- 2 files changed, 13 insertions(+), 12 deletions(-)
+On 4/5/23 13:04, Philippe Mathieu-Daudé wrote:
+> These fields shouldn't be accessed when KVM is not available.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> RFC: The migration part is likely invalid...
+> 
+> kvmtimer_needed() is defined in target/riscv/machine.c as
+> 
+>    static bool kvmtimer_needed(void *opaque)
+>    {
+>        return kvm_enabled();
+>    }
+> 
+> which depends on a host feature.
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 32e223a368..540f6f04a8 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -453,18 +453,6 @@ void kvm_cpu_synchronize_state(CPUState *cpu);
- 
- void kvm_init_cpu_signals(CPUState *cpu);
- 
--/**
-- * kvm_arch_irqchip_create:
-- * @KVMState: The KVMState pointer
-- *
-- * Allow architectures to create an in-kernel irq chip themselves.
-- *
-- * Returns: < 0: error
-- *            0: irq chip was not created
-- *          > 0: irq chip was created
-- */
--int kvm_arch_irqchip_create(KVMState *s);
--
- /**
-  * kvm_set_one_reg - set a register value in KVM via KVM_SET_ONE_REG ioctl
-  * @id: The register ID
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index a641c974ea..4a46b661e2 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -140,4 +140,17 @@ void kvm_set_max_memslot_size(hwaddr max_slot_size);
-  * Return: None.
-  */
- void kvm_hwpoison_page_add(ram_addr_t ram_addr);
-+
-+/**
-+ * kvm_arch_irqchip_create:
-+ * @KVMState: The KVMState pointer
-+ *
-+ * Allow architectures to create an in-kernel irq chip themselves.
-+ *
-+ * Returns: < 0: error
-+ *            0: irq chip was not created
-+ *          > 0: irq chip was created
-+ */
-+int kvm_arch_irqchip_create(KVMState *s);
-+
- #endif
--- 
-2.38.1
+
+kvm_enabled() can be false even when CONFIG_KVM is true when a KVM capable host
+is running a TCG guest, for example. In that case env->kvm_timer_* states exist
+but aren't initialized, and shouldn't be migrated.
+
+Thus it's not just a host feature, but a host feature + accel option. I think
+this is fine.
+
+> ---
+>   target/riscv/cpu.h     | 2 ++
+>   target/riscv/machine.c | 4 ++++
+>   2 files changed, 6 insertions(+)
+> 
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index 638e47c75a..82939235ab 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -377,12 +377,14 @@ struct CPUArchState {
+>       hwaddr kernel_addr;
+>       hwaddr fdt_addr;
+>   
+> +#ifdef CONFIG_KVM
+>       /* kvm timer */
+>       bool kvm_timer_dirty;
+>       uint64_t kvm_timer_time;
+>       uint64_t kvm_timer_compare;
+>       uint64_t kvm_timer_state;
+>       uint64_t kvm_timer_frequency;
+> +#endif /* CONFIG_KVM */
+>   };
+>   
+>   OBJECT_DECLARE_CPU_TYPE(RISCVCPU, RISCVCPUClass, RISCV_CPU)
+> diff --git a/target/riscv/machine.c b/target/riscv/machine.c
+> index 9c455931d8..e45d564ec3 100644
+> --- a/target/riscv/machine.c
+> +++ b/target/riscv/machine.c
+> @@ -201,10 +201,12 @@ static bool kvmtimer_needed(void *opaque)
+>   
+>   static int cpu_post_load(void *opaque, int version_id)
+>   {
+> +#ifdef CONFIG_KVM
+>       RISCVCPU *cpu = opaque;
+>       CPURISCVState *env = &cpu->env;
+>   
+>       env->kvm_timer_dirty = true;
+> +#endif
+>       return 0;
+>   }
+>   
+> @@ -215,9 +217,11 @@ static const VMStateDescription vmstate_kvmtimer = {
+>       .needed = kvmtimer_needed,
+>       .post_load = cpu_post_load,
+>       .fields = (VMStateField[]) {
+> +#ifdef CONFIG_KVM
+>           VMSTATE_UINT64(env.kvm_timer_time, RISCVCPU),
+>           VMSTATE_UINT64(env.kvm_timer_compare, RISCVCPU),
+>           VMSTATE_UINT64(env.kvm_timer_state, RISCVCPU),
+> +#endif
+
+Here you're creating an empty 'cpu/kvmtimer' vmstate that won't be migrated anyway
+because kvmtimer_needed (== kvm_enabled()) will be always false if CONFIG_KVM=n.
+
+I'd say it's better to just get rid of the whole vmstate in this case, but I don't
+like the precedence of having vmstates being gated by build flags.
+
+
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+
+
+>           VMSTATE_END_OF_LIST()
+>       }
+>   };

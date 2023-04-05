@@ -1,93 +1,93 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp257426ejb;
-        Wed, 5 Apr 2023 03:09:07 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YxAeJlkarOdn9l49AbBHpLOnd1eGneQZqTpMtHlgPhDa0l9Xr20dGZzP8+FwjK5eoj5ZYM
-X-Received: by 2002:a17:906:b317:b0:93a:6e9c:262e with SMTP id n23-20020a170906b31700b0093a6e9c262emr2452814ejz.23.1680689347676;
-        Wed, 05 Apr 2023 03:09:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680689347; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp257483ejb;
+        Wed, 5 Apr 2023 03:09:13 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZB0K2/nOcswpjo8gUKnBVhWlY4qQl5NdNYeqVPF2Fp+01jOzSDduWSFlJVljZ0dkJ5hB+V
+X-Received: by 2002:a17:907:2bf5:b0:93b:b8f3:225d with SMTP id gv53-20020a1709072bf500b0093bb8f3225dmr2408783ejc.15.1680689353176;
+        Wed, 05 Apr 2023 03:09:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680689353; cv=none;
         d=google.com; s=arc-20160816;
-        b=ov/5VHOeYR2meqAc5T18HDAN4YZP8npfAaMfXCi951uwmrtT0ouKv0YxM+MUQDFS5p
-         I3CPuOpRMUy6C2DA5RPKg8pq2CT5ZDs1fcWTOkb4za/EWOhcr4ROxZp3j5q14Mas9isK
-         RyTHa7aNbW9aCMXgYlCJWV/F4Ml60sMOzkXP1kiZCqeRwYGECNIxTTTpm5sBOeij9AL1
-         tikKl6NeFDiG3U8cbtv2Nb1NqTo6tJNmd4A4aJEXTuxFm9Qi9iAZrzupVNhSXlQs/Lwz
-         HCZr0rimwMjFY4VGJ3X9FN+DqXVEv+G2EYXuU6ZPdiIWBkE9CGLJXKxtauHgF+v13YoJ
-         5VOA==
+        b=xArssA7cBJnHtZDVFc6Rx6tt740tyWAVKpqcWLhdH91uZcHYch1R8+1Raoj1mfOemF
+         4TfCDZzQgbgtIMQsiUalebFbnEaIV55nASGcnunKl6qBuopAvMdFVesEXY0T/4MTTAry
+         bkDNAb1d40Rqk+I6ofEvfjsiZbii2nS1HYXgXWGecORFPU5zZT4V/+hYrouNvouF0exx
+         QKkFbtaqAG4148k6Fk2mL+uzNuY8LY9sxQy08t1QEI/vAED9GlEG5V3B3J40MTYqS1w+
+         EdsxV5XZP1RVLIVcafTC5V8V3T8/LTR97G5MOyiH193Jq8pN/JqMZm+6Bnvhhmi7V5Xq
+         YfUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=g7I8pgcW6ZwGjVMfJNjtnaXujAveSVqm+E8tHMTx8v0=;
-        b=coHavZW4ZSOrnMSVzsPVFFes4zADUZCRIy9/TzXIy/7faiFdCnIMKraJPOztcAuH/S
-         2szPwmhnD9GF9wj+lWrCU1FLeaA5fv/CricP5xJ/Rg3jzmMgKo/hjl8lutZaFpaIap6g
-         uvH8ztDqwnn76gedYzhN8yKvft9MqbI60PX/zgwtOl8yFcq+ePUu4OJZ5IfbSVOPRF+I
-         g/Upc2Oy0DYjs/NfpKWq+d/7wj8ldZcvaiMG7aAAuMFYfxbCKdkEUMv81/6FiX7MlvUp
-         eJu9rvAZ3sBnCUWLDE2h773UU8t767xyo3O4Qj2h2MqIWaFBV/QDXzXpFirSlnler8bQ
-         WmRw==
+        bh=hOIUAejMDgPGNri6CTMX+NYmgz2rO96F3gJmXNOLJxs=;
+        b=Uk5Pxz9PkGKnyMLFoIIoFEdRdLY5sHFApPDUgdI4wTFdzn+xPzbiB+sCP1FPnJkAFg
+         tWg0UDbY4DeuHm30ioN6PzVxi1Bhy4EXkoY6R5x1hucRe6Gx8COAVRtT8oB1G0Tmn3xt
+         KQvgfmSosJR+t/0mdLyXXUrtg4B39DwrOj0fFgOLxlwRRtoQh+Hb5AJat8xZdGKj2cEn
+         j/59ZUc7xGCTCYSaDY8N/gtzvpBFK8QU4o1QI/twpmqRPzqMoDraT4htZD3gKrbtXhVh
+         62QOhyhG9k1w9Cmdf/0PeA3BCvb0anOHZfSFDKyhORuC7WQ8ULuBPwqS/Wow1T8mGSt8
+         DbyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MhyujAom;
+       dkim=pass header.i=@linaro.org header.s=google header.b="S/sJ8y4f";
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id bh13-20020a170906a0cd00b00947bc373744si1039443ejb.359.2023.04.05.03.09.07;
-        Wed, 05 Apr 2023 03:09:07 -0700 (PDT)
+        by mx.google.com with ESMTP id bh13-20020a170906a0cd00b00947bc373744si1039443ejb.359.2023.04.05.03.09.13;
+        Wed, 05 Apr 2023 03:09:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MhyujAom;
+       dkim=pass header.i=@linaro.org header.s=google header.b="S/sJ8y4f";
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S237716AbjDEKJF (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Wed, 5 Apr 2023 06:09:05 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56578 "EHLO
+        id S237745AbjDEKJM (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Wed, 5 Apr 2023 06:09:12 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56740 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S237666AbjDEKJD (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 5 Apr 2023 06:09:03 -0400
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com [IPv6:2a00:1450:4864:20::42e])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 186074ECB
-        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 03:09:01 -0700 (PDT)
-Received: by mail-wr1-x42e.google.com with SMTP id m2so35618070wrh.6
-        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 03:09:01 -0700 (PDT)
+        with ESMTP id S237537AbjDEKJJ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 5 Apr 2023 06:09:09 -0400
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com [IPv6:2a00:1450:4864:20::334])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9230E4ECD
+        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 03:09:08 -0700 (PDT)
+Received: by mail-wm1-x334.google.com with SMTP id l15-20020a05600c4f0f00b003ef6d684102so18073538wmq.3
+        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 03:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680689339;
+        d=linaro.org; s=google; t=1680689347;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=g7I8pgcW6ZwGjVMfJNjtnaXujAveSVqm+E8tHMTx8v0=;
-        b=MhyujAomibFLPs5Z1r+fQrzzSvg9H4r2EBzSetnjfIovo0D4SOHWUwSeiRMNgPoh1o
-         7h6hDoLWJdA8tHYvvh8HqzgvOpEgD8lMQv3Tz77QtPegzuQe5Qlye+HlBf3iI294ejVj
-         dkyFO5ZwK+u+nCxKcob1h3I1Hua9GeSm3zg4LMwmxMpoq8AjbZ/7zeL7FuqCwP1PDlzR
-         9AXgnwO44IVGF5Kt1cF5t91+2Spcqj4EPyL/GbCKZZQh9S2g/AvunFvUkRs9SV1l90g3
-         DYNOhupV0YEvOrj5PGN49nkPggU8u37pDPwL8d0V/htEWC24jJi27Kzgqvu52RRWcVFG
-         TJCQ==
+        bh=hOIUAejMDgPGNri6CTMX+NYmgz2rO96F3gJmXNOLJxs=;
+        b=S/sJ8y4f2rUl+i71e+mCuGZuZfY5fREdNc1TFr/aEXiGuikTme64GMgqYOa7eqvixO
+         sNf4U91Oj8cWhbCz7saOEF1jx3ZzoabpA11OvpGepX7sFWjMI2K2iaCYA5Fb4cTqW4qv
+         HoQvYT2zAkq2AlgE8ycDb+ODBHfZ/BCzFs9ybHjyfKeXsodw2D/l0JLrY1+diUnYMK0E
+         tXVNnQT0t9UN3DtYNnVA9xztmGer2h8JkgXwvU5dkPdsfscXL8aUv9mc9gBJdYD4Nbx/
+         4iwShUAj28BK3KLQ6kcThPbwc066mniDVXLh3YMBP3tos1Egxks3TfoEQ8SlpiFstZX7
+         RYdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680689339;
+        d=1e100.net; s=20210112; t=1680689347;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=g7I8pgcW6ZwGjVMfJNjtnaXujAveSVqm+E8tHMTx8v0=;
-        b=YrnfRpwGfO4wy9CWoopPKh7pvqkLCYxR+32O+RyignrNHLLkUTr/h17cfkR+qFhY4n
-         tHqioyVqdoGawoCy5CO+/Mp0K8C4lTB2Js9KQPQZ57e6aj0LQsIdHyXnthHpIFeFsTrL
-         yDfEgTMKtLFf3HuzG5tK3h4ooMRWdqg7Zah5NF/sq0sOUR5GbA4ZGl3N4i3amzIpWhm5
-         2lpjWnABsxwftFd6OKKfFgUAT3Wq5ezDtUO+9OdCXMIQYmYU6E+LC74QsO/9YRTRggdS
-         76l6uFzJogcZMW5XHheO9XbjukawgkexYd+ySDFOMYKd2yyhd5NASOVzjFrlVr32XyYb
-         RAiw==
-X-Gm-Message-State: AAQBX9fdYA1MtxlFz0JLO8ZG3jSDQaNjPt5kG+WKvwwNJjLof6flW+yT
-        +jkrioZLOtXmexRbT8OSVHCtZ/a5n6fKkQVtXJM=
-X-Received: by 2002:adf:f492:0:b0:2ce:a7df:c115 with SMTP id l18-20020adff492000000b002cea7dfc115mr3589528wro.41.1680689339485;
-        Wed, 05 Apr 2023 03:08:59 -0700 (PDT)
+        bh=hOIUAejMDgPGNri6CTMX+NYmgz2rO96F3gJmXNOLJxs=;
+        b=ip1+J/f87jQdOnMZcr2E24irfcnxkvplc39f0woS7vLijgfZn4qAdP6KCDG6Ky4/AU
+         IfjiTb5Ejy2156Z6Oyd+l2XLJIC2Ih5bJ1gi/irGdNpfFaGkq01Acr5vU95rYD3vxOYI
+         Xmxu0dDxNvqK6fUvz0lJvwMepSrN0IMpvhIsOemyyj/KdHZqkpQ/jworTUteR53ovKZ6
+         CKz98e60uXAYTQn4quK7ZjUb4wRXJHl04IwLq7gAa9Ui9t/G3oBmVVmYiNrgnU6KeYAC
+         ZG32GQWIU0N0eIaTyWHw4p+o4qJDMK+0IPcAbmEDMdv14/nAW5ihLmN/JNgufJRP2/R/
+         fFRA==
+X-Gm-Message-State: AAQBX9cq6W0x10vRRxer6PWQnSG8xUUlUcqKMl7dPOV+gLwN0wb+kn1x
+        wyoUuW+K88hUvzTiLDJ9AQ1dSg==
+X-Received: by 2002:a05:600c:25a:b0:3ed:237f:3da with SMTP id 26-20020a05600c025a00b003ed237f03damr4592489wmj.22.1680689347060;
+        Wed, 05 Apr 2023 03:09:07 -0700 (PDT)
 Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
-        by smtp.gmail.com with ESMTPSA id f16-20020adffcd0000000b002d5a8d8442asm14561130wrs.37.2023.04.05.03.08.56
+        by smtp.gmail.com with ESMTPSA id m19-20020a7bce13000000b003ee1acdb036sm1700160wmc.17.2023.04.05.03.09.04
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 05 Apr 2023 03:08:59 -0700 (PDT)
+        Wed, 05 Apr 2023 03:09:06 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To:     qemu-devel@nongnu.org
 Cc:     kvm@vger.kernel.org, qemu-arm@nongnu.org,
         Peter Maydell <peter.maydell@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/2] target/arm: Remove KVM AArch32 CPU definitions
-Date:   Wed,  5 Apr 2023 12:08:47 +0200
-Message-Id: <20230405100848.76145-2-philmd@linaro.org>
+Subject: [PATCH 2/2] hw/arm/virt: Restrict Cortex-A7 check to TCG
+Date:   Wed,  5 Apr 2023 12:08:48 +0200
+Message-Id: <20230405100848.76145-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230405100848.76145-1-philmd@linaro.org>
 References: <20230405100848.76145-1-philmd@linaro.org>
@@ -102,57 +102,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: d+jmm+3XhkT1
+X-TUID: HCTPnt90XgXn
 
-Missed in commit 80485d88f9 ("target/arm: Restrict
-v7A TCG cpus to TCG accel").
+The Cortex-A7 core is only available when TCG is enabled (see
+commit 80485d88f9 "target/arm: Restrict v7A TCG cpus to TCG accel").
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/kvm-consts.h | 9 +++------
- target/arm/cpu_tcg.c    | 2 --
- 2 files changed, 3 insertions(+), 8 deletions(-)
+ hw/arm/virt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 09967ec5e6..7c6adc14f6 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -124,13 +124,10 @@ MISMATCH_CHECK(QEMU_PSCI_RET_INTERNAL_FAILURE, PSCI_RET_INTERNAL_FAILURE);
- MISMATCH_CHECK(QEMU_PSCI_RET_NOT_PRESENT, PSCI_RET_NOT_PRESENT);
- MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ac626b3bef..1fe39c6683 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -204,7 +204,9 @@ static const int a15irqmap[] = {
+ };
  
--/* Note that KVM uses overlapping values for AArch32 and AArch64
-- * target CPU numbers. AArch32 targets:
-+/*
-+ * Note that KVM uses overlapping values for AArch32 and AArch64
-+ * target CPU numbers. AArch64 targets:
-  */
--#define QEMU_KVM_ARM_TARGET_CORTEX_A15 0
--#define QEMU_KVM_ARM_TARGET_CORTEX_A7 1
--
--/* AArch64 targets: */
- #define QEMU_KVM_ARM_TARGET_AEM_V8 0
- #define QEMU_KVM_ARM_TARGET_FOUNDATION_V8 1
- #define QEMU_KVM_ARM_TARGET_CORTEX_A57 2
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index df0c45e523..1911d7ec47 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -546,7 +546,6 @@ static void cortex_a7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A7;
-     cpu->midr = 0x410fc075;
-     cpu->reset_fpsid = 0x41023075;
-     cpu->isar.mvfr0 = 0x10110222;
-@@ -595,7 +594,6 @@ static void cortex_a15_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
--    cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A15;
-     /* r4p0 cpu, not requiring expensive tlb flush errata */
-     cpu->midr = 0x414fc0f0;
-     cpu->revidr = 0x0;
+ static const char *valid_cpus[] = {
++#ifdef CONFIG_TCG
+     ARM_CPU_TYPE_NAME("cortex-a7"),
++#endif
+     ARM_CPU_TYPE_NAME("cortex-a15"),
+     ARM_CPU_TYPE_NAME("cortex-a35"),
+     ARM_CPU_TYPE_NAME("cortex-a53"),
 -- 
 2.38.1

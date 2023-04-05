@@ -1,74 +1,74 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp479873ejb;
-        Wed, 5 Apr 2023 09:05:09 -0700 (PDT)
-X-Received: by 2002:a5d:698e:0:b0:2cf:f102:263 with SMTP id g14-20020a5d698e000000b002cff1020263mr4265411wru.60.1680710709795;
-        Wed, 05 Apr 2023 09:05:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680710709; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp479964ejb;
+        Wed, 5 Apr 2023 09:05:15 -0700 (PDT)
+X-Received: by 2002:adf:f851:0:b0:2c6:85ef:4086 with SMTP id d17-20020adff851000000b002c685ef4086mr4752763wrq.32.1680710715798;
+        Wed, 05 Apr 2023 09:05:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680710715; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jqk/NVZUjRCALp1k0nMedlmKLbDe/xkFxRm/WZqo2xuH3TB/Zq0uBfXhk4LIqHbK3w
-         jWwwL0xet8RC5WuqpTMmykj/HeQHlKPO/X/aHpnummXJcRlWBV8hEDsnw05u8uZ0PGZA
-         t3ybASh1FkROwFM/Vlbsrpjqv2HggbkIK18BTpp2eTIlHUeRQYnsymhBP1WJwOM9qnM9
-         u7wIIWhX70hMrtMSyohIdjZgUTrwK2Z5dl15Dw3qhWCfiWgt8zpYGNEQ20YnIgifHf3I
-         009IsSkBp5N61d/KIjMxXawsA4g5IKemZaPRYsNRh48kEYVlWbU/g3jS5pdmjUz856m/
-         p+KA==
+        b=LeTlilUl4DlfN5PQ9Wa8swK4VTda/oAp/Cj/tuXVfbYHum4e6/s+L6gwSNs+2hhOyz
+         hu2YIEwQN53051E4NbL8kB0Dx6odLqM48bUwFb8/VLxKzwsmuBMa8sdr7EtOF+CIHn7+
+         JNFP6VrccJ3ueRDt+1iXIbt0zd0EZzZcpILvSMv+t61jtzx73igUH4ixW8cA1guYUlc+
+         +ijvl1ux0EUi62K03f2thVMKRD+IzEwoBbqusYDM7g6wvhXqmmrupZhK9uZ3fiadG8e9
+         vlYrJc+96ehLBhI3a0ZfdVSwHa9VMFPZeT6eAgjoyjznKZSTtbgCIe4jphl+Io7j4wQx
+         B00Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vR5kvRphrC8o/hHrAZxx+p2NR9QjIUYlt0J+xt0JrLs=;
-        b=VeHK398zD/xfQsoE1GzK2TCX1Q9o82z4vPjPcqgrNzL48jH69jcN2Y+8O9xug/08gx
-         cb8pSu6WxFcyN7okQykjCSTOxdaNQ3EnTDFh1vW2xFsNTFfDrTjA8dFAgwyRO2EhrBqQ
-         6fUChcDBdqi1LdT1xmTWjXDakqQp/+i5dN07xcKgIpCW+j0df5o6TqXSTY2QSZaTXIaV
-         B4QDLyTywBuE2UPAaOJ20lxEKD/HQa1aXnZ2FJ/DAeZqTKhakGYtY6+UpaAnsZqZKZKA
-         RM3bw8+HUJ1jmZ4XG0qrnV7+4OoagaPtx4Ald3yhAwYn6wh6RmtCs27B+3kUp2nDPSzS
-         5JXQ==
+        bh=vqJcKhz9mIYMr3Oe650mCrgDSoO6+Z+db2hud5uttJw=;
+        b=Y8e36R/jZ6WY0rv07qtkTdspgsgHJaZ/Pd8UCPgPtBgovGVkZSjRTYQu7ANfMvhAJU
+         PRhSs3ZYRXLRK9td0e9LofXzmfsHvyno0xrkAFH2w97cH0ZeQvms5cb3ka2+GEyalrY6
+         3F0ShZvT/qq1ZiXSSAqwtNXBNxeOUEzVSPYbhkpj/Rfy07f/pkVP+/kqlTuEPdoKv9Ar
+         RSjSKX67ojTuqbteNfWNlWwV5QtIaYkI2Ee2FuG1ucrJctxFl1nk2PeO1cRJP0xn58XY
+         AX4lceaJSSuIDM6yCHqFSlp0H9LDepQjsOYluab1itndP4zjWcXyNG1QUXxCE8ylBnNy
+         t3Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kue5crNs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HKwM2wDJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t6-20020a7bc3c6000000b003ee737ac055sor833774wmj.12.2023.04.05.09.05.09
+        by mx.google.com with SMTPS id j15-20020a056000124f00b002e6ca9c2376sor4751984wrx.38.2023.04.05.09.05.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 05 Apr 2023 09:05:09 -0700 (PDT)
+        Wed, 05 Apr 2023 09:05:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kue5crNs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HKwM2wDJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680710709;
+        d=linaro.org; s=google; t=1680710715;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vR5kvRphrC8o/hHrAZxx+p2NR9QjIUYlt0J+xt0JrLs=;
-        b=Kue5crNsn30pNOYpY9SPsIZwYEzatKWT1JwNyC4Tz7AI+Dm1LFg9LUQzgpf2K6tikc
-         mk/JLoWJuJW2YMb/u8tpJRDDD7NE7oEZWhjMD1NIUNYPSkllpMt4dfkpHFl4mXkmb2/c
-         TNeHcs9kjwshAlFLaAd4rINe8sxW9leo230jyONFwRebI56QBZwVXxxrhO9P73poHXtK
-         Y8QJ/YWtGqiDl6UF/8eCPHY7/WUX9shWQCd5AGt9lFkl2TKo5jGKRk9cKJNCtgCpeGep
-         9jtSe7h0htiRpqIt8S8VefTo70S/iyC9ehr9mAsFxriP5352D4IpRYJpO5PNI1YHwluK
-         zLVQ==
+        bh=vqJcKhz9mIYMr3Oe650mCrgDSoO6+Z+db2hud5uttJw=;
+        b=HKwM2wDJ1Fum+wqlFpT+ZGNsBPp7MH24wgkXSJwjBKyOE+4yhIpILKEyyjMZxMmiAD
+         DXttce9/UlXfCDXhUY0vpealipGUCFqdh25CESoprzd/G49n7qbtXRObflz9tqSuM1F7
+         NhEOtd7ocMwbq0oWvCtYAuvh91yLbGhXLXvZ0H3VeVIegPm2GRaXQd0+P7USRVczo9wH
+         OkkavqtWMbctyFZouKLoRT8V4s8VzYy1hTwtmR5fLXDvRCDvderEBMd29GlxvpY9KDh3
+         HoKoGgz26of/gomablGIAqTVkdsvIcrHjzIM7huMgI0NyHKBbCcGxfoW5vbe7ROmPTjn
+         Ht6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680710709;
+        d=1e100.net; s=20210112; t=1680710715;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=vR5kvRphrC8o/hHrAZxx+p2NR9QjIUYlt0J+xt0JrLs=;
-        b=lORNvgRoHEFHeIIB3BxCRCTaIehvUIOY55Y+HI8QQg52C1ySOPhvcl6jwU2g6DIFN6
-         1NzvdT7SAJRuNONNdn5TS+pfHZ6zjvd7bajrQl9sVNNjKI34OHlqt3yZ8PJID2UwTR2p
-         BO996uj21RVTOrVzriMLKs5+4sJ/9DYPXkZM30UAWLEYSDFOpN2m7zYXLGMEwoJWsPno
-         Qmc5qz9KA0p1tPkeKe7MpvFRWVlCqtNDYbHpSO4UJ1D512d8WCv0cmThDTtbKbDXh41B
-         b5wj5gw9gq5YHNOe9w046L13pF8iz9V9vc4+3IgUmJqbBf3GNINbi4Yrc0c6bEwEeHXc
-         MAHA==
-X-Gm-Message-State: AAQBX9fkzRuHIOGY5fKviPmoh1KE2cJk7h85A9pgDEBLojAnObWaLowU
-	E2UhLlykcOKtW5zyQvSc4ceH0//j
-X-Google-Smtp-Source: AKy350ZaWzKW7gNGd6JCeIyd+5HFBIKAziuH2LQaatqde7bMAk2r3xVbM5UGjlxR3ZLELjGpAEwkSQ==
-X-Received: by 2002:a7b:c7d4:0:b0:3ed:809b:79ac with SMTP id z20-20020a7bc7d4000000b003ed809b79acmr5056954wmk.19.1680710709383;
-        Wed, 05 Apr 2023 09:05:09 -0700 (PDT)
+        bh=vqJcKhz9mIYMr3Oe650mCrgDSoO6+Z+db2hud5uttJw=;
+        b=lWZ8VKdTge16Fcxgkper/cTldeKRsYxMz1965hhyrD6KJx13ZhLs6fFkWPZoRFiCPY
+         8j1vgAIFPBpj12Q+/1Em/yZUBasCEyMv9GvGAyYwmD8FcV9vEYbaQrApmLoZH6bCsqpz
+         zXJnQHYnQnl0guoLAW8fP5JNE4XjwqrwCKwzL3988pcvST22ykHMKTM6NxE8meQmuKTp
+         x/qljc/o4+4dcAW0coTKgLbuZx6HmCsEA3JekHRCIDe1XDkUxzvV/EfFPbzTY672Rx+V
+         sk5j1t5BX8a0o3eKsLoTUjL2TN45FxWrgvFmJ4psI5lBjwzPKriusHuNm4s4X/3aiFpN
+         SjyQ==
+X-Gm-Message-State: AAQBX9ea3sEmZ5C5C/g4Xc2pTbDxrxNTJCz3SnkB+RiyMs5VzyjOr0Au
+	BDSOtFbGlKEXHS+zopiy67gZgeZf
+X-Google-Smtp-Source: AKy350bN19fJ+yL8EQeK+93Zo/4a5VSKfxzvyGOZ4rYVIwTM+m7Uu71D6zWrGtIgzjY9gZsgTdtgFA==
+X-Received: by 2002:adf:cd05:0:b0:2cf:e34c:a229 with SMTP id w5-20020adfcd05000000b002cfe34ca229mr4808855wrm.8.1680710715354;
+        Wed, 05 Apr 2023 09:05:15 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
-        by smtp.gmail.com with ESMTPSA id t6-20020a05600c450600b003ee2a0d49dbsm2642061wmo.25.2023.04.05.09.05.07
+        by smtp.gmail.com with ESMTPSA id e38-20020a5d5966000000b002d78a96cf5fsm15467280wri.70.2023.04.05.09.05.13
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 05 Apr 2023 09:05:08 -0700 (PDT)
+        Wed, 05 Apr 2023 09:05:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
@@ -78,42 +78,265 @@ Cc: qemu-s390x@nongnu.org,
 	kvm@vger.kernel.org,
 	qemu-ppc@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <ani@anisinha.ca>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 02/10] accel/kvm: Declare kvm_direct_msi_allowed in stubs
-Date: Wed,  5 Apr 2023 18:04:46 +0200
-Message-Id: <20230405160454.97436-3-philmd@linaro.org>
+Subject: [PATCH 03/10] hw/intc/arm_gic: Un-inline GIC*/ITS class_name() helpers
+Date: Wed,  5 Apr 2023 18:04:47 +0200
+Message-Id: <20230405160454.97436-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230405160454.97436-1-philmd@linaro.org>
 References: <20230405160454.97436-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ekasPfmkC8ky
+X-TUID: pJPWQdlthHQs
 
-Avoid when calling kvm_direct_msi_enabled() from
-arm_gicv3_its_common.c the next commit:
+"kvm_arm.h" contains external and internal prototype declarations.
+Files under the hw/ directory should only access the KVM external
+API.
 
-  Undefined symbols for architecture arm64:
-    "_kvm_direct_msi_allowed", referenced from:
-        _its_class_name in hw_intc_arm_gicv3_its_common.c.o
-  ld: symbol(s) not found for architecture arm64
+In order to avoid machine / device models to include "kvm_arm.h"
+simply to get the QOM GIC/ITS class name, un-inline each class
+name getter to the proper device model file.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- accel/stubs/kvm-stub.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/intc/arm_gic.h              |  2 ++
+ include/hw/intc/arm_gicv3_common.h     | 10 ++++++
+ include/hw/intc/arm_gicv3_its_common.h |  9 ++++++
+ target/arm/kvm_arm.h                   | 45 --------------------------
+ hw/arm/virt-acpi-build.c               |  2 +-
+ hw/arm/virt.c                          |  1 +
+ hw/intc/arm_gic_common.c               |  7 ++++
+ hw/intc/arm_gicv3_common.c             | 14 ++++++++
+ hw/intc/arm_gicv3_its_common.c         | 12 +++++++
+ 9 files changed, 56 insertions(+), 46 deletions(-)
 
-diff --git a/accel/stubs/kvm-stub.c b/accel/stubs/kvm-stub.c
-index 5d2dd8f351..235dc661bc 100644
---- a/accel/stubs/kvm-stub.c
-+++ b/accel/stubs/kvm-stub.c
-@@ -27,6 +27,7 @@ bool kvm_allowed;
- bool kvm_readonly_mem_allowed;
- bool kvm_ioeventfd_any_length_allowed;
- bool kvm_msi_use_devid;
-+bool kvm_direct_msi_allowed;
+diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
+index 116ccbb5a9..48f6a51a70 100644
+--- a/include/hw/intc/arm_gic.h
++++ b/include/hw/intc/arm_gic.h
+@@ -86,4 +86,6 @@ struct ARMGICClass {
+     DeviceRealize parent_realize;
+ };
  
- void kvm_flush_coalesced_mmio_buffer(void)
++const char *gic_class_name(void);
++
+ #endif
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index ab5182a28a..4e2fb518e7 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -329,4 +329,14 @@ struct ARMGICv3CommonClass {
+ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+                               const MemoryRegionOps *ops);
+ 
++/**
++ * gicv3_class_name
++ *
++ * Return name of GICv3 class to use depending on whether KVM acceleration is
++ * in use. May throw an error if the chosen implementation is not available.
++ *
++ * Returns: class name to use
++ */
++const char *gicv3_class_name(void);
++
+ #endif
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index a11a0f6654..7dc712b38d 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -122,5 +122,14 @@ struct GICv3ITSCommonClass {
+     void (*post_load)(GICv3ITSState *s);
+ };
+ 
++/**
++ * its_class_name:
++ *
++ * Return the ITS class name to use depending on whether KVM acceleration
++ * and KVM CAP_SIGNAL_MSI are supported
++ *
++ * Returns: class name to use or NULL
++ */
++const char *its_class_name(void);
+ 
+ #endif
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 99017b635c..fe6d824a52 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -445,32 +445,6 @@ static inline uint32_t kvm_arm_sve_get_vls(CPUState *cs)
+ 
+ #endif
+ 
+-static inline const char *gic_class_name(void)
+-{
+-    return kvm_irqchip_in_kernel() ? "kvm-arm-gic" : "arm_gic";
+-}
+-
+-/**
+- * gicv3_class_name
+- *
+- * Return name of GICv3 class to use depending on whether KVM acceleration is
+- * in use. May throw an error if the chosen implementation is not available.
+- *
+- * Returns: class name to use
+- */
+-static inline const char *gicv3_class_name(void)
+-{
+-    if (kvm_irqchip_in_kernel()) {
+-        return "kvm-arm-gicv3";
+-    } else {
+-        if (kvm_enabled()) {
+-            error_report("Userspace GICv3 is not supported with KVM");
+-            exit(1);
+-        }
+-        return "arm-gicv3";
+-    }
+-}
+-
+ /**
+  * kvm_arm_handle_debug:
+  * @cs: CPUState
+@@ -508,23 +482,4 @@ void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
+  */
+ bool kvm_arm_verify_ext_dabt_pending(CPUState *cs);
+ 
+-/**
+- * its_class_name:
+- *
+- * Return the ITS class name to use depending on whether KVM acceleration
+- * and KVM CAP_SIGNAL_MSI are supported
+- *
+- * Returns: class name to use or NULL
+- */
+-static inline const char *its_class_name(void)
+-{
+-    if (kvm_irqchip_in_kernel()) {
+-        /* KVM implementation requires this capability */
+-        return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
+-    } else {
+-        /* Software emulation based model */
+-        return "arm-gicv3-its";
+-    }
+-}
+-
+ #endif
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 4156111d49..e8bab19847 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -48,12 +48,12 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/arm/virt.h"
++#include "hw/intc/arm_gicv3_its_common.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/platform-bus.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/tpm.h"
+-#include "kvm_arm.h"
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
+ #include "hw/acpi/viot.h"
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1fe39c6683..dbbe639e61 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -63,6 +63,7 @@
+ #include "hw/arm/fdt.h"
+ #include "hw/intc/arm_gic.h"
+ #include "hw/intc/arm_gicv3_common.h"
++#include "hw/intc/arm_gicv3_its_common.h"
+ #include "hw/irq.h"
+ #include "kvm_arm.h"
+ #include "hw/firmware/smbios.h"
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index a379cea395..9702197856 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -21,10 +21,12 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/error-report.h"
+ #include "gic_internal.h"
+ #include "hw/arm/linux-boot-if.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
++#include "sysemu/kvm.h"
+ 
+ static int gic_pre_save(void *opaque)
  {
+@@ -393,3 +395,8 @@ static void register_types(void)
+ }
+ 
+ type_init(register_types)
++
++const char *gic_class_name(void)
++{
++    return kvm_irqchip_in_kernel() ? "kvm-arm-gic" : "arm_gic";
++}
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 642a8243ed..2ebf880ead 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -24,6 +24,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qemu/error-report.h"
+ #include "hw/core/cpu.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "hw/qdev-properties.h"
+@@ -608,3 +609,16 @@ static void register_types(void)
+ }
+ 
+ type_init(register_types)
++
++const char *gicv3_class_name(void)
++{
++    if (kvm_irqchip_in_kernel()) {
++        return "kvm-arm-gicv3";
++    } else {
++        if (kvm_enabled()) {
++            error_report("Userspace GICv3 is not supported with KVM");
++            exit(1);
++        }
++        return "arm-gicv3";
++    }
++}
+diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+index d7532a7a89..abaf77057e 100644
+--- a/hw/intc/arm_gicv3_its_common.c
++++ b/hw/intc/arm_gicv3_its_common.c
+@@ -24,6 +24,7 @@
+ #include "hw/intc/arm_gicv3_its_common.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "sysemu/kvm.h"
+ 
+ static int gicv3_its_pre_save(void *opaque)
+ {
+@@ -158,3 +159,14 @@ static void gicv3_its_common_register_types(void)
+ }
+ 
+ type_init(gicv3_its_common_register_types)
++
++const char *its_class_name(void)
++{
++    if (kvm_irqchip_in_kernel()) {
++        /* KVM implementation requires this capability */
++        return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
++    } else {
++        /* Software emulation based model */
++        return "arm-gicv3-its";
++    }
++}
 -- 
 2.38.1

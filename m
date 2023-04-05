@@ -1,194 +1,128 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp460581ejb;
-        Wed, 5 Apr 2023 08:36:57 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bNVKLLDXsNTelWXcO6V+osB8ZGzyE6HNVd4FwuzEjhyNcpBM1j1vGN6aJNRPKjGNjKeWY7
-X-Received: by 2002:a17:90b:4acc:b0:23b:35f6:4ee6 with SMTP id mh12-20020a17090b4acc00b0023b35f64ee6mr7357011pjb.3.1680709016796;
-        Wed, 05 Apr 2023 08:36:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680709016; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp479649ejb;
+        Wed, 5 Apr 2023 09:04:58 -0700 (PDT)
+X-Received: by 2002:a5d:67cf:0:b0:2e6:3804:5be with SMTP id n15-20020a5d67cf000000b002e6380405bemr4648812wrw.59.1680710698108;
+        Wed, 05 Apr 2023 09:04:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680710698; cv=none;
         d=google.com; s=arc-20160816;
-        b=SyXNGZBdYjJikYqGdKmBmL1Mgg5ZgxNxnW5hdNdQkSD0Ffdvnv5bD3JPjY9Bvub1KX
-         UhTqh/EE/lptyS82ZME2UOS1yj3M0sYaWrPETeo0Ifv7aqBtO6HoOYVWo8+SLbvrQoZf
-         Xn3+GuNzVuznim37hbIQkyrzEmJVp4D80w4XZVe0qTT6UQY6jCXAVU1Ky4bz2TFjS1/R
-         75hJYQj8pZ9sz6zbEsTn4/3itNM5DZsqCRfhN+uiM7fDE4sxKuJBUGF7ivyS2/a7juxF
-         Wwzu2v2WUabNAR6weBqe6DCj2IemVCKcL3eUxcn9RODvpbeuT/O9RIMmwB2FCdaN1I17
-         /O+Q==
+        b=oqFSWLKcPGrq0wAeJrminsYj8ffzGamZF/U3RY8Y6RgHNiln6E5v6lF8QO1v7qtGfC
+         unFy63TOJy+km5inF93wYUz4Vl7KFVaymy1qlmVL0n4rX0O+kNIpD1nfAuuzygvQPnIo
+         sHK0bIHYyA4ECYmIxEmIcSd3r6Gm1WUML3RT0FBDnP+h/F53VDBtIZTGbArnLlRZd/Ob
+         aLgFv47oYRgg2BuflTJdWJarbOYNyoK50orPye/FYeFuARscgfF0alrNRAz8hiFLMujk
+         dgrrGs9jkGpve++GOt6Ri6vSmUDrtRCg1Etg1jRHXvlZPMCrpNqD88CJtwe6X0qOwOT9
+         hC9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:to:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:from:dkim-signature;
-        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
-        b=MUHPyVq7ylzpKioyHuGNQlZEl2w8UaF8g8IOlttUjt4k+m7v2vR/1QMdyRV8b8pTSq
-         A1gR7JttfhHyvWRC1QL4D/RTinHExPpkYsYnc4i5sJ07I4ubtX/v8i+RB2JfXYO35lyz
-         U7AYpv88eG6uIn5XhRYcCyb0EMNDmzRwbgW9qTrRCTD3VB2sNCqv5Y5bQk1isy+eVOd2
-         SZX2BqosB6M9ylJvB4WL3fKfxGl1EzJ8EJwEiPbAzjvmXxlfHZnrlZoxjmX94tUESnvm
-         QpZiOLl5YZI98Eup2bqKbia+bUWYzWAuLM285/t9xJJiZJLSPPTWzrtWV7FynOxoh++i
-         5UzA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Vl/tcRzlSLFP8I0QYpufOB41zMuDYKv+twPlQw3+A7Y=;
+        b=gmD3JFaux70vdYW7ZLlbjZiazZQ5BbJfem6HXCkZdapaX+vvXSIwlrV06skSNyOEbd
+         cYNYDYRxtAP+V6/OtuAhxvDeiNZwBwFzxkGiCyI3CbKhmBi7B3yKR1nIvJdKLFV1BHny
+         FFxuGHS6VsOOMKV7crunSC9GJCQlTVWs+HVP5ea5q9nbmJlZ70LJYRu26Q6aZqvybc6O
+         pthBUqe7nMSpTjm39JbHSVMTdSMuTFxTmfSVFW0hqHcVXoFBRyILkavmpoDMY1XYAxtH
+         MUN25G2LtB+gPmlx7AX/JJWgV8G6J+Wl22jy/R89F1drNxfXUUJjnfzyyP9SCs1G1Rnf
+         c15g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KziuYhk9;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id 130-20020a630688000000b0050bd79d02b5si12437097pgg.113.2023.04.05.08.36.56;
-        Wed, 05 Apr 2023 08:36:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b="z2nGX/sb";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m9-20020adfe0c9000000b002c7084e4085sor5758507wri.29.2023.04.05.09.04.58
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 05 Apr 2023 09:04:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KziuYhk9;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S238539AbjDEPgz (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Wed, 5 Apr 2023 11:36:55 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:41414 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231799AbjDEPgy (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 5 Apr 2023 11:36:54 -0400
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com [IPv6:2607:f8b0:4864:20::1035])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2F3A319B
-        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 08:36:53 -0700 (PDT)
-Received: by mail-pj1-x1035.google.com with SMTP id x15so34352324pjk.2
-        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 08:36:53 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="z2nGX/sb";
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20210112.gappssmtp.com; s=20210112; t=1680709012; x=1683301012;
+        d=linaro.org; s=google; t=1680710698;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
-        b=KziuYhk9r/IO9vtcxQqoniTloqieE9v9yREFUBwIiAXDLM7TAVQKZzruGuUtFoMOOI
-         BHzgaMjTJGnChl2NzfCCobziCq3yDaMwKwEokMgYIOOBvgQCqHxlyfFqY45T4jNUb39J
-         SCapwAsNMlRAlVWwjQptIoL2K7ucVFX8vYF2EEwMEEtKw7wVWdfRXga4Ziq/K848X8+l
-         vaWLKi/5HUSOGEyt/ipnfQuLgrc9tJEEC6wZsDFFayRT/kMu9VdvUmLc0gotwM8VNmPR
-         cBMTRoIjBRqCaAlQ8MOtZDwPiJ3R4MWND8oOyOjhqYxFwE6ufHkrtH694A+ZSq/4frtd
-         d3gQ==
+        bh=Vl/tcRzlSLFP8I0QYpufOB41zMuDYKv+twPlQw3+A7Y=;
+        b=z2nGX/sbknCymlzrQ9v16a39LCmw2vWJ+052z8qCXp7C4jGf6bXcXu3B7SE2op86CM
+         pZWCxIOp3+X8l3AJqCp2i3FP8bFOTsRw0XKW5Vu5GlUd7a77LW832HlQNzKVAQA6Unii
+         ywjYKNh6fSPU47UFgAbZ/m+OdxIevSbiXkJMApc20LE9+QSxxrSbS2AhGEsWbiV30ZGs
+         tGZCcSsg/j2+HjulCXVtZOqEQgLreXUOtJx3aVjPkjgdF5Gib/2iRwHJE/TDtzWp2cfI
+         BCx9gnMsct8Sih+glmi6JpbVhwxn29093cKIRS61NExqCA4Hm2FHRQvku8it5hwfLWWG
+         8qnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680709012; x=1683301012;
+        d=1e100.net; s=20210112; t=1680710698;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
-        b=LKKpZS97BMMeb0i98iGtuihGnoTpdS3hyqU5DS8e1RgjbWXjbWhrjodoFRa01Oh3vy
-         ljx2C3p0Y5ywrm7sR4JsKmKeOAncvGkjZZPqz384uKPP1CBFh70eKsryNaoA3XUzVI4f
-         GJOJhHzPs9ZHd4iqvoi7HNn04ixZDqjyHG4z17cPZ4MB0eWstllcwcuXx23zdATC3ibw
-         rXVxlhUXlZZB9rTbkkjdt0nIdwO5XyF3h8qfcoSqslHxpyG7qfHTcx0RnO8PnXPzWkBP
-         6N3QsKjiUY1Xo7O3lIlxhYuSTUngZjcoU3p+O+BBxPvTtPiR/az3vJb4DajHFND7xYxp
-         rb2w==
-X-Gm-Message-State: AAQBX9erzmv9ciODTykWkYSRr2To9At5Dg0ZQHOBd3qStTJkPP5yNB+S
-        MDrXqfvnd1yoG25D5iaGk/7Pew==
-X-Received: by 2002:a05:6a20:2db0:b0:d9:237e:9d0b with SMTP id bf48-20020a056a202db000b000d9237e9d0bmr5042944pzb.3.1680709012639;
-        Wed, 05 Apr 2023 08:36:52 -0700 (PDT)
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:4457:c267:5e09:481b])
-        by smtp.gmail.com with ESMTPSA id e15-20020a62ee0f000000b00594235980e4sm10801456pfi.181.2023.04.05.08.36.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Apr 2023 08:36:52 -0700 (PDT)
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Akihiko Odaki <akihiko.odaki@daynix.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] target/arm: Initialize debug capabilities only once
-Date:   Thu,  6 Apr 2023 00:36:44 +0900
-Message-Id: <20230405153644.25300-1-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.40.0
+        bh=Vl/tcRzlSLFP8I0QYpufOB41zMuDYKv+twPlQw3+A7Y=;
+        b=xolBPzx0+xArKjOgt9xsdZTGpsUEM+2OeKb4RehmFvurUgXaCy+ppc+DNqKpHpVIPL
+         YBWjcT2smTI6USJZNxtV55Z86zXOsRcrC+RkFodMr510w2CDJShDWWoLfaEYFPCIgHrJ
+         nxD1rv81navnAsqS5SNjaw/xvfFwnHP1zCEmtDgYKdCKqx0DGpE6N/XnE1bJ/s4P0sKi
+         nX3vbuAvJYLmKhwKEIWSt8wEMcKJAWtI6b/RkhvWiQ/s0i7mXHU4FRjSTOlphPMlAhsh
+         FQ0r9c1EIEJ9ihDQnV1HfXi8ssoYp75AnmIICYmid+Z79WEf/C3HweH/jPtP3rZkC6+y
+         x9Hg==
+X-Gm-Message-State: AAQBX9devcE0/sIXxS4XpKHWPdiZSBn45PRUGflfabWvA2fqexw6c82Y
+	oLelStvfsyTrDBFrf/qVZ4TjgxUR
+X-Google-Smtp-Source: AKy350a2v8x4w7quWU/H2xrgdicBj2Mb70/KyTRdW4r/bTcsFan0Cz9m9OOnUgEYSEuCthtLF8HE9g==
+X-Received: by 2002:a5d:4f8d:0:b0:2d8:1aff:813 with SMTP id d13-20020a5d4f8d000000b002d81aff0813mr4655005wru.43.1680710697754;
+        Wed, 05 Apr 2023 09:04:57 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
+        by smtp.gmail.com with ESMTPSA id p2-20020a5d48c2000000b002e61923575csm14691415wrs.74.2023.04.05.09.04.56
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 05 Apr 2023 09:04:57 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org,
+	qemu-riscv@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	kvm@vger.kernel.org,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/10] accel/kvm: Spring cleaning
+Date: Wed,  5 Apr 2023 18:04:44 +0200
+Message-Id: <20230405160454.97436-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=0.0 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE autolearn=unavailable
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-To:     unlisted-recipients:; (no To-header on input)
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: zVtluk+l585O
+X-TUID: mGMNx4BRi1mZ
 
-kvm_arm_init_debug() used to be called several times on a SMP system as
-kvm_arch_init_vcpu() calls it. Move the call to kvm_arch_init() to make
-sure it will be called only once; otherwise it will overwrite pointers
-to memory allocated with the previous call and leak it.
+Misc KVM-related cleanup patches split from a bigger
+"extract KVM specific fields from CPUState" series.
 
-Fixes: e4482ab7e3 ("target-arm: kvm - add support for HW assisted debug")
-Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
-Supersedes: <20230405070244.23464-1-akihiko.odaki@daynix.com>
-("[PATCH] target/arm: Check if debug is already initialized")
+Philippe Mathieu-Daudé (10):
+  sysemu/kvm: Remove unused headers
+  accel/kvm: Declare kvm_direct_msi_allowed in stubs
+  hw/intc/arm_gic: Un-inline GIC*/ITS class_name() helpers
+  hw/intc/arm_gic: Rename 'first_cpu' argument
+  hw/arm/sbsa-ref: Include missing 'sysemu/kvm.h' header
+  target/arm: Reduce QMP header pressure by not including 'kvm_arm.h'
+  target/arm: Restrict KVM-specific fields from ArchCPU
+  target/ppc: Restrict KVM-specific field from ArchCPU
+  target/riscv: Restrict KVM-specific fields from ArchCPU
+  hw/s390x: Rename pv.c -> pv-kvm.c
 
- target/arm/kvm.c     |  2 ++
- target/arm/kvm64.c   | 18 ++++--------------
- target/arm/kvm_arm.h |  8 ++++++++
- 3 files changed, 14 insertions(+), 14 deletions(-)
+ include/hw/intc/arm_gic.h              |  2 ++
+ include/hw/intc/arm_gicv3_common.h     | 10 ++++++
+ include/hw/intc/arm_gicv3_its_common.h |  9 ++++++
+ include/sysemu/kvm.h                   |  3 --
+ target/arm/cpu.h                       |  2 ++
+ target/arm/kvm_arm.h                   | 45 --------------------------
+ target/ppc/cpu.h                       |  2 ++
+ target/riscv/cpu.h                     |  2 ++
+ accel/stubs/kvm-stub.c                 |  1 +
+ hw/arm/sbsa-ref.c                      |  1 +
+ hw/arm/virt-acpi-build.c               |  2 +-
+ hw/arm/virt.c                          |  1 +
+ hw/intc/arm_gic_common.c               | 12 +++++--
+ hw/intc/arm_gicv3_common.c             | 14 ++++++++
+ hw/intc/arm_gicv3_its_common.c         | 12 +++++++
+ hw/s390x/{pv.c => pv-kvm.c}            |  0
+ target/arm/arm-qmp-cmds.c              |  3 +-
+ target/ppc/mmu_common.c                |  4 +++
+ target/riscv/machine.c                 |  4 +++
+ hw/s390x/meson.build                   |  2 +-
+ 20 files changed, 78 insertions(+), 53 deletions(-)
+ rename hw/s390x/{pv.c => pv-kvm.c} (100%)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f022c644d2..84da49332c 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -280,6 +280,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         }
-     }
- 
-+    kvm_arm_init_debug(s);
-+
-     return ret;
- }
- 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 1197253d12..810db33ccb 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -74,24 +74,16 @@ GArray *hw_breakpoints, *hw_watchpoints;
- #define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i))
- #define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i))
- 
--/**
-- * kvm_arm_init_debug() - check for guest debug capabilities
-- * @cs: CPUState
-- *
-- * kvm_check_extension returns the number of debug registers we have
-- * or 0 if we have none.
-- *
-- */
--static void kvm_arm_init_debug(CPUState *cs)
-+void kvm_arm_init_debug(KVMState *s)
- {
--    have_guest_debug = kvm_check_extension(cs->kvm_state,
-+    have_guest_debug = kvm_check_extension(s,
-                                            KVM_CAP_SET_GUEST_DEBUG);
- 
--    max_hw_wps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_WPS);
-+    max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-                                        sizeof(HWWatchpoint), max_hw_wps);
- 
--    max_hw_bps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_BPS);
-+    max_hw_bps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
-     return;
-@@ -920,8 +912,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     }
-     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
- 
--    kvm_arm_init_debug(cs);
--
-     /* Check whether user space can specify guest syndrome value */
-     kvm_arm_init_serror_injection(cs);
- 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 99017b635c..330fbe5c72 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -18,6 +18,14 @@
- #define KVM_ARM_VGIC_V2   (1 << 0)
- #define KVM_ARM_VGIC_V3   (1 << 1)
- 
-+/**
-+ * kvm_arm_init_debug() - initialize guest debug capabilities
-+ * @s: KVMState
-+ *
-+ * Should be called only once before using guest debug capabilities.
-+ */
-+void kvm_arm_init_debug(KVMState *s);
-+
- /**
-  * kvm_arm_vcpu_init:
-  * @cs: CPUState
 -- 
-2.40.0
+2.38.1

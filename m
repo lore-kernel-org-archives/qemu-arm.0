@@ -1,174 +1,134 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp179241ejb;
-        Wed, 5 Apr 2023 00:02:56 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YGphYdQV7kht7rhTzbBd1l5B9nrKd30zMOZ5oGS1XKD0yn0bK8Wclfhn4xkmHDYt06wyWJ
-X-Received: by 2002:a17:90b:4b50:b0:240:f67f:670a with SMTP id mi16-20020a17090b4b5000b00240f67f670amr5520544pjb.40.1680678176605;
-        Wed, 05 Apr 2023 00:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680678176; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp254531ejb;
+        Wed, 5 Apr 2023 03:03:36 -0700 (PDT)
+X-Received: by 2002:adf:fec4:0:b0:2e5:1195:a3d4 with SMTP id q4-20020adffec4000000b002e51195a3d4mr3711394wrs.33.1680689016382;
+        Wed, 05 Apr 2023 03:03:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680689016; cv=none;
         d=google.com; s=arc-20160816;
-        b=ug88OAfeYc45i4F2enjX7E4d9nRi2AwGOBywoijh/USbbMTz1YvijcClEjiByLTrnB
-         7/VGe0zyR7qhiSkzFMjoi0Y9KKI8mIGspt74gi0DITDGPNgkWzMk5sJHHJljOBw4LWkP
-         5x4a2sxaEm6aLGU98pfMvJ1IYZPyNhVlc6+TASCZI3PKbPn1DsDXfznGjwEG+vxlC6MP
-         WTpiN7m5ytERoumYZA8rw8mdE5slJek5EmjsS/8EqFxmqfD37N5VF73MNl62V+PgGsMw
-         065rI8h0bcLoCdWGsyfiTZNETZmVzEV4XibNWZAbDzKHgEYBdCKRRMDyxpaMJrpYePrO
-         N3+w==
+        b=FgUOt+eNfIeMy+p/YPxt8sfUD+DsFzKqG2j4Q5yfubvVowtxXsH+VYqEgEIkgRrYdm
+         wacXNZRgySA1jI5Bp3NG7K3XubilCrI8co4/5LCBrw0dwJyaPQ+dLkav9DhEWbE8KYDy
+         xFrnG1tloRAX39MZwG/cdXavWwncdECtvg5/2jjnsREaGR/5oYY200dVYoZfDLHHhIiS
+         bNvw9qcw911HgmtbIOeO7AwghA3TecQf4cjA4HrlTxTooq7F/LxZaitXCLNLEWIRtTg6
+         K8lmi/iB1kjGy+XIe2DcKAjiIYNYxR42RVIKjGMLeytqyZdygfPUVfVjEjLzmlWdhQXA
+         AevQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:to:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:from:dkim-signature;
-        bh=1Z0+1ZY20suxjwfAVbU4A3dZMNsDAUXYruoP0iRlgbw=;
-        b=Ar+EgUR42AQnY2U44zVjI5DgkLWWi+DVWU/W/L2B6QUn2FrsnvbZzBs05UF5zp//2T
-         qhCDALg1FSKtYKMQ1eIJdXXDtpCCPufjGlE2Xr/HcsKWznFaljL+7DkYW8jx3zOlhxtc
-         fAudmU7z84T/MMR1i8ka4ZVn5ih76dGLkOh5xihV9b6SqgQ+2SMLgolKEJhf0QS2S1X0
-         R9iuhT3CCxWejcL2T55MlLk7ZJlSRr83R3vedXIhLADuLbkyTCzGasouWmBwlX/Db056
-         iEg0yYorY/L8/SbgoO+u9NRrBB5Qmw0s+ADuc/sAduyCj2dD5fzYVjmpD8RrUwLKLBme
-         XEdw==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qPGiYsKsF9XBHpZHSaehfUjdHj55ArKkkl5Mh728FTk=;
+        b=znwx7fFQzJO+9IQ1V6SL5vdKqMFeKVqor0eQn4Vvku1C+A8gQXg2sIJ4KmQcY2tbmf
+         uDnNj29sHh82MMauNWDBcws/YDlWPKHIpwgCx/NySTXAJwr8YNsFExMq8aqacY+faK6N
+         UYIZdW7Gey6iyAC4iNZ1U3cXQdIGjw0hKiDjhF/jjgRd2YoKlx0pg8buONBuFKfUypyl
+         A5xGzlTLFFUdqkXaqOD1jgRFJy/06ydRrLQxMJxeMDBvMWXe0kUst02kEwXbRJ+E2ZZB
+         yn4QOudUWYqmgU5Wc2jdnxHyFgfr3oIGUK1xUBUDbR9e7kokYPVfvs6NL9uLpc018QBo
+         hesw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bfaJ5rgo;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id l16-20020a170903121000b0019f79ba4a01si12442226plh.443.2023.04.05.00.02.56;
-        Wed, 05 Apr 2023 00:02:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qlk5EhXv;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m16-20020a5d6a10000000b002e46846be2esor5154802wru.73.2023.04.05.03.03.36
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 05 Apr 2023 03:03:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=bfaJ5rgo;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S237041AbjDEHCz (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Wed, 5 Apr 2023 03:02:55 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:58808 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229907AbjDEHCx (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 5 Apr 2023 03:02:53 -0400
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com [IPv6:2607:f8b0:4864:20::1033])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 49998210E
-        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 00:02:52 -0700 (PDT)
-Received: by mail-pj1-x1033.google.com with SMTP id r7-20020a17090b050700b002404be7920aso34587532pjz.5
-        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 00:02:52 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=qlk5EhXv;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20210112.gappssmtp.com; s=20210112; t=1680678172; x=1683270172;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=1Z0+1ZY20suxjwfAVbU4A3dZMNsDAUXYruoP0iRlgbw=;
-        b=bfaJ5rgori6YxbwThhAhcny8+ENaOqPdj/1ZnE9RI31Lv3I3x+6Gvu2ifum+YFYYBC
-         wAIbyuSUG+NQMKwqXJtTozuIyZVATuETlQC6yNS9aKzCnzbqyiFmb24tkccR4IGdtbGO
-         cWRg2R/m05LjbIrBhxsYvuPYXnn11H9lQ4U+9+3CUYRMmEvxUUvmL8YyUzrgTPpoQb47
-         VVK2Xcm54c+lFgHmFOeKfQHlT3prb4nuZWe/WYi8V21kfAIM1028hVbMue518YORaBsC
-         rzRduTy5WG3pMRVCA02ADpf/v+F5M7qWbKf69QSjWspqM/zE08rWm8PZTTtCTA+YGHUP
-         npMA==
+        d=linaro.org; s=google; t=1680689016;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qPGiYsKsF9XBHpZHSaehfUjdHj55ArKkkl5Mh728FTk=;
+        b=qlk5EhXvVzCvvWSUiu3qmdkaf677tpVSe5Qcaq52Cu+aCIEZ5h8H6wmwb0rnz/yOzN
+         r9Bdg2B4N/a/TpruwLlEvdWPdGNbqRuM1IVFsX+pD6W+314On/BtbLyui9NjneTzmhKn
+         h4RcE/4rt1i7/9SGPst01Mwfy/m2y1yHEjwzemJfDVW2wnsOj+MAsf0mckTzQ+Fbwlpr
+         9YyHbtIAZ6+othz0fZxTdBkqUneKS5D+qK6HuY3fw6TTUOjXU4xlf2t+SHitetq3g3Av
+         0JEA0fMUcts0WCyy7pHRp2UBevGU1cAe7yzRh0nR75pu3ih4xNE3UfnWstbFZfF5XKEg
+         ZXMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680678172; x=1683270172;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1Z0+1ZY20suxjwfAVbU4A3dZMNsDAUXYruoP0iRlgbw=;
-        b=FFdcdGinxwN9kg0UEo337HCfXsLV7PijZbxxgqWGWexLymNmVsYZH57GfSY58OEjp/
-         +4vgbXqprtYZZZmFJFTGKmizEshyygbkP10hhdG/veo7KePqxYMxPcklhCnEYAWZMT7q
-         kQYFGVZ1RKhWz6np0tSjlX6tnoFaj03w4nZhTsNawMtmpxwRnIy+Kg38dzJdMfG6p8aB
-         rUY1O+DEmcDv5zMlHW2Z960soR700R1snUVf7D+ch23xYELAsL6SK31p5dn1kF2a6066
-         vu5k/5lNrIYXOYh7CK6yRQOZi6en0pu/DOXboh+v0k3iGNjim7YQIw7D/IESqGLa3Zjn
-         oaVw==
-X-Gm-Message-State: AAQBX9dnSNakzruO29GnKhLxdIs7pLogYrP59QxK5wUg7j7DtO5g3WbK
-        ilR9Wk0ggFrWblDiZRBOjB26Z7zPYnYj0cHojb7fqQ==
-X-Received: by 2002:a05:6a20:2a28:b0:dd:abea:7a78 with SMTP id e40-20020a056a202a2800b000ddabea7a78mr4352261pzh.16.1680678171826;
-        Wed, 05 Apr 2023 00:02:51 -0700 (PDT)
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:4457:c267:5e09:481b])
-        by smtp.gmail.com with ESMTPSA id n9-20020aa79049000000b00625e885a6ffsm10210421pfo.18.2023.04.05.00.02.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Apr 2023 00:02:51 -0700 (PDT)
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH] target/arm: Check if debug is already initialized
-Date:   Wed,  5 Apr 2023 16:02:44 +0900
-Message-Id: <20230405070244.23464-1-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.40.0
+        d=1e100.net; s=20210112; t=1680689016;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qPGiYsKsF9XBHpZHSaehfUjdHj55ArKkkl5Mh728FTk=;
+        b=C3Sj/TtkmvPvzHNijaPJME567NjP3YtLPTNAM70tOoCu6Kiuk+/ZhBjDrYnKnrC3kZ
+         o7KWsJQHUiqDGv5VBsrrCYXU9VxB385PRMy76qg8LU2GvmDpVyZt1VjtBhdnOZ67FMXK
+         MUtpNIY3ZtvUAsTnarTYNqITJGsMi18SwD78qsU93te940KYpkOHcCblxX+kttT2/JKe
+         IUZeGjUO87ZnpgGeLKw5gFnjr849eET50dz6HlI84dSpKAmcHhDrBrHJxzCFGlGv4kih
+         3TCyUHC3TK9/xDaOAZONTVJaGmftFBhyb09dmi1eLxIvwzZ7yynJM4ZG5WN0aEzpx2Fk
+         rJzQ==
+X-Gm-Message-State: AAQBX9ee4rbNb7DZGd+OmFP19556Te8Q6HEkQ/sHuZI2xRzar4yl9X02
+	x8500qxmLPASPDwTQ+KIa7f+WuhDc9msFq7rZ/y53Q==
+X-Google-Smtp-Source: AKy350aQUBvC2M9NhCRTbZ9/Q3Osr+DnJ9BpAh2NuONzKX985+X7H163FOr+LZ6xo9Jq69rFyP4gQg==
+X-Received: by 2002:a5d:4a04:0:b0:2ce:a93d:41a7 with SMTP id m4-20020a5d4a04000000b002cea93d41a7mr3736642wrq.40.1680689016046;
+        Wed, 05 Apr 2023 03:03:36 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
+        by smtp.gmail.com with ESMTPSA id x3-20020a5d4903000000b002cea8e3bd54sm14650863wrq.53.2023.04.05.03.03.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 05 Apr 2023 03:03:35 -0700 (PDT)
+Message-ID: <51212bc5-cbb7-4d24-f97f-8ad00dda42f2@linaro.org>
+Date: Wed, 5 Apr 2023 12:03:33 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=0.0 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
-        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE autolearn=unavailable
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-To:     unlisted-recipients:; (no To-header on input)
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Wg2071XVX4Mn
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.9.1
+Subject: Re: [PATCH] target/arm: Check if debug is already initialized
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20230405070244.23464-1-akihiko.odaki@daynix.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230405070244.23464-1-akihiko.odaki@daynix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: wPIfPd9LGBWs
 
-When virtualizing SMP system, kvm_arm_init_debug() will be called
-multiple times. Check if the debug feature is already initialized when the
-function is called; otherwise it will overwrite pointers to memory
-allocated with the previous call and leak it.
+On 5/4/23 09:02, Akihiko Odaki wrote:
+> When virtualizing SMP system, kvm_arm_init_debug() will be called
+> multiple times. Check if the debug feature is already initialized when the
+> function is called; otherwise it will overwrite pointers to memory
+> allocated with the previous call and leak it.
+> 
+> Fixes: e4482ab7e3 ("target-arm: kvm - add support for HW assisted debug")
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>   target/arm/kvm64.c | 23 +++++++++++++++++------
+>   1 file changed, 17 insertions(+), 6 deletions(-)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 1197253d12..d2fce5e582 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -32,7 +32,11 @@
+>   #include "hw/acpi/ghes.h"
+>   #include "hw/arm/virt.h"
+>   
+> -static bool have_guest_debug;
+> +static enum {
+> +    GUEST_DEBUG_UNINITED,
+> +    GUEST_DEBUG_INITED,
+> +    GUEST_DEBUG_UNAVAILABLE,
+> +} guest_debug;
+>   
+>   /*
+>    * Although the ARM implementation of hardware assisted debugging
+> @@ -84,8 +88,14 @@ GArray *hw_breakpoints, *hw_watchpoints;
+>    */
+>   static void kvm_arm_init_debug(CPUState *cs)
+>   {
+> -    have_guest_debug = kvm_check_extension(cs->kvm_state,
+> -                                           KVM_CAP_SET_GUEST_DEBUG);
 
-Fixes: e4482ab7e3 ("target-arm: kvm - add support for HW assisted debug")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- target/arm/kvm64.c | 23 +++++++++++++++++------
- 1 file changed, 17 insertions(+), 6 deletions(-)
+- Maybe we can merge kvm{,64}.c (see commit 82bf7ae84c
+   "target/arm: Remove KVM support for 32-bit Arm hosts")
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 1197253d12..d2fce5e582 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -32,7 +32,11 @@
- #include "hw/acpi/ghes.h"
- #include "hw/arm/virt.h"
- 
--static bool have_guest_debug;
-+static enum {
-+    GUEST_DEBUG_UNINITED,
-+    GUEST_DEBUG_INITED,
-+    GUEST_DEBUG_UNAVAILABLE,
-+} guest_debug;
- 
- /*
-  * Although the ARM implementation of hardware assisted debugging
-@@ -84,8 +88,14 @@ GArray *hw_breakpoints, *hw_watchpoints;
-  */
- static void kvm_arm_init_debug(CPUState *cs)
- {
--    have_guest_debug = kvm_check_extension(cs->kvm_state,
--                                           KVM_CAP_SET_GUEST_DEBUG);
-+    if (guest_debug) {
-+        return;
-+    }
-+
-+    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_SET_GUEST_DEBUG)) {
-+        guest_debug = GUEST_DEBUG_UNAVAILABLE;
-+        return;
-+    }
- 
-     max_hw_wps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-@@ -94,7 +104,8 @@ static void kvm_arm_init_debug(CPUState *cs)
-     max_hw_bps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_BPS);
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
--    return;
-+
-+    guest_debug = GUEST_DEBUG_INITED;
- }
- 
- /**
-@@ -1483,7 +1494,7 @@ static const uint32_t brk_insn = 0xd4200000;
- 
- int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
- {
--    if (have_guest_debug) {
-+    if (guest_debug == GUEST_DEBUG_INITED) {
-         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
-             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
-             return -EINVAL;
-@@ -1499,7 +1510,7 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
- {
-     static uint32_t brk;
- 
--    if (have_guest_debug) {
-+    if (guest_debug == GUEST_DEBUG_INITED) {
-         if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk, 4, 0) ||
-             brk != brk_insn ||
-             cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 1)) {
--- 
-2.40.0
+- Could kvm_arm_init_debug() belong to kvm_arch_init()?
+   Then this patch / enum is not required.
+
+- Why we keep a reference to the global kvm_state in CPUState is not
+   clear to me.

@@ -1,74 +1,74 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp480208ejb;
-        Wed, 5 Apr 2023 09:05:33 -0700 (PDT)
-X-Received: by 2002:adf:efcc:0:b0:2e4:aa42:7881 with SMTP id i12-20020adfefcc000000b002e4aa427881mr4416687wrp.49.1680710733054;
-        Wed, 05 Apr 2023 09:05:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680710733; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp480292ejb;
+        Wed, 5 Apr 2023 09:05:38 -0700 (PDT)
+X-Received: by 2002:a5d:464e:0:b0:2d2:39d3:ce73 with SMTP id j14-20020a5d464e000000b002d239d3ce73mr4115142wrs.32.1680710738434;
+        Wed, 05 Apr 2023 09:05:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680710738; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xz0+RHBK7T9YGdv0HJ11JailVcwEjnquWwdhYmgQPSSAEV5FNP5380wCGBKt54hCEl
-         l9xd6oAF9oGP/qpKxXFi9AMc4xeWy3BhHdncxE5m7gSl5j9U5WQYGCDE64UJQ3bPz6Ul
-         b1E09kYdTg1rvne8e4X4+M12BGmIl3dFC30JyNDopDYrnrhiPOv9ZhGK4xlTeLDjH5PM
-         IPcnRxsEQVmaDWnjSbX/S5ViMZ1o+rZQTVCKWE+lQjVdaEKYiG+7aIISPZcJikoOGWBJ
-         DLjfTypauuMJQ/Oseurl0e8sxKrzs0UM2SY93WR9BTuNHK/dgE9+42Fk/b8CRrIraLfL
-         Q/dg==
+        b=JJmul4o+7WIOBK1TSZVExGJWZzxWOMnqrNhzIACzAJxcPVLc2U9Tn/JQf34a9Qo+Ij
+         5G16guO2A+pVh8QWXizRHL1VUAa2ILtzqklEN7gaKRwbQSqDJe6JVfz3zbERpXhppx5U
+         kTKLav3jQOGLNOIt2okpIjEbXk+wFQ3jpPe+zclvjBsVrSPPDVkrPcLUfYkBMmAeL1zB
+         WYYrlzsBwi8LwmVeZHgtJ4tCCo2G1IdooyCoQD2cQkUa6F75n7xzkRs5ptwGf1WoBQ/S
+         os9lN7tjr1BqEkEUsHYb+Ij2vUTYOCbZHFfzS/jYwPHfm4R0N5z7Bfjg4mO5rT/eQlne
+         4psg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=TXAiv5gPJGzakn6yAF3UQ469jIKkZR4r/iuFrCC5frw=;
-        b=THCM2GA4RbrE2hMrImX7SE6X2ACE2t96iKIhqz4u//fdhn8rk9GuMtsP8Qh/CbvB5m
-         UQFV6b9Ic4cvcOgKZXeoCo0T5tC2I0tQNDS4p7XBa1suwKMDGHm/+z5OpZOwWAFrSFmN
-         Mjzuu9wq0PHZYg2pEf8FudlqgJukM9y37L5wUr/aRDmGTOJHO11DRw4jALcSMs8BZAfJ
-         e8AVdmL1hHzkPpTuw6vaG8nH/sAG4ETLSDrXa/JajksZ2bomrnCgTikCXYD7Yjir4NxP
-         WYyKDS90sJR7rMy4kXhpUTFsmKsgcK0tE1VpogvqTzyhsXWEHtuUr1mWmByLZfZDMGA2
-         zuqQ==
+        bh=qSZpkYKC0E9O8rqY27roK0ybv9W9NQfMeuFKqLZI7LU=;
+        b=kAHP+Mml3yD+jcrbXK20fIXJ2wWUOP18mamvAaRBI1PLXb3SVwN1/kUoTgQxL97DfP
+         t6+UlKqgfC4zUsZrDlnTgQJZZNE+wI/Lg786vAsCrEyZGYxp7dGKjn30UPlV2LjtqThs
+         E6RYuA7n2steXyOCg/FoO1paAuZTOEgix2j18Dorku0MgmX7yu8Q8ch8ejmWEddH9KLL
+         LlK6fpXKtPf0wXd4TEsCCmLUfSu2Y8fhWzM+CQUOseInIWuNtsDtwDnb+bBuMLX13eyF
+         HlfvOPcg7suzKweZKGPZ0CTYRN11DWWaRSc+08LA5x0rJRWYm39ws0A9BOgn0RBi3G3W
+         RIOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MK0k+l7i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wqNCwi87;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id n11-20020a5d51cb000000b002d87a775b52sor5600065wrv.41.2023.04.05.09.05.33
+        by mx.google.com with SMTPS id h15-20020a056000000f00b002c6eea2fc09sor5760143wrx.57.2023.04.05.09.05.38
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 05 Apr 2023 09:05:33 -0700 (PDT)
+        Wed, 05 Apr 2023 09:05:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MK0k+l7i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wqNCwi87;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1680710733;
+        d=linaro.org; s=google; t=1680710738;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TXAiv5gPJGzakn6yAF3UQ469jIKkZR4r/iuFrCC5frw=;
-        b=MK0k+l7i0JL0N5tdLRQup0z/tS+z9fsal4eicREogGdlwNf9QVbabnZfiviIAYfHBf
-         JA3Z4LTUT/MZ/596XiLixMfrIvzM7ysklzUO4TTvJDt47/2W4D9/CzYhb/QcW2qM2DGh
-         lV8PnFchupvt62JB8kdIM3YEQBVwi8Y5uTliYYgPdnvE4XiaGrBARmupflOVkRocZ/k8
-         F0CNMkRh//wn/9/AGrldf70UiFQf2BIvuEBy7QwNDJ6vwKQhDdHoszOmXwaWZsR7hKME
-         u0GX0l3gc0dvqJ6SgJT7MSeNx+4HHimdvMSdJ5XvGckOBpinv7ZG0pcUGyBpL8WdzMFG
-         KJHA==
+        bh=qSZpkYKC0E9O8rqY27roK0ybv9W9NQfMeuFKqLZI7LU=;
+        b=wqNCwi876yROugf5tN+kiLbImBLgk+uYIjohRocygCiSXtq0GiLxJMZsXSek6pHpVR
+         +vfvjXSlWK4qWKr94gcOADBrEVPqgm5CfvJ9deGOWUrdCVM9PHovYkwZHujef3O8MtOZ
+         eXzc0P4Y5NXAVWdLu6uqolhV733Ybgg5UBVQpSLnRk/q1N+A6GEHjHvVwc3QqBqwAdiy
+         BNPfLSrZgGarjn1j7MUV3SoT0FiNvFRNxXYmemHmO/109VPWZrGM4pBbcOVF8ud8YiU5
+         ASlPsQUvC0UDNDeGKeDi0tm00GS1Eunn4AndcQhBbXGrCKw7wvhL9RVtanHs8lJbVSrB
+         h7iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680710733;
+        d=1e100.net; s=20210112; t=1680710738;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TXAiv5gPJGzakn6yAF3UQ469jIKkZR4r/iuFrCC5frw=;
-        b=ha0QP1a7oIBVYFe5RqZpmgo8UmLmIeAHruCfMcnrJdS1Qyj5H6ay1qr7Ks6x/povMo
-         rbx/P5GaGsvZqQfo2BjbKcpBIQo52zG9EbAd7ZX7RrcFgZUhuuQx+yiGNDvaNNSK5lqq
-         8dlU7KZbYuy0GC/rVagHTtD7j3hzLKOKfxVmfyGwAQWhlukqDhuausiFvTDrkGd1qyRR
-         ya79um9DFZo+cYZT5Tf8+ePM5YgT+72B4YyuKiudNYbAc/DbeZrNIVTkbnW5gfaDbC2k
-         qu4SP5E+ICtitP+bFCGhTfOpuG74iXPvivgQ4dSdj7z1u4G1lx1++cXmWVZbwfYmbXc+
-         5nrQ==
-X-Gm-Message-State: AAQBX9e5QoXzAuoMSHj7sAOtIQCox4iX0XQTBIww2JPLzjymaSd1WZR1
-	M3wn4YXCgWouAXiLU8fI2jnjt2Mm
-X-Google-Smtp-Source: AKy350aJfFZROd28tOYQVpVfLU5O7PA/1sFGTeMRr0g366fxZBdFDsolmijBgmnNZ+HUOQGRU0ODxQ==
-X-Received: by 2002:a5d:52c7:0:b0:2ce:a9e9:4905 with SMTP id r7-20020a5d52c7000000b002cea9e94905mr4246512wrv.34.1680710732675;
-        Wed, 05 Apr 2023 09:05:32 -0700 (PDT)
+        bh=qSZpkYKC0E9O8rqY27roK0ybv9W9NQfMeuFKqLZI7LU=;
+        b=GEr3LrX8/Qwmr0p3OzdNO9QrItx9XSqpCiUWJvVWvwt2A3BPftei0Z6luoDHqJILbQ
+         Wmh7nvfGRjADXBbWSdQkpcgi1vOo5dLg1Ed96bp55h/arFq+txAH+3Kuw1R8g1sRw/C8
+         UyJoOC7ukpHcQKdOPVtrdkyCFUX9GrmI714Cxq4AMGuwe11tsFvCXvPVmQzD6Gj06cxV
+         TWMwEFxf59QaSIyxmcWpJ476dOurtHh0+Sh9JAqw4gtnWxgxoOQO7XVmNu3EY+spQe4C
+         byvkWkN+kBDko6M6CI1M/Cb2MnbwAunyVrFlCZ5Ouw+BCyECPgz0DNrgvScEj8DVSmLL
+         1g4Q==
+X-Gm-Message-State: AAQBX9d1Dqz2Zj4UbwUyj22P9/dN1+KFMlUmlbOITjBEEx5uqFOWUr8C
+	MvMvJioVBMLVqWnPPba2BgHTw+0A
+X-Google-Smtp-Source: AKy350aZffoChxbCPg7M2fAcOye2AlE3AkD3kI7o7RFqx/SUBuZegFtLbCZIhwjdYIeXSthO8Irkcg==
+X-Received: by 2002:adf:eace:0:b0:2ce:a098:c6b8 with SMTP id o14-20020adfeace000000b002cea098c6b8mr5030406wrn.55.1680710738191;
+        Wed, 05 Apr 2023 09:05:38 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
-        by smtp.gmail.com with ESMTPSA id m19-20020a7bce13000000b003ee1acdb036sm2606127wmc.17.2023.04.05.09.05.31
+        by smtp.gmail.com with ESMTPSA id q18-20020adffed2000000b002c70851fdd8sm15263762wrs.75.2023.04.05.09.05.37
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 05 Apr 2023 09:05:32 -0700 (PDT)
+        Wed, 05 Apr 2023 09:05:37 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
@@ -79,46 +79,43 @@ Cc: qemu-s390x@nongnu.org,
 	qemu-ppc@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 06/10] target/arm: Reduce QMP header pressure by not including 'kvm_arm.h'
-Date: Wed,  5 Apr 2023 18:04:50 +0200
-Message-Id: <20230405160454.97436-7-philmd@linaro.org>
+Subject: [PATCH 07/10] target/arm: Restrict KVM-specific fields from ArchCPU
+Date: Wed,  5 Apr 2023 18:04:51 +0200
+Message-Id: <20230405160454.97436-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230405160454.97436-1-philmd@linaro.org>
 References: <20230405160454.97436-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: FD7OVpvtbnKg
+X-TUID: wLCvhNwBdtDx
 
-We only need "sysemu/kvm.h" for kvm_enabled() and "cpu.h"
-for the QOM type definitions (TYPE_ARM_CPU). Avoid including
-the heavy "kvm_arm.h" header.
+These fields shouldn't be accessed when KVM is not available.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/arm-qmp-cmds.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/cpu.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index c8fa524002..91eb450565 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -22,7 +22,7 @@
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c097cae988..efd1b010d5 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -945,6 +945,7 @@ struct ArchCPU {
+      */
+     uint32_t kvm_target;
  
- #include "qemu/osdep.h"
- #include "hw/boards.h"
--#include "kvm_arm.h"
-+#include "sysemu/kvm.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "qapi/qobject-input-visitor.h"
-@@ -31,6 +31,7 @@
- #include "qapi/qmp/qerror.h"
- #include "qapi/qmp/qdict.h"
- #include "qom/qom-qobject.h"
-+#include "target/arm/cpu.h"
++#ifdef CONFIG_KVM
+     /* KVM init features for this CPU */
+     uint32_t kvm_init_features[7];
  
- static GICCapability *gic_cap_new(int version)
- {
+@@ -957,6 +958,7 @@ struct ArchCPU {
+ 
+     /* KVM steal time */
+     OnOffAuto kvm_steal_time;
++#endif /* CONFIG_KVM */
+ 
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
 -- 
 2.38.1

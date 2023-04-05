@@ -1,307 +1,115 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp799390ejb;
-        Tue, 4 Apr 2023 09:40:11 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a/N1v/6NGL/FPRk0s6nj4tedhd9oAgml+mLuLLLzkqBestrTcPyB/nizg8aXX49pouglST
-X-Received: by 2002:a05:622a:52:b0:3e1:6c7e:2ee0 with SMTP id y18-20020a05622a005200b003e16c7e2ee0mr118686qtw.11.1680626411386;
-        Tue, 04 Apr 2023 09:40:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680626411; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp257376ejb;
+        Wed, 5 Apr 2023 03:09:00 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aUJ/kblAGY/Wuj+XCPqnmeJmw9YbFBrYyqkSzBFS6fC/9hFmx/zQx1ncWMlhimLuK0BjvZ
+X-Received: by 2002:a17:907:d481:b0:92f:a00c:ee52 with SMTP id vj1-20020a170907d48100b0092fa00cee52mr2414444ejc.18.1680689340682;
+        Wed, 05 Apr 2023 03:09:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680689340; cv=none;
         d=google.com; s=arc-20160816;
-        b=i/sFBitg01Oe4N1ji7oF3OaannaFLvNWOrzMSGS6Ps5VFAkjSWeaqNRZpDIInf/iBi
-         D6f/y1erUQuc/8RbFJiyA/IVpVHVQErmR5xRWKlzvy5RPR6QS394S6ok5AOuHD2Er+EG
-         oREDetQral9H/QXHxO3SjCZViqkW0wfaxGNeD4nV6ow8vwAH5Eh+dju5VPUTr0zIc6Lu
-         PQkWyHzL10Unh7k8GQ+RGPPHdMbaF0bjOq9L3e0n3qI0vmcne7nHt5Vl0Fb+MznIZZtc
-         eakTEYFV7opufU/1yGOYqFsQMQGbJtVDwQ5+yqWtP+SvHHi6nAg4VOTt7eQTjueM+Gq+
-         Z00Q==
+        b=tbaqrhcN+pAhGHlm3gDVvln8YO1fX3m6u0LN5/LzeKjhuj1Xk2DNrmLu+0mX/C2lDe
+         LBpRw8vnM127+CbNW0SAf/9MJkpXAuFmEtMxLsyzPaeMgl+OLGrGjzkOKKDsL4odFdN6
+         Yov/8OOrr2c+PUeMFmAhm/8nO0sFStX7WPcnP9O1pb3lq1DJAhQfSI3HWHs+kLsoCPS/
+         07rXh4CLcFv517cAIu+tLq/YPH68L1/eZ2bLNLl6xYjz/3S1nkPyvZBS2xDUBqzGYT/i
+         x5Pc09wnJs/Hkn1Uv9dOVOQAoXVZsV+D9y+9xTmgjwIRtgV31IK3epkbd3TbRzqKKpaM
+         gDZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
-        b=z6bnWMVQ9oQPELe7hLTGW9Po5rAIri5RRqZzQLMqvPiyu7s58onuljnBivbDByJxbx
-         YWToXo8hSFEE2JoKDVZYAm4+qhiVJj53bsPc/VysXWYmo21wdudFzOI1tizwx3LCz83V
-         xWgebTT0Ap8TeDbPsYhCSvm/2u984L5QpKUVC74BJygBk58879jHqHstZD82AaWDaCcw
-         DbvV2cCbGfHBQOePY+Bk8NFDjpRe21CwtG1xGDHoKAFZZ4Z1JwiilUS2I+Khbw9FdgLm
-         CPBXU2MslMik3oJbh3Bx4RHpEIHuuVE+PA/5KPQvMpBCpR3TWCg6JKj4NJKQxMDzqZ1f
-         lPrQ==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HI3xN1Xw0CC8DrBzNb0i+wLUvlK4SEej1IdIipPh7tY=;
+        b=04lRqM2oWq0ECHir71tyvaE8eGcjqabWJYzy4Nl39RBOSGSrA75OqVMHKZoM9/ilkt
+         T97kGH5qD50ICwrIKzqXxn63KaUmcewGLreSrfNuqIhcEHAJ/b+5gQnlpqb2gGdiHchH
+         0QD54IYzQdObZAExC2yfOnABLQXiVGeRhimUx17GGDhDPA2XTrXXu34D93NizO7V4amy
+         pWZikiVDhhRMXI2twNApQ408T7mtrfim3UGvmAHgvJ0HdVqow/vl+afpAduumqLu270F
+         mqh1oRqKNxZPoP39NVRiIOiumvr/dlu5TEm/cqFXuxax4FWA0IiD6vG5lWrEpWmdFEFs
+         Xnfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V0VrQ2Nl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o19-20020a05622a045300b003d96fa7bf88si7978284qtx.301.2023.04.04.09.40.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Apr 2023 09:40:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=M3wXPW8C;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id bh13-20020a170906a0cd00b00947bc373744si1039443ejb.359.2023.04.05.03.09.00;
+        Wed, 05 Apr 2023 03:09:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=V0VrQ2Nl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pjjhT-0005Y4-75; Tue, 04 Apr 2023 12:40:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucasvr@gmail.com>)
- id 1pjjhR-0005WX-TR; Tue, 04 Apr 2023 12:40:01 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucasvr@gmail.com>)
- id 1pjjhG-0000KT-Hw; Tue, 04 Apr 2023 12:39:54 -0400
-Received: by mail-lf1-x130.google.com with SMTP id g19so29993357lfr.9;
- Tue, 04 Apr 2023 09:39:36 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=M3wXPW8C;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S237526AbjDEKI7 (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Wed, 5 Apr 2023 06:08:59 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:56498 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S237481AbjDEKI5 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 5 Apr 2023 06:08:57 -0400
+Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com [IPv6:2a00:1450:4864:20::42b])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 36AE11701
+        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 03:08:53 -0700 (PDT)
+Received: by mail-wr1-x42b.google.com with SMTP id v1so35617140wrv.1
+        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 03:08:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1680626375;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
- b=V0VrQ2Nlu0Y37CNNEr6Rap9c19N20We28sEE/N0m+9HybafFWPATL8xtEeBfC7oNcp
- C0Xduvv8El9fAXC0f6cBmZadwbMd4eOeVEoMAZERgVH5/y8iiKMJb60s0cv236WJCbwy
- AWzf0z02pCduyoryLtDWIm6ixZPkrlhUkJmfswtFSm85ZeWBvFYNsEW4GsAK0oSxqqB4
- 0d/WIKnDOpXQX4OZbR9BpuQm4ogGfsZ5EXy0N63KWZdFDDm55y5MNE/UOqrcjfi7/uW/
- wNIVEWgDJkJfa9RqzBHMvVL3BdHawNVbSmZ8rVpkcbA1ItTPoMlCSkGEzkYyvLK6nUHk
- 5fTg==
+        d=linaro.org; s=google; t=1680689331;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HI3xN1Xw0CC8DrBzNb0i+wLUvlK4SEej1IdIipPh7tY=;
+        b=M3wXPW8CEHaaU/SeIwgurVpmjXnpmz0FsbXMGeB0ADgrI78Mmg1BzVsGsrbHXEu9FH
+         iAnGHA/wzFBnABSYu1PTgyVZ6t9O92c9zVYwz0UE9Gqp1kWBpVHcf60/SzNjx5GOOjDZ
+         +NDJPZjbZKCSqwNKf0v7JTQa6pl3jx60P0zUyRzbQ6ufK8IJeHYnM+J3RF3076HF5Eiu
+         jhs3ryW7nFl27iDtRxZsoxLcIReYHp9GEKTw6P0r4yJV3E9gnJJJnKtQkK1N5H31LCV7
+         QKG2qmknPkZufFp7SbuoWZRoxPAW/CXxNbJaQZ2plPXa65PuysHeZMwoSOMd0j4YmfYm
+         164w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680626375;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CWx++STIfnsrWbzImbjeqPerko8wjTJ94jHMi935Dzs=;
- b=rg2W0QfIPBAR1wU9yq6Ql9uIzmLHqpbwjhh6vIp6VlMkmI43yu3XGWdqtHl9Z1BjDo
- xJuDnGQqFrmiwqmt73+laz/VrWXDs33mhvRiyTGhkbmrIMZa7FEpECnRb2n2qY1GosUK
- dFIYaF2gL7hbcTB5kt5C1/ZwmknDqlUro+hrMa0axBeyYyoHYMG6T/ZeGHyNR8/mk/4t
- C4qnCBETwagqJceH/39xMByyqRNTfP0Alp1sHXzq6ERuLu6Jp3iTD1nBKXKsXtIxaXNr
- w0JpWx8EaGNOYVRp7WNTmFxPOi81KmFgnlb3U8IJ2Iu2VPmjxLykV1QAnbXuzVIedy36
- WXLQ==
-X-Gm-Message-State: AAQBX9d04lAtZ4ra7HZmIqFN8bmjB8hgQ7iJR9jeOLeSvorXccD0uMIQ
- nZerN8Y8m8XqS/BHaVKermM8x1j3KjhRtlLZOtw=
-X-Received: by 2002:a19:740f:0:b0:4e9:c027:5be6 with SMTP id
- v15-20020a19740f000000b004e9c0275be6mr927976lfe.12.1680626374861; Tue, 04 Apr
- 2023 09:39:34 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1680689331;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HI3xN1Xw0CC8DrBzNb0i+wLUvlK4SEej1IdIipPh7tY=;
+        b=mylwQsxyKVPcFhrvlGaIOTh5Ee8lIE/H6u2v1hCnWuowIvjrJqZnnFP9xCcQVwUF39
+         HlS9GdcaiHgBr6a+avn+hEoeK2JhkClvehQ/aQD9KtROvl3KTXLfbpkObA0/m4SclmNr
+         W1AmSDqD1fBrK/dl6ZC35Z6oT7gSYXTTZ3rJPYSvzxIGxCPTjedXv3dbSM8OfWFUS4Ux
+         yLtyGSGdOjiO8rgAp+tUHc4OIhNnlYVdhlFVP1guseRD1ekHl58+AgqwLcR2lr7dTxmV
+         aRrvfoLFqn5lb8cO9hgBKLpXn0lPhXuKKjoJEPHIg7Aq32gVMUmKFZDKlZRSSCGqmAQi
+         PdFA==
+X-Gm-Message-State: AAQBX9f/Yq1hWSwaI6KQ8JvqT3g4dERJrV2b1ZcIfyhOGAJO7yEcNLh5
+        AkqmYyFZxcIQ1+UrvAzntLc5IQ==
+X-Received: by 2002:a5d:4884:0:b0:2c7:a55:bef5 with SMTP id g4-20020a5d4884000000b002c70a55bef5mr3784813wrq.23.1680689331740;
+        Wed, 05 Apr 2023 03:08:51 -0700 (PDT)
+Received: from localhost.localdomain (4ab54-h01-176-184-52-81.dsl.sta.abo.bbox.fr. [176.184.52.81])
+        by smtp.gmail.com with ESMTPSA id d14-20020a5d4f8e000000b002d1bfe3269esm14604073wru.59.2023.04.05.03.08.49
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 05 Apr 2023 03:08:51 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, qemu-arm@nongnu.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/2] target/arm: KVM Aarch32 spring cleaning
+Date:   Wed,  5 Apr 2023 12:08:46 +0200
+Message-Id: <20230405100848.76145-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-References: <20230403121537.71320-1-lucas@osdyne.com>
- <CAFEAcA9ERb4a8kwcgtr3VAxnjaCuOVnKFJ56FfkNx=F73a0o-A@mail.gmail.com>
- <CAL+Dfo6ysWqeKCR5p4_JMazjgdwqq5+kdYxTXVpHE0oZNMVpOQ@mail.gmail.com>
- <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
-In-Reply-To: <3c2d07b5-ef07-998a-df15-9dc38a4e474e@crans.org>
-From: "Lucas C. Villa Real" <lucasvr@gmail.com>
-Date: Tue, 4 Apr 2023 13:39:23 -0300
-Message-ID: <CAAvzgtbP4+fLqMdo=Q_QboOPznVnJhuoihdjyARG7V=JCmj+hw@mail.gmail.com>
-Subject: Re: [PATCH] stm32vldiscovery: allow overriding of RAM size
-To: Alexandre IOOSS <erdnaxe@crans.org>
-Cc: "Lucas C. Villa Real" <lucas@osdyne.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000012e8e605f8855263"
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=lucasvr@gmail.com; helo=mail-lf1-x130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: N3GGqBW5vFxL
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-0.2 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
+        DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS
+        autolearn=unavailable autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: rtLg3eyzvJPu
 
---00000000000012e8e605f8855263
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Remove unused KVM/Aarch32 definitions.
 
-On Tue, Apr 4, 2023 at 3:23=E2=80=AFAM Alexandre IOOSS <erdnaxe@crans.org> =
-wrote:
+Philippe Mathieu-Daudé (2):
+  target/arm: Remove KVM AArch32 CPU definitions
+  hw/arm/virt: Restrict Cortex-A7 check to TCG
 
-> On 4/3/23 16:48, Lucas C. Villa Real wrote:
-> > On Mon, Apr 3, 2023 at 10:54=E2=80=AFAM Peter Maydell <peter.maydell@li=
-naro.org
-> > <mailto:peter.maydell@linaro.org>> wrote:
-> >
-> >     On Mon, 3 Apr 2023 at 13:51, Lucas Villa Real <lucasvr@gmail.com
-> >     <mailto:lucasvr@gmail.com>> wrote:
-> >      >
-> >      > stm32vldiscovery comes with 8KB of SRAM, which may be too low wh=
-en
-> >      > running some workloads on QEMU. The command line argument "-m
-> >     mem_size"
-> >      > is not recognized by the current implementation, though, so one
-> >     cannot
-> >      > easily override the default memory size.
-> >      >
-> >      > This patch fixes that by adding a memory subregion according to
-> the
-> >      > value provided on that command line argument. If absent, the
-> default
-> >      > value of 8KB still applies.
-> >      >
-> >      > Signed-off-by: Lucas Villa Real <lucas@osdyne.com
-> >     <mailto:lucas@osdyne.com>>
-> >
-> >     Does the real hardware have (options for) more than 8K of SRAM here=
- ?
-> >
-> >     thanks
-> >     -- PMM
-> >
-> >
-> > Yes, it's possible to add more (p)SRAM via the STM32F10xxx's FSMC
-> > (flexible static memory controller). The new memory is mapped to FSMC
-> > bank 1 at 0x6000_0000, though (as opposed to the embedded SRAM's fixed
-> > address at 0x2000_0000), as I have now realized. I'm happy to send an
-> > updated patch so that "-m mem_size" creates a memory subregion at
-> > 0x6000_0000 instead.
-> >
-> > Best regards,
-> > Lucas
-> >
->
-> Looking at the STM32F100xx reference manual page 494
-> (
-> https://www.st.com/resource/en/reference_manual/rm0041-stm32f100xx-advanc=
-ed-armbased-32bit-mcus-stmicroelectronics.pdf),
->
-> FSMC is only present on high-density value line devices only. This is
-> not the case of the STM32VLDISCOVERY which uses a STM32F100RB
-> (low/medium-density value line).
->
-> Correct me if I'm wrong, but I believe you cannot buy a STM32VLDISCOVERY
-> that could support FSMC or have more than 8KB of on-chip SRAM.
->
-> However, could it be a good idea to implement a generic STM32F100xx
-> machine in QEMU that is "high-density" by default and that could be
-> configured using command line options ? This could cover a wide range of
-> cases with a single machine.
->
+ target/arm/kvm-consts.h | 9 +++------
+ hw/arm/virt.c           | 2 ++
+ target/arm/cpu_tcg.c    | 2 --
+ 3 files changed, 5 insertions(+), 8 deletions(-)
 
-Oh, you're right: FSMC is only featured on high-density STM32F100xx
-devices. Since I'm mostly dealing with QEMU (i.e., no real hardware) at
-this point in time I wasn't aware of that limitation. Thanks for the heads
-up.
-
-Given that the current STM32 port doesn't implement many devices, I presume
-that adding support for a "high-density" machine would come down to making
-changes to the flash and register boundary addresses, mostly? If that's the
-case, then it makes sense to support such a generic machine. I've limited
-time to work on that, but I can give it a kick start and we can coordinate
-offline if that's OK with you.
-
-Lucas
-
---00000000000012e8e605f8855263
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"fon=
-t-size:small">On Tue, Apr 4, 2023 at 3:23=E2=80=AFAM Alexandre IOOSS &lt;<a=
- href=3D"mailto:erdnaxe@crans.org">erdnaxe@crans.org</a>&gt; wrote:</div></=
-div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On 4/3/23 16:48, Lucas C. Villa Real wrote:<br>
-&gt; On Mon, Apr 3, 2023 at 10:54=E2=80=AFAM Peter Maydell &lt;<a href=3D"m=
-ailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org<=
-/a> <br>
-&gt; &lt;mailto:<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blan=
-k">peter.maydell@linaro.org</a>&gt;&gt; wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On Mon, 3 Apr 2023 at 13:51, Lucas Villa Real &lt;<=
-a href=3D"mailto:lucasvr@gmail.com" target=3D"_blank">lucasvr@gmail.com</a>=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:lucasvr@gmail.com" tar=
-get=3D"_blank">lucasvr@gmail.com</a>&gt;&gt; wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; stm32vldiscovery comes with 8KB of SRAM, whic=
-h may be too low when<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; running some workloads on QEMU. The command l=
-ine argument &quot;-m<br>
-&gt;=C2=A0 =C2=A0 =C2=A0mem_size&quot;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; is not recognized by the current implementati=
-on, though, so one<br>
-&gt;=C2=A0 =C2=A0 =C2=A0cannot<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; easily override the default memory size.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; This patch fixes that by adding a memory subr=
-egion according to the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; value provided on that command line argument.=
- If absent, the default<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; value of 8KB still applies.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Lucas Villa Real &lt;<a href=
-=3D"mailto:lucas@osdyne.com" target=3D"_blank">lucas@osdyne.com</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:lucas@osdyne.com" targ=
-et=3D"_blank">lucas@osdyne.com</a>&gt;&gt;<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Does the real hardware have (options for) more than=
- 8K of SRAM here ?<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0thanks<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-- PMM<br>
-&gt; <br>
-&gt; <br>
-&gt; Yes, it&#39;s possible to add more (p)SRAM via the STM32F10xxx&#39;s F=
-SMC <br>
-&gt; (flexible static memory controller). The new memory is mapped to FSMC =
-<br>
-&gt; bank 1 at 0x6000_0000, though (as opposed to the embedded SRAM&#39;s f=
-ixed <br>
-&gt; address at 0x2000_0000), as I have now realized. I&#39;m happy to send=
- an <br>
-&gt; updated patch so that &quot;-m mem_size&quot; creates a memory subregi=
-on at <br>
-&gt; 0x6000_0000 instead.<br>
-&gt; <br>
-&gt; Best regards,<br>
-&gt; Lucas<br>
-&gt; <br>
-<br>
-Looking at the STM32F100xx reference manual page 494 <br>
-(<a href=3D"https://www.st.com/resource/en/reference_manual/rm0041-stm32f10=
-0xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf" rel=3D"noreferrer"=
- target=3D"_blank">https://www.st.com/resource/en/reference_manual/rm0041-s=
-tm32f100xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf</a>), <br>
-FSMC is only present on high-density value line devices only. This is <br>
-not the case of the STM32VLDISCOVERY which uses a STM32F100RB <br>
-(low/medium-density value line).<br>
-<br>
-Correct me if I&#39;m wrong, but I believe you cannot buy a STM32VLDISCOVER=
-Y <br>
-that could support FSMC or have more than 8KB of on-chip SRAM.<br>
-<br>
-However, could it be a good idea to implement a generic STM32F100xx <br>
-machine in QEMU that is &quot;high-density&quot; by default and that could =
-be <br>
-configured using command line options ? This could cover a wide range of <b=
-r>
-cases with a single machine.<br></blockquote><div>=C2=A0</div><div style=3D=
-"font-size:small" class=3D"gmail_default">Oh, you&#39;re right: FSMC is onl=
-y featured on high-density STM32F100xx devices. Since I&#39;m mostly dealin=
-g with QEMU (i.e., no real hardware) at this point in time I wasn&#39;t awa=
-re of that limitation. Thanks for the heads up.</div><div style=3D"font-siz=
-e:small" class=3D"gmail_default"><br></div><div style=3D"font-size:small" c=
-lass=3D"gmail_default">Given that the current STM32 port doesn&#39;t implem=
-ent many devices, I presume that adding support for a &quot;high-density&qu=
-ot; machine would come down to making changes to the flash and register bou=
-ndary addresses, mostly? If that&#39;s the case, then it  makes sense to su=
-pport such a generic machine. I&#39;ve limited time to work on that, but I =
-can give it a kick start and we can coordinate offline if that&#39;s OK wit=
-h you.</div><div style=3D"font-size:small" class=3D"gmail_default"><br></di=
-v><div style=3D"font-size:small" class=3D"gmail_default">Lucas<br></div><di=
-v style=3D"font-size:small" class=3D"gmail_default"><br></div><div style=3D=
-"font-size:small" class=3D"gmail_default"><br></div><div style=3D"font-size=
-:small" class=3D"gmail_default"><br></div><div style=3D"font-size:small" cl=
-ass=3D"gmail_default"><br></div><br></div></div>
-
---00000000000012e8e605f8855263--
+-- 
+2.38.1

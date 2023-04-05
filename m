@@ -1,115 +1,194 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp426645ejb;
-        Wed, 5 Apr 2023 07:49:26 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YwTXb/v7+kctOMBV546cVGzPe2+EEkyjhJGyum1ylDJqthSuPGmRmWcWcl97Bvx1eYnq9i
-X-Received: by 2002:a05:622a:100d:b0:3e4:e4e4:ec1 with SMTP id d13-20020a05622a100d00b003e4e4e40ec1mr5431814qte.64.1680706165921;
-        Wed, 05 Apr 2023 07:49:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680706165; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp460581ejb;
+        Wed, 5 Apr 2023 08:36:57 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bNVKLLDXsNTelWXcO6V+osB8ZGzyE6HNVd4FwuzEjhyNcpBM1j1vGN6aJNRPKjGNjKeWY7
+X-Received: by 2002:a17:90b:4acc:b0:23b:35f6:4ee6 with SMTP id mh12-20020a17090b4acc00b0023b35f64ee6mr7357011pjb.3.1680709016796;
+        Wed, 05 Apr 2023 08:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680709016; cv=none;
         d=google.com; s=arc-20160816;
-        b=n/hFmutnVZwLJDbO/xGBwKhdkK4SVUTuEjdHUVQY0TMfXFH3M8QSI04rOHf+9Ziyfu
-         FzGtcBrO6KKImkH8E3PMWRDl6elgJ6rmvMLI7zFiqgRrU883yEo3UBXjxpq35vhKq3i0
-         6DDRXLxfjA/aqu26nusZSyKUF6u/76CiACuAUrNU5kV4m2mMsfT6QAcduaUVsEf5pLE7
-         TykHjti6P4FGv8pxF7miLD6sP0AsQyytdO3iQsB7RSSN/EdnJH1Ro7wKmyT5rxc/l6Ro
-         acsRcmIj2DNFiD66BYFoHyT2WiHMsPW/sqMlM7VLvy5Z7f7LfRSXDESAE+CNFpfaDZfS
-         3RyA==
+        b=SyXNGZBdYjJikYqGdKmBmL1Mgg5ZgxNxnW5hdNdQkSD0Ffdvnv5bD3JPjY9Bvub1KX
+         UhTqh/EE/lptyS82ZME2UOS1yj3M0sYaWrPETeo0Ifv7aqBtO6HoOYVWo8+SLbvrQoZf
+         Xn3+GuNzVuznim37hbIQkyrzEmJVp4D80w4XZVe0qTT6UQY6jCXAVU1Ky4bz2TFjS1/R
+         75hJYQj8pZ9sz6zbEsTn4/3itNM5DZsqCRfhN+uiM7fDE4sxKuJBUGF7ivyS2/a7juxF
+         Wwzu2v2WUabNAR6weBqe6DCj2IemVCKcL3eUxcn9RODvpbeuT/O9RIMmwB2FCdaN1I17
+         /O+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:cc:to:in-reply-to:message-id:subject:date
-         :from;
-        bh=9UsBWSKYHVC9srY/V6BGzuEqEbO1xsJCdqsxvOfjl08=;
-        b=O9xcwtg67IHC4tgY/umD5feZj6SVhfUrnjivrynwyipqx3kLawTWF+NLqRuTGHamsB
-         ZA3A4QDvyHgsEHBlSk5SEtBE2BndJx4BeRI1BOb/EKzevbbvpE0J8PDcXK520mIqXS4H
-         an8kORqoZhdEJe1S2N7vLgUrqV2eK8JEhNKrMo1R3qx7BSYbqW2phcWAhTV5pK2t+vb+
-         NPp33E0vJVzX/sbJ80CVZps9D0VqUl0oeBfkD0aC+ZLEyQxzWYnsaFFdfoX+dxhh3uJk
-         BdFXH5kx0IY8RkSay54LyGETmpTvarIQveW7q0+IEiScb4IygXfXbnQHy+P9X+OERI7d
-         US2A==
+        h=list-id:precedence:to:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:from:dkim-signature;
+        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
+        b=MUHPyVq7ylzpKioyHuGNQlZEl2w8UaF8g8IOlttUjt4k+m7v2vR/1QMdyRV8b8pTSq
+         A1gR7JttfhHyvWRC1QL4D/RTinHExPpkYsYnc4i5sJ07I4ubtX/v8i+RB2JfXYO35lyz
+         U7AYpv88eG6uIn5XhRYcCyb0EMNDmzRwbgW9qTrRCTD3VB2sNCqv5Y5bQk1isy+eVOd2
+         SZX2BqosB6M9ylJvB4WL3fKfxGl1EzJ8EJwEiPbAzjvmXxlfHZnrlZoxjmX94tUESnvm
+         QpZiOLl5YZI98Eup2bqKbia+bUWYzWAuLM285/t9xJJiZJLSPPTWzrtWV7FynOxoh++i
+         5UzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v3-20020a05620a0f0300b00745b81d4878si10422558qkl.661.2023.04.05.07.49.25
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Apr 2023 07:49:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KziuYhk9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id 130-20020a630688000000b0050bd79d02b5si12437097pgg.113.2023.04.05.08.36.56;
+        Wed, 05 Apr 2023 08:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pk4RJ-0005b9-2r; Wed, 05 Apr 2023 10:48:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pk4RH-0005a1-3v; Wed, 05 Apr 2023 10:48:43 -0400
-Received: from mail-b.sr.ht ([173.195.146.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1pk4RF-0005S3-M0; Wed, 05 Apr 2023 10:48:42 -0400
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 3305611F030;
- Wed,  5 Apr 2023 14:48:38 +0000 (UTC)
-From: ~axelheider <axelheider@git.sr.ht>
-Date: Tue, 04 Apr 2023 18:39:18 +0200
-Subject: [PATCH qemu.git 1/2] hw/timer/imx_epit: don't shadow variable
-Message-ID: <168070611775.20412.2883242077302841473-1@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <168070611775.20412.2883242077302841473-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+       dkim=fail header.i=@daynix-com.20210112.gappssmtp.com header.s=20210112 header.b=KziuYhk9;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S238539AbjDEPgz (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Wed, 5 Apr 2023 11:36:55 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:41414 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S231799AbjDEPgy (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 5 Apr 2023 11:36:54 -0400
+Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com [IPv6:2607:f8b0:4864:20::1035])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2F3A319B
+        for <kvm@vger.kernel.org>; Wed,  5 Apr 2023 08:36:53 -0700 (PDT)
+Received: by mail-pj1-x1035.google.com with SMTP id x15so34352324pjk.2
+        for <kvm@vger.kernel.org>; Wed, 05 Apr 2023 08:36:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20210112.gappssmtp.com; s=20210112; t=1680709012; x=1683301012;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
+        b=KziuYhk9r/IO9vtcxQqoniTloqieE9v9yREFUBwIiAXDLM7TAVQKZzruGuUtFoMOOI
+         BHzgaMjTJGnChl2NzfCCobziCq3yDaMwKwEokMgYIOOBvgQCqHxlyfFqY45T4jNUb39J
+         SCapwAsNMlRAlVWwjQptIoL2K7ucVFX8vYF2EEwMEEtKw7wVWdfRXga4Ziq/K848X8+l
+         vaWLKi/5HUSOGEyt/ipnfQuLgrc9tJEEC6wZsDFFayRT/kMu9VdvUmLc0gotwM8VNmPR
+         cBMTRoIjBRqCaAlQ8MOtZDwPiJ3R4MWND8oOyOjhqYxFwE6ufHkrtH694A+ZSq/4frtd
+         d3gQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680709012; x=1683301012;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OiXmf18XEU9NEb+9nguIMlwRxC8lm/HhIDPla+UcLec=;
+        b=LKKpZS97BMMeb0i98iGtuihGnoTpdS3hyqU5DS8e1RgjbWXjbWhrjodoFRa01Oh3vy
+         ljx2C3p0Y5ywrm7sR4JsKmKeOAncvGkjZZPqz384uKPP1CBFh70eKsryNaoA3XUzVI4f
+         GJOJhHzPs9ZHd4iqvoi7HNn04ixZDqjyHG4z17cPZ4MB0eWstllcwcuXx23zdATC3ibw
+         rXVxlhUXlZZB9rTbkkjdt0nIdwO5XyF3h8qfcoSqslHxpyG7qfHTcx0RnO8PnXPzWkBP
+         6N3QsKjiUY1Xo7O3lIlxhYuSTUngZjcoU3p+O+BBxPvTtPiR/az3vJb4DajHFND7xYxp
+         rb2w==
+X-Gm-Message-State: AAQBX9erzmv9ciODTykWkYSRr2To9At5Dg0ZQHOBd3qStTJkPP5yNB+S
+        MDrXqfvnd1yoG25D5iaGk/7Pew==
+X-Received: by 2002:a05:6a20:2db0:b0:d9:237e:9d0b with SMTP id bf48-20020a056a202db000b000d9237e9d0bmr5042944pzb.3.1680709012639;
+        Wed, 05 Apr 2023 08:36:52 -0700 (PDT)
+Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:4457:c267:5e09:481b])
+        by smtp.gmail.com with ESMTPSA id e15-20020a62ee0f000000b00594235980e4sm10801456pfi.181.2023.04.05.08.36.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Apr 2023 08:36:52 -0700 (PDT)
+From:   Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Akihiko Odaki <akihiko.odaki@daynix.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] target/arm: Initialize debug capabilities only once
+Date:   Thu,  6 Apr 2023 00:36:44 +0900
+Message-Id: <20230405153644.25300-1-akihiko.odaki@daynix.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
- FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: ~axelheider <axelheider@gmx.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e7gcZlH8WDhV
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=0.0 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
+        RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE autolearn=unavailable
+        autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+To:     unlisted-recipients:; (no To-header on input)
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: zVtluk+l585O
 
-From: Axel Heider <axel.heider@hensoldt.net>
+kvm_arm_init_debug() used to be called several times on a SMP system as
+kvm_arch_init_vcpu() calls it. Move the call to kvm_arch_init() to make
+sure it will be called only once; otherwise it will overwrite pointers
+to memory allocated with the previous call and leak it.
 
-Fix issue reported by Coverity.
-
-Signed-off-by: Axel Heider <axel.heider@hensoldt.net>
+Fixes: e4482ab7e3 ("target-arm: kvm - add support for HW assisted debug")
+Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/timer/imx_epit.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Supersedes: <20230405070244.23464-1-akihiko.odaki@daynix.com>
+("[PATCH] target/arm: Check if debug is already initialized")
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 3a869782bc..0821c62cd1 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -179,7 +179,7 @@ static void imx_epit_update_compare_timer(IMXEPITState *s)
-          * the compare value. Otherwise it may fire at most once in the
-          * current round.
-          */
--        bool is_oneshot = (limit >= s->cmp);
-+        is_oneshot = (limit >= s->cmp);
-         if (counter >= s->cmp) {
-             /* The compare timer fires in the current round. */
-             counter -= s->cmp;
+ target/arm/kvm.c     |  2 ++
+ target/arm/kvm64.c   | 18 ++++--------------
+ target/arm/kvm_arm.h |  8 ++++++++
+ 3 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index f022c644d2..84da49332c 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -280,6 +280,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
+     }
+ 
++    kvm_arm_init_debug(s);
++
+     return ret;
+ }
+ 
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 1197253d12..810db33ccb 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -74,24 +74,16 @@ GArray *hw_breakpoints, *hw_watchpoints;
+ #define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i))
+ #define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i))
+ 
+-/**
+- * kvm_arm_init_debug() - check for guest debug capabilities
+- * @cs: CPUState
+- *
+- * kvm_check_extension returns the number of debug registers we have
+- * or 0 if we have none.
+- *
+- */
+-static void kvm_arm_init_debug(CPUState *cs)
++void kvm_arm_init_debug(KVMState *s)
+ {
+-    have_guest_debug = kvm_check_extension(cs->kvm_state,
++    have_guest_debug = kvm_check_extension(s,
+                                            KVM_CAP_SET_GUEST_DEBUG);
+ 
+-    max_hw_wps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_WPS);
++    max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
+     hw_watchpoints = g_array_sized_new(true, true,
+                                        sizeof(HWWatchpoint), max_hw_wps);
+ 
+-    max_hw_bps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_BPS);
++    max_hw_bps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
+     hw_breakpoints = g_array_sized_new(true, true,
+                                        sizeof(HWBreakpoint), max_hw_bps);
+     return;
+@@ -920,8 +912,6 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     }
+     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+ 
+-    kvm_arm_init_debug(cs);
+-
+     /* Check whether user space can specify guest syndrome value */
+     kvm_arm_init_serror_injection(cs);
+ 
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 99017b635c..330fbe5c72 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -18,6 +18,14 @@
+ #define KVM_ARM_VGIC_V2   (1 << 0)
+ #define KVM_ARM_VGIC_V3   (1 << 1)
+ 
++/**
++ * kvm_arm_init_debug() - initialize guest debug capabilities
++ * @s: KVMState
++ *
++ * Should be called only once before using guest debug capabilities.
++ */
++void kvm_arm_init_debug(KVMState *s);
++
+ /**
+  * kvm_arm_vcpu_init:
+  * @cs: CPUState
 -- 
-2.38.4
-
+2.40.0

@@ -1,103 +1,105 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp739376ejb;
-        Wed, 5 Apr 2023 17:25:23 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aUfO5c++q0VN/zBWc0fXp5f6Xd6DKyphJX6ZvF58AegvLvg6R5Z+FtilXnrEg3N3HOOW8a
-X-Received: by 2002:ac8:59ca:0:b0:3db:e078:2886 with SMTP id f10-20020ac859ca000000b003dbe0782886mr7933862qtf.38.1680740723621;
-        Wed, 05 Apr 2023 17:25:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680740723; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp739407ejb;
+        Wed, 5 Apr 2023 17:25:28 -0700 (PDT)
+X-Google-Smtp-Source: AKy350asyrLRlIgA+euZ0jhRqExTGQMNdYvbUD04w+HiTPPYBgFtCiKYKYP81GgEqXgF8p1IG9ti
+X-Received: by 2002:a05:6214:1312:b0:5c4:cacf:9c4e with SMTP id pn18-20020a056214131200b005c4cacf9c4emr2437249qvb.6.1680740727864;
+        Wed, 05 Apr 2023 17:25:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680740727; cv=none;
         d=google.com; s=arc-20160816;
-        b=pI0dsuZRCDSWB3PZbjzoH1Oqb81WpZyRZWbasWtbQnTG3L4RmN+qJWlcKwkopxRXUT
-         1/AYPj0+MqoSP9rq6OM+t4qEsnf8g1RV8mc5dzBICwG2kyyLGRRXbSFI2skGUVsaFoq+
-         wL8TGoul1oWWKo0rgDn2h9SQqPmZlgNWRGJP2RAOTD9eGl5HGnSpBOIiWZDnDZZ7lyl2
-         zE1AIH7ctTjtOoHPe9nAdMcLWgx/x8S56il1bNzOeeGksoyIlARtqOthoNmm56h+8QvC
-         v0PMz5edXJlYZlhG6awOo+2TTv3w+lLByeEiSLq6ZykusvUwm2D1iHtrTqIYTjVgITrY
-         PN9A==
+        b=U5IC77gtnZb5Ljvn53WSLBjPUVhQeiWTJnXSTJyWK/s9pF7Izxp9LXK/cAktHEBBDh
+         c/+0r4+qqKut2pg+CettwqtnVAKmy/6b4uRFrq1dfN3mD0yMM31NrTV9/Vbj+N+bNZVI
+         qrTkU2RqqH1uTP29Hhmgi39srZ80ulyMhQCC0EPhzn2i0QQw+eHG1nimJnvpwSD5N7fE
+         IV3JEzi4Bi5Wkn/2taCzDHPwdTyFhX5oAWaJjVA1oP2Cvh5RCexxGOoiy94gEPosoB/v
+         EuDiQU5IiRKPd0OY8CldNqkV8Ga06clUfZYiOEWC/rts0aXlyke+oXyk9Ovpz+dDho8s
+         asqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=m8tjpnf+cHao99aT7XBTFSlb0niM4wdXOo9nIIJzY/0=;
-        b=oYPHnpEYSGRFaNojQM6+8xhZbQZMtNLA2PpGtGhNOk18TRqCHme8wa9hRKjR24i/nF
-         /b+65uArflJ0YtobNVOh0gaZ92p005OSwlUM063AvXEuWsnV2bIDmqRnlW1iKK0V7azq
-         y1dos/D+JTRXeoBlbNPOX61tkoz0oKO12mc6wDnMnuNvVg9B++9SYEH56b45agAH0L/c
-         Ppk3m8GHOcZ52f0flbZeOjtzPG76hcFfZ99IN2JaXDhmrNbH5+x50OZ5VcIoVbpBk5Wg
-         dQJx8C+X9fk0lsnxuP1SrG2lgB2KHn9kSTy0YHGQdoBQP2EEco/s3CIqfNLUi/P3bSJR
-         hyHg==
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
+        b=XfPXD4Qr/OSHEM9Ep0xXMCI8tVF4hC+M0ElzcDFOA7Z4Yqqa4o5IxD5vH4nT/TjYIn
+         8CC9mn1EJbNptxRhH3QWD0qYZ5wMoEPB3dJ6bzevcmaHMVwWVQ8x9HMBaJfU/9kB8cdE
+         f1sf2dNT+adbJ/e3gam+q6d/QXzibP7//xWVs3pO5Sk47GmgHxSKa+DxYRryspim4n0f
+         z3xJHU6TamvcJFsbGBrqBCc99kzjEr2rPTlCLw47fqz35VCoWUzzmnUeG0S7B3B83s3o
+         ZPrK9dF7vAUaYzUDz94GLZ4K9owGrD/GyEOTIpCYb1233Ky+Bdn5s2obBvBQBcEj62N4
+         qE8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=mUMyDnIL;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=f3brdb2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bq31-20020a05620a469f00b0073ba1bc114dsi162946qkb.360.2023.04.05.17.25.23
+        by mx.google.com with ESMTPS id u9-20020a0562141c0900b0056eec5bab7fsi194440qvc.492.2023.04.05.17.25.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Apr 2023 17:25:23 -0700 (PDT)
+        Wed, 05 Apr 2023 17:25:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20210112 header.b=mUMyDnIL;
+       dkim=pass header.i=@google.com header.s=20210112 header.b=f3brdb2g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pkDR5-0004qT-3m; Wed, 05 Apr 2023 20:25:07 -0400
+	id 1pkDR5-0004rW-UO; Wed, 05 Apr 2023 20:25:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3UREuZAcKCFQ6A87Az42AA270.yA8C08G-wD89A929G.AD2@flex--komlodi.bounces.google.com>)
- id 1pkDR4-0004nV-0E
- for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:06 -0400
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com>)
+ id 1pkDR3-0004mr-5b
+ for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:05 -0400
+Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3UREuZAcKCFQ6A87Az42AA270.yA8C08G-wD89A929G.AD2@flex--komlodi.bounces.google.com>)
- id 1pkDR0-0005CJ-GZ
- for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:05 -0400
-Received: by mail-pg1-x549.google.com with SMTP id
- d34-20020a630e22000000b005039e28b68cso11235659pgl.13
- for <qemu-arm@nongnu.org>; Wed, 05 Apr 2023 17:24:50 -0700 (PDT)
+ <3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com>)
+ id 1pkDR0-0005ES-Fj
+ for qemu-arm@nongnu.org; Wed, 05 Apr 2023 20:25:04 -0400
+Received: by mail-pj1-x1049.google.com with SMTP id
+ o89-20020a17090a0a6200b0023b3d3acdd6so17938106pjo.3
+ for <qemu-arm@nongnu.org>; Wed, 05 Apr 2023 17:24:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1680740689;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=m8tjpnf+cHao99aT7XBTFSlb0niM4wdXOo9nIIJzY/0=;
- b=mUMyDnILMAEzoqBJA2qc00QHg3xmx7ewTp+036PbRUjQi/W/EBLMAiordN95KgF9ZW
- xU+3CVFMR2aF8juJ5mnRQ9mnQa+c934YO8qDbBVKl1cU1dz46Xbk0KqApRAy8rm45DMI
- acn8ew/XtguuzL2CrFE/Wg5MXXvuBhwFv2lLVJp9Pj/YUFWCnjDNuVyI83ajhxHKYaVG
- 54tcL18vJCE9zYWWFBQ+RrLnlsskU9a8OIKMfmfTVph8hj5b28nQePF24iHhPfuXnsvd
- 048GCJd+j+dBm4YChXhJsDyms/ap3ERy0FfkGOCrEOz+/D/f3yG+9VR+kMyEu8hoxU5R
- u33Q==
+ d=google.com; s=20210112; t=1680740693;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
+ b=f3brdb2gLxSeDXEv9Rrq13ek9vvvxJF8IrGVCxBDmTZgX7wlmqA5MewnZrXUm9y+o1
+ DfOv2FDGT+PC7OOw06XpBN2C0kbgNrIajdxylQojMTOjvE/7bKDi6kYFO8kY11s7Zd1c
+ DOdEYeq/WhU1Zn3eF5wprYgSxeIXrA/383C6RBt8YX5CHqC32WDukOL30ywarXxipmzk
+ R8Ssv0umqHzXqWgU/geGyomVWmft9+4UqbchmCc9vMFO+q2ujJJYdRn8jczyES1R9tUP
+ HNfnWMCm7dpm0gt20LYj1QWVqri/lyCXGS3jM3BHlhuRrnWSpTPl5wT1aR41y+4QeueK
+ lQMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680740689;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=m8tjpnf+cHao99aT7XBTFSlb0niM4wdXOo9nIIJzY/0=;
- b=X1/KUPExlRD2AiaGNJtsl3wcRkwvBeNZq2Q5VRQKBBI1Y13kHOf1GotPTdEqLiDv3X
- SW2VcX0kT3aYZP+mYxwHOWFspIQzM9jBuwVRh4og5W4u8X6Msc+1S/ndS/Dm8OnrcTY2
- omeA2FdUly7PyuuHJQ2TkESDhvcULKgcTdHRUH9cgrNC5ktWtmhe/wNReEA36Pj3wZRa
- ZttBJYGc81Wgb+W0EnSGn9Ah2G3TKTNDh/4QaGTiP15wl78QorPuvY/9j9luRtofwFbV
- ez1vgVdtGJ3vONkBmpgV5PFhgzKdYgToX8/2b6zMsv1JDUdhzRp9i31cR8SrRQKnGb+y
- Cyng==
-X-Gm-Message-State: AAQBX9f+HINjwjU4U+Gqa6DAQt4IsKcSmQkbs7SoJhk7q8C8MyKCqlcF
- x8eKm47LmAndeqKKYK7NVgSFyjJjKvCl
+ d=1e100.net; s=20210112; t=1680740693;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=c73IHAi+aPqB32XxKH0euKSiA4W+L+UT08GhoM3WrRI=;
+ b=iJWIYG2KPyYIqvZ53vbGU3xWOF2SDB3jBRkhKp1ODAgSEdSx7XCBQB6bOBXJyGlvoh
+ 4nsmJWjT8mVpq9GgxK5UjSP5YVazbHc0495pG5cOpIl5ldBH46DjG6+CEtFRysa1bj3H
+ jEBPy1irfMpUHN3o3NRETjjT3A0XdAFq5xCoddYbfO4X4iDF9PvET1phKy0m8M+flz50
+ HmxSg+Kyie+QRZ7Q0gjg5fhgEci11fplFW6iQBmyxWQL0dDKr5LA+HW2kmOw2eoZ5xd8
+ j76QZ7+Pj29WjIR3zuOLryZYg7rfmyDEl0GZOg8DNkNB6XGMoDnsNfryEnOVdUX6THbB
+ lqew==
+X-Gm-Message-State: AAQBX9eFrTrEXCOn0EIfYCvuS5STY23h1G72+z41/ZZrSJ/3SLnnOSR6
+ huLSImO32u7DwT5wNIuKMgGq0dxiUPBi
 X-Received: from komlodi.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:35ee])
- (user=komlodi job=sendgmr) by 2002:a17:902:a70d:b0:1a1:ffc6:de9b with SMTP id
- w13-20020a170902a70d00b001a1ffc6de9bmr3151017plq.6.1680740689415; Wed, 05 Apr
- 2023 17:24:49 -0700 (PDT)
-Date: Thu,  6 Apr 2023 00:24:45 +0000
+ (user=komlodi job=sendgmr) by 2002:a65:5887:0:b0:513:f8ae:5bf6 with SMTP id
+ d7-20020a655887000000b00513f8ae5bf6mr2573288pgu.6.1680740693100; Wed, 05 Apr
+ 2023 17:24:53 -0700 (PDT)
+Date: Thu,  6 Apr 2023 00:24:47 +0000
+In-Reply-To: <20230406002447.4046378-1-komlodi@google.com>
 Mime-Version: 1.0
+References: <20230406002447.4046378-1-komlodi@google.com>
 X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
-Message-ID: <20230406002447.4046378-1-komlodi@google.com>
-Subject: [PATCH 0/2] hw/arm/npcm7xx_gpio: Add some pin state QOM
+Message-ID: <20230406002447.4046378-3-komlodi@google.com>
+Subject: [PATCH 2/2] hw/gpio/npcm7xx: Support qom-get on GPIO pin level
 From: Joe Komlodi <komlodi@google.com>
 To: qemu-devel@nongnu.org
 Cc: komlodi@google.com, wuhaotsh@google.com, kfting@nuvoton.com, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3UREuZAcKCFQ6A87Az42AA270.yA8C08G-wD89A929G.AD2@flex--komlodi.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
+ envelope-from=3VREuZAcKCFgAECBE386EE6B4.2ECG4CK-0HCDED6DK.EH6@flex--komlodi.bounces.google.com;
+ helo=mail-pj1-x1049.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -119,31 +121,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2pZwGD39z98M
+X-TUID: 5otSCBtC7M6H
 
-Hi all,
+This goes along with input pin modification. In some cases it's easier
+to know the state of all pins on the GPIO controller before modifying
+input pins, rather than knowing only the state of input pins.
 
-This series adds a couple QOM properties for retrieving and setting pin
-state via qom-get and qom-get.
+For example over QMP:
+{"execute":"qom-get","arguments":{
+    "path":"/machine/soc/gpio[0]",
+    "property":"gpio-pin-level"
+}}
 
-We ran into a situation in multi-SoC simulation where the BMC would need
-to update its input pin state based on behavior from the other SoC. It
-made the most sense to expose this over QMP, so this adds properties to
-allow people to do so.
+Signed-off-by: Joe Komlodi <komlodi@google.com>
+---
+ hw/gpio/npcm7xx_gpio.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Since the NPCM7xx is typically used to help manage other SoCs, hopefully
-other people will find this useful as well.
-
-Thanks!
-Joe
-
-Joe Komlodi (2):
-  hw/gpio/npcm7xx: Add GPIO DIN object property
-  hw/gpio/npcm7xx: Support qom-get on GPIO pin level
-
- hw/gpio/npcm7xx_gpio.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
-
+diff --git a/hw/gpio/npcm7xx_gpio.c b/hw/gpio/npcm7xx_gpio.c
+index 2a7be60d8d..58db3a8d64 100644
+--- a/hw/gpio/npcm7xx_gpio.c
++++ b/hw/gpio/npcm7xx_gpio.c
+@@ -399,6 +399,9 @@ static void npcm7xx_gpio_init(Object *obj)
+     object_property_add(obj, "gpio-pins-in", "uint32",
+                         npcm7xx_gpio_get_pins_in,  npcm7xx_gpio_set_pins_in,
+                         NULL, &s->regs[NPCM7XX_GPIO_DIN]);
++
++    object_property_add_uint32_ptr(obj, "gpio-pin-level", &s->pin_level,
++                                   OBJ_PROP_FLAG_READ);
+ }
+ 
+ static const VMStateDescription vmstate_npcm7xx_gpio = {
 -- 
 2.40.0.348.gf938b09366-goog
 

@@ -1,193 +1,141 @@
-Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp624170eji;
-        Wed, 7 Feb 2024 11:52:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXbPc0PoYvI52+FyIparcPwS6LAB/AzMS/ggtzTgkgFymlTEqogMvlXotKSLzGwrnhbb+fQcgC/fnsH0UTOcZyRCzBeCZPQ
-X-Google-Smtp-Source: AGHT+IHFEOdCDvTDXIby862iHR4TdMb0dJCgAEMYRHMwErvWwuFuJKwqpIsZ0F0ft4rPngOlSalO
-X-Received: by 2002:a0c:f554:0:b0:68c:c3f7:618e with SMTP id p20-20020a0cf554000000b0068cc3f7618emr927745qvm.19.1707335569994;
-        Wed, 07 Feb 2024 11:52:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707335569; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp926400ejb;
+        Thu, 6 Apr 2023 00:50:43 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Z8m08JDyC1Z+SrvBxbP8RdhjvrE4b4iDe8RuqeI9iQCm0U75ghca5BDk4OgWhjm23oqoFl
+X-Received: by 2002:a05:6214:19e8:b0:56b:f28e:628a with SMTP id q8-20020a05621419e800b0056bf28e628amr3477137qvc.6.1680767443433;
+        Thu, 06 Apr 2023 00:50:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680767443; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDmwTHlR8b04gtWBgfxjnkbanL0/WdR72oT6e2dR9xoKUDLYuNOTKUpy5Q1V6nrox9
-         ikK+zHaqDuEHAjK/K76LjvDzL+aRg7QmCLyjcGkSYwjKi1ZMQFtZu1RCCrp8tNTDw/Sj
-         /IhRK+DnFmi76mqeci0lL8Gm7RndHC8XEy9m8vJEiiCKR4YGgfH1uFR+KJdksXaeFI3p
-         PfXDKMcRE5PDy98HzYy/hsGTg+YRlFqhpXiefln5kL5RbeuTNRmmVh1OjQwtBb0NQmlS
-         WHRf77Mn6+EpMubX3dmyNZ5BMck6GT/5ayJvDMkd88XghkuWy02GpO2Pio0D/fmk74Jn
-         E2kg==
+        b=lL0+AD5l/MIgvrT6YZDKZJRM7QLAd+VoePSoSNV83WNnU6ViHev3weu7nfG/JHn4kI
+         eZ1XtVk0xATfo+mD2qrHVA7V0v9wvNZFi/T+pk3QX8mJooFInmJ6RyNK+0RnP7ndQcwY
+         OhckRgzz1YFnBNLmnsDZQpBM90sz51mK14Foi5l5kI0lCbGNCSR2iRivP1yfTGHid23z
+         QWxxSeKRRPfquYn7KTIsyy2Ebinbr85V6H9NgiCJV6EwCgidxyZh2CXP/TevazmEeFXc
+         8LpWiPE6aigam7jymPVtWqppBH7e3CRxlX7LXSZL1j3Si2g3lDSXluCAkrVD3gzbALzj
+         fByg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=KGGiL5MFeiGJlfH3VQJrH/2ve5E4kEuDOzY3Nlc72q0=;
-        fh=9Gt7wKv4jSoOHZqASWdTDB0RSC5aSOBAwcc+g5PrQoo=;
-        b=xWZGoEL5V/YMnWeiHo7W5wPC4nbNGr+K70y8OONZD/1JeZ4BE9WbC9Go6Gj/gLcFx1
-         L4qw8lLj8fijmW/1yfaPwiVBiyQzGdFIE4QcoFpViypGxLNOEgQz7yFztJ+6/oHS/koN
-         6lPgU3PsraDsxNcRZAke39U50gdM743lgXlubKEPLFiMH2DOvm0cltNASXZmXk+9MfuS
-         z67V4sipyCDDvwq86iGFVW1T6WG3Z29278EY0yIxhDGOCBYeybW9V6ZcC4fiK+5asXYM
-         UUXA3tA2+WLEM7AxSK/8uSlLoOXHOPqSzhymzyidc54txPahRcGtATvQurCStbjE+Ash
-         lJ9w==;
-        darn=linaro.org
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
+        b=oKS/c5/QSyhfhBM4BWRrFG9KIUlxaB1t4XKbjlNM4+T6S6Jt/mUB4mfHruiPD7Y1Dv
+         A1EaNxkvtFvyKc34X+L5y/yZdJ6aJJoT7O48LIBOmvO7XQitQN+jqbI03+QHU5F2eWYb
+         Dnxs+Siw6rE5yxB5WcppcZWx1/cYOlyWX8Jeh8PUGItlxCOv7A9b08CBzHbPhVpKMmMX
+         l9E/grTAUDbBnEHslkrBqbB0NMqRhXYS/FFNQB2USIq8vxxWcgrS5+ftYdGpugkYTb5F
+         alvJxcBKdE4KI2E9MvVsdo5WexC2svmSJmp3LhU/hd5UwtdKsjFjesNSkzOpot6Utarb
+         WCSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-X-Forwarded-Encrypted: i=1; AJvYcCVVrqtcxaKQ7PdhVg+9FkGqf/SY/pAY///oV6UFh4/hA2eOaeidGolXrfj1QuX/NI3Kq5NCHNRu9tiFaLivYeQ2ZUZRut0f
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5-20020a056214104500b006854171d8besi1760590qvr.238.2024.02.07.11.52.49
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdXSE1zl;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id gf2-20020a056214250200b005e66a8c31c3si311552qvb.94.2023.04.06.00.50.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Feb 2024 11:52:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Apr 2023 00:50:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXnyI-0005m0-G3; Wed, 07 Feb 2024 14:52:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rXnyG-0005kW-VB; Wed, 07 Feb 2024 14:52:37 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rXnyB-0001QJ-3I; Wed, 07 Feb 2024 14:52:36 -0500
-Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
- (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 8 Feb
- 2024 03:52:27 +0800
-Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 8 Feb 2024 03:52:27 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>
-Subject: [PATCH v2 2/2] aspeed: fix hardcode boot address 0
-Date: Thu, 8 Feb 2024 03:52:24 +0800
-Message-ID: <20240207195224.452987-3-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240207195224.452987-1-jamin_lin@aspeedtech.com>
-References: <20240207195224.452987-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdXSE1zl;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1680767443;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
+	b=CdXSE1zlSnfXN4yIK3R51Ko5+6TVHy7MPmZ0n1rOtqgtpI7fuSvd26qbCSBnX2+GSlgQGy
+	u+GF5W+niaczqLX1HnAM97kpQ3Zhg+qXdI/f3C0/owUDX6pyB5sB9xd55tFwFO0mVgv7m3
+	Bb+GmJIlELW7gIjUyH30Qnf1Uo9vfXQ=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-491--4C1HsL6NqmF4USZQ9eifQ-1; Thu, 06 Apr 2023 03:50:41 -0400
+X-MC-Unique: -4C1HsL6NqmF4USZQ9eifQ-1
+Received: by mail-qv1-f72.google.com with SMTP id r4-20020ad44044000000b005ad0ce58902so17466905qvp.5
+        for <alex.bennee@linaro.org>; Thu, 06 Apr 2023 00:50:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680767441;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Zfpt1hWlJeW+De1zXUq58qE//gZcupovgtklglmgOFw=;
+        b=RT8Jk3I6nd90agtDtNhaTjCiJkiCQBhGyxIyyuIrBdPMUQjWEY/vEKDJ7RXTwFjAc2
+         rJsc3A7pBPGQfhr51yZRxnE6DfUWBSHrPR6MVcXTfNMZxNWg1uyOg8n/viYVafJ773Zu
+         edCM+YbM7fZa9tGPIm9PhTw/oo0+Ldsi2lR4AE77T46sxccPNX4GFFsKKYKVIvEdafIq
+         2kK6Wf0MfjvGHYVxCbNDYVHnv1AzqtaBGl5durcGVzAVxjbCa1QTjcAE1f7aGDyy5f7j
+         W+K0vhCP7SfEbUy2kH7r9h1meBEF+x+U2Sen1JOPNqzMGH4EGo/ZCNB1F9kykwV7vC4g
+         Pb4g==
+X-Gm-Message-State: AAQBX9dsIlaODrWi36E6HaGArCt8VuBkgXbZvud+rD+R9mxcyqbuGeS8
+	at6UaW2vjGmbII8wkTkX9s5EDC26tlIfhawoEh0cakALzprfRjIiNTvehvTDYK23DDplhnFLZns
+	Pfo9cVzn9XGdOBrT2
+X-Received: by 2002:a05:6214:19c3:b0:5a5:b269:bfd7 with SMTP id j3-20020a05621419c300b005a5b269bfd7mr3536299qvc.8.1680767441140;
+        Thu, 06 Apr 2023 00:50:41 -0700 (PDT)
+X-Received: by 2002:a05:6214:19c3:b0:5a5:b269:bfd7 with SMTP id j3-20020a05621419c300b005a5b269bfd7mr3536276qvc.8.1680767440725;
+        Thu, 06 Apr 2023 00:50:40 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.3] (ip-109-43-178-193.web.vodafone.de. [109.43.178.193])
+        by smtp.gmail.com with ESMTPSA id 65-20020a370c44000000b00746777fd176sm297041qkm.26.2023.04.06.00.50.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Apr 2023 00:50:40 -0700 (PDT)
+Message-ID: <3cccc7e6-3a39-b3b4-feaf-85a3faa58570@redhat.com>
+Date: Thu, 6 Apr 2023 09:50:36 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 10/10] hw/s390x: Rename pv.c -> pv-kvm.c
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Claudio Imbrenda <imbrenda@linux.ibm.com>,
+ Janosch Frank <frankja@linux.ibm.com>
+Cc: qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org, qemu-ppc@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20230405160454.97436-1-philmd@linaro.org>
+ <20230405160454.97436-11-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230405160454.97436-11-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=twmbx02.aspeed.com;
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +AtnYGyh5EKP
+X-TUID: Byz9Wbr3ONTu
 
-In the previous design of ASPEED SOCs QEMU model, it set the boot
-address at "0" which was the hardcode setting for ast10x0, ast2600,
-ast2500 and ast2400.
+On 05/04/2023 18.04, Philippe Mathieu-Daudé wrote:
+> Protected Virtualization is specific to KVM.
+> Rename the file as 'pv-kvm.c' to make this clearer.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/s390x/{pv.c => pv-kvm.c} | 0
+>   hw/s390x/meson.build        | 2 +-
+>   2 files changed, 1 insertion(+), 1 deletion(-)
+>   rename hw/s390x/{pv.c => pv-kvm.c} (100%)
+> 
+> diff --git a/hw/s390x/pv.c b/hw/s390x/pv-kvm.c
+> similarity index 100%
+> rename from hw/s390x/pv.c
+> rename to hw/s390x/pv-kvm.c
+> diff --git a/hw/s390x/meson.build b/hw/s390x/meson.build
+> index f291016fee..2f43b6c473 100644
+> --- a/hw/s390x/meson.build
+> +++ b/hw/s390x/meson.build
+> @@ -22,7 +22,7 @@ s390x_ss.add(when: 'CONFIG_KVM', if_true: files(
+>     'tod-kvm.c',
+>     's390-skeys-kvm.c',
+>     's390-stattrib-kvm.c',
+> -  'pv.c',
+> +  'pv-kvm.c',
+>     's390-pci-kvm.c',
+>   ))
+>   s390x_ss.add(when: 'CONFIG_TCG', if_true: files(
 
-According to the design of ast2700, it has bootmcu which is used for
-executing SPL and initialize DRAM, then, CPUs(cortex-a35)
-execute u-boot, kernel and rofs. QEMU will only support CPU(cortex-a35)
-parts and the boot address is "0x4 00000000" for ast2700.
-Therefore, fixed hardcode boot address 0.
+Hmmm, maybe we should rather move it to target/s390x/kvm/ instead?
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/arm/aspeed.c             | 4 +++-
- hw/arm/aspeed_ast2400.c     | 4 ++--
- hw/arm/aspeed_ast2600.c     | 2 +-
- include/hw/arm/aspeed_soc.h | 2 --
- 4 files changed, 6 insertions(+), 6 deletions(-)
+Janosch, what's your opinion?
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 06d863958b..39758557be 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -289,12 +289,14 @@ static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
-                                     uint64_t rom_size)
- {
-     AspeedSoCState *soc = bmc->soc;
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(soc);
- 
-     memory_region_init_rom(&bmc->boot_rom, NULL, "aspeed.boot_rom", rom_size,
-                            &error_abort);
-     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
-                                         &bmc->boot_rom, 1);
--    write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
-+    write_boot_rom(blk, sc->memmap[ASPEED_DEV_SPI_BOOT],
-+                   rom_size, &error_abort);
- }
- 
- void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index 95da85fee0..d125886207 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -26,7 +26,7 @@
- #define ASPEED_SOC_IOMEM_SIZE       0x00200000
- 
- static const hwaddr aspeed_soc_ast2400_memmap[] = {
--    [ASPEED_DEV_SPI_BOOT]  =  ASPEED_SOC_SPI_BOOT_ADDR,
-+    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
-     [ASPEED_DEV_IOMEM]  = 0x1E600000,
-     [ASPEED_DEV_FMC]    = 0x1E620000,
-     [ASPEED_DEV_SPI1]   = 0x1E630000,
-@@ -61,7 +61,7 @@ static const hwaddr aspeed_soc_ast2400_memmap[] = {
- };
- 
- static const hwaddr aspeed_soc_ast2500_memmap[] = {
--    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
-+    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
-     [ASPEED_DEV_IOMEM]  = 0x1E600000,
-     [ASPEED_DEV_FMC]    = 0x1E620000,
-     [ASPEED_DEV_SPI1]   = 0x1E630000,
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index f74561ecdc..174be53770 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -22,7 +22,7 @@
- #define ASPEED_SOC_DPMCU_SIZE       0x00040000
- 
- static const hwaddr aspeed_soc_ast2600_memmap[] = {
--    [ASPEED_DEV_SPI_BOOT]  = ASPEED_SOC_SPI_BOOT_ADDR,
-+    [ASPEED_DEV_SPI_BOOT]  = 0x00000000,
-     [ASPEED_DEV_SRAM]      = 0x10000000,
-     [ASPEED_DEV_DPMCU]     = 0x18000000,
-     /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 5ab0902da0..bf43ad8351 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -224,8 +224,6 @@ enum {
-     ASPEED_DEV_FSI2,
- };
- 
--#define ASPEED_SOC_SPI_BOOT_ADDR 0x0
--
- qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int dev);
- bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp);
- void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr);
--- 
-2.25.1
-
+  Thomas

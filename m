@@ -1,268 +1,201 @@
-Received: by 2002:a17:906:e18:b0:a38:6d10:c5dd with SMTP id l24csp629344eji;
-        Wed, 7 Feb 2024 12:02:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHo90tV8uWFaf3/14K0z32PTwgPv3MsrG9ZF+QoZLu73sWp/mirEqgB5LVl2sXOUl2DvEuC
-X-Received: by 2002:a0c:cc92:0:b0:68c:6b70:ff4a with SMTP id f18-20020a0ccc92000000b0068c6b70ff4amr5880052qvl.37.1707336172475;
-        Wed, 07 Feb 2024 12:02:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1707336172; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp739325ejb;
+        Wed, 5 Apr 2023 17:25:14 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Z/qVxlVfSUHOVfexsAnnnW2F3z+FtDl5tgctdZIH31LlLR1pzDj9roL+6OD6xOBeafMB2y
+X-Received: by 2002:a05:622a:34f:b0:3e6:5653:eb3 with SMTP id r15-20020a05622a034f00b003e656530eb3mr8517395qtw.60.1680740714272;
+        Wed, 05 Apr 2023 17:25:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680740714; cv=none;
         d=google.com; s=arc-20160816;
-        b=STRdBoHtCpjXiCj5zliPfoBlw0fz8eR1f/QrVbj9MQEPIZApfKO3mLf3kfH+yUYjA2
-         hvlP3TEvArzTbApqYOVDgNQfmeevZwEiqZu6OOv2aYjb//moeIWTMICEmPCoeFFxRoWT
-         moBh7cOhjAtRBO4+9uKcbVuvTZ0KfzEpj7CC+T8s8I0vyM6CPgp+KNnbVpsODCXkoVFA
-         KYMs92owkvFOVdA8DI9Az4X98zMog9h6RLQbu9IGU0WJHodylpwCW3EDckwCYVCmqrci
-         mtZJb/NHSzJEeH0Q71U1M2k8IDwujQ4OWIKTxrPECpcExGTGk8Wo/jclSF0FAVWW/4Y8
-         jhyQ==
+        b=OUK12BIE46ki06NX9Z8sSYC1/D7e1YdP5ye/HjDmoZn4vutnwlcjaUX8Erv/vc55bO
+         Ek8I+lw2T4AyQVIFVKKwco1Jfwu7+/YDZcKfP5FfP+ba5bAYkO80lvGObQvCpkSQu+ZP
+         iX5zA4uygl5Qs6yTRjcKFXY5Y8tOrxjmi2QAz9d76qHxpiy/cUzlvumii0nOeoKuetRO
+         9p3CjKLoGMiuVNejyfYIbGWDL/OQY4GrBGg4t9gXQE+eMd2TL835jILLm/9JfffWxv6u
+         WfbSpXddNS1MKAa1Qu655nwdcQ2DPWRxsLv3OcYMz8Msr+445RZ/2+ItkHZyU4EppfQl
+         1Z2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=0ZGQ8vX1M6Wr5NgxhwyCKWpRu5DV8c3VMfGNxZmvf9w=;
-        fh=vV4VmCWZZqzKXvJ2gsjMw7khnkTCfa9NdPdMEgir4Wc=;
-        b=yI4sqZjRHbL1gz5R9Z1otbCo9bO3OiGDKwd6ojjpW1QS8nbtmt0wFZW7VSkd/FiLuN
-         dNAbQo6INI8UyTfrQH61rYSlNRRZGq6AWioNEK9seY+H3eDwgodO2YupiJ4STW7g/oQS
-         zKAhfDFS5fFgbb8+AKJht4arOZ4KCWGsiceIH1Yv+MZguqmXg3HgLGoW87U6i0vtUy/y
-         578UuyojYpWun2twPm9HU4uRkE8sYGhjqVxC5CcY0zR05vSDuEL/4rTSiLlry+GUReMq
-         g8D3cA2htVa/c5dWf1DDD5EXvXl3VDj9Cn7CYzyGndo3NjESPIRXOr2p6U4PI/VrSf0T
-         zBUw==;
-        darn=linaro.org
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=dY4FZ+4q6pxfE+emsEHrGl/ogs55mlHFZRbO9QfgZgE=;
+        b=wNdrgORaHnE35pibx65cKyH3dAbtkfOZoc/H84eMlB+DllEk8lS8lt7drS7Jm8Gfeb
+         O2fCohno1fva6i/9Ju9ICnTGtYHpA/XtX6GoBrjvxMKftsItnY+5zK4Oh95gGv0lSLkq
+         zF7/8PLgrFs7vkkpDCkRZzZx8sYckZ0lhQHvD2Q0rG2VEdzVirFME+4SEt+JOZJXGLGG
+         2ZPcTD85fFT54K1V4cI0P1NDKoTdljIU0gBbORasDSzYRaj04wMl5NWVaSfjcM2y8Lq4
+         8S3/QNSto/Um/XuYK8m3LfSJg0iNim2wBhAOoijmZpNqnUf7n2AnExJI7OmhLUt8Cupy
+         xRxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-X-Forwarded-Encrypted: i=1; AJvYcCUT05UpNNRAT8KrngTvRarBlaqBVrMc02fd1xk4m5ILGZydk5AhU7hIUnhO1TJuqyVXrdbiUwxCOtrcc9kSOrrlUmsA35kd
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20210112 header.b=gSU3fTOz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kc7-20020a056214410700b0068c6725d5e4si1905969qvb.158.2024.02.07.12.02.52
+        by mx.google.com with ESMTPS id j18-20020a05620a411200b0074a2e55899esi145364qko.516.2023.04.05.17.25.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Feb 2024 12:02:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Apr 2023 17:25:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@google.com header.s=20210112 header.b=gSU3fTOz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rXo7q-0002Ry-3t; Wed, 07 Feb 2024 15:02:30 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pkDR5-0004qX-9O; Wed, 05 Apr 2023 20:25:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rXo7p-0002Rn-Jh; Wed, 07 Feb 2024 15:02:29 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX02.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rXo7n-0003Ra-0m; Wed, 07 Feb 2024 15:02:29 -0500
-Received: from TWMBX02.aspeed.com (192.168.0.25) by TWMBX02.aspeed.com
- (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Thu, 8 Feb
- 2024 04:02:22 +0800
-Received: from twmbx02.aspeed.com (192.168.10.10) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 8 Feb 2024 04:02:22 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <jamin_lin@aspeedtech.com>
-Subject: [PATCH v2 1/2] aspeed: introduce a new UART0 device name
-Date: Thu, 8 Feb 2024 04:02:18 +0800
-Message-ID: <20240207200220.453244-2-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240207200220.453244-1-jamin_lin@aspeedtech.com>
-References: <20240207200220.453244-1-jamin_lin@aspeedtech.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=twmbx02.aspeed.com;
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX02.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3UxEuZAcKClY8CA9C164CC492.0CAE2AI-12J29BCB4BI.CF4@flex--komlodi.bounces.google.com>)
+ id 1pkDR2-0004mm-Px
+ for qemu-devel@nongnu.org; Wed, 05 Apr 2023 20:25:05 -0400
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3UxEuZAcKClY8CA9C164CC492.0CAE2AI-12J29BCB4BI.CF4@flex--komlodi.bounces.google.com>)
+ id 1pkDR0-0005Cc-E9
+ for qemu-devel@nongnu.org; Wed, 05 Apr 2023 20:25:04 -0400
+Received: by mail-pl1-x649.google.com with SMTP id
+ s4-20020a170902ea0400b001a1f4137086so21844550plg.14
+ for <qemu-devel@nongnu.org>; Wed, 05 Apr 2023 17:24:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20210112; t=1680740691;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=dY4FZ+4q6pxfE+emsEHrGl/ogs55mlHFZRbO9QfgZgE=;
+ b=gSU3fTOzl2PenK54NlHb6Np5J7vWHItVx2RIWS/lUOB90yZUe16jVVvV4dtzAEqG7B
+ H8vcXOkvmPVvojeb6sZ5bGdBib9wWqd+7B/D/ArDBPbFXdYNI8IgPI2Ngaxxg7YJrNsg
+ ktVF4Dp0HBzSpQIojLhe/a0NT49IhYwd0qHccEmdQsmAsmuR/xHFyCMmF3+53MWZCAJL
+ N6cV8xEvhrn7dJ/0hyoc+z7vluu0aMLiBHRTtJTQHnwxMS4ta1sA5d1aEXFLEzzziriF
+ 5RaCNxJkdLRkCy3XaeUoJm1B67F9p0gV+pp2mZ5LcWGTXzJgPtufYuL6bsB7D+gkQ8Cw
+ Chsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680740691;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dY4FZ+4q6pxfE+emsEHrGl/ogs55mlHFZRbO9QfgZgE=;
+ b=gDr8wbIsEqjj5PAUB0hpsYdipF325xVbwsoZPDTt5PWC9IU8sOKG9QA95g8kTnJNCI
+ N1NqlAO6Dl5ib9x9eHEF17ErsZCPhJO4gfxOenMNrzv0nkeEQ730AUOGrsX6NjuzgEJ4
+ QYrQZzs8487rmf86kQwuMlVngNhyClQa5ZyvivuFuR5vIDszIPcMuSDBn1a7OclITUB+
+ koSG1ovMTtEVWTEbuooHbVbB8HojgfzJwF4/10yt+FjVhtwvNqhuFLCYUaviVBnLFXaY
+ VYLy7s/H4AQdlgFFtxoOZ89C2sNirp6WG1OP8mZba/jYP1PB6SQ1c1UZgjUqHz+5h464
+ Sdrw==
+X-Gm-Message-State: AAQBX9cwsqmzoXM+td7ygz3kYC9sJ8w2NFR0fjzYkGA9zMfSu/MAGqZf
+ VjO7GUUZIejPFYz+MRDys3eZBu5OuZCmBjpVtgMKWtSOVb7DTGtnL71C5PaoVfHv2o7SknlpETk
+ jMVtWfi8yu8NLLilhucYx/Jr+LDLliMQchQHDSi1rzFMAIodqtpGh6nNZh30HzHI=
+X-Received: from komlodi.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:35ee])
+ (user=komlodi job=sendgmr) by 2002:a65:52c1:0:b0:514:1a94:b2ba with SMTP id
+ z1-20020a6552c1000000b005141a94b2bamr2424612pgp.12.1680740691290; Wed, 05 Apr
+ 2023 17:24:51 -0700 (PDT)
+Date: Thu,  6 Apr 2023 00:24:46 +0000
+In-Reply-To: <20230406002447.4046378-1-komlodi@google.com>
+Mime-Version: 1.0
+References: <20230406002447.4046378-1-komlodi@google.com>
+X-Mailer: git-send-email 2.40.0.348.gf938b09366-goog
+Message-ID: <20230406002447.4046378-2-komlodi@google.com>
+Subject: [PATCH 1/2] hw/gpio/npcm7xx: Add GPIO DIN object property
+From: Joe Komlodi <komlodi@google.com>
+To: qemu-devel@nongnu.org
+Cc: komlodi@google.com, wuhaotsh@google.com, kfting@nuvoton.com, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3UxEuZAcKClY8CA9C164CC492.0CAE2AI-12J29BCB4BI.CF4@flex--komlodi.bounces.google.com;
+ helo=mail-pl1-x649.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x8B1o1Cv1RPK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aRYXCcOQWqi2
 
-The Aspeed datasheet refers to the UART controllers
-as UART1 - UART13 for the ast10x0, ast2600, ast2500
-and ast2400 SoCs and the Aspeed ast2700 introduces an UART0
-and the UART controllers as UART0 - UART12.
+In cases where the input pin is driven by an entity outside of the
+machine, such as a machine the BMC is managing, we need a way to
+update the pin state when the external machine drives it.
 
-To keep the naming in the QEMU models
-in sync with the datasheet, let's introduce a new  UART0 device name
-and do the required adjustements, etc ...
+This allows us to do it via QMP.
+For example, to set pin 20 on GPIO controller 0:
+{"execute":"qom-set","arguments": {
+   "path":"/machine/soc/gpio[0]",
+   "property":"gpio-pins-in",
+   "value":1048576
+}}
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+1048576 == 0x100000, JSON does not support hex.
+
+Signed-off-by: Joe Komlodi <komlodi@google.com>
 ---
- hw/arm/aspeed.c             | 13 ++++++++-----
- hw/arm/aspeed_ast10x0.c     |  1 +
- hw/arm/aspeed_ast2400.c     |  2 ++
- hw/arm/aspeed_ast2600.c     |  1 +
- hw/arm/aspeed_soc_common.c  | 14 +++++++++-----
- include/hw/arm/aspeed_soc.h |  2 ++
- 6 files changed, 23 insertions(+), 10 deletions(-)
+ hw/gpio/npcm7xx_gpio.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 09b1e823ba..06d863958b 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -342,7 +342,7 @@ static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
-     int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
- 
-     aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
--    for (int i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-+    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
-         if (uart == uart_chosen) {
-             continue;
-         }
-@@ -1094,7 +1094,7 @@ static char *aspeed_get_bmc_console(Object *obj, Error **errp)
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-     int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : amc->uart_default;
- 
--    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 + 1);
-+    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART0);
+diff --git a/hw/gpio/npcm7xx_gpio.c b/hw/gpio/npcm7xx_gpio.c
+index 3376901ab1..2a7be60d8d 100644
+--- a/hw/gpio/npcm7xx_gpio.c
++++ b/hw/gpio/npcm7xx_gpio.c
+@@ -20,6 +20,7 @@
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
++#include "qapi/visitor.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qemu/units.h"
+@@ -340,6 +341,29 @@ static void npcm7xx_gpio_set_input(void *opaque, int line, int level)
+     npcm7xx_gpio_update_pins(s, BIT(line));
  }
  
- static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-@@ -1103,6 +1103,8 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-     AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
-     int val;
-+    int start = sc->uarts_base - ASPEED_DEV_UART0;
-+    int end = start + sc->uarts_num;
- 
-     if (sscanf(value, "uart%u", &val) != 1) {
-         error_setg(errp, "Bad value for \"uart\" property");
-@@ -1110,11 +1112,12 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-     }
- 
-     /* The number of UART depends on the SoC */
--    if (val < 1 || val > sc->uarts_num) {
--        error_setg(errp, "\"uart\" should be in range [1 - %d]", sc->uarts_num);
-+    if (val < start || val >= end) {
-+        error_setg(errp, "\"uart\" should be in range [%d - %d]",
-+                   start, end - 1);
-         return;
-     }
--    bmc->uart_chosen = ASPEED_DEV_UART1 + val - 1;
-+    bmc->uart_chosen = val + ASPEED_DEV_UART0;
- }
- 
- static void aspeed_machine_class_props_init(ObjectClass *oc)
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index c3b5116a6a..2634e0f654 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -436,6 +436,7 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, void *data)
-     sc->wdts_num = 4;
-     sc->macs_num = 1;
-     sc->uarts_num = 13;
-+    sc->uarts_base = ASPEED_DEV_UART1;
-     sc->irqmap = aspeed_soc_ast1030_irqmap;
-     sc->memmap = aspeed_soc_ast1030_memmap;
-     sc->num_cpus = 1;
-diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
-index 8829561bb6..95da85fee0 100644
---- a/hw/arm/aspeed_ast2400.c
-+++ b/hw/arm/aspeed_ast2400.c
-@@ -523,6 +523,7 @@ static void aspeed_soc_ast2400_class_init(ObjectClass *oc, void *data)
-     sc->wdts_num     = 2;
-     sc->macs_num     = 2;
-     sc->uarts_num    = 5;
-+    sc->uarts_base   = ASPEED_DEV_UART1;
-     sc->irqmap       = aspeed_soc_ast2400_irqmap;
-     sc->memmap       = aspeed_soc_ast2400_memmap;
-     sc->num_cpus     = 1;
-@@ -551,6 +552,7 @@ static void aspeed_soc_ast2500_class_init(ObjectClass *oc, void *data)
-     sc->wdts_num     = 3;
-     sc->macs_num     = 2;
-     sc->uarts_num    = 5;
-+    sc->uarts_base   = ASPEED_DEV_UART1;
-     sc->irqmap       = aspeed_soc_ast2500_irqmap;
-     sc->memmap       = aspeed_soc_ast2500_memmap;
-     sc->num_cpus     = 1;
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index 4ee32ea99d..f74561ecdc 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -666,6 +666,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
-     sc->wdts_num     = 4;
-     sc->macs_num     = 4;
-     sc->uarts_num    = 13;
-+    sc->uarts_base   = ASPEED_DEV_UART1;
-     sc->irqmap       = aspeed_soc_ast2600_irqmap;
-     sc->memmap       = aspeed_soc_ast2600_memmap;
-     sc->num_cpus     = 2;
-diff --git a/hw/arm/aspeed_soc_common.c b/hw/arm/aspeed_soc_common.c
-index 123a0c432c..54c875c8d5 100644
---- a/hw/arm/aspeed_soc_common.c
-+++ b/hw/arm/aspeed_soc_common.c
-@@ -36,7 +36,7 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     SerialMM *smm;
- 
--    for (int i = 0, uart = ASPEED_DEV_UART1; i < sc->uarts_num; i++, uart++) {
-+    for (int i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
-         smm = &s->uart[i];
- 
-         /* Chardev property is set by the machine. */
-@@ -58,10 +58,14 @@ bool aspeed_soc_uart_realize(AspeedSoCState *s, Error **errp)
- void aspeed_soc_uart_set_chr(AspeedSoCState *s, int dev, Chardev *chr)
- {
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
--    int i = dev - ASPEED_DEV_UART1;
--
--    g_assert(0 <= i && i < ARRAY_SIZE(s->uart) && i < sc->uarts_num);
--    qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", chr);
-+    int uart_num = dev - ASPEED_DEV_UART0;
-+    int start = sc->uarts_base - ASPEED_DEV_UART0;
-+    int end = start + sc->uarts_num;
-+    int index = uart_num - start;
++static void npcm7xx_gpio_get_pins_in(Object *obj, Visitor *v, const char *name,
++                                     void *opaque, Error **errp)
++{
++    uint32_t *pins_in = (uint32_t *)opaque;
 +
-+    g_assert(uart_num >= start && uart_num < end);
-+    g_assert(index < ARRAY_SIZE(s->uart));
-+    qdev_prop_set_chr(DEVICE(&s->uart[index]), "chardev", chr);
++    visit_type_uint32(v, name, pins_in, errp);
++}
++
++static void npcm7xx_gpio_set_pins_in(Object *obj, Visitor *v, const char *name,
++                                     void *opaque, Error **errp)
++{
++    NPCM7xxGPIOState *s = NPCM7XX_GPIO(obj);
++    uint32_t new_pins_in;
++
++    if (!visit_type_uint32(v, name, &new_pins_in, errp)) {
++        return;
++    }
++
++    s->ext_driven = new_pins_in;
++    s->ext_level = new_pins_in;
++    npcm7xx_gpio_update_pins(s, new_pins_in);
++}
++
+ static void npcm7xx_gpio_enter_reset(Object *obj, ResetType type)
+ {
+     NPCM7xxGPIOState *s = NPCM7XX_GPIO(obj);
+@@ -371,6 +395,10 @@ static void npcm7xx_gpio_init(Object *obj)
+ 
+     qdev_init_gpio_in(dev, npcm7xx_gpio_set_input, NPCM7XX_GPIO_NR_PINS);
+     qdev_init_gpio_out(dev, s->output, NPCM7XX_GPIO_NR_PINS);
++
++    object_property_add(obj, "gpio-pins-in", "uint32",
++                        npcm7xx_gpio_get_pins_in,  npcm7xx_gpio_set_pins_in,
++                        NULL, &s->regs[NPCM7XX_GPIO_DIN]);
  }
  
- /*
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 9d0af84a8c..5ab0902da0 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -140,6 +140,7 @@ struct AspeedSoCClass {
-     int wdts_num;
-     int macs_num;
-     int uarts_num;
-+    int uarts_base;
-     const int *irqmap;
-     const hwaddr *memmap;
-     uint32_t num_cpus;
-@@ -151,6 +152,7 @@ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
- enum {
-     ASPEED_DEV_SPI_BOOT,
-     ASPEED_DEV_IOMEM,
-+    ASPEED_DEV_UART0,
-     ASPEED_DEV_UART1,
-     ASPEED_DEV_UART2,
-     ASPEED_DEV_UART3,
+ static const VMStateDescription vmstate_npcm7xx_gpio = {
 -- 
-2.25.1
+2.40.0.348.gf938b09366-goog
 

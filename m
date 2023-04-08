@@ -1,110 +1,118 @@
-Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp650183ejb;
-        Fri, 7 Apr 2023 19:48:02 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZmudloEWumlfAhtBmWm4/kub97a8Gx0iagiP2xD2Rdm50x+yckJ8+Ez3Y87P6PWPFRlfi8
-X-Received: by 2002:ac8:598a:0:b0:3e6:4f4f:b4e8 with SMTP id e10-20020ac8598a000000b003e64f4fb4e8mr6894218qte.68.1680922082522;
-        Fri, 07 Apr 2023 19:48:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1680922082; cv=none;
+Received: by 2002:a17:906:b2c6:b0:930:eaf4:5c09 with SMTP id cf6csp676214ejb;
+        Fri, 7 Apr 2023 21:18:00 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Y8XHQnSn6k/CbzXRH1Nt5bBnII58pq3TR3vm5gDWlzzIri6IUcUI9pPi57Dr3+rrERlUD/
+X-Received: by 2002:a05:6214:e4e:b0:5df:3a1b:447 with SMTP id o14-20020a0562140e4e00b005df3a1b0447mr2125588qvc.11.1680927480552;
+        Fri, 07 Apr 2023 21:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1680927480; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dx/KWvsDNAQMjmsbmnici6H1tkN1HqKDRbaoE+Kksa/w+4gWgwoaA8a5lyGAomfItK
-         i+PG+6He8N+hoqTKl7/DDTJQM/02guH65uucwrk0f6zY94fxyVRQggCLYjchai4jA04g
-         CBlH48DydUcqzkUf1zI89lx4VGBCHBSwMeGyvXK2zCvOqsqhc2fp2gH7B5z67lbfjwK8
-         0ZXtV1GROIWDsUfyzaCQkHmU7qmUPn5COhTSkudolBX0cOTy1q4V7G1UYvOdrvLTH0KQ
-         cfb3RfsfL+NP314666kUgyV9V82VbOTzEcDT7ofw71UJbGYQfmZ9+ATowIe2N8FATWYy
-         yUSQ==
+        b=soFX/7y4gwgNmPm4e+yBP2rI7VBBzkf9p/vrTm1mEs6RoxD1/wrpLunc1+n7Z6uU0U
+         H9/5quXOixVreCSKwWOBcFUrfjUxjVBcJ/mS9IVraAWlOiNzu6HkduvfuU6q7AvAoeXn
+         W58aOPcLm/5iMf8QLl7/HwSXic+2kPQgf6j2xMvlWh582DyuDUyFvDhLKj79GgLdXr5M
+         b8FrauMYmi3wfVXajRTuV0R3ohvHTHNUC+3KqZ4ERZ38EhSA80EaO/FbrEEJQCpIIvnW
+         rAunnatsu5iCt4g005J90ZA43G0/RkYO1IOkYyPPZswaKqtqFVLIvjircrh1Ykba6NxY
+         nHYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fm2Ro7+DC/VzvdVmtM9K9ziTTsUx1+HQJ4C+REwXt24=;
-        b=B8nD8Fp3pKuGb4lHOZ84H4/nOGJ8TCZFXWlICELcNPlj0qfYv6mz9j7y+MYMqypD9C
-         nIkC2NWd+SqQDZp5ujS7XM6TvutoecmrB9NsaEIIDwY+uu6Q48cX2bjq09BTWhBWclk2
-         UR/MJkye5PCRFbEij9b4Nd1sNd8y49IwnKwqrM8s/tYAWZyPwmJUBUwvZ5+KKq7wymzT
-         iThsVMiUymWOPfoXkeetxPGAd71nh15zShIz8HM+bcnsPQdR5JqqWc/JGZQjxcBDOvEW
-         pZhMa7ww5M9BoSidjl1LRigyQhNlw3CoK78DO/wZF0pz6NX8V7F1D93ZUUPczbThlTJl
-         Z0ww==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lVJTv/KYcj5s5h2/xecWpW4NQ7yGRWj+kwesUyQ0/6E=;
+        b=Hcx3tU6kpqOiP7guKULT6Q88OA0wmdXc3bShKOHzecIjwBREVmqVkpGpjsb7Yz93jb
+         Gu1ikBmXJYF+MqHCrC1NNH+7jY2HgeQJoU2XuFLa+9QvZwzfEhhAKrCoxfMKCnU808ti
+         bmh3Lcfg4MMrw5KTW8m0IcsxozeDlOaJSizTIdyuA6ib+MdoRIyije+y1drRtvF7ofbI
+         8qrowATHu/ZNCgbjCsGtdrdgi6ZAt+Umzm4Va5vmWYzzaGwopv4y6CbcCiE0Xpic4Dog
+         NZ3fxc+KrbwzUzBLZSjuojx2QMUx0zZjhtKk6zsDmE6pAJ/iaBuy9mKQ+R1sGw4xsRfl
+         bzuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R7PACTSV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lh+bRpyR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20-20020a05622a131400b003e4f067e6c0si3608091qtk.729.2023.04.07.19.48.02
+        by mx.google.com with ESMTPS id bs35-20020a05620a472300b0074863cf37afsi3901323qkb.579.2023.04.07.21.18.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Apr 2023 19:48:02 -0700 (PDT)
+        Fri, 07 Apr 2023 21:18:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R7PACTSV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lh+bRpyR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pkyXy-0006wZ-My; Fri, 07 Apr 2023 22:43:22 -0400
+	id 1pl01D-0004mU-25; Sat, 08 Apr 2023 00:17:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pkyXw-0006uK-QR
- for qemu-arm@nongnu.org; Fri, 07 Apr 2023 22:43:20 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1pl01B-0004le-M9
+ for qemu-arm@nongnu.org; Sat, 08 Apr 2023 00:17:37 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pkyXt-0005WY-In
- for qemu-arm@nongnu.org; Fri, 07 Apr 2023 22:43:20 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id w11so235332pjh.5
- for <qemu-arm@nongnu.org>; Fri, 07 Apr 2023 19:43:16 -0700 (PDT)
+ id 1pl01A-0003ly-4B
+ for qemu-arm@nongnu.org; Sat, 08 Apr 2023 00:17:37 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-63397c54c5aso16957b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 07 Apr 2023 21:17:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1680921795;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=fm2Ro7+DC/VzvdVmtM9K9ziTTsUx1+HQJ4C+REwXt24=;
- b=R7PACTSVOT5JqWb3HbVL6D55u2ecy1t/u8lLsvHDX4dKg/gykVEUziAzeXunw2VB93
- BGgduIAzB/XUOY1xOs42ki5Sv+Mz//x9syxP5EwE4XcLUoyRs+UeNbV+hKrbirkel/RJ
- 8B1xy6kDsXAY82CXIJWb4Y45Exo7uQ6NDoyMa1WLWL3Sc7hZ7QNmHUt+b1ABiFWpb27Y
- SpyYqAaQdVmP0yoQNjmQyK4npbOHe1uWg3CfmfA566Nri4ahCbwJDVOgvhmACgVzutUh
- 89+4vEovjCSqhrsxo0iG0n5pPyEmz7fW9WVq9lhhc361QIYx9mweB5KPJUEGTjq0OHZv
- 31dQ==
+ d=linaro.org; s=google; t=1680927454;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lVJTv/KYcj5s5h2/xecWpW4NQ7yGRWj+kwesUyQ0/6E=;
+ b=lh+bRpyRPfWIYK6yDR5IjTMiYWJGB77utURwDzV6Bl/oIYOf7nCGv3aFA7zNzSFcb1
+ cxWz5jy6CNko3Mf/dD+aUe0971/72MjGLXYXh44U1rZzefX6QnQMepdkWdk/FmzBDMGs
+ 9wTAS4lj63gS/o4jRcv3qj0RL8W+7jh7G7/ae4RhiqTOXPDnXyIq09WKMoF5ayue2uUb
+ fBXhFbdpfFaV7tdHY1xQcNFmHyKtWoSsa1XtUnQFHkGjhP0pFzOYrLtmhZIWnOE+ZQCb
+ gIBKcGqnKr5vMXDcc+nUBTDL/NStbfFuqcZMBZTJmlwlyoTmUXNAEuMHnpxl/Q1gWfoU
+ Hy7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680921795;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fm2Ro7+DC/VzvdVmtM9K9ziTTsUx1+HQJ4C+REwXt24=;
- b=4+ODISS3nnoYb+990Lb5bRhQAYyWKAH2S+7GtViEUIfD+4M82lu7aSwQpFvt/41P9X
- LKddum2top8Wj7LU1m4k/UN9M3f8E/fjO4Uw18eIw7PJqxhpV+k//lenmwpfiinFtu/X
- ry+fk3CoF/23iYSLtY9DknKFSuDCmJsZd90XaqBLjZ+3r0/Ja01INzbE7VeLR7PwctBh
- 3H+auItuGFSIyKMTDHjxfVpJKytIqF3Bm4nGJeHTgcB3b5ExFaNd7QcGqolI7/oQfrMx
- WiS3AHN6k60L9baMEIluVbNMEj/7nsofvyVdT7BtIJyRF4yGj/bfJfrLvbAUH5ORQgdW
- FARQ==
-X-Gm-Message-State: AAQBX9eVVOfFNEWET5jevyB2bUsXRK1Tof6xFeJR/WW22NMus1cxToBA
- WLNIfnYzZyXSeBdAWU40ZGhpGToPFp5ZrIVZLbg=
-X-Received: by 2002:a17:903:32cd:b0:1a1:dd2a:fe54 with SMTP id
- i13-20020a17090332cd00b001a1dd2afe54mr5464332plr.60.1680921795497; 
- Fri, 07 Apr 2023 19:43:15 -0700 (PDT)
-Received: from stoup.. ([2602:ae:1541:f901:8bb4:5a9d:7ab7:b4b8])
+ d=1e100.net; s=20210112; t=1680927454;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lVJTv/KYcj5s5h2/xecWpW4NQ7yGRWj+kwesUyQ0/6E=;
+ b=i55ZaWB6S+hLcQDzH5K2HqsunikTgkeGS7Ij8MW2JOuXxLmh+cbB5nzlCBSM5Ubf26
+ N2CjzB7IVVU9OCb1dLhv9KZMxRrJZZBEBlSJLzecANWBZr2CC814/dKbgBiqqlm6LGgV
+ RjYL4VGqYN7GxdRsc1xHaZXzKRbX/ayaKMqWd2J/ORiTtU2ptyemjSbBoS4xeLxJa9EV
+ sa0PlDbqGe2QVLZc4M0caZnJcDeuM2/IA03fFgD8/KrUWeVBbVESeFDcuvFaUOgUSt+p
+ kD4HO415k2qTV6SSnDRJMbQLVLc/iUZy+IiEsIlCs6qtUqbr3HynnPYUJJkwt5GB8LcF
+ kN7Q==
+X-Gm-Message-State: AAQBX9cbfe1njaICzDPC5h26VmKX/xvINasZmFgSrV2nFFvYMLm3lq4M
+ hSC04sYi164oZrazw6ygiu7HjQ==
+X-Received: by 2002:a62:1c58:0:b0:626:2984:8a76 with SMTP id
+ c85-20020a621c58000000b0062629848a76mr772678pfc.34.1680927454081; 
+ Fri, 07 Apr 2023 21:17:34 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1541:f901:8bb4:5a9d:7ab7:b4b8?
+ ([2602:ae:1541:f901:8bb4:5a9d:7ab7:b4b8])
  by smtp.gmail.com with ESMTPSA id
- d9-20020a170902c18900b0019d397b0f18sm3530780pld.214.2023.04.07.19.43.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Apr 2023 19:43:15 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org
-Subject: [PATCH for-8.1 00/42] tcg: Simplify calls to load/store helpers
-Date: Fri,  7 Apr 2023 19:42:31 -0700
-Message-Id: <20230408024314.3357414-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ n9-20020a62e509000000b00580e3917af7sm3758893pff.117.2023.04.07.21.17.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Apr 2023 21:17:33 -0700 (PDT)
+Message-ID: <c56f4f56-6cba-ceaa-9f89-228fafcbc2ac@linaro.org>
+Date: Fri, 7 Apr 2023 21:17:31 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] target/arm: Fix debugging of ARMv8M Secure code
+Content-Language: en-US
+To: pbartell@amazon.com, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20230408000118.50854-1-pbartell@amazon.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230408000118.50854-1-pbartell@amazon.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.03,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,122 +127,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MJAWuVDC8qzg
+X-TUID: S8s87kPmQUl+
 
-There are several changes to the load/store helpers coming, and
-making sure that those changes are properly reflected across all
-of the backends was harrowing.
+On 4/7/23 17:01, pbartell@amazon.com wrote:
+> From: Paul Bartell <pbartell@amazon.com>
+> 
+> Revert changes to arm_cpu_get_phys_page_attrs_debug made in commit
+> 4a35855682cebb89f9630b07aa9fd37c4e8c733b.
+> 
+> Commit 4a35855682 modifies the arm_cpu_get_phys_page_attrs_debug function
+> so that it calls get_phys_addr_with_struct rather than get_phys_addr, which
+> leads to a variety of memory access errors when debugging secure state
+> code on qemu ARMv8M targets with gdb.
+> 
+> This commit fixes a variety of gdb memory access errors including:
+> "error reading variable" and "Cannot access memory at address" when
+> attempting to read any memory address via gdb.
+> 
+> Signed-off-by: Paul Bartell <pbartell@amazon.com>
+> ---
+>   target/arm/ptw.c | 8 ++------
+>   1 file changed, 2 insertions(+), 6 deletions(-)
+> 
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index ec3f51782a..5a1339d38f 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -2999,16 +2999,12 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+>   {
+>       ARMCPU *cpu = ARM_CPU(cs);
+>       CPUARMState *env = &cpu->env;
+> -    S1Translate ptw = {
+> -        .in_mmu_idx = arm_mmu_idx(env),
+> -        .in_secure = arm_is_secure(env),
+> -        .in_debug = true,
 
-I have gone back and restarted by hoisting the code out of the
-backends and into tcg.c.  We already have all of the parameters
-for the host function call abi for "normal" helpers, we simply
-need to apply that to the load/store slow path.
+Nack.  This will now affect vcpu state by changing the contents of the softmmu tlb, as 
+well as changing the contents of memory (!) via PTE access/dirty bit updates.
 
-Unlike the normal helpers, we cannot use tcg_gen_foo(), so we start
-by creating additional required backend primitives for extension.
-This is followed by putting them together with knowledge of the types,
-and some functions to handle register move/extend with overlap.
-Finally, top-level tcg_out_{ld,st}_helper_args which contains all
-knowledge of the helper function signatures.
-
-There will be additional backend unification coming for user-only,
-and for sparc64, but that needs to wait for some of the changes within
-my atomicity patch set.  And this is quite large enough for now.
-
-One final note about patch 27, dropping support for riscv32 as a host.
-This is driven by the existing
-
-    /* We don't support oversize guests */
-    QEMU_BUILD_BUG_ON(TCG_TARGET_REG_BITS < TARGET_LONG_BITS);
-
-which causes the build to fail for all 64-bit guests.
-
-One of the upcoming changes is to build TCG once, which means that the
-build would fail entirely.  Which means we might as well drop it entirely.
-Doing this first simplifies everything else.
-
-I have not yet simplified top-level meson.build to match, because
-I don't know if we should leave something to support riscv32 with
---enable-tcg-interpreter.  I first reaction is no, because there
-really is no way to test it, because no one ships such an OS.
-
+A more complete description of "a variety of ... errors", and the conditions under which 
+they are produced, would be appreciated.
 
 r~
-
-
-Richard Henderson (42):
-  tcg: Replace if + tcg_abort with tcg_debug_assert
-  tcg: Replace tcg_abort with g_assert_not_reached
-  tcg: Split out tcg_out_ext8s
-  tcg: Split out tcg_out_ext8u
-  tcg: Split out tcg_out_ext16s
-  tcg: Split out tcg_out_ext16u
-  tcg: Split out tcg_out_ext32s
-  tcg: Split out tcg_out_ext32u
-  tcg: Split out tcg_out_exts_i32_i64
-  tcg/loongarch64: Conditionalize tcg_out_exts_i32_i64
-  tcg/mips: Conditionalize tcg_out_exts_i32_i64
-  tcg/riscv: Conditionalize tcg_out_exts_i32_i64
-  tcg: Split out tcg_out_extu_i32_i64
-  tcg/i386: Conditionalize tcg_out_extu_i32_i64
-  tcg: Split out tcg_out_extrl_i64_i32
-  tcg: Introduce tcg_out_movext
-  tcg: Introduce tcg_out_xchg
-  tcg: Introduce tcg_out_movext2
-  tcg: Clear TCGLabelQemuLdst on allocation
-  tcg/i386: Use TCGType not bool is_64 in tcg_out_qemu_{ld,st}
-  tcg/aarch64: Rename ext to d_type in tcg_out_qemu_ld
-  tcg/aarch64: Pass TGType to tcg_out_qemu_st
-  tcg/arm: Use TCGType not bool is_64 in tcg_out_qemu_{ld,st}
-  tcg/i386: Use TCGType not bool is_64 in tcg_out_qemu_{ld,st}
-  tcg/ppc: Use TCGType not bool is_64 in tcg_out_qemu_{ld,st}
-  tcg/s390x: Pass TCGType to tcg_out_qemu_{ld,st}
-  tcg/riscv: Require TCG_TARGET_REG_BITS == 64
-  tcg/riscv: Expand arguments to tcg_out_qemu_{ld,st}
-  tcg: Move TCGLabelQemuLdst to tcg.c
-  tcg: Introduce tcg_out_ld_helper_args
-  tcg: Introduce tcg_out_st_helper_args
-  tcg/loongarch64: Simplify constraints on qemu_ld/st
-  tcg/mips: Reorg tcg_out_tlb_load
-  tcg/mips: Simplify constraints on qemu_ld/st
-  tcg/ppc: Reorg tcg_out_tlb_read
-  tcg/ppc: Adjust constraints on qemu_ld/st
-  tcg/ppc: Remove unused constraints A, B, C, D
-  tcg/riscv: Simplify constraints on qemu_ld/st
-  tcg/s390x: Use ALGFR in constructing host address for qemu_ld/st
-  tcg/s390x: Simplify constraints on qemu_ld/st
-  tcg/sparc64: Drop is_64 test from tcg_out_qemu_ld data return
-  tcg/sparc64: Pass TCGType to tcg_out_qemu_{ld,st}
-
- include/tcg/tcg.h                    |   6 -
- tcg/loongarch64/tcg-target-con-set.h |   2 -
- tcg/loongarch64/tcg-target-con-str.h |   1 -
- tcg/mips/tcg-target-con-set.h        |  13 +-
- tcg/mips/tcg-target-con-str.h        |   2 -
- tcg/ppc/tcg-target-con-set.h         |  11 +-
- tcg/ppc/tcg-target-con-str.h         |   6 -
- tcg/riscv/tcg-target-con-set.h       |   8 -
- tcg/riscv/tcg-target-con-str.h       |   1 -
- tcg/riscv/tcg-target.h               |  22 +-
- tcg/s390x/tcg-target-con-set.h       |   2 -
- tcg/s390x/tcg-target-con-str.h       |   1 -
- target/i386/tcg/translate.c          |  20 +-
- target/s390x/tcg/translate.c         |   4 +-
- tcg/optimize.c                       |  10 +-
- tcg/tcg.c                            | 556 ++++++++++++++++++++++++++-
- tcg/aarch64/tcg-target.c.inc         | 156 ++++----
- tcg/arm/tcg-target.c.inc             | 242 ++++--------
- tcg/i386/tcg-target.c.inc            | 257 +++++--------
- tcg/loongarch64/tcg-target.c.inc     | 167 +++-----
- tcg/mips/tcg-target.c.inc            | 392 ++++++++-----------
- tcg/ppc/tcg-target.c.inc             | 319 +++++++--------
- tcg/riscv/tcg-target.c.inc           | 347 ++++++-----------
- tcg/s390x/tcg-target.c.inc           | 243 +++++-------
- tcg/sparc64/tcg-target.c.inc         | 125 +++---
- tcg/tcg-ldst.c.inc                   |  15 +-
- tcg/tci/tcg-target.c.inc             | 116 +++++-
- 27 files changed, 1596 insertions(+), 1448 deletions(-)
-
--- 
-2.34.1
-

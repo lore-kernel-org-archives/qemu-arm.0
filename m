@@ -1,109 +1,129 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp582406ejc;
-        Tue, 11 Apr 2023 08:25:05 -0700 (PDT)
-X-Google-Smtp-Source: AKy350afsYdo4hMSN6LgE4HBWCQD6RhQJRvoSyMzjIZS5U5/kyqU31jiEfu76MY16T03M+2UN9wb
-X-Received: by 2002:ac8:58ca:0:b0:3e2:e71e:ff78 with SMTP id u10-20020ac858ca000000b003e2e71eff78mr19924955qta.55.1681226705767;
-        Tue, 11 Apr 2023 08:25:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681226705; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp558553ejc;
+        Tue, 11 Apr 2023 07:51:10 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YYQ6yFSzOCWiEmBoazJNcMPbNhIcvPjLJ9DTn7NlpsDnmEnC+g0WawV9l4HA1FTeMmuI0D
+X-Received: by 2002:a05:6214:2461:b0:5e0:5ea6:69cc with SMTP id im1-20020a056214246100b005e05ea669ccmr27370342qvb.0.1681224670008;
+        Tue, 11 Apr 2023 07:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681224669; cv=none;
         d=google.com; s=arc-20160816;
-        b=WtEFF0BddjXEYeOMw9iULqpBLtEXyotoqsm05UjgRWygpvUFMPsjXPGxE1jsdx5NHx
-         eI2bvRZwqIBYB/z3geLkaagQkveRhSqcsrqKs3O5ntv55e8GCgkHg8xrlU/F9WQAYNgp
-         SqSZ/ehHs7D/xujJNsDqsV/wPui4cTydx4XtI51mUI3Q+JVyeP/14BBPJKHU+7JJJg4O
-         iAWbV8LiCAwmqMmDhOiqpmJDF8fe172qe9Ql9nDIP/+f8Qfz/qhF1EKRYbqpGNpw8jyC
-         4J1FJCaJngvp+fkITwk8DT/rXjH3mCxSdD0seD0OesqzQE1ujY/Xshn8fzjkuBM0dWHv
-         dGaw==
+        b=ovQSx4Q/Jqlht8bOTF/Pnjd6M1wvQKfliWKZFnbfALF84IozJAxSe0QXXTPPrpbGSJ
+         N6M46sQswrTFEYcBw/6A5vCXmKFn/djsNsTKDL37a1vFZVItvbkgsZ9zcUopqtsftr0c
+         dYNYJa3lRbb62LoB52BnQpQ/fFtGTJf003F04NQOu6e5luKIb+y/IFXAqcowibFFZnZl
+         NNoXcLbJ49UULYZ73W5CmMtNKTsdPhmKVENbZ/5aJoZb7Yc5c5COd9/lqpOaSwZP1dAy
+         cHjtH1KIzHEc7N0kcVy+CDzJsrskLWlaxyD+5mjyug4/DZuWX4B6gjXg/sLvVN5vZGh8
+         DgSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=uqXJKldNs6ZkRC2QswOKIpXD0Aq3/zbZCFwDsT+PsrM=;
-        b=xLLHl+qj9aX1gQEduC60D1vp68yW3Hva5ol22YAbu/FBbyIAoiVQKZb9dubBf+w53D
-         TVbg7AsFXk/AsSTeJUPolZjMfdzNGUn6AK1/IxwYeZXR08ktdXyEZckathMo+D6BzLaL
-         pVE4htnXyH6g8Gsu3jnLGm2PsTWTpVB/sJK+tLEfvwbsuR6pu4uP6h5jGp9N+YZNY/oe
-         nDDi/PJNvQSwiU/3fjaCB17qW+sf39ESc12mrTox0Gp3+1HHyaojU86qDSsOj0LUDNbV
-         DteRI+hAB8K+CmCC6olyyYZrdtqkFQN+5vOeE99MDg7veYbnFyE89RmKyLx8KXZbpvrm
-         O4xQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=OONh1tM008WsfhKisHY4nGddPBIQCQW/ooPTbHlLuSc=;
+        b=fAikq6xfaj0laIzN5sgjkEByTC0O7dXV/nHM2XmO6GkqOrRKct3RBvwa4AjKbg37Od
+         nDSiIxJm4Zh9ciOPr5avOnR9e1wTemfokE/0HAykO9qPnBjkakaJ99w233rZKnE9ncpD
+         ikqpxnW+WMaUHWzb5VTy4zLRGO9BrQQSoxbmqFtIXGRm+uNrg28hli4uy860SclfZtGq
+         4lUE9nRHxs7EsD5uPuD3QnyOIGP6gKisPS9Hv5f42y8f3lgfsgsE2+ztX85/T+/WRLaD
+         /mMBxWuOqxkyJDue5dK7i42RphM8BkxDRfszcCykJBvRqCGZHPh+sdUmjNPpvU7m1+LO
+         FF7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qkaqy2Uq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EYRFJN/q";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q140-20020a374392000000b0074a9516e752si5127832qka.780.2023.04.11.08.25.05
+        by mx.google.com with ESMTPS id t18-20020ac85892000000b003d79a9ebcc9si9387552qta.570.2023.04.11.07.51.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Apr 2023 08:25:05 -0700 (PDT)
+        Tue, 11 Apr 2023 07:51:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qkaqy2Uq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="EYRFJN/q";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pmFrR-0000Go-7N; Tue, 11 Apr 2023 11:24:45 -0400
+	id 1pmFJh-00065t-Ic; Tue, 11 Apr 2023 10:49:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pmFrK-0000FV-Pm
- for qemu-arm@nongnu.org; Tue, 11 Apr 2023 11:24:39 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pmFrI-0006oT-Mv
- for qemu-arm@nongnu.org; Tue, 11 Apr 2023 11:24:38 -0400
-Received: by mail-ej1-x633.google.com with SMTP id f26so15239695ejb.1
- for <qemu-arm@nongnu.org>; Tue, 11 Apr 2023 08:24:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681226670; x=1683818670;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=uqXJKldNs6ZkRC2QswOKIpXD0Aq3/zbZCFwDsT+PsrM=;
- b=qkaqy2UqZ0uQh/QhiNHySK1TH3rdE20Pz+qlgFg/g0BDNO92U6nZimPCzgtaXe+RuG
- VVTp/LtLC4mwC56bM6vqLa6QeaWs2dgLG4VIyl+yIweWb65XnsBQGagVajt4oIidIflj
- fUkOKawq30bIL2gTontuha9ao8Jtfes9Wgx8HiLbS70HunkOcLSbdGYqzCC021EtRbKq
- HGcbXituEXNwopYujAuMfXjCWsbgpEguVPPxREgqFke1VSCaE0AMIfWPB1bqRL24oq3O
- NMpPkbjXDo7tM2+9MsJitpayXSN2ZNkCM3X/P/4ujvaVD6MGcXvlTgb33MZ+dW7V7xZ6
- tu2g==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pmFJf-000656-U6
+ for qemu-arm@nongnu.org; Tue, 11 Apr 2023 10:49:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1pmFJe-00070G-IL
+ for qemu-arm@nongnu.org; Tue, 11 Apr 2023 10:49:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1681224589;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OONh1tM008WsfhKisHY4nGddPBIQCQW/ooPTbHlLuSc=;
+ b=EYRFJN/q5Nlzo34Js70ikiOThledPnCVrXggRajv4bKzQ2QeQKDuN52/o4xkHkFVfjztj1
+ ruWtOguobtJPslLdSiNUhqJ2mYpa2uQqGTvCjzzvsqYpcu2Y9PDAMoHzD25esFo+qq6qgX
+ PIGR9dJRiNoYjn8nts0sqHS0fRJQAlk=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-330-W2568DAKPYazSLO3Ow6e2w-1; Tue, 11 Apr 2023 10:49:47 -0400
+X-MC-Unique: W2568DAKPYazSLO3Ow6e2w-1
+Received: by mail-ed1-f69.google.com with SMTP id
+ 4fb4d7f45d1cf-50480ce89a2so1637375a12.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Apr 2023 07:49:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1681226670; x=1683818670;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uqXJKldNs6ZkRC2QswOKIpXD0Aq3/zbZCFwDsT+PsrM=;
- b=paJcz5dB2vAyx9wBCqof7NdjKCeGpEQdwYIm766bi7N5dIxUQDbkYwlrFwuolZmEb+
- uO6O7FkLtTAK8MBdPGrm4nB9EqNr9aZPOkZ6TyANqlJWHXjdleiTi/YGH5Vopn9rop9/
- bGO+xza40ZCmnBZsGTB9AphWC8dBhKneGQttu08+e4kdt+9//hG39kL1jayLThgQaoVy
- ldEa981JhuptbP/N1/MDW3lH9wiLBNCFP95zWvovYYmuefbDy75+ow71WwoIa2TX4r2o
- tJd9CtdGo2mgKh8ib4gaE/Uoaj9uf3JYxecqKtl0JmNayHBysR8kJIJbhN50SwUSxWVW
- adcA==
-X-Gm-Message-State: AAQBX9fScCGD1HsMz9DooG2Du+56JoO4gzVzR+Z8celPyPwOclOGsYA+
- GOkP4X62tsEbTBOlJxVZsBanswAwzxovsK3yHbfgJQ==
-X-Received: by 2002:a17:906:b301:b0:930:90ce:a1a6 with SMTP id
- n1-20020a170906b30100b0093090cea1a6mr4576902ejz.6.1681226670194; Tue, 11 Apr
- 2023 08:24:30 -0700 (PDT)
+ d=1e100.net; s=20210112; t=1681224586;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=OONh1tM008WsfhKisHY4nGddPBIQCQW/ooPTbHlLuSc=;
+ b=IXSt1FUI3h6K2gE7pip/gR2Poyu7iOMjsfYoqndN/q4l+jZh4O8WUWgo2kV3BSTU56
+ 8uOIPYkv45LslM4X79wWWvdTxIOLEEkNc5Lw3+ww1MgyD3Jxo4veYKjeH9raedzqEdTe
+ /YUdriHfecytHC8hyXBCJwCYT+LlyAnquanLIvTxDOMqmPaL9T25eT+14rQ8lZgpiqZl
+ RIhOWvin5gqptSYws43C6gheaWyTpkgG/ITPCuphIvGX3hrA+eNg0tx57vTzIwpUlobM
+ yFqfV301NPvU+zmeidT2uztiaBjOMjmxob6Yp363UKGCz2yrfYkNfE86tzkUF/LrUCbN
+ wa8w==
+X-Gm-Message-State: AAQBX9eWjozycome04q8cnhDy9ETuNhGP9DtOu+lBwlpHj33TIOK8X4i
+ z2KgY/er5ttuJQ00Lgvi/OMZYaIKiHcKraE3ha1y+8ag1x7cZp7aqvxB7zgg3E+QAb4UMGsKVlI
+ 2ulp38ohhEa/w
+X-Received: by 2002:aa7:cad9:0:b0:4fd:1cf1:b7b0 with SMTP id
+ l25-20020aa7cad9000000b004fd1cf1b7b0mr12575799edt.7.1681224586542; 
+ Tue, 11 Apr 2023 07:49:46 -0700 (PDT)
+X-Received: by 2002:aa7:cad9:0:b0:4fd:1cf1:b7b0 with SMTP id
+ l25-20020aa7cad9000000b004fd1cf1b7b0mr12575777edt.7.1681224586183; 
+ Tue, 11 Apr 2023 07:49:46 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ n19-20020a509353000000b005002daeb27asm6016311eda.37.2023.04.11.07.49.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Apr 2023 07:49:45 -0700 (PDT)
+Date: Tue, 11 Apr 2023 16:49:44 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric DeVolder <eric.devolder@oracle.com>
+Cc: shannon.zhaosl@gmail.com, mst@redhat.com, ani@anisinha.ca,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ boris.ostrovsky@oracle.com
+Subject: Re: [PATCH 1/2] hw/acpi: arm: bump MADT to revision 5
+Message-ID: <20230411164944.0549bb29@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230328155926.2277-2-eric.devolder@oracle.com>
+References: <20230328155926.2277-1-eric.devolder@oracle.com>
+ <20230328155926.2277-2-eric.devolder@oracle.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20230408000118.50854-1-pbartell@amazon.com>
- <c56f4f56-6cba-ceaa-9f89-228fafcbc2ac@linaro.org>
- <E3A05628-86C2-42B7-B17B-64972FE60834@amazon.com>
-In-Reply-To: <E3A05628-86C2-42B7-B17B-64972FE60834@amazon.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Apr 2023 16:24:19 +0100
-Message-ID: <CAFEAcA8pSvbFwcbstF1q5y3yE8S3R-X4LKgihq-PFY0F02fw7Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix debugging of ARMv8M Secure code
-To: "Bartell, Paul" <pbartell@amazon.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,36 +138,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3Ow2KogFHjAF
+X-TUID: MDt8tnksb1Qo
 
-On Mon, 10 Apr 2023 at 15:38, Bartell, Paul <pbartell@amazon.com> wrote:
->
-> You can reproduce the problem by running gdb against an ARMv8M target running secure mode code (the default).
->
-> Running qemu with the following arguments : qemu-system-arm -machine mps2-an505 -m 16M -cpu cortex-m33 -nographic -semihosting -monitor null --semihosting-config enable=on,target=native -d guest_errors -kernel /path/to/binary.elf
->
-> With the following .gdbinit file:
-> target extended-remote :1234
-> compare-sections
->
-> Upon startup, every symbol in the elf file reports the following error:
->
-> Section .text, range 0x10000000 -- 0x10009298: MIS-MATCHED!
-> Section .text.main, range 0x10009298 -- 0x10009300: MIS-MATCHED!
-> Section .text.prvQueueSendTask, range 0x10009300 -- 0x10009338: MIS-MATCHED!
->
-> Attempting to debug results in errors constantly (unable to read or write memory at all).
->
-> init_data_sections () at /project/Demo/ARM_MPS/startup.c:95
-> 95      {
-> (gdb) info locals
-> pCopyTable = <error reading variable pCopyTable (Cannot access memory at address 0x381fffec)>
-> dataIndex = <error reading variable dataIndex (Cannot access memory at address 0x381fffe8)>
->
-> Does that clarify my report sufficiently?
+On Tue, 28 Mar 2023 11:59:25 -0400
+Eric DeVolder <eric.devolder@oracle.com> wrote:
 
-Could you (a) file a bug and (b) attach a sample test executable
-that demonstrates the problem, please?
+> Currently ARM QEMU generates, and reports, MADT revision 4. ACPI 6.3
+> introduces MADT revision 5.
+> 
+> For MADT revision 5, the GICC structure adds an SPE Overflow Interrupt
+> field. This new 2-byte field is created from the existing 3-byte
+> Reserved field. The spec indicates if the SPE overflow interrupt is
+> not supported, to zero the field.
+> 
+> Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
 
-thanks
--- PMM
+
+needs ACK from ARM folks
+
+> ---
+>  hw/arm/virt-acpi-build.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 4156111d49..23268dd981 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -705,7 +705,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      int i;
+>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      const MemMapEntry *memmap = vms->memmap;
+> -    AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
+> +    AcpiTable table = { .sig = "APIC", .rev = 5, .oem_id = vms->oem_id,
+>                          .oem_table_id = vms->oem_table_id };
+>  
+>      acpi_table_begin(&table, table_data);
+> @@ -763,7 +763,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          /* Processor Power Efficiency Class */
+>          build_append_int_noprefix(table_data, 0, 1);
+>          /* Reserved */
+> -        build_append_int_noprefix(table_data, 0, 3);
+> +        build_append_int_noprefix(table_data, 0, 1);
+> +        /* SPE overflow Interrupt */
+> +        build_append_int_noprefix(table_data, 0, 2);
+>      }
+>  
+>      if (vms->gic_version != VIRT_GIC_VERSION_2) {
+

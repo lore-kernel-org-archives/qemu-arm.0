@@ -1,94 +1,90 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp549062ejc;
-        Tue, 11 Apr 2023 07:35:29 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Z+oslCKL4V9/TkBf1stKTfYLqFaH/7Y73NiZhcXCMAVP8sivCX2Il1YELbWeLOJU/urii2
-X-Received: by 2002:aa7:cb95:0:b0:4fd:29a1:6a58 with SMTP id r21-20020aa7cb95000000b004fd29a16a58mr2581369edt.19.1681223728837;
-        Tue, 11 Apr 2023 07:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681223728; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp553389ejc;
+        Tue, 11 Apr 2023 07:42:20 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZufKsgeqYMXAtVKYe73Lc+G6OdvNb7MgW9tlNYp3lZXz5YPrDbsNY7+k0C9UF+l3anMT1A
+X-Received: by 2002:a17:90b:507:b0:246:88c7:4374 with SMTP id r7-20020a17090b050700b0024688c74374mr12049056pjz.34.1681224140605;
+        Tue, 11 Apr 2023 07:42:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681224140; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ko4JgV2YmhBNY7W0f3ZdPXbHJy+/jHaxfDKgAWYe+ssN8mfyyL+a6bLaB+4U+/hn/
-         b2I5+8uv+Pbh9RO9mfEXALuJr6oTAczYAtx6AUe+Z9W7yUqzuauoHtJMCCi0fhZ4jdUU
-         Ytsv4/odgXLGESiUuZF0ilkgaWxmtkcpvS6yLK1iNeCUZrU/M91JsQg7BmHDXgR1M/1H
-         i0i6Hy4p9tazFJYAQVJrfLCJKTwVrDlDLSIZO3AimXKngzSoA9xxpuiYU5EqHaigddi2
-         9B/wLnvm2xTuAFu1w/D/cEZUYephZuKoNTOFEAy2wt3MaUfyojhAoE8dvAzLmo1wvqZh
-         e7Iw==
+        b=fWLKUGpvXDrsP8mVGg7r+0x6VdO62InDShSQ8QJqlPD3aNz5bzXjwct0o3CBP8o0EQ
+         fbeq1GItqKfcMmgK9fS6FUW2tUIsCYbmKDQXUrhqUQieTlvEA2QGuZGlf08tpfnBNJRo
+         CchvjxEWyI19yNUQCgV9QZy0j3DIb19AmdcgDvcc+jWYIGWdJXwhLYtVFNylMrR8YtLX
+         PXVpG/54PymYq8adFvel0fgfbcH1w6g3DVjW0JsDZZOvK3q+zyiS2rFKDhE8Nxqfz7GO
+         y//PVTStM5Q1DJ7jy2BFxojOM8rqZqAPO6dJfHyAUqUcwVla/p31VtFi/XvklhkRWdRi
+         fNyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=y3Txt+HQpQ8Mj9XB8+cfu2O7Y6JX7xFB30c+4HBEc0Y=;
-        b=eNxB0lbpx4rrCSmoz6p1t5gHpuf+fulti0yQJbsoDiVtOF0Yb67ShjZ3ndpmrMBQhi
-         0oy08jUsjzp6OlSYIxxoJu4cQatLYYcBr4eOxldMVSkMevcyQNx5eaNm0ZCj5oX2WhMp
-         VGGroo9mA/lEXHLHuhXU+ZXtItfnb8iVkcV/8BM7J1BiAUTjEpmdUd3gXWpXcZsCFVlw
-         Eu/iSj+pO7NP7dxoE4yljEWLnRUOEIfsghhmc/ZwF1ukSnDdq+/SG5JyCv4OdlXfiy9A
-         gFlr1+Ele48wpvl2YW9xplFjX+j9cA5m/Wy2LPjbgAIjG79HinY5yYf/fn0fQJ1n+kMc
-         Bklw==
+        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=9tYSZk5Fru65LRrfi4OzRnhB9ZIK2giLFVk4/qJWImA=;
+        b=JyGqTooykclJ7lQdpBZRHWN++RTnpsPG4XPbDK0jCHaCWmzOaAAM3xISqK1iZRtA5z
+         WP+11bbsQbsEvc96VJ97F1MgMTqDqd0ZIUpes5HHFn9U0bBJr1sHn9GfeVMjtSfO9Yf1
+         DX2Hb+KGG5h+584/BDyzFbqmIm/3EAia9lxU5YY7F5jOgm4X1OmFpCBAVzHcVVLqWxtT
+         mhfPba4LuDdfcRWnmeGKDopiJlpmUL1MD/MU41i0p3kotcedBw7FZPQoud/Q7GnQYWXV
+         O34hmJDfxy0DVbV0KVcQRjHMf29nqi/2eeUvH68uCxToZlOw8XJNPCchPFnajFRES3bN
+         t6sA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qNnKuI4b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T+jx+WTw;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id f15-20020a50ee8f000000b00504b325bd46si2969509edr.480.2023.04.11.07.35.28;
-        Tue, 11 Apr 2023 07:35:28 -0700 (PDT)
+        by mx.google.com with ESMTP id r202-20020a632bd3000000b005144b3c3e50si14148227pgr.68.2023.04.11.07.42.20;
+        Tue, 11 Apr 2023 07:42:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qNnKuI4b;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T+jx+WTw;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229749AbjDKOf1 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 11 Apr 2023 10:35:27 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:51152 "EHLO
+        id S229815AbjDKOmT (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 11 Apr 2023 10:42:19 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:33088 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229525AbjDKOf0 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 11 Apr 2023 10:35:26 -0400
-Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com [IPv6:2a00:1450:4864:20::630])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 0A71D171B
-        for <kvm@vger.kernel.org>; Tue, 11 Apr 2023 07:35:25 -0700 (PDT)
-Received: by mail-ej1-x630.google.com with SMTP id gb34so21119747ejc.12
-        for <kvm@vger.kernel.org>; Tue, 11 Apr 2023 07:35:24 -0700 (PDT)
+        with ESMTP id S229801AbjDKOmS (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 11 Apr 2023 10:42:18 -0400
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com [IPv6:2a00:1450:4864:20::632])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id B67FF172A
+        for <kvm@vger.kernel.org>; Tue, 11 Apr 2023 07:42:15 -0700 (PDT)
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-94a34e3526fso201740266b.3
+        for <kvm@vger.kernel.org>; Tue, 11 Apr 2023 07:42:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681223723; x=1683815723;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=y3Txt+HQpQ8Mj9XB8+cfu2O7Y6JX7xFB30c+4HBEc0Y=;
-        b=qNnKuI4bVRG+Yze1xxSxL6INqM4EJRCeSBz2A3KqfgGwIn601UYceNDJ65/JDqDoUb
-         ZwL/+njQGKtQN5qyhs6oqHCyXoxmgPSuup8iQII9cyMyw0W0iz0qdcAOhacT0pTFlU2j
-         j99nWi+ePKrxS8GCBwdL+RJnc0HLgCv3Gw4dq/fZuSAO0UGvW+LFiYQiuY8br9DzjbVQ
-         kdK+jxZ8hs6UkQ6lHSVBb8/Ofs/WV3oZNr1OhMv1vKRHSBJ/czOJAdhXgfPtjRXUIDBW
-         JEXAh0Toi6V2rRMQbVewtneTnsScuqJZmeupYrK/60gxG8LPMHlWZd0hcSEKTtbUIGzp
-         QZqQ==
+        d=linaro.org; s=google; t=1681224134; x=1683816134;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=9tYSZk5Fru65LRrfi4OzRnhB9ZIK2giLFVk4/qJWImA=;
+        b=T+jx+WTwC0g+vBbHREBhA2xOIiJV86ufATNu650Y6l6b+rx8vtHkJhw9CJ9EdUG4pQ
+         THGoVlE2mDqkCZYBLvqz161+oQxMjSkESZqVYdUUtL8CuRYyeCTWSHttTQ30kh4mFmn6
+         qZSEJJ3mkWemH9xpYviiTHSt9+D6tlKSPycapUL4+yCg/I5ty9kqy/xK/+XQYWitj9NV
+         +HV3t/WmxHNUpsRLJzUpP5LQj7ylkbGHBqmW+sFiySUz670gZmz0cJWzHzC9f14+nc7E
+         m+ekZxDD70P7kx2Cut7MDxCpo/ijrsDfG6qZuDIHzgpZnqbO2G8Lmqbdzm3khHma5kQI
+         bCew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1681223723; x=1683815723;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=y3Txt+HQpQ8Mj9XB8+cfu2O7Y6JX7xFB30c+4HBEc0Y=;
-        b=GeRIl6hmL2qfdDF8s0G8TxhQZyVMG8sXqd9beUM2WCBL6AcwZH9azVs/wVYgrAFuu2
-         lU9iTj0fupSoE4PGi1BHYtFKmuER6XSSL453R/arm+7UzQ509uwjB3tcQ20TGzEc1Oil
-         AjX6Y7s1qNEKp8tCNQslzj+a9tGrfebbTMed5vUyAm2P9JjjDqOwNmyREXK8qFp+ZDrW
-         TILu3EUPsOaINAZnZCqmmpif/nkEU0RP2JnMD447CkbjQWYy0L9SExeI8Fmr18IhMBzB
-         NJemfBYqcLCFSg7jkgr0jCVwzpGp2fmcdlqwX5Vzn/buqvvOFRHDF4/4ft9ExPpxsYYG
-         Kg2A==
-X-Gm-Message-State: AAQBX9emGtUI4qS432Ho5nYUb/XayaaQE/4pRW0HESyyEQbv6Te+LDnp
-        e0EAYMHFIog6hIM95QmuW+USDQMsQfH7RY053HnFACTsv5XPAJ/1
-X-Received: by 2002:a17:907:1628:b0:92f:41e4:e48b with SMTP id
- hb40-20020a170907162800b0092f41e4e48bmr5137574ejc.6.1681223723560; Tue, 11
- Apr 2023 07:35:23 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1681224134; x=1683816134;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9tYSZk5Fru65LRrfi4OzRnhB9ZIK2giLFVk4/qJWImA=;
+        b=uEAEHNr2cTevXwFxXslw18Q6JxSfxi4qkOK9cC2cfuVTNHL3PLhrBD9WPnvaNhzD1a
+         l5ra36KwSl7hJKC20qLNbpPJyArtCpRLpSm6f0xIl1NI81m7OrE6v3H1VGNQEjZYVCUz
+         RrtobjqUJACMfRVM+cq4LPzhtj4wlG+XVxpSzdM6PSeLhrXbmXNvtg/brwRr+hbqScxz
+         V2IhUZLovo2t+COUJ3I2k8aCXN6N5ID1HKT9R7I1s0yklba1FggLTSLaW50lwMRJnxsI
+         3OCcv5YDgBCBxnPTcF4XnyoGL6XBYBeTwUVWmGeAMWcCvCYVdzFOKWZFMoqAkKjqDos/
+         n9KQ==
+X-Gm-Message-State: AAQBX9fbKhwKVlPp3O9KFSKvsZ/r74o3187xUSrbld3+9bQah5wRODp/
+        ZY7Py745r66fyne0MJXb5wn8Mcu2SsnWmNEsDK0FkA==
+X-Received: by 2002:a50:9fe1:0:b0:504:87d8:ac39 with SMTP id
+ c88-20020a509fe1000000b0050487d8ac39mr1365390edf.6.1681224134171; Tue, 11 Apr
+ 2023 07:42:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230405100848.76145-1-philmd@linaro.org> <42d004e7-efa8-cd94-950b-525eac0d7ee1@linaro.org>
-In-Reply-To: <42d004e7-efa8-cd94-950b-525eac0d7ee1@linaro.org>
+References: <20230405070244.23464-1-akihiko.odaki@daynix.com>
+In-Reply-To: <20230405070244.23464-1-akihiko.odaki@daynix.com>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 11 Apr 2023 15:35:12 +0100
-Message-ID: <CAFEAcA9knoY=_7+XMtQY4_vxe78MT9+LkYUrLfThVxkVm5trDg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] target/arm: KVM Aarch32 spring cleaning
-To:     Richard Henderson <richard.henderson@linaro.org>
-Cc:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+Date:   Tue, 11 Apr 2023 15:42:03 +0100
+Message-ID: <CAFEAcA_Ge0HX28qs+08h+k4GBWhNd6367grCdXgPupB46O+aHA@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Check if debug is already initialized
+To:     Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc:     qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
         Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-Spam-Status: No, score=-0.2 required=5.0 tests=DKIM_SIGNED,DKIM_VALID,
         DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_PASS
         autolearn=unavailable autolearn_force=no version=3.4.6
@@ -97,26 +93,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 4r7qnCCPlqE+
+X-TUID: Nm1+Xt7q992S
 
-On Wed, 5 Apr 2023 at 23:06, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 5 Apr 2023 at 08:02, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
 >
-> On 4/5/23 03:08, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Remove unused KVM/Aarch32 definitions.
-> >
-> > Philippe Mathieu-Daud=C3=A9 (2):
-> >    target/arm: Remove KVM AArch32 CPU definitions
-> >    hw/arm/virt: Restrict Cortex-A7 check to TCG
-> >
-> >   target/arm/kvm-consts.h | 9 +++------
-> >   hw/arm/virt.c           | 2 ++
-> >   target/arm/cpu_tcg.c    | 2 --
-> >   3 files changed, 5 insertions(+), 8 deletions(-)
-> >
+> When virtualizing SMP system, kvm_arm_init_debug() will be called
+> multiple times. Check if the debug feature is already initialized when the
+> function is called; otherwise it will overwrite pointers to memory
+> allocated with the previous call and leak it.
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Fixes: e4482ab7e3 ("target-arm: kvm - add support for HW assisted debug")
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+>  target/arm/kvm64.c | 23 +++++++++++++++++------
+>  1 file changed, 17 insertions(+), 6 deletions(-)
 
-Applied to target-arm.next for 8.1, thanks.
+I think I agree with Philippe that the better fix is to call
+kvm_arm_init_debug() from kvm_arch_init() -- if we avoid
+calling this for each vcpu then we don't have to carefully arrange
+to ignore all but the first call. We never actually care about
+the CPUState we're passed in, so we could instead pass in the
+KVMState directly, which kvm_arch_init() has.
 
+thanks
 -- PMM

@@ -1,185 +1,99 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp401281ejc;
-        Tue, 11 Apr 2023 03:37:06 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YHOC5lPx+vWQc3vyuRjOwXWAg5QE0RS59oYrEaTs7Jd/x9ZMTL9vVyiNr5uTPS8VhvlVBe
-X-Received: by 2002:a05:622a:1104:b0:3e4:ebde:abe6 with SMTP id e4-20020a05622a110400b003e4ebdeabe6mr3050966qty.43.1681209425891;
-        Tue, 11 Apr 2023 03:37:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681209425; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp362381ejc;
+        Tue, 11 Apr 2023 02:08:45 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YC7doSQfviIA2w52Imwk+pxVNaR94+u585WoogvzucHZyt4brJiALdSyorL0PJ2u6Y/R0G
+X-Received: by 2002:a5d:6d49:0:b0:2d1:7ade:aac with SMTP id k9-20020a5d6d49000000b002d17ade0aacmr9990608wri.0.1681204125663;
+        Tue, 11 Apr 2023 02:08:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681204125; cv=none;
         d=google.com; s=arc-20160816;
-        b=v7+0gbhqJKAaFHXMVLZlCbr8eGmcF7nD3HXm802OPovUj6eoaLksvaWF6Oztka6qPH
-         izxPQnRX9kgvYyJMt6kWDBt6TaYnFjge/8056mG/H7jHIllkNOzJvKJRR+my+OTEgK5m
-         aSsPxjgJOE9/gmK/VilvJd5w107T84zgjI2cldp0542rnc1ZSx6VA5/YPpeVPHiOxjDE
-         tqhynQ/hTyUQ8ogH8e0oCvDyELPl/+88vUEbwOoWMgaNcjLuy1jom9ySAtETuM9pMEL9
-         WB8kAUWstZroLPkRbCdqd7T+naKWDS/uGxuQe5rvIldfpqLr7vsKYr4TAckYZWGrGQTx
-         Dyig==
+        b=E0bxM6sejG/MWTJYmUw7zD4S+9P5f7c5WXheDc1DFoykSLQnX5dTv9r+XBqcgafPdK
+         xoNPHwi44HTgiRGRcyHzAWCIT/8qLqanOBLGx6L02+s9S4CM3LM4dT5q0R1BGl/8lKLF
+         Pvk60RfB/170hryyKWO1K4AoBufJbAZ5ZfXVRbZADybsfcCfcNS3/2ZjxL4rF6pZhP/W
+         RJbTibv8eiibKY+Ta+0IQcxGoGhjMN6hXPkT6Un0Trq8WVD0Gjtgn/tnD360Vn+szV0g
+         U43Wnv+uApGUBQD+rrRUGJEeY8ZI2Vhn4KaLATvW4q7m6d6zJo+1v4jn5ffYa9ZI/YvH
+         Q+yQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=g2avRfZv0y9au9h3KwDHZG3ZwMEqMG52LNoBxtz2/Ss=;
-        b=qt5E3zaMpSSGDscWkZmRuLWBHfuRTrr7t6KmeuIm+M4ul1YydBj73REIuGcvI2K6wm
-         LpiJiLiqORGTo0kg7za/JTlsqlTruN4urgt/ccHP9IA4GRG3lAGOG2/CUZSNztVYLtvT
-         17Lb5KZ1q6HrC9QJ7xFjfGr4sudPoRNbF7ogYKaTOVE0N/cJ4qNPsMjXBdMqEdg/ua3Y
-         sKqAdLHT8ht7bpUi8BZrYISK1sRO7jrGk6MWPKFDrh5wgotR4LbckPodDqxPiw19EGJh
-         UzsIjIigOUpGRH0zaNDN9XIS/2BUu0Uu4qgS3Xl+ITJS8EbnEWgKp4QIHxGeA5Iy4YSv
-         lYhw==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from
+         :dkim-signature:date;
+        bh=I2iC8buvK2tS8ozL9BHGlo/Sy4UT6qIVUL5c6wk4p6g=;
+        b=wV4oy59FPtw2T81yHc4G3QfpyqgCtIlvQIzPzkb6jKZTkYPl86736lQwdun7EXxkaV
+         Fb2iSbshR/3PtEjHh1tyNrkOQhp5eQOiJCRSs6QH7nj4X4Gx+tyh5SLfqVT3j9fApvh8
+         HMeOw2s1QbSMJRssKLqR0eI3Dv0+SAEp0tg4V1kiS1sjTA+88fb9aXKinG27C2zED01N
+         EhcJEdwFSNqeg2CJElvB7DZ9o1GAeWkPC9evM7h5EhWcDQz1YjkGJ8uYgi9ionRacuaA
+         6I9vdt+bRteAS5uMz0P7F7dk1xHZj19S4z4LcoNIOw/80ZPtcnERv+2axqfhrVtDUUWU
+         CiJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SQUqIWi2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y20-20020a05620a25d400b0074857673206si8997169qko.749.2023.04.11.03.37.05
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=jDlTpk0m;
+       spf=pass (google.com: domain of andrew.jones@linux.dev designates 91.218.175.1 as permitted sender) smtp.mailfrom=andrew.jones@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <andrew.jones@linux.dev>
+Received: from out-1.mta0.migadu.com (out-1.mta0.migadu.com. [91.218.175.1])
+        by mx.google.com with ESMTPS id b1-20020adfe301000000b002e695acbbfdsi8651298wrj.1072.2023.04.11.02.08.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Apr 2023 03:37:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Apr 2023 02:08:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrew.jones@linux.dev designates 91.218.175.1 as permitted sender) client-ip=91.218.175.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SQUqIWi2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pmBMg-0007p8-Vs; Tue, 11 Apr 2023 06:36:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pmBMf-0007oI-51
- for qemu-devel@nongnu.org; Tue, 11 Apr 2023 06:36:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1pmBMd-0000hU-8F
- for qemu-devel@nongnu.org; Tue, 11 Apr 2023 06:36:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1681209398;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g2avRfZv0y9au9h3KwDHZG3ZwMEqMG52LNoBxtz2/Ss=;
- b=SQUqIWi2tKQMAOpK2t+X0NPYhYP49WQTZoepcsvW7+hNAaHvXsbSMNZaXaOgPWwL469zHI
- OVTXYszTUdhtXANHZJ4V3FnrszBxY5uT7gWFayUYb2403QKJqM7Zimmqs5yNpScROIXzdh
- oXog0o9INjbq5EzX8pqDd/4sO0VJsUg=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-94-jUDKwOq5P1WxGD_WFhUiYw-1; Tue, 11 Apr 2023 06:36:36 -0400
-X-MC-Unique: jUDKwOq5P1WxGD_WFhUiYw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- d28-20020adfa41c000000b002cea6b2d5a9so1058073wra.14
- for <qemu-devel@nongnu.org>; Tue, 11 Apr 2023 03:36:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1681209395;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=g2avRfZv0y9au9h3KwDHZG3ZwMEqMG52LNoBxtz2/Ss=;
- b=FbXgo7RX2Gd3zvgZRS4esMqEPvGrrQ00Ebpk+XItaE1Oqx/CNpC/aytCt5ZOitC2xy
- V0elappFtsK/jBbe+1gwD77cqJw5tpuELsQtSCAmgJsAZgCTD5nEmAWDm6M27tIKMnzX
- Q+a3FqZyI0KHzP9qfpkkGLu21QC/G2KmaOv+8lAkQptsl6L2g23Pk2jNkdGbmLPC1hMn
- WtVoTHEvbSRKEbqIT11OLD2H2Q5KVHzkRjpbbieQCmrKMFbl/3a+aEdvNtRMeSQoKxQR
- J1JypIp7PmU3ZMOgTsAwa0UGy9/ygyZYR8CFWEK79fPuayZFYgONR4KbSvu+b8ES/u0p
- KbPA==
-X-Gm-Message-State: AAQBX9cV5Lb4Si7SeMrC0Sf2n9N0ulfCdy8qmTyXRfaE1J1bbi4rnZfL
- fmY8sxLOkA6DqEr4C65oSBE5CbVHOUvTZisxW+w1rmK85B9oo5Zd1SV1aypeknqcAKw0aky/q0S
- Vu56BaEgH6BjpYBU=
-X-Received: by 2002:a05:600c:2309:b0:3ef:6396:d9c8 with SMTP id
- 9-20020a05600c230900b003ef6396d9c8mr9007508wmo.5.1681209395668; 
- Tue, 11 Apr 2023 03:36:35 -0700 (PDT)
-X-Received: by 2002:a05:600c:2309:b0:3ef:6396:d9c8 with SMTP id
- 9-20020a05600c230900b003ef6396d9c8mr9007500wmo.5.1681209395404; 
- Tue, 11 Apr 2023 03:36:35 -0700 (PDT)
-Received: from [192.168.0.3] (ip-109-43-179-153.web.vodafone.de.
- [109.43.179.153]) by smtp.gmail.com with ESMTPSA id
- i2-20020a05600011c200b002d7a75a2c20sm14297280wrx.80.2023.04.11.03.36.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Apr 2023 03:36:34 -0700 (PDT)
-Message-ID: <baef8b60-0f73-27ea-97a3-f29ecc2ee1e8@redhat.com>
-Date: Tue, 11 Apr 2023 12:36:33 +0200
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=jDlTpk0m;
+       spf=pass (google.com: domain of andrew.jones@linux.dev designates 91.218.175.1 as permitted sender) smtp.mailfrom=andrew.jones@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Date: Tue, 11 Apr 2023 11:08:43 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1681204125;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=I2iC8buvK2tS8ozL9BHGlo/Sy4UT6qIVUL5c6wk4p6g=;
+	b=jDlTpk0mHI9HGFG/mMYsZ8feUXZFsTYrXMBV5wrpq5gBMwvb/D9qBQrkCPFRqNvyAJEb4W
+	P4y8LBz10RyPFh4MBpBmxUQknrrQybLiS/mbE8byvPCvvIGCxYHg6xrzoKogdNXTySydbl
+	/Ezp9qgwjnJyILNj90gjOzfVQUX4280=
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Andrew Jones <andrew.jones@linux.dev>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org, 
+	qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.linux.dev, qemu-arm@nongnu.org
+Subject: Re: [kvm-unit-tests PATCH v10 0/7] MTTCG sanity tests for ARM
+Message-ID: <hlno75xnob6jwbpfzwbwsjje2ujgfzw5kwvwmu2627obkmpqk2@dtcvgno2dkge>
+References: <20230307112845.452053-1-alex.bennee@linaro.org>
+ <20230321152649.zae7edlfub76fyqq@orel>
+ <87mt3erhe3.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [for-8.0] hw/i2c/allwinner-i2c: Fix subclassing of
- TYPE_AW_I2C_SUN6I
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qianfan Zhao <qianfanguijin@163.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-References: <20230411103106.3992862-1-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230411103106.3992862-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -52
-X-Spam_score: -5.3
-X-Spam_bar: -----
-X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.246, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R+LlD6MiNTHa
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87mt3erhe3.fsf@linaro.org>
+X-Migadu-Flow: FLOW_OUT
+X-TUID: 0Ao1EA4Mi+Bu
 
-On 11/04/2023 12.31, Peter Maydell wrote:
-> In commit 8461bfdca9c we added the TYPE_AW_I2C_SUN6I, which is a
-> minor variant of the TYPE_AW_I2C device.  However, we didn't quite
-> get the class hierarchy right.  We made the new TYPE_AW_I2C_SUN6I a
-> subclass of TYPE_SYS_BUS_DEVICE, which means that you can't validly
-> use a pointer to this object via the AW_I2C() cast macro, which
-> insists on having something that is an instance of TYPE_AW_I2C or
-> some subclass of that type.
+On Tue, Apr 11, 2023 at 08:43:49AM +0100, Alex Bennée wrote:
 > 
-> This only causes a problem if QOM cast macro debugging is enabled;
-> that is supposed to be on by default, but a mistake in the meson
-> conversion in commit c55cf6ab03f4c meant that it ended up disabled by
-> default, and we didn't catch this bug.
+> Andrew Jones <andrew.jones@linux.dev> writes:
+...
+> > Someday mkstandalone could maybe learn how to build
+> > a directory hierarchy using the group names, e.g.
+> >
+> >  tests/mttcg/tlb/all_other
 > 
-> Fix the problem by arranging the classes in the same way we do for
-> TYPE_PL011 and TYPE_PL011_LUMINARY in hw/char/pl011.c -- make the
-> variant class be a subclass of the "normal" version of the device.
-> 
-> This was reported in
-> https://gitlab.com/qemu-project/qemu/-/issues/1586 but this fix alone
-> isn't sufficient, as there is a separate cast-related issue in the
-> CXL code in pci_expander_bridge.c.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/i2c/allwinner-i2c.c | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/hw/i2c/allwinner-i2c.c b/hw/i2c/allwinner-i2c.c
-> index f24c3ac6f0c..9e8efa1d63f 100644
-> --- a/hw/i2c/allwinner-i2c.c
-> +++ b/hw/i2c/allwinner-i2c.c
-> @@ -466,10 +466,8 @@ static void allwinner_i2c_sun6i_init(Object *obj)
->   
->   static const TypeInfo allwinner_i2c_sun6i_type_info = {
->       .name = TYPE_AW_I2C_SUN6I,
-> -    .parent = TYPE_SYS_BUS_DEVICE,
-> -    .instance_size = sizeof(AWI2CState),
-> +    .parent = TYPE_AW_I2C,
->       .instance_init = allwinner_i2c_sun6i_init,
-> -    .class_init = allwinner_i2c_class_init,
->   };
->   
->   static void allwinner_i2c_register_types(void)
+> So nodefault isn't enough for this?
+>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+nodefault is enough to avoid running a test with run_tests.sh,
+when its group hasn't been explicitly selected, i.e.
 
+ ./run_tests.sh
+
+doesn't run the test
+
+ ./run_tests.sh -g test-group-name
+
+does run the test.
+
+standalone test filtering is only done by filename (but
+potentially pathname), which is why I suggested we someday use
+the group names as directory names. Anyway, that's future work.
+This series just needs to ensure it gets its group names right.
+
+Thanks,
+drew

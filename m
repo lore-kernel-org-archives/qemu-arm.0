@@ -1,221 +1,183 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp604401ejc;
-        Tue, 11 Apr 2023 09:02:14 -0700 (PDT)
-X-Google-Smtp-Source: AKy350b4pkjG3Vg2zyYhYILKlBWdCS83YUwtgrRynUPSDWJTNxd15G/EyyRQ6i6JmLWx1nMhpP57
-X-Received: by 2002:a05:7500:488c:b0:100:1b6a:ac25 with SMTP id gr12-20020a057500488c00b001001b6aac25mr307799gab.29.1681228934614;
-        Tue, 11 Apr 2023 09:02:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681228934; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp683336ejc;
+        Tue, 11 Apr 2023 11:12:48 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Z352Jmu033M56lU24x5eCT3gOMs5Tc0zhZJZuhSs9qUW6yEsVYGHs+1buMrcz4jL+wBGiz
+X-Received: by 2002:a05:622a:2d4:b0:3e4:e2af:adcf with SMTP id a20-20020a05622a02d400b003e4e2afadcfmr5297035qtx.57.1681236768245;
+        Tue, 11 Apr 2023 11:12:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681236768; cv=none;
         d=google.com; s=arc-20160816;
-        b=jaID7BDEs4gsFAnWVl6vZGIE3soIaSuVsXKGeByvv8o7YVdJNzrinrhfbI/nV+BHyC
-         szdhBiKlIxAFENvwLuMFr7+3FHUBhfN7DOD2/I41ZcgsT6KIlrFoPDp/fWktL8nVQ/uo
-         rHvSf5oBIQIs0b59FhZ5DpOGKDTRnSHLwEXIOchktPHLtMeJTXAMhGsgUU2K/1MkJzpo
-         /l8/XEnQnTC7jD/yGfz6YWifN3YLwFw3BhJ8/llv8HBYzfzhVV6tgHAlCMh938fZKa7i
-         fDpVsacZXhGZVEQGSsU/YY5KFHCIUdm6oQnUaPs6XsoSYBAtA4McJKCxPZ8PeCPsAaJq
-         7kfw==
+        b=j4TnogzU6D8blT916+tcS5zP+h1aUfd9kWCxFo0WMJPaWHqI2++CWQWPG32ogzpXWX
+         2rZWM5b/qZb0gbdV36UUF1zJ27z2yQjJmur2WNG7NUdPdWaGzoubszuWmXdDmTOvJ+zF
+         3ATcPHsMp62DyqY/unsppAxiMJ//voGAd8H+oxeIlLsSXd4K3uPZdvj8jnEophKgzesy
+         9yzw1txp1dxSoNJ4L4yWws+F3ODJH/dJV5NYGDVgstwHv9axbQcDFMrEakXMJlqGebA2
+         GyRtOk9VoN45/klTZUdKj22O/3gQYg17ENDo9Tpz+UO8r/Az2wYKhuGiMJUs7FuQQ7R8
+         zqDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=bbhcXnWWlqKfPAmVQjOqv9xVU+0Me94T+BmmPmOhkek=;
-        b=H2v0vktRWQppdbnRWACNfMO3wBpb0Yte4vk2MKe0prMi7ysEPqvNmBK7A1dZkUeXV8
-         Tf5JdFNecSv5hn2WLxVYKUA+HuQUF13IOc8leCKtWp4KflV5asGYmLTKLmSZHnBima83
-         U0IY9VFZkf7nLDZaK1SN5axh34mJO90X/4JA8GhwGv9GE0BSL4MAW0bUsfLp9+hj8v2U
-         0XL6pi2fC5J4O/JZ/ZJHjGs+YonwfbJYdxq9gOq0+C1+SL2uI2XrGWdeBFgSzR1Nz+64
-         wf7v1UxzLrHH4yUQC1nGtwjDDk6KtOZhaHdC0CRMpcfZnxAyfbORZ1cmsQZGbP12fy1a
-         GXSw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :cc:to:from:thread-topic:subject:dkim-signature;
+        bh=hhAtX+MbjVh4BH8ecIcg6aCl9ijHfUxFs7dKj6cy084=;
+        b=Ck7CVPilWmskjGdd/a0l3tkBrE7cC26r1Psd1Mxniqwi4jMngN6H7djSDmU6aAAvfu
+         VXmVmZEdNuku+s9idCbKg0xGJAqcCVDMlq4R107qPVCx4gkf+m/mwGEK10VUQSPw1nJt
+         NRE4+2TOGNXMhsxr1D7WzmzSTtsixBQdouyevrIgxPmdh3qNHu5SOtzKPS681bGXjmKt
+         AGWXbNxWxeISwaNccVYHiOgeSaL0u65K28g0m+EW6ik5XUoXbdConbFdUCtivCfcFw8a
+         0DZ6goixxt6Z8I+Z4FdgbWrXl5plNWMmdfxAuDZgVp+j3KD30Rv2Dxj3o+ZKwJUJgefu
+         SuCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K+/rftUf";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=UppEGxAj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17-20020a05620a0c5100b007468a4b060dsi9583646qki.358.2023.04.11.09.02.14
+        by mx.google.com with ESMTPS id v7-20020ac85787000000b003d1f54912bdsi9813724qta.405.2023.04.11.11.12.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Apr 2023 09:02:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Apr 2023 11:12:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K+/rftUf";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=UppEGxAj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pmGQa-0000oz-Jc; Tue, 11 Apr 2023 12:01:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pmIU0-0001ti-4O; Tue, 11 Apr 2023 14:12:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pmGQY-0000mV-LW
- for qemu-devel@nongnu.org; Tue, 11 Apr 2023 12:01:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <prvs=45877f2e6=pbartell@amazon.com>)
+ id 1pmITy-0001tS-QK; Tue, 11 Apr 2023 14:12:43 -0400
+Received: from smtp-fw-6001.amazon.com ([52.95.48.154])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1pmGQU-0004uz-VF
- for qemu-devel@nongnu.org; Tue, 11 Apr 2023 12:01:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1681228857;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bbhcXnWWlqKfPAmVQjOqv9xVU+0Me94T+BmmPmOhkek=;
- b=K+/rftUfEX6fYMrv8HJmnvAKRqVuTUJghrBDe2JyksOgE5f3Bk45zqtQhqmLm1eQP8PcU9
- fRApEP1nrTyOBltBYxHBpKANA5P5iiLid1i87Oky2q6LBHtGJLn/vKfQVgYGSYsZ6HS4S4
- gTsdq6kihaG8d2E12BWqS2Qor2r+pjE=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-412-uSDYro-OOW6TJjeSY6oOcg-1; Tue, 11 Apr 2023 12:00:56 -0400
-X-MC-Unique: uSDYro-OOW6TJjeSY6oOcg-1
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-50489dce38aso1184075a12.2
- for <qemu-devel@nongnu.org>; Tue, 11 Apr 2023 09:00:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1681228852;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bbhcXnWWlqKfPAmVQjOqv9xVU+0Me94T+BmmPmOhkek=;
- b=CpQFdCAay+SqOKKUGYEWhJjYL40zvC4VWXwhNsnnrAYh8HW59L57dkcBcPCYhTiCjL
- Tw69z++ecUJ7L3JkiKxKi2rQ27usoiSdei1MzFYM0mvMo+abaXIPJEliCujaRfTqGTxg
- edYR6eaZVD/RozlIoytF1t8wq+p3Pm3fLz8N0WqzWoUz+E4va4TOua8I2Aw87T3Mtuq0
- iVe+IltL+gf6UzykOa1yu11huN3Mljc+8LS0zjCUkqdJ0mAMJ+kQyBqUFkGKeBNCzPuy
- AbwoQHYxMlz8rsSTLzSQMqmx5tmcx6nxsKq3pN8sw0xgKZb03iLaxC7tK2wodqoTv/XA
- WS4g==
-X-Gm-Message-State: AAQBX9cTdQDvyghHY1VnERdVPVWfR1IlJFyspspApH2IYEwU+61Q6hhh
- jO7krPPHSoNW/TW5wWxJj09/H3RKFw8OVTgDaptmT7++Pu/ZQmi5P98/1+hUZNOxDl70tPuEAgI
- 6srzPmcZREsTs3lY=
-X-Received: by 2002:a05:6402:142:b0:4fd:29e4:ccfe with SMTP id
- s2-20020a056402014200b004fd29e4ccfemr11672433edu.18.1681228851914; 
- Tue, 11 Apr 2023 09:00:51 -0700 (PDT)
-X-Received: by 2002:a05:6402:142:b0:4fd:29e4:ccfe with SMTP id
- s2-20020a056402014200b004fd29e4ccfemr11672401edu.18.1681228851499; 
- Tue, 11 Apr 2023 09:00:51 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 15-20020a508e0f000000b00504ae3a5adfsm1849355edw.2.2023.04.11.09.00.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Apr 2023 09:00:50 -0700 (PDT)
-Date: Tue, 11 Apr 2023 18:00:49 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric DeVolder <eric.devolder@oracle.com>
-Cc: shannon.zhaosl@gmail.com, mst@redhat.com, ani@anisinha.ca,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- boris.ostrovsky@oracle.com
-Subject: Re: [PATCH 2/2] hw/acpi: i386: bump MADT to revision 5
-Message-ID: <20230411180049.7566b9aa@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230328155926.2277-3-eric.devolder@oracle.com>
-References: <20230328155926.2277-1-eric.devolder@oracle.com>
- <20230328155926.2277-3-eric.devolder@oracle.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ (Exim 4.90_1) (envelope-from <prvs=45877f2e6=pbartell@amazon.com>)
+ id 1pmITw-0003Rx-EP; Tue, 11 Apr 2023 14:12:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1681236761; x=1712772761;
+ h=from:to:cc:date:message-id:references:in-reply-to:
+ content-id:content-transfer-encoding:mime-version:subject;
+ bh=hhAtX+MbjVh4BH8ecIcg6aCl9ijHfUxFs7dKj6cy084=;
+ b=UppEGxAj08Yl0ykOyMYjtrEqVoHzTA9/QsJPn584kFleK8WU7D1es0ra
+ bCcbhld6LDM5c1ytXuoeQEOSr/Usk+KYi4wwW/tXeY1J2JpriqI+hceR2
+ l6I+OVwpCcxA2+l5IGoLsdDq+FWnHuW3nJUMJ80JQM/yry9bMGYcUzjTj Q=;
+X-IronPort-AV: E=Sophos;i="5.98,336,1673913600"; d="scan'208";a="319219216"
+Subject: Re: [PATCH] target/arm: Fix debugging of ARMv8M Secure code
+Thread-Topic: [PATCH] target/arm: Fix debugging of ARMv8M Secure code
+Received: from iad12-co-svc-p1-lb1-vlan2.amazon.com (HELO
+ email-inbound-relay-pdx-2a-m6i4x-d40ec5a9.us-west-2.amazon.com) ([10.43.8.2])
+ by smtp-border-fw-6001.iad6.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Apr 2023 18:12:35 +0000
+Received: from EX19D012EUA001.ant.amazon.com
+ (pdx1-ws-svc-p6-lb9-vlan2.pdx.amazon.com [10.236.137.194])
+ by email-inbound-relay-pdx-2a-m6i4x-d40ec5a9.us-west-2.amazon.com (Postfix)
+ with ESMTPS id 6411640E3B; Tue, 11 Apr 2023 18:12:33 +0000 (UTC)
+Received: from EX19D031EUC002.ant.amazon.com (10.252.61.193) by
+ EX19D012EUA001.ant.amazon.com (10.252.50.122) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 11 Apr 2023 18:12:32 +0000
+Received: from EX19D031EUC003.ant.amazon.com (10.252.61.172) by
+ EX19D031EUC002.ant.amazon.com (10.252.61.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 11 Apr 2023 18:12:31 +0000
+Received: from EX19D031EUC003.ant.amazon.com ([fe80::dad0:4f18:bddd:d966]) by
+ EX19D031EUC003.ant.amazon.com ([fe80::dad0:4f18:bddd:d966%3]) with
+ mapi id 15.02.1118.026; Tue, 11 Apr 2023 18:12:31 +0000
+From: "Bartell, Paul" <pbartell@amazon.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Richard Henderson <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
+Thread-Index: AQHZaa1L7iNpTV5R00K3KIarsp7cMK8gzriAgANcvgCAAhSNgIAALv+A
+Date: Tue, 11 Apr 2023 18:12:31 +0000
+Message-ID: <F1E57852-8712-4BB0-95B2-E3853B59F0D2@amazon.com>
+References: <20230408000118.50854-1-pbartell@amazon.com>
+ <c56f4f56-6cba-ceaa-9f89-228fafcbc2ac@linaro.org>
+ <E3A05628-86C2-42B7-B17B-64972FE60834@amazon.com>
+ <CAFEAcA8pSvbFwcbstF1q5y3yE8S3R-X4LKgihq-PFY0F02fw7Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA8pSvbFwcbstF1q5y3yE8S3R-X4LKgihq-PFY0F02fw7Q@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.63.8.42]
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <2F432843EBA24347A50742341EC7F7D1@amazon.com>
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+MIME-Version: 1.0
+Precedence: Bulk
+Received-SPF: pass client-ip=52.95.48.154;
+ envelope-from=prvs=45877f2e6=pbartell@amazon.com; helo=smtp-fw-6001.amazon.com
+X-Spam_score_int: -118
+X-Spam_score: -11.9
+X-Spam_bar: -----------
+X-Spam_report: (-11.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kC7R86su31Ri
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RZB3hD/oYDNW
 
-On Tue, 28 Mar 2023 11:59:26 -0400
-Eric DeVolder <eric.devolder@oracle.com> wrote:
 
-> Currently i386 QEMU generates MADT revision 3, and reports
-> MADT revision 1. ACPI 6.3 introduces MADT revision 5.
+
+> On Apr 11, 2023, at 8:24 AM, Peter Maydell <peter.maydell@linaro.org> wro=
+te:
 >=20
-> For MADT revision 4, that introduces ARM GIC structures, which do
-> not apply to i386.
+> On Mon, 10 Apr 2023 at 15:38, Bartell, Paul <pbartell@amazon.com> wrote:
+>>=20
+>> You can reproduce the problem by running gdb against an ARMv8M target ru=
+nning secure mode code (the default).
+>>=20
+>> Running qemu with the following arguments : qemu-system-arm -machine mps=
+2-an505 -m 16M -cpu cortex-m33 -nographic -semihosting -monitor null --semi=
+hosting-config enable=3Don,target=3Dnative -d guest_errors -kernel /path/to=
+/binary.elf
+>>=20
+>> With the following .gdbinit file:
+>> target extended-remote :1234
+>> compare-sections
+>>=20
+>> Upon startup, every symbol in the elf file reports the following error:
+>>=20
+>> Section .text, range 0x10000000 -- 0x10009298: MIS-MATCHED!
+>> Section .text.main, range 0x10009298 -- 0x10009300: MIS-MATCHED!
+>> Section .text.prvQueueSendTask, range 0x10009300 -- 0x10009338: MIS-MATC=
+HED!
+>>=20
+>> Attempting to debug results in errors constantly (unable to read or writ=
+e memory at all).
+>>=20
+>> init_data_sections () at /project/Demo/ARM_MPS/startup.c:95
+>> 95      {
+>> (gdb) info locals
+>> pCopyTable =3D <error reading variable pCopyTable (Cannot access memory =
+at address 0x381fffec)>
+>> dataIndex =3D <error reading variable dataIndex (Cannot access memory at=
+ address 0x381fffe8)>
+>>=20
+>> Does that clarify my report sufficiently?
 >=20
-> For MADT revision 5, the Local APIC flags introduces the Online
-> Capable bitfield.
+> Could you (a) file a bug and (b) attach a sample test executable
+> that demonstrates the problem, please?
 >=20
-> Making MADT generate and report revision 5 will solve problems with
-> CPU hotplug (the Online Capable flag indicates hotpluggable CPUs).
+> thanks
+> -- PMM
 
-So spec mandates 3 possible states
-  00t - not present and not can't be added later ever
-  01t - present
-  10t - not present but might be added later
-and outlawed 11t combination
+Bug filed at https://gitlab.com/qemu-project/qemu/-/issues/1590 with binary=
+ attached and some additional logs.
 
-00t - doesn't make much sense (i.e. why put such entry in MADT in the 1st p=
-lace)
-
-but looking at kernel commit aa06e20f1be, it looks like
-ACPI_MADT_ONLINE_CAPABLE was introduced to accommodate
-firmware/hw folks who would stuff MADT with LAPIC entries
-for all possible CPU models, and then patch it depending on
-actually used CPU model instead of dynamically creating LAPIC
-entries. (insane)
-
-=20
-> Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
-> ---
->  hw/i386/acpi-common.c | 13 ++++++++++---
->  1 file changed, 10 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
-> index 52e5c1439a..1e3a13a36c 100644
-> --- a/hw/i386/acpi-common.c
-> +++ b/hw/i386/acpi-common.c
-> @@ -38,8 +38,15 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *a=
-pic_ids,
->  {
->      uint32_t apic_id =3D apic_ids->cpus[uid].arch_id;
->      /* Flags =E2=80=93 Local APIC Flags */
-> -    uint32_t flags =3D apic_ids->cpus[uid].cpu !=3D NULL || force_enable=
-d ?
-> -                     1 /* Enabled */ : 0;
-> +    bool enabled =3D apic_ids->cpus[uid].cpu !=3D NULL || force_enabled ?
-> +                     true /* Enabled */ : false;
-> +    /*
-> +     * ACPI 6.3 5.2.12.2 Local APIC Flags: OnlineCapable must be 0
-> +     * if Enabled is set.
-> +     */
-> +    bool onlinecapable =3D enabled ? false : true; /* Online Capable */
-
-> +    uint32_t flags =3D onlinecapable ? 0x2 : 0x0 |
-> +        enabled ? 0x1 : 0x0;
-align the last line with onlinecapable ....'
-
-move /* Enabled */ and /* Online Capable */ comments right to magic values
-i.e. onlinecapable ? 0x2 : 0x0 | /* Online Capable */ ...
-
-> =20
->      /* ACPI spec says that LAPIC entry for non present
->       * CPU may be omitted from MADT or it must be marked
-> @@ -102,7 +109,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *=
-linker,
->      MachineClass *mc =3D MACHINE_GET_CLASS(x86ms);
->      const CPUArchIdList *apic_ids =3D mc->possible_cpu_arch_ids(MACHINE(=
-x86ms));
->      AcpiDeviceIfClass *adevc =3D ACPI_DEVICE_IF_GET_CLASS(adev);
-> -    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 1, .oem_id =3D oem_i=
-d,
-> +    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 5, .oem_id =3D oem_i=
-d,
->                          .oem_table_id =3D oem_table_id };
-> =20
->      acpi_table_begin(&table, table_data);
+Adding the qemu-stable list since semihosting and gdb debugging for all ARM=
+v8M targets is broken in the current stable release (v7.2.1) and previous s=
+table (v7.2.0). v7.1.0 is not affected.
 

@@ -1,152 +1,264 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp281496ejc;
-        Wed, 12 Apr 2023 05:19:18 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YIbsdZ+Hfj2OREOihAwGmB4GuCe5W/7cn4p7cGj46LRIKi6bZSdBE8Az+/1CUatUfEp6Cb
-X-Received: by 2002:a1c:f716:0:b0:3ef:4138:9eef with SMTP id v22-20020a1cf716000000b003ef41389eefmr13078940wmh.36.1681301958478;
-        Wed, 12 Apr 2023 05:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681301958; cv=none;
+Received: by 2002:a05:7022:70f:b0:61:a7cc:b0c1 with SMTP id 15csp526398dlh;
+        Wed, 12 Apr 2023 12:07:29 -0700 (PDT)
+X-Google-Smtp-Source: AKy350acqf2ROeEg0svvhU2PCnoc0ZxXQTdgznYptoIwROJqYR9NneN6cYHbPwgKaQP5wQaOng1j
+X-Received: by 2002:a05:622a:1982:b0:3e6:457f:9ec7 with SMTP id u2-20020a05622a198200b003e6457f9ec7mr10330875qtc.19.1681326449114;
+        Wed, 12 Apr 2023 12:07:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681326449; cv=none;
         d=google.com; s=arc-20160816;
-        b=FbhTczNbm30OyKojHZzWV1KIXVCaZ080Oo+kfRfN1p4y5oKgpYLhHDfhJB+PjHrfR0
-         tRhmOjvDOp5o04UgQfYEYW2+HQlERmq8Uc+nYjnPdpSIQuj837jFr2H94woD2DKgOuct
-         NcJtexRP+K+9oAYIYiS63JitAU8SAGfNtQqc9MdLStgInB343/a6Xb3P/fs+MfPQEEq+
-         fna+3gL2Nre4ZPbIfBX3Udek5cTkpSIjxSKrzqd7Rf6HaY+h5f4i4b6bpAY/vaCanRyT
-         fKmuztKjpRTRU/7w3+J5ZpXY/bZrilm2TzHDFbaTHp6NTo8H3xaxBj1dDv8RpKC1sxZc
-         U/pQ==
+        b=laDM07Rv2oyg+rY29tpRGHcHRr6eDeLV0zAAUW/cJztNqRzg+Hws+0yPHEminJnw2S
+         qCdgrmXESNwSc3pf2GjC2AkNYE++Ls22XdhYbg1T4ViGtX1/k4elAPVLFPeUHOeUkXEo
+         NiNw1kq7yxLYrDFASBBr05w/zj/kwPiP7YhHV2g9E3/IsJnuEnr2HdkNgrONBjQRdgQ6
+         DWXef9NaIu8aPqQpi3MZrqsten0l32zsG2bkui7Fj0hjoVWxCXtLDd/OlFAQ9vOjYcQf
+         BHER1TZR0ZpKxDCRlGqzwB7ygn3c73bRtL/CgVN26LwTPp+b95W1P02uLSlzZzEg5wkl
+         lW3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-        b=DsGZzfJ6gBUvPutEnEj2gitQMQKzUVhF5dgeBSbb6SFTgxZt01yKmDGELSYyqeLSR2
-         bMrRry3wgwjYYhWO8vnbfZlI3stUyKdEVKBsteK0Ok7pDOqC/xNE+Jeya8S9BhNW1IIh
-         t7KIjX5qO/qE2aeLjJMDncvdpoZSXisjPKbEK7HgdiBfsP4esSWOcbxtlXrHuZG/N+ir
-         x2nsQxU8wUdC1Si451tjj6syElznCFWE23wGykPWa4S6XwnkCJ+ns04a0zeCLyf4GpjG
-         2gny7W56MUDW4qRAsqnX1HOXnb0juxtAlFP2gowlDdQr9idaNjAFvANEufmDrolEzVZf
-         HlzA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=H8AVEyen8mGSfFPTpq6Mc01c5FGup3vBMa8fnyDOWj0=;
+        b=zKgKk/HlQyWKVtf7iKMJ9J38ULJUAymO8St1mgiwG8mWHswLRBdU4Wz7mcUIzuyk72
+         URKQQHMQ8TcbcF1++E0uwBdSRRbt9MOF77bfJ9iOMeAKS0hB8mdnf/zsZSuN+8ctflXa
+         4aJFLPTPxK7Yr/5zAIZRhIMCFWFFJDp9+nVHbf4SX4iq3uXcl/aAMZ5093SvEkIO3Vp0
+         49Oh3Tmw8jv17wLq+f9TthP6/FQoHYpACK4SRnaqJMCjqAxXMtA1vnX6pj9FXN9Zs99/
+         jlMYFytcuqdcOfUEA4Yx0o7SIR/X1owM67Kn8CRNvirV1GC1cnBJNj2Zt6kSdRG1g/yH
+         Yrqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=c+9qcS0d;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id w13-20020a05600018cd00b002d6f7a90367si10856958wrq.598.2023.04.12.05.19.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Apr 2023 05:19:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=P+ehcemf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bn5-20020a05620a2ac500b007469b5c90efsi10640786qkb.479.2023.04.12.12.07.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 12 Apr 2023 12:07:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=c+9qcS0d;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 29A442197E;
-	Wed, 12 Apr 2023 12:19:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1681301958; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-	b=c+9qcS0dK0W/ah8VIFZal/yNQtEUyUG+VQly2hRV1Gs43DdXDZjS4ZFGFJVpvwosGOlC/l
-	U7VxX1KjrBBoBoSTCa571hCxFY1VsDRa7A5XzyON0gqiLb89GT1OD4TWPY3NmrGUbIoKsZ
-	pyKczBWVt4CA4SJsMpt8sGN+H7yT184=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1681301958;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=B1JluXnhU+IJTKAYTzwpUpON0WI8nWSAD0Pn+krBRkk=;
-	b=BYTxjZXqZ4Ijc9HXlFkt+QM+RSN67qcKoN1/cAzEcuJlkzLv+w14XEWHlCT4rJuM1ajthy
-	rusUebronMnnVFCQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 654D6132C7;
-	Wed, 12 Apr 2023 12:19:14 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id sHHJCsKhNmSMUgAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 12 Apr 2023 12:19:14 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Claudio Fontana <cfontana@suse.de>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alexander Graf <agraf@csgraf.de>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>
-Subject: [PATCH v10 11/11] gitlab-ci: Check building KVM-only aarch64 target
-Date: Wed, 12 Apr 2023 09:18:29 -0300
-Message-Id: <20230412121829.14452-12-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230412121829.14452-1-farosas@suse.de>
-References: <20230412121829.14452-1-farosas@suse.de>
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=P+ehcemf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pmfns-0001Ny-AR; Wed, 12 Apr 2023 15:06:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pmfnq-0001Kx-0g; Wed, 12 Apr 2023 15:06:46 -0400
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1pmfnn-0006yk-TL; Wed, 12 Apr 2023 15:06:45 -0400
+Received: by mail-oa1-x36.google.com with SMTP id
+ 586e51a60fabf-1841c57c221so17214563fac.3; 
+ Wed, 12 Apr 2023 12:06:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1681326401; x=1683918401;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=H8AVEyen8mGSfFPTpq6Mc01c5FGup3vBMa8fnyDOWj0=;
+ b=P+ehcemfh+YdtNHM7oHBIVj+TEQLqrogw0XoN2csIPPN1P+VPkKMtDRSMxKUur4DVs
+ 1EgJXdsbb6qWoN5ev7Ce7/SvuXPwjmfEKzQ0DLfVVy5a3MYyCjDRq+cXSkq2ZrELmLxT
+ fns/mEkUtDDeMjfu87v3bYMXq1hD98PiJmJaPOLw+gf4LgGgn8ksFgnfo+tHcFbtNFV/
+ nJJs+LURMDw8QUWKFtonjdX3O9+mKchuVq25r7s7BA8uxMXJEY7Eru/rILDFpK4AlFzH
+ IJ7rMNydXBwgGMmdMHyf2RigodvcubDIM9I5xs5JOlKZph9BRfls6hGbqJfHBUD1GMco
+ T0Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681326401; x=1683918401;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=H8AVEyen8mGSfFPTpq6Mc01c5FGup3vBMa8fnyDOWj0=;
+ b=bebTsmxURAP27pkHhzeZYcTQVO/WWbMXNcamO+VnWN3GXXfAh/EyzBApElUoEHSKas
+ rIs12/cal0YygmcdA6c8S71e0OsQHGnXbzDjbXztRMdZP5iQnGhMXAZNg7wI6qAnZ/DC
+ 6mN0/c3EMUQOaX53QnDxnwBKxzYTl9ORz2UdpiodVTUKYkrAqYq1XRFGQVcMApMrgl67
+ MM7bfpeYawng0U2rC8HsFS8toEGu0lYE/sR3Cn/IXgABb1Yy3liN5Fwok5MGrwcAKeFV
+ 8r7lIGtqwWXLK8rhb6Wp2P9E9MnEN8MpZB2ftGRYctyg12AB+PLsS6j+GiP+s8LllqR5
+ pxzQ==
+X-Gm-Message-State: AAQBX9esuTrlPLkRLH/dH+qBMNr68CbgPp/2XvbaDS5az3qqYbX8kd9q
+ HTA9Dh1ZwrzuNLow+HSRDOM=
+X-Received: by 2002:a05:6871:a5:b0:17f:9239:f651 with SMTP id
+ u37-20020a05687100a500b0017f9239f651mr4841015oaa.55.1681326401458; 
+ Wed, 12 Apr 2023 12:06:41 -0700 (PDT)
+Received: from [192.168.68.107] ([191.255.108.232])
+ by smtp.gmail.com with ESMTPSA id
+ zp2-20020a0568718e0200b0017ae909afe8sm6382766oab.34.2023.04.12.12.06.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Apr 2023 12:06:41 -0700 (PDT)
+Message-ID: <1501aadd-5836-fa6c-bc9f-7a86c04dd7fb@gmail.com>
+Date: Wed, 12 Apr 2023 16:06:38 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 2+BPcMyd0pq9
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH v2 42/54] tcg/ppc: Convert tcg_out_qemu_{ld,st}_slow_path
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org
+References: <20230411010512.5375-1-richard.henderson@linaro.org>
+ <20230411010512.5375-43-richard.henderson@linaro.org>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20230411010512.5375-43-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::36;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x36.google.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-1.083,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HBn0qHkKUIF+
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Add a manual new job to cross-build the aarch64 target with
-only the KVM accelerator enabled (in particular, no TCG).
 
-Re-enable running the similar job on the project Aarch64
-custom runner.
+On 4/10/23 22:05, Richard Henderson wrote:
+> Use tcg_out_ld_helper_args, tcg_out_ld_helper_ret,
+> and tcg_out_st_helper_args.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
----
- .gitlab-ci.d/crossbuilds.yml                         | 11 +++++++++++
- .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml |  4 ----
- 2 files changed, 11 insertions(+), 4 deletions(-)
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 61b8ac86ee..da787ea9bf 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -196,3 +196,14 @@ cross-arm64-xen-only:
-     IMAGE: debian-arm64-cross
-     ACCEL: xen
-     EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-kvm
-+
-+# Similar job is run by qemu-project's custom runner by default
-+cross-arm64-kvm-only:
-+  extends: .cross_accel_build_job
-+  needs:
-+    job: arm64-debian-cross-container
-+  variables:
-+    QEMU_JOB_OPTIONAL: 1
-+    IMAGE: debian-arm64-cross
-+    ACCEL: kvm
-+    EXTRA_CONFIGURE_OPTS: --disable-tcg --disable-xen --without-default-devices
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 13e14a0f87..c61be46b82 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -115,11 +115,7 @@ ubuntu-22.04-aarch64-notcg:
-  - aarch64
-  rules:
-  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--   when: manual
--   allow_failure: true
-  - if: "$AARCH64_RUNNER_AVAILABLE"
--   when: manual
--   allow_failure: true
-  script:
-  - mkdir build
-  - cd build
--- 
-2.35.3
+>   tcg/ppc/tcg-target.c.inc | 88 ++++++++++++----------------------------
+>   1 file changed, 26 insertions(+), 62 deletions(-)
+> 
+> diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
+> index 90093a6509..1b60166d2f 100644
+> --- a/tcg/ppc/tcg-target.c.inc
+> +++ b/tcg/ppc/tcg-target.c.inc
+> @@ -2137,44 +2137,38 @@ static void add_qemu_ldst_label(TCGContext *s, bool is_ld,
+>       label->label_ptr[0] = lptr;
+>   }
+>   
+> +static TCGReg ldst_ra_gen(TCGContext *s, const TCGLabelQemuLdst *l, int arg)
+> +{
+> +    if (arg < 0) {
+> +        arg = TCG_REG_TMP1;
+> +    }
+> +    tcg_out32(s, MFSPR | RT(arg) | LR);
+> +    return arg;
+> +}
+> +
+> +/*
+> + * For the purposes of ppc32 sorting 4 input registers into 4 argument
+> + * registers, there is an outside chance we would require 3 temps.
+> + * Because of constraints, no inputs are in r3, and env will not be
+> + * placed into r3 until after the sorting is done, and is thus free.
+> + */
+> +static const TCGLdstHelperParam ldst_helper_param = {
+> +    .ra_gen = ldst_ra_gen,
+> +    .ntmp = 3,
+> +    .tmp = { TCG_REG_TMP1, TCG_REG_R0, TCG_REG_R3 }
+> +};
+> +
+>   static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+>   {
+> -    MemOpIdx oi = lb->oi;
+> -    MemOp opc = get_memop(oi);
+> -    TCGReg hi, lo, arg = TCG_REG_R3;
+> +    MemOp opc = get_memop(lb->oi);
+>   
+>       if (!reloc_pc14(lb->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
+>           return false;
+>       }
+>   
+> -    tcg_out_mov(s, TCG_TYPE_PTR, arg++, TCG_AREG0);
+> -
+> -    lo = lb->addrlo_reg;
+> -    hi = lb->addrhi_reg;
+> -    if (TCG_TARGET_REG_BITS < TARGET_LONG_BITS) {
+> -        arg |= (TCG_TARGET_CALL_ARG_I64 == TCG_CALL_ARG_EVEN);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, hi);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, lo);
+> -    } else {
+> -        /* If the address needed to be zero-extended, we'll have already
+> -           placed it in R4.  The only remaining case is 64-bit guest.  */
+> -        tcg_out_mov(s, TCG_TYPE_TL, arg++, lo);
+> -    }
+> -
+> -    tcg_out_movi(s, TCG_TYPE_I32, arg++, oi);
+> -    tcg_out32(s, MFSPR | RT(arg) | LR);
+> -
+> +    tcg_out_ld_helper_args(s, lb, &ldst_helper_param);
+>       tcg_out_call_int(s, LK, qemu_ld_helpers[opc & (MO_BSWAP | MO_SIZE)]);
+> -
+> -    lo = lb->datalo_reg;
+> -    hi = lb->datahi_reg;
+> -    if (TCG_TARGET_REG_BITS == 32 && (opc & MO_SIZE) == MO_64) {
+> -        tcg_out_mov(s, TCG_TYPE_I32, lo, TCG_REG_R4);
+> -        tcg_out_mov(s, TCG_TYPE_I32, hi, TCG_REG_R3);
+> -    } else {
+> -        tcg_out_movext(s, lb->type, lo,
+> -                       TCG_TYPE_REG, opc & MO_SSIZE, TCG_REG_R3);
+> -    }
+> +    tcg_out_ld_helper_ret(s, lb, false, &ldst_helper_param);
+>   
+>       tcg_out_b(s, 0, lb->raddr);
+>       return true;
+> @@ -2182,43 +2176,13 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+>   
+>   static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+>   {
+> -    MemOpIdx oi = lb->oi;
+> -    MemOp opc = get_memop(oi);
+> -    MemOp s_bits = opc & MO_SIZE;
+> -    TCGReg hi, lo, arg = TCG_REG_R3;
+> +    MemOp opc = get_memop(lb->oi);
+>   
+>       if (!reloc_pc14(lb->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
+>           return false;
+>       }
+>   
+> -    tcg_out_mov(s, TCG_TYPE_PTR, arg++, TCG_AREG0);
+> -
+> -    lo = lb->addrlo_reg;
+> -    hi = lb->addrhi_reg;
+> -    if (TCG_TARGET_REG_BITS < TARGET_LONG_BITS) {
+> -        arg |= (TCG_TARGET_CALL_ARG_I64 == TCG_CALL_ARG_EVEN);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, hi);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, lo);
+> -    } else {
+> -        /* If the address needed to be zero-extended, we'll have already
+> -           placed it in R4.  The only remaining case is 64-bit guest.  */
+> -        tcg_out_mov(s, TCG_TYPE_TL, arg++, lo);
+> -    }
+> -
+> -    lo = lb->datalo_reg;
+> -    hi = lb->datahi_reg;
+> -    if (TCG_TARGET_REG_BITS == 32 && s_bits == MO_64) {
+> -        arg |= (TCG_TARGET_CALL_ARG_I64 == TCG_CALL_ARG_EVEN);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, hi);
+> -        tcg_out_mov(s, TCG_TYPE_I32, arg++, lo);
+> -    } else {
+> -        tcg_out_movext(s, s_bits == MO_64 ? TCG_TYPE_I64 : TCG_TYPE_I32,
+> -                       arg++, lb->type, s_bits, lo);
+> -    }
+> -
+> -    tcg_out_movi(s, TCG_TYPE_I32, arg++, oi);
+> -    tcg_out32(s, MFSPR | RT(arg) | LR);
+> -
+> +    tcg_out_st_helper_args(s, lb, &ldst_helper_param);
+>       tcg_out_call_int(s, LK, qemu_st_helpers[opc & (MO_BSWAP | MO_SIZE)]);
+>   
+>       tcg_out_b(s, 0, lb->raddr);

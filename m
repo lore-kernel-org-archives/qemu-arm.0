@@ -1,152 +1,206 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp264944ejc;
-        Wed, 12 Apr 2023 04:53:00 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ac0L5Lz5KGFI7Hw08YDrFcLgDreDpKmqLeKN62cAeQJkQYMLJBb78mcKGCgjPkEhfTjm79
-X-Received: by 2002:a05:622a:490:b0:3dd:137e:e3af with SMTP id p16-20020a05622a049000b003dd137ee3afmr3036423qtx.35.1681300379907;
-        Wed, 12 Apr 2023 04:52:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681300379; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp281039ejc;
+        Wed, 12 Apr 2023 05:18:36 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bd6FSmYYV40AvPghV4j+SLP+Rlqz2yK5RyM0jMcjcIuFPJm7nY7GjZSwBAEICBhqrCAQi9
+X-Received: by 2002:a1c:c90f:0:b0:3f0:8ed8:853c with SMTP id f15-20020a1cc90f000000b003f08ed8853cmr4198965wmb.37.1681301916322;
+        Wed, 12 Apr 2023 05:18:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681301916; cv=none;
         d=google.com; s=arc-20160816;
-        b=druCsDqwhI4EqveB+nY/LGaEUNWcxMt/su7H+z1SzzZpziRP0ChU7X2/RiUswkVTMI
-         7Jzx3kgqkIlaLiErpi2A+xJXtWZhf20/8Cj6/063CSvqzaNelhMTS6744wzNV9xbqhu0
-         fJCWtsKvJiggeBYAqX1HGMtooPBmHnOGkbtlbMx7ZgO9LYQ81unLBCm1f5pUwZALApk4
-         fJu2CGydIXzunsVx1t+NE4azPFA2DGFH76Dpv5DPS1WSuotYa5P5aPVjSqdsWqX1jSb+
-         atRKtGQMWcIOQ/rNtGoYZ9eEgjRFE+xgibecf6pBFMXYwcfinmK4rdOtuhzHOjXWBiR1
-         6o6w==
+        b=lPGmwoW3Y/f7e5dr1hjaTv2tOXrYUMziV0d/sc8qk10RIHfMUthz13VZmGnHSWXV4W
+         4Jg7ew0ya3nn2V7teXE4ZHqsnnMD1Gxpjlc354HCows0TPfty0/+DMulJeE8tRN4dz0c
+         5rXG1qnd4yN1TiD1AYUHYjbVkfKz6314du7uxFvSlj46w0eENqZ9Qph9ui3as/AK8NOO
+         5ahvdG9vJaeUEEcqHHra3ML8LL133ZwiTQmhWls3qfcCb5lrtTKvTETvhOQv3xvAy+yD
+         JY4JxwgoYyWU5zfBXPAs8W249dptl9S1lEVWHCstA+2dYb4eYaBzqaGRPacD5E2tV7ua
+         rUog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=p+t5roRD0VBzwL69wpicdvZbXw5UhpMxUImy4QhiLOs=;
-        b=p+gfTptNlDLka96JCubfTDAG3Xcsk0x9YOl8MF5MTJF9ijh7xbdS59LMnSVjmMjXuR
-         cRYS542rh9EiDkBXsmcm7XnnsRokAtKUmlEwPSWY1xagBrNKCBnK2l3uAmvMP/U84A/H
-         3MGgs9Gid8h0wYhrtpX50AiWM4xri5qaJ/jIKmqi18YvGf/dGuxgaaXA62dJAahPGUfe
-         7T281owkjCu+OqbkpH/OsFcUZCsoiyqnvXTr6UymCKVBA5foOBn04L5tZNzjWGmnrYas
-         8L6eFc8WXTPMAIBLY8Nno/CaUVHrIK7kdr00IltwsrErjz+zqo5bzYxwPNf3tC+MkQtL
-         Sf2A==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:dkim-signature;
+        bh=MKijkx67CYmcwu13PgnqnjEbuLd4RThGldKjbblvjlU=;
+        b=sNqrMFeZKWqA8J4bvnXxv/2V5aWTQAwSxEBrJhLN+puiCcJfD2vB0xidPEPsoI36zE
+         vogeml161RgoK0FPgGvoCNpadH+wBleC4c/2D+uuJ9Dng2tjo9Gf8ci8wiV55mJikUUj
+         D8IWkkVQu52UJfNSCKuo0Gf8nsQhtw3pRms17OAC/YPq+SwJxG5PNYrmf5JC1rTCCldk
+         WDiEgS3xHjdFqSpBgy5j9K2F5Q+du4sp+LoyqeWRW5qJuAk6itc9egH3pThq247gY/cY
+         cWqeHKTnXCbSYYNXUfYVWP2oeUSYIKi3T3zvJxKi5LlQkJZfGn7PghBPlUmhfftnEx8I
+         k5sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ctz61KFx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17-20020ac85fd1000000b003e389c10fd6si10568048qta.742.2023.04.12.04.52.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Apr 2023 04:52:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=evaVjfTc;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
+        by mx.google.com with ESMTPS id r17-20020a5d6951000000b002f484e686e0si1082545wrw.472.2023.04.12.05.18.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Apr 2023 05:18:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ctz61KFx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pmZ1q-0001UI-2Z; Wed, 12 Apr 2023 07:52:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pmZ0u-0008Nw-3w
- for qemu-arm@nongnu.org; Wed, 12 Apr 2023 07:51:49 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pmZ0k-0004Cj-N9
- for qemu-arm@nongnu.org; Wed, 12 Apr 2023 07:51:44 -0400
-Received: by mail-wr1-x433.google.com with SMTP id l18so10536618wrb.9
- for <qemu-arm@nongnu.org>; Wed, 12 Apr 2023 04:51:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681300292; x=1683892292;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=p+t5roRD0VBzwL69wpicdvZbXw5UhpMxUImy4QhiLOs=;
- b=ctz61KFxeVBZuS31M8KbhSUpbJoUbb8XkkBwhoOOFEssoZv8Z3g01W1Q36KLWBerIm
- ltII9yAhmcxBQSfedTbIkFag25vKodWAk/z8+4OO7peJg+Pz2Drhis6yG5+M3ElMFTYI
- r0oimXNWJp/C9Z6lTfrCJaQXmPokZWGFcM4MPjMtvbBodrSh+I4Oem5iXMxN+8QlfW01
- xl0vpD8/Aubi+uAPp4m4Zw8xAwRTBzw9zSpCCOvi6RJdSXEQLxVaIDPqZykW3a+AR1V5
- +TUMikZTWAZgvxtm8fE8k0nm0GoXDQkcib0vvZwAgSuAtJ0oyO9ZIU3IE+AwBnKBRdNo
- e7nQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1681300292; x=1683892292;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=p+t5roRD0VBzwL69wpicdvZbXw5UhpMxUImy4QhiLOs=;
- b=lZWIwHCejuskys/QfQkStabvaXcVgxknJPfGJRXpuBI4Fd4UWiL1EQ0BlrraCt8Fof
- MOL8nM4f3yvi9mL9vE8t7RNORiBveeEVaavzxOpBjirvaoXCHA4LVuZaXfIKXq/8Lfrx
- LAsNAD6ulCvhW601FrRkcPuKMgtABTVtz8NA4OekTj6VsUS2Jiwgj8VI+QBtX7LdQ3SK
- 7f6oUZ+w19nW/AlgYH+vdfQShxwf2uLM7HHEEHj3ZSRb/K3igVn5M/0MHILV8baMgsEy
- TS2FwhbUrFRyvJcr0JKEUFg9RkyWnoLO/73liov5pAl+T8z1D1xnV8acGNirNjOLZRWR
- VNuQ==
-X-Gm-Message-State: AAQBX9eTY4bSaLLhnvInz1z9X8H4BluVQcxTSCjMZU/RE+Hyp1Z7DJK1
- PldqEqPbzRqvEuF+p/SiueGKXw==
-X-Received: by 2002:adf:f909:0:b0:2d2:f3e3:115d with SMTP id
- b9-20020adff909000000b002d2f3e3115dmr12415838wrr.59.1681300292155; 
- Wed, 12 Apr 2023 04:51:32 -0700 (PDT)
-Received: from [10.0.2.69] (ip-037-024-010-236.um08.pools.vodafone-ip.de.
- [37.24.10.236]) by smtp.gmail.com with ESMTPSA id
- w11-20020a5d680b000000b002da75c5e143sm17024018wru.29.2023.04.12.04.51.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Apr 2023 04:51:31 -0700 (PDT)
-Message-ID: <27494b72-1fe4-6fcb-3f2d-ebf94b53dc22@linaro.org>
-Date: Wed, 12 Apr 2023 13:51:29 +0200
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=evaVjfTc;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id B10F31F6E6;
+	Wed, 12 Apr 2023 12:18:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1681301915; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=MKijkx67CYmcwu13PgnqnjEbuLd4RThGldKjbblvjlU=;
+	b=evaVjfTcAK4EAAytD2+ctjFo0MqIH3s8r3GazvTUiXxq0X9ofgXnVdIdjgyxW2ii5ft/dA
+	e/87zMqnoAcp8U/2gvQOmGKD4Av0LEYnGBfqFfbL82r5/SIlaiY6bZjJQi3qIjzQM+pSjE
+	GliPxOG1ejw/aDZpKAHu7kT/6K78ub4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1681301915;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=MKijkx67CYmcwu13PgnqnjEbuLd4RThGldKjbblvjlU=;
+	b=YB0kH+K4eBkXCeU+LtDKrcGj4gVeEyvCnQYo3kDAKGhAIUzRhN2j1s/dJIxWRzokG2Brle
+	yIpjYlejieWJOcBQ==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A71F8132C7;
+	Wed, 12 Apr 2023 12:18:32 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id Co/nGpihNmSMUgAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 12 Apr 2023 12:18:32 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH v10 00/11] target/arm: Allow CONFIG_TCG=n builds
+Date: Wed, 12 Apr 2023 09:18:18 -0300
+Message-Id: <20230412121829.14452-1-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 20/42] tcg/i386: Use TCGType not bool is_64 in
- tcg_out_qemu_{ld, st}
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org
-References: <20230408024314.3357414-1-richard.henderson@linaro.org>
- <20230408024314.3357414-22-richard.henderson@linaro.org>
- <24065205-6919-378f-8e97-4754befd49f4@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <24065205-6919-378f-8e97-4754befd49f4@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.083,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 54t7D0LtwyGj
+X-TUID: 9S8+pgHQDLTk
 
-On 4/11/23 14:12, Philippe Mathieu-Daudé wrote:
-> On 8/4/23 04:42, Richard Henderson wrote:
->> There are several places where we already convert back from
->> bool to type.  Clean things up by using type throughout.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   tcg/i386/tcg-target.c.inc | 35 +++++++++++++++++------------------
->>   1 file changed, 17 insertions(+), 18 deletions(-)
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
+Rebased on master, moved the neoverse-n1 regs into tcg/cpu64.c and
+extracted three new patches from the cpu64 move:
 
-Thanks, though there is now a v2 patch set which does not contain this patch, or some 
-others you have reviewed in the last days.
+- patch 2: remove dead code from cpu_max_get_sve_max_vq
+- patch 3: move TCG -cpu max code into it's own function
+- patch 4: add the tcg_enabled || qtest_enabled logic
 
+CI run: https://gitlab.com/farosas/qemu/-/pipelines/834334928
 
-r~
+Thanks
+
+v9:
+
+- reverted back to keeping -cpu max code for TCG in tcg/cpu64.c;
+
+- pauth: used tcg_enabled instead of CONFIG_TCG in gdbstub.c. However
+  we still need to keep the ifdef around the function definition in
+  gdbstub64.c;
+
+- moved all the regression and test fixes after the patches that
+  enable the --disable-tcg flag;
+
+- tests with --enable-xen --disable-tcg:
+
+  Tests now explicitly skip instead of passing.
+
+  We cannot do the check at build time because we build the tests only
+  once for all the QEMU binaries and the native binary will have
+  support for KVM, thus breaking our !CONFIG_TCG && !CONFIG_KVM
+  verification.
+
+  I also don't think we can have a wrapper because which accelerators
+  are used is a test-specific information. The test should be able to
+  specify which accelerators it needs. In other words there will
+  always be hardcoded "tcg" and "kvm" strings somewhere.
+
+https://lore.kernel.org/r/20230313151058.19645-1-farosas@suse.de
+
+v8:
+https://lore.kernel.org/r/20230309201434.10831-1-farosas@suse.de
+
+v7 resend:
+https://lore.kernel.org/r/20230228192628.26140-1-farosas@suse.de
+
+v7:
+https://lore.kernel.org/r/20230223130841.25916-1-farosas@suse.de
+
+v6:
+https://lore.kernel.org/r/20230217201150.22032-1-farosas@suse.de
+
+v5 resend:
+https://lore.kernel.org/r/20230213202927.28992-1-farosas@suse.de
+
+v5:
+https://lore.kernel.org/r/20230120184825.31626-1-farosas@suse.de
+
+v4:
+https://lore.kernel.org/r/20230119135424.5417-1-farosas@suse.de
+
+v3:
+https://lore.kernel.org/r/20230113140419.4013-1-farosas@suse.de
+
+v2:
+https://lore.kernel.org/r/20230109224232.11661-1-farosas@suse.de
+
+v1:
+https://lore.kernel.org/r/20230104215835.24692-1-farosas@suse.de
+
+Claudio Fontana (1):
+  target/arm: move cpu_tcg to tcg/cpu32.c
+
+Fabiano Rosas (9):
+  target/arm: Move cortex sysregs into a separate file
+  target/arm: Remove dead code from cpu_max_set_sve_max_vq
+  target/arm: Extract TCG -cpu max code into a function
+  target/arm: Do not expose all -cpu max features to qtests
+  target/arm: Move 64-bit TCG CPUs into tcg/
+  tests/qtest: Fix tests when no KVM or TCG are present
+  tests/avocado: Pass parameters to migration test
+  arm/Kconfig: Always select SEMIHOSTING when TCG is present
+  arm/Kconfig: Do not build TCG-only boards on a KVM-only build
+
+Philippe Mathieu-Daudé (1):
+  gitlab-ci: Check building KVM-only aarch64 target
+
+ .gitlab-ci.d/crossbuilds.yml                  |  11 +
+ .../custom-runners/ubuntu-22.04-aarch64.yml   |   4 -
+ configs/devices/aarch64-softmmu/default.mak   |   4 -
+ configs/devices/arm-softmmu/default.mak       |  39 -
+ hw/arm/Kconfig                                |  43 +-
+ hw/arm/virt.c                                 |   6 +-
+ target/arm/Kconfig                            |   7 +
+ target/arm/cortex-regs.c                      |  69 ++
+ target/arm/cpregs.h                           |   6 +
+ target/arm/cpu64.c                            | 702 +----------------
+ target/arm/internals.h                        |  10 +-
+ target/arm/meson.build                        |   2 +-
+ target/arm/{cpu_tcg.c => tcg/cpu32.c}         |  72 +-
+ target/arm/tcg/cpu64.c                        | 723 ++++++++++++++++++
+ target/arm/tcg/meson.build                    |   2 +
+ tests/avocado/migration.py                    |  83 +-
+ tests/qtest/arm-cpu-features.c                |  12 +-
+ tests/qtest/bios-tables-test.c                |  11 +-
+ tests/qtest/boot-serial-test.c                |   5 +
+ tests/qtest/migration-test.c                  |   9 +-
+ tests/qtest/pxe-test.c                        |   8 +-
+ tests/qtest/vmgenid-test.c                    |   9 +-
+ 22 files changed, 1007 insertions(+), 830 deletions(-)
+ create mode 100644 target/arm/cortex-regs.c
+ rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (93%)
+ create mode 100644 target/arm/tcg/cpu64.c
+
+-- 
+2.35.3

@@ -1,76 +1,76 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp281078ejc;
-        Wed, 12 Apr 2023 05:18:43 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YBTsoHYNjWZUQncCOFZth14Gq29PibXEMXdDu8e3Kr8MNzRs0HI/hRLNa9ilnNw5KBiaGG
-X-Received: by 2002:a5d:53d0:0:b0:2ef:ebe6:d92 with SMTP id a16-20020a5d53d0000000b002efebe60d92mr9451221wrw.47.1681301923138;
-        Wed, 12 Apr 2023 05:18:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681301923; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp281105ejc;
+        Wed, 12 Apr 2023 05:18:46 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bpYvYnR09HmwIXR4y5HXOj85Zv5ROoVmUzAT7DrDffV7vhYpUhlhBQ+quC8uvzrcaTuNPm
+X-Received: by 2002:adf:f0ca:0:b0:2ce:a096:3ff2 with SMTP id x10-20020adff0ca000000b002cea0963ff2mr4726277wro.63.1681301926661;
+        Wed, 12 Apr 2023 05:18:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681301926; cv=none;
         d=google.com; s=arc-20160816;
-        b=T7XWHjhZHxDoqKf24b6PrNGqWqHmKuK/+9J1ftusnSRi0YBUrRNz95Ei4GnTER9qaY
-         P0tULj/s75d7po3PMTtZ52dZrsTCNrKR2YD/FhmI/EjrPLGMmG8ZLpBebavkRfzb77AI
-         bjqQBGoeK70ga1a9avdU6g9C1g1Vgzuq/AvcmMr6Iz1FpQFXlZmDEXkwoHRDu0mtn3rs
-         TYW1ygkHhnAzK/f3RoDRr/H7Cxea88EsiStdn0h/+qzv7fmNw9VG0VehTPr8aN200gJX
-         hHNHXRiibxCaeehZMxE34xPD77xvygF94CNmtG8t8HeMV6wvB02v0dMmpYoy0sy43d13
-         MMuw==
+        b=TEoqyUqkGGlDmEDtBEHt6+Sqp6xc7JDHfKplIZTJS7ssIxqaSp1RQBBsVetZ4STxZ3
+         gR9NTeYfbPXhi0H+ZKNqmEOd1693m2WwQItCaKHsr2f16napv3TiZOxsi4lhIURU6Gq6
+         621uH9Qwue0+wdKYNkFFT3OhuJxxNBPnTAnko1YY3+AgR+t18jzimCk6wBdN5sGU8L5c
+         6P7JdxmUSW+lCUG1BtlDb+WsdYaGs0PtsdAovaDi4qUcLhtTDQm1SAEgTiN6MVI+U7iB
+         AQSCl3ZvIRpFNObTL+8JQ7eXvsprcM0wAoxmPUvSA6p067afkwTl937YK52lrKRTejpA
+         wB1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=VGCbUEzChtUbhrQrVpqp86FoTCjne173/p1DBZAkO+A=;
-        b=PZWZCUuiLmy+lhmDDk6YfwifwgvifdBnlTkMsBTOD3z+cimQDxuIPTAV24opqHKtJd
-         giya1XZPUpS9JXRxPkb6DcVYlNo1vudcb2oK4wtJvlbgG44rJdynk5yOw88DoX6jnOie
-         bEg6igV85zdFIv3Q6uPo+Bt5S08tHlXARW0OrGBQpgHoAgalAIJq9u/H08LXBkbJyWZg
-         6QOSAJ5u93l6xVX1+BysYDWYri6YRD2fiHMGjF0hBDHM93Lxux6b5gP01yT2VE64FVwr
-         sbmgClJ8+kDbKOI4aBpW6+y+v2BsX2fe83dA77m4ZupexrWbOIMAMP3iGcKdYazhDXTy
-         fIMA==
+        bh=WwILoklTtJTkoVOKb6pFl3hhYYvbvDadcuYthJgrHoQ=;
+        b=Tg7fzTJIEkFIz0av/b4NQBjPYEHPSuXlRH/iR41SyS+XFhiKGJOb4kEnGdArVle8iV
+         81v+q0qkzPi1o+pH5XK5ZbiMaPQiQxRB6Fggs0N/aj/zKt0eRw9Mc3up3TSq/e9PqB6B
+         TTDQQgnyHwtlIAPbOqKKyY7qpbl8fhnsCz6MXzLEzkmrvpHI+uZLzMStgeBN87WeWNUz
+         4S+qf/yjTvu6KdHpkQ1IfDgcLqhzWar0yM5OBWn5F9mymgK3565Pwt4mgyXN4hUVd/vq
+         BYF0sTgP1kEanb+EPywCCFUWVl4l8rl1PbQRx02X496eC+vK7exgvtRlUea0Cixux6Bz
+         1i5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=F0bfJBam;
-       dkim=neutral (no key) header.i=@suse.de header.b="JZ74/lnt";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zo+l2swv;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=kjV6bRIj;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [195.135.220.29])
-        by mx.google.com with ESMTPS id t9-20020adfeb89000000b002dd135b33b5si11525985wrn.387.2023.04.12.05.18.42
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
+        by mx.google.com with ESMTPS id n16-20020a5d51d0000000b002f1413036d0si4953840wrv.433.2023.04.12.05.18.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Apr 2023 05:18:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) client-ip=195.135.220.29;
+        Wed, 12 Apr 2023 05:18:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=F0bfJBam;
-       dkim=neutral (no key) header.i=@suse.de header.b="JZ74/lnt";
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.29 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zo+l2swv;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=kjV6bRIj;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id C69ED1F6E6;
-	Wed, 12 Apr 2023 12:18:42 +0000 (UTC)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 579BD2195D;
+	Wed, 12 Apr 2023 12:18:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1681301922; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	t=1681301926; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=VGCbUEzChtUbhrQrVpqp86FoTCjne173/p1DBZAkO+A=;
-	b=F0bfJBamU30Qp8s93nn9CdnYMip9dkmqp7vdjobwB2GIIPXn3JdqYC2BpTuXHThvtuVprM
-	i7MpgmkcbMZQRPMXk5ai4Tk1p3vJhpNIclmQev5oeunIle+oL6YBrxnX1TVmbTm2LMCV2H
-	wqESloTp6NVPuqlFOyMkFFdexj7UmQc=
+	bh=WwILoklTtJTkoVOKb6pFl3hhYYvbvDadcuYthJgrHoQ=;
+	b=zo+l2swvGQEPH2FRiwVcphIrzYzIZcc3VmLkvJnVfBQY3imphF+DR3ni3SU/lEqjHyFmk2
+	1wQnbJDbMH6/0grqdEZDJ7DVr4TVBx+zC9cSDq/o9NQ9XLIpYAgWpLhmtXS1Y93ZKX5dF5
+	ggXKeIX+xIleJxJy59UNchApfPQygRQ=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1681301922;
+	s=susede2_ed25519; t=1681301926;
 	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
 	 mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=VGCbUEzChtUbhrQrVpqp86FoTCjne173/p1DBZAkO+A=;
-	b=JZ74/lnttLkoIMCJNunha//B4zFfcssTFB1AQh90hdpZOVM4/rOIIPUxYtsB2oIzmZToUK
-	tpLqeokOgr6p1SAA==
+	bh=WwILoklTtJTkoVOKb6pFl3hhYYvbvDadcuYthJgrHoQ=;
+	b=kjV6bRIjot6UChRRkokLWA40GS7A2XAMpRr/n5wbr0/tFANFFDk8PZMyT/aeVeA1DICQGh
+	kPV+u0J3852oJZBQ==
 Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
 	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id B2594132C7;
-	Wed, 12 Apr 2023 12:18:39 +0000 (UTC)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 4629F132C7;
+	Wed, 12 Apr 2023 12:18:43 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([192.168.254.65])
 	by imap2.suse-dmz.suse.de with ESMTPSA
-	id SIjaHZ+hNmSMUgAAMHmgww
-	(envelope-from <farosas@suse.de>); Wed, 12 Apr 2023 12:18:39 +0000
+	id AI59A6OhNmSMUgAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 12 Apr 2023 12:18:43 +0000
 From: Fabiano Rosas <farosas@suse.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -83,42 +83,81 @@ Cc: qemu-arm@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alexander Graf <agraf@csgraf.de>,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH v10 02/11] target/arm: Remove dead code from cpu_max_set_sve_max_vq
-Date: Wed, 12 Apr 2023 09:18:20 -0300
-Message-Id: <20230412121829.14452-3-farosas@suse.de>
+Subject: [PATCH v10 03/11] target/arm: Extract TCG -cpu max code into a function
+Date: Wed, 12 Apr 2023 09:18:21 -0300
+Message-Id: <20230412121829.14452-4-farosas@suse.de>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20230412121829.14452-1-farosas@suse.de>
 References: <20230412121829.14452-1-farosas@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: dY2b7pGfutsZ
+X-TUID: 4wK/7pLOoXsP
 
-The sve-max-vq property has been removed from the -cpu max used with
-KVM, so code under kvm_enabled in cpu_max_set_sve_max_vq is not
-reachable.
+Introduce aarch64_max_tcg_initfn that contains the TCG-only part of
+-cpu max configuration. We'll need that to be able to restrict this
+code to a TCG-only config in the next patches.
 
-Fixes: 0baa21be49 ("target/arm: Make KVM -cpu max exactly like -cpu host")
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
 ---
- target/arm/cpu64.c | 6 ------
- 1 file changed, 6 deletions(-)
+ target/arm/cpu64.c | 32 ++++++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
 
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 61a6b52aa6..f0dd041cfb 100644
+index f0dd041cfb..4537aec141 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -336,12 +336,6 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
-         return;
-     }
+@@ -1178,27 +1178,17 @@ static void aarch64_host_initfn(Object *obj)
+ #endif
+ }
  
--    if (kvm_enabled() && !kvm_arm_sve_supported()) {
--        error_setg(errp, "cannot set sve-max-vq");
--        error_append_hint(errp, "SVE not supported by KVM on this host\n");
+-/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+- * otherwise, a CPU with as many features enabled as our emulation supports.
+- * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
++/*
++ * -cpu max: a CPU with as many features enabled as our emulation supports.
++ * The version of '-cpu max' for qemu-system-arm is defined in cpu_tcg.c;
+  * this only needs to handle 64 bits.
+  */
+-static void aarch64_max_initfn(Object *obj)
++static void aarch64_max_tcg_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+     uint64_t t;
+     uint32_t u;
+ 
+-    if (kvm_enabled() || hvf_enabled()) {
+-        /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
+-        aarch64_host_initfn(obj);
 -        return;
 -    }
 -
-     if (max_vq == 0 || max_vq > ARM_MAX_VQ) {
-         error_setg(errp, "unsupported SVE vector length");
-         error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
+-    /* '-cpu max' for TCG: we currently do this as "A57 with extra things" */
+-
+-    aarch64_a57_initfn(obj);
+-
+     /*
+      * Reset MIDR so the guest doesn't mistake our 'max' CPU type for a real
+      * one and try to apply errata workarounds or use impdef features we
+@@ -1367,6 +1357,20 @@ static void aarch64_max_initfn(Object *obj)
+     qdev_property_add_static(DEVICE(obj), &arm_cpu_lpa2_property);
+ }
+ 
++static void aarch64_max_initfn(Object *obj)
++{
++    if (kvm_enabled() || hvf_enabled()) {
++        /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
++        aarch64_host_initfn(obj);
++        return;
++    }
++
++    /* '-cpu max' for TCG: we currently do this as "A57 with extra things" */
++
++    aarch64_a57_initfn(obj);
++    aarch64_max_tcg_initfn(obj);
++}
++
+ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a35",         .initfn = aarch64_a35_initfn },
+     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
 -- 
 2.35.3

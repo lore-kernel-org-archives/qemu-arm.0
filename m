@@ -1,109 +1,110 @@
-Received: by 2002:a05:7022:70f:b0:61:a7cc:b0c1 with SMTP id 15csp527921dlh;
-        Wed, 12 Apr 2023 12:10:02 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Z9Ad5zXRmUKOQp1MIvHJozcpMkvimeOZazifDSHyCr39rG5fAVYXPxNxNkU51ioyAYRfdu
-X-Received: by 2002:a05:6214:5005:b0:5ef:4837:cd3f with SMTP id jo5-20020a056214500500b005ef4837cd3fmr2864169qvb.14.1681326602637;
-        Wed, 12 Apr 2023 12:10:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681326602; cv=none;
+Received: by 2002:a05:7022:70f:b0:61:a7cc:b0c1 with SMTP id 15csp528125dlh;
+        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a+rNLeWBkwmuhsk5QBecUpR1gUl2cTBbHk/fIgntLBeuD1gI8UY9tVCHOb5oXkerb1M3zv
+X-Received: by 2002:a05:622a:11c1:b0:3e6:2d20:172f with SMTP id n1-20020a05622a11c100b003e62d20172fmr11455962qtk.32.1681326627137;
+        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681326627; cv=none;
         d=google.com; s=arc-20160816;
-        b=pcNmfYrRXWD4M5atOusv96LFsMZwKLiMpzH17E2idtMbL3/nprjQWNvKAVx2asewRx
-         6LCxZM/FKZVvqxJzIVBXYLb7uU6bSVo8mwrc9htp94Q5DmRe4RsU8EqauThvoDz43UQC
-         b33hQfCXxUZCKvP00Q5BcMSmBU/LKjN65X8Rl+0J0RDxDPhzpujI+qDHcPQwTEjb2Dll
-         fc0EJnj/DCF4naJIptQyI2XwtQokgHkS3YYgb5cCyFPxCkbQ+Oc9aI8sUcco1XuX85M2
-         //Q4kzAZJspH/4TfzoFx/1r5ArRFGsxQ1ESanVmVCidzrQYNHVuceG58Cyog5kEIgLqb
-         RN1A==
+        b=NLKJsJmUub+Xh0lxnPokirv45RhR63V74bOXbDUP6hczbhwXSw4gAhXb4trUzds4Ms
+         9UTFHpUtp9x5Gkp1j+j7fS1aa9IZRWiOR/0kCI2urNvvYHl998JBf7oIDlEBYtAmqZSW
+         Wq2tRYCBWbL04wnO+xFIwW5Uv5/ve2+bya0ZXCr7/LWMKB6nEm+Nom1rqWorFBQWg3a2
+         aZ9QtpMv+NM4ua95b5l4W3XNqHatOQxVp7isyBTPk8Jwt+Sxte3ZzNGcj/fd+PwbcMEs
+         PrD5m4KR40xh24ssEuZepY8YzlZY4vOmE4wrY+ZMiicBzVoVLNaaNcqgL/f7yWNRWNaQ
+         8eow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uup4pjT3DWh14iVfcf7Y6+aCJk2w1Fcr1LFBt1n3QIM=;
-        b=iY9m+5HXTtDg1RSzbRHKhdWejLgJ5JyE6HqXP6/oXQnjaW9E+yKg+yp0zz1ebxA6ed
-         E86QudDPE6OFI54emjGlbGidZv+93xWF7fnnQIV4j4ZbdTbR1O8n+uNNP5exTVTC7fYV
-         KSQLawIerW/pPowyCnUjh76WLoxDsBqm4bXybEXg65HxmpTFWagayE+tXNnGJy31xlxq
-         +oCHkN9kRye3m+omXHfD/gboeuXbLWdSBUNmstwtnxoiRkvrWxHt+StmzvMr7sQxjzTg
-         TBKc8l+6OdcJOtR4HDW4VTxn9V1aek746nPvkYw0/fdCqMDeZjrxFX8SypiU3zQS1rtO
-         goMQ==
+        bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
+        b=MEQKuKERMIzUq3O6KSVG+nrp9A1qXfrE84bEunTmPFZeoYdqMB/VsA99KZ3Y25kX8L
+         rSgy72VKwUcww020nQLFiT4AIIXoDjeYwWPg4dBknEngRcPBZZviS2tSJJdaonIwAiy7
+         WPm/auCBfNxOcD/jY7nKt8E8EgyLCtXOtcYHyukNdD7859drCVMZOmodAtrDt4QYTRbE
+         rGIjdVg2B+aWClb/17X9icD3TF2dXGOGd9JpPSwmuJDeee/ygvlIVVyk98non/oS/oIm
+         dxF1ZKB+dgp8ctjo0gQOgBhyyUC7ZbU5vqMBDmG+uWtWQRNX2z4+1e9OUunyOFvr4IrA
+         MHvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=f5Xx9XNi;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=prcxXBZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3-20020a37b603000000b0074572404fcdsi10794432qkf.211.2023.04.12.12.10.02
+        by mx.google.com with ESMTPS id o15-20020a05622a044f00b003ba23d469e6si10831680qtx.159.2023.04.12.12.10.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Apr 2023 12:10:02 -0700 (PDT)
+        Wed, 12 Apr 2023 12:10:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=f5Xx9XNi;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=prcxXBZS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pmfqg-0004Tc-Nf; Wed, 12 Apr 2023 15:09:44 -0400
+	id 1pmfqp-0004d8-Ms; Wed, 12 Apr 2023 15:09:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pmfqc-0004Pk-5W; Wed, 12 Apr 2023 15:09:38 -0400
-Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
+ id 1pmfqn-0004aX-UJ; Wed, 12 Apr 2023 15:09:49 -0400
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1pmfqY-0007ny-CI; Wed, 12 Apr 2023 15:09:37 -0400
-Received: by mail-oi1-x232.google.com with SMTP id bh10so8537510oib.1;
- Wed, 12 Apr 2023 12:09:32 -0700 (PDT)
+ id 1pmfqm-0007q2-6p; Wed, 12 Apr 2023 15:09:49 -0400
+Received: by mail-oo1-xc33.google.com with SMTP id
+ g26-20020a4adc9a000000b0053b9059edd5so1894675oou.3; 
+ Wed, 12 Apr 2023 12:09:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1681326572; x=1683918572;
+ d=gmail.com; s=20221208; t=1681326585; x=1683918585;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=uup4pjT3DWh14iVfcf7Y6+aCJk2w1Fcr1LFBt1n3QIM=;
- b=f5Xx9XNiWK4q7y8eWqVJv2JYjM0JZ+xFeO/JlP1MWbqgVw5b0Lm+AJSPFxxjFoP8uw
- HkKGRBMCBtzZtfEmwzWC7Qc5FlCH3dI5qamGu2+jZWBSJKWgpRRZED5kYAhcA6d8DeZI
- H2S0DtnKndiYzu0Q5nCuGfZkysJzvIw1irmw5JKeXcP+fqbQKg7+SwAI2XZO2kZFlbug
- NOPGbHRkBfDidU0JbOVkWSghhhCq1wqMx+xGvYeF0mj/vU7zbk00aErEkjblAefJ84tO
- Sb6LATkDN7B1PAmXfaad56PFoFr6kKX1MVbmU7EwL+5Keczkqe2ADZw03LvPBbEkq/dN
- YCgA==
+ bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
+ b=prcxXBZSBmQsW0IPza879YKLaX1Ki5Btj+LP7+bRGg2Y6ZcNwGKUFjdCEioyIup4gv
+ k0+n78km6ge90eqg8PTxH/0Pb4q7LZQ5c9zkFTy/cgldITMx0SbUvI89lKFML+ctuQiX
+ BW9gF4rjzCuux/35EVRj1emVR1V1gxm7vWPuzVvybJIbh4GpxsZQvYX8gemd+lhkqYSU
+ BXOLzPKfWrzkGkI/bu8vR5NxVT7yFsQtn+33js2gOm4ncTnizfma8TjpleR4fcqmf90u
+ T06s97Va/9ByccpeM+PmTxcWeSR5W0wwjQyckeP75ipTSds791icTdN6a0c/Uwes1nln
+ M55Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681326572; x=1683918572;
+ d=1e100.net; s=20221208; t=1681326585; x=1683918585;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uup4pjT3DWh14iVfcf7Y6+aCJk2w1Fcr1LFBt1n3QIM=;
- b=DZHRxpsLWd28vyzDpl+T4M60tD+Ph9828wxo2wkjJpOeMGf3Myh4wal2SnpZZWFUSp
- NyxyvPt7GRLaFJh1Rh52ZNvhF6Reu91mo3OCNhoFp8j1S+buF0hefSgARUIRHqoDoSOh
- pvHKe5zPfvnPjCil8/OAec3MzHONpFxt1RChYJxTa2gy7g3pc3xmGchBLSMGUyMJBGbA
- HVkCYmnvaDieO5wCKMPdUILNOsr/HUWD06OmHy6ldsKDhu4LFq9f3qhaTnrZB2E2A5sK
- R55JcWBrbV71qDWaNd+qtW0tgOTvUSaLEIhbhILsLwzkrDU2HA/NTKl5B+bKQiG/2n5X
- 87oA==
-X-Gm-Message-State: AAQBX9ck/Avhm33vPagfizMBVGoT3rDaiIAia2dAazlS0XkOROBSpMIx
- qEcbOAagRz2vHeC04DFDRowZ8Q/6bMI=
-X-Received: by 2002:aca:1b16:0:b0:38b:f7fd:9c8f with SMTP id
- b22-20020aca1b16000000b0038bf7fd9c8fmr1382378oib.41.1681326572000; 
- Wed, 12 Apr 2023 12:09:32 -0700 (PDT)
+ bh=utAOF5zZ6rrfXlL46IwaxiFUmBfGfm5M0Zg0s4mqZlQ=;
+ b=Tsw096n7X/X1UMQzZZLsWVnmR7xoqxjCfS/ddIteFT+4JX0YfnIHzyYxStFQxlJm2h
+ 7RN+YLWjV25vdxPYm4kgvuu3Yyz25bRzKFNUli21gYwju6owVPPOaW4d4jjshEHPn8W4
+ xNT9Tq40XrJORC+NmttJtximusyDjf+dwbjrRUCOyodc0Et60IPmPcUS5pJmN2xybcxu
+ RXFeUXO7F6VZCYTn8H5ovPvptwdI7N5bXdx8WjmkmtyMokKy9res2CxTxbc+YbIp5AS8
+ rAByKalUltriWw1KSq8YLNQmCNjQOoe9CPYCdYaPagzbMadi6ISd+ogfloaaswciFRRv
+ TYfw==
+X-Gm-Message-State: AAQBX9deqNLZR/LY/yHYcH/Zi2eDNjjDWqUkX/XIISHiMdQBtni3cXEs
+ ztSBwmJ8A6VepqBOnL3wf0E=
+X-Received: by 2002:a4a:520c:0:b0:53e:5644:95c6 with SMTP id
+ d12-20020a4a520c000000b0053e564495c6mr3440698oob.3.1681326585478; 
+ Wed, 12 Apr 2023 12:09:45 -0700 (PDT)
 Received: from [192.168.68.107] ([191.255.108.232])
  by smtp.gmail.com with ESMTPSA id
- m129-20020acabc87000000b00389898f4c4fsm7005809oif.45.2023.04.12.12.09.29
+ j41-20020a4a88ac000000b0053b88b03e24sm7349111ooa.18.2023.04.12.12.09.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Apr 2023 12:09:31 -0700 (PDT)
-Message-ID: <45714328-7fae-2644-48b9-ce4c2d3240c8@gmail.com>
-Date: Wed, 12 Apr 2023 16:09:28 -0300
+ Wed, 12 Apr 2023 12:09:45 -0700 (PDT)
+Message-ID: <64fd2939-c632-1f04-a9e6-8b0078a62b15@gmail.com>
+Date: Wed, 12 Apr 2023 16:09:41 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH v2 50/54] tcg/ppc: Adjust constraints on qemu_ld/st
+Subject: Re: [PATCH v2 51/54] tcg/ppc: Remove unused constraints A, B, C, D
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
  qemu-ppc@nongnu.org
 References: <20230411010512.5375-1-richard.henderson@linaro.org>
- <20230411010512.5375-51-richard.henderson@linaro.org>
+ <20230411010512.5375-52-richard.henderson@linaro.org>
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230411010512.5375-51-richard.henderson@linaro.org>
+In-Reply-To: <20230411010512.5375-52-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::232;
- envelope-from=danielhb413@gmail.com; helo=mail-oi1-x232.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c33;
+ envelope-from=danielhb413@gmail.com; helo=mail-oo1-xc33.google.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
@@ -126,127 +127,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9YAcEwiw0aUG
+X-TUID: JE1lBteuOei5
 
 
 
 On 4/10/23 22:05, Richard Henderson wrote:
-> The softmmu tlb uses TCG_REG_{TMP1,TMP2,R0}, not any of the normally
-> available registers.  Now that we handle overlap betwen inputs and
-> helper arguments, we can allow any allocatable reg.
+> These constraints have not been used for quite some time.
 > 
+> Fixes: 77b73de67632 ("Use rem/div[u]_i32 drop div[u]2_i32")
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
 
 Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
->   tcg/ppc/tcg-target-con-set.h | 11 ++++-------
->   tcg/ppc/tcg-target-con-str.h |  2 --
->   tcg/ppc/tcg-target.c.inc     | 32 ++++++++++----------------------
->   3 files changed, 14 insertions(+), 31 deletions(-)
+>   tcg/ppc/tcg-target-con-str.h | 4 ----
+>   1 file changed, 4 deletions(-)
 > 
-> diff --git a/tcg/ppc/tcg-target-con-set.h b/tcg/ppc/tcg-target-con-set.h
-> index a1a345883d..f206b29205 100644
-> --- a/tcg/ppc/tcg-target-con-set.h
-> +++ b/tcg/ppc/tcg-target-con-set.h
-> @@ -12,18 +12,15 @@
->   C_O0_I1(r)
->   C_O0_I2(r, r)
->   C_O0_I2(r, ri)
-> -C_O0_I2(S, S)
->   C_O0_I2(v, r)
-> -C_O0_I3(S, S, S)
-> +C_O0_I3(r, r, r)
->   C_O0_I4(r, r, ri, ri)
-> -C_O0_I4(S, S, S, S)
-> -C_O1_I1(r, L)
-> +C_O0_I4(r, r, r, r)
->   C_O1_I1(r, r)
->   C_O1_I1(v, r)
->   C_O1_I1(v, v)
->   C_O1_I1(v, vr)
->   C_O1_I2(r, 0, rZ)
-> -C_O1_I2(r, L, L)
->   C_O1_I2(r, rI, ri)
->   C_O1_I2(r, rI, rT)
->   C_O1_I2(r, r, r)
-> @@ -36,7 +33,7 @@ C_O1_I2(v, v, v)
->   C_O1_I3(v, v, v, v)
->   C_O1_I4(r, r, ri, rZ, rZ)
->   C_O1_I4(r, r, r, ri, ri)
-> -C_O2_I1(L, L, L)
-> -C_O2_I2(L, L, L, L)
-> +C_O2_I1(r, r, r)
-> +C_O2_I2(r, r, r, r)
->   C_O2_I4(r, r, rI, rZM, r, r)
->   C_O2_I4(r, r, r, r, rI, rZM)
 > diff --git a/tcg/ppc/tcg-target-con-str.h b/tcg/ppc/tcg-target-con-str.h
-> index 298ca20d5b..f3bf030bc3 100644
+> index f3bf030bc3..9dcbc3df50 100644
 > --- a/tcg/ppc/tcg-target-con-str.h
 > +++ b/tcg/ppc/tcg-target-con-str.h
-> @@ -14,8 +14,6 @@ REGS('A', 1u << TCG_REG_R3)
->   REGS('B', 1u << TCG_REG_R4)
->   REGS('C', 1u << TCG_REG_R5)
->   REGS('D', 1u << TCG_REG_R6)
-> -REGS('L', ALL_QLOAD_REGS)
-> -REGS('S', ALL_QSTORE_REGS)
+> @@ -10,10 +10,6 @@
+>    */
+>   REGS('r', ALL_GENERAL_REGS)
+>   REGS('v', ALL_VECTOR_REGS)
+> -REGS('A', 1u << TCG_REG_R3)
+> -REGS('B', 1u << TCG_REG_R4)
+> -REGS('C', 1u << TCG_REG_R5)
+> -REGS('D', 1u << TCG_REG_R6)
 >   
 >   /*
 >    * Define constraint letters for constants:
-> diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-> index 613cd73583..e94f3131a3 100644
-> --- a/tcg/ppc/tcg-target.c.inc
-> +++ b/tcg/ppc/tcg-target.c.inc
-> @@ -93,18 +93,6 @@
->   #define ALL_GENERAL_REGS  0xffffffffu
->   #define ALL_VECTOR_REGS   0xffffffff00000000ull
->   
-> -#ifdef CONFIG_SOFTMMU
-> -#define ALL_QLOAD_REGS \
-> -    (ALL_GENERAL_REGS & \
-> -     ~((1 << TCG_REG_R3) | (1 << TCG_REG_R4) | (1 << TCG_REG_R5)))
-> -#define ALL_QSTORE_REGS \
-> -    (ALL_GENERAL_REGS & ~((1 << TCG_REG_R3) | (1 << TCG_REG_R4) | \
-> -                          (1 << TCG_REG_R5) | (1 << TCG_REG_R6)))
-> -#else
-> -#define ALL_QLOAD_REGS  (ALL_GENERAL_REGS & ~(1 << TCG_REG_R3))
-> -#define ALL_QSTORE_REGS ALL_QLOAD_REGS
-> -#endif
-> -
->   TCGPowerISA have_isa;
->   static bool have_isel;
->   bool have_altivec;
-> @@ -3791,23 +3779,23 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
->   
->       case INDEX_op_qemu_ld_i32:
->           return (TCG_TARGET_REG_BITS == 64 || TARGET_LONG_BITS == 32
-> -                ? C_O1_I1(r, L)
-> -                : C_O1_I2(r, L, L));
-> +                ? C_O1_I1(r, r)
-> +                : C_O1_I2(r, r, r));
->   
->       case INDEX_op_qemu_st_i32:
->           return (TCG_TARGET_REG_BITS == 64 || TARGET_LONG_BITS == 32
-> -                ? C_O0_I2(S, S)
-> -                : C_O0_I3(S, S, S));
-> +                ? C_O0_I2(r, r)
-> +                : C_O0_I3(r, r, r));
->   
->       case INDEX_op_qemu_ld_i64:
-> -        return (TCG_TARGET_REG_BITS == 64 ? C_O1_I1(r, L)
-> -                : TARGET_LONG_BITS == 32 ? C_O2_I1(L, L, L)
-> -                : C_O2_I2(L, L, L, L));
-> +        return (TCG_TARGET_REG_BITS == 64 ? C_O1_I1(r, r)
-> +                : TARGET_LONG_BITS == 32 ? C_O2_I1(r, r, r)
-> +                : C_O2_I2(r, r, r, r));
->   
->       case INDEX_op_qemu_st_i64:
-> -        return (TCG_TARGET_REG_BITS == 64 ? C_O0_I2(S, S)
-> -                : TARGET_LONG_BITS == 32 ? C_O0_I3(S, S, S)
-> -                : C_O0_I4(S, S, S, S));
-> +        return (TCG_TARGET_REG_BITS == 64 ? C_O0_I2(r, r)
-> +                : TARGET_LONG_BITS == 32 ? C_O0_I3(r, r, r)
-> +                : C_O0_I4(r, r, r, r));
->   
->       case INDEX_op_add_vec:
->       case INDEX_op_sub_vec:

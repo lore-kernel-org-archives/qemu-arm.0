@@ -1,113 +1,109 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp481638ejc;
-        Tue, 11 Apr 2023 05:58:36 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZKaWcLtLJTdfsToll5PcDDeba5SjrxkkkSZ2+60ppm2Jhj05ruvzvj1+MgDlcE1PheNJnH
-X-Received: by 2002:a05:622a:86:b0:3e3:9621:bd1f with SMTP id o6-20020a05622a008600b003e39621bd1fmr3450895qtw.19.1681217916338;
-        Tue, 11 Apr 2023 05:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681217916; cv=none;
+Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp1041487ejc;
+        Thu, 13 Apr 2023 06:25:15 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bQQSecz4p8hvLLHEnolHpvb/Wl9X9Nmsb0w9ICRWq+E5/WwZraKiGksA2GJRVqv5TAygKC
+X-Received: by 2002:a05:6214:482:b0:5ee:f961:4b56 with SMTP id pt2-20020a056214048200b005eef9614b56mr3344685qvb.9.1681392314957;
+        Thu, 13 Apr 2023 06:25:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681392314; cv=none;
         d=google.com; s=arc-20160816;
-        b=boCGc4dRKWiJ+qCOUIORzplCKAW3qFt28jxjT4R1mvNKjfH8S0qVnbPLawQtjG8TjY
-         68/0oZiyM9LaINqaNJrQy/u+/eg5xBTBnvx4HAK2j0dMJ3ehRLmegfMCbI+aGrCBx9O+
-         bG/IGvQPVsBNpBx1E8AAWSTvTIbySCY4zCU2UFKnlTkhVWI91Ey86c1O229uq6Qp7TRJ
-         5qkjW8Ir3qlujT7N0zr9HL7LVeJ4RlTB0xYON4siE53BXU5rdznSXkGwMju+92mXrMu+
-         dDgv3J3vQBADgE5Py62l/ReZEOWUnWT2n4fa4SCCViwoYaAUgbN+XF7Ub41RFLw98QRj
-         BPKA==
+        b=UdOdDxPuiYIBzCNh9oRezmibPQpdBOSZk4CvgVLTC4PzAY/OOuJ+cTQYQrTYUx/9m0
+         TtuSvbV9xajNeL9dB5ntN+phWVlICHTDqMJlnZZM0jEhsZYtawS0RLOuQplNK8dtS7qQ
+         1M81l+Yw4nppOWyDbDeKiZ918wjpi18mlucrBj2DtVLEJ8wVW91xHxh0xFuqycpiLNfv
+         vpkYdKJmGIZav92wR2BIFTPPCln8HCuOW6Ig9gKjzK1GADYOo4xjJd29evzIpFZT5LSR
+         RAaCPKyJrKCJvqffn/TdmyZnj0RRQFUFLfPpSeQCJ22yegBT9sJn44AhaBciVcc135yB
+         iyHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=xJvJS40WCNqHmshT8Ne3VQVW4OPsMKMaWe8mRIHcQ2M=;
-        b=sKs4HQgT8LExxJfAbRUcg29WQ3Ox1T18COb/et+giUypcGxVYSE5wHhNKlthUXL9l6
-         j1T49CM+4SyEO4WGKTvKO++5Qdx+iAt+hJPoNly8WFzfvjQJsUU1L4jHBjF/w4VuAbWJ
-         93fD8LzrHKQ9btUHYsPZJrzMlSy9wVw6RglrkN6Q7D6xBgq4N7sAkAwg1zfdyGjNAB9N
-         Vy0GeaGIppMKWlTrxsEzEvaEKTW6aXG+qBNcCfUSBGS1UieZ5KoMvv8u/xV+Qrn56A9B
-         oA7Evt6aCCXv27gfrC0YSMeRi/cW61z6Kw49m0mLwPj52ggUgJ/EfIYPSN8i3RcngWZm
-         20bQ==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=SVIQkvA2WP6zeEPbNmVjGiFz8zy4V0Km2NjASN8wmp4=;
+        b=JUYeDCnKdsQzWYprXQFGmtGKc1eaSWw6OGrhk+n/DcmxY68ozXftqJ+XKffJzzKFw0
+         HK8Pn1i4R0nW0FMUNXVv+7ynOmGsoiBaYVaoyd/Z7QIhYVuEtaknskP7URF6YLh3auvE
+         iEJeMl8MfPML+wUcLQRiwDFuDBstO1460pEkXGiFldtfYLn35w2c6RM3H2LzakY9JThs
+         yJZVFm8p3XmX4Pl40I/R6kuvPZix4gWAxnJAJAIH5FxMnSqLUZQTEBARtuWJo09gxNls
+         Qk5kjWP0mdSO62devjKR3hq0eXj7gkjBuIP5KMK4quoGaiKUN4035T4G5YYbxk3Llfi9
+         OeFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jaSZLb17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TkkUoYOv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19-20020ac87f13000000b003e65631fff1si9076125qtk.454.2023.04.11.05.58.36
+        by mx.google.com with ESMTPS id t12-20020a05621421ac00b005e05935d813si834826qvc.593.2023.04.13.06.25.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Apr 2023 05:58:36 -0700 (PDT)
+        Thu, 13 Apr 2023 06:25:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jaSZLb17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TkkUoYOv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pmDZV-0007ho-K5; Tue, 11 Apr 2023 08:58:05 -0400
+	id 1pmwwT-0006e6-Bb; Thu, 13 Apr 2023 09:24:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pmDZK-0007gQ-Bg
- for qemu-arm@nongnu.org; Tue, 11 Apr 2023 08:57:55 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1pmwwQ-0006dV-VR
+ for qemu-arm@nongnu.org; Thu, 13 Apr 2023 09:24:47 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pmDZF-0006Te-QZ
- for qemu-arm@nongnu.org; Tue, 11 Apr 2023 08:57:52 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-50480ce88a6so2183826a12.2
- for <qemu-arm@nongnu.org>; Tue, 11 Apr 2023 05:57:48 -0700 (PDT)
+ id 1pmwwP-0004ti-0t
+ for qemu-arm@nongnu.org; Thu, 13 Apr 2023 09:24:46 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-94a4a898649so272288766b.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Apr 2023 06:24:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681217866; x=1683809866;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xJvJS40WCNqHmshT8Ne3VQVW4OPsMKMaWe8mRIHcQ2M=;
- b=jaSZLb17ZlVYLTLZRNEYLeS3zUtfdUvTukc1hQcIHMr6SKWiBHZc1BDGCTF3rLzXw/
- qqD2l1dW0n63eu5Sav3OmLx5TcsibaqMa1LxAXtJrLzt4ZuH3IxVBPrb44zhNH8xdFt1
- RLlCilnrSO2LDBVyNr1VR5mLSbl1bsjw4cuuV4IHNfs0P7KpICO1iM6hJ1DsIVBZ+a8Z
- ALUTsq3G68B1ErIkJob8xKaoPT4RW/z6rglIcVbo4ohH+egUPAFIPin3A5JdradG5ObN
- c0k26Xgn5ql8pjumqVAnzdo/HBF31EpZr0PNeEHIh1nJT5aGZgjlK+nhPWHTcgamg4kX
- ylAw==
+ d=linaro.org; s=google; t=1681392281; x=1683984281;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=SVIQkvA2WP6zeEPbNmVjGiFz8zy4V0Km2NjASN8wmp4=;
+ b=TkkUoYOvmJpx9dNAre6sOohlO+9mD4W5VBnxGxTF5Ky6kdFi2xmje6F5+C7G6NwQCd
+ xg8yW29RqiCdXxBsk0dnnIAqeHlkCeRyc0B2XiHOpYnyaHNL8IfIMwFBcNSZSRmOEp6Q
+ bp1y8zUpiUi4AG5dvu3SgRVQS9woi3rM0/hv5AxWPQPKxWKx2upEpTFWNcn0tKG+TE57
+ uNgSK5willU1iUGs3DNQjN4UKBqC9hzp1EWzTqdSXIUybbhi36qFYXfWxY8mjklD7twY
+ SQLfkCEbghdTs3ecPoHZ/gCzDCQSjKGA8EhAOw4L36Rnj4vYxtNlyRckssJ1RQT36vnS
+ TLqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1681217866; x=1683809866;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=xJvJS40WCNqHmshT8Ne3VQVW4OPsMKMaWe8mRIHcQ2M=;
- b=5VdakJ9xx/SXiovrnEEJUEzqyZFcWz/J1/ZcmMJD544N0IoJ/8zxpcKAUCxg1bw7iG
- FlLZVI9ask5MOwGelrDRJuZeRGil3ry6hbiof98b54UkD/QM+9MwX5eQekqCyk25Fzra
- uObvFPFFkkFYpNRZi1KIubA0Z861nVMFKnY3xSb9ElXAffBrrVQR41qW7ClzSTO/TEHL
- Sgy5nL4p6vqENT5dSHf0LhEsJgTja6TWscTnbtBlhIvTtNYwoVZB4CewmBA/cyajbF/J
- n3MktKfFPsKv8KKUBxJFXb2p7xCZYK1Z7VkQKmO0vfIOvP6YLGa504epSqN5nuSeIS8+
- /RZQ==
-X-Gm-Message-State: AAQBX9fL/kUxRh3dKUxbgc4vxjrn+khojBrlgJ4XKT5LVeB3Dky8sf06
- pZJtIlLVI4+Ufd8gZknipXTUJldDWyyT7KunWOg27g==
-X-Received: by 2002:a50:d0c3:0:b0:4fb:7e7a:ebf1 with SMTP id
- g3-20020a50d0c3000000b004fb7e7aebf1mr6726356edf.6.1681217866332; Tue, 11 Apr
- 2023 05:57:46 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1681392281; x=1683984281;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SVIQkvA2WP6zeEPbNmVjGiFz8zy4V0Km2NjASN8wmp4=;
+ b=am7h9ac0hLac/xmG7ie2vT2oAHYQQj+ly6OnW+tsVOnIoSqIWwPe90QtDa2tpWZ14i
+ HNylBN53cFlbcQz56mx7dYCKIQ2BGuWGYNzhtDm97T9ei/VVrcgVRNqBGL68tHtE0gDG
+ X5/s6J4b9UPVSQ2NSaxFg4Ok2JeaM/C6tJkSqUX3zaRWGKMrcXsaNoGDOpZeyOspWkZq
+ qqr/JJRCuy+jIUMjOYGnA0f7soLGUZ5aqLyNILnVhkL0xAfttYCm8/SU+jQkeVnXdh4E
+ MvnBKv38cdudHQ2u4LYyeAvtqT4aR2tqRjURRFjuVPG53y6fgKTmbKAdlbWydnEKIrpt
+ zTdA==
+X-Gm-Message-State: AAQBX9f5bXPk3qnxxI0O3u6eycCAXy5/4NPInmjk0hf8hLVXAxvj+Xzm
+ eYBvT4Bl/MN6FQ0hoVKz6/HQDYD39qusCt5t0dNGJw==
+X-Received: by 2002:a50:d783:0:b0:506:6ca5:3128 with SMTP id
+ w3-20020a50d783000000b005066ca53128mr1227711edi.6.1681392280863; Thu, 13 Apr
+ 2023 06:24:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230409200526.1156456-1-sw@weilnetz.de>
- <0dd900ec-cb08-b89c-bf09-851cca144afd@linaro.org>
-In-Reply-To: <0dd900ec-cb08-b89c-bf09-851cca144afd@linaro.org>
+References: <20230406151441.1027662-1-leonid_komarianskyi@epam.com>
+In-Reply-To: <20230406151441.1027662-1-leonid_komarianskyi@epam.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Apr 2023 13:57:35 +0100
-Message-ID: <CAFEAcA_cQF+GmQy2hy1VW1fbhioyWaYnU2iHg3-f13G4D5NsPw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Fix some typos in comments (most found by
- codespell)
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Stefan Weil <sw@weilnetz.de>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Date: Thu, 13 Apr 2023 14:24:29 +0100
+Message-ID: <CAFEAcA_koyJSR_7kF6TByA_rm2nJQr-8UnXrtu3JqwgpqUEctw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Add overflow check for gt_recalc_timer
+To: Leonid Komarianskyi <Leonid_Komarianskyi@epam.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ Volodymyr Babchuk <Volodymyr_Babchuk@epam.com>,
+ Dmytro Firsov <Dmytro_Firsov@epam.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,21 +118,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Br2TSuZX48k1
+X-TUID: S2of4KOrzmtP
 
-On Tue, 11 Apr 2023 at 11:42, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+On Thu, 6 Apr 2023 at 16:16, Leonid Komarianskyi
+<Leonid_Komarianskyi@epam.com> wrote:
 >
-> On 9/4/23 22:05, Stefan Weil via wrote:
-> > Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> > ---
-> >
-> > The patch does not change code and could also be applied for 8.0.
->
-> But not user-facing, so can wait 8.1 :)
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> If gt_timer is enabled before cval initialization on a virtualized
+> setup on QEMU, cval equals (UINT64_MAX - 1). Adding an offset value
+> to this causes an overflow that sets timer into the past, which leads
+> to infinite loop, because this timer fires immediately and calls
+> gt_recalc_timer() once more, which in turn sets the timer into the
+> past again and as a result, QEMU hangs. This patch adds check for
+> overflowing of the nexttick variable.
 
-Applied to target-arm.next for 8.1; thanks.
+This is https://gitlab.com/qemu-project/qemu/-/issues/60 --
+thanks for sending a patch.
 
+> Suggested-by: Volodymyr Babchuk <volodymyr_babchuk@epam.com>
+> Co-Authored-By: Dmytro Firsov <dmytro_firsov@epam.com>
+> Signed-off-by: Leonid Komarianskyi <leonid_komarianskyi@epam.com>
+> ---
+>  target/arm/helper.c | 14 +++++++++++++-
+>  1 file changed, 13 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 2297626bfb..2fbba15040 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2618,6 +2618,7 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+>          int istatus = count - offset >= gt->cval;
+>          uint64_t nexttick;
+>          int irqstate;
+> +        bool nexttick_overflow = false;
+>
+>          gt->ctl = deposit32(gt->ctl, 2, 1, istatus);
+>
+> @@ -2630,6 +2631,16 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+>          } else {
+>              /* Next transition is when we hit cval */
+>              nexttick = gt->cval + offset;
+> +            if (nexttick < offset) {
+> +                /*
+> +                 * If gt->cval value is close to UINT64_MAX then adding
+> +                 * to it offset can lead to overflow of nexttick variable.
+> +                 * So, this check tests that arguments sum is less than any
+> +                 * addend, and in case it is overflowed we have to mod timer
+> +                 * to INT64_MAX.
+> +                 */
+> +                nexttick_overflow = true;
+> +            }
+
+Rather than adding in a bool, I think I prefer the version
+of the patch in one of the comments to the bug report:
+
+             /* Next transition is when we hit cval */
+             nexttick = gt->cval + offset;
++            if (nexttick < gt->cval) {
++                nexttick = UINT64_MAX;
++            }
+
+i.e. we just saturate nexttick, and then let the existing handling
+of "turns out nexttick is too big" handle things.
+
+There is also a comment or two from me in the bug report pointing
+out that the handling of wraparound is also wrong in the other
+half of this if(); we should look at that too.
+
+>          }
+>          /*
+>           * Note that the desired next expiry time might be beyond the
+> @@ -2637,7 +2648,8 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+>           * set the timer for as far in the future as possible. When the
+>           * timer expires we will reset the timer for any remaining period.
+>           */
+> -        if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
+> +        if ((nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu))
+> +             || nexttick_overflow) {
+>              timer_mod_ns(cpu->gt_timer[timeridx], INT64_MAX);
+>          } else {
+>              timer_mod(cpu->gt_timer[timeridx], nexttick);
+> --
+> 2.25.1
+
+thanks
 -- PMM

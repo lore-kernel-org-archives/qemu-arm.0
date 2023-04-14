@@ -1,131 +1,140 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp210169ejm;
-        Fri, 14 Apr 2023 09:05:13 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Y1GhTFa/0Um6EzWezSO2Bd78F0wuBMnAT/XT2IMH0a6HMxD48JpsJfBWUMa5bD5a7mjPAM
-X-Received: by 2002:ac8:5b83:0:b0:3e3:8655:76a3 with SMTP id a3-20020ac85b83000000b003e3865576a3mr10023795qta.1.1681488313001;
-        Fri, 14 Apr 2023 09:05:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681488312; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp210194ejm;
+        Fri, 14 Apr 2023 09:05:15 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YDRRWCroR6Q/5kFe1un68Z+jCaNggQo5YK12YmcA76+tmmrN1lDeartrrMFh7u06wCVOHL
+X-Received: by 2002:a05:6214:dc6:b0:5b9:c056:3c4a with SMTP id 6-20020a0562140dc600b005b9c0563c4amr4514234qvt.13.1681488315509;
+        Fri, 14 Apr 2023 09:05:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681488315; cv=none;
         d=google.com; s=arc-20160816;
-        b=kQWzyPjcxkL1RKX50lru/SFsa0Xb7RML4Ul+a7zyDz4AnfLHar2yj0hXmvBtBzJ6mC
-         GceJbWsXR7Sxgna8shIEAquYeCGuvdpLIDGF41A6l+I4O4JJLGWgx4mqXNRXDG7nQlds
-         kMTLqd2xVmR4s9CI+hOdTexS3i+udTXpOr+QAqzmTBiRDtV0mgEbHKNzcXY0jrdIL5wG
-         dbSHPpqVq0hRdh0UwZuWTTM4PExQJeR7qhtuK74izH4JlZNGBjpzv/kikTcogVGMyk0Q
-         JvjiZeXTdNDcTSacH66OUhaktB2/kxYghKOq0ynh+PIuI47R5iox03acm576k9S/Oq7e
-         iniQ==
+        b=KyiTIFSpUTLZpjLJ13SNIUeSSjSf2Ky9RK6K/iAYvaNQrB5KZMuGhWdfR78u7BtrDo
+         Rk1LHzR+EeIVBYZ1a4bCrNmNEaYqqmBWrUJX4s6MabNbX1681jONsLIYMON8KReJz1/N
+         OrXtFSKL8uHbseNJuRTm6G8+8sJ7+6cNvseKUvSwp6z/jINcx9pwrmVNxKvgChUzNn7K
+         lgmpjgL9pSRoHIoA1YjXv2JqmNiItvJHchZSPxXCYJ04orI4tib+R964+rl08p+KZsAu
+         obzs49U9NOyFW70+dlYEFV0PYaTgnDx15w2CC3xghruimf9gEj9POvBvtV0VS2dQiEv4
+         bixA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CVppDgiSC0bLO0JkaFk7PJdJ9Tl0xT2sLkX+JcFhZxw=;
-        b=JlCo7VxO4b8zxFs6c2rp6ZqZyq70kNvc6dAtY7/n9EmAkWxnEo52jhTZnLSh/qjXcX
-         OqT0mgEvHKiSA+5UgeDKOq+fo6lnqGEkoSOaJT9WCwTMAo/Ttf7boWAziDZPaJUf8pJE
-         Nm/4tS+k/TjW0RrP198JCJHjDCQHe7p1bEdYSPs9XMgV93IUI/q9ulaNSDDjA9QFvdAG
-         TLtlxeH+Rtvd8zP4fyq0pDSKqwDsYq5ys+y/2ecgTv5n/orTKATiv9wTTk6usXbIXHEx
-         WwJ/9jBjo2q87P1GMptaCyo5Odwuje+7CjDazWiq+KyiA4Ov1CUfx2IaJoQYpY0AqUQM
-         Wqzg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=YMa/jjOI3MD8EqV7FtoT5tBQ7kPLlHERL0vXAgxCR5Y=;
+        b=WmlyHZjKTULr8RrOlFHVt/5OEYXCBmUgFLO17xLPCgIJgWPJldUeKtR0qzp3mGhNOL
+         x7x/5i6MqQ6wpTV9xXxiXfP7Xn5MuoUwsw56leXb+06CEFsxooxhG7DP+kBQSqK3JP8d
+         P8IV7/L350y8RG3Et/IcDfJvnfhcn3fSTsJGbcQkOwBRLEvTrcKkpUyXYL0d9iEyA2XI
+         Jbj7KLh127DW4dZO3xDufzMEvrCzD8jEJniKN/ZXEqkbUSliK4TYviuyuWBeKt61Do8V
+         b9Zy/ldS1uAJG8qpEMyoe3crAx9b0nZfrvjl8saqLvny3dy9lRU9QKleD4PKCAZpyHkb
+         EKmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LD5f1+iQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RrqyY3tL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1-20020ac87fc1000000b003e8284a2690si2977388qtk.802.2023.04.14.09.05.12
+        by mx.google.com with ESMTPS id jx9-20020a0562142b0900b00571a3b77856si2775543qvb.172.2023.04.14.09.05.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Apr 2023 09:05:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Apr 2023 09:05:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LD5f1+iQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RrqyY3tL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pnLub-0006JX-Rg; Fri, 14 Apr 2023 12:04:34 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pnLuX-0006Iy-N1; Fri, 14 Apr 2023 12:04:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pnLuT-0006Bq-2C
- for qemu-devel@nongnu.org; Fri, 14 Apr 2023 12:04:25 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1pnLuV-0006Gw-1J
+ for qemu-arm@nongnu.org; Fri, 14 Apr 2023 12:04:27 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pnLuN-0007u6-FC
- for qemu-devel@nongnu.org; Fri, 14 Apr 2023 12:04:24 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- eo6-20020a05600c82c600b003ee5157346cso12206234wmb.1
- for <qemu-devel@nongnu.org>; Fri, 14 Apr 2023 09:04:16 -0700 (PDT)
+ id 1pnLuN-0007ud-Oe
+ for qemu-arm@nongnu.org; Fri, 14 Apr 2023 12:04:26 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ eo6-20020a05600c82c600b003ee5157346cso12206294wmb.1
+ for <qemu-arm@nongnu.org>; Fri, 14 Apr 2023 09:04:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1681488255; x=1684080255;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=CVppDgiSC0bLO0JkaFk7PJdJ9Tl0xT2sLkX+JcFhZxw=;
- b=LD5f1+iQfWiLt/GJQny3vjp71qcf0SMPr2kMxir5ThTOM9d+PSXulCkWB8eQm0oudk
- QqEV7M2kPxZddb6L4zW4NIZ1dmfzkq1THEv7TncZe0RSZQN8amXVld0r1xgKJLv+uhI9
- JDyUmNadY6YP8hbxFBDqJQEbeK4XbCPetvXq0sKCyPY5hRyj6ZjXRHk74nTz0xC85IL/
- MX6LrGJIG/gn9ALf5Yv0ZqFCyTbRTAMssFGKelLQ7sUKyc8YF0xCFW5xEieXFsfIh+7G
- rS04cjzQQZaAE8MTZ8J1YzAhdHUfyyk2yiTznXabxgOucakGcijN9LA1QRA5PaEPAXXP
- 5I2A==
+ d=linaro.org; s=google; t=1681488257; x=1684080257;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YMa/jjOI3MD8EqV7FtoT5tBQ7kPLlHERL0vXAgxCR5Y=;
+ b=RrqyY3tLwUYPzR1bC3UHzCc/SLAMfeEomSCZrPQWrF8sZzq/33u1xwNjteMq/p46ZF
+ S0LnjNBVUDf+x0TPgjS+2YeRPFC/KgYdeHreKpYSS0M4ZjxNdaMQLc5E6mfEWjGdsnpr
+ I9wCu1+H0fH8lBLYsVnCmMERFn7hGD4kFVWoWRtxiwkMKp59h41MoA3NO7TAfkUvhMNZ
+ QrpOyd8iBxnYZTg34rX4CFxobc2ym5kP6SudUE2pZXmDhVNtn/qG5Feq1+fcVs3oKx4b
+ xyAAwl2tTmj5WRyFu8dk+1WRXS/+nB94YttBCwidaw6SSlI36qYeCz2QZGyyQxXAHsyI
+ On9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681488255; x=1684080255;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CVppDgiSC0bLO0JkaFk7PJdJ9Tl0xT2sLkX+JcFhZxw=;
- b=KwtB2hegYtzDdtyT+sqs2eZXmMAkzWI9CPsKjdw3tQIa5p3qxgcR/3nvTZSRosRJUF
- 5hH7+dt+mAKww/xJYsESqIMZxpLtkUKbGGzge8UnkGKJutmY93BkPaybDlZAb+olYF4v
- rxjTmr7gRc6nMiLURQpolopKE80QqsJhwkX9oCdhlpS1g3fmUIozzt04kPDsvGw/DXZ5
- PGdXIlCSYemQeK46Ss9Qeqk0Wih9JImUyMFiAzJHXAwaFAnUKC7aHDmJXh0Hpd40w2lS
- MEAJTZYMbCJYIOYXpOEA9wl68kXrypjOPWk6+w0kWUrb+oFjVHB0hrCWNf0rRZrUgzGp
- EMSA==
-X-Gm-Message-State: AAQBX9eWJ0PVQNnF/Rg8QPzW5xKQihZQfZcMNmzNycZIbvJtmcWUOXPT
- AkmJaE+aMejK5kcfmQu9RFutXQ==
-X-Received: by 2002:a7b:c4d6:0:b0:3f0:3c2:3fa4 with SMTP id
- g22-20020a7bc4d6000000b003f003c23fa4mr4710566wmk.12.1681488255114; 
- Fri, 14 Apr 2023 09:04:15 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1681488257; x=1684080257;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YMa/jjOI3MD8EqV7FtoT5tBQ7kPLlHERL0vXAgxCR5Y=;
+ b=BzGpXfztmt6e8tB0ut1Tjp1YdK3k9wLsimUaDia/ox6wEDhDEDe4pPTZpdfLVEemTw
+ VNtxsZqHdHzCjN+kTcd560p4hhkRebkJJ0+Rtnxnb174r1WcHyk+T03o5DQrVbEFboeQ
+ vLsHUD54M//Ur29nyVrrD/GxhNjSDdoX+k309OPs3B5tnyNdyY0VtYmwatYflBY/wJrI
+ IDTNmrZI/+JnlGQxH7Vvk32jOdZOFYLSVOMTmcw/FXfNBE+DCJnsxmwLEW384VD0WSJB
+ cRUEWaA4Tugfn7rFhOMC7+RjD4KUOb7cYqc4CzJuPhocRbg5J2rLMqirF1ZqXAzSy3mP
+ 3rrg==
+X-Gm-Message-State: AAQBX9dyTt4Am8OsoZg1LL/GiLmdED+pOxKKQp4eGZUgcV1mqG0CeQcL
+ mRv4CVm3gGiIgC4g+TuyuOtJtFEUg55ZT7Vw2vU=
+X-Received: by 2002:a05:600c:ad6:b0:3f0:bf4d:8c64 with SMTP id
+ c22-20020a05600c0ad600b003f0bf4d8c64mr1709819wmr.22.1681488257013; 
+ Fri, 14 Apr 2023 09:04:17 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 8-20020a05600c22c800b003ef71d541cbsm4673752wmg.1.2023.04.14.09.04.14
+ 8-20020a05600c22c800b003ef71d541cbsm4673752wmg.1.2023.04.14.09.04.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Apr 2023 09:04:14 -0700 (PDT)
+ Fri, 14 Apr 2023 09:04:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 0/3] target/arm: Fix handling of VSTCR_EL2.SW and VTCR_EL2.NSW
-Date: Fri, 14 Apr 2023 17:04:10 +0100
-Message-Id: <20230414160413.549801-1-peter.maydell@linaro.org>
+Subject: [PATCH 3/3] target/arm: handle ipa_secure vs s2walk_secure correctly
+Date: Fri, 14 Apr 2023 17:04:13 +0100
+Message-Id: <20230414160413.549801-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230414160413.549801-1-peter.maydell@linaro.org>
+References: <20230414160413.549801-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G+dNrB7tp7+W
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rNCrC/Ejo1Kg
 
-When FEAT_SEL2 (secure EL2) is implemented, the bits
-VSTCR_EL2.SW and VTCR_EL2.NSW allow the guest to set things up
-so that the stage 2 walk for an IPA is done to the other
-address space, eg
+In get_phys_addr_twostage() when we set up the stage 2 translation,
+we currently incorrectly set all of in_mmu_idx, in_ptw_idx and
+in_secure based on s2walk_secure.
+
+Here s2walk_secure is true if we should be doing this stage 2
+walk to physical memory. ipa_secure is true if the intermediate
+physical address we got from stage 1 is secure. The VSTCR_EL2.SW
+and VTCR_EL2.NSW bits allow the guest to configure secure EL2
+so that these two things are different, eg:
  * a stage 2 walk for an NS IPA done to secure physical memory
    (where the translation table base address and other parameters
    for the walk come from the NS control registers VTTBR_EL2
@@ -134,36 +143,43 @@ address space, eg
    (where the parameters from the walk come from the S control
    registers VSTTBR_EL2 and VSTCR_EL2)
 
-We tried to implement this, but didn't get it right -- in
-get_phys_addr_twostage() we identify whether we need to do
-the s2 walk in Secure or NonSecure, but then we fail to pay
-attention to whether we were doing the walk for an NS or S IPA.
-The fix for this is simple -- set ptw->in_mmu_idx and ptw->in_secure
-based on ipa_secure, with only ptw->in_ptw_idx depending on
-s2walk_secure. However to make this work we first need to fix
-a couple of places in the ptw code that were incorrectly looking
-at ptw->in_secure when they either should not be or should
-be doing something based on ptw->in_ptw_idx.
+To tell get_phys_addr_lpae() to do this, we need to pass in an
+in_mmu_idx based on ipa_secure, and an in_ptw_idx based on
+s2walk_secure.  The in_secure parameter follows in_mmu_idx, as usual.
 
-This fixes https://gitlab.com/qemu-project/qemu/-/issues/1600 .
-NB: I have tested that this fixes the test case in the bug, and
-that it doesn't break 'make check-avocado', but I don't have a
-huge supply of EL2-using guests to hand so the patchset hasn't
-received exhaustive testing. Plus this area of the architecture
-and this bit of QEMU's codebase are pretty hairy -- so careful
-review would be a good idea :-)
+Note that this change relies on fixes in the previous two commits
+("Don't allow stage 2 page table walks to downgrade to NS" and
+"Set ptw->out_secure correctly for stage 2 translations").
 
-thanks
--- PMM
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1600
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This change also means that v8M, which also uses
+get_phys_addr_twostage(), is no longer using a ptw->in_mmu_idx
+calculated based on s2walk_secure, which was always a little
+strange given that v8M doesn't do any kind of s2 walk, even
+though it didn't produce incorrect behaviour.
+---
+ target/arm/ptw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Peter Maydell (3):
-  target/arm: Don't allow stage 2 page table walks to downgrade to NS
-  target/arm: Set ptw->out_secure correctly for stage 2 translations
-  target/arm: handle ipa_secure vs s2walk_secure correctly
-
- target/arm/ptw.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
-
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index c1e124df495..2ee2b0b9241 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2741,9 +2741,9 @@ static bool get_phys_addr_twostage(CPUARMState *env, S1Translate *ptw,
+     }
+ 
+     is_el0 = ptw->in_mmu_idx == ARMMMUIdx_Stage1_E0;
+-    ptw->in_mmu_idx = s2walk_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
++    ptw->in_mmu_idx = ipa_secure ? ARMMMUIdx_Stage2_S : ARMMMUIdx_Stage2;
+     ptw->in_ptw_idx = s2walk_secure ? ARMMMUIdx_Phys_S : ARMMMUIdx_Phys_NS;
+-    ptw->in_secure = s2walk_secure;
++    ptw->in_secure = ipa_secure;
+ 
+     /*
+      * S1 is done, now do S2 translation.
 -- 
 2.34.1
 

@@ -1,306 +1,117 @@
-Received: by 2002:a17:907:2c4d:b0:94e:1233:1117 with SMTP id hf13csp329389ejc;
-        Fri, 14 Apr 2023 02:28:05 -0700 (PDT)
-X-Google-Smtp-Source: AKy350blp0w2FuE/XkNkJ9vqxYtnuMXClIaFWkhi6jqAyCJZS3gSbEC1XCVqZ8X6/mThs4jUZ8HN
-X-Received: by 2002:ad4:5aa3:0:b0:5cf:fff6:57cb with SMTP id u3-20020ad45aa3000000b005cffff657cbmr2336171qvg.30.1681464484980;
-        Fri, 14 Apr 2023 02:28:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681464484; cv=none;
-        d=google.com; s=arc-20160816;
-        b=n5wpZnb5KT02UB+qilEaXUrjazHITGTxw/SkPzbm7/5sTRtZ7s4FxrblIPLm/8k8mn
-         dp8OMHu9guhjz33GSEau1rOV+pqHVTDnMtKj7T38pNHJlqeWBiF/o2bcj7SWBNJSQRcg
-         cyfiSt53+314JBGWJ78KSlcW0ZV0ApUk3NMXIntue5wVOfXbDfF1/8hgdYfxSGsVuYKO
-         nJaUsckGOSd8eox+Zh0E2MXf+8udWEwvOGjpJA4HVbDomi6EkUmiTN6+ax/Kl2V17ADW
-         FzTOFCXA80tLIY3SLMIMF0QLYgHtP6hIB35QzJSYpX3BKyKXgpDg1MTvuRR40xxJ1TV1
-         hBqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:ironport-hdrordr:ironport-data;
-        bh=KF41XJ4t9OzaLr+dprNF/huj9DhHDi6IoBu6lwGg8NA=;
-        b=nNwmb0nKO0y/q7kDxmrlgrmxdn3YWgNdc2uNEhfF97aTZjA2JIRenUnNUN1o6RR9sV
-         269/7+U3dbT1aXzfAzZihEF5cn62WUAhxrrA4HGSDX0OnxRpxWydQZutARToec39B17A
-         /MID60wnK47AS7vTfkvL+W28k/u9sfcYfMQq9czETlO6zHdCZSWYj9Q2IPBqcG/CgV9t
-         uixytjUnHMUdJsAgGIZh4Y/4OKEgaaAVsRFynsZdhhiqbSxJWZmsrOg9QwrIPHOYVYmI
-         BJgEPrUmwkSigaSlo42zqCJyUFdUen00yRhBa1IlnJhBYtyDAzUe8uXbJeyNcPP/e8Re
-         DaMw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eo8-20020ad45948000000b005e8e2d0b101si2215520qvb.406.2023.04.14.02.28.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Apr 2023 02:28:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pnFhs-0001TP-NK; Fri, 14 Apr 2023 05:27:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slankes@eonerc.rwth-aachen.de>)
- id 1pnFhm-0001T0-RU; Fri, 14 Apr 2023 05:26:54 -0400
-Received: from mail-out-1a.itc.rwth-aachen.de ([2a00:8a60:1:e501::5:44])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slankes@eonerc.rwth-aachen.de>)
- id 1pnFhi-0006Df-7B; Fri, 14 Apr 2023 05:26:54 -0400
-X-IPAS-Result: =?us-ascii?q?A2BTAADeGjlk/5gagoZaHAEBAQEBAQcBARIBAQQEAQGBf?=
- =?us-ascii?q?QUBAQsBgyACK4EvhFKRMAOdXIFqFA8BAQEBAQEBAQEEBAE5CwQBAYUGAhaFJ?=
- =?us-ascii?q?ic2Bw4BAgQBAQEBAwIDAQEBAQEBAwEBBgEBAQEBAQYEgR2FLzkNhgMBAQEBA?=
- =?us-ascii?q?gEjVgULAgEIGCoCAgIwJQIEDgUOgnABgjkSEROuC3qBMoEBhHKcQQoGgUEBg?=
- =?us-ascii?q?VWFdXZeAYMfhHtCgUpDgRUnDAMNgmg+gmICgUqDcTmCLgSaTgqBNHSBIA6BP?=
- =?us-ascii?q?IEEAgkCEWuBEAhpgXlAAg1jCw5vgUmBToFcBAIUOQ4OSwNEHUADCzs6PzUUH?=
- =?us-ascii?q?1yBGSQFAwsVKkcECDgGHDQRAggPEg8GJkQMQjczEwZcASkLDhEDT4FHBC9bg?=
- =?us-ascii?q?QEGASYknjRogQgsBSqCDqMVoGcDB4IogVaGQYMpggiVFQQvlxeSK5d1jVOVC?=
- =?us-ascii?q?oUZAgQCBAUCFoFqBIIKcRRlAYI8UhkPkhKPeXU9AgEGAQoBAQMJiG2CWAEB?=
-IronPort-Data: A9a23:M66u/KNXaWX+bHDvrR3OlsFynXyQoLVcMsEvi/4bfWQNrUp23jFSx
- 2NMCjqFO/veMDT8eoh+aI2yp0pU7MeAzoJrHHM5pCpnJ55oRWspJvzEdBuqb3PKRiHnZBg6h
- ynLQoCYdKjYdleF+lH3dOKJQUBUjcmgXqD7BPPPJhd/TAplTDZJoR94kobVuKYx6TSCK17L6
- IKaT/H3Ygf/gGYoaz5MsspvlTs21BjMkGJA1rABTa0T1LPuvyF9JI4SI6i3M0z5TuF8dgJtb
- 7+epF0R1jqxEyYFUrtJoJ6iGqE5auK60Ty1t5Zjc/PKbi5q+3ZuiPZrbJLwXm8M49mBt4gZJ
- NygLvVcQy9xVkHHsLx1vxW1j0iSMIUekIIrL0RTvuSc6GbcTV/24slzL1kUMo9fp+9UB3Nno
- KlwxDAlNnhvhsqs3667R/kpnZ1mJY/xI58f/3hsiz3UZRokacmYH+OTvocehml2350UdRrdT
- 5NxhT5HdxDJZR5CIX8aD5QzhuzunGbjc3hRoVmVqKxx72W7IAlZjOK9YYGJIYfiqcN9w0WBr
- T7lz1nDLQxBZPCw0Ca7wk/1r7qa9c/8cMdIfFGizdZzjViOg2AeFhASfV28p/a/lwi5Qd03A
- 1UZ/zdrpLI33EqsSNb7Qlu/unHslgYRR9dKVegz+Q2Azq785wefD3IDCDlbZ7QbWNQeXyM21
- lKZ2siwQDUpqqKJSTeU+vGYoFteJBQoEIPLXgdcJSNt3jUpiNhbYs7nJjq7LJOIsw==
-IronPort-HdrOrdr: A9a23:dhrQy6PcsZ5g18BcTu6jsMiBIKoaSvp037By7TEXdfRUGvb2qy
- ncpoV86faUskdqZJhOo6HiBEDtex7hHNtOkO0s1NSZLXTbUQmTXeNfBOLZqlWKcREWtNQtsJ
- uIGJIRNDSENzhHZLHBgTVQfexN/DDNytHQuQ6X9QYUcelAA5sQlDtENg==
-X-Talos-CUID: =?us-ascii?q?9a23=3Ap5A5ZWjezaUtEcxZCTZss3X36TJufVr21kn0OW6?=
- =?us-ascii?q?EFEVxarKXDgKZ26V2up87?=
-X-Talos-MUID: 9a23:ROuJ7gs1t76jiVWWk82n2TJ7P5tL05mUJ11WwbkpotW6BREpEmLI
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-AV: E=Sophos;i="5.99,195,1677538800"; 
- d="p7s'?scan'208,217";a="42893433"
-Received: from rwthex-s1-a.rwth-ad.de ([134.130.26.152])
- by mail-in-1a.itc.rwth-aachen.de with ESMTP; 14 Apr 2023 11:26:41 +0200
-Received: from rwthex-s1-a.rwth-ad.de (2a00:8a60:1:e500::26:152) by
- rwthex-s1-a.rwth-ad.de (2a00:8a60:1:e500::26:152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 14 Apr 2023 11:26:40 +0200
-Received: from rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990]) by
- rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990%3]) with mapi id
- 15.02.1118.026; Fri, 14 Apr 2023 11:26:40 +0200
-From: "Lankes, Stefan" <slankes@eonerc.rwth-aachen.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id w13-20020adfec4d000000b002efb6e0c495sm3058052wrn.91.2023.04.14.01.57.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Apr 2023 01:57:45 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 6E6E51FFB7;
+	Fri, 14 Apr 2023 09:57:45 +0100 (BST)
+References: <20230414073432.36000-1-slankes@eonerc.rwth-aachen.de>
+ <20230414073432.36000-2-slankes@eonerc.rwth-aachen.de>
+User-agent: mu4e 1.10.0; emacs 29.0.90
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Stefan Lankes <slankes@eonerc.rwth-aachen.de>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Subject: Re: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
-Thread-Topic: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
-Thread-Index: AQHZbqOz3m2A2WZ4VE2Qebwb1TRCdq8qYP6AgAAGlwA=
-Date: Fri, 14 Apr 2023 09:26:40 +0000
-Message-ID: <365AD0A0-54D4-4155-979C-AD4FC42A28C4@eonerc.rwth-aachen.de>
-References: <CAFEAcA9CnA0Pxxr1Q5S25SFnQTJM4oBwGeXsaHgTpt+TvJuGOA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9CnA0Pxxr1Q5S25SFnQTJM4oBwGeXsaHgTpt+TvJuGOA@mail.gmail.com>
-Accept-Language: de-DE, en-US
-Content-Language: de-DE
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-ms-exchange-messagesentrepresentingtype: 1
-Content-Type: multipart/signed;
- boundary="Apple-Mail-E728C379-828D-46BA-B113-F183F8AC0F74";
- protocol="application/pkcs7-signature"; micalg=sha-256
+Date: Fri, 14 Apr 2023 09:54:50 +0100
+In-reply-to: <20230414073432.36000-2-slankes@eonerc.rwth-aachen.de>
+Message-ID: <87v8hyc03a.fsf@linaro.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=2a00:8a60:1:e501::5:44;
- envelope-from=slankes@eonerc.rwth-aachen.de;
- helo=mail-out-1a.itc.rwth-aachen.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mGW/Skf3epmQ
-
---Apple-Mail-E728C379-828D-46BA-B113-F183F8AC0F74
-Content-Type: multipart/alternative;
-	boundary=Apple-Mail-DCFC6B55-FEEB-4FEE-9092-CAA4E0085222
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: v6/PvzHnrQ+G
 
 
---Apple-Mail-DCFC6B55-FEEB-4FEE-9092-CAA4E0085222
-Content-Type: text/plain;
-	charset=utf-8
-Content-Transfer-Encoding: base64
+Stefan Lankes <slankes@eonerc.rwth-aachen.de> writes:
 
-SGVsbG8gUGV0ZXIsDQoNCkkgdG90YWxseSBhZ3JlZS4gV2UgYXJlIGRldmVsb3BpbmcgYSB1bmlr
-ZXJuZWwgKGh0dHBzOi8vZ2l0aHViLmNvbS9oZXJtaXRjb3JlL3J1c3R5LWhlcm1pdCkuIE9uIHg4
-Niwgd2UgYXJlIHVzaW5nIHRoZSBtdWx0aWJvb3Qgc3BlY2lmaWNhdGlvbi4gSSB0aG91Z2h0IHRo
-YXQgdGhpcyBzcGVjaWZpY2F0aW9uIGlzIG9ubHkgYXZhaWxhYmxlIG9uIHg4Ni4NCg0KSW4gcHJp
-bmNpcGxlLCBhIHVuaWtlcm5lbCBpcyBhIHNpbmdsZSBhcHBsaWNhdGlvbiwgd2hpY2ggcnVucyBk
-aXJlY3RseSBvbiB0aGUgaGFyZHdhcmUvVk0uIE91ciBFTEYgbG9hZGVyIHBhcnNlIHRoZSBFTEYg
-YXBwbGljYXRpb24gdG8gZGV0ZXJtaW5lIHRoZSB0aHJlYWQgbG9jYWwgc3RvcmFnZS4gT24geDg2
-LCBRZW11IGxvYWRzIHRoZSB1bmlrZXJuZWwgYXMgaW5pdHJkIGludG8gdGhlIG1lbW9yeS4gVGhl
-IGxvYWRlciBqdXN0IGluaXRpYWxpemUgdGhlIHN5c3RlbS4gSSBtaXNzIGEgc2ltaWxhciBmZWF0
-dXJlIG9uIEFSTS4gTWF5YmUgSSBvdmVyc2VlIHNvbWV0aGluZy4NCg0KQ2hlZXJzIA0KDQpTdGVm
-YW4gDQoNCj4gQW0gMTQuMDQuMjAyMyB1bSAxMTowMyBzY2hyaWViIFBldGVyIE1heWRlbGwgPHBl
-dGVyLm1heWRlbGxAbGluYXJvLm9yZz46DQo+IA0KPiDvu79PbiBGcmksIDE0IEFwciAyMDIzIGF0
-IDA4OjM1LCBTdGVmYW4gTGFua2VzDQo+IDxzbGFua2VzQGVvbmVyYy5yd3RoLWFhY2hlbi5kZT4g
-d3JvdGU6DQo+PiBDdXJyZW50bHksIHRoZSBmbGFnIGAtLWluaXRyZGAgaXMgb25seSBzdXBwb3J0
-IGZvciBMaW51eCBBUk0ga2VybmVscy4NCj4+IEhvd2V2ZXIsIGFsc28gb3RoZXIgRUxGIGtlcm5l
-bHMgY291bGQgZGVwZW5kIG9uIGFuIGluaXRpYWwgcmFtZGlzay4NCj4+IFRoaXMgUFIgbG9hZHMg
-YWxzbyB0aGUgaW5pdHJkIGZvciBFTEYga2VybmVscyBhbmQgYW5ub3VuY2UgdGhlDQo+PiBsb2Nh
-dGlvbiBieSB0aGUgbm9kZXMgIi9jaG9zZW4vaW5pdHJkLXN0YXJ0IiBhbmQNCj4+ICIvY2hvc2Vu
-L2luaXRyZC1lbmQiIHdpdGhpbiB0aGUgZGV2aWNlIHRyZWUuDQo+IA0KPiBXaGF0IGFyZSB0aGVz
-ZSAib3RoZXIgRUxGIGtlcm5lbHMiID8gSXMgdGhlcmUgc29tZSBkZWZpbmVkDQo+IHNwZWNpZmlj
-YXRpb24gb2YgYm9vdGxvYWRlciB5b3UncmUgdHJ5aW5nIHRvIGltcGxlbWVudCBoZXJlPw0KPiAN
-Cj4gQ3VycmVudGx5IFFFTVUgZm9yIEFybSBzdXBwb3J0cyB0d28gdGhpbmdzOg0KPiAoMSkgSSBh
-bSBhIExpbnV4IGtlcm5lbCwgbG9hZCBtZSBsaWtlIHRoZSBMaW51eCBrZXJuZWwgZGVmaW5lcw0K
-PiAoMikgSSdtIGp1c3QgYSBiYXJlLW1ldGFsIGltYWdlIChFTEYgZmlsZSBvciByYXcpDQo+IA0K
-PiBBZGRpbmcgc3VwcG9ydCBmb3Igc29tZSB0aGlyZCB0eXBlIG9mIGxvYWRpbmcgd291bGQgbmVl
-ZCBhDQo+IHByZXR0eSBzb2xpZCBqdXN0aWZpY2F0aW9uLCBlZyB0aGF0IHRoaXMgaXMgYSB2ZXJ5
-IGNvbW1vbiBraW5kDQo+IG9mIGltYWdlIHRvIGxvYWQsIHRoYXQgdGhlcmUgaXMgYSB3ZWxsIGRl
-ZmluZWQgc3BlY2lmaWNhdGlvbiwNCj4gdGhhdCBpdCdzIHN1cHBvcnRlZCBieSBsb3RzIG9mIG90
-aGVyIGJvb3Rsb2FkZXJzLCBldGMuDQo+IFRoZSBib290bG9hZGluZyBjb2RlIGlzIHRvbyBjb21w
-bGljYXRlZCBhbHJlYWR5IGFuZCBJIGFtDQo+IHZlcnkgcmVsdWN0YW50IHRvIGFkZCBtb3JlIHRv
-IGl0Lg0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0K
---Apple-Mail-DCFC6B55-FEEB-4FEE-9092-CAA4E0085222
-Content-Type: text/html;
-	charset=utf-8
-Content-Transfer-Encoding: base64
+> Currently, the flag `--initrd` is only support for Linux ARM kernels.
+> However, also other ELF kernels could depend on an initial ramdisk.
+> This PR loads also the initrd for ELF kernels and announce the
+> location by the nodes "/chosen/initrd-start" and
+> "/chosen/initrd-end" within the device tree.
+>
+> Signed-off-by: Stefan Lankes <slankes@eonerc.rwth-aachen.de>
+> ---
+>  hw/arm/boot.c | 106 +++++++++++++++++++++++++++++---------------------
+>  1 file changed, 62 insertions(+), 44 deletions(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 54f6a3e0b3..f767a4809e 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -657,20 +657,38 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+_info *binfo,
+>      }
+>=20=20
+>      if (binfo->initrd_size) {
+> -        rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,initr=
+d-start",
+> +        if (binfo->is_linux) {
+> +            rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,i=
+nitrd-start",
+>                                            acells, binfo->initrd_start);
+> -        if (rc < 0) {
+> -            fprintf(stderr, "couldn't set /chosen/linux,initrd-start\n");
+> -            goto fail;
+> -        }
+> +            if (rc < 0) {
+> +                fprintf(stderr, "couldn't set /chosen/linux,initrd-start=
+\n");
+> +                goto fail;
+> +            }
+>=20=20
+> -        rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,initr=
+d-end",
+> -                                          acells,
+> -                                          binfo->initrd_start +
+> -                                          binfo->initrd_size);
+> -        if (rc < 0) {
+> -            fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n");
+> -            goto fail;
+> +            rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "linux,i=
+nitrd-end",
+> +                                              acells,
+> +                                              binfo->initrd_start +
+> +                                              binfo->initrd_size);
+> +            if (rc < 0) {
+> +                fprintf(stderr, "couldn't set /chosen/linux,initrd-end\n=
+");
+> +                goto fail;
+> +            }
+> +        } else {
+> +            rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "initrd-=
+start",
+> +                                          acells, binfo->initrd_start);
+> +            if (rc < 0) {
+> +                fprintf(stderr, "couldn't set /chosen/initrd-start\n");
+> +                goto fail;
+> +            }
+> +
+> +            rc =3D qemu_fdt_setprop_sized_cells(fdt, "/chosen", "initrd-=
+end",
+> +                                              acells,
+> +                                              binfo->initrd_start +
+> +                                              binfo->initrd_size);
+> +            if (rc < 0) {
+> +                fprintf(stderr, "couldn't set /chosen/initrd-end\n");
+> +                goto fail;
+> +            }
 
-PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0iY29udGVudC10eXBlIiBjb250ZW50PSJ0ZXh0
-L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPjwvaGVhZD48Ym9keSBkaXI9ImF1dG8iPjxkaXYgZGlyPSJs
-dHIiPjxzcGFuPkhlbGxvIFBldGVyLDwvc3Bhbj48YnI+PHNwYW4+PC9zcGFuPjxicj48c3Bhbj5J
-IHRvdGFsbHkgYWdyZWUuIFdlIGFyZSBkZXZlbG9waW5nIGEgdW5pa2VybmVsICg8L3NwYW4+PGEg
-aHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2hlcm1pdGNvcmUvcnVzdHktaGVybWl0Ij5odHRwczov
-L2dpdGh1Yi5jb20vaGVybWl0Y29yZS9ydXN0eS1oZXJtaXQ8L2E+KS4gT24geDg2LCB3ZSBhcmUg
-dXNpbmcgdGhlIG11bHRpYm9vdCBzcGVjaWZpY2F0aW9uLiBJIHRob3VnaHQgdGhhdCB0aGlzIHNw
-ZWNpZmljYXRpb24gaXMgb25seSBhdmFpbGFibGUgb24geDg2Ljxicj48c3Bhbj48L3NwYW4+PGJy
-PkluIHByaW5jaXBsZSwgYSB1bmlrZXJuZWwgaXMgYSBzaW5nbGUgYXBwbGljYXRpb24sIHdoaWNo
-IHJ1bnMgZGlyZWN0bHkgb24gdGhlIGhhcmR3YXJlL1ZNLiBPdXIgRUxGIGxvYWRlciBwYXJzZSB0
-aGUgRUxGIGFwcGxpY2F0aW9uIHRvIGRldGVybWluZSB0aGUgdGhyZWFkIGxvY2FsIHN0b3JhZ2Uu
-IE9uIHg4NiwgUWVtdSBsb2FkcyB0aGUgdW5pa2VybmVsIGFzIGluaXRyZCBpbnRvIHRoZSBtZW1v
-cnkuIFRoZSBsb2FkZXIganVzdCBpbml0aWFsaXplIHRoZSBzeXN0ZW0uIEkgbWlzcyBhIHNpbWls
-YXIgZmVhdHVyZSBvbiBBUk0uIE1heWJlIEkgb3ZlcnNlZSBzb21ldGhpbmcuPC9kaXY+PGRpdiBk
-aXI9Imx0ciI+PGJyPjwvZGl2PjxkaXYgZGlyPSJsdHIiPkNoZWVycyZuYnNwOzwvZGl2PjxkaXYg
-ZGlyPSJsdHIiPjxicj48L2Rpdj48ZGl2IGRpcj0ibHRyIj5TdGVmYW4mbmJzcDs8L2Rpdj48ZGl2
-IGRpcj0ibHRyIj48YnI+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHNwYW4+QW0gMTQuMDQuMjAy
-MyB1bSAxMTowMyBzY2hyaWViIFBldGVyIE1heWRlbGwgJmx0O3BldGVyLm1heWRlbGxAbGluYXJv
-Lm9yZyZndDs6PC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+
-PHNwYW4+PC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHNw
-YW4+77u/T24gRnJpLCAxNCBBcHIgMjAyMyBhdCAwODozNSwgU3RlZmFuIExhbmtlczwvc3Bhbj48
-YnI+PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPiZsdDtzbGFua2Vz
-QGVvbmVyYy5yd3RoLWFhY2hlbi5kZSZndDsgd3JvdGU6PC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+
-PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHNwYW4+PC9z
-cGFuPjxicj48L2Jsb2NrcXVvdGU+PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUi
-PjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPkN1cnJlbnRseSwgdGhlIGZsYWcgYC0taW5p
-dHJkYCBpcyBvbmx5IHN1cHBvcnQgZm9yIExpbnV4IEFSTSBrZXJuZWxzLjwvc3Bhbj48YnI+PC9i
-bG9ja3F1b3RlPjwvYmxvY2txdW90ZT48YmxvY2txdW90ZSB0eXBlPSJjaXRlIj48YmxvY2txdW90
-ZSB0eXBlPSJjaXRlIj48c3Bhbj5Ib3dldmVyLCBhbHNvIG90aGVyIEVMRiBrZXJuZWxzIGNvdWxk
-IGRlcGVuZCBvbiBhbiBpbml0aWFsIHJhbWRpc2suPC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PC9i
-bG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUi
-PjxzcGFuPlRoaXMgUFIgbG9hZHMgYWxzbyB0aGUgaW5pdHJkIGZvciBFTEYga2VybmVscyBhbmQg
-YW5ub3VuY2UgdGhlPC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PC9ibG9ja3F1b3RlPjxibG9ja3F1
-b3RlIHR5cGU9ImNpdGUiPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPmxvY2F0aW9uIGJ5
-IHRoZSBub2RlcyAiL2Nob3Nlbi9pbml0cmQtc3RhcnQiIGFuZDwvc3Bhbj48YnI+PC9ibG9ja3F1
-b3RlPjwvYmxvY2txdW90ZT48YmxvY2txdW90ZSB0eXBlPSJjaXRlIj48YmxvY2txdW90ZSB0eXBl
-PSJjaXRlIj48c3Bhbj4iL2Nob3Nlbi9pbml0cmQtZW5kIiB3aXRoaW4gdGhlIGRldmljZSB0cmVl
-Ljwvc3Bhbj48YnI+PC9ibG9ja3F1b3RlPjwvYmxvY2txdW90ZT48YmxvY2txdW90ZSB0eXBlPSJj
-aXRlIj48c3Bhbj48L3NwYW4+PGJyPjwvYmxvY2txdW90ZT48YmxvY2txdW90ZSB0eXBlPSJjaXRl
-Ij48c3Bhbj5XaGF0IGFyZSB0aGVzZSAib3RoZXIgRUxGIGtlcm5lbHMiID8gSXMgdGhlcmUgc29t
-ZSBkZWZpbmVkPC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+
-PHNwYW4+c3BlY2lmaWNhdGlvbiBvZiBib290bG9hZGVyIHlvdSdyZSB0cnlpbmcgdG8gaW1wbGVt
-ZW50IGhlcmU/PC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+
-PHNwYW4+PC9zcGFuPjxicj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHNw
-YW4+Q3VycmVudGx5IFFFTVUgZm9yIEFybSBzdXBwb3J0cyB0d28gdGhpbmdzOjwvc3Bhbj48YnI+
-PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPigxKSBJIGFtIGEgTGlu
-dXgga2VybmVsLCBsb2FkIG1lIGxpa2UgdGhlIExpbnV4IGtlcm5lbCBkZWZpbmVzPC9zcGFuPjxi
-cj48L2Jsb2NrcXVvdGU+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHNwYW4+KDIpIEknbSBqdXN0
-IGEgYmFyZS1tZXRhbCBpbWFnZSAoRUxGIGZpbGUgb3IgcmF3KTwvc3Bhbj48YnI+PC9ibG9ja3F1
-b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPjwvc3Bhbj48YnI+PC9ibG9ja3F1b3Rl
-PjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPkFkZGluZyBzdXBwb3J0IGZvciBzb21lIHRo
-aXJkIHR5cGUgb2YgbG9hZGluZyB3b3VsZCBuZWVkIGE8L3NwYW4+PGJyPjwvYmxvY2txdW90ZT48
-YmxvY2txdW90ZSB0eXBlPSJjaXRlIj48c3Bhbj5wcmV0dHkgc29saWQganVzdGlmaWNhdGlvbiwg
-ZWcgdGhhdCB0aGlzIGlzIGEgdmVyeSBjb21tb24ga2luZDwvc3Bhbj48YnI+PC9ibG9ja3F1b3Rl
-PjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPm9mIGltYWdlIHRvIGxvYWQsIHRoYXQgdGhl
-cmUgaXMgYSB3ZWxsIGRlZmluZWQgc3BlY2lmaWNhdGlvbiw8L3NwYW4+PGJyPjwvYmxvY2txdW90
-ZT48YmxvY2txdW90ZSB0eXBlPSJjaXRlIj48c3Bhbj50aGF0IGl0J3Mgc3VwcG9ydGVkIGJ5IGxv
-dHMgb2Ygb3RoZXIgYm9vdGxvYWRlcnMsIGV0Yy48L3NwYW4+PGJyPjwvYmxvY2txdW90ZT48Ymxv
-Y2txdW90ZSB0eXBlPSJjaXRlIj48c3Bhbj5UaGUgYm9vdGxvYWRpbmcgY29kZSBpcyB0b28gY29t
-cGxpY2F0ZWQgYWxyZWFkeSBhbmQgSSBhbTwvc3Bhbj48YnI+PC9ibG9ja3F1b3RlPjxibG9ja3F1
-b3RlIHR5cGU9ImNpdGUiPjxzcGFuPnZlcnkgcmVsdWN0YW50IHRvIGFkZCBtb3JlIHRvIGl0Ljwv
-c3Bhbj48YnI+PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPjwvc3Bh
-bj48YnI+PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPnRoYW5rczwv
-c3Bhbj48YnI+PC9ibG9ja3F1b3RlPjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxzcGFuPi0tIFBN
-TTwvc3Bhbj48YnI+PC9ibG9ja3F1b3RlPjwvZGl2PjwvYm9keT48L2h0bWw+
---Apple-Mail-DCFC6B55-FEEB-4FEE-9092-CAA4E0085222--
+Where are these DTB nodes documented?
 
---Apple-Mail-E728C379-828D-46BA-B113-F183F8AC0F74
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
+Also could you not achieve the same thing using the guest-loader which
+uses the multiboot spec and sets:
 
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCBvgw
-ggb0MIIF3KADAgECAgwm25zvV8wVOCrrcGYwDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkRF
-MUUwQwYDVQQKDDxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVuIEZvcnNjaHVu
-Z3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsMB0RGTi1QS0kxJTAjBgNVBAMMHERGTi1WZXJlaW4gR2xv
-YmFsIElzc3VpbmcgQ0EwHhcNMjIwNjI5MDk0NjEwWhcNMjUwNjI4MDk0NjEwWjCBhzELMAkGA1UE
-BhMCREUxFDASBgNVBAoMC1JXVEggQWFjaGVuMSQwIgYDVQQLDBtFLk9OIEVuZXJneSBSZXNlYXJj
-aCBDZW50ZXIxDzANBgNVBAQMBkxhbmtlczEPMA0GA1UEKgwGU3RlZmFuMRowGAYDVQQDDBFEci4g
-U3RlZmFuIExhbmtlczCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAMQtP7FyJrkIg1AK
-30B5XaSapT66YBUAyUpYCTXQzcUKtUUvkZ0+/19/6cScgLVeFKGUKW87y+RhtJrZgcn4Ey3FPdUo
-CaCsqMZ9i8zkUscoaaX5ch9/wmY/IEEFoJS3AVPayid5peWnGomNawxSE6A5z7sXNJ/Y2yICtTpU
-ufLGjI8EazlOuU6e6uJYC5kj8pXLiQ1gIwLoO4mvGlWy3Na7nNgsUqyhgQoxBpmWFd84URVpmKFd
-qNK6kNbgcKwC3lM8WnTLxJOFIsO2n5en5tcCf7ORe6sA5ixzSn8ibe8lBCkLgq9CjRa8Xj5ItaLX
-x3RQgjalqLxGhXHc+t3Z30inuQqsGWC9NPmtcn6e+pO8FjKElf3pj47fZ67DOsflQW4sdnsGRaMo
-gHVOdcc0tj805QDmz21AycT2rDxy4FqwGIJTwNJ0jfZs8qyMtpTVh0+V1WUCyQg4CuNHPm8ueitG
-kU0H9PizUVlxWOzliTOK7cJizXYBFiraA7cBLVioJo/CnYgpGkhp3SKHFzDjO6/Yl5SmPAIe8K6+
-Tr8rSqnW1z5FBYcL0MPP0xOyYl9lG3hr7a08vSUDm2Xu8u+J1TAM4oVey/YWkYTZ3SEKXkvy4n1+
-+VO5k/NtxVzsxcVsxd6tUq05Th0MeqzWvr+rQi/v/fxyrUYAMEhtXkOR4i1zAgMBAAGjggJWMIIC
-UjA+BgNVHSAENzA1MA8GDSsGAQQBga0hgiwBAQQwEAYOKwYBBAGBrSGCLAEBBAowEAYOKwYBBAGB
-rSGCLAIBBAowCQYDVR0TBAIwADAOBgNVHQ8BAf8EBAMCBeAwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
-CCsGAQUFBwMEMB0GA1UdDgQWBBTpXUDyd2Nwv84hzoHYm9bRzwa/vzAfBgNVHSMEGDAWgBRrOpiL
-+fJTidrgrbIyHgkf6Ko7dDAoBgNVHREEITAfgR1zbGFua2VzQGVvbmVyYy5yd3RoLWFhY2hlbi5k
-ZTCBjQYDVR0fBIGFMIGCMD+gPaA7hjlodHRwOi8vY2RwMS5wY2EuZGZuLmRlL2Rmbi1jYS1nbG9i
-YWwtZzIvcHViL2NybC9jYWNybC5jcmwwP6A9oDuGOWh0dHA6Ly9jZHAyLnBjYS5kZm4uZGUvZGZu
-LWNhLWdsb2JhbC1nMi9wdWIvY3JsL2NhY3JsLmNybDCB2wYIKwYBBQUHAQEEgc4wgcswMwYIKwYB
-BQUHMAGGJ2h0dHA6Ly9vY3NwLnBjYS5kZm4uZGUvT0NTUC1TZXJ2ZXIvT0NTUDBJBggrBgEFBQcw
-AoY9aHR0cDovL2NkcDEucGNhLmRmbi5kZS9kZm4tY2EtZ2xvYmFsLWcyL3B1Yi9jYWNlcnQvY2Fj
-ZXJ0LmNydDBJBggrBgEFBQcwAoY9aHR0cDovL2NkcDIucGNhLmRmbi5kZS9kZm4tY2EtZ2xvYmFs
-LWcyL3B1Yi9jYWNlcnQvY2FjZXJ0LmNydDANBgkqhkiG9w0BAQsFAAOCAQEAG7nws/9bNnILItHb
-iEFgXaYlBh7ye+vY0SxP0W9vTfcm3X6QX6m5Fsj+kVUaqsU1C2y4G4bK1tJHTrGjLVt0YphKn6pF
-/ZhukZB6SXnWlpg6EWh/g0OPijWZBma1SNbgj9Z5jlRIsv0M11aKI2w1oWH4tEHSp0zy4STA6HB4
-u2VG7wtuf3icRw2nsMG0GfGEm3MZHQ2KiZZtILdWta4uAWcY77/8S2ECPjytZJ0onf/J9av5MmxG
-Z1uhleDVuygKCcmJngQ8WOC+hg1MmnoO/Rg1HzIcWjh7+EUVXMJ+wx6sj04MRKnzzlbR9aJK0UXT
-XnhNVaudGiEqDwiaPaPL5zGCBJ0wggSZAgEBMIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8
-VmVyZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUu
-IFYuMRAwDgYDVQQLDAdERk4tUEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5n
-IENBAgwm25zvV8wVOCrrcGYwDQYJYIZIAWUDBAIBBQCgggHPMBgGCSqGSIb3DQEJAzELBgkqhkiG
-9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTIzMDQxNDA5MjYzMFowLwYJKoZIhvcNAQkEMSIEICDy11Id
-+ANGjvAbasl6lhHTe4HV0Or+hr/tW79P6xxUMIGvBgkrBgEEAYI3EAQxgaEwgZ4wgY0xCzAJBgNV
-BAYTAkRFMUUwQwYDVQQKDDxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVuIEZv
-cnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsMB0RGTi1QS0kxJTAjBgNVBAMMHERGTi1WZXJl
-aW4gR2xvYmFsIElzc3VpbmcgQ0ECDCbbnO9XzBU4KutwZjCBsQYLKoZIhvcNAQkQAgsxgaGggZ4w
-gY0xCzAJBgNVBAYTAkRFMUUwQwYDVQQKDDxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1
-dHNjaGVuIEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsMB0RGTi1QS0kxJTAjBgNVBAMM
-HERGTi1WZXJlaW4gR2xvYmFsIElzc3VpbmcgQ0ECDCbbnO9XzBU4KutwZjANBgkqhkiG9w0BAQsF
-AASCAgCxuGDaeDOZb5I+4WNsJkScWP8Ln9iln3bFmdfOxE54UUifgTx2EkyhI1XcEZoAPubGwlsl
-YqaIDn/8pKFpNUEjs7/CsMY0XocHjFcAFRLn2xhMrKLhSgl5B1mb8W7qshKyq9jon4dh40E+28F2
-aIPpIX64LdVVCLbNI1+hTphcLyuiydSvYiAcvZXcuOaAP+82elQZO1MliJ2FirBDri6PZrSAp0za
-6j3TOkwQ3uvFbFyXAIglnZBOuDmeODDAfYN0SBKixww7J7d+Yj5jIAFW0w/QFJ5mq0FK4osqv4oL
-JtsEujW3+xyplQw/NEuuylidt1av3QFPnGEVTxYOAWd4XipOoXnztHtPqxZtnhd/nlrPxl6g76/X
-Jo4hGvxyskL8qpGmr1H6UhfFr/LSiIaZTus3WLcNk91UuA1YqFVjaeRhkRMystcZ9kiCPSFoE1Pp
-db9KAuE7jlpBCqh+D+fa2VDwhmx5ik1lNT/k8XJ+YOqHlPXPDqApMD9kNN3PNcrMBZHBcy8b1AA5
-ZYGJ+d1FMxahCnLDo/ybqIiSc8eYMFQnFcPovynJ6aXbTCKxBke+MYPNwX1aGFFHXTJLCpQdMIwX
-lGFIk5ln30Gom58WYMmSqgrC0KiuXQ2peJ6XG/ysci2QJ7vC1GT+/6Rw+JcJ8e+TB55/fmb9EAt6
-/0e6DgAAAAAAAA==
+        const char *compat[2] =3D { "multiboot,module", "multiboot,ramdisk"=
+ };
+        if (qemu_fdt_setprop_string_array(fdt, node, "compatible",
+                                          (char **) &compat,
+                                          ARRAY_SIZE(compat)) < 0) {
+            error_setg(errp, "couldn't set %s/compatible", node);
+            return;
+        }
 
---Apple-Mail-E728C379-828D-46BA-B113-F183F8AC0F74--
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

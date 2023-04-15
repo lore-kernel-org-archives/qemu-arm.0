@@ -1,141 +1,146 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp73545ejm;
-        Fri, 14 Apr 2023 05:34:10 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Zvrz5G54CIBAWTiaJ/pMjVB+vjSKgm/VhqlJWliD6viiWJaeGO4T/x2RI1F+mQYhpQ8hVR
-X-Received: by 2002:a5d:4ac6:0:b0:2f7:825c:9db6 with SMTP id y6-20020a5d4ac6000000b002f7825c9db6mr942380wrs.45.1681475649981;
-        Fri, 14 Apr 2023 05:34:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681475649; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp600731ejm;
+        Sat, 15 Apr 2023 00:51:11 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aOK0BF/BDz9dBLSeknZDXgbtEZwyZ9qFt7enzVR0Wrw8xDZB5ppzLuKk5KOwHn/v4rWBPd
+X-Received: by 2002:a05:600c:3c8d:b0:3f1:88b:bd40 with SMTP id bg13-20020a05600c3c8d00b003f1088bbd40mr2410619wmb.14.1681545070960;
+        Sat, 15 Apr 2023 00:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681545070; cv=none;
         d=google.com; s=arc-20160816;
-        b=XcYYehor64WpYlrtLVZ+2P5xdMU7pAZUicsrp/+2Ta7FVDbPW0qQbSD6iNJ/NznA2O
-         A8gMMuEf3stymJy4QOeJhrZaFhK658X41z57QLECBdMwo+sh/5H1Z/pDOSTFd2T1/Nl9
-         45/XWakE0amCOIzgM39BXGfkiXAbA7wK24RhjHhUwAm2Sm+CM9Y7w/CBFl41Ni+kBVsY
-         mCkmOKjvTuH1W6I9alUWHjW8hNQRiNzf5LBWBnMJViFJnfddtJghrppsrMPw3ij7MQFH
-         G2JWFRHcfKS1hIINhHaUblE4Ok1HlJySi8De+3ohwijl5vQc0ZKennU5+5VYCR9Go9o5
-         njMA==
+        b=xxv2NP9REBvcuQT4qBDmxUdKJya7A3OBylJa0+7U7XcOJpu3KCTflKupsVMX6BEUif
+         0+IrTyXKAQ7iEM2cubMlZ60XLfA6opLNPRFmc2fkuiZYNt+IWq+Hy2Tw9pxwZ7X0QUMI
+         4RV8tmm0vHEFWZncYowVE83Y2a//J6d5EOAz7jemzlrogYCsv7/5fvEF1XcYV5y2LNNa
+         /QRGWEL29YW6219Gjs+O+USejpoT6a1Hh4c2S3xBqkE2dzRJCOVfYV4qmQFf7njHl+Mc
+         zHtw3q+rf+9X4DzcqQ3rW4YLQ05q3mcXhwTjHY+UOCHsBmHy4I6f6ElT4hXhChBsTiuw
+         sFpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:subject:cc:to
          :from:ironport-hdrordr:ironport-data;
-        bh=cwn/RNFMJxGPBPeaCuorsGbBGCEVo8c3082WJRL8+QU=;
-        b=ywAWcuTBT2H4jSoHrHPZ34wbBt0j79Bt0sW5S+SGrEq+n3iGArqfiYINFXV8GKQgGK
-         Zla+hPDoiANtLARZY2xgr33xgbM3RIYMZlO+0zni3Wl98Kaa0xlXMkQ3opspnsHD2dMd
-         /Gp4ElI5P98uXNUMrsOnYsoRFISWKvjFLEsINgbIElsRqV4l+hUjhhBP/fswO1jCaFCG
-         2U/Zj454EndMlfG7NMS/zRKAUPEQfHgSn+isacZrHRx5gydDv+sgtr+8M5IzQZOe/Dj1
-         3CIyjOLSkZ+uxMpbIKe6k3fCsl100IATw30tJtRCmI49VkGAKmX1NdCFq1ijCd/oP5Ih
-         nuzg==
+        bh=xOM9BVjRQJNA6uf/ohyX0mSMkq5U2kxNk6NiYkfduig=;
+        b=WUyLpQx9QYWy1v+Q/AgqOqccJjXksrqjKbu91kkoNqXesm8WEW9qaeeQPIS1AlOwbC
+         bxLwXXZcbJ64q2Fj0UPlP6a7UPOm1wvTUQf9O3lkW636dEko/aLxliomw5LHa0+Vkemq
+         UzbuCGZqjxXFlr37UjOpnceEPfnRwHl6Z/Z2IE5sblCI15FhWStzCpz7KRH506/1D8ni
+         z9fgGaKvgYmaaHLgYweIIEXT/YtDt43ZkhD/buTh/ggU6O+H3l/LBUvZVBA3BF9oqG3D
+         uZrIuG6fhy3HNQ19lzJ6kr7KaA/dZlXhG0TxcELHeTydJPYMTlG6BuBm9jsjEpJRh6nG
+         AZOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:45 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
+       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
 Return-Path: <slankes@eonerc.rwth-aachen.de>
-Received: from mail-out-2a.itc.rwth-aachen.de (mail-out-2a.itc.rwth-aachen.de. [2a00:8a60:1:e501::5:45])
-        by mx.google.com with ESMTPS id h2-20020a5d5482000000b002f498eb4ca2si3251501wrv.961.2023.04.14.05.34.09
+Received: from mail-out-3.itc.rwth-aachen.de (mail-out-3.itc.rwth-aachen.de. [2a00:8a60:1:e501::5:48])
+        by mx.google.com with ESMTPS id i8-20020a5d5228000000b002dd965d5793si4505542wra.175.2023.04.15.00.51.10
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 14 Apr 2023 05:34:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:45 as permitted sender) client-ip=2a00:8a60:1:e501::5:45;
+        Sat, 15 Apr 2023 00:51:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) client-ip=2a00:8a60:1:e501::5:48;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:45 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
-X-IPAS-Result: =?us-ascii?q?A2BXAADtRzlk/5kagoZaGgEBAQEBAQEBAQEDAQEBARIBA?=
- =?us-ascii?q?QEBAgIBAQEBgg+DIS2BL4RSkTOfWg8BAQEBAQEBAQEEBAFEBAEBhQYChTwnO?=
- =?us-ascii?q?BMBAgQBAQEBAwIDAQEBAQEBAwEBBgEBAQEBAQYEgR2FL0aGBAEBAQIBI1YFC?=
- =?us-ascii?q?wIBCEICAgIwJQIEDgUOgnABgjkSEa8ZgTKBAaEzEIFBgVaFdXaIeUKBSkOBP?=
- =?us-ascii?q?AwDDYJoPoRDg1w5gi4Emk8KgTR2gSAOSnKBBAIJAhFrgRAIaoF5QAINZAsOb?=
- =?us-ascii?q?4FJgU6BXAQCFDYODksDCQMHBSwdQAMLGA0WOhMsNRQgXGwtEhIFAwsVKkcEC?=
- =?us-ascii?q?DgGGzQRAggPEg8GJkQMQjczEwZcASkLDhEDTkIZbAQvWoEBBgEmJJ8Yg3bDf?=
- =?us-ascii?q?AMHgiiBVoZBgymXHQQvg2qTLZIrl3WiXRNaAYQrAgQCBAUCFoF6gX5xFGUBg?=
- =?us-ascii?q?jw/ExcCD6ILdT0CBwEKAQEDCYtFAQE?=
-IronPort-Data: A9a23:lbrEjaKdR2XPVehxFE+R05QlxSXFcZb7ZxGr2PjKsXjdYENS0zxUz
- WMfCmGCMv2OMTT9eNtxbITkpEJQ7MTWytZlSgMd+CA2RRqmiyZk6fexcx2sZXPCdqUvaGo9s
- q3yv/GZdJhcokf0/0vraP67xZVF/fngbqLmD+LZMTxGSwZhSSMw4TpugOdRbrRA2LBVOCvQ/
- 4KjyyHjEAX9gWUsbjtIs/vrRC5H5ZwehhtJ5jTSWtgW5Dcyp1FNZLoDKKe4KWfPQ4U8NoZWk
- M6akdlVVkuAl/scIovNfoTTKyXmcZaOVeS6sUe6boD56vR0jnFojvxrZKJ0hXB/0F1ll/gpo
- DlEWAfZpQ0BZsUgk8xFO/VU/r0X0aBuoNf6zXaDXcO7iEbIUHb9kvVXF2YmIaAf4s1TBEdkz
- KlNQNwNRkjra+Oe2q2nSuR8w996acOtJpwDujRpwXfVAJ7KQ7iaGPmMvIQAmm1uwJkTRp4yZ
- OJAAdZrRA/EahtMN0w/BZU4kf2jwGPgbz0doVuepacxpWTepOB0+OS3YYGPKozSLSlTtm25o
- ljL/Tz5OFIxBN2QymWo2Gnr2fCayEsXX6pXTtVU7MVCiVme1ioZBRsQWFaTpfi/g1S5HdVFJ
- CQ84icyoLJ08UW6QtT5WzW8oXiNpBlaXMBfe8Uj5QSQj6PO5i6fAW4LSCMHb8Yp3OcvSDk3k
- 1OEgd7tLTpotrKTVDSa7Lj8kN+pETIKMW8PdWofFE4PpcP8vIF2hx6JQtsL/LOJs+AZ0ArYm
- 1iixBXSTZ1J1abnC43TEYj7vg+R
-IronPort-HdrOrdr: A9a23:MTxf9aADjb7pQcPlHemJ55DYdb4zR+YMi2TDj3oBLiC8cqSj+P
- xG785rsyMc6QxhJU3I9urwW5VoLUmwyXcx2/h0AV7AZnibhILLFvAB0WKK+VSJcEfDH6xmpM
- JdmsNFZuEYeGIbsS+M2miF+rgbrOVvu5rY/Ns2h00dNT2D+8lbnnxE4yigYzdLeDU=
-X-Talos-CUID: 9a23:ufFNPGEx+y0H0S1lqmIg/0A3F9F0ckTG62fMDkigIkJsbpesHAo=
-X-Talos-MUID: =?us-ascii?q?9a23=3A34xBSQz7ENY92r0DsiKBb4obrfSaqI+PDHoAk80?=
- =?us-ascii?q?GgYqvBS1/OGiwpi/wHZByfw=3D=3D?=
+       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
+X-IPAS-Result: =?us-ascii?q?A2BXAAAHVjpk/5wagoZaGgEBAQEBAQEBAQEDAQEBARIBA?=
+ =?us-ascii?q?QEBAgIBAQEBgg+DIS2BL4RSkTOfWg8BAQEBAQEBAQEEBAFEBAEBhQYChTsnO?=
+ =?us-ascii?q?BMBAgQBAQEBAwIDAQEBAQEBAwEBBgEBAQEBAQYEgR2FL0aGBAIBAyNWEAIBC?=
+ =?us-ascii?q?EICAgIwJQIEDgUOgnABgksRrXOBMoEBoTMQgUGBVoV2doh5QoFKQ4E8DAMNg?=
+ =?us-ascii?q?mg+hEODXDmCLgSaUoE0doEgDkpygQQCCQIRa4EQCGqBeUACDWQLDm+BSYFOg?=
+ =?us-ascii?q?VwEAhQ2Dg5UAwkDBwUsHUADCxgNFjoTLDUUIFxsLRISBQMLFSpHBAg4Bhs0E?=
+ =?us-ascii?q?QIIDxIPBiZEDEI3MxMGXAEpCw4RA05CGWwEL1qBAQYBJiSfIYE9gjnDfAMHg?=
+ =?us-ascii?q?iiBVoZBgymXHQQvlxeSK5d1ol1tAYQrAgQCBAUCFoF6gX5xFGUBgjw/ExcCD?=
+ =?us-ascii?q?6ILdT0CBwEKAQEDCYtFAQE?=
+IronPort-Data: A9a23:7KzoYq2W88B68/3Jd/bD5dFwkn2cJEfYwER7XKvMYLTBsI5bpzQGy
+ mYcUG/XOP6Ca2Wket8ibo7j8k5X7cLTy4MwSVA+3Hw8FHgiRegppDi6BhqqY3nCfpWroGZPt
+ Zh2hgzodZhsJpPkjk7xdOKn9xGQ7InQLpLkEunIJyttcgFtTSYlmHpLlvUw6mJSqYHR7zil5
+ JWj8qUzBHf/g2Qvaj5NtvrawP9SlK2aVA0w7wRWic9j4Qe2e0k9VPo3Oay3Jn3kdYhYdsbSq
+ zHrlezREsvxpn/BO/v9+lrJWhRiro36YWBivkFrt52K2XCukARviPphZKpEAatgo27hc9hZk
+ L2hvHErIOsjFvWkdO81C3G0H8ziVEFL0OevHJSxjSCc51ScdXXe3/hMNW8dEL805vd1UV9Lq
+ eNNfVjhbjjb7w636KikVulhloE8dYziepkApnElxD2fAftOrZLrGv6Wo4YDhHFq2IYXQKi2i
+ 8kxMFKDaDzbZxRJOVoMIJ85muqyjT/lbCFY7Vucrqo65S7fwWSd1ZC0YYCOJ4PaHJ49ckCw+
+ WTp2lbnOE8hLYK12HnZ7FT828vhgnauMG4VPPjinhJwu3WawmEDThcbU122rNG9i0i3QdUZL
+ FYbkgI2oLQ/7gquR8jxUhm8iHqFuBcGXJxXCeJSwBiAz7eR6hycLm4DSDFHdZohrsBebSUn0
+ 0LMk973CDhHtrqTRnSAsLCOoluP1TM9N3AeZSIUCBRcptClup4vjlfGQpBvHcZZk+HIJN05+
+ BjSxABWulnZpZdjO3mTlbwfvw+Rmw==
+IronPort-HdrOrdr: A9a23:z0EdJKs0tVigTv+UJCBVEnwT7skDqdV00zEX/kB9WHVpm62j5r
+ iTdZEgviMc5wx6ZJhNo7+90dC7MBbhHMdOkO8s1NSZLXDbUQmTTL2KhLGKqwEIfReRygc378
+ ZdmsZFZOEYQmIW/KHHyTj9Pt48yLC8gcKVrNab618odBptdKFs4xwRMHf5LmRGADRcDZ0iHJ
+ CA5sxBzgDQHUgqUg==
+X-Talos-CUID: 9a23:NyAbo25+TaJujOdh+9ss7RQSFPI5f1/k4lz9EWOkGGQ5drjJVgrF
+X-Talos-MUID: 9a23:u23dJwWZmbUVrxvq/GDqqxRQKv022L3wIlFOzYsg65SgGzMlbg==
 X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-AV: E=Sophos;i="5.99,195,1677538800"; 
-   d="p7s'?scan'208";a="42932880"
-Received: from rwthex-s1-b.rwth-ad.de ([134.130.26.153])
-  by mail-in-2a.itc.rwth-aachen.de with ESMTP; 14 Apr 2023 14:34:03 +0200
+X-IronPort-AV: E=Sophos;i="5.99,199,1677538800"; 
+   d="p7s'?scan'208";a="192357813"
+Received: from rwthex-w1-a.rwth-ad.de ([134.130.26.156])
+  by mail-in-3.itc.rwth-aachen.de with ESMTP; 15 Apr 2023 09:51:11 +0200
 Received: from rwthex-s1-a.rwth-ad.de (2a00:8a60:1:e500::26:152) by
- rwthex-s1-b.rwth-ad.de (2a00:8a60:1:e500::26:153) with Microsoft SMTP Server
+ rwthex-w1-a.rwth-ad.de (2a00:8a60:1:e500::26:156) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 14 Apr 2023 14:34:03 +0200
+ 15.2.1118.26; Sat, 15 Apr 2023 09:51:10 +0200
 Received: from rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990]) by
  rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990%3]) with mapi id
- 15.02.1118.026; Fri, 14 Apr 2023 14:34:03 +0200
+ 15.02.1118.026; Sat, 15 Apr 2023 09:51:10 +0200
 From: "Lankes, Stefan" <slankes@eonerc.rwth-aachen.de>
 To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Subject: Re: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
 Thread-Topic: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
-Thread-Index: AQHZbqOz3m2A2WZ4VE2Qebwb1TRCdq8qXrwAgAA9MgA=
-Date: Fri, 14 Apr 2023 12:34:03 +0000
-Message-ID: <04307039-7B61-4FDA-B82A-C83E2B0A9CF9@eonerc.rwth-aachen.de>
+Thread-Index: AQHZbqOz3m2A2WZ4VE2Qebwb1TRCdq8qXrwAgAA9MgCAAUNMgA==
+Date: Sat, 15 Apr 2023 07:51:10 +0000
+Message-ID: <533CF921-2982-4823-9373-68347AC0B2C8@eonerc.rwth-aachen.de>
 References: <20230414073432.36000-1-slankes@eonerc.rwth-aachen.de>
  <20230414073432.36000-2-slankes@eonerc.rwth-aachen.de>
  <87v8hyc03a.fsf@linaro.org>
-In-Reply-To: <87v8hyc03a.fsf@linaro.org>
+ <04307039-7B61-4FDA-B82A-C83E2B0A9CF9@eonerc.rwth-aachen.de>
+In-Reply-To: <04307039-7B61-4FDA-B82A-C83E2B0A9CF9@eonerc.rwth-aachen.de>
 Accept-Language: de-DE, en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
 X-MS-TNEF-Correlator:
 x-mailer: Apple Mail (2.3731.500.231)
-x-originating-ip: [2a0a:a540:ee49:0:3149:9e0e:b13a:2fda]
+x-originating-ip: [2a0a:a540:ee49:0:2103:c4a8:6643:ebbe]
 Content-Type: multipart/signed;
-	boundary="Apple-Mail=_F9105841-E05A-4771-8314-803A923E1F04";
+	boundary="Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE";
 	protocol="application/pkcs7-signature"; micalg=sha-256
 MIME-Version: 1.0
-X-TUID: 7I+UPiTp7l5O
+X-TUID: DKSRBt/gwzKW
 
---Apple-Mail=_F9105841-E05A-4771-8314-803A923E1F04
+--Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain;
 	charset=utf-8
 
-
-> Am 14.04.2023 um 10:54 schrieb Alex Benn=C3=A9e =
-<alex.bennee@linaro.org>:
->=20
-
 Hello Alex,
 
->=20
-> Where are these DTB nodes documented?
-
-Yes, it is currently missing.
 
 >=20
-> Also could you not achieve the same thing using the guest-loader which
-> uses the multiboot spec and sets:
 >=20
->        const char *compat[2] =3D { "multiboot,module", =
+>> Am 14.04.2023 um 10:54 schrieb Alex Benn=C3=A9e =
+<alex.bennee@linaro.org>:
+>>=20
+>>=20
+>> Also could you not achieve the same thing using the guest-loader =
+which
+>> uses the multiboot spec and sets:
+>>=20
+>>       const char *compat[2] =3D { "multiboot,module", =
 "multiboot,ramdisk" };
->        if (qemu_fdt_setprop_string_array(fdt, node, "compatible",
->                                          (char **) &compat,
->                                          ARRAY_SIZE(compat)) < 0) {
->            error_setg(errp, "couldn't set %s/compatible", node);
->            return;
->        }
+>>       if (qemu_fdt_setprop_string_array(fdt, node, "compatible",
+>>                                         (char **) &compat,
+>>                                         ARRAY_SIZE(compat)) < 0) {
+>>           error_setg(errp, "couldn't set %s/compatible", node);
+>>           return;
+>>       }
+>>=20
+>=20
+> Thanks for the hint. I will check it.
 >=20
 
-Thanks for the hint. I will check it.
+I check it and it works fine for me. Consequently, you can ignore this =
+RFC.
+
+I was confused that the flag `=E2=80=94initrd` is available and not =
+used.
 
 Cheers
 
 Stefan
 
 
---Apple-Mail=_F9105841-E05A-4771-8314-803A923E1F04
+
+--Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -224,23 +229,23 @@ FVzCfsMerI9ODESp885W0fWiStFF0154TVWrnRohKg8Imj2jy+cxggSdMIIEmQIBATCBnjCBjTEL
 MAkGA1UEBhMCREUxRTBDBgNVBAoMPFZlcmVpbiB6dXIgRm9lcmRlcnVuZyBlaW5lcyBEZXV0c2No
 ZW4gRm9yc2NodW5nc25ldHplcyBlLiBWLjEQMA4GA1UECwwHREZOLVBLSTElMCMGA1UEAwwcREZO
 LVZlcmVpbiBHbG9iYWwgSXNzdWluZyBDQQIMJtuc71fMFTgq63BmMA0GCWCGSAFlAwQCAQUAoIIB
-zzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMzA0MTQxMjMzNTJa
-MC8GCSqGSIb3DQEJBDEiBCB49cAlgy6I0EaG2OTC+nov3SDih6DAwIAQu51PQBpHLjCBrwYJKwYB
+zzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMzA0MTUwNzUwNTla
+MC8GCSqGSIb3DQEJBDEiBCBKkGSI7sgmvMG4HFMe3Xm/mqJ8/d29C4c6n7sNP9gfIzCBrwYJKwYB
 BAGCNxAEMYGhMIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVy
 dW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4t
 UEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwm25zvV8wVOCrrcGYw
 gbEGCyqGSIb3DQEJEAILMYGhoIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1
 ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYD
 VQQLDAdERk4tUEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwm25zv
-V8wVOCrrcGYwDQYJKoZIhvcNAQELBQAEggIANL0CHAFJE9MSA4IoZjE6Nxfk1156L3bwQJWzOPrF
-XSNjjI8WmVXJ7TYp7ucpQBjt62S8yMpbYW+iKm6MyJP+ImlSidRB4IhBpVpcXiw2EvPYNtZJCj/z
-Q+z7Xf1tuS22rOWazh7wHJM9J+rTNOm/Ewy2n36FAIA0iCt9j63oNTBY3pX2CwbJysRdovxKYC2w
-q9+ToKu6X0jFsUzuPWy42i8s5lSLH/wNNr1S5syXd7LPY7ZSOm+8av7Td/fIkpLsPM+8eUNqYx3h
-x3lQvCDlM4jEqnOSg2ifYHs6l759Qd8YBJb5bEdJpe1/sJztmQOX7S/rTgtcRuvGhQvPJ751Mq8a
-4wrpXl9quM42CfifKYwm65agoZF8e05xZzK/LE/t9M+QQhYOFkFSnVQyLQec8tE/hYnxFQV5sWNt
-F9Stwk6bVXlx2hB8p9EMUY1jWLCI45DbGfpAp/JHMZ3g0lTmjpe1TM17LnQIBmyUMIF1vwP+2VDc
-xd7BxPCQXJhTtMFe66nvHxtXMlH3inL7uXD+A6OOucMhP0n4FX3lsILvUtgds4HJxtlreKPKkM7V
-Zg2nEVFgngGyxIdurIf6fZh44nwh7AMf7IRwuPBS3aSNUQAOPDMP4Q4updvczynb8gp4e1aBHcBB
-SJG4mq6ah6jtgoWagSzn3HOhmaxPMPUXlyUAAAAAAAA=
+V8wVOCrrcGYwDQYJKoZIhvcNAQELBQAEggIAObCQtrb11oCO0v1W+7+1BshabQwTgFruF8UxJv9K
+svEjYc4UP864PTdEY6Fi1Ng74FmiYehEoyz9J5FQ1URpTcM7iYdK9i8KJC6eSOR9JyCeY31s0a23
+BiwkAvhMkDjlgvhe0BjHQ/vD3lKnsq4WbaLZfXgwUA8OWj9IFJ3N0AgupkO+mzOOchOTCmwz8eHz
+BL6DDZrgI5tzygVDJaLAisH3xzdBibIyLbYqy/DNExSqtOPAE7vwggDp2tcZhRhoxXEsz2oBaJ5M
+MwU6iFcaGLKu6Kh1zHDElYaceasfXL4f4myUdEuFV4euC7gnccFK96W8+Cj0y3vokr2TRcO96sfT
+uP8atLwegRCIXdSrIRGr+jAscgEcEv8t8Qx5DQvp4pM4/CTKoQpRJJENJHIxlX39sQpa4m8HpzQI
+oQbHx0bOltqgBKe8y9xdAwsImPLitfjPw3EMA3NSopLWaOClUYcqG+OFcHCNZijfMOmpCXDt3t/D
+B8KLwj9gfJgdVW64uik9LvqXZsXRsS9xvdlJpznEt8sWolKGExOPGzw/i3ujB9L2q8KYWhbzCuA/
+f8k7xklnh7Fy7HfBEMJsFGLkxfZW95Y1WmBPomgB1Lb3B4+wluglTSavYAFvRv7piq2UaoQDBaQ9
+cf6oEXZIF1/ufoiFZMCD69Y9iWvVPM0Vn08AAAAAAAA=
 
---Apple-Mail=_F9105841-E05A-4771-8314-803A923E1F04--
+--Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE--

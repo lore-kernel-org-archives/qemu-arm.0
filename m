@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp724664ejm;
-        Sat, 15 Apr 2023 06:07:43 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZgCycZHCC0AIMXYfrFxsjtwmfUJ4OCpcgq/FX8vDSngk34RyPibaCIoR727XCL8P8K/TiB
-X-Received: by 2002:ad4:5f0a:0:b0:5ac:d6e6:452b with SMTP id fo10-20020ad45f0a000000b005acd6e6452bmr8163906qvb.24.1681564063189;
-        Sat, 15 Apr 2023 06:07:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681564063; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp725161ejm;
+        Sat, 15 Apr 2023 06:08:20 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bkXJgNoNVuCObr/ukoHLZDL7suQgB/iJSExXC7A9vNgN9pPqCvt0OqwlrkgdLaRKL6UeJE
+X-Received: by 2002:a05:6214:c26:b0:5ee:f961:4b74 with SMTP id a6-20020a0562140c2600b005eef9614b74mr7749992qvd.9.1681564100003;
+        Sat, 15 Apr 2023 06:08:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681564099; cv=none;
         d=google.com; s=arc-20160816;
-        b=wI/cxzBiGqMVqA7Q5T7LYLiZSEvUBruhtqxFu+XUbho5hXdgeU19S6HRequxN8POFk
-         D7qCB5o71quT0uBYxhpkYYuHthyXN38gSQ7PuofWGxAs3mdvORngMSAAqg6eHGrvaPr0
-         3ZaMAIsthvThrgHeWjCDrFYzRcPCF/CdmthfctjawPMASyHFqXiQtwy80fCo2xhof1G0
-         n9FhaJo+ogFEppdHg8ohj0M8lYyOssaFTeOIiyvgBq7R9WemGOP6o7FzikjnaKG8AN+e
-         uEfVZG36PuHAvnpb64mhEzIbKQJWKPlHV1to32ZnS+mVKS8I9aEejiRfqzCkRPDtgcgW
-         vofg==
+        b=lFLQKPwbTK6PSVqSqtAblsyb0VxmJDZ6vMqqUuuuxC81yXELnH5UV3A4HoDZpNiwnO
+         hEw9lMhjr8W68B2N+SnT+iXU2gEpC8PFOpVV0i7/ix3fJBhd0EWp5u3LF/9NKlX8c8+o
+         iEAuAZq8uLU3mjdpXA2q0X+0nm1OoREFO8CEvpzczP8ezg0Pbb+TTYcc/jyrDumtBX2a
+         PdzSNjx9v9lfCX6h6j+nfls/dn0XDlODHZeHf9wIaPx6Z7BGL5c+PtgCrV8lkqTKIDHq
+         BimAKyx/uA5+K31DFOkS43c/uHI3GaUQ7/XCbrDVV4Xqk5UmAUEJkYhMG/8SZa0BMyNS
+         jgpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
         bh=E4l+aJIYWxp2W3zV79CcAEyS7NYgqKtdXuj+K6I2lNQ=;
-        b=oqn5ceHouC+wVsoFzIuI49W0jv2wvwzG7cOXFhzGV8JzLWD8Byx2io9bURqTl1OMN5
-         i5A1Pz0Py7AQSTjDpMwGnrwmOwWWMstbQgjMtI4RBuhJOf0tBvXJOaIP6cjDeSlSZz51
-         Ng+S3t9Tslh20OQzszajkpWjEUPZpTDWwp+kjg0sVuOiTFPqh2YaZdo2txDj8mVcmi0c
-         BexOlVqVuqy6AwivKNSwyrjBNlFzs0BLjIBe4rL919Tk2kGBMob/tgKl85W6x2fuewRu
-         2Pnp/JecIiINONgPj3Or5BE3caganwfjm0Sx+dSC58wKfdDWo12tIg2GMgxkLENmU+lH
-         a4xw==
+        b=eDDtOSMEcaoD+fuG/VQd87SiM8cU2FXvE7q09lImTA81H+mFN1MQO/JjklQNmzD/H2
+         gC4BCletTns3Jj9tRqZJmaqRXL72rsenZenqnyab8gt+VBdykPZ/QJkWccyDqbSb5hen
+         C+pgCzkZu79NlVV+AKGrEdcSU/5uE8nt3pcAVOBJmEb7euYUQsLtOrF7OVFVRCakuclu
+         OzE7z2MaPp0Vq4agda7xL/rXlmT0pfL0Fgca2Q21eAWOzEV+jxP8wbililR1AbtXOJdl
+         rfeQWdaC6oKwGm+LAfxZfGQIAt2LWHk+jrF0ww1HcgPUC72eyBrAHtoDBdzGhvQEptfQ
+         q3Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="IO+sI0j/";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="CKibD8v/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2-20020a05620a22a200b0074ac983a8e0si874706qkh.42.2023.04.15.06.07.43
+        by mx.google.com with ESMTPS id i6-20020ac85c06000000b003e43016c0adsi3714834qti.480.2023.04.15.06.08.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Apr 2023 06:07:43 -0700 (PDT)
+        Sat, 15 Apr 2023 06:08:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="IO+sI0j/";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="CKibD8v/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pnfcU-0004qW-QF; Sat, 15 Apr 2023 09:07:10 -0400
+	id 1pnfcV-0004qp-1V; Sat, 15 Apr 2023 09:07:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1pnbRW-00052Q-4g; Sat, 15 Apr 2023 04:39:34 -0400
+ id 1pnbZo-0006jL-EM; Sat, 15 Apr 2023 04:48:08 -0400
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1pnbRU-0000uD-HM; Sat, 15 Apr 2023 04:39:33 -0400
+ id 1pnbZe-00030M-V0; Sat, 15 Apr 2023 04:48:06 -0400
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 8475661532;
- Sat, 15 Apr 2023 08:39:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E7E1C4339C;
- Sat, 15 Apr 2023 08:39:23 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7901C60F95;
+ Sat, 15 Apr 2023 08:47:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3809AC433D2;
+ Sat, 15 Apr 2023 08:47:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1681547963;
+ s=k20201202; t=1681548473;
  bh=LNZidgtRoCkEo7HwCkp9NXpfLbvkmSUDAmpAp7fT6aA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IO+sI0j/lZpA3dqZkEfrk9jLIVzuYPDnP7Tj4vdJJ+oGT4b08WhYBLraw+zskCs/I
- +/93zbwhKu6OYCCxDKE7xIp+ZgR8ACgwHrW/9enQVD8DK4tMjFdanAwrTKo7AGY8/V
- 86U3Vrx9LivXqOYtb/CZvOqd8fqczanaV9r3Pej1nCf6etYc+/v35pkaW+SRTkt9EA
- Svcy4g/oIabA6vrd7+Sst0GKaNJOzpHgl3qQXTqmZoBSYlkD7T8JL6BDLGFo2Ca26B
- gYj7in89jA3TmlFH7LPTH9DZy2Nwk9SpKY0JbLq04jt5CFCcBIfl8wD8Kk3lzgBYLK
- rGUImC6DX3aCw==
+ b=CKibD8v/kKgZv8Gdgqmqn30/DYbo+zpdmVtAFg3SsNkSTj7RFU7FWMpR2Uz2VtooW
+ C0/8PEIFdd/bfI56YSkBhRVsaEyFB8rD3R+T6OWNhiK/FuEAGA+ebIq0ZJ5AKCvySP
+ xR0GMuejfsA8wAM4Z+R67l/5qfCbIUgJRVUI+elMLf0LpFYcSFfBoycPyUJXJnc8qj
+ Y+V3a40oAVEyhtalOh6aXtFZYxMWQwGmzW+1y/eQR4fe+SAEIvqDo07oYHFtXJ5W2F
+ WUV0NQ0RwUpwXRA6EaqzZN4hlxCjXlW4XTPDlzcha3NQBd32YGZtJKoqMwNxBP5yQT
+ /DgDl/fDbb+CA==
 From: Jisheng Zhang <jszhang@kernel.org>
-To: Peter Maydell <peer.maydell@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Subject: [PATCH 2/2] target/arm: Add Cortex-A78 CPU
-Date: Sat, 15 Apr 2023 16:28:27 +0800
-Message-Id: <20230415082827.2054-3-jszhang@kernel.org>
+Date: Sat, 15 Apr 2023 16:36:57 +0800
+Message-Id: <20230415083657.2308-3-jszhang@kernel.org>
 X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230415082827.2054-1-jszhang@kernel.org>
-References: <20230415082827.2054-1-jszhang@kernel.org>
+In-Reply-To: <20230415083657.2308-1-jszhang@kernel.org>
+References: <20230415083657.2308-1-jszhang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2604:1380:4641:c500::1;
@@ -89,7 +89,7 @@ X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 15 Apr 2023 09:06:54 -0400
+X-Mailman-Approved-At: Sat, 15 Apr 2023 09:06:56 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,7 +103,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9DKASLH4k2Fx
+X-TUID: ZN/+4G8dKL6B
 
 Enable the Cortex-A78 for virt to use a CPU type on the virt
 board that models a specific real hardware CPU, rather than

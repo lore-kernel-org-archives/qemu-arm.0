@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp724280ejm;
-        Sat, 15 Apr 2023 06:07:11 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bUoqwLv9uvSrr44Zu25/RaVsrbKPC4+azuKZ3+t/ZTgz3ZZjXG0H77gwVxcFKh5upy+k5v
-X-Received: by 2002:a05:622a:15c5:b0:3eb:ac93:f857 with SMTP id d5-20020a05622a15c500b003ebac93f857mr6379482qty.58.1681564031599;
-        Sat, 15 Apr 2023 06:07:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681564031; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp724493ejm;
+        Sat, 15 Apr 2023 06:07:28 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YgmDGJSX/JKPJFD4FHqxZk3SNdcShGFK5/W/9K43rikOG9QQaIdp+DTKVXEe3HPgdfkohH
+X-Received: by 2002:a05:6214:1bcb:b0:5eb:fc42:ea4f with SMTP id m11-20020a0562141bcb00b005ebfc42ea4fmr8957581qvc.33.1681564047900;
+        Sat, 15 Apr 2023 06:07:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681564047; cv=none;
         d=google.com; s=arc-20160816;
-        b=F5awbZhPh0udFnLQCGjlQDlfKcHje0Si7dBod9IbsxOwFqrdLy3gtjtqbB5KGJtx0C
-         TLyaWSb4wm6w2H0f3L6uvKSM9eZeT4lLk+afw0HzfIkgcMYrRzQWENDHSGW+y7qAPW5t
-         7/LPIq6q5NO3bP4RdIE8Bddd1UM3lBmWJburXkIq6KqAtHE1JX4yl28xnvFfIv9OMmCa
-         n0G/L24YxmfnshqgBwuIFGgBlqZs1c4AFo0SIdZvlp26xbbByqGvohISoO68QyT0ebvn
-         9adtwMAHjAPubxXNIP8ixSToDkzn4CCJUQ1DTLvrQqDw+dkDPkKKVwLT8im0ii6G1g78
-         prQQ==
+        b=tKqRsp4CPTzLPiCXTUZiG94dVf6rOGezTVW7NLc6s8oLqeBMd2A3Dr1KhWH5Om8Se5
+         0YBnbukWMinHV9uHs2ilmZ12WPCE2pUBnUUhNCa8Jlg3Ju7ERIlQ2RJgEROioeu1OkR4
+         jqY7W/UAAfdTKMeyV7NvWWXoybQD3NjBv23RocP7dZtBhsU0MigJet1czFG/u55A15Mb
+         tpW9SCwIKaF6Jw48/Idq2yLgRTujCTSQjAkycoFpvhL+JhdrsHT0FKggDzCy+wyHrSEX
+         tV/qyvNFGnkwg/ui9Sx7GbAXZ9ztmUBK4JsniFvm5FPTdqLrQ+VktKFywRmM8ZN6ZlnU
+         wBZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
         bh=g1HqqdsU8QGo+uHG2HueOCnsD690FsxOJF7ks09llGo=;
-        b=Oa71/JDorWWgDt0lGxEe3l9GGOyM1AI/t2C1TlbAsLeEmust1vjIjB20wFbyvAM2HX
-         0OEtIb6oX3VbWHBs42Hago1BjnMbQWLGbcva6XSl3q5ouGhtCoJyFKPbjLv9x5uIKHLx
-         JIhV/lhE4FJXQKqsdeKBt/U2OAH+b8x5MUh1i4hi1dUUS+vcY9EycJWDMc9p7LKzmrGv
-         Lcmz1cFHlbqzKNUB/0cmpcNcojOxbUJME7FHrEC7BmzWTzbn7Bqh3flOlcCHsbhL4nia
-         tgDvVtSINSpoWJ/hpGf5+EDNnBv9eDtSKtGhEoJDwPiheDu3CZxJbJjVA7rgOE3yJvDy
-         jk8A==
+        b=Itns8veVQovkGo3LOdzcnNIOSnxhh3Pu32zzxAJ3eo5KUG+jM5ajnC2XK5LzNIZcMF
+         lZ+9ehfbXEbxwmKCgysWETG8B5OcA3yLQTITmhuPeUANQlrLQKvtHwwaowkjWXOe4Gxa
+         9LcGVPT0pYEk1znIROVBSCBklSVAUqzyoX38Ex4ofoBZd0KvlrQ8cVggJUArIwi3oK/5
+         JccVsQKwxyUm3XyQL8IH90Ao6lKkfGQNQDOau/8KU9PT2dO/lr6bJb2SJEpIwSGutnSo
+         bXb3IbGRuTiVGi/HBkoeRARhlLPPCfQLitWs2JNXBuz3TTE0HdM5hO21GOSKmZ8pwiI2
+         e4mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=X6Ng6Xyf;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fQVLxNHN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18-20020a05620a29d200b0074a0dd62f45si3878525qkp.757.2023.04.15.06.07.11
+        by mx.google.com with ESMTPS id p2-20020a05621421e200b005ef52dd990fsi2937124qvj.497.2023.04.15.06.07.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Apr 2023 06:07:11 -0700 (PDT)
+        Sat, 15 Apr 2023 06:07:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=X6Ng6Xyf;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fQVLxNHN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pnfcN-0004ka-6i; Sat, 15 Apr 2023 09:07:06 -0400
+	id 1pnfcS-0004o3-EP; Sat, 15 Apr 2023 09:07:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1pnbZe-0006gZ-Aa; Sat, 15 Apr 2023 04:47:58 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ id 1pnbRU-000521-T6; Sat, 15 Apr 2023 04:39:32 -0400
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1pnbZZ-000304-Q7; Sat, 15 Apr 2023 04:47:55 -0400
+ id 1pnbRT-0000tr-1l; Sat, 15 Apr 2023 04:39:32 -0400
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 5BB3260A05;
- Sat, 15 Apr 2023 08:47:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05A22C433D2;
- Sat, 15 Apr 2023 08:47:50 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5D2AD60DBB;
+ Sat, 15 Apr 2023 08:39:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 123E3C4339B;
+ Sat, 15 Apr 2023 08:39:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1681548471;
+ s=k20201202; t=1681547961;
  bh=eWQIR4pDjW5W0LBVxz11mFgQNASZOEMMkzX3EPueH38=;
  h=From:To:Cc:Subject:Date:From;
- b=X6Ng6Xyfxe9z+3CVY16jXKvJeu1oqMz6l/KjkZURnk0oiet3hTVc2aiwcbKqCNgJ+
- kGpqh74URHXFIGW5ZRO1ZXvdFE3GHhOuVMhpAo5n5IiD4kIAKoPREzJovPFQOOpAZF
- Fj3mPqwGA1W9mYHYH3+tdESKjSajMGsTBkb77PvpyBKj54REYWA2bFzGlXHlzTH9mh
- e0qJsxLRV4gLim88iryCi3uU7hsy7Dy1l3B1TXF1RF2614B1JUAQz+PxHDzibFKwAe
- 6uLk3YdGC8kesse/K21h7BCEZJvVfW9Hn39L/THqXj6b0KFMEwLbClUTRRk0Zwmq69
- +OpZEvtPO/N7A==
+ b=fQVLxNHNRcYpNxvRDVGM9juvvOWl6Heb7LKUC0p01D2nXAoGFPj5CLiruxO9Xt0Vg
+ A+q6476a/X75kQXzSNt82zBtJIQix8QDHaRDJUumAvsTDd2MmzYNGETsm8mthEHvFY
+ 66Bm6966i+BIH874LDO7p8ap+qgQa5kh6ZqK0ZNzc79GYLJk6HJfQMsPYx0GECKiDd
+ 9BZWkt2a+qQh4I+55K08M6gsYntx+boqDPIZHpWitcrPDiQ+5QAvzv1oX0pKXCunAy
+ oBcZvo/TJjzKMF1tKvL0a1RJiwqeQd7N8RMbq/UaoP9EHscNPlLRF6KZmWe98r331u
+ Y1yfEDSn4XTfg==
 From: Jisheng Zhang <jszhang@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Peter Maydell <peer.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Subject: [PATCH 0/2] Remove CBAR from A55/A76 and add A78
-Date: Sat, 15 Apr 2023 16:36:55 +0800
-Message-Id: <20230415083657.2308-1-jszhang@kernel.org>
+Date: Sat, 15 Apr 2023 16:28:25 +0800
+Message-Id: <20230415082827.2054-1-jszhang@kernel.org>
 X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=jszhang@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Received-SPF: pass client-ip=139.178.84.217; envelope-from=jszhang@kernel.org;
+ helo=dfw.source.kernel.org
+X-Spam_score_int: -70
+X-Spam_score: -7.1
+X-Spam_bar: -------
+X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 15 Apr 2023 09:06:56 -0400
+X-Mailman-Approved-At: Sat, 15 Apr 2023 09:06:55 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,7 +100,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AbgI20x3/WBJ
+X-TUID: vOFyy2Ac8/xS
 
 patch1 removes CBAR from A55 and A76
 patch2 adds A78 CPU

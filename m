@@ -1,251 +1,127 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp600731ejm;
-        Sat, 15 Apr 2023 00:51:11 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aOK0BF/BDz9dBLSeknZDXgbtEZwyZ9qFt7enzVR0Wrw8xDZB5ppzLuKk5KOwHn/v4rWBPd
-X-Received: by 2002:a05:600c:3c8d:b0:3f1:88b:bd40 with SMTP id bg13-20020a05600c3c8d00b003f1088bbd40mr2410619wmb.14.1681545070960;
-        Sat, 15 Apr 2023 00:51:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681545070; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1771920ejm;
+        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
+X-Received: by 2002:aa7:cd06:0:b0:506:8eef:c58f with SMTP id b6-20020aa7cd06000000b005068eefc58fmr6634213edw.28.1681734110717;
+        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681734110; cv=none;
         d=google.com; s=arc-20160816;
-        b=xxv2NP9REBvcuQT4qBDmxUdKJya7A3OBylJa0+7U7XcOJpu3KCTflKupsVMX6BEUif
-         0+IrTyXKAQ7iEM2cubMlZ60XLfA6opLNPRFmc2fkuiZYNt+IWq+Hy2Tw9pxwZ7X0QUMI
-         4RV8tmm0vHEFWZncYowVE83Y2a//J6d5EOAz7jemzlrogYCsv7/5fvEF1XcYV5y2LNNa
-         /QRGWEL29YW6219Gjs+O+USejpoT6a1Hh4c2S3xBqkE2dzRJCOVfYV4qmQFf7njHl+Mc
-         zHtw3q+rf+9X4DzcqQ3rW4YLQ05q3mcXhwTjHY+UOCHsBmHy4I6f6ElT4hXhChBsTiuw
-         sFpw==
+        b=atI5t/ph4Ja5Y0jO98/IxPf3SmXauRwQFLb15jyfcoLd2YNpUuem/nIOQ45tgQY4Kg
+         u1GzAzvM6BT8BDPovbZiSbeiXAqhhd7jLtmHPA7Wv4q/o5shwNldEbzU/YtAB8Fol+bS
+         /bFpNblrYFlAzY019A7HFokRw//r6/9d13I4hmsK1pJGxYs9z3TrRCzfXHkraKjLg9vt
+         0u8yhLmjbjHQDgKrYqbcpsoBov7vrxIE88/N9OpjZP7tk+O+YRMSOzWm5E4KfDvFJyXo
+         6sfsGpZBKDTSghJ3UmW+RZ2/M8Pos0U6IDGjI49EbqqZl22t8EI8to27WftzvnRlW+zZ
+         B/BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-language:accept-language:in-reply-to
-         :references:message-id:date:thread-index:thread-topic:subject:cc:to
-         :from:ironport-hdrordr:ironport-data;
-        bh=xOM9BVjRQJNA6uf/ohyX0mSMkq5U2kxNk6NiYkfduig=;
-        b=WUyLpQx9QYWy1v+Q/AgqOqccJjXksrqjKbu91kkoNqXesm8WEW9qaeeQPIS1AlOwbC
-         bxLwXXZcbJ64q2Fj0UPlP6a7UPOm1wvTUQf9O3lkW636dEko/aLxliomw5LHa0+Vkemq
-         UzbuCGZqjxXFlr37UjOpnceEPfnRwHl6Z/Z2IE5sblCI15FhWStzCpz7KRH506/1D8ni
-         z9fgGaKvgYmaaHLgYweIIEXT/YtDt43ZkhD/buTh/ggU6O+H3l/LBUvZVBA3BF9oqG3D
-         uZrIuG6fhy3HNQ19lzJ6kr7KaA/dZlXhG0TxcELHeTydJPYMTlG6BuBm9jsjEpJRh6nG
-         AZOg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
+        b=te8XijoH2pgO0sC19YoeWueGsQ1RUQ+/LPHLE+XWKItm5u7uroCw7hFmHgVDJtqmsT
+         JuxdwKsrVILrb6GFlZKyqUHR3TnggPhRHVqrNVbW6tf5v6v790aooA5T/byeuihqlQ8q
+         qwNdbTrlJwDH9nYTaHxTxYE8i8mgNjlNab7dHhYdX9z0OQKh3vS06vtpoRwAS2Mn9TmK
+         XzE9gojKxAsKVO4SEpBaVDB0xY6N+jRUfKe1XFZ7iyFqic6TBN0PNoL0Q2HV40+83voc
+         tnFcBUkc70xQrpksJYhRLeQ9ryrUNECzSLHlezSlucJN/9ceS9OobjCY4dlbmZADWdWp
+         ZN/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
-Return-Path: <slankes@eonerc.rwth-aachen.de>
-Received: from mail-out-3.itc.rwth-aachen.de (mail-out-3.itc.rwth-aachen.de. [2a00:8a60:1:e501::5:48])
-        by mx.google.com with ESMTPS id i8-20020a5d5228000000b002dd965d5793si4505542wra.175.2023.04.15.00.51.10
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Apr 2023 00:51:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) client-ip=2a00:8a60:1:e501::5:48;
+       dkim=pass header.i=@linaro.org header.s=google header.b=V8E+7LoH;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id bq12-20020a056402214c00b00504b18a53c1sor5569160edb.61.2023.04.17.05.21.50
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of slankes@eonerc.rwth-aachen.de designates 2a00:8a60:1:e501::5:48 as permitted sender) smtp.mailfrom=slankes@eonerc.rwth-aachen.de
-X-IPAS-Result: =?us-ascii?q?A2BXAAAHVjpk/5wagoZaGgEBAQEBAQEBAQEDAQEBARIBA?=
- =?us-ascii?q?QEBAgIBAQEBgg+DIS2BL4RSkTOfWg8BAQEBAQEBAQEEBAFEBAEBhQYChTsnO?=
- =?us-ascii?q?BMBAgQBAQEBAwIDAQEBAQEBAwEBBgEBAQEBAQYEgR2FL0aGBAIBAyNWEAIBC?=
- =?us-ascii?q?EICAgIwJQIEDgUOgnABgksRrXOBMoEBoTMQgUGBVoV2doh5QoFKQ4E8DAMNg?=
- =?us-ascii?q?mg+hEODXDmCLgSaUoE0doEgDkpygQQCCQIRa4EQCGqBeUACDWQLDm+BSYFOg?=
- =?us-ascii?q?VwEAhQ2Dg5UAwkDBwUsHUADCxgNFjoTLDUUIFxsLRISBQMLFSpHBAg4Bhs0E?=
- =?us-ascii?q?QIIDxIPBiZEDEI3MxMGXAEpCw4RA05CGWwEL1qBAQYBJiSfIYE9gjnDfAMHg?=
- =?us-ascii?q?iiBVoZBgymXHQQvlxeSK5d1ol1tAYQrAgQCBAUCFoF6gX5xFGUBgjw/ExcCD?=
- =?us-ascii?q?6ILdT0CBwEKAQEDCYtFAQE?=
-IronPort-Data: A9a23:7KzoYq2W88B68/3Jd/bD5dFwkn2cJEfYwER7XKvMYLTBsI5bpzQGy
- mYcUG/XOP6Ca2Wket8ibo7j8k5X7cLTy4MwSVA+3Hw8FHgiRegppDi6BhqqY3nCfpWroGZPt
- Zh2hgzodZhsJpPkjk7xdOKn9xGQ7InQLpLkEunIJyttcgFtTSYlmHpLlvUw6mJSqYHR7zil5
- JWj8qUzBHf/g2Qvaj5NtvrawP9SlK2aVA0w7wRWic9j4Qe2e0k9VPo3Oay3Jn3kdYhYdsbSq
- zHrlezREsvxpn/BO/v9+lrJWhRiro36YWBivkFrt52K2XCukARviPphZKpEAatgo27hc9hZk
- L2hvHErIOsjFvWkdO81C3G0H8ziVEFL0OevHJSxjSCc51ScdXXe3/hMNW8dEL805vd1UV9Lq
- eNNfVjhbjjb7w636KikVulhloE8dYziepkApnElxD2fAftOrZLrGv6Wo4YDhHFq2IYXQKi2i
- 8kxMFKDaDzbZxRJOVoMIJ85muqyjT/lbCFY7Vucrqo65S7fwWSd1ZC0YYCOJ4PaHJ49ckCw+
- WTp2lbnOE8hLYK12HnZ7FT828vhgnauMG4VPPjinhJwu3WawmEDThcbU122rNG9i0i3QdUZL
- FYbkgI2oLQ/7gquR8jxUhm8iHqFuBcGXJxXCeJSwBiAz7eR6hycLm4DSDFHdZohrsBebSUn0
- 0LMk973CDhHtrqTRnSAsLCOoluP1TM9N3AeZSIUCBRcptClup4vjlfGQpBvHcZZk+HIJN05+
- BjSxABWulnZpZdjO3mTlbwfvw+Rmw==
-IronPort-HdrOrdr: A9a23:z0EdJKs0tVigTv+UJCBVEnwT7skDqdV00zEX/kB9WHVpm62j5r
- iTdZEgviMc5wx6ZJhNo7+90dC7MBbhHMdOkO8s1NSZLXDbUQmTTL2KhLGKqwEIfReRygc378
- ZdmsZFZOEYQmIW/KHHyTj9Pt48yLC8gcKVrNab618odBptdKFs4xwRMHf5LmRGADRcDZ0iHJ
- CA5sxBzgDQHUgqUg==
-X-Talos-CUID: 9a23:NyAbo25+TaJujOdh+9ss7RQSFPI5f1/k4lz9EWOkGGQ5drjJVgrF
-X-Talos-MUID: 9a23:u23dJwWZmbUVrxvq/GDqqxRQKv022L3wIlFOzYsg65SgGzMlbg==
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-AV: E=Sophos;i="5.99,199,1677538800"; 
-   d="p7s'?scan'208";a="192357813"
-Received: from rwthex-w1-a.rwth-ad.de ([134.130.26.156])
-  by mail-in-3.itc.rwth-aachen.de with ESMTP; 15 Apr 2023 09:51:11 +0200
-Received: from rwthex-s1-a.rwth-ad.de (2a00:8a60:1:e500::26:152) by
- rwthex-w1-a.rwth-ad.de (2a00:8a60:1:e500::26:156) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 15 Apr 2023 09:51:10 +0200
-Received: from rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990]) by
- rwthex-s1-a.rwth-ad.de ([fe80::4e4b:1686:d8fa:8990%3]) with mapi id
- 15.02.1118.026; Sat, 15 Apr 2023 09:51:10 +0200
-From: "Lankes, Stefan" <slankes@eonerc.rwth-aachen.de>
-To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-CC: Peter Maydell <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
-Thread-Topic: [RFC 1/1] add support of `--initrd` for ELF-ARM kernels
-Thread-Index: AQHZbqOz3m2A2WZ4VE2Qebwb1TRCdq8qXrwAgAA9MgCAAUNMgA==
-Date: Sat, 15 Apr 2023 07:51:10 +0000
-Message-ID: <533CF921-2982-4823-9373-68347AC0B2C8@eonerc.rwth-aachen.de>
-References: <20230414073432.36000-1-slankes@eonerc.rwth-aachen.de>
- <20230414073432.36000-2-slankes@eonerc.rwth-aachen.de>
- <87v8hyc03a.fsf@linaro.org>
- <04307039-7B61-4FDA-B82A-C83E2B0A9CF9@eonerc.rwth-aachen.de>
-In-Reply-To: <04307039-7B61-4FDA-B82A-C83E2B0A9CF9@eonerc.rwth-aachen.de>
-Accept-Language: de-DE, en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator:
-x-mailer: Apple Mail (2.3731.500.231)
-x-originating-ip: [2a0a:a540:ee49:0:2103:c4a8:6643:ebbe]
-Content-Type: multipart/signed;
-	boundary="Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE";
-	protocol="application/pkcs7-signature"; micalg=sha-256
+       dkim=pass header.i=@linaro.org header.s=google header.b=V8E+7LoH;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1681734110; x=1684326110;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
+        b=V8E+7LoHTrqqnDpJ7FCRZvmJCWDgynmlxuwz9gFkZDUUrvTaujDhthBOZysqNzMhYR
+         Wvg9xe4Q0UBi0bHLJ9sLOOAf2mZyShoZO1WZFqo0RWcEH19mNavVbz2bfYbYqNoVXk5X
+         VoYX5sAdAdwSmFkskg79+Ts3hBEuOC3lYSFetbg2ztm4m694T6tAPfKxVXRZvP2csPl8
+         D+L4QGixBSgcR4BXQBQBYQM9hKlI5hEizAy6dia12Dizqi/ADG/ViY3oelJBZ9LPTOCU
+         FSrKA+1Z4+QDSTyscuzFcemAxzcv1W4R4icUqxXj1eMCJ8brZjYKs4/7H8YnNSrD3vl2
+         2TiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1681734110; x=1684326110;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
+        b=K9hQxr6DWuVp/wi67Mm+djwMVELx8x5iWVKOnT0uzwTYmN2+umMX+mY8H2gGKq6GYr
+         M20vD8rvlcxwZqJZNapfeLVuLGNx9ErDDbeyhNjJ0O9YTM5rSHWvocYm4BVxx3aEp9Mt
+         8RckR1bkqY2T6dJR+ILIEbb78Fkmk2fkO551l27AKYvZQvv0LgGsntadjmfyrrbE3kfo
+         m7OZAsBAIH2IgaBIe8r2NKcrJTZuktZZNd4zeIQQwjX8Bv5Qi0FedfdmKCxViru+uf75
+         i0CHSQI00l5B5XiVVk+CXMoGKX2GKcdN3DhRhFbOhY/6W7VSi4fufNinEo6ZHXHnJdmv
+         2AiQ==
+X-Gm-Message-State: AAQBX9eSjUm+py47mZ2byilfgTebHD2zRor1NpoAZ6faZzpWIzjpyT8I
+	8KK+TAVIIkK1qCiXyDfKj1kR7lyP8nCQUPGrVOgnFE66nT4pzDqoz8c=
+X-Google-Smtp-Source: AKy350bJ17KNGWt9uKT+XD1WaldGuMxtrq5jjohaBoizE6+D7vACK7DjU4mslYErN9xzdU8Yzd5kLewKnMnjKmF5y+0=
+X-Received: by 2002:a50:8d43:0:b0:4fc:fc86:5f76 with SMTP id
+ t3-20020a508d43000000b004fcfc865f76mr7055601edt.6.1681734110239; Mon, 17 Apr
+ 2023 05:21:50 -0700 (PDT)
 MIME-Version: 1.0
-X-TUID: DKSRBt/gwzKW
+References: <20230403191600.43487-1-fcagnin@quarkslab.com> <20230403191600.43487-3-fcagnin@quarkslab.com>
+In-Reply-To: <20230403191600.43487-3-fcagnin@quarkslab.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Apr 2023 13:21:39 +0100
+Message-ID: <CAFEAcA_CfbuvbL+yuMTcZwF_PUCPiWJ43eaKOJjZ6DJiQUiFQg@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] hvf: implement guest debugging on Apple Silicon hosts
+To: francesco.cagnin@gmail.com
+Cc: qemu-devel@nongnu.org, mads@ynddal.dk, dirty@apple.com, 
+	qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com, 
+	alex.bennee@linaro.org, Francesco Cagnin <fcagnin@quarkslab.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: iyiGjT3sFbds
 
---Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+On Mon, 3 Apr 2023 at 20:17, <francesco.cagnin@gmail.com> wrote:
+>
+> From: Francesco Cagnin <fcagnin@quarkslab.com>
+>
+> Support is added for single-stepping, software breakpoints, hardware
+> breakpoints and watchpoints. The code has been structured like the KVM
+> counterpart (and many parts are basically identical).
+>
+> Guests can be debugged through the gdbstub.
+>
+> While guest debugging is enabled, the guest can still read and write the
+> DBG*_EL1 registers but they don't have any effect.
+>
+> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
 
-Hello Alex,
+> +static void hvf_arm_init_debug(CPUState *cpu)
+> +{
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+> +
+> +    max_hw_bps = arm_num_brps(arm_cpu);
+> +    hw_breakpoints =
+> +        g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
+> +
+> +    max_hw_wps = arm_num_wrps(arm_cpu);
+> +    hw_watchpoints =
+> +        g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
+> +}
 
+This function gets called per-CPU but it allocates
+memory that is per-VM because it's stored in a global.
+That means that in an SMP guest the function gets called
+multiple times and leaks all but one of the allocations.
 
->=20
->=20
->> Am 14.04.2023 um 10:54 schrieb Alex Benn=C3=A9e =
-<alex.bennee@linaro.org>:
->>=20
->>=20
->> Also could you not achieve the same thing using the guest-loader =
-which
->> uses the multiboot spec and sets:
->>=20
->>       const char *compat[2] =3D { "multiboot,module", =
-"multiboot,ramdisk" };
->>       if (qemu_fdt_setprop_string_array(fdt, node, "compatible",
->>                                         (char **) &compat,
->>                                         ARRAY_SIZE(compat)) < 0) {
->>           error_setg(errp, "couldn't set %s/compatible", node);
->>           return;
->>       }
->>=20
->=20
-> Thanks for the hint. I will check it.
->=20
+The fix for this is to have the function be called
+from a general initialization function, not from the
+vcpu init function. Compare this (not yet in master)
+patch which fixes the same bug for KVM:
+https://lore.kernel.org/qemu-devel/20230405153644.25300-1-akihiko.odaki@daynix.com/
 
-I check it and it works fine for me. Consequently, you can ignore this =
-RFC.
+Other than that, the structure of the patch looks OK, but
+I think you need to identify the cause of the problems
+with SMP setups that you mention in the cover letter,
+since they suggest that there's a bug lurking in here
+somewhere.
 
-I was confused that the flag `=E2=80=94initrd` is available and not =
-used.
-
-Cheers
-
-Stefan
-
-
-
---Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEb4w
-ggUSMIID+qADAgECAgkA4wvV+K8l2YEwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYTAkRFMSsw
-KQYDVQQKDCJULVN5c3RlbXMgRW50ZXJwcmlzZSBTZXJ2aWNlcyBHbWJIMR8wHQYDVQQLDBZULVN5
-c3RlbXMgVHJ1c3QgQ2VudGVyMSUwIwYDVQQDDBxULVRlbGVTZWMgR2xvYmFsUm9vdCBDbGFzcyAy
-MB4XDTE2MDIyMjEzMzgyMloXDTMxMDIyMjIzNTk1OVowgZUxCzAJBgNVBAYTAkRFMUUwQwYDVQQK
-EzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVuIEZvcnNjaHVuZ3NuZXR6ZXMg
-ZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNVBAMTJERGTi1WZXJlaW4gQ2VydGlmaWNhdGlv
-biBBdXRob3JpdHkgMjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMtg1/9moUHN0vqH
-l4pzq5lN6mc5WqFggEcVToyVsuXPztNXS43O+FZsFVV2B+pG/cgDRWM+cNSrVICxI5y+NyipCf8F
-XRgPxJiZN7Mg9mZ4F4fCnQ7MSjLnFp2uDo0peQcAIFTcFV9Kltd4tjTTwXS1nem/wHdN6r1ZB+Ba
-L2w8pQDcNb1lDY9/Mm3yWmpLYgHurDg0WUU2SQXaeMpqbVvAgWsRzNI8qIv4cRrKO+KA3Ra0Z3qL
-NupOkSk9s1FcragMvp0049ENF4N1xDkesJQLEvHVaY4l9Lg9K7/AjsMeO6W/VRCrKq4Xl14zzsjz
-9AkH4wKGMUZrAcUQDBHHWekCAwEAAaOCAXQwggFwMA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQU
-k+PYMiba1fFKpZFK4OpL4qIMz+EwHwYDVR0jBBgwFoAUv1kgNgB5oKAia4zV8mHSuCzLgkowEgYD
-VR0TAQH/BAgwBgEB/wIBAjAzBgNVHSAELDAqMA8GDSsGAQQBga0hgiwBAQQwDQYLKwYBBAGBrSGC
-LB4wCAYGZ4EMAQICMEwGA1UdHwRFMEMwQaA/oD2GO2h0dHA6Ly9wa2kwMzM2LnRlbGVzZWMuZGUv
-cmwvVGVsZVNlY19HbG9iYWxSb290X0NsYXNzXzIuY3JsMIGGBggrBgEFBQcBAQR6MHgwLAYIKwYB
-BQUHMAGGIGh0dHA6Ly9vY3NwMDMzNi50ZWxlc2VjLmRlL29jc3ByMEgGCCsGAQUFBzAChjxodHRw
-Oi8vcGtpMDMzNi50ZWxlc2VjLmRlL2NydC9UZWxlU2VjX0dsb2JhbFJvb3RfQ2xhc3NfMi5jZXIw
-DQYJKoZIhvcNAQELBQADggEBAIcL/z4Cm2XIVi3WO5qYi3FP2ropqiH5Ri71sqQPrhE4eTizDnS6
-dl2e6BiClmLbTDPo3flq3zK9LExHYFV/53RrtCyD2HlrtrdNUAtmB7Xts5et6u5/MOaZ/SLick0+
-hFvu+c+Z6n/XUjkurJgARH5pO7917tALOxrN5fcPImxHhPalR6D90Bo0fa3SPXez7vTXTf/D6OWS
-T1k+kEcQSrCFWMBvf/iu7QhCnh7U3xQuTY+8npTD5+32GPg8SecmqKc22CzeIs2LgtjZeOJVEqM7
-h0S2EQvVDFKvaYwPBt/QolOLV5h7z/0HJPT8vcP9SpIClxvyt7bPZYoaorVyGTkwggWsMIIElKAD
-AgECAgcbY7rQHiw9MA0GCSqGSIb3DQEBCwUAMIGVMQswCQYDVQQGEwJERTFFMEMGA1UEChM8VmVy
-ZWluIHp1ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYu
-MRAwDgYDVQQLEwdERk4tUEtJMS0wKwYDVQQDEyRERk4tVmVyZWluIENlcnRpZmljYXRpb24gQXV0
-aG9yaXR5IDIwHhcNMTYwNTI0MTEzODQwWhcNMzEwMjIyMjM1OTU5WjCBjTELMAkGA1UEBhMCREUx
-RTBDBgNVBAoMPFZlcmVpbiB6dXIgRm9lcmRlcnVuZyBlaW5lcyBEZXV0c2NoZW4gRm9yc2NodW5n
-c25ldHplcyBlLiBWLjEQMA4GA1UECwwHREZOLVBLSTElMCMGA1UEAwwcREZOLVZlcmVpbiBHbG9i
-YWwgSXNzdWluZyBDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ07eRxH3h+Gy8Zp
-1xCeOdfZojDbchwFfylfS2jxrRnWTOFrG7ELf6Gr4HuLi9gtzm6IOhDuV+UefwRRNuu6cG1joL6W
-LkDh0YNMZj0cZGnlm6Stcq5oOVGHecwX064vXWNxSzl660Knl5BpBb+Q/6RAcL0D57+eGIgfn5mI
-TQ5HjUhfZZkQ0tkqSe3BuS0dnxLLFdM/fx5ULzquk1enfnjK1UriGuXtQX1TX8izKvWKMKztFwUk
-P7agCwf9TRqaA1KgNpzeJIdl5Of6x5ZzJBTN0OgbaJ4YWa52fvfRCng8h0uwN89Tyjo4EPPLR22M
-ZD08WkVKusqAfLjz56dMTM0CAwEAAaOCAgUwggIBMBIGA1UdEwEB/wQIMAYBAf8CAQEwDgYDVR0P
-AQH/BAQDAgEGMCkGA1UdIAQiMCAwDQYLKwYBBAGBrSGCLB4wDwYNKwYBBAGBrSGCLAEBBDAdBgNV
-HQ4EFgQUazqYi/nyU4na4K2yMh4JH+iqO3QwHwYDVR0jBBgwFoAUk+PYMiba1fFKpZFK4OpL4qIM
-z+EwgY8GA1UdHwSBhzCBhDBAoD6gPIY6aHR0cDovL2NkcDEucGNhLmRmbi5kZS9nbG9iYWwtcm9v
-dC1nMi1jYS9wdWIvY3JsL2NhY3JsLmNybDBAoD6gPIY6aHR0cDovL2NkcDIucGNhLmRmbi5kZS9n
-bG9iYWwtcm9vdC1nMi1jYS9wdWIvY3JsL2NhY3JsLmNybDCB3QYIKwYBBQUHAQEEgdAwgc0wMwYI
-KwYBBQUHMAGGJ2h0dHA6Ly9vY3NwLnBjYS5kZm4uZGUvT0NTUC1TZXJ2ZXIvT0NTUDBKBggrBgEF
-BQcwAoY+aHR0cDovL2NkcDEucGNhLmRmbi5kZS9nbG9iYWwtcm9vdC1nMi1jYS9wdWIvY2FjZXJ0
-L2NhY2VydC5jcnQwSgYIKwYBBQUHMAKGPmh0dHA6Ly9jZHAyLnBjYS5kZm4uZGUvZ2xvYmFsLXJv
-b3QtZzItY2EvcHViL2NhY2VydC9jYWNlcnQuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQCBeEWkTqR/
-DlXwCbFqPnjMaDWpHPOVnj/z+N9rOHeJLI21rT7H8pTNoAauusyosa0zCLYkhmI2THhuUPDVbmCN
-T1IxQ5dGdfBi5G5mUcFCMWdQ5UnnOR7Ln8qGSN4IFP8VSytmm6A4nwDO/afr0X9XLchMX9wQEZc+
-lgQCXISoKTlslPwQkgZ7nu7YRrQbtQMMONncsKk/cQYLsgMHM8KNSGMlJTx6e1du94oFOO+4oK4v
-9NsH1VuEGMGpuEvObJAaguS5Pfp38dIfMwK/U+d2+dwmJUFvL6Yb+qQTkPp8ftkLYF3sv8pBoGH7
-EUkp2KgtdRXYShjqFu9VNCIaE40GMIIG9DCCBdygAwIBAgIMJtuc71fMFTgq63BmMA0GCSqGSIb3
-DQEBCwUAMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVydW5nIGVp
-bmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4tUEtJMSUw
-IwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBMB4XDTIyMDYyOTA5NDYxMFoXDTI1
-MDYyODA5NDYxMFowgYcxCzAJBgNVBAYTAkRFMRQwEgYDVQQKDAtSV1RIIEFhY2hlbjEkMCIGA1UE
-CwwbRS5PTiBFbmVyZ3kgUmVzZWFyY2ggQ2VudGVyMQ8wDQYDVQQEDAZMYW5rZXMxDzANBgNVBCoM
-BlN0ZWZhbjEaMBgGA1UEAwwRRHIuIFN0ZWZhbiBMYW5rZXMwggIiMA0GCSqGSIb3DQEBAQUAA4IC
-DwAwggIKAoICAQDELT+xcia5CINQCt9AeV2kmqU+umAVAMlKWAk10M3FCrVFL5GdPv9ff+nEnIC1
-XhShlClvO8vkYbSa2YHJ+BMtxT3VKAmgrKjGfYvM5FLHKGml+XIff8JmPyBBBaCUtwFT2soneaXl
-pxqJjWsMUhOgOc+7FzSf2NsiArU6VLnyxoyPBGs5TrlOnuriWAuZI/KVy4kNYCMC6DuJrxpVstzW
-u5zYLFKsoYEKMQaZlhXfOFEVaZihXajSupDW4HCsAt5TPFp0y8SThSLDtp+Xp+bXAn+zkXurAOYs
-c0p/Im3vJQQpC4KvQo0WvF4+SLWi18d0UII2pai8RoVx3Prd2d9Ip7kKrBlgvTT5rXJ+nvqTvBYy
-hJX96Y+O32euwzrH5UFuLHZ7BkWjKIB1TnXHNLY/NOUA5s9tQMnE9qw8cuBasBiCU8DSdI32bPKs
-jLaU1YdPldVlAskIOArjRz5vLnorRpFNB/T4s1FZcVjs5Ykziu3CYs12ARYq2gO3AS1YqCaPwp2I
-KRpIad0ihxcw4zuv2JeUpjwCHvCuvk6/K0qp1tc+RQWHC9DDz9MTsmJfZRt4a+2tPL0lA5tl7vLv
-idUwDOKFXsv2FpGE2d0hCl5L8uJ9fvlTuZPzbcVc7MXFbMXerVKtOU4dDHqs1r6/q0Iv7/38cq1G
-ADBIbV5DkeItcwIDAQABo4ICVjCCAlIwPgYDVR0gBDcwNTAPBg0rBgEEAYGtIYIsAQEEMBAGDisG
-AQQBga0hgiwBAQQKMBAGDisGAQQBga0hgiwCAQQKMAkGA1UdEwQCMAAwDgYDVR0PAQH/BAQDAgXg
-MB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDAdBgNVHQ4EFgQU6V1A8ndjcL/OIc6B2JvW
-0c8Gv78wHwYDVR0jBBgwFoAUazqYi/nyU4na4K2yMh4JH+iqO3QwKAYDVR0RBCEwH4Edc2xhbmtl
-c0Blb25lcmMucnd0aC1hYWNoZW4uZGUwgY0GA1UdHwSBhTCBgjA/oD2gO4Y5aHR0cDovL2NkcDEu
-cGNhLmRmbi5kZS9kZm4tY2EtZ2xvYmFsLWcyL3B1Yi9jcmwvY2FjcmwuY3JsMD+gPaA7hjlodHRw
-Oi8vY2RwMi5wY2EuZGZuLmRlL2Rmbi1jYS1nbG9iYWwtZzIvcHViL2NybC9jYWNybC5jcmwwgdsG
-CCsGAQUFBwEBBIHOMIHLMDMGCCsGAQUFBzABhidodHRwOi8vb2NzcC5wY2EuZGZuLmRlL09DU1At
-U2VydmVyL09DU1AwSQYIKwYBBQUHMAKGPWh0dHA6Ly9jZHAxLnBjYS5kZm4uZGUvZGZuLWNhLWds
-b2JhbC1nMi9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwSQYIKwYBBQUHMAKGPWh0dHA6Ly9jZHAyLnBj
-YS5kZm4uZGUvZGZuLWNhLWdsb2JhbC1nMi9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwDQYJKoZIhvcN
-AQELBQADggEBABu58LP/WzZyCyLR24hBYF2mJQYe8nvr2NEsT9Fvb033Jt1+kF+puRbI/pFVGqrF
-NQtsuBuGytbSR06xoy1bdGKYSp+qRf2YbpGQekl51paYOhFof4NDj4o1mQZmtUjW4I/WeY5USLL9
-DNdWiiNsNaFh+LRB0qdM8uEkwOhweLtlRu8Lbn94nEcNp7DBtBnxhJtzGR0NiomWbSC3VrWuLgFn
-GO+//EthAj48rWSdKJ3/yfWr+TJsRmdboZXg1bsoCgnJiZ4EPFjgvoYNTJp6Dv0YNR8yHFo4e/hF
-FVzCfsMerI9ODESp885W0fWiStFF0154TVWrnRohKg8Imj2jy+cxggSdMIIEmQIBATCBnjCBjTEL
-MAkGA1UEBhMCREUxRTBDBgNVBAoMPFZlcmVpbiB6dXIgRm9lcmRlcnVuZyBlaW5lcyBEZXV0c2No
-ZW4gRm9yc2NodW5nc25ldHplcyBlLiBWLjEQMA4GA1UECwwHREZOLVBLSTElMCMGA1UEAwwcREZO
-LVZlcmVpbiBHbG9iYWwgSXNzdWluZyBDQQIMJtuc71fMFTgq63BmMA0GCWCGSAFlAwQCAQUAoIIB
-zzAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMzA0MTUwNzUwNTla
-MC8GCSqGSIb3DQEJBDEiBCBKkGSI7sgmvMG4HFMe3Xm/mqJ8/d29C4c6n7sNP9gfIzCBrwYJKwYB
-BAGCNxAEMYGhMIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1ciBGb2VyZGVy
-dW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYDVQQLDAdERk4t
-UEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwm25zvV8wVOCrrcGYw
-gbEGCyqGSIb3DQEJEAILMYGhoIGeMIGNMQswCQYDVQQGEwJERTFFMEMGA1UECgw8VmVyZWluIHp1
-ciBGb2VyZGVydW5nIGVpbmVzIERldXRzY2hlbiBGb3JzY2h1bmdzbmV0emVzIGUuIFYuMRAwDgYD
-VQQLDAdERk4tUEtJMSUwIwYDVQQDDBxERk4tVmVyZWluIEdsb2JhbCBJc3N1aW5nIENBAgwm25zv
-V8wVOCrrcGYwDQYJKoZIhvcNAQELBQAEggIAObCQtrb11oCO0v1W+7+1BshabQwTgFruF8UxJv9K
-svEjYc4UP864PTdEY6Fi1Ng74FmiYehEoyz9J5FQ1URpTcM7iYdK9i8KJC6eSOR9JyCeY31s0a23
-BiwkAvhMkDjlgvhe0BjHQ/vD3lKnsq4WbaLZfXgwUA8OWj9IFJ3N0AgupkO+mzOOchOTCmwz8eHz
-BL6DDZrgI5tzygVDJaLAisH3xzdBibIyLbYqy/DNExSqtOPAE7vwggDp2tcZhRhoxXEsz2oBaJ5M
-MwU6iFcaGLKu6Kh1zHDElYaceasfXL4f4myUdEuFV4euC7gnccFK96W8+Cj0y3vokr2TRcO96sfT
-uP8atLwegRCIXdSrIRGr+jAscgEcEv8t8Qx5DQvp4pM4/CTKoQpRJJENJHIxlX39sQpa4m8HpzQI
-oQbHx0bOltqgBKe8y9xdAwsImPLitfjPw3EMA3NSopLWaOClUYcqG+OFcHCNZijfMOmpCXDt3t/D
-B8KLwj9gfJgdVW64uik9LvqXZsXRsS9xvdlJpznEt8sWolKGExOPGzw/i3ujB9L2q8KYWhbzCuA/
-f8k7xklnh7Fy7HfBEMJsFGLkxfZW95Y1WmBPomgB1Lb3B4+wluglTSavYAFvRv7piq2UaoQDBaQ9
-cf6oEXZIF1/ufoiFZMCD69Y9iWvVPM0Vn08AAAAAAAA=
-
---Apple-Mail=_18437D7C-8FE5-435C-9686-78C6E9E00FFE--
+thanks
+-- PMM

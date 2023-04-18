@@ -1,101 +1,118 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2423694ejm;
-        Tue, 18 Apr 2023 03:57:40 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aj2TFlQRwvrNEy/+uH0A1T/Ss0sh9d95uenHB8b66hQSfWGVLy+aOTCAZTvkijtJZxXQvF
-X-Received: by 2002:a05:622a:389:b0:3e6:4069:9136 with SMTP id j9-20020a05622a038900b003e640699136mr24724240qtx.45.1681815460472;
-        Tue, 18 Apr 2023 03:57:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681815460; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2423846ejm;
+        Tue, 18 Apr 2023 03:58:05 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Y1v9SeaweBcdevnHIWrlH7BrvVH/30ul6fcEB/BVlDYG3raqS5eG/0c7A7aqfIdbYE66AS
+X-Received: by 2002:ac8:5a8b:0:b0:3dc:ac3b:ca6c with SMTP id c11-20020ac85a8b000000b003dcac3bca6cmr31753273qtc.6.1681815485157;
+        Tue, 18 Apr 2023 03:58:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681815485; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtPBovsrma5Qpk7mitY91pmPQsJ9aNEKiCij+tM3KFu0Q61DC6GwmXzvq1kcI7UQtF
-         LYXKN5L9oOQr8xOxr48WEHltMn9q0PcDDMPjUNdUrJq/jDVEe5G/SrLzGYQ69OtW5Bz5
-         y9VvIltl9QinP0lgmKvHzBHXcKgB9xzAiysCREJFIBsHujz5MKPvq0m7Vn/2+Ua3RuNe
-         RjM6ahcY4uUrpHBnmy2B6TeW5QyXcM/OS5fBkelIYi/gifkGWEkv+nTR+SxZABfHARDz
-         4uOmKHqMdQ9G+CCsix0cUL8H8Cb3Nx5tSiJCQHaPvUtLMciwmazgVlOdvvrnQZE6F4rS
-         fGpA==
+        b=pgnBQSqqvEfFX14vT5ni798yvoX5mZDLcXz7GaS483oVsHAIvgj3He56hH8Jiyf7ny
+         kB43J63ihLrlvGI0lfcqpLht+Dyy0izV15+/nRgjNuNLC4svYzpvBCwqW8qFc4s67+k9
+         BtGhyBswZwtC+GvZuXiLtFIlHWNvSkSfxFOix8H9hjJwFN5A6n4iWDWW0gkSF9R/61Oc
+         YISEsS814BL5s16tFsNQytdJHGbri+rbmmg9KGjGlqFMioWyCMoL8nlrFRT4V0zb2xy3
+         Pe4bbGGOBHkaOXpZchIG17+mzPx1Pp2cNTGbDMz+50epPwYOr+3KDuif0TT8zhmGadZr
+         7JZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=InfjB9iOWo/v3KyhBZ2XxdEOVb5O0uNfEoQ96UeV5Do=;
-        b=o5Ejg7XmP7th3q7U4I3s2BWMdjhaqQGowdI1KSrocUUe6OHDyyKx8LV/0/36wdbs1r
-         QEyqcFK2zKwQyjG/vWR2vUw7UW9Sv3/8Nz+G2lqurwrz1SB5BYebV3Jn+5eFXGV0EtA9
-         xqxMpfnxEe3bNL5AKob0tODiCWa/U9b3mW9k+3EDI4e7yAQTbxv1G3R0m6uP83d4MAJr
-         KnhBz284PggNV2EIHUjHDK4Q7OFGLzn75zHbW4lK+Hqx4h+IAE2eaz0EAN/iyfLp20Ak
-         zCOOy0y3gaU8KMfBbvZ7f7vUdaW3J28wjASxnDFqr9vcVZIJolaCxNp5WK5DobxCyX7p
-         B1Sg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=7K3VNSdk3z/8ZaLIajeUfu9u36LUEVZPb6wx1oh29EU=;
+        b=CmA/RFH6FBs8DE4OzFtKqKHcexK1R2S0hq6wcMRQiT2U+JF6DFiAA5KYhY6HrjyJDy
+         4gfU/ZdN/eDTn/VboAV1GdSnalwEjRMIwFv1vB90tbOQUwPORK6/OoZ8O+VCfNDMurTZ
+         b6Nlbo9XFe8+Ahg+MNGHCtSXe4u4yTLHgEOZH5gFxN/nR5ueQOUNvpdTzwMTukNZDg9R
+         Blc3hRIW+VpxZmk//XgNsIl7HdR4z81mExGf97vwqVnmHz1/kgRLSqQ2B01Q6+p2drIy
+         i2LyIB6QM3KjMJdA0UmydNUhcMwAJ6EqO9b2zAAMwryxbeTo0UvCZCsUY6hDz3hZ5eMm
+         R52w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=Z2S8QO6Y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ifj+7pal;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t17-20020a05622a149100b003e89f72a15dsi7039667qtx.750.2023.04.18.03.57.40
+        by mx.google.com with ESMTPS id b22-20020a05620a0f9600b0074df6d9b334si2029575qkn.608.2023.04.18.03.58.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Apr 2023 03:57:40 -0700 (PDT)
+        Tue, 18 Apr 2023 03:58:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=Z2S8QO6Y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ifj+7pal;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1poj1U-0005h3-GY; Tue, 18 Apr 2023 06:57:21 -0400
+	id 1poj1m-0005k8-EF; Tue, 18 Apr 2023 06:57:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1poj1S-0005gV-MG; Tue, 18 Apr 2023 06:57:18 -0400
-Received: from m12.mail.163.com ([220.181.12.216])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qianfanguijin@163.com>)
- id 1poj1G-0001bY-Q4; Tue, 18 Apr 2023 06:57:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
- Content-Type; bh=InfjB9iOWo/v3KyhBZ2XxdEOVb5O0uNfEoQ96UeV5Do=;
- b=Z2S8QO6YJNQW2f2HNThsTQqKFlumFKYRsIirsdn6epVSr7ZaFWoIRQsCTNjsbR
- 4bX+8l3JB+OJya/lxk65fBGomMlShwEW5SM87mN16CSGFJv7Huw2YLKTynKI8SCu
- v4pfgl/C1dlq1P+PU3ftzLzIlB/wj8P3MihAaPPmXu/aU=
-Received: from [172.21.25.67] (unknown [218.201.129.19])
- by zwqz-smtp-mta-g5-3 (Coremail) with SMTP id _____wBnnXVudz5kdxJKBw--.47676S2;
- Tue, 18 Apr 2023 18:56:46 +0800 (CST)
-Message-ID: <0f6e9f22-cc16-065f-976e-657359297928@163.com>
-Date: Tue, 18 Apr 2023 18:56:46 +0800
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1poj1f-0005if-AP
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 06:57:35 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1poj1d-0001gJ-P3
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 06:57:31 -0400
+Received: by mail-lj1-x229.google.com with SMTP id r9so16049781ljp.9
+ for <qemu-arm@nongnu.org>; Tue, 18 Apr 2023 03:57:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1681815448; x=1684407448;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7K3VNSdk3z/8ZaLIajeUfu9u36LUEVZPb6wx1oh29EU=;
+ b=Ifj+7palNxJqPkPaP8nRgR45GU9wRPYAPRRVj3rDzCyJlQx6+XJQcZ+R9F2drf6O0Q
+ 8DGIlJecxWwzNaeshPL2ramI2NVnVt+1UUCOo+OzMDPE+M7xsiK0VhHSi8ucMzD8fnA3
+ kusg6dSeZhU3ZIZ1rZFYxshohtfK3wuDfuziK23GMk2iZJqdhNrEDxXrv5oUKzquMA+V
+ QSmGiP7dMp3qgO+Ffz4l5wnDG8F6B19nxfbrPt85lHniQFOdNLWC5ruJe9rBUE4ZgR+a
+ fa/Yr8yUkRQ3ENRkDYXOzuRxeEKQA9oUc14a8qJEF606IWkx9w499JiMvf2t7D9kIpKZ
+ FoKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681815448; x=1684407448;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7K3VNSdk3z/8ZaLIajeUfu9u36LUEVZPb6wx1oh29EU=;
+ b=FTPicjBr5Ykni2FTjn/PedErvBHux/mEXWKwphMM2cQYjlT9/QLNvNkQUN++N6pYIs
+ yYNCrgfmK5RyHlcrn5O0ylHzCUBGEKLWJ8X8aijgpyVjPzBwLfkhs5xckcTmf/Fm9QRt
+ q6mi0MNSzu9KW8M4tTpNWPF/2bTL0BKqAYzAfyvEPZn1SLUUgYptwtnedY1YnLo+jtFN
+ 1z5V3TxjC29aMCfLUiejaxa1tb6zoES5yeeH8iOV5pA30azccBLy31k7CUHi9jLXTiQK
+ OZNRHLy+34o1uYnUSgoclLcjNNGVdjSC3KhOjo/r9QH44jtwSkJTncfkLHm3rL/hymPZ
+ Ubxw==
+X-Gm-Message-State: AAQBX9e7IdCk6yp6zODomnrYAkbGkC7OOAe2o6HMmSIsFR8uLOmkNYEF
+ Q8i9rDJ04MkxN7/9ptZBkgzTNg==
+X-Received: by 2002:a2e:9986:0:b0:2a7:a719:5936 with SMTP id
+ w6-20020a2e9986000000b002a7a7195936mr632057lji.19.1681815447968; 
+ Tue, 18 Apr 2023 03:57:27 -0700 (PDT)
+Received: from [192.168.58.227] ([91.209.212.60])
+ by smtp.gmail.com with ESMTPSA id
+ v8-20020a2e9608000000b002a8a5afb87csm2293163ljh.20.2023.04.18.03.57.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Apr 2023 03:57:27 -0700 (PDT)
+Message-ID: <42916240-ca56-9028-da9b-1fe5c729fc12@linaro.org>
+Date: Tue, 18 Apr 2023 12:57:08 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 08/12] hw: arm: allwinner-r40: Fix the mmc controller's
- type
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230328054654.18620-1-qianfanguijin@163.com>
- <20230328054654.18620-9-qianfanguijin@163.com>
- <CAPan3WrcM_tyfsVQNkZxtpj3pse6O58Nvkcwg7X=XHYt+seGgQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] target/arm: Don't allow stage 2 page table walks to
+ downgrade to NS
 Content-Language: en-US
-From: qianfan <qianfanguijin@163.com>
-In-Reply-To: <CAPan3WrcM_tyfsVQNkZxtpj3pse6O58Nvkcwg7X=XHYt+seGgQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230414160413.549801-1-peter.maydell@linaro.org>
+ <20230414160413.549801-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230414160413.549801-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnnXVudz5kdxJKBw--.47676S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WrW8Zw1xCr1ktF43XF1DWrg_yoW8JF4xpF
- 9xCay3KFZ0gay5AF12grn7Za48WayDWr40kanY9r9rXFyDGwnaqrW8tw45CFWkGr45Ca1S
- vwsagF40qFn8ZFDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07URE_iUUUUU=
-X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRJV7VWBpR1G8AAAst
-Received-SPF: pass client-ip=220.181.12.216;
- envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x229.google.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
 X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-2.284, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.284,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,57 +127,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0NhPymU6K+NT
+X-TUID: mn7E/D85fRwH
 
+On 4/14/23 18:04, Peter Maydell wrote:
+> Bit 63 in a Table descriptor is only the NSTable bit for stage 1
+> translations; in stage 2 it is RES0.  We were incorrectly looking at
+> it all the time.
+> 
+> This causes problems if:
+>   * the stage 2 table descriptor was incorrectly setting the RES0 bit
+>   * we are doing a stage 2 translation in Secure address space for
+>     a NonSecure stage 1 regime -- in this case we would incorrectly
+>     do an immediate downgrade to NonSecure
+> 
+> A bug elsewhere in the code currently prevents us from getting
+> to the second situation, but when we fix that it will be possible.
+> 
+> Cc:qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/ptw.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-在 2023/4/7 3:22, Niek Linnenbank 写道:
-> Hi Qianfan Zhao,
->
-> Is this change really needed as a separate patch?
-> Looks like it would make sense just to squash it with the original 
-> patch 01?
-The class type of TYPE_AW_SDHOST_SUN50I_A64 was introduced when patch-07.
-Add patch-01 doesn't has that class.
-
-So this is following the previous patch.
->
-> Regards,
-> Niek
->
-> On Tue, Mar 28, 2023 at 7:47 AM <qianfanguijin@163.com> wrote:
->
->     From: qianfan Zhao <qianfanguijin@163.com>
->
->     R40 has SAMP_DL_REG register and mmc2 controller has only 8K dma
->     buffer.
->     Fix it's compatible string.
->
->     Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
->     ---
->      hw/arm/allwinner-r40.c | 2 +-
->      1 file changed, 1 insertion(+), 1 deletion(-)
->
->     diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
->     index 0e4542d35f..b148c56449 100644
->     --- a/hw/arm/allwinner-r40.c
->     +++ b/hw/arm/allwinner-r40.c
->     @@ -271,7 +271,7 @@ static void allwinner_r40_init(Object *obj)
->
->          for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
->              object_initialize_child(obj, mmc_names[i], &s->mmc[i],
->     -                                TYPE_AW_SDHOST_SUN5I);
->     +                                TYPE_AW_SDHOST_SUN50I_A64);
->          }
->
->          object_initialize_child(obj, "twi0", &s->i2c0,
->     TYPE_AW_I2C_SUN6I);
->     -- 
->     2.25.1
->
->
->
-> -- 
-> Niek Linnenbank
->
-
+r~

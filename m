@@ -1,127 +1,174 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1771920ejm;
-        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
-X-Received: by 2002:aa7:cd06:0:b0:506:8eef:c58f with SMTP id b6-20020aa7cd06000000b005068eefc58fmr6634213edw.28.1681734110717;
-        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681734110; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2326155ejm;
+        Tue, 18 Apr 2023 00:11:55 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bd0/BcPN97MPN/3B+uIl6WLYtCrjt84CF8g8f8gC1LFG/pPiqh8KCF/cmhoWoZNU47l7u8
+X-Received: by 2002:ac8:7d8f:0:b0:3e4:e08e:6807 with SMTP id c15-20020ac87d8f000000b003e4e08e6807mr25053003qtd.30.1681801915086;
+        Tue, 18 Apr 2023 00:11:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681801915; cv=none;
         d=google.com; s=arc-20160816;
-        b=atI5t/ph4Ja5Y0jO98/IxPf3SmXauRwQFLb15jyfcoLd2YNpUuem/nIOQ45tgQY4Kg
-         u1GzAzvM6BT8BDPovbZiSbeiXAqhhd7jLtmHPA7Wv4q/o5shwNldEbzU/YtAB8Fol+bS
-         /bFpNblrYFlAzY019A7HFokRw//r6/9d13I4hmsK1pJGxYs9z3TrRCzfXHkraKjLg9vt
-         0u8yhLmjbjHQDgKrYqbcpsoBov7vrxIE88/N9OpjZP7tk+O+YRMSOzWm5E4KfDvFJyXo
-         6sfsGpZBKDTSghJ3UmW+RZ2/M8Pos0U6IDGjI49EbqqZl22t8EI8to27WftzvnRlW+zZ
-         B/BQ==
+        b=kZ5qv+NWASGF28GMfizLGHgGG6PjVWiMy0yD73B4BsKQOet5SMdH2XqzWeTr+WSJ3A
+         Uci12Ng7JRCytUDUg/5qaonVI9HL881OpPA2DCstd0DV3i4FnYQH7arAoI3b3Y8H0Yku
+         h9WvhVdLLjSC9rTYaDPmFAafIR8wFG7MNkyvw249vcIRep0tQPAHEpbHUHSOeTg3KAEK
+         8nqw/D0UZ+fIHDEBzx58sNUl6nwjFxdJrFd8caREJBoQBdxUeGIMpw/Uq4oqHbkivWA0
+         WVSEFEwilmxije5Xc9NHm6oPSYJJ6zHsHRbEy0ABQEBuMLe8/mcdKEkcI22Zn+aZQXXy
+         tm7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
-        b=te8XijoH2pgO0sC19YoeWueGsQ1RUQ+/LPHLE+XWKItm5u7uroCw7hFmHgVDJtqmsT
-         JuxdwKsrVILrb6GFlZKyqUHR3TnggPhRHVqrNVbW6tf5v6v790aooA5T/byeuihqlQ8q
-         qwNdbTrlJwDH9nYTaHxTxYE8i8mgNjlNab7dHhYdX9z0OQKh3vS06vtpoRwAS2Mn9TmK
-         XzE9gojKxAsKVO4SEpBaVDB0xY6N+jRUfKe1XFZ7iyFqic6TBN0PNoL0Q2HV40+83voc
-         tnFcBUkc70xQrpksJYhRLeQ9ryrUNECzSLHlezSlucJN/9ceS9OobjCY4dlbmZADWdWp
-         ZN/Q==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=S1GpnM616yx4lGRhZQg2um50odqu2LVJAKgisLf2pIA=;
+        b=BIRhi4X8mWJm6Bx5nkW9+aeFWZE5wtd3j9HnHv2oa/3wx9QchGkwtA5fMiELvSbpta
+         4udMyZizfRPBU2gy6C2mC9q3Q9MY25J2ozv4shtE5NgzSn5k+etzenMHIPPyKBMDmmp1
+         zyTraHxxqcZlVklmFGt+ggZzHgw9PFUvAj6PUlPPYF6OfAnWi4AJcOx30drow2HBB1kT
+         uvoplRctka8DTox5esm4VXkIRiAZjZI41h6mnvEHdz5rDGba+h7wqG8UsNAdTCRvkEiC
+         sejLUV5NsjSU+ItBq2AuIGGqrpntIwTRitU0oCkqyBvf0PTBFiopw5Oopeve1pAW4+N/
+         EVKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V8E+7LoH;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bq12-20020a056402214c00b00504b18a53c1sor5569160edb.61.2023.04.17.05.21.50
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D4tv/r+1";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ay35-20020a05620a17a300b0074e0951b8f1si83583qkb.303.2023.04.18.00.11.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Apr 2023 05:21:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Apr 2023 00:11:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=V8E+7LoH;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681734110; x=1684326110;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
-        b=V8E+7LoHTrqqnDpJ7FCRZvmJCWDgynmlxuwz9gFkZDUUrvTaujDhthBOZysqNzMhYR
-         Wvg9xe4Q0UBi0bHLJ9sLOOAf2mZyShoZO1WZFqo0RWcEH19mNavVbz2bfYbYqNoVXk5X
-         VoYX5sAdAdwSmFkskg79+Ts3hBEuOC3lYSFetbg2ztm4m694T6tAPfKxVXRZvP2csPl8
-         D+L4QGixBSgcR4BXQBQBYQM9hKlI5hEizAy6dia12Dizqi/ADG/ViY3oelJBZ9LPTOCU
-         FSrKA+1Z4+QDSTyscuzFcemAxzcv1W4R4icUqxXj1eMCJ8brZjYKs4/7H8YnNSrD3vl2
-         2TiQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="D4tv/r+1";
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1681801914;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=S1GpnM616yx4lGRhZQg2um50odqu2LVJAKgisLf2pIA=;
+	b=D4tv/r+1PQOCISqLGmuG9Hfqgoi2o7NHPYqylo1CLlQFZ0FyFqL7D5y0Orwq6ypwuXuGd6
+	3ALxHSvhjkNbFI97qFjM50Y3NVM0oTRSs7HHTzOcfjYameoZ4+fBCF0st8MBNjHaQvKjrM
+	M0BLfcPM4fBfLo0oyhcJepY0c+GhEXc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-552-DL0PBZ4GN3-q14n_bWxDLA-1; Tue, 18 Apr 2023 03:10:18 -0400
+X-MC-Unique: DL0PBZ4GN3-q14n_bWxDLA-1
+Received: by mail-wm1-f71.google.com with SMTP id k39-20020a05600c1ca700b003f17b10763aso116676wms.2
+        for <alex.bennee@linaro.org>; Tue, 18 Apr 2023 00:10:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681734110; x=1684326110;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=htAPw8sASkbP8CSe9RqSCM40t3CsDS9ksk0jby1dFjc=;
-        b=K9hQxr6DWuVp/wi67Mm+djwMVELx8x5iWVKOnT0uzwTYmN2+umMX+mY8H2gGKq6GYr
-         M20vD8rvlcxwZqJZNapfeLVuLGNx9ErDDbeyhNjJ0O9YTM5rSHWvocYm4BVxx3aEp9Mt
-         8RckR1bkqY2T6dJR+ILIEbb78Fkmk2fkO551l27AKYvZQvv0LgGsntadjmfyrrbE3kfo
-         m7OZAsBAIH2IgaBIe8r2NKcrJTZuktZZNd4zeIQQwjX8Bv5Qi0FedfdmKCxViru+uf75
-         i0CHSQI00l5B5XiVVk+CXMoGKX2GKcdN3DhRhFbOhY/6W7VSi4fufNinEo6ZHXHnJdmv
-         2AiQ==
-X-Gm-Message-State: AAQBX9eSjUm+py47mZ2byilfgTebHD2zRor1NpoAZ6faZzpWIzjpyT8I
-	8KK+TAVIIkK1qCiXyDfKj1kR7lyP8nCQUPGrVOgnFE66nT4pzDqoz8c=
-X-Google-Smtp-Source: AKy350bJ17KNGWt9uKT+XD1WaldGuMxtrq5jjohaBoizE6+D7vACK7DjU4mslYErN9xzdU8Yzd5kLewKnMnjKmF5y+0=
-X-Received: by 2002:a50:8d43:0:b0:4fc:fc86:5f76 with SMTP id
- t3-20020a508d43000000b004fcfc865f76mr7055601edt.6.1681734110239; Mon, 17 Apr
- 2023 05:21:50 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1681801817; x=1684393817;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=S1GpnM616yx4lGRhZQg2um50odqu2LVJAKgisLf2pIA=;
+        b=Idp620gKnSIXNNTkg9pCYt2vOyCZXOnYjKnKOE9MpXgib7YKtbUxgepDX/ph6ugroF
+         3xlbGDWH8I359QEsd9x31G8OADmz7DLLsCPTgF0D+L9xPYpZAaXl97y7kP1iA8cyoI8t
+         ui7Fh49FPmhIJQ6EzXrKFfcLFiCWX5nyYlyftKfi75E7lU0zKmYRVJd1VfYMHNEpmSkF
+         WRal5BqG2lJ1nnWDOqEyWxUdTw/212c11PnBbl1zhJX1mjZW8c/kaVtec6Fo4uYtibbW
+         CJg0/BeS4eodDIOaL5mqSMMx+K0HIBHQ9LXP+nYOM0sw504etbzES7RBy9mE6XRSPRpD
+         rJxQ==
+X-Gm-Message-State: AAQBX9cylbJnONdhCxgi64AVW3DzshYBRv/Wp4mTHmdzQx3bxZAG0+OP
+	gzC6LGWDr26jQeXBCLALYE2cVLvIjG6oft8xFFX38g6qy9714lhAb8Fk24cKPuK16cu0RJjj3k+
+	zNddmuYhnp0rm4vS2j4CMZkeBBb3T85+c3e7K717lr8psT3dtsGBuv/2oNBU2V+guOTlMwtoZ
+X-Received: by 2002:a05:600c:22c4:b0:3ed:88f5:160a with SMTP id 4-20020a05600c22c400b003ed88f5160amr12990501wmg.11.1681801817026;
+        Tue, 18 Apr 2023 00:10:17 -0700 (PDT)
+X-Received: by 2002:a05:600c:22c4:b0:3ed:88f5:160a with SMTP id 4-20020a05600c22c400b003ed88f5160amr12990457wmg.11.1681801816551;
+        Tue, 18 Apr 2023 00:10:16 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.3] (ip-109-43-176-59.web.vodafone.de. [109.43.176.59])
+        by smtp.gmail.com with ESMTPSA id n6-20020a05600c3b8600b003f173a2b2f6sm4942331wms.12.2023.04.18.00.10.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Apr 2023 00:10:15 -0700 (PDT)
+Message-ID: <2a2124d2-5fcf-cfd2-4f68-c3f602f2824e@redhat.com>
+Date: Tue, 18 Apr 2023 09:10:14 +0200
 MIME-Version: 1.0
-References: <20230403191600.43487-1-fcagnin@quarkslab.com> <20230403191600.43487-3-fcagnin@quarkslab.com>
-In-Reply-To: <20230403191600.43487-3-fcagnin@quarkslab.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Apr 2023 13:21:39 +0100
-Message-ID: <CAFEAcA_CfbuvbL+yuMTcZwF_PUCPiWJ43eaKOJjZ6DJiQUiFQg@mail.gmail.com>
-Subject: Re: [PATCH v4 2/2] hvf: implement guest debugging on Apple Silicon hosts
-To: francesco.cagnin@gmail.com
-Cc: qemu-devel@nongnu.org, mads@ynddal.dk, dirty@apple.com, 
-	qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com, 
-	alex.bennee@linaro.org, Francesco Cagnin <fcagnin@quarkslab.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: iyiGjT3sFbds
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v4 1/6] tests/requirements.txt: bump up avocado-framework
+ version to 101.0
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Markus Armbruster <armbru@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, John Snow <jsnow@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ Kautuk Consul <kconsul@linux.vnet.ibm.com>,
+ Hariharan T S <hariharan.ts@linux.vnet.ibm.com>
+References: <20230417134321.3627231-1-alex.bennee@linaro.org>
+ <20230417134321.3627231-2-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230417134321.3627231-2-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: FS/fGyMLx8s7
 
-On Mon, 3 Apr 2023 at 20:17, <francesco.cagnin@gmail.com> wrote:
->
-> From: Francesco Cagnin <fcagnin@quarkslab.com>
->
-> Support is added for single-stepping, software breakpoints, hardware
-> breakpoints and watchpoints. The code has been structured like the KVM
-> counterpart (and many parts are basically identical).
->
-> Guests can be debugged through the gdbstub.
->
-> While guest debugging is enabled, the guest can still read and write the
-> DBG*_EL1 registers but they don't have any effect.
->
-> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
-
-> +static void hvf_arm_init_debug(CPUState *cpu)
-> +{
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+On 17/04/2023 15.43, Alex Bennée wrote:
+> From: Kautuk Consul <kconsul@linux.vnet.ibm.com>
+> 
+> Avocado version 101.0 has a fix to re-compute the checksum
+> of an asset file if the algorithm used in the *-CHECKSUM
+> file isn't the same as the one being passed to it by the
+> avocado user (i.e. the avocado_qemu python module).
+> In the earlier avocado versions this fix wasn't there due
+> to which if the checksum wouldn't match the earlier
+> checksum (calculated by a different algorithm), the avocado
+> code would start downloading a fresh image from the internet
+> URL thus making the test-cases take longer to execute.
+> 
+> Bump up the avocado-framework version to 101.0.
+> 
+> Signed-off-by: Kautuk Consul <kconsul@linux.vnet.ibm.com>
+> Tested-by: Hariharan T S <hariharan.ts@linux.vnet.ibm.com>
+> Message-Id: <20230327115030.3418323-2-kconsul@linux.vnet.ibm.com>
+> Message-Id: <20230330101141.30199-10-alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>    - limit --max-parallel-tasks $(JOBS_OPTION:-j%=%)
+> ---
+>   tests/Makefile.include | 18 +++++++++++-------
+>   tests/requirements.txt |  2 +-
+>   2 files changed, 12 insertions(+), 8 deletions(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 9422ddaece..a4de0ad5a2 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -138,14 +138,18 @@ get-vm-image-fedora-31-%: check-venv
+>   # download all vm images, according to defined targets
+>   get-vm-images: check-venv $(patsubst %,get-vm-image-fedora-31-%, $(FEDORA_31_DOWNLOAD))
+>   
+> +JOBS_OPTION=$(lastword -j1 $(filter-out -j, $(filter -j%,$(MAKEFLAGS))))
 > +
-> +    max_hw_bps = arm_num_brps(arm_cpu);
-> +    hw_breakpoints =
-> +        g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
-> +
-> +    max_hw_wps = arm_num_wrps(arm_cpu);
-> +    hw_watchpoints =
-> +        g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
-> +}
+>   check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+> -	$(call quiet-command, \
+> -            $(TESTS_PYTHON) -m avocado \
+> -            --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
+> -            $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
+> -			--filter-by-tags-include-empty-key) \
+> -            $(AVOCADO_CMDLINE_TAGS) \
+> -            $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
+> +	$(call quiet-command, 							\
+> +            $(TESTS_PYTHON) -m avocado 						\
+> +            --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) 	\
+> +            $(if $(AVOCADO_TAGS),, 						\
+> +			--filter-by-tags-include-empty 				\
+> +			--filter-by-tags-include-empty-key) 			\
+> +		--max-parallel-tasks $(JOBS_OPTION:-j%=%) 			\
+> +            $(AVOCADO_CMDLINE_TAGS) 						\
+> +            $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), 			\
 
-This function gets called per-CPU but it allocates
-memory that is per-VM because it's stored in a global.
-That means that in an SMP guest the function gets called
-multiple times and leaks all but one of the allocations.
+We might need to revisit this --failfast logic, too. If I've got that right, 
+failfast is now the default with the new system? So we might want to disable 
+it by default again if GITLAB_CI is not set?
 
-The fix for this is to have the function be called
-from a general initialization function, not from the
-vcpu init function. Compare this (not yet in master)
-patch which fixes the same bug for KVM:
-https://lore.kernel.org/qemu-devel/20230405153644.25300-1-akihiko.odaki@daynix.com/
-
-Other than that, the structure of the patch looks OK, but
-I think you need to identify the cause of the problems
-with SMP setups that you mention in the cover letter,
-since they suggest that there's a bug lurking in here
-somewhere.
-
-thanks
--- PMM
+  Thomas

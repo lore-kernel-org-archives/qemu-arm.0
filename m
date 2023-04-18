@@ -1,65 +1,64 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2437956ejm;
-        Tue, 18 Apr 2023 04:21:31 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Z79xqVtdwyAT3bQDQUyEA8xRdlsJfJ6K47vEw5FUytseThFGe45QqcC0iWIoTN8Zy6b2IW
-X-Received: by 2002:a05:622a:1448:b0:3ee:1771:fc9f with SMTP id v8-20020a05622a144800b003ee1771fc9fmr14439090qtx.56.1681816890761;
-        Tue, 18 Apr 2023 04:21:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681816890; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2437979ejm;
+        Tue, 18 Apr 2023 04:21:33 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Zcu8XTGJZLYfNjovBR6D7+OVvcLEyMFdz/ZoRBZPdW/yJovSN+D1OEcwFRWpFQuu/Su+/V
+X-Received: by 2002:ac8:5dd2:0:b0:3e6:941b:47e0 with SMTP id e18-20020ac85dd2000000b003e6941b47e0mr21418710qtx.11.1681816893662;
+        Tue, 18 Apr 2023 04:21:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681816893; cv=none;
         d=google.com; s=arc-20160816;
-        b=UtDMKc69uroAs2PJsJOqbLaqXmCLbtIhQ4mjga6D3FovOvkMiZcAHqlyvJ8yNj4kt6
-         6twQYjeib51PkUUHOgsqwrhXD3Lygfsc4xMx4bUeHYLpSmCyPkbbhAiN0ZOJo2daii/7
-         yNkbPquKCSi69f1dDxfCMga+aDkl08zkvudVcrVfY+t+JfksGr44kXO8LfyCxPrmg5xA
-         ACruDaEMiSFDgrlVbI/oZwIlJitTcgv493awoXsp1aGt/+A74U1J5RUU0Sm6S+aaAESG
-         56pphAdkv5wQY2LEgAKyoFkELQ+X6Y1EyW422j5vmjSF4nAxltrjuS6yXtA0L+4T4LYw
-         jHbw==
+        b=CMgvYLph+jXEflBrsrlRYhUPcMl99h688WAHk0Q7ictaBH8iyquqFJ0+6g+Oo+bwuY
+         +MjihngPOdrvMamO8eKCMPGwFmsV7Xr5SefSWww61CxmoN6YR3yR3uwB8nO1OUsKZ32n
+         DBZwSy4eniD6vdoxuvSFt1FtfnfZtnWgBPZMV82bHBnLLhh+gnIpw/uz/tpkxhowO9db
+         AVLUq4ER+RA4pNlymElVnK/016kQ5xp05bJt/H917rvZyc0shrAzp9u60pj+4m4lBrrH
+         WGEt11J4xbytHYZVM7XukWg6/aCG21Kw3zwPteSte/40LZhU2VxSRMub3pv0SeZIgyym
+         iHGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MWWuioOXnTpytSCK8RnY986MV8JnG7Dt5l/n9qkzGUQ=;
-        b=e1L2RxuBoabpoMvvHqER7rTKulO3z40HPRZdA9cdo77UBHq20WENWgoRWhGklo0eCn
-         KveFiJE6ZS5Pr8u1xZLXBcTnzhf7KEnk4ASqxD5LZN3RjlnukEr+KXzJUO9SD9EPWCik
-         Qi1muGYly/bzfTM2k3AyLXA0Q3/11pkR7MmXqLf8RvvCRk7KVfACf1nVOafuJ4kvIEqr
-         sBOhlHMb6v7kDA4ZU5FtKMsRXewWQxhSrpaM10oX6h1XS8jjoAJjgNAXfQIWsM82ynJd
-         nmNsb3xW3riGON4GigQj9GV4P6JvwC+B4xKbXBv+DVedq0rIlyM88Ej0zN9qcrLzGb74
-         YbGQ==
+        bh=37XvTCFTlChDgujfhphZ+QOH8/u7IdgCXkskoic61Xg=;
+        b=w3XJfvb8XOnmhQic07IAaXngR5/sOWezU1wj33HXPzpNfTTrEqD8XiCHT5foBq0DG7
+         VQweO937Ow1VPjFpp3F8d1QxpOo9zrrJezbH6bNtQSutn73MH9PcQGnki5vH/u4g1RDj
+         w63jRmZwyOtwJ4RE+c+zobcBK0o/93rcuU5iMggCUlB3wMlPY+QWPracDhxi5/cLoAcV
+         6Ta1aE4008PBXY1KJ+roJQ9lmyz/odg4I6C5ZWE9WLLmYscaM9Hg3Cxix1ie2EZ1FHrG
+         2PAoausPoWqpMFibz5g6zFJEj/X2/rIzDyaHQnDaM0XJg7A2xUqB8GzCk1DXBUsiUoZ4
+         VKqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=gbW8zkjB;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=pjasrhSg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e6-20020a05622a110600b003ef078d1114si3063462qty.669.2023.04.18.04.21.30
+        by mx.google.com with ESMTPS id i10-20020a05620a404a00b0074aa8dbf093si4703629qko.534.2023.04.18.04.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Apr 2023 04:21:30 -0700 (PDT)
+        Tue, 18 Apr 2023 04:21:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=gbW8zkjB;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=pjasrhSg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pojOM-0006Pn-Gg; Tue, 18 Apr 2023 07:20:58 -0400
+	id 1pojON-0006Q1-7a; Tue, 18 Apr 2023 07:20:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pojOL-0006PN-JO; Tue, 18 Apr 2023 07:20:57 -0400
-Received: from m12.mail.163.com ([220.181.12.196])
+ id 1pojOL-0006PP-OW; Tue, 18 Apr 2023 07:20:57 -0400
+Received: from m12.mail.163.com ([220.181.12.199])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pojOH-0006jW-VC; Tue, 18 Apr 2023 07:20:57 -0400
+ id 1pojOH-0006iu-TC; Tue, 18 Apr 2023 07:20:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=MWWui
- oOXnTpytSCK8RnY986MV8JnG7Dt5l/n9qkzGUQ=; b=gbW8zkjBk0ybJLmMctexP
- +u8y8sPQ8S29WEQ2114RlX+v4l8X9QjqOLoC0xe6uyzrLlXx4CxCPUjxkD4Zj8DB
- 2HboSWz+AmNN+nisLOV8u10qDFas/GibCDPuoeAtokhxTdGpV+r4+ECklFw7keM8
- iEI+XNR7JCFPIa8r6F9kvU=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=37XvT
+ CFTlChDgujfhphZ+QOH8/u7IdgCXkskoic61Xg=; b=pjasrhSgfO2tnmbN9Wita
+ +dx/ZmFMlEcg6h04++Tr54RmaF90ieugl48EXRuDRPWXWbP9hvdDkohfyBAv0OOT
+ bIwIVnSTHpqA/Zf4nuo9igW/tRyink2BvTqJVdMhflV4V4m067KDpNjjzJI6h2w5
+ 9ZMzhtsP13ze0APh21uTu8=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g4-0 (Coremail) with SMTP id
- _____wDXy2EIfT5k6AUwBw--.24225S11; 
- Tue, 18 Apr 2023 19:20:44 +0800 (CST)
+ by zwqz-smtp-mta-g4-0 (Coremail) with SMTP id _____wDXy2EIfT5k6AUwBw--.24225S7;
+ Tue, 18 Apr 2023 19:20:43 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -69,23 +68,23 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v3 09/11] hw: arm: allwinner-sramc: Add SRAM Controller
- support for R40
-Date: Tue, 18 Apr 2023 19:20:38 +0800
-Message-Id: <20230418112040.12460-10-qianfanguijin@163.com>
+Subject: [PATCH v3 05/11] hw/misc: Rename axp209 to axp22x and add support
+ AXP221 PMU
+Date: Tue, 18 Apr 2023 19:20:34 +0800
+Message-Id: <20230418112040.12460-6-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230418112040.12460-1-qianfanguijin@163.com>
 References: <20230418112040.12460-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDXy2EIfT5k6AUwBw--.24225S11
-X-Coremail-Antispam: 1Uf129KBjvAXoWfJFWDtr18GFyrAry3Wr17Jrb_yoW8JF1kZo
- WSgF45XrWIg3s7ZrnYkw1ayr17WwnxKr4xAw4YkF4aka45Awsrt348t393Ja1fWr4FyFn7
- JaySgryfCrWkG3s5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
- AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4R1xRQUUUUU
+X-CM-TRANSID: _____wDXy2EIfT5k6AUwBw--.24225S7
+X-Coremail-Antispam: 1Uf129KBjvAXoW3uryDKr47XrW5KFWxJFyUAwb_yoW8CrWfWo
+ WFga9rZw1UKrWxAr1fury8trWfXr12kF4UXF47AFn29a1xAFn3ZrsIkw4kWr13KFs5KryU
+ Xr1vy39xAFnIvas5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RAyCXUUUUU
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXA5V7VXl6SzBgwAAsd
-Received-SPF: pass client-ip=220.181.12.196;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQgxV7VaEFBrrNgACs1
+Received-SPF: pass client-ip=220.181.12.199;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -108,412 +107,656 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3eWoGm9pqcZv
+X-TUID: qj/DMncc8HRx
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-Only a few important registers are added, especially the SRAM_VER
-register.
+This patch adds minimal support for AXP-221 PMU and connect it to
+bananapi M2U board.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/Kconfig                    |   1 +
- hw/arm/allwinner-r40.c            |   7 +-
- hw/misc/Kconfig                   |   3 +
- hw/misc/allwinner-sramc.c         | 184 ++++++++++++++++++++++++++++++
- hw/misc/meson.build               |   1 +
- hw/misc/trace-events              |   4 +
- include/hw/arm/allwinner-r40.h    |   3 +
- include/hw/misc/allwinner-sramc.h |  69 +++++++++++
- 8 files changed, 271 insertions(+), 1 deletion(-)
- create mode 100644 hw/misc/allwinner-sramc.c
- create mode 100644 include/hw/misc/allwinner-sramc.h
+ hw/arm/Kconfig        |   3 +-
+ hw/arm/bananapi_m2u.c |   6 +
+ hw/misc/Kconfig       |   2 +-
+ hw/misc/axp209.c      | 238 -----------------------------------
+ hw/misc/axp2xx.c      | 283 ++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build   |   2 +-
+ hw/misc/trace-events  |   8 +-
+ 7 files changed, 297 insertions(+), 245 deletions(-)
+ delete mode 100644 hw/misc/axp209.c
+ create mode 100644 hw/misc/axp2xx.c
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 85ded354ed..f3a4eb3f78 100644
+index 9e14c3427e..85ded354ed 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -346,6 +346,7 @@ config ALLWINNER_H3
+@@ -327,7 +327,7 @@ config ALLWINNER_A10
+     select ALLWINNER_A10_DRAMC
+     select ALLWINNER_EMAC
+     select ALLWINNER_I2C
+-    select AXP209_PMU
++    select AXP2XX_PMU
+     select SERIAL
+     select UNIMP
  
+@@ -347,6 +347,7 @@ config ALLWINNER_H3
  config ALLWINNER_R40
      bool
-+    select ALLWINNER_SRAMC
      select ALLWINNER_A10_PIT
-     select AXP2XX_PMU
++    select AXP2XX_PMU
      select SERIAL
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index c018ad231a..7d29eb224f 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -39,6 +39,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_SRAM_A2]    = 0x00004000,
-     [AW_R40_DEV_SRAM_A3]    = 0x00008000,
-     [AW_R40_DEV_SRAM_A4]    = 0x0000b400,
-+    [AW_R40_DEV_SRAMC]      = 0x01c00000,
-     [AW_R40_DEV_EMAC]       = 0x01c0b000,
-     [AW_R40_DEV_MMC0]       = 0x01c0f000,
-     [AW_R40_DEV_MMC1]       = 0x01c10000,
-@@ -76,7 +77,6 @@ struct AwR40Unimplemented {
- static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "d-engine",   0x01000000, 4 * MiB },
-     { "d-inter",    0x01400000, 128 * KiB },
--    { "sram-c",     0x01c00000, 4 * KiB },
-     { "dma",        0x01c02000, 4 * KiB },
-     { "nfdc",       0x01c03000, 4 * KiB },
-     { "ts",         0x01c04000, 4 * KiB },
-@@ -288,6 +288,8 @@ static void allwinner_r40_init(Object *obj)
-                              "ram-addr");
-     object_property_add_alias(obj, "ram-size", OBJECT(&s->dramc),
-                               "ram-size");
-+
-+    object_initialize_child(obj, "sramc", &s->sramc, TYPE_AW_SRAMC_SUN8I_R40);
- }
+     select ARM_TIMER
+     select ARM_GIC
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 1d49a006b5..9c5360a41b 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -23,6 +23,7 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "hw/boards.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-r40.h"
  
- static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-@@ -382,6 +384,9 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-                        AW_R40_GIC_SPI_TIMER1));
+@@ -61,6 +62,7 @@ static void bpim2u_init(MachineState *machine)
+ {
+     bool bootroom_loaded = false;
+     AwR40State *r40;
++    I2CBus *i2c;
  
-     /* SRAM */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->sramc), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sramc), 0, s->memmap[AW_R40_DEV_SRAMC]);
+     /* BIOS is not supported by this board */
+     if (machine->firmware) {
+@@ -104,6 +106,10 @@ static void bpim2u_init(MachineState *machine)
+         }
+     }
+ 
++    /* Connect AXP221 */
++    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
++    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
 +
-     memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
-                             16 * KiB, &error_abort);
-     memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
+     /* SDRAM */
+     memory_region_add_subregion(get_system_memory(),
+                                 r40->memmap[AW_R40_DEV_SDRAM], machine->ram);
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index efeb430a6c..e4c2149175 100644
+index 2ef5781ef8..efeb430a6c 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -170,6 +170,9 @@ config VIRT_CTRL
- config LASI
+@@ -176,7 +176,7 @@ config ALLWINNER_A10_CCM
+ config ALLWINNER_A10_DRAMC
      bool
  
-+config ALLWINNER_SRAMC
-+    bool
-+
- config ALLWINNER_A10_CCM
+-config AXP209_PMU
++config AXP2XX_PMU
      bool
+     depends on I2C
  
-diff --git a/hw/misc/allwinner-sramc.c b/hw/misc/allwinner-sramc.c
+diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
+deleted file mode 100644
+index 2908ed99a6..0000000000
+--- a/hw/misc/axp209.c
++++ /dev/null
+@@ -1,238 +0,0 @@
+-/*
+- * AXP-209 PMU Emulation
+- *
+- * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a
+- * copy of this software and associated documentation files (the "Software"),
+- * to deal in the Software without restriction, including without limitation
+- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+- * and/or sell copies of the Software, and to permit persons to whom the
+- * Software is furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+- * DEALINGS IN THE SOFTWARE.
+- *
+- * SPDX-License-Identifier: MIT
+- */
+-
+-#include "qemu/osdep.h"
+-#include "qemu/log.h"
+-#include "trace.h"
+-#include "hw/i2c/i2c.h"
+-#include "migration/vmstate.h"
+-
+-#define TYPE_AXP209_PMU "axp209_pmu"
+-
+-#define AXP209(obj) \
+-    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
+-
+-/* registers */
+-enum {
+-    REG_POWER_STATUS = 0x0u,
+-    REG_OPERATING_MODE,
+-    REG_OTG_VBUS_STATUS,
+-    REG_CHIP_VERSION,
+-    REG_DATA_CACHE_0,
+-    REG_DATA_CACHE_1,
+-    REG_DATA_CACHE_2,
+-    REG_DATA_CACHE_3,
+-    REG_DATA_CACHE_4,
+-    REG_DATA_CACHE_5,
+-    REG_DATA_CACHE_6,
+-    REG_DATA_CACHE_7,
+-    REG_DATA_CACHE_8,
+-    REG_DATA_CACHE_9,
+-    REG_DATA_CACHE_A,
+-    REG_DATA_CACHE_B,
+-    REG_POWER_OUTPUT_CTRL = 0x12u,
+-    REG_DC_DC2_OUT_V_CTRL = 0x23u,
+-    REG_DC_DC2_DVS_CTRL = 0x25u,
+-    REG_DC_DC3_OUT_V_CTRL = 0x27u,
+-    REG_LDO2_4_OUT_V_CTRL,
+-    REG_LDO3_OUT_V_CTRL,
+-    REG_VBUS_CH_MGMT = 0x30u,
+-    REG_SHUTDOWN_V_CTRL,
+-    REG_SHUTDOWN_CTRL,
+-    REG_CHARGE_CTRL_1,
+-    REG_CHARGE_CTRL_2,
+-    REG_SPARE_CHARGE_CTRL,
+-    REG_PEK_KEY_CTRL,
+-    REG_DC_DC_FREQ_SET,
+-    REG_CHR_TEMP_TH_SET,
+-    REG_CHR_HIGH_TEMP_TH_CTRL,
+-    REG_IPSOUT_WARN_L1,
+-    REG_IPSOUT_WARN_L2,
+-    REG_DISCHR_TEMP_TH_SET,
+-    REG_DISCHR_HIGH_TEMP_TH_CTRL,
+-    REG_IRQ_BANK_1_CTRL = 0x40u,
+-    REG_IRQ_BANK_2_CTRL,
+-    REG_IRQ_BANK_3_CTRL,
+-    REG_IRQ_BANK_4_CTRL,
+-    REG_IRQ_BANK_5_CTRL,
+-    REG_IRQ_BANK_1_STAT = 0x48u,
+-    REG_IRQ_BANK_2_STAT,
+-    REG_IRQ_BANK_3_STAT,
+-    REG_IRQ_BANK_4_STAT,
+-    REG_IRQ_BANK_5_STAT,
+-    REG_ADC_ACIN_V_H = 0x56u,
+-    REG_ADC_ACIN_V_L,
+-    REG_ADC_ACIN_CURR_H,
+-    REG_ADC_ACIN_CURR_L,
+-    REG_ADC_VBUS_V_H,
+-    REG_ADC_VBUS_V_L,
+-    REG_ADC_VBUS_CURR_H,
+-    REG_ADC_VBUS_CURR_L,
+-    REG_ADC_INT_TEMP_H,
+-    REG_ADC_INT_TEMP_L,
+-    REG_ADC_TEMP_SENS_V_H = 0x62u,
+-    REG_ADC_TEMP_SENS_V_L,
+-    REG_ADC_BAT_V_H = 0x78u,
+-    REG_ADC_BAT_V_L,
+-    REG_ADC_BAT_DISCHR_CURR_H,
+-    REG_ADC_BAT_DISCHR_CURR_L,
+-    REG_ADC_BAT_CHR_CURR_H,
+-    REG_ADC_BAT_CHR_CURR_L,
+-    REG_ADC_IPSOUT_V_H,
+-    REG_ADC_IPSOUT_V_L,
+-    REG_DC_DC_MOD_SEL = 0x80u,
+-    REG_ADC_EN_1,
+-    REG_ADC_EN_2,
+-    REG_ADC_SR_CTRL,
+-    REG_ADC_IN_RANGE,
+-    REG_GPIO1_ADC_IRQ_RISING_TH,
+-    REG_GPIO1_ADC_IRQ_FALLING_TH,
+-    REG_TIMER_CTRL = 0x8au,
+-    REG_VBUS_CTRL_MON_SRP,
+-    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
+-    REG_GPIO0_FEAT_SET,
+-    REG_GPIO_OUT_HIGH_SET,
+-    REG_GPIO1_FEAT_SET,
+-    REG_GPIO2_FEAT_SET,
+-    REG_GPIO_SIG_STATE_SET_MON,
+-    REG_GPIO3_SET,
+-    REG_COULOMB_CNTR_CTRL = 0xb8u,
+-    REG_POWER_MEAS_RES,
+-    NR_REGS
+-};
+-
+-#define AXP209_CHIP_VERSION_ID             (0x01)
+-#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+-#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
+-
+-/* A simple I2C slave which returns values of ID or CNT register. */
+-typedef struct AXP209I2CState {
+-    /*< private >*/
+-    I2CSlave i2c;
+-    /*< public >*/
+-    uint8_t regs[NR_REGS];  /* peripheral registers */
+-    uint8_t ptr;            /* current register index */
+-    uint8_t count;          /* counter used for tx/rx */
+-} AXP209I2CState;
+-
+-/* Reset all counters and load ID register */
+-static void axp209_reset_enter(Object *obj, ResetType type)
+-{
+-    AXP209I2CState *s = AXP209(obj);
+-
+-    memset(s->regs, 0, NR_REGS);
+-    s->ptr = 0;
+-    s->count = 0;
+-    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
+-    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
+-    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
+-}
+-
+-/* Handle events from master. */
+-static int axp209_event(I2CSlave *i2c, enum i2c_event event)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-
+-    s->count = 0;
+-
+-    return 0;
+-}
+-
+-/* Called when master requests read */
+-static uint8_t axp209_rx(I2CSlave *i2c)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-    uint8_t ret = 0xff;
+-
+-    if (s->ptr < NR_REGS) {
+-        ret = s->regs[s->ptr++];
+-    }
+-
+-    trace_axp209_rx(s->ptr - 1, ret);
+-
+-    return ret;
+-}
+-
+-/*
+- * Called when master sends write.
+- * Update ptr with byte 0, then perform write with second byte.
+- */
+-static int axp209_tx(I2CSlave *i2c, uint8_t data)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-
+-    if (s->count == 0) {
+-        /* Store register address */
+-        s->ptr = data;
+-        s->count++;
+-        trace_axp209_select(data);
+-    } else {
+-        trace_axp209_tx(s->ptr, data);
+-        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
+-            s->regs[s->ptr++] = data;
+-        }
+-    }
+-
+-    return 0;
+-}
+-
+-static const VMStateDescription vmstate_axp209 = {
+-    .name = TYPE_AXP209_PMU,
+-    .version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
+-        VMSTATE_UINT8(count, AXP209I2CState),
+-        VMSTATE_UINT8(ptr, AXP209I2CState),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static void axp209_class_init(ObjectClass *oc, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+-    ResettableClass *rc = RESETTABLE_CLASS(oc);
+-
+-    rc->phases.enter = axp209_reset_enter;
+-    dc->vmsd = &vmstate_axp209;
+-    isc->event = axp209_event;
+-    isc->recv = axp209_rx;
+-    isc->send = axp209_tx;
+-}
+-
+-static const TypeInfo axp209_info = {
+-    .name = TYPE_AXP209_PMU,
+-    .parent = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(AXP209I2CState),
+-    .class_init = axp209_class_init
+-};
+-
+-static void axp209_register_devices(void)
+-{
+-    type_register_static(&axp209_info);
+-}
+-
+-type_init(axp209_register_devices);
+diff --git a/hw/misc/axp2xx.c b/hw/misc/axp2xx.c
 new file mode 100644
-index 0000000000..a8b731f8f2
+index 0000000000..52a6ffc7f3
 --- /dev/null
-+++ b/hw/misc/allwinner-sramc.c
-@@ -0,0 +1,184 @@
++++ b/hw/misc/axp2xx.c
+@@ -0,0 +1,283 @@
 +/*
-+ * Allwinner R40 SRAM controller emulation
++ * AXP-2XX PMU Emulation, supported lists:
++ *   AXP209
++ *   AXP221
 + *
++ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
 + *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
++ * Permission is hereby granted, free of charge, to any person obtaining a
++ * copy of this software and associated documentation files (the "Software"),
++ * to deal in the Software without restriction, including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following conditions:
 + *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
 + *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++ * DEALINGS IN THE SOFTWARE.
++ *
++ * SPDX-License-Identifier: MIT
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "hw/sysbus.h"
-+#include "migration/vmstate.h"
 +#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-properties-system.h"
-+#include "hw/misc/allwinner-sramc.h"
++#include "qom/object.h"
 +#include "trace.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
++
++#define TYPE_AXP2XX     "axp2xx_pmu"
++#define TYPE_AXP209_PMU "axp209_pmu"
++#define TYPE_AXP221_PMU "axp221_pmu"
++
++OBJECT_DECLARE_TYPE(AXP2xxI2CState, AXP2xxClass, AXP2XX)
++
++#define NR_REGS                            (0xff)
++
++/* A simple I2C slave which returns values of ID or CNT register. */
++typedef struct AXP2xxI2CState {
++    /*< private >*/
++    I2CSlave i2c;
++    /*< public >*/
++    uint8_t regs[NR_REGS];  /* peripheral registers */
++    uint8_t ptr;            /* current register index */
++    uint8_t count;          /* counter used for tx/rx */
++} AXP2xxI2CState;
++
++typedef struct AXP2xxClass {
++    /*< private >*/
++    I2CSlaveClass parent_class;
++    /*< public >*/
++    void (*reset_enter)(AXP2xxI2CState *s, ResetType type);
++} AXP2xxClass;
++
++#define AXP209_CHIP_VERSION_ID             (0x01)
++#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
++
++/* Reset all counters and load ID register */
++static void axp209_reset_enter(AXP2xxI2CState *s, ResetType type)
++{
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
++
++    s->regs[0x03] = AXP209_CHIP_VERSION_ID;
++    s->regs[0x23] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
++
++    s->regs[0x30] = 0x60;
++    s->regs[0x32] = 0x46;
++    s->regs[0x34] = 0x41;
++    s->regs[0x35] = 0x22;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3a] = 0x68;
++    s->regs[0x3b] = 0x5f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x40] = 0xd8;
++    s->regs[0x42] = 0xff;
++    s->regs[0x43] = 0x3b;
++    s->regs[0x80] = 0xe0;
++    s->regs[0x82] = 0x83;
++    s->regs[0x83] = 0x80;
++    s->regs[0x84] = 0x32;
++    s->regs[0x86] = 0xff;
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0xa0;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x07;
++}
++
++#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
++#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
++#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
++#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
++#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
++#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
++
++/* Reset all counters and load ID register */
++static void axp221_reset_enter(AXP2xxI2CState *s, ResetType type)
++{
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
++
++    /* input power status register */
++    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
++                    | AXP221_PWR_STATUS_ACIN_AVAIL
++                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
++
++    s->regs[0x01] = 0x00; /* no battery is connected */
++
++    /*
++     * CHIPID register, no documented on datasheet, but it is checked in
++     * u-boot spl. I had read it from AXP221s and got 0x06 value.
++     * So leave 06h here.
++     */
++    s->regs[0x03] = 0x06;
++
++    s->regs[0x10] = 0xbf;
++    s->regs[0x13] = 0x01;
++    s->regs[0x30] = 0x60;
++    s->regs[0x31] = 0x03;
++    s->regs[0x32] = 0x43;
++    s->regs[0x33] = 0xc6;
++    s->regs[0x34] = 0x45;
++    s->regs[0x35] = 0x0e;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x80] = 0x80;
++    s->regs[0x82] = 0xe0;
++    s->regs[0x84] = 0x32;
++    s->regs[0x8f] = 0x01;
++
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0x1f;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x1f;
++
++    s->regs[0x40] = 0xd8;
++    s->regs[0x41] = 0xff;
++    s->regs[0x42] = 0x03;
++    s->regs[0x43] = 0x03;
++
++    s->regs[0xb8] = 0xc0;
++    s->regs[0xb9] = 0x64;
++    s->regs[0xe6] = 0xa0;
++}
++
++static void axp2xx_reset_enter(Object *obj, ResetType type)
++{
++    AXP2xxI2CState *s = AXP2XX(obj);
++    AXP2xxClass *sc = AXP2XX_GET_CLASS(s);
++
++    sc->reset_enter(s, type);
++}
++
++/* Handle events from master. */
++static int axp2xx_event(I2CSlave *i2c, enum i2c_event event)
++{
++    AXP2xxI2CState *s = AXP2XX(i2c);
++
++    s->count = 0;
++
++    return 0;
++}
++
++/* Called when master requests read */
++static uint8_t axp2xx_rx(I2CSlave *i2c)
++{
++    AXP2xxI2CState *s = AXP2XX(i2c);
++    uint8_t ret = 0xff;
++
++    if (s->ptr < NR_REGS) {
++        ret = s->regs[s->ptr++];
++    }
++
++    trace_axp2xx_rx(s->ptr - 1, ret);
++
++    return ret;
++}
 +
 +/*
-+ * register offsets
-+ * https://linux-sunxi.org/SRAM_Controller_Register_Guide
++ * Called when master sends write.
++ * Update ptr with byte 0, then perform write with second byte.
 + */
-+enum {
-+    REG_SRAM_CTL1_CFG               = 0x04, /* SRAM Control register 1 */
-+    REG_SRAM_VER                    = 0x24, /* SRAM Version register */
-+    REG_SRAM_R40_SOFT_ENTRY_REG0    = 0xbc,
-+};
-+
-+/* REG_SRAMC_VERSION bit defines */
-+#define SRAM_VER_READ_ENABLE            (1 << 15)
-+#define SRAM_VER_VERSION_SHIFT          16
-+#define SRAM_VERSION_SUN8I_R40          0x1701
-+
-+static uint64_t allwinner_sramc_read(void *opaque, hwaddr offset,
-+                                     unsigned size)
++static int axp2xx_tx(I2CSlave *i2c, uint8_t data)
 +{
-+    AwSRAMCState *s = AW_SRAMC(opaque);
-+    AwSRAMCClass *sc = AW_SRAMC_GET_CLASS(s);
-+    uint64_t val = 0;
++    AXP2xxI2CState *s = AXP2XX(i2c);
 +
-+    switch (offset) {
-+    case REG_SRAM_CTL1_CFG:
-+        val = s->sram_ctl1;
-+        break;
-+    case REG_SRAM_VER:
-+        /* bit15: lock bit, set this bit before reading this register */
-+        if (s->sram_ver & SRAM_VER_READ_ENABLE) {
-+            val = SRAM_VER_READ_ENABLE |
-+                    (sc->sram_version_code << SRAM_VER_VERSION_SHIFT);
-+        }
-+        break;
-+    case REG_SRAM_R40_SOFT_ENTRY_REG0:
-+        val = s->sram_soft_entry_reg0;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        return 0;
++    if (s->count == 0) {
++        /* Store register address */
++        s->ptr = data;
++        s->count++;
++        trace_axp2xx_select(data);
++    } else {
++        trace_axp2xx_tx(s->ptr, data);
++        s->regs[s->ptr++] = data;
 +    }
 +
-+    trace_allwinner_sramc_read(offset, val);
-+
-+    return val;
++    return 0;
 +}
 +
-+static void allwinner_sramc_write(void *opaque, hwaddr offset,
-+                                  uint64_t val, unsigned size)
-+{
-+    AwSRAMCState *s = AW_SRAMC(opaque);
-+
-+    trace_allwinner_sramc_write(offset, val);
-+
-+    switch (offset) {
-+    case REG_SRAM_CTL1_CFG:
-+        s->sram_ctl1 = val;
-+        break;
-+    case REG_SRAM_VER:
-+        /* Only the READ_ENABLE bit is writeable */
-+        s->sram_ver = val & SRAM_VER_READ_ENABLE;
-+        break;
-+    case REG_SRAM_R40_SOFT_ENTRY_REG0:
-+        s->sram_soft_entry_reg0 = val;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
-+                      __func__, (uint32_t)offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps allwinner_sramc_ops = {
-+    .read = allwinner_sramc_read,
-+    .write = allwinner_sramc_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .impl.min_access_size = 4,
-+};
-+
-+static const VMStateDescription allwinner_sramc_vmstate = {
-+    .name = "allwinner-sramc",
++static const VMStateDescription vmstate_axp2xx = {
++    .name = TYPE_AXP209_PMU,
 +    .version_id = 1,
-+    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(sram_ver, AwSRAMCState),
-+        VMSTATE_UINT32(sram_soft_entry_reg0, AwSRAMCState),
++        VMSTATE_UINT8_ARRAY(regs, AXP2xxI2CState, NR_REGS),
++        VMSTATE_UINT8(count, AXP2xxI2CState),
++        VMSTATE_UINT8(ptr, AXP2xxI2CState),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void allwinner_sramc_reset(DeviceState *dev)
++static void axp2xx_class_init(ObjectClass *oc, void *data)
 +{
-+    AwSRAMCState *s = AW_SRAMC(dev);
-+    AwSRAMCClass *sc = AW_SRAMC_GET_CLASS(s);
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
 +
-+    switch (sc->sram_version_code) {
-+    case SRAM_VERSION_SUN8I_R40:
-+        s->sram_ctl1 = 0x1300;
-+        break;
-+    }
++    rc->phases.enter = axp2xx_reset_enter;
++    dc->vmsd = &vmstate_axp2xx;
++    isc->event = axp2xx_event;
++    isc->recv = axp2xx_rx;
++    isc->send = axp2xx_tx;
 +}
 +
-+static void allwinner_sramc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = allwinner_sramc_reset;
-+    dc->vmsd = &allwinner_sramc_vmstate;
-+}
-+
-+static void allwinner_sramc_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    AwSRAMCState *s = AW_SRAMC(obj);
-+
-+    /* Memory mapping */
-+    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_sramc_ops, s,
-+                           TYPE_AW_SRAMC, 1 * KiB);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const TypeInfo allwinner_sramc_info = {
-+    .name          = TYPE_AW_SRAMC,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = allwinner_sramc_init,
-+    .instance_size = sizeof(AwSRAMCState),
-+    .class_init    = allwinner_sramc_class_init,
++static const TypeInfo axp2xx_info = {
++    .name = TYPE_AXP2XX,
++    .parent = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(AXP2xxI2CState),
++    .class_size = sizeof(AXP2xxClass),
++    .class_init = axp2xx_class_init,
++    .abstract = true,
 +};
 +
-+static void allwinner_r40_sramc_class_init(ObjectClass *klass, void *data)
++static void axp209_class_init(ObjectClass *oc, void *data)
 +{
-+    AwSRAMCClass *sc = AW_SRAMC_CLASS(klass);
++    AXP2xxClass *sc = AXP2XX_CLASS(oc);
 +
-+    sc->sram_version_code = SRAM_VERSION_SUN8I_R40;
++    sc->reset_enter = axp209_reset_enter;
 +}
 +
-+static const TypeInfo allwinner_r40_sramc_info = {
-+    .name          = TYPE_AW_SRAMC_SUN8I_R40,
-+    .parent        = TYPE_AW_SRAMC,
-+    .class_init    = allwinner_r40_sramc_class_init,
++static const TypeInfo axp209_info = {
++    .name = TYPE_AXP209_PMU,
++    .parent = TYPE_AXP2XX,
++    .class_init = axp209_class_init
 +};
 +
-+static void allwinner_sramc_register(void)
++static void axp221_class_init(ObjectClass *oc, void *data)
 +{
-+    type_register_static(&allwinner_sramc_info);
-+    type_register_static(&allwinner_r40_sramc_info);
++    AXP2xxClass *sc = AXP2XX_CLASS(oc);
++
++    sc->reset_enter = axp221_reset_enter;
 +}
 +
-+type_init(allwinner_sramc_register)
++static const TypeInfo axp221_info = {
++    .name = TYPE_AXP221_PMU,
++    .parent = TYPE_AXP2XX,
++    .class_init = axp221_class_init,
++};
++
++static void axp2xx_register_devices(void)
++{
++    type_register_static(&axp2xx_info);
++    type_register_static(&axp209_info);
++    type_register_static(&axp221_info);
++}
++
++type_init(axp2xx_register_devices);
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index b04d43e05a..78ca857c9d 100644
+index 96e35f1cdb..1db0343333 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -37,6 +37,7 @@ subdir('macio')
- 
- softmmu_ss.add(when: 'CONFIG_IVSHMEM_DEVICE', if_true: files('ivshmem.c'))
- 
-+softmmu_ss.add(when: 'CONFIG_ALLWINNER_SRAMC', if_true: files('allwinner-sramc.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
+@@ -45,7 +45,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+-softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
++softmmu_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 8b68f07765..4d1a0e17af 100644
+index c47876a902..24cdec83fe 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -33,6 +33,10 @@ allwinner_r40_dramphy_write(uint64_t offset, uint64_t data, unsigned size) "writ
- allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
- allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
- 
-+# allwinner-sramc.c
-+allwinner_sramc_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
-+allwinner_sramc_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64
-+
- # avr_power.c
+@@ -23,10 +23,10 @@ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%"
  avr_power_read(uint8_t value) "power_reduc read value:%u"
  avr_power_write(uint8_t value) "power_reduc write value:%u"
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 5f2d08489e..72710d3edc 100644
---- a/include/hw/arm/allwinner-r40.h
-+++ b/include/hw/arm/allwinner-r40.h
-@@ -27,6 +27,7 @@
- #include "hw/sd/allwinner-sdhost.h"
- #include "hw/misc/allwinner-r40-ccu.h"
- #include "hw/misc/allwinner-r40-dramc.h"
-+#include "hw/misc/allwinner-sramc.h"
- #include "hw/i2c/allwinner-i2c.h"
- #include "hw/net/allwinner_emac.h"
- #include "hw/net/allwinner-sun8i-emac.h"
-@@ -38,6 +39,7 @@ enum {
-     AW_R40_DEV_SRAM_A2,
-     AW_R40_DEV_SRAM_A3,
-     AW_R40_DEV_SRAM_A4,
-+    AW_R40_DEV_SRAMC,
-     AW_R40_DEV_EMAC,
-     AW_R40_DEV_MMC0,
-     AW_R40_DEV_MMC1,
-@@ -102,6 +104,7 @@ struct AwR40State {
  
-     ARMCPU cpus[AW_R40_NUM_CPUS];
-     const hwaddr *memmap;
-+    AwSRAMCState sramc;
-     AwA10PITState timer;
-     AwSdHostState mmc[AW_R40_NUM_MMCS];
-     AwR40ClockCtlState ccu;
-diff --git a/include/hw/misc/allwinner-sramc.h b/include/hw/misc/allwinner-sramc.h
-new file mode 100644
-index 0000000000..66b01b8d04
---- /dev/null
-+++ b/include/hw/misc/allwinner-sramc.h
-@@ -0,0 +1,69 @@
-+/*
-+ * Allwinner SRAM controller emulation
-+ *
-+ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_MISC_ALLWINNER_SRAMC_H
-+#define HW_MISC_ALLWINNER_SRAMC_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+#include "qemu/uuid.h"
-+
-+/**
-+ * Object model
-+ * @{
-+ */
-+#define TYPE_AW_SRAMC               "allwinner-sramc"
-+#define TYPE_AW_SRAMC_SUN8I_R40     TYPE_AW_SRAMC "-sun8i-r40"
-+OBJECT_DECLARE_TYPE(AwSRAMCState, AwSRAMCClass, AW_SRAMC)
-+
-+/** @} */
-+
-+/**
-+ * Allwinner SRAMC object instance state
-+ */
-+struct AwSRAMCState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-+
-+    /** Maps I/O registers in physical memory */
-+    MemoryRegion iomem;
-+
-+    /* registers */
-+    uint32_t sram_ctl1;
-+    uint32_t sram_ver;
-+    uint32_t sram_soft_entry_reg0;
-+};
-+
-+/**
-+ * Allwinner SRAM Controller class-level struct.
-+ *
-+ * This struct is filled by each sunxi device specific code
-+ * such that the generic code can use this struct to support
-+ * all devices.
-+ */
-+struct AwSRAMCClass {
-+    /*< private >*/
-+    SysBusDeviceClass parent_class;
-+    /*< public >*/
-+
-+    uint32_t sram_version_code;
-+};
-+
-+#endif /* HW_MISC_ALLWINNER_SRAMC_H */
+-# axp209.c
+-axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
+-axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+-axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
++# axp2xx
++axp2xx_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
++axp2xx_select(uint8_t reg) "Accessing reg 0x%" PRIx8
++axp2xx_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
+ 
+ # eccmemctl.c
+ ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
 -- 
 2.25.1
 

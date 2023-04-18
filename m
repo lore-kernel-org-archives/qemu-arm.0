@@ -1,101 +1,118 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2424493ejm;
-        Tue, 18 Apr 2023 03:59:35 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aQsRRBY3Q1H5my+oLPO+01rU8yalOpJCeBeFcVaTEUVGNOnrwtqOGE0emlQfCdH8V76Ute
-X-Received: by 2002:ac8:59d5:0:b0:3e4:e5bf:a250 with SMTP id f21-20020ac859d5000000b003e4e5bfa250mr26579251qtf.7.1681815575273;
-        Tue, 18 Apr 2023 03:59:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681815575; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2426571ejm;
+        Tue, 18 Apr 2023 04:02:29 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bj/oISdjoR5L0kgSgs2CZDxsUIPt8jdi3uA1QPdO3kI4JKUW0vDbAyDKjka9guCaLvgLFU
+X-Received: by 2002:a05:6902:1004:b0:b25:3a5e:6b2e with SMTP id w4-20020a056902100400b00b253a5e6b2emr18362907ybt.58.1681815749464;
+        Tue, 18 Apr 2023 04:02:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681815749; cv=none;
         d=google.com; s=arc-20160816;
-        b=nJ0l3Hr0avVfSCc2E+7NuCWkol4grCcV5pq2n9VzzYU6CwSwSK9oyvAuKl3wEvuHZV
-         q08a95PXS37P8V6CdJzc+hE/ezy3Ws1V3E1DnuFO8/2F0GZLRTYhrARtzpRyBjFSHZmZ
-         w/tMQlQ195iiPHKpRjqUurFj9cSrmZ6qJA+HDM0XADkc3uMqUn9R3y5+tqEZFrhb4URk
-         W/mGpr5SyLd3LRPP7FefvSpf2Qh5X+VkRfKb5CTiiqsVRYPp/FfOotOHwpj4Gg8Px3WN
-         FP1hodZt7XBT+r5siTBrcZNZoWUBy8Q+OGr+GwoE4MyT0vr3ikwhTzWlVcW5n3wnE7Ai
-         chFw==
+        b=Vs5Toebg+WJ91ty5noh/lVdKWEjfZFj+gEcfuOkGPlyEu+wdSN1etdvuXSHIXr8lbJ
+         YZf610zjLYhlAg70Nrddd5vqKHnVhiHAnSMgYQyCTD2o+039IN+NNsUAK9bQHEhkmk1Y
+         0wUQT2VGP9u3h+oqrCG1Uk3/xx8fGJioplBr/XUeT135h92veYmM2ay6nT/nVddVfzr0
+         168EiCGhLD7Q+eTb9Z9QE3oCz9gHQSY9TCXH3s0HguVW1p0DRBRzUY8fVecLJSHcWjet
+         cAoP+EwqtGj/F7/+HFARmhO8b2rfZ4GEedi5xzQjcCp16c9Rxc0IuhEhQ7znlxKhxBDz
+         3zTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KLyPqk3MlVA6QQdWlIPy79zJvChwg7NEpTAbqMIu3G0=;
-        b=B/1Bsp2k3jMVy9tSBzEBjMlfMaA60C5rGr2D7i3xkjQ8+frQD90ABM8m89mJPxHCsa
-         DNj4MxxyTW1C9r73XmqQvjmDne+VCoKTiXXZbu5a23ajSd6lkCsef+r0zz8O8c/k/1xt
-         mTPFPWMWx3i1H5hV2giJ+pKUeacjU/husSoDP9J7aAWo1ka5VTB91cYljs2+adXBVAjI
-         zIH8Wf13ZqquHmBtcYrcLEH2avLtuUMc2nO2Ouo5diHVqV9oGxtXLn1y8qDG/RKUyh+s
-         lhqILyC6rcc6PsfgHpmDjPSclSp75ZNNWL0ic/yTEjnEn+KhfOyoXyX2gmsne11kjTAp
-         Lbgg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=a2ezIgF7ksNqAWL/aBEaTHLMSzS6GAqNKwd1/w3H0RE=;
+        b=HINSHiUXZh13+bQImV+h5ZLoYuOOYnn5J++xwInaPVo6BOWY9oerh6i7BW/a7M77c8
+         7vB3EHp9/bBmP+74XUa3872sdDfOFSSO1T/opSHJd1B1nUqVCGTj+jgL0YIILucYyWzu
+         OurdC423G1Tzk/yEDjhNzMu3Rqtbmis+y3H1A4NIpxSuHXopHbhTWkVPRwwqYmw5KUKo
+         1iYcja5G/p8VVrmily1nq46LAtk8OEu9dX3SYB5VTkYFtT/pu63ZDaRrfwH6Qqi8s4iV
+         XEGTHhJCxrZ9VuTSZK2OpkUBJIvExZhLr7lxk8yX8hzQ99/6Pjy/MeOPpc2TpNNFGTCo
+         ZQGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=JKJU+hLX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ta62o3fe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7-20020ac87f87000000b003e8846087bfsi6973332qtj.131.2023.04.18.03.59.35
+        by mx.google.com with ESMTPS id s13-20020a05620a29cd00b006fca83b669dsi7540979qkp.61.2023.04.18.04.02.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Apr 2023 03:59:35 -0700 (PDT)
+        Tue, 18 Apr 2023 04:02:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=JKJU+hLX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ta62o3fe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1poj3I-0007FG-RI; Tue, 18 Apr 2023 06:59:12 -0400
+	id 1poj6F-0000aw-OB; Tue, 18 Apr 2023 07:02:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1poj3F-0007C2-6u; Tue, 18 Apr 2023 06:59:10 -0400
-Received: from m12.mail.163.com ([220.181.12.196])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qianfanguijin@163.com>)
- id 1poj3A-0001tk-2Y; Tue, 18 Apr 2023 06:59:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
- Content-Type; bh=KLyPqk3MlVA6QQdWlIPy79zJvChwg7NEpTAbqMIu3G0=;
- b=JKJU+hLX7B0uU4k6CdCkfHs0Fq06IojBZLnVCO5j7YoBM0/k6Wi3Cg3pUUdFCS
- QMoSgEvy8xzxj1j2n7D5d9hzu+GbAhnB8mveqwItCGGrbUNGglevhX2JQblkKQDT
- Maw3tfqQBufNkSYzeiu3Lk00Nwxab4olybJ7WgkYZIky8=
-Received: from [172.21.25.67] (unknown [218.201.129.19])
- by zwqz-smtp-mta-g2-1 (Coremail) with SMTP id _____wAXZCXbdz5kPO0TBw--.31805S2;
- Tue, 18 Apr 2023 18:58:36 +0800 (CST)
-Message-ID: <3b00a614-9dea-d90d-d7de-ff6c90e9a561@163.com>
-Date: Tue, 18 Apr 2023 18:58:36 +0800
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1poj6C-0000Zk-NC
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 07:02:13 -0400
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1poj5y-0002fM-O5
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 07:02:12 -0400
+Received: by mail-lj1-x233.google.com with SMTP id b9so1343639ljf.13
+ for <qemu-arm@nongnu.org>; Tue, 18 Apr 2023 04:01:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1681815715; x=1684407715;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=a2ezIgF7ksNqAWL/aBEaTHLMSzS6GAqNKwd1/w3H0RE=;
+ b=Ta62o3feXsbTyM1MTt3vEsDz7/rnK6tgSphbvwQQHUAkIYKWTg8ddDxJqtNJm/WSJf
+ dVOxBPgAmILC/q4RczOIUbsbjB9nLkRRyzYReipF/6soPeHjImw/I2c/SyIa4kY3xwSF
+ /1O32aR4Bc27xrj4QXkOvBTTNanvG6nK/UhShKa/XNGOvWPApvhGHmZ4GPSuz9KdqgIP
+ AqedeITpA/Hqz4r3Se/Mzl+VbyZDPgnYA21BSfeH4NITzwhuldF4z+y+fy2v+bOohLJj
+ 32gSX4Qn9bTJIvT1Bumpn1UsKgZvuGN4pwEuzT8MACakaQDcS+AghkOg6ORD5K09GIdS
+ RB/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681815715; x=1684407715;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=a2ezIgF7ksNqAWL/aBEaTHLMSzS6GAqNKwd1/w3H0RE=;
+ b=k4354Z42/7CYLDfwz30u1BlQbk2IzZXX4e/wdLAhnhH7iDdQjP4AESndiz3f/XIPl0
+ fvJvN8FNYBoo1CLdmc98bKB5ImW2bjdHI+ZvWw1LRO92h7WujkOWZYU7RtUFwdBKx8pX
+ TVLB1xFAsuU6HLbaCM9+scBRK/BeGldM0pWN2It3AnIsmxvIyJyHO4THNwfvRoNUUuxD
+ lmiJgnTg1uGTNJgPYCRba2v+zJ37eGPagS60XbFraCn9fMbY07z1iw2zH2rmm1e0ZD9B
+ jaHfbVyxGOUpKlQ55BEULNVePLOHInjTjPHoTvIX6X3Gb2p0S4AYte7EFh9DaO5ybGsH
+ nZ2A==
+X-Gm-Message-State: AAQBX9frFUPtE1yWSIjqzz50Ams1fD9xt85FD6BYBsvUlQdkA1y4pKzn
+ ETz5DzqWaqCUatYlXD0sPaHQVg==
+X-Received: by 2002:a2e:8ec9:0:b0:2a8:a65a:7313 with SMTP id
+ e9-20020a2e8ec9000000b002a8a65a7313mr619831ljl.31.1681815714956; 
+ Tue, 18 Apr 2023 04:01:54 -0700 (PDT)
+Received: from [192.168.58.227] ([91.209.212.60])
+ by smtp.gmail.com with ESMTPSA id
+ l20-20020a2e7014000000b002a8bb52d994sm1352190ljc.25.2023.04.18.04.01.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Apr 2023 04:01:54 -0700 (PDT)
+Message-ID: <836a4c35-9e1d-c067-cb2f-76ea93ccd53a@linaro.org>
+Date: Tue, 18 Apr 2023 13:01:49 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 07/12] hw: sd: allwinner-sdhost: Add sun50i-a64 SoC
- support
+Subject: Re: [PATCH 2/3] target/arm: Set ptw->out_secure correctly for stage 2
+ translations
 Content-Language: en-US
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230328054654.18620-1-qianfanguijin@163.com>
- <20230328054654.18620-8-qianfanguijin@163.com>
- <CAPan3Wpm6KqrXrdtrSqQPGAQGwJpiraUj0n3FKJOAoSrR1c71w@mail.gmail.com>
-From: qianfan <qianfanguijin@163.com>
-In-Reply-To: <CAPan3Wpm6KqrXrdtrSqQPGAQGwJpiraUj0n3FKJOAoSrR1c71w@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230414160413.549801-1-peter.maydell@linaro.org>
+ <20230414160413.549801-3-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230414160413.549801-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wAXZCXbdz5kPO0TBw--.31805S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxtrW3Zw4xWw4fGryrur17Wrg_yoW3WFWfpF
- ZYkw45GF45Ga1xJr47tFnrKF1rG34DCr4jkrn3CF97Ar1DJwn0qa1DKay5JFWDGrs8CF4U
- Aa1YqFy5uFs3taDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U-db8UUUUU=
-X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXB1V7VXl6SyOqwAAsp
-Received-SPF: pass client-ip=220.181.12.196;
- envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x233.google.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
 X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- NICE_REPLY_A=-2.284, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.284,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,268 +127,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Eg7IriAGjfAR
+X-TUID: nFuvM8ep2Mu0
+
+On 4/14/23 18:04, Peter Maydell wrote:
+> +        /* Check if page table walk is to secure or non-secure PA space. */
+> +        ptw->out_secure = (is_secure
+> +                           && !(pte_secure
+> +                                ? env->cp15.vstcr_el2 & VSTCR_SW
+> +                                : env->cp15.vtcr_el2 & VTCR_NSW));
+> +    } else {
+> +        /* Regime is physical */
+> +        ptw->out_secure = pte_secure;
+
+Is that last comment really correct?  I think it could still be stage1 of 2.
+That said, the actual code looks correct.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-
-在 2023/4/7 4:18, Niek Linnenbank 写道:
->
->
-> On Tue, Mar 28, 2023 at 7:47 AM <qianfanguijin@163.com> wrote:
->
->     From: qianfan Zhao <qianfanguijin@163.com>
->
->     A64's sd register was similar to H3, and it introduced a new register
->     named SAMP_DL_REG location at 0x144. The dma descriptor buffer size of
->     mmc2 is only 8K and the other mmc controllers has 64K.
->
->     Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
->     ---
->      hw/sd/allwinner-sdhost.c         | 70
->     ++++++++++++++++++++++++++++++--
->      include/hw/sd/allwinner-sdhost.h |  9 ++++
->      2 files changed, 76 insertions(+), 3 deletions(-)
->
->     diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
->     index 51e5e90830..38e7844399 100644
->     --- a/hw/sd/allwinner-sdhost.c
->     +++ b/hw/sd/allwinner-sdhost.c
->     @@ -77,6 +77,7 @@ enum {
->          REG_SD_DATA1_CRC  = 0x12C, /* CRC Data 1 from card/eMMC */
->          REG_SD_DATA0_CRC  = 0x130, /* CRC Data 0 from card/eMMC */
->          REG_SD_CRC_STA    = 0x134, /* CRC status from card/eMMC
->     during write */
->     +    REG_SD_SAMP_DL    = 0x144, /* Sample Delay Control
->     (sun50i-a64) */
->          REG_SD_FIFO       = 0x200, /* Read/Write FIFO */
->      };
->
->     @@ -158,6 +159,7 @@ enum {
->          REG_SD_RES_CRC_RST      = 0x0,
->          REG_SD_DATA_CRC_RST     = 0x0,
->          REG_SD_CRC_STA_RST      = 0x0,
->     +    REG_SD_SAMPLE_DL_RST    = 0x00002000,
->          REG_SD_FIFO_RST         = 0x0,
->      };
->
->     @@ -438,6 +440,7 @@ static uint64_t allwinner_sdhost_read(void
->     *opaque, hwaddr offset,
->      {
->          AwSdHostState *s = AW_SDHOST(opaque);
->          AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
->     +    bool out_of_bounds = false;
->          uint32_t res = 0;
->
->          switch (offset) {
->     @@ -556,13 +559,24 @@ static uint64_t allwinner_sdhost_read(void
->     *opaque, hwaddr offset,
->          case REG_SD_FIFO:      /* Read/Write FIFO */
->              res = allwinner_sdhost_fifo_read(s);
->              break;
->     +    case REG_SD_SAMP_DL: /* Sample Delay */
->
-> Sample Delay Control
->
->     +        if (sc->can_calibrate) {
->     +            res = s->sample_delay;
->     +        } else {
->     +            out_of_bounds = true;
->     +        }
->     +        break;
->          default:
->     -        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
->     -                      HWADDR_PRIx"\n", __func__, offset);
->     +        out_of_bounds = true;
->              res = 0;
->              break;
->          }
->
->     +    if (out_of_bounds) {
->     +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
->     +                      HWADDR_PRIx"\n", __func__, offset);
->     +    }
->     +
->          trace_allwinner_sdhost_read(offset, res, size);
->          return res;
->      }
->     @@ -581,6 +595,7 @@ static void allwinner_sdhost_write(void
->     *opaque, hwaddr offset,
->      {
->          AwSdHostState *s = AW_SDHOST(opaque);
->          AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
->     +    bool out_of_bounds = false;
->
->          trace_allwinner_sdhost_write(offset, value, size);
->
->     @@ -704,10 +719,21 @@ static void allwinner_sdhost_write(void
->     *opaque, hwaddr offset,
->          case REG_SD_DATA0_CRC: /* CRC Data 0 from card/eMMC */
->          case REG_SD_CRC_STA:   /* CRC status from card/eMMC in write
->     operation */
->              break;
->     +    case REG_SD_SAMP_DL: /* Sample delay control */
->     +        if (sc->can_calibrate) {
->     +            s->sample_delay = value;
->     +        } else {
->     +            out_of_bounds = true;
->     +        }
->     +        break;
->          default:
->     +        out_of_bounds = true;
->     +        break;
->     +    }
->     +
->     +    if (out_of_bounds) {
->              qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
->                            HWADDR_PRIx"\n", __func__, offset);
->     -        break;
->          }
->      }
->
->     @@ -756,6 +782,7 @@ static const VMStateDescription
->     vmstate_allwinner_sdhost = {
->              VMSTATE_UINT32(response_crc, AwSdHostState),
->              VMSTATE_UINT32_ARRAY(data_crc, AwSdHostState, 8),
->              VMSTATE_UINT32(status_crc, AwSdHostState),
->     +        VMSTATE_UINT32(sample_delay, AwSdHostState),
->              VMSTATE_END_OF_LIST()
->          }
->      };
->     @@ -794,6 +821,7 @@ static void
->     allwinner_sdhost_realize(DeviceState *dev, Error **errp)
->      static void allwinner_sdhost_reset(DeviceState *dev)
->      {
->          AwSdHostState *s = AW_SDHOST(dev);
->     +    AwSdHostClass *sc = AW_SDHOST_GET_CLASS(s);
->
->          s->global_ctl = REG_SD_GCTL_RST;
->          s->clock_ctl = REG_SD_CKCR_RST;
->     @@ -834,6 +862,10 @@ static void
->     allwinner_sdhost_reset(DeviceState *dev)
->          }
->
->          s->status_crc = REG_SD_CRC_STA_RST;
->     +
->     +    if (sc->can_calibrate) {
->     +        s->sample_delay = REG_SD_SAMPLE_DL_RST;
->     +    }
->      }
->
->      static void allwinner_sdhost_bus_class_init(ObjectClass *klass,
->     void *data)
->     @@ -867,6 +899,24 @@ static void
->     allwinner_sdhost_sun5i_class_init(ObjectClass *klass, void *data)
->          sc->is_sun4i = false;
->      }
->
->     +static void allwinner_sdhost_sun50i_a64_class_init(ObjectClass
->     *klass,
->     +                                                   void *data)
->     +{
->     +    AwSdHostClass *sc = AW_SDHOST_CLASS(klass);
->     +    sc->max_desc_size = 64 * KiB;
->     +    sc->is_sun4i = false;
->     +    sc->can_calibrate = true;
->
->
-> perhaps in the other two existing _init() functions for sun4i/sun5i, 
-> we should also explicitly set the new can_calibrate value to false,
-> to avoid the risk of using uninitialized data in the other machines/socs.
->
->     +}
->     +
->     +static void
->     allwinner_sdhost_sun50i_a64_emmc_class_init(ObjectClass *klass,
->     + void *data)
->     +{
->     +    AwSdHostClass *sc = AW_SDHOST_CLASS(klass);
->     +    sc->max_desc_size = 8 * KiB;
->     +    sc->is_sun4i = false;
->     +    sc->can_calibrate = true;
->     +}
->     +
->      static const TypeInfo allwinner_sdhost_info = {
->          .name          = TYPE_AW_SDHOST,
->          .parent        = TYPE_SYS_BUS_DEVICE,
->     @@ -889,6 +939,18 @@ static const TypeInfo
->     allwinner_sdhost_sun5i_info = {
->          .class_init    = allwinner_sdhost_sun5i_class_init,
->      };
->
->     +static const TypeInfo allwinner_sdhost_sun50i_a64_info = {
->     +    .name          = TYPE_AW_SDHOST_SUN50I_A64,
->     +    .parent        = TYPE_AW_SDHOST,
->     +    .class_init    = allwinner_sdhost_sun50i_a64_class_init,
->     +};
->     +
->     +static const TypeInfo allwinner_sdhost_sun50i_a64_emmc_info = {
->     +    .name          = TYPE_AW_SDHOST_SUN50I_A64_EMMC,
->     +    .parent        = TYPE_AW_SDHOST,
->     +    .class_init    = allwinner_sdhost_sun50i_a64_emmc_class_init,
->     +};
->     +
->      static const TypeInfo allwinner_sdhost_bus_info = {
->          .name = TYPE_AW_SDHOST_BUS,
->          .parent = TYPE_SD_BUS,
->     @@ -901,6 +963,8 @@ static void allwinner_sdhost_register_types(void)
->          type_register_static(&allwinner_sdhost_info);
->          type_register_static(&allwinner_sdhost_sun4i_info);
->          type_register_static(&allwinner_sdhost_sun5i_info);
->     + type_register_static(&allwinner_sdhost_sun50i_a64_info);
->     + type_register_static(&allwinner_sdhost_sun50i_a64_emmc_info);
->          type_register_static(&allwinner_sdhost_bus_info);
->      }
->
->     diff --git a/include/hw/sd/allwinner-sdhost.h
->     b/include/hw/sd/allwinner-sdhost.h
->     index 30c1e60404..1b951177dd 100644
->     --- a/include/hw/sd/allwinner-sdhost.h
->     +++ b/include/hw/sd/allwinner-sdhost.h
->     @@ -38,6 +38,12 @@
->      /** Allwinner sun5i family and newer (A13, H2+, H3, etc) */
->      #define TYPE_AW_SDHOST_SUN5I TYPE_AW_SDHOST "-sun5i"
->
->     +/** Allwinner sun50i-a64 */
->     +#define TYPE_AW_SDHOST_SUN50I_A64 TYPE_AW_SDHOST "-sun50i-a64"
->     +
->     +/** Allwinner sun50i-a64 emmc */
->     +#define TYPE_AW_SDHOST_SUN50I_A64_EMMC  TYPE_AW_SDHOST
->     "-sun50i-a64-emmc"
->     +
->      /** @} */
->
->      /**
->     @@ -110,6 +116,7 @@ struct AwSdHostState {
->          uint32_t startbit_detect;   /**< eMMC DDR Start Bit Detection
->     Control */
->          uint32_t response_crc;      /**< Response CRC */
->          uint32_t data_crc[8];       /**< Data CRC */
->     +    uint32_t sample_delay;      /**< Sample delay control */
->          uint32_t status_crc;        /**< Status CRC */
->
->          /** @} */
->     @@ -132,6 +139,8 @@ struct AwSdHostClass {
->          size_t max_desc_size;
->          bool   is_sun4i;
->
->     +    /** does the IP block support autocalibration? */
->     +    bool can_calibrate;
->      };
->
->      #endif /* HW_SD_ALLWINNER_SDHOST_H */
->     -- 
->     2.25.1
->
->
-> In this patch, I don't see any update to the new allwinner-r40.c file.
-> If you make the required changes to allwinner-r40.c in this patch, you 
-> can also avoid having patch 08.
-OK, I will squash patch-07 and patch-08
->
-> Regards,
-> Niek
->
-> -- 
-> Niek Linnenbank
->
-
+r~

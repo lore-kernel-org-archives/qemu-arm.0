@@ -1,90 +1,117 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1930603ejm;
-        Mon, 17 Apr 2023 09:28:42 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aSm1iBVEkqA3NAEWdP5CAT/HkV8hjflOOG0P9p5W/jFxvT5vcOo63DLicjeycL1Zo4k0om
-X-Received: by 2002:a05:6214:2a8f:b0:5ef:7e33:c6c9 with SMTP id jr15-20020a0562142a8f00b005ef7e33c6c9mr5721648qvb.38.1681748922607;
-        Mon, 17 Apr 2023 09:28:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681748922; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2369835ejm;
+        Tue, 18 Apr 2023 01:58:11 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aizftq5Kp9z0SJQUMR9SApYPRmHMPA6jPzHMIENIxD4coto/teVtZlLaEvjs/wfrrvLL8V
+X-Received: by 2002:a05:6214:c4b:b0:5ef:807b:2a96 with SMTP id r11-20020a0562140c4b00b005ef807b2a96mr7766943qvj.21.1681808291260;
+        Tue, 18 Apr 2023 01:58:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681808291; cv=none;
         d=google.com; s=arc-20160816;
-        b=KyDLv6KDWKjIU2unLgtn/I2bb/ugdjBKfCwR5FNOM/El2Rs0HmFksOaJqhW1/R6Ypv
-         KOGmUfxlPtzCird42fqgIWDmXwppnUsmQVxR2HvOSiygDDCXGp+7DGpa5S4riHilGJJL
-         WhCkCgBPul4cHtpPIhNaXNWiXrgp9AJ0LFaxh9ffUb3NqiuIPUmakSviI69WAPXqBENq
-         90dm9RhKSfgVkpwT1DEBHL+UhxjsN1XM/q6mrpMFB5XapqqFspDzBmWvbFFH+xaifAEk
-         nMZgfcrUQmJ616F90ieVRb00aTbO6FakxdZVMADG8QGmInbmCCpbmdpdGVxouUrloKbD
-         v/3Q==
+        b=klPa57oRUw2Lh0kf+57lC5dcjwJc9DYThNoCVsvf+u/Ppa5Mj5aMb+XTtUjITvttKf
+         kPRhXgvK3nAKRrXT4Ui7UJC6tXH12nokeSQSNQICoc2w2f1xxqAbabfYGst6eN1v58yl
+         7TXoB7G6bQq6j0w46u0Oy2hsrAOeUnxM43rv0H3p6TrUsh36bHgjJEnWds4BY7tSw33X
+         5za/KYKIpxHTC7OpL1fXpJLDyznm+1M5JESCVnNWCyX7L0VhNcw32WYuy//cA2F6NvHY
+         jsDZrzviXMadrf+kuma900iV1XQ0mNirbBbe/LCGiXFdshRNdQPzMhIBxe/kjrwWqw5O
+         zHhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=y0RIb23JMQ6tHM3NE+s0bwduqk+0ej4GXjtI69J4WFU=;
-        b=phtLeLrsqjbeFoUKqB7wcxgMsJeOf50aGrs1P1MYKgU415N3yXm+5Z3J22B5qzuDNL
-         nrpOcTi+xvxes7eX/qjD/r02yYBYWlLFShciWhRrSa6t1lmALVDoO3R13nHIrq8Y/OI4
-         e81J7KMMQ6BJX0xMIWksr/ezj1iuCOW/tjYwxz2BjwVWw/olT/0XKv5L5LwrfP5GvUks
-         mgkALZuDqeD73ZfMkZZdfguDmx8Qvl2rq9rtgQybkoYSKyhA7Xf933kh5Bqh+gTfftGT
-         HLRM71+pGSHHWlig1FFzmo9yXANVwaWgmZDjtoo7KCD+ADKCdAdFwr0ReyxKItpHWn0k
-         H+rg==
+        bh=Sbw09ruBMpW90ctChZNvhCaELvNAvBBUiskq9/gLq08=;
+        b=VVXBmgzYUC0BQ2lAlOTALJZb19O5+JpIoHb/jBog9DosXrKvzOFq1ldLbXHghxmIIl
+         84ZoOdZEHrfhB9AiQtwdNvv/Fxj0naeA5ANEUdd8S/qEEke0QEO0GCszAWhWWluLWgEi
+         wHo3+Ytc76aaUVHIaePnwpwP/sZu/KgQNp//7Z2TWj6FMqmadfuf/9hgqadkPiUAy53/
+         0g3LFPmbc/L7qBKMcVpBJuiL0FZTQj61fctlmtjZEIVvjjz5zwKBYwu/SfyCxLYuagUf
+         7jNX2DFzt0kn0ByPRIKL9np8FhV9raMSEivaCkpWTQwRqXrLWQcivm1a5XKZXNAsGf/z
+         LdXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=mosJFT17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SbDrIDIr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f1-20020a056214076100b005ef676dbf85si2427055qvz.420.2023.04.17.09.28.42
+        by mx.google.com with ESMTPS id i12-20020a05620a248c00b007456fa51212si5687387qkn.250.2023.04.18.01.58.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Apr 2023 09:28:42 -0700 (PDT)
+        Tue, 18 Apr 2023 01:58:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=mosJFT17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SbDrIDIr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1poRiS-0006wa-QZ; Mon, 17 Apr 2023 12:28:32 -0400
+	id 1poh9v-00046K-SV; Tue, 18 Apr 2023 04:57:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1poRiR-0006vp-CD; Mon, 17 Apr 2023 12:28:31 -0400
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1poh9u-0003zR-5e
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 04:57:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jszhang@kernel.org>)
- id 1poRiN-0007Jo-O7; Mon, 17 Apr 2023 12:28:31 -0400
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1poh9p-0004Hu-SW
+ for qemu-arm@nongnu.org; Tue, 18 Apr 2023 04:57:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1681808268;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Sbw09ruBMpW90ctChZNvhCaELvNAvBBUiskq9/gLq08=;
+ b=SbDrIDIrGpBIGVQ2OehDnSXB59JNuQPN+6TRT2jmWr8HRqVvVuzYQl7eGNxD+r9lUE5gbX
+ JBPcKm2HarMiZ8kIn0DRJEGzm+mHHQ/Rz3bXRXOteEzxhB1i2RkLbJLr6ZnzbEfli2CJT/
+ QAPvRB8uK09Bq/Vl7I2xl4uN9OdxL2w=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-586-XonblWKGPKa9qfDzfusjxA-1; Tue, 18 Apr 2023 04:57:45 -0400
+X-MC-Unique: XonblWKGPKa9qfDzfusjxA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id AB25A61B4B;
- Mon, 17 Apr 2023 16:28:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F639C433D2;
- Mon, 17 Apr 2023 16:28:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1681748901;
- bh=Zf7OyxqI7q7xYu/Majbant+5+e+VKTO7v2AYbKgsnsM=;
- h=Date:From:To:Subject:References:In-Reply-To:From;
- b=mosJFT17FFaJiBLxD0sMxWR9hFPM0HrUY9wt44O8xgJBFsgHDyxGEaVStzQQ6xN1e
- TuZXwqnL0X2keDPvocToJIbkDikf8Jet7UPkVXHxuXx6OtE5bRzCIEQh9oq6Xhnwxh
- PwKU+z7yHw/OQIi6Omcsj6w1jvMNZhq8xkjqgcnfPq8zVRpBasdy8Dbu1xe8+Rz9Gl
- EXv7/wwhA4vtoUaD0RPAq9KIJFo2KooTzjsaq0+CRzlwSVPYKAwJFhQFQMxNeiWEdf
- xKq1s7zMXGF0itdR8psW0ZKEskKGU3xfdNtkP+VkJzlrWjz5B1+xYs6D6rlRKljrwy
- WJYIHqb3uEtYw==
-Date: Tue, 18 Apr 2023 00:17:25 +0800
-From: Jisheng Zhang <jszhang@kernel.org>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 0/2] Remove CBAR from A55/A76 and add A78
-Message-ID: <ZD1xFUMtaJzKJvjT@xhacker>
-References: <20230415082827.2054-1-jszhang@kernel.org>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B223C8996E1;
+ Tue, 18 Apr 2023 08:57:44 +0000 (UTC)
+Received: from [10.72.13.187] (ovpn-13-187.pek2.redhat.com [10.72.13.187])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1C556C15BA0;
+ Tue, 18 Apr 2023 08:57:31 +0000 (UTC)
+Subject: Re: [PATCH v4 0/3] NUMA: Apply cluster-NUMA-node boundary for aarch64
+ and riscv machines
+To: Igor Mammedov <imammedo@redhat.com>, pbonzini@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, rad@semihalf.com,
+ quic_llindhol@quicinc.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ philmd@linaro.org, wangyanan55@huawei.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
+ lvivier@redhat.com, ajones@ventanamicro.com, berrange@redhat.com,
+ dbarboza@ventanamicro.com, yihyu@redhat.com, shan.gavin@gmail.com
+References: <20230317062542.61061-1-gshan@redhat.com>
+ <20230327152651.41f22ac0@imammedo.users.ipa.redhat.com>
+ <3d1d2e5d-0202-ffa8-e07f-1cd7dc2ea3bf@redhat.com>
+ <CAFEAcA8ERPiock5FiwdE021V0S_Bofz5UJtvBuet2EcK2bXfZw@mail.gmail.com>
+ <e1bb85c9-88f0-f55f-118e-b38afd7da8b0@redhat.com>
+ <20230413132145.6f7ebadf@imammedo.users.ipa.redhat.com>
+From: Gavin Shan <gshan@redhat.com>
+Message-ID: <da709a7a-503f-217c-f293-a27f5cc9fc1c@redhat.com>
+Date: Tue, 18 Apr 2023 16:57:25 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20230415082827.2054-1-jszhang@kernel.org>
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=jszhang@kernel.org; helo=dfw.source.kernel.org
+In-Reply-To: <20230413132145.6f7ebadf@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
 X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ NICE_REPLY_A=-2.284, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,27 +125,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Gavin Shan <gshan@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VQa6w34KWFm1
+X-TUID: /A5vpxgQRA9T
 
-On Sat, Apr 15, 2023 at 04:28:25PM +0800, Jisheng Zhang wrote:
-> patch1 removes CBAR from A55 and A76
-> patch2 adds A78 CPU
+Hi Igor,
 
-As in another email, for various reaons I want to recall these two patches.
+On 4/13/23 7:21 PM, Igor Mammedov wrote:
+> On Thu, 13 Apr 2023 13:50:57 +0800
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> On 4/12/23 7:42 PM, Peter Maydell wrote:
+>>> On Wed, 12 Apr 2023 at 02:08, Gavin Shan <gshan@redhat.com> wrote:
+>>>> On 3/27/23 9:26 PM, Igor Mammedov wrote:
+>>>>> On Fri, 17 Mar 2023 14:25:39 +0800
+>>>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>>>   
+>>>>>> For arm64 and riscv architecture, the driver (/base/arch_topology.c) is
+>>>>>> used to populate the CPU topology in the Linux guest. It's required that
+>>>>>> the CPUs in one cluster can't span mutiple NUMA nodes. Otherwise, the Linux
+>>>>>> scheduling domain can't be sorted out, as the following warning message
+>>>>>> indicates. To avoid the unexpected confusion, this series attempts to
+>>>>>> warn about such kind of irregular configurations.
+>>>>>>
+>>>>>>       -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+>>>>>>       -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+>>>>>>       -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+>>>>>>       -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
+>>>>>>
+>>>>>>       ------------[ cut here ]------------
+>>>>>>       WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
+>>>>>>       Modules linked in:
+>>>>>>       CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
+>>>>>>       pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>>>>>>       pc : build_sched_domains+0x284/0x910
+>>>>>>       lr : build_sched_domains+0x184/0x910
+>>>>>>       sp : ffff80000804bd50
+>>>>>>       x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
+>>>>>>       x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
+>>>>>>       x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
+>>>>>>       x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
+>>>>>>       x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
+>>>>>>       x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
+>>>>>>       x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
+>>>>>>       x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
+>>>>>>       x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
+>>>>>>       x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
+>>>>>>       Call trace:
+>>>>>>        build_sched_domains+0x284/0x910
+>>>>>>        sched_init_domains+0xac/0xe0
+>>>>>>        sched_init_smp+0x48/0xc8
+>>>>>>        kernel_init_freeable+0x140/0x1ac
+>>>>>>        kernel_init+0x28/0x140
+>>>>>>        ret_from_fork+0x10/0x20
+>>>>>>
+>>>>>> PATCH[1] Warn about the irregular configuration if required
+>>>>>> PATCH[2] Enable the validation for aarch64 machines
+>>>>>> PATCH[3] Enable the validation for riscv machines
+>>>>>>
+>>>>>> v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01226.html
+>>>>>> v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01080.html
+>>>>>> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00886.html
+>>>>>>
+>>>>>> Changelog
+>>>>>> =========
+>>>>>> v4:
+>>>>>>      * Pick r-b and ack-b from Daniel/Philippe                   (Gavin)
+>>>>>>      * Replace local variable @len with possible_cpus->len in
+>>>>>>        validate_cpu_cluster_to_numa_boundary()                   (Philippe)
+>>>>>> v3:
+>>>>>>      * Validate cluster-to-NUMA instead of socket-to-NUMA
+>>>>>>        boundary                                                  (Gavin)
+>>>>>>      * Move the switch from MachineState to MachineClass         (Philippe)
+>>>>>>      * Warning instead of rejecting the irregular configuration  (Daniel)
+>>>>>>      * Comments to mention cluster-to-NUMA is platform instead
+>>>>>>        of architectural choice                                   (Drew)
+>>>>>>      * Drop PATCH[v2 1/4] related to qtests/numa-test            (Gavin)
+>>>>>> v2:
+>>>>>>      * Fix socket-NUMA-node boundary issues in qtests/numa-test  (Gavin)
+>>>>>>      * Add helper set_numa_socket_boundary() and validate the
+>>>>>>        boundary in the generic path                              (Philippe)
+>>>>>>
+>>>>>> Gavin Shan (3):
+>>>>>>      numa: Validate cluster and NUMA node boundary if required
+>>>>>>      hw/arm: Validate cluster and NUMA node boundary
+>>>>>>      hw/riscv: Validate cluster and NUMA node boundary
+>>>>>>
+>>>>>>     hw/arm/sbsa-ref.c   |  2 ++
+>>>>>>     hw/arm/virt.c       |  2 ++
+>>>>>>     hw/core/machine.c   | 42 ++++++++++++++++++++++++++++++++++++++++++
+>>>>>>     hw/riscv/spike.c    |  2 ++
+>>>>>>     hw/riscv/virt.c     |  2 ++
+>>>>>>     include/hw/boards.h |  1 +
+>>>>>>     6 files changed, 51 insertions(+)
+>>>>>>   
+>>>>>
+>>>>> Acked-by: Igor Mammedov <imammedo@redhat.com>
+>>>>>   
+>>>>
+>>>> Not sure if QEMU v8.0 is still available to integrate this series.
+>>>> Otherwise, it should be something for QEMU v8.1. By the way, I'm
+>>>> also uncertain who needs to be merge this series.
+>>>
+>>> It barely touches arm specific boards, so I'm assuming it will
+>>> be reviewed and taken by whoever handles hw/core/machine.c
+>>>
+>>> And yes, 8.0 is nearly out the door, this is 8.1 stuff.
+>>>    
+>>
+>> Indeed. In this case, it needs to be merged via 'Machine core' tree,
+>> which is being taken care by Eduardo Habkost or Marcel Apfelbaum.
+>>
+>> Eduardo and  Marcel, could you please merge this to QEMU v8.1 when it's
+>> ready? Thanks in advance.
+> 
+> Lately it was Paolo who taking care of generic machine queue
+> 
 
-> 
-> Jisheng Zhang (2):
->   target/arm: Remove ARM_FEATURE_CBAR_RO from A55 and A76
->   target/arm: Add Cortex-A78 CPU
-> 
->  docs/system/arm/virt.rst |  1 +
->  hw/arm/virt.c            |  1 +
->  target/arm/cpu64.c       | 71 ++++++++++++++++++++++++++++++++++++++--
->  3 files changed, 71 insertions(+), 2 deletions(-)
-> 
-> -- 
-> 2.40.0
-> 
-> 
+Thanks a lot, Igor. I will ping Paolo if needed when QEMU v8.1 is ready.
+
+Thanks,
+Gavin
+

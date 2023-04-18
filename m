@@ -1,65 +1,64 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2438878ejm;
-        Tue, 18 Apr 2023 04:23:26 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a/2zo1E3c06LlCGK04TGClI+wOdIjbN7Sm6RKdtquM3g8kvQhAl7C8gtNuZQDlSOg7A/7s
-X-Received: by 2002:a05:622a:1984:b0:3ec:48dc:4638 with SMTP id u4-20020a05622a198400b003ec48dc4638mr16142497qtc.44.1681817005803;
-        Tue, 18 Apr 2023 04:23:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681817005; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2438909ejm;
+        Tue, 18 Apr 2023 04:23:28 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Z6/keYLnIV1/+8UvEb0io5uOhare7VaJj0D3axGWYzjp9H0vpF4kXrYKd+XRNUnyAHfAYU
+X-Received: by 2002:a05:6214:21a5:b0:5ef:519:b06 with SMTP id t5-20020a05621421a500b005ef05190b06mr22639999qvc.29.1681817008628;
+        Tue, 18 Apr 2023 04:23:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681817008; cv=none;
         d=google.com; s=arc-20160816;
-        b=KF47mrw+/L2gLq4tv3J3V3BOctADgCB2kK5VqNzNzLXtvZRbOF6rZa/0kY0c197ol7
-         ftqLIzaxDCbE1LLp9BuVj/6TKfccQhdbrrn+iHz295Ca6Xu/IHDSnfsqsab8JpjQZm8I
-         H3I70C/IQ10ZjcGgZDoRrw7TPvtVpHRydq/AE+jPyI2lLuVyqlwNhVkOP05Fslvgc6WS
-         DZobWbbm+P3p+WS0DYpN1B2oeBgMJmQGox4QVvn3n0tZwmc6XlIonlVifH5JlVTOGjX1
-         2PIFgmQGRoixvB/V5pHcJc4k8s2ultu+oL0k/nY1PK0NEJ1x9nN4kCZY4zNlcniC1fQQ
-         g2IQ==
+        b=Ooar9IgB+AIOQBYVzNYyQ0sI6UL8bWSVltt3Z0VSVeKbr/OHcxCPBnNR5yECiw2eTK
+         WIjvV7nWaj2ejd6OUXERmH6fnxE6THZa4Zk7KQNoX9erLJAsCJvUOfsN+5xiaU73xuQd
+         is8sFyY04mOJ430BPR0G5+YidSf8PR/O0hIa+D8qKcYNq0rASzTBr35xjfF13hR67DE9
+         WoX2PJcBjMTHMNSuQFKNMi/LLHGknBARSvTjfWw54cVVTjsJDIJLfQTQItEMhPLeHRqy
+         hkwloaCmai6pi/f15IHElXF3VnvZX6aBGj/uoOLJjQFfqQXbMrKhlc+nXHUA3pdblP9u
+         m1pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=q7swaI098LxAcKrhBldMUS51FKxFQK+gihzOI2ANEso=;
-        b=x7+5v6T0CjTymuayM+va4lTbDIM2Vn+5DCTVWcIcrPuP25BLQk51aB9iKTTq9BKCHU
-         neur4xHGohi5iIXhHV4CaZYyVD6Vi0YJUfX4AF86T6zbGvZlvp3uG6MpR8bXgZDeafeW
-         XA/lea4YgiZMS/xbe4xBIUOX3G2TQEXQnyfyuNaoogc/qGkJFGOnk6N4erN0I+RhZk9w
-         4d7phOzuhx+v/6IAJ4Bw5KN8JC5vFRdRN2YlG/govkM4NndyG7s9XFG7JRJVmW0kqXpP
-         J0YBOyfLqAQwnD6RI/92GeUnIraLLMaBR1TdvPoUs4IrfobqbY3Q/YOO6LxW6aq4V5Xk
-         sjAg==
+        bh=ssr3YcMfBRQyrFgA16vA9luoUvtonw5w3L+xZwG8/4A=;
+        b=YxxddFFsv+4Z00CAciO0FZU2qqtgsQe4CE/v+uNhByVSjA5qYqJ2G7Sl1VLzXX09mV
+         5XwQCHSMzqbRn7LUHwJdyG34rs7SRx+Imn+h6nXD1Q66rvUjSwq/03kR441bEfqIVi97
+         MWqrE+7MoMcwF2acGjdy/VMgQmvFe5IUEDV4JCs+d4Lg6FnE7VF9aJeWUyRYxWusCdNi
+         m90zdmjWmThqOp1mjWvXsmCJtZAVUvmJkEySfvCYg8pSwb0IqTSR8Fa6mspeBAlgCDpZ
+         577hjYhENtalvFK48syMs/C+uC0EURkffFJzZHbO+LbRQuIkjGMJPR6tJ6Mid0NXkZzp
+         DS4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=YqG2ZwfH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b="oAwk/K4Q";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16-20020a05620a245000b0074676f15d3bsi7673823qkn.25.2023.04.18.04.23.25
+        by mx.google.com with ESMTPS id 1-20020a05620a040100b0074df6745c0asi2259165qkp.548.2023.04.18.04.23.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Apr 2023 04:23:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Apr 2023 04:23:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=YqG2ZwfH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b="oAwk/K4Q";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pojOP-0006TJ-JF; Tue, 18 Apr 2023 07:21:01 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pojOQ-0006UB-CF; Tue, 18 Apr 2023 07:21:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pojON-0006Q4-9n; Tue, 18 Apr 2023 07:20:59 -0400
-Received: from m12.mail.163.com ([220.181.12.197])
+ id 1pojOO-0006RN-8g; Tue, 18 Apr 2023 07:21:00 -0400
+Received: from m12.mail.163.com ([220.181.12.198])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pojOH-0006je-Ug; Tue, 18 Apr 2023 07:20:59 -0400
+ id 1pojOI-0006kC-3U; Tue, 18 Apr 2023 07:21:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=q7swa
- I098LxAcKrhBldMUS51FKxFQK+gihzOI2ANEso=; b=YqG2ZwfHESCtwHn+b7r41
- QlFzsld7XO+J12RbOyvBw5bZMoqOqI1Nq0UvjGY08saDn8UkPn8CPzLfwxj7LsVn
- NsnctWDA41NI6mTk7oLAvc4EpOCq3IUqepsDiEJuE83qVlXpaZnnFHtpEvfSAyD9
- NMjF94kWXbon8mOF6cA2W4=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=ssr3Y
+ cMfBRQyrFgA16vA9luoUvtonw5w3L+xZwG8/4A=; b=oAwk/K4QAwVVTllpzRPu/
+ rkpTq+5C1GRcOcBYeUmbbsssitof3ptVKhkIuHFgAdlQ8sQ2pWy2Nf+SdmPlRJWW
+ v3AjiJ+HtVKKEYufcrrHq0Hpc3s5uh39W2ZrZZLhLDizhnHtXRwRqPe/JlSI36uz
+ DooQVqQXUCzijnxtPELw0M=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g4-0 (Coremail) with SMTP id
- _____wDXy2EIfT5k6AUwBw--.24225S10; 
- Tue, 18 Apr 2023 19:20:44 +0800 (CST)
+ by zwqz-smtp-mta-g4-0 (Coremail) with SMTP id _____wDXy2EIfT5k6AUwBw--.24225S6;
+ Tue, 18 Apr 2023 19:20:43 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -69,217 +68,134 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v3 08/11] hw: arm: allwinner-r40: Add emac and gmac support
-Date: Tue, 18 Apr 2023 19:20:37 +0800
-Message-Id: <20230418112040.12460-9-qianfanguijin@163.com>
+Subject: [PATCH v3 04/11] hw: arm: allwinner-r40: Add i2c0 device
+Date: Tue, 18 Apr 2023 19:20:33 +0800
+Message-Id: <20230418112040.12460-5-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230418112040.12460-1-qianfanguijin@163.com>
 References: <20230418112040.12460-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDXy2EIfT5k6AUwBw--.24225S10
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Jr4kury8GFWkXw4UXr17GFg_yoW7Kw43pF
- 43Gr98KrWFg3WrAr4kKws3JFyftw18CrnrtF1SkF4xJF1DWr1kWr42ya17uFy5Krs7Ja13
- WrZagFWSga17t3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRceOZUUUUU=
+X-CM-TRANSID: _____wDXy2EIfT5k6AUwBw--.24225S6
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCw4fXFW3JFWkCw13JFyDAwb_yoW5Zw43pF
+ W5C398Gryjg3WrAFW8Kws3Zry8t348Grnrt3W0kFWxtF1jgF4v9r4Iqa1UGF45KFZ7Wa17
+ XrZxtFW7W3W2qaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zinjjJUUUUU=
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzg9V7WI0Y4y0tgAAsC
-Received-SPF: pass client-ip=220.181.12.197;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQg9V7VaEFBrrVAAAsW
+Received-SPF: pass client-ip=220.181.12.198;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iWq5iVynt48j
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yWmJT4aSTRDm
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-R40 has two ethernet controllers named as emac and gmac. The emac is
-compatibled with A10, and the GMAC is compatibled with H3.
+TWI(i2c) is designed to be used as an interface between CPU host and the
+serial 2-Wire bus. It can support all standard 2-Wire transfer, can be
+operated in standard mode(100kbit/s) or fast-mode, supporting data rate
+up to 400kbit/s.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/allwinner-r40.c         | 50 ++++++++++++++++++++++++++++++++--
- hw/arm/bananapi_m2u.c          |  3 ++
- include/hw/arm/allwinner-r40.h |  6 ++++
- 3 files changed, 57 insertions(+), 2 deletions(-)
+ hw/arm/allwinner-r40.c         | 11 ++++++++++-
+ include/hw/arm/allwinner-r40.h |  3 +++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index b148c56449..c018ad231a 100644
+index 537a90b23d..4bc582630c 100644
 --- a/hw/arm/allwinner-r40.c
 +++ b/hw/arm/allwinner-r40.c
-@@ -39,6 +39,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_SRAM_A2]    = 0x00004000,
-     [AW_R40_DEV_SRAM_A3]    = 0x00008000,
-     [AW_R40_DEV_SRAM_A4]    = 0x0000b400,
-+    [AW_R40_DEV_EMAC]       = 0x01c0b000,
-     [AW_R40_DEV_MMC0]       = 0x01c0f000,
-     [AW_R40_DEV_MMC1]       = 0x01c10000,
-     [AW_R40_DEV_MMC2]       = 0x01c11000,
-@@ -54,6 +55,7 @@ const hwaddr allwinner_r40_memmap[] = {
+@@ -52,6 +52,7 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_UART5]      = 0x01c29400,
      [AW_R40_DEV_UART6]      = 0x01c29800,
      [AW_R40_DEV_UART7]      = 0x01c29c00,
-     [AW_R40_DEV_TWI0]       = 0x01c2ac00,
-+    [AW_R40_DEV_GMAC]       = 0x01c50000,
-     [AW_R40_DEV_DRAMCOM]    = 0x01c62000,
-     [AW_R40_DEV_DRAMCTL]    = 0x01c63000,
-     [AW_R40_DEV_DRAMPHY]    = 0x01c65000,
-@@ -82,7 +84,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "spi1",       0x01c06000, 4 * KiB },
-     { "cs0",        0x01c09000, 4 * KiB },
-     { "keymem",     0x01c0a000, 4 * KiB },
--    { "emac",       0x01c0b000, 4 * KiB },
-     { "usb0-otg",   0x01c13000, 4 * KiB },
-     { "usb0-host",  0x01c14000, 4 * KiB },
-     { "crypto",     0x01c15000, 4 * KiB },
-@@ -131,7 +132,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "tvd2",       0x01c33000, 4 * KiB },
-     { "tvd3",       0x01c34000, 4 * KiB },
-     { "gpu",        0x01c40000, 64 * KiB },
--    { "gmac",       0x01c50000, 64 * KiB },
-     { "hstmr",      0x01c60000, 4 * KiB },
-     { "tcon-top",   0x01c70000, 4 * KiB },
-     { "lcd0",       0x01c71000, 4 * KiB },
-@@ -180,6 +180,8 @@ enum {
-     AW_R40_GIC_SPI_MMC1      = 33,
-     AW_R40_GIC_SPI_MMC2      = 34,
-     AW_R40_GIC_SPI_MMC3      = 35,
-+    AW_R40_GIC_SPI_EMAC      = 55,
-+    AW_R40_GIC_SPI_GMAC      = 85,
- };
- 
- /* Allwinner R40 general constants */
-@@ -276,6 +278,11 @@ static void allwinner_r40_init(Object *obj)
- 
-     object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
- 
-+    object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
-+    object_initialize_child(obj, "gmac", &s->gmac, TYPE_AW_SUN8I_EMAC);
-+    object_property_add_alias(obj, "gmac-phy-addr",
-+                              OBJECT(&s->gmac), "phy-addr");
++    [AW_R40_DEV_TWI0]       = 0x01c2ac00,
+     [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
+     [AW_R40_DEV_GIC_CPU]    = 0x01c82000,
+     [AW_R40_DEV_GIC_HYP]    = 0x01c84000,
+@@ -115,7 +116,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
+     { "uart7",      0x01c29c00, 1 * KiB },
+     { "ps20",       0x01c2a000, 1 * KiB },
+     { "ps21",       0x01c2a400, 1 * KiB },
+-    { "twi0",       0x01c2ac00, 1 * KiB },
+     { "twi1",       0x01c2b000, 1 * KiB },
+     { "twi2",       0x01c2b400, 1 * KiB },
+     { "twi3",       0x01c2b800, 1 * KiB },
+@@ -167,6 +167,7 @@ enum {
+     AW_R40_GIC_SPI_UART1     =  2,
+     AW_R40_GIC_SPI_UART2     =  3,
+     AW_R40_GIC_SPI_UART3     =  4,
++    AW_R40_GIC_SPI_TWI0      =  7,
+     AW_R40_GIC_SPI_UART4     = 17,
+     AW_R40_GIC_SPI_UART5     = 18,
+     AW_R40_GIC_SPI_UART6     = 19,
+@@ -270,6 +271,8 @@ static void allwinner_r40_init(Object *obj)
+         object_initialize_child(obj, mmc_names[i], &s->mmc[i],
+                                 TYPE_AW_SDHOST_SUN5I);
+     }
 +
-     object_initialize_child(obj, "dramc", &s->dramc, TYPE_AW_R40_DRAMC);
-     object_property_add_alias(obj, "ram-addr", OBJECT(&s->dramc),
-                              "ram-addr");
-@@ -285,6 +292,7 @@ static void allwinner_r40_init(Object *obj)
++    object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
+ }
  
  static void allwinner_r40_realize(DeviceState *dev, Error **errp)
- {
-+    const char *r40_nic_models[] = { "gmac", "emac", NULL };
-     AwR40State *s = AW_R40(dev);
-     unsigned i;
+@@ -416,6 +419,12 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+                        115200, serial_hd(i), DEVICE_NATIVE_ENDIAN);
+     }
  
-@@ -442,6 +450,44 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
-                     s->memmap[AW_R40_DEV_DRAMPHY]);
- 
-+    /* nic support gmac and emac */
-+    for (int i = 0; i < ARRAY_SIZE(r40_nic_models) - 1; i++) {
-+        NICInfo *nic = &nd_table[i];
-+
-+        if (!nic->used) {
-+            continue;
-+        }
-+        if (qemu_show_nic_models(nic->model, r40_nic_models)) {
-+            exit(0);
-+        }
-+
-+        switch (qemu_find_nic_model(nic, r40_nic_models, r40_nic_models[0])) {
-+        case 0: /* gmac */
-+            qdev_set_nic_properties(DEVICE(&s->gmac), nic);
-+            break;
-+        case 1: /* emac */
-+            qdev_set_nic_properties(DEVICE(&s->emac), nic);
-+            break;
-+        default:
-+            exit(1);
-+            break;
-+        }
-+    }
-+
-+    /* GMAC */
-+    object_property_set_link(OBJECT(&s->gmac), "dma-memory",
-+                                     OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->gmac), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gmac), 0, s->memmap[AW_R40_DEV_GMAC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gmac), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_GMAC));
-+
-+    /* EMAC */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_R40_DEV_EMAC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
++    /* I2C */
++    sysbus_realize(SYS_BUS_DEVICE(&s->i2c0), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c0), 0, s->memmap[AW_R40_DEV_TWI0]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0,
++                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_TWI0));
 +
      /* Unimplemented devices */
      for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
          create_unimplemented_device(r40_unimplemented[i].device_name,
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 20a4550c68..74121d8966 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -92,6 +92,9 @@ static void bpim2u_init(MachineState *machine)
-     object_property_set_int(OBJECT(r40), "ram-size",
-                             r40->ram_size, &error_abort);
- 
-+    /* GMAC PHY */
-+    object_property_set_uint(OBJECT(r40), "gmac-phy-addr", 1, &error_abort);
-+
-     /* Mark R40 object realized */
-     qdev_realize(DEVICE(r40), NULL, &error_abort);
- 
 diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 8243e8903b..5f2d08489e 100644
+index 959b5dc4e0..95366f4eee 100644
 --- a/include/hw/arm/allwinner-r40.h
 +++ b/include/hw/arm/allwinner-r40.h
-@@ -28,6 +28,8 @@
+@@ -26,6 +26,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/sd/allwinner-sdhost.h"
  #include "hw/misc/allwinner-r40-ccu.h"
- #include "hw/misc/allwinner-r40-dramc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/net/allwinner_emac.h"
-+#include "hw/net/allwinner-sun8i-emac.h"
++#include "hw/i2c/allwinner-i2c.h"
  #include "target/arm/cpu.h"
  #include "sysemu/block-backend.h"
  
-@@ -36,6 +38,7 @@ enum {
-     AW_R40_DEV_SRAM_A2,
-     AW_R40_DEV_SRAM_A3,
-     AW_R40_DEV_SRAM_A4,
-+    AW_R40_DEV_EMAC,
-     AW_R40_DEV_MMC0,
-     AW_R40_DEV_MMC1,
-     AW_R40_DEV_MMC2,
-@@ -51,6 +54,7 @@ enum {
+@@ -48,6 +49,7 @@ enum {
+     AW_R40_DEV_UART5,
      AW_R40_DEV_UART6,
      AW_R40_DEV_UART7,
-     AW_R40_DEV_TWI0,
-+    AW_R40_DEV_GMAC,
++    AW_R40_DEV_TWI0,
      AW_R40_DEV_GIC_DIST,
      AW_R40_DEV_GIC_CPU,
      AW_R40_DEV_GIC_HYP,
-@@ -103,6 +107,8 @@ struct AwR40State {
+@@ -89,6 +91,7 @@ struct AwR40State {
+     AwA10PITState timer;
+     AwSdHostState mmc[AW_R40_NUM_MMCS];
      AwR40ClockCtlState ccu;
-     AwR40DramCtlState dramc;
-     AWI2CState i2c0;
-+    AwEmacState emac;
-+    AwSun8iEmacState gmac;
++    AWI2CState i2c0;
      GICState gic;
      MemoryRegion sram_a1;
      MemoryRegion sram_a2;

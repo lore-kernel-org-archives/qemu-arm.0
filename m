@@ -1,148 +1,255 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp301207ejm;
-        Thu, 20 Apr 2023 02:34:00 -0700 (PDT)
-X-Received: by 2002:adf:f4d0:0:b0:2f7:e3aa:677a with SMTP id h16-20020adff4d0000000b002f7e3aa677amr826751wrp.46.1681983240684;
-        Thu, 20 Apr 2023 02:34:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681983240; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp449435ejm;
+        Thu, 20 Apr 2023 06:59:57 -0700 (PDT)
+X-Google-Smtp-Source: AKy350auuVjkjdKdioduzgpdac5Q3Ul7OZdZRJOpmbI0vA3hzUYGmZEpKIJrP9xZVXVV0lAy6xn5
+X-Received: by 2002:a05:6214:e67:b0:5f9:a647:2ab5 with SMTP id jz7-20020a0562140e6700b005f9a6472ab5mr1792565qvb.42.1681999197246;
+        Thu, 20 Apr 2023 06:59:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681999197; cv=none;
         d=google.com; s=arc-20160816;
-        b=o4/ZOyRxTaZQLCBBj0iiTkXcDn9J1sa/uv8+LxaUwMUxvFt7tY+yfUddWZL/Ve/NVn
-         qM8MrCgfzewToTPZZ2uyRGTC7IFUfy4LKuD+X7scxYDzpqCwRgvDKmHhS5Dhl352OpgK
-         Biq8z+b72Ytr8fiA9fRVQ0i0t7f3zKsm/bVa2m41dUQ4dAyHpclMwhybgAveqpNFLftF
-         DaDH5M3XmNfyEkTqpV/xAT2+kEWK++sm83WuOq9Tvg7TR3PWqoa013yMJNWNjLY+DGTc
-         4saoFhyH5wQWOUEIbAXagN6JzSOFrwK2uZyiGkv5Moc6rkrqFi9k2QPARIop4GZB7IVn
-         bAVw==
+        b=GLFYbOKYATHL7qgx2kN58O+nLkvpr1NjoGdGLTjmFl1kdbH/vi2H8KNmm0tb3jW8eq
+         2iSFndRM6v26foBL+nd4hkGsjYklOhatPZ+6Je+aNJDyPBOpo00q9GTQDtfAs5bg2vbz
+         O6+8XN3d4TdqUZwCdOMkb6XdWHcCtAbOmDFEqYlZen1Zp+ThEBcceIxVwubpuEePFomR
+         qz17Iv/DU1UlKmzrHD5BB5XVZK7jLqEnwQRPSyCCzWlABfkl84Gk375c3dg5gou458f/
+         1FEQIxStmSVJ2n2klto6k03T+MaPQFEN2/mJuXP9ylsMpaX2bM7bI/sWE/q5bKizPOh0
+         woPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=dsFbdoeoUjaqGngsW7Gz+bwcV48TuDbxM49TKqXoUKI=;
-        b=O108RidTFpA/1PBmjG6hADYlWuhexLdJGjncbDMio2fEFwaiTV7SEGe6FJDXUH/QGa
-         osd7CxEtx/iD6+DyvHv6xceewOa9rbgF+EJraoBu/ALJz3gTWMIF+peDTjE++QRSW0sc
-         7HCVxT3AKDFvkY9die2PReaDc8WRaqS5A9TvWYtm3Wc4zYwvM/3WtxKHDjA8ZEaOAtEB
-         KmV4Zrgxs+rQhGfybH11x5SkPdVbJNAkZbne6m114cCoueTVFsE7OphulT5GyeZ3Aash
-         WUPi85OjQw/MDqBYXz1XtgRRfhEPaqYw9W+UMXPdEad4Qoau2Pr/T0+UoT5AZ3d7WWpM
-         aeIA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=mYBR6Uft8trUDBfxK0nZ9GzxgII6V5rGa9d1il5RRwA=;
+        b=PdkrZInkQPguDAK5ZXH5sR/qUDmt12oOJnq9ixRRQqij8LG//WKsLdOIcE12ewB8cG
+         E/wL3Bierr9j21dxFgJwQaNOOHQSye1thfB21dSHvgt5io8rulfhoVgC02xkBDKpBxsH
+         N4dJ31p5DfogghU+CkxQ6Y5c4OtNQ0xekUuLQDrVgzJ6hqV7ztEEZecNLrNv0yyf4K2D
+         /Ez02byJ0EcgQk27kCXBSNMrzH8hKlNiIivXWfvivBUApscWJ+giNpmFKa6OQXVtE3mm
+         kbPy1Y+BmVXJsLpJSwF2Zq1kkl24FTXcF4jju4840oFUsZI8kcDQCUfcgSpMfeKukuUy
+         oEqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kTfU4rBm;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v18-20020a1cf712000000b003ee1f2edeafsor1342878wmh.6.2023.04.20.02.34.00
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y+jGJ0eM;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id a1-20020a0562140c2100b005ef62ae0878si1297455qvd.523.2023.04.20.06.59.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 20 Apr 2023 02:34:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Apr 2023 06:59:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kTfU4rBm;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1681983240; x=1684575240;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dsFbdoeoUjaqGngsW7Gz+bwcV48TuDbxM49TKqXoUKI=;
-        b=kTfU4rBmq68Ou9EgPSYVKU2uD4iD+r4hFZVwxgKq9Avk8ee4V04ibk2tR1xgaxSiM5
-         cRL6ARlt/yJMhmPBc6M4QgbGt5tAEdK4l1CtElLFctLdr3v+qxxKpvDQYsVlsdi8D51K
-         wqmWJMjqVlHE6JqmI2ZUuDsVRGrFUbBEq8fhdaJvTemaQR+2UTpm6R7Lou6SPCQHWXCX
-         5xYGCOt2EmaBGfCAep6yp/BcH7M6HutejbqXTpAZWYvquxom04qp0NddoiyIKF13ks/a
-         i/BEPDywTaM8GiAgIw+U6h5yULCVTY6SV9RHEpWLSeTnWVSyMeuz4i3qosveMJCWQ5hR
-         ZPMg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y+jGJ0eM;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1681999196;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mYBR6Uft8trUDBfxK0nZ9GzxgII6V5rGa9d1il5RRwA=;
+	b=Y+jGJ0eMuQZnnZausyiOMus+y5R967iGs5v6NpUhsBuqk/nuI03ufbDqkIPqT6jLi1yy+7
+	qhrRNXhoJemzMFTvVwJi24A5R/HTPPTyd0O6ptCziaGaE+neu5dRbwZIy8QCr9ONc9yfVo
+	keZ4cGFY5ePsdhB/DaWCTAJfbbcklsA=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-453-oqk85Fr5N2-wuc9w82_9FA-1; Thu, 20 Apr 2023 09:59:55 -0400
+X-MC-Unique: oqk85Fr5N2-wuc9w82_9FA-1
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-5ee8e5e93d7so4088276d6.1
+        for <alex.bennee@linaro.org>; Thu, 20 Apr 2023 06:59:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1681983240; x=1684575240;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dsFbdoeoUjaqGngsW7Gz+bwcV48TuDbxM49TKqXoUKI=;
-        b=UGXiLiM+3B9NkbDskZDX4wbMohety55p+qjwgDSN+pnE/xqiHyVFsr/+BzKJ0270gP
-         sX0Wc6T4z/3Md7KwzmU6lflYKea+0Q4Jc9nMBDqpMGVirXWAbOB1p/Llk4zXCTLsgSM4
-         npudC6L9cJ0uhNa+pqyyrK52x608CDlfeFGclEa8W64zDHo/bP0AfKVJfAnU7UEvjsus
-         depsggcXhtYZ0ZcECgnKUCiASjJCMnH+OGkCaFw7/z3QW5nianaXb2BZBtgUkJj261oZ
-         F7cauPvSYnHjqIP4Lx0OP2h5tAenin5wTaxDIRMdgBFpny3/+DG0Iwvq+t6lcsLl9vtB
-         piMQ==
-X-Gm-Message-State: AAQBX9fYrYDeShLDd3gbzS4SnZhrE4l+5JypYStsTB8rZzLO3t7anZpZ
-	1Nv4gnTF8Juwf4//2RaBSEEQPDs9
-X-Google-Smtp-Source: AKy350YEkOt25EJFuLCBLvzdDAQi0dS9JFZjHnCMQbm00u/kgityEkOkAf7Bdhxd+BKQTu/eyGF1QQ==
-X-Received: by 2002:a1c:4b1a:0:b0:3f1:8167:dc30 with SMTP id y26-20020a1c4b1a000000b003f18167dc30mr876837wma.2.1681983240377;
-        Thu, 20 Apr 2023 02:34:00 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.30.216] ([81.0.6.76])
-        by smtp.gmail.com with ESMTPSA id n20-20020a7bc5d4000000b003f17b96793dsm4760001wmk.37.2023.04.20.02.33.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Apr 2023 02:34:00 -0700 (PDT)
-Message-ID: <4bcb801d-7a16-765d-730a-ba2bc882fbeb@linaro.org>
-Date: Thu, 20 Apr 2023 11:33:58 +0200
+        d=1e100.net; s=20221208; t=1681999190; x=1684591190;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mYBR6Uft8trUDBfxK0nZ9GzxgII6V5rGa9d1il5RRwA=;
+        b=b3wJwi7lENteAnqqRluCXezUznsgtHjmbaUTDXeo6Ip75PrAgICWEtJyFgfQbWaN4R
+         ayEzh5EijMSf4NIceK1fl1zLqYjPQGvSu0Yzn+hp/vrceXuAXOmyWrB8KgA7okdaYC78
+         nkvsveI71+I0usleYgRYSuPBg7oiWazPttKva8BYUKWyG/tcnc3zlLMS+a3qELeT3OwO
+         QOMxvKdv9ZlCB6yzsaicJA4OtERdshRATFN0p7NGgJ96pJZqAObr+JLbHRSNAeOBqWFo
+         aNtqPVfXFc4XFPATvZrZmQ0OOMj05ac2pmx/00gtrQyXXROxwVS0gsy9FXff8ZWAvmy0
+         0Llw==
+X-Gm-Message-State: AAQBX9fAOlwA0BTrYyDQDt4VGdR0McYOVZ+gAhKUnKGNwVVN+yPFK73q
+	oHLACHdr7tPOK+8dt9plCUAbP/s5ziz25FqRSbjOuj8JO7ai+08Zg5wL+rgUxYK7ErJmRWeZD3T
+	Zs5pk3loEVoLuijZ1
+X-Received: by 2002:ad4:5c6e:0:b0:5a7:a434:c300 with SMTP id i14-20020ad45c6e000000b005a7a434c300mr2456998qvh.15.1681999190465;
+        Thu, 20 Apr 2023 06:59:50 -0700 (PDT)
+X-Received: by 2002:ad4:5c6e:0:b0:5a7:a434:c300 with SMTP id i14-20020ad45c6e000000b005a7a434c300mr2456950qvh.15.1681999190126;
+        Thu, 20 Apr 2023 06:59:50 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com ([185.140.112.229])
+        by smtp.gmail.com with ESMTPSA id y19-20020a0ca913000000b005ead964bfa2sm409010qva.127.2023.04.20.06.59.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Apr 2023 06:59:49 -0700 (PDT)
+Date: Thu, 20 Apr 2023 15:59:43 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Peter Maydell
+ <peter.maydell@linaro.org>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>, Alex
+ =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, Eduardo Habkost
+ <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Cornelia Huck
+ <cohuck@redhat.com>, Juan Quintela <quintela@redhat.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Ani Sinha <ani@anisinha.ca>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH v10 07/11] tests/qtest: Fix tests when no KVM or TCG are
+ present
+Message-ID: <20230420155943.0c081b50@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20230412121829.14452-8-farosas@suse.de>
+References: <20230412121829.14452-1-farosas@suse.de>
+	<20230412121829.14452-8-farosas@suse.de>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.37; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH v4 2/2] hvf: implement guest debugging on Apple Silicon
- hosts
-Content-Language: en-US
-To: francesco.cagnin@gmail.com, qemu-devel@nongnu.org
-Cc: mads@ynddal.dk, dirty@apple.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, agraf@csgraf.de, pbonzini@redhat.com,
- alex.bennee@linaro.org, Francesco Cagnin <fcagnin@quarkslab.com>
-References: <20230403191600.43487-1-fcagnin@quarkslab.com>
- <20230403191600.43487-3-fcagnin@quarkslab.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230403191600.43487-3-fcagnin@quarkslab.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: bjmItzhS+9Nt
+X-TUID: CHwMPgKRE0dG
 
-Hi Francesco,
+On Wed, 12 Apr 2023 09:18:25 -0300
+Fabiano Rosas <farosas@suse.de> wrote:
 
-On 3/4/23 21:16, francesco.cagnin@gmail.com wrote:
-> From: Francesco Cagnin <fcagnin@quarkslab.com>
+> It is possible to have a build with both TCG and KVM disabled due to
+> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+> host.
 > 
-> Support is added for single-stepping, software breakpoints, hardware
-> breakpoints and watchpoints. The code has been structured like the KVM
-> counterpart (and many parts are basically identical).
+> If we build with --disable-tcg on the aarch64 host, we will end-up
+> with a QEMU binary (x86) that does not support TCG nor KVM.
 > 
-> Guests can be debugged through the gdbstub.
+> Skip tests that crash or hang in the above scenario. Do not include
+> any test cases if TCG and KVM are missing.
 > 
-> While guest debugging is enabled, the guest can still read and write the
-> DBG*_EL1 registers but they don't have any effect.
+> Make sure that calls to qtest_has_accel are placed after g_test_init
+> in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
+> printed before other messages") to avoid TAP parsing errors.
 > 
-> Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> Reviewed-by: Juan Quintela <quintela@redhat.com>
 > ---
->   accel/hvf/hvf-accel-ops.c | 115 +++++++
->   accel/hvf/hvf-all.c       |  23 ++
->   include/sysemu/hvf.h      |  34 ++
->   include/sysemu/hvf_int.h  |   1 +
->   target/arm/hvf/hvf.c      | 709 +++++++++++++++++++++++++++++++++++++-
->   target/i386/hvf/hvf.c     |  33 ++
->   6 files changed, 913 insertions(+), 2 deletions(-)
+>  tests/qtest/bios-tables-test.c | 11 +++++++++--
+>  tests/qtest/boot-serial-test.c |  5 +++++
+>  tests/qtest/migration-test.c   |  9 ++++++++-
+>  tests/qtest/pxe-test.c         |  8 +++++++-
+>  tests/qtest/vmgenid-test.c     |  9 +++++++--
+>  5 files changed, 36 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 8733589437..9c3642717d 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -2082,8 +2082,7 @@ static void test_acpi_virt_oem_fields(void)
+>  int main(int argc, char *argv[])
+>  {
+>      const char *arch = qtest_get_arch();
+> -    const bool has_kvm = qtest_has_accel("kvm");
+> -    const bool has_tcg = qtest_has_accel("tcg");
+> +    bool has_kvm, has_tcg;
+>      char *v_env = getenv("V");
+>      int ret;
+>  
+> @@ -2093,6 +2092,14 @@ int main(int argc, char *argv[])
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> +    has_kvm = qtest_has_accel("kvm");
+> +    has_tcg = qtest_has_accel("tcg");
+> +
+> +    if (!has_tcg && !has_kvm) {
+> +        g_test_skip("No accelerator available");
 
-Huge patch (hard to digest).
+perhaps 'No KVM or TCG ...' would be a bit better
 
->   static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
->   {
->       AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
-> @@ -473,6 +582,12 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
->       ops->synchronize_post_init = hvf_cpu_synchronize_post_init;
->       ops->synchronize_state = hvf_cpu_synchronize_state;
->       ops->synchronize_pre_loadvm = hvf_cpu_synchronize_pre_loadvm;
-
-Consider splitting in 3;
-
-1: add registers,
-
-> +    ops->insert_breakpoint = hvf_insert_breakpoint;
-> +    ops->remove_breakpoint = hvf_remove_breakpoint;
-> +    ops->remove_all_breakpoints = hvf_remove_all_breakpoints;
-
-2: breakpoint handlers (and stubs)
-
-> +    ops->update_guest_debug = hvf_update_guest_debug;
-> +    ops->supports_guest_debug = hvf_arch_supports_guest_debug;
-
-3: guest_debug handlers (and stubs).
-
->   };
->   static const TypeInfo hvf_accel_ops_type = {
->       .name = ACCEL_OPS_NAME("hvf"),
-
-Regards,
-
-Phil.
+> +        return 0;
+> +    }
+> +
+>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>          ret = boot_sector_init(disk);
+>          if (ret) {
+> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+> index 3aef3a97a9..28bab3d5e4 100644
+> --- a/tests/qtest/boot-serial-test.c
+> +++ b/tests/qtest/boot-serial-test.c
+> @@ -287,6 +287,11 @@ int main(int argc, char *argv[])
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No accelerator available");
+> +        return 0;
+> +    }
+> +
+>      for (i = 0; tests[i].arch != NULL; i++) {
+>          if (g_str_equal(arch, tests[i].arch) &&
+>              qtest_has_machine(tests[i].machine)) {
+> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+> index 3b615b0da9..24deb2d432 100644
+> --- a/tests/qtest/migration-test.c
+> +++ b/tests/qtest/migration-test.c
+> @@ -2462,7 +2462,7 @@ static bool kvm_dirty_ring_supported(void)
+>  
+>  int main(int argc, char **argv)
+>  {
+> -    bool has_kvm;
+> +    bool has_kvm, has_tcg;
+>      bool has_uffd;
+>      const char *arch;
+>      g_autoptr(GError) err = NULL;
+> @@ -2471,6 +2471,13 @@ int main(int argc, char **argv)
+>      g_test_init(&argc, &argv, NULL);
+>  
+>      has_kvm = qtest_has_accel("kvm");
+> +    has_tcg = qtest_has_accel("tcg");
+> +
+> +    if (!has_tcg && !has_kvm) {
+> +        g_test_skip("No accelerator available");
+> +        return 0;
+> +    }
+> +
+>      has_uffd = ufd_version_check();
+>      arch = qtest_get_arch();
+>  
+> diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+> index 62b6eef464..5813adcf56 100644
+> --- a/tests/qtest/pxe-test.c
+> +++ b/tests/qtest/pxe-test.c
+> @@ -131,11 +131,17 @@ int main(int argc, char *argv[])
+>      int ret;
+>      const char *arch = qtest_get_arch();
+>  
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No accelerator available");
+> +        return 0;
+> +    }
+> +
+>      ret = boot_sector_init(disk);
+>      if(ret)
+>          return ret;
+>  
+> -    g_test_init(&argc, &argv, NULL);
+>  
+>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>          test_batch(x86_tests, false);
+> diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
+> index efba76e716..a597cde707 100644
+> --- a/tests/qtest/vmgenid-test.c
+> +++ b/tests/qtest/vmgenid-test.c
+> @@ -165,13 +165,18 @@ int main(int argc, char **argv)
+>  {
+>      int ret;
+>  
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No accelerator available");
+> +        return 0;
+> +    }
+> +
+>      ret = boot_sector_init(disk);
+>      if (ret) {
+>          return ret;
+>      }
+>  
+> -    g_test_init(&argc, &argv, NULL);
+> -
+>      qtest_add_func("/vmgenid/vmgenid/set-guid",
+>                     vmgenid_set_guid_test);
+>      qtest_add_func("/vmgenid/vmgenid/set-guid-auto",

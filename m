@@ -1,125 +1,108 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp250062ejm;
-        Tue, 18 Apr 2023 22:31:21 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZMyNleUHLcyKVrHLFrWDApKGWopuys3DtqRxe68BWcJqeoSSCRs1Mj6XDk77+PhwkFy26h
-X-Received: by 2002:ad4:5965:0:b0:5ad:47a1:1fd8 with SMTP id eq5-20020ad45965000000b005ad47a11fd8mr26424037qvb.50.1681882281496;
-        Tue, 18 Apr 2023 22:31:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1681882281; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp259693ejm;
+        Thu, 20 Apr 2023 01:06:23 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZOkLELz7RwvhJZpYUlFigBpYiz2EoM0nLgWYH1JcmiyCutPTc93GsIeTNNg5va0UtAo5Vt
+X-Received: by 2002:ac8:5a8c:0:b0:3ea:16fe:5c9e with SMTP id c12-20020ac85a8c000000b003ea16fe5c9emr694991qtc.31.1681977983195;
+        Thu, 20 Apr 2023 01:06:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1681977983; cv=none;
         d=google.com; s=arc-20160816;
-        b=WdHGPhgm+DYQMQOYraKjpOpFJvXkIc7GBA1T/Me4A28k6ZcMNh3oqjqfBmaVn6SfAa
-         435+UFrfULLEd2MGPEVdF3KU+pNqHYe8/yzuhDdsiCM0iJPQdPsYANQngx+Dt1QOqADH
-         voAi9LyJKbGPJ7gYo1X2P6tsKuUITSju8YKHWoHkluuMvWdJ1tM85w4YBCgTJSmRKJeS
-         Kgw34YWoJpRFJH29bhxuek0Qw/43aME6Z3oPzacMp0FpLRbhcd9ZgddVct2KpA3RTeG4
-         9JjFnfZWt6brr8lQcFJH50cNUQrfpr2iFq3NYWmrYIWI1wazYrdziPK7mKtEKu3EO70N
-         aJIA==
+        b=D3w7uG9cPYejWuq4UUyXwNLzC6TcKEHVwnIn8KkxGtoCk079lXCEsG5+pMS3HRd8MD
+         np8IOELsoC9HgloMPjo4I1qjd87BttKf3gWWTb3gcVXHrf/3U/kPLOtrVDQTq2yCPW3n
+         +/RVZqL9YO1/HktEU1QtHVH33nLLYTS6uUGDKVhjUmAbBwzMWATJr90pb1iD4jgWiK1+
+         1UG3ZwXnmuDzW6BDhQ9/YDkIZjLbXyn3vnFg9w/iiYEbBi+fdMh0xCobQOeMaMoN83sn
+         V5zl6L2A99NVaw4vW9Xgz2AhU+b9ojRWDsG+jiXgUaygdeStwZvmwdv6FphZE9quClj8
+         gyiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=X7P20zMft03/QtI4a2h8bHRgl8d+BbRt0aljLaAsMJI=;
-        b=zHTWcy7nlovXD6/qduonZt0LxJ/1lBSYFEGWmr2inXnJCzMJpIHKaATeDuUcKp9ec0
-         GoG6s/NKyGxBhJ16UoHXNpj8tqDHGigTSDc/Bb4IErvF11sKGpbFcD3YvuDEeYIlAT7R
-         ohVse8IBqqpwoxFpor31DX1VOfJoJC27ZgfV/NpAOAWLSNR6CX9ioBfObcDKHrf3Yu++
-         HRnCLo5780nkkUmASodqZowAJV8R4a9Ax4WZFVeO6ICr/ixzm1B5i1VQTqu9CXARTAgA
-         jJqZz+her8eqwZAXkMRxE1xuPvzCfD+Z7+MV4KFenfnrJYwec8XhnOCysKkAbb0uN8w4
-         /Ptw==
+        bh=CKOxyyL7AZDnCvvz/47DzqTsQzjXr1KI0sjQMLGyFPM=;
+        b=a7njCD2hKPS4r3g+PgDVJ3oUSfVThoA8Hov4J5Kb9BQokjAaTQHBrqRJpegDnLFSr/
+         2d45O5k7k2FSb+eP2Qm3yAWfB8pV4Lb7eSLuFBMQJTFZvtWMT28V6a/4vgSYX8MdktMA
+         fvpehFZtIAvZV0bvlOsyygqt/XrRNWExq43rBS+A79smYXOgjaIBa9wkrj4/BjY5plg3
+         fUcd4zmClsZtz2P60kTTghhHMwSX7z2aEJYSXc0yqvIAGJmZtRLhXUIO1OTFIUh2IZHg
+         XYpYvoU487Y1g8dP8R8n2DskQag1soX8cnonPRqQgNpi139WidQG1U+DSSzTLeEj2Wdr
+         XmKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WG1cwJFd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=CxSQrP5j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2-20020ad45ba2000000b005cf292cf8d1si8520272qvq.50.2023.04.18.22.31.21
+        by mx.google.com with ESMTPS id h10-20020ac8584a000000b003ef311b781bsi942230qth.315.2023.04.20.01.06.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Apr 2023 22:31:21 -0700 (PDT)
+        Thu, 20 Apr 2023 01:06:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WG1cwJFd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=CxSQrP5j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pp0PQ-0001Hi-MI; Wed, 19 Apr 2023 01:31:12 -0400
+	id 1ppPJ1-0003Ai-Sw; Thu, 20 Apr 2023 04:06:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pp0PP-0001HM-NJ
- for qemu-arm@nongnu.org; Wed, 19 Apr 2023 01:31:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pp0PL-0000v6-0E
- for qemu-arm@nongnu.org; Wed, 19 Apr 2023 01:31:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1681882265;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=X7P20zMft03/QtI4a2h8bHRgl8d+BbRt0aljLaAsMJI=;
- b=WG1cwJFdQiTSeidawajj/fK+DRuLXeEf4sC0eBJA0tLlPuhASvvLeWNgORNlaTRQjYLwyX
- JzQGBkcXbjrAvIyVK57Jls1Wd1UhbEyKBYNgVgWg24QTbvHOaCyfhth7K6cWZiJ2ExMj7/
- 4gjKWbapzVfjy/jp4bISWXR970HC2H4=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-304-xMN35tUROBONCeyCc3Wqdw-1; Wed, 19 Apr 2023 01:31:04 -0400
-X-MC-Unique: xMN35tUROBONCeyCc3Wqdw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3f08ed462c0so49299145e9.1
- for <qemu-arm@nongnu.org>; Tue, 18 Apr 2023 22:31:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1681882263; x=1684474263;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ppPJ0-0003AF-50
+ for qemu-arm@nongnu.org; Thu, 20 Apr 2023 04:06:14 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1ppPIy-0007oK-0v
+ for qemu-arm@nongnu.org; Thu, 20 Apr 2023 04:06:13 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ bi21-20020a05600c3d9500b003f17a8eaedbso2640275wmb.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Apr 2023 01:06:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=anisinha-ca.20221208.gappssmtp.com; s=20221208; t=1681977970; x=1684569970; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=X7P20zMft03/QtI4a2h8bHRgl8d+BbRt0aljLaAsMJI=;
- b=QK2gnkAY1QyB0k9p72FlU5kPbo3BtKmSOO6Yo4v1chxQgVhKnWcuMtayhK+zvWSwFh
- KmOo+w0QR89nPCEkOnLgj6Dbo5V06e8OAQFd6dNddgSTgkJQ/1nCI9D7sR3xZ6DoYg4n
- 1860dGby+LnYw4i9zi5KP7otC84Xa+jVio4Uk3uNfrsTJbZ31a6Fq6KHGeM+zlpDxYpi
- qgI07uU90d+DPF4Y9bvonJsxldyI+tBCb7o6I+8g3GxqAVLWesW/Cl+xOwq9iOSTw5gp
- WmqtEH3QhudeEJciTPjtwjFW4kBITp9DFCtBsyo4T24cuwAiYgnwBFMOczR7QAgtOBkZ
- XsGg==
-X-Gm-Message-State: AAQBX9eOjdT7LtvKPlpgwwCX0141SUaXVWvWXPPeFI8l5+D+lp52qbDq
- 04BGU+NBIngYB/r8TZlmsw+TJNdyEIG4jcBx8ReX5y7FJsQhaeZVLj14q8xNzN3A16Z3Z+U/bih
- KtlKmiFAv+3yE
-X-Received: by 2002:a05:6000:12cf:b0:2ef:b257:b46c with SMTP id
- l15-20020a05600012cf00b002efb257b46cmr843266wrx.29.1681882263313; 
- Tue, 18 Apr 2023 22:31:03 -0700 (PDT)
-X-Received: by 2002:a05:6000:12cf:b0:2ef:b257:b46c with SMTP id
- l15-20020a05600012cf00b002efb257b46cmr843251wrx.29.1681882263020; 
- Tue, 18 Apr 2023 22:31:03 -0700 (PDT)
-Received: from redhat.com ([2a02:14f:1fc:3571:9b25:3dfd:20fa:b195])
- by smtp.gmail.com with ESMTPSA id
- u19-20020a05600c211300b003f17a00c214sm952379wml.16.2023.04.18.22.30.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Apr 2023 22:31:02 -0700 (PDT)
-Date: Wed, 19 Apr 2023 01:30:15 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eric DeVolder <eric.devolder@oracle.com>
-Cc: shannon.zhaosl@gmail.com, imammedo@redhat.com, ani@anisinha.ca,
- peter.maydell@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, marcel.apfelbaum@gmail.com,
- pbonzini@redhat.com, richard.henderson@linaro.org,
- eduardo@habkost.net, boris.ostrovsky@oracle.com
-Subject: Re: [PATCH v2 2/4] hw/acpi: arm: bump MADT to revision 5
-Message-ID: <20230419012905-mutt-send-email-mst@kernel.org>
-References: <20230418165219.2036-1-eric.devolder@oracle.com>
- <20230418165219.2036-3-eric.devolder@oracle.com>
+ bh=CKOxyyL7AZDnCvvz/47DzqTsQzjXr1KI0sjQMLGyFPM=;
+ b=CxSQrP5jya5slh9FsYs/6Sou+yduTsad6fuRzV6FsxhHN0Gqp2Sn3aTutsd4Q6MuEW
+ wk8tfNfyhOqYiUBY7xF8MNLjgLGoobnzKBS8Lp/BFFBbkwzkRfyOPR7WSlWgVZHsnLXS
+ e+QTomYo8Gh0MezXjgnJ22xCzou8huZZ8xyYqdmMQ/wLNZmVaEXj2NSewhuq6lOU1TSg
+ 8YknAeyiXld9stY3KJjLlGl3Mv8GLbrNRxyaeCNT3Es83x8tDn6F4ZB6bfvAIC2ZzTf2
+ ZQfQpQmbD4xAP1K/BWCq0DH0hSvH3G93SSvNfXZvJQnttx0gJE2Irrd4huqPhIq7JMzV
+ B1/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681977970; x=1684569970;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CKOxyyL7AZDnCvvz/47DzqTsQzjXr1KI0sjQMLGyFPM=;
+ b=FxWLs02MF4LsHNs7WBq0OHm8tjvO5B0GH0LWDzbIbz8QJyFvaeHpg2htED5UaLANci
+ ev4of461tgKzIXK8DmTftA9BkJNaX5Vvc6cMc5Epg4iYyhm4du8CAE8kutG530LzK21k
+ fKqgVUDvxdn1qyFxshsvyVUbiazNMdsIi/C6JTIQJfgixV5ZdcGS1Wa5+FagdlVAHZeR
+ XpUqbUhMuqAGNGu8IIbQcM0ew7p2UbTDJx0ABlDhu9w34gNqSyA+SzVElDOFktqdE52J
+ peTztMt5zy54RtpoQ3FJelKxs1NicwmouDzBjR1dGYZyJ8UIhbP0g9fG5QZJiNvg9obT
+ HdNg==
+X-Gm-Message-State: AAQBX9fJyCCJtR7nAN5t2DryuI7T2lxAh2IFlMtgfjsc86rvH/j/MtSg
+ 6W6MtYWcRhSfyuE61Utei3ExIf2pkKNSgQAz5TibEQ==
+X-Received: by 2002:a05:600c:2182:b0:3f1:6527:df05 with SMTP id
+ e2-20020a05600c218200b003f16527df05mr606024wme.22.1681977969831; Thu, 20 Apr
+ 2023 01:06:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20230418165219.2036-3-eric.devolder@oracle.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20230418165219.2036-1-eric.devolder@oracle.com>
+ <20230418165219.2036-4-eric.devolder@oracle.com>
+In-Reply-To: <20230418165219.2036-4-eric.devolder@oracle.com>
+From: Ani Sinha <ani@anisinha.ca>
+Date: Thu, 20 Apr 2023 13:35:58 +0530
+Message-ID: <CAARzgwwVAptvsR1_8ttUKroLuqKdLc1dHWtNe7S0S3N-Nq4otw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/4] hw/acpi: i386: bump MADT to revision 5
+To: Eric DeVolder <eric.devolder@oracle.com>
+Cc: shannon.zhaosl@gmail.com, mst@redhat.com, imammedo@redhat.com, 
+ peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com, richard.henderson@linaro.org, 
+ eduardo@habkost.net, boris.ostrovsky@oracle.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: none client-ip=2a00:1450:4864:20::336;
+ envelope-from=ani@anisinha.ca; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,50 +117,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +TIwInK0eIW8
+X-TUID: HhRHB0dZ7qbD
 
-On Tue, Apr 18, 2023 at 12:52:17PM -0400, Eric DeVolder wrote:
-> Currently ARM QEMU generates, and reports, MADT revision 4. ACPI 6.3
-> introduces MADT revision 5.
-> 
-> For MADT revision 5, the GICC structure adds an SPE Overflow Interrupt
-> field. This new 2-byte field is created from the existing 3-byte
-> Reserved field. The spec indicates if the SPE overflow interrupt is
-> not supported, to zero the field.
-> 
+On Tue, Apr 18, 2023 at 10:22=E2=80=AFPM Eric DeVolder <eric.devolder@oracl=
+e.com> wrote:
+>
+> Currently i386 QEMU generates MADT revision 3, and reports
+> MADT revision 1. ACPI 6.3 introduces MADT revision 5.
+>
+> For MADT revision 4, that introduces ARM GIC structures, which do
+> not apply to i386.
+>
+> For MADT revision 5, the Local APIC flags introduces the Online
+> Capable bitfield.
+>
+> Making MADT generate and report revision 5 will solve problems with
+> CPU hotplug (the Online Capable flag indicates hotpluggable CPUs).
+>
+> Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devol=
+der@oracle.com/T/#t
 > Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
-
-So why do we bother changing this? I'd rather defer until
-we actually intend to fill this field.
-
 > ---
->  hw/arm/virt-acpi-build.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 4156111d49..23268dd981 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -705,7 +705,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      int i;
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      const MemMapEntry *memmap = vms->memmap;
-> -    AcpiTable table = { .sig = "APIC", .rev = 4, .oem_id = vms->oem_id,
-> +    AcpiTable table = { .sig = "APIC", .rev = 5, .oem_id = vms->oem_id,
->                          .oem_table_id = vms->oem_table_id };
->  
->      acpi_table_begin(&table, table_data);
-> @@ -763,7 +763,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          /* Processor Power Efficiency Class */
->          build_append_int_noprefix(table_data, 0, 1);
->          /* Reserved */
-> -        build_append_int_noprefix(table_data, 0, 3);
-> +        build_append_int_noprefix(table_data, 0, 1);
-> +        /* SPE overflow Interrupt */
-> +        build_append_int_noprefix(table_data, 0, 2);
->      }
->  
->      if (vms->gic_version != VIRT_GIC_VERSION_2) {
-> -- 
-> 2.31.1
+>  hw/i386/acpi-common.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
+> index 52e5c1439a..286c1c5c32 100644
+> --- a/hw/i386/acpi-common.c
+> +++ b/hw/i386/acpi-common.c
+> @@ -38,8 +38,15 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *a=
+pic_ids,
+>  {
+>      uint32_t apic_id =3D apic_ids->cpus[uid].arch_id;
+>      /* Flags =E2=80=93 Local APIC Flags */
+> -    uint32_t flags =3D apic_ids->cpus[uid].cpu !=3D NULL || force_enable=
+d ?
+> -                     1 /* Enabled */ : 0;
+> +    bool enabled =3D apic_ids->cpus[uid].cpu !=3D NULL || force_enabled =
+?
+> +                     true : false;
 
+how about "processor_enabled" instead of just "enabled" as the variable nam=
+e.
+
+> +    /*
+> +     * ACPI 6.3 5.2.12.2 Local APIC Flags: OnlineCapable must be 0
+> +     * if Enabled is set.
+> +     */
+> +    bool onlinecapable =3D enabled ? false : true;
+
+ugh, how about uint32 onlinecapable =3D enabled? 0x0 : 0x2 ?
+
+> +    uint32_t flags =3D onlinecapable ? 0x2 : 0x0 | /* Online Capable */
+> +                     enabled ? 0x1 : 0x0; /* Enabled */
+
+then here, flags =3D onlinecapable | processor_enabled? 0x1 : 0x0;
+
+>
+>      /* ACPI spec says that LAPIC entry for non present
+>       * CPU may be omitted from MADT or it must be marked
+> @@ -102,7 +109,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *=
+linker,
+>      MachineClass *mc =3D MACHINE_GET_CLASS(x86ms);
+>      const CPUArchIdList *apic_ids =3D mc->possible_cpu_arch_ids(MACHINE(=
+x86ms));
+>      AcpiDeviceIfClass *adevc =3D ACPI_DEVICE_IF_GET_CLASS(adev);
+> -    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 1, .oem_id =3D oem_i=
+d,
+> +    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 5, .oem_id =3D oem_i=
+d,
+>                          .oem_table_id =3D oem_table_id };
+>
+>      acpi_table_begin(&table, table_data);
+> --
+> 2.31.1
+>

@@ -1,127 +1,116 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp991911ejm;
-        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bz8vbwpGW6Eva/Kdxh5hJqGEL7HvlxBAhv/RktI08xMe5gJFbYAcHu2N4HmGWHGbbcFObs
-X-Received: by 2002:a05:622a:255:b0:3ec:490b:ce6e with SMTP id c21-20020a05622a025500b003ec490bce6emr7176991qtx.48.1682064973099;
-        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682064973; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1288267ejm;
+        Fri, 21 Apr 2023 09:58:18 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a7bEdU+T/QswLE8SldPJHzyX4QT2s5AQBx6wGkwIlVIp2N7dUXQpPfv0KAIH/D4o6PkqxX
+X-Received: by 2002:a05:622a:85:b0:3bf:daae:7ee3 with SMTP id o5-20020a05622a008500b003bfdaae7ee3mr6224003qtw.53.1682096298602;
+        Fri, 21 Apr 2023 09:58:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682096298; cv=none;
         d=google.com; s=arc-20160816;
-        b=D6zLUHN/YnlsSs99S9yRGyXaFDBzM4PjvbxHsBPvN+V91aqT2clSGLvjNTzi00hy6q
-         VKd0w708ES4Kww6mcUoPaGzNIo5HojFKD914dsyIdICOp/nFFU2xhSgZcy7BfPcDK03T
-         Kj+EVYN0GMKXL/zN5rVwZ+oNs55o/xMT3P38RSBFQFYwa2Jcp9bymLkBI1pHNRAqlXLt
-         cjqIiFMWkYzYH5CI0HAZT8dPhZ7ZQmfV06RrrQXxgVf60exXbV5EZcLGeNkGSWkJJRh1
-         j6DoCBDNpo/XeR4RpK6nT86OcLpXJ5pLR06mVxB5TMZMb2Be4hLnCOLfFERygkPG82U0
-         rJ2g==
+        b=jnKtP1WmubEii6e2XIkBV6iKJNytmXnTcwHnQosT7rciBR3Qyet/rn/WHnHA2V06Rd
+         URjXpsB2Mc5qDhbz2pvZMgQQKJ2D2fBq1QUpAYsMwpG+f6bHW27U4T4EpTZ5gNMW8Ep4
+         7MfqtmgBwBsG00graN8cr96HFvfxiaVuZHdvseAyXyIOprPP+HBY0dxL2pUcnUSCziY5
+         DZcrWzIdI66icxBs9O6en4ObJYZi02LJF1/6aJoIe4ZMpjSXeN3ifAfMJmX9OVx5tAv4
+         BwV7bbHhg5HjGIV7+MGZztftUdH/SiJzwNtRsi4d47+hEISPLgIFcXT7SRnVq4ykA85V
+         3ZfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
-        b=rWSiIG3tk1Ur7dxbJX0/VC8jx5KvE691tVVKfWQjqPMU268ygkcoqg64SiokKKBuk7
-         7uxjQA0GP4UUylpoCkH5vobIpCYlcjZZSYR5THKosZS4WKdB0CzGL87Jr1Ig4Qffpbhz
-         fl0K9WVPGA9MiKb4d9aatRdlBpHHoeFny9a1dXF4ffAdrQzEwY5ZYiz5rm41YHZqX2hW
-         huh4rHVKZAHiVmfvNKWNr5lIoDhpotnSWTSPm6Bi2RBtv4gGTNWWTs+k3zr4JHxII2+I
-         DiLtqgtd/iQI7rlPr/Y+qvnnC0zbeA22topntG+QQljdHq8E54YF520N+rjEmxhNNBBi
-         qQDw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=m546At0nD6pKDP8+3gdJork4T/9dujMuRMZk6oGg9Oc=;
+        b=cd0+zxZ8GnpMFPDcG+MgBW56k6g329lI7UiLi6AcWiBQZhUCyQCsuSO4FJ5aiDWs2i
+         ZNIwn+iJlqQcKNDIHOOiY/ZIq5orlBLFn9xUjNSGp2AWFyiWQ8qscl+WMClomMmTrLSs
+         Y2/4n2E2tlY+LzT24+bSDPI7EmH5tufpYPmIbuuj3lHaR6G+O3y2BSzk5VWwT6cgeg3K
+         eDN5Vj3m9Ck0NlCd+j6Qjj3Fkm0Y1+Z81S8vcXFP7hzIThit0sdfEy7a5NcKNy3cCMho
+         x7knzzlfAI5sezzxPNDG4WzaVcllY/A69TVkRLUNmcvEw5Q+yKAYsJ9xYjrOsCz12V4m
+         OhYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W5QPHQlQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CAqWPQhc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18-20020ac859d2000000b003e4690a0c00si2907526qtf.271.2023.04.21.01.16.12
+        by mx.google.com with ESMTPS id s1-20020ac85cc1000000b003ef5bbe2904si1445555qta.741.2023.04.21.09.58.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
+        Fri, 21 Apr 2023 09:58:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W5QPHQlQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CAqWPQhc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pplvo-0008TI-Il; Fri, 21 Apr 2023 04:15:48 -0400
+	id 1ppu4p-0000QY-4O; Fri, 21 Apr 2023 12:57:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pplvm-0008T2-Ub
- for qemu-devel@nongnu.org; Fri, 21 Apr 2023 04:15:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pplvk-0005vN-Ta
- for qemu-devel@nongnu.org; Fri, 21 Apr 2023 04:15:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682064944;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
- b=W5QPHQlQ/aaFlm6vzxpN3tNo0ZtngZpcBt2mCSP+4ZbQXc0mX/LWODuMcdgcXYPWwURaFC
- gEwJhGXrl5kWXjD4f4KXWtiGMZAu1fOpmz+IjxjAKwyuTKiVSz69qDjP83GIMknmXcSg4F
- le6hGkWV+tegkImXniVtoDQpuxHC0mI=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-629-8dEbqHl9Mje2m0yFNgoCKg-1; Fri, 21 Apr 2023 04:15:42 -0400
-X-MC-Unique: 8dEbqHl9Mje2m0yFNgoCKg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-3f168827701so5742535e9.0
- for <qemu-devel@nongnu.org>; Fri, 21 Apr 2023 01:15:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1ppu4n-0000NM-8V
+ for qemu-devel@nongnu.org; Fri, 21 Apr 2023 12:57:37 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1ppu4k-0005VL-UL
+ for qemu-devel@nongnu.org; Fri, 21 Apr 2023 12:57:36 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-2f95231618aso1273283f8f.1
+ for <qemu-devel@nongnu.org>; Fri, 21 Apr 2023 09:57:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682096252; x=1684688252;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=m546At0nD6pKDP8+3gdJork4T/9dujMuRMZk6oGg9Oc=;
+ b=CAqWPQhc3hGehCZZMAS1sECP4Os78QovGVWHT4D7ykTcTRnkN7yGcu/E07HzbxMYlL
+ zZeNVGdL3f7cmTT/5QtST5ZQw1PMtEVblFV+//bdPL09iukRIb08TUFiNN7rUgpFaMhp
+ /onZxlqi5oGEtGvBj2hQ18bLf1R0+1HPUIESw8/gV3RYCzU4+BeOeALGy6B+wpfysQED
+ vo5huF2rkH3gMz/7MMRk1ECP/N9yKUFd7JVHVnXm4g+E/zyfBQiWeysqe7MWEhWfan3Q
+ Q9ZhZyiMX2N9kUpQlpm/R95xkXCrpcaVMLNodVSBpzIl3h///1p0tWcCaakK3Nh1CYdf
+ W3XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682064942; x=1684656942;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
- b=MPtGFX3kge7YDYhlhJrY2nv/9shKJBNwwrooTCoVokPdv1UeALkB+iqgycVhraoxxe
- a/g0Qz35rhx1cUnI4EJConl1szM3WVdJrCNqr9B8qDnJ+kmfa2sUd5yaSbus7WO7iAUX
- XJBpYyoFS92lcDlcR8uqczD8Hwn/NZw34DjCxX08G68OjOaEO8h5AsWtJjKojlkFuQhT
- MvRVDS4/dZ65kJM8RYwLpq/mxHY3DTG6vXBnK1jM7DFgIDpwse7X/8ZepPedmXzhTwLt
- mEUoCSuAUb+gJPwmYh+5qexvyXf1/SgLJVFgTHh+a/ZcwLkfYQBUCPVKJkbuUwozsPWA
- eZLw==
-X-Gm-Message-State: AAQBX9ewRIGnwOF5kf6PuCX9/JQdXUqX0qBqVE76wcq5zwFO4s849zzQ
- jREPQvGcF8P64ic6rT4Lu3IFF/tE86dUObMqEd1KE9AfohiYCpL+j3qd/COruvSpXG2kwyU0JP/
- bKsubPERugqXwQ8A=
-X-Received: by 2002:a7b:cd83:0:b0:3f1:75ae:1cfe with SMTP id
- y3-20020a7bcd83000000b003f175ae1cfemr1134731wmj.7.1682064941912; 
- Fri, 21 Apr 2023 01:15:41 -0700 (PDT)
-X-Received: by 2002:a7b:cd83:0:b0:3f1:75ae:1cfe with SMTP id
- y3-20020a7bcd83000000b003f175ae1cfemr1134706wmj.7.1682064941559; 
- Fri, 21 Apr 2023 01:15:41 -0700 (PDT)
-Received: from redhat.com ([2.55.17.255]) by smtp.gmail.com with ESMTPSA id
- w9-20020a1cf609000000b003ede06f3178sm4112880wmc.31.2023.04.21.01.15.39
+ d=1e100.net; s=20221208; t=1682096252; x=1684688252;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=m546At0nD6pKDP8+3gdJork4T/9dujMuRMZk6oGg9Oc=;
+ b=hbS0KPkH8t8/VVk+fcHBvz1lpwdn5keSlOk3vTdUtzBEU/5/hyK64hSrwOIwX8YM4o
+ fqTZFC69gmWpWswHT8219wOtGJBFXuIAYGVZTg/33bRwHwUk6pZk8nhEpSYaWTCrdoUg
+ TKQg3rKeWdVKj6Jf4j8Mwt8Zhf8q02niWBV+XRlDdTp2WydkXRK5DAKSXWVIY9EaG8RL
+ 1oSHc44nBG5NHbDR0uyVYnoxNueaO98Eg4JERlWND7r8fsvXmbO9hX4I0UTdjqFbpDCN
+ GlS6kecjD+ehpIu4Gf9CRLxGoFqfCxoz4mmTT1N5ZewMWMW4yZLOAMLITqb5jHKC2eRP
+ ixJA==
+X-Gm-Message-State: AAQBX9frUre6+16odn3Pnsmod3sS0LCuW3RHFsMwkuKYHde2aGpaRyxM
+ giT3B7Gvg3FfY/DhSZMbYjmnWAJYkG7U7GRp0tI=
+X-Received: by 2002:adf:fc11:0:b0:2f9:95b4:450a with SMTP id
+ i17-20020adffc11000000b002f995b4450amr4471333wrr.25.1682096252411; 
+ Fri, 21 Apr 2023 09:57:32 -0700 (PDT)
+Received: from localhost.localdomain (054592b0.skybroadband.com.
+ [5.69.146.176]) by smtp.gmail.com with ESMTPSA id
+ s1-20020adff801000000b00300aee6c9cesm4813369wrp.20.2023.04.21.09.57.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Apr 2023 01:15:40 -0700 (PDT)
-Date: Fri, 21 Apr 2023 04:15:36 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eric DeVolder <eric.devolder@oracle.com>
-Cc: Ani Sinha <ani@anisinha.ca>, shannon.zhaosl@gmail.com,
- imammedo@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, marcel.apfelbaum@gmail.com,
- pbonzini@redhat.com, richard.henderson@linaro.org,
- eduardo@habkost.net, boris.ostrovsky@oracle.com,
- MIGUEL_LUIS <miguel.luis@oracle.com>
-Subject: Re: [PATCH v2 3/4] hw/acpi: i386: bump MADT to revision 5
-Message-ID: <20230421041524-mutt-send-email-mst@kernel.org>
-References: <20230418165219.2036-1-eric.devolder@oracle.com>
- <20230418165219.2036-4-eric.devolder@oracle.com>
- <CAARzgwwVAptvsR1_8ttUKroLuqKdLc1dHWtNe7S0S3N-Nq4otw@mail.gmail.com>
- <b0d86775-f7bc-fe38-c2ae-fc4f53173138@oracle.com>
+ Fri, 21 Apr 2023 09:57:32 -0700 (PDT)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, mtosatti@redhat.com, danielhb413@gmail.com,
+ clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org,
+ peter.maydell@linaro.org, chenhuacai@kernel.org, pasic@linux.ibm.com,
+ borntraeger@linux.ibm.com,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH] kvm: Merge kvm_check_extension() and kvm_vm_check_extension()
+Date: Fri, 21 Apr 2023 17:38:23 +0100
+Message-Id: <20230421163822.839167-1-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <b0d86775-f7bc-fe38-c2ae-fc4f53173138@oracle.com>
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,85 +125,292 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HwRQHsLI+sFl
+X-TUID: L53Pn/sutNlw
 
-On Thu, Apr 20, 2023 at 09:22:57AM -0500, Eric DeVolder wrote:
-> 
-> 
-> On 4/20/23 03:05, Ani Sinha wrote:
-> > On Tue, Apr 18, 2023 at 10:22 PM Eric DeVolder <eric.devolder@oracle.com> wrote:
-> > > 
-> > > Currently i386 QEMU generates MADT revision 3, and reports
-> > > MADT revision 1. ACPI 6.3 introduces MADT revision 5.
-> > > 
-> > > For MADT revision 4, that introduces ARM GIC structures, which do
-> > > not apply to i386.
-> > > 
-> > > For MADT revision 5, the Local APIC flags introduces the Online
-> > > Capable bitfield.
-> > > 
-> > > Making MADT generate and report revision 5 will solve problems with
-> > > CPU hotplug (the Online Capable flag indicates hotpluggable CPUs).
-> > > 
-> > > Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devolder@oracle.com/T/#t
-> > > Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
-> > > ---
-> > >   hw/i386/acpi-common.c | 13 ++++++++++---
-> > >   1 file changed, 10 insertions(+), 3 deletions(-)
-> > > 
-> > > diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
-> > > index 52e5c1439a..286c1c5c32 100644
-> > > --- a/hw/i386/acpi-common.c
-> > > +++ b/hw/i386/acpi-common.c
-> > > @@ -38,8 +38,15 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
-> > >   {
-> > >       uint32_t apic_id = apic_ids->cpus[uid].arch_id;
-> > >       /* Flags – Local APIC Flags */
-> > > -    uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
-> > > -                     1 /* Enabled */ : 0;
-> > > +    bool enabled = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
-> > > +                     true : false;
-> > 
-> > how about "processor_enabled" instead of just "enabled" as the variable name.
-> > 
-> > > +    /*
-> > > +     * ACPI 6.3 5.2.12.2 Local APIC Flags: OnlineCapable must be 0
-> > > +     * if Enabled is set.
-> > > +     */
-> > > +    bool onlinecapable = enabled ? false : true;
-> > 
-> > ugh, how about uint32 onlinecapable = enabled? 0x0 : 0x2 ?
-> > 
-> > > +    uint32_t flags = onlinecapable ? 0x2 : 0x0 | /* Online Capable */
-> > > +                     enabled ? 0x1 : 0x0; /* Enabled */
-> > 
-> > then here, flags = onlinecapable | processor_enabled? 0x1 : 0x0;
-> > 
-> 
-> Colleague Miguel Luis pointed out that this is simpler and equivalent:
-> 
-> uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ? 1 /*
-> Enabled */ : 2 /* Online Capable */;
-> 
-> Is that acceptable?
-> eric
+The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
+(/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
+extensions, KVM returns the same value with either method, but for some
+of them it can refine the returned value depending on the VM type. The
+KVM documentation [1] advises to use the VM fd:
 
+  Based on their initialization different VMs may have different
+  capabilities. It is thus encouraged to use the vm ioctl to query for
+  capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
 
-Looks ok to me.
+Ongoing work on Arm confidential VMs confirms this, as some capabilities
+become unavailable to confidential VMs, requiring changes in QEMU to use
+kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
+than changing each check one by one, change kvm_check_extension() to
+always issue the ioctl on the VM fd when available, and remove
+kvm_vm_check_extension().
 
-> > > 
-> > >       /* ACPI spec says that LAPIC entry for non present
-> > >        * CPU may be omitted from MADT or it must be marked
-> > > @@ -102,7 +109,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
-> > >       MachineClass *mc = MACHINE_GET_CLASS(x86ms);
-> > >       const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
-> > >       AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
-> > > -    AcpiTable table = { .sig = "APIC", .rev = 1, .oem_id = oem_id,
-> > > +    AcpiTable table = { .sig = "APIC", .rev = 5, .oem_id = oem_id,
-> > >                           .oem_table_id = oem_table_id };
-> > > 
-> > >       acpi_table_begin(&table, table_data);
-> > > --
-> > > 2.31.1
-> > > 
+Fall back to the global fd when the VM check is unavailable:
+
+* Ancient kernels do not support KVM_CHECK_EXTENSION on the VM fd, since
+  it was added by commit 92b591a4c46b ("KVM: Allow KVM_CHECK_EXTENSION
+  on the vm fd") in Linux 3.17 [3]. Support for Linux 3.16 ended only in
+  June 2020, but there may still be old images around.
+
+* A couple of calls must be issued before the VM fd is available, since
+  they determine the VM type: KVM_CAP_MIPS_VZ and KVM_CAP_ARM_VM_IPA_SIZE
+
+Does any user actually depend on the check being done on the global fd
+instead of the VM fd?  I surveyed all cases where KVM can return
+different values depending on the query method. Luckily QEMU already
+calls kvm_vm_check_extension() for most of those. Only three of them are
+ambiguous, because currently done on the global fd:
+
+* KVM_CAP_MAX_VCPUS and KVM_CAP_MAX_VCPU_ID on Arm, changes value if the
+  user requests a vGIC different from the default. But QEMU queries this
+  before vGIC configuration, so the reported value will be the same.
+
+* KVM_CAP_SW_TLB on PPC. When issued on the global fd, returns false if
+  the kvm-hv module is loaded; when issued on the VM fd, returns false
+  only if the VM type is HV instead of PR. If this returns false, then
+  QEMU will fail to initialize a BOOKE206 MMU model.
+
+  So this patch supposedly improves things, as it allows to run this
+  type of vCPU even when both KVM modules are loaded.
+
+* KVM_CAP_PPC_SECURE_GUEST. Similarly, doing this check on a VM fd
+  refines the returned value, and ensures that SVM is actually
+  supported. Since QEMU follows the check with kvm_vm_enable_cap(), this
+  patch should only provide better error reporting.
+
+[1] https://www.kernel.org/doc/html/latest/virt/kvm/api.html#kvm-check-extension
+[2] https://lore.kernel.org/kvm/875ybi0ytc.fsf@redhat.com/
+[3] https://github.com/torvalds/linux/commit/92b591a4c46b
+
+Suggested-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+---
+ include/sysemu/kvm.h     |  2 --
+ include/sysemu/kvm_int.h |  1 +
+ accel/kvm/kvm-all.c      | 26 +++++++++-----------------
+ target/i386/kvm/kvm.c    |  6 +++---
+ target/ppc/kvm.c         | 34 +++++++++++++++++-----------------
+ 5 files changed, 30 insertions(+), 39 deletions(-)
+
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index c8281c07a7..d62054004e 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -438,8 +438,6 @@ bool kvm_arch_stop_on_emulation_error(CPUState *cpu);
+ 
+ int kvm_check_extension(KVMState *s, unsigned int extension);
+ 
+-int kvm_vm_check_extension(KVMState *s, unsigned int extension);
+-
+ #define kvm_vm_enable_cap(s, capability, cap_flags, ...)             \
+     ({                                                               \
+         struct kvm_enable_cap cap = {                                \
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index a641c974ea..f6aa22ea09 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -122,6 +122,7 @@ struct KVMState
+     uint32_t xen_caps;
+     uint16_t xen_gnttab_max_frames;
+     uint16_t xen_evtchn_max_pirq;
++    bool check_extension_vm;
+ };
+ 
+ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index cf3a88d90e..eca815e763 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1109,22 +1109,13 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
+ {
+     int ret;
+ 
+-    ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+-    if (ret < 0) {
+-        ret = 0;
++    if (!s->check_extension_vm) {
++        ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
++    } else {
++        ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+     }
+-
+-    return ret;
+-}
+-
+-int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+-{
+-    int ret;
+-
+-    ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+     if (ret < 0) {
+-        /* VM wide version not implemented, use global one instead */
+-        ret = kvm_check_extension(s, extension);
++        ret = 0;
+     }
+ 
+     return ret;
+@@ -2328,7 +2319,7 @@ static void kvm_irqchip_create(KVMState *s)
+  */
+ static int kvm_recommended_vcpus(KVMState *s)
+ {
+-    int ret = kvm_vm_check_extension(s, KVM_CAP_NR_VCPUS);
++    int ret = kvm_check_extension(s, KVM_CAP_NR_VCPUS);
+     return (ret) ? ret : 4;
+ }
+ 
+@@ -2480,6 +2471,7 @@ static int kvm_init(MachineState *ms)
+     }
+ 
+     s->vmfd = ret;
++    s->check_extension_vm = kvm_check_extension(s, KVM_CAP_CHECK_EXTENSION_VM);
+ 
+     /* check the vcpu limits */
+     soft_vcpus_limit = kvm_recommended_vcpus(s);
+@@ -2527,7 +2519,7 @@ static int kvm_init(MachineState *ms)
+         ring_bytes = s->kvm_dirty_ring_size * sizeof(struct kvm_dirty_gfn);
+ 
+         /* Read the max supported pages */
+-        ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
++        ret = kvm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
+         if (ret > 0) {
+             if (ring_bytes > ret) {
+                 error_report("KVM dirty ring size %" PRIu32 " too big "
+@@ -2680,7 +2672,7 @@ static int kvm_init(MachineState *ms)
+ 
+     s->many_ioeventfds = kvm_check_many_ioeventfds();
+ 
+-    s->sync_mmu = !!kvm_vm_check_extension(kvm_state, KVM_CAP_SYNC_MMU);
++    s->sync_mmu = !!kvm_check_extension(kvm_state, KVM_CAP_SYNC_MMU);
+     if (!s->sync_mmu) {
+         ret = ram_block_discard_disable(true);
+         assert(!ret);
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index de531842f6..14f0164fe6 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -161,7 +161,7 @@ int kvm_has_pit_state2(void)
+ 
+ bool kvm_has_smm(void)
+ {
+-    return kvm_vm_check_extension(kvm_state, KVM_CAP_X86_SMM);
++    return kvm_check_extension(kvm_state, KVM_CAP_X86_SMM);
+ }
+ 
+ bool kvm_has_adjust_clock_stable(void)
+@@ -2747,7 +2747,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+                 return ret;
+             }
+     }
+-    if (kvm_vm_check_extension(s, KVM_CAP_X86_USER_SPACE_MSR)) {
++    if (kvm_check_extension(s, KVM_CAP_X86_USER_SPACE_MSR)) {
+         bool r;
+ 
+         ret = kvm_vm_enable_cap(s, KVM_CAP_X86_USER_SPACE_MSR, 0,
+@@ -5403,7 +5403,7 @@ static bool __kvm_enable_sgx_provisioning(KVMState *s)
+ {
+     int fd, ret;
+ 
+-    if (!kvm_vm_check_extension(s, KVM_CAP_SGX_ATTRIBUTE)) {
++    if (!kvm_check_extension(s, KVM_CAP_SGX_ATTRIBUTE)) {
+         return false;
+     }
+ 
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 78f6fc50cd..055a8acdcd 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -100,7 +100,7 @@ static uint32_t debug_inst_opcode;
+ static bool kvmppc_is_pr(KVMState *ks)
+ {
+     /* Assume KVM-PR if the GET_PVINFO capability is available */
+-    return kvm_vm_check_extension(ks, KVM_CAP_PPC_GET_PVINFO) != 0;
++    return kvm_check_extension(ks, KVM_CAP_PPC_GET_PVINFO) != 0;
+ }
+ 
+ static int kvm_ppc_register_host_cpu_type(void);
+@@ -112,11 +112,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     cap_interrupt_unset = kvm_check_extension(s, KVM_CAP_PPC_UNSET_IRQ);
+     cap_segstate = kvm_check_extension(s, KVM_CAP_PPC_SEGSTATE);
+     cap_booke_sregs = kvm_check_extension(s, KVM_CAP_PPC_BOOKE_SREGS);
+-    cap_ppc_smt_possible = kvm_vm_check_extension(s, KVM_CAP_PPC_SMT_POSSIBLE);
++    cap_ppc_smt_possible = kvm_check_extension(s, KVM_CAP_PPC_SMT_POSSIBLE);
+     cap_spapr_tce = kvm_check_extension(s, KVM_CAP_SPAPR_TCE);
+     cap_spapr_tce_64 = kvm_check_extension(s, KVM_CAP_SPAPR_TCE_64);
+     cap_spapr_multitce = kvm_check_extension(s, KVM_CAP_SPAPR_MULTITCE);
+-    cap_spapr_vfio = kvm_vm_check_extension(s, KVM_CAP_SPAPR_TCE_VFIO);
++    cap_spapr_vfio = kvm_check_extension(s, KVM_CAP_SPAPR_TCE_VFIO);
+     cap_one_reg = kvm_check_extension(s, KVM_CAP_ONE_REG);
+     cap_hior = kvm_check_extension(s, KVM_CAP_PPC_HIOR);
+     cap_epr = kvm_check_extension(s, KVM_CAP_PPC_EPR);
+@@ -125,23 +125,23 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+      * Note: we don't set cap_papr here, because this capability is
+      * only activated after this by kvmppc_set_papr()
+      */
+-    cap_htab_fd = kvm_vm_check_extension(s, KVM_CAP_PPC_HTAB_FD);
++    cap_htab_fd = kvm_check_extension(s, KVM_CAP_PPC_HTAB_FD);
+     cap_fixup_hcalls = kvm_check_extension(s, KVM_CAP_PPC_FIXUP_HCALL);
+-    cap_ppc_smt = kvm_vm_check_extension(s, KVM_CAP_PPC_SMT);
+-    cap_htm = kvm_vm_check_extension(s, KVM_CAP_PPC_HTM);
+-    cap_mmu_radix = kvm_vm_check_extension(s, KVM_CAP_PPC_MMU_RADIX);
+-    cap_mmu_hash_v3 = kvm_vm_check_extension(s, KVM_CAP_PPC_MMU_HASH_V3);
+-    cap_xive = kvm_vm_check_extension(s, KVM_CAP_PPC_IRQ_XIVE);
+-    cap_resize_hpt = kvm_vm_check_extension(s, KVM_CAP_SPAPR_RESIZE_HPT);
++    cap_ppc_smt = kvm_check_extension(s, KVM_CAP_PPC_SMT);
++    cap_htm = kvm_check_extension(s, KVM_CAP_PPC_HTM);
++    cap_mmu_radix = kvm_check_extension(s, KVM_CAP_PPC_MMU_RADIX);
++    cap_mmu_hash_v3 = kvm_check_extension(s, KVM_CAP_PPC_MMU_HASH_V3);
++    cap_xive = kvm_check_extension(s, KVM_CAP_PPC_IRQ_XIVE);
++    cap_resize_hpt = kvm_check_extension(s, KVM_CAP_SPAPR_RESIZE_HPT);
+     kvmppc_get_cpu_characteristics(s);
+-    cap_ppc_nested_kvm_hv = kvm_vm_check_extension(s, KVM_CAP_PPC_NESTED_HV);
++    cap_ppc_nested_kvm_hv = kvm_check_extension(s, KVM_CAP_PPC_NESTED_HV);
+     cap_large_decr = kvmppc_get_dec_bits();
+-    cap_fwnmi = kvm_vm_check_extension(s, KVM_CAP_PPC_FWNMI);
++    cap_fwnmi = kvm_check_extension(s, KVM_CAP_PPC_FWNMI);
+     /*
+      * Note: setting it to false because there is not such capability
+      * in KVM at this moment.
+      *
+-     * TODO: call kvm_vm_check_extension() with the right capability
++     * TODO: call kvm_check_extension() with the right capability
+      * after the kernel starts implementing it.
+      */
+     cap_ppc_pvr_compat = false;
+@@ -151,7 +151,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         exit(1);
+     }
+ 
+-    cap_rpt_invalidate = kvm_vm_check_extension(s, KVM_CAP_PPC_RPT_INVALIDATE);
++    cap_rpt_invalidate = kvm_check_extension(s, KVM_CAP_PPC_RPT_INVALIDATE);
+     kvm_ppc_register_host_cpu_type();
+ 
+     return 0;
+@@ -1968,7 +1968,7 @@ static int kvmppc_get_pvinfo(CPUPPCState *env, struct kvm_ppc_pvinfo *pvinfo)
+ {
+     CPUState *cs = env_cpu(env);
+ 
+-    if (kvm_vm_check_extension(cs->kvm_state, KVM_CAP_PPC_GET_PVINFO) &&
++    if (kvm_check_extension(cs->kvm_state, KVM_CAP_PPC_GET_PVINFO) &&
+         !kvm_vm_ioctl(cs->kvm_state, KVM_PPC_GET_PVINFO, pvinfo)) {
+         return 0;
+     }
+@@ -2288,7 +2288,7 @@ int kvmppc_reset_htab(int shift_hint)
+         /* Full emulation, tell caller to allocate htab itself */
+         return 0;
+     }
+-    if (kvm_vm_check_extension(kvm_state, KVM_CAP_PPC_ALLOC_HTAB)) {
++    if (kvm_check_extension(kvm_state, KVM_CAP_PPC_ALLOC_HTAB)) {
+         int ret;
+         ret = kvm_vm_ioctl(kvm_state, KVM_PPC_ALLOCATE_HTAB, &shift);
+         if (ret == -ENOTTY) {
+@@ -2484,7 +2484,7 @@ static void kvmppc_get_cpu_characteristics(KVMState *s)
+     cap_ppc_safe_bounds_check = 0;
+     cap_ppc_safe_indirect_branch = 0;
+ 
+-    ret = kvm_vm_check_extension(s, KVM_CAP_PPC_GET_CPU_CHAR);
++    ret = kvm_check_extension(s, KVM_CAP_PPC_GET_CPU_CHAR);
+     if (!ret) {
+         return;
+     }
+-- 
+2.40.0
 

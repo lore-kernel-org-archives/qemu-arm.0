@@ -1,256 +1,286 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp290688njc;
-        Thu, 5 Jun 2025 07:32:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVogfO1N/k5Ce5MLrwDPWjsDVXffPjs5zReMmp8qBa6sMNxHVSMZ4Dm63U5HZ89WR8zH3cMCCSIYou0rQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMLLpxOre5bRiqrq0CoUcJztszI0TpdvOVogwmS93dfMhqJxyHG0z3nFYAoWutm+/Xs8Uv
-X-Received: by 2002:a05:622a:1b1c:b0:4a4:3963:1e10 with SMTP id d75a77b69052e-4a5a576ed58mr123154771cf.13.1749133933660;
-        Thu, 05 Jun 2025 07:32:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749133933; cv=none;
-        d=google.com; s=arc-20240605;
-        b=iaOJv12OqMfL5lrnXgChxR5fwQxfhNC2wknCHvuj34tv2M0IRDZXtIJiZiySZfgTiF
-         Mh8DOgbxNQdtyW6ljsd3DAMzPuXySasnQBzsICj1CwYYWj8SQvB8DPMB9c8OjeDl/71w
-         JtY9fE4eaNIpV/TLjFGQwKb3SWy8yhfXnRmSAd0iycOtTe7LKUA6MQA/vo2EXttO5LC2
-         OWgcyUgES7CJcmDSx4Ua/k7vLuME3sXfsdNmDS5PPDb87PqTXysh2dUmvy0Z/lR+yUZ+
-         siZ7RAgA5LKH9la8XHXp+Bew/glUJMxVlNmJvV1438g82LI0YMH+AV+/0DOh103tHCMb
-         ty+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=pJ8Ss0xzwWF59ezoHUUP4X8z0cf+5bPuYM3CJxB7hEo=;
-        fh=KcGxQl0RsTbeKlH3wW7JwdXaXWip7NG6hKI2/LcTcg0=;
-        b=j84F4lCqdNgmBOotfeq6yGJY5s1+m9ntSH21GlVT7p2LOher+td32CClprox6byR1N
-         4qtijvdpXaYDoKm5V6qNdHUizemepZBMAdeCn3qwG4PrdhmMV2n91YHG/dbFcq6Epo9h
-         MxyLNiR0a/u9tgIejvbI5RM+8L6uVW+MhBj3l1cvdPYOhj0ExXx2m1dtQMuSIjbgxSga
-         9hAewdqSHr1ArZNxBEFAMdydjnf+FQ77Wldu7v3HLVxJytF7fSQzBsvalJRiLFPYP5ug
-         KQniwrmJUQWG3dshAM+bq0yjtpW3N9gxTPcKFzQ1Pr8ydzn+C0a4VHfDV4GV/wjFbYA7
-         VYCA==;
-        dara=google.com
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1038653ejm;
+        Fri, 21 Apr 2023 03:08:01 -0700 (PDT)
+X-Received: by 2002:a05:600c:3657:b0:3f1:72ec:400d with SMTP id y23-20020a05600c365700b003f172ec400dmr1419600wmq.33.1682071681814;
+        Fri, 21 Apr 2023 03:08:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682071681; cv=none;
+        d=google.com; s=arc-20160816;
+        b=X/L6tItsBJulsNqSnPx+cqMTjbNCc1kb9uGC5zOOUoi2U54zN3So43t3DcRCOwbOFj
+         NDSQ3LKOFrvd/qJZyj49+xFq5Chz9cpqxBEN5ZaNe3De4m7M8Y4Kk0JIy3S5W86SZvIz
+         D5v//SiJE3dDrvrVN7u/t1bclGdFWESndRqY4EmKyiEqRTmRN/u5RBvY95a5mxmCTs5s
+         oRwU4FQ1Og5qgA+nBtHYSJUDUNKZUbCxWjnDTkG3rmsXQmwmSjWtYFphY2RZWmCOnOen
+         mjE0srF1HtnUu0u4KI/MR+cmYCfVfc/au0O2fznmc5eUA0R6I4gDX8mxAH6dT5/3BUIh
+         XH1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ReHNjkIDoWkUpGRJS8gQsbm/eBQuxGHSsdTGePOJUGs=;
+        b=VAqMxXO7RXHFGl4h5k/6L3mS3FwhIwgML83dpFTMflBBEyhciPIbCiQuv3vHX6MZbJ
+         Xhyd9ShaHkoi2ot3esiVq+b324wz/mj3yk97ZsZh6m8LIn/s9S1RIjXwndgVDElpBfla
+         OhhCWV5IjL9zXNGDrZklDX/TAJee8pvCrDQqTKAEwH4R92qRISqdPaW8eQbNOc6slvSk
+         MJeyEpR3esM6+bpghWI9TSGPR91+7MLWiBX+kRk7tliI3jwT5HXAitalmkjXWXlwQA5i
+         /RdJ8HJ2S0o4JvWnaDd+yBBYFtarkwv2gE534koB8JhO07WFicnDrzNsr5ot6aNtU63R
+         lT8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AQlLV7gj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4e6444217b6si5885838137.47.2025.06.05.07.32.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=QlIeXXiw;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id h17-20020a056000001100b002f827cf1cb9sor1741807wrx.65.2023.04.21.03.08.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Jun 2025 07:32:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 21 Apr 2023 03:08:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AQlLV7gj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1uNBdH-0003DJ-0x; Thu, 05 Jun 2025 10:31:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uNBcw-0003CD-Ce; Thu, 05 Jun 2025 10:31:38 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cocotroupe20@gmail.com>)
- id 1uNBcu-0003Tf-9X; Thu, 05 Jun 2025 10:31:30 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-442fda876a6so8448255e9.0; 
- Thu, 05 Jun 2025 07:31:26 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=QlIeXXiw;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749133884; x=1749738684; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=pJ8Ss0xzwWF59ezoHUUP4X8z0cf+5bPuYM3CJxB7hEo=;
- b=AQlLV7gjuggp5U+NXd5sUwgWVB/EyW8wk+ap5eNhu1G+DlSyYwgcguWUiWzastv/bH
- 0Qx0yxA73ztzCyqXe4aKd6JGY08gGZPamuWkDsu3ZtCIUHB53yfJridaSUo5kAHn/b12
- idA7rI+eK2xPdw7/laDsvxWIaqozm0sT2QZ7Oo4NAbcHtwijQhIKsDO6XPu1w137nWUE
- hoxjbWSnsesOrG/Ndx/3pjoovLav+Ckz+UajNy7gWAKzmNlz3NDEO/7sAiVoAZRzkovi
- /daS6hW6bXWgWzm7OC/Mc6whukcl86w7SA3voznV2va2drc2Cd3N42rVIFBbwQunvHhq
- SevA==
+        d=linaro.org; s=google; t=1682071681; x=1684663681;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ReHNjkIDoWkUpGRJS8gQsbm/eBQuxGHSsdTGePOJUGs=;
+        b=QlIeXXiwV4WC+IGlPT1Z22kSn02uQtL9IAfm+jc2Lu6f5gHZVs2UsvwMMSxCdAAxeB
+         EyUmH70ygTt7ik/UxE+jDJJhnMZ0FKN8lOxQICAE91NrcktWvvAaSJtR+Bq9pW7v46ZB
+         WGPxXz3ZlHewz7MpXTH/xPlGd2OfN9OO+IZ6uTqHed9kuou22NY2R6w2V81AFc9t0Q7R
+         J0NxKXmp7TXQivzAfZiEmnWDQj+XU5zZ50OiIcvW0FvUTkuZalpwopar6fZGDDvUw9ZM
+         bXy+KFrUgv2L4GOfslQUVYStEnYK0EPxV0e/7vmv/g62QYMDbVp8RNkf5Hvar3bFEGDZ
+         BKew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749133884; x=1749738684;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pJ8Ss0xzwWF59ezoHUUP4X8z0cf+5bPuYM3CJxB7hEo=;
- b=e6/Wis2OWpE/HDTWeA6aKYwVBy2C4j7Wk6Kno1/iTIJ3b1e5WLLKfTJqRqmcqgeLYv
- 6GL4Te9DshwRvEuQPkrehspYTOTrIekoS6pus5U15yA5xhxR1fBQclqkmU7GqkXZK5dc
- o4pTrCfR7nuAYYsjdGCsiexPTQi6UQtFJQjYZYnGSCWinaqaamObLWPi8lCScmxoNhVo
- HQk6OZCcEH5efEiHmiUZ+dsP5vXh5elKh8uaxuVInZ9MNYgn1SVOfBYPb2/8PF9JX96o
- AfMOiMg+yADmhd6CCz5OwJl5ziSdOTacAvLPRtInAQQbxHiwmmyKv4TIgjpm/5Rudlq0
- QCbw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUXmf2HLCrCwwbJGKCfVNXi4VIa0vjYB+4kaMem9PAju30pasiiZ3U+uFJahrGj37hHf5MHlaVnwAn6QKo=@nongnu.org,
- AJvYcCWzEPQzVD6We7ELJR6dkJBnndkXwl47MJtDPixqr3dqQriEgSpsgXcA8R0Dl965XLnFphfB0HxHYY6I@nongnu.org
-X-Gm-Message-State: AOJu0YxjR10M6uvYJNK7E8WCQvRR7mBnbIrFcnw3KwBRb6gf6B0gPeoT
- M3Sa7CjT9Y6iT6Mf9RGST2NwPeAa2pCo4z/UW4pscYA2LfVj2YzVko4eWM53OYbh79n092pM/Ft
- eYGVFxBkdurdV82/VrDBfzG5QJ+RPieo=
-X-Gm-Gg: ASbGncv9X3q5OsfT2Zjmus8eCcEDa1xoD7hyVMnZADg05AHo1LM7//CkOhpq8kOTs6x
- AJF6OkDRzKzBn/d24a3c9ylo1OhKBSSGNuJfZZ0lVTxHLELUC8xgOJrivZjApTcNoyGCr5QJpNC
- LT2zFz+9xnYyST0snPLKktBSENWnMZ1BIa+Q==
-X-Received: by 2002:a05:600c:1c15:b0:442:cab1:e092 with SMTP id
- 5b1f17b1804b1-451f0aa1786mr67991845e9.11.1749133883743; Thu, 05 Jun 2025
- 07:31:23 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1682071681; x=1684663681;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ReHNjkIDoWkUpGRJS8gQsbm/eBQuxGHSsdTGePOJUGs=;
+        b=H4CYDC6gjDhcYT3epWE+d7FW3Gv0p8PYlGP7bU3+0mf6bG8NfiPf5Vk0nj5gocBVIY
+         3Ypqtx8Q+t0Kqyk2Hv14KHBtER/cRHq4j/jhB+dX4L7IQSToEk0BoejHEc/+LA5WMIlx
+         2Qhca5jko49E7orpjoBB8uL0GQSZwM8X20aBHO/3DiQCiaUJImEEQ9m7bH61rVyQEHYm
+         aDw6ppWLqQO5yEOJr7U53W0RiHWG1NhCz7uM7MYCEb6L0p6cfLoxUiHvbreluxQ8eDMS
+         otcQlxL8TR82kB+PPXs9ZQTA3B1/6q7JdMgEAXPEtyC1BsCtu6Jh1mCSHVJF8VtNSiAG
+         2Y1Q==
+X-Gm-Message-State: AAQBX9f0rjM9fvEkB4zz2f7Bv6kqaoigEkTZuBHobfAvIOh5ThaoFnc3
+	8yCK1N9abCFYxS5/TH27a11wnAWb
+X-Google-Smtp-Source: AKy350aElyiRgIp0WxW93eVSqUXG3mEip2ECwbk2smqtWJjcc3nfmH1LGGWoRF+9gIRsE/8BmnkhDQ==
+X-Received: by 2002:a5d:540f:0:b0:2f9:4fe9:74df with SMTP id g15-20020a5d540f000000b002f94fe974dfmr3373180wrv.17.1682071681411;
+        Fri, 21 Apr 2023 03:08:01 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] (min31-h02-176-184-28-119.dsl.sta.abo.bbox.fr. [176.184.28.119])
+        by smtp.gmail.com with ESMTPSA id p8-20020a05600c358800b003f1738d0d13sm10795048wmq.1.2023.04.21.03.07.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Apr 2023 03:08:01 -0700 (PDT)
+Message-ID: <fb01dbfa-426a-f87c-620b-c5e7b6d6598e@linaro.org>
+Date: Fri, 21 Apr 2023 12:07:57 +0200
 MIME-Version: 1.0
-References: <20250605141801.1083266-1-peter.maydell@linaro.org>
- <CAFEAcA9++obh-vtp7P9MZ9GHBTjuWGY419Dmp+P8iFJhCJiYHQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9++obh-vtp7P9MZ9GHBTjuWGY419Dmp+P8iFJhCJiYHQ@mail.gmail.com>
-From: Corentin GENDRE <cocotroupe20@gmail.com>
-Date: Thu, 5 Jun 2025 16:31:11 +0200
-X-Gm-Features: AX0GCFvYgP0bCQncPASA2UU07AmIGfRRFVixQDS4IhrNCYp3uj8fZr4G8N09Fb8
-Message-ID: <CAPwCrcNTgzmOSTRqDRpHXM7zoMZiC3E5Z_W3OFVCBcNbp2WUTQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/mps2: Configure the AN500 CPU with 16 MPU regions
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ce22140636d3f705"
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=cocotroupe20@gmail.com; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u7neIBMrKL6X
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.0
+Subject: Re: [PATCH v4 1/6] tests/requirements.txt: bump up avocado-framework
+ version to 101.0
+Content-Language: en-US
+To: Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Jan Richter <jarichte@redhat.com>, qemu-devel <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Markus Armbruster <armbru@redhat.com>, Beraldo Leal <bleal@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Kautuk Consul <kconsul@linux.vnet.ibm.com>,
+ Hariharan T S <hariharan.ts@linux.vnet.ibm.com>
+References: <20230417134321.3627231-1-alex.bennee@linaro.org>
+ <20230417134321.3627231-2-alex.bennee@linaro.org>
+ <CAFn=p-bqK-RsMo8wVy2zCxU=iAkXG1t9xVuoqLSN0UbTYKPgwQ@mail.gmail.com>
+ <87pm82e74d.fsf@linaro.org> <74be23e6-015b-cb1d-967e-65fc32347553@linaro.org>
+ <CAFn=p-boa4C1P0mJob=spZGMi4ECA-D5yNovHxC6-VTwkKJoHg@mail.gmail.com>
+ <9a0a7b21-8798-d5d3-bf4b-f1de38e82581@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <9a0a7b21-8798-d5d3-bf4b-f1de38e82581@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: zjNmztE74ssw
 
---000000000000ce22140636d3f705
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 21/4/23 06:09, Cleber Rosa wrote:
+> 
+> On 4/20/23 12:54, John Snow wrote:
+>>
+>>
+>> On Thu, Apr 20, 2023, 5:19 AM Philippe Mathieu-Daudé 
+>> <philmd@linaro.org> wrote:
+>>
+>>     On 17/4/23 19:44, Alex Bennée wrote:
+>>     >
+>>     > John Snow <jsnow@redhat.com> writes:
+>>     >
+>>     >> On Mon, Apr 17, 2023 at 9:43 AM Alex Bennée
+>>     <alex.bennee@linaro.org> wrote:
 
-Fixed!
+>>     >>> diff --git a/tests/requirements.txt b/tests/requirements.txt
+>>     >>> index 0ba561b6bd..a6f73da681 100644
+>>     >>> --- a/tests/requirements.txt
+>>     >>> +++ b/tests/requirements.txt
+>>     >>> @@ -2,5 +2,5 @@
+>>     >>>   # in the tests/venv Python virtual environment. For more info,
+>>     >>>   # refer to: https://pip.pypa.io/en/stable/user_guide/#id1
+>>     >>>   # Note that qemu.git/python/ is always implicitly installed.
+>>     >>> -avocado-framework==88.1
+>>     >>> +avocado-framework==101.0
+>>     >>>   pycdlib==1.11.0
+>>     >>> --
+>>     >>> 2.39.2
+>>     >>>
+>>     >>
+>>     >> I thought there were test failures that prohibited us from
+>>     bumping the
+>>     >> Avocado-Framework version. Did those get rectified recently?
+>>
+>>     No, still not working on Darwin. At this point I'm thinking at 
+>> sending
+>>     a patch clarifying testing QEMU with Avocado is not supported on
+>>     Darwin.
+>>
+>>
+>> What's broken on Darwin?
+>>
+> Hi John,
+> 
+> IIRC, the main issue is that the legacy runner (the one active in 88.1) 
+> pickles some stuff that do not play nice under Darwin.  It has never (to 
+> the best of my knowledge) worked under Darwin.
 
-Le jeu. 5 juin 2025 =C3=A0 16:22, Peter Maydell <peter.maydell@linaro.org> =
-a
-=C3=A9crit :
+Correct.
 
-> On Thu, 5 Jun 2025 at 15:18, Peter Maydell <peter.maydell@linaro.org>
-> wrote:
-> >
-> > The AN500 application note documents that it configures the Cortex-M7
-> > CPU to have 16 MPU regions. We weren't doing this in our emulation,
-> > so the CPU had only the default 8 MPU regions. Set the mpu-ns-regions
-> > property to 16 for this board.
-> >
-> > This bug doesn't affect any of the other board types we model in
-> > this source file, because they all use either the Cortex-M3 or
-> > Cortex-M4. Those CPUs do not have an RTL configurable number of
-> > MPU regions, and always provide 8 regions if the MPU is built in.
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Reported-by: Corentin GENDRE <cocotroupe20@gmail.com>
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  hw/arm/mps2.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> > index 58efb41e6db..50e1a1c1c80 100644
-> > --- a/hw/arm/mps2.c
-> > +++ b/hw/arm/mps2.c
-> > @@ -224,7 +224,11 @@ static void mps2_common_init(MachineState *machine=
-)
-> >      switch (mmc->fpga_type) {
-> >      case FPGA_AN385:
-> >      case FPGA_AN386:
-> > +        qdev_prop_set_uint32(armv7m, "num-irq", 32);
-> > +        break;
-> >      case FPGA_AN500:
-> > +        /* The AN500 configures its Cortex-M7 with 16 MPU regions */
-> > +        qdev_prop_set_uint32(armv7m, "mpu-ns-dregions", 16);
->
-> Rats, I failed to actually refresh the git commit with a
-> fix for a bug that "make check" caught before I sent it out.
-> This should be "mpu-ns-regions", without the "d".
->
-> >          qdev_prop_set_uint32(armv7m, "num-irq", 32);
-> >          break;
-> >      case FPGA_AN511:
->
-> -- PMM
->
+>> Is it broken with avocado-framework==88.1 too? (Is this a regression?)
+>>
+> It was already broken with avocado-framework==88.1,
 
---000000000000ce22140636d3f705
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Correct.
 
-<div dir=3D"ltr">Fixed!=C2=A0<br></div><br><div class=3D"gmail_quote gmail_=
-quote_container"><div dir=3D"ltr" class=3D"gmail_attr">Le=C2=A0jeu. 5 juin =
-2025 =C3=A0=C2=A016:22, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@l=
-inaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-le=
-ft:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 5 Jun 2025 at 15:18=
-, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_=
-blank">peter.maydell@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; The AN500 application note documents that it configures the Cortex-M7<=
-br>
-&gt; CPU to have 16 MPU regions. We weren&#39;t doing this in our emulation=
-,<br>
-&gt; so the CPU had only the default 8 MPU regions. Set the mpu-ns-regions<=
-br>
-&gt; property to 16 for this board.<br>
-&gt;<br>
-&gt; This bug doesn&#39;t affect any of the other board types we model in<b=
-r>
-&gt; this source file, because they all use either the Cortex-M3 or<br>
-&gt; Cortex-M4. Those CPUs do not have an RTL configurable number of<br>
-&gt; MPU regions, and always provide 8 regions if the MPU is built in.<br>
-&gt;<br>
-&gt; Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blank">qemu-s=
-table@nongnu.org</a><br>
-&gt; Reported-by: Corentin GENDRE &lt;<a href=3D"mailto:cocotroupe20@gmail.=
-com" target=3D"_blank">cocotroupe20@gmail.com</a>&gt;<br>
-&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
-o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/mps2.c | 4 ++++<br>
-&gt;=C2=A0 1 file changed, 4 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c<br>
-&gt; index 58efb41e6db..50e1a1c1c80 100644<br>
-&gt; --- a/hw/arm/mps2.c<br>
-&gt; +++ b/hw/arm/mps2.c<br>
-&gt; @@ -224,7 +224,11 @@ static void mps2_common_init(MachineState *machin=
-e)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 switch (mmc-&gt;fpga_type) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case FPGA_AN385:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case FPGA_AN386:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_uint32(armv7m, &quot;num-ir=
-q&quot;, 32);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case FPGA_AN500:<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* The AN500 configures its Cortex-M7 wit=
-h 16 MPU regions */<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_uint32(armv7m, &quot;mpu-ns=
--dregions&quot;, 16);<br>
-<br>
-Rats, I failed to actually refresh the git commit with a<br>
-fix for a bug that &quot;make check&quot; caught before I sent it out.<br>
-This should be &quot;mpu-ns-regions&quot;, without the &quot;d&quot;.<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_uint32(armv7m, &quot;n=
-um-irq&quot;, 32);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 case FPGA_AN511:<br>
-<br>
--- PMM<br>
-</blockquote></div>
+> but it should mostly 
+> work with 101.0 (see previous reply).
+> 
+>> We might need to consider entirely separate issues:
+>>
+>> (1) We need to upgrade avocado-framework to a supported LTS version >= 
+>> v90 for dependency harmony with qemu.git/python testing
+>>
+>> (2) We need to upgrade avocado-framework to >= v101.0 to fix the 
+>> stated checksum issue in this patch
+>>
+>> (3) We would like avocado tests to work on Darwin. (Have they ever 
+>> worked? When did they break? etc.)
+>>
+>> My understanding is that this patch helps with 1 and 2 but not 3, but 
+>> if Darwin support isn't a regression, this is still a step forward.
+>>
+> To the best of my knowledge, this patch would help with 1, 2 and even 3.
 
---000000000000ce22140636d3f705--
+As of today using v8.0.0:
+
+$ make check-avocado
+   GIT     ui/keycodemapdb tests/fp/berkeley-testfloat-3 
+tests/fp/berkeley-softfloat-3 dtc
+   MKDIR   /Users/philmd/source/qemu/build/tests/results
+   AVOCADO Downloading avocado tests VM image for aarch64
+The image was downloaded:
+Provider Version Architecture File
+fedora   31      aarch64 
+/Users/philmd/avocado/data/cache/by_location/4f156e531446a679cbfe13caef8b7c9f9f79aafa/Fedora-Cloud-Base-31-1.9.aarch64.qcow2
+   AVOCADO tests/avocado
+Fetching asset from 
+tests/avocado/boot_linux_console.py:BootLinuxConsole.test_aarch64_raspi3_atf
+Fetching asset from 
+tests/avocado/boot_xen.py:BootXen.test_arm64_xen_411_and_dom0
+Fetching asset from 
+tests/avocado/boot_xen.py:BootXen.test_arm64_xen_414_and_dom0
+Fetching asset from 
+tests/avocado/boot_xen.py:BootXen.test_arm64_xen_415_and_dom0
+Fetching asset from 
+tests/avocado/machine_aarch64_virt.py:Aarch64VirtMachine.test_alpine_virt_tcg_gic_max
+Fetching asset from 
+tests/avocado/replay_kernel.py:ReplayKernelNormal.test_aarch64_virt
+Fetching asset from 
+tests/avocado/reverse_debugging.py:ReverseDebugging_AArch64.test_aarch64_virt
+JOB ID     : 142a0b2d3960c7daccd657781d52f814e1617392
+JOB LOG    : 
+/Users/philmd/source/qemu/build/tests/results/job-2023-04-21T11.35-142a0b2/job.log
+
+Avocado crashed: TypeError: cannot pickle '_thread.RLock' object
+Traceback (most recent call last):
+
+   File 
+"/Users/philmd/source/qemu/build/tests/venv/lib/python3.10/site-packages/avocado/core/job.py", 
+line 632, in run_tests
+     summary |= suite.run(self)
+
+   File 
+"/Users/philmd/source/qemu/build/tests/venv/lib/python3.10/site-packages/avocado/core/suite.py", 
+line 311, in run
+     return self.runner.run_suite(job, self)
+
+   File 
+"/Users/philmd/source/qemu/build/tests/venv/lib/python3.10/site-packages/avocado/plugins/runner.py", 
+line 390, in run_suite
+     if not self.run_test(job, test_factory, queue, summary,
+
+   File 
+"/Users/philmd/source/qemu/build/tests/venv/lib/python3.10/site-packages/avocado/plugins/runner.py", 
+line 170, in run_test
+     proc.start()
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/process.py", 
+line 121, in start
+     self._popen = self._Popen(self)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/context.py", 
+line 224, in _Popen
+     return _default_context.get_context().Process._Popen(process_obj)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/context.py", 
+line 288, in _Popen
+     return Popen(process_obj)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/popen_spawn_posix.py", 
+line 32, in __init__
+     super().__init__(process_obj)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/popen_fork.py", 
+line 19, in __init__
+     self._launch(process_obj)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/popen_spawn_posix.py", 
+line 47, in _launch
+     reduction.dump(process_obj, fp)
+
+   File 
+"/opt/homebrew/Cellar/python@3.10/3.10.9/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/reduction.py", 
+line 60, in dump
+     ForkingPickler(file, protocol).dump(obj)
+
+TypeError: cannot pickle '_thread.RLock' object
+
+Please include the traceback info and command line used on your bug report
+Report bugs visiting https://github.com/avocado-framework/avocado/issues/new
+make: *** [check-avocado] Error 4
+
+This is https://github.com/avocado-framework/avocado/issues/4888
+which is still opened.
+
+Manually using "avocado run --test-runner=nrunner" helps running the
+tests but the console output is never displayed (see [*]) and once
+finished Avocado lets various QEMU processes running in detached
+mode, wasting resources.
+
+[*] 
+https://lore.kernel.org/qemu-devel/1d0baf8b-c757-265c-b206-07ca3f218b2a@linaro.org/

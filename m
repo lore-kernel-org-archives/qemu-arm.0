@@ -1,180 +1,169 @@
-Received: by 2002:a17:907:1627:b0:8ed:b3f:fd98 with SMTP id hb39csp800350ejc;
-        Fri, 3 Mar 2023 00:33:25 -0800 (PST)
-X-Received: by 2002:a05:6870:a44a:b0:176:1fe8:8922 with SMTP id n10-20020a056870a44a00b001761fe88922mr536226oal.29.1677832405792;
-        Fri, 03 Mar 2023 00:33:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1677832405; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1121049ejm;
+        Fri, 21 Apr 2023 05:49:00 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Y1b2fRDA7E9nHaw3ZYmPtNErycVWAfqBAzM1Zvp4cuPS5QOpQjgKf0ysR5cVrWWJoFm2v1
+X-Received: by 2002:ac8:5dc9:0:b0:3de:81b0:aab8 with SMTP id e9-20020ac85dc9000000b003de81b0aab8mr7077626qtx.52.1682081340339;
+        Fri, 21 Apr 2023 05:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682081340; cv=none;
         d=google.com; s=arc-20160816;
-        b=hd3vIGkmvMmF+xzKnPZ8gh6OGl4VvgfsSYjASgG/KLOlGOEkQRRctULBiVHphRZJM/
-         IVl7pxuILOz/ogcG06cjWLznEDSnx2cmjoDGZ0IJ5OD8GCLUQF1HnqK9E9y/d7WIdPdC
-         lt0XSopVV7NffbE8LAfAFqBKSMpxEdc3OzwYoiOKIEY6eVOUqEiuylfzzkNZ+7nA3MJw
-         DMSC/i4WuaUGJSke0S6OqMAV+bsiJkJQv/SkekfhFH2s6Q8EQXxHeAQbeW3mNY5wgSTz
-         8sBUNhdG2vt+P8FkWdYd7tcUvAk1SAG2x6YNqBCrH81kdXbdrannzZXLqKrpqwNthcYc
-         RQuA==
+        b=tDzj8tmGH01rdWIwYOZLuB0CL0eW+/Wy+UoRX0lx94ouqLjqks4PraVW3kQwrQMAvY
+         FKwccAZx6jGYfjAepK2ADvMmdagauy5+e3mS3dGsRENLmn2xvd9jP/cL2c/dfdYbOPX0
+         dJrViRfdtJzd7rlu/+hDCluTjZxdtefalT6a81rI7BToeFsAgSn2fVW0g4IGsFpeLuxO
+         tTJXPXw5GE0SotS/Z8epwKahxaXx/QAR8SakDA7wQHFpBgLpDuyCtikF1iR7/3yfNoEv
+         xI/0Jg7AfiZc2p8j8mduBUgPhfrlwbMJjG8TlzTQF1X6PxnY9GTi6CU51Vn2ABXF2Jpc
+         EXfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=5poiB9hHsOof3PcUw2itX1s4KSe9/ZAMgLRbkPBocmw=;
-        b=Ok+qSlK3Bk5kDkF3A9WkXXPj2sJaQYKYjSnTdox4tYveTS0MHI7gJKotyalv1xsKLE
-         PRa/LGpGLTh6oYaGX7txvObBxhqY+e0RCBjrInLd/Eu/mblGbhOr9hnT80rpNzdtF18u
-         FTbuKVY+5hML0FxvN46+2ORGfiRN84/8pQWOAPXx59nFVUbQ2ZvxuH4QeV4ItUtzTHvm
-         Bosl3e7cx4bFdJaMpgThfwxhwQM56UE56Kf7AmhJF+tHA3qHyoBl6ExNw5+gPr1612FI
-         rZRCyt8n9vSBsZQluJSe7yrkn+AMCkUkZBQVIsw51HhRsLiyYXk8BLL6X+AutFufKAsO
-         a4Pw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=1GBpUOSxRgKEt8uIkRmXEqNzI53ZxK/94N7NuG4RJMM=;
+        b=yT0GVeslf2sccJknwikkAhLVMS/I/DvAfRZBIOfs+ib0NfITXcHX2H34HoYDghJZsk
+         GMtcJ/1roZ6pczFUJdRPdfKTKQ3s55jmDalY67jgS38/SiY1kyRHS/s18xaKze0ZtP3A
+         yx81SG0Ioa9Vs6KKzvgA3LiUuSQRIasl/Sflhqr3qUaegX/witQk3j7gl4dA6VAB6Nva
+         WaMPrOI/FBv8v2sLJ5uZQ/DcdE7RfvrTXxOH9OCItUt390t829USVPeVy52pjGI+/wFp
+         bPfwqw7s+BYIAzuI3kfiqlOAqRXDXOWEyOOaU1K0F8zxnMv0+tXwMjx8ClmhCpvvDfxz
+         xwvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FbWXFoPP;
-       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com
-Return-Path: <dbarboza@ventanamicro.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f4-20020a056870d30400b00172be654bb3sor578152oag.81.2023.03.03.00.33.25
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g3-20020ac85803000000b003de70d6dbd7si3281003qtg.80.2023.04.21.05.49.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Mar 2023 00:33:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Apr 2023 05:49:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FbWXFoPP;
-       spf=pass (google.com: domain of dbarboza@ventanamicro.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=dbarboza@ventanamicro.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ventanamicro.com; s=google; t=1677832405;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5poiB9hHsOof3PcUw2itX1s4KSe9/ZAMgLRbkPBocmw=;
-        b=FbWXFoPPCV2woaEFtMpP8EV9lfsqYjE40+w4F0JcHNkyd0MJuJ6EUuEOgBEQA1PceL
-         MJdWRXjEsRaDpgpi8u9GxIdWJjGO3+tjQJAGR9xo0wE4n/72MD6s8caj291SKJtPb2VD
-         Lt+sdzK58zf4LXGUtQtjQrPFMYZYp7SowvzVmVN+rfJu4LyVf6KnLIZhBZVlqXK49MOC
-         IFiz6dQqt50J6W+y05GXsb0PxlVf44UrtH/QH+i0HscaFdFTddTOhMBebe0gDOMLAMCx
-         5xZS/KbOJI9rVUtQLXEMt/r7VNLkj5FAx91/mlFkQbmxIEmoYbBgQcHwnEPl/zybcjVT
-         dJ0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1677832405;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5poiB9hHsOof3PcUw2itX1s4KSe9/ZAMgLRbkPBocmw=;
-        b=msuRwgvzok1GlyKqGvbPE+/ldmOCXTQI6gOLYkTpQUAsFf+EbUFxcqxCoCd2LJ3HHR
-         vgMorWSxWlCYViCZRqhnLoAKbwhonzetepoXSJtTmipys1m6PHnMgtuLFJlom3PG38gF
-         7KL8kj5wE0QJliBKepSBJc+TtKRmYbKHNpt6iuk/72XpodGtdOJTtWJCxKDDn1he/i0/
-         kaC4alIZZMqVnaAHDUeruFyVhLntgmFxe22KqvTfYhd0iZOtRVZQzNp2hD8hip6G7t2A
-         dQHYz3ogkZGNKLXBGrqtJVAnpKpxEszjqRBtbbjG6ErZC1ObF+Skjh0Wm4jbkbiEcxCc
-         M4AQ==
-X-Gm-Message-State: AO0yUKVtbxyQ0v2R+YHji799PU8R46wjA6yDkTgYWXMWiBBlmRZRAcyg
-	4TpGqCs4lrL65hHoXHZ6C1inDWvanmyMiIjI
-X-Google-Smtp-Source: AK7set8hlr1yHx+OBqCBQiyW/tJc0LeKAGcAzKgQug0uqmMG1EmbLpBoo1gFuxZYTLA7H9cb7XHBMA==
-X-Received: by 2002:a05:6871:207:b0:172:7c37:69b with SMTP id t7-20020a056871020700b001727c37069bmr712055oad.5.1677832404958;
-        Fri, 03 Mar 2023 00:33:24 -0800 (PST)
-Return-Path: <dbarboza@ventanamicro.com>
-Received: from [192.168.68.107] ([177.189.53.31])
-        by smtp.gmail.com with ESMTPSA id eg27-20020a056870989b00b001727d67f2dbsm746714oab.40.2023.03.03.00.33.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 03 Mar 2023 00:33:24 -0800 (PST)
-Message-ID: <a6b263e9-cc54-e657-8dbb-0c08f5864fe9@ventanamicro.com>
-Date: Fri, 3 Mar 2023 05:33:10 -0300
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ppqBw-0001ad-AI; Fri, 21 Apr 2023 08:48:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ppqBv-0001aC-Eo
+ for qemu-arm@nongnu.org; Fri, 21 Apr 2023 08:48:43 -0400
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ppqBt-0004oT-La
+ for qemu-arm@nongnu.org; Fri, 21 Apr 2023 08:48:43 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.7])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 493D42016D;
+ Fri, 21 Apr 2023 12:48:38 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Fri, 21 Apr
+ 2023 14:48:37 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002b49bc248-54ee-465a-999c-ec4c2d040d37,
+ 7111A4B1C16D83D618E44FD4B545295E183D9861) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2c2a359b-15eb-48c1-2a2c-edf34b83e9d6@kaod.org>
+Date: Fri, 21 Apr 2023 14:48:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v4 04/26] gdbstub: clean-up indent on gdb_exit
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 1/3] tests/avocado: Make ssh_command_output_contains()
+ globally available
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Weiwei Li <liweiwei@iscas.ac.cn>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Laurent Vivier <laurent@vivier.eu>, nicolas.eder@lauterbach.com,
- Ilya Leoshkevich <iii@linux.ibm.com>, kvm@vger.kernel.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Max Filippov
- <jcmvbkbc@gmail.com>, Sunil Muthuswamy <sunilmut@microsoft.com>,
- qemu-s390x@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Bin Meng <bin.meng@windriver.com>, Marek Vasut <marex@denx.de>,
- Greg Kurz <groug@kaod.org>, Song Gao <gaosong@loongson.cn>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alistair Francis <alistair.francis@wdc.com>, Chris Wulff
- <crwulff@gmail.com>, qemu-riscv@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, qemu-arm@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, mads@ynddal.dk,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- John Snow <jsnow@redhat.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Yanan Wang <wangyanan55@huawei.com>, David Hildenbrand <david@redhat.com>,
- Taylor Simpson <tsimpson@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230302190846.2593720-1-alex.bennee@linaro.org>
- <20230302190846.2593720-5-alex.bennee@linaro.org>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20230302190846.2593720-5-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Thomas Huth <thuth@redhat.com>, <qemu-devel@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+CC: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, Cleber Rosa
+ <crosa@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>, <qemu-arm@nongnu.org>
+References: <20230421110345.1294131-1-thuth@redhat.com>
+ <20230421110345.1294131-2-thuth@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230421110345.1294131-2-thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: M03DQcjlZbku
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 58fd5c0b-8843-4a0f-9cba-52011bc8c984
+X-Ovh-Tracer-Id: 9666413650748214124
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfedtgedgheehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleejpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehthhhuthhhsehrvgguhhgrthdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdgtrhhoshgrsehrvgguhhgrthdrtghomhdprghnughrvgifsegrjhdrihgurdgruhdpjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehgeekpdhmohguvg
+ epshhmthhpohhuth
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e42eKykARZZ/
 
-
-
-On 3/2/23 16:08, Alex Bennée wrote:
-> Otherwise checkpatch will throw a hissy fit on the later patches that
-> split this function up.
+On 4/21/23 13:03, Thomas Huth wrote:
+> This function will be useful in other tests, too, so move it to the
+> core LinuxSSHMixIn class.
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
 > ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
->   gdbstub/gdbstub.c | 28 ++++++++++++++--------------
->   1 file changed, 14 insertions(+), 14 deletions(-)
+>   tests/avocado/avocado_qemu/__init__.py | 8 ++++++++
+>   tests/avocado/linux_ssh_mips_malta.py  | 8 --------
+>   2 files changed, 8 insertions(+), 8 deletions(-)
 > 
-> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index fb9c49e0fd..63b56f0027 100644
-> --- a/gdbstub/gdbstub.c
-> +++ b/gdbstub/gdbstub.c
-> @@ -3021,27 +3021,27 @@ static void gdb_read_byte(uint8_t ch)
->   /* Tell the remote gdb that the process has exited.  */
->   void gdb_exit(int code)
->   {
-> -  char buf[4];
-> +    char buf[4];
+> diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+> index cb71f50db9..6788837e1b 100644
+> --- a/tests/avocado/avocado_qemu/__init__.py
+> +++ b/tests/avocado/avocado_qemu/__init__.py
+> @@ -431,6 +431,14 @@ def ssh_command(self, command):
+>                            f'Guest command failed: {command}')
+>           return stdout_lines, stderr_lines
 >   
-> -  if (!gdbserver_state.init) {
-> -      return;
-> -  }
-> +    if (!gdbserver_state.init) {
-> +        return;
-> +    }
->   #ifdef CONFIG_USER_ONLY
-> -  if (gdbserver_state.socket_path) {
-> -      unlink(gdbserver_state.socket_path);
-> -  }
-> -  if (gdbserver_state.fd < 0) {
-> -      return;
-> -  }
-> +    if (gdbserver_state.socket_path) {
-> +        unlink(gdbserver_state.socket_path);
-> +    }
-> +    if (gdbserver_state.fd < 0) {
-> +        return;
-> +    }
->   #endif
+> +    def ssh_command_output_contains(self, cmd, exp):
+> +        stdout, _ = self.ssh_command(cmd)
+> +        for line in stdout:
+> +            if exp in line:
+> +                break
+> +        else:
+> +            self.fail('"%s" output does not contain "%s"' % (cmd, exp))
+> +
+>   class LinuxDistro:
+>       """Represents a Linux distribution
 >   
-> -  trace_gdbstub_op_exiting((uint8_t)code);
-> +    trace_gdbstub_op_exiting((uint8_t)code);
+> diff --git a/tests/avocado/linux_ssh_mips_malta.py b/tests/avocado/linux_ssh_mips_malta.py
+> index 0179d8a6ca..d9bb525ad9 100644
+> --- a/tests/avocado/linux_ssh_mips_malta.py
+> +++ b/tests/avocado/linux_ssh_mips_malta.py
+> @@ -101,14 +101,6 @@ def shutdown_via_ssh(self):
+>           self.ssh_disconnect_vm()
+>           wait_for_console_pattern(self, 'Power down', 'Oops')
 >   
-> -  snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
-> -  put_packet(buf);
-> +    snprintf(buf, sizeof(buf), "W%02x", (uint8_t)code);
-> +    put_packet(buf);
->   
->   #ifndef CONFIG_USER_ONLY
-> -  qemu_chr_fe_deinit(&gdbserver_state.chr, true);
-> +    qemu_chr_fe_deinit(&gdbserver_state.chr, true);
->   #endif
->   }
->   
+> -    def ssh_command_output_contains(self, cmd, exp):
+> -        stdout, _ = self.ssh_command(cmd)
+> -        for line in stdout:
+> -            if exp in line:
+> -                break
+> -        else:
+> -            self.fail('"%s" output does not contain "%s"' % (cmd, exp))
+> -
+>       def run_common_commands(self, wordsize):
+>           self.ssh_command_output_contains(
+>               'cat /proc/cpuinfo',
+

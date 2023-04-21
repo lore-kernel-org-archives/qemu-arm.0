@@ -1,68 +1,69 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1121093ejm;
-        Fri, 21 Apr 2023 05:49:08 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Y1kxQ4WBCqskIRTWiw2v3rsTjAPF5L3yao9s9+J8CglniQco1QxuqWjruTPy7jWEZfNyCM
-X-Received: by 2002:ac8:7e81:0:b0:3ba:26a0:d0ee with SMTP id w1-20020ac87e81000000b003ba26a0d0eemr8607294qtj.52.1682081348374;
-        Fri, 21 Apr 2023 05:49:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682081348; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1124237ejm;
+        Fri, 21 Apr 2023 05:55:28 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aCeMEB3ZOZKwopczmSsWZo1gi0B1/s5KfKunlzuiQWrN0CZvXibMX6e2e1zhCTi56VhjyJ
+X-Received: by 2002:a05:6214:1255:b0:5ef:33af:762 with SMTP id r21-20020a056214125500b005ef33af0762mr8283541qvv.37.1682081728024;
+        Fri, 21 Apr 2023 05:55:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682081728; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQSo8/impdXyv8s96gQBBZZL7V/m50svVKT/cyMOOQDeeNXUkCD9BKQCY5K6s3kCeU
-         o16Urqu/jj3x9C2gvQBbWDaFUmM0KHWOodxmDA0/FLK5Xy++LmGq0m8bhn3wpzxpHMYj
-         byjetE5gPNZWSDCHPqmUN6+Od3+wNhrfhUr/a6Z2IK5U1T58ML5RepNhH6l/OhCvby6X
-         wMc/JGbSL8G3mE2dPhWTSQr53PikuEI/DL1f7qsUdZVM5sF4nhFKmnxghkCkS+KB4zkU
-         0WmWaz02lHn1RmDwGrRhWRY7ePtAMjHVFi7nxUw/ItfDzuzbnHlCjLpSQRP06B6Elf5M
-         H8Yw==
+        b=ETdoBmcCenJ3lW5G65mP3pLm+ylKZGtMuMtyYdAIgGlblwlMSeUM4hahF8O3pTS6DO
+         YfsMYRn4zkS3mVOxehN5dNJqxI+YPO65wt7gYRCcbbvEwRhvT5TY9mFIoDqxXBndduoW
+         KSxSsu16biMlmZzFJegZz3JHF52xhFhsYvD75tSYVnSbLm8yBkWP6IZ0is21u06D/K7g
+         b+z696KCOXchwdm+8QR/H46OYUCC4Yel/ibdiIaTxqWmbY8TzOYlWQoRl3+H8QqwrvAS
+         w/wP4km3W1lSXhCCsZYW09r2GJTwrwNap3PIeEJX6bdanjQXP5xdFID6ogbc3TlNM2br
+         tWoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id;
-        bh=aiI3vYBD5kXQnR8Lq1nwtdzslIROzrXpGYDxmaWA+f0=;
-        b=mGSq51Q0xqKOOngrmTvOpAL4ulygirKlkDU4xE79JjSIifOVVr6finjhX4AR7ajhGv
-         ndp4KXDcPrH2jU2MOHU11Xf2VPiGT5YZgMvKyMYG+eL85EioJC5lmNuScv/uXI7NJKHA
-         ewrqLavG0cdkZXRWLvRRxUU5eo57LEr/0BG+Xsl8Xwz3TCD+sCDVmqM0rXKUnKKPrRNv
-         XECN1sRvoToB2dIm4h9pwM/SV9qXYMVdrLaW8/xV/qUu+fRPzfZb9a3+nH7wWlN5lgg6
-         e3LyExaigTpHG7BPQYHC+A/6GutDjvVINhKTM0up36oxze+9FPqoax5Mch5el5etK9b/
-         Rd3Q==
+        bh=C+SndmtMWEBEFMqSat9y+bNcj02SXJUgQ3NCQJ8D1WU=;
+        b=rVUHZxOkEHg8inioonzczx29HeY/3VhGgrRhyqS9uWjJ1wQR0nAJDiDdX+FgmkUKlI
+         2qShGpklDdivw7HrjVND7LLsLggkSV0UHssXXtIXQMVit65eQR0ipWa0/4Mq1LRSnBMk
+         euiYLDcfA0tLHAHm3Ckd2px/qLUTQdCuXRhBsXDH79LeEo4fcEYaNQFSrldMXdlGHeV4
+         y1GEY3cUJS6l3ATxNoo0QrEjMSTbYZy2nKrYsY7qfWbca6EcyVdvI0VOtQftt5+yslTt
+         Nt3OQLmJVi6cl9YGCYN4iUtGWg1vy7fajbslZz5tSJlxp+cUInOmUITHQ0G+Jo8y9MmK
+         Jd9A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5-20020a05620a268500b0074e1cdf9631si2910430qkp.457.2023.04.21.05.49.08
+        by mx.google.com with ESMTPS id p4-20020a05620a22e400b0074888e09e55si2781742qki.148.2023.04.21.05.55.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Apr 2023 05:49:08 -0700 (PDT)
+        Fri, 21 Apr 2023 05:55:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ppqC1-0001ci-77; Fri, 21 Apr 2023 08:48:49 -0400
+	id 1ppqI9-0005WA-PB; Fri, 21 Apr 2023 08:55:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ppqBz-0001be-Gj
- for qemu-arm@nongnu.org; Fri, 21 Apr 2023 08:48:47 -0400
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ppqI3-0005TI-HA; Fri, 21 Apr 2023 08:55:04 -0400
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ppqBx-0004oq-Tm
- for qemu-arm@nongnu.org; Fri, 21 Apr 2023 08:48:47 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.19])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id DC4B021165;
- Fri, 21 Apr 2023 12:48:42 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG4EX2.mxp5.local (172.16.2.32)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1ppqI1-0005do-24; Fri, 21 Apr 2023 08:55:02 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.111])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 66EAD22624;
+ Fri, 21 Apr 2023 12:54:57 +0000 (UTC)
+Received: from kaod.org (37.59.142.109) by DAG4EX2.mxp5.local (172.16.2.32)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Fri, 21 Apr
- 2023 14:48:42 +0200
+ 2023 14:54:56 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00644c3f32c-1107-4dfe-80b4-d69d727bb93a,
+ (GARM-109S003777bd691-efe6-4a29-bdef-f6aefdb8129b,
  7111A4B1C16D83D618E44FD4B545295E183D9861) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <ea0bcb34-2f57-eb2f-b015-48d909355c74@kaod.org>
-Date: Fri, 21 Apr 2023 14:48:41 +0200
+Message-ID: <23d8e66e-7306-2e56-7a20-047904ec751a@kaod.org>
+Date: Fri, 21 Apr 2023 14:54:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH 3/3] MAINTAINERS: Cover tests/avocado/machine_aspeed.py
+Subject: Re: [PATCH 2/3] tests/avocado/machine_aspeed: Fix the broken
+ ast2[56]00_evb_sdk tests
 Content-Language: en-US
 To: Thomas Huth <thuth@redhat.com>, <qemu-devel@nongnu.org>, Peter Maydell
  <peter.maydell@linaro.org>
@@ -70,28 +71,28 @@ CC: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, Cleber Rosa
  <crosa@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
  <joel@jms.id.au>, <qemu-arm@nongnu.org>
 References: <20230421110345.1294131-1-thuth@redhat.com>
- <20230421110345.1294131-4-thuth@redhat.com>
+ <20230421110345.1294131-3-thuth@redhat.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230421110345.1294131-4-thuth@redhat.com>
+In-Reply-To: <20230421110345.1294131-3-thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG4EX2.mxp5.local
+X-Originating-IP: [37.59.142.109]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX2.mxp5.local
  (172.16.2.32)
-X-Ovh-Tracer-GUID: 506fb85c-70c5-4779-b993-7a7706870621
-X-Ovh-Tracer-Id: 9667539550874536812
+X-Ovh-Tracer-GUID: 8893e50a-1488-46f1-94ed-9e8265323305
+X-Ovh-Tracer-Id: 9773092667854523244
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfedtgedgheeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffudefleeiudejfeffhfejffeigffhhffhvdekieejheelvdeufffhjedtheeggeenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddthedpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepthhhuhhthhesrhgvughhrghtrdgtohhmpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdpphhhihhlmhgusehlihhnrghrohdrohhrghdptghrohhsrgesrhgvughhrghtrdgtohhmpdgrnhgurhgvfiesrghjrdhiugdrrghupdhjohgvlhesjhhmshdrihgurdgruhdpqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhohedvledpmhhoug
- gvpehsmhhtphhouhht
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfedtgedgheeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefgjefghfevffeuffffhfeltedtuefggfdtudejudehgfdtvdelffffhffgfeekhfenucffohhmrghinheplhhoghdrihhnfhhonecukfhppeduvdejrddtrddtrddupdefjedrheelrddugedvrddutdelpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehthhhuthhhsehrvgguhhgrthdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdgtrhhoshgrsehrvgguhhgrthdrtghomhdprghnughrvgifsegrjhdrihgurdgruhdpjhhovghlsehjmhhsrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpd
+ fovfetjfhoshhtpehmohehgeekpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
 X-Spam_score_int: -51
 X-Spam_score: -5.2
 X-Spam_bar: -----
 X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.297,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,35 +107,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c/Rye6fmNWex
+X-TUID: 9pgCRGXR4rpj
 
 On 4/21/23 13:03, Thomas Huth wrote:
-> tests/avocado/machine_aspeed.py should belong to the ASPEED section
-> in the maintainers file. Improve the wildcards here a little bit,
-> so that it is covered, too.
+> test_arm_ast2500_evb_sdk and test_arm_ast2600_evb_sdk are currently
+> failing. The problem is that they are trying to look for the login
+> prompt that does not have a newline at the end - but the logic in
+> _console_interaction() only handles full lines. It used to work by
+> accident in the past since there were sometimes kernel (warning and
+> error) messages popping up that finally provided a newline character
+> in the output, but since the tests have been changed to run with the
+> "quiet" kernel parameter, this is not working anymore.
 > 
+> To make this work reliably, we must not look for the "login:" prompt,
+> but have to use some text ending with a newline instead. And in the
+> ast2600 test, switch to ssh instead of trying to log into the serial
+> console - this works much more reliable and also has the benefit of
+
+Yes. The test ran ~100 times without a failure. The 'dmesg -c' call is
+inelegant but there is not much other solutions.
+
+> excercising the network interface here a little bit, too.
+
+exercising
+
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+(one little typo below)
+
 Thanks,
 
 C.
+
 > ---
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   tests/avocado/machine_aspeed.py | 31 ++++++++++++++++++-------------
+>   1 file changed, 18 insertions(+), 13 deletions(-)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 2c2068ea5c..6d8bf42d13 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1111,7 +1111,7 @@ F: include/hw/misc/pca9552*.h
->   F: hw/net/ftgmac100.c
->   F: include/hw/net/ftgmac100.h
->   F: docs/system/arm/aspeed.rst
-> -F: tests/qtest/*aspeed*
-> +F: tests/*/*aspeed*
->   F: hw/arm/fby35.c
+> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+> index d2c57ccb7e..c9515bafa1 100644
+> --- a/tests/avocado/machine_aspeed.py
+> +++ b/tests/avocado/machine_aspeed.py
+> @@ -8,6 +8,7 @@
+>   import time
+>   import os
 >   
->   NRF51
+> +from avocado_qemu import LinuxSSHMixIn
+>   from avocado_qemu import QemuSystemTest
+>   from avocado_qemu import wait_for_console_pattern
+>   from avocado_qemu import exec_command
+> @@ -230,7 +231,7 @@ def test_arm_ast2600_evb_buildroot(self):
+>           self.do_test_arm_aspeed_buildroot_poweroff()
+>   
+>   
+> -class AST2x00MachineSDK(QemuSystemTest):
+> +class AST2x00MachineSDK(QemuSystemTest, LinuxSSHMixIn):
+>   
+>       EXTRA_BOOTARGS = (
+>           'quiet '
+> @@ -257,7 +258,7 @@ def do_test_arm_aspeed_sdk_start(self, image):
+>           self.require_netdev('user')
+>           self.vm.set_console()
+>           self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+> -                         '-net', 'nic', '-net', 'user')
+> +                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
+>           self.vm.launch()
+>   
+>           self.wait_for_console_pattern('U-Boot 2019.04')
+> @@ -285,7 +286,7 @@ def test_arm_ast2500_evb_sdk(self):
+>   
+>           self.do_test_arm_aspeed_sdk_start(
+>               self.workdir + '/ast2500-default/image-bmc')
+> -        self.wait_for_console_pattern('ast2500-default login:')
+> +        self.wait_for_console_pattern('nodistro.0 ast2500-default ttyS4')
+>   
+>       @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+>       def test_arm_ast2600_evb_sdk(self):
+> @@ -305,24 +306,28 @@ def test_arm_ast2600_evb_sdk(self):
+>                            'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
+>           self.vm.add_args('-device',
+>                            'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
+> +        self.log.info('going to starrt *******')
+
+'s/rr/r'
+
+>           self.do_test_arm_aspeed_sdk_start(
+>               self.workdir + '/ast2600-default/image-bmc')
+> -        self.wait_for_console_pattern('ast2600-default login:')
+> -        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+> -        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-default:~#')
+> +        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4')
+>   
+> -        exec_command_and_wait_for_pattern(self,
+> -             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
+> +        self.ssh_connect('root', '0penBmc', False)
+> +        self.ssh_command('dmesg -c > /dev/null')
+> +
+> +        self.ssh_command_output_contains(
+> +             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+> +             'dmesg -c',
+>                'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
+> -        exec_command_and_wait_for_pattern(self,
+> +        self.ssh_command_output_contains(
+>                                'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
+>           self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
+>                           property='temperature', value=18000);
+> -        exec_command_and_wait_for_pattern(self,
+> +        self.ssh_command_output_contains(
+>                                'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
+>   
+> -        exec_command_and_wait_for_pattern(self,
+> -             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device',
+> +        self.ssh_command_output_contains(
+> +             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+> +             'dmesg -c',
+>                'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
+>           year = time.strftime("%Y")
+> -        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
+> +        self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
 

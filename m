@@ -1,126 +1,130 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1139893ejm;
-        Fri, 21 Apr 2023 06:16:35 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZIfeWJLgvi1LgHRnGM4alRdFVNb5Hl3mxXJxTCuUyZ77CqXTG36mX0obIfv9r25fyhuLyp
-X-Received: by 2002:ac8:5846:0:b0:3e6:2bba:87f3 with SMTP id h6-20020ac85846000000b003e62bba87f3mr8803818qth.47.1682082995250;
-        Fri, 21 Apr 2023 06:16:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682082995; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1141185ejm;
+        Fri, 21 Apr 2023 06:18:19 -0700 (PDT)
+X-Google-Smtp-Source: AKy350b8TX58zkKvZLjAhxGqDtQgjBB2VlDus/qDPjbL+YSk7ZEWuWosHCG07brXiLDIw910aE3U
+X-Received: by 2002:a05:6214:5289:b0:5f1:6aa8:cd2d with SMTP id kj9-20020a056214528900b005f16aa8cd2dmr8443859qvb.22.1682083099321;
+        Fri, 21 Apr 2023 06:18:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682083099; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIKJzNQINdYB4IEnoqaF3iDUwiUl8d3fE5LhDwNvbji9Z06EAuMHbH1CQDInxXLth6
-         +ye1wv5iIocloORdrOpaEmNYc08DV3lrYlxuR0xE1n71iMQoaNkP+PxRuiEnQc4tFDZr
-         o4ZCxAw787RQLRRot8IuwKPwWT/XeM/fw77YqH4CdNmtaxvcq6C1QSzjPK4gx/mibI8m
-         CNrPIYhSE4ul6ZyUuomCdXBWKBU5wtKAemgrkHEBP8Xpbu0Kq5f5IG4Dz30mPjXgEHdg
-         90OYSEBp3hDXgcJBQaTh89W6JssWCHZofvsrjtV578fcXujP3evi0VTjNUzdptmsc0Lz
-         9Z2A==
+        b=XvOby88Ho0oIE7bBEWyCJ7L82OSgJHeDPYY7L1JqRn5F835m4lePCuAEpL4znB3y0f
+         9GIGGh4m/8bVfLuvPR09aqyE9yV/XKspl/R5ZDQpvjpluAOyl6gT4YTL0SjTqAehGbJ7
+         h/FODkmTVrbdf+v0SyHbKP1XWvYX0ovDBGuHx0EZ7Tl/8prcxef/fetXpWohouBCOX8b
+         2WkKwp6kbb6aGLnNRJ2E/4NUy9906BYlppFX53L6r+uaVoWmwde+WTIcnWtZukA9ERez
+         f5Xoz3/FzhgT5zUbR0p/lrq66Y8I3OMk7oH3x/wiAIXXDJRCBZ9yWQs6ee2eHJ8GnhDf
+         KMWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=oZZ1dIWjEpEagmgP4f492Dmhz/+KLemo28kqwaulj3U=;
-        b=v7ubLF4Z4qPhLXsSZdCWsf6/rR754W1ooeJD2G+4Xe67jK/1NvPoBxFSSmT2YgijXz
-         iCOhs8R0mIXtplhNUaBCEr1HllwR9x/3vWLhL6HEbq1AccIHVMzHSRaqAqVs4/R3OVUG
-         K9/km3D9m4BTNrlSCTXk5qViXS1XN9xrfUZb+5Y/oQvjBclst4LiAztN4fRenYHtxFk3
-         1tuoPQVAm5MnajwUrYszUMvsDtz304tkXCsYeKMh8Y7pIuO8NKpeCM21v7Rc6lhuk5Wc
-         ivAEYRpdPnq0j43ROgHzy4VZtaTptCn8rNoFpVdUdOdVYnu8lMiDfTjfJznMWZXhmmYi
-         xnrw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=mzvF2DULtypOJobk7Fu9q8xQ/OplwahSBqHm5YJpxN4=;
+        b=jla/hK/GGJAtEuj2UiM2Psw5NN28FIxp6L4fqwjdWpFnm5ILJtYh+q18JJNFe6T9fY
+         ye3XN3uD9qKVlnHV3CJqFLJe+0sK8DefSvDqpGFDa3JcX0YvOxHO6dzCFXMpJHEBJWyK
+         vUVkXCqKnyI8cfX/rgHomIi4c7ZZQ9NuVdmW77/cL0Yk3kAnNujnAcjaWFkMsUFfYZ7r
+         B+iOxaO8bEVNtGNr4YIL50mNiwGp5OupTt9QmIJXq9lAM3fhI8fMeq2H6RpRfhInRJuk
+         fAtANAvWTAuRqlqhxKh7ACPn/gW1OZ6ohky2nxMzz7Nazr55zowsJj8/ACtRc/HLygA1
+         ggpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bl11-20020a05620a1a8b00b0074b1936bdb3si3070432qkb.451.2023.04.21.06.16.35
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fpb3NyuL;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id h18-20020a05620a401200b0074a64614573si1671174qko.585.2023.04.21.06.18.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Apr 2023 06:16:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Apr 2023 06:18:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ppqcj-0001oU-RR; Fri, 21 Apr 2023 09:16:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=8BaR=AM=kaod.org=clg@ozlabs.org>)
- id 1ppqcc-0001mC-IA; Fri, 21 Apr 2023 09:16:23 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=8BaR=AM=kaod.org=clg@ozlabs.org>)
- id 1ppqcZ-00015t-5L; Fri, 21 Apr 2023 09:16:17 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Q2w575Ntrz4xDt;
- Fri, 21 Apr 2023 23:15:55 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Q2w541Lttz4xFn;
- Fri, 21 Apr 2023 23:15:51 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH] aspeed/hace: Initialize g_autofree pointer
-Date: Fri, 21 Apr 2023 15:15:47 +0200
-Message-Id: <20230421131547.2177449-1-clg@kaod.org>
-X-Mailer: git-send-email 2.40.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Fpb3NyuL;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1682083098;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mzvF2DULtypOJobk7Fu9q8xQ/OplwahSBqHm5YJpxN4=;
+	b=Fpb3NyuLvEPkGSZoQYdDyi+NXxYqbrCf31n2arS3r1nzhX7emo9WdLMrXgtyD6EfOeG/3O
+	PEQ43nMX2StV9u/ye7j568DeasHCJSd2eVcMqfQ5vMwey9+Ttt7BOeeXovvIyWs/UrybPw
+	QJPSqrbGBuwAM1tL4c1L8TExwWArNx8=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-424-CNhNS7OmNy-nGTXl5I1xyQ-1; Fri, 21 Apr 2023 09:18:17 -0400
+X-MC-Unique: CNhNS7OmNy-nGTXl5I1xyQ-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-3f080f9ea3eso6923325e9.1
+        for <alex.bennee@linaro.org>; Fri, 21 Apr 2023 06:18:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682083096; x=1684675096;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mzvF2DULtypOJobk7Fu9q8xQ/OplwahSBqHm5YJpxN4=;
+        b=SwK1SF85K86qAoGZHeF00sKCQR+FHZZIYfGbJDkcuDAGpHry2ySooGdQILir0zmXPS
+         qM2HHqkOSOioqtm0ZDIB5VtuW6+kdLr8M/kJBEq7BNJNPKIWGlEF6MQIf5Ix1C5vyYwX
+         pQbbUKCwnLb1IMyf2YzdfCMINcUWW5AG+vSbu4Wn/Pvs/Kr5CZq5YqQChcS+iR0kpA0A
+         LRkUhqt3AYsCX0gcHJMzSJmnQydGTHJN2EbAkW0ncuHonMduENvtbAe3yT/DCDt1gEC0
+         xvH/r7HpiKaanZcowwUm7pDAfk7mVvIYQYhswXCrtBPcbPfqfSqpi64AT1guuoYu8ctj
+         BCkg==
+X-Gm-Message-State: AAQBX9fl+mfS4w0+LOV1kqgeP1IkDIJEttFvk6gkoUBQlF7NntkAv/0C
+	wha7dhYrY7JgmFt5Rq30TpnxNZ+d49RP3gITbvn/VDX/em4y/c0pQj11aLekhFZwSnNTDMvCX2f
+	Ybd+PZi2rlVOHIx75JZJGZ5hzn2MKbiSfJx9M2rdrzsOU+fhcHx2Sqxv86XM8/wF4o02wY9kj
+X-Received: by 2002:adf:f7c5:0:b0:2fb:87f7:3812 with SMTP id a5-20020adff7c5000000b002fb87f73812mr3877168wrq.1.1682083096775;
+        Fri, 21 Apr 2023 06:18:16 -0700 (PDT)
+X-Received: by 2002:adf:f7c5:0:b0:2fb:87f7:3812 with SMTP id a5-20020adff7c5000000b002fb87f73812mr3877143wrq.1.1682083096494;
+        Fri, 21 Apr 2023 06:18:16 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.3] (ip-109-43-178-20.web.vodafone.de. [109.43.178.20])
+        by smtp.gmail.com with ESMTPSA id z16-20020a5d4410000000b002f79ea6746asm4378571wrq.94.2023.04.21.06.18.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 21 Apr 2023 06:18:15 -0700 (PDT)
+Message-ID: <aaa99094-9cf0-3f6c-c6bb-efc8c317aa16@redhat.com>
+Date: Fri, 21 Apr 2023 15:18:14 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH 0/3] tests/avocado/machine_aspeed: Fix the broken
+ ast2[56]00_evb_sdk tests
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20230421110345.1294131-1-thuth@redhat.com>
+ <87ttx9bck6.fsf@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <87ttx9bck6.fsf@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=8BaR=AM=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +BgoBXkLlwz1
+X-TUID: jydGaD0ZCjOk
 
-As mentioned in docs/devel/style.rst "Automatic memory deallocation":
+On 21/04/2023 15.16, Alex Bennée wrote:
+> 
+> Thomas Huth <thuth@redhat.com> writes:
+> 
+>> Fix the broken ast2500_evb_sdk and ast2600_evb_sdk avocado tests.
+>> See the patch description of the second patch for details.
+>> Also add the test to the MAINTAINERS file (third patch).
+>>
+>> Thomas Huth (3):
+>>    tests/avocado: Make ssh_command_output_contains() globally available
+>>    tests/avocado/machine_aspeed: Fix the broken ast2[56]00_evb_sdk tests
+>>    MAINTAINERS: Cover tests/avocado/machine_aspeed.py
+>>
+>>   MAINTAINERS                            |  2 +-
+>>   tests/avocado/avocado_qemu/__init__.py |  8 +++++++
+>>   tests/avocado/linux_ssh_mips_malta.py  |  8 -------
+>>   tests/avocado/machine_aspeed.py        | 31 +++++++++++++++-----------
+>>   4 files changed, 27 insertions(+), 22 deletions(-)
+> 
+> Queued to testing/next, thanks.
 
-* Variables declared with g_auto* MUST always be initialized,
-  otherwise the cleanup function will use uninitialized stack memory
+Thanks, but could you please remove that "self.log.info('going to starrt 
+*******')" line in the second patch? That was a debugging left-over...
 
-This avoids QEMU to coredump when running the "hash test" command
-under Zephyr.
-
-Cc: Steven Lee <steven_lee@aspeedtech.com>
-Cc: Joel Stanley <joel@jms.id.au>
-Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/misc/aspeed_hace.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 12a761f1f5..b07506ec04 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                               bool acc_mode)
- {
-     struct iovec iov[ASPEED_HACE_MAX_SG];
--    g_autofree uint8_t *digest_buf;
-+    g_autofree uint8_t *digest_buf = NULL;
-     size_t digest_len = 0;
-     int niov = 0;
-     int i;
--- 
-2.40.0
+  Thomas
 

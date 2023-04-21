@@ -1,294 +1,220 @@
-Received: by 2002:a17:505:6015:b0:1be9:327d:8ee3 with SMTP id us21csp376326njc;
-        Thu, 5 Jun 2025 09:31:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7puF+GmfmWteSkemP7qf9Q0oKjhOE+Xo0Ewl3Y5pxSUykEmycwH8t5Eq4wAH4S041LkS9XvW6Np4mLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHInTBdpGlz5pRFf6SlycFp9uiMeR35asza7CTm5czAkACzIbshwtLPMcBfQKrSXSCHuP5Y
-X-Received: by 2002:a05:6122:658b:b0:52d:bbab:2055 with SMTP id 71dfb90a1353d-530e48d2952mr217568e0c.10.1749141082070;
-        Thu, 05 Jun 2025 09:31:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1749141082; cv=none;
-        d=google.com; s=arc-20240605;
-        b=JI0vNJcFj6Tqd4/29ena8qIra0cc+uOELfoQYioeeAFMdiQS9ZyY/Oh4JgMW0/csup
-         CTQy/vFxVINbGHdlirpX3LrxqDovwfalD+hrkbKLZ/+qirx/Ep12q6C2C27YYSRILW/6
-         AvTGmGND1RiSk36oD4fc6ADL40b3pspiDu04Th6KyRUuVGFY4nVwP2VAjfn9+03pLQ79
-         Y8gcHzQC5VZDTIij/qg3UMuGeyiXNzsEpR0C6jtCYAs4oYXfsf1LWbp7G8VAymmvajqQ
-         nUg2xu7ET4P1OZ96HODAKh0DeKqXQxDg7f0G9uUhv9lYX1yxKMQYsKsP2nfD/jsBxqsR
-         a06Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=jH9CaHdji2L1f3dp8GEPNtVV1TXTMcV74nELdv/ss0Q=;
-        fh=uUgmBcpPiEzoB3irIM2kUq+agorKl8/NGcKuh2OB9CY=;
-        b=jOV1vZypaoPXtEUShROlPNuhYnA0Vy5C7/iGBRMJ2tV+atgjRxcPXUjTV6dQVDaysW
-         ZQ5Ho1YsQ5JhNWNVzEkaRatPcy8xdfQ8I+Aw8ZZ6X42w6f4RVe7D0hGDaeTmrbPFu2XU
-         AAv+GtRn6OesD9/EYZytB0+jVDABvoKLqCJ0q7udqIAk6XWr094s9NY5kF1Z5DH4Yp9n
-         vt0/WW9bXvqKQkXF0aEx5W0vJcl6/xgVtLUOXJdvJX9OOBVn5lHFCfV9nsBqYlxnuIVO
-         ygiENibRP3pnHAy/3Nl52HTPfS5l7kILVxEOVGsJfFBg8fxqNwJpFCHQVoK5GwUPe8mN
-         iy9Q==;
-        dara=google.com
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp991911ejm;
+        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bz8vbwpGW6Eva/Kdxh5hJqGEL7HvlxBAhv/RktI08xMe5gJFbYAcHu2N4HmGWHGbbcFObs
+X-Received: by 2002:a05:622a:255:b0:3ec:490b:ce6e with SMTP id c21-20020a05622a025500b003ec490bce6emr7176991qtx.48.1682064973099;
+        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682064973; cv=none;
+        d=google.com; s=arc-20160816;
+        b=D6zLUHN/YnlsSs99S9yRGyXaFDBzM4PjvbxHsBPvN+V91aqT2clSGLvjNTzi00hy6q
+         VKd0w708ES4Kww6mcUoPaGzNIo5HojFKD914dsyIdICOp/nFFU2xhSgZcy7BfPcDK03T
+         Kj+EVYN0GMKXL/zN5rVwZ+oNs55o/xMT3P38RSBFQFYwa2Jcp9bymLkBI1pHNRAqlXLt
+         cjqIiFMWkYzYH5CI0HAZT8dPhZ7ZQmfV06RrrQXxgVf60exXbV5EZcLGeNkGSWkJJRh1
+         j6DoCBDNpo/XeR4RpK6nT86OcLpXJ5pLR06mVxB5TMZMb2Be4hLnCOLfFERygkPG82U0
+         rJ2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
+        b=rWSiIG3tk1Ur7dxbJX0/VC8jx5KvE691tVVKfWQjqPMU268ygkcoqg64SiokKKBuk7
+         7uxjQA0GP4UUylpoCkH5vobIpCYlcjZZSYR5THKosZS4WKdB0CzGL87Jr1Ig4Qffpbhz
+         fl0K9WVPGA9MiKb4d9aatRdlBpHHoeFny9a1dXF4ffAdrQzEwY5ZYiz5rm41YHZqX2hW
+         huh4rHVKZAHiVmfvNKWNr5lIoDhpotnSWTSPm6Bi2RBtv4gGTNWWTs+k3zr4JHxII2+I
+         DiLtqgtd/iQI7rlPr/Y+qvnnC0zbeA22topntG+QQljdHq8E54YF520N+rjEmxhNNBBi
+         qQDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XtTyAuLJ;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-53074ba60acsi6157690e0c.124.2025.06.05.09.31.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W5QPHQlQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f18-20020ac859d2000000b003e4690a0c00si2907526qtf.271.2023.04.21.01.16.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Jun 2025 09:31:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 21 Apr 2023 01:16:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XtTyAuLJ;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W5QPHQlQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pplvo-0008TI-Il; Fri, 21 Apr 2023 04:15:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pplvm-0008T2-Ub
+ for qemu-devel@nongnu.org; Fri, 21 Apr 2023 04:15:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1pplvk-0005vN-Ta
+ for qemu-devel@nongnu.org; Fri, 21 Apr 2023 04:15:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1749141081;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jH9CaHdji2L1f3dp8GEPNtVV1TXTMcV74nELdv/ss0Q=;
-	b=XtTyAuLJ7gpvAS8UKl4L5Qw377kC7PzvBEsFW9ykZmtEslmW2PXpi+VS4qKGJzF+SMEoG9
-	KVrRZtCSswTpAKWQpy+oNNYNhKhUAChInPYMqJzEgf4AWK5LlQjoVFfoSVzeZ/zNX2NMHy
-	6wZZorPTx2t015ihpBI56n5xWnB9okg=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-670-CVVf4lS7Pv-qCoZFLO-JqA-1; Thu,
- 05 Jun 2025 12:31:18 -0400
-X-MC-Unique: CVVf4lS7Pv-qCoZFLO-JqA-1
-X-Mimecast-MFC-AGG-ID: CVVf4lS7Pv-qCoZFLO-JqA_1749141076
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AB5461800771;
-	Thu,  5 Jun 2025 16:31:15 +0000 (UTC)
-Received: from localhost (unknown [10.45.225.217])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 1E9CC195E74A;
-	Thu,  5 Jun 2025 16:31:13 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
- <maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
- <armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
- <jdenemar@redhat.com>
-Cc: "agraf@csgraf.de" <agraf@csgraf.de>, "shahuang@redhat.com"
- <shahuang@redhat.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "philmd@linaro.org" <philmd@linaro.org>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>
-Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-In-Reply-To: <58dee0533a40458d9cbd2049c8330c5b@huawei.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20250414163849.321857-1-cohuck@redhat.com>
- <de7db6bc22ad4f0a8ac1fac718c810a1@huawei.com> <87bjrfbkyz.fsf@redhat.com>
- <878qmibc5a.fsf@redhat.com> <87tt4wamcp.fsf@redhat.com>
- <f11e5fbddf634bbc88ba4c07bafe3f26@huawei.com> <87o6v3adle.fsf@redhat.com>
- <58dee0533a40458d9cbd2049c8330c5b@huawei.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Thu, 05 Jun 2025 18:31:10 +0200
-Message-ID: <87ldq69mlt.fsf@redhat.com>
+ s=mimecast20190719; t=1682064944;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
+ b=W5QPHQlQ/aaFlm6vzxpN3tNo0ZtngZpcBt2mCSP+4ZbQXc0mX/LWODuMcdgcXYPWwURaFC
+ gEwJhGXrl5kWXjD4f4KXWtiGMZAu1fOpmz+IjxjAKwyuTKiVSz69qDjP83GIMknmXcSg4F
+ le6hGkWV+tegkImXniVtoDQpuxHC0mI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-629-8dEbqHl9Mje2m0yFNgoCKg-1; Fri, 21 Apr 2023 04:15:42 -0400
+X-MC-Unique: 8dEbqHl9Mje2m0yFNgoCKg-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-3f168827701so5742535e9.0
+ for <qemu-devel@nongnu.org>; Fri, 21 Apr 2023 01:15:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1682064942; x=1684656942;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=X6Dts7TqUmVGZnsy/sAPAITChNouk4lFeN66xZMjkKk=;
+ b=MPtGFX3kge7YDYhlhJrY2nv/9shKJBNwwrooTCoVokPdv1UeALkB+iqgycVhraoxxe
+ a/g0Qz35rhx1cUnI4EJConl1szM3WVdJrCNqr9B8qDnJ+kmfa2sUd5yaSbus7WO7iAUX
+ XJBpYyoFS92lcDlcR8uqczD8Hwn/NZw34DjCxX08G68OjOaEO8h5AsWtJjKojlkFuQhT
+ MvRVDS4/dZ65kJM8RYwLpq/mxHY3DTG6vXBnK1jM7DFgIDpwse7X/8ZepPedmXzhTwLt
+ mEUoCSuAUb+gJPwmYh+5qexvyXf1/SgLJVFgTHh+a/ZcwLkfYQBUCPVKJkbuUwozsPWA
+ eZLw==
+X-Gm-Message-State: AAQBX9ewRIGnwOF5kf6PuCX9/JQdXUqX0qBqVE76wcq5zwFO4s849zzQ
+ jREPQvGcF8P64ic6rT4Lu3IFF/tE86dUObMqEd1KE9AfohiYCpL+j3qd/COruvSpXG2kwyU0JP/
+ bKsubPERugqXwQ8A=
+X-Received: by 2002:a7b:cd83:0:b0:3f1:75ae:1cfe with SMTP id
+ y3-20020a7bcd83000000b003f175ae1cfemr1134731wmj.7.1682064941912; 
+ Fri, 21 Apr 2023 01:15:41 -0700 (PDT)
+X-Received: by 2002:a7b:cd83:0:b0:3f1:75ae:1cfe with SMTP id
+ y3-20020a7bcd83000000b003f175ae1cfemr1134706wmj.7.1682064941559; 
+ Fri, 21 Apr 2023 01:15:41 -0700 (PDT)
+Received: from redhat.com ([2.55.17.255]) by smtp.gmail.com with ESMTPSA id
+ w9-20020a1cf609000000b003ede06f3178sm4112880wmc.31.2023.04.21.01.15.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Apr 2023 01:15:40 -0700 (PDT)
+Date: Fri, 21 Apr 2023 04:15:36 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eric DeVolder <eric.devolder@oracle.com>
+Cc: Ani Sinha <ani@anisinha.ca>, shannon.zhaosl@gmail.com,
+ imammedo@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, marcel.apfelbaum@gmail.com,
+ pbonzini@redhat.com, richard.henderson@linaro.org,
+ eduardo@habkost.net, boris.ostrovsky@oracle.com,
+ MIGUEL_LUIS <miguel.luis@oracle.com>
+Subject: Re: [PATCH v2 3/4] hw/acpi: i386: bump MADT to revision 5
+Message-ID: <20230421041524-mutt-send-email-mst@kernel.org>
+References: <20230418165219.2036-1-eric.devolder@oracle.com>
+ <20230418165219.2036-4-eric.devolder@oracle.com>
+ <CAARzgwwVAptvsR1_8ttUKroLuqKdLc1dHWtNe7S0S3N-Nq4otw@mail.gmail.com>
+ <b0d86775-f7bc-fe38-c2ae-fc4f53173138@oracle.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: l0/QaHrGvM2q
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <b0d86775-f7bc-fe38-c2ae-fc4f53173138@oracle.com>
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HwRQHsLI+sFl
 
-On Wed, Jun 04 2025, Shameerali Kolothum Thodi <shameerali.kolothum.thodi@h=
-uawei.com> wrote:
+On Thu, Apr 20, 2023 at 09:22:57AM -0500, Eric DeVolder wrote:
+> 
+> 
+> On 4/20/23 03:05, Ani Sinha wrote:
+> > On Tue, Apr 18, 2023 at 10:22 PM Eric DeVolder <eric.devolder@oracle.com> wrote:
+> > > 
+> > > Currently i386 QEMU generates MADT revision 3, and reports
+> > > MADT revision 1. ACPI 6.3 introduces MADT revision 5.
+> > > 
+> > > For MADT revision 4, that introduces ARM GIC structures, which do
+> > > not apply to i386.
+> > > 
+> > > For MADT revision 5, the Local APIC flags introduces the Online
+> > > Capable bitfield.
+> > > 
+> > > Making MADT generate and report revision 5 will solve problems with
+> > > CPU hotplug (the Online Capable flag indicates hotpluggable CPUs).
+> > > 
+> > > Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devolder@oracle.com/T/#t
+> > > Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
+> > > ---
+> > >   hw/i386/acpi-common.c | 13 ++++++++++---
+> > >   1 file changed, 10 insertions(+), 3 deletions(-)
+> > > 
+> > > diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
+> > > index 52e5c1439a..286c1c5c32 100644
+> > > --- a/hw/i386/acpi-common.c
+> > > +++ b/hw/i386/acpi-common.c
+> > > @@ -38,8 +38,15 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
+> > >   {
+> > >       uint32_t apic_id = apic_ids->cpus[uid].arch_id;
+> > >       /* Flags – Local APIC Flags */
+> > > -    uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
+> > > -                     1 /* Enabled */ : 0;
+> > > +    bool enabled = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
+> > > +                     true : false;
+> > 
+> > how about "processor_enabled" instead of just "enabled" as the variable name.
+> > 
+> > > +    /*
+> > > +     * ACPI 6.3 5.2.12.2 Local APIC Flags: OnlineCapable must be 0
+> > > +     * if Enabled is set.
+> > > +     */
+> > > +    bool onlinecapable = enabled ? false : true;
+> > 
+> > ugh, how about uint32 onlinecapable = enabled? 0x0 : 0x2 ?
+> > 
+> > > +    uint32_t flags = onlinecapable ? 0x2 : 0x0 | /* Online Capable */
+> > > +                     enabled ? 0x1 : 0x0; /* Enabled */
+> > 
+> > then here, flags = onlinecapable | processor_enabled? 0x1 : 0x0;
+> > 
+> 
+> Colleague Miguel Luis pointed out that this is simpler and equivalent:
+> 
+> uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ? 1 /*
+> Enabled */ : 2 /* Online Capable */;
+> 
+> Is that acceptable?
+> eric
 
->> -----Original Message-----
->> From: Cornelia Huck <cohuck@redhat.com>
->> Sent: Wednesday, June 4, 2025 1:36 PM
->> To: Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; eric.auger.pro@gmail.com;
->> eric.auger@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
->> kvmarm@lists.linux.dev; peter.maydell@linaro.org;
->> richard.henderson@linaro.org; alex.bennee@linaro.org; maz@kernel.org;
->> oliver.upton@linux.dev; sebott@redhat.com; armbru@redhat.com;
->> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
->> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
->> philmd@linaro.org; pbonzini@redhat.com
->> Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable aarch64
->> KVM host model
->>=20
->> On Wed, Jun 04 2025, Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com> wrote:
->>=20
->> >> -----Original Message-----
->> >> From: Cornelia Huck <cohuck@redhat.com>
->> >> Sent: Tuesday, June 3, 2025 4:15 PM
->> >> To: Shameerali Kolothum Thodi
->> >> <shameerali.kolothum.thodi@huawei.com>; eric.auger.pro@gmail.com;
->> >> eric.auger@redhat.com; qemu-devel@nongnu.org; qemu-
->> arm@nongnu.org;
->> >> kvmarm@lists.linux.dev; peter.maydell@linaro.org;
->> >> richard.henderson@linaro.org; alex.bennee@linaro.org;
->> maz@kernel.org;
->> >> oliver.upton@linux.dev; sebott@redhat.com; armbru@redhat.com;
->> >> berrange@redhat.com; abologna@redhat.com; jdenemar@redhat.com
->> >> Cc: agraf@csgraf.de; shahuang@redhat.com; mark.rutland@arm.com;
->> >> philmd@linaro.org; pbonzini@redhat.com
->> >> Subject: RE: [PATCH v3 00/10] kvm/arm: Introduce a customizable
->> aarch64
->> >> KVM host model
->> >>
->> >> On Tue, May 27 2025, Cornelia Huck <cohuck@redhat.com> wrote:
->> >> > The conversion functions are not at fault here, but we're missing
->> >> > registers. If we have MIDR and friends writable, they show up in the
->> >> > masks returned by the kernel, but they are not present in the kerne=
-l's
->> >> > sysreg file where we generate our definitions from, and
->> >> > kvm_idx_to_idregs_idx() asserts instead of returning an error, which
->> >> > is kind of suboptimal...
->> >> >
->> >> > So I see two possible ways to fix this:
->> >> > - add MIDR and friends to the kernel's sysreg file
->> >> > - add MIDR and friends in QEMU's cpu-sysregs.h.inc file, and only
->> append
->> >> >   generated definitions there
->> >> >
->> >> > First option means one more round trip, second options has more
->> >> > potential for messing things up if we keep stuff local to QEMU.
->> >>
->> >> With the patch below, things work for me with a 6.15+ kernel. It's a =
-bit
->> >
->> > Yes works for me too now. Thanks.
->>=20
->> Thanks for checking.
->>=20
->> >
->> >> messy, though, and raises questions (how do we want to handle those
->> regs
->> >> across accelerators, for example, or how we can make sure that the co=
-de
->> is
->> >> more robust when registers are added.)
->> >>
->> >> My biggest question, however, is how this interacts with the framework
->> to
->> >> provide lists of MIDR/REVIDR/AIDR for errata management. The hack
->> below
->> >> adds properties to configure those regs, I guess we'd want to suppress
->> >> adding the props in order to avoid conflicts.
->> >
->> > Not sure how this impacts the errata management though. My initial take
->> on
->> > this was, user will provide a list of target CPU ids through command l=
-ine
->> and
->> > that will be used to set the target CPUs for errata management(if kern=
-el
->> > supports it).
->> >
->> > Eg:
->> > -machine virt,.., x-target-impl-cpus=3D0xMIDR1:0xREVIDR1-0xMIDR2:REVID=
-R2
->>=20
->> I'm a bit confused by the range, I'd rather expect a list of tuples,
->> e.g. <midr>:<revidr>,<midr>:<revidr>, ...
->
-> Hmm..is the concern here is the format or the number of entries?
 
-Format of the command line; number of entries is something we can change
-later.
+Looks ok to me.
 
->
->>=20
->> >
->> > And these will be stored in,
->> >
->> > #define MAX_TARGET_IMPL_CPUS    4
->> > typedef struct TargetImplCpu {
->> >      uint32_t midr;
->> >      uint32_t revidr;
->>=20
->> Isn't revidr a 64 bit value?
->
-> Yes. In fact they both are, though MIDR only uses 32 bits now. Will chang=
-e.
+> > > 
+> > >       /* ACPI spec says that LAPIC entry for non present
+> > >        * CPU may be omitted from MADT or it must be marked
+> > > @@ -102,7 +109,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
+> > >       MachineClass *mc = MACHINE_GET_CLASS(x86ms);
+> > >       const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
+> > >       AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
+> > > -    AcpiTable table = { .sig = "APIC", .rev = 1, .oem_id = oem_id,
+> > > +    AcpiTable table = { .sig = "APIC", .rev = 5, .oem_id = oem_id,
+> > >                           .oem_table_id = oem_table_id };
+> > > 
+> > >       acpi_table_begin(&table, table_data);
+> > > --
+> > > 2.31.1
+> > > 
 
-It probably should also have aidr, just to be safe. (Even if triplets on
-the command line will be a bit ugly.)
-
->
->>=20
->> > } TargetImplCpu;
->> >
->> >
->> > Please see the initial (a hack for testing kernel) implementation here,
->> >
->> https://github.com/hisilicon/qemu/commit/a393c1180274c73d34f32eaab66
->> 764a874a9ad31
->> >
->> > Please let me know if there is a better/preferred way of obtaining this
->> > target CPU list from user.
->>=20
->> I'm mostly wondering about conflicting values between "we make MIDR et
->> al. writable, so we have a value different from what the host sees" and
->> "we provide a list of possible values to the guest, so it can prepare
->> for running on those hosts". Do we want to be able to provide a common
->> set to the guest, and then enlighten it with the list of systems that it
->> actually *might* run on? A benefit would be that it could always observe
->> the same (configured) register entries, regardless where it runs (needs
->> more plumbing in QEMU, I think.) We'd also need to be clear about what
->> we'd require (i.e. do we expect that both the real host values and the
->> configured values are present in the list?)
->
-> The expectation from kernel is that when target errata CPUs are specified,
-> it includes the current host CPU Ids as well. We could check to see the l=
-ist includes
-> the host one. But I am not sure how we can validate the complete list pro=
-vided
-> by user though. I think,  the onus of deciding which platforms this Guest=
- VM is
-> going to run during its life time and specifying that correctly is with t=
-he user.
-
-My question was more along the line of "if the user configures MIDR to
-something different from the actual host values, do they need to include
-that modified value in the list of target cpus as well?" If we disallow
-changing MIDR, we'd naturally sidestep that issue.
-
->
->>=20
->> Not sure if the machine level is the right place to configure this, or
->> if it needs to go to the cpu options. While it is a machine-wide
->> configuration, it also means that we configure some cpu features in two
->> different places (even if they serve a different purpose.)
->
-> I exploited MachineState for ease of hacking =F0=9F=98=8A. But not sure t=
-his belongs to CPU
-> either as it is very specific to KVM is enabled, supported kernel etc.
-
-That's an interesting question :) I think we can keep it with the
-machine state for now until we figure out more details -- it's more
-important to actually test it out with real life scenarios.
-
->=20=20
->> We could also choose to not expose properties for MIDR and friends at
->> all, even if they are writable.
->>
->
-> Does that mean Qemu figures out all the supported target Ids based on the=
-=20
-> Host CPU  Ids?
-
-I think the target ids always need to be figured out and provided by the
-user (as only they can possibly have an idea on where that guest might
-end up running.) The question is more whether we should give the user
-the means to directly configure the regs for a certain instance.

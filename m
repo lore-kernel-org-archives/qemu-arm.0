@@ -1,134 +1,126 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1210596ejm;
-        Fri, 21 Apr 2023 08:00:21 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bAx5278L7qFmXQsrXzKMxOMdKhjh78+i4IFz81E3Hz7hY5ZotOJJhsAVDVKHH6/vDPV8Sq
-X-Received: by 2002:a05:622a:1a88:b0:3ec:493b:a909 with SMTP id s8-20020a05622a1a8800b003ec493ba909mr9513109qtc.29.1682089221460;
-        Fri, 21 Apr 2023 08:00:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682089221; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2174266ejm;
+        Sun, 23 Apr 2023 02:15:52 -0700 (PDT)
+X-Received: by 2002:a5d:4109:0:b0:2f5:8116:6453 with SMTP id l9-20020a5d4109000000b002f581166453mr6771168wrp.61.1682241352027;
+        Sun, 23 Apr 2023 02:15:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682241352; cv=none;
         d=google.com; s=arc-20160816;
-        b=KwsdBADKVaHs8Z+MiEmSpjj9hXop1OyG1yC26IoPaf0fQLZ2uuLtIh+2powcBRV2Ey
-         /bSX8+dJzzHhBl8fHkNHHV2UQK/v750R0MRk08n+pOC/hs4PvfvVoyyJrRRitUGg+60T
-         U0tyFWy1mOQ1txVUL5+8g49eVRQg+oUSr6RXC3c0rQqhDEZ2kzfQXkVnhkCPDLM1vyvr
-         fELYizHyHlJYHfMtmjyObeIuTYWe1PzVBMB35HmOTApfUuYpelgnNf0emRYjhDmZlzC9
-         QtKUKYdfbqoE+zFNiF1KGtSqe/e/oUAb6sMqnhzCDOuQ7PFMO7pC1zTYtbQ9uBSLvCyo
-         jIaw==
+        b=p86HuZ9onTZmYFEXJx2CAIsHLHmF2X+1sAxrThjrXh7pY571HYWeh1omKJ/CF78lVg
+         Kx30/GLAykt1P64SYgdxd+NFZ/RXyaQhdiWGt1DlpFqy1XT67JESs/OIwrWlMMYsGGrV
+         CVlwxDd/o+fNvqc7JvAr3pSYGncpH3ymaxW2GfiCUO7y+TLfcSR9im6APTad5LmeBFJu
+         Nq+YzNoSNtza+d716o0PGbwH32tj+XmuqN3dziFF8iWvv6omDo8NfdxCUgvno3RuqXpN
+         ZnbF2D/v+wTlxPKnBtpkCO/ToinfSPOzGF62AhOruF7wt22/4goCwr+P0FdJRnaPOLm8
+         B4EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=6gCuqahjHcRqLRfmClAcpq2puGif5QpPWvDeidLRxDc=;
-        b=QGMnpVln6f8PSHm4RLInq4sXouWsXw6xixy5EsvQ6NoEn8NqQN80/Qm6k8vqagJcoW
-         +wbAfG2yDLYFpZkGDbNNxtLL4ehy/YYErtPPS6Mbmn0rLly71q7nEydANMNbcQeFkzHK
-         pBJ1GviobiSAMT8yaJ8h4UnSntGNdkrHSkvqAz/n4hwS7995javmknfq9vs4cDTQD2Vi
-         eZKepKv5JCUPENNTirXz2WZIyoW7xbP2And9EpcV/T+4fYoF/4pRH+QIV92DaM8+6MC2
-         VixMN3IVFRYsFMM7IaXfgQTNayJ4H0lTic5n7UR9WN2Q5e1SuPPDjyi+AjnbGLlkhTiI
-         cchw==
+        bh=yPiT5LE+veZlStzegaij69CaOiLEitibVVYX2yKR6a4=;
+        b=KCTJ6TQmYtOiyCkRyCVzgTrlAYMKCrKwbrzht9DdCcd5cztaSHwl3+UW+Jq9oudja3
+         9qzECz6VE1pHaStMj9IfUa11Pr/mUEZlSTBTZvjJLkmwk7rcVjI6E3M45bwisXzuNTgH
+         LgCSiTGsL5B2ubFXY3vkkyiBZ/bdT1A8V3G61FQo4uuzwc4go3qILT/9NmNDgh2ZadCE
+         TjW2mSDE9nwLTWg134zUiUeD2J0SET1rcvSDufFx6EvgN0oRZXoZLZxufTIjyempXuiA
+         waIeWwd4K/KGOdMBWYvYpWXQHswOKXwEq52aL7wHAPeSt0G9XbFg7OKehFzQyDruNsRG
+         9i6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=azqwmDqY;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id f13-20020ac87f0d000000b003bfaa9ae3adsi3151264qtk.31.2023.04.21.08.00.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=j4EAAIrH;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e14-20020adfe38e000000b002fe96c1848asor3249762wrm.3.2023.04.23.02.15.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Apr 2023 08:00:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Sun, 23 Apr 2023 02:15:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=azqwmDqY;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1682089221;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6gCuqahjHcRqLRfmClAcpq2puGif5QpPWvDeidLRxDc=;
-	b=azqwmDqYlsx3HtP/PMiT2+pzJTCKgKp/WEWwmnyJgX/T1Ppsk4/MQvz7FZND46C9Xo+ZOj
-	WXoGIA3B/fbLZWK4qbC564X8lbDD6W93coHcBynSwv5auwyX9rF7GXtVmHcmeZ2m+CpXWb
-	ouUfwqo2Ck3pfFTF3FewM5EpM3dTR2M=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-407-PMU-QS1pP3Wi7zvbeKgFAQ-1; Fri, 21 Apr 2023 11:00:19 -0400
-X-MC-Unique: PMU-QS1pP3Wi7zvbeKgFAQ-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-3f065208a64so11290005e9.3
-        for <alex.bennee@linaro.org>; Fri, 21 Apr 2023 08:00:19 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=j4EAAIrH;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682241351; x=1684833351;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yPiT5LE+veZlStzegaij69CaOiLEitibVVYX2yKR6a4=;
+        b=j4EAAIrHq7tGjbgGTrjHz14fxr4JCC1wlTqeZVB6qR3p1fHdzAPdzHbNS01bhtMXI4
+         Zh/Uxfevdjx5rR8jknFFHAHWgzqKNB6oz0EcQpyczQ+6VXNr48lzKoCU2/r3Mc0YuH8G
+         qIDTOsG1qaUzKn895OBSo8+mFlgFUzbTwILyH5VPX8J1T2rngwIdLghC4PTB19AEQbkb
+         ztMG3+0YWTbM0zyYDDI0RZwOQynILQVGP4mxf5dI0iGEa49hGgFBLDW1LqAnt6Y6Hsqr
+         4Ij4p62VkpVE2O+lqnb8cjB53pxkikf37NRC9itK8F2POCIQw0UQtaOJp7+eh4G/qwKn
+         8DAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682089219; x=1684681219;
+        d=1e100.net; s=20221208; t=1682241351; x=1684833351;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6gCuqahjHcRqLRfmClAcpq2puGif5QpPWvDeidLRxDc=;
-        b=jkbd5l8cvOHTXVNji24VXFIB1BR8Zx3x+LEdhyQ+xgu4c5WODDknD9ZgHQe25L7fkP
-         HTvC/U8ju/zDWz3em1RXFUaaOnfWe3gnONXUbyAEX1DPn/ztBQeHnaYpR3U2kRTirME9
-         T2vFn4XoRb13z32B5Xcfm1YyGEtR3Yqc1AkRTEYLGcHn3o9m50+Ka8wobtJ3dW7SfXQg
-         ElWHzXKVAkZ/xmxNgqHmHsuLQDFc4pUtJqpLJDCK+h9+B3od30qfoNdXhPaPWaJhDvhL
-         59bdolynbL2m22g7Ii1y8ZX8TihJIi6eX17E1jIK3laYS8wo4KmmddEdn0l1RzpBx5H6
-         huZw==
-X-Gm-Message-State: AAQBX9dFl5qBTdMWIsFzJadd4G+dtkKjO4/2GUzcOKbILI0Q9K5JiJhI
-	KsFYWlZAe+mTuuRD5eDWcHsEfptBQAmuPPd8RkYi0BJHoWTpAx4pTx6xvukQ2ohrUOBHUOJgnpQ
-	ygOgpjDoWms41dZJu
-X-Received: by 2002:a05:600c:2201:b0:3f1:806d:33ad with SMTP id z1-20020a05600c220100b003f1806d33admr1871253wml.6.1682089218704;
-        Fri, 21 Apr 2023 08:00:18 -0700 (PDT)
-X-Received: by 2002:a05:600c:2201:b0:3f1:806d:33ad with SMTP id z1-20020a05600c220100b003f1806d33admr1871220wml.6.1682089218407;
-        Fri, 21 Apr 2023 08:00:18 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.3] (ip-109-43-178-20.web.vodafone.de. [109.43.178.20])
-        by smtp.gmail.com with ESMTPSA id q13-20020adfcd8d000000b002d7a75a2c20sm4511568wrj.80.2023.04.21.08.00.16
+        bh=yPiT5LE+veZlStzegaij69CaOiLEitibVVYX2yKR6a4=;
+        b=ao9WlZCVd6ZSH5/nNeMQx2dbPaLYU7CyvXzi4pxO1MZjeY8jFB1+GAskQ3geXzgGDb
+         QbTlxhXjoqKcthE6hc4FHWTlHo/rEHVAS4FcTo2ROtOiq8YqZgwYIuUatj069Re8EYt9
+         0OGGF/Bg42zEZWKc9wgUrqqeGr/k0z3z+UNTv2o09un8x6oqcGNfUYOpA2hiSza51M42
+         hKSwBAoTy/TEtswGdPXA/ANn4mnIr1Z1zKMYhB/iyg7WqlH4MSD1Jf7/RU+yauh8uKTq
+         Vpyj0R3PykBoWynriUY9al0XRZOWV4BLcMR9/6BwSYx5PshcSQZnIYRgtvGAX6a8/Gjx
+         peEA==
+X-Gm-Message-State: AAQBX9fPP0ocXVnv6Gds4bH/JIh823Xik3qhSQMLmMWGB0MM4paIEmB4
+	fUgRrDoK88/hngZURQcv42Snu7Qym63Nzhhjit4b6cRV
+X-Google-Smtp-Source: AKy350ab3abq/9H1rb8odbHZ2EclKPlMk410+3Gro+MmfdzprB+mKuB5HG++sd8XjN3k8OFdsFMqsQ==
+X-Received: by 2002:adf:f98f:0:b0:2fd:c43a:b713 with SMTP id f15-20020adff98f000000b002fdc43ab713mr5911796wrr.7.1682241351696;
+        Sun, 23 Apr 2023 02:15:51 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [10.43.4.99] (cust-west-loneq8-46-193-226-34.wb.wifirst.net. [46.193.226.34])
+        by smtp.gmail.com with ESMTPSA id z19-20020a1c4c13000000b003f173419e7asm9113533wmf.43.2023.04.23.02.15.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 21 Apr 2023 08:00:17 -0700 (PDT)
-Message-ID: <48389ddb-3c59-3bce-532e-012d5f92f493@redhat.com>
-Date: Fri, 21 Apr 2023 17:00:16 +0200
+        Sun, 23 Apr 2023 02:15:51 -0700 (PDT)
+Message-ID: <4c3b0a36-572e-cf12-ea4d-d07a44f99a40@linaro.org>
+Date: Sun, 23 Apr 2023 10:15:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v10 07/11] tests/qtest: Fix tests when no KVM or TCG are
- present
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>, Juan Quintela <quintela@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <ani@anisinha.ca>, Laurent Vivier <lvivier@redhat.com>
-References: <20230412121829.14452-1-farosas@suse.de>
- <20230412121829.14452-8-farosas@suse.de>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230412121829.14452-8-farosas@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ Thunderbird/102.10.0
+Subject: Re: [RFC PATCH] tests/tcg: limit the scope of the plugin tests
 Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+References: <20230421131400.2750123-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230421131400.2750123-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: AOcsVAkDPM+O
+Content-Transfer-Encoding: 8bit
+X-TUID: L3rBI6cNvadB
 
-On 12/04/2023 14.18, Fabiano Rosas wrote:
-> It is possible to have a build with both TCG and KVM disabled due to
-> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
-> host.
+On 4/21/23 14:14, Alex Bennée wrote:
+> Running every plugin with every test is getting excessive as well as
+> not really improving coverage that much. Restrict the plugin tests to
+> just the MULTIARCH_TESTS which are shared between most architecture
+> for both system and user-mode. For those that aren't we need to squash
+> MULTIARCH_TESTS so we don't add them when they are not part of the
+> TESTS global.
 > 
-> If we build with --disable-tcg on the aarch64 host, we will end-up
-> with a QEMU binary (x86) that does not support TCG nor KVM.
-> 
-> Skip tests that crash or hang in the above scenario. Do not include
-> any test cases if TCG and KVM are missing.
-> 
-> Make sure that calls to qtest_has_accel are placed after g_test_init
-> in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
-> printed before other messages") to avoid TAP parsing errors.
-> 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
 > ---
->   tests/qtest/bios-tables-test.c | 11 +++++++++--
->   tests/qtest/boot-serial-test.c |  5 +++++
->   tests/qtest/migration-test.c   |  9 ++++++++-
->   tests/qtest/pxe-test.c         |  8 +++++++-
->   tests/qtest/vmgenid-test.c     |  9 +++++++--
->   5 files changed, 36 insertions(+), 6 deletions(-)
+>   tests/tcg/Makefile.target                 | 10 +++++++---
+>   tests/tcg/aarch64/Makefile.softmmu-target |  2 --
+>   tests/tcg/aarch64/Makefile.target         |  1 -
+>   tests/tcg/arm/Makefile.softmmu-target     |  4 +++-
+>   tests/tcg/arm/Makefile.target             |  8 --------
+>   tests/tcg/cris/Makefile.target            |  3 +++
+>   tests/tcg/hppa/Makefile.target            |  2 --
+>   tests/tcg/i386/Makefile.target            | 10 ----------
+>   tests/tcg/ppc64/Makefile.target           |  2 --
+>   tests/tcg/riscv64/Makefile.softmmu-target |  3 +++
+>   tests/tcg/riscv64/Makefile.target         |  1 -
+>   tests/tcg/s390x/Makefile.softmmu-target   |  3 +++
+>   tests/tcg/tricore/Makefile.softmmu-target |  3 +++
+>   tests/tcg/xtensa/Makefile.softmmu-target  |  3 +++
+>   14 files changed, 25 insertions(+), 30 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~

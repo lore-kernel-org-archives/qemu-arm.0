@@ -1,11 +1,40 @@
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2682717ejm;
+        Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682328173; x=1684920173;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IPLhtaZltjDsm0+7czRR+umbyKr+Au9dGft4aGwUTwE=;
+        b=JINczLzorryr1mK2BH3fpR1gApIw8GzNALXrpymsuVON0Gn4Zjj4FV45bHu6JVcEmi
+         1ZpejeXyznctGAtmf2FOlGGJLZyT1TCAAZxsPjc8L8tkaK4KtgDdLj2zLpQD+x4bj5HY
+         4yKizdrwwPEYSLAl+FY144Tqyt8pE1Y3GhnTvjVwvtPWg75sqw4HawGm0uCMEniBMFDr
+         ubeaNkmgUaNUn7WHgMj08albaZmnvRdMKQyPOX2hWdNPKMRA7hisfQLIlUmCED7XAQK1
+         xdxp6/HL3E9zvtOeYEIriGhrxsjRCpckN+8ZC0I6J3qGNOhtq2ywInkOD/GlDaJh1zrK
+         5crA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682328173; x=1684920173;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IPLhtaZltjDsm0+7czRR+umbyKr+Au9dGft4aGwUTwE=;
+        b=Jd3IrfRLjCUNWB2vrjcSPQjSR6Ibgmq6PKf84KV2Jb4LbrePiX+LEqmrwf8teVZ+Ks
+         g+iexbnQyzRXt5RV0L3zYctj/Kny4cHGZticeVHmJWoh612zKsK76DXk4TO8uW9EFSS0
+         PFhIMOAxTpC6/NFiO7gvq3uLh71pwj/Anfq84WHP3RqfAIDXxJoALSRFTLPJ3PYH1zYa
+         H6gDBB25ONzW/BScZW/C3ctJuWy7837/L/uL2Yooc9ElJaip51OZXCqugxCXQCqifjyj
+         dw0AMO5ASqu19ExYa5lr0uTlfyFYCaI4MJmFi/HSg5o+xd/cx0YKHigFcn01KK3k2asi
+         f28w==
+X-Google-Smtp-Source: AKy350bDxB1lpbxb5x0yEXdw01e/iJnvIdahsWC5PAqCtzU4LykOO70XZ1dVmHVQZcQGmzPIwEWuOw==
+X-Received: by 2002:a7b:cb96:0:b0:3f0:7e15:f8fc with SMTP id m22-20020a7bcb96000000b003f07e15f8fcmr7214993wmi.14.1682328173070;
+        Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d3-20020a05600c3ac300b003f19b3d89e9sm5407520wms.33.2023.04.24.02.22.53
+        by smtp.gmail.com with ESMTPSA id eo9-20020a05600c82c900b003f0ad8d1c69sm8698363wmb.25.2023.04.24.02.22.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Apr 2023 02:22:56 -0700 (PDT)
+        Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3B87B1FFC5;
-	Mon, 24 Apr 2023 10:22:51 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 5C14C1FFC0;
+	Mon, 24 Apr 2023 10:22:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -37,51 +66,68 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 15/18] docs/system: remove excessive punctuation from guest-loader docs
-Date: Mon, 24 Apr 2023 10:22:46 +0100
-Message-Id: <20230424092249.58552-16-alex.bennee@linaro.org>
+Subject: [PATCH 08/18] tests/avocado: Make ssh_command_output_contains() globally available
+Date: Mon, 24 Apr 2023 10:22:39 +0100
+Message-Id: <20230424092249.58552-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YRyw34sJChfY
+X-TUID: zQaPiW6bAoii
 
-A possessive its needs no ' whereas the contraction of it is does.
+From: Thomas Huth <thuth@redhat.com>
 
+This function will be useful in other tests, too, so move it to the
+core LinuxSSHMixIn class.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Message-Id: <20230421110345.1294131-2-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230420155723.1711048-7-alex.bennee@linaro.org>
 ---
- docs/system/guest-loader.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/avocado/avocado_qemu/__init__.py | 8 ++++++++
+ tests/avocado/linux_ssh_mips_malta.py  | 8 --------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/docs/system/guest-loader.rst b/docs/system/guest-loader.rst
-index 9ef9776bf0..304ee5d531 100644
---- a/docs/system/guest-loader.rst
-+++ b/docs/system/guest-loader.rst
-@@ -14,7 +14,7 @@ The guest loader does two things:
-   - load blobs (kernels and initial ram disks) into memory
-   - sets platform FDT data so hypervisors can find and boot them
+diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
+index cb71f50db9..6788837e1b 100644
+--- a/tests/avocado/avocado_qemu/__init__.py
++++ b/tests/avocado/avocado_qemu/__init__.py
+@@ -431,6 +431,14 @@ def ssh_command(self, command):
+                          f'Guest command failed: {command}')
+         return stdout_lines, stderr_lines
  
--This is what is typically done by a boot-loader like grub using it's
-+This is what is typically done by a boot-loader like grub using its
- multi-boot capability. A typical example would look like:
++    def ssh_command_output_contains(self, cmd, exp):
++        stdout, _ = self.ssh_command(cmd)
++        for line in stdout:
++            if exp in line:
++                break
++        else:
++            self.fail('"%s" output does not contain "%s"' % (cmd, exp))
++
+ class LinuxDistro:
+     """Represents a Linux distribution
  
- .. parsed-literal::
-@@ -25,9 +25,9 @@ multi-boot capability. A typical example would look like:
-     -device guest-loader,addr=0x47000000,initrd=rootfs.cpio
+diff --git a/tests/avocado/linux_ssh_mips_malta.py b/tests/avocado/linux_ssh_mips_malta.py
+index 0179d8a6ca..d9bb525ad9 100644
+--- a/tests/avocado/linux_ssh_mips_malta.py
++++ b/tests/avocado/linux_ssh_mips_malta.py
+@@ -101,14 +101,6 @@ def shutdown_via_ssh(self):
+         self.ssh_disconnect_vm()
+         wait_for_console_pattern(self, 'Power down', 'Oops')
  
- In the above example the Xen hypervisor is loaded by the -kernel
--parameter and passed it's boot arguments via -append. The Dom0 guest
-+parameter and passed its boot arguments via -append. The Dom0 guest
- is loaded into the areas of memory. Each blob will get
--``/chosen/module@<addr>`` entry in the FDT to indicate it's location and
-+``/chosen/module@<addr>`` entry in the FDT to indicate its location and
- size. Additional information can be passed with by using additional
- arguments.
- 
+-    def ssh_command_output_contains(self, cmd, exp):
+-        stdout, _ = self.ssh_command(cmd)
+-        for line in stdout:
+-            if exp in line:
+-                break
+-        else:
+-            self.fail('"%s" output does not contain "%s"' % (cmd, exp))
+-
+     def run_common_commands(self, wordsize):
+         self.ssh_command_output_contains(
+             'cat /proc/cpuinfo',
 -- 
 2.39.2

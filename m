@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id w6-20020adfee46000000b002f0442a2d3asm10372906wro.48.2023.04.24.02.22.53
+        by smtp.gmail.com with ESMTPSA id j3-20020a5d5643000000b002e4cd2ec5c7sm10337523wrw.86.2023.04.24.02.29.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Apr 2023 02:22:56 -0700 (PDT)
+        Mon, 24 Apr 2023 02:29:19 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6F1B41FFC7;
+	by zen.linaroharston (Postfix) with ESMTP id 543721FFC6;
 	Mon, 24 Apr 2023 10:22:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,95 +36,53 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH 17/18] docs/devel: mention the spacing requirement for QOM
-Date: Mon, 24 Apr 2023 10:22:48 +0100
-Message-Id: <20230424092249.58552-18-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH 16/18] docs/devel: make a statement about includes
+Date: Mon, 24 Apr 2023 10:22:47 +0100
+Message-Id: <20230424092249.58552-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Xiyb4rJpBbGL
+X-TUID: 5ZrNuaVGwLgC
 
-We have a more complete document on QOM but we should at least mention
-the style requirements in the style guide.
+While not explicitly disallowing header macro abuse (because that
+would make us hypocrites) lets at least address some things to think
+about.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20230420155723.1711048-9-alex.bennee@linaro.org>
-
+Message-Id: <20230420155723.1711048-8-alex.bennee@linaro.org>
 ---
-vppr:
-  - use Mark's formulation, briefly mention property separation.
----
- docs/devel/qom.rst   |  2 ++
- docs/devel/style.rst | 40 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 42 insertions(+)
+ docs/devel/style.rst | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index 3e34b07c98..c9237950d0 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -1,3 +1,5 @@
-+.. _qom:
-+
- ===========================
- The QEMU Object Model (QOM)
- ===========================
 diff --git a/docs/devel/style.rst b/docs/devel/style.rst
-index 5bc6f2f095..e9fce0fc69 100644
+index 68aa776930..5bc6f2f095 100644
 --- a/docs/devel/style.rst
 +++ b/docs/devel/style.rst
-@@ -628,6 +628,46 @@ are still some caveats to beware of
- QEMU Specific Idioms
- ********************
+@@ -300,6 +300,20 @@ putting those into qemu/typedefs.h instead of including the header.
  
-+QEMU Object Model Declarations
-+==============================
+ Cyclic inclusion is forbidden.
+ 
++Generative Includes
++-------------------
 +
-+QEMU Object Model Declarations
-+==============================
++QEMU makes fairly extensive use of the macro pre-processor to
++instantiate multiple similar functions. While such abuse of the macro
++processor isn't discouraged it can make debugging and code navigation
++harder. You should consider carefully if the same effect can be
++achieved by making it easy for the compiler to constant fold or using
++python scripting to generate grep friendly code.
 +
-+The QEMU Object Model (QOM) provides a framework for handling objects
-+in the base C language. The first declaration of a storage or class
-+structure should always be the parent and leave a visual space between
-+that declaration and the new code. It is also useful to separate
-+backing for properties (options driven by the user) and internal state
-+to make navigation easier.
++If you do use template header files they should be named with the
++``.c.inc`` or ``.h.inc`` suffix to make it clear they are being
++included for expansion.
 +
-+For a storage structure the first declaration should always be called
-+"parent_obj" and for a class structure the first member should always
-+be called "parent_class" as below:
-+
-+.. code-block:: c
-+
-+    struct MyDeviceState {
-+        DeviceState parent_obj;
-+
-+        /* Properties */
-+        int prop_a;
-+        char *prop_b;
-+        /* Other stuff */
-+        int internal_state;
-+    };
-+
-+    struct MyDeviceClass {
-+        DeviceClass parent_class;
-+
-+        void (*new_fn1)(void);
-+        bool (*new_fn2)(CPUState *);
-+    };
-+
-+Note that there is no need to provide typedefs for QOM structures
-+since these are generated automatically by the QOM declaration macros.
-+See :ref:`qom` for more details.
-+
- Error handling and reporting
- ============================
+ C types
+ =======
  
 -- 
 2.39.2

@@ -1,106 +1,108 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2886630ejm;
-        Mon, 24 Apr 2023 08:19:43 -0700 (PDT)
-X-Google-Smtp-Source: AKy350azINtu7OBHjdOLQzyQr6gcGOJHtedMJLr2fOuVyKeYb6OsqyuXoe5rSB/mYutSsNQoL1hF
-X-Received: by 2002:a05:622a:170b:b0:3ef:484e:7973 with SMTP id h11-20020a05622a170b00b003ef484e7973mr20787589qtk.14.1682349583528;
-        Mon, 24 Apr 2023 08:19:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682349583; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2891580ejm;
+        Mon, 24 Apr 2023 08:27:38 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ak/XqW09rVYWctig/8t6yscgdsfvoIgoJm8Q5YnLAMcAcuZVUASO4AdMeWsbbT/q9VSgdy
+X-Received: by 2002:ac8:5dd2:0:b0:3ef:3ff5:ce28 with SMTP id e18-20020ac85dd2000000b003ef3ff5ce28mr25274883qtx.39.1682350058300;
+        Mon, 24 Apr 2023 08:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682350058; cv=none;
         d=google.com; s=arc-20160816;
-        b=INWhnFTZHM5u3yLFIRiGWzIovVvlf3veq9QlqAN5Myz/XSoWmD732zNxkh7yhJ6E03
-         pc3yNQ3SN1kLVOdS7KPY1GdjTqTNC6H1gdpY8epELWSvvh02OHaxMLn+9liHOQs5/mY1
-         ++DrmRt2/ax77+kzg0D8WzUIBMhqRwVl+cPyQdCtPYvXjkg5B2merZny0YIwVb5UHc7A
-         lt7DMDfE95fWdFeR3rjErF7SWeV1M00q51D4w4c1ZivnuPBjzdkZPirCnvvlXHBp88kF
-         CQGuoq49ZZqEYDHWm0tq1pPPHSGQsmxrC7kiph+StDCEL+bOsBGdc0qHYUhnNb+o6gBy
-         0QwA==
+        b=mufhunSxR9QGDeedKfZvZcKBGTd8K/oxJaq7CGp9uz++a4W59T7gA9vssNWSgpZoeN
+         XM2T9Qry9aucVk3jA2pi/JuPAbWvbl1EHsmPCT9nUy/WRoWA/4EMmgxwZkJyggZ9wCsJ
+         NJmwVufZxVTHMXYVUbHl+IQN/ECZS8srJwmEcme4LjndyOxKRYDgyvuoiOuwot8vDi+6
+         5sE/sYkgCJM1jD8uZOKUYcY/ZUNT+jeMcLfVRPAqNTqLsMdwKNT0/Rolt4nRQcQ4JB0+
+         fzB6LxDAX2RfoJcZZV1IXidrDvPDZwkZHLUqLXmDFVeNUL4TCyMu/A8cZbA0wT/gr+Qu
+         ouqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0ew3Q4Te16gnuQZBIdWPX9nVhsTHp7a/L7LDD7lrC64=;
-        b=YayBz2tBXm6AZBQDV/1BHzU3zAXNNWTk1XsctgPUFXB3ONmohoGkT/a1Mge0HFtJ3k
-         6kwvqQVkczRvlk9Xw83tjGqAfLZUwzt0Gmqvkh2nZav5iEGei0Q5KQCrrK4L1pFeF4sR
-         vRQcAbf+jzf6UQo3i/xGquzHd3reU77iK8VWti09kG6+enwTobiKIwP/7PKuag3hDzHp
-         JXm1C/TcpA3ifTIqFXbCqwzqME0DJCUMc2r6JKmeNg+ac8S3y4jz8eX/Meu9how8NtS2
-         //+h7KdfFhx/fBRGGgO64/brYTh75pKIoPKFcAtGpV375iM3sqcdNEV66lg59u6Usv8X
-         VrOA==
+        bh=xSalvfnQsVLK8I+FBXVViucc3wM/l9KF4EOKeg2PWAM=;
+        b=UqhJL+zOwIFO3EOoiT6z7jcGaEkPi/VCwgmKdLHSSYDqCnr88fENnpt9bnNsRu2YeZ
+         O2qFrQ72nnp5S9XgpjSyU1lbOCr2RCTdfcaQNJwXHHVMneTWkHoA40J74zCFnnHsAmKN
+         vUBzq5reAX+TcKJ0EpzK4oAIf/oNgvIWKxDWJQf7fOyBoGB8oFlECqaB/H2pVEeV6R1/
+         tjU3t0iUgzWP1fOcq90m2Bsz8rePFDVaEJ9tnW13+gZlzUGbmgl7YcVzpCF8BMKe+GhF
+         YEqGdCLT1JC8HfzUbifcbbptqTDGO5bnXsBQiV5v7TgMROLRl8E9yXkQurPrU7LhaC56
+         smMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XGBdXVAu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLhL1UN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k10-20020a05622a03ca00b003e4e85b1badsi7456360qtx.539.2023.04.24.08.19.43
+        by mx.google.com with ESMTPS id m13-20020a05622a118d00b003ef3af71c41si7355129qtk.681.2023.04.24.08.27.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 08:19:43 -0700 (PDT)
+        Mon, 24 Apr 2023 08:27:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XGBdXVAu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aLhL1UN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pqxyQ-00035R-21; Mon, 24 Apr 2023 11:19:26 -0400
+	id 1pqy68-0006jI-Ht; Mon, 24 Apr 2023 11:27:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pqxyP-00035B-EQ
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:19:25 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1pqy66-0006ik-CO
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:22 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pqxyN-000555-Ry
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:19:25 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-3f1763ee8f8so30862435e9.1
- for <qemu-arm@nongnu.org>; Mon, 24 Apr 2023 08:19:23 -0700 (PDT)
+ id 1pqy64-0006sG-LD
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:22 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-2f7c281a015so2760390f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 24 Apr 2023 08:27:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682349562; x=1684941562;
+ d=linaro.org; s=google; t=1682350039; x=1684942039;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=0ew3Q4Te16gnuQZBIdWPX9nVhsTHp7a/L7LDD7lrC64=;
- b=XGBdXVAulx1pnsRt5YwIemP4xWGq8Vom4cLsvUMiC4YbLYQlokP8XjWsbeLwpxntru
- P4DSkkUZJo6aMPtAM9J8mWk4uM1KvOqtkduiU+xuthhFyxm5yv51vNWVE0t/yF78NJUe
- NUVpZ9ZvYaMf2r5D6ux1uBiDTSiR0hLbnozOOQBkXOort8zG2gRRpoYtoGCILKdxBLfb
- XPAlnpPyPgiH1EBGB4dijaFimDYBz/0+AJHZTh0kmT8310aGjyzjv8HRMg17j3C7YlUZ
- ho5qD3oFYKknYlW9pFGFGpx9XP4HKERuKAiAVtVBuQO5k3I+1qExR8gS4EHYQclrNme9
- 5FFw==
+ bh=xSalvfnQsVLK8I+FBXVViucc3wM/l9KF4EOKeg2PWAM=;
+ b=aLhL1UN59zoeWERsyjR2sb2Uiw8sG9JvFRm4FNGE+Koyx6G+UdkE2lvKoDBsSrAXV0
+ R+PbpY4ZeSZB1vYQdZUm3G0VFfdwSfD8R1hfZtooqkRPIteS75o+XEomYtV7CDdolqd0
+ 3DNmDRWXqn8pE62ku1KXW7GlXOgkROCkbVklVvLzWr3UF96A3Xi62eYxf9eRQb8s6GJB
+ 2mEbzTPXE9ec7sMfV/XZnNEG114q9+BSfWKOvBSPgpzMAtWUeQxT/EBeVaugWpwrE82Z
+ lXI0R9IgaA4dBWLlCTtZMtdAedSEtIihP9K/b4UJfixGUh92ljdegK965FuNuuDkGmE2
+ hRbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682349562; x=1684941562;
+ d=1e100.net; s=20221208; t=1682350039; x=1684942039;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=0ew3Q4Te16gnuQZBIdWPX9nVhsTHp7a/L7LDD7lrC64=;
- b=O7EUZwJ/TQ0iHnl0vSP3tj79hYSttMYe3EYUxTC0Os1bzzK/kuAlLt88jlAQPzVNqu
- S5lAgJUg4RkdkyN3FUgwlTu5it+bHtro6fK1LyDEVAeJYVgSAbXSeWPvYG6hth8QZCDw
- OLESwi/9SyFOnXTOfeo9M/repeNJ+2gj+4CpoQzQYYKUHEemIihu7Ff/ZnAYeRE9s6oU
- 102DE2YCZF2dG02nvb1Is1xMqjP9tpzyNOFg+iitoLIQBMJ/amymTUXfM1HZlpuI1tWw
- 0CZ0HlyMaemvoRG1NDhOIdOWVu7+fJ46NeRb5gbCK6Mw3yRgHA9tmORnbx3HNl5nT+5u
- eROA==
-X-Gm-Message-State: AAQBX9fz8yiks+Ah79NkGvotbJUWeDpEfaIMtKo3FGRuAC57eZlDW2/W
- hYtUSiI9Y8BrQ2F4l17+0LyWca7QqIw723lxilI=
-X-Received: by 2002:a05:600c:b49:b0:3f1:72db:4554 with SMTP id
- k9-20020a05600c0b4900b003f172db4554mr7908798wmr.1.1682349562055; 
- Mon, 24 Apr 2023 08:19:22 -0700 (PDT)
+ bh=xSalvfnQsVLK8I+FBXVViucc3wM/l9KF4EOKeg2PWAM=;
+ b=Cjvd3KH0q0mS6/p598iqqLIs/azUfbYADg0JFJFge1YaZdPflOGOyCqLNFdDZgZTu3
+ NGm+Bk0lwYqud5I26jeFBcTp5twnEEYVt3NscF0ewtm5dLtK9HNYv+4JoS051lqkwN09
+ 8BW296rSwsThGJhliGqRI4EuGaLpR5DhUhhQj1kLrfWyVFMhW26jPTw+OHbwQ5w9aPDP
+ ztHK1iBrVsr+BQ4yG3YvQblgIcR0GS9+e2vkKVTGfUI1Pm1rUHkD1jwwC0xLsmrczJXh
+ FfVQZPDMK0yJW00EbwCQT1udUWoyqk7eqx7ItG1quSR5AodWyUBhPazUtIXqKSpBEnAx
+ YHjQ==
+X-Gm-Message-State: AAQBX9fVpREBnNuWfu5105F+0kMKTiSOaLWNM0MexP2kcNawnNIzhGXs
+ oKa+D6R70LIfJULiuNy6MgDxHAPvE2fSqwNlJlI=
+X-Received: by 2002:adf:fdd1:0:b0:2fb:ca40:e433 with SMTP id
+ i17-20020adffdd1000000b002fbca40e433mr9340408wrs.35.1682350039207; 
+ Mon, 24 Apr 2023 08:27:19 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c16-20020a05600c0ad000b003f198dfbbfcsm6740939wmr.19.2023.04.24.08.19.21
+ b1-20020a5d45c1000000b002fdeafcb132sm10971517wrs.107.2023.04.24.08.27.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Apr 2023 08:19:21 -0700 (PDT)
+ Mon, 24 Apr 2023 08:27:18 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Subject: [PATCH] hw/net/msf2-emac: Don't modify descriptor in-place in
- emac_store_desc()
-Date: Mon, 24 Apr 2023 16:19:19 +0100
-Message-Id: <20230424151919.1333299-1-peter.maydell@linaro.org>
+Cc: qemu-stable@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 0/3] hw/arm: Fix raspi, aspeed bootloaders on big-endian hosts
+Date: Mon, 24 Apr 2023 16:27:14 +0100
+Message-Id: <20230424152717.1333930-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,65 +124,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iUvpqS8oXMzb
+X-TUID: 6TcKvHyaIjjU
 
-The msf2-emac ethernet controller has functions emac_load_desc() and
-emac_store_desc() which read and write the in-memory descriptor
-blocks and handle conversion between guest and host endianness.
+Both the raspi and aspeed boards load their secondary CPU bootloader
+code in a way that only works on little-endian hosts. This patchset
+fixes that by making them both use the write_bootloader() function
+in boot.c, which gets endianness-handling right.
 
-As currently written, emac_store_desc() does the endianness
-conversion in-place; this means that it effectively consumes the
-input EmacDesc struct, because on a big-endian host the fields will
-be overwritten with the little-endian versions of their values.
-Unfortunately, in all the callsites the code continues to access
-fields in the EmacDesc struct after it has called emac_store_desc()
--- specifically, it looks at the d.next field.
+Patches 1 and 2 are essentially a patch from Cédric from a few
+months ago:
+https://patchew.org/QEMU/20230119123449.531826-1-clg@kaod.org/20230119123449.531826-9-clg@kaod.org/
+I've split it into two patches and tweaked it a bit.
 
-The effect of this is that on a big-endian host networking doesn't
-work because the address of the next descriptor is corrupted.
+These fixes let us run the avocado tests for these boards on
+big-endian hosts.
 
-We could fix this by making the callsite avoid using the struct; but
-it's more robust to have emac_store_desc() leave its input alone.
+thanks
+-- PMM
 
-(emac_load_desc() also does an in-place conversion, but here this is
-fine, because the function is supposed to be initializing the
-struct.)
+Cédric Le Goater (2):
+  hw/arm/boot: Make write_bootloader() public as arm_write_bootloader()
+  hw/arm/aspeed: Use arm_write_bootloader() to write the bootloader
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is one of a number of issues that prevent 'make check-avocado'
-working for arm targets on a big-endian host...
+Peter Maydell (1):
+  hw/arm/raspi: Use arm_write_bootloader() to write boot code
 
- hw/net/msf2-emac.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ include/hw/arm/boot.h | 49 +++++++++++++++++++++++++++++++++
+ hw/arm/aspeed.c       | 38 +++++++++++++------------
+ hw/arm/boot.c         | 35 ++++++-----------------
+ hw/arm/raspi.c        | 64 +++++++++++++++++++++++--------------------
+ 4 files changed, 111 insertions(+), 75 deletions(-)
 
-diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
-index 7ccd3e51427..34c1f768db0 100644
---- a/hw/net/msf2-emac.c
-+++ b/hw/net/msf2-emac.c
-@@ -120,12 +120,16 @@ static void emac_load_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc)
- 
- static void emac_store_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc)
- {
--    /* Convert from host endianness into LE. */
--    d->pktaddr = cpu_to_le32(d->pktaddr);
--    d->pktsize = cpu_to_le32(d->pktsize);
--    d->next = cpu_to_le32(d->next);
-+    EmacDesc outd;
-+    /*
-+     * Convert from host endianness into LE. We use a local struct because
-+     * calling code may still want to look at the fields afterwards.
-+     */
-+    outd.pktaddr = cpu_to_le32(d->pktaddr);
-+    outd.pktsize = cpu_to_le32(d->pktsize);
-+    outd.next = cpu_to_le32(d->next);
- 
--    address_space_write(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED, d, sizeof *d);
-+    address_space_write(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED, &outd, sizeof outd);
- }
- 
- static void msf2_dma_tx(MSF2EmacState *s)
 -- 
 2.34.1
 

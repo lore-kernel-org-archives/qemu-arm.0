@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p10-20020a5d48ca000000b003047dc162f7sm1094226wrs.67.2023.04.24.02.22.50
+        by smtp.gmail.com with ESMTPSA id n16-20020a05600c181000b003f046ad52efsm14993862wmp.31.2023.04.24.02.22.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Apr 2023 02:22:52 -0700 (PDT)
+        Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 0CBC91FFBD;
+	by zen.linaroharston (Postfix) with ESMTP id 41F521FFBF;
 	Mon, 24 Apr 2023 10:22:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,71 +36,95 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Eldon Stegall <eldon-qemu@eldondev.com>
-Subject: [PATCH 05/18] scripts/device-crash-test: Add a parameter to run with TCG only
-Date: Mon, 24 Apr 2023 10:22:36 +0100
-Message-Id: <20230424092249.58552-6-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH 07/18] .gitlab-ci.d/cirrus: Drop the CI job for compiling with FreeBSD 12
+Date: Mon, 24 Apr 2023 10:22:38 +0100
+Message-Id: <20230424092249.58552-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: g2QYTRgFhk3X
+X-TUID: Mql46AL736i+
 
 From: Thomas Huth <thuth@redhat.com>
 
-We're currently facing the problem that the device-crash-test script
-runs twice as long in the CI when a runner supports KVM - which sometimes
-results in a timeout of the CI job. To get a more deterministic runtime
-here, add an option to the script that allows to run it with TCG only.
+FreeBSD 13.0 has been released in April 2021:
 
-Reported-by: Eldon Stegall <eldon-qemu@eldondev.com>
+ https://www.freebsd.org/releases/13.0R/announce/
+
+According to QEMU's support policy, we stop supporting the previous
+major release two years after the the new major release has been
+published. So we can stop testing FreeBSD 12 in our CI now.
+
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230417134321.3627231-6-alex.bennee@linaro.org>
-Message-Id: <20230414145845.456145-3-thuth@redhat.com>
+Message-Id: <20230418160225.529172-1-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 2 +-
- scripts/device-crash-test  | 4 +++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ .gitlab-ci.d/cirrus.yml             | 13 -------------
+ .gitlab-ci.d/cirrus/freebsd-12.vars | 16 ----------------
+ tests/lcitool/refresh               |  1 -
+ 3 files changed, 30 deletions(-)
+ delete mode 100644 .gitlab-ci.d/cirrus/freebsd-12.vars
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 333eea9dd3..bb3650a51c 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -103,7 +103,7 @@ crash-test-debian:
-   script:
-     - cd build
-     - make NINJA=":" check-venv
--    - tests/venv/bin/python3 scripts/device-crash-test -q ./qemu-system-i386
-+    - tests/venv/bin/python3 scripts/device-crash-test -q --tcg-only ./qemu-system-i386
+diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
+index 502dfd612c..1507c928e5 100644
+--- a/.gitlab-ci.d/cirrus.yml
++++ b/.gitlab-ci.d/cirrus.yml
+@@ -44,19 +44,6 @@
+   variables:
+     QEMU_JOB_CIRRUS: 1
  
- build-system-fedora:
-   extends:
-diff --git a/scripts/device-crash-test b/scripts/device-crash-test
-index 73bcb98693..b74d887331 100755
---- a/scripts/device-crash-test
-+++ b/scripts/device-crash-test
-@@ -397,7 +397,7 @@ def binariesToTest(args, testcase):
+-x64-freebsd-12-build:
+-  extends: .cirrus_build_job
+-  variables:
+-    NAME: freebsd-12
+-    CIRRUS_VM_INSTANCE_TYPE: freebsd_instance
+-    CIRRUS_VM_IMAGE_SELECTOR: image_family
+-    CIRRUS_VM_IMAGE_NAME: freebsd-12-4
+-    CIRRUS_VM_CPUS: 8
+-    CIRRUS_VM_RAM: 8G
+-    UPDATE_COMMAND: pkg update; pkg upgrade -y
+-    INSTALL_COMMAND: pkg install -y
+-    TEST_TARGETS: check
+-
+ x64-freebsd-13-build:
+   extends: .cirrus_build_job
+   variables:
+diff --git a/.gitlab-ci.d/cirrus/freebsd-12.vars b/.gitlab-ci.d/cirrus/freebsd-12.vars
+deleted file mode 100644
+index 44d8a2a511..0000000000
+--- a/.gitlab-ci.d/cirrus/freebsd-12.vars
++++ /dev/null
+@@ -1,16 +0,0 @@
+-# THIS FILE WAS AUTO-GENERATED
+-#
+-#  $ lcitool variables freebsd-12 qemu
+-#
+-# https://gitlab.com/libvirt/libvirt-ci
+-
+-CCACHE='/usr/local/bin/ccache'
+-CPAN_PKGS=''
+-CROSS_PKGS=''
+-MAKE='/usr/local/bin/gmake'
+-NINJA='/usr/local/bin/ninja'
+-PACKAGING_COMMAND='pkg'
+-PIP3='/usr/local/bin/pip-3.8'
+-PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 zstd'
+-PYPI_PKGS=''
+-PYTHON='/usr/local/bin/python3'
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 33ef1282da..f1570b54df 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -182,7 +182,6 @@ try:
+     #
+     # Cirrus packages lists for GitLab
+     #
+-    generate_cirrus("freebsd-12")
+     generate_cirrus("freebsd-13")
+     generate_cirrus("macos-12")
  
- 
- def accelsToTest(args, testcase):
--    if getBinaryInfo(args, testcase['binary']).kvm_available:
-+    if getBinaryInfo(args, testcase['binary']).kvm_available and not args.tcg_only:
-         yield 'kvm'
-     yield 'tcg'
- 
-@@ -510,6 +510,8 @@ def main():
-                         help="Full mode: test cases that are expected to fail")
-     parser.add_argument('--strict', action='store_true', dest='strict',
-                         help="Treat all warnings as fatal")
-+    parser.add_argument('--tcg-only', action='store_true', dest='tcg_only',
-+                        help="Only test with TCG accelerator")
-     parser.add_argument('qemu', nargs='*', metavar='QEMU',
-                         help='QEMU binary to run')
-     args = parser.parse_args()
 -- 
 2.39.2

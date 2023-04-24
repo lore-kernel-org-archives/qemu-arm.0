@@ -1,113 +1,104 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2892235ejm;
-        Mon, 24 Apr 2023 08:28:42 -0700 (PDT)
-X-Google-Smtp-Source: AKy350b6nL6j27Mie5P3iFXv9xUSTG2FATslfa/mRImT/Bc7Wzb6t+iEB1Y4/YUL8r6B+/MfAWVA
-X-Received: by 2002:ac8:5a54:0:b0:3ef:4c4b:7e4c with SMTP id o20-20020ac85a54000000b003ef4c4b7e4cmr19941254qta.31.1682350121535;
-        Mon, 24 Apr 2023 08:28:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682350121; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2899096ejm;
+        Mon, 24 Apr 2023 08:39:50 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZjuXbN/sWHr+bYWNmhsaNjr+fToKsEXkFpB1WQIFrsHdUfB/VAeaisYcKx1GzRA8SqkgJx
+X-Received: by 2002:a67:fe52:0:b0:42e:4cc0:7810 with SMTP id m18-20020a67fe52000000b0042e4cc07810mr5517065vsr.26.1682350790009;
+        Mon, 24 Apr 2023 08:39:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682350789; cv=none;
         d=google.com; s=arc-20160816;
-        b=MW8i8/4j66fIHv3froyLfdL3ul3ipZyJc+rX9UxXCBalAWgDUlMWnS5hIz70gSvtsK
-         bglhyv09Xh3lvc0FqT9FPBWO8EezQuUge4hSXPT12KKOkPAMEUlmrjiIfPvdms51ux1H
-         FvdLGXMYyCntelmJ7UnQP7yO43HJ5uAQ9aDBhOMxs2oqDISh0BXfdbVM8IuVaJjP8XXp
-         gmcVTphezp7AMA72O0Xe2Wl6XmcFWDnBIVjR+XYfMh3ewC4PQjIsNwcwXNOaarcFwU9s
-         M3FNNP5KEUuYecGFo8iIQe9wDxFC23XFCskPocuokC5VlRYIQTJDZhNMkCdfOzfPfNly
-         bZgg==
+        b=ij0Vwp8vZLzu+dSkIaKkTPU1ljYZkDiJTbrR5iT1SR785Mn3OY6GaUtUmMkfpIOG/X
+         fz8TQVPg8u24uDS01uiIAXofQtmNVEUWFtiwYO22dvaIWSSqD3CF03IorX9n86bZGIzf
+         MUjWzmleYzxnHRajsMsvu9CQA5kbVi9mElO1hPyMxAStI4rzPTzElME5Wg3slJj51MHX
+         XKMgtuvBb8FLZcrgUrXd3V2PHjX+He6OZKgnmenirKjsvwQE5mBpjJ/DP7KCWzZW7SJM
+         1s11zFmKwWdvZq/Ps0Qh5yaEfsz7loZYfxO5coe2bPge07OQxlbk51w4olS9mw8/7jng
+         sLPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=5geIGOhKXTNOnUumAZpLeK5JvkWsmSTZmE66oiXbKTA=;
-        b=KY4yS0QujW6v2qOqboUo5nB5pwNNIs6QcbqKYcgVPR/crgwBWk/J84j9/JTbJ9Zntq
-         47OGGRjRBJ/rzYOR2xSyr9vpIH1q699JZ6PqG/5HCH1qq3ideF4TUXKQCtX7njbGqLVn
-         xdkHMyWcPpJl+CtsZcJsmHY7GMF+RwA3lNtfRHIiUBYIib+Mi1GuQuNRp9rS3iecWZoD
-         hm4kmVG/SjpB8jXUTyKNkX/ox1LY1R6z60dnaaOrqXATSQJJCKRGZfJazQ/I9KNjTwY5
-         xIlvCv0ccaf6y8NAP/7J9fyZufrytnNT/Gc6h4L57F1MkGEqwaXZSTv02WI5UDyWaecK
-         TCow==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0jNGQGLAYMBmkguv81DRv0hpSlY3YPxmNo+eS8KRvQc=;
+        b=TbG0jRSmuP/L6ALsjzOr+4ES5/mh/duzqK3sXEHyhDxPNzKKnGI6QudsHy7Lppu6dL
+         qv0KfaYqsv969OzC5Aqj+vNnFNoyMo0BEM9tWIFeVWzOiCWW6tKLqpe30X5A8da8MWBE
+         FU5QXWj1BDjK9qjubWtFbXTM/zMBZoyq7m2Zs5iDdWsFwjo/PrZ5xIhuC6k4Qt6X4y2/
+         k8C7werWHYh3IFtlXvYxa7dWDFiRlQw6VNbUY/X5TTlciCe3HP8k561Y94XCPBUpoi/I
+         pmmkV5HaDcnJ5gKlPPlhsU0mPFWIoE9tg5m+db/XJqFgViuITxSyXHmABrM/cdLjTNmU
+         fXvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qCgxDrzJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qQxjfReV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8-20020a05622a178800b003e4de7ad52csi7323365qtk.566.2023.04.24.08.28.41
+        by mx.google.com with ESMTPS id w19-20020a05620a445300b0074cdcea5d2dsi7882956qkp.324.2023.04.24.08.39.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 08:28:41 -0700 (PDT)
+        Mon, 24 Apr 2023 08:39:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qCgxDrzJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qQxjfReV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pqy6F-0006kk-OM; Mon, 24 Apr 2023 11:27:31 -0400
+	id 1pqyHm-00079s-R9; Mon, 24 Apr 2023 11:39:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pqy69-0006jQ-Pa
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:29 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1pqyHl-00078N-FS
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:39:25 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pqy65-0006sp-LD
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:25 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-2f55ffdbaedso2880895f8f.2
- for <qemu-arm@nongnu.org>; Mon, 24 Apr 2023 08:27:21 -0700 (PDT)
+ id 1pqyHf-0001Tt-Lc
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:39:21 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-2f625d52275so4433696f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Apr 2023 08:39:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682350040; x=1684942040;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5geIGOhKXTNOnUumAZpLeK5JvkWsmSTZmE66oiXbKTA=;
- b=qCgxDrzJL3LSqI1wVDFaTIGojdBAyr0bJzIWpUmhDIWkmCI8b3/VQ181bQyGx1O9U3
- VItbssMh+OI4giOAbPky5htwDBVF+6D2FTHU1LOqaF5TGC4swGQsoB8QZ6bRcxX0UXnl
- TqWTxKEHhgIEt48jgvjGox/XdGIc+avTXRUUyVxY8ka/Jm0K7LV1TX2VQNuwAUQ8kOX0
- 9oJaRVBpPU1GEIuHJkFFSNjmMcHDSkSv5YqPrX6DszAboAdiT/gVsf6VCI9+kTCtl7lu
- 6QP74g4Hcl+M+lb+0XIebn7/D9QGp1BewotjRNyG+2KrQ60NMmHxhECeY03wVWXPh7Zb
- VmOg==
+ d=linaro.org; s=google; t=1682350751; x=1684942751;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=0jNGQGLAYMBmkguv81DRv0hpSlY3YPxmNo+eS8KRvQc=;
+ b=qQxjfReV02y+ZDtGrS52qLOQlzcUTSOuytU2UgEm5ZOu6ldehkX3ApBCWgiVnf9yNt
+ tuaY7841ZbeVJLcpHduEa4NhRHv46yxAcfIJvVx1ntk6VNadXWNPa6IYm1N8fnBpO6zY
+ EPQBdbOBOgIoUi6OtDQVRYhNjRI0DNL0qJr8WGUvwBCLockTFsplvtA3P0znCX80v+8J
+ qAwLumi5gAfVRp/zlv+/LYKgSAd/eIjRlKg2P6ai5lgIhn4xQFL1f+l6q+G3gQtzrdeF
+ Rc0jQyOAhr4pbz2RBQsdXIFMjj39FGiktXAoro2AnoFJm82cvZpX7yHP5Ml3I3DZQ+yt
+ no9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682350040; x=1684942040;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=5geIGOhKXTNOnUumAZpLeK5JvkWsmSTZmE66oiXbKTA=;
- b=G0zd3RAGgvLx9yEP9TzMUFYoNm2XPV6L2cstinets5K5/7Lxlk3D4WluxCCZDoNRXQ
- VwLFI8CfzKT2Lx1h0iNxap0SpRXX9ZhFHpuOHgV1A3IsrhIfbf3o6ayOgW4xajdbevjr
- FXmsQkhmZH+MwcQzFxCykWE5rij3NER4VJJGzCvah0K0qLR0Xw+WLE8WzTCW4ZFiya8g
- MwZ3AUv78iT74EmgTF2a7rLX9fEZxOKBRAEuX5Z87LjvqYWFtbXenvYeNX+5lgTBWcG+
- 5497+pfnzIldCozUqBufD1jHm8m5oEuSexqn786nYDwscsaG/ChmrkPtLc2eNSUkkGbk
- mHkw==
-X-Gm-Message-State: AAQBX9eYzFub6rEgzvkYwu31FkiU1Q3ufDT9S0dww4gUDoB/B8SE8+2A
- L7lBlp7xlDGrk3KEd/uu89ChMUqoY2zMs0WSdT4=
-X-Received: by 2002:adf:fc11:0:b0:2f9:95b4:450a with SMTP id
- i17-20020adffc11000000b002f995b4450amr9730401wrr.25.1682350040318; 
- Mon, 24 Apr 2023 08:27:20 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1682350751; x=1684942751;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0jNGQGLAYMBmkguv81DRv0hpSlY3YPxmNo+eS8KRvQc=;
+ b=eXa8q6jR7Vq006CfCe7nP+Dz1MEskpPYIb9kqonCokTF1hRcJft63GTMpi6ntceARV
+ ysum1F+FmwAMkSCUEfY0ZngNQP4HZWaEcjaYePuzXRf55YVBdB5R3yT8t0iWpO+y4Q7I
+ 8lu8eVbIVk+4PePPxbOhUrh13kw4UMr/0EHeLmkOE9MktjwrPp616DnWrCqryq9rZIeh
+ N6suKxF0G0ipmzl8Ic3/9IeGeaDnDoc7QhktWTsYZAUt4/EjMSetBRK2K4MdZPXV3Tl6
+ cPvzLsBVc30n9keTjav4q3z+WncW+/PMPVNsxpWGM/XPKj34p8xdujs/C2mnib/5oRr+
+ B3xA==
+X-Gm-Message-State: AAQBX9fSCIS/7OGGI0BoBb/kiW1DkiSVtGGTeGypNQWvU7DogYzhhFwd
+ JkjE2XU+j1lF2Ktiolwy7AZG8Njjg4R8SVZa5qY=
+X-Received: by 2002:a5d:5246:0:b0:2cf:e517:c138 with SMTP id
+ k6-20020a5d5246000000b002cfe517c138mr9064255wrc.66.1682350751106; 
+ Mon, 24 Apr 2023 08:39:11 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- b1-20020a5d45c1000000b002fdeafcb132sm10971517wrs.107.2023.04.24.08.27.19
+ f3-20020adfdb43000000b002efb2d861dasm11041241wrj.77.2023.04.24.08.39.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Apr 2023 08:27:20 -0700 (PDT)
+ Mon, 24 Apr 2023 08:39:10 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 2/3] hw/arm/aspeed: Use arm_write_bootloader() to write the
- bootloader
-Date: Mon, 24 Apr 2023 16:27:16 +0100
-Message-Id: <20230424152717.1333930-3-peter.maydell@linaro.org>
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH 0/2] target/arm: Load correct half of 64-bit fields
+Date: Mon, 24 Apr 2023 16:39:07 +0100
+Message-Id: <20230424153909.1419369-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230424152717.1333930-1-peter.maydell@linaro.org>
-References: <20230424152717.1333930-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,85 +120,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o6Q0WHW/Ule2
+X-TUID: eYXyroe01RJe
 
-From: Cédric Le Goater <clg@kaod.org>
+This patchset fixes a bug where on a big-endian 64-bit host the
+guest would crash immediately when it did an ERET. This happens
+because when we load the new PC value from CPUARMState::esr_el[2]
+we do a 32-bit load even though the struct field is 64 bits.
+So on 64-bit BE we use the wrong half of the register.
 
-When writing the secondary-CPU stub boot loader code to the guest,
-use arm_write_bootloader() instead of directly calling
-rom_add_blob_fixed().  This fixes a bug on big-endian hosts, because
-arm_write_bootloader() will correctly byte-swap the host-byte-order
-array values into the guest-byte-order to write into the guest
-memory.
+Patch 1 defines a new macro to load the low 32 bits from a
+64-bit field, and uses it in the two places where we got this
+wrong. Patch 2 adds some compile-time assertions to the
+existing load_cpu_field() and store_cpu_field() macros that
+catch inadvertent uses on struct fields of the wrong size.
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-[PMM: Moved the "make arm_write_bootloader() function public" part
- to its own patch; updated commit message to note that this fixes
- an actual bug; adjust to the API changes noted in previous commit]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/aspeed.c | 38 ++++++++++++++++++++------------------
- 1 file changed, 20 insertions(+), 18 deletions(-)
+This fix is necessary to be able to run the avocado tests for
+the orangepi on a 64-bit BE system.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index c1f2b9cfcab..0b29028fe11 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -200,33 +200,35 @@ struct AspeedMachineState {
- static void aspeed_write_smpboot(ARMCPU *cpu,
-                                  const struct arm_boot_info *info)
- {
--    static const uint32_t poll_mailbox_ready[] = {
-+    AddressSpace *as = arm_boot_address_space(cpu, info);
-+    static const ARMInsnFixup poll_mailbox_ready[] = {
-         /*
-          * r2 = per-cpu go sign value
-          * r1 = AST_SMP_MBOX_FIELD_ENTRY
-          * r0 = AST_SMP_MBOX_FIELD_GOSIGN
-          */
--        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
--        0xe21000ff,  /* ands    r0, r0, #255          */
--        0xe59f201c,  /* ldr     r2, [pc, #28]         */
--        0xe1822000,  /* orr     r2, r2, r0            */
-+        { 0xee100fb0 },  /* mrc     p15, 0, r0, c0, c0, 5 */
-+        { 0xe21000ff },  /* ands    r0, r0, #255          */
-+        { 0xe59f201c },  /* ldr     r2, [pc, #28]         */
-+        { 0xe1822000 },  /* orr     r2, r2, r0            */
- 
--        0xe59f1018,  /* ldr     r1, [pc, #24]         */
--        0xe59f0018,  /* ldr     r0, [pc, #24]         */
-+        { 0xe59f1018 },  /* ldr     r1, [pc, #24]         */
-+        { 0xe59f0018 },  /* ldr     r0, [pc, #24]         */
- 
--        0xe320f002,  /* wfe                           */
--        0xe5904000,  /* ldr     r4, [r0]              */
--        0xe1520004,  /* cmp     r2, r4                */
--        0x1afffffb,  /* bne     <wfe>                 */
--        0xe591f000,  /* ldr     pc, [r1]              */
--        AST_SMP_MBOX_GOSIGN,
--        AST_SMP_MBOX_FIELD_ENTRY,
--        AST_SMP_MBOX_FIELD_GOSIGN,
-+        { 0xe320f002 },  /* wfe                           */
-+        { 0xe5904000 },  /* ldr     r4, [r0]              */
-+        { 0xe1520004 },  /* cmp     r2, r4                */
-+        { 0x1afffffb },  /* bne     <wfe>                 */
-+        { 0xe591f000 },  /* ldr     pc, [r1]              */
-+        { AST_SMP_MBOX_GOSIGN },
-+        { AST_SMP_MBOX_FIELD_ENTRY },
-+        { AST_SMP_MBOX_FIELD_GOSIGN },
-+        { 0, FIXUP_TERMINATOR }
-     };
-+    static const uint32_t fixupcontext[FIXUP_MAX] = { 0 };
- 
--    rom_add_blob_fixed("aspeed.smpboot", poll_mailbox_ready,
--                       sizeof(poll_mailbox_ready),
--                       info->smp_loader_start);
-+    arm_write_bootloader("aspeed.smpboot", as, info->smp_loader_start,
-+                         poll_mailbox_ready, fixupcontext);
- }
- 
- static void aspeed_reset_secondary(ARMCPU *cpu,
+thanks
+-- PMM
+
+Peter Maydell (2):
+  target/arm: Define and use new load_cpu_field_low32()
+  target/arm: Add compile time asserts to load/store_cpu_field macros
+
+ target/arm/translate-a32.h | 24 ++++++++++++++++++++----
+ target/arm/tcg/translate.c |  4 ++--
+ 2 files changed, 22 insertions(+), 6 deletions(-)
+
 -- 
 2.34.1
 

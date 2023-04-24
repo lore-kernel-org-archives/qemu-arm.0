@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r4-20020adfdc84000000b002f598008d50sm10341053wrj.34.2023.04.24.02.22.52
+        by smtp.gmail.com with ESMTPSA id h3-20020a5d5043000000b002c70ce264bfsm10315847wrt.76.2023.04.24.02.22.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A848B1FFB8;
-	Mon, 24 Apr 2023 10:22:50 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 1E71F1FFB7;
+	Mon, 24 Apr 2023 10:22:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -37,80 +37,77 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Kautuk Consul <kconsul@linux.vnet.ibm.com>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>
-Subject: [PATCH 11/18] avocado_qemu/__init__.py: factor out the qemu-img finding
-Date: Mon, 24 Apr 2023 10:22:42 +0100
-Message-Id: <20230424092249.58552-12-alex.bennee@linaro.org>
+	Yohei Kojima <y-koj@outlook.jp>
+Subject: [PATCH 14/18] qemu-options.hx: Update descriptions of memory options for NUMA node
+Date: Mon, 24 Apr 2023 10:22:45 +0100
+Message-Id: <20230424092249.58552-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: KILG/ZSHdDQW
+X-TUID: paMyplkfM4CQ
 
-From: Kautuk Consul <kconsul@linux.vnet.ibm.com>
+From: Yohei Kojima <y-koj@outlook.jp>
 
-Factor out the code that finds the qemu-img binary in the
-QemuSystemTest class and create a new get_qemu_img() function
-with it. This function will get called also from the new code
-in tuxrun_baselines.py avocado test-case.
+This commit adds the following description:
+1. `memdev` option is recommended over `mem` option (see [1,2])
+2. users must specify memory for all NUMA nodes (see [2])
 
-Signed-off-by: Kautuk Consul <kconsul@linux.vnet.ibm.com>
-Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Suggested-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230421042322.684093-2-kconsul@linux.vnet.ibm.com>
+This commit also separates descriptions for `mem` and `memdev` into two
+paragraphs. The old doc describes legacy `mem` option first, and it was
+a bit confusing.
+
+Related documentation:
+[1] https://wiki.qemu.org/ChangeLog/5.1#Incompatible_changes
+[2] https://www.qemu.org/docs/master/about/removed-features.html
+
+Signed-off-by: Yohei Kojima <y-koj@outlook.jp>
+Message-Id: <TYZPR06MB5418D6B0175A49E8E76988439D8E9@TYZPR06MB5418.apcprd06.prod.outlook.com>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Message-Id: <20230420155723.1711048-3-alex.bennee@linaro.org>
+[AJB: fix documentation in commit message]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/avocado/avocado_qemu/__init__.py | 27 +++++++++++++++-----------
- 1 file changed, 16 insertions(+), 11 deletions(-)
+ qemu-options.hx | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
 
-diff --git a/tests/avocado/avocado_qemu/__init__.py b/tests/avocado/avocado_qemu/__init__.py
-index 6788837e1b..33090903f1 100644
---- a/tests/avocado/avocado_qemu/__init__.py
-+++ b/tests/avocado/avocado_qemu/__init__.py
-@@ -330,6 +330,19 @@ def _new_vm(self, name, *args):
-             vm.add_args(*args)
-         return vm
+diff --git a/qemu-options.hx b/qemu-options.hx
+index baa0589733..b5efa648ba 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -405,15 +405,22 @@ SRST
+         -numa node,nodeid=0 -numa node,nodeid=1 \
+         -numa cpu,node-id=0,socket-id=0 -numa cpu,node-id=1,socket-id=1
  
-+    def get_qemu_img(self):
-+        self.log.debug('Looking for and selecting a qemu-img binary')
+-    Legacy '\ ``mem``\ ' assigns a given RAM amount to a node (not supported
+-    for 5.1 and newer machine types). '\ ``memdev``\ ' assigns RAM from
+-    a given memory backend device to a node. If '\ ``mem``\ ' and
+-    '\ ``memdev``\ ' are omitted in all nodes, RAM is split equally between them.
+-
+-
+-    '\ ``mem``\ ' and '\ ``memdev``\ ' are mutually exclusive.
+-    Furthermore, if one node uses '\ ``memdev``\ ', all of them have to
+-    use it.
++    '\ ``memdev``\ ' option assigns RAM from a given memory backend
++    device to a node. It is recommended to use '\ ``memdev``\ ' option
++    over legacy '\ ``mem``\ ' option. This is because '\ ``memdev``\ '
++    option provides better performance and more control over the
++    backend's RAM (e.g. '\ ``prealloc``\ ' parameter of
++    '\ ``-memory-backend-ram``\ ' allows memory preallocation).
 +
-+        # If qemu-img has been built, use it, otherwise the system wide one
-+        # will be used.
-+        qemu_img = os.path.join(BUILD_DIR, 'qemu-img')
-+        if not os.path.exists(qemu_img):
-+            qemu_img = find_command('qemu-img', False)
-+        if qemu_img is False:
-+            self.cancel('Could not find "qemu-img"')
++    For compatibility reasons, legacy '\ ``mem``\ ' option is
++    supported in 5.0 and older machine types. Note that '\ ``mem``\ '
++    and '\ ``memdev``\ ' are mutually exclusive. If one node uses
++    '\ ``memdev``\ ', the rest nodes have to use '\ ``memdev``\ '
++    option, and vice versa.
 +
-+        return qemu_img
-+
-     @property
-     def vm(self):
-         return self.get_vm(name='default')
-@@ -602,17 +615,9 @@ def set_up_existing_ssh_keys(self):
-         return (ssh_public_key, ssh_private_key)
++    Users must specify memory for all NUMA nodes by '\ ``memdev``\ '
++    (or legacy '\ ``mem``\ ' if available). In QEMU 5.2, the support
++    for '\ ``-numa node``\ ' without memory specified was removed.
  
-     def download_boot(self):
--        self.log.debug('Looking for and selecting a qemu-img binary to be '
--                       'used to create the bootable snapshot image')
--        # If qemu-img has been built, use it, otherwise the system wide one
--        # will be used.  If none is available, the test will cancel.
--        qemu_img = os.path.join(BUILD_DIR, 'qemu-img')
--        if not os.path.exists(qemu_img):
--            qemu_img = find_command('qemu-img', False)
--        if qemu_img is False:
--            self.cancel('Could not find "qemu-img", which is required to '
--                        'create the bootable image')
--        vmimage.QEMU_IMG = qemu_img
-+        # Set the qemu-img binary.
-+        # If none is available, the test will cancel.
-+        vmimage.QEMU_IMG = super().get_qemu_img()
- 
-         self.log.info('Downloading/preparing boot image')
-         # Fedora 31 only provides ppc64le images
+     '\ ``initiator``\ ' is an additional option that points to an
+     initiator NUMA node that has best performance (the lowest latency or
 -- 
 2.39.2

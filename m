@@ -1,106 +1,118 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2793457ejm;
-        Mon, 24 Apr 2023 06:02:25 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aWuDLlk+ypsx6+GTtrDeSUuBTsIWM0j64QK07XT/3BEOhHGiyK/1iuk3/DuhFZKAKgFbeQ
-X-Received: by 2002:a05:6214:c46:b0:5ef:653e:16a0 with SMTP id r6-20020a0562140c4600b005ef653e16a0mr21924252qvj.43.1682341344865;
-        Mon, 24 Apr 2023 06:02:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682341344; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2892177ejm;
+        Mon, 24 Apr 2023 08:28:36 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aDy58w+egmIQWpjS/McefBirVt+RnKXLqRRMmy4wcH8WI+2lYE8BCqXrF4c01HuBEQbkUr
+X-Received: by 2002:a05:6214:1bcd:b0:5b8:6efe:77f4 with SMTP id m13-20020a0562141bcd00b005b86efe77f4mr26193537qvc.46.1682350116319;
+        Mon, 24 Apr 2023 08:28:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682350116; cv=none;
         d=google.com; s=arc-20160816;
-        b=LRa5XyGKGmHQRNWoGHh+Re2Ya3PyJ1GE2ktaxkWmHopgQ2n2oZ9fJQLCbvo7w3tL5l
-         f2iZFD4dTr97W6oMpcBq+EEeMsWDZ6PT/mzfKpfbdmFGG4ypx0ATK5q/iPGyIRjehYgv
-         0FzIg1RKrLR1F9Dc3Poa/iXisK5SCu8+rN/brGainxIsLtsQg1CuzGouo+baXWmov/zZ
-         BD/WPS7VbIuA0SYbGHPR5M+DchM4bpf0plmOn2qxDZGhpqMz2+n0PjOChxRv53p19TzO
-         Nl4abXP6Upx3YOojQBv5764Ykza7FQ4EL0MV0Iu/Jv2PBFIvgMF1qPShaSvuJbaW0NiR
-         /17A==
+        b=yClR5uDkrsivZHrDNbR3nLrVfB10Pf2r+p9nKdHtRHz6H4lM44+fkWdtIGkeuxWGtw
+         kbVmZHorPaRNrPtnj2C+OBRTrx/GEMiUssESkph+RVsKZAOsnS3VD1z5xszSr3nm7408
+         uBD3WO4/sST0h9L2/Y9NHWsFth6DAKCc54mFwa+tGKNRaz1hKvG3IwQHDyfdUYshyBSH
+         qMV5g/CDiGivyilo0hQnc1pmdke5rUPXdKD1vQpRv0CMTSwTwgE81aPsmYFUJT5JVNDn
+         GKBGkvWG6FIHopPos1KCLisS63QX1sUO7FWLh+3IAsMin3Q41T9xhRtDOvS8b4tsB6jQ
+         u9xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=VZs+YpiXXIE6n/XU6TMZPlejs7Kb6MsmBc6LLaNqyFo=;
-        b=P+Ta8qywsZRb21EBGTqIABTgg2NkEhAxVbDG60qTsQs0LLLhoqUeZV1qoF+4Sr22PB
-         z8Uqxs/99EkkN02QXS/kWyNUihi9RKApQhPCVjwYIdCcbPZptbR1E9Us6bu/pqNlmCMd
-         zUOjiD72d/VQ6/Q1n79OAv/DjUb2bCkTfIJzy1NLNIGUJohSzdChdDCfk1jPxZ7fXQ+Z
-         3s+6pMWa3JvoT+pfcbOzKJr2n8dBED5DqGuTpuxguSrc9xhK4TX73c18RUj9l4J3Hm4M
-         3Td7YtXtuYFN9dw4iW8DtAvRpRyxBaFM5w2PVr2S87+y+I0If/ZwW+QriAqjKYrREC9V
-         aAGw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ZZKjYXHyIeMkg0aKSc0TvN58snmM4oHGc16JhGaHgLU=;
+        b=guPur8olU0hjuPHSavaatVKhFHB/VUartm1Q7Jj4LqW1cPIv9zwJUDKL3lYzgR9XFW
+         Y+ZZLL16pMrMb4OevMVG7a3dmSMU5KR59UuSAhMZywDxhScgDxXio/y3J56bM8lNTEO9
+         RcypUjzsOp5CLjoBRiFQvbfnRF44jjUAlouj4NLH+qo0/HDO2xJBPbI6qs/rNdqZJL9G
+         uFRLutkS6Clq3Ob3SydLYwvZ9hdvBInIoxp6+XMA5ZahEawI0Eg4ZwD5fqydkHukivo6
+         hC2GhM6NDYxmQvlK1KXZcFdAkKARxCl+37ISXnRpIHvlixYHVBhl1Z3NiBU/liSvA6Dz
+         oEfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMFpNY8Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aESgrZfJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m11-20020a05622a054b00b003ec490818a1si7257351qtx.231.2023.04.24.06.02.24
+        by mx.google.com with ESMTPS id v1-20020a05620a0f0100b0074ae3bf128fsi7676062qkl.343.2023.04.24.08.28.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 06:02:24 -0700 (PDT)
+        Mon, 24 Apr 2023 08:28:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMFpNY8Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aESgrZfJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pqvpg-00049i-45; Mon, 24 Apr 2023 09:02:16 -0400
+	id 1pqy6I-0006mI-CJ; Mon, 24 Apr 2023 11:27:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pqvpW-00041c-6X
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 09:02:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pqvpR-0004Il-Nu
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 09:02:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682341320;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=VZs+YpiXXIE6n/XU6TMZPlejs7Kb6MsmBc6LLaNqyFo=;
- b=PMFpNY8QiIVgsRgyw5adeiV1fh4OJoPLYQRfp30BuXRV/guGrb0IZbhR4Qq6PLpS18Ym5B
- ypV1ND9qOIMNE4PLZjs19YIzEcJzY0REIJlmktcKO+lRmTE7s00iFaVU3LMKcJap3gVdQ0
- lV2eOElQn2AfZ4qdjrpt6VwtIdZfCyY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-591-YhOavOQsOACU2oKVC0TpLA-1; Mon, 24 Apr 2023 09:01:57 -0400
-X-MC-Unique: YhOavOQsOACU2oKVC0TpLA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 479A5884EC8;
- Mon, 24 Apr 2023 13:01:56 +0000 (UTC)
-Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A3F04112131B;
- Mon, 24 Apr 2023 13:01:55 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org
-Cc: pbonzini@redhat.com, mtosatti@redhat.com, danielhb413@gmail.com,
- clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org,
- peter.maydell@linaro.org, chenhuacai@kernel.org, pasic@linux.ibm.com,
- borntraeger@linux.ibm.com, Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: Re: [PATCH] kvm: Merge kvm_check_extension() and
- kvm_vm_check_extension()
-In-Reply-To: <20230421163822.839167-1-jean-philippe@linaro.org>
-Organization: Red Hat GmbH
-References: <20230421163822.839167-1-jean-philippe@linaro.org>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Mon, 24 Apr 2023 15:01:54 +0200
-Message-ID: <87jzy1v3gd.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pqy6E-0006kZ-Pi
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:31 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pqy68-0006t0-Bc
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 11:27:30 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-3f178da21b5so30883195e9.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Apr 2023 08:27:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682350041; x=1684942041;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZZKjYXHyIeMkg0aKSc0TvN58snmM4oHGc16JhGaHgLU=;
+ b=aESgrZfJrlwqhhiLZA7aRfipgMzYJyYzye0ieW8n3FgJmIFXe4VF0WFI2eXFTLnTBw
+ oDODwCFFs5AnudZ1SulvI+1OcH4dZZciAxI/SjeA9c5jzmwexYuBFrfnv0QKOd3sndtG
+ hsvEwNX+Zr0Z4kYfjkmlGio4oOY9y/1Zy9+I9Z8BJuvs01ntlO9KEodNRjLomgCurxnr
+ rxUJ0DpK50BGrer1UgDMwRNCiLEeGcZN88zv9n6vlCkkw/0UPCv7HZ01vZZwGsruj8OW
+ ipNMJKCg24YalhQCsHAxbLC/9QneiMbLmpvpKZzJ5b76asJ8h+Jl33erygGSi91LJkXw
+ PDxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1682350041; x=1684942041;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ZZKjYXHyIeMkg0aKSc0TvN58snmM4oHGc16JhGaHgLU=;
+ b=Ez9VIoBhSftb+S7YwZSg95a/8NEsJ+FagMqX+Zj6UTofjS7aCq3K/x1I3ILGOyNz6o
+ QpvW/VhA/cwkrsWugqwNskL5ah1+5qnuyaQz0zSlk0wJVuaIFxMm1UIKb9EYQGW61WQP
+ PgttjMe2QK82SWhLDdNnOFd8rz4XNLr32AtqzVDq13uuSwM4MuCWXZtUsYm8RPQJMI5D
+ 3a5rTlPxNPYvODGJp+o+kz9ibnxR0V3ufYjLjLjVw01n41VKkDGZNWMdk82E+thZqFnA
+ En51z5EXiJjUd3Sfw6RDgJ817bE9iwLjjfv7N+m8ROGOnfL1Z68KSFOzAu9yFNJLGtAZ
+ SNuA==
+X-Gm-Message-State: AAQBX9fOGZtuUfR3NE6P7Bl6ahH/un7fXZxENvYv69P91rVo4/AfwjZR
+ EwjxBxYdGN3vhsCvXbEU7OU6v/64+O1ad8/kVxQ=
+X-Received: by 2002:a7b:cb57:0:b0:3f2:507f:25a4 with SMTP id
+ v23-20020a7bcb57000000b003f2507f25a4mr2019118wmj.30.1682350040839; 
+ Mon, 24 Apr 2023 08:27:20 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ b1-20020a5d45c1000000b002fdeafcb132sm10971517wrs.107.2023.04.24.08.27.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Apr 2023 08:27:20 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 3/3] hw/arm/raspi: Use arm_write_bootloader() to write boot
+ code
+Date: Mon, 24 Apr 2023 16:27:17 +0100
+Message-Id: <20230424152717.1333930-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230424152717.1333930-1-peter.maydell@linaro.org>
+References: <20230424152717.1333930-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,129 +128,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PC9Heu4ypayK
+X-TUID: CVMgNiCUeA3j
 
-On Fri, Apr 21 2023, Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
+When writing the secondary-CPU stub boot loader code to the guest,
+use arm_write_bootloader() instead of directly calling
+rom_add_blob_fixed().  This fixes a bug on big-endian hosts, because
+arm_write_bootloader() will correctly byte-swap the host-byte-order
+array values into the guest-byte-order to write into the guest
+memory.
 
-> The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
-> (/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
-> extensions, KVM returns the same value with either method, but for some
-> of them it can refine the returned value depending on the VM type. The
-> KVM documentation [1] advises to use the VM fd:
->
->   Based on their initialization different VMs may have different
->   capabilities. It is thus encouraged to use the vm ioctl to query for
->   capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
->
-> Ongoing work on Arm confidential VMs confirms this, as some capabilities
-> become unavailable to confidential VMs, requiring changes in QEMU to use
-> kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
-> than changing each check one by one, change kvm_check_extension() to
-> always issue the ioctl on the VM fd when available, and remove
-> kvm_vm_check_extension().
->
-> Fall back to the global fd when the VM check is unavailable:
->
-> * Ancient kernels do not support KVM_CHECK_EXTENSION on the VM fd, since
->   it was added by commit 92b591a4c46b ("KVM: Allow KVM_CHECK_EXTENSION
->   on the vm fd") in Linux 3.17 [3]. Support for Linux 3.16 ended only in
->   June 2020, but there may still be old images around.
->
-> * A couple of calls must be issued before the VM fd is available, since
->   they determine the VM type: KVM_CAP_MIPS_VZ and KVM_CAP_ARM_VM_IPA_SIZE
->
-> Does any user actually depend on the check being done on the global fd
-> instead of the VM fd?  I surveyed all cases where KVM can return
-> different values depending on the query method. Luckily QEMU already
-> calls kvm_vm_check_extension() for most of those. Only three of them are
-> ambiguous, because currently done on the global fd:
->
-> * KVM_CAP_MAX_VCPUS and KVM_CAP_MAX_VCPU_ID on Arm, changes value if the
->   user requests a vGIC different from the default. But QEMU queries this
->   before vGIC configuration, so the reported value will be the same.
->
-> * KVM_CAP_SW_TLB on PPC. When issued on the global fd, returns false if
->   the kvm-hv module is loaded; when issued on the VM fd, returns false
->   only if the VM type is HV instead of PR. If this returns false, then
->   QEMU will fail to initialize a BOOKE206 MMU model.
->
->   So this patch supposedly improves things, as it allows to run this
->   type of vCPU even when both KVM modules are loaded.
->
-> * KVM_CAP_PPC_SECURE_GUEST. Similarly, doing this check on a VM fd
->   refines the returned value, and ensures that SVM is actually
->   supported. Since QEMU follows the check with kvm_vm_enable_cap(), this
->   patch should only provide better error reporting.
->
-> [1] https://www.kernel.org/doc/html/latest/virt/kvm/api.html#kvm-check-extension
-> [2] https://lore.kernel.org/kvm/875ybi0ytc.fsf@redhat.com/
-> [3] https://github.com/torvalds/linux/commit/92b591a4c46b
->
-> Suggested-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
->  include/sysemu/kvm.h     |  2 --
->  include/sysemu/kvm_int.h |  1 +
->  accel/kvm/kvm-all.c      | 26 +++++++++-----------------
->  target/i386/kvm/kvm.c    |  6 +++---
->  target/ppc/kvm.c         | 34 +++++++++++++++++-----------------
->  5 files changed, 30 insertions(+), 39 deletions(-)
->
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/raspi.c | 64 +++++++++++++++++++++++++++-----------------------
+ 1 file changed, 34 insertions(+), 30 deletions(-)
 
-(...)
-
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index cf3a88d90e..eca815e763 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -1109,22 +1109,13 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
->  {
->      int ret;
->  
-> -    ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
-> -    if (ret < 0) {
-> -        ret = 0;
-> +    if (!s->check_extension_vm) {
-> +        ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
-> +    } else {
-> +        ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
->      }
-> -
-> -    return ret;
-> -}
-> -
-> -int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-> -{
-> -    int ret;
-> -
-> -    ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
->      if (ret < 0) {
-> -        /* VM wide version not implemented, use global one instead */
-> -        ret = kvm_check_extension(s, extension);
-> +        ret = 0;
->      }
->  
->      return ret;
-> @@ -2328,7 +2319,7 @@ static void kvm_irqchip_create(KVMState *s)
->   */
->  static int kvm_recommended_vcpus(KVMState *s)
->  {
-> -    int ret = kvm_vm_check_extension(s, KVM_CAP_NR_VCPUS);
-> +    int ret = kvm_check_extension(s, KVM_CAP_NR_VCPUS);
->      return (ret) ? ret : 4;
->  }
->  
-> @@ -2480,6 +2471,7 @@ static int kvm_init(MachineState *ms)
->      }
->  
->      s->vmfd = ret;
-> +    s->check_extension_vm = kvm_check_extension(s, KVM_CAP_CHECK_EXTENSION_VM);
-
-Hm, it's a bit strange to set s->check_extension_vm by calling a
-function that already checks for the value of
-s->check_extension_vm... would it be better to call kvm_ioctl() directly
-on this line?
-
-I think it would be good if some ppc folks could give this a look, but
-in general, it looks fine to me.
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 92d068d1f9d..a7d287b1a8a 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -16,6 +16,7 @@
+ #include "qemu/units.h"
+ #include "qemu/cutils.h"
+ #include "qapi/error.h"
++#include "hw/arm/boot.h"
+ #include "hw/arm/bcm2836.h"
+ #include "hw/registerfields.h"
+ #include "qemu/error-report.h"
+@@ -124,20 +125,22 @@ static const char *board_type(uint32_t board_rev)
+ 
+ static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
+ {
+-    static const uint32_t smpboot[] = {
+-        0xe1a0e00f, /*    mov     lr, pc */
+-        0xe3a0fe00 + (BOARDSETUP_ADDR >> 4), /* mov pc, BOARDSETUP_ADDR */
+-        0xee100fb0, /*    mrc     p15, 0, r0, c0, c0, 5;get core ID */
+-        0xe7e10050, /*    ubfx    r0, r0, #0, #2       ;extract LSB */
+-        0xe59f5014, /*    ldr     r5, =0x400000CC      ;load mbox base */
+-        0xe320f001, /* 1: yield */
+-        0xe7953200, /*    ldr     r3, [r5, r0, lsl #4] ;read mbox for our core*/
+-        0xe3530000, /*    cmp     r3, #0               ;spin while zero */
+-        0x0afffffb, /*    beq     1b */
+-        0xe7853200, /*    str     r3, [r5, r0, lsl #4] ;clear mbox */
+-        0xe12fff13, /*    bx      r3                   ;jump to target */
+-        0x400000cc, /* (constant: mailbox 3 read/clear base) */
++    static const ARMInsnFixup smpboot[] = {
++        { 0xe1a0e00f }, /*    mov     lr, pc */
++        { 0xe3a0fe00 + (BOARDSETUP_ADDR >> 4) }, /* mov pc, BOARDSETUP_ADDR */
++        { 0xee100fb0 }, /*    mrc     p15, 0, r0, c0, c0, 5;get core ID */
++        { 0xe7e10050 }, /*    ubfx    r0, r0, #0, #2       ;extract LSB */
++        { 0xe59f5014 }, /*    ldr     r5, =0x400000CC      ;load mbox base */
++        { 0xe320f001 }, /* 1: yield */
++        { 0xe7953200 }, /*    ldr     r3, [r5, r0, lsl #4] ;read mbox for our core */
++        { 0xe3530000 }, /*    cmp     r3, #0               ;spin while zero */
++        { 0x0afffffb }, /*    beq     1b */
++        { 0xe7853200 }, /*    str     r3, [r5, r0, lsl #4] ;clear mbox */
++        { 0xe12fff13 }, /*    bx      r3                   ;jump to target */
++        { 0x400000cc }, /* (constant: mailbox 3 read/clear base) */
++        { 0, FIXUP_TERMINATOR }
+     };
++    static const uint32_t fixupcontext[FIXUP_MAX] = { 0 };
+ 
+     /* check that we don't overrun board setup vectors */
+     QEMU_BUILD_BUG_ON(SMPBOOT_ADDR + sizeof(smpboot) > MVBAR_ADDR);
+@@ -145,9 +148,8 @@ static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
+     QEMU_BUILD_BUG_ON((BOARDSETUP_ADDR & 0xf) != 0
+                       || (BOARDSETUP_ADDR >> 4) >= 0x100);
+ 
+-    rom_add_blob_fixed_as("raspi_smpboot", smpboot, sizeof(smpboot),
+-                          info->smp_loader_start,
+-                          arm_boot_address_space(cpu, info));
++    arm_write_bootloader("raspi_smpboot", arm_boot_address_space(cpu, info),
++                         info->smp_loader_start, smpboot, fixupcontext);
+ }
+ 
+ static void write_smpboot64(ARMCPU *cpu, const struct arm_boot_info *info)
+@@ -161,26 +163,28 @@ static void write_smpboot64(ARMCPU *cpu, const struct arm_boot_info *info)
+      * the primary CPU goes into the kernel. We put these variables inside
+      * a rom blob, so that the reset for ROM contents zeroes them for us.
+      */
+-    static const uint32_t smpboot[] = {
+-        0xd2801b05, /*        mov     x5, 0xd8 */
+-        0xd53800a6, /*        mrs     x6, mpidr_el1 */
+-        0x924004c6, /*        and     x6, x6, #0x3 */
+-        0xd503205f, /* spin:  wfe */
+-        0xf86678a4, /*        ldr     x4, [x5,x6,lsl #3] */
+-        0xb4ffffc4, /*        cbz     x4, spin */
+-        0xd2800000, /*        mov     x0, #0x0 */
+-        0xd2800001, /*        mov     x1, #0x0 */
+-        0xd2800002, /*        mov     x2, #0x0 */
+-        0xd2800003, /*        mov     x3, #0x0 */
+-        0xd61f0080, /*        br      x4 */
++    static const ARMInsnFixup smpboot[] = {
++        { 0xd2801b05 }, /*        mov     x5, 0xd8 */
++        { 0xd53800a6 }, /*        mrs     x6, mpidr_el1 */
++        { 0x924004c6 }, /*        and     x6, x6, #0x3 */
++        { 0xd503205f }, /* spin:  wfe */
++        { 0xf86678a4 }, /*        ldr     x4, [x5,x6,lsl #3] */
++        { 0xb4ffffc4 }, /*        cbz     x4, spin */
++        { 0xd2800000 }, /*        mov     x0, #0x0 */
++        { 0xd2800001 }, /*        mov     x1, #0x0 */
++        { 0xd2800002 }, /*        mov     x2, #0x0 */
++        { 0xd2800003 }, /*        mov     x3, #0x0 */
++        { 0xd61f0080 }, /*        br      x4 */
++        { 0, FIXUP_TERMINATOR }
+     };
++    static const uint32_t fixupcontext[FIXUP_MAX] = { 0 };
+ 
+     static const uint64_t spintables[] = {
+         0, 0, 0, 0
+     };
+ 
+-    rom_add_blob_fixed_as("raspi_smpboot", smpboot, sizeof(smpboot),
+-                          info->smp_loader_start, as);
++    arm_write_bootloader("raspi_smpboot", as, info->smp_loader_start,
++                         smpboot, fixupcontext);
+     rom_add_blob_fixed_as("raspi_spintables", spintables, sizeof(spintables),
+                           SPINTABLE_ADDR, as);
+ }
+-- 
+2.34.1
 

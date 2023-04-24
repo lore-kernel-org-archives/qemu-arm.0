@@ -1,93 +1,108 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2792278ejm;
-        Mon, 24 Apr 2023 06:01:13 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZkS/J6EwUUqLmXjGOBQbx78wqRqFuFi/UwggemNB1AWPeMvnLkt5HYQNVz8oVsRHOLJwrr
-X-Received: by 2002:ac8:5ac7:0:b0:3ef:2821:4869 with SMTP id d7-20020ac85ac7000000b003ef28214869mr23152068qtd.34.1682341273711;
-        Mon, 24 Apr 2023 06:01:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682341273; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2793457ejm;
+        Mon, 24 Apr 2023 06:02:25 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aWuDLlk+ypsx6+GTtrDeSUuBTsIWM0j64QK07XT/3BEOhHGiyK/1iuk3/DuhFZKAKgFbeQ
+X-Received: by 2002:a05:6214:c46:b0:5ef:653e:16a0 with SMTP id r6-20020a0562140c4600b005ef653e16a0mr21924252qvj.43.1682341344865;
+        Mon, 24 Apr 2023 06:02:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682341344; cv=none;
         d=google.com; s=arc-20160816;
-        b=atul/DScMc2GukRs5Fxx+mUq3VgkzZXte1GZADYP5Z0jl9vlE92HBQe61MPMLvSQBm
-         PlawEJiIfBdtrcJetUnYxcAxaINmUJwVy+UQ37kSWHNpfyx8h8vxPLl+LsHXucOnPPvC
-         GOKgwSDvmVjGO6ga1rJ948kuVDzByyKN85+5lES07Gfvn1wYV30a4NgB6sFlvlBhba6n
-         E/h927qgR/M3iHvbYDUiS+pNe2RbdgAoNgBZugp0EwJru3fRhzajLm8Jrv474RCJ6BQX
-         t6rbekJUOj3DOqAeo8hCKK4BwC8oDbsyFpk3ivskYEfLOh4i0Ub8AqeDlrpMh1J23D2K
-         W2LQ==
+        b=LRa5XyGKGmHQRNWoGHh+Re2Ya3PyJ1GE2ktaxkWmHopgQ2n2oZ9fJQLCbvo7w3tL5l
+         f2iZFD4dTr97W6oMpcBq+EEeMsWDZ6PT/mzfKpfbdmFGG4ypx0ATK5q/iPGyIRjehYgv
+         0FzIg1RKrLR1F9Dc3Poa/iXisK5SCu8+rN/brGainxIsLtsQg1CuzGouo+baXWmov/zZ
+         BD/WPS7VbIuA0SYbGHPR5M+DchM4bpf0plmOn2qxDZGhpqMz2+n0PjOChxRv53p19TzO
+         Nl4abXP6Upx3YOojQBv5764Ykza7FQ4EL0MV0Iu/Jv2PBFIvgMF1qPShaSvuJbaW0NiR
+         /17A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:mime-version:subject
-         :to:from:date;
-        bh=w2EMXolDiyLSYoS/s+8D5PM1+UTzaYVYQ0KIJD+K9ro=;
-        b=fxZ9u6y8ar55UyO2Ln+jyfHomackru8r2MHG2di08dnxnS2nmNfOT9r3OkZFnJAsSe
-         jsR82qRzN3jo0a83SktEHKqLeCosGaNRuvj0VBeTVLKRSPIDIGC/Xs7LZiqXZSX+XqJ0
-         7um7BUYMs4t9cIFdcZexYXvM/pLm1wLkR5cnsMnHmoMlopHLX1uIdiD0Ld775bBxlL1F
-         YF1huRpgMHSCz9XnOy9MzHhgm5wIPNVvg4NRiuXWmgECZFUWhWN8Y5XGjY6QwhUNUfYg
-         6URWQJPLEghbh2MxQyc6vBr6rtIZZlQLQx3Wqgl0EZn+hIG2VOhgO3vP5fRpLbeVOWFb
-         j0GA==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=VZs+YpiXXIE6n/XU6TMZPlejs7Kb6MsmBc6LLaNqyFo=;
+        b=P+Ta8qywsZRb21EBGTqIABTgg2NkEhAxVbDG60qTsQs0LLLhoqUeZV1qoF+4Sr22PB
+         z8Uqxs/99EkkN02QXS/kWyNUihi9RKApQhPCVjwYIdCcbPZptbR1E9Us6bu/pqNlmCMd
+         zUOjiD72d/VQ6/Q1n79OAv/DjUb2bCkTfIJzy1NLNIGUJohSzdChdDCfk1jPxZ7fXQ+Z
+         3s+6pMWa3JvoT+pfcbOzKJr2n8dBED5DqGuTpuxguSrc9xhK4TX73c18RUj9l4J3Hm4M
+         3Td7YtXtuYFN9dw4iW8DtAvRpRyxBaFM5w2PVr2S87+y+I0If/ZwW+QriAqjKYrREC9V
+         aAGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMFpNY8Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u12-20020a05622a14cc00b003e4e978fca2si7469603qtx.666.2023.04.24.06.01.13
+        by mx.google.com with ESMTPS id m11-20020a05622a054b00b003ec490818a1si7257351qtx.231.2023.04.24.06.02.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 06:01:13 -0700 (PDT)
+        Mon, 24 Apr 2023 06:02:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PMFpNY8Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pqvoB-00023Y-5b; Mon, 24 Apr 2023 09:00:43 -0400
+	id 1pqvpg-00049i-45; Mon, 24 Apr 2023 09:02:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1pqvPK-0005RU-L3
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 08:35:02 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>) id 1pqvPI-0005Ic-86
- for qemu-arm@nongnu.org; Mon, 24 Apr 2023 08:35:02 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXkpYpd0ZkBeiKHg--.17994S2;
- Mon, 24 Apr 2023 20:33:45 +0800 (CST)
-Received: from wangyuquan1236$phytium.com.cn ( [218.76.62.144] ) by
- ajax-webmail-mail (Coremail) ; Mon, 24 Apr 2023 20:34:57 +0800 (GMT+08:00)
-X-Originating-IP: [218.76.62.144]
-Date: Mon, 24 Apr 2023 20:34:57 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: =?UTF-8?B?546L5a6H5rOJ?= <wangyuquan1236@phytium.com.cn>
-To: qemu-arm@nongnu.org
-Subject: Problem of initialization of platform-ehci-usb in sbsa-ref
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT6.0.3 build 20220506(458b1948)
- Copyright (c) 2002-2023 www.mailtech.cn
- mispb-76b96e3b-3ecc-44d5-9200-de81e6d4c242-
-X-CM-CTRLDATA: pjNREGZvb3Rlcl9odG09MjExMDo0Njg=
-Content-Type: multipart/alternative; 
- boundary="----=_Part_2954_1843051348.1682339697824"
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pqvpW-00041c-6X
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 09:02:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1pqvpR-0004Il-Nu
+ for qemu-arm@nongnu.org; Mon, 24 Apr 2023 09:02:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1682341320;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=VZs+YpiXXIE6n/XU6TMZPlejs7Kb6MsmBc6LLaNqyFo=;
+ b=PMFpNY8QiIVgsRgyw5adeiV1fh4OJoPLYQRfp30BuXRV/guGrb0IZbhR4Qq6PLpS18Ym5B
+ ypV1ND9qOIMNE4PLZjs19YIzEcJzY0REIJlmktcKO+lRmTE7s00iFaVU3LMKcJap3gVdQ0
+ lV2eOElQn2AfZ4qdjrpt6VwtIdZfCyY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-591-YhOavOQsOACU2oKVC0TpLA-1; Mon, 24 Apr 2023 09:01:57 -0400
+X-MC-Unique: YhOavOQsOACU2oKVC0TpLA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 479A5884EC8;
+ Mon, 24 Apr 2023 13:01:56 +0000 (UTC)
+Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A3F04112131B;
+ Mon, 24 Apr 2023 13:01:55 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org
+Cc: pbonzini@redhat.com, mtosatti@redhat.com, danielhb413@gmail.com,
+ clg@kaod.org, david@gibson.dropbear.id.au, groug@kaod.org,
+ peter.maydell@linaro.org, chenhuacai@kernel.org, pasic@linux.ibm.com,
+ borntraeger@linux.ibm.com, Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: Re: [PATCH] kvm: Merge kvm_check_extension() and
+ kvm_vm_check_extension()
+In-Reply-To: <20230421163822.839167-1-jean-philippe@linaro.org>
+Organization: Red Hat GmbH
+References: <20230421163822.839167-1-jean-philippe@linaro.org>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Mon, 24 Apr 2023 15:01:54 +0200
+Message-ID: <87jzy1v3gd.fsf@redhat.com>
 MIME-Version: 1.0
-Message-ID: <182c9459.343.187b34294a0.Coremail.wangyuquan1236@phytium.com.cn>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: AQAAfwC3C7Bxd0ZkHrQAAA--.233W
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQATAWRFiwkIN
-	gABsP
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7ZFWDKr48KF4ruw17ury7Awb_yoW8Aw15pF
- W3ta4fZa17Gr1xJ343G3WI9ryYvryvgr47G348Gr18CwsF9r129a42qay5ZFy7GF1qkF1j
- v3WagF45WrZ8ZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 24 Apr 2023 09:00:24 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,99 +116,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7W9OPNk+oJ57
+X-TUID: PC9Heu4ypayK
 
-------=_Part_2954_1843051348.1682339697824
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+On Fri, Apr 21 2023, Jean-Philippe Brucker <jean-philippe@linaro.org> wrote:
 
-SGksCgoKCgpBcyBhIGp1bmlvciBPUyBlbmdpbmVlciwgSSBtZXQgYSBwcm9ibGVtIG9mIGluaXRp
-YWxpemF0aW9uIG9mIHBsYXRmb3JtLWVoY2ktdXNiIGluIHNic2EtcmVmIHJlY2VudGx5LiAKClRo
-ZSByZXN1bHQgb2Ygc2JzYS1hY3MoVUVGSSBTaGVsbCBhcHBsaWNhdGlvbikgb24gc2JzYS1yZWYg
-c2hvd3MgdGhhdCAiUGVyaXBoZXJhbDogTnVtIG9mIFVTQiBjb250cm9sbGVyczogMCIuIAoKQW5k
-IEkgZm91bmQgdGhhdCB0aGUgcGxhdGZvcm0tZWhjaS11c2IgaW4gcWVtdSBpcyBhIDMyLWJpdHMg
-RE1BIGRldmljZSB3aGlsZSBvdXIgc2JzYS1yZWYgbWFjaGluZSBkb2VzIG5vdCBvd24gCgpEUkFN
-IG1lbW9yeSBiZWxvdyA0Ry4gSXQgc2VlbXMgbGlrZSBhIGNvbnRyYWRpY3Rpb24gcG9pbnQuQ29u
-bmVjdGluZyBTTU1VdjMgd2l0aCB0aGUgcGxhdGZvcm0gRUhDSSAKCmluIG9yZGVyIHRvIHByb2Jl
-IGl0IGNhbiBiZSBhIGdvb29kIHdheSA/IE9yIHRoZXJlIGFyZSBzb21lIGRldGFpbCB1c2FnZSBJ
-IGlnbm9yZWQ/4oCLCgoKCgpUaGFua3MKCll1cXVhbiBXYW5nCgoKCgoKCgoKCgoKCuS/oeaBr+Wu
-ieWFqOWjsOaYju+8muacrOmCruS7tuWMheWQq+S/oeaBr+W9kuWPkeS7tuS6uuaJgOWcqOe7hOe7
-h+aJgOaciSzlj5Hku7bkurrmiYDlnKjnu4Tnu4flr7nor6Xpgq7ku7bmi6XmnInmiYDmnInmnYPl
-iKnjgILor7fmjqXmlLbogIXms6jmhI/kv53lr4Ys5pyq57uP5Y+R5Lu25Lq65Lmm6Z2i6K645Y+v
-LOS4jeW+l+WQkeS7u+S9leesrOS4ieaWuee7hOe7h+WSjOS4quS6uumAj+mcsuacrOmCruS7tuaJ
-gOWQq+S/oeaBr+OAggpJbmZvcm1hdGlvbiBTZWN1cml0eSBOb3RpY2U6IFRoZSBpbmZvcm1hdGlv
-biBjb250YWluZWQgaW4gdGhpcyBtYWlsIGlzIHNvbGVseSBwcm9wZXJ0eSBvZiB0aGUgc2VuZGVy
-J3Mgb3JnYW5pemF0aW9uLlRoaXMgbWFpbCBjb21tdW5pY2F0aW9uIGlzIGNvbmZpZGVudGlhbC5S
-ZWNpcGllbnRzIG5hbWVkIGFib3ZlIGFyZSBvYmxpZ2F0ZWQgdG8gbWFpbnRhaW4gc2VjcmVjeSBh
-bmQgYXJlIG5vdCBwZXJtaXR0ZWQgdG8gZGlzY2xvc2UgdGhlIGNvbnRlbnRzIG9mIHRoaXMgY29t
-bXVuaWNhdGlvbiB0byBvdGhlcnMuCgrkv6Hmga/lronlhajlo7DmmI7vvJrmnKzpgq7ku7bljIXl
-kKvkv6Hmga/lvZLlj5Hku7bkurrmiYDlnKjnu4Tnu4fmiYDmnIks5Y+R5Lu25Lq65omA5Zyo57uE
-57uH5a+56K+l6YKu5Lu25oul5pyJ5omA5pyJ5p2D5Yip44CC6K+35o6l5pS26ICF5rOo5oSP5L+d
-5a+GLOacque7j+WPkeS7tuS6uuS5pumdouiuuOWPryzkuI3lvpflkJHku7vkvZXnrKzkuInmlrnn
-u4Tnu4flkozkuKrkurrpgI/pnLLmnKzpgq7ku7bmiYDlkKvkv6Hmga/jgIIKSW5mb3JtYXRpb24g
-U2VjdXJpdHkgTm90aWNlOiBUaGUgaW5mb3JtYXRpb24gY29udGFpbmVkIGluIHRoaXMgbWFpbCBp
-cyBzb2xlbHkgcHJvcGVydHkgb2YgdGhlIHNlbmRlcidzIG9yZ2FuaXphdGlvbi5UaGlzIG1haWwg
-Y29tbXVuaWNhdGlvbiBpcyBjb25maWRlbnRpYWwuUmVjaXBpZW50cyBuYW1lZCBhYm92ZSBhcmUg
-b2JsaWdhdGVkIHRvIG1haW50YWluIHNlY3JlY3kgYW5kIGFyZSBub3QgcGVybWl0dGVkIHRvIGRp
-c2Nsb3NlIHRoZSBjb250ZW50cyBvZiB0aGlzIGNvbW11bmljYXRpb24gdG8gb3RoZXJzLg==
-------=_Part_2954_1843051348.1682339697824
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+> The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
+> (/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
+> extensions, KVM returns the same value with either method, but for some
+> of them it can refine the returned value depending on the VM type. The
+> KVM documentation [1] advises to use the VM fd:
+>
+>   Based on their initialization different VMs may have different
+>   capabilities. It is thus encouraged to use the vm ioctl to query for
+>   capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
+>
+> Ongoing work on Arm confidential VMs confirms this, as some capabilities
+> become unavailable to confidential VMs, requiring changes in QEMU to use
+> kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
+> than changing each check one by one, change kvm_check_extension() to
+> always issue the ioctl on the VM fd when available, and remove
+> kvm_vm_check_extension().
+>
+> Fall back to the global fd when the VM check is unavailable:
+>
+> * Ancient kernels do not support KVM_CHECK_EXTENSION on the VM fd, since
+>   it was added by commit 92b591a4c46b ("KVM: Allow KVM_CHECK_EXTENSION
+>   on the vm fd") in Linux 3.17 [3]. Support for Linux 3.16 ended only in
+>   June 2020, but there may still be old images around.
+>
+> * A couple of calls must be issued before the VM fd is available, since
+>   they determine the VM type: KVM_CAP_MIPS_VZ and KVM_CAP_ARM_VM_IPA_SIZE
+>
+> Does any user actually depend on the check being done on the global fd
+> instead of the VM fd?  I surveyed all cases where KVM can return
+> different values depending on the query method. Luckily QEMU already
+> calls kvm_vm_check_extension() for most of those. Only three of them are
+> ambiguous, because currently done on the global fd:
+>
+> * KVM_CAP_MAX_VCPUS and KVM_CAP_MAX_VCPU_ID on Arm, changes value if the
+>   user requests a vGIC different from the default. But QEMU queries this
+>   before vGIC configuration, so the reported value will be the same.
+>
+> * KVM_CAP_SW_TLB on PPC. When issued on the global fd, returns false if
+>   the kvm-hv module is loaded; when issued on the VM fd, returns false
+>   only if the VM type is HV instead of PR. If this returns false, then
+>   QEMU will fail to initialize a BOOKE206 MMU model.
+>
+>   So this patch supposedly improves things, as it allows to run this
+>   type of vCPU even when both KVM modules are loaded.
+>
+> * KVM_CAP_PPC_SECURE_GUEST. Similarly, doing this check on a VM fd
+>   refines the returned value, and ensures that SVM is actually
+>   supported. Since QEMU follows the check with kvm_vm_enable_cap(), this
+>   patch should only provide better error reporting.
+>
+> [1] https://www.kernel.org/doc/html/latest/virt/kvm/api.html#kvm-check-extension
+> [2] https://lore.kernel.org/kvm/875ybi0ytc.fsf@redhat.com/
+> [3] https://github.com/torvalds/linux/commit/92b591a4c46b
+>
+> Suggested-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+>  include/sysemu/kvm.h     |  2 --
+>  include/sysemu/kvm_int.h |  1 +
+>  accel/kvm/kvm-all.c      | 26 +++++++++-----------------
+>  target/i386/kvm/kvm.c    |  6 +++---
+>  target/ppc/kvm.c         | 34 +++++++++++++++++-----------------
+>  5 files changed, 30 insertions(+), 39 deletions(-)
+>
 
-PHAgc3R5bGU9ImZvbnQtZmFtaWx5OlNpbVN1bjsiPgoJSGksCjwvcD4KPHAgc3R5bGU9ImZvbnQt
-ZmFtaWx5OlNpbVN1bjsiPgoJPGJyPgo8L3A+CjxwIHN0eWxlPSJmb250LWZhbWlseTpTaW1TdW47
-Ij4KCUFzIGEganVuaW9yIE9TIGVuZ2luZWVyLCBJIG1ldCBhIHByb2JsZW0gb2YgaW5pdGlhbGl6
-YXRpb24gb2YgcGxhdGZvcm0tZWhjaS11c2IgaW4gc2JzYS1yZWYgcmVjZW50bHkuJm5ic3A7Cjwv
-cD4KPHAgc3R5bGU9ImZvbnQtZmFtaWx5OlNpbVN1bjsiPgoJVGhlIHJlc3VsdCBvZiBzYnNhLWFj
-cyhVRUZJIFNoZWxsIGFwcGxpY2F0aW9uKSBvbiBzYnNhLXJlZiBzaG93cyB0aGF0ICJQZXJpcGhl
-cmFsOiBOdW0gb2YgVVNCIGNvbnRyb2xsZXJzOiAwIi4mbmJzcDsKPC9wPgo8cCBzdHlsZT0iZm9u
-dC1mYW1pbHk6U2ltU3VuOyI+CglBbmQgSSBmb3VuZCB0aGF0IHRoZSZuYnNwOzxzcGFuIHN0eWxl
-PSJmb250LWZhbWlseTpTaW1TdW47d2hpdGUtc3BhY2U6bm9ybWFsOyI+cGxhdGZvcm0tZWhjaS11
-c2IgaW4gcWVtdSBpcyBhIDMyLWJpdHMgRE1BIGRldmljZSB3aGlsZSBvdXIgc2JzYS1yZWYgbWFj
-aGluZSBkb2VzIG5vdCBvd24mbmJzcDs8L3NwYW4+IAo8L3A+CjxwIHN0eWxlPSJmb250LWZhbWls
-eTpTaW1TdW47Ij4KCTxzcGFuIHN0eWxlPSJmb250LWZhbWlseTpTaW1TdW47d2hpdGUtc3BhY2U6
-bm9ybWFsOyI+RFJBTSBtZW1vcnkgYmVsb3cgNEcuIEl0IHNlZW1zIGxpa2UgYSBjb250cmFkaWN0
-aW9uIHBvaW50Ljwvc3Bhbj5Db25uZWN0aW5nIFNNTVV2MyB3aXRoIHRoZSBwbGF0Zm9ybSBFSENJ
-Jm5ic3A7CjwvcD4KPHAgc3R5bGU9ImZvbnQtZmFtaWx5OlNpbVN1bjsiPgoJaW4gb3JkZXIgdG8g
-cHJvYmUgaXQgY2FuIGJlIGEgZ29vb2Qgd2F5ID8gT3IgdGhlcmUgYXJlIHNvbWUgZGV0YWlsIHVz
-YWdlIEkgaWdub3JlZD/igIsKPC9wPgo8cCBzdHlsZT0iZm9udC1mYW1pbHk6U2ltU3VuOyI+Cgk8
-YnI+CjwvcD4KPHAgc3R5bGU9ImZvbnQtZmFtaWx5OlNpbVN1bjsiPgoJVGhhbmtzCjwvcD4KPHAg
-c3R5bGU9ImZvbnQtZmFtaWx5OlNpbVN1bjsiPgoJWXVxdWFuIFdhbmcKPC9wPgo8cCBzdHlsZT0i
-Zm9udC1mYW1pbHk6U2ltU3VuOyI+Cgk8YnI+CjwvcD4KPHAgc3R5bGU9ImZvbnQtZmFtaWx5OlNp
-bVN1bjsiPgoJPGJyPgo8L3A+CjxwIHN0eWxlPSJmb250LWZhbWlseTpTaW1TdW47Ij4KCTxicj4K
-PC9wPgo8YnI+Cjxicj4KPGkgc3R5bGU9ImNvbG9yOiM3Nzc3Nzc7Zm9udC1mYW1pbHk65a6L5L2T
-O2ZvbnQtc2l6ZTp4LXNtYWxsOyI+5L+h5oGv5a6J5YWo5aOw5piO77ya5pys6YKu5Lu25YyF5ZCr
-5L+h5oGv5b2S5Y+R5Lu25Lq65omA5Zyo57uE57uH5omA5pyJLOWPkeS7tuS6uuaJgOWcqOe7hOe7
-h+WvueivpemCruS7tuaLpeacieaJgOacieadg+WIqeOAguivt+aOpeaUtuiAheazqOaEj+S/neWv
-hizmnKrnu4/lj5Hku7bkurrkuabpnaLorrjlj68s5LiN5b6X5ZCR5Lu75L2V56ys5LiJ5pa557uE
-57uH5ZKM5Liq5Lq66YCP6Zyy5pys6YKu5Lu25omA5ZCr5L+h5oGv44CCPGJyPgpJbmZvcm1hdGlv
-biBTZWN1cml0eSBOb3RpY2U6IFRoZSBpbmZvcm1hdGlvbiBjb250YWluZWQgaW4gdGhpcyBtYWls
-IGlzIHNvbGVseSBwcm9wZXJ0eSBvZiB0aGUgc2VuZGVyJ3Mgb3JnYW5pemF0aW9uLlRoaXMgbWFp
-bCBjb21tdW5pY2F0aW9uIGlzIGNvbmZpZGVudGlhbC5SZWNpcGllbnRzIG5hbWVkIGFib3ZlIGFy
-ZSBvYmxpZ2F0ZWQgdG8gbWFpbnRhaW4gc2VjcmVjeSBhbmQgYXJlIG5vdCBwZXJtaXR0ZWQgdG8g
-ZGlzY2xvc2UgdGhlIGNvbnRlbnRzIG9mIHRoaXMgY29tbXVuaWNhdGlvbiB0byBvdGhlcnMuPC9p
-Pjxicj4KPGJyPgo8aSBzdHlsZT0iY29sb3I6Izc3Nzc3Nztmb250LWZhbWlseTrlrovkvZM7Zm9u
-dC1zaXplOngtc21hbGw7Ij7kv6Hmga/lronlhajlo7DmmI7vvJrmnKzpgq7ku7bljIXlkKvkv6Hm
-ga/lvZLlj5Hku7bkurrmiYDlnKjnu4Tnu4fmiYDmnIks5Y+R5Lu25Lq65omA5Zyo57uE57uH5a+5
-6K+l6YKu5Lu25oul5pyJ5omA5pyJ5p2D5Yip44CC6K+35o6l5pS26ICF5rOo5oSP5L+d5a+GLOac
-que7j+WPkeS7tuS6uuS5pumdouiuuOWPryzkuI3lvpflkJHku7vkvZXnrKzkuInmlrnnu4Tnu4fl
-kozkuKrkurrpgI/pnLLmnKzpgq7ku7bmiYDlkKvkv6Hmga/jgII8YnI+CkluZm9ybWF0aW9uIFNl
-Y3VyaXR5IE5vdGljZTogVGhlIGluZm9ybWF0aW9uIGNvbnRhaW5lZCBpbiB0aGlzIG1haWwgaXMg
-c29sZWx5IHByb3BlcnR5IG9mIHRoZSBzZW5kZXIncyBvcmdhbml6YXRpb24uVGhpcyBtYWlsIGNv
-bW11bmljYXRpb24gaXMgY29uZmlkZW50aWFsLlJlY2lwaWVudHMgbmFtZWQgYWJvdmUgYXJlIG9i
-bGlnYXRlZCB0byBtYWludGFpbiBzZWNyZWN5IGFuZCBhcmUgbm90IHBlcm1pdHRlZCB0byBkaXNj
-bG9zZSB0aGUgY29udGVudHMgb2YgdGhpcyBjb21tdW5pY2F0aW9uIHRvIG90aGVycy48L2k+PGJy
-Pjxicj48aSBzdHlsZT0iY29sb3I6IHJnYigxMTksIDExOSwgMTE5KTsgZm9udC1mYW1pbHk6IOWu
-i+S9kzsgZm9udC1zaXplOiB4LXNtYWxsOyI+5L+h5oGv5a6J5YWo5aOw5piO77ya5pys6YKu5Lu2
-5YyF5ZCr5L+h5oGv5b2S5Y+R5Lu25Lq65omA5Zyo57uE57uH5omA5pyJLOWPkeS7tuS6uuaJgOWc
-qOe7hOe7h+WvueivpemCruS7tuaLpeacieaJgOacieadg+WIqeOAguivt+aOpeaUtuiAheazqOaE
-j+S/neWvhizmnKrnu4/lj5Hku7bkurrkuabpnaLorrjlj68s5LiN5b6X5ZCR5Lu75L2V56ys5LiJ
-5pa557uE57uH5ZKM5Liq5Lq66YCP6Zyy5pys6YKu5Lu25omA5ZCr5L+h5oGv44CCPGJyPkluZm9y
-bWF0aW9uIFNlY3VyaXR5IE5vdGljZTogVGhlIGluZm9ybWF0aW9uIGNvbnRhaW5lZCBpbiB0aGlz
-IG1haWwgaXMgc29sZWx5IHByb3BlcnR5IG9mIHRoZSBzZW5kZXIncyBvcmdhbml6YXRpb24uVGhp
-cyBtYWlsIGNvbW11bmljYXRpb24gaXMgY29uZmlkZW50aWFsLlJlY2lwaWVudHMgbmFtZWQgYWJv
-dmUgYXJlIG9ibGlnYXRlZCB0byBtYWludGFpbiBzZWNyZWN5IGFuZCBhcmUgbm90IHBlcm1pdHRl
-ZCB0byBkaXNjbG9zZSB0aGUgY29udGVudHMgb2YgdGhpcyBjb21tdW5pY2F0aW9uIHRvIG90aGVy
-cy48L2k+
-------=_Part_2954_1843051348.1682339697824--
+(...)
+
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index cf3a88d90e..eca815e763 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -1109,22 +1109,13 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
+>  {
+>      int ret;
+>  
+> -    ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> -    if (ret < 0) {
+> -        ret = 0;
+> +    if (!s->check_extension_vm) {
+> +        ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> +    } else {
+> +        ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+>      }
+> -
+> -    return ret;
+> -}
+> -
+> -int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+> -{
+> -    int ret;
+> -
+> -    ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+>      if (ret < 0) {
+> -        /* VM wide version not implemented, use global one instead */
+> -        ret = kvm_check_extension(s, extension);
+> +        ret = 0;
+>      }
+>  
+>      return ret;
+> @@ -2328,7 +2319,7 @@ static void kvm_irqchip_create(KVMState *s)
+>   */
+>  static int kvm_recommended_vcpus(KVMState *s)
+>  {
+> -    int ret = kvm_vm_check_extension(s, KVM_CAP_NR_VCPUS);
+> +    int ret = kvm_check_extension(s, KVM_CAP_NR_VCPUS);
+>      return (ret) ? ret : 4;
+>  }
+>  
+> @@ -2480,6 +2471,7 @@ static int kvm_init(MachineState *ms)
+>      }
+>  
+>      s->vmfd = ret;
+> +    s->check_extension_vm = kvm_check_extension(s, KVM_CAP_CHECK_EXTENSION_VM);
+
+Hm, it's a bit strange to set s->check_extension_vm by calling a
+function that already checks for the value of
+s->check_extension_vm... would it be better to call kvm_ioctl() directly
+on this line?
+
+I think it would be good if some ppc folks could give this a look, but
+in general, it looks fine to me.
 

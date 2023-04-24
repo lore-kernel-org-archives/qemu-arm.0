@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n16-20020a05600c181000b003f046ad52efsm14993862wmp.31.2023.04.24.02.22.51
+        by smtp.gmail.com with ESMTPSA id l2-20020a1c7902000000b003f193d7c6b7sm8205288wme.41.2023.04.24.02.22.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 24 Apr 2023 02:22:53 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 41F521FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 2550C1FFBE;
 	Mon, 24 Apr 2023 10:22:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,95 +36,85 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH 07/18] .gitlab-ci.d/cirrus: Drop the CI job for compiling with FreeBSD 12
-Date: Mon, 24 Apr 2023 10:22:38 +0100
-Message-Id: <20230424092249.58552-8-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	Kevin Wolf <kwolf@redhat.com>
+Subject: [PATCH 06/18] qemu-options: finesse the recommendations around -blockdev
+Date: Mon, 24 Apr 2023 10:22:37 +0100
+Message-Id: <20230424092249.58552-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Mql46AL736i+
+X-TUID: QT3qkSOVRycw
 
-From: Thomas Huth <thuth@redhat.com>
+We are a bit premature in recommending -blockdev/-device as the best
+way to configure block devices. It seems there are times the more
+human friendly -drive still makes sense especially when -snapshot is
+involved.
 
-FreeBSD 13.0 has been released in April 2021:
+Improve the language to hopefully make things clearer.
 
- https://www.freebsd.org/releases/13.0R/announce/
-
-According to QEMU's support policy, we stop supporting the previous
-major release two years after the the new major release has been
-published. So we can stop testing FreeBSD 12 in our CI now.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230418160225.529172-1-thuth@redhat.com>
+Suggested-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/cirrus.yml             | 13 -------------
- .gitlab-ci.d/cirrus/freebsd-12.vars | 16 ----------------
- tests/lcitool/refresh               |  1 -
- 3 files changed, 30 deletions(-)
- delete mode 100644 .gitlab-ci.d/cirrus/freebsd-12.vars
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Message-Id: <20230330101141.30199-5-alex.bennee@linaro.org>
 
-diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
-index 502dfd612c..1507c928e5 100644
---- a/.gitlab-ci.d/cirrus.yml
-+++ b/.gitlab-ci.d/cirrus.yml
-@@ -44,19 +44,6 @@
-   variables:
-     QEMU_JOB_CIRRUS: 1
+---
+v3
+  - more re-wording to try and approach consensus
+  - add explicit warning to -snapshot option
+---
+ qemu-options.hx | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 04c259157a..baa0589733 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1143,10 +1143,22 @@ have gone through several iterations as the feature set and complexity
+ of the block layer have grown. Many online guides to QEMU often
+ reference older and deprecated options, which can lead to confusion.
  
--x64-freebsd-12-build:
--  extends: .cirrus_build_job
--  variables:
--    NAME: freebsd-12
--    CIRRUS_VM_INSTANCE_TYPE: freebsd_instance
--    CIRRUS_VM_IMAGE_SELECTOR: image_family
--    CIRRUS_VM_IMAGE_NAME: freebsd-12-4
--    CIRRUS_VM_CPUS: 8
--    CIRRUS_VM_RAM: 8G
--    UPDATE_COMMAND: pkg update; pkg upgrade -y
--    INSTALL_COMMAND: pkg install -y
--    TEST_TARGETS: check
--
- x64-freebsd-13-build:
-   extends: .cirrus_build_job
-   variables:
-diff --git a/.gitlab-ci.d/cirrus/freebsd-12.vars b/.gitlab-ci.d/cirrus/freebsd-12.vars
-deleted file mode 100644
-index 44d8a2a511..0000000000
---- a/.gitlab-ci.d/cirrus/freebsd-12.vars
-+++ /dev/null
-@@ -1,16 +0,0 @@
--# THIS FILE WAS AUTO-GENERATED
--#
--#  $ lcitool variables freebsd-12 qemu
--#
--# https://gitlab.com/libvirt/libvirt-ci
--
--CCACHE='/usr/local/bin/ccache'
--CPAN_PKGS=''
--CROSS_PKGS=''
--MAKE='/usr/local/bin/gmake'
--NINJA='/usr/local/bin/ninja'
--PACKAGING_COMMAND='pkg'
--PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cdrkit-genisoimage cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 zstd'
--PYPI_PKGS=''
--PYTHON='/usr/local/bin/python3'
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 33ef1282da..f1570b54df 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -182,7 +182,6 @@ try:
-     #
-     # Cirrus packages lists for GitLab
-     #
--    generate_cirrus("freebsd-12")
-     generate_cirrus("freebsd-13")
-     generate_cirrus("macos-12")
+-The recommended modern way to describe disks is to use a combination of
++The most explicit way to describe disks is to use a combination of
+ ``-device`` to specify the hardware device and ``-blockdev`` to
+ describe the backend. The device defines what the guest sees and the
+-backend describes how QEMU handles the data.
++backend describes how QEMU handles the data. It is the only guaranteed
++stable interface for describing block devices and as such is
++recommended for management tools and scripting.
++
++The ``-drive`` option combines the device and backend into a single
++command line option which is a more human friendly. There is however no
++interface stability guarantee although some older board models still
++need updating to work with the modern blockdev forms.
++
++Older options like ``-hda`` are essentially macros which expand into
++``-drive`` options for various drive interfaces. The original forms
++bake in a lot of assumptions from the days when QEMU was emulating a
++legacy PC, they are not recommended for modern configurations.
  
+ ERST
+ 
+@@ -1639,6 +1651,14 @@ SRST
+     the raw disk image you use is not written back. You can however
+     force the write back by pressing C-a s (see the :ref:`disk images`
+     chapter in the System Emulation Users Guide).
++
++    .. warning::
++       snapshot is incompatible with ``-blockdev`` (instead use qemu-img
++       to manually create snapshot images to attach to your blockdev).
++       If you have mixed ``-blockdev`` and ``-drive`` declarations you
++       can use the 'snapshot' property on your drive declarations
++       instead of this global option.
++
+ ERST
+ 
+ DEF("fsdev", HAS_ARG, QEMU_OPTION_fsdev,
 -- 
 2.39.2

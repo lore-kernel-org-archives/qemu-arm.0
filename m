@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id hg7-20020a05600c538700b003f1940fe278sm8182665wmb.7.2023.04.24.02.22.49
+        by smtp.gmail.com with ESMTPSA id z10-20020a5d654a000000b002f22c44e974sm10339731wrv.102.2023.04.24.02.22.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 24 Apr 2023 02:22:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 954F61FFB8;
+	by zen.linaroharston (Postfix) with ESMTP id CB4EB1FFBB;
 	Mon, 24 Apr 2023 10:22:49 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,87 +37,217 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	qemu-arm@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Kautuk Consul <kconsul@linux.vnet.ibm.com>,
-	Hariharan T S <hariharan.ts@linux.vnet.ibm.com>
-Subject: [PATCH 01/18] tests/requirements.txt: bump up avocado-framework version to 101.0
-Date: Mon, 24 Apr 2023 10:22:32 +0100
-Message-Id: <20230424092249.58552-2-alex.bennee@linaro.org>
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 03/18] tests/avocado: Add set of boot tests on SBSA-ref
+Date: Mon, 24 Apr 2023 10:22:34 +0100
+Message-Id: <20230424092249.58552-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230424092249.58552-1-alex.bennee@linaro.org>
 References: <20230424092249.58552-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yW502sh0vzfd
+X-TUID: whehNuEvpM/f
 
-From: Kautuk Consul <kconsul@linux.vnet.ibm.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Avocado version 101.0 has a fix to re-compute the checksum
-of an asset file if the algorithm used in the *-CHECKSUM
-file isn't the same as the one being passed to it by the
-avocado user (i.e. the avocado_qemu python module).
-In the earlier avocado versions this fix wasn't there due
-to which if the checksum wouldn't match the earlier
-checksum (calculated by a different algorithm), the avocado
-code would start downloading a fresh image from the internet
-URL thus making the test-cases take longer to execute.
+This change adds set of boot tests on SBSA-ref machine:
 
-Bump up the avocado-framework version to 101.0.
+1. boot firmware up to the EDK2 banner
+2. boot Alpine Linux
 
-Signed-off-by: Kautuk Consul <kconsul@linux.vnet.ibm.com>
-Tested-by: Hariharan T S <hariharan.ts@linux.vnet.ibm.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20230417134321.3627231-2-alex.bennee@linaro.org>
-Message-Id: <20230327115030.3418323-2-kconsul@linux.vnet.ibm.com>
-Message-Id: <20230330101141.30199-10-alex.bennee@linaro.org>
+Prebuilt flash volumes are included, built using upstream documentation.
 
+To unify tests for AArch64/virt and AArch64/sbsa-ref we boot
+the same Alpine Linux image on both.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230323082813.971535-1-marcin.juszkiewicz@linaro.org>
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
+Message-Id: <20230328171426.14258-1-philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
-v2
-  - limit --max-parallel-tasks $(JOBS_OPTION:-j%=%)
----
- tests/Makefile.include | 18 +++++++++++-------
- tests/requirements.txt |  2 +-
- 2 files changed, 12 insertions(+), 8 deletions(-)
+ MAINTAINERS                              |   1 +
+ tests/avocado/machine_aarch64_sbsaref.py | 158 +++++++++++++++++++++++
+ 2 files changed, 159 insertions(+)
+ create mode 100644 tests/avocado/machine_aarch64_sbsaref.py
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 9422ddaece..a4de0ad5a2 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -138,14 +138,18 @@ get-vm-image-fedora-31-%: check-venv
- # download all vm images, according to defined targets
- get-vm-images: check-venv $(patsubst %,get-vm-image-fedora-31-%, $(FEDORA_31_DOWNLOAD))
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 24154f5721..034ff71dac 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -943,6 +943,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/sbsa-ref.c
+ F: docs/system/arm/sbsa.rst
++F: tests/avocado/machine_aarch64_sbsaref.py
  
-+JOBS_OPTION=$(lastword -j1 $(filter-out -j, $(filter -j%,$(MAKEFLAGS))))
+ Sharp SL-5500 (Collie) PDA
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+new file mode 100644
+index 0000000000..0a79fa7ab6
+--- /dev/null
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -0,0 +1,158 @@
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-FileCopyrightText: 2023 Linaro Ltd.
++# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
++# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
--	$(call quiet-command, \
--            $(TESTS_PYTHON) -m avocado \
--            --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
--            $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
--			--filter-by-tags-include-empty-key) \
--            $(AVOCADO_CMDLINE_TAGS) \
--            $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
-+	$(call quiet-command, 							\
-+            $(TESTS_PYTHON) -m avocado 						\
-+            --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) 	\
-+            $(if $(AVOCADO_TAGS),, 						\
-+			--filter-by-tags-include-empty 				\
-+			--filter-by-tags-include-empty-key) 			\
-+		--max-parallel-tasks $(JOBS_OPTION:-j%=%) 			\
-+            $(AVOCADO_CMDLINE_TAGS) 						\
-+            $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), 			\
-             "AVOCADO", "tests/avocado")
- 
- check-acceptance-deprecated-warning:
-diff --git a/tests/requirements.txt b/tests/requirements.txt
-index 0ba561b6bd..a6f73da681 100644
---- a/tests/requirements.txt
-+++ b/tests/requirements.txt
-@@ -2,5 +2,5 @@
- # in the tests/venv Python virtual environment. For more info,
- # refer to: https://pip.pypa.io/en/stable/user_guide/#id1
- # Note that qemu.git/python/ is always implicitly installed.
--avocado-framework==88.1
-+avocado-framework==101.0
- pycdlib==1.11.0
++import os
++
++from avocado import skip
++from avocado import skipUnless
++from avocado.utils import archive
++
++from avocado_qemu import QemuSystemTest
++from avocado_qemu import wait_for_console_pattern
++from avocado_qemu import interrupt_interactive_console_until_pattern
++
++
++class Aarch64SbsarefMachine(QemuSystemTest):
++    """
++    :avocado: tags=arch:aarch64
++    :avocado: tags=machine:sbsa-ref
++    """
++
++    timeout = 180
++
++    def fetch_firmware(self):
++        """
++        Flash volumes generated using:
++
++        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
++
++        - Trusted Firmware-A
++          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
++
++        - Tianocore EDK II
++          https://github.com/tianocore/edk2/tree/494127613b
++          https://github.com/tianocore/edk2-non-osi/tree/41876073
++          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
++        """
++
++        # Secure BootRom (TF-A code)
++        fs0_xz_url = (
++            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
++            "download/SBSA_FLASH0.fd.xz"
++        )
++        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
++        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
++        archive.extract(tar_xz_path, self.workdir)
++        fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
++
++        # Non-secure rom (UEFI and EFI variables)
++        fs1_xz_url = (
++            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
++            "download/SBSA_FLASH1.fd.xz"
++        )
++        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
++        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
++        archive.extract(tar_xz_path, self.workdir)
++        fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
++
++        for path in [fs0_path, fs1_path]:
++            with open(path, "ab+") as fd:
++                fd.truncate(256 << 20)  # Expand volumes to 256MiB
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-drive",
++            f"if=pflash,file={fs0_path},format=raw",
++            "-drive",
++            f"if=pflash,file={fs1_path},format=raw",
++            "-smp",
++            "1",
++            "-machine",
++            "sbsa-ref",
++        )
++
++    def test_sbsaref_edk2_firmware(self):
++        """
++        :avocado: tags=cpu:cortex-a57
++        """
++
++        self.fetch_firmware()
++        self.vm.launch()
++
++        # TF-A boot sequence:
++        #
++        # https://github.com/ARM-software/arm-trusted-firmware/blob/v2.8.0/\
++        #     docs/design/trusted-board-boot.rst#trusted-board-boot-sequence
++        # https://trustedfirmware-a.readthedocs.io/en/v2.8/\
++        #     design/firmware-design.html#cold-boot
++
++        # AP Trusted ROM
++        wait_for_console_pattern(self, "Booting Trusted Firmware")
++        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
++        wait_for_console_pattern(self, "BL1: Booting BL2")
++
++        # Trusted Boot Firmware
++        wait_for_console_pattern(self, "BL2: v2.8(release)")
++        wait_for_console_pattern(self, "Booting BL31")
++
++        # EL3 Runtime Software
++        wait_for_console_pattern(self, "BL31: v2.8(release)")
++
++        # Non-trusted Firmware
++        wait_for_console_pattern(self, "UEFI firmware (version 1.0")
++        interrupt_interactive_console_until_pattern(self, "QEMU SBSA-REF Machine")
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_alpine_linux(self, cpu):
++        self.fetch_firmware()
++
++        iso_url = (
++            "https://dl-cdn.alpinelinux.org/"
++            "alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso"
++        )
++
++        iso_hash = "5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027"
++        iso_path = self.fetch_asset(iso_url, algorithm="sha256", asset_hash=iso_hash)
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-cpu",
++            cpu,
++            "-drive",
++            f"file={iso_path},format=raw",
++            "-device",
++            "virtio-rng-pci,rng=rng0",
++            "-object",
++            "rng-random,id=rng0,filename=/dev/urandom",
++        )
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
++
++    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
++    def test_sbsaref_alpine_linux_cortex_a57(self):
++        """
++        :avocado: tags=cpu:cortex-a57
++        """
++        self.boot_alpine_linux("cortex-a57")
++
++    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
++    def test_sbsaref_alpine_linux_neoverse_n1(self):
++        """
++        :avocado: tags=cpu:max
++        """
++        self.boot_alpine_linux("neoverse-n1")
++
++    @skip("requires TF-A update to handle FEAT_FGT")
++    def test_sbsaref_alpine_linux_max(self):
++        """
++        :avocado: tags=cpu:max
++        """
++        self.boot_alpine_linux("max,pauth-impdef=on")
 -- 
 2.39.2

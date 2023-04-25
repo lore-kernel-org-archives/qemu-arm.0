@@ -1,74 +1,74 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3715661ejm;
-        Tue, 25 Apr 2023 12:32:06 -0700 (PDT)
-X-Received: by 2002:a2e:9857:0:b0:2a8:c8c8:73 with SMTP id e23-20020a2e9857000000b002a8c8c80073mr3604599ljj.14.1682451126343;
-        Tue, 25 Apr 2023 12:32:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682451126; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3715726ejm;
+        Tue, 25 Apr 2023 12:32:14 -0700 (PDT)
+X-Received: by 2002:ac2:5597:0:b0:4ef:ed49:fcc2 with SMTP id v23-20020ac25597000000b004efed49fcc2mr2548790lfg.26.1682451134076;
+        Tue, 25 Apr 2023 12:32:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682451134; cv=none;
         d=google.com; s=arc-20160816;
-        b=PfI3XTmckcB4ItgP8aLwFPCmseH0Iit2ZaYy6Rv6BUxPN3M3nQQDj66Yr0uoxbqKO7
-         tZsBMhDGY+AX26Tqpo4iSCHs6y64vjXSEuRGrKwY/D9zwveiiN6J16ctoY+DszLs+nsx
-         Jw8hGvNBOo84MUVxXdvaWLvFl8S3LfDCQW+M+LKbmaNb50uTb4h3I5kVeJBXsmr+RmWY
-         ezcOMkvETWscJYnUE+gX/QKTAymzTLSGl+oG5I2nHh4x4UQJXXiShtfQ/WsBaufdLZK8
-         BVrOayRTsh0s73C3uhIUP5UM6nvwhD1VKhl06SKFYRRI3+/JJ97opA88kTg41MExP0Zn
-         T0IQ==
+        b=Ji90ovKHjSmCSJ8iw/NS/hODm/s9Krud6bph0DffEWZ1/6LHbRlUMoUNB/pLh3PZOZ
+         tIEAdmM4TiOUd3sSBjke6iFwXx/2+6yCmDIcXrRQIDCYX/giFQdDjARM8EAlF50xQQII
+         XpYrO5GnHtAiLZNKeeCJneZP8UaTzB8VeLfZYN9+skmuO49OK4iLQbQrYVR60wwCvO2S
+         v/gQ55Mkj4znkROP1hS6TYtgEFHw/ZICYNUo+bUn+sHZIEroSL/HFhncb86DRlRNbQwH
+         pIJJ5SD9P6o/AdrGd6Igx81IDnsCBXXI4EzozM1TkYRf+L1barcu9GoeUa8BVY+t9yNS
+         Zebw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3lrJF/qXESqdgqxzYXiwMDd8bhgg68V4bNiRRkSEKr0=;
-        b=xJMfNiu56h9ilxtcrItbk9YjNfN0ZxsKNk4aMZ1GHF3J2ImH+QLwCkBaGSCuMgn1Tw
-         +/IfuCu3K0WVZhDOeSYzXxU82KojprU7Resp+L/AAIJB3ZG+GhMgV3wVrQuavX42wimH
-         ZiyBaN2mJenfhMBxfHhfsX0SJ0c+qs2/lNmggSF3UFFZgMW/FsNwByCqIH7MxSGIW0eR
-         LU3dw0Rh80daxJLgE1Zl8EDtJTIIvV+qm9QId8IrQxJIQfv8bJJK3EM4uHbMHOSTHnUC
-         3LRhbr6Kv0049Vvh8bZVD2ylAlD0Nl2Zjeu9jKAslx2MW9YcSJGGvVWX7OX6V+VRavkG
-         smVw==
+        bh=R+fxTxTqIhiI86kN5IY9M/+obOs0ta97k4WM4ZR41R8=;
+        b=MZB4H7sqqXfq2ruQTJvvCspePo/RcRfpIThzbX1WjamhZvSlLEGbNs+s2FH0MVj81M
+         G1emPhObxXBjghJzi9FqoefUb8wEn+zF+A2jNvJtFkxxLFk7QkgoOWy9go+C+uCzD3xQ
+         Tqn7/nLpp848Q9ERYqApW6Pz1ENa93U1baT/OASmx235psXEBKknxvOdrE2acaxM/Euk
+         JnU91ebIY4ZfX7ylokYfKp/hn7XLVe3CS47qATviqAAgku5DcCWHTNIoObaIVeBCj+I2
+         3x1qmk9F5LZA/7ySE4RK5OutWxAqCBY9isKV4supFOEi2N3T2ufPFM8qv+GOhzs+LHhT
+         M2GA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+zZ5u3g;
+       dkim=pass header.i=@linaro.org header.s=google header.b=X+97rYn7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a9-20020a2e88c9000000b002a8a9796e06sor4704226ljk.22.2023.04.25.12.32.06
+        by mx.google.com with SMTPS id j2-20020a2e8242000000b002a8b11976desor4571881ljh.19.2023.04.25.12.32.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 25 Apr 2023 12:32:06 -0700 (PDT)
+        Tue, 25 Apr 2023 12:32:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+zZ5u3g;
+       dkim=pass header.i=@linaro.org header.s=google header.b=X+97rYn7;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682451126; x=1685043126;
+        d=linaro.org; s=google; t=1682451133; x=1685043133;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3lrJF/qXESqdgqxzYXiwMDd8bhgg68V4bNiRRkSEKr0=;
-        b=I+zZ5u3gA753DpP5BO5TOyihJ1P8U7gPF3Av7Zt3UhPqfHy5DV8WTGBdk4lS08QBVz
-         0oQAaoTj/XlWRHaQWg/JlDXWjm8S70zX7bwyoMlnLeHCXOhZdTypUWko+gf934qrEU+6
-         Z24SCEbDwjcGpVI89poNefs9nh9BN5rOSa4q3gZ3LyYPVH4s+N+nzUw4rgvgMOqiOSTF
-         fCvKswuvgLjRuHYGR+QnK1a1CVQnFY4ykS4JTpmfyastT692aoP+Hf28nDl7yr+zgGLN
-         7JS7Y+iVmIKtqgj4O4QfM1jhrcWRjwRcBHexbV17BLmm9Ko1oRBRbex/nzQUMa3ou/T6
-         0DTA==
+        bh=R+fxTxTqIhiI86kN5IY9M/+obOs0ta97k4WM4ZR41R8=;
+        b=X+97rYn7nYhePOgZIOufdVTChNLCg1ILAZNK6JF98HvkPuvQ6h4ZOmVWwXCYKLFXAb
+         zT9ZI2rCNNxKwLYS7397Dt+CYNqhlxrmyEqZaqDZ2C2h7xb0xw6bme8oW90JX3z6EDql
+         RbUbhwkeQEm8FnWA8rmLSEuffeamgPyLTbBWuAb18Z6L2kTCJUBiz4ZS6+tbe0YVtnjJ
+         A/F5RIdnbr4fkD7KL/hkTnwuycLIvz4h+XM1uJnnFN1ZcoiEjVlJJiMj3ecUBq13dgMu
+         ii9tXAvn92OjS4pLUTDldQf8VHidA/mSrRRsCnweHmF39FpdIAyljaveHOcu0pWqgIMp
+         PpJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682451126; x=1685043126;
+        d=1e100.net; s=20221208; t=1682451133; x=1685043133;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3lrJF/qXESqdgqxzYXiwMDd8bhgg68V4bNiRRkSEKr0=;
-        b=eLVUa+5y6XVXFdut3gVrxNQsOrSRkothcPjYIlDFIika4VlgbEWinHfRuuYFPaVGS8
-         tWnCpZRROAwGOKoV8OVVvGUZjeD5HBvZO0lYAbE4hF12IWsIDpN/+dm/nr5jP115BnHt
-         NNJPz2snCbaOWauq2cwztGc2R5tfZoClw0sUe9hemLVfJZhQ9k/owmz+0Z7nKTFW5CS3
-         mCnIOLI9il7zsCSl3d4y04z8PgG4oSD1TkeKplDE9oszJ3b9DHFixHtp42ajI49IwJA9
-         h1u71FL46ysGfra/+kF7nhVfdextv4ym9I+7sOrXTw3OSBaxoAQXXo1hQhCWlgJ6ui1s
-         Exhg==
-X-Gm-Message-State: AC+VfDywaK/5E8CAW3zPm+KRGKKMprBqMjqTTuuRzxKNWBs2cQ78mUZR
-	Xq3NC6VBG7ayY4IvgiSCSH6T7NYFChMeogREBXDiGYMK
-X-Google-Smtp-Source: ACHHUZ40V/gCBTfrOiARQdHi8KdyrUtqTSkEyQswfqvNRpw0+DoDqvVws44cCyTiS25zaQg6GUM4SQ==
-X-Received: by 2002:a2e:8302:0:b0:2ab:19a0:667b with SMTP id a2-20020a2e8302000000b002ab19a0667bmr1315313ljh.0.1682451125790;
-        Tue, 25 Apr 2023 12:32:05 -0700 (PDT)
+        bh=R+fxTxTqIhiI86kN5IY9M/+obOs0ta97k4WM4ZR41R8=;
+        b=NIynjC6Yu7CAJ8gbAyHueQYoVT/BDbNCsqhqTO5pRiYwPc8XJwmg3ig8vtspaCL/Ta
+         /QKit7ZemWeeBsaLuP3jOTCVMWRNXODfdV/yJL6hrenk6wRWycoxpLXLOUwqdMIr8+eC
+         GY4JNZcKDwlb8ZOj9xsqGLXF3nLqt4EED5cM77Q9RiKXiglp4TwbD/7tKqn38vyopTry
+         6ftkcBwY/JZHryMYz4OvYv85kwjsevmeEEl+WhhfuiENB68q53dQAbJvsUtmFc9E5YT1
+         Zvh0xrCaOB/2SWkxEhVJJ98RgGHFCh7rX8QYjQe/J3/WUghyewDuXd9aedjZsGAVrrX/
+         Ba8A==
+X-Gm-Message-State: AAQBX9fGymz9BLcYokFwrwuMNn58hGmHcps84wpAu2a1pRfxQ5wJpGzY
+	8s3kgBq4HhjpaPjuoN+AZNmQ6TFW
+X-Google-Smtp-Source: AKy350ZEhMVq2MhtpL8/LPCYy0S8TrfSY41eE9e1biZYO5Tq8sjSdOsKUyp8IAy7TbYhsUf8WbQc7A==
+X-Received: by 2002:a2e:7010:0:b0:2a9:f114:f166 with SMTP id l16-20020a2e7010000000b002a9f114f166mr3637834ljc.2.1682451133777;
+        Tue, 25 Apr 2023 12:32:13 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. ([91.209.212.61])
-        by smtp.gmail.com with ESMTPSA id z23-20020a2e8857000000b002a8c271de33sm2160484ljj.67.2023.04.25.12.32.01
+        by smtp.gmail.com with ESMTPSA id z23-20020a2e8857000000b002a8c271de33sm2160484ljj.67.2023.04.25.12.32.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 12:32:05 -0700 (PDT)
+        Tue, 25 Apr 2023 12:32:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -79,91 +79,82 @@ Cc: qemu-arm@nongnu.org,
 	jiaxun.yang@flygoat.com,
 	philmd@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 01/57] include/exec/memop: Add bits describing atomicity
-Date: Tue, 25 Apr 2023 20:30:50 +0100
-Message-Id: <20230425193146.2106111-2-richard.henderson@linaro.org>
+Subject: [PATCH v3 02/57] accel/tcg: Add cpu_in_serial_context
+Date: Tue, 25 Apr 2023 20:30:51 +0100
+Message-Id: <20230425193146.2106111-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230425193146.2106111-1-richard.henderson@linaro.org>
 References: <20230425193146.2106111-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IsP0gwlhRtHu
+X-TUID: kZZgT6miSm1K
 
-These bits may be used to describe the precise atomicity
-requirements of the guest, which may then be used to
-constrain the methods by which it may be emulated by the host.
+Like cpu_in_exclusive_context, but also true if
+there is no other cpu against which we could race.
 
-For instance, the AArch64 LDP (32-bit) instruction changes
-semantics with ARMv8.4 LSE2, from
-
-  MO_64 | MO_ATMAX_4 | MO_ATOM_IFALIGN
-  (64-bits, single-copy atomic only on 4 byte units,
-   nonatomic if not aligned by 4),
-
-to
-
-  MO_64 | MO_ATMAX_SIZE | MO_ATOM_WITHIN16
-  (64-bits, single-copy atomic within a 16 byte block)
-
-The former may be implemented with two 4 byte loads, or
-a single 8 byte load if that happens to be efficient on
-the host.  The latter may not, and may also require a
-helper when misaligned.
+Use it in tb_flush as a direct replacement.
+Use it in cpu_loop_exit_atomic to ensure that there
+is no loop against cpu_exec_step_atomic.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/memop.h | 36 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+ accel/tcg/internal.h        | 5 +++++
+ accel/tcg/cpu-exec-common.c | 3 +++
+ accel/tcg/tb-maint.c        | 2 +-
+ 3 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-index 25d027434a..04e4048f0b 100644
---- a/include/exec/memop.h
-+++ b/include/exec/memop.h
-@@ -81,6 +81,42 @@ typedef enum MemOp {
-     MO_ALIGN_32 = 5 << MO_ASHIFT,
-     MO_ALIGN_64 = 6 << MO_ASHIFT,
+diff --git a/accel/tcg/internal.h b/accel/tcg/internal.h
+index 96f198b28b..8250ecbf74 100644
+--- a/accel/tcg/internal.h
++++ b/accel/tcg/internal.h
+@@ -64,6 +64,11 @@ static inline target_ulong log_pc(CPUState *cpu, const TranslationBlock *tb)
+     }
+ }
  
-+    /*
-+     * MO_ATOM_* describes that atomicity requirements of the operation:
-+     * MO_ATOM_IFALIGN: the operation must be single-copy atomic if and
-+     *    only if it is aligned; if unaligned there is no atomicity.
-+     * MO_ATOM_NONE: the operation has no atomicity requirements.
-+     * MO_ATOM_SUBALIGN: the operation is single-copy atomic by parts
-+     *    by the alignment.  E.g. if the address is 0 mod 4, then each
-+     *    4-byte subobject is single-copy atomic.
-+     *    This is the atomicity of IBM Power and S390X processors.
-+     * MO_ATOM_WITHIN16: the operation is single-copy atomic, even if it
-+     *    is unaligned, so long as it does not cross a 16-byte boundary;
-+     *    if it crosses a 16-byte boundary there is no atomicity.
-+     *    This is the atomicity of Arm FEAT_LSE2.
-+     *
-+     * MO_ATMAX_* describes the maximum atomicity unit required:
-+     * MO_ATMAX_SIZE: the entire operation, i.e. MO_SIZE.
-+     * MO_ATMAX_[248]: units of N bytes.
-+     *
-+     * Note the default (i.e. 0) values are single-copy atomic to the
-+     * size of the operation, if aligned.  This retains the behaviour
-+     * from before these were introduced.
-+     */
-+    MO_ATOM_SHIFT    = 8,
-+    MO_ATOM_MASK     = 0x3 << MO_ATOM_SHIFT,
-+    MO_ATOM_IFALIGN  = 0 << MO_ATOM_SHIFT,
-+    MO_ATOM_NONE     = 1 << MO_ATOM_SHIFT,
-+    MO_ATOM_SUBALIGN = 2 << MO_ATOM_SHIFT,
-+    MO_ATOM_WITHIN16 = 3 << MO_ATOM_SHIFT,
++static inline bool cpu_in_serial_context(CPUState *cs)
++{
++    return !(cs->tcg_cflags & CF_PARALLEL) || cpu_in_exclusive_context(cs);
++}
 +
-+    MO_ATMAX_SHIFT = 10,
-+    MO_ATMAX_MASK  = 0x3 << MO_ATMAX_SHIFT,
-+    MO_ATMAX_SIZE  = 0 << MO_ATMAX_SHIFT,
-+    MO_ATMAX_2     = 1 << MO_ATMAX_SHIFT,
-+    MO_ATMAX_4     = 2 << MO_ATMAX_SHIFT,
-+    MO_ATMAX_8     = 3 << MO_ATMAX_SHIFT,
-+
-     /* Combinations of the above, for ease of use.  */
-     MO_UB    = MO_8,
-     MO_UW    = MO_16,
+ extern int64_t max_delay;
+ extern int64_t max_advance;
+ 
+diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
+index e7962c9348..9a5fabf625 100644
+--- a/accel/tcg/cpu-exec-common.c
++++ b/accel/tcg/cpu-exec-common.c
+@@ -22,6 +22,7 @@
+ #include "sysemu/tcg.h"
+ #include "exec/exec-all.h"
+ #include "qemu/plugin.h"
++#include "internal.h"
+ 
+ bool tcg_allowed;
+ 
+@@ -81,6 +82,8 @@ void cpu_loop_exit_restore(CPUState *cpu, uintptr_t pc)
+ 
+ void cpu_loop_exit_atomic(CPUState *cpu, uintptr_t pc)
+ {
++    /* Prevent looping if already executing in a serial context. */
++    g_assert(!cpu_in_serial_context(cpu));
+     cpu->exception_index = EXCP_ATOMIC;
+     cpu_loop_exit_restore(cpu, pc);
+ }
+diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
+index cb1f806f00..7d613d36d2 100644
+--- a/accel/tcg/tb-maint.c
++++ b/accel/tcg/tb-maint.c
+@@ -760,7 +760,7 @@ void tb_flush(CPUState *cpu)
+     if (tcg_enabled()) {
+         unsigned tb_flush_count = qatomic_mb_read(&tb_ctx.tb_flush_count);
+ 
+-        if (cpu_in_exclusive_context(cpu)) {
++        if (cpu_in_serial_context(cpu)) {
+             do_tb_flush(cpu, RUN_ON_CPU_HOST_INT(tb_flush_count));
+         } else {
+             async_safe_run_on_cpu(cpu, do_tb_flush,
 -- 
 2.34.1

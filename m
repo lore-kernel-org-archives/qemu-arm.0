@@ -1,113 +1,127 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3342640ejm;
-        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aWOx+5XA7jgokzUcb1bY/fM/IiDx46pkjkvxCofDGUmDWmlaTKzWl8QwzwOFa1TkBOr6uD
-X-Received: by 2002:ad4:5745:0:b0:5f7:8b31:454c with SMTP id q5-20020ad45745000000b005f78b31454cmr27134365qvx.1.1682411358408;
-        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682411358; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3364360ejm;
+        Tue, 25 Apr 2023 02:21:28 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bCLNEkijC+6BfDt8JvflQsZdvCK/TCT/WUCZaun8gGzdRqXuUERC0nXpfNmZNFThkKKmfs
+X-Received: by 2002:a05:622a:45:b0:3bf:d950:efc4 with SMTP id y5-20020a05622a004500b003bfd950efc4mr27774543qtw.26.1682414487914;
+        Tue, 25 Apr 2023 02:21:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682414487; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ovp2f/kdMEJHxifbl+q0NKaLiLvkJpsAzDeiO6tTJvG9MJHQYN4EclYkSjbavXf0KS
-         iMDnIhWSSccQ0lVubFczvFm0ZlkRQTdyBQzHy/ViV/wt+k7OOHackyfx7MfktcANBAHM
-         m2rgsgkxyJDVKt22dw4jGB+RrTYrdOEvZs91r1Riiy9OAoShRma1a0wEn1AdFmOpWulX
-         VF5F7dfnoDv7dWHAYF6es+re2ksns2UlJ8lfvy8TBgXK9NCm9b835LjrjHAuN/e2p6jy
-         ClEFcVdVWcldGgxdb50GNewaSfaG8z9p91J+LXMKUnFt1hkcQOtNU+XGZWAGz4OPPF1L
-         ndUg==
+        b=xWgxebJbW++GO3gptXrFbwzzfJSL+NXZnuWJ3MsBdnPuFt+DgVhdy+3C1Hv2bqki0/
+         gxxHuQC5Ti62mWsZGCMa5rTaY8DZjKzsqjVVq9wpqX/SxEqUWd0ZrJ1wdd1hY/2hEDz5
+         oXLenams//MyNKx53H7+NuOikpDlfZzaMZcEb2kVihwbbWqguvW6gtD5aqZVO1556+jx
+         ywBSSWZLyX3a93WMsnGuscLeUaOsODwmg391/PNyrKRTIGg3VwJ9ob9sEWbTr0dnEo/I
+         l9KqrOsNNCM4R3iu/3EUcEyz0cYF1A6FiOCKyzAXvz5f5egmgpAS80xAwWv74tsv7VVS
+         CaRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
-        b=dn3MyY5wr18Iu8CmtDPLqla1nI1wsIKccvSQltfOkQ8V4PVYrL1OfhBUmvNtt5XyHJ
-         qpUBMLQWqlrKWpsa59vp6rGbub3QTvdFSn1q18OaylPd6Z7almwDg/9Jt6LuFUWZyFcA
-         JA35/Zo1Otd3vmTCSfIFoYUVi0+vuZq9SmBQqNWV+Rj/13N37ZMx+Sg9lNS4+5AOaMvy
-         kQTRrekutUDw82YyccRhnJpkg1946Kgu8hSU9uILMStigLuz85lLYHcboYVklILlJKLO
-         TOZDZBJULCD8O4d4Hghlvrpko0K5G/qEv/3odVHLzWAkrSDsFCbjyKJxzNa5KF5koivD
-         De6w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=MN9oXgsc8DHoo1VpyjDGkHB8D0MhxIlnzkrg3+EvyyI=;
+        b=CbyrwbZ4+l8CFrR70mq/J4x9BYuDuVe3ThK3mF7MygUZ+AjDqYFLim9oe+qpXC+GAo
+         d8DEkLL1iJA1FyEzG2AkxAaIrwUJrZPLpw7A+C1oBUNZoeWrnnmkaoBHDETFxleS9YlG
+         WfmW/ZhKD4p/ZCcc1d5m80DFecOXtD5X8R4bpuga3HGkHdxc8im3/BfTOMWo7uwQnsl5
+         rNYjofL36QnXhf6RRuAR0z0KjpdbsPITqPPyAvN+Oo+2jR7aUmQ+mbzxU4xqpvcaKQcT
+         hA97XlvAh/QSPqvUnb765bZZ1wFSTHiDdDB2Viana9KdoA04gUWWiDWFwBLzVUSBQDAD
+         xVfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ecHAvbDs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aGZ/on9n";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib6-20020a0562141c8600b005e7d0ff4db7si8340107qvb.324.2023.04.25.01.29.18
+        by mx.google.com with ESMTPS id c8-20020ac85a88000000b003e4ddb60eaesi8299828qtc.682.2023.04.25.02.21.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
+        Tue, 25 Apr 2023 02:21:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ecHAvbDs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aGZ/on9n";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prE2m-0004tE-Qk; Tue, 25 Apr 2023 04:29:00 -0400
+	id 1prErS-0006zr-BO; Tue, 25 Apr 2023 05:21:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1prE2k-0004rl-F5
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 04:28:58 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1prE2i-0005Bc-ND
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 04:28:58 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-50506111a6eso10007944a12.1
- for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 01:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682411335; x=1685003335;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
- b=ecHAvbDsCmdZ0cODPgiXpJcR4FjlLEbEmXk/C2dGkOcZ14vBpBQnD9ablhFPSAeqCl
- jN5CoGK6TUXMEy2PtRySDKsCmReznBy8e4HhohZyVOV5b6zfTXLLGCb8HPTZew9NidTn
- 3Pcnozqmtc4R44R1roFC42v0ndWV3V0N7hUCYkIbbjyhfhmZOKK4WLCURR53T9ZCuDAU
- PEK6UKc5HsFSjsgWDZU+qGKXvX7sdl//qcCHW+PLxtKxp3vd4lzSp0svP5m4Q0mig0Gm
- i4NNWXFsCeTr5wFv2FtprfC9Z7ygb/quF8oJN6DBznKJmsD+IIFyjo5e7zBk154otmyz
- WQpA==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1prErR-0006zj-BX
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 05:21:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1prErO-0004wc-O3
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 05:21:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1682414477;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MN9oXgsc8DHoo1VpyjDGkHB8D0MhxIlnzkrg3+EvyyI=;
+ b=aGZ/on9nG7bNvfy4DgDwdXyl2eiDNRTiS9i1y14j2wViga5oKgERkrCFDRMJN44KB2e8UU
+ 3t4KhJPrsTg2sgVX6OZ2A2F5ELGdj7p7bm4nrPDMjBzGyAc/6dR3RxuhPiSaqjq7aZYrMd
+ hg1nwNyXajOMujNo9ANVBBNb3gh0P8w=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-626-NcblF5VAPYW89NHH9hkMag-1; Tue, 25 Apr 2023 05:21:16 -0400
+X-MC-Unique: NcblF5VAPYW89NHH9hkMag-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-3f195c06507so53504895e9.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 02:21:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682411335; x=1685003335;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
- b=Kr8KghKn5x+0vRyEZHAmCvc8aACmwszogIkko3Kch1eTAUNpd9dgiA9L6e5u7LyEnR
- YuczIQwmSokHpHyMrWtKsnJPLM0ogGxG0dv/6FOp9YLDQuP674KXQJZiEbfJWqYGqcrB
- FpuscCmOhDU3V3nuFRXmvGbkIs4bTxNBWXxoZNdveidhqaMAsgXfWk/KsVoSgzZX5pkS
- XVeYYHGUKZoXdta/aS0b35Nx6pYKXZCtE/UAUkzt3X9JUmtQOtCRT1y8UUuVqIU+K4qk
- gQN1dAqBMzE2Q9n9wyQGvuK/YUSmiOhSR/+fyGEYY5vzfHH4vNvgKc7W5Xq4kxxn5HDl
- ArFA==
-X-Gm-Message-State: AAQBX9fiWzKgCkRaCKFlYzehae253Ll48USsZ5F0txgrTTAcVqqXX/d/
- t+sdwUS9wonhkMsmDQ7xPFAd8W8uHTS6x0UjYxPYjg==
-X-Received: by 2002:aa7:df01:0:b0:505:8bf:e663 with SMTP id
- c1-20020aa7df01000000b0050508bfe663mr14111320edy.41.1682411335051; Tue, 25
- Apr 2023 01:28:55 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1682414475; x=1685006475;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=MN9oXgsc8DHoo1VpyjDGkHB8D0MhxIlnzkrg3+EvyyI=;
+ b=NnJdAKUD/HP+ipoYsqs/NRpRHmxbbEohJXTAI5KY9mH/9hDB3egSoJnK8lxQkamQn/
+ as82vHYIPr1vBL7bgCaFKu/KkjiKK8wGBdkODBABquUooCzf6aB+o/Uv/e/cSciU9pZ6
+ DsXNwjoxJXFBs5fgoOn0A5xunNWd55tHavEgxgnlWKUbxgCcQaYIJb7tdsjv1nEcE9NI
+ MxMmcvQ+tQfnJShg9jmcad/IjuWd54Ia1sszMHvYuvEyifgwi5Fyu17pmwrPyhneglWf
+ q1nWgiy8i79P2eG2/KPHUqzIi5at1h0Su9GY3sRAPeYhW26r7sxta7b+tKoG3otB7Spp
+ Qqvw==
+X-Gm-Message-State: AAQBX9fTEFDYc+QUPFHFViyaV2rkxfezLJijSoMjRi0qtLqq12zBFRAh
+ fI8Aw4mqXUXN/GO4Lutx1T00JZFssPvfjXuEpMg1uPQjEarc8wtu+w97CMi0gISkwcm4uiBPd0e
+ JjmD1VjVYByu1
+X-Received: by 2002:a1c:4c13:0:b0:3f1:72f2:25c4 with SMTP id
+ z19-20020a1c4c13000000b003f172f225c4mr9575513wmf.13.1682414474862; 
+ Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
+X-Received: by 2002:a1c:4c13:0:b0:3f1:72f2:25c4 with SMTP id
+ z19-20020a1c4c13000000b003f172f225c4mr9575496wmf.13.1682414474606; 
+ Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
+Received: from [10.33.192.205] (nat-pool-str-t.redhat.com. [149.14.88.106])
+ by smtp.gmail.com with ESMTPSA id
+ m7-20020a5d4a07000000b002c55521903bsm12609942wrq.51.2023.04.25.02.21.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Apr 2023 02:21:14 -0700 (PDT)
+Message-ID: <90e96d55-fc8b-52ec-6747-4fecd10e9e10@redhat.com>
+Date: Tue, 25 Apr 2023 11:21:12 +0200
 MIME-Version: 1.0
-References: <20230421165037.2506-1-Jonathan.Cameron@huawei.com>
- <CAFEAcA_DB=nNdiMRwn02mUAATKLvV0Nzs2dCYaM+2fwitac5sg@mail.gmail.com>
- <20230424164058.00000a3d@Huawei.com>
- <CAFEAcA_2JP=cM-SCGVhnhnP_6zYr748=A=G=Sh+BH+gkFmwnZA@mail.gmail.com>
- <20230424225626.00001219@huawei.com>
-In-Reply-To: <20230424225626.00001219@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Apr 2023 09:28:44 +0100
-Message-ID: <CAFEAcA8QXcpkxdXMWP8X9tLem6K8qC3CwZ2-t-fqEpGR-nJBTg@mail.gmail.com>
-Subject: Re: [RFC] hw/arm/virt: Provide DT binding generation for PCI eXpander
- Bridges
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-arm@nongnu.org, Fan Ni <fan.ni@samsung.com>, linuxarm@huawei.com, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH] aspeed/hace: Initialize g_autofree pointer
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
+ Joel Stanley <joel@jms.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230421131547.2177449-1-clg@kaod.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230421131547.2177449-1-clg@kaod.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.194, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,42 +136,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qcl6YyEtIIF4
+X-TUID: HcF3eEPgHH0v
 
-On Mon, 24 Apr 2023 at 22:56, Jonathan Cameron
-<Jonathan.Cameron@huawei.com> wrote:
->
-> On Mon, 24 Apr 2023 16:45:48 +0100
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> > On the other hand, having QEMU enumerate PCI devices is *also* a
-> > very different model from today, where we assume that the guest
-> > code is the one that is going to deal with enumerating PCI devices.
-> > To my mind one of the major advantages of PCI is exactly that it
-> > is entirely probeable and discoverable, so that there is no need
-> > for the dtb to include a lot of information that the kernel can
-> > find out for itself by directly asking the hardware...
->
-> I absolutely agree that QEMU enumerating PCI seem silly level of complexity
-> to introduce. So easy route is to just use the bus numbers to partition
-> resources. We have those available without any complexity. It's not the
-> same as how it's done with ACPI, but then the alternatives are either
-> (though maybe they are closer).  Note current proposed algorithm may be
-> too simplistic (perhaps some alignment forcing should adjust the division
-> of the resources to start on round number addresses)
+On 21/04/2023 15.15, Cédric Le Goater wrote:
+> As mentioned in docs/devel/style.rst "Automatic memory deallocation":
+> 
+> * Variables declared with g_auto* MUST always be initialized,
+>    otherwise the cleanup function will use uninitialized stack memory
+> 
+> This avoids QEMU to coredump when running the "hash test" command
+> under Zephyr.
+> 
+> Cc: Steven Lee <steven_lee@aspeedtech.com>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>   hw/misc/aspeed_hace.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 12a761f1f5..b07506ec04 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+>                                 bool acc_mode)
+>   {
+>       struct iovec iov[ASPEED_HACE_MAX_SG];
+> -    g_autofree uint8_t *digest_buf;
+> +    g_autofree uint8_t *digest_buf = NULL;
 
-I think we definitely need to talk about this later this week,
-but my initial view is that if:
- (1) the guest kernel can get the information it needs to do this
-     by probing the hardware
- (2) doing it in QEMU gives you "this isn't a great allocation"
-     "we don't really have the info we need to do it optimally"
-     "this is more of a policy decision" effects
-     (which is what it's sounding like to me)
+We maybe need a checkpatch.pl rule to catch such bugs...
 
-this is a really strong argument for "guest software should be
-doing this". DTB-booting kernels has always meant the kernel
-doing a lot of work that under ACPI/UEFI/x86-PC is typically
-done by firmware, and this seems similar to me.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-thanks
--- PMM

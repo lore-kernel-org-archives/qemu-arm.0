@@ -1,119 +1,117 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3582851ejm;
-        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bThWWzBoW4WLs7KX1tsKe9c96dI6vseR7+gg++P+wGk941DrYE3uby5SLkWZ6qQ2HJJt10
-X-Received: by 2002:a05:622a:48e:b0:3ef:4330:d402 with SMTP id p14-20020a05622a048e00b003ef4330d402mr27650911qtx.38.1682437015698;
-        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682437015; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3589748ejm;
+        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
+X-Google-Smtp-Source: AKy350a7kFyAtUnQVjMWUEOLtWBRfpXBdlZdWJml89vYxlZ+mj132LS2nkKyD+vucxe2lEGVdcwQ
+X-Received: by 2002:a05:6214:19cb:b0:5f9:ba55:395f with SMTP id j11-20020a05621419cb00b005f9ba55395fmr33492716qvc.52.1682437719730;
+        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682437719; cv=none;
         d=google.com; s=arc-20160816;
-        b=ttlVnx2PCxs9l12iltRbNDn+gXjn91v2pC2PK5joKVu7XW38PbQrA8cdafV4Aq0JHg
-         n1R4NJQ92BSROyBak1qfxnr03JDNr49HuDS7rIzb4fYhZckso33C+cHEDE4F7XDC+3Ks
-         r5gY5LcuDtChvkN6+cEJq8KK1A1dBHYuIl6QspMzcBIUw0hSidp88+XV4QDCcEmCWzpx
-         CI4uxzUsyFUTJJqPGpHr4AWUv7S1tlkjN/KUdLgpuApruooKamZMK4oHsOcaKtTD+Aj7
-         Peeo7AWVkJ0SCJceauYpDLt4ZeCsKiCpD5RwaxYj8b9Y4uwQ/vRSql4jc63Hu6wZV/o1
-         JXhQ==
+        b=vmgUXdMqLSPJwb0c1OaTcnNgaWubZVFti/8TWVB8oY1IFcjAhkdr0FEY7IE6nBjnfF
+         q2Z/hyq5o3SNSI1M8vgRpLktEFJsa71pU5imX3Ttud5c8cnWODfNN6o/8lWBnYL5EfhX
+         Kf6JVaiuzvbbEB7dh1SYbXtAaYMz+GrhbW8iT0ZS+8A4OaOsyfdE8J5M8DuG5p7ncDQw
+         opuerRTaVybwmNDoUsq9Fyf6Jm3HxzCVbWf6KZkBNt0x7nblKoaO1X8x12iKlaHrF2D8
+         H+xwVjM/xRr8aftfOO95t9rwT0hPSQ2QEKgOogKl5xGqscLW5mQs+VjXNZ/yKn8p5uFl
+         sfbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
-        b=R5+poE/GW23wCncmCBoAZgpjazB7RcwigCY2QALc1jkM58ucdYZeZXJD/xees691U9
-         kCd0693c/BBohazmvnX+hzDjMLcfd+R6rPQCULdsHiWfdnw/M9TnlH4WLgAwTSgqZU5A
-         qCRtpBsCzd+VDRWXB7BBBIdMeyyiwFW0nAC6iIKXpE9HviZYtV/BNodz0UMZGfCNKi1O
-         Bobzz804cjD/wH7FOEkijqvAQzrnAsrBfbiph7sPGrVws+WcD4vp4jWDNT4IakW730Yw
-         jKIbEIaG1MPNJwEYLjUtnlAZ8T4Cfo8zvYXQNQFRu95Fs7pm5UmV3MFrHygUmZHqYWsd
-         Tl/A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
+        b=Rugfjnq4ukasoaVwyWi8CNfmM5YfyZ7pl9mRMFaeuTdIG3roLKdSf4iZtRH4JncQpz
+         uo6rDjz2Nxd8LB1acolKzIIldzX8zNGgBlKhVxySmqfwMC2G4rHM9Rb7/PDDhA7NgwGW
+         mDtmESbosWgHo40GHT8OwEatzQARIjuCNZzq/1vMlerKbH0rr27NciF9LXQhBwajGgwj
+         tKPGdNfcsGbFN1ALL0x+FWtovOlIL+dsUs5bSl4BfiZ8Cwm+M0D3wKKzVMNbIprsqmWD
+         ooFGORS8IdAbwHQYKB4gd/l0TwJAXT7YuNt0Eorg31Tj0GPPcjDzZENdgVaN3MVYu6iO
+         D3Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WFkelQnS;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Rm/oHBKm";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9-20020ac87c49000000b003e3b3be6bb8si9207345qtv.267.2023.04.25.08.36.55
+        by mx.google.com with ESMTPS id pn3-20020a056214130300b005ef8161cb7fsi8801089qvb.70.2023.04.25.08.48.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
+        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WFkelQnS;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Rm/oHBKm";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prKid-00073E-35; Tue, 25 Apr 2023 11:36:39 -0400
+	id 1prKto-00062y-HG; Tue, 25 Apr 2023 11:48:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1prKib-00072l-ND; Tue, 25 Apr 2023 11:36:37 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKth-0005uA-Le
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:48:07 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1prKiW-0004DD-Eh; Tue, 25 Apr 2023 11:36:37 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-4efef769000so3011842e87.3; 
- Tue, 25 Apr 2023 08:36:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKtf-0006d8-Nc
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:48:05 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-3f173af665fso39143105e9.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 08:48:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1682436986; x=1685028986;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
- b=WFkelQnSg3iIoDKzKvAHImNbzgtppT6z3VYgkwRVsgN2A7fYILTjdZgvAy3dZtZTtz
- Lmrh69YeyARwwO7/sSIKFP83dtSvJgeUHKC7MSAF3gF4R5UoUyVq1I2sRCdRFG/chACn
- 4uxnF7Dp/oFJprI6cT4x/M62lBbZ18Uy5LJqP7W+4YR0i6Z2LrDeJazf1X7Jy3XxCvPk
- mwoqHydRAwAiRBoldDRLyP+wjhixFBWaFaJ+guWwn/61djul9lbttlqg/4Bo1bNWDE2o
- Ob3eSt4ebEDR/5Qu333TQsRt0IwkxCWhLeUeTtf1PpAsqiFGniA1tPx5yOCRi/PGaLp5
- dPVQ==
+ d=linaro.org; s=google; t=1682437680; x=1685029680;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
+ b=Rm/oHBKmuQwVPHcCxcJLLFSijeEkMvYyFZ+3XQMStb5p3IDxE+Tw0gReJqb8vu152N
+ OAHP2JPHRLDFM5BjDLf3lsvvGKBwlzyCz0b6hadMH5KU87GwbaBWBiSTD7lpwkcXuB5n
+ o/q2Iw8q6fG64aQaUdCf9PugJFgmYt8HqPgJ0kq3cOIH+ycrZW2J4z2Iw5i5yEyzBHAt
+ i2pZbuqGpWOc3FNh2Fy5dUDRbhGqn5RBcXjcuSra70bbygBKF3qnOQahM8X9ZaQf1F0U
+ tBiR9wKgFPYjK3GLUASkC5L9e1C5nxBM61zrRSeuh/HywDsWc2oszTxu4MFoUtc4YOhz
+ keDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682436986; x=1685028986;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
- b=UGVWAU+ev0K+odMDcQm7DaeuSvfvKg2HyPVbOOfBam4X8TvjvPX6SX959xpY5mZb3C
- WiEOg4An8KAlofIjqOJqc0oMHFJzHsResjca3IMSQE2jtBse1RHRn3gNvGW4R1soRlBC
- BiKPvDVZDNBGjp91rn6nyjiCZr5aAVriVVimwUmXYX9jIjmBtdeQVr2TNMIGCTwo1X1W
- tZSlZhTuiqwA5Fkll9/Ay4d/tZD5TZWkcPyYGSfoJn77VzHauSkpcw3yrHdQodm29rgw
- kt2rS53zfYk46y9mahUD0Y71qqENLUeaJ7pLycn9vmKdgzfGhgCANsg3136Nyq1m2Zt8
- CBLw==
-X-Gm-Message-State: AAQBX9fEE6+CCDiH9vc8mSifGK2fIcRKCqJOTwQwg5jV5Rm1f5N5mOHH
- lv66V7O9xxQo7F4s+0eFrp0=
-X-Received: by 2002:a05:6512:20e:b0:4eb:1527:e29d with SMTP id
- a14-20020a056512020e00b004eb1527e29dmr5054390lfo.52.1682436986025; 
- Tue, 25 Apr 2023 08:36:26 -0700 (PDT)
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
+ d=1e100.net; s=20221208; t=1682437680; x=1685029680;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
+ b=T0/N90eh313OGh7JXHVfcKHf1tx335cCTOCZDyfFILcgrFOA1EUXaZ4x4yXVxyfMCk
+ wCLYGGygdEWrx6Z5rRk2nWM9mu7/BjlrC94/LjUThiNgOBeuPMB9uNa4XkLQ1w8TKueC
+ anLBoqToVo1da1Sk5QOVORPPAU9PYArAXY8LGhnnGauwdCcqZPj/EyqsIt4yjpovV7RJ
+ 8MKZv/mXHc3ZXAsJcdCu6ObKS3S+iBRf5tBEx2quQtp2nYOevmJdF7NFv0pmnt5WuaI/
+ 7Y3YKwL6Jymif2yOHH0vTzAa+M9y5/Wa6DGuAsX4IzH0qlJ9Gvke/di2L6rGwZTZj+MP
+ 5l5w==
+X-Gm-Message-State: AAQBX9fxrskSX9JeGqoMwU88IiSmN0uvjb9kAcqWojGfJ+A0f9hlxiiB
+ /W/Dw3Uk/FiKJjYE8SvsIQX+Iw==
+X-Received: by 2002:a5d:5181:0:b0:2d5:2c7b:bc5f with SMTP id
+ k1-20020a5d5181000000b002d52c7bbc5fmr12444379wrv.58.1682437679885; 
+ Tue, 25 Apr 2023 08:47:59 -0700 (PDT)
+Received: from [172.27.248.56] ([212.187.182.164])
  by smtp.gmail.com with ESMTPSA id
- b21-20020ac25635000000b004edc307b706sm2100134lff.244.2023.04.25.08.36.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Apr 2023 08:36:25 -0700 (PDT)
-Date: Tue, 25 Apr 2023 17:36:24 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
-Subject: Re: [QEMU][PATCH v4 3/4] xlnx-versal: Connect Xilinx VERSAL CANFD
- controllers
-Message-ID: <20230425153623.GB7006@fralle-msi>
-References: <20230425063433.25803-1-vikram.garhwal@amd.com>
- <20230425063433.25803-4-vikram.garhwal@amd.com>
+ v12-20020adfe28c000000b0030497b3224bsm209356wri.64.2023.04.25.08.47.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Apr 2023 08:47:59 -0700 (PDT)
+Message-ID: <de9e4f6d-e985-b1f9-5a59-0127c54a7323@linaro.org>
+Date: Tue, 25 Apr 2023 16:47:58 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230425063433.25803-4-vikram.garhwal@amd.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.0
+Subject: Re: [PATCH] hw/intc/allwinner-a10-pic: Don't use set_bit()/clear_bit()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+References: <20230424152833.1334136-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230424152833.1334136-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.422,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01, USER_IN_WHITELIST=-100,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,329 +126,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pcYST3Juqyvg
+X-TUID: +9Xruk7V/Dw1
 
-Hi Vikram,
-
-On [2023 Apr 24] Mon 23:34:32, Vikram Garhwal wrote:
-> Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
-> document with CANFD command line examples.
+On 24/4/23 17:28, Peter Maydell wrote:
+> The Allwinner PIC model uses set_bit() and clear_bit() to update the
+> values in its irq_pending[] array when an interrupt arrives.  However
+> it is using these functions wrongly: they work on an array of type
+> 'long', and it is passing an array of type 'uint32_t'.  Because the
+> code manually figures out the right array element, this works on
+> little-endian hosts and on 32-bit big-endian hosts, where bits 0..31
+> in a 'long' are in the same place as they are in a 'uint32_t'.
+> However it breaks on 64-bit big-endian hosts.
 > 
-> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Remove the use of set_bit() and clear_bit() in favour of using
+> deposit32() on the array element.  This fixes a bug where on
+> big-endian 64-bit hosts the guest kernel would hang early on in
+> bootup.
+> 
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  docs/system/arm/xlnx-versal-virt.rst | 31 ++++++++++++++++++
->  hw/arm/xlnx-versal-virt.c            | 48 ++++++++++++++++++++++++++++
->  hw/arm/xlnx-versal.c                 | 37 +++++++++++++++++++++
->  include/hw/arm/xlnx-versal.h         | 12 +++++++
->  4 files changed, 128 insertions(+)
-> 
-> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-> index 92ad10d2da..d2d1b26692 100644
-> --- a/docs/system/arm/xlnx-versal-virt.rst
-> +++ b/docs/system/arm/xlnx-versal-virt.rst
-> @@ -34,6 +34,7 @@ Implemented devices:
->  - DDR memory
->  - BBRAM (36 bytes of Battery-backed RAM)
->  - eFUSE (3072 bytes of one-time field-programmable bit array)
-> +- 2 CANFDs
->  
->  QEMU does not yet model any other devices, including the PL and the AI Engine.
->  
-> @@ -224,3 +225,33 @@ To use a different index value, N, from default of 1, add:
->  
->    Better yet, do not use actual product data when running guest image
->    on this Xilinx Versal Virt board.
-> +
-> +Using CANFDs for Versal Virt
-> +""""""""""""""""""""""""""""
-> +Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
-> +implementation. Bus connection and socketCAN connection for each CAN module
-> +can be set through command lines.
-> +
-> +To connect both CANFD0 and CANFD1 on the same bus:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +
-> +To connect CANFD0 and CANFD1 to separate buses:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
-> +    -machine canbus0=canbus0 -machine canbus1=canbus1
-> +
-> +The SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
-> +the host machine. Please check this document to learn about CAN interface on
-> +Linux: docs/system/devices/can.rst
-> +
-> +To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +    -object can-host-socketcan,id=canhost0,if=can0,canbus=canbus
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 668a9d65a4..52c93a590d 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -40,9 +40,11 @@ struct VersalVirt {
->          uint32_t clk_25Mhz;
->          uint32_t usb;
->          uint32_t dwc;
-> +        uint32_t canfd[2];
->      } phandle;
->      struct arm_boot_info binfo;
->  
-> +    CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
->      struct {
->          bool secure;
->      } cfg;
-> @@ -235,6 +237,33 @@ static void fdt_add_uart_nodes(VersalVirt *s)
->      }
->  }
->  
-> +static void fdt_add_canfd_nodes(VersalVirt *s)
-> +{
+>   hw/intc/allwinner-a10-pic.c | 7 ++-----
+>   1 file changed, 2 insertions(+), 5 deletions(-)
 
-In this function we need to modify the generated dtb a little so the kernel
-finds the devices correctly.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-> +    uint32_t size[] = { MM_CANFD0_SIZE, MM_CANFD1_SIZE };
-> +    unsigned int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0 };
-
-
-Here we can swap above 3 lines for below:
-
-    uint64_t addrs[] = { MM_CANFD1, MM_CANFD0 };
-    uint32_t size[] = { MM_CANFD1_SIZE, MM_CANFD0_SIZE };
-    unsigned int irqs[] = { VERSAL_CANFD1_IRQ_0, VERSAL_CANFD0_IRQ_0 };
-    const char clocknames[] = "can_clk\0s_axi_aclk";
-
-
-> +    int i;
-> +
-> +    /* Create and connect CANFD0 and CANFD1 nodes to canbus0. */
-> +    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-> +        char *name = g_strdup_printf("/canfd@%" PRIx64, addrs[i]);
-> +        qemu_fdt_add_subnode(s->fdt, name);
-
-
-> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo0", 0x40);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "enable-rx-fifo1", 0x1);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo1", 0x40);
-
-Here we can swap above for 3 lines for below:
-
-        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo-depth", 0x40);
-        qemu_fdt_setprop_cell(s->fdt, name, "tx-mailbox-count", 0x20);
-
-        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
-        qemu_fdt_setprop(s->fdt, name, "clock-names",
-                         clocknames, sizeof(clocknames));
-
-
-> +
-> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-> +                               GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-> +                                     2, addrs[i], 2, size[i]);
-> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-
-
-> +                                "xlnx,versal-canfd");
-
-And here we can swap above line with (kernel compatible):
-
-                                "xlnx,canfd-2.0");
-
-After changing above the linux kernel will find the devices:
-
-...
-[    1.791998] CAN device driver interface
-[    1.732791] xilinx_can ff060000.canfd can0: reg_base=0x(____ptrval____) irq=28 clock=25000000, tx buffers: actual 32, using 1
-[    1.734668] xilinx_can ff070000.canfd can1: reg_base=0x(____ptrval____) irq=29 clock=25000000, tx buffers: actual 32, using 1
-...
-
-...
-#  ip a
-...
-2: can0: <NOARP40000> mtu 16 qdisc noop qlen 10
-    link/[280] 
-3: can1: <NOARP40000> mtu 16 qdisc noop qlen 10
-    link/[280] 
-...
-
-Looks good otherwise!
-
-Best regards,
-Francisco Iglesias
-
-
-> +
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
->                                       uint32_t phandle)
->  {
-> @@ -639,12 +668,17 @@ static void versal_virt_init(MachineState *machine)
->                              TYPE_XLNX_VERSAL);
->      object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
->                               &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus0", OBJECT(s->canbus[0]),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus1", OBJECT(s->canbus[1]),
-> +                             &error_abort);
->      sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
->  
->      fdt_create(s);
->      create_virtio_regions(s);
->      fdt_add_gem_nodes(s);
->      fdt_add_uart_nodes(s);
-> +    fdt_add_canfd_nodes(s);
->      fdt_add_gic_nodes(s);
->      fdt_add_timer_nodes(s);
->      fdt_add_zdma_nodes(s);
-> @@ -712,6 +746,20 @@ static void versal_virt_init(MachineState *machine)
->  
->  static void versal_virt_machine_instance_init(Object *obj)
->  {
-> +    VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
-> +
-> +    /*
-> +     * User can set canbus0 and canbus1 properties to can-bus object and connect
-> +     * to socketcan(optional) interface via command line.
-> +     */
-> +    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[0],
-> +                             object_property_allow_set_link,
-> +                             0);
-> +    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[1],
-> +                             object_property_allow_set_link,
-> +                             0);
->  }
->  
->  static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 69b1b99e93..1594dd6c5c 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -184,6 +184,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
->      }
->  }
->  
-> +static void versal_create_canfds(Versal *s, qemu_irq *pic)
-> +{
-> +    int i;
-> +    uint32_t irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
-> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
-> +        char *name = g_strdup_printf("canfd%d", i);
-> +        SysBusDevice *sbd;
-> +        MemoryRegion *mr;
-> +
-> +        object_initialize_child(OBJECT(s), name, &s->lpd.iou.canfd[i],
-> +                                TYPE_XILINX_CANFD);
-> +        sbd = SYS_BUS_DEVICE(&s->lpd.iou.canfd[i]);
-> +
-> +        object_property_set_int(OBJECT(&s->lpd.iou.canfd[i]), "ext_clk_freq",
-> +                                XLNX_VERSAL_CANFD_REF_CLK , &error_abort);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.iou.canfd[i]), "canfdbus",
-> +                                 OBJECT(s->lpd.iou.canbus[i]),
-> +                                 &error_abort);
-> +
-> +        sysbus_realize(sbd, &error_fatal);
-> +
-> +        mr = sysbus_mmio_get_region(sbd, 0);
-> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
-> +
-> +        sysbus_connect_irq(sbd, 0, pic[irqs[i]]);
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void versal_create_usbs(Versal *s, qemu_irq *pic)
->  {
->      DeviceState *dev;
-> @@ -718,6 +750,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->      versal_create_apu_gic(s, pic);
->      versal_create_rpu_cpus(s);
->      versal_create_uarts(s, pic);
-> +    versal_create_canfds(s, pic);
->      versal_create_usbs(s, pic);
->      versal_create_gems(s, pic);
->      versal_create_admas(s, pic);
-> @@ -757,6 +790,10 @@ static void versal_init(Object *obj)
->  static Property versal_properties[] = {
->      DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
->                       MemoryRegion *),
-> +    DEFINE_PROP_LINK("canbus0", Versal, lpd.iou.canbus[0],
-> +                      TYPE_CAN_BUS, CanBusState *),
-> +    DEFINE_PROP_LINK("canbus1", Versal, lpd.iou.canbus[1],
-> +                      TYPE_CAN_BUS, CanBusState *),
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index b6786e9832..39ee31185c 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -31,6 +31,7 @@
->  #include "hw/dma/xlnx_csu_dma.h"
->  #include "hw/misc/xlnx-versal-crl.h"
->  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
-> +#include "hw/net/xlnx-versal-canfd.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-> @@ -43,6 +44,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
->  #define XLNX_VERSAL_NR_SDS     2
->  #define XLNX_VERSAL_NR_XRAM    4
->  #define XLNX_VERSAL_NR_IRQS    192
-> +#define XLNX_VERSAL_NR_CANFD   2
-> +#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
->  
->  struct Versal {
->      /*< private >*/
-> @@ -73,6 +76,8 @@ struct Versal {
->              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
->              XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
->              VersalUsb2 usb;
-> +            CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
-> +            XlnxVersalCANFDState canfd[XLNX_VERSAL_NR_CANFD];
->          } iou;
->  
->          /* Real-time Processing Unit.  */
-> @@ -133,6 +138,8 @@ struct Versal {
->  #define VERSAL_CRL_IRQ             10
->  #define VERSAL_UART0_IRQ_0         18
->  #define VERSAL_UART1_IRQ_0         19
-> +#define VERSAL_CANFD0_IRQ_0        20
-> +#define VERSAL_CANFD1_IRQ_0        21
->  #define VERSAL_USB0_IRQ_0          22
->  #define VERSAL_GEM0_IRQ_0          56
->  #define VERSAL_GEM0_WAKE_IRQ_0     57
-> @@ -163,6 +170,11 @@ struct Versal {
->  #define MM_UART1                    0xff010000U
->  #define MM_UART1_SIZE               0x10000
->  
-> +#define MM_CANFD0                   0xff060000U
-> +#define MM_CANFD0_SIZE              0x10000
-> +#define MM_CANFD1                   0xff070000U
-> +#define MM_CANFD1_SIZE              0x10000
-> +
->  #define MM_GEM0                     0xff0c0000U
->  #define MM_GEM0_SIZE                0x10000
->  #define MM_GEM1                     0xff0d0000U
-> -- 
-> 2.17.1
-> 

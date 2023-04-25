@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3294373ejm;
-        Mon, 24 Apr 2023 23:36:40 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bc55yatgLy74AripFYdjnPtBw9sV0Lahd3P35cE3/WFszLGoJWzGDeBleQvKtRLcRmOuLB
-X-Received: by 2002:a05:6214:1c86:b0:5ef:865f:e5c9 with SMTP id ib6-20020a0562141c8600b005ef865fe5c9mr22884888qvb.29.1682404599956;
-        Mon, 24 Apr 2023 23:36:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682404599; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3294550ejm;
+        Mon, 24 Apr 2023 23:37:06 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bZOAS4+phuplHZKs3E2DzKrDUSQD/LACi60mLCFvBs1PY3ttiDPk5LYSjfsl1bbSF28Rz+
+X-Received: by 2002:ac8:5e0f:0:b0:3ef:2fbd:90bb with SMTP id h15-20020ac85e0f000000b003ef2fbd90bbmr29455267qtx.55.1682404626009;
+        Mon, 24 Apr 2023 23:37:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682404625; cv=none;
         d=google.com; s=arc-20160816;
-        b=GWnWOqFjUDWPjCW68+Nz4S61DP3D3muOjWQM9AZybkPXdtfdZzYV5gIJbq3pCzIHb1
-         Jt82a51hn2kAbPkMfQes3C7oSCKNbdTanLNf77YZkcSr5y0IBT0klwCd7Q057l3FewPK
-         O/fLu7kO85Ldqnj4zu8lCSag/tT+45Rsj54Ncm3vHdapymN7z0WxcKCuBLupue8Vrnqw
-         Q/JsCpAijXq/tkrEXGr+qOAi+vD3IsgpVt6n+893Iu+jAFAngbNuLuDNL3zSjKcCZWdx
-         YlP4lvVJxJa2T3TzhGOgRi4Z73v6ne3aZCgzJny1Vor2TP2u9Qg3NpsqsHmEMDq8dHQv
-         k8Fw==
+        b=qa6CRpcxpA1Gc7m5zje+9vUz4BreztLnBmH/iutyAKcUbGTcdE8dLV+JOWkKQ7O9kq
+         0lCvqSzeuPbAUqymnnwQBAsLdkOBpHVLvY0BIJOIk+upo9vVYVG0T65+5OunBaQnBldF
+         pW9iz8n8hJfwQx32GLrEN7OhagwmDGm/Dnq0EbeCIeCa9rVC5g8u7K9os3/O+UBXibqI
+         IocZA5KOXI7tZhLldTG0R9K29WpZLDMi0OWtD86EE/xuB+selcCuwuHpLAUUwURuvHRl
+         NatRyXct4TNW9zYy6O3jRGL8WdaZ+HKUdMGgeIdenHuMNXVNd4Ky445avxGX7EbiifJc
+         NsTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:feedback-id:dkim-signature:dkim-signature;
-        bh=SFxJK+G1nUK+75gA73AgPJQ/+B1jkLruZiTC4j6hJjw=;
-        b=pW/+wLMjZpckysyAYXsKGvzp1houfMC8ad5hH5gL8jGAK5T9tAwFCdNYSCjSwd9KHR
-         uerE3BEwapYcX+xFBhV77jUeXOo/rNAdgaqvddjmVKJvi9Nm7hfF6/Czlcs3hyR+mRBA
-         wtKn+Zrbm++kE5SSbXvTb2ugyRLHhUEPNPAapRqmmXGhB4i0xwpxKpZ6EJsuT24SFeJR
-         Ay6oLdkSVSbqfsO+uIDwgWPwszDRRAq4NxQTB38BXq40NfJn0OpfYE+aMvlF6hzRubVm
-         1RQjXy/541rJMHk7+me+7RvyjDKXZeqBJR2/sinPBwcTUxkb5AIu5LJUNSLoQOHZmWRI
-         ZJ+w==
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=AI+GTXTaiFUivVhWlC5rhVRFPKNc6javldPOJbFAoM0=;
+        b=D1YSurFiHWpDdjnvOzggGC3OwesHFl7VzdEEBy+auowZgMONzyeR0o+TuuxAbQbfMj
+         +a7PuTa8n6hiaw1kxuBcK6mueiFYYW/zX/iUPF1d/FAhUXx0ACeCh4kLatHE00Jrhmx2
+         s69npYckKGadWL02vPMmedFyNf50g723uEABtSFU7Ppk3C3XALPHYVczRBqhMag4Pl8G
+         S3ENVFFKjSSsv83DOjIIrtmwqxitQyK+iewTZw69ltikdBykn2kDD8XCRagyCAu9ANrO
+         DWiDXHpmHgBDfQ8aRFfCD9yqbCRkbP2pmBtBtZ+q9IjRM/nxABMxNkwR3rojtjzMQDMl
+         v4Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm2 header.b=qxVgTO2H;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=QKytcrn4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@irrelevant.dk header.s=fm2 header.b=c8QWykGI;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=NSPtqu1t;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21-20020a05620a221500b0074adbe0b449si7819435qkh.388.2023.04.24.23.36.39
+        by mx.google.com with ESMTPS id i9-20020a05620a248900b0074e36f152e9si5052133qkn.299.2023.04.24.23.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 23:36:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Apr 2023 23:37:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@irrelevant.dk header.s=fm2 header.b=qxVgTO2H;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=QKytcrn4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@irrelevant.dk header.s=fm2 header.b=c8QWykGI;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=NSPtqu1t;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prCHL-0004LU-3x; Tue, 25 Apr 2023 02:35:55 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1prCHL-0004MO-Um; Tue, 25 Apr 2023 02:35:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1prCHJ-0004IA-Ul; Tue, 25 Apr 2023 02:35:54 -0400
+ id 1prCHK-0004IK-07; Tue, 25 Apr 2023 02:35:54 -0400
 Received: from out4-smtp.messagingengine.com ([66.111.4.28])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1prCHI-0003BK-49; Tue, 25 Apr 2023 02:35:53 -0400
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id 1BEC05C008D;
- Tue, 25 Apr 2023 02:35:51 -0400 (EDT)
+ id 1prCHH-0003Ag-3y; Tue, 25 Apr 2023 02:35:53 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id A771A5C0076;
+ Tue, 25 Apr 2023 02:35:45 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Tue, 25 Apr 2023 02:35:51 -0400
+ by compute4.internal (MEProxy); Tue, 25 Apr 2023 02:35:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-transfer-encoding:content-type:date:date:from
- :from:in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1682404551; x=
- 1682490951; bh=SFxJK+G1nUK+75gA73AgPJQ/+B1jkLruZiTC4j6hJjw=; b=q
- xVgTO2Hb4qj/30fsTEycgmcFc5RRl0oFsmIOc9Cp96dTkIkIVtjo/HI4C5gHNv+5
- QKGjMSoZx8Xls05dx4PT2r3XQD6vX/xwO1WzdfLNrXjIBDWkzppuoCRoFOGROwKF
- qVorMTM1hjWANYrdNktqyocVBSSgIfH+ENZFKO48dPN1cfUwrP+tulGozy2yB690
- rGDIarv5rao58lcMkVDHWiYvsTV0fceSkUG40WIj5raB7/c1f0SVUT2zdwgr5nMV
- AD//ScmjsRBlw6R9DGERXWcm1C5o8YCKn6jN8rCdIh0wND8IF5Tn5u6Rtk2vQpKa
- o1jU63MNZY04wSQd1Ww4A==
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:message-id:mime-version
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1682404545; x=
+ 1682490945; bh=AI+GTXTaiFUivVhWlC5rhVRFPKNc6javldPOJbFAoM0=; b=c
+ 8QWykGIRguYHzeVRWz9riSHJ+w/OwI19ChXBVnKcIxiaNECDOpRwTFiDnZT0U0kP
+ 1+NfKwc9HS07Pyjzrsuwx02TJHiIjbsoOAvUAtd8np90ZLRA9wVV2FmBmY+o0fpY
+ kQKhHI04FoUsIgrSV6jsPPTrxFjE1JbkJX4XL6uaUDEVsUbpa7lXKwamzCjSAA18
+ gjOmbUCQgZLLazkq3TKsBzf/SG184UZMHylUpZkwaAoE/+/tUVCJL+tdGwEP4pNP
+ MjBRfF4aHYYLQVahgreJXuRLs0c8fxZbTqX8PItLZAwe29F7LEeHH5qtYUnOlZ3L
+ 9yTU2pD6HJu4HHG/c0V+g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:feedback-id:feedback-id:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1682404551; x=
- 1682490951; bh=SFxJK+G1nUK+75gA73AgPJQ/+B1jkLruZiTC4j6hJjw=; b=Q
- Kytcrn4kOzHADo7XcuT3J9YS6I8234cIUUztBjIt6j8+iWZu+xbDC8GvnYwAUZsL
- ZQxp2stslL0igxVg5oTtI9da1LpGUfcJqVtnArr6GM1u0oFkpYnyhpkrFsj3vQHK
- XIg98E+rdZvAHUPJB1WK2F4zqp8MOxctUacHmlOWNnlC4aN2h37dYGirTd6yNQ9U
- o9cCnAfK6TpdDDcpZNgrEA1QXGHp/U+k8F+WhwZZw2jx7I+a5bBkTTuxOR7UPmsb
- Ck0iaZ7T6k4I2icmjWdooDUbnDvUA1BKHbHCMJ6oTdgzD/gbEVQsF4buUPCZCNQ9
- nLJJnVNWFkAwmopMTyazg==
-X-ME-Sender: <xms:xnRHZP6630yRZOcHjbe4TET2F1_upkDWODF8Jxa9ltE4FClxB_vlkQ>
- <xme:xnRHZE7uYKuxaYtUJxKLlVRXauhjIqLXUH5veJqLQCSy-eu7Yt2A-m4KZyIBvyR84
- oSpy6NepsDK9XaclP8>
-X-ME-Received: <xmr:xnRHZGfjp1kGb9LmdqXmmySDgce5kHW95_sD1vDTPGXk_GdD4R_0BuOE-XdpzjZ3EUhr87nQF34>
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:message-id:mime-version:reply-to:sender
+ :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm3; t=1682404545; x=1682490945; bh=A
+ I+GTXTaiFUivVhWlC5rhVRFPKNc6javldPOJbFAoM0=; b=NSPtqu1tAh8ZLmAiF
+ MjVBQ/xbiQaKHEKuuSyZwEwCk/utRX12hU7TX04rQCmEBnwN8NcjWy6aFzHz/Njc
+ tnJQqa9JZx3gAQR5i0Tq7Ei4Z4Xc+LaU4TU0XnT7uuOMCIfNbIAL4d8e9cEFfKIj
+ 9HEBGeBSKllSl28r237H7F5aOWilhDurI4SHx+RBMkET/c4kvyn3AKhp7szjRJ+U
+ HPDxSjxFthDNplo1Tbi5KATCd76BKHZvWZG5LXfGURHc0QhCeWNo4O/Gf/IqTgQ+
+ VN/hhbHgN4nGo67g16NXIlyfSboWvUTmZVf/szd3csrl11//dMUbLOJ8hdxPOzaj
+ EluIA==
+X-ME-Sender: <xms:wHRHZB_qCJwNCmm0SjPr_WWUERlBIH5V9XRO2ErohrpSv6lQ_3vCjw>
+ <xme:wHRHZFulrXAm-IWMrtMZlwblDSr_N6UFFHN2RRw5mkbMqqaTIJLyKHVC145yYEl9i
+ lnmP6tUsLv-Q-YHMrU>
+X-ME-Received: <xmr:wHRHZPCBw01MVKmy4QVguyEFEPvcw0rGoYLX_1WoXJvDUsvWuHfVXU-ENjVbFXqRIu9U4i2Apz0>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeduuddgudduvdcutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
  necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefmlhgr
- uhhsucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrg
- htthgvrhhnpeejgfeilefgieevheekueevheehkeefveegiefgheefgfejjeehffefgedu
- jedugeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
- hithhssehirhhrvghlvghvrghnthdrughk
-X-ME-Proxy: <xmx:xnRHZALJoTzb-3U7-JCPYBrJxfEHGFMV5hnVGE8zvaqeK1j79Ps4Bw>
- <xmx:xnRHZDImlnHKSEH6qW1_2KwlNAJx9C8bXnTmG7XkyUHFSjNgW6t13Q>
- <xmx:xnRHZJzLPVZzwp0EAdxUW7xZ_isTBXX447rgz76DahZJIZ3ZrU-UBg>
- <xmx:x3RHZCZjs7gkEIL13aEZqYELAJ3FU6VrpgmlqphAPWumKO25YAqa2w>
+ enucfjughrpefhvfevufffkffotggggfesthekredtredtjeenucfhrhhomhepmfhlrghu
+ shculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrth
+ htvghrnhepfefghedufeejvdfghfehledvvddvheffgfetvdffueegieeggffggfeghfei
+ jeelnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpe
+ dtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhrvghlvghvrghnthdrughk
+X-ME-Proxy: <xmx:wHRHZFdfH_G8GfIKWWXiaLIo27tUV1mJn_dYhXreiz3BoL4mX80U8A>
+ <xmx:wHRHZGOGe2xqLI5e_PFZIhfzvbC9jc4K__Av_7x4nG5hhiSRK6E5Mw>
+ <xmx:wHRHZHnGf2mreYX5b8-7R1FzYFzkGiEHY7bxPd-FotFY4FTgiHZUXw>
+ <xmx:wXRHZAvdYjTlhpUPQj7T_cgeS9nvnQ_oVaJ2O4z7cmMdI29FR0raAQ>
 Feedback-ID: idc91472f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 25 Apr 2023 02:35:48 -0400 (EDT)
+ 25 Apr 2023 02:35:41 -0400 (EDT)
 From: Klaus Jensen <its@irrelevant.dk>
 To: qemu-devel@nongnu.org
 Cc: Corey Minyard <cminyard@mvista.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
@@ -109,22 +109,22 @@ Cc: Corey Minyard <cminyard@mvista.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
  Matt Johnston <matt@codeconstruct.com.au>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PATCH v2 2/3] i2c/mctp: Allow receiving messages to dest eid 0
-Date: Tue, 25 Apr 2023 08:35:39 +0200
-Message-Id: <20230425063540.46143-3-its@irrelevant.dk>
+Subject: [PATCH v2 0/3] hw/{i2c, nvme}: mctp endpoint,
+ nvme management interface model
+Date: Tue, 25 Apr 2023 08:35:37 +0200
+Message-Id: <20230425063540.46143-1-its@irrelevant.dk>
 X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230425063540.46143-1-its@irrelevant.dk>
-References: <20230425063540.46143-1-its@irrelevant.dk>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=922; i=k.jensen@samsung.com;
- h=from:subject; bh=qufOF07ehXobwxN2ep+lKi4IDEQ5mpH4wwvwoV38k1I=;
- b=owJ4nJvAy8zAxej7cL1hrj/vS8bTakkMKe4lu35fL4qbtIj305XCj2eyKhxcHveekrX7JV3lc
- umH0tXtU6s6GY1ZGBi5GGTFFFmCNIxXlT6682yRe9oBmEGsTCBTGLg4BWAiTNns/4N50uoitFs2
- vpn6eL1f/EUPDQlJ1St3hWet4nsdnyoTHu3hfaTBn3m++SqlxUxGp6c7NwTqvj11jTv1mdCk5gT
- BrxtuaCRGJpYsUN3wO796BrPYPOc8foM+aaUZXSVXZSpvKJwUXtDYkaOqHMtvof9Fe7Z74dpjL5
- nKNDm9Vnys/XYyVNJ358yCmQfvbUk8kXlYSudp3jQmDnX2WPboNg3BBf1zLa4Zd3m/XCl9t6t6j
- 7RFuP/JRZaB9y1mVgYsf/LYXrX4c6vxXd1LkmIZRzdKnpM9Vm7RUN30idtvDn+Q+5x7nV/eONTE
- 1/I6bZM/zfQj0N08aud0X4MT76Zd3uZ2aUXwubWpGwIiTbQA/L6gpA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2706; i=k.jensen@samsung.com;
+ h=from:subject; bh=+JrmcKrFbJuSCvxv1qLM8eAp0hkWVVmGxl/Dg4yaUzo=;
+ b=owJ4nAFtAZL+kA0DAAoBTeGvMW1PDekByyZiAGRHdLp3sabuoQsdY5h57hXQ7ofnwYXWz5h6o
+ hqQXLzoNQ1tZokBMwQAAQoAHRYhBFIoM6p14tzmokdmwE3hrzFtTw3pBQJkR3S6AAoJEE3hrzFt
+ Tw3pzEEIAIcYkZeKZLYUABGgidw5NZ83sqpmcMQwqtqGuGWP668obRFdIT138iZ9iSZtGZDKelf
+ z52RYh9ojOiumDMeLexm2VftdBYCbz3yOR/g8JSv74yapi5eF7xyyCRbLiChvG4zLCvW+UZ87O3
+ ynepQS2sCXisO33cR7j3ZAq4cFb9RlAo61GeVYpOqeKiWWOQqfgRGBTuzspuoKCoWUyXoBQqtk2
+ 15B+dmA5rbO6NLf5w6a88pRPzHHnE0o6+cDRIhvsJIGSbEMJcD3/j1di7Zoajm1YpqOyP9TKRrZ
+ BOe16Y25A+Ial6vkU1Y/L/cCf2reVmgjbKCrRd6L1OQsuglkZpxmPaqZ
 X-Developer-Key: i=k.jensen@samsung.com; a=openpgp;
  fpr=DDCA4D9C9EF931CC3468427263D56FC5E55DA838
 Content-Transfer-Encoding: 8bit
@@ -139,46 +139,99 @@ X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QD0HEB+4pkTs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2ll5vF16N7BY
 
-From: Matt Johnston <matt@codeconstruct.com.au>
+From: Klaus Jensen <k.jensen@samsung.com>
 
-The Null Destination ID, 0, is used for MCTP control messages when
-addressing by physical ID. That is used for Get Endpoint ID and
-Set Endpoint ID when querying/assigning an EID to an endpoint.
+This adds a generic MCTP endpoint model that other devices may derive
+from. I'm not 100% happy with the design of the class methods, but it's
+a start.
 
-Signed-off-by: Matt Johnston <matt@codeconstruct.com.au>
----
- hw/i2c/mctp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Also included is a very basic implementation of an NVMe-MI device,
+supporting only a small subset of the required commands. Lior (CC'ed) has some
+patches coming up that adds futher support.
 
-diff --git a/hw/i2c/mctp.c b/hw/i2c/mctp.c
-index 0f4045d0d685..db42dc72264b 100644
---- a/hw/i2c/mctp.c
-+++ b/hw/i2c/mctp.c
-@@ -242,7 +242,8 @@ static int i2c_mctp_event_cb(I2CSlave *i2c, enum i2c_event event)
-             goto drop;
-         }
- 
--        if (pkt->mctp.hdr.eid.dest != mctp->my_eid) {
-+        if (!(pkt->mctp.hdr.eid.dest == mctp->my_eid ||
-+              pkt->mctp.hdr.eid.dest == 0)) {
-             trace_i2c_mctp_drop_invalid_eid(pkt->mctp.hdr.eid.dest,
-                                             mctp->my_eid);
-             goto drop;
+Since this all relies on i2c target mode, this can currently only be
+used with an SoC that includes the Aspeed I2C controller.
+
+The easiest way to get up and running with this, is to grab my buildroot
+overlay[1]. It includes modified a modified dts as well as a couple of
+required packages.
+
+QEMU can then be launched along these lines:
+
+  qemu-system-arm \
+    -nographic \
+    -M ast2600-evb \
+    -kernel output/images/zImage \
+    -initrd output/images/rootfs.cpio \
+    -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
+    -nic user,hostfwd=tcp::2222-:22 \
+    -device nmi-i2c,address=0x3a \
+    -serial mon:stdio
+
+From within the booted system,
+
+  mctp addr add 8 dev mctpi2c15
+  mctp link set mctpi2c15 up
+  mctp route add 9 via mctpi2c15
+  mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
+  mi-mctp 1 9 info
+
+Comments are very welcome!
+
+  [1]: https://github.com/birkelund/buildroots/tree/main/mctp-i2c
+
+Changes since v1
+~~~~~~~~~~~~~~~~
+
+  - Fix SPDX-License tag for hw/nvme/nmi-i2c.c (Philippe)
+  - Add some asserts to verify buffer indices (by request from Corey).
+  - Drop short packets that could result in underflow (Corey)
+  - Move i2c_smbus_pec() to smbus common code (Corey)
+  - A couple of logic fixes (patch from Jeremy squashed in)
+  - Added a patch to handle messages with dest eid 0 (Matt)
+    Maybe squash this as well.
+
+Klaus Jensen (2):
+  hw/i2c: add mctp core
+  hw/nvme: add nvme management interface model
+
+Matt Johnston (1):
+  i2c/mctp: Allow receiving messages to dest eid 0
+
+ MAINTAINERS                   |   7 +
+ hw/arm/Kconfig                |   1 +
+ hw/i2c/Kconfig                |   4 +
+ hw/i2c/mctp.c                 | 353 +++++++++++++++++++++++++++++++
+ hw/i2c/meson.build            |   1 +
+ hw/i2c/smbus_master.c         |  28 +++
+ hw/i2c/trace-events           |  12 ++
+ hw/nvme/meson.build           |   1 +
+ hw/nvme/nmi-i2c.c             | 382 ++++++++++++++++++++++++++++++++++
+ hw/nvme/trace-events          |   6 +
+ include/hw/i2c/mctp.h         | 114 ++++++++++
+ include/hw/i2c/smbus_master.h |   3 +
+ include/net/mctp.h            |  43 ++++
+ 13 files changed, 955 insertions(+)
+ create mode 100644 hw/i2c/mctp.c
+ create mode 100644 hw/nvme/nmi-i2c.c
+ create mode 100644 include/hw/i2c/mctp.h
+ create mode 100644 include/net/mctp.h
+
 -- 
 2.40.0
 

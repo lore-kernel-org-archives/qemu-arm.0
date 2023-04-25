@@ -1,128 +1,119 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3571839ejm;
-        Tue, 25 Apr 2023 08:20:13 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YQHuiabDuDcDdKICete9KAGtHKkYZxWOppygM+8E50zJc68Gh9VC6AxqnRu19Qepli8H4U
-X-Received: by 2002:a05:6214:2347:b0:5ef:60a8:e795 with SMTP id hu7-20020a056214234700b005ef60a8e795mr28945371qvb.4.1682436012939;
-        Tue, 25 Apr 2023 08:20:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682436012; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3582851ejm;
+        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bThWWzBoW4WLs7KX1tsKe9c96dI6vseR7+gg++P+wGk941DrYE3uby5SLkWZ6qQ2HJJt10
+X-Received: by 2002:a05:622a:48e:b0:3ef:4330:d402 with SMTP id p14-20020a05622a048e00b003ef4330d402mr27650911qtx.38.1682437015698;
+        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682437015; cv=none;
         d=google.com; s=arc-20160816;
-        b=fVDl1e+gsz7Ugnl9CoZqhJ/TuI+nGK4XwpqiYJECSnsL3eZkIuVkavwdQepaOZ0/Lg
-         m+4/cjG9rEHFO3/GhZ91X+hMod5SIECHgScnbxxGMKRgWV+ihEd/VgVOQfCoa4GFJteg
-         jRdn5lSSxq6WzOEnRpj1nAkQssLy6VnpT3a7SCiyTF+5FQaSm1FvlMhLlspO2swo51cL
-         xy5m31NtQpxxr8aLHHArUxTC4nHIQCGh2pA6YDIEXmWsCfIfsM11hAUa8h5fohf1v3Bf
-         BAqIzoW8TYWyC/UE92OOECdto3+Y/wdDmW656mQCQFMB8VJbPipuJHTGJ25OPDsYR8py
-         BY2g==
+        b=ttlVnx2PCxs9l12iltRbNDn+gXjn91v2pC2PK5joKVu7XW38PbQrA8cdafV4Aq0JHg
+         n1R4NJQ92BSROyBak1qfxnr03JDNr49HuDS7rIzb4fYhZckso33C+cHEDE4F7XDC+3Ks
+         r5gY5LcuDtChvkN6+cEJq8KK1A1dBHYuIl6QspMzcBIUw0hSidp88+XV4QDCcEmCWzpx
+         CI4uxzUsyFUTJJqPGpHr4AWUv7S1tlkjN/KUdLgpuApruooKamZMK4oHsOcaKtTD+Aj7
+         Peeo7AWVkJ0SCJceauYpDLt4ZeCsKiCpD5RwaxYj8b9Y4uwQ/vRSql4jc63Hu6wZV/o1
+         JXhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=KtLl/dqZ9Ziz3bHcuG/PUFP/kNX2qOzjTfEhsx4Vf4A=;
-        b=hICockm6nlHorr/XsywJU5SKun2hAgq2xZNG1C19/I2u+c/kwBii0NgXoVLPUTYMWT
-         aCEgA2aK+2zUfLMLX84oPRYJd65rjf0TXw6m7afw+htiy3rKB1W3xYY7fPabTx5Dm1hv
-         rGD6Cd8S6LgGnCvcELMrq0VBwHHImUaSXC8ugSN4uWDMDggNktlQRSw5yBqq4segCli2
-         sZVKYYpAcPGLm2H/j0Rrj1QMVi2EpfNbI0YllWKz45gSdAoWv4MZW7k4a0sM/swrUC9V
-         QklBFvuawy9jGwnoMPMKCL4AWVORRZIK7gpd48xNZiBaK3XMRX6hUmQJIrGDEoepKQm8
-         nBPg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
+        b=R5+poE/GW23wCncmCBoAZgpjazB7RcwigCY2QALc1jkM58ucdYZeZXJD/xees691U9
+         kCd0693c/BBohazmvnX+hzDjMLcfd+R6rPQCULdsHiWfdnw/M9TnlH4WLgAwTSgqZU5A
+         qCRtpBsCzd+VDRWXB7BBBIdMeyyiwFW0nAC6iIKXpE9HviZYtV/BNodz0UMZGfCNKi1O
+         Bobzz804cjD/wH7FOEkijqvAQzrnAsrBfbiph7sPGrVws+WcD4vp4jWDNT4IakW730Yw
+         jKIbEIaG1MPNJwEYLjUtnlAZ8T4Cfo8zvYXQNQFRu95Fs7pm5UmV3MFrHygUmZHqYWsd
+         Tl/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=Lrkf1F1Q;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WFkelQnS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s81-20020a374554000000b0074870fdb8fcsi8419914qka.150.2023.04.25.08.20.12
+        by mx.google.com with ESMTPS id o9-20020ac87c49000000b003e3b3be6bb8si9207345qtv.267.2023.04.25.08.36.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 08:20:12 -0700 (PDT)
+        Tue, 25 Apr 2023 08:36:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=Lrkf1F1Q;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=WFkelQnS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prKSQ-0007Yk-BA; Tue, 25 Apr 2023 11:19:54 -0400
+	id 1prKid-00073E-35; Tue, 25 Apr 2023 11:36:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1prKSP-0007YL-9C; Tue, 25 Apr 2023 11:19:53 -0400
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1prKib-00072l-ND; Tue, 25 Apr 2023 11:36:37 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1prKSM-0000IM-CP; Tue, 25 Apr 2023 11:19:53 -0400
-Received: by mail-qv1-xf30.google.com with SMTP id
- 6a1803df08f44-5ef524eaca1so25598546d6.0; 
- Tue, 25 Apr 2023 08:19:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1prKiW-0004DD-Eh; Tue, 25 Apr 2023 11:36:37 -0400
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-4efef769000so3011842e87.3; 
+ Tue, 25 Apr 2023 08:36:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1682435988; x=1685027988;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:reply-to:message-id:subject:cc:to:from:date
- :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=KtLl/dqZ9Ziz3bHcuG/PUFP/kNX2qOzjTfEhsx4Vf4A=;
- b=Lrkf1F1Qm7jWsUl4tEUs7FNm7+wwiNndj0r4GoQ3VOVgK18RVFYc2X26We7ximRpoP
- BI8VrQ6uELZlyuYzs7J0klyzLPZqgXpUp7HMzMJ6vz4SPX7zwhyZjlRHtcvp6kuzvmmR
- UTUX1BxGoxcR7mOmF460x5asbKIBU0fy83sT2TDdl7vVqN6XSgW+nvlekVLF1C7jX0H5
- JF3kxOe+bF0ONIXb2dJ7X7zy+EFyqNMZdq5K3B1irr5ErzHLLH4+WsWV7DfngzuSZ7u5
- rc7tSYKmcX1Vjyp80YDFQ2BufV5BhxYts1xH0/zcdmKv9tDKbM/nmjZdlWUGlGR/P2JV
- dUug==
+ d=gmail.com; s=20221208; t=1682436986; x=1685028986;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
+ b=WFkelQnSg3iIoDKzKvAHImNbzgtppT6z3VYgkwRVsgN2A7fYILTjdZgvAy3dZtZTtz
+ Lmrh69YeyARwwO7/sSIKFP83dtSvJgeUHKC7MSAF3gF4R5UoUyVq1I2sRCdRFG/chACn
+ 4uxnF7Dp/oFJprI6cT4x/M62lBbZ18Uy5LJqP7W+4YR0i6Z2LrDeJazf1X7Jy3XxCvPk
+ mwoqHydRAwAiRBoldDRLyP+wjhixFBWaFaJ+guWwn/61djul9lbttlqg/4Bo1bNWDE2o
+ Ob3eSt4ebEDR/5Qu333TQsRt0IwkxCWhLeUeTtf1PpAsqiFGniA1tPx5yOCRi/PGaLp5
+ dPVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682435988; x=1685027988;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:reply-to:message-id:subject:cc:to:from:date
- :sender:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KtLl/dqZ9Ziz3bHcuG/PUFP/kNX2qOzjTfEhsx4Vf4A=;
- b=GArIZD2obCBT74pFbaINdTSial78iOGUf+6J1Wh+Mr2N5njNl/7pyd78EbRoAwr+v4
- vn4op4PF70mrCmoXyWypF3hfvKzJVSU/tamokP8uualtYn5KGoUEIT5Mk7EhWkQOriCz
- cfZydwL9wigRpYUtmq3ujiqKSm+eRP+j6pVokLrYr+fKtR7+3Qbi8urlJgJz77+OJZF5
- j7pzU3fcHeqg6N6eC1gJ5gwXXR51sxZLGGE5Y8vnQCLKlZlGa7+TjHCySG3r+VmDcJnR
- TNdqE+OctLKAprsGcIw80JrxRWC4T6ozOY9RS0w5JiygidggfQ1X7N8+siu+j+dHtn8x
- MihA==
-X-Gm-Message-State: AAQBX9fp2m219pP7FolsdzHEV8offPHUKyl/983Zb9FjIEkTgb4Lfmjj
- mrTlftv/dVkSwqFZVsC+yQ==
-X-Received: by 2002:a05:6214:1c8d:b0:5ef:6b89:91b8 with SMTP id
- ib13-20020a0562141c8d00b005ef6b8991b8mr28592051qvb.1.1682435988338; 
- Tue, 25 Apr 2023 08:19:48 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ d=1e100.net; s=20221208; t=1682436986; x=1685028986;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8TIjQ+Y1WeGcT8/p3GZLKpXWlwd0jCjkVPDmSIn/H/w=;
+ b=UGVWAU+ev0K+odMDcQm7DaeuSvfvKg2HyPVbOOfBam4X8TvjvPX6SX959xpY5mZb3C
+ WiEOg4An8KAlofIjqOJqc0oMHFJzHsResjca3IMSQE2jtBse1RHRn3gNvGW4R1soRlBC
+ BiKPvDVZDNBGjp91rn6nyjiCZr5aAVriVVimwUmXYX9jIjmBtdeQVr2TNMIGCTwo1X1W
+ tZSlZhTuiqwA5Fkll9/Ay4d/tZD5TZWkcPyYGSfoJn77VzHauSkpcw3yrHdQodm29rgw
+ kt2rS53zfYk46y9mahUD0Y71qqENLUeaJ7pLycn9vmKdgzfGhgCANsg3136Nyq1m2Zt8
+ CBLw==
+X-Gm-Message-State: AAQBX9fEE6+CCDiH9vc8mSifGK2fIcRKCqJOTwQwg5jV5Rm1f5N5mOHH
+ lv66V7O9xxQo7F4s+0eFrp0=
+X-Received: by 2002:a05:6512:20e:b0:4eb:1527:e29d with SMTP id
+ a14-20020a056512020e00b004eb1527e29dmr5054390lfo.52.1682436986025; 
+ Tue, 25 Apr 2023 08:36:26 -0700 (PDT)
+Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
  by smtp.gmail.com with ESMTPSA id
- v15-20020ad4528f000000b00606b55c8657sm3340149qvr.3.2023.04.25.08.19.47
+ b21-20020ac25635000000b004edc307b706sm2100134lff.244.2023.04.25.08.36.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Apr 2023 08:19:47 -0700 (PDT)
-Received: from minyard.net (unknown
- [IPv6:2001:470:b8f6:1b:a4bd:524d:aa90:55fd])
- by serve.minyard.net (Postfix) with ESMTPSA id 7CFF31800BB;
- Tue, 25 Apr 2023 15:19:46 +0000 (UTC)
-Date: Tue, 25 Apr 2023 10:19:45 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Klaus Jensen <its@irrelevant.dk>
-Cc: qemu-devel@nongnu.org, Corey Minyard <cminyard@mvista.com>,
- Jeremy Kerr <jk@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Peter Delevoryas <peter@pjd.dev>, Keith Busch <kbusch@kernel.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Jason Wang <jasowang@redhat.com>, Lior Weintraub <liorw@pliops.com>,
- qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Matt Johnston <matt@codeconstruct.com.au>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Klaus Jensen <k.jensen@samsung.com>
-Subject: Re: [PATCH v2 1/3] hw/i2c: add mctp core
-Message-ID: <ZEfvkWCbJoKGIOnT@minyard.net>
-References: <20230425063540.46143-1-its@irrelevant.dk>
- <20230425063540.46143-2-its@irrelevant.dk>
+ Tue, 25 Apr 2023 08:36:25 -0700 (PDT)
+Date: Tue, 25 Apr 2023 17:36:24 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+Subject: Re: [QEMU][PATCH v4 3/4] xlnx-versal: Connect Xilinx VERSAL CANFD
+ controllers
+Message-ID: <20230425153623.GB7006@fralle-msi>
+References: <20230425063433.25803-1-vikram.garhwal@amd.com>
+ <20230425063433.25803-4-vikram.garhwal@amd.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230425063540.46143-2-its@irrelevant.dk>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
- envelope-from=tcminyard@gmail.com; helo=mail-qv1-xf30.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+In-Reply-To: <20230425063433.25803-4-vikram.garhwal@amd.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01, USER_IN_WHITELIST=-100,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,715 +126,331 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bnikLp7++F1L
+X-TUID: pcYST3Juqyvg
 
-On Tue, Apr 25, 2023 at 08:35:38AM +0200, Klaus Jensen wrote:
-> From: Klaus Jensen <k.jensen@samsung.com>
+Hi Vikram,
+
+On [2023 Apr 24] Mon 23:34:32, Vikram Garhwal wrote:
+> Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
+> document with CANFD command line examples.
 > 
-> Add an abstract MCTP over I2C endpoint model. This implements MCTP
-> control message handling as well as handling the actual I2C transport
-> (packetization).
-> 
-> Devices are intended to derive from this and implement the class
-> methods.
-> 
-> Parts of this implementation is inspired by code[1] previously posted by
-> Jonathan Cameron.
-
-All in all this looks good.  Two comments:
-
-I would like to see the buffer handling consolidated into one function
-and the length checked, even for (especially for) the outside users of
-this code, like the nvme code.  Best to avoid future issues with buffer
-overruns.  This will require reworking the get_message_types function,
-unfortunately.
-
-You have one trace function on a bad receive message check, but lots of
-other bad receive message checks with no trace.  Just a suggestion, but
-it might be nice for tracking down issues to trace all the reasons a
-message is dropped.
-
-Thanks,
-
--corey
-
-> 
->   [1]: https://lore.kernel.org/qemu-devel/20220520170128.4436-1-Jonathan.Cameron@huawei.com/
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  MAINTAINERS                   |   7 +
->  hw/arm/Kconfig                |   1 +
->  hw/i2c/Kconfig                |   4 +
->  hw/i2c/mctp.c                 | 352 ++++++++++++++++++++++++++++++++++
->  hw/i2c/meson.build            |   1 +
->  hw/i2c/smbus_master.c         |  28 +++
->  hw/i2c/trace-events           |  12 ++
->  include/hw/i2c/mctp.h         | 114 +++++++++++
->  include/hw/i2c/smbus_master.h |   3 +
->  include/net/mctp.h            |  43 +++++
->  10 files changed, 565 insertions(+)
->  create mode 100644 hw/i2c/mctp.c
->  create mode 100644 include/hw/i2c/mctp.h
->  create mode 100644 include/net/mctp.h
+>  docs/system/arm/xlnx-versal-virt.rst | 31 ++++++++++++++++++
+>  hw/arm/xlnx-versal-virt.c            | 48 ++++++++++++++++++++++++++++
+>  hw/arm/xlnx-versal.c                 | 37 +++++++++++++++++++++
+>  include/hw/arm/xlnx-versal.h         | 12 +++++++
+>  4 files changed, 128 insertions(+)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 24154f5721c7..054aad1f3e97 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -3339,6 +3339,13 @@ F: tests/qtest/adm1272-test.c
->  F: tests/qtest/max34451-test.c
->  F: tests/qtest/isl_pmbus_vr-test.c
+> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
+> index 92ad10d2da..d2d1b26692 100644
+> --- a/docs/system/arm/xlnx-versal-virt.rst
+> +++ b/docs/system/arm/xlnx-versal-virt.rst
+> @@ -34,6 +34,7 @@ Implemented devices:
+>  - DDR memory
+>  - BBRAM (36 bytes of Battery-backed RAM)
+>  - eFUSE (3072 bytes of one-time field-programmable bit array)
+> +- 2 CANFDs
 >  
-> +MCTP I2C Transport
-> +M: Klaus Jensen <k.jensen@samsung.com>
-> +S: Maintained
-> +F: hw/i2c/mctp.c
-> +F: include/hw/i2c/mctp.h
-> +F: include/net/mctp.h
-> +
->  Firmware schema specifications
->  M: Philippe Mathieu-Daudé <philmd@linaro.org>
->  R: Daniel P. Berrange <berrange@redhat.com>
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index b53bd7f0b2a0..d7ecbc99e5ee 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -457,6 +457,7 @@ config ASPEED_SOC
->      select DS1338
->      select FTGMAC100
->      select I2C
-> +    select MCTP_I2C
->      select DPS310
->      select PCA9552
->      select SERIAL
-> diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
-> index 14886b35dac2..3415e8421ab1 100644
-> --- a/hw/i2c/Kconfig
-> +++ b/hw/i2c/Kconfig
-> @@ -45,3 +45,7 @@ config PCA954X
->  config PMBUS
->      bool
->      select SMBUS
-> +
-> +config MCTP_I2C
-> +    bool
-> +    select I2C
-> diff --git a/hw/i2c/mctp.c b/hw/i2c/mctp.c
-> new file mode 100644
-> index 000000000000..0f4045d0d685
-> --- /dev/null
-> +++ b/hw/i2c/mctp.c
-> @@ -0,0 +1,352 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * SPDX-FileCopyrightText: Copyright (c) 2022 Samsung Electronics Co., Ltd.
-> + * SPDX-FileContributor: Klaus Jensen <k.jensen@samsung.com>
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/main-loop.h"
-> +
-> +#include "hw/qdev-properties.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "hw/i2c/smbus_master.h"
-> +#include "hw/i2c/mctp.h"
-> +
-> +#include "trace.h"
-> +
-> +void i2c_mctp_schedule_send(MCTPI2CEndpoint *mctp)
-> +{
-> +    I2CBus *i2c = I2C_BUS(qdev_get_parent_bus(DEVICE(mctp)));
-> +
-> +    mctp->tx.state = I2C_MCTP_STATE_TX_START_SEND;
-> +
-> +    i2c_bus_master(i2c, mctp->tx.bh);
-> +}
-> +
-> +static void i2c_mctp_tx(void *opaque)
-> +{
-> +    DeviceState *dev = DEVICE(opaque);
-> +    I2CBus *i2c = I2C_BUS(qdev_get_parent_bus(dev));
-> +    I2CSlave *slave = I2C_SLAVE(dev);
-> +    MCTPI2CEndpoint *mctp = MCTP_I2C_ENDPOINT(dev);
-> +    MCTPI2CEndpointClass *mc = MCTP_I2C_ENDPOINT_GET_CLASS(mctp);
-> +    MCTPI2CPacket *pkt = (MCTPI2CPacket *)mctp->buffer;
-> +    uint8_t flags = 0;
-> +
-> +    switch (mctp->tx.state) {
-> +    case I2C_MCTP_STATE_TX_SEND_BYTE:
-> +        if (mctp->pos < mctp->len) {
-> +            uint8_t byte = mctp->buffer[mctp->pos];
-> +
-> +            trace_i2c_mctp_tx_send_byte(mctp->pos, byte);
-> +
-> +            /* send next byte */
-> +            i2c_send_async(i2c, byte);
-> +
-> +            mctp->pos++;
-> +
-> +            break;
-> +        }
-> +
-> +        /* packet sent */
-> +        i2c_end_transfer(i2c);
-> +
-> +        /* end of any control data */
-> +        mctp->len = 0;
-> +
-> +        /* fall through */
-> +
-> +    case I2C_MCTP_STATE_TX_START_SEND:
-> +        if (mctp->tx.is_control) {
-> +            /* packet payload is already in buffer */
-> +            flags |= MCTP_H_FLAGS_SOM | MCTP_H_FLAGS_EOM;
-> +        } else {
-> +            /* get message bytes from derived device */
-> +            mctp->len = mc->get_message_bytes(mctp, pkt->mctp.payload,
-> +                                              I2C_MCTP_MAXMTU, &flags);
-> +        }
-> +
-> +        if (!mctp->len) {
-> +            trace_i2c_mctp_tx_done();
-> +
-> +            /* no more packets needed; release the bus */
-> +            i2c_bus_release(i2c);
-> +
-> +            mctp->state = I2C_MCTP_STATE_IDLE;
-> +            mctp->tx.is_control = false;
-> +
-> +            break;
-> +        }
-> +
-> +        mctp->state = I2C_MCTP_STATE_TX;
-> +
-> +        pkt->i2c = (MCTPI2CPacketHeader) {
-> +            .dest = mctp->tx.addr & ~0x1,
-> +            .prot = 0xf,
-> +            .byte_count = 5 + mctp->len,
-> +            .source = slave->address << 1 | 0x1,
-> +        };
-> +
-> +        pkt->mctp.hdr = (MCTPPacketHeader) {
-> +            .version = 0x1,
-> +            .eid.dest = mctp->tx.eid,
-> +            .eid.source = mctp->my_eid,
-> +            .flags = flags | (mctp->tx.pktseq++ & 0x3) << 4 | mctp->tx.flags,
-> +        };
-> +
-> +        mctp->len += sizeof(MCTPI2CPacket);
-> +        assert(mctp->len < I2C_MCTP_MAX_LENGTH);
-> +
-> +        mctp->buffer[mctp->len] = i2c_smbus_pec(0, mctp->buffer, mctp->len);
-> +        mctp->len++;
-> +
-> +        trace_i2c_mctp_tx_start_send(mctp->len);
-> +
-> +        i2c_start_send_async(i2c, pkt->i2c.dest >> 1);
-> +
-> +        /* already "sent" the destination slave address */
-> +        mctp->pos = 1;
-> +
-> +        mctp->tx.state = I2C_MCTP_STATE_TX_SEND_BYTE;
-> +
-> +        break;
-> +    }
-> +}
-> +
-> +#define i2c_mctp_control_data(buf) \
-> +    (i2c_mctp_payload(buf) + offsetof(MCTPControlMessage, data))
-> +
-> +static void i2c_mctp_handle_control_set_eid(MCTPI2CEndpoint *mctp, uint8_t eid)
-> +{
-> +    mctp->my_eid = eid;
-> +
-> +    uint8_t buf[] = {
-> +        0x0, 0x0, eid, 0x0,
-> +    };
-> +
-> +    memcpy(i2c_mctp_control_data(mctp->buffer), buf, sizeof(buf));
-> +    mctp->len += sizeof(buf);
-> +}
-> +
-> +static void i2c_mctp_handle_control_get_eid(MCTPI2CEndpoint *mctp)
-> +{
-> +    uint8_t buf[] = {
-> +        0x0, mctp->my_eid, 0x0, 0x0,
-> +    };
-> +
-> +    memcpy(i2c_mctp_control_data(mctp->buffer), buf, sizeof(buf));
-> +    mctp->len += sizeof(buf);
-> +}
-> +
-> +static void i2c_mctp_handle_control_get_version(MCTPI2CEndpoint *mctp)
-> +{
-> +    uint8_t buf[] = {
-> +        0x0, 0x1, 0x0, 0x1, 0x3, 0x1,
-> +    };
-> +
-> +    memcpy(i2c_mctp_control_data(mctp->buffer), buf, sizeof(buf));
-> +    mctp->len += sizeof(buf);
-> +}
-> +
-> +enum {
-> +    MCTP_CONTROL_SET_EID                    = 0x01,
-> +    MCTP_CONTROL_GET_EID                    = 0x02,
-> +    MCTP_CONTROL_GET_VERSION                = 0x04,
-> +    MCTP_CONTROL_GET_MESSAGE_TYPE_SUPPORT   = 0x05,
-> +};
-> +
-> +static void i2c_mctp_handle_control(MCTPI2CEndpoint *mctp)
-> +{
-> +    MCTPI2CEndpointClass *mc = MCTP_I2C_ENDPOINT_GET_CLASS(mctp);
-> +    MCTPControlMessage *msg = (MCTPControlMessage *)i2c_mctp_payload(mctp->buffer);
-> +
-> +    /* clear Rq/D */
-> +    msg->flags &= 0x1f;
-> +
-> +    mctp->len = sizeof(MCTPControlMessage);
-> +
-> +    trace_i2c_mctp_handle_control(msg->command);
-> +
-> +    switch (msg->command) {
-> +    case MCTP_CONTROL_SET_EID:
-> +        i2c_mctp_handle_control_set_eid(mctp, msg->data[1]);
-> +        break;
-> +
-> +    case MCTP_CONTROL_GET_EID:
-> +        i2c_mctp_handle_control_get_eid(mctp);
-> +        break;
-> +
-> +    case MCTP_CONTROL_GET_VERSION:
-> +        i2c_mctp_handle_control_get_version(mctp);
-> +        break;
-> +
-> +    case MCTP_CONTROL_GET_MESSAGE_TYPE_SUPPORT:
-> +        mctp->len += mc->get_message_types(mctp, i2c_mctp_control_data(mctp->buffer),
-> +                                           MCTP_BASELINE_MTU - mctp->len);
-> +        break;
-> +
-> +    default:
-> +        trace_i2c_mctp_unhandled_control(msg->command);
-> +
-> +        msg->data[0] = MCTP_CONTROL_ERROR_UNSUPPORTED_CMD;
-> +        mctp->len++;
-> +
-> +        break;
-> +    }
-> +
-> +    assert(mctp->len <= MCTP_BASELINE_MTU);
-> +
-> +    i2c_mctp_schedule_send(mctp);
-> +}
-> +
-> +static int i2c_mctp_event_cb(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    MCTPI2CEndpoint *mctp = MCTP_I2C_ENDPOINT(i2c);
-> +    MCTPI2CEndpointClass *mc = MCTP_I2C_ENDPOINT_GET_CLASS(mctp);
-> +    MCTPI2CPacket *pkt = (MCTPI2CPacket *)mctp->buffer;
-> +    size_t payload_len;
-> +    uint8_t pec;
-> +
-> +    switch (event) {
-> +    case I2C_START_SEND:
-> +        if (mctp->state == I2C_MCTP_STATE_IDLE) {
-> +            mctp->state = I2C_MCTP_STATE_RX_STARTED;
-> +        } else if (mctp->state != I2C_MCTP_STATE_RX) {
-> +            return -1;
-> +        }
-> +
-> +        /* the i2c core eats the slave address, so put it back in */
-> +        pkt->i2c.dest = i2c->address << 1;
-> +        mctp->len = 1;
-> +
-> +        return 0;
-> +
-> +    case I2C_FINISH:
-> +        if (mctp->len < sizeof(MCTPI2CPacket) + 1) {
-> +            trace_i2c_mctp_drop("short packet");
-> +            goto drop;
-> +        }
-> +
-> +        payload_len = mctp->len - (1 + offsetof(MCTPI2CPacket, mctp.payload));
-> +
-> +        if (pkt->i2c.byte_count + 3 != mctp->len - 1) {
-> +            trace_i2c_mctp_drop_invalid_length(pkt->i2c.byte_count + 3,
-> +                                               mctp->len - 1);
-> +            goto drop;
-> +        }
-> +
-> +        pec = i2c_smbus_pec(0, mctp->buffer, mctp->len - 1);
-> +        if (mctp->buffer[mctp->len - 1] != pec) {
-> +            trace_i2c_mctp_drop_invalid_pec(mctp->buffer[mctp->len - 1], pec);
-> +            goto drop;
-> +        }
-> +
-> +        if (pkt->mctp.hdr.eid.dest != mctp->my_eid) {
-> +            trace_i2c_mctp_drop_invalid_eid(pkt->mctp.hdr.eid.dest,
-> +                                            mctp->my_eid);
-> +            goto drop;
-> +        }
-> +
-> +        if (pkt->mctp.hdr.flags & MCTP_H_FLAGS_SOM) {
-> +            mctp->tx.is_control = false;
-> +
-> +            if (mctp->state == I2C_MCTP_STATE_RX) {
-> +                mc->reset_message(mctp);
-> +            }
-> +
-> +            mctp->state = I2C_MCTP_STATE_RX;
-> +
-> +            mctp->tx.addr = pkt->i2c.source;
-> +            mctp->tx.eid = pkt->mctp.hdr.eid.source;
-> +            mctp->tx.flags = pkt->mctp.hdr.flags & 0x7;
-> +            mctp->tx.pktseq = (pkt->mctp.hdr.flags >> 4) & 0x3;
-> +
-> +            if ((pkt->mctp.payload[0] & 0x7f) == MCTP_MESSAGE_TYPE_CONTROL) {
-> +                mctp->tx.is_control = true;
-> +
-> +                i2c_mctp_handle_control(mctp);
-> +
-> +                return 0;
-> +            }
-> +        } else if (mctp->state == I2C_MCTP_STATE_RX_STARTED) {
-> +            trace_i2c_mctp_drop("expected SOM");
-> +            goto drop;
-> +        } else if (((pkt->mctp.hdr.flags >> 4) & 0x3) != (++mctp->tx.pktseq & 0x3)) {
-> +            trace_i2c_mctp_drop_invalid_pktseq((pkt->mctp.hdr.flags >> 4) & 0x3,
-> +                                               mctp->tx.pktseq & 0x3);
-> +            goto drop;
-> +        }
-> +
-> +        mc->put_message_bytes(mctp, i2c_mctp_payload(mctp->buffer), payload_len);
-> +
-> +        if (pkt->mctp.hdr.flags & MCTP_H_FLAGS_EOM) {
-> +            mc->handle_message(mctp);
-> +            mctp->state = I2C_MCTP_STATE_WAIT_TX;
-> +        }
-> +
-> +        return 0;
-> +
-> +    default:
-> +        return -1;
-> +    }
-> +
-> +drop:
-> +    mc->reset_message(mctp);
-> +
-> +    mctp->state = I2C_MCTP_STATE_IDLE;
-> +
-> +    return 0;
-> +}
-> +
-> +static int i2c_mctp_send_cb(I2CSlave *i2c, uint8_t data)
-> +{
-> +    MCTPI2CEndpoint *mctp = MCTP_I2C_ENDPOINT(i2c);
-> +
-> +    if (mctp->len < I2C_MCTP_MAX_LENGTH) {
-> +        mctp->buffer[mctp->len++] = data;
-> +        return 0;
-> +    }
-> +
-> +    return -1;
-> +}
-> +
-> +static void i2c_mctp_instance_init(Object *obj)
-> +{
-> +    MCTPI2CEndpoint *mctp = MCTP_I2C_ENDPOINT(obj);
-> +
-> +    mctp->tx.bh = qemu_bh_new(i2c_mctp_tx, mctp);
-> +}
-> +
-> +static Property mctp_i2c_props[] = {
-> +    DEFINE_PROP_UINT8("eid", MCTPI2CEndpoint, my_eid, 0x9),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void i2c_mctp_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(oc);
-> +
-> +    k->event = i2c_mctp_event_cb;
-> +    k->send = i2c_mctp_send_cb;
-> +
-> +    device_class_set_props(dc, mctp_i2c_props);
-> +}
-> +
-> +static const TypeInfo i2c_mctp_info = {
-> +    .name = TYPE_MCTP_I2C_ENDPOINT,
-> +    .parent = TYPE_I2C_SLAVE,
-> +    .abstract = true,
-> +    .instance_init = i2c_mctp_instance_init,
-> +    .instance_size = sizeof(MCTPI2CEndpoint),
-> +    .class_init = i2c_mctp_class_init,
-> +    .class_size = sizeof(MCTPI2CEndpointClass),
-> +};
-> +
-> +static void register_types(void)
-> +{
-> +    type_register_static(&i2c_mctp_info);
-> +}
-> +
-> +type_init(register_types)
-> diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-> index 3996564c25c6..fd1f9022fd96 100644
-> --- a/hw/i2c/meson.build
-> +++ b/hw/i2c/meson.build
-> @@ -1,5 +1,6 @@
->  i2c_ss = ss.source_set()
->  i2c_ss.add(when: 'CONFIG_I2C', if_true: files('core.c'))
-> +i2c_ss.add(when: 'CONFIG_MCTP_I2C', if_true: files('mctp.c'))
->  i2c_ss.add(when: 'CONFIG_SMBUS', if_true: files('smbus_slave.c', 'smbus_master.c'))
->  i2c_ss.add(when: 'CONFIG_ACPI_SMBUS', if_true: files('pm_smbus.c'))
->  i2c_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: files('smbus_ich9.c'))
-> diff --git a/hw/i2c/smbus_master.c b/hw/i2c/smbus_master.c
-> index 6a53c34e70b7..47f9eb24e033 100644
-> --- a/hw/i2c/smbus_master.c
-> +++ b/hw/i2c/smbus_master.c
-> @@ -15,6 +15,34 @@
->  #include "hw/i2c/i2c.h"
->  #include "hw/i2c/smbus_master.h"
+>  QEMU does not yet model any other devices, including the PL and the AI Engine.
 >  
-> +static uint8_t crc8(uint16_t data)
+> @@ -224,3 +225,33 @@ To use a different index value, N, from default of 1, add:
+>  
+>    Better yet, do not use actual product data when running guest image
+>    on this Xilinx Versal Virt board.
+> +
+> +Using CANFDs for Versal Virt
+> +""""""""""""""""""""""""""""
+> +Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
+> +implementation. Bus connection and socketCAN connection for each CAN module
+> +can be set through command lines.
+> +
+> +To connect both CANFD0 and CANFD1 on the same bus:
+> +
+> +.. code-block:: bash
+> +
+> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
+> +
+> +To connect CANFD0 and CANFD1 to separate buses:
+> +
+> +.. code-block:: bash
+> +
+> +    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
+> +    -machine canbus0=canbus0 -machine canbus1=canbus1
+> +
+> +The SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
+> +the host machine. Please check this document to learn about CAN interface on
+> +Linux: docs/system/devices/can.rst
+> +
+> +To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
+> +
+> +.. code-block:: bash
+> +
+> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
+> +    -object can-host-socketcan,id=canhost0,if=can0,canbus=canbus
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index 668a9d65a4..52c93a590d 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -40,9 +40,11 @@ struct VersalVirt {
+>          uint32_t clk_25Mhz;
+>          uint32_t usb;
+>          uint32_t dwc;
+> +        uint32_t canfd[2];
+>      } phandle;
+>      struct arm_boot_info binfo;
+>  
+> +    CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
+>      struct {
+>          bool secure;
+>      } cfg;
+> @@ -235,6 +237,33 @@ static void fdt_add_uart_nodes(VersalVirt *s)
+>      }
+>  }
+>  
+> +static void fdt_add_canfd_nodes(VersalVirt *s)
 > +{
-> +#define POLY (0x1070U << 3)
+
+In this function we need to modify the generated dtb a little so the kernel
+finds the devices correctly.
+
+> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
+> +    uint32_t size[] = { MM_CANFD0_SIZE, MM_CANFD1_SIZE };
+> +    unsigned int irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0 };
+
+
+Here we can swap above 3 lines for below:
+
+    uint64_t addrs[] = { MM_CANFD1, MM_CANFD0 };
+    uint32_t size[] = { MM_CANFD1_SIZE, MM_CANFD0_SIZE };
+    unsigned int irqs[] = { VERSAL_CANFD1_IRQ_0, VERSAL_CANFD0_IRQ_0 };
+    const char clocknames[] = "can_clk\0s_axi_aclk";
+
+
 > +    int i;
 > +
-> +    for (i = 0; i < 8; i++) {
-> +        if (data & 0x8000) {
-> +            data = data ^ POLY;
-> +        }
+> +    /* Create and connect CANFD0 and CANFD1 nodes to canbus0. */
+> +    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
+> +        char *name = g_strdup_printf("/canfd@%" PRIx64, addrs[i]);
+> +        qemu_fdt_add_subnode(s->fdt, name);
+
+
+> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo0", 0x40);
+> +        qemu_fdt_setprop_cell(s->fdt, name, "enable-rx-fifo1", 0x1);
+> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo1", 0x40);
+
+Here we can swap above for 3 lines for below:
+
+        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo-depth", 0x40);
+        qemu_fdt_setprop_cell(s->fdt, name, "tx-mailbox-count", 0x20);
+
+        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+        qemu_fdt_setprop(s->fdt, name, "clock-names",
+                         clocknames, sizeof(clocknames));
+
+
 > +
-> +        data = data << 1;
+> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+> +                               GIC_FDT_IRQ_TYPE_SPI, irqs[i],
+> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> +                                     2, addrs[i], 2, size[i]);
+> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
+
+
+> +                                "xlnx,versal-canfd");
+
+And here we can swap above line with (kernel compatible):
+
+                                "xlnx,canfd-2.0");
+
+After changing above the linux kernel will find the devices:
+
+...
+[    1.791998] CAN device driver interface
+[    1.732791] xilinx_can ff060000.canfd can0: reg_base=0x(____ptrval____) irq=28 clock=25000000, tx buffers: actual 32, using 1
+[    1.734668] xilinx_can ff070000.canfd can1: reg_base=0x(____ptrval____) irq=29 clock=25000000, tx buffers: actual 32, using 1
+...
+
+...
+#  ip a
+...
+2: can0: <NOARP40000> mtu 16 qdisc noop qlen 10
+    link/[280] 
+3: can1: <NOARP40000> mtu 16 qdisc noop qlen 10
+    link/[280] 
+...
+
+Looks good otherwise!
+
+Best regards,
+Francisco Iglesias
+
+
+> +
+> +        g_free(name);
 > +    }
-> +
-> +    return (uint8_t)(data >> 8);
-> +#undef POLY
 > +}
 > +
-> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len)
-> +{
-> +    int i;
-> +
-> +    for (i = 0; i < len; i++) {
-> +        crc = crc8((crc ^ buf[i]) << 8);
-> +    }
-> +
-> +    return crc;
-> +}
-> +
->  /* Master device commands.  */
->  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read)
+>  static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
+>                                       uint32_t phandle)
 >  {
-> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-> index 8e88aa24c1ac..2e3065a99873 100644
-> --- a/hw/i2c/trace-events
-> +++ b/hw/i2c/trace-events
-> @@ -45,3 +45,15 @@ npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s
+> @@ -639,12 +668,17 @@ static void versal_virt_init(MachineState *machine)
+>                              TYPE_XLNX_VERSAL);
+>      object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
+>                               &error_abort);
+> +    object_property_set_link(OBJECT(&s->soc), "canbus0", OBJECT(s->canbus[0]),
+> +                             &error_abort);
+> +    object_property_set_link(OBJECT(&s->soc), "canbus1", OBJECT(s->canbus[1]),
+> +                             &error_abort);
+>      sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
 >  
->  pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
->  pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
-> +
-> +# mctp.c
-> +i2c_mctp_tx_start_send(size_t len) "len %zu"
-> +i2c_mctp_tx_send_byte(size_t pos, uint8_t byte) "pos %zu byte 0x%"PRIx8""
-> +i2c_mctp_tx_done(void) "packet sent"
-> +i2c_mctp_handle_control(uint8_t command) "command 0x%"PRIx8""
-> +i2c_mctp_unhandled_control(uint8_t command) "command 0x%"PRIx8""
-> +i2c_mctp_drop(const char *reason) "%s"
-> +i2c_mctp_drop_invalid_length(unsigned byte_count, size_t expected) "byte_count %u expected %zu"
-> +i2c_mctp_drop_invalid_pec(uint8_t pec, uint8_t expected) "pec 0x%"PRIx8" expected 0x%"PRIx8""
-> +i2c_mctp_drop_invalid_eid(uint8_t eid, uint8_t expected) "eid 0x%"PRIx8" expected 0x%"PRIx8""
-> +i2c_mctp_drop_invalid_pktseq(uint8_t pktseq, uint8_t expected) "pktseq 0x%"PRIx8" expected 0x%"PRIx8""
-> diff --git a/include/hw/i2c/mctp.h b/include/hw/i2c/mctp.h
-> new file mode 100644
-> index 000000000000..c53ee6a3b61b
-> --- /dev/null
-> +++ b/include/hw/i2c/mctp.h
-> @@ -0,0 +1,114 @@
-> +#ifndef QEMU_I2C_MCTP_H
-> +#define QEMU_I2C_MCTP_H
-> +
-> +#include "qom/object.h"
-> +#include "hw/qdev-core.h"
-> +#include "net/mctp.h"
-> +
-> +typedef struct MCTPI2CPacketHeader {
-> +    uint8_t dest;
-> +    uint8_t prot;
-> +    uint8_t byte_count;
-> +    uint8_t source;
-> +} MCTPI2CPacketHeader;
-> +
-> +typedef struct MCTPI2CPacket {
-> +    MCTPI2CPacketHeader i2c;
-> +    MCTPPacket          mctp;
-> +} MCTPI2CPacket;
-> +
-> +#define i2c_mctp_payload(buf) (buf + offsetof(MCTPI2CPacket, mctp.payload))
-> +
-> +#define TYPE_MCTP_I2C_ENDPOINT "mctp-i2c-endpoint"
-> +OBJECT_DECLARE_TYPE(MCTPI2CEndpoint, MCTPI2CEndpointClass, MCTP_I2C_ENDPOINT)
-> +
-> +struct MCTPI2CEndpointClass {
-> +    I2CSlaveClass parent_class;
-> +
-> +    int (*put_message_bytes)(MCTPI2CEndpoint *mctp, uint8_t *buf, size_t len);
-> +    size_t (*get_message_bytes)(MCTPI2CEndpoint *mctp, uint8_t *buf,
-> +                                size_t maxlen, uint8_t *mctp_flags);
-> +
-> +    void (*handle_message)(MCTPI2CEndpoint *mctp);
-> +    void (*reset_message)(MCTPI2CEndpoint *mctp);
-> +
-> +    size_t (*get_message_types)(MCTPI2CEndpoint *mctp, uint8_t *data,
-> +                                size_t maxlen);
-> +};
-> +
-> +/*
-> + * Maximum value of the SMBus Block Write "Byte Count" field (8 bits).
-> + *
-> + * This is the count of bytes that follow the Byte Count field and up to, but
-> + * not including, the PEC byte.
-> + */
-> +#define I2C_MCTP_MAXBLOCK 255
-> +
-> +/*
-> + * Maximum Transmission Unit under I2C.
-> + *
-> + * This is for the MCTP Packet Payload (255, subtracting the 4 byte MCTP Packet
-> + * Header or the 1 byte MCTP/I2C piggy-backed source address).
-> + */
-> +#define I2C_MCTP_MAXMTU (I2C_MCTP_MAXBLOCK - (sizeof(MCTPPacketHeader) + 1))
-> +
-> +/*
-> + * Maximum length of an MCTP/I2C packet.
-> + *
-> + * This is the sum of the three I2C header bytes (Destination target address,
-> + * Command Code and Byte Count), the maximum number of bytes in a message (255)
-> + * and the 1 byte Packet Error Code.
-> + */
-> +#define I2C_MCTP_MAX_LENGTH (3 + I2C_MCTP_MAXBLOCK + 1)
-> +
-> +/*
-> + * Maximum length of an MCTP/I2C Control Message.
-> + *
-> + * This is the 64 byte MCTP Baseline Maximum Transmission Unit, adding the
-> + * combined MCTP/I2C headers and the trailing 1 byte PEC.
-> + */
-> +#define I2C_MCTP_CONTROL_MAX_LENGTH \
-> +    (sizeof(MCTPI2CPacket) + MCTP_BASELINE_MTU + 1)
-> +
-> +typedef enum {
-> +    I2C_MCTP_STATE_IDLE,
-> +    I2C_MCTP_STATE_RX_STARTED,
-> +    I2C_MCTP_STATE_RX,
-> +    I2C_MCTP_STATE_WAIT_TX,
-> +    I2C_MCTP_STATE_TX,
-> +} MCTPState;
-> +
-> +typedef enum {
-> +    I2C_MCTP_STATE_TX_START_SEND,
-> +    I2C_MCTP_STATE_TX_SEND_BYTE,
-> +} MCTPTxState;
-> +
-> +typedef struct MCTPI2CEndpoint {
-> +    I2CSlave parent_obj;
-> +    I2CBus *i2c;
-> +
-> +    MCTPState state;
-> +
-> +    /* mctp endpoint identifier */
-> +    uint8_t my_eid;
-> +
-> +    uint8_t  buffer[I2C_MCTP_MAX_LENGTH];
-> +    uint64_t pos;
-> +    size_t   len;
-> +
-> +    struct {
-> +        MCTPTxState state;
-> +        bool is_control;
-> +
-> +        uint8_t eid;
-> +        uint8_t addr;
-> +        uint8_t pktseq;
-> +        uint8_t flags;
-> +
-> +        QEMUBH *bh;
-> +    } tx;
-> +} MCTPI2CEndpoint;
-> +
-> +void i2c_mctp_schedule_send(MCTPI2CEndpoint *mctp);
-> +
-> +#endif /* QEMU_I2C_MCTP_H */
-> diff --git a/include/hw/i2c/smbus_master.h b/include/hw/i2c/smbus_master.h
-> index bb13bc423c22..ea5eff3a2cd0 100644
-> --- a/include/hw/i2c/smbus_master.h
-> +++ b/include/hw/i2c/smbus_master.h
-> @@ -27,6 +27,9 @@
+>      fdt_create(s);
+>      create_virtio_regions(s);
+>      fdt_add_gem_nodes(s);
+>      fdt_add_uart_nodes(s);
+> +    fdt_add_canfd_nodes(s);
+>      fdt_add_gic_nodes(s);
+>      fdt_add_timer_nodes(s);
+>      fdt_add_zdma_nodes(s);
+> @@ -712,6 +746,20 @@ static void versal_virt_init(MachineState *machine)
 >  
->  #include "hw/i2c/i2c.h"
+>  static void versal_virt_machine_instance_init(Object *obj)
+>  {
+> +    VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
+> +
+> +    /*
+> +     * User can set canbus0 and canbus1 properties to can-bus object and connect
+> +     * to socketcan(optional) interface via command line.
+> +     */
+> +    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
+> +                             (Object **)&s->canbus[0],
+> +                             object_property_allow_set_link,
+> +                             0);
+> +    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
+> +                             (Object **)&s->canbus[1],
+> +                             object_property_allow_set_link,
+> +                             0);
+>  }
 >  
-> +/* SMBus PEC */
-> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len);
+>  static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 69b1b99e93..1594dd6c5c 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -184,6 +184,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
+>      }
+>  }
+>  
+> +static void versal_create_canfds(Versal *s, qemu_irq *pic)
+> +{
+> +    int i;
+> +    uint32_t irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
+> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
 > +
->  /* Master device commands.  */
->  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read);
->  int smbus_receive_byte(I2CBus *bus, uint8_t addr);
-> diff --git a/include/net/mctp.h b/include/net/mctp.h
-> new file mode 100644
-> index 000000000000..c936224ecf60
-> --- /dev/null
-> +++ b/include/net/mctp.h
-> @@ -0,0 +1,43 @@
-> +#ifndef QEMU_MCTP_H
-> +#define QEMU_MCTP_H
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
+> +        char *name = g_strdup_printf("canfd%d", i);
+> +        SysBusDevice *sbd;
+> +        MemoryRegion *mr;
 > +
-> +#define MCTP_BASELINE_MTU 64
+> +        object_initialize_child(OBJECT(s), name, &s->lpd.iou.canfd[i],
+> +                                TYPE_XILINX_CANFD);
+> +        sbd = SYS_BUS_DEVICE(&s->lpd.iou.canfd[i]);
 > +
-> +enum {
-> +    MCTP_H_FLAGS_EOM = 1 << 6,
-> +    MCTP_H_FLAGS_SOM = 1 << 7,
-> +};
+> +        object_property_set_int(OBJECT(&s->lpd.iou.canfd[i]), "ext_clk_freq",
+> +                                XLNX_VERSAL_CANFD_REF_CLK , &error_abort);
 > +
-> +enum {
-> +    MCTP_MESSAGE_TYPE_CONTROL   = 0x0,
-> +    MCTP_MESSAGE_TYPE_NMI       = 0x4,
+> +        object_property_set_link(OBJECT(&s->lpd.iou.canfd[i]), "canfdbus",
+> +                                 OBJECT(s->lpd.iou.canbus[i]),
+> +                                 &error_abort);
 > +
-> +    MCTP_MESSAGE_IC             = 1 << 7,
-> +};
+> +        sysbus_realize(sbd, &error_fatal);
 > +
-> +typedef struct MCTPPacketHeader {
-> +    uint8_t version;
-> +    struct {
-> +        uint8_t dest;
-> +        uint8_t source;
-> +    } eid;
-> +    uint8_t flags;
-> +} MCTPPacketHeader;
+> +        mr = sysbus_mmio_get_region(sbd, 0);
+> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
 > +
-> +typedef struct MCTPPacket {
-> +    MCTPPacketHeader hdr;
-> +    uint8_t          payload[];
-> +} MCTPPacket;
+> +        sysbus_connect_irq(sbd, 0, pic[irqs[i]]);
+> +        g_free(name);
+> +    }
+> +}
 > +
-> +typedef struct MCTPControlMessage {
-> +    uint8_t type;
-> +    uint8_t flags;
-> +    uint8_t command;
-> +    uint8_t data[];
-> +} MCTPControlMessage;
+>  static void versal_create_usbs(Versal *s, qemu_irq *pic)
+>  {
+>      DeviceState *dev;
+> @@ -718,6 +750,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
+>      versal_create_apu_gic(s, pic);
+>      versal_create_rpu_cpus(s);
+>      versal_create_uarts(s, pic);
+> +    versal_create_canfds(s, pic);
+>      versal_create_usbs(s, pic);
+>      versal_create_gems(s, pic);
+>      versal_create_admas(s, pic);
+> @@ -757,6 +790,10 @@ static void versal_init(Object *obj)
+>  static Property versal_properties[] = {
+>      DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
+>                       MemoryRegion *),
+> +    DEFINE_PROP_LINK("canbus0", Versal, lpd.iou.canbus[0],
+> +                      TYPE_CAN_BUS, CanBusState *),
+> +    DEFINE_PROP_LINK("canbus1", Versal, lpd.iou.canbus[1],
+> +                      TYPE_CAN_BUS, CanBusState *),
+>      DEFINE_PROP_END_OF_LIST()
+>  };
+>  
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> index b6786e9832..39ee31185c 100644
+> --- a/include/hw/arm/xlnx-versal.h
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -31,6 +31,7 @@
+>  #include "hw/dma/xlnx_csu_dma.h"
+>  #include "hw/misc/xlnx-versal-crl.h"
+>  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
+> +#include "hw/net/xlnx-versal-canfd.h"
+>  
+>  #define TYPE_XLNX_VERSAL "xlnx-versal"
+>  OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+> @@ -43,6 +44,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
+>  #define XLNX_VERSAL_NR_SDS     2
+>  #define XLNX_VERSAL_NR_XRAM    4
+>  #define XLNX_VERSAL_NR_IRQS    192
+> +#define XLNX_VERSAL_NR_CANFD   2
+> +#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
+>  
+>  struct Versal {
+>      /*< private >*/
+> @@ -73,6 +76,8 @@ struct Versal {
+>              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
+>              XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
+>              VersalUsb2 usb;
+> +            CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
+> +            XlnxVersalCANFDState canfd[XLNX_VERSAL_NR_CANFD];
+>          } iou;
+>  
+>          /* Real-time Processing Unit.  */
+> @@ -133,6 +138,8 @@ struct Versal {
+>  #define VERSAL_CRL_IRQ             10
+>  #define VERSAL_UART0_IRQ_0         18
+>  #define VERSAL_UART1_IRQ_0         19
+> +#define VERSAL_CANFD0_IRQ_0        20
+> +#define VERSAL_CANFD1_IRQ_0        21
+>  #define VERSAL_USB0_IRQ_0          22
+>  #define VERSAL_GEM0_IRQ_0          56
+>  #define VERSAL_GEM0_WAKE_IRQ_0     57
+> @@ -163,6 +170,11 @@ struct Versal {
+>  #define MM_UART1                    0xff010000U
+>  #define MM_UART1_SIZE               0x10000
+>  
+> +#define MM_CANFD0                   0xff060000U
+> +#define MM_CANFD0_SIZE              0x10000
+> +#define MM_CANFD1                   0xff070000U
+> +#define MM_CANFD1_SIZE              0x10000
 > +
-> +enum {
-> +    MCTP_CONTROL_ERROR_UNSUPPORTED_CMD = 0x5,
-> +};
-> +
-> +#endif /* QEMU_MCTP_H */
+>  #define MM_GEM0                     0xff0c0000U
+>  #define MM_GEM0_SIZE                0x10000
+>  #define MM_GEM1                     0xff0d0000U
 > -- 
-> 2.40.0
-> 
+> 2.17.1
 > 

@@ -1,130 +1,150 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3351588ejm;
-        Tue, 25 Apr 2023 01:51:48 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZlW6nKnqNdevuj17yqS34Jq5j1XUpEviPXiBSZDT7RB9H8f+0+0MwqLJOjbRoEDnAdSL5F
-X-Received: by 2002:a05:6a20:869d:b0:f0:a6a0:3c11 with SMTP id k29-20020a056a20869d00b000f0a6a03c11mr15300450pze.49.1682412708248;
-        Tue, 25 Apr 2023 01:51:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682412708; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3469795ejm;
+        Tue, 25 Apr 2023 05:53:20 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZODYWrTSjAJ24v9Rfr7kIBQhx3klWXsAbOMRkfZYtyS2pzKAO4BjAlHquEkjmjEI1X2tOX
+X-Received: by 2002:ac8:4e42:0:b0:3f0:a5a5:cb86 with SMTP id e2-20020ac84e42000000b003f0a5a5cb86mr9125523qtw.49.1682427199873;
+        Tue, 25 Apr 2023 05:53:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682427199; cv=none;
         d=google.com; s=arc-20160816;
-        b=oy4gD9BGCMznU7WbMnqL0lgJkcM+IJLnnD8lGPFgXlsilFprXZF5lV4X8DEqnzhSx4
-         TUQFlBkW1Kho9K6/oX6MYO68Z0EFEHkpLT/eGhtdxqqBMJEaad9mveyrfzTq8N6rkrTo
-         1feC/3G95MxmS8wB0z2laIhqLkDq3Pfd8Ez2ojXLq32PwiGMqzHeWL7vEVRSyQBWdQpZ
-         MRitDr5rZhOWenqARCDTe9ds3JDUMe602hoXavC/G0THJEDhIDZedZfvs4nTfcTTH4Vh
-         Y/BRnXSi2agDbkPTpMmZ3DY86it8VArlZE3Wnutwy22JccMsPgg/O2UPGLbO+0hhtKYn
-         S6JQ==
+        b=EwhKqLGweKvQoi5OyFzeSVtsQtCic8Yg4z6muaw2pP+oH59IPVtp6TVBQ1Hlr9fzzR
+         eCEeyfMMZDExDGkmEVzXExltgio0vfLJcVPvHr+5AbPVo0AH5hiBcnFjRd3gen9w/o8p
+         AM3V6jPJiCXpQSy/kjP/5g5xYLmuvI2eRAtrqchZTKT360w88GVLofRrnb5BdeMZCWW+
+         GyiKInXiU4CKrzMgY1xQBbauKBGb2RjCs1FHrTB7s51vNAGkeO/EDVRMAqk9b06ShYnV
+         DY4ioeOouIwoVnEKRe6fIu4DHOkAeCMtWUMQc6UMZFCKuVU6oow4/6gAV0ZLm8L2PUWp
+         D70Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:in-reply-to:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Y0uWY7brqmRcXtVhZrcEFbqRw/mI47vo48/ZwQf8LM0=;
-        b=DNbvfCYUuzOppK/3iWhtlS5b4GltYxjCV7PxY8vU8ZJZjqKwzgpn06wpJggYusVrPu
-         W1RA3aagK2JZ15I2QKvXFmKgvzPwyLUFWa+gDdJ5vLkdFv751jbZSflqydwD/QBtIVht
-         JakLAvNnf0MxgJkZy4YFOaAvw0wlqorvwI5LjzVWE0zbmOIfsBPwlDFcg8nPtoaaSRE1
-         7yQXybInCSUa14MP913PiFzQl63xAf6jAzBxzES2rPhH5f0+FEfO/4IiHqYg09ONHdz1
-         4r8XqU+9RBlWe+pd4KeGDyWlX2udmPMMDR9C8vLFSRYSjDTaN5JWV1yarRBLg+P6wMKm
-         bF7Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=RaL6sH7t1WI71+khXyV1GrHEXL+9m1DJtOebMAgKW7Y=;
+        b=pMkY49SWQDt02JtEGj0q3daqlxoASK3Q4//5pXMnXYuHtV1LfcTEagROcJRVi1pdVX
+         b3FyRczgV22Mq8eBvBdIzS0NwSf8sfgFScJs1ubBNukPZIJWaB60n1Z/JmW3LaNJh7wm
+         pzaHIQvHTOXGxLmCo6Hpw8OBZvoSL80wh68Fog2QCE2kpnK+WWwQYKua9FGXx+wHDVir
+         Cga1DVo/sZxt+cuvgs7v4K2OJEp638r5RLp2/arqSUw5mR7zfoQHEbXft/kzrGPXg4YI
+         p3VLh+bfb4Kw5f9KyunoQKlBAqnHV60zRuP7o2z1KSIjodIISQwgYumBNWgSyIzRWSCE
+         juxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CVPdtHcb;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id u32-20020a634560000000b0051b6cf7306asi13170934pgk.52.2023.04.25.01.51.47;
-        Tue, 25 Apr 2023 01:51:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 141-20020a370393000000b0074a60b26c74si8446367qkd.87.2023.04.25.05.53.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Apr 2023 05:53:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CVPdtHcb;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S233081AbjDYIvr (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 25 Apr 2023 04:51:47 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44470 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233355AbjDYIvp (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Apr 2023 04:51:45 -0400
-Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com [IPv6:2a00:1450:4864:20::335])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CD0761700
-        for <kvm@vger.kernel.org>; Tue, 25 Apr 2023 01:51:43 -0700 (PDT)
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-3f1763ee8f8so36809935e9.1
-        for <kvm@vger.kernel.org>; Tue, 25 Apr 2023 01:51:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682412702; x=1685004702;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y0uWY7brqmRcXtVhZrcEFbqRw/mI47vo48/ZwQf8LM0=;
-        b=CVPdtHcb6/onOq1WIDibJiKW2+L8E5SE0fW3D5KFSkyvX17mEzrLHIIexwecFFX2HW
-         z64w2n2+/SDqzwua8AggwNS0fR933cVzmRApXoofVnU3whAPgdliqjXXKKt1+xrkD1v+
-         kZHJUCOuNGuUXAsos4N12QDYZfs+1rKo5l7b5r57U7plsOOkf784rUyh/tWUx/ABh6zy
-         l8YvQuI4PK4Gydz+GY7ap5t6UUoO0LKuD9SizmskuuWPblecgDY9e5pG2iBRcuPW/rye
-         FrIOLS79bCG+pU+d53Gecq98625XmbOt8qEpGryu1l1p9J19RzpdujRomvhrsvks2gNe
-         ok4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682412702; x=1685004702;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Y0uWY7brqmRcXtVhZrcEFbqRw/mI47vo48/ZwQf8LM0=;
-        b=Br8v4MMzV4pDmQCoM0oYMZYl6QkG05RsMovpmjXIidClQaZCO2K7hu1DMmjAKzE70i
-         88tby4CJ1ivr8RbnWfZBN4R7afbPkGOs0IxXWI5Ua0kQklKtLZ6/1s7NrBCy9akn3cLa
-         P6ahogqiYOBQw7OFMTCv/hByuFgEJsf0nnkj+NQItPENuAFr+F42DAtk76cUuZ0pQdhE
-         +RWMReawaBDo/oKbAD0CQVjFLRYBQ72+fGB3FVlQDRvltkWvbvyMTyAUASXNgMXTzfso
-         ZRwUsaWgenmRC8O9pEToUzdM0MnoK+kup4Y4YvDBf+CZ2IBlMWl1EsIV/QHTJzHkOM8Z
-         VqwA==
-X-Gm-Message-State: AAQBX9fysKIpK1SKAnvPqbLXmoszQP9wa79DiJURQeYUz1VJ33TD1FEe
-        KRonXt7XlwfJ/uVGKwjnsaUbzA==
-X-Received: by 2002:a1c:7912:0:b0:3f1:94e2:e5cf with SMTP id l18-20020a1c7912000000b003f194e2e5cfmr9189741wme.34.1682412702184;
-        Tue, 25 Apr 2023 01:51:42 -0700 (PDT)
-Received: from myrica (054592b0.skybroadband.com. [5.69.146.176])
-        by smtp.gmail.com with ESMTPSA id i40-20020a05600c4b2800b003ee6aa4e6a9sm17589228wmp.5.2023.04.25.01.51.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Apr 2023 01:51:41 -0700 (PDT)
-Date:   Tue, 25 Apr 2023 09:51:42 +0100
-From:   Jean-Philippe Brucker <jean-philippe@linaro.org>
-To:     Cornelia Huck <cohuck@redhat.com>
-Cc:     kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
-        qemu-arm@nongnu.org, qemu-s390x@nongnu.org, pbonzini@redhat.com,
-        mtosatti@redhat.com, danielhb413@gmail.com, clg@kaod.org,
-        david@gibson.dropbear.id.au, groug@kaod.org,
-        peter.maydell@linaro.org, chenhuacai@kernel.org,
-        pasic@linux.ibm.com, borntraeger@linux.ibm.com
-Subject: Re: [PATCH] kvm: Merge kvm_check_extension() and
- kvm_vm_check_extension()
-Message-ID: <20230425085142.GA976713@myrica>
-References: <20230421163822.839167-1-jean-philippe@linaro.org>
- <87jzy1v3gd.fsf@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1prIAN-00087D-59; Tue, 25 Apr 2023 08:53:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1prIAL-00086L-AE; Tue, 25 Apr 2023 08:53:05 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1prIAJ-0002N7-7m; Tue, 25 Apr 2023 08:53:05 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.206])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 42D1320CF3;
+ Tue, 25 Apr 2023 12:52:52 +0000 (UTC)
+Received: from kaod.org (37.59.142.107) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Tue, 25 Apr
+ 2023 14:52:51 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-107S001abe40e6b-2165-4091-ba2d-060f27566bed,
+ E2DA695E8528D19917B6C34AE59FCE5C6A1E9775) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <a217426b-d042-02ff-faaa-11b69c92b858@kaod.org>
+Date: Tue, 25 Apr 2023 14:52:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87jzy1v3gd.fsf@redhat.com>
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ZyGz8MFJvRxA
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 0/3] hw/arm: Fix raspi, aspeed bootloaders on big-endian
+ hosts
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+CC: <qemu-stable@nongnu.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Joel Stanley
+ <joel@jms.id.au>
+References: <20230424152717.1333930-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230424152717.1333930-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.107]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 696b0d86-6a85-4ad3-b631-952235c171b0
+X-Ovh-Tracer-Id: 14781939877118380905
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfeduvddgheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeduueefkeeigffgudekvdffvdelvdejieelveeiiedvkeevfeejleevuefhteetleenucffohhmrghinhepphgrthgthhgvfidrohhrghenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtjedpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhqvghmuhdqshhtrggslhgvsehnohhnghhnuhdrohhrghdpphhhihhlmhgusehlihhnrghrohdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpjhhovghlsehjmhhsrdhiugdrrghupdfovfetjfhoshhtpe
+ hmohehvdelpdhmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.422,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g/G7aUVGkInc
 
-On Mon, Apr 24, 2023 at 03:01:54PM +0200, Cornelia Huck wrote:
-> > @@ -2480,6 +2471,7 @@ static int kvm_init(MachineState *ms)
-> >      }
-> >  
-> >      s->vmfd = ret;
-> > +    s->check_extension_vm = kvm_check_extension(s, KVM_CAP_CHECK_EXTENSION_VM);
+On 4/24/23 17:27, Peter Maydell wrote:
+> Both the raspi and aspeed boards load their secondary CPU bootloader
+> code in a way that only works on little-endian hosts. This patchset
+> fixes that by making them both use the write_bootloader() function
+> in boot.c, which gets endianness-handling right.
 > 
-> Hm, it's a bit strange to set s->check_extension_vm by calling a
-> function that already checks for the value of
-> s->check_extension_vm... would it be better to call kvm_ioctl() directly
-> on this line?
+> Patches 1 and 2 are essentially a patch from Cédric from a few
+> months ago:
+> https://patchew.org/QEMU/20230119123449.531826-1-clg@kaod.org/20230119123449.531826-9-clg@kaod.org/
+> I've split it into two patches and tweaked it a bit.
+> 
+> These fixes let us run the avocado tests for these boards on
+> big-endian hosts.
 
-Yes that's probably best. I'll use kvm_vm_ioctl() since the doc suggests
-to check KVM_CAP_CHECK_EXTENSION_VM on the vm fd.
+LGTM, the aspeed tests ran fine on a ppc64/debian host (pseries VM).
+
+Tested-by: Cédric Le Goater <clg@kaod.org>
 
 Thanks,
-Jean
 
+C.
+
+> thanks
+> -- PMM
 > 
-> I think it would be good if some ppc folks could give this a look, but
-> in general, it looks fine to me.
+> Cédric Le Goater (2):
+>    hw/arm/boot: Make write_bootloader() public as arm_write_bootloader()
+>    hw/arm/aspeed: Use arm_write_bootloader() to write the bootloader
 > 
+> Peter Maydell (1):
+>    hw/arm/raspi: Use arm_write_bootloader() to write boot code
+> 
+>   include/hw/arm/boot.h | 49 +++++++++++++++++++++++++++++++++
+>   hw/arm/aspeed.c       | 38 +++++++++++++------------
+>   hw/arm/boot.c         | 35 ++++++-----------------
+>   hw/arm/raspi.c        | 64 +++++++++++++++++++++++--------------------
+>   4 files changed, 111 insertions(+), 75 deletions(-)
+> 
+

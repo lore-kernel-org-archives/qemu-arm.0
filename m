@@ -1,119 +1,92 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3588512ejm;
-        Tue, 25 Apr 2023 08:46:32 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YrcadFJMrCBqxvZTB/C1R/1KILNWRkwF2FBlDWRLKIB1e2HVKfULbcq2xkWW+iuxo7fGEo
-X-Received: by 2002:a05:6214:124c:b0:5cd:1adc:30e2 with SMTP id r12-20020a056214124c00b005cd1adc30e2mr30909347qvv.11.1682437591634;
-        Tue, 25 Apr 2023 08:46:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682437591; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3655934ejm;
+        Tue, 25 Apr 2023 10:37:46 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bq/W1pOE1tCoALZwYRzKQdQjsYG7pV60ByKSJln+KI5W/FrZ+P3CYZs13OtSZi+Un8PTJE
+X-Received: by 2002:a05:6214:21a5:b0:572:6e81:ae9c with SMTP id t5-20020a05621421a500b005726e81ae9cmr29244006qvc.1.1682444266354;
+        Tue, 25 Apr 2023 10:37:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682444266; cv=none;
         d=google.com; s=arc-20160816;
-        b=oZmrUzgGauTOsWSU3tSjrAI8L/0OpZDbm4v0Qbx6JS2/HEXqnP5YPxFtFIHtUJ7JP3
-         q6Dmr4bMXOutOyWGdVlCOioVt6E1tSRWCG97qwCbwP8zfvg0ar6HHBtutYJphXJRGVgJ
-         gSZrf1DRb/vWX34g9byXJKnS97cUtlUgId/4CNKf9TVM63SwVmMH9wjOnBRpiWGMculF
-         lAJTwLpLkg97h4ei6HzLRuvd9tE9IpxAF7w3EECanaRs5Pg2bXKR2x313RwV1OjZVSSf
-         RQs95Pzsa85YcHUzDuInt4O2IYKxbgwqGd3wkEpiOzZBCm8q3ruNdBl5PhLSYtjU5Nth
-         D+8Q==
+        b=jh/yigsIJbv+biDLFHX6AybihEhePXXNd88JZyPTKSjZciRhD2DjqTMqpYXLJsB/Vj
+         GQPdalNY2tf5iMIMvWpHC12+OjN/W8oaSMdyM/eZpoPO3wMLEf7u6ppfk8p9Z50ktG3t
+         mU0H2tPPo1uRS5DaNFtgUnNfWhZAleUmF7aPRPoi9XOrlTlqpJmgGsHArn8cmbP8nQSD
+         9wZD9saz7coiW1wChGRGv64E4Hx7g7SHABqOBpehPzM5DLSF1ysCfpr2/H9Y2U4mz4RU
+         hR/Os/wMk6bzdtcguJouSEHXHO4gziYxcwVwVdC6DP0eY9h51ub456X4QMwpnfzSdTPW
+         SXkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=owTRAImrSSJ5pHEuNd25GTEw/B+rmHU6gF1l4I84TX8=;
-        b=Y9nSC1pXqNhGD76+oAWKOM0wcnGjbNv02CHlDdVSxJL8mvVwj2CaSIT2zqAG7qP/WR
-         7BgFgk1splmPbvSYckXPoYoFCpDXxsk3ruXmxbmEe+al6E3KPuq8YdxsnOxwqVCREa4P
-         W9LWisshB7RlnvGsHhNyOV4715vAreLJDxLuTSEzXtFmY0buRTW426+6DCpwzVr2cZzw
-         W7lOwhpL6EZvI43uIMGgjJkd/ojhqa3quTgr7twf1u4ihjQuTvkw3/ofalWjmN9n5FDD
-         Mat6vjsUb6utjYC/k0qMdV0TtDgPMnlo1DKduQCbKyN84uEILs23HnxGP2aI8cFlmr+K
-         0/qQ==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=ILGcMNPqSTq8NulpSdXwXFVuvRXpU0RCaCW1UIoL1M8=;
+        b=WR4iTAV7xZK7LTpjSGkYTjSHbAy66EkujZauo6h2vsNgB6JWxMc+p3jNLSCDgWVj8A
+         wCW8OrCEP+8oy7skMtXjVu60L4R00LhT3Cl535I9JjbuPLEcende+/j5pxY/Lmu1iqWv
+         5MeoaFYbR14NL5i0iFuV7Qc7UqYWGf8ewkkk8Cby0ullZ9N6Gqm8j/nmGty5mMmP8VdD
+         /EJC0wfDoz9M2eBhwJqzl3ftWOpTM8AYb9VQC2NybzuxydVWQBeHjVsP6XPmp8pTCtK6
+         T21ZmjDzp2ivOqdugy2RN56tj4MdwsKicKIGUE3M+gAKfcNhpQLi2Fb2/4SF7Nh9ywjj
+         3Z4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AW46F8a5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020a0562140d0e00b0060307170b36si7337749qvh.144.2023.04.25.08.46.31
+        by mx.google.com with ESMTPS id g8-20020ac85808000000b003e9f7aec3afsi9453051qtg.291.2023.04.25.10.37.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 08:46:31 -0700 (PDT)
+        Tue, 25 Apr 2023 10:37:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AW46F8a5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prKrr-0003vK-CS; Tue, 25 Apr 2023 11:46:11 -0400
+	id 1prMbU-0001Aq-Ou; Tue, 25 Apr 2023 13:37:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKrp-0003uG-HA
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:46:09 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKrn-0006JC-3u
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:46:09 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-3f1958d3a53so45222275e9.0
- for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 08:46:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682437565; x=1685029565;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=owTRAImrSSJ5pHEuNd25GTEw/B+rmHU6gF1l4I84TX8=;
- b=AW46F8a5hCuq88kBXE4jTU+FtcjoTdfctqwSRIM57UV6Uwtoib0XGzN0277utYsugC
- QI7IbOTpqFntTL6ofIMtmnRIyUpa2WuNhRo92Kyq/KELyWQOh6wmAuyZif/9HCXKJWdg
- Ybghd3K0nXOjxm9zozRSmeYGNYNiyfxVvMajcXOzLulw8q6yMAOl5B9YFLBueJKgdCvP
- rabZKXakCs41IpIJQNTLy9Xbb0IhgiL4vN4PMZNuGCjSBxrwSIRCUqr1wwmQq+Lqfwcq
- z6XmeXq+61oHHShMMk3UJxQahvexHROyBye35PhpcTKTYZ3VOABd3yBExo/N3xSPT1Cz
- LHvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682437565; x=1685029565;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=owTRAImrSSJ5pHEuNd25GTEw/B+rmHU6gF1l4I84TX8=;
- b=MNIJwFGNKIIge2HI22k1e10Iq9JtAsYSLSZlr3jQo7tv/EwRoywcVkRMeYY1e+ReTr
- 8lyUwybiZUI24vB99DeHw83Ke/GMl3k1FOXVmcWN0qeK779+0kMBcNmXXQG9vDM/2wDv
- YcHMiOMhwg6mXBFXFptH7Ry2pIIFzgdw1jMdSw13RLpbXdx9JjTINFquKtNmd3It72wU
- /PCBY611/IhYMOkDAMsmaGuQl5fH0cwk/H/twZFXlufpGgIlx9b5Zh1tzy8wbBcpPqt6
- 2zVFnrESI+fUNvSCawfy88KhyxbPKKnpH/GbLzcjJZIbYpgTBFup86qawWLHGObVjd5R
- Gv/Q==
-X-Gm-Message-State: AAQBX9dejvm6HDi1miyyl7EfSzG0cQy4PJk8lT3SH1FPN6w8drS5fk78
- UNHxQwRUF1bLjSWPlMRievHgtw==
-X-Received: by 2002:a1c:7713:0:b0:3ea:d620:57a7 with SMTP id
- t19-20020a1c7713000000b003ead62057a7mr11552782wmi.8.1682437565604; 
- Tue, 25 Apr 2023 08:46:05 -0700 (PDT)
-Received: from [172.27.248.56] ([212.187.182.164])
- by smtp.gmail.com with ESMTPSA id
- v9-20020a05600c444900b003f173be2ccfsm24743883wmn.2.2023.04.25.08.46.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Apr 2023 08:46:05 -0700 (PDT)
-Message-ID: <6f8f1a49-8b93-db34-3e07-b4e9fdd43c06@linaro.org>
-Date: Tue, 25 Apr 2023 16:46:04 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1prMbT-0000za-Il; Tue, 25 Apr 2023 13:37:23 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1prMbQ-0005no-0S; Tue, 25 Apr 2023 13:37:23 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Q5Tb34lQJz67Pmj;
+ Wed, 26 Apr 2023 01:32:15 +0800 (CST)
+Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Tue, 25 Apr
+ 2023 18:37:14 +0100
+Date: Tue, 25 Apr 2023 18:37:13 +0100
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, "Michael S . Tsirkin" <mst@redhat.com>,
+ <qemu-arm@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <linuxarm@huawei.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [RFC] hw/arm/virt: Provide DT binding generation for PCI
+ eXpander Bridges
+Message-ID: <20230425183713.000054c3@huawei.com>
+In-Reply-To: <CAFEAcA8QXcpkxdXMWP8X9tLem6K8qC3CwZ2-t-fqEpGR-nJBTg@mail.gmail.com>
+References: <20230421165037.2506-1-Jonathan.Cameron@huawei.com>
+ <CAFEAcA_DB=nNdiMRwn02mUAATKLvV0Nzs2dCYaM+2fwitac5sg@mail.gmail.com>
+ <20230424164058.00000a3d@Huawei.com>
+ <CAFEAcA_2JP=cM-SCGVhnhnP_6zYr748=A=G=Sh+BH+gkFmwnZA@mail.gmail.com>
+ <20230424225626.00001219@huawei.com>
+ <CAFEAcA8QXcpkxdXMWP8X9tLem6K8qC3CwZ2-t-fqEpGR-nJBTg@mail.gmail.com>
+Organization: Huawei Technologies R&D (UK) Ltd.
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH 1/2] hw/sd/allwinner-sdhost: Correctly byteswap descriptor
- fields
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-stable@nongnu.org
-References: <20230424165053.1428857-1-peter.maydell@linaro.org>
- <20230424165053.1428857-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230424165053.1428857-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.422,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.122.247.231]
+X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,25 +99,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aq5v96niL92x
+X-TUID: lT6HOGVdCqf1
 
-On 24/4/23 18:50, Peter Maydell wrote:
-> In allwinner_sdhost_process_desc() we just read directly from
-> guest memory into a host TransferDescriptor struct and back.
-> This only works on little-endian hosts. Abstract the reading
-> and writing of descriptors into functions that handle the
-> byte-swapping so that TransferDescriptor structs as seen by
-> the rest of the code are always in host-order.
-> 
-> This fixes a failure of one of the avocado tests on s390.
-> 
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/sd/allwinner-sdhost.c | 31 ++++++++++++++++++++++++++-----
->   1 file changed, 26 insertions(+), 5 deletions(-)
+On Tue, 25 Apr 2023 09:28:44 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On Mon, 24 Apr 2023 at 22:56, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > On Mon, 24 Apr 2023 16:45:48 +0100
+> > Peter Maydell <peter.maydell@linaro.org> wrote:  
+> > > On the other hand, having QEMU enumerate PCI devices is *also* a
+> > > very different model from today, where we assume that the guest
+> > > code is the one that is going to deal with enumerating PCI devices.
+> > > To my mind one of the major advantages of PCI is exactly that it
+> > > is entirely probeable and discoverable, so that there is no need
+> > > for the dtb to include a lot of information that the kernel can
+> > > find out for itself by directly asking the hardware...  
+> >
+> > I absolutely agree that QEMU enumerating PCI seem silly level of complexity
+> > to introduce. So easy route is to just use the bus numbers to partition
+> > resources. We have those available without any complexity. It's not the
+> > same as how it's done with ACPI, but then the alternatives are either
+> > (though maybe they are closer).  Note current proposed algorithm may be
+> > too simplistic (perhaps some alignment forcing should adjust the division
+> > of the resources to start on round number addresses)  
+> 
+> I think we definitely need to talk about this later this week,
+> but my initial view is that if:
+>  (1) the guest kernel can get the information it needs to do this
+>      by probing the hardware
+
+Not currently (from a quick look) - see below. But we could potentially
+make it visible by augmenting the config space of the PCIe devices
+that are discoverable.  Or we could in theory ignore the bus numbers
+that we do provide as QEMU parameters, but that would be rather
+surprising for users.
+
+>  (2) doing it in QEMU gives you "this isn't a great allocation"
+>      "we don't really have the info we need to do it optimally"
+>      "this is more of a policy decision" effects
+>      (which is what it's sounding like to me)
+> 
+> this is a really strong argument for "guest software should be
+> doing this". DTB-booting kernels has always meant the kernel
+> doing a lot of work that under ACPI/UEFI/x86-PC is typically
+> done by firmware, and this seems similar to me.
+
+We could explore only solving the problem for pxb-cxl for now.
+However, we would still be talking infrastructure in kernel only
+to support emulated CXL devices and I can see that being
+controversial. A normal CXL host bridge is not something
+we can enumerate.
+
+I guess this may call for a PoC on the kernel side of things to
+see how bad it looks. I suspect very ugly indeed :( but I could
+be wrong.
+
+I think we'll also have to augment the PXB PCI devices
+that appear on the main bus to provide discoverability they don't
+currently have (such as bus numbers)  Probably a DVSEC entry
+in PCI extended space.
+
+Current dump of what is there:
+
+root@debian:~# lspci -s 05.0  -xxxx -vvv
+00:05.0 Host bridge: Red Hat, Inc. QEMU PCIe Expander bridge
+        Subsystem: Red Hat, Inc. QEMU PCIe Expander bridge
+        Control: I/O- Mem- BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+        Status: Cap- 66MHz+ UDF- FastB2B+ ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+00: 36 1b 0b 00 00 00 a0 00 00 00 00 06 00 00 00 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 f4 1a 00 11
+30: 00 00 00 00 00 00 00 00 00 00 00 00 ff 00 00 00
+40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+Which is pretty light on info.
+
+Jonathan
+
+
+> 
+> thanks
+> -- PMM
 

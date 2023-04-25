@@ -1,249 +1,162 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3721041ejm;
-        Tue, 25 Apr 2023 12:43:41 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a1j3DIETMz9SFkCUv0z/fyGgE3sqA+r+mFXYveQYCndczE/sArUMVXErWXLRTuOZfZFZ4L
-X-Received: by 2002:a05:622a:148e:b0:3ef:7d5d:9c3e with SMTP id t14-20020a05622a148e00b003ef7d5d9c3emr16209475qtx.34.1682451820881;
-        Tue, 25 Apr 2023 12:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682451820; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3721060ejm;
+        Tue, 25 Apr 2023 12:43:43 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bFAAPnaGtzpte4NhqA4dXbwjcTg3J/4h22oC4Zda5geCa/TmIJYbpwTMcWX9hEPwnBW2J8
+X-Received: by 2002:a05:6214:5184:b0:5ef:7d5c:a76c with SMTP id kl4-20020a056214518400b005ef7d5ca76cmr27274851qvb.14.1682451823767;
+        Tue, 25 Apr 2023 12:43:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682451823; cv=none;
         d=google.com; s=arc-20160816;
-        b=uUjtPbhhxF7WDvUYvu+16DCGBxBiCqsBK90dWHpUzTCCcOAYazyOqF+Ax9nSyrjmTc
-         Ow55lHcnAYSV/lgcm4D58cWB5ITp9msxpMkHGeNKBwpV5ukhwjh7H6jxFkmlLYJdmX6Q
-         oIavIjbeYY+P8ah8na4G3exaNBrjMWFRdfUIGtVhbZ1BVr07YySMfzb2qofZYOZ91CXJ
-         GCY2Bxr/HUQK1HMQCnYcYrNrbedcN0DjC+9ZHuo7a0GErZQgmuhjykvoTr/l/U7piRWJ
-         Cf8sgHUFiNYajLTIif6sD0yB1FySZ1p6X0tnfzv6svKWMFwAPKziubDlTq6HjoWMFKPs
-         glmw==
+        b=axJTq+POHFRBUcG5m7/ZDGtxWFsn4UdcHMeIGwLqqseiM5VtdyfzbyQRRwki+epPbW
+         KFV4lXTq2d/E7gl57eChMeWElOezTv3Nzfd5jSDr6z6ICVqAHops0oUMJzlnDjjpSSCd
+         axclpbHkyhkpO+HC33mULEvdEhHKltGBgLMl6FRnnds1qLp0t5JYupfkQfMgstcSQJh3
+         X9AIv97tyArdkUJ0iMukvn18P0n9olQ8+WSCygSYgIxAQ39baKeWrlw3xln/lAqZMa4N
+         pG7zVH9uV+Wg3YgYODK5s3o/aCVWxxLU3T/Gz7UbesIUiDCeVT7iMAdaSZXw+1MxvP/C
+         FAXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=knj9vLRVgMuHbxUsbTpxPOOdPonmqcw2C7rsb1Cv/YA=;
-        b=rHh/xgMDJ0lk8AP3di6KEC8dJj06cPI58+nolqm/GuwiYwOFW4/fX+qDdFNO0mk+4Z
-         eCS/bzxOxiMjwtl4aoSnKpoWVN0RsRXJPm4ONDSkhBspCXHmFr4Z1GjpTgOGUYnXw1Ez
-         vklmhjRg8gtUWU10u7ZL3oNAoMniHGkXs5KF3N5L10kObRb5Svql4wSvRtIcrTRwkh4N
-         bzWqH0oqH9KK9vHLaKl9niJemYbo/CDZobeAct8CN+u4Svjw96Au9BHQQ7FRDVD++TS4
-         mFCyG8YOyRfxpjC0KnQGgXvqdfQWFXuyZvR6/Zh5YkTJeZETtcFsbcD8uJJi7lF8zx6d
-         51xg==
+        bh=VhQ4va+L9W76HQPa92crHAm/u67MMsKKHsaZ1OacYxI=;
+        b=Btd1kERzGfB91nL5cElQ5+TUVeH8DbGbZjklqk8OOcT0ShfM5sVxgyF//0Iyeqz+Iz
+         m24B3vwXIFk+60olmRNIsLiD1vcW8EbEsq2bWuLuOdch5r0e2mwgyfoMUUTnnBakfbO3
+         msj6OBq1daHALoE+iQJmE/BkXNIfQOdAjAluIZmFljaTX/dBnN22U5zzzS/Ul5+Dmq5b
+         L/f5IMO2TnnL6qVt1V1qE3jQyQtpybbG/R7q72ZqtCjZxph1OZ4ClzaKh131FgIoTDYc
+         iAyyIlj3aQCwY9fJm+Zs/Y23GJinss3Q1idPVLKhk2JmaMp2pkAlrhS7s8fXZn4oYfSV
+         x2sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MtkJwE47;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tcgRlDw6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7-20020a05620a40c700b0074fc77150ffsi829566qko.200.2023.04.25.12.43.40
+        by mx.google.com with ESMTPS id e18-20020ac85992000000b003ef30a227easi9157931qte.806.2023.04.25.12.43.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 12:43:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Apr 2023 12:43:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MtkJwE47;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tcgRlDw6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1prORa-0005OV-Fk; Tue, 25 Apr 2023 15:35:18 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1prOXo-0002cr-8U; Tue, 25 Apr 2023 15:41:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1prOR2-00042t-Li
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:34:44 -0400
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+ id 1prOXn-0002cZ-Fe
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 15:41:43 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1prOQs-0004x1-FO
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:34:42 -0400
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2a8afef50f2so59474021fa.2
- for <qemu-devel@nongnu.org>; Tue, 25 Apr 2023 12:34:34 -0700 (PDT)
+ id 1prOXX-0007Gy-M7
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 15:41:43 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-4efefbd2c5eso3441596e87.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 12:41:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682451273; x=1685043273;
+ d=linaro.org; s=google; t=1682451686; x=1685043686;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=knj9vLRVgMuHbxUsbTpxPOOdPonmqcw2C7rsb1Cv/YA=;
- b=MtkJwE475/S4xmtvoKag7BeexsnqmP6eCYFvkzc4s9eWv8duFfAIE8PChhEgGXH7Mz
- JZplUYUyGVorFRxgyKNfaMEqtVTtwQRY+SkWSYwazGhubc9MnDG0QYNcN69t7UDP/eHC
- D1hoQZ0QYlbsMt5HV703uboV5tx3lTXb1Wiy9QC//dVhTt9UhA6AMJ+oDBwtqrsmy0Pv
- 0BTajOW1HItSCTdbEOnFG2e1aENDyNdxaZYMA6RJpz4HyUTihOe4dK3A57RXori1dhAx
- DqdyhkflaqIjmSWAVfX50ib+dR4HedCINF3oXCgjvOZoEH34VkYOVFNIt923B0OJMP+G
- bBaw==
+ bh=VhQ4va+L9W76HQPa92crHAm/u67MMsKKHsaZ1OacYxI=;
+ b=tcgRlDw6ECIOkgdNni+h2heGVFiX9cdS6dn2eQ75VTg7UFOR0S2Jv0RNtS3C0Sgg2g
+ 343A006kqSjq/4NrAs8sbl90RQPN2O2yHOYfkcdMTpVBrJOvSB1NOFkqe827Pvaxq4Ot
+ /Qpvz6TqZBss7eH9JeHgOoHTasNA8gLJaHw9rx/afpWOKMpsUtApdlogPE8SGxN1euN7
+ 8yYPJeR7ccOFuKRWCR4Fcv4j7OE/1QCO+W2e0hCFErdlXOAM9Z9WoEk7WAR1/s90CPs/
+ 3mPFqnX/i1dhPI2+SlNanUC99J1xe7tc8lx1DI/3crRiiDcqVpTD2ihCNIaqFOSD1NZd
+ L4jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682451273; x=1685043273;
+ d=1e100.net; s=20221208; t=1682451686; x=1685043686;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=knj9vLRVgMuHbxUsbTpxPOOdPonmqcw2C7rsb1Cv/YA=;
- b=ZzAiDTQmukfU+OXOae0FqhmiQBJgHS3/Cc0XVJWjpJm4BryeAQ7czDoHeDvpler6h5
- Wd19onJyM2kM8kUiFzK8Ob8umURV4gGn4DKdHAgoGBO7e7O4IRFb56cwcGvuVps8errZ
- lN+HSQzDRD/575jtzovYRSzaKiSVYPYPlUyH80TXPYUam8lRU/G9dwhYI4u1Fu/nEFp5
- ZeiV1jARd2mg1z5IQ96TZkDiEW+qdnV7GD5vF/QLukLv5XOIBCy81EpUIEvoa5CnTIX8
- IW5dJzpjQwMc1zmqyP9xoztVS/MIKuy/fAltzJ9oRIbCMk4vGx/DyYgHN9bJe8jrOShW
- T4AQ==
-X-Gm-Message-State: AAQBX9cVRbCwQWtkulQQN3OSRcx2MUQyt2jCYJuXaK4cFG+Yo1MdNivC
- 5cxN0P3I69l1mC3SzA23LilvqA0sMG7raqKnenaSSg==
-X-Received: by 2002:ac2:5230:0:b0:4ed:c893:adf5 with SMTP id
- i16-20020ac25230000000b004edc893adf5mr4804098lfl.40.1682451272822; 
- Tue, 25 Apr 2023 12:34:32 -0700 (PDT)
+ bh=VhQ4va+L9W76HQPa92crHAm/u67MMsKKHsaZ1OacYxI=;
+ b=Cj/Uf+ZnBz6hDGKM6XsmgZR9AFqTl/uj3/YwCWrt8g3qHinAOhWWtiWvosZArLyVzK
+ D5Nk9HmxIFiwaB9nNs+v8310y9KZk54RRV5w+HCyxJk/rpiN7XUjaWZbZv6Qb/xs02lP
+ PkMK/sGjHN/5LmxAi//iKHQBhfu9t2SggyU8+HYSZZoow12O41dn/YP9XVmoQDnsKjGI
+ gIuRhC7VRSX6aE9ioQOtxO5RB0CcOux9fS8dBot9QZF5WaXfu8g3eJ4wCwHR4fa3IIzt
+ +yI2LauAiKfDqceMhV3lXGurDAzKj4Qy/QpjGoPR8q20XDeaOLaFU57Z3MBHhDZhyB33
+ iUyQ==
+X-Gm-Message-State: AAQBX9f+G9csXNU+QvD2BcTptxMZ/MKADVT1vLEKLGrShK8Pg0i5ky+2
+ 0IXhDvwCvHLcPeDElbWjCjCCDQ==
+X-Received: by 2002:ac2:4563:0:b0:4ec:8b57:b018 with SMTP id
+ k3-20020ac24563000000b004ec8b57b018mr4377425lfm.33.1682451686253; 
+ Tue, 25 Apr 2023 12:41:26 -0700 (PDT)
 Received: from stoup.. ([91.209.212.61]) by smtp.gmail.com with ESMTPSA id
- z23-20020a2e8857000000b002a8c271de33sm2160484ljj.67.2023.04.25.12.34.29
+ d8-20020ac25448000000b004ec55ac6cd1sm2175662lfn.136.2023.04.25.12.41.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Apr 2023 12:34:32 -0700 (PDT)
+ Tue, 25 Apr 2023 12:41:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
  qemu-ppc@nongnu.org, git@xen0n.name, jiaxun.yang@flygoat.com,
  philmd@linaro.org
-Subject: [PATCH v3 26/57] tcg/arm: Adjust constraints on qemu_ld/st
-Date: Tue, 25 Apr 2023 20:31:15 +0100
-Message-Id: <20230425193146.2106111-27-richard.henderson@linaro.org>
+Subject: [PATCH v3 46/57] tcg/loongarch64: Use atom_and_align_for_opc
+Date: Tue, 25 Apr 2023 20:31:35 +0100
+Message-Id: <20230425193146.2106111-47-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230425193146.2106111-1-richard.henderson@linaro.org>
 References: <20230425193146.2106111-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::231;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x231.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EaaYwJvnarrB
-
-Always reserve r3 for tlb softmmu lookup.  Fix a bug in user-only
-ALL_QLDST_REGS, in that r14 is clobbered by the BLNE that leads
-to the misaligned trap.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IlAgqxe4z9jl
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/arm/tcg-target-con-set.h | 16 ++++++++--------
- tcg/arm/tcg-target-con-str.h |  5 ++---
- tcg/arm/tcg-target.c.inc     | 23 ++++++++---------------
- 3 files changed, 18 insertions(+), 26 deletions(-)
+ tcg/loongarch64/tcg-target.c.inc | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/tcg/arm/tcg-target-con-set.h b/tcg/arm/tcg-target-con-set.h
-index b8849b2478..229ae258ac 100644
---- a/tcg/arm/tcg-target-con-set.h
-+++ b/tcg/arm/tcg-target-con-set.h
-@@ -12,19 +12,19 @@
- C_O0_I1(r)
- C_O0_I2(r, r)
- C_O0_I2(r, rIN)
--C_O0_I2(s, s)
-+C_O0_I2(q, q)
- C_O0_I2(w, r)
--C_O0_I3(s, s, s)
--C_O0_I3(S, p, s)
-+C_O0_I3(q, q, q)
-+C_O0_I3(Q, p, q)
- C_O0_I4(r, r, rI, rI)
--C_O0_I4(S, p, s, s)
--C_O1_I1(r, l)
-+C_O0_I4(Q, p, q, q)
-+C_O1_I1(r, q)
- C_O1_I1(r, r)
- C_O1_I1(w, r)
- C_O1_I1(w, w)
- C_O1_I1(w, wr)
- C_O1_I2(r, 0, rZ)
--C_O1_I2(r, l, l)
-+C_O1_I2(r, q, q)
- C_O1_I2(r, r, r)
- C_O1_I2(r, r, rI)
- C_O1_I2(r, r, rIK)
-@@ -39,8 +39,8 @@ C_O1_I2(w, w, wZ)
- C_O1_I3(w, w, w, w)
- C_O1_I4(r, r, r, rI, rI)
- C_O1_I4(r, r, rIN, rIK, 0)
--C_O2_I1(e, p, l)
--C_O2_I2(e, p, l, l)
-+C_O2_I1(e, p, q)
-+C_O2_I2(e, p, q, q)
- C_O2_I2(r, r, r, r)
- C_O2_I4(r, r, r, r, rIN, rIK)
- C_O2_I4(r, r, rI, rI, rIN, rIK)
-diff --git a/tcg/arm/tcg-target-con-str.h b/tcg/arm/tcg-target-con-str.h
-index 24b4b59feb..f83f1d3919 100644
---- a/tcg/arm/tcg-target-con-str.h
-+++ b/tcg/arm/tcg-target-con-str.h
-@@ -10,9 +10,8 @@
-  */
- REGS('e', ALL_GENERAL_REGS & 0x5555) /* even regs */
- REGS('r', ALL_GENERAL_REGS)
--REGS('l', ALL_QLOAD_REGS)
--REGS('s', ALL_QSTORE_REGS)
--REGS('S', ALL_QSTORE_REGS & 0x5555)  /* even qstore */
-+REGS('q', ALL_QLDST_REGS)
-+REGS('Q', ALL_QLDST_REGS & 0x5555)   /* even qldst */
- REGS('w', ALL_VECTOR_REGS)
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index 62bf823084..43341524f2 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -826,6 +826,8 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ typedef struct {
+     TCGReg base;
+     TCGReg index;
++    MemOp align;
++    MemOp atom;
+ } HostAddress;
  
- /*
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index 8b0d526659..a02804dd69 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -353,23 +353,16 @@ static bool patch_reloc(tcg_insn_unit *code_ptr, int type,
- #define ALL_VECTOR_REGS   0xffff0000u
+ bool tcg_target_has_memory_bswap(MemOp memop)
+@@ -845,7 +847,11 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+ {
+     TCGLabelQemuLdst *ldst = NULL;
+     MemOp opc = get_memop(oi);
+-    unsigned a_bits = get_alignment_bits(opc);
++    MemOp a_bits, atom_u;
++
++    a_bits = atom_and_align_for_opc(s, &h->atom, &atom_u, opc,
++                                    MO_ATOM_IFALIGN, false);
++    h->align = a_bits;
  
- /*
-- * r0-r2 will be overwritten when reading the tlb entry (softmmu only)
-- * and r0-r1 doing the byte swapping, so don't use these.
-- * r3 is removed for softmmu to avoid clashes with helper arguments.
-+ * r0-r3 will be overwritten when reading the tlb entry (softmmu only);
-+ * r14 will be overwritten by the BLNE branching to the slow path.
-  */
  #ifdef CONFIG_SOFTMMU
--#define ALL_QLOAD_REGS \
-+#define ALL_QLDST_REGS \
-     (ALL_GENERAL_REGS & ~((1 << TCG_REG_R0) | (1 << TCG_REG_R1) | \
-                           (1 << TCG_REG_R2) | (1 << TCG_REG_R3) | \
-                           (1 << TCG_REG_R14)))
--#define ALL_QSTORE_REGS \
--    (ALL_GENERAL_REGS & ~((1 << TCG_REG_R0) | (1 << TCG_REG_R1) | \
--                          (1 << TCG_REG_R2) | (1 << TCG_REG_R14) | \
--                          ((TARGET_LONG_BITS == 64) << TCG_REG_R3)))
- #else
--#define ALL_QLOAD_REGS   ALL_GENERAL_REGS
--#define ALL_QSTORE_REGS \
--    (ALL_GENERAL_REGS & ~((1 << TCG_REG_R0) | (1 << TCG_REG_R1)))
-+#define ALL_QLDST_REGS   (ALL_GENERAL_REGS & ~(1 << TCG_REG_R14))
- #endif
- 
- /*
-@@ -2203,13 +2196,13 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
-         return C_O1_I4(r, r, r, rI, rI);
- 
-     case INDEX_op_qemu_ld_i32:
--        return TARGET_LONG_BITS == 32 ? C_O1_I1(r, l) : C_O1_I2(r, l, l);
-+        return TARGET_LONG_BITS == 32 ? C_O1_I1(r, q) : C_O1_I2(r, q, q);
-     case INDEX_op_qemu_ld_i64:
--        return TARGET_LONG_BITS == 32 ? C_O2_I1(e, p, l) : C_O2_I2(e, p, l, l);
-+        return TARGET_LONG_BITS == 32 ? C_O2_I1(e, p, q) : C_O2_I2(e, p, q, q);
-     case INDEX_op_qemu_st_i32:
--        return TARGET_LONG_BITS == 32 ? C_O0_I2(s, s) : C_O0_I3(s, s, s);
-+        return TARGET_LONG_BITS == 32 ? C_O0_I2(q, q) : C_O0_I3(q, q, q);
-     case INDEX_op_qemu_st_i64:
--        return TARGET_LONG_BITS == 32 ? C_O0_I3(S, p, s) : C_O0_I4(S, p, s, s);
-+        return TARGET_LONG_BITS == 32 ? C_O0_I3(Q, p, q) : C_O0_I4(Q, p, q, q);
- 
-     case INDEX_op_st_vec:
-         return C_O0_I2(w, r);
+     unsigned s_bits = opc & MO_SIZE;
 -- 
 2.34.1
 

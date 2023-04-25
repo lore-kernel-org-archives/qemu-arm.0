@@ -1,110 +1,112 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3589748ejm;
-        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a7kFyAtUnQVjMWUEOLtWBRfpXBdlZdWJml89vYxlZ+mj132LS2nkKyD+vucxe2lEGVdcwQ
-X-Received: by 2002:a05:6214:19cb:b0:5f9:ba55:395f with SMTP id j11-20020a05621419cb00b005f9ba55395fmr33492716qvc.52.1682437719730;
-        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682437719; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3591425ejm;
+        Tue, 25 Apr 2023 08:51:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7TXNV+m0hPHRXah71T/eR6WHXoCLMV0KG6oIWz4QERytL74k7HoVAJGHCuc0JHe9G9asBx
+X-Received: by 2002:ac8:5f88:0:b0:3f0:b57b:3714 with SMTP id j8-20020ac85f88000000b003f0b57b3714mr1190795qta.56.1682437906637;
+        Tue, 25 Apr 2023 08:51:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682437906; cv=none;
         d=google.com; s=arc-20160816;
-        b=vmgUXdMqLSPJwb0c1OaTcnNgaWubZVFti/8TWVB8oY1IFcjAhkdr0FEY7IE6nBjnfF
-         q2Z/hyq5o3SNSI1M8vgRpLktEFJsa71pU5imX3Ttud5c8cnWODfNN6o/8lWBnYL5EfhX
-         Kf6JVaiuzvbbEB7dh1SYbXtAaYMz+GrhbW8iT0ZS+8A4OaOsyfdE8J5M8DuG5p7ncDQw
-         opuerRTaVybwmNDoUsq9Fyf6Jm3HxzCVbWf6KZkBNt0x7nblKoaO1X8x12iKlaHrF2D8
-         H+xwVjM/xRr8aftfOO95t9rwT0hPSQ2QEKgOogKl5xGqscLW5mQs+VjXNZ/yKn8p5uFl
-         sfbQ==
+        b=ZC9EuUxUDADc62xGXXn/3oMDA5El5rz+Zo/7KyLHJEareWSMYh+PoSSaxnr0WaC3g/
+         naLuRfXBxnGvEu7/imLMQgjTU9qZbTOb6Rrc8EmdZ7AwVEtodFhgkgB6x97TOXch4YKU
+         ClbXOAX7SBeTMzmoH4QFbUXhteZmpjxBRFMW5hNLmEOhYOzJvG3gQm94x3NvQzyDq2WF
+         rmpnzOSjn3RJ34nfbWfkjnDc1PXBOwoOXZVDaarQ1orfQ4MxLP0ebQY8cZQPbY1gRWDe
+         V4Bzzgy53Pv7Yggkkst1aaQjEQfgc3bueUayiw0u0v+ACdyjP3l62iKEyCoFqnwzsIoD
+         lh7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
-        b=Rugfjnq4ukasoaVwyWi8CNfmM5YfyZ7pl9mRMFaeuTdIG3roLKdSf4iZtRH4JncQpz
-         uo6rDjz2Nxd8LB1acolKzIIldzX8zNGgBlKhVxySmqfwMC2G4rHM9Rb7/PDDhA7NgwGW
-         mDtmESbosWgHo40GHT8OwEatzQARIjuCNZzq/1vMlerKbH0rr27NciF9LXQhBwajGgwj
-         tKPGdNfcsGbFN1ALL0x+FWtovOlIL+dsUs5bSl4BfiZ8Cwm+M0D3wKKzVMNbIprsqmWD
-         ooFGORS8IdAbwHQYKB4gd/l0TwJAXT7YuNt0Eorg31Tj0GPPcjDzZENdgVaN3MVYu6iO
-         D3Lw==
+        bh=XZl2ktAfRWxTsAkRl0sJZCqPB69xmaDYjO6YukhtMvM=;
+        b=F5zfj76lRXXaQ+7NIa2KNWFTr6Qb27fbJnVGoFcZQQG3Z+o+/U6l10/N7lc7rBzSpc
+         yV/G3NNxaKB3B/SGEKL1ymdOSv2TvVfBiyiY2sOLnXo86ntb4BEU8h2KC7gIimceQRhn
+         BPMpR47Oihq0HPTLBsphVjjdnG48Xg1o9ZNjHqwGU4GC4dYi3amZmg7z3y5u0XblgDr7
+         cYNDgIUmqd2gXRfgQQs5HPQ5LTUrLWCUeJ29NyRtcFnYlb0F/8Oz2oBxDspwKZbQywKD
+         efCDpKcqkopf1QBf5eUAw0T9TFNk1F1QXuG2XGLsNmyImLw5644WttiNptK3luDquWtZ
+         /i+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Rm/oHBKm";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hVb2Ifnv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pn3-20020a056214130300b005ef8161cb7fsi8801089qvb.70.2023.04.25.08.48.39
+        by mx.google.com with ESMTPS id b206-20020ae9ebd7000000b0074a2a7673c6si8781925qkg.638.2023.04.25.08.51.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 08:48:39 -0700 (PDT)
+        Tue, 25 Apr 2023 08:51:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Rm/oHBKm";
+       dkim=pass header.i=@linaro.org header.s=google header.b=hVb2Ifnv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prKto-00062y-HG; Tue, 25 Apr 2023 11:48:12 -0400
+	id 1prKwe-00006u-RR; Tue, 25 Apr 2023 11:51:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKth-0005uA-Le
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:48:07 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKwd-00005z-IE
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:51:07 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKtf-0006d8-Nc
- for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:48:05 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3f173af665fso39143105e9.3
- for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 08:48:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prKwb-0007Q2-17
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 11:51:07 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-2f939bea9ebso5372408f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 08:51:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682437680; x=1685029680;
+ d=linaro.org; s=google; t=1682437863; x=1685029863;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
- b=Rm/oHBKmuQwVPHcCxcJLLFSijeEkMvYyFZ+3XQMStb5p3IDxE+Tw0gReJqb8vu152N
- OAHP2JPHRLDFM5BjDLf3lsvvGKBwlzyCz0b6hadMH5KU87GwbaBWBiSTD7lpwkcXuB5n
- o/q2Iw8q6fG64aQaUdCf9PugJFgmYt8HqPgJ0kq3cOIH+ycrZW2J4z2Iw5i5yEyzBHAt
- i2pZbuqGpWOc3FNh2Fy5dUDRbhGqn5RBcXjcuSra70bbygBKF3qnOQahM8X9ZaQf1F0U
- tBiR9wKgFPYjK3GLUASkC5L9e1C5nxBM61zrRSeuh/HywDsWc2oszTxu4MFoUtc4YOhz
- keDQ==
+ bh=XZl2ktAfRWxTsAkRl0sJZCqPB69xmaDYjO6YukhtMvM=;
+ b=hVb2Ifnv//nW+LJeHFrOCHKWUSapwUkwK6n45vxaFB493UEc068gtiGYNQ0JukP5Fm
+ 7FgphThmKnHxfZ28Pco8bXNKiUB/wNkFaNxAoP+eHQoPNLj+APKbiYdo+76gUFOwqVXu
+ 33IWCdI+JgewfsbQCjAnoVloqf74XDuvxXu6Ba6mEGJzhoxHs9OPVBB7hqugx7noItBw
+ E3foeEXJ0kc+xtQXSUEQwyu3QZg9ph0QDfWXGN+FYjvJ+1h9HpYQEhFzY1hOKk6a9XIn
+ EfMdXoXtz4iqo+zy26xWxaXyPNIupSD1W/YOtokHML0eIk/xcy0T5/oNFbjCOqFy8t01
+ tUKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682437680; x=1685029680;
+ d=1e100.net; s=20221208; t=1682437863; x=1685029863;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mFXUeqmf7J7ZmdEqZ/F9UYdDBPhcEtftBoUmvdXGTbQ=;
- b=T0/N90eh313OGh7JXHVfcKHf1tx335cCTOCZDyfFILcgrFOA1EUXaZ4x4yXVxyfMCk
- wCLYGGygdEWrx6Z5rRk2nWM9mu7/BjlrC94/LjUThiNgOBeuPMB9uNa4XkLQ1w8TKueC
- anLBoqToVo1da1Sk5QOVORPPAU9PYArAXY8LGhnnGauwdCcqZPj/EyqsIt4yjpovV7RJ
- 8MKZv/mXHc3ZXAsJcdCu6ObKS3S+iBRf5tBEx2quQtp2nYOevmJdF7NFv0pmnt5WuaI/
- 7Y3YKwL6Jymif2yOHH0vTzAa+M9y5/Wa6DGuAsX4IzH0qlJ9Gvke/di2L6rGwZTZj+MP
- 5l5w==
-X-Gm-Message-State: AAQBX9fxrskSX9JeGqoMwU88IiSmN0uvjb9kAcqWojGfJ+A0f9hlxiiB
- /W/Dw3Uk/FiKJjYE8SvsIQX+Iw==
-X-Received: by 2002:a5d:5181:0:b0:2d5:2c7b:bc5f with SMTP id
- k1-20020a5d5181000000b002d52c7bbc5fmr12444379wrv.58.1682437679885; 
- Tue, 25 Apr 2023 08:47:59 -0700 (PDT)
+ bh=XZl2ktAfRWxTsAkRl0sJZCqPB69xmaDYjO6YukhtMvM=;
+ b=iQvbC3WZfg0n/aacANPpQ+UdvVlwjebYW9B6ZpzTYW6eqQRCytdmPawJXIxqDxlut3
+ BnuYts+06n5ugDRYunibPoccE8TyCwRGYHmjr2jjle7PpcLSmB7GTIZ4w5O8wr1/DfkH
+ ZSZUDcokHCD3/cCQQMaem8g0NgtscXLJFIBM0AGDCSqG5s5M+yAffrnlLjikJpQgNwTY
+ kLG1UQulibin8X8GcaBt4vwTQ2qrPhKx9W4Nys7oWQx2yStKLZTQzRsLpm9Lk/1iwbWv
+ 0PwVIH3iNTJl+rdZ4raqIP6qc0C2p5KLSY6jY5/NFlFNVjow174BL4b3aHCAabbJNCYq
+ Pz1A==
+X-Gm-Message-State: AAQBX9f6Pj2GYXwpUESQ8FNUiTdjf0s01PSM7A7RdRH8jUm1r+uDmylg
+ S0Jo2baZetnKDDOikTW7TU0ETig6gpPz0XvCUyvwdQ==
+X-Received: by 2002:adf:d4c6:0:b0:2fa:d079:2eca with SMTP id
+ w6-20020adfd4c6000000b002fad0792ecamr12527410wrk.43.1682437863306; 
+ Tue, 25 Apr 2023 08:51:03 -0700 (PDT)
 Received: from [172.27.248.56] ([212.187.182.164])
  by smtp.gmail.com with ESMTPSA id
- v12-20020adfe28c000000b0030497b3224bsm209356wri.64.2023.04.25.08.47.59
+ u6-20020adff886000000b002f7780eee10sm13406207wrp.59.2023.04.25.08.51.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Apr 2023 08:47:59 -0700 (PDT)
-Message-ID: <de9e4f6d-e985-b1f9-5a59-0127c54a7323@linaro.org>
-Date: Tue, 25 Apr 2023 16:47:58 +0100
+ Tue, 25 Apr 2023 08:51:02 -0700 (PDT)
+Message-ID: <4a9fd41f-c4d8-6675-95ee-2015d08325e8@linaro.org>
+Date: Tue, 25 Apr 2023 16:51:02 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH] hw/intc/allwinner-a10-pic: Don't use set_bit()/clear_bit()
+Subject: Re: [PATCH 0/3] hw/arm: Fix raspi, aspeed bootloaders on big-endian
+ hosts
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-References: <20230424152833.1334136-1-peter.maydell@linaro.org>
+Cc: qemu-stable@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
+References: <20230424152717.1333930-1-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230424152833.1334136-1-peter.maydell@linaro.org>
+In-Reply-To: <20230424152717.1333930-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -34
 X-Spam_score: -3.5
 X-Spam_bar: ---
@@ -126,28 +128,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +9Xruk7V/Dw1
+X-TUID: vqBEshQ3hcF0
 
-On 24/4/23 17:28, Peter Maydell wrote:
-> The Allwinner PIC model uses set_bit() and clear_bit() to update the
-> values in its irq_pending[] array when an interrupt arrives.  However
-> it is using these functions wrongly: they work on an array of type
-> 'long', and it is passing an array of type 'uint32_t'.  Because the
-> code manually figures out the right array element, this works on
-> little-endian hosts and on 32-bit big-endian hosts, where bits 0..31
-> in a 'long' are in the same place as they are in a 'uint32_t'.
-> However it breaks on 64-bit big-endian hosts.
+> Cédric Le Goater (2):
+>    hw/arm/boot: Make write_bootloader() public as arm_write_bootloader()
+>    hw/arm/aspeed: Use arm_write_bootloader() to write the bootloader
 > 
-> Remove the use of set_bit() and clear_bit() in favour of using
-> deposit32() on the array element.  This fixes a bug where on
-> big-endian 64-bit hosts the guest kernel would hang early on in
-> bootup.
+> Peter Maydell (1):
+>    hw/arm/raspi: Use arm_write_bootloader() to write boot code
 > 
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/intc/allwinner-a10-pic.c | 7 ++-----
->   1 file changed, 2 insertions(+), 5 deletions(-)
+>   include/hw/arm/boot.h | 49 +++++++++++++++++++++++++++++++++
+>   hw/arm/aspeed.c       | 38 +++++++++++++------------
+>   hw/arm/boot.c         | 35 ++++++-----------------
+>   hw/arm/raspi.c        | 64 +++++++++++++++++++++++--------------------
+>   4 files changed, 111 insertions(+), 75 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

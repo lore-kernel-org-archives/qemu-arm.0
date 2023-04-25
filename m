@@ -1,91 +1,118 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3489905ejm;
-        Tue, 25 Apr 2023 06:20:56 -0700 (PDT)
-X-Google-Smtp-Source: AKy350b+/92GP12rxwRa1DVseizJEGXVV9brAm4laOSesfUCPNaZ2+PPVn3zM4flH5F8+VAiKorG
-X-Received: by 2002:a67:ff8f:0:b0:421:e607:bd4c with SMTP id v15-20020a67ff8f000000b00421e607bd4cmr7111889vsq.8.1682428855809;
-        Tue, 25 Apr 2023 06:20:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682428855; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3533311ejm;
+        Tue, 25 Apr 2023 07:24:06 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZCLW/MzLCSNr7ktIdOUyMGdtjwdEb3ttEfAixfXsT4ZcjIfslT+J6BDKmnaNxrscc5HTIO
+X-Received: by 2002:a05:6214:508e:b0:5ee:f961:4b74 with SMTP id kk14-20020a056214508e00b005eef9614b74mr29124952qvb.9.1682432645904;
+        Tue, 25 Apr 2023 07:24:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682432645; cv=none;
         d=google.com; s=arc-20160816;
-        b=vS8oeQeOnjqd0eKyVgPd32F/jAHcMHz6fv/kGO4lOBy5t8QKIXNHcCOPp4mCR5gplP
-         Fylf+h2vwgmQQBGecp6WTqicdo+SXpSru/WhI5XK8QtibtEiG76aUcXbgoq4jdIVvUo9
-         SEFbJfxz7b0v3iXVNuWCQNQvoNvI4qn3XRVj8tNWW6qDHq6HvvcUSYn0LrD8hkFs4EBP
-         NbQC7RFUHlZ8n7Fpz1cIScMqvgHe53caKVP9zA8BwIT1I6gWYjH/xi9kBbU10AXyzHiH
-         l/H2MV5p884LADIyPdtcvMu6aZZUCeGWhorYMOjVcoVt8LO7achKEIQ5BcA/3d0o24kW
-         8yCA==
+        b=srLh5EXkp4I4WQCi6+PVpp06WWn2ys4SoyNZOPsZD6ZzM7OKhjKD8UWIJEk4dLvN0T
+         5sKKUhieBRNFG4o3exdEdvqMYPZmQEWPRgou2MiTETiouxqAOiX3AU9fr8u6jmcmoD1C
+         WWlHCcgDeEFJNY2e8IgRrHO/4zscCCZoJMXRUQMI9lewYyTFmbva/B3G156iBN37l0lD
+         ZY0ixqpuYmfdm5ESF7mHS/xP5gixqG2wmhKqU0zaeFnUnp7ujFFfEGInYqpWyApmBhzU
+         IWAPObTPlQDO4/dF5VZoShZmXrsAp5OWOYbVom3DVLPHnJqy0l9QfQfUJ00JwWoqxRfZ
+         AI0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:feedback-id:message-id:subject:cc:from:to
-         :dkim-signature:date;
-        bh=yDy/hiWAID1GYWoKBo6HFKzKXnO8QdDKXNTIM7E1ej4=;
-        b=c7bCgn7QE2X0PXgfZ7pPQkvbEwhylqvLOqHTctaHCLjH0vevbCVpjk9zrPSImoloVp
-         Fbm1rIjMX+YqzkgegKQE4d9Wsc2sYT21yOmw08BCb6B/nyM4WI4nyENEXRwq4zSS0gAV
-         kIV8nMwPApk5n4Tbe9RltiTjCWAL3rzlid1BopIWUp0U+aOKVGVBajmoJ+9I2RFzRp41
-         t4nSzmuaRLDoRytsR38jzzLEvVkAZ5HCgb7i4ct7Gea7yYsf1QG9V3JPDlX76A6UQ661
-         e/xJ1OwBBtXVPyQp3XfoGFoLxbB0evJo7aPhSbjChikG0iE08TkhVP+HIHisy3vXErHp
-         +o8w==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=0xPpJstq4gxueLzwpnuqz+z/PsoC6LFXV3Er/3MKPf8=;
+        b=KYacYnJ+roMOUW/n40A80Wmh3KNvV621lt9YXVEVstZuydur8cTxcvNaMEA/IPPWtr
+         1oZdjVOgM1WkMYe0Z/YfOmO8nJIBSm9zDx+kwOqLWavAddg9vQuul5TwVjejHsIE7sZ0
+         zChA1js1PDxlvzXDxNiFbDWKlwAKn5lgxjZe9M0pnfKdNQerc5Dq8t8pcH00vd6IvNwH
+         WpVHITcY00iqMJjYFgrAJrt9uLkWWOcwcOoEd/A7zclw8LaewASzHmVsHYQyl3yVwJIv
+         t24JKnk9ERKbH/TEFoFvYKkncNwzJ1syi70/8ZHtoXB9vqtQ+toyna85VrP1kRXPUnAk
+         3SiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@danielbertalan.dev header.s=protonmail header.b=HYR5gHtY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CR4XLKrS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=danielbertalan.dev
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20-20020a67c314000000b0042603f626b5si2165532vsj.373.2023.04.25.06.20.55
+        by mx.google.com with ESMTPS id s15-20020a0562140caf00b005ef8a601caesi8804622qvs.256.2023.04.25.07.24.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 06:20:55 -0700 (PDT)
+        Tue, 25 Apr 2023 07:24:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@danielbertalan.dev header.s=protonmail header.b=HYR5gHtY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CR4XLKrS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=danielbertalan.dev
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1prIYS-0000lb-5A; Tue, 25 Apr 2023 09:18:00 -0400
+	id 1prJZn-0003ZR-NT; Tue, 25 Apr 2023 10:23:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dani@danielbertalan.dev>)
- id 1prG0Z-0004YD-7p
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 06:34:51 -0400
-Received: from mail-0301.mail-europe.com ([188.165.51.139])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dani@danielbertalan.dev>)
- id 1prG0T-00015H-7T
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 06:34:50 -0400
-Date: Tue, 25 Apr 2023 10:34:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=danielbertalan.dev;
- s=protonmail; t=1682418877; x=1682678077;
- bh=yDy/hiWAID1GYWoKBo6HFKzKXnO8QdDKXNTIM7E1ej4=;
- h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
- Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
- b=HYR5gHtYxMaG8Y30r4gvG4ZPDRGULkXZS+2HM9gAdz1iERl/Qp0+IWIUUzDoV7Mti
- IFbg/dD+TLq2cPfwicI8MsyuEuJK3qSOdGTivNm/y0To/3Y2mY7T5vWgHjJ8EULbKB
- eJcBvvy2X2Ph7NjOAHkPK5RMiZvpcoNRJMIprxWlc39f9vm4uxrfr6+LosmynVcA7W
- a5b+TEV4WjVHryIMO1c9ffhJfGTGwmuGDA1E3YiP2wMoFYYe+qetu4aiiK3GLCjzB0
- Tz2IxQKyVqBduCcSqOVOfol74BeJv3cV9PKMyPCeTp+Jdx+UI4WWKH4Ksh0fhfSWEo
- FANuFT2bzK4kw==
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-From: Daniel Bertalan <dani@danielbertalan.dev>
-Cc: Daniel Bertalan <dani@danielbertalan.dev>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/bcm2835_property: Implement "get command line" message
-Message-ID: <20230425103250.56653-1-dani@danielbertalan.dev>
-Feedback-ID: 20340505:user:proton
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prJZU-0003VA-90
+ for qemu-devel@nongnu.org; Tue, 25 Apr 2023 10:23:10 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1prJZR-0004TS-73
+ for qemu-devel@nongnu.org; Tue, 25 Apr 2023 10:23:07 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-3f1950f5676so47420675e9.3
+ for <qemu-devel@nongnu.org>; Tue, 25 Apr 2023 07:22:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682432578; x=1685024578;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0xPpJstq4gxueLzwpnuqz+z/PsoC6LFXV3Er/3MKPf8=;
+ b=CR4XLKrSvlXTEFFnTJE3HePn+QdOgTOB0JzaykcEwHB/jMn+iVIwes0yeDy/PxRlru
+ lQzTHdytEcjNDRMwnseXio7ZZrI0JGZN/ayvisiJ0/4BgZd+w7MYVQCPR8+hPeZSytkb
+ hspeYHsRvbPXsDl+rzdPeUV+xdn+JDPnfUfn/YD02kMlU839rvWSs9PCvQxWzLI7uEYe
+ WK7hRt8Mq2gAHBk1WTFJVjNF4O1uPTe0CzqlbEHU0qlN6KmFoSpF9YYpa88fUz6+kQCq
+ ZTIrKxdG+K9XtaWXn7SWGaqXOufq1+XC0HDRk82W437B7wv7tDH9IQnDIUz6tJK/s7RV
+ OeOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1682432578; x=1685024578;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0xPpJstq4gxueLzwpnuqz+z/PsoC6LFXV3Er/3MKPf8=;
+ b=XiKf4dbdPBT9swViNQUrXBU16b4sP5jLPqp51g12jIDVzzaCkLE5V9xS2NSCRlkHA2
+ wpUXjJLL2aHt8pei+wWZuZphOA5zUSeQs1zdTCaqKHTpoHbWnYAQ+KwvPfgccz7w+/iZ
+ UJbSmmbp16Z29frD1xK0/LBUVk8hwxOE4QfMKgyIYT/aDfC9F4EdfxcMcIpagJyzuQRi
+ cF4SvuGIWE1gwULlfUqC0WRKPbbJpTbPetDJmL/FFRtazPUrOvlda+MiTSKKpp6qfy+8
+ rloLtsLrz4IaE1e8p+H69Mzh1iJlyPoZ6rW7oo2Wih9E7+b1x1zhNwKTfDegyWjCcS1g
+ Bz3Q==
+X-Gm-Message-State: AAQBX9fj76i6fJBqffsmQTVI+kstsWnf0nD4Dt0/88+3cxtOIy3NxdBr
+ Uyc2h/o9liSsw65/AqHM4vnIOg==
+X-Received: by 2002:a1c:7404:0:b0:3f1:8b0f:96ea with SMTP id
+ p4-20020a1c7404000000b003f18b0f96eamr10602634wmc.37.1682432578129; 
+ Tue, 25 Apr 2023 07:22:58 -0700 (PDT)
+Received: from [172.27.248.56] ([212.187.182.164])
+ by smtp.gmail.com with ESMTPSA id
+ h16-20020a05600c315000b003f173a2b2f6sm18593760wmo.12.2023.04.25.07.22.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 25 Apr 2023 07:22:57 -0700 (PDT)
+Message-ID: <b446927b-ba56-d8f8-d806-d016b84d19d7@linaro.org>
+Date: Tue, 25 Apr 2023 15:22:56 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=188.165.51.139;
- envelope-from=dani@danielbertalan.dev; helo=mail-0301.mail-europe.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.10.0
+Subject: Re: [PATCH v3 13/57] tcg/aarch64: Introduce HostAddress
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, git@xen0n.name, jiaxun.yang@flygoat.com
+References: <20230424054105.1579315-1-richard.henderson@linaro.org>
+ <20230424054105.1579315-14-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230424054105.1579315-14-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.422,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 25 Apr 2023 09:16:31 -0400
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,115 +126,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uE3WTZQ7oKXl
+X-TUID: Z0eD4yQIn0W8
 
-This query copies the kernel command line into the message buffer. It
-was previously stubbed out to return empty, this commit makes it reflect
-the arguments specified with `-append`.
+On 24/4/23 07:40, Richard Henderson wrote:
+> Collect the 3 potential parts of the host address into a struct.
+> Reorg tcg_out_qemu_{ld,st}_direct to use it.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   tcg/aarch64/tcg-target.c.inc | 86 +++++++++++++++++++++++++-----------
+>   1 file changed, 59 insertions(+), 27 deletions(-)
 
-I observed the following peculiarities on my Pi 3B+:
-- If the buffer is shorter than the string, the response header gives
-  the full length, but no data is actually copied.
-- No NUL terminator is added: even if the buffer is long enough to fit
-  one, the buffer's original contents are preserved past the string's
-  end.
-- The VC firmware adds the following extra parameters beside the
-  user-supplied ones (via /boot/cmdline.txt): `video`, `vc_mem.mem_base`
-  and `vc_mem.mem_size`. This is currently not implemented in qemu.
-
-Signed-off-by: Daniel Bertalan <dani@danielbertalan.dev>
----
- hw/arm/bcm2835_peripherals.c       | 2 ++
- hw/arm/bcm2836.c                   | 2 ++
- hw/arm/raspi.c                     | 2 ++
- hw/misc/bcm2835_property.c         | 7 ++++++-
- include/hw/misc/bcm2835_property.h | 1 +
- 5 files changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 3c2a4160cd..0233038b95 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -90,6 +90,8 @@ static void bcm2835_peripherals_init(Object *obj)
-                             TYPE_BCM2835_PROPERTY);
-     object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
-                               "board-rev");
-+    object_property_add_alias(obj, "command-line", OBJECT(&s->property),
-+                              "command-line");
-=20
-     object_property_add_const_link(OBJECT(&s->property), "fb",
-                                    OBJECT(&s->fb));
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index f894338fc6..166dc896c0 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -55,6 +55,8 @@ static void bcm2836_init(Object *obj)
-                             TYPE_BCM2835_PERIPHERALS);
-     object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
-                               "board-rev");
-+    object_property_add_alias(obj, "command-line", OBJECT(&s->peripherals)=
-,
-+                              "command-line");
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
-                               "vcram-size");
- }
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 92d068d1f9..7b9221c924 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -280,6 +280,8 @@ static void raspi_machine_init(MachineState *machine)
-     object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(machine-=
->ram));
-     object_property_set_int(OBJECT(&s->soc), "board-rev", board_rev,
-                             &error_abort);
-+    object_property_set_str(OBJECT(&s->soc), "command-line",
-+                            machine->kernel_cmdline, &error_abort);
-     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-=20
-     /* Create and plug in the SD cards */
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 890ae7bae5..225bce2ba4 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -282,7 +282,11 @@ static void bcm2835_property_mbox_push(BCM2835Property=
-State *s, uint32_t value)
-             break;
-=20
-         case 0x00050001: /* Get command line */
--            resplen =3D 0;
-+            resplen =3D strlen(s->command_line);
-+            if (bufsize >=3D resplen)
-+                address_space_write(&s->dma_as, value + 12,
-+                                    MEMTXATTRS_UNSPECIFIED, s->command_lin=
-e,
-+                                    resplen);
-             break;
-=20
-         default:
-@@ -413,6 +417,7 @@ static void bcm2835_property_realize(DeviceState *dev, =
-Error **errp)
-=20
- static Property bcm2835_property_props[] =3D {
-     DEFINE_PROP_UINT32("board-rev", BCM2835PropertyState, board_rev, 0),
-+    DEFINE_PROP_STRING("command-line", BCM2835PropertyState, command_line)=
-,
-     DEFINE_PROP_END_OF_LIST()
- };
-=20
-diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_p=
-roperty.h
-index 712b76b7a3..ba8896610c 100644
---- a/include/hw/misc/bcm2835_property.h
-+++ b/include/hw/misc/bcm2835_property.h
-@@ -30,6 +30,7 @@ struct BCM2835PropertyState {
-     MACAddr macaddr;
-     uint32_t board_rev;
-     uint32_t addr;
-+    char *command_line;
-     bool pending;
- };
-=20
---=20
-2.40.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

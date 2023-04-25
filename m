@@ -1,90 +1,113 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3090056ejm;
-        Mon, 24 Apr 2023 14:56:57 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZNnkNSdGDxX5s949EotrHhvJrZ3ly5WhoMTdEGlYozBhFEAYj/bzcKGLU0QLLTkW6ukPcp
-X-Received: by 2002:a05:622a:d0:b0:3ef:3aa3:a389 with SMTP id p16-20020a05622a00d000b003ef3aa3a389mr27113448qtw.51.1682373417175;
-        Mon, 24 Apr 2023 14:56:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682373417; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3342640ejm;
+        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aWOx+5XA7jgokzUcb1bY/fM/IiDx46pkjkvxCofDGUmDWmlaTKzWl8QwzwOFa1TkBOr6uD
+X-Received: by 2002:ad4:5745:0:b0:5f7:8b31:454c with SMTP id q5-20020ad45745000000b005f78b31454cmr27134365qvx.1.1682411358408;
+        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682411358; cv=none;
         d=google.com; s=arc-20160816;
-        b=zHrWxpXsiwCoCmPtfPjcP9N+/rl36YyU+6VhOVnMyzEW687hxekBnjIX68tyR4ttiD
-         UBj4/j4LKEpIs9d6343PR4S2Km/vtEIXRrZpVkRJZZte8hV00wtqL4xnH0OMhWIqMrlD
-         Cv2ekRmQREDYlOCBUPaVDqNr/tPZhLwCy8vnxk73ehCxlyQPYWk8L7c9IMBkvXLxUl6/
-         ZkMpbe8mkxnSggG3znQrZnaT9aPbVmhFT0fNBkZYu67FRyThXc3hbvDVrUDhHBCK0sKq
-         5CZupomc7XNvmt/ElMgisJAdBS3V8m+ASWQyPPj9SDrsLKl8OndITeoq5kQrGXCVQDtk
-         LifQ==
+        b=Ovp2f/kdMEJHxifbl+q0NKaLiLvkJpsAzDeiO6tTJvG9MJHQYN4EclYkSjbavXf0KS
+         iMDnIhWSSccQ0lVubFczvFm0ZlkRQTdyBQzHy/ViV/wt+k7OOHackyfx7MfktcANBAHM
+         m2rgsgkxyJDVKt22dw4jGB+RrTYrdOEvZs91r1Riiy9OAoShRma1a0wEn1AdFmOpWulX
+         VF5F7dfnoDv7dWHAYF6es+re2ksns2UlJ8lfvy8TBgXK9NCm9b835LjrjHAuN/e2p6jy
+         ClEFcVdVWcldGgxdb50GNewaSfaG8z9p91J+LXMKUnFt1hkcQOtNU+XGZWAGz4OPPF1L
+         ndUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=fRVbAZJP4kS447UYrWuE4tcDExGrUw1PgXKMWLGQjYA=;
-        b=jmWR9/WyjN8y9Q3aAJcLbfvRxWOVP84k6or9DVqdHJPvovLpcSY18djLBgHJ496pBa
-         +h13k3G+pnEpvA+SKLqRFR6L5AQ3PUqHkw2+06/W94vdqEpdf/lQAln+C+zW156hxCal
-         tbDIyEFJJZ+slQGEcaTynJ5UM8peKQCbXE2TNxU2rW/IMhk5Q51ytNOTpk7zBhopDxn+
-         8B1wwaVaGdaom0zV+yDDvArGa96Kp4g2+y1aQOlbeA1ivlFuFjEUcXWfCgk7XXASNZxL
-         1VAfpnKss6o+54phMl0vtbGiEolS2bxI7VgJcmykY+/YKrla3a2lzM/UDWAIrimWuF9W
-         9RwQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
+        b=dn3MyY5wr18Iu8CmtDPLqla1nI1wsIKccvSQltfOkQ8V4PVYrL1OfhBUmvNtt5XyHJ
+         qpUBMLQWqlrKWpsa59vp6rGbub3QTvdFSn1q18OaylPd6Z7almwDg/9Jt6LuFUWZyFcA
+         JA35/Zo1Otd3vmTCSfIFoYUVi0+vuZq9SmBQqNWV+Rj/13N37ZMx+Sg9lNS4+5AOaMvy
+         kQTRrekutUDw82YyccRhnJpkg1946Kgu8hSU9uILMStigLuz85lLYHcboYVklILlJKLO
+         TOZDZBJULCD8O4d4Hghlvrpko0K5G/qEv/3odVHLzWAkrSDsFCbjyKJxzNa5KF5koivD
+         De6w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ecHAvbDs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020ac8570a000000b003e9a78b58f7si7911642qtw.702.2023.04.24.14.56.57
+        by mx.google.com with ESMTPS id ib6-20020a0562141c8600b005e7d0ff4db7si8340107qvb.324.2023.04.25.01.29.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Apr 2023 14:56:57 -0700 (PDT)
+        Tue, 25 Apr 2023 01:29:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ecHAvbDs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pr4Az-0005ol-H3; Mon, 24 Apr 2023 17:56:50 -0400
+	id 1prE2m-0004tE-Qk; Tue, 25 Apr 2023 04:29:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1pr4Ay-0005oY-22; Mon, 24 Apr 2023 17:56:48 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1pr4Au-00029U-JL; Mon, 24 Apr 2023 17:56:47 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Q4zSx3Z53z67xLp;
- Tue, 25 Apr 2023 05:55:13 +0800 (CST)
-Received: from localhost (10.122.247.231) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Mon, 24 Apr
- 2023 22:56:29 +0100
-Date: Mon, 24 Apr 2023 22:56:26 +0100
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-devel@nongnu.org>, "Michael S . Tsirkin" <mst@redhat.com>,
- <qemu-arm@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <linuxarm@huawei.com>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [RFC] hw/arm/virt: Provide DT binding generation for PCI
- eXpander Bridges
-Message-ID: <20230424225626.00001219@huawei.com>
-In-Reply-To: <CAFEAcA_2JP=cM-SCGVhnhnP_6zYr748=A=G=Sh+BH+gkFmwnZA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1prE2k-0004rl-F5
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 04:28:58 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1prE2i-0005Bc-ND
+ for qemu-arm@nongnu.org; Tue, 25 Apr 2023 04:28:58 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-50506111a6eso10007944a12.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Apr 2023 01:28:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1682411335; x=1685003335;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
+ b=ecHAvbDsCmdZ0cODPgiXpJcR4FjlLEbEmXk/C2dGkOcZ14vBpBQnD9ablhFPSAeqCl
+ jN5CoGK6TUXMEy2PtRySDKsCmReznBy8e4HhohZyVOV5b6zfTXLLGCb8HPTZew9NidTn
+ 3Pcnozqmtc4R44R1roFC42v0ndWV3V0N7hUCYkIbbjyhfhmZOKK4WLCURR53T9ZCuDAU
+ PEK6UKc5HsFSjsgWDZU+qGKXvX7sdl//qcCHW+PLxtKxp3vd4lzSp0svP5m4Q0mig0Gm
+ i4NNWXFsCeTr5wFv2FtprfC9Z7ygb/quF8oJN6DBznKJmsD+IIFyjo5e7zBk154otmyz
+ WQpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1682411335; x=1685003335;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pmpb8bcvYoVEfQM+oqkeHjuPIx1HN09PMZtINojiia4=;
+ b=Kr8KghKn5x+0vRyEZHAmCvc8aACmwszogIkko3Kch1eTAUNpd9dgiA9L6e5u7LyEnR
+ YuczIQwmSokHpHyMrWtKsnJPLM0ogGxG0dv/6FOp9YLDQuP674KXQJZiEbfJWqYGqcrB
+ FpuscCmOhDU3V3nuFRXmvGbkIs4bTxNBWXxoZNdveidhqaMAsgXfWk/KsVoSgzZX5pkS
+ XVeYYHGUKZoXdta/aS0b35Nx6pYKXZCtE/UAUkzt3X9JUmtQOtCRT1y8UUuVqIU+K4qk
+ gQN1dAqBMzE2Q9n9wyQGvuK/YUSmiOhSR/+fyGEYY5vzfHH4vNvgKc7W5Xq4kxxn5HDl
+ ArFA==
+X-Gm-Message-State: AAQBX9fiWzKgCkRaCKFlYzehae253Ll48USsZ5F0txgrTTAcVqqXX/d/
+ t+sdwUS9wonhkMsmDQ7xPFAd8W8uHTS6x0UjYxPYjg==
+X-Received: by 2002:aa7:df01:0:b0:505:8bf:e663 with SMTP id
+ c1-20020aa7df01000000b0050508bfe663mr14111320edy.41.1682411335051; Tue, 25
+ Apr 2023 01:28:55 -0700 (PDT)
+MIME-Version: 1.0
 References: <20230421165037.2506-1-Jonathan.Cameron@huawei.com>
  <CAFEAcA_DB=nNdiMRwn02mUAATKLvV0Nzs2dCYaM+2fwitac5sg@mail.gmail.com>
  <20230424164058.00000a3d@Huawei.com>
  <CAFEAcA_2JP=cM-SCGVhnhnP_6zYr748=A=G=Sh+BH+gkFmwnZA@mail.gmail.com>
-Organization: Huawei Technologies R&D (UK) Ltd.
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.122.247.231]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20230424225626.00001219@huawei.com>
+In-Reply-To: <20230424225626.00001219@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Apr 2023 09:28:44 +0100
+Message-ID: <CAFEAcA8QXcpkxdXMWP8X9tLem6K8qC3CwZ2-t-fqEpGR-nJBTg@mail.gmail.com>
+Subject: Re: [RFC] hw/arm/virt: Provide DT binding generation for PCI eXpander
+ Bridges
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: qemu-devel@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org, Fan Ni <fan.ni@samsung.com>, linuxarm@huawei.com, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,363 +120,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w32JeIM468Iq
+X-TUID: Qcl6YyEtIIF4
 
-On Mon, 24 Apr 2023 16:45:48 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+On Mon, 24 Apr 2023 at 22:56, Jonathan Cameron
+<Jonathan.Cameron@huawei.com> wrote:
+>
+> On Mon, 24 Apr 2023 16:45:48 +0100
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+> > On the other hand, having QEMU enumerate PCI devices is *also* a
+> > very different model from today, where we assume that the guest
+> > code is the one that is going to deal with enumerating PCI devices.
+> > To my mind one of the major advantages of PCI is exactly that it
+> > is entirely probeable and discoverable, so that there is no need
+> > for the dtb to include a lot of information that the kernel can
+> > find out for itself by directly asking the hardware...
+>
+> I absolutely agree that QEMU enumerating PCI seem silly level of complexity
+> to introduce. So easy route is to just use the bus numbers to partition
+> resources. We have those available without any complexity. It's not the
+> same as how it's done with ACPI, but then the alternatives are either
+> (though maybe they are closer).  Note current proposed algorithm may be
+> too simplistic (perhaps some alignment forcing should adjust the division
+> of the resources to start on round number addresses)
 
-> On Mon, 24 Apr 2023 at 16:41, Jonathan Cameron
-> <Jonathan.Cameron@huawei.com> wrote:
-> >
-> > On Mon, 24 Apr 2023 10:28:30 +0100
-> > Peter Maydell <peter.maydell@linaro.org> wrote:  
-> > > So, not knowing anything about CXL, my naive question is:
-> > > this is PCI, why can't we handle it the way we handle everything
-> > > else PCI, i.e. present the PCI controller in the DTB and it's
-> > > the guest kernel's job to probe, enumerate, etc whatever it wants ?  
-> >
-> > Absolutely the kernel will still do the enumeration.  But there's a problem
-> > - it won't always work, unless there is 'enough room'.
-> >
-> > If the aim is to do it in a similar fashion to how PCI Expander Bridges (PXB)
-> > are handled today with ACPI (we could look at doing something different of course)
-> >
-> > We have one set of memory windows for assigning PCI bars into etc. In the model
-> > used for PXB, that set of resources is shared between different host bridges
-> > including the main one (each one has separate DT description).
-> >
-> > So for virt, VIRT_PCIE_MMIO, VIRT_PCIE_IO, VIRT_PCIE_ECAM, VIRT_HIGH_PCIE_ECAM
-> > and VIRT_HIGH_PCIE_MMIO are split up between the host bridges.
-> > Each host bridge has it's own DT description.
-> >
-> > For ACPI, how to split up available memory windows up depends on the requirements
-> > of the PCIe devices below the host bridges.  For ACPI we 'know' the answer
-> > as to what is required at the point of creating the description because EDK2
-> > did the work for us.  For DT we currently don't.  What to do about that is the
-> > question this RFC tries to address.
-> >
-> > In theory we could change the kernel to support enumerating PXB instances, but
-> > that's a very different model from today where they are just 'standard'
-> > host bridges, using the generic bindings for ACPI (and after this patch for DT).  
-> 
-> On the other hand, having QEMU enumerate PCI devices is *also* a
-> very different model from today, where we assume that the guest
-> code is the one that is going to deal with enumerating PCI devices.
-> To my mind one of the major advantages of PCI is exactly that it
-> is entirely probeable and discoverable, so that there is no need
-> for the dtb to include a lot of information that the kernel can
-> find out for itself by directly asking the hardware...
+I think we definitely need to talk about this later this week,
+but my initial view is that if:
+ (1) the guest kernel can get the information it needs to do this
+     by probing the hardware
+ (2) doing it in QEMU gives you "this isn't a great allocation"
+     "we don't really have the info we need to do it optimally"
+     "this is more of a policy decision" effects
+     (which is what it's sounding like to me)
 
-I absolutely agree that QEMU enumerating PCI seem silly level of complexity
-to introduce. So easy route is to just use the bus numbers to partition
-resources. We have those available without any complexity. It's not the
-same as how it's done with ACPI, but then the alternatives are either
-(though maybe they are closer).  Note current proposed algorithm may be
-too simplistic (perhaps some alignment forcing should adjust the division
-of the resources to start on round number addresses)
+this is a really strong argument for "guest software should be
+doing this". DTB-booting kernels has always meant the kernel
+doing a lot of work that under ACPI/UEFI/x86-PC is typically
+done by firmware, and this seems similar to me.
 
-More complex route will be to push the whole problem to the kernel.
-I doubt we'll get any agreement to add this to the generic host
-bridge DT bindings given it's just to support QEMU specific host bridges
-which the kernel has previously had no knowledge of beyond as generic
-PCIe Host bridges. So we'd need QEMU to detect the presence of PXB
-instances then use a new DT compatible for the main host bridge
-and kick off a new type of host bridge discovery.
-Probably also need to modify EDK2 to recognize this, which will give
-us compatibility problems with existing ACPI usage (EDK2 is reading
-the DT bindings so kick off it's PCIe enumeration so this gets fiddly)
-May also have problems with the kernel having to do late discovery of
-host bridges (not tried it but sounds 'interesting'.)
-
-Anyhow, I promised some illustrative examples.
-
-For reference, here's one of my test configurations
-(slightly pathological as it exercises some of the heuristics in enumeration)
-
--+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
- |           +-01.0-[01]--
- |           +-02.0  Red Hat, Inc. Virtio block device
- |           +-03.0  Red Hat, Inc. Virtio network device
- |           +-04.0  Red Hat, Inc. QEMU PCIe Expander bridge
- |           \-05.0  Red Hat, Inc. QEMU PCIe Expander bridge
- +-[0000:0c]---00.0-[0d-0f]--+-00.0-[0e-0f]----00.0-[0f]----00.0  Red Hat, Inc. Virtio RNG
- |                           \-00.1  Red Hat, Inc. Virtio RNG
- \-[0000:30]---00.0-[31]----00.0  Red Hat, Inc. Virtio RNG
-
-It's somewhat easier to see the current ACPI results vs what this
-patch proposed for DT by looking at /proc/iomem than looking at the
-firmware descriptions themselves. /proc/iomem includes
-the firmware described host bridge windows and the PCI buses and devices
-enumerated below them (EDK2 enumerated for ACPI, Linux kernel for DT)
-There are some other subtle differences of how the memory is mapped, but
-hopefully you can see the relationship between what happens with ACPI
-(requiring enumeration) and the proposal in this RFC for DT which doesn't.
-
-Relevant chunks of /proc/iomem for ACPI for 32 bit region (64 bit one similar.)
-//FW described main HB
-10000000-103fffff : PCI Bus 0000:00
-  //Everything indented discovered by enumeration of PCI bus.
-  10000000-101fffff : PCI Bus 0000:01
-  10200000-1023ffff : 0000:00:03.0
-  10240000-10240fff : 0000:00:01.0
-  10241000-10241fff : 0000:00:02.0
-  10242000-10242fff : 0000:00:03.0
-//FW described. 1st PXB on bus 0xc
-//Key is start is defined as previous enumerated device end + some heuristic driven padding.
-10400000-10700fff : PCI Bus 0000:0c
-  10400000-105fffff : PCI Bus 0000:0d
-    10400000-10400fff : PCI Bus 0000:0e
-      10400000-10400fff : PCI Bus 0000:0f
-        10400000-10400fff : 0000:0f:00.0
-    10401000-10401fff : 0000:0d:00.1
-  10600000-10600fff : 0000:0c:00.0
-//FW described spare bit assigned to main HB
-10701000-107fffff : PCI Bus 0000:00
-//FW described. 2nd PXB on bus 0x30
-//Key is start is defined as previous enumerated device end + some heuristic driven padding.
-10800000-10a00fff : PCI Bus 0000:30
-  10800000-108fffff : PCI Bus 0000:31
-    10800000-10800fff : 0000:31:00.0
-  10900000-10900fff : 0000:30:00.0
-10a01000-3efeffff : PCI Bus 0000:00
-
-DT version of equivalent from this patch.  Mem split up based only bus numbers.
-//FW described.
-10000000-1233f3ff : pcie@10000000
-  //Everything indented is enumerated by the linux kernel
-  10000000-101fffff : PCI Bus 0000:01
-  10200000-1023ffff : 0000:00:03.0
-  10240000-10240fff : 0000:00:01.0
-  10241000-10241fff : 0000:00:02.0
-  10242000-10242fff : 0000:00:03.0
-//lots of space here
-
-//FW described 1st PXB - note way above end of previous enumerated region.
-1233f400-18cfcfff : pcie@1233f400
-  12340000-12340fff : 0001:0c:00.0
-  12400000-126fffff : PCI Bus 0001:0d
-    12400000-125fffff : PCI Bus 0001:0e
-      12400000-125fffff : PCI Bus 0001:0f
-        12400000-12400fff : 0001:0f:00.0
-  12600000-12600fff : 0001:0d:00.1
-//lots of space here..
-
-//FW described 2nd PXB - note way above en of previous enumerated region.
-18cfd000-3efeffff : pcie@18cfd000
-  18cfd000-18cfdfff : 0002:30:00.0
-  18d00000-18efffff : PCI Bus 0002:31
-    18d00000-18d00fff : 0002:31:00.0
-//lots of space here.
-
-
-Note the main bridge CRS and hence /proc/iomem entries have entries after
-the PXBs because QEMU provides the left over bits
-of the window, even though there is no easy way to use them. For the DT
-scheme they end up in the space for which ever PXB has the highest bus
-number.
-
-In this case we have masses of room in the DT scheme as all the devices
-have small bars. I have test cases that fail to have enough room
-but those are even worse to read and require hacks to the PCI test device
-driver.
-
-I'm not great at reading DT binary from sysfs so some dt version of this
-ripped from /proc/iomem above rather than directly
-
-//Only first entry of each _CRS type is actually useful.
-//In DT node: pcie@10000000
-Device (PCI0)
-{
-    Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
-    Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
-    Name (_SEG, Zero)  // _SEG: PCI Segment
-    Name (_BBN, Zero)  // _BBN: BIOS Bus Number
-...
-    Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-    {
-//Bus numbers 0 to B :
-// DT bus-range = [0, b]
-        WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
-            0x0000,             // Granularity
-            0x0000,             // Range Minimum
-            0x000B,             // Range Maximum
-            0x0000,             // Translation Offset
-            0x000C,             // Length
-            ,, )
-//First part to cover devices enumeratd + space from heuristics (bit of padding)
-// DT ranges first entry 10000000-1233f3ff : pcie@10000000
-        DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x00000000,         // Granularity
-            0x10000000,         // Range Minimum
-            0x103FFFFF,         // Range Maximum
-            0x00000000,         // Translation Offset
-            0x00400000,         // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//A hole from enumeration of the PXBs.  Doesn't exist in DT form...
-        DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x00000000,         // Granularity
-            0x10701000,         // Range Minimum
-            0x107FFFFF,         // Range Maximum
-            0x00000000,         // Translation Offset
-            0x000FF000,         // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//Left over above PXBs. Doesn't exist in DT form where we assign 'the rest' to
-//the PXB with the highest bus number.
-        DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x00000000,         // Granularity
-            0x10A01000,         // Range Minimum
-            0x3EFEFFFF,         // Range Maximum
-            0x00000000,         // Translation Offset
-            0x2E5EF000,         // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//First part to cover devices enumerated (+ space from heuristics)
-//I left whole range for IO on DT version.  Don't really care about this being available
-//for modern PCIe devices below PXBs anyway.
-        DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
-            0x00000000,         // Granularity
-            0x00000000,         // Range Minimum
-            0x00000FFF,         // Range Maximum
-            0x3EFF0000,         // Translation Offset
-            0x00001000,         // Length
-            ,, , TypeStatic, DenseTranslation)
-//Left over of original window - no used by anything
-        DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
-            0x00000000,         // Granularity
-            0x00003000,         // Range Minimum
-            0x0000FFFF,         // Range Maximum
-            0x3EFF0000,         // Translation Offset
-            0x0000D000,         // Length
-            ,, , TypeStatic, DenseTranslation)
-//First part to cover the devices enumerated.
-// DT proportional version: 8000000000-85ffffffff : pcie@10000000
-// Note that in this example all the devices have small BARs so with enumeration
-// they don't need as much space as I gave with DT version.
-        QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x0000000000000000, // Granularity
-            0x0000008000000000, // Range Minimum
-            0x00000080000FFFFF, // Range Maximum
-            0x0000000000000000, // Translation Offset
-            0x0000000000100000, // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//Left over of original window - not used by anything.
-        QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x0000000000000000, // Granularity
-            0x0000008000400000, // Range Minimum
-            0x000000FFFFFFFFFF, // Range Maximum
-            0x0000000000000000, // Translation Offset
-            0x0000007FFFC00000, // Length
-            ,, , AddressRangeMemory, TypeStatic)
-    })
-...
-
-Device (PC0C)
-{
-    Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
-    Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
-    Name (_BBN, 0x0C)  // _BBN: BIOS Bus Number
-    Name (_UID, 0x0C)  // _UID: Unique ID
-... 
-    Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-    {
-// IO space big enough for enumerated devices on first PXB
-// For DT I gave no IO space to PXBs for now.
-        DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
-            0x00000000,         // Granularity
-            0x00001000,         // Range Minimum
-            0x00001FFF,         // Range Maximum
-            0x3EFF0000,         // Translation Offset
-            0x00001000,         // Length
-            ,, , TypeStatic, DenseTranslation)
-//Lower mem region for enumerated devices on first PXB
-//DT : 1233f400-18cfcfff : pcie@1233f400
-        DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x00000000,         // Granularity
-            0x10400000,         // Range Minimum
-            0x10700FFF,         // Range Maximum
-            0x00000000,         // Translation Offset
-            0x00301000,         // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//High mem region for enumerated devices on first PXB
-//DT: 8600000000-97ffffffff : pcie@1233f400
-        QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x0000000000000000, // Granularity
-            0x0000008000100000, // Range Minimum
-            0x00000080002FFFFF, // Range Maximum
-            0x0000000000000000, // Translation Offset
-            0x0000000000200000, // Length
-            ,, , AddressRangeMemory, TypeStatic)
-//PXB covers bus numbers 0xc to 0xf
-        WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
-            0x0000,             // Granularity
-            0x000C,             // Range Minimum
-            0x000F,             // Range Maximum
-            0x0000,             // Translation Offset
-            0x0004,             // Length
-            ,, )
-    })
-Device (PC30)
-{
-    Name (_HID, "PNP0A08" /* PCI Express Bus */)  // _HID: Hardware ID
-    Name (_CID, "PNP0A03" /* PCI Bus */)  // _CID: Compatible ID
-    Name (_BBN, 0x30)  // _BBN: BIOS Bus Number
-    Name (_UID, 0x30)  // _UID: Unique ID
-    Name (_STR, Unicode ("pxb Device"))  // _STR: Description String
-    Name (_CCA, One)  // _CCA: Cache Coherency Attribute
-    Name (_PRT, Package (0x80)  // _PRT: PCI Routing Table
-    Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-    {
-//IO space for 2nd PXB - punched out of the main bus space.
-//DT: Again no IO space.
-        DWordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, EntireRange,
-            0x00000000,         // Granularity
-            0x00002000,         // Range Minimum
-            0x00002FFF,         // Range Maximum
-            0x3EFF0000,         // Translation Offset
-            0x00001000,         // Length
-            ,, , TypeStatic, DenseTranslation)
-//low mem space for 2nd PXB punched out of main host bridge space.
-// DT: 18cfd000-3efeffff : pcie@18cfd000
-        DWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x00000000,         // Granularity
-            0x10800000,         // Range Minimum
-            0x10A00FFF,         // Range Maximum
-            0x00000000,         // Translation Offset
-            0x00201000,         // Length
-            ,, , AddressRangeMemory, TypeStatic)#
-//high mem space for 2nd PXB punched out main host bridge space.
-// DT: 9800000000-ffffffffff : pcie@18cfd000
-        QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
-            0x0000000000000000, // Granularity
-            0x0000008000300000, // Range Minimum
-            0x00000080003FFFFF, // Range Maximum
-            0x0000000000000000, // Translation Offset
-            0x0000000000100000, // Length
-            ,, , AddressRangeMemory, TypeStatic)
-// Just 2 bus numbers (directly connected device)
-        WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
-            0x0000,             // Granularity
-            0x0030,             // Range Minimum
-            0x0031,             // Range Maximum
-            0x0000,             // Translation Offset
-            0x0002,             // Length
-            ,, )
-        })
-
-Maybe this mess will help illustrate the issues and approaches.
-
-I personally think the rough approach of this patch is most sensible.
-Don't enumerate the bus at all for DT case, just do partitioning based
-on bus numbers.  In corner cases that will mean the kernel enumeration
-fails when things would have worked with current ACPI / EDK2 dance
-to allow enumeration before the ACPI tables the kernel uses are written.
-
-Jonathan
-
-> 
-> thanks
-> -- PMM
-
+thanks
+-- PMM

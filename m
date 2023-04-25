@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3724955ejm;
-        Tue, 25 Apr 2023 12:52:38 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YRByAMAhtzcJF5ew9O6kVna06l10hJmeuuTb7DTi2KWGNVp6p4i7LIyAoIFBYqBLScJknZ
-X-Received: by 2002:a05:622a:1352:b0:3e4:635b:162f with SMTP id w18-20020a05622a135200b003e4635b162fmr31635117qtk.64.1682452358681;
-        Tue, 25 Apr 2023 12:52:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682452358; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3724960ejm;
+        Tue, 25 Apr 2023 12:52:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ546SZJacXLlASXBibsLta2xqJPwZt7PoPL2IuNpOBrWb+zAl4Mv57rhXMsC5gtMojH267j
+X-Received: by 2002:a05:6214:c64:b0:616:4d69:cc2b with SMTP id t4-20020a0562140c6400b006164d69cc2bmr6370882qvj.7.1682452359277;
+        Tue, 25 Apr 2023 12:52:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682452359; cv=none;
         d=google.com; s=arc-20160816;
-        b=jlcaDNSPkung0U/YNkiiWls0WM/8d8x9zP1QvynLllQmY38klK3xj5QO6z0Hwm1b3f
-         7J/GNHB0P5nvPQcHIe1SvuQ+dZyA1wQsC33HEk5LASI3v7zpqtvpjfVVN5f+QoraPmEx
-         isT5IfcdiCJ1DgkgJBBNSc1m/atGD+uOofc/6jTELKMVKImlMEH6Ra/t5Quz5r7FB4x0
-         O/Cgxs9rzzgQY5GiZL3Grgycxc8Mx+bUzLzajEGFJbjuPJOHFBUlpj/tD6Rr1w23YCk/
-         6ylyC8IX9u0kPzhDvBlnpP6d0LepM1CDdxvFTlSUgtDarMayIXtFfI+qLjMghkH2XfYa
-         7cZw==
+        b=jX2b0BMpLbC8H5e91RTNZI3o9wSl2adtfnrJo6vmjR2d00PLuLnYYRXdQhKzpZ5zIH
+         jWzOWA1BXJS+KcxeHuThPSmvOOfkDSlXeBtenamxPSps3V952fSAVC33tFSMxodh/Lnf
+         XgA4umuwpWvKrxgrWOH8iwg1wvycsUF/3eRtUKMHotnmrUfjAXeLtL1LYsmTrQOnp/ih
+         7NSAVtjrVnFH2iJrJf0QWISpsxbbyCbnzEhXM2HBO/cfOndxClZsvnfLIgahF95fTLEa
+         SFKbH4AgAcCl5vbc+cyjUkWUCa0ehzNrDCPuCdsVJdCFMK6aBghdvYP7V3fG/mjJkIsW
+         O2Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4sDcHMsV6UnaIVOp+Xo/707fzlwAwqK9fjYxSZbgJwQ=;
-        b=L6jamlkSUS5yVHxuKijIl/BIZJENkLtBpUBHT/EcmJD4aB5plS8WB1BZCbhlMKjvYx
-         NbhBKNaoAltdUGju+uR+waYfPwXHJXAOW7vULJBjLkHzAXTlxoEK+R6KAx4ulEwePJtg
-         Js+AzRXouR0iz3B9mbcB87I+nmm/GZbl3hSr3cbi5eMEFzyWpIH9quCL/9v9jLQkWIPw
-         Bb35K4pH+/SSvUGRnacA8ZvU7K8UsV6nVIblisNQRiAQDF9snxi9fitDJMHp7WjGFd8B
-         FfFXhN8ot56LvRKJqiq/lR2yN1J8VOyACyfJYhk0jc2d/wZdbBvkGnlWDi7LlCIQMuWN
-         IE2A==
+        bh=KTISKKo85DNTfZp4wzvl7urwXJJu/e57aqD8BfD1Ntg=;
+        b=dciXBsc/zxfaRZhQsTkXgdXsC8VcHXjzUbxyC7PMVshVZD8wR2HFi6ox99/ooMLjK/
+         cZ3uf4GblfJRDsyCrGMEPeGAylr7106f0Oe8n24fwWjgl8ANBkLiLwgLJduYTSj53mpX
+         0cHktOvN4zfG7Oi+YlGFD5t4QNST9X6u7mE4kN90RApR+84boD8arbA9Z2k57d7pwEBh
+         S1zfmYTmohePE2YVZhFYukR/HEb9fNc4WpDa3kmJKalY+dNnuIxEDop2vUyjA0gLFsoU
+         6pSNlbmJrNpKD3XtYOUDO0WaU2qtk6UjwAh9EOmcFNhZNhrJH5iZDldSOGOLxEHPs4Ah
+         f1Ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YbVrfL7u;
+       dkim=pass header.i=@linaro.org header.s=google header.b=msNiZHsQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z20-20020ac87f94000000b003e13a43920esi9556110qtj.143.2023.04.25.12.52.38
+        by mx.google.com with ESMTPS id pt13-20020a056214048d00b005df47f81d70si9394255qvb.234.2023.04.25.12.52.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 12:52:38 -0700 (PDT)
+        Tue, 25 Apr 2023 12:52:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YbVrfL7u;
+       dkim=pass header.i=@linaro.org header.s=google header.b=msNiZHsQ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1prOXm-0002c2-E1; Tue, 25 Apr 2023 15:41:42 -0400
+	id 1prOSA-0006In-5c; Tue, 25 Apr 2023 15:35:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1prOXk-0002ap-KN
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:41:40 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ id 1prORt-0005jf-MU
+ for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:35:39 -0400
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1prOXh-0007JL-Uy
- for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:41:40 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-4efe9a98736so3900988e87.1
- for <qemu-devel@nongnu.org>; Tue, 25 Apr 2023 12:41:37 -0700 (PDT)
+ id 1prORZ-0005Qb-GY
+ for qemu-devel@nongnu.org; Tue, 25 Apr 2023 15:35:35 -0400
+Received: by mail-lj1-x22d.google.com with SMTP id
+ 38308e7fff4ca-2a7ac8a2c8bso59541031fa.3
+ for <qemu-devel@nongnu.org>; Tue, 25 Apr 2023 12:35:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682451696; x=1685043696;
+ d=linaro.org; s=google; t=1682451316; x=1685043316;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4sDcHMsV6UnaIVOp+Xo/707fzlwAwqK9fjYxSZbgJwQ=;
- b=YbVrfL7u9UzIC2n0oYc6ToWMnFhl4tYFCdP7c1XMnZUa2dwRrH9Y7NjFw5uqDi9b0s
- 9jMFKrJYCBiM5e2X9BFkukePlpMFcT2LZPwLKvxKDfkriAvptsay0D06yKqeEW+GtdP/
- nuIioTiJBi/GLKrR1aSTV3L0+Ox+X4t859vp0dn8ckkSPxx6fanv4VcvMcr13TZ+Mvtj
- XwZCAr7oJucXTN5rTNmbkzUHQkix3C6Ytud9d9OcnEZUo5q2Ez7lCA4y3ZVL6QoJQZbn
- VCLkcVWiV3VO6dZeX310wwvPtdDvsCP793stlDDSSbPtQK2m6hbPqB8h4tvtR2Fg/TxK
- Rrbg==
+ bh=KTISKKo85DNTfZp4wzvl7urwXJJu/e57aqD8BfD1Ntg=;
+ b=msNiZHsQwkL3+7+U2Iq/8mJaLMFCrUEZnfnUJzrNxTtSiS0xbW8K6VYvLs8xR0VuRF
+ 93grbI7VA7sl2qJogZJ+lJMzM+Kii067MOTWpRexUY+3uhQGaB28ScEIc/YOBr1m7qMt
+ ODOPYAAyi4zWfjBfH9B1e0VOZymORCphdd6TndMXf2zZy9aZDMYFYS0ivSUMxmwNhMAu
+ Z7Tzx2N8uT4R57krGzya8eGs3LduQnGtKmwGmyGhtI2kLpryRJ9rCRx7lZHj7TCVEWn5
+ sbIDqCTvAV4XmEYVN+ny5xjcet6G6p1VFlf5Z8ARKLx+x4b3Zq1YjFKE/Yo+hN7IvDIY
+ O4oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682451696; x=1685043696;
+ d=1e100.net; s=20221208; t=1682451316; x=1685043316;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4sDcHMsV6UnaIVOp+Xo/707fzlwAwqK9fjYxSZbgJwQ=;
- b=kTTHdfzbd0gzV+lFMaJuEgxAQI52NE3d8yfYP4lKRnt2z0TPN+UoJVG8UnDbbbQQGC
- eudatMvILIPYq5cazzlMv1m7mA58RQ7yUoEhl97jt8EWccHQnkkSzjZD2AEYXUc+1s8v
- zX0dNpRUNLZMvhZa7NjI8kmVMmadhIwQiCvZ19+igSky+lBf6tqJ9iCrFyi744mei8/7
- pSnWpTU8FZwpfwoII8sPJqfcETauBp3OIa5o/UtFJOjvo2LtQtS6lu3r96WfyihO8X0S
- ICcLREEdyBZ7QhlR0Jm/gwzrl4EX7Enjx8AQiZHU0gJyOXuihrsJ6gUevL5dfV3C0mt3
- F2ug==
-X-Gm-Message-State: AAQBX9dMpzLQPibn5iLYYiuUwpjNlEXllplkZTYXdtTVywYwGEufrSar
- rNCZaOFLM3wU7No7eLFcvQeCVueCq5pkOmjIIL8kqg==
-X-Received: by 2002:ac2:5975:0:b0:4ed:d1d6:c595 with SMTP id
- h21-20020ac25975000000b004edd1d6c595mr4841448lfp.55.1682451696540; 
- Tue, 25 Apr 2023 12:41:36 -0700 (PDT)
+ bh=KTISKKo85DNTfZp4wzvl7urwXJJu/e57aqD8BfD1Ntg=;
+ b=IcEoX3F8JMVckJEr3e1e12Xu9iwXKkbuaok4ipLl1ndHj3j4RAG+3RQsXTXD+XPfC7
+ p0ugAVJtTQZrMzZ1S2iUUlFyDENX/COdN9uhmuKC2GBsM7ee6bPafWzDvatCUtBMxHxi
+ PTHB2zHI6518ICpxvjUvuz4yc1fZZOcfwJulrxyVebrIeZ2TpP5H/i9DvtuRDpOZJfBW
+ NZbn5jel0OAVdd8A6VLszKJzHR1M8iiTMcnh2skgOdIFhk0Zfb/w3RJIVt1oJrH7ML5y
+ /xZ1i9vCtTTB+YVqDmlz+8xHThVtzYRBTiTfpNEdvwNu+dU8x+ZB3zyHRxHFIndvZOF8
+ CKuA==
+X-Gm-Message-State: AAQBX9f052fnRatByK+IeNpyGIC3sri6sQ20wesiHqsvWTq8v432z8YF
+ MhBiZA3gJGbLunxcR8S4v+D2kojs70pO84HM2BpDqA==
+X-Received: by 2002:a2e:3216:0:b0:2a7:7ff7:9215 with SMTP id
+ y22-20020a2e3216000000b002a77ff79215mr3931707ljy.10.1682451315875; 
+ Tue, 25 Apr 2023 12:35:15 -0700 (PDT)
 Received: from stoup.. ([91.209.212.61]) by smtp.gmail.com with ESMTPSA id
- d8-20020ac25448000000b004ec55ac6cd1sm2175662lfn.136.2023.04.25.12.41.31
+ z23-20020a2e8857000000b002a8c271de33sm2160484ljj.67.2023.04.25.12.35.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Apr 2023 12:41:36 -0700 (PDT)
+ Tue, 25 Apr 2023 12:35:15 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
  qemu-ppc@nongnu.org, git@xen0n.name, jiaxun.yang@flygoat.com,
  philmd@linaro.org
-Subject: [PATCH v3 48/57] tcg/ppc: Use atom_and_align_for_opc
-Date: Tue, 25 Apr 2023 20:31:37 +0100
-Message-Id: <20230425193146.2106111-49-richard.henderson@linaro.org>
+Subject: [PATCH v3 37/57] tcg/loongarch64: Support softmmu unaligned accesses
+Date: Tue, 25 Apr 2023 20:31:26 +0100
+Message-Id: <20230425193146.2106111-38-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230425193146.2106111-1-richard.henderson@linaro.org>
 References: <20230425193146.2106111-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=richard.henderson@linaro.org; helo=mail-lf1-x134.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x22d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,41 +124,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C98blMcvcuZ8
+X-TUID: tasoyxL/KJuu
+
+Test the final byte of an unaligned access.
+Use BSTRINS.D to clear the range of bits, rather than AND.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/ppc/tcg-target.c.inc | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+ tcg/loongarch64/tcg-target.c.inc | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-index c799d7c52a..743a452981 100644
---- a/tcg/ppc/tcg-target.c.inc
-+++ b/tcg/ppc/tcg-target.c.inc
-@@ -2037,7 +2037,22 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
- {
-     TCGLabelQemuLdst *ldst = NULL;
-     MemOp opc = get_memop(oi);
--    unsigned a_bits = get_alignment_bits(opc);
-+    MemOp a_bits, atom_a, atom_u;
-+
-+    /*
-+     * Book II, Section 1.4, Single-Copy Atomicity, specifies:
-+     *
-+     * Before 3.0, "An access that is not atomic is performed as a set of
-+     * smaller disjoint atomic accesses. In general, the number and alignment
-+     * of these accesses are implementation-dependent."  Thus MO_ATOM_IFALIGN.
-+     *
-+     * As of 3.0, "the non-atomic access is performed as described in
-+     * the corresponding list", which matches MO_ATOM_SUBALIGN.
-+     */
-+    a_bits = atom_and_align_for_opc(s, &atom_a, &atom_u, opc,
-+                                    have_isa_3_00 ? MO_ATOM_SUBALIGN
-+                                                  : MO_ATOM_IFALIGN,
-+                                    false);
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index ccc13ffdb4..20cb21b264 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -848,7 +848,6 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+     int fast_ofs = TLB_MASK_TABLE_OFS(mem_index);
+     int mask_ofs = fast_ofs + offsetof(CPUTLBDescFast, mask);
+     int table_ofs = fast_ofs + offsetof(CPUTLBDescFast, table);
+-    tcg_target_long compare_mask;
  
- #ifdef CONFIG_SOFTMMU
-     int mem_index = get_mmuidx(oi);
+     ldst = new_ldst_label(s);
+     ldst->is_ld = is_ld;
+@@ -872,14 +871,20 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+     tcg_out_ld(s, TCG_TYPE_PTR, TCG_REG_TMP2, TCG_REG_TMP2,
+                offsetof(CPUTLBEntry, addend));
+ 
+-    /* We don't support unaligned accesses.  */
++    /*
++     * For aligned accesses, we check the first byte and include the alignment
++     * bits within the address.  For unaligned access, we check that we don't
++     * cross pages using the address of the last byte of the access.
++     */
+     if (a_bits < s_bits) {
+-        a_bits = s_bits;
++        unsigned a_mask = (1u << a_bits) - 1;
++        unsigned s_mask = (1u << s_bits) - 1;
++        tcg_out_addi(s, TCG_TYPE_TL, TCG_REG_TMP1, addr_reg, s_mask - a_mask);
++    } else {
++        tcg_out_mov(s, TCG_TYPE_TL, TCG_REG_TMP1, addr_reg);
+     }
+-    /* Clear the non-page, non-alignment bits from the address.  */
+-    compare_mask = (tcg_target_long)TARGET_PAGE_MASK | ((1 << a_bits) - 1);
+-    tcg_out_movi(s, TCG_TYPE_TL, TCG_REG_TMP1, compare_mask);
+-    tcg_out_opc_and(s, TCG_REG_TMP1, TCG_REG_TMP1, addr_reg);
++    tcg_out_opc_bstrins_d(s, TCG_REG_TMP1, TCG_REG_ZERO,
++                          a_bits, TARGET_PAGE_BITS - 1);
+ 
+     /* Compare masked address with the TLB entry.  */
+     ldst->label_ptr[0] = s->code_ptr;
 -- 
 2.34.1
 

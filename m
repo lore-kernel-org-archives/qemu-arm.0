@@ -1,118 +1,99 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp53225ejm;
-        Tue, 25 Apr 2023 16:49:19 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Z/ax+cS+aQxz0vh/Wrvy8myhYK/YLuO/MyuV3cB02TnHZAkGfj9HhA9YAem2Sz44jQNPLE
-X-Received: by 2002:a05:622a:19aa:b0:3ef:3126:a056 with SMTP id u42-20020a05622a19aa00b003ef3126a056mr31474484qtc.19.1682466558712;
-        Tue, 25 Apr 2023 16:49:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682466558; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp76547ejm;
+        Tue, 25 Apr 2023 17:46:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Hw76bCTw0MzLW2g2t8xJxIk0yACqbr2UcMEV5VwlxEijTXSh3f9vKv4EO50bRI4BTNhWv
+X-Received: by 2002:a05:6214:27cc:b0:5ac:d562:4ea8 with SMTP id ge12-20020a05621427cc00b005acd5624ea8mr1189762qvb.9.1682469998872;
+        Tue, 25 Apr 2023 17:46:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682469998; cv=none;
         d=google.com; s=arc-20160816;
-        b=B+n8j/2TNTv/icZ7OdYAYWJyysHgUGaxkd72gNPDiA/z44sfpEx8mPXKBpm6xutED7
-         wbUANFItWAtZ70sxStpOzMYKhcDrC/B3LzFrTa8bMUh7ev4GYCaVIAWD4Xu8bZVfJJ4U
-         zmxkxeZ3mxkAXqowXs2x5nFudN6RoQoML4OtPD2dqLCmvpfNFj4NUQexQRNgQQ40gmDf
-         6hbW9ffh5MpKf3VQCGUwQtb5YaxrD3MwOqu931pxlFMvfl3qe+foA2UXaVNBpTUyo8O7
-         2mHn7ZoCOKErkxIfKMbjP89jCAeGmwq3ormuNWeQdzj5xSaUz6ENHXf0074gPBOHMy8D
-         GJ6A==
+        b=z2H7Ck71Dfq+UxSOrjbUCvPHbWHIl4blo4J7Bw2gSVrXoVKJ6umLPkh+nq+6exJbTQ
+         THpMOQawjvQQNgTMGgXaeMivX/jxmh3rEfZjE3nM8m/PaJEYyWXcnfe+SlhcA0JAsgPH
+         UI8PcvxLE/muwagyjvtJCdE2Es0yfyjja+/7MpnIcc/qIGA3nuOwwojug66LzCzSuZpm
+         CYijoEFSAxO7U4r4CKpqwqmvwkdOkL/XjUFfOgjraGVOTwmZPfAmgmIkKWxr1aBR8N08
+         PXceYiq/7xdow5g4WWTuXrv/0DuE56gPtRcZ/v0KpOCf6NPbOsuhlKVEzbyoysBK9KIa
+         LK8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=uaYFvHm29BBfEQDertdXYpsZcLpIFUD9q62gMhoLdOc=;
-        b=ireXuRSBr/f2fEZFLOxILHosfsrxmwuDEPIDDz1HOxlH//gSErQp1jMOmzrajNiBks
-         OWB6rMANwuaNJWTE1QBXDw2UCnPGx23AdoZ7ilLmn23/I5jmzQy5PaP+oLxQWGI+HqgM
-         dwjrOzR159w6xGaQY9XZI/4SJJY4fT+XyMTzG3l8cSbY7tw4ihGtEWCbw2BwBDhAfyfy
-         J/fE97DtiJGpYYDF3PX0HdOL63go7eWkfzguVouFfSlY7X+NKt6eiRzEuG2B3BHJy8nU
-         VDVK5i5xhv6UIT639ZaCd3lzVQALPF0VfA+4X6FAnIBoAHV5m406xEmKXlhUhWXy/hLt
-         OGeg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=77Z2ibmgfB4wKefrIx7hh514NxV+1V8numrP2mabcmg=;
+        b=c0VmtUHqHyLjpHijtFvNfBItyhDbW9MnL9vUzcRUfT1YMoS27XaT7A0kIECZEhVk7N
+         P7Yq3sgpuLzhALCV0sC9Pd/spV2ojI6BVl0vMnEpB7/ik423PQqQT564c4sHEX06yhfj
+         R9OnGz4cri1ChtoH1ZdZqBb62Wue4PiAeRG/YO2Hm0phK5+QR+r8/ai2FL7hjx+AB3Lh
+         2Pw69TKiaFNtHMPD9NZLc77evtsYS5BVCrbtFiGQGsKwv6qtpbizPc7cZ/bkoQl+wYOl
+         Qn8GVnLIHWJCQGvU+Y7eW3IFuM9LATTVYBxiFHZ5b1vKDNO1mcyz81Dy7BQEXa8QteGu
+         sDOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=YxkzhQmU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2-20020ac85bc2000000b003ef44a256e0si9701831qtb.530.2023.04.25.16.49.18
+        by mx.google.com with ESMTPS id c4-20020ad45ae4000000b00615a7876d46si3213375qvh.499.2023.04.25.17.46.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Apr 2023 16:49:18 -0700 (PDT)
+        Tue, 25 Apr 2023 17:46:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20221208 header.b=YxkzhQmU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1prSOn-0000xL-8X; Tue, 25 Apr 2023 19:48:41 -0400
+	id 1prTIU-0006QN-MI; Tue, 25 Apr 2023 20:46:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1prSOl-0000wT-DS; Tue, 25 Apr 2023 19:48:39 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1prSOj-0005n2-JI; Tue, 25 Apr 2023 19:48:39 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-5055141a8fdso9403971a12.3; 
- Tue, 25 Apr 2023 16:48:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1682466515; x=1685058515;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:from:to:cc:subject:date:message-id:reply-to;
- bh=uaYFvHm29BBfEQDertdXYpsZcLpIFUD9q62gMhoLdOc=;
- b=YxkzhQmU1t+Ge2MwWM/dxdV+kIp0isvAwkwYusySyApMBY5McjyU2+5gaOeoLRYr1F
- Vo/G7hlfJxHPGZnEkOyMRLZOp63FFrMBsL1SkgK3NUWWJns/gSGgsXrvHUshd2k90Ybg
- NBUgv1jOV96xW4xRig3Z/euBfmY2NzFL5y5mMmsjEkrRrs0kzuL6Xt2JxW0o+/kTIBIn
- WAO3oSWLY0+vU3C3lc1SkGU8/8SV5eLEoXD1IFkvV3MDyfF3cEP9Mfs5YU7poC9Q3jF4
- UyL+UmfMNCcDC6wCMLCfE1LC53cw7dCH9g9Ue0KbabzQNc+HDehoZBJmhOwS+4PR+f8o
- w2Vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682466515; x=1685058515;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :sender:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uaYFvHm29BBfEQDertdXYpsZcLpIFUD9q62gMhoLdOc=;
- b=NeKMQa8POt0RXaNPXUk8KIyEAzNBj0L9unbegoON6QuKNvfFXdBTojq6RD8tWrY3MB
- Xap99523UQLt7oTOWNXTdl9tbcTmo6RJAbMZxHvPVfCToymovN89LWXZIbpLe5QFJaid
- AvZN4gmCFYNXCZT7luXp6+xC8tDpgcAjHY1DM6zi9DUDwpK2EfF3PpKLv4o9oJqTTNB8
- ESxL7CQ2AmhspO/MM1lmbNsFpKJi52xVbtoUqRgy/DSIS0F4XsV3kDDxvAjpQYlEjkM3
- aW9elVUu3x4fBssLTlNQ7IV5qrQ1w9UNB40cYTjhzNyheEfNcad3LIqeiljrU7/+p3wz
- zc+w==
-X-Gm-Message-State: AAQBX9f4eeQoXodwWsbRTzi51Fep581GRO5fDlZtGj3PHR1d+CNAgydY
- DtJUFYw5fv9vHnO9ESdVg5k=
-X-Received: by 2002:aa7:c051:0:b0:506:741e:5c1b with SMTP id
- k17-20020aa7c051000000b00506741e5c1bmr15257211edo.12.1682466514960; 
- Tue, 25 Apr 2023 16:48:34 -0700 (PDT)
-Received: from [192.168.2.129] ([195.167.132.10])
- by smtp.gmail.com with ESMTPSA id
- w27-20020a17090633db00b0094ed0370f8fsm7480771eja.147.2023.04.25.16.48.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Apr 2023 16:48:34 -0700 (PDT)
-Message-ID: <46ffc696-cd15-e881-7901-d07b32ece684@amsat.org>
-Date: Wed, 26 Apr 2023 00:48:33 +0100
+ (Exim 4.90_1) (envelope-from <gaosong@loongson.cn>)
+ id 1prTIB-0005dz-11; Tue, 25 Apr 2023 20:45:55 -0400
+Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <gaosong@loongson.cn>)
+ id 1prTI8-00072u-Ql; Tue, 25 Apr 2023 20:45:54 -0400
+Received: from loongson.cn (unknown [10.20.42.57])
+ by gateway (Coremail) with SMTP id _____8Dxi+o2dEhkBscAAA--.1321S3;
+ Wed, 26 Apr 2023 08:45:42 +0800 (CST)
+Received: from [10.20.42.57] (unknown [10.20.42.57])
+ by localhost.localdomain (Coremail) with SMTP id
+ AQAAf8Bx27I2dEhkwsk7AA--.15370S3; 
+ Wed, 26 Apr 2023 08:45:42 +0800 (CST)
+Subject: Re: [PATCH v3 08/57] target/loongarch: Do not include tcg-ldst.h
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, git@xen0n.name, jiaxun.yang@flygoat.com,
+ philmd@linaro.org
+References: <20230425193146.2106111-1-richard.henderson@linaro.org>
+ <20230425193146.2106111-9-richard.henderson@linaro.org>
+From: Song Gao <gaosong@loongson.cn>
+Message-ID: <9bb6ea50-7bb3-36e6-8e56-3ab49b9e0e0f@loongson.cn>
+Date: Wed, 26 Apr 2023 08:45:42 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH v2] hw/net: npcm7xx_emc: set MAC in register space
-Content-Language: en-US
-To: Patrick Venture <venture@google.com>, hskinnemoen@google.com,
- kfting@nuvoton.com, peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, jasowang@redhat.com,
- Hao Wu <wuhaotsh@google.com>
-References: <20221003173810.1933849-1-venture@google.com>
-In-Reply-To: <20221003173810.1933849-1-venture@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <20230425193146.2106111-9-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-1.422,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Language: en-US
+X-CM-TRANSID: AQAAf8Bx27I2dEhkwsk7AA--.15370S3
+X-CM-SenderInfo: 5jdr20tqj6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29K
+ BjDU0xBIdaVrnRJUUUv0b4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26c
+ xKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vE
+ j48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Jr0_JF4l84ACjcxK6xIIjxv20xvEc7CjxV
+ AFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv67AKxVW8JVWxJwA2z4x0Y4vEx4A2jsIEc7CjxVAF
+ wI0_Gr0_Gr1UM2AIxVAIcxkEcVAq07x20xvEncxIr21l57IF6xkI12xvs2x26I8E6xACxx
+ 1l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv
+ 67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41lc7I2V7IY0VAS07
+ AlzVAYIcxG8wCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02
+ F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GF
+ ylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7Cj
+ xVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r
+ 1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7IU1CP
+ fJUUUUU==
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=gaosong@loongson.cn;
+ helo=loongson.cn
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, MIME_CHARSET_FARAWAY=2.45,
+ NICE_REPLY_A=-1.422, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,112 +107,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-From:  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EUfqW00ncgES
+X-TUID: RI56zF34Inp/
 
-Hi,
 
-On 3/10/22 19:38, Patrick Venture wrote:
-> The MAC address set from Qemu wasn't being saved into the register space.
-> 
-> Reviewed-by: Hao Wu <wuhaotsh@google.com>
-> Signed-off-by: Patrick Venture <venture@google.com>
+‘⁄ 2023/4/26 …œŒÁ3:30, Richard Henderson –¥µ¿:
+> This header is supposed to be private to tcg and in fact
+> does not need to be included here at all.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> v2: only set the registers from qemu on reset
->      once registers set, only read and write to them
-> ---
->   hw/net/npcm7xx_emc.c | 30 +++++++++++++++++++++++-------
->   1 file changed, 23 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
-> index 7c86bb52e5..a33f8c7b23 100644
-> --- a/hw/net/npcm7xx_emc.c
-> +++ b/hw/net/npcm7xx_emc.c
-> @@ -112,6 +112,16 @@ static void emc_reset(NPCM7xxEMCState *emc)
->   
->       emc->tx_active = false;
->       emc->rx_active = false;
-> +
-> +    /* Set the MAC address in the register space. */
-> +    uint32_t value = (emc->conf.macaddr.a[0] << 24) |
-> +        (emc->conf.macaddr.a[1] << 16) |
-> +        (emc->conf.macaddr.a[2] << 8) |
-> +        emc->conf.macaddr.a[3];
+>   target/loongarch/csr_helper.c   | 1 -
+>   target/loongarch/iocsr_helper.c | 1 -
+>   2 files changed, 2 deletions(-)
+Reviewed-by: Song Gao <gaosong@loongson.cn>
 
-Per QEMU Coding style:
+Thanks.
+Song Gao
 
-   Mixed declarations (interleaving statements and declarations
-   within blocks) are generally not allowed; declarations should
-   be at the beginning of blocks.
-
-https://qemu-project.gitlab.io/qemu/devel/style.html#declarations
-
-> +    emc->regs[REG_CAMM_BASE] = value;
-
-Alternatively:
-
-   emc->regs[REG_CAMM_BASE] = ldl_be_p(s->conf.macaddr.a);
-   emc->regs[REG_CAML_BASE] = lduw_be_p(s->conf.macaddr.a + 4);
-
-> +
-> +    value = (emc->conf.macaddr.a[4] << 24) | (emc->conf.macaddr.a[5] << 16);
-> +    emc->regs[REG_CAML_BASE] = value;
->   }
->   
->   static void npcm7xx_emc_reset(DeviceState *dev)
-> @@ -432,13 +442,25 @@ static bool emc_receive_filter1(NPCM7xxEMCState *emc, const uint8_t *buf,
->           }
->       case ETH_PKT_UCAST: {
->           bool matches;
-> +        uint32_t value;
-> +        struct MACAddr mac;
->           if (emc->regs[REG_CAMCMR] & REG_CAMCMR_AUP) {
->               return true;
->           }
-> +
-> +        value = emc->regs[REG_CAMM_BASE];
-> +        mac.a[0] = value >> 24;
-> +        mac.a[1] = value >> 16;
-> +        mac.a[2] = value >> 8;
-> +        mac.a[3] = value >> 0;
-> +        value = emc->regs[REG_CAML_BASE];
-> +        mac.a[4] = value >> 24;
-> +        mac.a[5] = value >> 16;
-
-Similarly:
-
-   stl_be_p(mac.a, emc->regs[REG_CAMM_BASE]);
-   stw_be_p(mac.a + 4, emc->regs[REG_CAML_BASE]);
-
->           matches = ((emc->regs[REG_CAMCMR] & REG_CAMCMR_ECMP) &&
->                      /* We only support one CAM register, CAM0. */
->                      (emc->regs[REG_CAMEN] & (1 << 0)) &&
-> -                   memcmp(buf, emc->conf.macaddr.a, ETH_ALEN) == 0);
-> +                   memcmp(buf, mac.a, ETH_ALEN) == 0);
->           if (emc->regs[REG_CAMCMR] & REG_CAMCMR_CCAM) {
->               *fail_reason = "MACADDR matched, comparison complemented";
->               return !matches;
-> @@ -661,15 +683,9 @@ static void npcm7xx_emc_write(void *opaque, hwaddr offset,
->           break;
->       case REG_CAMM_BASE + 0:
->           emc->regs[reg] = value;
-> -        emc->conf.macaddr.a[0] = value >> 24;
-> -        emc->conf.macaddr.a[1] = value >> 16;
-> -        emc->conf.macaddr.a[2] = value >> 8;
-> -        emc->conf.macaddr.a[3] = value >> 0;
->           break;
->       case REG_CAML_BASE + 0:
->           emc->regs[reg] = value;
-> -        emc->conf.macaddr.a[4] = value >> 24;
-> -        emc->conf.macaddr.a[5] = value >> 16;
->           break;
->       case REG_MCMDR: {
->           uint32_t prev;
-
-Reviewed-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
-
-(original patch: 
-https://lore.kernel.org/qemu-devel/20221003173810.1933849-1-venture@google.com/)

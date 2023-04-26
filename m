@@ -1,193 +1,152 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp266393ejm;
-        Wed, 26 Apr 2023 01:49:19 -0700 (PDT)
-X-Google-Smtp-Source: AKy350YDL+jhK4OprCaYS4j0Ed/WpG8+mRBd0GPG2KIwa5YCDnjQITq54PswxJILZ0x1EBnLb+0G
-X-Received: by 2002:a5d:4fcd:0:b0:2d7:d4b:b33 with SMTP id h13-20020a5d4fcd000000b002d70d4b0b33mr14825925wrw.21.1682498959632;
-        Wed, 26 Apr 2023 01:49:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682498959; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp557072ejm;
+        Wed, 26 Apr 2023 09:57:31 -0700 (PDT)
+X-Google-Smtp-Source: AKy350bPNmw7E0qJ75lFLNimQZCzk6NU2n60zS5QUZRr2zJOnkvtOhJW0Txw8UmCKRT6w5kMeuBj
+X-Received: by 2002:a05:622a:1194:b0:3ea:9720:7194 with SMTP id m20-20020a05622a119400b003ea97207194mr36512342qtk.56.1682528250906;
+        Wed, 26 Apr 2023 09:57:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682528250; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJ2dSM23VudmPfGME/CeV/BjnZeWSBYN4R9nFCinekg1o0572LcNrYw0ciObdGandA
-         QnBb39b90MLl8XugGGRoriTuApG9mMnOITLRfKRZlxgL+Ngej1lJd3CprO2dX27p9LdJ
-         XpJi3GQS8Jbazxsn8HWE6Acae/vd3edpctijP1TiH+/T/oh88jOByGBX8gl4WhDf1CLh
-         mccR4eN8jpKsu+2gk1ROlCTha3cgitWjzzzN/lyE6UvrYkJCq9wER3GZAcfM345e4rLG
-         dcpnMtAxnR2JoDjehuWfwZfZirMEQgX2J/v24L+dy7kWlwEE4K8cU+qvJtCE5pA50DPI
-         4Dug==
+        b=gnz9ANl1LEpL1b7VaMsFIVeLTx0uMDWlvlBVy7hKk7PqtSEB/kvbcg1/9ovjkTaKWH
+         RMZBJGlO7j6imcyWmMcVDMYy0Hu6UHi5z0HrgBf896pPSXUiNnwNCKO4dQpnyodJKRcZ
+         P0z2Z3Lyy5LLdQPkF6a+cl+6vpcjxucVCdoigxyoBwb2K8r2owwuBQSVzLhqMEzfv97K
+         OeAku00JPkejHlMDmgETJglphfM1Um3BAISJy/tbKjiaN0kvJGQno4uptgYZQXF07PR7
+         99Waobu7DS30Dd/a3E+AgrcIjVWjAqUGWGPOtvMuebKNnxt9ib4RADhvSkc7/bKLV3GG
+         tZAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=QzaTlj7aaKqMOtoDFQwtRqe+WfbslHGv7qaI4vH121Q=;
-        b=RjGv8MF+LeNmFXBPpgjRqKS02P8jDT4Id5ZRSbFZ/Gw8C0MIJ77vpVANKQ8nPypT5P
-         fWJBBruC9oy/+BFA4EaDlEa0UDFrhNALkvyr+MpxCHCOCjHzkFDTlvaPn4yD6gqIixgk
-         PwfU0rnY40Xl9Yqr269hnuoDC0g1uRJ8Ah8oNJY5U2hu62OlZF7n3s5bhj6XZGkebxT3
-         +wf8iQzQK2bK6wrOgjZmoF+UjRGagD3ljFIHbNv+Z7cZmdHqkE4fm5K9VDZ0AmV743jO
-         /zL1+zq4JDNCf/sL7Qj7vXYgPXC0rQjOZEBYMZysNlAAJoa96UWQDLrcWiNtV0ZHE52e
-         hUrA==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=zGOswAm8g1CnvfxlN9wZw/r/yPEMsU79SmgdM6hStRI=;
+        b=yGvAvGATuFBA2+Rcv9HukIqN/ZCQyjI7BRHW7o7wQ7y1lLsv5d7LDLO10kjFTtQQLt
+         2+Os/nWdw7ShCAAnlgE8BUVdfjkIDkQUaVggXU8Tt2UnM9wdcJ37PV2S/Km9i9Zkhg0S
+         69Vr62BYWwrbSy0WzIP0pRlCt4c2S/tvuDG2qOniz+2+uh+3brqab735lFDJ0KlidcUV
+         tKqE9V8VaSF1lQsDNXpgTzW2iLI0GZn7fatXJdZjtVFZSEXp6CvstYCunn20Khfwm9cl
+         8y7gQuT980k3qzHNlSGUWLASeHFbAXBS8egdD4TU6SkxxVLEDzAISIdxiH9PBWw+tN4h
+         H2Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="f/hhWTNG";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <mark.cave-ayland@ilande.co.uk>
-Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
-        by mx.google.com with ESMTPS id s17-20020adfecd1000000b002f23dbf6923si9379835wro.490.2023.04.26.01.49.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 01:49:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bl35-20020a05620a1aa300b0074a28c33df9si11061088qkb.618.2023.04.26.09.57.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 26 Apr 2023 09:57:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b="f/hhWTNG";
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QzaTlj7aaKqMOtoDFQwtRqe+WfbslHGv7qaI4vH121Q=; b=f/hhWTNGPhi/SkTcWy/9HrrfCc
-	Umevjt1l0MUeGra4lN7B2fpA+PfbvilSy/NDRBvbyar/gjd90LNBZp8qmZRuRJXGK6piMG41ZrLbH
-	ZkCK5crdL+chheMwekDpac2vZyoUsEap+KpxHT2ZDTvSIdGFbJBsGWvozczbVKKUspvTyGNIvrSYb
-	cpFbyuzMHmlvj2dvAyB344GarAAKem0Pq9GenxX0WCr9vCkWenkWPOdK+8gIVWrL25kkKAY9ZHAEa
-	ytHWnV/bijeAzUrGvLp515mC/Ch50k3tUfwGfR8Ct2sEBXNIsVZkw3py42XgUSnrbViuHr4+BHqZH
-	i0qxh+2BLcxyL8t5bS1g2VFMBnOuhRi4ecHWHpux3u8Aqj3z/yf4mxfFUdl0cfZ9asVOfYq7BAdCI
-	QhLPkLJhjNou49JRzo+g6hQPsyZOxbVnVi6ZpI/YbMUghjLKjd68dDkgBizYjRSsdIDW9Rjw6V0rp
-	GWVR/EXmlmwEgGDeA2YhAOIKYyW2XFEDTIP4Dn7GQBoJqw0o5FrKuQ7RBESQ8luvGFjbvNtmookUb
-	OQWvEuBHEOLMbrMZLUGNBTaLM3/mMyP2rxDoKqtL1DfO31PGpex8g8o0W6NEXdR0ExjZi1IMV9oMF
-	LlY0f0ccoRsg+9BQ7pI7XOp/govtsbqlsDZBuiU6A=;
-Received: from host81-151-114-25.range81-151.btcentralplus.com ([81.151.114.25] helo=[10.8.0.6])
-	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1praof-0000p5-Sf; Wed, 26 Apr 2023 09:48:01 +0100
-Message-ID: <495a50b5-e8fe-a3b6-1f25-c8b7e94f658c@ilande.co.uk>
-Date: Wed, 26 Apr 2023 09:48:48 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1priSI-0002ki-RE; Wed, 26 Apr 2023 12:57:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1priSI-0002kX-DC; Wed, 26 Apr 2023 12:57:22 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1priSF-0003aN-Ry; Wed, 26 Apr 2023 12:57:22 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Q64ly71kkz6DBV1;
+ Thu, 27 Apr 2023 00:57:02 +0800 (CST)
+Received: from localhost (10.195.35.167) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 26 Apr
+ 2023 17:57:05 +0100
+Date: Wed, 26 Apr 2023 17:57:04 +0100
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, "Michael S . Tsirkin" <mst@redhat.com>,
+ <qemu-arm@nongnu.org>, Fan Ni <fan.ni@samsung.com>, <linuxarm@huawei.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [RFC] hw/arm/virt: Provide DT binding generation for PCI
+ eXpander Bridges
+Message-ID: <20230426175704.00007985@Huawei.com>
+In-Reply-To: <CAFEAcA8FCZkU12hmkGX+N5Cokbakm1T8RJkCgO_JHT1ZsbVmxg@mail.gmail.com>
+References: <20230421165037.2506-1-Jonathan.Cameron@huawei.com>
+ <CAFEAcA_DB=nNdiMRwn02mUAATKLvV0Nzs2dCYaM+2fwitac5sg@mail.gmail.com>
+ <20230424164058.00000a3d@Huawei.com>
+ <CAFEAcA_2JP=cM-SCGVhnhnP_6zYr748=A=G=Sh+BH+gkFmwnZA@mail.gmail.com>
+ <20230424225626.00001219@huawei.com>
+ <CAFEAcA8QXcpkxdXMWP8X9tLem6K8qC3CwZ2-t-fqEpGR-nJBTg@mail.gmail.com>
+ <20230425183713.000054c3@huawei.com>
+ <CAFEAcA8FCZkU12hmkGX+N5Cokbakm1T8RJkCgO_JHT1ZsbVmxg@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Peter Maydell <peter.maydell@linaro.org>, Juan Quintela
- <quintela@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Leif Lindholm <quic_llindhol@quicinc.com>,
- Markus Armbruster <armbru@redhat.com>, Radoslaw Biernacki
- <rad@semihalf.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- David Hildenbrand <david@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-s390x@nongnu.org,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, qemu-arm@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>, Ilya Leoshkevich <iii@linux.ibm.com>
-References: <20230424092249.58552-1-alex.bennee@linaro.org>
- <20230424092249.58552-18-alex.bennee@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230424092249.58552-18-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 81.151.114.25
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
-	mail.default.ilande.bv.iomart.io
-X-Spam-Level: 
-X-Spam-Status: No, score=-2.8 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	URIBL_BLOCKED,URIBL_SBL_A autolearn=no autolearn_force=no version=3.4.2
-Subject: Re: [PATCH 17/18] docs/devel: mention the spacing requirement for QOM
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-X-TUID: dH3K2z6r3vyZ
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.195.35.167]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TMsIq7VpZjjS
 
-On 24/04/2023 10:22, Alex Bennée wrote:
+On Tue, 25 Apr 2023 21:15:25 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> We have a more complete document on QOM but we should at least mention
-> the style requirements in the style guide.
+> On Tue, 25 Apr 2023 at 18:37, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> > We could explore only solving the problem for pxb-cxl for now.
+> > However, we would still be talking infrastructure in kernel only
+> > to support emulated CXL devices and I can see that being
+> > controversial. A normal CXL host bridge is not something
+> > we can enumerate.  
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
-> Message-Id: <20230420155723.1711048-9-alex.bennee@linaro.org>
+> Hmm, so what is real hardware doing that our emulation is not?
+
+For real hardware, the host bridges would not typically share
+the various windows.  Various options, but most likely they
+would be in different PCI segments, with separate ECAM space,
+and separate space into which the BARs would be mapped.
+That separation would be needed as the Physical Address
+routing in the host would need to direct the reads and
+writes to the correct bit of hardware and that tends to
+be done with very simple address decoders on the appropriate
+interconnects - those internal routing tables are normally
+effectively fixed for a given system.  We could add another
+full host bridge to arm-virt.  That would require separate
+emulation as I don't think we can reuse the pxb-cxl stuff.
+
+The PXB approach is to ignore the normal restrictions on
+routing being fairly fixed, by building a fixed configuration
+before the OS sees it - allowing different host bridges to use
+different parts of a single region.  Arguably very early
+boot firmware could do that with a physical system but it
+would involve some nasty impdef programming of address decoder
+logic.  This would be similar to what firmware does to
+change the routing dependent on whether it finds a 2 socket
+confirmation or a 4 socket configuration in servers. Want
+entity would do this is implementation defined - may well
+be before any application processor boots.
+
+Jonathan
+
 > 
-> ---
-> vppr:
->    - use Mark's formulation, briefly mention property separation.
-> ---
->   docs/devel/qom.rst   |  2 ++
->   docs/devel/style.rst | 40 ++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 42 insertions(+)
-> 
-> diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-> index 3e34b07c98..c9237950d0 100644
-> --- a/docs/devel/qom.rst
-> +++ b/docs/devel/qom.rst
-> @@ -1,3 +1,5 @@
-> +.. _qom:
-> +
->   ===========================
->   The QEMU Object Model (QOM)
->   ===========================
-> diff --git a/docs/devel/style.rst b/docs/devel/style.rst
-> index 5bc6f2f095..e9fce0fc69 100644
-> --- a/docs/devel/style.rst
-> +++ b/docs/devel/style.rst
-> @@ -628,6 +628,46 @@ are still some caveats to beware of
->   QEMU Specific Idioms
->   ********************
->   
-> +QEMU Object Model Declarations
-> +==============================
-> +
-> +QEMU Object Model Declarations
-> +==============================
+> -- PMM
 
-Accidental repetition here :)
-
-> +The QEMU Object Model (QOM) provides a framework for handling objects
-> +in the base C language. The first declaration of a storage or class
-> +structure should always be the parent and leave a visual space between
-> +that declaration and the new code. It is also useful to separate
-> +backing for properties (options driven by the user) and internal state
-> +to make navigation easier.
-> +
-> +For a storage structure the first declaration should always be called
-> +"parent_obj" and for a class structure the first member should always
-> +be called "parent_class" as below:
-> +
-> +.. code-block:: c
-> +
-> +    struct MyDeviceState {
-> +        DeviceState parent_obj;
-> +
-> +        /* Properties */
-> +        int prop_a;
-> +        char *prop_b;
-> +        /* Other stuff */
-> +        int internal_state;
-> +    };
-> +
-> +    struct MyDeviceClass {
-> +        DeviceClass parent_class;
-> +
-> +        void (*new_fn1)(void);
-> +        bool (*new_fn2)(CPUState *);
-> +    };
-> +
-> +Note that there is no need to provide typedefs for QOM structures
-> +since these are generated automatically by the QOM declaration macros.
-> +See :ref:`qom` for more details.
-> +
->   Error handling and reporting
->   ============================
-
-Otherwise:
-
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.

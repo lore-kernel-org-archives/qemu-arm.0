@@ -1,286 +1,261 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h3-20020a5d5043000000b002c70ce264bfsm18785046wrt.76.2023.04.27.08.45.13
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp604353ejm;
+        Thu, 27 Apr 2023 11:41:19 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5PGIwnpqVWQobFLNZ7FfpVNbrTOdZfTApVgzlYqorwIFuenaGKon6O+IJEsPSF6X0dula1
+X-Received: by 2002:ac8:5886:0:b0:3ef:2ce7:7f5f with SMTP id t6-20020ac85886000000b003ef2ce77f5fmr4275371qta.18.1682620878709;
+        Thu, 27 Apr 2023 11:41:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682620878; cv=none;
+        d=google.com; s=arc-20160816;
+        b=faxXtE2zVxkTOKtSigpQ91VQVTTu6jD6/VLxUsfISI16b3UwVfwfe96Ol4y+pw+Q8z
+         nZASaZBg57i2rgwGlkpq8vUcWX4IciYgHMX/9AzUkvnZAt95RfHhE7K0gQrcm2rZmE8r
+         U8DOs+/Fq9BUc23lbgKqQUJ8aA64t+TtAHjgXiRLR0YZ/3KGtKsokmpM9wT4KFJPfdMD
+         /CP7ipjwk8hzXz1H7xKSDavc7kN26ZiClxhw9vMpojeLgYCCyo3UJDC3wGYNG3wQuDUr
+         yCLhWKC92naZQOxCzgJ3BdemFCYFwFbmmSYl23MnH3WLPwFlaXuIVx+hktoGALph60/F
+         gRoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Fd5Ug5ZILzQtJxf/iMUPyrZegtwcSGD6L/iLxtkDwYI=;
+        b=scpg01PWa6M/yTPhNxJJ7vFKZvMwHF5wGKsQzUEe6b4EmIjJVa99KY1HIOxeh01kfd
+         YaeApb88SV4qWp3T279FacFTtnt0ZM5hfpkWwyH4gl35ixbZ6oUr62CiV0N1MShMlQL6
+         +VHRdivyOy6OqjkYlLs08equcPN1bskkNDj0l9+BqACZNA3Pxo4pd9JTjfaCu2IuXx4t
+         2v4qjau8MnuP627Wj3TiWfsxaE6AIekg9xFixs96/fHzjuSY35VDLokSxnXLlUhwvBBp
+         glDCr4v+b4gA/BvlhPlxfNrr39JFDP1WwRF9rE/QoS7iO1JVbfH//kN3DT9foYfDtXUw
+         OxfA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="X6S/OXXo";
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id p23-20020a05620a22f700b0074e264d466bsi12080987qki.294.2023.04.27.11.41.18
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Apr 2023 08:45:16 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1AB4B1FFBA;
-	Thu, 27 Apr 2023 16:45:12 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Thu, 27 Apr 2023 11:41:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="X6S/OXXo";
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1682620878;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Fd5Ug5ZILzQtJxf/iMUPyrZegtwcSGD6L/iLxtkDwYI=;
+	b=X6S/OXXo+rqjkH1QlCkgxgBwQ3qb9BbfFIj8tLgJeDjK6Pgn+L+eivESnL6s4n6cFgVQ7x
+	25uGtKiXqbq6U2rXtKjDmgTpzyIrOPQfRDaNGAswZd8KBMgZaW2zUsp8hv/HJvkteCN6BD
+	uLSv5LKHiQtFYtp6yRgruh//FiifTow=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-96-CFp-TQO1MfK7IEeYPj6-oA-1; Thu, 27 Apr 2023 14:41:17 -0400
+X-MC-Unique: CFp-TQO1MfK7IEeYPj6-oA-1
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-3f195129aa4so45765815e9.2
+        for <alex.bennee@linaro.org>; Thu, 27 Apr 2023 11:41:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1682620876; x=1685212876;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Fd5Ug5ZILzQtJxf/iMUPyrZegtwcSGD6L/iLxtkDwYI=;
+        b=JmkZdbQTgALet+Jt13zXQDixdBFvcJw7k4uSQliKuwLXSn8bROpw4b5QRh0K4ZYVsn
+         JjaPbPrRUaw4UTngbJi/DFeZ0BxoCGFf/BcOgWDwAyAKRD7jyYR2TGThYiGdEemSATzB
+         8lrktMYQjmEUYOs9R/9x41VyNTvU17kHBBqqFcgqTpE7VybXPyuR/6O04DkaPbqIYUH9
+         0Vd2Jjox+hNOLSiIRSgQuAbUMyStZDx6dQ/weqOGaRxuefeXXlb8FywyGdbUcMZQTsAp
+         jvGMYn9QTc6xeXE2c0NYnnpmt10TeCODDOwCP3PaMWHehf3dll6e4XFhew9psy0/ZINC
+         POow==
+X-Gm-Message-State: AC+VfDwZu5O8OkZhvpE2OWMrWpuQGS5IIoGTNkUqRuWreVKwLGRaA1a+
+	3+A6NRJq3ltycfqkrJVh5VrYostbXz/SMwy7bD3uRJfMHzPxxy5yXfpoLevFO2voEgRfeAnKWxi
+	hgeLM4PMXnpDSA2gw
+X-Received: by 2002:adf:ce09:0:b0:2fe:c0ea:18a8 with SMTP id p9-20020adfce09000000b002fec0ea18a8mr2037738wrn.49.1682620875870;
+        Thu, 27 Apr 2023 11:41:15 -0700 (PDT)
+X-Received: by 2002:adf:ce09:0:b0:2fe:c0ea:18a8 with SMTP id p9-20020adfce09000000b002fec0ea18a8mr2037724wrn.49.1682620875545;
+        Thu, 27 Apr 2023 11:41:15 -0700 (PDT)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2.52.19.183])
+        by smtp.gmail.com with ESMTPSA id o12-20020a5d474c000000b002f4c2ea66absm19204927wrs.85.2023.04.27.11.41.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Apr 2023 11:41:15 -0700 (PDT)
+Date: Thu, 27 Apr 2023 14:41:10 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
-	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
-Subject: [PULL 13/18] tests/tcg: limit the scope of the plugin tests
-Date: Thu, 27 Apr 2023 16:45:05 +0100
-Message-Id: <20230427154510.1791273-14-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230427154510.1791273-1-alex.bennee@linaro.org>
-References: <20230427154510.1791273-1-alex.bennee@linaro.org>
+	Claudio Fontana <cfontana@suse.de>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>,
+	Juan Quintela <quintela@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH v11 08/13] tests/qtest: Fix tests when no KVM or TCG are
+ present
+Message-ID: <20230427144055-mutt-send-email-mst@kernel.org>
+References: <20230426180013.14814-1-farosas@suse.de>
+ <20230426180013.14814-9-farosas@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: tUJ4CJ17M9xA
+In-Reply-To: <20230426180013.14814-9-farosas@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-TUID: QiIqDblbpx3X
 
-Running every plugin with every test is getting excessive as well as
-not really improving coverage that much. Restrict the plugin tests to
-just the MULTIARCH_TESTS which are shared between most architecture
-for both system and user-mode. For those that aren't we need to squash
-MULTIARCH_TESTS so we don't add them when they are not part of the
-TESTS global.
+On Wed, Apr 26, 2023 at 03:00:08PM -0300, Fabiano Rosas wrote:
+> It is possible to have a build with both TCG and KVM disabled due to
+> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
+> host.
+> 
+> If we build with --disable-tcg on the aarch64 host, we will end-up
+> with a QEMU binary (x86) that does not support TCG nor KVM.
+> 
+> Skip tests that crash or hang in the above scenario. Do not include
+> any test cases if TCG and KVM are missing.
+> 
+> Make sure that calls to qtest_has_accel are placed after g_test_init
+> in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
+> printed before other messages") to avoid TAP parsing errors.
+> 
+> Reviewed-by: Juan Quintela <quintela@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230424092249.58552-14-alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 8318caf924..72876cc84e 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -152,13 +152,17 @@ PLUGINS=$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c)))
- 
- # We need to ensure expand the run-plugin-TEST-with-PLUGIN
- # pre-requistes manually here as we can't use stems to handle it. We
--# also add some special helpers the run-plugin- rules can use bellow.
-+# only expand MULTIARCH_TESTS which are common on most of our targets
-+# to avoid an exponential explosion as new tests are added. We also
-+# add some special helpers the run-plugin- rules can use bellow.
- 
-+ifneq ($(MULTIARCH_TESTS),)
- $(foreach p,$(PLUGINS), \
--	$(foreach t,$(TESTS),\
-+	$(foreach t,$(MULTIARCH_TESTS),\
- 		$(eval run-plugin-$(t)-with-$(p): $t $p) \
- 		$(eval RUN_TESTS+=run-plugin-$(t)-with-$(p))))
--endif
-+endif # MULTIARCH_TESTS
-+endif # CONFIG_PLUGIN
- 
- strip-plugin = $(wordlist 1, 1, $(subst -with-, ,$1))
- extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index df9747bae8..b74a2534e3 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -81,6 +81,4 @@ pauth-3:
- 	$(call skip-test, "BUILD of $@", "missing compiler support")
- run-pauth-3:
- 	$(call skip-test, "RUN of pauth-3", "not built")
--run-plugin-pauth-3-with-%:
--	$(call skip-test, "RUN of pauth-3 ($*)", "not built")
- endif
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 9e91a20b0d..0315795487 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -32,7 +32,6 @@ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
- pauth-%: CFLAGS += -march=armv8.3-a
- run-pauth-%: QEMU_OPTS += -cpu max
--run-plugin-pauth-%: QEMU_OPTS += -cpu max
- endif
- 
- # BTI Tests
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 7df88ddea8..8b546e2aa3 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -23,4 +23,6 @@ LDFLAGS+=-nostdlib -N -static
- test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0 -mfloat-abi=soft
- 
- run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
--run-plugin-test-armv6m-undef-%: QEMU_OPTS+=-semihosting -M microbit -kernel
-+
-+# We don't currently support the multiarch system tests
-+undefine MULTIARCH_TESTS
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index b3b1504a1c..0038cef02c 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -46,11 +46,6 @@ semihosting-arm: semihosting.c
- run-semihosting-arm: semihosting-arm
- 	$(call run-test,$<,$(QEMU) $< 2> $<.err)
- 
--run-plugin-semihosting-arm-with-%:
--	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
--		 $(call strip-plugin,$<) 2> $<.err)
--
- ARM_TESTS += semiconsole-arm
- 
- semiconsole: CFLAGS += -mthumb
-@@ -62,9 +57,6 @@ semiconsole-arm: semihosting.c
- run-semiconsole-arm: semiconsole-arm
- 	$(call skip-test, $<, "MANUAL ONLY")
- 
--run-plugin-semiconsole-arm-with-%:
--	$(call skip-test, $<, "MANUAL ONLY")
--
- endif
- 
- ARM_TESTS += commpage
-diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
-index 372287bd03..43587d2769 100644
---- a/tests/tcg/cris/Makefile.target
-+++ b/tests/tcg/cris/Makefile.target
-@@ -57,3 +57,6 @@ SIMG:=cris-axis-linux-gnu-run
- # e.g.: make -f ../../tests/tcg/Makefile run-check_orm-on-sim
- run-%-on-sim:
- 	$(call run-test, $<, $(SIMG) $<)
-+
-+# We don't currently support the multiarch tests
-+undefine MULTIARCH_TESTS
-diff --git a/tests/tcg/hppa/Makefile.target b/tests/tcg/hppa/Makefile.target
-index b78e6b4849..cdd0d572a7 100644
---- a/tests/tcg/hppa/Makefile.target
-+++ b/tests/tcg/hppa/Makefile.target
-@@ -10,8 +10,6 @@ EXTRA_RUNS+=run-test-mmap-4096 # run-test-mmap-16384 run-test-mmap-65536
- # it requires the full vdso with dwarf2 unwind info.
- run-signals: signals
- 	$(call skip-test, $<, "BROKEN awaiting vdso support")
--run-plugin-signals-with-%:
--	$(call skip-test, $<, "BROKEN awaiting vdso support")
- 
- VPATH += $(SRC_PATH)/tests/tcg/hppa
- TESTS += stby
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index bafd8c2180..821822ed0c 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -18,19 +18,15 @@ X86_64_TESTS:=$(filter test-i386-adcox test-i386-bmi2 $(SKIP_I386_TESTS), $(ALL_
- 
- test-i386-sse-exceptions: CFLAGS += -msse4.1 -mfpmath=sse
- run-test-i386-sse-exceptions: QEMU_OPTS += -cpu max
--run-plugin-test-i386-sse-exceptions-%: QEMU_OPTS += -cpu max
- 
- test-i386-pcmpistri: CFLAGS += -msse4.2
- run-test-i386-pcmpistri: QEMU_OPTS += -cpu max
--run-plugin-test-i386-pcmpistri-%: QEMU_OPTS += -cpu max
- 
- test-i386-bmi2: CFLAGS=-O2
- run-test-i386-bmi2: QEMU_OPTS += -cpu max
--run-plugin-test-i386-bmi2-%: QEMU_OPTS += -cpu max
- 
- test-i386-adcox: CFLAGS=-O2
- run-test-i386-adcox: QEMU_OPTS += -cpu max
--run-plugin-test-i386-adcox-%: QEMU_OPTS += -cpu max
- 
- #
- # hello-i386 is a barebones app
-@@ -52,8 +48,6 @@ test-i386:
- 	$(call skip-test, "BUILD of $@", "missing -no-pie compiler support")
- run-test-i386:
- 	$(call skip-test, "RUN of test-i386", "not built")
--run-plugin-test-i386-with-%:
--	$(call skip-test, "RUN of test-i386 ($*)", "not built")
- endif
- 
- ifeq ($(SPEED), slow)
-@@ -87,7 +81,6 @@ sha512-sse: sha512.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-sha512-sse: QEMU_OPTS+=-cpu max
--run-plugin-sha512-sse-with-%: QEMU_OPTS+=-cpu max
- 
- TESTS+=sha512-sse
- 
-@@ -103,15 +96,12 @@ test-avx.h: test-avx.py x86.csv
- 
- test-3dnow: CFLAGS += -masm=intel -O -I.
- run-test-3dnow: QEMU_OPTS += -cpu max
--run-plugin-test-3dnow: QEMU_OPTS += -cpu max
- test-3dnow: test-3dnow.h
- 
- test-mmx: CFLAGS += -masm=intel -O -I.
- run-test-mmx: QEMU_OPTS += -cpu max
--run-plugin-test-mmx: QEMU_OPTS += -cpu max
- test-mmx: test-mmx.h
- 
- test-avx: CFLAGS += -mavx -masm=intel -O -I.
- run-test-avx: QEMU_OPTS += -cpu max
--run-plugin-test-avx: QEMU_OPTS += -cpu max
- test-avx: test-avx.h
-diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
-index f081f1c683..6d47d3cae6 100644
---- a/tests/tcg/ppc64/Makefile.target
-+++ b/tests/tcg/ppc64/Makefile.target
-@@ -24,14 +24,12 @@ PPC64_TESTS += byte_reverse sha512-vector
- endif
- byte_reverse: CFLAGS += -mcpu=power10
- run-byte_reverse: QEMU_OPTS+=-cpu POWER10
--run-plugin-byte_reverse-with-%: QEMU_OPTS+=-cpu POWER10
- 
- sha512-vector: CFLAGS +=-mcpu=power10 -O3
- sha512-vector: sha512.c
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
- 
- run-sha512-vector: QEMU_OPTS+=-cpu POWER10
--run-plugin-sha512-vector-with-%: QEMU_OPTS+=-cpu POWER10
- 
- PPC64_TESTS += signal_save_restore_xer
- PPC64_TESTS += xxspltw
-diff --git a/tests/tcg/riscv64/Makefile.softmmu-target b/tests/tcg/riscv64/Makefile.softmmu-target
-index e22cdb34c5..d5b126e5f1 100644
---- a/tests/tcg/riscv64/Makefile.softmmu-target
-+++ b/tests/tcg/riscv64/Makefile.softmmu-target
-@@ -19,3 +19,6 @@ QEMU_OPTS += -M virt -display none -semihosting -device loader,file=
- EXTRA_RUNS += run-issue1060
- run-issue1060: issue1060
- 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS)$<)
-+
-+# We don't currently support the multiarch system tests
-+undefine MULTIARCH_TESTS
-diff --git a/tests/tcg/riscv64/Makefile.target b/tests/tcg/riscv64/Makefile.target
-index cc3ed65ffd..9973ba3b5f 100644
---- a/tests/tcg/riscv64/Makefile.target
-+++ b/tests/tcg/riscv64/Makefile.target
-@@ -9,4 +9,3 @@ TESTS += noexec
- TESTS += test-noc
- test-noc: LDFLAGS = -nostdlib -static
- run-test-noc: QEMU_OPTS += -cpu rv64,c=false
--run-plugin-test-noc-%: QEMU_OPTS += -cpu rv64,c=false
-diff --git a/tests/tcg/s390x/Makefile.softmmu-target b/tests/tcg/s390x/Makefile.softmmu-target
-index 3e7f72abcd..192315dd20 100644
---- a/tests/tcg/s390x/Makefile.softmmu-target
-+++ b/tests/tcg/s390x/Makefile.softmmu-target
-@@ -23,3 +23,6 @@ include $(S390X_SRC)/pgm-specification.mak
- $(PGM_SPECIFICATION_TESTS): pgm-specification-softmmu.o
- $(PGM_SPECIFICATION_TESTS): LDFLAGS+=pgm-specification-softmmu.o
- TESTS += $(PGM_SPECIFICATION_TESTS)
-+
-+# We don't currently support the multiarch system tests
-+undefine MULTIARCH_TESTS
-diff --git a/tests/tcg/tricore/Makefile.softmmu-target b/tests/tcg/tricore/Makefile.softmmu-target
-index b3cd56fffc..49e573bc3b 100644
---- a/tests/tcg/tricore/Makefile.softmmu-target
-+++ b/tests/tcg/tricore/Makefile.softmmu-target
-@@ -29,3 +29,6 @@ QEMU_OPTS += -M tricore_testboard -cpu tc27x -nographic -kernel
- 
- %.tst: %.o
- 	$(LD) $(LDFLAGS) $< -o $@
-+
-+# We don't currently support the multiarch system tests
-+undefine MULTIARCH_TESTS
-diff --git a/tests/tcg/xtensa/Makefile.softmmu-target b/tests/tcg/xtensa/Makefile.softmmu-target
-index ba6cd9fde3..78bf72dfaa 100644
---- a/tests/tcg/xtensa/Makefile.softmmu-target
-+++ b/tests/tcg/xtensa/Makefile.softmmu-target
-@@ -41,3 +41,6 @@ $(XTENSA_USABLE_TESTS): linker.ld macros.inc $(CRT) Makefile.softmmu-target
- 	$(CC) $(XTENSA_INC) $(ASFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) $(NOSTDFLAGS) $(CRT)
- 
- endif
-+
-+# We don't currently support the multiarch system tests
-+undefine MULTIARCH_TESTS
--- 
-2.39.2
+makes sense to me
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+> ---
+>  tests/qtest/bios-tables-test.c | 11 +++++++++--
+>  tests/qtest/boot-serial-test.c |  5 +++++
+>  tests/qtest/migration-test.c   |  9 ++++++++-
+>  tests/qtest/pxe-test.c         |  8 +++++++-
+>  tests/qtest/vmgenid-test.c     |  9 +++++++--
+>  5 files changed, 36 insertions(+), 6 deletions(-)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 464f87382e..7fd88b0e9c 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -2045,8 +2045,7 @@ static void test_acpi_virt_oem_fields(void)
+>  int main(int argc, char *argv[])
+>  {
+>      const char *arch = qtest_get_arch();
+> -    const bool has_kvm = qtest_has_accel("kvm");
+> -    const bool has_tcg = qtest_has_accel("tcg");
+> +    bool has_kvm, has_tcg;
+>      char *v_env = getenv("V");
+>      int ret;
+>  
+> @@ -2056,6 +2055,14 @@ int main(int argc, char *argv[])
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> +    has_kvm = qtest_has_accel("kvm");
+> +    has_tcg = qtest_has_accel("tcg");
+> +
+> +    if (!has_tcg && !has_kvm) {
+> +        g_test_skip("No KVM or TCG accelerator available");
+> +        return 0;
+> +    }
+> +
+>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>          ret = boot_sector_init(disk);
+>          if (ret) {
+> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+> index 3aef3a97a9..6dd06aeaf4 100644
+> --- a/tests/qtest/boot-serial-test.c
+> +++ b/tests/qtest/boot-serial-test.c
+> @@ -287,6 +287,11 @@ int main(int argc, char *argv[])
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No KVM or TCG accelerator available");
+> +        return 0;
+> +    }
+> +
+>      for (i = 0; tests[i].arch != NULL; i++) {
+>          if (g_str_equal(arch, tests[i].arch) &&
+>              qtest_has_machine(tests[i].machine)) {
+> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
+> index 60dd53d3ec..be73ec3c06 100644
+> --- a/tests/qtest/migration-test.c
+> +++ b/tests/qtest/migration-test.c
+> @@ -2477,7 +2477,7 @@ static bool kvm_dirty_ring_supported(void)
+>  
+>  int main(int argc, char **argv)
+>  {
+> -    bool has_kvm;
+> +    bool has_kvm, has_tcg;
+>      bool has_uffd;
+>      const char *arch;
+>      g_autoptr(GError) err = NULL;
+> @@ -2486,6 +2486,13 @@ int main(int argc, char **argv)
+>      g_test_init(&argc, &argv, NULL);
+>  
+>      has_kvm = qtest_has_accel("kvm");
+> +    has_tcg = qtest_has_accel("tcg");
+> +
+> +    if (!has_tcg && !has_kvm) {
+> +        g_test_skip("No KVM or TCG accelerator available");
+> +        return 0;
+> +    }
+> +
+>      has_uffd = ufd_version_check();
+>      arch = qtest_get_arch();
+>  
+> diff --git a/tests/qtest/pxe-test.c b/tests/qtest/pxe-test.c
+> index 62b6eef464..e4b48225a5 100644
+> --- a/tests/qtest/pxe-test.c
+> +++ b/tests/qtest/pxe-test.c
+> @@ -131,11 +131,17 @@ int main(int argc, char *argv[])
+>      int ret;
+>      const char *arch = qtest_get_arch();
+>  
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No KVM or TCG accelerator available");
+> +        return 0;
+> +    }
+> +
+>      ret = boot_sector_init(disk);
+>      if(ret)
+>          return ret;
+>  
+> -    g_test_init(&argc, &argv, NULL);
+>  
+>      if (strcmp(arch, "i386") == 0 || strcmp(arch, "x86_64") == 0) {
+>          test_batch(x86_tests, false);
+> diff --git a/tests/qtest/vmgenid-test.c b/tests/qtest/vmgenid-test.c
+> index efba76e716..324db08c7a 100644
+> --- a/tests/qtest/vmgenid-test.c
+> +++ b/tests/qtest/vmgenid-test.c
+> @@ -165,13 +165,18 @@ int main(int argc, char **argv)
+>  {
+>      int ret;
+>  
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No KVM or TCG accelerator available");
+> +        return 0;
+> +    }
+> +
+>      ret = boot_sector_init(disk);
+>      if (ret) {
+>          return ret;
+>      }
+>  
+> -    g_test_init(&argc, &argv, NULL);
+> -
+>      qtest_add_func("/vmgenid/vmgenid/set-guid",
+>                     vmgenid_set_guid_test);
+>      qtest_add_func("/vmgenid/vmgenid/set-guid-auto",
+> -- 
+> 2.35.3

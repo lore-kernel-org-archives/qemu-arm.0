@@ -1,134 +1,286 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c10-20020a7bc2aa000000b003f080b2f9f4sm24820201wmk.27.2023.04.27.08.45.12
+        by smtp.gmail.com with ESMTPSA id h3-20020a5d5043000000b002c70ce264bfsm18785046wrt.76.2023.04.27.08.45.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Apr 2023 08:45:12 -0700 (PDT)
+        Thu, 27 Apr 2023 08:45:16 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9696D1FFB8;
-	Thu, 27 Apr 2023 16:45:11 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 1AB4B1FFBA;
+	Thu, 27 Apr 2023 16:45:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: richard.henderson@linaro.org,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Joel Stanley <joel@jms.id.au>,
-	Cleber Rosa <crosa@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	qemu-arm@nongnu.org (open list:ASPEED BMCs)
-Subject: [PULL 09/18] tests/avocado/machine_aspeed: Fix the broken ast2[56]00_evb_sdk tests
-Date: Thu, 27 Apr 2023 16:45:01 +0100
-Message-Id: <20230427154510.1791273-10-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs),
+	qemu-s390x@nongnu.org (open list:S390 TCG CPUs)
+Subject: [PULL 13/18] tests/tcg: limit the scope of the plugin tests
+Date: Thu, 27 Apr 2023 16:45:05 +0100
+Message-Id: <20230427154510.1791273-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230427154510.1791273-1-alex.bennee@linaro.org>
 References: <20230427154510.1791273-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: oB0coPI4UwDz
+X-TUID: tUJ4CJ17M9xA
 
-From: Thomas Huth <thuth@redhat.com>
+Running every plugin with every test is getting excessive as well as
+not really improving coverage that much. Restrict the plugin tests to
+just the MULTIARCH_TESTS which are shared between most architecture
+for both system and user-mode. For those that aren't we need to squash
+MULTIARCH_TESTS so we don't add them when they are not part of the
+TESTS global.
 
-test_arm_ast2500_evb_sdk and test_arm_ast2600_evb_sdk are currently
-failing. The problem is that they are trying to look for the login
-prompt that does not have a newline at the end - but the logic in
-_console_interaction() only handles full lines. It used to work by
-accident in the past since there were sometimes kernel (warning and
-error) messages popping up that finally provided a newline character
-in the output, but since the tests have been changed to run with the
-"quiet" kernel parameter, this is not working anymore.
-
-To make this work reliably, we must not look for the "login:" prompt,
-but have to use some text ending with a newline instead. And in the
-ast2600 test, switch to ssh instead of trying to log into the serial
-console - this works much more reliable and also has the benefit of
-excercising the network interface here a little bit, too.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Message-Id: <20230421110345.1294131-3-thuth@redhat.com>
-[AJB: remove stray debug log]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230424092249.58552-10-alex.bennee@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230424092249.58552-14-alex.bennee@linaro.org>
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index 2b532c4834..724ee72c02 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -10,6 +10,7 @@
- import tempfile
- import subprocess
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 8318caf924..72876cc84e 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -152,13 +152,17 @@ PLUGINS=$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c)))
  
-+from avocado_qemu import LinuxSSHMixIn
- from avocado_qemu import QemuSystemTest
- from avocado_qemu import wait_for_console_pattern
- from avocado_qemu import exec_command
-@@ -268,7 +269,7 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+ # We need to ensure expand the run-plugin-TEST-with-PLUGIN
+ # pre-requistes manually here as we can't use stems to handle it. We
+-# also add some special helpers the run-plugin- rules can use bellow.
++# only expand MULTIARCH_TESTS which are common on most of our targets
++# to avoid an exponential explosion as new tests are added. We also
++# add some special helpers the run-plugin- rules can use bellow.
  
-         self.do_test_arm_aspeed_buildroot_poweroff()
++ifneq ($(MULTIARCH_TESTS),)
+ $(foreach p,$(PLUGINS), \
+-	$(foreach t,$(TESTS),\
++	$(foreach t,$(MULTIARCH_TESTS),\
+ 		$(eval run-plugin-$(t)-with-$(p): $t $p) \
+ 		$(eval RUN_TESTS+=run-plugin-$(t)-with-$(p))))
+-endif
++endif # MULTIARCH_TESTS
++endif # CONFIG_PLUGIN
  
--class AST2x00MachineSDK(QemuSystemTest):
-+class AST2x00MachineSDK(QemuSystemTest, LinuxSSHMixIn):
+ strip-plugin = $(wordlist 1, 1, $(subst -with-, ,$1))
+ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index df9747bae8..b74a2534e3 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -81,6 +81,4 @@ pauth-3:
+ 	$(call skip-test, "BUILD of $@", "missing compiler support")
+ run-pauth-3:
+ 	$(call skip-test, "RUN of pauth-3", "not built")
+-run-plugin-pauth-3-with-%:
+-	$(call skip-test, "RUN of pauth-3 ($*)", "not built")
+ endif
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 9e91a20b0d..0315795487 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -32,7 +32,6 @@ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
+ pauth-%: CFLAGS += -march=armv8.3-a
+ run-pauth-%: QEMU_OPTS += -cpu max
+-run-plugin-pauth-%: QEMU_OPTS += -cpu max
+ endif
  
-     EXTRA_BOOTARGS = (
-         'quiet '
-@@ -295,7 +296,7 @@ def do_test_arm_aspeed_sdk_start(self, image):
-         self.require_netdev('user')
-         self.vm.set_console()
-         self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
--                         '-net', 'nic', '-net', 'user')
-+                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
-         self.vm.launch()
+ # BTI Tests
+diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
+index 7df88ddea8..8b546e2aa3 100644
+--- a/tests/tcg/arm/Makefile.softmmu-target
++++ b/tests/tcg/arm/Makefile.softmmu-target
+@@ -23,4 +23,6 @@ LDFLAGS+=-nostdlib -N -static
+ test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0 -mfloat-abi=soft
  
-         self.wait_for_console_pattern('U-Boot 2019.04')
-@@ -323,7 +324,7 @@ def test_arm_ast2500_evb_sdk(self):
- 
-         self.do_test_arm_aspeed_sdk_start(
-             self.workdir + '/ast2500-default/image-bmc')
--        self.wait_for_console_pattern('ast2500-default login:')
-+        self.wait_for_console_pattern('nodistro.0 ast2500-default ttyS4')
- 
-     @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
-     def test_arm_ast2600_evb_sdk(self):
-@@ -345,22 +346,25 @@ def test_arm_ast2600_evb_sdk(self):
-                          'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
-         self.do_test_arm_aspeed_sdk_start(
-             self.workdir + '/ast2600-default/image-bmc')
--        self.wait_for_console_pattern('ast2600-default login:')
--        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
--        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-default:~#')
-+        self.wait_for_console_pattern('nodistro.0 ast2600-default ttyS4')
- 
--        exec_command_and_wait_for_pattern(self,
--             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
-+        self.ssh_connect('root', '0penBmc', False)
-+        self.ssh_command('dmesg -c > /dev/null')
+ run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
+-run-plugin-test-armv6m-undef-%: QEMU_OPTS+=-semihosting -M microbit -kernel
 +
-+        self.ssh_command_output_contains(
-+             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device ; '
-+             'dmesg -c',
-              'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
--        exec_command_and_wait_for_pattern(self,
-+        self.ssh_command_output_contains(
-                              'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
-         self.vm.command('qom-set', path='/machine/peripheral/tmp-test',
-                         property='temperature', value=18000);
--        exec_command_and_wait_for_pattern(self,
-+        self.ssh_command_output_contains(
-                              'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
++# We don't currently support the multiarch system tests
++undefine MULTIARCH_TESTS
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index b3b1504a1c..0038cef02c 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -46,11 +46,6 @@ semihosting-arm: semihosting.c
+ run-semihosting-arm: semihosting-arm
+ 	$(call run-test,$<,$(QEMU) $< 2> $<.err)
  
--        exec_command_and_wait_for_pattern(self,
--             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device',
-+        self.ssh_command_output_contains(
-+             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device ; '
-+             'dmesg -c',
-              'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
-         year = time.strftime("%Y")
--        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
-+        self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
+-run-plugin-semihosting-arm-with-%:
+-	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+-		 $(call strip-plugin,$<) 2> $<.err)
+-
+ ARM_TESTS += semiconsole-arm
+ 
+ semiconsole: CFLAGS += -mthumb
+@@ -62,9 +57,6 @@ semiconsole-arm: semihosting.c
+ run-semiconsole-arm: semiconsole-arm
+ 	$(call skip-test, $<, "MANUAL ONLY")
+ 
+-run-plugin-semiconsole-arm-with-%:
+-	$(call skip-test, $<, "MANUAL ONLY")
+-
+ endif
+ 
+ ARM_TESTS += commpage
+diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
+index 372287bd03..43587d2769 100644
+--- a/tests/tcg/cris/Makefile.target
++++ b/tests/tcg/cris/Makefile.target
+@@ -57,3 +57,6 @@ SIMG:=cris-axis-linux-gnu-run
+ # e.g.: make -f ../../tests/tcg/Makefile run-check_orm-on-sim
+ run-%-on-sim:
+ 	$(call run-test, $<, $(SIMG) $<)
++
++# We don't currently support the multiarch tests
++undefine MULTIARCH_TESTS
+diff --git a/tests/tcg/hppa/Makefile.target b/tests/tcg/hppa/Makefile.target
+index b78e6b4849..cdd0d572a7 100644
+--- a/tests/tcg/hppa/Makefile.target
++++ b/tests/tcg/hppa/Makefile.target
+@@ -10,8 +10,6 @@ EXTRA_RUNS+=run-test-mmap-4096 # run-test-mmap-16384 run-test-mmap-65536
+ # it requires the full vdso with dwarf2 unwind info.
+ run-signals: signals
+ 	$(call skip-test, $<, "BROKEN awaiting vdso support")
+-run-plugin-signals-with-%:
+-	$(call skip-test, $<, "BROKEN awaiting vdso support")
+ 
+ VPATH += $(SRC_PATH)/tests/tcg/hppa
+ TESTS += stby
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index bafd8c2180..821822ed0c 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -18,19 +18,15 @@ X86_64_TESTS:=$(filter test-i386-adcox test-i386-bmi2 $(SKIP_I386_TESTS), $(ALL_
+ 
+ test-i386-sse-exceptions: CFLAGS += -msse4.1 -mfpmath=sse
+ run-test-i386-sse-exceptions: QEMU_OPTS += -cpu max
+-run-plugin-test-i386-sse-exceptions-%: QEMU_OPTS += -cpu max
+ 
+ test-i386-pcmpistri: CFLAGS += -msse4.2
+ run-test-i386-pcmpistri: QEMU_OPTS += -cpu max
+-run-plugin-test-i386-pcmpistri-%: QEMU_OPTS += -cpu max
+ 
+ test-i386-bmi2: CFLAGS=-O2
+ run-test-i386-bmi2: QEMU_OPTS += -cpu max
+-run-plugin-test-i386-bmi2-%: QEMU_OPTS += -cpu max
+ 
+ test-i386-adcox: CFLAGS=-O2
+ run-test-i386-adcox: QEMU_OPTS += -cpu max
+-run-plugin-test-i386-adcox-%: QEMU_OPTS += -cpu max
+ 
+ #
+ # hello-i386 is a barebones app
+@@ -52,8 +48,6 @@ test-i386:
+ 	$(call skip-test, "BUILD of $@", "missing -no-pie compiler support")
+ run-test-i386:
+ 	$(call skip-test, "RUN of test-i386", "not built")
+-run-plugin-test-i386-with-%:
+-	$(call skip-test, "RUN of test-i386 ($*)", "not built")
+ endif
+ 
+ ifeq ($(SPEED), slow)
+@@ -87,7 +81,6 @@ sha512-sse: sha512.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+ run-sha512-sse: QEMU_OPTS+=-cpu max
+-run-plugin-sha512-sse-with-%: QEMU_OPTS+=-cpu max
+ 
+ TESTS+=sha512-sse
+ 
+@@ -103,15 +96,12 @@ test-avx.h: test-avx.py x86.csv
+ 
+ test-3dnow: CFLAGS += -masm=intel -O -I.
+ run-test-3dnow: QEMU_OPTS += -cpu max
+-run-plugin-test-3dnow: QEMU_OPTS += -cpu max
+ test-3dnow: test-3dnow.h
+ 
+ test-mmx: CFLAGS += -masm=intel -O -I.
+ run-test-mmx: QEMU_OPTS += -cpu max
+-run-plugin-test-mmx: QEMU_OPTS += -cpu max
+ test-mmx: test-mmx.h
+ 
+ test-avx: CFLAGS += -mavx -masm=intel -O -I.
+ run-test-avx: QEMU_OPTS += -cpu max
+-run-plugin-test-avx: QEMU_OPTS += -cpu max
+ test-avx: test-avx.h
+diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
+index f081f1c683..6d47d3cae6 100644
+--- a/tests/tcg/ppc64/Makefile.target
++++ b/tests/tcg/ppc64/Makefile.target
+@@ -24,14 +24,12 @@ PPC64_TESTS += byte_reverse sha512-vector
+ endif
+ byte_reverse: CFLAGS += -mcpu=power10
+ run-byte_reverse: QEMU_OPTS+=-cpu POWER10
+-run-plugin-byte_reverse-with-%: QEMU_OPTS+=-cpu POWER10
+ 
+ sha512-vector: CFLAGS +=-mcpu=power10 -O3
+ sha512-vector: sha512.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+ run-sha512-vector: QEMU_OPTS+=-cpu POWER10
+-run-plugin-sha512-vector-with-%: QEMU_OPTS+=-cpu POWER10
+ 
+ PPC64_TESTS += signal_save_restore_xer
+ PPC64_TESTS += xxspltw
+diff --git a/tests/tcg/riscv64/Makefile.softmmu-target b/tests/tcg/riscv64/Makefile.softmmu-target
+index e22cdb34c5..d5b126e5f1 100644
+--- a/tests/tcg/riscv64/Makefile.softmmu-target
++++ b/tests/tcg/riscv64/Makefile.softmmu-target
+@@ -19,3 +19,6 @@ QEMU_OPTS += -M virt -display none -semihosting -device loader,file=
+ EXTRA_RUNS += run-issue1060
+ run-issue1060: issue1060
+ 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS)$<)
++
++# We don't currently support the multiarch system tests
++undefine MULTIARCH_TESTS
+diff --git a/tests/tcg/riscv64/Makefile.target b/tests/tcg/riscv64/Makefile.target
+index cc3ed65ffd..9973ba3b5f 100644
+--- a/tests/tcg/riscv64/Makefile.target
++++ b/tests/tcg/riscv64/Makefile.target
+@@ -9,4 +9,3 @@ TESTS += noexec
+ TESTS += test-noc
+ test-noc: LDFLAGS = -nostdlib -static
+ run-test-noc: QEMU_OPTS += -cpu rv64,c=false
+-run-plugin-test-noc-%: QEMU_OPTS += -cpu rv64,c=false
+diff --git a/tests/tcg/s390x/Makefile.softmmu-target b/tests/tcg/s390x/Makefile.softmmu-target
+index 3e7f72abcd..192315dd20 100644
+--- a/tests/tcg/s390x/Makefile.softmmu-target
++++ b/tests/tcg/s390x/Makefile.softmmu-target
+@@ -23,3 +23,6 @@ include $(S390X_SRC)/pgm-specification.mak
+ $(PGM_SPECIFICATION_TESTS): pgm-specification-softmmu.o
+ $(PGM_SPECIFICATION_TESTS): LDFLAGS+=pgm-specification-softmmu.o
+ TESTS += $(PGM_SPECIFICATION_TESTS)
++
++# We don't currently support the multiarch system tests
++undefine MULTIARCH_TESTS
+diff --git a/tests/tcg/tricore/Makefile.softmmu-target b/tests/tcg/tricore/Makefile.softmmu-target
+index b3cd56fffc..49e573bc3b 100644
+--- a/tests/tcg/tricore/Makefile.softmmu-target
++++ b/tests/tcg/tricore/Makefile.softmmu-target
+@@ -29,3 +29,6 @@ QEMU_OPTS += -M tricore_testboard -cpu tc27x -nographic -kernel
+ 
+ %.tst: %.o
+ 	$(LD) $(LDFLAGS) $< -o $@
++
++# We don't currently support the multiarch system tests
++undefine MULTIARCH_TESTS
+diff --git a/tests/tcg/xtensa/Makefile.softmmu-target b/tests/tcg/xtensa/Makefile.softmmu-target
+index ba6cd9fde3..78bf72dfaa 100644
+--- a/tests/tcg/xtensa/Makefile.softmmu-target
++++ b/tests/tcg/xtensa/Makefile.softmmu-target
+@@ -41,3 +41,6 @@ $(XTENSA_USABLE_TESTS): linker.ld macros.inc $(CRT) Makefile.softmmu-target
+ 	$(CC) $(XTENSA_INC) $(ASFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) $(NOSTDFLAGS) $(CRT)
+ 
+ endif
++
++# We don't currently support the multiarch system tests
++undefine MULTIARCH_TESTS
 -- 
 2.39.2

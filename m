@@ -1,121 +1,230 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp395005ejm;
-        Thu, 27 Apr 2023 06:16:51 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5PrZ7TTm4PtUpGXH8bBoDLuLuo/QxXBX+4In789hk4gf2XhtE7MNvLOwhLjtKrrYcmr3XV
-X-Received: by 2002:a05:600c:c1:b0:3f1:7581:bba3 with SMTP id u1-20020a05600c00c100b003f17581bba3mr1470296wmm.10.1682601411671;
-        Thu, 27 Apr 2023 06:16:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682601411; cv=none;
-        d=google.com; s=arc-20160816;
-        b=B4+lPGmrLbjg3X1yAcEt+YaFJSWcHCYjBIbsJsa14tPPs11PnDx0GuR/hvAqXscVZQ
-         sf7S7VPKS64q4k98hYOJKmfVfFsToMeJY4KR48+UC5McOnBshjf5IaxTBzt3RttNG+Ww
-         psL6SOYrmr+93/EFt8qCtNCvDiFcAnNJ22T8SqgpH5TJcgMDahtl3SnsUyBQN8+DsIEs
-         P3TM3M7nwRBpwqpSr6IPxDP0Esc/aIHFhoH05CfQcb38Lqv/o0wknfh7BGd716lrbpog
-         /XbF8Xhp5Tvg+gQqEnfkOR50HtazXpZqVrRrI7xlCo8iBaf/gOk5Q/afaCeAJBxSfabV
-         1mcQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=MX6UVE4mjzxG9yyliZyZZXDI0qRbdsD1I4FO143MM78=;
-        b=Mk8Qov6AUv2lB+Em8n1VXGMebdbVuwIku5AtWlX0z56wc7d8TfPEiY3DW29eTgdhrx
-         s0k1qs870W690MYxrrL/aqKQPlB3Vitfz4eWkI1i3Mt5mSkqX+YqF6pPEvscQ52nrn4f
-         OGkrH1tutD1Yhq8lotoUjfli7Rrc/CYKXm9ugAdAaUpciVF5bQ7r7djx0T6EsV2Sbiby
-         4XuzBHrmRnhEGR/GtW63dybeH/biUGhX6RNnBJAAjmAiiB/fRMkIVTYjnmPvl0xBrmWR
-         uPW/9DiidKKTc0ClinQ3CUueahzTxW55pVxtukHnjiZKmuPSAIRVhkEeyDukiPE7jdIE
-         gWGw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=z36CFUnj;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id 9-20020a05600c228900b003f16ce29c20si11548226wmf.143.2023.04.27.06.16.51
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id t14-20020a05600c450e00b003f0a6a1f969sm25272355wmo.46.2023.04.27.08.45.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Apr 2023 06:16:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=z36CFUnj;
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 4CD8821B34;
-	Thu, 27 Apr 2023 13:16:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1682601411; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MX6UVE4mjzxG9yyliZyZZXDI0qRbdsD1I4FO143MM78=;
-	b=z36CFUnj8VFVgi37lLzTYRvr+6OjlKh8Og7SEhuI6LmproqH01NMl89QGSpCnQRu3NCwlr
-	Yljtf02M6z26IPjDongNyx+WP1Dx+ef4aUnSkOkpkYkktExOGZc7+NlfTq7+oozMC3xtAG
-	XJTwPbbwB5luY+/M2W6stf1RcoY/Mpo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1682601411;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=MX6UVE4mjzxG9yyliZyZZXDI0qRbdsD1I4FO143MM78=;
-	b=E0DzPQk6dGBGxxtCS3ZwVfi7ZmeP03GaNSMnAtFlNBHs9sKOJCayKYey2+siNfJjbtRvlJ
-	5GxSNLNo8zq7/wBQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id C4453138F9;
-	Thu, 27 Apr 2023 13:16:50 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id KjPxIcJ1SmSDcAAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 27 Apr 2023 13:16:50 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alex =?utf-8?Q?Benn?=
- =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, Laurent
- Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH v11 06/13] tests/qtest: Adjust and document
- query-cpu-model-expansion test for arm
-In-Reply-To: <c2853e95-2aec-246a-5846-d91d40329c61@linaro.org>
-References: <20230426180013.14814-1-farosas@suse.de>
- <20230426180013.14814-7-farosas@suse.de>
- <c2853e95-2aec-246a-5846-d91d40329c61@linaro.org>
-Date: Thu, 27 Apr 2023 10:16:48 -0300
-Message-ID: <87a5ytpirj.fsf@suse.de>
+        Thu, 27 Apr 2023 08:45:11 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 0C35D1FFBB;
+	Thu, 27 Apr 2023 16:45:11 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-arm@nongnu.org (open list:SBSA-REF)
+Subject: [PULL 03/18] tests/avocado: Add set of boot tests on SBSA-ref
+Date: Thu, 27 Apr 2023 16:44:55 +0100
+Message-Id: <20230427154510.1791273-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230427154510.1791273-1-alex.bennee@linaro.org>
+References: <20230427154510.1791273-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: iBkLH2bFzVsW
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: sJ8wM/jW5ubD
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> On 4/26/23 19:00, Fabiano Rosas wrote:
->> We're about to move the 32-bit CPUs under CONFIG_TCG, so adjust the
->> query-cpu-model-expansion test to check against the cortex-a7, which
->> is already under CONFIG_TCG. That allows the next patch to contain
->> only code movement.
->>=20
->> While here add comments clarifying what we're testing.
->>=20
->> Signed-off-by: Fabiano Rosas<farosas@suse.de>
->> Suggested-by: Philippe Mathieu-Daud=C3=A9<philmd@linaro.org>
->> ---
->>   tests/qtest/arm-cpu-features.c | 20 +++++++++++++++++---
->>   1 file changed, 17 insertions(+), 3 deletions(-)
->
-> I don't see why you're changing the cpu model here.
-> Neither cpu will work, of course, but why change?
->
+This change adds set of boot tests on SBSA-ref machine:
 
-Because there's already a patch in master that puts the cortex-a7 under
-CONFIG_TCG, so I can have the whole if/else in this patch.
+1. boot firmware up to the EDK2 banner
+2. boot Alpine Linux
 
-If I keep the cortex-a15, this change needs to go into the next patch
-("move cpu_tcg to tcg/cpu32.c") which moves the rest of the 32bit cpus,
-which was supposed to be only code movement.
+Prebuilt flash volumes are included, built using upstream documentation.
+
+To unify tests for AArch64/virt and AArch64/sbsa-ref we boot
+the same Alpine Linux image on both.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230323082813.971535-1-marcin.juszkiewicz@linaro.org>
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
+Message-Id: <20230328171426.14258-1-philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20230424092249.58552-4-alex.bennee@linaro.org>
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index a8b942dea4..214124c84c 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -943,6 +943,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/sbsa-ref.c
+ F: docs/system/arm/sbsa.rst
++F: tests/avocado/machine_aarch64_sbsaref.py
+ 
+ Sharp SL-5500 (Collie) PDA
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+new file mode 100644
+index 0000000000..0a79fa7ab6
+--- /dev/null
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -0,0 +1,158 @@
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-FileCopyrightText: 2023 Linaro Ltd.
++# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
++# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++
++from avocado import skip
++from avocado import skipUnless
++from avocado.utils import archive
++
++from avocado_qemu import QemuSystemTest
++from avocado_qemu import wait_for_console_pattern
++from avocado_qemu import interrupt_interactive_console_until_pattern
++
++
++class Aarch64SbsarefMachine(QemuSystemTest):
++    """
++    :avocado: tags=arch:aarch64
++    :avocado: tags=machine:sbsa-ref
++    """
++
++    timeout = 180
++
++    def fetch_firmware(self):
++        """
++        Flash volumes generated using:
++
++        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
++
++        - Trusted Firmware-A
++          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
++
++        - Tianocore EDK II
++          https://github.com/tianocore/edk2/tree/494127613b
++          https://github.com/tianocore/edk2-non-osi/tree/41876073
++          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
++        """
++
++        # Secure BootRom (TF-A code)
++        fs0_xz_url = (
++            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
++            "download/SBSA_FLASH0.fd.xz"
++        )
++        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
++        tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
++        archive.extract(tar_xz_path, self.workdir)
++        fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
++
++        # Non-secure rom (UEFI and EFI variables)
++        fs1_xz_url = (
++            "https://fileserver.linaro.org/s/t8foNnMPz74DZZy/"
++            "download/SBSA_FLASH1.fd.xz"
++        )
++        fs1_xz_hash = "13a9a262953787c7fc5a9155dfaa26e703631e02"
++        tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash)
++        archive.extract(tar_xz_path, self.workdir)
++        fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
++
++        for path in [fs0_path, fs1_path]:
++            with open(path, "ab+") as fd:
++                fd.truncate(256 << 20)  # Expand volumes to 256MiB
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-drive",
++            f"if=pflash,file={fs0_path},format=raw",
++            "-drive",
++            f"if=pflash,file={fs1_path},format=raw",
++            "-smp",
++            "1",
++            "-machine",
++            "sbsa-ref",
++        )
++
++    def test_sbsaref_edk2_firmware(self):
++        """
++        :avocado: tags=cpu:cortex-a57
++        """
++
++        self.fetch_firmware()
++        self.vm.launch()
++
++        # TF-A boot sequence:
++        #
++        # https://github.com/ARM-software/arm-trusted-firmware/blob/v2.8.0/\
++        #     docs/design/trusted-board-boot.rst#trusted-board-boot-sequence
++        # https://trustedfirmware-a.readthedocs.io/en/v2.8/\
++        #     design/firmware-design.html#cold-boot
++
++        # AP Trusted ROM
++        wait_for_console_pattern(self, "Booting Trusted Firmware")
++        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
++        wait_for_console_pattern(self, "BL1: Booting BL2")
++
++        # Trusted Boot Firmware
++        wait_for_console_pattern(self, "BL2: v2.8(release)")
++        wait_for_console_pattern(self, "Booting BL31")
++
++        # EL3 Runtime Software
++        wait_for_console_pattern(self, "BL31: v2.8(release)")
++
++        # Non-trusted Firmware
++        wait_for_console_pattern(self, "UEFI firmware (version 1.0")
++        interrupt_interactive_console_until_pattern(self, "QEMU SBSA-REF Machine")
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_alpine_linux(self, cpu):
++        self.fetch_firmware()
++
++        iso_url = (
++            "https://dl-cdn.alpinelinux.org/"
++            "alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso"
++        )
++
++        iso_hash = "5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027"
++        iso_path = self.fetch_asset(iso_url, algorithm="sha256", asset_hash=iso_hash)
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-cpu",
++            cpu,
++            "-drive",
++            f"file={iso_path},format=raw",
++            "-device",
++            "virtio-rng-pci,rng=rng0",
++            "-object",
++            "rng-random,id=rng0,filename=/dev/urandom",
++        )
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
++
++    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
++    def test_sbsaref_alpine_linux_cortex_a57(self):
++        """
++        :avocado: tags=cpu:cortex-a57
++        """
++        self.boot_alpine_linux("cortex-a57")
++
++    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
++    def test_sbsaref_alpine_linux_neoverse_n1(self):
++        """
++        :avocado: tags=cpu:max
++        """
++        self.boot_alpine_linux("neoverse-n1")
++
++    @skip("requires TF-A update to handle FEAT_FGT")
++    def test_sbsaref_alpine_linux_max(self):
++        """
++        :avocado: tags=cpu:max
++        """
++        self.boot_alpine_linux("max,pauth-impdef=on")
+-- 
+2.39.2

@@ -1,280 +1,177 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp40335ejm;
-        Fri, 28 Apr 2023 10:50:39 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5eoqIJG9LJCwUA+WAqg23FY+mS0VAstXTTDdrAyi64tKMvZsrycoeuLhmURk1CuBBQ4DXh
-X-Received: by 2002:a05:622a:14cc:b0:3b9:b6e3:c78e with SMTP id u12-20020a05622a14cc00b003b9b6e3c78emr10198274qtx.8.1682704239492;
-        Fri, 28 Apr 2023 10:50:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682704239; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp170203ejm;
+        Fri, 28 Apr 2023 15:14:10 -0700 (PDT)
+X-Received: by 2002:a1c:f207:0:b0:3ed:2a91:3bc9 with SMTP id s7-20020a1cf207000000b003ed2a913bc9mr5364524wmc.15.1682720049920;
+        Fri, 28 Apr 2023 15:14:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682720049; cv=none;
         d=google.com; s=arc-20160816;
-        b=E1PJ7N2Ucctj+4v4t+uCSgI/2JoH0EwdUFAksLBLrcMizhTHw5ZbfTRFwoJ5SEPfXv
-         HbhxY8XNeqYObSHayuStMaZN7bILD2tLYc6iD6VUrEWIr8N65sluw096O5RBRveg0cCF
-         R4Uc2n6ZsdOrwcHw74Dz55t+LN6WFPhdldTE1+zg1MxdkLJ1c9BxN9RCjkDmy73BLuRD
-         k9jjSCZFC0/l17KdS+reVOPXJuRwT1pnHv+lZRc0SFr0IZCi0cfjs159bYhapZ9vRZoG
-         PxM5fkFhDjBZLBFyTNFnJ0mQrdx+jL60hkKrNHx1HwoFeM+z9zLAV6CzoPtc1z470fO7
-         Zhng==
+        b=TWP+6cDTcqXjReQMoAJXCxlRR5tfmXfj3oVPVqsDOQ7rzhd1HMuM6GRcU94z4Hd6dG
+         EgjfQhRofbXA3H8/jroByID8P4zD8/RYhZWxwiwLUD8tWZYoDyEeeEh1El3CjF2Dl3xA
+         n3BT1OsVWI0cydFFyZ9eh7hzCy9qSlE9guO79zR3J86dBdzt+HUf/312aSE+JCAy4fli
+         oQGwItFfIWfoYOXy33ZYUeAsFnmt6y5AvLa+TGdgkaLT0v8LWVUW2Vvciq5+aYbRwfn+
+         yFQkzx/QXy3XZe/yD8oaUaC8DZl0HiFl81EjWX6qQjPk0LbtG2UOrLWpGBgIPxtq9ML5
+         IztA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:user-agent:references:in-reply-to:subject:cc:to
-         :from:dkim-signature;
-        bh=dFy8RI3865X52CBDIP3RqFy8Zpprq4rs5liYXkWuaDw=;
-        b=IBvRTnfOHpn7R6Lr5fZzsQ8nA4wBdVy8z6DweV2+GYWQ7N4ncFDszv9fw8UhXQYLye
-         CMeULkU/3UIJLP2bp54MhK0FgFRzN4khqq1245+vAwIjnQi+q67aNyUA/HvVmaKsdcwt
-         iHTK6ThvXlwh/M0DZyh8+6ZHf/wQVWG+5hRNzRBJZMS9yrIG2RV5WjDLowg9AW8lOBMA
-         b4HtsuMSS00mR+faCiOnCUULziTK4asubWzvbh3UjhJeZRrymuihbYIaV8HENLAJHdDt
-         1SLBitH5rHFwaP/i16PcTX4a+cypE7Zwa+7mZ2skzHCHLglPwyn6GeWhNT8/1p1+2nN/
-         lWeg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Ssu/Xqwkgvfc2RlF96qpBMck4O2RQ2hjQR94kNoQ2wQ=;
+        b=qJNBp1FC6q43pSpHB/rpZLhz8YPVNo1CHyBsd3U7oUTdW/qPztLVwnAb0eKheYx0V9
+         jCHs0GgljrfkOH5iPsPfRVwbliXvNertT7bazIMzMtFUqjNXSxt6YMRvYQe4yz/safN3
+         LIDoBB2fUMcKeSqFWTn7+Wx7n1A05v0O/Pwqg+lrrziZvFgtzaKG5CxZSuiO0kg4wmht
+         uT4kqRK7sCu2FbApxD6SAI5nTKxH9ogKimiRmYYtQJzfSxV1O2oxRKG9Hub8MCuOdK06
+         upRSlCH4MYzt1GwytPrcwOr0/66ubGm0Nf5udjeBiZm3ZBOpWQ6NUTJ4wNg21l+Y75yn
+         GR0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MabR2pmi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4-20020ac857c4000000b003ef41f00c61si14133631qta.98.2023.04.28.10.50.39
+       dkim=pass header.i=@linaro.org header.s=google header.b=C+uvqwAn;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id z16-20020a05600c221000b003f046b159b5sor6932998wml.17.2023.04.28.15.14.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Apr 2023 10:50:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 28 Apr 2023 15:14:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MabR2pmi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1psSEY-0000Td-QO; Fri, 28 Apr 2023 13:50:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1psSEX-0000RV-AW
- for qemu-arm@nongnu.org; Fri, 28 Apr 2023 13:50:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1psSEU-0003FM-Hk
- for qemu-arm@nongnu.org; Fri, 28 Apr 2023 13:50:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682704209;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=dFy8RI3865X52CBDIP3RqFy8Zpprq4rs5liYXkWuaDw=;
- b=MabR2pmiAuTOpIDeemWISEZZXzdFFhjBm8La5VVFlyWIjQVMu+3rWfrUiw0svRCQRkwyv7
- g8QMKbHcQTWClvDXIGI6JxjAI6WFIHz0YCwSU3sAec/e4do5TUkjAGt3zYcq4eFjXPTaRv
- JFPf+jukXpJUq18CGXWs8gP+f8KKllc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-269-iCvbd7sdMKm2BR6kFi5HpA-1; Fri, 28 Apr 2023 13:50:07 -0400
-X-MC-Unique: iCvbd7sdMKm2BR6kFi5HpA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-2f2981b8364so10717f8f.1
- for <qemu-arm@nongnu.org>; Fri, 28 Apr 2023 10:50:07 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=C+uvqwAn;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1682720049; x=1685312049;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ssu/Xqwkgvfc2RlF96qpBMck4O2RQ2hjQR94kNoQ2wQ=;
+        b=C+uvqwAnMjlnJ5BVoNa326ayNoT2XruWq1IDH9o8O72gnXGQglqrh5wZI9GuZ8SMo0
+         3kFBxK+KfOtvTMgyInFqnIJzBmEDJCdU2j1RyWrhiUW/CJj4yT0bEvIHe90fMajQz2et
+         6lmfpvSDLdYdcpFDgdj6T4DM3iun9owwucXtbcAddrP3iltLQA/OxVYn18Pbp5RT5hdb
+         MnkdyzWsEmp3+LI6U4b06N5Bzf91G1N1Ide5YGJXbEL8XdU92FF8uscgHlLkAt/KbyQ9
+         5sa3oxAAz2YvTcnZZ4ega/soCmdukZry5BxTQzFrOvO66qPsz6THwtBRdvez44yfAt6+
+         +DTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682704206; x=1685296206;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dFy8RI3865X52CBDIP3RqFy8Zpprq4rs5liYXkWuaDw=;
- b=EkLOdrqmIsPMvOMqwfLdMcSqTRmpeasFqUMvTARA9K3qFp2W+KJhf8ZO2IG/dSKdEY
- KjOVOAnElcxN6wUvWZGgnlnTuTxXijJzTT7BQ0VTYWMYtrv7NNmVsgl+tcesXFUfok4N
- yhJnsxF0qDvdZhZAOFCcqCqDROHTJoo3FPz60KKh51XmtsGI0GDXAvyFApVYtBUyybRS
- FZIcwfc94HW6kUK8uMtrkvS2ed7s/bKWVVHBKEbIiVzer2oN9CgbpeqR9snkNVu+05qD
- O+TMg298KFbC1wfgf5CKc/3K7Xb7MsG4UPlAzU8p3PlwMEgeGR46U7WlZ/oxn44QF+rT
- PW2g==
-X-Gm-Message-State: AC+VfDxLQ8+UaY16/c9GnD6IRiNOAToy0LxQsDy4k7Sz+zPTeGnijb0s
- K0N4hneT13TsZmOdEGJxD/oHu2manS7xZBDZ+LCKql4cJnWNFm3XbMn2htlxPzvCzQ3r4iS+jqF
- LjdtO0DXhbOw7
-X-Received: by 2002:adf:f4cd:0:b0:2f5:b1aa:679c with SMTP id
- h13-20020adff4cd000000b002f5b1aa679cmr4615536wrp.39.1682704206684; 
- Fri, 28 Apr 2023 10:50:06 -0700 (PDT)
-X-Received: by 2002:adf:f4cd:0:b0:2f5:b1aa:679c with SMTP id
- h13-20020adff4cd000000b002f5b1aa679cmr4615516wrp.39.1682704206287; 
- Fri, 28 Apr 2023 10:50:06 -0700 (PDT)
-Received: from redhat.com (static-213-163-6-89.ipcom.comunitel.net.
- [89.6.163.213]) by smtp.gmail.com with ESMTPSA id
- p1-20020a05600c204100b003f3270ddbd8sm2503636wmg.37.2023.04.28.10.50.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Apr 2023 10:50:05 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-arm@nongnu.org,  qemu-devel@nongnu.org,
- kvm@vger.kernel.org,  Eric Auger <eauger@redhat.com>,  Gavin Shan
- <gshan@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Richard
- Henderson <richard.henderson@linaro.org>,  Andrea Bolognani
- <abologna@redhat.com>
-Subject: Re: [PATCH v7 1/1] arm/kvm: add support for MTE
-In-Reply-To: <20230428095533.21747-2-cohuck@redhat.com> (Cornelia Huck's
- message of "Fri, 28 Apr 2023 11:55:33 +0200")
-References: <20230428095533.21747-1-cohuck@redhat.com>
- <20230428095533.21747-2-cohuck@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
-Date: Fri, 28 Apr 2023 19:50:04 +0200
-Message-ID: <87sfcj99rn.fsf@secure.mitica>
+        d=1e100.net; s=20221208; t=1682720049; x=1685312049;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ssu/Xqwkgvfc2RlF96qpBMck4O2RQ2hjQR94kNoQ2wQ=;
+        b=Bs6WnyNwUBPgOfqpFWnMkCLVKaGkfJZ8oNyMAcpEHi5agl2Dgo9GkjlSrLmBwSTnE3
+         aXwgFxOWT967D0OiybzMArBTtEzbZVYAg4uuPNLGANt5SC4z3dio3rje/XqXjd4DXFBX
+         SpKrHpO7kcmbYAZ9RkKtHrMlF1OkMChsaNu0fn+YX0uO+72anfE5WMX/+uRSV04IMoi2
+         EMGCQSDBbnPBd68/DApupDKASJO7IBKsL5Xg8RuHDiktzhK8WJYVlnRKk9k4oY5zL1XE
+         +9nz6vNxq+GjEheEJa4m4gtNDvFPUkNu4oUEe9ezlMHsWZBpe/fZvcVUiy4soVFpA3ym
+         T3QA==
+X-Gm-Message-State: AC+VfDxxdqIi/jRraeADZwQgBVAj4yBK99Yo7jsWCqmMl89mdsg/vjeV
+	IZtPh5VZ6L6Gr1zNvaXeZ4A8/jDQDpcY+Ibbt+LGn+94
+X-Google-Smtp-Source: ACHHUZ4Ggto5J7JYL6UbWIU21fleZ/I5p0nPNo49OH/ueKzzpSxSYcZbL1QC+lGhFXjb4ZAnLN8Afw==
+X-Received: by 2002:a1c:f717:0:b0:3f1:9acf:8670 with SMTP id v23-20020a1cf717000000b003f19acf8670mr5325105wmh.22.1682720049506;
+        Fri, 28 Apr 2023 15:14:09 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.17] (78-141-23-110.xdsl.murphx.net. [78.141.23.110])
+        by smtp.gmail.com with ESMTPSA id f4-20020a0560001b0400b002ffbf2213d4sm22170378wrz.75.2023.04.28.15.14.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 28 Apr 2023 15:14:09 -0700 (PDT)
+Message-ID: <0ed8aacf-9fbc-5f67-153c-f052eabc7fa6@linaro.org>
+Date: Fri, 28 Apr 2023 23:14:07 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: quintela@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UoYvVTDmVRhp
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [RFC PATCH] plugins: force slow path when plugins instrument
+ memory ops
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Robert Henry <robhenry@microsoft.com>,
+ Aaron Lindsay <aaron@os.amperecomputing.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20230419161226.1012884-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230419161226.1012884-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 2kUrKLvSK5IW
 
-Cornelia Huck <cohuck@redhat.com> wrote:
-> Extend the 'mte' property for the virt machine to cover KVM as
-> well. For KVM, we don't allocate tag memory, but instead enable the
-> capability.
->
-> If MTE has been enabled, we need to disable migration,
-
-And I was wondering why I was cc'd in a patch that talks about arm, cpus
-and architectures O:-)
-
-> as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+On 4/19/23 17:12, Alex Bennée wrote:
+> The lack of SVE memory instrumentation has been an omission in plugin
+> handling since it was introduced. Fortunately we can utilise the
+> probe_* functions to force all all memory access to follow the slow
+> path. We do this by checking the access type and presence of plugin
+> memory callbacks and if set return the TLB_MMIO flag.
+> 
+> We have to jump through a few hoops in user mode to re-use the flag
+> but it was the desired effect:
+> 
+>   ./qemu-system-aarch64 -display none -serial mon:stdio \
+>     -M virt -cpu max -semihosting-config enable=on \
+>     -kernel ./tests/tcg/aarch64-softmmu/memory-sve \
+>     -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
+> 
+> gives (disas doesn't currently understand st1w):
+> 
+>    0, 0x40001808, 0xe54342a0, ".byte 0xa0, 0x42, 0x43, 0xe5", store, 0x40213010, RAM, store, 0x40213014, RAM, store, 0x40213018, RAM
+> 
+> And for user-mode:
+> 
+>    ./qemu-aarch64 \
+>      -plugin contrib/plugins/libexeclog.so,afilter=0x4007c0 \
+>      -d plugin \
+>      ./tests/tcg/aarch64-linux-user/sha512-sve
+> 
+> gives:
+> 
+>    1..10
+>    ok 1 - do_test(&tests[i])
+>    0, 0x4007c0, 0xa4004b80, ".byte 0x80, 0x4b, 0x00, 0xa4", load, 0x5500800370, load, 0x5500800371, load, 0x5500800372, load, 0x5500800373, load, 0x5500800374, load, 0x5500800375, load, 0x5500800376, load, 0x5500800377, load, 0x5500800378, load, 0x5500800379, load, 0x550080037a, load, 0x550080037b, load, 0x550080037c, load, 0x550080037d, load, 0x550080037e, load, 0x550080037f, load, 0x5500800380, load, 0x5500800381, load, 0x5500800382, load, 0x5500800383, load, 0x5500800384, load, 0x5500800385, load, 0x5500800386, lo
+>    ad, 0x5500800387, load, 0x5500800388, load, 0x5500800389, load, 0x550080038a, load, 0x550080038b, load, 0x550080038c, load, 0x550080038d, load, 0x550080038e, load, 0x550080038f, load, 0x5500800390, load, 0x5500800391, load, 0x5500800392, load, 0x5500800393, load, 0x5500800394, load, 0x5500800395, load, 0x5500800396, load, 0x5500800397, load, 0x5500800398, load, 0x5500800399, load, 0x550080039a, load, 0x550080039b, load, 0x550080039c, load, 0x550080039d, load, 0x550080039e, load, 0x550080039f, load, 0x55008003a0, load, 0x55008003a1, load, 0x55008003a2, load, 0x55008003a3, load, 0x55008003a4, load, 0x55008003a5, load, 0x55008003a6, load, 0x55008003a7, load, 0x55008003a8, load, 0x55008003a9, load, 0x55008003aa, load, 0x55008003ab, load, 0x55008003ac, load, 0x55008003ad, load, 0x55008003ae, load, 0x55008003af
+> 
+> (4007c0 is the ld1b in the sha512-sve)
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Robert Henry <robhenry@microsoft.com>
+> Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
 > ---
->  hw/arm/virt.c        | 69 +++++++++++++++++++++++++-------------------
->  target/arm/cpu.c     |  9 +++---
->  target/arm/cpu.h     |  4 +++
->  target/arm/kvm.c     | 35 ++++++++++++++++++++++
->  target/arm/kvm64.c   |  5 ++++
->  target/arm/kvm_arm.h | 19 ++++++++++++
->  6 files changed, 107 insertions(+), 34 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a89d699f0b76..544a6c5bec8f 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2146,7 +2146,7 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
->  
-> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
-> +    if (vms->mte && hvf_enabled()) {
->          error_report("mach-virt: %s does not support providing "
->                       "MTE to the guest CPU",
->                       current_accel_name());
-> @@ -2216,39 +2216,48 @@ static void machvirt_init(MachineState *machine)
->          }
->  
->          if (vms->mte) {
-> -            /* Create the memory region only once, but link to all cpus. */
-> -            if (!tag_sysmem) {
-> -                /*
-> -                 * The property exists only if MemTag is supported.
-> -                 * If it is, we must allocate the ram to back that up.
-> -                 */
-> -                if (!object_property_find(cpuobj, "tag-memory")) {
-> -                    error_report("MTE requested, but not supported "
-> -                                 "by the guest CPU");
-> -                    exit(1);
-> +            if (tcg_enabled()) {
-> +                /* Create the memory region only once, but link to all cpus. */
-> +                if (!tag_sysmem) {
-> +                    /*
-> +                     * The property exists only if MemTag is supported.
-> +                     * If it is, we must allocate the ram to back that up.
-> +                     */
-> +                    if (!object_property_find(cpuobj, "tag-memory")) {
-> +                        error_report("MTE requested, but not supported "
-> +                                     "by the guest CPU");
-> +                        exit(1);
-> +                    }
-> +
-> +                    tag_sysmem = g_new(MemoryRegion, 1);
-> +                    memory_region_init(tag_sysmem, OBJECT(machine),
-> +                                       "tag-memory", UINT64_MAX / 32);
-> +
-> +                    if (vms->secure) {
-> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
-> +                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> +                                           "secure-tag-memory",
-> +                                           UINT64_MAX / 32);
-> +
-> +                        /* As with ram, secure-tag takes precedence over tag. */
-> +                        memory_region_add_subregion_overlap(secure_tag_sysmem,
-> +                                                            0, tag_sysmem, -1);
-> +                    }
->                  }
+>   include/exec/cpu-all.h            |  2 +-
+>   include/hw/core/cpu.h             | 17 +++++++++++++++++
+>   accel/tcg/cputlb.c                |  6 +++++-
+>   accel/tcg/user-exec.c             |  6 +++++-
+>   target/arm/tcg/sve_helper.c       |  4 ----
+>   tests/tcg/aarch64/Makefile.target |  8 ++++++++
+>   6 files changed, 36 insertions(+), 7 deletions(-)
 
-Pardon my ignorance here, but to try to help with migration.  How is
-this mte tag stored?
-- 1 array of 8bits per page of memory
-- 1 array of 64bits per page of memory
-- whatever
+Looks good, mostly.
 
-Lets asume that it is 1 byte per page. For the explanation it don't
-matter, only matters that it is an array of things that are one for each
-page.
+> @@ -1530,6 +1530,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+>       target_ulong tlb_addr, page_addr;
+>       size_t elt_ofs;
+>       int flags;
+> +    bool not_fetch = true;
+>   
+>       switch (access_type) {
+>       case MMU_DATA_LOAD:
+> @@ -1540,6 +1541,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+>           break;
+>       case MMU_INST_FETCH:
+>           elt_ofs = offsetof(CPUTLBEntry, addr_code);
+> +        not_fetch = false;
+>           break;
+>       default:
+>           g_assert_not_reached();
+> @@ -1578,7 +1580,9 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+>       *pfull = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+>   
+>       /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
+> -    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
+> +    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))
+> +        ||
+> +        (not_fetch && cpu_plugin_mem_cbs_enabled(env_cpu(env)))) {
 
-What I arrived for migration the 1st time that I looked at this problem
-is that you can "abuse" multifd and call it a day.
+Rather than introduce a new variable, just test access_type != MMU_INST_FETCH.
 
-In multifd propper you just send in each page:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-- 1 array of page addresses
-- 1 array of pages that correspond to the previous addresses
 
-So my suggestion is just to send another array:
-
-- 1 array of page addresses
-- 1 array of page tags that correspond to the previous one
-- 1 array of pages that correspond to the previous addresses
-
-You put compatiblity marks here and there checking that you are using
-mte (and the same version) in both sides and you call that a day.
-
-Notice that this requires the series (still not upstream but already on
-the list) that move the zero page detection to the multifd thread,
-because I am assuming that zero pages also have tags (yes, it was not a
-very impressive guess).
-
-What do you think?  Does this work for you?
-What I would need for kvm/tcg would be some way of doing:
-
-- get_the_mte_tag_of_page(page_id)
-- set_the_mte_tag_of_page(page_id)
-
-Now you need to tell me if I should do this for each page, or use some
-kind of scatter-gather function that allows me to receive the mte tags
-from an array of pages.
-
-You could pass this information when we are searching for dirty pages,
-but it is going to be complicated doing that (basically we only pass the
-dirty page id, nothing else).
-
-Doing this in normal precopy can also be done, but it would be an
-exercise in masochism.
-
-Another question, if you are using MTE, all pages have MTE, right?
-Or there are other exceptions?
-
-Sorry for my ignorance on this matter.
-
-Later, Juan.
-
+r~

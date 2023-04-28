@@ -1,81 +1,81 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp178987ejm;
-        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
-X-Received: by 2002:adf:e911:0:b0:2f6:661:c03c with SMTP id f17-20020adfe911000000b002f60661c03cmr5413480wrm.28.1682721430835;
-        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682721430; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp179451ejm;
+        Fri, 28 Apr 2023 15:38:29 -0700 (PDT)
+X-Received: by 2002:adf:fe83:0:b0:2fb:7099:6070 with SMTP id l3-20020adffe83000000b002fb70996070mr5231852wrr.47.1682721509373;
+        Fri, 28 Apr 2023 15:38:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682721509; cv=none;
         d=google.com; s=arc-20160816;
-        b=pHfHdcV0cp3lPwwduwPnRBQrUzt2JxCoP3/HHpnBbdxAb9GazIbHqoa/Gi6TAMCtGa
-         ysV8p+L6GqpCNE3cjoIBv4SCQT2J7rdzLk6mo/KTOgzpcizIccW1IAaiQj5znzTiDPjb
-         BmHQb21gOlTFX+qAetgDsS8hpn3lhCo5bzzuPrwe0XRb7WQJ/M7/bsUHP7jV8u/L2wi6
-         i9ysXluOisisQ57P966VspF4BGTHjhEN8mFhNNJ1rrqEvgyTTdWXQqm7Lp0TW659E+Be
-         vPNQsDC3J5xuSZh7q8sGqV29UTzNMhNxew7ZbO8EMp/8Vn+Njlwp09qPJof3ywtLHK0D
-         9RCA==
+        b=nGqK4m6VZyuEjJ0X9D7uTgbY2YJtHBYcqv+k8BluqKkPvg8uWClicIWp26Ge4+jG0w
+         V3w9hgcMEPxPfdWZj2M9qfy90gjTorOT7dRbJDhY0ccN93D9OU8YipCA/m5r/tCjyfgk
+         SQK6LGBRniBTJkqwQc1sjbSabgkKBHtsoMlEPwwl/WWwrf/GNw8Zd+JW52v9LZ92zuXT
+         EQec9J3OgIwWgrfl5cLHk4gok3Phzfe8Xlr6cXjDMyMMPUtBZrflhG4lOLYur6N3BIsB
+         /42qGmVgabNUeMYCBoATXbOS2kBYx5ObhpViPZJ9bEiEpHOBtgkKMFGcVlbPr/7Vvv3H
+         v0rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
-        b=KfVrYLI6YGy3RvGsv2sLo1sY/AqVbY2kEF7v0fTzYX4zVuCrBJxYqKi/6eestIwPxE
-         9UZJUWuxhYgT2xIUdEgsyJARCfRGIFN9XezPlSx4o7lIsAhHnGma4nR7UpXdBIWK6wlS
-         SimQcxV/e3ByJzUqf9Z9FLvFScBkGqr5VG+jpYbXzAsK4q8wOxqgzbGQC4gDkjrq9xw2
-         sMzJYr3mHvwOi82z7h2BMF0U6BZ+r1A4oD9PhnCMHDPqw5TlNOqJUR77UgNBeygi8ru/
-         6IQZaYqOqiowGBnCc0BmIe3qO9gSxrs8NO/oevnCgQ7lwB1PmXjA+75a/jzst1i4jL5/
-         UXUQ==
+        bh=AuzxP35MrbKy3jQb0AgKA3eB+v0ygkrGtM0eA2b2OUs=;
+        b=ftK7SuKxOVDmsEauMT9hylhozdy0XdQg8A60oKj1fCdU1+Jl/56WcLLc3/QzDz/l96
+         lgp8JB7zUeuPPJWV4LBG5abL+uGEzw3kPkCMxpkRSEtd6ZNdt8Ks5IzfrmHOI+K3ysr2
+         yiO++H8O6M+yUl9xPtc2ibHFEFCbozV3uyEBxcfYLIUZI2gL60tbL9ycCPaTNG4ZynJL
+         3jHUWpf254SCW6ieheakn2o2g4bxKa9j2DRbSzPdKpAJN8LkervRyf0L1iEVEHBfwwtK
+         H6OxNyK7JvLS+GTowcD8KNGn/zaHZRfsZ0/ZnDR/Gx+Gn3w1+T9RUweRR0Lrbs2OnCnA
+         JgxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8LDqMDZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B7vYmBbc;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id x17-20020a5d4911000000b002f54946afd0sor8898207wrq.69.2023.04.28.15.37.10
+        by mx.google.com with SMTPS id e14-20020adff34e000000b002fa210a35edsor9282159wrp.76.2023.04.28.15.38.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
+        Fri, 28 Apr 2023 15:38:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8LDqMDZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B7vYmBbc;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682721430; x=1685313430;
+        d=linaro.org; s=google; t=1682721509; x=1685313509;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
-        b=A8LDqMDZwDmGhmDwKQPfphgYlax3mJYMZMZuxC+uTHHvPO0SOdv8rgO0s+1WpEWcn3
-         BPSBWHrh6L4XaAjD7TxUrYC0PfnVomRs0kgWBJqtQ9QWSN2g9SZFBZ1W9iuFeggX/qBE
-         eP4hhv6MfB2tIJVVrstc02g4m3zOH3+RODCx9T51F/nWxEZqho323djF/fbUxPqEwl++
-         SiLd+haaUVFcLtjdSkrjNb5t+ta1qbS5Gwbk0ahWz+/l8rDMrMmQcaA1Zf363OLZHzOz
-         0x1NVgLss+o8s03FRrP6W8l+PxIT7BSVaYEUKjwEuIqrdR5mrGHgQA4DLKSyu45dCHE0
-         ER6w==
+        bh=AuzxP35MrbKy3jQb0AgKA3eB+v0ygkrGtM0eA2b2OUs=;
+        b=B7vYmBbc5wswEloQgyXjjcIPffwQAdGiux9k4rhpToZSf7VXyz6Z1jqa9puxUHthuW
+         7x7dazH+0e/fgy2mt8h+f1Jl9VIwBnb2M5RcN+J5HM/FIn3oBwxv1zQhzFj0mifKuKFu
+         k/D23KunY0VV2dh5z0+yHZWTxsB2D8PqS1gJHarmlyjJQ69K7L/qk3U4FLnQh1vyzml6
+         2blEI5legF4QAQy6XrJYpmbqV06gwlvFtn1gT1Qkt7oAxJIStW03yAFL61JPMdOMkWU4
+         UqY0P8KRohcyJOWHV/8Wo72zY0dkbwPqpBo1CSVT3FmFyva5RkUQhmyyZcoHx8TLnzqf
+         FK6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682721430; x=1685313430;
+        d=1e100.net; s=20221208; t=1682721509; x=1685313509;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
-        b=SskAy3w+N1AFs229ffFuydV1Ra+MEMdWwet+kmIdg8seevCC1s+I+EpA1GkRbyHW/D
-         jwwXR0T1UTRim8GpGiPLqyweRRXw1WGJjPKRN4rdQYn2Qc41xXksVdyk6Ok0vwRQcxrj
-         FV4I0jC8d/v8+a7w2wNdl5015imJFC1Jk8eKqz0McGmSToh2WI4b1ubgYOJxpEB0/d+M
-         RNDgCsSeoX6w7Fxm+Y7dJuPw/6LWHXj5rDIIr6ujrJOZfEJZHcCOLE3xdRmdkQ5n906e
-         qSfHamjq54OPS1PjwfoHSh4hVbXmhE00tWrCrdxsrTegy5YY7cbamn/2W9P+hyEgm7m/
-         7pJg==
-X-Gm-Message-State: AC+VfDzNiPhPAZ4jUmy+mErLZaZh96Ah56apIcwJroWsJPIlak2Y7hnP
-	5XVy5bMiolyfG7lDqaXa0ct0EzW7
-X-Google-Smtp-Source: ACHHUZ5dElpqekjLlyXw1SjTa6Nj5mZQXAJmbiZhTMbxSVPzfLqct84A9IWpxt8DHDhh7YQxR4RVKw==
-X-Received: by 2002:adf:ff81:0:b0:2d0:58f9:a6b with SMTP id j1-20020adfff81000000b002d058f90a6bmr8122633wrr.13.1682721430504;
-        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
+        bh=AuzxP35MrbKy3jQb0AgKA3eB+v0ygkrGtM0eA2b2OUs=;
+        b=e922mhp3mgzTV1zRNWrYemI6GIGOvR7kkpCKTaWovRZvnC5R9+YmbOum//gxUmirEh
+         IfXQa+UFZvzONJ0nhno9ZMfExwZUh+WBlJV2GVRT84XiM3X5eO3jeESGVCV7Bf7I8RsP
+         Z4UtBX80kiOnBWorrj4uIAD+XNSzBxhOFap/k6ldAYN6gW0IHuSPUU/0OLQTHO62Tssb
+         FG0RF9SN54CPT1+FjJ9fT7SdmmJOKd/sZ/kNccqft+d68X7pOvJj24atSN5GL+dV3+9j
+         0ezkzCt4+02WAE3QPLNYlqAhgKIN473pdmb862rj3gQD6zkrwlfH4K/wTxF6eZzvKR78
+         oZEQ==
+X-Gm-Message-State: AC+VfDyaYxRZJnhcyBTu6g4IcnYWwnIDfXYJVUWHQUHc8c16z+FujxYO
+	304Ve5Hb5zfllzOQfimXVNS45biY
+X-Google-Smtp-Source: ACHHUZ7OeMSUugrGJCjS7oR+SwWHbI50l7agy8nmY6Y1GQvqpEGbq4BlfphtecVWmmV+hJtRC3JSvg==
+X-Received: by 2002:adf:de07:0:b0:304:7ff3:9b2 with SMTP id b7-20020adfde07000000b003047ff309b2mr5580538wrm.39.1682721508997;
+        Fri, 28 Apr 2023 15:38:28 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.192.175] (47.red-88-28-19.dynamicip.rima-tde.net. [88.28.19.47])
-        by smtp.gmail.com with ESMTPSA id g9-20020a05600c000900b003f0aa490336sm28797891wmc.26.2023.04.28.15.37.07
+        by smtp.gmail.com with ESMTPSA id w6-20020adfee46000000b002f0442a2d3asm22080474wro.48.2023.04.28.15.38.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
-Message-ID: <f29b7c51-97d2-96b6-077d-71ceb246f41c@linaro.org>
-Date: Fri, 28 Apr 2023 23:37:06 +0100
+        Fri, 28 Apr 2023 15:38:28 -0700 (PDT)
+Message-ID: <14f6f77b-e816-567b-eac9-f5d678c7edf7@linaro.org>
+Date: Fri, 28 Apr 2023 23:38:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH v11 07/13] target/arm: move cpu_tcg to tcg/cpu32.c
+Subject: Re: [PATCH v11 05/13] target/arm: Move 64-bit TCG CPUs into tcg/
 Content-Language: en-US
 To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,35 +83,39 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
  Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+ Cornelia Huck <cohuck@redhat.com>
 References: <20230426180013.14814-1-farosas@suse.de>
- <20230426180013.14814-8-farosas@suse.de>
+ <20230426180013.14814-6-farosas@suse.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230426180013.14814-8-farosas@suse.de>
+In-Reply-To: <20230426180013.14814-6-farosas@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 2b6Q+1NFKxPX
+X-TUID: st0sO4hAZgVk
 
 On 26/4/23 20:00, Fabiano Rosas wrote:
-> From: Claudio Fontana <cfontana@suse.de>
+> Move the 64-bit CPUs that are TCG-only:
+> - cortex-a35
+> - cortex-a55
+> - cortex-a72
+> - cortex-a76
+> - a64fx
+> - neoverse-n1
 > 
-> move the module containing cpu models definitions
-> for 32bit TCG-only CPUs to tcg/ and rename it for clarity.
+> Keep the CPUs that can be used with KVM:
+> - cortex-a57
+> - cortex-a53
+> - max
+> - host
 > 
-> Signed-off-by: Claudio Fontana <cfontana@suse.de>
 > Signed-off-by: Fabiano Rosas <farosas@suse.de>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Acked-by: Thomas Huth <thuth@redhat.com>
 > ---
->   hw/arm/virt.c                         |  2 --
->   target/arm/meson.build                |  1 -
->   target/arm/{cpu_tcg.c => tcg/cpu32.c} | 13 +++----------
->   target/arm/tcg/cpu64.c                |  2 +-
->   target/arm/tcg/meson.build            |  1 +
->   5 files changed, 5 insertions(+), 14 deletions(-)
->   rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (99%)
-
-I think it took almost 3 years to get this in... :)
+>   hw/arm/virt.c              |   6 +-
+>   target/arm/cpu64.c         | 687 +----------------------------------
+>   target/arm/internals.h     |   4 +
+>   target/arm/tcg/cpu64.c     | 723 +++++++++++++++++++++++++++++++++++++
+>   target/arm/tcg/meson.build |   1 +
+>   5 files changed, 735 insertions(+), 686 deletions(-)
+>   create mode 100644 target/arm/tcg/cpu64.c
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-

@@ -1,82 +1,81 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp177405ejm;
-        Fri, 28 Apr 2023 15:32:43 -0700 (PDT)
-X-Received: by 2002:a5d:6dc2:0:b0:2f2:9198:f0f with SMTP id d2-20020a5d6dc2000000b002f291980f0fmr5074024wrz.10.1682721163028;
-        Fri, 28 Apr 2023 15:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682721163; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp178987ejm;
+        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
+X-Received: by 2002:adf:e911:0:b0:2f6:661:c03c with SMTP id f17-20020adfe911000000b002f60661c03cmr5413480wrm.28.1682721430835;
+        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1682721430; cv=none;
         d=google.com; s=arc-20160816;
-        b=bnlL/KHlP1SQuPugQUZGDTHRIdNsvUFvZAmaZx6SOg0ncJhnDf9z8+5lwyVBmOWBw0
-         DL4jPjaRZz1HIyhwSoFXFpDj6e/Odkt/+VjoLuZdsRccLydrW0FNkuwwPFtyAhR4JADL
-         xYoUQYK3pCBpIdd0i8g8dEigtVrdioBWc4wl62QwCjKZmMtijo0C80x64UP2sYNiz5sz
-         SMYdKYuAkJo8D9jeOIqL+UgzzN8eFEtMMpW5p8AuGVisDuhFObOn1chqZS1eaIC7eAmf
-         xKV5D2gMPbioP+jgLLJDMH0UmLZX7AcN025WlM66kZaab8bgRGJUlgbfaEwZTb1OWKPI
-         /LHA==
+        b=pHfHdcV0cp3lPwwduwPnRBQrUzt2JxCoP3/HHpnBbdxAb9GazIbHqoa/Gi6TAMCtGa
+         ysV8p+L6GqpCNE3cjoIBv4SCQT2J7rdzLk6mo/KTOgzpcizIccW1IAaiQj5znzTiDPjb
+         BmHQb21gOlTFX+qAetgDsS8hpn3lhCo5bzzuPrwe0XRb7WQJ/M7/bsUHP7jV8u/L2wi6
+         i9ysXluOisisQ57P966VspF4BGTHjhEN8mFhNNJ1rrqEvgyTTdWXQqm7Lp0TW659E+Be
+         vPNQsDC3J5xuSZh7q8sGqV29UTzNMhNxew7ZbO8EMp/8Vn+Njlwp09qPJof3ywtLHK0D
+         9RCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=O8L0o1sAlxY6lrvihDvAAf8F9qY4OxJ51gZwJAMl8MM=;
-        b=OzSg8rm1P8Uv5Hx503Yj+lcjDHGwTHXP/0kaun21tscntWGu0a33nkM1Twd5W24dtV
-         5OLK8tm3BGtFwZfQn87oTT+NqTH4IEMuZzsZ0/YHtzdry+ABEiITQdQ5xSJjxn/Wvb6J
-         JmZBlyFSvVTMAfGaVoBi4pdgGw91TaAq/cycNt8E8on4E9dTYr3g4OiKicRdDxGKncx9
-         cKQX9yETqf05vmGEZ8x+uGvew0eAr5kUyfh4kP84JgsPOyVuxnb7yNBr7V1nPO8l7irm
-         otRIB1IJaxjur0qU/G2v1KpJMs+SClJtf1TipiE2G++/P/OJ8P8V+pnpIzNVJH+wARbl
-         dggA==
+        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
+        b=KfVrYLI6YGy3RvGsv2sLo1sY/AqVbY2kEF7v0fTzYX4zVuCrBJxYqKi/6eestIwPxE
+         9UZJUWuxhYgT2xIUdEgsyJARCfRGIFN9XezPlSx4o7lIsAhHnGma4nR7UpXdBIWK6wlS
+         SimQcxV/e3ByJzUqf9Z9FLvFScBkGqr5VG+jpYbXzAsK4q8wOxqgzbGQC4gDkjrq9xw2
+         sMzJYr3mHvwOi82z7h2BMF0U6BZ+r1A4oD9PhnCMHDPqw5TlNOqJUR77UgNBeygi8ru/
+         6IQZaYqOqiowGBnCc0BmIe3qO9gSxrs8NO/oevnCgQ7lwB1PmXjA+75a/jzst1i4jL5/
+         UXUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wjZtAWpe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A8LDqMDZ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l8-20020a5d6688000000b002fc3015d527sor9095964wru.24.2023.04.28.15.32.42
+        by mx.google.com with SMTPS id x17-20020a5d4911000000b002f54946afd0sor8898207wrq.69.2023.04.28.15.37.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 28 Apr 2023 15:32:42 -0700 (PDT)
+        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wjZtAWpe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A8LDqMDZ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682721162; x=1685313162;
+        d=linaro.org; s=google; t=1682721430; x=1685313430;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=O8L0o1sAlxY6lrvihDvAAf8F9qY4OxJ51gZwJAMl8MM=;
-        b=wjZtAWpe2rXb0QPbB8GX3s0lvweu0Ibya7k0DWbGUU3P8fzuzmosvNFJkHJ4c0mPif
-         b2ATjXtjXyzozy12gTToQ9+e9oXokhzIZKcZvJfldKeKejb9nt5atiUXO1hPY9PEn18J
-         pqtalMDj7bVCaFF+Xil+E3e2rt3zvc7sCV9d/XrSDr7TslLtAqhKAjMsgHnw4GAvwyAP
-         yVdNwtqpZtt2BchoVXi6EEsO3JWze+4LzZH5xy0AjmXd1iB2HETe/JrAmIxDY6GThCIB
-         ho5vCKCzDSHsHfVzXvjIrfbboW6lSfp8Zlk90QtHWQofmuwwJv70U6j2cf4opx9BaLdY
-         WAPQ==
+        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
+        b=A8LDqMDZwDmGhmDwKQPfphgYlax3mJYMZMZuxC+uTHHvPO0SOdv8rgO0s+1WpEWcn3
+         BPSBWHrh6L4XaAjD7TxUrYC0PfnVomRs0kgWBJqtQ9QWSN2g9SZFBZ1W9iuFeggX/qBE
+         eP4hhv6MfB2tIJVVrstc02g4m3zOH3+RODCx9T51F/nWxEZqho323djF/fbUxPqEwl++
+         SiLd+haaUVFcLtjdSkrjNb5t+ta1qbS5Gwbk0ahWz+/l8rDMrMmQcaA1Zf363OLZHzOz
+         0x1NVgLss+o8s03FRrP6W8l+PxIT7BSVaYEUKjwEuIqrdR5mrGHgQA4DLKSyu45dCHE0
+         ER6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682721162; x=1685313162;
+        d=1e100.net; s=20221208; t=1682721430; x=1685313430;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=O8L0o1sAlxY6lrvihDvAAf8F9qY4OxJ51gZwJAMl8MM=;
-        b=iA/Bbr54voZWXVXdPG2DobqWzCg98c0KkrbWIBNDWUcIO5jf2p5voVCoTDeELchCt7
-         3K9ifm46JRw6lFzlGPnLvJ0jdx6DIR8MeaovkI3Mi9x/V8VSJzufWuAqrdWTxt4zjsC0
-         s60gxs9bukwIexjOFOimBX7gavADnicwSQYhXEOoqeeJ1SKnxKsqkaFmyZZ2f4imzJIB
-         kugEwmqQx4AGvEGyKNnGbslLSbn6hglXlMChgaZXXtnUMvusXtm2zo5vcwUd/ujQ1aOP
-         tBxGbTz2hwK96h4IJA+30MWoGsKaIRkmy7RclV8VAPFrVMRf1j8uoT2F6xUt/+nsc8bH
-         a/Eg==
-X-Gm-Message-State: AC+VfDzv7dV+n2u8+i4kcxPSBbP65rP6vjvDWuBWS1HwMeOVPKirmRTw
-	JtSS12MiRRAfE59Kic3Bc6yyqO8N8Er1O5p4oIvYu98G8bw=
-X-Google-Smtp-Source: ACHHUZ5C4D+3gTAx4ICr9zTxHJaaTEv2bP5RuQ/h7mn70+TcT4vTSAu3JOglWG4uVZb7K3nEFwRdTg==
-X-Received: by 2002:a5d:6291:0:b0:2f7:f6e:566 with SMTP id k17-20020a5d6291000000b002f70f6e0566mr5344739wru.31.1682721162670;
-        Fri, 28 Apr 2023 15:32:42 -0700 (PDT)
+        bh=NJbJykr/INsV1uYXaU0jMtwgdpc2qfAaY6+u7ZR54vc=;
+        b=SskAy3w+N1AFs229ffFuydV1Ra+MEMdWwet+kmIdg8seevCC1s+I+EpA1GkRbyHW/D
+         jwwXR0T1UTRim8GpGiPLqyweRRXw1WGJjPKRN4rdQYn2Qc41xXksVdyk6Ok0vwRQcxrj
+         FV4I0jC8d/v8+a7w2wNdl5015imJFC1Jk8eKqz0McGmSToh2WI4b1ubgYOJxpEB0/d+M
+         RNDgCsSeoX6w7Fxm+Y7dJuPw/6LWHXj5rDIIr6ujrJOZfEJZHcCOLE3xdRmdkQ5n906e
+         qSfHamjq54OPS1PjwfoHSh4hVbXmhE00tWrCrdxsrTegy5YY7cbamn/2W9P+hyEgm7m/
+         7pJg==
+X-Gm-Message-State: AC+VfDzNiPhPAZ4jUmy+mErLZaZh96Ah56apIcwJroWsJPIlak2Y7hnP
+	5XVy5bMiolyfG7lDqaXa0ct0EzW7
+X-Google-Smtp-Source: ACHHUZ5dElpqekjLlyXw1SjTa6Nj5mZQXAJmbiZhTMbxSVPzfLqct84A9IWpxt8DHDhh7YQxR4RVKw==
+X-Received: by 2002:adf:ff81:0:b0:2d0:58f9:a6b with SMTP id j1-20020adfff81000000b002d058f90a6bmr8122633wrr.13.1682721430504;
+        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.192.175] (47.red-88-28-19.dynamicip.rima-tde.net. [88.28.19.47])
-        by smtp.gmail.com with ESMTPSA id w6-20020adfee46000000b002f0442a2d3asm22072998wro.48.2023.04.28.15.32.38
+        by smtp.gmail.com with ESMTPSA id g9-20020a05600c000900b003f0aa490336sm28797891wmc.26.2023.04.28.15.37.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Apr 2023 15:32:42 -0700 (PDT)
-Message-ID: <d3e7cb83-27ba-b2e0-ac5e-73956725d22c@linaro.org>
-Date: Fri, 28 Apr 2023 23:32:36 +0100
+        Fri, 28 Apr 2023 15:37:10 -0700 (PDT)
+Message-ID: <f29b7c51-97d2-96b6-077d-71ceb246f41c@linaro.org>
+Date: Fri, 28 Apr 2023 23:37:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.10.0
-Subject: Re: [PATCH v11 08/13] tests/qtest: Fix tests when no KVM or TCG are
- present
+Subject: Re: [PATCH v11 07/13] target/arm: move cpu_tcg to tcg/cpu32.c
 Content-Language: en-US
 To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -84,42 +83,35 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
  Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>
+ Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
 References: <20230426180013.14814-1-farosas@suse.de>
- <20230426180013.14814-9-farosas@suse.de>
+ <20230426180013.14814-8-farosas@suse.de>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230426180013.14814-9-farosas@suse.de>
+In-Reply-To: <20230426180013.14814-8-farosas@suse.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: GilAiNLoVRAX
+X-TUID: 2b6Q+1NFKxPX
 
 On 26/4/23 20:00, Fabiano Rosas wrote:
-> It is possible to have a build with both TCG and KVM disabled due to
-> Xen requiring the i386 and x86_64 binaries to be present in an aarch64
-> host.
+> From: Claudio Fontana <cfontana@suse.de>
 > 
-> If we build with --disable-tcg on the aarch64 host, we will end-up
-> with a QEMU binary (x86) that does not support TCG nor KVM.
+> move the module containing cpu models definitions
+> for 32bit TCG-only CPUs to tcg/ and rename it for clarity.
 > 
-> Skip tests that crash or hang in the above scenario. Do not include
-> any test cases if TCG and KVM are missing.
-> 
-> Make sure that calls to qtest_has_accel are placed after g_test_init
-> in similar fashion to commit ae4b01b349 ("tests: Ensure TAP version is
-> printed before other messages") to avoid TAP parsing errors.
-> 
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Claudio Fontana <cfontana@suse.de>
 > Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Acked-by: Thomas Huth <thuth@redhat.com>
 > ---
->   tests/qtest/bios-tables-test.c | 11 +++++++++--
->   tests/qtest/boot-serial-test.c |  5 +++++
->   tests/qtest/migration-test.c   |  9 ++++++++-
->   tests/qtest/pxe-test.c         |  8 +++++++-
->   tests/qtest/vmgenid-test.c     |  9 +++++++--
->   5 files changed, 36 insertions(+), 6 deletions(-)
+>   hw/arm/virt.c                         |  2 --
+>   target/arm/meson.build                |  1 -
+>   target/arm/{cpu_tcg.c => tcg/cpu32.c} | 13 +++----------
+>   target/arm/tcg/cpu64.c                |  2 +-
+>   target/arm/tcg/meson.build            |  1 +
+>   5 files changed, 5 insertions(+), 14 deletions(-)
+>   rename target/arm/{cpu_tcg.c => tcg/cpu32.c} (99%)
+
+I think it took almost 3 years to get this in... :)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

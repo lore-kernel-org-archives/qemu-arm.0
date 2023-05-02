@@ -1,145 +1,104 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp279235ejq;
-        Thu, 4 May 2023 05:56:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ52gsTdx3aU1nI/84qQxKcPAM/rGuDWYWZZu7TfrIJ5HLRAdriIrkVoYr/e+FEb3c4vP1CD
-X-Received: by 2002:a5d:456a:0:b0:307:71c6:8a4c with SMTP id a10-20020a5d456a000000b0030771c68a4cmr22526wrc.52.1683204976865;
-        Thu, 04 May 2023 05:56:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683204976; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2238847ejm;
+        Tue, 2 May 2023 07:51:59 -0700 (PDT)
+X-Received: by 2002:a05:6402:690:b0:504:94b9:f21 with SMTP id f16-20020a056402069000b0050494b90f21mr8740183edy.27.1683039119495;
+        Tue, 02 May 2023 07:51:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683039119; cv=none;
         d=google.com; s=arc-20160816;
-        b=mEtY/WiuLNW04Y+PcHz4iezUvutyQb6nUabg2ogkbaqdSU5MYqCyeOo2g1g4bgRPMi
-         e4MXDOjzTOUdiR6UY3H9Rh5IcTOhmtiS3hK/YyQtZiNuoh1ay2du8nnVLYPgKLZzJK8Y
-         DbYpYVc7GTnfyA1bWNXwjyYWi+UE/jf2p7dvfu1gU+Qp8Zp5y1qrdGi5mFdMzWOdzAC6
-         qcWsa136Xy9BWseCYTXRdcCEOd5lhLlZGN4sQW66BvRtGY3LtfodTFmOm/Q4HDWyCCzb
-         adD2xzYTyyQFoIQVyCeqDQYN0EdVmzxrqC4Pf6KCgyvWhztWA4vvJwlYNLAQ3mOIE2U5
-         FV7w==
+        b=1J8pMdhw7Bk4BfBWXtOiC4sdCaUmhOEdm7ukgWbp3Vkjqw3CzZW31GDR6HxMKtK6yP
+         Znqu0WQh4DDQrVdhhKAzRWNlaCOcBkMOaEoNlkihWM+rXkXA3lmcwFqeZcHSibtJNptx
+         TfEJpR9HjTDcpl5Gjz4c7DQEtkay/E0RcAf0dxxObi0i2TwMCMN3GSMz6g6rO0qoKJ4m
+         Y53brILU+GdAhHht5++73sZXkT6TpavXb0BnOlOYrWk1BpRkgLxEDvORM/U0fiJCbKwm
+         R7PVHAQzlCrHDfcDXthQeJOAwHBzZ2xSroN8xl5QSsRcA6EaVfKQDL32AV1CkMhw0da5
+         tsHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=QTjxPNXUea4Fx/ok4KnuX3WtYHWnEYvpZix0XRJS4jQ=;
-        b=nhhBp299cNr4EnqMiasmpJEyJ+8YJlNA5HgSkbyLaFFV7UKUJmJxyaeoTRSRWJeirp
-         dPRzhHyEl0i3gs8/kSZJ3eY968XTWHRlXx7BnGjBJQ794cYYk2GeRvkr/vuAQhWciU1f
-         o518l2dEUWdbIXyu3jP/RGyEZqlnPFJurReV3EcrpvZ2odbHBna8WeiTl0rYsv9EuIbQ
-         Mksz+JdouJ+pkrDqp3Nkwkgr/qdEPxz6YV4frDJ9L8N/llHCPELlhYrXDb3+p+UfU74y
-         2KYi1m6LJWZpOmbWIX9C8gi216Fq0JPYyZKWaET1ZT/PIboqEQf6IfHZUblbz/aZS1S4
-         ut+Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=mF+zMGVbAPbV/xStYxuDg9Tgjy/fj1dzOt1Y9eEZuSU=;
+        b=RCsyDl1g756K3NyDW3pn7mO6ggV/Caa8sOFSIeDOzDeE441xdvs2jDdRr7c20DiLWs
+         i9xbvkOwJpkYlgjSKYV7LWygLPJ/LcPfZ9dsiJB3XyaZJHW2888TaCeexhJdtwHBhb2m
+         aiSYRte+sUXMemOueB0onU112KRArQkXTkXLHA5xC7N+or5hKO6FMjZVCwd9ZeRSr5MD
+         OYCNn7FVyzNfx5UYwkTkEw8ooRlkpCSbBYicHHXmW+bv+xJ9H9XrRQhCi5ZDRSPbVmWp
+         SKLAo8J9pWWvY35oNJqOGR9jJvxPphctSEXxwGoBtwo+P3rJVCUkIAMLX6L1233OMA8u
+         OuCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=dl0F7kfW;
-       dkim=neutral (no key) header.i=@suse.de header.b=4yfZmRBA;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
-        by mx.google.com with ESMTPS id 19-20020a05600c24d300b003ee0513b28bsi2294805wmu.15.2023.05.04.05.56.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 May 2023 05:56:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H1tGyX2A;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a29-20020a50c31d000000b005049b0f6d9dsor1484294edb.6.2023.05.02.07.51.59
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 02 May 2023 07:51:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=dl0F7kfW;
-       dkim=neutral (no key) header.i=@suse.de header.b=4yfZmRBA;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 55DFE20AA0;
-	Thu,  4 May 2023 12:56:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1683204976; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QTjxPNXUea4Fx/ok4KnuX3WtYHWnEYvpZix0XRJS4jQ=;
-	b=dl0F7kfWatFTLFqDh7ruCwcQ9Pzm25Rv87yi6deE209IFGxsXjB6u+2PPwk9YlakIgEXWR
-	o3nVg75LvmFmzTbrxD+gHOhbshYvLma0ml/mkTszEA6tVdJf03QykNlaz7ssqA3VtyuH6s
-	x/WImXPfMnD7hxjXnZ2lneGmkBuThMU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1683204976;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QTjxPNXUea4Fx/ok4KnuX3WtYHWnEYvpZix0XRJS4jQ=;
-	b=4yfZmRBAPO82SV5L2fWn8QB+WpRsOhcRw+owWntNv71mVAleX4tPcuaZwM4yvqecbcqORz
-	8Dg5quxDH/TNt2AQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id A3112133F7;
-	Thu,  4 May 2023 12:56:15 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id xVS6J2+rU2T/TAAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 04 May 2023 12:56:15 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Laurent
- Vivier <lvivier@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Wainer dos Santos
- Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, Leif
- Lindholm <quic_llindhol@quicinc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Helge Deller <deller@gmx.de>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Juan Quintela
- <quintela@redhat.com>, John Snow <jsnow@redhat.com>, Yoshinori Sato
- <ysato@users.sourceforge.jp>, =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>, Ilya
- Leoshkevich <iii@linux.ibm.com>, Pavel Dovgalyuk
- <pavel.dovgaluk@ispras.ru>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Beraldo Leal <bleal@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, Mark
- Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, Aurelien Jarno
- <aurelien@aurel32.net>, David Hildenbrand <david@redhat.com>, Markus
- Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>, Joel
- Stanley <joel@jms.id.au>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH 05/22] hw/arm: Select VIRTIO_NET for virt machine
-In-Reply-To: <e7185f74-f041-05b1-0f76-bab6d724e796@redhat.com>
-References: <20230503091244.1450613-1-alex.bennee@linaro.org>
- <20230503091244.1450613-6-alex.bennee@linaro.org>
- <531a2eab-f0e6-46a5-c021-c82746c1ae38@redhat.com>
- <87y1m5s9yl.fsf@linaro.org>
- <5fb214d8-4a54-f896-f23f-fe9e646e4b2d@redhat.com>
- <CAFEAcA-Cfz8CkNeTQodoSitocBmm4ddk25Dq8x=5FiiGvaS34Q@mail.gmail.com>
- <e7185f74-f041-05b1-0f76-bab6d724e796@redhat.com>
-Date: Thu, 04 May 2023 09:56:13 -0300
-Message-ID: <878re4cl1u.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=H1tGyX2A;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683039119; x=1685631119;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=mF+zMGVbAPbV/xStYxuDg9Tgjy/fj1dzOt1Y9eEZuSU=;
+        b=H1tGyX2AB/+av7b2+M1zqnxBg3r4zwuqvQs8ZSZx86sGtww9Ll0RFpJETKSJMEGDHW
+         zl1HHTCt/FGd9oFvcLryrcQqlHDeTKb9vMfjglguSxryurgogKRf0ljNFFoj5LVmNfgX
+         BJorGPGzRq9AEen7kRtpP5kqlR42vpE8t4lsEd1ppFMb+8zxD4e6hb9EgVwdBfcHJfux
+         4IwK1rkjJdNVGbENH3aFk+BYE4uwSf+Le1JA08IuqKeU7RAtmQegbRJd+/LSswwC/8ch
+         gsPhLkQ8kJtIvA3m32Dg9qI5hVHKrvLXw+QAoFUR0sYhXlZMw1WH5CRtY1MFloxdQYlr
+         M5ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683039119; x=1685631119;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=mF+zMGVbAPbV/xStYxuDg9Tgjy/fj1dzOt1Y9eEZuSU=;
+        b=mEgnWlpioHC7/qq75VyUisTtmtqDlrU7z/vFFmOfeeEqzpSITlaWgzjFqBcR/f9s6Z
+         Iyep7Ctvbhbg3GYJPW4xisWzsNixnamtmnocCtL038BK/nxb4TulMO1CqSIaudXqP6NX
+         oL8I6N7aZiNkJVxwLWpHlGVoGUF4TzKKNi86fgwsMRsuveCHmgT9AycP7WEOAIwZb+ZO
+         3EESrZ7pg24uSgGJdYSIdGzCC1+LIeiupvtRx2QgNh2KNpnZ2dUCOMsZqnOyhUKKSZOo
+         0n4pmcgKXNOjkf7Fzf73S8uOCtECccvJbUqE6+pI7gs263UFGFmtNp7OucxpFXvbeZD6
+         q/NA==
+X-Gm-Message-State: AC+VfDzgLiiqEowT5tGegVHOv2XK1FepslHveKYGo7XzJeqiM4Iig48a
+	kfa3BvvxALPKafteqU4pGaoXoyjkVw+AGBKb/5NdUC/M
+X-Google-Smtp-Source: ACHHUZ5nV1hLMIWn0EQaQVzg89f/PUQgrLsn3+SRY4V/jDDpIIhk5o7moY6Xa7th94Vhyew4xDQAbUnnOMpwbYTLUtQ=
+X-Received: by 2002:a05:6402:407:b0:501:d52d:7f88 with SMTP id
+ q7-20020a056402040700b00501d52d7f88mr7620187edv.10.1683039119008; Tue, 02 May
+ 2023 07:51:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: +mgQ0zxSKz4J
+References: <20230426180013.14814-1-farosas@suse.de> <CAFEAcA_ZVpZzuvZ71NzgweRC5Uti0T_fqG00paqDDe18QP-veQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_ZVpZzuvZ71NzgweRC5Uti0T_fqG00paqDDe18QP-veQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 May 2023 15:51:48 +0100
+Message-ID: <CAFEAcA-s6P2Y5nNQMyACeK3+4cuSrFfqqEdFW-BDToy_YXj64g@mail.gmail.com>
+Subject: Re: [PATCH v11 00/13] target/arm: Allow CONFIG_TCG=n builds
+To: Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: SNj9g5LqOJiA
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
-
-> On 5/3/23 20:32, Peter Maydell wrote:
->> Do we really want to build a QEMU that then barfs unless
->> you pass -nodefaults, though ? That doesn't seem very useful.
->> Something somewhere ought to be saying "if you want the
->> virt board then you almost certainly want these".
+On Tue, 2 May 2023 at 10:55, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Well, the point is that --without-default-devices is intended to be for 
-> people that write their device config by hand.
+> On Wed, 26 Apr 2023 at 19:00, Fabiano Rosas <farosas@suse.de> wrote:
+> >
+> > Hi,
+> >
+> > Some minor changes:
+> >
+> > - new patch to move a test under CONFIG_TCG (broken on master);
+> > - new patch to document the unsupported CPU test (Philippe);
+> > - changed the test skip message when no KVM or TCG are present (Igor).
 >
+> Applied to target-arm.next; thanks for your persistence in
+> working through the many versions of this patchset.
 
-It's a bit hard to maintain the original intention with just
-documentation. Couldn't we require that --without-default-devices always
-be accompanied by --with-devices? And more to the point of Peter's
-question, couldn't we just leave the defaults off unconditionally when
---without-default-devices is passed without --with-devices?
+Update: I had to drop "gitlab-ci: Check building KVM-only aarch64 target"
+because it enables a CI job that fails on our aarch64 runner
+(because it wants to run tests using KVM but that machine
+isn't configured to allow the runner to use KVM).
 
-The coupling of -nodefaults with --without-default-devices is a bit
-redundant. If we're choosing to not build some devices, then the QEMU
-binary should already know that.
-
-Just to be clear, -nodefaults by itself still makes sense because we can
-have a simple command line for those using QEMU directly while allowing
-the management layer to fine tune the devices.
-
-In the long run, I think we need to add some configure option that gives
-us pure allnoconfig so we can have that in the CI and catch these CONFIG
-issues before merging. There's no reason to merge a new CONFIG if it
-will then be impossible to turn it off.
+thanks
+-- PMM

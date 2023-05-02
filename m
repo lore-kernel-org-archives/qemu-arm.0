@@ -1,120 +1,106 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp1368501ejm;
-        Mon, 1 May 2023 00:42:54 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6ml0Fl7SuQa80F4mARjKUtYQd0nihRUwD/0FB6uw/DZz/VcMP+4Lp/FqYA8nldlrFhL5/p
-X-Received: by 2002:a05:6214:5086:b0:5ef:8b22:699e with SMTP id kk6-20020a056214508600b005ef8b22699emr19777862qvb.14.1682926974179;
-        Mon, 01 May 2023 00:42:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682926974; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2042003ejm;
+        Tue, 2 May 2023 02:04:06 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4c6VmW/O5SUsnBkc+l03vwStvkHJlShY85ifqck11W6N9WzMvsW35XxvzHTGIjzK3wKMtH
+X-Received: by 2002:ac8:5f87:0:b0:3e6:98a5:a965 with SMTP id j7-20020ac85f87000000b003e698a5a965mr23576226qta.22.1683018245782;
+        Tue, 02 May 2023 02:04:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683018245; cv=none;
         d=google.com; s=arc-20160816;
-        b=xraRN8gdkNY0ZAVprYTnpH7vfA0Im79QwoLN3d1a1VTbScG4AICa9uW2aWL+pJ6PYk
-         YJN9/2i8h3RlfVFCl1nUGTKx7yfn7OpOsyBCIM8A3CCujNw2iTrfloGZw9jE/V6+YxZ3
-         Bbwbe50AdpW2y+GIS3URMVoHjEe7KOOZTRH90JPIJhQIT9r4VWnSnbUgUjCLYfsGOodW
-         j07X009iXJBzR22goshszr9eCn9xgorOyFjgutK9XbQp9RrP+hskIE2dQ46p8RyeSTzI
-         HvngjkrfToX5/w6RsDWqi7L/5fAhals8VUAEHhB+Wh5YBIi6M0KWw02ph5lhQnhi9s0F
-         o3Hg==
+        b=L+JRuGQ9wEnh3JNo1cLKHTV64aKLp7AzMoipsSA8ao/HDlwgSoOR+mNLfAjemKCcDm
+         qi+wdbJoOweln41hSinnXKEB6Ybfbu7PsOejV2K9Y4vSZZ9kspnAZnmB9ekpGd6eR+bm
+         +nRCePIaT6RurdKvtlEZ9Q4OK6hqar/MDtoNw8IQrSDvjr77JH+Q40uYqk69fmW1/KpL
+         sw5cQ5LGl1BCWWFpaXr8WwBRxeU4IC9IoGQWo5fgcOAnkzcl1ZZ9ExpGNzcVEDOp/IqT
+         +D3qTq377fQ+Li0EFZjNfNoSkIhAwfrczAc8BUPkUA5VPCHMRenchoXF2+TpMXuTnGVu
+         GLHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=sEK/UyQxvH/3fSw2l1tQqWXyFiev0uVxiXsEMYLzmXI=;
-        b=uFUEVLUocdz0AC3/QFWOJjZemN0aXkYaHneZ0JBUBc/ho+yUitk0t511YEdZf4jKjG
-         ZQ64j23ymTX9mkQUvGSHbEbcxJ5zNTDkg+AL+DK5JIfdZaPwiQJAUWf3Nt7NInWfenHY
-         k7GLfk0Wl5vOIshPBMUdiVnLsX9/vgi2jJM3iu7PSs5t5XddZ5AH1t2Wyc4/AJWptSNv
-         mO2+LmRzAXxOJDnFwto2dgGbsCvp73Cd5TTfwO05L+fulbLE7XOIF2jVCY+sj2w0inJ7
-         d/j7KmUMXem5XBQQe0dx9GJdgwcXz7BMfFp3PpzJb1XVWlICluG2dIaE8JoI8QXEQmXc
-         HdiQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=cSbRx1H+cG8NzIjCF3YLAeY91SKkBCotNuy/KA1bti4=;
+        b=vwET8J7JKthuvyEd6ou75p4Em65oO9B+H8/VBuCQEpV70Mcc+JS2x4nhs6mbJOLlFF
+         jrGOvs2RFEx/S9eUwwArluB4D/NniXRChOcD4nQbUDpMAst0xvdefRrG0uttf9Hr03hd
+         VBwGN/enIX9zN34QIyTkM1OsqngEAS71EZCEhiIiimSetGWS5RfrCtMG45jK8ZjYYEE1
+         PaTtKCz0LcJtCLGzxhMsB5vX5V72U9i1lS8XDhzpLpXOQm5/LkhQd1R6scZlO/g3IWNl
+         N3DE/3tibuXdSSH0ZeY3WwGJF3uFd1sPxUZta7Js6VWny3NtRlaQzVXsAVh9mfX69Vwe
+         tYUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qPlZRWhh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1Low4jn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13-20020a056214224d00b005ef676dbf85si16238852qvc.420.2023.05.01.00.42.54
+        by mx.google.com with ESMTPS id x5-20020a05622a000500b003e656530eb0si17771738qtw.32.2023.05.02.02.04.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 May 2023 00:42:54 -0700 (PDT)
+        Tue, 02 May 2023 02:04:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qPlZRWhh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1Low4jn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ptOAz-0000o5-55; Mon, 01 May 2023 03:42:25 -0400
+	id 1ptlv5-0001oz-Ra; Tue, 02 May 2023 05:03:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ptOAv-0000mv-H1
- for qemu-arm@nongnu.org; Mon, 01 May 2023 03:42:23 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ptOAt-0005Hp-9R
- for qemu-arm@nongnu.org; Mon, 01 May 2023 03:42:21 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-2f833bda191so1218204f8f.1
- for <qemu-arm@nongnu.org>; Mon, 01 May 2023 00:42:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1682926937; x=1685518937;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sEK/UyQxvH/3fSw2l1tQqWXyFiev0uVxiXsEMYLzmXI=;
- b=qPlZRWhh3TJ7GVSdzorgbV9W1kPXJiH+IPVOiQ9DMjaKbrM6x90DuNntKLgsHekPb9
- LFvrWPVAQM+JlVoZq0KbtQut4u371/Iq4GZkXAOodw2MsXKgGtWfFNYLECBoddnODU0Q
- 03t9H07/NVDb0Y6bZ6/dyz/V7RbokEwZvU5pezC0cajp+yDHodwUgDsE4Dqpa6mxFM2N
- hzSfKDisNjQxPlpD0nnvA9MDx7HcuteVtlhiP7tncYy1xckmAr3XXLOi/jQVTZHz3dxQ
- 4kNfzFTjPubzIosb3fBVOHgcNuf06DGJ+5JD8bdXEoSWfQNA8gY1t9Tsu1m2vQOrXRLE
- +lsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682926937; x=1685518937;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=sEK/UyQxvH/3fSw2l1tQqWXyFiev0uVxiXsEMYLzmXI=;
- b=Ep3A2e293zFCMZuRQcNVgwOpWys08HP2GloHu7iEmc7KFYFmEAzilAGI+WXTSMTl89
- pR+VcUyFHtKg7ce/gKY9SDQAcZdTee8FZI42tlaxlGpL8+7kxjpVIi7I9+gkk6JKJl8b
- nB/NhRCVw1AdGvGsDyMed9J7mWoVmAUXrIs6CTJlT+TWxzMqHYs6cGYhuaL2YOIHnnb0
- qHAZjFQPE3v4ii1gmn4K0pp0l4qQQJeG0ypMPVpRWgmSAe+8dPlPbn4xbiwav64nNpPg
- vdzI0Kg2aqA6bvFtX4ykqOLIn2KYaR+jzM+VKpHOp5lOrX5ifTtzEnU8m5LrjxhS2mg8
- bf7w==
-X-Gm-Message-State: AC+VfDwXWeFkKWl5iGkrOdFharsNXBp4DoPAfD4Fk1FzoIFVSHJZ8Bkf
- pEsMhr0kcrDv9LCSUEAx5gehlA==
-X-Received: by 2002:a5d:65c2:0:b0:2fe:c0ea:18b5 with SMTP id
- e2-20020a5d65c2000000b002fec0ea18b5mr8086651wrw.35.1682926937531; 
- Mon, 01 May 2023 00:42:17 -0700 (PDT)
-Received: from [10.175.90.180] ([86.111.162.250])
- by smtp.gmail.com with ESMTPSA id
- d18-20020a5d4f92000000b002c7163660a9sm27476781wru.105.2023.05.01.00.42.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 May 2023 00:42:17 -0700 (PDT)
-Message-ID: <8ae3e772-c5c2-42ad-ffeb-f594f81b6a48@linaro.org>
-Date: Mon, 1 May 2023 08:42:15 +0100
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1ptlv4-0001ob-ID
+ for qemu-arm@nongnu.org; Tue, 02 May 2023 05:03:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1ptlv2-0005dZ-Uj
+ for qemu-arm@nongnu.org; Tue, 02 May 2023 05:03:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1683018211;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cSbRx1H+cG8NzIjCF3YLAeY91SKkBCotNuy/KA1bti4=;
+ b=K1Low4jnr9rM1cYsZ/cEMNYbTZobyw2PpCQibxDVkElhV4FkeA8aooh4KOBIgP05VEkQDs
+ TlGYHqjIG050Dq4V7IxiynWXcg0SvYl2zMgWn1qAxQVQ1pjgdM4ulzAtxMVLPtkCJk/xTF
+ PW+arRFeaO2tXGRJ/AAh1ARNM7DN0B4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-201-KVywX8IFN7u-YYNhIIOb8w-1; Tue, 02 May 2023 05:03:27 -0400
+X-MC-Unique: KVywX8IFN7u-YYNhIIOb8w-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4F573885626;
+ Tue,  2 May 2023 09:03:27 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D30A12166B26;
+ Tue,  2 May 2023 09:03:26 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>, quintela@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ kvm@vger.kernel.org, Eric Auger <eauger@redhat.com>, Gavin Shan
+ <gshan@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Andrea Bolognani <abologna@redhat.com>
+Subject: Re: [PATCH v7 1/1] arm/kvm: add support for MTE
+In-Reply-To: <64915da6-4276-1603-1454-9350a44561d8@linaro.org>
+Organization: Red Hat GmbH
+References: <20230428095533.21747-1-cohuck@redhat.com>
+ <20230428095533.21747-2-cohuck@redhat.com> <87sfcj99rn.fsf@secure.mitica>
+ <64915da6-4276-1603-1454-9350a44561d8@linaro.org>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Tue, 02 May 2023 11:03:25 +0200
+Message-ID: <871qjzcdgi.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v3 06/57] tcg/i386: Generalize multi-part load overlap test
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, git@xen0n.name, jiaxun.yang@flygoat.com
-References: <20230424054105.1579315-1-richard.henderson@linaro.org>
- <20230424054105.1579315-7-richard.henderson@linaro.org>
- <92b3252a-fd8a-91c6-c90a-3a858fd126fe@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <92b3252a-fd8a-91c6-c90a-3a858fd126fe@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.422,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -130,49 +116,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IOLNlBOFd6yy
+X-TUID: QxNz43/u4uIl
 
-On 4/29/23 14:01, Philippe Mathieu-Daudé wrote:
-> On 24/4/23 07:40, Richard Henderson wrote:
->> Test for both base and index; use datahi as a temporary, overwritten
->> by the final load.  Always perform the loads in ascending order, so
->> that any (user-only) fault sees the correct address.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   tcg/i386/tcg-target.c.inc | 31 +++++++++++++++----------------
->>   1 file changed, 15 insertions(+), 16 deletions(-)
->>
->> diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
->> index b986109d77..794d440a9e 100644
->> --- a/tcg/i386/tcg-target.c.inc
->> +++ b/tcg/i386/tcg-target.c.inc
->> @@ -2223,23 +2223,22 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg datalo, 
->> TCGReg datahi,
->>           if (TCG_TARGET_REG_BITS == 64) {
->>               tcg_out_modrm_sib_offset(s, movop + P_REXW + seg, datalo,
->>                                        base, index, 0, ofs);
->> +            break;
->> +        }
->> +        if (use_movbe) {
->> +            TCGReg t = datalo;
->> +            datalo = datahi;
->> +            datahi = t;
->> +        }
->> +        if (base == datalo || index == datalo) {
->> +            tcg_out_modrm_sib_offset(s, OPC_LEA, datahi, base, index, 0, ofs);
->> +            tcg_out_modrm_offset(s, movop + seg, datalo, datahi, 0);
->> +            tcg_out_modrm_offset(s, movop + seg, datahi, datahi, 4);
-> 
-> LGTM but I'd rather have someone fluent with x86 review this one...
+On Mon, May 01 2023, Richard Henderson <richard.henderson@linaro.org> wrote:
 
-The original address is (base + (index << 0) + ofs).
+> On 4/28/23 18:50, Juan Quintela wrote:
+>> Pardon my ignorance here, but to try to help with migration.  How is
+>> this mte tag stored?
+>> - 1 array of 8bits per page of memory
+>> - 1 array of 64bits per page of memory
+>> - whatever
+>> 
+>> Lets asume that it is 1 byte per page. For the explanation it don't
+>> matter, only matters that it is an array of things that are one for each
+>> page.
+>
+> Not that it matters, as you say, but for concreteness, 1 4-bit tag per 16 bytes, packed, 
+> so 128 bytes per 4k page.
+>
+>> So my suggestion is just to send another array:
+>> 
+>> - 1 array of page addresses
+>> - 1 array of page tags that correspond to the previous one
+>> - 1 array of pages that correspond to the previous addresses
+>> 
+>> You put compatiblity marks here and there checking that you are using
+>> mte (and the same version) in both sides and you call that a day.
+>
+> Sounds reasonable.
 
-If datalo overlaps either base or index, then we can't use the same form of address for 
-the second load for datahi.  So we "Load Effective Address" to perform the computation of 
-the original address once, storing into datahi as temporary (we are guaranteed that datalo 
-!= datahi because they're both outputs).  After that, the two addresses that we want are 
-(datahi + 0) and (datahi + 4).
+Yes, something like that sounds reasonable as an interface.
 
+>
+>> Notice that this requires the series (still not upstream but already on
+>> the list) that move the zero page detection to the multifd thread,
+>> because I am assuming that zero pages also have tags (yes, it was not a
+>> very impressive guess).
+>
+> Correct.  "Proper" zero detection would include checking the tags as well.
+> Zero tags are what you get from the kernel on a new allocation.
+>
+>> Now you need to tell me if I should do this for each page, or use some
+>> kind of scatter-gather function that allows me to receive the mte tags
+>> from an array of pages.
+>
+> That is going to depend on if KVM exposes an interface with which to bulk-set tags (STGM, 
+> "store tag multiple", is only available to kernel mode for some reason), a-la 
+> arch/arm64/mm/copypage.c (which copies the page data then the page tags separately).
+>
+> For the moment, KVM believes that memcpy from userspace is sufficient, which means we'll 
+> want a custom memcpy using STGP to store 16 bytes along with its tag.
+>
+>> You could pass this information when we are searching for dirty pages,
+>> but it is going to be complicated doing that (basically we only pass the
+>> dirty page id, nothing else).
+>
+> A page can be dirtied by changing nothing but a tag.
+> So we cannot of course send tags "early", they must come with the data.
+> I'm not 100% sure I understood your question here.
 
-r~
+Last time MTE migration came up, we thought that we would need to go
+with an uffd extension (page + extra data) to handle the postcopy case
+properly (i.e. use some kind of array for precopy, and that interface
+extension for postcopy.) TBH, I'm not sure if multifd makes any
+difference here.
+
+>
+>> Another question, if you are using MTE, all pages have MTE, right?
+>> Or there are other exceptions?
+>
+> No such systems are built yet, so we won't know what corner cases the host system will 
+> have to cope with, but I believe as written so far all pages must have tags when MTE is 
+> enabled by KVM.
+
+Has anyone been able to access a real system with MTE? (All the systems
+where I had hoped that MTE would be available didn't have MTE in the end
+so far, so I'd be interested to hear if anybody else already got to play
+with one.) Honestly, I don't want to even try to test migration if I only
+have access to MTE on the FVP...
+

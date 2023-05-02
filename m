@@ -1,96 +1,139 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2061986ejm;
-        Tue, 2 May 2023 02:55:24 -0700 (PDT)
-X-Received: by 2002:a17:907:360b:b0:959:c6cb:9fc8 with SMTP id bk11-20020a170907360b00b00959c6cb9fc8mr16707613ejc.29.1683021324440;
-        Tue, 02 May 2023 02:55:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683021324; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2082803ejm;
+        Tue, 2 May 2023 03:35:18 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ54GXbGj2rVC+Ejkbl6hsLLlDVmIjtLxE733C8e8NrTYQNqw7xK8Z0rlNw62fxrNgqa4tz7
+X-Received: by 2002:a05:622a:ce:b0:3e2:e71e:ff78 with SMTP id p14-20020a05622a00ce00b003e2e71eff78mr23252272qtw.55.1683023718054;
+        Tue, 02 May 2023 03:35:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683023718; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZE+ab85S32Bt+IvdaGkeD7kla6SsxpEyL4MtxuHPhIopQ4Fzl+C9LaOGlWwxjuirJ
-         dhzfMxLvrX5ktIb8PKC1pfnaSzWhCzYPOJl4BDNDC5Zgz37R6rnjM5v7Su1dB7XhHKAI
-         v67nwKXLReixFpJBo7liWkSKn6UyMO2kwz2TPAzsa0m+hCeBQA4HG75GVCPtcbmZ/r9v
-         pyZwSFWU/CsWBnNt5zFQGnUkLgBEUnW5WYlNCXG2wXo1bStm27L4sU+zEM+WKQ9fxE3w
-         Dvjmo+XIEKnE6OmDvwcu4SXxow103xtmMrLdLA6yziGRQplA/oLFmIy9suE53MbQqKtO
-         rDCQ==
+        b=T87OO27DX8P7uIdGaqdx9WREx/6tlv/4jxVFvaB9S+gsvitAnRMlbn8MJUaLq/687X
+         YgulmEaE4A1E8+VFR/6DoidoDi1geX7jPOTxjgFVOOEBFb1e9KQbKGnqsTnUGNkBk5Ge
+         zVfHKHuVCNqdqD55Cq77kx2mZOv+ShVVVBdf/jhGstqkzQ0Re6YY8CGeMuuLQsryHiRU
+         ml/92OOdVYVAcjdOtcKierCmFmCc50wzh1/5zGTrGWle6oHFAZQ/tBQIaMu7puOlAtcq
+         yvz2GI6JZNpJle4GR2ARw6bZVcU7F61hMZlCEVN6zTvECrAEOMmvO48l2U1o63mWEIzH
+         mhPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Tt4/gwWIWNEU5OhxPl9ay/wAaV+k05WcoQgOscbm9ZQ=;
-        b=VrdjrNiuPNtuTUMvDfJfs3S2tlXx6aFm/XR84EzWG8Z7oa/8A/JDFdJSr5JdMyLOGo
-         0NF5i5YwRSrbLUPkvdfMKlbZjPYvYrdXmCymmYub7Mgwj9on1IrK1xPf1YtLxuFVA8J5
-         RrCeDJ0+EMZQ7Jl21lUhr4VXwr7SznifqPL7L4tAf1lbuWGe0ZtpUiww6156njqbZjYe
-         Krsi2JYBl3CSRAGuwLflR4lPs1+JIpOgvvpn0ziQuG6e75wJaePjBos+QW/YMrAxBP+W
-         8uG4O35nNA76VRg3HBfDhzczbjDCv4weVGFG5e4TzFI1v3Wgk8FBPgyrrMutSSA0n5vN
-         s1PA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=aiyYJ0ImMCySqbDkjLm3Tw3sPZflI84Ir4EXdvP9qvE=;
+        b=c0d0tbdNZD5Ta/y9eBDwaCWgxeTy6L5R2SQXLRE5oUJkysndkyczCN4IumMGKYwgri
+         hVwUOhJajxi9+Wc6sBR4eRCvqz0vLM3qKajkJRMTOpPxe5VuPQeYXZRegtmNsbOWqoh0
+         CBmZgo0KaYxcvx4DC4gGDbC/ysnBlGdmpLBo4doIPbkKxKue8f3KZhel7q6eiOPdhiS7
+         dpyFnm82BPQpuGhldg3lyKzIJAUM2y8RX5DGJ/ds4GuxKjXN4bRx5sbBp6rpH46RYorL
+         aoqiYnJ7p1MMTXJ2q/L1m8Sg9nhGXrt3hXgmC9w7Aaadmed1GZEhwceqG4Ub+LqmPhI1
+         PhLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a9TQ+Ll4;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q/Ums5TV";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e21-20020a1709067e1500b0094f964a2027sor1333808ejr.1.2023.05.02.02.55.24
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f24-20020a05622a1a1800b003bfbfdb9660si17667478qtb.11.2023.05.02.03.35.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 02 May 2023 02:55:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 May 2023 03:35:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a9TQ+Ll4;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="q/Ums5TV";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ptnLd-0001UR-5i; Tue, 02 May 2023 06:35:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ptnLb-0001UJ-83
+ for qemu-arm@nongnu.org; Tue, 02 May 2023 06:35:03 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1ptnLN-0000YB-Kr
+ for qemu-arm@nongnu.org; Tue, 02 May 2023 06:35:02 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-50bd37ca954so3702800a12.0
+ for <qemu-arm@nongnu.org>; Tue, 02 May 2023 03:34:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683021324; x=1685613324;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tt4/gwWIWNEU5OhxPl9ay/wAaV+k05WcoQgOscbm9ZQ=;
-        b=a9TQ+Ll4y6dyU5r9vECZQImdkfZu/Xau+wMsAD+muPzdL1DeId263J2916hml6zQxr
-         uNIs4pYjFUaGzqw1UKv+H87/gHQaUCh5MtXgv9xQVO15j2GQdvxiX+lqgVh2MesC8TyH
-         PFW7riHI8rxYXY7Zwuc9A4hml1LxYL1K/W0LYBHMO7bpgYSvQEchZyY+UPnb2O19/yhX
-         ByUeUp00wTdsq5Hqs4F0luR6XJufth1mD77fuz6+VkhS9wwln3nFxrIeBbjYwWT56te+
-         9eTSo/W1dlmOTlYweCB8Ky+MIuOsiYjCR6IC+r+Sn0VouGrdl7hSZLY+28XAA35Te8hg
-         AJUQ==
+ d=linaro.org; s=google; t=1683023688; x=1685615688;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=aiyYJ0ImMCySqbDkjLm3Tw3sPZflI84Ir4EXdvP9qvE=;
+ b=q/Ums5TVJxromK2CxRJRydvJTjFL7pkXy0ftucLBE9uG7X7L5v07r0INM0wjsz3hmG
+ +00V5I6hPTyJx5lkzyOu4/3ZiiCF6zpE7z26jT6UkoeZEYNYJB0BU624celIyNtse5yD
+ kWG7kkWr5qAnxz4ZsYt0d+DYFYiHnRGGbRtqKEEpi79xwNW+hWPjI+xwgMxJ7+zaITPm
+ 4u+J1mELyz4ZCe1b1xAytgnLwb0OJLjQzCgbfee5tq3Gf5daqRahzYd5TCjnInClkmP5
+ xpWatkPthvS2ijakAahA2VH4xcWewsAiyYoARBQG8PY9e46ghyhT+eQ1KAeIedixEWCM
+ B0UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683021324; x=1685613324;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Tt4/gwWIWNEU5OhxPl9ay/wAaV+k05WcoQgOscbm9ZQ=;
-        b=dBxA9Yep8mOwXyM382q3hWiR92jUybG9rjXrpv94BGyJRyF8/xIhekeed7BmKew7mG
-         IQB/5OIbD7Ojv+At5Um4ywOK1U6VgfrxWfjAM3LT/NRTjokAaYD1T2jCywInb38IWHA/
-         ZxBj82fHHF2jQii0HgkcaYuIRZfUtBtRh/RA0ybuvUEXzFtHbEoQgLR5xm04r/fvKA6F
-         UcXiQ84hpV8r+FCWt9dIM05sKj8ADkrIoEx0KZEQa2IIIR8cqC9UxYamEArG1bI1HMUt
-         MBG+QkPQMmq9Ohv8KMCnMV5LKBp9xifaqYNPRj5TfHBwN0YultGEIXmQgqOTRYqpuxmE
-         mwRQ==
-X-Gm-Message-State: AC+VfDzPqUZoFb3Sj3DiphA0oiGEMxHD3nf0L1WAoM51Mv1GXcotrhjE
-	Y9NE1h9dRRr/A9Mbc2Nf8hBwYN3URZe32hI3GfpiW12zEQuF0xshVS0=
-X-Google-Smtp-Source: ACHHUZ4SY9dv217fSJgwVVosRceib3a8ROm/DSLsVo0E6PXHWZi6lWZ4lKrnHqU7XyWC2t6Ua+cqZVI4J/7EPrXKPt8=
-X-Received: by 2002:aa7:d511:0:b0:506:a1c8:2bc5 with SMTP id
- y17-20020aa7d511000000b00506a1c82bc5mr7430948edq.15.1683021324064; Tue, 02
- May 2023 02:55:24 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683023688; x=1685615688;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=aiyYJ0ImMCySqbDkjLm3Tw3sPZflI84Ir4EXdvP9qvE=;
+ b=c/HDF7OZq7Eyd6fQ7iT1ADMQdneXs9JDpN4QCzc0bmmykPfABwMt0+92lGfKgwgI/H
+ ja29wUGY1spG7HdHh/TAMZJWjYIf8X3GIA2I8qFDeAjXz7/bRZuMIAo8GDsqvOeIlKG4
+ VQekFFMiIyHX5SHJBMiVLex96NAQu0LMycZAXZN6G0A3xDugOhACNYSF3kvX4f5HucVf
+ BEB/8A6JCYeG3Aih5uXuETVEDBjzo/B8NAKfFRqc17hPXZCB3x2ai5s9it3mlz7RQN4b
+ vFFL4cWMuK+AbTbjuygNFbXW9m+F25qV6gt3GqUoK57+KiktjGnPA8uhg3LdywO23eF7
+ A+IA==
+X-Gm-Message-State: AC+VfDxcqocEBm0cpMD96TlV9a7k+yS6HZlF69vA9adv85GsHDQxVKZY
+ ned5fO7WzTCJ/GabUOYuB9Y1os0MyGfXObk5JUn689Kf+zn8OigZ
+X-Received: by 2002:a05:6402:2709:b0:50b:c350:f9ca with SMTP id
+ y9-20020a056402270900b0050bc350f9camr7151387edd.10.1683023687926; Tue, 02 May
+ 2023 03:34:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230426180013.14814-1-farosas@suse.de>
-In-Reply-To: <20230426180013.14814-1-farosas@suse.de>
+References: <20230424165053.1428857-1-peter.maydell@linaro.org>
+In-Reply-To: <20230424165053.1428857-1-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 May 2023 10:55:13 +0100
-Message-ID: <CAFEAcA_ZVpZzuvZ71NzgweRC5Uti0T_fqG00paqDDe18QP-veQ@mail.gmail.com>
-Subject: Re: [PATCH v11 00/13] target/arm: Allow CONFIG_TCG=n builds
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>, Cornelia Huck <cohuck@redhat.com>
+Date: Tue, 2 May 2023 11:34:36 +0100
+Message-ID: <CAFEAcA88OoaDLP8i1opv8twb-a42QaMAbNQCh6g0FtHLfXp7Ow@mail.gmail.com>
+Subject: Re: [PATCH 0/2] arm: allwinner: fix endianness bugs in sdhost and
+ sun8i-emac
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Beniamino Galvani <b.galvani@gmail.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: PZSrOcQ0RpIX
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: q231G736rxvD
 
-On Wed, 26 Apr 2023 at 19:00, Fabiano Rosas <farosas@suse.de> wrote:
+On Mon, 24 Apr 2023 at 17:50, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Hi,
+> This patchset fixes bugs in the sd controller and ethernet controller
+> devices used in the orangepi-pc board model. The bug is the same in
+> both cases: we read and write a descriptor struct from guest memory
+> without byte-swapping it, so the code only does the right thing on
+> a little-endian host.
 >
-> Some minor changes:
+> These fixes (together with some of the others I've sent out earlier
+> today) are enough to get the BootLinuxConsole.test_arm_orangepi_sd
+> avocado test passing on an s390x host.
 >
-> - new patch to move a test under CONFIG_TCG (broken on master);
-> - new patch to document the unsupported CPU test (Philippe);
-> - changed the test skip message when no KVM or TCG are present (Igor).
 
-Applied to target-arm.next; thanks for your persistence in
-working through the many versions of this patchset.
+
+
+Applied to target-arm.next, thanks.
 
 -- PMM

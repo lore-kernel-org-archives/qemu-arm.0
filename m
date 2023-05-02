@@ -1,110 +1,122 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2411162ejm;
-        Tue, 2 May 2023 13:01:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4A8boUWWdz9f3sUCgqdh4UrxnR54f/nywus86vOEtDXdOXNICyzgvhcKPdvbBdocH+bjfx
-X-Received: by 2002:a05:622a:50d:b0:3ef:3e8a:d46a with SMTP id l13-20020a05622a050d00b003ef3e8ad46amr29732645qtx.62.1683057713648;
-        Tue, 02 May 2023 13:01:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683057713; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2390201ejm;
+        Tue, 2 May 2023 12:14:25 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ43ov98y3ue/2kiBqJyeZ8ws2aii6pMRDg2CGYRgB0VsuKXk2PelksmazMlmha+Py46TqYL
+X-Received: by 2002:a05:622a:1189:b0:3ef:6415:90ed with SMTP id m9-20020a05622a118900b003ef641590edmr29791649qtk.65.1683054865300;
+        Tue, 02 May 2023 12:14:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683054865; cv=none;
         d=google.com; s=arc-20160816;
-        b=v8dL3Ch6pYbzX+7atcIP201LMOSpKdJEjy8LzI84c214fhjezTSRhTLEKObM0zXDt1
-         UBNaNDJK11fts5P3KtPKXHTg9t9v091dtrUkyBGsWw7hIQnKHRpNZmFUTqTl4dJ8nY8Z
-         xNN1L250l0vGsmDlLGIfQRXNipcblle5mSHRCgbStxTyfVCp7cGc8RKH2uV2xOoXYCVs
-         HLbwMw6pSTGwzgjG9kefh/jjT4bt68FrU2YkZegUZ1NCNYJoO0DmvpvafBAPbzO6Q0wZ
-         7M686rZMRuessP9ogXshm25dtouNiJnhKT0X1G3Y5eYIMJ8m2/QuxXlzngKc3r3TcA9g
-         tlYA==
+        b=tRdI1EEvQSQ7nrk7NGY9RHhAEZAGJkLt2aKNUxrriYVfYrmC6TcKQ7XccgOy4jAfDZ
+         r5GAca3nTuP1sUOo4GlX/8ch16rQUZzOPp0bz51I0y3OwrjLs5Akto2eFod6CF7SErWD
+         cRImlvWOCwaob9RXpiOCRFtXvRlFpk48aAZZvoXMmT6EPGVZh6f/+UEj2YtP1oAvGQKz
+         CPwa/oRWKo8bidEGpbn1yyw0Pma7hk99e6j58yygd5un7lD2pR/8WiKk1iqfdfmxX7Dk
+         uupaFl9jAvOZwVhPidjR3hG3XhrdOP5od7/VlaVBmBcFdxmsSAw1/lyM1QJA54Zsnaww
+         7MDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ICyKKaIH0NiQCRFhfh80GJBWGeSm8Aa9eTL1vpdUcPI=;
-        b=XdDCfRk4KLValg0wzouTs5PJtucJinb8gkxb7WZ2ndxiqx5nzAA+kAaX1LJ5O2+Fjt
-         NjZum70efNz9e/ofObsDS2WKG3Fdb0cSOL++6Bkejhlv7ymr7Ma+2q10WSJAb4maGxWO
-         wOuIw+z0YXpU83yFTaHM39BDYLDxMYOUKkgpFWYU2rHX5yxDBthcQ+MVvRrpYm6jFJJr
-         o9WWBBuF7p/ceBFwZIuS0Xyqn/XNsEcQfN0u8GFkph+8dwnQWpGtZoilFJa7/8584twG
-         ELUi2otrDd7JkSY7Lehc1f+DkRhVdmvUoVD7Yw36QHEVcFNICNyKh6XrulZB4Wg9PZnF
-         CSvw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=aVysdKYj+l/biuJ/cBmFbKaB0ky/HRiPwNRhFGnK8y4=;
+        b=DjBWRuJ4k51YyI89J0gsmYpKy7ZdPfXQT9ksnS1wl1XRHdY0um6ZopKDEW0reqkXfK
+         4I2riJZJnhJrlBD0aKiO5WgHdL5dGmmVp+n2mS0gCTp/L2kRixHE5lQYfmTI/SUrGdeA
+         zZ8AVUO3SFVDj7Rl6XeiK+txsC8ro3L5NIOOTktKmfm/tludYsBNZNdRRWQX4EahVDrR
+         kLEJmeBOP0M20JOXv7B4693vNx90NbkvTgDtmb8csXnVsFGGQm4iZkNXmjhUjdIIZAH9
+         tTJxAh7KrXMWkIK7QjDAo5F9XAvn0S26195PmDz1GzOhKeURlIEtNBe5NAdjtcIKyufG
+         QkOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=RDxWrCBm;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=cuPKChv1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6-20020ac85f46000000b003bfef95513esi7039628qta.41.2023.05.02.13.01.53
+        by mx.google.com with ESMTPS id k4-20020a05620a07e400b0074e0ba0853esi17279681qkk.533.2023.05.02.12.14.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 May 2023 13:01:53 -0700 (PDT)
+        Tue, 02 May 2023 12:14:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=RDxWrCBm;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=cuPKChv1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ptwBo-0003m0-Ns; Tue, 02 May 2023 16:01:32 -0400
+	id 1ptvRs-0003Fn-IL; Tue, 02 May 2023 15:14:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ptwBm-0003lb-Fi; Tue, 02 May 2023 16:01:30 -0400
-Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ptvRq-0003Df-2D; Tue, 02 May 2023 15:14:02 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1ptwBh-0006fP-Ip; Tue, 02 May 2023 16:01:30 -0400
-Received: by mail-qv1-xf34.google.com with SMTP id
- 6a1803df08f44-61b5a6865dfso18711336d6.3; 
- Tue, 02 May 2023 13:01:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1ptvRl-0002GJ-8X; Tue, 02 May 2023 15:14:01 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-4efd6e26585so4991163e87.1; 
+ Tue, 02 May 2023 12:13:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683057683; x=1685649683;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ICyKKaIH0NiQCRFhfh80GJBWGeSm8Aa9eTL1vpdUcPI=;
- b=RDxWrCBmD5Q5k9CVDyh7+WteF/crMNKRWLzj+Dm3AAJcZ72+UupShnq5PexQxEPCdO
- dicFUH+P4+28KbUOoPO92h0bCx+mWWiM53I/pMWRklGYVFLERlajZd6FP4fwHbcGat4r
- sXePY9Jbli3ovKgYUkUGqs1rQoVwldLT9iydbi1zMdZ+rvOhq6wsfDk/lxEMvf12aVYk
- 3e8pqwQZbKZ1M4PHV8mVE/HXYv8fTaN0Gezcu8iLrzNXErdEGm7qwIwmZhVbdd0HJsbG
- Jszjm3d9oSRBSxKVytH3xzbNOkvySIMuMjtiHTbaEyiuFkWOgHYGJO4EKfZNIeUNQiPS
- PiKA==
+ d=gmail.com; s=20221208; t=1683054834; x=1685646834;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aVysdKYj+l/biuJ/cBmFbKaB0ky/HRiPwNRhFGnK8y4=;
+ b=cuPKChv18Cw3ZNciZHXx25NcBQYKXDd6Mu6+PpGcQflwHZC73RLvFTXlajNijGfI0C
+ 45ZTVq/jsNOr1AoodMnpbhjxErhlniUVFUCMQu/sJKW64xlEpqNYiE9aYD/cvJ1AKNVt
+ JBQ/4wKUdV99Bny98j1Z6lt26T0cyhBbR/h5IoV8VpDAjLWYziwuMI/l6qihfPDScddk
+ ef2kFmRCL3vzb2f/hx+m8jrqjFfCSs5EK09ixJC8yJ2OHUSEe7geiKDckpYeemmeanEo
+ 2Y5c8c37w81r+fOyXZOAHq3wM4Nwl36PInPKuyevZFsCicRcr63VmekEC3Bh1Gi/dFYp
+ Jxvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683057683; x=1685649683;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ICyKKaIH0NiQCRFhfh80GJBWGeSm8Aa9eTL1vpdUcPI=;
- b=JEjSRhSHyswNOc+leykb9JGB5+y+/EZgEKXnzN49RxKl7sCxcbeFbgeUe14gi0f2eq
- asgW0UnirXFtZERM1uVxluemG1ZPkfHTuSHOcsszRdJpeYdYpk5pRgqcG64RM5ruzKAF
- 9g/r+t48NOy3Br3AG7r+OIr8hIjZlhyeGe/P7vVlmxPT/iFlQacX4dtT+Hwg6vrwx/qa
- LxpCfA3FCTgbcfNJ2D0SKlE3zzC3tBhcSXv7ZaIkW/IIIjegqHi1i/CpzBSKf5DJ3e8g
- xZlwMuhAnC2vpK4/GECn4mokUF4lbzxQMTWZXiedS2EbvWdVKhC+w40eU3z5g5HJcF7P
- NpWQ==
-X-Gm-Message-State: AC+VfDyZutgVbeV+UXlkcML0zpbtrbhm2EFCnH0JeouEkgIMf0v0kzSe
- ZUYYFgcBrcGYXl6SdkJb+LbB8RjGc3NhHdKzjSY=
-X-Received: by 2002:a05:6214:5003:b0:5ef:6185:2e53 with SMTP id
- jo3-20020a056214500300b005ef61852e53mr7738063qvb.23.1683057683437; Tue, 02
- May 2023 13:01:23 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683054834; x=1685646834;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aVysdKYj+l/biuJ/cBmFbKaB0ky/HRiPwNRhFGnK8y4=;
+ b=cnST5jN/ngPQXpaQCo9apWTw6dnNKSCHvdDoOKdwi6fQwsXm7B3h6berBS35DiKJzT
+ s5x7X+HT1pEu0yk6S463CHINvAl7tMwAmoERKj7KtJ3V/dZmhOcFb/fWplBxAdvCsn0S
+ 6nxt7W2ZPfEzCywl0XHpVoEL6zfI3wOpa1ygfA6cpgefS8s6x7ynPFhqkOQFiR5+Ptdw
+ OgZecMD24MUR+m8IPLUcmrLWtjW7F2KWmdFeRr7dX6tgmqKwIfcL5pOUBS08whO8uCJr
+ 2+iI6fz6MqEzmTkpHrpuQSFh2/nBp21RfFzF3dJNVPqF3x4nv9NwMr7mNEOcd18P0oPc
+ m0RA==
+X-Gm-Message-State: AC+VfDyMc08sIVpGsmcT5Gz6zo8m6kaSLH6DuiB4kdfnxxX62pkzhJNX
+ 6NCWGoiTKJd7QaDOnL/3V1c=
+X-Received: by 2002:ac2:5a51:0:b0:4f1:1e9f:fd72 with SMTP id
+ r17-20020ac25a51000000b004f11e9ffd72mr271789lfn.31.1683054833596; 
+ Tue, 02 May 2023 12:13:53 -0700 (PDT)
+Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
+ by smtp.gmail.com with ESMTPSA id
+ t9-20020a19ad09000000b004edc63c77d5sm5536378lfc.217.2023.05.02.12.13.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 May 2023 12:13:53 -0700 (PDT)
+Date: Tue, 2 May 2023 21:13:51 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>, Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
+Subject: Re: [QEMU][PATCH v4 2/4] hw/net/can: Introduce Xilinx Versal CANFD
+ controller
+Message-ID: <20230502191351.GA19624@fralle-msi>
+References: <20230425063433.25803-1-vikram.garhwal@amd.com>
+ <20230425063433.25803-3-vikram.garhwal@amd.com>
 MIME-Version: 1.0
-References: <20230418112040.12460-1-qianfanguijin@163.com>
- <20230418112040.12460-2-qianfanguijin@163.com>
-In-Reply-To: <20230418112040.12460-2-qianfanguijin@163.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Tue, 2 May 2023 22:01:11 +0200
-Message-ID: <CAPan3Wq+zGJyePrMVnDiqed4+SDVRg7BsUd7q091ueOOinwJag@mail.gmail.com>
-Subject: Re: [PATCH v3 01/11] hw: arm: Add bananapi M2-Ultra and allwinner-r40
- support
-To: qianfanguijin@163.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000005b99d905fabb67d0"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-qv1-xf34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230425063433.25803-3-vikram.garhwal@amd.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -1020
+X-Spam_score: -102.1
+X-Spam_bar: ---------------------------------------------------
+X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01, UPPERCASE_50_75=0.008, USER_IN_WELCOMELIST=-0.01,
+ USER_IN_WHITELIST=-100 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,1873 +131,2313 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BAGz47ZtxAoy
+X-TUID: 0JOHTCEDN7/l
 
---0000000000005b99d905fabb67d0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Vikram,
 
-Hi Qianfan,
+A few comments below and some suggestions!
 
-Sorry for my late response, I had a holiday in between.
 
-On Tue, Apr 18, 2023 at 1:21=E2=80=AFPM <qianfanguijin@163.com> wrote:
-
-> From: qianfan Zhao <qianfanguijin@163.com>
->
-> Allwinner R40 (sun8i) SoC features a Quad-Core Cortex-A7 ARM CPU,
-> and a Mali400 MP2 GPU from ARM. It's also known as the Allwinner T3
-> for In-Car Entertainment usage, A40i and A40pro are variants that
-> differ in applicable temperatures range (industrial and military).
->
-> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+On [2023 Apr 24] Mon 23:34:31, Vikram Garhwal wrote:
+> The Xilinx Versal CANFD controller is developed based on SocketCAN, QEMU CAN bus
+> implementation. Bus connection and socketCAN connection for each CAN module
+> can be set through command lines.
+> 
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
 > ---
->  configs/devices/arm-softmmu/default.mak |   1 +
->  hw/arm/Kconfig                          |   9 +
->  hw/arm/allwinner-r40.c                  | 418 ++++++++++++++++++++++++
->  hw/arm/bananapi_m2u.c                   | 129 ++++++++
->  hw/arm/meson.build                      |   1 +
->  include/hw/arm/allwinner-r40.h          | 110 +++++++
->  6 files changed, 668 insertions(+)
->  create mode 100644 hw/arm/allwinner-r40.c
->  create mode 100644 hw/arm/bananapi_m2u.c
->  create mode 100644 include/hw/arm/allwinner-r40.h
->
-> diff --git a/configs/devices/arm-softmmu/default.mak
-> b/configs/devices/arm-softmmu/default.mak
-> index 1b49a7830c..76a43add23 100644
-> --- a/configs/devices/arm-softmmu/default.mak
-> +++ b/configs/devices/arm-softmmu/default.mak
-> @@ -43,3 +43,4 @@ CONFIG_FSL_IMX6UL=3Dy
->  CONFIG_SEMIHOSTING=3Dy
->  CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy
->  CONFIG_ALLWINNER_H3=3Dy
-> +CONFIG_ALLWINNER_R40=3Dy
->
-
-Looks like on latest master (c586691) this file has already been modified -
-the patch doesn't apply anymore.
-
-Could you please rebase your patch series in V4 to make them compatible
-again?
-After your rebase is done, I'll try to complete reviewing the remaining
-patches.
-
-
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index b5aed4aff5..9e14c3427e 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -344,6 +344,15 @@ config ALLWINNER_H3
->      select USB_EHCI_SYSBUS
->      select SD
->
-> +config ALLWINNER_R40
-> +    bool
-> +    select ALLWINNER_A10_PIT
-> +    select SERIAL
-> +    select ARM_TIMER
-> +    select ARM_GIC
-> +    select UNIMP
-> +    select SD
+>  hw/net/can/meson.build             |    1 +
+>  hw/net/can/trace-events            |    7 +
+>  hw/net/can/xlnx-versal-canfd.c     | 2115 ++++++++++++++++++++++++++++
+>  include/hw/net/xlnx-versal-canfd.h |   87 ++
+>  4 files changed, 2210 insertions(+)
+>  create mode 100644 hw/net/can/xlnx-versal-canfd.c
+>  create mode 100644 include/hw/net/xlnx-versal-canfd.h
+> 
+> diff --git a/hw/net/can/meson.build b/hw/net/can/meson.build
+> index 8fabbd9ee6..8d85201cb0 100644
+> --- a/hw/net/can/meson.build
+> +++ b/hw/net/can/meson.build
+> @@ -5,3 +5,4 @@ softmmu_ss.add(when: 'CONFIG_CAN_PCI', if_true: files('can_mioe3680_pci.c'))
+>  softmmu_ss.add(when: 'CONFIG_CAN_CTUCANFD', if_true: files('ctucan_core.c'))
+>  softmmu_ss.add(when: 'CONFIG_CAN_CTUCANFD_PCI', if_true: files('ctucan_pci.c'))
+>  softmmu_ss.add(when: 'CONFIG_XLNX_ZYNQMP', if_true: files('xlnx-zynqmp-can.c'))
+> +softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-canfd.c'))
+> diff --git a/hw/net/can/trace-events b/hw/net/can/trace-events
+> index 8346a98ab5..de64ac1b31 100644
+> --- a/hw/net/can/trace-events
+> +++ b/hw/net/can/trace-events
+> @@ -7,3 +7,10 @@ xlnx_can_filter_mask_pre_write(uint8_t filter_num, uint32_t value) "Filter%d MAS
+>  xlnx_can_tx_data(uint32_t id, uint8_t dlc, uint8_t db0, uint8_t db1, uint8_t db2, uint8_t db3, uint8_t db4, uint8_t db5, uint8_t db6, uint8_t db7) "Frame: ID: 0x%08x DLC: 0x%02x DATA: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x"
+>  xlnx_can_rx_data(uint32_t id, uint32_t dlc, uint8_t db0, uint8_t db1, uint8_t db2, uint8_t db3, uint8_t db4, uint8_t db5, uint8_t db6, uint8_t db7) "Frame: ID: 0x%08x DLC: 0x%02x DATA: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x"
+>  xlnx_can_rx_discard(uint32_t status) "Controller is not enabled for bus communication. Status Register: 0x%08x"
 > +
->  config RASPI
->      bool
->      select FRAMEBUFFER
-> diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+> +# xlnx-versal-canfd.c
+> +xlnx_canfd_update_irq(char *path, uint32_t isr, uint32_t ier, uint32_t irq) "%s: ISR: 0x%08x IER: 0x%08x IRQ: 0x%08x"
+> +xlnx_canfd_rx_fifo_filter_reject(char *path, uint32_t id, uint8_t dlc) "%s: Frame: ID: 0x%08x DLC: 0x%02x"
+> +xlnx_canfd_rx_data(char *path, uint32_t id, uint8_t dlc, uint8_t flags) "%s: Frame: ID: 0x%08x DLC: 0x%02x CANFD Flag: 0x%02x"
+> +xlnx_canfd_tx_data(char *path, uint32_t id, uint8_t dlc, uint8_t flgas) "%s: Frame: ID: 0x%08x DLC: 0x%02x CANFD Flag: 0x%02x"
+> +xlnx_canfd_reset(char *path, uint32_t val) "%s: Resetting controller with value = 0x%08x"
+> diff --git a/hw/net/can/xlnx-versal-canfd.c b/hw/net/can/xlnx-versal-canfd.c
 > new file mode 100644
-> index 0000000000..b743d64253
+> index 0000000000..fb6fa54698
 > --- /dev/null
-> +++ b/hw/arm/allwinner-r40.c
-> @@ -0,0 +1,418 @@
+> +++ b/hw/net/can/xlnx-versal-canfd.c
+> @@ -0,0 +1,2115 @@
 > +/*
-> + * Allwinner R40/A40i/T3 System on Chip emulation
+> + * QEMU model of the Xilinx Versal CANFD device.
 > + *
-> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+> + * This implementation is based on the following datasheet:
+> + * https://docs.xilinx.com/v/u/2.0-English/pg223-canfd
 > + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
+> + * Copyright (c) 2022 AMD Inc.
 > + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
+> + * Written-by: Vikram Garhwal <vikram.garhwal@amd.com>
 > + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + * Based on QEMU CANFD Device emulation implemented by Jin Yang, Deniz Eren and
+> + * Pavel Pisa
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
 > + */
 > +
 > +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "qemu/error-report.h"
-> +#include "qemu/bswap.h"
-> +#include "qemu/module.h"
-> +#include "qemu/units.h"
-> +#include "hw/qdev-core.h"
 > +#include "hw/sysbus.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/misc/unimp.h"
-> +#include "hw/usb/hcd-ehci.h"
-> +#include "hw/loader.h"
-> +#include "sysemu/sysemu.h"
-> +#include "hw/arm/allwinner-r40.h"
+> +#include "hw/irq.h"
+> +#include "hw/register.h"
+> +#include "qapi/error.h"
+> +#include "qemu/bitops.h"
+> +#include "qemu/log.h"
+> +#include "qemu/cutils.h"
+> +#include "qemu/event_notifier.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qom/object_interfaces.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/net/xlnx-versal-canfd.h"
+> +#include "trace.h"
 > +
-> +/* Memory map */
-> +const hwaddr allwinner_r40_memmap[] =3D {
-> +    [AW_R40_DEV_SRAM_A1]    =3D 0x00000000,
-> +    [AW_R40_DEV_SRAM_A2]    =3D 0x00004000,
-> +    [AW_R40_DEV_SRAM_A3]    =3D 0x00008000,
-> +    [AW_R40_DEV_SRAM_A4]    =3D 0x0000b400,
-> +    [AW_R40_DEV_MMC0]       =3D 0x01c0f000,
-> +    [AW_R40_DEV_MMC1]       =3D 0x01c10000,
-> +    [AW_R40_DEV_MMC2]       =3D 0x01c11000,
-> +    [AW_R40_DEV_MMC3]       =3D 0x01c12000,
-> +    [AW_R40_DEV_PIT]        =3D 0x01c20c00,
-> +    [AW_R40_DEV_UART0]      =3D 0x01c28000,
-> +    [AW_R40_DEV_GIC_DIST]   =3D 0x01c81000,
-> +    [AW_R40_DEV_GIC_CPU]    =3D 0x01c82000,
-> +    [AW_R40_DEV_GIC_HYP]    =3D 0x01c84000,
-> +    [AW_R40_DEV_GIC_VCPU]   =3D 0x01c86000,
-> +    [AW_R40_DEV_SDRAM]      =3D 0x40000000
-> +};
+> +/*
+> + * This is done to avoid the build issues on Windows machines. The ERROR field
+> + * of INTERRUPT_STATUS_REGISTER collides with a macro in the Windows build
+> + * environment.
+> + */
+> +#undef ERROR
+
+Suggestion: we can consider renaming the bit to something like ERROR_BIT /
+ISR_ERROR / ISR_ERR_BIT and turn the comment "this is the ERROR bit in the ISR
+register" if deemed needed (it is only used in 1 place after defining it).
+
+
 > +
-> +/* List of unimplemented devices */
-> +struct AwR40Unimplemented {
-> +    const char *device_name;
-> +    hwaddr base;
-> +    hwaddr size;
-> +};
+> +REG32(SOFTWARE_RESET_REGISTER, 0x0)
+> +    FIELD(SOFTWARE_RESET_REGISTER, CEN, 1, 1)
+> +    FIELD(SOFTWARE_RESET_REGISTER, SRST, 0, 1)
+> +REG32(MODE_SELECT_REGISTER, 0x4)
+> +    FIELD(MODE_SELECT_REGISTER, ITO, 8, 8)
+> +    FIELD(MODE_SELECT_REGISTER, ABR, 7, 1)
+> +    FIELD(MODE_SELECT_REGISTER, SBR, 6, 1)
+> +    FIELD(MODE_SELECT_REGISTER, DPEE, 5, 1)
+> +    FIELD(MODE_SELECT_REGISTER, DAR, 4, 1)
+> +    FIELD(MODE_SELECT_REGISTER, BRSD, 3, 1)
+> +    FIELD(MODE_SELECT_REGISTER, SNOOP, 2, 1)
+> +    FIELD(MODE_SELECT_REGISTER, LBACK, 1, 1)
+> +    FIELD(MODE_SELECT_REGISTER, SLEEP, 0, 1)
+> +REG32(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, 0x8)
+> +    FIELD(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, BRP, 0, 8)
+> +REG32(ARBITRATION_PHASE_BIT_TIMING_REGISTER, 0xc)
+> +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, SJW, 16, 7)
+> +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS2, 8, 7)
+> +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS1, 0, 8)
+> +REG32(ERROR_COUNTER_REGISTER, 0x10)
+> +    FIELD(ERROR_COUNTER_REGISTER, REC, 8, 8)
+> +    FIELD(ERROR_COUNTER_REGISTER, TEC, 0, 8)
+> +REG32(ERROR_STATUS_REGISTER, 0x14)
+> +    FIELD(ERROR_STATUS_REGISTER, F_BERR, 11, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, F_STER, 10, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, F_FMER, 9, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, F_CRCER, 8, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, ACKER, 4, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, BERR, 3, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, STER, 2, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, FMER, 1, 1)
+> +    FIELD(ERROR_STATUS_REGISTER, CRCER, 0, 1)
+> +REG32(STATUS_REGISTER, 0x18)
+> +    FIELD(STATUS_REGISTER, TDCV, 16, 7)
+> +    FIELD(STATUS_REGISTER, SNOOP, 12, 1)
+> +    FIELD(STATUS_REGISTER, BSFR_CONFIG, 10, 1)
+> +    FIELD(STATUS_REGISTER, PEE_CONFIG, 9, 1)
+> +    FIELD(STATUS_REGISTER, ESTAT, 7, 2)
+> +    FIELD(STATUS_REGISTER, ERRWRN, 6, 1)
+> +    FIELD(STATUS_REGISTER, BBSY, 5, 1)
+> +    FIELD(STATUS_REGISTER, BIDLE, 4, 1)
+> +    FIELD(STATUS_REGISTER, NORMAL, 3, 1)
+> +    FIELD(STATUS_REGISTER, SLEEP, 2, 1)
+> +    FIELD(STATUS_REGISTER, LBACK, 1, 1)
+> +    FIELD(STATUS_REGISTER, CONFIG, 0, 1)
+> +REG32(INTERRUPT_STATUS_REGISTER, 0x1c)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TXEWMFLL, 31, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TXEOFLW, 30, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXBOFLW_BI, 24, 6)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXLRM_BI, 18, 6)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXMNF, 17, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXFWMFLL_1, 16, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXFOFLW_1, 15, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TXCRS, 14, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TXRRS, 13, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXFWMFLL, 12, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, WKUP, 11, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, SLP, 10, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, BSOFF, 9, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, ERROR, 8, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXFOFLW, 6, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TSCNT_OFLW, 5, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, RXOK, 4, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, BSFRD, 3, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, PEE, 2, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, TXOK, 1, 1)
+> +    FIELD(INTERRUPT_STATUS_REGISTER, ARBLST, 0, 1)
+> +REG32(INTERRUPT_ENABLE_REGISTER, 0x20)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXEWMFLL, 31, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXEOFLW, 30, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXMNF, 17, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXFWMFLL_1, 16, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXFOFLW_1, 15, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXCRS, 14, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXRRS, 13, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXFWMFLL, 12, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EWKUP, 11, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ESLP, 10, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EBSOFF, 9, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EERROR, 8, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERFXOFLW, 6, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETSCNT_OFLW, 5, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXOK, 4, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EBSFRD, 3, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EPEE, 2, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXOK, 1, 1)
+> +    FIELD(INTERRUPT_ENABLE_REGISTER, EARBLOST, 0, 1)
+> +REG32(INTERRUPT_CLEAR_REGISTER, 0x24)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXEWMFLL, 31, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXEOFLW, 30, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXMNF, 17, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXFWMFLL_1, 16, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXFOFLW_1, 15, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXCRS, 14, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXRRS, 13, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXFWMFLL, 12, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CWKUP, 11, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CSLP, 10, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CBSOFF, 9, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CERROR, 8, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRFXOFLW, 6, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTSCNT_OFLW, 5, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXOK, 4, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CBSFRD, 3, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CPEE, 2, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXOK, 1, 1)
+> +    FIELD(INTERRUPT_CLEAR_REGISTER, CARBLOST, 0, 1)
+> +REG32(TIMESTAMP_REGISTER, 0x28)
+> +    FIELD(TIMESTAMP_REGISTER, TIMESTAMP_CNT, 16, 16)
+> +    FIELD(TIMESTAMP_REGISTER, CTS, 0, 1)
+> +REG32(DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER, 0x88)
+> +    FIELD(DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER, TDC, 16, 1)
+> +    FIELD(DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER, TDCOFF, 8, 6)
+> +    FIELD(DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER, DP_BRP, 0, 8)
+> +REG32(DATA_PHASE_BIT_TIMING_REGISTER, 0x8c)
+> +    FIELD(DATA_PHASE_BIT_TIMING_REGISTER, DP_SJW, 16, 4)
+> +    FIELD(DATA_PHASE_BIT_TIMING_REGISTER, DP_TS2, 8, 4)
+> +    FIELD(DATA_PHASE_BIT_TIMING_REGISTER, DP_TS1, 0, 5)
+> +REG32(TX_BUFFER_READY_REQUEST_REGISTER, 0x90)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR31, 31, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR30, 30, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR29, 29, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR28, 28, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR27, 27, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR26, 26, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR25, 25, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR24, 24, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR23, 23, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR22, 22, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR21, 21, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR20, 20, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR19, 19, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR18, 18, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR17, 17, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR16, 16, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR15, 15, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR14, 14, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR13, 13, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR12, 12, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR11, 11, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR10, 10, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR9, 9, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR8, 8, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR7, 7, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR6, 6, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR5, 5, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR4, 4, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR3, 3, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR2, 2, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR1, 1, 1)
+> +    FIELD(TX_BUFFER_READY_REQUEST_REGISTER, RR0, 0, 1)
+> +REG32(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, 0x94)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS31, 31, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS30, 30, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS29, 29, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS28, 28, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS27, 27, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS26, 26, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS25, 25, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS24, 24, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS23, 23, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS22, 22, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS21, 21, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS20, 20, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS19, 19, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS18, 18, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS17, 17, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS16, 16, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS15, 15, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS14, 14, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS13, 13, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS12, 12, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS11, 11, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS10, 10, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS9, 9, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS8, 8, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS7, 7, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS6, 6, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS5, 5, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS4, 4, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS3, 3, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS2, 2, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS1, 1, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER, ERRS0, 0, 1)
+> +REG32(TX_BUFFER_CANCEL_REQUEST_REGISTER, 0x98)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR31, 31, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR30, 30, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR29, 29, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR28, 28, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR27, 27, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR26, 26, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR25, 25, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR24, 24, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR23, 23, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR22, 22, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR21, 21, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR20, 20, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR19, 19, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR18, 18, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR17, 17, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR16, 16, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR15, 15, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR14, 14, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR13, 13, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR12, 12, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR11, 11, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR10, 10, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR9, 9, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR8, 8, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR7, 7, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR6, 6, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR5, 5, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR4, 4, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR3, 3, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR2, 2, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR1, 1, 1)
+> +    FIELD(TX_BUFFER_CANCEL_REQUEST_REGISTER, CR0, 0, 1)
+> +REG32(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, 0x9c)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS31, 31,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS30, 30,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS29, 29,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS28, 28,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS27, 27,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS26, 26,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS25, 25,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS24, 24,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS23, 23,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS22, 22,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS21, 21,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS20, 20,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS19, 19,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS18, 18,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS17, 17,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS16, 16,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS15, 15,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS14, 14,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS13, 13,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS12, 12,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS11, 11,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS10, 10,
+> +            1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS9, 9, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS8, 8, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS7, 7, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS6, 6, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS5, 5, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS4, 4, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS3, 3, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS2, 2, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS1, 1, 1)
+> +    FIELD(INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER, ECRS0, 0, 1)
+> +REG32(TX_EVENT_FIFO_STATUS_REGISTER, 0xa0)
+> +    FIELD(TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL, 8, 6)
+> +    FIELD(TX_EVENT_FIFO_STATUS_REGISTER, TXE_IRI, 7, 1)
+> +    FIELD(TX_EVENT_FIFO_STATUS_REGISTER, TXE_RI, 0, 5)
+> +REG32(TX_EVENT_FIFO_WATERMARK_REGISTER, 0xa4)
+> +    FIELD(TX_EVENT_FIFO_WATERMARK_REGISTER, TXE_FWM, 0, 5)
+> +REG32(ACCEPTANCE_FILTER_CONTROL_REGISTER, 0xe0)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF31, 31, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF30, 30, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF29, 29, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF28, 28, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF27, 27, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF26, 26, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF25, 25, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF24, 24, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF23, 23, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF22, 22, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF21, 21, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF20, 20, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF19, 19, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF18, 18, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF17, 17, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF16, 16, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF15, 15, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF14, 14, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF13, 13, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF12, 12, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF11, 11, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF10, 10, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF9, 9, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF8, 8, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF7, 7, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF6, 6, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF5, 5, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF4, 4, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF3, 3, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF2, 2, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF1, 1, 1)
+> +    FIELD(ACCEPTANCE_FILTER_CONTROL_REGISTER, UAF0, 0, 1)
+> +REG32(RX_FIFO_STATUS_REGISTER, 0xe8)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, FL_1, 24, 7)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, IRI_1, 23, 1)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, RI_1, 16, 6)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, FL, 8, 7)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, IRI, 7, 1)
+> +    FIELD(RX_FIFO_STATUS_REGISTER, RI, 0, 6)
+> +REG32(RX_FIFO_WATERMARK_REGISTER, 0xec)
+> +    FIELD(RX_FIFO_WATERMARK_REGISTER, RXFP, 16, 5)
+> +    FIELD(RX_FIFO_WATERMARK_REGISTER, RXFWM_1, 8, 6)
+> +    FIELD(RX_FIFO_WATERMARK_REGISTER, RXFWM, 0, 6)
+> +REG32(TB_ID_REGISTER, 0x100)
+> +    FIELD(TB_ID_REGISTER, ID, 21, 11)
+> +    FIELD(TB_ID_REGISTER, SRR_RTR_RRS, 20, 1)
+> +    FIELD(TB_ID_REGISTER, IDE, 19, 1)
+> +    FIELD(TB_ID_REGISTER, ID_EXT, 1, 18)
+> +    FIELD(TB_ID_REGISTER, RTR_RRS, 0, 1)
+> +REG32(TB0_DLC_REGISTER, 0x104)
+> +    FIELD(TB0_DLC_REGISTER, DLC, 28, 4)
+> +    FIELD(TB0_DLC_REGISTER, FDF, 27, 1)
+> +    FIELD(TB0_DLC_REGISTER, BRS, 26, 1)
+> +    FIELD(TB0_DLC_REGISTER, RSVD2, 25, 1)
+> +    FIELD(TB0_DLC_REGISTER, EFC, 24, 1)
+> +    FIELD(TB0_DLC_REGISTER, MM, 16, 8)
+> +    FIELD(TB0_DLC_REGISTER, RSVD1, 0, 16)
+> +REG32(TB_DW0_REGISTER, 0x108)
+> +    FIELD(TB_DW0_REGISTER, DATA_BYTES0, 24, 8)
+> +    FIELD(TB_DW0_REGISTER, DATA_BYTES1, 16, 8)
+> +    FIELD(TB_DW0_REGISTER, DATA_BYTES2, 8, 8)
+> +    FIELD(TB_DW0_REGISTER, DATA_BYTES3, 0, 8)
+> +REG32(TB_DW1_REGISTER, 0x10c)
+> +    FIELD(TB_DW1_REGISTER, DATA_BYTES4, 24, 8)
+> +    FIELD(TB_DW1_REGISTER, DATA_BYTES5, 16, 8)
+> +    FIELD(TB_DW1_REGISTER, DATA_BYTES6, 8, 8)
+> +    FIELD(TB_DW1_REGISTER, DATA_BYTES7, 0, 8)
+> +REG32(TB_DW2_REGISTER, 0x110)
+> +    FIELD(TB_DW2_REGISTER, DATA_BYTES8, 24, 8)
+> +    FIELD(TB_DW2_REGISTER, DATA_BYTES9, 16, 8)
+> +    FIELD(TB_DW2_REGISTER, DATA_BYTES10, 8, 8)
+> +    FIELD(TB_DW2_REGISTER, DATA_BYTES11, 0, 8)
+> +REG32(TB_DW3_REGISTER, 0x114)
+> +    FIELD(TB_DW3_REGISTER, DATA_BYTES12, 24, 8)
+> +    FIELD(TB_DW3_REGISTER, DATA_BYTES13, 16, 8)
+> +    FIELD(TB_DW3_REGISTER, DATA_BYTES14, 8, 8)
+> +    FIELD(TB_DW3_REGISTER, DATA_BYTES15, 0, 8)
+> +REG32(TB_DW4_REGISTER, 0x118)
+> +    FIELD(TB_DW4_REGISTER, DATA_BYTES16, 24, 8)
+> +    FIELD(TB_DW4_REGISTER, DATA_BYTES17, 16, 8)
+> +    FIELD(TB_DW4_REGISTER, DATA_BYTES18, 8, 8)
+> +    FIELD(TB_DW4_REGISTER, DATA_BYTES19, 0, 8)
+> +REG32(TB_DW5_REGISTER, 0x11c)
+> +    FIELD(TB_DW5_REGISTER, DATA_BYTES20, 24, 8)
+> +    FIELD(TB_DW5_REGISTER, DATA_BYTES21, 16, 8)
+> +    FIELD(TB_DW5_REGISTER, DATA_BYTES22, 8, 8)
+> +    FIELD(TB_DW5_REGISTER, DATA_BYTES23, 0, 8)
+> +REG32(TB_DW6_REGISTER, 0x120)
+> +    FIELD(TB_DW6_REGISTER, DATA_BYTES24, 24, 8)
+> +    FIELD(TB_DW6_REGISTER, DATA_BYTES25, 16, 8)
+> +    FIELD(TB_DW6_REGISTER, DATA_BYTES26, 8, 8)
+> +    FIELD(TB_DW6_REGISTER, DATA_BYTES27, 0, 8)
+> +REG32(TB_DW7_REGISTER, 0x124)
+> +    FIELD(TB_DW7_REGISTER, DATA_BYTES28, 24, 8)
+> +    FIELD(TB_DW7_REGISTER, DATA_BYTES29, 16, 8)
+> +    FIELD(TB_DW7_REGISTER, DATA_BYTES30, 8, 8)
+> +    FIELD(TB_DW7_REGISTER, DATA_BYTES31, 0, 8)
+> +REG32(TB_DW8_REGISTER, 0x128)
+> +    FIELD(TB_DW8_REGISTER, DATA_BYTES32, 24, 8)
+> +    FIELD(TB_DW8_REGISTER, DATA_BYTES33, 16, 8)
+> +    FIELD(TB_DW8_REGISTER, DATA_BYTES34, 8, 8)
+> +    FIELD(TB_DW8_REGISTER, DATA_BYTES35, 0, 8)
+> +REG32(TB_DW9_REGISTER, 0x12c)
+> +    FIELD(TB_DW9_REGISTER, DATA_BYTES36, 24, 8)
+> +    FIELD(TB_DW9_REGISTER, DATA_BYTES37, 16, 8)
+> +    FIELD(TB_DW9_REGISTER, DATA_BYTES38, 8, 8)
+> +    FIELD(TB_DW9_REGISTER, DATA_BYTES39, 0, 8)
+> +REG32(TB_DW10_REGISTER, 0x130)
+> +    FIELD(TB_DW10_REGISTER, DATA_BYTES40, 24, 8)
+> +    FIELD(TB_DW10_REGISTER, DATA_BYTES41, 16, 8)
+> +    FIELD(TB_DW10_REGISTER, DATA_BYTES42, 8, 8)
+> +    FIELD(TB_DW10_REGISTER, DATA_BYTES43, 0, 8)
+> +REG32(TB_DW11_REGISTER, 0x134)
+> +    FIELD(TB_DW11_REGISTER, DATA_BYTES44, 24, 8)
+> +    FIELD(TB_DW11_REGISTER, DATA_BYTES45, 16, 8)
+> +    FIELD(TB_DW11_REGISTER, DATA_BYTES46, 8, 8)
+> +    FIELD(TB_DW11_REGISTER, DATA_BYTES47, 0, 8)
+> +REG32(TB_DW12_REGISTER, 0x138)
+> +    FIELD(TB_DW12_REGISTER, DATA_BYTES48, 24, 8)
+> +    FIELD(TB_DW12_REGISTER, DATA_BYTES49, 16, 8)
+> +    FIELD(TB_DW12_REGISTER, DATA_BYTES50, 8, 8)
+> +    FIELD(TB_DW12_REGISTER, DATA_BYTES51, 0, 8)
+> +REG32(TB_DW13_REGISTER, 0x13c)
+> +    FIELD(TB_DW13_REGISTER, DATA_BYTES52, 24, 8)
+> +    FIELD(TB_DW13_REGISTER, DATA_BYTES53, 16, 8)
+> +    FIELD(TB_DW13_REGISTER, DATA_BYTES54, 8, 8)
+> +    FIELD(TB_DW13_REGISTER, DATA_BYTES55, 0, 8)
+> +REG32(TB_DW14_REGISTER, 0x140)
+> +    FIELD(TB_DW14_REGISTER, DATA_BYTES56, 24, 8)
+> +    FIELD(TB_DW14_REGISTER, DATA_BYTES57, 16, 8)
+> +    FIELD(TB_DW14_REGISTER, DATA_BYTES58, 8, 8)
+> +    FIELD(TB_DW14_REGISTER, DATA_BYTES59, 0, 8)
+> +REG32(TB_DW15_REGISTER, 0x144)
+> +    FIELD(TB_DW15_REGISTER, DATA_BYTES60, 24, 8)
+> +    FIELD(TB_DW15_REGISTER, DATA_BYTES61, 16, 8)
+> +    FIELD(TB_DW15_REGISTER, DATA_BYTES62, 8, 8)
+> +    FIELD(TB_DW15_REGISTER, DATA_BYTES63, 0, 8)
+> +REG32(AFMR_REGISTER, 0xa00)
+> +    FIELD(AFMR_REGISTER, AMID, 21, 11)
+> +    FIELD(AFMR_REGISTER, AMSRR, 20, 1)
+> +    FIELD(AFMR_REGISTER, AMIDE, 19, 1)
+> +    FIELD(AFMR_REGISTER, AMID_EXT, 1, 18)
+> +    FIELD(AFMR_REGISTER, AMRTR, 0, 1)
+> +REG32(AFIR_REGISTER, 0xa04)
+> +    FIELD(AFIR_REGISTER, AIID, 21, 11)
+> +    FIELD(AFIR_REGISTER, AISRR, 20, 1)
+> +    FIELD(AFIR_REGISTER, AIIDE, 19, 1)
+> +    FIELD(AFIR_REGISTER, AIID_EXT, 1, 18)
+> +    FIELD(AFIR_REGISTER, AIRTR, 0, 1)
+> +REG32(TXE_FIFO_TB_ID_REGISTER, 0x2000)
+> +    FIELD(TXE_FIFO_TB_ID_REGISTER, ID, 21, 11)
+> +    FIELD(TXE_FIFO_TB_ID_REGISTER, SRR_RTR_RRS, 20, 1)
+> +    FIELD(TXE_FIFO_TB_ID_REGISTER, IDE, 19, 1)
+> +    FIELD(TXE_FIFO_TB_ID_REGISTER, ID_EXT, 1, 18)
+> +    FIELD(TXE_FIFO_TB_ID_REGISTER, RTR_RRS, 0, 1)
+> +REG32(TXE_FIFO_TB_DLC_REGISTER, 0x2004)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, DLC, 28, 4)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, FDF, 27, 1)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, BRS, 26, 1)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, ET, 24, 2)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, MM, 16, 8)
+> +    FIELD(TXE_FIFO_TB_DLC_REGISTER, TIMESTAMP, 0, 16)
+> +REG32(RB_ID_REGISTER, 0x2100)
+> +    FIELD(RB_ID_REGISTER, ID, 21, 11)
+> +    FIELD(RB_ID_REGISTER, SRR_RTR_RRS, 20, 1)
+> +    FIELD(RB_ID_REGISTER, IDE, 19, 1)
+> +    FIELD(RB_ID_REGISTER, ID_EXT, 1, 18)
+> +    FIELD(RB_ID_REGISTER, RTR_RRS, 0, 1)
+> +REG32(RB_DLC_REGISTER, 0x2104)
+> +    FIELD(RB_DLC_REGISTER, DLC, 28, 4)
+> +    FIELD(RB_DLC_REGISTER, FDF, 27, 1)
+> +    FIELD(RB_DLC_REGISTER, BRS, 26, 1)
+> +    FIELD(RB_DLC_REGISTER, ESI, 25, 1)
+> +    FIELD(RB_DLC_REGISTER, MATCHED_FILTER_INDEX, 16, 5)
+> +    FIELD(RB_DLC_REGISTER, TIMESTAMP, 0, 16)
+> +REG32(RB_DW0_REGISTER, 0x2108)
+> +    FIELD(RB_DW0_REGISTER, DATA_BYTES0, 24, 8)
+> +    FIELD(RB_DW0_REGISTER, DATA_BYTES1, 16, 8)
+> +    FIELD(RB_DW0_REGISTER, DATA_BYTES2, 8, 8)
+> +    FIELD(RB_DW0_REGISTER, DATA_BYTES3, 0, 8)
+> +REG32(RB_DW1_REGISTER, 0x210c)
+> +    FIELD(RB_DW1_REGISTER, DATA_BYTES4, 24, 8)
+> +    FIELD(RB_DW1_REGISTER, DATA_BYTES5, 16, 8)
+> +    FIELD(RB_DW1_REGISTER, DATA_BYTES6, 8, 8)
+> +    FIELD(RB_DW1_REGISTER, DATA_BYTES7, 0, 8)
+> +REG32(RB_DW2_REGISTER, 0x2110)
+> +    FIELD(RB_DW2_REGISTER, DATA_BYTES8, 24, 8)
+> +    FIELD(RB_DW2_REGISTER, DATA_BYTES9, 16, 8)
+> +    FIELD(RB_DW2_REGISTER, DATA_BYTES10, 8, 8)
+> +    FIELD(RB_DW2_REGISTER, DATA_BYTES11, 0, 8)
+> +REG32(RB_DW3_REGISTER, 0x2114)
+> +    FIELD(RB_DW3_REGISTER, DATA_BYTES12, 24, 8)
+> +    FIELD(RB_DW3_REGISTER, DATA_BYTES13, 16, 8)
+> +    FIELD(RB_DW3_REGISTER, DATA_BYTES14, 8, 8)
+> +    FIELD(RB_DW3_REGISTER, DATA_BYTES15, 0, 8)
+> +REG32(RB_DW4_REGISTER, 0x2118)
+> +    FIELD(RB_DW4_REGISTER, DATA_BYTES16, 24, 8)
+> +    FIELD(RB_DW4_REGISTER, DATA_BYTES17, 16, 8)
+> +    FIELD(RB_DW4_REGISTER, DATA_BYTES18, 8, 8)
+> +    FIELD(RB_DW4_REGISTER, DATA_BYTES19, 0, 8)
+> +REG32(RB_DW5_REGISTER, 0x211c)
+> +    FIELD(RB_DW5_REGISTER, DATA_BYTES20, 24, 8)
+> +    FIELD(RB_DW5_REGISTER, DATA_BYTES21, 16, 8)
+> +    FIELD(RB_DW5_REGISTER, DATA_BYTES22, 8, 8)
+> +    FIELD(RB_DW5_REGISTER, DATA_BYTES23, 0, 8)
+> +REG32(RB_DW6_REGISTER, 0x2120)
+> +    FIELD(RB_DW6_REGISTER, DATA_BYTES24, 24, 8)
+> +    FIELD(RB_DW6_REGISTER, DATA_BYTES25, 16, 8)
+> +    FIELD(RB_DW6_REGISTER, DATA_BYTES26, 8, 8)
+> +    FIELD(RB_DW6_REGISTER, DATA_BYTES27, 0, 8)
+> +REG32(RB_DW7_REGISTER, 0x2124)
+> +    FIELD(RB_DW7_REGISTER, DATA_BYTES28, 24, 8)
+> +    FIELD(RB_DW7_REGISTER, DATA_BYTES29, 16, 8)
+> +    FIELD(RB_DW7_REGISTER, DATA_BYTES30, 8, 8)
+> +    FIELD(RB_DW7_REGISTER, DATA_BYTES31, 0, 8)
+> +REG32(RB_DW8_REGISTER, 0x2128)
+> +    FIELD(RB_DW8_REGISTER, DATA_BYTES32, 24, 8)
+> +    FIELD(RB_DW8_REGISTER, DATA_BYTES33, 16, 8)
+> +    FIELD(RB_DW8_REGISTER, DATA_BYTES34, 8, 8)
+> +    FIELD(RB_DW8_REGISTER, DATA_BYTES35, 0, 8)
+> +REG32(RB_DW9_REGISTER, 0x212c)
+> +    FIELD(RB_DW9_REGISTER, DATA_BYTES36, 24, 8)
+> +    FIELD(RB_DW9_REGISTER, DATA_BYTES37, 16, 8)
+> +    FIELD(RB_DW9_REGISTER, DATA_BYTES38, 8, 8)
+> +    FIELD(RB_DW9_REGISTER, DATA_BYTES39, 0, 8)
+> +REG32(RB_DW10_REGISTER, 0x2130)
+> +    FIELD(RB_DW10_REGISTER, DATA_BYTES40, 24, 8)
+> +    FIELD(RB_DW10_REGISTER, DATA_BYTES41, 16, 8)
+> +    FIELD(RB_DW10_REGISTER, DATA_BYTES42, 8, 8)
+> +    FIELD(RB_DW10_REGISTER, DATA_BYTES43, 0, 8)
+> +REG32(RB_DW11_REGISTER, 0x2134)
+> +    FIELD(RB_DW11_REGISTER, DATA_BYTES44, 24, 8)
+> +    FIELD(RB_DW11_REGISTER, DATA_BYTES45, 16, 8)
+> +    FIELD(RB_DW11_REGISTER, DATA_BYTES46, 8, 8)
+> +    FIELD(RB_DW11_REGISTER, DATA_BYTES47, 0, 8)
+> +REG32(RB_DW12_REGISTER, 0x2138)
+> +    FIELD(RB_DW12_REGISTER, DATA_BYTES48, 24, 8)
+> +    FIELD(RB_DW12_REGISTER, DATA_BYTES49, 16, 8)
+> +    FIELD(RB_DW12_REGISTER, DATA_BYTES50, 8, 8)
+> +    FIELD(RB_DW12_REGISTER, DATA_BYTES51, 0, 8)
+> +REG32(RB_DW13_REGISTER, 0x213c)
+> +    FIELD(RB_DW13_REGISTER, DATA_BYTES52, 24, 8)
+> +    FIELD(RB_DW13_REGISTER, DATA_BYTES53, 16, 8)
+> +    FIELD(RB_DW13_REGISTER, DATA_BYTES54, 8, 8)
+> +    FIELD(RB_DW13_REGISTER, DATA_BYTES55, 0, 8)
+> +REG32(RB_DW14_REGISTER, 0x2140)
+> +    FIELD(RB_DW14_REGISTER, DATA_BYTES56, 24, 8)
+> +    FIELD(RB_DW14_REGISTER, DATA_BYTES57, 16, 8)
+> +    FIELD(RB_DW14_REGISTER, DATA_BYTES58, 8, 8)
+> +    FIELD(RB_DW14_REGISTER, DATA_BYTES59, 0, 8)
+> +REG32(RB_DW15_REGISTER, 0x2144)
+> +    FIELD(RB_DW15_REGISTER, DATA_BYTES60, 24, 8)
+> +    FIELD(RB_DW15_REGISTER, DATA_BYTES61, 16, 8)
+> +    FIELD(RB_DW15_REGISTER, DATA_BYTES62, 8, 8)
+> +    FIELD(RB_DW15_REGISTER, DATA_BYTES63, 0, 8)
+> +REG32(RB_ID_REGISTER_1, 0x4100)
+> +    FIELD(RB_ID_REGISTER_1, ID, 21, 11)
+> +    FIELD(RB_ID_REGISTER_1, SRR_RTR_RRS, 20, 1)
+> +    FIELD(RB_ID_REGISTER_1, IDE, 19, 1)
+> +    FIELD(RB_ID_REGISTER_1, ID_EXT, 1, 18)
+> +    FIELD(RB_ID_REGISTER_1, RTR_RRS, 0, 1)
+> +REG32(RB_DLC_REGISTER_1, 0x4104)
+> +    FIELD(RB_DLC_REGISTER_1, DLC, 28, 4)
+> +    FIELD(RB_DLC_REGISTER_1, FDF, 27, 1)
+> +    FIELD(RB_DLC_REGISTER_1, BRS, 26, 1)
+> +    FIELD(RB_DLC_REGISTER_1, ESI, 25, 1)
+> +    FIELD(RB_DLC_REGISTER_1, MATCHED_FILTER_INDEX, 16, 5)
+> +    FIELD(RB_DLC_REGISTER_1, TIMESTAMP, 0, 16)
+> +REG32(RB0_DW0_REGISTER_1, 0x4108)
+> +    FIELD(RB0_DW0_REGISTER_1, DATA_BYTES0, 24, 8)
+> +    FIELD(RB0_DW0_REGISTER_1, DATA_BYTES1, 16, 8)
+> +    FIELD(RB0_DW0_REGISTER_1, DATA_BYTES2, 8, 8)
+> +    FIELD(RB0_DW0_REGISTER_1, DATA_BYTES3, 0, 8)
+> +REG32(RB_DW1_REGISTER_1, 0x410c)
+> +    FIELD(RB_DW1_REGISTER_1, DATA_BYTES4, 24, 8)
+> +    FIELD(RB_DW1_REGISTER_1, DATA_BYTES5, 16, 8)
+> +    FIELD(RB_DW1_REGISTER_1, DATA_BYTES6, 8, 8)
+> +    FIELD(RB_DW1_REGISTER_1, DATA_BYTES7, 0, 8)
+> +REG32(RB_DW2_REGISTER_1, 0x4110)
+> +    FIELD(RB_DW2_REGISTER_1, DATA_BYTES8, 24, 8)
+> +    FIELD(RB_DW2_REGISTER_1, DATA_BYTES9, 16, 8)
+> +    FIELD(RB_DW2_REGISTER_1, DATA_BYTES10, 8, 8)
+> +    FIELD(RB_DW2_REGISTER_1, DATA_BYTES11, 0, 8)
+> +REG32(RB_DW3_REGISTER_1, 0x4114)
+> +    FIELD(RB_DW3_REGISTER_1, DATA_BYTES12, 24, 8)
+> +    FIELD(RB_DW3_REGISTER_1, DATA_BYTES13, 16, 8)
+> +    FIELD(RB_DW3_REGISTER_1, DATA_BYTES14, 8, 8)
+> +    FIELD(RB_DW3_REGISTER_1, DATA_BYTES15, 0, 8)
+> +REG32(RB_DW4_REGISTER_1, 0x4118)
+> +    FIELD(RB_DW4_REGISTER_1, DATA_BYTES16, 24, 8)
+> +    FIELD(RB_DW4_REGISTER_1, DATA_BYTES17, 16, 8)
+> +    FIELD(RB_DW4_REGISTER_1, DATA_BYTES18, 8, 8)
+> +    FIELD(RB_DW4_REGISTER_1, DATA_BYTES19, 0, 8)
+> +REG32(RB_DW5_REGISTER_1, 0x411c)
+> +    FIELD(RB_DW5_REGISTER_1, DATA_BYTES20, 24, 8)
+> +    FIELD(RB_DW5_REGISTER_1, DATA_BYTES21, 16, 8)
+> +    FIELD(RB_DW5_REGISTER_1, DATA_BYTES22, 8, 8)
+> +    FIELD(RB_DW5_REGISTER_1, DATA_BYTES23, 0, 8)
+> +REG32(RB_DW6_REGISTER_1, 0x4120)
+> +    FIELD(RB_DW6_REGISTER_1, DATA_BYTES24, 24, 8)
+> +    FIELD(RB_DW6_REGISTER_1, DATA_BYTES25, 16, 8)
+> +    FIELD(RB_DW6_REGISTER_1, DATA_BYTES26, 8, 8)
+> +    FIELD(RB_DW6_REGISTER_1, DATA_BYTES27, 0, 8)
+> +REG32(RB_DW7_REGISTER_1, 0x4124)
+> +    FIELD(RB_DW7_REGISTER_1, DATA_BYTES28, 24, 8)
+> +    FIELD(RB_DW7_REGISTER_1, DATA_BYTES29, 16, 8)
+> +    FIELD(RB_DW7_REGISTER_1, DATA_BYTES30, 8, 8)
+> +    FIELD(RB_DW7_REGISTER_1, DATA_BYTES31, 0, 8)
+> +REG32(RB_DW8_REGISTER_1, 0x4128)
+> +    FIELD(RB_DW8_REGISTER_1, DATA_BYTES32, 24, 8)
+> +    FIELD(RB_DW8_REGISTER_1, DATA_BYTES33, 16, 8)
+> +    FIELD(RB_DW8_REGISTER_1, DATA_BYTES34, 8, 8)
+> +    FIELD(RB_DW8_REGISTER_1, DATA_BYTES35, 0, 8)
+> +REG32(RB_DW9_REGISTER_1, 0x412c)
+> +    FIELD(RB_DW9_REGISTER_1, DATA_BYTES36, 24, 8)
+> +    FIELD(RB_DW9_REGISTER_1, DATA_BYTES37, 16, 8)
+> +    FIELD(RB_DW9_REGISTER_1, DATA_BYTES38, 8, 8)
+> +    FIELD(RB_DW9_REGISTER_1, DATA_BYTES39, 0, 8)
+> +REG32(RB_DW10_REGISTER_1, 0x4130)
+> +    FIELD(RB_DW10_REGISTER_1, DATA_BYTES40, 24, 8)
+> +    FIELD(RB_DW10_REGISTER_1, DATA_BYTES41, 16, 8)
+> +    FIELD(RB_DW10_REGISTER_1, DATA_BYTES42, 8, 8)
+> +    FIELD(RB_DW10_REGISTER_1, DATA_BYTES43, 0, 8)
+> +REG32(RB_DW11_REGISTER_1, 0x4134)
+> +    FIELD(RB_DW11_REGISTER_1, DATA_BYTES44, 24, 8)
+> +    FIELD(RB_DW11_REGISTER_1, DATA_BYTES45, 16, 8)
+> +    FIELD(RB_DW11_REGISTER_1, DATA_BYTES46, 8, 8)
+> +    FIELD(RB_DW11_REGISTER_1, DATA_BYTES47, 0, 8)
+> +REG32(RB_DW12_REGISTER_1, 0x4138)
+> +    FIELD(RB_DW12_REGISTER_1, DATA_BYTES48, 24, 8)
+> +    FIELD(RB_DW12_REGISTER_1, DATA_BYTES49, 16, 8)
+> +    FIELD(RB_DW12_REGISTER_1, DATA_BYTES50, 8, 8)
+> +    FIELD(RB_DW12_REGISTER_1, DATA_BYTES51, 0, 8)
+> +REG32(RB_DW13_REGISTER_1, 0x413c)
+> +    FIELD(RB_DW13_REGISTER_1, DATA_BYTES52, 24, 8)
+> +    FIELD(RB_DW13_REGISTER_1, DATA_BYTES53, 16, 8)
+> +    FIELD(RB_DW13_REGISTER_1, DATA_BYTES54, 8, 8)
+> +    FIELD(RB_DW13_REGISTER_1, DATA_BYTES55, 0, 8)
+> +REG32(RB_DW14_REGISTER_1, 0x4140)
+> +    FIELD(RB_DW14_REGISTER_1, DATA_BYTES56, 24, 8)
+> +    FIELD(RB_DW14_REGISTER_1, DATA_BYTES57, 16, 8)
+> +    FIELD(RB_DW14_REGISTER_1, DATA_BYTES58, 8, 8)
+> +    FIELD(RB_DW14_REGISTER_1, DATA_BYTES59, 0, 8)
+> +REG32(RB_DW15_REGISTER_1, 0x4144)
+> +    FIELD(RB_DW15_REGISTER_1, DATA_BYTES60, 24, 8)
+> +    FIELD(RB_DW15_REGISTER_1, DATA_BYTES61, 16, 8)
+> +    FIELD(RB_DW15_REGISTER_1, DATA_BYTES62, 8, 8)
+> +    FIELD(RB_DW15_REGISTER_1, DATA_BYTES63, 0, 8)
 > +
-> +static struct AwR40Unimplemented r40_unimplemented[] =3D {
-> +    { "d-engine",   0x01000000, 4 * MiB },
-> +    { "d-inter",    0x01400000, 128 * KiB },
-> +    { "sram-c",     0x01c00000, 4 * KiB },
-> +    { "dma",        0x01c02000, 4 * KiB },
-> +    { "nfdc",       0x01c03000, 4 * KiB },
-> +    { "ts",         0x01c04000, 4 * KiB },
-> +    { "spi0",       0x01c05000, 4 * KiB },
-> +    { "spi1",       0x01c06000, 4 * KiB },
-> +    { "cs0",        0x01c09000, 4 * KiB },
-> +    { "keymem",     0x01c0a000, 4 * KiB },
-> +    { "emac",       0x01c0b000, 4 * KiB },
-> +    { "usb0-otg",   0x01c13000, 4 * KiB },
-> +    { "usb0-host",  0x01c14000, 4 * KiB },
-> +    { "crypto",     0x01c15000, 4 * KiB },
-> +    { "spi2",       0x01c17000, 4 * KiB },
-> +    { "sata",       0x01c18000, 4 * KiB },
-> +    { "usb1-host",  0x01c19000, 4 * KiB },
-> +    { "sid",        0x01c1b000, 4 * KiB },
-> +    { "usb2-host",  0x01c1c000, 4 * KiB },
-> +    { "cs1",        0x01c1d000, 4 * KiB },
-> +    { "spi3",       0x01c1f000, 4 * KiB },
-> +    { "ccu",        0x01c20000, 1 * KiB },
-> +    { "rtc",        0x01c20400, 1 * KiB },
-> +    { "pio",        0x01c20800, 1 * KiB },
-> +    { "owa",        0x01c21000, 1 * KiB },
-> +    { "ac97",       0x01c21400, 1 * KiB },
-> +    { "cir0",       0x01c21800, 1 * KiB },
-> +    { "cir1",       0x01c21c00, 1 * KiB },
-> +    { "pcm0",       0x01c22000, 1 * KiB },
-> +    { "pcm1",       0x01c22400, 1 * KiB },
-> +    { "pcm2",       0x01c22800, 1 * KiB },
-> +    { "audio",      0x01c22c00, 1 * KiB },
-> +    { "keypad",     0x01c23000, 1 * KiB },
-> +    { "pwm",        0x01c23400, 1 * KiB },
-> +    { "keyadc",     0x01c24400, 1 * KiB },
-> +    { "ths",        0x01c24c00, 1 * KiB },
-> +    { "rtp",        0x01c25000, 1 * KiB },
-> +    { "pmu",        0x01c25400, 1 * KiB },
-> +    { "cpu-cfg",    0x01c25c00, 1 * KiB },
-> +    { "uart0",      0x01c28000, 1 * KiB },
-> +    { "uart1",      0x01c28400, 1 * KiB },
-> +    { "uart2",      0x01c28800, 1 * KiB },
-> +    { "uart3",      0x01c28c00, 1 * KiB },
-> +    { "uart4",      0x01c29000, 1 * KiB },
-> +    { "uart5",      0x01c29400, 1 * KiB },
-> +    { "uart6",      0x01c29800, 1 * KiB },
-> +    { "uart7",      0x01c29c00, 1 * KiB },
-> +    { "ps20",       0x01c2a000, 1 * KiB },
-> +    { "ps21",       0x01c2a400, 1 * KiB },
-> +    { "twi0",       0x01c2ac00, 1 * KiB },
-> +    { "twi1",       0x01c2b000, 1 * KiB },
-> +    { "twi2",       0x01c2b400, 1 * KiB },
-> +    { "twi3",       0x01c2b800, 1 * KiB },
-> +    { "twi4",       0x01c2c000, 1 * KiB },
-> +    { "scr",        0x01c2c400, 1 * KiB },
-> +    { "tvd-top",    0x01c30000, 4 * KiB },
-> +    { "tvd0",       0x01c31000, 4 * KiB },
-> +    { "tvd1",       0x01c32000, 4 * KiB },
-> +    { "tvd2",       0x01c33000, 4 * KiB },
-> +    { "tvd3",       0x01c34000, 4 * KiB },
-> +    { "gpu",        0x01c40000, 64 * KiB },
-> +    { "gmac",       0x01c50000, 64 * KiB },
-> +    { "hstmr",      0x01c60000, 4 * KiB },
-> +    { "dram-com",   0x01c62000, 4 * KiB },
-> +    { "dram-ctl",   0x01c63000, 4 * KiB },
-> +    { "tcon-top",   0x01c70000, 4 * KiB },
-> +    { "lcd0",       0x01c71000, 4 * KiB },
-> +    { "lcd1",       0x01c72000, 4 * KiB },
-> +    { "tv0",        0x01c73000, 4 * KiB },
-> +    { "tv1",        0x01c74000, 4 * KiB },
-> +    { "tve-top",    0x01c90000, 16 * KiB },
-> +    { "tve0",       0x01c94000, 16 * KiB },
-> +    { "tve1",       0x01c98000, 16 * KiB },
-> +    { "mipi_dsi",   0x01ca0000, 4 * KiB },
-> +    { "mipi_dphy",  0x01ca1000, 4 * KiB },
-> +    { "ve",         0x01d00000, 1024 * KiB },
-> +    { "mp",         0x01e80000, 128 * KiB },
-> +    { "hdmi",       0x01ee0000, 128 * KiB },
-> +    { "prcm",       0x01f01400, 1 * KiB },
-> +    { "debug",      0x3f500000, 64 * KiB },
-> +    { "cpubist",    0x3f501000, 4 * KiB },
-> +    { "dcu",        0x3fff0000, 64 * KiB },
-> +    { "hstmr",      0x01c60000, 4 * KiB },
-> +    { "brom",       0xffff0000, 36 * KiB }
-> +};
+> +static uint8_t canfd_dlc_array[8] = {8, 12, 16, 20, 24, 32, 48, 64};
 > +
-> +/* Per Processor Interrupts */
-> +enum {
-> +    AW_R40_GIC_PPI_MAINT     =3D  9,
-> +    AW_R40_GIC_PPI_HYPTIMER  =3D 10,
-> +    AW_R40_GIC_PPI_VIRTTIMER =3D 11,
-> +    AW_R40_GIC_PPI_SECTIMER  =3D 13,
-> +    AW_R40_GIC_PPI_PHYSTIMER =3D 14
-> +};
-> +
-> +/* Shared Processor Interrupts */
-> +enum {
-> +    AW_R40_GIC_SPI_UART0     =3D  1,
-> +    AW_R40_GIC_SPI_UART1     =3D  2,
-> +    AW_R40_GIC_SPI_UART2     =3D  3,
-> +    AW_R40_GIC_SPI_UART3     =3D  4,
-> +    AW_R40_GIC_SPI_TIMER0    =3D 22,
-> +    AW_R40_GIC_SPI_TIMER1    =3D 23,
-> +    AW_R40_GIC_SPI_MMC0      =3D 32,
-> +    AW_R40_GIC_SPI_MMC1      =3D 33,
-> +    AW_R40_GIC_SPI_MMC2      =3D 34,
-> +    AW_R40_GIC_SPI_MMC3      =3D 35,
-> +};
-> +
-> +/* Allwinner R40 general constants */
-> +enum {
-> +    AW_R40_GIC_NUM_SPI       =3D 128
-> +};
-> +
-> +#define BOOT0_MAGIC             "eGON.BT0"
-> +
-> +/* The low 8-bits of the 'boot_media' field in the SPL header */
-> +#define SUNXI_BOOTED_FROM_MMC0  0
-> +#define SUNXI_BOOTED_FROM_NAND  1
-> +#define SUNXI_BOOTED_FROM_MMC2  2
-> +#define SUNXI_BOOTED_FROM_SPI   3
-> +
-> +struct boot_file_head {
-> +    uint32_t            b_instruction;
-> +    uint8_t             magic[8];
-> +    uint32_t            check_sum;
-> +    uint32_t            length;
-> +    uint32_t            pub_head_size;
-> +    uint32_t            fel_script_address;
-> +    uint32_t            fel_uEnv_length;
-> +    uint32_t            dt_name_offset;
-> +    uint32_t            dram_size;
-> +    uint32_t            boot_media;
-> +    uint32_t            string_pool[13];
-> +};
-> +
-> +bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int
-> unit)
+> +static void canfd_update_irq(XlnxVersalCANFDState *s)
 > +{
-> +    const int64_t rom_size =3D 32 * KiB;
-> +    g_autofree uint8_t *buffer =3D g_new0(uint8_t, rom_size);
-> +    struct boot_file_head *head =3D (struct boot_file_head *)buffer;
+> +    unsigned int irq = s->regs[R_INTERRUPT_STATUS_REGISTER] &
+> +                        s->regs[R_INTERRUPT_ENABLE_REGISTER];
+> +    g_autofree char *path = object_get_canonical_path(OBJECT(s));
 > +
-> +    if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
-> +        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
-> +                   __func__);
-> +        return false;
+> +    /* RX watermark interrupts. */
+> +    if (ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL) >
+> +        ARRAY_FIELD_EX32(s->regs, RX_FIFO_WATERMARK_REGISTER, RXFWM)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL, 1);
 > +    }
 > +
-> +    /* we only check the magic string here. */
-> +    if (memcmp(head->magic, BOOT0_MAGIC, sizeof(head->magic))) {
-> +        return false;
+> +    if (ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1) >
+> +        ARRAY_FIELD_EX32(s->regs, RX_FIFO_WATERMARK_REGISTER, RXFWM_1)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL_1, 1);
 > +    }
+> +
+> +    /* TX watermark interrupt. */
+> +    if (ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL) >
+> +        ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_WATERMARK_REGISTER, TXE_FWM)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXEWMFLL, 1);
+> +    }
+> +
+> +    trace_xlnx_canfd_update_irq(path, s->regs[R_INTERRUPT_STATUS_REGISTER],
+> +                                s->regs[R_INTERRUPT_ENABLE_REGISTER], irq);
+> +
+> +    qemu_set_irq(s->irq_canfd_int, irq);
+> +}
+> +
+> +static void canfd_ier_post_write(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static uint64_t canfd_icr_pre_write(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +
+> +    s->regs[R_INTERRUPT_STATUS_REGISTER] &= ~val;
 > +
 > +    /*
-> +     * Simulate the behavior of the bootROM, it will change the boot_med=
-ia
-> +     * flag to indicate where the chip is booting from. R40 can boot fro=
-m
-> +     * mmc0 or mmc2, the default value of boot_media is zero
-> +     * (SUNXI_BOOTED_FROM_MMC0), let's fix this flag when it is booting
-> from
-> +     * the others.
+> +     * RXBOFLW_BI field is automatically cleared to default if RXBOFLW bit is
+> +     * cleared in ISR.
 > +     */
-> +    if (unit =3D=3D 2) {
-> +        head->boot_media =3D cpu_to_le32(SUNXI_BOOTED_FROM_MMC2);
-> +    } else {
-> +        head->boot_media =3D cpu_to_le32(SUNXI_BOOTED_FROM_MMC0);
+> +    if (ARRAY_FIELD_EX32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL_1)) {
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXBOFLW_BI, 0);
 > +    }
 > +
-> +    rom_add_blob("allwinner-r40.bootrom", buffer, rom_size,
-> +                  rom_size, s->memmap[AW_R40_DEV_SRAM_A1],
-> +                  NULL, NULL, NULL, NULL, false);
+> +    canfd_update_irq(s);
+> +
+> +    return 0;
+> +}
+> +
+> +static void canfd_config_reset(XlnxVersalCANFDState *s)
+> +{
+> +
+> +    unsigned int i;
+> +
+> +    /* Reset all the configuration registers. */
+> +    for (i = 0; i < R_RX_FIFO_WATERMARK_REGISTER; ++i) {
+> +        register_reset(&s->reg_info[i]);
+> +    }
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static void canfd_config_mode(XlnxVersalCANFDState *s)
+> +{
+> +    register_reset(&s->reg_info[R_ERROR_COUNTER_REGISTER]);
+> +    register_reset(&s->reg_info[R_ERROR_STATUS_REGISTER]);
+> +    register_reset(&s->reg_info[R_STATUS_REGISTER]);
+> +
+> +    /* Put XlnxVersalCANFDState in configuration mode. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 1);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, BSOFF, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ERROR, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW_1, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 0);
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ARBLST, 0);
+> +
+> +    /* Clear the time stamp. */
+> +    ptimer_transaction_begin(s->canfd_timer);
+> +    ptimer_set_count(s->canfd_timer, 0);
+> +    ptimer_transaction_commit(s->canfd_timer);
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static void update_status_register_mode_bits(XlnxVersalCANFDState *s)
+> +{
+> +    bool sleep_status = ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP);
+> +    bool sleep_mode = ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP);
+> +    /* Wake up interrupt bit. */
+> +    bool wakeup_irq_val = !sleep_mode && sleep_status;
+> +    /* Sleep interrupt bit. */
+> +    bool sleep_irq_val = sleep_mode && !sleep_status;
+> +
+> +    /* Clear previous core mode status bits. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 0);
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 0);
+> +
+> +    /* set current mode bit and generate irqs accordingly. */
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, LBACK)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 1);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 1);
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP,
+> +                         sleep_irq_val);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 1);
+> +    } else {
+> +        /* If all bits are zero, XlnxVersalCANFDState is set in normal mode. */
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 1);
+> +        /* Set wakeup interrupt bit. */
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP,
+> +                         wakeup_irq_val);
+> +    }
+> +
+> +    /* Put the CANFD in error active state. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ESTAT, 1);
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static uint64_t canfd_msr_pre_write(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +    uint8_t multi_mode = 0;
+> +
+> +    /*
+> +     * Multiple mode set check. This is done to make sure user doesn't set
+> +     * multiple modes.
+> +     */
+> +    multi_mode = FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK) +
+> +                 FIELD_EX32(val, MODE_SELECT_REGISTER, SLEEP) +
+> +                 FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP);
+> +
+> +    if (multi_mode > 1) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to configure several modes"
+> +                      " simultaneously. One mode will be selected according to"
+> +                      " their priority: LBACK > SLEEP > SNOOP.\n");
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
+> +        /* In configuration mode, any mode can be selected. */
+> +        s->regs[R_MODE_SELECT_REGISTER] = val;
+> +    } else {
+> +        bool sleep_mode_bit = FIELD_EX32(val, MODE_SELECT_REGISTER, SLEEP);
+> +
+> +        ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP, sleep_mode_bit);
+> +
+> +        if (FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set LBACK mode"
+> +                          " without setting CEN bit as 0\n");
+> +        } else if (FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set SNOOP mode"
+> +                          " without setting CEN bit as 0\n");
+> +        }
+> +
+> +        update_status_register_mode_bits(s);
+> +    }
+> +
+> +    return s->regs[R_MODE_SELECT_REGISTER];
+> +}
+> +
+> +static void canfd_exit_sleep_mode(XlnxVersalCANFDState *s)
+> +{
+> +    ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP, 0);
+> +    update_status_register_mode_bits(s);
+> +}
+> +
+> +static void regs2frame(XlnxVersalCANFDState *s, qemu_can_frame *frame,
+> +                       uint32_t reg_num)
+> +{
+> +    uint32_t i = 0;
+> +    uint32_t j = 0;
+> +    uint32_t val = 0;
+> +    uint32_t dlc_reg_val = 0;
+> +    uint32_t dlc_value = 0;
+> +
+> +    /* Check that reg_num should be within TX register space. */
+> +    assert(reg_num <= R_TB_ID_REGISTER + (NUM_REGS_PER_MSG_SPACE *
+> +                                          s->cfg.tx_fifo));
+> +
+> +    dlc_reg_val = s->regs[reg_num + 1];
+> +    dlc_value = FIELD_EX32(dlc_reg_val, TB0_DLC_REGISTER, DLC);
+> +
+> +    frame->can_id = s->regs[reg_num];
+> +
+> +    if (FIELD_EX32(dlc_reg_val, TB0_DLC_REGISTER, FDF)) {
+> +        /*
+> +         * CANFD frame.
+> +         * Converting dlc(0 to 15) 4 Byte data to plain length(i.e. 0 to 64)
+> +         * 1 Byte data. This is done to make it work with SocketCAN.
+> +         * On actual CANFD frame, this value can't be more than 0xF.
+> +         * Conversion table for DLC to plain length:
+> +         *
+> +         *  DLC                        Plain Length
+> +         *  0 - 8                      0 - 8
+> +         *  9                          9 - 12
+> +         *  10                         13 - 16
+> +         *  11                         17 - 20
+> +         *  12                         21 - 24
+> +         *  13                         25 - 32
+> +         *  14                         33 - 48
+> +         *  15                         49 - 64
+> +         */
+> +
+> +        frame->flags = QEMU_CAN_FRMF_TYPE_FD;
+> +
+> +        if (dlc_value < 8) {
+> +            frame->can_dlc = dlc_value;
+> +        } else {
+> +            assert((dlc_value - 8) < ARRAY_SIZE(canfd_dlc_array));
+> +            frame->can_dlc = canfd_dlc_array[dlc_value - 8];
+> +        }
+> +    } else {
+> +        /*
+> +         * FD Format bit not set that means it is a CAN Frame.
+> +         * Conversion table for classic CAN:
+> +         *
+> +         *  DLC                        Plain Length
+> +         *  0 - 7                      0 - 7
+> +         *  8 - 15                     8
+> +         */
+> +
+> +        if (dlc_value > 8) {
+> +            frame->can_dlc = 8;
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Maximum DLC value for Classic CAN"
+> +                          " frame is 8. Only 8 byte data will be sent.\n");
+> +        } else {
+> +            frame->can_dlc = dlc_value;
+> +        }
+> +    }
+> +
+> +    for (j = 0; j < frame->can_dlc; j++) {
+> +        val = 8 * i;
+> +
+> +        frame->data[j] = extract32(s->regs[reg_num + 2 + (j / 4)], val, 8);
+> +        i++;
+> +
+> +        if (i % 4 == 0) {
+> +            i = 0;
+> +        }
+> +    }
+> +}
+> +
+> +static void process_cancellation_requests(XlnxVersalCANFDState *s)
+> +{
+> +    uint32_t clear_mask = s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &
+> +                                 s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER];
+> +
+> +    s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~clear_mask;
+> +    s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~clear_mask;
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static void store_rx_sequential(XlnxVersalCANFDState *s,
+> +                                const qemu_can_frame *frame,
+> +                                uint32_t fill_level, uint32_t read_index,
+> +                                uint32_t store_location, uint8_t rx_fifo,
+> +                                bool rx_fifo_id, uint8_t filter_index)
+> +{
+> +    int i;
+> +    bool is_canfd_frame;
+> +    uint8_t dlc = frame->can_dlc;
+> +    uint8_t rx_reg_num = 0;
+> +    uint32_t dlc_reg_val = 0;
+> +    uint32_t data_reg_val = 0;
+> +
+> +    /* Getting RX0/1 fill level */
+> +    if ((fill_level) > rx_fifo - 1) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: RX%d Buffer is full. Discarding the"
+> +                      " message\n", path, rx_fifo_id);
+> +
+> +        /* Set the corresponding RF buffer overflow interrupt. */
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFOFLW_1, 1);
+> +        }
+> +    } else {
+> +        uint16_t rx_timestamp = CANFD_TIMER_MAX -
+> +                                    ptimer_get_count(s->canfd_timer);
+> +
+> +        if (rx_timestamp == 0xFFFF) {
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TSCNT_OFLW, 1);
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, TIMESTAMP_REGISTER, TIMESTAMP_CNT,
+> +                             rx_timestamp);
+> +        }
+> +
+> +        if (rx_fifo_id == 0) {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL,
+> +                             fill_level + 1);
+> +            assert(store_location <=
+> +                              R_RB_ID_REGISTER + (s->cfg.rx0_fifo *
+> +                                                  NUM_REGS_PER_MSG_SPACE));
+> +        } else {
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1,
+> +                             fill_level + 1);
+> +            assert(store_location <=
+> +                              R_RB_ID_REGISTER_1 + (s->cfg.rx1_fifo *
+> +                                                    NUM_REGS_PER_MSG_SPACE));
+> +        }
+> +
+> +        s->regs[store_location] = frame->can_id;
+> +
+> +        dlc = frame->can_dlc;
+> +
+> +        if (frame->flags == QEMU_CAN_FRMF_TYPE_FD) {
+> +            is_canfd_frame = true;
+> +
+> +            /* Store dlc value in Xilinx specific format. */
+> +            for (i = 0; i < ARRAY_SIZE(canfd_dlc_array); i++) {
+> +                if (canfd_dlc_array[i] == frame->can_dlc) {
+> +                    dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, 8 + i);
+> +                }
+> +            }
+> +        } else {
+> +            is_canfd_frame = false;
+> +
+> +            if (frame->can_dlc > 8) {
+> +                dlc = 8;
+> +            }
+> +
+> +            dlc_reg_val = FIELD_DP32(0, RB_DLC_REGISTER, DLC, dlc);
+> +        }
+> +
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, FDF, is_canfd_frame);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, TIMESTAMP, rx_timestamp);
+> +        dlc_reg_val |= FIELD_DP32(0, RB_DLC_REGISTER, MATCHED_FILTER_INDEX,
+> +                                  filter_index);
+> +        s->regs[store_location + 1] = dlc_reg_val;
+> +
+> +        for (i = 0; i < dlc; i++) {
+> +            /* Register size is 4 byte but frame->data each is 1 byte. */
+> +            switch (i % 4) {
+> +            case 0:
+> +                rx_reg_num = i / 4;
+> +
+> +                data_reg_val = FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES3,
+> +                                          frame->data[i]);
+> +                break;
+> +            case 1:
+> +                data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES2,
+> +                                           frame->data[i]);
+> +                break;
+> +            case 2:
+> +                data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES1,
+> +                                           frame->data[i]);
+> +                break;
+> +            case 3:
+> +                data_reg_val |= FIELD_DP32(0, RB_DW0_REGISTER, DATA_BYTES0,
+> +                                           frame->data[i]);
+> +                /*
+> +                 * Last Bytes data which means we have all 4 bytes ready to
+> +                 * store in one rx regs.
+> +                 */
+> +                s->regs[store_location + rx_reg_num + 2] = data_reg_val;
+> +                break;
+> +            }
+> +        }
+> +
+> +        if (i % 4) {
+> +            /*
+> +             * In case DLC is not multiplier of 4, data is not saved to RX FIFO
+> +             * in above switch case. Store the remaining bytes here.
+> +             */
+> +            s->regs[store_location + rx_reg_num + 2] = data_reg_val;
+> +        }
+> +
+> +        /* set the interrupt as RXOK. */
+> +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
+> +    }
+> +}
+> +
+> +static void update_rx_sequential(XlnxVersalCANFDState *s,
+> +                                 const qemu_can_frame *frame)
+> +{
+> +    bool filter_pass = false;
+> +    uint8_t filter_index = 0;
+> +    int i;
+> +    int filter_partition = ARRAY_FIELD_EX32(s->regs,
+> +                                            RX_FIFO_WATERMARK_REGISTER, RXFP);
+> +    uint32_t store_location;
+> +    uint32_t fill_level;
+> +    uint32_t read_index;
+> +    uint8_t store_index = 0;
+> +    g_autofree char *path = NULL;
+> +    /*
+> +     * If all UAF bits are set to 0, then received messages are not stored
+> +     * in the RX buffers.
+> +     */
+> +    if (!s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER]) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "No acceptance filter is set. Received"
+> +                      " messages will not be stored.\n");
+
+Thinking about it, perhaps above is not an error after all (theoretically one
+could want to temporarily filter out all packages), what do you think?
+
+> +    } else {
+> +        uint32_t acceptance_filter_status =
+> +                                s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER];
+> +
+> +        for (i = 0; i < 32; i++) {
+> +            if (acceptance_filter_status & 0x1) {
+> +                uint32_t msg_id_masked = s->regs[R_AFMR_REGISTER + 2 * i] &
+> +                                         frame->can_id;
+> +                uint32_t afir_id_masked = s->regs[R_AFIR_REGISTER + 2 * i] &
+> +                                          s->regs[R_AFMR_REGISTER + 2 * i];
+> +                uint16_t std_msg_id_masked = FIELD_EX32(msg_id_masked,
+> +                                                        AFIR_REGISTER, AIID);
+> +                uint16_t std_afir_id_masked = FIELD_EX32(afir_id_masked,
+> +                                                         AFIR_REGISTER, AIID);
+> +                uint32_t ext_msg_id_masked = FIELD_EX32(msg_id_masked,
+> +                                                        AFIR_REGISTER,
+> +                                                        AIID_EXT);
+> +                uint32_t ext_afir_id_masked = FIELD_EX32(afir_id_masked,
+> +                                                         AFIR_REGISTER,
+> +                                                         AIID_EXT);
+> +                bool ext_ide = FIELD_EX32(s->regs[R_AFMR_REGISTER + 2 * i],
+> +                                          AFMR_REGISTER, AMIDE);
+> +
+> +                if (std_msg_id_masked == std_afir_id_masked) {
+> +                    if (ext_ide) {
+> +                        /* Extended message ID message. */
+> +                        if (ext_msg_id_masked == ext_afir_id_masked) {
+> +                            filter_pass = true;
+> +                            filter_index = i;
+> +
+> +                            break;
+> +                        }
+> +                    } else {
+> +                        /* Standard message ID. */
+> +                        filter_pass = true;
+> +                        filter_index = i;
+> +
+> +                        break;
+> +                    }
+> +                }
+> +            }
+> +            acceptance_filter_status >>= 1;
+> +        }
+> +    }
+> +
+> +    if (!filter_pass) {
+> +        path = object_get_canonical_path(OBJECT(s));
+> +
+> +        trace_xlnx_canfd_rx_fifo_filter_reject(path, frame->can_id,
+> +                                               frame->can_dlc);
+> +    } else {
+> +        if (filter_index <= filter_partition) {
+> +            fill_level = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, FL);
+> +            read_index = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER, RI);
+> +            store_index = read_index + fill_level;
+> +
+> +            if (read_index == s->cfg.rx0_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.rx0_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI,
+> +                                 read_index);
+> +            }
+> +
+> +            if (store_index > s->cfg.rx0_fifo - 1) {
+> +                store_index -= s->cfg.rx0_fifo - 1;
+> +            }
+> +
+> +            store_location = R_RB_ID_REGISTER +
+> +                          (store_index * NUM_REGS_PER_MSG_SPACE);
+> +
+> +            store_rx_sequential(s, frame, fill_level, read_index,
+> +                                store_location, s->cfg.rx0_fifo, 0,
+> +                                filter_index);
+> +        } else {
+> +            /* RX 1 fill level message */
+> +            fill_level = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER,
+> +                                          FL_1);
+> +            read_index = ARRAY_FIELD_EX32(s->regs, RX_FIFO_STATUS_REGISTER,
+> +                                          RI_1);
+> +            store_index = read_index + fill_level;
+> +
+> +            if (read_index == s->cfg.rx1_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.rx1_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI_1,
+> +                                 read_index);
+> +            }
+> +
+> +            if (store_index > s->cfg.rx1_fifo - 1) {
+> +                store_index -= s->cfg.rx1_fifo - 1;
+> +            }
+> +
+> +            store_location = R_RB_ID_REGISTER_1 +
+> +                          (store_index * NUM_REGS_PER_MSG_SPACE);
+> +
+> +            store_rx_sequential(s, frame, fill_level, read_index,
+> +                                store_location, s->cfg.rx1_fifo, 1,
+> +                                filter_index);
+> +        }
+> +
+> +        path = object_get_canonical_path(OBJECT(s));
+> +
+> +        trace_xlnx_canfd_rx_data(path, frame->can_id, frame->can_dlc,
+> +                                 frame->flags);
+> +        canfd_update_irq(s);
+> +    }
+> +}
+> +
+> +static bool tx_ready_check(XlnxVersalCANFDState *s)
+> +{
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in reset mode\n", path);
+> +
+> +        return false;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in configuration mode."
+> +                      " Reset the core so operations can start fresh\n",
+> +                      path);
+> +        return false;
+> +    }
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Attempting to transfer data while"
+> +                      " XlnxVersalCANFDState is in SNOOP MODE\n",
+> +                      path);
+> +        return false;
+> +    }
+> +
 > +    return true;
 > +}
 > +
-> +static void allwinner_r40_init(Object *obj)
+> +static void tx_fifo_stamp(XlnxVersalCANFDState *s, uint32_t tb0_regid)
 > +{
-> +    static const char *mmc_names[AW_R40_NUM_MMCS] =3D {
-> +        "mmc0", "mmc1", "mmc2", "mmc3"
-> +    };
-> +    AwR40State *s =3D AW_R40(obj);
+> +    /*
+> +     * If EFC bit in DLC message is set, this means we will store the
+> +     * event of this transmitted message with time stamp.
+> +     */
+> +    uint32_t dlc_reg_val = 0;
 > +
-> +    s->memmap =3D allwinner_r40_memmap;
+> +    if (FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER, EFC)) {
+> +        uint8_t dlc_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                     DLC);
+> +        bool fdf_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                  FDF);
+> +        bool brs_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                  BRS);
+> +        uint8_t mm_val = FIELD_EX32(s->regs[tb0_regid + 1], TB0_DLC_REGISTER,
+> +                                    MM);
+> +        uint8_t fill_level = ARRAY_FIELD_EX32(s->regs,
+> +                                              TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                              TXE_FL);
+> +        uint8_t read_index = ARRAY_FIELD_EX32(s->regs,
+> +                                              TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                              TXE_RI);
+> +        uint8_t store_index = fill_level + read_index;
 > +
-> +    for (int i =3D 0; i < AW_R40_NUM_CPUS; i++) {
-> +        object_initialize_child(obj, "cpu[*]", &s->cpus[i],
-> +                                ARM_CPU_TYPE_NAME("cortex-a7"));
-> +    }
+> +        if ((fill_level) > s->cfg.tx_fifo - 1) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "TX Event Buffer is full."
+> +                          " Discarding the message\n");
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXEOFLW, 1);
+> +        } else {
+> +            if (read_index == s->cfg.tx_fifo - 1) {
+> +                /*
+> +                 * When ri is s->cfg.tx_fifo - 1 i.e. max, it goes cyclic that
+> +                 * means we reset the ri to 0x0.
+> +                 */
+> +                read_index = 0;
+> +                ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_RI,
+> +                                 read_index);
+> +            }
 > +
-> +    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GIC);
+> +            if (store_index > s->cfg.tx_fifo - 1) {
+> +                store_index -= s->cfg.tx_fifo - 1;
+> +            }
 > +
-> +    object_initialize_child(obj, "timer", &s->timer, TYPE_AW_A10_PIT);
-> +    object_property_add_alias(obj, "clk0-freq", OBJECT(&s->timer),
-> +                              "clk0-freq");
-> +    object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
-> +                              "clk1-freq");
+> +            assert(store_index < s->cfg.tx_fifo);
 > +
-> +    for (int i =3D 0; i < AW_R40_NUM_MMCS; i++) {
-> +        object_initialize_child(obj, mmc_names[i], &s->mmc[i],
-> +                                TYPE_AW_SDHOST_SUN5I);
+> +            uint32_t tx_event_reg0_id = R_TXE_FIFO_TB_ID_REGISTER +
+> +                                        (store_index * 2);
+> +
+> +            /* Store message ID in TX event register. */
+> +            s->regs[tx_event_reg0_id] = s->regs[tb0_regid];
+> +
+> +            uint16_t tx_timestamp = CANFD_TIMER_MAX -
+> +                                            ptimer_get_count(s->canfd_timer);
+> +
+> +            /* Store DLC with time stamp in DLC regs. */
+> +            dlc_reg_val = FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, DLC, dlc_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, FDF,
+> +                                      fdf_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, BRS,
+> +                                      brs_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, ET, 0x3);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, MM, mm_val);
+> +            dlc_reg_val |= FIELD_DP32(0, TXE_FIFO_TB_DLC_REGISTER, TIMESTAMP,
+> +                                      tx_timestamp);
+> +            s->regs[tx_event_reg0_id + 1] = dlc_reg_val;
+> +
+> +            ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL,
+> +                             fill_level + 1);
+> +        }
 > +    }
 > +}
 > +
-> +static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+> +static gint g_cmp_ids(gconstpointer data1, gconstpointer data2)
 > +{
-> +    AwR40State *s =3D AW_R40(dev);
-> +    unsigned i;
+> +    tx_ready_reg_info *tx_reg_1 = (tx_ready_reg_info *) data1;
+> +    tx_ready_reg_info *tx_reg_2 = (tx_ready_reg_info *) data2;
 > +
-> +    /* CPUs */
-> +    for (i =3D 0; i < AW_R40_NUM_CPUS; i++) {
+> +    return tx_reg_1->can_id - tx_reg_2->can_id;
+> +}
 > +
-> +        /*
-> +         * Disable secondary CPUs. Guest EL3 firmware will start
-> +         * them via CPU reset control registers.
-> +         */
-> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "start-powered-off",
-> +                          i > 0);
+> +static void free_list(GSList *list)
+> +{
+> +    GSList *iterator = NULL;
 > +
-> +        /* All exception levels required */
-> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el3", true);
-> +        qdev_prop_set_bit(DEVICE(&s->cpus[i]), "has_el2", true);
-> +
-> +        /* Mark realized */
-> +        qdev_realize(DEVICE(&s->cpus[i]), NULL, &error_fatal);
+> +    for (iterator = list; iterator != NULL; iterator = iterator->next) {
+> +        g_free((tx_ready_reg_info *)iterator->data);
 > +    }
 > +
-> +    /* Generic Interrupt Controller */
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", AW_R40_GIC_NUM_SPI =
-+
-> +                                                     GIC_INTERNAL);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
-> +    qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", AW_R40_NUM_CPUS);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", false)=
-;
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions",
-> true);
-> +    sysbus_realize(SYS_BUS_DEVICE(&s->gic), &error_fatal);
+> +    g_slist_free(list);
 > +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0,
-> s->memmap[AW_R40_DEV_GIC_DIST]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1,
-> s->memmap[AW_R40_DEV_GIC_CPU]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2,
-> s->memmap[AW_R40_DEV_GIC_HYP]);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3,
-> s->memmap[AW_R40_DEV_GIC_VCPU]);
+> +    return;
+> +}
 > +
-> +    /*
-> +     * Wire the outputs from each CPU's generic timer and the GICv2
-> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's
-> inputs.
-> +     */
-> +    for (i =3D 0; i < AW_R40_NUM_CPUS; i++) {
-> +        DeviceState *cpudev =3D DEVICE(&s->cpus[i]);
-> +        int ppibase =3D AW_R40_GIC_NUM_SPI + i * GIC_INTERNAL + GIC_NR_S=
-GIS;
-> +        int irq;
+> +static GSList *prepare_tx_data(XlnxVersalCANFDState *s)
+> +{
+> +    uint8_t i = 0;
+> +    GSList *list = NULL;
+> +    uint32_t reg_num = 0;
+> +    uint32_t reg_ready = s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER];
+> +
+> +    /* First find the messages which are ready for transaction. */
+
+s/transaction/transmission/
+
+> +    for (i = 0; i < s->cfg.tx_fifo; i++) {
+> +        if (reg_ready) {
+
+
+We need to add '& 1' on above (for not transmitting packets not ready).
+
+if (reg_ready & 1) {
+
+
+> +            reg_num = R_TB_ID_REGISTER + (NUM_REGS_PER_MSG_SPACE * i);
+> +            tx_ready_reg_info *temp = g_new(tx_ready_reg_info, 1);
+> +
+> +            temp->can_id = s->regs[reg_num];
+> +            temp->reg_num = reg_num;
+> +            list = g_slist_prepend(list, temp);
+> +        }
+> +
+> +        list = g_slist_sort(list, g_cmp_ids);
+
+Suggestions: we can move above line to after the list prepend (and only call if
+needed), and instead of clearing bit by bit below we can do this outside the
+for loop:
+
+s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] = 0;
+s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] = 0;
+
+> +        reg_ready >>= 1;
+> +        s->regs[R_TX_BUFFER_READY_REQUEST_REGISTER] &= ~(1 << i);
+> +        s->regs[R_TX_BUFFER_CANCEL_REQUEST_REGISTER] &= ~(1 << i);
+> +    }
+> +
+> +    return list;
+> +}
+> +
+> +static void transfer_data(XlnxVersalCANFDState *s)
+> +{
+> +    bool canfd_tx = tx_ready_check(s);
+> +    GSList *list, *iterator = NULL;
+> +
+> +    if (!canfd_tx) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller not enabled for data"
+> +                      " transfer\n", path);
+
+
+We need a return here for not transmitting data when tx is not enabled.
+
+
+> +    }
+> +
+> +    qemu_can_frame frame;
+
+We can place above declaration with the other declarations in the begining of
+the function.
+
+> +
+> +    list = prepare_tx_data(s);
+> +    if (list == NULL) {
+> +        return;
+> +    }
+> +
+> +    for (iterator = list; iterator != NULL; iterator = iterator->next) {
+> +        regs2frame(s, &frame,
+> +                   ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +        if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
+> +            update_rx_sequential(s, &frame);
+> +            tx_fifo_stamp(s, ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
+> +        } else {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +            trace_xlnx_canfd_tx_data(path, frame.can_id, frame.can_dlc,
+> +                                     frame.flags);
+> +            can_bus_client_send(&s->bus_client, &frame, 1);
+> +            tx_fifo_stamp(s,
+> +                          ((tx_ready_reg_info *)iterator->data)->reg_num);
+> +
+> +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXRRS, 1);
+> +
+> +            if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP)) {
+> +                canfd_exit_sleep_mode(s);
+> +            }
+> +        }
+> +    }
+> +
+> +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 1);
+> +    free_list(list);
+> +
+> +    canfd_update_irq(s);
+> +}
+> +
+> +static uint64_t canfd_srr_pre_write(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +
+> +    ARRAY_FIELD_DP32(s->regs, SOFTWARE_RESET_REGISTER, CEN,
+> +                     FIELD_EX32(val, SOFTWARE_RESET_REGISTER, CEN));
+> +
+> +    if (FIELD_EX32(val, SOFTWARE_RESET_REGISTER, SRST)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        trace_xlnx_canfd_reset(path, val64);
+> +
+> +        /* First, core will do software reset then will enter in config mode. */
+> +        canfd_config_reset(s);
+> +    } else if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
+> +        canfd_config_mode(s);
+> +    } else {
 > +        /*
-> +         * Mapping from the output timer irq lines from the CPU to the
-> +         * GIC PPI inputs used for this board.
+> +         * Leave config mode. Now XlnxVersalCANFD core will enter Normal, Sleep,
+> +         * snoop or Loopback mode depending upon LBACK, SLEEP, SNOOP register
+> +         * states.
 > +         */
-> +        const int timer_irq[] =3D {
-> +            [GTIMER_PHYS] =3D AW_R40_GIC_PPI_PHYSTIMER,
-> +            [GTIMER_VIRT] =3D AW_R40_GIC_PPI_VIRTTIMER,
-> +            [GTIMER_HYP]  =3D AW_R40_GIC_PPI_HYPTIMER,
-> +            [GTIMER_SEC]  =3D AW_R40_GIC_PPI_SECTIMER,
+> +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 0);
+> +
+> +        ptimer_transaction_begin(s->canfd_timer);
+> +        ptimer_set_count(s->canfd_timer, 0);
+> +        ptimer_transaction_commit(s->canfd_timer);
+> +        update_status_register_mode_bits(s);
+> +        transfer_data(s);
+> +    }
+> +
+> +    return s->regs[R_SOFTWARE_RESET_REGISTER];
+> +}
+> +
+> +static uint64_t filter_mask(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t reg_idx = (reg->access->addr) / 4;
+> +    uint32_t val = val64;
+> +    uint32_t filter_offset = (reg_idx - R_AFMR_REGISTER) / 2;
+> +
+> +    if (!(s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER] &
+> +        (1 << filter_offset))) {
+> +        s->regs[reg_idx] = val;
+> +    } else {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Acceptance filter %d not enabled\n",
+> +                      path, filter_offset + 1);
+> +    }
+> +
+> +    return s->regs[reg_idx];
+> +}
+> +
+> +static uint64_t filter_id(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    hwaddr reg_idx = (reg->access->addr) / 4;
+> +    uint32_t val = val64;
+> +    uint32_t filter_offset = (reg_idx - R_AFIR_REGISTER) / 2;
+> +
+> +    if (!(s->regs[R_ACCEPTANCE_FILTER_CONTROL_REGISTER] &
+> +        (1 << filter_offset))) {
+> +        s->regs[reg_idx] = val;
+> +    } else {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Acceptance filter %d not enabled\n",
+> +                      path, filter_offset + 1);
+> +    }
+> +
+> +    return s->regs[reg_idx];
+> +}
+> +
+> +static uint64_t canfd_tx_fifo_status_prew(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +    uint8_t read_ind = 0;
+> +    uint8_t fill_ind = ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                        TXE_FL);
+> +
+> +    if (FIELD_EX32(val, TX_EVENT_FIFO_STATUS_REGISTER, TXE_IRI) && fill_ind) {
+> +        read_ind = ARRAY_FIELD_EX32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER,
+> +                                    TXE_RI) + 1;
+> +
+> +        if (read_ind > s->cfg.tx_fifo - 1) {
+> +            read_ind = 0;
+> +        }
+> +
+> +        /*
+> +         * Increase the read index by 1 and decrease the fill level by 1.
+> +         */
+> +        ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_RI,
+> +                         read_ind);
+> +        ARRAY_FIELD_DP32(s->regs, TX_EVENT_FIFO_STATUS_REGISTER, TXE_FL,
+> +                         fill_ind - 1);
+> +    }
+> +
+> +    return s->regs[R_TX_EVENT_FIFO_STATUS_REGISTER];
+> +}
+> +
+> +static uint64_t canfd_rx_fifo_status_prew(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +    uint8_t read_ind = 0;
+> +    uint8_t fill_ind = 0;
+> +
+> +    if (FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, IRI)) {
+> +        /* FL index is zero, setting IRI bit has no effect. */
+> +        if (FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, FL) != 0) {
+> +            read_ind = FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, RI) + 1;
+> +
+> +            if (read_ind > s->cfg.rx0_fifo - 1) {
+> +                read_ind = 0;
+> +            }
+> +
+> +            fill_ind = FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, FL) - 1;
+> +
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI, read_ind);
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL, fill_ind);
+> +        }
+> +    }
+> +
+> +    if (FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, IRI_1)) {
+> +        /* FL_1 index is zero, setting IRI_1 bit has no effect. */
+> +        if (FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, FL_1) != 0) {
+> +            read_ind = FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, RI_1) + 1;
+> +
+> +            if (read_ind > s->cfg.rx1_fifo - 1) {
+> +                read_ind = 0;
+> +            }
+> +
+> +            fill_ind = FIELD_EX32(val, RX_FIFO_STATUS_REGISTER, FL_1) - 1;
+> +
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, RI_1, read_ind);
+> +            ARRAY_FIELD_DP32(s->regs, RX_FIFO_STATUS_REGISTER, FL_1, fill_ind);
+> +        }
+> +    }
+> +
+> +    return s->regs[R_RX_FIFO_STATUS_REGISTER];
+> +}
+> +
+> +static uint64_t canfd_tsr_pre_write(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +
+> +    if (FIELD_EX32(val, TIMESTAMP_REGISTER, CTS)) {
+> +        ARRAY_FIELD_DP32(s->regs, TIMESTAMP_REGISTER, TIMESTAMP_CNT, 0);
+> +        ptimer_transaction_begin(s->canfd_timer);
+> +        ptimer_set_count(s->canfd_timer, 0);
+> +        ptimer_transaction_commit(s->canfd_timer);
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static uint64_t canfd_trr_reg_prew(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Controller is in SNOOP mode."
+> +                      " tx_ready_register will stay in reset mode\n", path);
+> +        return 0;
+> +    } else {
+> +        return val64;
+> +    }
+> +}
+> +
+> +static void canfd_trr_reg_postw(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +
+> +    transfer_data(s);
+> +}
+> +
+> +static void canfd_cancel_reg_postw(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +
+> +    process_cancellation_requests(s);
+> +}
+> +
+> +static uint64_t canfd_write_check_prew(RegisterInfo *reg, uint64_t val64)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(reg->opaque);
+> +    uint32_t val = val64;
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
+> +        return val;
+> +    }
+> +    return 0;
+> +}
+> +
+> +static const RegisterAccessInfo canfd_tx_regs[] = {
+> +    {   .name = "TB_ID_REGISTER",  .addr = A_TB_ID_REGISTER,
+> +    },{ .name = "TB0_DLC_REGISTER",  .addr = A_TB0_DLC_REGISTER,
+> +    },{ .name = "TB_DW0_REGISTER",  .addr = A_TB_DW0_REGISTER,
+> +    },{ .name = "TB_DW1_REGISTER",  .addr = A_TB_DW1_REGISTER,
+> +    },{ .name = "TB_DW2_REGISTER",  .addr = A_TB_DW2_REGISTER,
+> +    },{ .name = "TB_DW3_REGISTER",  .addr = A_TB_DW3_REGISTER,
+> +    },{ .name = "TB_DW4_REGISTER",  .addr = A_TB_DW4_REGISTER,
+> +    },{ .name = "TB_DW5_REGISTER",  .addr = A_TB_DW5_REGISTER,
+> +    },{ .name = "TB_DW6_REGISTER",  .addr = A_TB_DW6_REGISTER,
+> +    },{ .name = "TB_DW7_REGISTER",  .addr = A_TB_DW7_REGISTER,
+> +    },{ .name = "TB_DW8_REGISTER",  .addr = A_TB_DW8_REGISTER,
+> +    },{ .name = "TB_DW9_REGISTER",  .addr = A_TB_DW9_REGISTER,
+> +    },{ .name = "TB_DW10_REGISTER",  .addr = A_TB_DW10_REGISTER,
+> +    },{ .name = "TB_DW11_REGISTER",  .addr = A_TB_DW11_REGISTER,
+> +    },{ .name = "TB_DW12_REGISTER",  .addr = A_TB_DW12_REGISTER,
+> +    },{ .name = "TB_DW13_REGISTER",  .addr = A_TB_DW13_REGISTER,
+> +    },{ .name = "TB_DW14_REGISTER",  .addr = A_TB_DW14_REGISTER,
+> +    },{ .name = "TB_DW15_REGISTER",  .addr = A_TB_DW15_REGISTER,
+> +    }
+> +};
+> +
+> +static const RegisterAccessInfo canfd_rx0_regs[] = {
+> +    {   .name = "RB_ID_REGISTER",  .addr = A_RB_ID_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DLC_REGISTER",  .addr = A_RB_DLC_REGISTER,
+> +        .ro = 0xfe1fffff,
+> +    },{ .name = "RB_DW0_REGISTER",  .addr = A_RB_DW0_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW1_REGISTER",  .addr = A_RB_DW1_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW2_REGISTER",  .addr = A_RB_DW2_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW3_REGISTER",  .addr = A_RB_DW3_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW4_REGISTER",  .addr = A_RB_DW4_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW5_REGISTER",  .addr = A_RB_DW5_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW6_REGISTER",  .addr = A_RB_DW6_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW7_REGISTER",  .addr = A_RB_DW7_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW8_REGISTER",  .addr = A_RB_DW8_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW9_REGISTER",  .addr = A_RB_DW9_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW10_REGISTER",  .addr = A_RB_DW10_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW11_REGISTER",  .addr = A_RB_DW11_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW12_REGISTER",  .addr = A_RB_DW12_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW13_REGISTER",  .addr = A_RB_DW13_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW14_REGISTER",  .addr = A_RB_DW14_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW15_REGISTER",  .addr = A_RB_DW15_REGISTER,
+> +        .ro = 0xffffffff,
+> +    }
+> +};
+> +
+> +static const RegisterAccessInfo canfd_rx1_regs[] = {
+> +    {   .name = "RB_ID_REGISTER_1",  .addr = A_RB_ID_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DLC_REGISTER_1",  .addr = A_RB_DLC_REGISTER_1,
+> +        .ro = 0xfe1fffff,
+> +    },{ .name = "RB0_DW0_REGISTER_1",  .addr = A_RB0_DW0_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW1_REGISTER_1",  .addr = A_RB_DW1_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW2_REGISTER_1",  .addr = A_RB_DW2_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW3_REGISTER_1",  .addr = A_RB_DW3_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW4_REGISTER_1",  .addr = A_RB_DW4_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW5_REGISTER_1",  .addr = A_RB_DW5_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW6_REGISTER_1",  .addr = A_RB_DW6_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW7_REGISTER_1",  .addr = A_RB_DW7_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW8_REGISTER_1",  .addr = A_RB_DW8_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW9_REGISTER_1",  .addr = A_RB_DW9_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW10_REGISTER_1",  .addr = A_RB_DW10_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW11_REGISTER_1",  .addr = A_RB_DW11_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW12_REGISTER_1",  .addr = A_RB_DW12_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW13_REGISTER_1",  .addr = A_RB_DW13_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW14_REGISTER_1",  .addr = A_RB_DW14_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "RB_DW15_REGISTER_1",  .addr = A_RB_DW15_REGISTER_1,
+> +        .ro = 0xffffffff,
+> +    }
+> +};
+> +
+> +/* Acceptance filter registers. */
+> +static const RegisterAccessInfo canfd_af_regs[] = {
+> +    {   .name = "AFMR_REGISTER",  .addr = A_AFMR_REGISTER,
+> +        .pre_write = filter_mask,
+> +    },{ .name = "AFIR_REGISTER",  .addr = A_AFIR_REGISTER,
+> +        .pre_write = filter_id,
+> +    }
+> +};
+> +
+> +static const RegisterAccessInfo canfd_txe_regs[] = {
+> +    {   .name = "TXE_FIFO_TB_ID_REGISTER",  .addr = A_TXE_FIFO_TB_ID_REGISTER,
+> +        .ro = 0xffffffff,
+> +    },{ .name = "TXE_FIFO_TB_DLC_REGISTER",  .addr = A_TXE_FIFO_TB_DLC_REGISTER,
+> +        .ro = 0xffffffff,
+> +    }
+> +};
+> +
+> +static const RegisterAccessInfo canfd_regs_info[] = {
+> +    {   .name = "SOFTWARE_RESET_REGISTER",  .addr = A_SOFTWARE_RESET_REGISTER,
+> +        .pre_write = canfd_srr_pre_write,
+> +    },{ .name = "MODE_SELECT_REGISTER",  .addr = A_MODE_SELECT_REGISTER,
+> +        .pre_write = canfd_msr_pre_write,
+> +    },{ .name = "ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER",
+> +        .addr = A_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER,
+> +        .pre_write = canfd_write_check_prew,
+> +    },{ .name = "ARBITRATION_PHASE_BIT_TIMING_REGISTER",
+> +        .addr = A_ARBITRATION_PHASE_BIT_TIMING_REGISTER,
+> +        .pre_write = canfd_write_check_prew,
+> +    },{ .name = "ERROR_COUNTER_REGISTER",  .addr = A_ERROR_COUNTER_REGISTER,
+> +        .ro = 0xffff,
+> +    },{ .name = "ERROR_STATUS_REGISTER",  .addr = A_ERROR_STATUS_REGISTER,
+> +        .w1c = 0xf1f,
+> +    },{ .name = "STATUS_REGISTER",  .addr = A_STATUS_REGISTER,
+> +        .reset = 0x1,
+> +        .ro = 0x7f17ff,
+> +    },{ .name = "INTERRUPT_STATUS_REGISTER",
+> +        .addr = A_INTERRUPT_STATUS_REGISTER,
+> +        .ro = 0xffffff7f,
+> +    },{ .name = "INTERRUPT_ENABLE_REGISTER",
+> +        .addr = A_INTERRUPT_ENABLE_REGISTER,
+> +        .post_write = canfd_ier_post_write,
+> +    },{ .name = "INTERRUPT_CLEAR_REGISTER",
+> +        .addr = A_INTERRUPT_CLEAR_REGISTER, .pre_write = canfd_icr_pre_write,
+> +    },{ .name = "TIMESTAMP_REGISTER",  .addr = A_TIMESTAMP_REGISTER,
+> +        .ro = 0xffff0000,
+> +        .pre_write = canfd_tsr_pre_write,
+> +    },{ .name = "DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER",
+> +        .addr = A_DATA_PHASE_BAUD_RATE_PRESCALER_REGISTER,
+> +        .pre_write = canfd_write_check_prew,
+> +    },{ .name = "DATA_PHASE_BIT_TIMING_REGISTER",
+> +        .addr = A_DATA_PHASE_BIT_TIMING_REGISTER,
+> +        .pre_write = canfd_write_check_prew,
+> +    },{ .name = "TX_BUFFER_READY_REQUEST_REGISTER",
+> +        .addr = A_TX_BUFFER_READY_REQUEST_REGISTER,
+> +        .pre_write = canfd_trr_reg_prew,
+> +        .post_write = canfd_trr_reg_postw,
+> +    },{ .name = "INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER",
+> +        .addr = A_INTERRUPT_ENABLE_TX_BUFFER_READY_REQUEST_REGISTER,
+> +    },{ .name = "TX_BUFFER_CANCEL_REQUEST_REGISTER",
+> +        .addr = A_TX_BUFFER_CANCEL_REQUEST_REGISTER,
+> +        .post_write = canfd_cancel_reg_postw,
+> +    },{ .name = "INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER",
+> +        .addr = A_INTERRUPT_ENABLE_TX_BUFFER_CANCELLATION_REQUEST_REGISTER,
+> +    },{ .name = "TX_EVENT_FIFO_STATUS_REGISTER",
+> +        .addr = A_TX_EVENT_FIFO_STATUS_REGISTER,
+> +        .ro = 0x3f1f, .pre_write = canfd_tx_fifo_status_prew,
+> +    },{ .name = "TX_EVENT_FIFO_WATERMARK_REGISTER",
+> +        .addr = A_TX_EVENT_FIFO_WATERMARK_REGISTER,
+> +        .reset = 0xf,
+> +        .pre_write = canfd_write_check_prew,
+> +    },{ .name = "ACCEPTANCE_FILTER_CONTROL_REGISTER",
+> +        .addr = A_ACCEPTANCE_FILTER_CONTROL_REGISTER,
+> +    },{ .name = "RX_FIFO_STATUS_REGISTER",  .addr = A_RX_FIFO_STATUS_REGISTER,
+> +        .ro = 0x7f3f7f3f, .pre_write = canfd_rx_fifo_status_prew,
+> +    },{ .name = "RX_FIFO_WATERMARK_REGISTER",
+> +        .addr = A_RX_FIFO_WATERMARK_REGISTER,
+> +        .reset = 0x1f0f0f,
+> +        .pre_write = canfd_write_check_prew,
+> +    }
+> +};
+> +
+> +static void xlnx_versal_canfd_ptimer_cb(void *opaque)
+> +{
+> +    /* No action required on the timer rollover. */
+> +}
+> +
+> +static const MemoryRegionOps canfd_ops = {
+> +    .read = register_read_memory,
+> +    .write = register_write_memory,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    },
+> +};
+> +
+> +static void canfd_reset(DeviceState *dev)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(dev);
+> +    unsigned int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->reg_info); ++i) {
+> +        register_reset(&s->reg_info[i]);
+> +    }
+> +
+> +    ptimer_transaction_begin(s->canfd_timer);
+> +    ptimer_set_count(s->canfd_timer, 0);
+> +    ptimer_transaction_commit(s->canfd_timer);
+> +}
+> +
+> +static bool can_xilinx_canfd_receive(CanBusClientState *client)
+> +{
+> +    XlnxVersalCANFDState *s = container_of(client, XlnxVersalCANFDState,
+> +                                           bus_client);
+> +
+> +    bool reset_state = ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST);
+> +    bool can_enabled = ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN);
+> +
+> +    if (reset_state || !can_enabled) {
+> +        return false;
+> +    } else {
+> +        return true;
+> +    }
+
+Suggestion: instead of the if else we can do below:
+
+return !reset_state && can_enabled:
+
+Thanks!
+
+Best regards,
+Francisco
+
+> +}
+> +
+> +static ssize_t canfd_xilinx_receive(CanBusClientState *client,
+> +                                    const qemu_can_frame *buf,
+> +                                    size_t buf_size)
+> +{
+> +    XlnxVersalCANFDState *s = container_of(client, XlnxVersalCANFDState,
+> +                                           bus_client);
+> +    const qemu_can_frame *frame = buf;
+> +
+> +    assert(buf_size > 0);
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
+> +        /*
+> +         * XlnxVersalCANFDState will not participate in normal bus communication
+> +         * and does not receive any messages transmitted by other CAN nodes.
+> +         */
+> +        return 1;
+> +    }
+> +
+> +    /* Update the status register that we are receiving message. */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 1);
+> +
+> +    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
+> +        /* Snoop Mode: Just keep the data. no response back. */
+> +        update_rx_sequential(s, frame);
+> +    } else {
+> +        if ((ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP))) {
+> +            /*
+> +             * XlnxVersalCANFDState is in sleep mode. Any data on bus will bring
+> +             * it to the wake up state.
+> +             */
+> +            canfd_exit_sleep_mode(s);
+> +        }
+> +
+> +        update_rx_sequential(s, frame);
+> +    }
+> +
+> +    /* Message processing done. Update the status back to !busy */
+> +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, BBSY, 0);
+> +    return 1;
+> +}
+> +
+> +static CanBusClientInfo canfd_xilinx_bus_client_info = {
+> +    .can_receive = can_xilinx_canfd_receive,
+> +    .receive = canfd_xilinx_receive,
+> +};
+> +
+> +static int xlnx_canfd_connect_to_bus(XlnxVersalCANFDState *s,
+> +                                     CanBusState *bus)
+> +{
+> +    s->bus_client.info = &canfd_xilinx_bus_client_info;
+> +
+> +    return can_bus_insert_client(bus, &s->bus_client);
+> +}
+> +
+> +#define NUM_REG_PER_AF      ARRAY_SIZE(canfd_af_regs)
+> +#define NUM_AF              32
+> +#define NUM_REG_PER_TXE     ARRAY_SIZE(canfd_txe_regs)
+> +#define NUM_TXE             32
+> +
+> +static int canfd_populate_regarray(XlnxVersalCANFDState *s,
+> +                                  RegisterInfoArray *r_array, int pos,
+> +                                  const RegisterAccessInfo *rae,
+> +                                  int num_rae)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < num_rae; i++) {
+> +        int index = rae[i].addr / 4;
+> +        RegisterInfo *r = &s->reg_info[index];
+> +
+> +        object_initialize(r, sizeof(*r), TYPE_REGISTER);
+> +
+> +        *r = (RegisterInfo) {
+> +            .data = &s->regs[index],
+> +            .data_size = sizeof(uint32_t),
+> +            .access = &rae[i],
+> +            .opaque = OBJECT(s),
 > +        };
 > +
-> +        /* Connect CPU timer outputs to GIC PPI inputs */
-> +        for (irq =3D 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-> +            qdev_connect_gpio_out(cpudev, irq,
-> +                                  qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                                   ppibase +
-> timer_irq[irq]));
-> +        }
-> +
-> +        /* Connect GIC outputs to CPU interrupt inputs */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + AW_R40_NUM_CPUS,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (2 *
-> AW_R40_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (3 *
-> AW_R40_NUM_CPUS),
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +
-> +        /* GIC maintenance signal */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + (4 *
-> AW_R40_NUM_CPUS),
-> +                           qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                            ppibase +
-> AW_R40_GIC_PPI_MAINT));
+> +        r_array->r[i + pos] = r;
 > +    }
-> +
-> +    /* Timer */
-> +    sysbus_realize(SYS_BUS_DEVICE(&s->timer), &error_fatal);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0,
-> s->memmap[AW_R40_DEV_PIT]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
-> +                       qdev_get_gpio_in(DEVICE(&s->gic),
-> +                       AW_R40_GIC_SPI_TIMER0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
-> +                       qdev_get_gpio_in(DEVICE(&s->gic),
-> +                       AW_R40_GIC_SPI_TIMER1));
-> +
-> +    /* SRAM */
-> +    memory_region_init_ram(&s->sram_a1, OBJECT(dev), "sram A1",
-> +                            16 * KiB, &error_abort);
-> +    memory_region_init_ram(&s->sram_a2, OBJECT(dev), "sram A2",
-> +                            16 * KiB, &error_abort);
-> +    memory_region_init_ram(&s->sram_a3, OBJECT(dev), "sram A3",
-> +                            13 * KiB, &error_abort);
-> +    memory_region_init_ram(&s->sram_a4, OBJECT(dev), "sram A4",
-> +                            3 * KiB, &error_abort);
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                s->memmap[AW_R40_DEV_SRAM_A1],
-> &s->sram_a1);
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                s->memmap[AW_R40_DEV_SRAM_A2],
-> &s->sram_a2);
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                s->memmap[AW_R40_DEV_SRAM_A3],
-> &s->sram_a3);
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                s->memmap[AW_R40_DEV_SRAM_A4],
-> &s->sram_a4);
-> +
-> +    /* SD/MMC */
-> +    for (int i =3D 0; i < AW_R40_NUM_MMCS; i++) {
-> +        qemu_irq irq =3D qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                        AW_R40_GIC_SPI_MMC0 + i);
-> +        const hwaddr addr =3D s->memmap[AW_R40_DEV_MMC0 + i];
-> +
-> +        object_property_set_link(OBJECT(&s->mmc[i]), "dma-memory",
-> +                                 OBJECT(get_system_memory()),
-> &error_fatal);
-> +        sysbus_realize(SYS_BUS_DEVICE(&s->mmc[i]), &error_fatal);
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc[i]), 0, addr);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc[i]), 0, irq);
-> +    }
-> +
-> +    /* UART0. For future clocktree API: All UARTS are connected to
-> APB2_CLK. */
-> +    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART0], 2,
-> +                   qdev_get_gpio_in(DEVICE(&s->gic),
-> AW_R40_GIC_SPI_UART0),
-> +                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-> +
-> +    /* Unimplemented devices */
-> +    for (i =3D 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-> +        create_unimplemented_device(r40_unimplemented[i].device_name,
-> +                                    r40_unimplemented[i].base,
-> +                                    r40_unimplemented[i].size);
-> +    }
+> +    return i + pos;
 > +}
 > +
-> +static void allwinner_r40_class_init(ObjectClass *oc, void *data)
+> +static void canfd_create_rai(RegisterAccessInfo *rai_array,
+> +                                const RegisterAccessInfo *canfd_regs,
+> +                                int template_rai_array_sz,
+> +                                int num_template_to_copy)
 > +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
+> +    int i;
+> +    int reg_num;
 > +
-> +    dc->realize =3D allwinner_r40_realize;
-> +    /* Reason: uses serial_hd() in realize function */
-> +    dc->user_creatable =3D false;
-> +}
+> +    for (reg_num = 0; reg_num < num_template_to_copy; reg_num++) {
+> +        int pos = reg_num * template_rai_array_sz;
 > +
-> +static const TypeInfo allwinner_r40_type_info =3D {
-> +    .name =3D TYPE_AW_R40,
-> +    .parent =3D TYPE_DEVICE,
-> +    .instance_size =3D sizeof(AwR40State),
-> +    .instance_init =3D allwinner_r40_init,
-> +    .class_init =3D allwinner_r40_class_init,
-> +};
+> +        memcpy(rai_array + pos, canfd_regs,
+> +               template_rai_array_sz * sizeof(RegisterAccessInfo));
 > +
-> +static void allwinner_r40_register_types(void)
-> +{
-> +    type_register_static(&allwinner_r40_type_info);
-> +}
-> +
-> +type_init(allwinner_r40_register_types)
-> diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-> new file mode 100644
-> index 0000000000..1d49a006b5
-> --- /dev/null
-> +++ b/hw/arm/bananapi_m2u.c
-> @@ -0,0 +1,129 @@
-> +/*
-> + * Bananapi M2U emulation
-> + *
-> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
-> + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/units.h"
-> +#include "exec/address-spaces.h"
-> +#include "qapi/error.h"
-> +#include "qemu/error-report.h"
-> +#include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> +#include "hw/arm/allwinner-r40.h"
-> +
-> +static struct arm_boot_info bpim2u_binfo;
-> +
-> +/*
-> + * R40 can boot from mmc0 and mmc2, and bpim2u has two mmc interface, on=
-e
-> is
-> + * connected to sdcard and another mount an emmc media.
-> + * Attach the mmc driver and try loading bootloader.
-> + */
-> +static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit=
-,
-> +                             bool load_bootroom, bool *bootroom_loaded)
-> +{
-> +    DriveInfo *di =3D drive_get(IF_SD, 0, unit);
-> +    BlockBackend *blk =3D di ? blk_by_legacy_dinfo(di) : NULL;
-> +    BusState *bus;
-> +    DeviceState *carddev;
-> +
-> +    bus =3D qdev_get_child_bus(DEVICE(mmc), "sd-bus");
-> +    if (bus =3D=3D NULL) {
-> +        error_report("No SD bus found in SOC object");
-> +        exit(1);
-> +    }
-> +
-> +    carddev =3D qdev_new(TYPE_SD_CARD);
-> +    qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-> +    qdev_realize_and_unref(carddev, bus, &error_fatal);
-> +
-> +    if (load_bootroom && blk && blk_is_available(blk)) {
-> +        /* Use Boot ROM to copy data from SD card to SRAM */
-> +        *bootroom_loaded =3D allwinner_r40_bootrom_setup(s, blk, unit);
-> +    }
-> +}
-> +
-> +static void bpim2u_init(MachineState *machine)
-> +{
-> +    bool bootroom_loaded =3D false;
-> +    AwR40State *r40;
-> +
-> +    /* BIOS is not supported by this board */
-> +    if (machine->firmware) {
-> +        error_report("BIOS not supported for this machine");
-> +        exit(1);
-> +    }
-> +
-> +    /* Only allow Cortex-A7 for this board */
-> +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a7")) !=3D 0=
-) {
-> +        error_report("This board can only be used with cortex-a7 CPU");
-> +        exit(1);
-> +    }
-> +
-> +    r40 =3D AW_R40(object_new(TYPE_AW_R40));
-> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(r40));
-> +    object_unref(OBJECT(r40));
-> +
-> +    /* Setup timer properties */
-> +    object_property_set_int(OBJECT(r40), "clk0-freq", 32768,
-> &error_abort);
-> +    object_property_set_int(OBJECT(r40), "clk1-freq", 24 * 1000 * 1000,
-> +                            &error_abort);
-> +
-> +    /* Mark R40 object realized */
-> +    qdev_realize(DEVICE(r40), NULL, &error_abort);
-> +
-> +    /*
-> +     * Plug in SD card and try load bootrom, R40 has 4 mmc controllers
-> but can
-> +     * only booting from mmc0 and mmc2.
-> +     */
-> +    for (int i =3D 0; i < AW_R40_NUM_MMCS; i++) {
-> +        switch (i) {
-> +        case 0:
-> +        case 2:
-> +            mmc_attach_drive(r40, &r40->mmc[i], i,
-> +                             !machine->kernel_filename &&
-> !bootroom_loaded,
-> +                             &bootroom_loaded);
-> +            break;
-> +        default:
-> +            mmc_attach_drive(r40, &r40->mmc[i], i, false, NULL);
-> +            break;
+> +        for (i = 0; i < template_rai_array_sz; i++) {
+> +            const char *name = canfd_regs[i].name;
+> +            uint64_t addr = canfd_regs[i].addr;
+> +            rai_array[i + pos].name = g_strdup_printf("%s%d", name, reg_num);
+> +            rai_array[i + pos].addr = addr + pos * 4;
 > +        }
 > +    }
-> +
-> +    /* SDRAM */
-> +    memory_region_add_subregion(get_system_memory(),
-> +                                r40->memmap[AW_R40_DEV_SDRAM],
-> machine->ram);
-> +
-> +    bpim2u_binfo.loader_start =3D r40->memmap[AW_R40_DEV_SDRAM];
-> +    bpim2u_binfo.ram_size =3D machine->ram_size;
-> +    bpim2u_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;
-> +    arm_load_kernel(ARM_CPU(first_cpu), machine, &bpim2u_binfo);
 > +}
 > +
-> +static void bpim2u_machine_init(MachineClass *mc)
+> +static RegisterInfoArray *canfd_create_regarray(XlnxVersalCANFDState *s)
 > +{
-> +    mc->desc =3D "Bananapi M2U (Cortex-A7)";
-> +    mc->init =3D bpim2u_init;
-> +    mc->min_cpus =3D AW_R40_NUM_CPUS;
-> +    mc->max_cpus =3D AW_R40_NUM_CPUS;
-> +    mc->default_cpus =3D AW_R40_NUM_CPUS;
-> +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a7");
-> +    mc->default_ram_size =3D 1 * GiB;
->
-
-As in the v2 of this patch - does the Banana Pi BPI-M2 Ultra have 2GiB of
-RAM?
-According to this page, it has 2GiB, can you confirm this?
-  https://wiki.banana-pi.org/Banana_Pi_BPI-M2U
-
-With the above questions answered & rebased:
-
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
-
-> +    mc->default_ram_id =3D "bpim2u.ram";
+> +    const char *device_prefix = object_get_typename(OBJECT(s));
+> +    uint64_t memory_size = XLNX_VERSAL_CANFD_R_MAX * 4;
+> +    int num_regs;
+> +    int pos = 0;
+> +    RegisterInfoArray *r_array;
+> +
+> +    num_regs = ARRAY_SIZE(canfd_regs_info) +
+> +                s->cfg.tx_fifo * NUM_REGS_PER_MSG_SPACE +
+> +                s->cfg.rx0_fifo * NUM_REGS_PER_MSG_SPACE +
+> +                NUM_AF * NUM_REG_PER_AF +
+> +                NUM_TXE * NUM_REG_PER_TXE;
+> +
+> +    s->tx_regs = g_new0(RegisterAccessInfo,
+> +                        s->cfg.tx_fifo * ARRAY_SIZE(canfd_tx_regs));
+> +
+> +    canfd_create_rai(s->tx_regs, canfd_tx_regs,
+> +                     ARRAY_SIZE(canfd_tx_regs), s->cfg.tx_fifo);
+> +
+> +    s->rx0_regs = g_new0(RegisterAccessInfo,
+> +                         s->cfg.rx0_fifo * ARRAY_SIZE(canfd_rx0_regs));
+> +
+> +    canfd_create_rai(s->rx0_regs, canfd_rx0_regs,
+> +                     ARRAY_SIZE(canfd_rx0_regs), s->cfg.rx0_fifo);
+> +
+> +    s->af_regs = g_new0(RegisterAccessInfo,
+> +                        NUM_AF * ARRAY_SIZE(canfd_af_regs));
+> +
+> +    canfd_create_rai(s->af_regs, canfd_af_regs,
+> +                     ARRAY_SIZE(canfd_af_regs), NUM_AF);
+> +
+> +    s->txe_regs = g_new0(RegisterAccessInfo,
+> +                         NUM_TXE * ARRAY_SIZE(canfd_txe_regs));
+> +
+> +    canfd_create_rai(s->txe_regs, canfd_txe_regs,
+> +                     ARRAY_SIZE(canfd_txe_regs), NUM_TXE);
+> +
+> +    if (s->cfg.enable_rx_fifo1) {
+> +        num_regs += s->cfg.rx1_fifo * NUM_REGS_PER_MSG_SPACE;
+> +
+> +        s->rx1_regs = g_new0(RegisterAccessInfo,
+> +                             s->cfg.rx1_fifo * ARRAY_SIZE(canfd_rx1_regs));
+> +
+> +        canfd_create_rai(s->rx1_regs, canfd_rx1_regs,
+> +                         ARRAY_SIZE(canfd_rx1_regs), s->cfg.rx1_fifo);
+> +    }
+> +
+> +    r_array = g_new0(RegisterInfoArray, 1);
+> +    r_array->r = g_new0(RegisterInfo * , num_regs);
+> +    r_array->num_elements = num_regs;
+> +    r_array->prefix = device_prefix;
+> +
+> +    pos = canfd_populate_regarray(s, r_array, pos,
+> +                                  canfd_regs_info,
+> +                                  ARRAY_SIZE(canfd_regs_info));
+> +    pos = canfd_populate_regarray(s, r_array, pos,
+> +                                  s->tx_regs, s->cfg.tx_fifo *
+> +                                  NUM_REGS_PER_MSG_SPACE);
+> +    pos = canfd_populate_regarray(s, r_array, pos,
+> +                                  s->rx0_regs, s->cfg.rx0_fifo *
+> +                                  NUM_REGS_PER_MSG_SPACE);
+> +    if (s->cfg.enable_rx_fifo1) {
+> +        pos = canfd_populate_regarray(s, r_array, pos,
+> +                                      s->rx1_regs, s->cfg.rx1_fifo *
+> +                                      NUM_REGS_PER_MSG_SPACE);
+> +    }
+> +    pos = canfd_populate_regarray(s, r_array, pos,
+> +                                  s->af_regs, NUM_AF * NUM_REG_PER_AF);
+> +    pos = canfd_populate_regarray(s, r_array, pos,
+> +                                  s->txe_regs, NUM_TXE * NUM_REG_PER_TXE);
+> +
+> +    memory_region_init_io(&r_array->mem, OBJECT(s), &canfd_ops, r_array,
+> +                          device_prefix, memory_size);
+> +    return r_array;
 > +}
 > +
-> +DEFINE_MACHINE("bpim2u", bpim2u_machine_init)
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index b545ba0e4f..870ec67376 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -37,6 +37,7 @@ arm_ss.add(when: 'CONFIG_OMAP', if_true:
-> files('omap1.c', 'omap2.c'))
->  arm_ss.add(when: 'CONFIG_STRONGARM', if_true: files('strongarm.c'))
->  arm_ss.add(when: 'CONFIG_ALLWINNER_A10', if_true:
-> files('allwinner-a10.c', 'cubieboard.c'))
->  arm_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3.c',
-> 'orangepi.c'))
-> +arm_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true:
-> files('allwinner-r40.c', 'bananapi_m2u.c'))
->  arm_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2836.c', 'raspi.c'))
->  arm_ss.add(when: 'CONFIG_STM32F100_SOC', if_true:
-> files('stm32f100_soc.c'))
->  arm_ss.add(when: 'CONFIG_STM32F205_SOC', if_true:
-> files('stm32f205_soc.c'))
-> diff --git a/include/hw/arm/allwinner-r40.h
-> b/include/hw/arm/allwinner-r40.h
+> +static void canfd_realize(DeviceState *dev, Error **errp)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(dev);
+> +    RegisterInfoArray *reg_array;
+> +
+> +    reg_array = canfd_create_regarray(s);
+> +    memory_region_add_subregion(&s->iomem, 0x00, &reg_array->mem);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq_canfd_int);
+> +
+> +    if (s->canfdbus) {
+> +        if (xlnx_canfd_connect_to_bus(s, s->canfdbus) < 0) {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +
+> +            error_setg(errp, "%s: xlnx_canfd_connect_to_bus failed", path);
+> +            return;
+> +        }
+> +
+> +    }
+> +
+> +    /* Allocate a new timer. */
+> +    s->canfd_timer = ptimer_init(xlnx_versal_canfd_ptimer_cb, s,
+> +                                 PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
+> +                                 PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
+> +                                 PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
+> +
+> +    ptimer_transaction_begin(s->canfd_timer);
+> +
+> +    ptimer_set_freq(s->canfd_timer, s->cfg.ext_clk_freq);
+> +    ptimer_set_limit(s->canfd_timer, CANFD_TIMER_MAX, 1);
+> +    ptimer_run(s->canfd_timer, 0);
+> +    ptimer_transaction_commit(s->canfd_timer);
+> +}
+> +
+> +static void canfd_init(Object *obj)
+> +{
+> +    XlnxVersalCANFDState *s = XILINX_CANFD(obj);
+> +
+> +    memory_region_init(&s->iomem, obj, TYPE_XILINX_CANFD,
+> +                       XLNX_VERSAL_CANFD_R_MAX * 4);
+> +}
+> +
+> +static const VMStateDescription vmstate_canfd = {
+> +    .name = TYPE_XILINX_CANFD,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, XlnxVersalCANFDState,
+> +                             XLNX_VERSAL_CANFD_R_MAX),
+> +        VMSTATE_PTIMER(canfd_timer, XlnxVersalCANFDState),
+> +        VMSTATE_END_OF_LIST(),
+> +    }
+> +};
+> +
+> +static Property canfd_core_properties[] = {
+> +    DEFINE_PROP_UINT8("rx-fifo0", XlnxVersalCANFDState, cfg.rx0_fifo, 0x40),
+> +    DEFINE_PROP_UINT8("rx-fifo1", XlnxVersalCANFDState, cfg.rx1_fifo, 0x40),
+> +    DEFINE_PROP_UINT8("tx-fifo", XlnxVersalCANFDState, cfg.tx_fifo, 0x20),
+> +    DEFINE_PROP_BOOL("enable-rx-fifo1", XlnxVersalCANFDState,
+> +                     cfg.enable_rx_fifo1, true),
+> +    DEFINE_PROP_UINT32("ext_clk_freq", XlnxVersalCANFDState, cfg.ext_clk_freq,
+> +                       CANFD_DEFAULT_CLOCK),
+> +    DEFINE_PROP_LINK("canfdbus", XlnxVersalCANFDState, canfdbus, TYPE_CAN_BUS,
+> +                     CanBusState *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void canfd_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->reset = canfd_reset;
+> +    dc->realize = canfd_realize;
+> +    device_class_set_props(dc, canfd_core_properties);
+> +    dc->vmsd = &vmstate_canfd;
+> +}
+> +
+> +static const TypeInfo canfd_info = {
+> +    .name          = TYPE_XILINX_CANFD,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(XlnxVersalCANFDState),
+> +    .class_init    = canfd_class_init,
+> +    .instance_init = canfd_init,
+> +};
+> +
+> +static void canfd_register_types(void)
+> +{
+> +    type_register_static(&canfd_info);
+> +}
+> +
+> +type_init(canfd_register_types)
+> diff --git a/include/hw/net/xlnx-versal-canfd.h b/include/hw/net/xlnx-versal-canfd.h
 > new file mode 100644
-> index 0000000000..348bf25d6b
+> index 0000000000..544e6545dc
 > --- /dev/null
-> +++ b/include/hw/arm/allwinner-r40.h
-> @@ -0,0 +1,110 @@
+> +++ b/include/hw/net/xlnx-versal-canfd.h
+> @@ -0,0 +1,87 @@
 > +/*
-> + * Allwinner R40/A40i/T3 System on Chip emulation
+> + * QEMU model of the Xilinx Versal CANFD Controller.
 > + *
-> + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+> + * Copyright (c) 2022 AMD Inc.
 > + *
-> + * This program is free software: you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation, either version 2 of the License, or
-> + * (at your option) any later version.
+> + * Written-by: Vikram Garhwal<vikram.garhwal@amd.com>
+> + * Based on QEMU CANFD Device emulation implemented by Jin Yang, Deniz Eren and
+> + * Pavel Pisa.
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
 > + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
 > + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
 > + */
 > +
-> +#ifndef HW_ARM_ALLWINNER_R40_H
-> +#define HW_ARM_ALLWINNER_R40_H
+> +#ifndef HW_CANFD_XILINX_H
+> +#define HW_CANFD_XILINX_H
 > +
-> +#include "qom/object.h"
-> +#include "hw/arm/boot.h"
-> +#include "hw/timer/allwinner-a10-pit.h"
-> +#include "hw/intc/arm_gic.h"
-> +#include "hw/sd/allwinner-sdhost.h"
-> +#include "target/arm/cpu.h"
-> +#include "sysemu/block-backend.h"
+> +#include "hw/register.h"
+> +#include "hw/ptimer.h"
+> +#include "net/can_emu.h"
+> +#include "hw/qdev-clock.h"
 > +
-> +enum {
-> +    AW_R40_DEV_SRAM_A1,
-> +    AW_R40_DEV_SRAM_A2,
-> +    AW_R40_DEV_SRAM_A3,
-> +    AW_R40_DEV_SRAM_A4,
-> +    AW_R40_DEV_MMC0,
-> +    AW_R40_DEV_MMC1,
-> +    AW_R40_DEV_MMC2,
-> +    AW_R40_DEV_MMC3,
-> +    AW_R40_DEV_CCU,
-> +    AW_R40_DEV_PIT,
-> +    AW_R40_DEV_UART0,
-> +    AW_R40_DEV_GIC_DIST,
-> +    AW_R40_DEV_GIC_CPU,
-> +    AW_R40_DEV_GIC_HYP,
-> +    AW_R40_DEV_GIC_VCPU,
-> +    AW_R40_DEV_SDRAM
-> +};
+> +#define TYPE_XILINX_CANFD "xlnx.versal-canfd"
 > +
-> +#define AW_R40_NUM_CPUS      (4)
+> +OBJECT_DECLARE_SIMPLE_TYPE(XlnxVersalCANFDState, XILINX_CANFD)
 > +
-> +/**
-> + * Allwinner R40 object model
-> + * @{
-> + */
+> +#define NUM_REGS_PER_MSG_SPACE 18 /* 1 ID + 1 DLC + 16 Data(DW0 - DW15) regs. */
+> +#define MAX_NUM_RX             64
+> +#define OFFSET_RX1_DW15        (0x4144 / 4)
+> +#define CANFD_TIMER_MAX        0xFFFFUL
+> +#define CANFD_DEFAULT_CLOCK    (24 * 1000 * 1000)
 > +
-> +/** Object type for the Allwinner R40 SoC */
-> +#define TYPE_AW_R40 "allwinner-r40"
+> +#define XLNX_VERSAL_CANFD_R_MAX (OFFSET_RX1_DW15 + \
+> +                    ((MAX_NUM_RX - 1) * NUM_REGS_PER_MSG_SPACE) + 1)
 > +
-> +/** Convert input object to Allwinner R40 state object */
-> +OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)
+> +typedef struct XlnxVersalCANFDState {
+> +    SysBusDevice            parent_obj;
+> +    MemoryRegion            iomem;
 > +
-> +/** @} */
+> +    qemu_irq                irq_canfd_int;
+> +    qemu_irq                irq_addr_err;
 > +
-> +/**
-> + * Allwinner R40 object
-> + *
-> + * This struct contains the state of all the devices
-> + * which are currently emulated by the R40 SoC code.
-> + */
-> +#define AW_R40_NUM_MMCS         4
+> +    RegisterInfo            reg_info[XLNX_VERSAL_CANFD_R_MAX];
+> +    RegisterAccessInfo      *tx_regs;
+> +    RegisterAccessInfo      *rx0_regs;
+> +    RegisterAccessInfo      *rx1_regs;
+> +    RegisterAccessInfo      *af_regs;
+> +    RegisterAccessInfo      *txe_regs;
+> +    RegisterAccessInfo      *rx_mailbox_regs;
+> +    RegisterAccessInfo      *af_mask_regs_mailbox;
 > +
-> +struct AwR40State {
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +    /*< public >*/
+> +    uint32_t                regs[XLNX_VERSAL_CANFD_R_MAX];
 > +
-> +    ARMCPU cpus[AW_R40_NUM_CPUS];
-> +    const hwaddr *memmap;
-> +    AwA10PITState timer;
-> +    AwSdHostState mmc[AW_R40_NUM_MMCS];
-> +    GICState gic;
-> +    MemoryRegion sram_a1;
-> +    MemoryRegion sram_a2;
-> +    MemoryRegion sram_a3;
-> +    MemoryRegion sram_a4;
-> +};
+> +    ptimer_state            *canfd_timer;
 > +
-> +/**
-> + * Emulate Boot ROM firmware setup functionality.
-> + *
-> + * A real Allwinner R40 SoC contains a Boot ROM
-> + * which is the first code that runs right after
-> + * the SoC is powered on. The Boot ROM is responsible
-> + * for loading user code (e.g. a bootloader) from any
-> + * of the supported external devices and writing the
-> + * downloaded code to internal SRAM. After loading the SoC
-> + * begins executing the code written to SRAM.
-> + *
-> + * This function emulates the Boot ROM by copying 32 KiB
-> + * of data from the given block device and writes it to
-> + * the start of the first internal SRAM memory.
-> + *
-> + * @s: Allwinner R40 state object pointer
-> + * @blk: Block backend device object pointer
-> + * @unit: the mmc control's unit
-> + */
-> +bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int
-> unit);
+> +    CanBusClientState       bus_client;
+> +    CanBusState             *canfdbus;
 > +
-> +#endif /* HW_ARM_ALLWINNER_R40_H */
-> --
-> 2.25.1
->
->
-
---=20
-Niek Linnenbank
-
---0000000000005b99d905fabb67d0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Qianfan,</div><div><br></div>Sorry for my late res=
-ponse, I had a holiday in between.<div><br></div><div class=3D"gmail_quote"=
-><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Apr 18, 2023 at 1:21=E2=80=
-=AFPM &lt;<a href=3D"mailto:qianfanguijin@163.com" target=3D"_blank">qianfa=
-nguijin@163.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
-ding-left:1ex">From: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163.c=
-om" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-<br>
-Allwinner R40 (sun8i) SoC features a Quad-Core Cortex-A7 ARM CPU,<br>
-and a Mali400 MP2 GPU from ARM. It&#39;s also known as the Allwinner T3<br>
-for In-Car Entertainment usage, A40i and A40pro are variants that<br>
-differ in applicable temperatures range (industrial and military).<br>
-<br>
-Signed-off-by: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163.com" ta=
-rget=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
----<br>
-=C2=A0configs/devices/arm-softmmu/default.mak |=C2=A0 =C2=A01 +<br>
-=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A09 +<br>
-=C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 | 418 ++++++++++++++++++++++++<br>
-=C2=A0hw/arm/bananapi_m2u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0| 129 ++++++++<br>
-=C2=A0hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-=C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 11=
-0 +++++++<br>
-=C2=A06 files changed, 668 insertions(+)<br>
-=C2=A0create mode 100644 hw/arm/allwinner-r40.c<br>
-=C2=A0create mode 100644 hw/arm/bananapi_m2u.c<br>
-=C2=A0create mode 100644 include/hw/arm/allwinner-r40.h<br>
-<br>
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-=
-softmmu/default.mak<br>
-index 1b49a7830c..76a43add23 100644<br>
---- a/configs/devices/arm-softmmu/default.mak<br>
-+++ b/configs/devices/arm-softmmu/default.mak<br>
-@@ -43,3 +43,4 @@ CONFIG_FSL_IMX6UL=3Dy<br>
-=C2=A0CONFIG_SEMIHOSTING=3Dy<br>
-=C2=A0CONFIG_ARM_COMPATIBLE_SEMIHOSTING=3Dy<br>
-=C2=A0CONFIG_ALLWINNER_H3=3Dy<br>
-+CONFIG_ALLWINNER_R40=3Dy<br></blockquote><div><br></div><div>Looks like on=
- latest master (c586691) this file has already been modified - the patch do=
-esn&#39;t apply anymore.</div><div><br></div><div>Could you please rebase y=
-our patch series in V4 to make them compatible again?</div><div>After your =
-rebase is done, I&#39;ll try to complete reviewing the remaining patches.<b=
-r></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
-index b5aed4aff5..9e14c3427e 100644<br>
---- a/hw/arm/Kconfig<br>
-+++ b/hw/arm/Kconfig<br>
-@@ -344,6 +344,15 @@ config ALLWINNER_H3<br>
-=C2=A0 =C2=A0 =C2=A0select USB_EHCI_SYSBUS<br>
-=C2=A0 =C2=A0 =C2=A0select SD<br>
-<br>
-+config ALLWINNER_R40<br>
-+=C2=A0 =C2=A0 bool<br>
-+=C2=A0 =C2=A0 select ALLWINNER_A10_PIT<br>
-+=C2=A0 =C2=A0 select SERIAL<br>
-+=C2=A0 =C2=A0 select ARM_TIMER<br>
-+=C2=A0 =C2=A0 select ARM_GIC<br>
-+=C2=A0 =C2=A0 select UNIMP<br>
-+=C2=A0 =C2=A0 select SD<br>
-+<br>
-=C2=A0config RASPI<br>
-=C2=A0 =C2=A0 =C2=A0bool<br>
-=C2=A0 =C2=A0 =C2=A0select FRAMEBUFFER<br>
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c<br>
-new file mode 100644<br>
-index 0000000000..b743d64253<br>
---- /dev/null<br>
-+++ b/hw/arm/allwinner-r40.c<br>
-@@ -0,0 +1,418 @@<br>
-+/*<br>
-+ * Allwinner R40/A40i/T3 System on Chip emulation<br>
-+ *<br>
-+ * Copyright (C) 2023 qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163=
-.com" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-+ *<br>
-+ * This program is free software: you can redistribute it and/or modify<br=
->
-+ * it under the terms of the GNU General Public License as published by<br=
->
-+ * the Free Software Foundation, either version 2 of the License, or<br>
-+ * (at your option) any later version.<br>
-+ *<br>
-+ * This program is distributed in the hope that it will be useful,<br>
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the<br>
-+ * GNU General Public License for more details.<br>
-+ *<br>
-+ * You should have received a copy of the GNU General Public License<br>
-+ * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://www.gn=
-u.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/li=
-censes/</a>&gt;.<br>
-+ */<br>
-+<br>
-+#include &quot;qemu/osdep.h&quot;<br>
-+#include &quot;qapi/error.h&quot;<br>
-+#include &quot;qemu/error-report.h&quot;<br>
-+#include &quot;qemu/bswap.h&quot;<br>
-+#include &quot;qemu/module.h&quot;<br>
-+#include &quot;qemu/units.h&quot;<br>
-+#include &quot;hw/qdev-core.h&quot;<br>
-+#include &quot;hw/sysbus.h&quot;<br>
-+#include &quot;hw/char/serial.h&quot;<br>
-+#include &quot;hw/misc/unimp.h&quot;<br>
-+#include &quot;hw/usb/hcd-ehci.h&quot;<br>
-+#include &quot;hw/loader.h&quot;<br>
-+#include &quot;sysemu/sysemu.h&quot;<br>
-+#include &quot;hw/arm/allwinner-r40.h&quot;<br>
-+<br>
-+/* Memory map */<br>
-+const hwaddr allwinner_r40_memmap[] =3D {<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_SRAM_A1]=C2=A0 =C2=A0 =3D 0x00000000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_SRAM_A2]=C2=A0 =C2=A0 =3D 0x00004000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_SRAM_A3]=C2=A0 =C2=A0 =3D 0x00008000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_SRAM_A4]=C2=A0 =C2=A0 =3D 0x0000b400,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_MMC0]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c0f000,<=
-br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_MMC1]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c10000,<=
-br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_MMC2]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c11000,<=
-br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_MMC3]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c12000,<=
-br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20c00,<=
-br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_GIC_DIST]=C2=A0 =C2=A0=3D 0x01c81000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_GIC_CPU]=C2=A0 =C2=A0 =3D 0x01c82000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_GIC_HYP]=C2=A0 =C2=A0 =3D 0x01c84000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_GIC_VCPU]=C2=A0 =C2=A0=3D 0x01c86000,<br>
-+=C2=A0 =C2=A0 [AW_R40_DEV_SDRAM]=C2=A0 =C2=A0 =C2=A0 =3D 0x40000000<br>
-+};<br>
-+<br>
-+/* List of unimplemented devices */<br>
-+struct AwR40Unimplemented {<br>
-+=C2=A0 =C2=A0 const char *device_name;<br>
-+=C2=A0 =C2=A0 hwaddr base;<br>
-+=C2=A0 =C2=A0 hwaddr size;<br>
-+};<br>
-+<br>
-+static struct AwR40Unimplemented r40_unimplemented[] =3D {<br>
-+=C2=A0 =C2=A0 { &quot;d-engine&quot;,=C2=A0 =C2=A00x01000000, 4 * MiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;d-inter&quot;,=C2=A0 =C2=A0 0x01400000, 128 * KiB },=
-<br>
-+=C2=A0 =C2=A0 { &quot;sram-c&quot;,=C2=A0 =C2=A0 =C2=A00x01c00000, 4 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;dma&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c02000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;nfdc&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c03000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;ts&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x01c0400=
-0, 4 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;spi0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c05000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;spi1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c06000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;cs0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c09000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;keymem&quot;,=C2=A0 =C2=A0 =C2=A00x01c0a000, 4 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;emac&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c0b000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;usb0-otg&quot;,=C2=A0 =C2=A00x01c13000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;usb0-host&quot;,=C2=A0 0x01c14000, 4 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;crypto&quot;,=C2=A0 =C2=A0 =C2=A00x01c15000, 4 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;spi2&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c17000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;sata&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c18000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;usb1-host&quot;,=C2=A0 0x01c19000, 4 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;sid&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c1b000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;usb2-host&quot;,=C2=A0 0x01c1c000, 4 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;cs1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c1d000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;spi3&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c1f000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;ccu&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c20000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;rtc&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c20400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;pio&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c20800, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;owa&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c21000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;ac97&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c21400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;cir0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c21800, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;cir1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c21c00, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;pcm0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c22000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;pcm1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c22400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;pcm2&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c22800, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;audio&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c22c00, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;keypad&quot;,=C2=A0 =C2=A0 =C2=A00x01c23000, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;pwm&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c23400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;keyadc&quot;,=C2=A0 =C2=A0 =C2=A00x01c24400, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;ths&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c24c00, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;rtp&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c25000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;pmu&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c25400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;cpu-cfg&quot;,=C2=A0 =C2=A0 0x01c25c00, 1 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;uart0&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c28000, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart1&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c28400, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart2&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c28800, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart3&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c28c00, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart4&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c29000, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart5&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c29400, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart6&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c29800, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;uart7&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c29c00, 1 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;ps20&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2a000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;ps21&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2a400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;twi0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2ac00, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;twi1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2b000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;twi2&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2b400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;twi3&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2b800, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;twi4&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c2c000, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;scr&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c2c400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tvd-top&quot;,=C2=A0 =C2=A0 0x01c30000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;tvd0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c31000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tvd1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c32000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tvd2&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c33000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tvd3&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c34000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;gpu&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c40000, 64=
- * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;gmac&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c50000, 64=
- * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;hstmr&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c60000, 4 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;dram-com&quot;,=C2=A0 =C2=A00x01c62000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;dram-ctl&quot;,=C2=A0 =C2=A00x01c63000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;tcon-top&quot;,=C2=A0 =C2=A00x01c70000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;lcd0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c71000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;lcd1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c72000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tv0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c73000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tv1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c74000, 4 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tve-top&quot;,=C2=A0 =C2=A0 0x01c90000, 16 * KiB },<=
-br>
-+=C2=A0 =C2=A0 { &quot;tve0&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c94000, 16=
- * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;tve1&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01c98000, 16=
- * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;mipi_dsi&quot;,=C2=A0 =C2=A00x01ca0000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;mipi_dphy&quot;,=C2=A0 0x01ca1000, 4 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;ve&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x01d0000=
-0, 1024 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;mp&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x01e8000=
-0, 128 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;hdmi&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01ee0000, 12=
-8 * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;prcm&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00x01f01400, 1 =
-* KiB },<br>
-+=C2=A0 =C2=A0 { &quot;debug&quot;,=C2=A0 =C2=A0 =C2=A0 0x3f500000, 64 * Ki=
-B },<br>
-+=C2=A0 =C2=A0 { &quot;cpubist&quot;,=C2=A0 =C2=A0 0x3f501000, 4 * KiB },<b=
-r>
-+=C2=A0 =C2=A0 { &quot;dcu&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x3fff0000, 64=
- * KiB },<br>
-+=C2=A0 =C2=A0 { &quot;hstmr&quot;,=C2=A0 =C2=A0 =C2=A0 0x01c60000, 4 * KiB=
- },<br>
-+=C2=A0 =C2=A0 { &quot;brom&quot;,=C2=A0 =C2=A0 =C2=A0 =C2=A00xffff0000, 36=
- * KiB }<br>
-+};<br>
-+<br>
-+/* Per Processor Interrupts */<br>
-+enum {<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_PPI_MAINT=C2=A0 =C2=A0 =C2=A0=3D=C2=A0 9,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_PPI_HYPTIMER=C2=A0 =3D 10,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_PPI_VIRTTIMER =3D 11,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_PPI_SECTIMER=C2=A0 =3D 13,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_PPI_PHYSTIMER =3D 14<br>
-+};<br>
-+<br>
-+/* Shared Processor Interrupts */<br>
-+enum {<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_UART0=C2=A0 =C2=A0 =C2=A0=3D=C2=A0 1,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_UART1=C2=A0 =C2=A0 =C2=A0=3D=C2=A0 2,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_UART2=C2=A0 =C2=A0 =C2=A0=3D=C2=A0 3,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_UART3=C2=A0 =C2=A0 =C2=A0=3D=C2=A0 4,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_TIMER0=C2=A0 =C2=A0 =3D 22,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_TIMER1=C2=A0 =C2=A0 =3D 23,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_MMC0=C2=A0 =C2=A0 =C2=A0 =3D 32,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_MMC1=C2=A0 =C2=A0 =C2=A0 =3D 33,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_MMC2=C2=A0 =C2=A0 =C2=A0 =3D 34,<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_SPI_MMC3=C2=A0 =C2=A0 =C2=A0 =3D 35,<br>
-+};<br>
-+<br>
-+/* Allwinner R40 general constants */<br>
-+enum {<br>
-+=C2=A0 =C2=A0 AW_R40_GIC_NUM_SPI=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 128<br>
-+};<br>
-+<br>
-+#define BOOT0_MAGIC=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;e=
-GON.BT0&quot;<br>
-+<br>
-+/* The low 8-bits of the &#39;boot_media&#39; field in the SPL header */<b=
-r>
-+#define SUNXI_BOOTED_FROM_MMC0=C2=A0 0<br>
-+#define SUNXI_BOOTED_FROM_NAND=C2=A0 1<br>
-+#define SUNXI_BOOTED_FROM_MMC2=C2=A0 2<br>
-+#define SUNXI_BOOTED_FROM_SPI=C2=A0 =C2=A03<br>
-+<br>
-+struct boot_file_head {<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 b_instruct=
-ion;<br>
-+=C2=A0 =C2=A0 uint8_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0magic=
-[8];<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 check_sum;=
-<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 length;<br=
->
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pub_head_s=
-ize;<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fel_script=
-_address;<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fel_uEnv_l=
-ength;<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dt_name_of=
-fset;<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dram_size;=
-<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 boot_media=
-;<br>
-+=C2=A0 =C2=A0 uint32_t=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 string_poo=
-l[13];<br>
-+};<br>
-+<br>
-+bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int uni=
-t)<br>
-+{<br>
-+=C2=A0 =C2=A0 const int64_t rom_size =3D 32 * KiB;<br>
-+=C2=A0 =C2=A0 g_autofree uint8_t *buffer =3D g_new0(uint8_t, rom_size);<br=
->
-+=C2=A0 =C2=A0 struct boot_file_head *head =3D (struct boot_file_head *)buf=
-fer;<br>
-+<br>
-+=C2=A0 =C2=A0 if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) &lt; 0) {<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(&amp;error_fatal, &quot;%s: failed =
-to read BlockBackend data&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0__fun=
-c__);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* we only check the magic string here. */<br>
-+=C2=A0 =C2=A0 if (memcmp(head-&gt;magic, BOOT0_MAGIC, sizeof(head-&gt;magi=
-c))) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* Simulate the behavior of the bootROM, it will change=
- the boot_media<br>
-+=C2=A0 =C2=A0 =C2=A0* flag to indicate where the chip is booting from. R40=
- can boot from<br>
-+=C2=A0 =C2=A0 =C2=A0* mmc0 or mmc2, the default value of boot_media is zer=
-o<br>
-+=C2=A0 =C2=A0 =C2=A0* (SUNXI_BOOTED_FROM_MMC0), let&#39;s fix this flag wh=
-en it is booting from<br>
-+=C2=A0 =C2=A0 =C2=A0* the others.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 if (unit =3D=3D 2) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 head-&gt;boot_media =3D cpu_to_le32(SUNXI_BOOT=
-ED_FROM_MMC2);<br>
-+=C2=A0 =C2=A0 } else {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 head-&gt;boot_media =3D cpu_to_le32(SUNXI_BOOT=
-ED_FROM_MMC0);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 rom_add_blob(&quot;allwinner-r40.bootrom&quot;, buffer, rom_=
-size,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_size, s=
--&gt;memmap[AW_R40_DEV_SRAM_A1],<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 NULL, NULL,=
- NULL, NULL, false);<br>
-+=C2=A0 =C2=A0 return true;<br>
-+}<br>
-+<br>
-+static void allwinner_r40_init(Object *obj)<br>
-+{<br>
-+=C2=A0 =C2=A0 static const char *mmc_names[AW_R40_NUM_MMCS] =3D {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;mmc0&quot;, &quot;mmc1&quot;, &quot;mmc2=
-&quot;, &quot;mmc3&quot;<br>
-+=C2=A0 =C2=A0 };<br>
-+=C2=A0 =C2=A0 AwR40State *s =3D AW_R40(obj);<br>
-+<br>
-+=C2=A0 =C2=A0 s-&gt;memmap =3D allwinner_r40_memmap;<br>
-+<br>
-+=C2=A0 =C2=A0 for (int i =3D 0; i &lt; AW_R40_NUM_CPUS; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_initialize_child(obj, &quot;cpu[*]&quot=
-;, &amp;s-&gt;cpus[i],<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ARM_CPU_TYPE_NAME(&quot;cortex-a7&qu=
-ot;));<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 object_initialize_child(obj, &quot;gic&quot;, &amp;s-&gt;gic=
-, TYPE_ARM_GIC);<br>
-+<br>
-+=C2=A0 =C2=A0 object_initialize_child(obj, &quot;timer&quot;, &amp;s-&gt;t=
-imer, TYPE_AW_A10_PIT);<br>
-+=C2=A0 =C2=A0 object_property_add_alias(obj, &quot;clk0-freq&quot;, OBJECT=
-(&amp;s-&gt;timer),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;clk0-freq&quot;);<br>
-+=C2=A0 =C2=A0 object_property_add_alias(obj, &quot;clk1-freq&quot;, OBJECT=
-(&amp;s-&gt;timer),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;clk1-freq&quot;);<br>
-+<br>
-+=C2=A0 =C2=A0 for (int i =3D 0; i &lt; AW_R40_NUM_MMCS; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_initialize_child(obj, mmc_names[i], &am=
-p;s-&gt;mmc[i],<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 TYPE_AW_SDHOST_SUN5I);<br>
-+=C2=A0 =C2=A0 }<br>
-+}<br>
-+<br>
-+static void allwinner_r40_realize(DeviceState *dev, Error **errp)<br>
-+{<br>
-+=C2=A0 =C2=A0 AwR40State *s =3D AW_R40(dev);<br>
-+=C2=A0 =C2=A0 unsigned i;<br>
-+<br>
-+=C2=A0 =C2=A0 /* CPUs */<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; AW_R40_NUM_CPUS; i++) {<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Disable secondary CPUs. Guest EL3 firm=
-ware will start<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* them via CPU reset control registers.<=
-br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;cpus[i]), =
-&quot;start-powered-off&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 i &gt; 0);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* All exception levels required */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;cpus[i]), =
-&quot;has_el3&quot;, true);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;cpus[i]), =
-&quot;has_el2&quot;, true);<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Mark realized */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_realize(DEVICE(&amp;s-&gt;cpus[i]), NULL,=
- &amp;error_fatal);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* Generic Interrupt Controller */<br>
-+=C2=A0 =C2=A0 qdev_prop_set_uint32(DEVICE(&amp;s-&gt;gic), &quot;num-irq&q=
-uot;, AW_R40_GIC_NUM_SPI +<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0GIC_INTERNAL);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_uint32(DEVICE(&amp;s-&gt;gic), &quot;revision&=
-quot;, 2);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_uint32(DEVICE(&amp;s-&gt;gic), &quot;num-cpu&q=
-uot;, AW_R40_NUM_CPUS);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;gic), &quot;has-security=
--extensions&quot;, false);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;gic), &quot;has-virtuali=
-zation-extensions&quot;, true);<br>
-+=C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;gic), &amp;error_fa=
-tal);<br>
-+<br>
-+=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 0, s-&gt;mem=
-map[AW_R40_DEV_GIC_DIST]);<br>
-+=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 1, s-&gt;mem=
-map[AW_R40_DEV_GIC_CPU]);<br>
-+=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 2, s-&gt;mem=
-map[AW_R40_DEV_GIC_HYP]);<br>
-+=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 3, s-&gt;mem=
-map[AW_R40_DEV_GIC_VCPU]);<br>
-+<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* Wire the outputs from each CPU&#39;s generic timer a=
-nd the GICv2<br>
-+=C2=A0 =C2=A0 =C2=A0* maintenance interrupt signal to the appropriate GIC =
-PPI inputs,<br>
-+=C2=A0 =C2=A0 =C2=A0* and the GIC&#39;s IRQ/FIQ/VIRQ/VFIQ interrupt output=
-s to the CPU&#39;s inputs.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; AW_R40_NUM_CPUS; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 DeviceState *cpudev =3D DEVICE(&amp;s-&gt;cpus=
-[i]);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 int ppibase =3D AW_R40_GIC_NUM_SPI + i * GIC_I=
-NTERNAL + GIC_NR_SGIS;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 int irq;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* Mapping from the output timer irq line=
-s from the CPU to the<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* GIC PPI inputs used for this board.<br=
->
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 const int timer_irq[] =3D {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [GTIMER_PHYS] =3D AW_R40_GIC_PPI=
-_PHYSTIMER,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [GTIMER_VIRT] =3D AW_R40_GIC_PPI=
-_VIRTTIMER,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [GTIMER_HYP]=C2=A0 =3D AW_R40_GI=
-C_PPI_HYPTIMER,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [GTIMER_SEC]=C2=A0 =3D AW_R40_GI=
-C_PPI_SECTIMER,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 };<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Connect CPU timer outputs to GIC PPI inputs=
- */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (irq =3D 0; irq &lt; ARRAY_SIZE(timer_irq)=
-; irq++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_connect_gpio_out(cpudev, ir=
-q,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;=
-s-&gt;gic),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ppibase + timer_irq[irq]));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Connect GIC outputs to CPU interrupt inputs=
- */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;g=
-ic), i,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;g=
-ic), i + AW_R40_NUM_CPUS,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;g=
-ic), i + (2 * AW_R40_NUM_CPUS),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;g=
-ic), i + (3 * AW_R40_NUM_CPUS),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* GIC maintenance signal */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;g=
-ic), i + (4 * AW_R40_NUM_CPUS),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 ppibase + AW_R40_GIC_PPI_MAINT));<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* Timer */<br>
-+=C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;timer), &amp;error_=
-fatal);<br>
-+=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;timer), 0, s-&gt;m=
-emmap[AW_R40_DEV_PIT]);<br>
-+=C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;timer), 0,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0AW_R40_GIC_SPI_TIMER0));<br>
-+=C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;timer), 1,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0AW_R40_GIC_SPI_TIMER1));<br>
-+<br>
-+=C2=A0 =C2=A0 /* SRAM */<br>
-+=C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;sram_a1, OBJECT(dev), &quo=
-t;sram A1&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 16 * KiB, &amp;error_abort);<br>
-+=C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;sram_a2, OBJECT(dev), &quo=
-t;sram A2&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 16 * KiB, &amp;error_abort);<br>
-+=C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;sram_a3, OBJECT(dev), &quo=
-t;sram A3&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 13 * KiB, &amp;error_abort);<br>
-+=C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;sram_a4, OBJECT(dev), &quo=
-t;sram A4&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 3 * KiB, &amp;error_abort);<br>
-+=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;memmap[AW_R40_DEV_SRAM_A1], &a=
-mp;s-&gt;sram_a1);<br>
-+=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;memmap[AW_R40_DEV_SRAM_A2], &a=
-mp;s-&gt;sram_a2);<br>
-+=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;memmap[AW_R40_DEV_SRAM_A3], &a=
-mp;s-&gt;sram_a3);<br>
-+=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;memmap[AW_R40_DEV_SRAM_A4], &a=
-mp;s-&gt;sram_a4);<br>
-+<br>
-+=C2=A0 =C2=A0 /* SD/MMC */<br>
-+=C2=A0 =C2=A0 for (int i =3D 0; i &lt; AW_R40_NUM_MMCS; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_irq irq =3D qdev_get_gpio_in(DEVICE(&amp;=
-s-&gt;gic),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 AW_R40_G=
-IC_SPI_MMC0 + i);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 const hwaddr addr =3D s-&gt;memmap[AW_R40_DEV_=
-MMC0 + i];<br>
-+<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 object_property_set_link(OBJECT(&amp;s-&gt;mmc=
-[i]), &quot;dma-memory&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0OBJECT(get_system_memory()), &=
-amp;error_fatal);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;mmc[i=
-]), &amp;error_fatal);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;mmc[=
-i]), 0, addr);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;m=
-mc[i]), 0, irq);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* UART0. For future clocktree API: All UARTS are connected =
-to APB2_CLK. */<br>
-+=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_R40_DEV_=
-UART0], 2,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_=
-get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_R40_GIC_SPI_UART0),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A011520=
-0, serial_hd(0), DEVICE_NATIVE_ENDIAN);<br>
-+<br>
-+=C2=A0 =C2=A0 /* Unimplemented devices */<br>
-+=C2=A0 =C2=A0 for (i =3D 0; i &lt; ARRAY_SIZE(r40_unimplemented); i++) {<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 create_unimplemented_device(r40_unimplemented[=
-i].device_name,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r40_unimplemented[i].b=
-ase,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r40_unimplemented[i].s=
-ize);<br>
-+=C2=A0 =C2=A0 }<br>
-+}<br>
-+<br>
-+static void allwinner_r40_class_init(ObjectClass *oc, void *data)<br>
-+{<br>
-+=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(oc);<br>
-+<br>
-+=C2=A0 =C2=A0 dc-&gt;realize =3D allwinner_r40_realize;<br>
-+=C2=A0 =C2=A0 /* Reason: uses serial_hd() in realize function */<br>
-+=C2=A0 =C2=A0 dc-&gt;user_creatable =3D false;<br>
-+}<br>
-+<br>
-+static const TypeInfo allwinner_r40_type_info =3D {<br>
-+=C2=A0 =C2=A0 .name =3D TYPE_AW_R40,<br>
-+=C2=A0 =C2=A0 .parent =3D TYPE_DEVICE,<br>
-+=C2=A0 =C2=A0 .instance_size =3D sizeof(AwR40State),<br>
-+=C2=A0 =C2=A0 .instance_init =3D allwinner_r40_init,<br>
-+=C2=A0 =C2=A0 .class_init =3D allwinner_r40_class_init,<br>
-+};<br>
-+<br>
-+static void allwinner_r40_register_types(void)<br>
-+{<br>
-+=C2=A0 =C2=A0 type_register_static(&amp;allwinner_r40_type_info);<br>
-+}<br>
-+<br>
-+type_init(allwinner_r40_register_types)<br>
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c<br>
-new file mode 100644<br>
-index 0000000000..1d49a006b5<br>
---- /dev/null<br>
-+++ b/hw/arm/bananapi_m2u.c<br>
-@@ -0,0 +1,129 @@<br>
-+/*<br>
-+ * Bananapi M2U emulation<br>
-+ *<br>
-+ * Copyright (C) 2023 qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163=
-.com" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-+ *<br>
-+ * This program is free software: you can redistribute it and/or modify<br=
->
-+ * it under the terms of the GNU General Public License as published by<br=
->
-+ * the Free Software Foundation, either version 2 of the License, or<br>
-+ * (at your option) any later version.<br>
-+ *<br>
-+ * This program is distributed in the hope that it will be useful,<br>
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the<br>
-+ * GNU General Public License for more details.<br>
-+ *<br>
-+ * You should have received a copy of the GNU General Public License<br>
-+ * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://www.gn=
-u.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/li=
-censes/</a>&gt;.<br>
-+ */<br>
-+<br>
-+#include &quot;qemu/osdep.h&quot;<br>
-+#include &quot;qemu/units.h&quot;<br>
-+#include &quot;exec/address-spaces.h&quot;<br>
-+#include &quot;qapi/error.h&quot;<br>
-+#include &quot;qemu/error-report.h&quot;<br>
-+#include &quot;hw/boards.h&quot;<br>
-+#include &quot;hw/qdev-properties.h&quot;<br>
-+#include &quot;hw/arm/allwinner-r40.h&quot;<br>
-+<br>
-+static struct arm_boot_info bpim2u_binfo;<br>
-+<br>
-+/*<br>
-+ * R40 can boot from mmc0 and mmc2, and bpim2u has two mmc interface, one =
-is<br>
-+ * connected to sdcard and another mount an emmc media.<br>
-+ * Attach the mmc driver and try loading bootloader.<br>
-+ */<br>
-+static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit,<=
-br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bool load_bootroom, bool *bootroom_loaded)<b=
-r>
-+{<br>
-+=C2=A0 =C2=A0 DriveInfo *di =3D drive_get(IF_SD, 0, unit);<br>
-+=C2=A0 =C2=A0 BlockBackend *blk =3D di ? blk_by_legacy_dinfo(di) : NULL;<b=
-r>
-+=C2=A0 =C2=A0 BusState *bus;<br>
-+=C2=A0 =C2=A0 DeviceState *carddev;<br>
-+<br>
-+=C2=A0 =C2=A0 bus =3D qdev_get_child_bus(DEVICE(mmc), &quot;sd-bus&quot;);=
-<br>
-+=C2=A0 =C2=A0 if (bus =3D=3D NULL) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;No SD bus found in SOC obje=
-ct&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 carddev =3D qdev_new(TYPE_SD_CARD);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_drive_err(carddev, &quot;drive&quot;, blk, &am=
-p;error_fatal);<br>
-+=C2=A0 =C2=A0 qdev_realize_and_unref(carddev, bus, &amp;error_fatal);<br>
-+<br>
-+=C2=A0 =C2=A0 if (load_bootroom &amp;&amp; blk &amp;&amp; blk_is_available=
-(blk)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Use Boot ROM to copy data from SD card to S=
-RAM */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 *bootroom_loaded =3D allwinner_r40_bootrom_set=
-up(s, blk, unit);<br>
-+=C2=A0 =C2=A0 }<br>
-+}<br>
-+<br>
-+static void bpim2u_init(MachineState *machine)<br>
-+{<br>
-+=C2=A0 =C2=A0 bool bootroom_loaded =3D false;<br>
-+=C2=A0 =C2=A0 AwR40State *r40;<br>
-+<br>
-+=C2=A0 =C2=A0 /* BIOS is not supported by this board */<br>
-+=C2=A0 =C2=A0 if (machine-&gt;firmware) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;BIOS not supported for this=
- machine&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* Only allow Cortex-A7 for this board */<br>
-+=C2=A0 =C2=A0 if (strcmp(machine-&gt;cpu_type, ARM_CPU_TYPE_NAME(&quot;cor=
-tex-a7&quot;)) !=3D 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;This board can only be used=
- with cortex-a7 CPU&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 r40 =3D AW_R40(object_new(TYPE_AW_R40));<br>
-+=C2=A0 =C2=A0 object_property_add_child(OBJECT(machine), &quot;soc&quot;, =
-OBJECT(r40));<br>
-+=C2=A0 =C2=A0 object_unref(OBJECT(r40));<br>
-+<br>
-+=C2=A0 =C2=A0 /* Setup timer properties */<br>
-+=C2=A0 =C2=A0 object_property_set_int(OBJECT(r40), &quot;clk0-freq&quot;, =
-32768, &amp;error_abort);<br>
-+=C2=A0 =C2=A0 object_property_set_int(OBJECT(r40), &quot;clk1-freq&quot;, =
-24 * 1000 * 1000,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
-+<br>
-+=C2=A0 =C2=A0 /* Mark R40 object realized */<br>
-+=C2=A0 =C2=A0 qdev_realize(DEVICE(r40), NULL, &amp;error_abort);<br>
-+<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* Plug in SD card and try load bootrom, R40 has 4 mmc =
-controllers but can<br>
-+=C2=A0 =C2=A0 =C2=A0* only booting from mmc0 and mmc2.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-+=C2=A0 =C2=A0 for (int i =3D 0; i &lt; AW_R40_NUM_MMCS; i++) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 switch (i) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 case 0:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 case 2:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mmc_attach_drive(r40, &amp;r40-&=
-gt;mmc[i], i,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0!machine-&gt;kernel_filename &amp;&amp; !boo=
-troom_loaded,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;bootroom_loaded);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 default:<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 mmc_attach_drive(r40, &amp;r40-&=
-gt;mmc[i], i, false, NULL);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 /* SDRAM */<br>
-+=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(),<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r40-&gt;memmap[AW_R40_DEV_SDRAM], ma=
-chine-&gt;ram);<br>
-+<br>
-+=C2=A0 =C2=A0 bpim2u_binfo.loader_start =3D r40-&gt;memmap[AW_R40_DEV_SDRA=
-M];<br>
-+=C2=A0 =C2=A0 bpim2u_binfo.ram_size =3D machine-&gt;ram_size;<br>
-+=C2=A0 =C2=A0 bpim2u_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br>
-+=C2=A0 =C2=A0 arm_load_kernel(ARM_CPU(first_cpu), machine, &amp;bpim2u_bin=
-fo);<br>
-+}<br>
-+<br>
-+static void bpim2u_machine_init(MachineClass *mc)<br>
-+{<br>
-+=C2=A0 =C2=A0 mc-&gt;desc =3D &quot;Bananapi M2U (Cortex-A7)&quot;;<br>
-+=C2=A0 =C2=A0 mc-&gt;init =3D bpim2u_init;<br>
-+=C2=A0 =C2=A0 mc-&gt;min_cpus =3D AW_R40_NUM_CPUS;<br>
-+=C2=A0 =C2=A0 mc-&gt;max_cpus =3D AW_R40_NUM_CPUS;<br>
-+=C2=A0 =C2=A0 mc-&gt;default_cpus =3D AW_R40_NUM_CPUS;<br>
-+=C2=A0 =C2=A0 mc-&gt;default_cpu_type =3D ARM_CPU_TYPE_NAME(&quot;cortex-a=
-7&quot;);<br>
-+=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br></blockquote><div><b=
-r></div><div><div>As in the v2 of this patch - does the Banana Pi BPI-M2 Ul=
-tra have 2GiB of RAM?</div><div>According to this page, it has 2GiB, can yo=
-u confirm this?<br></div><div>=C2=A0 <a href=3D"https://wiki.banana-pi.org/=
-Banana_Pi_BPI-M2U" target=3D"_blank">https://wiki.banana-pi.org/Banana_Pi_B=
-PI-M2U</a></div>=C2=A0</div><div>With the above questions answered &amp; re=
-based:</div><div><br></div><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D=
-"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><di=
-v>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
- 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-+=C2=A0 =C2=A0 mc-&gt;default_ram_id =3D &quot;bpim2u.ram&quot;;<br>
-+}<br>
-+<br>
-+DEFINE_MACHINE(&quot;bpim2u&quot;, bpim2u_machine_init)<br>
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build<br>
-index b545ba0e4f..870ec67376 100644<br>
---- a/hw/arm/meson.build<br>
-+++ b/hw/arm/meson.build<br>
-@@ -37,6 +37,7 @@ arm_ss.add(when: &#39;CONFIG_OMAP&#39;, if_true: files(&#=
-39;omap1.c&#39;, &#39;omap2.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_STRONGARM&#39;, if_true: files(&#39;stro=
-ngarm.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_ALLWINNER_A10&#39;, if_true: files(&#39;=
-allwinner-a10.c&#39;, &#39;cubieboard.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_ALLWINNER_H3&#39;, if_true: files(&#39;a=
-llwinner-h3.c&#39;, &#39;orangepi.c&#39;))<br>
-+arm_ss.add(when: &#39;CONFIG_ALLWINNER_R40&#39;, if_true: files(&#39;allwi=
-nner-r40.c&#39;, &#39;bananapi_m2u.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_RASPI&#39;, if_true: files(&#39;bcm2836.=
-c&#39;, &#39;raspi.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_STM32F100_SOC&#39;, if_true: files(&#39;=
-stm32f100_soc.c&#39;))<br>
-=C2=A0arm_ss.add(when: &#39;CONFIG_STM32F205_SOC&#39;, if_true: files(&#39;=
-stm32f205_soc.c&#39;))<br>
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.=
-h<br>
-new file mode 100644<br>
-index 0000000000..348bf25d6b<br>
---- /dev/null<br>
-+++ b/include/hw/arm/allwinner-r40.h<br>
-@@ -0,0 +1,110 @@<br>
-+/*<br>
-+ * Allwinner R40/A40i/T3 System on Chip emulation<br>
-+ *<br>
-+ * Copyright (C) 2023 qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163=
-.com" target=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-+ *<br>
-+ * This program is free software: you can redistribute it and/or modify<br=
->
-+ * it under the terms of the GNU General Public License as published by<br=
->
-+ * the Free Software Foundation, either version 2 of the License, or<br>
-+ * (at your option) any later version.<br>
-+ *<br>
-+ * This program is distributed in the hope that it will be useful,<br>
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the<br>
-+ * GNU General Public License for more details.<br>
-+ *<br>
-+ * You should have received a copy of the GNU General Public License<br>
-+ * along with this program.=C2=A0 If not, see &lt;<a href=3D"http://www.gn=
-u.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/li=
-censes/</a>&gt;.<br>
-+ */<br>
-+<br>
-+#ifndef HW_ARM_ALLWINNER_R40_H<br>
-+#define HW_ARM_ALLWINNER_R40_H<br>
-+<br>
-+#include &quot;qom/object.h&quot;<br>
-+#include &quot;hw/arm/boot.h&quot;<br>
-+#include &quot;hw/timer/allwinner-a10-pit.h&quot;<br>
-+#include &quot;hw/intc/arm_gic.h&quot;<br>
-+#include &quot;hw/sd/allwinner-sdhost.h&quot;<br>
-+#include &quot;target/arm/cpu.h&quot;<br>
-+#include &quot;sysemu/block-backend.h&quot;<br>
-+<br>
-+enum {<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_SRAM_A1,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_SRAM_A2,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_SRAM_A3,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_SRAM_A4,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_MMC0,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_MMC1,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_MMC2,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_MMC3,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_CCU,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_PIT,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_UART0,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_GIC_DIST,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_GIC_CPU,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_GIC_HYP,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_GIC_VCPU,<br>
-+=C2=A0 =C2=A0 AW_R40_DEV_SDRAM<br>
-+};<br>
-+<br>
-+#define AW_R40_NUM_CPUS=C2=A0 =C2=A0 =C2=A0 (4)<br>
-+<br>
-+/**<br>
-+ * Allwinner R40 object model<br>
-+ * @{<br>
-+ */<br>
-+<br>
-+/** Object type for the Allwinner R40 SoC */<br>
-+#define TYPE_AW_R40 &quot;allwinner-r40&quot;<br>
-+<br>
-+/** Convert input object to Allwinner R40 state object */<br>
-+OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)<br>
-+<br>
-+/** @} */<br>
-+<br>
-+/**<br>
-+ * Allwinner R40 object<br>
-+ *<br>
-+ * This struct contains the state of all the devices<br>
-+ * which are currently emulated by the R40 SoC code.<br>
-+ */<br>
-+#define AW_R40_NUM_MMCS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A04<br>
-+<br>
-+struct AwR40State {<br>
-+=C2=A0 =C2=A0 /*&lt; private &gt;*/<br>
-+=C2=A0 =C2=A0 DeviceState parent_obj;<br>
-+=C2=A0 =C2=A0 /*&lt; public &gt;*/<br>
-+<br>
-+=C2=A0 =C2=A0 ARMCPU cpus[AW_R40_NUM_CPUS];<br>
-+=C2=A0 =C2=A0 const hwaddr *memmap;<br>
-+=C2=A0 =C2=A0 AwA10PITState timer;<br>
-+=C2=A0 =C2=A0 AwSdHostState mmc[AW_R40_NUM_MMCS];<br>
-+=C2=A0 =C2=A0 GICState gic;<br>
-+=C2=A0 =C2=A0 MemoryRegion sram_a1;<br>
-+=C2=A0 =C2=A0 MemoryRegion sram_a2;<br>
-+=C2=A0 =C2=A0 MemoryRegion sram_a3;<br>
-+=C2=A0 =C2=A0 MemoryRegion sram_a4;<br>
-+};<br>
-+<br>
-+/**<br>
-+ * Emulate Boot ROM firmware setup functionality.<br>
-+ *<br>
-+ * A real Allwinner R40 SoC contains a Boot ROM<br>
-+ * which is the first code that runs right after<br>
-+ * the SoC is powered on. The Boot ROM is responsible<br>
-+ * for loading user code (e.g. a bootloader) from any<br>
-+ * of the supported external devices and writing the<br>
-+ * downloaded code to internal SRAM. After loading the SoC<br>
-+ * begins executing the code written to SRAM.<br>
-+ *<br>
-+ * This function emulates the Boot ROM by copying 32 KiB<br>
-+ * of data from the given block device and writes it to<br>
-+ * the start of the first internal SRAM memory.<br>
-+ *<br>
-+ * @s: Allwinner R40 state object pointer<br>
-+ * @blk: Block backend device object pointer<br>
-+ * @unit: the mmc control&#39;s unit<br>
-+ */<br>
-+bool allwinner_r40_bootrom_setup(AwR40State *s, BlockBackend *blk, int uni=
-t);<br>
-+<br>
-+#endif /* HW_ARM_ALLWINNER_R40_H */<br>
--- <br>
-2.25.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span>-- </span><br><div dir=3D"lt=
-r"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
-
---0000000000005b99d905fabb67d0--
+> +    struct {
+> +        uint8_t             rx0_fifo;
+> +        uint8_t             rx1_fifo;
+> +        uint8_t             tx_fifo;
+> +        bool                enable_rx_fifo1;
+> +        uint32_t            ext_clk_freq;
+> +   } cfg;
+> +
+> +} XlnxVersalCANFDState;
+> +
+> +typedef struct tx_ready_reg_info {
+> +    uint32_t can_id;
+> +    uint32_t reg_num;
+> +} tx_ready_reg_info;
+> +
+> +#endif
+> -- 
+> 2.17.1
+> 

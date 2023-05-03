@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z2-20020a5d4c82000000b003021288a56dsm32345385wrs.115.2023.05.03.02.12.47
+        by smtp.gmail.com with ESMTPSA id z19-20020a7bc7d3000000b003edef091b17sm1252787wmk.37.2023.05.03.02.12.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 May 2023 02:12:48 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4219D1FFC5;
+	by zen.linaroharston (Postfix) with ESMTP id 2AB021FFC4;
 	Wed,  3 May 2023 10:12:46 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -47,33 +47,38 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 12/22] hw/hppa: add TULIP as a dependency for HPPA_B160L
-Date: Wed,  3 May 2023 10:12:34 +0100
-Message-Id: <20230503091244.1450613-13-alex.bennee@linaro.org>
+Subject: [PATCH 11/22] hw/alpha: make E1000_PCI a hard dependency for clipper
+Date: Wed,  3 May 2023 10:12:33 +0100
+Message-Id: <20230503091244.1450613-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +FcKf9y1OfvB
+X-TUID: lL5neOkZF647
 
-These are needed for board creation so fail under "make check" with a
+We can't just imply it as the board will fail to create otherwise.
+This shows up as a "make check" failure with a
 --without-default-devices build.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/hppa/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+ hw/alpha/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-index 5dd8b5b21e..f405663839 100644
---- a/hw/hppa/Kconfig
-+++ b/hw/hppa/Kconfig
-@@ -15,3 +15,4 @@ config HPPA_B160L
-     select LASIPS2
-     select PARALLEL
-     select ARTIST
-+    select TULIP
+diff --git a/hw/alpha/Kconfig b/hw/alpha/Kconfig
+index 9af650c94e..4db7f84e9e 100644
+--- a/hw/alpha/Kconfig
++++ b/hw/alpha/Kconfig
+@@ -2,7 +2,7 @@ config DP264
+     bool
+     imply PCI_DEVICES
+     imply TEST_DEVICES
+-    imply E1000_PCI
++    select E1000_PCI
+     select I82378
+     select IDE_CMD646
+     select MC146818RTC
 -- 
 2.39.2

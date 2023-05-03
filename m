@@ -1,40 +1,11 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2704160ejm;
-        Wed, 3 May 2023 02:12:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683105168; x=1685697168;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Yi4DR69tbZyoPw+FTLcDv9TUw8qrCrvNefUXp2WvEkI=;
-        b=dcV67XhFrthTa5KjylqP4ezGKVhYZ9yj0cpZ4MDRwpqKP5j2S/gpKw6AjvfGsllUdJ
-         cD+kHpM2SeUhs94iYYhKoAxU6HwoC9V1TEyY84yIwlqACRphPFoNsMZnMcc90F+sUbyC
-         quCmbs5pNQadqLbGVNMHE7rPGJOJpR2dX3zCCP10wJYRCEiF4f0GX9aerxW0vjF1+bpu
-         BvnS/Qu383YiYlKsQqFgkwjsmTKRWzPHJF1+iu7BlgXfZVh3juJ/3i6bUimYJAXsL0a9
-         7zQ7x0BrvJAvJceQHw2K1Gx7C3KRVcHMUDo3ODFCRRKZsVAVTNdmYAdYToheucuANxY4
-         BndQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683105168; x=1685697168;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Yi4DR69tbZyoPw+FTLcDv9TUw8qrCrvNefUXp2WvEkI=;
-        b=Yct/OIYe+Gah0+6S81ktOaoNGZf/XmU3j96ZdwO7aj9mN10RzcPkzKpmR5lzfxTF3y
-         hdmqsdjBGD7wyFzB2T9XoHV5qgv/M+8DeqKaorq3uZtD96QwW7TgHZBUmIYjlha6aJ4A
-         EDuNVWc5dgOBUp4d4uJBL7BNGB9JCMDKA2GFqiVc+SbZBi1RZdxYcL2R2BQM0rNtio7i
-         zQPGXRRTQ4Pe5c77znjgqMc3KLKlSxFOok0V+tghGNGfIldHjDZOMDxesPDVM+T7iAIl
-         RbksS1QjvhYD9ipqfBlxprEd5/pww6X4b8ObtEfeNdpf1IQoEW/YJAzIlCdi86OwpcAS
-         hlvA==
-X-Google-Smtp-Source: ACHHUZ74tRw7sId5BxVbsGuLuhmxEX0AaJrqiuVaZ3R+fZ+dCS/dhcz1dm/pUgzu3VhxkVqUgkrXOg==
-X-Received: by 2002:a5d:4a50:0:b0:2fe:c8b5:b5d5 with SMTP id v16-20020a5d4a50000000b002fec8b5b5d5mr13302259wrs.2.1683105168244;
-        Wed, 03 May 2023 02:12:48 -0700 (PDT)
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q11-20020a5d574b000000b003049d7b9f4csm19181019wrw.32.2023.05.03.02.12.46
+        by smtp.gmail.com with ESMTPSA id h16-20020a5d5490000000b00304b5b2f5ffsm14942914wrv.53.2023.05.03.02.12.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 02:12:48 -0700 (PDT)
+        Wed, 03 May 2023 02:12:53 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BAAF91FFC1;
-	Wed,  3 May 2023 10:12:45 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id F155F1FFCA;
+	Wed,  3 May 2023 10:12:46 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -75,59 +46,59 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 07/22] hw/arm: Select XLNX_USB_SUBSYS for xlnx-zcu102 machine
-Date: Wed,  3 May 2023 10:12:29 +0100
-Message-Id: <20230503091244.1450613-8-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 19/22] gitlab: add ubuntu-22.04-aarch64-without-defaults
+Date: Wed,  3 May 2023 10:12:41 +0100
+Message-Id: <20230503091244.1450613-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tj0KNi058Upr
+X-TUID: QSQAnzUpfceA
 
-From: Fabiano Rosas <farosas@suse.de>
+This does a very minimal build without default devices or features. I
+chose the aarch64 runner as it doesn't count towards CI minutes and is
+a fairly under-utilised builder.
 
-This machine hardcodes initialization of the USB device, so select the
-corresponding Kconfig. It is not enough to have it as "default y if
-XLNX_VERSAL" at usb/Kconfig because building --without-default-devices
-disables the default selection resulting in:
-
-$ ./qemu-system-aarch64 -M xlnx-zcu102
-qemu-system-aarch64: missing object type 'usb_dwc3'
-Aborted (core dumped)
-
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230208192654.8854-8-farosas@suse.de>
 ---
- hw/arm/Kconfig | 1 +
- hw/usb/Kconfig | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ .../custom-runners/ubuntu-22.04-aarch64.yml   | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 168c1e8089..cec7898bb7 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -439,6 +439,7 @@ config XLNX_VERSAL
-     select OR_IRQ
-     select XLNX_BBRAM
-     select XLNX_EFUSE_VERSAL
-+    select XLNX_USB_SUBSYS
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+index 57303c12e1..f8489dd3fc 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+@@ -45,6 +45,28 @@ ubuntu-22.04-aarch64-all:
+  - make --output-sync -j`nproc --ignore=40`
+  - make --output-sync -j`nproc --ignore=40` check
  
- config NPCM7XX
-     bool
-diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
-index ce4f433976..0ec6def4b8 100644
---- a/hw/usb/Kconfig
-+++ b/hw/usb/Kconfig
-@@ -136,5 +136,4 @@ config USB_DWC3
- 
- config XLNX_USB_SUBSYS
-     bool
--    default y if XLNX_VERSAL
-     select USB_DWC3
++ubuntu-22.04-aarch64-without-defaults:
++ extends: .custom_runner_template
++ needs: []
++ stage: build
++ tags:
++ - ubuntu_22.04
++ - aarch64
++ rules:
++ - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
++   when: manual
++   allow_failure: true
++ - if: "$AARCH64_RUNNER_AVAILABLE"
++   when: manual
++   allow_failure: true
++ script:
++ - mkdir build
++ - cd build
++ - ../configure --disable-user --without-default-devices --without-default-features
++   || { cat config.log meson-logs/meson-log.txt; exit 1; }
++ - make --output-sync -j`nproc --ignore=40`
++ - make --output-sync -j`nproc --ignore=40` check
++
+ ubuntu-22.04-aarch64-alldbg:
+  extends: .custom_runner_template
+  needs: []
 -- 
 2.39.2

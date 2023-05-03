@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i1-20020a05600c290100b003edf2dc7ca3sm1272810wmd.34.2023.05.03.02.22.32
+        by smtp.gmail.com with ESMTPSA id n6-20020a7bcbc6000000b003f33f8f0a05sm1305816wmi.9.2023.05.03.02.22.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 May 2023 02:22:32 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3086D1FFCC;
+	by zen.linaroharston (Postfix) with ESMTP id 1799F1FFCB;
 	Wed,  3 May 2023 10:12:47 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,59 +46,40 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 21/22] tests/avocado: use http for mipsdistros.mips.com
-Date: Wed,  3 May 2023 10:12:43 +0100
-Message-Id: <20230503091244.1450613-22-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH 20/22] gitlab: enable minimal device profoile for aarch64 --disable-tcg
+Date: Wed,  3 May 2023 10:12:42 +0100
+Message-Id: <20230503091244.1450613-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZVpY/eqs3SVP
+X-TUID: DIqHApgEk/bf
 
-As the cached assets have fallen out of our cache new attempts to
-fetch these binaries fail hard due to certificate expirty. It's hard
-to find a contact email for the domain as the root page of mipsdistros
-throws up some random XML. I suspect Amazon are merely the hosts.
+As this is likely the most common configuration people will want once
+the --disable-tcg patches land.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Philippe Mathieu-Daudé <philmd@linaro.org>
+Cc: Fabiano Rosas <farosas@suse.de>
 ---
- tests/avocado/replay_kernel.py | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_kernel.py
-index f13456e1ec..fe1e901f4b 100644
---- a/tests/avocado/replay_kernel.py
-+++ b/tests/avocado/replay_kernel.py
-@@ -493,7 +493,7 @@ def test_mips_malta32el_nanomips_4k(self):
-         :avocado: tags=endian:little
-         :avocado: tags=cpu:I7200
-         """
--        kernel_url = ('https://mipsdistros.mips.com/LinuxDistro/nanomips/'
-+        kernel_url = ('http://mipsdistros.mips.com/LinuxDistro/nanomips/'
-                       'kernels/v4.15.18-432-gb2eb9a8b07a1-20180627102142/'
-                       'generic_nano32r6el_page4k.xz')
-         kernel_hash = '477456aafd2a0f1ddc9482727f20fe9575565dd6'
-@@ -507,7 +507,7 @@ def test_mips_malta32el_nanomips_16k_up(self):
-         :avocado: tags=endian:little
-         :avocado: tags=cpu:I7200
-         """
--        kernel_url = ('https://mipsdistros.mips.com/LinuxDistro/nanomips/'
-+        kernel_url = ('http://mipsdistros.mips.com/LinuxDistro/nanomips/'
-                       'kernels/v4.15.18-432-gb2eb9a8b07a1-20180627102142/'
-                       'generic_nano32r6el_page16k_up.xz')
-         kernel_hash = 'e882868f944c71c816e832e2303b7874d044a7bc'
-@@ -521,7 +521,7 @@ def test_mips_malta32el_nanomips_64k_dbg(self):
-         :avocado: tags=endian:little
-         :avocado: tags=cpu:I7200
-         """
--        kernel_url = ('https://mipsdistros.mips.com/LinuxDistro/nanomips/'
-+        kernel_url = ('http://mipsdistros.mips.com/LinuxDistro/nanomips/'
-                       'kernels/v4.15.18-432-gb2eb9a8b07a1-20180627102142/'
-                       'generic_nano32r6el_page64k_dbg.xz')
-         kernel_hash = '18d1c68f2e23429e266ca39ba5349ccd0aeb7180'
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+index f8489dd3fc..374b0956c3 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
+@@ -145,7 +145,7 @@ ubuntu-22.04-aarch64-notcg:
+  script:
+  - mkdir build
+  - cd build
+- - ../configure --disable-tcg
++ - ../configure --disable-tcg --with-devices-aarch64=minimal
+    || { cat config.log meson-logs/meson-log.txt; exit 1; }
+  - make --output-sync -j`nproc --ignore=40`
+  - make --output-sync -j`nproc --ignore=40` check
 -- 
 2.39.2

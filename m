@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n6-20020a7bcbc6000000b003f33f8f0a05sm1305816wmi.9.2023.05.03.02.22.32
+        by smtp.gmail.com with ESMTPSA id h4-20020a5d6884000000b003062d815fa6sm7655998wru.85.2023.05.03.02.22.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 May 2023 02:22:32 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1799F1FFCB;
-	Wed,  3 May 2023 10:12:47 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id A34521FFC7;
+	Wed,  3 May 2023 10:12:46 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -46,40 +46,39 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 20/22] gitlab: enable minimal device profoile for aarch64 --disable-tcg
-Date: Wed,  3 May 2023 10:12:42 +0100
-Message-Id: <20230503091244.1450613-21-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 16/22] hw/mips: add VIRTIO and USB dependencies for LOONGSON3V
+Date: Wed,  3 May 2023 10:12:38 +0100
+Message-Id: <20230503091244.1450613-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DIqHApgEk/bf
+X-TUID: jpKI/nl8inDV
 
-As this is likely the most common configuration people will want once
-the --disable-tcg patches land.
+These are hardwired into the board so must be selected. This shows up
+as a "make check" failure with a --without-default-devices build.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Fabiano Rosas <farosas@suse.de>
 ---
- .gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/mips/Kconfig | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index f8489dd3fc..374b0956c3 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -145,7 +145,7 @@ ubuntu-22.04-aarch64-notcg:
-  script:
-  - mkdir build
-  - cd build
-- - ../configure --disable-tcg
-+ - ../configure --disable-tcg --with-devices-aarch64=minimal
-    || { cat config.log meson-logs/meson-log.txt; exit 1; }
-  - make --output-sync -j`nproc --ignore=40`
-  - make --output-sync -j`nproc --ignore=40` check
+diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
+index da3a37e215..0fcc3da41c 100644
+--- a/hw/mips/Kconfig
++++ b/hw/mips/Kconfig
+@@ -45,6 +45,9 @@ config LOONGSON3V
+     select PCI_EXPRESS_GENERIC_BRIDGE
+     select MSI_NONBROKEN
+     select FW_CFG_MIPS
++    select VIRTIO_PCI
++    select VIRTIO_NET
++    select USB_OHCI_PCI
+ 
+ config MIPS_CPS
+     bool
 -- 
 2.39.2

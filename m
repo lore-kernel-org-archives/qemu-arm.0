@@ -1,125 +1,105 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3026140ejm;
-        Wed, 3 May 2023 11:33:00 -0700 (PDT)
-X-Received: by 2002:a05:6402:88f:b0:506:a44c:e213 with SMTP id e15-20020a056402088f00b00506a44ce213mr2455159edy.20.1683138780870;
-        Wed, 03 May 2023 11:33:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683138780; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp3058703ejm;
+        Wed, 3 May 2023 12:38:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ43b8eOp+NphbAwy2mPn8rney7zvPSBaVtvTPvoq6swz6rJpc6YSM9dYPw3Pi1bRL4phdAt
+X-Received: by 2002:adf:f98b:0:b0:306:2c39:5d52 with SMTP id f11-20020adff98b000000b003062c395d52mr826260wrr.57.1683142718695;
+        Wed, 03 May 2023 12:38:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683142718; cv=none;
         d=google.com; s=arc-20160816;
-        b=KYfp+MGtmEbMf7rpqsds+SCoh0hsRlrb/7Q85WsuCX4MiPbZPMcJbSEPA6KnBUzBMn
-         nXtcVu1BBXSxsn4pyYZtXfsmDC4/vaU8crZHUf0bI5BXay+mBDl1eIjibMKivOprTm9b
-         1ItRVKBVEZGWR7mxJzOXIir/lUb897/v9p4bvboiBXactHLyTLHslPRnd4uu5eyPow1A
-         heVoSR2qsnlW0EiHLHuDmgQ8Fk7wBUz5IPMpxrffJrXO9eAanHqjWcPLggHYENHMvT+r
-         dcZNpIffg7agYPaXRXY5HQIWuETsZd1/Zkue1hYv/JjavHuaqzx6qq1kRQEfRBWGhn7i
-         1L0Q==
+        b=K2jsc2B+yvuANHkGjh8tTrqs8Tcm9EUpxyfQ/NUlx4spTFjzB88odU6vahvX78PJQI
+         +RbL4j4mAwKS4azhLm0SNalx+lJmnVUF5pvPMKHKvHwFCZViB2XUR5ZoC7/d28xI40fe
+         mLZMxIJDQoxPE1nph1cvACl/gatV/xoUBhRKU+4RNhSiE5ejvbJzB3GWbtA/CaEF11ey
+         CWeF8NhiJgcGXO6f9Vp2G+P6x9Zyx3amV8Wpy57GsN4B1wTWKJJYtdzB2ZrKdTi9w8T0
+         jwZMp+bEzMJ+Oyvn5JjUsE7XoQpk9rGygaVldys7tHKzLuvVT5wb6CO2mLxxY1eaXkpr
+         M1rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7HPnytuNr2tTl/GqvQTToDLhcLLgMbXFPrdQg6Ojybw=;
-        b=DqfXl4hFTS1hpez/nqaiDu9D2QO3tomn+S9N/SZfqXROR88tA02Ur8RxbADRws/uuc
-         xGMrJ9TG+Am+G7IWi7n+EYjq+pgIVjc38GAb/hKi7pTKvzjZyv78afkMzwfchQ16/FYm
-         KTNPgZd4G37JVErhqDLthDEpcSKSSs8jU4wzYxnUK5fsPmt7nfiyFHEQH3W6u9A6uXUx
-         VV2J2xoh/MAlgN3eot66tj59qA+GNIGd8xJgmpb0sPgV8mYvFp3ZEG4xPa0ZO1av15lg
-         d7EBd53gBjIuqbo5id6U04CktrRrRDzCmOqU+wUe1LrqlJbDQGEV+Y4bhGkpOYpscKkT
-         eScQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature:dkim-signature;
+        bh=UKbydkf8tEevwnM9EJLqnc1oN0PgR9mzrT/VWdFlVl4=;
+        b=ZUrMa6cJBxbB0zZmal6g4EwCb/zxYfnKbmqMAljDNHWb1RPXUm8NSWb/cKJdaLWsjo
+         eqr/OY9H+t37Fhev+itVGbGPjN/I46aVd6oTFRkdE6mmRYj/nG6NfP9+Hs2S+6QXYKAO
+         6UBFY9j/5qkXdohmbFXakaeikxEyyKm9tHPxjC3wTriZpZ+MHef/FAFf6m/VZqke1EJ2
+         xawVkIr4Q8Sh3cpv7y75FqV19Ta8PJdqV6k20Rx2HRI/184BFpVueyM3snxc/SruL1fj
+         BNIFINv6tQY466zh1Ung9DWeboRDnKhaMlrC8TBeu5MKNNNIpCl5AijPTBM0p3Q2qG2j
+         1MVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MFLbub58;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id es7-20020a056402380700b0050478b980a4sor432358edb.0.2023.05.03.11.33.00
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 03 May 2023 11:33:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JJ9Lgc93;
+       dkim=neutral (no key) header.i=@suse.de header.b="e/I11Jct";
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2001:67c:2178:6::1d])
+        by mx.google.com with ESMTPS id r11-20020a056000014b00b003063073f0d3si3869640wrx.759.2023.05.03.12.38.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 May 2023 12:38:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) client-ip=2001:67c:2178:6::1d;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MFLbub58;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683138780; x=1685730780;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7HPnytuNr2tTl/GqvQTToDLhcLLgMbXFPrdQg6Ojybw=;
-        b=MFLbub58dPc9NKR90AB/sEh2260o1RKuuap6Ha3xOjiRynr8xn97i3mAFNhjFaZTFu
-         ld4lhG7WettebZ2LBvk4y1qO2kd+PefOfjUgqKD+FeOPgZ3aZIYgOHVQmkkr1p4OHfK/
-         A0UF5Yr618w9HPaNiS/SRnWcT7jRrCA9/spWB7rB9DMwTvE2De14dOMT/q0jkR9EmEQo
-         H5z3sDEo0ERqWnRkyIXBFdzaNzsfpzpmSvLZ48pN1dftUAzqCQdrLftJlPfB0Qyql800
-         +5lR5DcGyEZmaZXi/XzrwR1BlBi8G1UfIGaa4b5PX+KBYRE7zONiOjZIj+PrLU/7Yg3l
-         avCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683138780; x=1685730780;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7HPnytuNr2tTl/GqvQTToDLhcLLgMbXFPrdQg6Ojybw=;
-        b=UK2uNx0+/tpAouMrcjKllvYwwcxgGomAdkfhnLbpQodg6Fm4hAoaJDOoltXRVJvFd0
-         MyUGfpkd3rBkCL116+JedAM/el26lnTXQVXgIstbd5ENwNCbUYYR6du4xjEqhm2H1TGv
-         Vx4mT+3lSeWReH2L1rqiMHDFdD3ctpB93RnCahcdooGqlYwzMlp0A5Hp42JxtBI+wXnw
-         XxMSGvz9/ptcy1439R6L2fQcrmnOHl2wL363EF/l2Z6usQrQO2wCFwWdFDGhAflY61vS
-         0wGbDYAd0MbyO+q9IlfCwj5lOcyL2T06lPICK4rQPxXPBo6f/pK4ZKvAdC351id8NWd3
-         2e3w==
-X-Gm-Message-State: AC+VfDxaN1KFUxf1mfgcZMFwua18L32lEttn49Imuf8EFeZXlaLUkDM3
-	lUPLL33bwnCmiEyc/fOpvz0vCnmpwCngAIEezNUYJY2k
-X-Google-Smtp-Source: ACHHUZ5s7h/c5A0PtXntSGXjorpj0baJSPHTvsdXxqvcb457iHeabpO+RRkLPMuBaCTKEdcnCz9wP2v7SHw34UIEduM=
-X-Received: by 2002:aa7:d343:0:b0:504:8a2b:b3c7 with SMTP id
- m3-20020aa7d343000000b005048a2bb3c7mr2695328edr.11.1683138780347; Wed, 03 May
- 2023 11:33:00 -0700 (PDT)
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=JJ9Lgc93;
+       dkim=neutral (no key) header.i=@suse.de header.b="e/I11Jct";
+       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1d as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 03F96206A5;
+	Wed,  3 May 2023 19:38:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1683142718; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=UKbydkf8tEevwnM9EJLqnc1oN0PgR9mzrT/VWdFlVl4=;
+	b=JJ9Lgc93L9qdotqE3u77hgnplbeUP1+OreeTelfGOx3hpdScKO8EiJWij2CAZffOmZGMR3
+	ByA690EkndczurLmr6zf0stvHUN+y1we7kCL+0HTCjxvCZnTT1sz40Vp+7uzQpNH4YVADN
+	lHDWyKGztQ2MufRQH2TQv7QXX6em35M=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1683142718;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=UKbydkf8tEevwnM9EJLqnc1oN0PgR9mzrT/VWdFlVl4=;
+	b=e/I11JctZ+EeqJj/KB/vcBv0AvBekezqQyHlvq88oXVYLOcQlvqnYdy01dE8Cr+LqeQivm
+	oJtliA+Kl5GPqlCA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 2C0DC1331F;
+	Wed,  3 May 2023 19:38:35 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id 19gpOTu4UmTNYQAAMHmgww
+	(envelope-from <farosas@suse.de>); Wed, 03 May 2023 19:38:35 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 0/3] target/arm: disable-tcg and without-default-devices fixes
+Date: Wed,  3 May 2023 16:38:30 -0300
+Message-Id: <20230503193833.29047-1-farosas@suse.de>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-References: <20230503091244.1450613-1-alex.bennee@linaro.org>
- <20230503091244.1450613-6-alex.bennee@linaro.org> <531a2eab-f0e6-46a5-c021-c82746c1ae38@redhat.com>
- <87y1m5s9yl.fsf@linaro.org> <5fb214d8-4a54-f896-f23f-fe9e646e4b2d@redhat.com>
-In-Reply-To: <5fb214d8-4a54-f896-f23f-fe9e646e4b2d@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 3 May 2023 19:32:45 +0100
-Message-ID: <CAFEAcA-Cfz8CkNeTQodoSitocBmm4ddk25Dq8x=5FiiGvaS34Q@mail.gmail.com>
-Subject: Re: [PATCH 05/22] hw/arm: Select VIRTIO_NET for virt machine
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Leif Lindholm <quic_llindhol@quicinc.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Helge Deller <deller@gmx.de>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
-	Andrew Jeffery <andrew@aj.id.au>, qemu-s390x@nongnu.org, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Beraldo Leal <bleal@redhat.com>, 
-	Max Filippov <jcmvbkbc@gmail.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>, 
-	Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Fabiano Rosas <farosas@suse.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: YqJ3ktpQ2eKh
+Content-Transfer-Encoding: 8bit
+X-TUID: 62bkGg6zGmPf
 
-On Wed, 3 May 2023 at 18:06, Paolo Bonzini <pbonzini@redhat.com> wrote:
->
-> On 5/3/23 17:35, Alex Benn=C3=A9e wrote:
-> >> You should select a device only if you cannot even start
-> >> the machine without --nodefaults.
-> >
-> > Which is the case here right? We could skip tests that explicitly
-> > instantiate a device but these are tests failing with default devices
-> > the machine tries to instantiate.
->
-> I'm sorry, I meant "select" directives are needed if you cannot even
-> start the machine *with* --nodefaults.
->
-> Devices that are added *without* --nodefaults should use "imply"
-> directives instead, as is already the case.
+Here's the fix for the cdrom test failure that we discussed in the
+list, plus 2 fixes for the ---without-default-devices build.
 
-Do we really want to build a QEMU that then barfs unless
-you pass -nodefaults, though ? That doesn't seem very useful.
-Something somewhere ought to be saying "if you want the
-virt board then you almost certainly want these". Or
-alternatively we should fall back to "don't create a
-network device we don't have", maybe ?
+When I moved the boards CONFIGs from default.mak to Kconfig, it became
+possible (due to --without-default-devices) to disable the CONFIGs for
+all the boards that require ARM_V7M. That breaks the build because
+ARM_V7M is required to be always set.
 
--- PMM
+Fabiano Rosas (3):
+  target/arm: Use CONFIG_SEMIHOSTING instead of TCG for semihosting
+  target/arm: Add CONFIG_ARM_V7M back to default.mak
+  tests/qtest: Don't run cdrom tests if no accelerator is present
+
+ configs/devices/arm-softmmu/default.mak | 1 +
+ target/arm/helper.c                     | 4 ++--
+ target/arm/tcg/m_helper.c               | 2 +-
+ tests/qtest/cdrom-test.c                | 5 +++++
+ 4 files changed, 9 insertions(+), 3 deletions(-)
+
+-- 
+2.35.3

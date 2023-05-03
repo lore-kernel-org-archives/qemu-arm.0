@@ -1,11 +1,40 @@
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2704160ejm;
+        Wed, 3 May 2023 02:12:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683105168; x=1685697168;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Yi4DR69tbZyoPw+FTLcDv9TUw8qrCrvNefUXp2WvEkI=;
+        b=dcV67XhFrthTa5KjylqP4ezGKVhYZ9yj0cpZ4MDRwpqKP5j2S/gpKw6AjvfGsllUdJ
+         cD+kHpM2SeUhs94iYYhKoAxU6HwoC9V1TEyY84yIwlqACRphPFoNsMZnMcc90F+sUbyC
+         quCmbs5pNQadqLbGVNMHE7rPGJOJpR2dX3zCCP10wJYRCEiF4f0GX9aerxW0vjF1+bpu
+         BvnS/Qu383YiYlKsQqFgkwjsmTKRWzPHJF1+iu7BlgXfZVh3juJ/3i6bUimYJAXsL0a9
+         7zQ7x0BrvJAvJceQHw2K1Gx7C3KRVcHMUDo3ODFCRRKZsVAVTNdmYAdYToheucuANxY4
+         BndQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683105168; x=1685697168;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Yi4DR69tbZyoPw+FTLcDv9TUw8qrCrvNefUXp2WvEkI=;
+        b=Yct/OIYe+Gah0+6S81ktOaoNGZf/XmU3j96ZdwO7aj9mN10RzcPkzKpmR5lzfxTF3y
+         hdmqsdjBGD7wyFzB2T9XoHV5qgv/M+8DeqKaorq3uZtD96QwW7TgHZBUmIYjlha6aJ4A
+         EDuNVWc5dgOBUp4d4uJBL7BNGB9JCMDKA2GFqiVc+SbZBi1RZdxYcL2R2BQM0rNtio7i
+         zQPGXRRTQ4Pe5c77znjgqMc3KLKlSxFOok0V+tghGNGfIldHjDZOMDxesPDVM+T7iAIl
+         RbksS1QjvhYD9ipqfBlxprEd5/pww6X4b8ObtEfeNdpf1IQoEW/YJAzIlCdi86OwpcAS
+         hlvA==
+X-Google-Smtp-Source: ACHHUZ74tRw7sId5BxVbsGuLuhmxEX0AaJrqiuVaZ3R+fZ+dCS/dhcz1dm/pUgzu3VhxkVqUgkrXOg==
+X-Received: by 2002:a5d:4a50:0:b0:2fe:c8b5:b5d5 with SMTP id v16-20020a5d4a50000000b002fec8b5b5d5mr13302259wrs.2.1683105168244;
+        Wed, 03 May 2023 02:12:48 -0700 (PDT)
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y6-20020a1c4b06000000b003f17e37ce60sm1218590wma.47.2023.05.03.02.12.48
+        by smtp.gmail.com with ESMTPSA id q11-20020a5d574b000000b003049d7b9f4csm19181019wrw.32.2023.05.03.02.12.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 02:12:50 -0700 (PDT)
+        Wed, 03 May 2023 02:12:48 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D8CB21FFC9;
-	Wed,  3 May 2023 10:12:46 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id BAAF91FFC1;
+	Wed,  3 May 2023 10:12:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -46,243 +75,59 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 18/22] scripts/ci: clean-up the 20.04/22.04 confusion in ansible
-Date: Wed,  3 May 2023 10:12:40 +0100
-Message-Id: <20230503091244.1450613-19-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH 07/22] hw/arm: Select XLNX_USB_SUBSYS for xlnx-zcu102 machine
+Date: Wed,  3 May 2023 10:12:29 +0100
+Message-Id: <20230503091244.1450613-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: q4mNmuCbkCl/
+X-TUID: tj0KNi058Upr
 
-We have a bunch of references to 20.04 (which s390x is still on)
-although we are basically building on 22.04 now. Clean up the textual
-references and use lcitool to generate the full package list to be
-consistent.
+From: Fabiano Rosas <farosas@suse.de>
 
-We can drop "Install packages to build QEMU on Ubuntu on non-s390x" as
-when we upgrade the s390x builder to 22.04 it won't need this
-workaround.
+This machine hardcodes initialization of the USB device, so select the
+corresponding Kconfig. It is not enough to have it as "default y if
+XLNX_VERSAL" at usb/Kconfig because building --without-default-devices
+disables the default selection resulting in:
 
+$ ./qemu-system-aarch64 -M xlnx-zcu102
+qemu-system-aarch64: missing object type 'usb_dwc3'
+Aborted (core dumped)
+
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20230208192654.8854-8-farosas@suse.de>
 ---
- .../custom-runners/ubuntu-22.04-aarch32.yml   |   2 +-
- .../custom-runners/ubuntu-22.04-aarch64.yml   |   4 +-
- scripts/ci/setup/build-environment.yml        | 111 ++++++++++++------
- 3 files changed, 80 insertions(+), 37 deletions(-)
+ hw/arm/Kconfig | 1 +
+ hw/usb/Kconfig | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-index 50e5646a44..b8a0d75162 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-@@ -1,6 +1,6 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
- # setup by the scripts/ci/setup/qemu/build-environment.yml task
--# "Install basic packages to build QEMU on Ubuntu 20.04"
-+# "Install basic packages to build QEMU on Ubuntu 22.04"
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 168c1e8089..cec7898bb7 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -439,6 +439,7 @@ config XLNX_VERSAL
+     select OR_IRQ
+     select XLNX_BBRAM
+     select XLNX_EFUSE_VERSAL
++    select XLNX_USB_SUBSYS
  
- ubuntu-22.04-aarch32-all:
-  extends: .custom_runner_template
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 13e14a0f87..57303c12e1 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -1,6 +1,6 @@
--# All ubuntu-20.04 jobs should run successfully in an environment
-+# All ubuntu-22.04 jobs should run successfully in an environment
- # setup by the scripts/ci/setup/qemu/build-environment.yml task
--# "Install basic packages to build QEMU on Ubuntu 20.04"
-+# "Install basic packages to build QEMU on Ubuntu 22.04"
+ config NPCM7XX
+     bool
+diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+index ce4f433976..0ec6def4b8 100644
+--- a/hw/usb/Kconfig
++++ b/hw/usb/Kconfig
+@@ -136,5 +136,4 @@ config USB_DWC3
  
- ubuntu-22.04-aarch64-all-linux-static:
-  extends: .custom_runner_template
-diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
-index 78b1021cd4..f344d1a850 100644
---- a/scripts/ci/setup/build-environment.yml
-+++ b/scripts/ci/setup/build-environment.yml
-@@ -24,7 +24,6 @@
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['architecture'] == 'aarch64'
--        - ansible_facts['distribution_version'] == '20.04'
- 
-     - name: Update apt cache / upgrade packages via apt
-       apt:
-@@ -33,87 +32,131 @@
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
- 
--    - name: Install basic packages to build QEMU on Ubuntu 20.04
-+    # lcitool variables -f json ubuntu-2204 qemu | jq -r '.pkgs[]' | xargs -n 1 echo "-"
-+    - name: Install basic packages to build QEMU on Ubuntu 22.04
-       package:
-         name:
-+          - bash
-+          - bc
-+          - bison
-+          - bsdextrautils
-+          - bzip2
-+          - ca-certificates
-           - ccache
-+          - clang
-+          - dbus
-+          - debianutils
-+          - diffutils
-+          - exuberant-ctags
-+          - findutils
-+          - flex
-+          - g++
-           - gcc
-+          - gcovr
-+          - genisoimage
-           - gettext
-           - git
--          - glusterfs-common
-+          - hostname
-           - libaio-dev
-+          - libasan5
-+          - libasound2-dev
-           - libattr1-dev
-+          - libbpf-dev
-           - libbrlapi-dev
-           - libbz2-dev
-+          - libc6-dev
-           - libcacard-dev
--          - libcapstone-dev
-           - libcap-ng-dev
-+          - libcapstone-dev
-+          - libcmocka-dev
-           - libcurl4-gnutls-dev
-+          - libdaxctl-dev
-           - libdrm-dev
-           - libepoxy-dev
-           - libfdt-dev
-+          - libffi-dev
-           - libgbm-dev
-+          - libgcrypt20-dev
-+          - libglib2.0-dev
-+          - libglusterfs-dev
-+          - libgnutls28-dev
-           - libgtk-3-dev
-+          - libibumad-dev
-           - libibverbs-dev
-           - libiscsi-dev
-           - libjemalloc-dev
-           - libjpeg-turbo8-dev
-+          - libjson-c-dev
-+          - liblttng-ust-dev
-           - liblzo2-dev
--          - libncurses5-dev
-           - libncursesw5-dev
-           - libnfs-dev
--          - libnss3-dev
-           - libnuma-dev
-+          - libpam0g-dev
-+          - libpcre2-dev
-           - libpixman-1-dev
--          - librados-dev
-+          - libpmem-dev
-+          - libpng-dev
-+          - libpulse-dev
-           - librbd-dev
-           - librdmacm-dev
-           - libsasl2-dev
-           - libsdl2-dev
-+          - libsdl2-image-dev
-           - libseccomp-dev
-+          - libslirp-dev
-           - libsnappy-dev
-           - libspice-protocol-dev
-+          - libspice-server-dev
-           - libssh-dev
-+          - libsystemd-dev
-+          - libtasn1-6-dev
-+          - libubsan1
-+          - libudev-dev
-+          - liburing-dev
-           - libusb-1.0-0-dev
-           - libusbredirhost-dev
-           - libvdeplug-dev
-+          - libvirglrenderer-dev
-           - libvte-2.91-dev
-+          - libxen-dev
-+          - libxml2-dev
-           - libzstd-dev
-+          - llvm
-+          - locales
-           - make
--          - python3-yaml
-+          - meson
-+          - multipath-tools
-+          - ncat
-+          - nettle-dev
-+          - ninja-build
-+          - openssh-client
-+          - pkgconf
-+          - python3
-+          - python3-numpy
-+          - python3-opencv
-+          - python3-pillow
-+          - python3-pip
-           - python3-sphinx
-           - python3-sphinx-rtd-theme
--          - ninja-build
-+          - python3-venv
-+          - python3-yaml
-+          - rpm2cpio
-+          - sed
-           - sparse
-+          - systemtap-sdt-dev
-+          - tar
-+          - tesseract-ocr
-+          - tesseract-ocr-eng
-+          - texinfo
-           - xfslibs-dev
-+          - zlib1g-dev
-         state: present
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution_version'] == '22.04'
- 
--    - name: Install packages to build QEMU on Ubuntu 20.04 on non-s390x
--      package:
--        name:
--          - libspice-server-dev
--          - libxen-dev
--        state: present
--      when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
--
--    - name: Install basic packages to build QEMU on Ubuntu 20.04
--      package:
--        name:
--        # Originally from tests/docker/dockerfiles/ubuntu2004.docker
--          - clang-10
--          - genisoimage
--          - liblttng-ust-dev
--          - libslirp-dev
--          - netcat-openbsd
--      when:
--        - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['distribution_version'] == '20.04'
--
--    - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 20.04
-+    - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 22.04
-       package:
-         name:
-           - binutils-arm-linux-gnueabihf
-@@ -128,7 +171,7 @@
-           - zlib1g-dev:armhf
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
--        - ansible_facts['distribution_version'] == '20.04'
-+        - ansible_facts['distribution_version'] == '22.04'
-         - ansible_facts['architecture'] == 'aarch64'
- 
-     - name: Enable EPEL repo on EL8
+ config XLNX_USB_SUBSYS
+     bool
+-    default y if XLNX_VERSAL
+     select USB_DWC3
 -- 
 2.39.2

@@ -1,91 +1,90 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2984701ejm;
-        Wed, 3 May 2023 10:19:00 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7R3Y/Fu6c/mOBucs4hwfSzVtXzUWwDR4Q/NqDVVUIX3z4Bl6KA7BDU6n+ou6YhRbGoKukO
-X-Received: by 2002:a05:622a:1702:b0:3e2:1005:c6b with SMTP id h2-20020a05622a170200b003e210050c6bmr969116qtk.22.1683134340610;
-        Wed, 03 May 2023 10:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683134340; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2985214ejm;
+        Wed, 3 May 2023 10:19:53 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ41ufsfTxToIQ0gNeBuPtI5xXSPN3icAzDd28fJ1CtROFtWjsCDg8Ye5NxTQp0fNNLqjKbM
+X-Received: by 2002:a05:6214:c21:b0:61a:175c:6ca7 with SMTP id a1-20020a0562140c2100b0061a175c6ca7mr10161662qvd.39.1683134393261;
+        Wed, 03 May 2023 10:19:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683134393; cv=none;
         d=google.com; s=arc-20160816;
-        b=mHTcvy4W+Bycadfp2GxfFGE1jXPB6uG7cBKIyS5wwFGwKWzfDKjFmeqhFIwn48v7s6
-         0usFC5kIuPPZLyBpE1yOtql8n+JXX5EPMJzsstuG4paqn5h4kftxm1tgMs3pGbYR48wG
-         fZGGTx0z3VJXeB9x1vF5FWLypO8HG0W8gvoFBdKza/tGjCE8g/OU1cAVkJfjc9CSjUk7
-         5IGVU9R/0Kp/PzO76qnNK4+GyYVLCo7rwk7Xyh6FtTDRsH1yCtll6CwjbYB2aobFyRn6
-         BzTn57+WT6+wNOvihc9ht+f5ZF0A9k0S8iCs2SejG0PpT+tiJ+IkJDrhx3pl+sF8/RrI
-         7yYw==
+        b=zE1iKEbiNuU0E0BPI4lCQd9COSO03iFC8WwD2h/TPF8vFsh9idKJ3bhf73K3dRwzlK
+         CiT8gZO/9y+JubZo3WTgNs3WKh2h1wAPn0nW18fkWxiStARzfNxU0jKE0uLCDLdpZCad
+         iGT0sGu4+0+qUR6zucWzMS0HQDCNQQOKmPWsxhbKH4oaqJDC/aJbLrriLYYivBHhD3g/
+         neaIKSAlxfMnL+WnCOEf8w1HjuktOZpoG+RiNH/cde4MVn+e+YKI0LLWmOItl2ztIeX8
+         BB5QXAWX1uxlVQ6ZBnQsPOe1EwAF4ZsFKTlNxs+5q59yH6lYveLQeaYGdZgp+ngq17F3
+         FQmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=fphXzwhs7pSTOqa+5xPNLSnrwd39TLSdaiyQVlcItcA=;
-        b=cyudZwUX8vkwCpbKP78+z+ctclgMmnWYwWG6LYn+kXx7vjsE9ZRUsFaOxE8QXVOSwS
-         uMMIpyh/1HvULCol6wDjj8OGgNfKSCYR4sTLQYXPne8hTtoE68knIDru/YnMvGWYGp5v
-         +2JRiXfr3PFN3vNhry2Paylgwf71RWdCrPTPoU8nY2F814IkowC0ejoTYR41YvCd8aUq
-         VuXoZ3StHceqVHFuXmKjVpYjsm7cCZIMkorO5K/5PNpiR7lsV2IKow9XXLtgoJPfOx1Z
-         oEA3XjKzf6w0cctL94wQc38Ck93QK9ODuhaKlQtEB+hNaPZDMgLzBuqNWl/dz492rALF
-         Ur0A==
+        bh=ZZYYC0Qe7bScIsdno69dMorO1WD3BXxkhNwr62fu24c=;
+        b=MX0pwC/XHNLLxIKP/cYwZwgvntJ50cY/VJXHkoyHQ69heHqLfVd6GOebYitBwabS1J
+         PvrUDY/Tqy3a4bsZTM/APG0n8e9+B6OQEP3EclJdqCq56owUTN2eY4Yk3qajE+UvzWhz
+         UHhHQPhQ8ADDUxBu00a1VJWHEnjjvuPsxjeHLinKcIsREFgXAzQNahKqXY8aRbksOmHU
+         k/GjILUg+f/hIyR3MIhFXPyDBs0fVWLV7nwzFxof3WXN2xQbntJSgU5XiWgD2V9Y4m8E
+         XAZRiSp1nRHH0MJuDCNhb3pwpm9rmBjrVmDf9CqJ/VCTzapD+Uu/vcAnVe/M2X2UJl8w
+         Y2Ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PAXzKfbq;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gELCmb+f;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id u9-20020a05622a010900b003ef2ffb9611si18946669qtw.466.2023.05.03.10.19.00
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id o1-20020a0562140e4100b0056eb16d587asi18434802qvc.444.2023.05.03.10.19.53
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 10:19:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Wed, 03 May 2023 10:19:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PAXzKfbq;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gELCmb+f;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1683134340;
+	s=mimecast20190719; t=1683134392;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fphXzwhs7pSTOqa+5xPNLSnrwd39TLSdaiyQVlcItcA=;
-	b=PAXzKfbqvs8ZfEjfvYo8L1/atcamV0xICj8ZTqFDnibzGDx10nWbIMEJoZYVr96K0TbdJg
-	7sv0E69Evuo1Zco6UBHOezWjcvWG2BCfIw0pnGmdvBoba5Lbm1AqVuzgTLNFgLNy9JeMC+
-	jPurBd1oBPoT0fYkv7ghM3qg/dnb8+w=
+	bh=ZZYYC0Qe7bScIsdno69dMorO1WD3BXxkhNwr62fu24c=;
+	b=gELCmb+fpr0jDSZAtVSbV1AWjwbiPRVxui9W8m/e//QiTt0Qh/RdJ85K+g1HwamhTjqZEF
+	oZ/pBQugSPUA22ZDWHz7IfFz/k7wkKGc1Hm/dnVoVbH0ijPHNwoT9Ux/kjh8rVvmxIaYA3
+	RVvwQuXtfnFYPD3wgrG5ktr34VGjxBA=
 Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
  [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-265-DNl5RkAMPOa8TS8D6e3kcA-1; Wed, 03 May 2023 13:18:59 -0400
-X-MC-Unique: DNl5RkAMPOa8TS8D6e3kcA-1
-Received: by mail-ed1-f70.google.com with SMTP id 4fb4d7f45d1cf-50bc1a01cffso4356783a12.3
-        for <alex.bennee@linaro.org>; Wed, 03 May 2023 10:18:58 -0700 (PDT)
+ us-mta-110-jhUHrY4wP7agnYZ9EB0JFA-1; Wed, 03 May 2023 13:19:51 -0400
+X-MC-Unique: jhUHrY4wP7agnYZ9EB0JFA-1
+Received: by mail-ed1-f70.google.com with SMTP id 4fb4d7f45d1cf-50be1a285dcso1235502a12.3
+        for <alex.bennee@linaro.org>; Wed, 03 May 2023 10:19:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683134337; x=1685726337;
+        d=1e100.net; s=20221208; t=1683134389; x=1685726389;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fphXzwhs7pSTOqa+5xPNLSnrwd39TLSdaiyQVlcItcA=;
-        b=REJjtIZLRqCwf/TETIbdsunZ2RTk5tqCmxLb3XUqOfslbICkzvroYAvmsAcl/QGv/T
-         Rdnb3K5PCXHp4l01wnaETp1q3doLac+veg66lZkLWoXsUfXokl+TE5hjsPNHarSNUeXb
-         ePGPAGwybKoZ9zlCXJtyD36e+sOFbu74EON9E2C8lp5C9FAHjVZeSasLjmcCQkUMJc62
-         qYPwifSpwqkAgBmcFOJYfNV1k9kbkri01t3MAyGIlub5WcQ+OVFAjhAF+RRwi6rMDZfv
-         OnMe6VDNXCNcEBjvO774J9dQxhdgKJVB9Sua3ilmT+Ptvzhsl8MJFzuP4J/zMH3Ur773
-         po0g==
-X-Gm-Message-State: AC+VfDyyKnQA2Xc+RUhralhRSiT31TRl8JJvc9dKkuoFvDoiWm/BbRUs
-	a0SMgILYLcwtKFtYmojAV7zS2NoIoRDRT347NRZ0ZJ7FsBjtL6jJtf353z7BMU4O0u1EKr1yd75
-	GH7wj2Cmq7c9FTpq9slCqOHfKAg0rvG1SgmajW5m+iq7u8/te5PjDxkPyzxSv8K04LLxs5qZkud
-	MX
-X-Received: by 2002:aa7:c743:0:b0:50b:ca1b:adeb with SMTP id c3-20020aa7c743000000b0050bca1badebmr7618365eds.0.1683134337083;
-        Wed, 03 May 2023 10:18:57 -0700 (PDT)
-X-Received: by 2002:aa7:c743:0:b0:50b:ca1b:adeb with SMTP id c3-20020aa7c743000000b0050bca1badebmr7618307eds.0.1683134336640;
-        Wed, 03 May 2023 10:18:56 -0700 (PDT)
+        bh=ZZYYC0Qe7bScIsdno69dMorO1WD3BXxkhNwr62fu24c=;
+        b=ACgNu0wIhOs0AQbHDKoHVw+y679L27NdbHGqXtPipblHMqz6jZf0Yk9R4Di+/6AcFW
+         5Tet0C/ocoCIOf65MV8P4ZduQmMH/duchR4ko3WttC8iVjGRwAFkRd4/Y6AyBiN/1e5k
+         Z1Y9DdRjyADgU2bKxI33mYRtHRRq3mxC2tuRFtr7AudqPFknglFdPQFxGoZMNx3wX6mL
+         CQFpgbrfdgNNQ3URTNqEuAZ9lB55hPYKWiQew4UU6MClvuuz8VYyTuO+PgKqJCgwOUNx
+         C5pTMpVj+om/vX17A42v/rbSEaBoUrns2ecqyd8uhJZF4YmKOWRQlGdHJc07HYYCCvwx
+         KaBA==
+X-Gm-Message-State: AC+VfDzX97++XW6wSdiDpKMvmMSkJPhM3hSMOBHKNkEP62H+Bbmk8o80
+	4Uni5YAC5WuyqIUVTGlT3HtweyTYPWV6S8Nkv2eNUXjIGIldhtBwgcQp37kKpGfDooEsWn5nE9V
+	CkxWv0GvuW7c/VxcAisuruGLrcbITrbFcJNUU+IbTKsD6pl2yJx8wPyv9WYVDdxNMxPcIZm1pMe
+	PP
+X-Received: by 2002:a17:907:971e:b0:94a:7b2c:205e with SMTP id jg30-20020a170907971e00b0094a7b2c205emr4107292ejc.72.1683134389745;
+        Wed, 03 May 2023 10:19:49 -0700 (PDT)
+X-Received: by 2002:a17:907:971e:b0:94a:7b2c:205e with SMTP id jg30-20020a170907971e00b0094a7b2c205emr4107235ejc.72.1683134389349;
+        Wed, 03 May 2023 10:19:49 -0700 (PDT)
 Return-Path: <pbonzini@redhat.com>
 Received: from ?IPV6:2001:b07:6468:f312:9af8:e5f5:7516:fa89? ([2001:b07:6468:f312:9af8:e5f5:7516:fa89])
-        by smtp.googlemail.com with ESMTPSA id i10-20020a05640200ca00b0050bd9d3ddf3sm897974edu.42.2023.05.03.10.18.54
+        by smtp.googlemail.com with ESMTPSA id h16-20020a1709070b1000b0096593aa87d6sm268665ejl.210.2023.05.03.10.19.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 03 May 2023 10:18:56 -0700 (PDT)
-Message-ID: <0f247f08-c025-9574-940b-668d1203a73b@redhat.com>
-Date: Wed, 3 May 2023 19:18:53 +0200
+        Wed, 03 May 2023 10:19:48 -0700 (PDT)
+Message-ID: <3675e3f0-fda5-9492-a8a7-f608b62a3fbb@redhat.com>
+Date: Wed, 3 May 2023 19:19:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.9.1
-Subject: Re: [PATCH 14/22] hw/loongarch: add VIRTIO as a dependency for
- LOONGARCH_VIRT
+Subject: Re: [PATCH 15/22] hw/sh4: make RTL8139 a hard dependency for RD2
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -115,40 +114,21 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
- <20230503091244.1450613-15-alex.bennee@linaro.org>
+ <20230503091244.1450613-16-alex.bennee@linaro.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20230503091244.1450613-15-alex.bennee@linaro.org>
+In-Reply-To: <20230503091244.1450613-16-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: NrH66gXDiRvc
+X-TUID: 1TJV1f45aqXr
 
 On 5/3/23 11:12, Alex Bennée wrote:
-> These are needed for board creation so fail under "make check" with a
+> We can't just imply it as the board will fail to create otherwise.
+> This shows up as a "make check" failure with a
 > --without-default-devices build.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
 
-Also not needed:
-
-bus: main-system-bus
-   type System
-   dev: platform-bus-device, id "platform-bus-device"
-   dev: acpi-ged, id ""
-   dev: ls7a_rtc, id ""
-   dev: unimplemented-device, id ""
-   dev: serial-mm, id ""
-   dev: gpex-pcihost, id ""
-     bus: pcie.0
-       type PCIE
-       dev: gpex-root, id ""
-   dev: loongarch_pch_msi, id ""
-   dev: loongarch_pch_pic, id ""
-   dev: loongarch.extioi, id ""
-   dev: loongarch_ipi, id ""
-   dev: fw_cfg_mem, id ""
-
+Not needed, also typo in subject (should be R2D rather than RD2).
 
 Paolo

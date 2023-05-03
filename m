@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2737648ejm;
-        Wed, 3 May 2023 03:29:00 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7S5cYe8yYJWC4U36m5jEZppDp8Q58C8WN/MrMYIUrfYUZdxGiJ95Mh6iXdd7reDP3ncWH4
-X-Received: by 2002:a17:907:6d87:b0:959:266b:dea8 with SMTP id sb7-20020a1709076d8700b00959266bdea8mr3194729ejc.2.1683109740263;
-        Wed, 03 May 2023 03:29:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683109740; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2738195ejm;
+        Wed, 3 May 2023 03:30:18 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ66BAb5deyZquNbcFlSyJl9J9HL7PNYw8saMR467jQu7QCXGBh5TnpefwFycEAdLuur6QCG
+X-Received: by 2002:a05:6402:47:b0:504:a2e5:d951 with SMTP id f7-20020a056402004700b00504a2e5d951mr11000292edu.13.1683109817785;
+        Wed, 03 May 2023 03:30:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683109817; cv=none;
         d=google.com; s=arc-20160816;
-        b=MF9J/pvjc2oUc5YqQu8+si7XeeNWfUMm3V3cSGGfqnyGXNTPhGChtjgLbC3QZ8b++i
-         8LjkRvL8LqZfaDEsLQGNFaWb3iGnZzJii21VxRtr5xK3qPgavRdqF1vUXsEqvKIOR0j4
-         cLza5v3Nz7pHUgfFzXpIJzDca65WCv4sVJtjUBr68kkbmr5pVfQwuln60/jSx2qrhXqZ
-         lnqRO8JDczMpQ95dFbv9fgWCt3/4X9LDbTXCgrCEEvJSeT5MefzL782mWER6tdJCJqRz
-         Sy0Ka+T2uA2RvK9j1XkfmNn6c9FLXKq4h/+Fs6+nXTalYV93gyjQ2/nebzy3Q+N4QQcz
-         UicQ==
+        b=0yk/cNtQc5rPtS9SGtjvsXiJhvCd9lfupqFhRRfCtS2SAj/nLzTz4vFmppzG+El5ya
+         vILhoaJHk9g4LV4okPnqmPQ/s9nfmkH2TK3Nh8JwwHDKzsDnP0ETXlqrUjk0wrqfnPWQ
+         wtCU00YIJJAeNXxnHtnBmj/OUI3vjwBB/lruCjdbB0DX+ZioP15USd3K972HY+Fcmnr7
+         ovT2BrljbqUID6cC7Ccu/AXo8+GgspP+eR7ECprew+NuuNQWyw53i/6NgNXTCLH46Ep+
+         JCkyFGV61XP88qlLC39lBDI/CP9HBBQaMN26t/YrkaZozsYCTEkpMSW9gGWmi5bswDGf
+         HzMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:reply-to
          :user-agent:references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=TnPEnJrLHD8ltr2au6DXyolN9++eGsBREQwaNEUt+/M=;
-        b=AKHSa7OT3UKKxe70CblFyycZ4PdIrmZSg815tH6wLtGlf9qwkJOS++kUJFrfcbbasI
-         b3RhK4LU4PLambcQXTvY7JXp2XqytgHlHyeYuiySZUJVqXhfZBQRUHqPSMMw6Rv1Pfpg
-         1lOk0EHfvEpej8kUkrCub3eyxiO09A66ytxHBTjXCCLgwl5NaNnBqbqzSwthNG841Ww/
-         iGtsW+Ple5jsPFPQEIlyL0lbqWGu2SmmdiYkGcg+h7aKUpwI24XfqF5lLMjl3UsnYJRZ
-         zEY4PWmPRcwLemZMeNYR3BfWEcG9Qm56IoO2ZNIAn6FJSt8araoWkVoiw42bk5g7wYfd
-         AXww==
+        bh=En9QoHUoC6dMPn6ozwvRZYLS0H/sOJprYNMiFk0oPoU=;
+        b=v32XNSBtNsoaCpMeLqTmEYbaAG0hI4SV3Hwd4bZK1fLYsRolmQQobQa+0Rv3rBNCLT
+         G9Ju7lsXXZq2G+lRb1fhx1w6ScZNDr/LHU02sbvC4NC4OKUDBljMc/tXGZRptCdXLVyE
+         wdHIaDBMONBFUz02lzZhFvhrCCB8UPCdooZ1oa+zqKXD2SkZl6R/5HouoEAniOGQwfOu
+         VZgMCti+8AyLjaYBI/tqJJPq28vlXw+Dnbwb2iRciwB/66a0EQQTyqHzqFA8hhmcCA6I
+         Bh+D095yaJ+PmpLPwLVJKIM7uM5sk0jF8KZALw+xtC6Ph+3gmXoHE2ek1KZauGxlZNNc
+         U1Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqAH8L7t;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P5rzX1Rq;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <quintela@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ga22-20020a1709070c1600b00960d3966977si12829296ejc.832.2023.05.03.03.28.59
+        by mx.google.com with ESMTPS id s7-20020aa7d787000000b0050bd64c4e33si885694edq.611.2023.05.03.03.30.17
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 03:29:00 -0700 (PDT)
+        Wed, 03 May 2023 03:30:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqAH8L7t;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P5rzX1Rq;
        spf=pass (google.com: domain of quintela@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=quintela@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1683109739;
+	s=mimecast20190719; t=1683109816;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=TnPEnJrLHD8ltr2au6DXyolN9++eGsBREQwaNEUt+/M=;
-	b=BqAH8L7t+VE/HhkpH+JfocUzCkfxMs14U9Ppm3vCXK/aJMom1XwdElffJ2v5LLy8yLNJtW
-	79bY4VsCLinBLS2D0JawhhJS0UwmO7Ujw4aTkO+/W/Vegfi7NnOtGqyYFeRFJUBFbbZ4lp
-	cy6RZkD4gwE3s7/75A3SYuWgpNPdMEY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=En9QoHUoC6dMPn6ozwvRZYLS0H/sOJprYNMiFk0oPoU=;
+	b=P5rzX1Rqi7EeRAZ5++chMAAYjtzQLrKte/yVPEe/XweWZMLTuParPyjHJJzWh90GDTvq3I
+	erW3hk/yNapwmPCGiRxsVgYn8rX6jVL/1maRE/Rq8OTO8XOjjK8j7jB+IHEXmYqJZmOYs5
+	5LCNJLHCWjron9r0pwWJFio4bfHViUw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-590-9ABM4-OsPQSKuiD4ASWKDg-1; Wed, 03 May 2023 06:28:58 -0400
-X-MC-Unique: 9ABM4-OsPQSKuiD4ASWKDg-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-3f1745d08b5so17964895e9.1
-        for <alex.bennee@linaro.org>; Wed, 03 May 2023 03:28:58 -0700 (PDT)
+ us-mta-104-WiE3zz5ePzuV6C_jSSu3MA-1; Wed, 03 May 2023 06:30:15 -0400
+X-MC-Unique: WiE3zz5ePzuV6C_jSSu3MA-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-30633990a69so871467f8f.3
+        for <alex.bennee@linaro.org>; Wed, 03 May 2023 03:30:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683109737; x=1685701737;
+        d=1e100.net; s=20221208; t=1683109814; x=1685701814;
         h=content-transfer-encoding:mime-version:message-id:date:reply-to
          :user-agent:references:in-reply-to:subject:cc:to:from
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TnPEnJrLHD8ltr2au6DXyolN9++eGsBREQwaNEUt+/M=;
-        b=EsRzGYbBsZU0Go8y4DJGq5zUCDjgdOZlLZtyuXYzcaikETGo17tIdgCfF/Zj0SlV8d
-         pjT5SP3H2r3dGb13OrBBiCe1bNGlg5VPOEKZg/tUxiE81hpIN0r1Gzvwc4l4TBvdPi9P
-         3g5ahujFzxBHXx+FbNo6CnhkIcxFhjaziquNMRidrQKu0DhAPDHjCsGhYDxsB2nIHpx+
-         CFwFY+tYMX0VjndhYjWOP2dPC5VlKymH+I8xLndbip3ccikD600LK8AwtByjKsVMh8HV
-         0Pv/vfUA50mo2A//aRvWTSXclyyaPPu5WpeWXJ8Tp1xBaSHesMrUi//QhsZAKu8Be/h/
-         kMgA==
-X-Gm-Message-State: AC+VfDzzxmwO68NnAYkVDd21T3CQYrQHyf9L87oDOisN8V6A3tYexv9b
-	6vikoPYd+dXtppBxOVS8xxkvhBXSyHjbu3w4tsjnSjPlSSXHZscm/HIo8Jw8hURU0WOVQqW9++D
-	yunXmdEZQsXcJu2TCO3CqFpJC+AsA5oeUg1kWJO0zHHu7TqqB08RkDYgvOJ1ZIxW+ZKbbiyWaC7
-	ZMP1PBrw==
-X-Received: by 2002:a05:6000:124b:b0:306:31b7:abe4 with SMTP id j11-20020a056000124b00b0030631b7abe4mr6030904wrx.14.1683109736924;
-        Wed, 03 May 2023 03:28:56 -0700 (PDT)
-X-Received: by 2002:a05:6000:124b:b0:306:31b7:abe4 with SMTP id j11-20020a056000124b00b0030631b7abe4mr6030851wrx.14.1683109736581;
-        Wed, 03 May 2023 03:28:56 -0700 (PDT)
+        bh=En9QoHUoC6dMPn6ozwvRZYLS0H/sOJprYNMiFk0oPoU=;
+        b=QlqYMTkQJjfS7IjW/0Eux64NA00U+rz+RwrOa+QLrgj2DMQ7oDqkh80/aG3oKUYJ6t
+         fc2xxWR78hwiep3skvQjHh9mCmJB0QaBtMigp5w9AZ+aJabXroE3scJXjXebhNKhElCm
+         PA0/mvvbGgMk+n8ewTWTVlz2Xzrn2xFA3/TN8hCG1o1yifR7e5ElDx26vTBXmpCJrUAG
+         HU+oCPXi05gDeREZj3GQR6lmieKNU44pvOwLBZWsxfvrAe1fkpDsPYPQ6ZMQfIv3Lyrh
+         lRSoR/FDnoBo312+T3m85tt1L1iGgLeB164etjwk6fN3YafTrxWPRzW/hmdX1NFAjZQh
+         9JPA==
+X-Gm-Message-State: AC+VfDy92wwzrpZP1Dy9JNGqDkqdqEVzww7la3XoPXAkBANmwxG16q61
+	VouzCns2ZD+GtTCih6OK9ikIW+WUnt8O2m33lvnZSPpWIUnFVU++jajzt1sHtkf9AgV4c5CmOZ1
+	io7SPu9giJ6LYSnuYOR+Ui3wbccSrLsLERuqivv/DcrtKJ4/aOwctjX/MRL3lTVlpYCbtS33QbZ
+	ZV/J3Oqg==
+X-Received: by 2002:a5d:58d0:0:b0:306:2701:5346 with SMTP id o16-20020a5d58d0000000b0030627015346mr7992132wrf.39.1683109814023;
+        Wed, 03 May 2023 03:30:14 -0700 (PDT)
+X-Received: by 2002:a5d:58d0:0:b0:306:2701:5346 with SMTP id o16-20020a5d58d0000000b0030627015346mr7992077wrf.39.1683109813602;
+        Wed, 03 May 2023 03:30:13 -0700 (PDT)
 Return-Path: <quintela@redhat.com>
 Received: from redhat.com (static-92-120-85-188.ipcom.comunitel.net. [188.85.120.92])
-        by smtp.gmail.com with ESMTPSA id e6-20020a5d4e86000000b003063d83a168sm2294491wru.26.2023.05.03.03.28.55
+        by smtp.gmail.com with ESMTPSA id z2-20020a5d4c82000000b003021288a56dsm32554642wrs.115.2023.05.03.03.30.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 03:28:56 -0700 (PDT)
+        Wed, 03 May 2023 03:30:13 -0700 (PDT)
 From: Juan Quintela <quintela@redhat.com>
 To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org,  Laurent Vivier <lvivier@redhat.com>,  Artyom
@@ -106,28 +106,37 @@ Cc: qemu-devel@nongnu.org,  Laurent Vivier <lvivier@redhat.com>,  Artyom
  Stanley <joel@jms.id.au>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
  <berrange@redhat.com>,
   Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH 02/22] tests/docker: bump the xtensa base to debian:11-slim
-In-Reply-To: <20230503091244.1450613-3-alex.bennee@linaro.org> ("Alex
-	=?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 3 May 2023 10:12:24 +0100")
+Subject: Re: [PATCH 03/22] docs: document breakpoint and watchpoint support
+In-Reply-To: <20230503091244.1450613-4-alex.bennee@linaro.org> ("Alex
+	=?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 3 May 2023 10:12:25 +0100")
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
-	<20230503091244.1450613-3-alex.bennee@linaro.org>
+	<20230503091244.1450613-4-alex.bennee@linaro.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 Reply-To: quintela@redhat.com
-Date: Wed, 03 May 2023 12:28:55 +0200
-Message-ID: <87cz3hso7s.fsf@secure.mitica>
+Date: Wed, 03 May 2023 12:30:12 +0200
+Message-ID: <878re5so5n.fsf@secure.mitica>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: GA/hbrj3pRw/
+X-TUID: xctPN3Q1VPov
 
 Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
-> Stretch is going out of support so things like security updates will
-> fail. As the toolchain itself is binary it hopefully won't mind the
-> underlying OS being updated.
+> This varies by accelerator. Also mention the modern bear trap that is
+> ASLR.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reported-by: Richard Henderson <richard.henderson@linaro.org>
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
+
+> +Relocating code
+> +---------------
+> +
+> +On modern kernels confusion can be caused by code being relocated by
+> +features such as address space layout randomisation. To avoid
+> +confusion when debugging such things you either need to update gdb's
+> +view of where things are in memory or perhaps more trivially disable
+> +ASLR when booting the system.
+
+Makes sense for everything except debugging ASLR O:-)

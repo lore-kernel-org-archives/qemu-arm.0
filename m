@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h13-20020adffd4d000000b0030631dcbea6sm6208275wrs.77.2023.05.03.02.12.46
+        by smtp.gmail.com with ESMTPSA id a7-20020adfdd07000000b003062db9cc21sm7475316wrm.92.2023.05.03.02.12.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 02:12:47 -0700 (PDT)
+        Wed, 03 May 2023 02:12:48 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D31F81FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id A0E101FFC0;
 	Wed,  3 May 2023 10:12:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,41 +48,48 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 08/22] hw/arm: Select GICV3_TCG for sbsa-ref machine
-Date: Wed,  3 May 2023 10:12:30 +0100
-Message-Id: <20230503091244.1450613-9-alex.bennee@linaro.org>
+Subject: [PATCH 06/22] hw/arm: Select VIRTIO_BLK for virt machine
+Date: Wed,  3 May 2023 10:12:28 +0100
+Message-Id: <20230503091244.1450613-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: irmvgIieYskA
+X-TUID: BK1HS/Cffc3g
 
 From: Fabiano Rosas <farosas@suse.de>
 
-This machine hardcodes the creation of the interrupt controller, so
-make sure the dependency is explicitly described in the Kconfig.
+The virt machine has IF_VIRTIO as block_default_type, which causes the
+generic code to try to create a virtio-blk-pci device pair at
+configure_blockdev()/qemu_create_cli_devices().
+
+Select VIRTIO_BLK and VIRTIO_PCI from CONFIG_ARM_VIRT to avoid errors
+when PCI_DEVICES=n (due to e.g. --without-default-devices):
+
+$ ./qemu-system-aarch64 -M virt -accel tcg -cpu max -nodefaults -cdrom foo.qcow2
+qemu-system-aarch64: -cdrom foo.qcow2: 'virtio-blk' (alias
+'virtio-blk-pci') is not a valid device model name
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230208192654.8854-9-farosas@suse.de>
+Message-Id: <20230208192654.8854-7-farosas@suse.de>
 ---
  hw/arm/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index cec7898bb7..0cce0b8d5b 100644
+index 4c23fbf800..168c1e8089 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -252,6 +252,7 @@ config SBSA_REF
-     select PL061 # GPIO
-     select USB_EHCI_SYSBUS
-     select WDT_SBSA
-+    select ARM_GICV3_TCG
+@@ -34,6 +34,7 @@ config ARM_VIRT
+     select ACPI_HMAT
+     select VIRTIO_PCI
+     select VIRTIO_NET
++    select VIRTIO_BLK
  
- config SABRELITE
+ config CHEETAH
      bool
 -- 
 2.39.2

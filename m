@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 18-20020a05600c229200b003f17a00c214sm1253060wmf.16.2023.05.03.02.12.45
+        by smtp.gmail.com with ESMTPSA id b10-20020a5d550a000000b0030639a86f9dsm3597277wrv.51.2023.05.03.02.12.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 02:12:46 -0700 (PDT)
+        Wed, 03 May 2023 02:12:47 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 701271FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id 87E951FFBF;
 	Wed,  3 May 2023 10:12:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,39 +46,49 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 04/22] scripts/ci: add gitlab-runner to kvm group
-Date: Wed,  3 May 2023 10:12:26 +0100
-Message-Id: <20230503091244.1450613-5-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH 05/22] hw/arm: Select VIRTIO_NET for virt machine
+Date: Wed,  3 May 2023 10:12:27 +0100
+Message-Id: <20230503091244.1450613-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EQjvF+RiryEx
+X-TUID: PiwEw6g/FgBl
 
-One of the main reasons to have custom runners it so we can run KVM
-tests. Enable the "kvm" additional group so we can access the feature
-on the kernel.
+From: Fabiano Rosas <farosas@suse.de>
 
+The 'virt' machine uses virtio-net-pci as a fallback when no other
+network driver has been selected via command line. Select VIRTIO_NET
+and VIRTIO_PCI from CONFIG_ARM_VIRT to avoid errors when PCI_DEVICES=n
+(due to e.g. --without-default-devices):
+
+$ ./qemu-system-aarch64 -M virt -accel tcg -cpu max
+qemu-system-aarch64: Unsupported NIC model: virtio-net-pci
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20230208192654.8854-6-farosas@suse.de>
 ---
- scripts/ci/setup/gitlab-runner.yml | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
-index 1a1b270ff2..7bdafab511 100644
---- a/scripts/ci/setup/gitlab-runner.yml
-+++ b/scripts/ci/setup/gitlab-runner.yml
-@@ -26,6 +26,7 @@
-       user:
-         user: gitlab-runner
-         group: gitlab-runner
-+        groups: kvm
-         comment: GitLab Runner
-         home: /home/gitlab-runner
-         shell: /bin/bash
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2d7c457955..4c23fbf800 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -32,6 +32,8 @@ config ARM_VIRT
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
++    select VIRTIO_PCI
++    select VIRTIO_NET
+ 
+ config CHEETAH
+     bool
 -- 
 2.39.2

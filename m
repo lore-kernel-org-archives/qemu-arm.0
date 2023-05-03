@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e8-20020adfdbc8000000b003047d5b8817sm24164971wrj.80.2023.05.03.02.12.46
+        by smtp.gmail.com with ESMTPSA id h13-20020adffd4d000000b0030631dcbea6sm6208275wrs.77.2023.05.03.02.12.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 03 May 2023 02:12:47 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id EB2071FFC3;
+	by zen.linaroharston (Postfix) with ESMTP id D31F81FFC2;
 	Wed,  3 May 2023 10:12:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -48,39 +48,39 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH 09/22] hw/arm: Select e1000e for sbsa-ref machine
-Date: Wed,  3 May 2023 10:12:31 +0100
-Message-Id: <20230503091244.1450613-10-alex.bennee@linaro.org>
+Subject: [PATCH 08/22] hw/arm: Select GICV3_TCG for sbsa-ref machine
+Date: Wed,  3 May 2023 10:12:30 +0100
+Message-Id: <20230503091244.1450613-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: HB0B2DYjwChY
+X-TUID: irmvgIieYskA
 
 From: Fabiano Rosas <farosas@suse.de>
 
-This machine explicitly selects the e1000e network adapter if no other
-option was given in the command line. Make sure e1000e is present in
-the build.
+This machine hardcodes the creation of the interrupt controller, so
+make sure the dependency is explicitly described in the Kconfig.
 
 Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230208192654.8854-10-farosas@suse.de>
+Message-Id: <20230208192654.8854-9-farosas@suse.de>
 ---
  hw/arm/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 0cce0b8d5b..06f58d1a6f 100644
+index cec7898bb7..0cce0b8d5b 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -253,6 +253,7 @@ config SBSA_REF
+@@ -252,6 +252,7 @@ config SBSA_REF
+     select PL061 # GPIO
      select USB_EHCI_SYSBUS
      select WDT_SBSA
-     select ARM_GICV3_TCG
-+    select E1000E_PCI_EXPRESS
++    select ARM_GICV3_TCG
  
  config SABRELITE
      bool

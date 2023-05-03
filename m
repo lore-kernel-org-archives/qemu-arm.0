@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2654843ejm;
-        Wed, 3 May 2023 00:13:51 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4BLXRJyGUv32jcMfZPQCH1Y7wv57Bsntrcvp7baw2vMRfomcXpTOqVFyep1qutxbuFx+7s
-X-Received: by 2002:ad4:5aeb:0:b0:61a:43f0:7305 with SMTP id c11-20020ad45aeb000000b0061a43f07305mr9799693qvh.35.1683098031445;
-        Wed, 03 May 2023 00:13:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683098031; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2654851ejm;
+        Wed, 3 May 2023 00:13:53 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ60D8PYTpgIpSOThZ+sfcMniz0X22FiQPUhXuzmIOrAnR7i0jPF1LsDE3X3+S43irFrz2EX
+X-Received: by 2002:ad4:5b85:0:b0:61a:fe65:4481 with SMTP id 5-20020ad45b85000000b0061afe654481mr7311272qvp.51.1683098032814;
+        Wed, 03 May 2023 00:13:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683098032; cv=none;
         d=google.com; s=arc-20160816;
-        b=mh8qKbSpVS29ukbHHgO+xGHFOEje8aKMsgf15ovAiFdq0mFenHZf1ahxIckr9Tqb/8
-         dy1pEGYF8AbarkZK+OJ4Y/MrEsq1QLya/zQ4ZtrJLfyZNlRdPzhFfEXWBSzfwwa+xZTd
-         1Lk6vPUFq5OYXL8WQR1R5/aaxxnf8fbNJfQ9NpW3OVnwmGelpjxxMxTOjo24DS4j/niG
-         lRPjulbm1mpdWPmWXh0Z+gKS2JW0bQZfsKDglIUwa3edDuvrjSbslhFdIVePvODjuofJ
-         7JasR1sZVZPsbqQKymI1g+niMeh2nFNXsPbcSGAYmZLJ084h1Jz18mUuCmv/Y5BQMR6O
-         dLRw==
+        b=AgnFU8OHGqEayCwY89iLLg9YsYMseCqcM1dbD5aU2U0J3nIlIGlbd48fYALmO37d58
+         wDOLnwZkMbtSHisv+Ml9KqpEZ4vijdUCVkQCkl602qadihpEsjk9YLXEC4o63CQaJede
+         J5IvRsE80ccEnb6sSIivj6DkBE/w76lycjpubPtVjjtRUGc+GJK+/+PsJ/ex/oK8+Zjh
+         i3VubzTpyPY05/PfKictMtcV0eKHekm9Ts3m6AUUPgBzGitLh+SKb72b9bu/8T4zjTEe
+         ixQWLIJRrSqH0LsUZGnzaDtRdYNCBM5JCRHO3X/InQ7YiVcqxK6nSj9Z7R6W00tGzSjM
+         tRkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7tjn+bhFEykcOOu8pztGK+c3m4ZRnhhBjNTo+m7c7SU=;
-        b=Y5Nzx71h7YDci79/n3oJ+IaMEdtVjWFRguEyk8h/3WRY+xJWEhuBNAmoHs2Gy7pDEL
-         j0pTJaaHgB1M0c/alHDEbS2M4BxFvAd9+9CBhwSql03TcyZTzP1Bpy6O1FUNhJImiZqo
-         2nF2kuVWGV+5d7YwhwDU9vASDNJKopJK4APeHrfi2EgmSKO3fnDVmyKKCN33eEqekASc
-         HIufBJXdJNeyFQFt8jxmsiaOfN0/nIYakla+JLrqKfbxATq8NV6SfeVrBN4KvtWC6a95
-         5wHuQBk+s2Amu5VBYXU1sPXXYqqgRdOH6qghe2umWt/noBXS4+3//dPfvbA/KJPd8NaT
-         T1jQ==
+        bh=zZ2vX3VIS+s7f165Kf/LrOrnBD196gGqIoBw1FC/3ew=;
+        b=POsVHz4jQgOP/U9c0+vhDi1bP2oFXhUWReQFnhttVDuaAKFJklwFx1+tV1G4fr8NAB
+         sBr54TljvLpcd8qArhyMTRtzr/fkHwM2vtAuxn+4nBA0tQCOFna4MuHJZGoqYwa5GzRo
+         3a38fmWMO2m6PWX8h1537T/7mqUlWz5L7FvG0DwgieTMVnk6GsrRnRTGOGpGU1luXBek
+         scbNgjWEEUJ7sZTLRl9vxh+GB1XSn5lBp3Y2tsSg1xdD4r+lRilNK3LrB1WHVRSlyb6R
+         CCMlUGrLJJqF4u3pTVbxEpUEd/KYAVx2GaVblcyBef3r6g3ySNJD2AYCedZdNHMgTORl
+         /guw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z3bBjk4F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ygQhs+nE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kk28-20020a056214509c00b0061b6fcd34a3si762104qvb.347.2023.05.03.00.13.51
+        by mx.google.com with ESMTPS id c9-20020a05620a0ce900b00746aeb58f76si17460718qkj.78.2023.05.03.00.13.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 May 2023 00:13:51 -0700 (PDT)
+        Wed, 03 May 2023 00:13:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z3bBjk4F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ygQhs+nE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pu6dc-00038m-7l; Wed, 03 May 2023 03:10:56 -0400
+	id 1pu6du-0004lJ-QZ; Wed, 03 May 2023 03:11:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6dG-0002i4-DA
- for qemu-arm@nongnu.org; Wed, 03 May 2023 03:10:39 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1pu6dX-00033B-Di
+ for qemu-arm@nongnu.org; Wed, 03 May 2023 03:10:53 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6dB-00071L-QI
- for qemu-arm@nongnu.org; Wed, 03 May 2023 03:10:32 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-3f178da219bso46400855e9.1
- for <qemu-arm@nongnu.org>; Wed, 03 May 2023 00:10:29 -0700 (PDT)
+ id 1pu6dL-00076k-Gm
+ for qemu-arm@nongnu.org; Wed, 03 May 2023 03:10:51 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-3f182d745deso46370505e9.0
+ for <qemu-arm@nongnu.org>; Wed, 03 May 2023 00:10:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683097828; x=1685689828;
+ d=linaro.org; s=google; t=1683097838; x=1685689838;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7tjn+bhFEykcOOu8pztGK+c3m4ZRnhhBjNTo+m7c7SU=;
- b=z3bBjk4FKXtC9lrujsWFIA2f+Qv06gN6s4Pzovyw0tpiHvZVdcUIQKDz2ehpTpdTLS
- F5CWAVCP/3YWgPW2k0CGsHkAPbQh0LnOmiJrKmEj5hwizkK3/xIjFJvMdEJY4oVPS3nP
- +66YoxHw9AAMOILkABUBRpd80xKGeDT/m11XTOTDqPuEV3L1UZsifkc6I85JyaDD3FOv
- 28QuLsOJTE8gqbDtBZ2HOXU6uPHvBiFMrZxaNBzB5XWJ/Hoh4csA8r7b/9yvjSSn9iyR
- uj52vMYRbi54gjtKQJA6ini096B11BreFThsQpcy8wq+VXP0+1YH3LcdJv+1EcqF75MO
- VAOQ==
+ bh=zZ2vX3VIS+s7f165Kf/LrOrnBD196gGqIoBw1FC/3ew=;
+ b=ygQhs+nEIuF1f1lsERMBiqQ3kz02wBgKIiacT7oHPDD/D6uYzbcw9iLiocJfR9L+h2
+ 6Y7/6Nd40JUIIQSPT6fAv2oG2eb1U5sJoTo7NZ1D2Rk/GcTQ0/VAHWnqmBcO0VXeiAmK
+ vdE/EIYyce1gSC4Kdsg1Y8YwEB6A6HBYChw26yaI989UUW/PBLdOqMK2n6AtlQJQT/Mu
+ oVT6kLmev+a2Wyskg6cE0Ec78Htr4vDBDgp7G+YgFvAZhs7/TD2y+2MlAn121mpYFZBn
+ jvKxFZcSZjyo78KjjAsFj0CyKueBCAT3AAPIcFG6qUSROchFnAm6OWKTAOmgwsWQ/6Lw
+ HPpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683097828; x=1685689828;
+ d=1e100.net; s=20221208; t=1683097838; x=1685689838;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7tjn+bhFEykcOOu8pztGK+c3m4ZRnhhBjNTo+m7c7SU=;
- b=T5raXhf18GKGfCglCcry61HGrf1Sy5ec8DEwNwgYOaKmTFu7FeczAOxA3qrhKuT9hH
- qcdDnGcmVWlAnKsEEJ/ZU4VPq8CQr/C1eTkx6MOmhpw39XrpWg19uBYPLwo3owao3tkc
- EFY7N6d7vviQ1WxmmtYd2F3JjORBipauiiRajBUmoyAxGFZMJVV4iOpF5Zkz3FCOuDsa
- XoZyXHdfMNBeC5S/bTKEkDxpXtXvsROKgEImiXMcp3pNw3DFvWdox6v38OvGuJNpBbcy
- 4NTTr0eV3tBuCeOMHxIzv8PCAJQAGWwGI75pfhYLSETyLYNSJJPDo4UIcuyUFIoT/pUH
- akwg==
-X-Gm-Message-State: AC+VfDyBrVCDux2otdratQwwVOitmAXrz/qjZR1q4pNIJC97AyVCEZqV
- m+G/MgCPvbVDrYHC12rDEf2AeQ==
-X-Received: by 2002:a05:600c:281:b0:3f0:9fef:1028 with SMTP id
- 1-20020a05600c028100b003f09fef1028mr13653182wmk.17.1683097828039; 
- Wed, 03 May 2023 00:10:28 -0700 (PDT)
+ bh=zZ2vX3VIS+s7f165Kf/LrOrnBD196gGqIoBw1FC/3ew=;
+ b=ITKwuLoggPdkfc4oPMXbncpkQlMursBVj8PGcXL5GFp1fjX14/kOMuuCVDTGuqQxhk
+ E9Wfqf36jk3Mqq55Q791n6nUmlR+P/BHOTzaeWqgA3PYffnC/NRLuhHnk1fBBnfaoNfc
+ SDIuMu6jbNH8HCY5UPivlxH339eJ2mzc3FcMlnPGHgdOC7wQ7UBu2dHrkhEW790FToJZ
+ KCcagJdMLd3yHML7EJt5/JsjF+8GAqzuLbzmnWAD3KJ7owfd5BaEWib8jnjFFtPVSTj+
+ PQv/ViIpVuGBOxF2a2XGpUy7+92qLW9VuTc59ibOIvDKvfqNuD3IbNHx8w0prDEcbr4O
+ r4TQ==
+X-Gm-Message-State: AC+VfDwRRvDQbDhonQT6Ciid6bqeCE3f5WD6juQP/+mA443BAgcPjGrc
+ ERST+GBYvpdLg+LTl5aTaCzRGQ==
+X-Received: by 2002:a1c:7917:0:b0:3f1:6942:e024 with SMTP id
+ l23-20020a1c7917000000b003f16942e024mr14748581wme.27.1683097837828; 
+ Wed, 03 May 2023 00:10:37 -0700 (PDT)
 Received: from stoup.Home ([2a02:c7c:74db:8d00:c01d:9d74:b630:9087])
  by smtp.gmail.com with ESMTPSA id
- v9-20020a05600c444900b003f173be2ccfsm54223673wmn.2.2023.05.03.00.10.27
+ v9-20020a05600c444900b003f173be2ccfsm54223673wmn.2.2023.05.03.00.10.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 May 2023 00:10:27 -0700 (PDT)
+ Wed, 03 May 2023 00:10:37 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: git@xen0n.name, gaosong@loongson.cn, philmd@linaro.org,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: [PATCH v4 40/57] tcg: Add INDEX_op_qemu_{ld,st}_i128
-Date: Wed,  3 May 2023 08:06:39 +0100
-Message-Id: <20230503070656.1746170-41-richard.henderson@linaro.org>
+Subject: [PATCH v4 53/57] tcg/i386: Support 128-bit load/store with
+ have_atomic16
+Date: Wed,  3 May 2023 08:06:52 +0100
+Message-Id: <20230503070656.1746170-54-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230503070656.1746170-1-richard.henderson@linaro.org>
 References: <20230503070656.1746170-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,333 +125,303 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zaVe4ZGZxZSO
+X-TUID: 6weCVSoYatUW
 
-Add opcodes for backend support for 128-bit memory operations.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/tcg/tcg-opc.h        |  8 +++++
- tcg/aarch64/tcg-target.h     |  2 ++
- tcg/arm/tcg-target.h         |  2 ++
- tcg/i386/tcg-target.h        |  2 ++
- tcg/loongarch64/tcg-target.h |  1 +
- tcg/mips/tcg-target.h        |  2 ++
- tcg/ppc/tcg-target.h         |  2 ++
- tcg/riscv/tcg-target.h       |  2 ++
- tcg/s390x/tcg-target.h       |  2 ++
- tcg/sparc64/tcg-target.h     |  2 ++
- tcg/tci/tcg-target.h         |  2 ++
- tcg/tcg-op.c                 | 69 ++++++++++++++++++++++++++++++++----
- tcg/tcg.c                    |  4 +++
- docs/devel/tcg-ops.rst       | 11 +++---
- 14 files changed, 101 insertions(+), 10 deletions(-)
+ tcg/i386/tcg-target.h     |   3 +-
+ tcg/i386/tcg-target.c.inc | 184 +++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 182 insertions(+), 5 deletions(-)
 
-diff --git a/include/tcg/tcg-opc.h b/include/tcg/tcg-opc.h
-index dd444734d9..94cf7c5d6a 100644
---- a/include/tcg/tcg-opc.h
-+++ b/include/tcg/tcg-opc.h
-@@ -213,6 +213,14 @@ DEF(qemu_st8_i32, 0, TLADDR_ARGS + 1, 1,
-     TCG_OPF_CALL_CLOBBER | TCG_OPF_SIDE_EFFECTS |
-     IMPL(TCG_TARGET_HAS_qemu_st8_i32))
- 
-+/* Only for 64-bit hosts at the moment. */
-+DEF(qemu_ld_i128, 2, 1, 1,
-+    TCG_OPF_CALL_CLOBBER | TCG_OPF_SIDE_EFFECTS | TCG_OPF_64BIT |
-+    IMPL(TCG_TARGET_HAS_qemu_ldst_i128))
-+DEF(qemu_st_i128, 0, 3, 1,
-+    TCG_OPF_CALL_CLOBBER | TCG_OPF_SIDE_EFFECTS | TCG_OPF_64BIT |
-+    IMPL(TCG_TARGET_HAS_qemu_ldst_i128))
-+
- /* Host vector support.  */
- 
- #define IMPLVEC  TCG_OPF_VECTOR | IMPL(TCG_TARGET_MAYBE_vec)
-diff --git a/tcg/aarch64/tcg-target.h b/tcg/aarch64/tcg-target.h
-index 378e01d9d8..74ee2ed255 100644
---- a/tcg/aarch64/tcg-target.h
-+++ b/tcg/aarch64/tcg-target.h
-@@ -129,6 +129,8 @@ extern bool have_lse2;
- #define TCG_TARGET_HAS_muluh_i64        1
- #define TCG_TARGET_HAS_mulsh_i64        1
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
- #define TCG_TARGET_HAS_v64              1
- #define TCG_TARGET_HAS_v128             1
- #define TCG_TARGET_HAS_v256             0
-diff --git a/tcg/arm/tcg-target.h b/tcg/arm/tcg-target.h
-index 4c2d3332d5..65efc538f4 100644
---- a/tcg/arm/tcg-target.h
-+++ b/tcg/arm/tcg-target.h
-@@ -125,6 +125,8 @@ extern bool use_neon_instructions;
- #define TCG_TARGET_HAS_rem_i32          0
- #define TCG_TARGET_HAS_qemu_st8_i32     0
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
- #define TCG_TARGET_HAS_v64              use_neon_instructions
- #define TCG_TARGET_HAS_v128             use_neon_instructions
- #define TCG_TARGET_HAS_v256             0
 diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
-index 8fe6958abd..943af6775e 100644
+index 943af6775e..7f69997e30 100644
 --- a/tcg/i386/tcg-target.h
 +++ b/tcg/i386/tcg-target.h
-@@ -194,6 +194,8 @@ extern bool have_atomic16;
+@@ -194,7 +194,8 @@ extern bool have_atomic16;
  #define TCG_TARGET_HAS_qemu_st8_i32     1
  #endif
  
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
+-#define TCG_TARGET_HAS_qemu_ldst_i128   0
++#define TCG_TARGET_HAS_qemu_ldst_i128 \
++    (TCG_TARGET_REG_BITS == 64 && have_atomic16)
+ 
  /* We do not support older SSE systems, only beginning with AVX1.  */
  #define TCG_TARGET_HAS_v64              have_avx1
- #define TCG_TARGET_HAS_v128             have_avx1
-diff --git a/tcg/loongarch64/tcg-target.h b/tcg/loongarch64/tcg-target.h
-index 75c3d80ed2..482901ac15 100644
---- a/tcg/loongarch64/tcg-target.h
-+++ b/tcg/loongarch64/tcg-target.h
-@@ -168,6 +168,7 @@ typedef enum {
- #define TCG_TARGET_HAS_muls2_i64        0
- #define TCG_TARGET_HAS_muluh_i64        1
- #define TCG_TARGET_HAS_mulsh_i64        1
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
- 
- #define TCG_TARGET_DEFAULT_MO (0)
- 
-diff --git a/tcg/mips/tcg-target.h b/tcg/mips/tcg-target.h
-index 47088af9cb..7277a117ef 100644
---- a/tcg/mips/tcg-target.h
-+++ b/tcg/mips/tcg-target.h
-@@ -204,6 +204,8 @@ extern bool use_mips32r2_instructions;
- #define TCG_TARGET_HAS_ext16u_i64       0 /* andi rt, rs, 0xffff */
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 5c6c64c48a..a2739977a6 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -91,6 +91,8 @@ static const int tcg_target_reg_alloc_order[] = {
  #endif
+ };
  
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
++#define TCG_TMP_VEC  TCG_REG_XMM5
 +
- #define TCG_TARGET_DEFAULT_MO           0
- #define TCG_TARGET_NEED_LDST_LABELS
+ static const int tcg_target_call_iarg_regs[] = {
+ #if TCG_TARGET_REG_BITS == 64
+ #if defined(_WIN64)
+@@ -347,6 +349,8 @@ static bool tcg_target_const_match(int64_t val, TCGType type, int ct)
+ #define OPC_PCMPGTW     (0x65 | P_EXT | P_DATA16)
+ #define OPC_PCMPGTD     (0x66 | P_EXT | P_DATA16)
+ #define OPC_PCMPGTQ     (0x37 | P_EXT38 | P_DATA16)
++#define OPC_PEXTRD      (0x16 | P_EXT3A | P_DATA16)
++#define OPC_PINSRD      (0x22 | P_EXT3A | P_DATA16)
+ #define OPC_PMAXSB      (0x3c | P_EXT38 | P_DATA16)
+ #define OPC_PMAXSW      (0xee | P_EXT | P_DATA16)
+ #define OPC_PMAXSD      (0x3d | P_EXT38 | P_DATA16)
+@@ -1784,7 +1788,22 @@ typedef struct {
  
-diff --git a/tcg/ppc/tcg-target.h b/tcg/ppc/tcg-target.h
-index d55f0266bb..0914380bd7 100644
---- a/tcg/ppc/tcg-target.h
-+++ b/tcg/ppc/tcg-target.h
-@@ -149,6 +149,8 @@ extern bool have_vsx;
- #define TCG_TARGET_HAS_mulsh_i64        1
+ bool tcg_target_has_memory_bswap(MemOp memop)
+ {
+-    return have_movbe;
++    MemOp atom_a, atom_u;
++
++    if (!have_movbe) {
++        return false;
++    }
++    if ((memop & MO_SIZE) <= MO_64) {
++        return true;
++    }
++
++    /*
++     * Reject 16-byte memop with 16-byte atomicity, i.e. VMOVDQA,
++     * but do allow a pair of 64-bit operations, i.e. MOVBEQ.
++     */
++    (void)atom_and_align_for_opc(tcg_ctx, &atom_a, &atom_u, memop,
++                                 MO_ATOM_IFALIGN, true);
++    return atom_a <= MO_64;
+ }
+ 
+ /*
+@@ -1812,6 +1831,30 @@ static const TCGLdstHelperParam ldst_helper_param = {
+ static const TCGLdstHelperParam ldst_helper_param = { };
  #endif
  
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
++static void tcg_out_vec_to_pair(TCGContext *s, TCGType type,
++                                TCGReg l, TCGReg h, TCGReg v)
++{
++    int rexw = type == TCG_TYPE_I32 ? 0 : P_REXW;
++
++    /* vpmov{d,q} %v, %l */
++    tcg_out_vex_modrm(s, OPC_MOVD_EyVy + rexw, v, 0, l);
++    /* vpextr{d,q} $1, %v, %h */
++    tcg_out_vex_modrm(s, OPC_PEXTRD + rexw, v, 0, h);
++    tcg_out8(s, 1);
++}
++
++static void tcg_out_pair_to_vec(TCGContext *s, TCGType type,
++                                TCGReg v, TCGReg l, TCGReg h)
++{
++    int rexw = type == TCG_TYPE_I32 ? 0 : P_REXW;
++
++    /* vmov{d,q} %l, %v */
++    tcg_out_vex_modrm(s, OPC_MOVD_VyEy + rexw, v, 0, l);
++    /* vpinsr{d,q} $1, %h, %v, %v */
++    tcg_out_vex_modrm(s, OPC_PINSRD + rexw, v, v, h);
++    tcg_out8(s, 1);
++}
 +
  /*
-  * While technically Altivec could support V64, it has no 64-bit store
-  * instruction and substituting two 32-bit stores makes the generated
-diff --git a/tcg/riscv/tcg-target.h b/tcg/riscv/tcg-target.h
-index dece3b3c27..494c986b49 100644
---- a/tcg/riscv/tcg-target.h
-+++ b/tcg/riscv/tcg-target.h
-@@ -163,6 +163,8 @@ typedef enum {
- #define TCG_TARGET_HAS_muluh_i64        1
- #define TCG_TARGET_HAS_mulsh_i64        1
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
- #define TCG_TARGET_DEFAULT_MO (0)
- 
- #define TCG_TARGET_NEED_LDST_LABELS
-diff --git a/tcg/s390x/tcg-target.h b/tcg/s390x/tcg-target.h
-index fe05680124..170007bea5 100644
---- a/tcg/s390x/tcg-target.h
-+++ b/tcg/s390x/tcg-target.h
-@@ -140,6 +140,8 @@ extern uint64_t s390_facilities[3];
- #define TCG_TARGET_HAS_muluh_i64      0
- #define TCG_TARGET_HAS_mulsh_i64      0
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128 0
-+
- #define TCG_TARGET_HAS_v64            HAVE_FACILITY(VECTOR)
- #define TCG_TARGET_HAS_v128           HAVE_FACILITY(VECTOR)
- #define TCG_TARGET_HAS_v256           0
-diff --git a/tcg/sparc64/tcg-target.h b/tcg/sparc64/tcg-target.h
-index f6cd86975a..31c5537379 100644
---- a/tcg/sparc64/tcg-target.h
-+++ b/tcg/sparc64/tcg-target.h
-@@ -151,6 +151,8 @@ extern bool use_vis3_instructions;
- #define TCG_TARGET_HAS_muluh_i64        use_vis3_instructions
- #define TCG_TARGET_HAS_mulsh_i64        0
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
- #define TCG_AREG0 TCG_REG_I0
- 
- #define TCG_TARGET_DEFAULT_MO (0)
-diff --git a/tcg/tci/tcg-target.h b/tcg/tci/tcg-target.h
-index 364012e4d2..28dc6d5cfc 100644
---- a/tcg/tci/tcg-target.h
-+++ b/tcg/tci/tcg-target.h
-@@ -127,6 +127,8 @@
- #define TCG_TARGET_HAS_mulu2_i32        1
- #endif /* TCG_TARGET_REG_BITS == 64 */
- 
-+#define TCG_TARGET_HAS_qemu_ldst_i128   0
-+
- /* Number of registers available. */
- #define TCG_TARGET_NB_REGS 16
- 
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index 85f22458c9..06d3181fd0 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -3216,7 +3216,7 @@ static void canonicalize_memop_i128_as_i64(MemOp ret[2], MemOp orig)
- 
- void tcg_gen_qemu_ld_i128(TCGv_i128 val, TCGv addr, TCGArg idx, MemOp memop)
+  * Generate code for the slow path for a load at the end of block
+  */
+@@ -1901,11 +1944,12 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
  {
--    MemOpIdx oi = make_memop_idx(memop, idx);
-+    const MemOpIdx oi = make_memop_idx(memop, idx);
+     TCGLabelQemuLdst *ldst = NULL;
+     MemOp opc = get_memop(oi);
+-    MemOp atom_u;
++    MemOp atom_u, s_bits;
+     unsigned a_mask;
  
-     tcg_debug_assert((memop & MO_SIZE) == MO_128);
-     tcg_debug_assert((memop & MO_SIGN) == 0);
-@@ -3224,9 +3224,36 @@ void tcg_gen_qemu_ld_i128(TCGv_i128 val, TCGv addr, TCGArg idx, MemOp memop)
-     tcg_gen_req_mo(TCG_MO_LD_LD | TCG_MO_ST_LD);
-     addr = plugin_prep_mem_callbacks(addr);
++    s_bits = opc & MO_SIZE;
+     h->align = atom_and_align_for_opc(s, &h->atom, &atom_u, opc,
+-                                      MO_ATOM_IFALIGN, false);
++                                      MO_ATOM_IFALIGN, s_bits == MO_128);
+     a_mask = (1 << h->align) - 1;
  
--    /* TODO: allow the tcg backend to see the whole operation. */
-+    /* TODO: For now, force 32-bit hosts to use the helper. */
-+    if (TCG_TARGET_HAS_qemu_ldst_i128 && TCG_TARGET_REG_BITS == 64) {
-+        TCGv_i64 lo, hi;
-+        TCGArg addr_arg;
-+        MemOpIdx adj_oi;
-+        bool need_bswap = false;
+ #ifdef CONFIG_SOFTMMU
+@@ -1915,7 +1959,6 @@ static TCGLabelQemuLdst *prepare_host_addr(TCGContext *s, HostAddress *h,
+     TCGType tlbtype = TCG_TYPE_I32;
+     int trexw = 0, hrexw = 0, tlbrexw = 0;
+     unsigned mem_index = get_mmuidx(oi);
+-    unsigned s_bits = opc & MO_SIZE;
+     unsigned s_mask = (1 << s_bits) - 1;
+     target_ulong tlb_mask;
  
--    if (use_two_i64_for_i128(memop)) {
-+        if ((memop & MO_BSWAP) && !tcg_target_has_memory_bswap(memop)) {
-+            lo = TCGV128_HIGH(val);
-+            hi = TCGV128_LOW(val);
-+            adj_oi = make_memop_idx(memop & ~MO_BSWAP, idx);
-+            need_bswap = true;
-+        } else {
-+            lo = TCGV128_LOW(val);
-+            hi = TCGV128_HIGH(val);
-+            adj_oi = oi;
+@@ -2120,6 +2163,69 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                                      h.base, h.index, 0, h.ofs + 4);
+         }
+         break;
++
++    case MO_128:
++        {
++            TCGLabel *l1 = NULL, *l2 = NULL;
++            bool use_pair = h.align < MO_128;
++
++            tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++
++            if (!use_pair) {
++                tcg_debug_assert(!use_movbe);
++                /*
++                 * Atomicity requires that we use use VMOVDQA.
++                 * If we've already checked for 16-byte alignment, that's all
++                 * we need.  If we arrive here with lesser alignment, then we
++                 * have determined that less than 16-byte alignment can be
++                 * satisfied with two 8-byte loads.
++                 */
++                if (h.align < MO_128) {
++                    use_pair = true;
++                    l1 = gen_new_label();
++                    l2 = gen_new_label();
++
++                    tcg_out_testi(s, h.base, 15);
++                    tcg_out_jxx(s, JCC_JNE, l2, true);
++                }
++
++                tcg_out_vex_modrm_sib_offset(s, OPC_MOVDQA_VxWx + h.seg,
++                                             TCG_TMP_VEC, 0,
++                                             h.base, h.index, 0, h.ofs);
++                tcg_out_vec_to_pair(s, TCG_TYPE_I64, datalo,
++                                    datahi, TCG_TMP_VEC);
++
++                if (use_pair) {
++                    tcg_out_jxx(s, JCC_JMP, l1, true);
++                    tcg_out_label(s, l2);
++                }
++            }
++            if (use_pair) {
++                if (use_movbe) {
++                    TCGReg t = datalo;
++                    datalo = datahi;
++                    datahi = t;
++                }
++                if (h.base == datalo || h.index == datalo) {
++                    tcg_out_modrm_sib_offset(s, OPC_LEA, datahi,
++                                             h.base, h.index, 0, h.ofs);
++                    tcg_out_modrm_offset(s, movop + P_REXW + h.seg,
++                                         datalo, datahi, 0);
++                    tcg_out_modrm_offset(s, movop + P_REXW + h.seg,
++                                         datahi, datahi, 8);
++                } else {
++                    tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datalo,
++                                             h.base, h.index, 0, h.ofs);
++                    tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datahi,
++                                             h.base, h.index, 0, h.ofs + 8);
++                }
++            }
++            if (l1) {
++                tcg_out_label(s, l1);
++            }
 +        }
++        break;
 +
-+#if TARGET_LONG_BITS == 32
-+        addr_arg = tcgv_i32_arg(addr);
-+#else
-+        addr_arg = tcgv_i64_arg(addr);
-+#endif
-+        tcg_gen_op4ii_i64(INDEX_op_qemu_ld_i128, lo, hi, addr_arg, adj_oi);
+     default:
+         g_assert_not_reached();
+     }
+@@ -2205,6 +2311,60 @@ static void tcg_out_qemu_st_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                                      h.base, h.index, 0, h.ofs + 4);
+         }
+         break;
 +
-+        if (need_bswap) {
-+            tcg_gen_bswap64_i64(lo, lo);
-+            tcg_gen_bswap64_i64(hi, hi);
++    case MO_128:
++        {
++            TCGLabel *l1 = NULL, *l2 = NULL;
++            bool use_pair = h.align < MO_128;
++
++            tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++
++            if (!use_pair) {
++                tcg_debug_assert(!use_movbe);
++                /*
++                 * Atomicity requires that we use use VMOVDQA.
++                 * If we've already checked for 16-byte alignment, that's all
++                 * we need.  If we arrive here with lesser alignment, then we
++                 * have determined that less that 16-byte alignment can be
++                 * satisfied with two 8-byte loads.
++                 */
++                if (h.align < MO_128) {
++                    use_pair = true;
++                    l1 = gen_new_label();
++                    l2 = gen_new_label();
++
++                    tcg_out_testi(s, h.base, 15);
++                    tcg_out_jxx(s, JCC_JNE, l2, true);
++                }
++
++                tcg_out_pair_to_vec(s, TCG_TYPE_I64, TCG_TMP_VEC,
++                                    datalo, datahi);
++                tcg_out_vex_modrm_sib_offset(s, OPC_MOVDQA_WxVx + h.seg,
++                                             TCG_TMP_VEC, 0,
++                                             h.base, h.index, 0, h.ofs);
++
++                if (use_pair) {
++                    tcg_out_jxx(s, JCC_JMP, l1, true);
++                    tcg_out_label(s, l2);
++                }
++            }
++            if (use_pair) {
++                if (use_movbe) {
++                    TCGReg t = datalo;
++                    datalo = datahi;
++                    datahi = t;
++                }
++                tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datalo,
++                                         h.base, h.index, 0, h.ofs);
++                tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datahi,
++                                         h.base, h.index, 0, h.ofs + 8);
++            }
++            if (l1) {
++                tcg_out_label(s, l1);
++            }
 +        }
-+    } else if (use_two_i64_for_i128(memop)) {
-         MemOp mop[2];
-         TCGv addr_p8;
-         TCGv_i64 x, y;
-@@ -3269,7 +3296,7 @@ void tcg_gen_qemu_ld_i128(TCGv_i128 val, TCGv addr, TCGArg idx, MemOp memop)
- 
- void tcg_gen_qemu_st_i128(TCGv_i128 val, TCGv addr, TCGArg idx, MemOp memop)
- {
--    MemOpIdx oi = make_memop_idx(memop, idx);
-+    const MemOpIdx oi = make_memop_idx(memop, idx);
- 
-     tcg_debug_assert((memop & MO_SIZE) == MO_128);
-     tcg_debug_assert((memop & MO_SIGN) == 0);
-@@ -3277,9 +3304,39 @@ void tcg_gen_qemu_st_i128(TCGv_i128 val, TCGv addr, TCGArg idx, MemOp memop)
-     tcg_gen_req_mo(TCG_MO_ST_LD | TCG_MO_ST_ST);
-     addr = plugin_prep_mem_callbacks(addr);
- 
--    /* TODO: allow the tcg backend to see the whole operation. */
-+    /* TODO: For now, force 32-bit hosts to use the helper. */
- 
--    if (use_two_i64_for_i128(memop)) {
-+    if (TCG_TARGET_HAS_qemu_ldst_i128 && TCG_TARGET_REG_BITS == 64) {
-+        TCGv_i64 lo, hi;
-+        TCGArg addr_arg;
-+        MemOpIdx adj_oi;
-+        bool need_bswap = false;
++        break;
 +
-+        if ((memop & MO_BSWAP) && !tcg_target_has_memory_bswap(memop)) {
-+            lo = tcg_temp_new_i64();
-+            hi = tcg_temp_new_i64();
-+            tcg_gen_bswap64_i64(lo, TCGV128_HIGH(val));
-+            tcg_gen_bswap64_i64(hi, TCGV128_LOW(val));
-+            adj_oi = make_memop_idx(memop & ~MO_BSWAP, idx);
-+            need_bswap = true;
-+        } else {
-+            lo = TCGV128_LOW(val);
-+            hi = TCGV128_HIGH(val);
-+            adj_oi = oi;
-+        }
-+
-+#if TARGET_LONG_BITS == 32
-+        addr_arg = tcgv_i32_arg(addr);
-+#else
-+        addr_arg = tcgv_i64_arg(addr);
-+#endif
-+        tcg_gen_op4ii_i64(INDEX_op_qemu_st_i128, lo, hi, addr_arg, adj_oi);
-+
-+        if (need_bswap) {
-+            tcg_temp_free_i64(lo);
-+            tcg_temp_free_i64(hi);
-+        }
-+    } else if (use_two_i64_for_i128(memop)) {
-         MemOp mop[2];
-         TCGv addr_p8;
-         TCGv_i64 x, y;
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index cb5ca9b612..b0e30a55ca 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -1718,6 +1718,10 @@ bool tcg_op_supported(TCGOpcode op)
+     default:
+         g_assert_not_reached();
+     }
+@@ -2528,6 +2688,10 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+             tcg_out_qemu_ld(s, a0, a1, a2, args[3], args[4], TCG_TYPE_I64);
+         }
+         break;
++    case INDEX_op_qemu_ld_i128:
++        tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++        tcg_out_qemu_ld(s, a0, a1, a2, -1, args[3], TCG_TYPE_I128);
++        break;
+     case INDEX_op_qemu_st_i32:
      case INDEX_op_qemu_st8_i32:
-         return TCG_TARGET_HAS_qemu_st8_i32;
+         if (TCG_TARGET_REG_BITS >= TARGET_LONG_BITS) {
+@@ -2545,6 +2709,10 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+             tcg_out_qemu_st(s, a0, a1, a2, args[3], args[4], TCG_TYPE_I64);
+         }
+         break;
++    case INDEX_op_qemu_st_i128:
++        tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++        tcg_out_qemu_st(s, a0, a1, a2, -1, args[3], TCG_TYPE_I128);
++        break;
+ 
+     OP_32_64(mulu2):
+         tcg_out_modrm(s, OPC_GRP3_Ev + rexw, EXT3_MUL, args[3]);
+@@ -3239,6 +3407,13 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+                 : TARGET_LONG_BITS <= TCG_TARGET_REG_BITS ? C_O0_I3(L, L, L)
+                 : C_O0_I4(L, L, L, L));
  
 +    case INDEX_op_qemu_ld_i128:
++        tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++        return C_O2_I1(r, r, L);
 +    case INDEX_op_qemu_st_i128:
-+        return TCG_TARGET_HAS_qemu_ldst_i128;
++        tcg_debug_assert(TCG_TARGET_REG_BITS == 64);
++        return C_O0_I3(L, L, L);
 +
-     case INDEX_op_mov_i32:
-     case INDEX_op_setcond_i32:
-     case INDEX_op_brcond_i32:
-diff --git a/docs/devel/tcg-ops.rst b/docs/devel/tcg-ops.rst
-index f3f451b77f..6a166c5665 100644
---- a/docs/devel/tcg-ops.rst
-+++ b/docs/devel/tcg-ops.rst
-@@ -672,19 +672,20 @@ QEMU specific operations
-        | This operation is optional. If the TCG backend does not implement the
-          goto_ptr opcode, emitting this op is equivalent to emitting exit_tb(0).
+     case INDEX_op_brcond2_i32:
+         return C_O0_I4(r, r, ri, ri);
  
--   * - qemu_ld_i32/i64 *t0*, *t1*, *flags*, *memidx*
-+   * - qemu_ld_i32/i64/i128 *t0*, *t1*, *flags*, *memidx*
+@@ -4095,6 +4270,7 @@ static void tcg_target_init(TCGContext *s)
  
--       qemu_st_i32/i64 *t0*, *t1*, *flags*, *memidx*
-+       qemu_st_i32/i64/i128 *t0*, *t1*, *flags*, *memidx*
- 
-        qemu_st8_i32 *t0*, *t1*, *flags*, *memidx*
- 
-      - | Load data at the guest address *t1* into *t0*, or store data in *t0* at guest
--         address *t1*.  The _i32/_i64 size applies to the size of the input/output
-+         address *t1*.  The _i32/_i64/_i128 size applies to the size of the input/output
-          register *t0* only.  The address *t1* is always sized according to the guest,
-          and the width of the memory operation is controlled by *flags*.
-        |
-        | Both *t0* and *t1* may be split into little-endian ordered pairs of registers
--         if dealing with 64-bit quantities on a 32-bit host.
-+         if dealing with 64-bit quantities on a 32-bit host, or 128-bit quantities on
-+         a 64-bit host.
-        |
-        | The *memidx* selects the qemu tlb index to use (e.g. user or kernel access).
-          The flags are the MemOp bits, selecting the sign, width, and endianness
-@@ -693,6 +694,8 @@ QEMU specific operations
-        | For a 32-bit host, qemu_ld/st_i64 is guaranteed to only be used with a
-          64-bit memory access specified in *flags*.
-        |
-+       | For qemu_ld/st_i128, these are only supported for a 64-bit host.
-+       |
-        | For i386, qemu_st8_i32 is exactly like qemu_st_i32, except the size of
-          the memory operation is known to be 8-bit.  This allows the backend to
-          provide a different set of register constraints.
+     s->reserved_regs = 0;
+     tcg_regset_set_reg(s->reserved_regs, TCG_REG_CALL_STACK);
++    tcg_regset_set_reg(s->reserved_regs, TCG_TMP_VEC);
+ #ifdef _WIN64
+     /* These are call saved, and we don't save them, so don't use them. */
+     tcg_regset_set_reg(s->reserved_regs, TCG_REG_XMM6);
 -- 
 2.34.1
 

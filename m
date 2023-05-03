@@ -1,110 +1,109 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2653264ejm;
-        Wed, 3 May 2023 00:10:21 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5WKV4Kpo7yGubr6Ax4NEZ/qmIb/RVs+XG5YYaygVvHBTc/JL9zVK3oaprbcxJ3S9/6/KrY
-X-Received: by 2002:a05:622a:1902:b0:3ef:344b:2099 with SMTP id w2-20020a05622a190200b003ef344b2099mr33641329qtc.4.1683097821252;
-        Wed, 03 May 2023 00:10:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683097821; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2653511ejm;
+        Wed, 3 May 2023 00:10:47 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7cgLS8GSDhYWaWxTjWVfZpIE3w/Cf7/mOq5bsYjYk3BJ2i7Oll94ifdYEOwQQ3ydfsvu1H
+X-Received: by 2002:ad4:5aa5:0:b0:5ef:8161:cb9a with SMTP id u5-20020ad45aa5000000b005ef8161cb9amr1756272qvg.7.1683097846915;
+        Wed, 03 May 2023 00:10:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683097846; cv=none;
         d=google.com; s=arc-20160816;
-        b=idMx0VSqdj5tywBoL/DnHknH//bjDqFIHS+vatV/IE+VA1pvhd3g6KsCmlYSjc+L7g
-         UprFPtFqmnNxHSZCxZpu/NSihK/31vhKee+OqrypzqJ6+CS43NGsmHL1tQzpH/fg/ug6
-         rhPLDwtS/n9NDpqBa1/vdnIDSR5ZgtuMtW6J0N7fdUWBx9hFiA3SfTHP+xav/bV2vYZe
-         G5LIOYnV0u14hgUzsm42fb0a12tGydsZ38rvXBetnCt5zu3XtdMQmvrfBmJvgPAxS0tL
-         hx3fs79sYksJl1pK6IWnjhAFR166uBnZxMaXdNj0ya+klUMjOG7qqvBh+SSeSwyTfw2A
-         napw==
+        b=LOvOsR3KBFdA6ySw7xxlA8964aPFh3NfH7eRClCRALqvfOQtJ9i+SUqmta0YGc3nhd
+         AouAwcQs1ktSgNvPKXyZEfByEnXB1IzM0ak5OxzOrV6p7LHePHNjw2hw6ysJOUEL6g26
+         ObtUgLgmyfYZhyY/cwACEiqiwKKxZBzEWdWX7AIKAbpQOeV9MFUOaB+zDCXXMNdjmUIL
+         rkLh7mv4LmIhX8exK1NLtcDlBetbVXq1aA6bt1xlNu6VzrFvdv8AAnws1sHSn8XyTowf
+         fV8RW9FxcceKTHA+mOXuRtSA+2UovF1Q+FpnYuzAzEgmWAVsLXlOqQ0/ipnDNs44PZyr
+         YDpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JJxFOupgqcim/2LBci4akZwRhrdPcb3HeKNOODAh8Zc=;
-        b=gzkX9r5YE6SAsvBXsi4jsO7JSUyzwMRRnPmu+twTvKu03v+nWIv5e5HNPNqxL7sefg
-         88H1ccqgVClNKWawpby5OcAcGfiOO4YMEVsYxZ/0neTHO90VCmfvuGAl18mCzpDTMUIg
-         Ngxi4waq24RfBzh38xTbyZ20A/7f0R64yh/c3YeFczVq6vUyTOF/MVnTnAgcbSHIi5yH
-         a/WAmzPxnJ7td59YNXeN2WeBIwIZNS4YlSA8PS6tTDZe87Wgw++gJhzGy5honpRpFJxV
-         XTLewp7J8fJQ1KJsZkfD+iXAdhNgRHSIMNys1+Na1wQ8liAdTzaVxWtaADN66cqjQ34L
-         y3Ow==
+        bh=AlbQNgtkgysZMHjfft1C2G8eExbC6pUxkdPDPUlgiFs=;
+        b=FE8xfrL5KY1K8w4VoK1smgEaJeTNMc4m6IwsCe8EpJ7web2OABn+8nKZTQKfjHzcuP
+         UIW0gm1Lx+OktHK/CPOG0Pu/ZGUl0knPu49wgIc9ocpreCLP71ZQIBL273rMxiu8Kx25
+         wfssnuJ/8X/CWz5lrq4pvTk7xVdw0GFNiN2SQQ/YENKf62NamA0toX3IiEIuUUzD/fO4
+         EzV5tKUXCAetwzLhR+Eey81VXGyfAlIfUF4u8QefutWRoW229tRHVCZT1wNNPmrNx6uU
+         xg+KXMXVSfOJDhWPd5TG1eiyljLKrGelQTJICxMFgPrUCpIlWd1EYNRc5h7hgF7feJ3T
+         BckQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uZ+5NMI9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F0mH2cTO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17-20020ac85791000000b003ef6748ffd8si14979984qta.544.2023.05.03.00.10.21
+        by mx.google.com with ESMTPS id 7-20020a0562140d0700b0061b72550ffbsi504332qvh.29.2023.05.03.00.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 May 2023 00:10:21 -0700 (PDT)
+        Wed, 03 May 2023 00:10:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uZ+5NMI9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F0mH2cTO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pu6RQ-0008FE-NX; Wed, 03 May 2023 02:58:20 -0400
+	id 1pu6ai-00086D-Ia; Wed, 03 May 2023 03:07:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6RO-0008Cg-Km
- for qemu-devel@nongnu.org; Wed, 03 May 2023 02:58:18 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1pu6aL-000605-9w
+ for qemu-devel@nongnu.org; Wed, 03 May 2023 03:07:33 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6Qv-0001oS-Si
- for qemu-devel@nongnu.org; Wed, 03 May 2023 02:58:18 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-2f95231618aso2885452f8f.1
- for <qemu-devel@nongnu.org>; Tue, 02 May 2023 23:57:49 -0700 (PDT)
+ id 1pu6Zx-0005Zv-IZ
+ for qemu-devel@nongnu.org; Wed, 03 May 2023 03:07:32 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3f19a80a330so29502345e9.2
+ for <qemu-devel@nongnu.org>; Wed, 03 May 2023 00:07:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683097068; x=1685689068;
+ d=linaro.org; s=google; t=1683097628; x=1685689628;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JJxFOupgqcim/2LBci4akZwRhrdPcb3HeKNOODAh8Zc=;
- b=uZ+5NMI9M7q09ROGk49gTC9fdzFwIVOEU7bPfd+V2G8XMkqfXIDKdfMylt27OWIHOf
- Y0NXVChBnfKspZ3ZW4Hre66h3KTQOkpIlX0T2Tjb50508Ag+7+aff7amzVGQ9eyy/1+5
- 801LTplGqwQ7v+vfU2ZUZP1HAmfffFs1IJpApIoPEHpAaQed159O8H+v2LF07qp/neL9
- Mo+qBjuOHw0zBwjKBUg+/PH8fJp8Ynx+M/5QI05r5jYDaeQ5xwmejqeO/12RqHxOVmRf
- 7lqAPpsJ2L+KlnjGUCj9Zb9Cj66tU8G3S3zwpXZOrHnRnXA0eYYssKMhhDPCGeT828Uz
- W/Hg==
+ bh=AlbQNgtkgysZMHjfft1C2G8eExbC6pUxkdPDPUlgiFs=;
+ b=F0mH2cTOcVgXUOHG7GibycCjAs9KyTyDhxLWIyIwZ5qmthZzduKtnEccuQj3wzhWsZ
+ 9kq8Tx8HPEeXFQVLDA20AKpGnq/hynE2bKc7KCYR1mnS/Z/sJ6aG/Rz00ydxjSvjvnjz
+ lWvBBH40OUpC8YxypWN4TPS1RCOmu301jX0sOIlmV3OEW1SjgK9IH7oC0NfWFfYpssrH
+ hzXzBKm3+mPluEN7F9JR6vCLi2pxwanrKPcMghrtpk0tzowhB+OaTKc5iNnc6z5ZiGtD
+ ifTC0xeaKbKQdr4NlB3oBP79JFGfeLg+Hsjx6g7SpVsTQg6NC6v4qIhQa/SPf0h8AL8Z
+ gj7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683097068; x=1685689068;
+ d=1e100.net; s=20221208; t=1683097628; x=1685689628;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JJxFOupgqcim/2LBci4akZwRhrdPcb3HeKNOODAh8Zc=;
- b=agVChjOKUeKrZfTrrnOdo2tmF9Z+O3BzjTTjM5VPFhtUqRzWZmjKjQYb+v4OLPsStY
- Nhf1fC9UUbjNH8XBtBa5dufv47Vp2X6gGgyzc10R+VfYWUGEvQi9FdPkWoMXbA1xo9T9
- PU3E1cEUrRyAP86Czz2xJyyIblkarYiHujEwe1a1LAsxcBfVbedXfqFigtcvzfj7ark2
- x2KVLXgYUDv8gKAZqphisgEEvwT+3tkiZZ0r0NDD1uFztW0iUr57PpidysRgIvmhG6kO
- 7rOdpu+f57VPI2z7fZp5J7wFcgOK9NcINLruuRb+dTA7x4TkZn80T5om5Hktn+XH/+T5
- mmqQ==
-X-Gm-Message-State: AC+VfDyWMykCHYQs8AXkFGvhepjGu9jIMOVdxyBXAwnMASM73Qqvzhy6
- aGHhjLVFYWqguTSpPOtPKVVTO+ClJ3Z6KL5vpMNUBA==
-X-Received: by 2002:adf:dc8e:0:b0:306:2b31:5935 with SMTP id
- r14-20020adfdc8e000000b003062b315935mr7237871wrj.55.1683097068297; 
- Tue, 02 May 2023 23:57:48 -0700 (PDT)
+ bh=AlbQNgtkgysZMHjfft1C2G8eExbC6pUxkdPDPUlgiFs=;
+ b=e7iLZBlVrzKT+DcHGMIR7m37ah3qRE7LUGIEKWCKP8R8tY+fuQum47iV/T6tzuItI2
+ clXpokvr1+lGdM5Q6+ThLlsMMfqaItb/yCw3hnwEqJYxqyqaRdGaEEtIulRog3wvWp8R
+ 2Z1RIOq1ygBE/O4w7ebb2nQDqQfsLY2Pu19L6plUPgpic8YdDyTlIK1h9sKr9soS3sNH
+ 0xYut5++WvkMTKQpcGV82HmTjfKYou1G34jU8CHIemwKfbpTFrrXctVt6d2XPMRotYFE
+ tqhD1MZPnDk1GkiWQooOcFYDLuBiUkrIsiAgA+fDaByJZ0Ln43dcGQDFN5+FLLU+emJN
+ Fa9Q==
+X-Gm-Message-State: AC+VfDwoYTakygA/Z80dApOeXHXiz/l+6SlibpzpyqMy2cwD6yr/CVxW
+ Zvg8PctrTVRSqGTfD7O/wKQRglz9pL3kY1hFfN+0Hg==
+X-Received: by 2002:a7b:cc05:0:b0:3f0:683d:224d with SMTP id
+ f5-20020a7bcc05000000b003f0683d224dmr13525315wmh.9.1683097628520; 
+ Wed, 03 May 2023 00:07:08 -0700 (PDT)
 Received: from stoup.Home ([2a02:c7c:74db:8d00:c01d:9d74:b630:9087])
  by smtp.gmail.com with ESMTPSA id
- f6-20020a5d6646000000b002f6dafef040sm32796617wrw.12.2023.05.02.23.57.47
+ q3-20020a1cf303000000b003f3157988f8sm921184wmq.26.2023.05.03.00.07.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 May 2023 23:57:48 -0700 (PDT)
+ Wed, 03 May 2023 00:07:08 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: git@xen0n.name, philmd@linaro.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Subject: [PATCH v4 23/54] tcg/riscv: Rationalize args to tcg_out_qemu_{ld,st}
-Date: Wed,  3 May 2023 07:56:58 +0100
-Message-Id: <20230503065729.1745843-24-richard.henderson@linaro.org>
+Cc: git@xen0n.name, gaosong@loongson.cn, philmd@linaro.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH v4 14/57] tcg/i386: Add have_atomic16
+Date: Wed,  3 May 2023 08:06:13 +0100
+Message-Id: <20230503070656.1746170-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230503065729.1745843-1-richard.henderson@linaro.org>
-References: <20230503065729.1745843-1-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-1-richard.henderson@linaro.org>
+References: <20230503070656.1746170-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,150 +125,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /jA/xv89+7Tm
+X-TUID: DpQpeE0I2+z3
 
-Interpret the variable argument placement in the caller.  Pass data_type
-instead of is64 -- there are several places where we already convert back
-from bool to type.  Clean things up by using type throughout.
+Notice when Intel or AMD have guaranteed that vmovdqa is atomic.
+The new variable will also be used in generated code.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/riscv/tcg-target.c.inc | 66 ++++++++++++++------------------------
- 1 file changed, 24 insertions(+), 42 deletions(-)
+ include/qemu/cpuid.h      | 18 ++++++++++++++++++
+ tcg/i386/tcg-target.h     |  1 +
+ tcg/i386/tcg-target.c.inc | 27 +++++++++++++++++++++++++++
+ 3 files changed, 46 insertions(+)
 
-diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
-index 7a674ff5ce..a4cf60ca75 100644
---- a/tcg/riscv/tcg-target.c.inc
-+++ b/tcg/riscv/tcg-target.c.inc
-@@ -1087,7 +1087,7 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
- #endif /* CONFIG_SOFTMMU */
- 
- static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg val,
--                                   TCGReg base, MemOp opc, bool is_64)
-+                                   TCGReg base, MemOp opc, TCGType type)
- {
-     /* Byte swapping is left to middle-end expansion. */
-     tcg_debug_assert((opc & MO_BSWAP) == 0);
-@@ -1106,7 +1106,7 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg val,
-         tcg_out_opc_imm(s, OPC_LH, val, base, 0);
-         break;
-     case MO_UL:
--        if (is_64) {
-+        if (type == TCG_TYPE_I64) {
-             tcg_out_opc_imm(s, OPC_LWU, val, base, 0);
-             break;
-         }
-@@ -1122,30 +1122,21 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg val,
-     }
- }
- 
--static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, bool is_64)
-+static void tcg_out_qemu_ld(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
-+                            MemOpIdx oi, TCGType data_type)
- {
--    TCGReg addr_reg, data_reg;
--    MemOpIdx oi;
--    MemOp opc;
--#if defined(CONFIG_SOFTMMU)
--    tcg_insn_unit *label_ptr[1];
--#else
--    unsigned a_bits;
--#endif
-+    MemOp opc = get_memop(oi);
-     TCGReg base;
- 
--    data_reg = *args++;
--    addr_reg = *args++;
--    oi = *args++;
--    opc = get_memop(oi);
--
- #if defined(CONFIG_SOFTMMU)
-+    tcg_insn_unit *label_ptr[1];
-+
-     base = tcg_out_tlb_load(s, addr_reg, oi, label_ptr, 1);
--    tcg_out_qemu_ld_direct(s, data_reg, base, opc, is_64);
--    add_qemu_ldst_label(s, 1, oi, (is_64 ? TCG_TYPE_I64 : TCG_TYPE_I32),
--                        data_reg, addr_reg, s->code_ptr, label_ptr);
-+    tcg_out_qemu_ld_direct(s, data_reg, base, opc, data_type);
-+    add_qemu_ldst_label(s, true, oi, data_type, data_reg, addr_reg,
-+                        s->code_ptr, label_ptr);
- #else
--    a_bits = get_alignment_bits(opc);
-+    unsigned a_bits = get_alignment_bits(opc);
-     if (a_bits) {
-         tcg_out_test_alignment(s, true, addr_reg, a_bits);
-     }
-@@ -1158,7 +1149,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGArg *args, bool is_64)
-         tcg_out_opc_reg(s, OPC_ADD, TCG_REG_TMP0, TCG_GUEST_BASE_REG, base);
-         base = TCG_REG_TMP0;
-     }
--    tcg_out_qemu_ld_direct(s, data_reg, base, opc, is_64);
-+    tcg_out_qemu_ld_direct(s, data_reg, base, opc, data_type);
+diff --git a/include/qemu/cpuid.h b/include/qemu/cpuid.h
+index 1451e8ef2f..35325f1995 100644
+--- a/include/qemu/cpuid.h
++++ b/include/qemu/cpuid.h
+@@ -71,6 +71,24 @@
+ #define bit_LZCNT       (1 << 5)
  #endif
- }
  
-@@ -1186,30 +1177,21 @@ static void tcg_out_qemu_st_direct(TCGContext *s, TCGReg val,
-     }
- }
- 
--static void tcg_out_qemu_st(TCGContext *s, const TCGArg *args, bool is_64)
-+static void tcg_out_qemu_st(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
-+                            MemOpIdx oi, TCGType data_type)
- {
--    TCGReg addr_reg, data_reg;
--    MemOpIdx oi;
--    MemOp opc;
--#if defined(CONFIG_SOFTMMU)
--    tcg_insn_unit *label_ptr[1];
--#else
--    unsigned a_bits;
--#endif
-+    MemOp opc = get_memop(oi);
-     TCGReg base;
- 
--    data_reg = *args++;
--    addr_reg = *args++;
--    oi = *args++;
--    opc = get_memop(oi);
--
- #if defined(CONFIG_SOFTMMU)
-+    tcg_insn_unit *label_ptr[1];
++/*
++ * Signatures for different CPU implementations as returned from Leaf 0.
++ */
 +
-     base = tcg_out_tlb_load(s, addr_reg, oi, label_ptr, 0);
-     tcg_out_qemu_st_direct(s, data_reg, base, opc);
--    add_qemu_ldst_label(s, 0, oi, (is_64 ? TCG_TYPE_I64 : TCG_TYPE_I32),
--                        data_reg, addr_reg, s->code_ptr, label_ptr);
-+    add_qemu_ldst_label(s, false, oi, data_type, data_reg, addr_reg,
-+                        s->code_ptr, label_ptr);
- #else
--    a_bits = get_alignment_bits(opc);
-+    unsigned a_bits = get_alignment_bits(opc);
-     if (a_bits) {
-         tcg_out_test_alignment(s, false, addr_reg, a_bits);
++#ifndef signature_INTEL_ecx
++/* "Genu" "ineI" "ntel" */
++#define signature_INTEL_ebx     0x756e6547
++#define signature_INTEL_edx     0x49656e69
++#define signature_INTEL_ecx     0x6c65746e
++#endif
++
++#ifndef signature_AMD_ecx
++/* "Auth" "enti" "cAMD" */
++#define signature_AMD_ebx       0x68747541
++#define signature_AMD_edx       0x69746e65
++#define signature_AMD_ecx       0x444d4163
++#endif
++
+ static inline unsigned xgetbv_low(unsigned c)
+ {
+     unsigned a, d;
+diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+index d4f2a6f8c2..0421776cb8 100644
+--- a/tcg/i386/tcg-target.h
++++ b/tcg/i386/tcg-target.h
+@@ -120,6 +120,7 @@ extern bool have_avx512dq;
+ extern bool have_avx512vbmi2;
+ extern bool have_avx512vl;
+ extern bool have_movbe;
++extern bool have_atomic16;
+ 
+ /* optional instructions */
+ #define TCG_TARGET_HAS_div2_i32         1
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index bb603e7968..f838683fc3 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -185,6 +185,7 @@ bool have_avx512dq;
+ bool have_avx512vbmi2;
+ bool have_avx512vl;
+ bool have_movbe;
++bool have_atomic16;
+ 
+ #ifdef CONFIG_CPUID_H
+ static bool have_bmi2;
+@@ -4024,6 +4025,32 @@ static void tcg_target_init(TCGContext *s)
+                     have_avx512dq = (b7 & bit_AVX512DQ) != 0;
+                     have_avx512vbmi2 = (c7 & bit_AVX512VBMI2) != 0;
+                 }
++
++                /*
++                 * The Intel SDM has added:
++                 *   Processors that enumerate support for Intel® AVX
++                 *   (by setting the feature flag CPUID.01H:ECX.AVX[bit 28])
++                 *   guarantee that the 16-byte memory operations performed
++                 *   by the following instructions will always be carried
++                 *   out atomically:
++                 *   - MOVAPD, MOVAPS, and MOVDQA.
++                 *   - VMOVAPD, VMOVAPS, and VMOVDQA when encoded with VEX.128.
++                 *   - VMOVAPD, VMOVAPS, VMOVDQA32, and VMOVDQA64 when encoded
++                 *     with EVEX.128 and k0 (masking disabled).
++                 * Note that these instructions require the linear addresses
++                 * of their memory operands to be 16-byte aligned.
++                 *
++                 * AMD has provided an even stronger guarantee that processors
++                 * with AVX provide 16-byte atomicity for all cachable,
++                 * naturally aligned single loads and stores, e.g. MOVDQU.
++                 *
++                 * See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=104688
++                 */
++                if (have_avx1) {
++                    __cpuid(0, a, b, c, d);
++                    have_atomic16 = (c == signature_INTEL_ecx ||
++                                     c == signature_AMD_ecx);
++                }
+             }
+         }
      }
-@@ -1508,16 +1490,16 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         break;
- 
-     case INDEX_op_qemu_ld_i32:
--        tcg_out_qemu_ld(s, args, false);
-+        tcg_out_qemu_ld(s, a0, a1, a2, TCG_TYPE_I32);
-         break;
-     case INDEX_op_qemu_ld_i64:
--        tcg_out_qemu_ld(s, args, true);
-+        tcg_out_qemu_ld(s, a0, a1, a2, TCG_TYPE_I64);
-         break;
-     case INDEX_op_qemu_st_i32:
--        tcg_out_qemu_st(s, args, false);
-+        tcg_out_qemu_st(s, a0, a1, a2, TCG_TYPE_I32);
-         break;
-     case INDEX_op_qemu_st_i64:
--        tcg_out_qemu_st(s, args, true);
-+        tcg_out_qemu_st(s, a0, a1, a2, TCG_TYPE_I64);
-         break;
- 
-     case INDEX_op_extrh_i64_i32:
 -- 
 2.34.1
 

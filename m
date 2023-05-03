@@ -1,110 +1,109 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2648964ejm;
-        Wed, 3 May 2023 00:01:15 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6GVeSFKAft8ZK578ohslxrzOCDAE8pbw2vAXzRcbuVClx3TXrNamhzi49nF4pmLKr2jOZi
-X-Received: by 2002:a05:622a:1103:b0:3f1:ff93:60fc with SMTP id e3-20020a05622a110300b003f1ff9360fcmr31513673qty.41.1683097275475;
-        Wed, 03 May 2023 00:01:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683097275; cv=none;
+Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2649339ejm;
+        Wed, 3 May 2023 00:01:55 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7RKM75gpu9OiEep1XOj4DhbpMMgkDAWJD6AFjsVQj6LSWW7PbBI+pGSxy+3t0WHnbRf0vg
+X-Received: by 2002:ac8:5acc:0:b0:3bd:1081:b939 with SMTP id d12-20020ac85acc000000b003bd1081b939mr1852659qtd.0.1683097315032;
+        Wed, 03 May 2023 00:01:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683097315; cv=none;
         d=google.com; s=arc-20160816;
-        b=RUqEDDTok3zCaELztSICse/OKg2K19emdpqchVTss/2bLYqRGErt+XVAGxy8Lck5hQ
-         vT0qctfd7528sQauQ9c5au0GgST2VWegrOmG6rcLY/HbTAtvqz3uyg/9PRKeXngElzks
-         Oi8PRJAQ4CcbMBRC50tphMvpa8J1iGZrNwX8160vgt83tyA3oMuRZWZOo/aHBjsZIfEe
-         OCQwMN8u+erArVNbaBBvzr1MeTYrAydjRhgwnTXzyrWXCwY9ZKv3gmU8NYT54RmpwNKH
-         ajOjYf3mKzjiYFWouqE2hPeME+JyQ2ZCA4Al4t3EL0JcTaGHhvSsa9EJz7jybbmJNVD+
-         +ZIw==
+        b=WVW6Hz2V4uYXOZRUZcvCAT1i0m67Mzbj1WAlT6cjhaOfjcBErle722t0Fias57U3WM
+         4lJYyxEoGCIVqxNhRdYgx2+4EdzrqivcCgKts8nsQTzltETLmvNklZFmwP5Ht0/BJbvl
+         GWyRu80zIJVa1HMOkHofzjzdkMIlqGjGVOkE7q94BSZBqj5g05W7YZsOtJddouFnUJdB
+         ZGWy2E7tF8+4R9IPUnnUJPBVMAWR/A97Ck06lcpa/BXKUuewsiIhXN5RDo1tqP4GGePQ
+         LWuqzu9+OcwTny0zVkXZ0c8VuA/fh1nSbzkWRj5GtsYdvClETam2c8AnKwEX5YLTNEUw
+         1wRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8x8nNgwxVzWwlXkH7TC04g8D23cjiNxwy3VmZPjq5To=;
-        b=T48WnnX9iAAUEhobRxp9k/b2OFgZREh6A3Svmu7nUxQB20BdCUqAoXGnHMyTItlpCu
-         pHiHRi1K4QrDem9yI7OoF7HMGXUnu6IaZwg55pPCIJLAG+wxoQRoXyxZOrd64VMQwtqi
-         wbKH3Meh6GKZ7F9pnr+D/OesFXK47s0WcNMurKqzF3L1xsvqhDC2SJeZvQCc+nQSyijc
-         pOhClSNcBfnoPD3eGu8749DW2xxp25pMxXnJL+t3ogrcIO9KiCq61XJYLpEDbzzjja/K
-         gO82GGI2v1CasSq/3B2kxNjcZqV+FmuaX+6P4dznfnbZeHxbEhW7DuPT9POANE1Ew6AD
-         eluw==
+        bh=/6oOL9Qxq+7huZ1LmoWKmGGF4tAmAVlunpyi8FXbSEY=;
+        b=oDj1I81tm4Fo0p4OT5ku7AbLtITyYxaJmFrLuRb8oIzF0KbiQhAUUNQyjEp1RbLTyn
+         CFrIRh+hSj1x2JbQlD62sr8R5Uf0pvTiHPNFj9rUC2+hTDAAQVzGltForul+vUZi3Qfb
+         8y1zca3yHaOkrp2EwsNBrOKrLY8xAfDohXvrHhvsolSvOhuNSSki6bJINVLCszLzEM6p
+         ddMfoMqR7B0zc8r6ZrqFSECswiSOM09alDUHnFN8s+/Eb6yl2TfRbVlVtabrQ+xxBD5I
+         gpUrnG+xBLqzDj80gsNeDc43aTF+37b4gIM5yV/KopPOtzfkwGMbCvorZ7U+I1hg9nOg
+         etVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S73YGEU+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jNnX9fac;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q21-20020a05622a031500b003e951855538si18272626qtw.440.2023.05.03.00.01.15
+        by mx.google.com with ESMTPS id n6-20020a05620a222600b00746a86ebd9bsi17813304qkh.614.2023.05.03.00.01.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 May 2023 00:01:15 -0700 (PDT)
+        Wed, 03 May 2023 00:01:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S73YGEU+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jNnX9fac;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pu6Qx-0007dI-70; Wed, 03 May 2023 02:57:51 -0400
+	id 1pu6Qo-0007Tr-Ue; Wed, 03 May 2023 02:57:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6Qu-0007a3-GO
- for qemu-devel@nongnu.org; Wed, 03 May 2023 02:57:48 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1pu6Qm-0007RQ-BT
+ for qemu-devel@nongnu.org; Wed, 03 May 2023 02:57:40 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pu6Qj-0001hc-Ox
- for qemu-devel@nongnu.org; Wed, 03 May 2023 02:57:48 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3f1763ee8f8so30850395e9.1
- for <qemu-devel@nongnu.org>; Tue, 02 May 2023 23:57:37 -0700 (PDT)
+ id 1pu6Qg-0001fR-3y
+ for qemu-devel@nongnu.org; Wed, 03 May 2023 02:57:39 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-2f6401ce8f8so2931569f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 02 May 2023 23:57:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683097056; x=1685689056;
+ d=linaro.org; s=google; t=1683097052; x=1685689052;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8x8nNgwxVzWwlXkH7TC04g8D23cjiNxwy3VmZPjq5To=;
- b=S73YGEU+WarZ/LaXA6i2mzKzqYQYse6a/ltYwryz9ffdXBEIVrdXrHGku59jYK9kPI
- BYCNdHujnJtHR94sVMz5SnS27sm5hKzWs+TyJvibZzwJqHDpu+HVVM2D9ZQxlFQWkCKa
- /J0hwu3Xq9kDvRQsndYHutwBjykQ630fVPXu+KV6+t1jLnLQ2avOM+Jp9CDsevezd01Q
- nV9eujOrauLRjHSLdXgIaugKsYj3ymajb+HJzM0gWjcJBR6Hu+dXZLMtZoDRr3J3pIqG
- 5iXcwFn2DdjOLDdgtq363TLVE2uPQIKalFqrmI0PWqxeLspVMQlxQsAjK5wP3RC9kGPQ
- yWeQ==
+ bh=/6oOL9Qxq+7huZ1LmoWKmGGF4tAmAVlunpyi8FXbSEY=;
+ b=jNnX9facr8HTBfe4yU47OdtaLb3rFENF53u38m5Ej8GgSu0+YR2wU46xxyFhVocChH
+ vHb0nBBck/Wor2H+1EOFLkNUoNwT2j67qmcrCiSzhCKU118mlU+3edNtgPz93zU97lDU
+ QTdh9nlVzG/xvJBocOrw/S2gETDO6VlYaInLdONvL5n2Clrqvlm8A0w9xzNHiCRY+wIq
+ 597/lTv4WIjVbEdxVyZ9X57llu6EoTocsvLTMgGQ7kyK0vR+x8/dVjaEEsApI1B1UAso
+ fH5uFF6xVmB4zLjnJIR/1Q+BjdLw+/oRQ50feMbY0VAOOw1yqioUR914stsa6Vdv+Kjx
+ n0PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683097056; x=1685689056;
+ d=1e100.net; s=20221208; t=1683097052; x=1685689052;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8x8nNgwxVzWwlXkH7TC04g8D23cjiNxwy3VmZPjq5To=;
- b=BfIovNLLGHpcip8ZlyPDhUUFGeqU68M/7YddYclHqkiCJNB6ZwibvegJMhz5E2uCL0
- KuqagzhsGJfzTMpbWvlIwe4WWft64ZRMd0rDtcvTWSArzdf86GBZwB04l8maBXfO7vyt
- lzKWrKlkg4K41OlmuJLFMOEJ7+uFU5q1+23c64eqzeLYUniK4++7HntAikmLJ6k3Sxt0
- RTK3oZHqfYJJRHpF3MIFQ+C6TMa8PlfOr+UXJvad3kUqBrSBt+2B2G72Bq3CVrp2rlSG
- ZFdBSk2ukxi7YcNqwZR0cf5GMW+7Q8atkfdBS7uqXTw73Qweva2yLjIEuiJsvjcoYhcx
- tZ0w==
-X-Gm-Message-State: AC+VfDzlnVO1xM0s6UQVkuGaJnxi3A+xKqq23scwpq/6eqIqlTbipeju
- olMSc0whgq9kBiPEm+YcqxPIA7Rgh4/pC04vf+51Tg==
-X-Received: by 2002:a7b:cc89:0:b0:3eb:39e2:915b with SMTP id
- p9-20020a7bcc89000000b003eb39e2915bmr13922064wma.31.1683097056140; 
- Tue, 02 May 2023 23:57:36 -0700 (PDT)
+ bh=/6oOL9Qxq+7huZ1LmoWKmGGF4tAmAVlunpyi8FXbSEY=;
+ b=k2LboMEyfuzqmNIXBKTao/YLT+TOxkhQJKKKgrfRa5I7Z7ESDH+aQlbpsvaEqG7r3q
+ al0M73RjUecLsYneyamzmMUdwaANoH2g6265MlfP4UrwFMK9lLHcK4HYJeqrpSBym6ge
+ 3+dZuL1dZ0hKL5TFmAXWAFt4vgAR2DouxRNTBFU0ILq0HCqt9uU8fNzCYOnUxKVhJXum
+ z2FzEbsRGiZ/VynPMcNyLUNyM4yTd+HHX4tnUeqjxeftKj9JEfKImlKVWJAtEgirAsQB
+ 6ZxGtNckz9AHwwHdhR1BGFntCQ66GffFc2k+D5UIvLEpZTqM+7s+zxXkYAYtRbS9xcgc
+ npNw==
+X-Gm-Message-State: AC+VfDxrPyWfMMJhhmioROPFAJ6MuFl/gZKYT+hJBZKImsy5SVCSRWzm
+ tmjxkATOaRqHYT+keJwzTrPn7VrQfk7VZDzEYd+y+A==
+X-Received: by 2002:adf:fe86:0:b0:306:3b39:9a2a with SMTP id
+ l6-20020adffe86000000b003063b399a2amr2086611wrr.42.1683097052534; 
+ Tue, 02 May 2023 23:57:32 -0700 (PDT)
 Received: from stoup.Home ([2a02:c7c:74db:8d00:c01d:9d74:b630:9087])
  by smtp.gmail.com with ESMTPSA id
- f6-20020a5d6646000000b002f6dafef040sm32796617wrw.12.2023.05.02.23.57.35
+ f6-20020a5d6646000000b002f6dafef040sm32796617wrw.12.2023.05.02.23.57.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 May 2023 23:57:35 -0700 (PDT)
+ Tue, 02 May 2023 23:57:32 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: git@xen0n.name, philmd@linaro.org, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: [PATCH v4 08/54] tcg/aarch64: Rationalize args to tcg_out_qemu_{ld,
- st}
-Date: Wed,  3 May 2023 07:56:43 +0100
-Message-Id: <20230503065729.1745843-9-richard.henderson@linaro.org>
+Subject: [PATCH v4 03/54] tcg/i386: Introduce HostAddress
+Date: Wed,  3 May 2023 07:56:38 +0100
+Message-Id: <20230503065729.1745843-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230503065729.1745843-1-richard.henderson@linaro.org>
 References: <20230503065729.1745843-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,112 +125,348 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Bf95UMY/3br8
+X-TUID: EJo7dZm/qPDk
 
-Rename the 'ext' parameter 'data_type' to make the use clearer;
-pass it to tcg_out_qemu_st as well to even out the interfaces.
-Rename the 'otype' local 'addr_type' to make the use clearer.
+Collect the 4 potential parts of the host address into a struct.
+Reorg tcg_out_qemu_{ld,st}_direct to use it.
+Reorg guest_base handling to use it.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/aarch64/tcg-target.c.inc | 36 +++++++++++++++++-------------------
- 1 file changed, 17 insertions(+), 19 deletions(-)
+ tcg/i386/tcg-target.c.inc | 165 +++++++++++++++++++++-----------------
+ 1 file changed, 90 insertions(+), 75 deletions(-)
 
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index 4ec3cf3172..ecbf6564fc 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -1851,22 +1851,21 @@ static void tcg_out_qemu_st_direct(TCGContext *s, MemOp memop,
+diff --git a/tcg/i386/tcg-target.c.inc b/tcg/i386/tcg-target.c.inc
+index 173f3c3172..909eecd4a3 100644
+--- a/tcg/i386/tcg-target.c.inc
++++ b/tcg/i386/tcg-target.c.inc
+@@ -1751,6 +1751,13 @@ static void tcg_out_nopn(TCGContext *s, int n)
+     tcg_out8(s, 0x90);
  }
  
- static void tcg_out_qemu_ld(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
--                            MemOpIdx oi, TCGType ext)
-+                            MemOpIdx oi, TCGType data_type)
- {
-     MemOp memop = get_memop(oi);
--    const TCGType otype = TARGET_LONG_BITS == 64 ? TCG_TYPE_I64 : TCG_TYPE_I32;
-+    TCGType addr_type = TARGET_LONG_BITS == 64 ? TCG_TYPE_I64 : TCG_TYPE_I32;
- 
-     /* Byte swapping is left to middle-end expansion. */
-     tcg_debug_assert((memop & MO_BSWAP) == 0);
- 
- #ifdef CONFIG_SOFTMMU
--    unsigned mem_index = get_mmuidx(oi);
-     tcg_insn_unit *label_ptr;
- 
--    tcg_out_tlb_read(s, addr_reg, memop, &label_ptr, mem_index, 1);
--    tcg_out_qemu_ld_direct(s, memop, ext, data_reg,
--                           TCG_REG_X1, otype, addr_reg);
--    add_qemu_ldst_label(s, true, oi, ext, data_reg, addr_reg,
-+    tcg_out_tlb_read(s, addr_reg, memop, &label_ptr, get_mmuidx(oi), 1);
-+    tcg_out_qemu_ld_direct(s, memop, data_type, data_reg,
-+                           TCG_REG_X1, addr_type, addr_reg);
-+    add_qemu_ldst_label(s, true, oi, data_type, data_reg, addr_reg,
-                         s->code_ptr, label_ptr);
- #else /* !CONFIG_SOFTMMU */
-     unsigned a_bits = get_alignment_bits(memop);
-@@ -1874,33 +1873,32 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
-         tcg_out_test_alignment(s, true, addr_reg, a_bits);
-     }
-     if (USE_GUEST_BASE) {
--        tcg_out_qemu_ld_direct(s, memop, ext, data_reg,
--                               TCG_REG_GUEST_BASE, otype, addr_reg);
-+        tcg_out_qemu_ld_direct(s, memop, data_type, data_reg,
-+                               TCG_REG_GUEST_BASE, addr_type, addr_reg);
-     } else {
--        tcg_out_qemu_ld_direct(s, memop, ext, data_reg,
-+        tcg_out_qemu_ld_direct(s, memop, data_type, data_reg,
-                                addr_reg, TCG_TYPE_I64, TCG_REG_XZR);
-     }
- #endif /* CONFIG_SOFTMMU */
++typedef struct {
++    TCGReg base;
++    int index;
++    int ofs;
++    int seg;
++} HostAddress;
++
+ #if defined(CONFIG_SOFTMMU)
+ /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
+  *                                     int mmu_idx, uintptr_t ra)
+@@ -2113,17 +2120,13 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+     return tcg_out_fail_alignment(s, l);
  }
  
- static void tcg_out_qemu_st(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
--                            MemOpIdx oi)
-+                            MemOpIdx oi, TCGType data_type)
+-#if TCG_TARGET_REG_BITS == 32
+-# define x86_guest_base_seg     0
+-# define x86_guest_base_index   -1
+-# define x86_guest_base_offset  guest_base
+-#else
+-static int x86_guest_base_seg;
+-static int x86_guest_base_index = -1;
+-static int32_t x86_guest_base_offset;
+-# if defined(__x86_64__) && defined(__linux__)
+-#  include <asm/prctl.h>
+-#  include <sys/prctl.h>
++static HostAddress x86_guest_base = {
++    .index = -1
++};
++
++#if defined(__x86_64__) && defined(__linux__)
++# include <asm/prctl.h>
++# include <sys/prctl.h>
+ int arch_prctl(int code, unsigned long addr);
+ static inline int setup_guest_base_seg(void)
  {
-     MemOp memop = get_memop(oi);
--    const TCGType otype = TARGET_LONG_BITS == 64 ? TCG_TYPE_I64 : TCG_TYPE_I32;
-+    TCGType addr_type = TARGET_LONG_BITS == 64 ? TCG_TYPE_I64 : TCG_TYPE_I32;
- 
-     /* Byte swapping is left to middle-end expansion. */
-     tcg_debug_assert((memop & MO_BSWAP) == 0);
- 
- #ifdef CONFIG_SOFTMMU
--    unsigned mem_index = get_mmuidx(oi);
-     tcg_insn_unit *label_ptr;
- 
--    tcg_out_tlb_read(s, addr_reg, memop, &label_ptr, mem_index, 0);
-+    tcg_out_tlb_read(s, addr_reg, memop, &label_ptr, get_mmuidx(oi), 0);
-     tcg_out_qemu_st_direct(s, memop, data_reg,
--                           TCG_REG_X1, otype, addr_reg);
--    add_qemu_ldst_label(s, false, oi, (memop & MO_SIZE)== MO_64,
--                        data_reg, addr_reg, s->code_ptr, label_ptr);
-+                           TCG_REG_X1, addr_type, addr_reg);
-+    add_qemu_ldst_label(s, false, oi, data_type, data_reg, addr_reg,
-+                        s->code_ptr, label_ptr);
- #else /* !CONFIG_SOFTMMU */
-     unsigned a_bits = get_alignment_bits(memop);
-     if (a_bits) {
-@@ -1908,7 +1906,7 @@ static void tcg_out_qemu_st(TCGContext *s, TCGReg data_reg, TCGReg addr_reg,
+@@ -2132,8 +2135,9 @@ static inline int setup_guest_base_seg(void)
      }
-     if (USE_GUEST_BASE) {
-         tcg_out_qemu_st_direct(s, memop, data_reg,
--                               TCG_REG_GUEST_BASE, otype, addr_reg);
-+                               TCG_REG_GUEST_BASE, addr_type, addr_reg);
-     } else {
-         tcg_out_qemu_st_direct(s, memop, data_reg,
-                                addr_reg, TCG_TYPE_I64, TCG_REG_XZR);
-@@ -2249,7 +2247,7 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         break;
-     case INDEX_op_qemu_st_i32:
-     case INDEX_op_qemu_st_i64:
--        tcg_out_qemu_st(s, REG0(0), a1, a2);
-+        tcg_out_qemu_st(s, REG0(0), a1, a2, ext);
-         break;
+     return 0;
+ }
+-# elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__)
+-#  include <machine/sysarch.h>
++#elif defined(__x86_64__) && \
++      (defined (__FreeBSD__) || defined (__FreeBSD_kernel__))
++# include <machine/sysarch.h>
+ static inline int setup_guest_base_seg(void)
+ {
+     if (sysarch(AMD64_SET_GSBASE, &guest_base) == 0) {
+@@ -2141,18 +2145,16 @@ static inline int setup_guest_base_seg(void)
+     }
+     return 0;
+ }
+-# else
++#else
+ static inline int setup_guest_base_seg(void)
+ {
+     return 0;
+ }
+-# endif
+-#endif
++#endif /* setup_guest_base_seg */
+ #endif /* SOFTMMU */
  
-     case INDEX_op_bswap64_i64:
+ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+-                                   TCGReg base, int index, intptr_t ofs,
+-                                   int seg, TCGType type, MemOp memop)
++                                   HostAddress h, TCGType type, MemOp memop)
+ {
+     bool use_movbe = false;
+     int rexw = (type == TCG_TYPE_I32 ? 0 : P_REXW);
+@@ -2167,60 +2169,61 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+ 
+     switch (memop & MO_SSIZE) {
+     case MO_UB:
+-        tcg_out_modrm_sib_offset(s, OPC_MOVZBL + seg, datalo,
+-                                 base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, OPC_MOVZBL + h.seg, datalo,
++                                 h.base, h.index, 0, h.ofs);
+         break;
+     case MO_SB:
+-        tcg_out_modrm_sib_offset(s, OPC_MOVSBL + rexw + seg, datalo,
+-                                 base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, OPC_MOVSBL + rexw + h.seg, datalo,
++                                 h.base, h.index, 0, h.ofs);
+         break;
+     case MO_UW:
+         if (use_movbe) {
+             /* There is no extending movbe; only low 16-bits are modified.  */
+-            if (datalo != base && datalo != index) {
++            if (datalo != h.base && datalo != h.index) {
+                 /* XOR breaks dependency chains.  */
+                 tgen_arithr(s, ARITH_XOR, datalo, datalo);
+-                tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + seg,
+-                                         datalo, base, index, 0, ofs);
++                tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + h.seg,
++                                         datalo, h.base, h.index, 0, h.ofs);
+             } else {
+-                tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + seg,
+-                                         datalo, base, index, 0, ofs);
++                tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + h.seg,
++                                         datalo, h.base, h.index, 0, h.ofs);
+                 tcg_out_ext16u(s, datalo, datalo);
+             }
+         } else {
+-            tcg_out_modrm_sib_offset(s, OPC_MOVZWL + seg, datalo,
+-                                     base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, OPC_MOVZWL + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
+         }
+         break;
+     case MO_SW:
+         if (use_movbe) {
+-            tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + seg,
+-                                     datalo, base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + P_DATA16 + h.seg,
++                                     datalo, h.base, h.index, 0, h.ofs);
+             tcg_out_ext16s(s, type, datalo, datalo);
+         } else {
+-            tcg_out_modrm_sib_offset(s, OPC_MOVSWL + rexw + seg,
+-                                     datalo, base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, OPC_MOVSWL + rexw + h.seg,
++                                     datalo, h.base, h.index, 0, h.ofs);
+         }
+         break;
+     case MO_UL:
+-        tcg_out_modrm_sib_offset(s, movop + seg, datalo, base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, movop + h.seg, datalo,
++                                 h.base, h.index, 0, h.ofs);
+         break;
+ #if TCG_TARGET_REG_BITS == 64
+     case MO_SL:
+         if (use_movbe) {
+-            tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + seg, datalo,
+-                                     base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, OPC_MOVBE_GyMy + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
+             tcg_out_ext32s(s, datalo, datalo);
+         } else {
+-            tcg_out_modrm_sib_offset(s, OPC_MOVSLQ + seg, datalo,
+-                                     base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, OPC_MOVSLQ + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
+         }
+         break;
+ #endif
+     case MO_UQ:
+         if (TCG_TARGET_REG_BITS == 64) {
+-            tcg_out_modrm_sib_offset(s, movop + P_REXW + seg, datalo,
+-                                     base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
+             break;
+         }
+         if (use_movbe) {
+@@ -2228,15 +2231,16 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+             datalo = datahi;
+             datahi = t;
+         }
+-        if (base == datalo || index == datalo) {
+-            tcg_out_modrm_sib_offset(s, OPC_LEA, datahi, base, index, 0, ofs);
+-            tcg_out_modrm_offset(s, movop + seg, datalo, datahi, 0);
+-            tcg_out_modrm_offset(s, movop + seg, datahi, datahi, 4);
++        if (h.base == datalo || h.index == datalo) {
++            tcg_out_modrm_sib_offset(s, OPC_LEA, datahi,
++                                     h.base, h.index, 0, h.ofs);
++            tcg_out_modrm_offset(s, movop + h.seg, datalo, datahi, 0);
++            tcg_out_modrm_offset(s, movop + h.seg, datahi, datahi, 4);
+         } else {
+-            tcg_out_modrm_sib_offset(s, movop + seg, datalo,
+-                                     base, index, 0, ofs);
+-            tcg_out_modrm_sib_offset(s, movop + seg, datahi,
+-                                     base, index, 0, ofs + 4);
++            tcg_out_modrm_sib_offset(s, movop + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
++            tcg_out_modrm_sib_offset(s, movop + h.seg, datahi,
++                                     h.base, h.index, 0, h.ofs + 4);
+         }
+         break;
+     default:
+@@ -2249,6 +2253,7 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                             MemOpIdx oi, TCGType data_type)
+ {
+     MemOp opc = get_memop(oi);
++    HostAddress h;
+ 
+ #if defined(CONFIG_SOFTMMU)
+     tcg_insn_unit *label_ptr[2];
+@@ -2257,8 +2262,11 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                      label_ptr, offsetof(CPUTLBEntry, addr_read));
+ 
+     /* TLB Hit.  */
+-    tcg_out_qemu_ld_direct(s, datalo, datahi, TCG_REG_L1,
+-                           -1, 0, 0, data_type, opc);
++    h.base = TCG_REG_L1;
++    h.index = -1;
++    h.ofs = 0;
++    h.seg = 0;
++    tcg_out_qemu_ld_direct(s, datalo, datahi, h, data_type, opc);
+ 
+     /* Record the current context of a load into ldst label */
+     add_qemu_ldst_label(s, true, data_type, oi, datalo, datahi,
+@@ -2269,15 +2277,14 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg datalo, TCGReg datahi,
+         tcg_out_test_alignment(s, true, addrlo, addrhi, a_bits);
+     }
+ 
+-    tcg_out_qemu_ld_direct(s, datalo, datahi, addrlo, x86_guest_base_index,
+-                           x86_guest_base_offset, x86_guest_base_seg,
+-                           data_type, opc);
++    h = x86_guest_base;
++    h.base = addrlo;
++    tcg_out_qemu_ld_direct(s, datalo, datahi, h, data_type, opc);
+ #endif
+ }
+ 
+ static void tcg_out_qemu_st_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+-                                   TCGReg base, int index, intptr_t ofs,
+-                                   int seg, MemOp memop)
++                                   HostAddress h, MemOp memop)
+ {
+     bool use_movbe = false;
+     int movop = OPC_MOVL_EvGv;
+@@ -2296,30 +2303,31 @@ static void tcg_out_qemu_st_direct(TCGContext *s, TCGReg datalo, TCGReg datahi,
+     case MO_8:
+         /* This is handled with constraints on INDEX_op_qemu_st8_i32. */
+         tcg_debug_assert(TCG_TARGET_REG_BITS == 64 || datalo < 4);
+-        tcg_out_modrm_sib_offset(s, OPC_MOVB_EvGv + P_REXB_R + seg,
+-                                 datalo, base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, OPC_MOVB_EvGv + P_REXB_R + h.seg,
++                                 datalo, h.base, h.index, 0, h.ofs);
+         break;
+     case MO_16:
+-        tcg_out_modrm_sib_offset(s, movop + P_DATA16 + seg, datalo,
+-                                 base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, movop + P_DATA16 + h.seg, datalo,
++                                 h.base, h.index, 0, h.ofs);
+         break;
+     case MO_32:
+-        tcg_out_modrm_sib_offset(s, movop + seg, datalo, base, index, 0, ofs);
++        tcg_out_modrm_sib_offset(s, movop + h.seg, datalo,
++                                 h.base, h.index, 0, h.ofs);
+         break;
+     case MO_64:
+         if (TCG_TARGET_REG_BITS == 64) {
+-            tcg_out_modrm_sib_offset(s, movop + P_REXW + seg, datalo,
+-                                     base, index, 0, ofs);
++            tcg_out_modrm_sib_offset(s, movop + P_REXW + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
+         } else {
+             if (use_movbe) {
+                 TCGReg t = datalo;
+                 datalo = datahi;
+                 datahi = t;
+             }
+-            tcg_out_modrm_sib_offset(s, movop + seg, datalo,
+-                                     base, index, 0, ofs);
+-            tcg_out_modrm_sib_offset(s, movop + seg, datahi,
+-                                     base, index, 0, ofs + 4);
++            tcg_out_modrm_sib_offset(s, movop + h.seg, datalo,
++                                     h.base, h.index, 0, h.ofs);
++            tcg_out_modrm_sib_offset(s, movop + h.seg, datahi,
++                                     h.base, h.index, 0, h.ofs + 4);
+         }
+         break;
+     default:
+@@ -2332,6 +2340,7 @@ static void tcg_out_qemu_st(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                             MemOpIdx oi, TCGType data_type)
+ {
+     MemOp opc = get_memop(oi);
++    HostAddress h;
+ 
+ #if defined(CONFIG_SOFTMMU)
+     tcg_insn_unit *label_ptr[2];
+@@ -2340,7 +2349,11 @@ static void tcg_out_qemu_st(TCGContext *s, TCGReg datalo, TCGReg datahi,
+                      label_ptr, offsetof(CPUTLBEntry, addr_write));
+ 
+     /* TLB Hit.  */
+-    tcg_out_qemu_st_direct(s, datalo, datahi, TCG_REG_L1, -1, 0, 0, opc);
++    h.base = TCG_REG_L1;
++    h.index = -1;
++    h.ofs = 0;
++    h.seg = 0;
++    tcg_out_qemu_st_direct(s, datalo, datahi, h, opc);
+ 
+     /* Record the current context of a store into ldst label */
+     add_qemu_ldst_label(s, false, data_type, oi, datalo, datahi,
+@@ -2351,8 +2364,10 @@ static void tcg_out_qemu_st(TCGContext *s, TCGReg datalo, TCGReg datahi,
+         tcg_out_test_alignment(s, false, addrlo, addrhi, a_bits);
+     }
+ 
+-    tcg_out_qemu_st_direct(s, datalo, datahi, addrlo, x86_guest_base_index,
+-                           x86_guest_base_offset, x86_guest_base_seg, opc);
++    h = x86_guest_base;
++    h.base = addrlo;
++
++    tcg_out_qemu_st_direct(s, datalo, datahi, h, opc);
+ #endif
+ }
+ 
+@@ -4058,18 +4073,18 @@ static void tcg_target_qemu_prologue(TCGContext *s)
+                          (ARRAY_SIZE(tcg_target_callee_save_regs) + 2) * 4
+                          + stack_addend);
+ #else
+-# if !defined(CONFIG_SOFTMMU) && TCG_TARGET_REG_BITS == 64
++# if !defined(CONFIG_SOFTMMU)
+     if (guest_base) {
+         int seg = setup_guest_base_seg();
+         if (seg != 0) {
+-            x86_guest_base_seg = seg;
++            x86_guest_base.seg = seg;
+         } else if (guest_base == (int32_t)guest_base) {
+-            x86_guest_base_offset = guest_base;
++            x86_guest_base.ofs = guest_base;
+         } else {
+             /* Choose R12 because, as a base, it requires a SIB byte. */
+-            x86_guest_base_index = TCG_REG_R12;
+-            tcg_out_movi(s, TCG_TYPE_PTR, x86_guest_base_index, guest_base);
+-            tcg_regset_set_reg(s->reserved_regs, x86_guest_base_index);
++            x86_guest_base.index = TCG_REG_R12;
++            tcg_out_movi(s, TCG_TYPE_PTR, x86_guest_base.index, guest_base);
++            tcg_regset_set_reg(s->reserved_regs, x86_guest_base.index);
+         }
+     }
+ # endif
 -- 
 2.34.1
 

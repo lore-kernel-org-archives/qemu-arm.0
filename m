@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y4-20020adfd084000000b003064088a94fsm1459942wrh.16.2023.05.03.02.12.45
+        by smtp.gmail.com with ESMTPSA id z19-20020a7bc7d3000000b003edef091b17sm1252710wmk.37.2023.05.03.02.12.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 May 2023 02:12:45 -0700 (PDT)
+        Wed, 03 May 2023 02:12:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 246511FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id 3DF351FFBC;
 	Wed,  3 May 2023 10:12:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,44 +46,40 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Song Gao <gaosong@loongson.cn>,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Ed Maste <emaste@freebsd.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH 01/22] gitlab/cirrus: reduce scope of the FreeBSD testing matrix
-Date: Wed,  3 May 2023 10:12:23 +0100
-Message-Id: <20230503091244.1450613-2-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 02/22] tests/docker: bump the xtensa base to debian:11-slim
+Date: Wed,  3 May 2023 10:12:24 +0100
+Message-Id: <20230503091244.1450613-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230503091244.1450613-1-alex.bennee@linaro.org>
 References: <20230503091244.1450613-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wSnb6OSkifOl
+X-TUID: YtjqEArdSBKx
 
-While the Cirrus build machines are quite beefy it looks like we are
-still hitting timeouts. Lets reduce the testing matrix like we do for
-the other BSDs to see if this brings us under the line. This is
-however a pretty restricted set and I'm sure there are stalls
-happening on FreeBSD which should be addresses.
+Stretch is going out of support so things like security updates will
+fail. As the toolchain itself is binary it hopefully won't mind the
+underlying OS being updated.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Ed Maste <emaste@freebsd.org>
-Cc: Li-Wen Hsu <lwhsu@freebsd.org>
+Reported-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- .gitlab-ci.d/cirrus.yml | 1 +
- 1 file changed, 1 insertion(+)
+ tests/docker/dockerfiles/debian-xtensa-cross.docker | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml
-index 1507c928e5..7c93db4962 100644
---- a/.gitlab-ci.d/cirrus.yml
-+++ b/.gitlab-ci.d/cirrus.yml
-@@ -55,6 +55,7 @@ x64-freebsd-13-build:
-     CIRRUS_VM_RAM: 8G
-     UPDATE_COMMAND: pkg update; pkg upgrade -y
-     INSTALL_COMMAND: pkg install -y
-+    CONFIGURE_ARGS: --target-list=x86_64-softmmu,arm-bsd-user
-     TEST_TARGETS: check
+diff --git a/tests/docker/dockerfiles/debian-xtensa-cross.docker b/tests/docker/dockerfiles/debian-xtensa-cross.docker
+index 082b50da19..72c25d63d9 100644
+--- a/tests/docker/dockerfiles/debian-xtensa-cross.docker
++++ b/tests/docker/dockerfiles/debian-xtensa-cross.docker
+@@ -5,7 +5,7 @@
+ # using a prebuilt toolchains for Xtensa cores from:
+ # https://github.com/foss-xtensa/toolchain/releases
+ #
+-FROM docker.io/library/debian:stretch-slim
++FROM docker.io/library/debian:11-slim
  
- aarch64-macos-12-base-build:
+ RUN apt-get update && \
+     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
 -- 
 2.39.2

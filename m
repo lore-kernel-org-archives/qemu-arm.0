@@ -1,179 +1,170 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp320587ejq;
-        Thu, 4 May 2023 06:58:43 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4VWEQp4+FWtjbdcgG89L8V/Aiu9J5HFOYe+KqN4rvWKI5lLLtQxlt29yhgLMPlslEVIiOs
-X-Received: by 2002:ac8:5914:0:b0:3e1:bed2:ff0c with SMTP id 20-20020ac85914000000b003e1bed2ff0cmr5413175qty.55.1683208723015;
-        Thu, 04 May 2023 06:58:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683208723; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp359746ejq;
+        Thu, 4 May 2023 07:49:32 -0700 (PDT)
+X-Received: by 2002:a50:ed19:0:b0:50b:ca21:a85e with SMTP id j25-20020a50ed19000000b0050bca21a85emr1751589eds.35.1683211772786;
+        Thu, 04 May 2023 07:49:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683211772; cv=none;
         d=google.com; s=arc-20160816;
-        b=LR4I9ooZGmpyzzTvv/YBawjUHm0OdIhVCLsynZ1y+ToUuYmaEXX4UbLKrRyjhKeEoL
-         m6Zwvh+lfXOIf5S/MOjr58Rjt08vPhheQjwrxfN4R515+h8VEVIvz09K7iccLrv9SENe
-         VDD48cObnjFpiwAgzEfZNpEzb2nF5CoveSMr5nEZMX42RGs8UH6i0NqVell5lBXc3bwZ
-         K/9xMDsv3Sid2AMoWC0kYKllUP9rNy6HIz03pIrZX6SgvxaaqGJIz3Ax4XTKlLP5Ei1q
-         a2zlooA33CymSgEU2V440oXnfJmdjcMJAFpypIbvJhRpadkqJSwpBUFfBvB/JYUowDbW
-         Iy9g==
+        b=EDUP/iMr/kHZd6cjdnzd3l7m7yM15uhfd+uEstz3ALwYUzy4DiJkc68esiB8U9sCsY
+         WVoYwSouV2lUnqC0eKl0PbKHVEpYD8WyTfMNw4qTRa7Txx4F0vCr4ikkvlgGlWQLxBl3
+         x/rnxG7f9s9no580Kihn8BMJARl2z7CMNCGH6uaV0mjlMbZGGFpqE0PpuLbYha0ifmpO
+         Zz2QR5JLTZKBRy9HCZxeAaH5asfBwTNaXwMz9q6hDGZIBkJcR4/0+Ngrkb19GCfJ0lfw
+         pYyCvGlM+bCeO2jmXG3twHFs9P6VTPgPPNFp4/pxbKCvCWjW+jSl5eJSNNR+c4syBLkO
+         m5tA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=cSMeFOVndklcI/jbHH1oIdgkQ1sxHzP52KBybeWL69E=;
-        b=0+quM65t0peomL1lf8v9ReLqj5kPe8hpeX+wV9JA9eEt5p3eDbVPCEEwVjrHAVzVu3
-         E4M5mT845saHk1XoXHgZCFxy9gT3y7QGtzkFAcfxyYughDI1MT0fNB36jU7AC6uMVrCg
-         TiEjO1c+Bm57t38mXL9H8sGy+Lfu1C8i6bWyf3hG17zr8YD0kzfyFzxOhKrd2hRnsDdX
-         A/5lLtGj7hcis3SCs4M9we6h4dohBK+4XIdWSNtDOOyttSCgnC2FJw8H0BJtrjSB5G2Y
-         N/ulUyeiMU+WGgJlfq1tfvHzMZPq4u/ZdXJz7fCkDZ3Gu/IZgYY0JTsPy3xijhNvf3G7
-         cJtQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=GstM3uCHYYNhP7vLiPGJkNr4X7whCpAksFGwpTC8qGk=;
+        b=0oiaIUO6CC5FsFWEkCVXVNNz3VqZncdiyACUydoKPRbdpz7uvHHrFfahK19bCHWzjr
+         lc5pXZG/qQNp4tY9dHMqB1hcSxt7bCuoemtKZSvE3iiM+3v2q8wO7eN8uPJ+Aax5AEa/
+         iKgNUs8z5UIvR32WLq6QQVMSDrjqnQWd5WvTsvlcLrlGEuDV4dpHeOVjGSQ3e8vi77vi
+         SdWDdiERTF6JLIQHStEJtOMRGZUC2AWnqCnA+HCi1oBdLyWn3AM2SROxu22c5tQ6J6Fp
+         ZM9lfojtICl687PYA1PDkbpBRF1rrCH/LcE3ZcHsQZ+RwM+EtDd0ATcSk5uoXkPGNbP9
+         sLdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i0iA/4P4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2l7e6kw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8-20020ac85ac8000000b003e38dc1b3ffsi19983803qtd.211.2023.05.04.06.58.42
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i18-20020a50d752000000b0050bc4e04fdasor2402914edj.0.2023.05.04.07.49.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 May 2023 06:58:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 04 May 2023 07:49:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="i0iA/4P4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2l7e6kw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1puZTO-0007kC-JU; Thu, 04 May 2023 09:58:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1puZPj-0006t2-3a
- for qemu-arm@nongnu.org; Thu, 04 May 2023 09:54:31 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1puZPh-0008Eb-J4
- for qemu-arm@nongnu.org; Thu, 04 May 2023 09:54:30 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-3f1738d0d4cso3973225e9.1
- for <qemu-arm@nongnu.org>; Thu, 04 May 2023 06:54:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683208467; x=1685800467;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cSMeFOVndklcI/jbHH1oIdgkQ1sxHzP52KBybeWL69E=;
- b=i0iA/4P46rEWsS9xSMFcXZknTOQ82igTIXQiWX0tIXrLnwZZPKdd6Rgi3HiMR6RD01
- D4C/GGtTB4DSYFpGCKvq6PS1S/VH3aLcffYh8J40HD75IZW2q/8B+00iohtg6XSd6xSR
- xVopkC4a6iFCXcLmpeMge8EUPgnrX/1LXCvbZauD9o9CvOUBNLtCM/Q+dGQ7p30D1RS7
- TU6xRalBxeLDSdUBu/1GIqWrchVDc+TKjb7iDxs3YlQ2HCYvW9BFhp8tjxa17ZTgRxol
- 5KjZVLhcL8I+xZyY6W2FE2i7TTB2HOglJ9NeLLc5Xg5cL/CE+ksYT5ihSqsJDoGJExlX
- +jJg==
+        d=linaro.org; s=google; t=1683211772; x=1685803772;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GstM3uCHYYNhP7vLiPGJkNr4X7whCpAksFGwpTC8qGk=;
+        b=L2l7e6kwZ1zye5vBA5JdgavpVPQ7GTz44lHYC6AEIk7v0AEJrm8IPT7kjZw8AqEuha
+         Oeq743CGnnivzMnMGw/pjN3kQG3GSGepO2aLIduH91A3a4nQIMD2zYF3SySSykXhaKPm
+         GWRMdCZmB4sNTmFIB069ufP85Q24wiNjo0fKaH1vMW6D7kniTS1r3OGUvSCKX9nmgDEN
+         cv4NF+vI04OzZH+/t8FZBzrKuIfVfOO44Z+yT/ibj6SFd/xTtBHcibj0wC6xVJRQxev+
+         tzGkG+cAqyEl9513J5JVBXHYIC1Stbzm9TKnaLRra4xU72y4ouH2AYbs/pRz01xh6tgq
+         VQ3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683208467; x=1685800467;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cSMeFOVndklcI/jbHH1oIdgkQ1sxHzP52KBybeWL69E=;
- b=F18gbJmuyXU12xkDCof96CEenS9u1swZngHZ5f4XHLNMzMAhjYCDh5Xcg6CSRtAuJJ
- 5wtmSloySzChxXdHqZ1NmMiYOTdGtFG8u+hyQ5RrG84Ir1p8tp41PSUjbG4eEGVJXFNH
- +clpp+rHygwjtebhEA67vK+LRID6NZMaE8+P0GiKL5wE7iwBBMiStnQ9onOz7Ty5DTzX
- 5BFl5gwsvfNzQlgC59297TMuSd3kAyOoerneQQUJ/iL4tZFwovV4KtfnhU1tfGgtYoL/
- gtO8D6MMz/8AEYPQtx1HHZ4LqyvgHBJCskAbh6l6BEUoHCnlO+ZgxhLXCauCl0W8dXBf
- JK9g==
-X-Gm-Message-State: AC+VfDyOqSuDqVhidoi3X7Zwp1ycJf501qbbVh7jYcY1f5iJP+WM1j0W
- 1sy9WM2JlaDE7cmZvaDx3hNe8aM6gnHrG0kP4W0=
-X-Received: by 2002:a7b:cbcb:0:b0:3f0:310c:e3cf with SMTP id
- n11-20020a7bcbcb000000b003f0310ce3cfmr16876356wmi.37.1683208467572; 
- Thu, 04 May 2023 06:54:27 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- k22-20020a05600c0b5600b003f40049a65bsm3800428wmr.21.2023.05.04.06.54.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 May 2023 06:54:27 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 1/2] target/arm: Don't allow stage 2 page table walks to
- downgrade to NS
-Date: Thu,  4 May 2023 14:54:24 +0100
-Message-Id: <20230504135425.2748672-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230504135425.2748672-1-peter.maydell@linaro.org>
-References: <20230504135425.2748672-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20221208; t=1683211772; x=1685803772;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=GstM3uCHYYNhP7vLiPGJkNr4X7whCpAksFGwpTC8qGk=;
+        b=SBnTVyto83moMDyuHdtDHTIBzx389BqFNEOnn9IxLhIDw3creV+2d1+MOfarlQStdX
+         MCJz1mgf7+PPsjmRuQQbIBMRuW8e3HZ0A3cg0lWvynbqqp7FJLk5D1Q7qodGBi1GdlNT
+         6sw8uChYDfK1xxpxvd6LlQXx5C6MMQ1CifbbJqo4FZ2vXTjFdxm5L7hDJ26M4WoNKxbj
+         zQjVZ8nCJEA+DXHgg4hhyYHxH/LBdQ6dkGNHaGiga9+tuHQCpojk2g+/HbDXfZhiT9XX
+         x/UG/znyjZtGAEHAgJBcUTwycUNLQe4H10SbDVJovgByjFMGvhpSCq4kCWHgzADiz5nd
+         Q4lQ==
+X-Gm-Message-State: AC+VfDxpD7ltuAETQQyRHizBLSB+TF3MtkiAiZIZyqY3t2M2FG4JqeUc
+	4dn0YP3sMkVl2xMZtgc11kvbemN9goVUJSf9bS2yUL5RVCWi+ru7+50=
+X-Google-Smtp-Source: ACHHUZ7BNquxS80Ct2PDV2DD4UP2fAat2wEb/hwwhGO/o0Jjj7xWdEBC6yBmBLMujI/zpMysprCXfKe6IscCnjLz56I=
+X-Received: by 2002:aa7:cc11:0:b0:50b:dcf6:8e6d with SMTP id
+ q17-20020aa7cc11000000b0050bdcf68e6dmr1429493edt.18.1683211772386; Thu, 04
+ May 2023 07:49:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TmyUNYQ0InYl
+References: <20230503070656.1746170-1-richard.henderson@linaro.org> <20230503070656.1746170-2-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 May 2023 15:49:21 +0100
+Message-ID: <CAFEAcA8k-4Obf9njjX9zcBTLhS3vdUNyeYYLSb3wTiy5nJyS7w@mail.gmail.com>
+Subject: Re: [PATCH v4 01/57] include/exec/memop: Add bits describing atomicity
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: s6/r38Wl2kAO
 
-Bit 63 in a Table descriptor is only the NSTable bit for stage 1
-translations; in stage 2 it is RES0.  We were incorrectly looking at
-it all the time.
+On Wed, 3 May 2023 at 08:11, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> These bits may be used to describe the precise atomicity
+> requirements of the guest, which may then be used to
+> constrain the methods by which it may be emulated by the host.
+>
+> For instance, the AArch64 LDP (32-bit) instruction changes
+> semantics with ARMv8.4 LSE2, from
+>
+>   MO_64 | MO_ATMAX_4 | MO_ATOM_IFALIGN
+>   (64-bits, single-copy atomic only on 4 byte units,
+>    nonatomic if not aligned by 4),
+>
+> to
+>
+>   MO_64 | MO_ATMAX_SIZE | MO_ATOM_WITHIN16
+>   (64-bits, single-copy atomic within a 16 byte block)
+>
+> The former may be implemented with two 4 byte loads, or
+> a single 8 byte load if that happens to be efficient on
+> the host.  The latter may not, and may also require a
+> helper when misaligned.
+>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  include/exec/memop.h | 36 ++++++++++++++++++++++++++++++++++++
+>  1 file changed, 36 insertions(+)
+>
+> diff --git a/include/exec/memop.h b/include/exec/memop.h
+> index 25d027434a..04e4048f0b 100644
+> --- a/include/exec/memop.h
+> +++ b/include/exec/memop.h
+> @@ -81,6 +81,42 @@ typedef enum MemOp {
+>      MO_ALIGN_32 =3D 5 << MO_ASHIFT,
+>      MO_ALIGN_64 =3D 6 << MO_ASHIFT,
+>
+> +    /*
+> +     * MO_ATOM_* describes that atomicity requirements of the operation:
 
-This causes problems if:
- * the stage 2 table descriptor was incorrectly setting the RES0 bit
- * we are doing a stage 2 translation in Secure address space for
-   a NonSecure stage 1 regime -- in this case we would incorrectly
-   do an immediate downgrade to NonSecure
+"the atomicity requirements"
 
-A bug elsewhere in the code currently prevents us from getting
-to the second situation, but when we fix that it will be possible.
+> +     * MO_ATOM_IFALIGN: the operation must be single-copy atomic if and
+> +     *    only if it is aligned; if unaligned there is no atomicity.
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/ptw.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Is this really "and only if", ie "must *not* be single-copy-atomic if
+non aligned"? Plain old "if" seems more likely...
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index bd75da8dbcf..8ac6d9b1d0c 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -1415,17 +1415,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-     descaddrmask &= ~indexmask_grainsize;
- 
-     /*
--     * Secure accesses start with the page table in secure memory and
-+     * Secure stage 1 accesses start with the page table in secure memory and
-      * can be downgraded to non-secure at any step. Non-secure accesses
-      * remain non-secure. We implement this by just ORing in the NSTable/NS
-      * bits at each step.
-+     * Stage 2 never gets this kind of downgrade.
-      */
-     tableattrs = is_secure ? 0 : (1 << 4);
- 
-  next_level:
-     descaddr |= (address >> (stride * (4 - level))) & indexmask;
-     descaddr &= ~7ULL;
--    nstable = extract32(tableattrs, 4, 1);
-+    nstable = !regime_is_stage2(mmu_idx) && extract32(tableattrs, 4, 1);
-     if (nstable) {
-         /*
-          * Stage2_S -> Stage2 or Phys_S -> Phys_NS
--- 
-2.34.1
+> +     * MO_ATOM_NONE: the operation has no atomicity requirements.
+> +     * MO_ATOM_SUBALIGN: the operation is single-copy atomic by parts
+> +     *    by the alignment.  E.g. if the address is 0 mod 4, then each
+> +     *    4-byte subobject is single-copy atomic.
+> +     *    This is the atomicity of IBM Power and S390X processors.
+> +     * MO_ATOM_WITHIN16: the operation is single-copy atomic, even if it
+> +     *    is unaligned, so long as it does not cross a 16-byte boundary;
+> +     *    if it crosses a 16-byte boundary there is no atomicity.
+> +     *    This is the atomicity of Arm FEAT_LSE2.
+> +     *
+> +     * MO_ATMAX_* describes the maximum atomicity unit required:
+> +     * MO_ATMAX_SIZE: the entire operation, i.e. MO_SIZE.
+> +     * MO_ATMAX_[248]: units of N bytes.
+> +     *
+> +     * Note the default (i.e. 0) values are single-copy atomic to the
+> +     * size of the operation, if aligned.  This retains the behaviour
+> +     * from before these were introduced.
+> +     */
+> +    MO_ATOM_SHIFT    =3D 8,
+> +    MO_ATOM_MASK     =3D 0x3 << MO_ATOM_SHIFT,
+> +    MO_ATOM_IFALIGN  =3D 0 << MO_ATOM_SHIFT,
+> +    MO_ATOM_NONE     =3D 1 << MO_ATOM_SHIFT,
+> +    MO_ATOM_SUBALIGN =3D 2 << MO_ATOM_SHIFT,
+> +    MO_ATOM_WITHIN16 =3D 3 << MO_ATOM_SHIFT,
+> +
+> +    MO_ATMAX_SHIFT =3D 10,
+> +    MO_ATMAX_MASK  =3D 0x3 << MO_ATMAX_SHIFT,
+> +    MO_ATMAX_SIZE  =3D 0 << MO_ATMAX_SHIFT,
+> +    MO_ATMAX_2     =3D 1 << MO_ATMAX_SHIFT,
+> +    MO_ATMAX_4     =3D 2 << MO_ATMAX_SHIFT,
+> +    MO_ATMAX_8     =3D 3 << MO_ATMAX_SHIFT,
+> +
 
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

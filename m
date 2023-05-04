@@ -1,135 +1,240 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp404041ejq;
-        Thu, 4 May 2023 08:50:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6jRN9G2KleioeoQk6K6qrpfdoQwPtd3HSTlC55whGLlOSEu9RcJpxdoqbydiNkvr+Ucm2Y
-X-Received: by 2002:ac8:5dc6:0:b0:3ef:38c5:7957 with SMTP id e6-20020ac85dc6000000b003ef38c57957mr6468394qtx.32.1683215430256;
-        Thu, 04 May 2023 08:50:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683215430; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp462655ejq;
+        Thu, 4 May 2023 10:17:40 -0700 (PDT)
+X-Received: by 2002:a05:6402:14c9:b0:506:bda9:e063 with SMTP id f9-20020a05640214c900b00506bda9e063mr2050989edx.16.1683220660610;
+        Thu, 04 May 2023 10:17:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683220660; cv=none;
         d=google.com; s=arc-20160816;
-        b=qNJFd46vaN6S15sW2Xlxj+ddy2qXrRpvypQ7iyVt1w7b/yZcmLkHAHgdVZ0tZU9jOJ
-         TSPQgtsZrPtnjvkuj4pHZz0j0kfu04z6rVGuZ0aDqgMpEKScHRuoy8xQ3OAouf39LirR
-         EAEuO/6NqjzVtJbmBHGlfDVa4Kfngpo+jjpieygGfRGJIQLgq4GYJpqkCE5/dRBHtJSJ
-         OyEQV1gK88uSSpwtsLcTWLMOEBsj2z1HxmwmybQe3KpImRicpu3t4Ai28BGeHoB3H6o1
-         LVBJjGtKDo9VsI+JC5G2JV6/+uPPL+9B97R1NqhuIVJn1J0ZVY3nTLfloVKS83RN3bLz
-         oDnQ==
+        b=qyJtRHY4KiRe4EWe0/tmXuliSRyf6fNc1hY9TyfEJVy+J/R5noZI1DrdiUisowOgqQ
+         wGY/pYPcB8Kt08SaPcm0w63ypu9VRKS6caSVTa5YijDqQkvtz3DUICix0neaheUIhwPw
+         1DC3QEPB7M2leJOUi5d25rrnJTKYn1rnkRtw99/WFdBJoQuTkuJKHIsdpYlFnmnSyJiw
+         ZOnmwtnQS8IkyzESOV2SQPInwF6HQC5nHRCuBuJPG8GiAdacoyIlEMfI6mUrbO/aR3xE
+         iZwxkPvE4JplQU7UQoyJRJ/owSdHSPI112yh49lrIbDUKUG+2VylGr1xDiYPZ8hY1il0
+         TNaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=iIpxPPCGn5q4P6gM9rBx3mfBXwTmnjji3/HoVk/CHVk=;
-        b=OEkuhHStgzC7Fu3ypOfRBLRGj2s3gyttIAf51vXQQCNN9hoR17JjPQPZDN6axMw/mo
-         lBwZxlD9pXwN3on6rCPZiZA0SewKXPQEryI/Fmncog2Vt30HypcofDXXF9chpuAcwzlf
-         wxfbD9XPEutfVCW69z8ppBz1MFm4o56s7sa8WS+QezNt8HDqi1GwxnwYeAmAIQvg8pZA
-         N8KKi7tcSY3V3Zyr751ykFePDGID+RLksFGCchH8SYFpLs+nd87Gi9LMghudgkivS5PA
-         2Bax4AcEo2U25At+mUqAcWc2UVP7TX8LDOVHyyYtsBbcS1oaTAxlQahXBcBW+vdXLcAe
-         5faQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Erwkmn1QWtJmCFitJ+opzK7v1RucZrsKO1MzaSjGX2s=;
+        b=yScHDvzKSnEJlu5s0hxlx/i2qZmp2CgXQ+AD9VLhlN8GpL/aSCjkWSb39xI8FlFrvi
+         KvvYwFHMj0EQ84GUOoLMIxW/PzFVAUPeqjNseKJYWVcISI0l7kwNcgeq6PuE077tM6E6
+         ebSlU/7NTBnYLvGSoPDrzFz4g//c6A7QRkQO6IADVktbWpI4kuzOsWdlithkkXM1OGy5
+         8hNUPiwbixLdZ5aHfMkNKSztjSke4mYFmbGEixYaKo77PAWueUcKNgX13cwrPPyL8rGH
+         Fh28Q5PTPCSPW83QetnRlqFSfI/mMI4aGAjWw3TlFpljP/tmS/REfufZSOnTYluft6Ja
+         PJoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YZX7NjTt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uIVcIz2e;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y9-20020a05622a004900b003f3640b48aasi1342051qtw.622.2023.05.04.08.50.30
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id u21-20020a509515000000b004c3c3de1249sor2753352eda.2.2023.05.04.10.17.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 May 2023 08:50:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 04 May 2023 10:17:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YZX7NjTt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uIVcIz2e;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pubDu-0007bq-Jg; Thu, 04 May 2023 11:50:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pub8A-00066Q-Kc
- for qemu-arm@nongnu.org; Thu, 04 May 2023 11:44:30 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pub88-0004IO-5n
- for qemu-arm@nongnu.org; Thu, 04 May 2023 11:44:30 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-50bd37ca954so18654809a12.0
- for <qemu-arm@nongnu.org>; Thu, 04 May 2023 08:44:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683215066; x=1685807066;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iIpxPPCGn5q4P6gM9rBx3mfBXwTmnjji3/HoVk/CHVk=;
- b=YZX7NjTtuRuW0PHT6NYHwI2cpi2v/9FVFGGZsH9vxX+Px9/6NeaiYC5pm/kOMTJLJK
- yH7JyHctqFKTe04qk8vovgtJi/xtnn5H/4HRTaJPxQkw80HIKzbVIyfh63VJgW4Lw6RQ
- X5p8+pz6hjlVzyv0CGKfqPkYYdi2a26itR8uz/0FhyVywI8LnWthP1nCkuRtFlw0mOoz
- 3w0jwunP+OC1SzS6gO+sirhh69Rpejx49KURF36AEqA8gKQBuOpkQNTPqxZZd/gq/67r
- olroA23buRP/7+7IRFN7IhTOChzRj1XypFF3kZzwSJsL+uxwqMRqc3zl1KA9AM0FuFyx
- B5nA==
+        d=linaro.org; s=google; t=1683220660; x=1685812660;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Erwkmn1QWtJmCFitJ+opzK7v1RucZrsKO1MzaSjGX2s=;
+        b=uIVcIz2eYILTkfhEygnb2LFFUzND6Ko8zMJjkdjf8p7yrJgopLVi2IZIYMG6RnqvCL
+         /EecPduq4zjGqLVDv7FsQjo4KVlAwdo281mPzz+E4JbEw+S6igGECLaPD3nGLNtR2yMg
+         rjmlRkAJtO2djoPJK3Vpyv0mB9h4Pz4E9bLIyAmDcTFyN82fj17JLDvnW3MvkwORE4qH
+         mWRhvxKjxmbQ8VtfqAzg2KzMIeMdwyeMv2Lv4mOgkvMvA2Qi02CtxJsJBcKmuXqfgqBC
+         RRm4OFv7Tpk4P295GUkQAuktGPhmOlJz/gpTlDYOtBD7jK5Y2H9TfX6pLT6hUbBt3fHX
+         FKag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683215066; x=1685807066;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iIpxPPCGn5q4P6gM9rBx3mfBXwTmnjji3/HoVk/CHVk=;
- b=JEIRXQ8YVZy0rbAvnDitLnis91gcb2fX3S6m9/EqnX1q+0eXN7sLkC/HY6pNYtHa14
- hhENf5b/znff+Xla9tiA16ntLo4d/iXNZntppin4v7CXlR6d+WMHxqumuDDUW8LL1nEj
- HmbJJOchNALqjDWR6ybTdyOK2nrb+8+4M7ZhqZIdUT2GlFRCxrUUv1osRe7I6oaDFwwP
- BKNNjUqlAmkkgRXu18HKD7VoYdhgWu+3ZQbLCeyHJ2EwyEZGgJ6C+w6abyxapB1sjPyZ
- fbTYJNOODCiXn2YO6KKfYYzawG98JXI1dWmsOb0WoLmUBtDwJwqwfiIwGFgrOh1mnw0m
- Ljxg==
-X-Gm-Message-State: AC+VfDzHhCx2j8kF37wbSXmXbglartG/3wBM9KBd/nnU6BbjcmDoBKI4
- QLDUv5F1sFmQo5SK4A2PIP0trSzCtDbPHsuP8JC5hQ==
-X-Received: by 2002:a17:907:1c97:b0:94e:c40b:71e3 with SMTP id
- nb23-20020a1709071c9700b0094ec40b71e3mr5504940ejc.5.1683215066393; Thu, 04
- May 2023 08:44:26 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683220660; x=1685812660;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Erwkmn1QWtJmCFitJ+opzK7v1RucZrsKO1MzaSjGX2s=;
+        b=GdIkoyr0/CouSYBf/C8xZQPy9hK18N7g5sTxk9xqdP0sB7h+ICOoIv63I4/l5LRQIt
+         jIRq0pirlekqOMHzSoqNHsvtNkDAypTMMo1Ezho6MbXYXjHtrKPmXYnnOCowt0peX8Qh
+         /T4aeJHeQViEt7JgnlX9nuGU0f0R8p3exkV7cikHLWHShPN441FXGYJwTtIaIO5yQRGG
+         eGR2Lt06wEU6x2kfUvojKkehdJROGfqZ+gCA+Z6KESXoI73okDsNYfw6pKyBknxQeCtt
+         gQmOfpe2T/jpwPt5C27cWIeAZGsXt8Xm15faTsEXJZUG0O/AG3jF/zQm8VVO6bOO029w
+         YipQ==
+X-Gm-Message-State: AC+VfDxAjSr7TmmZUrnGDEFcSmMzxj6bImjH3XlUiZAV3wDd7vTp2R4n
+	Uqk+2UsWUTLRCredU0KL4XVOHTJm3fSAjZDEmIKR6qGO
+X-Google-Smtp-Source: ACHHUZ4PYLD5Zp8P1GGVois+ol+CtZncpTj0iseOci6f+fQJLJG+RDQQLrqnaCfPwJNStwP4RUC1AqpSxBK3w4z11Kk=
+X-Received: by 2002:a05:6402:31e6:b0:506:bb0e:bc4e with SMTP id
+ dy6-20020a05640231e600b00506bb0ebc4emr2471187edb.39.1683220660185; Thu, 04
+ May 2023 10:17:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230503070656.1746170-1-richard.henderson@linaro.org>
- <20230503070656.1746170-6-richard.henderson@linaro.org>
-In-Reply-To: <20230503070656.1746170-6-richard.henderson@linaro.org>
+References: <20230503070656.1746170-1-richard.henderson@linaro.org> <20230503070656.1746170-7-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-7-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 May 2023 16:44:15 +0100
-Message-ID: <CAFEAcA_ZW3EW1L6rCuhDjpaANhkaNvAbETWaaFFdvJ2V88aOSw@mail.gmail.com>
-Subject: Re: [PATCH v4 05/57] accel/tcg: Reorg system mode store helpers
+Date: Thu, 4 May 2023 18:17:29 +0100
+Message-ID: <CAFEAcA8muJ84GMqSBuU0P2YhfERM-kftfq07N8BVO2yG9p6jBw@mail.gmail.com>
+Subject: Re: [PATCH v4 06/57] accel/tcg: Honor atomicity of loads
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
- philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-s390x@nongnu.org
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6pbykxZBNte7
+Content-Transfer-Encoding: quoted-printable
+X-TUID: CGmt2QOQ2Vlo
 
-On Wed, 3 May 2023 at 08:23, Richard Henderson
+On Wed, 3 May 2023 at 08:08, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Instead of trying to unify all operations on uint64_t, use
-> mmu_lookup() to perform the basic tlb hit and resolution.
-> Create individual functions to handle access by size.
+> Create ldst_atomicity.c.inc.
 >
+> Not required for user-only code loads, because we've ensured that
+> the page is read-only before beginning to translate code.
+>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+
+> +/**
+> + * required_atomicity:
+> + *
+> + * Return the lg2 bytes of atomicity required by @memop for @p.
+> + * If the operation must be split into two operations to be
+> + * examined separately for atomicity, return -lg2.
+> + */
+> +static int required_atomicity(CPUArchState *env, uintptr_t p, MemOp memo=
+p)
+> +{
+> +    int atmax =3D memop & MO_ATMAX_MASK;
+> +    int size =3D memop & MO_SIZE;
+> +    unsigned tmp;
+> +
+> +    if (atmax =3D=3D MO_ATMAX_SIZE) {
+> +        atmax =3D size;
+> +    } else {
+> +        atmax >>=3D MO_ATMAX_SHIFT;
+> +    }
+> +
+> +    switch (memop & MO_ATOM_MASK) {
+> +    case MO_ATOM_IFALIGN:
+> +        tmp =3D (1 << atmax) - 1;
+> +        if (p & tmp) {
+> +            return MO_8;
+> +        }
+> +        break;
+> +    case MO_ATOM_NONE:
+> +        return MO_8;
+> +    case MO_ATOM_SUBALIGN:
+> +        tmp =3D p & -p;
+> +        if (tmp !=3D 0 && tmp < atmax) {
+> +            atmax =3D tmp;
+> +        }
+> +        break;
+
+I don't understand the bit manipulation going on here.
+AIUI what we're trying to do is say "if e.g. p is only
+2-aligned then we only get 2-alignment". But, suppose
+p =3D=3D 0x1002. Then (p & -p) is 0x2. But that's MO_32,
+not MO_16. Am I missing something ?
+
+(Also, it would be nice to have a comment mentioning
+what (p & -p) does, so readers don't have to try to
+search for a not very-searchable expression to find out.)
+
+> +    case MO_ATOM_WITHIN16:
+> +        tmp =3D p & 15;
+> +        if (tmp + (1 << size) <=3D 16) {
+> +            atmax =3D size;
+
+OK, so this is "whole operation is within 16 bytes,
+whole operation must be atomic"...
+
+> +        } else if (atmax =3D=3D size) {
+> +            return MO_8;
+
+...but I don't understand the interaction of WITHIN16
+and also specifying an ATMAX value that's not ATMAX_SIZE.
+
+> +        } else if (tmp + (1 << atmax) !=3D 16) {
+
+Why is this doing an exact inequality check?
+What if you're asking for a load of 8 bytes at
+MO_ATMAX_2 from a pointer that's at an offset of
+10 bytes from a 16-byte boundary? Then tmp is 10,
+tmp + (1 << atmax) is 12, but we could still do the
+loads at atomicity 2. This doesn't seem to me to be
+any different from the case it does catch where
+the first ATMAX_2-sized unit happens to be the only
+thing in this 16-byte block.
+
+The doc comment in patch 1 could probably be beefed
+up to better explain the interaction of WITHIN16
+and ATMAX_*.
+
+> +            /*
+> +             * Paired load/store, where the pairs aren't aligned.
+> +             * One of the two must still be handled atomically.
+> +             */
+> +            atmax =3D -atmax;
+> +        }
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +
+> +    /*
+> +     * Here we have the architectural atomicity of the operation.
+> +     * However, when executing in a serial context, we need no extra
+> +     * host atomicity in order to avoid racing.  This reduction
+> +     * avoids looping with cpu_loop_exit_atomic.
+> +     */
+> +    if (cpu_in_serial_context(env_cpu(env))) {
+> +        return MO_8;
+> +    }
+> +    return atmax;
+> +}
+> +
+
+> +/**
+> + * load_atomic8_or_exit:
+> + * @env: cpu context
+> + * @ra: host unwind address
+> + * @pv: host address
+> + *
+> + * Atomically load 8 aligned bytes from @pv.
+> + * If this is not possible, longjmp out to restart serially.
+> + */
+> +static uint64_t load_atomic8_or_exit(CPUArchState *env, uintptr_t ra, vo=
+id *pv)
+> +{
+> +    if (HAVE_al8) {
+> +        return load_atomic8(pv);
+> +    }
+> +
+> +#ifdef CONFIG_USER_ONLY
+> +    /*
+> +     * If the page is not writable, then assume the value is immutable
+> +     * and requires no locking.  This ignores the case of MAP_SHARED wit=
+h
+> +     * another process, because the fallback start_exclusive solution
+> +     * provides no protection across processes.
+> +     */
+> +    if (!page_check_range(h2g(pv), 8, PAGE_WRITE)) {
+> +        uint64_t *p =3D __builtin_assume_aligned(pv, 8);
+> +        return *p;
+> +    }
+
+This will also do a non-atomic read for the case where
+the guest has mapped the same memory twice at different
+addresses, once read-only and once writeable, I think.
+In theory in that situation we could use start_exclusive.
+But maybe that's a weird corner case we can ignore?
+
+> +#endif
+> +
+> +    /* Ultimate fallback: re-execute in serial context. */
+> +    cpu_loop_exit_atomic(env_cpu(env), ra);
+> +}
+> +
 
 thanks
 -- PMM

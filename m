@@ -1,174 +1,109 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp125000ejq;
-        Thu, 4 May 2023 00:33:19 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6f+THUkJJtt7B8Z0wiGG10o4hSku4MNgr6eXBqrcPEXEhmXolP9yMUl038NjSKwTXeRGvB
-X-Received: by 2002:ac8:5dd3:0:b0:3bf:c474:df98 with SMTP id e19-20020ac85dd3000000b003bfc474df98mr4713973qtx.56.1683185599264;
-        Thu, 04 May 2023 00:33:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683185599; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp158582ejq;
+        Thu, 4 May 2023 01:58:59 -0700 (PDT)
+X-Received: by 2002:a17:907:1629:b0:94f:7844:b0ca with SMTP id hb41-20020a170907162900b0094f7844b0camr8086202ejc.52.1683190739238;
+        Thu, 04 May 2023 01:58:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683190739; cv=none;
         d=google.com; s=arc-20160816;
-        b=YboOVyEc1wVUdfDnPVmZMa4E02YMWQe4H6d9UM99bKiAG997HhGfWAqUPmmGbsyk0K
-         LqSVpKWFabKIE1m8gnXbVqOni1NliHhAp///2bpeAuzwYeyE0JmG32hyXl7GTwzDHCnJ
-         IYpzRCvjNpOtZcprIcOxkIZjq0PF1VwsBVd+pQZOfpIc2qqUs+KzklID1hSibWWkP+2A
-         MGPoIDnLF0eiR8w01zdXr9OlTMINpGCy++hDJ04ltZz/ONagrI7T0vihzKSP8iqseSri
-         +KjzEeG3CvLlFOjj7Cy5aOIxIEXmy6tiTxFi25/1l8LcqDSpBzvkToZ0XtJdOEqZmqPN
-         v4Nw==
+        b=d2vYqhHqBFJXy2sfhROBn/j8aMHA+FKPRokDoSIfWaUDif3UxyZra4WI6zztYfsyQp
+         RWEjauAWwbSjznJDYv9NyzqYhjt6RI0Co0YcjILlDJh9EIdZO0pqwq84uknpjgY9v7aE
+         Vp6r7bWaCkrpWP53lDaqaPe/xTIAT5KqgRywCusZL/HvUywkzsF8s6yiMXuHtop1aXe6
+         wUfEz4j3ATYe5YUH416UMQbR7ZR405dc+rcWcxMpPaoGwapk2VkKA2g9TIS0VVn+JQAo
+         XgA5wOxLtWb7wpbxlweUX6NPIJt52SLEeDYTp7295ZDTvfj7UrthlXxGrteKOLFD9HyC
+         0DXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=fCpmttJ9d5f9xVD9aDsHz2r2m3u3wo4We41P/UK796I=;
-        b=tbta3Q6QzOkct9Ypzk6ZP4+ql9K0vRIWN44Bi7hZ6h4zR+iWFYd3KAJygl3iJvHGis
-         wP/5Zopmijgj6DA4Nz2IXbbrkTOyGeDgu5bPq0h46vA0fVzSh/dgnZMxK0D+yYzZDsrS
-         LVulwN5k39T47iqDlAodLdmVfwH2bNoMlFvz7r3YNdRHl229UTVpQ3bjFB6FvxJ/3eGj
-         GrRC5FjI2nlxcLZELcu3xoKdnStjiZNB/DgH7xti/baLGK+AKHSK8gu7ZRwnGPWNrRqE
-         zWDBPi4DSP6lHtfmyqOA9A4Rpd96JEYv/lrc4ZR1x3pCeLSjYqSRZ1oRn0HpqBHTHvhG
-         85ng==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=R3mSHr8LX8Jlb3iO3WxDX0U5YHuTcyztxi8aDXDMHVk=;
+        b=Kzup8f/V91oPDdINusMDR3OSDPLElxonghLr7DvdDHcjvV/QOq/eaXq2hlHmYWGPXf
+         bJ6GipVruPM/beBVFuEwjNUJRpa67uu6dfBxtb2U/68nlBmxtQzCDvdH8qmw7uZiZn0h
+         HbBIz5tlmW4QhfkXqlnki4uj3HIZmIJQNsaKS3nPD9mLpPmkOAMfmawt92LeJGn7qXnC
+         FSUQZ+vDZQUN+/dMK/dmtDFbGnFHznRA5KxavtT9I92Lqi/0sgyQR9Yig+ST2SjjvmXm
+         dmCgbMO5NhaLBLpAk7wFWJqIFouUTVCNmK9S1YNxXiqZHXwXnf3+N18e/BSJPWvJ3VTn
+         nnzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aK7HWV0c;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d10-20020a05622a100a00b003e4ee9ab872si19643841qte.99.2023.05.04.00.33.19
+       dkim=pass header.i=@linaro.org header.s=google header.b=W53RnxM4;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a28-20020a509b5c000000b0050666eb54ccsor1794352edj.1.2023.05.04.01.58.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 May 2023 00:33:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Thu, 04 May 2023 01:58:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aK7HWV0c;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1683185598;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fCpmttJ9d5f9xVD9aDsHz2r2m3u3wo4We41P/UK796I=;
-	b=aK7HWV0clxJYjvF+cB7tikbIXc+mbQ4/whDsx9tDNv3YPx4mPBSveCfr1HLksaiWWwVEwL
-	CmlfD/kuY/WDSZCM5DqEoIbgcPwCk3oX46bcaWTNlaPVxfDUnpvI3FDL8GN8SOFElAQabU
-	aKc7LDqYg6Lw7lphDCfYuGfE1uF6LBk=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-497-3sGOAsnvOVuTP2B352HmlQ-1; Thu, 04 May 2023 03:33:17 -0400
-X-MC-Unique: 3sGOAsnvOVuTP2B352HmlQ-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-95376348868so17017066b.2
-        for <alex.bennee@linaro.org>; Thu, 04 May 2023 00:33:17 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=W53RnxM4;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683190739; x=1685782739;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=R3mSHr8LX8Jlb3iO3WxDX0U5YHuTcyztxi8aDXDMHVk=;
+        b=W53RnxM4qKooiKf0a1E1rtSMY3H/E6ZGPet1wQC6m0pTURLs4qkPqCyMRSBOGHUH6Y
+         wcB3Na6pgyA/N5iPa8aHwkm/hm6sc7Jhyd0hsEgy9G1v3oOtQt8DpkiUCFHz7rrrOgJ4
+         SoVmZgxRy661OrycHvvdIW3G+nSUGWqCp0IwCa9QQqdycJIqkvSLWGaFzTyb3mv/9v6e
+         kwO4yaPmpmTgYyYGwOPpwdf7GEPmCpeci5fuGYips3ostq+AvRXfWk2bV2nGdCan4atr
+         hQppMXDCbXF2V8vMoz2+QKYG+pwPkhcGAVhQgZognIem/U5X2X6z5EUMdvGjQvv7Kbls
+         G+TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683185595; x=1685777595;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fCpmttJ9d5f9xVD9aDsHz2r2m3u3wo4We41P/UK796I=;
-        b=h7iDvdUrJorhA+VEg3YoIfkW07icsOyGqdgSGwc/eFk2dlJIhHcPidBIUBZIhvEXh/
-         rg8QXlWoPSsR/oKczdRJ9Y4ZhyZ0FyDHwAEAsJ56JqsMWNpuobSzaMUTqLSWGmjpTJXC
-         SsJwvKrTSs1t94/X2AbSguvLtK7TWjEjxgFSbZjlMxCbXjtCiEuf7/b/cO8gwsQ3IykI
-         3XbejjRozMQ/BCKf9X6MuiJGHJfTORaCWsT/P9kiV9bH20sm7s9JS8wGILZnARryktpo
-         n7NS1eRF12gMIGkblnF1KcBKGqm1ROtr34VU5OsYekfQQwjYrLd6IOxGzCkLuSP5ifhs
-         rxkg==
-X-Gm-Message-State: AC+VfDwSwx2x4pA1UWzFXNMX1bZVGyqt7lv0bmrHZ7eHTGOBRkifFWeI
-	phD3/b4G9C/KATB/exrkHdoZpLw6Te06dVWBwHvX354AhD33V9fvYxeuQw1v2NYmEZpfMi+Nczg
-	F6l0um2iGFJcnkkNf
-X-Received: by 2002:a17:907:7fac:b0:965:9d20:a41b with SMTP id qk44-20020a1709077fac00b009659d20a41bmr1882641ejc.16.1683185595117;
-        Thu, 04 May 2023 00:33:15 -0700 (PDT)
-X-Received: by 2002:a17:907:7fac:b0:965:9d20:a41b with SMTP id qk44-20020a1709077fac00b009659d20a41bmr1882623ejc.16.1683185594789;
-        Thu, 04 May 2023 00:33:14 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from ?IPV6:2001:b07:6468:f312:1c09:f536:3de6:228c? ([2001:b07:6468:f312:1c09:f536:3de6:228c])
-        by smtp.googlemail.com with ESMTPSA id d9-20020a17090694c900b0095354acf666sm18401553ejy.92.2023.05.04.00.33.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 May 2023 00:33:14 -0700 (PDT)
-Message-ID: <3f8ed21a-6c05-e7a4-ab9a-c8f6ca041013@redhat.com>
-Date: Thu, 4 May 2023 09:33:13 +0200
+        d=1e100.net; s=20221208; t=1683190739; x=1685782739;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=R3mSHr8LX8Jlb3iO3WxDX0U5YHuTcyztxi8aDXDMHVk=;
+        b=Z/AEBCp78EnSzptWjZkBjt+bcZST0PAVw8jBwGGy/5xtaFJGf7AGsxhxTCetfUrKt8
+         CsJ8MXV++axyGgUInv7y7yBTcE5hY6TV3ZLzQKjIrW2m7P9HpYhEA5BqSwffoNoC3T8r
+         zRVzz/tjg352clvPDYCpErP/aQVVg3ca+jutWvLDt0FIoK6+yPZCeOunRGE8Gt25K8ee
+         mk4whpKgqzrM4JuhcyzRGepEYoPwi2lXDnDEh/Q73qJkb5UPLWYTq6Ec+rDpqewoiZ7d
+         jj1sMPLeWlom/YKaqz7bIg5Rg5l6WVogDsAb1LckWhsnwnTzEn0zyDwYMb2L2QCCmehI
+         SoBA==
+X-Gm-Message-State: AC+VfDzrGg/urRLZjLjfB4CEZhNF8O/Myb0y6WGXzRF5MkWs2cc9QOJ/
+	CX8NY3ishze/CoHzHmmew3T1wQoCHWZZabQtFSYihHJO1UbFUYEVPuc=
+X-Google-Smtp-Source: ACHHUZ7m35qj2uFEcMJ185kiR1wA9Y97qR2kWkJ/eiuIPegHBm9xaHB9FLpFyyQC8ug/RI3E5z13Q/KaWa+YsBS/BRU=
+X-Received: by 2002:aa7:dac2:0:b0:506:bc26:d6a9 with SMTP id
+ x2-20020aa7dac2000000b00506bc26d6a9mr1177720eds.8.1683190738910; Thu, 04 May
+ 2023 01:58:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.1
-Subject: Re: [PATCH 1/3] target/arm: Use CONFIG_SEMIHOSTING instead of TCG for
- semihosting
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20230503193833.29047-1-farosas@suse.de>
- <20230503193833.29047-2-farosas@suse.de>
-From: Paolo Bonzini <pbonzini@redhat.com>
-In-Reply-To: <20230503193833.29047-2-farosas@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: yzma3wQ6/4IW
+References: <20230503193833.29047-1-farosas@suse.de> <20230503193833.29047-2-farosas@suse.de>
+ <3f8ed21a-6c05-e7a4-ab9a-c8f6ca041013@redhat.com>
+In-Reply-To: <3f8ed21a-6c05-e7a4-ab9a-c8f6ca041013@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 May 2023 09:58:47 +0100
+Message-ID: <CAFEAcA9y0tZVCSz93ziHkwYaM_whaEnCko2=Zzyb=BGFySJyRg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] target/arm: Use CONFIG_SEMIHOSTING instead of TCG for semihosting
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 2MkBX08HS0Mg
 
-On 5/3/23 21:38, Fabiano Rosas wrote:
-> When building --without-default-devices, the semihosting code will not
-> be available, so check the proper config.
+On Thu, 4 May 2023 at 08:33, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 5/3/23 21:38, Fabiano Rosas wrote:
+> > When building --without-default-devices, the semihosting code will not
+> > be available, so check the proper config.
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+I think the changes to the ifdeffery are conceptually
+fine (only do semihosting if it was configured in), but
+it sounds like there's a separate problem here.
+Whether we need semihosting depends on the accelerator (ie
+"is it TCG or not"), not on what set of devices we're building.
+So the problem seems to me to be that --without-default-devices
+is causing the semihosting code not to be built in.
 
-for this change; however, there are two more related issues:
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>
+> for this change; however, there are two more related issues:
+>
+> 1) you still want to leave out the code if !TCG, because KVM is not able
+> to exit to userspace on semihosting calls as far as I understand
+>
+> 2) I am not sure why CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y appears in
+> config/targets/{arm,riscv32,riscv64}-softmmu/default.mak.
 
-1) you still want to leave out the code if !TCG, because KVM is not able
-to exit to userspace on semihosting calls as far as I understand
+Because those are the architectures which have
+"arm-compatible" semihosting ABIs ?
 
-2) I am not sure why CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y appears in
-config/targets/{arm,riscv32,riscv64}-softmmu/default.mak.
-
-Putting things together you also need something like
-
-diff --git a/semihosting/Kconfig b/semihosting/Kconfig
-index eaf3a20ef5b2..671020a33426 100644
---- a/semihosting/Kconfig
-+++ b/semihosting/Kconfig
-@@ -4,4 +4,5 @@ config SEMIHOSTING
-  
-  config ARM_COMPATIBLE_SEMIHOSTING
-         bool
-+       default y if (ARM && TCG) || RISCV32 || RISCV64
-         select SEMIHOSTING
-diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
-index 1b49a7830c7e..5e7a17d05bf8 100644
---- a/configs/devices/arm-softmmu/default.mak
-+++ b/configs/devices/arm-softmmu/default.mak
-@@ -41,5 +41,4 @@ CONFIG_FSL_IMX25=y
-  CONFIG_FSL_IMX7=y
-  CONFIG_FSL_IMX6UL=y
-  CONFIG_SEMIHOSTING=y
--CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-  CONFIG_ALLWINNER_H3=y
-diff --git a/configs/devices/riscv32-softmmu/default.mak b/configs/devices/riscv32-softmmu/default.mak
-index d847bd5692ec..94a236c9c25b 100644
---- a/configs/devices/riscv32-softmmu/default.mak
-+++ b/configs/devices/riscv32-softmmu/default.mak
-@@ -3,8 +3,6 @@
-  # Uncomment the following lines to disable these optional devices:
-  #
-  #CONFIG_PCI_DEVICES=n
--CONFIG_SEMIHOSTING=y
--CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-  
-  # Boards:
-  #
-diff --git a/configs/devices/riscv64-softmmu/default.mak b/configs/devices/riscv64-softmmu/default.mak
-index bc69301fa4a6..3f6805944849 100644
---- a/configs/devices/riscv64-softmmu/default.mak
-+++ b/configs/devices/riscv64-softmmu/default.mak
-@@ -3,8 +3,6 @@
-  # Uncomment the following lines to disable these optional devices:
-  #
-  #CONFIG_PCI_DEVICES=n
--CONFIG_SEMIHOSTING=y
--CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
-  
-  # Boards:
-  #
-
-Paolo
-
-> Fixes: 29d9efca16 ("arm/Kconfig: Do not build TCG-only boards on a KVM-only build")
-> Signed-off-by: Fabiano Rosas<farosas@suse.de>
-> ---
->   target/arm/helper.c       | 4 ++--
->   target/arm/tcg/m_helper.c | 2 +-
->   2 files changed, 3 insertions(+), 3 deletions(-)
+-- PMM

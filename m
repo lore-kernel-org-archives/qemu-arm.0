@@ -1,147 +1,126 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp282278ejq;
-        Thu, 4 May 2023 06:01:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6R13AIa91sSBQ9o9hH47jA9Vi1B03hgjDL4uGcVEMAm5kI6Lr5R5U2PmxKtFexqeE/UAbq
-X-Received: by 2002:a5d:46c2:0:b0:307:1bba:5cf with SMTP id g2-20020a5d46c2000000b003071bba05cfmr1353782wrs.17.1683205276565;
-        Thu, 04 May 2023 06:01:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683205276; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp368878ejq;
+        Thu, 4 May 2023 08:02:41 -0700 (PDT)
+X-Received: by 2002:a2e:8713:0:b0:2ac:826e:c5a with SMTP id m19-20020a2e8713000000b002ac826e0c5amr230530lji.1.1683212561825;
+        Thu, 04 May 2023 08:02:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683212561; cv=none;
         d=google.com; s=arc-20160816;
-        b=jRDsRWp1tAAeEBwIUHwLKoVrsCsiyjYvoR7OZvWYAiFReJgyNbHdnFW1HoL+sI0Y1J
-         GFzgo894/dyikaU8Iyz0NNYn6qspOuHzCfimmnnfDe0flY1fBTGe1PI9yRl6fuSluD4C
-         t0B+bsL/VsJiwBdVu/HV3jM6n5n0KyQ5R7HM6CCe/DJZwwPozRgC1qCeTV1XwoR/w4PO
-         gJS4n8/9zrWSKhfmnUXzpIRBEQ7RqCvxhBKycjEwISUCV4WKQQrpwTJIYBetYZ9687OR
-         zNjEe9VDnaUVLJ9Pq8H78NvRw6B2U+bVUTM7evgsJqAWV1ShPNlRL6AA3qp5+JOLjITp
-         E8KQ==
+        b=caO8RSbW6Vr9mYQ4e/r9baz5VYTbtF2j/eaMRo1OAjhlHWYWg4/Ot9HV8JTVUL8BAh
+         cFPMwsyMVGoXa0Nk0phvnqYqQEcWBQXU4p8m15x2UdCy0gcs2jgV2ewP1faJu60bvPAU
+         Z4VeWmk1i6phmABtoLRV4Al0MrXOpXU+HSKwziS12wLMTYLp+LEV2OBi5QOX1lZO8Bw2
+         U/mV3pE6Rum9HGlrAbamnqL60IdheFEeSVhtzjk+BUG7yyEX/UYxmR0mywUSsMU0cIXU
+         tD1M5VVvbY3t6c9yaQsWjnH77vyQQqgyuBWawW3oW0XoHqmL4RnkEXWSAA+qvfHkB3dk
+         Yx8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=0CNvTeBJC9NJbW36bHQEsE9hma/Iv/am1DYHSeKhXYU=;
-        b=f4HU7QX3GEF8H7c+moW9oH3pBX6oHQ0EYCKV6E7RXSQpsdxtAu4Wh8mqaoTmfvwP8D
-         QKIwHhgQ6OW1GEWKCsmQjtb0CoR1xAJF8R2ramlUYWFMh4Xhz8cr0tQ/o+fpHuSX0Z2y
-         NGqjcUa2nFP274ZDgyiB9Wy3grdbUKA9TII0pXavVTy7iPYw+Kqj5T8jOwJwSWXDDUVK
-         4F5q6UNM/s9w7xRL1teRQ6RBUdLyfBPtF298ynG8cNP1ybi7VsqFmfXrCceAD2CGk81M
-         Eg9KhyJ9k5900lphC0Yk0fA+XGM3qRi6NaVxnkoiNswMfSxs19ZXSBoRLfQ8S1OI7lGK
-         LBsw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
+        b=szj6XB9GR22IbxIB19yj1dGzcHJCdAXTKx+VPQraCHY9VO9Sis95E+/g9VMrYqYwrk
+         V+lKtRk/saZDk4y+O6D6VVP7ItR/bLPOmcAS27FuGQODqny9lta0VOnlgtlgItzTiX7G
+         QxrcK+VgwHikFw8g85OGIjjVUli9pZ/YVCxaZxBXfafxIFPRY+49f/zsH1YnwL/70haq
+         Q/HLyBrOKl54aVtQnuhNjy62TsXPfp6IMfkdwii9hMOhsNFnx+fizu/bS3NyiAUZbVuk
+         K3MKfb8pqEIMiweryZzYZ5jaHdVSqQVujGcCcj59FUtkdQCPgWd5M/q0Wqmm2Ucpf0hl
+         FS/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1XEGdvf6;
-       dkim=neutral (no key) header.i=@suse.de header.b=hYOmSgZt;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.220.28])
-        by mx.google.com with ESMTPS id u4-20020adff884000000b0030643e04393si2633455wrp.588.2023.05.04.06.01.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 May 2023 06:01:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) client-ip=195.135.220.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F5Lf4HMj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id s26-20020a05651c049a00b002ac82115532sor196849ljc.7.2023.05.04.08.02.41
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 04 May 2023 08:02:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=1XEGdvf6;
-       dkim=neutral (no key) header.i=@suse.de header.b=hYOmSgZt;
-       spf=pass (google.com: domain of farosas@suse.de designates 195.135.220.28 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id CF988339FE;
-	Thu,  4 May 2023 13:01:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1683205275; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0CNvTeBJC9NJbW36bHQEsE9hma/Iv/am1DYHSeKhXYU=;
-	b=1XEGdvf6vMCVSTb4QYfLvzlNb6u1HyHFbMjHgKD55zDr7HpvJ7XUQFjbJ7Q7TD++/OEDF/
-	/RE6WEG3nDX8EkD1zEnl3OIr7EFTbPPDr5wgR/Iqj0LoNHvuN2XHrCxdBiSfWQiqyNPrIs
-	VcXsQOEUNX5cNsN2vOp0P61gRa5IMeo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1683205275;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0CNvTeBJC9NJbW36bHQEsE9hma/Iv/am1DYHSeKhXYU=;
-	b=hYOmSgZtufLv0n6XLuWaojVL1UG5wP0WA83NVrwt0dxN3La5e/f3eqx3bx6ADJWlz7jbSB
-	Se/bY6GB7gLugjAA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 5C59813444;
-	Thu,  4 May 2023 13:01:15 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id 0MicCZusU2TdTwAAMHmgww
-	(envelope-from <farosas@suse.de>); Thu, 04 May 2023 13:01:15 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Richard
- Henderson
- <richard.henderson@linaro.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/3] target/arm: Use CONFIG_SEMIHOSTING instead of TCG
- for semihosting
-In-Reply-To: <CABgObfbBTUUAOmvKz9U2Esi3rmdYmbhw3uR5iouFYUwFGoG32Q@mail.gmail.com>
-References: <20230503193833.29047-1-farosas@suse.de>
- <20230503193833.29047-2-farosas@suse.de>
- <3f8ed21a-6c05-e7a4-ab9a-c8f6ca041013@redhat.com>
- <CAFEAcA9y0tZVCSz93ziHkwYaM_whaEnCko2=Zzyb=BGFySJyRg@mail.gmail.com>
- <CABgObfbBTUUAOmvKz9U2Esi3rmdYmbhw3uR5iouFYUwFGoG32Q@mail.gmail.com>
-Date: Thu, 04 May 2023 10:01:12 -0300
-Message-ID: <875y98cktj.fsf@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=F5Lf4HMj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683212561; x=1685804561;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
+        b=F5Lf4HMj5EDCPlBNDdOROkY7rL3tB9dkVfjlF0oq9y/8yhYT+/yhnK2nE0hwkHEV0y
+         5J81IkkQfN52l2ARjnvLgau0rCxMM8h2nWkOl0MdRdw21OFixdT4lJ5CNVbBry56mzfb
+         yr0Im6nBMdPRvddSuEfWCmGkCTA+AbZZPGCIlQGgb0H+2bOZ5xuw9X0rgQvNvcyVsaqG
+         YoSULS1L/3wBePrmXwue0lL9+kA541dX4KoJeTOLJqw2NalzEWjndaPNLSRT0eanCihr
+         XCJlUxZZVv+mqd7QbYRL+fueSvCNJ9nb57/sV5qMh6CMWw0SeasWIo/qXP605FRyniw9
+         X1zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683212561; x=1685804561;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
+        b=lfB72zoPgqwMAMkghYg0xlP6nNHglRmm6EDebyuRRqR7+me7nd4HJ2c97DEXVBsv03
+         17GIzZMssa0L2SWVx6VuyI7I0x+6GKiz4MI98/648Gr95ZHYSjWA3ETMDdSFqosKAJOi
+         6rwpLtYAu0MAKmJXVDpU+re13NQyhHm9G6NknEp1UarmUtZ1lgOAA8sD99nXztu1lPWC
+         Lxdz0925MYCdp/kgEsfrz+eVI9bgEsQbCwk1qvn7GkRzG9RNbHITgDU1H2ALDacF0ss1
+         WgHHKXFMoP/Q7xwv/hF25a559iaVpVEY/6cyWwcHWvivMHYB+ANnODs9h6yHb7a0PUiW
+         JjTA==
+X-Gm-Message-State: AC+VfDzOdgBKzLx9PnwQJkYwR/mxWNR3umOYr7VOyfi8OO8fhyKiSOU4
+	l3kh2Oe1SsdScO86rQ1OHKA7A8p2tnnRfbVb8rqWJQBY
+X-Google-Smtp-Source: ACHHUZ70ZJ5nS7SJYchXMEhZ86p6VAPNGSHQNuYDTYgMkadcT9NIj+L4y7vdoGyQ5J0eJRWMhP3UN0mLmAY/LPBKWdk=
+X-Received: by 2002:a2e:9b84:0:b0:2ac:7e64:ef8 with SMTP id
+ z4-20020a2e9b84000000b002ac7e640ef8mr971691lji.16.1683212561375; Thu, 04 May
+ 2023 08:02:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TUID: 0y22H0rwH/Tx
+References: <20230503070656.1746170-1-richard.henderson@linaro.org> <20230503070656.1746170-4-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-4-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 May 2023 16:02:30 +0100
+Message-ID: <CAFEAcA858-D37=MrvYnGxBVkL1V14wZ_JLEzFahbweRUDvPmwg@mail.gmail.com>
+Subject: Re: [PATCH v4 03/57] accel/tcg: Introduce tlb_read_idx
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: YNOairJ2wQ9K
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
-
-> Il gio 4 mag 2023, 10:59 Peter Maydell <peter.maydell@linaro.org> ha
-> scritto:
+On Wed, 3 May 2023 at 08:15, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
->> On Thu, 4 May 2023 at 08:33, Paolo Bonzini <pbonzini@redhat.com> wrote:
->> >
->> > On 5/3/23 21:38, Fabiano Rosas wrote:
->> > > When building --without-default-devices, the semihosting code will not
->> > > be available, so check the proper config.
->>
->> I think the changes to the ifdeffery are conceptually
->> fine (only do semihosting if it was configured in), but
->> it sounds like there's a separate problem here.
->> Whether we need semihosting depends on the accelerator (ie
->> "is it TCG or not"), not on what set of devices we're building.
->> So the problem seems to me to be that --without-default-devices
->> is causing the semihosting code not to be built in.
->>
->> > Acked-by: Paolo Bonzini <pbonzini@redhat.com>
->> >
->> > for this change; however, there are two more related issues:
->> >
->> > 1) you still want to leave out the code if !TCG, because KVM is not able
->> > to exit to userspace on semihosting calls as far as I understand
->> >
->> > 2) I am not sure why CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y appears in
->> > config/targets/{arm,riscv32,riscv64}-softmmu/default.mak.
->>
->> Because those are the architectures which have
->> "arm-compatible" semihosting ABIs ?
->>
+> Instead of playing with offsetof in various places, use
+> MMUAccessType to index an array.  This is easily defined
+> instead of the previous dummy padding array in the union.
 >
-> Yes but is there a reason to do it in configs/ where all the other symbols
-> are boards, or was it just overlooked and a "default y" (as I suggested in
-> the previous reply) or "imply" is better?
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-For arm it has been taken out of configs/ and moved into
-target/arm/Kconfig:
+> @@ -1802,7 +1763,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
+arget_ulong addr,
+>      if (prot & PAGE_WRITE) {
+>          tlb_addr =3D tlb_addr_write(tlbe);
+>          if (!tlb_hit(tlb_addr, addr)) {
+> -            if (!VICTIM_TLB_HIT(addr_write, addr)) {
+> +            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_STORE,
+> +                                addr & TARGET_PAGE_MASK)) {
+>                  tlb_fill(env_cpu(env), addr, size,
+>                           MMU_DATA_STORE, mmu_idx, retaddr);
+>                  index =3D tlb_index(env, mmu_idx, addr);
+> @@ -1835,7 +1797,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
+arget_ulong addr,
+>      } else /* if (prot & PAGE_READ) */ {
+>          tlb_addr =3D tlbe->addr_read;
+>          if (!tlb_hit(tlb_addr, addr)) {
+> -            if (!VICTIM_TLB_HIT(addr_write, addr)) {
+> +            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_LOAD,
+> +                                addr & TARGET_PAGE_MASK)) {
 
-...
-# This config exists just so we can make SEMIHOSTING default when TCG
-# is selected without also changing it for other architectures.
-config ARM_SEMIHOSTING
-    bool
-    default y if TCG && ARM
-    select ARM_COMPATIBLE_SEMIHOSTING
+This was previously looking at addr_write, but now we pass
+MMU_DATA_LOAD ?
 
-So I guess we'd need a similar change to what you suggested for ARM_V7M:
+>                  tlb_fill(env_cpu(env), addr, size,
+>                           MMU_DATA_LOAD, mmu_idx, retaddr);
+>                  index =3D tlb_index(env, mmu_idx, addr);
 
-config ARM
-    bool
-    select ARM_V7M if TCG
-    select ARM_COMPATIBLE_SEMIHOSTING if TCG
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

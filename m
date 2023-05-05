@@ -1,176 +1,163 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp284613ejq;
-        Fri, 5 May 2023 02:29:24 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4KCpCw8bW/cGm+B+ZzIoDsEh8OLQNpCGDBAo6PwGgpq6CFMq0UhC0+jqZ3xiU2Pd8H1LCV
-X-Received: by 2002:a05:622a:105:b0:3ef:2f92:464d with SMTP id u5-20020a05622a010500b003ef2f92464dmr1233648qtw.28.1683278963901;
-        Fri, 05 May 2023 02:29:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683278963; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp451459ejq;
+        Fri, 5 May 2023 07:16:41 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5GDOxO4T/G13uvpKWQ37WcXQaUEgV3JcZSkX5N+I29JA3GJPzRxWZB+L+llsOHbE6B5qQC
+X-Received: by 2002:a05:622a:306:b0:3d4:17dc:3fcf with SMTP id q6-20020a05622a030600b003d417dc3fcfmr2618604qtw.5.1683296201146;
+        Fri, 05 May 2023 07:16:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683296201; cv=none;
         d=google.com; s=arc-20160816;
-        b=wJGYO6A5mxpyQDms2ig0R1jg5Hx095rYRH1yklcKV4ckQq3jvUmwexIVMiY0FMgSQF
-         lO4qwGz3vIwvBoL8h8gGEmd0nqmNTU6AExdzZICDibFuWO55BEfx+pi+sJv0LS7gXOZl
-         hKQ6fBXHatdHItYPUDRcbtGHxOOcvybnxM8NvpotpiL7yQylmcINOPCbqh2ZQlHc50qe
-         YaoaO2+a2KEBZcFMJ1/Ejpn9grCZJ0qxpUFrUvJbOqcYSnzdQgiwKe6DrVfBzl8Iauf9
-         gEH6gLMwNU4DwOlB8um7Z458c7UFmaBQOdnhAy9noBxalz7fisElt5DMef0GzPNgQSa7
-         2w6g==
+        b=c8m/z2/LrabC/0jzuJu37MttvQVinCPlZYFBPJTy6HxBKSr98+L8IFrjRQWh12tt2I
+         Jzm2D+10BVbLdL4Qsa52M+6/z+Hyhg02m6u/m6riSerTx0KZN9xfFWxanBNmnJnT08RD
+         NgiZf19ALG/Gf4IfJkp6U1GGnngxot0Xvy2yohGI5stpVEgltW6nAocaRqn6VMX8eXM7
+         F0O7Rrbt3mdQ0PyDOLNavQrhtKeeY/lXFnMi8jlOlP9hnO10uaWi7nvCIx8KicGz5X32
+         MHQl4mA3LukyGhmf7EvwcLukRDwkiAl+Hw6T/cvDqj7LZornCmkb9bkU7cEFE8L4b0rp
+         ozTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/qr0u344BdwIFPa4ftATtrgTevlZCM3vdy0U5ev0PUY=;
-        b=vqTMbmNCKcEaHeN92Se73fetwKI0UDPWSwLqBe5YBXbe8GUe/tJ5ksdBF0YlmtAjn+
-         5q5mg+lDuSc7h1hwVuVDTxZg/SD+2Cans9DUy+BjbCwG8qG9AHm8A7RC18yGoNK6lY47
-         dvKqTRDYwBjZgRVo7HQnmMqcUvUdrVn0jdS3/lxS0f9JmRbw3SUvW9N4vNP19DqVy+VZ
-         FfRaooqE/YO81y5HKWSb6jzvAKT8KDSDR1Y+tk6O8hmkm2enEWBFbmgoP6fJLTzxQZ5E
-         Xj6mKXm1tu5SHD0beiKJgPjtJ+jNFoxxX6Sodzn4FhNRDyWxB4Kwy2vi664lrPASpcpL
-         y7yA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:ironport-hdrordr
+         :ironport-data;
+        bh=0zCd8HzVHed5nm2mp/456suk78PTEVzX+jrv42K34+4=;
+        b=Nk7qm5famWekkNsgV4bJPnmHQGH9aSTWy7w2ABN5A9cV1o0L5CIgg3UB1avO4s9izI
+         OaXqtKswYtI8xi48fLPet0Y3CcfCub4MQkXJYIDYue/izmLsxy/yMowbPgO38OHBhkSk
+         i/DGj3j5wuzGWaAQPmGEqtlvqjpRJVHK688hFY3T+7CqLA0VQ/QxN7boA4iIcl+K//XG
+         +aVexwxLZgKKfYmcOkyUdu9uELwAgqbYpW0o4XMrjxZthvZuky/f2f1e8Cx4DzTVqit5
+         JcpCrUIyWZAe8ZVfWtuPQmVbgreffXTRuTujun+NJnzmzjopu1e069mk97GLzsC3etPK
+         324g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vG5AeZXY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20-20020ae9ea14000000b0074e4ab18191si482405qkg.732.2023.05.05.02.29.23
+        by mx.google.com with ESMTPS id b15-20020ac87fcf000000b003adff1955edsi609372qtk.662.2023.05.05.07.16.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 May 2023 02:29:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 May 2023 07:16:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vG5AeZXY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1purk6-00069q-9q; Fri, 05 May 2023 05:28:46 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1puwDc-0005pO-2r; Fri, 05 May 2023 10:15:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1purk5-00067b-ES
- for qemu-arm@nongnu.org; Fri, 05 May 2023 05:28:45 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1purk3-0007T2-Pz
- for qemu-arm@nongnu.org; Fri, 05 May 2023 05:28:45 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-50b37f3e664so2622151a12.1
- for <qemu-arm@nongnu.org>; Fri, 05 May 2023 02:28:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683278920; x=1685870920;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/qr0u344BdwIFPa4ftATtrgTevlZCM3vdy0U5ev0PUY=;
- b=vG5AeZXY1t21vSZle0v+DGZBb06m36i1h49nszAnwZxxP38opXAlqFys8xjc7Iy9Ix
- wHDjmr+a15lB2xXJm98Iy9veqsFag2Y04wtHA35SLr0nj42fkaPkGocc+KmG4+TE73a+
- b6buAR+SoOny7ph1wzaa58bQi3Wf8jxhzUDuTOwIyQvjqQgZOsrHHAQWvua/Cv9OBzo3
- T+Wu5izd5i1IvNVmgzMkcL9o7o/rZ/w92IJ14C6SLWyjHoCZPnjXFr0/txj7tpLApiO2
- 9Z3fHS0jOEyphrrEoV72N0/1k2/in4BZFGDKrl6wyb8Vv/vnuNlvB+GOVKbz78CFwL97
- xQyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683278920; x=1685870920;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/qr0u344BdwIFPa4ftATtrgTevlZCM3vdy0U5ev0PUY=;
- b=c7NgDpIHvvgX4Zm0PQLrLD7E2zEaBPzieZM93suBCIahkGs0RI1H45lMiOfEy1n89P
- RQzcrOcu6u0DZ5kjL6+HSXzF6CVAn7njZB6nC+0YXE5+FfvsJk+YeL8ZG8MF/sCdvNco
- SpjSEySOU379jpaHwKjFvTU5IfISkcs/IyQEGCfR3wSkzOP7lETVZdHSrfzsX5PXb6sX
- KR1kRoQaU+0ty1AtsTpXzBSC+1l5hE0YjR8TiAv4oBhUTv+kM4gx1RqXHumQ02toB4Q+
- 5Cdh8Lz3mzbF4XA9aEnpYRGtXgGKZOetO1HOZjWzkcSs6SLdG8y2QvsYVsPL8Pcc5b7I
- aOZg==
-X-Gm-Message-State: AC+VfDxK6v1zSJMf/yEcFg/LapSa/mnqjxj9AdaQXlH3+1mAu79O3cam
- Qr2LHOVlJ0fZh8kM8cxM5t4glOSumNgCd0F6HOm1zg==
-X-Received: by 2002:a05:6402:1347:b0:509:c669:1e93 with SMTP id
- y7-20020a056402134700b00509c6691e93mr768648edw.23.1683278920472; Fri, 05 May
- 2023 02:28:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tobias.roehmel@rwth-aachen.de>)
+ id 1puwDO-0005m2-1X; Fri, 05 May 2023 10:15:18 -0400
+Received: from mail-out-4.itc.rwth-aachen.de ([2a00:8a60:1:e501::5:49])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tobias.roehmel@rwth-aachen.de>)
+ id 1puwDI-0001KR-1i; Fri, 05 May 2023 10:15:17 -0400
+X-IPAS-Result: =?us-ascii?q?A2DwBACqDlVk/5sagoZaHQEBAQEJARIBBQUBQIFPggaBH?=
+ =?us-ascii?q?YFaGwGENZE4n1wPAQEBAQEBAQEBCAE5CwQBAYUGAoVGJjgTAQIEAQEBAQMCA?=
+ =?us-ascii?q?wEBAQEBAQMBAQYBAQEBAQEGBIEdhS8MCCUNhgUBAQEDIw8BBUEQCxQEAgImA?=
+ =?us-ascii?q?gJXBgEMAQUCAQGCegGCXBOtFoEygQGgHoEEHQYJAYEKLYkziCKCT4E8gkw4P?=
+ =?us-ascii?q?oJiAoFOg22CZwSOWoEoiF6BMHSBJ4EugQQCCQIRQyiBEAhpgXRAAg1kCwttg?=
+ =?us-ascii?q?UCDDQQCETQODBUFVQKBBggUARMDBwcCAYEaEDoHBEAoDAcJHw4lBA4DGSsdQ?=
+ =?us-ascii?q?AIBCzs6PTUJCx9LK4FZBC9aewYBJSSYJYQUIg2CDsQeB4IrgVaLdYhIjDgGQ?=
+ =?us-ascii?q?pcZBpIpmAAgjTaaKQIEAgQFAhaBeoF+cYM2UhcCD4wugxgBCIJDj3tzPQIHA?=
+ =?us-ascii?q?QoBAQMJgjmEDYNrAYETAQE?=
+IronPort-Data: A9a23:AQe7AK2k7docR87eM/bD5ctwkn2cJEfYwER7XKvMYLTBsI5bpzQEz
+ 2seUGvXM/vcNDagfYt+PI20pE8D78LTzNJgSwRk3Hw8FHgiRegppDi6BhqqY3nCfpWroGZPt
+ Zh2hgzodZhsJpPkjk7xdOKn9xGQ7InQLpLkEunIJyttcgFtTSYlmHpLlvUw6mJSqYHR7zil5
+ JWj8qUzBHf/g2Qvaj9MtvrZwP9SlK2aVA0w7wRWic9j4Qe2e0k9VPo3Oay3Jn3kdYhYdsbSq
+ zHrlezREsvxpn/BO/v9+lrJWhRiro36YWBivkFrt52K2XCukARviPphZKpEAatgo27hc9hZk
+ L2hvHErIOsjFvWkdO81C3G0H8ziVEFL0OevHJSxjSCc5x34WWW8yudfNkARAZc22/hdLEAS8
+ NVNfVjhbjjb7w636IiEdslBtoEYdozBepkApnElxD2fAftOrZLrGv6Wo4YDhHFq2IYXQKu2i
+ 8kxMFKDaDzcZBdOM0xREpUznOKlglHlbCFY7Vucrqo65S7fwWSd1ZC0b4uPJ4HUFJU9ckCwo
+ jjHoXXGUhUmP//A82Gs8Emcq8jBpHauMG4VPPjinhJwu3Wa12UVCwATXHOypPX/gUm7M/pHJ
+ lAZ4GwrpLk++UivZt38WRSipziDpBF0c8NdFvB/5AyTx6785QGfCW4ZCDlbZ7QOrcIzWHkjz
+ FqhmdTvCjpy9rqPRhq17auZozq0Pm4OMWYIaCsATA0Ey9DmrMc4iRenczp4OLSqkt34CXTrm
+ XWA6jIhm7VWhMJN26jTEU37vg9Ab6PhFmYdjjg7lEr8hu+lTOZJv7CV1GU=
+IronPort-HdrOrdr: A9a23:xAlX6KOGNM23ksBcTvWjsMiBIKoaSvp037BL7TEIdfUxSL3/qy
+ nAppsmPGDP+VQssR0b8+xoEpPwIk80jKQV3WBJB9eftWrdyRKVxf9Zg7cKqgeIcxEWkNQw6U
+ 4KScND4bPLYGSTqK7BkWyF+pkbsb26GQuT9IDj80s=
+X-Talos-CUID: 9a23:+IJwTW+xe+AQpehL9wCVvx4qMN51e2/s9nb3H1WWKHhDZZzJTHbFrQ==
+X-Talos-MUID: 9a23:9GTdYQXzm1Qy+lvq/Du2hW9zC5ds36+NV3pWuJc9i+SjOxUlbg==
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-AV: E=Sophos;i="5.99,252,1677538800"; d="scan'208";a="179255698"
+Received: from rwthex-s2-b.rwth-ad.de ([134.130.26.155])
+ by mail-in-4.itc.rwth-aachen.de with ESMTP; 05 May 2023 16:15:02 +0200
+Received: from [137.226.252.162] (137.226.252.162) by RWTHEX-S2-B.rwth-ad.de
+ (2a00:8a60:1:e500::26:155) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.26; Fri, 5 May
+ 2023 16:15:01 +0200
+Message-ID: <28bfa9ad-f8dd-d195-ec66-fbd2d78d170c@rwth-aachen.de>
+Date: Fri, 5 May 2023 16:15:01 +0200
 MIME-Version: 1.0
-References: <20230503070656.1746170-1-richard.henderson@linaro.org>
- <20230503070656.1746170-8-richard.henderson@linaro.org>
-In-Reply-To: <20230503070656.1746170-8-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 May 2023 10:28:29 +0100
-Message-ID: <CAFEAcA8aqJXGcFSTU1dz6bSeJL5n+cmHq3ATt4xZGZsehJk6Tg@mail.gmail.com>
-Subject: Re: [PATCH v4 07/57] accel/tcg: Honor atomicity of stores
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
- philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-s390x@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.1
+Subject: Re: Cortex-R52 support in Qemu
+Content-Language: en-US
+To: Ayan Kumar Halder <ayankuma@amd.com>, <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, "Stabellini, Stefano"
+ <stefano.stabellini@amd.com>
+References: <a1c45644-90d9-0fd2-c87b-f43f16b7e407@amd.com>
+From: =?UTF-8?Q?Tobias_R=c3=b6hmel?= <tobias.roehmel@rwth-aachen.de>
+In-Reply-To: <a1c45644-90d9-0fd2-c87b-f43f16b7e407@amd.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [137.226.252.162]
+X-ClientProxiedBy: rwthex-w1-b.rwth-ad.de (2a00:8a60:1:e500::26:157) To
+ RWTHEX-S2-B.rwth-ad.de (2a00:8a60:1:e500::26:155)
+Received-SPF: pass client-ip=2a00:8a60:1:e501::5:49;
+ envelope-from=tobias.roehmel@rwth-aachen.de;
+ helo=mail-out-4.itc.rwth-aachen.de
+X-Spam_score_int: -84
+X-Spam_score: -8.5
+X-Spam_bar: --------
+X-Spam_report: (-8.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-4.28,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ToQXts4e3ozU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w5Hw3wJg0s+h
 
-On Wed, 3 May 2023 at 08:11, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+Hi Ayan,
+
+as far as I know, there is no board/SoC that uses the Cortex-R52 in Qemu 
+right now. If you want, I can try to find the one that I used
+during development. I was able to run Zephyr in Qemu with that code.
+
+Best regards,
+Tobias
+
+On 05.05.23 14:21, Ayan Kumar Halder wrote:
+> Hi Tobias/Peter,
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  accel/tcg/cputlb.c             | 103 +++----
->  accel/tcg/user-exec.c          |  12 +-
->  accel/tcg/ldst_atomicity.c.inc | 491 +++++++++++++++++++++++++++++++++
->  3 files changed, 540 insertions(+), 66 deletions(-)
-
-
-> +/**
-> + * store_atom_insert_al16:
-> + * @p: host address
-> + * @val: shifted value to store
-> + * @msk: mask for value to store
-> + *
-> + * Atomically store @val to @p masked by @msk.
-> + */
-> +static void store_atom_insert_al16(Int128 *ps, Int128Alias val, Int128Alias msk)
-> +{
-> +#if defined(CONFIG_ATOMIC128)
-> +    __uint128_t *pu, old, new;
-> +
-> +    /* With CONFIG_ATOMIC128, we can avoid the memory barriers. */
-> +    pu = __builtin_assume_aligned(ps, 16);
-> +    old = *pu;
-> +    do {
-> +        new = (old & ~msk.u) | val.u;
-> +    } while (!__atomic_compare_exchange_n(pu, &old, new, true,
-> +                                          __ATOMIC_RELAXED, __ATOMIC_RELAXED));
-> +#elif defined(CONFIG_CMPXCHG128)
-> +    __uint128_t *pu, old, new;
-> +
-> +    /*
-> +     * Without CONFIG_ATOMIC128, __atomic_compare_exchange_n will always
-> +     * defer to libatomic, so we must use __sync_val_compare_and_swap_16
-> +     * and accept the sequential consistency that comes with it.
-> +     */
-> +    pu = __builtin_assume_aligned(ps, 16);
-> +    do {
-> +        old = *pu;
-> +        new = (old & ~msk.u) | val.u;
-> +    } while (!__sync_bool_compare_and_swap_16(pu, old, new));
-
-Comment says "__sync_val..." but code says "__sync_bool...". Which is right?
-
-
-> +#else
-> +    qemu_build_not_reached();
-> +#endif
-> +}
-
--- PMM
+> Greetings.
+>
+> In the following commit, I see you have added R52 support in Qemu.
+>
+> commit 5f536d01d1141a56f5057b62c82fa94826d367f0
+> Author: Tobias Röhmel <tobias.roehmel@rwth-aachen.de>
+> Date:   Tue Dec 6 11:25:04 2022 +0100
+>
+>     target/arm: Add ARM Cortex-R52 CPU
+>
+>
+> 1. Do you have quick instructions on how to build and test it ? I have 
+> ported Xen for Cortex-R52 (using Arm FVP) and would like to see if it 
+> works with Qemu as well.
+>
+> 2. Have you (or planning in near future) to add support for qemu-r52 
+> in Zephyr ? I can see an old ticket
+> https://github.com/zephyrproject-rtos/zephyr/issues/47330 , but don't 
+> know if you have integrated qemu in Zephyr.
+>
+>
+> Kind regards,
+>
+> Ayan
+>

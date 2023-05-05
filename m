@@ -1,123 +1,139 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp383870ejq;
-        Fri, 5 May 2023 05:35:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5ox3h0fWEiBkx2tAp22F+C6ZWD9F6lXvF330CfAiNe+RxP/Ley9SM1d2PsJ/my1PmawySB
-X-Received: by 2002:a05:600c:259:b0:3f1:7123:5f82 with SMTP id 25-20020a05600c025900b003f171235f82mr1123291wmj.12.1683290137630;
-        Fri, 05 May 2023 05:35:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683290137; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp384270ejq;
+        Fri, 5 May 2023 05:36:14 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ405EZ88jL1MdYR8lE7bQYIBqiQM0n5NKwvtWyLcKAC8Xvj3usWYvm2KdrLk4onJfqK1If2
+X-Received: by 2002:a05:6214:21ce:b0:61a:281b:9a61 with SMTP id d14-20020a05621421ce00b0061a281b9a61mr1874969qvh.4.1683290174661;
+        Fri, 05 May 2023 05:36:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683290174; cv=none;
         d=google.com; s=arc-20160816;
-        b=I/OeMRQokJIqvWQUUCMwJD1K06NtHUDZxVJ0b2S7SYyLdI644bdKgeVnI2VEj2+4c2
-         qQ2hh1iqUvUPmoAAxtyoxUfoBqbhIGbUeRkzeiwZsrlaAIr0+iYHrXKGVak22q31FmP9
-         Muw7iDX2yHVitdZR4PHQ+sDtxFgpafSAjz9ZPHzywq8vxq7ZenpZjneX3OqazRvkc5yi
-         Z2YqED4qmOA8Fpm8edpMYUwy9p6EGCl4wVyFTRrf6UbCH0nRwkqtYgk0i4y0af3Gozkl
-         i2nLrj8CRBfo4z33Az/wjIbADmQD+wdBh/M4vKzi8q073bQxG9TixwyAHR9EVm22Bukd
-         Onvg==
+        b=cJOmzLwVd15O2IBZ6wKy8yiJFJLy6SpVC77TrxQiNLHe8nsPEj1+fJv9fettzQgX9N
+         +oCLIz59Xc9deroLLR/1MbV0gT1A40CCP0b8p6PqJDLiR/ezcRzWuiGKRqfF0CV8Redk
+         izYjspe4ptTKNJe2QyrPuGXBFd68Cu1Bce0YAq/SCmtWPt5bKPi/5zNsWRecwQZ0P8LL
+         ss0MIZfqaQN5ejitKADUqEwFtsBpgZb6fUefPbdOt3GL1ZWNaxP5ayeh7zjRZ3AmMKo0
+         sHfUNG2kiSaNxw9mGhLlxt7jLVShkm5i7vnA9hmordOay/XbLUYXn0d2lsK/lsnI6Yi2
+         gHJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=pb4QQCvxzabUE7t1Q+mi8AHbjHxilUXW5WJZhE5XcO8=;
-        b=HN65get2FOxPOZpEEEegLuJ7K6ROCMzyPo5dp0aAR87W97IniTcNyKzyKqaGzaIYG1
-         OCCVaEJ1CAU+wh6XeL/4bDaPeLfB1uQ+eBSmZeA50MkaPYUH3jHSSPFHRTRJDoatsvbx
-         TsFL0dWU0D4+p+XtehHY6fMakvtx2H3OIQETRtZqEBmFKOgJ5Wxjhfyd2LhNk9SdJ5an
-         kVPTkdJ98yCQTiSix7aKh6oGZbGr1lNDwlWrSzMcfFKdqMR39akEr3NMlW84cLvg4Plb
-         MdngtUuscxbFmJqhuS+4T4R8W5ntverMVHh+DyYTk/ENNW+oamgeWSijDFf8uBIzk4ip
-         dWNw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=282qbiXnnduELh7hkBMA30hUmbArrUsj8vwL5LNJ9X4=;
+        b=V/iMDSpMAh3U+aqPqb93WeeJQShYzEmjbOq/nHqNe62/T8pE8kvH8PxDG4OkS4Gp0k
+         Lwh2Rzc59Ni+9j5HJa+dY//Wqbt6H0sM4DFAd+npSVxFENemrQJPG1j9I/mOwlMOiDCk
+         nEhHPlv8XimdBvVA98hzL2xEHQvoTaeSCF5vcbfLWTjfawgx4cg1oBCcOAQ8w3vBUX6W
+         BTkoReJh/wo0PgAZC2J/NK6An5ic/pBWcCHcvXkpDu++ikGa0fkC7DZJgIadBgYwsphC
+         6hcj0qnXVsIWudXiO8HNX7m51MK8YfWC4zJ37lqiAJ7vrPZKly4XBuKTSzrSmE+tJg91
+         WjTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=xvfyqIiC;
-       dkim=neutral (no key) header.i=@suse.de header.b=iMYiTMt3;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2001:67c:2178:6::1c])
-        by mx.google.com with ESMTPS id z15-20020adfdf8f000000b00306381536b7si1009570wrl.963.2023.05.05.05.35.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 May 2023 05:35:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) client-ip=2001:67c:2178:6::1c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Xfg7o4TS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o25-20020a05620a15d900b0074de7342caasi601046qkm.511.2023.05.05.05.36.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 05 May 2023 05:36:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=xvfyqIiC;
-       dkim=neutral (no key) header.i=@suse.de header.b=iMYiTMt3;
-       spf=pass (google.com: domain of farosas@suse.de designates 2001:67c:2178:6::1c as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 35D2A22AE4;
-	Fri,  5 May 2023 12:35:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1683290137; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pb4QQCvxzabUE7t1Q+mi8AHbjHxilUXW5WJZhE5XcO8=;
-	b=xvfyqIiC3NfSsheYxbY+03fcoTktw83ajKLz3+erle2NF3QOQxt38Yi7mYEAqEIbNBrdd+
-	nJ1KuKddhQMVZKMJbDk2Euu9h6NWbi2p2jZKZGdFmLjdI+6mUe4uklfYhnia/iZxG5BvhJ
-	yCdTyl7iMuqCXL2uOmIn/p8nlNmeO0U=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1683290137;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=pb4QQCvxzabUE7t1Q+mi8AHbjHxilUXW5WJZhE5XcO8=;
-	b=iMYiTMt3HiH6mtiRUK8lpHyL9sFxK1aieXDeC5tOK+DmDVrmP2DIa3K/2AVMi8wRWkKM1U
-	+Lms5Eb/GNF/9QDQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 7D82113513;
-	Fri,  5 May 2023 12:35:34 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id SPJAERb4VGTaOgAAMHmgww
-	(envelope-from <farosas@suse.de>); Fri, 05 May 2023 12:35:34 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 3/3] tests/qtest: Don't run cdrom tests if no accelerator is present
-Date: Fri,  5 May 2023 09:35:24 -0300
-Message-Id: <20230505123524.23401-4-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20230505123524.23401-1-farosas@suse.de>
-References: <20230505123524.23401-1-farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Xfg7o4TS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1puuer-00034V-C5; Fri, 05 May 2023 08:35:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1puuep-000334-O2
+ for qemu-arm@nongnu.org; Fri, 05 May 2023 08:35:31 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1puuen-00050T-1a
+ for qemu-arm@nongnu.org; Fri, 05 May 2023 08:35:31 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-50be0d835aaso3070921a12.3
+ for <qemu-arm@nongnu.org>; Fri, 05 May 2023 05:35:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1683290126; x=1685882126;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=282qbiXnnduELh7hkBMA30hUmbArrUsj8vwL5LNJ9X4=;
+ b=Xfg7o4TS9VJwM5dEFINYVTvNyXTT27KhVLJncaVpsZDNOgR3nde3puo0Tra40CjCQJ
+ Ps7UWu3efmuehxBHpJeYlfDL6zHWPnzKd90svHg+dQBnnT4GoCCjCWjb2eOgwmSPhuBH
+ tMAHRDASEHLXVVi/qfbRkYF9NXP9o8jgEKcyfXw0PSdbeHz1P8+HbPKQ8qknl0IO5+IK
+ yoRp5pgGJtNgmNwGQDPeXhiKm+cymPrPo0GwP/UAdhmF96eamsh1HsF73LDi36By6E/p
+ MmGD+jF3dCiQ34G1zJsgdXYEoDuDxHXyQiDiJ/ZJ68RMuJrlY/Dv6obM16KzDePE3tRu
+ 4wvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1683290126; x=1685882126;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=282qbiXnnduELh7hkBMA30hUmbArrUsj8vwL5LNJ9X4=;
+ b=hv7fajCyvdcaGhoG8Vbre2nIp7HiBCPHwPkXT2ynnPuxvH+AnQrwmYisrgglzzHwn5
+ mOz6QYGe+Isj+gG5f3IKBW70+CWs9W8Wkb38hofKoguWhV1qh3DyBsIh2+3hRaYqKfDK
+ Ff+o3Fi9oJeVFNyDWsdEdU/RNqi26nQPUjRLWHWqbHBjid60kVBbFTMyS6zYFjqQatrU
+ BgHZwWFk92pbV/t8o9eDLuvkNjI8HG8Ax3thW1Md9Jg06RU6UGCIkoIzYmNYR+2NSXJ4
+ Kue/Xjhdzr6EUhMUDX5YopJr+5KKNfxnoFIZYGZlT+tFp6RuYAYkvYWJbD7xwTAQKKri
+ Ya3w==
+X-Gm-Message-State: AC+VfDyP7Q0+QFqxs7Si39gbgLJFFkXN6NPWLtt9kkz3UlrWqwsLoBOO
+ 2K7gcrqxTzwM9XI4+56PBYO8CbvkgBwcc1dfLhOgwQ==
+X-Received: by 2002:a05:6402:3456:b0:50c:cde7:285b with SMTP id
+ l22-20020a056402345600b0050ccde7285bmr1429278edc.29.1683290126188; Fri, 05
+ May 2023 05:35:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: iC4cSjZtW7eA
+References: <20230503070656.1746170-1-richard.henderson@linaro.org>
+ <20230503070656.1746170-38-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-38-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 5 May 2023 13:35:15 +0100
+Message-ID: <CAFEAcA_K7Nqp-4ovoAtySMY7x4f9LpBMgv6HQtaMvBs4Fz9x5Q@mail.gmail.com>
+Subject: Re: [PATCH v4 37/57] tcg/loongarch64: Support softmmu unaligned
+ accesses
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
+ philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+ qemu-s390x@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9fjfou+y75nU
 
-On a build configured with: --disable-tcg --enable-xen it is possible
-to produce a QEMU binary with no TCG nor KVM support. Skip the test if
-that's the case.
+On Wed, 3 May 2023 at 08:25, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Test the final byte of an unaligned access.
+> Use BSTRINS.D to clear the range of bits, rather than AND.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Fixes: 0c1ae3ff9d ("tests/qtest: Fix tests when no KVM or TCG are present")
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
- tests/qtest/cdrom-test.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
-index 26a2400181..09655e6ff0 100644
---- a/tests/qtest/cdrom-test.c
-+++ b/tests/qtest/cdrom-test.c
-@@ -205,6 +205,11 @@ int main(int argc, char **argv)
- 
-     g_test_init(&argc, &argv, NULL);
- 
-+    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
-+        g_test_skip("No KVM or TCG accelerator available");
-+        return 0;
-+    }
-+
-     if (exec_genisoimg(genisocheck)) {
-         /* genisoimage not available - so can't run tests */
-         return g_test_run();
--- 
-2.35.3
+(at least, it's the same general shape as other architectures;
+I have no loongarch-specific knowledge)
+
+thanks
+-- PMM

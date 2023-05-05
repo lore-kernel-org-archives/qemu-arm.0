@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp301737ejq;
-        Fri, 5 May 2023 03:05:07 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ53zi4BCNiHTgTFubb3IPpQhCz2rVBdlxHinnbiZHHrAOvc+6Pv/D+g7qIb87siYY0qriGX
-X-Received: by 2002:a05:6214:76a:b0:5cc:277c:b4e with SMTP id f10-20020a056214076a00b005cc277c0b4emr1059661qvz.39.1683281107439;
-        Fri, 05 May 2023 03:05:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683281107; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp315223ejq;
+        Fri, 5 May 2023 03:30:29 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5T1aul3nJgSD87aT4mAaJBku7QCxv1Ys7ZXkflkyYRd8JgFXCsvXILXJmqq9S1e+/iRTeW
+X-Received: by 2002:ac8:5754:0:b0:3e3:7dc9:b85a with SMTP id 20-20020ac85754000000b003e37dc9b85amr1716966qtx.59.1683282629702;
+        Fri, 05 May 2023 03:30:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683282629; cv=none;
         d=google.com; s=arc-20160816;
-        b=EJNyvdAf8J5PqN7G033Pwf/RNl7SQq8nDjKVD+0T6E9/auQdDZpEXHhnizkTRMSkc9
-         S01/lmlI38fJ07SIRSX22+NjzTPwWCK5PZDWCPYc5q32OKOtzXDArxkXTftrGX8JOHBS
-         ZpxQ4oTMwDZ7T/+jO+RezwXWFbvmxQ4pY3Xzrs8Fg+t5ma46+8ae1K37ZU7QljV5UUcm
-         2bSHJdVrrt4vkJbvmBRq2iJIbBxhrmao0x6ImN3RR0e8/IkXp4EPErjFG7QADbmNYR6g
-         6aNIN0zkPlMqgve+vQLlA8YoupXQVfQ2AZWNKbMdD/PyIQYgV7bGIH/6L8kvxkT58UXo
-         v9vA==
+        b=Ske7el1YDQGdd9nZCr+OThyFBUENFZGMYGY2lfE5u5Qe7t7sRcnKbgNhZQAkqjvufK
+         GYTDv5c2mQi9u5jFP7qiViI6ZOuRPxadRvxpMnDDTZXFw7CBLc8qMBlLFMTbgEqt18Tb
+         8bwL1+0RpGAXtJQZl5TLUekmT2Bk2ZJ5F5gonXDQ5FTQX46rl2S/QIRo8yD/9kt/aeO/
+         Xac66DkQdsh9wk3scu0XPQiCiwZNGZkM9Ke5OOpMhq6TbquflrLDApoWqxPwjDFMqhGp
+         z4mQwYhFHP2KqDD/6vXYmJfGQPuZd2gfKTQ04+K/jtV++CVzvW18GrhWqAUkfbUiB3Xo
+         tCRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=n/n2EIcI4moXmMiPBfU/H5CtT1+XVdcDwK249IVE7Tg=;
-        b=ui3ApXKfp22Fq9GPHFmQkz3PHd2JOSYC4Ay6ID8GL97Ww0YN6AFqnJbA8hFnI7s4Jk
-         xeBUSxZe7CjW+Sj+2emfx0yWIQJXBjrHef5iKCpjg26PLvMlGVsiZbJqt9JNZ+TC1430
-         j3M12EGtZvos3/wVy4BMozSo6BQ7PsnVo2o4/v2rqBAPdG9nq0ZhHt0zyYTi0JWMo1Ob
-         qGOO1OckuTshiMwR2VPM6ILOe5aEgbi5L7bka8972m73wTR5U5q+ZkAZyA/J1LSui8Zt
-         TZdCtIwcJsGfS65fy3xye8ScYze6B2ayMfXQ8ITTMiOFy25s3Fho4Tf+YPpxsoPlZLvF
-         2reQ==
+        bh=hnqTNG8MzOKBvFmVPeaf8tellhPa1mMajzbAEt/ud+Q=;
+        b=GYREhqgiebs8iuHDUSBB84qGJbBsNnUnOgrcYHTzpcQzerMYett6vIuIjuQhaHyAfX
+         J0dvcFBxDGQPymqg3iajknlXXGJ5Zatp74Y/WXUmCqW8o5Cal2IuuKW/CF7s/HhNqZPF
+         9KlgNVWWlYO0iDatEhZrs3qkKUVp/wh5Nh3mONcpyLqlX1rLwsNBQOeXF6boA9jYqLhs
+         s/rdJSS2txms/ikj+zJvnMzAo6XoIF6qCoGH+abB3QvfNNGb4J1z3WutnHOfSCtFvew7
+         pXcoJ4J//KZAKsg0EyACdbFq7+rSkZJLPlX/QPW78v0VzzS7NWpy+zp6Jt/DglvOJWqI
+         FeTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NMpn1YsX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bLmzlWrt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq9-20020ad45969000000b0056eb226900bsi499351qvb.103.2023.05.05.03.05.07
+        by mx.google.com with ESMTPS id j15-20020a05622a038f00b003e8846087b6si463037qtx.367.2023.05.05.03.30.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 May 2023 03:05:07 -0700 (PDT)
+        Fri, 05 May 2023 03:30:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NMpn1YsX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bLmzlWrt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pusJ5-0002t2-EJ; Fri, 05 May 2023 06:04:55 -0400
+	id 1push3-0000Pk-Kt; Fri, 05 May 2023 06:29:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pusJ4-0002ss-Hy
- for qemu-arm@nongnu.org; Fri, 05 May 2023 06:04:54 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1push2-0000P2-BG
+ for qemu-arm@nongnu.org; Fri, 05 May 2023 06:29:40 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pusJ2-0003aA-Uu
- for qemu-arm@nongnu.org; Fri, 05 May 2023 06:04:54 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-50bc0ced1d9so2336536a12.0
- for <qemu-arm@nongnu.org>; Fri, 05 May 2023 03:04:51 -0700 (PDT)
+ id 1push0-0002uH-LJ
+ for qemu-arm@nongnu.org; Fri, 05 May 2023 06:29:40 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-50bc3a2d333so2398941a12.0
+ for <qemu-arm@nongnu.org>; Fri, 05 May 2023 03:29:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683281090; x=1685873090;
+ d=linaro.org; s=google; t=1683282576; x=1685874576;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=n/n2EIcI4moXmMiPBfU/H5CtT1+XVdcDwK249IVE7Tg=;
- b=NMpn1YsXuYQepR1ccUKYVBB86NWFlQyeWGbIHUZZ6GX5RnlPgOcokPRyc1We5St0Iv
- 7vju6eDccJZp/jeeP18vzFQUv3QMiW/dkmF27Zd3eV3LxO2/u1xbcE3SqKNt3Zs0E79H
- RRwhtAdHLAmFtqQ6J06DmsfgLQu6SeS4AQv7nK+BnhOFv0h6L6v/QOb7QyJmBh63xOEZ
- aRbHMn/zEc7obYAPE1T7jpg/b5n/9MFBkObbvSQ8hd9At1QT/oAToKeiE7PK/+pTJZ91
- yUtrhlkoIEAQNp51kmXiueLv8PkUxxa3MTe6qYbmroteJRh+mlA6fmQhvbL981tqBCiO
- VaSw==
+ bh=hnqTNG8MzOKBvFmVPeaf8tellhPa1mMajzbAEt/ud+Q=;
+ b=bLmzlWrtk62D96W986phTUm7TZIFl+TN0MS0hDOlAYnfK13Vs5CUeMmDuSO10KCUwL
+ QlpZYTLmBPSLpUdyBTx30Kld0tX2wWii0RyeJB38zU3EqInaORcLQzSftOWaWK7y8XHv
+ ohehcl2w0EcN/mdRWCnuHCQpGqmfiEVF9oA6tOwbr+Dh53+vRszcyKTyb41ZMD9hgDt7
+ Y2QL7/OxYVWLkJ/ClNL6j+IQ9igd2pxoplZWMgVx0WsryQpCGh3CeFLtn5k0qCXGOo61
+ 0iS9xFXaMfJsYK4b1n24QUWt+/JdjATkmUgJsYrBTw/Hbf54bQwg17020MwpMxQc/qDQ
+ mdvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683281090; x=1685873090;
+ d=1e100.net; s=20221208; t=1683282576; x=1685874576;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=n/n2EIcI4moXmMiPBfU/H5CtT1+XVdcDwK249IVE7Tg=;
- b=V3lZTD77Zm87/O1sewUHePzRjgGMtRtIjkVL+yH5OfbL0AwyjLqocbunqTdfndSrxd
- JRcOQSydFr/pLacYidu7b076N0wXvPLADWlfYsQRSN0sur6kTdPk7cnMwvg9oe9+8rHD
- xeDkkafQ+U6+80MhVt/LrzUlp6yMwEyLP2YCxKOEQ8C622rDh65BBT7aKB4agQ7bG1bF
- 9bL21W5rnj5TF/E4Pza/2QN5wAFwD9ZHhrS/VeZvvxCVJTivGQyY5w5OK20fFQNLGhL8
- Fo0jRF3+v4nmoR7C1TIDtIgTBuAa+hJCkApH5UxFAN+SnkJ1M6FT5JcVOtm1ukjdb/4H
- zz3g==
-X-Gm-Message-State: AC+VfDxkOz6oc/rDazMOTJRGlKEWSghQQIIkd1cV+b/+FArUzcBp+WYu
- z558tZgLA7aDTTb1sj9Ge9Bj2Tq2shUXPm5hMQxoIw==
-X-Received: by 2002:aa7:d954:0:b0:50b:c164:526c with SMTP id
- l20-20020aa7d954000000b0050bc164526cmr923698eds.13.1683281090132; Fri, 05 May
- 2023 03:04:50 -0700 (PDT)
+ bh=hnqTNG8MzOKBvFmVPeaf8tellhPa1mMajzbAEt/ud+Q=;
+ b=IFg4m1ZaQXQBlx5PsFvp3KRgCztM6mmcbM1BYKlqlUdJ/br8UizUFNc+ToWbdLTMvB
+ rQen0Uy90hJFpbv7jGemzds8QXDqPFFeR3gh2p4ETy+lVAkmfP3R/MsZN0pM2dhiFRBO
+ XElTuh/nNFIsuNw50WHZcdWnky89bHKbd7XIk511qHAGFjF5oFoDcWtzPCvknyzEybSB
+ YF+1CHVTfiiDO1dtHgZDZWG1km71gYy7tdXMkSDbay0wGjbdl3abJW8pGTnRJ2/Wq4FX
+ MH7FJUNj2PwotP+LyUJ8ApkIh8QZS4KQgku+IiaeEWctS6B3Y3Owr3Q8MGTDl62W2T8v
+ F/+Q==
+X-Gm-Message-State: AC+VfDzYBCFQzfYMZHQDrCgbpw0Drviy9tZNyco0gRIrt1tw/ZsEyrQi
+ +PlOiz8hDHi++fIgpPSbcVq+XCjHAxp99T8rqF6jqQ==
+X-Received: by 2002:a17:907:724a:b0:95f:3a55:1dfc with SMTP id
+ ds10-20020a170907724a00b0095f3a551dfcmr900570ejc.35.1683282576591; Fri, 05
+ May 2023 03:29:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230503070656.1746170-1-richard.henderson@linaro.org>
- <20230503070656.1746170-13-richard.henderson@linaro.org>
-In-Reply-To: <20230503070656.1746170-13-richard.henderson@linaro.org>
+ <20230503070656.1746170-14-richard.henderson@linaro.org>
+In-Reply-To: <20230503070656.1746170-14-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 May 2023 11:04:39 +0100
-Message-ID: <CAFEAcA9oMYYC1FYwqLgHxx5HdxJ4u-h-5f1mfiAF1606JMkAXw@mail.gmail.com>
-Subject: Re: [PATCH v4 12/57] tcg: Add 128-bit guest memory primitives
+Date: Fri, 5 May 2023 11:29:25 +0100
+Message-ID: <CAFEAcA-Qt6SBE42p_qWbETzBtgkqLbkBkyqLQ=Q7nMbjFrcKDw@mail.gmail.com>
+Subject: Re: [PATCH v4 13/57] meson: Detect atomic128 support with optimization
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
  philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
  qemu-s390x@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,109 +118,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kf+KYZUDFeIa
+X-TUID: UPEiB5e8+myU
 
-On Wed, 3 May 2023 at 08:17, Richard Henderson
+On Wed, 3 May 2023 at 08:29, Richard Henderson
 <richard.henderson@linaro.org> wrote:
+>
+> There is an edge condition prior to gcc13 for which optimization
+> is required to generate 16-byte atomic sequences.  Detect this.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>  accel/tcg/ldst_atomicity.c.inc | 38 ++++++++++++++++++-------
+>  meson.build                    | 52 ++++++++++++++++++++++------------
+>  2 files changed, 61 insertions(+), 29 deletions(-)
+>
 
 
 
-> +/**
-> + * load_atom_16:
-> + * @p: host address
-> + * @memop: the full memory op
-> + *
-> + * Load 16 bytes from @p, honoring the atomicity of @memop.
-> + */
-> +static Int128 load_atom_16(CPUArchState *env, uintptr_t ra,
-> +                           void *pv, MemOp memop)
-> +{
-> +    uintptr_t pi = (uintptr_t)pv;
-> +    int atmax;
-> +    Int128 r;
-> +    uint64_t a, b;
-> +
-> +    /*
-> +     * If the host does not support 8-byte atomics, wait until we have
-> +     * examined the atomicity parameters below.
-> +     */
-> +    if (HAVE_al16_fast && likely((pi & 15) == 0)) {
-> +        return load_atomic16(pv);
-> +    }
+> @@ -676,28 +695,24 @@ static inline void store_atomic8(void *pv, uint64_t val)
+>   *
+>   * Atomically store 16 aligned bytes to @pv.
+>   */
+> -static inline void store_atomic16(void *pv, Int128 val)
+> +static inline void ATTRIBUTE_ATOMIC128_OPT
+> +store_atomic16(void *pv, Int128Alias val)
+>  {
+>  #if defined(CONFIG_ATOMIC128)
+>      __uint128_t *pu = __builtin_assume_aligned(pv, 16);
+> -    Int128Alias new;
+> -
+> -    new.s = val;
+> -    qatomic_set__nocheck(pu, new.u);
+> +    qatomic_set__nocheck(pu, val.u);
+>  #elif defined(CONFIG_CMPXCHG128)
+>      __uint128_t *pu = __builtin_assume_aligned(pv, 16);
+>      __uint128_t o;
+> -    Int128Alias n;
+>
+>      /*
+>       * Without CONFIG_ATOMIC128, __atomic_compare_exchange_n will always
+>       * defer to libatomic, so we must use __sync_val_compare_and_swap_16
+>       * and accept the sequential consistency that comes with it.
+>       */
+> -    n.s = val;
+>      do {
+>          o = *pu;
+> -    } while (!__sync_bool_compare_and_swap_16(pu, o, n.u));
+> +    } while (!__sync_bool_compare_and_swap_16(pu, o, val.u));
+>  #else
+>      qemu_build_not_reached();
+>  #endif
 
-Comment says "8-byte atomics" but code is testing for
-existence of 16-byte atomics ?
+Should this change be in a different patch? It doesn't
+seem related to the meson detection.
 
-> +
-> +    atmax = required_atomicity(env, pi, memop);
-> +    switch (atmax) {
-> +    case MO_8:
-> +        memcpy(&r, pv, 16);
-> +        return r;
-> +    case MO_16:
-> +        a = load_atom_8_by_2(pv);
-> +        b = load_atom_8_by_2(pv + 8);
-> +        break;
-> +    case MO_32:
-> +        a = load_atom_8_by_4(pv);
-> +        b = load_atom_8_by_4(pv + 8);
-> +        break;
-> +    case MO_64:
-> +        if (!HAVE_al8) {
-> +            cpu_loop_exit_atomic(env_cpu(env), ra);
-> +        }
-> +        a = load_atomic8(pv);
-> +        b = load_atomic8(pv + 8);
-> +        break;
-> +    case -MO_64:
-> +        if (!HAVE_al8) {
-> +            cpu_loop_exit_atomic(env_cpu(env), ra);
-> +        }
-> +        a = load_atom_extract_al8x2(pv);
-> +        b = load_atom_extract_al8x2(pv + 8);
-> +        break;
-> +    case MO_128:
-> +        return load_atomic16_or_exit(env, ra, pv);
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +    return int128_make128(HOST_BIG_ENDIAN ? b : a, HOST_BIG_ENDIAN ? a : b);
-> + }
-
-> +/**
-> + * store_atomic16:
-> + * @pv: host address
-> + * @val: value to store
-> + *
-> + * Atomically store 16 aligned bytes to @pv.
-> + */
-> +static inline void store_atomic16(void *pv, Int128 val)
-> +{
-> +#if defined(CONFIG_ATOMIC128)
-> +    __uint128_t *pu = __builtin_assume_aligned(pv, 16);
-> +    Int128Alias new;
-> +
-> +    new.s = val;
-> +    qatomic_set__nocheck(pu, new.u);
-> +#elif defined(CONFIG_CMPXCHG128)
-> +    __uint128_t *pu = __builtin_assume_aligned(pv, 16);
-> +    __uint128_t o;
-> +    Int128Alias n;
-> +
-> +    /*
-> +     * Without CONFIG_ATOMIC128, __atomic_compare_exchange_n will always
-> +     * defer to libatomic, so we must use __sync_val_compare_and_swap_16
-> +     * and accept the sequential consistency that comes with it.
-> +     */
-> +    n.s = val;
-> +    do {
-> +        o = *pu;
-> +    } while (!__sync_bool_compare_and_swap_16(pu, o, n.u));
-
-Same val vs bool thing as the other patch.
 
 
 Otherwise

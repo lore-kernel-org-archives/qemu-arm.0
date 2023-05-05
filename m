@@ -1,126 +1,120 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp368878ejq;
-        Thu, 4 May 2023 08:02:41 -0700 (PDT)
-X-Received: by 2002:a2e:8713:0:b0:2ac:826e:c5a with SMTP id m19-20020a2e8713000000b002ac826e0c5amr230530lji.1.1683212561825;
-        Thu, 04 May 2023 08:02:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683212561; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp251709ejq;
+        Fri, 5 May 2023 01:18:33 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5NLBLRhP+56xZrQxdD3q9CRbgxm3hLBPXLHOStcI7mkH67f6tW5+R5J6vQ5AZPOz/Y6Izi
+X-Received: by 2002:ad4:5cce:0:b0:5e8:979f:2e49 with SMTP id iu14-20020ad45cce000000b005e8979f2e49mr894955qvb.41.1683274713188;
+        Fri, 05 May 2023 01:18:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683274713; cv=none;
         d=google.com; s=arc-20160816;
-        b=caO8RSbW6Vr9mYQ4e/r9baz5VYTbtF2j/eaMRo1OAjhlHWYWg4/Ot9HV8JTVUL8BAh
-         cFPMwsyMVGoXa0Nk0phvnqYqQEcWBQXU4p8m15x2UdCy0gcs2jgV2ewP1faJu60bvPAU
-         Z4VeWmk1i6phmABtoLRV4Al0MrXOpXU+HSKwziS12wLMTYLp+LEV2OBi5QOX1lZO8Bw2
-         U/mV3pE6Rum9HGlrAbamnqL60IdheFEeSVhtzjk+BUG7yyEX/UYxmR0mywUSsMU0cIXU
-         tD1M5VVvbY3t6c9yaQsWjnH77vyQQqgyuBWawW3oW0XoHqmL4RnkEXWSAA+qvfHkB3dk
-         Yx8Q==
+        b=N5w989Y1ZUaB0nqFwMcFwyOLB1hJmID+3+bpwIX4qQfckgjQstAATivHgSd6SmrlrU
+         3GjblWOo0qSavkrmr6k6o5UDwA7BQBCGnHDikqJYLmw/gfGFFE8S0fF+tqTtPdhivSa6
+         xkxHxxuknouVBuMyh9G08FoEgcFPyXOrcdxsm/TOnazBhZ/vYOskUrfiy+QlGaFH6x1f
+         6E+vogX8Zgh6kMz8fiDea82bXpEqQSX8lo0Z/29PEgQCbcTqDKuXkon18FXwYbEQuVrz
+         qkXAJiFKGma9/dvup+JS7XQByEMJh9SMbQfw0P9ElVb+3OYUPMvfbInDM9GreCRAAGat
+         u1dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
-        b=szj6XB9GR22IbxIB19yj1dGzcHJCdAXTKx+VPQraCHY9VO9Sis95E+/g9VMrYqYwrk
-         V+lKtRk/saZDk4y+O6D6VVP7ItR/bLPOmcAS27FuGQODqny9lta0VOnlgtlgItzTiX7G
-         QxrcK+VgwHikFw8g85OGIjjVUli9pZ/YVCxaZxBXfafxIFPRY+49f/zsH1YnwL/70haq
-         Q/HLyBrOKl54aVtQnuhNjy62TsXPfp6IMfkdwii9hMOhsNFnx+fizu/bS3NyiAUZbVuk
-         K3MKfb8pqEIMiweryZzYZ5jaHdVSqQVujGcCcj59FUtkdQCPgWd5M/q0Wqmm2Ucpf0hl
-         FS/Q==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=yQqauCR4oeB9iJr7KlIXvJS9JCYwMo5ayMoqT5CXjPM=;
+        b=H3L9K6WCDxA8xhb7lfPGwY4LOYXJsVRkdv/KHkVcnkTJbkzxWtNrDcTtIUv59JpW5G
+         3aRg9ufqtPmwdmKwxpkR8FylTmAgU7wP5l70n4V/gwsULig/nQg6J+lCzLAx6Q6TrqHi
+         COOd80B/uwMzZFhydpRKg6ZKpv67IxtFToooxqnmTlrqvUt8bgBmEKBWOARa51uS4CRg
+         bhonxIL2k/EOGvtqpAA016/39CnCQJIUGyY9EeJOivg/h9G1VasNhX9vxuu9D2ZcyE47
+         yq9IlqqTZRth22RDSk1mN0Ee6cVdOjk6+8BPb7WA6diPKEZW5Db3m5NLlgObyySGkSW6
+         Hevw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F5Lf4HMj;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s26-20020a05651c049a00b002ac82115532sor196849ljc.7.2023.05.04.08.02.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="G/OMej7p";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id gw1-20020a0562140f0100b00570bc9840e7si433754qvb.236.2023.05.05.01.18.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 04 May 2023 08:02:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 May 2023 01:18:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F5Lf4HMj;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683212561; x=1685804561;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
-        b=F5Lf4HMj5EDCPlBNDdOROkY7rL3tB9dkVfjlF0oq9y/8yhYT+/yhnK2nE0hwkHEV0y
-         5J81IkkQfN52l2ARjnvLgau0rCxMM8h2nWkOl0MdRdw21OFixdT4lJ5CNVbBry56mzfb
-         yr0Im6nBMdPRvddSuEfWCmGkCTA+AbZZPGCIlQGgb0H+2bOZ5xuw9X0rgQvNvcyVsaqG
-         YoSULS1L/3wBePrmXwue0lL9+kA541dX4KoJeTOLJqw2NalzEWjndaPNLSRT0eanCihr
-         XCJlUxZZVv+mqd7QbYRL+fueSvCNJ9nb57/sV5qMh6CMWw0SeasWIo/qXP605FRyniw9
-         X1zg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="G/OMej7p";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1683274712;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=yQqauCR4oeB9iJr7KlIXvJS9JCYwMo5ayMoqT5CXjPM=;
+	b=G/OMej7pR/ksJ+1Asy0Wz697F9IvWRenWS/4rNE7ntiJG9/otrDpLqsl7+iFNZXl5zg4bO
+	qcZlkO6PyyVBAE+S4JKKtx9hQPH0GSioIb0CFkxtFCGWB1QOZQWRo85BOrM2J5qukx9N6F
+	3XeGFnLUVYN94Sb5jWPnQsmN+p5e8ks=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-601-ve7CITxEP6Wfisnsqq4wqA-1; Fri, 05 May 2023 04:18:31 -0400
+X-MC-Unique: ve7CITxEP6Wfisnsqq4wqA-1
+Received: by mail-ed1-f72.google.com with SMTP id 4fb4d7f45d1cf-50bc6c6b9dbso11166166a12.0
+        for <alex.bennee@linaro.org>; Fri, 05 May 2023 01:18:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683212561; x=1685804561;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oAocgrsmEG603ZQnZ5CcZYHrN6ZBFyDbbTu3VCHsd9A=;
-        b=lfB72zoPgqwMAMkghYg0xlP6nNHglRmm6EDebyuRRqR7+me7nd4HJ2c97DEXVBsv03
-         17GIzZMssa0L2SWVx6VuyI7I0x+6GKiz4MI98/648Gr95ZHYSjWA3ETMDdSFqosKAJOi
-         6rwpLtYAu0MAKmJXVDpU+re13NQyhHm9G6NknEp1UarmUtZ1lgOAA8sD99nXztu1lPWC
-         Lxdz0925MYCdp/kgEsfrz+eVI9bgEsQbCwk1qvn7GkRzG9RNbHITgDU1H2ALDacF0ss1
-         WgHHKXFMoP/Q7xwv/hF25a559iaVpVEY/6cyWwcHWvivMHYB+ANnODs9h6yHb7a0PUiW
-         JjTA==
-X-Gm-Message-State: AC+VfDzOdgBKzLx9PnwQJkYwR/mxWNR3umOYr7VOyfi8OO8fhyKiSOU4
-	l3kh2Oe1SsdScO86rQ1OHKA7A8p2tnnRfbVb8rqWJQBY
-X-Google-Smtp-Source: ACHHUZ70ZJ5nS7SJYchXMEhZ86p6VAPNGSHQNuYDTYgMkadcT9NIj+L4y7vdoGyQ5J0eJRWMhP3UN0mLmAY/LPBKWdk=
-X-Received: by 2002:a2e:9b84:0:b0:2ac:7e64:ef8 with SMTP id
- z4-20020a2e9b84000000b002ac7e640ef8mr971691lji.16.1683212561375; Thu, 04 May
- 2023 08:02:41 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683274710; x=1685866710;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=yQqauCR4oeB9iJr7KlIXvJS9JCYwMo5ayMoqT5CXjPM=;
+        b=CtNHxm+lbQiRz4npAWQLE6VUosI1ZuZsBrvBisuPf+SjQ5nKOUdSRCBu8z1aAbijRk
+         tgXjqL6DwqkeFjMBtn4B+EVfPeCiYC7j606Uer2KPlY9vZeJcAPenDc9JQXxT2OWKAET
+         JjxVD1UJAsKdDfA2pFy5wnNvKDV/2ybMeqG5hN7E9r5YqseGGEoVHGbuw2LZCbZUOoaI
+         q3bA5I3ctXXPvZs11L7xtEoS0eygSfDP7zyrBsV1Lt+5+CFjIITrSYdswequ7MWaQlI1
+         VJsPEMaHDHb+ViEAXb3yhSj98DE667fTSjHGQniBr8lCI4jephdP/v95BsRxOG2QgeO0
+         CZow==
+X-Gm-Message-State: AC+VfDzRNiYnSNL6AbVbCZaZcwxn938qiCwFPrGg7NA0z4WBQrblu5Y1
+	Ioz1HpyYNLAAOrc2AMdnd1GfMTr/6XbiflYM3iY6MDM6Q2Hr1w/5iHnarR8EKGsPyc9Wl2gzcI3
+	K59pdf3HYCrgjm3Ah
+X-Received: by 2002:a17:907:704:b0:95f:969e:dc5a with SMTP id xb4-20020a170907070400b0095f969edc5amr1071679ejb.30.1683274710526;
+        Fri, 05 May 2023 01:18:30 -0700 (PDT)
+X-Received: by 2002:a17:907:704:b0:95f:969e:dc5a with SMTP id xb4-20020a170907070400b0095f969edc5amr1071664ejb.30.1683274710124;
+        Fri, 05 May 2023 01:18:30 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPV6:2001:b07:6468:f312:9af8:e5f5:7516:fa89? ([2001:b07:6468:f312:9af8:e5f5:7516:fa89])
+        by smtp.googlemail.com with ESMTPSA id jt21-20020a170906ca1500b0095707b7dd04sm635250ejb.42.2023.05.05.01.18.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 May 2023 01:18:29 -0700 (PDT)
+Message-ID: <cbae8ce4-675f-6ffb-dd19-7011f2535fed@redhat.com>
+Date: Fri, 5 May 2023 10:18:28 +0200
 MIME-Version: 1.0
-References: <20230503070656.1746170-1-richard.henderson@linaro.org> <20230503070656.1746170-4-richard.henderson@linaro.org>
-In-Reply-To: <20230503070656.1746170-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 May 2023 16:02:30 +0100
-Message-ID: <CAFEAcA858-D37=MrvYnGxBVkL1V14wZ_JLEzFahbweRUDvPmwg@mail.gmail.com>
-Subject: Re: [PATCH v4 03/57] accel/tcg: Introduce tlb_read_idx
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
-	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
-	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: YNOairJ2wQ9K
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.1
+Subject: Re: [PATCH 1/3] target/arm: Use CONFIG_SEMIHOSTING instead of TCG for
+ semihosting
+To: Fabiano Rosas <farosas@suse.de>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20230503193833.29047-1-farosas@suse.de>
+ <20230503193833.29047-2-farosas@suse.de>
+ <3f8ed21a-6c05-e7a4-ab9a-c8f6ca041013@redhat.com>
+ <CAFEAcA9y0tZVCSz93ziHkwYaM_whaEnCko2=Zzyb=BGFySJyRg@mail.gmail.com>
+ <CABgObfbBTUUAOmvKz9U2Esi3rmdYmbhw3uR5iouFYUwFGoG32Q@mail.gmail.com>
+ <875y98cktj.fsf@suse.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+In-Reply-To: <875y98cktj.fsf@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: xMf6xCtXXhYo
 
-On Wed, 3 May 2023 at 08:15, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Instead of playing with offsetof in various places, use
-> MMUAccessType to index an array.  This is easily defined
-> instead of the previous dummy padding array in the union.
->
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+On 5/4/23 15:01, Fabiano Rosas wrote:
+> ...
+> # This config exists just so we can make SEMIHOSTING default when TCG
+> # is selected without also changing it for other architectures.
+> config ARM_SEMIHOSTING
+>      bool
+>      default y if TCG && ARM
+>      select ARM_COMPATIBLE_SEMIHOSTING
 
-> @@ -1802,7 +1763,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
-arget_ulong addr,
->      if (prot & PAGE_WRITE) {
->          tlb_addr =3D tlb_addr_write(tlbe);
->          if (!tlb_hit(tlb_addr, addr)) {
-> -            if (!VICTIM_TLB_HIT(addr_write, addr)) {
-> +            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_STORE,
-> +                                addr & TARGET_PAGE_MASK)) {
->                  tlb_fill(env_cpu(env), addr, size,
->                           MMU_DATA_STORE, mmu_idx, retaddr);
->                  index =3D tlb_index(env, mmu_idx, addr);
-> @@ -1835,7 +1797,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
-arget_ulong addr,
->      } else /* if (prot & PAGE_READ) */ {
->          tlb_addr =3D tlbe->addr_read;
->          if (!tlb_hit(tlb_addr, addr)) {
-> -            if (!VICTIM_TLB_HIT(addr_write, addr)) {
-> +            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_LOAD,
-> +                                addr & TARGET_PAGE_MASK)) {
+This can be replaced by "imply ARM_COMPATIBLE_SEMIHOSTING if TCG" placed 
+under "config ARM" (and also RISCV32/RISCV64)".
 
-This was previously looking at addr_write, but now we pass
-MMU_DATA_LOAD ?
-
->                  tlb_fill(env_cpu(env), addr, size,
->                           MMU_DATA_LOAD, mmu_idx, retaddr);
->                  index =3D tlb_index(env, mmu_idx, addr);
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+Paolo

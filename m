@@ -1,163 +1,118 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp451459ejq;
-        Fri, 5 May 2023 07:16:41 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5GDOxO4T/G13uvpKWQ37WcXQaUEgV3JcZSkX5N+I29JA3GJPzRxWZB+L+llsOHbE6B5qQC
-X-Received: by 2002:a05:622a:306:b0:3d4:17dc:3fcf with SMTP id q6-20020a05622a030600b003d417dc3fcfmr2618604qtw.5.1683296201146;
-        Fri, 05 May 2023 07:16:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683296201; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp367615ejq;
+        Fri, 5 May 2023 05:10:13 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7wP+OoDFHRDbB/rzhL33kx6ygtYOQutifFvSSQ8S4RTyu+Y5cwo0LK4zZWRw8s2f7bsVIW
+X-Received: by 2002:ac8:7fd3:0:b0:3e4:e8be:c3a4 with SMTP id b19-20020ac87fd3000000b003e4e8bec3a4mr2086960qtk.56.1683288612724;
+        Fri, 05 May 2023 05:10:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683288612; cv=none;
         d=google.com; s=arc-20160816;
-        b=c8m/z2/LrabC/0jzuJu37MttvQVinCPlZYFBPJTy6HxBKSr98+L8IFrjRQWh12tt2I
-         Jzm2D+10BVbLdL4Qsa52M+6/z+Hyhg02m6u/m6riSerTx0KZN9xfFWxanBNmnJnT08RD
-         NgiZf19ALG/Gf4IfJkp6U1GGnngxot0Xvy2yohGI5stpVEgltW6nAocaRqn6VMX8eXM7
-         F0O7Rrbt3mdQ0PyDOLNavQrhtKeeY/lXFnMi8jlOlP9hnO10uaWi7nvCIx8KicGz5X32
-         MHQl4mA3LukyGhmf7EvwcLukRDwkiAl+Hw6T/cvDqj7LZornCmkb9bkU7cEFE8L4b0rp
-         ozTg==
+        b=xejqp5dlhBQ1vbe/kfmIiAnelBxGw3r+EmKPNfyjDa8A2s2HFXcffXwM3b4aLeg+QE
+         wsxHgZ/9oz4jy8tRwcn2ZhG6SxuBN94kkWDaSAxVDAwMxXCVCQSuIQDLGzhfmdm9sfpL
+         H06HI/eqrn+mq6/sKmgUTyMjjoBsFuFVj5z1HTUhLApgNmAVauh0KKMVWwLsMhO+Zdcn
+         5YcvGWLa4LVqFD2J2jLkjSfBKAzD2T4IcwJ7uoYQuQE8zz1aXYGv7rfPZJdDuayn60DO
+         i55sVF4mNW2kqR9AlUBWpNp1DRBJsL4BK2s6cgf5kmhVhJFdqOEsKp3CKL8iBNMxKGV3
+         kr2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:ironport-hdrordr
-         :ironport-data;
-        bh=0zCd8HzVHed5nm2mp/456suk78PTEVzX+jrv42K34+4=;
-        b=Nk7qm5famWekkNsgV4bJPnmHQGH9aSTWy7w2ABN5A9cV1o0L5CIgg3UB1avO4s9izI
-         OaXqtKswYtI8xi48fLPet0Y3CcfCub4MQkXJYIDYue/izmLsxy/yMowbPgO38OHBhkSk
-         i/DGj3j5wuzGWaAQPmGEqtlvqjpRJVHK688hFY3T+7CqLA0VQ/QxN7boA4iIcl+K//XG
-         +aVexwxLZgKKfYmcOkyUdu9uELwAgqbYpW0o4XMrjxZthvZuky/f2f1e8Cx4DzTVqit5
-         JcpCrUIyWZAe8ZVfWtuPQmVbgreffXTRuTujun+NJnzmzjopu1e069mk97GLzsC3etPK
-         324g==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=5UCWb14JBdbvgw+gAeZW5Kx5+tpPk2KD434xYAWdpTc=;
+        b=kVL7tzmJRZdSI92VmJAbBVZ8A6foBJpbSUieXqudq4b6AKCgLRSsNeeoAg9Cd8XNLe
+         E+pHv9l0+fyvIX50vlXgccNVuasw/gpa3gKWsv9PKP/04XIiqHbi2/Af2FWdcGdNrEk8
+         BWdxofQ/1Rl7S6LdwAi5Vzrs7WdM2II4kXsnODMmK2hCyhixn46Zbbix1Dw3srZDJvsa
+         //JtlxXl3tdASS/DIsTz4m5jXUcqAUGopITe6GUIM7V7w+SAZ9FcuM1KUQZPIpCBBfJw
+         n9/hFydCrRGfQsc8HtuQs2zuQJ+m0KSeQ2SMsMwhd9f7czWpPIBNWHQ5eXAvJ0/bJlPt
+         henw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b15-20020ac87fcf000000b003adff1955edsi609372qtk.662.2023.05.05.07.16.41
+        by mx.google.com with ESMTPS id d19-20020a05620a167300b007469914cd5esi569943qko.596.2023.05.05.05.10.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 May 2023 07:16:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 May 2023 05:10:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1puwDc-0005pO-2r; Fri, 05 May 2023 10:15:34 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1puuG7-0004xL-F2; Fri, 05 May 2023 08:09:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tobias.roehmel@rwth-aachen.de>)
- id 1puwDO-0005m2-1X; Fri, 05 May 2023 10:15:18 -0400
-Received: from mail-out-4.itc.rwth-aachen.de ([2a00:8a60:1:e501::5:49])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1puuG6-0004vy-Fd; Fri, 05 May 2023 08:09:58 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tobias.roehmel@rwth-aachen.de>)
- id 1puwDI-0001KR-1i; Fri, 05 May 2023 10:15:17 -0400
-X-IPAS-Result: =?us-ascii?q?A2DwBACqDlVk/5sagoZaHQEBAQEJARIBBQUBQIFPggaBH?=
- =?us-ascii?q?YFaGwGENZE4n1wPAQEBAQEBAQEBCAE5CwQBAYUGAoVGJjgTAQIEAQEBAQMCA?=
- =?us-ascii?q?wEBAQEBAQMBAQYBAQEBAQEGBIEdhS8MCCUNhgUBAQEDIw8BBUEQCxQEAgImA?=
- =?us-ascii?q?gJXBgEMAQUCAQGCegGCXBOtFoEygQGgHoEEHQYJAYEKLYkziCKCT4E8gkw4P?=
- =?us-ascii?q?oJiAoFOg22CZwSOWoEoiF6BMHSBJ4EugQQCCQIRQyiBEAhpgXRAAg1kCwttg?=
- =?us-ascii?q?UCDDQQCETQODBUFVQKBBggUARMDBwcCAYEaEDoHBEAoDAcJHw4lBA4DGSsdQ?=
- =?us-ascii?q?AIBCzs6PTUJCx9LK4FZBC9aewYBJSSYJYQUIg2CDsQeB4IrgVaLdYhIjDgGQ?=
- =?us-ascii?q?pcZBpIpmAAgjTaaKQIEAgQFAhaBeoF+cYM2UhcCD4wugxgBCIJDj3tzPQIHA?=
- =?us-ascii?q?QoBAQMJgjmEDYNrAYETAQE?=
-IronPort-Data: A9a23:AQe7AK2k7docR87eM/bD5ctwkn2cJEfYwER7XKvMYLTBsI5bpzQEz
- 2seUGvXM/vcNDagfYt+PI20pE8D78LTzNJgSwRk3Hw8FHgiRegppDi6BhqqY3nCfpWroGZPt
- Zh2hgzodZhsJpPkjk7xdOKn9xGQ7InQLpLkEunIJyttcgFtTSYlmHpLlvUw6mJSqYHR7zil5
- JWj8qUzBHf/g2Qvaj9MtvrZwP9SlK2aVA0w7wRWic9j4Qe2e0k9VPo3Oay3Jn3kdYhYdsbSq
- zHrlezREsvxpn/BO/v9+lrJWhRiro36YWBivkFrt52K2XCukARviPphZKpEAatgo27hc9hZk
- L2hvHErIOsjFvWkdO81C3G0H8ziVEFL0OevHJSxjSCc5x34WWW8yudfNkARAZc22/hdLEAS8
- NVNfVjhbjjb7w636IiEdslBtoEYdozBepkApnElxD2fAftOrZLrGv6Wo4YDhHFq2IYXQKu2i
- 8kxMFKDaDzcZBdOM0xREpUznOKlglHlbCFY7Vucrqo65S7fwWSd1ZC0b4uPJ4HUFJU9ckCwo
- jjHoXXGUhUmP//A82Gs8Emcq8jBpHauMG4VPPjinhJwu3Wa12UVCwATXHOypPX/gUm7M/pHJ
- lAZ4GwrpLk++UivZt38WRSipziDpBF0c8NdFvB/5AyTx6785QGfCW4ZCDlbZ7QOrcIzWHkjz
- FqhmdTvCjpy9rqPRhq17auZozq0Pm4OMWYIaCsATA0Ey9DmrMc4iRenczp4OLSqkt34CXTrm
- XWA6jIhm7VWhMJN26jTEU37vg9Ab6PhFmYdjjg7lEr8hu+lTOZJv7CV1GU=
-IronPort-HdrOrdr: A9a23:xAlX6KOGNM23ksBcTvWjsMiBIKoaSvp037BL7TEIdfUxSL3/qy
- nAppsmPGDP+VQssR0b8+xoEpPwIk80jKQV3WBJB9eftWrdyRKVxf9Zg7cKqgeIcxEWkNQw6U
- 4KScND4bPLYGSTqK7BkWyF+pkbsb26GQuT9IDj80s=
-X-Talos-CUID: 9a23:+IJwTW+xe+AQpehL9wCVvx4qMN51e2/s9nb3H1WWKHhDZZzJTHbFrQ==
-X-Talos-MUID: 9a23:9GTdYQXzm1Qy+lvq/Du2hW9zC5ds36+NV3pWuJc9i+SjOxUlbg==
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-AV: E=Sophos;i="5.99,252,1677538800"; d="scan'208";a="179255698"
-Received: from rwthex-s2-b.rwth-ad.de ([134.130.26.155])
- by mail-in-4.itc.rwth-aachen.de with ESMTP; 05 May 2023 16:15:02 +0200
-Received: from [137.226.252.162] (137.226.252.162) by RWTHEX-S2-B.rwth-ad.de
- (2a00:8a60:1:e500::26:155) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.26; Fri, 5 May
- 2023 16:15:01 +0200
-Message-ID: <28bfa9ad-f8dd-d195-ec66-fbd2d78d170c@rwth-aachen.de>
-Date: Fri, 5 May 2023 16:15:01 +0200
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1puuG4-0004PL-PO; Fri, 05 May 2023 08:09:58 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id DDCD72609C0;
+ Fri,  5 May 2023 14:09:53 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4WBfUddEDb9c; Fri,  5 May 2023 14:09:52 +0200 (CEST)
+Received: from applejack.lan (83.11.34.59.ipv4.supernova.orange.pl
+ [83.11.34.59])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id BF5242600D4;
+ Fri,  5 May 2023 14:09:46 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH] sbsa-ref: use Bochs graphics card instead of VGA
+Date: Fri,  5 May 2023 14:09:36 +0200
+Message-Id: <20230505120936.1097060-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: Cortex-R52 support in Qemu
-Content-Language: en-US
-To: Ayan Kumar Halder <ayankuma@amd.com>, <peter.maydell@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, "Stabellini, Stefano"
- <stefano.stabellini@amd.com>
-References: <a1c45644-90d9-0fd2-c87b-f43f16b7e407@amd.com>
-From: =?UTF-8?Q?Tobias_R=c3=b6hmel?= <tobias.roehmel@rwth-aachen.de>
-In-Reply-To: <a1c45644-90d9-0fd2-c87b-f43f16b7e407@amd.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [137.226.252.162]
-X-ClientProxiedBy: rwthex-w1-b.rwth-ad.de (2a00:8a60:1:e500::26:157) To
- RWTHEX-S2-B.rwth-ad.de (2a00:8a60:1:e500::26:155)
-Received-SPF: pass client-ip=2a00:8a60:1:e501::5:49;
- envelope-from=tobias.roehmel@rwth-aachen.de;
- helo=mail-out-4.itc.rwth-aachen.de
-X-Spam_score_int: -84
-X-Spam_score: -8.5
-X-Spam_bar: --------
-X-Spam_report: (-8.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-4.28,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w5Hw3wJg0s+h
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iHkdiRwGlpsF
 
-Hi Ayan,
+Bochs card is normal PCI Express card so it fits better in system with
+PCI Express bus. VGA is simple legacy PCI card.
 
-as far as I know, there is no board/SoC that uses the Cortex-R52 in Qemu 
-right now. If you want, I can try to find the one that I used
-during development. I was able to run Zephyr in Qemu with that code.
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ hw/arm/sbsa-ref.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
-Tobias
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 3e3671f66e..0ace0fcc35 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -679,7 +679,7 @@ static void create_pcie(SBSAMachineState *sms)
+         }
+     }
+ 
+-    pci_create_simple(pci->bus, -1, "VGA");
++    pci_create_simple(pci->bus, -1, "bochs-display");
+ 
+     create_smmu(sms, pci->bus);
+ }
+-- 
+2.40.1
 
-On 05.05.23 14:21, Ayan Kumar Halder wrote:
-> Hi Tobias/Peter,
->
-> Greetings.
->
-> In the following commit, I see you have added R52 support in Qemu.
->
-> commit 5f536d01d1141a56f5057b62c82fa94826d367f0
-> Author: Tobias Röhmel <tobias.roehmel@rwth-aachen.de>
-> Date:   Tue Dec 6 11:25:04 2022 +0100
->
->     target/arm: Add ARM Cortex-R52 CPU
->
->
-> 1. Do you have quick instructions on how to build and test it ? I have 
-> ported Xen for Cortex-R52 (using Arm FVP) and would like to see if it 
-> works with Qemu as well.
->
-> 2. Have you (or planning in near future) to add support for qemu-r52 
-> in Zephyr ? I can see an old ticket
-> https://github.com/zephyrproject-rtos/zephyr/issues/47330 , but don't 
-> know if you have integrated qemu in Zephyr.
->
->
-> Kind regards,
->
-> Ayan
->

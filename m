@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp884542ejq;
-        Sat, 6 May 2023 00:25:39 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5J89gb538lbJybvZBaubWeu+evRfAVT/Vtn61FQebenLtKsYSlI5SOdeO6aq4tnBltKGUG
-X-Received: by 2002:ac8:570e:0:b0:3ef:37e3:cc5d with SMTP id 14-20020ac8570e000000b003ef37e3cc5dmr6362031qtw.17.1683357939057;
-        Sat, 06 May 2023 00:25:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683357939; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp884563ejq;
+        Sat, 6 May 2023 00:25:44 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ41y/5mE/ne/3tCUuiwjOLM6VeHN38V0tVsACGmN1eL0Hm3J0GkDRe1Ox4kCNHCs9lDWt+w
+X-Received: by 2002:a05:622a:1209:b0:3f2:655a:a77 with SMTP id y9-20020a05622a120900b003f2655a0a77mr5066182qtx.49.1683357944073;
+        Sat, 06 May 2023 00:25:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683357944; cv=none;
         d=google.com; s=arc-20160816;
-        b=J1w2wEFZ10dMgLHlemB74OvaZjpeFRcBfMpErwST+4Wa6H9737oVvRDm04kOPL9EOv
-         eQLKzUxm2CWRfsInxVimmbAw2lAnp0Ub79Wolh28JA5tII311hFUGWG8BNhd3QZDcvDb
-         PhP5jOCRxJivTNPrqD9W4JbSD85vGwyTYId9H/XUnD5Vi+Bl+asLQCdp1dcxtl08fpqt
-         5MKtZlqNYgP2civlHFs+9WL1aQ24BDGEhP+xzKvHfaWyb8Ee9XakFDwPVVhKU8weJVld
-         2TWxQb4iY08TA/Sn3dcn1nTUn5NuDkXn2xiPTMGWl+jTYn9vIyFMHtdJNthTkLEETt+c
-         uZiA==
+        b=FRz2i/zR7WOau8o3jAeC84N1L/60PsYwKpK2n+GoX6tUSJ/ynUX09biuONPGpXLlcj
+         IdZR3jZJdMEwuZOAXF/E01eUz3nJ2Awi5ItZL7pIYCIlpGR9o5n2l9IWFgEoT8FSt2FA
+         vod18JXyq9xSi+UjMwSNaEoO8kk9jJ27GCuR6vfZvTlXuA95AvcsRrC3Y3GtqVNo5p1+
+         mVbSVTFgdk90qPjD6aYiEE7Oh7ma56HIkHEoRst6RnOBC3O24uGnX1nAneXZTsANDJcY
+         CGD4BrRTEK2lMEKMk/sbFjcQEKLadiLS6nXFJr+010rGomCJi8uZ5mfPHkhkTVVN8yUw
+         L5oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=e67Crv76HZSCg/mw2UfCxuP3kRlNk2dyxOLXgebiI/I=;
-        b=qMQ92OaT7Yr7YTIdlFgNhbWwHOYsndVNtF5t8qefzJm8UJmbFB8Q4ZL91cODrAZuwr
-         P/fsBaWH396pBBGrytsY/4TVg/KoveVXWTDk+mCg9mKJRKrv5uZpfdsNKtSE3R3V4IfF
-         Tt2PT+4ACyNUPdZSQq5mmcCKHiLzM9O1Z6o49PDyvcUUVCmeWFVvA9SwyFtuEQK5KjJu
-         64eJVepWN12S56Pzb9CB6M1xI545aghFG8xQxfAkgspWtJeXAE5sM6RzMqxWgG1RZibL
-         aHJTVM9GLJZpi7fpay4g4NbdwAl+Y6tEQgIjmZhKzmAuD67GaBCpNSyD7jJLbXLNJ92H
-         gJ5g==
+        bh=EpNKtjukrxBUClWMH96nkUvfEjdZcfT2lF+ZcStO9U4=;
+        b=gb+oa1qu9ICsAQFT++k97IXOpGdIncpM+t09l7R8yQGNDTVfsVVh9yOgTQ+JQig9cv
+         eI7OLCZZrbyAr4dpS1WQ0E+U8C3xLThuE24gYzKzCzzfK5ogdBi3VCXWEdvjLSLsQpPM
+         EjFUwO7CpQZ0ma4yeT8PJqC/VOxoYQbe5M9N82znWgbU2btk93dZfLjthQEzztUgEpHL
+         pUYa/pe+/2zssoHH7zhZnq7wEO3FnPAeTiBGkBXx1REgLPIjw3rM1uj8BRZ4x+r8zlQ8
+         ShTlATtLtvHOfJOQWhgAKssAow7XLd7ghGBzNkf/9bTYwbJsaofxAUY3WZitOWhzRySI
+         bvBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iZxhVXak;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tueaRiN4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou22-20020a05620a621600b0074dfe496650si1290828qkn.501.2023.05.06.00.25.38
+        by mx.google.com with ESMTPS id r25-20020a05620a03d900b007468b38c249si166533qkm.381.2023.05.06.00.25.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 May 2023 00:25:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 06 May 2023 00:25:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iZxhVXak;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tueaRiN4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pvCG4-0004UR-R9; Sat, 06 May 2023 03:23:09 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pvCFx-0004Ga-Vk; Sat, 06 May 2023 03:23:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pvCG1-0004Ju-Hb
- for qemu-arm@nongnu.org; Sat, 06 May 2023 03:23:05 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1pvCFv-0004EJ-W0
+ for qemu-devel@nongnu.org; Sat, 06 May 2023 03:23:00 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pvCFk-0004QQ-Nq
- for qemu-arm@nongnu.org; Sat, 06 May 2023 03:23:05 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-2fa47de5b04so2473102f8f.1
- for <qemu-arm@nongnu.org>; Sat, 06 May 2023 00:22:48 -0700 (PDT)
+ id 1pvCFj-0004Oc-9D
+ for qemu-devel@nongnu.org; Sat, 06 May 2023 03:22:59 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-3f315735514so119918415e9.1
+ for <qemu-devel@nongnu.org>; Sat, 06 May 2023 00:22:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683357767; x=1685949767;
+ d=linaro.org; s=google; t=1683357764; x=1685949764;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=e67Crv76HZSCg/mw2UfCxuP3kRlNk2dyxOLXgebiI/I=;
- b=iZxhVXakRRXfproXTv2rEIQE74Fiz5rLfn1gC8aZ2FwEu20ThU+0vCw8UK3NdZalX4
- zXtj0wIKfVeG84G8ywChuy36idl6xm2CHzhYPA43Fw35ajGSCGvUkyIipwchTtnSEorl
- yf5tp4ow9mI1W31VO2USJzSyQty5Pmx9xKxaAjZHZtycTAzICmzwjLk3cjSNmkV/s9Lx
- B2Shkp5olIkFgNWBwV/wggM1WPGyvH94Ho94nEaeByaVzEoVmiSG8dqyav7ZwKO9zvSJ
- jKR4TeILG7wiIZgKRHo/uxbADtChh+YlQCE5zfjfdJd9W7I5rep9INt7N6G4/fI+YzZ0
- Nw2A==
+ bh=EpNKtjukrxBUClWMH96nkUvfEjdZcfT2lF+ZcStO9U4=;
+ b=tueaRiN4fJieAaYGxwaFK0iePnLT0oneiZ72nu0w43c4SW4wpnZ/Z8rjDtLdGUShuQ
+ jHwfn41qpUBseIntlXdYb3Sbgfm47YDHdSbX6tausltRU80SRtpjO3TFffPJXrQCUxqm
+ XNpC25AEvvj2yU1GPR6ioXw6qkz9DZ/xi52EFtcCVrEdmNf+zoAryJQRWywRGrzQHJ+j
+ +U6jIPjS95zkbJ6YjD+q8900L0vPqm4dus0CeaTWPUF8aPlcY0DwYIx8zAezKUa2Cb53
+ zMEVWK2pdEt3/rveqfoDDw2jLKW/tZ5q0kTszdqLXNgngIJUUVDNqyWbyloTa+nA/Rm+
+ 31gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683357767; x=1685949767;
+ d=1e100.net; s=20221208; t=1683357764; x=1685949764;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=e67Crv76HZSCg/mw2UfCxuP3kRlNk2dyxOLXgebiI/I=;
- b=OEEjOBqfzJzn/J+SZSDGFTiflU/1WnqfyFZBgoS0p0SHJuXJe6IHVsCuZvUYpLfrWc
- 9ZanyzQ5y4/wjs2KeaN7utnXGwaHl6hSd3XOB2m/UhmJyn+LvG5KYivgGMmM11lOO5Nn
- 9gBwxCqbQUgUeQarLCCNHYgFk8jQ+GMAen8ih9pgP9q5UYimPDYkSoqXM0hGS8x7UXyp
- +ZSbY4XhwXJSy2Am/rd+S2Gs0LCd+MMJ3JyicZCv4yjza4U0T22SgsXtE2VjqQ104cuJ
- u/FwEvt6Y5PxGCw+mADIMP7zvcZltqtu47JDNEMmcRDEjPocrORB9/MsOXNK9GlL8ASY
- s5IQ==
-X-Gm-Message-State: AC+VfDzRNRZ5GlxcwKRECBmdhToMn/gfzUhOY8HEudqUCQmxGMLOiIFs
- Nm+G+NvibFK2jwCRoh0S6NOnUg==
-X-Received: by 2002:a5d:6606:0:b0:2ef:b123:46d9 with SMTP id
- n6-20020a5d6606000000b002efb12346d9mr2975191wru.3.1683357767248; 
- Sat, 06 May 2023 00:22:47 -0700 (PDT)
+ bh=EpNKtjukrxBUClWMH96nkUvfEjdZcfT2lF+ZcStO9U4=;
+ b=Tww6osbEPvPEJgAlH0n8gbyIsLK3zteQ9/mGCj+rKB2eXdpcFPHySGnldMQoPYcEAU
+ lhftBMH7ckV7LWLUEhLSkimXXwlaPHRyQ6/4PcbPIXZ5ye+GzhQfB1n1uw1ZvIwxo0IX
+ hDIskxZn2HYkwRRobzL1DBs+9zYBcurBhJuErTNqxhT11/X/9NDotB6LR7KNMXiaEQxy
+ CGnklsR1tvI+durvJkUHv78IpfymrcGHqnz7oT6IrNUh3Y8VBiXBuhLIbwW/8ck+0E4G
+ tMfJ5WLeM9aAABJnTcXlYzoFHP/tksZGVrNz5CwT/c0VCJvSqGAqS3X2+j+ckedocJKB
+ 2wdw==
+X-Gm-Message-State: AC+VfDzAAICkCSupXNyZKZyZuPLkt3yJ7CSA0d6rCM7DDfmiFBXSq0/t
+ j3Df4HXVFhJBvY+2sGvRVKbFLoVBY2ldP66Hbma++A==
+X-Received: by 2002:adf:e904:0:b0:306:2d81:341d with SMTP id
+ f4-20020adfe904000000b003062d81341dmr6447921wrm.24.1683357764601; 
+ Sat, 06 May 2023 00:22:44 -0700 (PDT)
 Received: from stoup.. ([212.241.182.8]) by smtp.gmail.com with ESMTPSA id
- x9-20020adfec09000000b002faaa9a1721sm4481223wrn.58.2023.05.06.00.22.46
+ x9-20020adfec09000000b002faaa9a1721sm4481223wrn.58.2023.05.06.00.22.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 May 2023 00:22:47 -0700 (PDT)
+ Sat, 06 May 2023 00:22:44 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: git@xen0n.name, gaosong@loongson.cn, philmd@linaro.org,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: [PATCH v5 14/30] tcg/arm: Convert tcg_out_qemu_{ld,st}_slow_path
-Date: Sat,  6 May 2023 08:22:19 +0100
-Message-Id: <20230506072235.597467-15-richard.henderson@linaro.org>
+Subject: [PATCH v5 10/30] tcg: Add routines for calling slow-path helpers
+Date: Sat,  6 May 2023 08:22:15 +0100
+Message-Id: <20230506072235.597467-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230506072235.597467-1-richard.henderson@linaro.org>
 References: <20230506072235.597467-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,226 +110,528 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j4kwP46zIOHo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mw6LjxpwAyG6
 
-Use tcg_out_ld_helper_args, tcg_out_ld_helper_ret,
-and tcg_out_st_helper_args.  This allows our local
-tcg_out_arg_* infrastructure to be removed.
+Add tcg_out_ld_helper_args, tcg_out_ld_helper_ret,
+and tcg_out_st_helper_args.  These and their subroutines
+use the existing knowledge of the host function call abi
+to load the function call arguments and return results.
+
+These will be used to simplify the backends in turn.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/arm/tcg-target.c.inc | 140 +++++----------------------------------
- 1 file changed, 18 insertions(+), 122 deletions(-)
+ tcg/tcg.c | 456 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 453 insertions(+), 3 deletions(-)
 
-diff --git a/tcg/arm/tcg-target.c.inc b/tcg/arm/tcg-target.c.inc
-index c744512778..df514e56fc 100644
---- a/tcg/arm/tcg-target.c.inc
-+++ b/tcg/arm/tcg-target.c.inc
-@@ -690,8 +690,8 @@ tcg_out_ldrd_rwb(TCGContext *s, ARMCond cond, TCGReg rt, TCGReg rn, TCGReg rm)
-     tcg_out_memop_r(s, cond, INSN_LDRD_REG, rt, rn, rm, 1, 1, 1);
- }
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 057423c121..748be8426a 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -181,6 +181,22 @@ static bool tcg_target_const_match(int64_t val, TCGType type, int ct);
+ static int tcg_out_ldst_finalize(TCGContext *s);
+ #endif
  
--static void tcg_out_strd_8(TCGContext *s, ARMCond cond, TCGReg rt,
--                           TCGReg rn, int imm8)
-+static void __attribute__((unused))
-+tcg_out_strd_8(TCGContext *s, ARMCond cond, TCGReg rt, TCGReg rn, int imm8)
- {
-     tcg_out_memop_8(s, cond, INSN_STRD_IMM, rt, rn, imm8, 1, 0);
- }
-@@ -969,28 +969,16 @@ static void tcg_out_ext8u(TCGContext *s, TCGReg rd, TCGReg rn)
-     tcg_out_dat_imm(s, COND_AL, ARITH_AND, rd, rn, 0xff);
- }
++typedef struct TCGLdstHelperParam {
++    TCGReg (*ra_gen)(TCGContext *s, const TCGLabelQemuLdst *l, int arg_reg);
++    unsigned ntmp;
++    int tmp[3];
++} TCGLdstHelperParam;
++
++static void tcg_out_ld_helper_args(TCGContext *s, const TCGLabelQemuLdst *l,
++                                   const TCGLdstHelperParam *p)
++    __attribute__((unused));
++static void tcg_out_ld_helper_ret(TCGContext *s, const TCGLabelQemuLdst *l,
++                                  bool load_sign, const TCGLdstHelperParam *p)
++    __attribute__((unused));
++static void tcg_out_st_helper_args(TCGContext *s, const TCGLabelQemuLdst *l,
++                                   const TCGLdstHelperParam *p)
++    __attribute__((unused));
++
+ TCGContext tcg_init_ctx;
+ __thread TCGContext *tcg_ctx;
+ 
+@@ -459,9 +475,8 @@ static void tcg_out_movext1(TCGContext *s, const TCGMovExtend *i)
+  * between the sources and destinations.
+  */
  
 -static void __attribute__((unused))
--tcg_out_ext8u_cond(TCGContext *s, ARMCond cond, TCGReg rd, TCGReg rn)
--{
--    tcg_out_dat_imm(s, cond, ARITH_AND, rd, rn, 0xff);
--}
--
- static void tcg_out_ext16s(TCGContext *s, TCGType t, TCGReg rd, TCGReg rn)
+-tcg_out_movext2(TCGContext *s, const TCGMovExtend *i1,
+-                const TCGMovExtend *i2, int scratch)
++static void tcg_out_movext2(TCGContext *s, const TCGMovExtend *i1,
++                            const TCGMovExtend *i2, int scratch)
  {
-     /* sxth */
-     tcg_out32(s, 0x06bf0070 | (COND_AL << 28) | (rd << 12) | rn);
- }
- 
--static void tcg_out_ext16u_cond(TCGContext *s, ARMCond cond,
--                                TCGReg rd, TCGReg rn)
--{
--    /* uxth */
--    tcg_out32(s, 0x06ff0070 | (cond << 28) | (rd << 12) | rn);
--}
--
- static void tcg_out_ext16u(TCGContext *s, TCGReg rd, TCGReg rn)
- {
--    tcg_out_ext16u_cond(s, COND_AL, rd, rn);
-+    /* uxth */
-+    tcg_out32(s, 0x06ff0070 | (COND_AL << 28) | (rd << 12) | rn);
- }
- 
- static void tcg_out_ext32s(TCGContext *s, TCGReg rd, TCGReg rn)
-@@ -1382,92 +1370,29 @@ static void * const qemu_st_helpers[MO_SIZE + 1] = {
- #endif
+     TCGReg src1 = i1->src;
+     TCGReg src2 = i2->src;
+@@ -715,6 +730,50 @@ static TCGHelperInfo all_helpers[] = {
  };
+ static GHashTable *helper_table;
  
--/* Helper routines for marshalling helper function arguments into
-- * the correct registers and stack.
-- * argreg is where we want to put this argument, arg is the argument itself.
-- * Return value is the updated argreg ready for the next call.
-- * Note that argreg 0..3 is real registers, 4+ on stack.
-- *
-- * We provide routines for arguments which are: immediate, 32 bit
-- * value in register, 16 and 8 bit values in register (which must be zero
-- * extended before use) and 64 bit value in a lo:hi register pair.
-- */
--#define DEFINE_TCG_OUT_ARG(NAME, ARGTYPE, MOV_ARG, EXT_ARG)                \
--static TCGReg NAME(TCGContext *s, TCGReg argreg, ARGTYPE arg)              \
--{                                                                          \
--    if (argreg < 4) {                                                      \
--        MOV_ARG(s, COND_AL, argreg, arg);                                  \
--    } else {                                                               \
--        int ofs = (argreg - 4) * 4;                                        \
--        EXT_ARG;                                                           \
--        tcg_debug_assert(ofs + 4 <= TCG_STATIC_CALL_ARGS_SIZE);            \
--        tcg_out_st32_12(s, COND_AL, arg, TCG_REG_CALL_STACK, ofs);         \
--    }                                                                      \
--    return argreg + 1;                                                     \
--}
--
--DEFINE_TCG_OUT_ARG(tcg_out_arg_imm32, uint32_t, tcg_out_movi32,
--    (tcg_out_movi32(s, COND_AL, TCG_REG_TMP, arg), arg = TCG_REG_TMP))
--DEFINE_TCG_OUT_ARG(tcg_out_arg_reg8, TCGReg, tcg_out_ext8u_cond,
--    (tcg_out_ext8u_cond(s, COND_AL, TCG_REG_TMP, arg), arg = TCG_REG_TMP))
--DEFINE_TCG_OUT_ARG(tcg_out_arg_reg16, TCGReg, tcg_out_ext16u_cond,
--    (tcg_out_ext16u_cond(s, COND_AL, TCG_REG_TMP, arg), arg = TCG_REG_TMP))
--DEFINE_TCG_OUT_ARG(tcg_out_arg_reg32, TCGReg, tcg_out_mov_reg, )
--
--static TCGReg tcg_out_arg_reg64(TCGContext *s, TCGReg argreg,
--                                TCGReg arglo, TCGReg arghi)
-+static TCGReg ldst_ra_gen(TCGContext *s, const TCGLabelQemuLdst *l, int arg)
- {
--    /* 64 bit arguments must go in even/odd register pairs
--     * and in 8-aligned stack slots.
--     */
--    if (argreg & 1) {
--        argreg++;
--    }
--    if (argreg >= 4 && (arglo & 1) == 0 && arghi == arglo + 1) {
--        tcg_out_strd_8(s, COND_AL, arglo,
--                       TCG_REG_CALL_STACK, (argreg - 4) * 4);
--        return argreg + 2;
--    } else {
--        argreg = tcg_out_arg_reg32(s, argreg, arglo);
--        argreg = tcg_out_arg_reg32(s, argreg, arghi);
--        return argreg;
--    }
-+    /* We arrive at the slow path via "BLNE", so R14 contains l->raddr. */
-+    return TCG_REG_R14;
- }
- 
-+static const TCGLdstHelperParam ldst_helper_param = {
-+    .ra_gen = ldst_ra_gen,
-+    .ntmp = 1,
-+    .tmp = { TCG_REG_TMP },
++#if TCG_TARGET_REG_BITS == 32
++# define dh_typecode_ttl  dh_typecode_i32
++#else
++# define dh_typecode_ttl  dh_typecode_i64
++#endif
++
++static TCGHelperInfo info_helper_ld32_mmu = {
++    .flags = TCG_CALL_NO_WG,
++    .typemask = dh_typemask(ttl, 0)  /* return tcg_target_ulong */
++              | dh_typemask(env, 1)
++              | dh_typemask(tl, 2)   /* target_ulong addr */
++              | dh_typemask(i32, 3)  /* unsigned oi */
++              | dh_typemask(ptr, 4)  /* uintptr_t ra */
 +};
 +
- static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
++static TCGHelperInfo info_helper_ld64_mmu = {
++    .flags = TCG_CALL_NO_WG,
++    .typemask = dh_typemask(i64, 0)  /* return uint64_t */
++              | dh_typemask(env, 1)
++              | dh_typemask(tl, 2)   /* target_ulong addr */
++              | dh_typemask(i32, 3)  /* unsigned oi */
++              | dh_typemask(ptr, 4)  /* uintptr_t ra */
++};
++
++static TCGHelperInfo info_helper_st32_mmu = {
++    .flags = TCG_CALL_NO_WG,
++    .typemask = dh_typemask(void, 0)
++              | dh_typemask(env, 1)
++              | dh_typemask(tl, 2)   /* target_ulong addr */
++              | dh_typemask(i32, 3)  /* uint32_t data */
++              | dh_typemask(i32, 4)  /* unsigned oi */
++              | dh_typemask(ptr, 5)  /* uintptr_t ra */
++};
++
++static TCGHelperInfo info_helper_st64_mmu = {
++    .flags = TCG_CALL_NO_WG,
++    .typemask = dh_typemask(void, 0)
++              | dh_typemask(env, 1)
++              | dh_typemask(tl, 2)   /* target_ulong addr */
++              | dh_typemask(i64, 3)  /* uint64_t data */
++              | dh_typemask(i32, 4)  /* unsigned oi */
++              | dh_typemask(ptr, 5)  /* uintptr_t ra */
++};
++
+ #ifdef CONFIG_TCG_INTERPRETER
+ static ffi_type *typecode_to_ffi(int argmask)
  {
--    TCGReg argreg;
--    MemOpIdx oi = lb->oi;
--    MemOp opc = get_memop(oi);
-+    MemOp opc = get_memop(lb->oi);
- 
-     if (!reloc_pc24(lb->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
-         return false;
+@@ -1126,6 +1185,11 @@ static void tcg_context_init(unsigned max_cpus)
+                             (gpointer)&all_helpers[i]);
      }
  
--    argreg = tcg_out_arg_reg32(s, TCG_REG_R0, TCG_AREG0);
--    if (TARGET_LONG_BITS == 64) {
--        argreg = tcg_out_arg_reg64(s, argreg, lb->addrlo_reg, lb->addrhi_reg);
--    } else {
--        argreg = tcg_out_arg_reg32(s, argreg, lb->addrlo_reg);
--    }
--    argreg = tcg_out_arg_imm32(s, argreg, oi);
--    argreg = tcg_out_arg_reg32(s, argreg, TCG_REG_R14);
--
--    /* Use the canonical unsigned helpers and minimize icache usage. */
-+    tcg_out_ld_helper_args(s, lb, &ldst_helper_param);
-     tcg_out_call_int(s, qemu_ld_helpers[opc & MO_SIZE]);
--
--    if ((opc & MO_SIZE) == MO_64) {
--        TCGMovExtend ext[2] = {
--            { .dst = lb->datalo_reg, .dst_type = TCG_TYPE_I32,
--              .src = TCG_REG_R0, .src_type = TCG_TYPE_I32, .src_ext = MO_UL },
--            { .dst = lb->datahi_reg, .dst_type = TCG_TYPE_I32,
--              .src = TCG_REG_R1, .src_type = TCG_TYPE_I32, .src_ext = MO_UL },
--        };
--        tcg_out_movext2(s, &ext[0], &ext[1], TCG_REG_TMP);
--    } else {
--        tcg_out_movext(s, TCG_TYPE_I32, lb->datalo_reg,
--                       TCG_TYPE_I32, opc & MO_SSIZE, TCG_REG_R0);
--    }
-+    tcg_out_ld_helper_ret(s, lb, false, &ldst_helper_param);
- 
-     tcg_out_goto(s, COND_AL, lb->raddr);
-     return true;
-@@ -1475,42 +1400,13 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
- 
- static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
- {
--    TCGReg argreg, datalo, datahi;
--    MemOpIdx oi = lb->oi;
--    MemOp opc = get_memop(oi);
-+    MemOp opc = get_memop(lb->oi);
- 
-     if (!reloc_pc24(lb->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
-         return false;
++    init_call_layout(&info_helper_ld32_mmu);
++    init_call_layout(&info_helper_ld64_mmu);
++    init_call_layout(&info_helper_st32_mmu);
++    init_call_layout(&info_helper_st64_mmu);
++
+ #ifdef CONFIG_TCG_INTERPRETER
+     init_ffi_layouts();
+ #endif
+@@ -5011,6 +5075,392 @@ static void tcg_reg_alloc_call(TCGContext *s, TCGOp *op)
      }
+ }
  
--    argreg = TCG_REG_R0;
--    argreg = tcg_out_arg_reg32(s, argreg, TCG_AREG0);
--    if (TARGET_LONG_BITS == 64) {
--        argreg = tcg_out_arg_reg64(s, argreg, lb->addrlo_reg, lb->addrhi_reg);
--    } else {
--        argreg = tcg_out_arg_reg32(s, argreg, lb->addrlo_reg);
--    }
--
--    datalo = lb->datalo_reg;
--    datahi = lb->datahi_reg;
--    switch (opc & MO_SIZE) {
--    case MO_8:
--        argreg = tcg_out_arg_reg8(s, argreg, datalo);
--        break;
--    case MO_16:
--        argreg = tcg_out_arg_reg16(s, argreg, datalo);
--        break;
--    case MO_32:
--    default:
--        argreg = tcg_out_arg_reg32(s, argreg, datalo);
--        break;
--    case MO_64:
--        argreg = tcg_out_arg_reg64(s, argreg, datalo, datahi);
--        break;
--    }
--
--    argreg = tcg_out_arg_imm32(s, argreg, oi);
--    argreg = tcg_out_arg_reg32(s, argreg, TCG_REG_R14);
-+    tcg_out_st_helper_args(s, lb, &ldst_helper_param);
++/*
++ * Similarly for qemu_ld/st slow path helpers.
++ * We must re-implement tcg_gen_callN and tcg_reg_alloc_call simultaneously,
++ * using only the provided backend tcg_out_* functions.
++ */
++
++static int tcg_out_helper_stk_ofs(TCGType type, unsigned slot)
++{
++    int ofs = arg_slot_stk_ofs(slot);
++
++    /*
++     * Each stack slot is TCG_TARGET_LONG_BITS.  If the host does not
++     * require extension to uint64_t, adjust the address for uint32_t.
++     */
++    if (HOST_BIG_ENDIAN &&
++        TCG_TARGET_REG_BITS == 64 &&
++        type == TCG_TYPE_I32) {
++        ofs += 4;
++    }
++    return ofs;
++}
++
++static void tcg_out_helper_load_regs(TCGContext *s,
++                                     unsigned nmov, TCGMovExtend *mov,
++                                     unsigned ntmp, const int *tmp)
++{
++    switch (nmov) {
++    default:
++        /* The backend must have provided enough temps for the worst case. */
++        tcg_debug_assert(ntmp + 1 >= nmov);
++
++        for (unsigned i = nmov - 1; i >= 2; --i) {
++            TCGReg dst = mov[i].dst;
++
++            for (unsigned j = 0; j < i; ++j) {
++                if (dst == mov[j].src) {
++                    /*
++                     * Conflict.
++                     * Copy the source to a temporary, recurse for the
++                     * remaining moves, perform the extension from our
++                     * scratch on the way out.
++                     */
++                    TCGReg scratch = tmp[--ntmp];
++                    tcg_out_mov(s, mov[i].src_type, scratch, mov[i].src);
++                    mov[i].src = scratch;
++
++                    tcg_out_helper_load_regs(s, i, mov, ntmp, tmp);
++                    tcg_out_movext1(s, &mov[i]);
++                    return;
++                }
++            }
++
++            /* No conflicts: perform this move and continue. */
++            tcg_out_movext1(s, &mov[i]);
++        }
++        /* fall through for the final two moves */
++
++    case 2:
++        tcg_out_movext2(s, mov, mov + 1, ntmp ? tmp[0] : -1);
++        return;
++    case 1:
++        tcg_out_movext1(s, mov);
++        return;
++    case 0:
++        g_assert_not_reached();
++    }
++}
++
++static void tcg_out_helper_load_slots(TCGContext *s,
++                                      unsigned nmov, TCGMovExtend *mov,
++                                      const TCGLdstHelperParam *parm)
++{
++    unsigned i;
++
++    /*
++     * Start from the end, storing to the stack first.
++     * This frees those registers, so we need not consider overlap.
++     */
++    for (i = nmov; i-- > 0; ) {
++        unsigned slot = mov[i].dst;
++
++        if (arg_slot_reg_p(slot)) {
++            goto found_reg;
++        }
++
++        TCGReg src = mov[i].src;
++        TCGType dst_type = mov[i].dst_type;
++        MemOp dst_mo = dst_type == TCG_TYPE_I32 ? MO_32 : MO_64;
++
++        /* The argument is going onto the stack; extend into scratch. */
++        if ((mov[i].src_ext & MO_SIZE) != dst_mo) {
++            tcg_debug_assert(parm->ntmp != 0);
++            mov[i].dst = src = parm->tmp[0];
++            tcg_out_movext1(s, &mov[i]);
++        }
++
++        tcg_out_st(s, dst_type, src, TCG_REG_CALL_STACK,
++                   tcg_out_helper_stk_ofs(dst_type, slot));
++    }
++    return;
++
++ found_reg:
++    /*
++     * The remaining arguments are in registers.
++     * Convert slot numbers to argument registers.
++     */
++    nmov = i + 1;
++    for (i = 0; i < nmov; ++i) {
++        mov[i].dst = tcg_target_call_iarg_regs[mov[i].dst];
++    }
++    tcg_out_helper_load_regs(s, nmov, mov, parm->ntmp, parm->tmp);
++}
++
++static void tcg_out_helper_load_imm(TCGContext *s, unsigned slot,
++                                    TCGType type, tcg_target_long imm,
++                                    const TCGLdstHelperParam *parm)
++{
++    if (arg_slot_reg_p(slot)) {
++        tcg_out_movi(s, type, tcg_target_call_iarg_regs[slot], imm);
++    } else {
++        int ofs = tcg_out_helper_stk_ofs(type, slot);
++        if (!tcg_out_sti(s, type, imm, TCG_REG_CALL_STACK, ofs)) {
++            tcg_debug_assert(parm->ntmp != 0);
++            tcg_out_movi(s, type, parm->tmp[0], imm);
++            tcg_out_st(s, type, parm->tmp[0], TCG_REG_CALL_STACK, ofs);
++        }
++    }
++}
++
++static void tcg_out_helper_load_common_args(TCGContext *s,
++                                            const TCGLabelQemuLdst *ldst,
++                                            const TCGLdstHelperParam *parm,
++                                            const TCGHelperInfo *info,
++                                            unsigned next_arg)
++{
++    TCGMovExtend ptr_mov = {
++        .dst_type = TCG_TYPE_PTR,
++        .src_type = TCG_TYPE_PTR,
++        .src_ext = sizeof(void *) == 4 ? MO_32 : MO_64
++    };
++    const TCGCallArgumentLoc *loc = &info->in[0];
++    TCGType type;
++    unsigned slot;
++    tcg_target_ulong imm;
++
++    /*
++     * Handle env, which is always first.
++     */
++    ptr_mov.dst = loc->arg_slot;
++    ptr_mov.src = TCG_AREG0;
++    tcg_out_helper_load_slots(s, 1, &ptr_mov, parm);
++
++    /*
++     * Handle oi.
++     */
++    imm = ldst->oi;
++    loc = &info->in[next_arg];
++    type = TCG_TYPE_I32;
++    switch (loc->kind) {
++    case TCG_CALL_ARG_NORMAL:
++        break;
++    case TCG_CALL_ARG_EXTEND_U:
++    case TCG_CALL_ARG_EXTEND_S:
++        /* No extension required for MemOpIdx. */
++        tcg_debug_assert(imm <= INT32_MAX);
++        type = TCG_TYPE_REG;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    tcg_out_helper_load_imm(s, loc->arg_slot, type, imm, parm);
++    next_arg++;
++
++    /*
++     * Handle ra.
++     */
++    loc = &info->in[next_arg];
++    slot = loc->arg_slot;
++    if (parm->ra_gen) {
++        int arg_reg = -1;
++        TCGReg ra_reg;
++
++        if (arg_slot_reg_p(slot)) {
++            arg_reg = tcg_target_call_iarg_regs[slot];
++        }
++        ra_reg = parm->ra_gen(s, ldst, arg_reg);
++
++        ptr_mov.dst = slot;
++        ptr_mov.src = ra_reg;
++        tcg_out_helper_load_slots(s, 1, &ptr_mov, parm);
++    } else {
++        imm = (uintptr_t)ldst->raddr;
++        tcg_out_helper_load_imm(s, slot, TCG_TYPE_PTR, imm, parm);
++    }
++}
++
++static unsigned tcg_out_helper_add_mov(TCGMovExtend *mov,
++                                       const TCGCallArgumentLoc *loc,
++                                       TCGType dst_type, TCGType src_type,
++                                       TCGReg lo, TCGReg hi)
++{
++    if (dst_type <= TCG_TYPE_REG) {
++        MemOp src_ext;
++
++        switch (loc->kind) {
++        case TCG_CALL_ARG_NORMAL:
++            src_ext = src_type == TCG_TYPE_I32 ? MO_32 : MO_64;
++            break;
++        case TCG_CALL_ARG_EXTEND_U:
++            dst_type = TCG_TYPE_REG;
++            src_ext = MO_UL;
++            break;
++        case TCG_CALL_ARG_EXTEND_S:
++            dst_type = TCG_TYPE_REG;
++            src_ext = MO_SL;
++            break;
++        default:
++            g_assert_not_reached();
++        }
++
++        mov[0].dst = loc->arg_slot;
++        mov[0].dst_type = dst_type;
++        mov[0].src = lo;
++        mov[0].src_type = src_type;
++        mov[0].src_ext = src_ext;
++        return 1;
++    }
++
++    assert(TCG_TARGET_REG_BITS == 32);
++
++    mov[0].dst = loc[HOST_BIG_ENDIAN].arg_slot;
++    mov[0].src = lo;
++    mov[0].dst_type = TCG_TYPE_I32;
++    mov[0].src_type = TCG_TYPE_I32;
++    mov[0].src_ext = MO_32;
++
++    mov[1].dst = loc[!HOST_BIG_ENDIAN].arg_slot;
++    mov[1].src = hi;
++    mov[1].dst_type = TCG_TYPE_I32;
++    mov[1].src_type = TCG_TYPE_I32;
++    mov[1].src_ext = MO_32;
++
++    return 2;
++}
++
++static void tcg_out_ld_helper_args(TCGContext *s, const TCGLabelQemuLdst *ldst,
++                                   const TCGLdstHelperParam *parm)
++{
++    const TCGHelperInfo *info;
++    const TCGCallArgumentLoc *loc;
++    TCGMovExtend mov[2];
++    unsigned next_arg, nmov;
++    MemOp mop = get_memop(ldst->oi);
++
++    switch (mop & MO_SIZE) {
++    case MO_8:
++    case MO_16:
++    case MO_32:
++        info = &info_helper_ld32_mmu;
++        break;
++    case MO_64:
++        info = &info_helper_ld64_mmu;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    /* Defer env argument. */
++    next_arg = 1;
++
++    loc = &info->in[next_arg];
++    nmov = tcg_out_helper_add_mov(mov, loc, TCG_TYPE_TL, TCG_TYPE_TL,
++                                  ldst->addrlo_reg, ldst->addrhi_reg);
++    next_arg += nmov;
++
++    tcg_out_helper_load_slots(s, nmov, mov, parm);
++
++    /* No special attention for 32 and 64-bit return values. */
++    tcg_debug_assert(info->out_kind == TCG_CALL_RET_NORMAL);
++
++    tcg_out_helper_load_common_args(s, ldst, parm, info, next_arg);
++}
++
++static void tcg_out_ld_helper_ret(TCGContext *s, const TCGLabelQemuLdst *ldst,
++                                  bool load_sign,
++                                  const TCGLdstHelperParam *parm)
++{
++    TCGMovExtend mov[2];
++
++    if (ldst->type <= TCG_TYPE_REG) {
++        MemOp mop = get_memop(ldst->oi);
++
++        mov[0].dst = ldst->datalo_reg;
++        mov[0].src = tcg_target_call_oarg_reg(TCG_CALL_RET_NORMAL, 0);
++        mov[0].dst_type = ldst->type;
++        mov[0].src_type = TCG_TYPE_REG;
++
++        /*
++         * If load_sign, then we allowed the helper to perform the
++         * appropriate sign extension to tcg_target_ulong, and all
++         * we need now is a plain move.
++         *
++         * If they do not, then we expect the relevant extension
++         * instruction to be no more expensive than a move, and
++         * we thus save the icache etc by only using one of two
++         * helper functions.
++         */
++        if (load_sign || !(mop & MO_SIGN)) {
++            if (TCG_TARGET_REG_BITS == 32 || ldst->type == TCG_TYPE_I32) {
++                mov[0].src_ext = MO_32;
++            } else {
++                mov[0].src_ext = MO_64;
++            }
++        } else {
++            mov[0].src_ext = mop & MO_SSIZE;
++        }
++        tcg_out_movext1(s, mov);
++    } else {
++        assert(TCG_TARGET_REG_BITS == 32);
++
++        mov[0].dst = ldst->datalo_reg;
++        mov[0].src =
++            tcg_target_call_oarg_reg(TCG_CALL_RET_NORMAL, HOST_BIG_ENDIAN);
++        mov[0].dst_type = TCG_TYPE_I32;
++        mov[0].src_type = TCG_TYPE_I32;
++        mov[0].src_ext = MO_32;
++
++        mov[1].dst = ldst->datahi_reg;
++        mov[1].src =
++            tcg_target_call_oarg_reg(TCG_CALL_RET_NORMAL, !HOST_BIG_ENDIAN);
++        mov[1].dst_type = TCG_TYPE_REG;
++        mov[1].src_type = TCG_TYPE_REG;
++        mov[1].src_ext = MO_32;
++
++        tcg_out_movext2(s, mov, mov + 1, parm->ntmp ? parm->tmp[0] : -1);
++    }
++}
++
++static void tcg_out_st_helper_args(TCGContext *s, const TCGLabelQemuLdst *ldst,
++                                   const TCGLdstHelperParam *parm)
++{
++    const TCGHelperInfo *info;
++    const TCGCallArgumentLoc *loc;
++    TCGMovExtend mov[4];
++    TCGType data_type;
++    unsigned next_arg, nmov, n;
++    MemOp mop = get_memop(ldst->oi);
++
++    switch (mop & MO_SIZE) {
++    case MO_8:
++    case MO_16:
++    case MO_32:
++        info = &info_helper_st32_mmu;
++        data_type = TCG_TYPE_I32;
++        break;
++    case MO_64:
++        info = &info_helper_st64_mmu;
++        data_type = TCG_TYPE_I64;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    /* Defer env argument. */
++    next_arg = 1;
++    nmov = 0;
++
++    /* Handle addr argument. */
++    loc = &info->in[next_arg];
++    n = tcg_out_helper_add_mov(mov, loc, TCG_TYPE_TL, TCG_TYPE_TL,
++                               ldst->addrlo_reg, ldst->addrhi_reg);
++    next_arg += n;
++    nmov += n;
++
++    /* Handle data argument. */
++    loc = &info->in[next_arg];
++    n = tcg_out_helper_add_mov(mov + nmov, loc, data_type, ldst->type,
++                               ldst->datalo_reg, ldst->datahi_reg);
++    next_arg += n;
++    nmov += n;
++    tcg_debug_assert(nmov <= ARRAY_SIZE(mov));
++
++    tcg_out_helper_load_slots(s, nmov, mov, parm);
++    tcg_out_helper_load_common_args(s, ldst, parm, info, next_arg);
++}
++
+ #ifdef CONFIG_PROFILER
  
-     /* Tail-call to the helper, which will return to the fast path.  */
-     tcg_out_goto(s, COND_AL, qemu_st_helpers[opc & MO_SIZE]);
+ /* avoid copy/paste errors */
 -- 
 2.34.1
 

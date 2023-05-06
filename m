@@ -1,108 +1,104 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp883847ejq;
-        Sat, 6 May 2023 00:23:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5CsW5AQPK4YTOnwO+PfNh58CF5sEkrDedrIYLEVIK9VAr6pQnC/6Zj7sqqIcQEKpXAmVTD
-X-Received: by 2002:ad4:5c6c:0:b0:619:c50b:8dc5 with SMTP id i12-20020ad45c6c000000b00619c50b8dc5mr5775335qvh.49.1683357816873;
-        Sat, 06 May 2023 00:23:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683357816; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp883881ejq;
+        Sat, 6 May 2023 00:23:45 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4sGALB3EXs8yTxlsZiNfC5jXg2JqCBNh/FfVynbv1HKbAWBbSPVsf3+SaTCbLys6BgiyB5
+X-Received: by 2002:ac8:5754:0:b0:3e3:7dc9:b85a with SMTP id 20-20020ac85754000000b003e37dc9b85amr6889638qtx.59.1683357825094;
+        Sat, 06 May 2023 00:23:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683357825; cv=none;
         d=google.com; s=arc-20160816;
-        b=N082QwhIGuaX4v4bQ7zNV22iCUnwPehwqQHiKVyTIvvXsP9iOUCCdIXEQ2uiCg8Zu6
-         Ab4USEPNT1XL+tWetDnk5ucS6PhsGXHc17wB59Yt5o7HjjgQA97NrvQsbGxZn7w9w9yD
-         3jc4eswOAvkBXrklO0N1gjgmeQVbB3i3Z09U81lAZG+QJ7i/aQ8ZU7JnLtLeZilREb2y
-         8+p4FXZrPjvC/qEs1P1NMi7WAPzNZA2noGYpEN69S9P2cKbldyQ6LrsKlCgLUmr/CUrC
-         AOmK3JABJQSQORfrJZ51KPjB6BXJiaHHC9DMiOjx+DZNuxsjgErdU96++W1fVt/dsKEK
-         LclA==
+        b=vRbKQBGoKW1hMlAaC+o5U57Cw8OCW7S4OS4gNY5zu2vFo4PhEAmluhjeDRo+xFJHYn
+         DTVpij9mxBCj7isSZy2iSf7+EkZDB8LrhWdnRSrXp+8fARSqwdZwolGSCB0WrBNZacVI
+         Ag78HLZ1uFn+DzwLD9udtxI2emfV786usDfGoNGssD4hgebTd+YYZwEWPX41mSoq4Lje
+         /zJEj3Kcg8tqGNQ5jQQxbyfu7PaN6BuCaDUUONJfa6bou07mwUYgP9K8yq/uJTY/duka
+         P+8VvHMJRhVirndH6E/Mr6YGkBmkAdFNyjCd466kXyN5dBjplX90j3AZyJ0VU6j+vKjZ
+         Rq+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Mj3a+zcWVqs2C3w0reTnX7wZZ61td92YW4iK8rO87Zg=;
-        b=owJZduq52BdfPTvo9na3sJ0Bo92p8Pml/QQTNpelk1nkogufmGrgk/882/2ZrBnwbh
-         IDy32C2olZHpgnsAdiyR/kgbyRFmgEjSY3gE4kcMcaCKtLwOYzfjzJ5scNNDdFDjFhFu
-         pCSd4cXBXsoZJw51/bgvrlXznTw9uLoA7YWG6DlMlPQ870G2hpEn3EXjxyG8zNrILlJy
-         EV6rd3rkT8eYxd+hs4wNzJ2aqeUGXZ7X0mkgMxeOsRnYHbvHdnDmSWAJa+H8dl4ZWVew
-         RLHuGluLWSvPf4ZLcQD/FRRCvA8r06XZUoZJ7ltfwQyOvse4mUsQRVtt769LCNKjPA9B
-         2kiQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mjr+dUk/ZkwHWCLTUidpgZMvIzWIcBQNWf0MxO839Yc=;
+        b=tKWVJ+KvPAXkaJ+hM7D5OV8eAn59dembuO6m35BiHuIBMnYNrhx/k0WYuinwnJZQ/F
+         CaWHUb0Hhu59/cYzXLmqWNiibgmVa7f/BKm9AY2h8OcwKrlVuWdwAk1tGMBOM2MosnSU
+         4VFrXkU3TTlhSdK2s7ds0mTqX6OzS0VIAUQf3Zm+8TdBOVIr0K1JeQOmkTB8kQuaf+0y
+         rForHUGIjkaKutLhpNvQ+tnFFakG+YnwRLlcpcHKQosLFGlMmMpNp6XS+BzAs3nDKhgk
+         LXSqdlWj1keI/WDF7Ox6DekLbCl/jlnbIcNlVFGxJRY0tH2l1QESm94q5AUIc/bOz8WE
+         KMhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q7AUr5Ff;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K0rPC0wI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11-20020ad45c4b000000b0061b6e8a435dsi1256726qva.409.2023.05.06.00.23.36
+        by mx.google.com with ESMTPS id k27-20020a05620a139b00b0074693b90c7fsi1269855qki.512.2023.05.06.00.23.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 06 May 2023 00:23:36 -0700 (PDT)
+        Sat, 06 May 2023 00:23:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q7AUr5Ff;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K0rPC0wI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pvCG9-0004iz-6D; Sat, 06 May 2023 03:23:13 -0400
+	id 1pvCFg-0003vT-Rl; Sat, 06 May 2023 03:22:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pvCG7-0004f6-J2
- for qemu-devel@nongnu.org; Sat, 06 May 2023 03:23:11 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1pvCFf-0003u2-D8
+ for qemu-devel@nongnu.org; Sat, 06 May 2023 03:22:43 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1pvCFo-0004SD-Ic
- for qemu-devel@nongnu.org; Sat, 06 May 2023 03:23:11 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-3f193ca059bso16893855e9.3
- for <qemu-devel@nongnu.org>; Sat, 06 May 2023 00:22:51 -0700 (PDT)
+ id 1pvCFc-0004Kc-3p
+ for qemu-devel@nongnu.org; Sat, 06 May 2023 03:22:43 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-3f192c23fffso17390795e9.3
+ for <qemu-devel@nongnu.org>; Sat, 06 May 2023 00:22:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683357770; x=1685949770;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Mj3a+zcWVqs2C3w0reTnX7wZZ61td92YW4iK8rO87Zg=;
- b=Q7AUr5FfRa6JPB7ZgojgUuypgrcrd+YukMgxC9AMur5zGPVcIDlWfE04HkjGGFPqje
- L2fZLAZ0cwqwgZv0VnUfa7fCv0DeIpKs1Icp2QgjWDe27J2o3uuDfgmS7x1EMBAdITK/
- 83HBgGz2b6vkLDjGNjiUqW5RoB091SwFuz5h/DhBOSwPu9wtWa5d2qBdyVmnd/kPAyGl
- ++nLOgILq80xYKXJCbzxj99C8av/CoB5lkX2P0v7OxkxXHMQ/IVntIKjvkE+7Zxl1txw
- RTOBFXIElKgorg4SZ794eVUlKaYHsLBHT5NUTm5brJrgW0/oxNOGS6PNmEwtKJP6NXhH
- zaLQ==
+ d=linaro.org; s=google; t=1683357758; x=1685949758;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mjr+dUk/ZkwHWCLTUidpgZMvIzWIcBQNWf0MxO839Yc=;
+ b=K0rPC0wIM5B0iPk9dL7oUNxUPfMNwuSSPEaz3X3bzJVLZPBTIngrIHU6wfUhk6ud04
+ yqlCxKBprPJSdgtz2vl/EPmAX70esqToc+4bsG10ZTo9hbGPgaSsZ5g3MLoaSdeLN3MA
+ adFrigAlyTZLv8DeB2tmtc7MYGUKsj0NfRxCIQraNb6FoaJiZZHDVgHulq0Dik16tIS2
+ bAk0jkHuqJvOpcV1A9YO/nOdL5rxlhWsBBSLZ/LlcAZs6gwhnDUWGO9w7/+d6dIvKQVZ
+ 5hHU8SZeuEcJ9Dv+B9+lspc753CFSXYPgtFjjpcZ4WRgvPA1WKf/J3o5X0AXtd8hvDeJ
+ xvKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683357770; x=1685949770;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Mj3a+zcWVqs2C3w0reTnX7wZZ61td92YW4iK8rO87Zg=;
- b=bXPPO7KEkC6K+92wn8JIG77g/0R286OpbkWXGI0ApIjL8uvdqaFfo+gjkEIl6AgTdc
- THqksE5sVucbBIbCLra67LDnwRBWd5KnmZuwn8BqldP3OPOcB+Qu9fQpTbP4DunNiOdP
- 6hm2wDkUvybVyZtyPdgUCjveJsdx0uulhyU0VvDfiK5BKrpy3bjhdgKQ3WHYTv4kdHAR
- /xuql5PvLoo1LsF5nhc9IU6KNKIg6qIC1BjktlcJLMuAKjgFJ4Owqk1oNEpRb7JaGjjP
- CYtE1Gr4nOqS0bzJCX7Tw735jBN7i6PpjOzjeWBgk4Or3c3D2hSEsYn18mAv6KoIx0eV
- fLPA==
-X-Gm-Message-State: AC+VfDy4US6pLRSbH6cWI4sv9yX+wzyvhbntB27cg4h/tGNxCa/QHjPa
- 5i7Oy/b0CFpv5kuWrSCjjhJ5hRYGxGJrsoZ2m5eEcA==
-X-Received: by 2002:a7b:c38e:0:b0:3f0:310c:e3cf with SMTP id
- s14-20020a7bc38e000000b003f0310ce3cfmr2887721wmj.37.1683357770164; 
- Sat, 06 May 2023 00:22:50 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683357758; x=1685949758;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mjr+dUk/ZkwHWCLTUidpgZMvIzWIcBQNWf0MxO839Yc=;
+ b=IYLouXRSG9UIX+UX+EXUf/vzkpIBZKxGg+DCNh43HOawS+hTzfj2885FevdW9GHgm3
+ e/HnONRtM6c2lhowiJIvz6VCClEMpcSCv5c1fiqs4w5hB5zRdkxwcSQtbidLs0A4Faj9
+ xjo5MO91OXmXFehCxV2bNVseeKkfXgvP89Z020ZxdvhQ1RdR926L7D2bJbn4L9WM7gua
+ m7MrG222YWJn0D0SEf4Qu7fNXSt7mfPvIxWkg5ADrHqDSb6+JNQA28OvUUJDqYyV1YV/
+ 0DTx6m884DQNTlpl04WJbyOZ+LEvMyqZS7w0E3xZthM4qESyfRt4+MruSecsZP0k/sm0
+ dKpQ==
+X-Gm-Message-State: AC+VfDx3Zd1l3pwYdbHHa3/c9TYS9PYELu01pkNmj/CIf8KSBzufILmd
+ FF7qO+/HX7+qk2WE6byKYKzqI9GPDPH9bticUTpXDw==
+X-Received: by 2002:a1c:ed03:0:b0:3ee:6d55:8b73 with SMTP id
+ l3-20020a1ced03000000b003ee6d558b73mr2556302wmh.29.1683357757066; 
+ Sat, 06 May 2023 00:22:37 -0700 (PDT)
 Received: from stoup.. ([212.241.182.8]) by smtp.gmail.com with ESMTPSA id
- x9-20020adfec09000000b002faaa9a1721sm4481223wrn.58.2023.05.06.00.22.49
+ x9-20020adfec09000000b002faaa9a1721sm4481223wrn.58.2023.05.06.00.22.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 06 May 2023 00:22:49 -0700 (PDT)
+ Sat, 06 May 2023 00:22:36 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: git@xen0n.name, gaosong@loongson.cn, philmd@linaro.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Subject: [PATCH v5 18/30] tcg/riscv: Convert tcg_out_qemu_{ld,st}_slow_path
-Date: Sat,  6 May 2023 08:22:23 +0100
-Message-Id: <20230506072235.597467-19-richard.henderson@linaro.org>
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH v5 00/30] tcg: Simplify calls to load/store helpers
+Date: Sat,  6 May 2023 08:22:05 +0100
+Message-Id: <20230506072235.597467-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230506072235.597467-1-richard.henderson@linaro.org>
-References: <20230506072235.597467-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,89 +120,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uRDTSpNcgJbb
+X-TUID: 9/tpCDMY3U4W
 
-Use tcg_out_ld_helper_args, tcg_out_ld_helper_ret,
-and tcg_out_st_helper_args.
+There are several changes to the load/store helpers coming, and making
+sure that those changes are properly reflected across all of the backends
+was harrowing.
 
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- tcg/riscv/tcg-target.c.inc | 37 ++++++++++---------------------------
- 1 file changed, 10 insertions(+), 27 deletions(-)
+I have gone back and restarted by hoisting the code out of the backends
+and into tcg.c.  We already have all of the parameters for the host
+function call abi for "normal" helpers, we simply need to apply that to
+the load/store slow path.
 
-diff --git a/tcg/riscv/tcg-target.c.inc b/tcg/riscv/tcg-target.c.inc
-index 2b2d313fe2..c22d1e35ac 100644
---- a/tcg/riscv/tcg-target.c.inc
-+++ b/tcg/riscv/tcg-target.c.inc
-@@ -906,14 +906,14 @@ static void tcg_out_goto(TCGContext *s, const tcg_insn_unit *target)
-     tcg_debug_assert(ok);
- }
- 
-+/* We have three temps, we might as well expose them. */
-+static const TCGLdstHelperParam ldst_helper_param = {
-+    .ntmp = 3, .tmp = { TCG_REG_TMP0, TCG_REG_TMP1, TCG_REG_TMP2 }
-+};
-+
- static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
- {
--    MemOpIdx oi = l->oi;
--    MemOp opc = get_memop(oi);
--    TCGReg a0 = tcg_target_call_iarg_regs[0];
--    TCGReg a1 = tcg_target_call_iarg_regs[1];
--    TCGReg a2 = tcg_target_call_iarg_regs[2];
--    TCGReg a3 = tcg_target_call_iarg_regs[3];
-+    MemOp opc = get_memop(l->oi);
- 
-     /* resolve label address */
-     if (!reloc_sbimm12(l->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
-@@ -921,13 +921,9 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
-     }
- 
-     /* call load helper */
--    tcg_out_mov(s, TCG_TYPE_PTR, a0, TCG_AREG0);
--    tcg_out_mov(s, TCG_TYPE_PTR, a1, l->addrlo_reg);
--    tcg_out_movi(s, TCG_TYPE_PTR, a2, oi);
--    tcg_out_movi(s, TCG_TYPE_PTR, a3, (tcg_target_long)l->raddr);
--
-+    tcg_out_ld_helper_args(s, l, &ldst_helper_param);
-     tcg_out_call_int(s, qemu_ld_helpers[opc & MO_SSIZE], false);
--    tcg_out_mov(s, (opc & MO_SIZE) == MO_64, l->datalo_reg, a0);
-+    tcg_out_ld_helper_ret(s, l, true, &ldst_helper_param);
- 
-     tcg_out_goto(s, l->raddr);
-     return true;
-@@ -935,14 +931,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
- 
- static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
- {
--    MemOpIdx oi = l->oi;
--    MemOp opc = get_memop(oi);
--    MemOp s_bits = opc & MO_SIZE;
--    TCGReg a0 = tcg_target_call_iarg_regs[0];
--    TCGReg a1 = tcg_target_call_iarg_regs[1];
--    TCGReg a2 = tcg_target_call_iarg_regs[2];
--    TCGReg a3 = tcg_target_call_iarg_regs[3];
--    TCGReg a4 = tcg_target_call_iarg_regs[4];
-+    MemOp opc = get_memop(l->oi);
- 
-     /* resolve label address */
-     if (!reloc_sbimm12(l->label_ptr[0], tcg_splitwx_to_rx(s->code_ptr))) {
-@@ -950,13 +939,7 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
-     }
- 
-     /* call store helper */
--    tcg_out_mov(s, TCG_TYPE_PTR, a0, TCG_AREG0);
--    tcg_out_mov(s, TCG_TYPE_PTR, a1, l->addrlo_reg);
--    tcg_out_movext(s, s_bits == MO_64 ? TCG_TYPE_I64 : TCG_TYPE_I32, a2,
--                   l->type, s_bits, l->datalo_reg);
--    tcg_out_movi(s, TCG_TYPE_PTR, a3, oi);
--    tcg_out_movi(s, TCG_TYPE_PTR, a4, (tcg_target_long)l->raddr);
--
-+    tcg_out_st_helper_args(s, l, &ldst_helper_param);
-     tcg_out_call_int(s, qemu_st_helpers[opc & MO_SIZE], false);
- 
-     tcg_out_goto(s, l->raddr);
+Changes for v5:
+  * 24 patches upstreamed; 6 of the remaining 30 have reviews, but
+    could not be merged out of order.
+
+
+r~
+
+
+Richard Henderson (30):
+  tcg/i386: Introduce prepare_host_addr
+  tcg/i386: Use indexed addressing for softmmu fast path
+  tcg/aarch64: Introduce prepare_host_addr
+  tcg/arm: Introduce prepare_host_addr
+  tcg/loongarch64: Introduce prepare_host_addr
+  tcg/mips: Introduce prepare_host_addr
+  tcg/ppc: Introduce prepare_host_addr
+  tcg/riscv: Introduce prepare_host_addr
+  tcg/s390x: Introduce prepare_host_addr
+  tcg: Add routines for calling slow-path helpers
+  tcg/i386: Convert tcg_out_qemu_ld_slow_path
+  tcg/i386: Convert tcg_out_qemu_st_slow_path
+  tcg/aarch64: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/arm: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/loongarch64: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/mips: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/ppc: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/riscv: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/s390x: Convert tcg_out_qemu_{ld,st}_slow_path
+  tcg/loongarch64: Simplify constraints on qemu_ld/st
+  tcg/mips: Remove MO_BSWAP handling
+  tcg/mips: Reorg tlb load within prepare_host_addr
+  tcg/mips: Simplify constraints on qemu_ld/st
+  tcg/ppc: Reorg tcg_out_tlb_read
+  tcg/ppc: Adjust constraints on qemu_ld/st
+  tcg/ppc: Remove unused constraints A, B, C, D
+  tcg/ppc: Remove unused constraint J
+  tcg/riscv: Simplify constraints on qemu_ld/st
+  tcg/s390x: Use ALGFR in constructing softmmu host address
+  tcg/s390x: Simplify constraints on qemu_ld/st
+
+ tcg/loongarch64/tcg-target-con-set.h |   2 -
+ tcg/loongarch64/tcg-target-con-str.h |   1 -
+ tcg/mips/tcg-target-con-set.h        |  13 +-
+ tcg/mips/tcg-target-con-str.h        |   2 -
+ tcg/mips/tcg-target.h                |   4 +-
+ tcg/ppc/tcg-target-con-set.h         |  11 +-
+ tcg/ppc/tcg-target-con-str.h         |   7 -
+ tcg/riscv/tcg-target-con-set.h       |   2 -
+ tcg/riscv/tcg-target-con-str.h       |   1 -
+ tcg/s390x/tcg-target-con-set.h       |   2 -
+ tcg/s390x/tcg-target-con-str.h       |   1 -
+ tcg/tcg.c                            | 456 +++++++++++++-
+ tcg/aarch64/tcg-target.c.inc         | 347 +++++------
+ tcg/arm/tcg-target.c.inc             | 455 +++++---------
+ tcg/i386/tcg-target.c.inc            | 451 +++++---------
+ tcg/loongarch64/tcg-target.c.inc     | 313 ++++------
+ tcg/mips/tcg-target.c.inc            | 870 ++++++++-------------------
+ tcg/ppc/tcg-target.c.inc             | 510 +++++++---------
+ tcg/riscv/tcg-target.c.inc           | 304 ++++------
+ tcg/s390x/tcg-target.c.inc           | 314 ++++------
+ 20 files changed, 1766 insertions(+), 2300 deletions(-)
+
 -- 
 2.34.1
 

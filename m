@@ -1,175 +1,208 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2266133ejq;
-        Mon, 8 May 2023 12:41:54 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Rlh+DZ9FhD9YMMlO2jsJVvw/tzCh0D4GYtpNKnJ5yrFbdDvhl5N5cAl2UEsQbXdtiSxac
-X-Received: by 2002:ac8:7c56:0:b0:3f3:8720:4f8c with SMTP id o22-20020ac87c56000000b003f387204f8cmr10907136qtv.18.1683574914497;
-        Mon, 08 May 2023 12:41:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683574914; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2340468ejq;
+        Mon, 8 May 2023 15:24:01 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6tAio+673FScXN0zwxHEpT2sA05hfjVfdfMJBlUe54IqLzCh1947SAfHNgai32aPP05WOS
+X-Received: by 2002:ad4:5b8f:0:b0:61d:be1e:7c4e with SMTP id 15-20020ad45b8f000000b0061dbe1e7c4emr17041384qvp.12.1683584641005;
+        Mon, 08 May 2023 15:24:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683584640; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cfdjg9K1lx39tSVcWsD9LFl37zArid6jU5Bau5EReJz3qkXDfP9OsiCyjlyM8T6EZz
-         giA2asLMUjop6q84ipv6MDS+Psj6FGiMprl1MFaak0Arrk61JrCS6lc2sy76Cg31e6XU
-         096O6cnVhQyk0l8Ssyl+BR+LWlRJUx5qoJWU52pNsf1nobdAGCXgvdnlzGaSmoombHYw
-         30xiWwChn0/pMkb0aT2uUpW/ozLvGn0ooOlIqggWVRHBRezrn3hSIbVS49XpbAbpSk+g
-         1rJLEjkNeHe4IM8FTmnWDbGnwt4yKdDAkSFSUHrWUxro0uwc2W0HKgM0WQHGio8p6r9F
-         3hOA==
+        b=todItD7teNS/uTOWTFSOmjkoCoVmN8LJ52DuQ2l6dSB94YH3OY4lMGxZ1i+0e3hrF3
+         C8joJ1b8mxvT5pN9mw9smaa4GMKVQjGyvLwVRGbxjcEJmV/cx1fVDwrnPy50fslqwaY2
+         6jSCm2284IJoEiWQbZCRWrPqeDU4DeeEvsmSixLmUV1+rfbpFgZW3/kfNjpLv4i3+Md4
+         8Cqhj7DufDeyBiqrqnZIUG5+MUSaKmartuAWRVVua9EKrsgwkASiIGy7rdsbfZ+M067s
+         MN6eUOTueBY7w8ngQ0gPEfFlO/UpsQLK2ovWUfJhEr8bu8Wupk1xw5xZDg1oRVBjel9U
+         N2tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=AS9hwBRrLwBVLGSk1mb4Bne5rt3KNvkrXmBGX3oVvjI=;
-        b=toOVBJgOEJQ4/n5x3II64SB+myV4iOnrfkh+p34vQWQokc9sxYNN0uhFRV4+9PXAF7
-         /3Jq9rO0hvYlEq4fYUPq6MQtAB7F88ycE4Q8bxvRdyetnfUh75TVNWTk7xtzrELxwYbH
-         1glXfgfVee7op1KHoGm/O3n7lgCUg8LBZj5KGDGjTau0M7sZwjP8Dq3Q/e44P23WH0hN
-         exosB0p1MqeKvS5rjlFhBVt7nU0M9tbYXH/PZqOrjgbmXPvPBmeyfG+VHohZmDP2kv2I
-         0jdsvY9NRhDuEtIyJxe3hGIdmA2ZzePABkGX6JM/dqRQr0EDEfTteTm0QRrm1a4ESpTb
-         QRnQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
+        b=B4OpGH57ICQ4WPO4yuzWWAP7G5fOKnXGxVGnodCUsozUFK5oKPNbxfbilAWjXDerMT
+         1Q9mEdgvTik6Aog+JB2ZBNlurAvoIM4yEf966JaW8CvUhdadOZjPPdxejk+oTghk1ER1
+         QyxWaEgTwj+ce8SdtyCzanaAVwT08t5zodBeoj2+LAOLWanuVYXSq7Qb3PMV4i6b2gWb
+         vjudeieFJRIr+hvQ6YpRmhKXTzWYHyibSGpp33X75+8Ss9kmUm/xTAUS11Kp54b+WlYo
+         iYBoFoBgHOH7X/KVOyr0oe7/ooMaJfI6pvYRVTQfD/Wtf4AkKsFahK/8giU3MR/AIeJi
+         bagw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=VPZfiOtQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y7-20020ac85f47000000b003f390fd027asi811077qta.686.2023.05.08.12.41.54
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO3uXnSw;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 11-20020a0562140d6b00b005f99f9674e7si390215qvs.92.2023.05.08.15.24.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 12:41:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 May 2023 15:24:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=VPZfiOtQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pw6jb-0000XS-Mu; Mon, 08 May 2023 15:41:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1pw6jZ-0000UA-Pr; Mon, 08 May 2023 15:41:21 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1pw6jX-0002RM-UB; Mon, 08 May 2023 15:41:21 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-4f22908a082so2559581e87.1; 
- Mon, 08 May 2023 12:41:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683574877; x=1686166877;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AS9hwBRrLwBVLGSk1mb4Bne5rt3KNvkrXmBGX3oVvjI=;
- b=VPZfiOtQhfi8Nvu9+I6RxDGr0QsuG2c7neu8f05uiJa3707aVP1hFvhIi6CwQR/Uvi
- 3ss54ThRKHlJmM4b3MYYAgr8kQSJdnaezGfbv8dWFE97kUXQSGk21aSoKYFnMmBBchaf
- SAw+jxkpnkWBgDPhLMfz8XbotLevOsFbe1lZV2cvvkvhlAX3Zz2V18EWzDpScSHIRHg1
- N49SZZRm8J/Tl4xOUVK2BkzEzzJBR37fVVe9B5GmqiM3qdMxHvqQr9pBsA1WAK6sg1Xn
- r7pCG9GlpkjqHpQYWqu48pYla7aXMoA2Y6pS9zigflqhvrSTVRqgtveg5w8JXp42L/yZ
- Rlug==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO3uXnSw;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1683584640;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
+	b=jO3uXnSwUiHLXrEQpBUx/HQYLLlEMp4X4Umln2Kj+AVYX4JYREn3oSVyWk0N8x7CPCgXww
+	54eDPi3QPCVJjUa5eyATbio9mRX148+AxBZI0QCQ1+kXXjln1m7Q8xVpHSHN3DxovxetCe
+	Uo+w33Op/cetnMwyG5Lbt6CkUhacOxI=
+Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
+ [209.85.217.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-320-AsRxbHNjPfiAmUzJ8ZVdfw-1; Mon, 08 May 2023 18:23:59 -0400
+X-MC-Unique: AsRxbHNjPfiAmUzJ8ZVdfw-1
+Received: by mail-vs1-f72.google.com with SMTP id ada2fe7eead31-43483abf52aso2692048137.1
+        for <alex.bennee@linaro.org>; Mon, 08 May 2023 15:23:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683574877; x=1686166877;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AS9hwBRrLwBVLGSk1mb4Bne5rt3KNvkrXmBGX3oVvjI=;
- b=NYNo4pGnU0ocd7xRD6fFi5rLgHLSiwHJzx03mTi8sAaYxTK2WGI5V142RfHlCiSaSl
- BfrM8X2tVXFeyvjdxSTGfZRFAW+U3EyOyKnxOBhvvP3kEGAJAnqQD7dBRihkzhY/Mt+6
- 3TV1dsRx1CGvAAfU4LAOVmf8ekkiIycKXW6yHqIMpggUvZ7W6stk/6Pw+mOvhSdjdG7S
- R3GucY7WKNlAfYQO+2nwMVYW/XZ9Q5uG1TC1jgOeE+7eoCYkCnEEvs6Ov7Pn1P6u3DtV
- vn0xe+g81upJRwZwkD1ZBxB/+j/DkMfDx6okjXQVuk3+yOluuKaqIjoyaLLcBQFBiS6n
- PpFQ==
-X-Gm-Message-State: AC+VfDwIlvIW0oSXgJFK172I1ujTpQqrSI1ZAjEo4Ku3HJicjUC6omZO
- ILDGY4FmVphSO/s7cirfoeU=
-X-Received: by 2002:a19:760f:0:b0:4ed:d5b0:7fd9 with SMTP id
- c15-20020a19760f000000b004edd5b07fd9mr60675lff.19.1683574877506; 
- Mon, 08 May 2023 12:41:17 -0700 (PDT)
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
- by smtp.gmail.com with ESMTPSA id
- b20-20020ac247f4000000b004eb0dcc52ddsm82350lfp.41.2023.05.08.12.41.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 May 2023 12:41:17 -0700 (PDT)
-Date: Mon, 8 May 2023 21:41:15 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/net: Move xilinx_ethlite.c to the target-independent
- source set
-Message-ID: <20230508194114.GC6984@fralle-msi>
-References: <20230508120314.59274-1-thuth@redhat.com>
+        d=1e100.net; s=20221208; t=1683584638; x=1686176638;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
+        b=e6xI0qLYmcWAVEkCeJqRyjlRbMrtTpbf62sgU+ohRLyRBg4NAsnAIWiWUBcoSOnuar
+         pGqb/eSE1Kizh+BLayJzqH7ON2+cAd76AxpdlM0F2IWktXSLkTZIVPo9u+Br/kErSLaC
+         wS6odhCNs76D29FVh9LH+mGtfWyFzNAQtxYJQJ47EhaiHJg4lmsf1lIE4/PnsTsPg6Z2
+         1b9rGJJcosA6ILGSnBjAUaGv3J7KfhP3MVvRFkxuMpIy6Dx0ixOV2Lb1m6kLTit9VphH
+         ETQuC4L2tulQkyHz0ZungXnLRDjqUYePE08sXYrR+bDG3aqlK9eAr5UWPR+03YOWDP4h
+         PpEg==
+X-Gm-Message-State: AC+VfDxI4n7unuJdoTmnOJIItltTQc0/q5L+8AMovFa4jpSwY7w4uMtV
+	Cv7Q8jeXKWmdf8VK8VYkSjxhl6kVow3laJoGwCyCGR80MlbhnfeD5Oj2sNqt3VS/GPtvFn/Leak
+	scJgWkHMiny075yPMQi9XfwPzYkO+89dG
+X-Received: by 2002:a05:6102:316f:b0:42f:eb31:810 with SMTP id l15-20020a056102316f00b0042feb310810mr4064388vsm.17.1683584638423;
+        Mon, 08 May 2023 15:23:58 -0700 (PDT)
+X-Received: by 2002:a05:6102:316f:b0:42f:eb31:810 with SMTP id
+ l15-20020a056102316f00b0042feb310810mr4064383vsm.17.1683584638153; Mon, 08
+ May 2023 15:23:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230508120314.59274-1-thuth@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UvCQgw6miMwb
+References: <20230503091244.1450613-1-alex.bennee@linaro.org>
+ <20230503091244.1450613-6-alex.bennee@linaro.org> <531a2eab-f0e6-46a5-c021-c82746c1ae38@redhat.com>
+ <87y1m5s9yl.fsf@linaro.org> <5fb214d8-4a54-f896-f23f-fe9e646e4b2d@redhat.com>
+ <CAFEAcA-Cfz8CkNeTQodoSitocBmm4ddk25Dq8x=5FiiGvaS34Q@mail.gmail.com>
+ <e7185f74-f041-05b1-0f76-bab6d724e796@redhat.com> <878re4cl1u.fsf@suse.de>
+In-Reply-To: <878re4cl1u.fsf@suse.de>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue, 9 May 2023 00:23:47 +0200
+Message-ID: <CABgObfYYFfGk2X6M5MxbEbVqCYOp1Km53xkTNrfHwkK=aZOpyw@mail.gmail.com>
+Subject: Re: [PATCH 05/22] hw/arm: Select VIRTIO_NET for virt machine
+To: Fabiano Rosas <farosas@suse.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
+	Artyom Tarasenko <atar4qemu@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	Wainer dos Santos Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Leif Lindholm <quic_llindhol@quicinc.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Helge Deller <deller@gmx.de>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>, 
+	Yoshinori Sato <ysato@users.sourceforge.jp>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Ilya Leoshkevich <iii@linux.ibm.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
+	Andrew Jeffery <andrew@aj.id.au>, qemu-s390x <qemu-s390x@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Beraldo Leal <bleal@redhat.com>, 
+	Max Filippov <jcmvbkbc@gmail.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+	Radoslaw Biernacki <rad@semihalf.com>, Aurelien Jarno <aurelien@aurel32.net>, 
+	David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>, 
+	Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="0000000000004e8e7605fb36186f"
+X-TUID: 9R0F6GKrpowN
 
-On [2023 May 08] Mon 14:03:14, Thomas Huth wrote:
-> Now that the tswap() functions are available for target-independent
-> code, too, we can move xilinx_ethlite.c from specific_ss to softmmu_ss
-> to avoid that we have to compile this file multiple times.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+--0000000000004e8e7605fb36186f
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Il gio 4 mag 2023, 14:56 Fabiano Rosas <farosas@suse.de> ha scritto:
 
-> ---
->  hw/net/xilinx_ethlite.c | 2 +-
->  hw/net/meson.build      | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index 99c22819ea..89f4f3b254 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -25,7 +25,7 @@
->  #include "qemu/osdep.h"
->  #include "qemu/module.h"
->  #include "qom/object.h"
-> -#include "cpu.h" /* FIXME should not use tswap* */
-> +#include "exec/tswap.h"
->  #include "hw/sysbus.h"
->  #include "hw/irq.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/net/meson.build b/hw/net/meson.build
-> index e2be0654a1..a7860c5efe 100644
-> --- a/hw/net/meson.build
-> +++ b/hw/net/meson.build
-> @@ -43,7 +43,7 @@ softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_emc.c'))
->  softmmu_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_eth.c'))
->  softmmu_ss.add(when: 'CONFIG_COLDFIRE', if_true: files('mcf_fec.c'))
->  specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_llan.c'))
-> -specific_ss.add(when: 'CONFIG_XILINX_ETHLITE', if_true: files('xilinx_ethlite.c'))
-> +softmmu_ss.add(when: 'CONFIG_XILINX_ETHLITE', if_true: files('xilinx_ethlite.c'))
->  
->  softmmu_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: files('net_rx_pkt.c'))
->  specific_ss.add(when: 'CONFIG_VIRTIO_NET', if_true: files('virtio-net.c'))
-> -- 
-> 2.31.1
-> 
-> 
+>
+> It's a bit hard to maintain the original intention with just
+> documentation. Couldn't we require that --without-default-devices always
+> be accompanied by --with-devices?
+
+
+Maybe, but why would it be bad to just patch the default .mak file?
+
+And more to the point of Peter's
+> question, couldn't we just leave the defaults off unconditionally when
+> --without-default-devices is passed without --with-devices?
+>
+
+No, for example RHEL adds a lot of devices and is perfectly usable without
+--nodefaults, but we still use --without-default-devices because we want
+any new config to be opt in, unless it's always needed.
+
+The coupling of -nodefaults with --without-default-devices is a bit
+> redundant. If we're choosing to not build some devices, then the QEMU
+> binary should already know that.
+>
+
+--without-default-devices is not about choosing to not build some devices;
+it is about making non-selected devices opt-in rather than opt-out.
+
+Paolo
+
+
+> Just to be clear, -nodefaults by itself still makes sense because we can
+> have a simple command line for those using QEMU directly while allowing
+> the management layer to fine tune the devices.
+>
+> In the long run, I think we need to add some configure option that gives
+> us pure allnoconfig so we can have that in the CI and catch these CONFIG
+> issues before merging. There's no reason to merge a new CONFIG if it
+> will then be impossible to turn it off.
+>
+>
+
+--0000000000004e8e7605fb36186f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Il gio 4 mag 2023, 14:56 Fabiano Rosas &lt;<a href=3D"=
+mailto:farosas@suse.de">farosas@suse.de</a>&gt; ha scritto:<br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
+ solid;padding-left:1ex"><br>
+It&#39;s a bit hard to maintain the original intention with just<br>
+documentation. Couldn&#39;t we require that --without-default-devices alway=
+s<br>
+be accompanied by --with-devices?</blockquote></div></div><div dir=3D"auto"=
+><br></div><div dir=3D"auto">Maybe, but why would it be bad to just patch t=
+he default .mak file?</div><div dir=3D"auto"><br></div><div dir=3D"auto"><d=
+iv class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:=
+0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">And more to the poi=
+nt of Peter&#39;s<br>
+question, couldn&#39;t we just leave the defaults off unconditionally when<=
+br>
+--without-default-devices is passed without --with-devices?<br></blockquote=
+></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">No, for example =
+RHEL adds a lot of devices and is perfectly usable without --nodefaults, bu=
+t we still use --without-default-devices because we want any new config to =
+be opt in, unless it&#39;s always needed.</div><div dir=3D"auto"><br></div>=
+<div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
+>The coupling of -nodefaults with --without-default-devices is a bit<br>
+redundant. If we&#39;re choosing to not build some devices, then the QEMU<b=
+r>
+binary should already know that.<br></blockquote></div></div><div dir=3D"au=
+to"><br></div><div dir=3D"auto">--without-default-devices is not about choo=
+sing to not build some devices; it is about making non-selected devices opt=
+-in rather than opt-out.</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
+>Paolo</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gma=
+il_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
+er-left:1px #ccc solid;padding-left:1ex">
+<br>
+Just to be clear, -nodefaults by itself still makes sense because we can<br=
+>
+have a simple command line for those using QEMU directly while allowing<br>
+the management layer to fine tune the devices.<br>
+<br>
+In the long run, I think we need to add some configure option that gives<br=
+>
+us pure allnoconfig so we can have that in the CI and catch these CONFIG<br=
+>
+issues before merging. There&#39;s no reason to merge a new CONFIG if it<br=
+>
+will then be impossible to turn it off.<br>
+<br>
+</blockquote></div></div></div>
+
+--0000000000004e8e7605fb36186f--

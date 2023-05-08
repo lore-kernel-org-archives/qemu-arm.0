@@ -1,139 +1,161 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp1884314ejq;
-        Mon, 8 May 2023 01:00:49 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ41vWcpI6jWP7C4/mrOhrqCI6PyPOTcZncwuPSq3VL9BAxLHFkUFTUV6b1aNBBSHg4arvFN
-X-Received: by 2002:a05:6214:20a5:b0:5fd:7701:88c5 with SMTP id 5-20020a05621420a500b005fd770188c5mr10380321qvd.6.1683532849443;
-        Mon, 08 May 2023 01:00:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683532849; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp1884572ejq;
+        Mon, 8 May 2023 01:00:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ78PruaA2sLpc8Ou8cmUT2PJhn2K85X/x8+y39naspmgj8F2BybNv8j5mMdiqIUaEGYyn8j
+X-Received: by 2002:ad4:5764:0:b0:5e6:8e03:994e with SMTP id r4-20020ad45764000000b005e68e03994emr14904157qvx.38.1683532857035;
+        Mon, 08 May 2023 01:00:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683532857; cv=none;
         d=google.com; s=arc-20160816;
-        b=OdhDeH/drJd7V8CU1TKpCBnnNcjbCNnHwhPeOr2yCkoz7RRz7kALxbeLp/uev06RsG
-         ySahE4VqLcmzjgybDLdAikfPnqjBH4KhZY5jFkDV5b2jBIAwoy4Av/l3sXdPkQJ8ucLr
-         7f20FTYypDK8luK2pfbtX6GWXn8Dxe7Z+sVvACLMOHbk4lAKR7b0sd63NpoW1hSynvi+
-         wELMOSUNLY+xzB3rmIb6pJMKi6H8mL90QCmYfo3BV0S6bRjVVQ0qry1eGGQ7dz0ShARd
-         eE7JAYJBvD/aIKStd1Y1ZR/yKlt2lOUcytg9Za6JGqQUr2zC4OHsGfA04hs8r7w5dP/T
-         IzFg==
+        b=fnHqgUQ+0YkxHYQb/NRWANQvVZQ6sFHJxDZENrWem0bJJYrZVgErUrz/QTaYmQ958O
+         FnQtGmhZI7gm6aixcZ/pYToBsZ8Kq3i0uPsXZIokLRWb4BvIiuJU4Fref1nScYleD3c2
+         7ZmZZSRyLdSBZm9OVWt3m4aDf0hXy+nixtvZKTacBUdv2MvFBKuJSZPtXEneSvC9CfHg
+         shAKUZqdOVLaQFQ7OBB9E/TGTiZ+DhBKV+5W7LeEHYpSnx7b43oUTUr3kh7B4prHdUia
+         XOAcA1rFcuehxg4djeRNgUJ5gGq+QAyUQkbnIexBM9wwWc7u74ZkoOa4X3n3i8Ai7m3i
+         7BMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=nybtdIEjeOy99ymTtI/4laYoxxFoDx3enp/zcygKTjc=;
-        b=p0pueyVO/Ctz/v40CjBr05opJMx9Qw77ROy7rjJdlsat/58yrSxixT98E9Ajp19coJ
-         JZFmGnJn3dIT/ePdERik6cFH4cizCIU9ULST5UO8fks/dR4ejb5OKBK6jHdWIKdQyr7I
-         d7mABuYFIn3rDyB9BZBnryUTltxVhyHvgLaublNQjEjj187R91pr48q1WGHSe0B657GR
-         Br5+QfAQ+7wMDW47KaSmgyB0HtE8qtQbrAmG7ZzhzphIJsGy91J9qlyCTXK2gNxweBui
-         l434LEjgbAZTBvU0obMc8IDl44gtxSXeeT8tweFEPN5WZ29B3e7cpnb07DvKOYxJz76H
-         TobA==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=nwRnvpJqStIIknuv50a4o+41BVgj73i3bJsxlOF/xmI=;
+        b=tXB6aAf1JDdiBpL8QMBTDf4lt5Kn+D2ZfkGfuRtnh06XCBPnu94t41b1r0pOPVwsIQ
+         510bxijHW01YBx+GzhCfSOLOn1arvIzv/6QgzpCxvBm+vcfQ9MpDMcNUcSRJ6EWPBTu2
+         pQdjuYWC7S84hnKaFy/59bwAtc+CsNrz7lHhCe2viZ5og5+o06IVM/J5e1uwUOlDoLok
+         MONvRsLe/yZl+js8dBRKAA+jPm1YsD5AOo5j4f+zRvfOY9OQROk5m1LkxYID8c7iYuIT
+         +Vr/64WbJcAEatNd6VZOP6rAF9tfCgY2BMFj25LC9+iXSvyrtOObm8MO9OtURUEqbxEJ
+         W+Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m14-20020a05620a13ae00b0074e325175aasi2737939qki.393.2023.05.08.01.00.49
+        by mx.google.com with ESMTPS id im6-20020a056214246600b005ef55f9e058si2707815qvb.535.2023.05.08.01.00.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 01:00:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 May 2023 01:00:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pvvmk-0008BG-8b; Mon, 08 May 2023 03:59:54 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pvvmJ-0007zZ-AH; Mon, 08 May 2023 03:59:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5sq4=A5=kaod.org=clg@ozlabs.org>)
- id 1pvvmT-00082N-Np; Mon, 08 May 2023 03:59:39 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
+ id 1pvvmF-0007xa-72; Mon, 08 May 2023 03:59:23 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=5sq4=A5=kaod.org=clg@ozlabs.org>)
- id 1pvvmS-0001Al-0O; Mon, 08 May 2023 03:59:37 -0400
+ id 1pvvmD-000151-7O; Mon, 08 May 2023 03:59:22 -0400
 Received: from gandalf.ozlabs.org (mail.ozlabs.org
  [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QFDGF2BRBz4x44;
- Mon,  8 May 2023 17:59:33 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QFDFm5TJsz4x49;
+ Mon,  8 May 2023 17:59:08 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QFDGC0yPCz4x48;
- Mon,  8 May 2023 17:59:30 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QFDFk2V7cz4x44;
+ Mon,  8 May 2023 17:59:06 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 08/12] aspeed: Create flash devices only when defaults are
- enabled
-Date: Mon,  8 May 2023 09:58:55 +0200
-Message-Id: <20230508075859.3326566-9-clg@kaod.org>
+Subject: [PATCH 00/12] aspeed: fixes and extensions
+Date: Mon,  8 May 2023 09:58:47 +0200
+Message-Id: <20230508075859.3326566-1-clg@kaod.org>
 X-Mailer: git-send-email 2.40.0
-In-Reply-To: <20230508075859.3326566-1-clg@kaod.org>
-References: <20230508075859.3326566-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=5sq4=A5=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1lJbtNBbKJWI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4L2ugBguC181
 
-When the -nodefaults option is set, flash devices should be created
-with :
+Hello,
 
-    -blockdev node-name=fmc0,driver=file,filename=./flash.img \
-    -device mx66u51235f,addr=0x0,bus=ssi.0,drive=fmc0 \
+This series fixes issues spotted by Coverity and adds a couple of
+improvements for the machine definition.
 
-To be noted that in this case, the ROM will not be installed and the
-initial boot sequence (U-Boot loading) will fetch instructions using
-SPI transactions which is significantly slower. That's exactly how HW
-operates though.
+The first is to offer the capability to define all CS of all SPI
+controllers without introducing new machine types, using a blockdev on
+the command line :
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+    -blockdev node-name=fmc0,driver=file,filename=./flash.img
+    -device mx66u51235f,addr=0x0,bus=ssi.0,drive=fmc0
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 9a15899cbc..a8832c0072 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -387,12 +387,14 @@ static void aspeed_machine_init(MachineState *machine)
-     connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(&bmc->soc), NULL, &error_abort);
- 
--    aspeed_board_init_flashes(&bmc->soc.fmc,
-+    if (defaults_enabled()) {
-+        aspeed_board_init_flashes(&bmc->soc.fmc,
-                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-                               amc->num_cs, 0);
--    aspeed_board_init_flashes(&bmc->soc.spi[0],
-+        aspeed_board_init_flashes(&bmc->soc.spi[0],
-                               bmc->spi_model ? bmc->spi_model : amc->spi_model,
-                               1, amc->num_cs);
-+    }
- 
-     if (machine->kernel_filename && sc->num_cpus > 1) {
-         /* With no u-boot we must set up a boot stub for the secondary CPU */
+instead of using drives which relies on the command line order.
+Ultimately, we will get rid of drive_get(IF_MTD, ...) but we are not
+there yet. For this, SSIPeripheral is extended with an "addr"
+property.
+
+A second extension is the introduction of a "uart" machine option to
+let the user define the default UART device of the machine from the
+QEMU command line :
+
+    -M ast2500-evb,uart=uart3
+
+Last, a new "vfp-d32" CPU property is added to ARM CPUs to model FPUs
+implementing VFPv4 without NEON support and with 16 64-bit FPU
+registers (and not 32 registers). This is the case for the Cortex A7
+of the Aspeed AST2600 SoC. I hope I got it right this time.
+
+Thanks,
+
+C.
+
+Cédric Le Goater (12):
+  aspeed/hace: Initialize g_autofree pointer
+  aspeed: Introduce a boot_rom region at the machine level
+  aspeed: Use the boot_rom region of the fby35 machine
+  hw/ssi: Add an "addr" property to SSIPeripheral
+  hw/ssi: Introduce a ssi_get_cs() helper
+  aspeed/smc: Wire CS lines at reset
+  hw/ssi: Check for duplicate addresses
+  aspeed: Create flash devices only when defaults are enabled
+  m25p80: Introduce an helper to retrieve the BlockBackend of a device
+  aspeed: Get the BlockBackend of FMC0 from the flash device
+  aspeed: Introduce a "uart" machine option
+  target/arm: Allow users to set the number of VFP registers
+
+ docs/system/arm/aspeed.rst          | 10 +++++
+ include/hw/block/flash.h            |  4 ++
+ include/hw/ssi/ssi.h                |  5 +++
+ target/arm/cpu.h                    |  2 +
+ hw/arm/aspeed.c                     | 68 ++++++++++++++++++++++-------
+ hw/arm/aspeed_ast2600.c             |  2 +
+ hw/arm/fby35.c                      | 29 ++++++------
+ hw/arm/stellaris.c                  |  4 +-
+ hw/arm/xilinx_zynq.c                |  1 +
+ hw/arm/xlnx-versal-virt.c           |  1 +
+ hw/arm/xlnx-zcu102.c                |  2 +
+ hw/block/m25p80.c                   |  6 +++
+ hw/microblaze/petalogix_ml605_mmu.c |  1 +
+ hw/misc/aspeed_hace.c               |  2 +-
+ hw/ssi/aspeed_smc.c                 |  8 ++++
+ hw/ssi/ssi.c                        | 42 ++++++++++++++++++
+ target/arm/cpu.c                    | 32 ++++++++++++++
+ 17 files changed, 187 insertions(+), 32 deletions(-)
+
 -- 
 2.40.0
 

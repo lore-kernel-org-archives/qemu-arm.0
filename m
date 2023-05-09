@@ -1,189 +1,207 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2433343ejq;
-        Mon, 8 May 2023 19:23:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ58yaFyMsveijz4p2abE5SGfyf5dA1SCjdRZvPMZzIIugPTgpS4JsS2jEIjn0ABIQk8VqNW
-X-Received: by 2002:a05:622a:2d5:b0:3e8:1903:ab05 with SMTP id a21-20020a05622a02d500b003e81903ab05mr18761171qtx.64.1683598993250;
-        Mon, 08 May 2023 19:23:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683598993; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2435273ejq;
+        Mon, 8 May 2023 19:29:28 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6ttY98x5VY0mg7DLR4rdfhC6Zx1YpNp9y9Ya13D1K8aVhpXnylTSw6wT2CmgaHcjTRsXK4
+X-Received: by 2002:a05:622a:1904:b0:3f3:8d25:8e40 with SMTP id w4-20020a05622a190400b003f38d258e40mr10804333qtc.17.1683599368499;
+        Mon, 08 May 2023 19:29:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683599368; cv=none;
         d=google.com; s=arc-20160816;
-        b=goK34c9nJTNi1Uc4iyOuOzvmHr/NzxV4koTra2m+CREFI3bQwM8tYgJzrQU+XVh+x4
-         O4Gq729tCl6H5VinhJ/EFSAAhkeB5TtBtjv5iwGv7aeiTTTEj0fN6+SAhIlWZyqBzAhe
-         RE0a8hVbIEMeRRgUWDTD6wbKhq52HUpeiIj8hMCyzo35JZMxoG4ZkIQxc4x5oLrs+Xif
-         SI7SZaw3SUjSyUEsAvKhHI6u7EU1zL2rHe6NOeq1zBVP5n4kEl5aOu9/xe5oSvcT+rzU
-         LX6K6QjHmgO/TshV5wW/KeNY0E3xRr9KbznRd0V/XeOLTs8m77SWhSgtYGVC1NHqjKMY
-         N2JA==
+        b=UPB53xOdzxqyb6v3d7X7lvkz7/g7KnCJ0ap7NrOY3gO3ZiuhIsVnz45AQ/JLUGvv2x
+         OR1PvjXETTcdb9Fpuj/yQW8fQwzY3xrwykIUgWuxyxgqJdCCStmkA8MfPKuVZIP7cFZ+
+         7ftLSKZfOXvxEthsKz2W07iHqmA+4ofhvpBeI9j3jzSj0L+iOyCwF+vALXieVyD5Mi6y
+         i0S847xamk+7/mGxZzjTgFlb1C2eoJsa7CjVM9nRpIHewd2p1ZdmBySAREV8cWLKK49L
+         NbSEDI+YS/iSIab/x6QxFW2SVfHIy1U/K1v+Fk76/wwYjIkOleGjn1fNVicFRmQyjS8z
+         t+2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=KWghLOz3HpWxoe11c4O6AK1yng47haWuN7Nrkqj0J7g=;
-        b=qLbA2mnSc5Nx18CambBL5gs1nXUY6ivkTf2LGUx9KVNdfeOWXRayIubLTmUIEtVFZY
-         RVPTlPs6Wen1CwyQ7+PNTRvoEVJ8Hjlf21BexsfeWhZbin4bKBDTccxytcZRoQxa9rHS
-         4R6Xsk9tMmvYVR0zrViF/xYiJMFzP/cN8UaUhLIx0XvVtGO/sVOh1tP040hc+uKMXhOr
-         ybnLcvFuuxPVnuNXgMUVXIaZNHxvTNIUfcXeZ+cCkVBL7rwDIu/NqEqr5Cd2oxbSxOVS
-         OIncM5h3xeNA1Z/qINp+9DiQtEEY5NI7l4Ex3zhRgd5maRLSo80N13mW6PLd/NVE5Y9W
-         Odpg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:cc:to:from:subject:dkim-signature;
+        bh=uDxCtWFe2leX7C7M439x9hy/ug8HUnP0UDJeN+IylD4=;
+        b=ri0yoZz/GhrkyOX6iBYUbAmPtrKaOjze5NxWmDMNmEy/tQk2/ZpWQIZ7OrpB92fPcN
+         jIVc49KiEGcXBOrCoTO49qkSb+74R6sTRMi/nA2V2m5YZJ3d3HCZzULC8pO7G4IbZUD4
+         PTc7kR3anQ6jkXbRJ96f40gyli4Iqm7z32XDcZC50SlcCDavn58cp7LRW8wX9B4m9ozB
+         eYGpynQHq318RSV7wz/B4X7BFSFvKOrttuHgWxZOQoya7Nw4Kf6Mz0CCT/+LStKXHIaQ
+         woO+upGZI0FSqfZnYDQapKTl74SVHxhCvPa2A4KCxguVRc4HmShtNtAxik0bPxMD+ojS
+         e2gA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sd5J7KsY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dHa17AmM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e22-20020ac84e56000000b003ef3035746dsi144680qtw.56.2023.05.08.19.23.13
+        by mx.google.com with ESMTPS id o19-20020a05622a139300b003e66ab27ef1si138784qtk.481.2023.05.08.19.29.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 19:23:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 May 2023 19:29:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sd5J7KsY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dHa17AmM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwCzV-0004Jj-Vo; Mon, 08 May 2023 22:22:14 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pwD6H-0008Cu-Cx; Mon, 08 May 2023 22:29:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwCzS-0004Ix-J2
- for qemu-arm@nongnu.org; Mon, 08 May 2023 22:22:11 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwD6D-0008CW-1a
+ for qemu-devel@nongnu.org; Mon, 08 May 2023 22:29:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwCzR-0001zL-4R
- for qemu-arm@nongnu.org; Mon, 08 May 2023 22:22:10 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwD69-0003VN-Pp
+ for qemu-devel@nongnu.org; Mon, 08 May 2023 22:29:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683598926;
+ s=mimecast20190719; t=1683599345;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KWghLOz3HpWxoe11c4O6AK1yng47haWuN7Nrkqj0J7g=;
- b=Sd5J7KsYHRK5sTLm4+CcRlVcQkbk1XxGCGD75ALAiOJE8958L4CVbA+EeAhLco16/SKF3y
- 0jxYMVcoPr+8oopGgz0AFYOtAFb/LetRQwVSfOth+YjgMpUL50hb3aA4Yr9Tmnc3NcJox2
- ll5wotufta6Kf2FmI5o/+kOSiYDfVWY=
+ bh=uDxCtWFe2leX7C7M439x9hy/ug8HUnP0UDJeN+IylD4=;
+ b=dHa17AmMTI4xM+RAC0Y3pW3nBn2h5L44JWGBKMOU7/UBrI6EzyVzJVM7d9XAtxipVxm7ek
+ aR3F/ou3vc1rJctUzpFAb6w3OlhRwTUa4eFQVuoHFL1cP/H3q7tiYL7YKcm1N6uUgZTfGa
+ W8lc2GOMdVYP61hdF4LA1hoN/CcDDd8=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-258-i6s3r3AgO8-NiEpbQGVeSg-1; Mon, 08 May 2023 22:22:03 -0400
-X-MC-Unique: i6s3r3AgO8-NiEpbQGVeSg-1
+ us-mta-538-JLJuLsj1NzS20YJHndECvw-1; Mon, 08 May 2023 22:29:04 -0400
+X-MC-Unique: JLJuLsj1NzS20YJHndECvw-1
 Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
  [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C4432185A790;
- Tue,  9 May 2023 02:22:01 +0000 (UTC)
-Received: from gshan.redhat.com (vpn2-54-118.bne.redhat.com [10.64.54.118])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F1320492B00;
- Tue,  9 May 2023 02:21:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 80F5B867956;
+ Tue,  9 May 2023 02:29:03 +0000 (UTC)
+Received: from [10.64.54.118] (vpn2-54-118.bne.redhat.com [10.64.54.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 07F10492B00;
+ Tue,  9 May 2023 02:28:58 +0000 (UTC)
+Subject: Re: [PATCH v3 0/4] hw/arm/virt: Support dirty ring
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
  peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
- cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
- maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 4/4] kvm: Enable dirty ring for arm64
-Date: Tue,  9 May 2023 12:21:22 +1000
-Message-Id: <20230509022122.20888-5-gshan@redhat.com>
-In-Reply-To: <20230509022122.20888-1-gshan@redhat.com>
+ cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com, maz@kernel.org,
+ zhenyzha@redhat.com, shan.gavin@gmail.com
 References: <20230509022122.20888-1-gshan@redhat.com>
+Message-ID: <9d3561b6-51a2-e8ef-5e72-7cb41b6af8d5@redhat.com>
+Date: Tue, 9 May 2023 12:28:56 +1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230509022122.20888-1-gshan@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.802, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8SK0jxEujpXp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WeTmsyHO5vYT
 
-arm64 has different capability from x86 to enable the dirty ring, which
-is KVM_CAP_DIRTY_LOG_RING_ACQ_REL. Besides, arm64 also needs the backup
-bitmap extension (KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP) when 'kvm-arm-gicv3'
-or 'arm-its-kvm' device is enabled. Here the extension is always enabled
-and the unnecessary overhead to do the last stage of dirty log synchronization
-when those two devices aren't used is introduced, but the overhead should
-be very small and acceptable. The benefit is cover future cases where those
-two devices are used without modifying the code.
+Hi Paolo,
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Tested-by: Zhenyu Zhang <zhenyzha@redhat.com>
----
- accel/kvm/kvm-all.c | 23 +++++++++++++++++++++--
- 1 file changed, 21 insertions(+), 2 deletions(-)
+On 5/9/23 12:21 PM, Gavin Shan wrote:
+> This series intends to support dirty ring for live migration for arm64. The
+> dirty ring use discrete buffer to track dirty pages. For arm64, the speciality
+> is to use backup bitmap to track dirty pages when there is no-running-vcpu
+> context. It's known that the backup bitmap needs to be synchronized when
+> KVM device "kvm-arm-gicv3" or "arm-its-kvm" has been enabled. The backup
+> bitmap is collected in the last stage of migration. The policy here is to
+> always enable the backup bitmap extension. The overhead to synchronize the
+> backup bitmap in the last stage of migration, when those two devices aren't
+> used, is introduced. However, the overhead should be very small and acceptable.
+> The benefit is to support future cases where those two devices are used without
+> modifying the code.
+> 
+> PATCH[1] add migration last stage indicator
+> PATCH[2] synchronize the backup bitmap in the last stage of migration
+> PATCH[3] add helper kvm_dirty_ring_init() to enable dirty ring
+> PATCH[4] enable dirty ring for arm64
+> 
+>     v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01342.html
+>     v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00434.html
+> RFCv1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00171.html
+> 
+> Testing
+> =======
+> (1) kvm-unit-tests/its-pending-migration and kvm-unit-tests/its-migration with
+>      dirty ring or normal dirty page tracking mechanism. All test cases passed.
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+>      ./its-pending-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+>      ./its-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+>      ./its-pending-migration
+> 
+>      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+>      ./its-migration
+> 
+> (2) Combinations of migration, post-copy migration, e1000e and virtio-net
+>      devices. All test cases passed.
+> 
+>      -netdev tap,id=net0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown  \
+>      -device e1000e,bus=pcie.5,netdev=net0,mac=52:54:00:f1:26:a0
+> 
+>      -netdev tap,id=vnet0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+>      -device virtio-net-pci,bus=pcie.6,netdev=vnet0,mac=52:54:00:f1:26:b0
+> 
+> Changelog
+> =========
+> v3:
+>    * Rebase for QEMU v8.1.0                                                     (Gavin)
+> v2:
+>    * Drop PATCH[v1 1/6] to synchronize linux-headers                            (Gavin)
+>    * More restrictive comments about struct MemoryListener::log_sync_global     (PeterX)
+>    * Always enable the backup bitmap extension                                  (PeterM)
+> v1:
+>    * Combine two patches into one PATCH[v1 2/6] for the last stage indicator    (PeterX)
+>    * Drop the secondary bitmap and use the original one directly                (Juan)
+>    * Avoid "goto out" in helper kvm_dirty_ring_init()                           (Juan)
+> 
+> Gavin Shan (4):
+>    migration: Add last stage indicator to global dirty log
+>    kvm: Synchronize the backup bitmap in the last stage
+>    kvm: Add helper kvm_dirty_ring_init()
+>    kvm: Enable dirty ring for arm64
+> 
+>   accel/kvm/kvm-all.c      | 108 ++++++++++++++++++++++++++++-----------
+>   include/exec/memory.h    |   7 ++-
+>   include/sysemu/kvm_int.h |   1 +
+>   migration/dirtyrate.c    |   4 +-
+>   migration/ram.c          |  20 ++++----
+>   softmmu/memory.c         |  10 ++--
+>   6 files changed, 101 insertions(+), 49 deletions(-)
+> 
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 5d0de9d0a8..7679f397ae 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -1466,6 +1466,7 @@ static int kvm_dirty_ring_init(KVMState *s)
- {
-     uint32_t ring_size = s->kvm_dirty_ring_size;
-     uint64_t ring_bytes = ring_size * sizeof(struct kvm_dirty_gfn);
-+    unsigned int capability = KVM_CAP_DIRTY_LOG_RING;
-     int ret;
- 
-     s->kvm_dirty_ring_size = 0;
-@@ -1480,7 +1481,12 @@ static int kvm_dirty_ring_init(KVMState *s)
-      * Read the max supported pages. Fall back to dirty logging mode
-      * if the dirty ring isn't supported.
-      */
--    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING);
-+    ret = kvm_vm_check_extension(s, capability);
-+    if (ret <= 0) {
-+        capability = KVM_CAP_DIRTY_LOG_RING_ACQ_REL;
-+        ret = kvm_vm_check_extension(s, capability);
-+    }
-+
-     if (ret <= 0) {
-         warn_report("KVM dirty ring not available, using bitmap method");
-         return 0;
-@@ -1493,13 +1499,26 @@ static int kvm_dirty_ring_init(KVMState *s)
-         return -EINVAL;
-     }
- 
--    ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING, 0, ring_bytes);
-+    ret = kvm_vm_enable_cap(s, capability, 0, ring_bytes);
-     if (ret) {
-         error_report("Enabling of KVM dirty ring failed: %s. "
-                      "Suggested minimum value is 1024.", strerror(-ret));
-         return -EIO;
-     }
- 
-+    /* Enable the backup bitmap if it is supported */
-+    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP);
-+    if (ret > 0) {
-+        ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP, 0);
-+        if (ret) {
-+            error_report("Enabling of KVM dirty ring's backup bitmap failed: "
-+                         "%s. ", strerror(-ret));
-+            return -EIO;
-+        }
-+
-+        s->kvm_dirty_ring_with_bitmap = true;
-+    }
-+
-     s->kvm_dirty_ring_size = ring_size;
-     s->kvm_dirty_ring_bytes = ring_bytes;
- 
--- 
-2.23.0
+Could you please help to take a look and queue this series for QEMU v8.1 if it looks good?
+Peter Maydell has the suggestion [1] to merge the v2 series to QEMU v8.1. there is no
+difference between v2 and v3 except the fixed rebase conflicts in v3.
+
+[1] https://lists.nongnu.org/archive/html/qemu-arm/2023-03/msg00551.html
+
+Thanks,
+Gavin
 

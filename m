@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2391205ejq;
-        Mon, 8 May 2023 17:29:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Tlrafwvd4Dkp5b/y4lxc6cfuC7IWxsJ1bQiQ0kybTiD9YQkMnbv7K+cGS5c8v+kFqZxYm
-X-Received: by 2002:a05:622a:44d:b0:3ef:58f5:a001 with SMTP id o13-20020a05622a044d00b003ef58f5a001mr17334193qtx.44.1683592148446;
-        Mon, 08 May 2023 17:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683592148; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2391270ejq;
+        Mon, 8 May 2023 17:29:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ74lGxTPQMRb/iD8KN5gZrk8qkQGtHjGvRfkw92XxU4qBKhs+UZ7LCen3k0LbVV4mKA99xM
+X-Received: by 2002:ad4:5f8e:0:b0:5df:4d41:954d with SMTP id jp14-20020ad45f8e000000b005df4d41954dmr20186158qvb.3.1683592161017;
+        Mon, 08 May 2023 17:29:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683592161; cv=none;
         d=google.com; s=arc-20160816;
-        b=nTLsD/KfAjLv7njVGG3rvIt2kWpoMyS9gP86voV6cbxfDhslW2Zg0LkSrtIunhLhAc
-         2yj4B39E6ffu6akJLybYw3cIl2o0XDyl8A2LEy8pvHGaboJC6I7X1iqD75qQ71t+0bF6
-         HoeLEZNrDwZdrKRz0CqVTz+OjR/MQIRGxF6r+hGuZDfjqotZXOTohiEW9keir1BQA/MJ
-         0F6Y2hINSOO3nHCniAXvaczJl0lyDGamvL6aiy0Hx158uN5ytV2enkMnaaHMgKuFH6xJ
-         IDbP3FdVMoz9vEPviai0je/2abf7A6wAYCdmvI6HjZ2WrMHyRseqBkGMepmgEmoVtora
-         3duw==
+        b=ZuPCbw/tOeTUowRPvtm0UFNysVaCggudaCjtzVVaf5WpjRHtCqQYVvc17KtOE/vjkS
+         4NqP+jFfZsgjc6pngKyzwshmTh6p4bhgK01ulsByeNyH0sEI5tCheaIrDcsFb3y9ZJJw
+         0/2kIG1i9zkTWz+tX6AYrlPoJd0ZOXuhK/ucf4s5Exiu0CWYzRhV2J9gVr/nHZWrPiHh
+         owqxEbt6ZYdP2Gq5BP2zV7IrgvKEkvjGE3cr8RHDQVTKLzUouIzs6JnhpBB6YWcz03uS
+         KyANIjPr2QCDn3WSIPb/rGN5MIuyTUELkXgYOuYsiFrMA5Xpa4ThsxKsWd8LaFidEoYr
+         4JeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=h0e9kG0FR3IP27E3gxDdD+6BjsHxySQBdLDMEqFNo6w=;
-        b=Z66f/PUX/szXl07duXlyDWu4w5IZCn1NF2/o7XoAFp27fN7GCgn18svPG4I+5xHSiv
-         8XY/ZOn9LAyqfKLuLsX8RmfVV8skJEt71C2zCQE5fMTwFO01Gvv3zqpqvavoUD84kNMJ
-         gEyhNxIgT96Hz01r9EPgQtxbufkXzxE7DB7U7VdPupuVgtF8yfMBRgl8WAuJWC4fX3rg
-         zLF7ENVtbf0bbrPmoAiv6KPZWRPR6mB27TsvNvAheuN5sDeuB6I3Leut/lLnHp7GR4r/
-         oe3LehgtQn7lzd0ZQgsc6DjwZsu1cBOA1z/NVXfkeJomTJMXjc5fzvebt/ERjtwlkCDS
-         H3Lw==
+         :mime-version:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature;
+        bh=/1w77KaIoEw3rO4tby6tQKfdSg9DR3DbTkGBALJKypU=;
+        b=PewsxasUuefzlATXGU4i35MkU+DFnOv2ih7Z+m8lHpuVqHR/SJumPBfiCFBGus6XUy
+         Y6WjoIrLrOrHo+E3ctI57i/O4MFDodFaNGPHbCq9oIGeCoR0enQAT4zsRxhDqBKQw1mU
+         RFCdszp9ncwCz+H4gly6ymgkHBoVXdrI2BbPuaKDdJI28HfzaGnPH1JtbVBjrAnK9Mu3
+         wQaVu5b1J/XOXdpOL7DGXBxfiHZz1kI4IU/1G2lGHep00y6lm5nYInI+v/NC7x8UWOxV
+         2AR3GkF29PmSH7znxiMQt5Y1bfFU5Ip4/f1J9ju5dFmKx2yQAbE8zGBbmCC95RLGsyFp
+         QfpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="A0+WOVu/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BYiJ18J4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4-20020ac85a04000000b003ef3d74694esi79343qta.34.2023.05.08.17.29.08
+        by mx.google.com with ESMTPS id ke25-20020a056214301900b005a79fd76432si484056qvb.0.2023.05.08.17.29.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 17:29:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 May 2023 17:29:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="A0+WOVu/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BYiJ18J4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwBDP-0004NV-De; Mon, 08 May 2023 20:28:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pwBDO-0004Mn-Oa; Mon, 08 May 2023 20:28:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBDH-0004LN-PR
- for qemu-arm@nongnu.org; Mon, 08 May 2023 20:28:20 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBDH-0004LM-PD
+ for qemu-devel@nongnu.org; Mon, 08 May 2023 20:28:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBDG-0004CR-0k
- for qemu-arm@nongnu.org; Mon, 08 May 2023 20:28:19 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBD7-000449-HO
+ for qemu-devel@nongnu.org; Mon, 08 May 2023 20:28:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683592097;
+ s=mimecast20190719; t=1683592088;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:mime-version: content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h0e9kG0FR3IP27E3gxDdD+6BjsHxySQBdLDMEqFNo6w=;
- b=A0+WOVu/QX3TO67SzsCD1ZkqHvpWn8xRfQqo1iUlZvRzlJz5y9+tuirdS4LEIJCLXlorZD
- tlii2pq7mSNDfzsEPVMGiV7s1OhQD7MbmCRnb2CzSVO+rbQJmVAuK5a0Kuf4fi+kI+wlhk
- wAQS75xpIXWxW2PfwdMPciXwPUukH5U=
+ bh=/1w77KaIoEw3rO4tby6tQKfdSg9DR3DbTkGBALJKypU=;
+ b=BYiJ18J4nK72NdcHjvqqNG14VGpoSQZwl5WPcyeelz1Ba5wFxfWpzy9Fk47tO6Ifg0eIKK
+ pREhviCn8qPwjo5/RR9g4L7qlKk/DQIaprXLnZ5A8fTsjzupcXcGnpbN0SNHndfGgOBw/X
+ 0p/VFNTjdtA8xnwp3o9Un41pTNm/CMg=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-522-tgb_eNJAOb2ZMgLQXmuYiQ-1; Mon, 08 May 2023 20:28:16 -0400
-X-MC-Unique: tgb_eNJAOb2ZMgLQXmuYiQ-1
+ us-mta-340-B6LzUqOMMNyoWIrm3ZbKaA-1; Mon, 08 May 2023 20:27:59 -0400
+X-MC-Unique: B6LzUqOMMNyoWIrm3ZbKaA-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
  [10.11.54.7])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3F75B100F654;
- Tue,  9 May 2023 00:28:15 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 713E3878521;
+ Tue,  9 May 2023 00:27:58 +0000 (UTC)
 Received: from gshan.redhat.com (vpn2-54-118.bne.redhat.com [10.64.54.118])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0B51714171BC;
- Tue,  9 May 2023 00:28:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2A9BB14171BC;
+ Tue,  9 May 2023 00:27:50 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
@@ -83,13 +83,15 @@ Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
  alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
  lvivier@redhat.com, ajones@ventanamicro.com, berrange@redhat.com,
  dbarboza@ventanamicro.com, yihyu@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v5 3/3] hw/riscv: Validate cluster and NUMA node boundary
-Date: Tue,  9 May 2023 10:27:39 +1000
-Message-Id: <20230509002739.18388-4-gshan@redhat.com>
+Subject: [PATCH v5 1/3] numa: Validate cluster and NUMA node boundary if
+ required
+Date: Tue,  9 May 2023 10:27:37 +1000
+Message-Id: <20230509002739.18388-2-gshan@redhat.com>
 In-Reply-To: <20230509002739.18388-1-gshan@redhat.com>
 References: <20230509002739.18388-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
@@ -100,63 +102,145 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qloIXtZNxfPT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g0019kKokxIj
 
-There are two RISCV machines where NUMA is aware: 'virt' and 'spike'.
-Both of them are required to follow cluster-NUMA-node boundary. To
-enable the validation to warn about the irregular configuration where
-multiple CPUs in one cluster has been associated with multiple NUMA
-nodes.
+For some architectures like ARM64, multiple CPUs in one cluster can be
+associated with different NUMA nodes, which is irregular configuration
+because we shouldn't have this in baremetal environment. The irregular
+configuration causes Linux guest to misbehave, as the following warning
+messages indicate.
+
+  -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
+  -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
+  -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
+  -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
+
+  ------------[ cut here ]------------
+  WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
+  Modules linked in:
+  CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
+  pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+  pc : build_sched_domains+0x284/0x910
+  lr : build_sched_domains+0x184/0x910
+  sp : ffff80000804bd50
+  x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
+  x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
+  x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
+  x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
+  x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
+  x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
+  x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
+  x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
+  x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
+  x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
+  Call trace:
+   build_sched_domains+0x284/0x910
+   sched_init_domains+0xac/0xe0
+   sched_init_smp+0x48/0xc8
+   kernel_init_freeable+0x140/0x1ac
+   kernel_init+0x28/0x140
+   ret_from_fork+0x10/0x20
+
+Improve the situation to warn when multiple CPUs in one cluster have
+been associated with different NUMA nodes. However, one NUMA node is
+allowed to be associated with different clusters.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/riscv/spike.c | 2 ++
- hw/riscv/virt.c  | 2 ++
- 2 files changed, 4 insertions(+)
+ hw/core/machine.c   | 42 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/boards.h |  1 +
+ 2 files changed, 43 insertions(+)
 
-diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-index 2c5546560a..81f7e53aed 100644
---- a/hw/riscv/spike.c
-+++ b/hw/riscv/spike.c
-@@ -354,6 +354,8 @@ static void spike_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
-     mc->get_default_cpu_node_id = riscv_numa_get_default_cpu_node_id;
-     mc->numa_mem_supported = true;
-+    /* platform instead of architectural choice */
-+    mc->cpu_cluster_has_numa_boundary = true;
-     mc->default_ram_id = "riscv.spike.ram";
-     object_class_property_add_str(oc, "signature", NULL, spike_set_signature);
-     object_class_property_set_description(oc, "signature",
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 4e3efbee16..84a2bca460 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1678,6 +1678,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
-     mc->get_default_cpu_node_id = riscv_numa_get_default_cpu_node_id;
-     mc->numa_mem_supported = true;
-+    /* platform instead of architectural choice */
-+    mc->cpu_cluster_has_numa_boundary = true;
-     mc->default_ram_id = "riscv_virt_board.ram";
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 47a34841a5..b718d89441 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1261,6 +1261,45 @@ static void machine_numa_finish_cpu_init(MachineState *machine)
+     g_string_free(s, true);
+ }
+ 
++static void validate_cpu_cluster_to_numa_boundary(MachineState *ms)
++{
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
++    NumaState *state = ms->numa_state;
++    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
++    const CPUArchId *cpus = possible_cpus->cpus;
++    int i, j;
++
++    if (state->num_nodes <= 1 || possible_cpus->len <= 1) {
++        return;
++    }
++
++    /*
++     * The Linux scheduling domain can't be parsed when the multiple CPUs
++     * in one cluster have been associated with different NUMA nodes. However,
++     * it's fine to associate one NUMA node with CPUs in different clusters.
++     */
++    for (i = 0; i < possible_cpus->len; i++) {
++        for (j = i + 1; j < possible_cpus->len; j++) {
++            if (cpus[i].props.has_socket_id &&
++                cpus[i].props.has_cluster_id &&
++                cpus[i].props.has_node_id &&
++                cpus[j].props.has_socket_id &&
++                cpus[j].props.has_cluster_id &&
++                cpus[j].props.has_node_id &&
++                cpus[i].props.socket_id == cpus[j].props.socket_id &&
++                cpus[i].props.cluster_id == cpus[j].props.cluster_id &&
++                cpus[i].props.node_id != cpus[j].props.node_id) {
++                warn_report("CPU-%d and CPU-%d in socket-%ld-cluster-%ld "
++                             "have been associated with node-%ld and node-%ld "
++                             "respectively. It can cause OSes like Linux to "
++                             "misbehave", i, j, cpus[i].props.socket_id,
++                             cpus[i].props.cluster_id, cpus[i].props.node_id,
++                             cpus[j].props.node_id);
++            }
++        }
++    }
++}
++
+ MemoryRegion *machine_consume_memdev(MachineState *machine,
+                                      HostMemoryBackend *backend)
+ {
+@@ -1346,6 +1385,9 @@ void machine_run_board_init(MachineState *machine, const char *mem_path, Error *
+         numa_complete_configuration(machine);
+         if (machine->numa_state->num_nodes) {
+             machine_numa_finish_cpu_init(machine);
++            if (machine_class->cpu_cluster_has_numa_boundary) {
++                validate_cpu_cluster_to_numa_boundary(machine);
++            }
+         }
+     }
+ 
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index f4117fdb9a..f609cc9aed 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -273,6 +273,7 @@ struct MachineClass {
+     bool nvdimm_supported;
+     bool numa_mem_supported;
+     bool auto_enable_numa;
++    bool cpu_cluster_has_numa_boundary;
+     SMPCompatProps smp_props;
+     const char *default_ram_id;
+ 
 -- 
 2.23.0
 

@@ -1,107 +1,209 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2765631ejq;
-        Tue, 9 May 2023 07:34:02 -0700 (PDT)
-X-Received: by 2002:a05:6402:605:b0:50d:91c8:9e10 with SMTP id n5-20020a056402060500b0050d91c89e10mr8589033edv.10.1683642842817;
-        Tue, 09 May 2023 07:34:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683642842; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2766438ejq;
+        Tue, 9 May 2023 07:35:13 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ76Opp4HSqbvz+i7iYZMM2kixm81BYrMVn6riaFyjJndOvjP2dI6ZDxhzCF03NiBDk3BqYA
+X-Received: by 2002:a05:6214:d04:b0:61a:d6af:cb00 with SMTP id 4-20020a0562140d0400b0061ad6afcb00mr20344194qvh.9.1683642913597;
+        Tue, 09 May 2023 07:35:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683642913; cv=none;
         d=google.com; s=arc-20160816;
-        b=fba2f8VvvjzlGiMAiG/t5E2aFeY9u787Gbxzss7JJZspwytZPzClvNBlMAMGo/ye5E
-         NDkNh98qsSIbii+6dXKB+nS2Ste8bfae54kbZjMeTYQTo/aYfJ3lHgtYoZeigYgZRhRY
-         LJHRFv854ZSXju4vN8QCPurT1m01jFf94kjfYEJ+QIySKyDKdsXivy8tZMBEQyuQvv2N
-         +xh/lH73VxYzY8ndhfRdtFejw1LnyrsHVLNCHQv0ZxO37g+6kUqipUNPr+ertyHeV9H5
-         2PZFAH3MFkKppIKP+tVaPHENu/MDJvL06/WpG7vXtCjeEwH0MLNE8fFLN6ZIxGnrM5qh
-         rhFQ==
+        b=0FKOPaEcE7tzxyQmMNs6FPSSdAPK04cWkG8LljyV3yVXnwORW6ERfw5yim5I3zGuVd
+         UNFAGvvnAbiWZiym99Prq7r4iCTD7WkXhoPlZW21iphclZxxadABchdHAZNcr+W18XnK
+         h8bl3/nDvVYWF1Ej6oEGvcDFFT6Pmq1ffny6pkCZ3zrTXSyhg2ItPD3HhL6J1x1jqefi
+         95TRHwHtV+e80eU7waOi7WQ5X5vPvzJ5gWMivuyB7XCHo+9U6uvGsjq8JHF3iErh+vyN
+         iqoCug86sbf2uKN9f1ZbPOmICrSsqKj7fCcIIxivEL/cDHDxHBTqx1DbQfsKE4N1BY1m
+         wV/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=yitkHOatw+41xMWb2v58gR45bgh1aVCxP3+JcDGrWe4=;
-        b=uWsvP8GTrYTxCmgRiEQEqv1EFF7pTeFlR/SxE1//VpzR+XmqTMLm8sOjkG1fCT73ae
-         mKkeWtoDx92Tqe4ldUAe6qSFLBrIFYRh4RmdWW33QwfC3FUTFjLN9Madzxas0bigx14K
-         t4vX4m/WxHqYUJJVgLz7hfOEw+EwuMzkaYO6EFkwGXKpbDMm/GqdpEbhcoizXnqkRHNr
-         SoggryleeYgCctQM0LeV23lR6qrQFNDzNsq64zdiixm5d/weMRKabnBU8T5jxElL/H08
-         xiAgK0QmGUWoiAuLZ1zuAS4q5Fw0xVA5i4fFl+0aiCRYs7fn7W6EOZz4hTWgqQq958hE
-         3DjA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ReCPLA1EOBdJoeJw4nq9AIxw9vdM7f4bdm8v5Cas8T8=;
+        b=aldEFhvo/GVTZJw0PeO8JL93ZUiNf2cI2j+DfjgGpGBuYJrqLLcCurfH7atNgQs8jN
+         xkxsfwdWKC9pdctyMu8OyscGQ7aBJotbibpdu60Vv/345tusRWlXF2ZtIFWXI7jZ2TnI
+         /5CIuHPHHZh0TdMqQA/vPe5rN3w6+8cJbVspFVTUyP9PiC4brp7+Vm+Kb5ja6/twz2Dt
+         +8mjQUO30obWvaSDzRkQAd9JyC91OaBV3PjsZEU8/hT3QH+KvbzcpOqjuEOnxbJFX/BT
+         jJGgcZeA/MnnsonFmCKDOFrdbjlHfZgXk5X+eRRJ30svi+CfUbZwvM/bm2LS863KYWau
+         OfMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MnNBtGc1;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z2PDryei;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u2-20020a509502000000b005048c32a533sor1064433eda.4.2023.05.09.07.34.02
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 15-20020a05621420af00b006211fa9f84bsi936095qvd.434.2023.05.09.07.35.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 May 2023 07:34:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 May 2023 07:35:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MnNBtGc1;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z2PDryei;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pwOQi-0000i1-Ph; Tue, 09 May 2023 10:35:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pwOQY-0000bu-Cb
+ for qemu-devel@nongnu.org; Tue, 09 May 2023 10:34:54 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pwOQW-0007G6-KY
+ for qemu-devel@nongnu.org; Tue, 09 May 2023 10:34:54 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-306f9df5269so3920289f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 09 May 2023 07:34:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683642842; x=1686234842;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=yitkHOatw+41xMWb2v58gR45bgh1aVCxP3+JcDGrWe4=;
-        b=MnNBtGc1IyZ8dmNyzJgev0mvjZq/P8QhS1375O0BJxNDCBUIPjb0gChZOStI2gCE4r
-         +7zTWrWV2y+KSTHRYvNgK1jtzP0VmTm6ijzeRQloVstXuiDWn25s12Yp+3gAHqYMOnk2
-         IVY6ieJvyvI7Q1tlkxPGMOX66LhkFyXLJyhN+HHzbR9FGTTBV97ZKhL26oQqkIOfEqzC
-         ojr4tae5nuNWQk6bRA084fAfdVbxifDy+EdQQkgVK93XAQUi+M5e0lMj+IfafNl7Qxms
-         tuYVzEz6pld29nRqU+MXjErsmGOkIqsjmKpzvclLjUGqedcH2tNfx2wej1gWMsd7Kca8
-         Vh8w==
+ d=linaro.org; s=google; t=1683642890; x=1686234890;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ReCPLA1EOBdJoeJw4nq9AIxw9vdM7f4bdm8v5Cas8T8=;
+ b=Z2PDryeiX086oPYPKZ2YnNHvl8Fdzk9pW0kQ3p8eJVEXowlyvnRq/CGoSVsICn0zGu
+ XPF3CjKzs1bLWP26Th/1yLkIpxQ3Sb29Ri+kLke5PVYfq7OfVQgynbeOCKN77MUsHPY5
+ JVxM+1EDkf6dpgkmCwZIWja4vczxjDPxC7nIdrUZkY9++utUkB8IWuU9isxg/HrXHBLG
+ XSSalCwRtslpKicc52BgvscBo78KL8xAeqH7BG+4ZfteXSluplR7smJ207Q5ZtYTTk5s
+ PoM2qvIaberA7ZpxZ7Hy06SQIWRX2AIPv8kWI2RRYIikpUdb8lukcuILIFBL4S8mjBoo
+ dz1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683642842; x=1686234842;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yitkHOatw+41xMWb2v58gR45bgh1aVCxP3+JcDGrWe4=;
-        b=k8zIZpq9uTBUzxq2ZcDsaLSzY/oGfZHQV75/O4WLR5SsNty75N4nZV5h+jcYhmxVPp
-         HgA9z1uiAggFXQPWqGrUg5ehNUaf6ov+DPEmKriXBkQgH7LqZewG6WcCbw66rUD16EQa
-         M/TPD+eG77BKroeqYjrMC4Y0IMDYwaYfsGLgYM6XdGff46AyW+3Zg3gHUsQdVNbL5Xr4
-         EnFBbj+IdAc156U+bO2ha+Jmmy+bizyeipyHX5tYG/+S7e1f/1Ve0SgN8bN0Fjs4KsS4
-         uiKcLyAU9BI7lNa20fq2Jm4sjDSb0c+bchVefYFDwO01HRtNE2tk05oDInJHzV8MZMro
-         XQdA==
-X-Gm-Message-State: AC+VfDxZQmNPtutMpsHBJW/i0n1vYr8/AR+Hk0dEXhCOsKHLIf6V+Lv/
-	UhwUWS/gHGzjD8RNUFCiSmcscd5oR0hZqR+hIA7NRFtmS0PcR30EiFw=
-X-Google-Smtp-Source: ACHHUZ5gD5BJH4YVtu+jFcFneKbKmXftdOcOs3lBAEDCP44UNh+UXADB4yovPKbuR/9Anutb0u7Jz/5bveQVBBMIzUA=
-X-Received: by 2002:a05:6402:194:b0:50d:9b59:4330 with SMTP id
- r20-20020a056402019400b0050d9b594330mr7632788edv.4.1683642842430; Tue, 09 May
- 2023 07:34:02 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683642890; x=1686234890;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ReCPLA1EOBdJoeJw4nq9AIxw9vdM7f4bdm8v5Cas8T8=;
+ b=Axqlqsc4E4pWp2G9UcP4rmo+8t/bxp/eiBKVDVaQ0FVdbKJR9X7LKn2UN08oYNzdcX
+ mTdWW3L/CjtNSNhhaVGFrQ9A0mF4Vh0e0tmZVZSGH3YeZCBLiwZgNWUTDWFppTrLA6tQ
+ eOAK6v+V6ZyeCOYgiKzIVR2DhhDLeUA2ly/jY+CzGDHUJR4nKTj81i72zDXldX8Vq+qq
+ OLwpJwNY+eTGc0deeXmfzq9sflHQ/G0KVU8s7UZoHrzylmm37miM7jGpqUSMNZGeOsvb
+ U3qD07Zs7dhhppXxj8nGCOi5x90ZajcFGZAswvKnOwWjdnPAQGbJOAHv92PqZjxq+L4f
+ XqkA==
+X-Gm-Message-State: AC+VfDyrVslouzbGxwtBtMEDQS5PGVT11tRVEVhEJanW2h/Rb6vA0lnm
+ FxTgBWYFIKEn1oYKcMau1mKSuw==
+X-Received: by 2002:a5d:534e:0:b0:306:791:24a9 with SMTP id
+ t14-20020a5d534e000000b00306079124a9mr9343952wrv.0.1683642890512; 
+ Tue, 09 May 2023 07:34:50 -0700 (PDT)
+Received: from [192.168.11.23] ([85.9.250.243])
+ by smtp.gmail.com with ESMTPSA id
+ y12-20020adffa4c000000b00306281cfa59sm14575279wrr.47.2023.05.09.07.34.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 May 2023 07:34:50 -0700 (PDT)
+Message-ID: <3fb8f451-b6fa-ac19-18f0-436c5bd0c732@linaro.org>
+Date: Tue, 9 May 2023 15:34:48 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v4 30/57] tcg/sparc64: Allocate %g2 as a third temporary
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn,
+ philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org
 References: <20230503070656.1746170-1-richard.henderson@linaro.org>
- <20230503070656.1746170-7-richard.henderson@linaro.org> <CAFEAcA8muJ84GMqSBuU0P2YhfERM-kftfq07N8BVO2yG9p6jBw@mail.gmail.com>
- <8988fc6b-8f07-1ab7-663d-3392ca19f7f8@linaro.org> <CAFEAcA-79iL8=+143w1jxTG1WM-8NODqqgF4droY=avopm4a7g@mail.gmail.com>
- <434236ad-8348-1e42-23e6-3ed7d6c21366@linaro.org>
-In-Reply-To: <434236ad-8348-1e42-23e6-3ed7d6c21366@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 May 2023 15:33:51 +0100
-Message-ID: <CAFEAcA8hXYK=o98FSG+X9Q4PyamPePaYvoSYdN3jHt4V0qikmw@mail.gmail.com>
-Subject: Re: [PATCH v4 06/57] accel/tcg: Honor atomicity of loads
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
-	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
-	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: +hRoO2MU7XCi
+ <20230503070656.1746170-31-richard.henderson@linaro.org>
+ <CAFEAcA9dOpZUeCnkHxmSAPTs20ZuUW++kFEtp2icmmST=yGPvA@mail.gmail.com>
+ <58a0667e-7387-4231-85d4-548a39c8064f@linaro.org>
+ <CAFEAcA8h-+U8MW1b1QfyoX=vjZdMLi4EcjgsARNb4AKpn35sgw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8h-+U8MW1b1QfyoX=vjZdMLi4EcjgsARNb4AKpn35sgw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.421,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ka9HljzrnAo6
 
-On Tue, 9 May 2023 at 15:27, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 5/9/23 13:04, Peter Maydell wrote:
-> >> If the LDP is aligned mod 8, but not aligned mod 16, then both 8-byte operations must be
-> >> (separately) atomic, and we return MO_64.
-> >
-> > So there's an implicit "at most 2 atomic sub-operations
-> > inside a WITHIN16 load" restriction? i.e. you can't
-> > use WITHIN16 to say "do this 8 byte load atomically but
-> > if it's not in a 16-byte region do it with 4 2-byte loads",
-> > even though in theory MO_ATOM_WITHIN16 | MO_ATMAX_2 | MO_8
-> > would describe that ?
->
-> Correct on both counts.  While you're right that this is a valid generalization, it's not
-> something for which I've found a use case.
+On 5/9/23 10:24, Peter Maydell wrote:
+> On Mon, 8 May 2023 at 16:17, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> On 5/5/23 13:19, Peter Maydell wrote:
+>>> On Wed, 3 May 2023 at 08:17, Richard Henderson
+>>> <richard.henderson@linaro.org> wrote:
+>>>>
+>>>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>>>> ---
+>>>>    tcg/sparc64/tcg-target.c.inc | 15 +++++++--------
+>>>>    1 file changed, 7 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
+>>>> index e997db2645..64464ab363 100644
+>>>> --- a/tcg/sparc64/tcg-target.c.inc
+>>>> +++ b/tcg/sparc64/tcg-target.c.inc
+>>>> @@ -83,9 +83,10 @@ static const char * const tcg_target_reg_names[TCG_TARGET_NB_REGS] = {
+>>>>    #define ALL_GENERAL_REGS     MAKE_64BIT_MASK(0, 32)
+>>>>    #define ALL_QLDST_REGS       (ALL_GENERAL_REGS & ~SOFTMMU_RESERVE_REGS)
+>>>>
+>>>> -/* Define some temporary registers.  T2 is used for constant generation.  */
+>>>> +/* Define some temporary registers.  T3 is used for constant generation.  */
+>>>>    #define TCG_REG_T1  TCG_REG_G1
+>>>> -#define TCG_REG_T2  TCG_REG_O7
+>>>> +#define TCG_REG_T2  TCG_REG_G2
+>>>> +#define TCG_REG_T3  TCG_REG_O7
+>>>>
+>>>>    #ifndef CONFIG_SOFTMMU
+>>>>    # define TCG_GUEST_BASE_REG TCG_REG_I5
+>>>> @@ -110,7 +111,6 @@ static const int tcg_target_reg_alloc_order[] = {
+>>>>        TCG_REG_I4,
+>>>>        TCG_REG_I5,
+>>>>
+>>>> -    TCG_REG_G2,
+>>>>        TCG_REG_G3,
+>>>>        TCG_REG_G4,
+>>>>        TCG_REG_G5,
+>>>> @@ -492,8 +492,8 @@ static void tcg_out_movi_int(TCGContext *s, TCGType type, TCGReg ret,
+>>>>    static void tcg_out_movi(TCGContext *s, TCGType type,
+>>>>                             TCGReg ret, tcg_target_long arg)
+>>>>    {
+>>>> -    tcg_debug_assert(ret != TCG_REG_T2);
+>>>> -    tcg_out_movi_int(s, type, ret, arg, false, TCG_REG_T2);
+>>>> +    tcg_debug_assert(ret != TCG_REG_T3);
+>>>> +    tcg_out_movi_int(s, type, ret, arg, false, TCG_REG_T3);
+>>>>    }
+>>>
+>>> Why do we need to change this usage of TCG_REG_T2 but not
+>>> any of the others ?
+>>
+>> To match the comment above.
+> 
+> To expand, what I mean is "when I'm reviewing this patch, what
+> do I need to know in order to know whether any particular
+> instance of TCG_REG_T2 should be changed to _T3 or not?".
+> All the sites where we *don't* change T2 to T3 are now
+> using a different register, so there is presumably some
+> logic for how we tell whether that's safe or not. The
+> "no behaviour change" option would be to change all of them.
 
-Yeah, that's fine -- but we should note the restrictions/
-requirements in the doc comment for WITHIN16. (And maybe
-an assert somewhere if there's somewhere convenient to
-put it?)
+Oh.  Well, we could change none of them, including the comment, and also be correct. 
+There is no conflict anywhere.
 
-thanks
--- PMM
+Only with patch 34 ("Use standard slow path for softmmu") do we first see all three temps 
+in use at the same time.  Moreover, when I wrote this patch I thought there would in fact 
+be a conflict with the use of tcg_out_movi within the slow path patch.  Then I found I 
+needed to split out tcg_out_movi_s32 (patch 33) so that I could avoid the assert altogether.
+
+Clearer?  Or not?
+
+
+r~

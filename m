@@ -1,207 +1,130 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2435273ejq;
-        Mon, 8 May 2023 19:29:28 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6ttY98x5VY0mg7DLR4rdfhC6Zx1YpNp9y9Ya13D1K8aVhpXnylTSw6wT2CmgaHcjTRsXK4
-X-Received: by 2002:a05:622a:1904:b0:3f3:8d25:8e40 with SMTP id w4-20020a05622a190400b003f38d258e40mr10804333qtc.17.1683599368499;
-        Mon, 08 May 2023 19:29:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683599368; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2665500ejq;
+        Tue, 9 May 2023 05:05:02 -0700 (PDT)
+X-Received: by 2002:a50:eb48:0:b0:50b:c479:fed7 with SMTP id z8-20020a50eb48000000b0050bc479fed7mr11582661edp.21.1683633901911;
+        Tue, 09 May 2023 05:05:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683633901; cv=none;
         d=google.com; s=arc-20160816;
-        b=UPB53xOdzxqyb6v3d7X7lvkz7/g7KnCJ0ap7NrOY3gO3ZiuhIsVnz45AQ/JLUGvv2x
-         OR1PvjXETTcdb9Fpuj/yQW8fQwzY3xrwykIUgWuxyxgqJdCCStmkA8MfPKuVZIP7cFZ+
-         7ftLSKZfOXvxEthsKz2W07iHqmA+4ofhvpBeI9j3jzSj0L+iOyCwF+vALXieVyD5Mi6y
-         i0S847xamk+7/mGxZzjTgFlb1C2eoJsa7CjVM9nRpIHewd2p1ZdmBySAREV8cWLKK49L
-         NbSEDI+YS/iSIab/x6QxFW2SVfHIy1U/K1v+Fk76/wwYjIkOleGjn1fNVicFRmQyjS8z
-         t+2w==
+        b=EVx3HAE4ZJV73gGlEWYXbxQMUIiM/8h994wLEWsLN0Up1fPYilmspNu6dTHGX7a/O4
+         7LKcbyjgvH8LCOPTWZECEsSGepNHayySwH30J4K8rJ1qRG6O5Yg7szhEB1MmGv1YCul2
+         nUj91FLsIneY7xSCFbBB1W6GQ8PO4cVk5vPdBxpN0GxGfjh/zc6yF42RfXEHleyET1Q6
+         3SPbtxiMTgL16P5vrIwyXfJW0v/Ec8Wgg1+RdwNszvrtiBD9ZTPk2xJsN7TyjRdRyIgU
+         ZoBN6tRe3IWBIVc94BoMr/x08rJ+iXO0MuZ6cZpTqrjDXfT4m350mTl3pyNXgv24Tli/
+         5YsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:from:subject:dkim-signature;
-        bh=uDxCtWFe2leX7C7M439x9hy/ug8HUnP0UDJeN+IylD4=;
-        b=ri0yoZz/GhrkyOX6iBYUbAmPtrKaOjze5NxWmDMNmEy/tQk2/ZpWQIZ7OrpB92fPcN
-         jIVc49KiEGcXBOrCoTO49qkSb+74R6sTRMi/nA2V2m5YZJ3d3HCZzULC8pO7G4IbZUD4
-         PTc7kR3anQ6jkXbRJ96f40gyli4Iqm7z32XDcZC50SlcCDavn58cp7LRW8wX9B4m9ozB
-         eYGpynQHq318RSV7wz/B4X7BFSFvKOrttuHgWxZOQoya7Nw4Kf6Mz0CCT/+LStKXHIaQ
-         woO+upGZI0FSqfZnYDQapKTl74SVHxhCvPa2A4KCxguVRc4HmShtNtAxik0bPxMD+ojS
-         e2gA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
+        b=tA5xlMxx5xyhn5qKPXUO64bSDWigV/GfWSqD14rRamSNWmi3cr7OFHPFFpXQr9koaj
+         1t9/5u+Rmk+FO1vPmIk+MfRe7cQrpRlKA4D+Sa/dud+xV5Fagnlx/rxAtobIfKCMQxHX
+         TrjRsOIIK4/yyDPSyftpdmPmV8940jS8ktNh+8W2ksYlTvTBDStupd77t1FRq2/tFGOZ
+         2Wchist0aUYDByJKXLJ99M1ZOJ5b4Jy1w5HoK1M20GaabybH/nUA00eo9+nT+3Pcf1zn
+         +9/V5YJW+8s9yZb5281fiAtwjcFnaRYu5bD646ra66vCXbS6qOfgjCLtg7c9OG1G9PaB
+         CM/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dHa17AmM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o19-20020a05622a139300b003e66ab27ef1si138784qtk.481.2023.05.08.19.29.28
+       dkim=pass header.i=@linaro.org header.s=google header.b="yR7/qZTB";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t4-20020a508d44000000b004fba4dbf855sor795564edt.7.2023.05.09.05.05.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 19:29:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 May 2023 05:05:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dHa17AmM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pwD6H-0008Cu-Cx; Mon, 08 May 2023 22:29:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwD6D-0008CW-1a
- for qemu-devel@nongnu.org; Mon, 08 May 2023 22:29:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwD69-0003VN-Pp
- for qemu-devel@nongnu.org; Mon, 08 May 2023 22:29:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683599345;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uDxCtWFe2leX7C7M439x9hy/ug8HUnP0UDJeN+IylD4=;
- b=dHa17AmMTI4xM+RAC0Y3pW3nBn2h5L44JWGBKMOU7/UBrI6EzyVzJVM7d9XAtxipVxm7ek
- aR3F/ou3vc1rJctUzpFAb6w3OlhRwTUa4eFQVuoHFL1cP/H3q7tiYL7YKcm1N6uUgZTfGa
- W8lc2GOMdVYP61hdF4LA1hoN/CcDDd8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-538-JLJuLsj1NzS20YJHndECvw-1; Mon, 08 May 2023 22:29:04 -0400
-X-MC-Unique: JLJuLsj1NzS20YJHndECvw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 80F5B867956;
- Tue,  9 May 2023 02:29:03 +0000 (UTC)
-Received: from [10.64.54.118] (vpn2-54-118.bne.redhat.com [10.64.54.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 07F10492B00;
- Tue,  9 May 2023 02:28:58 +0000 (UTC)
-Subject: Re: [PATCH v3 0/4] hw/arm/virt: Support dirty ring
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
- peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
- cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com, maz@kernel.org,
- zhenyzha@redhat.com, shan.gavin@gmail.com
-References: <20230509022122.20888-1-gshan@redhat.com>
-Message-ID: <9d3561b6-51a2-e8ef-5e72-7cb41b6af8d5@redhat.com>
-Date: Tue, 9 May 2023 12:28:56 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+       dkim=pass header.i=@linaro.org header.s=google header.b="yR7/qZTB";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1683633901; x=1686225901;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
+        b=yR7/qZTB67ODJ0NoKg2I6B/z1+lFfNr2ne62xC3BLLw+ImFoNK+6mycBPsEpg8xdXR
+         JW5v1GrL8+aSia4pjVa1HEMnqZviKq/OVB5zN6jwo62DPUyLed8mFGH6OytNbfYcG3Hv
+         rW7yvvZ97xi4Ee73aF3adhehUq7vriyPCWXOn9+VD7C4s4/COFR1a05NHTw7Ib1MEJzR
+         43tJm5vtuG0gXcTENhzSZS2+qU82MpW8f/4exoBVVRT6wakhzwF309YvyVZ7fXOME3st
+         blV6IQW/b9v4oXpfsGqkQxycc38S8s8quy33b8+AK+q03V5JWkAx8Gl6JgErOo9qGXSC
+         8aFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683633901; x=1686225901;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
+        b=KfVV0qf645mK8tirZR0gJAlFMNt+mo0rrOi38+GTqJejllvQAG0Ev2COjCXjKKKEBr
+         cwLJCMq3cORhk8ijW8+f7lcjAQen5/rrfB3qq4MxlpAusiLvqHwtfxUUIb3yJf3TY/uB
+         H7ZfaPIMtj0b4D90FdfH1xgZukkv8l6Ta1gCIp1gVF8rs8mOhb1/rQUby/WCjuh/N+u6
+         aeX8z5eE9sKqrKu+5X7Kt5EIqeC1D9tIRnhkmX0rmAvlwtK0ykJqmvzctXL2LatR5gRB
+         7FzYND02rifeHVQk+NULbhb85dOlaNDMDPYxtxI7/BQxrDb9EcTsvoawHH2FOPFa3Z5F
+         cQnQ==
+X-Gm-Message-State: AC+VfDwyNlX/rtT6nRyeU0866Ngsi2TkVwqRo41AqQpCJGS1jJvyoFGq
+	TjEsrI16wQx0QpoDRhsIimkxZ5bnJh8UG+W0H0TbvwXS
+X-Google-Smtp-Source: ACHHUZ4PXzzo1tBSSpSH16ChRsRSnhs7CS5tMXlene/zGGeZG0tYWK9Po8orbMwLsITROZStog4r5f0KdbWZH9Mn1GA=
+X-Received: by 2002:aa7:d64d:0:b0:50c:3dc:2262 with SMTP id
+ v13-20020aa7d64d000000b0050c03dc2262mr10014803edr.39.1683633901517; Tue, 09
+ May 2023 05:05:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20230509022122.20888-1-gshan@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.802, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WeTmsyHO5vYT
+References: <20230503070656.1746170-1-richard.henderson@linaro.org>
+ <20230503070656.1746170-7-richard.henderson@linaro.org> <CAFEAcA8muJ84GMqSBuU0P2YhfERM-kftfq07N8BVO2yG9p6jBw@mail.gmail.com>
+ <8988fc6b-8f07-1ab7-663d-3392ca19f7f8@linaro.org>
+In-Reply-To: <8988fc6b-8f07-1ab7-663d-3392ca19f7f8@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 May 2023 13:04:50 +0100
+Message-ID: <CAFEAcA-79iL8=+143w1jxTG1WM-8NODqqgF4droY=avopm4a7g@mail.gmail.com>
+Subject: Re: [PATCH v4 06/57] accel/tcg: Honor atomicity of loads
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: yruVjpmz9rCI
 
-Hi Paolo,
+On Fri, 5 May 2023 at 21:19, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 5/4/23 18:17, Peter Maydell wrote:
+> >> +    case MO_ATOM_WITHIN16:
+> >> +        tmp = p & 15;
+> >> +        if (tmp + (1 << size) <= 16) {
+> >> +            atmax = size;
+> >
+> > OK, so this is "whole operation is within 16 bytes,
+> > whole operation must be atomic"...
+> >
+> >> +        } else if (atmax == size) {
+> >> +            return MO_8;
+> >
+> > ...but I don't understand the interaction of WITHIN16
+> > and also specifying an ATMAX value that's not ATMAX_SIZE.
+>
+> I'm trying to describe e.g. LDP, which if not within16 has two 8-byte elements, one or
+> both of which must be atomic.  We will have set MO_ATOM_WITHIN16 | MO_ATMAX_8.
+>
+> If atmax == size, there is only one element, and since it is not within16, there is no
+> atomicity.
+>
+> >> +        } else if (tmp + (1 << atmax) != 16) {
+> >
+> > Why is this doing an exact inequality check?
+> > What if you're asking for a load of 8 bytes at
+> > MO_ATMAX_2 from a pointer that's at an offset of
+> > 10 bytes from a 16-byte boundary? Then tmp is 10,
+> > tmp + (1 << atmax) is 12, but we could still do the
+> > loads at atomicity 2. This doesn't seem to me to be
+> > any different from the case it does catch where
+> > the first ATMAX_2-sized unit happens to be the only
+> > thing in this 16-byte block.
+>
+> If the LDP is aligned mod 8, but not aligned mod 16, then both 8-byte operations must be
+> (separately) atomic, and we return MO_64.
 
-On 5/9/23 12:21 PM, Gavin Shan wrote:
-> This series intends to support dirty ring for live migration for arm64. The
-> dirty ring use discrete buffer to track dirty pages. For arm64, the speciality
-> is to use backup bitmap to track dirty pages when there is no-running-vcpu
-> context. It's known that the backup bitmap needs to be synchronized when
-> KVM device "kvm-arm-gicv3" or "arm-its-kvm" has been enabled. The backup
-> bitmap is collected in the last stage of migration. The policy here is to
-> always enable the backup bitmap extension. The overhead to synchronize the
-> backup bitmap in the last stage of migration, when those two devices aren't
-> used, is introduced. However, the overhead should be very small and acceptable.
-> The benefit is to support future cases where those two devices are used without
-> modifying the code.
-> 
-> PATCH[1] add migration last stage indicator
-> PATCH[2] synchronize the backup bitmap in the last stage of migration
-> PATCH[3] add helper kvm_dirty_ring_init() to enable dirty ring
-> PATCH[4] enable dirty ring for arm64
-> 
->     v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01342.html
->     v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00434.html
-> RFCv1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00171.html
-> 
-> Testing
-> =======
-> (1) kvm-unit-tests/its-pending-migration and kvm-unit-tests/its-migration with
->      dirty ring or normal dirty page tracking mechanism. All test cases passed.
-> 
->      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
->      ./its-pending-migration
-> 
->      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
->      ./its-migration
-> 
->      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
->      ./its-pending-migration
-> 
->      QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
->      ./its-migration
-> 
-> (2) Combinations of migration, post-copy migration, e1000e and virtio-net
->      devices. All test cases passed.
-> 
->      -netdev tap,id=net0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown  \
->      -device e1000e,bus=pcie.5,netdev=net0,mac=52:54:00:f1:26:a0
-> 
->      -netdev tap,id=vnet0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
->      -device virtio-net-pci,bus=pcie.6,netdev=vnet0,mac=52:54:00:f1:26:b0
-> 
-> Changelog
-> =========
-> v3:
->    * Rebase for QEMU v8.1.0                                                     (Gavin)
-> v2:
->    * Drop PATCH[v1 1/6] to synchronize linux-headers                            (Gavin)
->    * More restrictive comments about struct MemoryListener::log_sync_global     (PeterX)
->    * Always enable the backup bitmap extension                                  (PeterM)
-> v1:
->    * Combine two patches into one PATCH[v1 2/6] for the last stage indicator    (PeterX)
->    * Drop the secondary bitmap and use the original one directly                (Juan)
->    * Avoid "goto out" in helper kvm_dirty_ring_init()                           (Juan)
-> 
-> Gavin Shan (4):
->    migration: Add last stage indicator to global dirty log
->    kvm: Synchronize the backup bitmap in the last stage
->    kvm: Add helper kvm_dirty_ring_init()
->    kvm: Enable dirty ring for arm64
-> 
->   accel/kvm/kvm-all.c      | 108 ++++++++++++++++++++++++++++-----------
->   include/exec/memory.h    |   7 ++-
->   include/sysemu/kvm_int.h |   1 +
->   migration/dirtyrate.c    |   4 +-
->   migration/ram.c          |  20 ++++----
->   softmmu/memory.c         |  10 ++--
->   6 files changed, 101 insertions(+), 49 deletions(-)
-> 
+So there's an implicit "at most 2 atomic sub-operations
+inside a WITHIN16 load" restriction? i.e. you can't
+use WITHIN16 to say "do this 8 byte load atomically but
+if it's not in a 16-byte region do it with 4 2-byte loads",
+even though in theory MO_ATOM_WITHIN16 | MO_ATMAX_2 | MO_8
+would describe that ?
 
-Could you please help to take a look and queue this series for QEMU v8.1 if it looks good?
-Peter Maydell has the suggestion [1] to merge the v2 series to QEMU v8.1. there is no
-difference between v2 and v3 except the fixed rebase conflicts in v3.
-
-[1] https://lists.nongnu.org/archive/html/qemu-arm/2023-03/msg00551.html
-
-Thanks,
-Gavin
-
+thanks
+-- PMM

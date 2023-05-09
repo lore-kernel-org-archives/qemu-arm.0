@@ -1,106 +1,112 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2721802ejq;
-        Tue, 9 May 2023 06:30:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7/QSXMAI7X3rSDf9fVU0U6FY+pUbwwJ5zLAq9jzrdYRX5G28vOhLpQGXSlTP8LlwJTlpW+
-X-Received: by 2002:a05:6214:29ea:b0:5ef:5049:f49a with SMTP id jv10-20020a05621429ea00b005ef5049f49amr20715811qvb.32.1683639008385;
-        Tue, 09 May 2023 06:30:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683639008; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2728307ejq;
+        Tue, 9 May 2023 06:39:22 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4qptXJjiHiLhgCtic6XLsmUTtc/yu5pja4BxFG1SQoMG4zaF9+Iq24sYZMtJJvdwnL9VtQ
+X-Received: by 2002:ac8:7e91:0:b0:3f3:a1d1:3001 with SMTP id w17-20020ac87e91000000b003f3a1d13001mr1203734qtj.18.1683639562319;
+        Tue, 09 May 2023 06:39:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683639562; cv=none;
         d=google.com; s=arc-20160816;
-        b=vIPm8IIBH2bzceAIyXh8nC3k6YT8uahMb1TyEnLiQumjlYWka2grF76i9GfzZk4utI
-         ZLudhuyu93Z3KcueSNRFwQchAe7T4uOruu7Tz//hrXQyhaHQfnmV3bEjrJrl00xLJ+Ab
-         3rHK+ZuYwxl1yUlhv++utxGbY7r7CYKboiPg3/ks7oAtR7U+0A6Igl6Cg2Mh22hUCtU4
-         RXxhZurfCTXEl8t2BgVjfeK8aOsPIclMVehA4tmbJB4QT+psfZuLOo/XxCPTYEQBPO5E
-         GsxLtGQZv4N8WKDs9daJTBNB1LBdFxamlCsC+LIz94QDSgekZ5XWVE2+d16Br+/DVhjQ
-         oVmA==
+        b=YZwVNlGb6XMnaDHcVSUlqt4f8KBAMKkgLxY2/lBWJHBDDhq8YllJsfEzIicrQAKPv9
+         duDMTVkeK2LD44KlgImNn60gzjOB+QYUhZoDYUtQuRM83ASKThpC/IBB3jVbzUqblVZv
+         W5v3bk++ZYBLRxyI1e5I6hnRPo5chI0ZERvXcDKm9e9t8X1XsnD7AOW2MSD1vxrOjJzX
+         Sy/r/62oYWmvmkdDu5c/HRV/uAcTNGjmi4KVICBx94pHDpAD3wQpQ0/XZhB/ZzLwWtIX
+         IlnHWS+shiBoKvVQPp+7x3OTRCCG3tJb3A3L9BPOyCllDgEwuptVhL6uWNsG+7wBjXrg
+         n2gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=29OFH2CreJKYkMUAMtHXYKr7NjIyYCgIoTC84mE9uhE=;
-        b=js6m+TscfG56eUzmZymqZ96NrNDyjiW7SoJDqY3i1M7iLievaj/MgKrxqdBFDiHElp
-         8IKa7IXOX8uN8ocnyzG+ZutksuF2EDFv3Q2k4d67gjUsMtQOu7Q7BcL6fZ91/TALPbXE
-         iGDgJD326bBDHQJTfQcenRqugL8KIe+bncw6q4HqL9feA972Yvabz0VcRFwX4n647c3g
-         dgvu5tlr6kcg5YBusmbt62a2BQy3rxWYvRLN4r5g6TOPrZ5sYv3KDmwYxVd25XWem7dt
-         7wHbTa7xvEZ887nsftGVcIrHg8g4ve+3+Nx4AKEw9eLN7YqaLDfkigyztpNyxnMO3l65
-         rh7A==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=zTewEQMFLK2T3sUaVCP8le0EYo0se9/8F0qAzKhz/dg=;
+        b=RrLY2wUITs/SR0rJnJsJRxdTlkiEeQx39TtUTQ5ItjCUh4itOUW44pV7yAXZUKxAUG
+         IxuvUJuzvuZiDr1KZ+YxBmANnATlDFdjYBCe0G48sXJPRXj5UfoOI+TXqRDCW+Xkaijs
+         ymKpE+Kc17DelTOVX4tMvmeT32aln+jH//Eqr7ehyEYkmPvjK9s0kBdMi7O7BJf72suz
+         FM8cdQPVI8KgEJnYwnndaIFvPBoKiZHNYB67qG+dMeWoq7uo91jciVUyPgCzufxdWToY
+         kS+RYUNoRkDsE44FjRRLbfc7B9xeybkb+sl9vwyqGzAYneEsmNwPvVT3ImMfNxlBxfDT
+         uJng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQ91nmJO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rIk5BO9Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 9-20020a0562140d4900b0061b7d3611a6si886900qvr.468.2023.05.09.06.30.08
+        by mx.google.com with ESMTPS id q17-20020a05620a039100b0074d3a84b4d6si3905733qkm.141.2023.05.09.06.39.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 May 2023 06:30:08 -0700 (PDT)
+        Tue, 09 May 2023 06:39:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQ91nmJO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rIk5BO9Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwNPm-0002NK-9k; Tue, 09 May 2023 09:30:02 -0400
+	id 1pwNYU-0005su-JL; Tue, 09 May 2023 09:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1pwNPl-0002Ma-5G
- for qemu-arm@nongnu.org; Tue, 09 May 2023 09:30:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1pwNPj-00018r-OU
- for qemu-arm@nongnu.org; Tue, 09 May 2023 09:30:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683638998;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=29OFH2CreJKYkMUAMtHXYKr7NjIyYCgIoTC84mE9uhE=;
- b=EQ91nmJOSqpjiJbQLu4DgClJQXsyB1Lq6iAolGgQq7AeVXG9oBjqxxdQAOM3mZdi72Wh4/
- dhfBDNTsl5mPc7DfBAHigxHsT+yA8pnOal8wnnH0gkfii6LZI7Kr71GDA4pSjAZEL3LceC
- y/h58t/Zn9lXwnwwOHQCQIAJnhPKNn0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-60-FkYfTupSPw6dwh1CHMCSTg-1; Tue, 09 May 2023 09:29:56 -0400
-X-MC-Unique: FkYfTupSPw6dwh1CHMCSTg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 535F2885621;
- Tue,  9 May 2023 13:29:56 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.221])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D241CC164E7;
- Tue,  9 May 2023 13:29:53 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 6710518000A6; Tue,  9 May 2023 15:29:52 +0200 (CEST)
-Date: Tue, 9 May 2023 15:29:52 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Yuquan Wang <wangyuquan1236@phytium.com.cn>, qemu-arm@nongnu.org, 
- rad@semihalf.com, quic_llindhol@quicinc.com, 
- QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: Problem of initialization of platform-ehci-usb in sbsa-ref
-Message-ID: <e4ljd7cckcoe5s3cphztjjqacswssjkap3l3dtre22rtew64kq@cbo7oi7s4wow>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pwNYS-0005sC-OW
+ for qemu-arm@nongnu.org; Tue, 09 May 2023 09:39:00 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pwNYR-0003en-0l
+ for qemu-arm@nongnu.org; Tue, 09 May 2023 09:39:00 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-50bd37ca954so59059693a12.0
+ for <qemu-arm@nongnu.org>; Tue, 09 May 2023 06:38:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1683639537; x=1686231537;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=zTewEQMFLK2T3sUaVCP8le0EYo0se9/8F0qAzKhz/dg=;
+ b=rIk5BO9ZqfNZrSo4XCgpvI+lAiHRS72ZW7GPGzUsvYNgnEyfH8V7B9aYnPqhpO9mkc
+ c4GSj0GsnRma8HgeMFrSv3uz+KWixLHcA3MEs3NVO1GpdvrjwU/eRRH6feC2rEHQ3QeX
+ d15zl8nHk3gzM5CfnMCIUuxJa51QjiFylwgh1A4AgUtRTwtLiVQIz5pjll8ewV0KXCK+
+ xDs2YlztXVB5UQeWQaiJR2Negeg2OzFQKNm8xqBncFMEGZk4TfS88uoZZjD/3HHlS9tJ
+ KW6sEIi6kigUl70rel717dVFJ8hCRgiAJICBJsqo7vssbje4yBeEdiuQpKtmHWhnCraz
+ IKaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1683639537; x=1686231537;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zTewEQMFLK2T3sUaVCP8le0EYo0se9/8F0qAzKhz/dg=;
+ b=ShFftbDUBvQmfBzmrSha24bK7naXEQVdCTzNiC7AeP6bm/B2kUeJg1SN7+VGW76oMG
+ WA3MsEi0t2BAIVh1YUB+7lOTaMiq9FrWR5lEPgAhY1lRKoICU9OJjbAIPP+5mB3p7scg
+ uPfJ6uXdbqvHF06mpC/evRHAo1pV+AfdfgV/j72zd1hYqOeHRs0akhTBdR6RAPLMZRmi
+ S7oMXBusOnSxhG42HaRzyCxLlt7Gv4i7JVIV0xTEAX3X/A2zL8CeZt0MI7iBiutZMVVL
+ XrT4MS+0OllNM2AsQ97+IOxQ/vdvXgNQi2i5grLbEjG6fXzt4WCeyM70Gwd0ywYUNMGQ
+ 0gGw==
+X-Gm-Message-State: AC+VfDy9wScpy7Z5S/gDBJpqPVmu3huLUSgCZ/M3gd7/X3hPSLrGgRaz
+ /CCuWv1/OrWU0XGVHd5hQmOWmhNF1IijgKPLPHY8lQ==
+X-Received: by 2002:a05:6402:26d2:b0:506:c2e6:f69 with SMTP id
+ x18-20020a05640226d200b00506c2e60f69mr11276764edd.6.1683639537414; Tue, 09
+ May 2023 06:38:57 -0700 (PDT)
+MIME-Version: 1.0
 References: <11bf324.342.187b3418349.Coremail.wangyuquan1236@phytium.com.cn>
  <CAFEAcA9pa+uHGk34uCGX1ZHiCBDeDHXFLDFyVDAVvDxQScEChg@mail.gmail.com>
  <70009a13.15f.187bc308951.Coremail.wangyuquan1236@phytium.com.cn>
  <CAFEAcA-jZBiSL8vNzgcwUT2Lqtgf9JyyaQx7kD4j=Tc9neD_OQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-jZBiSL8vNzgcwUT2Lqtgf9JyyaQx7kD4j=Tc9neD_OQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ <e4ljd7cckcoe5s3cphztjjqacswssjkap3l3dtre22rtew64kq@cbo7oi7s4wow>
+In-Reply-To: <e4ljd7cckcoe5s3cphztjjqacswssjkap3l3dtre22rtew64kq@cbo7oi7s4wow>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 May 2023 14:38:46 +0100
+Message-ID: <CAFEAcA9wk+UOO76myohS2tYXYJ9zHFxr9ARdg1w3QUDXBUQv+w@mail.gmail.com>
+Subject: Re: Problem of initialization of platform-ehci-usb in sbsa-ref
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Yuquan Wang <wangyuquan1236@phytium.com.cn>, qemu-arm@nongnu.org,
+ rad@semihalf.com, 
+ quic_llindhol@quicinc.com, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,27 +121,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GoqoxAPd8bEI
+X-TUID: 4cptPntFhvi7
 
-  Hi,
+On Tue, 9 May 2023 at 14:30, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>
+>   Hi,
+>
+> > Gerd, is there a particular reason our EHCI controller only
+> > claims to be able to do 32-bit DMA ? Should we give it a QOM
+> > property so boards that only have RAM above the 4GB mark can
+> > use it ? (Would the x86 PC benefit from allowing >4GB DMA?)
+>
+> Can be done, but it's more complex than just a property.  All
+> the EHCI descriptors exist in two variants, one for 32bit and
+> one for 64bit.  The current code base only supports the 32bit
+> versions.
+>
+> Alternatives:
+>   (a) use an iommu to map 32bit to 64bit dma addresses.
+>   (b) use xhci instead of ehci.
+>
+> I'd recommend (b) as the xhci hardware design is much more
+> virtualization-friendly.
 
-> Gerd, is there a particular reason our EHCI controller only
-> claims to be able to do 32-bit DMA ? Should we give it a QOM
-> property so boards that only have RAM above the 4GB mark can
-> use it ? (Would the x86 PC benefit from allowing >4GB DMA?)
+Thanks. Leif, do you have any preference there?
 
-Can be done, but it's more complex than just a property.  All
-the EHCI descriptors exist in two variants, one for 32bit and
-one for 64bit.  The current code base only supports the 32bit
-versions.
-
-Alternatives:
-  (a) use an iommu to map 32bit to 64bit dma addresses.
-  (b) use xhci instead of ehci.
-
-I'd recommend (b) as the xhci hardware design is much more
-virtualization-friendly.
-
-take care,
-  Gerd
-
+-- PMM

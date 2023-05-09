@@ -1,111 +1,99 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2393505ejq;
-        Mon, 8 May 2023 17:35:02 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4DbFfwrGdxdxPfO+02UiUmz52SLeiWa9+J3bfEhJ48Ha++oU9/T+OY5lAynHsESwvPiZKs
-X-Received: by 2002:ad4:5aaa:0:b0:61b:5ca6:b7ef with SMTP id u10-20020ad45aaa000000b0061b5ca6b7efmr18291944qvg.42.1683592501959;
-        Mon, 08 May 2023 17:35:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683592501; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2433150ejq;
+        Mon, 8 May 2023 19:22:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6TJAbuvumXBcl140jjJYtkEfZE+w/Jkag+2u8G3zcL6kdJYhymx9nrs+mzJmD+/aZGEXsd
+X-Received: by 2002:a05:6214:1250:b0:5e3:d150:3163 with SMTP id r16-20020a056214125000b005e3d1503163mr19732167qvv.20.1683598958603;
+        Mon, 08 May 2023 19:22:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683598958; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwgOigEnbkKLM123PP7uSKZaW7Itow4qTpxbu4Xt4NIQ2ZnTYYS/OzsD60krFIUf3J
-         jB+MihGEsACRi94mJ77dVLMHX1Q9cVsRh0Rwj8F2niqiVUJBRHJlOk/gItgNFI98Fpxd
-         I/Cgf/CbzkS+QLCvSfqVjshyK3MGw9Zo+qEmErBA/3YnjsHHc/OULG5kwmJwXTYhUA6Y
-         8kFLQWPY7ezXRNVY3qbH42M2gojZaws3cvs7FvWKUUtCJJ8I9Fvr0tFWjLXi/zclkVTZ
-         gR8RZ8QPsps/6aNqB5bidBchPW5dZE50KgPxpmZpulylKFkU+Vi9n9lMskU562U4rqBK
-         /nqw==
+        b=ozd2xfNXDQ648Gv0S3s3xEY7vqp25aL63ZU0isHohrZj6MUOvs67tZ55FFCRVhdhtC
+         PmqGSzyojlU+mAm4CioD9Tfv2gEbVRmaE8/RewwA8eNwyvzi8kLaU/kwPxh0c9PennkK
+         mHCjQ7Q+ILHSx8Vz4qOHdcWPInpoPeXKUwI4hVVJOuHf6w2RxQ8VeowBPasich3J0SMT
+         Z2BUpq3/ikoaFiqcObRRuLplnJpyXe9nW2PHR+GrcJuJr5kHjmuIaWe0AkdyJGAimFqj
+         4vi4l3tDVqiAG5uJ/kbtpeIsVc2WH6Z0T2lmWk8i39BoSwuksa5S0hicjCijyELCH3kL
+         D35g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:cc:to:from:subject:dkim-signature;
-        bh=I8ro7Z6VSUYbajOcKU44uRgjWpkmf3ifQP4vt9f43Ws=;
-        b=Hp4Tyafcl6W7i0J2j7pMpnvAY5MqZhpT3eOIFpBXs/mIjMjkHCdm1jDEb2BIJ9SVlk
-         g1bxlBv/XU479VcjkEe3BB3EtpcMqM3AHyo5J2GJhI/bo7iuH0F8LgLMmQX2xogU5UEz
-         8jaVxdDqBcRNgMim/fLULfEUfbaBf7i+11fYiebttOFH7KjiInFzXhD7B4SwZ5LA0bYX
-         o9qU2o6/PL/pNaU+5hP8SPFlI3Mr3GLjHJqU9bGmaD0gsGHdkeFSehwTEfmzGeWGG7ny
-         H3nYcugCRX8mrO9OFrt1ckLqCaN5TPSkKH/3h8Uh2Jb+gFA8TPwuHEUdt8s/kaZUBHlj
-         WXXQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ccArD908ueE4+IB6hGq+rjHTUflH0eVcyq/2oRF52zQ=;
+        b=j3f6jpiNOAdmU6MCYl4zNvQBREOWu5gIXtxYMy52fqvS0g22oCp5LK7cHpXyPS8qdp
+         dLnkLoDQ4OazjoE1T67oOvv4XdT1lMQzZHS9Gk5E05ssNT3GO+FcTv2qgmMnMplCnaqu
+         CEVDMuHKsyKLy+yj9BQonxp7qe20fr4+CSXn6rBGxZOtKbMYkKSPKGwdppS/Q0a3oLWW
+         QYR1hSwAyAKtaqfmk4FAilphtXlRjRroCndAUn2dT3qmOTZAV45L2mJqsvggkA3YDxri
+         qgzM5mrt+ePnWqiWvitVU8pT4ZyIQxZ6laYvXjsMx/K6tOvZqqNexbNLNy5EbUXLTe3j
+         sbfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=awk0dIqw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VZbxPdT8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6-20020ad45c86000000b005f604e3cddfsi450520qvh.418.2023.05.08.17.35.01
+        by mx.google.com with ESMTPS id c18-20020a05620a11b200b0074dee9b66e9si3537116qkk.83.2023.05.08.19.22.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 May 2023 17:35:01 -0700 (PDT)
+        Mon, 08 May 2023 19:22:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=awk0dIqw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VZbxPdT8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwBJ9-0007ol-IU; Mon, 08 May 2023 20:34:23 -0400
+	id 1pwCz9-0004DT-1g; Mon, 08 May 2023 22:21:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBJ7-0007o3-U1
- for qemu-arm@nongnu.org; Mon, 08 May 2023 20:34:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwCz4-0004D1-98
+ for qemu-arm@nongnu.org; Mon, 08 May 2023 22:21:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwBJ5-0005MN-Fs
- for qemu-arm@nongnu.org; Mon, 08 May 2023 20:34:21 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1pwCz2-0001vx-Lv
+ for qemu-arm@nongnu.org; Mon, 08 May 2023 22:21:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683592458;
+ s=mimecast20190719; t=1683598903;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I8ro7Z6VSUYbajOcKU44uRgjWpkmf3ifQP4vt9f43Ws=;
- b=awk0dIqwWg+BbarwmwTyQHNT2XlAtvS9nw99q9PmIkz97npjfa59Axo2qvZpe7e6k9Bw4s
- i7hhG5PWEPSyHe9YXBv+SJbuVbQ0OZYFvC7FttXaqIrE5JrCPP7PtJGKNVkIKzmCTA+70p
- /ir1qvuzSwCcDzuO6QAndr4WkomN7vc=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ccArD908ueE4+IB6hGq+rjHTUflH0eVcyq/2oRF52zQ=;
+ b=VZbxPdT8s9ADS7OySg2HcSBg5xEoLhrDO62uhKieK5altrW23TWhZIQfZcUL6h0gXITBOO
+ e+h1OIebShmGtfHbmKWatwvvih2kH+++4Xy2+XG5JcSYq4dPuaeDKDGznkSpc+nEe/eIAG
+ UVU20YFGhm7fkIo3cEDK2oH8U2a+9+s=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-433-mq0efNuOOQuZasrz-3hgBg-1; Mon, 08 May 2023 20:34:15 -0400
-X-MC-Unique: mq0efNuOOQuZasrz-3hgBg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
+ us-mta-612-PQhFvYdfMUKb6pbiesNMJw-1; Mon, 08 May 2023 22:21:40 -0400
+X-MC-Unique: PQhFvYdfMUKb6pbiesNMJw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D48402814245;
- Tue,  9 May 2023 00:34:13 +0000 (UTC)
-Received: from [10.64.54.118] (vpn2-54-118.bne.redhat.com [10.64.54.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BA77C1121315;
- Tue,  9 May 2023 00:34:05 +0000 (UTC)
-Subject: Re: [PATCH v5 0/3] NUMA: Apply cluster-NUMA-node boundary for aarch64
- and riscv machines
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F2E67185A79C;
+ Tue,  9 May 2023 02:21:39 +0000 (UTC)
+Received: from gshan.redhat.com (vpn2-54-118.bne.redhat.com [10.64.54.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2E5A3492B00;
+ Tue,  9 May 2023 02:21:34 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
- imammedo@redhat.com, peter.maydell@linaro.org, rad@semihalf.com,
- quic_llindhol@quicinc.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- philmd@linaro.org, wangyanan55@huawei.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, thuth@redhat.com,
- lvivier@redhat.com, ajones@ventanamicro.com, berrange@redhat.com,
- dbarboza@ventanamicro.com, yihyu@redhat.com, shan.gavin@gmail.com
-References: <20230509002739.18388-1-gshan@redhat.com>
-Message-ID: <41a56ce7-1db0-ca97-85c6-6584fd322173@redhat.com>
-Date: Tue, 9 May 2023 10:34:02 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ peterx@redhat.com, david@redhat.com, philmd@linaro.org, mst@redhat.com,
+ cohuck@redhat.com, quintela@redhat.com, dgilbert@redhat.com,
+ maz@kernel.org, zhenyzha@redhat.com, shan.gavin@gmail.com
+Subject: [PATCH v3 0/4] hw/arm/virt: Support dirty ring
+Date: Tue,  9 May 2023 12:21:18 +1000
+Message-Id: <20230509022122.20888-1-gshan@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20230509002739.18388-1-gshan@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.802, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,85 +108,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MhhbUKUqWSvB
+X-TUID: Yj4aZa8YJmNh
 
-Hi Paolo,
+This series intends to support dirty ring for live migration for arm64. The
+dirty ring use discrete buffer to track dirty pages. For arm64, the speciality
+is to use backup bitmap to track dirty pages when there is no-running-vcpu
+context. It's known that the backup bitmap needs to be synchronized when
+KVM device "kvm-arm-gicv3" or "arm-its-kvm" has been enabled. The backup
+bitmap is collected in the last stage of migration. The policy here is to
+always enable the backup bitmap extension. The overhead to synchronize the
+backup bitmap in the last stage of migration, when those two devices aren't
+used, is introduced. However, the overhead should be very small and acceptable.
+The benefit is to support future cases where those two devices are used without
+modifying the code.
 
-On 5/9/23 10:27 AM, Gavin Shan wrote:
-> For arm64 and riscv architecture, the driver (/base/arch_topology.c) is
-> used to populate the CPU topology in the Linux guest. It's required that
-> the CPUs in one cluster can't span mutiple NUMA nodes. Otherwise, the Linux
-> scheduling domain can't be sorted out, as the following warning message
-> indicates. To avoid the unexpected confusion, this series attempts to
-> warn about such kind of irregular configurations.
-> 
->     -smp 6,maxcpus=6,sockets=2,clusters=1,cores=3,threads=1 \
->     -numa node,nodeid=0,cpus=0-1,memdev=ram0                \
->     -numa node,nodeid=1,cpus=2-3,memdev=ram1                \
->     -numa node,nodeid=2,cpus=4-5,memdev=ram2                \
-> 
->     ------------[ cut here ]------------
->     WARNING: CPU: 0 PID: 1 at kernel/sched/topology.c:2271 build_sched_domains+0x284/0x910
->     Modules linked in:
->     CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-268.el9.aarch64 #1
->     pstate: 00400005 (nzcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->     pc : build_sched_domains+0x284/0x910
->     lr : build_sched_domains+0x184/0x910
->     sp : ffff80000804bd50
->     x29: ffff80000804bd50 x28: 0000000000000002 x27: 0000000000000000
->     x26: ffff800009cf9a80 x25: 0000000000000000 x24: ffff800009cbf840
->     x23: ffff000080325000 x22: ffff0000005df800 x21: ffff80000a4ce508
->     x20: 0000000000000000 x19: ffff000080324440 x18: 0000000000000014
->     x17: 00000000388925c0 x16: 000000005386a066 x15: 000000009c10cc2e
->     x14: 00000000000001c0 x13: 0000000000000001 x12: ffff00007fffb1a0
->     x11: ffff00007fffb180 x10: ffff80000a4ce508 x9 : 0000000000000041
->     x8 : ffff80000a4ce500 x7 : ffff80000a4cf920 x6 : 0000000000000001
->     x5 : 0000000000000001 x4 : 0000000000000007 x3 : 0000000000000002
->     x2 : 0000000000001000 x1 : ffff80000a4cf928 x0 : 0000000000000001
->     Call trace:
->      build_sched_domains+0x284/0x910
->      sched_init_domains+0xac/0xe0
->      sched_init_smp+0x48/0xc8
->      kernel_init_freeable+0x140/0x1ac
->      kernel_init+0x28/0x140
->      ret_from_fork+0x10/0x20
-> 
-> PATCH[1] Warn about the irregular configuration if required
-> PATCH[2] Enable the validation for aarch64 machines
-> PATCH[3] Enable the validation for riscv machines
-> 
-> v4: https://lists.nongnu.org/archive/html/qemu-arm/2023-04/msg00232.html
-> v3: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01226.html
-> v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01080.html
-> v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00886.html
-> 
-> Changelog
-> =========
-> v5:
->    * Rebase for QEMU v8.1.0                                    (Gavin)
->    * Pick ack-b's from Igor                                    (Gavin)
+PATCH[1] add migration last stage indicator
+PATCH[2] synchronize the backup bitmap in the last stage of migration
+PATCH[3] add helper kvm_dirty_ring_init() to enable dirty ring
+PATCH[4] enable dirty ring for arm64
 
-[...]
+   v2: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg01342.html
+   v1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00434.html
+RFCv1: https://lists.nongnu.org/archive/html/qemu-arm/2023-02/msg00171.html
 
-> 
-> Gavin Shan (3):
->    numa: Validate cluster and NUMA node boundary if required
->    hw/arm: Validate cluster and NUMA node boundary
->    hw/riscv: Validate cluster and NUMA node boundary
-> 
->   hw/arm/sbsa-ref.c   |  2 ++
->   hw/arm/virt.c       |  2 ++
->   hw/core/machine.c   | 42 ++++++++++++++++++++++++++++++++++++++++++
->   hw/riscv/spike.c    |  2 ++
->   hw/riscv/virt.c     |  2 ++
->   include/hw/boards.h |  1 +
->   6 files changed, 51 insertions(+)
-> 
+Testing
+=======
+(1) kvm-unit-tests/its-pending-migration and kvm-unit-tests/its-migration with
+    dirty ring or normal dirty page tracking mechanism. All test cases passed.
 
-When v4 was reviewed by Igor, it was mentioned that you're handling hw/core/machine
-changes recently. Could you please help to queue this series for QEMU v8.1 if it
-looks good to you?
+    QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+    ./its-pending-migration
 
-Thanks,
-Gavin
+    QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm \
+    ./its-migration
+
+    QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+    ./its-pending-migration
+
+    QEMU=./qemu.main/build/qemu-system-aarch64 ACCEL=kvm,dirty-ring-size=65536 \
+    ./its-migration
+
+(2) Combinations of migration, post-copy migration, e1000e and virtio-net
+    devices. All test cases passed.
+
+    -netdev tap,id=net0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown  \
+    -device e1000e,bus=pcie.5,netdev=net0,mac=52:54:00:f1:26:a0
+
+    -netdev tap,id=vnet0,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+    -device virtio-net-pci,bus=pcie.6,netdev=vnet0,mac=52:54:00:f1:26:b0
+
+Changelog
+=========
+v3:
+  * Rebase for QEMU v8.1.0                                                     (Gavin)
+v2:
+  * Drop PATCH[v1 1/6] to synchronize linux-headers                            (Gavin)
+  * More restrictive comments about struct MemoryListener::log_sync_global     (PeterX)
+  * Always enable the backup bitmap extension                                  (PeterM)
+v1:
+  * Combine two patches into one PATCH[v1 2/6] for the last stage indicator    (PeterX)
+  * Drop the secondary bitmap and use the original one directly                (Juan)
+  * Avoid "goto out" in helper kvm_dirty_ring_init()                           (Juan)
+
+Gavin Shan (4):
+  migration: Add last stage indicator to global dirty log
+  kvm: Synchronize the backup bitmap in the last stage
+  kvm: Add helper kvm_dirty_ring_init()
+  kvm: Enable dirty ring for arm64
+
+ accel/kvm/kvm-all.c      | 108 ++++++++++++++++++++++++++++-----------
+ include/exec/memory.h    |   7 ++-
+ include/sysemu/kvm_int.h |   1 +
+ migration/dirtyrate.c    |   4 +-
+ migration/ram.c          |  20 ++++----
+ softmmu/memory.c         |  10 ++--
+ 6 files changed, 101 insertions(+), 49 deletions(-)
+
+-- 
+2.23.0
 

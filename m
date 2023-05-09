@@ -1,208 +1,146 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2340468ejq;
-        Mon, 8 May 2023 15:24:01 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6tAio+673FScXN0zwxHEpT2sA05hfjVfdfMJBlUe54IqLzCh1947SAfHNgai32aPP05WOS
-X-Received: by 2002:ad4:5b8f:0:b0:61d:be1e:7c4e with SMTP id 15-20020ad45b8f000000b0061dbe1e7c4emr17041384qvp.12.1683584641005;
-        Mon, 08 May 2023 15:24:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683584640; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2523578ejq;
+        Mon, 8 May 2023 23:51:23 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ67QQ6nvqTgbzGqdlMj+JrXKkES+ZR0/n/PLtCtsOF2gcH95BPpcUI/IgCGrztfgKJf01TX
+X-Received: by 2002:a05:6402:8c4:b0:506:be3f:ebb1 with SMTP id d4-20020a05640208c400b00506be3febb1mr10054297edz.26.1683615083781;
+        Mon, 08 May 2023 23:51:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683615083; cv=none;
         d=google.com; s=arc-20160816;
-        b=todItD7teNS/uTOWTFSOmjkoCoVmN8LJ52DuQ2l6dSB94YH3OY4lMGxZ1i+0e3hrF3
-         C8joJ1b8mxvT5pN9mw9smaa4GMKVQjGyvLwVRGbxjcEJmV/cx1fVDwrnPy50fslqwaY2
-         6jSCm2284IJoEiWQbZCRWrPqeDU4DeeEvsmSixLmUV1+rfbpFgZW3/kfNjpLv4i3+Md4
-         8Cqhj7DufDeyBiqrqnZIUG5+MUSaKmartuAWRVVua9EKrsgwkASiIGy7rdsbfZ+M067s
-         MN6eUOTueBY7w8ngQ0gPEfFlO/UpsQLK2ovWUfJhEr8bu8Wupk1xw5xZDg1oRVBjel9U
-         N2tg==
+        b=a5/OF8weFKjT8Q/dCChFaZ48r+S40HQ5RXJRVRkeeDHIAk+WCq9i84F2s9cciNuaYX
+         ACOwLFEuHKjOINivT3pUhWXWaWckNoiteX71eB3VjPTOH9Qec+UeyEGWLzSERtIw/cfG
+         pONHzfltX4Sm6rIYiNM4ooYMn8Nsi6teLQMwRttn7PzgPeKwYps9txBWyTcuCbTSvydl
+         K8gsfAsK5+X7unqf2GkTduS50rPiE/cPfwwNzG6a6qLpNRPT9yx8O4TR9BucszN8lfk+
+         CXhWgq+3huZKBcEc5OsnFXd5ZQUm/ljdvAQmQtQ6ihwz3bEWqFD8Ya3Uu06pl9zJ5VKO
+         wOlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
-        b=B4OpGH57ICQ4WPO4yuzWWAP7G5fOKnXGxVGnodCUsozUFK5oKPNbxfbilAWjXDerMT
-         1Q9mEdgvTik6Aog+JB2ZBNlurAvoIM4yEf966JaW8CvUhdadOZjPPdxejk+oTghk1ER1
-         QyxWaEgTwj+ce8SdtyCzanaAVwT08t5zodBeoj2+LAOLWanuVYXSq7Qb3PMV4i6b2gWb
-         vjudeieFJRIr+hvQ6YpRmhKXTzWYHyibSGpp33X75+8Ss9kmUm/xTAUS11Kp54b+WlYo
-         iYBoFoBgHOH7X/KVOyr0oe7/ooMaJfI6pvYRVTQfD/Wtf4AkKsFahK/8giU3MR/AIeJi
-         bagw==
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=pRUycvyeJsgfCR4Up/kBe/GSmpa2t96Jnpur212oKHA=;
+        b=CQjxZh21MB5Nq6QP8ORkGTgYRBf1PNYLrDtVznUGSxj+OAiAr4wuPJMLfxD2TA4YuP
+         PIi8D0ZYJbvTZ1bYZtAJVjjBSp1IND7r4UYOJaoMSS6FqAVfobxL4k17MZi/c/HIQ+0R
+         lrerGEifTX4tHGOKTH3oVwxaKE20FUzmyQ1zSPaZ1CumfQU9+2GJNUCs48DFu4jc6DxF
+         3seEvu23pqxgTZ6KnJ0TqBo0FjbYQR8YMjKDwgxqhhMeTv+oMkW7sEbtQUP9qCCXfivr
+         hT3GDqK76FKqeNBy1iaJb7vawPBrlhhFuQN7vp1qFd3xmnesQ5w23K27EXTXZL2h0QUp
+         2m6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO3uXnSw;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fbTT23ZF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
+Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 11-20020a0562140d6b00b005f99f9674e7si390215qvs.92.2023.05.08.15.24.00
+        by mx.google.com with ESMTPS id l5-20020aa7cac5000000b0050bd0b3dd4csi669350edt.347.2023.05.08.23.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 May 2023 15:24:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 08 May 2023 23:51:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jO3uXnSw;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fbTT23ZF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1683584640;
+	s=mimecast20190719; t=1683615082;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
-	b=jO3uXnSwUiHLXrEQpBUx/HQYLLlEMp4X4Umln2Kj+AVYX4JYREn3oSVyWk0N8x7CPCgXww
-	54eDPi3QPCVJjUa5eyATbio9mRX148+AxBZI0QCQ1+kXXjln1m7Q8xVpHSHN3DxovxetCe
-	Uo+w33Op/cetnMwyG5Lbt6CkUhacOxI=
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
- [209.85.217.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=pRUycvyeJsgfCR4Up/kBe/GSmpa2t96Jnpur212oKHA=;
+	b=fbTT23ZFtjxHrdqL5BycI3U1w+SPDocOYrPcUGf2rJAi4WwLfdISxYwWgZlDGUDEddkfh8
+	uWzmRfVWym54oMMHKlIohiOePkMob5CSG/lD77qXFcp7qoyRlL/M427d3/FmxK3reWGyIm
+	KwzeehUKFFCM1HxDMxaYIDH0KwWOPoY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-320-AsRxbHNjPfiAmUzJ8ZVdfw-1; Mon, 08 May 2023 18:23:59 -0400
-X-MC-Unique: AsRxbHNjPfiAmUzJ8ZVdfw-1
-Received: by mail-vs1-f72.google.com with SMTP id ada2fe7eead31-43483abf52aso2692048137.1
-        for <alex.bennee@linaro.org>; Mon, 08 May 2023 15:23:58 -0700 (PDT)
+ us-mta-628-tVWlHNnSMk6msFqZf91zsw-1; Tue, 09 May 2023 02:51:21 -0400
+X-MC-Unique: tVWlHNnSMk6msFqZf91zsw-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3063287f1c9so1980767f8f.2
+        for <alex.bennee@linaro.org>; Mon, 08 May 2023 23:51:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683584638; x=1686176638;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zureYO06k8lyXk0X/C4wQv289tsk/aNMUI3ppydUuCk=;
-        b=e6xI0qLYmcWAVEkCeJqRyjlRbMrtTpbf62sgU+ohRLyRBg4NAsnAIWiWUBcoSOnuar
-         pGqb/eSE1Kizh+BLayJzqH7ON2+cAd76AxpdlM0F2IWktXSLkTZIVPo9u+Br/kErSLaC
-         wS6odhCNs76D29FVh9LH+mGtfWyFzNAQtxYJQJ47EhaiHJg4lmsf1lIE4/PnsTsPg6Z2
-         1b9rGJJcosA6ILGSnBjAUaGv3J7KfhP3MVvRFkxuMpIy6Dx0ixOV2Lb1m6kLTit9VphH
-         ETQuC4L2tulQkyHz0ZungXnLRDjqUYePE08sXYrR+bDG3aqlK9eAr5UWPR+03YOWDP4h
-         PpEg==
-X-Gm-Message-State: AC+VfDxI4n7unuJdoTmnOJIItltTQc0/q5L+8AMovFa4jpSwY7w4uMtV
-	Cv7Q8jeXKWmdf8VK8VYkSjxhl6kVow3laJoGwCyCGR80MlbhnfeD5Oj2sNqt3VS/GPtvFn/Leak
-	scJgWkHMiny075yPMQi9XfwPzYkO+89dG
-X-Received: by 2002:a05:6102:316f:b0:42f:eb31:810 with SMTP id l15-20020a056102316f00b0042feb310810mr4064388vsm.17.1683584638423;
-        Mon, 08 May 2023 15:23:58 -0700 (PDT)
-X-Received: by 2002:a05:6102:316f:b0:42f:eb31:810 with SMTP id
- l15-20020a056102316f00b0042feb310810mr4064383vsm.17.1683584638153; Mon, 08
- May 2023 15:23:58 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1683615080; x=1686207080;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pRUycvyeJsgfCR4Up/kBe/GSmpa2t96Jnpur212oKHA=;
+        b=Qvt9L9wbPgcePfv13/lkmF3uDS8gvOsGDjjm38NjxNcxkLTMp4bItGAfXo9T8Yp9PP
+         ArdGkZZBHvLUw7UloUr56FxE3N1sywPVBkD19apard3hpPQsD8LmQT1IGSBIof+30fFl
+         dciSodh/DyEblAvXuHXBWKMqGV/anxkUZc3d1QMGvzaP2slYfMXP2DyU9UD1LNDO+Ior
+         MOUMC1yytbdEV7pIH989/QCdSHyoDczQcrD+dwwnBxEJw0xI6/LKIXAGAkf6hX8q1yAA
+         gg71pz5IiJU6gbyDWdATOVnbdj8sHQcpDEc82uJh9ErM/jaBOedw2OZ4/K4VlhC90/SW
+         0HQg==
+X-Gm-Message-State: AC+VfDyx9h5qdU8HW4sl7Gxogf0Odd2cumthX40W6Ljw0SYorv3o121I
+	CzMcyDrfZAkuwSPlfAm6+ciRxewULHHovmQG6gGECl8TA+dzcL6tmVvrjLqFUG8M+0AjGV/ahX0
+	mW7yX78fcmSyQg+YfrT4yBvXS
+X-Received: by 2002:a05:6000:10a:b0:2f9:482f:c13f with SMTP id o10-20020a056000010a00b002f9482fc13fmr8166294wrx.46.1683615080403;
+        Mon, 08 May 2023 23:51:20 -0700 (PDT)
+X-Received: by 2002:a05:6000:10a:b0:2f9:482f:c13f with SMTP id o10-20020a056000010a00b002f9482fc13fmr8166280wrx.46.1683615080144;
+        Mon, 08 May 2023 23:51:20 -0700 (PDT)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.3] (ip-109-43-179-53.web.vodafone.de. [109.43.179.53])
+        by smtp.gmail.com with ESMTPSA id h14-20020a056000000e00b002ceacff44c7sm13322429wrx.83.2023.05.08.23.51.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 08 May 2023 23:51:19 -0700 (PDT)
+Message-ID: <09048894-0f80-cc17-c222-9371fd76b20d@redhat.com>
+Date: Tue, 9 May 2023 08:51:18 +0200
 MIME-Version: 1.0
-References: <20230503091244.1450613-1-alex.bennee@linaro.org>
- <20230503091244.1450613-6-alex.bennee@linaro.org> <531a2eab-f0e6-46a5-c021-c82746c1ae38@redhat.com>
- <87y1m5s9yl.fsf@linaro.org> <5fb214d8-4a54-f896-f23f-fe9e646e4b2d@redhat.com>
- <CAFEAcA-Cfz8CkNeTQodoSitocBmm4ddk25Dq8x=5FiiGvaS34Q@mail.gmail.com>
- <e7185f74-f041-05b1-0f76-bab6d724e796@redhat.com> <878re4cl1u.fsf@suse.de>
-In-Reply-To: <878re4cl1u.fsf@suse.de>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 9 May 2023 00:23:47 +0200
-Message-ID: <CABgObfYYFfGk2X6M5MxbEbVqCYOp1Km53xkTNrfHwkK=aZOpyw@mail.gmail.com>
-Subject: Re: [PATCH 05/22] hw/arm: Select VIRTIO_NET for virt machine
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel <qemu-devel@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Leif Lindholm <quic_llindhol@quicinc.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Helge Deller <deller@gmx.de>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>, Juan Quintela <quintela@redhat.com>, John Snow <jsnow@redhat.com>, 
-	Yoshinori Sato <ysato@users.sourceforge.jp>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
-	Ilya Leoshkevich <iii@linux.ibm.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
-	Andrew Jeffery <andrew@aj.id.au>, qemu-s390x <qemu-s390x@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Beraldo Leal <bleal@redhat.com>, 
-	Max Filippov <jcmvbkbc@gmail.com>, =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>, Song Gao <gaosong@loongson.cn>, 
-	Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v3 3/3] tests/qtest: Don't run cdrom boot tests if no
+ accelerator is present
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20230508181611.2621-1-farosas@suse.de>
+ <20230508181611.2621-4-farosas@suse.de>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230508181611.2621-4-farosas@suse.de>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="0000000000004e8e7605fb36186f"
-X-TUID: 9R0F6GKrpowN
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: S+4FLrZ/jn32
 
---0000000000004e8e7605fb36186f
-Content-Type: text/plain; charset="UTF-8"
+On 08/05/2023 20.16, Fabiano Rosas wrote:
+> On a build configured with: --disable-tcg --enable-xen it is possible
+> to produce a QEMU binary with no TCG nor KVM support. Skip the cdrom
+> boot tests if that's the case.
+> 
+> Fixes: 0c1ae3ff9d ("tests/qtest: Fix tests when no KVM or TCG are present")
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   tests/qtest/cdrom-test.c | 10 ++++++++++
+>   1 file changed, 10 insertions(+)
+> 
+> diff --git a/tests/qtest/cdrom-test.c b/tests/qtest/cdrom-test.c
+> index 26a2400181..31d3bacd8c 100644
+> --- a/tests/qtest/cdrom-test.c
+> +++ b/tests/qtest/cdrom-test.c
+> @@ -130,6 +130,11 @@ static void test_cdboot(gconstpointer data)
+>   
+>   static void add_x86_tests(void)
+>   {
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No KVM or TCG accelerator available, skipping boot tests");
+> +        return;
+> +    }
+> +
+>       qtest_add_data_func("cdrom/boot/default", "-cdrom ", test_cdboot);
+>       qtest_add_data_func("cdrom/boot/virtio-scsi",
+>                           "-device virtio-scsi -device scsi-cd,drive=cdr "
+> @@ -176,6 +181,11 @@ static void add_x86_tests(void)
+>   
+>   static void add_s390x_tests(void)
+>   {
+> +    if (!qtest_has_accel("tcg") && !qtest_has_accel("kvm")) {
+> +        g_test_skip("No KVM or TCG accelerator available, skipping boot tests");
+> +        return;
+> +    }
+> +
+>       qtest_add_data_func("cdrom/boot/default", "-cdrom ", test_cdboot);
+>       qtest_add_data_func("cdrom/boot/virtio-scsi",
+>                           "-device virtio-scsi -device scsi-cd,drive=cdr "
 
-Il gio 4 mag 2023, 14:56 Fabiano Rosas <farosas@suse.de> ha scritto:
-
->
-> It's a bit hard to maintain the original intention with just
-> documentation. Couldn't we require that --without-default-devices always
-> be accompanied by --with-devices?
-
-
-Maybe, but why would it be bad to just patch the default .mak file?
-
-And more to the point of Peter's
-> question, couldn't we just leave the defaults off unconditionally when
-> --without-default-devices is passed without --with-devices?
->
-
-No, for example RHEL adds a lot of devices and is perfectly usable without
---nodefaults, but we still use --without-default-devices because we want
-any new config to be opt in, unless it's always needed.
-
-The coupling of -nodefaults with --without-default-devices is a bit
-> redundant. If we're choosing to not build some devices, then the QEMU
-> binary should already know that.
->
-
---without-default-devices is not about choosing to not build some devices;
-it is about making non-selected devices opt-in rather than opt-out.
-
-Paolo
-
-
-> Just to be clear, -nodefaults by itself still makes sense because we can
-> have a simple command line for those using QEMU directly while allowing
-> the management layer to fine tune the devices.
->
-> In the long run, I think we need to add some configure option that gives
-> us pure allnoconfig so we can have that in the CI and catch these CONFIG
-> issues before merging. There's no reason to merge a new CONFIG if it
-> will then be impossible to turn it off.
->
->
-
---0000000000004e8e7605fb36186f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">Il gio 4 mag 2023, 14:56 Fabiano Rosas &lt;<a href=3D"=
-mailto:farosas@suse.de">farosas@suse.de</a>&gt; ha scritto:<br></div><block=
-quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
- solid;padding-left:1ex"><br>
-It&#39;s a bit hard to maintain the original intention with just<br>
-documentation. Couldn&#39;t we require that --without-default-devices alway=
-s<br>
-be accompanied by --with-devices?</blockquote></div></div><div dir=3D"auto"=
-><br></div><div dir=3D"auto">Maybe, but why would it be bad to just patch t=
-he default .mak file?</div><div dir=3D"auto"><br></div><div dir=3D"auto"><d=
-iv class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:=
-0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">And more to the poi=
-nt of Peter&#39;s<br>
-question, couldn&#39;t we just leave the defaults off unconditionally when<=
-br>
---without-default-devices is passed without --with-devices?<br></blockquote=
-></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">No, for example =
-RHEL adds a lot of devices and is perfectly usable without --nodefaults, bu=
-t we still use --without-default-devices because we want any new config to =
-be opt in, unless it&#39;s always needed.</div><div dir=3D"auto"><br></div>=
-<div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
->The coupling of -nodefaults with --without-default-devices is a bit<br>
-redundant. If we&#39;re choosing to not build some devices, then the QEMU<b=
-r>
-binary should already know that.<br></blockquote></div></div><div dir=3D"au=
-to"><br></div><div dir=3D"auto">--without-default-devices is not about choo=
-sing to not build some devices; it is about making non-selected devices opt=
--in rather than opt-out.</div><div dir=3D"auto"><br></div><div dir=3D"auto"=
->Paolo</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gma=
-il_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
-er-left:1px #ccc solid;padding-left:1ex">
-<br>
-Just to be clear, -nodefaults by itself still makes sense because we can<br=
->
-have a simple command line for those using QEMU directly while allowing<br>
-the management layer to fine tune the devices.<br>
-<br>
-In the long run, I think we need to add some configure option that gives<br=
->
-us pure allnoconfig so we can have that in the CI and catch these CONFIG<br=
->
-issues before merging. There&#39;s no reason to merge a new CONFIG if it<br=
->
-will then be impossible to turn it off.<br>
-<br>
-</blockquote></div></div></div>
-
---0000000000004e8e7605fb36186f--
+Reviewed-by: Thomas Huth <thuth@redhat.com>

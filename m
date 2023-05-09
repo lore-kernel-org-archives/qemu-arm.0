@@ -1,130 +1,172 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2665500ejq;
-        Tue, 9 May 2023 05:05:02 -0700 (PDT)
-X-Received: by 2002:a50:eb48:0:b0:50b:c479:fed7 with SMTP id z8-20020a50eb48000000b0050bc479fed7mr11582661edp.21.1683633901911;
-        Tue, 09 May 2023 05:05:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683633901; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp2671021ejq;
+        Tue, 9 May 2023 05:12:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7JsvVB09esqeMUtU8VFSq4IqaC77pBu31YjJsViI1i4EBwhXNVjHH2CJ4/4p2/92EuVUR+
+X-Received: by 2002:ad4:596a:0:b0:61a:ee15:4a93 with SMTP id eq10-20020ad4596a000000b0061aee154a93mr14650824qvb.28.1683634372340;
+        Tue, 09 May 2023 05:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683634372; cv=none;
         d=google.com; s=arc-20160816;
-        b=EVx3HAE4ZJV73gGlEWYXbxQMUIiM/8h994wLEWsLN0Up1fPYilmspNu6dTHGX7a/O4
-         7LKcbyjgvH8LCOPTWZECEsSGepNHayySwH30J4K8rJ1qRG6O5Yg7szhEB1MmGv1YCul2
-         nUj91FLsIneY7xSCFbBB1W6GQ8PO4cVk5vPdBxpN0GxGfjh/zc6yF42RfXEHleyET1Q6
-         3SPbtxiMTgL16P5vrIwyXfJW0v/Ec8Wgg1+RdwNszvrtiBD9ZTPk2xJsN7TyjRdRyIgU
-         ZoBN6tRe3IWBIVc94BoMr/x08rJ+iXO0MuZ6cZpTqrjDXfT4m350mTl3pyNXgv24Tli/
-         5YsQ==
+        b=LjF1OrRc+cG5OtCdLhhOVZpxp06kD+eRTh5ucYcm2LIf57Ic/03tkXcJZw3yDQSiri
+         RwxZiUTTXhGNyKaJMSJQ9SWzWYmnhvLESfFvpVRUpmd8bWwRA6AupZYZBdsh5Ltl4Hp0
+         TVrYjb5eEvJOCDBPBAHjGdcrRCcH8/lO09xH+fdDPW2ax89wgdcIm/rzK6tu4vhqiHa5
+         IgRkEvCsYFcehOGkA0oEPM7BoRAAmWGR+rcm7dSCIY4+BZFWn0Za9Fag4ClubCmgF1og
+         LTXDzyCIEdKkPD1uPvUEll/zswcT1OxNNFdnbCjV7RJCGZab902Ub2q3UaYBe28PpObm
+         FgHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
-        b=tA5xlMxx5xyhn5qKPXUO64bSDWigV/GfWSqD14rRamSNWmi3cr7OFHPFFpXQr9koaj
-         1t9/5u+Rmk+FO1vPmIk+MfRe7cQrpRlKA4D+Sa/dud+xV5Fagnlx/rxAtobIfKCMQxHX
-         TrjRsOIIK4/yyDPSyftpdmPmV8940jS8ktNh+8W2ksYlTvTBDStupd77t1FRq2/tFGOZ
-         2Wchist0aUYDByJKXLJ99M1ZOJ5b4Jy1w5HoK1M20GaabybH/nUA00eo9+nT+3Pcf1zn
-         +9/V5YJW+8s9yZb5281fiAtwjcFnaRYu5bD646ra66vCXbS6qOfgjCLtg7c9OG1G9PaB
-         CM/g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=SoinHz6iMwjXA3ffGSWaQONYfahVOdpHtjkPj73402Y=;
+        b=i8XenURkdDCjhqL/ghBRDLEmaQlrL1YwOPxzQiwJ3debLqhP5PtRDKxYBpIDK9+4f4
+         hl5CSZ1HxLOr7YRjBcR7DdWTLu9zcu10svSlcTvN0J1DaatTsJIcK9V+QognMBnPOZyz
+         SvNk+BuQxhdGrFXwInPOua5Ca64TsDNflGRJxlOL9ldLjgNtzmDXtenIjkebxiXxeNfZ
+         0LGWVhruv9qbNExDi4JCzPe3DVP7cur25n7ZA42B2rIVZnMZFUJqvCqQaOjgJaxVWHw+
+         Y3KYTFmryW+LcNhAQ3dlMldWnu9PRJI992pi2WLjE8OZ93/vZFU7kmH4usN/eDQOhjcN
+         aiSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yR7/qZTB";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zpZ81hiq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t4-20020a508d44000000b004fba4dbf855sor795564edt.7.2023.05.09.05.05.01
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id eo13-20020ad4594d000000b0061cf6bf685asi876390qvb.267.2023.05.09.05.12.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 May 2023 05:05:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 May 2023 05:12:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yR7/qZTB";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zpZ81hiq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pwMCd-0007g4-C6; Tue, 09 May 2023 08:12:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pwMCc-0007fh-Mw
+ for qemu-arm@nongnu.org; Tue, 09 May 2023 08:12:22 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1pwMCZ-00007T-NI
+ for qemu-arm@nongnu.org; Tue, 09 May 2023 08:12:22 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-50bceaf07b8so10936155a12.3
+ for <qemu-arm@nongnu.org>; Tue, 09 May 2023 05:12:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1683633901; x=1686225901;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
-        b=yR7/qZTB67ODJ0NoKg2I6B/z1+lFfNr2ne62xC3BLLw+ImFoNK+6mycBPsEpg8xdXR
-         JW5v1GrL8+aSia4pjVa1HEMnqZviKq/OVB5zN6jwo62DPUyLed8mFGH6OytNbfYcG3Hv
-         rW7yvvZ97xi4Ee73aF3adhehUq7vriyPCWXOn9+VD7C4s4/COFR1a05NHTw7Ib1MEJzR
-         43tJm5vtuG0gXcTENhzSZS2+qU82MpW8f/4exoBVVRT6wakhzwF309YvyVZ7fXOME3st
-         blV6IQW/b9v4oXpfsGqkQxycc38S8s8quy33b8+AK+q03V5JWkAx8Gl6JgErOo9qGXSC
-         8aFg==
+ d=linaro.org; s=google; t=1683634337; x=1686226337;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SoinHz6iMwjXA3ffGSWaQONYfahVOdpHtjkPj73402Y=;
+ b=zpZ81hiq3j3RKKgMY/xYC/pM26SqCtgLvwh3d3hadsNFbeNytiVurVGdhelh5vf7Vk
+ 2jbF/yTntCgnAJssV+JtXF4anwqQYOPzb4QG9KLizL0MJ988xhVZFM0HWDolXoA+06MN
+ ZNX0bwAGS4/PZw8tt6uuG086fUHUdy87RtTYbRxYIj0pnnRdgmTBs58Y1NoLhtxm7aeh
+ h/OvshLw+kGJA6HwOUWsHOWA/6N0A/pIbaaUjM9dkzydD34gameLM34ijEroToJO+Mxt
+ DHrCc2Si7Ozg+Zl7rLEk9tbORhDZ6ShguDqWR+ObAbsZWocc2ePh01xEHvfU4QQAvRni
+ +1DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1683633901; x=1686225901;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FtnmDLDOsU/IlqLkId45Pc72BUE73jMq14qxm6Cd1EE=;
-        b=KfVV0qf645mK8tirZR0gJAlFMNt+mo0rrOi38+GTqJejllvQAG0Ev2COjCXjKKKEBr
-         cwLJCMq3cORhk8ijW8+f7lcjAQen5/rrfB3qq4MxlpAusiLvqHwtfxUUIb3yJf3TY/uB
-         H7ZfaPIMtj0b4D90FdfH1xgZukkv8l6Ta1gCIp1gVF8rs8mOhb1/rQUby/WCjuh/N+u6
-         aeX8z5eE9sKqrKu+5X7Kt5EIqeC1D9tIRnhkmX0rmAvlwtK0ykJqmvzctXL2LatR5gRB
-         7FzYND02rifeHVQk+NULbhb85dOlaNDMDPYxtxI7/BQxrDb9EcTsvoawHH2FOPFa3Z5F
-         cQnQ==
-X-Gm-Message-State: AC+VfDwyNlX/rtT6nRyeU0866Ngsi2TkVwqRo41AqQpCJGS1jJvyoFGq
-	TjEsrI16wQx0QpoDRhsIimkxZ5bnJh8UG+W0H0TbvwXS
-X-Google-Smtp-Source: ACHHUZ4PXzzo1tBSSpSH16ChRsRSnhs7CS5tMXlene/zGGeZG0tYWK9Po8orbMwLsITROZStog4r5f0KdbWZH9Mn1GA=
-X-Received: by 2002:aa7:d64d:0:b0:50c:3dc:2262 with SMTP id
- v13-20020aa7d64d000000b0050c03dc2262mr10014803edr.39.1683633901517; Tue, 09
- May 2023 05:05:01 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1683634337; x=1686226337;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=SoinHz6iMwjXA3ffGSWaQONYfahVOdpHtjkPj73402Y=;
+ b=C5HxuEBzbzHtNy1A+j3ALMj1FBmoQDPKYqsgbcqwwiITmMQNsYkjlhUiQrTWIZYaju
+ 7FteC/4VcfWQxwMSL9ZZgrYrKfK2atihtWysKurY5odtqdj5Xv/d7oTUIIDkLvyOpJgm
+ OrlEK6/BCAuPChbbMbictpfUyERM6wPU0b5Jxi/BiglN2TCjGNoOHFHeMzZmS7S8PY4e
+ +yeYfRbchn2MDY/0JEDr3uxG2M6hiG2twzRFWBMpDBoWB0mbzqUKqFJlF/x+J3HtL73o
+ tNf/ZdkZbwCR6uIJon+7LhLSQ4ipmHNTMw3RoQjBNPy4XSR4RqG2mYSXud5TdKOFMnsV
+ IxeQ==
+X-Gm-Message-State: AC+VfDyAOP+N8VWQX+YUsMUJuQPT7FVsnEkiy+s7lMlfueKT6eh8pbBm
+ yrysz3fg/CEjahJ5SggcCnGCPrumx2h5BVM91Bv9bw==
+X-Received: by 2002:aa7:cf92:0:b0:50b:c3a3:be7c with SMTP id
+ z18-20020aa7cf92000000b0050bc3a3be7cmr9828039edx.30.1683634337613; Tue, 09
+ May 2023 05:12:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230503070656.1746170-1-richard.henderson@linaro.org>
- <20230503070656.1746170-7-richard.henderson@linaro.org> <CAFEAcA8muJ84GMqSBuU0P2YhfERM-kftfq07N8BVO2yG9p6jBw@mail.gmail.com>
- <8988fc6b-8f07-1ab7-663d-3392ca19f7f8@linaro.org>
-In-Reply-To: <8988fc6b-8f07-1ab7-663d-3392ca19f7f8@linaro.org>
+References: <11bf324.342.187b3418349.Coremail.wangyuquan1236@phytium.com.cn>
+ <CAFEAcA9pa+uHGk34uCGX1ZHiCBDeDHXFLDFyVDAVvDxQScEChg@mail.gmail.com>
+ <70009a13.15f.187bc308951.Coremail.wangyuquan1236@phytium.com.cn>
+In-Reply-To: <70009a13.15f.187bc308951.Coremail.wangyuquan1236@phytium.com.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 May 2023 13:04:50 +0100
-Message-ID: <CAFEAcA-79iL8=+143w1jxTG1WM-8NODqqgF4droY=avopm4a7g@mail.gmail.com>
-Subject: Re: [PATCH v4 06/57] accel/tcg: Honor atomicity of loads
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn, 
-	philmd@linaro.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
-	qemu-s390x@nongnu.org, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Tue, 9 May 2023 13:12:06 +0100
+Message-ID: <CAFEAcA-jZBiSL8vNzgcwUT2Lqtgf9JyyaQx7kD4j=Tc9neD_OQ@mail.gmail.com>
+Subject: Re: Re: Problem of initialization of platform-ehci-usb in sbsa-ref
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+Cc: qemu-arm@nongnu.org, rad@semihalf.com, quic_llindhol@quicinc.com, 
+ Gerd Hoffmann <kraxel@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: yruVjpmz9rCI
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fJhNUZmZgFyK
 
-On Fri, 5 May 2023 at 21:19, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 26 Apr 2023 at 07:11, Yuquan Wang <wangyuquan1236@phytium.com.cn> w=
+rote:
 >
-> On 5/4/23 18:17, Peter Maydell wrote:
-> >> +    case MO_ATOM_WITHIN16:
-> >> +        tmp = p & 15;
-> >> +        if (tmp + (1 << size) <= 16) {
-> >> +            atmax = size;
+> > On 2023-04-25 16:34:04, Peter Maydell replied:
 > >
-> > OK, so this is "whole operation is within 16 bytes,
-> > whole operation must be atomic"...
+> > On Mon, 24 Apr 2023 at 13:33, =E7=8E=8B=E5=AE=87=E6=B3=89 <wangyuquan12=
+36@phytium.com.cn> wrote:
+> > > As a junior OS engineer, I met a problem of initialization of platfor=
+m-ehci-usb in sbsa-ref recently.
+> > >
+> > > The result of sbsa-acs(UEFI Shell application) on sbsa-ref shows that=
+ "Peripheral: Num of USB controllers: 0".
+> > >
+> > > And I found that the platform-ehci-usb in qemu is a 32-bits DMA devic=
+e while our sbsa-ref machine does not own
+> > >
+> > > DRAM memory below 4G. It seems like a contradiction point.
 > >
-> >> +        } else if (atmax == size) {
-> >> +            return MO_8;
-> >
-> > ...but I don't understand the interaction of WITHIN16
-> > and also specifying an ATMAX value that's not ATMAX_SIZE.
->
-> I'm trying to describe e.g. LDP, which if not within16 has two 8-byte elements, one or
-> both of which must be atomic.  We will have set MO_ATOM_WITHIN16 | MO_ATMAX_8.
->
-> If atmax == size, there is only one element, and since it is not within16, there is no
-> atomicity.
->
-> >> +        } else if (tmp + (1 << atmax) != 16) {
-> >
-> > Why is this doing an exact inequality check?
-> > What if you're asking for a load of 8 bytes at
-> > MO_ATMAX_2 from a pointer that's at an offset of
-> > 10 bytes from a 16-byte boundary? Then tmp is 10,
-> > tmp + (1 << atmax) is 12, but we could still do the
-> > loads at atomicity 2. This doesn't seem to me to be
-> > any different from the case it does catch where
-> > the first ATMAX_2-sized unit happens to be the only
-> > thing in this 16-byte block.
->
-> If the LDP is aligned mod 8, but not aligned mod 16, then both 8-byte operations must be
-> (separately) atomic, and we return MO_64.
+> > This definitely doesn't seem like an intentional thing.
+> > What specifically do you mean by "32-bits DMA device" ?
+> > Is our implementation of this device accidentally not
+> > handling addresses above 4GB? Or is the specification of
+> > the device itself limited to 4GB addresses? Or is this a
+> > guest driver problem?
 
-So there's an implicit "at most 2 atomic sub-operations
-inside a WITHIN16 load" restriction? i.e. you can't
-use WITHIN16 to say "do this 8 byte load atomically but
-if it's not in a 16-byte region do it with 4 2-byte loads",
-even though in theory MO_ATOM_WITHIN16 | MO_ATMAX_2 | MO_8
-would describe that ?
+> Maybe the specific explanation is that qemu implements that:
+> In hw/usb/hcd-ehci.c:
+> void usb_ehci_init(EHCIState *s, DeviceState *dev)
+> {
+> ...
+> "s->caps[0x08] =3D 0x80;"
+>
+> According to EHCI spec version 1.0 Section 2.2.4,
+> the set of "0x80" on Host Controller Capability Parameters
+> Register means this(qemu) EHCI Host Controller does not have
+> 64-bit Addressing Capability.
+
+Ah, I see; thanks for providing the reference to the spec
+and the source code.
+
+Gerd, is there a particular reason our EHCI controller only
+claims to be able to do 32-bit DMA ? Should we give it a QOM
+property so boards that only have RAM above the 4GB mark can
+use it ? (Would the x86 PC benefit from allowing >4GB DMA?)
 
 thanks
 -- PMM

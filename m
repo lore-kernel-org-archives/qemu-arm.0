@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3300098ejq;
-        Wed, 10 May 2023 03:31:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7EFmY1dkNrkTF0XQx7S7YxrzAwYkES7EZ+JVZmwDSpaUMob0oyoHQgaEPcvdph6FMlCwdW
-X-Received: by 2002:a05:622a:c3:b0:3f2:b4c:84ac with SMTP id p3-20020a05622a00c300b003f20b4c84acmr25495944qtw.18.1683714716180;
-        Wed, 10 May 2023 03:31:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683714716; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3300160ejq;
+        Wed, 10 May 2023 03:32:06 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7oC6x8lTMWdGNXi/2sOPxh6F/sadGgE1gt1c3ESGmvj23/pSFEoAGlOAhr70V7V/ITgzZp
+X-Received: by 2002:ac8:7d54:0:b0:3e6:4dfe:d48a with SMTP id h20-20020ac87d54000000b003e64dfed48amr28046211qtb.34.1683714726113;
+        Wed, 10 May 2023 03:32:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683714726; cv=none;
         d=google.com; s=arc-20160816;
-        b=dugkaReHH3Bj/TihagmsZ58N1MHIaCSQ9H0IL5EsXIZYUoj7Ysmt9m9x7tY8v73N+d
-         DV4o/MyntADB8aZwj9ZSx6mFwfO0IiXOP8+oaWsqtL7G9FANNqJNuEu6eW8W4Uz9btO6
-         +uhf16mRAevGj3u3Dqad9oaMTR/TAhlnS/B4IScTOGvyOnMFqelr/H8XEIG9c2ylUOr4
-         Xr3FlUC0fQMxUfDdfwgtWUn0H8j5NFogsWBMbbAlYMzNhoMBQv/H7FQZbJO/S8YaGVLz
-         kODFrU6BW9ewXV8c3qNIA/uNV3ZkXK7ZEToR4NTJwXh8JDQ/4WgQBMZ85TghV2uYI124
-         riCA==
+        b=SdYzGj9hanuwSJlFB0lFTT6KEJmgQ9EE/PG8Fs9qWWFqFzUUO8OfJEfAZdSWDzHATz
+         401yzp94m6J70NysGXuaDvDMWpYybQz27knfOYYhmGaivRS3ZSI1GlvKA++0q3Q4F0dz
+         O9ivZDVDLYALER0a861gFz4Im6PpRVNBbxWHsxCxsxfijNaBJN4bs8PdFeCriLLqMI7v
+         Orv4Iv7QWX1YhPCKNFsvXOum2etoDCdbgROfJT11ozviniEb8KtLYDd5CkQY1VWZIila
+         1GSa/nA5LYQ2vn2VGzvtPOFP+cucAgMI1i9H7y6ivbP/ZGAoa5dHMYKM6um/N5riEnHq
+         r1Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wa8bsD5M3brm06qvVTw533TqTWNTe4tyXT2fGV2y+vg=;
-        b=SYp/3aWQUHZMaHJQhpRLqDWAUN5F6joFjKRzAL2UxOxwVUVYCjU1eMitIN+2xd1W2R
-         XWKWmfnjNdpbj3M+1aPos2YxCA0vN6DXF2U4nqLdq4mk98WyE4LSNX/pkY2T4pkgJoM/
-         lZ+fE51Buma9TE5kQ+ftJWcxhbzdPvILd/ABFZWf7uMpDcdpvel1VbNTj2eGZWZ2l/C1
-         IFONsoUvv2uDjvPefEc4aWfQD+yE5etxqoRwDywWxy5y3rIvRabbqMtYE2r6rFQYCYsD
-         I5kxh2d1VMi/ekLnlAZjA305ZRGFuqUz0hCB9dZ+HFbHWokgu+9JWBPJSnkK/dw8YS+P
-         izug==
+        bh=UuGY0IiBcUTfj9TdIaOLhp2UW6jyui3uHheSw0k+mZI=;
+        b=fBkLZF/M+jTOXQGlnPaO+e/QvuNjiwVtq6BiYLuHkAJZQiEqbunUIWr+QuVWIf2tzL
+         HvGA87bLx6Cuo+js/0v3DY0ylEZL/Dd2kZkELwladSe7LJmtAK1zV4UxuMwlAWvyAEJq
+         tR8WUA0+SnBcd6Xq1Fb53dZ/cD9RCawgl9TjiJxssKsDYJcCiifD929uLdBtaoudlSIw
+         wVo0dZAoQ0OaakaLZxFZhACR3XB24RZCI1h2DRCa+EQx+B9xxatVVe0ARXYokmj7t9Ia
+         mB9UjfY+MsYZ91pPEz09UGvVELqawEoA55EyLrbFtlMH01ZS9r4AaZwIVmIGhLeb+HH9
+         qZpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=cxwGmzWx;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=ILiZlK6t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14-20020a05620a16ce00b0075790c13b71si1865499qkn.413.2023.05.10.03.31.56
+        by mx.google.com with ESMTPS id t29-20020a05620a005d00b0075781d85056si2722989qkt.504.2023.05.10.03.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 May 2023 03:31:56 -0700 (PDT)
+        Wed, 10 May 2023 03:32:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=cxwGmzWx;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=ILiZlK6t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwh5q-0003hL-AC; Wed, 10 May 2023 06:30:46 -0400
+	id 1pwh5w-0003md-Dv; Wed, 10 May 2023 06:30:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pwh5o-0003f3-MI; Wed, 10 May 2023 06:30:44 -0400
-Received: from m12.mail.163.com ([220.181.12.214])
+ id 1pwh5u-0003lt-Vo; Wed, 10 May 2023 06:30:51 -0400
+Received: from m12.mail.163.com ([220.181.12.197])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pwh5m-000892-JT; Wed, 10 May 2023 06:30:44 -0400
+ id 1pwh5q-00089a-PR; Wed, 10 May 2023 06:30:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=wa8bs
- D5M3brm06qvVTw533TqTWNTe4tyXT2fGV2y+vg=; b=cxwGmzWxZdpA+Dq6i3WDT
- G7vYIkSjVHpy/tsZDhVxuGQQMV9c4ksyfoS8pciiTi6aPKTv+iyhGBtqxFuhqGvW
- xxwWWuSSVQoC1+HJOuuMIH/nFItnD1dZX4MJjQP6YyJQV//f2FkFFIQwRA8k6VeH
- IR5BrIF0DBh8rkMzX4Ir3A=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=UuGY0
+ IiBcUTfj9TdIaOLhp2UW6jyui3uHheSw0k+mZI=; b=ILiZlK6tSyprXU6exZTFn
+ H1Icmz8mUDyPV52kmYCygvBQw18Haw4qOVSp9BIrrlwfGDijjLB1itbrBwZ22Lk2
+ tQoW2oH+s+ToK3Q9qlGj5mGuBrdf32U47FsTtCvPKh7uQB3qy8wx0ZSbwJ7xrGi4
+ zrA5Ejl3zhU28lYalDkNuE=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBnkgAvcltk0WrrBQ--.23956S5;
- Wed, 10 May 2023 18:30:14 +0800 (CST)
+ by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBnkgAvcltk0WrrBQ--.23956S8;
+ Wed, 10 May 2023 18:30:18 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -68,22 +68,22 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v4 03/11] hw: allwinner-r40: Complete uart devices
-Date: Wed, 10 May 2023 18:29:56 +0800
-Message-Id: <20230510103004.30015-4-qianfanguijin@163.com>
+Subject: [PATCH v4 06/11] hw/arm/allwinner-r40: add SDRAM controller device
+Date: Wed, 10 May 2023 18:29:59 +0800
+Message-Id: <20230510103004.30015-7-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230510103004.30015-1-qianfanguijin@163.com>
 References: <20230510103004.30015-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S5
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWw45ZrWrGw1UurW8ury5XFb_yoW5CFWDpr
- nIkrZ5GrWjg3W3ArW8Kws3ZrWSyF18GrnFy3W0ya13tF18Xr40vrW2qa1UGr43Krs3JFW3
- Xr95Gr42g3W2qwUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0z_jjgDUUUUU=
+X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S8
+X-Coremail-Antispam: 1Uf129KBjvAXoWftFWxCw15XrWxXrWxCr17ZFb_yoW5Gw48Xo
+ WSgF45Zw4agw17Xr1Fgw1jyr13Kws8KrWxJw45GF43ua98JFs8G39xJwn8Xr4fWr4FkFn7
+ XFySgr1fZrWkCas3n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRtcTPDUUUU
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzhhr7WI0ZI07igAAse
-Received-SPF: pass client-ip=220.181.12.214;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQhxr7VaEFRvv3wAAs0
+Received-SPF: pass client-ip=220.181.12.197;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -106,100 +106,820 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AYxRhIj4NlTI
+X-TUID: J9rDP5xX9qWV
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-R40 has eight UARTs, support both 16450 and 16550 compatible modes.
+Types of memory that the SDRAM controller supports are DDR2/DDR3
+and capacities of up to 2GiB. This commit adds emulation support
+of the Allwinner R40 SDRAM controller.
+
+This driver only support 256M, 512M and 1024M memory now.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/allwinner-r40.c         | 31 ++++++++++++++++++++++++++++---
- include/hw/arm/allwinner-r40.h |  8 ++++++++
- 2 files changed, 36 insertions(+), 3 deletions(-)
+ hw/arm/allwinner-r40.c                |  21 +-
+ hw/arm/bananapi_m2u.c                 |   7 +
+ hw/misc/allwinner-r40-dramc.c         | 513 ++++++++++++++++++++++++++
+ hw/misc/meson.build                   |   1 +
+ hw/misc/trace-events                  |  14 +
+ include/hw/arm/allwinner-r40.h        |  13 +-
+ include/hw/misc/allwinner-r40-dramc.h | 108 ++++++
+ 7 files changed, 674 insertions(+), 3 deletions(-)
+ create mode 100644 hw/misc/allwinner-r40-dramc.c
+ create mode 100644 include/hw/misc/allwinner-r40-dramc.h
 
 diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index 128c0ca470..537a90b23d 100644
+index 4bc582630c..0e4542d35f 100644
 --- a/hw/arm/allwinner-r40.c
 +++ b/hw/arm/allwinner-r40.c
-@@ -45,6 +45,13 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_CCU]        = 0x01c20000,
-     [AW_R40_DEV_PIT]        = 0x01c20c00,
-     [AW_R40_DEV_UART0]      = 0x01c28000,
-+    [AW_R40_DEV_UART1]      = 0x01c28400,
-+    [AW_R40_DEV_UART2]      = 0x01c28800,
-+    [AW_R40_DEV_UART3]      = 0x01c28c00,
-+    [AW_R40_DEV_UART4]      = 0x01c29000,
-+    [AW_R40_DEV_UART5]      = 0x01c29400,
-+    [AW_R40_DEV_UART6]      = 0x01c29800,
-+    [AW_R40_DEV_UART7]      = 0x01c29c00,
+@@ -31,6 +31,7 @@
+ #include "hw/loader.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/allwinner-r40.h"
++#include "hw/misc/allwinner-r40-dramc.h"
+ 
+ /* Memory map */
+ const hwaddr allwinner_r40_memmap[] = {
+@@ -53,6 +54,9 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_UART6]      = 0x01c29800,
+     [AW_R40_DEV_UART7]      = 0x01c29c00,
+     [AW_R40_DEV_TWI0]       = 0x01c2ac00,
++    [AW_R40_DEV_DRAMCOM]    = 0x01c62000,
++    [AW_R40_DEV_DRAMCTL]    = 0x01c63000,
++    [AW_R40_DEV_DRAMPHY]    = 0x01c65000,
      [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
      [AW_R40_DEV_GIC_CPU]    = 0x01c82000,
      [AW_R40_DEV_GIC_HYP]    = 0x01c84000,
-@@ -160,6 +167,10 @@ enum {
-     AW_R40_GIC_SPI_UART1     =  2,
-     AW_R40_GIC_SPI_UART2     =  3,
-     AW_R40_GIC_SPI_UART3     =  4,
-+    AW_R40_GIC_SPI_UART4     = 17,
-+    AW_R40_GIC_SPI_UART5     = 18,
-+    AW_R40_GIC_SPI_UART6     = 19,
-+    AW_R40_GIC_SPI_UART7     = 20,
-     AW_R40_GIC_SPI_TIMER0    = 22,
-     AW_R40_GIC_SPI_TIMER1    = 23,
-     AW_R40_GIC_SPI_MMC0      = 32,
-@@ -387,9 +398,23 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+@@ -129,8 +133,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
+     { "gpu",        0x01c40000, 64 * KiB },
+     { "gmac",       0x01c50000, 64 * KiB },
+     { "hstmr",      0x01c60000, 4 * KiB },
+-    { "dram-com",   0x01c62000, 4 * KiB },
+-    { "dram-ctl",   0x01c63000, 4 * KiB },
+     { "tcon-top",   0x01c70000, 4 * KiB },
+     { "lcd0",       0x01c71000, 4 * KiB },
+     { "lcd1",       0x01c72000, 4 * KiB },
+@@ -273,6 +275,12 @@ static void allwinner_r40_init(Object *obj)
      }
  
-     /* UART0. For future clocktree API: All UARTS are connected to APB2_CLK. */
--    serial_mm_init(get_system_memory(), s->memmap[AW_R40_DEV_UART0], 2,
--                   qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_UART0),
--                   115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-+    for (int i = 0; i < AW_R40_NUM_UARTS; i++) {
-+        static const int uart_irqs[AW_R40_NUM_UARTS] = {
-+            AW_R40_GIC_SPI_UART0,
-+            AW_R40_GIC_SPI_UART1,
-+            AW_R40_GIC_SPI_UART2,
-+            AW_R40_GIC_SPI_UART3,
-+            AW_R40_GIC_SPI_UART4,
-+            AW_R40_GIC_SPI_UART5,
-+            AW_R40_GIC_SPI_UART6,
-+            AW_R40_GIC_SPI_UART7,
-+        };
-+        const hwaddr addr = s->memmap[AW_R40_DEV_UART0 + i];
+     object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
 +
-+        serial_mm_init(get_system_memory(), addr, 2,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), uart_irqs[i]),
-+                       115200, serial_hd(i), DEVICE_NATIVE_ENDIAN);
-+    }
++    object_initialize_child(obj, "dramc", &s->dramc, TYPE_AW_R40_DRAMC);
++    object_property_add_alias(obj, "ram-addr", OBJECT(&s->dramc),
++                             "ram-addr");
++    object_property_add_alias(obj, "ram-size", OBJECT(&s->dramc),
++                              "ram-size");
+ }
  
+ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+@@ -425,6 +433,15 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c0), 0,
+                        qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_TWI0));
+ 
++    /* DRAMC */
++    sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0,
++                    s->memmap[AW_R40_DEV_DRAMCOM]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 1,
++                    s->memmap[AW_R40_DEV_DRAMCTL]);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
++                    s->memmap[AW_R40_DEV_DRAMPHY]);
++
      /* Unimplemented devices */
      for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
+         create_unimplemented_device(r40_unimplemented[i].device_name,
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 9c5360a41b..20a4550c68 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -85,6 +85,13 @@ static void bpim2u_init(MachineState *machine)
+     object_property_set_int(OBJECT(r40), "clk1-freq", 24 * 1000 * 1000,
+                             &error_abort);
+ 
++    /* DRAMC */
++    r40->ram_size = machine->ram_size / MiB;
++    object_property_set_uint(OBJECT(r40), "ram-addr",
++                             r40->memmap[AW_R40_DEV_SDRAM], &error_abort);
++    object_property_set_int(OBJECT(r40), "ram-size",
++                            r40->ram_size, &error_abort);
++
+     /* Mark R40 object realized */
+     qdev_realize(DEVICE(r40), NULL, &error_abort);
+ 
+diff --git a/hw/misc/allwinner-r40-dramc.c b/hw/misc/allwinner-r40-dramc.c
+new file mode 100644
+index 0000000000..b102bcdaba
+--- /dev/null
++++ b/hw/misc/allwinner-r40-dramc.c
+@@ -0,0 +1,513 @@
++/*
++ * Allwinner R40 SDRAM Controller emulation
++ *
++ * CCopyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "qemu/error-report.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "exec/address-spaces.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "qemu/bitops.h"
++#include "hw/misc/allwinner-r40-dramc.h"
++#include "trace.h"
++
++#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
++
++/* DRAMCOM register offsets */
++enum {
++    REG_DRAMCOM_CR    = 0x0000, /* Control Register */
++};
++
++/* DRAMCOMM register flags */
++enum {
++    REG_DRAMCOM_CR_DUAL_RANK = (1 << 0),
++};
++
++/* DRAMCTL register offsets */
++enum {
++    REG_DRAMCTL_PIR   = 0x0000, /* PHY Initialization Register */
++    REG_DRAMCTL_PGSR  = 0x0010, /* PHY General Status Register */
++    REG_DRAMCTL_STATR = 0x0018, /* Status Register */
++    REG_DRAMCTL_PGCR  = 0x0100, /* PHY general configuration registers */
++};
++
++/* DRAMCTL register flags */
++enum {
++    REG_DRAMCTL_PGSR_INITDONE = (1 << 0),
++    REG_DRAMCTL_PGSR_READ_TIMEOUT = (1 << 13),
++    REG_DRAMCTL_PGCR_ENABLE_READ_TIMEOUT = (1 << 25),
++};
++
++enum {
++    REG_DRAMCTL_STATR_ACTIVE  = (1 << 0),
++};
++
++#define DRAM_MAX_ROW_BITS       16
++#define DRAM_MAX_COL_BITS       13  /* 8192 */
++#define DRAM_MAX_BANK            3
++
++static uint64_t dram_autodetect_cells[DRAM_MAX_ROW_BITS]
++                                     [DRAM_MAX_BANK]
++                                     [DRAM_MAX_COL_BITS];
++struct VirtualDDRChip {
++    uint32_t    ram_size;
++    uint8_t     bank_bits;
++    uint8_t     row_bits;
++    uint8_t     col_bits;
++};
++
++/*
++ * Only power of 2 RAM sizes from 256MiB up to 2048MiB are supported,
++ * 2GiB memory is not supported due to dual rank feature.
++ */
++static const struct VirtualDDRChip dummy_ddr_chips[] = {
++    {
++        .ram_size   = 256,
++        .bank_bits  = 3,
++        .row_bits   = 12,
++        .col_bits   = 13,
++    }, {
++        .ram_size   = 512,
++        .bank_bits  = 3,
++        .row_bits   = 13,
++        .col_bits   = 13,
++    }, {
++        .ram_size   = 1024,
++        .bank_bits  = 3,
++        .row_bits   = 14,
++        .col_bits   = 13,
++    }, {
++        0
++    }
++};
++
++static const struct VirtualDDRChip *get_match_ddr(uint32_t ram_size)
++{
++    const struct VirtualDDRChip *ddr;
++
++    for (ddr = &dummy_ddr_chips[0]; ddr->ram_size; ddr++) {
++        if (ddr->ram_size == ram_size) {
++            return ddr;
++        }
++    }
++
++    return NULL;
++}
++
++static uint64_t *address_to_autodetect_cells(AwR40DramCtlState *s,
++                                             const struct VirtualDDRChip *ddr,
++                                             uint32_t offset)
++{
++    int row_index = 0, bank_index = 0, col_index = 0;
++    uint32_t row_addr, bank_addr, col_addr;
++
++    row_addr = extract32(offset, s->set_col_bits + s->set_bank_bits,
++                         s->set_row_bits);
++    bank_addr = extract32(offset, s->set_col_bits, s->set_bank_bits);
++    col_addr = extract32(offset, 0, s->set_col_bits);
++
++    for (int i = 0; i < ddr->row_bits; i++) {
++        if (row_addr & BIT(i)) {
++            row_index = i;
++        }
++    }
++
++    for (int i = 0; i < ddr->bank_bits; i++) {
++        if (bank_addr & BIT(i)) {
++            bank_index = i;
++        }
++    }
++
++    for (int i = 0; i < ddr->col_bits; i++) {
++        if (col_addr & BIT(i)) {
++            col_index = i;
++        }
++    }
++
++    trace_allwinner_r40_dramc_offset_to_cell(offset, row_index, bank_index,
++                                             col_index);
++    return &dram_autodetect_cells[row_index][bank_index][col_index];
++}
++
++static void allwinner_r40_dramc_map_rows(AwR40DramCtlState *s, uint8_t row_bits,
++                                         uint8_t bank_bits, uint8_t col_bits)
++{
++    const struct VirtualDDRChip *ddr = get_match_ddr(s->ram_size);
++    bool enable_detect_cells;
++
++    trace_allwinner_r40_dramc_map_rows(row_bits, bank_bits, col_bits);
++
++    if (!ddr) {
++        return;
++    }
++
++    s->set_row_bits = row_bits;
++    s->set_bank_bits = bank_bits;
++    s->set_col_bits = col_bits;
++
++    enable_detect_cells = ddr->bank_bits != bank_bits
++                        || ddr->row_bits != row_bits
++                        || ddr->col_bits != col_bits;
++
++    if (enable_detect_cells) {
++        trace_allwinner_r40_dramc_detect_cells_enable();
++    } else {
++        trace_allwinner_r40_dramc_detect_cells_disable();
++    }
++
++    memory_region_set_enabled(&s->detect_cells, enable_detect_cells);
++}
++
++static uint64_t allwinner_r40_dramcom_read(void *opaque, hwaddr offset,
++                                           unsigned size)
++{
++    const AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    if (idx >= AW_R40_DRAMCOM_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
++
++    trace_allwinner_r40_dramcom_read(offset, s->dramcom[idx], size);
++    return s->dramcom[idx];
++}
++
++static void allwinner_r40_dramcom_write(void *opaque, hwaddr offset,
++                                        uint64_t val, unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    trace_allwinner_r40_dramcom_write(offset, val, size);
++
++    if (idx >= AW_R40_DRAMCOM_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return;
++    }
++
++    switch (offset) {
++    case REG_DRAMCOM_CR:   /* Control Register */
++        if (!(val & REG_DRAMCOM_CR_DUAL_RANK)) {
++            allwinner_r40_dramc_map_rows(s, ((val >> 4) & 0xf) + 1,
++                                         ((val >> 2) & 0x1) + 2,
++                                         (((val >> 8) & 0xf) + 3));
++        }
++        break;
++    };
++
++    s->dramcom[idx] = (uint32_t) val;
++}
++
++static uint64_t allwinner_r40_dramctl_read(void *opaque, hwaddr offset,
++                                           unsigned size)
++{
++    const AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    if (idx >= AW_R40_DRAMCTL_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
++
++    trace_allwinner_r40_dramctl_read(offset, s->dramctl[idx], size);
++    return s->dramctl[idx];
++}
++
++static void allwinner_r40_dramctl_write(void *opaque, hwaddr offset,
++                                        uint64_t val, unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    trace_allwinner_r40_dramctl_write(offset, val, size);
++
++    if (idx >= AW_R40_DRAMCTL_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return;
++    }
++
++    switch (offset) {
++    case REG_DRAMCTL_PIR:    /* PHY Initialization Register */
++        s->dramctl[REG_INDEX(REG_DRAMCTL_PGSR)] |= REG_DRAMCTL_PGSR_INITDONE;
++        s->dramctl[REG_INDEX(REG_DRAMCTL_STATR)] |= REG_DRAMCTL_STATR_ACTIVE;
++        break;
++    }
++
++    s->dramctl[idx] = (uint32_t) val;
++}
++
++static uint64_t allwinner_r40_dramphy_read(void *opaque, hwaddr offset,
++                                           unsigned size)
++{
++    const AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    if (idx >= AW_R40_DRAMPHY_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
++    }
++
++    trace_allwinner_r40_dramphy_read(offset, s->dramphy[idx], size);
++    return s->dramphy[idx];
++}
++
++static void allwinner_r40_dramphy_write(void *opaque, hwaddr offset,
++                                        uint64_t val, unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const uint32_t idx = REG_INDEX(offset);
++
++    trace_allwinner_r40_dramphy_write(offset, val, size);
++
++    if (idx >= AW_R40_DRAMPHY_REGS_NUM) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return;
++    }
++
++    s->dramphy[idx] = (uint32_t) val;
++}
++
++static const MemoryRegionOps allwinner_r40_dramcom_ops = {
++    .read = allwinner_r40_dramcom_read,
++    .write = allwinner_r40_dramcom_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static const MemoryRegionOps allwinner_r40_dramctl_ops = {
++    .read = allwinner_r40_dramctl_read,
++    .write = allwinner_r40_dramctl_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static const MemoryRegionOps allwinner_r40_dramphy_ops = {
++    .read = allwinner_r40_dramphy_read,
++    .write = allwinner_r40_dramphy_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static uint64_t allwinner_r40_detect_read(void *opaque, hwaddr offset,
++                                          unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const struct VirtualDDRChip *ddr = get_match_ddr(s->ram_size);
++    uint64_t data = 0;
++
++    if (ddr) {
++        data = *address_to_autodetect_cells(s, ddr, (uint32_t)offset);
++    }
++
++    trace_allwinner_r40_dramc_detect_cell_read(offset, data);
++    return data;
++}
++
++static void allwinner_r40_detect_write(void *opaque, hwaddr offset,
++                                       uint64_t data, unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    const struct VirtualDDRChip *ddr = get_match_ddr(s->ram_size);
++
++    if (ddr) {
++        uint64_t *cell = address_to_autodetect_cells(s, ddr, (uint32_t)offset);
++        trace_allwinner_r40_dramc_detect_cell_write(offset, data);
++        *cell = data;
++    }
++}
++
++static const MemoryRegionOps allwinner_r40_detect_ops = {
++    .read = allwinner_r40_detect_read,
++    .write = allwinner_r40_detect_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++/*
++ * mctl_r40_detect_rank_count in u-boot will write the high 1G of DDR
++ * to detect wether the board support dual_rank or not. Create a virtual memory
++ * if the board's ram_size less or equal than 1G, and set read time out flag of
++ * REG_DRAMCTL_PGSR when the user touch this high dram.
++ */
++static uint64_t allwinner_r40_dualrank_detect_read(void *opaque, hwaddr offset,
++                                                   unsigned size)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(opaque);
++    uint32_t reg;
++
++    reg = s->dramctl[REG_INDEX(REG_DRAMCTL_PGCR)];
++    if (reg & REG_DRAMCTL_PGCR_ENABLE_READ_TIMEOUT) { /* Enable read time out */
++        /*
++         * this driver only support one rank, mark READ_TIMEOUT when try
++         * read the second rank.
++         */
++        s->dramctl[REG_INDEX(REG_DRAMCTL_PGSR)]
++                                |= REG_DRAMCTL_PGSR_READ_TIMEOUT;
++    }
++
++    return 0;
++}
++
++static const MemoryRegionOps allwinner_r40_dualrank_detect_ops = {
++    .read = allwinner_r40_dualrank_detect_read,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static void allwinner_r40_dramc_reset(DeviceState *dev)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(dev);
++
++    /* Set default values for registers */
++    memset(&s->dramcom, 0, sizeof(s->dramcom));
++    memset(&s->dramctl, 0, sizeof(s->dramctl));
++    memset(&s->dramphy, 0, sizeof(s->dramphy));
++}
++
++static void allwinner_r40_dramc_realize(DeviceState *dev, Error **errp)
++{
++    AwR40DramCtlState *s = AW_R40_DRAMC(dev);
++
++    if (!get_match_ddr(s->ram_size)) {
++        error_report("%s: ram-size %u MiB is not supported",
++                        __func__, s->ram_size);
++        exit(1);
++    }
++
++    /* detect_cells */
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(s), 3, s->ram_addr, 10);
++    memory_region_set_enabled(&s->detect_cells, false);
++
++    if (s->ram_size < 2048) {
++        /* the high memory used for dualrank detect, index 4 */
++        memory_region_init_io(&s->dram_high, OBJECT(s),
++                              &allwinner_r40_dualrank_detect_ops, s,
++                              "DRAMHIGH", KiB);
++        sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->dram_high);
++
++        sysbus_mmio_map(SYS_BUS_DEVICE(s), 4, s->ram_addr + GiB);
++    }
++}
++
++static void allwinner_r40_dramc_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwR40DramCtlState *s = AW_R40_DRAMC(obj);
++
++    /* DRAMCOM registers, index 0 */
++    memory_region_init_io(&s->dramcom_iomem, OBJECT(s),
++                          &allwinner_r40_dramcom_ops, s,
++                          "DRAMCOM", 4 * KiB);
++    sysbus_init_mmio(sbd, &s->dramcom_iomem);
++
++    /* DRAMCTL registers, index 1 */
++    memory_region_init_io(&s->dramctl_iomem, OBJECT(s),
++                          &allwinner_r40_dramctl_ops, s,
++                          "DRAMCTL", 4 * KiB);
++    sysbus_init_mmio(sbd, &s->dramctl_iomem);
++
++    /* DRAMPHY registers. index 2 */
++    memory_region_init_io(&s->dramphy_iomem, OBJECT(s),
++                          &allwinner_r40_dramphy_ops, s,
++                          "DRAMPHY", 4 * KiB);
++    sysbus_init_mmio(sbd, &s->dramphy_iomem);
++
++    /* R40 support max 2GiB dram memory, index 3 */
++    memory_region_init_io(&s->detect_cells, OBJECT(s),
++                          &allwinner_r40_detect_ops, s,
++                          "DRAMCELLS", 2 * GiB);
++    sysbus_init_mmio(sbd, &s->detect_cells);
++}
++
++static Property allwinner_r40_dramc_properties[] = {
++    DEFINE_PROP_UINT64("ram-addr", AwR40DramCtlState, ram_addr, 0x0),
++    DEFINE_PROP_UINT32("ram-size", AwR40DramCtlState, ram_size, 256), /* MiB */
++    DEFINE_PROP_END_OF_LIST()
++};
++
++static const VMStateDescription allwinner_r40_dramc_vmstate = {
++    .name = "allwinner-r40-dramc",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(dramcom, AwR40DramCtlState,
++                             AW_R40_DRAMCOM_REGS_NUM),
++        VMSTATE_UINT32_ARRAY(dramctl, AwR40DramCtlState,
++                             AW_R40_DRAMCTL_REGS_NUM),
++        VMSTATE_UINT32_ARRAY(dramphy, AwR40DramCtlState,
++                             AW_R40_DRAMPHY_REGS_NUM),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void allwinner_r40_dramc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = allwinner_r40_dramc_reset;
++    dc->vmsd = &allwinner_r40_dramc_vmstate;
++    dc->realize = allwinner_r40_dramc_realize;
++    device_class_set_props(dc, allwinner_r40_dramc_properties);
++}
++
++static const TypeInfo allwinner_r40_dramc_info = {
++    .name          = TYPE_AW_R40_DRAMC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_r40_dramc_init,
++    .instance_size = sizeof(AwR40DramCtlState),
++    .class_init    = allwinner_r40_dramc_class_init,
++};
++
++static void allwinner_r40_dramc_register(void)
++{
++    type_register_static(&allwinner_r40_dramc_info);
++}
++
++type_init(allwinner_r40_dramc_register)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 1db0343333..b04d43e05a 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -45,6 +45,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-dramc.c'))
+ softmmu_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 24cdec83fe..8b68f07765 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -15,6 +15,20 @@ allwinner_h3_dramctl_write(uint64_t offset, uint64_t data, unsigned size) "Write
+ allwinner_h3_dramphy_read(uint64_t offset, uint64_t data, unsigned size) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+ allwinner_h3_dramphy_write(uint64_t offset, uint64_t data, unsigned size) "write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+ 
++# allwinner-r40-dramc.c
++allwinner_r40_dramc_detect_cells_disable(void) "Disable detect cells"
++allwinner_r40_dramc_detect_cells_enable(void) "Enable detect cells"
++allwinner_r40_dramc_map_rows(uint8_t row_bits, uint8_t bank_bits, uint8_t col_bits) "DRAM layout: row_bits %d, bank_bits %d, col_bits %d"
++allwinner_r40_dramc_offset_to_cell(uint64_t offset, int row, int bank, int col) "offset 0x%" PRIx64 " row %d bank %d col %d"
++allwinner_r40_dramc_detect_cell_write(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64 ""
++allwinner_r40_dramc_detect_cell_read(uint64_t offset, uint64_t data) "offset 0x%" PRIx64 " data 0x%" PRIx64 ""
++allwinner_r40_dramcom_read(uint64_t offset, uint64_t data, unsigned size) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++allwinner_r40_dramcom_write(uint64_t offset, uint64_t data, unsigned size) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++allwinner_r40_dramctl_read(uint64_t offset, uint64_t data, unsigned size) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++allwinner_r40_dramctl_write(uint64_t offset, uint64_t data, unsigned size) "Write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++allwinner_r40_dramphy_read(uint64_t offset, uint64_t data, unsigned size) "Read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++allwinner_r40_dramphy_write(uint64_t offset, uint64_t data, unsigned size) "write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
++
+ # allwinner-sid.c
+ allwinner_sid_read(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
+ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%" PRIx64 " data 0x%" PRIx64 " size %" PRIu32
 diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 3be9dc962b..959b5dc4e0 100644
+index 95366f4eee..8243e8903b 100644
 --- a/include/hw/arm/allwinner-r40.h
 +++ b/include/hw/arm/allwinner-r40.h
-@@ -41,6 +41,13 @@ enum {
-     AW_R40_DEV_CCU,
-     AW_R40_DEV_PIT,
-     AW_R40_DEV_UART0,
-+    AW_R40_DEV_UART1,
-+    AW_R40_DEV_UART2,
-+    AW_R40_DEV_UART3,
-+    AW_R40_DEV_UART4,
-+    AW_R40_DEV_UART5,
-+    AW_R40_DEV_UART6,
-+    AW_R40_DEV_UART7,
-     AW_R40_DEV_GIC_DIST,
+@@ -26,6 +26,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/sd/allwinner-sdhost.h"
+ #include "hw/misc/allwinner-r40-ccu.h"
++#include "hw/misc/allwinner-r40-dramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
+ #include "target/arm/cpu.h"
+ #include "sysemu/block-backend.h"
+@@ -54,7 +55,10 @@ enum {
      AW_R40_DEV_GIC_CPU,
      AW_R40_DEV_GIC_HYP,
-@@ -70,6 +77,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AwR40State, AW_R40)
-  * which are currently emulated by the R40 SoC code.
-  */
- #define AW_R40_NUM_MMCS         4
-+#define AW_R40_NUM_UARTS        8
+     AW_R40_DEV_GIC_VCPU,
+-    AW_R40_DEV_SDRAM
++    AW_R40_DEV_SDRAM,
++    AW_R40_DEV_DRAMCOM,
++    AW_R40_DEV_DRAMCTL,
++    AW_R40_DEV_DRAMPHY,
+ };
  
- struct AwR40State {
-     /*< private >*/
+ #define AW_R40_NUM_CPUS      (4)
+@@ -86,11 +90,18 @@ struct AwR40State {
+     DeviceState parent_obj;
+     /*< public >*/
+ 
++    /** Physical base address for start of RAM */
++    hwaddr ram_addr;
++
++    /** Total RAM size in megabytes */
++    uint32_t ram_size;
++
+     ARMCPU cpus[AW_R40_NUM_CPUS];
+     const hwaddr *memmap;
+     AwA10PITState timer;
+     AwSdHostState mmc[AW_R40_NUM_MMCS];
+     AwR40ClockCtlState ccu;
++    AwR40DramCtlState dramc;
+     AWI2CState i2c0;
+     GICState gic;
+     MemoryRegion sram_a1;
+diff --git a/include/hw/misc/allwinner-r40-dramc.h b/include/hw/misc/allwinner-r40-dramc.h
+new file mode 100644
+index 0000000000..6a1a3a7893
+--- /dev/null
++++ b/include/hw/misc/allwinner-r40-dramc.h
+@@ -0,0 +1,108 @@
++/*
++ * Allwinner R40 SDRAM Controller emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_MISC_ALLWINNER_R40_DRAMC_H
++#define HW_MISC_ALLWINNER_R40_DRAMC_H
++
++#include "qom/object.h"
++#include "hw/sysbus.h"
++#include "exec/hwaddr.h"
++
++/**
++ * Constants
++ * @{
++ */
++
++/** Highest register address used by DRAMCOM module */
++#define AW_R40_DRAMCOM_REGS_MAXADDR  (0x804)
++
++/** Total number of known DRAMCOM registers */
++#define AW_R40_DRAMCOM_REGS_NUM      (AW_R40_DRAMCOM_REGS_MAXADDR / \
++                                     sizeof(uint32_t))
++
++/** Highest register address used by DRAMCTL module */
++#define AW_R40_DRAMCTL_REGS_MAXADDR  (0x88c)
++
++/** Total number of known DRAMCTL registers */
++#define AW_R40_DRAMCTL_REGS_NUM      (AW_R40_DRAMCTL_REGS_MAXADDR / \
++                                     sizeof(uint32_t))
++
++/** Highest register address used by DRAMPHY module */
++#define AW_R40_DRAMPHY_REGS_MAXADDR  (0x4)
++
++/** Total number of known DRAMPHY registers */
++#define AW_R40_DRAMPHY_REGS_NUM      (AW_R40_DRAMPHY_REGS_MAXADDR / \
++                                     sizeof(uint32_t))
++
++/** @} */
++
++/**
++ * Object model
++ * @{
++ */
++
++#define TYPE_AW_R40_DRAMC "allwinner-r40-dramc"
++OBJECT_DECLARE_SIMPLE_TYPE(AwR40DramCtlState, AW_R40_DRAMC)
++
++/** @} */
++
++/**
++ * Allwinner R40 SDRAM Controller object instance state.
++ */
++struct AwR40DramCtlState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    /** Physical base address for start of RAM */
++    hwaddr ram_addr;
++
++    /** Total RAM size in megabytes */
++    uint32_t ram_size;
++
++    uint8_t set_row_bits;
++    uint8_t set_bank_bits;
++    uint8_t set_col_bits;
++
++    /**
++     * @name Memory Regions
++     * @{
++     */
++    MemoryRegion dramcom_iomem;    /**< DRAMCOM module I/O registers */
++    MemoryRegion dramctl_iomem;    /**< DRAMCTL module I/O registers */
++    MemoryRegion dramphy_iomem;    /**< DRAMPHY module I/O registers */
++    MemoryRegion dram_high;        /**< The high 1G dram for dualrank detect */
++    MemoryRegion detect_cells;     /**< DRAM memory cells for auto detect */
++
++    /** @} */
++
++    /**
++     * @name Hardware Registers
++     * @{
++     */
++
++    uint32_t dramcom[AW_R40_DRAMCOM_REGS_NUM]; /**< DRAMCOM registers */
++    uint32_t dramctl[AW_R40_DRAMCTL_REGS_NUM]; /**< DRAMCTL registers */
++    uint32_t dramphy[AW_R40_DRAMPHY_REGS_NUM] ;/**< DRAMPHY registers */
++
++    /** @} */
++
++};
++
++#endif /* HW_MISC_ALLWINNER_R40_DRAMC_H */
 -- 
 2.25.1
 

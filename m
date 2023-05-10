@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3299827ejq;
-        Wed, 10 May 2023 03:31:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6L/brbV4UOztc5EuAveuSPwHZEjZNiXiHN5C2+IPAR9liGrOi6iu58zL84R4NC04pOcoFu
-X-Received: by 2002:a05:6214:5282:b0:61b:6906:f275 with SMTP id kj2-20020a056214528200b0061b6906f275mr25301977qvb.7.1683714689599;
-        Wed, 10 May 2023 03:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683714689; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3300035ejq;
+        Wed, 10 May 2023 03:31:48 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Z76dfjXEMb/83ed8SwEXtWINOqpAyvoTHCsA3BNB8GXf4BWnlW00DgFgKqqRsk4bbMrYi
+X-Received: by 2002:ac8:7d84:0:b0:3f1:a6d:d99c with SMTP id c4-20020ac87d84000000b003f10a6dd99cmr23580425qtd.34.1683714708317;
+        Wed, 10 May 2023 03:31:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683714708; cv=none;
         d=google.com; s=arc-20160816;
-        b=ajm1M/4L/U5CZD6rzqYxgTk022IHW/g8JgTKrDehOuVfE3jWrJoiS3mUnVsmJJ8X/4
-         XSNRQsMQ/gvxmO32VNa2kNeufyE6/Ppx32ROtpycmmKAly7IPrU9o2Vtfy/LHzkPIxhI
-         dsd01h3Pz2Ur031GS3gAokWWj1kH1TFPcrh2byy2JDe05JrGn3KnXZHfbPT6uJQHG29I
-         EelPLO3spvpYUKLC6Ut0W+vEhDUGb09bumxTwD+94pNux9e+fve5uEuou9kxVzyAnbPo
-         B9D/+NOw/kyGw11Ar81zk731WeAhr/WuaePqlAMZT420jsNlHvw3dOwPjKbNE6GUoT6B
-         m6Sw==
+        b=W2Y/xu6S+NoW6m1CBU8cDt0e7oaBEczKEszMHV1weK9d+YbiskW8zWPtYaJC5eCouC
+         zEc/NT/Q6IWfA+E9xRn8jhmFSbCVa+xUqiya/jDmAIuMXp5Rmf1A88DnZn9fn9lNX7pY
+         H0BtYWr63r66IGlSZfWjQzCNZN5pWQQBMl7G5Bib55HhZGq7FU/Udzm+JjQbzcee5m94
+         cs+A5JFgIx+pBR7n4psqHODmy2l/5bYXzPLKD4XWtYdQDWKHyN7MRso/hAHkCXEC7qsU
+         zWGNQ1SdJXYglZJFM1ssKtzeZ4E7U5dChj17qnElsERzbIFPvdd45JRz+dbVIQH+Bi/p
+         Tueg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=q7swaI098LxAcKrhBldMUS51FKxFQK+gihzOI2ANEso=;
-        b=N7c/MD2/ukACbMqc0Xgih9SaiqG08TnMVRZ5xglFpOZn0Z5+grmxGOXT4YwbncqqkH
-         7VJxmvYGT59PtjOhb/co/sr7iJXBUfYV4PGethNkCIcmU08u2Hx/fO+UN3/j/b6Ady8r
-         Br5Cb+Nwvul6uU3QfXkpdEUD6wkAttVrAHx7Zqtgdak1sDJ4gHD+mRyEZG4gbqN/1hnj
-         K6u+f4NNwoqI3vBfVd9JEc6rXshsfMQpxOGX1wwwDhk4mx0lvIc4lgpj1+pQzegpsmPf
-         kw8qNFV/0Ny5xa5D9eGUpzDKb3FSBzR/gplLAhpCCk13s6/W2qOPhIinGY65lJqtIASL
-         ZT3g==
+        bh=dkm1ZfRGily/HrF9JmvFFoXIqsM0TvV8o8TCTYDbhK4=;
+        b=BYB89ZFq1RGWUK78BVoA+OMEc4WoXZi5ORPHNK8HK2MwuvPv8zbCJbLJxMnZT4dzzB
+         ksXI83nMjZ/vSH6O9N+ZXtt69NhHrWhNh/cqqTu2qwo0TWpthUChUYlRwiDDWaMwjvBP
+         esxuGy5C7gVKKRdxDgKuWrYq1FSHGOWtIamaUvMIeusx5fv93tKsYwka6ye9HqHbK94F
+         +90/ByCT7c1ojHBWQc0ipKb/AyEUeLPsTIaUPkwXBAQ5qgaO8eN/LwRikRaNnve5wI7O
+         DkL6SAUl1LuK95I9tj76jLRmmS0DAwmiBYCkVPSCIQuZIEK/vsirBll6SSJRXLsNuh8w
+         jPug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=oy7EdHny;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=mnolXgZq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke21-20020a056214301500b005ef4254d70csi1905992qvb.501.2023.05.10.03.31.29
+        by mx.google.com with ESMTPS id u8-20020a05622a198800b003ef411ba1cfsi1520509qtc.437.2023.05.10.03.31.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 May 2023 03:31:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 May 2023 03:31:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=oy7EdHny;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@163.com header.s=s110527 header.b=mnolXgZq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pwh5e-0003Z8-KL; Wed, 10 May 2023 06:30:34 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pwh5m-0003dm-EM; Wed, 10 May 2023 06:30:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pwh5c-0003WX-5G; Wed, 10 May 2023 06:30:32 -0400
+ id 1pwh5k-0003cZ-N1; Wed, 10 May 2023 06:30:40 -0400
 Received: from m12.mail.163.com ([220.181.12.214])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pwh5Z-000871-Sp; Wed, 10 May 2023 06:30:31 -0400
+ id 1pwh5e-00087Z-Ac; Wed, 10 May 2023 06:30:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=q7swa
- I098LxAcKrhBldMUS51FKxFQK+gihzOI2ANEso=; b=oy7EdHnyYtD2kbFcEJJfT
- 0jJzsINjR07LiZOiK1tV6tvYrvGMdvHV0459D0G3Alc6m3D3mWLTFjxSqRixw7nU
- vX+dk4RPsyk7883vhK5X7gz7t3UHzNk5yqpuC+2TpCrtksnCA2z6u85Ebathy0Y7
- 1sqTdtU3jRcK/klEaLxafE=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=dkm1Z
+ fRGily/HrF9JmvFFoXIqsM0TvV8o8TCTYDbhK4=; b=mnolXgZqJl1mTSGl7oKaI
+ aza4tgCkWQV8wdGRWq9RIriWtG6FbgqCoTN8kcRsa4GbP6+zU1Y+OwAswK+VdTzj
+ bDv5W4tUK6QNZmmrzcQ6QoYBsuyiwNtkQt1l8YtjpjWSlI5mbSeer+jYVBTMNAqQ
+ KAMo9iFP9+Nsk56+8zgLdk=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
  by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id
- _____wBnkgAvcltk0WrrBQ--.23956S10; 
- Wed, 10 May 2023 18:30:21 +0800 (CST)
+ _____wBnkgAvcltk0WrrBQ--.23956S12; 
+ Wed, 10 May 2023 18:30:24 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -69,21 +69,22 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v4 08/11] hw: arm: allwinner-r40: Add emac and gmac support
-Date: Wed, 10 May 2023 18:30:01 +0800
-Message-Id: <20230510103004.30015-9-qianfanguijin@163.com>
+Subject: [PATCH v4 10/11] tests: avocado: boot_linux_console: Add test case
+ for bpim2u
+Date: Wed, 10 May 2023 18:30:03 +0800
+Message-Id: <20230510103004.30015-11-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230510103004.30015-1-qianfanguijin@163.com>
 References: <20230510103004.30015-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S10
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Jr4kury8GFWkXw4UXr17GFg_yoW7Kw43pF
- 43Gr98KrWFg3WrAr4kKws3JFyftw18CrnrtF1SkF4xJF1DWr1kWr42ya17uFy5Krs7Ja13
- WrZagFWSga17t3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEgAwwUUUUU=
+X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S12
+X-Coremail-Antispam: 1Uf129KBjvJXoW3JrW3uFWxJryxtFWrJF45GFg_yoW3Cr4fpr
+ WDJr15Gr18JFs8Jr4IkrWUu34UJw4vkay7JasrGrZ3WanFk3yvgFyakr109rZ8Xa9av3sx
+ Cayqya1xWryUJFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0p_a0P8UUUUU=
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzh9r7WI0ZI071AAAsH
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiGgRr7VaEFME3VgAAs+
 Received-SPF: pass client-ip=220.181.12.214;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
@@ -94,195 +95,217 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KRcwSXWbjasf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QDMmu+pY/pJ9
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-R40 has two ethernet controllers named as emac and gmac. The emac is
-compatibled with A10, and the GMAC is compatibled with H3.
+Add test case for booting from initrd and sd card.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/allwinner-r40.c         | 50 ++++++++++++++++++++++++++++++++--
- hw/arm/bananapi_m2u.c          |  3 ++
- include/hw/arm/allwinner-r40.h |  6 ++++
- 3 files changed, 57 insertions(+), 2 deletions(-)
+ tests/avocado/boot_linux_console.py | 176 ++++++++++++++++++++++++++++
+ 1 file changed, 176 insertions(+)
 
-diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
-index b148c56449..c018ad231a 100644
---- a/hw/arm/allwinner-r40.c
-+++ b/hw/arm/allwinner-r40.c
-@@ -39,6 +39,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_SRAM_A2]    = 0x00004000,
-     [AW_R40_DEV_SRAM_A3]    = 0x00008000,
-     [AW_R40_DEV_SRAM_A4]    = 0x0000b400,
-+    [AW_R40_DEV_EMAC]       = 0x01c0b000,
-     [AW_R40_DEV_MMC0]       = 0x01c0f000,
-     [AW_R40_DEV_MMC1]       = 0x01c10000,
-     [AW_R40_DEV_MMC2]       = 0x01c11000,
-@@ -54,6 +55,7 @@ const hwaddr allwinner_r40_memmap[] = {
-     [AW_R40_DEV_UART6]      = 0x01c29800,
-     [AW_R40_DEV_UART7]      = 0x01c29c00,
-     [AW_R40_DEV_TWI0]       = 0x01c2ac00,
-+    [AW_R40_DEV_GMAC]       = 0x01c50000,
-     [AW_R40_DEV_DRAMCOM]    = 0x01c62000,
-     [AW_R40_DEV_DRAMCTL]    = 0x01c63000,
-     [AW_R40_DEV_DRAMPHY]    = 0x01c65000,
-@@ -82,7 +84,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "spi1",       0x01c06000, 4 * KiB },
-     { "cs0",        0x01c09000, 4 * KiB },
-     { "keymem",     0x01c0a000, 4 * KiB },
--    { "emac",       0x01c0b000, 4 * KiB },
-     { "usb0-otg",   0x01c13000, 4 * KiB },
-     { "usb0-host",  0x01c14000, 4 * KiB },
-     { "crypto",     0x01c15000, 4 * KiB },
-@@ -131,7 +132,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
-     { "tvd2",       0x01c33000, 4 * KiB },
-     { "tvd3",       0x01c34000, 4 * KiB },
-     { "gpu",        0x01c40000, 64 * KiB },
--    { "gmac",       0x01c50000, 64 * KiB },
-     { "hstmr",      0x01c60000, 4 * KiB },
-     { "tcon-top",   0x01c70000, 4 * KiB },
-     { "lcd0",       0x01c71000, 4 * KiB },
-@@ -180,6 +180,8 @@ enum {
-     AW_R40_GIC_SPI_MMC1      = 33,
-     AW_R40_GIC_SPI_MMC2      = 34,
-     AW_R40_GIC_SPI_MMC3      = 35,
-+    AW_R40_GIC_SPI_EMAC      = 55,
-+    AW_R40_GIC_SPI_GMAC      = 85,
- };
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index c0675809e6..6ed660611f 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -769,6 +769,182 @@ def test_arm_quanta_gsj_initrd(self):
+         self.wait_for_console_pattern(
+                 'Give root password for system maintenance')
  
- /* Allwinner R40 general constants */
-@@ -276,6 +278,11 @@ static void allwinner_r40_init(Object *obj)
- 
-     object_initialize_child(obj, "twi0", &s->i2c0, TYPE_AW_I2C_SUN6I);
- 
-+    object_initialize_child(obj, "emac", &s->emac, TYPE_AW_EMAC);
-+    object_initialize_child(obj, "gmac", &s->gmac, TYPE_AW_SUN8I_EMAC);
-+    object_property_add_alias(obj, "gmac-phy-addr",
-+                              OBJECT(&s->gmac), "phy-addr");
++    def test_arm_bpim2u(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:bpim2u
++        :avocado: tags=accel:tcg
++        """
++        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
++                   'linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
++                    'sun8i-r40-bananapi-m2-ultra.dtb')
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
 +
-     object_initialize_child(obj, "dramc", &s->dramc, TYPE_AW_R40_DRAMC);
-     object_property_add_alias(obj, "ram-addr", OBJECT(&s->dramc),
-                              "ram-addr");
-@@ -285,6 +292,7 @@ static void allwinner_r40_init(Object *obj)
- 
- static void allwinner_r40_realize(DeviceState *dev, Error **errp)
- {
-+    const char *r40_nic_models[] = { "gmac", "emac", NULL };
-     AwR40State *s = AW_R40(dev);
-     unsigned i;
- 
-@@ -442,6 +450,44 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
-                     s->memmap[AW_R40_DEV_DRAMPHY]);
- 
-+    /* nic support gmac and emac */
-+    for (int i = 0; i < ARRAY_SIZE(r40_nic_models) - 1; i++) {
-+        NICInfo *nic = &nd_table[i];
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200n8 '
++                               'earlycon=uart,mmio32,0x1c28000')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-append', kernel_command_line)
++        self.vm.launch()
++        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        self.wait_for_console_pattern(console_pattern)
 +
-+        if (!nic->used) {
-+            continue;
-+        }
-+        if (qemu_show_nic_models(nic->model, r40_nic_models)) {
-+            exit(0);
-+        }
++    def test_arm_bpim2u_initrd(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=accel:tcg
++        :avocado: tags=machine:bpim2u
++        """
++        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
++                   'linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
++                    'sun8i-r40-bananapi-m2-ultra.dtb')
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
++                      'arm/rootfs-armv7a.cpio.gz')
++        initrd_hash = '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.gzip_uncompress(initrd_path_gz, initrd_path)
 +
-+        switch (qemu_find_nic_model(nic, r40_nic_models, r40_nic_models[0])) {
-+        case 0: /* gmac */
-+            qdev_set_nic_properties(DEVICE(&s->gmac), nic);
-+            break;
-+        case 1: /* emac */
-+            qdev_set_nic_properties(DEVICE(&s->emac), nic);
-+            break;
-+        default:
-+            exit(1);
-+            break;
-+        }
-+    }
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200 '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('Boot successful.')
 +
-+    /* GMAC */
-+    object_property_set_link(OBJECT(&s->gmac), "dma-memory",
-+                                     OBJECT(get_system_memory()), &error_fatal);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->gmac), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gmac), 0, s->memmap[AW_R40_DEV_GMAC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gmac), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_GMAC));
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun8i Family')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'system-control@1c00000')
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++        # Wait for VM to shut down gracefully
++        self.vm.wait()
 +
-+    /* EMAC */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_R40_DEV_EMAC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->gic), AW_R40_GIC_SPI_EMAC));
++    def test_arm_bpim2u_gmac(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=accel:tcg
++        :avocado: tags=machine:bpim2u
++        :avocado: tags=device:sd
++        """
++        self.require_netdev('user')
 +
-     /* Unimplemented devices */
-     for (i = 0; i < ARRAY_SIZE(r40_unimplemented); i++) {
-         create_unimplemented_device(r40_unimplemented[i].device_name,
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 20a4550c68..74121d8966 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -92,6 +92,9 @@ static void bpim2u_init(MachineState *machine)
-     object_property_set_int(OBJECT(r40), "ram-size",
-                             r40->ram_size, &error_abort);
- 
-+    /* GMAC PHY */
-+    object_property_set_uint(OBJECT(r40), "gmac-phy-addr", 1, &error_abort);
++        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
++                   'linux-image-current-sunxi_21.02.2_armhf.deb')
++        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-5.10.16-sunxi')
++        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
++                    'sun8i-r40-bananapi-m2-ultra.dtb')
++        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
++                      'buildroot-baseline/20221116.0/armel/rootfs.ext2.xz')
++        rootfs_hash = 'fae32f337c7b87547b10f42599acf109da8b6d9a'
++        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
++        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
++        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
++        image_pow2ceil_expand(rootfs_path)
 +
-     /* Mark R40 object realized */
-     qdev_realize(DEVICE(r40), NULL, &error_abort);
- 
-diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
-index 8243e8903b..5f2d08489e 100644
---- a/include/hw/arm/allwinner-r40.h
-+++ b/include/hw/arm/allwinner-r40.h
-@@ -28,6 +28,8 @@
- #include "hw/misc/allwinner-r40-ccu.h"
- #include "hw/misc/allwinner-r40-dramc.h"
- #include "hw/i2c/allwinner-i2c.h"
-+#include "hw/net/allwinner_emac.h"
-+#include "hw/net/allwinner-sun8i-emac.h"
- #include "target/arm/cpu.h"
- #include "sysemu/block-backend.h"
- 
-@@ -36,6 +38,7 @@ enum {
-     AW_R40_DEV_SRAM_A2,
-     AW_R40_DEV_SRAM_A3,
-     AW_R40_DEV_SRAM_A4,
-+    AW_R40_DEV_EMAC,
-     AW_R40_DEV_MMC0,
-     AW_R40_DEV_MMC1,
-     AW_R40_DEV_MMC2,
-@@ -51,6 +54,7 @@ enum {
-     AW_R40_DEV_UART6,
-     AW_R40_DEV_UART7,
-     AW_R40_DEV_TWI0,
-+    AW_R40_DEV_GMAC,
-     AW_R40_DEV_GIC_DIST,
-     AW_R40_DEV_GIC_CPU,
-     AW_R40_DEV_GIC_HYP,
-@@ -103,6 +107,8 @@ struct AwR40State {
-     AwR40ClockCtlState ccu;
-     AwR40DramCtlState dramc;
-     AWI2CState i2c0;
-+    AwEmacState emac;
-+    AwSun8iEmacState gmac;
-     GICState gic;
-     MemoryRegion sram_a1;
-     MemoryRegion sram_a2;
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyS0,115200 '
++                               'root=/dev/mmcblk0 rootwait rw '
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
++                         '-net', 'nic,model=gmac,netdev=host_gmac',
++                         '-netdev', 'user,id=host_gmac',
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++        shell_ready = "/bin/sh: can't access tty; job control turned off"
++        self.wait_for_console_pattern(shell_ready)
++
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun8i Family')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
++                                                'mmcblk0')
++        exec_command_and_wait_for_pattern(self, 'ifconfig eth0 up',
++                                                 'eth0: Link is Up')
++        exec_command_and_wait_for_pattern(self, 'udhcpc eth0',
++            'udhcpc: lease of 10.0.2.15 obtained')
++        exec_command_and_wait_for_pattern(self, 'ping -c 3 10.0.2.2',
++            '3 packets transmitted, 3 packets received, 0% packet loss')
++        exec_command_and_wait_for_pattern(self, 'reboot',
++                                                'reboot: Restarting system')
++        # Wait for VM to shut down gracefully
++        self.vm.wait()
++
++    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
++    def test_arm_bpim2u_openwrt_22_03_3(self):
++        """
++        :avocado: tags=arch:arm
++        :avocado: tags=machine:bpim2u
++        :avocado: tags=device:sd
++        """
++
++        # This test download a 8.9 MiB compressed image and expand it
++        # to 127 MiB.
++        image_url = ('https://downloads.openwrt.org/releases/22.03.3/targets/'
++                     'sunxi/cortexa7/openwrt-22.03.3-sunxi-cortexa7-'
++                     'sinovoip_bananapi-m2-ultra-ext4-sdcard.img.gz')
++        image_hash = ('5b41b4e11423e562c6011640f9a7cd3b'
++                      'dd0a3d42b83430f7caa70a432e6cd82c')
++        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
++                                         algorithm='sha256')
++        image_path = archive.extract(image_path_gz, self.workdir)
++        image_pow2ceil_expand(image_path)
++
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image_path + ',if=sd,format=raw',
++                         '-nic', 'user',
++                         '-no-reboot')
++        self.vm.launch()
++
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'usbcore.nousb '
++                               'noreboot')
++
++        self.wait_for_console_pattern('U-Boot SPL')
++
++        interrupt_interactive_console_until_pattern(
++                self, 'Hit any key to stop autoboot:', '=>')
++        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
++                                                kernel_command_line + "'", '=>')
++        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel ...');
++
++        self.wait_for_console_pattern(
++            'Please press Enter to activate this console.')
++
++        exec_command_and_wait_for_pattern(self, ' ', 'root@')
++
++        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
++                                                'Allwinner sun8i Family')
++        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
++                                                'system-control@1c00000')
++
+     def test_arm_orangepi(self):
+         """
+         :avocado: tags=arch:arm
 -- 
 2.25.1
 

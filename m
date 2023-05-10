@@ -1,64 +1,64 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3300754ejq;
-        Wed, 10 May 2023 03:33:18 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6BC5GCg76+12fbXeEEIV2m0kia9rQDSa9xpLou+FUbSHalSLv9MRCyV5Ae1BIeVgYC1Ns2
-X-Received: by 2002:ac8:5cd3:0:b0:3f4:c25f:899 with SMTP id s19-20020ac85cd3000000b003f4c25f0899mr1359896qta.68.1683714797859;
-        Wed, 10 May 2023 03:33:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683714797; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp3300993ejq;
+        Wed, 10 May 2023 03:33:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5McIYm5OfBJm1LkUwbJMbIP19eLdQP0ORxH7pUfB0BpIqcJeJ+Vy7bAl8JUXCy0x7EHOZH
+X-Received: by 2002:ac8:7f46:0:b0:3e8:d982:24a with SMTP id g6-20020ac87f46000000b003e8d982024amr22201240qtk.48.1683714820571;
+        Wed, 10 May 2023 03:33:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683714820; cv=none;
         d=google.com; s=arc-20160816;
-        b=AXRlz5PoJGx1cqs1i3Ml/sJ6e/LRM0+okJGl3b3x6FLe+41h5Y9LOu32bCaSKSyYr/
-         nKcFwwhiMxKHKvIpGWVhzwsifSpBObbkYIpiNGmFxgoCLyKBQeugbwTvxHETsXH7zC/0
-         rpGFky1LjXFkGxzdjKCIE1AQkKY62hyqub+ZuxZ4hghOwOyX4n3Ej4hKd+NY2d6Y0M0a
-         IWsO3q7G+IheagZN6NPArxg8Ad9bsssPUvDUOXaD5DrZr1XZmF8nDDVZ2gnDmZ1hgQdz
-         w4kEHcSk5scKV/eRNkVkXpVLn31BwA/UFTo4t1+vpdyPE2ZatdINWJZvXJqp5LCVv0wo
-         8Onw==
+        b=qOc0KuOIANM/Lral3+1yAN/OVBP5V0CJzmZ03GFhkyWNjvUPmEGoqYpsD2+M16nP16
+         lF6wYPeDP4y9av8Jej8y6iRhh5iHNA6EcLDClRooX8e7z9+R+P4G4PWXzjCIUOYIqXYW
+         AhHtcknBsExftDexE4ITsa70pjfWL+zIdNEflobLco7d5EsMvivKlDvfCe4kHEn8NXYF
+         sqqJOwurVfPSba8Oahi1Rd94AhhNxaWgbazC0GMDBFAUthYL21E0iZq/MrmmWPK/EnAG
+         LAnPZopJ59O+rBzY3FilDux2LQqAC8A0AGCCPM+epzPyS4AJ8MFZ9mMAqR37FlUJWVNm
+         dZpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=4jjUv4KJz72lhPEaj2iurvZqKvY4iaIcJLkAd6KhTcQ=;
-        b=w9ZZdKrOOxx1Bz1T/fgGqpmMM6/W0ICQTSw5slrVwgQlf5xts0G/cFGz+bp2J9Xq5u
-         gs8yIBPFTf+5/xfMS5m2QAco2cDhgs7mEvXhmo1o5o0qAKEF5lw+6bG6P6Q+LrE3chgL
-         bSkvewQAS1jBZN0lss6HUQX4dl7XEPV+nyZHAvsPFkn0lJC5dkkk5SCmqxszuyT5GGrR
-         7tDiyXye/QQz5OGTl9H6J69QgwPsD8KzSKmnhU6pThHIq9Fn6HeUyH1pUyXwu+Kli0mU
-         uO0M8Hq2eDyIUxyy8CrBYfIC00c82h29jBFGEyUTXsXvH1lAWgFkgIeTtsSnOcE9caXV
-         DJYA==
+        bh=smMLLMnnWlotSzT1R5isPLk9P2koWcsIUVlYfjcfU0g=;
+        b=a8uBeqroW28UNTQRZrcgBieFyS9NFo4OI5jMxdiicbTIrb6MmrKsskvV1MRf8PxE8I
+         s3R/CgYb6+q0fodUGYh7i4w2M40hgep3c27axpmw905MrqM7dI06uGx5F96GxOO2ZUOg
+         n8T/pZckrUXXEfuGncyyykZ6l0YNYBDab5r/aJZPoolIHiePy2982fgGKuvSWqQ0oRY6
+         U5PQGwLkdRrM59XnZ+OZt3/BkcUDbHV8lNh03DampzkncrzuQ/AEnCIbs/8gZKi6dq8b
+         k/xTa/nX4Q5u0Y1nwdDe1IlD6K4XZJ7ULUDcU1s4ey9FVqxjfNCO/T3+q6mlkXzRVjdy
+         vFcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=i0oC3OyN;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=VF6n+M6f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19-20020ae9f713000000b007578f6ca1b4si1957122qkg.461.2023.05.10.03.33.17
+        by mx.google.com with ESMTPS id h6-20020ac85846000000b003eb9b03b5c0si1572473qth.25.2023.05.10.03.33.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 May 2023 03:33:17 -0700 (PDT)
+        Wed, 10 May 2023 03:33:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=i0oC3OyN;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=VF6n+M6f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pwh5t-0003jj-3L; Wed, 10 May 2023 06:30:49 -0400
+	id 1pwh5d-0003XZ-8z; Wed, 10 May 2023 06:30:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1pwh5r-0003hw-25; Wed, 10 May 2023 06:30:47 -0400
-Received: from m12.mail.163.com ([220.181.12.215])
+ id 1pwh5c-0003WU-0k; Wed, 10 May 2023 06:30:32 -0400
+Received: from m12.mail.163.com ([220.181.12.217])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1pwh5o-000898-2g; Wed, 10 May 2023 06:30:46 -0400
+ id 1pwh5W-00080Q-Rb; Wed, 10 May 2023 06:30:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=4jjUv
- 4KJz72lhPEaj2iurvZqKvY4iaIcJLkAd6KhTcQ=; b=i0oC3OyNTFgYDE5dX0oy3
- wsKvbSPhUGezwvBqG/nM+Uk2cxbe4fHKiPLYU1fCAyAxY/Ns9Mo7xmt3JoQzaX4u
- weuoX1dV+H1gDoat9qQrum/M9voZgYyhE1+2eQ9mSvQrGkIvOUoXOuPWFEfD3abm
- CgsKaxXR2EvpHRaYcHl0V8=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=smMLL
+ MnnWlotSzT1R5isPLk9P2koWcsIUVlYfjcfU0g=; b=VF6n+M6frHJ0DM4bUpbRe
+ /HneWnhyrVi5umRjBXcgknEoTrEmol+aE+NpG6r7uOinflhJ/eG5ZCVm7UXt4orE
+ gWUkjm6KnoBS/NYtrK8uQZ2ANn8Cl44gaRSxvyfQ2HE59ddbHYO5AyTt28pn5SJf
+ YvXaDuMQlrgSTvOhSdnrQ4=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBnkgAvcltk0WrrBQ--.23956S7;
- Wed, 10 May 2023 18:30:17 +0800 (CST)
+ by zwqz-smtp-mta-g4-4 (Coremail) with SMTP id _____wBnkgAvcltk0WrrBQ--.23956S4;
+ Wed, 10 May 2023 18:30:12 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -68,31 +68,30 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v4 05/11] hw/misc: Rename axp209 to axp22x and add support
- AXP221 PMU
-Date: Wed, 10 May 2023 18:29:58 +0800
-Message-Id: <20230510103004.30015-6-qianfanguijin@163.com>
+Subject: [PATCH v4 02/11] hw/arm/allwinner-r40: add Clock Control Unit
+Date: Wed, 10 May 2023 18:29:55 +0800
+Message-Id: <20230510103004.30015-3-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230510103004.30015-1-qianfanguijin@163.com>
 References: <20230510103004.30015-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S7
-X-Coremail-Antispam: 1Uf129KBjvAXoW3uryDKr47XrW5KFWxJFyUAwb_yoW8CrW3uo
- WFga9rZw1UKrWxAr1S9ry8trWfXr12kF4UXF47AFn29a1xAFn3ZrsxKw4kWr13KFs5KryU
- Xr1vy39xAFnIvas5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
- AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTR3ku2UUUUU
+X-CM-TRANSID: _____wBnkgAvcltk0WrrBQ--.23956S4
+X-Coremail-Antispam: 1Uf129KBjvAXoW3Zw43AFW3ArW7uw1kGF4DArb_yoW8JrWkuo
+ WSqF4rXw4Ik3s3Jr1xC342yr17WFnY93yUJw4ayFWfC3WUJr4DK395tw1fXr4Sgw4FkF4k
+ Jay3ZryfZFW8X3Z5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjTRldgAUUUUU
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXRlr7VWBph7YzgAAs4
-Received-SPF: pass client-ip=220.181.12.215;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzhZr7WI0ZI07fQAAsn
+Received-SPF: pass client-ip=220.181.12.217;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,656 +106,386 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fgc0X+ykyHkX
+X-TUID: 5gpZI1Xh4CCt
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-This patch adds minimal support for AXP-221 PMU and connect it to
-bananapi M2U board.
+The CCU provides the registers to program the PLLs and the controls
+most of the clock generation, division, distribution, synchronization
+and gating.
+
+This commit adds support for the Clock Control Unit which emulates
+a simple read/write register interface.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
 ---
- hw/arm/Kconfig        |   3 +-
- hw/arm/bananapi_m2u.c |   6 +
- hw/misc/Kconfig       |   2 +-
- hw/misc/axp209.c      | 238 -----------------------------------
- hw/misc/axp2xx.c      | 283 ++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build   |   2 +-
- hw/misc/trace-events  |   8 +-
- 7 files changed, 297 insertions(+), 245 deletions(-)
- delete mode 100644 hw/misc/axp209.c
- create mode 100644 hw/misc/axp2xx.c
+ hw/arm/allwinner-r40.c              |   8 +-
+ hw/misc/allwinner-r40-ccu.c         | 209 ++++++++++++++++++++++++++++
+ hw/misc/meson.build                 |   1 +
+ include/hw/arm/allwinner-r40.h      |   2 +
+ include/hw/misc/allwinner-r40-ccu.h |  65 +++++++++
+ 5 files changed, 284 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/allwinner-r40-ccu.c
+ create mode 100644 include/hw/misc/allwinner-r40-ccu.h
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b7a84f6e3f..bad4ea158c 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -355,7 +355,7 @@ config ALLWINNER_A10
-     select ALLWINNER_WDT
-     select ALLWINNER_EMAC
-     select ALLWINNER_I2C
--    select AXP209_PMU
-+    select AXP2XX_PMU
-     select SERIAL
-     select UNIMP
+diff --git a/hw/arm/allwinner-r40.c b/hw/arm/allwinner-r40.c
+index b743d64253..128c0ca470 100644
+--- a/hw/arm/allwinner-r40.c
++++ b/hw/arm/allwinner-r40.c
+@@ -42,6 +42,7 @@ const hwaddr allwinner_r40_memmap[] = {
+     [AW_R40_DEV_MMC1]       = 0x01c10000,
+     [AW_R40_DEV_MMC2]       = 0x01c11000,
+     [AW_R40_DEV_MMC3]       = 0x01c12000,
++    [AW_R40_DEV_CCU]        = 0x01c20000,
+     [AW_R40_DEV_PIT]        = 0x01c20c00,
+     [AW_R40_DEV_UART0]      = 0x01c28000,
+     [AW_R40_DEV_GIC_DIST]   = 0x01c81000,
+@@ -80,7 +81,6 @@ static struct AwR40Unimplemented r40_unimplemented[] = {
+     { "usb2-host",  0x01c1c000, 4 * KiB },
+     { "cs1",        0x01c1d000, 4 * KiB },
+     { "spi3",       0x01c1f000, 4 * KiB },
+-    { "ccu",        0x01c20000, 1 * KiB },
+     { "rtc",        0x01c20400, 1 * KiB },
+     { "pio",        0x01c20800, 1 * KiB },
+     { "owa",        0x01c21000, 1 * KiB },
+@@ -253,6 +253,8 @@ static void allwinner_r40_init(Object *obj)
+     object_property_add_alias(obj, "clk1-freq", OBJECT(&s->timer),
+                               "clk1-freq");
  
-@@ -378,6 +378,7 @@ config ALLWINNER_R40
-     bool
-     default y if TCG && ARM
-     select ALLWINNER_A10_PIT
-+    select AXP2XX_PMU
-     select SERIAL
-     select ARM_TIMER
-     select ARM_GIC
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 1d49a006b5..9c5360a41b 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -23,6 +23,7 @@
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
-+#include "hw/i2c/i2c.h"
- #include "hw/qdev-properties.h"
- #include "hw/arm/allwinner-r40.h"
- 
-@@ -61,6 +62,7 @@ static void bpim2u_init(MachineState *machine)
- {
-     bool bootroom_loaded = false;
-     AwR40State *r40;
-+    I2CBus *i2c;
- 
-     /* BIOS is not supported by this board */
-     if (machine->firmware) {
-@@ -104,6 +106,10 @@ static void bpim2u_init(MachineState *machine)
-         }
-     }
- 
-+    /* Connect AXP221 */
-+    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
-+    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
++    object_initialize_child(obj, "ccu", &s->ccu, TYPE_AW_R40_CCU);
 +
-     /* SDRAM */
+     for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
+         object_initialize_child(obj, mmc_names[i], &s->mmc[i],
+                                 TYPE_AW_SDHOST_SUN5I);
+@@ -367,6 +369,10 @@ static void allwinner_r40_realize(DeviceState *dev, Error **errp)
      memory_region_add_subregion(get_system_memory(),
-                                 r40->memmap[AW_R40_DEV_SDRAM], machine->ram);
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 2ef5781ef8..efeb430a6c 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -176,7 +176,7 @@ config ALLWINNER_A10_CCM
- config ALLWINNER_A10_DRAMC
-     bool
+                                 s->memmap[AW_R40_DEV_SRAM_A4], &s->sram_a4);
  
--config AXP209_PMU
-+config AXP2XX_PMU
-     bool
-     depends on I2C
- 
-diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
-deleted file mode 100644
-index 2908ed99a6..0000000000
---- a/hw/misc/axp209.c
-+++ /dev/null
-@@ -1,238 +0,0 @@
--/*
-- * AXP-209 PMU Emulation
-- *
-- * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a
-- * copy of this software and associated documentation files (the "Software"),
-- * to deal in the Software without restriction, including without limitation
-- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-- * and/or sell copies of the Software, and to permit persons to whom the
-- * Software is furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-- * DEALINGS IN THE SOFTWARE.
-- *
-- * SPDX-License-Identifier: MIT
-- */
--
--#include "qemu/osdep.h"
--#include "qemu/log.h"
--#include "trace.h"
--#include "hw/i2c/i2c.h"
--#include "migration/vmstate.h"
--
--#define TYPE_AXP209_PMU "axp209_pmu"
--
--#define AXP209(obj) \
--    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
--
--/* registers */
--enum {
--    REG_POWER_STATUS = 0x0u,
--    REG_OPERATING_MODE,
--    REG_OTG_VBUS_STATUS,
--    REG_CHIP_VERSION,
--    REG_DATA_CACHE_0,
--    REG_DATA_CACHE_1,
--    REG_DATA_CACHE_2,
--    REG_DATA_CACHE_3,
--    REG_DATA_CACHE_4,
--    REG_DATA_CACHE_5,
--    REG_DATA_CACHE_6,
--    REG_DATA_CACHE_7,
--    REG_DATA_CACHE_8,
--    REG_DATA_CACHE_9,
--    REG_DATA_CACHE_A,
--    REG_DATA_CACHE_B,
--    REG_POWER_OUTPUT_CTRL = 0x12u,
--    REG_DC_DC2_OUT_V_CTRL = 0x23u,
--    REG_DC_DC2_DVS_CTRL = 0x25u,
--    REG_DC_DC3_OUT_V_CTRL = 0x27u,
--    REG_LDO2_4_OUT_V_CTRL,
--    REG_LDO3_OUT_V_CTRL,
--    REG_VBUS_CH_MGMT = 0x30u,
--    REG_SHUTDOWN_V_CTRL,
--    REG_SHUTDOWN_CTRL,
--    REG_CHARGE_CTRL_1,
--    REG_CHARGE_CTRL_2,
--    REG_SPARE_CHARGE_CTRL,
--    REG_PEK_KEY_CTRL,
--    REG_DC_DC_FREQ_SET,
--    REG_CHR_TEMP_TH_SET,
--    REG_CHR_HIGH_TEMP_TH_CTRL,
--    REG_IPSOUT_WARN_L1,
--    REG_IPSOUT_WARN_L2,
--    REG_DISCHR_TEMP_TH_SET,
--    REG_DISCHR_HIGH_TEMP_TH_CTRL,
--    REG_IRQ_BANK_1_CTRL = 0x40u,
--    REG_IRQ_BANK_2_CTRL,
--    REG_IRQ_BANK_3_CTRL,
--    REG_IRQ_BANK_4_CTRL,
--    REG_IRQ_BANK_5_CTRL,
--    REG_IRQ_BANK_1_STAT = 0x48u,
--    REG_IRQ_BANK_2_STAT,
--    REG_IRQ_BANK_3_STAT,
--    REG_IRQ_BANK_4_STAT,
--    REG_IRQ_BANK_5_STAT,
--    REG_ADC_ACIN_V_H = 0x56u,
--    REG_ADC_ACIN_V_L,
--    REG_ADC_ACIN_CURR_H,
--    REG_ADC_ACIN_CURR_L,
--    REG_ADC_VBUS_V_H,
--    REG_ADC_VBUS_V_L,
--    REG_ADC_VBUS_CURR_H,
--    REG_ADC_VBUS_CURR_L,
--    REG_ADC_INT_TEMP_H,
--    REG_ADC_INT_TEMP_L,
--    REG_ADC_TEMP_SENS_V_H = 0x62u,
--    REG_ADC_TEMP_SENS_V_L,
--    REG_ADC_BAT_V_H = 0x78u,
--    REG_ADC_BAT_V_L,
--    REG_ADC_BAT_DISCHR_CURR_H,
--    REG_ADC_BAT_DISCHR_CURR_L,
--    REG_ADC_BAT_CHR_CURR_H,
--    REG_ADC_BAT_CHR_CURR_L,
--    REG_ADC_IPSOUT_V_H,
--    REG_ADC_IPSOUT_V_L,
--    REG_DC_DC_MOD_SEL = 0x80u,
--    REG_ADC_EN_1,
--    REG_ADC_EN_2,
--    REG_ADC_SR_CTRL,
--    REG_ADC_IN_RANGE,
--    REG_GPIO1_ADC_IRQ_RISING_TH,
--    REG_GPIO1_ADC_IRQ_FALLING_TH,
--    REG_TIMER_CTRL = 0x8au,
--    REG_VBUS_CTRL_MON_SRP,
--    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
--    REG_GPIO0_FEAT_SET,
--    REG_GPIO_OUT_HIGH_SET,
--    REG_GPIO1_FEAT_SET,
--    REG_GPIO2_FEAT_SET,
--    REG_GPIO_SIG_STATE_SET_MON,
--    REG_GPIO3_SET,
--    REG_COULOMB_CNTR_CTRL = 0xb8u,
--    REG_POWER_MEAS_RES,
--    NR_REGS
--};
--
--#define AXP209_CHIP_VERSION_ID             (0x01)
--#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
--#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
--
--/* A simple I2C slave which returns values of ID or CNT register. */
--typedef struct AXP209I2CState {
--    /*< private >*/
--    I2CSlave i2c;
--    /*< public >*/
--    uint8_t regs[NR_REGS];  /* peripheral registers */
--    uint8_t ptr;            /* current register index */
--    uint8_t count;          /* counter used for tx/rx */
--} AXP209I2CState;
--
--/* Reset all counters and load ID register */
--static void axp209_reset_enter(Object *obj, ResetType type)
--{
--    AXP209I2CState *s = AXP209(obj);
--
--    memset(s->regs, 0, NR_REGS);
--    s->ptr = 0;
--    s->count = 0;
--    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
--    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
--    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
--}
--
--/* Handle events from master. */
--static int axp209_event(I2CSlave *i2c, enum i2c_event event)
--{
--    AXP209I2CState *s = AXP209(i2c);
--
--    s->count = 0;
--
--    return 0;
--}
--
--/* Called when master requests read */
--static uint8_t axp209_rx(I2CSlave *i2c)
--{
--    AXP209I2CState *s = AXP209(i2c);
--    uint8_t ret = 0xff;
--
--    if (s->ptr < NR_REGS) {
--        ret = s->regs[s->ptr++];
--    }
--
--    trace_axp209_rx(s->ptr - 1, ret);
--
--    return ret;
--}
--
--/*
-- * Called when master sends write.
-- * Update ptr with byte 0, then perform write with second byte.
-- */
--static int axp209_tx(I2CSlave *i2c, uint8_t data)
--{
--    AXP209I2CState *s = AXP209(i2c);
--
--    if (s->count == 0) {
--        /* Store register address */
--        s->ptr = data;
--        s->count++;
--        trace_axp209_select(data);
--    } else {
--        trace_axp209_tx(s->ptr, data);
--        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
--            s->regs[s->ptr++] = data;
--        }
--    }
--
--    return 0;
--}
--
--static const VMStateDescription vmstate_axp209 = {
--    .name = TYPE_AXP209_PMU,
--    .version_id = 1,
--    .fields = (VMStateField[]) {
--        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
--        VMSTATE_UINT8(count, AXP209I2CState),
--        VMSTATE_UINT8(ptr, AXP209I2CState),
--        VMSTATE_END_OF_LIST()
--    }
--};
--
--static void axp209_class_init(ObjectClass *oc, void *data)
--{
--    DeviceClass *dc = DEVICE_CLASS(oc);
--    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
--    ResettableClass *rc = RESETTABLE_CLASS(oc);
--
--    rc->phases.enter = axp209_reset_enter;
--    dc->vmsd = &vmstate_axp209;
--    isc->event = axp209_event;
--    isc->recv = axp209_rx;
--    isc->send = axp209_tx;
--}
--
--static const TypeInfo axp209_info = {
--    .name = TYPE_AXP209_PMU,
--    .parent = TYPE_I2C_SLAVE,
--    .instance_size = sizeof(AXP209I2CState),
--    .class_init = axp209_class_init
--};
--
--static void axp209_register_devices(void)
--{
--    type_register_static(&axp209_info);
--}
--
--type_init(axp209_register_devices);
-diff --git a/hw/misc/axp2xx.c b/hw/misc/axp2xx.c
++    /* Clock Control Unit */
++    sysbus_realize(SYS_BUS_DEVICE(&s->ccu), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_R40_DEV_CCU]);
++
+     /* SD/MMC */
+     for (int i = 0; i < AW_R40_NUM_MMCS; i++) {
+         qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->gic),
+diff --git a/hw/misc/allwinner-r40-ccu.c b/hw/misc/allwinner-r40-ccu.c
 new file mode 100644
-index 0000000000..52a6ffc7f3
+index 0000000000..d82fee12db
 --- /dev/null
-+++ b/hw/misc/axp2xx.c
-@@ -0,0 +1,283 @@
++++ b/hw/misc/allwinner-r40-ccu.c
+@@ -0,0 +1,209 @@
 +/*
-+ * AXP-2XX PMU Emulation, supported lists:
-+ *   AXP209
-+ *   AXP221
++ * Allwinner R40 Clock Control Unit emulation
 + *
-+ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
 + *
-+ * Permission is hereby granted, free of charge, to any person obtaining a
-+ * copy of this software and associated documentation files (the "Software"),
-+ * to deal in the Software without restriction, including without limitation
-+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
-+ * and/or sell copies of the Software, and to permit persons to whom the
-+ * Software is furnished to do so, subject to the following conditions:
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
 + *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
 + *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-+ * DEALINGS IN THE SOFTWARE.
-+ *
-+ * SPDX-License-Identifier: MIT
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qom/object.h"
-+#include "trace.h"
-+#include "hw/i2c/i2c.h"
++#include "qemu/units.h"
++#include "hw/sysbus.h"
 +#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/misc/allwinner-r40-ccu.h"
 +
-+#define TYPE_AXP2XX     "axp2xx_pmu"
-+#define TYPE_AXP209_PMU "axp209_pmu"
-+#define TYPE_AXP221_PMU "axp221_pmu"
++/* CCU register offsets */
++enum {
++    REG_PLL_CPUX_CTRL           = 0x0000,
++    REG_PLL_AUDIO_CTRL          = 0x0008,
++    REG_PLL_VIDEO0_CTRL         = 0x0010,
++    REG_PLL_VE_CTRL             = 0x0018,
++    REG_PLL_DDR0_CTRL           = 0x0020,
++    REG_PLL_PERIPH0_CTRL        = 0x0028,
++    REG_PLL_PERIPH1_CTRL        = 0x002c,
++    REG_PLL_VIDEO1_CTRL         = 0x0030,
++    REG_PLL_SATA_CTRL           = 0x0034,
++    REG_PLL_GPU_CTRL            = 0x0038,
++    REG_PLL_MIPI_CTRL           = 0x0040,
++    REG_PLL_DE_CTRL             = 0x0048,
++    REG_PLL_DDR1_CTRL           = 0x004c,
++    REG_AHB1_APB1_CFG           = 0x0054,
++    REG_APB2_CFG                = 0x0058,
++    REG_MMC0_CLK                = 0x0088,
++    REG_MMC1_CLK                = 0x008c,
++    REG_MMC2_CLK                = 0x0090,
++    REG_MMC3_CLK                = 0x0094,
++    REG_USBPHY_CFG              = 0x00cc,
++    REG_PLL_DDR_AUX             = 0x00f0,
++    REG_DRAM_CFG                = 0x00f4,
++    REG_PLL_DDR1_CFG            = 0x00f8,
++    REG_DRAM_CLK_GATING         = 0x0100,
++    REG_GMAC_CLK                = 0x0164,
++    REG_SYS_32K_CLK             = 0x0310,
++    REG_PLL_LOCK_CTRL           = 0x0320,
++};
 +
-+OBJECT_DECLARE_TYPE(AXP2xxI2CState, AXP2xxClass, AXP2XX)
++#define REG_INDEX(offset)    (offset / sizeof(uint32_t))
 +
-+#define NR_REGS                            (0xff)
++/* CCU register flags */
++enum {
++    REG_PLL_ENABLE           = (1 << 31),
++    REG_PLL_LOCK             = (1 << 28),
++};
 +
-+/* A simple I2C slave which returns values of ID or CNT register. */
-+typedef struct AXP2xxI2CState {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+    uint8_t regs[NR_REGS];  /* peripheral registers */
-+    uint8_t ptr;            /* current register index */
-+    uint8_t count;          /* counter used for tx/rx */
-+} AXP2xxI2CState;
-+
-+typedef struct AXP2xxClass {
-+    /*< private >*/
-+    I2CSlaveClass parent_class;
-+    /*< public >*/
-+    void (*reset_enter)(AXP2xxI2CState *s, ResetType type);
-+} AXP2xxClass;
-+
-+#define AXP209_CHIP_VERSION_ID             (0x01)
-+#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
-+
-+/* Reset all counters and load ID register */
-+static void axp209_reset_enter(AXP2xxI2CState *s, ResetType type)
++static uint64_t allwinner_r40_ccu_read(void *opaque, hwaddr offset,
++                                       unsigned size)
 +{
-+    memset(s->regs, 0, NR_REGS);
-+    s->ptr = 0;
-+    s->count = 0;
++    const AwR40ClockCtlState *s = AW_R40_CCU(opaque);
++    const uint32_t idx = REG_INDEX(offset);
 +
-+    s->regs[0x03] = AXP209_CHIP_VERSION_ID;
-+    s->regs[0x23] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
-+
-+    s->regs[0x30] = 0x60;
-+    s->regs[0x32] = 0x46;
-+    s->regs[0x34] = 0x41;
-+    s->regs[0x35] = 0x22;
-+    s->regs[0x36] = 0x5d;
-+    s->regs[0x37] = 0x08;
-+    s->regs[0x38] = 0xa5;
-+    s->regs[0x39] = 0x1f;
-+    s->regs[0x3a] = 0x68;
-+    s->regs[0x3b] = 0x5f;
-+    s->regs[0x3c] = 0xfc;
-+    s->regs[0x3d] = 0x16;
-+    s->regs[0x40] = 0xd8;
-+    s->regs[0x42] = 0xff;
-+    s->regs[0x43] = 0x3b;
-+    s->regs[0x80] = 0xe0;
-+    s->regs[0x82] = 0x83;
-+    s->regs[0x83] = 0x80;
-+    s->regs[0x84] = 0x32;
-+    s->regs[0x86] = 0xff;
-+    s->regs[0x90] = 0x07;
-+    s->regs[0x91] = 0xa0;
-+    s->regs[0x92] = 0x07;
-+    s->regs[0x93] = 0x07;
-+}
-+
-+#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
-+#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
-+#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
-+#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
-+#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
-+#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
-+
-+/* Reset all counters and load ID register */
-+static void axp221_reset_enter(AXP2xxI2CState *s, ResetType type)
-+{
-+    memset(s->regs, 0, NR_REGS);
-+    s->ptr = 0;
-+    s->count = 0;
-+
-+    /* input power status register */
-+    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
-+                    | AXP221_PWR_STATUS_ACIN_AVAIL
-+                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
-+
-+    s->regs[0x01] = 0x00; /* no battery is connected */
-+
-+    /*
-+     * CHIPID register, no documented on datasheet, but it is checked in
-+     * u-boot spl. I had read it from AXP221s and got 0x06 value.
-+     * So leave 06h here.
-+     */
-+    s->regs[0x03] = 0x06;
-+
-+    s->regs[0x10] = 0xbf;
-+    s->regs[0x13] = 0x01;
-+    s->regs[0x30] = 0x60;
-+    s->regs[0x31] = 0x03;
-+    s->regs[0x32] = 0x43;
-+    s->regs[0x33] = 0xc6;
-+    s->regs[0x34] = 0x45;
-+    s->regs[0x35] = 0x0e;
-+    s->regs[0x36] = 0x5d;
-+    s->regs[0x37] = 0x08;
-+    s->regs[0x38] = 0xa5;
-+    s->regs[0x39] = 0x1f;
-+    s->regs[0x3c] = 0xfc;
-+    s->regs[0x3d] = 0x16;
-+    s->regs[0x80] = 0x80;
-+    s->regs[0x82] = 0xe0;
-+    s->regs[0x84] = 0x32;
-+    s->regs[0x8f] = 0x01;
-+
-+    s->regs[0x90] = 0x07;
-+    s->regs[0x91] = 0x1f;
-+    s->regs[0x92] = 0x07;
-+    s->regs[0x93] = 0x1f;
-+
-+    s->regs[0x40] = 0xd8;
-+    s->regs[0x41] = 0xff;
-+    s->regs[0x42] = 0x03;
-+    s->regs[0x43] = 0x03;
-+
-+    s->regs[0xb8] = 0xc0;
-+    s->regs[0xb9] = 0x64;
-+    s->regs[0xe6] = 0xa0;
-+}
-+
-+static void axp2xx_reset_enter(Object *obj, ResetType type)
-+{
-+    AXP2xxI2CState *s = AXP2XX(obj);
-+    AXP2xxClass *sc = AXP2XX_GET_CLASS(s);
-+
-+    sc->reset_enter(s, type);
-+}
-+
-+/* Handle events from master. */
-+static int axp2xx_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    AXP2xxI2CState *s = AXP2XX(i2c);
-+
-+    s->count = 0;
-+
-+    return 0;
-+}
-+
-+/* Called when master requests read */
-+static uint8_t axp2xx_rx(I2CSlave *i2c)
-+{
-+    AXP2xxI2CState *s = AXP2XX(i2c);
-+    uint8_t ret = 0xff;
-+
-+    if (s->ptr < NR_REGS) {
-+        ret = s->regs[s->ptr++];
++    switch (offset) {
++    case 0x324 ... AW_R40_CCU_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        return 0;
 +    }
 +
-+    trace_axp2xx_rx(s->ptr - 1, ret);
-+
-+    return ret;
++    return s->regs[idx];
 +}
 +
-+/*
-+ * Called when master sends write.
-+ * Update ptr with byte 0, then perform write with second byte.
-+ */
-+static int axp2xx_tx(I2CSlave *i2c, uint8_t data)
++static void allwinner_r40_ccu_write(void *opaque, hwaddr offset,
++                                    uint64_t val, unsigned size)
 +{
-+    AXP2xxI2CState *s = AXP2XX(i2c);
++    AwR40ClockCtlState *s = AW_R40_CCU(opaque);
 +
-+    if (s->count == 0) {
-+        /* Store register address */
-+        s->ptr = data;
-+        s->count++;
-+        trace_axp2xx_select(data);
-+    } else {
-+        trace_axp2xx_tx(s->ptr, data);
-+        s->regs[s->ptr++] = data;
++    switch (offset) {
++    case REG_DRAM_CFG:    /* DRAM Configuration(for DDR0) */
++        /* bit16: SDRCLK_UPD (SDRCLK configuration 0 update) */
++        val &= ~(1 << 16);
++        break;
++    case REG_PLL_DDR1_CTRL: /* DDR1 Control register */
++        /* bit30: SDRPLL_UPD */
++        val &= ~(1 << 30);
++        if (val & REG_PLL_ENABLE) {
++            val |= REG_PLL_LOCK;
++        }
++        break;
++    case REG_PLL_CPUX_CTRL:
++    case REG_PLL_AUDIO_CTRL:
++    case REG_PLL_VE_CTRL:
++    case REG_PLL_VIDEO0_CTRL:
++    case REG_PLL_DDR0_CTRL:
++    case REG_PLL_PERIPH0_CTRL:
++    case REG_PLL_PERIPH1_CTRL:
++    case REG_PLL_VIDEO1_CTRL:
++    case REG_PLL_SATA_CTRL:
++    case REG_PLL_GPU_CTRL:
++    case REG_PLL_MIPI_CTRL:
++    case REG_PLL_DE_CTRL:
++        if (val & REG_PLL_ENABLE) {
++            val |= REG_PLL_LOCK;
++        }
++        break;
++    case 0x324 ... AW_R40_CCU_IOSIZE:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP, "%s: unimplemented write offset 0x%04x\n",
++                      __func__, (uint32_t)offset);
++        break;
 +    }
 +
-+    return 0;
++    s->regs[REG_INDEX(offset)] = (uint32_t) val;
 +}
 +
-+static const VMStateDescription vmstate_axp2xx = {
-+    .name = TYPE_AXP209_PMU,
++static const MemoryRegionOps allwinner_r40_ccu_ops = {
++    .read = allwinner_r40_ccu_read,
++    .write = allwinner_r40_ccu_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++    .impl.min_access_size = 4,
++};
++
++static void allwinner_r40_ccu_reset(DeviceState *dev)
++{
++    AwR40ClockCtlState *s = AW_R40_CCU(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++
++    /* Set default values for registers */
++    s->regs[REG_INDEX(REG_PLL_CPUX_CTRL)]       = 0x00001000;
++    s->regs[REG_INDEX(REG_PLL_AUDIO_CTRL)]      = 0x00035514;
++    s->regs[REG_INDEX(REG_PLL_VIDEO0_CTRL)]     = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_VE_CTRL)]         = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_DDR0_CTRL)]       = 0x00001000,
++    s->regs[REG_INDEX(REG_PLL_PERIPH0_CTRL)]    = 0x00041811;
++    s->regs[REG_INDEX(REG_PLL_PERIPH1_CTRL)]    = 0x00041811;
++    s->regs[REG_INDEX(REG_PLL_VIDEO1_CTRL)]     = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_SATA_CTRL)]       = 0x00001811;
++    s->regs[REG_INDEX(REG_PLL_GPU_CTRL)]        = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_MIPI_CTRL)]       = 0x00000515;
++    s->regs[REG_INDEX(REG_PLL_DE_CTRL)]         = 0x03006207;
++    s->regs[REG_INDEX(REG_PLL_DDR1_CTRL)]       = 0x00001800;
++    s->regs[REG_INDEX(REG_AHB1_APB1_CFG)]       = 0x00001010;
++    s->regs[REG_INDEX(REG_APB2_CFG)]            = 0x01000000;
++    s->regs[REG_INDEX(REG_PLL_DDR_AUX)]         = 0x00000001;
++    s->regs[REG_INDEX(REG_PLL_DDR1_CFG)]        = 0x0ccca000;
++    s->regs[REG_INDEX(REG_SYS_32K_CLK)]         = 0x0000000f;
++}
++
++static void allwinner_r40_ccu_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    AwR40ClockCtlState *s = AW_R40_CCU(obj);
++
++    /* Memory mapping */
++    memory_region_init_io(&s->iomem, OBJECT(s), &allwinner_r40_ccu_ops, s,
++                          TYPE_AW_R40_CCU, AW_R40_CCU_IOSIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const VMStateDescription allwinner_r40_ccu_vmstate = {
++    .name = "allwinner-r40-ccu",
 +    .version_id = 1,
++    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(regs, AXP2xxI2CState, NR_REGS),
-+        VMSTATE_UINT8(count, AXP2xxI2CState),
-+        VMSTATE_UINT8(ptr, AXP2xxI2CState),
++        VMSTATE_UINT32_ARRAY(regs, AwR40ClockCtlState, AW_R40_CCU_REGS_NUM),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void axp2xx_class_init(ObjectClass *oc, void *data)
++static void allwinner_r40_ccu_class_init(ObjectClass *klass, void *data)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
-+    ResettableClass *rc = RESETTABLE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    rc->phases.enter = axp2xx_reset_enter;
-+    dc->vmsd = &vmstate_axp2xx;
-+    isc->event = axp2xx_event;
-+    isc->recv = axp2xx_rx;
-+    isc->send = axp2xx_tx;
++    dc->reset = allwinner_r40_ccu_reset;
++    dc->vmsd = &allwinner_r40_ccu_vmstate;
 +}
 +
-+static const TypeInfo axp2xx_info = {
-+    .name = TYPE_AXP2XX,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(AXP2xxI2CState),
-+    .class_size = sizeof(AXP2xxClass),
-+    .class_init = axp2xx_class_init,
-+    .abstract = true,
++static const TypeInfo allwinner_r40_ccu_info = {
++    .name          = TYPE_AW_R40_CCU,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_init = allwinner_r40_ccu_init,
++    .instance_size = sizeof(AwR40ClockCtlState),
++    .class_init    = allwinner_r40_ccu_class_init,
 +};
 +
-+static void axp209_class_init(ObjectClass *oc, void *data)
++static void allwinner_r40_ccu_register(void)
 +{
-+    AXP2xxClass *sc = AXP2XX_CLASS(oc);
-+
-+    sc->reset_enter = axp209_reset_enter;
++    type_register_static(&allwinner_r40_ccu_info);
 +}
 +
-+static const TypeInfo axp209_info = {
-+    .name = TYPE_AXP209_PMU,
-+    .parent = TYPE_AXP2XX,
-+    .class_init = axp209_class_init
-+};
-+
-+static void axp221_class_init(ObjectClass *oc, void *data)
-+{
-+    AXP2xxClass *sc = AXP2XX_CLASS(oc);
-+
-+    sc->reset_enter = axp221_reset_enter;
-+}
-+
-+static const TypeInfo axp221_info = {
-+    .name = TYPE_AXP221_PMU,
-+    .parent = TYPE_AXP2XX,
-+    .class_init = axp221_class_init,
-+};
-+
-+static void axp2xx_register_devices(void)
-+{
-+    type_register_static(&axp2xx_info);
-+    type_register_static(&axp209_info);
-+    type_register_static(&axp221_info);
-+}
-+
-+type_init(axp2xx_register_devices);
++type_init(allwinner_r40_ccu_register)
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 96e35f1cdb..1db0343333 100644
+index a40245ad44..96e35f1cdb 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -45,7 +45,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c
+@@ -44,6 +44,7 @@ specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
  softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
- softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
--softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
-+softmmu_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
++softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+ softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
  softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
  softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
- softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c47876a902..24cdec83fe 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -23,10 +23,10 @@ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%"
- avr_power_read(uint8_t value) "power_reduc read value:%u"
- avr_power_write(uint8_t value) "power_reduc write value:%u"
+diff --git a/include/hw/arm/allwinner-r40.h b/include/hw/arm/allwinner-r40.h
+index 348bf25d6b..3be9dc962b 100644
+--- a/include/hw/arm/allwinner-r40.h
++++ b/include/hw/arm/allwinner-r40.h
+@@ -25,6 +25,7 @@
+ #include "hw/timer/allwinner-a10-pit.h"
+ #include "hw/intc/arm_gic.h"
+ #include "hw/sd/allwinner-sdhost.h"
++#include "hw/misc/allwinner-r40-ccu.h"
+ #include "target/arm/cpu.h"
+ #include "sysemu/block-backend.h"
  
--# axp209.c
--axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
--axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
--axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
-+# axp2xx
-+axp2xx_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
-+axp2xx_select(uint8_t reg) "Accessing reg 0x%" PRIx8
-+axp2xx_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
- 
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+@@ -79,6 +80,7 @@ struct AwR40State {
+     const hwaddr *memmap;
+     AwA10PITState timer;
+     AwSdHostState mmc[AW_R40_NUM_MMCS];
++    AwR40ClockCtlState ccu;
+     GICState gic;
+     MemoryRegion sram_a1;
+     MemoryRegion sram_a2;
+diff --git a/include/hw/misc/allwinner-r40-ccu.h b/include/hw/misc/allwinner-r40-ccu.h
+new file mode 100644
+index 0000000000..ceb74eff92
+--- /dev/null
++++ b/include/hw/misc/allwinner-r40-ccu.h
+@@ -0,0 +1,65 @@
++/*
++ * Allwinner R40 Clock Control Unit emulation
++ *
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_MISC_ALLWINNER_R40_CCU_H
++#define HW_MISC_ALLWINNER_R40_CCU_H
++
++#include "qom/object.h"
++#include "hw/sysbus.h"
++
++/**
++ * @name Constants
++ * @{
++ */
++
++/** Size of register I/O address space used by CCU device */
++#define AW_R40_CCU_IOSIZE        (0x400)
++
++/** Total number of known registers */
++#define AW_R40_CCU_REGS_NUM      (AW_R40_CCU_IOSIZE / sizeof(uint32_t))
++
++/** @} */
++
++/**
++ * @name Object model
++ * @{
++ */
++
++#define TYPE_AW_R40_CCU    "allwinner-r40-ccu"
++OBJECT_DECLARE_SIMPLE_TYPE(AwR40ClockCtlState, AW_R40_CCU)
++
++/** @} */
++
++/**
++ * Allwinner R40 CCU object instance state.
++ */
++struct AwR40ClockCtlState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    /** Maps I/O registers in physical memory */
++    MemoryRegion iomem;
++
++    /** Array of hardware registers */
++    uint32_t regs[AW_R40_CCU_REGS_NUM];
++
++};
++
++#endif /* HW_MISC_ALLWINNER_R40_CCU_H */
 -- 
 2.25.1
 

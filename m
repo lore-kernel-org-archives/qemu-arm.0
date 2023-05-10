@@ -1,39 +1,34 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t14-20020a5d460e000000b003047ae72b14sm17529458wrq.82.2023.05.10.06.50.00
+        by smtp.gmail.com with ESMTPSA id h5-20020a1ccc05000000b003ee5fa61f45sm22763687wmb.3.2023.05.10.06.50.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 May 2023 06:50:00 -0700 (PDT)
+        Wed, 10 May 2023 06:50:35 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 07BAF1FFBB;
-	Wed, 10 May 2023 14:50:00 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 730241FFBB;
+	Wed, 10 May 2023 14:50:35 +0100 (BST)
 References: <20230506072235.597467-1-richard.henderson@linaro.org>
- <20230506072235.597467-23-richard.henderson@linaro.org>
+ <20230506072235.597467-24-richard.henderson@linaro.org>
 User-agent: mu4e 1.11.4; emacs 29.0.90
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn,
- philmd@linaro.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 22/30] tcg/mips: Reorg tlb load within prepare_host_addr
-Date: Wed, 10 May 2023 14:49:51 +0100
-In-reply-to: <20230506072235.597467-23-richard.henderson@linaro.org>
-Message-ID: <874jok70u0.fsf@linaro.org>
+Cc: git@xen0n.name, gaosong@loongson.cn, philmd@linaro.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 23/30] tcg/mips: Simplify constraints on qemu_ld/st
+Date: Wed, 10 May 2023 14:50:27 +0100
+In-reply-to: <20230506072235.597467-24-richard.henderson@linaro.org>
+Message-ID: <87zg6c5m8k.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 6u/iPCYuSLs0
+X-TUID: 6vq5LejtmsgL
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Compare the address vs the tlb entry with sign-extended values.
-> This simplifies the page+alignment mask constant, and the
-> generation of the last byte address for the misaligned test.
->
-> Move the tlb addend load up, and the zero-extension down.
->
-> This frees up a register, which allows us use TMP3 as the returned base
-> address register instead of A0, which we were using as a 5th temporary.
+> The softmmu tlb uses TCG_REG_TMP[0-3], not any of the normally available
+> registers.  Now that we handle overlap betwen inputs and helper arguments,
+> and have eliminated use of A0, we can allow any allocatable reg.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 

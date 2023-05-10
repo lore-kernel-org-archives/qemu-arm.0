@@ -1,64 +1,37 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r15-20020a5d694f000000b00306415ac69asm17425567wrw.15.2023.05.10.06.54.23
+        by smtp.gmail.com with ESMTPSA id c3-20020a7bc843000000b003f31d44f0cbsm22967600wml.29.2023.05.10.06.57.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 May 2023 06:54:23 -0700 (PDT)
+        Wed, 10 May 2023 06:57:58 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A25C11FFBB;
-	Wed, 10 May 2023 14:54:22 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id B60FB1FFBB;
+	Wed, 10 May 2023 14:57:57 +0100 (BST)
 References: <20230506072235.597467-1-richard.henderson@linaro.org>
- <20230506072235.597467-28-richard.henderson@linaro.org>
+ <20230506072235.597467-29-richard.henderson@linaro.org>
 User-agent: mu4e 1.11.4; emacs 29.0.90
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn,
- philmd@linaro.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 27/30] tcg/ppc: Remove unused constraint J
-Date: Wed, 10 May 2023 14:53:30 +0100
-In-reply-to: <20230506072235.597467-28-richard.henderson@linaro.org>
-Message-ID: <87ild05m29.fsf@linaro.org>
+ philmd@linaro.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v5 28/30] tcg/riscv: Simplify constraints on qemu_ld/st
+Date: Wed, 10 May 2023 14:57:50 +0100
+In-reply-to: <20230506072235.597467-29-richard.henderson@linaro.org>
+Message-ID: <87edno5lwa.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: OBFkilbzQDh7
+X-TUID: WflvV/MpFArZ
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Never used since its introduction.
+> The softmmu tlb uses TCG_REG_TMP[0-2], not any of the normally available
+> registers.  Now that we handle overlap betwen inputs and helper arguments,
+> we can allow any allocatable reg.
 >
-> Fixes: 3d582c6179c ("tcg-ppc64: Rearrange integer constant constraints")
+> Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  tcg/ppc/tcg-target-con-str.h | 1 -
->  tcg/ppc/tcg-target.c.inc     | 3 ---
->  2 files changed, 4 deletions(-)
->
-> diff --git a/tcg/ppc/tcg-target-con-str.h b/tcg/ppc/tcg-target-con-str.h
-> index 9dcbc3df50..094613cbcb 100644
-> --- a/tcg/ppc/tcg-target-con-str.h
-> +++ b/tcg/ppc/tcg-target-con-str.h
-> @@ -16,7 +16,6 @@ REGS('v', ALL_VECTOR_REGS)
->   * CONST(letter, TCG_CT_CONST_* bit set)
->   */
->  CONST('I', TCG_CT_CONST_S16)
-> -CONST('J', TCG_CT_CONST_U16)
->  CONST('M', TCG_CT_CONST_MONE)
->  CONST('T', TCG_CT_CONST_S32)
->  CONST('U', TCG_CT_CONST_U32)
-> diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-> index 5a4ec0470a..0a14c3e997 100644
-> --- a/tcg/ppc/tcg-target.c.inc
-> +++ b/tcg/ppc/tcg-target.c.inc
-> @@ -83,7 +83,6 @@
->  #define SZR  (TCG_TARGET_REG_BITS / 8)
->=20=20
->  #define TCG_CT_CONST_S16  0x100
-> -#define TCG_CT_CONST_U16  0x200
-
-Arguably you could tidy up the bit masks to make it easier to add a
-constraint later. But anyway:
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 

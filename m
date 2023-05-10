@@ -1,28 +1,27 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r9-20020a5d4e49000000b003047ea78b42sm17117181wrt.43.2023.05.10.06.17.43
+        by smtp.gmail.com with ESMTPSA id z6-20020adff746000000b002f103ca90cdsm17426513wrp.101.2023.05.10.06.40.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 10 May 2023 06:17:43 -0700 (PDT)
+        Wed, 10 May 2023 06:40:35 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 20A431FFBB;
-	Wed, 10 May 2023 14:17:43 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id A32021FFBB;
+	Wed, 10 May 2023 14:40:34 +0100 (BST)
 References: <20230506072235.597467-1-richard.henderson@linaro.org>
- <20230506072235.597467-16-richard.henderson@linaro.org>
+ <20230506072235.597467-18-richard.henderson@linaro.org>
 User-agent: mu4e 1.11.4; emacs 29.0.90
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, git@xen0n.name, gaosong@loongson.cn,
- philmd@linaro.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH v5 15/30] tcg/loongarch64: Convert tcg_out_qemu_{ld,
- st}_slow_path
-Date: Wed, 10 May 2023 14:17:33 +0100
-In-reply-to: <20230506072235.597467-16-richard.henderson@linaro.org>
-Message-ID: <87y1lw72bs.fsf@linaro.org>
+ philmd@linaro.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, Daniel
+ Henrique Barboza <danielhb413@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v5 17/30] tcg/ppc: Convert tcg_out_qemu_{ld,st}_slow_path
+Date: Wed, 10 May 2023 14:40:26 +0100
+In-reply-to: <20230506072235.597467-18-richard.henderson@linaro.org>
+Message-ID: <87pm78719p.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: qLfm0GkAmJ6f
+X-TUID: yvALNDeNdBeS
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
@@ -30,6 +29,7 @@ Richard Henderson <richard.henderson@linaro.org> writes:
 > Use tcg_out_ld_helper_args, tcg_out_ld_helper_ret,
 > and tcg_out_st_helper_args.
 >
+> Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>

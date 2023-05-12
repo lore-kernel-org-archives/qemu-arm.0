@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp4844065ejq;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp4844074ejq;
         Fri, 12 May 2023 07:45:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ72gkPzF8a6ZELr71K5nKND3L0mWVYv0wP+h5k9PX9g8iNDvw9chVJJvSDEih3znbO2utat
-X-Received: by 2002:a05:6214:1c88:b0:5ef:4455:fd35 with SMTP id ib8-20020a0562141c8800b005ef4455fd35mr30719892qvb.4.1683902736175;
+X-Google-Smtp-Source: ACHHUZ6qaKMqZAC7mhZg+XHQp5LEOLm6vN8TkK00/YWo1rwQx+ryki+RJXJKbRFv6WyRGpACSGKC
+X-Received: by 2002:a05:622a:489:b0:3f5:543:4c3f with SMTP id p9-20020a05622a048900b003f505434c3fmr1203352qtx.66.1683902736787;
         Fri, 12 May 2023 07:45:36 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1683902736; cv=none;
         d=google.com; s=arc-20160816;
-        b=kkT4bLj1K/7/nvfqER2IsxKAsQDoc5JY0iXqziYC/II7eRHUEM0vj+Qv/VjGS0jeQJ
-         WgYvvli/Ey5fwEhR7jU0HZFgKkENgjUVDUg60xYnQU6H7VknqCcWle7NIvHN2/f6Ekok
-         rdrh0kYAPHD6MeH3dA6ShXZsMRuwPK79E1ZV9SPIyvFIWj/yfwVCFD7KwBsEb3iQPVYp
-         eZ6RVA1R00JA/Z6eLUO8CwIv2xVLIP8DQUC3ukc92C8zOjEwzZYoqgS6KcrxTneKm8So
-         glhA9XAn5QuQBbCEsFfi3/KNQLGblGNfdJazQZZF7CrXD/XWVCcjxF564nDpBqd8+r/q
-         HcGg==
+        b=fr1NmVLREBETn6ZCeiiADOOj+z5zJUwXK4Pp3Zpsh5DDfhysxH3p13vfgbFZl8BnJJ
+         9Exi51/kHLNYR47nrsFETCHYaC4ULxK366V4n+MtNCXMwaXlNfbsZueWWa3DOoQqf6BW
+         G1WKxlVWf9zxVAdO50eX7lPJ+umDWqN6uVXuE6LkbVIQCnGssjZcWzc9H+2PxRFcQOtM
+         uuIZ2r4LpFEotdD17/TbF2LGG2xMNgoM52CRJxBphpijUKm2CeDTJdnIgk51c10zCLWl
+         GECyaDgLXV0ZrKQdVjNTzpVE8zQcrFVvkODB+F3aUZBxgStxmv3BFH7o7xExS0Kuf35b
+         ZGZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Asur4oBWLh7C1YKCBKndI9D3ErAPKyBAV+JBqkyMkBU=;
-        b=d5wuZytyAms/dzOyugdisqLuWJf4pF7UZbOfnZWuA+OQaw6NjjRTF6ffx1bIlG5KhR
-         iReN3rBUmtOc5t0REcn/quE4b4ZawKFMPHqZtFRtHkecN5pZWoLnBYX48AzNDC+My5AW
-         iDKqYFkzTsT4Kxft/vCPHA7cW8PiBYenGB7DehGj3dWSXTQhzkd/ZkB5RmnMBCjl0IWg
-         kl0LASD11nZBcVhlSEGsjG+esH8JzGLYLErGUar1ECiyeJkMWoEYGoF8SZgO2DjW1Zmi
-         bdy64w1ZivBXywypPGJ19WmFFXcdp0xrl4oq7nchvRsSiHSLKRJ1/9wXGtUrxd0ouFNt
-         uH9Q==
+        bh=MFhepMGaE0XG072ziJIvurTDqYdBHGuPC3+MsbwqRWw=;
+        b=NQhPkCSnroZXCKbpcmLgssAGfbT/E4lW7XQVww0syBQszjvBJyfeRnbwWyE2HNMRDQ
+         4c/V3sx8d452OkzkZdMDv1LUO/NiKJ74kg1LqgC3burFR1kTXw2TpDoxqRoasv5IOAMK
+         Jn0oThJunMo73ykyKYBjzor/qwYJdQnrwCIyx/Bfb4DDXkVvKv2AVDTUa6dCE+7SE9fD
+         fDU2fuXZiAWvz2pOthCSaI+wxuqyReFKiWtucAk+3nWnGztdDLxzf3j81x53eJoyQiOv
+         HSQ8OBf3nuoip+0iMex+OJ6tFI9UNAyf4BArJ9C8N/adq+ILQF/zdcHX8nhgXxsH62ch
+         j6ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ax819hNI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L5by0c0K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8-20020ac84e48000000b003f38925148esi5517004qtw.328.2023.05.12.07.45.35
+        by mx.google.com with ESMTPS id l20-20020ae9f014000000b0074606147007si8406312qkg.679.2023.05.12.07.45.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 12 May 2023 07:45:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ax819hNI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L5by0c0K;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pxTxM-0006mI-4b; Fri, 12 May 2023 10:41:16 -0400
+	id 1pxTxf-0007Bc-Bi; Fri, 12 May 2023 10:41:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pxTxJ-0006lN-JJ
- for qemu-devel@nongnu.org; Fri, 12 May 2023 10:41:13 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1pxTxd-00078O-Cf
+ for qemu-devel@nongnu.org; Fri, 12 May 2023 10:41:33 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1pxTxF-0004h9-U4
- for qemu-devel@nongnu.org; Fri, 12 May 2023 10:41:13 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3f315735514so324552785e9.1
- for <qemu-devel@nongnu.org>; Fri, 12 May 2023 07:41:09 -0700 (PDT)
+ id 1pxTxM-0004k3-QR
+ for qemu-devel@nongnu.org; Fri, 12 May 2023 10:41:33 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3f42bcf5df1so45805235e9.3
+ for <qemu-devel@nongnu.org>; Fri, 12 May 2023 07:41:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1683902468; x=1686494468;
+ d=linaro.org; s=google; t=1683902475; x=1686494475;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Asur4oBWLh7C1YKCBKndI9D3ErAPKyBAV+JBqkyMkBU=;
- b=Ax819hNIliVjuh/il22qMR3yZBCvRTG3LajZ7fBZNRrHgMWGJ6kzDBKup18jcZtfhD
- bWnt8jNLpvioBsFvufZTooW6A6df67oOn1WA56pTTrgqIIuVA88hc+sCeLZBQvyfG3ay
- oR0n+w3WmY4iXfDI9kiDwZafA8ymGbkQ1kJr1KIOFD7C2/zjFMOX/YD63FDpWACw/+Fn
- Wju/XBv34zsIsrkGlk6Fm2a7tcBNUCpgt2SU1xlQ2KR1NQnY0s1PGLvUPyTJRyCj7a8d
- lsRZtOJbgqDjdT6vUaSbVPm5ZgJlymE7KiI0/oet8HWFhK3TbeQusvCMwBhHFFcfPu2X
- /Yag==
+ bh=MFhepMGaE0XG072ziJIvurTDqYdBHGuPC3+MsbwqRWw=;
+ b=L5by0c0KR0Xk86y/A7dMZxjdDPWyGzOW6xvd3kUtHH9By/zWfql0StrJp+u8E9R5FL
+ oehq9vON9HI+KKG3TssdJKPZNO32UpBtHz2VpZw9V2hpx2fefhZClp3XD8bm0rfstEXC
+ IEGzHOOyHiKIhSOiB/a7HB2k0Cd21gkm4RhIYV0PRKly0K4A7TLKg7oFGwERrHXmn4Sv
+ V8HSadY6BJt82OZKiTGjGeAFnLCWwkxZWI9IaKCVMzvEqqqBbs3vKJaUe5LYYc2f0xXa
+ 6477JE7Q9ZIBjvd7liHpa1cbsCgqn6INfge81wT6Es9IpC3KpZgF7vSsVmFsZqdKnNQM
+ 5oJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683902468; x=1686494468;
+ d=1e100.net; s=20221208; t=1683902475; x=1686494475;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Asur4oBWLh7C1YKCBKndI9D3ErAPKyBAV+JBqkyMkBU=;
- b=kbNd2Iq+fDhiK3ysELaDV2yOttn5+B8wh864zFOnFbGI/H095YF7I8tFylhCVk8J9h
- kqdxrtREFOhFj55WbmKa15Lmr0XoY83yrsfFmsWDCGsji+bVt8O7FmPiwXZl+YBsQVKk
- pBViEIvD10WDPr/XhKnf7+zfVoG1PSB2PyOAQZuUEiYeOz2/ZNKYXNxSNxo35PNO66uu
- yQwkAWpm7FfDhsKLLZRYZt2R5PGH+gSRezNs4LHcWsN7+tSs4gaE9+BuCisrgMHWUBpZ
- 049UkqVBPqmySkZEChLxRdzZf7bPPbqE2PShgEScWeBGHV1s7rzUlVF7kidG5lcBXt+C
- DCsw==
-X-Gm-Message-State: AC+VfDzTaXM0RMDs8ViSRXJI+m4IDpU7CVcVfPadtP21byUv0Ycz1s15
- 87/7USyPzVIBDX4G8dxxXJv35w==
-X-Received: by 2002:a05:600c:4f45:b0:3f4:2bcf:e19 with SMTP id
- m5-20020a05600c4f4500b003f42bcf0e19mr9035797wmq.8.1683902468514; 
- Fri, 12 May 2023 07:41:08 -0700 (PDT)
+ bh=MFhepMGaE0XG072ziJIvurTDqYdBHGuPC3+MsbwqRWw=;
+ b=eD28ls2sh68+NX5pFfjCbLm/blJmnYX97uN2NRJpTvCfBT+OCqWxVQXW3GjIXKQb2O
+ 3a2HQPl+QAz8Qxc6fxXAqg7Ciaf+zCQrCBs2LIiP53aKSh8yY2fUvuOuEZy8wsfztx5w
+ hnqFSsMT9BqblcdAm95KfthT8a8XJ0+vdcloih7dz1X7YKA/XPK9DEU+38iT8DZmewGC
+ iKBNJm4nZIn52+cfk6IpBMIP08hyAWuFNR+KP35B8tYtBdZxPpZVsjMGypYXUg5xgW6+
+ RmYj7TiUD1PbRp0Cah7j6sG9SbcYErcfKOrYyhT+YePip1MUi7TVD78NoNvtVpvxN4br
+ J81w==
+X-Gm-Message-State: AC+VfDwQC/8zOcFJh//U5XraNRrCKyyfmSdOx4zhJq7qXu/0VdSHe2Un
+ jmy3OpZSpogNrjJC5b8rXaqJfQ==
+X-Received: by 2002:a1c:ed04:0:b0:3f4:f03b:56d7 with SMTP id
+ l4-20020a1ced04000000b003f4f03b56d7mr3117608wmh.16.1683902475454; 
+ Fri, 12 May 2023 07:41:15 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- f12-20020a7bcc0c000000b003f17848673fsm28916167wmh.27.2023.05.12.07.41.08
+ f12-20020a7bcc0c000000b003f17848673fsm28916167wmh.27.2023.05.12.07.41.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 May 2023 07:41:08 -0700 (PDT)
+ Fri, 12 May 2023 07:41:15 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 02/20] target/arm: Create decodetree skeleton for A64
-Date: Fri, 12 May 2023 15:40:48 +0100
-Message-Id: <20230512144106.3608981-3-peter.maydell@linaro.org>
+Subject: [PATCH 15/20] target/arm: Convert TBZ, TBNZ to decodetree
+Date: Fri, 12 May 2023 15:41:01 +0100
+Message-Id: <20230512144106.3608981-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230512144106.3608981-1-peter.maydell@linaro.org>
 References: <20230512144106.3608981-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,109 +124,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XbxVVRz1YJBC
+X-TUID: 6F+CUOzH7KQk
 
-The A64 translator uses a hand-written decoder for everything except
-SVE or SME.  It's fairly well structured, but it's becoming obvious
-that it's still more painful to add instructions to than the A32
-translator, because putting a new instruction into the right place in
-a hand-written decoder is much harder than adding new instruction
-patterns to a decodetree file.
-
-As the first step in conversion to decodetree, create the skeleton of
-the decodetree decoder; where it does not handle instructions we will
-fall back to the legacy decoder (which will be for everything at the
-moment, since there are no patterns in a64.decode).
+Convert the test-and-branch-immediate insns TBZ and TBNZ
+to decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/a64.decode      | 20 ++++++++++++++++++++
- target/arm/tcg/translate-a64.c | 18 +++++++++++-------
- target/arm/tcg/meson.build     |  1 +
- 3 files changed, 32 insertions(+), 7 deletions(-)
- create mode 100644 target/arm/tcg/a64.decode
+ target/arm/tcg/a64.decode      |  7 +++++++
+ target/arm/tcg/translate-a64.c | 25 +++++--------------------
+ 2 files changed, 12 insertions(+), 20 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-new file mode 100644
-index 00000000000..43321bbbb05
---- /dev/null
+index 86220569e13..68dc820ece0 100644
+--- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -0,0 +1,20 @@
-+# AArch64 A64 allowed instruction decoding
-+#
-+#  Copyright (c) 2023 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2.1 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
+@@ -121,3 +121,10 @@ BL              1 00101 .......................... @branch
+ @cbz            sf:1 ...... nz:1 ................... rt:5 &cbz imm=%imm19
+ 
+ CBZ             . 011010 . ................... ..... @cbz
 +
-+#
-+# This file is processed by scripts/decodetree.py
-+#
++%imm14     5:s14 !function=times_4
++%imm31_19  31:1 19:5
++&tbz       rt imm nz bitpos
++@tbz            . ...... nz:1 ..... .............. rt:5 &tbz  imm=%imm14 bitpos=%imm31_19
++
++TBZ             . 011011 . ..... .............. ..... @tbz
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 8a0ede96440..7862e9dd4e3 100644
+index 5da551385bd..bd59d0616e3 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -56,6 +56,13 @@ enum a64_shift_type {
-     A64_SHIFT_TYPE_ROR = 3
- };
- 
-+/*
-+ * Include the generated decoders.
-+ */
-+
-+#include "decode-sme-fa64.c.inc"
-+#include "decode-a64.c.inc"
-+
- /* Table based decoder typedefs - used when the relevant bits for decode
-  * are too awkwardly scattered across the instruction (eg SIMD).
-  */
-@@ -14100,12 +14107,6 @@ static void disas_data_proc_simd_fp(DisasContext *s, uint32_t insn)
-     }
+@@ -1352,35 +1352,23 @@ static bool trans_CBZ(DisasContext *s, arg_cbz *a)
+     return true;
  }
  
--/*
-- * Include the generated SME FA64 decoder.
+-/* Test and branch (immediate)
+- *   31  30         25  24  23   19 18          5 4    0
+- * +----+-------------+----+-------+-------------+------+
+- * | b5 | 0 1 1 0 1 1 | op |  b40  |    imm14    |  Rt  |
+- * +----+-------------+----+-------+-------------+------+
 - */
--
--#include "decode-sme-fa64.c.inc"
--
- static bool trans_OK(DisasContext *s, arg_OK *a)
+-static void disas_test_b_imm(DisasContext *s, uint32_t insn)
++static bool trans_TBZ(DisasContext *s, arg_tbz *a)
  {
-     return true;
-@@ -14444,7 +14445,10 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         disas_sme_fa64(s, insn);
-     }
+-    unsigned int bit_pos, op, rt;
+-    int64_t diff;
+     DisasLabel match;
+     TCGv_i64 tcg_cmp;
  
--    disas_a64_legacy(s, insn);
-+
-+    if (!disas_a64(s, insn)) {
-+        disas_a64_legacy(s, insn);
-+    }
+-    bit_pos = (extract32(insn, 31, 1) << 5) | extract32(insn, 19, 5);
+-    op = extract32(insn, 24, 1); /* 0: TBZ; 1: TBNZ */
+-    diff = sextract32(insn, 5, 14) * 4;
+-    rt = extract32(insn, 0, 5);
+-
+     tcg_cmp = tcg_temp_new_i64();
+-    tcg_gen_andi_i64(tcg_cmp, cpu_reg(s, rt), (1ULL << bit_pos));
++    tcg_gen_andi_i64(tcg_cmp, cpu_reg(s, a->rt), (1ULL << a->bitpos));
  
-     /*
-      * After execution of most insns, btype is reset to 0.
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 4d99f6dacb3..130ed62fcd7 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -13,6 +13,7 @@ gen = [
-   decodetree.process('a32-uncond.decode', extra_args: '--static-decode=disas_a32_uncond'),
-   decodetree.process('t32.decode', extra_args: '--static-decode=disas_t32'),
-   decodetree.process('t16.decode', extra_args: ['-w', '16', '--static-decode=disas_t16']),
-+  decodetree.process('a64.decode', extra_args: ['--static-decode=disas_a64']),
- ]
+     reset_btype(s);
  
- arm_ss.add(gen)
+     match = gen_disas_label(s);
+-    tcg_gen_brcondi_i64(op ? TCG_COND_NE : TCG_COND_EQ,
++    tcg_gen_brcondi_i64(a->nz ? TCG_COND_NE : TCG_COND_EQ,
+                         tcg_cmp, 0, match.label);
+     gen_goto_tb(s, 0, 4);
+     set_disas_label(s, match);
+-    gen_goto_tb(s, 1, diff);
++    gen_goto_tb(s, 1, a->imm);
++    return true;
+ }
+ 
+ /* Conditional branch (immediate)
+@@ -2397,9 +2385,6 @@ static void disas_uncond_b_reg(DisasContext *s, uint32_t insn)
+ static void disas_b_exc_sys(DisasContext *s, uint32_t insn)
+ {
+     switch (extract32(insn, 25, 7)) {
+-    case 0x1b: case 0x5b: /* Test & branch (immediate) */
+-        disas_test_b_imm(s, insn);
+-        break;
+     case 0x2a: /* Conditional branch (immediate) */
+         disas_cond_b_imm(s, insn);
+         break;
 -- 
 2.34.1
 

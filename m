@@ -1,209 +1,144 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp5334509ejq;
-        Sat, 13 May 2023 03:11:07 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4o5FiGCnFm6fz+l1nYQAAzmaQZ0qsAPK+2j9p4qK33f9nkdvHGXbzcOO6csuoCnkFBxAx+
-X-Received: by 2002:a05:622a:58e:b0:3f4:f306:ce53 with SMTP id c14-20020a05622a058e00b003f4f306ce53mr10444663qtb.18.1683972667639;
-        Sat, 13 May 2023 03:11:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1683972667; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp5363413ejq;
+        Sat, 13 May 2023 04:26:33 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4zsC+yo9LSqqKY0CSO/3HIHpjFnwmD5fZPBAbMlfgOQnUnAs0uvlkgkWeQ4ZDLtOyw4GdM
+X-Received: by 2002:ac8:5c4f:0:b0:3f4:eff6:65c with SMTP id j15-20020ac85c4f000000b003f4eff6065cmr14056867qtj.4.1683977193432;
+        Sat, 13 May 2023 04:26:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683977193; cv=none;
         d=google.com; s=arc-20160816;
-        b=Umi57mXNuWHJFDoAwyp34wFiymchhbzgY+QCM12B+7KaIYtRzW2ApAPeaqIcJHi7IS
-         9biZQfnh23/c9ThO7Axx9WLOcVg+1b1NkPEsiQ+9/LxwwkoatReeEzIpwsQ3Ox475lJM
-         HiGfhGDvaChRhFD1ewSy8gD5JuAni3qZYSB1EXHavABHVeqWbOUpRBVFfutgUQA9dmWK
-         2jKzs8fuFjRiZMtnldMBlh1xU30jJqofTz3Av47gxSFmG3B+wKyBtRpWgX0VYoEj+3cg
-         9lHqJ1n5ohyfdypW6aLWLs+/dh7+gklIPfMD2AtHHAzRLomeD+4DxefPE7h+47Ehw0uf
-         lnzw==
+        b=RMUOsy4jwiLAs+nh18xSUAaqnUyNox7RYHlUQb25Ec4HvGore8IU3j0xhxlXvDb1X3
+         wcIoS0FxsEnGf+vVjGxvq8jzjfhH6AEwzxmZcbnjxCVydXm+0wolLmZ6N1ropJm+SUni
+         fPkfhNQntjEGnFAL3C/pz2z4oDF1Fi/TKhIB1Uer1FSSNQRlI3oqSVu5BNHj/bnH18Wx
+         m115OBZmzv7SC1NRDpz8qj7KkN5++b074k778A3NvamsPmWuXxNdYEwDlpEOvKAPG9E7
+         6dhZ7jXLP0Py8yTKvHDusNjtJ55+AVGzHmOhEqaG7MyJC8ytWRPs6cJo+4NtsS7V+CiB
+         Aq0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=W2cgCTCiy6rpTMmB83MFFmB8jWJpK9cx9olCbX5GQQU=;
-        b=Mxnu7cp4Bdz0WcGWwMIlf06G8Yyg3u2o4F21Dztt7xongGLBGedjHWwI3V02YerRuF
-         pMRUTbskzjE/xrFlFwSlWT30SBItC/r9AsiTBcQqsjJ1nRjM0C1veDHfAzjY+X0zBAUe
-         ioIbAwkmACSOY32fl10rY33tldkCfUlt/weGRLhSu3HA5IdM15HzRfTvqDo+72f9HoZ9
-         DHtNvnYWcukcaKgMe4Q90JQLch/YFcm17Pb+smOXMfL/dlft2//WKNnl+xWHFn87YfGV
-         Ac9YB3teMunxL2q7CxONpugufE6RLVJPbTNm5ftqIa/77fmA0JoVOxH2oGUKAetYaflZ
-         zlRg==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=Y8E8C+yE5MHCFBvwa5cWNm7L553/azPboyO3J+hpsDg=;
+        b=uWBe018M0RxHLhyrHAUS2H7pMZeZuEqOesHeUT6UCq69W81mwO3JcSCPYQBeJC02qk
+         zZ9+ONssc3X+CfqdUf1nVbV+MPa0ldlGOZwUi4jB+qlHJCQp9xYkiPaKV+KbsPdLEybN
+         UwyPBKEcWt/bOKKpCb6zUlaNMYQlAS5ZrNYA3feLOBKSB5mnrWFx5PTwCNkNopjh2k2W
+         XsWvvznxsorBfb/vnoC41dx9Dv65PjX7NyrChZL0zgGbS7tdHuCzdpsGRmeO1K7NElL3
+         cJCyElKl/+0m5SHAeERGUUBaB8lBccB2EFnXVF4+w1QNf8GpF3XPFh2zecpqtd7IG17u
+         KLZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bDa6DQr6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=iQHV0e2n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2-20020a05622a144200b003ba3819e03esi4167511qtx.154.2023.05.13.03.11.07
+        by mx.google.com with ESMTPS id n9-20020ac85a09000000b003ef480e33e3si6749739qta.497.2023.05.13.04.26.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 May 2023 03:11:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 13 May 2023 04:26:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bDa6DQr6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=iQHV0e2n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pxmC6-0008KT-JB; Sat, 13 May 2023 06:09:42 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pxnOA-0000Wl-ML; Sat, 13 May 2023 07:26:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pxmBv-0008Ft-Jq; Sat, 13 May 2023 06:09:32 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pxnO6-0000Vq-97
+ for qemu-arm@nongnu.org; Sat, 13 May 2023 07:26:10 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1pxmBt-0004N1-Ae; Sat, 13 May 2023 06:09:31 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-50bd2d7ba74so96527770a12.1; 
- Sat, 13 May 2023 03:09:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pxnO4-0005Nn-Om
+ for qemu-arm@nongnu.org; Sat, 13 May 2023 07:26:10 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-50bc1612940so19665235a12.2
+ for <qemu-arm@nongnu.org>; Sat, 13 May 2023 04:26:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1683972566; x=1686564566;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=W2cgCTCiy6rpTMmB83MFFmB8jWJpK9cx9olCbX5GQQU=;
- b=bDa6DQr6jTb7sMeRvv8bOj5f3WIEWu0jx6geR4SI4263zTVB/TADncDmPei7FZd9Hb
- ipHjwHT4VA+P1MIUegw2X8pmnRewcfdMCiB5EG7WrCg5EpYUGL3hDMdQEGX3s6WjeQSI
- BNa3Ll5LJ3kVSxpReAjmSubaMAbrbeP1lPwWNdc1qH4Lun79uAyQ0E8Qip7uh3KDZvlM
- bgsPdyzMwPlqep310m4uGhjSpg5Kq1WB1s5eNafic4FaxZGsE+5b2v+PfAcwSpVfOni6
- 1ui5wWeYMh+zZVKpNph642yqKD+QY5Lt8TfBqo7/u3nGzyF8fc8gZ40VxGMDRjfixoYw
- bf+w==
+ d=linaro.org; s=google; t=1683977167; x=1686569167;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Y8E8C+yE5MHCFBvwa5cWNm7L553/azPboyO3J+hpsDg=;
+ b=iQHV0e2nIhR9+XpyWmhzWAPWkKwLluPb/tXEEmfsV0Va8F7ybqLeXRHfsSmlsAIwru
+ V9ILt4Zt339H6T89mRJzn/Q3GRfoXYkFvjYDVphUuWh041y9wEM96WCKHlFlThnV+Qzq
+ UQ6pkCmBEkgI3dktg29L0GZqO5+byPRqFnb30amxbCxBvSmEQq2eKZXP0Y1CrIj9o57/
+ zZFXKHEhgxRbzPhTc9vSB9/2c8+/GVUJ5uZ2u4CORMc3aoMwJXv9/K/VNGCr9cYPPAkU
+ ll/GEUYJUP62KQuWzK6l6Q1nyhFnYuU2HBUDrgx+0RWrYh5eC4asCFh21rZAm0ZfgR98
+ o/8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683972566; x=1686564566;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=W2cgCTCiy6rpTMmB83MFFmB8jWJpK9cx9olCbX5GQQU=;
- b=Rfqws2bG+CVd7TepOVwI1IsX8jUW7EhT3a4AfANyDoSyxzv+pTBD0ryGQGBSJSPX6y
- wM+ayEYDeq+PaYcdEmp5dgy9AsfFL7+OJJvr6MDbZkm+nK4aTxJNKajsLCMHmnUm68/n
- 5f9XPS9g15fNqwmZq7YKQ63ZFyt045ZgMvJ9GGSKOI7CFz4Gh4MDQLR3kbIyYaYZeq5Y
- iV8RAho61uwdtSYI2F/CQnble8u/PcuSbOcpoe0FUHv/iWuoupWApk330lgSQ0sUZ0Kq
- mzHA6y3RAkyDBkxM+BlF2+W4wHrLIu0tq8dMpJDXLTCGyxNo4tuJ8jS7CARcGHiRKNNp
- YdDw==
-X-Gm-Message-State: AC+VfDwSt8ENY3eKtS+yfxruIDiAMA+ybtzSJdKYX9mWHZV+3iDH1sDr
- PIMJAAxbzkteu6QvP3yStwDSEyML6rI=
-X-Received: by 2002:a17:907:1c25:b0:969:9c0c:4c97 with SMTP id
- nc37-20020a1709071c2500b009699c0c4c97mr16119044ejc.1.1683972566177; 
- Sat, 13 May 2023 03:09:26 -0700 (PDT)
-Received: from Provence.localdomain
- (dynamic-077-013-174-037.77.13.pool.telefonica.de. [77.13.174.37])
+ d=1e100.net; s=20221208; t=1683977167; x=1686569167;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y8E8C+yE5MHCFBvwa5cWNm7L553/azPboyO3J+hpsDg=;
+ b=fEFW7cPaJHzv1q8T78dYwNnBKheAL/VKPpbFSNUK3syI+OAp0lz2U22XXWnfFcbjcI
+ ML3goj9+/sbO+xyV+YlCOBg9SgWZOQko+gjTlVZqovVAwkkkjBhveU8KyYj1NaYgy8EZ
+ q2o8kOzObT5yPOhxeasD18dGTAz3ld1l5MdNm+2Lqo0XSmiPLBO5sEk33ZYJDw/cuj1w
+ 13+/L1vnfZc0bysraK/jJE/1twvyiWXJtEDxNXOoDO6WHFgqxXjAnNM3/DWlBP0l86Wq
+ XMVfKtXRLBB5xj1NRscINHGJ3WCxsy77h4UaL8xQlRxgZavLyiNC8i5wg4JO8SYLsJTG
+ sIFQ==
+X-Gm-Message-State: AC+VfDxlSiVtaZbrKPTvtgVq/2LJTAPNbG4bYdQ4rivt60vb6clxVja+
+ niZE4uUdMxRWU9IfMTDaH2i4ng==
+X-Received: by 2002:a05:6402:128c:b0:50b:c72a:2b1b with SMTP id
+ w12-20020a056402128c00b0050bc72a2b1bmr21061153edv.19.1683977167054; 
+ Sat, 13 May 2023 04:26:07 -0700 (PDT)
+Received: from [192.168.190.227] ([109.144.17.21])
  by smtp.gmail.com with ESMTPSA id
- jr18-20020a170906515200b00965f5d778e3sm6645285ejc.120.2023.05.13.03.09.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 13 May 2023 03:09:25 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- qemu-ppc@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 3/4] hw/char/parallel: Export TYPE_ISA_PARALLEL macro
-Date: Sat, 13 May 2023 12:09:05 +0200
-Message-Id: <20230513100906.46672-4-shentey@gmail.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230513100906.46672-1-shentey@gmail.com>
-References: <20230513100906.46672-1-shentey@gmail.com>
+ d14-20020a50fb0e000000b0050bc6d0e880sm4694825edq.61.2023.05.13.04.26.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 13 May 2023 04:26:06 -0700 (PDT)
+Message-ID: <8d26d18a-139b-a32f-a9ce-12a14232de29@linaro.org>
+Date: Sat, 13 May 2023 12:26:04 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 17/20] target/arm: Convert BR, BLR, RET to decodetree
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230512144106.3608981-1-peter.maydell@linaro.org>
+ <20230512144106.3608981-18-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230512144106.3608981-18-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.923,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7U0VCWo1sQ2s
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7jrIPSaYljM0
 
-Rather than using a string literal which is prone to typos let's use a macro
-instead which is caught by the compiler if mistyped.
+On 5/12/23 15:41, Peter Maydell wrote:
+> Convert the simple (non-pointer-auth) BR, BLR and RET insns
+> to decodetree.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/tcg/a64.decode      |  5 ++++
+>   target/arm/tcg/translate-a64.c | 55 ++++++++++++++++++++++++++++++----
+>   2 files changed, 54 insertions(+), 6 deletions(-)
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- include/hw/char/parallel.h | 2 ++
- hw/char/parallel-isa.c     | 2 +-
- hw/char/parallel.c         | 1 -
- hw/isa/isa-superio.c       | 3 ++-
- 4 files changed, 5 insertions(+), 3 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/include/hw/char/parallel.h b/include/hw/char/parallel.h
-index 0a23c0f57e..29d2876d00 100644
---- a/include/hw/char/parallel.h
-+++ b/include/hw/char/parallel.h
-@@ -4,6 +4,8 @@
- #include "hw/isa/isa.h"
- #include "chardev/char.h"
- 
-+#define TYPE_ISA_PARALLEL "isa-parallel"
-+
- void parallel_hds_isa_init(ISABus *bus, int n);
- 
- bool parallel_mm_init(MemoryRegion *address_space,
-diff --git a/hw/char/parallel-isa.c b/hw/char/parallel-isa.c
-index 1ccbb96e70..547ae69304 100644
---- a/hw/char/parallel-isa.c
-+++ b/hw/char/parallel-isa.c
-@@ -21,7 +21,7 @@ static void parallel_init(ISABus *bus, int index, Chardev *chr)
-     DeviceState *dev;
-     ISADevice *isadev;
- 
--    isadev = isa_new("isa-parallel");
-+    isadev = isa_new(TYPE_ISA_PARALLEL);
-     dev = DEVICE(isadev);
-     qdev_prop_set_uint32(dev, "index", index);
-     qdev_prop_set_chr(dev, "chardev", chr);
-diff --git a/hw/char/parallel.c b/hw/char/parallel.c
-index af551e7864..3d32589bb3 100644
---- a/hw/char/parallel.c
-+++ b/hw/char/parallel.c
-@@ -93,7 +93,6 @@ typedef struct ParallelState {
-     PortioList portio_list;
- } ParallelState;
- 
--#define TYPE_ISA_PARALLEL "isa-parallel"
- OBJECT_DECLARE_SIMPLE_TYPE(ISAParallelState, ISA_PARALLEL)
- 
- struct ISAParallelState {
-diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
-index c81bfe58ef..53b80de0ce 100644
---- a/hw/isa/isa-superio.c
-+++ b/hw/isa/isa-superio.c
-@@ -20,6 +20,7 @@
- #include "hw/isa/superio.h"
- #include "hw/qdev-properties.h"
- #include "hw/input/i8042.h"
-+#include "hw/char/parallel.h"
- #include "hw/char/serial.h"
- #include "trace.h"
- 
-@@ -51,7 +52,7 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
-             } else {
-                 name = g_strdup_printf("parallel%d", i);
-             }
--            isa = isa_new("isa-parallel");
-+            isa = isa_new(TYPE_ISA_PARALLEL);
-             d = DEVICE(isa);
-             qdev_prop_set_uint32(d, "index", i);
-             if (k->parallel.get_iobase) {
--- 
-2.40.1
-
+r~

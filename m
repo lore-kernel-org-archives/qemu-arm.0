@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp5902086ejq;
-        Sun, 14 May 2023 05:29:24 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4q2w6BqrH6weS/yoZF6K8/CpzIcy5K3QyEHZRQCexmHRUClfzkb2uOYENDGJkI7AEMHyvz
-X-Received: by 2002:a05:622a:40c:b0:3ef:5bfc:de85 with SMTP id n12-20020a05622a040c00b003ef5bfcde85mr46915056qtx.22.1684067364051;
-        Sun, 14 May 2023 05:29:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684067364; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp5905012ejq;
+        Sun, 14 May 2023 05:35:32 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7gNUVaUTom466+aUdE59Sigu1kfcTcqdxroY8IAnZgkxMxf6wgy3r9pRxNk7+ddmhgJ1C6
+X-Received: by 2002:a05:622a:15c4:b0:3e9:2f1b:c85b with SMTP id d4-20020a05622a15c400b003e92f1bc85bmr46773054qty.51.1684067732423;
+        Sun, 14 May 2023 05:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684067732; cv=none;
         d=google.com; s=arc-20160816;
-        b=sOvkXrFItTliBmVxaPwHQqb8OJARb5viZL2+m+dapxCCJMRA2dmiBC9vMEoVoUV6D0
-         UB39Pett+p5RV0+NST14ZfHi9VdGpuVU9NDZR+EujoTlsxsEi1qZXdMHKvSu9Grp51v0
-         2SR6mgRLKJ9PWOMTndl6WaJmPefwiw/6OGVzxzuz8yeVBBufOlEjaMo8O+V+DfSiRlut
-         UxgkuY84fqglxXAVmjt+FuDmWJaOJT4Z/A10Z4UfYsh/6Bbo4yWuMfMZZ3toOqCzhq8K
-         7SRaPTamr6bGAPGNTVd1L1FtqJexizhVqdsmJHSABJBFeh13pIwNtQFD0ahUJorixcnm
-         3YFA==
+        b=C6d9MhdS9KJ1FsE+ZGjmNbHLLJ/xBHVszUAdeDkVRIkZSZsIg/v1hLRZBJnl+HlDMc
+         dp3diJfxVbfYGfb8mRKfemUNk5vQY5sMlFex4ap6FyyX5tcLnT7oSJ3Znw/EPCBQIL3q
+         NQNhHYwhbVEzoHPkpSFLHNUtGw+TWbn+so18dpXqmTH6lu/tTRYBvowHSMLErTw1Spdi
+         iYe09KEuiG1E6ZxnL/rqkxAu6SopFp1hdVbGXeq+hem/mz8E3APDqZiyn/7LL1cOown1
+         f4ZXCs+47eS8cgGH1/ZRHQxfdMi7c8ddTjqtq9LIt1VOWkGV7w3QZMToIJ3XT9pr2+U5
+         0guQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=q5S79XUuI1ZIvlasYKnvWNHO5Ub7qvuhOhrOlYK7eBk=;
-        b=wAN47Hvg9JWDqWfrYlRwDKXFgIbpvB9qlpPbr9TgBlfdGLE5R2b6AY3Tv4DPIF2aHT
-         L0zAVZChIDHO1bVLJrWWFL3RX5Ig8cx7NVzYvCRWYiG5YtfRxNDtqetDfpdAOtLSVGe/
-         JEpD6Tt3uAQCGBcuMx3Wsslm6iYMeYP0qFsjuQnrSpDpz9tyXZ2om8hhmZRkiyNG9P76
-         9tkMlOHCHD8rytHGXbpXz7xKCQvikn8arwTcPXsax7eqBm7jlXfwg2Tfj7ne8q3o1+Bp
-         kM2Z4ZpcI/N2tHnqIvdvNcVTAzs0T4Yxzh3zn4vVFCfPovMrVXJDKCy3e/vuaSajTl1W
-         XwIA==
+        bh=G/qq3SvdqTtRjr7ZqSkPkMGDi4N3302SLIRO0oVyfD0=;
+        b=UgqNGM2WsuIGAcr9LcMOjEOQgScvHtmp+8O4de3Dn8fyZzWU2MKdrB7c+kBOLAXAnx
+         cWg/HJFm/JPQ29ExCYztTdidRMPKGL30sGkd+gwh4h/Ey1LWcWoSx9nM8mUhVqCMuJ5v
+         tp5QmMrz3YaeZ4YSJmEMcWmoMzr7xcbdn47DB0IONSIXRWLG7rDWuBP8piaJ53GROlBh
+         RUJN5EXeVFouPQaEoLVSA+rwYIFwz0RbpZj07dFAHuWElhs5Q1BRwOX5Bo0/ah6b6VBd
+         uOp8ACXJN4sDkGeg0PNZdb0IwzL4we3GXnPiFOPulyFe1a0idUucXFbIrs/xbgpGuAjc
+         RANA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=fXQKwxXi;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=EZ9TOuFm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10-20020a05622a04ca00b003ef39a19962si8112291qtx.581.2023.05.14.05.29.23
+        by mx.google.com with ESMTPS id x7-20020a05620a01e700b0074ad42d7d2esi8938247qkn.255.2023.05.14.05.35.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 May 2023 05:29:24 -0700 (PDT)
+        Sun, 14 May 2023 05:35:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=fXQKwxXi;
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=EZ9TOuFm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pyAqT-0002Mi-AO; Sun, 14 May 2023 08:29:02 -0400
+	id 1pyAwL-00048J-F5; Sun, 14 May 2023 08:35:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAqF-0002LW-TJ; Sun, 14 May 2023 08:28:49 -0400
+ id 1pyAwD-00047H-MC; Sun, 14 May 2023 08:34:57 -0400
 Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAqD-000398-Ui; Sun, 14 May 2023 08:28:47 -0400
+ id 1pyAwB-0004Q9-SP; Sun, 14 May 2023 08:34:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
  In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
  Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
  :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=q5S79XUuI1ZIvlasYKnvWNHO5Ub7qvuhOhrOlYK7eBk=; b=fXQKwxXi7rXxJVeqf9454Sqrl5
- WTBIv7lVT4879Nm3N1Ehfx2ZAirOg9jevOQlKZY+xqkZ3cl2kQMSAbwKzDfhug1DPMImoUX4/jz6Y
- wIUAmKw+R1U2thAS3ElhYlOTht4a9ifyspiCA71yaMmE3WajCiGZLh49XTxdHJxgkM82GQQgxsX+z
- H7YmhOlOdhrmACjGu1uJHct9H3BwU+iIZAAmQXtqwDbpjSxioUkHBbE9QX+zeu2SW5fcfO9ftIzIg
- H8Rv0Jlz2POVeVgYh+YbzJG/hnPeAb7WChDAdSz7qnsw6wd6+fZd2kFbvI5kQxHe0pUSJ/xClQWn7
- nUi40bUd4X1jHAXGM+41DNvIULzsXcCuQFmeYmHuqVmtoC2btyiIDyKo4h7nKXl7tKqdIsr5Sdqot
- G08uLcMGFKl0/g3zVgUczujqYSz7GqN50lEkvHixf9tN0fy8yUORb1Nw73Ox5oLrhJ4GHMsiElc3d
- 5NzsI3Ji1kD5faTTysNHiUPXMkN8o+fIOL9xOJs88tUylZ0l5D/CRUH5Cp1rytZ5arkCxhZaIPY9U
- ZpWRVUiXwRqxEBoszRrv8SEMjEzPK/hx6RMfRbGPKOJQ6d4JZXNIKbVdtDM3uYUENepo7P6xshKSg
- ZXkf6G77plSAOU9dnpdnfNC+WM75xM2M2rElgPAls=;
+ bh=G/qq3SvdqTtRjr7ZqSkPkMGDi4N3302SLIRO0oVyfD0=; b=EZ9TOuFmmSgSVv//LHV4xDCe8f
+ 7heRigNkIbuvoCxyBD4pHltpjG+TAM3kEaBqMVLTrIufg4So+Stjng/UoFLJ8OG8xGqtp08zt2kO1
+ IQpUCaMSNWas/zdxTBGHrI3TB+KukSUAwHsLXn3tDLvGQnUFS0QDRRD9hQvM58tPeW+In+mqRTC8Q
+ MafpTvLTL5HDZs8X1CQj3KCAY/89iE1Hn5Ol0YEtPa3d816AIQq4dpckVsxoNB00rnmWjjLIO3u95
+ zh+aO//6Yuz85gqhBgnBHFEZ52Wwbl/HKRqq6r4CVbAH6Bbppt2OgBD7HWrqGjgQzBipC1T7WxMot
+ z09g53dUc7yvUHpe1USnkYDAwYRuVD5ICJa6EwaoFtfZDwXqHiivudr+T5gR66ChD9BmxeWGJhGPB
+ prmQsziZUcJDq0H1gZB6N+eyYjX9nv2QApR3+EeG9hOVus1c/tRF/5cJgc6a0LCE5GUJgrCKSGe0v
+ 7vI6I1FNlSfIlwjOYl4suYL/KQBtIBV89b8QRjxpt7boKn26fh52/bdkcJT+kbSou7m811GFRAbdX
+ Ny5JLjdMil0K3Dmoe7IgSjSR6mDsqjOXwWo0QuEadqFbgwfe+ELopD/+aG9s6RlyOzguCNppG/E6o
+ NKaan3iumr4ScWFDMhVLRM82LgF5C0WMYnGjvmuDw=;
 Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
  by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1pyAp7-00039K-GZ; Sun, 14 May 2023 13:27:41 +0100
-Message-ID: <dae15445-d03f-1bfa-b32c-91acd5cc8182@ilande.co.uk>
-Date: Sun, 14 May 2023 13:28:33 +0100
+ id 1pyAv8-0003D5-9m; Sun, 14 May 2023 13:33:50 +0100
+Message-ID: <90acf35d-70ff-8da7-322e-96bf3504001e@ilande.co.uk>
+Date: Sun, 14 May 2023 13:34:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
@@ -88,14 +88,14 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  qemu-ppc@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
  <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20230513100906.46672-1-shentey@gmail.com>
- <20230513100906.46672-3-shentey@gmail.com>
+ <20230513100906.46672-4-shentey@gmail.com>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230513100906.46672-3-shentey@gmail.com>
+In-Reply-To: <20230513100906.46672-4-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
 X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 2/4] hw/arm/omap: Remove unused omap_uart_attach()
+Subject: Re: [PATCH 3/4] hw/char/parallel: Export TYPE_ISA_PARALLEL macro
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
 Received-SPF: pass client-ip=2001:41c9:1:41f::167;
@@ -121,53 +121,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3rgxHFb8SNQq
+X-TUID: 55O+kQsde4wx
 
 On 13/05/2023 11:09, Bernhard Beschow wrote:
 
-> The function is unused since commit
-> bdad3654d3c55f478e538037d9eccd204e5fc8ee ('hw/arm/nseries: Remove
-> invalid/unnecessary n8x0_uart_setup()').
+> Rather than using a string literal which is prone to typos let's use a macro
+> instead which is caught by the compiler if mistyped.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   include/hw/arm/omap.h | 1 -
->   hw/char/omap_uart.c   | 9 ---------
->   2 files changed, 10 deletions(-)
+>   include/hw/char/parallel.h | 2 ++
+>   hw/char/parallel-isa.c     | 2 +-
+>   hw/char/parallel.c         | 1 -
+>   hw/isa/isa-superio.c       | 3 ++-
+>   4 files changed, 5 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-> index c275d9b681..067e9419f7 100644
-> --- a/include/hw/arm/omap.h
-> +++ b/include/hw/arm/omap.h
-> @@ -724,7 +724,6 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
->                   qemu_irq txdma, qemu_irq rxdma,
->                   const char *label, Chardev *chr);
->   void omap_uart_reset(struct omap_uart_s *s);
-> -void omap_uart_attach(struct omap_uart_s *s, Chardev *chr);
+> diff --git a/include/hw/char/parallel.h b/include/hw/char/parallel.h
+> index 0a23c0f57e..29d2876d00 100644
+> --- a/include/hw/char/parallel.h
+> +++ b/include/hw/char/parallel.h
+> @@ -4,6 +4,8 @@
+>   #include "hw/isa/isa.h"
+>   #include "chardev/char.h"
 >   
->   struct omap_mpuio_s;
->   qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s);
-> diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
-> index 1c890b9201..6848bddb4e 100644
-> --- a/hw/char/omap_uart.c
-> +++ b/hw/char/omap_uart.c
-> @@ -175,12 +175,3 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
+> +#define TYPE_ISA_PARALLEL "isa-parallel"
+> +
+
+We don't really want to separate the QOM TYPE_* constant macro and the OBJECT_* 
+declaration macro.
+
+It looks like the real issue is that ParallelState should be in 
+include/hw/char/parallel.h, and ISAParallelState along with its QOM macros should be 
+in a new include/hw/char/parallel-isa.h header.
+
+Once that is done then using the TYPE_ISA_PARALLEL QOM macro will "just work".
+
+>   void parallel_hds_isa_init(ISABus *bus, int n);
 >   
->       return s;
->   }
-> -
-> -void omap_uart_attach(struct omap_uart_s *s, Chardev *chr)
-> -{
-> -    /* TODO: Should reuse or destroy current s->serial */
-> -    s->serial = serial_mm_init(get_system_memory(), s->base, 2, s->irq,
-> -                               omap_clk_getrate(s->fclk) / 16,
-> -                               chr ?: qemu_chr_new("null", "null", NULL),
-> -                               DEVICE_NATIVE_ENDIAN);
-> -}
-
-A quick grep agrees, so:
-
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>   bool parallel_mm_init(MemoryRegion *address_space,
+> diff --git a/hw/char/parallel-isa.c b/hw/char/parallel-isa.c
+> index 1ccbb96e70..547ae69304 100644
+> --- a/hw/char/parallel-isa.c
+> +++ b/hw/char/parallel-isa.c
+> @@ -21,7 +21,7 @@ static void parallel_init(ISABus *bus, int index, Chardev *chr)
+>       DeviceState *dev;
+>       ISADevice *isadev;
+>   
+> -    isadev = isa_new("isa-parallel");
+> +    isadev = isa_new(TYPE_ISA_PARALLEL);
+>       dev = DEVICE(isadev);
+>       qdev_prop_set_uint32(dev, "index", index);
+>       qdev_prop_set_chr(dev, "chardev", chr);
+> diff --git a/hw/char/parallel.c b/hw/char/parallel.c
+> index af551e7864..3d32589bb3 100644
+> --- a/hw/char/parallel.c
+> +++ b/hw/char/parallel.c
+> @@ -93,7 +93,6 @@ typedef struct ParallelState {
+>       PortioList portio_list;
+>   } ParallelState;
+>   
+> -#define TYPE_ISA_PARALLEL "isa-parallel"
+>   OBJECT_DECLARE_SIMPLE_TYPE(ISAParallelState, ISA_PARALLEL)
+>   
+>   struct ISAParallelState {
+> diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+> index c81bfe58ef..53b80de0ce 100644
+> --- a/hw/isa/isa-superio.c
+> +++ b/hw/isa/isa-superio.c
+> @@ -20,6 +20,7 @@
+>   #include "hw/isa/superio.h"
+>   #include "hw/qdev-properties.h"
+>   #include "hw/input/i8042.h"
+> +#include "hw/char/parallel.h"
+>   #include "hw/char/serial.h"
+>   #include "trace.h"
+>   
+> @@ -51,7 +52,7 @@ static void isa_superio_realize(DeviceState *dev, Error **errp)
+>               } else {
+>                   name = g_strdup_printf("parallel%d", i);
+>               }
+> -            isa = isa_new("isa-parallel");
+> +            isa = isa_new(TYPE_ISA_PARALLEL);
+>               d = DEVICE(isa);
+>               qdev_prop_set_uint32(d, "index", i);
+>               if (k->parallel.get_iobase) {
 
 
 ATB,

@@ -1,111 +1,111 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6762152ejq;
-        Mon, 15 May 2023 13:34:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6G9kmHt4yCYe0SGS6o5LaQHL5oqTcw9jKKiJ3h8S4y/RZ95yMpweNSIPAp4SQhGfWzQgN6
-X-Received: by 2002:a05:622a:148b:b0:3f5:589:6a2e with SMTP id t11-20020a05622a148b00b003f505896a2emr18809035qtx.48.1684182898619;
-        Mon, 15 May 2023 13:34:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684182898; cv=pass;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6762325ejq;
+        Mon, 15 May 2023 13:35:20 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4oeZQ9BoUR2zVScl52v/2Jxf26zSxoQI0xtPQf077wHDDN6bVXFB1CX203LFPS7+WBedcY
+X-Received: by 2002:ac8:5956:0:b0:3f4:dec2:76c3 with SMTP id 22-20020ac85956000000b003f4dec276c3mr32336126qtz.22.1684182920574;
+        Mon, 15 May 2023 13:35:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1684182920; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BWjDcT0RBqJF8fDu0TbFaEMYIb+L0ZQMQlmtBPiH7g8KTRVR7DHlDaSslBHs356J4o
-         czK5yHNXsB+VIPqD34ICXc5ZGPqB8VyMUZIgPvIa2W24ae5YvghqRjEQByMxtdEigYW1
-         EvZmWbEA74/9N5wiOOuvIrK+EWTKsbigtPjDFmkUzw60ZtaHKvK9yQrNkxpZeWLvi5je
-         ItlKN8spWhARnHDWOws2gtTwHg5/3vP5t2t3Zhr82ikZBmgUg1zTNzO0TSP2dO7UGX7X
-         58L23xA1FQ21Ptj7jcHFl/7TbKuCRW6KrYDbUIWk4deKgM30Y2a9wfTDhrwx7Q/ikeTL
-         rIOg==
+        b=j7vqon6X7audhNueTAObtOMOES7aG/u0mVm2DWjw2Z5N2N0RWmylr/C08/in4c7oww
+         Xl22KPdPPKZFn9lfT5Xrl5G/nLnVAmKBnkOL2sMtdzNeN1i0NMYgg9o2Y2MKLCQ2l7OF
+         EJBMHxdC5+ROAANvfBPkN3LQrlK8NKyYac5aaUr8QjMjg3z4+k7nWEHg4fAlaswPQhFM
+         d5oEL8Hn5rpY2PshShQCP6uHwnMGN36h9IXWfWPc38k7E8uunCh+Vx/fCo90y4zAhQ/D
+         LcZU3xlfGM71EZ2Oy88+5bpLC1fEpX1ohnrNu0KptggstK5AaeRjpe3LbP1sZgA5mH0x
+         Fr0Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=HVg+Sul2eCNqaO2sgAcNp4IGLn6anE+wMYSapCSgDK8=;
-        b=Em0ki6qWWsMpaFA37jjrbpcuma9Wh3//ywZWb1kMTVTtJcOXlH7Dw0Udk6Yru29YfS
-         Xv0DXmMVzooHHp3/XuqnP/cZj5YPr9h3z2N4CgjTq9JiLx/zolIATbtG/tllKtP7KXXb
-         VyEh5Ia/bsN1k0QZngFmnan41JixCckbiwsS3uWXpYQ5I1/yr1zaWRBdB1XP24xHqZLD
-         msJXXxAE2R8HzyLdolR/x4SkLUetWuWUmPW+MTXejqATx11cEK9vzz1pvTtiO2tGGbPF
-         sgZ7sMEem4ztnNCqnx8zt0+zxqfFTNZuTmawn5qgz7s6XDGlR7oUDaq4EDi/Z7v83k8z
-         sH3Q==
+        bh=XDOq9HRyH5/gsQSti5MpSosqTuqTxsVXnU7sy+kS5Xc=;
+        b=ByfEZ0YVkzpt10bHQNA0hw8cuLjQ+K9zYSRrpelZ4sPDoPs6Aa3bIndqVEddsGf4Zq
+         GUVy8npCrRVOBZhjDPaCeGxLj13A4NXKksmc70EKmcWvcBQCiyoFJvDh6QvsQ5KnLrmv
+         WqzZ+j6f0fy4AZYZMxasQEv2Xc0UGyYb9wjk3AV22jVl5jlTajonsAqBBsJB1h/Y1+NF
+         VGJls3v2vu0T6fcclYaKt597XOGRotDnNEoPBUMjCI2Vdi5nwpO5qyTPzJpTjnoTWbRq
+         XBdQqz9alxilr8cFudo1hpnRLmxMqqETmzhZjJ9C5acWDUnuJ9Yjrwe2rcGvsjxYD3M7
+         H9Qg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b="H/K5Gc8P";
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=jynXgpeZ;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=o41irfzV;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=mU9HqUpp;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k19-20020a05620a139300b0075533d216c1si173641qki.57.2023.05.15.13.34.58
+        by mx.google.com with ESMTPS id h6-20020ac85846000000b003e4e4aab0a8si10271623qth.285.2023.05.15.13.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 May 2023 13:34:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 May 2023 13:35:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b="H/K5Gc8P";
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=jynXgpeZ;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=o41irfzV;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=mU9HqUpp;
        arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyetA-0008T7-PF; Mon, 15 May 2023 16:33:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pyetL-0008Us-Nw; Mon, 15 May 2023 16:33:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1pyet7-0008Sb-So; Mon, 15 May 2023 16:33:46 -0400
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ id 1pyetJ-0008UR-Uu; Mon, 15 May 2023 16:33:57 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1pyet5-0005K0-Mc; Mon, 15 May 2023 16:33:45 -0400
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ id 1pyetH-0005Mq-RO; Mon, 15 May 2023 16:33:57 -0400
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
  by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 34FJrv1C002991; Mon, 15 May 2023 20:33:37 GMT
+ 34FJsYDA016334; Mon, 15 May 2023 20:33:51 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references :
  content-transfer-encoding : content-type : mime-version;
- s=corp-2023-03-30; bh=HVg+Sul2eCNqaO2sgAcNp4IGLn6anE+wMYSapCSgDK8=;
- b=H/K5Gc8Pg6AELutLs3PkAed+rdFHMFX5H1DI/xjfyfTsZm/7B1kBCGRzDieaiPzGbdID
- On3YlNMwM0X1Wa4t/EkdWrdDs22TTrbGHPp9Q+QInZZhSxtKJ6JZazyXZxqRNJS9oY83
- VMopZUv0lNnl69wjOtxyoCVWIBfhJga6w7GOxmCNBZS907JhEmb/J5exJP1hmu/2Qpjq
- JyR0VKDq/r85OmnnUgtgI/0kDUsmkMp9Osl+siEu0DgnI7ktjwUpO+wQNPNUgPCroFTK
- upJaZZgQemKgayFj88i7IVhTAERBbLuC6kUdeTBgmd5Uw8+sLIQ0+vJzepQj5UKhLTyc Mg== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3qj2kdh9n7-1
+ s=corp-2023-03-30; bh=XDOq9HRyH5/gsQSti5MpSosqTuqTxsVXnU7sy+kS5Xc=;
+ b=o41irfzVrzFmkcuwPdlY0RVcX7NlLhoRUxMKQrf7TV2BokzvVgJC+ZIbSUKtjNglmYSh
+ WImbyujweuskiaTrfei+mJGNh+Q4L4y6NMJIZ43BzH+ZgNDIswRnomFJRbwm1JRvI84k
+ ECuUBZHEGKMUQ1T+eqru9H0/iBBI4b8E+eutwnnH8DJkzNbAwcZ+4AmhCKvEmVFS2FwU
+ GD6m7CKbmCsbai+E4kAhW8d6Bp35dBYpCEith2KwL8gVj1ov42mOiC1ydRF2ZbwtkThJ
+ hAbS6mngK9LBpYTQKwzYfVtedUv0iHAvlE31K26+O4GsvQOggtwL0a30TiE9ntfHlVT+ JA== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3qj1fc1863-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 May 2023 20:33:37 +0000
+ Mon, 15 May 2023 20:33:50 +0000
 Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 34FKJtOv023163; Mon, 15 May 2023 20:33:36 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam10lp2107.outbound.protection.outlook.com [104.47.58.107])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3qj102x7t4-2
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
+ with ESMTP id 34FJgwW4022140; Mon, 15 May 2023 20:33:49 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2048.outbound.protection.outlook.com [104.47.66.48])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3qj109eb8v-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 May 2023 20:33:36 +0000
+ Mon, 15 May 2023 20:33:49 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Gy9/vnZOsxxcesOr1BNN4zV0QpyZPRfbtELh4ts+8UrnmJRGDrK8MHoUXC1zQJj6G+p8kTsYNVY9H3SxPCJ74ULT+RDDdWNk7RQ/D5UZfumnKywpDuSnW0CAb84TS1mH6jjL9JgkGNyRieSBxV1dZS1NtnXXsXxD06XsrgOiI37eDeG6SmaJS1dWJXopa3P/dHJSUpZnXuiBWpRaJAaiNY740pgUUuIKE6Jm6ObtVa0LT4vK3Wt9j5y4BC2BpxSFSDmNJMGv/MJFAC8ksu99E9V9LuKMs5wH8icZ/hMYbvuq0cMdAElWrswtGM8CEKXL4bs6nMPJqTbgUAZt2MAasQ==
+ b=a9Aoj8DHSFsW6n0MFZgs9622vttnd0l7IZEg3DiirIt7Tzxzl3vl1jLM7CRZkve7wsuAxSmQD5UTqnjEHZNF6VT3XOqu3jtldmPWPmzTERzcdJhFQIR/HH+Mb3IgUyXIsB2brHiITzktg9eEWrmnY+TGduNzEyqYqDJI/LdIMUFaoitXrgjslmLTjOm3nVSwNpCwqh2qFPFwdz612e9pom+7a3QkWNQm6fCmCyuEaryWQ8ZY3DDM42NMgnMJdWTcsM5yyGZRlRaEUhIv8w+elLXdS651aTUJ/Z9eE3Zx3lRDnU9xsTNdTZ3mDaY8gGi6jpYkGjdRlCtjaJ+yPBoMsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HVg+Sul2eCNqaO2sgAcNp4IGLn6anE+wMYSapCSgDK8=;
- b=jYoZa91vTyCY9OHeNSR/H0rrGr82Tusse+gBCYJnEaYOjTQHBpzaLVCUPgWjCg3/wbkeP6uzksrxD5XhEcc/iuMtyGv1q5OEg2ebJGFTlJYh6T6eWykQxcxKqNAprGjuO6DsQ336cx40X+pqdrUESBRZBXwYRrhg12oThV59JOIdvxfNDd1rtGK9jPf5TkMSLc7D0tpWrMeV4cZp0UrwXZ8skC4hep9x/ntOYKYBshsrcddl+BsA2l6scCDnou/P7N7JthzYcZyaJFtp4gE3ucICmrkunrkZOF02sq3Dm3kx6k301ekJEsuV6wYfntFkOp/rNWHkAbD2N+lzSy7xWw==
+ bh=XDOq9HRyH5/gsQSti5MpSosqTuqTxsVXnU7sy+kS5Xc=;
+ b=f353ZboQbNBlW2QI+GkQUKsQ4E/mCiG2wuQP0gI6Pkg+7dQSPNn3+K/RhEa05FRf+nQYBs1FOgHn0p5hi5zzvQogNYp6KWRhdSbSfgCu2RvxA/WgSO28+Y81nBdAKZyClJYwUYwboBMkx6ScEkvNTgUZoxAVTv0PSCgjGOh914OyVBTKM6zclCYeyl8jO4izjVCnXT02FX0d6FQwmelmuigD5HfsgGXnyIet+w5QecGtEyhrJPxsL/bQJbC2nnatqbSA1iMa2v8TvysHLnDecLgdGVi04zgb8m65v0eHaSJFP6CpZIsNsZjvcKAFRpgU/BvgHlTMp++1fPnJliFp6Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
  dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HVg+Sul2eCNqaO2sgAcNp4IGLn6anE+wMYSapCSgDK8=;
- b=jynXgpeZXpBXqk5jKkshGTEMF/cl0u70bp6GCdiNNyI44Y3GFSqDbk2pv5aab1vX9tGFIMeLeIriM5Kha3r/XkYsXy8hEzUXNL+QiH8m7FD3c3KAlhIVXjkZi6to8EZ3TN9KCeJkQeYua1vV2OiIk4hw5QFxILWlxul5J4bx7IU=
+ bh=XDOq9HRyH5/gsQSti5MpSosqTuqTxsVXnU7sy+kS5Xc=;
+ b=mU9HqUpp94X+wo9KlB/Agqq8YbusPFDq4z7kXVokDlqSCJnJjIDlkLTIZjoVSM/SgGBJyIKnbP0KoTpTK/WgI73pqZhOqRxjCOTgLGMemj/tCApgqUeBCrGdHM0x7oUejsvwiR41qJ5ypu+dv+9z0yJ53MkhJQW/HMI1+7hS7m8=
 Received: from CO1PR10MB4531.namprd10.prod.outlook.com (2603:10b6:303:6c::22)
  by CH0PR10MB7412.namprd10.prod.outlook.com (2603:10b6:610:184::17)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.30; Mon, 15 May
- 2023 20:33:23 +0000
+ 2023 20:33:28 +0000
 Received: from CO1PR10MB4531.namprd10.prod.outlook.com
  ([fe80::ac1a:bf88:bdbf:2573]) by CO1PR10MB4531.namprd10.prod.outlook.com
  ([fe80::ac1a:bf88:bdbf:2573%5]) with mapi id 15.20.6387.030; Mon, 15 May 2023
- 20:33:23 +0000
+ 20:33:28 +0000
 From: Eric DeVolder <eric.devolder@oracle.com>
 To: qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  imammedo@redhat.com, ani@anisinha.ca, peter.maydell@linaro.org,
@@ -113,124 +113,336 @@ To: qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  richard.henderson@linaro.org, eduardo@habkost.net
 Cc: boris.ostrovsky@oracle.com, miguel.luis@oracle.com,
  eric.devolder@oracle.com
-Subject: [PATCH 1/3] ACPI: bios-tables-test.c step 2 (allowed-diff entries)
-Date: Mon, 15 May 2023 16:33:09 -0400
-Message-Id: <20230515203311.2139-2-eric.devolder@oracle.com>
+Subject: [PATCH 3/3] ACPI: bios-tables-test.c step 5 (update expected table
+ binaries)
+Date: Mon, 15 May 2023 16:33:11 -0400
+Message-Id: <20230515203311.2139-4-eric.devolder@oracle.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20230515203311.2139-1-eric.devolder@oracle.com>
 References: <20230515203311.2139-1-eric.devolder@oracle.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SN7P222CA0007.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:124::17) To CO1PR10MB4531.namprd10.prod.outlook.com
+X-ClientProxiedBy: SA9PR13CA0178.namprd13.prod.outlook.com
+ (2603:10b6:806:28::33) To CO1PR10MB4531.namprd10.prod.outlook.com
  (2603:10b6:303:6c::22)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: CO1PR10MB4531:EE_|CH0PR10MB7412:EE_
-X-MS-Office365-Filtering-Correlation-Id: e00a566f-cb51-4b93-0fa4-08db5583a0c4
+X-MS-Office365-Filtering-Correlation-Id: 9fbb3cf6-a31f-4d9e-3866-08db5583a3ff
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hwoAyLcYNqa6YS3R9TUdxnAENldbsmk94XHdDRYlleUI+KTJpqnT/VV4n9fVRvaT0FABRHzZuAhdY2P2F6WlT/d5/9Qh6oFW3AZ/icVU3TQUe8T/EVd4FILBD549DeneJxP3w8ANJ7KLAiiaK+NDyTacy/jUmdQs3qtHNKHbOIaQKTSQ9Ha0DsCa32GiSiPpZ0spP+i3juGPYrzyUGaK9IauZfTMDVaZANuYVQPKq3Fev0kX+ifzjL0CVuvNQP8JWO1VUv+ZTAafJ7UHJOGkby9C2xypyigmczhU13RryFsCAvLciipALSRSgggBO/ZAWVA4eLV65j91KZS+dIDPE6FC/EX3YMDD0ai5SP8WDH1XzftLikT0leC3mNVdwuRDtN6vPY4izEpNT3KRy60khtu/RUxNtj1tuRMSFgWLE+9dv1dNxqzyn5zWDUHlB6yjI76/eEH5+WcyN0H0r8iaQ+mHoo3Auh4GQgbO27u3/WtEjgOKwQoPzjd1cFPzJCRzueflLXcBcsN3XkloAx5pAbPO4xOHOBpWQUKXyMcUtTC06G/VulESs+4RTrnqE+26ucVsBE/SRQmHvccHvzsn0dbBqhOY8KIb+U8CoqG3Hr8=
+X-Microsoft-Antispam-Message-Info: Pzd7sIiTIF2BEK5IqiLRJDPTTTurk1Q2HC+C3P1pMhjicjQvZbtSNhQlKgFpLiCWgmGiR6LOHV6qeU1ZZK1KebOJVCDAZDhx0JvPvLsnDL1g8Gdy3aVpp5JIWq4Z+qLWzj5TEzN8rmSa/WpIUIDHTwBhgx3aP+UZjFYiOehbYkQ/qs2zJpaBwVYV1ALMfIKRwI+xuhCSF345jIDErlbzupZKqqPNL6pOqxRey+6TokKtfDSdJm3NfC89ncVblyHKTvzSxug8EFgVGEuAw8RgxtbbBAULf61NGbStQZFkP6rhoOrjcZiUD/7c5s8dlGpTMMwdM9oSObbV9EdVIB4p7J1GD1PWoKdcEQx9ri32cQB2Ryr/tuuEjVIuYkivZp/1wK4fA+BaoS3ikF4rvVH0XilJ1GfynWEl1LIEAEF6rF734VjwBEZJZI4Ru+u/bN+hkEF5mzW667Z/J7gOsttFTiWJZ+haLJLmM3QU12mTn9txDPjRABjMvcTgIW1NTDv5Yx6wPzt3VQ7/0R+YwUrj9kqrD4Iy1rKazu3xUUh/n1KJlzTsKIgc9UIZ9PjlmAAVbH5j9q63yKze+jATchQI5hbjzVjrOGpBlyS4T01r6T0=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CO1PR10MB4531.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(396003)(39860400002)(366004)(136003)(346002)(451199021)(86362001)(478600001)(36756003)(107886003)(186003)(6512007)(1076003)(26005)(6486002)(6506007)(6666004)(316002)(921005)(38100700002)(41300700001)(66476007)(66946007)(66556008)(4326008)(7416002)(5660300002)(8936002)(8676002)(2906002)(4744005)(2616005);
+ SFS:(13230028)(376002)(396003)(39860400002)(366004)(136003)(346002)(451199021)(86362001)(478600001)(36756003)(107886003)(186003)(6512007)(1076003)(26005)(6486002)(6506007)(6666004)(316002)(921005)(38100700002)(41300700001)(66476007)(66946007)(66556008)(4326008)(7416002)(5660300002)(8936002)(8676002)(83380400001)(2906002)(15650500001)(2616005);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aJoXb/Kz08Wchm/r5Ie6Bf2FbSi36/Oi8dh6+Jx+5I3L09Ilv6xo/RPnLQ0s?=
- =?us-ascii?Q?vnPRDqxpnGbk5lpWPZ+NZW+jQtuds/qf9CW0XKVyUz/n7aZpddr5orvLU8sX?=
- =?us-ascii?Q?Vr7YmfXU7XactnIHibHgKLLkCYFXqTnf6SW4ODuIs7ncXy1I1vuenSfQw6+7?=
- =?us-ascii?Q?OGVAkBwYnqg2dueIp5pIwfMcVSAh/qMRuurd7hYph8LPt3Vrzin4cAaQm5Ih?=
- =?us-ascii?Q?SzUFMmDHPOHaHRwV9KbD3c8+apW3ohwf8AZHnkWCASWWXJP7c/GYP8nzJqll?=
- =?us-ascii?Q?j2HbzFUxcPcGn/eNlLsT+IuqbMRxQJqJulB4MaabVQ9aHHnAcv9fceMWt9Qf?=
- =?us-ascii?Q?6RDzHrafGSkzXYLKzsc/ISd94W2Mj1vvEhrF++S9pwRXizb0dV79B9xrNcsr?=
- =?us-ascii?Q?C4D8xTEn9yGlPWZhgU5EPyrsAIeVQpxtI7fmYTyf3HvqQoC+YW1c8GYy4cI8?=
- =?us-ascii?Q?NS8Api2wm4DYXJyQ+zj7sgesYUHvKrTvnIFIWpF8Etn6u1fLjxJURh6vfV7Z?=
- =?us-ascii?Q?H05D2QLHH3mfDRZrHHq2/0KdSiV0FTsmYGZ8tSxqc8CxdA2Oqt6dzSv+nlXJ?=
- =?us-ascii?Q?lxW8I7L3Fou29/ewGgCde+/IdISwLVqxtbI4NkfNcQOlhgZwb781KiaweLoi?=
- =?us-ascii?Q?xqvXupXWkYsxPAARpSqEXj5xQ2KWuUAh3qLnpB6L7VBDy2VDh0ITVmm1+xMq?=
- =?us-ascii?Q?KWIG1d1I5UGkwHl4lpZiSAapv6lbi3fXZFrnXwpb8/suK+JgE6ZcA+LAxhiv?=
- =?us-ascii?Q?DqF2RCkXEIQEqv99QlPI1P4ERx5OhuJOdj3DMeitAnQIKn/Hug/NKR5DKIYw?=
- =?us-ascii?Q?qdI04BeM6t79+HB/I781n6vwJCQ+AGfAOgluo272tjOpX3/8QPbK4wOA+E3x?=
- =?us-ascii?Q?I5GtIl6C46mzVY+/gUZwLDdIqRDa8oT6CGnFcIdTEfqsAw1yie8IlJKib8BN?=
- =?us-ascii?Q?k986GCDXiY9aOBWCwf3CZBXZA7zSaaJCS383v4UsyZwTXNJBdSeaxRR0cF2v?=
- =?us-ascii?Q?PXPkTbhHVF+H81D9MQxJ2k5Ub2O1wkh/PD4aqon3uCmf1907OiiQcHHh/NJx?=
- =?us-ascii?Q?6BH6pQYK4pm+IkpAQ/ywgdDJ1LBO3L6QJ5vPeP1vudwPtj6R6pNw9SnU41xl?=
- =?us-ascii?Q?GVv4s6pys6GOz3hPb9C/F95bkNU+4GidS/PXY2IdadKOfVDJ8/WmnpVgSDS4?=
- =?us-ascii?Q?3Nx5UqeKyBRobcyq7CtDvnCU7ltnWi2oN/iQkkg593fBZtGfdXJbh6xYYKaX?=
- =?us-ascii?Q?kktQALj+x7P0xfSGdh+TNxoADAFKsQ6ZO5hqWrxpWI8274xKqVn2VRfF0OXl?=
- =?us-ascii?Q?XSiiK19aWJJIC4TCnPBIrxm+RqFEtO2Z2jP63dDeyPegQDxuW5vlYe/BAuqR?=
- =?us-ascii?Q?hr0KOAnyNoGjr7I1bECP5BiroK7w/iaWjVWRvDG44iI3tHfhlBMBQGQXrCUc?=
- =?us-ascii?Q?/nxe56SVkOCLEFN2oVd44mjVdMcosq3EO8BebDydP0WBVp3ITEIvsSGhGrHg?=
- =?us-ascii?Q?+ViUGhlQ7QvLTBB6W4GLNSIi+xEv4khNhAIa3JLS7Ytpdj15dcnSANsW6Oje?=
- =?us-ascii?Q?+VzMTJK1AMnncZKQOfx92hM9MEHrAZJVjzYqBBd3+wt6lfDgZYhCPwOHSKdi?=
- =?us-ascii?Q?Jg=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?k26KhE/24Yub46ZdnKXAnRVaTqvuEhArpY/e03Rr+Ojhs8O2FlTHmOxitd4R?=
+ =?us-ascii?Q?xCEDnUq86KVypKBHRkz5wkLzOur/K3ROVo03XZ/yEYhufMG+gAtal5pPFNA2?=
+ =?us-ascii?Q?wx5HzVJq+Cj4SDziKHOHgbfXrPTKOlHvnEqHOyhsALdia2AeU7lAq/QugT0P?=
+ =?us-ascii?Q?SwN3l50l4Ou/0Rh245YSRpz3DvwKo5ac6rE96wtj6doLvEETtUxVTagfaA+S?=
+ =?us-ascii?Q?uckLgjHHvPTeVeP4L+8OMxq8hVshuP5507JUhaghYH7c2Y7zlZOhtTzfrUFa?=
+ =?us-ascii?Q?DKIgAARa0aVbP1+ZUGtWS86G7zu+aqzsl97mioIXtTC7wWqeLg1O42aU1aDw?=
+ =?us-ascii?Q?r7jxpO6g05aPEOdmnuOUs5l5d0hQs0LtizwX3IHQPGO1BYfkh3/kfZR+USoO?=
+ =?us-ascii?Q?UbGwfRM3/SBI2I9NiqhypGqYix61Iy7GXoUYJfiZ8aht4BZBeeGEK5XJFUPf?=
+ =?us-ascii?Q?AFxySeBhEj2If2bmz7bJduzyRqzs/e4KEVHYBBa2ndRZR8bu+0UIFflSKI7f?=
+ =?us-ascii?Q?/L7zMtBAnkRq2W5vL7cclenzTWGjpr+bgXoqhfsWaSOQAcFfAogxZvo1XAsX?=
+ =?us-ascii?Q?MxiPNU/igeaWH3aqgATR5mjWGfh5gn/tf/rGkVufk6GZa3AowOPl50PuqzdK?=
+ =?us-ascii?Q?XAw8mqopJzQ7pY4paVn99UNpPFXr2AFUy62zhBLtOqqFQYj5JVvzwQeEYbTz?=
+ =?us-ascii?Q?YxypHZ9PFs1JiZMScy4kCEIZfAKgVqAiJo4vkfEd63Tl31D+lbfYZA93vEHs?=
+ =?us-ascii?Q?kCRLJWqz70F/KRjm50igcXJOlWiZ2icgUakpVXLdR1HOx5IimnEioGTlzmJw?=
+ =?us-ascii?Q?UZGgzynSJABYjYotZOc3d9YQRdnlTqeOYQxRS/USZAnuxAQMgaCWGiuSTHqG?=
+ =?us-ascii?Q?vswYJOZq0/BY6y11blIIoxLbbNTYytDdUxBrwd2u5cdD1XsJ/Tu9Hy9UUXPq?=
+ =?us-ascii?Q?NnsN5yMLDhM/1RjuRuChwTavlqc8qIz09RuZMQV2Aaj4AXWi6BDdyAxwr0ew?=
+ =?us-ascii?Q?BWOwUqC68myO3xegpuq96ztkxB9TDYuZwLuHjejlHh58fvKgkRK1mYVeWAdy?=
+ =?us-ascii?Q?vncnCBn7VKsmptwF37zTwO2YjLus2LCiOrehFOdwNVT3YdFYXDKjDKaP5XfQ?=
+ =?us-ascii?Q?o8XshQNlTn+At9UFeT2ccmQiOg2gP8HLWGzflrulHgH6A43iTfn2L+OB0nsH?=
+ =?us-ascii?Q?xOkiVIydcPzvmvM+A1+WVpXAKnn1S0vaFBsZnp4bO2bhdA23M3ZmUM5T0I+W?=
+ =?us-ascii?Q?vmATeY786Lgcs2vgeXXJdV45FTvgakXzRph823LIUePE7O21J8ZY0eqpjI1x?=
+ =?us-ascii?Q?+OBET29ycoVvpEfQlycKtuccKJ9bM0npP39I3rhM9EfsG+ZPBixE+NzxfKUX?=
+ =?us-ascii?Q?DtIEpR1ZIzC8M/a8Gz8aKJxCkVOkqw4tpe3psbzIs+R7j86O8LTpoerNgEbM?=
+ =?us-ascii?Q?hLZjkHauxHJqJFEyHM6SVLsT7T39yzUTuv0BSHGbIFU1PzQ24yLNJcklcesK?=
+ =?us-ascii?Q?Za44u2lAWKwmDaxcoid+dW0eDB1RG0j/MnBUa5rPD1EAPMRDrYirXSSuWyW3?=
+ =?us-ascii?Q?/iASyZfy6KjJWXTY30WsK0FR/ceAFMD2Ld3tk7gj1Xt1G3UB8fkwAvU8eSwC?=
+ =?us-ascii?Q?Gw=3D=3D?=
 X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: UChC2ltVtNKKj5FM9LWBrjC26Dlo5JEgMuBNKeH5hEIdbVd7AzuiowuTKsGGQktKKnrVEXwUQ44mbLN4ODbjXGYwe21u2C1tELyVwyRZpHgHjOEPHpHALGYjdkpWdNl26/ajGQaVGGXCtWtI05Qw0BT0z2o3/v/FFcN4Joj8rkQwHHqpaQ8VkL3zj4VeLYF07ikNVRZ/whNXnUepNAu3OCtHUrkBfa6IKobNNeqAUXZjJYN+el2m6KjKUVDeiYBCJQubR9LopqT1TjitBoi9pG4F+I0uiwOaxOIi3HJAwfZVLrQaMqPgPXdKSdrRqayJCwH6Fo2MItY3DXM4uXYFtrfsaHtC4xAO+xyyHVHxzossP1pVTwBDcnOKmxTmFALR51DmPTEa364xEvWy5y48w5SG9kv7u2mQEb8NpMwusq5ZtNsDN16pZ0vtPbcAr2W90ANqVWetRRAi0LyZBhFgET0rXsE4G3cx52SO/ZpNivGdagGZACxxYe8thH1RE/4VeTxNmbi+A8jqoTI1HHcryfw0N1z9YSo74gqAAPRrCfSu4Vhf2VJr86RvQdMVTcWm2oBBuhmx0alS7co+8/IVZ8NK9VkoGcm5P2dDphntRGRfmc1QGWfAjU+IuQqw1yHo/E9DS0SitbPOHhbt1Wjx2mBHfbYdiZlJqi/bfjldOT6KOZG718IyiWAAPWYeE+MvVeGXQK9gjprurKS2ad8qvPVY2kJLRi88JV/s7RxhL6JfhVYbfBr6go1kQWt1F7d0pAQ/r/92/L7HQ+TKr1nWFJPQr43+lzQdPrMxkli7s3tapgs15fYDZKC2K7x+9uqEDdnbb41ECvcgII9ue3jGFdj7ecx9eUjDj104Wvrof4Fj+BQbadWq6Ri6+D2CXwNnDpQUscglndMIyCDavxWjiQ==
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: vhBSqlkyz8JeLH+o2x/masp9h1baCnx/bkSYo/oE2M34VgyRjgVxo7ta9Vpkja4iQhYDs7OjqDbnECt7vGWSx5iTDmI2G1PqbxC73VSD4Zqz3KgmxTZTeCCTTqz/surqiKMI4S69s+5zjG5ROG1PpmKqTfw6bfgVLZf/01th7d/mh9T/zmcpDVPOOYDBF3JoQdfaLGl9yQzkLe/dKkZrk6hhLOdsQ5xw3QRVPxrI3cmJThj6uyuZdtUInC+E0ppD6iRlEh5k/bjLbDVZOQJuTfdpJD+Z12c4WIUjwEnr1xfifi0uRBDWU+Z2WqqfPmFb2IVKBBTxP+kVrcIEOVgdR3+hOgjs9ciOU4FmocloqVIYDkvHUZGDBLmHs/YXr1041S8p3MJGHEAZTqOQvZRDdZOt4A0aq7Z4PONy8Rdk0YMrb6gDHhcBrKD8/Q7TB7nwu3I2ohWUlwXwkSsCR9cBY9HnyOVwvWNWPeFzbJqoMJ6gwd7qo3kDdi1E2gbQQxb9z4YIDuZHQrgbzYKrjpF3RKXsRmO9RiWmX6i1kbIhc98g1atAbXvHlB9iPidbECWZ5OL8EM8wNNKHDu8cgysO+IVt1QxJq8koAFYFLnPaVUbU6o0sQg+hVMA0X+zSY6hffhaw5iIFBL8dZhcEigkm/Yk3GE8XLmmxgCTaK21ZJNIkPa8o0B21hXWVaEtKGMRcSTwE2ZC9l6LkUYiOCG5084RJUrAEcc7BZOQHYIVw7BNFYHzEpmd44O9/T8ysEI2RyAIIBCncZMm8qGrpRdtw8uXqMbqWQ+MTHbCKlk2nhALGba01JoO51gyIqW252JHQwqrJ9LEj7+DlZkEZmXhGWlb1YS34kdopJ0yMG1f5IAH3u/nWcBjopDfV3kugGK64yDD6BTkvea2uXUziH3RZQg==
 X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e00a566f-cb51-4b93-0fa4-08db5583a0c4
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9fbb3cf6-a31f-4d9e-3866-08db5583a3ff
 X-MS-Exchange-CrossTenant-AuthSource: CO1PR10MB4531.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2023 20:33:23.1314 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 May 2023 20:33:28.5253 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AM+RyLgm6dJPhpFOceOhhMzPfwEFtjZ/8xkAqUm+9GP9ee1VQpjpW+WEon06HiaxB+qASdmZgwB4rmWrnmjGfMs7/cmUQ6Ku/0JZd5Fny+I=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 81+ytgqlhzfHOxlS4v18j8JghieyjI4oReRENS7/afGNeNkisL4QJ7sFWl0ENnRmI4m4r35K9zcN+1YPFOR5Q8baXutq3w9162kS85olF7Y=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR10MB7412
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
  definitions=2023-05-15_18,2023-05-05_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0 bulkscore=0
- mlxscore=0 phishscore=0 malwarescore=0 spamscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2304280000
- definitions=main-2305150170
-X-Proofpoint-GUID: iz_tGmff-RLzdMCaEksK7KxDc57Rv16x
-X-Proofpoint-ORIG-GUID: iz_tGmff-RLzdMCaEksK7KxDc57Rv16x
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=eric.devolder@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0
+ phishscore=0 bulkscore=0 adultscore=0 malwarescore=0 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305150170
+X-Proofpoint-ORIG-GUID: Y-1rVhTaBCifS853evbAiPI-D5or3iK1
+X-Proofpoint-GUID: Y-1rVhTaBCifS853evbAiPI-D5or3iK1
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=eric.devolder@oracle.com; helo=mx0a-00069f02.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v3jVBUBnCCQ1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Kg/yVe6+AUNJ
 
-Following the guidelines in tests/qtest/bios-tables-test.c,
-set up bios-tables-test-allowed-diff.h to exclude the
-imminent changes to the APIC tables, per step 2.
+Following the guidelines in tests/qtest/bios-tables-test.c, this
+is step 5 and 6.
+
+The MADT/APIC table diffs show (for pc, q35 and microvm) bumping
+revision from 1 to 3 (and checksum changing accordingly):
+
+ Using expected file 'tests/data/acpi/pc/DSDT'
+ acpi-test: Warning! APIC binary file mismatch. Actual [aml:/tmp/aml-9UKC51], Expected [aml:tests/data/acpi/pc/APIC].
+ See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
+ acpi-test: Warning! APIC mismatch. Actual [asl:/tmp/asl-CFKC51.dsl, aml:/tmp/aml-9UKC51], Expected [asl:/tmp/asl-TMFC51.dsl, aml:tests/data/acpi/pc/APIC].
+ --- /tmp/asl-TMFC51.dsl	2023-05-15 14:15:26.599183824 -0400
+ +++ /tmp/asl-CFKC51.dsl	2023-05-15 14:15:26.598183818 -0400
+ @@ -1,32 +1,32 @@
+  /*
+   * Intel ACPI Component Architecture
+   * AML/ASL+ Disassembler version 20230331 (64-bit version)
+   * Copyright (c) 2000 - 2023 Intel Corporation
+   *
+ - * Disassembly of tests/data/acpi/pc/APIC, Mon May 15 14:15:26 2023
+ + * Disassembly of /tmp/aml-9UKC51, Mon May 15 14:15:26 2023
+   *
+   * ACPI Data Table [APIC]
+   *
+   * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+   */
+
+  [000h 0000 004h]                   Signature : "APIC"    [Multiple APIC Description Table (MADT)]
+  [004h 0004 004h]                Table Length : 00000078
+ -[008h 0008 001h]                    Revision : 01
+ -[009h 0009 001h]                    Checksum : 8A
+ +[008h 0008 001h]                    Revision : 03
+ +[009h 0009 001h]                    Checksum : 88
+  [00Ah 0010 006h]                      Oem ID : "BOCHS "
+  [010h 0016 008h]                Oem Table ID : "BXPC    "
+  [018h 0024 004h]                Oem Revision : 00000001
+  [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+  [020h 0032 004h]       Asl Compiler Revision : 00000001
+
+  [024h 0036 004h]          Local Apic Address : FEE00000
+  [028h 0040 004h]       Flags (decoded below) : 00000001
+                           PC-AT Compatibility : 1
+
+  [02Ch 0044 001h]               Subtable Type : 00 [Processor Local APIC]
+  [02Dh 0045 001h]                      Length : 08
+  [02Eh 0046 001h]                Processor ID : 00
+  [02Fh 0047 001h]               Local Apic ID : 00
+  [030h 0048 004h]       Flags (decoded below) : 00000001
+                             Processor Enabled : 1
+ @@ -81,24 +81,24 @@
+  [06Bh 0107 001h]                      Source : 0B
+  [06Ch 0108 004h]                   Interrupt : 0000000B
+  [070h 0112 002h]       Flags (decoded below) : 000D
+                                      Polarity : 1
+                                  Trigger Mode : 3
+
+  [072h 0114 001h]               Subtable Type : 04 [Local APIC NMI]
+  [073h 0115 001h]                      Length : 06
+  [074h 0116 001h]                Processor ID : FF
+  [075h 0117 002h]       Flags (decoded below) : 0000
+                                      Polarity : 0
+                                  Trigger Mode : 0
+  [077h 0119 001h]        Interrupt Input LINT : 01
+
+  Raw Table Data: Length 120 (0x78)
+
+ -    0000: 41 50 49 43 78 00 00 00 01 8A 42 4F 43 48 53 20  // APICx.....BOCHS
+ +    0000: 41 50 49 43 78 00 00 00 03 88 42 4F 43 48 53 20  // APICx.....BOCHS
+      0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+      0020: 01 00 00 00 00 00 E0 FE 01 00 00 00 00 08 00 00  // ................
+      0030: 01 00 00 00 01 0C 00 00 00 00 C0 FE 00 00 00 00  // ................
+      0040: 02 0A 00 00 02 00 00 00 00 00 02 0A 00 05 05 00  // ................
+      0050: 00 00 0D 00 02 0A 00 09 09 00 00 00 0D 00 02 0A  // ................
+      0060: 00 0A 0A 00 00 00 0D 00 02 0A 00 0B 0B 00 00 00  // ................
+      0070: 0D 00 04 06 FF 00 00 01                          // ........
 
 Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ tests/data/acpi/microvm/APIC                  | Bin 70 -> 70 bytes
+ tests/data/acpi/microvm/APIC.ioapic2          | Bin 82 -> 82 bytes
+ tests/data/acpi/microvm/APIC.pcie             | Bin 110 -> 110 bytes
+ tests/data/acpi/pc/APIC                       | Bin 120 -> 120 bytes
+ tests/data/acpi/pc/APIC.acpihmat              | Bin 128 -> 128 bytes
+ tests/data/acpi/pc/APIC.cphp                  | Bin 160 -> 160 bytes
+ tests/data/acpi/pc/APIC.dimmpxm               | Bin 144 -> 144 bytes
+ tests/data/acpi/q35/APIC                      | Bin 120 -> 120 bytes
+ tests/data/acpi/q35/APIC.acpihmat             | Bin 128 -> 128 bytes
+ tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 144 -> 144 bytes
+ tests/data/acpi/q35/APIC.core-count2          | Bin 2478 -> 2478 bytes
+ tests/data/acpi/q35/APIC.cphp                 | Bin 160 -> 160 bytes
+ tests/data/acpi/q35/APIC.dimmpxm              | Bin 144 -> 144 bytes
+ tests/data/acpi/q35/APIC.xapic                | Bin 2686 -> 2686 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h   |   4 ----
+ 15 files changed, 4 deletions(-)
+
+diff --git a/tests/data/acpi/microvm/APIC b/tests/data/acpi/microvm/APIC
+index 68dbd44a7e35a356083f086df60f70e424c4249f..672764e711d80402890902ba9ded10915770e84c 100644
+GIT binary patch
+delta 16
+XcmZ>B<8ln}barE4U|=qq$Ylcn95e$)
+
+delta 16
+XcmZ>B<8ln}barE4U|=kn$Ylcn95Mq&
+
+diff --git a/tests/data/acpi/microvm/APIC.ioapic2 b/tests/data/acpi/microvm/APIC.ioapic2
+index 3063c52cd3e9bbed29c06031b375900f4a49b9e0..6f24fdb12ce3f1c13df7ff835e475d8023e20d4a 100644
+GIT binary patch
+delta 16
+XcmWFv;&Ke|bPi%*U|?>X$mIb59$W*3
+
+delta 16
+XcmWFv;&Ke|bPi%*U|?*X$mIb59$Ev1
+
+diff --git a/tests/data/acpi/microvm/APIC.pcie b/tests/data/acpi/microvm/APIC.pcie
+index 4e8f6ed8d6a866429fc17aecdeafc3fb5ef65fa3..2239ca76a607fb1ff9d392298e2bd6461bba7ecf 100644
+GIT binary patch
+delta 16
+Xcmd1H<8ln}bk1X7U|_DA$dv*BBD@3c
+
+delta 16
+Xcmd1H<8ln}bk1X7U|_77$dv*BBDw?a
+
+diff --git a/tests/data/acpi/pc/APIC b/tests/data/acpi/pc/APIC
+index 208331db53b7dd5c6205cce0e95427636b86dd64..868a3432f0295257393e45b75483ef4bec455d74 100644
+GIT binary patch
+delta 16
+Xcmb=Z;BpM`bgp1vU|{Z;$dv~GB#s0m
+
+delta 16
+Xcmb=Z;BpM`bgp1vU|{T;$dv~GB#Z<k
+
+diff --git a/tests/data/acpi/pc/APIC.acpihmat b/tests/data/acpi/pc/APIC.acpihmat
+index 812c4603f2701494f6bb761570323158a20d4043..125d1ff0871f772bc8cfe3e2afbff70edf221291 100644
+GIT binary patch
+delta 18
+ZcmZo*Y+&Sa4DfVrU|?WiE}h6#1^_241Tz2t
+
+delta 18
+ZcmZo*Y+&Sa4DfVrU|?WiET70#1^_221Tz2t
+
+diff --git a/tests/data/acpi/pc/APIC.cphp b/tests/data/acpi/pc/APIC.cphp
+index 65cc4f4a9aa2676140a6525cdac1e838274b1e07..a2c2a24e5e3cf143b57a8932f78eeda6d7b8bbdb 100644
+GIT binary patch
+delta 18
+ZcmZ3$xPXz%F~HM#0RsaAv)DwgX#guQ1XKV3
+
+delta 18
+ZcmZ3$xPXz%F~HM#0RsaAqr^n6X#guO1XKV3
+
+diff --git a/tests/data/acpi/pc/APIC.dimmpxm b/tests/data/acpi/pc/APIC.dimmpxm
+index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970d6ca95543da799e 100644
+GIT binary patch
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+
+diff --git a/tests/data/acpi/q35/APIC b/tests/data/acpi/q35/APIC
+index 208331db53b7dd5c6205cce0e95427636b86dd64..868a3432f0295257393e45b75483ef4bec455d74 100644
+GIT binary patch
+delta 16
+Xcmb=Z;BpM`bgp1vU|{Z;$dv~GB#s0m
+
+delta 16
+Xcmb=Z;BpM`bgp1vU|{T;$dv~GB#Z<k
+
+diff --git a/tests/data/acpi/q35/APIC.acpihmat b/tests/data/acpi/q35/APIC.acpihmat
+index 812c4603f2701494f6bb761570323158a20d4043..125d1ff0871f772bc8cfe3e2afbff70edf221291 100644
+GIT binary patch
+delta 18
+ZcmZo*Y+&Sa4DfVrU|?WiE}h6#1^_241Tz2t
+
+delta 18
+ZcmZo*Y+&Sa4DfVrU|?WiET70#1^_221Tz2t
+
+diff --git a/tests/data/acpi/q35/APIC.acpihmat-noinitiator b/tests/data/acpi/q35/APIC.acpihmat-noinitiator
+index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970d6ca95543da799e 100644
+GIT binary patch
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+
+diff --git a/tests/data/acpi/q35/APIC.core-count2 b/tests/data/acpi/q35/APIC.core-count2
+index a255082ef5bc39f0d92d3e372b91f09dd6d0d9a1..f5da2eb1e8a93d961b39f665f2e8b02acf1aeb3c 100644
+GIT binary patch
+delta 19
+acmZ1{yiS<QF~HM#9VY_=^SO;&OE>{I`URQ*
+
+delta 19
+acmZ1{yiS<QF~HM#9VY_=<Ase}OE>{I_yw8(
+
+diff --git a/tests/data/acpi/q35/APIC.cphp b/tests/data/acpi/q35/APIC.cphp
+index 65cc4f4a9aa2676140a6525cdac1e838274b1e07..a2c2a24e5e3cf143b57a8932f78eeda6d7b8bbdb 100644
+GIT binary patch
+delta 18
+ZcmZ3$xPXz%F~HM#0RsaAv)DwgX#guQ1XKV3
+
+delta 18
+ZcmZ3$xPXz%F~HM#0RsaAqr^n6X#guO1XKV3
+
+diff --git a/tests/data/acpi/q35/APIC.dimmpxm b/tests/data/acpi/q35/APIC.dimmpxm
+index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970d6ca95543da799e 100644
+GIT binary patch
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+
+delta 18
+ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+
+diff --git a/tests/data/acpi/q35/APIC.xapic b/tests/data/acpi/q35/APIC.xapic
+index c1969c35aa12b61d25e0134bbb8d2187ba42d663..83bd28325af9d6d7619015a9701866b8f3f1d754 100644
+GIT binary patch
+delta 19
+acmew-@=t`zF~HNgj*EeTS#2X%2^Ro9-UT)Q
+
+delta 19
+acmew-@=t`zF~HNgj*EeTQDY-l2^Ro9+yyoO
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..1e5e354ecf 100644
+index 1e5e354ecf..dfb8523c8b 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,5 @@
+@@ -1,5 +1 @@
  /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/pc/APIC",
-+"tests/data/acpi/q35/APIC",
-+"tests/data/acpi/microvm/APIC",
-+"tests/data/acpi/virt/APIC",
+-"tests/data/acpi/pc/APIC",
+-"tests/data/acpi/q35/APIC",
+-"tests/data/acpi/microvm/APIC",
+-"tests/data/acpi/virt/APIC",
 -- 
 2.31.1
 

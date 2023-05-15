@@ -1,243 +1,190 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6360796ejq;
-        Mon, 15 May 2023 01:40:04 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ760297iqaZdrj1OztHzwRPi2EFcfxdIWcKDuwor6QgNsFD02sFQDypOdZteNI1kHeLfTZL
-X-Received: by 2002:ac8:5a85:0:b0:3f2:655a:a6d with SMTP id c5-20020ac85a85000000b003f2655a0a6dmr50207334qtc.4.1684140004472;
-        Mon, 15 May 2023 01:40:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684140004; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6365292ejq;
+        Mon, 15 May 2023 01:52:32 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4ZlO7l44dMr1CYxd/aitFfuVmOgRS0aarcqIG1rpzu8LfjPmN3insN31u1qzLHAVf4XoRX
+X-Received: by 2002:a05:6214:3014:b0:5f1:683e:9bd6 with SMTP id ke20-20020a056214301400b005f1683e9bd6mr52382692qvb.9.1684140751869;
+        Mon, 15 May 2023 01:52:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684140751; cv=none;
         d=google.com; s=arc-20160816;
-        b=DKI7UWJrs8pPXTo0c5CdH98Y73xsMqynxToBb5H16xLNSwkEv8byZ+hpnxPTgTeY1x
-         6CL8gmZv2R1e4oqdLYtWdsDTAwIJFtAnf2rG8SxqzpNR1YlGailF6wdapB8o5J8N7do1
-         yuplxWsSbdlDMlF4rHSEBMCVWbByZ7vZVhmk3PEwIKkkkn8r3vrmK/51gLrQbwMOXvYg
-         u1iGmPGBT/xcfpYqYB6CcZQWZvYu3yOIYPQCCQlIUxwpfIuRtGD1ONmeG+2+ptuOxBLq
-         bOpJm1FjkO75fCpm3UoWA1ujVp3pgfQNoPSYQLfTphzlVyV80xrMmV4kTbPzAOSHh6U4
-         SQOA==
+        b=pxfc63aC1NChgYdT/Mqz4H0nPNPsyBgcWsuu0CZBtpWjXFYQyTsD5GClFVmRhf0i1c
+         +ZROe4YJf6HNriUFhdbw35y9jSqE7fEFCxZ0cV2cryk3DnkvJzEZekeUQua8nmDVX3RY
+         ZSAOR8zigapKh0AW0+gXxm86BTXS32pdWzn4PszPUNdaqhL3WBLdTSpKZv+qR7H8LFJu
+         UN7rASYBzFj9zwU3iBGZMNtXYYjlmFJ17h9GenVDHsVY6/7+9ic1YUkenqiA5Xu80XwM
+         5cs9tZ1FRy5QxyXi+GOyYBBBc9v+ygpHdZ6ZGoWI0TL8eWDvwau6IA0CpQp1MLOggWRA
+         MNXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=TL5RD00+oseaDO47QgQQF7P5uXBXi/1eOtLLBP24d2Q=;
-        b=jvTjhFE0lOfCHcfcv+oU1IAw+NxIs/w/wUjesWTrztBzc+oEQWYQPSOg0S9eOwLRAh
-         82yRBR6ImuHoqCYYAD4CGc5xL1b5urOum4ydCoIHXShmnWKAnFCtw5QBsc56GWjlJMH6
-         B++lMbVNxpYut/u5WTlVKpb/Zhp2Htg+LfS4zyLNJx4C2gd8soOBAgAve5p1UKTUIJkv
-         OlANB1iYp5K9Z+vGhESfF96lMdr6QRA2kofISBJO19C3VDDSFil7vZYnYBtm60LtoabS
-         cocUOXEon4VDRlttoez5haAQnl5eRylxTdjOAn4DCC6QfpWnmMvxE/YcPtguoXbkNlLz
-         N0lw==
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=NZVlOg28FdbfZwVK8jpACnAXAjM1hk1fGYx5M9A0rZU=;
+        b=FSF9pSQWn1NdKHmcwEbb3Su0XGdAU5c1Jrt5GjhtjOW8f8AQ/MXikpKgTxpR2AhumO
+         Eh/xTEAjWr1ov4XJ3VpykVbgf1/QkphEoBufxtvCfRLJuprhQWjrLtPo2SzVvUJQSL0a
+         PngdLXbxExsRsuIjZsuHpAzdaTcXd9oUI4aYjYChs5dllgJG+FCj0WqSpuu1bJGuocZ9
+         w2phDg0Dvpidxt8dvgJjuc1n/veIxxOILtyqXBbH1klkWPKqkiperE/JMncBbgPpr4gg
+         vD3awifTSEevVrETysxspBPYX8gbZiv1aBD/Uk3UmVClKe4utlXnt2KaqYpSTxseCU9z
+         hQxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WdptVRJ2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NYtl6Cwt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6-20020ac85846000000b003eb9b03b5c0si9411653qth.25.2023.05.15.01.40.04
+        by mx.google.com with ESMTPS id iu5-20020ad45cc5000000b0061b79c5fb31si9513267qvb.308.2023.05.15.01.52.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 May 2023 01:40:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 May 2023 01:52:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WdptVRJ2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NYtl6Cwt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyThv-0006u4-ES; Mon, 15 May 2023 04:37:27 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pyTwR-0008MT-CX; Mon, 15 May 2023 04:52:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pyTht-0006tJ-Ps
- for qemu-devel@nongnu.org; Mon, 15 May 2023 04:37:25 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pyTwP-0008G7-12
+ for qemu-arm@nongnu.org; Mon, 15 May 2023 04:52:25 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pyThs-0003Qb-5G
- for qemu-devel@nongnu.org; Mon, 15 May 2023 04:37:25 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1pyTwN-00065N-68
+ for qemu-arm@nongnu.org; Mon, 15 May 2023 04:52:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684139843;
+ s=mimecast20190719; t=1684140738;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TL5RD00+oseaDO47QgQQF7P5uXBXi/1eOtLLBP24d2Q=;
- b=WdptVRJ28grD3hRXA8St4GeDsGieeXWo7ySQdY3s15+J2ipiCldINQRw1C8o/iPJ7/U9ym
- QB76GOPposs0RwflCiaX5XPqWzLzVUd8ABfgoLmmwLJ5rnt1ZaKrUzIe3bq+MRhWoi2fyO
- qXYrn9AzB6QiFUOvy6oD5cOOc2PcTHU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-618-9cpyaHVGNeW6ZopyaSA1Nw-1; Mon, 15 May 2023 04:37:22 -0400
-X-MC-Unique: 9cpyaHVGNeW6ZopyaSA1Nw-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3063287f1c9so4821513f8f.2
- for <qemu-devel@nongnu.org>; Mon, 15 May 2023 01:37:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684139841; x=1686731841;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TL5RD00+oseaDO47QgQQF7P5uXBXi/1eOtLLBP24d2Q=;
- b=hGsWbX26l6taU9zneGRWnmRAu22ijkf/Enq3NJLo6zDJoaqUjLgisyAaLKWCiESJRC
- aifk3T5lvF1MGrGVhvb0tnZNPDKlKXgVtRfDypfTaO8r03clri0w3c92Tdy5s2tAYTzA
- AFGkXgJo7tP+Hwo6fozhlfTMmteUAAozWxPobJzDunM0PiCUeZ2wkv0LDCjGtOPM59li
- /G7dKSHAjRwGeiV9E7ZR4ra2uWSCANqJ1y+CkUGWkr6WnjvN5QY409WnsfDrY2+1j/tr
- TjFUI25WqL5vqh1U42fVeTICYZGdjVXJ0DELrcI7lpWNtIMu+btSxODUomTSoJD0cg6W
- EUnw==
-X-Gm-Message-State: AC+VfDxSQQwGvn7QjOFT5OVxqPBmYtikOt/fs4i1sfqRxRlFnkm29gQ7
- DSa6wnAgIKlINguvIBYPx4CSASU/EAflbNgGF7X2KipIB8n4s1lTBTVRnkSqCmZyEaazAk4TCw1
- EP6x1j9XSzv6zPZA=
-X-Received: by 2002:a5d:594c:0:b0:307:979f:7373 with SMTP id
- e12-20020a5d594c000000b00307979f7373mr17818841wri.24.1684139841154; 
- Mon, 15 May 2023 01:37:21 -0700 (PDT)
-X-Received: by 2002:a5d:594c:0:b0:307:979f:7373 with SMTP id
- e12-20020a5d594c000000b00307979f7373mr17818828wri.24.1684139840808; 
- Mon, 15 May 2023 01:37:20 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- j6-20020a5d6186000000b003090cb7a9e6sm6994817wru.31.2023.05.15.01.37.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 May 2023 01:37:20 -0700 (PDT)
-Message-ID: <7d08b3da-b2b1-1a54-8aed-aa3aa9df4b34@redhat.com>
-Date: Mon, 15 May 2023 10:37:19 +0200
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=NZVlOg28FdbfZwVK8jpACnAXAjM1hk1fGYx5M9A0rZU=;
+ b=NYtl6CwtXT3MhLXS2pEP6CFJ26vdnlEBCVWlftnlPiF+NzsgGCaYDPONujYO9v3wCfk4jy
+ oAJeS5SCvl/IBqLg9z2V+H3lBKaA/IltytzgMcZ1XbBo4ZK1PbxgDTRYKva1KS32DyD5dw
+ 4wBuC6/8X3slOlJl9gVFKZFR2IbIALI=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-450-lYKL0opTPO--kS8McbUP0Q-1; Mon, 15 May 2023 04:52:17 -0400
+X-MC-Unique: lYKL0opTPO--kS8McbUP0Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2618D88B770;
+ Mon, 15 May 2023 08:52:17 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.48])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 73406C16026;
+ Mon, 15 May 2023 08:52:14 +0000 (UTC)
+Date: Mon, 15 May 2023 09:52:12 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Hao Zeng <zenghao@kylinos.cn>
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH V2] hw/arm: enable qxl for aarch64
+Message-ID: <ZGHyvBb8BQdKhWEy@redhat.com>
+References: <20230512093108.1180726-1-zenghao@kylinos.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [RFC PATCH v3 02/10] hw/arm/smmuv3: Update translation config to
- hold stage-2
-Content-Language: en-US
-To: Mostafa Saleh <smostafa@google.com>, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- richard.henderson@linaro.org
-References: <20230401104953.1325983-1-smostafa@google.com>
- <20230401104953.1325983-3-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230401104953.1325983-3-smostafa@google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230512093108.1180726-1-zenghao@kylinos.cn>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.93, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dThRIu7W1y/i
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iWZz4WQeAZwq
 
-Hi Mostafa,
-On 4/1/23 12:49, Mostafa Saleh wrote:
-> In preparation for adding stage-2 support, add a S2 config
-> struct(SMMUS2Cfg), composed of the following fields and embedded in
-> the main SMMUTransCfg:
->  -tsz: Size of IPA input region (S2T0SZ)
->  -sl0: Start level of translation (S2SL0)
->  -affd: AF Fault Disable (S2AFFD)
->  -record_faults: Record fault events (S2R)
->  -granule_sz: Granule page shift (based on S2TG)
->  -vmid: Virtual Machine ID (S2VMID)
->  -vttb: Address of translation table base (S2TTB)
->  -eff_ps: Effective PA output range (based on S2PS)
->
-> They will be used in the next patches in stage-2 address translation.
->
-> The fields in SMMUS2Cfg, are reordered to make the shared and stage-1
-> fields next to each other, this reordering didn't change the struct
-> size (104 bytes before and after).
->
-> Stage-1 only fields: aa64, asid, tt, ttb, tbi, record_faults, oas.
-> oas is stage-1 output address size. However, it is used to check
-> input address in case stage-1 is unimplemented or bypassed according
-> to SMMUv3 manual IHI0070.E "3.4. Address sizes"
->
-> Shared fields: stage, disabled, bypassed, aborted, iotlb_*.
->
-> No functional change intended.
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+On Fri, May 12, 2023 at 05:31:08PM +0800, Hao Zeng wrote:
+> Qemu does not support qxl graphics cards in arm, it is recommended to enable
+
+Who recommends this and why ?
+
+The recommendations from Gerd are what I tend to point poeple to
+for display devices:
+
+  https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/
+
+and it had this to say about arm:
+
+  "On arm systems display devices with a pci memory bar do
+   not work, which reduces the choices alot. We are left with:
+
+    virtio gpu, if your guest has drivers
+    ramfb"
+
+Not sure if anything has changed in this respect ?
+
+
+The QXL graphics card is an incredibly complex device, offering
+2d acceleration that is not very interesting for modern guest OS
+desktops since they're largely focused on 3d acceleration. This
+complexity is bad from a security POV.
+
+It would also require a guest driver to take advantage of QXL
+features and while I presume the Linux driver will build, it is
+still mostly pointless because of lack of interest in 2d acceleration.
+I'm not sure about status of the Windows QXL driver for aarch64 ?
+
+Further QXL is only useful when combined with SPICE graphics and
+the SPICE project is largely inactive.
+
+Overall, IMHO, we should keep QXL restricted to as few build scenarios
+as possible. Given the status of SPICE, possibly we'll even want to
+deprecate it on x86 eventually, not add it to more arches. 
+
+What are you seeing as the compelling use case that requires QXL to
+exist on aarch64 ?
+
+
+
+> 
+> Signed-off-by: Hao Zeng <zenghao@kylinos.cn>
 > ---
-> Changes in v3:
-> -Add record_faults for stage-2
-> -Reorder and document fields in SMMUTransCfg based on stage
-> -Rename oas in SMMUS2Cfg to eff_ps
-> -Improve comments in SMMUS2Cfg
-> Changes in v2:
-> -Add oas
-> ---
->  include/hw/arm/smmu-common.h | 22 +++++++++++++++++++---
->  1 file changed, 19 insertions(+), 3 deletions(-)
->
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 9fcff26357..9cf3f37929 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -58,25 +58,41 @@ typedef struct SMMUTLBEntry {
->      uint8_t granule;
->  } SMMUTLBEntry;
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 0f42c556d7..d0bedf9347 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -32,6 +32,7 @@ config ARM_VIRT
+>      select VIRTIO_MEM_SUPPORTED
+>      select ACPI_CXL
+>      select ACPI_HMAT
+> +    select QXL
 >  
-> +/* Stage-2 configuration. */
-> +typedef struct SMMUS2Cfg {
-> +    uint8_t tsz;            /* Size of IPA input region (S2T0SZ) */
-> +    uint8_t sl0;            /* Start level of translation (S2SL0) */
-> +    bool affd;              /* AF Fault Disable (S2AFFD) */
-> +    bool record_faults;     /* Record fault events (S2R) */
-> +    uint8_t granule_sz;     /* Granule page shift (based on S2TG) */
-> +    uint8_t eff_ps;         /* Effective PA output range (based on S2PS) */
-> +    uint16_t vmid;          /* Virtual Machine ID (S2VMID) */
-> +    uint64_t vttb;          /* Address of translation table base (S2TTB) */
-> +} SMMUS2Cfg;
-> +
->  /*
->   * Generic structure populated by derived SMMU devices
->   * after decoding the configuration information and used as
->   * input to the page table walk
->   */
->  typedef struct SMMUTransCfg {
-> +    /* Shared fields between stage-1 and stage-2. */
->      int stage;                 /* translation stage */
-> -    bool aa64;                 /* arch64 or aarch32 translation table */
->      bool disabled;             /* smmu is disabled */
->      bool bypassed;             /* translation is bypassed */
->      bool aborted;              /* translation is aborted */
-> +    uint32_t iotlb_hits;       /* counts IOTLB hits */
-> +    uint32_t iotlb_misses;     /* counts IOTLB misses*/
-> +    /* Used by stage-1 only. */
-> +    bool aa64;                 /* arch64 or aarch32 translation table */
->      bool record_faults;        /* record fault events */
->      uint64_t ttb;              /* TT base address */
->      uint8_t oas;               /* output address width */
->      uint8_t tbi;               /* Top Byte Ignore */
->      uint16_t asid;
->      SMMUTransTableInfo tt[2];
-> -    uint32_t iotlb_hits;       /* counts IOTLB hits for this asid */
-> -    uint32_t iotlb_misses;     /* counts IOTLB misses for this asid */
-> +    /* Used by stage-2 only. */
-> +    struct SMMUS2Cfg s2cfg;
->  } SMMUTransCfg;
->  
->  typedef struct SMMUDevice {
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>  config CHEETAH
+>      bool
+> -- 
+> 2.37.2
+> 
+> 
 
-Thanks
-
-Eric
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

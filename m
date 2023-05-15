@@ -1,109 +1,116 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6326286ejq;
-        Mon, 15 May 2023 00:09:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6pFtRg69/QT2o4rxO+A/brx9pC2jCqSM790n0PO+y689E8dgit3BMXwWStjoFT71RahW26
-X-Received: by 2002:ac8:5bc9:0:b0:3e8:11ec:620c with SMTP id b9-20020ac85bc9000000b003e811ec620cmr53526726qtb.62.1684134576098;
-        Mon, 15 May 2023 00:09:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684134576; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6327463ejq;
+        Mon, 15 May 2023 00:12:30 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5Bf2PYE+i/+1AXM3XP1upIOi2TBoY85Ts+Oh0ArWupEOK4sb8oh9Jcdu6/iQD0NlrJUF8O
+X-Received: by 2002:ac8:5714:0:b0:3f5:e8f:47b1 with SMTP id 20-20020ac85714000000b003f50e8f47b1mr11457558qtw.59.1684134750150;
+        Mon, 15 May 2023 00:12:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684134750; cv=none;
         d=google.com; s=arc-20160816;
-        b=dNWsdAGZUPc52Oc0+n9h1SrNdvY512Dbp1XQjPO2BUWrXhCEUKtAHBwnvFMksIkgGk
-         wkkmQbbH2l3zP/U4G8+kLVMF0yq6sYEgJax1iy86rY9gMOuTfOZN9I3UvUhT0zQS2J0u
-         4T0iUM4hYy570/tSpwqa0s4Nnmx7L6qZS/DgoWSzCeukCWuvHehnXs8I3Gtu/Q96WMDB
-         mbw+zLB7lu6jah4PphwnNrPLBTJbKhwdj6ngD77gJkUr7UjNA8l3XilbIAy0Coed6ygd
-         ax84YXz8S+n0URrqxA6LrTtSlH30y5s92og39i6YePBnAkBoPNgU8O/nyn2BoMi0gUNy
-         3lBQ==
+        b=fATiTNn2hdSity5xddcVF60jl/3OJuqsq5ZomvXrrLr65LRAAcBvoLOKFSdUPVS7CS
+         RiHVsIJXoG6XilVqT8dAuI7sl+spsVUm+oAO3tJqYbcojZUTQqHxZqEr7F3snVsmyd9M
+         4C+ZSbLNau8X6gpjyiyYMht6HYOgteEcU4JiJhnIgIyxkNg06NGf/QEHeAoWrYlSQwQ7
+         7RylETJiIup/3wz2zCquVhQ9jCirEJUw9QwCqVya9+A14AFRRZgdDqdnZsqrFx2mKrVa
+         1ErnwabpP/TwpwWORYAfTYipXlKNl77Nc/7mhCcMOmBKrKg6j/wF9nJ2PvricpH2TtzH
+         +c7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=3TiKq1J8IY0O1HXOuweIKO2GcSqXLJr9CSOV6xyifKU=;
-        b=Rxob/ECkJxPU+UcI8rYg2kXTSt6+ujcOPWTCiT6ua+1/duEAnr9d5PUgzlF51kM8FJ
-         8He1DfducKNB2Dr/+FSeUCL97CK9rbQkGkxM9JYrUZKNj0rCNxRLpDInOiLUytSwz6Ni
-         IaXHdSCeO9L11nr53N94ZTCZ/Dt4JCz+P05YJPuRnwQODySQOoRV5RQT3jlqi/4oZiT7
-         2dj23iACPy76sagwSpY7AajibGALO2Lcq/FlsfPNqsFx7Dvk6/sDmQBfC+3px6pf03wX
-         fQpb+wFaI9ZdsnJOSxyR4K2Aq+Oi761ZjnWkNyv5nk/5pL6XBnmok5I7rrEtfItazmyf
-         ZD2A==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=sBdlLd0RGmZoGMQI2SU5HJRgzkUTKTcbuAttEZnC7Hs=;
+        b=HCL4+eej2DjllD/9+ewraTQU/fzgYFwH1FI4H/R7VDoCGGfp1N4tpx5KdgMo8Bv6p8
+         rBptdkGP/VQNCq9IjE9JXjmzEqwsTpGzjvGD33ybLhw9vrUoVOQ/SAUjSacASYf8Kuwd
+         9ppU+hgSfW5BNnK0bu0K4HxMLdiX4YHCOTA+Teeicb8xEcuW2sBrJerBrOWRmXBmjPXD
+         7mr8Co86+Sl1Jzv9nJ5fM6UgngZ8Op1lufFlfWTMtAqsxbHhiYNb1ywFTjvQ0Xf87k0D
+         6mXe0gbF1guSRKIEoIhjVHpfJR93ydWz7PStRWks/FBoEaOn7TgUh3N8dm8k34UOgSpx
+         3PFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p4zHuoNQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gSA3hRNv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l20-20020ae9f014000000b00746a86ebd9bsi12426476qkg.614.2023.05.15.00.09.35
+        by mx.google.com with ESMTPS id 11-20020ac84e8b000000b003f4dc3f05d7si7756363qtp.563.2023.05.15.00.12.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 May 2023 00:09:36 -0700 (PDT)
+        Mon, 15 May 2023 00:12:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p4zHuoNQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gSA3hRNv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pySKj-00027b-KW; Mon, 15 May 2023 03:09:25 -0400
+	id 1pySMy-00039R-Tl; Mon, 15 May 2023 03:11:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySKe-00026n-MP
- for qemu-arm@nongnu.org; Mon, 15 May 2023 03:09:23 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySMw-000388-CY
+ for qemu-arm@nongnu.org; Mon, 15 May 2023 03:11:42 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySKd-0000aK-59
- for qemu-arm@nongnu.org; Mon, 15 May 2023 03:09:20 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-3f42711865eso53219905e9.0
- for <qemu-arm@nongnu.org>; Mon, 15 May 2023 00:09:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1pySMt-0001BE-O3
+ for qemu-arm@nongnu.org; Mon, 15 May 2023 03:11:42 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3078d1c8828so9185329f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 15 May 2023 00:11:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684134554; x=1686726554;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=linaro.org; s=google; t=1684134696; x=1686726696;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=3TiKq1J8IY0O1HXOuweIKO2GcSqXLJr9CSOV6xyifKU=;
- b=p4zHuoNQdtjg/Ro515Txj0E5Az8hhdRAQQf68trgMijhenQGsx6o4RvtcKdZUBIDj9
- NbzrkV0YwM2UgdA5ouSPT+b4AtciI+AWVfQ0y1CgOmqJQw9amNqxtccGGbVnvaa+N6Pu
- zRq+ZmOYMr7cja4HIRxKUwMGSLYfni/MJYyEjAo9ihtcYym0Tg/QZ1PjioALmiCQSzPQ
- on9gX/FoR1XTpwCsC66bXwT4X+Dyd49N8jfpeG2Js1JlyniQJ8GaSMAissFqzBf3Qu80
- RJhyj+uql3I3kFeRtQpPuOIS5esgunw4tYSBSyzwIa4ebosxdSScWFCOFc2D7szu4g5v
- tbSw==
+ bh=sBdlLd0RGmZoGMQI2SU5HJRgzkUTKTcbuAttEZnC7Hs=;
+ b=gSA3hRNv4z8ocOBKDn7UWeB2JV6IW5qQgZU2NrWdWMqToHSwjtqS4a1y2nPBKBQodZ
+ g7kVH39dUkBSDRCo6tJi6Hce1IahrhfEJATsCGhhwvCm0g5Wi8fMyAchutzrZZaiqwI9
+ gwAzAJzpM8KFbJjunRjJBe3R3PjXfarG60qmAvOcI1K19P7KMC7WV+Mm3E9C32LkZPsg
+ ajXX0RHEXJlPeSGFiEdESNAQsNX+F81mSS8j8lAnm+ofOJ991SSFOJFh+F5eyJQI9qRG
+ 76HhgRAtqEZac+zlyU0MRLZ8gGFfUgYYtvXnXXntC/vhNErANNsOi8Lpd01LU18fjJ5T
+ Tzag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684134554; x=1686726554;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=1e100.net; s=20221208; t=1684134696; x=1686726696;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3TiKq1J8IY0O1HXOuweIKO2GcSqXLJr9CSOV6xyifKU=;
- b=UTQpy3/GHQ9WE6J5zqx2CVg7vknJfcCg2B9JlMmRFvw3vyz3h72ikcQAT/Vw3EMhJ5
- y8LHfuW0vLZwXcwla/z0yK+X1UoQsS4VOp+gFKZsGQsblFYl9Rkuuzz092PHtk8ynSiW
- XxaEMi935gzM5FElsBPabb1a5NWzP6ALYXqTYAMXFXl7mQQmFMTE1b+hpUKnQyLbDfDy
- U/6sQt2rpRJtwJamsIHTRWUaN2WIQOZndizRsolrcP1ckoOyiX8ZSS67Tut6zDSbXFIy
- bQBarvI0anjpOfesIjlx/C+cW4MLZTRui6SeKLBf2qmrP8tkiBYWo6tI2zofk/x+0VFL
- qBnw==
-X-Gm-Message-State: AC+VfDxa/LdMUUJ6+lLRn1uK+ZAsW1E+yyugyHiKaDOzngsVGek1TXXs
- tL4pbd40AawUWX3McXxpGqF3xQ==
-X-Received: by 2002:a05:600c:2905:b0:3f4:e7c6:989a with SMTP id
- i5-20020a05600c290500b003f4e7c6989amr8599785wmd.32.1684134554025; 
- Mon, 15 May 2023 00:09:14 -0700 (PDT)
+ bh=sBdlLd0RGmZoGMQI2SU5HJRgzkUTKTcbuAttEZnC7Hs=;
+ b=krjZnKjMk8fbzTsKRR0+KvkQJ3o2NGvaTpNVwgOkuEUlTB5WItOKecSz4CuCbkfCgM
+ jaj8bdK3oxbFguvI6SABeMhXEJ/WPL013WsIw4Lsi+yompTAfOsaPv8SbvakYRqULSEv
+ XWZq/Gi+CZhy69Bh8DYFAbMoDEoAT7OE2Fa/HoHRVAx5PaeG13hdqArpEGVY7uT9+bZh
+ snahBJ+RMe4FNMM2bWCbRqiXjBLto2XDRb3OBgDpNL0AvZT/QZanukIq9j2KTQo1J1cU
+ HxI9yqTsQp7r46Hgvbrw85odEpy4QHPvamkZMahH+rajyaB1PzqR+tVYL9XruM8GDCYc
+ m/0A==
+X-Gm-Message-State: AC+VfDwqJK+z/wBFkjzxVZC5ofdBrU0FdKSXpjjTuFgW3sPG9D83TXwK
+ KrwaIfYqDdynEcXZFq/vUhCzoQ==
+X-Received: by 2002:adf:e552:0:b0:307:7be5:90da with SMTP id
+ z18-20020adfe552000000b003077be590damr21224140wrm.68.1684134696341; 
+ Mon, 15 May 2023 00:11:36 -0700 (PDT)
 Received: from [192.168.30.216] ([81.0.6.76]) by smtp.gmail.com with ESMTPSA id
- l19-20020a1c7913000000b003f42ceb3bf4sm17443413wme.32.2023.05.15.00.09.13
+ e7-20020a5d65c7000000b00307925ff35bsm24590535wrw.49.2023.05.15.00.11.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 May 2023 00:09:13 -0700 (PDT)
-Message-ID: <75a51254-55fa-4030-baf5-234bad51d97c@linaro.org>
-Date: Mon, 15 May 2023 09:09:12 +0200
+ Mon, 15 May 2023 00:11:36 -0700 (PDT)
+Message-ID: <16934ed7-b58d-6685-2aaa-6e2e9560bb75@linaro.org>
+Date: Mon, 15 May 2023 09:11:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.10.1
-Subject: Re: [PATCH 2/2] hw/arm/vexpress: Avoid trivial memory leak of
- 'flashalias'
+Subject: Re: [PATCH 2/4] hw/arm/omap: Remove unused omap_uart_attach()
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230512170223.3801643-1-peter.maydell@linaro.org>
- <20230512170223.3801643-3-peter.maydell@linaro.org>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20230513100906.46672-1-shentey@gmail.com>
+ <20230513100906.46672-3-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230512170223.3801643-3-peter.maydell@linaro.org>
+In-Reply-To: <20230513100906.46672-3-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
@@ -125,32 +132,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kNddZvLfFk/c
+X-TUID: jDLGXn4wV+OS
 
-On 12/5/23 19:02, Peter Maydell wrote:
-> In the vexpress board code, we allocate a new MemoryRegion at the top
-> of vexpress_common_init() but only set it up and use it inside the
-> "if (map[VE_NORFLASHALIAS] != -1)" conditional, so we leak it if not.
-> This isn't a very interesting leak as it's a tiny amount of memory
-> once at startup, but it's easy to fix.
+On 13/5/23 12:09, Bernhard Beschow wrote:
+> The function is unused since commit
+> bdad3654d3c55f478e538037d9eccd204e5fc8ee ('hw/arm/nseries: Remove
+> invalid/unnecessary n8x0_uart_setup()').
 > 
-> We could silence Coverity simply by moving the g_new() into the
-> if() block, but this use of g_new(MemoryRegion, 1) is a legacy from
-> when this board model was originally written; we wouldn't do that
-> if we wrote it today. The MemoryRegions are conceptually a part of
-> the board and must not go away until the whole board is done with
-> (at the end of the simulation), so they belong in its state struct.
-> 
-> This machine already has a VexpressMachineState struct that extends
-> MachineState, so statically put the MemoryRegions in there instead of
-> dynamically allocating them separately at runtime.
-> 
-> Spotted by Coverity (CID 1509083).
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/arm/vexpress.c | 40 ++++++++++++++++++++--------------------
->   1 file changed, 20 insertions(+), 20 deletions(-)
+>   include/hw/arm/omap.h | 1 -
+>   hw/char/omap_uart.c   | 9 ---------
+>   2 files changed, 10 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

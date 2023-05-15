@@ -1,84 +1,94 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6389291ejq;
-        Mon, 15 May 2023 02:51:27 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7yrxfPnAnczT1FROXQ/dPhZyCFIrWTNydjXM3n8+A1EmDciVRquSeaMcWuPYAtq6Rx3tbp
-X-Received: by 2002:a05:622a:38c:b0:3f4:f841:df70 with SMTP id j12-20020a05622a038c00b003f4f841df70mr19009083qtx.66.1684144287469;
-        Mon, 15 May 2023 02:51:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684144287; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6391535ejq;
+        Mon, 15 May 2023 02:57:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4/XgdhTrO5NCuJyRXbka6QgnDvdgr/EP1O8PlpUlteY4sBc7EO2jlVcdq2x3D/aIctxOyQ
+X-Received: by 2002:a05:622a:202:b0:3f3:89cb:55dd with SMTP id b2-20020a05622a020200b003f389cb55ddmr45836777qtx.10.1684144644182;
+        Mon, 15 May 2023 02:57:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684144644; cv=none;
         d=google.com; s=arc-20160816;
-        b=PU4ZZIl5MzKktnuxeMGljjwD0aVbQJ4Wg2COp3HQ5FmGTiXMW58bcmcC9pyUYfY/KQ
-         KbjQV3pIGPngMrEGjWr3vMeqZ0nlibrWxm1z87c2QZo97YwiPv0g+MEfMoDHTFI6uQBV
-         T/X2IiwhoBFYDX5VHHXc4m+1xWijQh1f7AnWPhGsKS5y/z1m5ELuLfghQRLDZ107q+lS
-         b/68qBVoWnZei4kFADXxWpiv3MpLXquyRwPxYyH24yjPBIq4gVMG3DMWxBIVxThMaPAU
-         Tv7qhqMjO5mYDE0jRCPpCkYQTUwORIJwhQXxYLUZpb1AUl6XBF3s7SHh/PbS1HaFjfGr
-         rQ4Q==
+        b=QDZD6IQ/ZkjekwM5YFrvSrxgNjeRyesuDSewmKqbvC1D5PnNY13voURUI5vEQpbVdc
+         qYPVq8GzvOV9QdzhMq2hOoa/UU6XNEBC1Te85IIZnfduKs4e2x+ASE+d2GyOR/ixn8ay
+         kALbk4FQXo0zYeApvOr3o0txhlyJwJJiSE4OBgBveLWv3VWrEZcJ70m/J8UVhmumBjdG
+         7uBLfl0RKU/aVMhj2E85lsnZ1jRODVI3kNwLTc9J9iUQOY2scmbx53GqSiXpe6xU6DjY
+         nAPzTVl7Za1UogsLZ1JYvFOtXz/RxdvnGuMmBKr7r9ypBqgRX8CgmNz9RuOV1m3vgMP8
+         4Ccw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=KqdWxYlqBo3Mzu7KKRRgEJ8tcvTNHjL8Xs1GEkj59rc=;
-        b=NFginFya2ds/AkzHfyEnTcGLPqb9zvHKaESOyJqNGaM9b/uLJaXbKCRRnbTIDwwHlD
-         5EEyKnPegDWxcPPa39Gn/12WQUJxuedbUp83Cg0u1mbfSZ4hO2wExgk3nqpdlclXB3XS
-         65CJh/uXyBQrenNlDUn558VF/lYS9AcqSnA48NJkHlteGy9RlT/GNaYmp1dyQqP/QAns
-         ztnk8Q0aUBaPE23UZTUJiDJhXw5+0C30rjneytGEYng+lVdNhlYy1GjMEyF57/wr5asW
-         PuLV+xHCuByNFx6p8WZDKh8aeTcV8S1lASN5Q/MPgRg2rfubHkqziBQuAZ1LXK+sivlv
-         DDKw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id;
+        bh=Ul0PNkQsuads+01oriUlZBKrZmmyIIMLGbot6+gajkU=;
+        b=pwBgOMC4tGLg1cGvEkYc4J0WvWKiCnUeTp8MiKxYjZFvzF/H58BgaNaAkgXiM+ZZnY
+         h9aZO08gMshto8wVpH6cavjqfB18ynTYp6Jo4HlnSES4y47sMAedPCJHKMlQ6v0+bqrQ
+         ZtMEEdj/RaD9IWbe8s2gaT+gK4RkYiLiUF6INYGOYtFBgnIUkx0pVrnh6MehIZQiRKft
+         6Fk7Fxo4DAiHsBLg8waoXWdtV3Hm5RcWd7UTNe21lB6C5uo27IgrlMuEXMaToYWymUp6
+         qH2gGpTIbkiRCgWCs3JRBo5xgVgnY+nSDTu4cNJwwF3KP//ySSJ8KX9tE3bLBxrTtJ0r
+         t76g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ispras.ru header.s=default header.b=Y4opuUJR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m10-20020ac85b0a000000b003f223248863si9468076qtw.625.2023.05.15.02.51.27
+        by mx.google.com with ESMTPS id t2-20020a05622a148200b003f38c9bd035si9262252qtx.782.2023.05.15.02.57.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 May 2023 02:51:27 -0700 (PDT)
+        Mon, 15 May 2023 02:57:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ispras.ru header.s=default header.b=Y4opuUJR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ispras.ru
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyUrB-0003aL-2b; Mon, 15 May 2023 05:51:05 -0400
+	id 1pyUwq-0006J9-MV; Mon, 15 May 2023 05:56:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cheptsov@ispras.ru>)
- id 1pyUr5-0003YB-Qn; Mon, 15 May 2023 05:50:59 -0400
-Received: from mail.ispras.ru ([83.149.199.84])
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cheptsov@ispras.ru>)
- id 1pyUr3-0006g7-GO; Mon, 15 May 2023 05:50:59 -0400
-Received: from localhost.localdomain (unknown [212.7.210.181])
- by mail.ispras.ru (Postfix) with ESMTPSA id 2334F44C100F;
- Mon, 15 May 2023 09:50:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru 2334F44C100F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
- s=default; t=1684144231;
- bh=KqdWxYlqBo3Mzu7KKRRgEJ8tcvTNHjL8Xs1GEkj59rc=;
- h=From:To:Cc:Subject:Date:From;
- b=Y4opuUJRWxIzWuhRzt8R8G+jjeFOLVGAOhcP/X1gHNJYoHy00Bl9A+9fqaGAONx9l
- 8ccePwxQ/Ko5l7mmd6x3L7yOBQKVZ6l9RyxIo1fID7pJx4GOL4gVdtf6bJ9sy3rTVY
- WG8V/mXqIXNzpfPFW/Fk4aeBvC+PsTREADJRAiiY=
-From: Vitaly Cheptsov <cheptsov@ispras.ru>
-To: qemu-devel@nongnu.org
-Cc: Vitaly Cheptsov <cheptsov@ispras.ru>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
-Subject: [PATCH] fsl-imx6: Add SNVS support for i.MX6 boards
-Date: Mon, 15 May 2023 12:50:15 +0300
-Message-Id: <20230515095015.66860-1-cheptsov@ispras.ru>
-X-Mailer: git-send-email 2.39.2 (Apple Git-143)
+ (Exim 4.90_1) (envelope-from <zenghao@kylinos.cn>)
+ id 1pyUwo-0006Ii-27; Mon, 15 May 2023 05:56:54 -0400
+Received: from mailgw.kylinos.cn ([124.126.103.232])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zenghao@kylinos.cn>)
+ id 1pyUwj-0007ce-Qe; Mon, 15 May 2023 05:56:53 -0400
+X-UUID: ce3c9677ed1c4a949bab496bfeff5d1b-20230515
+X-CID-O-RULE: Release_Ham
+X-CID-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.22, REQID:1b854ef3-94bb-40dc-86a1-8bf488fe4bcc, IP:15,
+ URL:25,TC:0,Content:0,EDM:0,RT:0,SF:-9,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+ ON:release,TS:31
+X-CID-INFO: VERSION:1.1.22, REQID:1b854ef3-94bb-40dc-86a1-8bf488fe4bcc, IP:15,
+ UR
+ L:25,TC:0,Content:0,EDM:0,RT:0,SF:-9,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+ :release,TS:31
+X-CID-META: VersionHash:120426c, CLOUDID:37e1343b-de1e-4348-bc35-c96f92f1dcbb,
+ B
+ ulkID:2305151652320MOLAW3V,BulkQuantity:4,Recheck:0,SF:24|17|19|43|102,TC:
+ nil,Content:0,EDM:-3,IP:-2,URL:11|1,File:nil,Bulk:40,QS:nil,BEC:nil,COL:0,
+ OSI:0,OSA:0,AV:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-UUID: ce3c9677ed1c4a949bab496bfeff5d1b-20230515
+X-User: zenghao@kylinos.cn
+Received: from [172.20.12.253] [(116.128.244.169)] by mailgw
+ (envelope-from <zenghao@kylinos.cn>)
+ (Generic MTA with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+ with ESMTP id 350305384; Mon, 15 May 2023 17:56:36 +0800
+Message-ID: <e2d06c7a6528a16b6ae58360d49a1fc9c7e8ade5.camel@kylinos.cn>
+Subject: Re: [PATCH V2] hw/arm: enable qxl for aarch64
+From: Hao Zeng <zenghao@kylinos.cn>
+To: "Daniel P." =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 15 May 2023 17:56:32 +0800
+In-Reply-To: <ZGHyvBb8BQdKhWEy@redhat.com>
+References: <20230512093108.1180726-1-zenghao@kylinos.cn>
+ <ZGHyvBb8BQdKhWEy@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.1-0ubuntu1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=83.149.199.84; envelope-from=cheptsov@ispras.ru;
- helo=mail.ispras.ru
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=124.126.103.232; envelope-from=zenghao@kylinos.cn;
+ helo=mailgw.kylinos.cn
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -94,67 +104,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AIRdI9RZKtic
+X-TUID: Ud1go5m87PVq
 
-SNVS is supported on both i.MX6 and i.MX6UL and is needed
-to support shutdown on the board.
 
-Cc: Peter Maydell <peter.maydell@linaro.org> (odd fixer:SABRELITE / i.MX6)
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX6)
-Cc: qemu-arm@nongnu.org (open list:SABRELITE / i.MX6)
-Cc: qemu-devel@nongnu.org (open list:All patches CC here)
-Signed-off-by: Vitaly Cheptsov <cheptsov@ispras.ru>
----
- hw/arm/fsl-imx6.c         | 8 ++++++++
- include/hw/arm/fsl-imx6.h | 2 ++
- 2 files changed, 10 insertions(+)
+On Mon, 2023-05-15 at 09:52 +0100, Daniel P. Berrang=C3=A9 wrote:
+> On Fri, May 12, 2023 at 05:31:08PM +0800, Hao Zeng wrote:
+> > Qemu does not support qxl graphics cards in arm, it is recommended
+> > to enable
+>=20
+> Who recommends this and why ?
+>=20
+> The recommendations from Gerd are what I tend to point poeple to
+> for display devices:
+>=20
+> =C2=A0 https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/
+>=20
+> and it had this to say about arm:
+>=20
+> =C2=A0 "On arm systems display devices with a pci memory bar do
+> =C2=A0=C2=A0 not work, which reduces the choices alot. We are left with:
+>=20
+> =C2=A0=C2=A0=C2=A0 virtio gpu, if your guest has drivers
+> =C2=A0=C2=A0=C2=A0 ramfb"
+>=20
+> Not sure if anything has changed in this respect ?
+>=20
+>=20
+> The QXL graphics card is an incredibly complex device, offering
+> 2d acceleration that is not very interesting for modern guest OS
+> desktops since they're largely focused on 3d acceleration. This
+> complexity is bad from a security POV.
+>=20
+> It would also require a guest driver to take advantage of QXL
+> features and while I presume the Linux driver will build, it is
+> still mostly pointless because of lack of interest in 2d
+> acceleration.
+> I'm not sure about status of the Windows QXL driver for aarch64 ?
+>=20
+> Further QXL is only useful when combined with SPICE graphics and
+> the SPICE project is largely inactive.
+>=20
+> Overall, IMHO, we should keep QXL restricted to as few build
+> scenarios
+> as possible. Given the status of SPICE, possibly we'll even want to
+> deprecate it on x86 eventually, not add it to more arches.=20
+>=20
+> What are you seeing as the compelling use case that requires QXL to
+> exist on aarch64 ?
+>=20
+hi Daniel:
+   Thank you for your answer, it made me learn a lot. No use case, just
+outside customer feedback on the ARM architecture qxl use has problems,
+I compiled the community qemu, found that the default does not support
+qxl display, so the submitted enablement.
+  I agree with you, please ignore this commit.
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 00dafe3f62..4fa7f0b95e 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -53,6 +53,8 @@ static void fsl_imx6_init(Object *obj)
- 
-     object_initialize_child(obj, "src", &s->src, TYPE_IMX6_SRC);
- 
-+    object_initialize_child(obj, "snvs", &s->snvs, TYPE_IMX7_SNVS);
-+
-     for (i = 0; i < FSL_IMX6_NUM_UARTS; i++) {
-         snprintf(name, NAME_SIZE, "uart%d", i + 1);
-         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
-@@ -390,6 +392,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->a9mpcore),
-                                         FSL_IMX6_ENET_MAC_1588_IRQ));
- 
-+    /*
-+     * SNVS
-+     */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->snvs), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->snvs), 0, FSL_IMX6_SNVSHP_ADDR);
-+
-     /*
-      * Watchdog
-      */
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 83291457cf..5b4d48da08 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -21,6 +21,7 @@
- #include "hw/cpu/a9mpcore.h"
- #include "hw/misc/imx6_ccm.h"
- #include "hw/misc/imx6_src.h"
-+#include "hw/misc/imx7_snvs.h"
- #include "hw/watchdog/wdt_imx2.h"
- #include "hw/char/imx_serial.h"
- #include "hw/timer/imx_gpt.h"
-@@ -59,6 +60,7 @@ struct FslIMX6State {
-     A9MPPrivState  a9mpcore;
-     IMX6CCMState   ccm;
-     IMX6SRCState   src;
-+    IMX7SNVSState  snvs;
-     IMXSerialState uart[FSL_IMX6_NUM_UARTS];
-     IMXGPTState    gpt;
-     IMXEPITState   epit[FSL_IMX6_NUM_EPITS];
--- 
-2.39.2 (Apple Git-143)
+I apologize for the disturbance to you all.
+
+Best regards,
+> Hao
+>=20
+>=20
+> >=20
+> > Signed-off-by: Hao Zeng <zenghao@kylinos.cn>
+> > ---
+> > =C2=A0hw/arm/Kconfig | 1 +
+> > =C2=A01 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index 0f42c556d7..d0bedf9347 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -32,6 +32,7 @@ config ARM_VIRT
+> > =C2=A0=C2=A0=C2=A0=C2=A0 select VIRTIO_MEM_SUPPORTED
+> > =C2=A0=C2=A0=C2=A0=C2=A0 select ACPI_CXL
+> > =C2=A0=C2=A0=C2=A0=C2=A0 select ACPI_HMAT
+> > +=C2=A0=C2=A0=C2=A0 select QXL
+> > =C2=A0
+> > =C2=A0config CHEETAH
+> > =C2=A0=C2=A0=C2=A0=C2=A0 bool
+> > --=20
+> > 2.37.2
+> >=20
+> >=20
+>=20
+> With regards,
+> Daniel
 

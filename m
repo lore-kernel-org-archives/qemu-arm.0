@@ -1,93 +1,94 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp235898ejq;
-        Tue, 16 May 2023 00:26:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6rIQCb+bpSWfow/s4brtNwuQvsOq7pVGYP3eifahklbigFTewJj3W4iSya3236nDFl0IxQ
-X-Received: by 2002:a05:622a:387:b0:3ef:28dc:fdd0 with SMTP id j7-20020a05622a038700b003ef28dcfdd0mr57111570qtx.44.1684221976872;
-        Tue, 16 May 2023 00:26:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684221976; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp236775ejq;
+        Tue, 16 May 2023 00:29:01 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ721qTXCjVFgzrgPL/nLyXpw0AnfO9vMRQga29RcEYKyrNFy3RCFvE/WXqvCHMmW3nCF2mk
+X-Received: by 2002:a05:622a:411:b0:3f3:9732:a5b2 with SMTP id n17-20020a05622a041100b003f39732a5b2mr44630016qtx.60.1684222141015;
+        Tue, 16 May 2023 00:29:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684222141; cv=none;
         d=google.com; s=arc-20160816;
-        b=SGJAElOfFz7iGHzT4V5XVqWGYsKne0/EdZqCOzgy9/oW/J5CYrqfnbZM0F2j5R7VuT
-         EVix6DPmHMZWHQSRIfJMkqa7XnomcNR1Z6y+AOkbv35YtsvskWyXJNx3xXLmKVVyO36Z
-         1hjm/Wr416J/FYVg7HtD39IaS4wQ+wRc6q++Vyuj2pXYd63wme7Nt6YtO0BbqpoRJWyA
-         PJm+FLoQsD2tRgdpn5cY8cTp7rarlJFT3IIGTY62eXK1VyCpHX/MWqytcxdZjEppvoKM
-         SaXgzPZ0I1o8qAiHgZcxaCOEzIkjt5GF/j742AWo01YeyakZVuIPAnjrL7VwtuzNvYJf
-         zjpg==
+        b=aG8Xdp7faFAIuf72kzYwEe1mSd4lGHsY1XRwU8G8D4U3g/lDMWpCRnGxxQRZpar1ZE
+         VQ8MAzvoluUu673a46WB8YS2Ler/UzkRQn/44v77FjY107Ic0vICasa6Avaccbh53xFK
+         GzfE8sV3TY3qeZJOyJMfuZLLlXVU5pHhiVK4RfaC3HrPoMSzAWWzkm5Vcw/Ls5Y/nVfr
+         e/2KKf1f2oJxvBvEu2oJ4rrzY0gEvZShGw5sPehsB3O6P5gs11zBJjkKsQXUqH0EA/GD
+         J65yIXgEx9CaoQB7yqGMhDs0yWFwPCEx8yB7qX0exJvrv/TGFHkcIG61xh+4T74SmKD5
+         zKgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ezlM8Es+XSXRFIHZdp4OqyXuLK6zFFQqlNU9vq/9klA=;
-        b=OjnDhk571I+Z32wc1RD2unD4Zm8yl3yl3nmx7WCLp0MnW6OSy03WSkZADb3JbMT/Qi
-         h3JjJtP0gXxOjZVl2t4G5zjepaxSwF8EBrMRgns/BEU8ZDjGPrNWGsfO98p86tdW+HYl
-         BwJG/AEhEn1ff3jwO3RnXzQJJg/Hpq8k0UkgVoE7Ip3FHHT236K6rKI3nKB5N12Hkk3h
-         43SHyAQ59Z5BnjaspMiCIF/RPwLtUk1dSJdDccJ0hm9Qz7KpQHGZY/tRqVFfLBoWIUhO
-         H7kwf+bf4aVi7XS3umYqAesLvrJ/e1MQhppOihR6bmyougLZHrJrPFd1cc5o0k13mM9o
-         feSA==
+        bh=wkkpinFsNSpl4gvroYjGfSBiHd9AH5pf6UVfznVwtSI=;
+        b=pVob2higWRo6bBccPDHzDLiM/xm7EFGQ9dk+8CTDfIXEF3HCykjcUb5MT8O53nAGW8
+         dLgL9+rv8r06mCjnH6fC0zL2BhPow/1gg28Rh1IP++4eMp/Gvg6kneD6hk32pkK4a49D
+         hI64uVNAv6klpCee5qIyMvBc7ufzDDe201ggoKYMkNiqZlh9me2ZaTV3bNniYL6lQLNt
+         Y/fhHiV2tj3BaEgvrKtKIxbYiWdxnwtu/7xV+XTljEokcAHHzpGGmD5WR+gHB72bcsnV
+         Z7TqEe4LfGe80hPAM0IZbdRsi1DGceyg0GbMIRHSC+6s9Z3kS7fwMZDbodhOkYGzW+CC
+         Ttng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=BbI5Hrdn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=ZsGwMDOu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7-20020ac87e87000000b003d52e0543d2si10907496qtj.268.2023.05.16.00.26.16
+        by mx.google.com with ESMTPS id a19-20020a05622a02d300b003d5266b06ccsi10654130qtx.84.2023.05.16.00.29.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 May 2023 00:26:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 May 2023 00:29:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=BbI5Hrdn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@anisinha-ca.20221208.gappssmtp.com header.s=20221208 header.b=ZsGwMDOu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pyp4M-0002Nj-Ow; Tue, 16 May 2023 03:26:02 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pyp6m-0003kq-BZ; Tue, 16 May 2023 03:28:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1pyp4K-0002Ky-Rh
- for qemu-arm@nongnu.org; Tue, 16 May 2023 03:26:00 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1pyp6g-0003kY-Pt
+ for qemu-devel@nongnu.org; Tue, 16 May 2023 03:28:26 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1pyp4J-0007dW-2h
- for qemu-arm@nongnu.org; Tue, 16 May 2023 03:26:00 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-307d58b3efbso3091718f8f.0
- for <qemu-arm@nongnu.org>; Tue, 16 May 2023 00:25:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ani@anisinha.ca>) id 1pyp6e-00081f-Lv
+ for qemu-devel@nongnu.org; Tue, 16 May 2023 03:28:26 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-3f41d087b3bso106331655e9.0
+ for <qemu-devel@nongnu.org>; Tue, 16 May 2023 00:28:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=anisinha-ca.20221208.gappssmtp.com; s=20221208; t=1684221957; x=1686813957; 
+ d=anisinha-ca.20221208.gappssmtp.com; s=20221208; t=1684222103; x=1686814103; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ezlM8Es+XSXRFIHZdp4OqyXuLK6zFFQqlNU9vq/9klA=;
- b=BbI5Hrdn53lZMZT8u4v+LqXfsi3mdPP3WEKdYO9WMD9Ra8fY0ccupCisGG5kROL9ew
- HVDZ8laKeOFBwrXMvyLvqy1uqPa2/7/kX+2WdNlxgg6Q8UBPzBzSEeTff0UcH4bmslTR
- EgcIxJknyN/V8QkFEoXGpOFIu11pdBmylbzUzX4W+brfQ1Clmzk66UxOIcUFjaKvBD6I
- TErZ0vNeH9WrwEoYeFXTzlXQIFdTtZnpdmd02JyN+sljIe+KuzNFGOJDkQ82o/G+xPKx
- nDEMP1H4PSgl7MUsNB7re1tw3qSO+Kc49nviVQH9bjwvD1zICWGUiPuxWcXLeGhzK5Mi
- giHA==
+ bh=wkkpinFsNSpl4gvroYjGfSBiHd9AH5pf6UVfznVwtSI=;
+ b=ZsGwMDOuNSKvGXTLAA8v09F8z1vawJck5iCYkLA0KvwxP90mMi81RwbdUaQgQOQv6o
+ k2grqkiU5H2QGYd0eDn3cOMxh1/BdVYDbMnjI4BgDay1+JLPso9DFV0aFZWBCVeKmlu6
+ sabKTqL8QAYcVe1DUaJYGB9TjXB1L9yFLjO3TYbEHSuiBw0LUQmKkLk2eQbQTcYSxP2j
+ W1d1xceWAzQRd/9hSkcJ3b846NNe/VZikGrIzU/1eF3C4LejNB8X/L6OQTcfNhBQclQT
+ O+dZJ+Q7Gk22z3/ePcrmmI6RROf26uT7bsHFP1m5PVvBOW7ZWa+MDcF+1DRjpl1jiK0s
+ 5XCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684221957; x=1686813957;
+ d=1e100.net; s=20221208; t=1684222103; x=1686814103;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ezlM8Es+XSXRFIHZdp4OqyXuLK6zFFQqlNU9vq/9klA=;
- b=Mt/pNEetwIpHXVBzpKgcyLWzdxdr9XFSNgE62sTescPBIM+FtePYLvg4/ICINHaJIW
- lZdJS/QXVsT8SRefc3Q66iVm751JkcsUgIlnGeaMujaJczu9GUI3IIflrY+l/qlLcaaL
- /NcIr4CWtVSlC2EO0RxDjOqfra66Uuy/AH9e++arejlcXGmq3wNKFpMMYkGrs5AeEPpx
- yaFjjyOcBwZoWWPfv4weYi+PvGnYhNuWlUMnGd2O/DeYvSxlzp16ev/+Dy0/AmgfyNHR
- LQq2+FTrYpD8c7N0YdT9B6a45pBhKLNPbBDNuAlg0QupxFabBRlC2d/HSyj7xifcESKB
- Xssw==
-X-Gm-Message-State: AC+VfDxhErz5VZU4WldFxSYwYs488KE5YmBp6txyuTChkmee/UYVIrg5
- f7v7p3hjTJEI17ezUmF2La8Ccpm7VxYMdgYbC5HCKeMoJl7XPDZg
-X-Received: by 2002:adf:dc04:0:b0:307:a33d:d054 with SMTP id
- t4-20020adfdc04000000b00307a33dd054mr17502713wri.49.1684221957408; Tue, 16
- May 2023 00:25:57 -0700 (PDT)
+ bh=wkkpinFsNSpl4gvroYjGfSBiHd9AH5pf6UVfznVwtSI=;
+ b=DSIta8eNqakccwA1IF3CTwZ+YxGpOAvclvGe8atNWxxd8A1zb/h++jMMyk/DXJGz2K
+ wRQBDbIBxFL+ljD4GGOQxm/n+BFYc0g0pLTbLHU+b80brV/w7sY6GN+W+P8TIinkk7CV
+ KEwiv52M0D4foVDeFxeUZSCLXd0HKGDi2zD4/aSzixa7fWYWg1G/AnUksBs+vW++99jG
+ ybc8lxvtNY97A9kQMweryQyc9uQ42uHHY1nqZl5x3qjZqtyFy+RMH7+HWbAGucb+HXrq
+ chdOYxrN8sDgZM3/fnqu/zfu2hxDtHRUOE+3adtR7lLgho+6JcZVtQA4/iF8s5OB6ycf
+ 5dtQ==
+X-Gm-Message-State: AC+VfDwtO9cphMFdSNtm8Z7CcyIdVIzPVqVN2GHQaZmkUeXCNMucPGGC
+ zBpKtFrpgtL+3ikbd+B3eyO9CJ0W/fW8nm07wcITYg==
+X-Received: by 2002:a05:600c:217:b0:3f4:f0c2:143 with SMTP id
+ 23-20020a05600c021700b003f4f0c20143mr10319587wmi.20.1684222102805; Tue, 16
+ May 2023 00:28:22 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230515203311.2139-1-eric.devolder@oracle.com>
- <20230515203311.2139-3-eric.devolder@oracle.com>
-In-Reply-To: <20230515203311.2139-3-eric.devolder@oracle.com>
+ <20230515203311.2139-4-eric.devolder@oracle.com>
+In-Reply-To: <20230515203311.2139-4-eric.devolder@oracle.com>
 From: Ani Sinha <ani@anisinha.ca>
-Date: Tue, 16 May 2023 12:55:46 +0530
-Message-ID: <CAARzgwyNkKh_2PWe+ca1FKgtUKy22d3n7TMKRFpQcZkcaAnhQA@mail.gmail.com>
-Subject: Re: [PATCH 2/3] ACPI: i386: bump to MADT to revision 3
+Date: Tue, 16 May 2023 12:58:11 +0530
+Message-ID: <CAARzgwzpWRGfvYBpmnDgjySu_16Y_fMXh3+b9Fggk_EKfP285A@mail.gmail.com>
+Subject: Re: [PATCH 3/3] ACPI: bios-tables-test.c step 5 (update expected
+ table binaries)
 To: Eric DeVolder <eric.devolder@oracle.com>
 Cc: qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, mst@redhat.com, 
  imammedo@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org, 
@@ -95,65 +96,306 @@ Cc: qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  eduardo@habkost.net, boris.ostrovsky@oracle.com, miguel.luis@oracle.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: none client-ip=2a00:1450:4864:20::42e;
- envelope-from=ani@anisinha.ca; helo=mail-wr1-x42e.google.com
+Received-SPF: none client-ip=2a00:1450:4864:20::32c;
+ envelope-from=ani@anisinha.ca; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hwcm4oPCiYHt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QK5U8T4aWSpg
 
-On Tue, May 16, 2023 at 2:04=E2=80=AFAM Eric DeVolder <eric.devolder@oracle=
+On Tue, May 16, 2023 at 2:03=E2=80=AFAM Eric DeVolder <eric.devolder@oracle=
 .com> wrote:
 >
-> Currently i386 QEMU generates MADT revision 3, and reports
-> MADT revision 1. Set .revision to 3 to match reality.
+> Following the guidelines in tests/qtest/bios-tables-test.c, this
+> is step 5 and 6.
 >
-> Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devol=
-der@ora
-> cle.com/T/#t
+> The MADT/APIC table diffs show (for pc, q35 and microvm) bumping
+> revision from 1 to 3 (and checksum changing accordingly):
+>
+>  Using expected file 'tests/data/acpi/pc/DSDT'
+>  acpi-test: Warning! APIC binary file mismatch. Actual [aml:/tmp/aml-9UKC=
+51], Expected [aml:tests/data/acpi/pc/APIC].
+>  See source file tests/qtest/bios-tables-test.c for instructions on how t=
+o update expected files.
+>  acpi-test: Warning! APIC mismatch. Actual [asl:/tmp/asl-CFKC51.dsl, aml:=
+/tmp/aml-9UKC51], Expected [asl:/tmp/asl-TMFC51.dsl, aml:tests/data/acpi/pc=
+/APIC].
+>  --- /tmp/asl-TMFC51.dsl        2023-05-15 14:15:26.599183824 -0400
+>  +++ /tmp/asl-CFKC51.dsl        2023-05-15 14:15:26.598183818 -0400
+>  @@ -1,32 +1,32 @@
+>   /*
+>    * Intel ACPI Component Architecture
+>    * AML/ASL+ Disassembler version 20230331 (64-bit version)
+>    * Copyright (c) 2000 - 2023 Intel Corporation
+>    *
+>  - * Disassembly of tests/data/acpi/pc/APIC, Mon May 15 14:15:26 2023
+>  + * Disassembly of /tmp/aml-9UKC51, Mon May 15 14:15:26 2023
+>    *
+>    * ACPI Data Table [APIC]
+>    *
+>    * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue=
+ (in hex)
+>    */
+>
+>   [000h 0000 004h]                   Signature : "APIC"    [Multiple APIC=
+ Description Table (MADT)]
+>   [004h 0004 004h]                Table Length : 00000078
+>  -[008h 0008 001h]                    Revision : 01
+>  -[009h 0009 001h]                    Checksum : 8A
+>  +[008h 0008 001h]                    Revision : 03
+>  +[009h 0009 001h]                    Checksum : 88
+>   [00Ah 0010 006h]                      Oem ID : "BOCHS "
+>   [010h 0016 008h]                Oem Table ID : "BXPC    "
+>   [018h 0024 004h]                Oem Revision : 00000001
+>   [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+>   [020h 0032 004h]       Asl Compiler Revision : 00000001
+>
+>   [024h 0036 004h]          Local Apic Address : FEE00000
+>   [028h 0040 004h]       Flags (decoded below) : 00000001
+>                            PC-AT Compatibility : 1
+>
+>   [02Ch 0044 001h]               Subtable Type : 00 [Processor Local APIC=
+]
+>   [02Dh 0045 001h]                      Length : 08
+>   [02Eh 0046 001h]                Processor ID : 00
+>   [02Fh 0047 001h]               Local Apic ID : 00
+>   [030h 0048 004h]       Flags (decoded below) : 00000001
+>                              Processor Enabled : 1
+>  @@ -81,24 +81,24 @@
+>   [06Bh 0107 001h]                      Source : 0B
+>   [06Ch 0108 004h]                   Interrupt : 0000000B
+>   [070h 0112 002h]       Flags (decoded below) : 000D
+>                                       Polarity : 1
+>                                   Trigger Mode : 3
+>
+>   [072h 0114 001h]               Subtable Type : 04 [Local APIC NMI]
+>   [073h 0115 001h]                      Length : 06
+>   [074h 0116 001h]                Processor ID : FF
+>   [075h 0117 002h]       Flags (decoded below) : 0000
+>                                       Polarity : 0
+>                                   Trigger Mode : 0
+>   [077h 0119 001h]        Interrupt Input LINT : 01
+>
+>   Raw Table Data: Length 120 (0x78)
+>
+>  -    0000: 41 50 49 43 78 00 00 00 01 8A 42 4F 43 48 53 20  // APICx....=
+.BOCHS
+>  +    0000: 41 50 49 43 78 00 00 00 03 88 42 4F 43 48 53 20  // APICx....=
+.BOCHS
+>       0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    .=
+...BXPC
+>       0020: 01 00 00 00 00 00 E0 FE 01 00 00 00 00 08 00 00  // .........=
+.......
+>       0030: 01 00 00 00 01 0C 00 00 00 00 C0 FE 00 00 00 00  // .........=
+.......
+>       0040: 02 0A 00 00 02 00 00 00 00 00 02 0A 00 05 05 00  // .........=
+.......
+>       0050: 00 00 0D 00 02 0A 00 09 09 00 00 00 0D 00 02 0A  // .........=
+.......
+>       0060: 00 0A 0A 00 00 00 0D 00 02 0A 00 0B 0B 00 00 00  // .........=
+.......
+>       0070: 0D 00 04 06 FF 00 00 01                          // ........
+>
 > Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
 
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Acked-by: Ani Sinha <anisinha@redhat.com>
 
 > ---
->  hw/i386/acpi-common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  tests/data/acpi/microvm/APIC                  | Bin 70 -> 70 bytes
+>  tests/data/acpi/microvm/APIC.ioapic2          | Bin 82 -> 82 bytes
+>  tests/data/acpi/microvm/APIC.pcie             | Bin 110 -> 110 bytes
+>  tests/data/acpi/pc/APIC                       | Bin 120 -> 120 bytes
+>  tests/data/acpi/pc/APIC.acpihmat              | Bin 128 -> 128 bytes
+>  tests/data/acpi/pc/APIC.cphp                  | Bin 160 -> 160 bytes
+>  tests/data/acpi/pc/APIC.dimmpxm               | Bin 144 -> 144 bytes
+>  tests/data/acpi/q35/APIC                      | Bin 120 -> 120 bytes
+>  tests/data/acpi/q35/APIC.acpihmat             | Bin 128 -> 128 bytes
+>  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 144 -> 144 bytes
+>  tests/data/acpi/q35/APIC.core-count2          | Bin 2478 -> 2478 bytes
+>  tests/data/acpi/q35/APIC.cphp                 | Bin 160 -> 160 bytes
+>  tests/data/acpi/q35/APIC.dimmpxm              | Bin 144 -> 144 bytes
+>  tests/data/acpi/q35/APIC.xapic                | Bin 2686 -> 2686 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h   |   4 ----
+>  15 files changed, 4 deletions(-)
 >
-> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
-> index 52e5c1439a..8a0932fe84 100644
-> --- a/hw/i386/acpi-common.c
-> +++ b/hw/i386/acpi-common.c
-> @@ -102,7 +102,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *=
-linker,
->      MachineClass *mc =3D MACHINE_GET_CLASS(x86ms);
->      const CPUArchIdList *apic_ids =3D mc->possible_cpu_arch_ids(MACHINE(=
-x86ms));
->      AcpiDeviceIfClass *adevc =3D ACPI_DEVICE_IF_GET_CLASS(adev);
-> -    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 1, .oem_id =3D oem_i=
-d,
-> +    AcpiTable table =3D { .sig =3D "APIC", .rev =3D 3, .oem_id =3D oem_i=
-d,
->                          .oem_table_id =3D oem_table_id };
+> diff --git a/tests/data/acpi/microvm/APIC b/tests/data/acpi/microvm/APIC
+> index 68dbd44a7e35a356083f086df60f70e424c4249f..672764e711d80402890902ba9=
+ded10915770e84c 100644
+> GIT binary patch
+> delta 16
+> XcmZ>B<8ln}barE4U|=3Dqq$Ylcn95e$)
 >
->      acpi_table_begin(&table, table_data);
+> delta 16
+> XcmZ>B<8ln}barE4U|=3Dkn$Ylcn95Mq&
+>
+> diff --git a/tests/data/acpi/microvm/APIC.ioapic2 b/tests/data/acpi/micro=
+vm/APIC.ioapic2
+> index 3063c52cd3e9bbed29c06031b375900f4a49b9e0..6f24fdb12ce3f1c13df7ff835=
+e475d8023e20d4a 100644
+> GIT binary patch
+> delta 16
+> XcmWFv;&Ke|bPi%*U|?>X$mIb59$W*3
+>
+> delta 16
+> XcmWFv;&Ke|bPi%*U|?*X$mIb59$Ev1
+>
+> diff --git a/tests/data/acpi/microvm/APIC.pcie b/tests/data/acpi/microvm/=
+APIC.pcie
+> index 4e8f6ed8d6a866429fc17aecdeafc3fb5ef65fa3..2239ca76a607fb1ff9d392298=
+e2bd6461bba7ecf 100644
+> GIT binary patch
+> delta 16
+> Xcmd1H<8ln}bk1X7U|_DA$dv*BBD@3c
+>
+> delta 16
+> Xcmd1H<8ln}bk1X7U|_77$dv*BBDw?a
+>
+> diff --git a/tests/data/acpi/pc/APIC b/tests/data/acpi/pc/APIC
+> index 208331db53b7dd5c6205cce0e95427636b86dd64..868a3432f0295257393e45b75=
+483ef4bec455d74 100644
+> GIT binary patch
+> delta 16
+> Xcmb=3DZ;BpM`bgp1vU|{Z;$dv~GB#s0m
+>
+> delta 16
+> Xcmb=3DZ;BpM`bgp1vU|{T;$dv~GB#Z<k
+>
+> diff --git a/tests/data/acpi/pc/APIC.acpihmat b/tests/data/acpi/pc/APIC.a=
+cpihmat
+> index 812c4603f2701494f6bb761570323158a20d4043..125d1ff0871f772bc8cfe3e2a=
+fbff70edf221291 100644
+> GIT binary patch
+> delta 18
+> ZcmZo*Y+&Sa4DfVrU|?WiE}h6#1^_241Tz2t
+>
+> delta 18
+> ZcmZo*Y+&Sa4DfVrU|?WiET70#1^_221Tz2t
+>
+> diff --git a/tests/data/acpi/pc/APIC.cphp b/tests/data/acpi/pc/APIC.cphp
+> index 65cc4f4a9aa2676140a6525cdac1e838274b1e07..a2c2a24e5e3cf143b57a8932f=
+78eeda6d7b8bbdb 100644
+> GIT binary patch
+> delta 18
+> ZcmZ3$xPXz%F~HM#0RsaAv)DwgX#guQ1XKV3
+>
+> delta 18
+> ZcmZ3$xPXz%F~HM#0RsaAqr^n6X#guO1XKV3
+>
+> diff --git a/tests/data/acpi/pc/APIC.dimmpxm b/tests/data/acpi/pc/APIC.di=
+mmpxm
+> index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970=
+d6ca95543da799e 100644
+> GIT binary patch
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+>
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+>
+> diff --git a/tests/data/acpi/q35/APIC b/tests/data/acpi/q35/APIC
+> index 208331db53b7dd5c6205cce0e95427636b86dd64..868a3432f0295257393e45b75=
+483ef4bec455d74 100644
+> GIT binary patch
+> delta 16
+> Xcmb=3DZ;BpM`bgp1vU|{Z;$dv~GB#s0m
+>
+> delta 16
+> Xcmb=3DZ;BpM`bgp1vU|{T;$dv~GB#Z<k
+>
+> diff --git a/tests/data/acpi/q35/APIC.acpihmat b/tests/data/acpi/q35/APIC=
+.acpihmat
+> index 812c4603f2701494f6bb761570323158a20d4043..125d1ff0871f772bc8cfe3e2a=
+fbff70edf221291 100644
+> GIT binary patch
+> delta 18
+> ZcmZo*Y+&Sa4DfVrU|?WiE}h6#1^_241Tz2t
+>
+> delta 18
+> ZcmZo*Y+&Sa4DfVrU|?WiET70#1^_221Tz2t
+>
+> diff --git a/tests/data/acpi/q35/APIC.acpihmat-noinitiator b/tests/data/a=
+cpi/q35/APIC.acpihmat-noinitiator
+> index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970=
+d6ca95543da799e 100644
+> GIT binary patch
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+>
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+>
+> diff --git a/tests/data/acpi/q35/APIC.core-count2 b/tests/data/acpi/q35/A=
+PIC.core-count2
+> index a255082ef5bc39f0d92d3e372b91f09dd6d0d9a1..f5da2eb1e8a93d961b39f665f=
+2e8b02acf1aeb3c 100644
+> GIT binary patch
+> delta 19
+> acmZ1{yiS<QF~HM#9VY_=3D^SO;&OE>{I`URQ*
+>
+> delta 19
+> acmZ1{yiS<QF~HM#9VY_=3D<Ase}OE>{I_yw8(
+>
+> diff --git a/tests/data/acpi/q35/APIC.cphp b/tests/data/acpi/q35/APIC.cph=
+p
+> index 65cc4f4a9aa2676140a6525cdac1e838274b1e07..a2c2a24e5e3cf143b57a8932f=
+78eeda6d7b8bbdb 100644
+> GIT binary patch
+> delta 18
+> ZcmZ3$xPXz%F~HM#0RsaAv)DwgX#guQ1XKV3
+>
+> delta 18
+> ZcmZ3$xPXz%F~HM#0RsaAqr^n6X#guO1XKV3
+>
+> diff --git a/tests/data/acpi/q35/APIC.dimmpxm b/tests/data/acpi/q35/APIC.=
+dimmpxm
+> index d904d4a70ddecbb79a83a267af8e26f925e9f4c6..9b5922bc72db1fe64819a3970=
+d6ca95543da799e 100644
+> GIT binary patch
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBv*$#vHUKF+1V;b>
+>
+> delta 18
+> ZcmbQhIDwJNF~HM#0s{jBqxVFvHUKF)1V;b>
+>
+> diff --git a/tests/data/acpi/q35/APIC.xapic b/tests/data/acpi/q35/APIC.xa=
+pic
+> index c1969c35aa12b61d25e0134bbb8d2187ba42d663..83bd28325af9d6d7619015a97=
+01866b8f3f1d754 100644
+> GIT binary patch
+> delta 19
+> acmew-@=3Dt`zF~HNgj*EeTS#2X%2^Ro9-UT)Q
+>
+> delta 19
+> acmew-@=3Dt`zF~HNgj*EeTQDY-l2^Ro9+yyoO
+>
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bi=
+os-tables-test-allowed-diff.h
+> index 1e5e354ecf..dfb8523c8b 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,5 +1 @@
+>  /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/pc/APIC",
+> -"tests/data/acpi/q35/APIC",
+> -"tests/data/acpi/microvm/APIC",
+> -"tests/data/acpi/virt/APIC",
 > --
 > 2.31.1
 >

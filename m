@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp237505ejq;
-        Tue, 16 May 2023 00:30:54 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7PEL3XL30WWP8xumwTap1TS8Yy1EGqHuKpbbRzXThuQYcvD2TMXJdob09HWFIRSDCn1hUK
-X-Received: by 2002:ac8:4e50:0:b0:3f3:c91d:11e3 with SMTP id e16-20020ac84e50000000b003f3c91d11e3mr38636852qtw.11.1684222254352;
-        Tue, 16 May 2023 00:30:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684222254; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp237603ejq;
+        Tue, 16 May 2023 00:31:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ69HPg4RBS3qKXTt2ETSdBSP6k/0GpmPC3CXUIm7ArMy9a3WLQOE8Rg2daiCvQLDjqC+ODX
+X-Received: by 2002:a05:6214:1c88:b0:5ef:4455:fd35 with SMTP id ib8-20020a0562141c8800b005ef4455fd35mr50132113qvb.4.1684222265586;
+        Tue, 16 May 2023 00:31:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684222265; cv=none;
         d=google.com; s=arc-20160816;
-        b=T/pz7JVTW+YqTj4TVXyggRgAXy/OsgZuJQ764OvBwlXThEpwdvmccjldLojvQU7YV1
-         dWQszHTzDQ7a3wDUXW1naI9uPplCoqsxKJcVroeSrcUQxD1GYwAykrRKT6z8yNur4/1B
-         HSYWjBmKyHX98/Yp+LmRkD6tU3tJ1O9HoLQb12HH/LxYNN3MTTPr60YWlNumc/LDGKkr
-         1oBy3WfKOAVXppKVpUO4VajwbNHtkCaxdOyMqvgI5V1bzLlSYV/ORt6t8CTtu2P8k5QE
-         /Sfyp7zaSElSQf2r/K8wuQ+6Nmo2McIlRyjDWWrjLgCIWRe02rkVq+WxCgTsfTYwE5an
-         xGYA==
+        b=o3952RMlKXHD3cGvQQaBFAeAeeaV7KoeqRM8JV67DvMMhziQJhCCSzBusGwGiCJRSC
+         DE3rCcUm/7eGlMZ+HrygWak3bSRU07rha+ua0P08SIm+H2aU3GeSuvzaDur99OorXDcF
+         So6GtzFlh0sKF8LLVkW42TOXHAt4t0USnnuUArRMfyIL+6e6StPqORfYseJjMLwr1wNl
+         rkNtjVZ4tk2k9CCrBj6KrCaqJ+qmXvIUcl+K9miXzWpvg43SXHW6J1Ly6Og4rjaDJ1pn
+         zItIi1DF2fnBSJYxjBMOqieRoCatcPiJJ3T4X9yUtJ5CiQx9pYx/48Yqpw22KwW4V2Yv
+         v73A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=FEY3dbBnL1WGpWphSpmgwin0DWH/SVCp8p7ehhT7deg=;
-        b=HPYJ3KOam67vrVRPTBY+GmVwECuCARwfwQxMm7q2ofkOrp3TvE2fiGOb9oBAGOFonL
-         lSbRzWBpT/XyZR0tOV3whiDhK+h+x7HN0IEyJJ0VTHaQOfZC5NhIWeuncotY2M+ow1m0
-         Sw9GcSu9Ytby4nPEATGDLLrbpeOHFNY1iDkoAVMJSdx8Cy6RrvmbBIb7Ah5bZeu2osM6
-         oteXnNRVd6/o3yOdYj3vUA88SZINJj/N62ameOWFkqRTHbcfK2FhpmHUraI3CtPQyZAD
-         OaHgVvU3AbJ5TsMMzZ5ewgwHWZFGtMez0XUPvl945EenrcPH5K4HnF7b6/goFDDCxFFY
-         ufxQ==
+        bh=FaVaq0ogVQz6AaNwSZ4SiMLr5WtmJewxbPsnZ0SWxUE=;
+        b=SDQg5XPWR2J6gbJ40qpU0ySFK/3p9wPaKsuIZXqB3nhVhcIFtq1j8Xv2AnmP8/niIm
+         Vdctj51fTFO8zCKjXTW2Jz/54ojTljq49EpTcECHcMpID1EUE8X5qU5OL9BYLLzfScE5
+         j3WfdiR4Jyi7agqfzz3aEpqVB73UpJbxovygL3B4Jfpcci6segbkAt9vq/2u4zOytNY4
+         HHsXKxmID7gY2rBvbVi0eK6n8R1H8iUchH5Ksiay6rxtLCzwe3xLdUu3/Qvs8INyWxB5
+         0pz+mCW8a7bNOT6KRpuvkyPkfCaNCpyW1uwT7YEumSPLa7trSOB0xTsDg7t/q+BjINaj
+         UPVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=iOKZbBF6;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=oNNDbHA5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5-20020ac85745000000b003b86b6c1502si10523044qtx.225.2023.05.16.00.30.54
+        by mx.google.com with ESMTPS id pi34-20020a05620a37a200b007591606f36csi750875qkn.696.2023.05.16.00.31.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 May 2023 00:30:54 -0700 (PDT)
+        Tue, 16 May 2023 00:31:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=iOKZbBF6;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=oNNDbHA5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyp8t-0004ie-Cg; Tue, 16 May 2023 03:30:43 -0400
+	id 1pyp99-00059W-Jy; Tue, 16 May 2023 03:30:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pyp8h-0004a2-O4; Tue, 16 May 2023 03:30:34 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1pyp8r-0004fv-OZ; Tue, 16 May 2023 03:30:42 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pyp8b-00004x-T4; Tue, 16 May 2023 03:30:29 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-30796c0cbcaso10013611f8f.1; 
- Tue, 16 May 2023 00:30:25 -0700 (PDT)
+ id 1pyp8m-0000Bi-Mk; Tue, 16 May 2023 03:30:41 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3f50020e0f8so14373895e9.0; 
+ Tue, 16 May 2023 00:30:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684222223; x=1686814223;
+ d=gmail.com; s=20221208; t=1684222233; x=1686814233;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FEY3dbBnL1WGpWphSpmgwin0DWH/SVCp8p7ehhT7deg=;
- b=iOKZbBF6MvC8XxcWl+g5VfE/xIMCICAP/Kf3wRZqQhHljRJS8YtFOx6XRONmlcqqji
- XQwZLeut76HPGBnqOhpLYQBEC4XueaOr8WxIL5TOJaViPMsv8rXHDdX8XSoi/TWiuj54
- qeLW/DJrrKkh4i6Kgj5N16fAbjpnmSqCwQe0D0ijXdMRo8hkritOleZuaoiBz1mKISQo
- QYo9BzToYlPfJw30e3DkRdmsgE/NIbA3J0Lm2pdbsG0/aaMVZjjUZcOim6aplVDPiE89
- DiA8+aRCz+ZF94wU5D18MIgyybYnRvBbre4xD9oWv1uBZvJl961PD7VhZ2Vs2w6EQkL8
- NtMw==
+ bh=FaVaq0ogVQz6AaNwSZ4SiMLr5WtmJewxbPsnZ0SWxUE=;
+ b=oNNDbHA5ElDS4Tmf3EdQpd94hALk38X8ZjI1w1fDkfFl66X+T5KBuTMdZJJX3zc3nn
+ IA5EyqHR2J5JOhMeMSKOGsS9fhXrQS9E4J5SKy5I71lT27NJH33rfqnDWc/84CK2eLPR
+ 0fVm/h8mFAVabQI5nJSca1pIEwVJOFfy3sD7wctfCzmcaQStY/GX8HZxIKIVJbpCsIez
+ 024vtgaCdImE3gywVzLXmuwYm10EN7L3s+D/TMI46AgLHbQFTPmMToO1wM8s2llmJYm3
+ sx/RscSLdhhf9tOxSiubWaF8xGwPUFG5LbbjHCugeqj6Gs4N6DJdTUHFCh8JtZs8eJ/z
+ uOfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684222223; x=1686814223;
+ d=1e100.net; s=20221208; t=1684222233; x=1686814233;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FEY3dbBnL1WGpWphSpmgwin0DWH/SVCp8p7ehhT7deg=;
- b=jEd7ttM1U18W3UxJF6y0bCeqHqfOJfsvwj5qholCRaYBjYACq68e08bFDsAskNI7xh
- xJmFFPpgbmjlLgghW2lmaHL/IggfuEzSp7ZEFERN6YLmRjdMd28uEQDYAc3PXZcmU1Sx
- MKXeahevOfy+NAGPgOAVHHIFz8d36cYBGyYZCm0ciE7l8p/OFWPDiCoO5Qb22x7Z8xZN
- +3KOc4Py/bYvMz58xKwvZZqvwXVZClS8piBUnS2Hl0qDdcGHKiSENfc7+W/hur105L86
- aQQwJ386k1V+S7iqhUs5EmBvjMZl//yvcFo/UKmIM4JDOjZtGiNV+6Ld2lU0XApwraak
- zBWQ==
-X-Gm-Message-State: AC+VfDxQRZfhvy4WaJRVRYmifAs1mnJnzLWRA4iFRS9g2vfpQmX7EJHD
- T1tX5V9WsB/4BFwCBccXBnDLyEU42CdIEg==
-X-Received: by 2002:adf:f20d:0:b0:309:39a0:befb with SMTP id
- p13-20020adff20d000000b0030939a0befbmr57167wro.23.1684222222470; 
- Tue, 16 May 2023 00:30:22 -0700 (PDT)
+ bh=FaVaq0ogVQz6AaNwSZ4SiMLr5WtmJewxbPsnZ0SWxUE=;
+ b=EWbgVAxfQBpNG3N9LYtHuaTDlbVjy//MpHOYKxZnrqBqUnHuVmREb62o5lORwNSziR
+ Xv23Cxv+kiY3PHkTEw60Pyb1x4eEzQjOk3fq+XqIKK7+DaB6ha98DSunouiRsOt9tk9H
+ kod9mOad7CphtIQVl7qbZzwy9kb8UijcsQiDI46pjrj08ftkyUs18LShtN/HVHeEWS3B
+ ZN1MmpyEMJdp71/vGyVGCelMe4qPd7vjY01a3r00B5/J2h3xlaaQjFwsgOO2CqETLsWz
+ yG8i4GHzwCDX1Rb9WDAZpWX3i8gYTOyKF2vdQuFNqzrW++UoGvd0jJd2qJT6mKQu9IrU
+ 75zg==
+X-Gm-Message-State: AC+VfDyR77/afF0i5TM0MIpRx6hT+d4q0NfHrfyA+so6fgWsA8SnV9oS
+ imiqE3kWdWWqvGFWoNFEz6VUuMByeCQ5eg==
+X-Received: by 2002:adf:fdd1:0:b0:306:2ff1:5227 with SMTP id
+ i17-20020adffdd1000000b003062ff15227mr25934737wrs.23.1684222232360; 
+ Tue, 16 May 2023 00:30:32 -0700 (PDT)
 Received: from i.. ([41.236.82.205]) by smtp.gmail.com with ESMTPSA id
- y12-20020a5d614c000000b003062c609115sm1559997wrt.21.2023.05.16.00.30.21
+ y12-20020a5d614c000000b003062c609115sm1559997wrt.21.2023.05.16.00.30.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 May 2023 00:30:22 -0700 (PDT)
+ Tue, 16 May 2023 00:30:31 -0700 (PDT)
 From: Mohamed ElSayed <m.elsayed4420@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Mohamed ElSayed <m.elsayed4420@gmail.com>
-Subject: [PULL 1/8] the tivac machine def init commit
-Date: Tue, 16 May 2023 10:29:52 +0300
-Message-Id: <20230516072959.49994-2-m.elsayed4420@gmail.com>
+Subject: [PULL 5/8] tivac general purpose timers implementation
+Date: Tue, 16 May 2023 10:29:56 +0300
+Message-Id: <20230516072959.49994-6-m.elsayed4420@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230516072959.49994-1-m.elsayed4420@gmail.com>
 References: <20230516072959.49994-1-m.elsayed4420@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=m.elsayed4420@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=m.elsayed4420@gmail.com; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -122,26 +122,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F5iozlsGdA39
+X-TUID: iftQofmtbHrI
 
 Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
 ---
- hw/arm/tivac.c                    |  56 ++++++
- hw/arm/tm4c123gh6pm_soc.c         | 274 ++++++++++++++++++++++++++++++
- include/hw/arm/tm4c123gh6pm_soc.h |  71 ++++++++
- 3 files changed, 401 insertions(+)
- create mode 100644 hw/arm/tivac.c
- create mode 100644 hw/arm/tm4c123gh6pm_soc.c
- create mode 100644 include/hw/arm/tm4c123gh6pm_soc.h
+ hw/timer/tm4c123_gptm.c         | 529 ++++++++++++++++++++++++++++++++
+ include/hw/timer/tm4c123_gptm.h | 131 ++++++++
+ 2 files changed, 660 insertions(+)
+ create mode 100644 hw/timer/tm4c123_gptm.c
+ create mode 100644 include/hw/timer/tm4c123_gptm.h
 
-diff --git a/hw/arm/tivac.c b/hw/arm/tivac.c
+diff --git a/hw/timer/tm4c123_gptm.c b/hw/timer/tm4c123_gptm.c
 new file mode 100644
-index 0000000000..5d917a8f9e
+index 0000000000..69f84ee0ec
 --- /dev/null
-+++ b/hw/arm/tivac.c
-@@ -0,0 +1,56 @@
++++ b/hw/timer/tm4c123_gptm.c
+@@ -0,0 +1,529 @@
 +/*
-+ * TivaC Board Implementation
++ * TM4C123 General purpose timers
 + *
 + * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
 + *
@@ -164,395 +162,648 @@ index 0000000000..5d917a8f9e
 + * THE SOFTWARE.
 + */
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "qemu/error-report.h"
-+#include "hw/arm/tm4c123gh6pm_soc.h"
-+#include "hw/arm/boot.h"
-+
-+
-+/* Main SYSCLK frequency in Hz (24MHz) */
-+#define SYSCLK_FRQ 24000000ULL
-+
-+static void tivac_init(MachineState *machine)
-+{
-+    DeviceState *dev;
-+    dev = qdev_new(TYPE_TM4C123GH6PM_SOC);
-+
-+    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+            machine->kernel_filename,
-+            0, FLASH_SIZE);
-+}
-+
-+static void tivac_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "Tiva C (Cortex-M4)";
-+    mc->init = tivac_init;
-+}
-+DEFINE_MACHINE("tivac", tivac_machine_init)
-diff --git a/hw/arm/tm4c123gh6pm_soc.c b/hw/arm/tm4c123gh6pm_soc.c
-new file mode 100644
-index 0000000000..da08eefc33
---- /dev/null
-+++ b/hw/arm/tm4c123gh6pm_soc.c
-@@ -0,0 +1,274 @@
-+/*
-+ * TM4C123GH6PM SoC
-+ *
-+ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/module.h"
-+#include "hw/arm/boot.h"
-+#include "exec/address-spaces.h"
-+#include "hw/arm/tm4c123gh6pm_soc.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "hw/misc/unimp.h"
-+#include "sysemu/sysemu.h"
-+
-+static const uint32_t gpio_addrs[GPIO_COUNT] = {
-+    0x40004000,
-+    0x40005000,
-+    0x40006000,
-+    0x40007000,
-+    0x40024000,
-+    0x40025000
-+};
-+
-+static const uint32_t usart_addrs[USART_COUNT] = {
-+    0x4000C000,
-+    0x4000D000,
-+    0x4000E000,
-+    0x4000F000,
-+    0x40010000,
-+    0x40011000,
-+    0x40012000,
-+    0x40013000
-+};
-+
-+static const uint32_t wdt_addrs[WDT_COUNT] = {
-+    0x40000000,
-+    0x40001000
-+};
-+
-+static const uint32_t gptm_addrs[GPTM_COUNT] = {
-+    0x40030000,
-+    0x40031000,
-+    0x40032000,
-+    0x40033000,
-+    0x40034000,
-+    0x40035000,
-+    0x40036000,
-+    0x40037000,
-+    0x4003C800,
-+    0x4003D000,
-+    0x4003E000,
-+    0x4003F000,
-+};
-+
-+static const uint16_t usart_irqs[USART_COUNT] = {5, 6, 33, 59, 60, 61, 62, 63};
-+static const uint16_t gpio_irqs[GPIO_COUNT] = {0, 1, 2, 3, 4, 30};
-+static const uint16_t wdt_irqs[WDT_COUNT] = {18, 18};
-+static const uint16_t gptm_irqs[GPTM_COUNT * 2] = {
-+    19, 20, 21, 22, 23, 24, 35, 36, 70, 71, 92, 93,
-+    94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105};
-+
-+static void tm4c123gh6pm_soc_initfn(Object *obj)
-+{
-+    int i;
-+    TM4C123GH6PMState *s = TM4C123GH6PM_SOC(obj);
-+
-+    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
-+    object_initialize_child(obj, "sysctl", &s->sysctl, TYPE_TM4C123_SYSCTL);
-+
-+    for (i = 0; i < USART_COUNT; i++) {
-+        object_initialize_child(obj, "usart[*]", &s->usart[i], TYPE_TM4C123_USART);
-+    }
-+
-+    for (i = 0; i < GPIO_COUNT; i++) {
-+        object_initialize_child(obj, "gpio[*]", &s->gpio[i], TYPE_TM4C123_GPIO);
-+    }
-+
-+    for (i = 0; i < WDT_COUNT; i++) {
-+        object_initialize_child(obj, "watchdog-timer[*]", &s->wdt[i], TYPE_TM4C123_WATCHDOG);
-+    }
-+
-+    for (i = 0; i < GPTM_COUNT; i++) {
-+        object_initialize_child(obj, "gptm[*]", &s->gptm[i], TYPE_TM4C123_GPTM);
-+    }
-+}
-+
-+static void tm4c123gh6pm_soc_realize(DeviceState *dev_soc, Error **errp)
-+{
-+    TM4C123GH6PMState *s = TM4C123GH6PM_SOC(dev_soc);
-+    DeviceState *armv7m;
-+    DeviceState *dev;
-+    SysBusDevice *busdev;
-+    int i;
-+
-+    MemoryRegion *system_memory = get_system_memory();
-+
-+    //init flash memory
-+    memory_region_init_rom(
-+            &s->flash, OBJECT(dev_soc),
-+            "TM4C123GH6PM.flash", FLASH_SIZE, &error_fatal
-+            );
-+    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
-+
-+    //init sram and the sram alias region
-+    memory_region_init_ram(
-+            &s->sram, OBJECT(dev_soc),
-+            "TM4C123GH6PM.sram", SRAM_SIZE, &error_fatal);
-+    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
-+
-+    /* Init ARMv7m */
-+    armv7m = DEVICE(&s->armv7m);
-+    qdev_prop_set_uint32(armv7m, "num-irq", 138);
-+    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
-+    qdev_prop_set_bit(armv7m, "enable-bitband", true);
-+    qdev_connect_clock_in(armv7m, "cpuclk", s->sysctl.mainclk);
-+    qdev_connect_clock_in(armv7m, "refclk", s->sysctl.mainclk);
-+    object_property_set_link(OBJECT(&s->armv7m), "memory",
-+            OBJECT(get_system_memory()), &error_abort);
-+
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
-+        return;
-+    }
-+
-+    /* USART */
-+    for (i = 0; i < USART_COUNT; i++) {
-+        dev = DEVICE(&(s->usart[i]));
-+        s->usart[i].sysctl = &s->sysctl;
-+        qdev_prop_set_chr(dev, "chardev", serial_hd(i));
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usart[i]), errp)) {
-+            return;
-+        }
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, usart_addrs[i]);
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irqs[i]));
-+    }
-+
-+    /* GPIO */
-+    for (i = 0; i < GPIO_COUNT; i++) {
-+        dev = DEVICE(&(s->gpio[i]));
-+        s->gpio[i].sysctl = &s->sysctl;
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
-+            return;
-+        }
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, gpio_addrs[i]);
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, gpio_irqs[i]));
-+    }
-+
-+    /* Watchdog Timers */
-+    for (i = 0; i < WDT_COUNT; i++) {
-+        dev = DEVICE(&(s->wdt[i]));
-+        s->wdt[i].sysctl = &s->sysctl;
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
-+            return;
-+        }
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, wdt_addrs[i]);
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, wdt_irqs[i]));
-+    }
-+
-+    /* General purpose timers */
-+    int j = 0;
-+    for (i = 0, j = 0; i < GPTM_COUNT; i++, j+=2) {
-+        dev = DEVICE(&(s->gptm[i]));
-+        s->gptm[i].sysctl = &s->sysctl;
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gptm[i]), errp)) {
-+            return;
-+        }
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, gptm_addrs[i]);
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, gptm_irqs[j]));
-+        sysbus_connect_irq(busdev, 1, qdev_get_gpio_in(armv7m, gptm_irqs[j+1]));
-+    }
-+
-+    /* SYSCTL */
-+    dev = DEVICE(&(s->sysctl));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysctl), errp)) {
-+        return;
-+    }
-+    busdev = SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(busdev, 0, SYSCTL_ADDR);
-+
-+
-+    create_unimplemented_device("SSI_0", 0x40008000, 0xFFF);
-+    create_unimplemented_device("SSI_1", 0x40009000, 0xFFF);
-+    create_unimplemented_device("SSI_2", 0x4000A000, 0xFFF);
-+    create_unimplemented_device("SSI_3", 0x4000B000, 0xFFF);
-+
-+    create_unimplemented_device("I2C_0", 0x40020000, 0xFFF);
-+    create_unimplemented_device("I2C_1", 0x40021000, 0xFFF);
-+    create_unimplemented_device("I2C_2", 0x40022000, 0xFFF);
-+    create_unimplemented_device("I2C_3", 0x40023000, 0xFFF);
-+
-+    create_unimplemented_device("PWM_0", 0x40028000, 0xFFF);
-+    create_unimplemented_device("PWM_1", 0x40029000, 0xFFF);
-+
-+    create_unimplemented_device("QEI_0", 0x4002C000, 0xFFF);
-+    create_unimplemented_device("QEI_1", 0x4002D000, 0xFFF);
-+
-+    create_unimplemented_device("ADC_0", 0x40038000, 0xFFF);
-+    create_unimplemented_device("ADC_1", 0x40039000, 0xFFF);
-+
-+    create_unimplemented_device("ANALOG_CMP", 0x4003C000, 0xFFF);
-+
-+    create_unimplemented_device("CAN_0", 0x40040000, 0xFFF);
-+    create_unimplemented_device("CAN_1", 0x40041000, 0xFFF);
-+
-+    create_unimplemented_device("USB", 0x40050000, 0xFFF);
-+
-+    create_unimplemented_device("GPIO_A_AHB", 0x40058000, 0xFFF);
-+    create_unimplemented_device("GPIO_B_AHB", 0x40059000, 0xFFF);
-+    create_unimplemented_device("GPIO_C_AHB", 0x4005A000, 0xFFF);
-+    create_unimplemented_device("GPIO_D_AHB", 0x4005B000, 0xFFF);
-+    create_unimplemented_device("GPIO_E_AHB", 0x4005C000, 0xFFF);
-+    create_unimplemented_device("GPIO_F_AHB", 0x4005D000, 0xFFF);
-+
-+    create_unimplemented_device("EEPROM", 0x400AF000, 0xFFF);
-+    create_unimplemented_device("SYS_EXC", 0x400F9000, 0xFFF);
-+    create_unimplemented_device("HIBERNATION_MOD", 0x400FC000, 0xFFF);
-+    create_unimplemented_device("FLASH_CONT", 0x400FD000, 0xFFF);
-+    create_unimplemented_device("SYS_CONT", 0x400FE000, 0xFFF);
-+
-+    create_unimplemented_device("uDMA", 0x400FF000, 0xFFF);
-+}
-+
-+static Property tm4c123gh6pm_soc_properties[] = {
-+    DEFINE_PROP_STRING("cpu-type", TM4C123GH6PMState, cpu_type),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void tm4c123gh6pm_soc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = tm4c123gh6pm_soc_realize;
-+    device_class_set_props(dc, tm4c123gh6pm_soc_properties);
-+}
-+
-+static const TypeInfo tm4c123gh6pm_soc_info = {
-+    .name          = TYPE_TM4C123GH6PM_SOC,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TM4C123GH6PMState),
-+    .instance_init = tm4c123gh6pm_soc_initfn,
-+    .class_init    = tm4c123gh6pm_soc_class_init,
-+};
-+
-+static void tm4c123gh6pm_soc_types(void)
-+{
-+    type_register_static(&tm4c123gh6pm_soc_info);
-+}
-+
-+
-+type_init(tm4c123gh6pm_soc_types)
-diff --git a/include/hw/arm/tm4c123gh6pm_soc.h b/include/hw/arm/tm4c123gh6pm_soc.h
-new file mode 100644
-index 0000000000..1841483a78
---- /dev/null
-+++ b/include/hw/arm/tm4c123gh6pm_soc.h
-@@ -0,0 +1,71 @@
-+/*
-+ * TM4C123GH6PM SoC
-+ *
-+ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef HW_ARM_TM4C123GH6PM_SOC_H
-+#define HW_ARM_TM4C123GH6PM_SOC_H
-+
-+#include "hw/arm/armv7m.h"
-+#include "qom/object.h"
-+#include "hw/clock.h"
-+#include "hw/char/tm4c123_usart.h"
-+#include "hw/misc/tm4c123_sysctl.h"
-+#include "hw/gpio/tm4c123_gpio.h"
-+#include "hw/watchdog/tm4c123_watchdog.h"
 +#include "hw/timer/tm4c123_gptm.h"
++#include "hw/irq.h"
++#include "trace.h"
++#include "qemu/timer.h"
++#include <time.h>
 +
-+#define TYPE_TM4C123GH6PM_SOC "tm4c123gh6pm-soc"
++#define LOG(fmt, args...) qemu_log("%s: " fmt, __func__, ## args)
++#define READONLY LOG("0x%"HWADDR_PRIx" is a readonly field\n.", addr)
 +
-+OBJECT_DECLARE_SIMPLE_TYPE(TM4C123GH6PMState, TM4C123GH6PM_SOC)
++static uint64_t ns_to_ticks(void *opaque, uint64_t ns, uint32_t prescaler)
++{
++    TM4C123GPTMState *s = opaque;
 +
-+#define FLASH_BASE_ADDRESS 0x00000000
-+#define FLASH_SIZE (256 * 1024)
-+#define SRAM_BASE_ADDRESS 0x20000000
-+#define SRAM_SIZE (32 * 1024)
++    uint32_t freq = clock_get_hz(s->clk) / prescaler;
++    float sec = (float)ns / (float)NANOSECONDS_PER_SECOND;
++    return sec * freq;
++}
 +
-+#define SYSCTL_ADDR 0x400FE000
++static unsigned long ticks_to_time_ns(void *opaque, uint64_t ticks, uint32_t prescaler)
++{
++    TM4C123GPTMState *s = opaque;
++    uint32_t freq = clock_get_hz(s->clk) / prescaler;
++    return (((float)ticks / (float)freq) * NANOSECONDS_PER_SECOND);
++}
 +
-+#define USART_COUNT 8
-+#define GPIO_COUNT 6
-+#define WDT_COUNT 2
-+#define GPTM_COUNT 12
++static void log_message(const char *message)
++{
++    uint64_t ns = qemu_clock_get_ns(QEMU_CLOCK_REALTIME);
++    time_t seconds = ns / 1000000000;
++    struct tm *timeinfo = localtime(&seconds);
++    char buffer[80];
++    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", timeinfo);
++    LOG("[%s] %s\n", buffer, message);
++}
 +
-+struct TM4C123GH6PMState {
++static uint16_t get_timer_width(void *opaque)
++{
++    TM4C123GPTMState *s = opaque;
++    switch(s->mmio.addr) {
++        case TIMER0_32...TIMER5_32:
++            return TIMER_WIDTH_32;
++        case TIMER0_64...TIMER5_64:
++            return TIMER_WIDTH_64;
++    }
++    return 0;
++}
++
++static uint64_t build_interval_value(void *opaque)
++{
++    TM4C123GPTMState *s = opaque;
++    uint16_t timer_width = get_timer_width(s);
++    uint64_t interval_value = 0;
++    if (timer_width == TIMER_WIDTH_32) {
++        /* timer is in 32 bit mode or 32bit rtc*/
++        uint16_t upper16 = extract32(s->gptm_talir, 16, 16);
++        uint16_t lower16 = extract32(s->gptm_tblir, 0, 16);
++        interval_value = ((uint32_t)lower16 << 16) + upper16;
++    }
++    else if (timer_width == TIMER_WIDTH_64) {
++        interval_value = ((uint64_t)s->gptm_talir << 32) + s->gptm_tblir;
++    }
++
++    trace_tm4c123_gptm_build_interval_value(s->gptm_talir, s->gptm_tblir, interval_value);
++    return interval_value;
++}
++
++static void set_timers(void *opaque)
++{
++    TM4C123GPTMState *s = opaque;
++    uint64_t interval_value;
++    uint16_t timer_width;
++    if (s->gptm_ctl & GPTM_TACTL_EN) {
++        timer_width = get_timer_width(s);
++        if (timer_width == TIMER_WIDTH_32) {
++            /* What is the mode of the timer? 16/32 */
++            if (s->gptm_cfg == 0x4) {
++                /* 16 bit mode */
++                interval_value = extract32(s->gptm_talir, 0, 16);
++                /* Start the timer? */
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/16 is running\n");
++            }
++            else if (s->gptm_cfg == 0x1) {
++                /* 32 bit mode rtc */
++                interval_value = build_interval_value(s);
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/32 RTC is running\n");
++            }
++            else if (s->gptm_cfg == 0x0) {
++                /* 32 bit mode rtc */
++                interval_value = build_interval_value(s);
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/32 is running\n");
++            }
++        }
++        else if (timer_width == TIMER_WIDTH_64) {
++            /* What is the mode of the timer? 32/64 */
++            if (s->gptm_cfg == 0) {
++                /* 64 bit mode */
++                interval_value = build_interval_value(s);
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/64 is running\n");
++            }
++            else if (s->gptm_cfg == 0x1) {
++                /* 64 bit mode */
++                interval_value = build_interval_value(s);
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/64 RTC is running\n");
++            }
++            else if (s->gptm_cfg == 0x4) {
++                interval_value = s->gptm_talir;
++                timer_mod(s->a, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tapr));
++                LOG("Timer A/32 RTC is running\n");
++            }
++        }
++    }
++    else if (s->gptm_ctl & GPTM_TBCTL_EN) {
++        timer_width = get_timer_width(s);
++        if (timer_width == TIMER_WIDTH_32) {
++            /* What is the mode of the timer? 16/32 */
++            if (s->gptm_cfg == 0x4) {
++                /* 16 bit mode */
++                interval_value = extract32(s->gptm_tblir, 0, 16);
++                /* Start the timer? */
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer B/16 is running\n");
++            }
++            else if (s->gptm_cfg == 0x01) {
++                /* 32 bit mode rtc */
++                interval_value = build_interval_value(s);
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer B/32 RTC is running\n");
++            }
++            else if (s->gptm_cfg == 0x00) {
++                /* 32 bit mode rtc */
++                interval_value = build_interval_value(s);
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer B/32 RTC is running\n");
++            }
++        }
++        else if (timer_width == TIMER_WIDTH_64) {
++            /* What is the mode of the timer? 32/64 */
++            if (s->gptm_cfg == 0) {
++                /* 64 bit mode */
++                interval_value = build_interval_value(s);
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer A/64 is running\n");
++            }
++            else if (s->gptm_cfg == 0x1) {
++                /* 64 bit mode */
++                interval_value = build_interval_value(s);
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer A/64 RTC is running\n");
++            }
++            else if (s->gptm_cfg == 0x4) {
++                interval_value = s->gptm_tblir;
++                timer_mod(s->b, qemu_clock_get_ns(QEMU_CLOCK_REALTIME) + ticks_to_time_ns(s, interval_value, s->gptm_tbpr));
++                LOG("Timer A/32 RTC is running\n");
++            }
++        }
++    }
++}
++
++static bool gptm_clock_enabled(TM4C123SysCtlState *s, hwaddr addr)
++{
++    switch(addr) {
++        case TIMER0_32:
++            return test_bit(0, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER1_32:
++            return test_bit(1, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER2_32:
++            return test_bit(2, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER3_32:
++            return test_bit(3, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER4_32:
++            return test_bit(4, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER5_32:
++            return test_bit(5, (const unsigned long*)&s->sysctl_rcgctimer);
++            break;
++        case TIMER0_64:
++            return test_bit(0, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++        case TIMER1_64:
++            return test_bit(1, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++        case TIMER2_64:
++            return test_bit(2, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++        case TIMER3_64:
++            return test_bit(3, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++        case TIMER4_64:
++            return test_bit(4, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++        case TIMER5_64:
++            return test_bit(5, (const unsigned long*)&s->sysctl_rcgcwtimer);
++            break;
++    }
++    return false;
++}
++
++static void tm4c123_gptm_reset(DeviceState* dev)
++{
++    TM4C123GPTMState *s = TM4C123_GPTM(dev);
++
++    s->gptm_cfg = 0x00000000;
++    s->gptm_amr = 0x00000000;
++    s->gptm_bmr = 0x00000000;
++    s->gptm_ctl = 0x00000000;
++    s->gptm_sync = 0x00000000;
++    s->gptm_imr = 0x00000000;
++    s->gptm_ris = 0x00000000;
++    s->gptm_mis = 0x00000000;
++    s->gptm_icr = 0x00000000;
++    s->gptm_talir = 0xFFFFFFFF;
++    s->gptm_tblir = 0x00000000;
++    s->gptm_tamatchr = 0xFFFFFFFF;
++    s->gptm_tbmatchr = 0x00000000;
++    s->gptm_tapr = 0x00000000;
++    s->gptm_tbpr = 0x00000000;
++    s->gptm_tapmr = 0x00000000;
++    s->gptm_tbpmr = 0x00000000;
++    s->gptm_tar = 0xFFFFFFFF;
++    s->gptm_tbr = 0x00000000;
++    s->gptm_tav = 0xFFFFFFFF;
++    s->gptm_tbv = 0x00000000;
++    s->gptm_rtcpd = 0x00007FFF;
++    s->gptm_taps = 0x00000000;
++    s->gptm_tbps = 0x00000000;
++    s->gptm_tapv = 0x00000000;
++    s->gptm_tbpv = 0x00000000;
++    s->gptm_pp = 0x00000000;
++}
++
++static uint64_t tm4c123_gptm_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    TM4C123GPTMState *s = opaque;
++
++    if (!gptm_clock_enabled(s->sysctl, s->mmio.addr)) {
++        hw_error("GPTM module clock is not enabled");
++    }
++
++    trace_tm4c123_gptm_read(addr);
++
++    switch(addr) {
++        case GPTM_CFG:
++            return s->gptm_cfg;
++        case GPTM_AMR:
++            return s->gptm_amr;
++        case GPTM_BMR:
++            return s->gptm_bmr;
++        case GPTM_CTL:
++            return s->gptm_ctl;
++        case GPTM_SYNC:
++            return s->gptm_sync;
++        case GPTM_IMR:
++            return s->gptm_imr;
++        case GPTM_RIS:
++            return s->gptm_ris;
++        case GPTM_MIS:
++            return s->gptm_mis;
++        case GPTM_ICR:
++            return s->gptm_icr;
++        case GPTM_TALIR:
++            return s->gptm_talir;
++        case GPTM_TBLIR:
++            return s->gptm_tblir;
++        case GPTM_TAMATCHR:
++            return s->gptm_tamatchr;
++        case GPTM_TBMATCHR:
++            return s->gptm_tbmatchr;
++        case GPTM_TAPR:
++            return s->gptm_tapr;
++        case GPTM_TBPR:
++            return s->gptm_tbpr;
++        case GPTM_TAPMR:
++            return s->gptm_tapmr;
++        case GPTM_TBPMR:
++            return s->gptm_tbpmr;
++        case GPTM_TAR:
++            return s->gptm_tar;
++        case GPTM_TBR:
++            return s->gptm_tbr;
++        case GPTM_TAV:
++            if (get_timer_width(s) == TIMER_WIDTH_64 && s->gptm_cfg == 0) {
++                return extract64(
++                        ns_to_ticks(s, s->a->expire_time - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), s->gptm_tapr),
++                        0, 31);
++            }
++            else {
++                return ns_to_ticks(s, s->a->expire_time - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), s->gptm_tapr);
++            }
++        case GPTM_TBV:
++            if (get_timer_width(s) == TIMER_WIDTH_64 && s->gptm_cfg == 0) {
++                return extract64(
++                        ns_to_ticks(s, s->a->expire_time - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), s->gptm_tapr),
++                        32, 64);
++            }
++            else {
++                return ns_to_ticks(s, s->b->expire_time - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), s->gptm_tabr);
++            }
++        case GPTM_RTCPD:
++            return s->gptm_rtcpd;
++        case GPTM_TAPS:
++            return s->gptm_taps;
++        case GPTM_TBPS:
++            return s->gptm_tbps;
++        case GPTM_TAPV:
++            return s->gptm_tapv;
++        case GPTM_TBPV:
++            return s->gptm_tbpv;
++        case GPTM_PP:
++            return s->gptm_pp;
++        default:
++            LOG("Bad address 0x%"HWADDR_PRIx"\n", addr);
++    }
++
++    return 0;
++}
++
++static void tm4c123_gptm_write(void *opaque, hwaddr addr, uint64_t val64, unsigned int size)
++{
++    TM4C123GPTMState *s = opaque;
++    uint32_t val32 = val64;
++
++    if (!gptm_clock_enabled(s->sysctl, s->mmio.addr)) {
++        hw_error("GPTM module clock is not enabled");
++    }
++
++    trace_tm4c123_gptm_write(addr, val32);
++
++    switch(addr) {
++        case GPTM_CFG:
++            s->gptm_cfg = val32;
++            break;
++        case GPTM_AMR:
++            s->gptm_amr = val32;
++            break;
++        case GPTM_BMR:
++            s->gptm_bmr = val32;
++            break;
++        case GPTM_CTL:
++            s->gptm_ctl = val32;
++            set_timers(s);
++            break;
++        case GPTM_SYNC:
++            s->gptm_sync = val32;
++            break;
++        case GPTM_IMR:
++            s->gptm_imr = val32;
++            break;
++        case GPTM_RIS:
++            READONLY;
++            break;
++        case GPTM_MIS:
++            s->gptm_mis = val32;
++            break;
++        case GPTM_ICR:
++            s->gptm_ris &= ~val32;
++            s->gptm_mis &= ~val32;
++            break;
++        case GPTM_TALIR:
++            s->gptm_talir = val32;
++            break;
++        case GPTM_TBLIR:
++            s->gptm_tblir = val32;
++            break;
++        case GPTM_TAMATCHR:
++            s->gptm_tamatchr = val32;
++            break;
++        case GPTM_TBMATCHR:
++            s->gptm_tbmatchr = val32;
++            break;
++        case GPTM_TAPR:
++            s->gptm_tapr = val32;
++            break;
++        case GPTM_TBPR:
++            s->gptm_tbpr = val32;
++            break;
++        case GPTM_TAPMR:
++            s->gptm_tapmr = val32;
++            break;
++        case GPTM_TBPMR:
++            s->gptm_tbpmr = val32;
++            break;
++        case GPTM_TAR:
++            READONLY;
++            break;
++        case GPTM_TBR:
++            READONLY;
++            break;
++        case GPTM_TAV:
++            s->gptm_tav = val32;
++            break;
++        case GPTM_TBV:
++            s->gptm_tbv = val32;
++            break;
++        case GPTM_RTCPD:
++            READONLY;
++            break;
++        case GPTM_TAPS:
++            READONLY;
++            break;
++        case GPTM_TBPS:
++            READONLY;
++            break;
++        case GPTM_TAPV:
++            READONLY;
++            break;
++        case GPTM_TBPV:
++            READONLY;
++            break;
++        case GPTM_PP:
++            READONLY;
++            break;
++        default:
++            LOG("Bad address 0x%"HWADDR_PRIx"\n", addr);
++    }
++}
++
++static const MemoryRegionOps tm4c123_gptm_ops = {
++    .read = tm4c123_gptm_read,
++    .write = tm4c123_gptm_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void timer_a_callback(void *opaque)
++{
++    TM4C123GPTMState *s = opaque;
++
++    log_message("timer A\n");
++
++    if (test_bit(0, (unsigned long*)&s->gptm_imr)) {
++        qemu_irq_pulse(s->irq_a);
++        set_bit(0, (unsigned long*)&s->gptm_mis);
++    }
++    set_bit(0, (unsigned long*)&s->gptm_ris);
++    if ((s->gptm_amr & 0x0000000F) == 0x2) {
++        set_timers(s);
++    }
++}
++
++static void timer_b_callback(void *opaque)
++{
++    TM4C123GPTMState *s = opaque;
++    log_message("timer B\n");
++
++    if (test_bit(8, (unsigned long*)&s->gptm_imr)) {
++        qemu_irq_pulse(s->irq_b);
++        set_bit(8, (unsigned long*)&s->gptm_mis);
++    }
++    set_bit(8, (unsigned long*)&s->gptm_ris);
++    if ((s->gptm_bmr & 0x0000000F) == 0x2) {
++        set_timers(s);
++    }
++}
++
++static void tm4c123_gptm_init(Object *obj)
++{
++    TM4C123GPTMState*s = TM4C123_GPTM(obj);
++    s->clk = qdev_init_clock_in(DEVICE(s), "gptm_clock", NULL, NULL, 0);
++    s->a = timer_new_ns(QEMU_CLOCK_VIRTUAL, timer_a_callback, s);
++    s->b = timer_new_ns(QEMU_CLOCK_VIRTUAL, timer_b_callback, s);
++    timer_init_ns(s->a, QEMU_CLOCK_VIRTUAL, timer_a_callback, s);
++    timer_init_ns(s->b, QEMU_CLOCK_VIRTUAL, timer_b_callback, s);
++
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq_a);
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq_b);
++    memory_region_init_io(&s->mmio, obj, &tm4c123_gptm_ops, s, TYPE_TM4C123_GPTM, 0xFFF);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++}
++
++static void tm4c123_gptm_realize(DeviceState *dev, Error **errp)
++{
++    TM4C123GPTMState *s = TM4C123_GPTM(dev);
++    qdev_connect_clock_in(dev, "gptm_clock", qdev_get_clock_out(DEVICE(s->sysctl), "outclk"));
++
++}
++
++static void tm4c123_gptm_class_init(ObjectClass *kclass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(kclass);
++    dc->reset = tm4c123_gptm_reset;
++    dc->realize = tm4c123_gptm_realize;
++}
++
++static const TypeInfo tm4c123_gptm_info = {
++    .name = TYPE_TM4C123_GPTM,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TM4C123GPTMState),
++    .instance_init = tm4c123_gptm_init,
++    .class_init = tm4c123_gptm_class_init,
++};
++
++static void tm4c123_gptm_register_types(void)
++{
++    type_register_static(&tm4c123_gptm_info);
++}
++
++type_init(tm4c123_gptm_register_types)
+diff --git a/include/hw/timer/tm4c123_gptm.h b/include/hw/timer/tm4c123_gptm.h
+new file mode 100644
+index 0000000000..e86049f5c1
+--- /dev/null
++++ b/include/hw/timer/tm4c123_gptm.h
+@@ -0,0 +1,131 @@
++/*
++ * TM4C123 General purpose timers
++ *
++ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_ARM_TM4C123_GPTM_H
++#define HW_ARM_TM4C123_GPTM_H
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "hw/misc/tm4c123_sysctl.h"
++#include "qemu/bitops.h"
++#include "hw/sysbus.h"
++#include "hw/irq.h"
++#include "qom/object.h"
++
++#define TIMER_WIDTH_32 0x32B
++#define TIMER_WIDTH_64 0x64B
++
++#define TIMER0_32 0x40030000
++#define TIMER1_32 0x40031000
++#define TIMER2_32 0x40032000
++#define TIMER3_32 0x40033000
++#define TIMER4_32 0x40034000
++#define TIMER5_32 0x40035000
++
++#define TIMER0_64 0x40036000
++#define TIMER1_64 0x40037000
++#define TIMER2_64 0x4003C000
++#define TIMER3_64 0x4003D000
++#define TIMER4_64 0x4003E000
++#define TIMER5_64 0x4003F000
++
++#define GPTM_CFG 0x000
++#define GPTM_AMR 0x004
++#define GPTM_BMR 0x008
++#define GPTM_CTL 0x00C
++#define GPTM_SYNC 0x010
++#define GPTM_IMR 0x018
++#define GPTM_RIS 0x01C
++#define GPTM_MIS 0x020
++#define GPTM_ICR 0x024
++#define GPTM_TALIR 0x028
++#define GPTM_TBLIR 0x02C
++#define GPTM_TAMATCHR 0x030
++#define GPTM_TBMATCHR 0x034
++#define GPTM_TAPR 0x038
++#define GPTM_TBPR 0x03C
++#define GPTM_TAPMR 0x040
++#define GPTM_TBPMR 0x044
++#define GPTM_TAR 0x048
++#define GPTM_TBR 0x04C
++#define GPTM_TAV 0x050
++#define GPTM_TBV 0x054
++#define GPTM_RTCPD 0x058
++#define GPTM_TAPS 0x05C
++#define GPTM_TBPS 0x060
++#define GPTM_TAPV 0x064
++#define GPTM_TBPV 0x068
++#define GPTM_PP 0xFC0
++
++#define GPTM_TACTL_EN (1 << 0)
++#define GPTM_TBCTL_EN (1 << 8)
++#define GPTM_TAM_CD   (1 << 4)
++#define GPTM_TAM_MODE_ONESHOT (1 << 1)
++#define GPTM_TAM_PERIODIC (1 << 2)
++
++#define TYPE_TM4C123_GPTM "tm4c123-gptm"
++
++OBJECT_DECLARE_SIMPLE_TYPE(TM4C123GPTMState, TM4C123_GPTM)
++
++struct TM4C123GPTMState {
 +    SysBusDevice parent_obj;
++    MemoryRegion mmio;
++    qemu_irq irq_a;
++    qemu_irq irq_b;
++    TM4C123SysCtlState *sysctl;
 +
-+    char *cpu_type;
-+
-+    ARMv7MState armv7m;
-+
-+    TM4C123USARTState usart[USART_COUNT];
-+    TM4C123SysCtlState sysctl;
-+    TM4C123GPIOState gpio[GPIO_COUNT];
-+    TM4C123WatchdogState wdt[WDT_COUNT];
-+    TM4C123GPTMState gptm[GPTM_COUNT];
-+
-+    MemoryRegion sram;
-+    MemoryRegion alias_region;
-+    MemoryRegion flash;
++    uint32_t gptm_cfg;
++    uint32_t gptm_amr;
++    uint32_t gptm_bmr;
++    uint32_t gptm_ctl;
++    uint32_t gptm_sync;
++    uint32_t gptm_imr;
++    uint32_t gptm_ris;
++    uint32_t gptm_mis;
++    uint32_t gptm_icr;
++    uint32_t gptm_talir;
++    uint32_t gptm_tblir;
++    uint32_t gptm_tamatchr;
++    uint32_t gptm_tbmatchr;
++    uint32_t gptm_tapr;
++    uint32_t gptm_tbpr;
++    uint32_t gptm_tapmr;
++    uint32_t gptm_tbpmr;
++    uint32_t gptm_tar;
++    uint32_t gptm_tbr;
++    uint32_t gptm_tav;
++    uint32_t gptm_tbv;
++    uint32_t gptm_rtcpd;
++    uint32_t gptm_taps;
++    uint32_t gptm_tbps;
++    uint32_t gptm_tapv;
++    uint32_t gptm_tbpv;
++    uint32_t gptm_pp;
++    QEMUTimer *a;
++    QEMUTimer *b;
++    Clock* clk;
 +};
 +
 +#endif
---
+-- 
 2.34.1
 

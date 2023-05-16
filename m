@@ -1,115 +1,216 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp661362ejq;
-        Tue, 16 May 2023 13:36:15 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5JS5lt8RR+GvstHC0yD1RDJwyXw58XuXc3y4lmPF8bUwRrkKIij0lTCnLQQLKk7Bw91s6f
-X-Received: by 2002:a05:6214:21aa:b0:600:5dbc:c31a with SMTP id t10-20020a05621421aa00b006005dbcc31amr61762385qvc.7.1684269374778;
-        Tue, 16 May 2023 13:36:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684269374; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp682279ejq;
+        Tue, 16 May 2023 14:24:13 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6+pcXcn/99NMykeCi1Vk/B5rVjaF9WliTndLXyZCW9ceHZyO67szuHc1yG6WBpexoV5E/u
+X-Received: by 2002:ad4:5be5:0:b0:621:170:68b7 with SMTP id k5-20020ad45be5000000b00621017068b7mr59477864qvc.35.1684272253160;
+        Tue, 16 May 2023 14:24:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1684272253; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zA6HKa5W4tjmaBzZ4fKfrDbeLr5mowDLsGWtEupytgAz8+vVplqR1bAtO6iIhlKAmf
-         HO7mvQnbERwHcUUr6ZDF3x3Aw9ts7CtzSngqC1T98RHVchj5U3fpY3xlshFSi6+iX/nU
-         /Xu0BcxJwTIvNrniYntvTRe4sKCy85y05dGOjPLb3qSH2fvL5hKMo4Bytfb+LVPMo14Y
-         DumUUstXzvCXPaiG1G2kex/J8qcUvJygnJUpVlgQdN3p9RZ7HfaI/t35qdTRHQENoCgP
-         RWDbPIbQnYiDwZ9edRtQouyoVpH5waVWcshH+1PoriPldmSLRF74haBXXMSaXEfA0zFh
-         2Tkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=cUrCqHt5UgIMpgbsBe2GfNatzPA6JZAGwcaPZkcZB2K2g8gTSgRW+xPYl6bEh28MuF
+         PmzKQBxhs0ZWPpUFPT18uR+pMz1DxnRDdmupX8kUA/ChMtCaWd+Zc42xCVPa3BUFaQoY
+         t+wcsl9Bv3lwqa1FM9OKoH03gT7rCREQRmav6mkRr43ABXDCGiQUy+kYP4pyI1gAAiG9
+         SXQ/jsDzo0rcEeTo5EArQI8RqyVgbYZU8Ju/DU0fODlBV75p8med+SicdreJ1z8OXVj3
+         ivd9vgwTosrMW3ZaEtyev0GhLbo31s34iF2BTECznrisxUDDZ/i+LSI1aHcmxhsjmCwf
+         ZPUQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=WGWbmO7v6vcXx/XoMWesDE1+ZZN+mE03VIOoYYtnJYY=;
-        b=yCyCt9TccIKVsw9lH2kzbDt2kcuydhjZNh2/0OdEzk7HPe1j5o4tLN3XsSOL3bW2sa
-         NaGFrBXST3OkjzpiUuvc1J0HVWyDOyP+P1iOrXQO7R5yi3feSj6b3/Fj3TTlpKVGxvNy
-         xxFrl8lS+M3OchK710TdZYroZzWmRak4s18ulpd46/wti0fIxFUsxMqLf2ragruiVwhk
-         eS3sfYsJiI9joXrYtDN9sLvDHi40VzgK5PwT4gu36j6vveRj3UGCQgqa+qodgZgDetAl
-         jMLA/mjEzMItlMpQlV7eYqeqlErhSLJVOnFL5JedxNe5iQjGk7BrwEim+etMX8KO0F6Y
-         cLjg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=GOfkB8Gs;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature
+         :dkim-signature;
+        bh=/52ktn/3mO0UioKB+hO5BWAB1w3Eo5fjiXZKRAg6UmM=;
+        b=ijECDQ2oN3OdZ6+IzK+FbtrDqX/+Ap+5980G8UWnzlkkqBVbBJ+VLd8iekfh6Ni8PR
+         odseOmT0jM4yk+qZaRt8rbMg2UOAv4VM1WRfsANlUfrrHtPcUVkVzXSy0q/Hi/J6DUGJ
+         w0remlYDXwIYssyw1qyhL36w7cc1Nm0QC6HSkP3N/IZfSG68OYeRaJ0MCIzhs2d+jKzB
+         PfJ9HjZ8wII+z7h+LKYL8pgaaMJxa2+kAzwarSUDctjyOZfx7u4uHSgQWq2klDrF8goD
+         ZNmCLHpNe8pQ72Y3OGtzbRVpvirO3ucqSBLqr9puuscCAwrOmFNYHuEYo7NIT1nWiTwZ
+         E/hw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b="qJjH/hCF";
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=T3GfMrdZ;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24-20020a05620a137800b0075953937580si298789qkl.169.2023.05.16.13.36.14
+        by mx.google.com with ESMTPS id r4-20020a0562140c8400b0061b9143f540si11807355qvr.289.2023.05.16.14.24.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 May 2023 13:36:14 -0700 (PDT)
+        Tue, 16 May 2023 14:24:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=GOfkB8Gs;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b="qJjH/hCF";
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=T3GfMrdZ;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pz1NE-0006EW-O3; Tue, 16 May 2023 16:34:20 -0400
+	id 1pz28y-0005cv-VB; Tue, 16 May 2023 17:23:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3x-hjZAgKCFIC68CDuzu08805y.w86Ay6E-uB678707E.8B0@flex--smostafa.bounces.google.com>)
- id 1pz1ND-0006Cc-DR
- for qemu-arm@nongnu.org; Tue, 16 May 2023 16:34:19 -0400
-Received: from mail-wr1-x44a.google.com ([2a00:1450:4864:20::44a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3x-hjZAgKCFIC68CDuzu08805y.w86Ay6E-uB678707E.8B0@flex--smostafa.bounces.google.com>)
- id 1pz1NB-0006ix-F3
- for qemu-arm@nongnu.org; Tue, 16 May 2023 16:34:19 -0400
-Received: by mail-wr1-x44a.google.com with SMTP id
- ffacd0b85a97d-3093b0cf714so274399f8f.2
- for <qemu-arm@nongnu.org>; Tue, 16 May 2023 13:34:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
+ id 1pz28w-0005aM-QI; Tue, 16 May 2023 17:23:39 -0400
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
+ id 1pz28u-0001kJ-A0; Tue, 16 May 2023 17:23:38 -0400
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34GJwrpA019747; Tue, 16 May 2023 21:23:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=corp-2023-03-30;
+ bh=/52ktn/3mO0UioKB+hO5BWAB1w3Eo5fjiXZKRAg6UmM=;
+ b=qJjH/hCFTdZ3DHPHcbO5KR2v4w8urfegYJth3/5M1NuiZJ3996BJCa67nZ+gSRAyLfF6
+ /cMElicArmglUxG0b3Udz91TW1DAAOlgQUf1hf6EFK5wI2Os7UfuHR7YCHJ6GKV8JZGC
+ 3iNSyDmPkdA+tVUH7EXGUPyHQtehbXoQzwYKkWB9AJ7j6yGP29/WYNnkEoOr2+v/Myw4
+ R6Bjic02x656PQY4pfNJjhVKnqjKEQC2r1XZ7urqMl+qm+GuTYDbQVeYRpVqDjN2xt8/
+ z+XtwOeVth6mMm9y1h3Y3yW21fg/tW70Ov+AzEJISckHE2dJOeoOpudL0VFBSVfKyXBR WA== 
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3qj2kdmdcw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 May 2023 21:23:05 +0000
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
+ with ESMTP id 34GKk8A9023730; Tue, 16 May 2023 21:23:04 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2042.outbound.protection.outlook.com [104.47.66.42])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 3qj10avtmv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 May 2023 21:23:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QSYFlAZly93JSP5duieAJ1g8l9dvSuX+4swuYEsjMpkxT5l8tulMvXkldJCJhXiWGLCI0iZ1zDljZ6PVi1JVH6bE1z2tGDQ8fjB83Nfj7NT7BuZiG0iJXMXa+Q1jwEWTnr6KrYT4sXj6FpZSpttN9Vxlx3U2EEuDxphS3T6TIdNRCPLYtoj/zS2tBOn2yjRPLrVBeRZaijyyuinsKmRccN51e7k3HYD0Tiwj6LbqrqFVlL+1mo9iRW3pZzS0jCrJGg/pl4U4rgtUMsHmGrvxh/axokuUj80hyLRkeshvXwBEuF/t+HDC2rZW34EuxJICfm/whfaaPZEyzK/X2efDWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/52ktn/3mO0UioKB+hO5BWAB1w3Eo5fjiXZKRAg6UmM=;
+ b=DY+hvu5TDN5n7QjiobObfEmfRWZ7VcQ02TqIJWHPUlzOxAwl2L+pF3S7MYjXbz6zEhr+Kp8sykzCcs43L8d3mUZ8dihzm2lARmKOhvakJV+M0+nQdVBcTs0lV8mwx9VHN6vnu2p+f2woqcxIGJENcHm5D3IMvKmlpTrVuvf6HrUP9ehq93fzTFqgHiQRJPtZjSgf3cQGh2nwchGpH6h/8EoDp5a9Nh0bQUNcb2wJ6rbdE9mnflAhxz61Fykrgzbr5mwBa70YrIDJRuV3SzE6FqGqZL3o7wN88WL5xGzlUCTm9YVcqGCsxYmYK8gdG61NmEsxetmz1P3niyW2h0lBdw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1684269255; x=1686861255;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=WGWbmO7v6vcXx/XoMWesDE1+ZZN+mE03VIOoYYtnJYY=;
- b=GOfkB8GsPL+HJOkOfNKLTDHgH85c/cbmVNJKSehYNiIy5Zzahvrh5AqOhVSR6egIGW
- BaSDE2vrzuegec+fOdt4QWUUmXtAhkI7VfEC03kXRWnhPuDyUzGPp8vevdP7+0V5OZv4
- YlOWV2pAozih9yAHtlNUjgMVS34uEMaa+cuyUGj9g08QgEl7459kDJ+MpamXJN061X5L
- U7MXd/sCysjXyBaM4m+5FDd1OiWxcD1ETx3Mr1Pz0zUPYDvxJa3BNerIt5OJJ2ZWKTws
- iakikptg6pcq5koI+xIHVkdwfBlvp0nebobqJJ5iUmg+Lo0eez4r+N2Rv/vPgYXAEQ6B
- I5wA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684269255; x=1686861255;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WGWbmO7v6vcXx/XoMWesDE1+ZZN+mE03VIOoYYtnJYY=;
- b=F5BPeeTox9t++sgmXZ5Jf0Ve4A1esnJ/JZ8cNhBBYorPbzekAUaOAEW/YD4J73XhGJ
- QmrmeCfxBSoX/mMpPEHfix3rDWfAnbBbNWih6BsTvPYnFFqg8sSC/7r/jrqqA8w8/D6b
- 9QGZZj4jq2V/lUGI1l0HIKcGvwQr+KHF6XT8n+hXtKNFLSItVSqrA1OABh9gkf/DIr6t
- UUh60+Nj0WYgaC1moO+5qrgFq3MJj1aZEjbTEQNFcRRTOxIWRRap2K3ZnTh28qTaJ9kO
- 8gLt3G7DDUujuq5L2iIP0x2osZa/LAukXa3jULTqw8vW/VQ9PYpvnkXC892WR3W/YMfS
- GGfQ==
-X-Gm-Message-State: AC+VfDzPXsahVkUCuwZ1NzjU8eDsxBILbYz974lUOosxWJHYlnzyyI8+
- VtiotQPHgRixAjS7hwP/HuDb/2Fm958BXg==
-X-Received: from mostafa.c.googlers.com
- ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a5d:44cd:0:b0:2e5:756b:8e77 with SMTP id
- z13-20020a5d44cd000000b002e5756b8e77mr5088312wrr.11.1684269255749; Tue, 16
- May 2023 13:34:15 -0700 (PDT)
-Date: Tue, 16 May 2023 20:33:17 +0000
-In-Reply-To: <20230516203327.2051088-1-smostafa@google.com>
-Mime-Version: 1.0
-References: <20230516203327.2051088-1-smostafa@google.com>
-X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-Message-ID: <20230516203327.2051088-11-smostafa@google.com>
-Subject: [PATCH v4 10/10] hw/arm/smmuv3: Add knob to choose translation stage
- and enable stage-2
-From: Mostafa Saleh <smostafa@google.com>
-To: qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
- qemu-arm@nongnu.org, richard.henderson@linaro.org, 
- Mostafa Saleh <smostafa@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::44a;
- envelope-from=3x-hjZAgKCFIC68CDuzu08805y.w86Ay6E-uB678707E.8B0@flex--smostafa.bounces.google.com;
- helo=mail-wr1-x44a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/52ktn/3mO0UioKB+hO5BWAB1w3Eo5fjiXZKRAg6UmM=;
+ b=T3GfMrdZFk3HdYbjCrg50Du62L5CwfLg2WLd8FaAhHbxZ1AcCYNWLTHBw1w49bQ3r3V6lwkwph6N6OEOoh3ydcENVOhnkY9piicRF14WB2J9H7XVKtJ89z+/yGQDonv0ERkyjced7UvOaITV5evblx6V07PSk0zidPe8f0NsU1U=
+Received: from CO1PR10MB4531.namprd10.prod.outlook.com (2603:10b6:303:6c::22)
+ by DS0PR10MB6975.namprd10.prod.outlook.com (2603:10b6:8:146::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.33; Tue, 16 May
+ 2023 21:23:01 +0000
+Received: from CO1PR10MB4531.namprd10.prod.outlook.com
+ ([fe80::ac1a:bf88:bdbf:2573]) by CO1PR10MB4531.namprd10.prod.outlook.com
+ ([fe80::ac1a:bf88:bdbf:2573%5]) with mapi id 15.20.6387.030; Tue, 16 May 2023
+ 21:23:01 +0000
+Message-ID: <72a526b6-420e-6a85-8cbd-dc589c220c58@oracle.com>
+Date: Tue, 16 May 2023 16:22:58 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 2/3] ACPI: i386: bump to MADT to revision 3
+Content-Language: en-US
+To: Ani Sinha <ani@anisinha.ca>, Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, mst@redhat.com,
+ peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ boris.ostrovsky@oracle.com, miguel.luis@oracle.com
+References: <20230515203311.2139-1-eric.devolder@oracle.com>
+ <20230515203311.2139-3-eric.devolder@oracle.com>
+ <20230516143149.42ad6810@imammedo.users.ipa.redhat.com>
+ <CAARzgww1zX5Ss9gpredzt9X83df5yd3Y_P7kVzauw58yXTryZA@mail.gmail.com>
+From: Eric DeVolder <eric.devolder@oracle.com>
+In-Reply-To: <CAARzgww1zX5Ss9gpredzt9X83df5yd3Y_P7kVzauw58yXTryZA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SA0PR11CA0025.namprd11.prod.outlook.com
+ (2603:10b6:806:d3::30) To CO1PR10MB4531.namprd10.prod.outlook.com
+ (2603:10b6:303:6c::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR10MB4531:EE_|DS0PR10MB6975:EE_
+X-MS-Office365-Filtering-Correlation-Id: 06b6ff47-75a8-4646-974f-08db5653ba8c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: bx5p4QCmU4T1N+ww1ZIUCHSnXsP08MRqflnXADNSxFZygdfaw9eWHpYZXEQm2UX72naxjJkxlvkhhiM03e1vk2SvcsfYlA2ipG1OPDwkIXiMptjUW9tpm37iOLSH2gQSSfvIhyw/tGpqQsC49rAr2hqrQ9+tLnNPANnwinQJNzAe8fjnb6sUPGWGdBmYEvBQhPCMmg8/vcHaZ9y7T3BNW5kybxsMdvjcduwRwEk505Sq6Su86RQMVFWWO88YedbN9FTvLBTWFii2NTlL5W60/uYafSVDtxWpyUt5lwpp+EDH+7s+MuIyuX8ERhoK5qLo7yJ1RMxB7ZjhDGWfM3jDSWsCN/+GP/6WgHSXnJxy7b5qe845NTqzpPpB5soSfnXrIAbx3vaRZdgXPdyGFuGUtg1MuLafYx/zxN+z4nw2wlhjuTiNaioxnUNTRhu6FrMgo5e4eKhgkmpxxMN/wZTnCUKPmCYSj+cunW5r89DuZ31ttyIvJdDc78aR1J1ZE77ozRI4GF162ZTtrgLwAgR9zLFmrvPoyidPHWWyv4vtLooWdA6eD8JeIFlcFC4KzYABMtQyFeiQbyMVAZk2dOVBrlAXjYPiJtV1msy5vDWZSFz+7qGe2OJjU3TBaFKz92jzDweGmrPOIu6rYY4HeA3FLg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR10MB4531.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(39860400002)(396003)(366004)(346002)(136003)(376002)(451199021)(31686004)(83380400001)(36756003)(4326008)(7416002)(2906002)(86362001)(31696002)(8676002)(316002)(5660300002)(66946007)(66476007)(38100700002)(66556008)(8936002)(84970400001)(966005)(53546011)(6506007)(26005)(6512007)(186003)(110136005)(107886003)(6486002)(6666004)(478600001)(41300700001)(2616005)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YUlKNE9kd0xRYjFjUGN3bEhKaEF4L2ZneThhNFQrS2Q0QkFkT3FKVENKcXdK?=
+ =?utf-8?B?OVdvZmVkSUJDOTF6aDRCOWRBUWkxd2RWT0NFNVJtMDk4RGF5ZGR2QkR6cmY2?=
+ =?utf-8?B?RXYwZTkxVzVoVy9yNWR6YUFQWEorMXF6OWtOdE16dGg2d0xJQm1EbnEwUmJ2?=
+ =?utf-8?B?eW54QjFIYys0Zk5yMXkwdno1a2ozRVh3RnNjanNmV2hnQUdVQ0gzWkZ5VTlD?=
+ =?utf-8?B?amhRZWxEUmlDM0dieUt0Vzhnb3JiaTRmVlJ5WFF2UHgrRVZhS0xGL2JYQUlG?=
+ =?utf-8?B?WnN6K21FM2dLQW9xVEgxdzJJM2wranVFWlVRZHlQaUo5UDdKYjNjN1ZZODJY?=
+ =?utf-8?B?RWNSd1g2SXluTEtkVnN2bUVNaURuUEJVdG84c3BBSzdya09OOEFvRjV1QkI3?=
+ =?utf-8?B?amhCN1V3L2N5bDNsajhPTGl6MUh2VVcvMzc2SkZrR3FHOHFkRUk1cmhUZ29n?=
+ =?utf-8?B?SUsxTW9teGlHM3AzTEZYWjRMQU5JZjUzTURGSHFzUXhrcEdSSTlZTVVzTjY1?=
+ =?utf-8?B?VmhlNm9pbGRlTkZaMk50YnpwYlNjd2dkbG5VaUwvS2UvVFRUTWxmNERlcEZs?=
+ =?utf-8?B?TVhZNnB6OGg2WWZmTkZiWkNQV09wanFXMDdsYmgwT2dqaVZTZkxlVHBJKzJC?=
+ =?utf-8?B?clZpeFpmeUVxTzh5TUQyQUMwZkNybWVUcStwTnd0UGFLTzNDUzhiZjlMQysy?=
+ =?utf-8?B?b2VUWENlQWkvOWZ6VEpTcG1FM1J6WDBpOGlEcnR4WkF5ZUxoTmEyM1J5VkRr?=
+ =?utf-8?B?T1gwbXdDWlVMZmNKR1p1TDNJYjJNNVFvd3h6a2V1V3RtcklVcDJCam1CVG5E?=
+ =?utf-8?B?RWJUZmsxdCs4QjNnc0ZCeEtRQU1OcHlnVlBzTEZMelhYS0NQK1IzcU9EdVZq?=
+ =?utf-8?B?eVVMbGxDSmc4eklGMkcvdUYwdlQ5em5oWUtmanpCUnp1TFhXcmJXNnh5MTRa?=
+ =?utf-8?B?djl0R1VMSTc1YzRnWnpxNk81TDdIbnNkRFZyd0x0aUExbk9mb3lmYnZhcVYx?=
+ =?utf-8?B?Z3U4eFlxMmlKRGNXM0dCaVVQb0xOeHdrRmUveVZ3UXA1OCtLeHdsc0Y2SEMx?=
+ =?utf-8?B?aVBXK28rZHFUUStidnh2ZGttc0U0Kzc2YU81RmVSeWNaanlHMVFBcjVXWUpr?=
+ =?utf-8?B?RThtMTFtMlZOR1RxRmJlekdVY1dKcEVwKzZ2cE91ZFhIanVSanhkb3BMVzRu?=
+ =?utf-8?B?NWFjVUJnRjVlejM2S0ZSV3pkVkJOS2RCWHM0Q2J1Um9WVFhkSG1ZamF0ajdV?=
+ =?utf-8?B?N3d4alcvWGNVMXJlVjQzSUhpU29OajhreUhCbzhTWGQ0MGo3dmdZeU56MGhu?=
+ =?utf-8?B?Nk9pZFBXempMZ1oxT2NUM3R5bWFYQnV5OENNMVF5R00zTmpmVkp1V3pPcVNy?=
+ =?utf-8?B?S3N5Uk02aWk0Mk5vMElJY2t1U01FVklhVURPTjNFdk5aRWVxRzhEMkNDZGFq?=
+ =?utf-8?B?d2JORmhZZ3FyMDdGamxUYkVQMTNwNldPd0YyNC9wMWZodXA3Y3EycTJ3M0I2?=
+ =?utf-8?B?eG9kRVdjQWZsTmp5TEF4THBRcFN0RTVQRVJ1c0xEVjlnejRnTmdVMVovcVp3?=
+ =?utf-8?B?amFXM3pXd21WbXozWnlQUFpYK3ZuT1FWQm1BOXc3Vk1zMVM0akJyUHNDZVFJ?=
+ =?utf-8?B?d3lDTVROdjdSYVl0Z0ZxMzh1WmtMZEZvV3Bka2xYRjl5NHU4UzBleTlLbFRv?=
+ =?utf-8?B?aWMrN29pcytIV1FrajhCWGNaM0wvWk9zdURzV3NiQVdGQnNRMm4xeG80Z1Vu?=
+ =?utf-8?B?WEtqbnlqRHhjUnZzdTR6UWY1MGtCc0djb1BERXpoMy9xdWZMd0VxRTZtRDJh?=
+ =?utf-8?B?ZlVaVzNramRucmpUSzhEYkZuaUNFYTVvbzdsNE1RcGVsckgyUE1MTmRpbldH?=
+ =?utf-8?B?NUxQYWdtdlFuOTdneG9IeXBTWG5ERVlhNFFJbzBtUllveUxxaWxhOXJtRE0v?=
+ =?utf-8?B?RHVYaGFhbjc1aGY2cEVTMGFOTitvSnRNbXF1N2JXUSswbFN1dXdXZHJmZDdn?=
+ =?utf-8?B?Rko3MDkxVVlNS1crK2F4NGxOa1BXb1ZXOXBpK3ZNOXZVQWQzUHE0Q2JXNTlL?=
+ =?utf-8?B?bVFuby9jN3NURzNwUTBoMEJoZW5Fc2ZHRDgzWlRKdUszeXo0aVlITStRbnBS?=
+ =?utf-8?B?dEx5YmxQUmxZclduZlAycmkvczVZQ0pvcTZsV1k4NE81eklGSU1JVlhRNi9I?=
+ =?utf-8?B?Smc9PQ==?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +pRr5ujypK2DK5KKM6EfgqR2kyuXHWeGs/eDsTEkwnYhO4kv5aNMger6JlKzXt3XxZWO/AgD0LbzV9hhIjcGMEyOe5ycULCRel/DZ0yfHPAw4P5oiu/ndUYyU7DsKR6xgqD30vDTj8zUIFYwEu29dIB7hSug7VnalZ2EIDEQR9lF7iSsLn6zT+4sy59CmddYBm39SX317EgpmHCs/Z/SXpk5BOZ92SBXvl2VTgMY95+747liLCXTEc2JjdK8BbcrWi+v23eTGg1vGsaGfrvIP2ZGR3QBzV+N9HaTKA3cOcOHCP50AK2AJlCtO4TfpXkTwiquSzAI/iWsGZ8DQnYK4/+N8O/nMRP1yEIDYtFFmuyo3Ng4ZVpLkL6J0gCn5HfglnSqbP1ILorbscke13EcGvND/Yu0g2VieAhbZGWvpgxpD7LeK0ytNkBdjtzmY4Q2cz7Yji5QD2R0OtPWPj1FYNO16XGWPsSDH19tdnRg+OSW4WK6gHx3KqsfZGP8Q5ebSHkbDq7GWkOnmH71Qi1/sDcXSihRM+tpzWYBvd0WofyghI1+FEnOA7EMrmqVW3Err5tj2S9/mddHAX+TlTcB1WlhJgLQ37Tm1aqpsY6kLxW6WTLpiTyCwkWqC805JXa9VNTnf5hsBNuBNecy6Mhnrv2vuiWvp454/aHwmcTZEaYkzgoa+iOVVZyLKHQAXFmsWgsRAhd37L+7DSH7ZUdeMUh3aNuJeQvzzfvY+Wk5oWzYXJVi6hSy2Pap/5ModO12b+KVQjpp72V9P+20uksHCqQheTOOti7cYTZNMCI5+ipXWRZnMZ3MaeT06O46B7xPyjDsiL9saZcCh9pVrgxb4lt0fIDo/n0uGjKaWCS/ZFUAPxXpJEpAlUCGpEm9pHpbJJrfzzqgNdp3kO6tEeJGkA==
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 06b6ff47-75a8-4646-974f-08db5653ba8c
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR10MB4531.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2023 21:23:01.7314 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JKo+b1dj1EkLTE1jNqy9JAprOaPvGxn7rBbfogHJLZYp8pYk1r2CnB32gblBj1xaDoI4N9houvfYquW4C9JdW2BZ9LjhPBn74D9snioXxNg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR10MB6975
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-16_12,2023-05-16_01,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ spamscore=0
+ phishscore=0 bulkscore=0 adultscore=0 malwarescore=0 mlxscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305160180
+X-Proofpoint-GUID: slPgUT5PHGl2Iw0nuxkrqZvLN5rI8Mt_
+X-Proofpoint-ORIG-GUID: slPgUT5PHGl2Iw0nuxkrqZvLN5rI8Mt_
+Received-SPF: pass client-ip=205.220.177.32;
+ envelope-from=eric.devolder@oracle.com; helo=mx0b-00069f02.pphosted.com
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.666,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,130 +225,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cXx4DzoAxjwB
+X-TUID: mr31b3nSx70w
 
-As everything is in place, we can use a new system property to
-advertise which stage is supported and remove bad_ste from STE
-stage2 config.
 
-The property added arm-smmuv3.stage can have 3 values:
-- "1": Stage-1 only is advertised.
-- "2": Stage-2 only is advertised.
 
-If not passed or an unsupported value is passed, it will default to
-stage-1.
+On 5/16/23 07:51, Ani Sinha wrote:
+> On Tue, May 16, 2023 at 6:01 PM Igor Mammedov <imammedo@redhat.com> wrote:
+>>
+>> On Mon, 15 May 2023 16:33:10 -0400
+>> Eric DeVolder <eric.devolder@oracle.com> wrote:
+>>
+>>> Currently i386 QEMU generates MADT revision 3, and reports
+>>> MADT revision 1. Set .revision to 3 to match reality.
+>>>
+>>> Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devolder@ora
+>>> cle.com/T/#t
+>>> Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
+>>> ---
+>>>   hw/i386/acpi-common.c | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
+>>> index 52e5c1439a..8a0932fe84 100644
+>>> --- a/hw/i386/acpi-common.c
+>>> +++ b/hw/i386/acpi-common.c
+>>> @@ -102,7 +102,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
+>>>       MachineClass *mc = MACHINE_GET_CLASS(x86ms);
+>>>       const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
+>>>       AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
+>>> -    AcpiTable table = { .sig = "APIC", .rev = 1, .oem_id = oem_id,
+>>> +    AcpiTable table = { .sig = "APIC", .rev = 3, .oem_id = oem_id,
+>>>                           .oem_table_id = oem_table_id };
+>>>
+>>>       acpi_table_begin(&table, table_data);
+>>
+>> make check fails for me at this point
+>> (my guess is that not all APIC tables are whitelisted)
+> 
+> I think the patchset needs to be rebased and the blobs regenerated.
 
-Advertise VMID16.
+So I've been trying to overcome this today and not having much luck.
 
-Don't try to decode CD, if stage-2 is configured.
+When I run "make check V=2", I see at the end:
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Mostafa Saleh <smostafa@google.com>
----
-Changes in v4:
-- Collected Reviewed-by tag
-- Remove references to "all" stages.
-Changes in v2:
-- Squash knob patch with stage-2 enable patch.
-- Don't try to decode CD, if stage-2 is configured.
----
- hw/arm/smmuv3.c         | 32 ++++++++++++++++++++++----------
- include/hw/arm/smmuv3.h |  1 +
- 2 files changed, 23 insertions(+), 10 deletions(-)
+Summary of Failures:
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 17e1359be4..5c598c8428 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -21,6 +21,7 @@
- #include "hw/irq.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
- #include "hw/qdev-core.h"
- #include "hw/pci/pci.h"
- #include "cpu.h"
-@@ -241,14 +242,17 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
- 
- static void smmuv3_init_regs(SMMUv3State *s)
- {
--    /**
--     * IDR0: stage1 only, AArch64 only, coherent access, 16b ASID,
--     *       multi-level stream table
--     */
--    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S1P, 1); /* stage 1 supported */
-+    /* Based on sys property, the stages supported in smmu will be advertised.*/
-+    if (s->stage && !strcmp("2", s->stage)) {
-+        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S2P, 1);
-+    } else {
-+        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S1P, 1);
-+    }
-+
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTF, 2); /* AArch64 PTW only */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, COHACC, 1); /* IO coherent */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ASID16, 1); /* 16-bit ASID */
-+    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, VMID16, 1); /* 16-bit VMID */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTENDIAN, 2); /* little endian */
-     s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STALL_MODEL, 1); /* No stall */
-     /* terminated transaction will always be aborted/error returned */
-@@ -451,10 +455,6 @@ static int decode_ste_s2_cfg(SMMUTransCfg *cfg, STE *ste)
-         goto bad_ste;
-     }
- 
--    /* This is still here as stage 2 has not been fully enabled yet. */
--    qemu_log_mask(LOG_UNIMP, "SMMUv3 does not support stage 2 yet\n");
--    goto bad_ste;
--
-     return 0;
- 
- bad_ste:
-@@ -733,7 +733,7 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
-         return ret;
-     }
- 
--    if (cfg->aborted || cfg->bypassed) {
-+    if (cfg->aborted || cfg->bypassed || (cfg->stage == 2)) {
-         return 0;
-     }
- 
-@@ -1804,6 +1804,17 @@ static const VMStateDescription vmstate_smmuv3 = {
-     }
- };
- 
-+static Property smmuv3_properties[] = {
-+    /*
-+     * Stages of translation advertised.
-+     * "1": Stage 1
-+     * "2": Stage 2
-+     * Defaults to stage 1
-+     */
-+    DEFINE_PROP_STRING("stage", SMMUv3State, stage),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
- static void smmuv3_instance_init(Object *obj)
- {
-     /* Nothing much to do here as of now */
-@@ -1820,6 +1831,7 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
-                                        &c->parent_phases);
-     c->parent_realize = dc->realize;
-     dc->realize = smmu_realize;
-+    device_class_set_props(dc, smmuv3_properties);
- }
- 
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index 6031d7d325..d183a62766 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -62,6 +62,7 @@ struct SMMUv3State {
- 
-     qemu_irq     irq[4];
-     QemuMutex mutex;
-+    char *stage;
- };
- 
- typedef enum {
--- 
-2.40.1.606.ga4b1b128d6-goog
+  45/786 qemu:qtest+qtest-i386 / qtest-i386/bios-tables-test
+  68/786 qemu:qtest+qtest-x86_64 / qtest-x86_64/bios-tables-test
+
+If I go look at 45/786, for example, I see:
+
+Looking for expected file 'tests/data/acpi/pc/FACP'
+Using expected file 'tests/data/acpi/pc/FACP'
+Looking for expected file 'tests/data/acpi/pc/APIC'
+Using expected file 'tests/data/acpi/pc/APIC'
+Looking for expected file 'tests/data/acpi/pc/HPET'
+Using expected file 'tests/data/acpi/pc/HPET'
+Looking for expected file 'tests/data/acpi/pc/WAET'
+Using expected file 'tests/data/acpi/pc/WAET'
+Looking for expected file 'tests/data/acpi/pc/FACS'
+Using expected file 'tests/data/acpi/pc/FACS'
+Looking for expected file 'tests/data/acpi/pc/DSDT'
+Using expected file 'tests/data/acpi/pc/DSDT'
+acpi-test: Warning! APIC binary file mismatch. Actual [aml:/tmp/aml-R4D741], Expected 
+[aml:tests/data/acpi/pc/APIC].
+See source file tests/qtest/bios-tables-test.c for instructions on how to update expected files.
+acpi-test: Warning! APIC mismatch. Actual [asl:/tmp/asl-GVD741.dsl, aml:/tmp/aml-R4D741], Expected 
+[asl:/tmp/asl-1F9641.dsl, aml:tests/data/acpi/pc/APIC].
+--- /tmp/asl-1F9641.dsl 2023-05-16 15:18:31.292579156 -0400
++++ /tmp/asl-GVD741.dsl 2023-05-16 15:18:31.291579149 -0400
+@@ -1,32 +1,32 @@
+  /*
+   * Intel ACPI Component Architecture
+   * AML/ASL+ Disassembler version 20230331 (64-bit version)
+   * Copyright (c) 2000 - 2023 Intel Corporation
+   *
+- * Disassembly of tests/data/acpi/pc/APIC, Tue May 16 15:18:31 2023
++ * Disassembly of /tmp/aml-R4D741, Tue May 16 15:18:31 2023
+   *
+   * ACPI Data Table [APIC]
+   *
+   * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+   */
+
+  [000h 0000 004h]                   Signature : "APIC"    [Multiple APIC Description Table (MADT)]
+  [004h 0004 004h]                Table Length : 00000078
+-[008h 0008 001h]                    Revision : 01
+-[009h 0009 001h]                    Checksum : 8A
++[008h 0008 001h]                    Revision : 03
++[009h 0009 001h]                    Checksum : 88
+  [00Ah 0010 006h]                      Oem ID : "BOCHS "
+  [010h 0016 008h]                Oem Table ID : "BXPC    "
+  [018h 0024 004h]                Oem Revision : 00000001
+  [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+  [020h 0032 004h]       Asl Compiler Revision : 00000001
+[...]
+
+And the q35 looks very very similar.
+
+It suggests that I need to list tests/data/acpi/pc/APIC, which I have done
+in bios-tables-test-allowed-diff.h:
+
+/* List of comma-separated changed AML files to ignore */
+"tests/data/acpi/pc/APIC",
+"tests/data/acpi/q35/APIC",
+"tests/data/acpi/microvm/APIC",
+"tests/data/acpi/virt/APIC",
+
+But as I looked closer at the files that changed in the last step
+of the previous post, there are a bunch of them:
+
+  tests/data/acpi/microvm/APIC                  | Bin 70 -> 70 bytes
+  tests/data/acpi/microvm/APIC.ioapic2          | Bin 82 -> 82 bytes
+  tests/data/acpi/microvm/APIC.pcie             | Bin 110 -> 110 bytes
+  tests/data/acpi/pc/APIC                       | Bin 120 -> 120 bytes
+  tests/data/acpi/pc/APIC.acpihmat              | Bin 128 -> 128 bytes
+  tests/data/acpi/pc/APIC.cphp                  | Bin 160 -> 160 bytes
+  tests/data/acpi/pc/APIC.dimmpxm               | Bin 144 -> 144 bytes
+  tests/data/acpi/q35/APIC                      | Bin 120 -> 120 bytes
+  tests/data/acpi/q35/APIC.acpihmat             | Bin 128 -> 128 bytes
+  tests/data/acpi/q35/APIC.acpihmat-noinitiator | Bin 144 -> 144 bytes
+  tests/data/acpi/q35/APIC.core-count2          | Bin 2478 -> 2478 bytes
+  tests/data/acpi/q35/APIC.cphp                 | Bin 160 -> 160 bytes
+  tests/data/acpi/q35/APIC.dimmpxm              | Bin 144 -> 144 bytes
+  tests/data/acpi/q35/APIC.xapic                | Bin 2686 -> 2686 bytes
+
+Should all of these files be listed in allowed-diff.h?
+And I would also need to provide the diff for each in the patch
+containing this last step, correct?
+
+Thanks,
+eric
 

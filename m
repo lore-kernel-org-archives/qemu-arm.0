@@ -1,105 +1,105 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp237836ejq;
-        Tue, 16 May 2023 00:31:42 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ579vE2xaZ5q7olrg961AlS3fvDQ9fjYXKPbTmJYsRozCfXnaV62IpatHDawA1K0DSgPk63
-X-Received: by 2002:a05:622a:214:b0:3f3:9509:c9e5 with SMTP id b20-20020a05622a021400b003f39509c9e5mr43369089qtx.22.1684222302302;
-        Tue, 16 May 2023 00:31:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684222302; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp237944ejq;
+        Tue, 16 May 2023 00:31:58 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7ILzwir5JjlqW0yaGRvq2G/IkWc7anEbV8zHG5os2GH6An0KoIRSQNy/AsYGp1BgoH+QY6
+X-Received: by 2002:ad4:5b8f:0:b0:623:66d3:e538 with SMTP id 15-20020ad45b8f000000b0062366d3e538mr8648276qvp.29.1684222318156;
+        Tue, 16 May 2023 00:31:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684222318; cv=none;
         d=google.com; s=arc-20160816;
-        b=cGicsoJyRYQLnIHnkLI5r89+wbRm1Bs9X8PRVixmTPJ9KfYy0GQ2zWfhZxSHr9clCc
-         mKVfBh5wj2gzBJu6RMTPrlrAYWE8KiI2F+1tXoKpiHBXio9OeQ9ltPX5U/H/bX40MJ50
-         02Oa5tA9ypFR5g6vO5diofvKpBiTFJ4lVyTvY962nUX4RxXlVxm38V69mjFy2R10X07E
-         Wk07ETR1mVW9oIYE2VYfQf67hwadBBgHqKaKz6x2ZWpnJhWqOktQnFoEa3tFDDbWsAVN
-         3VOVpRzyTcRete0p1mPYtD5uyWR7fnhnVcIZUad26y0E0zz16AwoDDaMg3ZRQawDjTT6
-         f9Sg==
+        b=FKJ+t5u6DnsKHDsZlk6cvMSgsvzeuKBcGTjBzziybtT+GsBqjf1aswtKbR231BABA+
+         WZH/Tk2lpdTFYlJilMlUGaYkgUH2tYJ32qZR+rELgB1FV44RyiBA7lJxsEHh9YGzgl7S
+         bFpCk65JrbGcSpR4kAO5J9pDxJ5t3CSDtqPsACWXdSoXKu689uGUwmbhgfra0VvBUwEj
+         wxFmU8snM3HFNh6mo97dBIhaY6vK0NfwHgxGCZEAChGStj8mdcq0R2SBk5B47SokKgNe
+         NMy6g7losZg6z4rgyUvcyf30FfD5YNwaPjb2ors5E2/6yByHx6lpVPiDGR1tWyI8XNwh
+         IBcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9/ptQJIeZsFPo0bnmorIDJFHDHElt04/hD816Kn9Pkk=;
-        b=M9dNnFvOeJfdnbnEn0P0d/sMbBSAmZGGn94K+mESVx44PQ+WstdjUzmCa5pilZlnQV
-         cJjMFxaVA7kaof27/CYsxNiKK8G5FWiQ7gZBaTZd5Q48WDU6ft50O3TgZbzqcMQ3Suvc
-         0GvLK1+zf8T8OElEQfMvB4KVWf02B3RW9Pi8CLUYDSTDli/XfNDSQfWBVCM+yQUOKmKz
-         iWXEQMWVEgx3TWmcwWCpWj1FCiz0k5CuLUHMg/yp4qSD4x5LqLBS1QsXjCqsjGRFkf8s
-         tPn2YskY4BnQVy1zuFenbpq2eC+a/sAGcqbjBjVcp2wuSLTEeOTixrToTIhaOUM+x35T
-         xmyg==
+        bh=QZlBjZuEKFBydjxp0BJlcc3VSph2a5VPuarBwLp/pNY=;
+        b=OQEka44/Zvp7rsM9/MxpFO29eCSHQEFxGtYUDDCx+ahXw0pSAPbOrhisprranJm0ZL
+         ofk91YjFyoWn2t52U5HWZ4dgw1Y5I/ZzUU470is6h+R8w9a0Sw5c7+tVkTUR/Pb2YV8G
+         CXDigioV1tXEysO4im6gI4HtlBTiGD2KcOPaZtvni50wEPdZZs3E2MvnHA5Gsk70986/
+         BMn7vTriSFALIJQ/ON9+uLPeGW7dzAH0GpTBYEa4otVkYLcIEhNaiet+cfQb92fEAWBk
+         7EYO2Eq58kqYClRu4DQ35xUt0ju9+Nq0f8GYMXTTvjRej5ZW3Vx/mssqHm71ezuWiRqw
+         kFMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pnxbe4X1;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QD5So3RO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020a05622a198a00b003e4e314252dsi11107012qtc.509.2023.05.16.00.31.42
+        by mx.google.com with ESMTPS id eq12-20020ad4596c000000b005f1660298c1si10889301qvb.536.2023.05.16.00.31.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 May 2023 00:31:42 -0700 (PDT)
+        Tue, 16 May 2023 00:31:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=pnxbe4X1;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=QD5So3RO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyp99-0005Ad-PN; Tue, 16 May 2023 03:31:00 -0400
+	id 1pyp98-00052P-6P; Tue, 16 May 2023 03:30:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pyp8p-0004c4-Pi; Tue, 16 May 2023 03:30:40 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1pyp8m-0004ae-JX; Tue, 16 May 2023 03:30:37 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pyp8m-0000CQ-Nj; Tue, 16 May 2023 03:30:39 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-307c040797bso4452587f8f.3; 
- Tue, 16 May 2023 00:30:35 -0700 (PDT)
+ id 1pyp8d-00005g-L1; Tue, 16 May 2023 03:30:34 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-3f509ec3196so13886305e9.1; 
+ Tue, 16 May 2023 00:30:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684222234; x=1686814234;
+ d=gmail.com; s=20221208; t=1684222225; x=1686814225;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9/ptQJIeZsFPo0bnmorIDJFHDHElt04/hD816Kn9Pkk=;
- b=pnxbe4X1EVDywfoNLpYb6H6nqOmOnlWiAxhFrEOfmKktLpvf+3JTlsrUKI4Ps890r0
- oo4afWKd5SQNQKe1HlZX6xdmdVE8y5mZG7SfOdJZ1vU+tkPkR9jXh6kOvPtfBWdYX9Jt
- vbzsfetdgmeUxRhf+lQCfl9siZpjtbrIiM8wGHnKIPeRJRziFeHnjsHtaJMN24+42s84
- C20UCWqWvspkv1aq0ZCbh4JUAziH3g5p3cY/o9mKMEmW+EpNuPuX2MBTAi7ivnAaiap5
- Kw54r/rBGO+pgBHijelFnxZXcLnUJ1D/0AYhxgH936WSAej8+J9yk/KAe1kJPEV7fEv0
- btRw==
+ bh=QZlBjZuEKFBydjxp0BJlcc3VSph2a5VPuarBwLp/pNY=;
+ b=QD5So3ROMWs7+Ux+aP7WPrz/Uv+g79fM4Kt4W6WCDbRBvlk8ayZji2KaX1jYVNlnUc
+ quPY8L07w3jCr1tPt49DT9sq+3+wtQjGD44iQrbaGjhSHPxR/pfZM0hyeHIwQa+kcW/s
+ Aafemg+ngLaEgiW0Cy6mfQlI0A3D3wmNbhy+JZfLr3ZHFeDdwJICrRS48VvHsVink8qE
+ f1LIYz4p1FR/P+GD7jiE0lEWll1zinfGVFr6Xeojh8CyOO3cFw5bkjnuHhVcJpLhpT/5
+ SE4kbNy26YMlkVcv29cbfWZ9c81hIauFFB7MZNPIhGvlmRiEs0eYADTeYuPNrlIK/PJg
+ Pl+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684222234; x=1686814234;
+ d=1e100.net; s=20221208; t=1684222225; x=1686814225;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9/ptQJIeZsFPo0bnmorIDJFHDHElt04/hD816Kn9Pkk=;
- b=bC2MjJGKTXWS827qJEXnVg+82+q6HVUrVxGqpmLnLNzRjdB+rFu5VcxsXtjT9wac84
- Yyduzk19shtGPFIe+J1Hp2KWATiNeVA3cBq8sX8I0xlNwgnCMh4NJE1mq/jANkl04f6K
- NtWvambUOJVxLlKO2cbbvIFvI0icP+jrfKcBLC8i7s/ncAXWbyK9SGOigTqwGOqKaWhF
- NUGXPZOo8ATbMBqW78lA/8ZeyOhcdPg68xXDIcLE0nR0sq0tUpIWQyJ6qdXa9XbpUkcO
- 3xDFpt4POZZ/Xlv14JM7ic7m5ucWhgo/2OXetWPRo641Jfa0moMc9Ciw+E6uCOp6qLE6
- 0efQ==
-X-Gm-Message-State: AC+VfDx8oE/6EOpFJYDrS+ElAZK2FzF42qKA+GIrGUoGBGk5g496Rihj
- AiGJHiDkX8JQBxxq9RNIlwDhQtuuGhVqtw==
-X-Received: by 2002:a5d:5589:0:b0:307:8666:a50e with SMTP id
- i9-20020a5d5589000000b003078666a50emr23438028wrv.67.1684222234007; 
- Tue, 16 May 2023 00:30:34 -0700 (PDT)
+ bh=QZlBjZuEKFBydjxp0BJlcc3VSph2a5VPuarBwLp/pNY=;
+ b=aVdlK7d0x9QNW2fI6/TUr25p+y9dd+zuUnXKt10FmkuGEcg+el0wcIrhb9dvQunRDl
+ 71JfYgCEtaIjEcLDpcCWOZM8sQsrDICYoEnBcvjbt5w3Km2NCfeDKcAgGkyIkE2kLNkK
+ GiUcAmUWPWkm431gOnLbCKRWUKx8kbJxq8ljZw+kyzRCPArx4h3zPQSMkCi9M33CZdZG
+ GQtpzU/gWZ3CUkCD8ua3i6nchrKpdB8wLf9jrdjvlb/+NR4CX1PfJCcxlURu9zUV5yWl
+ ZFu9eYkvKJ5c54U+wlarNZBs2ZKwXbWgLmuuez+Nsi8SDa+/hNLQs4bexILy2Ee8Dnx0
+ IiMg==
+X-Gm-Message-State: AC+VfDwzb790rYZKgFU8H7ozfueHwd+ZkG86ZmkNZmLTeEoIaurj6kUr
+ Ek5Zd9jKV/Rv8ZDcVtukP+OzEI55U1dMxg==
+X-Received: by 2002:adf:f3ce:0:b0:309:23f6:4911 with SMTP id
+ g14-20020adff3ce000000b0030923f64911mr3401202wrp.1.1684222225085; 
+ Tue, 16 May 2023 00:30:25 -0700 (PDT)
 Received: from i.. ([41.236.82.205]) by smtp.gmail.com with ESMTPSA id
- y12-20020a5d614c000000b003062c609115sm1559997wrt.21.2023.05.16.00.30.32
+ y12-20020a5d614c000000b003062c609115sm1559997wrt.21.2023.05.16.00.30.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 May 2023 00:30:33 -0700 (PDT)
+ Tue, 16 May 2023 00:30:24 -0700 (PDT)
 From: Mohamed ElSayed <m.elsayed4420@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Mohamed ElSayed <m.elsayed4420@gmail.com>
-Subject: [PULL 6/8] tivac watchdog timers implementation
-Date: Tue, 16 May 2023 10:29:57 +0300
-Message-Id: <20230516072959.49994-7-m.elsayed4420@gmail.com>
+Subject: [PULL 2/8] tivac usart module implementation
+Date: Tue, 16 May 2023 10:29:53 +0300
+Message-Id: <20230516072959.49994-3-m.elsayed4420@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230516072959.49994-1-m.elsayed4420@gmail.com>
 References: <20230516072959.49994-1-m.elsayed4420@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=m.elsayed4420@gmail.com; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=m.elsayed4420@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -122,24 +122,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VpnhoGHkf/W2
+X-TUID: OsFglRuWuMiP
 
 Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
 ---
- hw/watchdog/tm4c123_watchdog.c         | 298 +++++++++++++++++++++++++
- include/hw/watchdog/tm4c123_watchdog.h |  97 ++++++++
- 2 files changed, 395 insertions(+)
- create mode 100644 hw/watchdog/tm4c123_watchdog.c
- create mode 100644 include/hw/watchdog/tm4c123_watchdog.h
+ hw/char/tm4c123_usart.c         | 387 ++++++++++++++++++++++++++++++++
+ include/hw/char/tm4c123_usart.h | 124 ++++++++++
+ 2 files changed, 511 insertions(+)
+ create mode 100644 hw/char/tm4c123_usart.c
+ create mode 100644 include/hw/char/tm4c123_usart.h
 
-diff --git a/hw/watchdog/tm4c123_watchdog.c b/hw/watchdog/tm4c123_watchdog.c
+diff --git a/hw/char/tm4c123_usart.c b/hw/char/tm4c123_usart.c
 new file mode 100644
-index 0000000000..cd064c5343
+index 0000000000..cafca02b97
 --- /dev/null
-+++ b/hw/watchdog/tm4c123_watchdog.c
-@@ -0,0 +1,298 @@
++++ b/hw/char/tm4c123_usart.c
+@@ -0,0 +1,387 @@
 +/*
-+ * TM4C123 Watchdog Timers
++ * TM4C123 USART
 + *
 + * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
 + *
@@ -163,287 +163,376 @@ index 0000000000..cd064c5343
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/watchdog/tm4c123_watchdog.h"
++#include "hw/char/tm4c123_usart.h"
 +#include "hw/irq.h"
 +#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "sysemu/runstate.h"
++#include "hw/qdev-properties-system.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
-+#include "hw/nmi.h"
 +#include "trace.h"
 +
-+#define READONLY LOG("0x%"HWADDR_PRIx" is a readonly field\n.", addr)
 +#define LOG(fmt, args...) qemu_log("%s: " fmt, __func__, ## args)
++#define READONLY LOG("0x%"HWADDR_PRIx" is a readonly field\n.", addr)
 +
-+static bool locked = false;
-+
-+static void tm4c123_wdt_expired(void *opaque)
-+{
-+    TM4C123WatchdogState *s = opaque;
-+    /*if this is the first timeout/the ris is not cleared */
-+    if (!test_bit(0, (const unsigned long*)&s->wdt_mis)) {
-+        set_bit(0, (unsigned long*)&s->wdt_mis);
-+        nmi_monitor_handle(0, NULL);
-+        qemu_irq_pulse(s->irq);
-+    }
-+    else {
-+        if (test_bit(1, (const unsigned long*)&s->wdt_ctl))
-+            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+        else {
-+            nmi_monitor_handle(0, NULL);
-+            qemu_irq_pulse(s->irq);
-+        }
-+    }
-+}
-+
-+static bool wdt_clock_enabled(TM4C123SysCtlState *s, hwaddr addr)
++static bool usart_clock_enabled(TM4C123SysCtlState *s, hwaddr addr)
 +{
 +    switch(addr) {
-+        case WDT_0:
-+            return (s->sysctl_rcgcwd & (1 << 0));
++        case USART_0:
++            return (s->sysctl_rcgcuart & (1 << 0));
 +            break;
-+        case WDT_1:
-+            return (s->sysctl_rcgcwd & (1 << 1));
++        case USART_1:
++            return (s->sysctl_rcgcuart & (1 << 1));
++            break;
++        case USART_2:
++            return (s->sysctl_rcgcuart & (1 << 2));
++            break;
++        case USART_3:
++            return (s->sysctl_rcgcuart & (1 << 3));
++            break;
++        case USART_4:
++            return (s->sysctl_rcgcuart & (1 << 4));
++            break;
++        case USART_5:
++            return (s->sysctl_rcgcuart & (1 << 5));
++            break;
++        case USART_6:
++            return (s->sysctl_rcgcuart & (1 << 6));
++            break;
++        case USART_7:
++            return (s->sysctl_rcgcuart & (1 << 7));
 +            break;
 +    }
 +    return false;
 +}
 +
-+static void tm4c123_wdt_reset(DeviceState *dev)
++
++static int tm4c123_usart_can_receive(void* opaque)
 +{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(dev);
++    TM4C123USARTState *s = opaque;
 +
-+    s->wdt_load = 0xFFFFFFFF;
-+    s->wdt_value = 0xFFFFFFFF;
-+    s->wdt_ctl = (s->mmio.addr == WDT_0 ? 0x00000000 : 0x80000000);
-+    s->wdt_icr = 0x00000000;
-+    s->wdt_ris = 0x00000000;
-+    s->wdt_mis = 0x00000000;
-+    s->wdt_test = 0x00000000;
-+    s->wdt_lock = 0x00000000;
-+    s->wdt_per_id4 = 0x00000000;
-+    s->wdt_per_id5 = 0x00000000;
-+    s->wdt_per_id6 = 0x00000000;
-+    s->wdt_per_id7 = 0x00000000;
-+    s->wdt_per_id0 = 0x00000005;
-+    s->wdt_per_id1 = 0x00000018;
-+    s->wdt_per_id2 = 0x00000018;
-+    s->wdt_per_id3 = 0x00000001;
-+    s->wdt_pcell_id0 = 0x0000000D;
-+    s->wdt_pcell_id1 = 0x000000F0;
-+    s->wdt_pcell_id2 = 0x00000006;
-+    s->wdt_pcell_id3 = 0x000000B1;
-+}
-+
-+static uint64_t tm4c123_wdt_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    TM4C123WatchdogState *s = opaque;
-+
-+    if (!wdt_clock_enabled(s->sysctl, s->mmio.addr)) {
-+        hw_error("Watchdog timer module clock is not enabled");
-+    }
-+
-+    switch(addr) {
-+        case WDT_LOAD:
-+            return s->wdt_load;
-+        case WDT_VALUE:
-+            return ptimer_get_count(s->timer);
-+        case WDT_CTL:
-+            return s->wdt_ctl;
-+        case WDT_ICR:
-+            return s->wdt_icr;
-+        case WDT_RIS:
-+            return s->wdt_ris;
-+        case WDT_MIS:
-+            return s->wdt_mis;
-+        case WDT_TEST:
-+            return s->wdt_test;
-+        case WDT_LOCK:
-+            return s->wdt_lock;
-+        case WDT_PER_ID4:
-+            return s->wdt_per_id4;
-+        case WDT_PER_ID5:
-+            return s->wdt_per_id5;
-+        case WDT_PER_ID6:
-+            return s->wdt_per_id6;
-+        case WDT_PER_ID7:
-+            return s->wdt_per_id7;
-+        case WDT_PER_ID0:
-+            return s->wdt_per_id0;
-+        case WDT_PER_ID1:
-+            return s->wdt_per_id1;
-+        case WDT_PER_ID2:
-+            return s->wdt_per_id2;
-+        case WDT_PER_ID3:
-+            return s->wdt_per_id3;
-+        case WDT_PCELL_ID0:
-+            return s->wdt_pcell_id0;
-+        case WDT_PCELL_ID1:
-+            return s->wdt_pcell_id1;
-+        case WDT_PCELL_ID2:
-+            return s->wdt_pcell_id2;
-+        case WDT_PCELL_ID3:
-+            return s->wdt_pcell_id3;
-+        default:
-+            LOG("Bad address 0x%"HWADDR_PRIx"\n", addr);
++    if (!(s->usart_fr & USART_FR_RXFF)) {
++        //the module can receive data.
++        return 1;
 +    }
 +    return 0;
 +}
 +
-+static void tm4c123_wdt_write(void *opaque, hwaddr addr, uint64_t val64, unsigned int size)
++static void tm4c123_usart_receive(void *opaque, const uint8_t *buf, int size)
 +{
-+    TM4C123WatchdogState *s = opaque;
-+    uint32_t val32 = val64;
++    TM4C123USARTState *s = opaque;
 +
-+    trace_tm4c123_wdt_write(addr, val64);
-+    if (!wdt_clock_enabled(s->sysctl, s->mmio.addr)) {
-+        hw_error("Watchdog module clock is not enabled");
++    if (!(s->usart_ctl & USART_CR_EN && s->usart_ctl & USART_CR_RXE)) {
++        //the module is not enabled
++        LOG("The module is not enbled\n");
++        return;
 +    }
 +
++    s->usart_dr = *buf;
++    s->usart_ctl &= ~USART_FR_RXFE;
++
++    if (s->usart_im & USART_IM_RXIM) {
++        qemu_set_irq(s->irq, 1);
++    }
++
++    LOG("Receiving: %c\n", s->usart_dr);
++}
++
++static void tm4c123_usart_reset(DeviceState *dev)
++{
++    TM4C123USARTState *s = TM4C123_USART(dev);
++
++    s->usart_dr = 0x00000000;
++    s->usart_rsr = 0x00000000;
++    s->usart_fr = 0x00000090;
++    s->usart_ilpr = 0x00000000;
++    s->usart_ibrd = 0x00000000;
++    s->usart_fbrd = 0x00000000;
++    s->usart_lcrh = 0x00000000;
++    s->usart_ctl = 0x00000300;
++    s->usart_ifls = 0x00000012;
++    s->usart_im = 0x00000000;
++    s->usart_ris = 0x00000000;
++    s->usart_mis = 0x00000000;
++    s->usart_icr = 0x00000000;
++    s->usart_dma_ctl = 0x00000000;
++    s->usart_9bit_addr = 0x00000000;
++    s->usart_9bit_mask = 0x000000FF;
++    s->usart_pp = 0x00000003;
++    s->usart_cc = 0x00000000;
++    s->usart_per_id4 = 0x00000000;
++    s->usart_per_id5 = 0x00000000;
++    s->usart_per_id6 = 0x00000000;
++    s->usart_per_id7 = 0x00000000;
++    s->usart_per_id0 = 0x00000060;
++    s->usart_per_id1 = 0x00000000;
++    s->usart_per_id2 = 0x00000018;
++    s->usart_per_id3 = 0x00000001;
++    s->usart_pcell_id0 = 0x0000000D;
++    s->usart_pcell_id1 = 0x000000F0;
++    s->usart_pcell_id2 = 0x00000005;
++    s->usart_pcell_id3 = 0x000000B1;
++
++    qemu_set_irq(s->irq, 0);
++}
++
++static uint64_t tm4c123_usart_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    TM4C123USARTState *s = opaque;
++
++    if (!usart_clock_enabled(s->sysctl, s->mmio.addr)) {
++        hw_error("USART module clock is not enabled");
++    }
++
++    trace_tm4c123_usart_read(addr);
++
 +    switch(addr) {
-+        case WDT_LOAD:
-+            s->wdt_load = val32;
-+            locked = true;
-+            s->wdt_ctl |= WDT_CTL_INTEN;
-+            ptimer_transaction_begin(s->timer);
-+            ptimer_set_count(s->timer, s->wdt_load);
-+            ptimer_set_limit(s->timer, s->wdt_load, 1);
-+            ptimer_run(s->timer, 0);
-+            ptimer_transaction_commit(s->timer);
-+            break;
-+        case WDT_VALUE:
-+            READONLY;
-+            break;
-+        case WDT_CTL:
-+            s->wdt_ctl = val32;
-+            break;
-+        case WDT_ICR:
-+            ptimer_transaction_begin(s->timer);
-+            ptimer_set_limit(s->timer, s->wdt_load, 1);
-+            ptimer_transaction_commit(s->timer);
-+            clear_bit(0, (unsigned long*)&s->wdt_ris);
-+            clear_bit(0, (unsigned long*)&s->wdt_mis);
-+            s->wdt_icr = val32;
-+            break;
-+        case WDT_RIS:
-+            READONLY;
-+            break;
-+        case WDT_MIS:
-+            READONLY;
-+            break;
-+        case WDT_TEST:
-+            s->wdt_test = val32;
-+            break;
-+        case WDT_LOCK:
-+            /* The actual hardware never locks the module */
-+            if (val32 == UNLOCK_VALUE) {
-+                locked = false;
-+                s->wdt_lock = 0;
++        case USART_DR:
++            return s->usart_dr;
++        case USART_RSR:
++            return s->usart_rsr;
++        case USART_FR:
++            return s->usart_fr;
++        case USART_ILPR:
++            return s->usart_ilpr;
++        case USART_IBRD:
++            return s->usart_ibrd;
++        case USART_FBRD:
++            return s->usart_fbrd;
++        case USART_LCRH:
++            return s->usart_lcrh;
++        case USART_CTL:
++            return s->usart_ctl;
++        case USART_IFLS:
++            return s->usart_ifls;
++        case USART_IM:
++            return s->usart_im;
++        case USART_RIS:
++            return s->usart_ris;
++        case USART_MIS:
++            return s->usart_mis;
++        case USART_ICR:
++            return s->usart_icr;
++        case USART_DMA_CTL:
++            return s->usart_dma_ctl;
++        case USART_9BIT_ADDR:
++            return s->usart_9bit_addr;
++        case USART_9BIT_MASK:
++            return s->usart_9bit_mask;
++        case USART_PP:
++            return s->usart_pp;
++        case USART_CC:
++            return s->usart_cc;
++        case USART_PER_ID4:
++            return s->usart_per_id4;
++        case USART_PER_ID5:
++            return s->usart_per_id5;
++        case USART_PER_ID6:
++            return s->usart_per_id6;
++        case USART_PER_ID7:
++            return s->usart_per_id7;
++        case USART_PER_ID0:
++            return s->usart_per_id0;
++        case USART_PER_ID1:
++            return s->usart_per_id1;
++        case USART_PER_ID2:
++            return s->usart_per_id2;
++        case USART_PER_ID3:
++            return s->usart_per_id3;
++        case USART_PCELL_ID0:
++            return s->usart_pcell_id0;
++        case USART_PCELL_ID1:
++            return s->usart_pcell_id1;
++        case USART_PCELL_ID2:
++            return s->usart_pcell_id2;
++        case USART_PCELL_ID3:
++            return s->usart_pcell_id3;
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                    "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
++            return 0;
++    }
++
++    return 0;
++}
++
++static void tm4c123_usart_write(void *opaque, hwaddr addr, uint64_t val64, unsigned int size)
++{
++    TM4C123USARTState *s = opaque;
++    uint32_t val32 = val64;
++    unsigned char ch;
++
++    if (!usart_clock_enabled(s->sysctl, s->mmio.addr)) {
++        hw_error("USART module clock is not enabled");
++    }
++
++    trace_tm4c123_usart_write(addr, val32);
++
++    switch(addr) {
++        case USART_DR:
++            s->usart_dr = val32;
++            if (val32 < 0xF000) {
++                ch = val32;
++                qemu_chr_fe_write_all(&s->chr, &ch, 1);
 +            }
 +            break;
-+        case WDT_PER_ID4:
++        case USART_RSR:
++            s->usart_rsr = val32;
++            break;
++        case USART_FR:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID5:
++        case USART_ILPR:
++            s->usart_ilpr = val32;
++            break;
++        case USART_IBRD:
++            s->usart_ibrd = val32;
++            break;
++        case USART_FBRD:
++            s->usart_fbrd = val32;
++            break;
++        case USART_LCRH:
++            s->usart_lcrh = val32;
++            break;
++        case USART_CTL:
++            s->usart_ctl = val32;
++            break;
++        case USART_IFLS:
++            s->usart_ifls = val32;
++            break;
++        case USART_IM:
++            s->usart_im = val32;
++            break;
++        case USART_RIS:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID6:
++        case USART_MIS:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID7:
++        case USART_ICR:
++            s->usart_icr = val32;
++            break;
++        case USART_DMA_CTL:
++            s->usart_dma_ctl = val32;
++            break;
++        case USART_9BIT_ADDR:
++            s->usart_9bit_addr = val32;
++            break;
++        case USART_9BIT_MASK:
++            s->usart_9bit_mask = val32;
++            break;
++        case USART_PP:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID0:
++        case USART_CC:
++            s->usart_cc = val32;
++            break;
++        case USART_PER_ID4:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID1:
++        case USART_PER_ID5:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID2:
++        case USART_PER_ID6:
 +            READONLY;
 +            break;
-+        case WDT_PER_ID3:
++        case USART_PER_ID7:
 +            READONLY;
 +            break;
-+        case WDT_PCELL_ID0:
++        case USART_PER_ID0:
 +            READONLY;
 +            break;
-+        case WDT_PCELL_ID1:
++        case USART_PER_ID1:
 +            READONLY;
 +            break;
-+        case WDT_PCELL_ID2:
++        case USART_PER_ID2:
 +            READONLY;
 +            break;
-+        case WDT_PCELL_ID3:
++        case USART_PER_ID3:
++            READONLY;
++            break;
++        case USART_PCELL_ID0:
++            READONLY;
++            break;
++        case USART_PCELL_ID1:
++            READONLY;
++            break;
++        case USART_PCELL_ID2:
++            READONLY;
++            break;
++        case USART_PCELL_ID3:
 +            READONLY;
 +            break;
 +        default:
-+            LOG("Bad address 0x%"HWADDR_PRIx"\n", addr);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                    "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
++            return;
 +    }
++
++    return;
 +}
 +
-+const struct MemoryRegionOps tm4c123_wdt_ops = {
-+    .read = tm4c123_wdt_read,
-+    .write = tm4c123_wdt_write,
++static const MemoryRegionOps tm4c123_usart_ops = {
++    .read = tm4c123_usart_read,
++    .write = tm4c123_usart_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +};
 +
-+static void tm4c123_wdt_init(Object *obj)
-+{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(obj);
++static Property tm4c123_usart_properties[] = {
++    DEFINE_PROP_CHR("chardev", TM4C123USARTState, chr),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
-+    s->wdt_clock = qdev_init_clock_in(DEVICE(s), "wdt_clock", NULL, NULL, 0);
++static void tm4c123_usart_init(Object *obj)
++{
++    TM4C123USARTState *s = TM4C123_USART(obj);
 +
 +    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
-+    memory_region_init_io(&s->mmio, obj, &tm4c123_wdt_ops, s, TYPE_TM4C123_WATCHDOG, 0xFFF);
++
++    memory_region_init_io(&s->mmio, obj, &tm4c123_usart_ops, s,
++            TYPE_TM4C123_USART, 0xFFF);
 +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
 +}
 +
-+static void tm4c123_wdt_realize(DeviceState *dev, Error **errp)
++static void tm4c123_usart_realize(DeviceState *dev, Error **errp)
 +{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(dev);
-+    qdev_connect_clock_in(dev, "wdt_clock", qdev_get_clock_out(DEVICE(s->sysctl), "outclk"));
++    TM4C123USARTState *s = TM4C123_USART(dev);
 +
-+    s->timer = ptimer_init(tm4c123_wdt_expired, s,
-+                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
-+                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
-+
-+    ptimer_transaction_begin(s->timer);
-+    ptimer_set_period_from_clock(s->timer, s->wdt_clock, 1);
-+    ptimer_set_limit(s->timer, 0xFFFFFFFF, 0);
-+    ptimer_transaction_commit(s->timer);
++    qemu_chr_fe_set_handlers(&s->chr, tm4c123_usart_can_receive,
++            tm4c123_usart_receive, NULL, NULL,
++            s, NULL, true);
 +}
 +
-+static void tm4c123_wdt_class_init(ObjectClass *kclass, void *data)
++static void tm4c123_usart_class_init(ObjectClass *klass, void *data)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(kclass);
-+    dc->realize = tm4c123_wdt_realize;
-+    dc->reset = tm4c123_wdt_reset;
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = tm4c123_usart_reset;
++    device_class_set_props(dc, tm4c123_usart_properties);
++    dc->realize = tm4c123_usart_realize;
 +}
 +
-+static const TypeInfo tm4c123_wdt_info = {
-+    .name = TYPE_TM4C123_WATCHDOG,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TM4C123WatchdogState),
-+    .instance_init = tm4c123_wdt_init,
-+    .class_init = tm4c123_wdt_class_init,
++static const TypeInfo tm4c123_usart_info = {
++    .name          = TYPE_TM4C123_USART,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TM4C123USARTState),
++    .instance_init = tm4c123_usart_init,
++    .class_init    = tm4c123_usart_class_init,
 +};
 +
-+static void tm4c123_wdt_register_types(void)
++static void tm4c123_usart_register_types(void)
 +{
-+    type_register_static(&tm4c123_wdt_info);
++    type_register_static(&tm4c123_usart_info);
 +}
 +
-+type_init(tm4c123_wdt_register_types)
-diff --git a/include/hw/watchdog/tm4c123_watchdog.h b/include/hw/watchdog/tm4c123_watchdog.h
++type_init(tm4c123_usart_register_types)
+diff --git a/include/hw/char/tm4c123_usart.h b/include/hw/char/tm4c123_usart.h
 new file mode 100644
-index 0000000000..2621b5d805
+index 0000000000..be98eb3948
 --- /dev/null
-+++ b/include/hw/watchdog/tm4c123_watchdog.h
-@@ -0,0 +1,97 @@
++++ b/include/hw/char/tm4c123_usart.h
+@@ -0,0 +1,124 @@
 +/*
-+ * TM4C123 Watchdog Timers
++ * TM4C123 USART
 + *
 + * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
 + *
@@ -466,76 +555,103 @@ index 0000000000..2621b5d805
 + * THE SOFTWARE.
 + */
 +
-+#ifndef HW_ARM_TM4C123_WATCHDOG_H
-+#define HW_ARM_TM4C123_WATCHDOG_H
++#ifndef HW_ARM_TM4C123_USART_H
++#define HW_ARM_TM4C123_USART_H
 +
 +#include "hw/sysbus.h"
 +#include "qom/object.h"
++#include "chardev/char-fe.h"
 +#include "hw/misc/tm4c123_sysctl.h"
-+#include "hw/ptimer.h"
 +
-+#define WDT_0 0x40000000
-+#define WDT_1 0x40001000
++#define USART_DR            0x000
++#define USART_RSR           0x004
++#define USART_FR            0x018
++#define USART_ILPR          0x020
++#define USART_IBRD          0x024
++#define USART_FBRD          0x028
++#define USART_LCRH          0x02C
++#define USART_CTL           0x030
++#define USART_IFLS          0x034
++#define USART_IM            0x038
++#define USART_RIS           0x03C
++#define USART_MIS           0x040
++#define USART_ICR           0x044
++#define USART_DMA_CTL       0x048
++#define USART_9BIT_ADDR     0x0A4
++#define USART_9BIT_MASK     0x0A8
++#define USART_PP            0xFC0
++#define USART_CC            0xFC8
++#define USART_PER_ID4       0x0FD0
++#define USART_PER_ID5       0xFD4
++#define USART_PER_ID6       0xFD8
++#define USART_PER_ID7       0xFDC
++#define USART_PER_ID0       0xFE0
++#define USART_PER_ID1       0xFE4
++#define USART_PER_ID2       0xFE8
++#define USART_PER_ID3       0xFEC
++#define USART_PCELL_ID0     0xFF0
++#define USART_PCELL_ID1     0xFF4
++#define USART_PCELL_ID2     0xFF8
++#define USART_PCELL_ID3     0xFFC
 +
-+#define WDT_LOAD 0x000
-+#define WDT_VALUE 0x004
-+#define WDT_CTL 0x008
-+#define WDT_ICR 0x00C
-+#define WDT_RIS 0x010
-+#define WDT_MIS 0x014
-+#define WDT_TEST 0x418
-+#define WDT_LOCK 0xC00
-+#define WDT_PER_ID4 0xFD0
-+#define WDT_PER_ID5 0xFD4
-+#define WDT_PER_ID6 0xFD8
-+#define WDT_PER_ID7 0xFDC
-+#define WDT_PER_ID0 0xFE0
-+#define WDT_PER_ID1 0xFE4
-+#define WDT_PER_ID2 0xFE8
-+#define WDT_PER_ID3 0xFEC
-+#define WDT_PCELL_ID0 0xFF0
-+#define WDT_PCELL_ID1 0xFF4
-+#define WDT_PCELL_ID2 0xFF8
-+#define WDT_PCELL_ID3 0xFFC
++#define USART_FR_RXFF (1 << 6)
++#define USART_FR_TXFF (1 << 5)
++#define USART_FR_RXFE (1 << 4)
++#define USART_FR_BUSY (1 << 3)
++#define USART_CR_RXE  (1 << 9)
++#define USART_CR_EN   (1 << 0)
++#define USART_IM_RXIM (1 << 4)
 +
-+#define UNLOCK_VALUE 0x1ACCE551
++#define USART_0 0x4000C000
++#define USART_1 0x4000D000
++#define USART_2 0x4000E000
++#define USART_3 0x4000F000
++#define USART_4 0x40010000
++#define USART_5 0x40011000
++#define USART_6 0x40012000
++#define USART_7 0x40013000
++#define TYPE_TM4C123_USART "tm4c123-usart"
 +
-+#define WDT_CTL_INTEN (1 << 0)
-+#define WDT_CTL_INTTYPE (1 << 2)
++OBJECT_DECLARE_SIMPLE_TYPE(TM4C123USARTState, TM4C123_USART)
 +
-+#define TYPE_TM4C123_WATCHDOG "tm4c123-watchdog"
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(TM4C123WatchdogState, TM4C123_WATCHDOG)
-+
-+struct TM4C123WatchdogState {
++struct TM4C123USARTState {
 +    SysBusDevice parent_obj;
 +    MemoryRegion mmio;
++
++    uint32_t usart_dr;
++    uint32_t usart_rsr;
++    uint32_t usart_fr;
++    uint32_t usart_ilpr;
++    uint32_t usart_ibrd;
++    uint32_t usart_fbrd;
++    uint32_t usart_lcrh;
++    uint32_t usart_ctl;
++    uint32_t usart_ifls;
++    uint32_t usart_im;
++    uint32_t usart_ris;
++    uint32_t usart_mis;
++    uint32_t usart_icr;
++    uint32_t usart_dma_ctl;
++    uint32_t usart_9bit_addr;
++    uint32_t usart_9bit_mask;
++    uint32_t usart_pp;
++    uint32_t usart_cc;
++    uint32_t usart_per_id4;
++    uint32_t usart_per_id5;
++    uint32_t usart_per_id6;
++    uint32_t usart_per_id7;
++    uint32_t usart_per_id0;
++    uint32_t usart_per_id1;
++    uint32_t usart_per_id2;
++    uint32_t usart_per_id3;
++    uint32_t usart_pcell_id0;
++    uint32_t usart_pcell_id1;
++    uint32_t usart_pcell_id2;
++    uint32_t usart_pcell_id3;
++
++    CharBackend chr;
 +    qemu_irq irq;
-+    struct ptimer_state *timer;
-+    TM4C123SysCtlState* sysctl;
-+
-+    uint32_t wdt_load;
-+    uint32_t wdt_value;
-+    uint32_t wdt_ctl;
-+    uint32_t wdt_icr;
-+    uint32_t wdt_ris;
-+    uint32_t wdt_mis;
-+    uint32_t wdt_test;
-+    uint32_t wdt_lock;
-+    uint32_t wdt_per_id4;
-+    uint32_t wdt_per_id5;
-+    uint32_t wdt_per_id6;
-+    uint32_t wdt_per_id7;
-+    uint32_t wdt_per_id0;
-+    uint32_t wdt_per_id1;
-+    uint32_t wdt_per_id2;
-+    uint32_t wdt_per_id3;
-+    uint32_t wdt_pcell_id0;
-+    uint32_t wdt_pcell_id1;
-+    uint32_t wdt_pcell_id2;
-+    uint32_t wdt_pcell_id3;
-+
-+    Clock* wdt_clock;
++    TM4C123SysCtlState *sysctl;
 +};
 +
 +#endif

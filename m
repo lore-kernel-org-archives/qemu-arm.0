@@ -1,132 +1,119 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp563812ejq;
-        Tue, 16 May 2023 10:19:23 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7AH4U97R8HG+ygIossvQh6JJ6s95kYJUiHcXghH6bh+2bydzI2Yvfp8Fg6Gk+Rohna0Kg5
-X-Received: by 2002:ac8:5b86:0:b0:3f3:a0c0:cd6f with SMTP id a6-20020ac85b86000000b003f3a0c0cd6fmr40543336qta.9.1684257563560;
-        Tue, 16 May 2023 10:19:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684257563; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp648647ejq;
+        Tue, 16 May 2023 13:09:09 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5cYBnYxQD0b5gxqdhWM8xnyAwSyacD2skJpeW+VTdpS5dpqxaIzkhfD7kg48ENP0Mx5C+V
+X-Received: by 2002:a1c:6a13:0:b0:3f5:146a:c79d with SMTP id f19-20020a1c6a13000000b003f5146ac79dmr2788649wmc.15.1684267748877;
+        Tue, 16 May 2023 13:09:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684267748; cv=none;
         d=google.com; s=arc-20160816;
-        b=kBhQdgl33emazb2jaUZ/4v+7zfApjGrsVO0tg2xt1lnflm0y3FEGwhwjKlXdE1KXf7
-         qcsy5S7Aj6kV5Cq1Pvt35AbOPX8UTBbp0DrxvGxQSRnOLXcQyJPM7nBF0l0stS6UYteA
-         Ce0jyZS3lmIjv58wsGbw1mQgyzg8ptrRlBYf9RWjTl8fk576GlHXOnEwo97vgp/WDMGt
-         Osvv2n8m/YDtHplEW4OduFlJ927hcGP/1p7gdJxjIImABaZjee3M4ZaanE8OXkHudMXe
-         U95qEDuEcAhC7m+wz1y6f9k/OHmIuvfyRUeyZsRNLeZBuLO9CB2pjX8P3+7LDqfF9MZA
-         lKGg==
+        b=kXCxisIoGXwINBpH86GSD/+QVzqBO4gY1SQAtQ8xYxNqrx4YREEWtdmSJASil6L/Gw
+         eE30C5vhTkH8rjDkckhDgbbuJuM45dIlB2dRII2HQUboIrluUpv5pDO0IwjRitgv50Bo
+         /IzBU8mDY/ViBRHVNU1MlAClk7ZyCmViqvwsiDJMZnGGewCd28ZTOFUIkrg1VI0k1nXA
+         dRzgGFRI5HNVnED3or2NiB1usF+NanvF0qoWzHZts15Smrlj4as/Lro3R8KYRNVuGoxW
+         1RKTRMTwE3kjzrFKamN1g7zmVbt4+BIJZe0J6WHWDlKshsFgt1Ye0JmwiyX4+5NCztiX
+         /Aog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=0yN+azlWQAFsJEY82hr3p6/4BJ9kW99ndVGXmr10RVs=;
-        b=ODAoP1XI9AXav8bFQJKMF0pZVnpjmLWefjX5ej0bKveANzqxzjzDULxCHOyjux4Np7
-         D0WbRXRhG0IlutRkD+okuaKFO9qe5/oS0tXuNudfctcEg00ejl24qfnlGF6/dDfHy08n
-         /u3xlqPvz4HE+T3cilGBvytufN/VFon/Aa0rNOsQbQR/38ARkkrs1vdB01eaVB43qY9l
-         1g7Obo2rAqhaua52gIOJ9DF5yhZ4wTc8q6AV8mK4HZYXsvQ4GxswUbDjAjfIO3z3wD/J
-         p2kxhiOnBprLRyADYs6WU2PIjNgH+BCzREqpj9Rz6pOx7HfNL6XGNz7TL0iqcD61Gbkn
-         YC5Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=RZZrwKydEztHPKUbUlgJFMFYTLXdDDQeUM+//JvEi3Y=;
+        b=nTkElZb3hJ2yDMoxc6QezGAzcPID0zGanYuFX/sVBUO9ezCiqM1gKZKFEEBZycP1F4
+         ornVPxatD7WlENqQeqtqCXXI8rNipfB7Wya6y7Yd24+LpbbHfXgk67ctTlOqiTQfrMxZ
+         b2v3eTB7bEmHfb5kYvoXQ7/svfpJ2azBwN6zA3IwNn0O7j9xRmicDaHZsxLHfn8ZWogm
+         Ojpq4xTCYa19rIk6umUJ5z81AZo7PNtxts7f+xLrfEFz44LqScsm3lSsaaLaBdv1kqDg
+         P++66ivOafjs7Y4BHZNbwEY9scRWXXo7e5dUXSuEinTgFNQ1LcobrMUE9HNB0BAoMdKE
+         zH9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PBgSxdxg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aDTJ+kfV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp42-20020a05622a1baa00b003f0a2ea8f7bsi11337210qtb.304.2023.05.16.10.19.23
+        by mx.google.com with ESMTPS id w10-20020adfee4a000000b00306343f21a0si195124wro.503.2023.05.16.13.09.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 May 2023 10:19:23 -0700 (PDT)
+        Tue, 16 May 2023 13:09:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PBgSxdxg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aDTJ+kfV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyyKT-0002jf-Qg; Tue, 16 May 2023 13:19:17 -0400
+	id 1pz0yU-0000kK-R0; Tue, 16 May 2023 16:08:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pyyKS-0002bj-Hk
- for qemu-devel@nongnu.org; Tue, 16 May 2023 13:19:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pyyKM-0005Y8-CM
- for qemu-devel@nongnu.org; Tue, 16 May 2023 13:19:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684257548;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0yN+azlWQAFsJEY82hr3p6/4BJ9kW99ndVGXmr10RVs=;
- b=PBgSxdxg79dY/PgDqzupR8yk3mtengvNA38n0d8YY6heBlrc5xFqXSJtjQST9ILqZ5J3q6
- nJcvAmXWTa1pazueywIb7s5TM6QHyjiJ54LOdVRinTCxQg/1bZSIf0R1+bYeTMJZySww5/
- frADUvk9NYhbwOLg8moTbApVpoirtFo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-617-7ASLInVxMyCnQZaSdRTMXA-1; Tue, 16 May 2023 13:19:07 -0400
-X-MC-Unique: 7ASLInVxMyCnQZaSdRTMXA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3093cb05431so89348f8f.1
- for <qemu-devel@nongnu.org>; Tue, 16 May 2023 10:19:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684257546; x=1686849546;
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pz0yS-0000jA-4o
+ for qemu-devel@nongnu.org; Tue, 16 May 2023 16:08:44 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1pz0yQ-0000Dw-8D
+ for qemu-devel@nongnu.org; Tue, 16 May 2023 16:08:43 -0400
+Received: by mail-pg1-x530.google.com with SMTP id
+ 41be03b00d2f7-528dd896165so10518542a12.2
+ for <qemu-devel@nongnu.org>; Tue, 16 May 2023 13:08:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1684267720; x=1686859720;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0yN+azlWQAFsJEY82hr3p6/4BJ9kW99ndVGXmr10RVs=;
- b=I5Pg5Zw2TKN51Ax0XRD1HzSJKL4y2Bx1UMHqf7/kBwrhQ8MC3smpETIBJgY3rGeaus
- hP7UjtmpPK4ncTSIXXlSouauctFaCfwvQRJoZnVS4+AZ/PXq/ZjPHOKcQKfx+c0NqiaH
- 6SKVYpt152RejwiWgICfepbysHW069KNGmivqCKzzex7zrIZqs+tBAJWHbFtb9NH546u
- fjqg053CQUxXcNMs4K2CmQu6BFRbcX7HqU5IXfaN8IBvFZfQ+RIj7tWYzZ8oHEU1XI0M
- wxXi6/HRgiCOkMID2ykHS2KbbpepgPnNNLmn2ANpEUGvbUQnTwqmzbFoJsvovS6lJezd
- RFeA==
-X-Gm-Message-State: AC+VfDwq4oUld/dcKKYCyz8VJ1/9af88ASK4kEaw74euIG24GWOj0w6o
- dLVX0S3JE2WlISapOg34eM582BG0LjHbmGwRlJg5J05rxIhnKrgjGP2Tc5gIJzXNDkVfz6yuimx
- uMhGNd6vel9I/974=
-X-Received: by 2002:a5d:4570:0:b0:306:44a9:76a1 with SMTP id
- a16-20020a5d4570000000b0030644a976a1mr22806564wrc.17.1684257546297; 
- Tue, 16 May 2023 10:19:06 -0700 (PDT)
-X-Received: by 2002:a5d:4570:0:b0:306:44a9:76a1 with SMTP id
- a16-20020a5d4570000000b0030644a976a1mr22806546wrc.17.1684257545904; 
- Tue, 16 May 2023 10:19:05 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RZZrwKydEztHPKUbUlgJFMFYTLXdDDQeUM+//JvEi3Y=;
+ b=aDTJ+kfVRHJl4WRGjzu1SrcWkmJvAenEYhPkoFmM+eqbs8prG60232Rv8Uh+LbLaTn
+ Js81lTSbNnE8UxrqZmmElqVUHK/WhpvcLbMCFO0RBSiy1nfG1ykBMfywM1MisNKTpbm9
+ twAnWj7qIEV2huEnbUQ4Re4ZHSyFlw7RWOYkiqzW93KCr4xN9eadefMgMzDQJrGR2967
+ aHDFHIdMx+GQEVudANWhJ7hXLAPS1QVhh/LuZr+r0f/PD43MY+WE2kwrrA5RNPI6H3U0
+ 48SqoV63AjTEuCW2BNtaD3KSQe4utckR1hpHpoBA/PVmnzRBqEnWc1awrHXP18rVU0Dd
+ jqfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684267720; x=1686859720;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RZZrwKydEztHPKUbUlgJFMFYTLXdDDQeUM+//JvEi3Y=;
+ b=XN/9O2EXxknTMxky3o83bQta9jvBxUQFe88YTZ5A9iBE7dVhwbpmkE1dOE93fKjHq8
+ cS6vsflnOgrnKwkg63nKht2ek5nEZCU6432rjrxxudCVbB6hiUEGX+c1V8LMBv6aiYxY
+ RoYSiaZPYAULNXxkddm/VbMxca0bUuHsVc5U7YrS9whmoMq56kUOOfRlxo/cIsyZKPjM
+ NEP0DQxEfTQ7tT74OL1itHntCU0N4sFPuccxvJvBNU9gaaE5aivMN1PK3qwYlUpfDTZY
+ zU+QAnqc0GivJADf6tR7CPPd69/xkY+2b4U4T6tmqYJgB0vf2UlduSoeQfSkdZmBSNbt
+ qu6Q==
+X-Gm-Message-State: AC+VfDxJBpd7MM6QB0z/NQSkawR9KuegIJcox0VcsuBMevJLcWiJHJ3B
+ 4pZmkSWIj3kXCGvWSQSyT4lEm5cR35zLtxs/HlA=
+X-Received: by 2002:a05:6a20:2452:b0:103:558c:516 with SMTP id
+ t18-20020a056a20245200b00103558c0516mr27504657pzc.55.1684267720384; 
+ Tue, 16 May 2023 13:08:40 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1598:4c01:ec81:440e:33a4:40b9?
+ ([2602:ae:1598:4c01:ec81:440e:33a4:40b9])
  by smtp.gmail.com with ESMTPSA id
- e17-20020adfe7d1000000b00300aee6c9cesm61518wrn.20.2023.05.16.10.19.04
+ 63-20020a630142000000b0051303d3e3c5sm14065201pgb.42.2023.05.16.13.08.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 May 2023 10:19:05 -0700 (PDT)
-Message-ID: <392f50f5-9d59-bd01-c7a1-115c351b5d60@redhat.com>
-Date: Tue, 16 May 2023 19:19:03 +0200
+ Tue, 16 May 2023 13:08:39 -0700 (PDT)
+Message-ID: <b442ffa8-1a3a-660b-2924-4e63b0d6a77f@linaro.org>
+Date: Tue, 16 May 2023 13:08:38 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [RFC PATCH v3 05/10] hw/arm/smmuv3: Parse STE config for stage-2
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] target/arm: allow DC CVA[D]P in user mode emulation
 Content-Language: en-US
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, jean-philippe@linaro.org,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
-References: <20230401104953.1325983-1-smostafa@google.com>
- <20230401104953.1325983-6-smostafa@google.com>
- <c5b495d4-8679-8190-9966-d3ab82cb1a6d@redhat.com>
- <ZGJR0yYaIxfddu3j@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <ZGJR0yYaIxfddu3j@google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+To: Zhuojia Shen <chaosdefinition@hotmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beata Michalska <beata.michalska@linaro.org>, qemu-arm@nongnu.org
+References: <DS7PR12MB63094479AA92D99D8D777A95AC799@DS7PR12MB6309.namprd12.prod.outlook.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <DS7PR12MB63094479AA92D99D8D777A95AC799@DS7PR12MB6309.namprd12.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
 X-Spam_score_int: -47
 X-Spam_score: -4.8
 X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.666, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.666,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,49 +126,234 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WeTs77zwGep4
+X-TUID: 90/Ocf+Qff1e
 
-Hi Mostafa,
+On 5/15/23 20:59, Zhuojia Shen wrote:
+> DC CVAP and DC CVADP instructions can be executed in EL0 on Linux,
+> either directly when SCTLR_EL1.UCI == 1 or emulated by the kernel (see
+> user_cache_maint_handler() in arch/arm64/kernel/traps.c).  The Arm ARM
+> documents the semantics of the two instructions that they behave as
+> DC CVAC if the address pointed to by their register operand is not
+> persistent memory.
+> 
+> This patch enables execution of the two instructions in user mode
+> emulation as NOP while preserving their original emulation in full
+> system virtualization.
+> 
+> Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
+> ---
+>   target/arm/helper.c               | 26 +++++++++++++-----
+>   tests/tcg/aarch64/Makefile.target | 11 ++++++++
+>   tests/tcg/aarch64/dcpodp.c        | 45 +++++++++++++++++++++++++++++++
+>   tests/tcg/aarch64/dcpop.c         | 45 +++++++++++++++++++++++++++++++
+>   4 files changed, 120 insertions(+), 7 deletions(-)
+>   create mode 100644 tests/tcg/aarch64/dcpodp.c
+>   create mode 100644 tests/tcg/aarch64/dcpop.c
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 0b7fd2e7e6..eeba5e7978 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -7432,23 +7432,37 @@ static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
+>           }
+>       }
+>   }
+> +#endif /*CONFIG_USER_ONLY*/
+>   
+>   static const ARMCPRegInfo dcpop_reg[] = {
+>       { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
+>         .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
+> -      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .access = PL0_W,
+>         .fgt = FGT_DCCVAP,
+> -      .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
+> +      .accessfn = aa64_cacheop_poc_access,
+> +#ifdef CONFIG_USER_ONLY
+> +      .type = ARM_CP_NOP,
+> +#else
+> +      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .writefn = dccvap_writefn,
+> +#endif
+> +    },
+>   };
 
-On 5/15/23 17:37, Mostafa Saleh wrote:
-> Hi Eric,
->
-> Thanks a lot for taking the time to review the patches.
->
-> On Mon, May 15, 2023 at 03:03:28PM +0200, Eric Auger wrote:
->>>  
->>> +/* If stage-1 fault enabled and ptw event targets it. */
->>> +#define PTW_FAULT_S1(cfg, event)            ((cfg)->record_faults && \
->>> +                                             !(event).u.f_walk_eabt.s2)
->>> +/* If stage-2 fault enabled and ptw event targets it. */
->>> +#define PTW_FAULT_S2(cfg, event)            ((cfg)->s2cfg.record_faults && \
->>> +                                             (event).u.f_walk_eabt.s2)
->>> +
->>> +#define PTW_FAULT_ALLOWED(cfg, event)       (PTW_FAULT_S1(cfg, event) || \
->>> +                                             PTW_FAULT_S2(cfg, event))
->> The name of the macro does not really reflect what it tests. I would
->> suggest PTW_RECORD_FAULT and PTW_RECORD_S1|S2_FAULT
->> I would also suggest (cfg->stage == 1) ?  PTW_RECORD_S1_FAULT(cfg,
->> event) :  PTW_RECORD_S2_FAULT(cfg, event)
->>
->> PTW_FAULT_S1() and PTW_FAULT_S2() are not used anywhere else.
->>
->> I would simplify PTW_RECORD_FAULT(cfg)  (cfg->stage == 1) ?
->> (cfg)->record_faults:  (cfg)->s2cfg.record_faults
-> Yes, this is much simpler.
-> I am wondering as stage-2 only SMMUs can have stage-1 faults as described in
-> (IHI 0070.E.a) "3.4 Address sizes".
-> If the input address of a transaction exceeds the size of the IAS.
-> I guess this means that the fault record in this case is still controlled by S2R
-> although it is stage-1 fault as there is no CD or stage-1 config.
-Yes this sounds sensible.
+Not quite correct, as CVAP to an unmapped address should SIGSEGV.  That'll be done by the 
+probe_read within dccvap_writefn.
 
-Eric
->
-> Thanks,
-> Mostafa
->
+Need to make dccvap_writefn always present, ifdef out only the memory_region_from_host + 
+memory_region_writeback from there.  Need to set SCTLR_EL1.UCI in arm_cpu_reset_hold in 
+the CONFIG_USER_ONLY block.
+
+
+r~
+
+>   
+>   static const ARMCPRegInfo dcpodp_reg[] = {
+>       { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
+>         .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
+> -      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .access = PL0_W,
+>         .fgt = FGT_DCCVADP,
+> -      .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
+> +      .accessfn = aa64_cacheop_poc_access,
+> +#ifdef CONFIG_USER_ONLY
+> +      .type = ARM_CP_NOP,
+> +#else
+> +      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .writefn = dccvap_writefn,
+> +#endif
+> +    },
+>   };
+> -#endif /*CONFIG_USER_ONLY*/
+>   
+>   static CPAccessResult access_aa64_tid5(CPUARMState *env, const ARMCPRegInfo *ri,
+>                                          bool isread)
+> @@ -9092,7 +9106,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>       if (cpu_isar_feature(aa64_tlbios, cpu)) {
+>           define_arm_cp_regs(cpu, tlbios_reginfo);
+>       }
+> -#ifndef CONFIG_USER_ONLY
+>       /* Data Cache clean instructions up to PoP */
+>       if (cpu_isar_feature(aa64_dcpop, cpu)) {
+>           define_one_arm_cp_reg(cpu, dcpop_reg);
+> @@ -9101,7 +9114,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>               define_one_arm_cp_reg(cpu, dcpodp_reg);
+>           }
+>       }
+> -#endif /*CONFIG_USER_ONLY*/
+>   
+>       /*
+>        * If full MTE is enabled, add all of the system registers.
+> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+> index 0315795487..3430fd3cd8 100644
+> --- a/tests/tcg/aarch64/Makefile.target
+> +++ b/tests/tcg/aarch64/Makefile.target
+> @@ -21,12 +21,23 @@ config-cc.mak: Makefile
+>   	$(quiet-@)( \
+>   	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
+>   	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
+> +	    $(call cc-option,-march=armv8.2-a,              CROSS_CC_HAS_ARMV8_2); \
+>   	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
+> +	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
+>   	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
+>   	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
+>   	    $(call cc-option,-march=armv9-a+sme,            CROSS_CC_HAS_ARMV9_SME)) 3> config-cc.mak
+>   -include config-cc.mak
+>   
+> +ifneq ($(CROSS_CC_HAS_ARMV8_2),)
+> +AARCH64_TESTS += dcpop
+> +dcpop: CFLAGS += -march=armv8.2-a
+> +endif
+> +ifneq ($(CROSS_CC_HAS_ARMV8_5),)
+> +AARCH64_TESTS += dcpodp
+> +dcpodp: CFLAGS += -march=armv8.5-a
+> +endif
+> +
+>   # Pauth Tests
+>   ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+>   AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
+> diff --git a/tests/tcg/aarch64/dcpodp.c b/tests/tcg/aarch64/dcpodp.c
+> new file mode 100644
+> index 0000000000..dad61ce78c
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/dcpodp.c
+> @@ -0,0 +1,45 @@
+> +/* Test execution of DC CVADP instruction */
+> +
+> +#include <asm/hwcap.h>
+> +#include <sys/auxv.h>
+> +
+> +#include <signal.h>
+> +#include <stdio.h>
+> +#include <stdlib.h>
+> +
+> +#ifndef HWCAP2_DCPODP
+> +#define HWCAP2_DCPODP (1 << 0)
+> +#endif
+> +
+> +static void sigill_handler(int sig)
+> +{
+> +    exit(EXIT_FAILURE);
+> +}
+> +
+> +static int do_dc_cvadp(void)
+> +{
+> +    struct sigaction sa = {
+> +        .sa_handler = sigill_handler,
+> +    };
+> +
+> +    if (sigaction(SIGILL, &sa, NULL) < 0) {
+> +        perror("sigaction");
+> +        return EXIT_FAILURE;
+> +    }
+> +
+> +    asm volatile("dc cvadp, %0\n\t" :: "r"(&sa));
+> +
+> +    return 0;
+> +}
+> +
+> +int main(void)
+> +{
+> +    if (getauxval(AT_HWCAP) & HWCAP2_DCPODP) {
+> +        return do_dc_cvadp();
+> +    } else {
+> +        printf("SKIP: no HWCAP2_DCPODP on this system\n");
+> +        return 0;
+> +    }
+> +
+> +    return 0;
+> +}
+> diff --git a/tests/tcg/aarch64/dcpop.c b/tests/tcg/aarch64/dcpop.c
+> new file mode 100644
+> index 0000000000..8b4ea7c91c
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/dcpop.c
+> @@ -0,0 +1,45 @@
+> +/* Test execution of DC CVAP instruction */
+> +
+> +#include <asm/hwcap.h>
+> +#include <sys/auxv.h>
+> +
+> +#include <signal.h>
+> +#include <stdio.h>
+> +#include <stdlib.h>
+> +
+> +#ifndef HWCAP_DCPOP
+> +#define HWCAP_DCPOP (1 << 16)
+> +#endif
+> +
+> +static void sigill_handler(int sig)
+> +{
+> +    exit(EXIT_FAILURE);
+> +}
+> +
+> +static int do_dc_cvap(void)
+> +{
+> +    struct sigaction sa = {
+> +        .sa_handler = sigill_handler,
+> +    };
+> +
+> +    if (sigaction(SIGILL, &sa, NULL) < 0) {
+> +        perror("sigaction");
+> +        return EXIT_FAILURE;
+> +    }
+> +
+> +    asm volatile("dc cvap, %0\n\t" :: "r"(&sa));
+> +
+> +    return 0;
+> +}
+> +
+> +int main(void)
+> +{
+> +    if (getauxval(AT_HWCAP) & HWCAP_DCPOP) {
+> +        return do_dc_cvap();
+> +    } else {
+> +        printf("SKIP: no HWCAP_DCPOP on this system\n");
+> +        return 0;
+> +    }
+> +
+> +    return 0;
+> +}
 

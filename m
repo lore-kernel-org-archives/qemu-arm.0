@@ -1,544 +1,379 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp6755903ejq;
-        Mon, 15 May 2023 13:22:02 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7t38ePB85ycQdCA1IkN1UHs6FwTmtdJPT82IYbbMyTWVEOXC9Cb1ZACytSoAZVa5+O+Fml
-X-Received: by 2002:a05:622a:4d2:b0:3bf:df2e:a494 with SMTP id q18-20020a05622a04d200b003bfdf2ea494mr57930922qtx.6.1684182121926;
-        Mon, 15 May 2023 13:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684182121; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp170993ejq;
+        Mon, 15 May 2023 21:15:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5gUy5kVAOt9z0k/4/csmMks6tD4UscmSVW+ih3gSuguQbc9dX9v3/pjJiTRO+qZE8/qS5S
+X-Received: by 2002:a05:6214:1c85:b0:616:6f8f:d99f with SMTP id ib5-20020a0562141c8500b006166f8fd99fmr58433232qvb.4.1684210557599;
+        Mon, 15 May 2023 21:15:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1684210557; cv=pass;
         d=google.com; s=arc-20160816;
-        b=l6hsFcoI0ueHji9cw5h6xQgjsFtW9iHg2haoxkjgwf6iBsivj2Ng8qU926IzKMOsRX
-         t+IO79rJc6E9ZvG6AVEQxv2YwrY733gsGZeolpz8GC+jj8CrzKNH+HAKbyPochly1J1T
-         WfqlB1feUPK5wbiN2RPsuQZ/Ig1zRelPmIRlDMj9gbP6EdeAT/SFc6gPjR68L5jrR3Jg
-         6cH37YjYut1HXzqxosieDBXVjl0+TjLyiAeShx0KIwHDyQDrO7zFDm1ox6FF1YffuRao
-         PwXjEfECmrq0YDzIC7y9otIL9WsMmxn5B+iGKbvA3uFVEzwZRFJNHnxZy93xfljbeGfU
-         KDdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=c/a2M2zwtwOXx8E+eHuTzNIkqKPgYibKj1S3i7Vpxi/6uGXCObPUss+vwKckGfLCpI
+         /Y//6TOoHd0UTAyYE1buNKVHzYvpEJaOfPZPoZkdSvHiWZ9nRIxx8WpLmIjvtobvBn2j
+         BEikZTAvvjh++h3/0FOZmxYIyIbke96pI5QckWAomYVj4WDnBQ4HxxVTMnFgya3viVfW
+         UkoLJ5ISbFEWMCp5VUWvn9LP6o4ltKzjyvNcjPY/B2g6tsqkvM7tT4zVzpiraP4HIMdo
+         gWztVUbrrazu5hchHxr5m18OS5i4q5n+tG2MjE2TZWiLTSD4nAWtEXDLT5XTfzbla5yw
+         qd5w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZTv0XIa4u5S6THJXnSEUWMKst/qtdrhCSMIsWS1CkI0=;
-        b=NKMnuOR4zsUcOVhlmxnEX8lhW22q31lgnUytkt+1WSzNjyrMLdg9WoKj2N3FSfuJ+P
-         hZ3xBqNZW6TE46FmCB5HKMX/NQO+dk0w8unStlSMtyZqJehP6hKVtUaHELv0nCqKzo5q
-         XGMDHaUCHAvOryblCjjkEKYA0EOnCNmPKB2jFmiph3+ATqQGRG5aeUcwxJ/B9fczLLoQ
-         D6S8O73Gck8TawKH0ympgH+VBoIWYPJnXinERSlVNGkFmZBLPZS6KE7hUJeRruu1GwOK
-         q5voUkkXVa8G9TLFWWAg6dOC4X2G4bEEDFDPVO6voO9u/IBdtLmu/j/Ydu+osDnXq/qy
-         +keg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="awMvdGu/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=2IE1EjeAi9vat495DF8ADrBhDKeVSBjS4j4V5Fl7taI=;
+        b=l0iYQETUcLTdICDCBxpA+et4c2nmCkfP83JLurqoqabT7iN27Ewou1PGG+k6ERPu6Z
+         AEz+qFcMPeEG5RGcxRMir1GHf0fSPp87edVmTMhlO18HinL3OkIfiix0WpIoTBilzHV2
+         1fNGQk7myN+hWEnnLclKzUI/I1Pe16b5Fw9c5BtYFBuRGZPZ08ih+5AKJ0kGWmFSbdcs
+         XMO37alP83Ozt2s/tOl7MoK5l0EBFnYADSeep9BPk2+91uI7OyZ7TL9coTHRki08rY1Q
+         W0+LQvVdrUro+0PaaSU8xw2MMD+IVIFFSM9iKxqLFgbNBaZXxpRSTvXpvCUov1P5D/gU
+         8Dmg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=l1KC3h7l;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x7-20020ac85f07000000b003f53624729bsi1236693qta.57.2023.05.15.13.22.01
+        by mx.google.com with ESMTPS id jm9-20020ad45ec9000000b0061641c6079dsi10994932qvb.613.2023.05.15.21.15.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 May 2023 13:22:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 May 2023 21:15:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b="awMvdGu/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=l1KC3h7l;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pyehH-0004th-C4; Mon, 15 May 2023 16:21:31 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1pym5x-0000V2-7W; Tue, 16 May 2023 00:15:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pyehF-0004tR-Fx; Mon, 15 May 2023 16:21:29 -0400
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1pyehC-0002SF-1a; Mon, 15 May 2023 16:21:29 -0400
-Received: by mail-yb1-xb2f.google.com with SMTP id
- 3f1490d57ef6-ba6fffc5524so6222887276.3; 
- Mon, 15 May 2023 13:21:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684182084; x=1686774084;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZTv0XIa4u5S6THJXnSEUWMKst/qtdrhCSMIsWS1CkI0=;
- b=awMvdGu/jA5kGIlFOs89U+5MV6sPBNhKTDixduOC7xpZTjUiMYG/L2iYt0cCoa/ZNT
- kZmHjOn92mGDBi5jjB40T0a8X+0kVoMXdPkp/dPPQXJ/9tl3nGHDJPwrCA2vql/3sXX2
- alyfyEq0iw3yHVEtWGumrBZD+Czb8VyI93qLxxH6gHWNbyPw8i5H2ACT4fowMWbAyHV6
- gmIZEgBkMnhqd7pmRA/zRbBnthdTeJk85Xu9CWXwCNDsWpFx21VSgHmqMoXmWhHF++BA
- IIU2X/6Lk96PYQUW2Olmn69rBHJarwfHZNLGYMvpeNqjguzKiIEZjvanNtX9TDnWYGzX
- 6Bxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684182084; x=1686774084;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZTv0XIa4u5S6THJXnSEUWMKst/qtdrhCSMIsWS1CkI0=;
- b=OpHI/k14GHnU+MfhJ5V4xkij2FT/0Kzwn88fcuIRACbPii/VFisNUvhlFZjQ9wEiL5
- wA4R+ZGJO51pmNj9SyJY7zMgF60u3yirnOHkD7yRHkvQtjidtKb37RGDX3EJ7Y/fpS5b
- GcUwItxh12rgdMkPvrj5N74hJc48uohzuwvjBNPNVLR0TWFTyqtGuaODTnAMLoxhaylj
- dlFI9IolxA5RARhS2Va+O9s42sPBQvBVrkP5rIJHGLpYSMGCE5l6PNrZjsyoxYFWDVh0
- xg3L2MaWMRWt0KriGY7mmVSYsFxwpulELUGNhS8pWmm/Kfq5vLnif/Tm3D09/p8sr9lA
- +UuA==
-X-Gm-Message-State: AC+VfDw0Rk8p54gfcfUkXMCF5QX9YzYB4JXD4+/WgWA6pEYHI2zBB9Ag
- XOFjKAzTuvLi3JChhv1ZzSpTunXUacQ9EAUWi7A=
-X-Received: by 2002:a25:f626:0:b0:ba1:b539:a397 with SMTP id
- t38-20020a25f626000000b00ba1b539a397mr31499069ybd.60.1684182084416; Mon, 15
- May 2023 13:21:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1pym5s-0000SG-VJ; Tue, 16 May 2023 00:15:26 -0400
+Received: from mail-co1nam11olkn2080f.outbound.protection.outlook.com
+ ([2a01:111:f400:7eab::80f]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
+ id 1pym5q-0003gZ-PI; Tue, 16 May 2023 00:15:24 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=feSZXRBU3IAiQ2mkCDTC/buY2EI7/pMP8J7xsq6GFSwJcOOG3Ip83awJwS5N22cssKr9CWiqU27z/uDciSITGVwjNjebPm9PlvvFIYsNGUPB7xWzNnCdEK9UjlmRB9NTP0WoXpNb6Nq4I3AUeLxMkOyn5/iEGSJIcsM0hq+zIZz4KlUXS6PQ3GmxUEiCTQKY4h5IIJ0OYcQFBiCUvsgORlT2Sqq9P1OJxtyKtxVOikMFKG5pmj9+iJLGaor/uMRgNZK7YBqV3wl8iUsRCeiH3Zp/jIMaicFtg6BkMX4k+UssaVIKtbPk+QFq6X2LpjabAupt3zGokGg13tvoDt8LVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2IE1EjeAi9vat495DF8ADrBhDKeVSBjS4j4V5Fl7taI=;
+ b=Y/+VPc4J7QrUVWxag1TUyb96VkXH5AVYZbbvrREAwwOwUM4hF6UPsWccre2lN1v3BeDywQlTIw4zWR8AH8zlcWr3vx6m2Wc4Aq3VdXgNITPrQBGOZaePppvZXgwkya2BW1DOwb5BRTnjsYLrZ8wREy8i4YdA1WMLVCAjJHOmds8mkQ96rqWon1qIkfYoUskVDLI61/9vyUalVQmo/n0F24AiQUdivNe/ooaGjtahgLltKJcAChe7F2SV2rsU1yGDFoaonr8ENXFmUw0lqd3xQrOedCgejPmsd8A8v7R2PzbCVcRTkIYEUe+v1f++IarTT0bvGJizlMUu0IcDWQewNQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=2IE1EjeAi9vat495DF8ADrBhDKeVSBjS4j4V5Fl7taI=;
+ b=l1KC3h7leeQ4HVcXyA68O6rpXib7JpZTVYs6v+vh4I4M+JaIX2/yJwJ9b3M1V+9TMTQyjRtzSZHZGRrdwbyQHlswI9wggmaT8+WuTmyKh7QGCMEnUZzT7H9h6dTkACga77DCRD/ic6g2WsYsHh2WNo9HOicDWCaJ/3NOFeHVGxqDjdYOyOH6Ak+qTx/Im/ngbvWjbRANdlEP1z9aVas/uLGZnOtuMwceXQlGmddtJsNVgJxe5elgoTDR4AQk3gAaB9tYpeHyc8xNbOu5gcMQLz5ypDw/qmysh2QgXx/1kQAq4HWND4FXV6GNh0ozmYD+b3BwMMLnnxcRBV6K+mnGcw==
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
+ DS0PR12MB6392.namprd12.prod.outlook.com (2603:10b6:8:cc::22) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6387.30; Tue, 16 May 2023 04:15:18 +0000
+Received: from DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::bf6e:1dc2:10ea:cc04]) by DS7PR12MB6309.namprd12.prod.outlook.com
+ ([fe80::bf6e:1dc2:10ea:cc04%3]) with mapi id 15.20.6387.030; Tue, 16 May 2023
+ 04:15:18 +0000
+From: Zhuojia Shen <chaosdefinition@hotmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Beata Michalska <beata.michalska@linaro.org>, qemu-arm@nongnu.org,
+ Zhuojia Shen <chaosdefinition@hotmail.com>
+Subject: [PATCH] target/arm: allow DC CVA[D]P in user mode emulation
+Date: Mon, 15 May 2023 20:59:03 -0700
+Message-ID: <DS7PR12MB63094479AA92D99D8D777A95AC799@DS7PR12MB6309.namprd12.prod.outlook.com>
+X-Mailer: git-send-email 2.40.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TMN: [Q6WonyrvLSiQJ3t//BYTRrgC3SEHnifU]
+X-ClientProxiedBy: SJ2PR07CA0016.namprd07.prod.outlook.com
+ (2603:10b6:a03:505::16) To DS7PR12MB6309.namprd12.prod.outlook.com
+ (2603:10b6:8:96::19)
+X-Microsoft-Original-Message-ID: <20230516035903.124348-1-chaosdefinition@hotmail.com>
 MIME-Version: 1.0
-References: <20230510103123.30118-1-qianfanguijin@163.com>
-In-Reply-To: <20230510103123.30118-1-qianfanguijin@163.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 15 May 2023 22:21:13 +0200
-Message-ID: <CAPan3Wq+aJ2LsZXzXg=MWrzARjM1CrpEAqPBV160UHhg2YNJfg@mail.gmail.com>
-Subject: Re: [PATCH v4 11/11] docs: system: arm: Introduce bananapi_m2u
-To: qianfanguijin@163.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000e0f7f605fbc13290"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2f;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-yb1-xb2f.google.com
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|DS0PR12MB6392:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1a52919f-e1b6-4071-bc4b-08db55c427f6
+X-MS-Exchange-SLBlob-MailProps: mWtqiNqNgRuKO27nt/mZoWqn7+cej2MkObptWfEuqbmKOFeC0iPdncwSakyvgpe2FH+78DjsDDxymQ1jfWJkcCseOlcv1o1FqXSDZwZDfjlH1UvEby3/sQJLrxQdp6V+S697iRt0qiCATHZs0sTBZfNKg0gANc2NvvoGfkLLx2bHmMZ7Hb+ZvYx2uCwHQmaa0fdWe/ISdn65Lig9giw55TrvCcpbTx23k5do0fbEA3xmDPtlwJezqAfHSGzQFJ3HIR9uKeWEMz//1u1p2tpD8PK493Bp+i76PqbiyTyjcQd1vQEriROQm6AFTv/W9LtxGiYISn86b44YrXvj5+N1YgPm0gaJIJTchp34WAT7BDf/b+T4eATZ0ku1xd0YmNvKVklHH/oI2Hazi8I9YEuy/8QTzf+prxN0brXivm8GkS2cfRAO6IAZqAKEy7Tr5tq4DugWgSgiVQAvJBk5oXEfYLo5uDvAtddh8VxOXhpbXXJ3x4M761OhCjyR1OjgBUmjbeTlYmMg/4VDAiZ2FLjBViVYsyXWRkbwVsh9anTG4EoiJ4ZZe92q6bRn4KHA9CkavoUngkwuXez68dx3+m+FmVmi52PxldAthkyIMmBhf8yOvnMO52wmQrsaA0MDudmRHkugLgJE5adJCvZSsN/Ytk89TRqgzy8zPiMjMIp951HlpZtWiFKHq+elhmxNR6n8wMi/zsFjzopkZOjmXMVC/+9ARfKB/yRSjHChj0zMlxuaKvbygQZJPfj9e1+rJBiKwtKhPyLadRYsnkklS+C7i9B+AqaeI2dafARzsfmzStc=
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PBlY4bIbSBoWoTrBpkN6noxbYqVJMiI1YK7/0OjUKSl0/bBjGoEZ5MTyYWn4NDw+QHzsfjweilVk69Mb5duFT+lHbLx0Ho0IKkOnLWIysUbqSq7bSTLhWhj2D43fc3D/WiIevugwjwIj3i+RiySYyABF3wY0mVOY7R/9uRHqg9cSd8yH9/53685mr9n9ZymAqVLHVYPdAtDhdY7qngFkpBeAwKMTaiZ6kuVUxIxPYhVcQaNQOYGARPVUFUudzdy2vRrOmGCqvd5n1NGSgZMOF4QLs1ocXqufZkkgE8IUUZkGRgD0IaL1brM15ScYo2cOxo1P6JQcYAHokoqJxFJUSJi7nvXDGiaXyHNOv0UTyqKAnWC0St+u6UCyotBOBjWqxbxeI+WieZqs0OclvrYQVNeKPY22uFI/hspBpIdpRX5mMSn73dV7ZUS1Du3J5ylBHSpMKxl5R7s40fQtEjnc6yZg/CX1EDsW8i+RyIA0E5dzy0pu3v+MGX/6CPXnoQ78XzSr6oq6FU/XFgHynF09qnoZNwrziwdzkAcG/hHInIA0pbBkmUSVPFo3ry/Nwbins/tEskA7PFw6QfGN/5VF610I8EIjodZC44I2+nK8Bi6NCjS/IioAS8iXNZkBOefy
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?e8XjbUkWrP5SvEbUKlrTvySlibi0fiJWAJZWvaD0JADSyPPYT0Ce66yEIJ+o?=
+ =?us-ascii?Q?EBSVpiAja5IDdW++XOo+mMeOMFn6vQp1wkvIMVoAN1oHKxd2BNNu+2cOfCan?=
+ =?us-ascii?Q?NQPpmSJNuxmajKrsTbqSWEw+02Mq+mY4+WciAK/ledM4iMndPMZrn2bMlabz?=
+ =?us-ascii?Q?kgYHnxl6Wt88oM/YwcMp6vJSb+njA3Ka1WJz/TQkbQ4p5R2uM+np1FrI3VvK?=
+ =?us-ascii?Q?k0vabSQ1S7GexHS9ooQ+uYBpv5ojJpOEbki4wArTTFutA4JXGfqWBm+YBeaq?=
+ =?us-ascii?Q?Qm3BOh/RwlkDXLNse5qRphWuaiP1oCttRlV6qDqgKhPEec+pD+CSJEP3nJ7o?=
+ =?us-ascii?Q?7NZpIuGmlDlHJy3VJWKYISzHJItmTr/CPFps5sluwfOpnyQeq3ngUYjgA9+9?=
+ =?us-ascii?Q?nY+MDHs5hKsNZHoyCujQHTk8ORgr3Ek8zI1mlhIZnr3UReKMenGKfJ0hTG2C?=
+ =?us-ascii?Q?7R5d36uc2OWPzq0K7GW72LiamRTKAK3Temzmx2+VH/N6i12KM1u/cWuf8TgI?=
+ =?us-ascii?Q?pnXMLRjwAy9FvHpQ6BfciYnH6R3GWD/sJcwqg53IYzKpCNatN2PwaynsMIJ+?=
+ =?us-ascii?Q?7SJBLHT6vlMDliabokqAdt0lp34WyjOChV+4HOMXt7Lavk6pZJJvgUN+3DYa?=
+ =?us-ascii?Q?RTcU2LQPwm6IEKSjFwltNVYtv1VfdAcudNlQ/4hGf2Rjui4QUQnmLEeZPmxA?=
+ =?us-ascii?Q?dNXkbQ0bwiBre9H633ycWHKnhSNL30SPmDMwSUDy+0e152h9R16I9KCrXt76?=
+ =?us-ascii?Q?0P5oCg5/WCkIv/LfsPMwsoUO0M9kEoeotNq31ZoOmpCNbuc4VomLgrqD7qYl?=
+ =?us-ascii?Q?HN03Hqw/mxWo72KBgGz9lRca+hbKHuNdvnj1ddUPlwAEpUGpakYrA1w1DF/i?=
+ =?us-ascii?Q?oRDMWEnAzTehzYPrZFuotdCnbek7/jO2Y5X2a3ItzXhwM+adrKDKNdbLJyUR?=
+ =?us-ascii?Q?Mr0KavpIRv2zYef4gJUA6KH3s6dByyTzbd7FysWOMpUE4E5Xhm10XqmrB7WB?=
+ =?us-ascii?Q?poJr1ypypmoTy+LEfmM2tuh0Hrv0/3R5kF3jEoC3x/c50nt1wk1kE+rF0VTt?=
+ =?us-ascii?Q?rCpDPPkcu98psOE4iGzaW3L3Ar1KCGFGaxFWzCCXVPMfauBgNIUGumiFXfPz?=
+ =?us-ascii?Q?r8lwGZouVgn6vn3D1S1cpmm26uh9iwgV/jpdfitssUVl8rFAA/MFBVUM0CRR?=
+ =?us-ascii?Q?TsIpuIGWL2UPVJOEac/GNyi3Xlx/EPkJ9nCAzUTT03Im9ub58b7oWq7b6C0?=
+ =?us-ascii?Q?=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1a52919f-e1b6-4071-bc4b-08db55c427f6
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2023 04:15:17.9601 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6392
+Received-SPF: pass client-ip=2a01:111:f400:7eab::80f;
+ envelope-from=chaosdefinition@hotmail.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FjKN6yI8ClLe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ih5SkS9Htn9+
 
---000000000000e0f7f605fbc13290
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+DC CVAP and DC CVADP instructions can be executed in EL0 on Linux,
+either directly when SCTLR_EL1.UCI == 1 or emulated by the kernel (see
+user_cache_maint_handler() in arch/arm64/kernel/traps.c).  The Arm ARM
+documents the semantics of the two instructions that they behave as
+DC CVAC if the address pointed to by their register operand is not
+persistent memory.
 
-On Wed, May 10, 2023 at 12:31=E2=80=AFPM <qianfanguijin@163.com> wrote:
+This patch enables execution of the two instructions in user mode
+emulation as NOP while preserving their original emulation in full
+system virtualization.
 
-> From: qianfan Zhao <qianfanguijin@163.com>
->
-> Add documents for Banana Pi M2U
->
-> Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
->
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
+---
+ target/arm/helper.c               | 26 +++++++++++++-----
+ tests/tcg/aarch64/Makefile.target | 11 ++++++++
+ tests/tcg/aarch64/dcpodp.c        | 45 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/dcpop.c         | 45 +++++++++++++++++++++++++++++++
+ 4 files changed, 120 insertions(+), 7 deletions(-)
+ create mode 100644 tests/tcg/aarch64/dcpodp.c
+ create mode 100644 tests/tcg/aarch64/dcpop.c
 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0b7fd2e7e6..eeba5e7978 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7432,23 +7432,37 @@ static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
+         }
+     }
+ }
++#endif /*CONFIG_USER_ONLY*/
+ 
+ static const ARMCPRegInfo dcpop_reg[] = {
+     { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
+-      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .access = PL0_W,
+       .fgt = FGT_DCCVAP,
+-      .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
++      .accessfn = aa64_cacheop_poc_access,
++#ifdef CONFIG_USER_ONLY
++      .type = ARM_CP_NOP,
++#else
++      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .writefn = dccvap_writefn,
++#endif
++    },
+ };
+ 
+ static const ARMCPRegInfo dcpodp_reg[] = {
+     { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
+-      .access = PL0_W, .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .access = PL0_W,
+       .fgt = FGT_DCCVADP,
+-      .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
++      .accessfn = aa64_cacheop_poc_access,
++#ifdef CONFIG_USER_ONLY
++      .type = ARM_CP_NOP,
++#else
++      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .writefn = dccvap_writefn,
++#endif
++    },
+ };
+-#endif /*CONFIG_USER_ONLY*/
+ 
+ static CPAccessResult access_aa64_tid5(CPUARMState *env, const ARMCPRegInfo *ri,
+                                        bool isread)
+@@ -9092,7 +9106,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_tlbios, cpu)) {
+         define_arm_cp_regs(cpu, tlbios_reginfo);
+     }
+-#ifndef CONFIG_USER_ONLY
+     /* Data Cache clean instructions up to PoP */
+     if (cpu_isar_feature(aa64_dcpop, cpu)) {
+         define_one_arm_cp_reg(cpu, dcpop_reg);
+@@ -9101,7 +9114,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             define_one_arm_cp_reg(cpu, dcpodp_reg);
+         }
+     }
+-#endif /*CONFIG_USER_ONLY*/
+ 
+     /*
+      * If full MTE is enabled, add all of the system registers.
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 0315795487..3430fd3cd8 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -21,12 +21,23 @@ config-cc.mak: Makefile
+ 	$(quiet-@)( \
+ 	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
+ 	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
++	    $(call cc-option,-march=armv8.2-a,              CROSS_CC_HAS_ARMV8_2); \
+ 	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
++	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
+ 	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
+ 	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
+ 	    $(call cc-option,-march=armv9-a+sme,            CROSS_CC_HAS_ARMV9_SME)) 3> config-cc.mak
+ -include config-cc.mak
+ 
++ifneq ($(CROSS_CC_HAS_ARMV8_2),)
++AARCH64_TESTS += dcpop
++dcpop: CFLAGS += -march=armv8.2-a
++endif
++ifneq ($(CROSS_CC_HAS_ARMV8_5),)
++AARCH64_TESTS += dcpodp
++dcpodp: CFLAGS += -march=armv8.5-a
++endif
++
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
+diff --git a/tests/tcg/aarch64/dcpodp.c b/tests/tcg/aarch64/dcpodp.c
+new file mode 100644
+index 0000000000..dad61ce78c
+--- /dev/null
++++ b/tests/tcg/aarch64/dcpodp.c
+@@ -0,0 +1,45 @@
++/* Test execution of DC CVADP instruction */
++
++#include <asm/hwcap.h>
++#include <sys/auxv.h>
++
++#include <signal.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#ifndef HWCAP2_DCPODP
++#define HWCAP2_DCPODP (1 << 0)
++#endif
++
++static void sigill_handler(int sig)
++{
++    exit(EXIT_FAILURE);
++}
++
++static int do_dc_cvadp(void)
++{
++    struct sigaction sa = {
++        .sa_handler = sigill_handler,
++    };
++
++    if (sigaction(SIGILL, &sa, NULL) < 0) {
++        perror("sigaction");
++        return EXIT_FAILURE;
++    }
++
++    asm volatile("dc cvadp, %0\n\t" :: "r"(&sa));
++
++    return 0;
++}
++
++int main(void)
++{
++    if (getauxval(AT_HWCAP) & HWCAP2_DCPODP) {
++        return do_dc_cvadp();
++    } else {
++        printf("SKIP: no HWCAP2_DCPODP on this system\n");
++        return 0;
++    }
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/dcpop.c b/tests/tcg/aarch64/dcpop.c
+new file mode 100644
+index 0000000000..8b4ea7c91c
+--- /dev/null
++++ b/tests/tcg/aarch64/dcpop.c
+@@ -0,0 +1,45 @@
++/* Test execution of DC CVAP instruction */
++
++#include <asm/hwcap.h>
++#include <sys/auxv.h>
++
++#include <signal.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#ifndef HWCAP_DCPOP
++#define HWCAP_DCPOP (1 << 16)
++#endif
++
++static void sigill_handler(int sig)
++{
++    exit(EXIT_FAILURE);
++}
++
++static int do_dc_cvap(void)
++{
++    struct sigaction sa = {
++        .sa_handler = sigill_handler,
++    };
++
++    if (sigaction(SIGILL, &sa, NULL) < 0) {
++        perror("sigaction");
++        return EXIT_FAILURE;
++    }
++
++    asm volatile("dc cvap, %0\n\t" :: "r"(&sa));
++
++    return 0;
++}
++
++int main(void)
++{
++    if (getauxval(AT_HWCAP) & HWCAP_DCPOP) {
++        return do_dc_cvap();
++    } else {
++        printf("SKIP: no HWCAP_DCPOP on this system\n");
++        return 0;
++    }
++
++    return 0;
++}
+-- 
+2.40.1
 
-> ---
->  docs/system/arm/bananapi_m2u.rst | 138 +++++++++++++++++++++++++++++++
->  1 file changed, 138 insertions(+)
->  create mode 100644 docs/system/arm/bananapi_m2u.rst
->
-> diff --git a/docs/system/arm/bananapi_m2u.rst
-> b/docs/system/arm/bananapi_m2u.rst
-> new file mode 100644
-> index 0000000000..ae7194a9df
-> --- /dev/null
-> +++ b/docs/system/arm/bananapi_m2u.rst
-> @@ -0,0 +1,138 @@
-> +Banana Pi BPI-M2U (``bpim2u``)
-> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> +
-> +Banana Pi BPI-M2 Ultra is a quad-core mini single board computer built
-> with
-> +Allwinner A40i/R40/V40 SoC. It features 2GB of RAM and 8GB eMMC. It also
->
-+has onboard WiFi and BT. On the ports side, the BPI-M2 Ultra has 2 USB A
-> +2.0 ports, 1 USB OTG port, 1 HDMI port, 1 audio jack, a DC power port,
-> +and last but not least, a SATA port.
-> +
-> +Supported devices
-> +"""""""""""""""""
-> +
-> +The Banana Pi M2U machine supports the following devices:
-> +
-> + * SMP (Quad Core Cortex-A7)
-> + * Generic Interrupt Controller configuration
-> + * SRAM mappings
-> + * SDRAM controller
-> + * Timer device (re-used from Allwinner A10)
-> + * UART
-> + * SD/MMC storage controller
-> + * EMAC ethernet
-> + * GMAC ethernet
-> + * Clock Control Unit
-> + * TWI (I2C)
-> +
-> +Limitations
-> +"""""""""""
-> +
-> +Currently, Banana Pi M2U does *not* support the following features:
-> +
-> +- Graphical output via HDMI, GPU and/or the Display Engine
-> +- Audio output
-> +- Hardware Watchdog
-> +- Real Time Clock
-> +- USB 2.0 interfaces
-> +
-> +Also see the 'unimplemented' array in the Allwinner R40 SoC module
-> +for a complete list of unimplemented I/O devices:
-> ``./hw/arm/allwinner-r40.c``
-> +
-> +Boot options
-> +""""""""""""
-> +
-> +The Banana Pi M2U machine can start using the standard -kernel
-> functionality
-> +for loading a Linux kernel or ELF executable. Additionally, the Banana P=
-i
-> M2U
-> +machine can also emulate the BootROM which is present on an actual
-> Allwinner R40
-> +based SoC, which loads the bootloader from a SD card, specified via the
-> -sd
-> +argument to qemu-system-arm.
-> +
-> +Running mainline Linux
-> +""""""""""""""""""""""
-> +
-> +To build a Linux mainline kernel that can be booted by the Banana Pi M2U
-> machine,
-> +simply configure the kernel using the sunxi_defconfig configuration:
-> +
-> +.. code-block:: bash
-> +
-> +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper
-> +  $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_defconfig
-> +
-> +To boot the newly build linux kernel in QEMU with the Banana Pi M2U
-> machine, use:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M bpim2u -nographic \
-> +      -kernel /path/to/linux/arch/arm/boot/zImage \
-> +      -append 'console=3DttyS0,115200' \
-> +      -dtb
-> /path/to/linux/arch/arm/boot/dts/sun8i-r40-bananapi-m2-ultra.dtb
-> +
-> +Banana Pi M2U images
-> +""""""""""""""""""""
-> +
-> +Note that the mainline kernel does not have a root filesystem. You can
-> choose
-> +to build you own image with buildroot using the
-> bananapi_m2_ultra_defconfig.
-> +Also see https://buildroot.org for more information.
-> +
-> +Another possibility is to run an OpenWrt image for Banana Pi M2U which
-> +can be downloaded from:
-> +
-> +   https://downloads.openwrt.org/releases/22.03.3/targets/sunxi/cortexa7=
-/
-> +
-> +When using an image as an SD card, it must be resized to a power of two.
-> This can be
-> +done with the ``qemu-img`` command. It is recommended to only increase
-> the image size
-> +instead of shrinking it to a power of two, to avoid loss of data. For
-> example,
-> +to prepare a downloaded Armbian image, first extract it and then increas=
-e
-> +its size to one gigabyte as follows:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-img resize \
-> +
-> openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img=
- \
-> +    1G
-> +
-> +Instead of providing a custom Linux kernel via the -kernel command you
-> may also
-> +choose to let the Banana Pi M2U machine load the bootloader from SD card=
-,
-> just like
-> +a real board would do using the BootROM. Simply pass the selected image
-> via the -sd
-> +argument and remove the -kernel, -append, -dbt and -initrd arguments:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M bpim2u -nic user -nographic \
-> +    -sd
-> openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img
-> +
-> +Running U-Boot
-> +""""""""""""""
-> +
-> +U-Boot mainline can be build and configured using the
-> Bananapi_M2_Ultra_defconfig
-> +using similar commands as describe above for Linux. Note that it is
-> recommended
-> +for development/testing to select the following configuration setting in
-> U-Boot:
-> +
-> +  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
-> +
-> +The BootROM of allwinner R40 loading u-boot from the 8KiB offset of
-> sdcard.
-> +Let's create an bootable disk image:
-> +
-> +.. code-block:: bash
-> +
-> +  $ dd if=3D/dev/zero of=3Dsd.img bs=3D32M count=3D1
-> +  $ dd if=3Du-boot-sunxi-with-spl.bin of=3Dsd.img bs=3D1k seek=3D8 conv=
-=3Dnotrunc
-> +
-> +And then boot it.
-> +
-> +.. code-block:: bash
-> +  $ qemu-system-arm -M bpim2u -nographic -sd sd.img
-> +
-> +Banana Pi M2U integration tests
-> +""""""""""""""""""""""""""""""
-> +
-> +The Banana Pi M2U machine has several integration tests included.
-> +To run the whole set of tests, build QEMU from source and simply
-> +provide the following command:
-> +
-> +.. code-block:: bash
-> +
-> +  $ cd qemu-build-dir
-> +  $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \
-> +    --verbose --show=3Dapp,console run -t machine:bpim2u \
-> +    ../tests/avocado/boot_linux_console.py
-> --
-> 2.25.1
->
->
-
---=20
-Niek Linnenbank
-
---000000000000e0f7f605fbc13290
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
-mail_attr">On Wed, May 10, 2023 at 12:31=E2=80=AFPM &lt;<a href=3D"mailto:q=
-ianfanguijin@163.com" target=3D"_blank">qianfanguijin@163.com</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
-8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">From: qianfan =
-Zhao &lt;<a href=3D"mailto:qianfanguijin@163.com" target=3D"_blank">qianfan=
-guijin@163.com</a>&gt;<br>
-<br>
-Add documents for Banana Pi M2U<br>
-<br>
-Signed-off-by: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163.com" ta=
-rget=3D"_blank">qianfanguijin@163.com</a>&gt;<br></blockquote><div>Reviewed=
--by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">niekli=
-nnenbank@gmail.com</a>&gt;<br></div><div>=C2=A0</div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">
----<br>
-=C2=A0docs/system/arm/bananapi_m2u.rst | 138 ++++++++++++++++++++++++++++++=
-+<br>
-=C2=A01 file changed, 138 insertions(+)<br>
-=C2=A0create mode 100644 docs/system/arm/bananapi_m2u.rst<br>
-<br>
-diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2=
-u.rst<br>
-new file mode 100644<br>
-index 0000000000..ae7194a9df<br>
---- /dev/null<br>
-+++ b/docs/system/arm/bananapi_m2u.rst<br>
-@@ -0,0 +1,138 @@<br>
-+Banana Pi BPI-M2U (``bpim2u``)<br>
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br>
-+<br>
-+Banana Pi BPI-M2 Ultra is a quad-core mini single board computer built wit=
-h<br>
-+Allwinner A40i/R40/V40 SoC. It features 2GB of RAM and 8GB eMMC. It also<b=
-r></blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
-x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-+has onboard WiFi and BT. On the ports side, the BPI-M2 Ultra has 2 USB A<b=
-r>
-+2.0 ports, 1 USB OTG port, 1 HDMI port, 1 audio jack, a DC power port,<br>
-+and last but not least, a SATA port.<br>
-+<br>
-+Supported devices<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
-uot;&quot;&quot;&quot;&quot;<br>
-+<br>
-+The Banana Pi M2U machine supports the following devices:<br>
-+<br>
-+ * SMP (Quad Core Cortex-A7)<br>
-+ * Generic Interrupt Controller configuration<br>
-+ * SRAM mappings<br>
-+ * SDRAM controller<br>
-+ * Timer device (re-used from Allwinner A10)<br>
-+ * UART<br>
-+ * SD/MMC storage controller<br>
-+ * EMAC ethernet<br>
-+ * GMAC ethernet<br>
-+ * Clock Control Unit<br>
-+ * TWI (I2C)<br>
-+<br>
-+Limitations<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;<br>
-+<br>
-+Currently, Banana Pi M2U does *not* support the following features:<br>
-+<br>
-+- Graphical output via HDMI, GPU and/or the Display Engine<br>
-+- Audio output<br>
-+- Hardware Watchdog<br>
-+- Real Time Clock<br>
-+- USB 2.0 interfaces<br>
-+<br>
-+Also see the &#39;unimplemented&#39; array in the Allwinner R40 SoC module=
-<br>
-+for a complete list of unimplemented I/O devices: ``./hw/arm/allwinner-r40=
-.c``<br>
-+<br>
-+Boot options<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;<b=
-r>
-+<br>
-+The Banana Pi M2U machine can start using the standard -kernel functionali=
-ty<br>
-+for loading a Linux kernel or ELF executable. Additionally, the Banana Pi =
-M2U<br>
-+machine can also emulate the BootROM which is present on an actual Allwinn=
-er R40<br>
-+based SoC, which loads the bootloader from a SD card, specified via the -s=
-d<br>
-+argument to qemu-system-arm.<br>
-+<br>
-+Running mainline Linux<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
-uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;<br>
-+<br>
-+To build a Linux mainline kernel that can be booted by the Banana Pi M2U m=
-achine,<br>
-+simply configure the kernel using the sunxi_defconfig configuration:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make mrproper<br>
-+=C2=A0 $ ARCH=3Darm CROSS_COMPILE=3Darm-linux-gnueabi- make sunxi_defconfi=
-g<br>
-+<br>
-+To boot the newly build linux kernel in QEMU with the Banana Pi M2U machin=
-e, use:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ qemu-system-arm -M bpim2u -nographic \<br>
-+=C2=A0 =C2=A0 =C2=A0 -kernel /path/to/linux/arch/arm/boot/zImage \<br>
-+=C2=A0 =C2=A0 =C2=A0 -append &#39;console=3DttyS0,115200&#39; \<br>
-+=C2=A0 =C2=A0 =C2=A0 -dtb /path/to/linux/arch/arm/boot/dts/sun8i-r40-banan=
-api-m2-ultra.dtb<br>
-+<br>
-+Banana Pi M2U images<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
-uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;<br>
-+<br>
-+Note that the mainline kernel does not have a root filesystem. You can cho=
-ose<br>
-+to build you own image with buildroot using the bananapi_m2_ultra_defconfi=
-g.<br>
-+Also see <a href=3D"https://buildroot.org" rel=3D"noreferrer" target=3D"_b=
-lank">https://buildroot.org</a> for more information.<br>
-+<br>
-+Another possibility is to run an OpenWrt image for Banana Pi M2U which<br>
-+can be downloaded from:<br>
-+<br>
-+=C2=A0 =C2=A0<a href=3D"https://downloads.openwrt.org/releases/22.03.3/tar=
-gets/sunxi/cortexa7/" rel=3D"noreferrer" target=3D"_blank">https://download=
-s.openwrt.org/releases/22.03.3/targets/sunxi/cortexa7/</a><br>
-+<br>
-+When using an image as an SD card, it must be resized to a power of two. T=
-his can be<br>
-+done with the ``qemu-img`` command. It is recommended to only increase the=
- image size<br>
-+instead of shrinking it to a power of two, to avoid loss of data. For exam=
-ple,<br>
-+to prepare a downloaded Armbian image, first extract it and then increase<=
-br>
-+its size to one gigabyte as follows:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ qemu-img resize \<br>
-+=C2=A0 =C2=A0 openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ex=
-t4-sdcard.img \<br>
-+=C2=A0 =C2=A0 1G<br>
-+<br>
-+Instead of providing a custom Linux kernel via the -kernel command you may=
- also<br>
-+choose to let the Banana Pi M2U machine load the bootloader from SD card, =
-just like<br>
-+a real board would do using the BootROM. Simply pass the selected image vi=
-a the -sd<br>
-+argument and remove the -kernel, -append, -dbt and -initrd arguments:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ qemu-system-arm -M bpim2u -nic user -nographic \<br>
-+=C2=A0 =C2=A0 -sd openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultr=
-a-ext4-sdcard.img<br>
-+<br>
-+Running U-Boot<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
-uot;&quot;<br>
-+<br>
-+U-Boot mainline can be build and configured using the Bananapi_M2_Ultra_de=
-fconfig<br>
-+using similar commands as describe above for Linux. Note that it is recomm=
-ended<br>
-+for development/testing to select the following configuration setting in U=
--Boot:<br>
-+<br>
-+=C2=A0 Device Tree Control &gt; Provider for DTB for DT Control &gt; Embed=
-ded DTB<br>
-+<br>
-+The BootROM of allwinner R40 loading u-boot from the 8KiB offset of sdcard=
-.<br>
-+Let&#39;s create an bootable disk image:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ dd if=3D/dev/zero of=3Dsd.img bs=3D32M count=3D1<br>
-+=C2=A0 $ dd if=3Du-boot-sunxi-with-spl.bin of=3Dsd.img bs=3D1k seek=3D8 co=
-nv=3Dnotrunc<br>
-+<br>
-+And then boot it.<br>
-+<br>
-+.. code-block:: bash<br>
-+=C2=A0 $ qemu-system-arm -M bpim2u -nographic -sd sd.img<br>
-+<br>
-+Banana Pi M2U integration tests<br>
-+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&q=
-uot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot=
-;&quot;&quot;&quot;&quot;&quot;<br>
-+<br>
-+The Banana Pi M2U machine has several integration tests included.<br>
-+To run the whole set of tests, build QEMU from source and simply<br>
-+provide the following command:<br>
-+<br>
-+.. code-block:: bash<br>
-+<br>
-+=C2=A0 $ cd qemu-build-dir<br>
-+=C2=A0 $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \<br>
-+=C2=A0 =C2=A0 --verbose --show=3Dapp,console run -t machine:bpim2u \<br>
-+=C2=A0 =C2=A0 ../tests/avocado/boot_linux_console.py<br>
--- <br>
-2.25.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span>-- </span><br><div dir=3D"lt=
-r"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
-
---000000000000e0f7f605fbc13290--

@@ -1,108 +1,135 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp651855ejq;
-        Tue, 16 May 2023 13:15:25 -0700 (PDT)
-X-Received: by 2002:a05:6a20:4312:b0:fd:e806:9c95 with SMTP id h18-20020a056a20431200b000fde8069c95mr46271452pzk.13.1684268125205;
-        Tue, 16 May 2023 13:15:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684268125; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp659436ejq;
+        Tue, 16 May 2023 13:31:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5yYj3fRohWUTfqU6HganElVq2pyMo3ARih2Udz1/xu08W8L4oYdx7fdNqxnXNnbxxlY2g3
+X-Received: by 2002:a05:6a00:2289:b0:625:fe95:f120 with SMTP id f9-20020a056a00228900b00625fe95f120mr53397493pfe.8.1684269100315;
+        Tue, 16 May 2023 13:31:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684269100; cv=none;
         d=google.com; s=arc-20160816;
-        b=j/xcxbJ3IRu9Whv7mhRrU304ywlk+esJ0QkIrYePxwgXb9m9D2HmLZnEsRMaHxuFB1
-         T/02YL5Rp8byTWMov4phMZXBumMnTCLiHTEzhumvdVawUyx6fNGfVQd0j0T/tNlZDizU
-         Sd72EKxxe/6U1Lau29jou+gyu2e6Rq+noApXyNktBxsEguz0WC9BVXkm1ddgMobUWPxj
-         P3o5gz6ZuLw+Th+HodLNoQYrjTyemUD6pXSpRV3LyFaJ9l3EFS6Dif0hShqOr4oLZ8nR
-         0mmMIw4fwlcRI1BTN5zmeZeqFifgZu1XDsy4w4BU6BVdOP6Qo2OMc1hybIAqbHRRqxok
-         WlnA==
+        b=z6d+hyixlSY6sbmzLkRIMaI0zFkpcbaWgCs8simfkLJqZFArL580juK0zeFD8PJmuk
+         J+K0M0lQYIedEhUbxd+7opbJCz5i+1Z4rWBVkAwuUiSGIBW5GBMs0n4ixfbup9go+aRb
+         3UFH2pwBbvNlJQxYBbhx5OEyUjLnaKyjqyv/bM1x/qWYZo/c4K9Cd6dyyI12IEDbzn/4
+         N2lw6X+p78DL2tclxJhTbK6HqYBcKiCjfVzhiX2zSf7oHPXxbdHtk5b1GXIpLLURenrp
+         HN745Wuxi6TCOyIF+G8Ny6ZV69d/iFXI7lQfeUL9+SGspP3gNa8n4/U/W2GzsnnwBjPt
+         7nDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6ALXpJK+7DvrwDIzFYeRW/niyeZZakhY3E0cVXl3WYM=;
-        b=w8noiwPx9NE+5S5FrZj9N5JfZjyN+dJVxKE0XE7N/RZRB9ob782tTEuPTqxbzmu7qW
-         JhUkuPsRGGYujN07ly843MsETfMTLTz118FRzXLuoJYEPVByo4IfQJzdsJ6q7PM5eBay
-         bKJI1GTXtmdyH4dNV/533y7kultLhjF3CmjzxdblZ67mY2HvsQ4zh6sSSvgdqqBXuYZ1
-         IbuA4S+gcaxMl0KuVh0ckdwhV/Fqlum3MUKte2qGhLq1CXkJ/EPvLcO81/11XnT5gONN
-         UoLRLFKpDTTanFcJsIc+MK+FOEiHfutRG79WZKSfIoJ/KyT1pyPtX/bVrTtJsOvk5ZDb
-         gmTA==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=/HYphPqsQCx/mNqQgAGncflo4HLMvbGDxz2/uuT5K4M=;
+        b=NlHvUug95b+cZxHrJ3/BvoFWtyueeF9pbHP/05ZzR1Gde4iLTdA3hwXLly0F/fFSZ+
+         vAx7fc+8Xdtn8I0yzlmC7soLuSdrSSLo8z5ifq46U/TSBj0s1tlsS4uLpbhhDbsb6BV0
+         M/E4LmEqb9TLuykjkDGyag2eOubziAtKa37xlKQVLov0oy+4ZKinpxmHFqRjCrQzn+AY
+         K0ojlmmMhHsUKimOWyCwaoH3AoDtgXRFaZXsUVLKQeS42qN+rouB5GyqJxRPPqc3h3Nq
+         2vAUQhezCG5e4nfBgmB1/4dkrQaK2LSfzcdYcr82hVXtyX9qMbBfELBXkyAZpT10XGCg
+         6RpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TwFDu7rt;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qD1KUvAg;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u29-20020a056a00099d00b006410a665f89sor15032402pfg.5.2023.05.16.13.15.25
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 16 May 2023 13:15:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id k136-20020a62848e000000b0064ca097f6b8si6418630pfd.225.2023.05.16.13.31.40;
+        Tue, 16 May 2023 13:31:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TwFDu7rt;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qD1KUvAg;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229865AbjEPUbj (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 16 May 2023 16:31:39 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:51568 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229796AbjEPUbi (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 16 May 2023 16:31:38 -0400
+Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com [IPv6:2607:f8b0:4864:20::42c])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id DB9C5902C
+        for <kvm@vger.kernel.org>; Tue, 16 May 2023 13:31:32 -0700 (PDT)
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-643ac91c51fso9597331b3a.1
+        for <kvm@vger.kernel.org>; Tue, 16 May 2023 13:31:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684268125; x=1686860125;
+        d=linaro.org; s=google; t=1684269092; x=1686861092;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=6ALXpJK+7DvrwDIzFYeRW/niyeZZakhY3E0cVXl3WYM=;
-        b=TwFDu7rtTa6LjGV++Bmgn0r85y2wxsc/aPLH/Zpw7De2yW5hH+Lg/QO/5yERz2kUY4
-         ebJvrPOFPO9yz8+fcNr8S9q3e6fCXrac1l6ohI7dA7QSg816wFMeypJ6C4MidAcnCtsT
-         zZ248FZwHW6lY7ePbckCNCv835K8u3Cmvt0w2BEV7Z06OB0LDAMt0PchxgOFaQLEzBbg
-         /4lzU5rLBWwoHKY0YmirOMPdiRMw7GSph1os+jWA5YXrDv+l/ywAzD+N+UR2bvA8oulL
-         j4t3kbpu3WDXsoPxIlll0MkOiutVZZ4SHsccRNacd5ACaP0oyVRE+ILNYtTZ8i5K/gR4
-         630Q==
+        bh=/HYphPqsQCx/mNqQgAGncflo4HLMvbGDxz2/uuT5K4M=;
+        b=qD1KUvAg6109bSI+noOTiDSsowYyo+TrgzHk1Y508Zpqs3aRYKJSkQH+i6ilRA9w++
+         SV9o74uqr+V18EexdQK1qTk5rhGfiFUOuTHH1oh9f1UIfTb586A8M15GoEj9U8Bv816A
+         ATK759h0TNvNoTQECL6iIddtUUIQRcwbfU1e/shDEnWK8hMPrsfaVstr+V8CESTZuHei
+         a7/0BhqgMedhxIg/lwwUFA4nXuLcWhtIBL1CoR1v+HtwX8QTfMaU7al5ivABBUB+0Co9
+         0lEXoM1LIPn/7CJTrpkmhgmAbyyH/39F1VCemA21wjRuCGdVYZA77A/f59FmKUe2OnpB
+         vaGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684268125; x=1686860125;
+        d=1e100.net; s=20221208; t=1684269092; x=1686861092;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6ALXpJK+7DvrwDIzFYeRW/niyeZZakhY3E0cVXl3WYM=;
-        b=e12naM2oVK4nxUbEqEwlrfShE7NpHTfV7C2E3vd4/rdjrWWhSaJXTLgjBLpRHV3MNS
-         iPj7i/pbltzjDXk7CLMHoW6+TVQS6rG95nAeZHQzECoXPUu3nnom5bsauSW88v664kbl
-         SYclGL3oBBs2QAwfJDbLr3G+75GDQeSPvFy99k/PtY90Ps7Wyr9q7Ms6kQbIjj02KwtV
-         p25QD7qANrkeU8+2I06EMgP34USw/47jsXd8haZ91Pgi97N+9Vq6/udJFqVP0inqsUCf
-         t52H4AwxEgmtA/ajxhrYFtJ1ARjTGtMEJD53ZCvWh6+euPfqJNpjaZ5WjQbVtr0ZZjBt
-         jOnQ==
-X-Gm-Message-State: AC+VfDxb4dOiwk95CWTaQ+2vqzVVRHUAVd8g8ZgyzPQffKVpXWQhqQck
-	lCmhsVo2dMcEGOu7oXI+ELrkh9u10piS2YbhpHRD1w==
-X-Google-Smtp-Source: ACHHUZ4Ve8SjrPj1cbkCmbn54jgjwpggfpu5pCqPbikKnjRUM2L9WXbSWXX9SP/P5C9hviilOsMZkg==
-X-Received: by 2002:a05:6a00:2408:b0:63f:18ae:1d5f with SMTP id z8-20020a056a00240800b0063f18ae1d5fmr49249310pfh.29.1684268124728;
-        Tue, 16 May 2023 13:15:24 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
+        bh=/HYphPqsQCx/mNqQgAGncflo4HLMvbGDxz2/uuT5K4M=;
+        b=V4YmMkcH/AhI9NmhQaNOjaLvwrS4968SlVtVmaR3J+qUJ5MmtxcaxOyZrLlaW5GUb+
+         8PL8LtxNfZEw0ICePNigxFjRMoz+xR6TNLxqIFxHxgq/33rk+808iST0LLtZImHryLrd
+         LLsvZkOtmQt4BY/JjZ/0o1oj3UbLc/7cNqm0Yum3pFLlXigArmc5VorEi5PSN87xPGIj
+         TD3J5I9iG8G4Z4EC92n5aKyU7F3IDg5JibSeAypYozmIIxFxDsp+JrQH7Ge2ORwLp6hz
+         rNlImz2kObb1y0nauzFkfqo9As+/68EbqFIPMej59kKCWQyrsuMcxtdrQ65ketWzCtoD
+         VqNg==
+X-Gm-Message-State: AC+VfDzdR6FHWYHYzKFd8gAIBlFHdDXnk2juJyj6pn/ixmHkJTs+iK1Z
+        iPO+fa0CffCM7qGFlhg5OQfUTA==
+X-Received: by 2002:a05:6a20:3d87:b0:101:e680:d423 with SMTP id s7-20020a056a203d8700b00101e680d423mr30678831pzi.28.1684269092286;
+        Tue, 16 May 2023 13:31:32 -0700 (PDT)
 Received: from ?IPV6:2602:ae:1598:4c01:ec81:440e:33a4:40b9? ([2602:ae:1598:4c01:ec81:440e:33a4:40b9])
-        by smtp.gmail.com with ESMTPSA id x20-20020aa793b4000000b0063d2bb0d107sm13886101pff.64.2023.05.16.13.15.23
+        by smtp.gmail.com with ESMTPSA id c20-20020a62e814000000b0063b8ddf77f7sm13581301pfi.211.2023.05.16.13.31.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 May 2023 13:15:24 -0700 (PDT)
-Message-ID: <91729126-1e70-2d80-88f4-c636199dba6a@linaro.org>
-Date: Tue, 16 May 2023 13:15:22 -0700
+        Tue, 16 May 2023 13:31:31 -0700 (PDT)
+Message-ID: <db06ccfc-fcf7-3ab9-d114-8f4285f58e73@linaro.org>
+Date:   Tue, 16 May 2023 13:31:29 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [RFC PATCH] target/arm: add RAZ/WI handling for DBGDTR[TX|RX]
+Subject: Re: [PATCH v7 1/1] arm/kvm: add support for MTE
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Anders Roxell <anders.roxell@linaro.org>,
- Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230516104420.407912-1-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230516104420.407912-1-alex.bennee@linaro.org>
+To:     Cornelia Huck <cohuck@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Cc:     qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Eric Auger <eauger@redhat.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Gavin Shan <gshan@redhat.com>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+        Andrea Bolognani <abologna@redhat.com>
+References: <20230428095533.21747-1-cohuck@redhat.com>
+ <20230428095533.21747-2-cohuck@redhat.com>
+From:   Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230428095533.21747-2-cohuck@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: gmJQfvEvIvHN
+Content-Transfer-Encoding: 7bit
+X-Spam-Status: No, score=-4.8 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: uPTqJKXlHhcW
 
-On 5/16/23 03:44, Alex Bennée wrote:
-> The commit b3aa2f2128 (target/arm: provide stubs for more external
-> debug registers) was added to handle HyperV's unconditional usage of
-> Debug Communications Channel. It turns out that Linux will similarly
-> break if you enable CONFIG_HVC_DCC "ARM JTAG DCC console".
+On 4/28/23 02:55, Cornelia Huck wrote:
+> Extend the 'mte' property for the virt machine to cover KVM as
+> well. For KVM, we don't allocate tag memory, but instead enable the
+> capability.
 > 
-> Extend the registers we RAZ/WI set to avoid this.
+> If MTE has been enabled, we need to disable migration, as we do not
+> yet have a way to migrate the tags as well. Therefore, MTE will stay
+> off with KVM unless requested explicitly.
 > 
-> Cc: Anders Roxell<anders.roxell@linaro.org>
-> Cc: Evgeny Iakovlev<eiakovlev@linux.microsoft.com>
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> Signed-off-by: Cornelia Huck<cohuck@redhat.com>
 > ---
->   target/arm/debug_helper.c | 11 +++++++++--
->   1 file changed, 9 insertions(+), 2 deletions(-)
+>   hw/arm/virt.c        | 69 +++++++++++++++++++++++++-------------------
+>   target/arm/cpu.c     |  9 +++---
+>   target/arm/cpu.h     |  4 +++
+>   target/arm/kvm.c     | 35 ++++++++++++++++++++++
+>   target/arm/kvm64.c   |  5 ++++
+>   target/arm/kvm_arm.h | 19 ++++++++++++
+>   6 files changed, 107 insertions(+), 34 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

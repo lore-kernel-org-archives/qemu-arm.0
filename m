@@ -1,129 +1,112 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp921309ejq;
-        Wed, 17 May 2023 01:08:23 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6AXChLUiJ+rffEaoeBKTKaCHjVqRi8FNAEBErNigEnVm2FdHTtwaQ8/hB48h51M9ngz7B+
-X-Received: by 2002:a05:622a:1792:b0:3f4:f306:ce60 with SMTP id s18-20020a05622a179200b003f4f306ce60mr30052881qtk.20.1684310903502;
-        Wed, 17 May 2023 01:08:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684310903; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp923438ejq;
+        Wed, 17 May 2023 01:13:16 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5xXAhdxt6MKC6eB2Y7rA62aJwjIrOYJWn9ONFopY84WycYPgGe0MgwjTdou0XLnj8TAu84
+X-Received: by 2002:a05:6214:493:b0:623:3f92:36f8 with SMTP id pt19-20020a056214049300b006233f9236f8mr33731846qvb.23.1684311195959;
+        Wed, 17 May 2023 01:13:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684311195; cv=none;
         d=google.com; s=arc-20160816;
-        b=ni6aft5NSrqZRWda3Tkei6AUKcospwnI2+iUTGVyXbB3iaZJEIpnRONuky6v1oacsB
-         ljRTawWBhjIDwzIO++Jofha1Ryws6pAoacvmQe7II3OcYQ1+XyMpivkcOYCzeziXb3j4
-         Kd0am83FmsV/iRArcYxLTUJ4Su7WaJ6t8LCcEWMW6sA7Z0ciQOCqYohy/hhm1q/pmb9D
-         yAUrpA55XfLry/uste6Jlx11PYvZ2sv+VhtnnQM4ureVKA1+rMyxdPjVsVxPvP0PKk5x
-         C52KmwLsREtn14dv5UycvYhqyO811uGyBdemibeTClr9Qp1rxWnm4xmaOTpTADXD8iFJ
-         9jyg==
+        b=ghUws9bhj7M412ShH+3fAkdANja2JrT5cATgBbQDlhdzUfF4qELwZwsDTwJrsd7rtL
+         ngfTs0vZ2Nww42aUqrLeOer9cUi9GZbSQexvNT23HXHdRG8XF6snUS7Zvu94PLbz0AY0
+         ccKpthyJmtHhbPtO/8+ehh27DPNmUk2UbTkWZ5iNboI2fc6fozml7a9P8dZZpVueO9g1
+         1rpD611wZaWn1E1Tedm3PwpMd3WtflDijJfYQ/CnOL20XfEDt5P840lJigB37jjla4iN
+         40FvxcDBQdRbhJojoXwQmLQ1AzsYRED/Y+t36VcBBFHRNSnkOz5Y+8sQTizIEy0M1Nik
+         oShQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=crjoW7avdTpIm2XDBY8clW81TOXWziTWlWiauHdqJhg=;
-        b=jXn/tsnKVLDhnPXGtl+xnNDyeKM4mG6nQIM4ByTMl5Ki0DgmMr2Lpb436jrkrs3rfy
-         fABZPO3yGAqFD5EI7vGztRfQqJ8t9rMdNpj+k1wvCecX9Gqr30DMKFSiRqGqP/WfJ6pq
-         o/tOn7Z6tMYMwWxxAF12cEVZ5z5T1d0s1IzmWWr4k1PYxFGxqKD8qAeaXLOPwCm2yPS4
-         2wXT1zLoTH7hXDQ1UpbXEpn+RUSZBUQVuHaU1v05/QgUuW2Yi/Ya++e8oCjG0JCDhWlS
-         6eUiMYFOAaOCi+DVP4dW/KMS8VygPdkrWQzGn/ldDrp3vnp+nG4GTm/W55pvSaiDPR+a
-         ZvEg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=+4H4TLD9Tgw1VSAkuUmuXqvaTIifJo+7xd82yABLyRs=;
+        b=lXc8aQJXsKgYvgSF2AZR0UbFvyFG7qaby8vZ3jzQrB5dbZog2pOBWXcObfoP0X5+Ik
+         Bw7Kj0Ih6YiTZKRX16bkfeLAKnJ9nUJ9szhPNpsRmkYD5fa+4ti2o/iAr4oXc+U4koLm
+         9aLKkwBNKlLUQi2su9eyjIaxn95qXnPqhTJfL4YBFS5mBaBL0eCQBBGzWlTqluIooR/V
+         +1XgIrgpMxMxvJJA2lXAGjHkItd4tsjhoY6waknSXdPVzPo+GGD6fenSmDVyTMJw02ry
+         aEcMsAUFNpgoA2dB0+/b7TseT/J8DnMqIPmFuRAA+tiUe+E2mMab6MAE8fSss9qL7uRI
+         +siw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q7KhIO0L;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Q6CgS3Rd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20-20020a05622a13d400b003f38cae8726si12543088qtk.691.2023.05.17.01.08.23
+        by mx.google.com with ESMTPS id d16-20020a05620a159000b007577d7795bdsi1014234qkk.472.2023.05.17.01.13.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 May 2023 01:08:23 -0700 (PDT)
+        Wed, 17 May 2023 01:13:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q7KhIO0L;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Q6CgS3Rd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pzC7m-0004tv-EX; Wed, 17 May 2023 04:03:06 -0400
+	id 1pzCGi-0005iV-Kj; Wed, 17 May 2023 04:12:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pzC7j-0004kD-If
- for qemu-devel@nongnu.org; Wed, 17 May 2023 04:03:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1pzC7h-00013H-8Q
- for qemu-devel@nongnu.org; Wed, 17 May 2023 04:03:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684310580;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=crjoW7avdTpIm2XDBY8clW81TOXWziTWlWiauHdqJhg=;
- b=Q7KhIO0LscrG2qM8sX16OvZryKhsP93n1+5OLLNO3EdVwAID/LycIg5pY5e+04tFCUwykL
- ZGRdJYEbNQXm6QJLD02Xsfo/N4wqsAUseLrhMOGJ6tFVgvDFLMXUBRTvoCQDUgB1+BpV/P
- yfXdXX6O9v/JD/YKhUFVykoq8SudYM4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-634-anxfazdbM2CgJcroGrJWaQ-1; Wed, 17 May 2023 04:02:59 -0400
-X-MC-Unique: anxfazdbM2CgJcroGrJWaQ-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-3f509037a45so38861985e9.1
- for <qemu-devel@nongnu.org>; Wed, 17 May 2023 01:02:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
+ id 1pzCGe-0005eN-T5; Wed, 17 May 2023 04:12:17 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
+ id 1pzCGb-0003II-Sm; Wed, 17 May 2023 04:12:16 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-3f42bcf5df1so4349095e9.3; 
+ Wed, 17 May 2023 01:12:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1684311132; x=1686903132;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+4H4TLD9Tgw1VSAkuUmuXqvaTIifJo+7xd82yABLyRs=;
+ b=Q6CgS3RdJX4L3572tZ7hyDZT20H59gptV8LYkmDrFakNfF5OULVIRmIOSRlcrjH3B/
+ Ytk0BLqDyKaQ0pIFqkkmuxmd87aPDvM4dGXINjlTm9RLyDdDSi0q1700Xm0O9v/z1SFr
+ QOQC39ZSHq3CHfGA4XAtAZa2P9+9J3kStGRAMF/HAg2fS6FTXChV3rokLspND1L+xCcI
+ AA6oCiuY6tb10YhK11n2DY/DxIj4t6HKCZpDFNSIBdRuY0TntCMsEd2OhoP1XcLxo74K
+ drhYiMh2UTJUwdZsS0PfUqIZQm4hPVcob7x5wyXxg7rL6TbwgjrlLpNagvI2DCpRsQLH
+ WQdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684310578; x=1686902578;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=crjoW7avdTpIm2XDBY8clW81TOXWziTWlWiauHdqJhg=;
- b=Ud8+aL+unJ8mRnsD9FcqOGT3tUMA9I/QrfnNcK7dmHuj91EiQD/l5WU/mIAQGQHmTF
- ZBOEraUfLj/YYRl3tiZjFG1cKcV+pDQRKrzyg+ittLeaBFYMb0ZlZP2oRKcq5y3XAGSV
- oZM6QpT99C0D/8lUrp10Rt/4SQzO0Ipr/oA9zkKb8PP0aKJLzd97tzT48drWLkZncBKg
- umMHrT9BGGYKnoSBqsL4bXEY0Pvu2R48FtDtphgSv4CA/b9XjwxJTb8/581IWOHDEyn7
- bf9o84203kwHE91cxkzK8lzdWae2JIn5aLptjUMLMKmA14pK6awKKoFBahpVrUF5Lw/6
- Dbfg==
-X-Gm-Message-State: AC+VfDyETog++WAYg9SHN+/rmh8f67oSESAsN1zHOMzUsem+7BTPv6CJ
- 3q/RMFmceX0XBQbOTuixbJyGhX8QMEj/eNdngL3tYi9/TQ6RSLWwlJjpseuZ/rh9wFC8vyYsQLz
- 0kCjoZvqrAC+b4fU=
-X-Received: by 2002:a5d:595f:0:b0:307:869c:99ce with SMTP id
- e31-20020a5d595f000000b00307869c99cemr886904wri.21.1684310577723; 
- Wed, 17 May 2023 01:02:57 -0700 (PDT)
-X-Received: by 2002:a5d:595f:0:b0:307:869c:99ce with SMTP id
- e31-20020a5d595f000000b00307869c99cemr886887wri.21.1684310577385; 
- Wed, 17 May 2023 01:02:57 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- j9-20020a5d4489000000b00301a351a8d6sm1928808wrq.84.2023.05.17.01.02.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 May 2023 01:02:56 -0700 (PDT)
-Message-ID: <52608fc3-8f52-9cdc-6d92-6b6534587277@redhat.com>
-Date: Wed, 17 May 2023 10:02:55 +0200
+ d=1e100.net; s=20221208; t=1684311132; x=1686903132;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+4H4TLD9Tgw1VSAkuUmuXqvaTIifJo+7xd82yABLyRs=;
+ b=ktRr+Vl+jKzkncLrHKxCs5Yc2nTsE98E+l3KkM+nm7Rvmg+c8oCuGSscisfV6xOoVF
+ +Uyo4eXFFNAMsXXZJxzavwmoyciZ6Ca3YeknKAZQwIYg02caYlSXocM9g+zCFNmZr0Oo
+ ikK6O5ylpeYqI6sxI0nhcTdORLtf1H7UTw4HzTqSwmoCs0KLGhd7xgzjZHCAIoOG+p1p
+ Kn75rMmYyZRa/TTHb2oc3e5DFPTvI1SUL+yTvymm2k7uzTt54fzzABzEYG6kwTj0U6MY
+ frEE8XF+Gvp0I5dEq9zWg/Pw7nygoib51bLwI9gFG9GxkFaMBsMl6vKULbb9rhQeoZeo
+ CF+w==
+X-Gm-Message-State: AC+VfDzXKIRYvUFcM20HqE5h2W2nINryqA2DgBlCxz17s66vq0IXvEg4
+ G5WGsOtsJNOsE/kxgNfa/dUBdVPJpahnHA==
+X-Received: by 2002:a05:600c:3787:b0:3f4:2775:3f89 with SMTP id
+ o7-20020a05600c378700b003f427753f89mr21813453wmr.35.1684311131419; 
+ Wed, 17 May 2023 01:12:11 -0700 (PDT)
+Received: from i.. ([41.236.82.205]) by smtp.gmail.com with ESMTPSA id
+ o24-20020a1c7518000000b003f42158288dsm1414942wmc.20.2023.05.17.01.12.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 May 2023 01:12:11 -0700 (PDT)
+From: Mohamed ElSayed <m.elsayed4420@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Mohamed ElSayed <m.elsayed4420@gmail.com>
+Subject: [PATCH 1/8] The tivac board initial machine definition
+Date: Wed, 17 May 2023 11:11:57 +0300
+Message-Id: <20230517081204.30333-2-m.elsayed4420@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230517081204.30333-1-m.elsayed4420@gmail.com>
+References: <20230517081204.30333-1-m.elsayed4420@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v4 00/10] Add stage-2 translation for SMMUv3
-Content-Language: en-US
-To: Mostafa Saleh <smostafa@google.com>, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- richard.henderson@linaro.org
-References: <20230516203327.2051088-1-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230516203327.2051088-1-smostafa@google.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -47
-X-Spam_score: -4.8
-X-Spam_bar: ----
-X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.666, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=m.elsayed4420@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -137,129 +120,440 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q26aDt9tZqxL
+X-TUID: XYdEU/i32gPD
 
-Hi Mostafa,
+Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
+---
+ hw/arm/tivac.c                    |  56 ++++++
+ hw/arm/tm4c123gh6pm_soc.c         | 275 ++++++++++++++++++++++++++++++
+ include/hw/arm/tm4c123gh6pm_soc.h |  71 ++++++++
+ 3 files changed, 402 insertions(+)
+ create mode 100644 hw/arm/tivac.c
+ create mode 100644 hw/arm/tm4c123gh6pm_soc.c
+ create mode 100644 include/hw/arm/tm4c123gh6pm_soc.h
 
-On 5/16/23 22:33, Mostafa Saleh wrote:
-> This patch series adds stage-2 translation support for SMMUv3. It is
-> controlled by a new system property “arm-smmuv3.stage”.
-> - When set to “1”: Stage-1 only would be advertised and supported (default
-> behaviour)
-> - When set to “2”: Stage-2 only would be advertised and supported.
->
-> Features implemented in stage-2 are mostly synonymous with stage-1
-> - VMID16.
-> - Only AArch64 translation tables are supported.
-> - Only little endian translation table supported.
-> - Stall is not supported.
-> - HTTU is not supported, SW is expected to maintain the Access flag.
->
-> To make it easy to support nesting, a new structure(SMMUS2Cfg) is
-> embedded within SMMUTransCfg, to hold stage-2 configuration.
->
-> TLBs were updated to support VMID, where when stage-2 is used ASID is
-> set to -1 and ignored and when stage-1 is used VMID is set to -1 and
-> ignored.
-> As only one stage is supported at a time at the moment, TLB will
-> represent IPA=>PA translation with proper attributes(granularity and
-> t0sz) parsed from STEs for stage-2, and will represent VA=>PA
-> translation with proper attributes parsed from the CDs for stage-1.
->
-> New commands where added that are used with stage-2
-> - CMD_TLBI_S12_VMALL: Invalidate all translations for a VMID.
-> - CMD_TLBI_S2_IPA: Invalidate stage-2 by VMID and IPA
-> Some commands are illegal to be used from stage-2 were modified to
-> return CERROR_ILL.
->
-> This patch series can be used to run Linux pKVM SMMUv3 patches (currently on the list)
-> which controls stage-2 (from EL2) while providing a paravirtualized
-> interface the host(EL1)
-> https://lore.kernel.org/kvmarm/20230201125328.2186498-1-jean-philippe@linaro.org/
->
-> Looking forward, nesting is the next feature to go for, here are some
-> thoughts about this:
->
-> - TLB would require big changes for this, we can go either for a combined
-> implementation or per stage one. This would affect returns from PTW and
-> invalidation commands.
->
-> - Stage-1 data structures should be translated by stage-2 if enabled (as
-> context descriptors and ttb0/ttb1)
->
-> - Translated addresses from stage-1 should be translated by stage-2 if
-> enabled.
->
-> - Some existing commands(as CMD_TLBI_S2_IPA, CMD_TLBI_NH_ASID …) would be
-> modified and some of those would be based on the design of the TLBs.
->
-> - Currently, VMID is ignored when stage-1 is used as it can’t be used with
-> stage-2. However when nesting is advertised VMID shouldn’t be ignored
-> even if stage-2 is bypassed.
->
-> Changes in v4:
-> - Collected Reviewed-by tags
-> - Add SMMU_CMD_TLBI_S12_VMALL in a block to fix compilation issue
-> - Simplify record fault macro
-> - Remove references to "all" stage
->
-> Changes in v3:
-> - Collected Reviewed-by tags
-> - Separate stage-2 record faults from stage-1
-> - Fix input address check in stage-2 walk
-> - Fix shift in STE_S2HD, STE_S2HA, STE_S2S, STE_S2R
-> - Add more logs for illegal configs and commands.
-> - Rename SMMU translation macros to VMSA as they are not part of SMMU spec
-> - Rename stage-2 variables and functions (iova=>ipa, ap=>s2ap, ...)
-> - Rename oas in SMMUS2Cfg to eff_ps
-> - Improve comments (mention user manuals versions, field names)
->
-> Changes in v2:
-> -Collected Reviewed-by tags
-> -Add oas to SMMUS2Cfg, and use it in PTW
-> -Add stage member to to SMMUPTWEventInfo to differentiate stage-1 and
->  stage-2 PTW faults
-> -Move stage-2 knob to the last patch
-> -Add all STE parsing in one patch
-> -Pares and use S2PS and S2ENDI
-> -Split S2AFF patch over PTW and STE patches.
-> -Fix TLB aliasing issue
-> -Renaming and refactoring and rewording commits.
-> -Populate OAS based on PARANGE
-> -Add checks for stage-1 only commands
-> -Update trace events to hold translation stage, vmid when possible
-> -Remove feature flags for supported stages as they were redundant with IDR0
->
->
-> Mostafa Saleh (10):
->   hw/arm/smmuv3: Add missing fields for IDR0
->   hw/arm/smmuv3: Update translation config to hold stage-2
->   hw/arm/smmuv3: Refactor stage-1 PTW
->   hw/arm/smmuv3: Add page table walk for stage-2
->   hw/arm/smmuv3: Parse STE config for stage-2
->   hw/arm/smmuv3: Make TLB lookup work for stage-2
->   hw/arm/smmuv3: Add VMID to TLB tagging
->   hw/arm/smmuv3: Add CMDs related to stage-2
->   hw/arm/smmuv3: Add stage-2 support in iova notifier
->   hw/arm/smmuv3: Add knob to choose translation stage and enable stage-2
->
->  hw/arm/smmu-common.c         | 209 +++++++++++++++++---
->  hw/arm/smmu-internal.h       |  37 ++++
->  hw/arm/smmuv3-internal.h     |  12 +-
->  hw/arm/smmuv3.c              | 357 ++++++++++++++++++++++++++++++-----
->  hw/arm/trace-events          |  14 +-
->  include/hw/arm/smmu-common.h |  45 ++++-
->  include/hw/arm/smmuv3.h      |   4 +
->  7 files changed, 587 insertions(+), 91 deletions(-)
->
-I have tested the series against regression in S1 mode + migration.
-Feel free to add my
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
+diff --git a/hw/arm/tivac.c b/hw/arm/tivac.c
+new file mode 100644
+index 0000000000..5d917a8f9e
+--- /dev/null
++++ b/hw/arm/tivac.c
+@@ -0,0 +1,56 @@
++/*
++ * TivaC Board Implementation
++ *
++ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-clock.h"
++#include "qemu/error-report.h"
++#include "hw/arm/tm4c123gh6pm_soc.h"
++#include "hw/arm/boot.h"
++
++
++/* Main SYSCLK frequency in Hz (24MHz) */
++#define SYSCLK_FRQ 24000000ULL
++
++static void tivac_init(MachineState *machine)
++{
++    DeviceState *dev;
++    dev = qdev_new(TYPE_TM4C123GH6PM_SOC);
++
++    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++            machine->kernel_filename,
++            0, FLASH_SIZE);
++}
++
++static void tivac_machine_init(MachineClass *mc)
++{
++    mc->desc = "Tiva C (Cortex-M4)";
++    mc->init = tivac_init;
++}
++DEFINE_MACHINE("tivac", tivac_machine_init)
+diff --git a/hw/arm/tm4c123gh6pm_soc.c b/hw/arm/tm4c123gh6pm_soc.c
+new file mode 100644
+index 0000000000..3e61911bba
+--- /dev/null
++++ b/hw/arm/tm4c123gh6pm_soc.c
+@@ -0,0 +1,275 @@
++/*
++ * TM4C123GH6PM SoC
++ *
++ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++#include "hw/arm/boot.h"
++#include "exec/address-spaces.h"
++#include "hw/arm/tm4c123gh6pm_soc.h"
++#include "hw/qdev-properties.h"
++#include "hw/qdev-clock.h"
++#include "hw/misc/unimp.h"
++#include "sysemu/sysemu.h"
++
++static const uint32_t gpio_addrs[GPIO_COUNT] = {
++    0x40004000,
++    0x40005000,
++    0x40006000,
++    0x40007000,
++    0x40024000,
++    0x40025000
++};
++
++static const uint32_t usart_addrs[USART_COUNT] = {
++    0x4000C000,
++    0x4000D000,
++    0x4000E000,
++    0x4000F000,
++    0x40010000,
++    0x40011000,
++    0x40012000,
++    0x40013000
++};
++
++static const uint32_t wdt_addrs[WDT_COUNT] = {
++    0x40000000,
++    0x40001000
++};
++
++static const uint32_t gptm_addrs[GPTM_COUNT] = {
++    0x40030000,
++    0x40031000,
++    0x40032000,
++    0x40033000,
++    0x40034000,
++    0x40035000,
++    0x40036000,
++    0x40037000,
++    0x4003C800,
++    0x4003D000,
++    0x4003E000,
++    0x4003F000,
++};
++
++static const uint16_t usart_irqs[USART_COUNT] = {5, 6, 33, 59, 60, 61, 62, 63};
++static const uint16_t gpio_irqs[GPIO_COUNT] = {0, 1, 2, 3, 4, 30};
++static const uint16_t wdt_irqs[WDT_COUNT] = {18, 18};
++static const uint16_t gptm_irqs[GPTM_COUNT * 2] = {
++    19, 20, 21, 22, 23, 24, 35, 36, 70, 71, 92, 93,
++    94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105};
++
++static void tm4c123gh6pm_soc_initfn(Object *obj)
++{
++    int i;
++    TM4C123GH6PMState *s = TM4C123GH6PM_SOC(obj);
++
++    object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
++    object_initialize_child(obj, "sysctl", &s->sysctl, TYPE_TM4C123_SYSCTL);
++
++    for (i = 0; i < USART_COUNT; i++) {
++        object_initialize_child(obj, "usart[*]",
++                                &s->usart[i], TYPE_TM4C123_USART);
++    }
++
++    for (i = 0; i < GPIO_COUNT; i++) {
++        object_initialize_child(obj, "gpio[*]", &s->gpio[i], TYPE_TM4C123_GPIO);
++    }
++
++    for (i = 0; i < WDT_COUNT; i++) {
++        object_initialize_child(obj, "watchdog-timer[*]",
++                                &s->wdt[i], TYPE_TM4C123_WATCHDOG);
++    }
++
++    for (i = 0; i < GPTM_COUNT; i++) {
++        object_initialize_child(obj, "gptm[*]", &s->gptm[i], TYPE_TM4C123_GPTM);
++    }
++}
++
++static void tm4c123gh6pm_soc_realize(DeviceState *dev_soc, Error **errp)
++{
++    TM4C123GH6PMState *s = TM4C123GH6PM_SOC(dev_soc);
++    DeviceState *armv7m;
++    DeviceState *dev;
++    SysBusDevice *busdev;
++    int i;
++
++    MemoryRegion *system_memory = get_system_memory();
++
++    /* init flash memory */
++    memory_region_init_rom(
++            &s->flash, OBJECT(dev_soc),
++            "TM4C123GH6PM.flash", FLASH_SIZE, &error_fatal
++            );
++    memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->flash);
++
++    /* init sram and the sram alias region */
++    memory_region_init_ram(
++            &s->sram, OBJECT(dev_soc),
++            "TM4C123GH6PM.sram", SRAM_SIZE, &error_fatal);
++    memory_region_add_subregion(system_memory, SRAM_BASE_ADDRESS, &s->sram);
++
++    /* Init ARMv7m */
++    armv7m = DEVICE(&s->armv7m);
++    qdev_prop_set_uint32(armv7m, "num-irq", 138);
++    qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
++    qdev_connect_clock_in(armv7m, "cpuclk", s->sysctl.mainclk);
++    qdev_connect_clock_in(armv7m, "refclk", s->sysctl.mainclk);
++    object_property_set_link(OBJECT(&s->armv7m), "memory",
++            OBJECT(get_system_memory()), &error_abort);
++
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
++        return;
++    }
++
++    /* USART */
++    for (i = 0; i < USART_COUNT; i++) {
++        dev = DEVICE(&(s->usart[i]));
++        s->usart[i].sysctl = &s->sysctl;
++        qdev_prop_set_chr(dev, "chardev", serial_hd(i));
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usart[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, usart_addrs[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irqs[i]));
++    }
++
++    /* GPIO */
++    for (i = 0; i < GPIO_COUNT; i++) {
++        dev = DEVICE(&(s->gpio[i]));
++        s->gpio[i].sysctl = &s->sysctl;
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, gpio_addrs[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, gpio_irqs[i]));
++    }
++
++    /* Watchdog Timers */
++    for (i = 0; i < WDT_COUNT; i++) {
++        dev = DEVICE(&(s->wdt[i]));
++        s->wdt[i].sysctl = &s->sysctl;
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, wdt_addrs[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, wdt_irqs[i]));
++    }
++
++    /* General purpose timers */
++    int j = 0;
++    for (i = 0, j = 0; i < GPTM_COUNT; i++, j += 2) {
++        dev = DEVICE(&(s->gptm[i]));
++        s->gptm[i].sysctl = &s->sysctl;
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gptm[i]), errp)) {
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, gptm_addrs[i]);
++        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, gptm_irqs[j]));
++        sysbus_connect_irq(busdev, 1, qdev_get_gpio_in(armv7m, gptm_irqs[j + 1]));
++    }
++
++    /* SYSCTL */
++    dev = DEVICE(&(s->sysctl));
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysctl), errp)) {
++        return;
++    }
++    busdev = SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(busdev, 0, SYSCTL_ADDR);
++
++
++    create_unimplemented_device("SSI_0", 0x40008000, 0xFFF);
++    create_unimplemented_device("SSI_1", 0x40009000, 0xFFF);
++    create_unimplemented_device("SSI_2", 0x4000A000, 0xFFF);
++    create_unimplemented_device("SSI_3", 0x4000B000, 0xFFF);
++
++    create_unimplemented_device("I2C_0", 0x40020000, 0xFFF);
++    create_unimplemented_device("I2C_1", 0x40021000, 0xFFF);
++    create_unimplemented_device("I2C_2", 0x40022000, 0xFFF);
++    create_unimplemented_device("I2C_3", 0x40023000, 0xFFF);
++
++    create_unimplemented_device("PWM_0", 0x40028000, 0xFFF);
++    create_unimplemented_device("PWM_1", 0x40029000, 0xFFF);
++
++    create_unimplemented_device("QEI_0", 0x4002C000, 0xFFF);
++    create_unimplemented_device("QEI_1", 0x4002D000, 0xFFF);
++
++    create_unimplemented_device("ADC_0", 0x40038000, 0xFFF);
++    create_unimplemented_device("ADC_1", 0x40039000, 0xFFF);
++
++    create_unimplemented_device("ANALOG_CMP", 0x4003C000, 0xFFF);
++
++    create_unimplemented_device("CAN_0", 0x40040000, 0xFFF);
++    create_unimplemented_device("CAN_1", 0x40041000, 0xFFF);
++
++    create_unimplemented_device("USB", 0x40050000, 0xFFF);
++
++    create_unimplemented_device("GPIO_A_AHB", 0x40058000, 0xFFF);
++    create_unimplemented_device("GPIO_B_AHB", 0x40059000, 0xFFF);
++    create_unimplemented_device("GPIO_C_AHB", 0x4005A000, 0xFFF);
++    create_unimplemented_device("GPIO_D_AHB", 0x4005B000, 0xFFF);
++    create_unimplemented_device("GPIO_E_AHB", 0x4005C000, 0xFFF);
++    create_unimplemented_device("GPIO_F_AHB", 0x4005D000, 0xFFF);
++
++    create_unimplemented_device("EEPROM", 0x400AF000, 0xFFF);
++    create_unimplemented_device("SYS_EXC", 0x400F9000, 0xFFF);
++    create_unimplemented_device("HIBERNATION_MOD", 0x400FC000, 0xFFF);
++    create_unimplemented_device("FLASH_CONT", 0x400FD000, 0xFFF);
++    create_unimplemented_device("SYS_CONT", 0x400FE000, 0xFFF);
++
++    create_unimplemented_device("uDMA", 0x400FF000, 0xFFF);
++}
++
++static Property tm4c123gh6pm_soc_properties[] = {
++    DEFINE_PROP_STRING("cpu-type", TM4C123GH6PMState, cpu_type),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void tm4c123gh6pm_soc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = tm4c123gh6pm_soc_realize;
++    device_class_set_props(dc, tm4c123gh6pm_soc_properties);
++}
++
++static const TypeInfo tm4c123gh6pm_soc_info = {
++    .name          = TYPE_TM4C123GH6PM_SOC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TM4C123GH6PMState),
++    .instance_init = tm4c123gh6pm_soc_initfn,
++    .class_init    = tm4c123gh6pm_soc_class_init,
++};
++
++static void tm4c123gh6pm_soc_types(void)
++{
++    type_register_static(&tm4c123gh6pm_soc_info);
++}
++
++type_init(tm4c123gh6pm_soc_types)
+diff --git a/include/hw/arm/tm4c123gh6pm_soc.h b/include/hw/arm/tm4c123gh6pm_soc.h
+new file mode 100644
+index 0000000000..1841483a78
+--- /dev/null
++++ b/include/hw/arm/tm4c123gh6pm_soc.h
+@@ -0,0 +1,71 @@
++/*
++ * TM4C123GH6PM SoC
++ *
++ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_ARM_TM4C123GH6PM_SOC_H
++#define HW_ARM_TM4C123GH6PM_SOC_H
++
++#include "hw/arm/armv7m.h"
++#include "qom/object.h"
++#include "hw/clock.h"
++#include "hw/char/tm4c123_usart.h"
++#include "hw/misc/tm4c123_sysctl.h"
++#include "hw/gpio/tm4c123_gpio.h"
++#include "hw/watchdog/tm4c123_watchdog.h"
++#include "hw/timer/tm4c123_gptm.h"
++
++#define TYPE_TM4C123GH6PM_SOC "tm4c123gh6pm-soc"
++
++OBJECT_DECLARE_SIMPLE_TYPE(TM4C123GH6PMState, TM4C123GH6PM_SOC)
++
++#define FLASH_BASE_ADDRESS 0x00000000
++#define FLASH_SIZE (256 * 1024)
++#define SRAM_BASE_ADDRESS 0x20000000
++#define SRAM_SIZE (32 * 1024)
++
++#define SYSCTL_ADDR 0x400FE000
++
++#define USART_COUNT 8
++#define GPIO_COUNT 6
++#define WDT_COUNT 2
++#define GPTM_COUNT 12
++
++struct TM4C123GH6PMState {
++    SysBusDevice parent_obj;
++
++    char *cpu_type;
++
++    ARMv7MState armv7m;
++
++    TM4C123USARTState usart[USART_COUNT];
++    TM4C123SysCtlState sysctl;
++    TM4C123GPIOState gpio[GPIO_COUNT];
++    TM4C123WatchdogState wdt[WDT_COUNT];
++    TM4C123GPTMState gptm[GPTM_COUNT];
++
++    MemoryRegion sram;
++    MemoryRegion alias_region;
++    MemoryRegion flash;
++};
++
++#endif
+-- 
+2.34.1
 

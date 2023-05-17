@@ -1,119 +1,159 @@
-Received: by 2002:a17:906:da85:b0:8b1:202f:4753 with SMTP id xh5csp421274ejb;
-        Fri, 17 Feb 2023 20:26:44 -0800 (PST)
-X-Received: by 2002:a17:903:1c6:b0:19a:ae81:b09b with SMTP id e6-20020a17090301c600b0019aae81b09bmr3246574plh.11.1676694403930;
-        Fri, 17 Feb 2023 20:26:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1676694403; cv=none;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp994524ejq;
+        Wed, 17 May 2023 03:53:36 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5AhrSIC6S45GfKYbKm0WMP7GZrkaiaALuoHNc+Q1U54XLxAaXDYCOAysC3f7mhDnjGDhRw
+X-Received: by 2002:a05:6214:d05:b0:615:29ab:e4a8 with SMTP id 5-20020a0562140d0500b0061529abe4a8mr60707495qvh.31.1684320816492;
+        Wed, 17 May 2023 03:53:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684320816; cv=none;
         d=google.com; s=arc-20160816;
-        b=asdOuy56gxJMIaHNHAdkE96w/CzuoU80LFm8Np1mEwXepVW95HxLff5+XgIk9v/uX1
-         P3C+paCz6fyDYJTcIwdCyzPRxZrDcbRqg0a5YqEf+up+U0/TSpVjrT5sFTESYQiLi0dm
-         iiM944qSSFo0tWBC9SjqWbXINsvSplmePndJV5XK+EwrzbCXLjqi/0biETa9nHZImhTS
-         xJxBjYnNCaHDOA3S6fnJfGL+/8oqtlObBfqrYe+aktPBz81mgG+OAJ2NwfbtVWLmgTvN
-         a+6hMlJaccVk/GcxPdEDqKrxLbtg0bDTPKnS2B22x/257Nl+bOGPcU4zlMgtU0JkqQMX
-         Ai0w==
+        b=k+nugKzewWmMq/HRe0xNCNhTJBlL+UK/cuP18H/LFABZCDL3+XZ8aC5/f7iQzU8UCE
+         Vjna+mcfP2iZOrWgAZpLXKgJG2f2eNrt0Z+awtIeL/y15h0T3Q6Zil262EdJZr0/tbFx
+         71ZZXChKkCReNRX65VwGIFwlctUghDSesJkEEtbdr5kqvQ8Lv9JrIzCCSzLianfQJlWa
+         VE9WqRPvMWPiOHJjLEH7HNzq9KaB3C1mSIfoVcKhdX2im1cN1pG4pJ8v23XvHE1vtnxP
+         OaTGh/2ZrCOwFAQCwyPjeEnRMN3MIhXztJORxN06D4VHI9+KkTRp2xMQXT0NYc98pt+Z
+         W8+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=yDXgu+LzVItUr6ymCGt9467fm3bRW73QUz+8B4Ljll8=;
-        b=Wy2ZR8ZUY1juQ0VrVd+Kf8o1/3JNKFBOpIyt4MNnBqKoqS7KRHg0/FBaY/LPNLRMTP
-         t6Ig6udeiwxZOXgpripUTLPlCxI4vdfKaNKjhPRCcospKajh+sbiml9e3Qk3Mu0Jld3P
-         FSHbOxngDoK2SphSbtvpPHhDiQ1k1DsmIOVRaH48vQN/kZJCHwpgva3J1JSvqI9Yuj+9
-         HBJnnRnJA+sEOnga9m5FkcYQzqJEKoMHt63ow/CfCXc49kT8ixN6Ry4qWxQam+7fSxjo
-         hsuFxjDCM9sOQoSpYWLKwP8ZkIxzpF9Jur7KqtkjgB9J7B2ZHoX1n73k1RaX3XDKI2fH
-         7yDg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=mO5b/FJXc/pTaAiVtkSQ9MXnSLdPkTIXBd1RX+caGrY=;
+        b=JcNH9CHnDnQl/CC4zfB/4LlnJrJJvgXNdaauODrnbbSekRFNZqcMzS/bN6U5MZQjSk
+         v03buxom99j24xiyga/o1epkjc/a52F4oIlw/I5n2+WbB1sHkIpeBtfkfp39vMDNBC0E
+         n3GSz2aHqGON2L9Smpnni2UrKu7NxC2mJOURrjUoBzmkwPbsaDm89j/gNZDxVFAOC+nf
+         jWWA5NPxdejFhPhSahOw/XqbEOK/lLDOGg1nPagyK4abzzku982ThLpHpQH9EKP/IDwj
+         AzJLrs+KubLhtgyGDBX+dgWN3SZydOPo50OjhjUwrkohucGvI28f3HGIS5yRSCLxAnfB
+         EglQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TenXUygi;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u9-20020a17090341c900b0019a826eea43sor2923688ple.199.2023.02.17.20.26.43
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pj32-20020a05620a1da000b0075947ef3256si1081541qkn.719.2023.05.17.03.53.36
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 17 Feb 2023 20:26:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 17 May 2023 03:53:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TenXUygi;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=yDXgu+LzVItUr6ymCGt9467fm3bRW73QUz+8B4Ljll8=;
-        b=TenXUygiIoPWkNKVIeJtqYICqy+hDfLoP9sQaIbouZ16LEyUrwvm/jUh9EA7Cpk2/u
-         RArMfhABG8dNPu2t3vkw2WHNkL9TghyAHDauFHfLF5y6/keEfMs2K7ErtMHF9+wOMchI
-         Yv7MEUTJ74Svg43tKIPuApj6HoZ/BUKXz1KSBQrczt4fMyqHzFrelTC40EenbMu6Zf7o
-         aH41pgENjUrX3H4GInGNafms90yFWt+5V5ZPvTe7lt9CIi3F0vEQHPxntTjLMF49eMh5
-         qF5ylJBSNaCxgigfF9pdxX+eR1EpWBdh9Bq+WAwU8deI10ofDzmbKHOwmzUdFi8UE1Am
-         RE7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yDXgu+LzVItUr6ymCGt9467fm3bRW73QUz+8B4Ljll8=;
-        b=rTDt/UMbOaZklcY9jTGFmjVmnxuZ9s2J2WzcggSIyVVnMbUZJUfH8T47TLx11kLJrd
-         AczrnpgcudzPHskkVQJ3QT2S3/1tBffSJwnophjT78hm5OzN3jWDqN39w8jhEMyEzIzU
-         Bf2kSgwH7r2inp6XjKX7uGxWLkPUig3I8fS8bqPUEOKgHNdj02NeMP/Wf6j/UChwOE2F
-         QnpuVCESq1HQF8NKOd06yOBD5s/Paf/Xhot4aDgzIUx0laXVHdZkdkqmjVSpbvQSR2Zv
-         RZHsyK1eOrgzlIARfOrb+vADeuQLZMd/n34lnq5u+hkHu+q/HCEV0NRx+kkokN6OYv0y
-         OcKg==
-X-Gm-Message-State: AO0yUKV7Gv4UEUSqZj2Fw8ktyjdjpQIIAiEjbDLp2zfyyY1XzHUcaxCp
-	YHbXYd+dnmRvx1OyU7V7K0G/gE1X
-X-Google-Smtp-Source: AK7set/81z3V56Cs1nbzGENr8RXpagB/nmBewNkkQG2i24GA0lVSZy5qkeL6vZAgkdeMpmMpbtqjdg==
-X-Received: by 2002:a17:90b:4c4a:b0:233:b20f:e646 with SMTP id np10-20020a17090b4c4a00b00233b20fe646mr4119742pjb.0.1676694403407;
-        Fri, 17 Feb 2023 20:26:43 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [172.20.100.240] (rrcs-173-198-77-219.west.biz.rr.com. [173.198.77.219])
-        by smtp.gmail.com with ESMTPSA id t1-20020a17090a950100b002308e6e645bsm3589500pjo.49.2023.02.17.20.26.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 17 Feb 2023 20:26:42 -0800 (PST)
-Message-ID: <7d0021ce-6992-492c-85c1-9d203a913187@linaro.org>
-Date: Fri, 17 Feb 2023 18:26:39 -1000
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pzEmP-0001HQ-QM; Wed, 17 May 2023 06:53:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pzEmO-0001HD-6h; Wed, 17 May 2023 06:53:12 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1pzEmM-0002Er-Mx; Wed, 17 May 2023 06:53:11 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id C634A260B87;
+ Wed, 17 May 2023 12:53:07 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p-Xpu8dioxNR; Wed, 17 May 2023 12:53:06 +0200 (CEST)
+Received: from applejack.lan (83.11.34.59.ipv4.supernova.orange.pl
+ [83.11.34.59])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id AFAD92600A3;
+ Wed, 17 May 2023 12:53:05 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v2] hw/arm/sbsa-ref: add GIC node into DT
+Date: Wed, 17 May 2023 12:53:03 +0200
+Message-Id: <20230517105303.453161-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v6 16/29] target/arm: Move cortex sysregs into cpu64.c
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>
-References: <20230217201150.22032-1-farosas@suse.de>
- <20230217201150.22032-17-farosas@suse.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230217201150.22032-17-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 01SLhoUaGMN6
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zESodoCnrzi+
 
-On 2/17/23 10:11, Fabiano Rosas wrote:
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index a5191b57e1..b0bc8a3cea 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -1,6 +1,7 @@
->   arm_ss = ss.source_set()
->   arm_ss.add(files(
->     'cpu.c',
-> +  'cpu64.c',
->     'debug_helper.c',
->     'gdbstub.c',
->     'helper.c',
-> @@ -12,7 +13,6 @@ arm_ss.add(zlib)
->   arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_false: files('kvm-stub.c'))
->   
->   arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-> -  'cpu64.c',
->     'gdbstub64.c',
->   ))
+Let add GIC information into DeviceTree as part of SBSA-REF versioning.
 
-Not keen on this.  I think better something like cortex-regs.c.
+Trusted Firmware will read it and provide to next firmware level.
 
+Bumps platform version to 0.1 one so we can check is node is present.
 
-r~
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ hw/arm/sbsa-ref.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 792371fdce..9204e8605f 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -29,6 +29,7 @@
+ #include "exec/hwaddr.h"
+ #include "kvm_arm.h"
+ #include "hw/arm/boot.h"
++#include "hw/arm/fdt.h"
+ #include "hw/arm/smmuv3.h"
+ #include "hw/block/flash.h"
+ #include "hw/boards.h"
+@@ -168,6 +169,20 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+     return arm_cpu_mp_affinity(idx, clustersz);
+ }
+ 
++static void sbsa_fdt_add_gic_node(SBSAMachineState *sms)
++{
++    char *nodename;
++
++    nodename = g_strdup_printf("/intc");
++    qemu_fdt_add_subnode(sms->fdt, nodename);
++    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
++                                 2, sbsa_ref_memmap[SBSA_GIC_DIST].base,
++                                 2, sbsa_ref_memmap[SBSA_GIC_DIST].size,
++                                 2, sbsa_ref_memmap[SBSA_GIC_REDIST].base,
++                                 2, sbsa_ref_memmap[SBSA_GIC_REDIST].size);
++
++    g_free(nodename);
++}
+ /*
+  * Firmware on this machine only uses ACPI table to load OS, these limited
+  * device tree nodes are just to let firmware know the info which varies from
+@@ -204,7 +219,7 @@ static void create_fdt(SBSAMachineState *sms)
+      *                        fw compatibility.
+      */
+     qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
+-    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 0);
++    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 1);
+ 
+     if (ms->numa_state->have_numa_distance) {
+         int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
+@@ -260,6 +275,8 @@ static void create_fdt(SBSAMachineState *sms)
+ 
+         g_free(nodename);
+     }
++
++    sbsa_fdt_add_gic_node(sms);
+ }
+ 
+ #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
+-- 
+2.40.1
+

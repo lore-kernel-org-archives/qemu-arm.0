@@ -1,209 +1,208 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp213686ejq;
-        Wed, 17 May 2023 20:23:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7LXbuBDI5mtAh4vft6Ds+v/7XJlWK66zsk4tLm+3marWjfl4QLASkRRDM5veVvB7/ny8E+
-X-Received: by 2002:a05:6214:401d:b0:61e:800b:4fcc with SMTP id kd29-20020a056214401d00b0061e800b4fccmr3080365qvb.25.1684380232836;
-        Wed, 17 May 2023 20:23:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684380232; cv=pass;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp344103ejq;
+        Thu, 18 May 2023 02:07:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5Jyx0i0/Bb3ezvm8r4hKHKT6UurqaMdK4ZVz+kzXeti1lYn/3aen8eljNEqh02I/yUTWrH
+X-Received: by 2002:ac8:5f4c:0:b0:3f5:767:2e80 with SMTP id y12-20020ac85f4c000000b003f507672e80mr4212617qta.62.1684400851623;
+        Thu, 18 May 2023 02:07:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684400851; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z+Eg1hwu4hKcZKYbUSuxth5u6K5u7F1Pz3FLoHhdoGtKPhL39wIi9UWuyjnU37b1tv
-         fF6XdCZte6q3kCZQVIkOXla8e6U1Aibuo0wbzlgxBTAIIe3BF6oavrcJWSuDUuAwJ24w
-         YnChYeYtiQuFkBETQf77zkmT2JGXRsIN3CrwaL89bQiECbvf0Kg5dDpk5jNkMejklxxu
-         KXUHbR9upGB/CFUXWpLK5AxIukUYu2zz8R61lZXv9Y52ZVatcreri6wKvC/GbSnv1pBO
-         EURZX3e9/tbrlb8SglFCNQ5JC/9zp7l0aaGu5BXFBGoVXZ9m+8n8IYgK4AyCFh4sYlhx
-         B4Wg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        b=n+Lo8SZc1EvLKjaupx0Ef4iV9s9QvXEZS+PBDU41wx/NfhnGmkjFC47oXWfvSb7d+m
+         8TaOI05bWHVCzWmHOATiDLlIuEq+jUQ4bRuBSaSqR9aa2m0FRVXg/p83HXrD68s1/qxd
+         2sC4Jqmzc4+tVpKx1ozluALxF7zh47K6Vf2c144OQkE9Zrb19wdeWMgS3pnUgJ8lghdI
+         Ldry/z3yNMrAxB8KoEcJ1h8U7oKGLg1IKmV8akjG9pFJ3swBnaLXGeFUKF/idIPdJDsp
+         E1Hg6ix9Bdg4LZPJTjCBnMkDyrkTBiXi26aewXcgRk6xuVm77F0bYsK+7FVm13tyWyEr
+         wB9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=6SQ685UVM78OjMIz7m9s69w/wsipZvSBbwqQQa18gfw=;
-        b=Uu/HbwkjW+1RYo1sLu+D+7ojubIZD969pNLb2zJFMiX270QVFGxTSaaXlIfnfJTVKE
-         NLtf62WG9qSkrnXiLAMPEG3wnivaVPhRF7fvjeNz3niW+EH7MtrtBhI2CvNlZIlbQXLW
-         f8kT2nnKwzVnegbbOHCdJMp5mWc6R8yXhYaHgBeTPZKQBfTdc3SqhPF10tVNi7iXDyzv
-         j8G9gA8rQ+afnKukMcWMCiB7s3zz0W53lLfYgkk5PRJYRQy3qcty3ClsITPHtO0AcBPD
-         j6UfH1jHdcfS2GUpr2XKIShcdTwVAJimIlZvCeCz6rsi3t6xPcYQ+CRaV07lWsJhQ/7V
-         dPew==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KCE9a4md;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        bh=+1v54RPJVohLyNDMJROIT+RVq+dP8UCzs9qZmQDhvUQ=;
+        b=GaAnH9w10F5ZDFEMKToD41Tq/kHs8ii3mAxyNV6osG8OA7rECSHlUHEPulvd5TbSD4
+         VxSxg+7OeeUqfNnDucm5/KwSv7qhRSffE9rN+W7R90qKILelfq6+K9YgywirokKd7RUm
+         nb4wlgrH/yTieVjmYx4N0S9ocqTqsvAeIOLpbs4HV+K775ZB8Zpnx5J9Xbesp03jooAW
+         QPoauQ5KBmEem8yOsTQyqVgB2ZDNrOq23fJSpbmPclTlUsDZFy077MxHpBWkdYdwhP8e
+         RffQv7ajMYqAhVerGP3ojuCIOKD519WeEhmj5CDyosPeXkpnNNVGh1SsZN30BlyfOSD/
+         FTgQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PmwUiE31;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5-20020ad45be5000000b0061ada608558si490653qvc.275.2023.05.17.20.23.52
+        by mx.google.com with ESMTPS id k16-20020ac85fd0000000b003f549022176si686128qta.243.2023.05.18.02.07.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 May 2023 20:23:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 May 2023 02:07:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KCE9a4md;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PmwUiE31;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pzUET-00089g-MS; Wed, 17 May 2023 23:23:13 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pzZbB-0008N9-Hn; Thu, 18 May 2023 05:07:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1pzUES-00089T-GF; Wed, 17 May 2023 23:23:12 -0400
-Received: from mail-mw2nam10on20628.outbound.protection.outlook.com
- ([2a01:111:f400:7e89::628]
- helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1pzZb9-0008Mg-C3
+ for qemu-devel@nongnu.org; Thu, 18 May 2023 05:06:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1pzUEP-0008Bh-SU; Wed, 17 May 2023 23:23:12 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=auaNTS/IIbQN8mukF9aQK9BPin9+2lpQFp0ujmDup2KBm/mf67YQUdTPhntr4Hgy56aKpZyx/oSRLt4mtitVGHTLgjBpRGmkJSMWAe5xgYQDTAYcgASdrN9aXHhdHUIue32GNa7L27KQZcwurtJGjyIJa1VIsXzYV//9Df78H7K9QwdeGmlXNoEvLadpVPttPev0ynI+mtS7eZdaC18g097yng+45ZVb8RvYrB4jWLhcPjARm5Ow+TnrLGQT1lCCCD7igQmMM7jN1BuRIStnrKuFrF3mh3RaEWgjOaumk3YywyokmI159KkCAyp0IpBFrJz7JdknUVA26cadGTI9Fw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6SQ685UVM78OjMIz7m9s69w/wsipZvSBbwqQQa18gfw=;
- b=BMC01HapPMZurbnGtN/JOedwkuZ8YDsW3RywEJLcKghwV7E9/1EOioyojTcy8Oc2s88zxyBHwEawtZPHPvUJmcmlzEzS1VpYL9SyPIoFIa1c7q5H4oaoz0MKV4XCwN2YRVGEeErSRMN8BcaKmo1fkmm45Uy/uuixd5twzmv6RyMVp3hcbuth+orZy4Hlse0Uc3L03qr/R7xVOUzl0WKzNk+WialC/ickWdTXWLu11Bei9R818/M9uJgYzKsTUPcSX0HaTb9vMflzzafFzpX1QGCYq8UlW2+Y9L/ktgNLPvxShXMnCDBcApf01fnjx8ZRudII0N72wkMyhuDcExKNDA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6SQ685UVM78OjMIz7m9s69w/wsipZvSBbwqQQa18gfw=;
- b=KCE9a4mdni4EswBgKxJm/3qot0pSKB3JmhqXDixUfJjarpjJ5prKF8BL7OP4Qn7NP3clrd+fp5HsjQN4EGUf4bAxjBaSRoZLUypNVCUB+cPxQXzo+Q0rsORuz8MN0Gxm/iV3ivDZj+o+U3FJZIc+CjofyDZqHWLJAzonBvRPNZ8JSU6xe9m/WlqqtNc9ZqSOAKkHns56bSqerikolNMEMqCBI78WC3p/o8dpRU5e5JTsLFsEV8vHltuWdZ6DpKkaETwZg59/tv/atJ9SxOaxfQ4ApV6rMsjgoCp8MkIAZ8oR90Vqehp3MMUIp3T2XtAaXQwWGycszNnWxa8iXXq3Jg==
-Received: from BN0PR04CA0154.namprd04.prod.outlook.com (2603:10b6:408:eb::9)
- by DM6PR12MB4059.namprd12.prod.outlook.com (2603:10b6:5:215::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.33; Thu, 18 May
- 2023 03:23:03 +0000
-Received: from BN8NAM11FT102.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:eb:cafe::5b) by BN0PR04CA0154.outlook.office365.com
- (2603:10b6:408:eb::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.18 via Frontend
- Transport; Thu, 18 May 2023 03:23:03 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BN8NAM11FT102.mail.protection.outlook.com (10.13.177.27) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6411.19 via Frontend Transport; Thu, 18 May 2023 03:23:03 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Wed, 17 May 2023
- 20:22:51 -0700
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37; Wed, 17 May
- 2023 20:22:50 -0700
-Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
- Transport; Wed, 17 May 2023 20:22:50 -0700
-Date: Wed, 17 May 2023 20:22:48 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <jgg@nvidia.com>, <yi.l.liu@intel.com>, <kevin.tian@intel.com>
-Subject: Re: Multiple vIOMMU instance support in QEMU?
-Message-ID: <ZGWaCKQqK5hVqbvM@Asurada-Nvidia>
-References: <ZEcT/7erkhHDaNvD@Asurada-Nvidia>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1pzZb7-0001Sa-TP
+ for qemu-devel@nongnu.org; Thu, 18 May 2023 05:06:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684400816;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+1v54RPJVohLyNDMJROIT+RVq+dP8UCzs9qZmQDhvUQ=;
+ b=PmwUiE31FZdjXAFuV9ZTKLT93lncNxs1wC4++atI2GQU+IUOWmQOEIwrDwbplQ1XIwlo9c
+ I84LAbQb7g/EFKXb81JHeK1TBehH5LSDaxH5EXvnQFcNqhuwNVzmJS3thELwJpqNauWG6K
+ tAWTfyqrj+lAdn7KW0N/TYQqU3Kw6bE=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-418-WBTFIKXQPamSEK_f_q39LA-1; Thu, 18 May 2023 05:06:54 -0400
+X-MC-Unique: WBTFIKXQPamSEK_f_q39LA-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-75780f99906so132387785a.2
+ for <qemu-devel@nongnu.org>; Thu, 18 May 2023 02:06:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684400814; x=1686992814;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+1v54RPJVohLyNDMJROIT+RVq+dP8UCzs9qZmQDhvUQ=;
+ b=bYKSnXDh0xEiqKewcdYcawkxAfF6rJUVfH6hRbETkTeFp/MeY+4yEvdPhw5FRYAyP6
+ yxEpNnDChIztUadB9+Z0AX2WhsTTD2690SLTVGhnLfRJJFnSPUO+exkgM61tNcPkZVxv
+ UeZZkgEXnJHj6FARdEfvNfr1rEppAtx9jbkbrMzdT+OmGgVd5Fg7wQhUVfJ1otcMmbxH
+ X0hJuFUj3uiz8+WgopcdEaoBzR2Cl4ehd6nGzowzsQy1/+3BWQ7/RzIQlD1yAU1VOjIe
+ MnKrVEv2EZWqJybtrC/8Hgt1nkYov1dY/WNYjx5NQS3/Vppkos8Kjt22wctAdmkvS/d0
+ dLgQ==
+X-Gm-Message-State: AC+VfDxWDWHXU0kHWtpNYo/0SSR1bU+NUqMx9whciVAeGzz+i48JjT14
+ WUcIMvGrhdqz78t11kOXBviLKCL1fLTVnwuUw6U/sgMUAOUREYoxhaBkE1exnN9MduscuEf2gtj
+ 9lJHJropPIH/Chvw=
+X-Received: by 2002:a05:6214:f0d:b0:621:1b73:52c9 with SMTP id
+ gw13-20020a0562140f0d00b006211b7352c9mr4583107qvb.10.1684400813999; 
+ Thu, 18 May 2023 02:06:53 -0700 (PDT)
+X-Received: by 2002:a05:6214:f0d:b0:621:1b73:52c9 with SMTP id
+ gw13-20020a0562140f0d00b006211b7352c9mr4583081qvb.10.1684400813771; 
+ Thu, 18 May 2023 02:06:53 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ i18-20020a0cf952000000b006238b6bd191sm365774qvo.145.2023.05.18.02.06.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 May 2023 02:06:52 -0700 (PDT)
+Message-ID: <0defbf3f-a8be-7f1b-3683-e3e3ece295fc@redhat.com>
+Date: Thu, 18 May 2023 11:06:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <ZEcT/7erkhHDaNvD@Asurada-Nvidia>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT102:EE_|DM6PR12MB4059:EE_
-X-MS-Office365-Filtering-Correlation-Id: 67fd44e3-7bf4-4680-a298-08db574f30d1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VPKksNaUBgqeRGB+WfFhH0UBuFcYVqgLqxPacwGW2HFdf694hbPKr1wWa6jRiONv9N9Y9k+8svKkRDhPlk8g2UKxHPqWRNg6rOlL7atEL2h1F1+fWoJ701XCSxJDkgv/QIF3fg6dPF3G6Gmd3Vxw2EtWGz0pdIctUW+DyTiyoDpq0wi9B/mik2IsZ5R/V7A2CxPv6sSctFl73KjRDaJ+ZGJxv3s4Rh7JE2nuCBeBQEE6SUuslQCnCC6SFp03NGVT0gczup+xZDKv+xrYDJUgQMtevHHIAfXKIrMX7MzCOARmigIR2JT3pbO1cANqI1YrqF/J6j/vbl4q6OLl+BJEMzg/xU5Jk4RqzBMKMKobyw1vyV0IvoSHFT511bAwCcgug44Rpy3noXkCZ01eY0T0YugHU8VThucwG67GP8MlFp/ZvobEO8ur4MM/Hv5J8juGQwm0p8qzRX+PZFL5MWgt22vCodzuShNs4XWy4wzQRowW7GzVWWBBHN6/zEfjxT4+XkvFjIMP+WsO66s43DFXt2GSywxraK9ISBnybWZg1ftaWADcn7NWGZbRUex9kX9DRMBQLrHl5t4JaR4BFOqc8/eghc4LT7sjE9ne4rST/0vqB4R1FA+CwKkWCFnQVA+8AywOLPLaNuRhCitueLr5eKsuugAWqdIrFgW7enlliYTVk6NRihH3GmWUY7DV+JzgiIm/LAif/Ne9SLqLBOjGbaLe9sw8IV3T2ybqMCNWz1EGAESCllXBYcVYq8TEcHYP
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230028)(4636009)(346002)(39860400002)(396003)(136003)(376002)(451199021)(46966006)(36840700001)(40470700004)(5660300002)(40460700003)(41300700001)(47076005)(336012)(426003)(36860700001)(2906002)(356005)(86362001)(7636003)(82310400005)(33716001)(82740400003)(186003)(9686003)(55016003)(8936002)(26005)(8676002)(40480700001)(70586007)(70206006)(54906003)(110136005)(478600001)(4326008)(316002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 May 2023 03:23:03.4416 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 67fd44e3-7bf4-4680-a298-08db574f30d1
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT102.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4059
-Received-SPF: softfail client-ip=2a01:111:f400:7e89::628;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: Multiple vIOMMU instance support in QEMU?
+Content-Language: en-US
+To: Nicolin Chen <nicolinc@nvidia.com>, peter.maydell@linaro.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: jgg@nvidia.com, yi.l.liu@intel.com, kevin.tian@intel.com,
+ Peter Xu <peterx@redhat.com>
+References: <ZEcT/7erkhHDaNvD@Asurada-Nvidia> <ZGWaCKQqK5hVqbvM@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <ZGWaCKQqK5hVqbvM@Asurada-Nvidia>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ NICE_REPLY_A=-1.412, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vN5WF1WpKzwJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ojma973LYHMK
 
-Hi Peter,
+Hi Nicolin,
 
-Eric previously mentioned that you might not like the idea.
-Before we start this big effort, would it possible for you
-to comment a word or two on this topic?
+On 5/18/23 05:22, Nicolin Chen wrote:
+> Hi Peter,
+>
+> Eric previously mentioned that you might not like the idea.
+> Before we start this big effort, would it possible for you
+> to comment a word or two on this topic?
+>
+> Thanks!
+>
+> On Mon, Apr 24, 2023 at 04:42:57PM -0700, Nicolin Chen wrote:
+>> Hi all,
+>>
+>> (Please feel free to include related folks into this thread.)
+>>
+>> In light of an ongoing nested-IOMMU support effort via IOMMUFD, we
+>> would likely have a need of a multi-vIOMMU support in QEMU, or more
+>> specificly a multi-vSMMU support for an underlying HW that has multi
+>> physical SMMUs. This would be used in the following use cases.
+>>  1) Multiple physical SMMUs with different feature bits so that one
+>>     vSMMU enabling a nesting configuration cannot reflect properly.
+>>  2) NVIDIA Grace CPU has a VCMDQ HW extension for SMMU CMDQ. Every
+>>     VCMDQ HW has an MMIO region (CONS and PROD indexes) that should
+>>     be exposed to a VM, so that a hypervisor can avoid trappings by
+>>     using this HW accelerator for performance. However, one single
+>>     vSMMU cannot mmap multiple MMIO regions from multiple pSMMUs.
+>>  3) With the latest iommufd design, a single vIOMMU model shares the
+>>     same stage-2 HW pagetable across all physical SMMUs with a shared
+>>     VMID. Then a stage-1 pagetable invalidation (for one device) at
+>>     the vSMMU would have to be broadcasted to all the SMMU instances,
+>>     which would hurt the overall performance.
+Well if there is a real production use case behind the requirement of
+having mutliple vSMMUs (and more generally vIOMMUs) sure you can go
+ahead. I just wanted to warn you that as far as I know multiple vIOMMUS
+are not supported even on Intel iommu and virtio-iommu. Let's add Peter
+Xu in CC. I foresee added complexicity with regard to how you define the
+RID scope of each vIOMMU, ACPI table generation, impact on arm-virt
+machine options, how you pass the feature associated to each instance,
+notifier propagation impact? And I don't evoke the VCMDQ feat addition.
+We are still far from having a singleton QEMU nested stage SMMU
+implementation at the moment but I understand you may want to feed the
+pipeline to pave the way for enhanced use cases.
 
-Thanks!
+Thanks
 
-On Mon, Apr 24, 2023 at 04:42:57PM -0700, Nicolin Chen wrote:
-> Hi all,
-> 
-> (Please feel free to include related folks into this thread.)
-> 
-> In light of an ongoing nested-IOMMU support effort via IOMMUFD, we
-> would likely have a need of a multi-vIOMMU support in QEMU, or more
-> specificly a multi-vSMMU support for an underlying HW that has multi
-> physical SMMUs. This would be used in the following use cases.
->  1) Multiple physical SMMUs with different feature bits so that one
->     vSMMU enabling a nesting configuration cannot reflect properly.
->  2) NVIDIA Grace CPU has a VCMDQ HW extension for SMMU CMDQ. Every
->     VCMDQ HW has an MMIO region (CONS and PROD indexes) that should
->     be exposed to a VM, so that a hypervisor can avoid trappings by
->     using this HW accelerator for performance. However, one single
->     vSMMU cannot mmap multiple MMIO regions from multiple pSMMUs.
->  3) With the latest iommufd design, a single vIOMMU model shares the
->     same stage-2 HW pagetable across all physical SMMUs with a shared
->     VMID. Then a stage-1 pagetable invalidation (for one device) at
->     the vSMMU would have to be broadcasted to all the SMMU instances,
->     which would hurt the overall performance.
-> 
-> I previously discussed with Eric this topic in a private email. Eric
-> felt the difficulty of implementing this in the current QEMU system,
-> as it would touch different subsystems like IORT and platform device,
-> since the passthrough devices would be attached to different vIOMMUs.
-> 
-> Yet, given the situations above, it's likely the best by duplicating
-> the vIOMMU instance corresponding to the number of the physical SMMU
-> instances.
-> 
-> So, I am sending this email to collect opinions on this and see what
-> would be a potential TODO list if we decide to go on this path.
-> 
-> Thanks
-> Nicolin
+Eric
+>>
+>> I previously discussed with Eric this topic in a private email. Eric
+>> felt the difficulty of implementing this in the current QEMU system,
+>> as it would touch different subsystems like IORT and platform device,
+>> since the passthrough devices would be attached to different vIOMMUs.
+>>
+>> Yet, given the situations above, it's likely the best by duplicating
+>> the vIOMMU instance corresponding to the number of the physical SMMU
+>> instances.
+>>
+>> So, I am sending this email to collect opinions on this and see what
+>> would be a potential TODO list if we decide to go on this path.
+>>
+>> Thanks
+>> Nicolin
+

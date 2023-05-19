@@ -1,290 +1,191 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp739182ejq;
-        Thu, 18 May 2023 12:34:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5LIAJ/iNa2bzdqIYAmIKKXt4D+Nj407YPJSQ+h0pHUkKSiD+atq493f1iMEdySNlKquCI3
-X-Received: by 2002:a05:6214:21a2:b0:621:68e8:999f with SMTP id t2-20020a05621421a200b0062168e8999fmr200193qvc.33.1684438498094;
-        Thu, 18 May 2023 12:34:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684438498; cv=pass;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp180189ejq;
+        Thu, 18 May 2023 23:22:44 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4rCEYk1iZ+4gPU7E/9vFCn3vdrRe5LnmIMDJeUoxQn1tQc9eQjkwNSrlHCYZeFW97N6w1T
+X-Received: by 2002:a05:622a:1187:b0:3f5:1bf2:8b90 with SMTP id m7-20020a05622a118700b003f51bf28b90mr2062264qtk.13.1684477364161;
+        Thu, 18 May 2023 23:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684477364; cv=none;
         d=google.com; s=arc-20160816;
-        b=BEPMjsTNuq3SBFnkRzhoRlpfaHlcB6WxuK5yesCbGB0i45xiiFZ4FwKOqHmDu34L1f
-         ZXzwqWZc02S92QkcJvcp2u41k8PTXtW5C2xR9aluXO37e9FFpMIGRVLtsE6ux6yssMHt
-         fso+if/lUsJdhNLavSckJvWHBYZMRfc9I19A/5VBFPzrfD4nF733klu/cc6+yykMX5jP
-         wOWy92KEVp9CfELxus6HXvaGERz2lEFb2TNuaiFW1HJRf0kuw5Zj0rNLZqwM6YCJqDtr
-         dVDpK4QgUs+8w7jSseul8qyH91CYY5L/gxW39IWdOoYQFlGjBgW+wiGCUsmsP+LN69+q
-         amjw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Uvs3VLaGK4KuFHyp3BE3I4+NypCUMRHhuM0sxmW/zn2KbmWkCgd97SrL+BSQvzgcF/
+         TwE76HPayUQ9eRPbPOq047gVo6+xllmqrsfe4tyg+oN+zHy+PT2JTCxskZDYI0Ru7w74
+         8le6mZRUpzLu9F311uy67tCexdHGJKXNfZw1FStyMlwl3++3xhUdqzHsQXDQAG90LPDo
+         aWH2+nySdbk1A7KZkUuCRYmvwOnigOJkV0JKqDpEDrP2uojjFuWLXc9p9h5gOeJpXZ9W
+         3ZVjH+ulhPxRAqbQHNSPILvNi50CXGFCPw6LxDtBu3c5pXA+CfdcsYfHuZTbCu+urWrN
+         /L0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :in-reply-to:content-disposition:references:message-id:subject:cc:to
-         :from:date:dkim-signature;
-        bh=tCXqGvdsm/o9zsYpTHfGeRXPFgyuKD9aLiHI6IONEpw=;
-        b=iPcOJ44qxNYoCjEdbgx9AcsQHo2jU/qUqBwCo4R1uznXxIvoTVOO1WUVe4aNjShWYN
-         QiDqAAVGZHZRcnyWILh7xNeP/53/TdT3B95iwnY6GTh4NqQ2bnjOxDUbfl/ae7e8Tam/
-         eUCkdiTOa0E4J0vJ9yaLqOJccerwXbnOIDwj6uVBUQdehUo7xKqplGBIYuSydzacaOi+
-         cG3iUMT6R938Sf9BPbwSX7KJ1f9Ynsu8CRInlLNvnvsk4cVayXKQtWDz5bwBz8WgfXtk
-         hBPjFPMBmO5Mnv2G2hpPdmXQvzaoboyTNpLG+4h85EzEWVOJ84k5aEGkp333mZ7UJ59w
-         yI6Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=UuIrogeP;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=s7dJrdvRQEkn0UC/4oL0GCL3y+1fYJXpabQdYpFpR3Q=;
+        b=p+8Zkt/xkzSbmlN2KmwyDq+GmE/dG+1nhCbXd3TWkGqcTcv9hSKRz2pUoUNJSnipsP
+         8iOb3HrXOIiFxA9RSUalq8eWlV0pGW2y1zbXNjs2SklNMg5dqwZOng/j+bfyMdT6nnC1
+         EklURTsYxUR3HcprpG+QxR8MZbXedXhIGmQxtpfpthgYKIgmupLSpXqz/o+8S27JxZLQ
+         EiWn/zdWdH5SmIRjFUiwEYmC2BeUC0zxK1KDL77l9m+xo2n3+NL4l+T23o9Hx8etUgxg
+         tqcGQ3iU2nAn/ej9BY4Q2hx0xjdQ/ovOdKXr4ZD4ulCheazG1HhJDnyO4Rfd31ftk+1w
+         Co8Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@sifive.com header.s=google header.b=HTcpvBfu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8-20020a0562141bc800b006236822ff82si1610439qvc.585.2023.05.18.12.34.57
+        by mx.google.com with ESMTPS id d16-20020a05620a167000b0074a0ed2ff43si2069700qko.402.2023.05.18.23.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 May 2023 12:34:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 May 2023 23:22:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=UuIrogeP;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+       dkim=pass header.i=@sifive.com header.s=google header.b=HTcpvBfu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pzjOf-0007H2-Ef; Thu, 18 May 2023 15:34:45 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1pztUp-0006fj-F2; Fri, 19 May 2023 02:21:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1pzjOd-0007Gd-6c; Thu, 18 May 2023 15:34:43 -0400
-Received: from mail-dm6nam10olkn2081b.outbound.protection.outlook.com
- ([2a01:111:f400:7e88::81b]
- helo=NAM10-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1pzjOb-00080p-Fz; Thu, 18 May 2023 15:34:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ggI1cUxDKXwKRlEIloT5RL8lzc1ZzlSRMH6yGvpbH1d4FAzibSFkGnYkFjAdJCBUspWsArxxqlvWGfxNoTARfPUOWXRK94t726miHdp2T3PFkiGGGzcfzX1MAmFy+0q3kzwqLlQEsrK21iwLYDCVol2MPWOIkTz9PRWec4jSPfrVB3bwkHXUl7lx054YYu3z/SZprLqIsonZhYDJIRESniEUilP1r88zxrHNT+1Sb8ZDFXBD3UiGwJM6QkStyBKAPPsI/6fXW/gbL+ojXQhtkPE+kaWbrjMNljlH9aOgoFlMZkRPShG/fiqBNW+DQbbgmXGkTqT3+52FN9cvindHPA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tCXqGvdsm/o9zsYpTHfGeRXPFgyuKD9aLiHI6IONEpw=;
- b=W5IP6B6rHu1eSWbR15b0hN2SUq2hJeyvUEdcH3cioBd2juaw/ecwX4bqNPCJwiRT4e3qoYfD2PB+NdG/mjm6urITi2Xnj9BOvqc2iXhMvu4P18bFSdr+/sMnAJiLI4l4yVzbx46TD3Z/Krm4cLAPNotY2o3dC+cxhxZiQm4o62QvIryhmOCcI3EesROSzmIrf64OjqazeXgscV9+G93wK/mtXhN5gRuUANqEZEqq910DUUyvPG/ZvPjO4M4Y2KPMo9mAr/AO1IN9n3GHxJuX4lhhvrJb6oed060LYpTDfTp9PLb0CAshjwVcRFxgE3MI1g6juEYnpIKBSUkK8NP5bQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tCXqGvdsm/o9zsYpTHfGeRXPFgyuKD9aLiHI6IONEpw=;
- b=UuIrogePljZ2yIZ97GyqtQEQVnS9ArIgQ9a0aEG9WD6xup29ALAKtKVGQSTSJP6xUD0DKkx+RHZ6JRt0eHx6tDnNHLTWUR9slGxWNUV2ygTnQkgYI/AlSfqWl1uEcdRJ01FIBVKvAk34V2hJwPFBIpWoRyEdJ0chgyDhnwVjFRa1P7wWfCyscem1En4psF7BA+y1Xl8GMyCaI1vSS72o2cAULVMQnDqcTnUWtq+lsuhfdapywI/Fx3yRiuiavWhMXUWgbix3ckqDCFEyxaX911yhUS2Vx2caLWG5ntKIM3CFh+BLEcTd64PnoZJFSDJSKhkYkkNTgF7SAgIkopIn7Q==
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
- MW3PR12MB4460.namprd12.prod.outlook.com (2603:10b6:303:2f::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6387.33; Thu, 18 May 2023 19:34:38 +0000
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::bf6e:1dc2:10ea:cc04]) by DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::bf6e:1dc2:10ea:cc04%3]) with mapi id 15.20.6387.033; Thu, 18 May 2023
- 19:34:37 +0000
-Date: Thu, 18 May 2023 12:34:34 -0700
-From: Zhuojia Shen <chaosdefinition@hotmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Beata Michalska <beata.michalska@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2] target/arm: allow DC CVA[D]P in user mode emulation
-Message-ID: <DS7PR12MB630932847E7D525E12D517DFAC7F9@DS7PR12MB6309.namprd12.prod.outlook.com>
-References: <DS7PR12MB6309A0F097FA4FB9D7CACB5BAC7E9@DS7PR12MB6309.namprd12.prod.outlook.com>
- <6051fefc-a5b0-0c45-b1a9-ebdf2717caa7@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <6051fefc-a5b0-0c45-b1a9-ebdf2717caa7@linaro.org>
-User-Agent: Mutt/2.2.10 (2023-03-25)
-X-TMN: [tNXU17A8hUjvTFRrYGEM+0qirGKrI7or]
-X-ClientProxiedBy: SJ0PR13CA0199.namprd13.prod.outlook.com
- (2603:10b6:a03:2c3::24) To DS7PR12MB6309.namprd12.prod.outlook.com
- (2603:10b6:8:96::19)
-X-Microsoft-Original-Message-ID: <ZGZ9yvcOqbGjjk8z@manjaro-vmryzen>
+ (Exim 4.90_1) (envelope-from <tommy.wu@sifive.com>)
+ id 1pztUn-0006fJ-NL
+ for qemu-devel@nongnu.org; Fri, 19 May 2023 02:21:45 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tommy.wu@sifive.com>)
+ id 1pztUm-0006xb-0F
+ for qemu-devel@nongnu.org; Fri, 19 May 2023 02:21:45 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-6abeffced6fso2136250a34.3
+ for <qemu-devel@nongnu.org>; Thu, 18 May 2023 23:21:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1684477300; x=1687069300;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=s7dJrdvRQEkn0UC/4oL0GCL3y+1fYJXpabQdYpFpR3Q=;
+ b=HTcpvBfuSUyQOyf2kd3CwwTDCyOGTItkQFPbTxwSmmt82IVSvdIDtOLX2G0596IcLJ
+ /yJtMsnHGfHG0aYEumtE2pjMxBhUPiHO1Lnt4nKA8Yv40kvQc5ZCAtmyG+K0b1TSDQMg
+ BfcDV7io1TTk1KPxJ2xPb+jgHZE0MskU8gb9VKurTMz4GpHNwOUHvxNr6XRmdLKTJ7CM
+ QW6IkVGIN8wKh5iNUpXDTJlKUAV12G19w3cHd55CFs8LHLgg35zcdyow7ORg/IyHIVdT
+ FLvnfb0g47P2gPr4j3qBz6+xtOd6ZN+SkIZ/738GQTU+QBzu71hsOGuLvReXOhg6vzP1
+ bJVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684477300; x=1687069300;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=s7dJrdvRQEkn0UC/4oL0GCL3y+1fYJXpabQdYpFpR3Q=;
+ b=QASCckhmNC6qaEsezuoiPl1qMAxFMO46AAd3zGjswuPV/BzsioKtI6PTa6t4SGMb57
+ aG/8wgYyTvmZsonKefos4loBu5uKJCR1rPaaB9tlCBDHKmc0KkTNO2s0Jh2OTx2ivk6J
+ CMiRnSDd6NlVA9iiLFwNsZkVsBABtPALcgMWVpC/59jMZ1kICEyMJebYNO/9nPccKnYw
+ FK+1/6c+bgonyAx6KhoS8LBVZOUzehrlD00PdH4KsrT9ud/fZYHbiuGhlNJc8Ji1LMAK
+ hF4rt5tVTmBltHQrbrzT4zrwVeHDB2dEo7D1MHbpswx2GtwC6bQU4xiUvG/3SHhRgHRM
+ NcuA==
+X-Gm-Message-State: AC+VfDy4cs8RB1TCp6mfnz/XCJYfushd0gHgQG/rraSgztOI3vJApjll
+ EuXtuD5p6fWxFva6pHZ2Rh1VGese/q1P2XZMCwkSSaKnO/v5bgsw0GFRy8IZtUTloTBA4jUstgx
+ TfjdffvSJ9EqUiWopmiTtamS4isJP/RLXRE/XEQqFT5Urr75r82w6+D3WJsxZ9s7dkHe/yAcCIw
+ ==
+X-Received: by 2002:aca:1a0b:0:b0:394:5402:14cb with SMTP id
+ a11-20020aca1a0b000000b00394540214cbmr571919oia.21.1684477300113; 
+ Thu, 18 May 2023 23:21:40 -0700 (PDT)
+Received: from sw05.internal.sifive.com ([64.62.193.194])
+ by smtp.gmail.com with ESMTPSA id
+ 4-20020aca1104000000b0038e086c764dsm1324577oir.43.2023.05.18.23.21.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 May 2023 23:21:39 -0700 (PDT)
+From: Tommy Wu <tommy.wu@sifive.com>
+To: qemu-devel@nongnu.org
+Cc: Tommy Wu <tommy.wu@sifive.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH] hw/dma/xilinx_axidma: Check DMASR.HALTED to prevent infinite
+ loop.
+Date: Thu, 18 May 2023 23:21:35 -0700
+Message-Id: <20230519062137.1251741-1-tommy.wu@sifive.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|MW3PR12MB4460:EE_
-X-MS-Office365-Filtering-Correlation-Id: 039f597a-aac9-416e-1cfd-08db57d6ea9a
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: IdnLQhj19o6zv9kQeRRJ4yk4UzLVaO7wz6UHk1l4+hbf+DOuCIhgMg9fYJQqkf4WWHShFgstZyPkYNtoTHpyw8YvtBOOmQBEdv9ejQD9Yur7ngJcVunAXoG/XGieWcxBinfT3IHoMdSChmGZAUT1YuXfMTX5iG8SS29TyooHBvS60TMZvYka8yCjAJxf9DId6uOn1nKfx9vouOZuH/1BoviNo4jUPCy1P58cul6Dpxd3eIOROs8xu+Q7lZ8RA3MH9W1ohJ+nXhrspHigxoqmhU60VreZnXVL+F2/TsU+N+2Ik6LkSNaahDqfGLLdw4ZfyrPzM7T8Mx+k/jKPyE5apHOBaQGjMomAjAtXwfXwla1/R/qxmkO0yYTe/m7HLfgj+cKaVK468AqMz2CIiWV6OSoCw+jSPboqBr3Dg7/A76B9xKzwR4RwnVzypIxAEJywTN2c98KFs4+jfu+r3PUxQXGJYF8K+9tkvwaWt69etJ4F1+tS1cUehtMFgLOXtR61PZOloIa/jYipwbeYgYmVYOKiBKB2L+M60gQKD+5U/W/8p61moQt0Q4IKO7IM1qxCtJB1pZH5NCcrqtUT1Va4Oq6+uqj8Tl4NiYSs5r4mb14=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R3hCUGVESlRjUUJRb0w1a0lCbGR4a2lWRGc5czdQV0FUeXljeE5hNitxYnl6?=
- =?utf-8?B?YTdwclpjeU5oMXh2bGFMNjMyWW9IeVB5T2ZUYlh3aXBlSzhPc3IrQytKbGxV?=
- =?utf-8?B?c3o3dUNBdVFaWFQ2OUR0aGtHYk0ySHNkTmt1YW1RdEx3eWtJUXYvNmRHZ0pJ?=
- =?utf-8?B?bzdORDNUcCs0MFNkaFlkRmNjeUx6Qk9ENlZ1ZFlWTTZtTUsyNnZLNHJicmpG?=
- =?utf-8?B?TU04V0RNbHdydUFMeFB2Rk52S3FZck1CRzl4VlpSL3JSZnJEWlN5eHdSOEN1?=
- =?utf-8?B?TWlNNHNYQnFvNjJlZ2hCZUlGTVNuQnJ0clhtRnFBSkhDbUJkU0krSThTenNX?=
- =?utf-8?B?M01vakhiUlMrbGNwV28yN3VkYmUya3VrZVU2QzB5V0lLd3dINXZOZWU3d3o1?=
- =?utf-8?B?WkVxZE9ycmFJSU43QlFkb1NKcVJ2OG00eGJaczh3Nmt1NXUwR29WdkxHL2ZM?=
- =?utf-8?B?OUxIMzZrdjN6ek9lcnFBdlV4cE1ZeWc1amIvUzFKbm9CdklnZStSazh3VzBZ?=
- =?utf-8?B?K3UrUlJqQ01YNnRSMGgyL2xoV2EzTEZYSjNuWkpFWTkvMnIweVBkdE5OV1hL?=
- =?utf-8?B?NFlXb0xISTFacCtkNVp2aG1XbC92ZWdpVmcrcWExQzJFdnVYb2NrTmF0YkNt?=
- =?utf-8?B?ZHo3UHZxMXJWdUpmc1k3a2NaWDdmRUlScVVSQXVqT2ZOOWFKNzVPTmhyQVAv?=
- =?utf-8?B?Y2QxY29mNmdHb3czL1ZncXRGWFBJRWFZU1hQY280WC9XajhtVnc2bU5vaWRu?=
- =?utf-8?B?TTRDUFhsRVFPTVVnTHBhQ050eEVtTXNJRUVNWWFXMDZUNkdRdDA3TmdvY1V5?=
- =?utf-8?B?REpYM01saGl5M0hVZ2tIQjY0N09DWEpmRUpTNHJ5SmlCcDBUVnJaMGduT3Qv?=
- =?utf-8?B?M1JQU29RNWFJVnBScXhld0pveHZYdnY3VU9RT2M2aUoxSTVNQ3I0V3lEM1c0?=
- =?utf-8?B?cm9xUWY1TXl2M0ROaVI3Y3orWXBja1FPMk5vQU8vdmIrQTNXQTRVTmwyeHhO?=
- =?utf-8?B?T0k1ZmxnazR2dTFIM0NpMVJKU0tiaU1GR1FaTDBqSnVxSldncXRvZC81dVU2?=
- =?utf-8?B?dkdqVGVpWDlzanhhcC9xeTloaGh1YVRJQ1lqR2NTUFhmT24zTW9LMXBkWVhX?=
- =?utf-8?B?YUVXcE1XVUUyWlRjU05UcTRBajZ1eFZkei9OUTE3V2NTZ1RZVnkrWWM2ODhJ?=
- =?utf-8?B?eGZCaDRueTlSckxIVkFuZkdHSFV6ZjI5OUt1RDZ3LzEyQXIrWFhnUGMzb0dQ?=
- =?utf-8?B?SkVtYmM4RDgwTXZDdUhYcmlUSnBUSm5NREd5TWViSmpjWmI1Y1BaYzRmcjMz?=
- =?utf-8?B?STFqRzhBWEkrOVd0Nk9vY1Uwc1ZRNE8xbVdIWmF4RlBmdXIydkpXaEY3MTli?=
- =?utf-8?B?YU5iWDhiUEtiVzZlNFhKeGJDU2w2YUVZWXA5VzVjWkwzOTR3Slc3bGk5T3lB?=
- =?utf-8?B?aHdEY1dTU2ZWVXl6M01HZzdhRXNzNFh4aGFPcUozV2x2dzB6eWxBV0FFRTFQ?=
- =?utf-8?B?WHUzc2kzT3VabkhNQjhJL0pkN0YzS25mVVRVV21nazR5ZUJxd1VpdXlnV1Br?=
- =?utf-8?B?cjJYT2JLUGE0b25waFppSHB6NCtLOEpYeVZZVWhGSkRiMmVjcDc1WGFUcTMx?=
- =?utf-8?Q?yL8grngItk7T8Z86weWzFteqdDVXAyJhs4D1ltl9o774=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 039f597a-aac9-416e-1cfd-08db57d6ea9a
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 May 2023 19:34:37.9406 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4460
-Received-SPF: pass client-ip=2a01:111:f400:7e88::81b;
- envelope-from=chaosdefinition@hotmail.com;
- helo=NAM10-DM6-obe.outbound.protection.outlook.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=tommy.wu@sifive.com; helo=mail-ot1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3odc7w/rWjLc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e2SDRb/M0EAN
 
-On 05/17/2023 12:51 PM -0700, Richard Henderson wrote:
-> On 5/17/23 10:31, Zhuojia Shen wrote:
-> > DC CVAP and DC CVADP instructions can be executed in EL0 on Linux,
-> > either directly when SCTLR_EL1.UCI == 1 or emulated by the kernel (see
-> > user_cache_maint_handler() in arch/arm64/kernel/traps.c).
-> > 
-> > This patch enables execution of the two instructions in user mode
-> > emulation.
-> > 
-> > Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
-> > ---
-> >   target/arm/helper.c               |  6 ++--
-> >   tests/tcg/aarch64/Makefile.target | 11 ++++++++
-> >   tests/tcg/aarch64/dcpodp-1.c      | 47 +++++++++++++++++++++++++++++++
-> >   tests/tcg/aarch64/dcpodp-2.c      | 47 +++++++++++++++++++++++++++++++
-> >   tests/tcg/aarch64/dcpop-1.c       | 47 +++++++++++++++++++++++++++++++
-> >   tests/tcg/aarch64/dcpop-2.c       | 47 +++++++++++++++++++++++++++++++
-> >   6 files changed, 201 insertions(+), 4 deletions(-)
-> >   create mode 100644 tests/tcg/aarch64/dcpodp-1.c
-> >   create mode 100644 tests/tcg/aarch64/dcpodp-2.c
-> >   create mode 100644 tests/tcg/aarch64/dcpop-1.c
-> >   create mode 100644 tests/tcg/aarch64/dcpop-2.c
-> 
-> I recommend splitting the tests to a second patch.
+When we receive a packet from the xilinx_axienet and then try to s2mem
+through the xilinx_axidma, if the descriptor ring buffer is full in the
+xilinx axidma driver, we’ll assert the DMASR.HALTED in the
+function : stream_process_s2mem and return 0. In the end, we’ll be stuck in
+an infinite loop in axienet_eth_rx_notify.
 
-Will do.
+This patch checks the DMASR.HALTED state when we try to push data
+from xilinx axi-enet to xilinx axi-dma. When the DMASR.HALTED is asserted,
+we will not keep pushing the data and then prevent the infinte loop.
 
-> 
->  +++ b/tests/tcg/aarch64/dcpodp-1.c
-> > @@ -0,0 +1,47 @@
-> > +/* Test execution of DC CVADP instruction */
-> > +
-> > +#include <asm/hwcap.h>
-> > +#include <sys/auxv.h>
-> > +
-> > +#include <signal.h>
-> > +#include <stdio.h>
-> > +#include <stdlib.h>
-> > +
-> > +#ifndef HWCAP2_DCPODP
-> > +#define HWCAP2_DCPODP (1 << 0)
-> > +#endif
-> > +
-> > +static void signal_handler(int sig)
-> > +{
-> > +    exit(EXIT_FAILURE);
-> > +}
-> > +
-> > +static int do_dc_cvadp(void)
-> > +{
-> > +    struct sigaction sa = {
-> > +        .sa_handler = signal_handler,
-> > +    };
-> > +
-> > +    if (sigaction(SIGILL, &sa, NULL) < 0) {
-> > +        perror("sigaction");
-> > +        return EXIT_FAILURE;
-> > +    }
-> > +    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
-> > +        perror("sigaction");
-> > +        return EXIT_FAILURE;
-> > +    }
-> > +
-> > +    asm volatile("dc cvadp, %0\n\t" :: "r"(&sa));
-> > +
-> > +    return EXIT_SUCCESS;
-> > +}
-> 
-> ...
-> 
-> > diff --git a/tests/tcg/aarch64/dcpodp-2.c b/tests/tcg/aarch64/dcpodp-2.c
-> > new file mode 100644
-> > index 0000000000..3245d7883d
-> > --- /dev/null
-> > +++ b/tests/tcg/aarch64/dcpodp-2.c
-> > @@ -0,0 +1,47 @@
-> > +/* Test execution of DC CVADP instruction on unmapped address */
-> > +
-> > +#include <asm/hwcap.h>
-> > +#include <sys/auxv.h>
-> > +
-> > +#include <signal.h>
-> > +#include <stdio.h>
-> > +#include <stdlib.h>
-> > +
-> > +#ifndef HWCAP2_DCPODP
-> > +#define HWCAP2_DCPODP (1 << 0)
-> > +#endif
-> > +
-> > +static void signal_handler(int sig)
-> > +{
-> > +    exit(EXIT_SUCCESS);
-> > +}
-> > +
-> > +static int do_dc_cvadp(void)
-> > +{
-> > +    struct sigaction sa = {
-> > +        .sa_handler = signal_handler,
-> > +    };
-> > +
-> > +    if (sigaction(SIGILL, &sa, NULL) < 0) {
-> > +        perror("sigaction");
-> > +        return EXIT_FAILURE;
-> > +    }
-> 
-> This isn't: if SIGILL, exit with success.
-> 
-> You don't actually need to register anything for SIGILL, in either test,
-> because SIGILL is a fine exit for failure.  So is SIGSEGV for test 1.
-> 
+Signed-off-by: Tommy Wu <tommy.wu@sifive.com>
+---
+ hw/dma/xilinx_axidma.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-Thanks!  Will update in the second patch.
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 6030c76435..12c90267df 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -168,6 +168,11 @@ static inline int stream_idle(struct Stream *s)
+     return !!(s->regs[R_DMASR] & DMASR_IDLE);
+ }
+ 
++static inline int stream_halted(struct Stream *s)
++{
++    return !!(s->regs[R_DMASR] & DMASR_HALTED);
++}
++
+ static void stream_reset(struct Stream *s)
+ {
+     s->regs[R_DMASR] = DMASR_HALTED;  /* starts up halted.  */
+@@ -269,7 +274,7 @@ static void stream_process_mem2s(struct Stream *s, StreamSink *tx_data_dev,
+     uint64_t addr;
+     bool eop;
+ 
+-    if (!stream_running(s) || stream_idle(s)) {
++    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+         return;
+     }
+ 
+@@ -326,7 +331,7 @@ static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
+     unsigned int rxlen;
+     size_t pos = 0;
+ 
+-    if (!stream_running(s) || stream_idle(s)) {
++    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+         return 0;
+     }
+ 
+@@ -407,7 +412,7 @@ xilinx_axidma_data_stream_can_push(StreamSink *obj,
+     XilinxAXIDMAStreamSink *ds = XILINX_AXI_DMA_DATA_STREAM(obj);
+     struct Stream *s = &ds->dma->streams[1];
+ 
+-    if (!stream_running(s) || stream_idle(s)) {
++    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+         ds->dma->notify = notify;
+         ds->dma->notify_opaque = notify_opaque;
+         return false;
+-- 
+2.31.1
 
-> Also, you could merge all 4 tests and save some CI time.
-
-Tests for CVAP and CVADP require different CFLAGS; I'll merge them into
-2 tests.
-
-> 
-> 
-> r~
-> 

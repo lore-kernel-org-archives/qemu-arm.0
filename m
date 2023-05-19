@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n7-20020a7bcbc7000000b003f318be9442sm2948436wmi.40.2023.05.19.10.04.56
+        by smtp.gmail.com with ESMTPSA id y18-20020adff152000000b002e61e002943sm5769093wro.116.2023.05.19.10.04.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 19 May 2023 10:04:57 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 876961FFC1;
+	by zen.linaroharston (Postfix) with ESMTP id A71131FFC2;
 	Fri, 19 May 2023 18:04:55 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -24,143 +24,113 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexandre Iooss <erdnaxe@crans.org>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [RFC PATCH 6/8] sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
-Date: Fri, 19 May 2023 18:04:52 +0100
-Message-Id: <20230519170454.2353945-7-alex.bennee@linaro.org>
+Subject: [RFC PATCH 7/8] plugins: add time control API
+Date: Fri, 19 May 2023 18:04:53 +0100
+Message-Id: <20230519170454.2353945-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230519170454.2353945-1-alex.bennee@linaro.org>
 References: <20230519170454.2353945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cSfLkc/aXlVt
+X-TUID: mQlWdqSS3L28
 
-Move the key functionality of moving time forward into the clock
-sub-system itself. This will allow us to plumb in time control into
-plugins.
+Expose the ability to control time through the plugin API. Only one
+plugin can control time so it has to request control when loaded.
+There are probably more corner cases to catch here.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/timer.h | 15 +++++++++++++++
- softmmu/qtest.c      | 24 ++----------------------
- util/qemu-timer.c    | 26 ++++++++++++++++++++++++++
- 3 files changed, 43 insertions(+), 22 deletions(-)
+ include/qemu/qemu-plugin.h   | 19 +++++++++++++++++++
+ plugins/api.c                | 22 ++++++++++++++++++++++
+ plugins/qemu-plugins.symbols |  2 ++
+ 3 files changed, 43 insertions(+)
 
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index ee071e07d1..9a1a42a400 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -245,6 +245,21 @@ bool qemu_clock_run_timers(QEMUClockType type);
-  */
- bool qemu_clock_run_all_timers(void);
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index 50a9957279..8385670976 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -536,7 +536,26 @@ void qemu_plugin_register_vcpu_mem_inline(struct qemu_plugin_insn *insn,
+                                           enum qemu_plugin_op op, void *ptr,
+                                           uint64_t imm);
  
 +/**
-+ * qemu_clock_advance_virtual_time(): advance the virtual time tick
-+ * @target: target time in nanoseconds
++ * qemu_plugin_request_time_control() - request the ability to control time
 + *
-+ * This function is used where the control of the flow of time has
-+ * been delegated to outside the clock subsystem (be it qtest, icount
-+ * or some other external source). You can ask the clock system to
-+ * return @early at the first expired timer.
++ * This grants the plugin the ability to control system time. Only one
++ * plugin can control time so if multiple plugins request the ability
++ * all but the first will fail.
 + *
-+ * Time can only move forward, attempts to reverse time would lead to
-+ * an error.
-+ *
-+ * Returns: new virtual time.
++ * Returns an opaque handle or NULL if fails
 + */
-+int64_t qemu_clock_advance_virtual_time(int64_t dest);
++const void * qemu_plugin_request_time_control(void);
  
- /*
-  * QEMUTimerList
-diff --git a/softmmu/qtest.c b/softmmu/qtest.c
-index 34bc9e1f49..3cd6c11f5a 100644
---- a/softmmu/qtest.c
-+++ b/softmmu/qtest.c
-@@ -336,26 +336,6 @@ void qtest_set_virtual_clock(int64_t count)
-     qatomic_set_i64(&qtest_clock_counter, count);
++/**
++ * qemu_plugin_update_ns() - update system emulation time
++ * @handle: opaque handle returned by qemu_plugin_request_time_control()
++ * @time: time in nanoseconds
++ *
++ * This allows an appropriately authorised plugin (i.e. holding the
++ * time control handle) to move system time forward to @time.
++ */
++void qemu_plugin_update_ns(const void *handle, int64_t new_time);
+ 
+ typedef void
+ (*qemu_plugin_vcpu_syscall_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_index,
+diff --git a/plugins/api.c b/plugins/api.c
+index 2078b16edb..8402b3a5f6 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -37,6 +37,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/plugin.h"
+ #include "qemu/log.h"
++#include "qemu/timer.h"
+ #include "tcg/tcg.h"
+ #include "exec/exec-all.h"
+ #include "exec/ram_addr.h"
+@@ -442,3 +443,24 @@ uint64_t qemu_plugin_entry_code(void)
+ #endif
+     return entry;
  }
- 
--static void qtest_clock_warp(int64_t dest)
--{
--    int64_t clock = cpus_get_virtual_clock();
--    AioContext *aio_context;
--    assert(qtest_enabled());
--    aio_context = qemu_get_aio_context();
--    while (clock < dest) {
--        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
--                                                      QEMU_TIMER_ATTR_ALL);
--        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
--
--        cpus_set_virtual_clock(cpus_get_virtual_clock() + warp);
--
--        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
--        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
--        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--    }
--    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
--}
--
- static bool (*process_command_cb)(CharBackend *chr, gchar **words);
- 
- void qtest_set_command_cb(bool (*pc_cb)(CharBackend *chr, gchar **words))
-@@ -732,7 +712,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-                                             QEMU_TIMER_ATTR_ALL);
-         }
--        qtest_clock_warp(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
-+        qemu_clock_advance_virtual_time(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %"PRIi64"\n",
-                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-@@ -758,7 +738,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         g_assert(words[1]);
-         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
-         g_assert(ret == 0);
--        qtest_clock_warp(ns);
-+        qemu_clock_advance_virtual_time(ns);
-         qtest_send_prefix(chr);
-         qtest_sendf(chr, "OK %"PRIi64"\n",
-                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index 6a0de33dd2..213114be68 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -645,6 +645,11 @@ int64_t qemu_clock_get_ns(QEMUClockType type)
-     }
- }
- 
-+static void qemu_virtual_clock_set_ns(int64_t time)
++
++/*
++ * Time control
++ */
++static bool has_control;
++
++const void * qemu_plugin_request_time_control(void)
 +{
-+    return cpus_set_virtual_clock(time);
-+}
-+
- void init_clocks(QEMUTimerListNotifyCB *notify_cb)
- {
-     QEMUClockType type;
-@@ -675,3 +680,24 @@ bool qemu_clock_run_all_timers(void)
- 
-     return progress;
- }
-+
-+int64_t qemu_clock_advance_virtual_time(int64_t dest)
-+{
-+    int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    AioContext *aio_context;
-+    aio_context = qemu_get_aio_context();
-+    while (clock < dest) {
-+        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-+                                                      QEMU_TIMER_ATTR_ALL);
-+        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
-+
-+        qemu_virtual_clock_set_ns(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + warp);
-+
-+        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
-+        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
-+        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    if (!has_control) {
++        has_control = true;
++        return &has_control;
 +    }
-+    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
-+
-+    return clock;
++    return NULL;
 +}
++
++void qemu_plugin_update_ns(const void *handle, int64_t new_time)
++{
++    if (handle == &has_control) {
++        qemu_clock_advance_virtual_time(new_time);
++    }
++}
+diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+index 71f6c90549..91b882fecc 100644
+--- a/plugins/qemu-plugins.symbols
++++ b/plugins/qemu-plugins.symbols
+@@ -35,11 +35,13 @@
+   qemu_plugin_register_vcpu_tb_exec_cb;
+   qemu_plugin_register_vcpu_tb_exec_inline;
+   qemu_plugin_register_vcpu_tb_trans_cb;
++  qemu_plugin_request_time_control;
+   qemu_plugin_reset;
+   qemu_plugin_start_code;
+   qemu_plugin_tb_get_insn;
+   qemu_plugin_tb_n_insns;
+   qemu_plugin_tb_vaddr;
+   qemu_plugin_uninstall;
++  qemu_plugin_update_ns;
+   qemu_plugin_vcpu_for_each;
+ };
 -- 
 2.39.2

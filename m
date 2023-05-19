@@ -1,151 +1,131 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp132165ejq;
-        Fri, 19 May 2023 15:13:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5JW1JPltMJOuc7qTemtgz2ZFcrWUR1S21MJzt11xI3xbSlp7E/ZDspBjJVEJI5gzjUAbDC
-X-Received: by 2002:a5d:4002:0:b0:306:cfba:3c32 with SMTP id n2-20020a5d4002000000b00306cfba3c32mr3108586wrp.48.1684534409076;
-        Fri, 19 May 2023 15:13:29 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684534409; cv=pass;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp138108ejq;
+        Fri, 19 May 2023 15:23:16 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7l+ylAebusnGGat8xYtg6ldmI9Ya2EeagptF/g+fsphGsDm8Fh9JNVXvdIjN2afXq2023W
+X-Received: by 2002:a05:622a:28c:b0:3f4:f58d:d00d with SMTP id z12-20020a05622a028c00b003f4f58dd00dmr6817047qtw.40.1684534996508;
+        Fri, 19 May 2023 15:23:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684534996; cv=none;
         d=google.com; s=arc-20160816;
-        b=lhUbAjxe1hfPwLBTX+s7cnMn4oZAORinx8kFlSBvt+Vra2fmM+vBY9/+4khq/Vfe3Z
-         sdZJ1SJVfQNnpxuGgUeLlCu5o18Q+G6HCs2SGHpI8mjz/qOsCGio0V9JqDp6e1auoECm
-         U+i7avqxDy5WywOlwBdClDDdCleo5XpKreqsWLxXoKMXn4oGHBLfWgt9gjOjRl/Zn33t
-         DL0jyEP9aVI3ZQX6cJP5nOeBj0pTaffi/9aDBGE/9B8Pd+Wr52ge4RGSX46MEQXSkdNl
-         Upd22rHcyovv/5KGwKd8p3dpaETRf4Z/J3iq5YjBUnDudBdVzUQLP5vMHYFYfmOhmqVL
-         UoKQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=hrRAuZW/9dDtJetUNWhmlp41BO8OZ8vVyy3h1SASsv/+aVZRDU9G0XfgRIAvLg6AD+
+         lVZwgXwGHmjV5QBaHxAZpk4mKQJajJZANMJdyDAffs6u5t0Ts68+as9TNQxW6PYOuF81
+         +aqfCqTmuTnGuUWF6cOkKbC/IGsSNp+5JgznIhDXb4zlEBNVZvpFxxFNUhUKS1ta59+7
+         iO1pLGAA9YfpvWEVEBoG14c6jtcROvlhqTuAzfryEO7RHN4D0Ze0kMDO99k5ZhgTyPY8
+         ey577+JRL4Fu6RhUYqGE/+V/WXTPze9dADeN0rUDYitA8pbQqm1g3300pRUwoU03D1yf
+         T9qw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
-        b=DlcjjdtZmWf0ZvYLoEdmmBJuLnEnvKMpIYQ8DzslMRYLXEiwr+PqInflSF0XFQHgUG
-         2PHxU6EVKOD7CVTr/IozDXrK2dMrxnXoORUx/Ne9F/Is+8lVqpNEvIRozSx4+6wSYlEW
-         /RQGe/nUvQxmR36CDgBb/CGj2fdhT3hInWdUZ6K4/j9FUvWRyQK0cteZBFLfwCw0AWC8
-         Kl0SDAaljFlDmlsZcwdu2HG3dYB2+X3/xJVnne+Nstvx25jNxqdOSt/zZWDG/rNqrMD7
-         decJjca5X4YrSYS+F2cuJsjiU6eSOo32rS6JPRf1TYPfcJc5DQUMbl8evY/RN210BRxK
-         VmsQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=dWGgTY4W;
-       arc=pass (i=1);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ZQMgiGeTP0aj2d/37QCAcVJcNvrxA4WCQM4ErIojyYo=;
+        b=jW/v2xGKu+rveYVv3RHjYKL36Uj3K6c4+QCms9eccmDQgTzyY6FeiPTyxqn9m3H/pI
+         XKOh55fUU3SUEib0lmJo2zuzOAwV+K1CebmlRmTeISpJLq+B1H6XQqdJnE9IwL8LUOfG
+         1/l7NKnqPloLQjPh5biWXocXhIMXjnJtnwRIYeoPP8PQtjIF+UML+UCVbGlAg7WpGJzC
+         UAcgANe024VQjPs4H6QfsM/e7BPqsvcvvTUzRnegfoZ4kIPprXqe/jlzgUS43T9vuYyf
+         5g4jtWpzAeerhNzwqD6Qal6d69F0zYClBI2ZQZW1Dp7uOKddPE4MP96u8lFQBZKY48Po
+         +otQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sJZqvDyG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a5d4e11000000b002e55cc6917fsi79237wrt.231.2023.05.19.15.13.28
+        by mx.google.com with ESMTPS id b26-20020a05620a119a00b0074fb79aed78si80151qkk.73.2023.05.19.15.23.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 May 2023 15:13:29 -0700 (PDT)
+        Fri, 19 May 2023 15:23:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=dWGgTY4W;
-       arc=pass (i=1);
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sJZqvDyG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q08LK-0003I7-Ik; Fri, 19 May 2023 18:12:58 -0400
+	id 1q08V0-0005XI-Ka; Fri, 19 May 2023 18:22:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1q08LF-0003Gs-By; Fri, 19 May 2023 18:12:54 -0400
-Received: from mail-mw2nam12acsn20808.outbound.protection.outlook.com
- ([2a01:111:f400:fe5a::808]
- helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <ninad@us.ibm.com>) id 1q07aZ-00022q-Uj
+ for qemu-arm@nongnu.org; Fri, 19 May 2023 17:24:39 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1q08LD-0007c0-LE; Fri, 19 May 2023 18:12:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TsWURHX3AaqM+l1UmVzQuHR6SyINeQd/PuWqGUWNzclxzWbmIFX9gsT8jGai8oSEWLYYvnG0V/UZ8FYY2pss4urs1j9wYQHU+4E4rqDUxYWGfDVdZKCy7822BGixdDDvqb0SQ+oKuaM32frmjTMaufoImlseE/pdRMMxbMojmx5K4U2frsFRl68z5uNrLqicDrfpDCMK9RsieW4byhEHp8Mj2v4XPnGcfkIv19zm3nh2cNynMeQ1IMBJYV4+rEbI8Z3QjxTsHu7EDclH+OCuCBUqtaXdJsEifQgou6PFp42kFRQ2SboQA5XZ3gmDCTdktadkCysEsuVyTEUiZLDTYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
- b=g9s+VzYDnqXKC47RKV4ReDIo+03oGSkYorpEB+kL5k4r6jgjRT008VrLeN35Zna9CAuWRyzRiONy/wLN8AmRJr+R/akdSH4R4mHcS/APip3Ud50i7yj48NGiKOMbFQMyJNApQ8lf9NSoPsdgPJSr8NGFHKaxao90msawwqyLQRX38QWwqmBhIoIwqx914Uh9RMUO4hvxedHMgqkkjV5FGE8zgwXsovDtcAKFaBAgfsGcib9DCgl8w4wk21iJNpg96NOKVqwJnJ+DOxQVyl2AYectweV6xlqBDkal+cqxTTW0iuyeC7itwT04ySXAHVZC1w3KXtH7oDJUkXhXcRxIjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
- b=dWGgTY4WnDrba4Cyjj1F6YgIOgh50bMrccxQ5F9BypK/lsoLdL2o+Oo/Hi/ZaLZxP78z83JBdW8ex/1CZ1AXONgvGYQMh7n8O32dpGiqNL9MeHoYitAnOnYcpwFo1dHSBJPUfu/LQA6NFCUGAGHAECmpmjAOzgnXkgT507TvhGEpNTUIySLmmmxbCSPoxuBhcFkXEnf+WP5Tty159ioyRQoFNE92rxSyOyJejMvTBgVcnmGRJBhwgiiqt+JBr7/0rfL8DMGNy9rgNU9pGcvB869b2m77J7YMmy9VYbQPp7tBbYnZGCDeQfayikfzrlzKsw/ocAbccACMqjWVKxj55A==
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
- BL1PR12MB5756.namprd12.prod.outlook.com (2603:10b6:208:393::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6387.24; Fri, 19 May 2023 22:12:46 +0000
-Received: from DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::bf6e:1dc2:10ea:cc04]) by DS7PR12MB6309.namprd12.prod.outlook.com
- ([fe80::bf6e:1dc2:10ea:cc04%3]) with mapi id 15.20.6387.033; Fri, 19 May 2023
- 22:12:46 +0000
-From: Zhuojia Shen <chaosdefinition@hotmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Zhuojia Shen <chaosdefinition@hotmail.com>
-Subject: [PATCH v3 2/2] tests/tcg/aarch64: add DC CVA[D]P tests
-Date: Fri, 19 May 2023 14:56:23 -0700
-Message-ID: <DS7PR12MB6309A170F8BC7D7C956D6C97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <DS7PR12MB63096EDD683DE70EBC472E97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
-References: <DS7PR12MB63096EDD683DE70EBC472E97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TMN: [w1wkcrrvUE5FB+1Prpq3fzIDLdsUAUhw]
-X-ClientProxiedBy: BY5PR04CA0011.namprd04.prod.outlook.com
- (2603:10b6:a03:1d0::21) To DS7PR12MB6309.namprd12.prod.outlook.com
- (2603:10b6:8:96::19)
-X-Microsoft-Original-Message-ID: <20230519215623.283899-1-chaosdefinition@hotmail.com>
+ (Exim 4.90_1) (envelope-from <ninad@us.ibm.com>) id 1q07aY-0007f5-2z
+ for qemu-arm@nongnu.org; Fri, 19 May 2023 17:24:39 -0400
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34JLKihP009137; Fri, 19 May 2023 21:24:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=pp1;
+ bh=ZQMgiGeTP0aj2d/37QCAcVJcNvrxA4WCQM4ErIojyYo=;
+ b=sJZqvDyGFA8+XQJse7BaKNc6N//yALB86PeN7ymE3wUiksHHD48Q3ey6n4CSWnXhxFId
+ pTrQJAwqZDcNl0H6/4SCHX7L/6uqhaWTz6DPuztaPbxbGmwY/GpEFnx2HAc6DC+GbJQh
+ aIkZcX6JoavyzlntKMywhHYJHLuqzNolw8XFYJZmXcNKXkQHQ8QKrjqkLqy/vzl3hRfG
+ /XtuuG0Hn1wF6Hz47/oG1d1YgPEfgXtHo6rIe1q5DEIdeAUYDlbQWOV29MH9id0DkHGa
+ +dl4DnMnNTn5BkYZeYhZMRtL3YAQtED113CuCiwTX68IUDZQcrLEQWXK+NR8BeDbIZ0j 3A== 
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qpfhkjmx1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 May 2023 21:24:21 +0000
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34JIhjVZ010793;
+ Fri, 19 May 2023 21:24:20 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([9.208.130.97])
+ by ppma03dal.us.ibm.com (PPS) with ESMTPS id 3qj266h40p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 May 2023 21:24:20 +0000
+Received: from smtpav01.wdc07v.mail.ibm.com (smtpav01.wdc07v.mail.ibm.com
+ [10.39.53.228])
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 34JLOJjD34406798
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 May 2023 21:24:19 GMT
+Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D96AB58055;
+ Fri, 19 May 2023 21:24:18 +0000 (GMT)
+Received: from smtpav01.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C37FB5804B;
+ Fri, 19 May 2023 21:24:18 +0000 (GMT)
+Received: from gfwa601.aus.stglabs.ibm.com (unknown [9.3.62.226])
+ by smtpav01.wdc07v.mail.ibm.com (Postfix) with ESMTPS;
+ Fri, 19 May 2023 21:24:18 +0000 (GMT)
+Received: by gfwa601.aus.stglabs.ibm.com (Postfix, from userid 155676)
+ id F25662ED7E4; Fri, 19 May 2023 16:24:17 -0500 (CDT)
+From: Ninad Palsule <ninad@linux.ibm.com>
+To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au,
+ qemu-arm@nongnu.org, joe@jms.id.au
+Cc: Ninad Palsule <ninadpalsule@us.ibm.com>, ninad@linux.ibm.com
+Subject: [PATCH v1 1/1] Add vpd data for Rainier machine
+Date: Fri, 19 May 2023 16:24:12 -0500
+Message-Id: <20230519212412.3362107-2-ninad@linux.ibm.com>
+X-Mailer: git-send-email 2.37.2
+In-Reply-To: <20230519212412.3362107-1-ninad@linux.ibm.com>
+References: <20230519212412.3362107-1-ninad@linux.ibm.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|BL1PR12MB5756:EE_
-X-MS-Office365-Filtering-Correlation-Id: ddfdd4ea-dbfe-4c6d-15d7-08db58b62cf7
-X-MS-Exchange-SLBlob-MailProps: ZILSnhm0P3nvAoS/oQTVQZ1S7Y8lGJvUWSC1Z4WfQFRwDUWz7rXlWQckZQbP4iDgCDt1is1V71A1/hL720/2e2ntFk9hg2/jCTgyiSCjq6phg0+IKw85YJwFaeL6t/nTx8RilFAknG7X61X/mg4JNyFhu+mhNldWxpOe1O76P65p04Hh/nOln0m6SpLTdC144+K5Vqt7wBZFiPq1KqOumAk7NoSTIzspFkQbprvPMb9nKjt6QAIMfzaMv1lwuqwwkEjisUXtzOprfv6Qy0B38HwhgSX1jUfZ+PVnkaVRo7dGh0iNPmM69BDZbimzGe0ydjy4kcGHrMW5mAhGow3/IdqqbvHqGIeofwnsPRbX63t2Qp0U//sH5CVEq1L4xkokeMm03CIKzCrymu/IiXNtCDKdOYOvpsH01VHCRrkVGBoSHfU/JjAJaSJO91SB/45hqp3F8XWBYExsQRHYNt1ISBQtVgxPTtoebdicKPh//OU/4vbEogjnnFlKKe0N1yk5xU61n/nKDb6nxyzjTwyRzDKm1//+cLO1P5SCdVUYq98Acv6cRAISyIExfSMJDSvIFpmyZdc/RJo8RZi2c2tfi6htyj/Ghtw4chb7tztjcNuKQY4Ua5jVraa8j7pFBIV5N8NnFAA/oqznSbVDxq+EuCU2jnXm5TiJXmzszWMbYI7KfodjuVRg7+RVhoDCwuTeRGTvHOPeXpkg7BefJ8scz2vZTf4nutkgPxft6o5j0XU5ckbhWB8AsILKO00x2mZ1/fOn7mzhmnibnkOFikm+lSQEoRF8/qqL
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: C/L/G5UGhPuKc3xd+RFNVzSJsE9x5u0Z1qdm2YokYAAZUIPq8QkvHOcCuUa+nLcYXplR+bz5vZ5JiGLIhyVHGn2zM2KDLUQ5oZzPtdnhGbNTfwycLyNriCBI4wrz8+Eq2JnDKXt3RWj9POx8muBSvf/YXFGRcA5tUq1WO7k1iYl6Ygkr8NDP+er9epMq4uz6+Y4W9hfia7L79uGBpkAEWbZc7A6gIRwdzd3LZVK9jOM20etsdWbnzHI5Jsnw5dwkgxAMbp56xMRzlIshAAdEfCYkSkjMD3mWNocYnOA6E498kItj21sF8Hy4BFEzV7HBSeIJX/6kmI0dleKg5ynzTBtR7WvLTEftgmvLF9IRwqhl95t2FlCMv4wv37eltEKD6IvAP/CvQgd10MDbjB0x3EQXEF6laqWqxdDkY4AkhVOSr1/m/esjZn830lLJc0EDNrWy2U18MnLVUBgdabohP8lGe7nBkbOP8cSMVDLhrbtvtqsNiewf5eoFwnteOvKvYQw59UiQETe/Lg/dnkJupfkbUCkte0XywejQYlWGaKNFETjNVxgJfWbNkOCRNh08dwZq2sDMF8Xmom+Oo/cjnP5POlH149Y1jr9sdwe5kjB/qq+CxHbz8eMaEbMmTbow
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JStSlVIbnwe8XEs+jUTm1mdxJF6GfT8wWEXzjYZmPgunahjiu1aQJL/mej0P?=
- =?us-ascii?Q?6OwGw/GiDwKGoSI2kCQAdzCcHCoGN48sPTFhyAxGRO4fvxxLtFd4RdfjuhwJ?=
- =?us-ascii?Q?6Ep9AInMggKP9HUYDC19TfZl6U2w6B0NIs30hZakA1hUFJywpb9+i/9+Sllk?=
- =?us-ascii?Q?E9a57AFhJooX3M3YtkGTsHCnVO/K+mI2/Focy5jPXyKFuXneZZH+h28bN8hf?=
- =?us-ascii?Q?3enzAXiVFk6dYl9Hw/Cj4OQhZLNGnAizr+UEbYEPFOjZmQwkPAX2++DMBwE+?=
- =?us-ascii?Q?opZhsJFA5wyrRdKoNfxkl/RzaPvypP9nATRz9a5upnWSSrq7tF3H9syQyBd1?=
- =?us-ascii?Q?CrUTyDsD7eR3uIbK+73wnsANjL3hxgsi1BpN+JbXzpP/G/2zip+L5KCKmKuN?=
- =?us-ascii?Q?hMzlg22WmnIXXDPj5VExUG6fRW/o01EySsKl30vMH2pQw0cVtYih52IIKexg?=
- =?us-ascii?Q?gs1sbp5ALi4VreqTknO2NczOy+perWlWgPZfbDtEbNKvRI9pHoE9dS4olqRp?=
- =?us-ascii?Q?ZebynVxB5wAvbfpQUoAxPCGiGmASO/rksru09qv2Sbbw465cxHLr/35LeHhd?=
- =?us-ascii?Q?Ub7/zcwoR/JuBN8ochIEpUl2NrjMG0BbfnRVnDtjyPXMZIAlByPio6wsG5L0?=
- =?us-ascii?Q?nh5aFvrmGTvkxXA2shEtElI0ZfzbA/3MK+4cZwoWD1/KeVYsETH9hj6HqPPv?=
- =?us-ascii?Q?0tVqmkqlO+9cX4KRdEr6f4FnrjyOWAn2SxedBNB6N76NE7ztEX7A+oCKFCb/?=
- =?us-ascii?Q?CpiVcpMP+CTnR8q74WRftKZ0odTEgfbWkt2CPL1tfRA7Jn4tdVNktN2uvvJN?=
- =?us-ascii?Q?VTR6VikUuR3Y3t4QbxpydJM7FsnKH6XaYiTe9gFrvNwJBVBexNFwlrAY2Sp4?=
- =?us-ascii?Q?tW2G/nhqU08d0KA5ly68QajUJjJtr4CHRfOV0FodbYvAJxKbY1RXUETLWLMt?=
- =?us-ascii?Q?pBnudJDFSH4YQpkXclg3kAU0GzXWOa4y4w4iN6rcX4CTd3NgX7DUP1JEEv8L?=
- =?us-ascii?Q?ASf2j5Y1SrYtYncHOUewC38QfQjdb0DEkrE3HaFGL2zJO77BzpEgQVqdsXHe?=
- =?us-ascii?Q?TS/l/5wUF09xqJyEk6VXoOcJQwpmsgvOmO4Rq8DkbZwNvtiu6pWoOE8KqI+2?=
- =?us-ascii?Q?teEjnz4smBAGYlA8lD6m5j3ZS+xaCYlzdzgEa09a30yoIveniU4Acjp3C8Bl?=
- =?us-ascii?Q?EMDi5CFW/RtflK2I+dzsjy5oIkq9J4MxjifzrQYGF/0JzleMZH2tuY2fh+I?=
- =?us-ascii?Q?=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: ddfdd4ea-dbfe-4c6d-15d7-08db58b62cf7
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2023 22:12:46.8459 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5756
-Received-SPF: pass client-ip=2a01:111:f400:fe5a::808;
- envelope-from=chaosdefinition@hotmail.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: sGrmRWUNMw3FHim5D4qojKjO9KAP9JB6
+X-Proofpoint-GUID: sGrmRWUNMw3FHim5D4qojKjO9KAP9JB6
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.170.22
+ definitions=2023-05-19_16,2023-05-17_02,2023-02-09_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 mlxscore=0
+ mlxlogscore=993 spamscore=0 clxscore=1015 suspectscore=0 malwarescore=0
+ lowpriorityscore=0 phishscore=0 bulkscore=0 priorityscore=1501
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305190182
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@us.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 19 May 2023 18:22:57 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,176 +139,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CI1Amfdznvgc
+X-TUID: ZM3IhfiqkGhP
 
-Test execution of DC CVAP and DC CVADP instructions under user mode
-emulation.
+From: Ninad Palsule <ninadpalsule@us.ibm.com>
 
-Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
+The VPD data is added for system and BMC FRU. This data is fabricated.
+
+Tested:
+   - The system-vpd.service is active.
+   - VPD service related to bmc is active.
+Signed-off-by: Ninad Palsule <ninadpalsule@us.ibm.com>
 ---
- tests/tcg/aarch64/Makefile.target | 11 ++++++
- tests/tcg/aarch64/dcpodp.c        | 58 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/dcpop.c         | 58 +++++++++++++++++++++++++++++++
- 3 files changed, 127 insertions(+)
- create mode 100644 tests/tcg/aarch64/dcpodp.c
- create mode 100644 tests/tcg/aarch64/dcpop.c
+ hw/arm/aspeed.c        |  6 ++++--
+ hw/arm/aspeed_eeprom.c | 45 +++++++++++++++++++++++++++++++++++++++++-
+ hw/arm/aspeed_eeprom.h |  5 +++++
+ 3 files changed, 53 insertions(+), 3 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 0315795487..3430fd3cd8 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -21,12 +21,23 @@ config-cc.mak: Makefile
- 	$(quiet-@)( \
- 	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
- 	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
-+	    $(call cc-option,-march=armv8.2-a,              CROSS_CC_HAS_ARMV8_2); \
- 	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
-+	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
- 	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
- 	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
- 	    $(call cc-option,-march=armv9-a+sme,            CROSS_CC_HAS_ARMV9_SME)) 3> config-cc.mak
- -include config-cc.mak
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 0b29028fe1..bfc2070bd2 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -788,8 +788,10 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+                      0x48);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+                      0x4a);
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
++    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
++                          64 * KiB, rainier_bb_fruid, rainier_bb_fruid_len);
++    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
++                          64 * KiB, rainier_bmc_fruid, rainier_bmc_fruid_len);
+     create_pca9552(soc, 8, 0x60);
+     create_pca9552(soc, 8, 0x61);
+     /* Bus 8: ucd90320@11 */
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index dc33a88a54..ace5266cec 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -119,9 +119,52 @@ const uint8_t yosemitev2_bmc_fruid[] = {
+     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+ };
  
-+ifneq ($(CROSS_CC_HAS_ARMV8_2),)
-+AARCH64_TESTS += dcpop
-+dcpop: CFLAGS += -march=armv8.2-a
-+endif
-+ifneq ($(CROSS_CC_HAS_ARMV8_5),)
-+AARCH64_TESTS += dcpodp
-+dcpodp: CFLAGS += -march=armv8.5-a
-+endif
++const uint8_t rainier_bb_fruid[] = {
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
++    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
++    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
++    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x52, 0x54,
++    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 0x4e, 0x49,
++    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x56, 0x53,
++    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00,
++    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 0x00, 0x00,
++    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 0x19, 0x00,
++    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 0x36, 0x00,
++    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 0x44, 0x45,
++    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 0x33, 0x34,
++    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 0x4e, 0x04,
++    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 0x39, 0x50,
++    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x52, 0x54,
++    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 0x4d, 0x53,
++    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 0x2d, 0x32,
++    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23,
++    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 0x07, 0x31,
++    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 0x31, 0x31,
++    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00,
++    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 0x50, 0x49,
++    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00,
++    0x00, 0x00,
++};
 +
- # Pauth Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
-diff --git a/tests/tcg/aarch64/dcpodp.c b/tests/tcg/aarch64/dcpodp.c
-new file mode 100644
-index 0000000000..6f6301ac86
---- /dev/null
-+++ b/tests/tcg/aarch64/dcpodp.c
-@@ -0,0 +1,58 @@
-+/* Test execution of DC CVADP instruction */
++/* Rainier BMC FRU */
++const uint8_t rainier_bmc_fruid[] = {
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
++    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
++    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
++    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x52, 0x54,
++    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 0x4e, 0x49,
++    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46,
++    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 0x49, 0x4e,
++    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 0x02, 0x30,
++    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
++};
 +
-+#include <asm/hwcap.h>
-+#include <sys/auxv.h>
+ const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+-
+ const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
++const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
++const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index 86db6f0479..bbf9e54365 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -22,4 +22,9 @@ extern const size_t fby35_bmc_fruid_len;
+ extern const uint8_t yosemitev2_bmc_fruid[];
+ extern const size_t yosemitev2_bmc_fruid_len;
+ 
++extern const uint8_t rainier_bb_fruid[];
++extern const size_t rainier_bb_fruid_len;
++extern const uint8_t rainier_bmc_fruid[];
++extern const size_t rainier_bmc_fruid_len;
 +
-+#include <signal.h>
-+#include <stdbool.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+
-+#ifndef HWCAP2_DCPODP
-+#define HWCAP2_DCPODP (1 << 0)
-+#endif
-+
-+bool should_fail = false;
-+
-+static void signal_handler(int sig, siginfo_t *si, void *data)
-+{
-+    ucontext_t *uc = (ucontext_t *)data;
-+
-+    if (should_fail) {
-+        uc->uc_mcontext.pc += 4;
-+    } else {
-+        exit(EXIT_FAILURE);
-+    }
-+}
-+
-+static int do_dc_cvadp(void)
-+{
-+    struct sigaction sa = {
-+        .sa_flags = SA_SIGINFO,
-+        .sa_sigaction = signal_handler,
-+    };
-+
-+    sigemptyset(&sa.sa_mask);
-+    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        return EXIT_FAILURE;
-+    }
-+
-+    asm volatile("dc cvadp, %0\n\t" :: "r"(&sa));
-+
-+    should_fail = true;
-+    asm volatile("dc cvadp, %0\n\t" :: "r"(NULL));
-+    should_fail = false;
-+
-+    return EXIT_SUCCESS;
-+}
-+
-+int main(void)
-+{
-+    if (getauxval(AT_HWCAP2) & HWCAP2_DCPODP) {
-+        return do_dc_cvadp();
-+    } else {
-+        printf("SKIP: no HWCAP2_DCPODP on this system\n");
-+        return EXIT_SUCCESS;
-+    }
-+}
-diff --git a/tests/tcg/aarch64/dcpop.c b/tests/tcg/aarch64/dcpop.c
-new file mode 100644
-index 0000000000..0c4d32cfe7
---- /dev/null
-+++ b/tests/tcg/aarch64/dcpop.c
-@@ -0,0 +1,58 @@
-+/* Test execution of DC CVAP instruction */
-+
-+#include <asm/hwcap.h>
-+#include <sys/auxv.h>
-+
-+#include <signal.h>
-+#include <stdbool.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+
-+#ifndef HWCAP_DCPOP
-+#define HWCAP_DCPOP (1 << 16)
-+#endif
-+
-+bool should_fail = false;
-+
-+static void signal_handler(int sig, siginfo_t *si, void *data)
-+{
-+    ucontext_t *uc = (ucontext_t *)data;
-+
-+    if (should_fail) {
-+        uc->uc_mcontext.pc += 4;
-+    } else {
-+        exit(EXIT_FAILURE);
-+    }
-+}
-+
-+static int do_dc_cvap(void)
-+{
-+    struct sigaction sa = {
-+        .sa_flags = SA_SIGINFO,
-+        .sa_sigaction = signal_handler,
-+    };
-+
-+    sigemptyset(&sa.sa_mask);
-+    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        return EXIT_FAILURE;
-+    }
-+
-+    asm volatile("dc cvap, %0\n\t" :: "r"(&sa));
-+
-+    should_fail = true;
-+    asm volatile("dc cvap, %0\n\t" :: "r"(NULL));
-+    should_fail = false;
-+
-+    return EXIT_SUCCESS;
-+}
-+
-+int main(void)
-+{
-+    if (getauxval(AT_HWCAP) & HWCAP_DCPOP) {
-+        return do_dc_cvap();
-+    } else {
-+        printf("SKIP: no HWCAP_DCPOP on this system\n");
-+        return EXIT_SUCCESS;
-+    }
-+}
+ #endif
 -- 
-2.40.1
+2.37.2
 

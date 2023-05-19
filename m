@@ -1,143 +1,143 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp123233ejq;
-        Fri, 19 May 2023 14:55:39 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6xwD4uZBq/7RhwiNgB6oGEJ4cZMDfJcwXdpN+2oZOVDbHT36IHW2FL1FVdqW0kQ+UvczZt
-X-Received: by 2002:a05:6214:c8d:b0:61f:f084:91a5 with SMTP id r13-20020a0562140c8d00b0061ff08491a5mr5833119qvr.26.1684533338785;
-        Fri, 19 May 2023 14:55:38 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684533338; cv=pass;
+Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp132165ejq;
+        Fri, 19 May 2023 15:13:29 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5JW1JPltMJOuc7qTemtgz2ZFcrWUR1S21MJzt11xI3xbSlp7E/ZDspBjJVEJI5gzjUAbDC
+X-Received: by 2002:a5d:4002:0:b0:306:cfba:3c32 with SMTP id n2-20020a5d4002000000b00306cfba3c32mr3108586wrp.48.1684534409076;
+        Fri, 19 May 2023 15:13:29 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1684534409; cv=pass;
         d=google.com; s=arc-20160816;
-        b=eryF75SqbupCyZPw+Sud9jmBD36OzJgGvASVk09u14662FUELQIfPoup7mnvsnEgMM
-         mVYLIHGhY29S1sX3T7hPKZKcEjGPQFlOHlk5PsJnMLy7GwRCOJ8qRJM21Y2uIJn846UY
-         lMF0s5vvTJa7IJifZp0Mi1Vj392LxKDLXFqZH23QpyQNuwMB+GFdoBf3e3OS2y1C8P6Y
-         H7M5r4o5fU2u0KXp8AG2uQ+oP/hK7FXAjurAskBRwZo65GhEnuRsY6mBfQvtJMGQTudU
-         IvnmsKIGGZ87y6UcFK1UjR+TFRJebh9QLgVdAOIvIwklqeH7VW7dQ5xD4XP6gcbUdS/a
-         ZXyw==
+        b=lhUbAjxe1hfPwLBTX+s7cnMn4oZAORinx8kFlSBvt+Vra2fmM+vBY9/+4khq/Vfe3Z
+         sdZJ1SJVfQNnpxuGgUeLlCu5o18Q+G6HCs2SGHpI8mjz/qOsCGio0V9JqDp6e1auoECm
+         U+i7avqxDy5WywOlwBdClDDdCleo5XpKreqsWLxXoKMXn4oGHBLfWgt9gjOjRl/Zn33t
+         DL0jyEP9aVI3ZQX6cJP5nOeBj0pTaffi/9aDBGE/9B8Pd+Wr52ge4RGSX46MEQXSkdNl
+         Upd22rHcyovv/5KGwKd8p3dpaETRf4Z/J3iq5YjBUnDudBdVzUQLP5vMHYFYfmOhmqVL
+         UoKQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature;
-        bh=AVhbSTn1f9xXwvJ+hF0swcFm8FM4hyHM9DIsrQ1twmY=;
-        b=jHZ6seMqKy6lVkKq4NIJeThjxi20uQvNrdNJvMzdzUNOZL7wm2v000/zUWwpXPb9om
-         eCl/kYmmVnIRco7I5AvX8H0qu1lmMYGghmsIEZq38G5KK4VojbyoUz9hqJ9QyX1S0Cdt
-         9rSuRCTI6R8uEXvqF22lPfauSUme+3SpRy7q3BkGloF6jmGgUYT2JJNP5tydBQlRM8/g
-         MnCX9/7eyeHctip7Okz+pcCuUlgVesYzXPwaDdmV0RawgPFHWAvw6Irnv9GV4dhXi/ix
-         ZWOorKST/17ptfuUaBmdHTskzPrT7ucYv0lzOkSvafsimg2bvR42e7I0xzfgapHMNQcN
-         EouQ==
+        bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
+        b=DlcjjdtZmWf0ZvYLoEdmmBJuLnEnvKMpIYQ8DzslMRYLXEiwr+PqInflSF0XFQHgUG
+         2PHxU6EVKOD7CVTr/IozDXrK2dMrxnXoORUx/Ne9F/Is+8lVqpNEvIRozSx4+6wSYlEW
+         /RQGe/nUvQxmR36CDgBb/CGj2fdhT3hInWdUZ6K4/j9FUvWRyQK0cteZBFLfwCw0AWC8
+         Kl0SDAaljFlDmlsZcwdu2HG3dYB2+X3/xJVnne+Nstvx25jNxqdOSt/zZWDG/rNqrMD7
+         decJjca5X4YrSYS+F2cuJsjiU6eSOo32rS6JPRf1TYPfcJc5DQUMbl8evY/RN210BRxK
+         VmsQ==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=qW4fdhKL;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=dWGgTY4W;
        arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5-20020a0562140d8500b00621120c51c2si163195qve.591.2023.05.19.14.55.38
+        by mx.google.com with ESMTPS id p17-20020a5d4e11000000b002e55cc6917fsi79237wrt.231.2023.05.19.15.13.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 May 2023 14:55:38 -0700 (PDT)
+        Fri, 19 May 2023 15:13:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=qW4fdhKL;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=dWGgTY4W;
        arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q084B-00056k-4s; Fri, 19 May 2023 17:55:15 -0400
+	id 1q08LK-0003I7-Ik; Fri, 19 May 2023 18:12:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1q0849-00056S-2g; Fri, 19 May 2023 17:55:13 -0400
-Received: from mail-mw2nam10olkn20829.outbound.protection.outlook.com
- ([2a01:111:f400:7e89::829]
- helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ id 1q08LF-0003Gs-By; Fri, 19 May 2023 18:12:54 -0400
+Received: from mail-mw2nam12acsn20808.outbound.protection.outlook.com
+ ([2a01:111:f400:fe5a::808]
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chaosdefinition@hotmail.com>)
- id 1q0847-0003zG-DD; Fri, 19 May 2023 17:55:12 -0400
+ id 1q08LD-0007c0-LE; Fri, 19 May 2023 18:12:53 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jcN1WiE1aVJ15+bVqX4pmJ2zEwwG00XlCIxUpsFGUui2SPlu+XQW5SMzKeGfH31BB03iZCjTnk12ALQNkwRlSmhnoyyqzwGDkf4AbMmHpQmDHmoOKiAzRck0hHU3SSgnFcObfcU19Vcb6gw2sDIl3PVAG0TTsXz1U6pZSO93JDEfwoeohkCgaDZX7DwnHxgr7Bn/ZpWF4y415haFLxj0ehoxa1d7x2InWzU0/1ZA3o9aYY5WSA26T9HM3LqMVZoVYi3AEoQ8qKTGETiRBKwi2Fxp0eIzuJAVOb5orDTrsv5PEwGpgAEuBFE6KJvyrO0odHmw6XCe+cFMTxbjnfbSCw==
+ b=TsWURHX3AaqM+l1UmVzQuHR6SyINeQd/PuWqGUWNzclxzWbmIFX9gsT8jGai8oSEWLYYvnG0V/UZ8FYY2pss4urs1j9wYQHU+4E4rqDUxYWGfDVdZKCy7822BGixdDDvqb0SQ+oKuaM32frmjTMaufoImlseE/pdRMMxbMojmx5K4U2frsFRl68z5uNrLqicDrfpDCMK9RsieW4byhEHp8Mj2v4XPnGcfkIv19zm3nh2cNynMeQ1IMBJYV4+rEbI8Z3QjxTsHu7EDclH+OCuCBUqtaXdJsEifQgou6PFp42kFRQ2SboQA5XZ3gmDCTdktadkCysEsuVyTEUiZLDTYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AVhbSTn1f9xXwvJ+hF0swcFm8FM4hyHM9DIsrQ1twmY=;
- b=K2yf9jr27z0chLeN5TlVcIBq5qM2AR8Kk5VrCLayg7h5sEYzc1q5p2difw5+XW+Q01KKqsFmvGok5LFzmgzyAvrPIvH7aIcWq1mDCsTrF6ZaBLwjAKLhsPfJmTMVOjwJhbQD0DzMQRzA8xcPQ4NZWNitbMYPrKE+ppo8+exD7aK7X4/rTeTApnDGCqHnaqqSZZq4vyX5YJx1SowZSwDYYTXSJE6Lr14Lj/w1YVrawjrlzf7bpwi2fCiBSNZWy/ewSqrRFrKMIuVY7GkxEo0eLCR9RO02BQC8BMaaNa+5p2JVJ3VMVWOoWISn6UCWI5tlmsI7O0260oIOuKMDAAI18A==
+ bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
+ b=g9s+VzYDnqXKC47RKV4ReDIo+03oGSkYorpEB+kL5k4r6jgjRT008VrLeN35Zna9CAuWRyzRiONy/wLN8AmRJr+R/akdSH4R4mHcS/APip3Ud50i7yj48NGiKOMbFQMyJNApQ8lf9NSoPsdgPJSr8NGFHKaxao90msawwqyLQRX38QWwqmBhIoIwqx914Uh9RMUO4hvxedHMgqkkjV5FGE8zgwXsovDtcAKFaBAgfsGcib9DCgl8w4wk21iJNpg96NOKVqwJnJ+DOxQVyl2AYectweV6xlqBDkal+cqxTTW0iuyeC7itwT04ySXAHVZC1w3KXtH7oDJUkXhXcRxIjg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AVhbSTn1f9xXwvJ+hF0swcFm8FM4hyHM9DIsrQ1twmY=;
- b=qW4fdhKLhDRrvqGrhkl1GZcXY45X8Cg3LDfZjWWCaK8iE0hcoCUuZABWw+yxsex5dnvmdi5O/Y/Yczg4gWIjxpc0tMuSJ1HslnvKNXttoDsn48GsxNtUUrImrMLpXr3UYUcnqBEHLDmHwa4Jk0ronfIdme+jz/yiI21XsmsGeP9m5jQnOMs9qjfwJeqI3V8c6GCuAuUGWT9vW0MVT1E7mfrGeq8xrnsnYNUWdj2h/bE+DIpHmBmHbEGbxjD0HBiOY3JAkKHTA6zph/F5MyyYTEjCJfPPT7fxhZwu8sRv8IXEA/nUL1Yrd/3+WVl12+hQsrRsa7TVkah71piwVsMHdg==
+ bh=D4cpWkpMAOUupRGcXH2m+HZJHqWYl+KQBW/iqmATjOU=;
+ b=dWGgTY4WnDrba4Cyjj1F6YgIOgh50bMrccxQ5F9BypK/lsoLdL2o+Oo/Hi/ZaLZxP78z83JBdW8ex/1CZ1AXONgvGYQMh7n8O32dpGiqNL9MeHoYitAnOnYcpwFo1dHSBJPUfu/LQA6NFCUGAGHAECmpmjAOzgnXkgT507TvhGEpNTUIySLmmmxbCSPoxuBhcFkXEnf+WP5Tty159ioyRQoFNE92rxSyOyJejMvTBgVcnmGRJBhwgiiqt+JBr7/0rfL8DMGNy9rgNU9pGcvB869b2m77J7YMmy9VYbQPp7tBbYnZGCDeQfayikfzrlzKsw/ocAbccACMqjWVKxj55A==
 Received: from DS7PR12MB6309.namprd12.prod.outlook.com (2603:10b6:8:96::19) by
- SJ2PR12MB8111.namprd12.prod.outlook.com (2603:10b6:a03:4fe::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6387.29; Fri, 19 May
- 2023 21:55:07 +0000
+ BL1PR12MB5756.namprd12.prod.outlook.com (2603:10b6:208:393::6) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6387.24; Fri, 19 May 2023 22:12:46 +0000
 Received: from DS7PR12MB6309.namprd12.prod.outlook.com
  ([fe80::bf6e:1dc2:10ea:cc04]) by DS7PR12MB6309.namprd12.prod.outlook.com
  ([fe80::bf6e:1dc2:10ea:cc04%3]) with mapi id 15.20.6387.033; Fri, 19 May 2023
- 21:55:07 +0000
+ 22:12:46 +0000
 From: Zhuojia Shen <chaosdefinition@hotmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Zhuojia Shen <chaosdefinition@hotmail.com>
-Subject: [PATCH v3 1/2] target/arm: allow DC CVA[D]P in user mode emulation
-Date: Fri, 19 May 2023 14:38:44 -0700
-Message-ID: <DS7PR12MB63098739F9B61D53062B74F6AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
+Subject: [PATCH v3 2/2] tests/tcg/aarch64: add DC CVA[D]P tests
+Date: Fri, 19 May 2023 14:56:23 -0700
+Message-ID: <DS7PR12MB6309A170F8BC7D7C956D6C97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <DS7PR12MB63096EDD683DE70EBC472E97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
 References: <DS7PR12MB63096EDD683DE70EBC472E97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-TMN: [iyi6Rs91/BFUron5LzA8Y9aDwGCNAQ0g]
-X-ClientProxiedBy: SJ0PR03CA0343.namprd03.prod.outlook.com
- (2603:10b6:a03:39c::18) To DS7PR12MB6309.namprd12.prod.outlook.com
+X-TMN: [w1wkcrrvUE5FB+1Prpq3fzIDLdsUAUhw]
+X-ClientProxiedBy: BY5PR04CA0011.namprd04.prod.outlook.com
+ (2603:10b6:a03:1d0::21) To DS7PR12MB6309.namprd12.prod.outlook.com
  (2603:10b6:8:96::19)
-X-Microsoft-Original-Message-ID: <20230519213845.283679-1-chaosdefinition@hotmail.com>
+X-Microsoft-Original-Message-ID: <20230519215623.283899-1-chaosdefinition@hotmail.com>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|SJ2PR12MB8111:EE_
-X-MS-Office365-Filtering-Correlation-Id: a8b3e449-ebfa-4675-b92e-08db58b3b548
-X-MS-Exchange-SLBlob-MailProps: ZILSnhm0P3nvAoS/oQTVQZ1S7Y8lGJvUp6lYURevRgkpBqiNUxyv9+UqC1zRKn73j9KUsBQBKQEAkXugecF27P+pOQs1t+rqcXYXCODn7USF10zT9b66mgwsvsRREKRv7RuEXBDjMCNxfxcx4VFb0WawRyIIxkeHQaLwszC3ow683vQ8gxWhr7IHt6WuCfVKwKRLhqW2ydXvURvCatFBOtC+P1Kq+/PMDI4I922ICmMSMWaf5W8AJvYn1CUdlEfVny5JzA73sTWHh6tmrb5uAn5hg1bqOX1HxLodHT7CiXLAjtzKp4gGPVP2qbfFlJYF+pfs1xw4VWgBHt8zO9KMwCfmdE0YIiO+E32n15KwBt2nWJDHulrkx5DaefJg5mr8WOoH3F7BvI/h5bMrjtbRxErUYxphJRt74LLD8VVAmYZaTwtH/C/KzgIjCOT6p79BmKAQRiQ/TBIRI1ChH2IJUdWMif5/02CkWmhX7LXeLGsIgS7ZvXJZgThpG+X3+UOJHxeka3cmLfssasbSZSqS/VDUojreUnGBWLreyLI7BwCpwJwvpZwnZjGJ0uot3GyppfB3e0pdZrz0jGXHWFgRsImi7GtCdnCa3ycmaIGJ+xrCMT+a68KqxgiDkvTXOQDeZS0Xof0KCVQbCD6a03MYw35kGH9i9F/q3gjraPML6GWjCokVEJMiExgWUp4iyeGgSImDugohmGG2T0DJXzIrzZJZje6P3pvvRQmnHm1a3cn0x+xuU8FJ1xZBfsHoGwe9XBZCQsJ+a2nQRjMBIuEzeNqN7WYxO7UN
+X-MS-TrafficTypeDiagnostic: DS7PR12MB6309:EE_|BL1PR12MB5756:EE_
+X-MS-Office365-Filtering-Correlation-Id: ddfdd4ea-dbfe-4c6d-15d7-08db58b62cf7
+X-MS-Exchange-SLBlob-MailProps: ZILSnhm0P3nvAoS/oQTVQZ1S7Y8lGJvUWSC1Z4WfQFRwDUWz7rXlWQckZQbP4iDgCDt1is1V71A1/hL720/2e2ntFk9hg2/jCTgyiSCjq6phg0+IKw85YJwFaeL6t/nTx8RilFAknG7X61X/mg4JNyFhu+mhNldWxpOe1O76P65p04Hh/nOln0m6SpLTdC144+K5Vqt7wBZFiPq1KqOumAk7NoSTIzspFkQbprvPMb9nKjt6QAIMfzaMv1lwuqwwkEjisUXtzOprfv6Qy0B38HwhgSX1jUfZ+PVnkaVRo7dGh0iNPmM69BDZbimzGe0ydjy4kcGHrMW5mAhGow3/IdqqbvHqGIeofwnsPRbX63t2Qp0U//sH5CVEq1L4xkokeMm03CIKzCrymu/IiXNtCDKdOYOvpsH01VHCRrkVGBoSHfU/JjAJaSJO91SB/45hqp3F8XWBYExsQRHYNt1ISBQtVgxPTtoebdicKPh//OU/4vbEogjnnFlKKe0N1yk5xU61n/nKDb6nxyzjTwyRzDKm1//+cLO1P5SCdVUYq98Acv6cRAISyIExfSMJDSvIFpmyZdc/RJo8RZi2c2tfi6htyj/Ghtw4chb7tztjcNuKQY4Ua5jVraa8j7pFBIV5N8NnFAA/oqznSbVDxq+EuCU2jnXm5TiJXmzszWMbYI7KfodjuVRg7+RVhoDCwuTeRGTvHOPeXpkg7BefJ8scz2vZTf4nutkgPxft6o5j0XU5ckbhWB8AsILKO00x2mZ1/fOn7mzhmnibnkOFikm+lSQEoRF8/qqL
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: UOiIS367X1FSj/YXm4d1kN7hgmeHrGrSW2geT1f261QgoxWXNVpSv7lNoexRyjMXvMSEvmTJ0rbhFng6mIO5d6IqbgDDSYEVkpJqoOxCR0eRcEbykqX3lfGMEzhQsYAhFYiQjijwvyzLC3Uv93gsGyK2ZqdeHHp/26rEH9qxGYtDFqgdmd594vJhjrBEIv/rFbQZGlHtj5hY23l962CRl8RSM12ty+N6lSqVc4xMg75mYiN+f78sze44QANw4sdM2si/si3fANEbD0uwOBDzo/EvyBicLQxbPxbGHdEULrXtVEmnrB4LkqPHwAOOBKBG8Vv0F40U9avabdasfGNrD/gsHh6mjzUa1M2Qek0QXcLMAg4dhLgFvulV6v0Rt5pXBYNXTbLeb5ABqrQGbTtA2QcNSaR8+ltdFsZf/YKEu/9qSRHqRavMTHajgQBh+WCaLFnkMD2NR7ZxIpUG87lFSDc4LYosM0QFb12DqdaNwiHG3YmQC5wdVFcwwkVCxj8usivlv3nxDSguRTx+Z82hRVnCu+T//WoEtEV3VRFjoP3RHTmy/ZCc2wAViFX8mwoAXF+5u8cFnicmwQExhECRT+fynyvUyLRRmwqMwMbDlwISMzc9mgOnjarNLEUAofx+
+X-Microsoft-Antispam-Message-Info: C/L/G5UGhPuKc3xd+RFNVzSJsE9x5u0Z1qdm2YokYAAZUIPq8QkvHOcCuUa+nLcYXplR+bz5vZ5JiGLIhyVHGn2zM2KDLUQ5oZzPtdnhGbNTfwycLyNriCBI4wrz8+Eq2JnDKXt3RWj9POx8muBSvf/YXFGRcA5tUq1WO7k1iYl6Ygkr8NDP+er9epMq4uz6+Y4W9hfia7L79uGBpkAEWbZc7A6gIRwdzd3LZVK9jOM20etsdWbnzHI5Jsnw5dwkgxAMbp56xMRzlIshAAdEfCYkSkjMD3mWNocYnOA6E498kItj21sF8Hy4BFEzV7HBSeIJX/6kmI0dleKg5ynzTBtR7WvLTEftgmvLF9IRwqhl95t2FlCMv4wv37eltEKD6IvAP/CvQgd10MDbjB0x3EQXEF6laqWqxdDkY4AkhVOSr1/m/esjZn830lLJc0EDNrWy2U18MnLVUBgdabohP8lGe7nBkbOP8cSMVDLhrbtvtqsNiewf5eoFwnteOvKvYQw59UiQETe/Lg/dnkJupfkbUCkte0XywejQYlWGaKNFETjNVxgJfWbNkOCRNh08dwZq2sDMF8Xmom+Oo/cjnP5POlH149Y1jr9sdwe5kjB/qq+CxHbz8eMaEbMmTbow
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?i6yU7gNHm+h3X7MUfR8CddmLqctuL5MFd2FK1bMyC8BubNcJxMPYy+8HYIB1?=
- =?us-ascii?Q?7FZRUh6W85cO0hDQk2/fjnXG57mQAzab3x8e+hBtqxJpbbf5IkyVCkXrqzFz?=
- =?us-ascii?Q?0/K4prTkdQJnbF8HP7iq29MrZ4Q16kjeJTsXh/XhYN7yx5vCmkoS498KGKVk?=
- =?us-ascii?Q?j+Lt41B6r3nIwWHkv9dftSgedJkU/TRDbzDwXP9n85UoeDx880AEy1Stp7Ei?=
- =?us-ascii?Q?OGOSw6/822aBhQu4kNxgKLAvA1yzFvDBuh7Br1vpM8tY3qsC2YOnmjsPeWSl?=
- =?us-ascii?Q?meV2D6MV0Ua1/DTJx6rp6o2tY0loWdWEb0T08mLX9PzskpuT9YlKmWBSyZl6?=
- =?us-ascii?Q?bNY7Vppf/Y96OG+jGNFi8NP7abY9EBdqJBJl89VZPNXWrsVkshZ42Z25HZlc?=
- =?us-ascii?Q?GynB68qiHuaxk0wS++y0qqWyHQ+t91SxtZ03uj0UZf0cP8jonDPeaWewqsuu?=
- =?us-ascii?Q?NqchKfadqw9lSO7f0Gd7NTWuxdvMtRnBUpnbnRnekFBxNC5OTmnfys/wFIrC?=
- =?us-ascii?Q?7FVUnfyKZa9pv9aMKK2o4vGqPVI/kL2iTvctIsaYSawOH+FJYiDr8t6gXrio?=
- =?us-ascii?Q?gzHaJhBPJNx9c3208z1+F7xmtG20UqbpqujCgDwFKPijqnk8PA0p9nhqCk/S?=
- =?us-ascii?Q?wprpP3sWXdubPJO7FKTJCYj8xFrzjuCLPCPQI16mYwefg3IspGm/8CHduoUd?=
- =?us-ascii?Q?3bpAOh3fEhA0sIqMAAO3N4q/MjK/mUte4OnOowVJdaH3jAMlF88D5GRz0vGG?=
- =?us-ascii?Q?xSXUCImKJ6x8mn05TGPVqX8j1eCNX3wxFosvRbI1ddoC2WzZmRYH/Im0l6VC?=
- =?us-ascii?Q?zhCeRxJq8pNE0jjQMEbYZ9OAmIFjrYRUelyB/ZLmdq4bE9LuUW/YwkkcHct4?=
- =?us-ascii?Q?62zLjmSP1gpQogJIU4cqB/8dFV9AyezW1F1pDoi6S7WKmKI9BMnnbyAJCTld?=
- =?us-ascii?Q?iFsKh+j5u9mEqTW0X7k4w/nVpxMmEIyGYNZSaVC50a9Q43nyeHY/nshhmv/l?=
- =?us-ascii?Q?gWPRoF9dTNhe0ndbQmHq0geb5aYD9tUuEdEeyeg8B1UHjceFS69v3BhoQCch?=
- =?us-ascii?Q?qOfp+jMnZbLuqubBz43RuissDp4j3X5aRWrL2oDN6NfvvacqlCTzQ44srd6B?=
- =?us-ascii?Q?500nIMrMPplmP+GxkFo84/x7Ta0pqxvTCm7cY9Gq6HqBOSj3bBxUhi42WNa/?=
- =?us-ascii?Q?H/VXyR1qw+btQ2yBErZsa0pUZNUFvxjiFKF1faW3EC/0+1mdwOpMTarcSC4?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JStSlVIbnwe8XEs+jUTm1mdxJF6GfT8wWEXzjYZmPgunahjiu1aQJL/mej0P?=
+ =?us-ascii?Q?6OwGw/GiDwKGoSI2kCQAdzCcHCoGN48sPTFhyAxGRO4fvxxLtFd4RdfjuhwJ?=
+ =?us-ascii?Q?6Ep9AInMggKP9HUYDC19TfZl6U2w6B0NIs30hZakA1hUFJywpb9+i/9+Sllk?=
+ =?us-ascii?Q?E9a57AFhJooX3M3YtkGTsHCnVO/K+mI2/Focy5jPXyKFuXneZZH+h28bN8hf?=
+ =?us-ascii?Q?3enzAXiVFk6dYl9Hw/Cj4OQhZLNGnAizr+UEbYEPFOjZmQwkPAX2++DMBwE+?=
+ =?us-ascii?Q?opZhsJFA5wyrRdKoNfxkl/RzaPvypP9nATRz9a5upnWSSrq7tF3H9syQyBd1?=
+ =?us-ascii?Q?CrUTyDsD7eR3uIbK+73wnsANjL3hxgsi1BpN+JbXzpP/G/2zip+L5KCKmKuN?=
+ =?us-ascii?Q?hMzlg22WmnIXXDPj5VExUG6fRW/o01EySsKl30vMH2pQw0cVtYih52IIKexg?=
+ =?us-ascii?Q?gs1sbp5ALi4VreqTknO2NczOy+perWlWgPZfbDtEbNKvRI9pHoE9dS4olqRp?=
+ =?us-ascii?Q?ZebynVxB5wAvbfpQUoAxPCGiGmASO/rksru09qv2Sbbw465cxHLr/35LeHhd?=
+ =?us-ascii?Q?Ub7/zcwoR/JuBN8ochIEpUl2NrjMG0BbfnRVnDtjyPXMZIAlByPio6wsG5L0?=
+ =?us-ascii?Q?nh5aFvrmGTvkxXA2shEtElI0ZfzbA/3MK+4cZwoWD1/KeVYsETH9hj6HqPPv?=
+ =?us-ascii?Q?0tVqmkqlO+9cX4KRdEr6f4FnrjyOWAn2SxedBNB6N76NE7ztEX7A+oCKFCb/?=
+ =?us-ascii?Q?CpiVcpMP+CTnR8q74WRftKZ0odTEgfbWkt2CPL1tfRA7Jn4tdVNktN2uvvJN?=
+ =?us-ascii?Q?VTR6VikUuR3Y3t4QbxpydJM7FsnKH6XaYiTe9gFrvNwJBVBexNFwlrAY2Sp4?=
+ =?us-ascii?Q?tW2G/nhqU08d0KA5ly68QajUJjJtr4CHRfOV0FodbYvAJxKbY1RXUETLWLMt?=
+ =?us-ascii?Q?pBnudJDFSH4YQpkXclg3kAU0GzXWOa4y4w4iN6rcX4CTd3NgX7DUP1JEEv8L?=
+ =?us-ascii?Q?ASf2j5Y1SrYtYncHOUewC38QfQjdb0DEkrE3HaFGL2zJO77BzpEgQVqdsXHe?=
+ =?us-ascii?Q?TS/l/5wUF09xqJyEk6VXoOcJQwpmsgvOmO4Rq8DkbZwNvtiu6pWoOE8KqI+2?=
+ =?us-ascii?Q?teEjnz4smBAGYlA8lD6m5j3ZS+xaCYlzdzgEa09a30yoIveniU4Acjp3C8Bl?=
+ =?us-ascii?Q?EMDi5CFW/RtflK2I+dzsjy5oIkq9J4MxjifzrQYGF/0JzleMZH2tuY2fh+I?=
  =?us-ascii?Q?=3D?=
 X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-71ea3.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: a8b3e449-ebfa-4675-b92e-08db58b3b548
+X-MS-Exchange-CrossTenant-Network-Message-Id: ddfdd4ea-dbfe-4c6d-15d7-08db58b62cf7
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR12MB6309.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2023 21:55:07.1114 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 May 2023 22:12:46.8459 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB8111
-Received-SPF: pass client-ip=2a01:111:f400:7e89::829;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5756
+Received-SPF: pass client-ip=2a01:111:f400:fe5a::808;
  envelope-from=chaosdefinition@hotmail.com;
- helo=NAM10-MW2-obe.outbound.protection.outlook.com
+ helo=NAM12-MW2-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -159,72 +159,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: icrWVLorwc0+
+X-TUID: CI1Amfdznvgc
 
-DC CVAP and DC CVADP instructions can be executed in EL0 on Linux,
-either directly when SCTLR_EL1.UCI == 1 or emulated by the kernel (see
-user_cache_maint_handler() in arch/arm64/kernel/traps.c).
-
-This patch enables execution of the two instructions in user mode
+Test execution of DC CVAP and DC CVADP instructions under user mode
 emulation.
 
 Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
 ---
- target/arm/helper.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ tests/tcg/aarch64/Makefile.target | 11 ++++++
+ tests/tcg/aarch64/dcpodp.c        | 58 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/dcpop.c         | 58 +++++++++++++++++++++++++++++++
+ 3 files changed, 127 insertions(+)
+ create mode 100644 tests/tcg/aarch64/dcpodp.c
+ create mode 100644 tests/tcg/aarch64/dcpop.c
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0b7fd2e7e6..d4bee43bd0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7405,7 +7405,6 @@ static const ARMCPRegInfo rndr_reginfo[] = {
-       .access = PL0_R, .readfn = rndr_readfn },
- };
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 0315795487..3430fd3cd8 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -21,12 +21,23 @@ config-cc.mak: Makefile
+ 	$(quiet-@)( \
+ 	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
+ 	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
++	    $(call cc-option,-march=armv8.2-a,              CROSS_CC_HAS_ARMV8_2); \
+ 	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
++	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
+ 	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
+ 	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
+ 	    $(call cc-option,-march=armv9-a+sme,            CROSS_CC_HAS_ARMV9_SME)) 3> config-cc.mak
+ -include config-cc.mak
  
--#ifndef CONFIG_USER_ONLY
- static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
-                           uint64_t value)
- {
-@@ -7420,6 +7419,7 @@ static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
-     /* This won't be crossing page boundaries */
-     haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
-     if (haddr) {
-+#ifndef CONFIG_USER_ONLY
- 
-         ram_addr_t offset;
-         MemoryRegion *mr;
-@@ -7430,6 +7430,7 @@ static void dccvap_writefn(CPUARMState *env, const ARMCPRegInfo *opaque,
-         if (mr) {
-             memory_region_writeback(mr, offset, dline_size);
-         }
-+#endif /*CONFIG_USER_ONLY*/
-     }
- }
- 
-@@ -7448,7 +7449,6 @@ static const ARMCPRegInfo dcpodp_reg[] = {
-       .fgt = FGT_DCCVADP,
-       .accessfn = aa64_cacheop_poc_access, .writefn = dccvap_writefn },
- };
--#endif /*CONFIG_USER_ONLY*/
- 
- static CPAccessResult access_aa64_tid5(CPUARMState *env, const ARMCPRegInfo *ri,
-                                        bool isread)
-@@ -9092,7 +9092,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_tlbios, cpu)) {
-         define_arm_cp_regs(cpu, tlbios_reginfo);
-     }
--#ifndef CONFIG_USER_ONLY
-     /* Data Cache clean instructions up to PoP */
-     if (cpu_isar_feature(aa64_dcpop, cpu)) {
-         define_one_arm_cp_reg(cpu, dcpop_reg);
-@@ -9101,7 +9100,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             define_one_arm_cp_reg(cpu, dcpodp_reg);
-         }
-     }
--#endif /*CONFIG_USER_ONLY*/
- 
-     /*
-      * If full MTE is enabled, add all of the system registers.
++ifneq ($(CROSS_CC_HAS_ARMV8_2),)
++AARCH64_TESTS += dcpop
++dcpop: CFLAGS += -march=armv8.2-a
++endif
++ifneq ($(CROSS_CC_HAS_ARMV8_5),)
++AARCH64_TESTS += dcpodp
++dcpodp: CFLAGS += -march=armv8.5-a
++endif
++
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
+diff --git a/tests/tcg/aarch64/dcpodp.c b/tests/tcg/aarch64/dcpodp.c
+new file mode 100644
+index 0000000000..6f6301ac86
+--- /dev/null
++++ b/tests/tcg/aarch64/dcpodp.c
+@@ -0,0 +1,58 @@
++/* Test execution of DC CVADP instruction */
++
++#include <asm/hwcap.h>
++#include <sys/auxv.h>
++
++#include <signal.h>
++#include <stdbool.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#ifndef HWCAP2_DCPODP
++#define HWCAP2_DCPODP (1 << 0)
++#endif
++
++bool should_fail = false;
++
++static void signal_handler(int sig, siginfo_t *si, void *data)
++{
++    ucontext_t *uc = (ucontext_t *)data;
++
++    if (should_fail) {
++        uc->uc_mcontext.pc += 4;
++    } else {
++        exit(EXIT_FAILURE);
++    }
++}
++
++static int do_dc_cvadp(void)
++{
++    struct sigaction sa = {
++        .sa_flags = SA_SIGINFO,
++        .sa_sigaction = signal_handler,
++    };
++
++    sigemptyset(&sa.sa_mask);
++    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
++        perror("sigaction");
++        return EXIT_FAILURE;
++    }
++
++    asm volatile("dc cvadp, %0\n\t" :: "r"(&sa));
++
++    should_fail = true;
++    asm volatile("dc cvadp, %0\n\t" :: "r"(NULL));
++    should_fail = false;
++
++    return EXIT_SUCCESS;
++}
++
++int main(void)
++{
++    if (getauxval(AT_HWCAP2) & HWCAP2_DCPODP) {
++        return do_dc_cvadp();
++    } else {
++        printf("SKIP: no HWCAP2_DCPODP on this system\n");
++        return EXIT_SUCCESS;
++    }
++}
+diff --git a/tests/tcg/aarch64/dcpop.c b/tests/tcg/aarch64/dcpop.c
+new file mode 100644
+index 0000000000..0c4d32cfe7
+--- /dev/null
++++ b/tests/tcg/aarch64/dcpop.c
+@@ -0,0 +1,58 @@
++/* Test execution of DC CVAP instruction */
++
++#include <asm/hwcap.h>
++#include <sys/auxv.h>
++
++#include <signal.h>
++#include <stdbool.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#ifndef HWCAP_DCPOP
++#define HWCAP_DCPOP (1 << 16)
++#endif
++
++bool should_fail = false;
++
++static void signal_handler(int sig, siginfo_t *si, void *data)
++{
++    ucontext_t *uc = (ucontext_t *)data;
++
++    if (should_fail) {
++        uc->uc_mcontext.pc += 4;
++    } else {
++        exit(EXIT_FAILURE);
++    }
++}
++
++static int do_dc_cvap(void)
++{
++    struct sigaction sa = {
++        .sa_flags = SA_SIGINFO,
++        .sa_sigaction = signal_handler,
++    };
++
++    sigemptyset(&sa.sa_mask);
++    if (sigaction(SIGSEGV, &sa, NULL) < 0) {
++        perror("sigaction");
++        return EXIT_FAILURE;
++    }
++
++    asm volatile("dc cvap, %0\n\t" :: "r"(&sa));
++
++    should_fail = true;
++    asm volatile("dc cvap, %0\n\t" :: "r"(NULL));
++    should_fail = false;
++
++    return EXIT_SUCCESS;
++}
++
++int main(void)
++{
++    if (getauxval(AT_HWCAP) & HWCAP_DCPOP) {
++        return do_dc_cvap();
++    } else {
++        printf("SKIP: no HWCAP_DCPOP on this system\n");
++        return EXIT_SUCCESS;
++    }
++}
 -- 
 2.40.1
 

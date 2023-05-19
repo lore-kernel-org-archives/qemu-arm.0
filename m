@@ -1,231 +1,209 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp58531ejq;
-        Thu, 18 May 2023 17:38:51 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ79JEOqL7VEwfcU+lqqC/6zexE7a8jM3QHodC3ExoScCIeM7djrf0wNol9JoEemjp7AczRI
-X-Received: by 2002:ad4:576d:0:b0:5ef:8b9c:aa86 with SMTP id r13-20020ad4576d000000b005ef8b9caa86mr1671037qvx.44.1684456731316;
-        Thu, 18 May 2023 17:38:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1684456731; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=O9VzLLy0ojRGhpjCQf4bpTf0/9DUOCnfepHs+b5C/jR7mcqLVDaamJsIfdZ+8a4OfV
-         hUVBOviBdGt4KCLeNAzAAMu8Z4SZ1UPetOenCol1iVGUvMcsDTElcUMGmYc2ISd2hcNq
-         kFXrNQ+9AF7kXzsBixGDANvh1bYaXTnKZFwyPU4XVc1gFPDRIacm0iUZtMlGrnT1c2zO
-         EXNht6m7B1UVxIOniDXmkFuWZp6QU17rXKgmCJgFS8aqisT7nQcYffL8ZQn+/AHtWplA
-         0RcpvURAw3x9vNOOqAIfqaJSgQzLA8YykNipLkCwHiyMvZIJL3ld1KI15fQG+HeQTj2S
-         ae6A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=nx4JWB21/8c73ouhwFkBaZDI21dZlxZvXj/iODp9/jw=;
-        b=X2FIftRQ0XeQe8yycdL6WReR4wQgQ/Axp3K9ghITuC0wK6f0280ueO8F706KsdG+/L
-         FGceknGRVyO5A5afswUl83k5aRWouRrJpNSFn3LdJPCfazthT2ndFEBC8ooKA3+k6c1N
-         t1hGbSA1IBjldkbSXyYCL9i8tMZRO82k+N7vcLsdMXzPShCtyG1251bJIPcEP3zlpot6
-         qIoPuu2utQR2CaouiUEjUXgdUseMzpq9Q8qnHXuPle1ZU/uptU5bvOjVWEUPaF5N1fMh
-         M0dcCkPw9GXxpDx9U9TvoPNh+O8pITyxkUlVln+lUlc4B5mM7vq0O+A/dtGvNfq9aB7M
-         TagA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=R11LW636;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12-20020a05620a15ac00b0074ada06c1a8si1962521qkk.202.2023.05.18.17.38.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 May 2023 17:38:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=R11LW636;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pzo8h-0004SN-43; Thu, 18 May 2023 20:38:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kevin.tian@intel.com>)
- id 1pzo8f-0004S0-Jg; Thu, 18 May 2023 20:38:33 -0400
-Received: from mga14.intel.com ([192.55.52.115])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kevin.tian@intel.com>)
- id 1pzo8d-000634-5q; Thu, 18 May 2023 20:38:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684456711; x=1715992711;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=nx4JWB21/8c73ouhwFkBaZDI21dZlxZvXj/iODp9/jw=;
- b=R11LW636gihxJtxqqdGYYN5oY48wkzNd01mdt4QnzwJegIsWLOvSxU4P
- J8iKRFkri7s0TRL0XeoJxchZGM257FI/9c75aFOAVZR62jMq39qBtEBky
- tZpTlNY1wbR5xf7u4H777Z1WDRvbm7XxkwSPltoOaCHD71OQYf+SZjrAm
- Io84NM0W2zlyhueUvhaIX8jmmf5fKXO9k/XjZS9bwINq9JcDjmORbHNNp
- ti+pmM+yz7DJ9vKaQrxNP5ZiGxut8iGH0YNfHI4mgH57uoHHITunuspmB
- 374sps+nCiAH/h7Ma+hkZZqZ07REAoYPh+It7e8saeiXFZH/Xk32y5WCh w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10714"; a="352252523"
-X-IronPort-AV: E=Sophos;i="6.00,175,1681196400"; d="scan'208";a="352252523"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 May 2023 17:38:27 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10714"; a="876640410"
-X-IronPort-AV: E=Sophos;i="6.00,175,1681196400"; d="scan'208";a="876640410"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga005.jf.intel.com with ESMTP; 18 May 2023 17:38:27 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Thu, 18 May 2023 17:38:26 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Thu, 18 May 2023 17:38:26 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Thu, 18 May 2023 17:38:26 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.104)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Thu, 18 May 2023 17:38:26 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=e7/+oYqt2NRJdv2QyqhzAhs7LVu/cDtq6al2oHtnxK44vuqAvOW+Gw1Vn+YDRXMHJ7EeuhRXB0lTBsOOz4uSbJPEHwTZgNF/tjP+ufnCcEyiy7c2l9pYPV8EIAadOzc9r8YbjvPDfn6KSHZxvZaJadUQo4KIu+UUEdwXXqpZkrpSJQjq0bonHVBCwkbn9Va5EbMLe+rycWldRYDb2NQdrfSVRSh1coG1pf7Q5Bkw4Ki9SX2qbxHC+bTEPDBoiN5zkz0UlFgTLNaxblVwogEDPvsdNK1VjqUx7NO8d1i3/n/dqV1EQATXamkSGEW7nstJVF/81s1NIiAS3UiIMTJAJA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nx4JWB21/8c73ouhwFkBaZDI21dZlxZvXj/iODp9/jw=;
- b=HRCjt2nBs4i2lkENnsjg3fQW21nMxAuI3wHNlD9fu80GUUArYMR531SAkBfftqdqOXaca29IMwZsvpiuYJr0WZuIpH8dFemmFm7rpR2+bAcdRFPS+6xRw+5GhzYWrS5WwzEjD1UQbj1xouwodNdRPJIclPcVZEmlQJb/jiXPdcz56HkUriQRYNHMcHvkbxji0hIJ7RcP3g0NWZ/V7Z0z+299tFBE4Zc1MPUrctJHUf/WWNcIlUVTfmjcPm8t2H9fNUod73RXgfe7TmZKzf2zEaiimZdZxGj8ByGqd+VTcKt+L0U4eAQF03jK21C0LmIHlSsJJHd4s6+J//XOJ6tzjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by LV2PR11MB5997.namprd11.prod.outlook.com (2603:10b6:408:17f::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.17; Fri, 19 May
- 2023 00:38:25 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::73e9:b405:2cae:9174]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::73e9:b405:2cae:9174%6]) with mapi id 15.20.6411.019; Fri, 19 May 2023
- 00:38:24 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, Peter Xu <peterx@redhat.com>
-CC: Eric Auger <eric.auger@redhat.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "Liu, Yi L" <yi.l.liu@intel.com>, Jason Wang
- <jasowang@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: RE: Multiple vIOMMU instance support in QEMU?
-Thread-Topic: Multiple vIOMMU instance support in QEMU?
-Thread-Index: AQHZdwaT7ucJgnJtPE2Jt/g20WVebq9fgfwAgABgIACAAFZ+AIAAC0cAgABQpACAAAl8AIAAR+EA
-Date: Fri, 19 May 2023 00:38:24 +0000
-Message-ID: <BN9PR11MB52769C4DF00F48EB64E0AE7D8C7C9@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <ZEcT/7erkhHDaNvD@Asurada-Nvidia> <ZGWaCKQqK5hVqbvM@Asurada-Nvidia>
- <0defbf3f-a8be-7f1b-3683-e3e3ece295fc@redhat.com> <ZGYzOEhdTA6sWKjP@x1n>
- <ZGY8rj9hRxGLpFdH@nvidia.com> <ZGaAVAI9u4K4vy1/@x1n>
- <ZGaISJUBFdMu+nxo@nvidia.com>
-In-Reply-To: <ZGaISJUBFdMu+nxo@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|LV2PR11MB5997:EE_
-x-ms-office365-filtering-correlation-id: bcd2958d-f705-4491-2b33-08db58015b0b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Qy2y8avo2t470tCXE9SCHfr5bS+p3NKQoJ48Chm6mPD4F9qMqvmnFfPeBJ3u/s3LccQGjNnoZq0eJzxkvvxrcqaJrs6G9KqT2OkpDWhVwys2JtZorJAEuouOcCIPWt8zMG8zankY33h1Tfzy8mJpVutXil8msJmFQZFF5Z+rrv+7pRuUqQEdJ8KjKsrYSaEypjPPxSjSHL5RR52HiXZE0XfMU5rfzRQR1WK361vpCr3KJAQNIq/MFZbOybHsT1oI5r9qh3F7+Zx1LHapUwT54mRBK/Dr7n+APlT7ua+ZefHg6ijQF97MbMC95T//Bzsn8AYc9sCNu8K6q8YqTbwVzLawkcBdiRVACL90VGC3OLOb0Q20GwwxNk+D/CoQsnKJ2k72gwU2D/LmjhITEntbPQqPpD7gUQwLyZfNcI6HksxvW6im3DlA4Yi3h5Sp3i1ItfSa8Z7jReObudZ2gnl4oroAtdsoT60juLEub+NUGQgP03Y5Wogb/OiNYvhSQBE9dfn52m4IAsGlAJf+0myyLN+bOtDtL98pDP8TO1hhoEaSF1pBYpV0EFq/JLRQBeSJOqe+3bXxsSTuwfptiKXgVtZ7caXQ4JnG7wQ6JKB7IwgjE4mKt7Junz3tUeRhydrx
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(376002)(39860400002)(136003)(396003)(366004)(451199021)(64756008)(9686003)(76116006)(66946007)(66556008)(66476007)(66446008)(54906003)(4326008)(316002)(110136005)(7696005)(478600001)(71200400001)(41300700001)(5660300002)(186003)(26005)(6506007)(8676002)(8936002)(52536014)(55016003)(2906002)(4744005)(83380400001)(38100700002)(82960400001)(122000001)(33656002)(38070700005)(86362001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3j6j24yHNOhpuxcaebhKhKbJml36Pm/8uRiRZoLfeAB3wNkKAiXk1jXcSRqi?=
- =?us-ascii?Q?rxL2g55YfrWAa/ckbCBmd1IkxsHKt5vUUDeeoVTb6tVYapHO87DO20rUwvPs?=
- =?us-ascii?Q?cdutnepClLfqEF3XbpUJuGAgbdkrIFlBBNQSF+jIi24ZiZjQi5t4yg/HqkoJ?=
- =?us-ascii?Q?x22D7ILT+X5qRt78lCcESyuoclSQrEi2zFYNw+xFmVmzZLqmcPfrOZ2BLPs1?=
- =?us-ascii?Q?Ll1cBXisNuWRkgXD9FVH8MN5ER3x20t21h03vMKsvc2Ht5amBbRo4KoWVi1x?=
- =?us-ascii?Q?6GZ8WktFT0XEB08v715in67amd/BNpLcKXgUt8HiYxVrSAm70xn3EEQ6HzAf?=
- =?us-ascii?Q?B6UiVC6EIEpA8pbyUZwtPuoBW6so5kuYjj1oD7tnDPCeL0TgxDQPPCXs2PbV?=
- =?us-ascii?Q?XGebpwTcQ2D/12RRlLjATMrKFB6C6Nuh+jnORhW34cPGcPAWjQod+0BxJ+Cl?=
- =?us-ascii?Q?8AaaETBh/uSjd4p8RVkTJRmSo4OKDXIBbqh5Lj8YcrldHY9XDsFlH6UZ4K5j?=
- =?us-ascii?Q?Y5P27IKV2IMhn277/oKRqGc/Q5TrimUsY+FRjFzOE/qHyHfv6D++fTi8Vdx6?=
- =?us-ascii?Q?ng/u1uLcdwo0iSZC5+H6ogzhPw8Do2Hh1l9E+44hCh1OHPYHpa8Ps4k6sYYq?=
- =?us-ascii?Q?3doX3SYS8ZLMXjGpz7lMbTMbqQlpoNd7TZP0MPvEl3ehPHcg/X05NF0egcoF?=
- =?us-ascii?Q?WQQwaThGuSSJ985wqsathJEte043ga8pixfhz+lYxNrLX1bRfLYwEFrontdR?=
- =?us-ascii?Q?tAKTCZNNqtNd7VbwKzXV8Ud6xOga+U46pRTMR5C5kHVD9PMxbgeZSanKepCI?=
- =?us-ascii?Q?CfNfzHUXiI41auHnZPyv7I6xb+XhBB3XkguwZ7ZfpxWpXu1YOkU0aB/AQTJe?=
- =?us-ascii?Q?gxxvg6mZjVwGI/rJ+lY66TMTDKH8oNXj7GBeVVLCCdxcaRAQ157Fy7avpUP0?=
- =?us-ascii?Q?qdKX2ng1AptflvYuYPqzGu7ZoD8rFLVQNMfWiqgvGbRePri9IFgeXVzOkvSc?=
- =?us-ascii?Q?Tac0Fmu3h2kjjvo8pLfgZJnIGAGk9E4J/n2MPew6oFPOUEzfpQyGDwIrQD1G?=
- =?us-ascii?Q?UfcMrFUlz5Wd7xsl5XDUNvultSGwBIaXB0e+Uw6QGTjcbsqIXi/fWYZNe2If?=
- =?us-ascii?Q?exNXb8wSn8q5/gMOow+tmLGuAFARIrYVSsaf3URTrfGDHPOnuPy9loZpDc4k?=
- =?us-ascii?Q?dLfuQafMCEjOq0zvuCxMvVKgl0RjzA6SRk4ZlYLpmdEku13wxtQQWiMqnn25?=
- =?us-ascii?Q?gHlLp6evORjDwFMtdUgOMZCobJdn912gbx9w/XWB7q50RbpeGQUbkj+uQHnP?=
- =?us-ascii?Q?wQT/OvtRgIN8CuF3OTuFgB9ho4PEauVCyzZqyKtyrZk01l6yLSboHu+tb7mD?=
- =?us-ascii?Q?ASWNkoc6LjVdtU/b/Y398gBeMI30kzKEriuDlZrrNcvEk0N99kyQ3yZ25We+?=
- =?us-ascii?Q?7Y7oe4/lAw3aqNNQEFQylesnjgwuoDQ/OgxEYI4AG3N914zboTFUggLYEi4M?=
- =?us-ascii?Q?NwjAy9BjByFln+9E3cTB3kstaqJ899T+Ckb12Eyey0uzv76vFPhVfT1r5zMk?=
- =?us-ascii?Q?0+a5cFfm3F+NhHoW8izZIX5fUHUVkiLcOd8vEB/I?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id g9-20020adfe409000000b002ceacff44c7sm5776973wrm.83.2023.05.19.10.04.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 May 2023 10:04:55 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C540C1FFBC;
+	Fri, 19 May 2023 18:04:54 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Marco Liebel <mliebel@qti.qualcomm.com>,
+	Mark Burton <mburton@qti.qualcomm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Robert Henry <robhenry@microsoft.com>,
+	Aaron Lindsay <aaron@os.amperecomputing.com>
+Subject: [PATCH 1/8] plugins: force slow path when plugins instrument memory ops
+Date: Fri, 19 May 2023 18:04:47 +0100
+Message-Id: <20230519170454.2353945-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230519170454.2353945-1-alex.bennee@linaro.org>
+References: <20230519170454.2353945-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bcd2958d-f705-4491-2b33-08db58015b0b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 May 2023 00:38:24.8435 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Hj/xFZocgKG73vcOd3oofMJb6HV6VFPXSM9MJDaJhNYpn2y64bghWjZc+cQkK+B0mr0gcN3lNeWUltIyJnxPrw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR11MB5997
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.55.52.115; envelope-from=kevin.tian@intel.com;
- helo=mga14.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7PFJ1EFPsIcH
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: eNR9zynHQYQE
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Friday, May 19, 2023 4:19 AM
->=20
-> On Thu, May 18, 2023 at 03:45:24PM -0400, Peter Xu wrote:
->=20
-> > I see that Intel is already copied here (at least Yi and Kevin) so I as=
-sume
-> > there're already some kind of synchronizations on multi-vIOMMU vs recen=
-t
-> > works on Intel side, which is definitely nice and can avoid work confli=
-cts.
->=20
-> I actually don't know that.. Intel sees multiple DMAR blocks in SW and
-> they have kernel level replication of invalidation.. Intel doesn't
-> have a HW fast path yet so they can rely on mediation to fix it. Thus
-> I expect there is no HW replication of invalidations here. Kevin?
->=20
+The lack of SVE memory instrumentation has been an omission in plugin
+handling since it was introduced. Fortunately we can utilise the
+probe_* functions to force all all memory access to follow the slow
+path. We do this by checking the access type and presence of plugin
+memory callbacks and if set return the TLB_MMIO flag.
 
-No HW fast path so single vIOMMU instance is sufficient on Intel now.
+We have to jump through a few hoops in user mode to re-use the flag
+but it was the desired effect:
+
+ ./qemu-system-aarch64 -display none -serial mon:stdio \
+   -M virt -cpu max -semihosting-config enable=on \
+   -kernel ./tests/tcg/aarch64-softmmu/memory-sve \
+   -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
+
+gives (disas doesn't currently understand st1w):
+
+  0, 0x40001808, 0xe54342a0, ".byte 0xa0, 0x42, 0x43, 0xe5", store, 0x40213010, RAM, store, 0x40213014, RAM, store, 0x40213018, RAM
+
+And for user-mode:
+
+  ./qemu-aarch64 \
+    -plugin contrib/plugins/libexeclog.so,afilter=0x4007c0 \
+    -d plugin \
+    ./tests/tcg/aarch64-linux-user/sha512-sve
+
+gives:
+
+  1..10
+  ok 1 - do_test(&tests[i])
+  0, 0x4007c0, 0xa4004b80, ".byte 0x80, 0x4b, 0x00, 0xa4", load, 0x5500800370, load, 0x5500800371, load, 0x5500800372, load, 0x5500800373, load, 0x5500800374, load, 0x5500800375, load, 0x5500800376, load, 0x5500800377, load, 0x5500800378, load, 0x5500800379, load, 0x550080037a, load, 0x550080037b, load, 0x550080037c, load, 0x550080037d, load, 0x550080037e, load, 0x550080037f, load, 0x5500800380, load, 0x5500800381, load, 0x5500800382, load, 0x5500800383, load, 0x5500800384, load, 0x5500800385, load, 0x5500800386, lo
+  ad, 0x5500800387, load, 0x5500800388, load, 0x5500800389, load, 0x550080038a, load, 0x550080038b, load, 0x550080038c, load, 0x550080038d, load, 0x550080038e, load, 0x550080038f, load, 0x5500800390, load, 0x5500800391, load, 0x5500800392, load, 0x5500800393, load, 0x5500800394, load, 0x5500800395, load, 0x5500800396, load, 0x5500800397, load, 0x5500800398, load, 0x5500800399, load, 0x550080039a, load, 0x550080039b, load, 0x550080039c, load, 0x550080039d, load, 0x550080039e, load, 0x550080039f, load, 0x55008003a0, load, 0x55008003a1, load, 0x55008003a2, load, 0x55008003a3, load, 0x55008003a4, load, 0x55008003a5, load, 0x55008003a6, load, 0x55008003a7, load, 0x55008003a8, load, 0x55008003a9, load, 0x55008003aa, load, 0x55008003ab, load, 0x55008003ac, load, 0x55008003ad, load, 0x55008003ae, load, 0x55008003af
+
+(4007c0 is the ld1b in the sha512-sve)
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Cc: Robert Henry <robhenry@microsoft.com>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+---
+ include/exec/cpu-all.h            |  2 +-
+ include/hw/core/cpu.h             | 17 +++++++++++++++++
+ accel/tcg/cputlb.c                |  4 +++-
+ accel/tcg/user-exec.c             |  6 +++++-
+ target/arm/tcg/sve_helper.c       |  4 ----
+ tests/tcg/aarch64/Makefile.target |  8 ++++++++
+ 6 files changed, 34 insertions(+), 7 deletions(-)
+
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 78d258af44..9ab09cf7c2 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -301,7 +301,7 @@ CPUArchState *cpu_copy(CPUArchState *env);
+  * be signaled by probe_access_flags().
+  */
+ #define TLB_INVALID_MASK    (1 << (TARGET_PAGE_BITS_MIN - 1))
+-#define TLB_MMIO            0
++#define TLB_MMIO            (1 << (TARGET_PAGE_BITS_MIN - 2))
+ #define TLB_WATCHPOINT      0
+ 
+ #else
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 39150cf8f8..26fadf7e62 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -983,6 +983,23 @@ void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
+ void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
+ #endif
+ 
++/**
++ * cpu_plugin_mem_cbs_enabled() - are plugin memory callbacks enabled?
++ * @cs: CPUState pointer
++ *
++ * The memory callbacks are installed if a plugin has instrumented an
++ * instruction for memory. This can be useful to know if you want to
++ * force a slow path for a series of memory accesses.
++ */
++static inline bool cpu_plugin_mem_cbs_enabled(const CPUState *cpu)
++{
++#ifdef CONFIG_PLUGIN
++    return !!cpu->plugin_mem_cbs;
++#else
++    return false;
++#endif
++}
++
+ /**
+  * cpu_get_address_space:
+  * @cpu: CPU to get address space from
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index ae0fbcdee2..f117fd8f16 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1540,7 +1540,9 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+     *pfull = &env_tlb(env)->d[mmu_idx].fulltlb[index];
+ 
+     /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
+-    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
++    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))
++        ||
++        (access_type != MMU_INST_FETCH && cpu_plugin_mem_cbs_enabled(env_cpu(env)))) {
+         *phost = NULL;
+         return TLB_MMIO;
+     }
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 36ad8284a5..383263cd1d 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -745,6 +745,10 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+     if (guest_addr_valid_untagged(addr)) {
+         int page_flags = page_get_flags(addr);
+         if (page_flags & acc_flag) {
++            if ((acc_flag == PAGE_READ || acc_flag == PAGE_WRITE)
++                && cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
++                return TLB_MMIO;
++            }
+             return 0; /* success */
+         }
+         maperr = !(page_flags & PAGE_VALID);
+@@ -767,7 +771,7 @@ int probe_access_flags(CPUArchState *env, target_ulong addr, int size,
+ 
+     g_assert(-(addr | TARGET_PAGE_MASK) >= size);
+     flags = probe_access_internal(env, addr, size, access_type, nonfault, ra);
+-    *phost = flags ? NULL : g2h(env_cpu(env), addr);
++    *phost = (flags & TLB_INVALID_MASK) ? NULL : g2h(env_cpu(env), addr);
+     return flags;
+ }
+ 
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 0097522470..7c103fc9f7 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -5688,9 +5688,6 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
+ 
+     flags = info.page[0].flags | info.page[1].flags;
+     if (unlikely(flags != 0)) {
+-#ifdef CONFIG_USER_ONLY
+-        g_assert_not_reached();
+-#else
+         /*
+          * At least one page includes MMIO.
+          * Any bus operation can fail with cpu_transaction_failed,
+@@ -5727,7 +5724,6 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
+             memcpy(&env->vfp.zregs[(rd + i) & 31], &scratch[i], reg_max);
+         }
+         return;
+-#endif
+     }
+ 
+     /* The entire operation is in RAM, on valid pages. */
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 0315795487..f83edd8544 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -80,6 +80,14 @@ sha512-vector: sha512.c
+ 
+ TESTS += sha512-vector
+ 
++ifneq ($(CROSS_CC_HAS_SVE),)
++sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
++sha512-sve: sha512.c
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++
++TESTS += sha512-sve
++endif
++
+ ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
+ 
+-- 
+2.39.2

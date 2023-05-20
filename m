@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276810ejb;
-        Sat, 20 May 2023 09:29:40 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5G0fHM3QHzjL4Len7jNrMsNmV1BNl/l6XI1exysadK3zvav4B0G7N9tlvl6q8c3TkKaYr7
-X-Received: by 2002:a05:622a:85:b0:3f5:3659:4901 with SMTP id o5-20020a05622a008500b003f536594901mr9980005qtw.20.1684600180566;
-        Sat, 20 May 2023 09:29:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684600180; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276850ejb;
+        Sat, 20 May 2023 09:29:44 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4F8VvKH/sTIjFgk2L+TwLFLnYVFF20awex4ahj0987urwe8BhKT1aes9XhZIW/G3UvV715
+X-Received: by 2002:a05:622a:180d:b0:3f2:ba:62b3 with SMTP id t13-20020a05622a180d00b003f200ba62b3mr9751933qtc.32.1684600184612;
+        Sat, 20 May 2023 09:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684600184; cv=none;
         d=google.com; s=arc-20160816;
-        b=WgjPTYjMek33y2b1HXtb178ppbhb65gQaqOuy7DM67m8313R5dJlhUl6vD7cMfY78J
-         +OtzdBDy10PNfPTuMiLGl/TvyODmzY4itdambJZtN44v+vwbC0a3etHLAqfXY4wghU9Q
-         IFsDuwjR3FEc9ZMOYP8x885weorlYYa6mokZaf4gXCdOU/3sLAeKmH6zdDIEluwKgL8P
-         Ug92wbdEZoPEKlJilrdpWvcUUG7M2jt/7CoFckq55qt2Vkob30tn7ojsp9vHQJMMVzCR
-         sFqdVMq+ueF2j0K5v3LEFZgyeWKreZq0VkpzbShvngqAtVonAxaIptxCFy9Hj7BGTBje
-         GrPQ==
+        b=xujNqoAbk810mPy0KuczR+GPJH63a8Rb2gc9pmbhWFP69M1Ww4A6ds/emCpOzlA93n
+         Fykf1araXrV574G0JzT567f+I/a1DnXim9nAPoxlcigrYc5p7VfIOD7IIyyggAcYZkS0
+         Nf4r0mqG0xKSEszmH/n58CirxQe+TcBUBq0c6VMWeEmOv7O4xx/3kR83iGmQtV/SpvyX
+         u4tC5OSY+Y4t07FDq569zG/pUMISSYwo0WDNVNAlpnafAv7YJZpg/liCZ0nGTsehsAzR
+         DmUmzAG4kehnOcQH9nPBKvCdsPRrYhHchkhnLxC0XKE3v8tnA1FrkmxLLwLWL2qA8cuZ
+         Yp6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CGOMI9oWPo3BxTxZ0mc++YW+gNIJuzyjA8l4rsjXfws=;
-        b=LEs84HTNudnrXfLpYFAV8kG/FVbDBQEOBDn575+Dix1zvpP574yLQNBJvK82WMG7Ti
-         4/aO7jPPtktzSqJZ3I/mTk0x+BMM19bZ3uSbB+xLNQtcZuzY7aSsbqeKB+ITRagrV3UL
-         esiXEhI9/clVLs8aIvbhoQSUmSbTEGkIDSnWwEeelZJL1sL1TWyddR21u2kJA53q8Bg/
-         dTTFOOgS/CZFx1G0QvhBB+cSM3yr8C+1Ufoo4jGvssKGOgTuJFkQHhyZ+pXwmN+UIqnG
-         62HOBOES5NQP2PR804gr60pAVQ1TTymO5NGHZ6PvgjZovco183/gHXj+V3feNRRxHz0m
-         Gx2Q==
+        bh=b4QbT7Qp39kM9Wky+d26o1epuHAtvA7Ubq3UboPhQe0=;
+        b=mcD5mLnK+P+cVr9AakALIPT0UDSX/3Uo0Gtj05F00FERAmg6fs/YOqDP1kA6j6tNEm
+         zQyWbOmRidGohDlngHtRTeV0JY5eJsNrc03e84wIr+h+6J4bV/6/hhh1mAkYv1lIp+cn
+         Sxo8P2I7D9sGHAlf6WboPlJk7/ueXqywvym3Mg4fqo/3axbEdTGsBNqlQ9EIvsdzH1cy
+         Zmip/ik3yqo6f6y3vORvVKyU1wBTZ6S3D3ekyGv9phuOjGjZoD+dSH71IHZixXKnqfpP
+         q72sGNnDbaEB0ZMghC4xI+/PvwWBv86eiSs1Ds5W1pWIW3/Prjgo56Dqbc46DShcMJbJ
+         2Z3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pkWmyPa4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOev8R87;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w20-20020a05620a149400b0074f72971619si990309qkj.592.2023.05.20.09.29.40
+        by mx.google.com with ESMTPS id h15-20020ac8584f000000b003ef5d34757fsi1305469qth.747.2023.05.20.09.29.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 May 2023 09:29:40 -0700 (PDT)
+        Sat, 20 May 2023 09:29:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pkWmyPa4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hOev8R87;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q0PQR-0003vr-Q8; Sat, 20 May 2023 12:27:23 -0400
+	id 1q0PQL-0003p6-96; Sat, 20 May 2023 12:27:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQI-0003lE-6o
- for qemu-arm@nongnu.org; Sat, 20 May 2023 12:27:14 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1q0PQG-0003jX-Pm
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 12:27:12 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQB-0003Ck-D5
- for qemu-arm@nongnu.org; Sat, 20 May 2023 12:27:13 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-1ae4c5e12edso33991085ad.3
- for <qemu-arm@nongnu.org>; Sat, 20 May 2023 09:27:06 -0700 (PDT)
+ id 1q0PQ9-0003BR-Cm
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 12:27:12 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-64d2c865e4eso1717463b3a.0
+ for <qemu-arm@nongnu.org>; Sat, 20 May 2023 09:27:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684600025; x=1687192025;
+ d=linaro.org; s=google; t=1684600024; x=1687192024;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CGOMI9oWPo3BxTxZ0mc++YW+gNIJuzyjA8l4rsjXfws=;
- b=pkWmyPa4dErujdaLu++fdfX9S8D492g1tUcbNwqC+jeVrA1uzIOc+/3UDO4kU2x5a8
- 5h0x14O0xBXUVJxvTOFFkYs7EusA4q90/agou2cuRkLvQl+eRUgDOJqKdle7AMEVfWAY
- 7oToMI7GC2U7GqDBIsNkfpxYc+lqQbAw9Di7vUOYCJV8DEisqyMigLXrtLTFs+NzoRFC
- CpXX2gyh+mbS6t/HZ7vgbE2RJms5KxLk+ph9SjcH8segsKZxDNHU3j8yF1iZjao6/ZER
- U9hCdAPQXbdytRKiFU9GjgIVIShA74eU1B0jGr25yBvlhMccpCBfiHSvPEnBVOf6KB80
- 4PVA==
+ bh=b4QbT7Qp39kM9Wky+d26o1epuHAtvA7Ubq3UboPhQe0=;
+ b=hOev8R87druHwFEKlgebrKd4480KKxlTBTo+c9cvTcJj4nL3vbUhYBaS5MhLolttI/
+ 1ZzDQMrST1ZegTPkHgLsr2eTsc5FrbK6v655V4nlUQ0MQVNPtNzpvH2ikLFDJJINC4G1
+ HydPzwWf+GiMDYYUTEirU6XJktpJ3DUGQk/V3POJOAbqpKD6I0EWC/o1RygzyoDhuo9H
+ WKn3TfCvzx2t5ab42MYUH5ZOJfPYdA2e0CMjY91rjGoGR+KlUZTRRpaYeYHuFIavxUX9
+ E/fXcis/mP2S1RDOk+bBHVV5hNfjy6J7aC8a2/iKyJXpZaHG9k2oZALemRO7mkrkXo7S
+ ORjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684600025; x=1687192025;
+ d=1e100.net; s=20221208; t=1684600024; x=1687192024;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CGOMI9oWPo3BxTxZ0mc++YW+gNIJuzyjA8l4rsjXfws=;
- b=Zin1Nvth88WumujbRZNO3pYCpz8EicNcqxEYjbVwz60McpPW9C7zMf1YZByiPgCy5y
- rVEt7rkYfasriUD7YMQCbGZW+SADr/OG8tIi7NmXGNvXAZhREyjLOn1XxUKO4KdytsuM
- Cs9ZKHXUD1NJmWnRHYbr4jOe1/4rvXN5nQIUowTTxXlSUvC+G6z4AIoSXEFswq/1Egip
- BpjRsSUM6fPsWU9D67O65nP/OUDLCiNdbZzBkuKHZiGlS4JbbBk+ceTNB4kMQROfo0SW
- TyR8P1LnMKZAXyRPI5bD+zA9DYymiRMLj5bz+7OT6LDbm4FLRmfGIO1WCffExzMFllbK
- zkGg==
-X-Gm-Message-State: AC+VfDyUcJtkCUM4FWHpL8Q8sfx/flpSGif5nmTxQtmIpT3Sl1zTU2Y5
- kccbAqZsBcWYnpmpmigJJ/wkWcnx872w8jBousM=
-X-Received: by 2002:a17:902:d2c2:b0:1ac:b4db:6a62 with SMTP id
- n2-20020a170902d2c200b001acb4db6a62mr6328290plc.65.1684600025593; 
- Sat, 20 May 2023 09:27:05 -0700 (PDT)
+ bh=b4QbT7Qp39kM9Wky+d26o1epuHAtvA7Ubq3UboPhQe0=;
+ b=L8MEhPMqZllowWQp+S4gjmYEwiQ9LXZO9tBBs1gMOxHk7RP07gcLaOml5PmfleAdPR
+ EzYVgUi1cWUoM0JsXMBnvcxeADyBlpa0lBsszVoUCAAnnwRWUG8HNH7tpNZn2C45LdM3
+ mfR5IP//szyKq968Zqe91HenWjsTQRgKn6UV/6XJ3cNlx9wFBGN34+BL00H7OAu1rlDQ
+ mB+m9AFJKRFsqsLbaMT5nLasdOwe/iFJDd1W4+QKuZg8shNpk438r74oJJHMGiJ6QOCt
+ oeRsFtWL+D/rxr19NkFH+X7V8WgIbynT/q3RAGR8BBq8un6Bl1h9Gh4Awksc7xjnF8WX
+ x0qA==
+X-Gm-Message-State: AC+VfDx1YdeBGiTTk09B9JgDsUHGcSRdbPRbgZ0j+ux+LR78tz9EsE60
+ q+vC0T7QYfp3EFQjvnrw6yuLGWcdroy3I/twjVE=
+X-Received: by 2002:a17:902:c944:b0:1a6:46f2:4365 with SMTP id
+ i4-20020a170902c94400b001a646f24365mr7896263pla.30.1684600023796; 
+ Sat, 20 May 2023 09:27:03 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:d078:d94e:cb2b:a055])
  by smtp.gmail.com with ESMTPSA id
- d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.27.04
+ d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.27.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 May 2023 09:27:05 -0700 (PDT)
+ Sat, 20 May 2023 09:27:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 22/27] qemu/atomic128: Split atomic16_read
-Date: Sat, 20 May 2023 09:26:29 -0700
-Message-Id: <20230520162634.3991009-23-richard.henderson@linaro.org>
+Subject: [PATCH 20/27] accel/tcg: Remove prot argument to atomic_mmu_lookup
+Date: Sat, 20 May 2023 09:26:27 -0700
+Message-Id: <20230520162634.3991009-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230520162634.3991009-1-richard.henderson@linaro.org>
 References: <20230520162634.3991009-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,141 +123,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3P/1OXdtwxWJ
+X-TUID: gEXcNdnUU994
 
-Create both atomic16_read_ro and atomic16_read_rw.
-Previously we pretended that we had atomic16_read in system mode,
-because we "know" that all ram is always writable to the host.
-Now, expose read-only and read-write versions all of the time.
-
-For aarch64, do not fall back to __atomic_read_16 even if
-supported by the compiler, to work around a clang bug.
+Now that load/store are gone, we're always passing
+PAGE_READ | PAGE_WRITE for RMW atomic operations.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- host/include/aarch64/host/atomic128-ldst.h | 21 ++++++++-------
- host/include/generic/host/atomic128-ldst.h | 31 ++++++++++++++++------
- target/s390x/tcg/mem_helper.c              |  2 +-
- 3 files changed, 36 insertions(+), 18 deletions(-)
+ accel/tcg/atomic_template.h | 32 ++++++--------
+ accel/tcg/cputlb.c          | 85 ++++++++++++++-----------------------
+ accel/tcg/user-exec.c       |  8 +---
+ 3 files changed, 45 insertions(+), 80 deletions(-)
 
-diff --git a/host/include/aarch64/host/atomic128-ldst.h b/host/include/aarch64/host/atomic128-ldst.h
-index c2e7b44bc5..6959b2bd8e 100644
---- a/host/include/aarch64/host/atomic128-ldst.h
-+++ b/host/include/aarch64/host/atomic128-ldst.h
-@@ -11,10 +11,18 @@
- #ifndef AARCH64_ATOMIC128_LDST_H
- #define AARCH64_ATOMIC128_LDST_H
- 
--/* Through gcc 10, aarch64 has no support for 128-bit atomics.  */
--#if !defined(CONFIG_ATOMIC128) && !defined(CONFIG_USER_ONLY)
--/* We can do better than cmpxchg for AArch64.  */
--static inline Int128 atomic16_read(Int128 *ptr)
-+/*
-+ * Through gcc 10, aarch64 has no support for 128-bit atomics.
-+ * Through clang 16, without -march=armv8.4-a, __atomic_load_16
-+ * is incorrectly expanded to a read-write operation.
-+ */
-+
-+#define HAVE_ATOMIC128_RO 0
-+#define HAVE_ATOMIC128_RW 1
-+
-+Int128 QEMU_ERROR("unsupported atomic") atomic16_read_ro(const Int128 *ptr);
-+
-+static inline Int128 atomic16_read_rw(Int128 *ptr)
+diff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h
+index 30eee9d066..e312acd16d 100644
+--- a/accel/tcg/atomic_template.h
++++ b/accel/tcg/atomic_template.h
+@@ -73,8 +73,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
+                               ABI_TYPE cmpv, ABI_TYPE newv,
+                               MemOpIdx oi, uintptr_t retaddr)
  {
-     uint64_t l, h;
-     uint32_t tmp;
-@@ -41,9 +49,4 @@ static inline void atomic16_set(Int128 *ptr, Int128 val)
-         : [l] "r"(l), [h] "r"(h));
- }
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
+-                                         PAGE_READ | PAGE_WRITE, retaddr);
++    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);
+     DATA_TYPE ret;
  
--# define HAVE_ATOMIC128 1
--#else
--#include "host/include/generic/host/atomic128-ldst.h"
--#endif
+ #if DATA_SIZE == 16
+@@ -91,8 +90,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
+ ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
+                            MemOpIdx oi, uintptr_t retaddr)
+ {
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
+-                                         PAGE_READ | PAGE_WRITE, retaddr);
++    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);
+     DATA_TYPE ret;
+ 
+     ret = qatomic_xchg__nocheck(haddr, val);
+@@ -105,9 +103,8 @@ ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
+ ABI_TYPE ATOMIC_NAME(X)(CPUArchState *env, target_ulong addr,       \
+                         ABI_TYPE val, MemOpIdx oi, uintptr_t retaddr) \
+ {                                                                   \
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,  \
+-                                         PAGE_READ | PAGE_WRITE, retaddr); \
+-    DATA_TYPE ret;                                                  \
++    DATA_TYPE *haddr, ret;                                          \
++    haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);   \
+     ret = qatomic_##X(haddr, val);                                  \
+     ATOMIC_MMU_CLEANUP;                                             \
+     atomic_trace_rmw_post(env, addr, oi);                           \
+@@ -137,9 +134,8 @@ GEN_ATOMIC_HELPER(xor_fetch)
+ ABI_TYPE ATOMIC_NAME(X)(CPUArchState *env, target_ulong addr,       \
+                         ABI_TYPE xval, MemOpIdx oi, uintptr_t retaddr) \
+ {                                                                   \
+-    XDATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, \
+-                                          PAGE_READ | PAGE_WRITE, retaddr); \
+-    XDATA_TYPE cmp, old, new, val = xval;                           \
++    XDATA_TYPE *haddr, cmp, old, new, val = xval;                   \
++    haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);   \
+     smp_mb();                                                       \
+     cmp = qatomic_read__nocheck(haddr);                             \
+     do {                                                            \
+@@ -180,8 +176,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
+                               ABI_TYPE cmpv, ABI_TYPE newv,
+                               MemOpIdx oi, uintptr_t retaddr)
+ {
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
+-                                         PAGE_READ | PAGE_WRITE, retaddr);
++    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);
+     DATA_TYPE ret;
+ 
+ #if DATA_SIZE == 16
+@@ -198,8 +193,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
+ ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
+                            MemOpIdx oi, uintptr_t retaddr)
+ {
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
+-                                         PAGE_READ | PAGE_WRITE, retaddr);
++    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);
+     ABI_TYPE ret;
+ 
+     ret = qatomic_xchg__nocheck(haddr, BSWAP(val));
+@@ -212,9 +206,8 @@ ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
+ ABI_TYPE ATOMIC_NAME(X)(CPUArchState *env, target_ulong addr,       \
+                         ABI_TYPE val, MemOpIdx oi, uintptr_t retaddr) \
+ {                                                                   \
+-    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,  \
+-                                         PAGE_READ | PAGE_WRITE, retaddr); \
+-    DATA_TYPE ret;                                                  \
++    DATA_TYPE *haddr, ret;                                          \
++    haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);   \
+     ret = qatomic_##X(haddr, BSWAP(val));                           \
+     ATOMIC_MMU_CLEANUP;                                             \
+     atomic_trace_rmw_post(env, addr, oi);                           \
+@@ -241,9 +234,8 @@ GEN_ATOMIC_HELPER(xor_fetch)
+ ABI_TYPE ATOMIC_NAME(X)(CPUArchState *env, target_ulong addr,       \
+                         ABI_TYPE xval, MemOpIdx oi, uintptr_t retaddr) \
+ {                                                                   \
+-    XDATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, \
+-                                          PAGE_READ | PAGE_WRITE, retaddr); \
+-    XDATA_TYPE ldo, ldn, old, new, val = xval;                      \
++    XDATA_TYPE *haddr, ldo, ldn, old, new, val = xval;              \
++    haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE, retaddr);   \
+     smp_mb();                                                       \
+     ldn = qatomic_read__nocheck(haddr);                             \
+     do {                                                            \
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index b1e13d165c..9cb0b697d1 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1896,12 +1896,9 @@ static bool mmu_lookup(CPUArchState *env, target_ulong addr, MemOpIdx oi,
+ /*
+  * Probe for an atomic operation.  Do not allow unaligned operations,
+  * or io operations to proceed.  Return the host address.
+- *
+- * @prot may be PAGE_READ, PAGE_WRITE, or PAGE_READ|PAGE_WRITE.
+  */
+ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+-                               MemOpIdx oi, int size, int prot,
+-                               uintptr_t retaddr)
++                               MemOpIdx oi, int size, uintptr_t retaddr)
+ {
+     uintptr_t mmu_idx = get_mmuidx(oi);
+     MemOp mop = get_memop(oi);
+@@ -1937,54 +1934,37 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+     tlbe = tlb_entry(env, mmu_idx, addr);
+ 
+     /* Check TLB entry and enforce page permissions.  */
+-    if (prot & PAGE_WRITE) {
+-        tlb_addr = tlb_addr_write(tlbe);
+-        if (!tlb_hit(tlb_addr, addr)) {
+-            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_STORE,
+-                                addr & TARGET_PAGE_MASK)) {
+-                tlb_fill(env_cpu(env), addr, size,
+-                         MMU_DATA_STORE, mmu_idx, retaddr);
+-                index = tlb_index(env, mmu_idx, addr);
+-                tlbe = tlb_entry(env, mmu_idx, addr);
+-            }
+-            tlb_addr = tlb_addr_write(tlbe) & ~TLB_INVALID_MASK;
+-        }
 -
- #endif /* AARCH64_ATOMIC128_LDST_H */
-diff --git a/host/include/generic/host/atomic128-ldst.h b/host/include/generic/host/atomic128-ldst.h
-index 06a62e9dd0..79d208b7a4 100644
---- a/host/include/generic/host/atomic128-ldst.h
-+++ b/host/include/generic/host/atomic128-ldst.h
-@@ -12,16 +12,25 @@
- #define HOST_ATOMIC128_LDST_H
- 
- #if defined(CONFIG_ATOMIC128)
-+# define HAVE_ATOMIC128_RO 1
-+# define HAVE_ATOMIC128_RW 1
-+
- static inline Int128 ATTRIBUTE_ATOMIC128_OPT
--atomic16_read(Int128 *ptr)
-+atomic16_read_ro(const Int128 *ptr)
- {
--    __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-+    const __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-     Int128Alias r;
- 
-     r.i = qatomic_read__nocheck(ptr_align);
-     return r.s;
- }
- 
-+static inline Int128 ATTRIBUTE_ATOMIC128_OPT
-+atomic16_read_rw(Int128 *ptr)
-+{
-+    return atomic16_read_ro(ptr);
-+}
-+
- static inline void ATTRIBUTE_ATOMIC128_OPT
- atomic16_set(Int128 *ptr, Int128 val)
- {
-@@ -32,10 +41,14 @@ atomic16_set(Int128 *ptr, Int128 val)
-     qatomic_set__nocheck(ptr_align, v.i);
- }
- 
--# define HAVE_ATOMIC128 1
--#elif defined(CONFIG_CMPXCHG128) && !defined(CONFIG_USER_ONLY)
-+#elif defined(CONFIG_CMPXCHG128)
-+# define HAVE_ATOMIC128_RO 0
-+# define HAVE_ATOMIC128_RW 1
-+
-+Int128 QEMU_ERROR("unsupported atomic") atomic16_read_ro(const Int128 *ptr);
-+
- static inline Int128 ATTRIBUTE_ATOMIC128_OPT
--atomic16_read(Int128 *ptr)
-+atomic16_read_rw(Int128 *ptr)
- {
-     /* Maybe replace 0 with 0, returning the old value.  */
-     Int128 z = int128_make64(0);
-@@ -52,12 +65,14 @@ atomic16_set(Int128 *ptr, Int128 val)
-     } while (int128_ne(old, cmp));
- }
- 
--# define HAVE_ATOMIC128 1
- #else
-+# define HAVE_ATOMIC128_RO 0
-+# define HAVE_ATOMIC128_RW 0
-+
- /* Fallback definitions that must be optimized away, or error.  */
--Int128 QEMU_ERROR("unsupported atomic") atomic16_read(Int128 *ptr);
-+Int128 QEMU_ERROR("unsupported atomic") atomic16_read_ro(const Int128 *ptr);
-+Int128 QEMU_ERROR("unsupported atomic") atomic16_read_rw(Int128 *ptr);
- void QEMU_ERROR("unsupported atomic") atomic16_set(Int128 *ptr, Int128 val);
--# define HAVE_ATOMIC128 0
- #endif
- 
- #endif /* HOST_ATOMIC128_LDST_H */
-diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
-index bad789a742..db22995171 100644
---- a/target/s390x/tcg/mem_helper.c
-+++ b/target/s390x/tcg/mem_helper.c
-@@ -1778,7 +1778,7 @@ static uint32_t do_csst(CPUS390XState *env, uint32_t r3, uint64_t a1,
-         max = 3;
- #endif
-         if ((HAVE_CMPXCHG128 ? 0 : fc + 2 > max) ||
--            (HAVE_ATOMIC128  ? 0 : sc > max)) {
-+            (HAVE_ATOMIC128_RW ? 0 : sc > max)) {
-             cpu_loop_exit_atomic(env_cpu(env), ra);
+-        if (prot & PAGE_READ) {
+-            /*
+-             * Let the guest notice RMW on a write-only page.
+-             * We have just verified that the page is writable.
+-             * Subpage lookups may have left TLB_INVALID_MASK set,
+-             * but addr_read will only be -1 if PAGE_READ was unset.
+-             */
+-            if (unlikely(tlbe->addr_read == -1)) {
+-                tlb_fill(env_cpu(env), addr, size,
+-                         MMU_DATA_LOAD, mmu_idx, retaddr);
+-                /*
+-                 * Since we don't support reads and writes to different
+-                 * addresses, and we do have the proper page loaded for
+-                 * write, this shouldn't ever return.  But just in case,
+-                 * handle via stop-the-world.
+-                 */
+-                goto stop_the_world;
+-            }
+-            /* Collect TLB_WATCHPOINT for read. */
+-            tlb_addr |= tlbe->addr_read;
+-        }
+-    } else /* if (prot & PAGE_READ) */ {
+-        tlb_addr = tlbe->addr_read;
+-        if (!tlb_hit(tlb_addr, addr)) {
+-            if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_LOAD,
+-                                addr & TARGET_PAGE_MASK)) {
+-                tlb_fill(env_cpu(env), addr, size,
+-                         MMU_DATA_LOAD, mmu_idx, retaddr);
+-                index = tlb_index(env, mmu_idx, addr);
+-                tlbe = tlb_entry(env, mmu_idx, addr);
+-            }
+-            tlb_addr = tlbe->addr_read & ~TLB_INVALID_MASK;
++    tlb_addr = tlb_addr_write(tlbe);
++    if (!tlb_hit(tlb_addr, addr)) {
++        if (!victim_tlb_hit(env, mmu_idx, index, MMU_DATA_STORE,
++                            addr & TARGET_PAGE_MASK)) {
++            tlb_fill(env_cpu(env), addr, size,
++                     MMU_DATA_STORE, mmu_idx, retaddr);
++            index = tlb_index(env, mmu_idx, addr);
++            tlbe = tlb_entry(env, mmu_idx, addr);
          }
++        tlb_addr = tlb_addr_write(tlbe) & ~TLB_INVALID_MASK;
      }
+ 
++    /*
++     * Let the guest notice RMW on a write-only page.
++     * We have just verified that the page is writable.
++     * Subpage lookups may have left TLB_INVALID_MASK set,
++     * but addr_read will only be -1 if PAGE_READ was unset.
++     */
++    if (unlikely(tlbe->addr_read == -1)) {
++        tlb_fill(env_cpu(env), addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
++        /*
++         * Since we don't support reads and writes to different
++         * addresses, and we do have the proper page loaded for
++         * write, this shouldn't ever return.  But just in case,
++         * handle via stop-the-world.
++         */
++        goto stop_the_world;
++    }
++    /* Collect TLB_WATCHPOINT for read. */
++    tlb_addr |= tlbe->addr_read;
++
+     /* Notice an IO access or a needs-MMU-lookup access */
+     if (unlikely(tlb_addr & (TLB_MMIO | TLB_DISCARD_WRITE))) {
+         /* There's really nothing that can be done to
+@@ -2000,11 +1980,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+     }
+ 
+     if (unlikely(tlb_addr & TLB_WATCHPOINT)) {
+-        QEMU_BUILD_BUG_ON(PAGE_READ != BP_MEM_READ);
+-        QEMU_BUILD_BUG_ON(PAGE_WRITE != BP_MEM_WRITE);
+-        /* therefore prot == watchpoint bits */
+-        cpu_check_watchpoint(env_cpu(env), addr, size,
+-                             full->attrs, prot, retaddr);
++        cpu_check_watchpoint(env_cpu(env), addr, size, full->attrs,
++                             BP_MEM_READ | BP_MEM_WRITE, retaddr);
+     }
+ 
+     return hostaddr;
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 19c2849c21..1e085b1210 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -1323,12 +1323,9 @@ uint64_t cpu_ldq_code_mmu(CPUArchState *env, abi_ptr addr,
+ 
+ /*
+  * Do not allow unaligned operations to proceed.  Return the host address.
+- *
+- * @prot may be PAGE_READ, PAGE_WRITE, or PAGE_READ|PAGE_WRITE.
+  */
+ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+-                               MemOpIdx oi, int size, int prot,
+-                               uintptr_t retaddr)
++                               MemOpIdx oi, int size, uintptr_t retaddr)
+ {
+     MemOp mop = get_memop(oi);
+     int a_bits = get_alignment_bits(mop);
+@@ -1336,8 +1333,7 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+ 
+     /* Enforce guest required alignment.  */
+     if (unlikely(addr & ((1 << a_bits) - 1))) {
+-        MMUAccessType t = prot == PAGE_READ ? MMU_DATA_LOAD : MMU_DATA_STORE;
+-        cpu_loop_exit_sigbus(env_cpu(env), addr, t, retaddr);
++        cpu_loop_exit_sigbus(env_cpu(env), addr, MMU_DATA_STORE, retaddr);
+     }
+ 
+     /* Enforce qemu required alignment.  */
 -- 
 2.34.1
 

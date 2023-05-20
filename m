@@ -1,115 +1,114 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276785ejb;
-        Sat, 20 May 2023 09:29:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7kIj6tu8X25umZ9jG+osVINlHGoAN3d+TMNxOBzhVO4n+RrNdU3DpPkga8CzS7QmxpkVGt
-X-Received: by 2002:ad4:5948:0:b0:61e:f999:5394 with SMTP id eo8-20020ad45948000000b0061ef9995394mr10722277qvb.0.1684600178521;
-        Sat, 20 May 2023 09:29:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684600178; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276796ejb;
+        Sat, 20 May 2023 09:29:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6C2wCGBzDS9S6w3+PEfhykyuJW+WWTkl51RKdmyxZ43oLnYELySadLjRN6KlZLjELcl+AZ
+X-Received: by 2002:a05:6214:301c:b0:623:686e:e41e with SMTP id ke28-20020a056214301c00b00623686ee41emr11276985qvb.15.1684600179377;
+        Sat, 20 May 2023 09:29:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684600179; cv=none;
         d=google.com; s=arc-20160816;
-        b=r75I8E69/2f+co5cZmGxbGqmOd/Hw36igIAJQxGdZvIvK4xc0edwZ797ttAMJLfITk
-         sTfEEjZl35NFqQ4CxQMfdSLHnK0cmE1otmaQgbXG/ZH44CMr3Hiw/nCwdPL2zrOl6FzY
-         Owe6KONRsd3X/KahBemfmod4y8B9BOuNLCUgB2RWnwC8+sEAugTgbQdzcKCnwG+gmNwC
-         FI8ghJyxWTSxage8CHhGSQcqPWEtiz38UFD+0tfD9Sxwl4TXuyaq9sg3FA2vEn9Ab7SJ
-         QqV8O5rBQi2/jbNd0Ng3YY9FX/rquTcf2ECU2ld+muNaCNlsGxz+5s5UCBA7bqK36vE6
-         aV5g==
+        b=YPo75Vp6FuKc0aeT8l7HVHubehWSa0xAVxaVQzdlLlc4eCqI3p8EmYee+pvICXwU/e
+         07BOxmJfhY5YsQgFxpyJNSN31DeG7PT4rpAUUqs8wJUo2XphydB+EQbnEz8a/StWOBaZ
+         3OD60HCNO7rcFsF8fwG2Pq7/pHJFTsEbpw10G7a87cxWifJm4V5dX1gk+p5R+mPgJjJZ
+         FfqUVqzl4OBObpbNyz9bzp2jB4GB5S6IyefKw/F5av8hwJ9nh/Fz6T4u3jr1oKTmTKm0
+         YtBmf41kukHN7q8e3vAOQEptGk8Q1NGy1kz50XClbKH/4jFNyLbgWu8os8QzApQIY1Hb
+         05Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2DqFQEVjlcRQv07fj6FpnhLPU4q7Af597SdqlFdm/+U=;
-        b=pT1gFpSE35msdZftRsiWa0UEu0FvzZ1+T4w5QceKAfPArBdI/VzhmIZ/R64+TsC7TF
-         G18V4ceBE+pfhy5YhmcrqgPFUF6zTJzyN8riSf852u0bDjQ1IS9YOeubzCBB0vv48YBe
-         wzV2Hs11qju3sCEDTX879Tv747GihT68WoKEBCPzer2JxPoZ0Sz3S2UDyVqfYxuaXGDQ
-         QB9HApogyHrbqpTcyoP8+gehqaoIJ55UVj4apwga4YtVBwE5k9kbRdeWYwxuC8RWfkaA
-         tXHRNBl+c2DuaMFX35aOpJbqPEzd+mKHNuYHQDad5i+EhPg3agIeDMsCrNmn/dm8YrG+
-         Zesg==
+        bh=1Plm35dUE66Q3yWg+6SkVizMCgYtBvFECTpZ00ZQ+pM=;
+        b=Yr7hj+VsMxFqyDIPUYYeqv9zjxoQ9UNwtMcd8h1TVcSSQQgAgJBfnI5aBymtR/7KH+
+         UJ7Hyqt7KU+rfdtnivOJEfK0Suqgj8E9AZtLFZgSb57uMMLjNigzl/zNoAxNWhvOfmsg
+         LkBZ6HMXHSnloVrEdmnEIeFSHCKDlx7O9UE5UMfm841FrU6CMcUGbqRhY3BOb/lX15fS
+         Hy1A5y0XBLNVRvNJBxShTVC7V6HNyi9+I4+iS5dr9PK+zzwq2HHQB0xVtQu3bwr0rn4/
+         DGDrKv4AegpAFnIdGVmGd9tiNC971bwL1O653nmx1kbltpIZywTx5lVh5D47YvE9k9SC
+         jN+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lGaHcHYc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qdVu7HsJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7-20020a0562140cc700b0056f0669018bsi1332354qvx.35.2023.05.20.09.29.38
+        by mx.google.com with ESMTPS id ke17-20020a056214301100b006215f68b342si1225985qvb.198.2023.05.20.09.29.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 May 2023 09:29:38 -0700 (PDT)
+        Sat, 20 May 2023 09:29:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lGaHcHYc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qdVu7HsJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q0PQJ-0003mZ-5i; Sat, 20 May 2023 12:27:15 -0400
+	id 1q0PQR-0003vN-OP; Sat, 20 May 2023 12:27:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQ9-0003fJ-4F
- for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:06 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1q0PQJ-0003mt-9l
+ for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:15 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQ3-00039N-25
- for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:03 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1ae6dce19f7so20701315ad.3
- for <qemu-devel@nongnu.org>; Sat, 20 May 2023 09:26:58 -0700 (PDT)
+ id 1q0PQC-00034A-Ky
+ for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:15 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-1ae8de081ccso9157615ad.1
+ for <qemu-devel@nongnu.org>; Sat, 20 May 2023 09:27:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684600017; x=1687192017;
+ d=linaro.org; s=google; t=1684600027; x=1687192027;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2DqFQEVjlcRQv07fj6FpnhLPU4q7Af597SdqlFdm/+U=;
- b=lGaHcHYcW5sessr2JXeHN3gEF1bQzcAqnz0Z2gpqw7SBttpcTsXKlN6oMp0WuV6JP8
- UMLwxrg6zUclXcwkwmbD2vc/+o62K56rf/QeJvAiIl6X8sp3hgWJDs1QEuh5qifTQO57
- zmNYgtYq4A8pc7d5d3z3xv3wze05HGzxpcU5GcWc1YLBm21dZc9JjoYkyAETHIPpWmbl
- sRsPb0hzWfBXmOTxQiL+lrRnH6kSZ4sItIWbx/rsdCjm4jVqJAI5VSRzVHVcRvb/KSAp
- Yp4Y6naleRuQ2/c1/gpZzN3DTeEJ7rNbGyC24f0+ybBNUJO/N1e83y11KvmSqpHOj5+g
- 7SzA==
+ bh=1Plm35dUE66Q3yWg+6SkVizMCgYtBvFECTpZ00ZQ+pM=;
+ b=qdVu7HsJyKzcF/SXMi+QAjlBa6PoQzAIuj3X/cwjIZ2bCDDd6Dbt1f6IwDulOKnEG8
+ HJhBp0T+ARPB4j9nyKtijEzqZc0ZlSFhOXJiOpFElsAbY53arqbsqpoem6l+cnJPwL+t
+ EKTH83FlWt++EpGFK0fUQ3ZXhASPaStvhN5azH4UPRKUVTkU0DEpegiJXA1uLElkBbhd
+ mqOuHXi4XFHlwVIMilgZtxOXkSg8HYEA0GFUPYn9AOhE46hIrz4vAb2CrGomtY37ZlIz
+ Zz0oQrYzltKxtj6wzwDvEdi7UmIxEGfA9cM4J3dvMP73pEBIwcLGwviBz+Mbz6FnE9xA
+ ta/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684600017; x=1687192017;
+ d=1e100.net; s=20221208; t=1684600027; x=1687192027;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2DqFQEVjlcRQv07fj6FpnhLPU4q7Af597SdqlFdm/+U=;
- b=hA73ODfY6XQ59xDch3OqJ3B0AbvqP+vm7pA3iF3J3j7KttMLi0DMr2eStHFpkwuUsM
- qKF79QMUudfdt/d0hWfP5IBezTGEq7nrVMxIPYY1x0YM5CfvGy9tIsSFBs93a6Ls/E+t
- 7X0A8BEropQKID9MGZXAydPRwz4IAgea032p1dw4UVPpjVPxDvww9sQHkh/itAOt3ffP
- y1eqRbf3oRbqp70RJeKNvk5UJb3I86BsfXurpzjgtXqQTk1CDKK1hDKQH17nupDzpR3q
- 3f8Kf9WFg/Q0p42HmUfMmRlroTzncztboqNNMbRV3B/y2b5Rv3Z7kwjefm3tpNeMybsz
- SfAg==
-X-Gm-Message-State: AC+VfDyOwmsbUtn73apO8w6b+BSqHhWSv1fMe+KoUxu8c5WP2x+dsFqG
- b9nOOalyTzsYesd8/M0s6VRxXPRapq30JJ0GDoA=
-X-Received: by 2002:a17:903:2444:b0:1aa:f203:781c with SMTP id
- l4-20020a170903244400b001aaf203781cmr7423499pls.44.1684600017246; 
- Sat, 20 May 2023 09:26:57 -0700 (PDT)
+ bh=1Plm35dUE66Q3yWg+6SkVizMCgYtBvFECTpZ00ZQ+pM=;
+ b=ghkL37dn19jN/0lj690XYD5HyReBNI39Slo3U6GfIJA09JOL9vHRHeMh+YstZHrpFl
+ kmYYGB+n1Sy+uZXrZxT5i58YJsqytnuvYQRZxtW5OX0LeZGsvMWiOBbSKKfoakKkgNIq
+ /HusvIpGhlAFjN9iG1M/zemU3+tND5IEdiFPRY12214kJwm8pGHawQh//l1ToKynnFOR
+ TaiM1TluPZsEkQve127mXii0hlwDXh/ukCN1ASQajr2TB6OQC+hhBrKGJgvQSrMV5YT8
+ zX5hkCVKdlYsLZMN+Pbt9sFLHzfqdh8WuSTeqP1oPm6SLfXNPAkKvmX3Ci/lTBrpBnVs
+ j2aA==
+X-Gm-Message-State: AC+VfDzxKKDxlPu+efpwEWen9M6g0LprQKQTVktL+7jXO2DZ1AFs1J3q
+ ObtEH+uurVAJeYeWwRPMV4+8GrEpf/cTpZuEJ5k=
+X-Received: by 2002:a17:903:2287:b0:1ad:ea13:1914 with SMTP id
+ b7-20020a170903228700b001adea131914mr10974248plh.30.1684600027284; 
+ Sat, 20 May 2023 09:27:07 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:d078:d94e:cb2b:a055])
  by smtp.gmail.com with ESMTPSA id
- d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.26.56
+ d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.27.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 May 2023 09:26:56 -0700 (PDT)
+ Sat, 20 May 2023 09:27:06 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 13/27] include/qemu: Move CONFIG_ATOMIC128_OPT handling to
- atomic128.h
-Date: Sat, 20 May 2023 09:26:20 -0700
-Message-Id: <20230520162634.3991009-14-richard.henderson@linaro.org>
+Subject: [PATCH 24/27] tcg: Split out tcg/debug-assert.h
+Date: Sat, 20 May 2023 09:26:31 -0700
+Message-Id: <20230520162634.3991009-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230520162634.3991009-1-richard.henderson@linaro.org>
 References: <20230520162634.3991009-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,161 +123,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DEAIDC8mNVHG
-
-Not only the routines in ldst_atomicity.c.inc need markup,
-but also the ones in the headers.
+X-TUID: meErHO+Hj7st
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- host/include/generic/host/atomic128-cas.h  | 12 ++++++++----
- host/include/generic/host/atomic128-ldst.h | 18 ++++++++++++------
- include/qemu/atomic128.h                   | 17 +++++++++++++++++
- accel/tcg/ldst_atomicity.c.inc             | 17 -----------------
- 4 files changed, 37 insertions(+), 27 deletions(-)
+ include/tcg/debug-assert.h | 17 +++++++++++++++++
+ include/tcg/tcg.h          |  9 +--------
+ 2 files changed, 18 insertions(+), 8 deletions(-)
+ create mode 100644 include/tcg/debug-assert.h
 
-diff --git a/host/include/generic/host/atomic128-cas.h b/host/include/generic/host/atomic128-cas.h
-index 513622fe34..991d3da082 100644
---- a/host/include/generic/host/atomic128-cas.h
-+++ b/host/include/generic/host/atomic128-cas.h
-@@ -12,24 +12,28 @@
- #define HOST_ATOMIC128_CAS_H
- 
- #if defined(CONFIG_ATOMIC128)
--static inline Int128 atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
-+static inline Int128 ATTRIBUTE_ATOMIC128_OPT
-+atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
- {
-+    __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-     Int128Alias r, c, n;
- 
-     c.s = cmp;
-     n.s = new;
--    r.i = qatomic_cmpxchg__nocheck((__int128_t *)ptr, c.i, n.i);
-+    r.i = qatomic_cmpxchg__nocheck(ptr_align, c.i, n.i);
-     return r.s;
- }
- # define HAVE_CMPXCHG128 1
- #elif defined(CONFIG_CMPXCHG128)
--static inline Int128 atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
-+static inline Int128 ATTRIBUTE_ATOMIC128_OPT
-+atomic16_cmpxchg(Int128 *ptr, Int128 cmp, Int128 new)
- {
-+    __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-     Int128Alias r, c, n;
- 
-     c.s = cmp;
-     n.s = new;
--    r.i = __sync_val_compare_and_swap_16((__int128_t *)ptr, c.i, n.i);
-+    r.i = __sync_val_compare_and_swap_16(ptr_align, c.i, n.i);
-     return r.s;
- }
- # define HAVE_CMPXCHG128 1
-diff --git a/host/include/generic/host/atomic128-ldst.h b/host/include/generic/host/atomic128-ldst.h
-index e7354a9255..46911dfb61 100644
---- a/host/include/generic/host/atomic128-ldst.h
-+++ b/host/include/generic/host/atomic128-ldst.h
-@@ -12,32 +12,38 @@
- #define HOST_ATOMIC128_LDST_H
- 
- #if defined(CONFIG_ATOMIC128)
--static inline Int128 atomic16_read(Int128 *ptr)
-+static inline Int128 ATTRIBUTE_ATOMIC128_OPT
-+atomic16_read(Int128 *ptr)
- {
-+    __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-     Int128Alias r;
- 
--    r.i = qatomic_read__nocheck((__int128_t *)ptr);
-+    r.i = qatomic_read__nocheck(ptr_align);
-     return r.s;
- }
- 
--static inline void atomic16_set(Int128 *ptr, Int128 val)
-+static inline void ATTRIBUTE_ATOMIC128_OPT
-+atomic16_set(Int128 *ptr, Int128 val)
- {
-+    __int128_t *ptr_align = __builtin_assume_aligned(ptr, 16);
-     Int128Alias v;
- 
-     v.s = val;
--    qatomic_set__nocheck((__int128_t *)ptr, v.i);
-+    qatomic_set__nocheck(ptr_align, v.i);
- }
- 
- # define HAVE_ATOMIC128 1
- #elif !defined(CONFIG_USER_ONLY) && HAVE_CMPXCHG128
--static inline Int128 atomic16_read(Int128 *ptr)
-+static inline Int128 ATTRIBUTE_ATOMIC128_OPT
-+atomic16_read(Int128 *ptr)
- {
-     /* Maybe replace 0 with 0, returning the old value.  */
-     Int128 z = int128_make64(0);
-     return atomic16_cmpxchg(ptr, z, z);
- }
- 
--static inline void atomic16_set(Int128 *ptr, Int128 val)
-+static inline void ATTRIBUTE_ATOMIC128_OPT
-+atomic16_set(Int128 *ptr, Int128 val)
- {
-     Int128 old = *ptr, cmp;
-     do {
-diff --git a/include/qemu/atomic128.h b/include/qemu/atomic128.h
-index 3a8adb4d47..34554bf0ac 100644
---- a/include/qemu/atomic128.h
-+++ b/include/qemu/atomic128.h
-@@ -15,6 +15,23 @@
- 
- #include "qemu/int128.h"
- 
+diff --git a/include/tcg/debug-assert.h b/include/tcg/debug-assert.h
+new file mode 100644
+index 0000000000..596765a3d2
+--- /dev/null
++++ b/include/tcg/debug-assert.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: MIT */
 +/*
-+ * If __alignof(unsigned __int128) < 16, GCC may refuse to inline atomics
-+ * that are supported by the host, e.g. s390x.  We can force the pointer to
-+ * have our known alignment with __builtin_assume_aligned, however prior to
-+ * GCC 13 that was only reliable with optimization enabled.  See
-+ *   https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107389
++ * Define tcg_debug_assert
++ * Copyright (c) 2008 Fabrice Bellard
 + */
-+#if defined(CONFIG_ATOMIC128_OPT)
-+# if !defined(__OPTIMIZE__)
-+#  define ATTRIBUTE_ATOMIC128_OPT  __attribute__((optimize("O1")))
-+# endif
-+# define CONFIG_ATOMIC128
-+#endif
-+#ifndef ATTRIBUTE_ATOMIC128_OPT
-+# define ATTRIBUTE_ATOMIC128_OPT
++
++#ifndef TCG_DEBUG_ASSERT_H
++#define TCG_DEBUG_ASSERT_H
++
++#if defined CONFIG_DEBUG_TCG || defined QEMU_STATIC_ANALYSIS
++# define tcg_debug_assert(X) do { assert(X); } while (0)
++#else
++# define tcg_debug_assert(X) \
++    do { if (!(X)) { __builtin_unreachable(); } } while (0)
 +#endif
 +
- /*
-  * GCC is a house divided about supporting large atomic operations.
-  *
-diff --git a/accel/tcg/ldst_atomicity.c.inc b/accel/tcg/ldst_atomicity.c.inc
-index ba5db7c366..b89631bbef 100644
---- a/accel/tcg/ldst_atomicity.c.inc
-+++ b/accel/tcg/ldst_atomicity.c.inc
-@@ -16,23 +16,6 @@
- #endif
- #define HAVE_al8_fast      (ATOMIC_REG_SIZE >= 8)
++#endif
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index cd6327b175..072c35f7f5 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -34,6 +34,7 @@
+ #include "tcg/tcg-mo.h"
+ #include "tcg-target.h"
+ #include "tcg/tcg-cond.h"
++#include "tcg/debug-assert.h"
  
--/*
-- * If __alignof(unsigned __int128) < 16, GCC may refuse to inline atomics
-- * that are supported by the host, e.g. s390x.  We can force the pointer to
-- * have our known alignment with __builtin_assume_aligned, however prior to
-- * GCC 13 that was only reliable with optimization enabled.  See
-- *   https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107389
-- */
--#if defined(CONFIG_ATOMIC128_OPT)
--# if !defined(__OPTIMIZE__)
--#  define ATTRIBUTE_ATOMIC128_OPT  __attribute__((optimize("O1")))
--# endif
--# define CONFIG_ATOMIC128
--#endif
--#ifndef ATTRIBUTE_ATOMIC128_OPT
--# define ATTRIBUTE_ATOMIC128_OPT
+ /* XXX: make safe guess about sizes */
+ #define MAX_OP_PER_INSTR 266
+@@ -222,14 +223,6 @@ typedef uint64_t tcg_insn_unit;
+ /* The port better have done this.  */
+ #endif
+ 
+-
+-#if defined CONFIG_DEBUG_TCG || defined QEMU_STATIC_ANALYSIS
+-# define tcg_debug_assert(X) do { assert(X); } while (0)
+-#else
+-# define tcg_debug_assert(X) \
+-    do { if (!(X)) { __builtin_unreachable(); } } while (0)
 -#endif
 -
- #if defined(CONFIG_ATOMIC128)
- # define HAVE_al16_fast    true
- #else
+ typedef struct TCGRelocation TCGRelocation;
+ struct TCGRelocation {
+     QSIMPLEQ_ENTRY(TCGRelocation) next;
 -- 
 2.34.1
 

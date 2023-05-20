@@ -1,107 +1,107 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276397ejb;
-        Sat, 20 May 2023 09:28:34 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4m1PVhqIce+kFMFUwqyPGWlabbxh27ALanVoMtBOUrZEVt0ly7/u45DetZyd31EVryOVBS
-X-Received: by 2002:ac8:5795:0:b0:3f4:dfba:821c with SMTP id v21-20020ac85795000000b003f4dfba821cmr9461456qta.34.1684600114257;
-        Sat, 20 May 2023 09:28:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684600114; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp276522ejb;
+        Sat, 20 May 2023 09:28:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4m7GBrM54LJU90IdRifCIb2NwFE4C2SxQpkDBJNZswz1odAJ3gSRmoahO8X7URCHqqDNwJ
+X-Received: by 2002:ac8:5988:0:b0:3f6:9bcc:487e with SMTP id e8-20020ac85988000000b003f69bcc487emr5809733qte.48.1684600137545;
+        Sat, 20 May 2023 09:28:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684600137; cv=none;
         d=google.com; s=arc-20160816;
-        b=INGgLAfmY5G3lcvjI5duXh2uQ7K7EZbAGSb/EEo/IPy1Q7imbA8aoRdh0P7fsMO05B
-         qJFwzjEHgNAtJE6ssHnIFDAbSAHWk+xy5Hlin+ki93u+r4Yk2uosorAF9YA4a6kYgwDI
-         zqcjBCOeOp2SCYG1GoI7a6QscaAkV9O0bXAvqxAWghhYrwg+yIr8Vev8UVu3vY2dsYmc
-         J4WemQF3Yk36hlYQtIAiapSVQD5oAIk5W2nPqRazkCv/gfgTckjaA/RYQ9cu3y5EyyGh
-         psIWm2/N1AliRnMZ/QYegTe3VWRv7tTYrgVEr7Eb1zGTTfkwx8tVLCCetnug5xcFAP8m
-         IlCA==
+        b=aBFnbySPByKTOS935SK3I3rkXnzfwbN8aC3ToVB88iubkhj+U0dnHzISdZptDEixJb
+         RizqyCnJbKngmRCW0kixW4YLQ9tZ1s5zDNiPRex7BRGu4bS6JAyaAviK++pSSJJ+VUys
+         wY3BK44SGVn6Ln72WZMANyJeYmmdWOvnOWGkM6tS1LtCLvzRg53yOIU9MtbfJp3RHj+R
+         OP+3/jOSkES/MDBA+TPQHSkUjaKxGn3BOeNSS7FzoWuIBt2BKHpSqo5uW/1XmUnhLOaZ
+         +FtmqTIRqF4HfN6UcHthniAfpzZ6RnaGZ/IkSbMOnua3+OP9DPFV3425dYyQLcod6Ecz
+         X2Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MPL5Chc7uKNtPykCbIf1bx9tBI7z2B/RniQ4iaiA6MY=;
-        b=XhNZAwIIdaX2o0jwv4UFsI1Mud0Jul5L6XDGcfGGrybtWJOq3jJEzA1gtdrmIGzmt/
-         6VO1Kq+8nyHO9bHWpvg46tUr6lF7Ly1gEYTWBpiM9jsEcUZz0fGFCcQWAk3J0uoMS6wN
-         AIJa0Siu/m46eLzunc2/vR0WdRx/hcS76LLqQ7Vz/d7x4cK/yEp7xoWi/uRLX113w3jw
-         Ox0D3ekt8Zli02jxhj1drFrTcIggp1rc2SW2oqDq4i3VSdgUmLJoLZATq5/6IkrzMd4E
-         CehAtOoYlQgBaT4uD1/3jC7zoGK0+PsxPZ1c2KpxrKxrUFtkhRys8r2wQm4aJ4YV+yC0
-         VwTQ==
+        bh=WcxZjIY/T80MjuA6OZ00h+5fCLAwNHjF9M1KXt4rlvU=;
+        b=cxtbBLO97SEmEF0+AZ6tvNjDbtiLMtfLG6INPrKFoT6/ZkIy2t9yK6aWnUj/H9uEk4
+         poSV1O2HpTE3CsA3hgr+Huqd4LTTYUf9CO3o2XPfgce6vSx+A4H7cbOMR60I1BxQ0T/s
+         9BwBryCVCv5dvFbvY8bNw7LACGJpazAplbqhSFz1ixwGpwlYWzf7bUE9o1q2Rss3qHmL
+         V2N8W8TBqLSY+jlomvQsj2UF6LjRBgsNdNzLS0u+GEXttx1a9bR++Q/v4UCPpv9rdRfN
+         u7NWUZUaQckVvM1EsUh5I++ShXrww6k6ZiL0yfSwMz4Ebn2NvASUwDuo6ZX4UQDJMI75
+         59XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NiebfK18;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ftns1YCZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13-20020ac87e8d000000b003f0a7ba0742si1348765qtj.228.2023.05.20.09.28.34
+        by mx.google.com with ESMTPS id v21-20020a05622a015500b003f62eb91a2dsi1293483qtw.582.2023.05.20.09.28.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 May 2023 09:28:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 20 May 2023 09:28:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NiebfK18;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ftns1YCZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q0PQS-0003xV-OH; Sat, 20 May 2023 12:27:25 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q0PPq-0003aS-B4; Sat, 20 May 2023 12:26:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQE-0003i2-Ra
- for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:11 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1q0PPo-0003Yt-Qu
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 12:26:44 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0PQ8-00034U-Os
- for qemu-devel@nongnu.org; Sat, 20 May 2023 12:27:09 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-1ae4c5e1388so43577015ad.1
- for <qemu-devel@nongnu.org>; Sat, 20 May 2023 09:27:03 -0700 (PDT)
+ id 1q0PPm-000351-2n
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 12:26:44 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-64d2da69fdfso2548148b3a.0
+ for <qemu-arm@nongnu.org>; Sat, 20 May 2023 09:26:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684600023; x=1687192023;
+ d=linaro.org; s=google; t=1684600000; x=1687192000;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MPL5Chc7uKNtPykCbIf1bx9tBI7z2B/RniQ4iaiA6MY=;
- b=NiebfK18huzPkhni+eWrEvgLUoAeCbNUHXgL1m8ZmVsaZ/tXbk3W1BYq4xbNX5Hara
- mvCjhPbiucajpzL7c25ARj1GHEY3t25etV0sKwlp+T7iklwI5T3QCq3+bXyQR15bn8eu
- qXRBAZyvo1BglRPL2/xBJNkT2wvh5q6WnDJMDb36VOVUjyghU0BJF/+wHnR2DiBtK091
- druZTr95/vDtHcq5qXzxzfxcmCNM5jpje+kyYHjYZK+WgHxKUcraOOZHM60xcoAyCXmt
- itrU93lE7vqPSUaB0BqfRj0Xzj7CR8RO5EQr7pvW8WeM+cDFWRgMuV7X+vu/Y+cMxlBh
- +uUA==
+ bh=WcxZjIY/T80MjuA6OZ00h+5fCLAwNHjF9M1KXt4rlvU=;
+ b=ftns1YCZXVXo6UzN2ClFhxIZnc+TKeKlz2IlfyDXsQ4vzrk4S8ylrmBsFrzJZpIKcW
+ 2O/ufe+sZHU+5XeyRtuL/NAbKBIVvMSAFJPMuLcKqgFgbMVwkM+pnMwm8gARKj7Cdo8i
+ VFiR2c8mVbIQlbpXcwSGFAE6s3PsUmxaEANoF88MXDlF+7DfkGHbOCycdKp0Yx7wLLMD
+ cz+aCqFe9m3MYqbPQzR9/TpAhQrxX91sYkGpvosCOPGFE97TlYn/G3/PnAeFJ1nj26ii
+ IDyqbbNOWVIZ3pukwnRzVb9pmtMhrU3jfahxNaq8MMRLlCGm1rlVxp2ml54wJ/wX+hjp
+ SsNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684600023; x=1687192023;
+ d=1e100.net; s=20221208; t=1684600000; x=1687192000;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MPL5Chc7uKNtPykCbIf1bx9tBI7z2B/RniQ4iaiA6MY=;
- b=UAdhXAweMW0UvXuSjc0VrmeHD+l2QgKELHpu5JSiuzJyuptHP1Il5UPOJ5ygOT+QbO
- l6BAKb/0WVBo5lU8nv2LGL3q/ExwRMw0CTgG57sqCd+ftagi/2rnWMsGoxeYhUVN895Y
- SF42EG3R/awhB+eb4OZr86eYuqjc3hIAW4oWap9wWYIZmieq1Mw9iRgNI5y4GRACaowR
- VmtTpwMVBfWXgzMxyn9YeRpGJErA+Gt+eEJMgW+54DCPDOCk2j8W+6jLezq9mkBJ1pUl
- inUVSX9MFctmjitPSCTxC/DQGaA7iE+oMla70MGsYaCGtvMT4MquMWO98ccrfqm78v3K
- 7v1w==
-X-Gm-Message-State: AC+VfDwNdJnPWo6U60yeDFyCPayw5H3LxK3Da+saJQxDbNhvxyFDEI5n
- fB3HBSedba6jvrtHrCoccSFPZ5O/1LFeETTZXrc=
-X-Received: by 2002:a17:902:e811:b0:1af:981b:eeff with SMTP id
- u17-20020a170902e81100b001af981beeffmr2243569plg.64.1684600022784; 
- Sat, 20 May 2023 09:27:02 -0700 (PDT)
+ bh=WcxZjIY/T80MjuA6OZ00h+5fCLAwNHjF9M1KXt4rlvU=;
+ b=lfn5ZdsX8tgpy42B/kYckxbfzfXbWJsUpo0o8ZBo3K3P/4SRleZevr8fqtuhvHlzyD
+ R9B5mD4hCFAZs9nMn/Q1m+yYyWzkaZ7aMzWwNrb9UGMVcAKi/9Wys43HDvwhIaZU+uBH
+ v080S/3x4NWtknDwNWPdEWrDgsOKOlxE3T2IM8RYFRZzDDRNuGdBRdT2JFNl54zRaEqa
+ tnVYRe+RrjLp7YPgHFutwsgGoK/SVVAvbGtP5VdsupFlAv4qpM8ewT+SKR/p2Vf/vqA+
+ mRFuZ6AZxC1kpX9JRfMX20KgSK2BLGpqiYkNHVcRxLqDrSY/F/TPB/vmcCSc4d1UGBtk
+ yF8g==
+X-Gm-Message-State: AC+VfDxEL+I6hOx6sVmgYNG3yWEwnzeD8ihKmgmS9WMGhcj8GeFAPxKM
+ Oj/pMTdhACpjVTNb/Jl7j4VBqg==
+X-Received: by 2002:a17:902:bb16:b0:1aa:ee36:40a5 with SMTP id
+ im22-20020a170902bb1600b001aaee3640a5mr5204155plb.34.1684600000535; 
+ Sat, 20 May 2023 09:26:40 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:d078:d94e:cb2b:a055])
  by smtp.gmail.com with ESMTPSA id
- d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.27.02
+ d12-20020a170903230c00b001a5260a6e6csm1697104plh.206.2023.05.20.09.26.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 May 2023 09:27:02 -0700 (PDT)
+ Sat, 20 May 2023 09:26:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 19/27] accel/tcg: Remove cpu_atomic_{ld,st}o_*_mmu
-Date: Sat, 20 May 2023 09:26:26 -0700
-Message-Id: <20230520162634.3991009-20-richard.henderson@linaro.org>
+Subject: [PATCH 05/27] util/bufferiszero: Use i386 host/cpuinfo.h
+Date: Sat, 20 May 2023 09:26:12 -0700
+Message-Id: <20230520162634.3991009-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230520162634.3991009-1-richard.henderson@linaro.org>
 References: <20230520162634.3991009-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,169 +110,198 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Hu+Lg87day0F
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: r7LweIVV79ZQ
 
-Atomic load/store of 128-byte quantities is now handled
-by cpu_{ld,st}16_mmu.
+Use cpuinfo_init() during init_accel(), and the variable cpuinfo
+during test_buffer_is_zero_next_accel().  Adjust the logic that
+cycles through the set of accelerators for testing.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/atomic_template.h   | 61 +++--------------------------------
- include/exec/cpu_ldst.h       |  9 ------
- accel/tcg/atomic_common.c.inc | 14 --------
- 3 files changed, 4 insertions(+), 80 deletions(-)
+ util/bufferiszero.c | 126 ++++++++++++++++----------------------------
+ 1 file changed, 45 insertions(+), 81 deletions(-)
 
-diff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h
-index 404a530f7c..30eee9d066 100644
---- a/accel/tcg/atomic_template.h
-+++ b/accel/tcg/atomic_template.h
-@@ -87,33 +87,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
-     return ret;
- }
+diff --git a/util/bufferiszero.c b/util/bufferiszero.c
+index 1886bc5ba4..d3c14320ef 100644
+--- a/util/bufferiszero.c
++++ b/util/bufferiszero.c
+@@ -24,6 +24,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/cutils.h"
+ #include "qemu/bswap.h"
++#include "host/cpuinfo.h"
  
--#if DATA_SIZE >= 16
--#if HAVE_ATOMIC128
--ABI_TYPE ATOMIC_NAME(ld)(CPUArchState *env, target_ulong addr,
--                         MemOpIdx oi, uintptr_t retaddr)
--{
--    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
--                                         PAGE_READ, retaddr);
--    DATA_TYPE val;
+ static bool
+ buffer_zero_int(const void *buf, size_t len)
+@@ -184,111 +185,74 @@ buffer_zero_avx512(const void *buf, size_t len)
+ }
+ #endif /* CONFIG_AVX512F_OPT */
+ 
 -
--    val = atomic16_read(haddr);
--    ATOMIC_MMU_CLEANUP;
--    atomic_trace_ld_post(env, addr, oi);
--    return val;
--}
+-/* Note that for test_buffer_is_zero_next_accel, the most preferred
+- * ISA must have the least significant bit.
+- */
+-#define CACHE_AVX512F 1
+-#define CACHE_AVX2    2
+-#define CACHE_SSE4    4
+-#define CACHE_SSE2    8
 -
--void ATOMIC_NAME(st)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
--                     MemOpIdx oi, uintptr_t retaddr)
--{
--    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
--                                         PAGE_WRITE, retaddr);
--
--    atomic16_set(haddr, val);
--    ATOMIC_MMU_CLEANUP;
--    atomic_trace_st_post(env, addr, oi);
--}
--#endif
--#else
-+#if DATA_SIZE < 16
- ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
-                            MemOpIdx oi, uintptr_t retaddr)
+-/* Make sure that these variables are appropriately initialized when
++/*
++ * Make sure that these variables are appropriately initialized when
+  * SSE2 is enabled on the compiler command-line, but the compiler is
+  * too old to support CONFIG_AVX2_OPT.
+  */
+ #if defined(CONFIG_AVX512F_OPT) || defined(CONFIG_AVX2_OPT)
+-# define INIT_CACHE 0
+-# define INIT_ACCEL buffer_zero_int
++# define INIT_USED     0
++# define INIT_LENGTH   0
++# define INIT_ACCEL    buffer_zero_int
+ #else
+ # ifndef __SSE2__
+ #  error "ISA selection confusion"
+ # endif
+-# define INIT_CACHE CACHE_SSE2
+-# define INIT_ACCEL buffer_zero_sse2
++# define INIT_USED     CPUINFO_SSE2
++# define INIT_LENGTH   64
++# define INIT_ACCEL    buffer_zero_sse2
+ #endif
+ 
+-static unsigned cpuid_cache = INIT_CACHE;
++static unsigned used_accel = INIT_USED;
++static unsigned length_to_accel = INIT_LENGTH;
+ static bool (*buffer_accel)(const void *, size_t) = INIT_ACCEL;
+-static int length_to_accel = 64;
+ 
+-static void init_accel(unsigned cache)
++static unsigned __attribute__((noinline))
++select_accel_cpuinfo(unsigned info)
  {
-@@ -188,7 +162,7 @@ GEN_ATOMIC_HELPER_FN(smax_fetch, MAX, SDATA_TYPE, new)
- GEN_ATOMIC_HELPER_FN(umax_fetch, MAX,  DATA_TYPE, new)
- 
- #undef GEN_ATOMIC_HELPER_FN
--#endif /* DATA SIZE >= 16 */
-+#endif /* DATA SIZE < 16 */
- 
- #undef END
- 
-@@ -220,34 +194,7 @@ ABI_TYPE ATOMIC_NAME(cmpxchg)(CPUArchState *env, target_ulong addr,
-     return BSWAP(ret);
+-    bool (*fn)(const void *, size_t) = buffer_zero_int;
+-    if (cache & CACHE_SSE2) {
+-        fn = buffer_zero_sse2;
+-        length_to_accel = 64;
+-    }
+-#ifdef CONFIG_AVX2_OPT
+-    if (cache & CACHE_SSE4) {
+-        fn = buffer_zero_sse4;
+-        length_to_accel = 64;
+-    }
+-    if (cache & CACHE_AVX2) {
+-        fn = buffer_zero_avx2;
+-        length_to_accel = 128;
+-    }
+-#endif
++    static const struct {
++        unsigned bit;
++        unsigned len;
++        bool (*fn)(const void *, size_t);
++    } all[] = {
+ #ifdef CONFIG_AVX512F_OPT
+-    if (cache & CACHE_AVX512F) {
+-        fn = buffer_zero_avx512;
+-        length_to_accel = 256;
+-    }
++        { CPUINFO_AVX512F, 256, buffer_zero_avx512 },
+ #endif
+-    buffer_accel = fn;
++#ifdef CONFIG_AVX2_OPT
++        { CPUINFO_AVX2,    128, buffer_zero_avx2 },
++        { CPUINFO_SSE4,     64, buffer_zero_sse4 },
++#endif
++        { CPUINFO_SSE2,     64, buffer_zero_sse2 },
++        { CPUINFO_ALWAYS,    0, buffer_zero_int },
++    };
++
++    for (unsigned i = 0; i < ARRAY_SIZE(all); ++i) {
++        if (info & all[i].bit) {
++            length_to_accel = all[i].len;
++            buffer_accel = all[i].fn;
++            return all[i].bit;
++        }
++    }
++    return 0;
  }
  
--#if DATA_SIZE >= 16
--#if HAVE_ATOMIC128
--ABI_TYPE ATOMIC_NAME(ld)(CPUArchState *env, target_ulong addr,
--                         MemOpIdx oi, uintptr_t retaddr)
--{
--    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
--                                         PAGE_READ, retaddr);
--    DATA_TYPE val;
+ #if defined(CONFIG_AVX512F_OPT) || defined(CONFIG_AVX2_OPT)
+-#include "qemu/cpuid.h"
 -
--    val = atomic16_read(haddr);
--    ATOMIC_MMU_CLEANUP;
--    atomic_trace_ld_post(env, addr, oi);
--    return BSWAP(val);
--}
--
--void ATOMIC_NAME(st)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
--                     MemOpIdx oi, uintptr_t retaddr)
--{
--    DATA_TYPE *haddr = atomic_mmu_lookup(env, addr, oi, DATA_SIZE,
--                                         PAGE_WRITE, retaddr);
--
--    val = BSWAP(val);
--    atomic16_set(haddr, val);
--    ATOMIC_MMU_CLEANUP;
--    atomic_trace_st_post(env, addr, oi);
--}
--#endif
--#else
-+#if DATA_SIZE < 16
- ABI_TYPE ATOMIC_NAME(xchg)(CPUArchState *env, target_ulong addr, ABI_TYPE val,
-                            MemOpIdx oi, uintptr_t retaddr)
+-static void __attribute__((constructor)) init_cpuid_cache(void)
++static void __attribute__((constructor)) init_accel(void)
  {
-@@ -326,7 +273,7 @@ GEN_ATOMIC_HELPER_FN(add_fetch, ADD, DATA_TYPE, new)
- #undef ADD
- 
- #undef GEN_ATOMIC_HELPER_FN
--#endif /* DATA_SIZE >= 16 */
-+#endif /* DATA_SIZE < 16 */
- 
- #undef END
- #endif /* DATA_SIZE > 1 */
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index fc1d3d9301..5939688f69 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -300,15 +300,6 @@ Int128 cpu_atomic_cmpxchgo_be_mmu(CPUArchState *env, target_ulong addr,
-                                   Int128 cmpv, Int128 newv,
-                                   MemOpIdx oi, uintptr_t retaddr);
- 
--Int128 cpu_atomic_ldo_le_mmu(CPUArchState *env, target_ulong addr,
--                             MemOpIdx oi, uintptr_t retaddr);
--Int128 cpu_atomic_ldo_be_mmu(CPUArchState *env, target_ulong addr,
--                             MemOpIdx oi, uintptr_t retaddr);
--void cpu_atomic_sto_le_mmu(CPUArchState *env, target_ulong addr, Int128 val,
--                           MemOpIdx oi, uintptr_t retaddr);
--void cpu_atomic_sto_be_mmu(CPUArchState *env, target_ulong addr, Int128 val,
--                           MemOpIdx oi, uintptr_t retaddr);
+-    unsigned max = __get_cpuid_max(0, NULL);
+-    int a, b, c, d;
+-    unsigned cache = 0;
 -
- #if defined(CONFIG_USER_ONLY)
+-    if (max >= 1) {
+-        __cpuid(1, a, b, c, d);
+-        if (d & bit_SSE2) {
+-            cache |= CACHE_SSE2;
+-        }
+-        if (c & bit_SSE4_1) {
+-            cache |= CACHE_SSE4;
+-        }
+-
+-        /* We must check that AVX is not just available, but usable.  */
+-        if ((c & bit_OSXSAVE) && (c & bit_AVX) && max >= 7) {
+-            unsigned bv = xgetbv_low(0);
+-            __cpuid_count(7, 0, a, b, c, d);
+-            if ((bv & 0x6) == 0x6 && (b & bit_AVX2)) {
+-                cache |= CACHE_AVX2;
+-            }
+-            /* 0xe6:
+-            *  XCR0[7:5] = 111b (OPMASK state, upper 256-bit of ZMM0-ZMM15
+-            *                    and ZMM16-ZMM31 state are enabled by OS)
+-            *  XCR0[2:1] = 11b (XMM state and YMM state are enabled by OS)
+-            */
+-            if ((bv & 0xe6) == 0xe6 && (b & bit_AVX512F)) {
+-                cache |= CACHE_AVX512F;
+-            }
+-        }
+-    }
+-    cpuid_cache = cache;
+-    init_accel(cache);
++    used_accel = select_accel_cpuinfo(cpuinfo_init());
+ }
+ #endif /* CONFIG_AVX2_OPT */
  
- extern __thread uintptr_t helper_retaddr;
-diff --git a/accel/tcg/atomic_common.c.inc b/accel/tcg/atomic_common.c.inc
-index fe0eea018f..f255c9e215 100644
---- a/accel/tcg/atomic_common.c.inc
-+++ b/accel/tcg/atomic_common.c.inc
-@@ -19,20 +19,6 @@ static void atomic_trace_rmw_post(CPUArchState *env, uint64_t addr,
-     qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_RW);
+ bool test_buffer_is_zero_next_accel(void)
+ {
+-    /* If no bits set, we just tested buffer_zero_int, and there
+-       are no more acceleration options to test.  */
+-    if (cpuid_cache == 0) {
+-        return false;
+-    }
+-    /* Disable the accelerator we used before and select a new one.  */
+-    cpuid_cache &= cpuid_cache - 1;
+-    init_accel(cpuid_cache);
+-    return true;
++    /*
++     * Accumulate the accelerators that we've already tested, and
++     * remove them from the set to test this round.  We'll get back
++     * a zero from select_accel_cpuinfo when there are no more.
++     */
++    unsigned used = select_accel_cpuinfo(cpuinfo & ~used_accel);
++    used_accel |= used;
++    return used;
  }
  
--#if HAVE_ATOMIC128
--static void atomic_trace_ld_post(CPUArchState *env, uint64_t addr,
--                                 MemOpIdx oi)
--{
--    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_R);
--}
--
--static void atomic_trace_st_post(CPUArchState *env, uint64_t addr,
--                                 MemOpIdx oi)
--{
--    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_W);
--}
--#endif
--
- /*
-  * Atomic helpers callable from TCG.
-  * These have a common interface and all defer to cpu_atomic_*
+ static bool select_accel_fn(const void *buf, size_t len)
 -- 
 2.34.1
 

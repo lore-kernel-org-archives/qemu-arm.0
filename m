@@ -1,140 +1,299 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp266817ejq;
-        Fri, 19 May 2023 21:27:14 -0700 (PDT)
-X-Received: by 2002:adf:db4c:0:b0:309:51ff:a77a with SMTP id f12-20020adfdb4c000000b0030951ffa77amr2717230wrj.10.1684556834515;
-        Fri, 19 May 2023 21:27:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684556834; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp112332ejb;
+        Sat, 20 May 2023 03:34:35 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5+trFDxn+8604Rz3r0epY6AJwjyZtwy05eI7KAwLB3pSbR/smpdXceX/2RmynMChgrMIRN
+X-Received: by 2002:ac8:5d8f:0:b0:3f4:c25f:899 with SMTP id d15-20020ac85d8f000000b003f4c25f0899mr8109763qtx.68.1684578875354;
+        Sat, 20 May 2023 03:34:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684578875; cv=none;
         d=google.com; s=arc-20160816;
-        b=EuoFnGujJ5q3i8Vx3rRUKQB/RAmJJCM9p/JEgYLRhXxu8tcHvNTqpuPzYZk57Ho+ER
-         pYDFPXzt0BkNoo/pOf2m7u+qeVFaxCF+kOSijYgN5UJ1WNkgUCLlWC3i5x20xs/oFnU4
-         SmJSliH7aLFYadOWDHcNl9RVyePJAWFz7vw7Th6UGYwjRvlTr7kb1ZsfFte7VzD7vS0W
-         /CEZhJJAT8bOztreQQZs7LpaHx6w1mNWVxpJFnSKBYHWgQJjzZARi1iyiqTNORD0dgpZ
-         idOD5Bg8Ocx5PVHkCj9Ou+NPdPbExUZLfeiy5Qxx6SgWAMJWAVjoMEO2GcrK8c9sJkGX
-         iZsA==
+        b=PZ7RVl2e+MDzfdRQje4tnbKi+wdwp3Gw8MQqrpvXMJ3UFCYDmOtCsSdZ5y1siCbOey
+         FK/HJUcClkZIBpualfEYX7iTIJrsgrk9taEFcubRtvLiXMkIRWEJ/fwelx0qHmWM4a07
+         YeG1YHWlNiWwQd2jvEluLTfiJp0zFNvyu+KP/dCzh16CW9Pyz0TyVss0CpnihzIhCOng
+         DFIN1QHm4qlED1fn+dal7I9D3+S0CWzLlcE54OaIHejVAvHBtj5RWGF6+iK69Gb5yFxd
+         vIcFZPqCWgXWQQOjhPxz4sLuQKcm29JqOUOi9WeTK1kJ6GtdvxTOfLkszx8toh5SNblV
+         eabQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BqqRdB82FF9k3X68vHPmmMnha4dD0tnXuZnyDaYPNjs=;
-        b=03sBQ6qpyeVL6x7hqGj2wOflfd3dZtXBMNVsX9JRxY/djDSaeC6p81O3TVtJsvSDOw
-         cgvKEnG2LH23QN8GCCkygPPMNPrVRV7zAsHDXW67EuK7dgvLHm7u64bbxPBrhPtPhZyv
-         Xy6kruB+RQ18izxhay+Rc9ZpC2ujFj/qwpWcqnqlQgX0/I+C8dHpXrXESX2v6u4wb9Um
-         bEHRAAII6F2h0ZUMvdkjDFSCSdIglrplDWb9BoiD14rTDlI55Bu4ef5KD412var6Hnjd
-         A5qvjYAHgNR/S5JegUDNgBuw4llpq4lcdaMPKi9KX721yGF6UC5SZfzGixe73KQtfwfR
-         CNvw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Js7Gj50rkXYdkybC9kl0kjLwoor0AqWNqdAXr7RgTGc=;
+        b=w8gxEnVQzL6AxZTotz4UmQohGES+ShW0Qh4+hp6sUR+F5D6bsebWj7Z2SVc/KRftBt
+         Ql0vl+O/ccsWMts+r2yx3nEMxLo4Xy9uHh26oKUhpAGzPESrRW7M+QuexhfU527Jrxl7
+         ysQRBBjvHCRZz7xpARpkOon/fFP6ZXSg+Hn9UUZ/6bCUtJy4F1esn/YlZQEOjkCS5mjz
+         4l00t0tdE8ETbPBdm20cyWUjpg+CITyOfHF9KQySZh+rVsO14mnFYu2jRSk5pfjtgLGj
+         ni4O9W6CyOXooZ2VUDrS/Gxj4B4hf/bZP6uZ6NmjSW4+xI69GLN9vmBMjtSgYIQZMGsU
+         3dog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uGMqIfka;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id bx25-20020a5d5b19000000b00306316489easor194173wrb.7.2023.05.19.21.27.14
+       dkim=pass header.i=@sifive.com header.s=google header.b=FcHVFztY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y17-20020a05622a121100b003ef46ab6bbesi906079qtx.674.2023.05.20.03.34.35
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 May 2023 21:27:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 20 May 2023 03:34:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uGMqIfka;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@sifive.com header.s=google header.b=FcHVFztY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q0Jud-0007CZ-PO; Sat, 20 May 2023 06:34:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <frank.chang@sifive.com>)
+ id 1q0Jub-0007Bj-Sl
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 06:34:09 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <frank.chang@sifive.com>)
+ id 1q0Jua-0005FJ-00
+ for qemu-arm@nongnu.org; Sat, 20 May 2023 06:34:09 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-4f004cc54f4so4915981e87.3
+ for <qemu-arm@nongnu.org>; Sat, 20 May 2023 03:34:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684556834; x=1687148834;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BqqRdB82FF9k3X68vHPmmMnha4dD0tnXuZnyDaYPNjs=;
-        b=uGMqIfkaYycpfRQZx2rF4aaNJ+OESXOV6kEJdsoO/IkmDv8bwYHA9XSF/Puak3034b
-         HBOU3r6YL2IYOBh3WJHitf/ifs2LscmJki9umGHH5cTR0fxv9TDdV4Z+YRmmnLCP+0a0
-         7f2nFag8AfRuS1XpMy5HOJjFvavneQTyKbeGFxiHRWC0AB9iMzDnuLmNbjaST0VOmWwp
-         TPa5cQ+a4wLAGXzOgAbiM4axbRVN6YryNTZZ0zoo8QS3b+JeFEALthHqjx9xNDtIXo/Y
-         zv1TtDH7NPsZwPUcB4Z21QistoX+lxC2kfdTCNSbuXELFaEbfh8PSzT6UlOcNwWoTC85
-         oX9Q==
+ d=sifive.com; s=google; t=1684578846; x=1687170846;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Js7Gj50rkXYdkybC9kl0kjLwoor0AqWNqdAXr7RgTGc=;
+ b=FcHVFztY11egaFJL+bsBSMjqKLNoHWb6q0IHWlA+equ9ullq6DD/Vms/VA0KtnicLu
+ W7+LwLDdwFckEOi/IxtGYSUEemILs5fpgIPtr3BJheBpHfIO0C4MT1rNvqY1ivyJoimS
+ /daNdA+Ryjebw4vSRDxazoL2MbbEr92+3G+2hjkQudrbv62a6gNk7u/WgoaWz1HBNCb1
+ paEo3tr5wQs+EmPyT2yhp30/ce183RKN6jD7pbrXndp8zGN4P0uqx+VStjJhIxM6cGtV
+ 5e6aQoir84zrK/f0jsexQsf1G+6neeDs54dTMDR6a2N1VsFAMKiCwoOPXs1YKoR4zpsc
+ tevQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684556834; x=1687148834;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BqqRdB82FF9k3X68vHPmmMnha4dD0tnXuZnyDaYPNjs=;
-        b=ldWDef4c+GWbDDKEIvKeMyJh98vqFzokfGORDfKiDxfwONBK711Q00BlynxKQ4zciz
-         L6vd1nb86CJ3lTsmTQJs6CNGHVAgB4UZydODri98s/Y/fvmZih13JEtqWe6V8FHqyMgP
-         nmpCPVxGMk9UjXeCOrdF96/a6bwGFTs+mqeP9go2inPSK/ZTDGsJTVwaPtddUMTFSu5P
-         e3zSKH/r54A20Kq2sx9SfEYUhT605WS6JcTFgZI0Gnw6s6te/jahVzciFZGnBRw87iT2
-         HF/zq4fXi7utfm7GUlzHThbsLsMnkWmYlNlmvzUoJcP0gYvGQTQxT2rFcmkq5h2kaMVw
-         V9aA==
-X-Gm-Message-State: AC+VfDwgXC9yQYtOFBeA5vUR867wz3Bu9ZZ9X6TvBlEB4fHa1yk3+qCQ
-	2TPwysRNGDkBNTs9fx+5A5F56mcNmA3ulDtQohXTRA==
-X-Google-Smtp-Source: ACHHUZ7Le+TYqsXA2T7TuoqYzTvtH2h8sco4iQGTud4VrxezYm2ayrDtMtsHzVRNS3xHFoMxOEkk1g==
-X-Received: by 2002:adf:f604:0:b0:306:2b56:d268 with SMTP id t4-20020adff604000000b003062b56d268mr2796929wrp.15.1684556833961;
-        Fri, 19 May 2023 21:27:13 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] (mau49-h01-176-184-41-228.dsl.sta.abo.bbox.fr. [176.184.41.228])
-        by smtp.gmail.com with ESMTPSA id l17-20020adfe591000000b003079c402762sm751072wrm.19.2023.05.19.21.27.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 May 2023 21:27:13 -0700 (PDT)
-Message-ID: <740615df-440b-288a-f98c-933c042b7024@linaro.org>
-Date: Sat, 20 May 2023 06:27:11 +0200
+ d=1e100.net; s=20221208; t=1684578846; x=1687170846;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Js7Gj50rkXYdkybC9kl0kjLwoor0AqWNqdAXr7RgTGc=;
+ b=WXlTnLi++2aT6sxwjyd5JQyzMgBJB8tTRB0rrwMLkgT1aZJKjC0BB620NnLKF6AJ2M
+ ALk+6A/WXl0Qs0HppTKyOyq/m4UoVMpXOYk9VFlPO6KA5Le1zsNr1u5Fksju2EtoitpR
+ UMBBp2O2Nsjt9CvEyMvUTtrMYGvLgKt2lGCWhdUISn7mBCSHfE7cjz495V57PAiJj1Gp
+ fCNJyokd5kj9YpzjtzamPQcxeB0VPAZNeUPa5an/MPvtW25mpexDLwqTDQNQsPDrBrDN
+ y7F7zWWj3A7z5EO/GjoAhyw2n+lIL7WEHaue4WhmEhr28jtt7icOBL4ib+JQqFKs3n86
+ l2Zw==
+X-Gm-Message-State: AC+VfDxXuxZwqR337xoLxrdgdD7q894b5NrRgBAAK/uzTQ7OKUOzBZHE
+ Bhq2YwKu4bBPlDIo/Zjho4J+Sg==
+X-Received: by 2002:a19:7413:0:b0:4f3:a99f:1ea7 with SMTP id
+ v19-20020a197413000000b004f3a99f1ea7mr1833842lfe.55.1684578845822; 
+ Sat, 20 May 2023 03:34:05 -0700 (PDT)
+Received: from mail-lf1-f44.google.com (mail-lf1-f44.google.com.
+ [209.85.167.44]) by smtp.gmail.com with ESMTPSA id
+ w26-20020ac254ba000000b004f3a1033078sm228209lfk.52.2023.05.20.03.34.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 20 May 2023 03:34:05 -0700 (PDT)
+Received: by mail-lf1-f44.google.com with SMTP id
+ 2adb3069b0e04-4f3a7241c0aso3023044e87.1; 
+ Sat, 20 May 2023 03:34:04 -0700 (PDT)
+X-Received: by 2002:ac2:5215:0:b0:4f2:5393:b79 with SMTP id
+ a21-20020ac25215000000b004f253930b79mr1646072lfl.54.1684578844654; Sat, 20
+ May 2023 03:34:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [RFC PATCH 6/8] sysemu: generalise qtest_warp_clock as
- qemu_clock_advance_virtual_time
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Yanan Wang <wangyanan55@huawei.com>, Riku Voipio <riku.voipio@iki.fi>,
- Laurent Vivier <lvivier@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Marco Liebel <mliebel@qti.qualcomm.com>,
- Mark Burton <mburton@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Alexandre Iooss <erdnaxe@crans.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>
-References: <20230519170454.2353945-1-alex.bennee@linaro.org>
- <20230519170454.2353945-7-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230519170454.2353945-7-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: fzYhsE8+iARX
+References: <20230519062137.1251741-1-tommy.wu@sifive.com>
+In-Reply-To: <20230519062137.1251741-1-tommy.wu@sifive.com>
+From: Frank Chang <frank.chang@sifive.com>
+Date: Sat, 20 May 2023 18:33:53 +0800
+X-Gmail-Original-Message-ID: <CANzO1D2Q1ogLJRGzhf6N348OgLUcK084LoP4NiRMtLjPBM8PGw@mail.gmail.com>
+Message-ID: <CANzO1D2Q1ogLJRGzhf6N348OgLUcK084LoP4NiRMtLjPBM8PGw@mail.gmail.com>
+Subject: Re: [PATCH] hw/dma/xilinx_axidma: Check DMASR.HALTED to prevent
+ infinite loop.
+To: Tommy Wu <tommy.wu@sifive.com>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000a1c4df05fc1d9328"
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=frank.chang@sifive.com; helo=mail-lf1-x136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HMWLV5n/CcO9
 
-On 19/5/23 19:04, Alex Bennée wrote:
-> Move the key functionality of moving time forward into the clock
-> sub-system itself. This will allow us to plumb in time control into
-> plugins.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+--000000000000a1c4df05fc1d9328
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Reviewed-by: Frank Chang <frank.chang@sifive.com>
+
+On Fri, May 19, 2023 at 2:23=E2=80=AFPM Tommy Wu <tommy.wu@sifive.com> wrot=
+e:
+
+> When we receive a packet from the xilinx_axienet and then try to s2mem
+> through the xilinx_axidma, if the descriptor ring buffer is full in the
+> xilinx axidma driver, we=E2=80=99ll assert the DMASR.HALTED in the
+> function : stream_process_s2mem and return 0. In the end, we=E2=80=99ll b=
+e stuck in
+> an infinite loop in axienet_eth_rx_notify.
+>
+> This patch checks the DMASR.HALTED state when we try to push data
+> from xilinx axi-enet to xilinx axi-dma. When the DMASR.HALTED is asserted=
+,
+> we will not keep pushing the data and then prevent the infinte loop.
+>
+> Signed-off-by: Tommy Wu <tommy.wu@sifive.com>
 > ---
->   include/qemu/timer.h | 15 +++++++++++++++
->   softmmu/qtest.c      | 24 ++----------------------
->   util/qemu-timer.c    | 26 ++++++++++++++++++++++++++
->   3 files changed, 43 insertions(+), 22 deletions(-)
-> 
-> diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-> index ee071e07d1..9a1a42a400 100644
-> --- a/include/qemu/timer.h
-> +++ b/include/qemu/timer.h
-> @@ -245,6 +245,21 @@ bool qemu_clock_run_timers(QEMUClockType type);
->    */
->   bool qemu_clock_run_all_timers(void);
->   
-> +/**
-> + * qemu_clock_advance_virtual_time(): advance the virtual time tick
-> + * @target: target time in nanoseconds
+>  hw/dma/xilinx_axidma.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index 6030c76435..12c90267df 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -168,6 +168,11 @@ static inline int stream_idle(struct Stream *s)
+>      return !!(s->regs[R_DMASR] & DMASR_IDLE);
+>  }
+>
+> +static inline int stream_halted(struct Stream *s)
+> +{
+> +    return !!(s->regs[R_DMASR] & DMASR_HALTED);
+> +}
+> +
+>  static void stream_reset(struct Stream *s)
+>  {
+>      s->regs[R_DMASR] =3D DMASR_HALTED;  /* starts up halted.  */
+> @@ -269,7 +274,7 @@ static void stream_process_mem2s(struct Stream *s,
+> StreamSink *tx_data_dev,
+>      uint64_t addr;
+>      bool eop;
+>
+> -    if (!stream_running(s) || stream_idle(s)) {
+> +    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+>          return;
+>      }
+>
+> @@ -326,7 +331,7 @@ static size_t stream_process_s2mem(struct Stream *s,
+> unsigned char *buf,
+>      unsigned int rxlen;
+>      size_t pos =3D 0;
+>
+> -    if (!stream_running(s) || stream_idle(s)) {
+> +    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+>          return 0;
+>      }
+>
+> @@ -407,7 +412,7 @@ xilinx_axidma_data_stream_can_push(StreamSink *obj,
+>      XilinxAXIDMAStreamSink *ds =3D XILINX_AXI_DMA_DATA_STREAM(obj);
+>      struct Stream *s =3D &ds->dma->streams[1];
+>
+> -    if (!stream_running(s) || stream_idle(s)) {
+> +    if (!stream_running(s) || stream_idle(s) || stream_halted(s)) {
+>          ds->dma->notify =3D notify;
+>          ds->dma->notify_opaque =3D notify_opaque;
+>          return false;
+> --
+> 2.31.1
+>
+>
+>
 
-Maybe '@target_ns'?
+--000000000000a1c4df05fc1d9328
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> + *
-> + * This function is used where the control of the flow of time has
-> + * been delegated to outside the clock subsystem (be it qtest, icount
-> + * or some other external source). You can ask the clock system to
-> + * return @early at the first expired timer.
-> + *
-> + * Time can only move forward, attempts to reverse time would lead to
-> + * an error.
-> + *
-> + * Returns: new virtual time.
-> + */
-> +int64_t qemu_clock_advance_virtual_time(int64_t dest);
+<div dir=3D"ltr">Reviewed-by: Frank Chang &lt;<a href=3D"mailto:frank.chang=
+@sifive.com">frank.chang@sifive.com</a>&gt;</div><br><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, May 19, 2023 at 2:23=E2=
+=80=AFPM Tommy Wu &lt;<a href=3D"mailto:tommy.wu@sifive.com">tommy.wu@sifiv=
+e.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:=
+1ex">When we receive a packet from the xilinx_axienet and then try to s2mem=
+<br>
+through the xilinx_axidma, if the descriptor ring buffer is full in the<br>
+xilinx axidma driver, we=E2=80=99ll assert the DMASR.HALTED in the<br>
+function : stream_process_s2mem and return 0. In the end, we=E2=80=99ll be =
+stuck in<br>
+an infinite loop in axienet_eth_rx_notify.<br>
+<br>
+This patch checks the DMASR.HALTED state when we try to push data<br>
+from xilinx axi-enet to xilinx axi-dma. When the DMASR.HALTED is asserted,<=
+br>
+we will not keep pushing the data and then prevent the infinte loop.<br>
+<br>
+Signed-off-by: Tommy Wu &lt;<a href=3D"mailto:tommy.wu@sifive.com" target=
+=3D"_blank">tommy.wu@sifive.com</a>&gt;<br>
+---<br>
+=C2=A0hw/dma/xilinx_axidma.c | 11 ++++++++---<br>
+=C2=A01 file changed, 8 insertions(+), 3 deletions(-)<br>
+<br>
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c<br>
+index 6030c76435..12c90267df 100644<br>
+--- a/hw/dma/xilinx_axidma.c<br>
++++ b/hw/dma/xilinx_axidma.c<br>
+@@ -168,6 +168,11 @@ static inline int stream_idle(struct Stream *s)<br>
+=C2=A0 =C2=A0 =C2=A0return !!(s-&gt;regs[R_DMASR] &amp; DMASR_IDLE);<br>
+=C2=A0}<br>
+<br>
++static inline int stream_halted(struct Stream *s)<br>
++{<br>
++=C2=A0 =C2=A0 return !!(s-&gt;regs[R_DMASR] &amp; DMASR_HALTED);<br>
++}<br>
++<br>
+=C2=A0static void stream_reset(struct Stream *s)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;regs[R_DMASR] =3D DMASR_HALTED;=C2=A0 /* starts u=
+p halted.=C2=A0 */<br>
+@@ -269,7 +274,7 @@ static void stream_process_mem2s(struct Stream *s, Stre=
+amSink *tx_data_dev,<br>
+=C2=A0 =C2=A0 =C2=A0uint64_t addr;<br>
+=C2=A0 =C2=A0 =C2=A0bool eop;<br>
+<br>
+-=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s)) {<br>
++=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s) || stream_halted(s)=
+) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+@@ -326,7 +331,7 @@ static size_t stream_process_s2mem(struct Stream *s, un=
+signed char *buf,<br>
+=C2=A0 =C2=A0 =C2=A0unsigned int rxlen;<br>
+=C2=A0 =C2=A0 =C2=A0size_t pos =3D 0;<br>
+<br>
+-=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s)) {<br>
++=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s) || stream_halted(s)=
+) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+@@ -407,7 +412,7 @@ xilinx_axidma_data_stream_can_push(StreamSink *obj,<br>
+=C2=A0 =C2=A0 =C2=A0XilinxAXIDMAStreamSink *ds =3D XILINX_AXI_DMA_DATA_STRE=
+AM(obj);<br>
+=C2=A0 =C2=A0 =C2=A0struct Stream *s =3D &amp;ds-&gt;dma-&gt;streams[1];<br=
+>
+<br>
+-=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s)) {<br>
++=C2=A0 =C2=A0 if (!stream_running(s) || stream_idle(s) || stream_halted(s)=
+) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ds-&gt;dma-&gt;notify =3D notify;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ds-&gt;dma-&gt;notify_opaque =3D notify_o=
+paque;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return false;<br>
+-- <br>
+2.31.1<br>
+<br>
+<br>
+</blockquote></div>
 
-s/dest/target[_ns]/
+--000000000000a1c4df05fc1d9328--

@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp619998ejb;
-        Sun, 21 May 2023 04:15:48 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6xdfX3hApXNADOCZrogQy1iYc0O1Qy4l2hqou0SIb3luuAw4S9+h7cKYIunMjB13pmLt0W
-X-Received: by 2002:a05:622a:1209:b0:3f6:aee8:3cf7 with SMTP id y9-20020a05622a120900b003f6aee83cf7mr555248qtx.25.1684667747840;
-        Sun, 21 May 2023 04:15:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684667747; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp624314ejb;
+        Sun, 21 May 2023 04:28:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7rFk4Fbtg9Jm16iTxb2uYIVvBAAoqW3L951FMXUbc5a/dx2IpLcnxrkrmsfc049+6IyKqA
+X-Received: by 2002:ac8:7f4c:0:b0:3ef:3349:99cc with SMTP id g12-20020ac87f4c000000b003ef334999ccmr15118683qtk.5.1684668526637;
+        Sun, 21 May 2023 04:28:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684668526; cv=none;
         d=google.com; s=arc-20160816;
-        b=ApLIz+q3Cs4OK5kVGMUOxDyhk7WuuCXaX8QTeoPuS0bDhl8caeEC087oXAZS4RZKoG
-         cDbxm1d/4WqZ5wCxqAo0Amgk5IYEcvcRA+bjnhRo4jxSUwouishJ5KAN7t5iLOKOzrwr
-         2IvM0ficoppT5d4a6qer4XKDw3RH8UZstu7MGpxfNyWCiQrhTDUHyfemNc4DC5XZ4ThD
-         e7ZmnqTgguXvexAigEpkcm4FqIf7ZCxJrSKy74OjLpPwsPclAXBy7k5d3RIWO0RYmWJ0
-         K2x7RaBxnotw6BlWoLAT0HuSSC2PImRcBBEgWlCIsSDkOCkVJjiMqj/7M7ouK0FcsX5/
-         hpzw==
+        b=HxTxWyHnrdlHt6uvvYs5UtQlcfPgKi9fG/Bc5QGm8ub6Uhepc6MKjKtKHM/cKMS5uE
+         9sfRrel0cz0TkFAY1Ho1oT93coGNgr8z2QjzMEG9vtF4drTGlfly32vUT6yXNfdht8VT
+         5RKuXpatXVeo0E5ZtfC8Fo2Xh3cd/qmOvzTv98Ac/zU6n4Kztb95wu4TE3+jjCVwBVHe
+         +bd7768oPnZsuZXAWSGVPc/WRXarMIzI1x1o72YKNSj5TlL76xYnsrVKO8xXiOElSro2
+         f10Yh6wQRY5H3Mcjlp9Zg1IDhMhpfLVfRT685dyBk2IdBrpTEhDNBcYbCFDNv8Fn17QL
+         2jnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=S7lCt1F+L+Sdvv92ThgE7G1ptCNi2zM217m0D08ErHo=;
-        b=AcWIPxPWZDd+EYeWuKuHocMR1lPSedkTXbkUSQPEhcCJBLMoKONRRYgHcjRjFkaJhJ
-         IeEtdWRuf8ICDvbcCkJ045xYzztWB4Z+p6VML//AsnoYOW/xmJSGFqBrvExy3UKpkO3l
-         gWql9YvmfY0K7nijg1OqZRlyMg0JrlPKISXGyT1Jo076gzvW6zVYzu0QJ+peA3/y8vVR
-         u7S23I931pnxivKe8FYQuzzJaOkPZlDuNQ5I+povE7d4MOTPrOoxfh6n00cHiM9Kzj99
-         NNjideLOE1AcKaGR5HCUt0Ue0XtdD4j4AvS3Qj+y5CHTUkihGVQD0gN5W4XHegE5AtoI
-         bbLQ==
+        bh=DeJ12vt/u8SonFoAcwj8dAeS0KwWMz1XvHMrYeLsLbg=;
+        b=zi2ZyZhV9bbCzQ+mqtJgjxN5o0uAmf4ubyrxKTLPpX2Eghb572Ou3PU7SD7gtOPfxp
+         T49utgcjoLfdnhB40PJ9fq/3cOFgviTaaOrS5R/r+JmyXU1DCgqFqkFVXWieKDXX3spO
+         PHFS81392zwq32vo76VhxMZx40Wps6qoF23gQGgy44/Kcxo1FAEGsdewCWb+NF7VYO+1
+         vG4F/ys1MwTMduC5B54PuBMkd0ofimXpDO1lGEtzxm94weqMS7J5yyfa1XnRx30b1Lrl
+         +V19qDSIUosH3iK9xvBkrRfg2EHnnQzlTY6EO1BQIH13rRFoinmKBtDstDB+iNafaenX
+         8Ozw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IQpNCPav;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gs0y2NR/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20-20020a05622a105400b003f508b97240si2270525qte.319.2023.05.21.04.15.47
+        by mx.google.com with ESMTPS id y17-20020a05622a121100b003f53c682d27si2289552qtx.775.2023.05.21.04.28.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 May 2023 04:15:47 -0700 (PDT)
+        Sun, 21 May 2023 04:28:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IQpNCPav;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Gs0y2NR/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q0h1w-0000Hm-Rh; Sun, 21 May 2023 07:15:17 -0400
+	id 1q0hEl-0000b2-Dj; Sun, 21 May 2023 07:28:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0h1v-0000Gr-9X
- for qemu-arm@nongnu.org; Sun, 21 May 2023 07:15:15 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0hEk-0000ad-6C
+ for qemu-arm@nongnu.org; Sun, 21 May 2023 07:28:30 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0h1t-0004gR-Gq
- for qemu-arm@nongnu.org; Sun, 21 May 2023 07:15:14 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-3f6042d605dso360015e9.2
- for <qemu-arm@nongnu.org>; Sun, 21 May 2023 04:15:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q0hEi-0007Lt-LE
+ for qemu-arm@nongnu.org; Sun, 21 May 2023 07:28:29 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-307d58b3efbso3090662f8f.0
+ for <qemu-arm@nongnu.org>; Sun, 21 May 2023 04:28:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684667712; x=1687259712;
+ d=linaro.org; s=google; t=1684668505; x=1687260505;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=S7lCt1F+L+Sdvv92ThgE7G1ptCNi2zM217m0D08ErHo=;
- b=IQpNCPav85qGHNro+7zBckqzY6IkPGWwui3Zo6nP80X6yd8jQVuvaB8QO6anbsfEtI
- 3CmsVM5U4MGyOdbwOijmXJo4WFr2/P6gCLESRZDj49vEFpMSqge1dhRHEhdf0oTfu4sO
- v8dTljS6sdMvrmoQyrn7Ek8TuFdhn2elv40duKCJwJgw5sT9o7Q+a+3ybrS7iEcdb3/W
- jjD2RMUyI3NhBjHTQAbuBcnJDQz6Oq7VPF6fawi1N85HhGpW6V96bxQLWdwQpmgAuTsT
- T9tUBIGq67Im95BPvUkJqP/Ti17CuSmKglpY4btlq1aJaWe4pUzlRBQIj0miEubPF7qw
- OKkA==
+ bh=DeJ12vt/u8SonFoAcwj8dAeS0KwWMz1XvHMrYeLsLbg=;
+ b=Gs0y2NR/yhCPkQ/VfkAA6hxs/cXPGPkIQG2sM8+kRAJMxhZFjK98z4LQnLGYzhtmvn
+ W66DwkN+F6HmWy4DAQNmya7ett0g+7wLjZRDfpSDI8XlTpMpvxaGaoqzReU8cztn2jlH
+ qgLeq7s0uJ2ohB+BD4ci9vg2++Qzi/UPYCgwpPObBuzbpdn/TNPFRDMeQ5V96GFpk0x1
+ YQjEJKqbW33PiKfI/yVy2kgPd61UAkvigbazvD2QzGyCO/wi81tzkyIjWrRP7nV+wyfN
+ qULp+kSELNIIOOrnORIihK8UBVbRgimewKcSTI1x/LQbB3FMRcp79jBzQaOxEk9cx4fZ
+ 0jgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684667712; x=1687259712;
+ d=1e100.net; s=20221208; t=1684668505; x=1687260505;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=S7lCt1F+L+Sdvv92ThgE7G1ptCNi2zM217m0D08ErHo=;
- b=MjOol1vN5iD4s6H5Dp6HI0fqBtrDshokPyIvRH/a/2puc05Ci+JTerlkpQQHI5h3dl
- MmUFDp3zTFn6CNgdn2ruzi3h05r3SSIfnO/smB1ABCb1n6oGjNR3Cc0zM8HKMN3oTpO2
- or0iCuWwC+NEobmJgDDRcbIHYx/zH6MMw3TExLsqxqxmorFU4z6S2iZ9Fc/9I6Fbq54y
- nOsiM1EAOSnGy/dZWejk+0WnGapQ7kI5BX98fjNdm2lUZAE7J+qkujegEmrWZzTYc3NJ
- HM0BPsBfRf+m9TRyfecglaa5+Q+QVNsTevUEh+22EYLfOAEiuVSla/DEWH39f9PLZXvi
- SL3w==
-X-Gm-Message-State: AC+VfDwj+diyUBF5xERv7tZOV9cp5IAHLP0CnliYteLOFAYoJKhnckHy
- FqTqWIKpttiNZtIDzIpjwqDr4A==
-X-Received: by 2002:a1c:7c08:0:b0:3f5:4d4:4edb with SMTP id
- x8-20020a1c7c08000000b003f504d44edbmr5189436wmc.21.1684667711840; 
- Sun, 21 May 2023 04:15:11 -0700 (PDT)
+ bh=DeJ12vt/u8SonFoAcwj8dAeS0KwWMz1XvHMrYeLsLbg=;
+ b=XmLePTLVWqm2HNIMwKLicV9fzF1Ke++16iqtwVhK0RaNUn6/paTusJZNH4bN5cez8d
+ uiGDq36/Ji+NjIl2Wpr673XwGIw/2/rZEeLp+SJyK28OkMu/0tavG99PaiQT5y8HD7Mw
+ OVWFAeRarWGT/p97X52zaxLwAMvTezItcwb1DI1KvtjgSeXCq6ckl0XRKv5ikb71I8h9
+ UApJSvqpu6jwheFcB6aN3X0NgqPjT79ObbWKxuo2qqwd3w3gkt24S59jtvelChh0JWJn
+ szSQG1PBZ5SCodG/CR6jCln1rMUX7CAH2UdKVPXuRtV8vUBZEtCo0gostJoJr9k+VkeR
+ PGbg==
+X-Gm-Message-State: AC+VfDxUSPEQLcjJnTmSy4tfRUcINCO1ffmSY3TMKP4p0cM9SuN8LUsX
+ +raBU0shzUgUeVoa86h7BxSujA==
+X-Received: by 2002:a5d:514f:0:b0:307:41a1:a125 with SMTP id
+ u15-20020a5d514f000000b0030741a1a125mr5865864wrt.12.1684668504972; 
+ Sun, 21 May 2023 04:28:24 -0700 (PDT)
 Received: from [192.168.69.115] ([176.176.152.177])
  by smtp.gmail.com with ESMTPSA id
- l10-20020a05600c27ca00b003f4290720d0sm8029684wmb.47.2023.05.21.04.15.10
+ p3-20020a1c7403000000b003f42d3111b8sm4937511wmc.30.2023.05.21.04.28.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 May 2023 04:15:11 -0700 (PDT)
-Message-ID: <8d6e67d7-52c0-aa60-76cb-bf70d586cf7a@linaro.org>
-Date: Sun, 21 May 2023 13:15:09 +0200
+ Sun, 21 May 2023 04:28:24 -0700 (PDT)
+Message-ID: <b51a6df0-b53b-c6dc-b496-0c320aad463d@linaro.org>
+Date: Sun, 21 May 2023 13:28:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 16/27] accel/tcg: Unify cpu_{ld,st}*_{be,le}_mmu
+Subject: Re: [PATCH 02/27] util: Add cpuinfo-i386.c
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-arm@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20230520162634.3991009-1-richard.henderson@linaro.org>
- <20230520162634.3991009-17-richard.henderson@linaro.org>
+ <20230520162634.3991009-3-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230520162634.3991009-17-richard.henderson@linaro.org>
+In-Reply-To: <20230520162634.3991009-3-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -126,73 +126,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fW98PTuelW8G
-
-Hi Richard,
+X-TUID: vJIigocfnUAq
 
 On 20/5/23 18:26, Richard Henderson wrote:
-> With the current structure of cputlb.c, there is no difference
-> between the little-endian and big-endian entry points, aside
-> from the assert.  Unify the pairs of functions.
+> Add cpuinfo.h for i386 and x86_64, and the initialization
+> for that in util/.  Populate that with a slightly altered
+> copy of the tcg host probing code.  Other uses of cpuid.h
+> will be adjusted one patch at a time.
 > 
-> The only use of the functions with explicit endianness was in
-> target/sparc64, and that was only to satisfy the assert.
-
-I'm having hard time to follow all the handling of the various
-ASI definitions from target/sparc/asi.h. ...
-
+> Reviewed-by: Juan Quintela <quintela@redhat.com>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   include/exec/cpu_ldst.h     |  58 ++-----
->   accel/tcg/cputlb.c          | 122 +++-----------
->   accel/tcg/user-exec.c       | 322 ++++++++++--------------------------
->   target/arm/tcg/m_helper.c   |   4 +-
->   target/sparc/ldst_helper.c  |  18 +-
->   accel/tcg/ldst_common.c.inc |  24 +--
->   6 files changed, 137 insertions(+), 411 deletions(-)
+>   host/include/i386/host/cpuinfo.h   | 38 ++++++++++++
+>   host/include/x86_64/host/cpuinfo.h |  1 +
+>   util/cpuinfo-i386.c                | 97 ++++++++++++++++++++++++++++++
+>   util/meson.build                   |  4 ++
+>   4 files changed, 140 insertions(+)
+>   create mode 100644 host/include/i386/host/cpuinfo.h
+>   create mode 100644 host/include/x86_64/host/cpuinfo.h
+>   create mode 100644 util/cpuinfo-i386.c
 
-
-> diff --git a/target/sparc/ldst_helper.c b/target/sparc/ldst_helper.c
-> index 7972d56a72..981a47d8bb 100644
-> --- a/target/sparc/ldst_helper.c
-> +++ b/target/sparc/ldst_helper.c
-> @@ -1334,25 +1334,13 @@ uint64_t helper_ld_asi(CPUSPARCState *env, target_ulong addr,
-
-
-Shouldn't we propagate the ASI endianness?
-
-                 ...
-   +             memop |= (asi & 8) ? MO_LE : MO_BE;
-                 oi = make_memop_idx(memop, idx);
-                 switch (size) {
-                 case 1:
-
->                   ret = cpu_ldb_mmu(env, addr, oi, GETPC());
->                   break;
->               case 2:
-> -                if (asi & 8) {
-> -                    ret = cpu_ldw_le_mmu(env, addr, oi, GETPC());
-> -                } else {
-> -                    ret = cpu_ldw_be_mmu(env, addr, oi, GETPC());
-> -                }
-> +                ret = cpu_ldw_mmu(env, addr, oi, GETPC());
->                   break;
->               case 4:
-> -                if (asi & 8) {
-> -                    ret = cpu_ldl_le_mmu(env, addr, oi, GETPC());
-> -                } else {
-> -                    ret = cpu_ldl_be_mmu(env, addr, oi, GETPC());
-> -                }
-> +                ret = cpu_ldl_mmu(env, addr, oi, GETPC());
->                   break;
->               case 8:
-> -                if (asi & 8) {
-> -                    ret = cpu_ldq_le_mmu(env, addr, oi, GETPC());
-> -                } else {
-> -                    ret = cpu_ldq_be_mmu(env, addr, oi, GETPC());
-> -                }
-> +                ret = cpu_ldq_mmu(env, addr, oi, GETPC());
->                   break;
->               default:
->                   g_assert_not_reached();
-Otherwise great simplification!
+Missing F: entry in MAINTAINERS file. We probably need new sections.

@@ -1,89 +1,121 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp653343ejb;
-        Sun, 21 May 2023 05:44:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7x85IHLXNqm+0zZKh8+/08a0mdnpE/YM/vWY++W3GQAli5iYtSZCQdWQdhi3wJ4V+5MdeA
-X-Received: by 2002:ac8:5986:0:b0:3f3:8f88:72f4 with SMTP id e6-20020ac85986000000b003f38f8872f4mr13462441qte.20.1684673057566;
-        Sun, 21 May 2023 05:44:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684673057; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp713152ejb;
+        Sun, 21 May 2023 08:01:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6b9RUhJLRiblyddtmLcmENm0ZBg4T7Jpd0XGg5N3H3bOiYGCFVFb4fDdP31no7lVSUPF59
+X-Received: by 2002:a67:ee57:0:b0:439:4261:d7ad with SMTP id g23-20020a67ee57000000b004394261d7admr414416vsp.5.1684681315797;
+        Sun, 21 May 2023 08:01:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684681315; cv=none;
         d=google.com; s=arc-20160816;
-        b=qShCZnttREPAkReW3T38VfqPAyk6eHUUwN80gDtKZ0glfB9x3gwmU5Zv+/npVbus/r
-         hILHFoxy+nRsHwbVlZEFZfpWUirDSRM3LS9hNIJmPCdVjGRY0K7FwgTxfgHlBnN/kJXk
-         bySx2An2zA4gScaScBHEiswVMwMYhsnzEllYR9zBU9lgxL2Ak13VKQ5xAmRCS97W96vh
-         gXoIHy3d9f6Bcw/OodSJUCjMz11kcgWC1f7nJFIpTZQoX+FXsqIbvVB6kpDCK7jH8W/q
-         Z/XJ11wXBmMsJuw5JtxeJCrzJsf4oq7sr0eghp3fwZrRwPfCu4D12/s6DOtJ0ujHVyLd
-         Yo3A==
+        b=k2d+ZEdZNCPoaC1uYfF0pnO9x+1aF8AaAwv1Xo0jwiYrPfQbIjukknY0uT4kUKyy9X
+         5guW1oYKxFe2Bxnz9Uus3ncxALUCMb32ylmWQYxn8LuWWjGyNaN4UHwUXKeNcfbP5Nf5
+         L6IwfPDhnPOzOb1tT3Le08eeX3Tknf5aQJWjLk2Fu9whsDHL0ttr77zl4O5hG18+v8r2
+         iTUUICxlSFRKOQyzKEP+VoBuIxLpBTh3VShPkb4px/GB9Fz6/eMc8RJu1TOe7hR5f6Di
+         Ss5YaARqa0Az0/Mr1/hiJxpq0S36xV5Y3xHFLwWM+iZYkelr0Jm1n4xs5FuJLEr20Bsw
+         hQjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=51XfY6of11t2MdGAYRnq6QdukG9DJ4N2vVcoZrra7FE=;
-        b=a0ZhhFhKtvtIT9X56lusjhLf7KBBysXafxMZQqyPIgrtHC4TwDmDrNGZo6Pi+3FBjb
-         SDw5w5/eyl7fhMTdchxq/obBTpgVxMltkMR60Mqa3oyPbIlAcIAMxqW4jH17BNYgktrl
-         X0duLkYdOw8m1m7SI8lDn6TVWlixBD9ZOFQ7iLYakUvczQLKq5kx19MJRWiPt7hToee7
-         flGKLLNUjdstR3h/J9c4H1AP3eRkwlLo0Mrhq3Jwve1UpgKG+RPLDTdBfS8Mzk/TI2dr
-         6llkI0YvJNAOw52bsebVWm2Kabo558HqDxL9qWQwSrtn6tZAC9BkWjgLNE8Hf8y66B+Y
-         TmJQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
+        b=p6rwnuqDzORdqXDWLIiPKf1+WGX0RiDx3rRpUVY4R99W4nUh1mq1IkccT5ooSUh0XT
+         LxK1laColuiJP58pb4Q+Pld/BhcF9/vtfJ7sOPOlL3s7SP55S+45j3i3Wyo4Wq762+RS
+         PF2oVB/BnaDH5kdXRAkX84ZZwxFWCIcc3eIs502Mzi5G8ZaRnLkCHM3Q69CrKH8RH5OT
+         Ezx1ilS/44B9DiEaQTzJyT9CYEFavrarTFcloJw6/MU/+EpSKibSC4H/FBSix2rD3Kjo
+         i0b3gA01WwgHJJNHmq8r84n6T6lseGzvfUVPj6gJjXX34EJW3oK9/iIWv3mYqSDbXDUN
+         08JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rcy+gC3i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8-20020a05622a118800b003f5269a2005si2338469qtk.282.2023.05.21.05.44.17
+        by mx.google.com with ESMTPS id d14-20020a05620a140e00b0075945a9785asi2105025qkj.393.2023.05.21.08.01.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 May 2023 05:44:17 -0700 (PDT)
+        Sun, 21 May 2023 08:01:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rcy+gC3i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q0iPd-0001Tq-8G; Sun, 21 May 2023 08:43:49 -0400
+	id 1q0kZ4-0002x7-Qb; Sun, 21 May 2023 11:01:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1q0iPc-0001TK-Dp; Sun, 21 May 2023 08:43:48 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1q0iPX-0003yx-Px; Sun, 21 May 2023 08:43:46 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id C02677457E7;
- Sun, 21 May 2023 14:43:37 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 6EB08745706; Sun, 21 May 2023 14:43:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 6A6FB7456E3;
- Sun, 21 May 2023 14:43:37 +0200 (CEST)
-Date: Sun, 21 May 2023 14:43:37 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
- Laurent Vivier <laurent@vivier.eu>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org, 
- qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: Re: [PATCH v2 4/6] hw/char/parallel: Export ParallelState
-In-Reply-To: <20230521123049.312349-5-shentey@gmail.com>
-Message-ID: <77413450-244e-287b-ad21-e57cb5e2abf5@eik.bme.hu>
-References: <20230521123049.312349-1-shentey@gmail.com>
- <20230521123049.312349-5-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q0kZ2-0002wU-9o
+ for qemu-arm@nongnu.org; Sun, 21 May 2023 11:01:40 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q0kZ0-0006AG-LQ
+ for qemu-arm@nongnu.org; Sun, 21 May 2023 11:01:40 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-64d1a0d640cso2662629b3a.1
+ for <qemu-arm@nongnu.org>; Sun, 21 May 2023 08:01:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1684681297; x=1687273297;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
+ b=rcy+gC3i4UeGieY3p1RjXc9fllK5ksA0RjYXn6TGUEAsjPZs1wz/6d+56nUXUEJtvD
+ 9hagoen+Mugp1SFkdb0Z8fFPIptoGjziipBVzVwcAkWba83EyiCXsLRVN+NyXYYb85e0
+ xDktizS7bZ2ufOECYbfKJ+TtQWf0ixgSWCn9+yRgwbVB+NX1QuuL84Gz16ebxlZDaCQP
+ i1fPw5tWHsZQ4TS1xkY3rBavY7kJT/OnJFWTOussY3EZasWH+JUEa5oglsTDpTHQbVd5
+ MOnkAfcL8k7XMObopZiB4EcqBcMckzuYs+RKd8JYRty66lt1okTNQxuu/I8+GVLRTd6d
+ epJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684681297; x=1687273297;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
+ b=CtfpMlRUTD/1v6Yv/nhuPHLyCgIz3VsdabEZaWwWigvSpEOFTct6gPLJq7pQEE0R6M
+ 9WmhMR5Tsr2k0yjiZyNl35gCeyg2vAxFbuieKDLsg6VLDNEECkznCDDDWRi18Bdxovdd
+ K1W/9/fiMsObwxqX+CuXcBBKmHcCdnagV9QLNuzmBVmmKvyz/GBJI/BkdTiIouto7Ix1
+ f39hKl8M6p3a0ecun+PBsoOe5IBa6gk/HaR4NAQU3jyg8bBl0oPVmi5KWfvAYYiwCcsS
+ 6wCpR4HGQyyMySwcVmM2BsBt+KTAZidsXqTFy4uUzEyN/9wk1LqaNyeg8WnZm029QFH+
+ xgfg==
+X-Gm-Message-State: AC+VfDz2+GkWCnVzlLWsxNI3w+OGqmKSMWvNLEy+86XHNz26Cv5hd/Wc
+ mBIjB6i179rY4QlKpGGuxLPK5g==
+X-Received: by 2002:a05:6a20:748e:b0:10b:e0a:1319 with SMTP id
+ p14-20020a056a20748e00b0010b0e0a1319mr3549226pzd.13.1684681297191; 
+ Sun, 21 May 2023 08:01:37 -0700 (PDT)
+Received: from [10.40.30.162] ([66.172.120.86])
+ by smtp.gmail.com with ESMTPSA id
+ b5-20020aa78705000000b006437c0edf9csm2744487pfo.16.2023.05.21.08.01.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 21 May 2023 08:01:36 -0700 (PDT)
+Message-ID: <37df70b4-5ae4-f36b-a349-303828545262@linaro.org>
+Date: Sun, 21 May 2023 08:01:34 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 17/27] target/s390x: Use cpu_{ld,st}*_mmu in do_csst
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20230520162634.3991009-1-richard.henderson@linaro.org>
+ <20230520162634.3991009-18-richard.henderson@linaro.org>
+ <a56f5acc-5716-8598-e49c-d1f6c19e144f@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <a56f5acc-5716-8598-e49c-d1f6c19e144f@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,142 +130,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4RXRkS3EwGu1
+X-TUID: F2z8y7RjewwF
 
-On Sun, 21 May 2023, Bernhard Beschow wrote:
-> Exporting ParallelState is a precondition for exporing TYPE_ISA_PARALLEL.
+On 5/21/23 04:21, Philippe Mathieu-Daudé wrote:
+> Hi Richard,
+> 
+> On 20/5/23 18:26, Richard Henderson wrote:
+>> Use cpu_ld16_mmu and cpu_st16_mmu to eliminate the special case,
+>> and change all of the *_data_ra functions to match.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>> Cc: qemu-s390x@nongnu.org
+>> Cc: David Hildenbrand <david@redhat.com>
+>> Cc: Ilya Leoshkevich <iii@linux.ibm.com>
+>> ---
+>>   target/s390x/tcg/mem_helper.c | 65 ++++++++++++++---------------------
+>>   1 file changed, 26 insertions(+), 39 deletions(-)
+>>
+>> diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+>> index 0e0d66b3b6..b6cf24403c 100644
+>> --- a/target/s390x/tcg/mem_helper.c
+>> +++ b/target/s390x/tcg/mem_helper.c
+>> @@ -1737,6 +1737,9 @@ static uint32_t do_csst(CPUS390XState *env, uint32_t r3, uint64_t a1,
+>>                           uint64_t a2, bool parallel)
+>>   {
+>>       uint32_t mem_idx = cpu_mmu_index(env, false);
+>> +    MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, mem_idx);
+>> +    MemOpIdx oi8 = make_memop_idx(MO_TE | MO_64, mem_idx);
+> 
+> 
+>>               if (parallel) {
+>>   #ifdef CONFIG_ATOMIC64
+>> -                MemOpIdx oi = make_memop_idx(MO_TEUQ | MO_ALIGN, mem_idx);
+>> -                ov = cpu_atomic_cmpxchgq_be_mmu(env, a1, cv, nv, oi, ra);
+>> +                ov = cpu_atomic_cmpxchgq_be_mmu(env, a1, cv, nv, oi8, ra);
+> 
+> Why is it safe to remove MO_ALIGN here?
 
-This may need a better commit message. It's not a precondition per coding 
-standards I think just a preference for allowing embedding the device in 
-other devices but otherwise unnecessary. Or at least fix the typo 
-"exporing" -> exporting.
+Alignment check already done at the start of the function:
 
-Regards,
-BALATON Zoltan
+     /* Sanity check the alignments.  */
+     if (extract32(a1, 0, fc + 2) || extract32(a2, 0, sc)) {
+         goto spec_exception;
+     }
 
-> Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> ---
-> include/hw/char/parallel.h | 44 ++++++++++++++++++++++++++++++++++++++
-> hw/char/parallel.c         | 42 ------------------------------------
-> 2 files changed, 44 insertions(+), 42 deletions(-)
->
-> diff --git a/include/hw/char/parallel.h b/include/hw/char/parallel.h
-> index 0a23c0f57e..2d4907c1fe 100644
-> --- a/include/hw/char/parallel.h
-> +++ b/include/hw/char/parallel.h
-> @@ -1,9 +1,53 @@
-> #ifndef HW_PARALLEL_H
-> #define HW_PARALLEL_H
->
-> +#include "exec/ioport.h"
-> +#include "exec/memory.h"
-> #include "hw/isa/isa.h"
-> +#include "hw/irq.h"
-> +#include "chardev/char-fe.h"
-> #include "chardev/char.h"
->
-> +/*
-> + * These are the definitions for the Printer Status Register
-> + */
-> +#define PARA_STS_BUSY   0x80    /* Busy complement */
-> +#define PARA_STS_ACK    0x40    /* Acknowledge */
-> +#define PARA_STS_PAPER  0x20    /* Out of paper */
-> +#define PARA_STS_ONLINE 0x10    /* Online */
-> +#define PARA_STS_ERROR  0x08    /* Error complement */
-> +#define PARA_STS_TMOUT  0x01    /* EPP timeout */
-> +
-> +/*
-> + * These are the definitions for the Printer Control Register
-> + */
-> +#define PARA_CTR_DIR    0x20    /* Direction (1=read, 0=write) */
-> +#define PARA_CTR_INTEN  0x10    /* IRQ Enable */
-> +#define PARA_CTR_SELECT 0x08    /* Select In complement */
-> +#define PARA_CTR_INIT   0x04    /* Initialize Printer complement */
-> +#define PARA_CTR_AUTOLF 0x02    /* Auto linefeed complement */
-> +#define PARA_CTR_STROBE 0x01    /* Strobe complement */
-> +
-> +#define PARA_CTR_SIGNAL (PARA_CTR_SELECT | PARA_CTR_INIT | PARA_CTR_AUTOLF \
-> +                         | PARA_CTR_STROBE)
-> +
-> +typedef struct ParallelState {
-> +    MemoryRegion iomem;
-> +    uint8_t dataw;
-> +    uint8_t datar;
-> +    uint8_t status;
-> +    uint8_t control;
-> +    qemu_irq irq;
-> +    int irq_pending;
-> +    CharBackend chr;
-> +    int hw_driver;
-> +    int epp_timeout;
-> +    uint32_t last_read_offset; /* For debugging */
-> +    /* Memory-mapped interface */
-> +    int it_shift;
-> +    PortioList portio_list;
-> +} ParallelState;
-> +
-> void parallel_hds_isa_init(ISABus *bus, int n);
->
-> bool parallel_mm_init(MemoryRegion *address_space,
-> diff --git a/hw/char/parallel.c b/hw/char/parallel.c
-> index af551e7864..522301f43a 100644
-> --- a/hw/char/parallel.c
-> +++ b/hw/char/parallel.c
-> @@ -27,10 +27,7 @@
-> #include "qapi/error.h"
-> #include "qemu/module.h"
-> #include "chardev/char-parallel.h"
-> -#include "chardev/char-fe.h"
-> #include "hw/acpi/acpi_aml_interface.h"
-> -#include "hw/irq.h"
-> -#include "hw/isa/isa.h"
-> #include "hw/qdev-properties.h"
-> #include "hw/qdev-properties-system.h"
-> #include "migration/vmstate.h"
-> @@ -54,45 +51,6 @@
-> #define PARA_REG_EPP_ADDR 3
-> #define PARA_REG_EPP_DATA 4
->
-> -/*
-> - * These are the definitions for the Printer Status Register
-> - */
-> -#define PARA_STS_BUSY   0x80    /* Busy complement */
-> -#define PARA_STS_ACK    0x40    /* Acknowledge */
-> -#define PARA_STS_PAPER  0x20    /* Out of paper */
-> -#define PARA_STS_ONLINE 0x10    /* Online */
-> -#define PARA_STS_ERROR  0x08    /* Error complement */
-> -#define PARA_STS_TMOUT  0x01    /* EPP timeout */
-> -
-> -/*
-> - * These are the definitions for the Printer Control Register
-> - */
-> -#define PARA_CTR_DIR    0x20    /* Direction (1=read, 0=write) */
-> -#define PARA_CTR_INTEN  0x10    /* IRQ Enable */
-> -#define PARA_CTR_SELECT 0x08    /* Select In complement */
-> -#define PARA_CTR_INIT   0x04    /* Initialize Printer complement */
-> -#define PARA_CTR_AUTOLF 0x02    /* Auto linefeed complement */
-> -#define PARA_CTR_STROBE 0x01    /* Strobe complement */
-> -
-> -#define PARA_CTR_SIGNAL (PARA_CTR_SELECT|PARA_CTR_INIT|PARA_CTR_AUTOLF|PARA_CTR_STROBE)
-> -
-> -typedef struct ParallelState {
-> -    MemoryRegion iomem;
-> -    uint8_t dataw;
-> -    uint8_t datar;
-> -    uint8_t status;
-> -    uint8_t control;
-> -    qemu_irq irq;
-> -    int irq_pending;
-> -    CharBackend chr;
-> -    int hw_driver;
-> -    int epp_timeout;
-> -    uint32_t last_read_offset; /* For debugging */
-> -    /* Memory-mapped interface */
-> -    int it_shift;
-> -    PortioList portio_list;
-> -} ParallelState;
-> -
-> #define TYPE_ISA_PARALLEL "isa-parallel"
-> OBJECT_DECLARE_SIMPLE_TYPE(ISAParallelState, ISA_PARALLEL)
->
->
+
+r~

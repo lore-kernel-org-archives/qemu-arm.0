@@ -1,112 +1,106 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1152791ejb;
-        Mon, 22 May 2023 05:01:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4amss0n8e79KDAI2pXUIcqgmU0ZwX2YJPs5zzeWDfL9vcsKzCdP7NFSQDayQRFHXqSh520
-X-Received: by 2002:a67:fd96:0:b0:437:dbfb:6001 with SMTP id k22-20020a67fd96000000b00437dbfb6001mr2256232vsq.2.1684756918397;
-        Mon, 22 May 2023 05:01:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684756918; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1154936ejb;
+        Mon, 22 May 2023 05:04:42 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ68ELYsOuUviBqElaoL5wK5wyhFPvwYRHozOEIEg8XM668BzqnjbiCrnqRvsI/DsWhF/Hmo
+X-Received: by 2002:a05:6102:11ea:b0:42c:3baa:b0d4 with SMTP id e10-20020a05610211ea00b0042c3baab0d4mr2638787vsg.9.1684757082559;
+        Mon, 22 May 2023 05:04:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684757082; cv=none;
         d=google.com; s=arc-20160816;
-        b=0x1+wTlu2X7bng9cWUDTm0gOKUMG9NKaEe669Nuk9/HQUnodjwZBj+Nnen4xoWxVa/
-         4MDCNOZlf2Nom2sUCWvIqSE2t95fXnw52KKGnJzvLvM7bhfBI16ZZa8Qq3GRtFV2DVrn
-         v6SD/5gymm1IYfRn7ZAEkFwJsuKh7oqPvODg+i3qnJ1lGSePqYY69HNE8a913z/AzDlL
-         2bXF864baIyYEsndrFWHJls0+PTccOrlamgKhoMrQ07xD989Tuh8EB59rtfaGVZj4Ff7
-         aNjARzv5lAbrya7Xlj+n4Kd1UV6EminBfx9iYrp+tRXK/59q37tTQa/xGqpaOhJc7OlF
-         IXOA==
+        b=zpeqnSWzaxizSGtWpGgJdsUbhGUHESEVKaqVoxAeZMxxfv3ZQpTDnNV0bYM8QUXjmH
+         rKEqISrROXKHz9OyJKk1FNRPeuafm0ooJFgqFpfsBPbbPlVXLN9yT/z8rAXdCz7sb+i2
+         3fjFQDPTYhJdARSXHNDAGS7pqT+FPIeTi1Ap1qa6N/4gIx1ZL2YUzs36BbgY0ut6Yy15
+         FbWSovSxJ3QuTfmpRTu1KMj7nl9yrxr+OqlrHglxXoz9XOLVOW/rreZuj50i4SsEYrSV
+         zCMuvPPAUa9rgDl1YsmjVLvM3ejYt09VoysRy1Seu2A2coa9jqSvl3+qlwHhkpKG54f1
+         opvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5NoExjJY2ASCuOV/0s+i6E1DsyrLp/ezztyoZ9LE87w=;
-        b=sQnVoYn7UAWaw2NQ1kFeZBlJ6s7+kn7p/3gPAD11qsrKxF9Rhj6bMzq0zyarwRYWD8
-         GGRYIxMjHhgLsHm9jc/qZFReGFqvZQE33KHySb+cP2h5WC9PK8PleRjpdNev0rmuUDUB
-         AIYd+2DqZeFaKEdRPgInGZR5YR2hHU8ivZVNjd6jq4Z9iANUdOnX1mNrFdU9eqjs756b
-         EOxhJ8FvooR80bIvMa3U97gUA2KLDJ7jAV3VK8lyzpP+lqr3ZezQkTGr4p8gviCEai/J
-         55AZWus9cZRyQzM/DbUe7p6m15FSvTQGyAKwOQ0T56LxsRs0I6toJiNDIcDOxLT9/YNu
-         1QnQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=zqyo5rJ8j59rDGA94pvvhHY82P2NKop29y8JPKXIx9A=;
+        b=a3sP6vabETGfSgG/ceIMVnGMJjIYMwsUdNyqx0vCbd9d5nov79aG6eq4uT4HF8iAjV
+         WUA11MsGLiwjjsB+x/Azu68/aM2gRiKnnVv5d2/TkO1EKGSxxJbMHsf3e6v+0aIK5wJ/
+         NtnMfq4MVZQGaEKdCLu+7Gx0bI8KpSjFx1PlMoLmsuC+MQMxRzrLPcxHv6ZRl9r3k1hM
+         JFN5TNCs57kL3jGzzmwkBAyUYUpZzBoAUDPKXVjUV5kETkiLOgo/tgwkU/0QVH1P4rBj
+         PzGYZKMwXBxwRTNH4tcjDYT6Z4yYr+No+WfOWgZ/n92ukiM+5rxus2kLVLcd6JTHi/9X
+         QXgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JxxtpnGW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvpbmVS4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z2-20020a056102066200b004389ae6ae70si474371vsf.599.2023.05.22.05.01.58
+        by mx.google.com with ESMTPS id o35-20020ab05966000000b007725d3f12dfsi636365uad.46.2023.05.22.05.04.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 05:01:58 -0700 (PDT)
+        Mon, 22 May 2023 05:04:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JxxtpnGW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvpbmVS4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q14EQ-0004wI-L7; Mon, 22 May 2023 08:01:42 -0400
+	id 1q14HG-0006Rg-VA; Mon, 22 May 2023 08:04:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q14EP-0004ux-2k
- for qemu-arm@nongnu.org; Mon, 22 May 2023 08:01:41 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q14EN-0001fx-89
- for qemu-arm@nongnu.org; Mon, 22 May 2023 08:01:40 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-510b869fe0dso10604728a12.3
- for <qemu-arm@nongnu.org>; Mon, 22 May 2023 05:01:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684756897; x=1687348897;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5NoExjJY2ASCuOV/0s+i6E1DsyrLp/ezztyoZ9LE87w=;
- b=JxxtpnGWu11beu+G7LfdviAjQ5WoesmyUlvyYrfSvp8NWIpe1fZkM2bg2YDO2+oDxb
- ytnoMSSbyeSTlXp7eW99AMpW1VNC+mFUMs4WqgIbi6v9KxVvbGs9XaPmJA6yqRqXTJT7
- htupd7ZWAagTOKy4EMkqcMkDWPVmrmdW69YA4raJwuDXWwoi/wfJvQYC2Ke/Wv8KJ7ko
- YVwlggB1V2R3Gjhf+uiaxh0I6+904USeMU9/PFojta/ymrpQLYN414tNK/u+FiIbiglY
- 4QR9OXEiivjMhfqDIYkBtSQ59WL08kHs1EZWo0GKnoHRFhWemQ9KA5jxC0Cof8MBzWsi
- rQQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684756897; x=1687348897;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5NoExjJY2ASCuOV/0s+i6E1DsyrLp/ezztyoZ9LE87w=;
- b=FC/iMRQJKaBAUJCJSY03p1sPAE0MspsLPBs91YYgWpstGL9aIhpIisd4Tjyf8m3xgi
- Y7jDvD+q/es1FLv5zkeljLpIu+68x3Rc4efSHvsFg/ogTOfXueJKK+aX9Pt/sYLBFB4h
- KFqUfW04uwZ05wHQ9+vTzgy2EVyNsYihI7b2jWllxfW9yZhbUoeOC3dBrGmlmj2sHlyo
- xI/1xeqGx5Q+acx5QnDcQSIRRku98hhW6WOYP9fqTBKpzkWaixauPrwvYjQw60FFRL5U
- Y+AFtGCUmRX95KKSFusDlLkb+r5WWSRbnLIQfYrfe0Iavf+0DJHdBi2xZBTL73yC2+Cd
- gALA==
-X-Gm-Message-State: AC+VfDzrCZ5NkyY/IUchFAluVCkXt5OSgivQ11OEVXz4oW5DI5TJT6Jr
- FUUX7bvzGEqFOg4S/wywzysuulGrV6z6tj1l1pyO/Q==
-X-Received: by 2002:aa7:cf8f:0:b0:50b:c89f:f381 with SMTP id
- z15-20020aa7cf8f000000b0050bc89ff381mr7851532edx.29.1684756897342; Mon, 22
- May 2023 05:01:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1q14HF-0006RC-0Y
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 08:04:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1q14HC-0002Kl-V7
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 08:04:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684757073;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zqyo5rJ8j59rDGA94pvvhHY82P2NKop29y8JPKXIx9A=;
+ b=TvpbmVS4Mct2+DAKHryrA0yuoP3s717bYPlPH220zIrNo9iO9hCY/TuByBvEHZ+6dX1od1
+ sIOMe9LHzhyfJ9SZbwViEw7LEJazIfSDiI34yRK9WkSJkSqKbhEmh6mWPyedQAZxzwOONN
+ Kvj66H9/bw1+ghBka7XnpVsHWtDWiuw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-296-5Qq3rbTSNVqd0y0Tzgym1w-1; Mon, 22 May 2023 08:04:30 -0400
+X-MC-Unique: 5Qq3rbTSNVqd0y0Tzgym1w-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0ADF28007D9;
+ Mon, 22 May 2023 12:04:30 +0000 (UTC)
+Received: from localhost (unknown [10.39.194.141])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BB3C2C58DC1;
+ Mon, 22 May 2023 12:04:29 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
+ Auger <eauger@redhat.com>, Juan Quintela <quintela@redhat.com>, Gavin Shan
+ <gshan@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Richard
+ Henderson <richard.henderson@linaro.org>, Andrea Bolognani
+ <abologna@redhat.com>
+Subject: Re: [PATCH v7 0/1] arm: enable MTE for QEMU + kvm
+In-Reply-To: <20230428095533.21747-1-cohuck@redhat.com>
+Organization: Red Hat GmbH
+References: <20230428095533.21747-1-cohuck@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Mon, 22 May 2023 14:04:28 +0200
+Message-ID: <87v8gkzi5v.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
- <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
- <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
- <CAFEAcA8bLr+_raHie4JxoEJAQ7cuj5nJKTYt5+7r6T0w8FFNsg@mail.gmail.com>
- <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>
-In-Reply-To: <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 May 2023 13:01:26 +0100
-Message-ID: <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
-Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
-To: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-Cc: Sergey Kambalin <serg.oker@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,35 +115,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hy33cblkou2H
+X-TUID: Rr/EAu0ZRVk2
 
-On Mon, 22 May 2023 at 12:42, Kambalin, Sergey
-<sergey.kambalin@auriga.com> wrote:
->
-> Aw, I thought the entire machine should work at the first patch.
->
-> Thank you for the detailed clarification! I think I've got the idea. I'll split it up.
->
-> Could you please tell me what size is appropriate for a single patch?
+On Fri, Apr 28 2023, Cornelia Huck <cohuck@redhat.com> wrote:
 
-The most important things for patch splitting are:
- * everything still has to compile cleanly
- * the contents of a single patch should be a coherent single
-   thing that it makes sense to review in one part
+> Another open problem is mte vs mte3: tcg emulates mte3, kvm gives the guest
+> whatever the host supports. Without migration support, this is not too much
+> of a problem yet, but for compatibility handling, we'll need a way to keep
+> QEMU from handing out mte3 for guests that might be migrated to a mte3-less
+> host. We could tack this unto the mte property (specifying the version or
+> max supported), or we could handle this via cpu properties if we go with
+> handling compatibility via cpu models (sorting this out for kvm is probably
+> going to be interesting in general.) In any case, I think we'll need a way
+> to inform kvm of it.
 
-If there's something in there that only touches 20 lines of
-code but is a coherent single change, it's fine to have that in
-its own patch -- small patches are easy to review.
+Before I start to figure out the initialization breakage, I think it
+might be worth pointing to this open issue again. As Andrea mentioned in
+https://listman.redhat.com/archives/libvir-list/2023-May/239926.html,
+libvirt wants to provide a stable guest ABI, not only in the context of
+migration compatibility (which we can handwave away via the migration
+blocker.)
 
-At the upper end, I tend to think a patch is a bit big
-at around 200 lines, but for the specific case of "here
-is a new device" bigger than that is OK, because it's
-just adding new files rather than merging changes into
-existing ones.
+The part I'm mostly missing right now is how to tell KVM to not present
+mte3 to a guest while running on a mte3 capable host (i.e. the KVM
+interface for that; it's more a case of "we don't have it right now",
+though.) I'd expect it to be on the cpu level, rather than on the vm
+level, but it's not there yet; we also probably want something that's
+not fighting whatever tcg (or other accels) end up doing.
 
-https://www.qemu.org/docs/master/devel/submitting-a-patch.html
-has some other advice on patch submission, if you haven't
-read that yet.
+I see several options here:
+- Continue to ignore mte3 and its implications for now. The big risk is
+  that someone might end up implementing support for MTE in libvirt again,
+  with the same stable guest ABI issues as for this version.
+- Add a "version" qualifier to the mte machine prop (probably with
+  semantics similar to the gic stuff), with the default working with tcg
+  as it does right now (i.e. defaulting to mte3). KVM would only support
+  "no mte" or "same as host" (with no stable guest ABI guarantees) for
+  now. I'm not sure how hairy this might get if we end up with a per-cpu
+  configuration of mte (and other features) with kvm.
+- Add cpu properties for mte and mte3. I think we've been there before
+  :) It would likely match any KVM infrastructure well, but we gain
+  interactions with the machine property. Also, there's a lot in the
+  whole CPU model area that need proper figuring out first... if we go
+  that route, we won't be able to add MTE support with KVM anytime soon,
+  I fear.
 
-thanks
--- PMM
+The second option might be the most promising, except for potential
+future headaches; but a lot depends on where we want to be going with
+cpu models for KVM in general.
+

@@ -1,236 +1,156 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1280389ejb;
-        Mon, 22 May 2023 08:21:50 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5O44KMPs9sNkS9c5SOrLw8ini1GnhasimJ6eh6yfjDaq3oXUO0fMit/d4seXhIQzdZ4OBZ
-X-Received: by 2002:ad4:5ceb:0:b0:5e8:c098:2493 with SMTP id iv11-20020ad45ceb000000b005e8c0982493mr21913803qvb.50.1684768910308;
-        Mon, 22 May 2023 08:21:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684768910; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1286404ejb;
+        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+X-Received: by 2002:a1c:7911:0:b0:3f6:76e:604b with SMTP id l17-20020a1c7911000000b003f6076e604bmr1483676wme.0.1684769507479;
+        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684769507; cv=none;
         d=google.com; s=arc-20160816;
-        b=vgGOOu/Z7b1cuWVaVGGRw7h2kclvxIeaga0+Vco1M3cZGh/OYxmHwWhyt7BiD/WiO+
-         QXGxUNlWHStW5feRwL+SIzWeRas1+xUqYT/tJHKSMe5HXPlFcO3JSKq58NSD+Bu7yp/E
-         oGZW0AhqTubEDJEu1G1bWnKoIYEFUv75RwXwv7UZtPVMb8Ush0hjOiYGPGZ+l/eIApfP
-         +XxZnjRwNdgUgE8a6gNBv71KzWLKp1vvpSEgLILGM1pKw7ib2ZvjPWzGyfvkgmbeZbtS
-         qShwX+eBdU/uBl2vNw5IbsCUaxYXnXj03hlziDN4Wd4LeKaX6UF4PH/jSU4KaF+KWshM
-         +5BA==
+        b=rnXmnMm3BD7LMG0bRp00YjNWfC9SdsKs3350BMRlN8htLRVDiVVuH1NN3AGGxzbHeF
+         OjlwCzd7PCVb24/+ASWp/6aeSu/JKpMkrrextfOBSSTfkDW78RGV94TZC3fchuZx64rw
+         lIG10XMSZcLHeCQBMXwQMuyzlR8G/cuxAI9Poo04JWSeJyo2bP0AqRM6hmS9IpxH9Tt0
+         PEsWibTfgTEfltBnOHylvrRuKT3Ok305oWLgCP+ZFW2AKsoq3X3PXGjHQ4nbjol25GEy
+         Z/4s89p9EpkK0OcSN6N7DZbxhhBtFYZYPuTX3xn5SjmbGt7kjUsjDXar7eFjgs1q8n6B
+         1qTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=9p7nmKMZnBxiCgyK0+rXDkd/Nk/6ERKDLJYV2JarmGg=;
-        b=lRI7RoJ+nlOYqt4rFpPTTtPwPT+BThpWPS6SjvVR+gxoHKvr8V8B52Je46xx4TQyLS
-         SH/WzwFvcwPF4AYugMwMf/a3BB7PmgFjVEhXkLJIfppMxlCaQT69CHcfXwV0kbd7b00B
-         HSSh1tAbtF/fP/L81HiJs5OVYl9S5T1rugWmbSup81eQMHjdb1B+L+4FiIdQBUIpaAu8
-         UKJpO1Uk7iC3C7uBt7kN+XT4imI2Y1OmAn/rfrhBD1Kd8YEJbHM20lCX6YDGk3v4ey67
-         ZSEzirbv12CXXhOen9vLWQhNnA1BCXT0vZj3F9ImMN2eYmGgIVsUOynajJNGoohOp6U0
-         p1cg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
+        b=fh9dyonvnCHrDL6aRldp7FmdRdPrb1AD445/cn3uWVV494pWPOmCLjrUvC32LVdexl
+         NU/mBSl8dJAMkQBcjVtS7I7pbCRHsqFiJ6uf5E7aPlLndf4KEx4Z/Gw5UxueAkn+hDCu
+         n3Qw+ZLL+/yLVv2PDQ+GMx6gyDR1A3lpgvgFL5ltp9ugrn8JJl5/ZVDnuANroA3RdJqR
+         nWJ1aIy7XpCxQHSVINOb0P608rN60Vh8yJt47jtswEewlA52+E/pxtzUdWBho5kF4YAM
+         E8Lq1zmXZtQtC6jNTZD5aVBz46L8raYNC4fkl4xWQuFcvPzy6VbEtfC2ODatcfmffT5o
+         k1Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq15-20020ad4596f000000b0061face6e93fsi3619261qvb.404.2023.05.22.08.21.50
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ls+YTqEi;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l16-20020a7bc450000000b003f09f293d24sor1721890wmi.3.2023.05.22.08.31.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 08:21:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q17LX-000499-Kb; Mon, 22 May 2023 11:21:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q17LV-00048L-0r; Mon, 22 May 2023 11:21:13 -0400
-Received: from hq-ms.auriga.com ([82.97.202.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q17LS-0007ER-Aa; Mon, 22 May 2023 11:21:12 -0400
-Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
- hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Mon, 22 May 2023 18:21:03 +0300
-Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
- hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
- 15.02.1258.012; Mon, 22 May 2023 18:21:03 +0300
-From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: =?gb2312?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkqKY=?= <philmd@linaro.org>, "Sergey
- Kambalin" <serg.oker@gmail.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
-Thread-Topic: [PATCH] [rpi4b] Make bootable rpi4b model
-Thread-Index: AQHZjJhM5s2DGZMhDE6fRKCxSTEX869l5goAgAA0A2T//9M1AIAAPGd6///VIACAAD0/pv//3tKAAAm20Kk=
-Date: Mon, 22 May 2023 15:21:03 +0000
-Message-ID: <12ff45b45c334cbd8340becc512eaf89@auriga.com>
-References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
- <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
- <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
- <CAFEAcA8bLr+_raHie4JxoEJAQ7cuj5nJKTYt5+7r6T0w8FFNsg@mail.gmail.com>
- <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>
- <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
- <672004b332154e15b14e4e96d20a23de@auriga.com>,
- <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
-In-Reply-To: <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [134.191.220.81]
-x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-as-result: No-10--19.311900-8.000000
-x-tmase-matchedrid: xOmkFxUSbL+JVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
- DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
- ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot6L2s
- CeHVx5vavLMqivPPjo9ElewkZ1UEQ2ib2gFI+X3zo39wOA02Lhv/7xdLQjXSIgaqPnI+BNyB2MH
- UpnrEwAiPTUF0vMdpHE2FTB6r9HbwcO+Ovs7EaQQQ5+hY6u+45PnKxAOPp4WdWM2x6EZ/S9InVh
- PozbL+m/+cseRgjV48XXGI8+1x81r8SWmHOl/UsRW4LR41Fi8mlYsa84w2hTOhR0VsdhRrBO6PM
- ltTuI3mUVI5FRUThe9el/AXqANCywquY0kEgdZxqkhv3OdF4DNQO+lFC5/FV3de2OoBqgwoKQCY
- LmjRv992grUwQgYZdOzTDkfilYT4JYxfHyi9oJ4vM1YF6AJbYXDmF9vUz9/rDGGXOPbPCbjI5fM
- 8fX0wmm0nvaK7VjdZXO/vat5d5TqTD/Ey87O1k2RRIMOrvjaQ==
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--19.311900-8.000000
-x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-snts-smtp: C7FCEDA10982392AC6ED3CD31848D6493928DA025B08D8B2B2F88AAAE5ABD7A52000:8
-Content-Type: multipart/alternative;
- boundary="_000_12ff45b45c334cbd8340becc512eaf89aurigacom_"
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ls+YTqEi;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1684769507; x=1687361507;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
+        b=Ls+YTqEiXNT1nvjLPQxPfMv9S5eAVqJSNAlaIst4auvrLVJ+PGfJ9b8XWD+DU7/sIR
+         wVw7kmV24VNxMAVUsIaW7JwVDAoK7DfCvNCYJrIfW0l6ceb/e0TK9ijR5b1O1DuP1B6l
+         GDbc7ZhQhPpW1/HeKKqmmnOk7VaAAD3ToNZl1tN+lPsPCr4NKLSQICo/FmgcwLn4rSn4
+         9QTb9vaxZkY40Su9eEVhdXCXSPBoxlGdHbB0aYOgqNX9WnTVYmHjQK5EcDQlTOiPwKDl
+         a3BFxYZSuTzvql9VkStkSMRnC4OAcTuKzXJm1DRhyuj9sKI0czdm+gThjC18tQNKjNLz
+         +4yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1684769507; x=1687361507;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
+        b=MZVfm14atRM4CFaUP8gAeql76pEAP5RB+X+t0w3PZXMCet42TPx1Le4kpQLxEI95IL
+         o1LfTfIxJSrI76R71qtsYSa+V+qBlu279ZURPB+qn26W/QVk4pK95p24xHToU08kzC7J
+         3+coptUPHNEw2hYYglF8vNMCgH7TtcHvqLQH5sqrhm9z/pi2xuCzkiUiQqtxPOqldFIK
+         33DVUwfjnD0wjlVnKSrWI8aCK41Cnop488qMNO/SryBFnnWN8zW5JEWyb1Ls8P8ySX63
+         rzgcUSLPSgXMfhn6iZs3o+FkGoIK0nk2LEWvIPSYK+S8yaBlx43qPoA4Kfq60GAH8jF8
+         7yhg==
+X-Gm-Message-State: AC+VfDwxv1MKBAfIHirr3115xB4M0sUSOuj62CfDoW7kTrESDLopyySZ
+	NO5pNGD8q/DaG5KH9/S6ovCl7sYq
+X-Google-Smtp-Source: ACHHUZ40xk9g4Wq4zxmi/h1i1cAfDWib/ppaY5zlVyrnf6jwRFrWXtLjAk/JCe/7rmNUQ2oeqp1S9w==
+X-Received: by 2002:a1c:f710:0:b0:3f5:146a:c79d with SMTP id v16-20020a1cf710000000b003f5146ac79dmr7210395wmh.15.1684769507111;
+        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain ([176.176.153.164])
+        by smtp.gmail.com with ESMTPSA id j15-20020a5d464f000000b00307d58b3da9sm8056538wrs.25.2023.05.22.08.31.45
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 22 May 2023 08:31:46 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Mikko Rapeli <mikko.rapeli@linaro.org>
+Subject: [PATCH 00/12] hw/char/pl011: Implement TX (async) FIFO to avoid blocking the main loop
+Date: Mon, 22 May 2023 17:31:32 +0200
+Message-Id: <20230522153144.30610-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=82.97.202.32;
- envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r5OsQ90CUV5Y
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Hrve6C9FLa02
 
---_000_12ff45b45c334cbd8340becc512eaf89aurigacom_
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+Hi,
 
-VGhhbmtzIGZvciB0aGUgZXhhbXBsZSwgUGhpbGxpcGUhIEl0J3MgaGVscGZ1bCENCg0KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18NCqewp+Q6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZKim
-IDxwaGlsbWRAbGluYXJvLm9yZz4NCqewp+Sn4afip9Gn06fdp9an36fgOiAyMiCn3qfRp/EgMjAy
-MyCn1C4gMTY6NDE6NTMNCqesp+Cn3qflOiBTZXJnZXkgS2FtYmFsaW47IEthbWJhbGluLCBTZXJn
-ZXkNCqesp+Cn4afap/E6IFBldGVyIE1heWRlbGw7IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUt
-ZGV2ZWxAbm9uZ251Lm9yZw0Kp7Sn1qfep9E6IFJlOiBbUEFUQ0hdIFtycGk0Yl0gTWFrZSBib290
-YWJsZSBycGk0YiBtb2RlbA0KDQpPbiAyMi81LzIzIDE0OjQxLCBLYW1iYWxpbiwgU2VyZ2V5IHdy
-b3RlOg0KDQo+PiBDb3VsZCB5b3UgcGxlYXNlIHRlbGwgbWUgd2hhdCBzaXplIGlzIGFwcHJvcHJp
-YXRlIGZvciBhIHNpbmdsZSBwYXRjaD8NCj4NCj4gVGhlIG1vc3QgaW1wb3J0YW50IHRoaW5ncyBm
-b3IgcGF0Y2ggc3BsaXR0aW5nIGFyZToNCj4gICAqIGV2ZXJ5dGhpbmcgc3RpbGwgaGFzIHRvIGNv
-bXBpbGUgY2xlYW5seQ0KPiAgICogdGhlIGNvbnRlbnRzIG9mIGEgc2luZ2xlIHBhdGNoIHNob3Vs
-ZCBiZSBhIGNvaGVyZW50IHNpbmdsZQ0KPiAgICAgdGhpbmcgdGhhdCBpdCBtYWtlcyBzZW5zZSB0
-byByZXZpZXcgaW4gb25lIHBhcnQNCj4NCj4gSWYgdGhlcmUncyBzb21ldGhpbmcgaW4gdGhlcmUg
-dGhhdCBvbmx5IHRvdWNoZXMgMjAgbGluZXMgb2YNCj4gY29kZSBidXQgaXMgYSBjb2hlcmVudCBz
-aW5nbGUgY2hhbmdlLCBpdCdzIGZpbmUgdG8gaGF2ZSB0aGF0IGluDQo+IGl0cyBvd24gcGF0Y2gg
-LS0gc21hbGwgcGF0Y2hlcyBhcmUgZWFzeSB0byByZXZpZXcuDQo+DQo+IEF0IHRoZSB1cHBlciBl
-bmQsIEkgdGVuZCB0byB0aGluayBhIHBhdGNoIGlzIGEgYml0IGJpZw0KPiBhdCBhcm91bmQgMjAw
-IGxpbmVzLCBidXQgZm9yIHRoZSBzcGVjaWZpYyBjYXNlIG9mICJoZXJlDQo+IGlzIGEgbmV3IGRl
-dmljZSIgYmlnZ2VyIHRoYW4gdGhhdCBpcyBPSywgYmVjYXVzZSBpdCdzDQo+IGp1c3QgYWRkaW5n
-IG5ldyBmaWxlcyByYXRoZXIgdGhhbiBtZXJnaW5nIGNoYW5nZXMgaW50bw0KPiBleGlzdGluZyBv
-bmVzLg0KPg0KPiBodHRwczovL3d3dy5xZW11Lm9yZy9kb2NzL21hc3Rlci9kZXZlbC9zdWJtaXR0
-aW5nLWEtcGF0Y2guaHRtbA0KPiA8aHR0cHM6Ly93d3cucWVtdS5vcmcvZG9jcy9tYXN0ZXIvZGV2
-ZWwvc3VibWl0dGluZy1hLXBhdGNoLmh0bWw+DQo+IGhhcyBzb21lIG90aGVyIGFkdmljZSBvbiBw
-YXRjaCBzdWJtaXNzaW9uLCBpZiB5b3UgaGF2ZW4ndA0KPiByZWFkIHRoYXQgeWV0Lg0KDQpGV0lX
-IGV4YW1wbGUgb2Ygc2VyaWVzIGFkZGluZyB0aGUgUGkgWmVybzoNCg0KaHR0cHM6Ly9sb3JlLmtl
-cm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIwMTAyNDE3MDEyNy4zNTkyMTgyLTEtZjRidWdAYW1zYXQu
-b3JnLw0KDQo=
+This series add support for (async) FIFO on the transmit path
+of the PL011 UART.
 
---_000_12ff45b45c334cbd8340becc512eaf89aurigacom_
-Content-Type: text/html; charset="gb2312"
-Content-Transfer-Encoding: quoted-printable
+- First we add fifo8_peek_buf() to the fifo8 API (patches 1-3),
+- Then we massage a bit the pl011 model to ease development
+  (patches 4-11),
+- Finally we add the TX FIFO implementation using a chardev
+  front-end 'watch' callback.
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dgb2312">
-<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
-<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
-ding-left: 4pt; border-left: #800000 2px solid; } --></style>
-</head>
-<body>
-<meta content=3D"text/html; charset=3DUTF-8">
-<style type=3D"text/css" style=3D"">
-<!--
-p
-	{margin-top:0;
-	margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:#000000; font-family:Calibri,Helvetica,sans-serif">
-<p>Thanks for the example, Phillipe! It's helpful!</p>
-</div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>=A7=B0=A7=E4:</b> Philippe Ma=
-thieu-Daud=A8=A6 &lt;philmd@linaro.org&gt;<br>
-<b>=A7=B0=A7=E4=A7=E1=A7=E2=A7=D1=A7=D3=A7=DD=A7=D6=A7=DF=A7=E0:</b> 22 =A7=
-=DE=A7=D1=A7=F1 2023 =A7=D4. 16:41:53<br>
-<b>=A7=AC=A7=E0=A7=DE=A7=E5:</b> Sergey Kambalin; Kambalin, Sergey<br>
-<b>=A7=AC=A7=E0=A7=E1=A7=DA=A7=F1:</b> Peter Maydell; qemu-arm@nongnu.org; =
-qemu-devel@nongnu.org<br>
-<b>=A7=B4=A7=D6=A7=DE=A7=D1:</b> Re: [PATCH] [rpi4b] Make bootable rpi4b mo=
-del</font>
-<div>&nbsp;</div>
-</div>
-</div>
-<font size=3D"2"><span style=3D"font-size:10pt;">
-<div class=3D"PlainText">On 22/5/23 14:41, Kambalin, Sergey wrote:<br>
-<br>
-&gt;&gt; Could you please tell me what size is appropriate for a single pat=
-ch?<br>
-&gt; <br>
-&gt; The most important things for patch splitting are:<br>
-&gt;&nbsp; &nbsp;* everything still has to compile cleanly<br>
-&gt;&nbsp; &nbsp;* the contents of a single patch should be a coherent sing=
-le<br>
-&gt;&nbsp; &nbsp;&nbsp; thing that it makes sense to review in one part<br>
-&gt; <br>
-&gt; If there's something in there that only touches 20 lines of<br>
-&gt; code but is a coherent single change, it's fine to have that in<br>
-&gt; its own patch -- small patches are easy to review.<br>
-&gt; <br>
-&gt; At the upper end, I tend to think a patch is a bit big<br>
-&gt; at around 200 lines, but for the specific case of &quot;here<br>
-&gt; is a new device&quot; bigger than that is OK, because it's<br>
-&gt; just adding new files rather than merging changes into<br>
-&gt; existing ones.<br>
-&gt; <br>
-&gt; <a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-patch.h=
-tml">https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a>
-<br>
-&gt; &lt;<a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-pat=
-ch.html">https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a>=
-&gt;<br>
-&gt; has some other advice on patch submission, if you haven't<br>
-&gt; read that yet.<br>
-<br>
-FWIW example of series adding the Pi Zero:<br>
-<br>
-<a href=3D"https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f4bu=
-g@amsat.org/">https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f=
-4bug@amsat.org/</a><br>
-<br>
-</div>
-</span></font>
-</body>
-</html>
+The last patch is RFC mostly because I don't know what is the
+best way to resolve adding a new migratable field without
+breaking the migration stream.
 
---_000_12ff45b45c334cbd8340becc512eaf89aurigacom_--
+Tested with qtest/avocado/TRS test suites:
+
+ trs-workspace$ make test
+ Startup finished in 6min 40.596s (kernel) + 38.786s (userspace) = 7min 19.382s.
+ RESULTS - date.DateTest.test_date: PASSED (46.90s)
+ RESULTS - df.DfTest.test_df: PASSED (2.29s)
+ RESULTS - parselogs.ParseLogsTest.test_parselogs: PASSED (23.45s)
+ RESULTS - ping.PingTest.test_ping: PASSED (0.05s)
+ RESULTS - python.PythonTest.test_python3: PASSED (2.72s)
+ RESULTS - rtc.RTCTest.test_rtc: PASSED (51.84s)
+ RESULTS - ssh.SSHTest.test_ssh: PASSED (4.56s)
+ RESULTS - systemd.SystemdBasicTests.test_systemd_basic: PASSED (2.33s)
+ RESULTS - systemd.SystemdBasicTests.test_systemd_failed: PASSED (4.41s)
+ RESULTS - systemd.SystemdBasicTests.test_systemd_list: PASSED (30.07s)
+ RESULTS - systemd.SystemdJournalTests.test_systemd_boot_time: PASSED (2.42s)
+ RESULTS - systemd.SystemdJournalTests.test_systemd_journal: PASSED (2.62s)
+ RESULTS - systemd.SystemdServiceTests.test_systemd_disable_enable: PASSED (40.34s)
+ RESULTS - systemd.SystemdServiceTests.test_systemd_status: PASSED (2.43s)
+ RESULTS - systemd.SystemdServiceTests.test_systemd_stop_start: PASSED (9.23s)
+ RESULTS - opteetest.OpteeTestSuite.test_opteetest_xtest: PASSED (329.89s)
+ RESULTS - soafeetestsuite.SoafeeTestSuite.test_soafee: PASSED (272.07s)
+ RESULTS - tpm.TpmTestSuite.test_tpm: PASSED (53.61s)
+ RESULTS - ptest.PtestRunnerTest.test_ptestrunner_expectfail: SKIPPED (0.00s)
+ RESULTS - ptest.PtestRunnerTest.test_ptestrunner_expectsuccess: SKIPPED (0.00s)
+ RESULTS - systemd.SystemdServiceTests.test_systemd_disable_enable_ro: SKIPPED (0.00s)
+ SUMMARY:
+ trs-image () - Ran 21 tests in 883.291s
+ trs-image - OK - All required tests passed (successes=18, skipped=3, failures=0, errors=0)
+
+Philippe Mathieu-Daudé (12):
+  util/fifo8: Fix typo in fifo8_push_all() description
+  util/fifo8: Allow fifo8_pop_buf() to not populate popped length
+  util/fifo8: Introduce fifo8_peek_buf()
+  hw/char/pl011: Display register name in trace events
+  hw/char/pl011: Remove duplicated PL011_INT_[RT]X definitions
+  hw/char/pl011: Replace magic values by register field definitions
+  hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
+  hw/char/pl011: Extract pl011_write_tx() from pl011_write()
+  hw/char/pl011: Check if transmitter is enabled
+  hw/char/pl011: Check if receiver is enabled
+  hw/char/pl011: Rename RX FIFO methods
+  hw/char/pl011: Implement TX FIFO
+
+ include/hw/char/pl011.h |   2 +
+ include/qemu/fifo8.h    |  38 ++++++--
+ hw/char/pl011.c         | 209 +++++++++++++++++++++++++++++++++-------
+ util/fifo8.c            |  28 +++++-
+ hw/char/trace-events    |  12 ++-
+ 5 files changed, 239 insertions(+), 50 deletions(-)
+
+-- 
+2.38.1

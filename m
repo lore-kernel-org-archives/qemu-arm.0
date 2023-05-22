@@ -1,165 +1,236 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1215365ejb;
-        Mon, 22 May 2023 06:42:15 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ583FBYBRfVvw8uLcJl0oO3muPV+BoNJ/vexfEeOA3Vt8AmgjOgifhtWpGyVl2P3Pze7f+y
-X-Received: by 2002:a05:6214:5093:b0:625:76bb:b25e with SMTP id kk19-20020a056214509300b0062576bbb25emr8143594qvb.20.1684762935294;
-        Mon, 22 May 2023 06:42:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684762935; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1280389ejb;
+        Mon, 22 May 2023 08:21:50 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5O44KMPs9sNkS9c5SOrLw8ini1GnhasimJ6eh6yfjDaq3oXUO0fMit/d4seXhIQzdZ4OBZ
+X-Received: by 2002:ad4:5ceb:0:b0:5e8:c098:2493 with SMTP id iv11-20020ad45ceb000000b005e8c0982493mr21913803qvb.50.1684768910308;
+        Mon, 22 May 2023 08:21:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684768910; cv=none;
         d=google.com; s=arc-20160816;
-        b=miz/kGr/H0ram8olCSKqP/YJ3jcs4aYUWT/GSnF2B0nnaLu0QA3qKPrIszzeRWoub6
-         F84KNg8YqsEi09O4IrjJmS+/zzzshufiaQquTGIPa4KWxNCJ8h160Qc1SdAQAQ5L9K4A
-         5JvRFoQ4cjIyCMN6oHtoosdBTxAIzJruosDGTc8UHJMI820U7lzUQxPynIg/MLLX4Zeb
-         d1X41kZtNmmKkkmkoVDVWxK4M++uydzzRNuXi+zZx5z4Wmdt1H04j/LMmEu6qFUZlMZD
-         hKf0P+LskkOmqsqiwNgpQYaXoM0rCykSiGNXKB7zW7fMJ79yIgY2LVeaWjTFNPLsF4cK
-         QfiA==
+        b=vgGOOu/Z7b1cuWVaVGGRw7h2kclvxIeaga0+Vco1M3cZGh/OYxmHwWhyt7BiD/WiO+
+         QXGxUNlWHStW5feRwL+SIzWeRas1+xUqYT/tJHKSMe5HXPlFcO3JSKq58NSD+Bu7yp/E
+         oGZW0AhqTubEDJEu1G1bWnKoIYEFUv75RwXwv7UZtPVMb8Ush0hjOiYGPGZ+l/eIApfP
+         +XxZnjRwNdgUgE8a6gNBv71KzWLKp1vvpSEgLILGM1pKw7ib2ZvjPWzGyfvkgmbeZbtS
+         qShwX+eBdU/uBl2vNw5IbsCUaxYXnXj03hlziDN4Wd4LeKaX6UF4PH/jSU4KaF+KWshM
+         +5BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
-        b=MvN67YYx0D3imKbYp8a5n2ixh0o82i9eEQWm/89EaVxCCRRqwUV6cvSdj3zRtirVW3
-         yg50e3FLLOy6SxdBMKZv2OAcfkW8EUJuVFxat56X4u2EuKmZP9y3FWvooiN+hyatCyG/
-         6fCY9cRsYn8aJaErUk/UfC8CEyMTPx/P69tiyyaFfECrQfMGglcaaEn4isLqu0CV86rN
-         E/qzRRgNcKK25teqgbthZF/VVWip/yT4a/oaoX+teY8+gRKIpjAAtOt2lJS55lwdw8fx
-         i2oMMMsy8MD2viHzeG+l4PY9ILPNAAg3E6gRHx+nLNF+0Hq5ovUfarNZzvBkcbKzbsPH
-         QbYA==
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=9p7nmKMZnBxiCgyK0+rXDkd/Nk/6ERKDLJYV2JarmGg=;
+        b=lRI7RoJ+nlOYqt4rFpPTTtPwPT+BThpWPS6SjvVR+gxoHKvr8V8B52Je46xx4TQyLS
+         SH/WzwFvcwPF4AYugMwMf/a3BB7PmgFjVEhXkLJIfppMxlCaQT69CHcfXwV0kbd7b00B
+         HSSh1tAbtF/fP/L81HiJs5OVYl9S5T1rugWmbSup81eQMHjdb1B+L+4FiIdQBUIpaAu8
+         UKJpO1Uk7iC3C7uBt7kN+XT4imI2Y1OmAn/rfrhBD1Kd8YEJbHM20lCX6YDGk3v4ey67
+         ZSEzirbv12CXXhOen9vLWQhNnA1BCXT0vZj3F9ImMN2eYmGgIVsUOynajJNGoohOp6U0
+         p1cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f7Bn1C42;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16-20020a05622a101000b003f39171e460si3655710qte.403.2023.05.22.06.42.15
+        by mx.google.com with ESMTPS id eq15-20020ad4596f000000b0061face6e93fsi3619261qvb.404.2023.05.22.08.21.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 06:42:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 May 2023 08:21:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f7Bn1C42;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q15nX-0006ba-R8; Mon, 22 May 2023 09:42:03 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q17LX-000499-Kb; Mon, 22 May 2023 11:21:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q15nW-0006bN-Jh
- for qemu-devel@nongnu.org; Mon, 22 May 2023 09:42:02 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q15nR-0004Wq-DO
- for qemu-devel@nongnu.org; Mon, 22 May 2023 09:42:02 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-3f42c865535so61865905e9.1
- for <qemu-devel@nongnu.org>; Mon, 22 May 2023 06:41:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684762916; x=1687354916;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
- b=f7Bn1C42A+AMGuh/qIdBiu1nL3OqWeJr7d5uryJks3GLKNdUkMLTf8bI1O4RIbNG+e
- 2hiRi3w06suaNO6dpbNclt2SIzhx7pTmnA3xT2pdYBnA3I0nGilRtkIMy9r85GPf4I/p
- cDnchLs/+9iWbnrQ+BsWOWAiQL2ZCIKit6gKB2064VoIrfrdLswpjprYZPkB24G8cNTy
- aIxLzAABwxqNuewsLgkUpDOgoUsoUsLZM0kLcFiUnQ3o6y3QnuIX92vplopjgYI2N3nZ
- WVF3481RZiD5Kw+W1/yn+hsDXp9Swi22IrDK1qwNT8773/kRB90RVX7ACIXkurGigpg9
- gjjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684762916; x=1687354916;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
- b=KK/WZQ7p0y9MB8MKvz+FRvpi1Q6EcCmEGHgIahqLXMOVoXTYGdZa45umUtw9AeapeN
- bQpWT4NkiR5ddFpkW8rQz/EdzahrNIW2gIVGx1VOD1cOmJ2ofLRPDtA86NQDUc/5i+hi
- NDD2ubZhLhtbks/pPyff3Fm+XLzaS4BCQk5NDqyJUxpxIkW+SC/0Gt9g/yDmn92KeCR2
- KUyhs0TObKLzvPmjXNWpeMerhfeT3AssjuszvByCTISAHyhqnxwz4NHWV0kKHNyyiBhS
- kx4U11kgNiY8g1Q+QOWlhXM8rGKYvTiRPZH+efPRp5DUEZHfBpqzGhg/b6lV1uqOetKr
- BBKA==
-X-Gm-Message-State: AC+VfDxA5eoRrbaHe6lFZ70guiPno1K+HDzJRHujx42DaZ5zI5MB3aWD
- j7U6ul+VM8TMGAjgk7bB1SQKYw==
-X-Received: by 2002:a1c:f311:0:b0:3f4:d18f:b2fb with SMTP id
- q17-20020a1cf311000000b003f4d18fb2fbmr7770928wmq.8.1684762915822; 
- Mon, 22 May 2023 06:41:55 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.153.164])
- by smtp.gmail.com with ESMTPSA id
- m25-20020a7bcb99000000b003f195d540d9sm11706329wmi.14.2023.05.22.06.41.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 May 2023 06:41:55 -0700 (PDT)
-Message-ID: <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
-Date: Mon, 22 May 2023 15:41:53 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q17LV-00048L-0r; Mon, 22 May 2023 11:21:13 -0400
+Received: from hq-ms.auriga.com ([82.97.202.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q17LS-0007ER-Aa; Mon, 22 May 2023 11:21:12 -0400
+Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
+ hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.12; Mon, 22 May 2023 18:21:03 +0300
+Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
+ hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
+ 15.02.1258.012; Mon, 22 May 2023 18:21:03 +0300
+From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+To: =?gb2312?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkqKY=?= <philmd@linaro.org>, "Sergey
+ Kambalin" <serg.oker@gmail.com>
+CC: Peter Maydell <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
-Content-Language: en-US
-To: Sergey Kambalin <serg.oker@gmail.com>,
- "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Thread-Topic: [PATCH] [rpi4b] Make bootable rpi4b model
+Thread-Index: AQHZjJhM5s2DGZMhDE6fRKCxSTEX869l5goAgAA0A2T//9M1AIAAPGd6///VIACAAD0/pv//3tKAAAm20Kk=
+Date: Mon, 22 May 2023 15:21:03 +0000
+Message-ID: <12ff45b45c334cbd8340becc512eaf89@auriga.com>
 References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
  <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
  <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
  <CAFEAcA8bLr+_raHie4JxoEJAQ7cuj5nJKTYt5+7r6T0w8FFNsg@mail.gmail.com>
  <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>
  <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
- <672004b332154e15b14e4e96d20a23de@auriga.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <672004b332154e15b14e4e96d20a23de@auriga.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ <672004b332154e15b14e4e96d20a23de@auriga.com>,
+ <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
+In-Reply-To: <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [134.191.220.81]
+x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-as-result: No-10--19.311900-8.000000
+x-tmase-matchedrid: xOmkFxUSbL+JVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
+ DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
+ ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot6L2s
+ CeHVx5vavLMqivPPjo9ElewkZ1UEQ2ib2gFI+X3zo39wOA02Lhv/7xdLQjXSIgaqPnI+BNyB2MH
+ UpnrEwAiPTUF0vMdpHE2FTB6r9HbwcO+Ovs7EaQQQ5+hY6u+45PnKxAOPp4WdWM2x6EZ/S9InVh
+ PozbL+m/+cseRgjV48XXGI8+1x81r8SWmHOl/UsRW4LR41Fi8mlYsa84w2hTOhR0VsdhRrBO6PM
+ ltTuI3mUVI5FRUThe9el/AXqANCywquY0kEgdZxqkhv3OdF4DNQO+lFC5/FV3de2OoBqgwoKQCY
+ LmjRv992grUwQgYZdOzTDkfilYT4JYxfHyi9oJ4vM1YF6AJbYXDmF9vUz9/rDGGXOPbPCbjI5fM
+ 8fX0wmm0nvaK7VjdZXO/vat5d5TqTD/Ey87O1k2RRIMOrvjaQ==
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--19.311900-8.000000
+x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-snts-smtp: C7FCEDA10982392AC6ED3CD31848D6493928DA025B08D8B2B2F88AAAE5ABD7A52000:8
+Content-Type: multipart/alternative;
+ boundary="_000_12ff45b45c334cbd8340becc512eaf89aurigacom_"
+MIME-Version: 1.0
+Received-SPF: pass client-ip=82.97.202.32;
+ envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0hgKGpV/65AK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: r5OsQ90CUV5Y
 
-On 22/5/23 14:41, Kambalin, Sergey wrote:
+--_000_12ff45b45c334cbd8340becc512eaf89aurigacom_
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 
->> Could you please tell me what size is appropriate for a single patch?
-> 
-> The most important things for patch splitting are:
->   * everything still has to compile cleanly
->   * the contents of a single patch should be a coherent single
->     thing that it makes sense to review in one part
-> 
-> If there's something in there that only touches 20 lines of
-> code but is a coherent single change, it's fine to have that in
-> its own patch -- small patches are easy to review.
-> 
-> At the upper end, I tend to think a patch is a bit big
-> at around 200 lines, but for the specific case of "here
-> is a new device" bigger than that is OK, because it's
-> just adding new files rather than merging changes into
-> existing ones.
-> 
-> https://www.qemu.org/docs/master/devel/submitting-a-patch.html 
-> <https://www.qemu.org/docs/master/devel/submitting-a-patch.html>
-> has some other advice on patch submission, if you haven't
-> read that yet.
+VGhhbmtzIGZvciB0aGUgZXhhbXBsZSwgUGhpbGxpcGUhIEl0J3MgaGVscGZ1bCENCg0KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18NCqewp+Q6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZKim
+IDxwaGlsbWRAbGluYXJvLm9yZz4NCqewp+Sn4afip9Gn06fdp9an36fgOiAyMiCn3qfRp/EgMjAy
+MyCn1C4gMTY6NDE6NTMNCqesp+Cn3qflOiBTZXJnZXkgS2FtYmFsaW47IEthbWJhbGluLCBTZXJn
+ZXkNCqesp+Cn4afap/E6IFBldGVyIE1heWRlbGw7IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUt
+ZGV2ZWxAbm9uZ251Lm9yZw0Kp7Sn1qfep9E6IFJlOiBbUEFUQ0hdIFtycGk0Yl0gTWFrZSBib290
+YWJsZSBycGk0YiBtb2RlbA0KDQpPbiAyMi81LzIzIDE0OjQxLCBLYW1iYWxpbiwgU2VyZ2V5IHdy
+b3RlOg0KDQo+PiBDb3VsZCB5b3UgcGxlYXNlIHRlbGwgbWUgd2hhdCBzaXplIGlzIGFwcHJvcHJp
+YXRlIGZvciBhIHNpbmdsZSBwYXRjaD8NCj4NCj4gVGhlIG1vc3QgaW1wb3J0YW50IHRoaW5ncyBm
+b3IgcGF0Y2ggc3BsaXR0aW5nIGFyZToNCj4gICAqIGV2ZXJ5dGhpbmcgc3RpbGwgaGFzIHRvIGNv
+bXBpbGUgY2xlYW5seQ0KPiAgICogdGhlIGNvbnRlbnRzIG9mIGEgc2luZ2xlIHBhdGNoIHNob3Vs
+ZCBiZSBhIGNvaGVyZW50IHNpbmdsZQ0KPiAgICAgdGhpbmcgdGhhdCBpdCBtYWtlcyBzZW5zZSB0
+byByZXZpZXcgaW4gb25lIHBhcnQNCj4NCj4gSWYgdGhlcmUncyBzb21ldGhpbmcgaW4gdGhlcmUg
+dGhhdCBvbmx5IHRvdWNoZXMgMjAgbGluZXMgb2YNCj4gY29kZSBidXQgaXMgYSBjb2hlcmVudCBz
+aW5nbGUgY2hhbmdlLCBpdCdzIGZpbmUgdG8gaGF2ZSB0aGF0IGluDQo+IGl0cyBvd24gcGF0Y2gg
+LS0gc21hbGwgcGF0Y2hlcyBhcmUgZWFzeSB0byByZXZpZXcuDQo+DQo+IEF0IHRoZSB1cHBlciBl
+bmQsIEkgdGVuZCB0byB0aGluayBhIHBhdGNoIGlzIGEgYml0IGJpZw0KPiBhdCBhcm91bmQgMjAw
+IGxpbmVzLCBidXQgZm9yIHRoZSBzcGVjaWZpYyBjYXNlIG9mICJoZXJlDQo+IGlzIGEgbmV3IGRl
+dmljZSIgYmlnZ2VyIHRoYW4gdGhhdCBpcyBPSywgYmVjYXVzZSBpdCdzDQo+IGp1c3QgYWRkaW5n
+IG5ldyBmaWxlcyByYXRoZXIgdGhhbiBtZXJnaW5nIGNoYW5nZXMgaW50bw0KPiBleGlzdGluZyBv
+bmVzLg0KPg0KPiBodHRwczovL3d3dy5xZW11Lm9yZy9kb2NzL21hc3Rlci9kZXZlbC9zdWJtaXR0
+aW5nLWEtcGF0Y2guaHRtbA0KPiA8aHR0cHM6Ly93d3cucWVtdS5vcmcvZG9jcy9tYXN0ZXIvZGV2
+ZWwvc3VibWl0dGluZy1hLXBhdGNoLmh0bWw+DQo+IGhhcyBzb21lIG90aGVyIGFkdmljZSBvbiBw
+YXRjaCBzdWJtaXNzaW9uLCBpZiB5b3UgaGF2ZW4ndA0KPiByZWFkIHRoYXQgeWV0Lg0KDQpGV0lX
+IGV4YW1wbGUgb2Ygc2VyaWVzIGFkZGluZyB0aGUgUGkgWmVybzoNCg0KaHR0cHM6Ly9sb3JlLmtl
+cm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIwMTAyNDE3MDEyNy4zNTkyMTgyLTEtZjRidWdAYW1zYXQu
+b3JnLw0KDQo=
 
-FWIW example of series adding the Pi Zero:
+--_000_12ff45b45c334cbd8340becc512eaf89aurigacom_
+Content-Type: text/html; charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
 
-https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f4bug@amsat.org/
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dgb2312">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
+ding-left: 4pt; border-left: #800000 2px solid; } --></style>
+</head>
+<body>
+<meta content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css" style=3D"">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p>Thanks for the example, Phillipe! It's helpful!</p>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=A7=B0=A7=E4:</b> Philippe Ma=
+thieu-Daud=A8=A6 &lt;philmd@linaro.org&gt;<br>
+<b>=A7=B0=A7=E4=A7=E1=A7=E2=A7=D1=A7=D3=A7=DD=A7=D6=A7=DF=A7=E0:</b> 22 =A7=
+=DE=A7=D1=A7=F1 2023 =A7=D4. 16:41:53<br>
+<b>=A7=AC=A7=E0=A7=DE=A7=E5:</b> Sergey Kambalin; Kambalin, Sergey<br>
+<b>=A7=AC=A7=E0=A7=E1=A7=DA=A7=F1:</b> Peter Maydell; qemu-arm@nongnu.org; =
+qemu-devel@nongnu.org<br>
+<b>=A7=B4=A7=D6=A7=DE=A7=D1:</b> Re: [PATCH] [rpi4b] Make bootable rpi4b mo=
+del</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On 22/5/23 14:41, Kambalin, Sergey wrote:<br>
+<br>
+&gt;&gt; Could you please tell me what size is appropriate for a single pat=
+ch?<br>
+&gt; <br>
+&gt; The most important things for patch splitting are:<br>
+&gt;&nbsp; &nbsp;* everything still has to compile cleanly<br>
+&gt;&nbsp; &nbsp;* the contents of a single patch should be a coherent sing=
+le<br>
+&gt;&nbsp; &nbsp;&nbsp; thing that it makes sense to review in one part<br>
+&gt; <br>
+&gt; If there's something in there that only touches 20 lines of<br>
+&gt; code but is a coherent single change, it's fine to have that in<br>
+&gt; its own patch -- small patches are easy to review.<br>
+&gt; <br>
+&gt; At the upper end, I tend to think a patch is a bit big<br>
+&gt; at around 200 lines, but for the specific case of &quot;here<br>
+&gt; is a new device&quot; bigger than that is OK, because it's<br>
+&gt; just adding new files rather than merging changes into<br>
+&gt; existing ones.<br>
+&gt; <br>
+&gt; <a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-patch.h=
+tml">https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a>
+<br>
+&gt; &lt;<a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-pat=
+ch.html">https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a>=
+&gt;<br>
+&gt; has some other advice on patch submission, if you haven't<br>
+&gt; read that yet.<br>
+<br>
+FWIW example of series adding the Pi Zero:<br>
+<br>
+<a href=3D"https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f4bu=
+g@amsat.org/">https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f=
+4bug@amsat.org/</a><br>
+<br>
+</div>
+</span></font>
+</body>
+</html>
 
+--_000_12ff45b45c334cbd8340becc512eaf89aurigacom_--

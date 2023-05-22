@@ -1,73 +1,74 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1286404ejb;
-        Mon, 22 May 2023 08:31:47 -0700 (PDT)
-X-Received: by 2002:a1c:7911:0:b0:3f6:76e:604b with SMTP id l17-20020a1c7911000000b003f6076e604bmr1483676wme.0.1684769507479;
-        Mon, 22 May 2023 08:31:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684769507; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1286458ejb;
+        Mon, 22 May 2023 08:31:53 -0700 (PDT)
+X-Received: by 2002:a05:600c:2196:b0:3f6:580:b07d with SMTP id e22-20020a05600c219600b003f60580b07dmr2077901wme.21.1684769513087;
+        Mon, 22 May 2023 08:31:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684769513; cv=none;
         d=google.com; s=arc-20160816;
-        b=rnXmnMm3BD7LMG0bRp00YjNWfC9SdsKs3350BMRlN8htLRVDiVVuH1NN3AGGxzbHeF
-         OjlwCzd7PCVb24/+ASWp/6aeSu/JKpMkrrextfOBSSTfkDW78RGV94TZC3fchuZx64rw
-         lIG10XMSZcLHeCQBMXwQMuyzlR8G/cuxAI9Poo04JWSeJyo2bP0AqRM6hmS9IpxH9Tt0
-         PEsWibTfgTEfltBnOHylvrRuKT3Ok305oWLgCP+ZFW2AKsoq3X3PXGjHQ4nbjol25GEy
-         Z/4s89p9EpkK0OcSN6N7DZbxhhBtFYZYPuTX3xn5SjmbGt7kjUsjDXar7eFjgs1q8n6B
-         1qTQ==
+        b=zqHhi2e1juVZRJ6o1+XabqbuulxnII/AhQwJPciNMzWihvhTdpDjX3wv9ydxMArcBU
+         nj2t9j24FdcB6Lm0g4dbNfZko9q3vlEF/VMO5ZtKLYtRxUHhD23Na14+QzOxrOB0xuXo
+         dWlzahLSzSVZhcqRxLEWuaxrYOXwWNYDevckv2XKV09R0/JqLrGTc/gRDaXKSd9ffVfB
+         16Oi8DEiCw32rXeBzlEDHZAXqHPGuMfqaztqauH1+q3OErfRX4or6/XS5Xcoa3GHizxU
+         b1OfGsnH5zynMbuuAgV0rL4Fa721uAD2WKBVAMt34iQDmU0/f8qUZeqV+1gbApw2d48k
+         85+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
-        b=fh9dyonvnCHrDL6aRldp7FmdRdPrb1AD445/cn3uWVV494pWPOmCLjrUvC32LVdexl
-         NU/mBSl8dJAMkQBcjVtS7I7pbCRHsqFiJ6uf5E7aPlLndf4KEx4Z/Gw5UxueAkn+hDCu
-         n3Qw+ZLL+/yLVv2PDQ+GMx6gyDR1A3lpgvgFL5ltp9ugrn8JJl5/ZVDnuANroA3RdJqR
-         nWJ1aIy7XpCxQHSVINOb0P608rN60Vh8yJt47jtswEewlA52+E/pxtzUdWBho5kF4YAM
-         E8Lq1zmXZtQtC6jNTZD5aVBz46L8raYNC4fkl4xWQuFcvPzy6VbEtfC2ODatcfmffT5o
-         k1Gg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=glXXfgsRplQFxPF2FEdJ5asogB54RtufXxooiyPAR7A=;
+        b=J90I+PZFqdzeWKp3w9Gf0bQw8Zk2ickYJzsv/pYMa3i0FNlAO4TeBvxFO91s8xAT3h
+         cTceCn8pqkzLbSJdz1YAngbj56wXNNPb46DNb89GauiDVQIZOBTvZOdjgR9x/GhJiiiZ
+         pot0eovB7YfBp8DEY/Ew0AfvaLmICmg+GGlM6RjNkgdZlH6w/6GWsrkcYzGQ43imYlYe
+         +sb9EP0DjLihJYH2QLnSI8ud0y+4CyqNiBJqn7kIJ74xpphrfMVq8wobHW6to4Y/9GIh
+         we9gKaf5GOVTnOzFKV7vR3iEZCg9rmNuglfNzgbW58llfcJRcEZAsWimNZKGYUxUjvti
+         dCkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ls+YTqEi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N0ERuWsL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l16-20020a7bc450000000b003f09f293d24sor1721890wmi.3.2023.05.22.08.31.47
+        by mx.google.com with SMTPS id v4-20020a05600c214400b003f49a8325acsor1174522wml.4.2023.05.22.08.31.53
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+        Mon, 22 May 2023 08:31:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ls+YTqEi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N0ERuWsL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684769507; x=1687361507;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
-        b=Ls+YTqEiXNT1nvjLPQxPfMv9S5eAVqJSNAlaIst4auvrLVJ+PGfJ9b8XWD+DU7/sIR
-         wVw7kmV24VNxMAVUsIaW7JwVDAoK7DfCvNCYJrIfW0l6ceb/e0TK9ijR5b1O1DuP1B6l
-         GDbc7ZhQhPpW1/HeKKqmmnOk7VaAAD3ToNZl1tN+lPsPCr4NKLSQICo/FmgcwLn4rSn4
-         9QTb9vaxZkY40Su9eEVhdXCXSPBoxlGdHbB0aYOgqNX9WnTVYmHjQK5EcDQlTOiPwKDl
-         a3BFxYZSuTzvql9VkStkSMRnC4OAcTuKzXJm1DRhyuj9sKI0czdm+gThjC18tQNKjNLz
-         +4yQ==
+        d=linaro.org; s=google; t=1684769513; x=1687361513;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=glXXfgsRplQFxPF2FEdJ5asogB54RtufXxooiyPAR7A=;
+        b=N0ERuWsLU6iXzOmNBKOlOpg4dVkGIjpNumO8nlBuo/g3l/21CGfmxDKG1N7GJHIODC
+         xCjmdmKdHuOGQoAkqrhwNkOM6uT88izAuP3FNvvfanq3672NomTXUdILkhUxwC0a/sp9
+         pn9WJZchyTXwhmGPVJMVCOhemcgIzwWs6X8tVscCiw12/7/1QLhGqWtV/rlzRdmkZsDL
+         K54krVxaFq8L9I28MWlWWq+S0m9wjStStKhVHGEc+Xuroh0ag4vwadyLsW7JN0s/tFFZ
+         /HbGaIxvd+PaBTr+bRLhP/UN7MdfhJW7lvLzTZSuiui4WalCkBefKzxfbp8TjbkbFBME
+         0YBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684769507; x=1687361507;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/wKkfjSufx3DW+zYa0E7GEJz1aH+QHJBoM2dYSQDuDM=;
-        b=MZVfm14atRM4CFaUP8gAeql76pEAP5RB+X+t0w3PZXMCet42TPx1Le4kpQLxEI95IL
-         o1LfTfIxJSrI76R71qtsYSa+V+qBlu279ZURPB+qn26W/QVk4pK95p24xHToU08kzC7J
-         3+coptUPHNEw2hYYglF8vNMCgH7TtcHvqLQH5sqrhm9z/pi2xuCzkiUiQqtxPOqldFIK
-         33DVUwfjnD0wjlVnKSrWI8aCK41Cnop488qMNO/SryBFnnWN8zW5JEWyb1Ls8P8ySX63
-         rzgcUSLPSgXMfhn6iZs3o+FkGoIK0nk2LEWvIPSYK+S8yaBlx43qPoA4Kfq60GAH8jF8
-         7yhg==
-X-Gm-Message-State: AC+VfDwxv1MKBAfIHirr3115xB4M0sUSOuj62CfDoW7kTrESDLopyySZ
-	NO5pNGD8q/DaG5KH9/S6ovCl7sYq
-X-Google-Smtp-Source: ACHHUZ40xk9g4Wq4zxmi/h1i1cAfDWib/ppaY5zlVyrnf6jwRFrWXtLjAk/JCe/7rmNUQ2oeqp1S9w==
-X-Received: by 2002:a1c:f710:0:b0:3f5:146a:c79d with SMTP id v16-20020a1cf710000000b003f5146ac79dmr7210395wmh.15.1684769507111;
-        Mon, 22 May 2023 08:31:47 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1684769513; x=1687361513;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=glXXfgsRplQFxPF2FEdJ5asogB54RtufXxooiyPAR7A=;
+        b=KLsKkDGJQja9WZgF2ZNWKcNki0PTXm88Im7PGSn2epex2kHGKExtVwyxHFmnPp+OOL
+         TnqTWDKh5Bv2ijipJ1FAuV6JRGC07Y9M1wu62PwP8tgyXa+heMtmcIF1B0+2omxwWmqt
+         N/yaAVM52PL3EVMcgx+M5xYvhxnB1YickC54dw7H4qcV6id3qR/5YTGyQZ8t4+O0oDgO
+         QRh3FYZII+f2+FIvMSDhJmxsE7bZ/fmX9XcfS2SDdW/LLig5Q2SKldPwuiCz4zYMKFwT
+         zA34dH31HcdmCBmkQS6u8/0D82j/2JXCqMxO5E7HA72c6USN3QkG00+vJOPfNMnzYLVo
+         Aj5A==
+X-Gm-Message-State: AC+VfDyrzwjvT0N5/8ZAhl8c/pfuT0vui47fZ9XTnWfd7fMokYQ2y2lI
+	fIMRZ7fa6yzTvQ83eTPPAbTHiEkE
+X-Google-Smtp-Source: ACHHUZ76Trc8v9vEFbD2AWUKqFB0luBfRmsTYpHZPG+DYF4hzmK1sSjy1HfwK+v4/lpt1CFMe8JjBg==
+X-Received: by 2002:a05:600c:220d:b0:3f6:3bc:8562 with SMTP id z13-20020a05600c220d00b003f603bc8562mr3097333wml.1.1684769512764;
+        Mon, 22 May 2023 08:31:52 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain ([176.176.153.164])
-        by smtp.gmail.com with ESMTPSA id j15-20020a5d464f000000b00307d58b3da9sm8056538wrs.25.2023.05.22.08.31.45
+        by smtp.gmail.com with ESMTPSA id f15-20020a7bcd0f000000b003f0aefcc457sm11845054wmj.45.2023.05.22.08.31.51
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 22 May 2023 08:31:46 -0700 (PDT)
+        Mon, 22 May 2023 08:31:52 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -76,81 +77,35 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mikko Rapeli <mikko.rapeli@linaro.org>
-Subject: [PATCH 00/12] hw/char/pl011: Implement TX (async) FIFO to avoid blocking the main loop
-Date: Mon, 22 May 2023 17:31:32 +0200
-Message-Id: <20230522153144.30610-1-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 01/12] util/fifo8: Fix typo in fifo8_push_all() description
+Date: Mon, 22 May 2023 17:31:33 +0200
+Message-Id: <20230522153144.30610-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230522153144.30610-1-philmd@linaro.org>
+References: <20230522153144.30610-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Hrve6C9FLa02
+X-TUID: /nFZRMkAxwJN
 
-Hi,
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/qemu/fifo8.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This series add support for (async) FIFO on the transmit path
-of the PL011 UART.
-
-- First we add fifo8_peek_buf() to the fifo8 API (patches 1-3),
-- Then we massage a bit the pl011 model to ease development
-  (patches 4-11),
-- Finally we add the TX FIFO implementation using a chardev
-  front-end 'watch' callback.
-
-The last patch is RFC mostly because I don't know what is the
-best way to resolve adding a new migratable field without
-breaking the migration stream.
-
-Tested with qtest/avocado/TRS test suites:
-
- trs-workspace$ make test
- Startup finished in 6min 40.596s (kernel) + 38.786s (userspace) = 7min 19.382s.
- RESULTS - date.DateTest.test_date: PASSED (46.90s)
- RESULTS - df.DfTest.test_df: PASSED (2.29s)
- RESULTS - parselogs.ParseLogsTest.test_parselogs: PASSED (23.45s)
- RESULTS - ping.PingTest.test_ping: PASSED (0.05s)
- RESULTS - python.PythonTest.test_python3: PASSED (2.72s)
- RESULTS - rtc.RTCTest.test_rtc: PASSED (51.84s)
- RESULTS - ssh.SSHTest.test_ssh: PASSED (4.56s)
- RESULTS - systemd.SystemdBasicTests.test_systemd_basic: PASSED (2.33s)
- RESULTS - systemd.SystemdBasicTests.test_systemd_failed: PASSED (4.41s)
- RESULTS - systemd.SystemdBasicTests.test_systemd_list: PASSED (30.07s)
- RESULTS - systemd.SystemdJournalTests.test_systemd_boot_time: PASSED (2.42s)
- RESULTS - systemd.SystemdJournalTests.test_systemd_journal: PASSED (2.62s)
- RESULTS - systemd.SystemdServiceTests.test_systemd_disable_enable: PASSED (40.34s)
- RESULTS - systemd.SystemdServiceTests.test_systemd_status: PASSED (2.43s)
- RESULTS - systemd.SystemdServiceTests.test_systemd_stop_start: PASSED (9.23s)
- RESULTS - opteetest.OpteeTestSuite.test_opteetest_xtest: PASSED (329.89s)
- RESULTS - soafeetestsuite.SoafeeTestSuite.test_soafee: PASSED (272.07s)
- RESULTS - tpm.TpmTestSuite.test_tpm: PASSED (53.61s)
- RESULTS - ptest.PtestRunnerTest.test_ptestrunner_expectfail: SKIPPED (0.00s)
- RESULTS - ptest.PtestRunnerTest.test_ptestrunner_expectsuccess: SKIPPED (0.00s)
- RESULTS - systemd.SystemdServiceTests.test_systemd_disable_enable_ro: SKIPPED (0.00s)
- SUMMARY:
- trs-image () - Ran 21 tests in 883.291s
- trs-image - OK - All required tests passed (successes=18, skipped=3, failures=0, errors=0)
-
-Philippe Mathieu-Daudé (12):
-  util/fifo8: Fix typo in fifo8_push_all() description
-  util/fifo8: Allow fifo8_pop_buf() to not populate popped length
-  util/fifo8: Introduce fifo8_peek_buf()
-  hw/char/pl011: Display register name in trace events
-  hw/char/pl011: Remove duplicated PL011_INT_[RT]X definitions
-  hw/char/pl011: Replace magic values by register field definitions
-  hw/char/pl011: Split RX/TX path of pl011_reset_fifo()
-  hw/char/pl011: Extract pl011_write_tx() from pl011_write()
-  hw/char/pl011: Check if transmitter is enabled
-  hw/char/pl011: Check if receiver is enabled
-  hw/char/pl011: Rename RX FIFO methods
-  hw/char/pl011: Implement TX FIFO
-
- include/hw/char/pl011.h |   2 +
- include/qemu/fifo8.h    |  38 ++++++--
- hw/char/pl011.c         | 209 +++++++++++++++++++++++++++++++++-------
- util/fifo8.c            |  28 +++++-
- hw/char/trace-events    |  12 ++-
- 5 files changed, 239 insertions(+), 50 deletions(-)
-
+diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
+index 28bf2cee57..16be02f361 100644
+--- a/include/qemu/fifo8.h
++++ b/include/qemu/fifo8.h
+@@ -46,7 +46,7 @@ void fifo8_push(Fifo8 *fifo, uint8_t data);
+  * fifo8_push_all:
+  * @fifo: FIFO to push to
+  * @data: data to push
+- * @size: number of bytes to push
++ * @num: number of bytes to push
+  *
+  * Push a byte array to the FIFO. Behaviour is undefined if the FIFO is full.
+  * Clients are responsible for checking the space left in the FIFO using
 -- 
 2.38.1

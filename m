@@ -1,332 +1,306 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1287213ejb;
-        Mon, 22 May 2023 08:32:55 -0700 (PDT)
-X-Received: by 2002:a7b:c450:0:b0:3f4:2bb3:a5c9 with SMTP id l16-20020a7bc450000000b003f42bb3a5c9mr8465824wmi.8.1684769575335;
-        Mon, 22 May 2023 08:32:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684769575; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1290983ejb;
+        Mon, 22 May 2023 08:39:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5zmUSwDO/d7+rI1FYgkkShg9JMXZGwf8L4SBC9i4mNNIj3VKCZbfGrn1bifsvfycgDHEXG
+X-Received: by 2002:a05:622a:11cb:b0:3f2:2fb1:dc71 with SMTP id n11-20020a05622a11cb00b003f22fb1dc71mr20729073qtk.41.1684769945650;
+        Mon, 22 May 2023 08:39:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684769945; cv=none;
         d=google.com; s=arc-20160816;
-        b=b0N8s16wHls3zW7flcZX5loNzbxRNbYci7CR2hEi2srwRyN5WL2wgXsvlBBTg155g+
-         1GegZTWHVC8YGWpZcLcvhIJeADgHFOL0QbfdffU6dnOFpD4dmp7FOyQCvu03MH+yly98
-         hKzlZSOP+ICTFHyaY5vb5tadBhx4Rp7PzMh+g6/k0TTI2xKw9FjvAxg4l/vaWFw+tL4x
-         sMj7ItIsa1bTVAkSd9Y3zcxpdP5+WVxc/T/eTOd+1i+i2aToLeWaSxYsTf/gfo+tDpae
-         Rnbv+g2bl06ShZY6sHwDdd29PO5OtFKg5MRyovlXHa+J/NJzOMaoVVUxQWJ2c1Bc5Vpu
-         wiiA==
+        b=ZLjXH4QLvbVchk4Jy94MmfUoWUmsz/EtI4d//nApdSUwavx8nXuXaMRDK8a2U6dndB
+         cSQKuV71mR9y9mHRj4BBp/xbsJYcrN6NfcRZ5anA/3mdd5VMBbXGul6nYGArzzcY0Bvr
+         qLvCKyU0eaNssW4kI6/nTfpKMcrtK1n0onBeACBwJMIKXiLkkd0IxdBNnP1+FEanqqzX
+         PCFpNX4QaCIKrM/vXp7Sm9h4hRBb/sFzTT34sjm57E2Li8iSV154oM5eivkRmS4+ngHu
+         1aLRPNA+Z++DnHqV4UDJUOPeJKYXxNiajdeUcIVHKwFLOzLJuQrTcL0swhztvziw30VH
+         jlPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=lE3AFLRBDeHmAd75tRobhpSnEmgT2M+g2etmHg9JWDI=;
-        b=sL1ni22Z+RO7xXzWWMEIcxv5bRqQy48BGNIAXcQNY/IoVNVJ/uCVd5KUiDVi6hmBL6
-         RG6e7DwZlOKlpPL8t5zssHAy0yOLN16ztqNd7zy+kN/LcWEDtMdIMLKt63R3lgCSdSe2
-         0seVM/z1frvzhJQb8wHAz/G24egU6G2Aou8n0f6oy7+WpbHM1mHkFy4WuQNCJJ4vgbYn
-         lKe1j55+rcDybd19LRrmD2+QpvXcKygfJh1cdN0KJbJA/KDOJ1bNfUK6+bPgVCUWSPe0
-         K/R8jLlVQbSImIcShQKjPmg+sZrRTom6Wgw8WpKw8yk3rEk5JL41mNG27CbrlCPYNkt8
-         +FrA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=OaHuNH8YMqerG3tPtfLbpnSUfPoxE2DNVQJyJ1zGnlg=;
+        b=Uab8L/z3jNJDzFFPlhT0/y5k52fDqzuy/Np/fgJlqc5ouS2mbyX9pk3fgN4E6mbAyB
+         mF/JAi2/BUUc4h5O5u7PV9Ov5LOSF1io4FuBLSiMDDM0Lqoy4z3VBSnX8zBbpHiohc8/
+         IZtOTVyxve2iXCBqT4huPND/k+Xbc9yLUma/ebS0Zc8QHelMTNbFNZDshxBBZGnLo4WR
+         anfgU6SWoaoirCsWPKECvEl0lHC2f9fanIx0DscUI+XIOV95ggrd+yQTpfOZLQ4oqCnD
+         lgGVKc3tnQcdSa/VfZAZ2uYj50EmCVrW5/EWMlneAHW8MKNv6B8IEvoih+5NwMSczcDQ
+         cBYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q9nke18z;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g3-20020a7bc4c3000000b003f42d8dd7f8sor1240226wmk.8.2023.05.22.08.32.55
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dif+rtTN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 16-20020ac85910000000b003e4e85115casi3859024qty.679.2023.05.22.08.39.05
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 22 May 2023 08:32:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 May 2023 08:39:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=q9nke18z;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1684769575; x=1687361575;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lE3AFLRBDeHmAd75tRobhpSnEmgT2M+g2etmHg9JWDI=;
-        b=q9nke18z0/+Mg9Q+nIwUINvI+Yse7bF2z1947OEzoTG6vk5SHi95KEIBqw0TvQe6jS
-         XKhcRyQ83B7ClLUigsD+gZa9JqHpC6tQNnaf801rZni4UaPbJIj3ENK9aY4ztv1Il4RJ
-         1d4eqYP5pkX/7yn3oodHvzzPgY0Nhp+6ge+AEYD3kYcLDb8eKIYSKDBNTzdnA+1C2E4i
-         AhgDDRR6bjr9Anw2b3rSn0Q0dDCKYtHn1y9c4gCJJH+8/1kpNhPHSjePq0MTmYwiNAeY
-         AoG2FSksrIyFC0IEfQwlB3HNTfcp105k4zXS7ZJDuAS70Blsnk31qJUbuUlWkfWN3Gc5
-         1VrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684769575; x=1687361575;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lE3AFLRBDeHmAd75tRobhpSnEmgT2M+g2etmHg9JWDI=;
-        b=Mk7WdmYMbMq/hdx1bQ9vCXF4vFTI9cN0qlGRgdp/BEahwBLkhxbfFOq8QcNQfxLKrw
-         9sSdVHYUJ6qndsiDfR9km7GK/zYbLJa9WIJKKLjEmiYT5+4JR2/EYPynE8vK0+uIQ1sB
-         kCghTcTjqq+ja0fwT9CONx3Xg+7qSwWyoNOEXi8JyzNXMim4YaTTz3SwJbmXuPXqNctj
-         ANt9n+31wmBWgeI+bdtKSOyANNAd0/j9nmxkQRgsjEYhl7Cfl88P4FT8awUHF0+1tXd5
-         4sRw3GhCTWrRdDtuOKzZiCH1ROWndieoLd50wt/vKTKZRBANI8RHT2g2D7Hzy4Q7fPyU
-         anOg==
-X-Gm-Message-State: AC+VfDxstEAodfXDNt8jgrtmy2fQrAEPl0btKPdHs2DkZPBL2nDZoPE3
-	T6e3VvbCp3hWoPrXe1JKaggk1dHc
-X-Google-Smtp-Source: ACHHUZ5iOb7zJShU7RpQ6rQOYLEt2EVDHtUK9BII9rZfcgbH/iITSg5pZMQA0r1BgbZsNqhAYxfunw==
-X-Received: by 2002:a7b:c390:0:b0:3f4:2805:c3a with SMTP id s16-20020a7bc390000000b003f428050c3amr8063059wmj.21.1684769574891;
-        Mon, 22 May 2023 08:32:54 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain ([176.176.153.164])
-        by smtp.gmail.com with ESMTPSA id o3-20020a05600c378300b003f4f8cc4285sm8674869wmr.17.2023.05.22.08.32.53
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 22 May 2023 08:32:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mikko Rapeli <mikko.rapeli@linaro.org>
-Subject: [PATCH 12/12] hw/char/pl011: Implement TX FIFO
-Date: Mon, 22 May 2023 17:31:44 +0200
-Message-Id: <20230522153144.30610-13-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230522153144.30610-1-philmd@linaro.org>
-References: <20230522153144.30610-1-philmd@linaro.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dif+rtTN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q17ce-0001fx-GX; Mon, 22 May 2023 11:38:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q17cc-0001e3-5y
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 11:38:54 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q17ca-0002jn-B7
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 11:38:53 -0400
+Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34MFP7WN015021; Mon, 22 May 2023 15:38:46 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=OaHuNH8YMqerG3tPtfLbpnSUfPoxE2DNVQJyJ1zGnlg=;
+ b=dif+rtTNHB3JTANrKc/tmSmctO66YxYToqTzOv0gvHpD8uF/dlErjpatxcMebCeA+1Lu
+ sMN39rX5OZLCl3NKXFUtntMkhrn/d8FoRNuQC+K7Ye+wR67S04lysqdWKLTkQvWeb+z3
+ QAJXIDjBRl+hcqzzeUgDk7ZY14IYO4lkoBoBOCaKEI/vApxfs2fABMwjY1HxuG5dyMtE
+ 3pl3izCLtpgyo7+tAXVJaN+Smwju5csNoG1q6PFsuBfDH7KX4qvwj0VW/JH4C1XnQJ90
+ 1YqYoJ4OC7pFLtzFqbyoIheHsZPC12+NHtXgteG7ik0gOsH/i0LhfRa1ZNM4TT+Ho059 Ig== 
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
+ [169.55.85.253])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qr9x2kph7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 22 May 2023 15:38:45 +0000
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+ by ppma01wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34ME1K4o018060;
+ Mon, 22 May 2023 15:38:45 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([9.208.129.120])
+ by ppma01wdc.us.ibm.com (PPS) with ESMTPS id 3qppdqaxgd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 22 May 2023 15:38:45 +0000
+Received: from smtpav03.wdc07v.mail.ibm.com (smtpav03.wdc07v.mail.ibm.com
+ [10.39.53.230])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 34MFchOw63963582
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 22 May 2023 15:38:43 GMT
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8DCD558066;
+ Mon, 22 May 2023 15:38:43 +0000 (GMT)
+Received: from smtpav03.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 195F858062;
+ Mon, 22 May 2023 15:38:43 +0000 (GMT)
+Received: from [9.163.56.240] (unknown [9.163.56.240])
+ by smtpav03.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 22 May 2023 15:38:43 +0000 (GMT)
+Message-ID: <516bc36b-a314-737b-d566-d0d0733a986d@linux.vnet.ibm.com>
+Date: Mon, 22 May 2023 10:38:42 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH v1 1/1] Add vpd data for Rainier machine
+Content-Language: en-US
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Ninad Palsule <ninad@linux.ibm.com>, peter.maydell@linaro.org,
+ andrew@aj.id.au, qemu-arm@nongnu.org, joe@jms.id.au
+Cc: Ninad Palsule <ninadpalsule@us.ibm.com>
+References: <20230519212412.3362107-1-ninad@linux.ibm.com>
+ <20230519212412.3362107-2-ninad@linux.ibm.com>
+ <c44cb708-2494-fedf-da79-892f34f8a747@kaod.org>
+From: Ninad Palsule <ninad@linux.vnet.ibm.com>
+In-Reply-To: <c44cb708-2494-fedf-da79-892f34f8a747@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: WCu+oGxv6X9K
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: x1g1Gp0c5_LmIOtpP03y3UEZ7lS8PwwX
+X-Proofpoint-ORIG-GUID: x1g1Gp0c5_LmIOtpP03y3UEZ7lS8PwwX
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-05-22_10,2023-05-22_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 malwarescore=0
+ clxscore=1015 bulkscore=0 phishscore=0 adultscore=0 impostorscore=0
+ priorityscore=1501 mlxscore=0 mlxlogscore=999 spamscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305220130
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=ninad@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 51p+jCVKgUEA
 
-If the UART back-end chardev doesn't drain data as fast as stdout
-does or blocks, buffer in the TX FIFO to try again later.
+Hello Cedric,
 
-This avoids having the IO-thread busy waiting on chardev back-ends,
-reported recently when testing the Trusted Reference Stack and
-using the socket backend:
-https://linaro.atlassian.net/browse/TRS-149?focusedCommentId=149574
-
-Implement registering a front-end 'watch' callback on back-end
-events, so we can resume transmitting when the back-end is writable
-again, not blocking the main loop.
-
-Similarly to the RX FIFO path, FIFO level selection is not
-implemented (interrupt is triggered when a single byte is available
-in the FIFO).
-
-Due to the addition of the TX FIFO in the instance state, increase
-the migration stream version.
-
-Reported-by: Mikko Rapeli <mikko.rapeli@linaro.org>
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-RFC because I'm pretty sure I got the migration code wrong.
-
-After writing this I noticed the hw/char/cmsdk-apb-uart.c model
-is much more complete. Instead of copy/pasting its code, I'd rather
-try to extract some generic/bstract "FIFO based chardev" QOM class;
-but this is beyond the scope of this series.
----
- include/hw/char/pl011.h |   2 +
- hw/char/pl011.c         | 105 +++++++++++++++++++++++++++++++++++++---
- hw/char/trace-events    |   4 ++
- 3 files changed, 105 insertions(+), 6 deletions(-)
-
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index d853802132..20898f43a6 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -18,6 +18,7 @@
- #include "hw/sysbus.h"
- #include "chardev/char-fe.h"
- #include "qom/object.h"
-+#include "qemu/fifo8.h"
- 
- #define TYPE_PL011 "pl011"
- OBJECT_DECLARE_SIMPLE_TYPE(PL011State, PL011)
-@@ -53,6 +54,7 @@ struct PL011State {
-     Clock *clk;
-     bool migrate_clk;
-     const unsigned char *id;
-+    Fifo8 xmit_fifo;
- };
- 
- DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr);
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 03c006199e..a957138405 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -57,6 +57,9 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- /* Data Register, UARTDR */
- #define DR_BE   (1 << 10)
- 
-+/* Receive Status Register/Error Clear Register, UARTRSR/UARTECR */
-+#define RSR_OE  (1 << 3)
-+
- /* Interrupt status bits in UARTRIS, UARTMIS, UARTIMSC */
- #define INT_OE (1 << 10)
- #define INT_BE (1 << 9)
-@@ -152,19 +155,94 @@ static inline void pl011_reset_tx_fifo(PL011State *s)
-     /* Reset FIFO flags */
-     s->flags &= ~PL011_FLAG_TXFF;
-     s->flags |= PL011_FLAG_TXFE;
-+
-+    fifo8_reset(&s->xmit_fifo);
-+}
-+
-+static gboolean pl011_drain_tx(PL011State *s)
-+{
-+    trace_pl011_fifo_tx_drain(fifo8_num_used(&s->xmit_fifo));
-+    pl011_reset_tx_fifo(s);
-+    s->rsr &= ~RSR_OE;
-+    return FALSE;
-+}
-+
-+static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
-+{
-+    PL011State *s = opaque;
-+    int ret;
-+    const uint8_t *buf;
-+    uint32_t buflen;
-+    uint32_t count;
-+
-+    if (!qemu_chr_fe_backend_connected(&s->chr)) {
-+        /* Instant drain the fifo when there's no back-end */
-+        return pl011_drain_tx(s);
-+    }
-+
-+    count = fifo8_num_used(&s->xmit_fifo);
-+    if (!count) {
-+        return FALSE;
-+    }
-+    if  (!(s->cr & CR_UARTEN)) {
-+        /* Allow completing the current FIFO character before stopping. */
-+        count = 1;
-+    }
-+
-+    /* Transmit as much data as we can */
-+    buf = fifo8_peek_buf(&s->xmit_fifo, count, &buflen);
-+    ret = qemu_chr_fe_write(&s->chr, buf, buflen);
-+    if (ret >= 0) {
-+        /* Pop the data we could transmit */
-+        trace_pl011_fifo_tx_xmit(ret);
-+        fifo8_pop_buf(&s->xmit_fifo, ret, NULL);
-+        s->int_level |= INT_TX;
-+    }
-+
-+    if ((s->cr & CR_UARTEN) && !fifo8_is_empty(&s->xmit_fifo)) {
-+        /* Reschedule another transmission if we couldn't transmit all */
-+        guint r = qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP,
-+                                        pl011_xmit, s);
-+        if (!r) {
-+            return pl011_drain_tx(s);
-+        }
-+    }
-+
-+    pl011_update(s);
-+
-+    return FALSE;
- }
- 
- static void pl011_write_tx(PL011State *s, const uint8_t *buf, int length)
- {
-     if (!(s->cr & (CR_UARTEN | CR_TXE))) {
-+        if (!fifo8_is_empty(&s->xmit_fifo)) {
-+            /*
-+             * If the UART is disabled in the middle of transmission
-+             * or reception, it completes the current character before
-+             * stopping.
-+             */
-+            pl011_xmit(NULL, G_IO_OUT, s);
-+        }
-         return;
-     }
- 
--    /* XXX this blocks entire thread. Rewrite to use
--     * qemu_chr_fe_write and background I/O callbacks */
--    qemu_chr_fe_write_all(&s->chr, buf, 1);
--    s->int_level |= INT_TX;
--    pl011_update(s);
-+    if (length > fifo8_num_free(&s->xmit_fifo)) {
-+        /*
-+         * The FIFO contents remain valid because no more data is
-+         * written when the FIFO is full, only the contents of the
-+         * shift register are overwritten. The CPU must now read
-+         * the data, to empty the FIFO.
-+         */
-+        trace_pl011_fifo_tx_overrun();
-+        s->rsr |= RSR_OE;
-+        return;
-+    }
-+
-+    trace_pl011_fifo_tx_put(length);
-+    fifo8_push_all(&s->xmit_fifo, buf, length);
-+
-+    pl011_xmit(NULL, G_IO_OUT, s);
- }
- 
- static uint64_t pl011_read(void *opaque, hwaddr offset,
-@@ -444,12 +522,17 @@ static int pl011_post_load(void *opaque, int version_id)
-         s->read_pos = 0;
-     }
- 
-+    if (version_id >= 3 && !fifo8_is_empty(&s->xmit_fifo)) {
-+        /* Reschedule another transmission */
-+        qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP, pl011_xmit, s);
-+    }
-+
-     return 0;
- }
- 
- static const VMStateDescription vmstate_pl011 = {
-     .name = "pl011",
--    .version_id = 2,
-+    .version_id = 3,
-     .minimum_version_id = 2,
-     .post_load = pl011_post_load,
-     .fields = (VMStateField[]) {
-@@ -462,6 +545,7 @@ static const VMStateDescription vmstate_pl011 = {
-         VMSTATE_UINT32(int_enabled, PL011State),
-         VMSTATE_UINT32(int_level, PL011State),
-         VMSTATE_UINT32_ARRAY(read_fifo, PL011State, PL011_FIFO_DEPTH),
-+        VMSTATE_FIFO8(xmit_fifo, PL011State),
-         VMSTATE_UINT32(ilpr, PL011State),
-         VMSTATE_UINT32(ibrd, PL011State),
-         VMSTATE_UINT32(fbrd, PL011State),
-@@ -505,10 +589,18 @@ static void pl011_realize(DeviceState *dev, Error **errp)
- {
-     PL011State *s = PL011(dev);
- 
-+    fifo8_create(&s->xmit_fifo, PL011_FIFO_DEPTH);
-     qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
-                              pl011_event, NULL, s, NULL, true);
- }
- 
-+static void pl011_unrealize(DeviceState *dev)
-+{
-+    PL011State *s = PL011(dev);
-+
-+    fifo8_destroy(&s->xmit_fifo);
-+}
-+
- static void pl011_reset(DeviceState *dev)
- {
-     PL011State *s = PL011(dev);
-@@ -534,6 +626,7 @@ static void pl011_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     dc->realize = pl011_realize;
-+    dc->unrealize = pl011_unrealize;
-     dc->reset = pl011_reset;
-     dc->vmsd = &vmstate_pl011;
-     device_class_set_props(dc, pl011_properties);
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 9fd40e3aae..4c25564066 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -60,6 +60,10 @@ pl011_write(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x val
- pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_count %d returning %d"
- pl011_fifo_rx_put(uint32_t c, int read_count) "new char 0x%02x read_count now %d"
- pl011_fifo_rx_full(void) "RX FIFO now full, RXFF set"
-+pl011_fifo_tx_put(int count) "TX FIFO push %d"
-+pl011_fifo_tx_xmit(int count) "TX FIFO pop %d"
-+pl011_fifo_tx_overrun(void) "TX FIFO overrun"
-+pl011_fifo_tx_drain(unsigned drained) "TX FIFO draining %u"
- pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t ibrd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32 ", fbrd: %" PRIu32 ")"
- 
- # cmsdk-apb-uart.c
--- 
-2.38.1
+On 5/22/23 4:52 AM, Cédric Le Goater wrote:
+> Hello Ninad,
+>
+> On 5/19/23 23:24, Ninad Palsule wrote:
+>> From: Ninad Palsule <ninadpalsule@us.ibm.com>
+>>
+>> The VPD data is added for system and BMC FRU. This data is fabricated.
+>>
+>> Tested:
+>>     - The system-vpd.service is active.
+>>     - VPD service related to bmc is active.
+>> Signed-off-by: Ninad Palsule <ninadpalsule@us.ibm.com>
+>
+> Could you please resend a v2 copying qemu-devel@ as Peter pointed out ?
+Sorry about that. I have sent the V2.
+>
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>
+> Thanks,
+>
+> C.
+>
+>
+>> ---
+>>   hw/arm/aspeed.c        |  6 ++++--
+>>   hw/arm/aspeed_eeprom.c | 45 +++++++++++++++++++++++++++++++++++++++++-
+>>   hw/arm/aspeed_eeprom.h |  5 +++++
+>>   3 files changed, 53 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index 0b29028fe1..bfc2070bd2 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -788,8 +788,10 @@ static void 
+>> rainier_bmc_i2c_init(AspeedMachineState *bmc)
+>>                        0x48);
+>> i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
+>>                        0x4a);
+>> -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * 
+>> KiB);
+>> -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * 
+>> KiB);
+>> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
+>> +                          64 * KiB, rainier_bb_fruid, 
+>> rainier_bb_fruid_len);
+>> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
+>> +                          64 * KiB, rainier_bmc_fruid, 
+>> rainier_bmc_fruid_len);
+>>       create_pca9552(soc, 8, 0x60);
+>>       create_pca9552(soc, 8, 0x61);
+>>       /* Bus 8: ucd90320@11 */
+>> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+>> index dc33a88a54..ace5266cec 100644
+>> --- a/hw/arm/aspeed_eeprom.c
+>> +++ b/hw/arm/aspeed_eeprom.c
+>> @@ -119,9 +119,52 @@ const uint8_t yosemitev2_bmc_fruid[] = {
+>>       0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+>>   };
+>>   +const uint8_t rainier_bb_fruid[] = {
+>> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+>> 0x00, 0x84,
+>> +    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 
+>> 0x44, 0x02,
+>> +    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 
+>> 0x00, 0x37,
+>> +    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 
+>> 0x00, 0x00,
+>> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 
+>> 0x52, 0x54,
+>> +    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 
+>> 0x4e, 0x49,
+>> +    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 
+>> 0x56, 0x53,
+>> +    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 
+>> 0x00, 0x00,
+>> +    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 
+>> 0x00, 0x00,
+>> +    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 
+>> 0x19, 0x00,
+>> +    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 
+>> 0x36, 0x00,
+>> +    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 
+>> 0x44, 0x45,
+>> +    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 
+>> 0x33, 0x34,
+>> +    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 
+>> 0x4e, 0x04,
+>> +    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 
+>> 0x39, 0x50,
+>> +    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 
+>> 0x52, 0x54,
+>> +    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 
+>> 0x4d, 0x53,
+>> +    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 
+>> 0x2d, 0x32,
+>> +    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 
+>> 0x00, 0x23,
+>> +    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 
+>> 0x07, 0x31,
+>> +    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 
+>> 0x31, 0x31,
+>> +    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 
+>> 0x00, 0x00,
+>> +    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 
+>> 0x50, 0x49,
+>> +    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 
+>> 0x00, 0x00,
+>> +    0x00, 0x00,
+>> +};
+>> +
+>> +/* Rainier BMC FRU */
+>> +const uint8_t rainier_bmc_fruid[] = {
+>> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+>> 0x00, 0x84,
+>> +    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 
+>> 0x44, 0x02,
+>> +    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 
+>> 0x00, 0x37,
+>> +    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 
+>> 0x00, 0x00,
+>> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 
+>> 0x52, 0x54,
+>> +    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 
+>> 0x4e, 0x49,
+>> +    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 
+>> 0x50, 0x46,
+>> +    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 
+>> 0x49, 0x4e,
+>> +    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 
+>> 0x02, 0x30,
+>> +    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
+>> +};
+>> +
+>>   const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+>>   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+>>   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+>>   const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+>> -
+>>   const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
+>> +const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
+>> +const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
+>> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+>> index 86db6f0479..bbf9e54365 100644
+>> --- a/hw/arm/aspeed_eeprom.h
+>> +++ b/hw/arm/aspeed_eeprom.h
+>> @@ -22,4 +22,9 @@ extern const size_t fby35_bmc_fruid_len;
+>>   extern const uint8_t yosemitev2_bmc_fruid[];
+>>   extern const size_t yosemitev2_bmc_fruid_len;
+>>   +extern const uint8_t rainier_bb_fruid[];
+>> +extern const size_t rainier_bb_fruid_len;
+>> +extern const uint8_t rainier_bmc_fruid[];
+>> +extern const size_t rainier_bmc_fruid_len;
+>> +
+>>   #endif
+>

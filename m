@@ -1,166 +1,242 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1154936ejb;
-        Mon, 22 May 2023 05:04:42 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ68ELYsOuUviBqElaoL5wK5wyhFPvwYRHozOEIEg8XM668BzqnjbiCrnqRvsI/DsWhF/Hmo
-X-Received: by 2002:a05:6102:11ea:b0:42c:3baa:b0d4 with SMTP id e10-20020a05610211ea00b0042c3baab0d4mr2638787vsg.9.1684757082559;
-        Mon, 22 May 2023 05:04:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684757082; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1177578ejb;
+        Mon, 22 May 2023 05:42:13 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ50vv8esyY8lT8eZbk8yCK048xOZkN3PUZ3HWhe6FeIDmm20Hztv+XZwlOojZjsy2IRgYXm
+X-Received: by 2002:ad4:596d:0:b0:5ef:8c79:fe98 with SMTP id eq13-20020ad4596d000000b005ef8c79fe98mr17137468qvb.8.1684759333278;
+        Mon, 22 May 2023 05:42:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684759333; cv=none;
         d=google.com; s=arc-20160816;
-        b=zpeqnSWzaxizSGtWpGgJdsUbhGUHESEVKaqVoxAeZMxxfv3ZQpTDnNV0bYM8QUXjmH
-         rKEqISrROXKHz9OyJKk1FNRPeuafm0ooJFgqFpfsBPbbPlVXLN9yT/z8rAXdCz7sb+i2
-         3fjFQDPTYhJdARSXHNDAGS7pqT+FPIeTi1Ap1qa6N/4gIx1ZL2YUzs36BbgY0ut6Yy15
-         FbWSovSxJ3QuTfmpRTu1KMj7nl9yrxr+OqlrHglxXoz9XOLVOW/rreZuj50i4SsEYrSV
-         zCMuvPPAUa9rgDl1YsmjVLvM3ejYt09VoysRy1Seu2A2coa9jqSvl3+qlwHhkpKG54f1
-         opvA==
+        b=NcdWO7fYus10wZFu7Ecl+XGDaYyu1PbLMaH+YrktxhhR1CFiB6WELAgVRw0H+OJ8k9
+         J4RH25bcTI0oWENlm1JJvCIZdCUv9pgKDW0/WS06rORbrxkMQ0h/zp5zXYqSfhnWnNSE
+         CuYsxNxFVHPfcJrRDVd5gIoV/alNFEhlY5VYuCjVbJhqFkr44GPTW35MsAFbrXUzMDEP
+         vyj/SS+YRL3zzLcHTDdTIyn8hmdF17NtijMS9Qf1v63cnpZIK8yZZQkCeCU/aiLqomho
+         Vt2WcEqkmXRSwZlHxrujwx+0neTQ6tVoETuFy8ESOzD+IRZZ4RCn89WEX1w4sxWw3jG3
+         FPUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=zqyo5rJ8j59rDGA94pvvhHY82P2NKop29y8JPKXIx9A=;
-        b=a3sP6vabETGfSgG/ceIMVnGMJjIYMwsUdNyqx0vCbd9d5nov79aG6eq4uT4HF8iAjV
-         WUA11MsGLiwjjsB+x/Azu68/aM2gRiKnnVv5d2/TkO1EKGSxxJbMHsf3e6v+0aIK5wJ/
-         NtnMfq4MVZQGaEKdCLu+7Gx0bI8KpSjFx1PlMoLmsuC+MQMxRzrLPcxHv6ZRl9r3k1hM
-         JFN5TNCs57kL3jGzzmwkBAyUYUpZzBoAUDPKXVjUV5kETkiLOgo/tgwkU/0QVH1P4rBj
-         PzGYZKMwXBxwRTNH4tcjDYT6Z4yYr+No+WfOWgZ/n92ukiM+5rxus2kLVLcd6JTHi/9X
-         QXgA==
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=KQoSzuezfyJivOqkO4aEM87L/takb7wCxvvBXTax95k=;
+        b=qZlFqiF5FdUkvl7XSJp32evCZ4uKqwLmP2cnhCzIl+gUu5IVDtw8OvUn9gJWjtQNjt
+         2iJ3o2jEswmb+WAnhzh72azALHy4PUcPPXxkqHeWdaSmHqFq6VHZPkVrcgQ+kvJYkftl
+         KKmNUed7BE0VLvxXvyNQSxkofxfbjnW+wTRMx801ddB1l2dakneKHwnDif7kJpxe1vbd
+         eLNBLNblp3mNOTgPQC5BncWqaNqkSKt3/DHDoKzvjL698ljVsWt1WTSPHR/FxhXWF0FZ
+         xI8UEtNDMPAIqpaRNPY7eHoX3oRJ6M7ihSN+xvcxh+BUPB+oCpVxuu4QGuX8EFo6Z0XS
+         mCrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvpbmVS4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o35-20020ab05966000000b007725d3f12dfsi636365uad.46.2023.05.22.05.04.42
+        by mx.google.com with ESMTPS id iu14-20020ad45cce000000b006210472fb87si3396828qvb.256.2023.05.22.05.42.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 05:04:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 May 2023 05:42:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TvpbmVS4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q14HG-0006Rg-VA; Mon, 22 May 2023 08:04:39 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q14r2-0004yW-Hf; Mon, 22 May 2023 08:41:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1q14HF-0006RC-0Y
- for qemu-arm@nongnu.org; Mon, 22 May 2023 08:04:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q14qx-0004xv-5B; Mon, 22 May 2023 08:41:31 -0400
+Received: from hq-ms.auriga.com ([82.97.202.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1q14HC-0002Kl-V7
- for qemu-arm@nongnu.org; Mon, 22 May 2023 08:04:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684757073;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zqyo5rJ8j59rDGA94pvvhHY82P2NKop29y8JPKXIx9A=;
- b=TvpbmVS4Mct2+DAKHryrA0yuoP3s717bYPlPH220zIrNo9iO9hCY/TuByBvEHZ+6dX1od1
- sIOMe9LHzhyfJ9SZbwViEw7LEJazIfSDiI34yRK9WkSJkSqKbhEmh6mWPyedQAZxzwOONN
- Kvj66H9/bw1+ghBka7XnpVsHWtDWiuw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-296-5Qq3rbTSNVqd0y0Tzgym1w-1; Mon, 22 May 2023 08:04:30 -0400
-X-MC-Unique: 5Qq3rbTSNVqd0y0Tzgym1w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0ADF28007D9;
- Mon, 22 May 2023 12:04:30 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.141])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BB3C2C58DC1;
- Mon, 22 May 2023 12:04:29 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
- Auger <eauger@redhat.com>, Juan Quintela <quintela@redhat.com>, Gavin Shan
- <gshan@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>, Andrea Bolognani
- <abologna@redhat.com>
-Subject: Re: [PATCH v7 0/1] arm: enable MTE for QEMU + kvm
-In-Reply-To: <20230428095533.21747-1-cohuck@redhat.com>
-Organization: Red Hat GmbH
-References: <20230428095533.21747-1-cohuck@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Mon, 22 May 2023 14:04:28 +0200
-Message-ID: <87v8gkzi5v.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q14qt-0000xp-FK; Mon, 22 May 2023 08:41:29 -0400
+Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
+ hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.12; Mon, 22 May 2023 15:41:19 +0300
+Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
+ hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
+ 15.02.1258.012; Mon, 22 May 2023 15:41:19 +0300
+From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Sergey Kambalin <serg.oker@gmail.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
+Thread-Topic: [PATCH] [rpi4b] Make bootable rpi4b model
+Thread-Index: AQHZjJhM5s2DGZMhDE6fRKCxSTEX869l5goAgAA0A2T//9M1AIAAPGd6///VIACAAD0/pg==
+Date: Mon, 22 May 2023 12:41:19 +0000
+Message-ID: <672004b332154e15b14e4e96d20a23de@auriga.com>
+References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
+ <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
+ <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
+ <CAFEAcA8bLr+_raHie4JxoEJAQ7cuj5nJKTYt5+7r6T0w8FFNsg@mail.gmail.com>
+ <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>,
+ <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [134.191.220.81]
+x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-as-result: No-10--17.501200-8.000000
+x-tmase-matchedrid: IDcII6LbfMCJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
+ DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
+ ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot6L2s
+ CeHVx5vavLMqivPPjo9ElewkZ1UEQ2ib2gFI+X3zo39wOA02Lhv/7xdLQjXSIgaqPnI+BNyB2MH
+ UpnrEwAiPTUF0vMdpGHIX2JO/wOMi3UeYOWBocyARprIm1hk212ZYwNBqM6IsSQ5qUrBcx3zKAC
+ X7I5tE7P1hd0ZMHSA01AeToCHLWXQqvLyTLhF8UFxov+3JYvY9+43C02PchEoUhuKHSz/jb7Tdr
+ 4xDxETRUJDVhOCrc2J9Dn0zV8taUumHyO4Y/CA51U1lojafr/DvKSaIxu6kqISI683skDCtSHnJ
+ Dq2yhMlixDUeTodIK9NZJut0CFKN9faxl/I4mhq5uw61JZjZBcdJ43JX6v+OTCMddcL/gjcxYeV
+ rfi/UI7kyoFYZ/5JMyhWimj2LHmYRa3eYQPHJ+lOc5PPl6XJn7cGd19dSFd
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--17.501200-8.000000
+x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-snts-smtp: 8571BD7DE9C36E2D69E7D65F6F955E30376DC1AC75FB639448EC0A5A7BF18F002000:8
+Content-Type: multipart/alternative;
+ boundary="_000_672004b332154e15b14e4e96d20a23deaurigacom_"
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=82.97.202.32;
+ envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rr/EAu0ZRVk2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Hor+ze0/31JK
 
-On Fri, Apr 28 2023, Cornelia Huck <cohuck@redhat.com> wrote:
+--_000_672004b332154e15b14e4e96d20a23deaurigacom_
+Content-Type: text/plain; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
 
-> Another open problem is mte vs mte3: tcg emulates mte3, kvm gives the guest
-> whatever the host supports. Without migration support, this is not too much
-> of a problem yet, but for compatibility handling, we'll need a way to keep
-> QEMU from handing out mte3 for guests that might be migrated to a mte3-less
-> host. We could tack this unto the mte property (specifying the version or
-> max supported), or we could handle this via cpu properties if we go with
-> handling compatibility via cpu models (sorting this out for kvm is probably
-> going to be interesting in general.) In any case, I think we'll need a way
-> to inform kvm of it.
+Thanks!
 
-Before I start to figure out the initialization breakage, I think it
-might be worth pointing to this open issue again. As Andrea mentioned in
-https://listman.redhat.com/archives/libvir-list/2023-May/239926.html,
-libvirt wants to provide a stable guest ABI, not only in the context of
-migration compatibility (which we can handwave away via the migration
-blocker.)
+________________________________
+=EF=D4: Peter Maydell <peter.maydell@linaro.org>
+=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 22 =CD=C1=D1 2023 =C7. 15:01:26
+=EB=CF=CD=D5: Kambalin, Sergey
+=EB=CF=D0=C9=D1: Sergey Kambalin; qemu-arm@nongnu.org; qemu-devel@nongnu.or=
+g
+=F4=C5=CD=C1: Re: [PATCH] [rpi4b] Make bootable rpi4b model
 
-The part I'm mostly missing right now is how to tell KVM to not present
-mte3 to a guest while running on a mte3 capable host (i.e. the KVM
-interface for that; it's more a case of "we don't have it right now",
-though.) I'd expect it to be on the cpu level, rather than on the vm
-level, but it's not there yet; we also probably want something that's
-not fighting whatever tcg (or other accels) end up doing.
+On Mon, 22 May 2023 at 12:42, Kambalin, Sergey
+<sergey.kambalin@auriga.com> wrote:
+>
+> Aw, I thought the entire machine should work at the first patch.
+>
+> Thank you for the detailed clarification! I think I've got the idea. I'll=
+ split it up.
+>
+> Could you please tell me what size is appropriate for a single patch?
 
-I see several options here:
-- Continue to ignore mte3 and its implications for now. The big risk is
-  that someone might end up implementing support for MTE in libvirt again,
-  with the same stable guest ABI issues as for this version.
-- Add a "version" qualifier to the mte machine prop (probably with
-  semantics similar to the gic stuff), with the default working with tcg
-  as it does right now (i.e. defaulting to mte3). KVM would only support
-  "no mte" or "same as host" (with no stable guest ABI guarantees) for
-  now. I'm not sure how hairy this might get if we end up with a per-cpu
-  configuration of mte (and other features) with kvm.
-- Add cpu properties for mte and mte3. I think we've been there before
-  :) It would likely match any KVM infrastructure well, but we gain
-  interactions with the machine property. Also, there's a lot in the
-  whole CPU model area that need proper figuring out first... if we go
-  that route, we won't be able to add MTE support with KVM anytime soon,
-  I fear.
+The most important things for patch splitting are:
+ * everything still has to compile cleanly
+ * the contents of a single patch should be a coherent single
+   thing that it makes sense to review in one part
 
-The second option might be the most promising, except for potential
-future headaches; but a lot depends on where we want to be going with
-cpu models for KVM in general.
+If there's something in there that only touches 20 lines of
+code but is a coherent single change, it's fine to have that in
+its own patch -- small patches are easy to review.
 
+At the upper end, I tend to think a patch is a bit big
+at around 200 lines, but for the specific case of "here
+is a new device" bigger than that is OK, because it's
+just adding new files rather than merging changes into
+existing ones.
+
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html
+has some other advice on patch submission, if you haven't
+read that yet.
+
+thanks
+-- PMM
+
+--_000_672004b332154e15b14e4e96d20a23deaurigacom_
+Content-Type: text/html; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
+ding-left: 4pt; border-left: #800000 2px solid; } --></style>
+</head>
+<body>
+<meta content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css" style=3D"">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p>Thanks!</p>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
+;peter.maydell@linaro.org&gt;<br>
+<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 22 =CD=C1=D1 2023 =C7. 15:01:26<br>
+<b>=EB=CF=CD=D5:</b> Kambalin, Sergey<br>
+<b>=EB=CF=D0=C9=D1:</b> Sergey Kambalin; qemu-arm@nongnu.org; qemu-devel@no=
+ngnu.org<br>
+<b>=F4=C5=CD=C1:</b> Re: [PATCH] [rpi4b] Make bootable rpi4b model</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On Mon, 22 May 2023 at 12:42, Kambalin, Sergey<br>
+&lt;sergey.kambalin@auriga.com&gt; wrote:<br>
+&gt;<br>
+&gt; Aw, I thought the entire machine should work at the first patch.<br>
+&gt;<br>
+&gt; Thank you for the detailed clarification! I think I've got the idea. I=
+'ll split it up.<br>
+&gt;<br>
+&gt; Could you please tell me what size is appropriate for a single patch?<=
+br>
+<br>
+The most important things for patch splitting are:<br>
+&nbsp;* everything still has to compile cleanly<br>
+&nbsp;* the contents of a single patch should be a coherent single<br>
+&nbsp;&nbsp; thing that it makes sense to review in one part<br>
+<br>
+If there's something in there that only touches 20 lines of<br>
+code but is a coherent single change, it's fine to have that in<br>
+its own patch -- small patches are easy to review.<br>
+<br>
+At the upper end, I tend to think a patch is a bit big<br>
+at around 200 lines, but for the specific case of &quot;here<br>
+is a new device&quot; bigger than that is OK, because it's<br>
+just adding new files rather than merging changes into<br>
+existing ones.<br>
+<br>
+<a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-patch.html">=
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a><br>
+has some other advice on patch submission, if you haven't<br>
+read that yet.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</div>
+</span></font>
+</body>
+</html>
+
+--_000_672004b332154e15b14e4e96d20a23deaurigacom_--

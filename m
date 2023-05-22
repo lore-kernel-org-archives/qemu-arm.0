@@ -1,122 +1,136 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1108917ejb;
-        Mon, 22 May 2023 03:33:39 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4JOpdmop5SRB4GZY3h1eNbR5WcDEsvpTZuPScXs58yRjU4DX5q/RwY0Ba9u4S80Kkj6xun
-X-Received: by 2002:ac8:590b:0:b0:3ec:490b:ce6e with SMTP id 11-20020ac8590b000000b003ec490bce6emr17724295qty.48.1684751619196;
-        Mon, 22 May 2023 03:33:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684751619; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1112948ejb;
+        Mon, 22 May 2023 03:43:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4yf3AKfiPiX3D3RoQcvPbGeW+yyBHAHuKBGJH4a1Nytf3GWMpRc3WyV9K3+/73oGorKJ2W
+X-Received: by 2002:a05:622a:110:b0:3f3:9ace:84e1 with SMTP id u16-20020a05622a011000b003f39ace84e1mr17149049qtw.56.1684752213959;
+        Mon, 22 May 2023 03:43:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684752213; cv=none;
         d=google.com; s=arc-20160816;
-        b=jKWJRlHdnCHzI5L7QLN1hg6t+vmT5uUs2O7+ObypWKTPoCG75PAoLv+78sLD9iu+jK
-         MSRNY6UXyBUtTSKHlWlDWSJnDyxiXKVrS2P3uNBqiT+3YVhKL6IEzzV/9rZq4Ze5BJDu
-         BoMModXNnYmHg51aege0yoLjK5wNiZIEfv8SJj9ZPB2/kAWoR3kw9T/mpXInsExrB68W
-         OsnBIjviN1jo/y2LuRcG7J4QRy4b+ELllB8OfZu0bRm8OI5jP9JlNoAm4l/ET3WmFg2M
-         D4r2HtuLukrqTrN7iCNXc5FiTlSvOhGiCAxCpi7zAqtnWELZK6pAinIKiTbmbVPLH9DB
-         gGwQ==
+        b=kGMBgHwUMzlnpj0zcjaZyNeI4Wlb1XR9JDKDVNr3hn7rBV1i1K/yPnjCLLvVhidSQ2
+         vkaB9QuyWqu3fWCptSZhCXBOvR4mIHccTclstGHxDFg6fTpmeFusIXvBK7THWUeO0FDN
+         6nF3We6cp5EmJXexPObv3PvPtpbpI70OVjjrRvPsrfvI6B1GFTpWOGacCG5/IhNm4TD0
+         OFMLY/FWDJVEEqc4bf4o7URUJfghfp/e39QYl4xjDKwLzAcmqXfP9P2XSsLxV0rvlhsj
+         3KEY6dXguUqv6b7+ErPNOJubSx4AF4Zok69+A9NhG97Km5ykydaeXQcVgDNVfmpJLqxK
+         adKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=OnudcCLiwG9YUI6gaGxh+J6vsLzl8Q360NlX13+JxzQ=;
-        b=yPju4RDJj15pMEmDpfhSVsqMYx1lW+SNhwxo4ikR9QVB+WVqWyFEylvloVvX0IdPgf
-         Q7REQPi+qAySqZrk5LSgx97+v/sZG9tHjh+IRRsl9wbZ2z0NLfEzl20KUWzR5wwvc5tZ
-         uCMN+/Tb5q9sYJSSUQ+pQyN23xtPvv0itnk1kiiWXBezhwgBOq7gYIqVbXHTEN9RATju
-         NbniHcb9AOZfvy7dNlcXdsy2lwI7Td0uP+Q3gdkEon1o6Kqy3ZrMQbnrk+fCuQpqnzjv
-         T9ZP7CEknUxlVIYIgA432o21DOW7tIXEPWPyzgsC1OGJwHFyxGgTRv5r4UVu53Qa6GaI
-         MKBw==
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=eGVs/31+fhh6EAIlbJ8JEtET1sAmx4ZuuNPR5TPV4aA=;
+        b=tL8MGoqDtQ+06R4UOxQ61TLirRZ/UASp7gW9QfVdF0zTEjv+RRPY9h1ao6SdkO7opi
+         Yy4ubvgVraAwR9/6n5H2V9lDQPsxoerzMd8hnd0zq8w63zWIlU82qse2ScSdKGWcMSwm
+         UP5nULUgpLrStgbBDdU9tTq0I1fPmWlolZYQ4TPvkr0W/quwpffXqnkPkm/gDlzmSF6l
+         4V/y1k1xyDT9zSPy7ZOJ1x9GjEEBiXKed+Lq7OHd/MgtsJG1KNNiiC3AjWF/W0nkpBBp
+         jFk3j6/lFOut2mmFWHM62oxZEklc8ha12GYp6mQwl/LPr/G3JyFX1AKM9CI6G2edkNl1
+         D6zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aKmvWns+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020ac84e8a000000b003f4f94c6ab1si3534038qtp.272.2023.05.22.03.33.39
+        by mx.google.com with ESMTPS id f6-20020a056214076600b0061e0e80d6fesi3293137qvz.99.2023.05.22.03.43.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 03:33:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 May 2023 03:43:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aKmvWns+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q12ql-0004VT-Cb; Mon, 22 May 2023 06:33:11 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q130C-00077W-2y; Mon, 22 May 2023 06:42:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q12qi-0004Ts-Ni
- for qemu-arm@nongnu.org; Mon, 22 May 2023 06:33:10 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q12qg-0007a8-Cy
- for qemu-arm@nongnu.org; Mon, 22 May 2023 06:33:08 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-510b7b6ef59so11171822a12.3
- for <qemu-arm@nongnu.org>; Mon, 22 May 2023 03:33:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684751583; x=1687343583;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OnudcCLiwG9YUI6gaGxh+J6vsLzl8Q360NlX13+JxzQ=;
- b=aKmvWns+HDdkIf3t+M7Gh7+n38udf31K/z+RjV9tlDCbmdr93PhnrSVNlqAZS3EboI
- J7RuLnjE9X481gg8yurHhmGjPNJGnb7brped9VHGxBeaL0JkQjxtzvmgj294cUw7966F
- KiFwDcRS4oftP6d2U2mDEZVm+hvUpYT/4/cJ7GIzZyaXCJgTCtbWiR9154+xYLL3AYiZ
- 2qAMNv0eO6lGJ2R8t8TEwwM/of4LG7ilTmDmjM0iC+HSBvw+OZLuJ7WHNqYiA8SQ4+fG
- jA9WGuGnmSNncrBwfGNxRkBS6hRgvx+5uKfO+Qk9Ia+otVGzpMEoQQjB6nH9Rsm6UDaA
- VQ/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684751583; x=1687343583;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=OnudcCLiwG9YUI6gaGxh+J6vsLzl8Q360NlX13+JxzQ=;
- b=SR+EwcF7bGFWrNlE6M/HZKLc5IDTkeX3276rA4voNM3rd/4IKZYCvZKuS9zQ95gCc9
- N4BedyEVrc+QI2AiWANRA97U17A7fifrKVDPm0+y/R48RRv45eN0hgQNJ8OvCSoraaT0
- E2W0WIfUq6WGOy2d7l1UN1v5em0WdDje1Lzol0J5j1yJgzQ6LdtRMye7OXOXR5K1BRMf
- cQEMQz5aPRrA10WRnB7upPuqzt5L1lvvQKOoghoKdoaccPBmM2UT1ABuzY88UrCD4qrM
- QSyj3UM1cZp2e0gxKmvPAOBa9yQzNx9aihs3y2vuRQHeiBIyABncvsChiM6/HNbc5JMb
- bpdA==
-X-Gm-Message-State: AC+VfDyKuHUCaM5ICAsFphG/rKQw48Ub1InM1Uyu07mOU8Y41y0SId+f
- GG4w620hfZ3AJL3ihKghnqvHp2KCgEFZSzKmWxsJoDf2Q4n0ziXI
-X-Received: by 2002:a05:6402:31e7:b0:50b:d23c:deb4 with SMTP id
- dy7-20020a05640231e700b0050bd23cdeb4mr8320830edb.42.1684751583644; Mon, 22
- May 2023 03:33:03 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
-In-Reply-To: <20230522102910.20942-1-sergey.kambalin@auriga.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 May 2023 11:32:52 +0100
-Message-ID: <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q1304-00077C-1y
+ for qemu-devel@nongnu.org; Mon, 22 May 2023 06:42:48 -0400
+Received: from hq-ms.auriga.com ([82.97.202.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q1301-00013j-Nd
+ for qemu-devel@nongnu.org; Mon, 22 May 2023 06:42:47 -0400
+Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
+ hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.12; Mon, 22 May 2023 13:42:37 +0300
+Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
+ hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
+ 15.02.1258.012; Mon, 22 May 2023 13:42:37 +0300
+From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Sergey Kambalin
+ <serg.oker@gmail.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
 Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
-To: Sergey Kambalin <serg.oker@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Sergey Kambalin <sergey.kambalin@auriga.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Thread-Topic: [PATCH] [rpi4b] Make bootable rpi4b model
+Thread-Index: AQHZjJhM5s2DGZMhDE6fRKCxSTEX869l5goAgAA0A2Q=
+Date: Mon, 22 May 2023 10:42:37 +0000
+Message-ID: <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
+References: <20230522102910.20942-1-sergey.kambalin@auriga.com>,
+ <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [134.191.220.81]
+x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-as-result: No-10--16.961500-8.000000
+x-tmase-matchedrid: SIzKuw2hzSuJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
+ DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
+ ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8peZ45ULYLKJPJ5o
+ PddzkTnfSueWhKONnh4w18wuoIm1+uInHn323YIii1gp0ZxaqKdcbbjnFUAzCmZcKNqpsH9HH8F
+ G2651gIWMSUnqjISb6Va60MgWfekIMwY/QOsLdiuLt50vtxBA6HqfCKxjr5zVbHPS4sjm23Lwk+
+ W8EChjQbTYK6pfcVeMVWt+webelAVY78k/m9Ad3kGAR1SqoA1OuLFZZYlisf+/xUlPEAi6fAeVm
+ 1nnWZdBec2mundr02bNAKdiAgu3gAk6tv1Eq/T6rexIBpLkTNUswjMNdf2hs=
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--16.961500-8.000000
+x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-snts-smtp: 24508262F0083CF2D392C2B7CB9725B5C5DC4AD4580FC8579F09DE5BBC1EE14F2000:8
+Content-Type: multipart/alternative;
+ boundary="_000_e5f053c126a24a62a4e1e8d309d939ceaurigacom_"
+MIME-Version: 1.0
+Received-SPF: pass client-ip=82.97.202.32;
+ envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7G9PWhLKk5rf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LKrS0JQW/JRp
+
+--_000_e5f053c126a24a62a4e1e8d309d939ceaurigacom_
+Content-Type: text/plain; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+Unfortunately it can't be split without losing a functionality. It is a min=
+imal amount of code to make it able to boot the kernel (and therefore confi=
+rm that it works).
+
+________________________________
+=EF=D4: Peter Maydell <peter.maydell@linaro.org>
+=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 22 =CD=C1=D1 2023 =C7. 13:32:52
+=EB=CF=CD=D5: Sergey Kambalin
+=EB=CF=D0=C9=D1: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambalin, Serg=
+ey
+=F4=C5=CD=C1: Re: [PATCH] [rpi4b] Make bootable rpi4b model
 
 On Mon, 22 May 2023 at 11:29, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
@@ -157,3 +171,137 @@ do anything with it.
 
 thanks
 -- PMM
+
+--_000_e5f053c126a24a62a4e1e8d309d939ceaurigacom_
+Content-Type: text/html; charset="koi8-r"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
+ding-left: 4pt; border-left: #800000 2px solid; } --></style>
+</head>
+<body>
+<meta content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css" style=3D"">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p>Hi!</p>
+<p>Unfortunately it can't be split without losing a functionality. It is a =
+minimal amount of&nbsp;code to make it able to&nbsp;boot the kernel (and th=
+erefore confirm that it works).</p>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
+;peter.maydell@linaro.org&gt;<br>
+<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 22 =CD=C1=D1 2023 =C7. 13:32:52<br>
+<b>=EB=CF=CD=D5:</b> Sergey Kambalin<br>
+<b>=EB=CF=D0=C9=D1:</b> qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kambali=
+n, Sergey<br>
+<b>=F4=C5=CD=C1:</b> Re: [PATCH] [rpi4b] Make bootable rpi4b model</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On Mon, 22 May 2023 at 11:29, Sergey Kambalin &lt;=
+serg.oker@gmail.com&gt; wrote:<br>
+&gt;<br>
+&gt; Signed-off-by: Sergey Kambalin &lt;sergey.kambalin@auriga.com&gt;<br>
+&gt; ---<br>
+&gt;&nbsp; configs/devices/aarch64-softmmu/default.mak |&nbsp;&nbsp; 2 &#43=
+;<br>
+&gt;&nbsp; hw/arm/Kconfig&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 7 &#43;<br>
+&gt;&nbsp; hw/arm/bcm2835_peripherals.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 223 &#43;&#43;&#43=
+;&#43;&#43;&#43;-----<br>
+&gt;&nbsp; hw/arm/bcm2836.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 129 &#43;&#43;&#43;&#43;---<br>
+&gt;&nbsp; hw/arm/bcm2838.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 283 &#43;&#43;&#43;&#43;&#43;&#43=
+;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;<br>
+&gt;&nbsp; hw/arm/bcm2838_peripherals.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 213 &#43;&#43;&#43=
+;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;<br>
+&gt;&nbsp; hw/arm/meson.build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 5 &#43;<br>
+&gt;&nbsp; hw/arm/raspi.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 129 &#43;&#43;&#43;&#43=
+;---<br>
+&gt;&nbsp; hw/arm/raspi4b.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 243 &#43;&#43;&#43;&#43;&#43;&#43=
+;&#43;&#43;&#43;&#43;&#43;&#43;<br>
+&gt;&nbsp; hw/arm/trace-events&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 &#43;<br>
+&gt;&nbsp; hw/gpio/bcm2838_gpio.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; | 395 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43=
+;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;<br>
+&gt;&nbsp; hw/gpio/meson.build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 1 &#43;<br>
+&gt;&nbsp; hw/misc/bcm2835_powermgt.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 37=
+ &#43;&#43;<br>
+&gt;&nbsp; hw/misc/bcm2835_property.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 318 &#43=
+;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;---<br>
+&gt;&nbsp; hw/misc/trace-events&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp; |&nbsp; 10 &#43;<br>
+&gt;&nbsp; include/hw/arm/bcm2835_peripherals.h&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 29 &#43;-<br>
+&gt;&nbsp; include/hw/arm/bcm2836.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 30 &#43;-<br>
+&gt;&nbsp; include/hw/arm/bcm2838.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+|&nbsp; 26 &#43;&#43;<br>
+&gt;&nbsp; include/hw/arm/bcm2838_peripherals.h&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp; |&nbsp; 50 &#43;&#43;&#43;<br>
+&gt;&nbsp; include/hw/arm/raspi4b_platform.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 58 &#43;&#43;&#43;<br>
+&gt;&nbsp; include/hw/arm/raspi_platform.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 34 &#43;&#43;<br>
+&gt;&nbsp; include/hw/display/bcm2835_fb.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 &#43;<br>
+&gt;&nbsp; include/hw/gpio/bcm2838_gpio.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 45 &#43;&#43;&#43;<br>
+&gt;&nbsp; include/hw/misc/bcm2835_powermgt.h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 &#43;-<br>
+&gt;&nbsp; include/hw/misc/raspberrypi-fw-defs.h&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp; | 169 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;<br>
+&gt;&nbsp; tests/avocado/boot_linux_console.py&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp; |&nbsp; 37 &#43;&#43;<br>
+&gt;&nbsp; 26 files changed, 2210 insertions(&#43;), 269 deletions(-)<br>
+<br>
+Hi; this is far too large to be reviewable as a single patch.<br>
+It must be split into more digestible chunks (each of which<br>
+does a single reasonably coherent thing) before we can<br>
+do anything with it.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</div>
+</span></font>
+</body>
+</html>
+
+--_000_e5f053c126a24a62a4e1e8d309d939ceaurigacom_--

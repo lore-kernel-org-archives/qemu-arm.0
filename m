@@ -1,121 +1,132 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp713152ejb;
-        Sun, 21 May 2023 08:01:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6b9RUhJLRiblyddtmLcmENm0ZBg4T7Jpd0XGg5N3H3bOiYGCFVFb4fDdP31no7lVSUPF59
-X-Received: by 2002:a67:ee57:0:b0:439:4261:d7ad with SMTP id g23-20020a67ee57000000b004394261d7admr414416vsp.5.1684681315797;
-        Sun, 21 May 2023 08:01:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684681315; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1060323ejb;
+        Mon, 22 May 2023 01:36:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7uCTAXAfxjd94RUOtrbJ2Mk1nEaCGFyh8JQNjD2tW7xbHNUymOWU/fpQme7ARmXqFcUVpN
+X-Received: by 2002:a05:6214:f0a:b0:5ef:4455:fd35 with SMTP id gw10-20020a0562140f0a00b005ef4455fd35mr18590908qvb.4.1684744571604;
+        Mon, 22 May 2023 01:36:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684744571; cv=none;
         d=google.com; s=arc-20160816;
-        b=k2d+ZEdZNCPoaC1uYfF0pnO9x+1aF8AaAwv1Xo0jwiYrPfQbIjukknY0uT4kUKyy9X
-         5guW1oYKxFe2Bxnz9Uus3ncxALUCMb32ylmWQYxn8LuWWjGyNaN4UHwUXKeNcfbP5Nf5
-         L6IwfPDhnPOzOb1tT3Le08eeX3Tknf5aQJWjLk2Fu9whsDHL0ttr77zl4O5hG18+v8r2
-         iTUUICxlSFRKOQyzKEP+VoBuIxLpBTh3VShPkb4px/GB9Fz6/eMc8RJu1TOe7hR5f6Di
-         Ss5YaARqa0Az0/Mr1/hiJxpq0S36xV5Y3xHFLwWM+iZYkelr0Jm1n4xs5FuJLEr20Bsw
-         hQjQ==
+        b=Tsty4NtBdeMICHscIbpRO842lRBJFyHrksTjRVb8WyA7XF52qg1CTJVHS/RF4xsEM9
+         UCqocOtgBbQ2l8ZApLZSV53owx4DxvCXWUKcHO+iVDA/WyYfCt6pssfieOwhUcK9rf5P
+         QZx/JYakrc7xQGAa3egtCKV4TLKdnDdEspyeNTZtChUAcQWb+4Mit8qlaACyuaA7zzu2
+         u3R7X/0U7XilXgkC4JNg1CKGO+m34DTKnoEVOe82tbvA7D2skPGGMt/LAgDgmXKVrJcM
+         yLzFxh8ST63jybwki/32vm7CLe6sKrW7VGb5pAI6+YlYzxx3mvJ/P44Lmr6MX/Ppmysn
+         TSyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
-        b=p6rwnuqDzORdqXDWLIiPKf1+WGX0RiDx3rRpUVY4R99W4nUh1mq1IkccT5ooSUh0XT
-         LxK1laColuiJP58pb4Q+Pld/BhcF9/vtfJ7sOPOlL3s7SP55S+45j3i3Wyo4Wq762+RS
-         PF2oVB/BnaDH5kdXRAkX84ZZwxFWCIcc3eIs502Mzi5G8ZaRnLkCHM3Q69CrKH8RH5OT
-         Ezx1ilS/44B9DiEaQTzJyT9CYEFavrarTFcloJw6/MU/+EpSKibSC4H/FBSix2rD3Kjo
-         i0b3gA01WwgHJJNHmq8r84n6T6lseGzvfUVPj6gJjXX34EJW3oK9/iIWv3mYqSDbXDUN
-         08JQ==
+         :content-language:in-reply-to:organization:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5rQjupu9GicA/BOA6PlqXcc1t9Dba2HBp8MZe7eVLPk=;
+        b=bZ0Kqa3gXAP0WFmFalM/QKg8GqV50UyZO3LJWuuEym8d9661YN7izmkMOhZiag/ids
+         7YrAwieE3UeaMp9am9F29UxuCq09HqciwHlIhaCEqtsE5Z7PHIqMXf7K+GZcY9rBqLBw
+         +PVKHjAOViSQYARDcPwquUvCIbYaKMxwjMwYL+cJic1cYaARIwoGsTxGpu1+fE+TjH7g
+         sok2Xu9HT0iwczcgLVr8zorzImJkeyLjPvHxBpqa205WPotVeh8YySVJ3ncvUZkCyZf1
+         AlerSa7gQ9kuMho+oK3XgIwwCW/Pna+HP/dVqD/7jTDRZZoskG+J+b98lsqZr6jMv7gS
+         6DmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcy+gC3i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T9UvfNgW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d14-20020a05620a140e00b0075945a9785asi2105025qkj.393.2023.05.21.08.01.55
+        by mx.google.com with ESMTPS id a4-20020a056214062400b00618c7a30a50si3198049qvx.504.2023.05.22.01.36.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 May 2023 08:01:55 -0700 (PDT)
+        Mon, 22 May 2023 01:36:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcy+gC3i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=T9UvfNgW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q0kZ4-0002x7-Qb; Sun, 21 May 2023 11:01:42 -0400
+	id 1q111J-0001pC-OZ; Mon, 22 May 2023 04:35:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0kZ2-0002wU-9o
- for qemu-arm@nongnu.org; Sun, 21 May 2023 11:01:40 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q0kZ0-0006AG-LQ
- for qemu-arm@nongnu.org; Sun, 21 May 2023 11:01:40 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-64d1a0d640cso2662629b3a.1
- for <qemu-arm@nongnu.org>; Sun, 21 May 2023 08:01:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684681297; x=1687273297;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
- b=rcy+gC3i4UeGieY3p1RjXc9fllK5ksA0RjYXn6TGUEAsjPZs1wz/6d+56nUXUEJtvD
- 9hagoen+Mugp1SFkdb0Z8fFPIptoGjziipBVzVwcAkWba83EyiCXsLRVN+NyXYYb85e0
- xDktizS7bZ2ufOECYbfKJ+TtQWf0ixgSWCn9+yRgwbVB+NX1QuuL84Gz16ebxlZDaCQP
- i1fPw5tWHsZQ4TS1xkY3rBavY7kJT/OnJFWTOussY3EZasWH+JUEa5oglsTDpTHQbVd5
- MOnkAfcL8k7XMObopZiB4EcqBcMckzuYs+RKd8JYRty66lt1okTNQxuu/I8+GVLRTd6d
- epJA==
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q111I-0001ow-Fq
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 04:35:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q111E-0006FD-4Q
+ for qemu-arm@nongnu.org; Mon, 22 May 2023 04:35:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684744550;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5rQjupu9GicA/BOA6PlqXcc1t9Dba2HBp8MZe7eVLPk=;
+ b=T9UvfNgWA3anJiHM6QkAKUNuLzIjckAoaMJfg9N0RYiXZu/MjMfX5klVM4Z5Ad9O/AVjpk
+ 8NPA72svFpGQRcoBFSevXgsVBZjGwqpLDnQt2kFS8NprGtr6wxSY6oQSyBgrNmegOn0qsG
+ 5BUeUkMeerpuRxdYM7+3S03sEi+F9CA=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-648-3y8sdRQlMES0w46WLsqWeg-1; Mon, 22 May 2023 04:35:49 -0400
+X-MC-Unique: 3y8sdRQlMES0w46WLsqWeg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-30620ebd3c2so3687967f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 22 May 2023 01:35:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684681297; x=1687273297;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4YEc+QUwDN6om9t03jT9ecIttjXYI2GN3RYTmHjitcc=;
- b=CtfpMlRUTD/1v6Yv/nhuPHLyCgIz3VsdabEZaWwWigvSpEOFTct6gPLJq7pQEE0R6M
- 9WmhMR5Tsr2k0yjiZyNl35gCeyg2vAxFbuieKDLsg6VLDNEECkznCDDDWRi18Bdxovdd
- K1W/9/fiMsObwxqX+CuXcBBKmHcCdnagV9QLNuzmBVmmKvyz/GBJI/BkdTiIouto7Ix1
- f39hKl8M6p3a0ecun+PBsoOe5IBa6gk/HaR4NAQU3jyg8bBl0oPVmi5KWfvAYYiwCcsS
- 6wCpR4HGQyyMySwcVmM2BsBt+KTAZidsXqTFy4uUzEyN/9wk1LqaNyeg8WnZm029QFH+
- xgfg==
-X-Gm-Message-State: AC+VfDz2+GkWCnVzlLWsxNI3w+OGqmKSMWvNLEy+86XHNz26Cv5hd/Wc
- mBIjB6i179rY4QlKpGGuxLPK5g==
-X-Received: by 2002:a05:6a20:748e:b0:10b:e0a:1319 with SMTP id
- p14-20020a056a20748e00b0010b0e0a1319mr3549226pzd.13.1684681297191; 
- Sun, 21 May 2023 08:01:37 -0700 (PDT)
-Received: from [10.40.30.162] ([66.172.120.86])
+ d=1e100.net; s=20221208; t=1684744548; x=1687336548;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5rQjupu9GicA/BOA6PlqXcc1t9Dba2HBp8MZe7eVLPk=;
+ b=NfVYia9wujNs0qcHxdJHnuzJ0z23wOmQuYgwkvDI+YLCLeAEFMLHomHclsFAXwW0Mu
+ PoGjJiWin5R60hPVJZLhqWLc35VBQnNcouCVEyg50FjbAtYlqCUpQRL6TNNEMJnO7voK
+ uC3gIv4Eh8Jb2wOhDvfpRYp4IwmBXQ2XRIBg2jSd2V1LCbmx0OfDVBkakeEzPAM+9RXh
+ tpB3M+4F9atAPL+rs1kLFRxzSKaClv4bNhXohDOIVt7XvmiVzaW7LDzoP0hXuDurYWfs
+ hAdk5MylhpSiYT0z+p8dk2pQBPxL/UJZpgIre1wKxmt/mAgXdFPoM6drwhxdkFQtSMC6
+ w8eA==
+X-Gm-Message-State: AC+VfDxCA7I2B8daLPKsGj/ZCVvydS5UafRD3icHu9AKuyaQ1LbXjEZ6
+ g2MsYqGbTlCAmCaKeWJijNlx03LlW9dneoEil3Trx9RbFc2kHJ/MwGPGB1HVTcCuddJsWWR3r43
+ sm21QQ0hQvD8Z
+X-Received: by 2002:adf:f28d:0:b0:307:82e3:70cd with SMTP id
+ k13-20020adff28d000000b0030782e370cdmr7323645wro.14.1684744547934; 
+ Mon, 22 May 2023 01:35:47 -0700 (PDT)
+X-Received: by 2002:adf:f28d:0:b0:307:82e3:70cd with SMTP id
+ k13-20020adff28d000000b0030782e370cdmr7323626wro.14.1684744547527; 
+ Mon, 22 May 2023 01:35:47 -0700 (PDT)
+Received: from ?IPV6:2003:cb:c742:c800:d74f:aec6:f8ac:558?
+ (p200300cbc742c800d74faec6f8ac0558.dip0.t-ipconnect.de.
+ [2003:cb:c742:c800:d74f:aec6:f8ac:558])
  by smtp.gmail.com with ESMTPSA id
- b5-20020aa78705000000b006437c0edf9csm2744487pfo.16.2023.05.21.08.01.36
+ r14-20020adfce8e000000b00306c5900c10sm7006192wrn.9.2023.05.22.01.35.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 May 2023 08:01:36 -0700 (PDT)
-Message-ID: <37df70b4-5ae4-f36b-a349-303828545262@linaro.org>
-Date: Sun, 21 May 2023 08:01:34 -0700
+ Mon, 22 May 2023 01:35:47 -0700 (PDT)
+Message-ID: <698d17f4-8018-41dd-4551-749d715bf71e@redhat.com>
+Date: Mon, 22 May 2023 10:35:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 17/27] target/s390x: Use cpu_{ld,st}*_mmu in do_csst
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 15/27] target/s390x: Use tcg_gen_qemu_{ld,st}_i128 for
+ LPQ, STPQ
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
+ Ilya Leoshkevich <iii@linux.ibm.com>
 References: <20230520162634.3991009-1-richard.henderson@linaro.org>
- <20230520162634.3991009-18-richard.henderson@linaro.org>
- <a56f5acc-5716-8598-e49c-d1f6c19e144f@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <a56f5acc-5716-8598-e49c-d1f6c19e144f@linaro.org>
+ <20230520162634.3991009-16-richard.henderson@linaro.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+In-Reply-To: <20230520162634.3991009-16-richard.henderson@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.098, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,50 +141,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F2z8y7RjewwF
+X-TUID: +7ALrD5o/h3W
 
-On 5/21/23 04:21, Philippe Mathieu-Daudé wrote:
-> Hi Richard,
+On 20.05.23 18:26, Richard Henderson wrote:
+> No need to roll our own, as this is now provided by tcg.
+> This was the last use of retxl, so remove that too.
+
+That's nice!
+
 > 
-> On 20/5/23 18:26, Richard Henderson wrote:
->> Use cpu_ld16_mmu and cpu_st16_mmu to eliminate the special case,
->> and change all of the *_data_ra functions to match.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->> Cc: qemu-s390x@nongnu.org
->> Cc: David Hildenbrand <david@redhat.com>
->> Cc: Ilya Leoshkevich <iii@linux.ibm.com>
->> ---
->>   target/s390x/tcg/mem_helper.c | 65 ++++++++++++++---------------------
->>   1 file changed, 26 insertions(+), 39 deletions(-)
->>
->> diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
->> index 0e0d66b3b6..b6cf24403c 100644
->> --- a/target/s390x/tcg/mem_helper.c
->> +++ b/target/s390x/tcg/mem_helper.c
->> @@ -1737,6 +1737,9 @@ static uint32_t do_csst(CPUS390XState *env, uint32_t r3, uint64_t a1,
->>                           uint64_t a2, bool parallel)
->>   {
->>       uint32_t mem_idx = cpu_mmu_index(env, false);
->> +    MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, mem_idx);
->> +    MemOpIdx oi8 = make_memop_idx(MO_TE | MO_64, mem_idx);
-> 
-> 
->>               if (parallel) {
->>   #ifdef CONFIG_ATOMIC64
->> -                MemOpIdx oi = make_memop_idx(MO_TEUQ | MO_ALIGN, mem_idx);
->> -                ov = cpu_atomic_cmpxchgq_be_mmu(env, a1, cv, nv, oi, ra);
->> +                ov = cpu_atomic_cmpxchgq_be_mmu(env, a1, cv, nv, oi8, ra);
-> 
-> Why is it safe to remove MO_ALIGN here?
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> Cc: qemu-s390x@nongnu.org
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Ilya Leoshkevich <iii@linux.ibm.com>
+> ---
 
-Alignment check already done at the start of the function:
+[...]
 
-     /* Sanity check the alignments.  */
-     if (extract32(a1, 0, fc + 2) || extract32(a2, 0, sc)) {
-         goto spec_exception;
-     }
+>       /* psw.addr */
+> @@ -3130,15 +3125,9 @@ static DisasJumpType op_lpd(DisasContext *s, DisasOps *o)
+>   
+>   static DisasJumpType op_lpq(DisasContext *s, DisasOps *o)
+>   {
+> -    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+> -        gen_helper_lpq(o->out, cpu_env, o->in2);
+> -    } else if (HAVE_ATOMIC128) {
+> -        gen_helper_lpq_parallel(o->out, cpu_env, o->in2);
+> -    } else {
+> -        gen_helper_exit_atomic(cpu_env);
+> -        return DISAS_NORETURN;
+> -    }
+> -    return_low128(o->out2);
+> +    o->out_128 = tcg_temp_new_i128();
+> +    tcg_gen_qemu_ld_i128(o->out_128, o->in2, get_mem_index(s),
+> +                         MO_TE | MO_128 | MO_ALIGN);
+>       return DISAS_NEXT;
+>   }
+>   
+> @@ -4533,14 +4522,11 @@ static DisasJumpType op_stmh(DisasContext *s, DisasOps *o)
+>   
+>   static DisasJumpType op_stpq(DisasContext *s, DisasOps *o)
+>   {
+> -    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+> -        gen_helper_stpq(cpu_env, o->in2, o->out2, o->out);
+> -    } else if (HAVE_ATOMIC128) {
+> -        gen_helper_stpq_parallel(cpu_env, o->in2, o->out2, o->out);
+> -    } else {
+> -        gen_helper_exit_atomic(cpu_env);
+> -        return DISAS_NORETURN;
+> -    }
+> +    TCGv_i128 t16 = tcg_temp_new_i128();
+> +
+> +    tcg_gen_concat_i64_i128(t16, o->out2, o->out);
+> +    tcg_gen_qemu_st_i128(t16, o->in2, get_mem_index(s),
+> +                         MO_TE | MO_128 | MO_ALIGN);
 
+I briefly glimpsed at tcg_gen_qemu_ld_i128_int (and 
+use_two_i64_for_i128()), does this really provide the atomic guarantees 
+we need in all cases?
 
-r~
+-- 
+Thanks,
+
+David / dhildenb
+

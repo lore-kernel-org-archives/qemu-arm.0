@@ -1,106 +1,124 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1177578ejb;
-        Mon, 22 May 2023 05:42:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ50vv8esyY8lT8eZbk8yCK048xOZkN3PUZ3HWhe6FeIDmm20Hztv+XZwlOojZjsy2IRgYXm
-X-Received: by 2002:ad4:596d:0:b0:5ef:8c79:fe98 with SMTP id eq13-20020ad4596d000000b005ef8c79fe98mr17137468qvb.8.1684759333278;
-        Mon, 22 May 2023 05:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684759333; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1215365ejb;
+        Mon, 22 May 2023 06:42:15 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ583FBYBRfVvw8uLcJl0oO3muPV+BoNJ/vexfEeOA3Vt8AmgjOgifhtWpGyVl2P3Pze7f+y
+X-Received: by 2002:a05:6214:5093:b0:625:76bb:b25e with SMTP id kk19-20020a056214509300b0062576bbb25emr8143594qvb.20.1684762935294;
+        Mon, 22 May 2023 06:42:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684762935; cv=none;
         d=google.com; s=arc-20160816;
-        b=NcdWO7fYus10wZFu7Ecl+XGDaYyu1PbLMaH+YrktxhhR1CFiB6WELAgVRw0H+OJ8k9
-         J4RH25bcTI0oWENlm1JJvCIZdCUv9pgKDW0/WS06rORbrxkMQ0h/zp5zXYqSfhnWnNSE
-         CuYsxNxFVHPfcJrRDVd5gIoV/alNFEhlY5VYuCjVbJhqFkr44GPTW35MsAFbrXUzMDEP
-         vyj/SS+YRL3zzLcHTDdTIyn8hmdF17NtijMS9Qf1v63cnpZIK8yZZQkCeCU/aiLqomho
-         Vt2WcEqkmXRSwZlHxrujwx+0neTQ6tVoETuFy8ESOzD+IRZZ4RCn89WEX1w4sxWw3jG3
-         FPUQ==
+        b=miz/kGr/H0ram8olCSKqP/YJ3jcs4aYUWT/GSnF2B0nnaLu0QA3qKPrIszzeRWoub6
+         F84KNg8YqsEi09O4IrjJmS+/zzzshufiaQquTGIPa4KWxNCJ8h160Qc1SdAQAQ5L9K4A
+         5JvRFoQ4cjIyCMN6oHtoosdBTxAIzJruosDGTc8UHJMI820U7lzUQxPynIg/MLLX4Zeb
+         d1X41kZtNmmKkkmkoVDVWxK4M++uydzzRNuXi+zZx5z4Wmdt1H04j/LMmEu6qFUZlMZD
+         hKf0P+LskkOmqsqiwNgpQYaXoM0rCykSiGNXKB7zW7fMJ79yIgY2LVeaWjTFNPLsF4cK
+         QfiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=KQoSzuezfyJivOqkO4aEM87L/takb7wCxvvBXTax95k=;
-        b=qZlFqiF5FdUkvl7XSJp32evCZ4uKqwLmP2cnhCzIl+gUu5IVDtw8OvUn9gJWjtQNjt
-         2iJ3o2jEswmb+WAnhzh72azALHy4PUcPPXxkqHeWdaSmHqFq6VHZPkVrcgQ+kvJYkftl
-         KKmNUed7BE0VLvxXvyNQSxkofxfbjnW+wTRMx801ddB1l2dakneKHwnDif7kJpxe1vbd
-         eLNBLNblp3mNOTgPQC5BncWqaNqkSKt3/DHDoKzvjL698ljVsWt1WTSPHR/FxhXWF0FZ
-         xI8UEtNDMPAIqpaRNPY7eHoX3oRJ6M7ihSN+xvcxh+BUPB+oCpVxuu4QGuX8EFo6Z0XS
-         mCrA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
+        b=MvN67YYx0D3imKbYp8a5n2ixh0o82i9eEQWm/89EaVxCCRRqwUV6cvSdj3zRtirVW3
+         yg50e3FLLOy6SxdBMKZv2OAcfkW8EUJuVFxat56X4u2EuKmZP9y3FWvooiN+hyatCyG/
+         6fCY9cRsYn8aJaErUk/UfC8CEyMTPx/P69tiyyaFfECrQfMGglcaaEn4isLqu0CV86rN
+         E/qzRRgNcKK25teqgbthZF/VVWip/yT4a/oaoX+teY8+gRKIpjAAtOt2lJS55lwdw8fx
+         i2oMMMsy8MD2viHzeG+l4PY9ILPNAAg3E6gRHx+nLNF+0Hq5ovUfarNZzvBkcbKzbsPH
+         QbYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=f7Bn1C42;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iu14-20020ad45cce000000b006210472fb87si3396828qvb.256.2023.05.22.05.42.13
+        by mx.google.com with ESMTPS id d16-20020a05622a101000b003f39171e460si3655710qte.403.2023.05.22.06.42.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 05:42:13 -0700 (PDT)
+        Mon, 22 May 2023 06:42:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=f7Bn1C42;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q14r2-0004yW-Hf; Mon, 22 May 2023 08:41:36 -0400
+	id 1q15nX-0006ba-R8; Mon, 22 May 2023 09:42:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q14qx-0004xv-5B; Mon, 22 May 2023 08:41:31 -0400
-Received: from hq-ms.auriga.com ([82.97.202.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q14qt-0000xp-FK; Mon, 22 May 2023 08:41:29 -0400
-Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
- hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Mon, 22 May 2023 15:41:19 +0300
-Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
- hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
- 15.02.1258.012; Mon, 22 May 2023 15:41:19 +0300
-From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: Sergey Kambalin <serg.oker@gmail.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q15nW-0006bN-Jh
+ for qemu-devel@nongnu.org; Mon, 22 May 2023 09:42:02 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q15nR-0004Wq-DO
+ for qemu-devel@nongnu.org; Mon, 22 May 2023 09:42:02 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-3f42c865535so61865905e9.1
+ for <qemu-devel@nongnu.org>; Mon, 22 May 2023 06:41:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1684762916; x=1687354916;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
+ b=f7Bn1C42A+AMGuh/qIdBiu1nL3OqWeJr7d5uryJks3GLKNdUkMLTf8bI1O4RIbNG+e
+ 2hiRi3w06suaNO6dpbNclt2SIzhx7pTmnA3xT2pdYBnA3I0nGilRtkIMy9r85GPf4I/p
+ cDnchLs/+9iWbnrQ+BsWOWAiQL2ZCIKit6gKB2064VoIrfrdLswpjprYZPkB24G8cNTy
+ aIxLzAABwxqNuewsLgkUpDOgoUsoUsLZM0kLcFiUnQ3o6y3QnuIX92vplopjgYI2N3nZ
+ WVF3481RZiD5Kw+W1/yn+hsDXp9Swi22IrDK1qwNT8773/kRB90RVX7ACIXkurGigpg9
+ gjjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684762916; x=1687354916;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=54D1bbj/xFjc7rwByQhrtuC83B2Ki1WixTDw3OT/3Yc=;
+ b=KK/WZQ7p0y9MB8MKvz+FRvpi1Q6EcCmEGHgIahqLXMOVoXTYGdZa45umUtw9AeapeN
+ bQpWT4NkiR5ddFpkW8rQz/EdzahrNIW2gIVGx1VOD1cOmJ2ofLRPDtA86NQDUc/5i+hi
+ NDD2ubZhLhtbks/pPyff3Fm+XLzaS4BCQk5NDqyJUxpxIkW+SC/0Gt9g/yDmn92KeCR2
+ KUyhs0TObKLzvPmjXNWpeMerhfeT3AssjuszvByCTISAHyhqnxwz4NHWV0kKHNyyiBhS
+ kx4U11kgNiY8g1Q+QOWlhXM8rGKYvTiRPZH+efPRp5DUEZHfBpqzGhg/b6lV1uqOetKr
+ BBKA==
+X-Gm-Message-State: AC+VfDxA5eoRrbaHe6lFZ70guiPno1K+HDzJRHujx42DaZ5zI5MB3aWD
+ j7U6ul+VM8TMGAjgk7bB1SQKYw==
+X-Received: by 2002:a1c:f311:0:b0:3f4:d18f:b2fb with SMTP id
+ q17-20020a1cf311000000b003f4d18fb2fbmr7770928wmq.8.1684762915822; 
+ Mon, 22 May 2023 06:41:55 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.153.164])
+ by smtp.gmail.com with ESMTPSA id
+ m25-20020a7bcb99000000b003f195d540d9sm11706329wmi.14.2023.05.22.06.41.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 May 2023 06:41:55 -0700 (PDT)
+Message-ID: <7fb1818b-7ed9-975a-3fa0-ebda7553aa73@linaro.org>
+Date: Mon, 22 May 2023 15:41:53 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
 Subject: Re: [PATCH] [rpi4b] Make bootable rpi4b model
-Thread-Topic: [PATCH] [rpi4b] Make bootable rpi4b model
-Thread-Index: AQHZjJhM5s2DGZMhDE6fRKCxSTEX869l5goAgAA0A2T//9M1AIAAPGd6///VIACAAD0/pg==
-Date: Mon, 22 May 2023 12:41:19 +0000
-Message-ID: <672004b332154e15b14e4e96d20a23de@auriga.com>
+Content-Language: en-US
+To: Sergey Kambalin <serg.oker@gmail.com>,
+ "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 References: <20230522102910.20942-1-sergey.kambalin@auriga.com>
  <CAFEAcA_aV0DvL3DgqU9SKKRsqCoMrvwbPoomx+NA8fkXKkTytA@mail.gmail.com>
  <e5f053c126a24a62a4e1e8d309d939ce@auriga.com>
  <CAFEAcA8bLr+_raHie4JxoEJAQ7cuj5nJKTYt5+7r6T0w8FFNsg@mail.gmail.com>
- <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>,
+ <ea63d09bb2d249b282a429ff9d373e4d@auriga.com>
  <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
-In-Reply-To: <CAFEAcA8HMgJ5_WwC6Mc5E61_KN4kqvpW6AE_EyDf-JcrFVQJMg@mail.gmail.com>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [134.191.220.81]
-x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-as-result: No-10--17.501200-8.000000
-x-tmase-matchedrid: IDcII6LbfMCJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1W/R
- DAZTdSI3QnEYvg6//klFmXhQ6rgRVOyDy8V8lTWUzH6d90mb4+Ih6cl1707zKlZxVB3B2qbP6Xk
- ezPna397QLE3MitZAfl9/IWsrV5Ek1LFdtmiebE5itzfafzhYerzutTz14s8pB4N9b2b2Ot6L2s
- CeHVx5vavLMqivPPjo9ElewkZ1UEQ2ib2gFI+X3zo39wOA02Lhv/7xdLQjXSIgaqPnI+BNyB2MH
- UpnrEwAiPTUF0vMdpGHIX2JO/wOMi3UeYOWBocyARprIm1hk212ZYwNBqM6IsSQ5qUrBcx3zKAC
- X7I5tE7P1hd0ZMHSA01AeToCHLWXQqvLyTLhF8UFxov+3JYvY9+43C02PchEoUhuKHSz/jb7Tdr
- 4xDxETRUJDVhOCrc2J9Dn0zV8taUumHyO4Y/CA51U1lojafr/DvKSaIxu6kqISI683skDCtSHnJ
- Dq2yhMlixDUeTodIK9NZJut0CFKN9faxl/I4mhq5uw61JZjZBcdJ43JX6v+OTCMddcL/gjcxYeV
- rfi/UI7kyoFYZ/5JMyhWimj2LHmYRa3eYQPHJ+lOc5PPl6XJn7cGd19dSFd
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--17.501200-8.000000
-x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-snts-smtp: 8571BD7DE9C36E2D69E7D65F6F955E30376DC1AC75FB639448EC0A5A7BF18F002000:8
-Content-Type: multipart/alternative;
- boundary="_000_672004b332154e15b14e4e96d20a23deaurigacom_"
-MIME-Version: 1.0
-Received-SPF: pass client-ip=82.97.202.32;
- envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <672004b332154e15b14e4e96d20a23de@auriga.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <672004b332154e15b14e4e96d20a23de@auriga.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,128 +133,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Hor+ze0/31JK
+X-TUID: 0hgKGpV/65AK
 
---_000_672004b332154e15b14e4e96d20a23deaurigacom_
-Content-Type: text/plain; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
+On 22/5/23 14:41, Kambalin, Sergey wrote:
 
-Thanks!
+>> Could you please tell me what size is appropriate for a single patch?
+> 
+> The most important things for patch splitting are:
+>   * everything still has to compile cleanly
+>   * the contents of a single patch should be a coherent single
+>     thing that it makes sense to review in one part
+> 
+> If there's something in there that only touches 20 lines of
+> code but is a coherent single change, it's fine to have that in
+> its own patch -- small patches are easy to review.
+> 
+> At the upper end, I tend to think a patch is a bit big
+> at around 200 lines, but for the specific case of "here
+> is a new device" bigger than that is OK, because it's
+> just adding new files rather than merging changes into
+> existing ones.
+> 
+> https://www.qemu.org/docs/master/devel/submitting-a-patch.html 
+> <https://www.qemu.org/docs/master/devel/submitting-a-patch.html>
+> has some other advice on patch submission, if you haven't
+> read that yet.
 
-________________________________
-=EF=D4: Peter Maydell <peter.maydell@linaro.org>
-=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF: 22 =CD=C1=D1 2023 =C7. 15:01:26
-=EB=CF=CD=D5: Kambalin, Sergey
-=EB=CF=D0=C9=D1: Sergey Kambalin; qemu-arm@nongnu.org; qemu-devel@nongnu.or=
-g
-=F4=C5=CD=C1: Re: [PATCH] [rpi4b] Make bootable rpi4b model
+FWIW example of series adding the Pi Zero:
 
-On Mon, 22 May 2023 at 12:42, Kambalin, Sergey
-<sergey.kambalin@auriga.com> wrote:
->
-> Aw, I thought the entire machine should work at the first patch.
->
-> Thank you for the detailed clarification! I think I've got the idea. I'll=
- split it up.
->
-> Could you please tell me what size is appropriate for a single patch?
+https://lore.kernel.org/qemu-devel/20201024170127.3592182-1-f4bug@amsat.org/
 
-The most important things for patch splitting are:
- * everything still has to compile cleanly
- * the contents of a single patch should be a coherent single
-   thing that it makes sense to review in one part
-
-If there's something in there that only touches 20 lines of
-code but is a coherent single change, it's fine to have that in
-its own patch -- small patches are easy to review.
-
-At the upper end, I tend to think a patch is a bit big
-at around 200 lines, but for the specific case of "here
-is a new device" bigger than that is OK, because it's
-just adding new files rather than merging changes into
-existing ones.
-
-https://www.qemu.org/docs/master/devel/submitting-a-patch.html
-has some other advice on patch submission, if you haven't
-read that yet.
-
-thanks
--- PMM
-
---_000_672004b332154e15b14e4e96d20a23deaurigacom_
-Content-Type: text/html; charset="koi8-r"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dkoi8-r">
-<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
-<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
-ding-left: 4pt; border-left: #800000 2px solid; } --></style>
-</head>
-<body>
-<meta content=3D"text/html; charset=3DUTF-8">
-<style type=3D"text/css" style=3D"">
-<!--
-p
-	{margin-top:0;
-	margin-bottom:0}
--->
-</style>
-<div dir=3D"ltr">
-<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
-or:#000000; font-family:Calibri,Helvetica,sans-serif">
-<p>Thanks!</p>
-</div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
-color=3D"#000000" style=3D"font-size:11pt"><b>=EF=D4:</b> Peter Maydell &lt=
-;peter.maydell@linaro.org&gt;<br>
-<b>=EF=D4=D0=D2=C1=D7=CC=C5=CE=CF:</b> 22 =CD=C1=D1 2023 =C7. 15:01:26<br>
-<b>=EB=CF=CD=D5:</b> Kambalin, Sergey<br>
-<b>=EB=CF=D0=C9=D1:</b> Sergey Kambalin; qemu-arm@nongnu.org; qemu-devel@no=
-ngnu.org<br>
-<b>=F4=C5=CD=C1:</b> Re: [PATCH] [rpi4b] Make bootable rpi4b model</font>
-<div>&nbsp;</div>
-</div>
-</div>
-<font size=3D"2"><span style=3D"font-size:10pt;">
-<div class=3D"PlainText">On Mon, 22 May 2023 at 12:42, Kambalin, Sergey<br>
-&lt;sergey.kambalin@auriga.com&gt; wrote:<br>
-&gt;<br>
-&gt; Aw, I thought the entire machine should work at the first patch.<br>
-&gt;<br>
-&gt; Thank you for the detailed clarification! I think I've got the idea. I=
-'ll split it up.<br>
-&gt;<br>
-&gt; Could you please tell me what size is appropriate for a single patch?<=
-br>
-<br>
-The most important things for patch splitting are:<br>
-&nbsp;* everything still has to compile cleanly<br>
-&nbsp;* the contents of a single patch should be a coherent single<br>
-&nbsp;&nbsp; thing that it makes sense to review in one part<br>
-<br>
-If there's something in there that only touches 20 lines of<br>
-code but is a coherent single change, it's fine to have that in<br>
-its own patch -- small patches are easy to review.<br>
-<br>
-At the upper end, I tend to think a patch is a bit big<br>
-at around 200 lines, but for the specific case of &quot;here<br>
-is a new device&quot; bigger than that is OK, because it's<br>
-just adding new files rather than merging changes into<br>
-existing ones.<br>
-<br>
-<a href=3D"https://www.qemu.org/docs/master/devel/submitting-a-patch.html">=
-https://www.qemu.org/docs/master/devel/submitting-a-patch.html</a><br>
-has some other advice on patch submission, if you haven't<br>
-read that yet.<br>
-<br>
-thanks<br>
--- PMM<br>
-</div>
-</span></font>
-</body>
-</html>
-
---_000_672004b332154e15b14e4e96d20a23deaurigacom_--

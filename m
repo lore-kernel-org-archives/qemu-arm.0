@@ -1,133 +1,128 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2154293ejb;
-        Tue, 23 May 2023 14:29:11 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4UAamvY1Lm/NMMBzEDpxNE5qgkWArog4KCvYhSTDmlU3F+Svo1qm+w3PTko0IqBi2KYt7m
-X-Received: by 2002:a05:6214:1c83:b0:5ef:8b3a:5d7 with SMTP id ib3-20020a0562141c8300b005ef8b3a05d7mr22637347qvb.5.1684877351666;
-        Tue, 23 May 2023 14:29:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684877351; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2070972ejb;
+        Tue, 23 May 2023 11:29:03 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5FX2YmdA2YZlg38IMnqFDoMXyTgwQE5KAuGAAy7k1oD3FAEftLLL28Y12azjZsnoknN00w
+X-Received: by 2002:ac8:5b8e:0:b0:3f6:aa29:b617 with SMTP id a14-20020ac85b8e000000b003f6aa29b617mr13586036qta.15.1684866543555;
+        Tue, 23 May 2023 11:29:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684866543; cv=none;
         d=google.com; s=arc-20160816;
-        b=DaSfXxZdk1SylXBCep0YcPbvY5fCRP88Twrq5mCD7NQzaH+Bp28X6JCqfSfCAixbry
-         eAiFGyeL5PgcnSDSputfPtQCfuXlNTWzSUR6coYNXXzEJjziONNnb/rzSHkM0amTNkN9
-         xU5/TedbC8Dpso8urs3OfL9nkkPfe0e2iX/Cm/UqwHgazCdbO819TgD2NEI4d1idg0CS
-         PYGnTUz9YC7sR5HhF2opNyiMc1xWQeieSsKOoNO+NDJfylQitEtq1B0Hh94x4ZPCkTAR
-         lt5AYoKmvkPCn/b6pBf8TCSLTMNx90wBxF1fV5RBlvjMerYN4aJ8jvFheGBW0jqQzdNt
-         mNdA==
+        b=BTzpctmicCAe9Qc6kxkDJEER8IKxSM6pInMC8dcnnf0WqybyJ7MGR6eJ2ONExEedsE
+         Wz7AnxbsLgZjxxtrBKZm96IyTOq7rUoBZqEmImniAPDDLFmJ96NlzkXSgTz0dSFQVZkL
+         ghqxdAVx4TZrrXApBinEi2MKUE5MgcDViXqaYSebYEX89so7eORGVSZ1FNEUlmNQ0+ZF
+         TwI4JitvQS6oY+H+WshqPxAr/6iTxtwJLeI5xnNB/LOOoXElfmhFCCu72drVksr44gm0
+         KtSMtthcbQOl8rCSUKj9IxBHJhaJ4ok52DXPbjfOfCrEvdjRDVMQ1FUJWfSmfmMcrA1w
+         gRXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2csBDxV1zguBvGgyEdKjn0fdKJ9qVusmOZdgpvZP3d4=;
-        b=eiHFl6pAw2a4skuvb3L20OEPN9xtj6bxr6O+jVoQVPGFATExVPrDt0NcunK0VbkdeE
-         0TLIcYy9nAwlON7yanCQ8gMfeaEaaJT4J+DW3wA+1JFbvwpQAwPh18i5cjVgTDm5Jeje
-         XGanENBIT8Ius38VqaERu0guKOXODdlDjoqCI6Kn2YxL7r2N9UKu8ruTeHFNiwMawigq
-         lb1JzqsqSvEDTgQdF2dCxoTsJp/hs29OUQAWAUhqRmZVucNCa8VWkCr5FV1ibau4HBzD
-         HrrCc13VxptI9FKaflCJb9scErFGyicmMQfkGmmygIbV0vlMM6KJJYuKX8jTmPTVjEfM
-         4CMQ==
+        bh=cH+ADVJ0HXS1iofeNk+DmtBk2pqSDzBL0jxbhBzwjVU=;
+        b=ZkTtLKAvsdt8U13dZroPUGizqXFWUs7S4wokRgXebJf7Ubf2Nj4KIg4ilErfPWMTIu
+         ZDL92W4qgg36OILHszoznUCGWsNgli1aRfypSgTVcRNuTPkNpf5IfpeVVsKqZbi7Tj4S
+         LGjvbDLKj6Z26k6pZj30JeCPRiqxt1+3MijURsX6BjlGHKsn3ZA+mpYtWtjsheCX5E5a
+         htRxklmtBBrtZb/B+ooL53pjHCc3U0ihPBil6mrp53p0Py87OzDkEffSjfCWg2ymPovV
+         tNnaco3KzCB+2FFYcLMgVijvfmxcIEPkd7vlBJfJUGM7Ef7uoshWR9uKnLiqAWn7iV7y
+         gfMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=F36SFbxs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aMpShUNO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gu3-20020a056214260300b005c27e2772dfsi6035225qvb.41.2023.05.23.14.29.11
+        by mx.google.com with ESMTPS id z17-20020ac87f91000000b003f5ea6474f1si5703514qtj.436.2023.05.23.11.29.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 May 2023 14:29:11 -0700 (PDT)
+        Tue, 23 May 2023 11:29:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=F36SFbxs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aMpShUNO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1ZYq-0004c0-J8; Tue, 23 May 2023 17:28:52 -0400
+	id 1q1WkY-0008Ru-Lo; Tue, 23 May 2023 14:28:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
- id 1q1ZYp-0004bY-BA; Tue, 23 May 2023 17:28:51 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1WkX-0008RO-K5
+ for qemu-arm@nongnu.org; Tue, 23 May 2023 14:28:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
- id 1q1ZYn-0002PV-6l; Tue, 23 May 2023 17:28:51 -0400
-Received: from pps.filterd (m0353728.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 34NLR9DZ012575; Tue, 23 May 2023 21:28:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=2csBDxV1zguBvGgyEdKjn0fdKJ9qVusmOZdgpvZP3d4=;
- b=F36SFbxsn+J1RFA2y34AKa1cis+f43b7dHG8Rsk0fk7f+BP/GS0mOrY2ZuqCX1evKOJ0
- w5PRFxOuxUfdZCtoE61Llzs/l7wY/xOjsJY8n1PDe06vi4TK9HFS6k1eHBROhBCiabQn
- ZKTZVVwT51AmXEXZxlO4OJpGr3hAhpbnKWVLnJWq3eK5k1Gs6W6skr+GOLnsbBCpPXSN
- uBL9jf7+YH0UOa1TqLV3PRZE8WBXrPJ31xcXzs7LhK/F0VlnYZXcGPfNcZOouPrJOdlP
- TgKye+lP4UG2h/3xtosQk1M9s9SQUUa6qjQV+8BwXKdy/Rlsr2oitmQgXkMT1eUuf9+v eg== 
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qs4d71jec-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 May 2023 21:28:30 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34NL1UoJ030140;
- Tue, 23 May 2023 21:28:29 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([9.208.130.100])
- by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3qppcd56c2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 May 2023 21:28:29 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 34NLSSkg2491038
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 23 May 2023 21:28:28 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 30C1A5803F;
- Tue, 23 May 2023 21:28:28 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A5E2F58054;
- Tue, 23 May 2023 21:28:27 +0000 (GMT)
-Received: from [9.211.84.237] (unknown [9.211.84.237])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 23 May 2023 21:28:27 +0000 (GMT)
-Message-ID: <140a525f-aed4-c47e-871d-a5fe6d1140f5@linux.vnet.ibm.com>
-Date: Tue, 23 May 2023 16:28:27 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1WkV-0004Nv-Fj
+ for qemu-arm@nongnu.org; Tue, 23 May 2023 14:28:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684866522;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cH+ADVJ0HXS1iofeNk+DmtBk2pqSDzBL0jxbhBzwjVU=;
+ b=aMpShUNOBlJ0y+Ks2Sd58KoF66iCqwsUDLzY1zhlK4IxqkELv662cjZ9ueKhtlK5tvzYTv
+ Z9FgwNPOYgBTajoPFfqp/aA9sUwSZzHS/CdQY8yaCTKPi0T4IhhE1GbPH8CCF787YF7bd6
+ 3eZqRokxj+HIrWXKydvzSIvUQs65HJ0=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-310-k9bhToGcPo6m8KZWNIWDBw-1; Tue, 23 May 2023 14:28:41 -0400
+X-MC-Unique: k9bhToGcPo6m8KZWNIWDBw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-30a88ed463eso1270026f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 23 May 2023 11:28:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684866520; x=1687458520;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cH+ADVJ0HXS1iofeNk+DmtBk2pqSDzBL0jxbhBzwjVU=;
+ b=ahoZ5sHyJAFQYV5/lWy/OgfMObvOcym5QCB3dxd4cqoT8nPQsth2RT0PIQ616gHikH
+ DAVN6mBxRRCTwSr/nvJgXRTs0rGhO33+Ziey0Y3c4X4oFs4L/uaedMMZpvD9nuXnJeO7
+ XsO92jIEKBBiCdQd5L3FNVMNMLuJ2A6KCH/eOU4BJjLsAn6q+pEY59sgougW6EI25Y1S
+ 8yQYp6oYe7QSQKO4CXm/S4tcMm4+nGrIJJ2NB1KD3VBjsAT7VVknWd4Zv/ZgnayvQ3Sf
+ g/v1BTEEKLb6H7aMZGsPjfUtCgXojSOvzxvAz/2R7hf1BsKbUov7rCthV2pFePZN/8Pt
+ 6ZLg==
+X-Gm-Message-State: AC+VfDz0MoxJaIiVhWkva61ntvGW/E/lnGNa7EWQOreNXO2w6BLwshCK
+ 9bl3MRMZvyTU0ZNwdDHRxn9AgOAycF+vEsYyYqR2t4xnM74K/qsb190oLbB+e+YIB76QyKxwrih
+ xQe6PedQ0ioou
+X-Received: by 2002:a5d:6144:0:b0:307:9d2a:fd35 with SMTP id
+ y4-20020a5d6144000000b003079d2afd35mr11464761wrt.53.1684866520289; 
+ Tue, 23 May 2023 11:28:40 -0700 (PDT)
+X-Received: by 2002:a5d:6144:0:b0:307:9d2a:fd35 with SMTP id
+ y4-20020a5d6144000000b003079d2afd35mr11464752wrt.53.1684866519970; 
+ Tue, 23 May 2023 11:28:39 -0700 (PDT)
+Received: from [192.168.8.105] (tmo-117-143.customers.d1-online.com.
+ [80.187.117.143]) by smtp.gmail.com with ESMTPSA id
+ c5-20020adfe705000000b002c71b4d476asm12009036wrm.106.2023.05.23.11.28.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 May 2023 11:28:39 -0700 (PDT)
+Message-ID: <30ec2bec-a7f1-f9a6-bb17-661de19b2aaf@redhat.com>
+Date: Tue, 23 May 2023 20:28:37 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH v2 1/1] Add vpd data for Rainier machine
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH 3/3] arm/Kconfig: Make TCG dependence explicit
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20230523180525.29994-1-farosas@suse.de>
+ <20230523180525.29994-4-farosas@suse.de>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230523180525.29994-4-farosas@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Ninad Palsule <ninad@linux.ibm.com>, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, andrew@aj.id.au, joe@jms.id.au
-Cc: qemu-arm@nongnu.org
-References: <20230522153659.3379729-1-ninad@linux.ibm.com>
- <20230522153659.3379729-2-ninad@linux.ibm.com>
- <52f72e7d-fe49-a3b9-271c-b508fa2c5a87@kaod.org>
-From: Ninad Palsule <ninad@linux.vnet.ibm.com>
-In-Reply-To: <52f72e7d-fe49-a3b9-271c-b508fa2c5a87@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: WCeXa-6wN5Liu4CfKoZrxOh0g2nr2FNH
-X-Proofpoint-ORIG-GUID: WCeXa-6wN5Liu4CfKoZrxOh0g2nr2FNH
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-05-23_14,2023-05-23_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- impostorscore=0 malwarescore=0 mlxscore=0 adultscore=0 clxscore=1015
- mlxlogscore=999 phishscore=0 bulkscore=0 suspectscore=0 spamscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2305230168
-Received-SPF: none client-ip=148.163.156.1;
- envelope-from=ninad@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,159 +137,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bsT/R1FofK7l
+X-TUID: Ul8YaRjbVlQS
 
-Hello Cedric,
+On 23/05/2023 20.05, Fabiano Rosas wrote:
+> Replace the 'default y if TCG' pattern with 'default y; depends on
+> TCG'.
+> 
+> That makes explict that there is a dependence on TCG and enabling
+> these CONFIGs via .mak files without TCG present will fail earlier.
+> 
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   hw/arm/Kconfig | 123 ++++++++++++++++++++++++++++++++-----------------
+>   1 file changed, 82 insertions(+), 41 deletions(-)
 
-On 5/23/23 12:53 AM, Cédric Le Goater wrote:
-> On 5/22/23 17:36, Ninad Palsule wrote:
->> The VPD data is added for system and BMC FRU. This data is fabricated.
->>
->> Tested:
->>     - The system-vpd.service is active.
->>     - VPD service related to bmc is active.
->> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Thank you for the review!
-
->
-> Thanks,
->
-> C.
->
->
->> ---
->>   hw/arm/aspeed.c        |  6 ++++--
->>   hw/arm/aspeed_eeprom.c | 45 +++++++++++++++++++++++++++++++++++++++++-
->>   hw/arm/aspeed_eeprom.h |  5 +++++
->>   3 files changed, 53 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 0b29028fe1..bfc2070bd2 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -788,8 +788,10 @@ static void 
->> rainier_bmc_i2c_init(AspeedMachineState *bmc)
->>                        0x48);
->> i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
->>                        0x4a);
->> -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * 
->> KiB);
->> -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * 
->> KiB);
->> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
->> +                          64 * KiB, rainier_bb_fruid, 
->> rainier_bb_fruid_len);
->> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
->> +                          64 * KiB, rainier_bmc_fruid, 
->> rainier_bmc_fruid_len);
->>       create_pca9552(soc, 8, 0x60);
->>       create_pca9552(soc, 8, 0x61);
->>       /* Bus 8: ucd90320@11 */
->> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
->> index dc33a88a54..ace5266cec 100644
->> --- a/hw/arm/aspeed_eeprom.c
->> +++ b/hw/arm/aspeed_eeprom.c
->> @@ -119,9 +119,52 @@ const uint8_t yosemitev2_bmc_fruid[] = {
->>       0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
->>   };
->>   +const uint8_t rainier_bb_fruid[] = {
->> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
->> 0x00, 0x84,
->> +    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 
->> 0x44, 0x02,
->> +    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 
->> 0x00, 0x37,
->> +    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 
->> 0x00, 0x00,
->> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 
->> 0x52, 0x54,
->> +    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 
->> 0x4e, 0x49,
->> +    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 
->> 0x56, 0x53,
->> +    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 
->> 0x00, 0x00,
->> +    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 
->> 0x00, 0x00,
->> +    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 
->> 0x19, 0x00,
->> +    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 
->> 0x36, 0x00,
->> +    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 
->> 0x44, 0x45,
->> +    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 
->> 0x33, 0x34,
->> +    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 
->> 0x4e, 0x04,
->> +    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 
->> 0x39, 0x50,
->> +    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 
->> 0x52, 0x54,
->> +    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 
->> 0x4d, 0x53,
->> +    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 
->> 0x2d, 0x32,
->> +    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 
->> 0x00, 0x23,
->> +    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 
->> 0x07, 0x31,
->> +    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 
->> 0x31, 0x31,
->> +    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 
->> 0x00, 0x00,
->> +    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 
->> 0x50, 0x49,
->> +    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 
->> 0x00, 0x00,
->> +    0x00, 0x00,
->> +};
->> +
->> +/* Rainier BMC FRU */
->> +const uint8_t rainier_bmc_fruid[] = {
->> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
->> 0x00, 0x84,
->> +    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 
->> 0x44, 0x02,
->> +    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 
->> 0x00, 0x37,
->> +    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 
->> 0x00, 0x00,
->> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 
->> 0x52, 0x54,
->> +    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 
->> 0x4e, 0x49,
->> +    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 
->> 0x50, 0x46,
->> +    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 
->> 0x49, 0x4e,
->> +    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 
->> 0x02, 0x30,
->> +    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
->> +};
->> +
->>   const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
->>   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
->>   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
->>   const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
->> -
->>   const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
->> +const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
->> +const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
->> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
->> index 86db6f0479..bbf9e54365 100644
->> --- a/hw/arm/aspeed_eeprom.h
->> +++ b/hw/arm/aspeed_eeprom.h
->> @@ -22,4 +22,9 @@ extern const size_t fby35_bmc_fruid_len;
->>   extern const uint8_t yosemitev2_bmc_fruid[];
->>   extern const size_t yosemitev2_bmc_fruid_len;
->>   +extern const uint8_t rainier_bb_fruid[];
->> +extern const size_t rainier_bb_fruid_len;
->> +extern const uint8_t rainier_bmc_fruid[];
->> +extern const size_t rainier_bmc_fruid_len;
->> +
->>   #endif
->

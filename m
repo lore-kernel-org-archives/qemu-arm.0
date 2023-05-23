@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2038525ejb;
-        Tue, 23 May 2023 10:29:19 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4YT89f/NQrfc9rNiTEMtuLc00WbK0Q2py/+FJm55o/i++r+Auw6MqpddNCLhtX61cnqYLX
-X-Received: by 2002:a05:620a:8c04:b0:75b:23a1:3646 with SMTP id qz4-20020a05620a8c0400b0075b23a13646mr4145835qkn.7.1684862959457;
-        Tue, 23 May 2023 10:29:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684862959; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2038577ejb;
+        Tue, 23 May 2023 10:29:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ47rodnau4ljb2hvGPJM+n2xlqKwOy5DCr1FBb0IogrMqK/bOizEGLsRripvzjOHfeHQWGM
+X-Received: by 2002:a05:620a:147:b0:75b:23a0:dec4 with SMTP id e7-20020a05620a014700b0075b23a0dec4mr4600295qkn.66.1684862963988;
+        Tue, 23 May 2023 10:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684862963; cv=none;
         d=google.com; s=arc-20160816;
-        b=kb6vtpcs0eII71cR6AtQdqkUZ+517jge5IMtUbp02XTG3WM9nC+pSPbyeWbA5QZt+h
-         SZDhCYIXBADQ1019+AxtoAtPSXnEXvcTnGQ/Hy/0WjZpy+00/GXq/7PbSgaFFOxTbsra
-         byExoBtGgvP4YB6P2o0jTguWU+FtJj6v03VtSPzFhWpfq5MQ2e/ryIrniWiKedGNdTn6
-         v6JZJ00D227+QPFYiCuKOwh/8YP8GyoSJkfaSwvAPIEBdNTX21pU7Cno10Y+LByv0EB/
-         gIj4Xgn6mjsit4b8lab4w5csS6fd42kFrvX9HCumETik80T+xPMSp2XXyZWeU1xBcvK1
-         3Yog==
+        b=oDmMT4q/oE6wR39RZs3dNE1oytWcDxeRzjp8ZKssiqo/y49M8IjEno0WDu+lzLCipa
+         nzJeCh5Ke0ujAGhq26828/uLPh7PBYsPKLnznF57ZAXmsNMHKbafFnU4hEnF+VaOBs63
+         SJLYzfLZmQiQUOqLwHkKEWcn6WEOoZdUr3IgSHoK3nVfHV+eYfvmFMJMeQnWdZ6px8k5
+         3ZaKXu2vnvbWT/oiBrYV5Q/XpBAzLGyKCnNCh6rTTpDcvSaANSyd5tw5De+PKWDuO2Nf
+         hmsPiKJV2ps/OUgfdifd/l7Io4OMKz3QZv+nVZXr3wYnnLjkuRC5wduOpBE7XB97cs0Y
+         yzEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=YEpGmRg5GUnndxj6u4yWHcwoKuZsUGvxmxfvfo4Bl5M=;
-        b=L34dyLE8UOGNrOQ3hc1EVo87MQ8COqS8DXAhpgcU3ZISy0eNPQtEHTPimvBd5OGScJ
-         mg4RlOUaI+JJyWy4h4FChCN9ckcLY56bf84jIWQ/gr/zuQAwm6Bv6A+SxCdfpvdN2hAm
-         aw/hGGj0RbVuB0WN5+Q3SIxZ03ZDZFwrYeDvjvNOdtBcq/uarg/MnqiqpifwiXQU5mYw
-         yS3tFvtuQosxDhTZxQhO33ToYbGVyXlkcNc4TWQ1s5dJzKaPbgqBqdpg86osjamj1dPk
-         vxRjIlvuwsNjtAQS/6qjeSsCWEFxVkB/hEo4gWbc/WXJKly0xy9dOy4J5KnDSJIOZo4q
-         K5kw==
+        bh=pRJlzK0ZGD9ZAZw/HEOzb2gMD94xAylCd8I4Dpvi3eg=;
+        b=VtwOamaVt/o+NR3lzVeKnyBZss8SB5w85LOm7Cg6V23wxt9wWMPx103mcDrviNwK/O
+         uOmQbAybcTbsUPWz4/XWyhWFENBEVwxyKE0JGn3Sg+o41K9ehsQd02w8Dxjm6H/8pe6W
+         1HosIZudFzfMyEkGVfezWPcHPH3jJHNDB0y9ZP4TAMq9AKkfvxEGKCZAUe9dVqKun4U6
+         XWGhfMjtZ2/sUz0tHcuzgAHWoOJhvBip2sWhL8dYNsanTWbPjD7N7NVFrJJvPZSgbuvm
+         1o+8DG1nL8S7605hlGxyPIpArFzGzh8H0PCaEot9i1YbgtTwaBXz/7GzAjSfGqxiLZ6k
+         vC5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k25-20020ae9f119000000b0075b18047486si2754549qkg.729.2023.05.23.10.29.19
+        by mx.google.com with ESMTPS id r15-20020a05620a03cf00b007518941ffd6si5194563qkm.52.2023.05.23.10.29.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 May 2023 10:29:19 -0700 (PDT)
+        Tue, 23 May 2023 10:29:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,37 +39,38 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1Von-0001h7-1n; Tue, 23 May 2023 13:29:08 -0400
+	id 1q1Vor-0001ig-7V; Tue, 23 May 2023 13:29:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1Vol-0001fk-Uo; Tue, 23 May 2023 13:29:03 -0400
+ id 1q1Von-0001h6-30; Tue, 23 May 2023 13:29:08 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1Vok-0006rZ-A7; Tue, 23 May 2023 13:29:03 -0400
+ id 1q1Vok-0006rk-Js; Tue, 23 May 2023 13:29:04 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 3C420260698;
- Tue, 23 May 2023 19:28:59 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 080AC260B85;
+ Tue, 23 May 2023 19:29:01 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ccccDbaEB0MV; Tue, 23 May 2023 19:28:57 +0200 (CEST)
+ with ESMTP id n5HIjaARCmwv; Tue, 23 May 2023 19:28:59 +0200 (CEST)
 Received: from applejack.lan (83.21.125.167.ipv4.supernova.orange.pl
  [83.21.125.167])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 8C9762600C6;
- Tue, 23 May 2023 19:28:56 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 91C69260BC6;
+ Tue, 23 May 2023 19:28:57 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 1/3] docs: sbsa: correct graphics card name
-Date: Tue, 23 May 2023 19:28:53 +0200
-Message-Id: <20230523172855.679018-1-marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v2 3/3] hw/arm/Kconfig: sbsa-ref uses Bochs display
+Date: Tue, 23 May 2023 19:28:55 +0200
+Message-Id: <20230523172855.679018-3-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
+In-Reply-To: <20230523172855.679018-1-marcin.juszkiewicz@linaro.org>
 References: <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
+ <20230523172855.679018-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: softfail client-ip=213.251.184.221;
@@ -93,27 +94,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OG+9FS714qw/
-
-We moved from VGA to Bochs to have PCIe card.
+X-TUID: gOGXb4UrFjfe
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- docs/system/arm/sbsa.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
-index b499d7e927..016776aed8 100644
---- a/docs/system/arm/sbsa.rst
-+++ b/docs/system/arm/sbsa.rst
-@@ -27,6 +27,6 @@ The sbsa-ref board supports:
-   - System bus EHCI controller
-   - CDROM and hard disc on AHCI bus
-   - E1000E ethernet card on PCIe bus
--  - VGA display adaptor on PCIe bus
-+  - Bochs display adapter on PCIe bus
-   - A generic SBSA watchdog device
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0f42c556d7..4484de67e8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -249,6 +249,7 @@ config SBSA_REF
+     select PL061 # GPIO
+     select USB_EHCI_SYSBUS
+     select WDT_SBSA
++    select BOCHS_DISPLAY
  
+ config SABRELITE
+     bool
 -- 
 2.40.1
 

@@ -1,65 +1,64 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1761493ejb;
-        Tue, 23 May 2023 03:07:18 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ57YA4eH0c7vmXa7gh3O94bONDrs+YY2KINl2ZbAfyW73KEa4D1aQeXIvBDDbHraeWcrVcp
-X-Received: by 2002:a05:620a:3c85:b0:75b:23a0:e7cb with SMTP id tp5-20020a05620a3c8500b0075b23a0e7cbmr3476351qkn.44.1684836438252;
-        Tue, 23 May 2023 03:07:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684836438; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1761549ejb;
+        Tue, 23 May 2023 03:07:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ53j+FmT900/GswX4QH3uRx/RNpJXqKgiTf+a4sGunugBu3pjHiw29dk0GlGMwKk/+4W0bM
+X-Received: by 2002:a05:620a:8297:b0:75b:23a1:830a with SMTP id ox23-20020a05620a829700b0075b23a1830amr3271980qkn.5.1684836444321;
+        Tue, 23 May 2023 03:07:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684836444; cv=none;
         d=google.com; s=arc-20160816;
-        b=IVxnN3boLEKxTBpkD3SG8WGkVoSV122biJPBpCrRlflvss4Z89hzJ+/ppdEm245OZm
-         8JLruCUKw5rjBAwe3y7Pf3rFkTlQcyWpvPYLdcTkIRGfTG8c//mKfdx0ttzaKFOphDCT
-         56zTA4z2yRLFrFLyHmfBx9gpHcBrlnX2gQfbFqpsUFhefhTJbBkIHRJ+rFloHhlj5hl2
-         G56FelFC1w2XlWQkqMCHtql9rTB/tH1s06T+BxzaEtYfoYJPz8VaP3cGncoJWGhO3B6F
-         warIPYS8XWH1242tTTwQraSnJ7vPDjEu/wh5gxEv5yyIGJv+WeP0mwnf4hhr+h16TOrc
-         Jdpg==
+        b=emdYVw0sBk/yXfroh9BEaGkKMCATBZ88CQaqKxXcGZXq2cknT2AjZmnZeNdTw8p14K
+         f3Oz27YYU7G36onceTvavOBAi1xlZKBEv/aSdJaD9b54GW7ZY11x8byqrNpC0UcynmTA
+         BcZjqo1WjBgUJZTVnmk4y+UpUHrIT6dJTV/5mIdwISTMIiKXXR68YwjzN6c48ByAfcn3
+         0J79lTLMp7Mn6YIIwjRWBoIkVDjjzR5zJ5k+4j53zRLIKOOOP1/ChuJpXbpuuuD594j7
+         zL0KMVeUmmOs3D2AThhkCxcGYdf1Z5VsDOcdreTNkSFaIIrux/6NdpVFjEo7SCdsHWqT
+         LOgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fGHHEh0PxGx2UX3s/8ryluow5lerVjZCF1SV9VI4ffU=;
-        b=DC8rmLoQbpnuaINl7WkiGqIFvi60ZSRkP88FGgxs3XnfNj1eELVuM3lLlgZlFZ8Jpx
-         FDbS9WJEogG7MRH+0atnMVbd9BvX6jXtOUybBciiYcob4oTS2i/kgdjVJrojg0IqJhdO
-         fqbzWrkmu7Ye2YsjkJWrUGKL9hb4BjQgH69TsYbyMx+jNYZK0JzlkUVkCg1skzs7WVp7
-         aTC0uHzbjABOE76r0BGPcF40u5Hdh/DHJa/NGBxdRjwXKS0+P5QgUU2PSahzlLxJMVOR
-         y7R9FHQgyi5JEvly1VCrOwI6ZDACSgFea27jNg//OEW4SK/Lq2TYSq65ogLsvu3Ozoh/
-         8LUA==
+        bh=Dslg074OGYKg+oVUVtOiK62XXqjzz8YznDMJnBnvWvU=;
+        b=enUjgcynO0ITnYgjapTH4MVN5bkp5/Po/TxOPDhKQcFIBFsm0OYvsXf3uAwQ0/xqyF
+         bgqFLQmtEUYUiBs9XSfhrB+lTcpDiyngkTFvkl/37Qdtyx09ggfecZWgPprsKMYXs9fT
+         qQURMMYmMHyfe3zOTQ+sFisAdqk9GtQZovjHMhRjiQyJTuNTusdzn7+3gTIoQxB8Dr1E
+         4O15ujLmd0c0WSVbvuSLQ7gfS4QgmtPLAjIbYtyiuJtjh6QFWfzRXa1Mo9vqyiH9R0Nb
+         ACIMZbYshqcA82+V3Fbmo2iko3Pi1N5IBrO8uJdeC4A+TKycjScXCBdQiOIs9jiVqNyv
+         2B9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=AdrKLiUT;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=MwbKrcCA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12-20020a37c44c000000b0075b257fba27si1220943qkm.106.2023.05.23.03.07.18
+        by mx.google.com with ESMTPS id pn12-20020a056214130c00b006167cf62dd3si4722219qvb.590.2023.05.23.03.07.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 May 2023 03:07:18 -0700 (PDT)
+        Tue, 23 May 2023 03:07:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@163.com header.s=s110527 header.b=AdrKLiUT;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=MwbKrcCA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1Ou4-0005Gi-RR; Tue, 23 May 2023 06:06:04 -0400
+	id 1q1Ou0-0005Bh-7q; Tue, 23 May 2023 06:06:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
- id 1q1Ou3-0005En-Hh; Tue, 23 May 2023 06:06:03 -0400
-Received: from m12.mail.163.com ([220.181.12.198])
+ id 1q1Otu-0004zL-Ev; Tue, 23 May 2023 06:05:54 -0400
+Received: from m12.mail.163.com ([220.181.12.215])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <qianfanguijin@163.com>)
- id 1q1Ou1-0007BV-51; Tue, 23 May 2023 06:06:03 -0400
+ id 1q1Otp-00078R-Pd; Tue, 23 May 2023 06:05:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=fGHHE
- h0PxGx2UX3s/8ryluow5lerVjZCF1SV9VI4ffU=; b=AdrKLiUTrMm1/81r0orNg
- Pxf9RSWBpRd2FyLLfNiT4X0Z7sGCcANNh4KgVfV9uv4HNoiHiTPUlhUNqUibC+Xk
- fhja4HRRzf4DT/ppUdwlV0Qqu7L/gm3s401a+qObkSyRZmgbfC5zTSjJ/UwNd+gP
- G5rMhZmuM80hcroLO1atfg=
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=Dslg0
+ 74OGYKg+oVUVtOiK62XXqjzz8YznDMJnBnvWvU=; b=MwbKrcCAEC2AjqoQQRX9X
+ ZGqGKtoQXDkZcxwsv+fyzSxhdbs9cU6ktEdBJtkO/Ex9MFuLOffufRGtf0bFVor8
+ 5AWL19cXG0mcr8JUKlXGbHBwPcMIVl6E/4nQxGsQvEeLySu8ZiI4K/Dj4Kf2ur0W
+ +GHZeuLeJ+Xlapt3Go3weY=
 Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
- by zwqz-smtp-mta-g0-3 (Coremail) with SMTP id
- _____wAnDC3Wj2xkMfafAQ--.65319S12; 
- Tue, 23 May 2023 18:05:32 +0800 (CST)
+ by zwqz-smtp-mta-g0-3 (Coremail) with SMTP id _____wAnDC3Wj2xkMfafAQ--.65319S7;
+ Tue, 23 May 2023 18:05:22 +0800 (CST)
 From: qianfanguijin@163.com
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -69,31 +68,31 @@ Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>,
  qianfan Zhao <qianfanguijin@163.com>
-Subject: [PATCH v5 10/11] tests: avocado: boot_linux_console: Add test case
- for bpim2u
-Date: Tue, 23 May 2023 18:05:07 +0800
-Message-Id: <20230523100508.32564-11-qianfanguijin@163.com>
+Subject: [PATCH v5 05/11] hw/misc: Rename axp209 to axp22x and add support
+ AXP221 PMU
+Date: Tue, 23 May 2023 18:05:02 +0800
+Message-Id: <20230523100508.32564-6-qianfanguijin@163.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230523100508.32564-1-qianfanguijin@163.com>
 References: <20230523100508.32564-1-qianfanguijin@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wAnDC3Wj2xkMfafAQ--.65319S12
-X-Coremail-Antispam: 1Uf129KBjvJXoW3Wryxtr1xtw1UKw43Ar1rXrb_yoW3Zr4kpr
- WDGr15Kr18JFs8Jr4xKrWUu34UJw4vkay7JasrGrZ3WFsFk3yvgFyakr1F9rZ8Xa9avasx
- Cayqya1xWryUJFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zR6by_UUUUU=
+X-CM-TRANSID: _____wAnDC3Wj2xkMfafAQ--.65319S7
+X-Coremail-Antispam: 1Uf129KBjvAXoW3uryDKr47XrW5KFWxJFyUAwb_yoW8CrW3Wo
+ WFga9rZw1UKrWxAr1S9ry8trWfXr12kF4UXF47AFn29a1xAFn3ZrsIkw4kWr13KFs5KryU
+ Xr1vy39xAFnIvas5n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RAyCXUUUUU
 X-Originating-IP: [218.201.129.19]
-X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXA147VXl6riL-QAAsQ
-Received-SPF: pass client-ip=220.181.12.198;
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiXAN47VXl6riLgAAAsj
+Received-SPF: pass client-ip=220.181.12.215;
  envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,206 +107,656 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: giZ0E3ZMMUaW
+X-TUID: BWlHVjSL2fXC
 
 From: qianfan Zhao <qianfanguijin@163.com>
 
-Add test case for booting from initrd and sd card.
+This patch adds minimal support for AXP-221 PMU and connect it to
+bananapi M2U board.
 
 Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 ---
- tests/avocado/boot_linux_console.py | 176 ++++++++++++++++++++++++++++
- 1 file changed, 176 insertions(+)
+ hw/arm/Kconfig        |   3 +-
+ hw/arm/bananapi_m2u.c |   6 +
+ hw/misc/Kconfig       |   2 +-
+ hw/misc/axp209.c      | 238 -----------------------------------
+ hw/misc/axp2xx.c      | 283 ++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build   |   2 +-
+ hw/misc/trace-events  |   8 +-
+ 7 files changed, 297 insertions(+), 245 deletions(-)
+ delete mode 100644 hw/misc/axp209.c
+ create mode 100644 hw/misc/axp2xx.c
 
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index c0675809e6..6ed660611f 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -769,6 +769,182 @@ def test_arm_quanta_gsj_initrd(self):
-         self.wait_for_console_pattern(
-                 'Give root password for system maintenance')
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0afb87ec1a..aacfbe17ad 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -355,7 +355,7 @@ config ALLWINNER_A10
+     select ALLWINNER_WDT
+     select ALLWINNER_EMAC
+     select ALLWINNER_I2C
+-    select AXP209_PMU
++    select AXP2XX_PMU
+     select SERIAL
+     select UNIMP
  
-+    def test_arm_bpim2u(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:bpim2u
-+        :avocado: tags=accel:tcg
-+        """
-+        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
-+                   'linux-image-current-sunxi_21.02.2_armhf.deb')
-+        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-5.10.16-sunxi')
-+        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
-+                    'sun8i-r40-bananapi-m2-ultra.dtb')
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
+@@ -378,6 +378,7 @@ config ALLWINNER_R40
+     bool
+     default y if TCG && ARM
+     select ALLWINNER_A10_PIT
++    select AXP2XX_PMU
+     select SERIAL
+     select ARM_TIMER
+     select ARM_GIC
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index 1d49a006b5..9c5360a41b 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -23,6 +23,7 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "hw/boards.h"
++#include "hw/i2c/i2c.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/arm/allwinner-r40.h"
+ 
+@@ -61,6 +62,7 @@ static void bpim2u_init(MachineState *machine)
+ {
+     bool bootroom_loaded = false;
+     AwR40State *r40;
++    I2CBus *i2c;
+ 
+     /* BIOS is not supported by this board */
+     if (machine->firmware) {
+@@ -104,6 +106,10 @@ static void bpim2u_init(MachineState *machine)
+         }
+     }
+ 
++    /* Connect AXP221 */
++    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
++    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
 +
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200n8 '
-+                               'earlycon=uart,mmio32,0x1c28000')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-append', kernel_command_line)
-+        self.vm.launch()
-+        console_pattern = 'Kernel command line: %s' % kernel_command_line
-+        self.wait_for_console_pattern(console_pattern)
+     /* SDRAM */
+     memory_region_add_subregion(get_system_memory(),
+                                 r40->memmap[AW_R40_DEV_SDRAM], machine->ram);
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 2ef5781ef8..efeb430a6c 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -176,7 +176,7 @@ config ALLWINNER_A10_CCM
+ config ALLWINNER_A10_DRAMC
+     bool
+ 
+-config AXP209_PMU
++config AXP2XX_PMU
+     bool
+     depends on I2C
+ 
+diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
+deleted file mode 100644
+index 2908ed99a6..0000000000
+--- a/hw/misc/axp209.c
++++ /dev/null
+@@ -1,238 +0,0 @@
+-/*
+- * AXP-209 PMU Emulation
+- *
+- * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a
+- * copy of this software and associated documentation files (the "Software"),
+- * to deal in the Software without restriction, including without limitation
+- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+- * and/or sell copies of the Software, and to permit persons to whom the
+- * Software is furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in
+- * all copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+- * DEALINGS IN THE SOFTWARE.
+- *
+- * SPDX-License-Identifier: MIT
+- */
+-
+-#include "qemu/osdep.h"
+-#include "qemu/log.h"
+-#include "trace.h"
+-#include "hw/i2c/i2c.h"
+-#include "migration/vmstate.h"
+-
+-#define TYPE_AXP209_PMU "axp209_pmu"
+-
+-#define AXP209(obj) \
+-    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
+-
+-/* registers */
+-enum {
+-    REG_POWER_STATUS = 0x0u,
+-    REG_OPERATING_MODE,
+-    REG_OTG_VBUS_STATUS,
+-    REG_CHIP_VERSION,
+-    REG_DATA_CACHE_0,
+-    REG_DATA_CACHE_1,
+-    REG_DATA_CACHE_2,
+-    REG_DATA_CACHE_3,
+-    REG_DATA_CACHE_4,
+-    REG_DATA_CACHE_5,
+-    REG_DATA_CACHE_6,
+-    REG_DATA_CACHE_7,
+-    REG_DATA_CACHE_8,
+-    REG_DATA_CACHE_9,
+-    REG_DATA_CACHE_A,
+-    REG_DATA_CACHE_B,
+-    REG_POWER_OUTPUT_CTRL = 0x12u,
+-    REG_DC_DC2_OUT_V_CTRL = 0x23u,
+-    REG_DC_DC2_DVS_CTRL = 0x25u,
+-    REG_DC_DC3_OUT_V_CTRL = 0x27u,
+-    REG_LDO2_4_OUT_V_CTRL,
+-    REG_LDO3_OUT_V_CTRL,
+-    REG_VBUS_CH_MGMT = 0x30u,
+-    REG_SHUTDOWN_V_CTRL,
+-    REG_SHUTDOWN_CTRL,
+-    REG_CHARGE_CTRL_1,
+-    REG_CHARGE_CTRL_2,
+-    REG_SPARE_CHARGE_CTRL,
+-    REG_PEK_KEY_CTRL,
+-    REG_DC_DC_FREQ_SET,
+-    REG_CHR_TEMP_TH_SET,
+-    REG_CHR_HIGH_TEMP_TH_CTRL,
+-    REG_IPSOUT_WARN_L1,
+-    REG_IPSOUT_WARN_L2,
+-    REG_DISCHR_TEMP_TH_SET,
+-    REG_DISCHR_HIGH_TEMP_TH_CTRL,
+-    REG_IRQ_BANK_1_CTRL = 0x40u,
+-    REG_IRQ_BANK_2_CTRL,
+-    REG_IRQ_BANK_3_CTRL,
+-    REG_IRQ_BANK_4_CTRL,
+-    REG_IRQ_BANK_5_CTRL,
+-    REG_IRQ_BANK_1_STAT = 0x48u,
+-    REG_IRQ_BANK_2_STAT,
+-    REG_IRQ_BANK_3_STAT,
+-    REG_IRQ_BANK_4_STAT,
+-    REG_IRQ_BANK_5_STAT,
+-    REG_ADC_ACIN_V_H = 0x56u,
+-    REG_ADC_ACIN_V_L,
+-    REG_ADC_ACIN_CURR_H,
+-    REG_ADC_ACIN_CURR_L,
+-    REG_ADC_VBUS_V_H,
+-    REG_ADC_VBUS_V_L,
+-    REG_ADC_VBUS_CURR_H,
+-    REG_ADC_VBUS_CURR_L,
+-    REG_ADC_INT_TEMP_H,
+-    REG_ADC_INT_TEMP_L,
+-    REG_ADC_TEMP_SENS_V_H = 0x62u,
+-    REG_ADC_TEMP_SENS_V_L,
+-    REG_ADC_BAT_V_H = 0x78u,
+-    REG_ADC_BAT_V_L,
+-    REG_ADC_BAT_DISCHR_CURR_H,
+-    REG_ADC_BAT_DISCHR_CURR_L,
+-    REG_ADC_BAT_CHR_CURR_H,
+-    REG_ADC_BAT_CHR_CURR_L,
+-    REG_ADC_IPSOUT_V_H,
+-    REG_ADC_IPSOUT_V_L,
+-    REG_DC_DC_MOD_SEL = 0x80u,
+-    REG_ADC_EN_1,
+-    REG_ADC_EN_2,
+-    REG_ADC_SR_CTRL,
+-    REG_ADC_IN_RANGE,
+-    REG_GPIO1_ADC_IRQ_RISING_TH,
+-    REG_GPIO1_ADC_IRQ_FALLING_TH,
+-    REG_TIMER_CTRL = 0x8au,
+-    REG_VBUS_CTRL_MON_SRP,
+-    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
+-    REG_GPIO0_FEAT_SET,
+-    REG_GPIO_OUT_HIGH_SET,
+-    REG_GPIO1_FEAT_SET,
+-    REG_GPIO2_FEAT_SET,
+-    REG_GPIO_SIG_STATE_SET_MON,
+-    REG_GPIO3_SET,
+-    REG_COULOMB_CNTR_CTRL = 0xb8u,
+-    REG_POWER_MEAS_RES,
+-    NR_REGS
+-};
+-
+-#define AXP209_CHIP_VERSION_ID             (0x01)
+-#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+-#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
+-
+-/* A simple I2C slave which returns values of ID or CNT register. */
+-typedef struct AXP209I2CState {
+-    /*< private >*/
+-    I2CSlave i2c;
+-    /*< public >*/
+-    uint8_t regs[NR_REGS];  /* peripheral registers */
+-    uint8_t ptr;            /* current register index */
+-    uint8_t count;          /* counter used for tx/rx */
+-} AXP209I2CState;
+-
+-/* Reset all counters and load ID register */
+-static void axp209_reset_enter(Object *obj, ResetType type)
+-{
+-    AXP209I2CState *s = AXP209(obj);
+-
+-    memset(s->regs, 0, NR_REGS);
+-    s->ptr = 0;
+-    s->count = 0;
+-    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
+-    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
+-    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
+-}
+-
+-/* Handle events from master. */
+-static int axp209_event(I2CSlave *i2c, enum i2c_event event)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-
+-    s->count = 0;
+-
+-    return 0;
+-}
+-
+-/* Called when master requests read */
+-static uint8_t axp209_rx(I2CSlave *i2c)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-    uint8_t ret = 0xff;
+-
+-    if (s->ptr < NR_REGS) {
+-        ret = s->regs[s->ptr++];
+-    }
+-
+-    trace_axp209_rx(s->ptr - 1, ret);
+-
+-    return ret;
+-}
+-
+-/*
+- * Called when master sends write.
+- * Update ptr with byte 0, then perform write with second byte.
+- */
+-static int axp209_tx(I2CSlave *i2c, uint8_t data)
+-{
+-    AXP209I2CState *s = AXP209(i2c);
+-
+-    if (s->count == 0) {
+-        /* Store register address */
+-        s->ptr = data;
+-        s->count++;
+-        trace_axp209_select(data);
+-    } else {
+-        trace_axp209_tx(s->ptr, data);
+-        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
+-            s->regs[s->ptr++] = data;
+-        }
+-    }
+-
+-    return 0;
+-}
+-
+-static const VMStateDescription vmstate_axp209 = {
+-    .name = TYPE_AXP209_PMU,
+-    .version_id = 1,
+-    .fields = (VMStateField[]) {
+-        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
+-        VMSTATE_UINT8(count, AXP209I2CState),
+-        VMSTATE_UINT8(ptr, AXP209I2CState),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static void axp209_class_init(ObjectClass *oc, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(oc);
+-    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+-    ResettableClass *rc = RESETTABLE_CLASS(oc);
+-
+-    rc->phases.enter = axp209_reset_enter;
+-    dc->vmsd = &vmstate_axp209;
+-    isc->event = axp209_event;
+-    isc->recv = axp209_rx;
+-    isc->send = axp209_tx;
+-}
+-
+-static const TypeInfo axp209_info = {
+-    .name = TYPE_AXP209_PMU,
+-    .parent = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(AXP209I2CState),
+-    .class_init = axp209_class_init
+-};
+-
+-static void axp209_register_devices(void)
+-{
+-    type_register_static(&axp209_info);
+-}
+-
+-type_init(axp209_register_devices);
+diff --git a/hw/misc/axp2xx.c b/hw/misc/axp2xx.c
+new file mode 100644
+index 0000000000..41538c1cd7
+--- /dev/null
++++ b/hw/misc/axp2xx.c
+@@ -0,0 +1,283 @@
++/*
++ * AXP-2XX PMU Emulation, supported lists:
++ *   AXP209
++ *   AXP221
++ *
++ * Copyright (C) 2022 Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
++ * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a
++ * copy of this software and associated documentation files (the "Software"),
++ * to deal in the Software without restriction, including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++ * DEALINGS IN THE SOFTWARE.
++ *
++ * SPDX-License-Identifier: MIT
++ */
 +
-+    def test_arm_bpim2u_initrd(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=accel:tcg
-+        :avocado: tags=machine:bpim2u
-+        """
-+        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
-+                   'linux-image-current-sunxi_21.02.2_armhf.deb')
-+        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-5.10.16-sunxi')
-+        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
-+                    'sun8i-r40-bananapi-m2-ultra.dtb')
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
-+        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
-+                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-+                      'arm/rootfs-armv7a.cpio.gz')
-+        initrd_hash = '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        archive.gzip_uncompress(initrd_path_gz, initrd_path)
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qom/object.h"
++#include "trace.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
 +
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200 '
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-initrd', initrd_path,
-+                         '-append', kernel_command_line,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Boot successful.')
++#define TYPE_AXP2XX     "axp2xx_pmu"
++#define TYPE_AXP209_PMU "axp209_pmu"
++#define TYPE_AXP221_PMU "axp221_pmu"
 +
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun8i Family')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-+                                                'system-control@1c00000')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
++OBJECT_DECLARE_TYPE(AXP2xxI2CState, AXP2xxClass, AXP2XX)
 +
-+    def test_arm_bpim2u_gmac(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=accel:tcg
-+        :avocado: tags=machine:bpim2u
-+        :avocado: tags=device:sd
-+        """
-+        self.require_netdev('user')
++#define NR_REGS                            (0xff)
 +
-+        deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
-+                   'linux-image-current-sunxi_21.02.2_armhf.deb')
-+        deb_hash = '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-5.10.16-sunxi')
-+        dtb_path = ('/usr/lib/linux-image-current-sunxi/'
-+                    'sun8i-r40-bananapi-m2-ultra.dtb')
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
-+        rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
-+                      'buildroot-baseline/20221116.0/armel/rootfs.ext2.xz')
-+        rootfs_hash = 'fae32f337c7b87547b10f42599acf109da8b6d9a'
-+        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
-+        image_pow2ceil_expand(rootfs_path)
++/* A simple I2C slave which returns values of ID or CNT register. */
++typedef struct AXP2xxI2CState {
++    /*< private >*/
++    I2CSlave i2c;
++    /*< public >*/
++    uint8_t regs[NR_REGS];  /* peripheral registers */
++    uint8_t ptr;            /* current register index */
++    uint8_t count;          /* counter used for tx/rx */
++} AXP2xxI2CState;
 +
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200 '
-+                               'root=/dev/mmcblk0 rootwait rw '
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
-+                         '-net', 'nic,model=gmac,netdev=host_gmac',
-+                         '-netdev', 'user,id=host_gmac',
-+                         '-append', kernel_command_line,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        shell_ready = "/bin/sh: can't access tty; job control turned off"
-+        self.wait_for_console_pattern(shell_ready)
++typedef struct AXP2xxClass {
++    /*< private >*/
++    I2CSlaveClass parent_class;
++    /*< public >*/
++    void (*reset_enter)(AXP2xxI2CState *s, ResetType type);
++} AXP2xxClass;
 +
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun8i Family')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
-+                                                'mmcblk0')
-+        exec_command_and_wait_for_pattern(self, 'ifconfig eth0 up',
-+                                                 'eth0: Link is Up')
-+        exec_command_and_wait_for_pattern(self, 'udhcpc eth0',
-+            'udhcpc: lease of 10.0.2.15 obtained')
-+        exec_command_and_wait_for_pattern(self, 'ping -c 3 10.0.2.2',
-+            '3 packets transmitted, 3 packets received, 0% packet loss')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
++#define AXP209_CHIP_VERSION_ID             (0x01)
++#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
 +
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
-+    def test_arm_bpim2u_openwrt_22_03_3(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:bpim2u
-+        :avocado: tags=device:sd
-+        """
++/* Reset all counters and load ID register */
++static void axp209_reset_enter(AXP2xxI2CState *s, ResetType type)
++{
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
 +
-+        # This test download a 8.9 MiB compressed image and expand it
-+        # to 127 MiB.
-+        image_url = ('https://downloads.openwrt.org/releases/22.03.3/targets/'
-+                     'sunxi/cortexa7/openwrt-22.03.3-sunxi-cortexa7-'
-+                     'sinovoip_bananapi-m2-ultra-ext4-sdcard.img.gz')
-+        image_hash = ('5b41b4e11423e562c6011640f9a7cd3b'
-+                      'dd0a3d42b83430f7caa70a432e6cd82c')
-+        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                         algorithm='sha256')
-+        image_path = archive.extract(image_path_gz, self.workdir)
-+        image_pow2ceil_expand(image_path)
++    s->regs[0x03] = AXP209_CHIP_VERSION_ID;
++    s->regs[0x23] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
 +
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image_path + ',if=sd,format=raw',
-+                         '-nic', 'user',
-+                         '-no-reboot')
-+        self.vm.launch()
++    s->regs[0x30] = 0x60;
++    s->regs[0x32] = 0x46;
++    s->regs[0x34] = 0x41;
++    s->regs[0x35] = 0x22;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3a] = 0x68;
++    s->regs[0x3b] = 0x5f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x40] = 0xd8;
++    s->regs[0x42] = 0xff;
++    s->regs[0x43] = 0x3b;
++    s->regs[0x80] = 0xe0;
++    s->regs[0x82] = 0x83;
++    s->regs[0x83] = 0x80;
++    s->regs[0x84] = 0x32;
++    s->regs[0x86] = 0xff;
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0xa0;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x07;
++}
 +
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'usbcore.nousb '
-+                               'noreboot')
++#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
++#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
++#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
++#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
++#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
++#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
 +
-+        self.wait_for_console_pattern('U-Boot SPL')
++/* Reset all counters and load ID register */
++static void axp221_reset_enter(AXP2xxI2CState *s, ResetType type)
++{
++    memset(s->regs, 0, NR_REGS);
++    s->ptr = 0;
++    s->count = 0;
 +
-+        interrupt_interactive_console_until_pattern(
-+                self, 'Hit any key to stop autoboot:', '=>')
-+        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
-+                                                kernel_command_line + "'", '=>')
-+        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel ...');
++    /* input power status register */
++    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
++                    | AXP221_PWR_STATUS_ACIN_AVAIL
++                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
 +
-+        self.wait_for_console_pattern(
-+            'Please press Enter to activate this console.')
++    s->regs[0x01] = 0x00; /* no battery is connected */
 +
-+        exec_command_and_wait_for_pattern(self, ' ', 'root@')
++    /*
++     * CHIPID register, no documented on datasheet, but it is checked in
++     * u-boot spl. I had read it from AXP221s and got 0x06 value.
++     * So leave 06h here.
++     */
++    s->regs[0x03] = 0x06;
 +
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun8i Family')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-+                                                'system-control@1c00000')
++    s->regs[0x10] = 0xbf;
++    s->regs[0x13] = 0x01;
++    s->regs[0x30] = 0x60;
++    s->regs[0x31] = 0x03;
++    s->regs[0x32] = 0x43;
++    s->regs[0x33] = 0xc6;
++    s->regs[0x34] = 0x45;
++    s->regs[0x35] = 0x0e;
++    s->regs[0x36] = 0x5d;
++    s->regs[0x37] = 0x08;
++    s->regs[0x38] = 0xa5;
++    s->regs[0x39] = 0x1f;
++    s->regs[0x3c] = 0xfc;
++    s->regs[0x3d] = 0x16;
++    s->regs[0x80] = 0x80;
++    s->regs[0x82] = 0xe0;
++    s->regs[0x84] = 0x32;
++    s->regs[0x8f] = 0x01;
 +
-     def test_arm_orangepi(self):
-         """
-         :avocado: tags=arch:arm
++    s->regs[0x90] = 0x07;
++    s->regs[0x91] = 0x1f;
++    s->regs[0x92] = 0x07;
++    s->regs[0x93] = 0x1f;
++
++    s->regs[0x40] = 0xd8;
++    s->regs[0x41] = 0xff;
++    s->regs[0x42] = 0x03;
++    s->regs[0x43] = 0x03;
++
++    s->regs[0xb8] = 0xc0;
++    s->regs[0xb9] = 0x64;
++    s->regs[0xe6] = 0xa0;
++}
++
++static void axp2xx_reset_enter(Object *obj, ResetType type)
++{
++    AXP2xxI2CState *s = AXP2XX(obj);
++    AXP2xxClass *sc = AXP2XX_GET_CLASS(s);
++
++    sc->reset_enter(s, type);
++}
++
++/* Handle events from master. */
++static int axp2xx_event(I2CSlave *i2c, enum i2c_event event)
++{
++    AXP2xxI2CState *s = AXP2XX(i2c);
++
++    s->count = 0;
++
++    return 0;
++}
++
++/* Called when master requests read */
++static uint8_t axp2xx_rx(I2CSlave *i2c)
++{
++    AXP2xxI2CState *s = AXP2XX(i2c);
++    uint8_t ret = 0xff;
++
++    if (s->ptr < NR_REGS) {
++        ret = s->regs[s->ptr++];
++    }
++
++    trace_axp2xx_rx(s->ptr - 1, ret);
++
++    return ret;
++}
++
++/*
++ * Called when master sends write.
++ * Update ptr with byte 0, then perform write with second byte.
++ */
++static int axp2xx_tx(I2CSlave *i2c, uint8_t data)
++{
++    AXP2xxI2CState *s = AXP2XX(i2c);
++
++    if (s->count == 0) {
++        /* Store register address */
++        s->ptr = data;
++        s->count++;
++        trace_axp2xx_select(data);
++    } else {
++        trace_axp2xx_tx(s->ptr, data);
++        s->regs[s->ptr++] = data;
++    }
++
++    return 0;
++}
++
++static const VMStateDescription vmstate_axp2xx = {
++    .name = TYPE_AXP2XX,
++    .version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(regs, AXP2xxI2CState, NR_REGS),
++        VMSTATE_UINT8(ptr, AXP2xxI2CState),
++        VMSTATE_UINT8(count, AXP2xxI2CState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void axp2xx_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
++    ResettableClass *rc = RESETTABLE_CLASS(oc);
++
++    rc->phases.enter = axp2xx_reset_enter;
++    dc->vmsd = &vmstate_axp2xx;
++    isc->event = axp2xx_event;
++    isc->recv = axp2xx_rx;
++    isc->send = axp2xx_tx;
++}
++
++static const TypeInfo axp2xx_info = {
++    .name = TYPE_AXP2XX,
++    .parent = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(AXP2xxI2CState),
++    .class_size = sizeof(AXP2xxClass),
++    .class_init = axp2xx_class_init,
++    .abstract = true,
++};
++
++static void axp209_class_init(ObjectClass *oc, void *data)
++{
++    AXP2xxClass *sc = AXP2XX_CLASS(oc);
++
++    sc->reset_enter = axp209_reset_enter;
++}
++
++static const TypeInfo axp209_info = {
++    .name = TYPE_AXP209_PMU,
++    .parent = TYPE_AXP2XX,
++    .class_init = axp209_class_init
++};
++
++static void axp221_class_init(ObjectClass *oc, void *data)
++{
++    AXP2xxClass *sc = AXP2XX_CLASS(oc);
++
++    sc->reset_enter = axp221_reset_enter;
++}
++
++static const TypeInfo axp221_info = {
++    .name = TYPE_AXP221_PMU,
++    .parent = TYPE_AXP2XX,
++    .class_init = axp221_class_init,
++};
++
++static void axp2xx_register_devices(void)
++{
++    type_register_static(&axp2xx_info);
++    type_register_static(&axp209_info);
++    type_register_static(&axp221_info);
++}
++
++type_init(axp2xx_register_devices);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 96e35f1cdb..1db0343333 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -45,7 +45,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+ softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true: files('allwinner-r40-ccu.c'))
+-softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
++softmmu_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
+ softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+ softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index c47876a902..24cdec83fe 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -23,10 +23,10 @@ allwinner_sid_write(uint64_t offset, uint64_t data, unsigned size) "offset 0x%"
+ avr_power_read(uint8_t value) "power_reduc read value:%u"
+ avr_power_write(uint8_t value) "power_reduc write value:%u"
+ 
+-# axp209.c
+-axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
+-axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+-axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
++# axp2xx
++axp2xx_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " : 0x%" PRIx8
++axp2xx_select(uint8_t reg) "Accessing reg 0x%" PRIx8
++axp2xx_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " : 0x%" PRIx8
+ 
+ # eccmemctl.c
+ ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
 -- 
 2.25.1
 

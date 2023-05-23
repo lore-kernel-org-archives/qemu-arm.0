@@ -1,119 +1,101 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1458108ejb;
-        Mon, 22 May 2023 14:01:59 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Ht1+jcvBg8AnSdvn9Aad+wJ69aSdfuE8yAPvQEokk9vneq8juo7hnVBk7CLHav3nZKhvv
-X-Received: by 2002:a05:620a:8cc:b0:75b:23a0:dec3 with SMTP id z12-20020a05620a08cc00b0075b23a0dec3mr2206587qkz.65.1684789319155;
-        Mon, 22 May 2023 14:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684789319; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1546760ejb;
+        Mon, 22 May 2023 17:41:26 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ64dNhlxsKE8HHjA/SweNTohvHPgtklva+FGtTQHYmvo+MPeFNjJa+Qb4mTvk6ygpD+jamJ
+X-Received: by 2002:a05:6214:1948:b0:623:65d4:f646 with SMTP id q8-20020a056214194800b0062365d4f646mr21887479qvk.42.1684802486509;
+        Mon, 22 May 2023 17:41:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684802486; cv=none;
         d=google.com; s=arc-20160816;
-        b=yKUOpOqlZgvzNp17MAjD2odrvhrjNQq62S6y1u6vOvuq5BXf5PJiI+rXClQ6QTywfc
-         lJeyPOTkceOYxL1vlyru0t/A8Gif/j+VwUFo+6wW3CxmJs0UBXVXzmgeLHTCLS6ml1jJ
-         6EDV+A/BRR6+Gk4q7P+f81aGdemX7xtRk76laUUXWJzvax4RDTTqf2olzS59Qra58zFP
-         9IP6ZBVaXwlkRKhUxH5x+mhjDEL+2V6GhwRsMDniArGiltZh3qqJt9z6RBzqcH4RSNBW
-         OsPDsMw2N0UZGuw8oD/fCorydLQ+woDFgLIzq55qUnuTUhncnPdyZm/eTzFaxFC6xAF4
-         GzVA==
+        b=B98haDP2GTUC68SKCUI58HtvT0MXTtZDTmnpgrs8C+WR586WfCzpbkUeljflhJhlG3
+         SfzHwuO9lCN331bS8jvbKHSDe3NoibnNdwDm7MpzTkW7hRM7IYOjngXxM62yKkgXR2E/
+         q3+cP1G7LW6s3kEb0VZexzRN0oSi/BXXy78MrKQiatSsAUXye1kf8RyBDPEde9iAr86c
+         rk/GyeR9+31TO2jZSqTd9L1ytw2mqm6jnK78OPrl9M6nezIdIN5wceUUQPgM1OF0nXcY
+         NVJDNCq2Ev37rNWGHQp9kCyjqXhqqhgfunBRycxNhnGxzYwMGVJETunKH4T7GBBnIUYb
+         +nmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=3roqq8/YdF4w+YsjL2h/vQAbTjtxxl1tkfpwgkRMPi4=;
-        b=am4dHH/vw4BYbsiOsmdUQbAKU4UL1wuWriuJ8gz3WuxbS7TocdLC+a8aQrgSnF44cX
-         cwNH6VDUwp1rNQVymFmJqMNszzyn8LMg7J4ua231pliHJzn4jbaYT5A6vmoY31h4AFFd
-         AaxhKxuChn33mB/RKyUm67Cug8RrKM5DtuEwhqRW0i0vFlV1AW9EHuLeZdZ0lfBmtE+8
-         wr6ked0CQz8bnyqTcRt05eCvCEnhljn+vF+EPSfQVPuWmtUAxRoCsj/TdMw8Xk9A5hJn
-         ugffzzGc3mUhsuvIF5ULlb89cBDPnQ0dqWDfZLY26GQe1atdbeS8aSlifuzYbODJPf0J
-         E4tA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bqBK0uIhmtm92g5rNCm4Pdm9eHtmElOniHJDm/xPmyo=;
+        b=we6EGE1ZmfkrSpWwIOqs2btnD5H6MeFn9khGE3jhJT/b7pHdTzyTxKmHozDzf1ZKVQ
+         jVsSveJwnJtZIJHNw6+IM3kXhU+V4s5jiKDqJVdBL7JaETwTnOCMFWgTyM8uUVo6disU
+         G6hyIJHPzVbw4bCtzieZbBP8M6IkcZc1/NFMMUh9WeQmVw7Cc69eKvj6uO4Q9MeMJ1Xz
+         OCxZrCqXV3/SioLVk9TyzZ7eCiTLYNuTUYH6/RbtPBZB+ltFyFexAIDHPI/aLojimnKe
+         DqghQ06jXmweWwBY3ZMfPRiCNn2hejsj1ldcBF3j7YjY4F6DfdKlgcrFNQZ/KtMPZ47R
+         mSTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Z4SzFmwT;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=Fbbyv8qJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kd25-20020a056214401900b0061b673ca906si4088414qvb.66.2023.05.22.14.01.58
+        by mx.google.com with ESMTPS id m5-20020ad45dc5000000b005e5c0c2c638si4270244qvh.576.2023.05.22.17.41.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 May 2023 14:01:59 -0700 (PDT)
+        Mon, 22 May 2023 17:41:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Z4SzFmwT;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=Fbbyv8qJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1Cf7-00076C-1j; Mon, 22 May 2023 17:01:50 -0400
+	id 1q1G5S-00052s-E7; Mon, 22 May 2023 20:41:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1q1Cez-000740-Td; Mon, 22 May 2023 17:01:43 -0400
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1q1Cex-0002sA-RX; Mon, 22 May 2023 17:01:41 -0400
-Received: by mail-lj1-x22e.google.com with SMTP id
- 38308e7fff4ca-2af20198f20so52197191fa.0; 
- Mon, 22 May 2023 14:01:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684789297; x=1687381297;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3roqq8/YdF4w+YsjL2h/vQAbTjtxxl1tkfpwgkRMPi4=;
- b=Z4SzFmwTuP6ueAVeYaRCTVakpszSa5nkoSO1V8OpcgUbqoC+byzYn9y+F4yUWYVhEf
- acVRv9IYzs79pkNNlJWoZ5rNr28JXTqxCjzRelm+XPYEEKYbOBSLicx9+T3VpDIQea+h
- hJ+KGENNssQdSPT41b3D84y4OyHnqGH8mbB5YuzfoDt4v6hkfPW6QTdcCE9sfryDhBRk
- veYPAb+vv1OjYNgLHw2KeUA7Cki7uW8jsgXjSj4aBJg3d8cXNGevs3rn3X9iOR4l8A9V
- PzHytmL5WtoSqBqmGMEn/GoWuW0AOrn1ZxhD/sdlxgx03/L6x/QJVCxWDBd1PEbiklSx
- ZzXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684789297; x=1687381297;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3roqq8/YdF4w+YsjL2h/vQAbTjtxxl1tkfpwgkRMPi4=;
- b=V3PLOvyakpHUOXTAIb10WX6u2sK7UUO/S83gduMUd7VKAr2PvJ/N0W/aADgdRM0Qds
- ULfUPaLJ/CsBOIj9JMa072DrHCvF9JApbE/CV1uxnYGTpF217g2Cl/l3oQkKwGuYc9OT
- EyMtMKEwehhadZFBe5ZdWsoRnirrGpV1ZTpxmqL4mBbWZ8IFmk2Gra8z5ZHps94Tr/gX
- uLPlwmhNpXrqFOvMIfCe/4+bhOXWtSW/T0GDzHNcH+bUje2Ca8dASzbltZ63IUtXm8Bh
- TaMGzJV0Zd4E5EBfC5AUSDfM6IJKgayU+1GfyAC8ZFwAo2OCBFb7T5wFXWVvZJGDDAYt
- /1iw==
-X-Gm-Message-State: AC+VfDxFC/kKvqZwc1fmE+iCAwii70XWlOx7LeytouVlwaMLszsghzja
- pveFYiDrN3uh1MljbsFpNcQ=
-X-Received: by 2002:a2e:7a12:0:b0:2ac:8e5a:1054 with SMTP id
- v18-20020a2e7a12000000b002ac8e5a1054mr4384879ljc.0.1684789296235; 
- Mon, 22 May 2023 14:01:36 -0700 (PDT)
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
- by smtp.gmail.com with ESMTPSA id
- z18-20020a2e3512000000b002aa3ad9014asm1282247ljz.54.2023.05.22.14.01.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 May 2023 14:01:35 -0700 (PDT)
-Date: Mon, 22 May 2023 23:01:34 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:Xilinx ZynqMP and..." <qemu-arm@nongnu.org>
-Subject: Re: [QEMU][PATCH v5 3/4] xlnx-versal: Connect Xilinx VERSAL CANFD
- controllers
-Message-ID: <20230522210133.GA29905@fralle-msi>
-References: <20230519203658.21211-2-vikram.garhwal@amd.com>
- <20230519203658.21211-4-vikram.garhwal@amd.com>
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1q1G5Q-00052Q-QX; Mon, 22 May 2023 20:41:13 -0400
+Received: from m12.mail.163.com ([220.181.12.196])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1q1G59-000376-Sw; Mon, 22 May 2023 20:41:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:
+ Content-Type; bh=bqBK0uIhmtm92g5rNCm4Pdm9eHtmElOniHJDm/xPmyo=;
+ b=Fbbyv8qJj4n63DgDb/vbNjR0dJc3konfhB91BfEgb4qGsS8FP/FhXQbg7KWsHR
+ VH8jQhkVeyRI8m3aixJ40VfEDhlOjkGu96C9WEEdPUg0jOYR4VzHzOLBRR7PBpiF
+ yZTz5YzprmByGZTUOOId2udBdHdkRDpjKTBGEyj5BF5PA=
+Received: from [172.21.25.67] (unknown [218.201.129.19])
+ by zwqz-smtp-mta-g5-1 (Coremail) with SMTP id _____wAn8IBzC2xkpU18AQ--.39336S2;
+ Tue, 23 May 2023 08:40:20 +0800 (CST)
+Message-ID: <718a8efa-3977-774e-d0e7-8e4eef7e490d@163.com>
+Date: Tue, 23 May 2023 08:40:21 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230519203658.21211-4-vikram.garhwal@amd.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x22e.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v4 05/11] hw/misc: Rename axp209 to axp22x and add support
+ AXP221 PMU
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+References: <20230510103004.30015-1-qianfanguijin@163.com>
+ <20230510103004.30015-6-qianfanguijin@163.com>
+ <CAPan3Woc64177GOYyn+mYapc6Ntq+T_u_4bf-hZQ9_61qRiHKQ@mail.gmail.com>
+Content-Language: en-US
+From: qianfan <qianfanguijin@163.com>
+In-Reply-To: <CAPan3Woc64177GOYyn+mYapc6Ntq+T_u_4bf-hZQ9_61qRiHKQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wAn8IBzC2xkpU18AQ--.39336S2
+X-Coremail-Antispam: 1Uf129KBjvAXoWfur4xWry5KF17XF17KFyrtFb_yoW8uFykGo
+ WFganFvw17K348CryF9ryIyrW3Jr4j9F4UXFW7AF129F4xAFn3ArsxKwsYqw1fKa18Kry8
+ Gr92yayrAFnFv393n29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+ AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxU7VWlDUUUU
+X-Originating-IP: [218.201.129.19]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/xtbBzhh47WI0ZRFkxwAAsC
+Received-SPF: pass client-ip=220.181.12.196;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01, USER_IN_WELCOMELIST=-0.01, USER_IN_WHITELIST=-100,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.091, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,277 +110,768 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uQPDay4DWdt5
+X-TUID: 2OJfLzBRVegQ
 
-On [2023 May 19] Fri 13:36:57, Vikram Garhwal wrote:
-> Connect CANFD0 and CANFD1 on the Versal-virt machine and update xlnx-versal-virt
-> document with CANFD command line examples.
-> 
-> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
-> ---
->  docs/system/arm/xlnx-versal-virt.rst | 31 ++++++++++++++++
->  hw/arm/xlnx-versal-virt.c            | 53 ++++++++++++++++++++++++++++
->  hw/arm/xlnx-versal.c                 | 37 +++++++++++++++++++
->  include/hw/arm/xlnx-versal.h         | 12 +++++++
->  4 files changed, 133 insertions(+)
-> 
-> diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-> index 92ad10d2da..d2d1b26692 100644
-> --- a/docs/system/arm/xlnx-versal-virt.rst
-> +++ b/docs/system/arm/xlnx-versal-virt.rst
-> @@ -34,6 +34,7 @@ Implemented devices:
->  - DDR memory
->  - BBRAM (36 bytes of Battery-backed RAM)
->  - eFUSE (3072 bytes of one-time field-programmable bit array)
-> +- 2 CANFDs
->  
->  QEMU does not yet model any other devices, including the PL and the AI Engine.
->  
-> @@ -224,3 +225,33 @@ To use a different index value, N, from default of 1, add:
->  
->    Better yet, do not use actual product data when running guest image
->    on this Xilinx Versal Virt board.
-> +
-> +Using CANFDs for Versal Virt
-> +""""""""""""""""""""""""""""
-> +Versal CANFD controller is developed based on SocketCAN and QEMU CAN bus
-> +implementation. Bus connection and socketCAN connection for each CAN module
-> +can be set through command lines.
-> +
-> +To connect both CANFD0 and CANFD1 on the same bus:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +
-> +To connect CANFD0 and CANFD1 to separate buses:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus0 -object can-bus,id=canbus1 \
-> +    -machine canbus0=canbus0 -machine canbus1=canbus1
-> +
-> +The SocketCAN interface can connect to a Physical or a Virtual CAN interfaces on
-> +the host machine. Please check this document to learn about CAN interface on
-> +Linux: docs/system/devices/can.rst
-> +
-> +To connect CANFD0 and CANFD1 to host machine's CAN interface can0:
-> +
-> +.. code-block:: bash
-> +
-> +    -object can-bus,id=canbus -machine canbus0=canbus -machine canbus1=canbus
-> +    -object can-host-socketcan,id=canhost0,if=can0,canbus=canbus
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 668a9d65a4..1ee2b8697f 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -40,9 +40,11 @@ struct VersalVirt {
->          uint32_t clk_25Mhz;
->          uint32_t usb;
->          uint32_t dwc;
-> +        uint32_t canfd[2];
->      } phandle;
->      struct arm_boot_info binfo;
->  
-> +    CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
->      struct {
->          bool secure;
->      } cfg;
-> @@ -235,6 +237,38 @@ static void fdt_add_uart_nodes(VersalVirt *s)
->      }
->  }
->  
-> +static void fdt_add_canfd_nodes(VersalVirt *s)
-> +{
-> +    uint64_t addrs[] = { MM_CANFD1, MM_CANFD0 };
-> +    uint32_t size[] = { MM_CANFD1_SIZE, MM_CANFD0_SIZE };
-> +    unsigned int irqs[] = { VERSAL_CANFD1_IRQ_0, VERSAL_CANFD0_IRQ_0 };
-> +    const char clocknames[] = "can_clk\0s_axi_aclk";
-> +    int i;
-> +
-> +    /* Create and connect CANFD0 and CANFD1 nodes to canbus0. */
-> +    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
-> +        char *name = g_strdup_printf("/canfd@%" PRIx64, addrs[i]);
-> +        qemu_fdt_add_subnode(s->fdt, name);
-> +
-> +        qemu_fdt_setprop_cell(s->fdt, name, "rx-fifo-depth", 0x40);
-> +        qemu_fdt_setprop_cell(s->fdt, name, "tx-mailbox-count", 0x20);
-> +
-> +        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
-> +                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
-> +        qemu_fdt_setprop(s->fdt, name, "clock-names",
-> +                         clocknames, sizeof(clocknames));
-> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-> +                               GIC_FDT_IRQ_TYPE_SPI, irqs[i],
-> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-> +                                     2, addrs[i], 2, size[i]);
-> +        qemu_fdt_setprop_string(s->fdt, name, "compatible",
-> +                                "xlnx,canfd-2.0");
-> +
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
->                                       uint32_t phandle)
->  {
-> @@ -639,12 +673,17 @@ static void versal_virt_init(MachineState *machine)
->                              TYPE_XLNX_VERSAL);
->      object_property_set_link(OBJECT(&s->soc), "ddr", OBJECT(machine->ram),
->                               &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus0", OBJECT(s->canbus[0]),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(&s->soc), "canbus1", OBJECT(s->canbus[1]),
-> +                             &error_abort);
->      sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
->  
->      fdt_create(s);
->      create_virtio_regions(s);
->      fdt_add_gem_nodes(s);
->      fdt_add_uart_nodes(s);
-> +    fdt_add_canfd_nodes(s);
->      fdt_add_gic_nodes(s);
->      fdt_add_timer_nodes(s);
->      fdt_add_zdma_nodes(s);
-> @@ -712,6 +751,20 @@ static void versal_virt_init(MachineState *machine)
->  
->  static void versal_virt_machine_instance_init(Object *obj)
->  {
-> +    VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(obj);
-> +
-> +    /*
-> +     * User can set canbus0 and canbus1 properties to can-bus object and connect
-> +     * to socketcan(optional) interface via command line.
-> +     */
-> +    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[0],
-> +                             object_property_allow_set_link,
-> +                             0);
-> +    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-> +                             (Object **)&s->canbus[1],
-> +                             object_property_allow_set_link,
-> +                             0);
->  }
->  
->  static void versal_virt_machine_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index 69b1b99e93..1594dd6c5c 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -184,6 +184,38 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
->      }
->  }
->  
-> +static void versal_create_canfds(Versal *s, qemu_irq *pic)
-> +{
-> +    int i;
-> +    uint32_t irqs[] = { VERSAL_CANFD0_IRQ_0, VERSAL_CANFD1_IRQ_0};
-> +    uint64_t addrs[] = { MM_CANFD0, MM_CANFD1 };
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.canfd); i++) {
-> +        char *name = g_strdup_printf("canfd%d", i);
-> +        SysBusDevice *sbd;
-> +        MemoryRegion *mr;
-> +
-> +        object_initialize_child(OBJECT(s), name, &s->lpd.iou.canfd[i],
-> +                                TYPE_XILINX_CANFD);
-> +        sbd = SYS_BUS_DEVICE(&s->lpd.iou.canfd[i]);
-> +
-> +        object_property_set_int(OBJECT(&s->lpd.iou.canfd[i]), "ext_clk_freq",
-> +                                XLNX_VERSAL_CANFD_REF_CLK , &error_abort);
-> +
-> +        object_property_set_link(OBJECT(&s->lpd.iou.canfd[i]), "canfdbus",
-> +                                 OBJECT(s->lpd.iou.canbus[i]),
-> +                                 &error_abort);
-> +
-> +        sysbus_realize(sbd, &error_fatal);
-> +
-> +        mr = sysbus_mmio_get_region(sbd, 0);
-> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
-> +
-> +        sysbus_connect_irq(sbd, 0, pic[irqs[i]]);
-> +        g_free(name);
-> +    }
-> +}
-> +
->  static void versal_create_usbs(Versal *s, qemu_irq *pic)
->  {
->      DeviceState *dev;
-> @@ -718,6 +750,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->      versal_create_apu_gic(s, pic);
->      versal_create_rpu_cpus(s);
->      versal_create_uarts(s, pic);
-> +    versal_create_canfds(s, pic);
->      versal_create_usbs(s, pic);
->      versal_create_gems(s, pic);
->      versal_create_admas(s, pic);
-> @@ -757,6 +790,10 @@ static void versal_init(Object *obj)
->  static Property versal_properties[] = {
->      DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
->                       MemoryRegion *),
-> +    DEFINE_PROP_LINK("canbus0", Versal, lpd.iou.canbus[0],
-> +                      TYPE_CAN_BUS, CanBusState *),
-> +    DEFINE_PROP_LINK("canbus1", Versal, lpd.iou.canbus[1],
-> +                      TYPE_CAN_BUS, CanBusState *),
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index b6786e9832..39ee31185c 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -31,6 +31,7 @@
->  #include "hw/dma/xlnx_csu_dma.h"
->  #include "hw/misc/xlnx-versal-crl.h"
->  #include "hw/misc/xlnx-versal-pmc-iou-slcr.h"
-> +#include "hw/net/xlnx-versal-canfd.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
-> @@ -43,6 +44,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(Versal, XLNX_VERSAL)
->  #define XLNX_VERSAL_NR_SDS     2
->  #define XLNX_VERSAL_NR_XRAM    4
->  #define XLNX_VERSAL_NR_IRQS    192
-> +#define XLNX_VERSAL_NR_CANFD   2
-> +#define XLNX_VERSAL_CANFD_REF_CLK (24 * 1000 * 1000)
->  
->  struct Versal {
->      /*< private >*/
-> @@ -73,6 +76,8 @@ struct Versal {
->              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
->              XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
->              VersalUsb2 usb;
-> +            CanBusState *canbus[XLNX_VERSAL_NR_CANFD];
-> +            XlnxVersalCANFDState canfd[XLNX_VERSAL_NR_CANFD];
->          } iou;
->  
->          /* Real-time Processing Unit.  */
-> @@ -133,6 +138,8 @@ struct Versal {
->  #define VERSAL_CRL_IRQ             10
->  #define VERSAL_UART0_IRQ_0         18
->  #define VERSAL_UART1_IRQ_0         19
-> +#define VERSAL_CANFD0_IRQ_0        20
-> +#define VERSAL_CANFD1_IRQ_0        21
->  #define VERSAL_USB0_IRQ_0          22
->  #define VERSAL_GEM0_IRQ_0          56
->  #define VERSAL_GEM0_WAKE_IRQ_0     57
-> @@ -163,6 +170,11 @@ struct Versal {
->  #define MM_UART1                    0xff010000U
->  #define MM_UART1_SIZE               0x10000
->  
-> +#define MM_CANFD0                   0xff060000U
-> +#define MM_CANFD0_SIZE              0x10000
-> +#define MM_CANFD1                   0xff070000U
-> +#define MM_CANFD1_SIZE              0x10000
-> +
->  #define MM_GEM0                     0xff0c0000U
->  #define MM_GEM0_SIZE                0x10000
->  #define MM_GEM1                     0xff0d0000U
+在 2023/5/16 3:29, Niek Linnenbank 写道:
+> Hi Qianfan,
+>
+> Good idea indeed to turn this driver into a more generic one. If 
+> possible, its best to re-use code rather than adding new.
+>
+> On Wed, May 10, 2023 at 12:30 PM <qianfanguijin@163.com> wrote:
+>
+>     From: qianfan Zhao <qianfanguijin@163.com>
+>
+>     This patch adds minimal support for AXP-221 PMU and connect it to
+>     bananapi M2U board.
+>
+>     Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+>     ---
+>      hw/arm/Kconfig        |   3 +-
+>      hw/arm/bananapi_m2u.c |   6 +
+>      hw/misc/Kconfig       |   2 +-
+>      hw/misc/axp209.c      | 238 -----------------------------------
+>      hw/misc/axp2xx.c      | 283
+>     ++++++++++++++++++++++++++++++++++++++++++
+>      hw/misc/meson.build   |   2 +-
+>      hw/misc/trace-events  |   8 +-
+>      7 files changed, 297 insertions(+), 245 deletions(-)
+>      delete mode 100644 hw/misc/axp209.c
+>      create mode 100644 hw/misc/axp2xx.c
+>
+>     diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>     index b7a84f6e3f..bad4ea158c 100644
+>     --- a/hw/arm/Kconfig
+>     +++ b/hw/arm/Kconfig
+>     @@ -355,7 +355,7 @@ config ALLWINNER_A10
+>          select ALLWINNER_WDT
+>          select ALLWINNER_EMAC
+>          select ALLWINNER_I2C
+>     -    select AXP209_PMU
+>     +    select AXP2XX_PMU
+>          select SERIAL
+>          select UNIMP
+>
+>     @@ -378,6 +378,7 @@ config ALLWINNER_R40
+>          bool
+>          default y if TCG && ARM
+>          select ALLWINNER_A10_PIT
+>     +    select AXP2XX_PMU
+>          select SERIAL
+>          select ARM_TIMER
+>          select ARM_GIC
+>     diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+>     index 1d49a006b5..9c5360a41b 100644
+>     --- a/hw/arm/bananapi_m2u.c
+>     +++ b/hw/arm/bananapi_m2u.c
+>     @@ -23,6 +23,7 @@
+>      #include "qapi/error.h"
+>      #include "qemu/error-report.h"
+>      #include "hw/boards.h"
+>     +#include "hw/i2c/i2c.h"
+>      #include "hw/qdev-properties.h"
+>      #include "hw/arm/allwinner-r40.h"
+>
+>     @@ -61,6 +62,7 @@ static void bpim2u_init(MachineState *machine)
+>      {
+>          bool bootroom_loaded = false;
+>          AwR40State *r40;
+>     +    I2CBus *i2c;
+>
+>          /* BIOS is not supported by this board */
+>          if (machine->firmware) {
+>     @@ -104,6 +106,10 @@ static void bpim2u_init(MachineState *machine)
+>              }
+>          }
+>
+>     +    /* Connect AXP221 */
+>     +    i2c = I2C_BUS(qdev_get_child_bus(DEVICE(&r40->i2c0), "i2c"));
+>     +    i2c_slave_create_simple(i2c, "axp221_pmu", 0x34);
+>     +
+>          /* SDRAM */
+>          memory_region_add_subregion(get_system_memory(),
+>      r40->memmap[AW_R40_DEV_SDRAM], machine->ram);
+>     diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+>     index 2ef5781ef8..efeb430a6c 100644
+>     --- a/hw/misc/Kconfig
+>     +++ b/hw/misc/Kconfig
+>     @@ -176,7 +176,7 @@ config ALLWINNER_A10_CCM
+>      config ALLWINNER_A10_DRAMC
+>          bool
+>
+>     -config AXP209_PMU
+>     +config AXP2XX_PMU
+>          bool
+>          depends on I2C
+>
+>     diff --git a/hw/misc/axp209.c b/hw/misc/axp209.c
+>     deleted file mode 100644
+>     index 2908ed99a6..0000000000
+>     --- a/hw/misc/axp209.c
+>     +++ /dev/null
+>     @@ -1,238 +0,0 @@
+>     -/*
+>     - * AXP-209 PMU Emulation
+>     - *
+>     - * Copyright (C) 2022 Strahinja Jankovic
+>     <strahinja.p.jankovic@gmail.com>
+>     - *
+>     - * Permission is hereby granted, free of charge, to any person
+>     obtaining a
+>     - * copy of this software and associated documentation files (the
+>     "Software"),
+>     - * to deal in the Software without restriction, including without
+>     limitation
+>     - * the rights to use, copy, modify, merge, publish, distribute,
+>     sublicense,
+>     - * and/or sell copies of the Software, and to permit persons to
+>     whom the
+>     - * Software is furnished to do so, subject to the following
+>     conditions:
+>     - *
+>     - * The above copyright notice and this permission notice shall be
+>     included in
+>     - * all copies or substantial portions of the Software.
+>     - *
+>     - * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+>     KIND, EXPRESS OR
+>     - * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>     MERCHANTABILITY,
+>     - * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+>     EVENT SHALL THE
+>     - * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>     OR OTHER
+>     - * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+>     OTHERWISE, ARISING
+>     - * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+>     OTHER
+>     - * DEALINGS IN THE SOFTWARE.
+>     - *
+>     - * SPDX-License-Identifier: MIT
+>     - */
+>     -
+>     -#include "qemu/osdep.h"
+>     -#include "qemu/log.h"
+>     -#include "trace.h"
+>     -#include "hw/i2c/i2c.h"
+>     -#include "migration/vmstate.h"
+>     -
+>     -#define TYPE_AXP209_PMU "axp209_pmu"
+>     -
+>     -#define AXP209(obj) \
+>     -    OBJECT_CHECK(AXP209I2CState, (obj), TYPE_AXP209_PMU)
+>     -
+>     -/* registers */
+>     -enum {
+>     -    REG_POWER_STATUS = 0x0u,
+>     -    REG_OPERATING_MODE,
+>     -    REG_OTG_VBUS_STATUS,
+>     -    REG_CHIP_VERSION,
+>     -    REG_DATA_CACHE_0,
+>     -    REG_DATA_CACHE_1,
+>     -    REG_DATA_CACHE_2,
+>     -    REG_DATA_CACHE_3,
+>     -    REG_DATA_CACHE_4,
+>     -    REG_DATA_CACHE_5,
+>     -    REG_DATA_CACHE_6,
+>     -    REG_DATA_CACHE_7,
+>     -    REG_DATA_CACHE_8,
+>     -    REG_DATA_CACHE_9,
+>     -    REG_DATA_CACHE_A,
+>     -    REG_DATA_CACHE_B,
+>     -    REG_POWER_OUTPUT_CTRL = 0x12u,
+>     -    REG_DC_DC2_OUT_V_CTRL = 0x23u,
+>     -    REG_DC_DC2_DVS_CTRL = 0x25u,
+>     -    REG_DC_DC3_OUT_V_CTRL = 0x27u,
+>     -    REG_LDO2_4_OUT_V_CTRL,
+>     -    REG_LDO3_OUT_V_CTRL,
+>     -    REG_VBUS_CH_MGMT = 0x30u,
+>     -    REG_SHUTDOWN_V_CTRL,
+>     -    REG_SHUTDOWN_CTRL,
+>     -    REG_CHARGE_CTRL_1,
+>     -    REG_CHARGE_CTRL_2,
+>     -    REG_SPARE_CHARGE_CTRL,
+>     -    REG_PEK_KEY_CTRL,
+>     -    REG_DC_DC_FREQ_SET,
+>     -    REG_CHR_TEMP_TH_SET,
+>     -    REG_CHR_HIGH_TEMP_TH_CTRL,
+>     -    REG_IPSOUT_WARN_L1,
+>     -    REG_IPSOUT_WARN_L2,
+>     -    REG_DISCHR_TEMP_TH_SET,
+>     -    REG_DISCHR_HIGH_TEMP_TH_CTRL,
+>     -    REG_IRQ_BANK_1_CTRL = 0x40u,
+>     -    REG_IRQ_BANK_2_CTRL,
+>     -    REG_IRQ_BANK_3_CTRL,
+>     -    REG_IRQ_BANK_4_CTRL,
+>     -    REG_IRQ_BANK_5_CTRL,
+>     -    REG_IRQ_BANK_1_STAT = 0x48u,
+>     -    REG_IRQ_BANK_2_STAT,
+>     -    REG_IRQ_BANK_3_STAT,
+>     -    REG_IRQ_BANK_4_STAT,
+>     -    REG_IRQ_BANK_5_STAT,
+>     -    REG_ADC_ACIN_V_H = 0x56u,
+>     -    REG_ADC_ACIN_V_L,
+>     -    REG_ADC_ACIN_CURR_H,
+>     -    REG_ADC_ACIN_CURR_L,
+>     -    REG_ADC_VBUS_V_H,
+>     -    REG_ADC_VBUS_V_L,
+>     -    REG_ADC_VBUS_CURR_H,
+>     -    REG_ADC_VBUS_CURR_L,
+>     -    REG_ADC_INT_TEMP_H,
+>     -    REG_ADC_INT_TEMP_L,
+>     -    REG_ADC_TEMP_SENS_V_H = 0x62u,
+>     -    REG_ADC_TEMP_SENS_V_L,
+>     -    REG_ADC_BAT_V_H = 0x78u,
+>     -    REG_ADC_BAT_V_L,
+>     -    REG_ADC_BAT_DISCHR_CURR_H,
+>     -    REG_ADC_BAT_DISCHR_CURR_L,
+>     -    REG_ADC_BAT_CHR_CURR_H,
+>     -    REG_ADC_BAT_CHR_CURR_L,
+>     -    REG_ADC_IPSOUT_V_H,
+>     -    REG_ADC_IPSOUT_V_L,
+>     -    REG_DC_DC_MOD_SEL = 0x80u,
+>     -    REG_ADC_EN_1,
+>     -    REG_ADC_EN_2,
+>     -    REG_ADC_SR_CTRL,
+>     -    REG_ADC_IN_RANGE,
+>     -    REG_GPIO1_ADC_IRQ_RISING_TH,
+>     -    REG_GPIO1_ADC_IRQ_FALLING_TH,
+>     -    REG_TIMER_CTRL = 0x8au,
+>     -    REG_VBUS_CTRL_MON_SRP,
+>     -    REG_OVER_TEMP_SHUTDOWN = 0x8fu,
+>     -    REG_GPIO0_FEAT_SET,
+>     -    REG_GPIO_OUT_HIGH_SET,
+>     -    REG_GPIO1_FEAT_SET,
+>     -    REG_GPIO2_FEAT_SET,
+>     -    REG_GPIO_SIG_STATE_SET_MON,
+>     -    REG_GPIO3_SET,
+>     -    REG_COULOMB_CNTR_CTRL = 0xb8u,
+>     -    REG_POWER_MEAS_RES,
+>     -    NR_REGS
+>     -};
+>     -
+>     -#define AXP209_CHIP_VERSION_ID             (0x01)
+>     -#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+>     -#define AXP209_IRQ_BANK_1_CTRL_RESET       (0xd8)
+>     -
+>     -/* A simple I2C slave which returns values of ID or CNT register. */
+>     -typedef struct AXP209I2CState {
+>     -    /*< private >*/
+>     -    I2CSlave i2c;
+>     -    /*< public >*/
+>     -    uint8_t regs[NR_REGS];  /* peripheral registers */
+>     -    uint8_t ptr;            /* current register index */
+>     -    uint8_t count;          /* counter used for tx/rx */
+>     -} AXP209I2CState;
+>     -
+>     -/* Reset all counters and load ID register */
+>     -static void axp209_reset_enter(Object *obj, ResetType type)
+>     -{
+>     -    AXP209I2CState *s = AXP209(obj);
+>     -
+>     -    memset(s->regs, 0, NR_REGS);
+>     -    s->ptr = 0;
+>     -    s->count = 0;
+>     -    s->regs[REG_CHIP_VERSION] = AXP209_CHIP_VERSION_ID;
+>     -    s->regs[REG_DC_DC2_OUT_V_CTRL] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
+>     -    s->regs[REG_IRQ_BANK_1_CTRL] = AXP209_IRQ_BANK_1_CTRL_RESET;
+>     -}
+>     -
+>     -/* Handle events from master. */
+>     -static int axp209_event(I2CSlave *i2c, enum i2c_event event)
+>     -{
+>     -    AXP209I2CState *s = AXP209(i2c);
+>     -
+>     -    s->count = 0;
+>     -
+>     -    return 0;
+>     -}
+>     -
+>     -/* Called when master requests read */
+>     -static uint8_t axp209_rx(I2CSlave *i2c)
+>     -{
+>     -    AXP209I2CState *s = AXP209(i2c);
+>     -    uint8_t ret = 0xff;
+>     -
+>     -    if (s->ptr < NR_REGS) {
+>     -        ret = s->regs[s->ptr++];
+>     -    }
+>     -
+>     -    trace_axp209_rx(s->ptr - 1, ret);
+>     -
+>     -    return ret;
+>     -}
+>     -
+>     -/*
+>     - * Called when master sends write.
+>     - * Update ptr with byte 0, then perform write with second byte.
+>     - */
+>     -static int axp209_tx(I2CSlave *i2c, uint8_t data)
+>     -{
+>     -    AXP209I2CState *s = AXP209(i2c);
+>     -
+>     -    if (s->count == 0) {
+>     -        /* Store register address */
+>     -        s->ptr = data;
+>     -        s->count++;
+>     -        trace_axp209_select(data);
+>     -    } else {
+>     -        trace_axp209_tx(s->ptr, data);
+>     -        if (s->ptr == REG_DC_DC2_OUT_V_CTRL) {
+>     -            s->regs[s->ptr++] = data;
+>     -        }
+>     -    }
+>     -
+>     -    return 0;
+>     -}
+>     -
+>     -static const VMStateDescription vmstate_axp209 = {
+>     -    .name = TYPE_AXP209_PMU,
+>     -    .version_id = 1,
+>     -    .fields = (VMStateField[]) {
+>     -        VMSTATE_UINT8_ARRAY(regs, AXP209I2CState, NR_REGS),
+>     -        VMSTATE_UINT8(count, AXP209I2CState),
+>     -        VMSTATE_UINT8(ptr, AXP209I2CState),
+>     -        VMSTATE_END_OF_LIST()
+>     -    }
+>     -};
+>     -
+>     -static void axp209_class_init(ObjectClass *oc, void *data)
+>     -{
+>     -    DeviceClass *dc = DEVICE_CLASS(oc);
+>     -    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+>     -    ResettableClass *rc = RESETTABLE_CLASS(oc);
+>     -
+>     -    rc->phases.enter = axp209_reset_enter;
+>     -    dc->vmsd = &vmstate_axp209;
+>     -    isc->event = axp209_event;
+>     -    isc->recv = axp209_rx;
+>     -    isc->send = axp209_tx;
+>     -}
+>     -
+>     -static const TypeInfo axp209_info = {
+>     -    .name = TYPE_AXP209_PMU,
+>     -    .parent = TYPE_I2C_SLAVE,
+>     -    .instance_size = sizeof(AXP209I2CState),
+>     -    .class_init = axp209_class_init
+>     -};
+>     -
+>     -static void axp209_register_devices(void)
+>     -{
+>     -    type_register_static(&axp209_info);
+>     -}
+>     -
+>     -type_init(axp209_register_devices);
+>     diff --git a/hw/misc/axp2xx.c b/hw/misc/axp2xx.c
+>     new file mode 100644
+>     index 0000000000..52a6ffc7f3
+>     --- /dev/null
+>     +++ b/hw/misc/axp2xx.c
+>     @@ -0,0 +1,283 @@
+>     +/*
+>     + * AXP-2XX PMU Emulation, supported lists:
+>     + *   AXP209
+>     + *   AXP221
+>     + *
+>     + * Copyright (C) 2022 Strahinja Jankovic
+>     <strahinja.p.jankovic@gmail.com>
+>     + * Copyright (C) 2023 qianfan Zhao <qianfanguijin@163.com>
+>     + *
+>     + * Permission is hereby granted, free of charge, to any person
+>     obtaining a
+>     + * copy of this software and associated documentation files (the
+>     "Software"),
+>     + * to deal in the Software without restriction, including without
+>     limitation
+>     + * the rights to use, copy, modify, merge, publish, distribute,
+>     sublicense,
+>     + * and/or sell copies of the Software, and to permit persons to
+>     whom the
+>     + * Software is furnished to do so, subject to the following
+>     conditions:
+>     + *
+>     + * The above copyright notice and this permission notice shall be
+>     included in
+>     + * all copies or substantial portions of the Software.
+>     + *
+>     + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+>     KIND, EXPRESS OR
+>     + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+>     MERCHANTABILITY,
+>     + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+>     EVENT SHALL THE
+>     + * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+>     OR OTHER
+>     + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+>     OTHERWISE, ARISING
+>     + * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+>     OTHER
+>     + * DEALINGS IN THE SOFTWARE.
+>     + *
+>     + * SPDX-License-Identifier: MIT
+>     + */
+>     +
+>     +#include "qemu/osdep.h"
+>     +#include "qemu/log.h"
+>     +#include "qom/object.h"
+>     +#include "trace.h"
+>     +#include "hw/i2c/i2c.h"
+>     +#include "migration/vmstate.h"
+>     +
+>     +#define TYPE_AXP2XX     "axp2xx_pmu"
+>     +#define TYPE_AXP209_PMU "axp209_pmu"
+>     +#define TYPE_AXP221_PMU "axp221_pmu"
+>     +
+>     +OBJECT_DECLARE_TYPE(AXP2xxI2CState, AXP2xxClass, AXP2XX)
+>     +
+>     +#define NR_REGS                            (0xff)
+>     +
+>     +/* A simple I2C slave which returns values of ID or CNT register. */
+>     +typedef struct AXP2xxI2CState {
+>     +    /*< private >*/
+>     +    I2CSlave i2c;
+>     +    /*< public >*/
+>     +    uint8_t regs[NR_REGS];  /* peripheral registers */
+>     +    uint8_t ptr;            /* current register index */
+>     +    uint8_t count;          /* counter used for tx/rx */
+>     +} AXP2xxI2CState;
+>     +
+>     +typedef struct AXP2xxClass {
+>     +    /*< private >*/
+>     +    I2CSlaveClass parent_class;
+>     +    /*< public >*/
+>     +    void (*reset_enter)(AXP2xxI2CState *s, ResetType type);
+>     +} AXP2xxClass;
+>     +
+>     +#define AXP209_CHIP_VERSION_ID             (0x01)
+>     +#define AXP209_DC_DC2_OUT_V_CTRL_RESET     (0x16)
+>     +
+>     +/* Reset all counters and load ID register */
+>     +static void axp209_reset_enter(AXP2xxI2CState *s, ResetType type)
+>     +{
+>     +    memset(s->regs, 0, NR_REGS);
+>     +    s->ptr = 0;
+>     +    s->count = 0;
+>     +
+>     +    s->regs[0x03] = AXP209_CHIP_VERSION_ID;
+>     +    s->regs[0x23] = AXP209_DC_DC2_OUT_V_CTRL_RESET;
+>     +
+>     +    s->regs[0x30] = 0x60;
+>     +    s->regs[0x32] = 0x46;
+>     +    s->regs[0x34] = 0x41;
+>     +    s->regs[0x35] = 0x22;
+>     +    s->regs[0x36] = 0x5d;
+>     +    s->regs[0x37] = 0x08;
+>     +    s->regs[0x38] = 0xa5;
+>     +    s->regs[0x39] = 0x1f;
+>     +    s->regs[0x3a] = 0x68;
+>     +    s->regs[0x3b] = 0x5f;
+>     +    s->regs[0x3c] = 0xfc;
+>     +    s->regs[0x3d] = 0x16;
+>     +    s->regs[0x40] = 0xd8;
+>     +    s->regs[0x42] = 0xff;
+>     +    s->regs[0x43] = 0x3b;
+>     +    s->regs[0x80] = 0xe0;
+>     +    s->regs[0x82] = 0x83;
+>     +    s->regs[0x83] = 0x80;
+>     +    s->regs[0x84] = 0x32;
+>     +    s->regs[0x86] = 0xff;
+>     +    s->regs[0x90] = 0x07;
+>     +    s->regs[0x91] = 0xa0;
+>     +    s->regs[0x92] = 0x07;
+>     +    s->regs[0x93] = 0x07;
+>     +}
+>     +
+>     +#define AXP221_PWR_STATUS_ACIN_PRESENT          BIT(7)
+>     +#define AXP221_PWR_STATUS_ACIN_AVAIL            BIT(6)
+>     +#define AXP221_PWR_STATUS_VBUS_PRESENT          BIT(5)
+>     +#define AXP221_PWR_STATUS_VBUS_USED             BIT(4)
+>     +#define AXP221_PWR_STATUS_BAT_CHARGING          BIT(2)
+>     +#define AXP221_PWR_STATUS_ACIN_VBUS_POWERED     BIT(1)
+>     +
+>     +/* Reset all counters and load ID register */
+>     +static void axp221_reset_enter(AXP2xxI2CState *s, ResetType type)
+>     +{
+>     +    memset(s->regs, 0, NR_REGS);
+>     +    s->ptr = 0;
+>     +    s->count = 0;
+>     +
+>     +    /* input power status register */
+>     +    s->regs[0x00] = AXP221_PWR_STATUS_ACIN_PRESENT
+>     +                    | AXP221_PWR_STATUS_ACIN_AVAIL
+>     +                    | AXP221_PWR_STATUS_ACIN_VBUS_POWERED;
+>     +
+>     +    s->regs[0x01] = 0x00; /* no battery is connected */
+>     +
+>     +    /*
+>     +     * CHIPID register, no documented on datasheet, but it is
+>     checked in
+>     +     * u-boot spl. I had read it from AXP221s and got 0x06 value.
+>     +     * So leave 06h here.
+>     +     */
+>     +    s->regs[0x03] = 0x06;
+>     +
+>     +    s->regs[0x10] = 0xbf;
+>     +    s->regs[0x13] = 0x01;
+>     +    s->regs[0x30] = 0x60;
+>     +    s->regs[0x31] = 0x03;
+>     +    s->regs[0x32] = 0x43;
+>     +    s->regs[0x33] = 0xc6;
+>     +    s->regs[0x34] = 0x45;
+>     +    s->regs[0x35] = 0x0e;
+>     +    s->regs[0x36] = 0x5d;
+>     +    s->regs[0x37] = 0x08;
+>     +    s->regs[0x38] = 0xa5;
+>     +    s->regs[0x39] = 0x1f;
+>     +    s->regs[0x3c] = 0xfc;
+>     +    s->regs[0x3d] = 0x16;
+>     +    s->regs[0x80] = 0x80;
+>     +    s->regs[0x82] = 0xe0;
+>     +    s->regs[0x84] = 0x32;
+>     +    s->regs[0x8f] = 0x01;
+>     +
+>     +    s->regs[0x90] = 0x07;
+>     +    s->regs[0x91] = 0x1f;
+>     +    s->regs[0x92] = 0x07;
+>     +    s->regs[0x93] = 0x1f;
+>     +
+>     +    s->regs[0x40] = 0xd8;
+>     +    s->regs[0x41] = 0xff;
+>     +    s->regs[0x42] = 0x03;
+>     +    s->regs[0x43] = 0x03;
+>     +
+>     +    s->regs[0xb8] = 0xc0;
+>     +    s->regs[0xb9] = 0x64;
+>     +    s->regs[0xe6] = 0xa0;
+>
+>
+> Would it be possible to change this array to be more human readable?
+>
+> Perhaps using the register names from the datasheet (if available or 
+> some other source) as the names for defines / enums or just as 
+> comments can help.
+> That way we can know what the contents mean.
+I have thought about this, but I can't find a datasheet write in 
+english, name all registers
+an english name is hard to me. Also there has difference name for some 
+registers in linux
+kernel drivers and qeum drivers.
+
+In addition we need introduce very long register name lists and default 
+value lists.
+That will make the code like this:
+
+#define REG_XXX 0xXX
+#define REG_XXX_DEFVAL 0xXX
+...
+s->regs[REG_XXX] = REG_XXX_DEFVAL;
+
+That also make the review work more complex, we should check all REG_XXX 
+number and REG_XXX_DEFVAL
+based on the datasheet.
+
+It will be easier to check with the datasheet if we use a number here.
+>
+>     +}
+>     +
+>     +static void axp2xx_reset_enter(Object *obj, ResetType type)
+>     +{
+>     +    AXP2xxI2CState *s = AXP2XX(obj);
+>     +    AXP2xxClass *sc = AXP2XX_GET_CLASS(s);
+>     +
+>     +    sc->reset_enter(s, type);
+>     +}
+>     +
+>     +/* Handle events from master. */
+>     +static int axp2xx_event(I2CSlave *i2c, enum i2c_event event)
+>     +{
+>     +    AXP2xxI2CState *s = AXP2XX(i2c);
+>     +
+>     +    s->count = 0;
+>     +
+>     +    return 0;
+>     +}
+>     +
+>     +/* Called when master requests read */
+>     +static uint8_t axp2xx_rx(I2CSlave *i2c)
+>     +{
+>     +    AXP2xxI2CState *s = AXP2XX(i2c);
+>     +    uint8_t ret = 0xff;
+>     +
+>     +    if (s->ptr < NR_REGS) {
+>     +        ret = s->regs[s->ptr++];
+>     +    }
+>     +
+>     +    trace_axp2xx_rx(s->ptr - 1, ret);
+>     +
+>     +    return ret;
+>     +}
+>     +
+>     +/*
+>     + * Called when master sends write.
+>     + * Update ptr with byte 0, then perform write with second byte.
+>     + */
+>     +static int axp2xx_tx(I2CSlave *i2c, uint8_t data)
+>     +{
+>     +    AXP2xxI2CState *s = AXP2XX(i2c);
+>     +
+>     +    if (s->count == 0) {
+>     +        /* Store register address */
+>     +        s->ptr = data;
+>     +        s->count++;
+>     +        trace_axp2xx_select(data);
+>     +    } else {
+>     +        trace_axp2xx_tx(s->ptr, data);
+>     +        s->regs[s->ptr++] = data;
+>     +    }
+>     +
+>     +    return 0;
+>     +}
+>     +
+>     +static const VMStateDescription vmstate_axp2xx = {
+>     +    .name = TYPE_AXP209_PMU,
+>
+>
+> Should the .name value be TYPE_AXP2xx_PMU instead, since we're 
+> describing the new generic axp2xx here?
+>
+>     +    .version_id = 1,
+>     +    .fields = (VMStateField[]) {
+>     +        VMSTATE_UINT8_ARRAY(regs, AXP2xxI2CState, NR_REGS),
+>     +        VMSTATE_UINT8(count, AXP2xxI2CState),
+>     +        VMSTATE_UINT8(ptr, AXP2xxI2CState),
+>
+>
+> In the 'struct AXPxxI2CState'  definition above, the order of 
+> definition is: regs, ptr, count. For consistency, ptr and count should 
+> then be swapped here to match.
+>
+>     +        VMSTATE_END_OF_LIST()
+>
+>
+> Another question that comes to my mind here: is it allowed by the 
+> migration API to have a new axp2xx device
+> show up while the previous axp209 disappears? (in case for the 
+> allwinner A10 cubieboard).
+>
+> My expectation with this code would be that during such a migration, 
+> any current state of the axp209 device would be lost
+> and a new fresh device would show up to the guest.
+>
+> I don't know enough about the migration support to tell if this is OK 
+> or not.
+> If another reviewer could help clarify, that would be great.
+>
+>     +    }
+>     +};
+>     +
+>     +static void axp2xx_class_init(ObjectClass *oc, void *data)
+>     +{
+>     +    DeviceClass *dc = DEVICE_CLASS(oc);
+>     +    I2CSlaveClass *isc = I2C_SLAVE_CLASS(oc);
+>     +    ResettableClass *rc = RESETTABLE_CLASS(oc);
+>     +
+>     +    rc->phases.enter = axp2xx_reset_enter;
+>     +    dc->vmsd = &vmstate_axp2xx;
+>     +    isc->event = axp2xx_event;
+>     +    isc->recv = axp2xx_rx;
+>     +    isc->send = axp2xx_tx;
+>     +}
+>     +
+>     +static const TypeInfo axp2xx_info = {
+>     +    .name = TYPE_AXP2XX,
+>     +    .parent = TYPE_I2C_SLAVE,
+>     +    .instance_size = sizeof(AXP2xxI2CState),
+>     +    .class_size = sizeof(AXP2xxClass),
+>     +    .class_init = axp2xx_class_init,
+>     +    .abstract = true,
+>     +};
+>     +
+>     +static void axp209_class_init(ObjectClass *oc, void *data)
+>     +{
+>     +    AXP2xxClass *sc = AXP2XX_CLASS(oc);
+>     +
+>     +    sc->reset_enter = axp209_reset_enter;
+>     +}
+>     +
+>     +static const TypeInfo axp209_info = {
+>     +    .name = TYPE_AXP209_PMU,
+>     +    .parent = TYPE_AXP2XX,
+>     +    .class_init = axp209_class_init
+>     +};
+>     +
+>     +static void axp221_class_init(ObjectClass *oc, void *data)
+>     +{
+>     +    AXP2xxClass *sc = AXP2XX_CLASS(oc);
+>     +
+>     +    sc->reset_enter = axp221_reset_enter;
+>     +}
+>     +
+>     +static const TypeInfo axp221_info = {
+>     +    .name = TYPE_AXP221_PMU,
+>     +    .parent = TYPE_AXP2XX,
+>     +    .class_init = axp221_class_init,
+>     +};
+>     +
+>     +static void axp2xx_register_devices(void)
+>     +{
+>     +    type_register_static(&axp2xx_info);
+>     +    type_register_static(&axp209_info);
+>     +    type_register_static(&axp221_info);
+>     +}
+>     +
+>     +type_init(axp2xx_register_devices);
+>     diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+>     index 96e35f1cdb..1db0343333 100644
+>     --- a/hw/misc/meson.build
+>     +++ b/hw/misc/meson.build
+>     @@ -45,7 +45,7 @@ softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3',
+>     if_true: files('allwinner-h3-dramc.c
+>      softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true:
+>     files('allwinner-h3-sysctrl.c'))
+>      softmmu_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true:
+>     files('allwinner-sid.c'))
+>      softmmu_ss.add(when: 'CONFIG_ALLWINNER_R40', if_true:
+>     files('allwinner-r40-ccu.c'))
+>     -softmmu_ss.add(when: 'CONFIG_AXP209_PMU', if_true: files('axp209.c'))
+>     +softmmu_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
+>      softmmu_ss.add(when: 'CONFIG_REALVIEW', if_true:
+>     files('arm_sysctl.c'))
+>      softmmu_ss.add(when: 'CONFIG_NSERIES', if_true: files('cbus.c'))
+>      softmmu_ss.add(when: 'CONFIG_ECCMEMCTL', if_true:
+>     files('eccmemctl.c'))
+>     diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+>     index c47876a902..24cdec83fe 100644
+>     --- a/hw/misc/trace-events
+>     +++ b/hw/misc/trace-events
+>     @@ -23,10 +23,10 @@ allwinner_sid_write(uint64_t offset, uint64_t
+>     data, unsigned size) "offset 0x%"
+>      avr_power_read(uint8_t value) "power_reduc read value:%u"
+>      avr_power_write(uint8_t value) "power_reduc write value:%u"
+>
+>     -# axp209.c
+>     -axp209_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " :
+>     0x%" PRIx8
+>     -axp209_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+>     -axp209_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " :
+>     0x%" PRIx8
+>     +# axp2xx
+>     +axp2xx_rx(uint8_t reg, uint8_t data) "Read reg 0x%" PRIx8 " :
+>     0x%" PRIx8
+>     +axp2xx_select(uint8_t reg) "Accessing reg 0x%" PRIx8
+>     +axp2xx_tx(uint8_t reg, uint8_t data) "Write reg 0x%" PRIx8 " :
+>     0x%" PRIx8
+>
+>      # eccmemctl.c
+>      ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+>     -- 
+>     2.25.1
+>
+>
+>
 > -- 
-> 2.17.1
-> 
+> Niek Linnenbank
+>
+

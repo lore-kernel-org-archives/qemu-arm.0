@@ -1,207 +1,266 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1421163ejb;
-        Mon, 22 May 2023 12:38:22 -0700 (PDT)
-X-Received: by 2002:a2e:b0ec:0:b0:2af:1db6:8f13 with SMTP id h12-20020a2eb0ec000000b002af1db68f13mr4165994ljl.34.1684784302482;
-        Mon, 22 May 2023 12:38:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684784302; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1761143ejb;
+        Tue, 23 May 2023 03:06:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5dgSi5OrhSrTQpOQuKjG+0q/RBzufGHtTmHy2GLa6KBZHFHvwz5bSGBor7O2cINHwKiVAx
+X-Received: by 2002:a37:bd4:0:b0:75b:23a1:3662 with SMTP id 203-20020a370bd4000000b0075b23a13662mr3592979qkl.35.1684836398806;
+        Tue, 23 May 2023 03:06:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684836398; cv=none;
         d=google.com; s=arc-20160816;
-        b=fImXmwu6n3vEH5cyeQHvwgN9S77+1+cCZuQUH5VWanxSfGbJ/orjJtR2YENHEgrJOq
-         vrDZenyjpjC9ivs4mscTiAqh9I+b5ME/yK16cYmSSRYgQYn6PWeZpzQVidpGAN2u3iK1
-         eM+j6jjIxrkYKQG90eJT/nNq9R4KCW7MOv8JwOVY0a+eUZgTJDJaq/HtBEw2gkTIid8F
-         9aTofaW4ZgBB4KAapwUtglZ43t4jMJDHlYjXr+ZU3ud3U/yzbwehRp585WeH34TquEKp
-         bM91BXAmUrZ3DHdHddLEI+qZYsMBIU39uiZQrLHnvS5lDIoEdD3Y8GuYsM+pTsOfkDXD
-         Avfg==
+        b=DTaHxR8m1dG0GFAHkk4yRzW5gQyfvGX35UKwZa7COFVPzl7OvzH1mOTeViKDCCz0T7
+         EpXMT/4Gx5fn3cn2o3ZfAVTWZLo73YYY33b/xQJf4GuB500cWBDqCUvtJZ33LqwDI/jZ
+         asxfEDByd6iGwELk7CJBTULNE7DknlCUsj2H3V2jigPiZhX8fkzFSIV3JEuLtVmr7ibQ
+         9yQbm2Tkc2CW0/zB7KBInhamWCbXkhiHWFry8As3uwmmX/or4bjFmBLvfAXcsq6jNqWg
+         BtVxOJm+liIau2Md7Rd1lhctq6h4sxKVOV0A4asfOb02cWzAuRR2VmMS69ovKcx/THZ4
+         I7wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=oRMYDtMICSn5nsPyWp0UzpotVYQAEshwHkg9F8gB2eA=;
-        b=fkxG8V9pNp6xaVwmnYMy3hREDKv1JONvwkuKp2EKdSA7IL8GYMLe+RDskQOua4afjS
-         CsoHOkivnhkNoqUl/VmpaGLbRJ0SoRwOfOUNqMs0oBIb0TJc98QES0wBsk6AhIL7sgvh
-         P6UDgivEv/SQooFkUcnXaPt7D0YRUbm0Yv5SosDB+tPhmsr3F99pNg/P4uaNHtzrhkkN
-         E9hhKvKhU4sJNzWh9VwSMkvRGpqHDfReExl8kxmYPNrQjEm5QgxoBizYAbRlKbAcSVEJ
-         8l2v5jGH62ivR9M2KbH4vEfDEZrBvHwHSQ6SVDNh7uxwKTOsuYwGtZFHtrs2MVK5frwg
-         P7Xg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bA3h2I7xP6Oj01W3XOIOrdMHbHFaP7w3meXx8CbMtuQ=;
+        b=UNfz36J4RJjkEXBzmuRRBJiQqDEQ6nMgQu1J6jae4calTfQ8QOVoqZDYUDDeYZNT8u
+         uTOGyIBkqZ9EjUcqgD6NimnUNu3idu7gTZyKaWhSf538wfX40F4L454LKmv5eqYWtbhG
+         +RyG6owyRex9YJCV4vcy5ZCP6snUtNjqQwpbfAdp3tlv5XYfXn9c/9kTIz2iFmUK7Yj/
+         7QTKxZ88iNJ5pWBGsLq/4ZrVONK3qNsXkGWyj51HotadUpJeFgyV+JmATyGJw3DTooba
+         ROZZJ+VfsKNFu5SOjOCPpm0gsCadf8pzmYjq8VwfDIzVK3EWfW56xqOihWAoj86hQwZJ
+         OgaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=YheHZEcW;
-       spf=pass (google.com: domain of frasse.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=frasse.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <frasse.iglesias@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z24-20020a196518000000b004edc4ea3d5fsor1305613lfb.19.2023.05.22.12.38.22
-        (Google Transport Security);
-        Mon, 22 May 2023 12:38:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frasse.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@163.com header.s=s110527 header.b=LCzSb0Xy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r4-20020a05620a03c400b007484b783664si4462967qkm.108.2023.05.23.03.06.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 May 2023 03:06:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=YheHZEcW;
-       spf=pass (google.com: domain of frasse.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=frasse.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1684784301; x=1687376301;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=oRMYDtMICSn5nsPyWp0UzpotVYQAEshwHkg9F8gB2eA=;
-        b=YheHZEcWW9S1Z9Saj1LQ0e/3FE8CzSTA4nhjvODkq2YivyqF1OTxKOkgwk27ZVLbZR
-         rrl2JoORmNTSt4+sczh/eIf4MGkb49lloDwkIwnLCxQQLmmO3dhVLfhWD9BsIbPgVsiQ
-         P7XCX4V1eWDiGP7S3lKj3WOETSFeHZXKKlR4k6/a6dg96eM5tt8rNIQdNJ+Q7X0Xzv13
-         JhHbn9c7Jeq1kqvhMN4OqnfPCxf387gn4yuLnTDivKhyTSp6sgjHoDnpEPvFn8ny/pZe
-         VwzCuzMVk5yz1FDLeGPp2Ec1Dqu51rGfX/xhnlQ9vrWKim0yn8jIXn4eOY/TpWPJp/Qm
-         0xnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684784301; x=1687376301;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oRMYDtMICSn5nsPyWp0UzpotVYQAEshwHkg9F8gB2eA=;
-        b=FziZlRMIK81zm/WizPz85W5Lro34/NyP/SCX8VvP82qjPl15MmhPZGdQ8SnOegC/tS
-         l6UcStddhizmJmbQlk/f2VUek8os3nkDWmiwUhMZp8yZsGj3DQ/z3YcXceDTsUYJa00j
-         HLzdUoCaIPEiwaUbVFDxC4xN9t0nfL2P6c29lzpFd3+B8LaV23rQsWm2Q+edJ6pqYaKo
-         8U2J2UC0sTPBxGfnrTF8v2WBZBFEUWq8MxVzvXS7btiq42xgEzVvo+Xt+Gq59pDy1C0V
-         1fJz4xyFrb70nuMzYJE2WsCMv85Rgu6CzG+/N2sgxMmzE+TmcPTOigrhH/ws/TXkJ/xv
-         BFdw==
-X-Gm-Message-State: AC+VfDzVFMgg27cqbgSnHBtTyJxbMyLdK8Rltg6A8l6Gg2BGaJ3hEkqH
-	iO4PYjKKTOnBdKuNIIH/sIsAIdHeI0U=
-X-Google-Smtp-Source: ACHHUZ7W1XQ85Yp6SFo9ZUEnWH1fffn4Q42jPnsGKo3cTAfdPatJcR7vnkKWhH5UvuxKmkAPqZ4dpg==
-X-Received: by 2002:a2e:9588:0:b0:2ad:aa42:8c0b with SMTP id w8-20020a2e9588000000b002adaa428c0bmr4355501ljh.35.1684784301293;
-        Mon, 22 May 2023 12:38:21 -0700 (PDT)
-Return-Path: <frasse.iglesias@gmail.com>
-Received: from fralle-msi (217-76-87-243.cust.bredband2.com. [217.76.87.243])
-        by smtp.gmail.com with ESMTPSA id a19-20020a2e9813000000b002a7746800d0sm1260991ljj.130.2023.05.22.12.38.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 May 2023 12:38:20 -0700 (PDT)
-Date: Mon, 22 May 2023 21:38:19 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 03/12] util/fifo8: Introduce fifo8_peek_buf()
-Message-ID: <20230522193818.GF6984@fralle-msi>
-References: <20230522153144.30610-1-philmd@linaro.org>
- <20230522153144.30610-4-philmd@linaro.org>
+       dkim=pass header.i=@163.com header.s=s110527 header.b=LCzSb0Xy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q1Ou9-0005Mg-Rn; Tue, 23 May 2023 06:06:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <qianfanguijin@163.com>)
+ id 1q1Ou7-0005Ig-NR; Tue, 23 May 2023 06:06:07 -0400
+Received: from m12.mail.163.com ([220.181.12.216])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <qianfanguijin@163.com>)
+ id 1q1Ou5-0007DO-E1; Tue, 23 May 2023 06:06:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=bA3h2
+ I7xP6Oj01W3XOIOrdMHbHFaP7w3meXx8CbMtuQ=; b=LCzSb0Xyarg6wLf3PF1Qq
+ PebizUtr/u6dMtnPJolGXGtR1uDDUChAf2vqWjhnq/gqmKbRhc77a/iMm+982iER
+ uRUDVj9vKOdf6lp9cRNT9NiFlAHNjDiSbQHm8JPBcV5Jp84JVslJbq4kDA71m89P
+ VnDRTU3ZZlZ5mxJ3XjFQWQ=
+Received: from DESKTOP-B1R4FVG.localdomain (unknown [218.201.129.19])
+ by zwqz-smtp-mta-g1-2 (Coremail) with SMTP id _____wBXjpIDkGxk9rKiAQ--.54569S2;
+ Tue, 23 May 2023 18:05:56 +0800 (CST)
+From: qianfanguijin@163.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qianfan Zhao <qianfanguijin@163.com>
+Subject: [PATCH v5 11/11] docs: system: arm: Introduce bananapi_m2u
+Date: Tue, 23 May 2023 18:05:55 +0800
+Message-Id: <20230523100555.32718-1-qianfanguijin@163.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230522153144.30610-4-philmd@linaro.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-TUID: WNxi0K0Uowv7
+X-CM-TRANSID: _____wBXjpIDkGxk9rKiAQ--.54569S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxuw4fCF4ruF4fCr1xZw47urg_yoW7CF1kpF
+ yvka15KrWkJF1Fya97Kw1fWFy5Xas5ArWUJF1kJ34FqF98Kr1vqwn3Kwn8Wasrtw4Ivw10
+ qrW7KF12gwn8J3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pM2NZrUUUUU=
+X-Originating-IP: [218.201.129.19]
+X-CM-SenderInfo: htld0w5dqj3xxmlqqiywtou0bp/1tbiQgh47VaEFabJwAAAs3
+Received-SPF: pass client-ip=220.181.12.216;
+ envelope-from=qianfanguijin@163.com; helo=m12.mail.163.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6oPacsBTogQ2
 
-On [2023 May 22] Mon 17:31:35, Philippe Mathieu-Daudé wrote:
-> To be able to poke at FIFO content without popping it,
-> introduce the fifo8_peek_buf() method by factoring
-> common content from fifo8_pop_buf().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  include/qemu/fifo8.h | 26 ++++++++++++++++++++++++++
->  util/fifo8.c         | 22 ++++++++++++++++++----
->  2 files changed, 44 insertions(+), 4 deletions(-)
-> 
-> diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
-> index d0d02bc73d..7acf6d1347 100644
-> --- a/include/qemu/fifo8.h
-> +++ b/include/qemu/fifo8.h
-> @@ -93,6 +93,32 @@ uint8_t fifo8_pop(Fifo8 *fifo);
->   */
->  const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
->  
-> +/**
-> + * fifo8_peek_buf:
-> + * @fifo: FIFO to poke from
-> + * @max: maximum number of bytes to pop
-> + * @numptr: pointer filled with number of bytes returned (can be NULL)
-> + *
-> + * Pop a number of elements from the FIFO up to a maximum of max. The buffer
+From: qianfan Zhao <qianfanguijin@163.com>
 
-s/Pop/Peek into/
+Add documents for Banana Pi M2U
 
-> + * containing the popped data is returned. This buffer points directly into
+Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+---
+ docs/system/arm/bananapi_m2u.rst | 138 +++++++++++++++++++++++++++++++
+ 1 file changed, 138 insertions(+)
+ create mode 100644 docs/system/arm/bananapi_m2u.rst
 
-s/popped data/data peeked into/
+diff --git a/docs/system/arm/bananapi_m2u.rst b/docs/system/arm/bananapi_m2u.rst
+new file mode 100644
+index 0000000000..ae7194a9df
+--- /dev/null
++++ b/docs/system/arm/bananapi_m2u.rst
+@@ -0,0 +1,138 @@
++Banana Pi BPI-M2U (``bpim2u``)
++^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++Banana Pi BPI-M2 Ultra is a quad-core mini single board computer built with
++Allwinner A40i/R40/V40 SoC. It features 2GB of RAM and 8GB eMMC. It also
++has onboard WiFi and BT. On the ports side, the BPI-M2 Ultra has 2 USB A
++2.0 ports, 1 USB OTG port, 1 HDMI port, 1 audio jack, a DC power port,
++and last but not least, a SATA port.
++
++Supported devices
++"""""""""""""""""
++
++The Banana Pi M2U machine supports the following devices:
++
++ * SMP (Quad Core Cortex-A7)
++ * Generic Interrupt Controller configuration
++ * SRAM mappings
++ * SDRAM controller
++ * Timer device (re-used from Allwinner A10)
++ * UART
++ * SD/MMC storage controller
++ * EMAC ethernet
++ * GMAC ethernet
++ * Clock Control Unit
++ * TWI (I2C)
++
++Limitations
++"""""""""""
++
++Currently, Banana Pi M2U does *not* support the following features:
++
++- Graphical output via HDMI, GPU and/or the Display Engine
++- Audio output
++- Hardware Watchdog
++- Real Time Clock
++- USB 2.0 interfaces
++
++Also see the 'unimplemented' array in the Allwinner R40 SoC module
++for a complete list of unimplemented I/O devices: ``./hw/arm/allwinner-r40.c``
++
++Boot options
++""""""""""""
++
++The Banana Pi M2U machine can start using the standard -kernel functionality
++for loading a Linux kernel or ELF executable. Additionally, the Banana Pi M2U
++machine can also emulate the BootROM which is present on an actual Allwinner R40
++based SoC, which loads the bootloader from a SD card, specified via the -sd
++argument to qemu-system-arm.
++
++Running mainline Linux
++""""""""""""""""""""""
++
++To build a Linux mainline kernel that can be booted by the Banana Pi M2U machine,
++simply configure the kernel using the sunxi_defconfig configuration:
++
++.. code-block:: bash
++
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make mrproper
++  $ ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- make sunxi_defconfig
++
++To boot the newly build linux kernel in QEMU with the Banana Pi M2U machine, use:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M bpim2u -nographic \
++      -kernel /path/to/linux/arch/arm/boot/zImage \
++      -append 'console=ttyS0,115200' \
++      -dtb /path/to/linux/arch/arm/boot/dts/sun8i-r40-bananapi-m2-ultra.dtb
++
++Banana Pi M2U images
++""""""""""""""""""""
++
++Note that the mainline kernel does not have a root filesystem. You can choose
++to build you own image with buildroot using the bananapi_m2_ultra_defconfig.
++Also see https://buildroot.org for more information.
++
++Another possibility is to run an OpenWrt image for Banana Pi M2U which
++can be downloaded from:
++
++   https://downloads.openwrt.org/releases/22.03.3/targets/sunxi/cortexa7/
++
++When using an image as an SD card, it must be resized to a power of two. This can be
++done with the ``qemu-img`` command. It is recommended to only increase the image size
++instead of shrinking it to a power of two, to avoid loss of data. For example,
++to prepare a downloaded Armbian image, first extract it and then increase
++its size to one gigabyte as follows:
++
++.. code-block:: bash
++
++  $ qemu-img resize \
++    openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img \
++    1G
++
++Instead of providing a custom Linux kernel via the -kernel command you may also
++choose to let the Banana Pi M2U machine load the bootloader from SD card, just like
++a real board would do using the BootROM. Simply pass the selected image via the -sd
++argument and remove the -kernel, -append, -dbt and -initrd arguments:
++
++.. code-block:: bash
++
++  $ qemu-system-arm -M bpim2u -nic user -nographic \
++    -sd openwrt-22.03.3-sunxi-cortexa7-sinovoip_bananapi-m2-ultra-ext4-sdcard.img
++
++Running U-Boot
++""""""""""""""
++
++U-Boot mainline can be build and configured using the Bananapi_M2_Ultra_defconfig
++using similar commands as describe above for Linux. Note that it is recommended
++for development/testing to select the following configuration setting in U-Boot:
++
++  Device Tree Control > Provider for DTB for DT Control > Embedded DTB
++
++The BootROM of allwinner R40 loading u-boot from the 8KiB offset of sdcard.
++Let's create an bootable disk image:
++
++.. code-block:: bash
++
++  $ dd if=/dev/zero of=sd.img bs=32M count=1
++  $ dd if=u-boot-sunxi-with-spl.bin of=sd.img bs=1k seek=8 conv=notrunc
++
++And then boot it.
++
++.. code-block:: bash
++  $ qemu-system-arm -M bpim2u -nographic -sd sd.img
++
++Banana Pi M2U integration tests
++""""""""""""""""""""""""""""""
++
++The Banana Pi M2U machine has several integration tests included.
++To run the whole set of tests, build QEMU from source and simply
++provide the following command:
++
++.. code-block:: bash
++
++  $ cd qemu-build-dir
++  $ AVOCADO_ALLOW_LARGE_STORAGE=yes tests/venv/bin/avocado \
++    --verbose --show=app,console run -t machine:bpim2u \
++    ../tests/avocado/boot_linux_console.py
+-- 
+2.25.1
 
-If above sounds good:
-
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
-
-> + * the FIFO backing store and data is invalidated once any of the fifo8_* APIs
-> + * are called on the FIFO.
-
-(Above sounds as if it happens automatically to me but I'm not english native,
-a suggestion could be to put something as below "clients are responsible for
-tracking this")
-
-> + *
-> + * The function may return fewer bytes than requested when the data wraps
-> + * around in the ring buffer; in this case only a contiguous part of the data
-> + * is returned.
-> + *
-> + * The number of valid bytes returned is populated in *numptr; will always
-> + * return at least 1 byte. max must not be 0 or greater than the number of
-> + * bytes in the FIFO.
-> + *
-> + * Clients are responsible for checking the availability of requested data
-> + * using fifo8_num_used().
-> + *
-> + * Returns: A pointer to peekable data.
-> + */
-> +const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
-> +
->  /**
->   * fifo8_reset:
->   * @fifo: FIFO to reset
-> diff --git a/util/fifo8.c b/util/fifo8.c
-> index 032e985440..e12477843e 100644
-> --- a/util/fifo8.c
-> +++ b/util/fifo8.c
-> @@ -66,7 +66,8 @@ uint8_t fifo8_pop(Fifo8 *fifo)
->      return ret;
->  }
->  
-> -const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-> +static const uint8_t *fifo8_peekpop_buf(Fifo8 *fifo, uint32_t max,
-> +                                        uint32_t *numptr, bool do_pop)
->  {
->      uint8_t *ret;
->      uint32_t num;
-> @@ -74,15 +75,28 @@ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
->      assert(max > 0 && max <= fifo->num);
->      num = MIN(fifo->capacity - fifo->head, max);
->      ret = &fifo->data[fifo->head];
-> -    fifo->head += num;
-> -    fifo->head %= fifo->capacity;
-> -    fifo->num -= num;
-> +
-> +    if (do_pop) {
-> +        fifo->head += num;
-> +        fifo->head %= fifo->capacity;
-> +        fifo->num -= num;
-> +    }
->      if (numptr) {
->          *numptr = num;
->      }
->      return ret;
->  }
->  
-> +const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-> +{
-> +    return fifo8_peekpop_buf(fifo, max, numptr, false);
-> +}
-> +
-> +const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-> +{
-> +    return fifo8_peekpop_buf(fifo, max, numptr, true);
-> +}
-> +
->  void fifo8_reset(Fifo8 *fifo)
->  {
->      fifo->num = 0;
-> -- 
-> 2.38.1
-> 
-> 

@@ -1,168 +1,182 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2082105ejb;
-        Tue, 23 May 2023 11:53:15 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6F3L+S9Cdkf6rLMfuCf7fCjSfa3Q7a64pUC1qa9vHsfYAqbhODz/WicqLiJA5ydXk/DJQg
-X-Received: by 2002:a05:620a:b96:b0:75b:23a0:e7c9 with SMTP id k22-20020a05620a0b9600b0075b23a0e7c9mr4945786qkh.42.1684867995636;
-        Tue, 23 May 2023 11:53:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684867995; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2113068ejb;
+        Tue, 23 May 2023 12:56:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4OTTF3ETJbmRViYEYVDJAAlG0Tz1dNWDVGOKkYarVG3vxlw3CgcAFazzUEvQf/aTphpLHu
+X-Received: by 2002:a05:620a:6785:b0:75b:23a1:832b with SMTP id rr5-20020a05620a678500b0075b23a1832bmr4195434qkn.38.1684871817601;
+        Tue, 23 May 2023 12:56:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684871817; cv=none;
         d=google.com; s=arc-20160816;
-        b=afwFzuHTh21wqqu/pPMyUSAYfwW/ZPbvE+5/q9esqzXWpSBWsNdON5n25gVDeT623X
-         vozB/uYOcv/L59ac7cP+cK0YdTcoccuau0v72Z0q7tui8T7JkkFKFyKYqYRePZMxzrp8
-         eY5x+v45oAEbNwvkvV8pSOe+7QTkxjqwkW3SEEsfcqKluthBpoQZx29NcZvqWk58f0xT
-         JfhP3pajqW0kWDt4IhRPAYMGIW1izNveHYuHK4LJnriBp2pNGduhVXfIL/JUwC3xM0Xh
-         v9Te89EkWdxDfcnbuoKo/ofF1DddsQaa8fmTF1TOC4RjL1GlP4Aqq51etqNZ/sYM+gYy
-         fPcA==
+        b=vJW+fGbWMpXEqvkKmtwLuv6KZ/WJKaMRIF6ODdr2UOGf85T+RdDtw6ArpDSs8DlBb3
+         7CE73dMx2cgElAcb4j67G9QCoSAPvLzNQivoh9awm5gKkXjLin8alGhJISHpCsFr1pL3
+         xYEogrCyGE1/MHDj7HcOWPeaY75MVJ3LYzp2wTeSUKk8YLWWja/xiqNASCjO4k5jCqFm
+         iULPMgsxiy3/iQFN7VGT+FJVYeQLpOkfQDhJU89fLHLhjhWGyt0kGcjcQwN9rL78Mge8
+         HOR2Lwp8A3A80Xsrit2eUCcZ7Udcdhyc3FpfsthSwxcA2zovrAj6D5UsEETwMvECR8Mj
+         r8Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZqVuXQC+BWaAXu0vRsPhxO0XkmVH5UqPwxUh6UrrnFc=;
-        b=M6IyS2+bAHmxoxSo4PaPLjpwHjju0FXTnUUXlRKSzBSiQB8WP8IT1YDNlDpnWtAYEw
-         JASZOC1/UWAJ4iI3kR6AA9DW1Z/pjemp67X7yr/uQd423ah9Tm/g5pkDJYffweSKn/tf
-         rnih8ioPUnXcUwBa/NTpZ1MEp6/Y7w6DIM2h3gMLPrgAcRJoQcUMs5H+l89IhrPdnyhp
-         Ko3eutQroPhZxNcOKO9n41L0dO/PkPYqAcmlyev7ZKBSg6WCeKJTgWAth5sWiFIhbVu/
-         4slXbBmodlr1aRA6Z1MRYbqh31b24vHT0AV8lPnDP8glL5Xq2KztKNdeGEUGYZ+A2aZV
-         dDLQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=iS6IllWr8xotqYJ+kDfnN1bLpimUHqJGv84Pvf7+lk4=;
+        b=LrzAKBLzCohjZl/ExeRrRyRnPKXgkKb9alVpGr0uhv+gSLRbdz9IqQjAXGfkYQJnyQ
+         +IBkzweTz+MVTh9BDAot8LAkw4fsbKcsVlOZRtGiTmpWcxnNzBiMTXwnJ7o5rcSE1329
+         /R7GEcFYQsjZ8deXWBYOGmT499GFeSmv8JjUi4zVYWXdn0PmF6Z9tON3mDjGUp4uyvHM
+         XLyt5DXLBAwNEfwPEz7O5/fdRejSbHGT/+ldTBJSI2vGNt8W39skVX9/qeZCM5Cq3mq+
+         OoQ7dPddFZ/rlgRzBwIhTcJMSKO+/qRf6+JWvHJ46V11Q0hQ4VlQlMPT3mhBBe+FhySW
+         +IBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="F9MuPo/y";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=noYpsQ38;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cx23-20020a05620a51d700b0075b1db45b87si2483339qkb.8.2023.05.23.11.53.15
+        by mx.google.com with ESMTPS id x6-20020a05620a12a600b007577a5aca90si14971qki.282.2023.05.23.12.56.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 May 2023 11:53:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 May 2023 12:56:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="F9MuPo/y";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=noYpsQ38;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1X75-0007HS-Cr; Tue, 23 May 2023 14:52:03 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q1Y7N-0000QL-JL; Tue, 23 May 2023 15:56:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q1X71-0007GR-NT
- for qemu-arm@nongnu.org; Tue, 23 May 2023 14:51:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q1X6z-0000cP-In
- for qemu-arm@nongnu.org; Tue, 23 May 2023 14:51:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684867915;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=ZqVuXQC+BWaAXu0vRsPhxO0XkmVH5UqPwxUh6UrrnFc=;
- b=F9MuPo/y5E6qdXkKO9hDqW7IjGY9OxKqdMDP7tktecMxo5eV1xj6KQIcNLiQxwPw/Zn/ou
- 4ruj7V3pGx8ILMiSooyEj8WmCIyYBOWa+vdtHbDf8HzKvlSHZXP/76Chqwep5MjGKFiW9b
- /15PUcQa7xlH34QAjoBsPIryNbvXNdE=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-590-87WzKyLfNCOWUAOXbIWROw-1; Tue, 23 May 2023 14:51:51 -0400
-X-MC-Unique: 87WzKyLfNCOWUAOXbIWROw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0659B2932484;
- Tue, 23 May 2023 18:51:50 +0000 (UTC)
-Received: from t480s.fritz.box (unknown [10.39.194.191])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 508DD40CFD45;
- Tue, 23 May 2023 18:51:44 +0000 (UTC)
-From: David Hildenbrand <david@redhat.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q1Y7L-0000PL-Ie; Tue, 23 May 2023 15:56:23 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q1Y7J-0006Sf-Pf; Tue, 23 May 2023 15:56:23 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-96f5d651170so1069796666b.1; 
+ Tue, 23 May 2023 12:56:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1684871779; x=1687463779;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iS6IllWr8xotqYJ+kDfnN1bLpimUHqJGv84Pvf7+lk4=;
+ b=noYpsQ38ZTHGFEc4EdG9nozXZHSKxaIFk5ZE03hFwGNk4fnAWEPS+Zri61YEBXBzIP
+ /c8FwTuQjSkUF9H9sV0LpGQMQ2S9jJP6JgBoqgS4Delf3Wn/2wLx9anYaXFb8pJAReir
+ X9pGmNn9yRwWmDXjslE/mYVXQj/qh0LVsQi0gEMZbxz2e8sbas7iw/mFoRraqvId2uEZ
+ nN2E6826CbhBgcDuMbFJ1835C23jYNK9GeTFa0R8wJ1SoiUj2NOxnm0qRKJUJohQSxhn
+ x5BHVyrm3f+EBgOlJ0yQF67xs3eByd2cqFLbwj8MR0ZlElMsJKoe3S1nLUquwI7NBzbL
+ Fv7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684871779; x=1687463779;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iS6IllWr8xotqYJ+kDfnN1bLpimUHqJGv84Pvf7+lk4=;
+ b=GNz0pViaTbRL5YbzDQJPlcDhu9ah9Ki+De0pJrDoGTTf+/Jt6D73i1BA55yRfKZMAL
+ fSd78rgokRiHix4POCfcG/eW1dLBhCR8v+zsYzpFuYmDbz9IyRZt8DGnYQKgR+R2Ih2W
+ /Ndm9SoFoQQaG0BZia9I40S8WvNDpZlO19sELjXUx6KDmM7K1AuwInA3W9N6A+adq7Eu
+ 5+tXncdASQWkwmx1ihpbCpDr5WvN8pTIHHxgTOm1QBmQUIrSbDJNAqdfvo6n8ohxoWlE
+ /E2KrY0PiMUJxzjknTF3SeXjuVzDk00bIFE7afMvBNFBfEiaiiDTeVT9/hOPqTCVzq3L
+ nvdA==
+X-Gm-Message-State: AC+VfDzMe/J1rb0YyMCddAEZmVT6Gkldwb9Of9UGOBAC+iQv1DHh86N6
+ kT/a63rUFNLo50vEf5E8ROPWZKkSfmA=
+X-Received: by 2002:a17:907:d15:b0:966:4669:7e8d with SMTP id
+ gn21-20020a1709070d1500b0096646697e8dmr15182949ejc.16.1684871779340; 
+ Tue, 23 May 2023 12:56:19 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-077-183-025-113.77.183.pool.telefonica.de. [77.183.25.113])
+ by smtp.gmail.com with ESMTPSA id
+ dk13-20020a170906f0cd00b00965af4c7f07sm4737740ejb.20.2023.05.23.12.56.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 May 2023 12:56:19 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v1 0/3] memory-device: Some cleanups
-Date: Tue, 23 May 2023 20:51:41 +0200
-Message-Id: <20230523185144.533592-1-david@redhat.com>
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 2/3] hw/arm/omap: Remove unused omap_uart_attach()
+Date: Tue, 23 May 2023 21:56:07 +0200
+Message-Id: <20230523195608.125820-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230523195608.125820-1-shentey@gmail.com>
+References: <20230523195608.125820-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +K3ue25XV3dF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YnAaKotbLo2s
 
-Working on adding multi-memslot support for virtio-mem (teaching memory
-device code about memory devices that can consume multiple memslots), I
-have some preparatory cleanups in my queue that make sense independent of
-the actual memory-device/virtio-mem extensions.
+The function is unused since commit
+bdad3654d3c55f478e538037d9eccd204e5fc8ee ('hw/arm/nseries: Remove
+invalid/unnecessary n8x0_uart_setup()').
 
-Most CCed people are most probably interested in patch #2.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/arm/omap.h | 1 -
+ hw/char/omap_uart.c   | 9 ---------
+ 2 files changed, 10 deletions(-)
 
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Eduardo Habkost <eduardo@habkost.net>
-Cc: Xiaojuan Yang <yangxiaojuan@loongson.cn>
-Cc: Song Gao <gaosong@loongson.cn>
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: "Cédric Le Goater" <clg@kaod.org>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: Greg Kurz <groug@kaod.org>
-Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
-Cc: Yanan Wang <wangyanan55@huawei.com>
-
-David Hildenbrand (3):
-  memory-device: Refactor memory_device_pre_plug()
-  memory-device: Factor out device memory initialization into
-    memory_devices_init()
-  memory-device: Track used region size in DeviceMemoryState
-
- hw/arm/virt.c                  |  9 +---
- hw/i386/pc.c                   | 17 +++-----
- hw/loongarch/virt.c            | 14 ++----
- hw/mem/memory-device.c         | 80 ++++++++++++++++++----------------
- hw/ppc/spapr.c                 | 15 +++----
- include/hw/boards.h            |  2 +
- include/hw/mem/memory-device.h |  2 +
- 7 files changed, 63 insertions(+), 76 deletions(-)
-
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index c275d9b681..067e9419f7 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -724,7 +724,6 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
+                 qemu_irq txdma, qemu_irq rxdma,
+                 const char *label, Chardev *chr);
+ void omap_uart_reset(struct omap_uart_s *s);
+-void omap_uart_attach(struct omap_uart_s *s, Chardev *chr);
+ 
+ struct omap_mpuio_s;
+ qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s);
+diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
+index 1c890b9201..6848bddb4e 100644
+--- a/hw/char/omap_uart.c
++++ b/hw/char/omap_uart.c
+@@ -175,12 +175,3 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
+ 
+     return s;
+ }
+-
+-void omap_uart_attach(struct omap_uart_s *s, Chardev *chr)
+-{
+-    /* TODO: Should reuse or destroy current s->serial */
+-    s->serial = serial_mm_init(get_system_memory(), s->base, 2, s->irq,
+-                               omap_clk_getrate(s->fclk) / 16,
+-                               chr ?: qemu_chr_new("null", "null", NULL),
+-                               DEVICE_NATIVE_ENDIAN);
+-}
 -- 
 2.40.1
 

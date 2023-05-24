@@ -1,97 +1,129 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2399095ejb;
-        Wed, 24 May 2023 01:35:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4qbVNEPcqUwUFBtWwHTXRW7mEknr2x/ij0Mq5e7eG2OJF7dPrw/Qgi2LbHeKTxWITJsO2v
-X-Received: by 2002:a05:6214:5093:b0:625:76bb:b25e with SMTP id kk19-20020a056214509300b0062576bbb25emr15280715qvb.20.1684917338566;
-        Wed, 24 May 2023 01:35:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684917338; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2418953ejb;
+        Wed, 24 May 2023 02:22:25 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6QgIko4uo+7k3W8h1x1MY2zKcQGP2x1SxDOgFPoM/WsVAjHcX44FywWgOUmU07Cr+Wpnnx
+X-Received: by 2002:a05:622a:1183:b0:3f5:491e:946d with SMTP id m3-20020a05622a118300b003f5491e946dmr29640746qtk.51.1684920145208;
+        Wed, 24 May 2023 02:22:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684920145; cv=none;
         d=google.com; s=arc-20160816;
-        b=sLkFQXIESTud+vnyjiPlrFRt/zWbBKV8C0KywIDXXDKVyUuI4cHr2KIng4fIJR+G1N
-         ZAZGYvaBfsfIYCM6xEXCbt+vdoqUC/lGuWlmhyvji70b79VPujokFccwPUj4Yz7gx9Yj
-         9sjtHIoeKEpdVLL3nuYeTH7qSw8NZJWTDE1O6lIK/34SDg0pyNZf1c/v20pKKOtwyP70
-         96H/dvgyr+77VO7B/6ibnJhUvSNtyHCBPpmROaEoaTNJ5fXIiUhMjMQr6QrO55BBP+3Q
-         NvxuzXC0DGjLePBvzBe/fNvysWFqEwKeOGs9pBRGSPx15FbPVKVnv3AHpVE6Rbi/ZoyL
-         0qmw==
+        b=IZsbqIc4W2L4fng/o6f07eiF9WMn4+QShmXXM+t4sUvAdqdZ4CeXZdBm3M3qK9lyeo
+         xLUXkTBdrgt/nsTFinrXwthFnLudCgSoswnFpfgjitpF/0hMfMJKGSAfLmEoCLn85c0+
+         kePjInhGLWPMk41VtfR7EZ2NsbxNFgiI7vmRIMM+05JMzKOjYHmLSssOQuUpXfpp+fWi
+         OpDbbfW/KM+ghSTAW+1+N0Rm9hSIfltxp1nmltQeaiymPd5nlnyo/paRM641aet1olmb
+         MiBX57YpeaPv8MMmy/ikOlvKBhd5mR8ajh1ZIFzVIgYVUJm6bSjJjU2ku3TUOhdCGMAC
+         NNOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=rw2JxgJFtRcsRh/kcI4RMhOf7QsAMloe6E7O5NnjpQ4=;
-        b=q2g/hNC8oXM6lkUXxWBuA8HhdsJ/BINDTRCKtrFlmpRB6twWupbpOY7oD2j/YGySZz
-         Fv/EvI01RRbIu8WKpzIq/sjtjMDCvgBVGk6rl5Llim4Y8Jp1kAYV2V/qMOBFDDDqiIYl
-         e3xJS6mMz0OGDnOzY0KWZ45Xc2gyQ4fNszESciaKMaPuJ2ClIX93vJD0s0NdIPo25R5I
-         LstqPyt5UohLc5hOYSo9wGoY3qmg/DMmajbhscHbnLT3zBc4c9nusuRyWZTwzfxJznwW
-         5Lkhwawc936bVnuR2ZwHm15Mg91aS1Q1suyc8Lc25nJ7+f1fTiIpihMzWwuENCGtI8mc
-         UE6w==
+         :content-language:in-reply-to:subject:from:references:cc:to
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2k84SUV0s+m+tq128j2/TPhmTT8TB8HkIYVKtJnbpR4=;
+        b=LkVFMVxwpmDxR2SvuK9jBmW6PkZM7f3suZyltKB8dXNi5xh34iGdDoVyZTy/OpCaLa
+         OG4qVNGqlGo3uBvLvirGvLGR04dPU0zkfBqgmE51JZWOrU/wKs671LoVcs8M0YSa3BH0
+         EKhQLSZZAwTARnVJeGC/DQBxAZuhYjpQDY6ajDFRx8Yn76Tvf0uj3VqVhBvm733rODd7
+         nqByRl0j7sP3IdoL05CQzfmAlY43FerXjnuyu3fAqDZjOPZL1vuJ7oFMFrps8q9ywOwg
+         rxIwyKJJxo+FUsf/9OOEIRQPEraxj7sd5Hedu9ySzeLtZDfQ08AYli4dmfse/nFq1n/M
+         ASqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OiXXeSkF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3-20020ad45ba3000000b006257782665csi4771907qvq.131.2023.05.24.01.35.38
+        by mx.google.com with ESMTPS id w3-20020ac857c3000000b003ef3204c658si6648234qta.490.2023.05.24.02.22.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 01:35:38 -0700 (PDT)
+        Wed, 24 May 2023 02:22:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OiXXeSkF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1jxz-0002cS-Tk; Wed, 24 May 2023 04:35:32 -0400
+	id 1q1khB-0001RC-Vq; Wed, 24 May 2023 05:22:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1q1jxx-0002bz-CY; Wed, 24 May 2023 04:35:30 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1khA-0001Qk-Fn
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 05:22:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1q1jxv-0008ME-9I; Wed, 24 May 2023 04:35:29 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.146.208])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 5205521F6B;
- Wed, 24 May 2023 08:35:22 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 24 May
- 2023 10:35:22 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001a447bc52-2dc7-43e8-8232-2be635070245,
- B4F797F232AA4FE69AC097E437AC38C0A7FFBD15) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <019afb96-5a94-e619-c864-d7c7ab46c9c3@kaod.org>
-Date: Wed, 24 May 2023 10:35:19 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1kh8-0003kD-U8
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 05:22:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684920129;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2k84SUV0s+m+tq128j2/TPhmTT8TB8HkIYVKtJnbpR4=;
+ b=OiXXeSkFMWecztvPPojHMwZLYNcm2/AmiRYcI6g4q7fhvawUVclalxLAzcdRgIh3B3/WU5
+ aeCZQiWneexFxr/MYVP7tj0D46scievX1y7SYgyR8zt1z3LVbmgm0I+OjcVJXrkynmbXwh
+ bq9cQOpS1go/wPaZ5BOimO1F/siuXoc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-660-XeFStYRXNLaVtyvdw5I1iw-1; Wed, 24 May 2023 05:22:08 -0400
+X-MC-Unique: XeFStYRXNLaVtyvdw5I1iw-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-30620ebd3c2so372051f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 24 May 2023 02:22:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684920127; x=1687512127;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2k84SUV0s+m+tq128j2/TPhmTT8TB8HkIYVKtJnbpR4=;
+ b=U0/r5YIKX/ug5mIQT2d8lTDThaj6fPitrq2Uo81c2vKYDNcoUkE5MAXj5niTYael4C
+ s1ixwmF9l7f+nwlJtibTyeSN8P/G+hL2leFXNxgTuOXKqTYiiTOHt03hEkfoo55LQSRM
+ S/1cP4zwCxvjmmNRtPwfG4KVz99I1i3bTMlqc4388vm8BFogkmDE5wwrar7IqwwjqKaf
+ IFtMAOV3Wv7cC71dxJDtl2Jqr12SG1ajtFtJf4mS7/ksVlspOrAksSKazXISyeqVwlZy
+ Ws7ZAuEvXJWdb0XJWd4m3SNjJAIf6NxOhB7AAPkH/v3WDZsuCqbfjXwX1hNQgJkHj70y
+ 7b9Q==
+X-Gm-Message-State: AC+VfDxEUi4hBA5biWDKZkVrsSG3JtaenVvRI6vFtlVUCI7Cu6tZzoKr
+ DgtiroR9vmE7IijmvnakxBMj8xaNDF0SyvQn0s3WDXt+Lhzq+eiaSzRWo3XByVo8z7JKF6rjfI/
+ 1lh6AkpPO04WF
+X-Received: by 2002:a5d:68cd:0:b0:309:5188:5928 with SMTP id
+ p13-20020a5d68cd000000b0030951885928mr12382622wrw.35.1684920127266; 
+ Wed, 24 May 2023 02:22:07 -0700 (PDT)
+X-Received: by 2002:a5d:68cd:0:b0:309:5188:5928 with SMTP id
+ p13-20020a5d68cd000000b0030951885928mr12382607wrw.35.1684920126937; 
+ Wed, 24 May 2023 02:22:06 -0700 (PDT)
+Received: from [192.168.0.3] (ip-109-43-176-64.web.vodafone.de.
+ [109.43.176.64]) by smtp.gmail.com with ESMTPSA id
+ t1-20020a5d6a41000000b003063176ef09sm14035255wrw.6.2023.05.24.02.22.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 May 2023 02:22:06 -0700 (PDT)
+Message-ID: <6dfa9cdb-2efb-8991-e810-f08b4a215321@redhat.com>
+Date: Wed, 24 May 2023 11:22:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v3 1/1] hw/arm/aspeed:Add vpd data for Rainier machine
+To: 20230524082037.1620952-1-thuth@redhat.com, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+References: <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
+ <20230524083913.696175-1-marcin.juszkiewicz@linaro.org>
+ <20230524083913.696175-3-marcin.juszkiewicz@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 3/3] hw/arm/sbsa-ref: use MachineClass->default_display
+In-Reply-To: <20230524083913.696175-3-marcin.juszkiewicz@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>
-CC: Ninad Palsule <ninad@linux.ibm.com>, <qemu-devel@nongnu.org>,
- <peter.maydell@linaro.org>, <andrew@aj.id.au>, <qemu-arm@nongnu.org>
-References: <20230523214520.2102894-1-ninad@linux.ibm.com>
- <20230523214520.2102894-2-ninad@linux.ibm.com>
- <7fadea2f-39e0-902f-848a-8f9bd7ff1f52@kaod.org>
- <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 0557040d-ae27-417a-b83b-2870f141f417
-X-Ovh-Tracer-Id: 14720578332827618086
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfeejhedgtdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuieetffduledtieekgeefvefhkeeffffhkeetvedtueeggfevfeefjedvgedujeenucffohhmrghinhepvhhinhhiughrrdguvgdprhhtrdhvihhnpdhgihhthhhusgdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleeipdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdpnhhinhgrugeslhhinhhugidrihgsmhdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdelpd
- hmohguvgepshhmthhpohhuth
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,130 +138,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PZPbaG4vtGPX
+X-TUID: FDYSdTkLmCo/
 
-On 5/24/23 09:44, Joel Stanley wrote:
-> On Wed, 24 May 2023 at 06:38, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 5/23/23 23:45, Ninad Palsule wrote:
->>> The current modeling of Rainier machine creates zero filled VPDs(EEPROMs).
->>> This makes some services and applications unhappy and causing them to fail.
->>> Hence this drop adds some fabricated data for system and BMC FRU so that
->>> vpd services are happy and active.
->>>
->>> Tested:
->>>      - The system-vpd.service is active.
->>>      - VPD service related to bmc is active.
->>>
->>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->>
->> You can keep the R-b tag when you resend, unless there are a lot of changes.
->>
->> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>
->> Since I am curious, I started a rainier machine under QEMU and ran some
->> commands :
->>
->>     root@p10bmc:~# hexdump -C /sys/bus/i2c/devices/i2c-8/8-0050/eeprom
->>     00000000  00 00 00 00 00 00 00 00  00 00 00 84 28 00 52 54  |............(.RT|
->>     00000010  04 56 48 44 52 56 44 02  01 00 50 54 0e 56 54 4f  |.VHDRVD...PT.VTO|
->>     00000020  43 00 00 37 00 4a 00 00  00 00 00 50 46 08 00 00  |C..7.J.....PF...|
->>     00000030  00 00 00 00 00 00 00 00  46 00 52 54 04 56 54 4f  |........F.RT.VTO|
->>     00000040  43 50 54 38 56 49 4e 49  00 00 81 00 3a 00 00 00  |CPT8VINI....:...|
->>     00000050  00 00 56 53 59 53 00 00  bb 00 27 00 00 00 00 00  |..VSYS....'.....|
->>     00000060  56 43 45 4e 00 00 e2 00  27 00 00 00 00 00 56 53  |VCEN....'.....VS|
->>     00000070  42 50 00 00 09 01 19 00  00 00 00 00 50 46 01 00  |BP..........PF..|
->>     00000080  00 00 36 00 52 54 04 56  49 4e 49 44 52 04 44 45  |..6.RT.VINIDR.DE|
->>     00000090  53 43 48 57 02 30 31 43  43 04 33 34 35 36 46 4e  |SCHW.01CC.3456FN|
->>     000000a0  04 46 52 34 39 53 4e 04  53 52 31 32 50 4e 04 50  |.FR49SN.SR12PN.P|
->>     000000b0  52 39 39 50 46 04 00 00  00 00 00 00 23 00 52 54  |R99PF.......#.RT|
->>     000000c0  04 56 53 59 53 53 45 07  49 42 4d 53 59 53 31 54  |.VSYSSE.IBMSYS1T|
->>     000000d0  4d 08 32 32 32 32 2d 32  32 32 50 46 04 00 00 00  |M.2222-222PF....|
->>     000000e0  00 00 00 23 00 52 54 04  56 43 45 4e 53 45 07 31  |...#.RT.VCENSE.1|
->>     000000f0  32 33 34 35 36 37 46 43  08 31 31 31 31 2d 31 31  |234567FC.1111-11|
->>     00000100  31 50 46 04 00 00 00 00  00 00 15 00 52 54 04 56  |1PF.........RT.V|
->>     00000110  53 42 50 49 4d 04 50 00  10 01 50 46 04 00 00 00  |SBPIM.P...PF....|
->>     00000120  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
->>     *
->>     00002000
->>     root@p10bmc:~# hexdump -C /sys/bus/i2c/devices/i2c-8/8-0051/eeprom
->>     00000000  00 00 00 00 00 00 00 00  00 00 00 84 28 00 52 54  |............(.RT|
->>     00000010  04 56 48 44 52 56 44 02  01 00 50 54 0e 56 54 4f  |.VHDRVD...PT.VTO|
->>     00000020  43 00 00 37 00 20 00 00  00 00 00 50 46 08 00 00  |C..7. .....PF...|
->>     00000030  00 00 00 00 00 00 00 00  1c 00 52 54 04 56 54 4f  |..........RT.VTO|
->>     00000040  43 50 54 0e 56 49 4e 49  00 00 57 00 1e 00 00 00  |CPT.VINI..W.....|
->>     00000050  00 00 50 46 01 00 00 00  1a 00 52 54 04 56 49 4e  |..PF......RT.VIN|
->>     00000060  49 44 52 04 44 45 53 43  48 57 02 30 31 50 46 04  |IDR.DESCHW.01PF.|
->>     00000070  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
->>
->> and
->>
->>     root@p10bmc:~# systemctl status  com.ibm.VPD.Manager.service  -l
->>     * com.ibm.VPD.Manager.service - IBM VPD Manager
->>          Loaded: loaded (/lib/systemd/system/com.ibm.VPD.Manager.service; enabled; preset: enabled)
->>          Active: active (running) since Wed 2023-05-24 06:26:34 UTC; 1min 28s ago
->>        Main PID: 2784 (vpd-manager)
->>             CPU: 101ms
->>          CGroup: /system.slice/com.ibm.VPD.Manager.service
->>                  `-2784 /usr/bin/vpd-manager
+On 24/05/2023 10.39, Marcin Juszkiewicz wrote:
+> Mark the default graphica via the new MachineClass->default_display
+> setting so that the machine-defaults code in vl.c can decide whether the
+> default graphics is usable or not (for example when compiling with the
+> "--without-default-devices" configure switch).
 > 
-> When it works we should be able to do things like this, I'm told:
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> ---
+>   hw/arm/sbsa-ref.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> vpd-tool -r -O /system/chassis/motherboard -R VSYS -K TM
-> {
->      "/system/chassis/motherboard": {
->          "TM": "2222-222"
->      }
-> }
-> 
-> 
->>
->> But, I also got this :
->>
->>     root@p10bmc:~# [   91.656331] watchdog: watchdog0: watchdog did not stop!
->>     [   91.734858] systemd-shutdown[1]: Using hardware watchdog 'aspeed_wdt', version 0, device /dev/watchdog0
->>     [   91.735766] systemd-shutdown[1]: Watchdog running with a timeout of 1min.
->>     [   91.987363] systemd-shutdown[1]: Syncing filesystems and block devices.
->>     [   93.471897] systemd-shutdown[1]: Sending SIGTERM to remaining processes...
->>
->> and the machine rebooted.
->>
->> Joel had the same problem :
->>
->>     https://github.com/openbmc/qemu/issues/39
->>
->> Is it unrelated ? I haven't started a rainier in 2 years at least so I can
->> not tell.
-> 
-> I don't think it's related to Ninad's patches.
-> 
-> I am able to reproduce the issue on my old Skylake x86 machine, but it
-> doesn't happen on my M1 mac mini.
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 9a3d77d6b6..30ce7f7db4 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -649,7 +649,7 @@ static void create_pcie(SBSAMachineState *sms)
+>           }
+>   
+>           if (vga_interface_type != VGA_NONE) {
+> -            pci_create_simple(pci->bus, -1, "bochs-display");
+> +            pci_create_simple(pci->bus, -1, mc->default_display);
 
-I saw it on a Ryzen Threadripper PRO 5955WX.
+Based-on: <20230524082037.1620952-1-thuth@redhat.com>
+(otherwise you don't have the "mc" variable available here)
 
-> I suspect the emulation is moving too slowly, but the host's wall
-> clock is still ticking, so all of a sudden the BMC finds out that time
-> has passed an the watchdog bites. I could be wrong.
-> 
-> The rainier firmware crashes all over the place due to missing
-> hardware. These crashes cause applications to core dump due to
-> OpenBMC's C++ exception throwing coding style, causing the system to
-> go even slower which leads to more timeouts and more crashes. Ninad's
-> work is the first piece in an attempt to get us to "BMC ready" without
-> any services crashing.
+>           }
+>       }
+>   
+> @@ -865,6 +865,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+>       mc->default_ram_size = 1 * GiB;
+>       mc->default_ram_id = "sbsa-ref.ram";
+>       mc->default_cpus = 4;
+> +    mc->default_display = "bochs-display";
 
-May be disable services from uboot with systemd.mask=... ?
+I guess this might not work as expected yet...
 
-Cheers,
+The code in vl.c looks through the vga_interfaces[] array and warns if it 
+cannot find the default_display there... and since there is no entry for the 
+bochs-display in that array, you likely now always get this warning message, 
+even if it is available?
 
-C.
+So I think you either have to drop this patch, or you've got to add an entry 
+for the bochs-display to vga_interfaces[], too.
 
-
-> 
-> The status quo does make it hard to test.
-> 
-> Cheers,
-> 
-> Joel
+  Thomas
 

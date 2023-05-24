@@ -1,75 +1,72 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2479935ejb;
-        Wed, 24 May 2023 04:34:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ72FYIK9tVHD9omSbiRMQmGI1dG+S+sin1aHKa7D3r8jJAHwBkcDbzMQlTqVQDksdCtU8yP
-X-Received: by 2002:a05:6214:20a4:b0:623:74d2:8750 with SMTP id 4-20020a05621420a400b0062374d28750mr26559065qvd.17.1684928062468;
-        Wed, 24 May 2023 04:34:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684928062; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2480031ejb;
+        Wed, 24 May 2023 04:34:32 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5zrgCkCdsWl3qj1rrP/4IUbyut2WuKuu8BR8aoaDwFjluL6la/bjkCqgbbtSMOfG543/JW
+X-Received: by 2002:a05:6214:2462:b0:572:636d:626a with SMTP id im2-20020a056214246200b00572636d626amr22850670qvb.25.1684928072733;
+        Wed, 24 May 2023 04:34:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684928072; cv=none;
         d=google.com; s=arc-20160816;
-        b=SHCOOQKrDFPUlKOCyvaCyh0ftTdfzYg+bT+eucLzR6Hm0avkrIXD9BZirfdeA0B6tt
-         0cfy/xkj/ycz3Cqy8L+pmhipZdGBpA5lciFzbw+O73dzkeAShbX+i3MW3jbSPlII3rSf
-         Ii4VIPkUchigVioe0jdfQ9XD9Da1aIdgqfTgM+0oEIwk/VE2d82Fzj+rpplmrpapeTrC
-         vR92odr+Yt8sp+5Iz6+VZ9J8ug4VudmFsvcyLQ9PxjzscxgsdNYKHGjT3xqnYVFDAWRS
-         YXXb00wEqkaJhPsWrCqnidpFD5UcFKPaAFd0c1fRikCeQWvbzeYq5nmrLfHXnu+40LKl
-         WFpA==
+        b=h2VIR/70Q44oz3BKDWOVODQE+a8EivpLe5zU5nEw31RH9vXJhafD27ycFgyhQX63F3
+         1mvCyslestb1oJZfEytbT5uExX7MJkPQ3Kk5a/nc0lNRzgRwZML8RJtulCa7zcEWtHk6
+         5fag7jimufl7XkjbVxf87GjpV0lLxQ6VmqM8MB7vfatwqwGgNo1KoZo4wkNQiz6GQQMI
+         PoUI9dBywK+ii5J15Ug6+yySMkyiEieVrbiKfHHB5b8M7nvfKAYboTYej/MGNFFNWwph
+         PJqMPLYRbFoqg+JqGxSIMIDHxwsOE3YJJmsqzgPE+ktqBiQ+zENLnyajZzoGKaNcqdBv
+         TZVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=qUjTF89z44rNM3coEMcwX6S2MayNcoDCperIVSibzug=;
-        b=PN9XTWRWdeMlVoRXqUmyllJ1Itzlx1N99zeNVDrITm5T4EUfHe9peD9uN4ViebR65h
-         6JzTdy8HYiMfVEEI+JZ8Loa1eIJrusKavXMiIPG8ZIRGwuZYo/9onNmtHEhttohrMp8M
-         S5OUkEkJnuhjxSvqMKIGaILnOIorVdoNlGNAojmdcgJYS3dNJFbl8+E4r+zN3/Ot1Byp
-         5oXfbKP4/axTKNAuJFQXjkbpjySIhSNgQ5tDuN20VfShWPW3tBKwIWY7pNasYp19H/2Z
-         8MCv+3Pq2K75nLQ1UobhtPoXHH2ZpTvgqhR9SgHkxauJWk85U39RRJliX9DiOuZ1g9KX
-         W9jg==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=vJb/kDKE7EyeaourXGB8U4mXwEThyikglC0lRwakfZU=;
+        b=eOfMHXEjjPZppYohcwaPvkeYPQVnRR7RFw9Yh24oZ+ph8RhD0Q1CZkFuqbcENilqrE
+         RPF1vrw9yWr/1afCxhLgK4BBwGXGy26/nbbEWKiPvD8A2RCBKKhZKGjDh5woFh+9UIsl
+         QZdiM8lhvna1ljNzXjPGhN8l5O2S5qSZQmTiVHbScICcoSKtTmRS+770EuD2mOgdjxy2
+         rPC/QFjHdM2S/SbKhE8fX0940sNkTd51aMBfprlr4IPzjPrjCGXelfKPrk20UlykSjGO
+         C54h0mMvxNZO61Gyfbed4pxCdkLU4st5xQ2bTFav5pnjlydC/D/a6kUmhfKm2FZfYeBc
+         ZLJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4-20020ad45c44000000b0057116a70032si6947448qva.495.2023.05.24.04.34.22
+        by mx.google.com with ESMTPS id hu15-20020a056214234f00b006239147634fsi6535554qvb.64.2023.05.24.04.34.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 04:34:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 24 May 2023 04:34:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1mk9-0005sW-Dr; Wed, 24 May 2023 07:33:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q1mk7-0005qv-UP; Wed, 24 May 2023 07:33:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1mk7-0005qm-Ox; Wed, 24 May 2023 07:33:23 -0400
+ id 1q1mk6-0005pW-82; Wed, 24 May 2023 07:33:22 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1mk6-0002XX-0a; Wed, 24 May 2023 07:33:23 -0400
+ id 1q1mk4-0002Vt-EW; Wed, 24 May 2023 07:33:22 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 7D5552609C0;
- Wed, 24 May 2023 13:33:19 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id C9D1A260BBC;
+ Wed, 24 May 2023 13:33:16 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5dJK8hCFjIfr; Wed, 24 May 2023 13:33:17 +0200 (CEST)
+ with ESMTP id fI3EfU3EmzRq; Wed, 24 May 2023 13:33:15 +0200 (CEST)
 Received: from applejack.lan (83.21.125.167.ipv4.supernova.orange.pl
  [83.21.125.167])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id F35C3260B8B;
- Wed, 24 May 2023 13:33:15 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 8D5FD260249;
+ Wed, 24 May 2023 13:33:14 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v3 3/4] docs: sbsa: document platform version changes
-Date: Wed, 24 May 2023 13:33:08 +0200
-Message-Id: <20230524113308.834675-4-marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v3 0/4] hw/arm/sbsa-ref: platform version 0.1
+Date: Wed, 24 May 2023 13:33:05 +0200
+Message-Id: <20230524113308.834675-1-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230524113308.834675-1-marcin.juszkiewicz@linaro.org>
-References: <20230524113308.834675-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: softfail client-ip=213.251.184.221;
@@ -78,78 +75,38 @@ X-Spam_score_int: -11
 X-Spam_score: -1.2
 X-Spam_bar: -
 X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 02HTXvwPnCLW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2EMO0tPRnT+i
 
-We plan to start adding more system information in DT so firmware does
-not have to use hardcoded values.
+About year ago support for setting platform version for sbsa-ref was
+added with "0.0" value.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- docs/system/arm/sbsa.rst | 31 +++++++++++++++++++++++++------
- 1 file changed, 25 insertions(+), 6 deletions(-)
+This patchset bumps it to "0.1" as we export basic GIC information via
+DeviceTree to the firmware. TF-A will then take it and provide to EDK2
+via Secure Monitor Call (instead of using hardcoded values).
 
-diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
-index 016776aed8..922a29700d 100644
---- a/docs/system/arm/sbsa.rst
-+++ b/docs/system/arm/sbsa.rst
-@@ -6,16 +6,35 @@ any real hardware the ``sbsa-ref`` board intends to look like real
- hardware. The `Server Base System Architecture
- <https://developer.arm.com/documentation/den0029/latest>`_ defines a
- minimum base line of hardware support and importantly how the firmware
--reports that to any operating system. It is a static system that
--reports a very minimal DT to the firmware for non-discoverable
--information about components affected by the qemu command line (i.e.
--cpus and memory). As a result it must have a firmware specifically
--built to expect a certain hardware layout (as you would in a real
--machine).
-+reports that to any operating system.
- 
- It is intended to be a machine for developing firmware and testing
- standards compliance with operating systems.
- 
-+Platform versions
-+"""""""""""""""""
-+
-+QEMU 7.1 brought support for "platform version major/minor" fields in
-+DeviceTree.
-+
-+Version 0.0
-+'''''''''''
-+
-+It is a static system that reports a very minimal DT to the firmware for
-+non-discoverable information about components affected by the qemu
-+command line (i.e. cpus and memory). As a result it must have a firmware
-+specifically built to expect a certain hardware layout (as you would in
-+a real machine).
-+
-+Version 0.1
-+'''''''''''
-+
-+Additional data are provided in DT to the firmware:
-+  - address and size of GIC Distributor
-+  - address and size of GIC Redistributor
-+
-+Simple "/intc/reg" field is used.
-+
- Supported devices
- """""""""""""""""
- 
+Basic documentation about platform changes added.
+
+Marcin Juszkiewicz (3):
+  hw/arm/sbsa-ref: add GIC node into DT
+  docs: sbsa: correct graphics card name
+  docs: sbsa: document platform version changes
+
+
 -- 
 2.40.1
 

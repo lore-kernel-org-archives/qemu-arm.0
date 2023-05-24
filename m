@@ -1,99 +1,117 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2337931ejb;
-        Tue, 23 May 2023 23:01:54 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4yaJvB2QE7pbw2MBlcBJxjPkUIZwqaKJTb5hy0+fHo/DgPH/ZQhmjJFfid4Sn0E7nZfP8m
-X-Received: by 2002:a05:620a:3c02:b0:75b:23a0:e7a8 with SMTP id tn2-20020a05620a3c0200b0075b23a0e7a8mr5930574qkn.9.1684908114517;
-        Tue, 23 May 2023 23:01:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684908114; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2347922ejb;
+        Tue, 23 May 2023 23:26:36 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6VncgY5YFZ+pSX/vcpqxhGvO8vfFmF+mlhh3A6O0Hjepw8Em3tWT1bDXx9RUhHAjhdn5kW
+X-Received: by 2002:a05:6214:2aa4:b0:5ef:a772:2731 with SMTP id js4-20020a0562142aa400b005efa7722731mr24609826qvb.11.1684909596201;
+        Tue, 23 May 2023 23:26:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684909596; cv=none;
         d=google.com; s=arc-20160816;
-        b=dHLca7uRP0AXJf66REFpVvaxwcUYaaobJLTIUguK4E5mkOkvqLP6ULMlYQe3ZuKp+G
-         qMqeMalPpjMud9AQLs9LyZ8S8gS6CFMLlOwHN3sHJuloPVz0JA0RQA6nh7+CcqLCuc4x
-         nWVTY1S1AQayMbQiHgpKS8XZXxid1eLcgbBwH0fdmnr/XQX/T897F8yZNSKKVreYSvcu
-         X1oCCUl8oV+1CDYnldOfRoF6X0maXO1XwCsxMiC0I0ti7dsOMDJEfibS0aXKYTM8SZFj
-         Fxv0vyLWYkzr077TD0AJjbxJOrbdqoAoKZjHYYve0bUQtssZLoUCn1h0KuekAWbc7/vW
-         lyyw==
+        b=lDAEYK280am1q6rvNiyJRISCMOymnTYrjRTUUbvlHWuL9RZw1VODpME7q5ym8i77a0
+         MFPVj6nXGheFubR3We7L/nrXf8N74aYV89YNqmptN3WBFujeo3DypjAdtjuamgKH7vV/
+         1XwQo/ojRlBKeQCdokLGai2sAa1rfQBEIZASm/94UaDLup5WPKqY4X11bKbpXbh9DKUD
+         vNUWagtsqs60IaxiCJUMyZixalrBWb68L6T2VXNbvFr9LsHz+25uVfbrfdSvJOttjcmM
+         x/hDo/yvKfIjj2D9pdiFXXDQAZ7RPen4tkdiU49+XJ0t8kt6wWTIy2rH0GV6uxC8UG/u
+         sQZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=jksHmdWC61aTSCeWi02gk12WTHufEmEQUvQ6wRh+J7Q=;
-        b=VeGd9sC4ldrn8wfMWnZTJfj5aXSmrlblcQNSFreBBD4A8HukiBPEs9ojGbjltFNpc5
-         2ibR2glrV5cokKASP7HpCYt8zNEm75AcXCouNxoCCNzVzw6JIoj/CAKAoLPVvDdVdod7
-         PZNSJ7GL1ouVxpLKXPf9GCbILdtOtjH+lS5yZNS/TDvW4BmYIJ/RgzJ++lgsn4DTsy+n
-         FziJ52/5C9ak+JQpzcHNiT4eFLRzQiuSyufbVIGp2lIuK6EuDCloNt5BYKIau1lkBcwQ
-         Z3HWQy2sYwYwKf+7OS1GU+Q23cXIYOjwK7JnGJlaWZkUhZOlp+fCtSjJmYqr6/v1CQPU
-         Z3Ng==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=elfdIz5g/ER+semG3iq1xcjFnlP3a+ECnVFlgtSutmk=;
+        b=BU/kHQ6vxB3RgXmsoEFj2lmBE5LEtQogK5w11PsTqG1iejXkD9LNy/8mHQFQVSQmH8
+         5BndMpTfHibW6ModtD9PzZbMtZHCX+mCqIFf3aqnPYr21kyAcquH+6d8oN7B7tk/cAzV
+         RwQYiJzVZVm7oX4/+r1XAZ0oz80AS7438YCLIvfnzNuA2qOlorJP9zQukLyYa3eHiMco
+         WItuPG80bpZZbuWEgiYc3xBYXx3Z2faVDdg43O4gm/AZzzuWf0QbONrb5COg/+1SN1uO
+         HLXxo0Lpht0wknc1J4x4WEQWCKMRZJZuEflHe3S60Rlt5Fg/KiLinPtjHNLIl69yw7uD
+         88cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=h8GGuKyd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p24-20020a05620a113800b00746b9ee425fsi5944438qkk.29.2023.05.23.23.01.54
+        by mx.google.com with ESMTPS id gv1-20020a056214262100b0061b6c884bacsi6231973qvb.463.2023.05.23.23.26.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 May 2023 23:01:54 -0700 (PDT)
+        Tue, 23 May 2023 23:26:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=h8GGuKyd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1hYq-0001fH-I6; Wed, 24 May 2023 02:01:24 -0400
+	id 1q1hx0-00066O-SO; Wed, 24 May 2023 02:26:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1q1hYo-0001eU-U0
- for qemu-arm@nongnu.org; Wed, 24 May 2023 02:01:22 -0400
-Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1q1hYm-0001Bw-MN
- for qemu-arm@nongnu.org; Wed, 24 May 2023 02:01:22 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.136])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 7007121A87;
- Wed, 24 May 2023 06:01:16 +0000 (UTC)
-Received: from kaod.org (37.59.142.107) by DAG4EX2.mxp5.local (172.16.2.32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 24 May
- 2023 08:01:15 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S001b67380eb-95f5-4987-9afc-821e23a1ba0d,
- B4F797F232AA4FE69AC097E437AC38C0A7FFBD15) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <462f394f-228a-e486-f4c2-f6342bcbc82d@kaod.org>
-Date: Wed, 24 May 2023 08:01:14 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1hwc-0005rj-Qc
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 02:25:58 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1hwX-0006Zy-48
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 02:25:56 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-3f603ff9c02so4619445e9.2
+ for <qemu-arm@nongnu.org>; Tue, 23 May 2023 23:25:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1684909550; x=1687501550;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=elfdIz5g/ER+semG3iq1xcjFnlP3a+ECnVFlgtSutmk=;
+ b=h8GGuKyd9JNrlRkg6DYHGLuen4mykPzQukHbBFhcYAEbC/tMgw7MdN1dU/6BU9uVQQ
+ i3PrpD80QEWJEtCIPllTim9xiD8xzHua/IfTRCSexpdnkT8CKvQAxuV5+ibV3mh32klw
+ Hds/85j6g8CoiYUx8jKrd77cZdlsZpzbGAWuOzr+u9hnIG+boLAP3oQUurQnqKFoRkPL
+ hLkZaYiUUe0FlCpbzljewfTA2uNHveQJTvBFuMRXEA8rb2KygGxqcTYrjvEInvIGjcoJ
+ RSjY5FCIcAodV/Jwfmda0jQd5TtsH7OEHPiaKFv3LqLvz5JjX38T1wtRN7t7vxpNfUuw
+ Wt0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684909550; x=1687501550;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=elfdIz5g/ER+semG3iq1xcjFnlP3a+ECnVFlgtSutmk=;
+ b=hDO4QPzzby9adm6VXZ8a36v0PWc9P2weXyvpI71rUbRD58bQ6jK+5ZxKtR3usCEm9h
+ bgRz5T+RhtCU7lwWvlt6dsbQyZl+c7hegzXt0Fknuof3Wl6Q5xTsGim7VjgWwnJg38fS
+ i9JBFWJWkz8S6si3WJHmAGRikFyPU93i6A9FPYf4FH32H9Bf82agOamga1pNqCdbjI/b
+ 1Gmp+L12lFrcilhza7yy1uhFidYGgoztETceiEV38/+SHwdYuLP/j8CxXtI8pRTsJk6J
+ tsEwXB+LFfrXrTnsvP5JFmbH2YQeQvlGLHcOSWgScRj20nif06mHsDQ7pJek/sZINqf/
+ pcbA==
+X-Gm-Message-State: AC+VfDxlKtGmiWx/1hcoLeckriDWxg8+9ccqHRXIZPNDDi2MIkgx1QM0
+ LdPjAyk9hY2GSFNQf7kd6M7D+w==
+X-Received: by 2002:a05:600c:294c:b0:3f5:fa8e:aaa3 with SMTP id
+ n12-20020a05600c294c00b003f5fa8eaaa3mr9622554wmd.28.1684909550676; 
+ Tue, 23 May 2023 23:25:50 -0700 (PDT)
+Received: from [192.168.215.175] (35.red-95-127-46.staticip.rima-tde.net.
+ [95.127.46.35]) by smtp.gmail.com with ESMTPSA id
+ 2-20020a05600c028200b003f42cc3262asm1092467wmk.34.2023.05.23.23.25.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 May 2023 23:25:50 -0700 (PDT)
+Message-ID: <6e05d67f-f5e4-700c-45e4-4c3a541c02c9@linaro.org>
+Date: Wed, 24 May 2023 08:25:48 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2 1/1] Add vpd data for Rainier machine
-To: Ninad Palsule <ninad@linux.vnet.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>, Ninad Palsule
- <ninad@linux.ibm.com>, <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
- <andrew@aj.id.au>, <joe@jms.id.au>
-CC: <qemu-arm@nongnu.org>
-References: <20230522153659.3379729-1-ninad@linux.ibm.com>
- <20230522153659.3379729-2-ninad@linux.ibm.com>
- <df00a5c0-7b59-e21c-c758-b1085d0c50b7@linaro.org>
- <4a054c44-ef17-3644-e39b-3c472bf635f9@linux.vnet.ibm.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH 3/3] arm/Kconfig: Make TCG dependence explicit
 Content-Language: en-US
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <4a054c44-ef17-3644-e39b-3c472bf635f9@linux.vnet.ibm.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+References: <20230523180525.29994-1-farosas@suse.de>
+ <20230523180525.29994-4-farosas@suse.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230523180525.29994-4-farosas@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.107]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG4EX2.mxp5.local
- (172.16.2.32)
-X-Ovh-Tracer-GUID: 527895d3-284a-40dd-995d-5bc10a7c70ec
-X-Ovh-Tracer-Id: 12118060700146240364
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfeejgedguddttdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefkffggfgfuvfevfhfhjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfedvfedtgfdvhfdujeehieetveffgfefteeltedugeffueetuddtfeehuedtieeknecuffhomhgrihhnpehqvghmuhdrohhrghenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddruddtjedpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeduvdejrddtrddtrddupdhmrghilhhfrhhomhepoegtlhhgsehkrghougdrohhrgheqpdhnsggprhgtphhtthhopedupdhrtghpthhtohepnhhinhgrugeslhhinhhugidrvhhnvghtrdhisghmrdgtohhmpdhphhhilhhmugeslhhinhgrrhhordhorhhgpdhnihhnrggusehlihhnuhigrdhisghmrdgtohhmpdhqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhgpdhpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprghnughrvgifsegrjhdrihgurdgruhdpjhhovgesjhhmshdrihgurdgruhdpqhgvmhhuqdgrrhhmse
- hnohhnghhnuhdrohhrghdpoffvtefjohhsthepmhhoheegkedpmhhouggvpehsmhhtphhouhht
-Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
- helo=5.mo548.mail-out.ovh.net
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,58 +126,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bq+qhCezYNhJ
+X-TUID: jzZqxVgHpK3M
 
-On 5/23/23 23:48, Ninad Palsule wrote:
-> Hello Philippe,
+On 23/5/23 20:05, Fabiano Rosas wrote:
+> Replace the 'default y if TCG' pattern with 'default y; depends on
+> TCG'.
 > 
-> On 5/23/23 3:52 AM, Philippe Mathieu-Daudé wrote:
->> Hi Ninad,
->>
->> On 22/5/23 17:36, Ninad Palsule wrote:
->>> The VPD data is added for system and BMC FRU. This data is fabricated.
->>
->> Per https://www.qemu.org/docs/master/devel/submitting-a-patch.html#write-a-meaningful-commit-message:
->>
->>   QEMU follows the usual standard for git commit messages: the first
->>   line (which becomes the email subject line) is “subsystem: single
->>   line summary of change”.
->>
->> In this patch the subsystem is "hw/arm", but you can also use
->> "hw/arm/aspeed" or even "hw/arm/aspeed_eeprom" for subject prefix.
->>
-> Added subsystem tag.
->>> Tested:
->>>     - The system-vpd.service is active.
->>>     - VPD service related to bmc is active.
->>
->>   ... more detailed description of the patch, another blank and your
->>   Signed-off-by: line.
-> Added more details in the description.
-
-This is not a fix, it's adding VPD support on the board. How is FW
-impacted ? Is there some output ? what are these new VPD services
-doing ? How is it helping the development team ?
-
-Reviewers like to know a bit more about changes and how useful they
-are. We are curious :)
-
-Thanks,
-
-C.
-
->>
->> Missing a blank line :)
+> That makes explict that there is a dependence on TCG and enabling
+> these CONFIGs via .mak files without TCG present will fail earlier.
 > 
-> Added blank line.
-> 
-> Thank you for the review!
-> 
->>
->>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
->>> ---
->>>   hw/arm/aspeed.c        |  6 ++++--
->>>   hw/arm/aspeed_eeprom.c | 45 +++++++++++++++++++++++++++++++++++++++++-
->>>   hw/arm/aspeed_eeprom.h |  5 +++++
->>>   3 files changed, 53 insertions(+), 3 deletions(-)
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> ---
+>   hw/arm/Kconfig | 123 ++++++++++++++++++++++++++++++++-----------------
+>   1 file changed, 82 insertions(+), 41 deletions(-)
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

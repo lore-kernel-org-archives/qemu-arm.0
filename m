@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2447670ejb;
-        Wed, 24 May 2023 03:28:48 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6h9OoQE60PPTGtjPmsm+Dm84+F9ylT6HcQaTHTzh29QpbnaqZ+m+8DV8IoKp4PJaNqp7RQ
-X-Received: by 2002:a05:622a:387:b0:3f3:69ea:274d with SMTP id j7-20020a05622a038700b003f369ea274dmr26433121qtx.45.1684924127880;
-        Wed, 24 May 2023 03:28:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684924127; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2447687ejb;
+        Wed, 24 May 2023 03:28:49 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Ju4xDkzX9lO/gN6NhkZlsxCdNqSbqG6YOTBJmwjGL4N6xJ3Kyey5anGCLkV16Ra42psap
+X-Received: by 2002:a05:6214:27ea:b0:619:a7e3:99e2 with SMTP id jt10-20020a05621427ea00b00619a7e399e2mr27667023qvb.17.1684924129374;
+        Wed, 24 May 2023 03:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684924129; cv=none;
         d=google.com; s=arc-20160816;
-        b=zng4k+JBapWrraqTkMQIOzjVsFRVXqUAsQMWP9MlMMC6gzBit3nY8JUAijpdlyJiEu
-         7EdbsJTJTLrcxHsJrkQsU8aEhWBfjHe8PM45yPbBSqHrTW4DlEOTF77UHc5xlBe/CAiF
-         s91ILsxYY0GKjuMlHRx3Y6fa4pe9IIWl8fuJGDnDeG7TEFBMfLw8nkWz5e3i36yE5Ffo
-         3dOUAvoctb5p3IzaCwoGfcZxxLm0UtDpyaH61cGoSgobG+f4IeedhETKKdgUExyIkCHJ
-         HAplAZn2zxsCRsO5qk6gB8gaACATak3OjkEdYUvQPv2wR4bt/IcxabWNAstFYibRUrp8
-         WVXw==
+        b=t9n5H/GZ+evBxaYw7dLTEdOiDt0yiC2eSohMz53XY5kgBQhlX+TpyCTlv0DHN0FNL5
+         fTxFY2oWAysFd/aWIcIsnMoeIJ+gRzAr5uDlXVnePLz+XEyk0SgsWgingJyQhjwNMZva
+         ErUsBaOkAAVGa9pgBmp9Nwg+/RZ5UKo5J0oeR7z0bn6eMQtbQ5ZdgWt5cZjZB4fYVRS9
+         6aups7VjwXbaEBQuHP9+JwaFcJBgzRxW2b8Nh0Z/MZRHiWUDio0WZbsBu2dPGO6AnyFd
+         7s6bnA5WzEdKcTFqz0T0VQATGlay/waP30umNgB4rLmewrPzrtSFz+5sTT5/GzRC2jhh
+         ABrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=3e9LymC1Yc9KvB15ELruVVHR08VNyMQ7IqdBakyZxug=;
-        b=r+yflAT0Ew8vTN7oVaL01lLfnJd+1HTOQLSgpiKfg7tQcKIYxShurljKJ/MTKUskhO
-         t+r9TEu4FbUD7g3TPBwpMC1arUJwn1ZVdU4c4ASJQOM84cvEtgpfxSDkFeRQ+sqv2o2u
-         F9gPbBxY6wxbokuHAsQCGlf7X9JOCdCpPuOioNlHAi8/QVbt1FzVQMlNvROv2zsyIOTk
-         9a6jt2riSQKHnImaZHPY0xcMRo+MJCgHOSELCUOrz2U1isYzxory9nXVNtn5xl+AP5kJ
-         A8lm7tj0RQ9GEQxr8Z8hpfeD1viH0RjwYw8nvR0oa4BkDgKF+NJxn7UZJLXsBCskO7Nr
-         0INA==
+        bh=RFl0lkku0rEx44cSL97n6ibaCEcLL6BIlhLypm/82Mw=;
+        b=xk9+7Y53RPqH7mb/BsM4ibbis565QU6DTtVS8kwLvBm2cRTmHKtD4Q8h8cSt79t2SD
+         B3nu6t8DbH+15YcxzgLJnoHYiIJvxDaAUqKUzOEySgbBpaxCIjPwhvzzJt3lO1HTiTV0
+         xmQdG3NoVixD6+HaeagIVD4orgg7/KgjxdibsqocwRVHzSUrSmo+F5JRQNYJ6M4zffbr
+         UfAtI3poSAjCDLDM9t+Bc2tCZnlfvPwJnTh/rY6FpOpTtUWlD20uljSfeeXIPS6E4u47
+         nvLvPt1DNd3V8Sh5h68Gc0Ka5hYIptKeIt7R1wgluB/30hFhYtsq6CQN9WVaqG5oxZxs
+         JxBw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gi10-20020a056214248a00b0060b965f8904si6439021qvb.459.2023.05.24.03.28.47
+        by mx.google.com with ESMTPS id eo4-20020ad45944000000b0061b6c6928besi6456658qvb.257.2023.05.24.03.28.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 03:28:47 -0700 (PDT)
+        Wed, 24 May 2023 03:28:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,35 +39,35 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1lim-0007xM-02; Wed, 24 May 2023 06:27:56 -0400
+	id 1q1lim-0007xw-1f; Wed, 24 May 2023 06:27:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1liX-0007pl-EC; Wed, 24 May 2023 06:27:42 -0400
+ id 1q1lia-0007ro-Pd; Wed, 24 May 2023 06:27:46 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1liU-0000OI-RM; Wed, 24 May 2023 06:27:41 -0400
+ id 1q1liX-0000Oy-RG; Wed, 24 May 2023 06:27:44 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 95279260BC0;
- Wed, 24 May 2023 12:27:36 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 303072609C0;
+ Wed, 24 May 2023 12:27:40 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X8FxYvjZTYBK; Wed, 24 May 2023 12:27:34 +0200 (CEST)
+ with ESMTP id D3nAMwFrj-Jh; Wed, 24 May 2023 12:27:38 +0200 (CEST)
 Received: from applejack.lan (83.21.125.167.ipv4.supernova.orange.pl
  [83.21.125.167])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 64814260287;
- Wed, 24 May 2023 12:27:34 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 01221260BBC;
+ Wed, 24 May 2023 12:27:35 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 1/5] hw/arm: Use MachineClass->default_nic in the sbsa-ref
- machine
-Date: Wed, 24 May 2023 12:27:25 +0200
-Message-Id: <20230524102729.810892-2-marcin.juszkiewicz@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v3 4/5] hw/arm/sbsa-ref: add gfx card only if we have pci
+Date: Wed, 24 May 2023 12:27:28 +0200
+Message-Id: <20230524102729.810892-5-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230524102729.810892-1-marcin.juszkiewicz@linaro.org>
 References: <20230524102729.810892-1-marcin.juszkiewicz@linaro.org>
@@ -94,49 +94,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qZFUepwWSm1c
+X-TUID: LOXbflDvNdxa
 
-From: Thomas Huth <thuth@redhat.com>
+Creation of network card is guarded with check do we
+have pci bus. Do the same with graphics card.
 
-Mark the default NIC via the new MachineClass->default_nic setting
-so that the machine-defaults code in vl.c can decide whether the
-default NIC is usable or not (for example when compiling with the
-"--without-default-devices" configure switch).
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- hw/arm/sbsa-ref.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/arm/sbsa-ref.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 792371fdce..9c3e670ec6 100644
+index c540b2f1ba..9a3d77d6b6 100644
 --- a/hw/arm/sbsa-ref.c
 +++ b/hw/arm/sbsa-ref.c
-@@ -596,6 +596,7 @@ static void create_pcie(SBSAMachineState *sms)
-     hwaddr size_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size;
-     hwaddr base_pio = sbsa_ref_memmap[SBSA_PCIE_PIO].base;
-     int irq = sbsa_ref_irqmap[SBSA_PCIE];
-+    MachineClass *mc = MACHINE_GET_CLASS(sms);
-     MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
-     MemoryRegion *ecam_alias, *ecam_reg;
-     DeviceState *dev;
-@@ -641,7 +642,7 @@ static void create_pcie(SBSAMachineState *sms)
-             NICInfo *nd = &nd_table[i];
- 
-             if (!nd->model) {
--                nd->model = g_strdup("e1000e");
-+                nd->model = g_strdup(mc->default_nic);
-             }
+@@ -647,10 +647,10 @@ static void create_pcie(SBSAMachineState *sms)
  
              pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-@@ -858,6 +859,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     mc->minimum_page_bits = 12;
-     mc->block_default_type = IF_IDE;
-     mc->no_cdrom = 1;
-+    mc->default_nic = "e1000e";
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "sbsa-ref.ram";
-     mc->default_cpus = 4;
+         }
+-    }
+ 
+-    if (vga_interface_type != VGA_NONE) {
+-        pci_create_simple(pci->bus, -1, "bochs-display");
++        if (vga_interface_type != VGA_NONE) {
++            pci_create_simple(pci->bus, -1, "bochs-display");
++        }
+     }
+ 
+     create_smmu(sms, pci->bus);
 -- 
 2.40.1
 

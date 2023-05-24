@@ -1,114 +1,115 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2759284ejb;
-        Wed, 24 May 2023 12:01:32 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6jGRz6BFVOL6OK3f2sEixUo/dWCMb60QetEXbdMXD9DY/dbm7BUZmjWJAyyodBw5DdBDrb
-X-Received: by 2002:a05:6214:1d0d:b0:5ef:865f:e5c9 with SMTP id e13-20020a0562141d0d00b005ef865fe5c9mr31454083qvd.29.1684954891820;
-        Wed, 24 May 2023 12:01:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684954891; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2759616ejb;
+        Wed, 24 May 2023 12:01:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5ymjW9UTBfJ61UQVyYWYy5+zVqYBY/fEv2/T7beL19FhIaJ734n9VdLRnby71UJ6o0GCHW
+X-Received: by 2002:a05:622a:1755:b0:3f6:b9af:51eb with SMTP id l21-20020a05622a175500b003f6b9af51ebmr7899874qtk.38.1684954916753;
+        Wed, 24 May 2023 12:01:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684954916; cv=none;
         d=google.com; s=arc-20160816;
-        b=LWtkRneB3LEcAwT70nxX8Gs+fhPGKYXsBBcruDQLYwVsijp9vQtArWCNK116oemdpz
-         IBk2BGyOCHmiD1xBMLENc75rsDfSrWhK6yLpLSwScrUBflWJx6z5ZH9BC4vaovn5NbkM
-         liG4PWjQk8tiqdr4+taJTs7ZxcDO1hjY4VDAObDfrnVXTtybt02z6ojCdZTdQLx2EP8d
-         JtuC64jdIxHneqef5vyJQkPl15yAlpLGM1kjg61x11gU0gtP/O350KmpbmecBOQVB9Ug
-         6NbJvtRVQ145nAtqZ5uie5XpzuAbvSon3dXuXr6D7UvfgY7P470JKwDUogm67FbXgZM8
-         Iwjg==
+        b=mTlrqMH3tugQJxRun5IqaSAHxYRB3Bw6+bc3O93aQxsSRGKqjwGYcL30pkuFBzig/M
+         pAJ4Ruk6YE3UgyXv0iCKSNYxtsVLF/I1IVcDhvFhjqq8XK5d98oCls1y3Rf2Zdvw2peR
+         dtpN8poA7ssSIdXRoD2MMKtjXmVKCd9t9U4RBWYOH7rsuVxnVVU13eqCtHpFUfNi0kgG
+         kiSsl/H4fkS1XqPu3gWhh0m75zIkc+7pqR9roq9wechSLKXy66RTJFT5z1Fw3Aaw/m4r
+         wjppocNY999rvX5eFlpHSNaDAJ6OWbJ+zt97+UuUIFbNMEiSefhePTwJOFp1xKi3gMAq
+         aXmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=FtLkIAzjTkJ+aVYj7imKJKMmgu33aX0vxDAXdscaFFE=;
-        b=dhSnAX3Hh11oSbAzJYsrYK1PUwrIeDF5T5uuYMsHH1iY3vKVYFg5oWRenPvaF9+953
-         +ioTQSiYhqO1Z9Kf4uSfBeqITiBlWkM5dAw5WXbMVVsHzv49ts5PxIYflETzkglS6ba0
-         uhxveDTZIFD0EtsS18iniKglDEdoFndNUx1SwC6DFi0yqL46yVlT4I/HMZUDjGKO6KNq
-         +MO1JxV0TLlZt1Nq1zeQ0YL48/T6pLLN2to+ftp28D4zJxsMj44HaC2mYx6yydrOacSy
-         Fs693m07lZaeMCNAZALURryXS+zoNfkswCPjm/GxQ+RFDpLcw3sC9BAgDFPix1jCDjGV
-         bi7Q==
+        bh=TwI8HsnLZZVW+eBChZJLSW4iUg6kKWsOAoR+HeGruLE=;
+        b=dKKD1tDf4MGqtzqhejhIOFFj7AUTPVdFgEbifQcbGngw0qN8YOe9MXJCBGAb+wHlLq
+         tTGDKrqCZn1OBiYUmP0cL0VouWhr0PnAgaYhTHrujPDyRNQ0DLnJVuaVU5XXMb1lhO45
+         Q9letPwV62TbsTXZNyY/QHy1e7aR4kSqoZXkAes1amkpITm8+Vf0U+o30NCbttt0OtBn
+         KAgylS++OgEbmy8A9bjwuPcdRuxV2H6WuxyACS0icrG6D/Rt1EdHmFYA8a6uqlY55rQI
+         2neMRkB15APQuE7r26KVOG1wmyG2SxM7Kn0aaYSAx3iZ7KSBooqj8bCTdFjGhHblgfeO
+         RkgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cIHgACVJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hoj3dKfx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22-20020a05620a06d600b00757726dcd97si6645852qky.243.2023.05.24.12.01.31
+        by mx.google.com with ESMTPS id jr9-20020a0562142a8900b005ef5593eb45si6880414qvb.187.2023.05.24.12.01.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 12:01:31 -0700 (PDT)
+        Wed, 24 May 2023 12:01:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cIHgACVJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Hoj3dKfx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1tjP-0007AZ-Nz; Wed, 24 May 2023 15:01:07 -0400
+	id 1q1tk7-0007Tg-IC; Wed, 24 May 2023 15:01:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1tjO-0007AB-BO
- for qemu-arm@nongnu.org; Wed, 24 May 2023 15:01:06 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1q1tk3-0007Q4-Jp
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 15:01:48 -0400
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1tjK-0005uB-Ii
- for qemu-arm@nongnu.org; Wed, 24 May 2023 15:01:06 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-1ae763f9c0bso4875165ad.2
- for <qemu-arm@nongnu.org>; Wed, 24 May 2023 12:01:02 -0700 (PDT)
+ id 1q1tk2-00061U-1r
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 15:01:47 -0400
+Received: by mail-pg1-x530.google.com with SMTP id
+ 41be03b00d2f7-5304d0d1eddso426459a12.2
+ for <qemu-arm@nongnu.org>; Wed, 24 May 2023 12:01:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684954861; x=1687546861;
+ d=linaro.org; s=google; t=1684954904; x=1687546904;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=FtLkIAzjTkJ+aVYj7imKJKMmgu33aX0vxDAXdscaFFE=;
- b=cIHgACVJ+iolKcvWVX5j8jZodVxEMxftC+4FErPZw0s89kqSiUs/trtvRstLO4GZvj
- F2c1K6b7GHtwIIYAZSdQaDE+HIVemNF66SijLS/j+pnyPa3mgbO5Op900+Kxf3J094VN
- AaQxJf35nI1jSk9144M6Pzv9fHUHmslSGPstJHr4Ppqbi46hOitPbsQsvVrpoceTy04n
- Uwrk00Ke1Q3w3n/MvVmoN49okWplqOFge3IeV8CLOfNrP7VWp7fGmJ9ndThFXWuJYorn
- Fa8p5+4UYQHb70eOYSp6BZfn1xY4ILWRzULS5+YuXwR10Ppa432dM/4jTxnCra44dmU5
- lzIA==
+ bh=TwI8HsnLZZVW+eBChZJLSW4iUg6kKWsOAoR+HeGruLE=;
+ b=Hoj3dKfxgKweRIEFnvZTXS4GVLhSjxMc6UMkEz5YwoUd2f2pTKn43Qa3R67Tqzl13h
+ v5TJvxgSbfOrfscO/Gm4VAYu2SaWKL0fLXs3jfo5A+sBcs5IXjP7Hq3I+2kkEsbZ2Nuk
+ ih2I+hA84Ygj1zqbBlMMoGyX7TsNDo3dG2QeAFnHpU1t0OucACoR/NS4I4XHl4H/W6tu
+ kx0gx4Gyn2dB6FT6Ncx+8WhEQgQAdI7tv9HSeveMnswemn5U1cwvI06zPk2TEoGA0k8e
+ TvLl5MPgDYha+JdtRdEEGsqbglCr9a5G33qKBi4p1kKUFPtxj8s/5DCeJJQhIO8EZsY6
+ c92w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684954861; x=1687546861;
+ d=1e100.net; s=20221208; t=1684954904; x=1687546904;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FtLkIAzjTkJ+aVYj7imKJKMmgu33aX0vxDAXdscaFFE=;
- b=lSn+sk5aycRCCKJwxNdqbx6EcWmjnuBsttsd6QqXgzqLfyQCUdB3bo9eoCqLGqAOi6
- 1hvz2bPwJ2SylCPafacF271jvAT2Xhjd/ipH4CxnSzo7KtuEY5al1oBvFYJQ1kfEAHev
- 4V6/XLkoyHBQzBm0ospkKMLA5EKZ53rQwcCLbhiva4IJVdB/28ArltxpfAduY6IElh5s
- 8wcDnxjZNamrapXTo4tJ7yVjS3Q+hyIZBZMaswzBdy5VbZUN5eN/oLcQQZPX5BAh40e+
- KrMzDfimlaUXDzcaAGDNp0in/lk3xSmNfuDdBqeT7VnqpN/0UHLBY3YjnwhWSRxwuGZv
- 5bpQ==
-X-Gm-Message-State: AC+VfDxxYRxirZxzkDVnL/viUyL3ZDl9WhSeknDLK5O98G78jQ6peII4
- 7PwtHrROPHKl6v7RsdCHzFeL3jTp/l+6ZEAZSFA=
-X-Received: by 2002:a17:903:2343:b0:1ae:bf5:7a7 with SMTP id
- c3-20020a170903234300b001ae0bf507a7mr21597756plh.35.1684954860802; 
- Wed, 24 May 2023 12:01:00 -0700 (PDT)
+ bh=TwI8HsnLZZVW+eBChZJLSW4iUg6kKWsOAoR+HeGruLE=;
+ b=ZFdxYU0RKWmTBvs+re4vp+jcwZyN0vPDBcz008rPhBgM4EIyxPEGLsYwnfGiArlm39
+ Xl34A5abvRWSsRGC+SE5kMk16XkmCsFZAFkGJPSMCA1VN85EuRXQ6HkTdQhKkZqJ4Voy
+ /C1OcI/9I0QrNZvgpYRSs2nna2JKLh1mpBchXoatj30qD/Qb4tG8pyM4SAPlNOipabip
+ DM40AFQ8IaKqcj1vTeQUMoIvQ2xcwUTpVZD0gZjutUOYMz7MSVSrCwai9v5MQJweLONy
+ bTlM/DZka6PQstEFQmos4MB5MTWMt7vLQoRod2Mf9T5v05AA1Xmnb/gEOXmzJ5g29p3z
+ CAWw==
+X-Gm-Message-State: AC+VfDwcgj2YhTJ0V+FqD5ajtRqolFa+g7jRJkGFATQfzpcjMeigLJVT
+ NO3XYVPc1PtrOorEmxYqopM3uw==
+X-Received: by 2002:a17:902:ea84:b0:1a1:a800:96a7 with SMTP id
+ x4-20020a170902ea8400b001a1a80096a7mr18789734plb.8.1684954904377; 
+ Wed, 24 May 2023 12:01:44 -0700 (PDT)
 Received: from ?IPV6:2602:ae:1598:4c01:6b03:9af2:33c1:3d6b?
  ([2602:ae:1598:4c01:6b03:9af2:33c1:3d6b])
  by smtp.gmail.com with ESMTPSA id
- bj6-20020a170902850600b001a183ade911sm9080278plb.56.2023.05.24.12.01.00
+ e12-20020a170902b78c00b001993a1fce7bsm9030560pls.196.2023.05.24.12.01.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 May 2023 12:01:00 -0700 (PDT)
-Message-ID: <78cc4cd6-f961-a271-6d00-b04d5a5732ff@linaro.org>
-Date: Wed, 24 May 2023 12:00:58 -0700
+ Wed, 24 May 2023 12:01:43 -0700 (PDT)
+Message-ID: <ea76efaa-f298-9f29-1474-68c01bf3dc03@linaro.org>
+Date: Wed, 24 May 2023 12:01:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH 01/10] hw/arm/realview: Simplify using 'break' statement
+Subject: Re: [PATCH 02/10] hw/arm/realview: Declare QOM types using
+ DEFINE_TYPES() macro
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>
 References: <20230524145906.33156-1-philmd@linaro.org>
- <20230524145906.33156-2-philmd@linaro.org>
+ <20230524145906.33156-3-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230524145906.33156-2-philmd@linaro.org>
+In-Reply-To: <20230524145906.33156-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -130,52 +131,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FVFbt2tRMoLR
+X-TUID: FlSE88Yr+nZw
 
 On 5/24/23 07:58, Philippe Mathieu-Daudé wrote:
-> The 'break' statement terminates the execution of the nearest
-> enclosing 'for' statement in which it appears.
+> When multiple QOM types are registered in the same file,
+> it is simpler to use the the DEFINE_TYPES() macro. Replace
+> the type_init() / type_register_static() combination.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
 > ---
->   hw/arm/realview.c | 6 ++----
->   1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-> index a5aa2f046a..a52ff35084 100644
-> --- a/hw/arm/realview.c
-> +++ b/hw/arm/realview.c
-> @@ -88,7 +88,6 @@ static void realview_init(MachineState *machine,
->       I2CBus *i2c;
->       int n;
->       unsigned int smp_cpus = machine->smp.cpus;
-> -    int done_nic = 0;
->       qemu_irq cpu_irq[4];
->       int is_mpcore = 0;
->       int is_pb = 0;
-> @@ -294,14 +293,13 @@ static void realview_init(MachineState *machine,
->       for(n = 0; n < nb_nics; n++) {
->           nd = &nd_table[n];
->   
-> -        if (!done_nic && (!nd->model ||
-> -                    strcmp(nd->model, is_pb ? "lan9118" : "smc91c111") == 0)) {
-> +        if (!nd->model || strcmp(nd->model, is_pb ? "lan9118" : "smc91c111") == 0) {
->               if (is_pb) {
->                   lan9118_init(nd, 0x4e000000, pic[28]);
->               } else {
->                   smc91c111_init(nd, 0x4e000000, pic[28]);
->               }
-> -            done_nic = 1;
-> +            break;
+>   hw/arm/realview.c | 50 ++++++++++++++++++-----------------------------
+>   1 file changed, 19 insertions(+), 31 deletions(-)
 
-While I agree this preserves existing behaviour, it doesn't seem like the logic is 
-actually correct.  This will only ever connect 1 of nb_nics.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
-
-
->           } else {
->               if (pci_bus) {
->                   pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
-

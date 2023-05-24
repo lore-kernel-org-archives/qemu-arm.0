@@ -1,109 +1,110 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2614842ejb;
-        Wed, 24 May 2023 08:01:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7H8Bq9JNDLKfOHntEjTP4UkiWyffqxElcCdl7IiuGSQX5gPpAv04OaxI77ys4LGXPC3XyO
-X-Received: by 2002:a05:6214:3016:b0:623:9219:499b with SMTP id ke22-20020a056214301600b006239219499bmr26032625qvb.42.1684940496615;
-        Wed, 24 May 2023 08:01:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684940496; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2615113ejb;
+        Wed, 24 May 2023 08:01:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Mgl+sdlTMRMpL1S8fBj0jYB2rauzwitZvGDwZcrdslauhm8sbmI5ZAqXtaamkunZyWm8j
+X-Received: by 2002:a05:620a:8f07:b0:75b:23a1:8e30 with SMTP id rh7-20020a05620a8f0700b0075b23a18e30mr7059025qkn.1.1684940512203;
+        Wed, 24 May 2023 08:01:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684940512; cv=none;
         d=google.com; s=arc-20160816;
-        b=qcJ4d2hxbCfoafL6uIO5eK8AYC2Y0g3LYOsA3JGv3YUF5ltUa5vzhnll8zWe6ypYJg
-         DATAxDOTFBI/oV65ConjTWBAhUz1Xv4hclI9JQIb6E9xXNT0Zjp1C9p/lh66Kcqetlrr
-         hw+cyRj3DIeuSfGHXndP+NJclRgl44RtICmzT8dNGGBeS+zGhFCxOe1+fAhPG0lGKX2y
-         S0qgLJH1xwZcB5pPppmTEe/TEJCmuB/TCU/tGldgmMHMj1X+W0m2GJGp8bWCPV/Cf3j8
-         8bg5EAcfSADVOVK6GIqDGN965O8vBEqE9Y+5lNgrsBiftaUZBjwBrmzei8eGeDns+0Qq
-         NA3Q==
+        b=coGawikCKxiiisJapL4hG9UgP2+ijKKrGHEW6yKtUy+a0e8sIXl8eVlyneECNfvqP6
+         eYqzDRrHyhEy4+Cjc4N5AS1c31wmowwOmeYACXUWeV7rL6NhAnrap+1SdMizkarTMrkP
+         +j1SUMzbbhLDaiZsmhynGM/TeezQaZFPK3pHHMgipCt8hD2IR+7acOGYUD2C051A08OW
+         6gGlevezQ+UIY2FTABaztUPwGWNls18KQg6GMWzCNblEv7XqOqNZDDV79wM63pG8WAWC
+         T9fJzlKjWYTLMg5jvVZW7DVonCFOn6EUozuVA+IGjHkUmHWe+3++3XSuufv2aUsRIhrZ
+         QBxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PydogO+S2zKNTlFPp3mMYMrTOfo1Vgivo42WoSUjgRg=;
-        b=qsnYrprYHUpo6HyneUgsfo6DlXgOriOeewtLmIviGc5MDNJoeQ/1qJm0WPZYdsMcM9
-         27/w1aIQ7FKGbaxVgeWXCs7luOFqE+RhMz9QyDYYtu0U1FzTjlEdx4V6zglR5SQmEIi+
-         x30tLKDR9Ck1zZTAZIdKg7ka8hDoO7ZKMDOKQ7OtSxfkfhRiXtvQrZgAGBjwdAZj3fr9
-         /gk9xlj92nRdRO9ux9aCxqWSKnKweXAzUlaWJvUVq5NJ1gGt+BV/lhEKEm/9N5ESLYUf
-         83d4MkFSPpXHiPjWU9ysBteHXzbzMp5pReKivwdL+Ja0K3oNgJVYDrINmW1dAsF57Ay5
-         O9/Q==
+        bh=mkUxPfgunl3171HVbZ04V4mGlWy5lVrjE2KtHggEcpE=;
+        b=Yu8D+khVcIIKjPLWkesNiHBiVchC/m9YTaljsL9TOHtuA3F5pYk8xBkynM9hJvnMRE
+         Ce6Pzqn4w3IvY23MSBqWhM8AyEgJRwftKXaMI91urPe1Y09b3uInE6ccIWTo1PbY+mRH
+         xxm3RQTA9/870hpUiDRIl8mxCq/N1bi631Pd46WeQMXNxtKRHTtQZP+jlH6ASw9LgPXp
+         en78RoqhUYaUG1eW2vqoav/4NktOCBIOY0920XwLxQOfsoHXxRf9OfPZyJii8pNTpkWu
+         bTD6cWnqyXmmQslOk5P0YlXYM2AlBbztYdTxcipgaR/ejRBBN6MBZoQPZRYSm+U1ypkU
+         mdJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E7sOogTi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dsRaViDu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8-20020a0562140d8800b0062383a6e778si6676713qve.205.2023.05.24.08.01.36
+        by mx.google.com with ESMTPS id p21-20020a05620a133500b007579f89c0d5si6505792qkj.97.2023.05.24.08.01.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 08:01:36 -0700 (PDT)
+        Wed, 24 May 2023 08:01:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E7sOogTi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dsRaViDu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q1pxt-0006X8-GS; Wed, 24 May 2023 10:59:49 -0400
+	id 1q1py7-0006vB-Sp; Wed, 24 May 2023 11:00:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1pxe-0006JD-Dc
- for qemu-devel@nongnu.org; Wed, 24 May 2023 10:59:36 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1py6-0006tj-LP
+ for qemu-devel@nongnu.org; Wed, 24 May 2023 11:00:02 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1pxc-0006PT-C4
- for qemu-devel@nongnu.org; Wed, 24 May 2023 10:59:33 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-3f607766059so11691865e9.3
- for <qemu-devel@nongnu.org>; Wed, 24 May 2023 07:59:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1py4-0006YU-S8
+ for qemu-devel@nongnu.org; Wed, 24 May 2023 11:00:02 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-3f603d4bc5bso12488475e9.3
+ for <qemu-devel@nongnu.org>; Wed, 24 May 2023 08:00:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684940371; x=1687532371;
+ d=linaro.org; s=google; t=1684940398; x=1687532398;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PydogO+S2zKNTlFPp3mMYMrTOfo1Vgivo42WoSUjgRg=;
- b=E7sOogTiv9Y4kFslJcA9lUcIb+HVt34jqG1gfk/jOyTxLEV/idizywt0a+uNW6kho5
- M7gCzXbtMw+WtVSvzp/HGH0ArrUmQ6RUpyjI1iv/lR3bMy0fW6h0C1HBTnURRqDHZUjh
- A4oIY4DdCkPDW42HLhvBToC1miDHYOa+9SVBlHOyoDq+CxBRKFc3YQ4us2naLZ4uJz2k
- FUvKwIHbpdUazrBribvg8ac6J+IWQICtb8bxKx05QurgjcMTo7nht98a5RQL+r8+iJcH
- /Wgnz1L7fYkQVLvqcJblMXfylARGUbN8nhLjL5sYd351K2usywllzODlPHBxMPsvTF6j
- e0SQ==
+ bh=mkUxPfgunl3171HVbZ04V4mGlWy5lVrjE2KtHggEcpE=;
+ b=dsRaViDu/uGfGzKQ+/hybnBXxuMs8bn7JOsECmoJkLmcGCsHvYrAIQxdqlf0FZZj30
+ NeoWdHbmpJUmpYKIxeFpnM2+ypHIm3laMcHCC8oUa3Mu2JS+NH5qBQF/hCiQKk4XGKF9
+ XYZrCN6xpJQE7aTn1CalLBAzmnMl10c1pjaiJGyg4zSec7jiBuIuLJWKHEFoYmEhiwsz
+ 8OtjKjtZVV7u0lzZrlTy21jqooVYYbpPb4wKQ/6fXkyuPM8CVMwppSgIYt1nH2JeHZiL
+ Y7JFgweZI60asp6uYctAuzRgAMHjsyTfjKJq9Vt8CiNyKTrua9anysZzQDkZa12x8m4/
+ nQzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684940371; x=1687532371;
+ d=1e100.net; s=20221208; t=1684940398; x=1687532398;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PydogO+S2zKNTlFPp3mMYMrTOfo1Vgivo42WoSUjgRg=;
- b=At69EO71kl/g8bk6+TZKa4u4l22UY3N1MNWy16AkqnZ2Q0049Z8jQVqKqCg+ye95ti
- LW2dlogeiS9N+uX5HwLnS/dSkwWyJ+f7y3ezHpHUbthu3JOWa0OTWgykT7Gcv4GyhVN2
- j9CpO8c8vo0xLIgU7+QljgNqyotwiAklV84puZxylKicnfVhXUd8jdxkCrzBOyDsk9Mb
- P3eh3AsWWfIkcNI22qkzhSxdF3eGoxcu8tBMqpBE6lO1P7q/KQrphUoFhwllG77NHxOd
- 7bucTQiv4prV7by6QR50M0auM/LuhP6eVx1tutGNaLGuUvMt7TYppj925xkwvZwW/CbS
- kb5Q==
-X-Gm-Message-State: AC+VfDxTwFCpczxNo5bxngkBBPHKHkYPolJvWhYB3O+WQ9Mg4fp4Ww20
- OyWAS+RdsO4An6VsQCttWa85SdvwxhLFMwcYxJi4lQ==
-X-Received: by 2002:a7b:c411:0:b0:3f4:f7c2:d681 with SMTP id
- k17-20020a7bc411000000b003f4f7c2d681mr33149wmi.29.1684940370857; 
- Wed, 24 May 2023 07:59:30 -0700 (PDT)
+ bh=mkUxPfgunl3171HVbZ04V4mGlWy5lVrjE2KtHggEcpE=;
+ b=QhszjcaDbPaYztjX7/93zBhnp4utG4l3IxZrivUYWPpOLEJwsg7+pKckBvOZK11zL+
+ +B9EqGqVDh6KLTm5pcIobhKDBg0JLRvoTIWCbvlAAG1/JPLagPoVlllA9iHzqaiOzufZ
+ lPocE3/AiVR2fs01PJLyTK2DFMSc7abyX/fp8vQPnD8pMpL6OhK9SH/qHYbrp/LcdE6+
+ NbHZALWqU23fugik4mWEt7ifBDw07SEaIrKD8aNHcARrhNnfXePPFfnjgTn0d68g8ID3
+ T0JcvKOBYC+TLzmXod1sQUWHXyaI/tYNIDFqDrtKE9srXXvck9MIW5Qa0MAscsdyC5ya
+ R5rA==
+X-Gm-Message-State: AC+VfDwZKG4Grsif9jopp6VYWJLjqHyT3e6aZ/nWvzeiPiqJtVSpTcrT
+ 3S8M6zK6gEoFI7UgWvL7OaaxZjQ025PG019cTAXMWA==
+X-Received: by 2002:a7b:c40a:0:b0:3f1:72fb:461a with SMTP id
+ k10-20020a7bc40a000000b003f172fb461amr104066wmi.2.1684940398197; 
+ Wed, 24 May 2023 07:59:58 -0700 (PDT)
 Received: from localhost.localdomain
  (fac34-h02-176-184-31-193.dsl.sta.abo.bbox.fr. [176.184.31.193])
  by smtp.gmail.com with ESMTPSA id
- x15-20020a1c7c0f000000b003f4268f51f5sm2670695wmc.0.2023.05.24.07.59.29
+ f21-20020a7bc8d5000000b003f60a446fe5sm2613241wml.29.2023.05.24.07.59.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 May 2023 07:59:30 -0700 (PDT)
+ Wed, 24 May 2023 07:59:57 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 04/10] hw/arm/realview: Factor realview_common_class_init() out
-Date: Wed, 24 May 2023 16:59:00 +0200
-Message-Id: <20230524145906.33156-5-philmd@linaro.org>
+Subject: [PATCH 09/10] hw/arm/realview: Use generic
+ realview_common_machine_init()
+Date: Wed, 24 May 2023 16:59:05 +0200
+Message-Id: <20230524145906.33156-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230524145906.33156-1-philmd@linaro.org>
 References: <20230524145906.33156-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,74 +126,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1eKBd2rN2n0n
+X-TUID: pxJTgowB7iCZ
 
-Introduce realview_common_class_init() where we'll set
-fields common to all Realview classes.
+The realview_board_type enum is now unused. Remove it and have
+all instances use the common realview_common_machine_init()
+method.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/realview.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/arm/realview.c | 46 ++--------------------------------------------
+ 1 file changed, 2 insertions(+), 44 deletions(-)
 
 diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index f0a8a93b08..6970e8a469 100644
+index 917a1b22df..b7bb384000 100644
 --- a/hw/arm/realview.c
 +++ b/hw/arm/realview.c
-@@ -410,6 +410,13 @@ static void realview_pbx_a9_init(MachineState *machine)
-     realview_init(machine, BOARD_PBX_A9);
+@@ -54,13 +54,6 @@ static struct arm_boot_info realview_binfo = {
+     .smp_bootreg_addr = SMP_BOOTREG_ADDR,
+ };
+ 
+-enum realview_board_type {
+-    BOARD_EB,
+-    BOARD_EB_MPCORE,
+-    BOARD_PB_A8,
+-    BOARD_PBX_A9,
+-};
+-
+ static void split_irq_from_named(DeviceState *src, const char* outname,
+                                  qemu_irq out1, qemu_irq out2) {
+     DeviceState *splitter = qdev_new(TYPE_SPLIT_IRQ);
+@@ -75,8 +68,7 @@ static void split_irq_from_named(DeviceState *src, const char* outname,
+                                 qdev_get_gpio_in(splitter, 0));
  }
  
-+static void realview_common_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->ignore_memory_transaction_failures = true;
-+}
-+
- static void realview_eb_class_init(ObjectClass *oc, void *data)
+-static void realview_init(MachineState *machine,
+-                          enum realview_board_type board_type)
++static void realview_common_machine_init(MachineState *machine)
+ {
+     RealviewMachineClass *rmc = REALVIEW_MACHINE_GET_CLASS(machine);
+     ARMCPU *cpu = NULL;
+@@ -103,17 +95,6 @@ static void realview_init(MachineState *machine,
+     ram_addr_t low_ram_size;
+     ram_addr_t ram_size = machine->ram_size;
+ 
+-    switch (board_type) {
+-    case BOARD_EB:
+-        break;
+-    case BOARD_EB_MPCORE:
+-        break;
+-    case BOARD_PB_A8:
+-        break;
+-    case BOARD_PBX_A9:
+-        break;
+-    }
+-
+     for (n = 0; n < smp_cpus; n++) {
+         Object *cpuobj = object_new(machine->cpu_type);
+ 
+@@ -381,30 +362,11 @@ static void realview_init(MachineState *machine,
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &realview_binfo);
+ }
+ 
+-static void realview_eb_init(MachineState *machine)
+-{
+-    realview_init(machine, BOARD_EB);
+-}
+-
+-static void realview_eb_mpcore_init(MachineState *machine)
+-{
+-    realview_init(machine, BOARD_EB_MPCORE);
+-}
+-
+-static void realview_pb_a8_init(MachineState *machine)
+-{
+-    realview_init(machine, BOARD_PB_A8);
+-}
+-
+-static void realview_pbx_a9_init(MachineState *machine)
+-{
+-    realview_init(machine, BOARD_PBX_A9);
+-}
+-
+ static void realview_common_class_init(ObjectClass *oc, void *data)
  {
      MachineClass *mc = MACHINE_CLASS(oc);
-@@ -417,7 +424,6 @@ static void realview_eb_class_init(ObjectClass *oc, void *data)
-     mc->desc = "ARM RealView Emulation Baseboard (ARM926EJ-S)";
-     mc->init = realview_eb_init;
-     mc->block_default_type = IF_SCSI;
--    mc->ignore_memory_transaction_failures = true;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("arm926");
+ 
++    mc->init = realview_common_machine_init;
+     mc->ignore_memory_transaction_failures = true;
  }
  
-@@ -429,7 +435,6 @@ static void realview_eb_mpcore_class_init(ObjectClass *oc, void *data)
-     mc->init = realview_eb_mpcore_init;
+@@ -414,7 +376,6 @@ static void realview_eb_class_init(ObjectClass *oc, void *data)
+     RealviewMachineClass *rmc = REALVIEW_MACHINE_CLASS(oc);
+ 
+     mc->desc = "ARM RealView Emulation Baseboard (ARM926EJ-S)";
+-    mc->init = realview_eb_init;
+     mc->block_default_type = IF_SCSI;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("arm926");
+     rmc->board_id = 0x33b;
+@@ -426,7 +387,6 @@ static void realview_eb_mpcore_class_init(ObjectClass *oc, void *data)
+     RealviewMachineClass *rmc = REALVIEW_MACHINE_CLASS(oc);
+ 
+     mc->desc = "ARM RealView Emulation Baseboard (ARM11MPCore)";
+-    mc->init = realview_eb_mpcore_init;
      mc->block_default_type = IF_SCSI;
      mc->max_cpus = 4;
--    mc->ignore_memory_transaction_failures = true;
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("arm11mpcore");
- }
- 
-@@ -439,7 +444,6 @@ static void realview_pb_a8_class_init(ObjectClass *oc, void *data)
+@@ -440,7 +400,6 @@ static void realview_pb_a8_class_init(ObjectClass *oc, void *data)
+     RealviewMachineClass *rmc = REALVIEW_MACHINE_CLASS(oc);
  
      mc->desc = "ARM RealView Platform Baseboard for Cortex-A8";
-     mc->init = realview_pb_a8_init;
--    mc->ignore_memory_transaction_failures = true;
+-    mc->init = realview_pb_a8_init;
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a8");
- }
+     rmc->board_id = 0x769;
+     rmc->is_pb = true;
+@@ -453,7 +412,6 @@ static void realview_pbx_a9_class_init(ObjectClass *oc, void *data)
+     RealviewMachineClass *rmc = REALVIEW_MACHINE_CLASS(oc);
  
-@@ -450,7 +454,6 @@ static void realview_pbx_a9_class_init(ObjectClass *oc, void *data)
      mc->desc = "ARM RealView Platform Baseboard Explore for Cortex-A9";
-     mc->init = realview_pbx_a9_init;
+-    mc->init = realview_pbx_a9_init;
      mc->max_cpus = 4;
--    mc->ignore_memory_transaction_failures = true;
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
- }
- 
-@@ -475,6 +478,7 @@ static const TypeInfo realview_machine_types[] = {
-         .name           = TYPE_REALVIEW_MACHINE,
-         .parent         = TYPE_MACHINE,
-         .class_size     = sizeof(RealviewMachineClass),
-+        .class_init     = realview_common_class_init,
-         .abstract       = true,
-     }
- };
+     rmc->board_id = 0x76d;
 -- 
 2.38.1
 

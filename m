@@ -1,112 +1,120 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2599644ejb;
-        Wed, 24 May 2023 07:38:01 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ784p59y6ZNU2N0DQPvSWpC9NhlRpZNLDHViUlGHm3zsHNf+oUzYUbVwlpj0JrkUKNXr/h7
-X-Received: by 2002:a05:6214:62c:b0:625:b491:7911 with SMTP id a12-20020a056214062c00b00625b4917911mr539054qvx.21.1684939081299;
-        Wed, 24 May 2023 07:38:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684939081; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2600349ejb;
+        Wed, 24 May 2023 07:39:07 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ79Jwh96fEPJUIUaorJpR9ZLgJu6E1tAjQYRFjE5h1qha3KOaehQ0e7Dg/VnWvUp36u9Kyd
+X-Received: by 2002:a37:ad06:0:b0:75b:23a0:dec6 with SMTP id f6-20020a37ad06000000b0075b23a0dec6mr7137595qkm.68.1684939147134;
+        Wed, 24 May 2023 07:39:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684939147; cv=none;
         d=google.com; s=arc-20160816;
-        b=UksgvEG2b5EYWA1VOoM3XAWeGUCwMc/WiblWduMlJA18pFsy3RcKxiWPYkpuoSFNES
-         yBYQjWyfEecnJjBYKwmDYCgNTars5nRPIna5W420E74KEKyu1weT83e6rTyj7vYBfBVZ
-         iW0VNge1IhKaVxaa1a+kKKEyS3Et8EpIuxS92WGfdbsvzp+OGQrI6r4F7KA53pYawKfi
-         zWBkG95imjDyzRMIANJfcKh16zNQxfNRs4JtmI3G3pZzYG41wt6wjp1j47glvc35qP9h
-         RFLADZg/VKxKRLG/kqFSFlPCrtbrBqtHbVDTYVdExCGtkAwk1sx8KDJ1h/GS9xf6cmJt
-         +MQw==
+        b=URIDZyYQi0pbdsAD0KFIJyvhQvcMmFL/t0KVxfvBiVB6ISZlCvYnHHW5QQe/jYFJT2
+         3mv8QC4rwwnWIxr+tpadHPM9H1u239LXSn0F6BSoMj8QqQOOxA2Y26rmw/UH50z7L7KD
+         StIME4INZeS//QOjGo6ItI3hUZ8dvNhC3dYhV7aAHxleQKv2GLWUxPuSTmqFmCjBkNsC
+         lacrmx7A+JwGZZ1VQyfv8bLejWzE7E4I3zdAYh3Hz1NrPx1otmTdQO2DmlIxMP34vmAl
+         FbpjQyj4SNaAP5fCpUfpFAo01LtgKnnxGqLPQo5abJf0DcMbVR9jXsPyaFl+XadOx5mb
+         /JGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=4CLXJNIE8AnmMaFUz3EhGB103d1OicktN0ykzKSWRh4=;
-        b=xBX6W3ZBmCnFTWYxOHb/TSEIJNGxcbcU05Hq0zY4DtVbBxrLFwEHKCBEcYK/DNtYlA
-         XGrrZ5/rQAQa3xIQiJQsk2DjWQ6hnIBMhIDilbC+9FwyDA/O6NHyKvGuDj1ZXb0XaGfU
-         +njeTNbGqereHVag3c9NvgYAlB3ESxYiXEZeNBfRluKtf+BTgQJVMAYSYrhDybarh6Rc
-         EDAHiGwcPq1Cu7nT7AEuoznJapwjkU8oi4rmc5B/MQmRZoZyLdSD008FkJH/zpNEJi6q
-         wdhz1/VAhHKC1VvdF3oj5lHRDsvNfHZLmDZxFZvuS608fvzBXo5QwOATnMdQIE04UAtw
-         tQUg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EOkOFySqro5gSmR8qPZh0BYA3rYAuOHx36cBQHbVFn8=;
+        b=z55CGXlUmGlRNRa4TxoEZwttxIpKE/9CDxgcpVa5bv8txnSxu+bGxBQmrQyU+LDKUa
+         +Nn4L0tuD6oou60i5vZvZ9+495B99Qfu6Ganqa07m6FhvPxToYUNgIrIRmh+NYSTcrqj
+         s/ALlYaOaRqcgKfpqKVmRXTHwqQhT/HKhNBsk9eEzb6Wjffqctm1bwP86lXIcWX+R/i0
+         DbyoyWtfbbx2tofPMIxjGG+FIwl7cNcyGp2N8Yef50vI0awzJqkI0D2QSniFzzYl/jOX
+         enduZjZDAJ8pMRJCGCfqbaE3cDDcHGc+1VbqfxdWt+LQGgu64qywpNuLHbNfPGsugXv4
+         3s6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=Hj0wevK7;
+       dkim=pass header.i=@linaro.org header.s=google header.b="fWVwB/mZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=adacore.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id kj23-20020a056214529700b006041a751f40si4711968qvb.32.2023.05.24.07.38.01
+        by mx.google.com with ESMTPS id w12-20020a05620a128c00b007579ed46c05si6441322qki.266.2023.05.24.07.39.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 07:38:01 -0700 (PDT)
+        Wed, 24 May 2023 07:39:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@adacore.com header.s=google header.b=Hj0wevK7;
+       dkim=pass header.i=@linaro.org header.s=google header.b="fWVwB/mZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=adacore.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1pcc-0007GN-UB; Wed, 24 May 2023 10:37:51 -0400
+	id 1q1pdi-00080R-T6; Wed, 24 May 2023 10:38:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1q1pcY-0007Fg-9M
- for qemu-arm@nongnu.org; Wed, 24 May 2023 10:37:47 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q1pdd-0007rX-Ex
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 10:38:54 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chigot@adacore.com>)
- id 1q1pcM-0007qm-Td
- for qemu-arm@nongnu.org; Wed, 24 May 2023 10:37:38 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-30a992a9c3eso682971f8f.0
- for <qemu-arm@nongnu.org>; Wed, 24 May 2023 07:37:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q1pdb-000859-R8
+ for qemu-arm@nongnu.org; Wed, 24 May 2023 10:38:53 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-534696e4e0aso299870a12.0
+ for <qemu-arm@nongnu.org>; Wed, 24 May 2023 07:38:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=adacore.com; s=google; t=1684939047; x=1687531047;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4CLXJNIE8AnmMaFUz3EhGB103d1OicktN0ykzKSWRh4=;
- b=Hj0wevK72gW+XsAwSRhyF8trZpIHmYzZcutuX/wyrQGksai1u5tdtnPPmGaeZ+rNUT
- uboIIWFgoL3lv/UQJpn1OWNUsiMbWtzpAPVLOgs89Mg7Y/bIgvjRWJ7tIzs7EEm7Jb5e
- 2os8Dauy94DwVPNXZhsdVZz1NPIEJf2uUw1UweuPFdVs8CPla7FXgT3KWSH4W7nRQr/9
- FYc8Lf/yVSy/S9+93dR4W/8cPv/FDuVcYEsIZkh9GNBrfuEKyqMPK9tBlAQhTIFJiWC+
- RXhBA8ejqbcb8zScMDgABftgsh68uISAlZ3TyENthx45ocLVngLB4vyTjB9jSjac1Y/V
- 4hLA==
+ d=linaro.org; s=google; t=1684939130; x=1687531130;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EOkOFySqro5gSmR8qPZh0BYA3rYAuOHx36cBQHbVFn8=;
+ b=fWVwB/mZBcvI9AeVx2RFB4jv7Jg+f1aPVFTeQQ9BQqwxXfdC5cP3ana4jJYrCmRzQJ
+ hD2mCNFZyTnsCi5rRYAwLIVR8tA42iiZYvzbvlRQ+HeSxmyPW2R7FI/L6r4G4us+072A
+ yR8ynRi6jFsCHXVhSZ80EDzUI61J64C+YdPRUOO/aWY/6bXaES7zuPpZhN9Kv8LFUxCX
+ fd9v7jyhqX20wfYQmJaGF9Ow2Fpeb7jzEW8drUMz+mJ9geQtfKRx5LOaVblqD1ymcfjJ
+ qtOK4Gxfi23xru9D1RUjbZ4cYPmz4dPZW4Zhm2keQMvEkVDDiLFCcC3a9tcnMVNig0Fl
+ 1OCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684939047; x=1687531047;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4CLXJNIE8AnmMaFUz3EhGB103d1OicktN0ykzKSWRh4=;
- b=bdcJ74bSZJ6ZzXARWe0HY/6c6jvpeQWBFolBQGXG509p8wwUvEbe63WfJPZRRuSWUa
- ac5YsEcRVrAofwg2+3/7YJMlc7zHHfS1EcZwuavIanWFD2SJmgK1Vx6soLrSQtSmngxh
- bNwSz4PwvebENhSbZ2w6U9iJtKKhavP57zFAl2S4yYlF/05w8CySboaLuJA0dC6QJLR8
- oVedJPvhCOcEUEPZOG9jGoU4xM+/3F3Woc0LTTwc0OwfvKKKvE+9wnRR0p8+j0ZhRZM/
- Q7XG2HREuon9WgLNvaZsdrb4r/EbaRV5/m8oj+OFB/ZXFz62BP3gMTCgXOS/FudmYKTl
- CVwg==
-X-Gm-Message-State: AC+VfDzuKtkRFS4Fnft/56T80391O/yXLsPY95bs7kaKAssBt4Og/0AV
- 0ZOew43lvtwZ7sbO9TkzrGEDcQ==
-X-Received: by 2002:a5d:6e8f:0:b0:2ff:801b:dec6 with SMTP id
- k15-20020a5d6e8f000000b002ff801bdec6mr13440148wrz.20.1684939047378; 
- Wed, 24 May 2023 07:37:27 -0700 (PDT)
-Received: from chigot-Dell.home ([2a01:cb15:8123:8100:c59d:d6:6f27:fde6])
+ d=1e100.net; s=20221208; t=1684939130; x=1687531130;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EOkOFySqro5gSmR8qPZh0BYA3rYAuOHx36cBQHbVFn8=;
+ b=Vm7bvlbqqU9sfWlBSQB6RKU6qbu+DULS8AkYapjxRF52UTpDBoFahgseJBAFKxNrvN
+ B2NtdTjJhUEx7TJ19SqbW/jlq0WnT1Od3HWbQd75pTAjq9NMQ82lG2WSFJvcw4KbfB9u
+ OPtoNV6yLOPje/hnDcpb355q0n0jIfhbLCkhuDEv9WGVbj9g3tusCpV7bUa4LfHlK3io
+ pejmHrj2hgqqOnz3TJ+deFDq04iHBShSySn5yzX1UTRzRZB/ZMf5WjMs12RNNm62DKLF
+ jYoHH6WPUAXCVpue5JM8G5oYF87zHL88xI65yT3b1MuM/RhBomeNomCNjcotRMCmHXoF
+ Kidw==
+X-Gm-Message-State: AC+VfDxLCB5RMvi6qT1VFBl7QX5oRV3BVfzKt/L/n5SkTISMXtNxSI0q
+ NbBoI8yXu69rrOBBiPB4bSjM6A==
+X-Received: by 2002:a17:903:18b:b0:1ad:d995:54a with SMTP id
+ z11-20020a170903018b00b001add995054amr19610438plg.46.1684939130168; 
+ Wed, 24 May 2023 07:38:50 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1598:4c01:6b03:9af2:33c1:3d6b?
+ ([2602:ae:1598:4c01:6b03:9af2:33c1:3d6b])
  by smtp.gmail.com with ESMTPSA id
- q9-20020adffec9000000b002ceacff44c7sm14669319wrs.83.2023.05.24.07.37.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 May 2023 07:37:26 -0700 (PDT)
-From: =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, edgar.iglesias@gmail.com, alistair@alistair23.me,
- peter.maydell@linaro.org,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-Subject: [PATCH] hw/arm/xlnx-zynqmp: fix unsigned error when checking the RPUs
- number
-Date: Wed, 24 May 2023 16:37:14 +0200
-Message-Id: <20230524143714.565792-1-chigot@adacore.com>
-X-Mailer: git-send-email 2.25.1
+ y18-20020a170902ed5200b001a967558656sm8817819plb.42.2023.05.24.07.38.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 24 May 2023 07:38:49 -0700 (PDT)
+Message-ID: <ea52f09a-7558-e9d2-cdef-a0a6c0a96216@linaro.org>
+Date: Wed, 24 May 2023 07:38:47 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=chigot@adacore.com; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] hw/arm: Use MachineClass->default_nic in the sbsa-ref
+ machine
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>
+References: <20230524082037.1620952-1-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230524082037.1620952-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.107,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,36 +131,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 92Ee+H1OwQPj
+X-TUID: /fJaqSoXPJ7z
 
-When passing --smp with a number lower than XLNX_ZYNQMP_NUM_APU_CPUS,
-the expression (ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS) will result
-in a positive number as ms->smp.cpus is a unsigned int.
-This will raise the following error afterwards, as Qemu will try to
-instantiate some additional RPUs.
-  | $ qemu-system-aarch64 --smp 1 -M xlnx-zcu102
-  | **
-  | ERROR:../src/tcg/tcg.c:777:tcg_register_thread:
-  |   assertion failed: (n < tcg_max_ctxs)
+On 5/24/23 01:20, Thomas Huth wrote:
+> Mark the default NIC via the new MachineClass->default_nic setting
+> so that the machine-defaults code in vl.c can decide whether the
+> default NIC is usable or not (for example when compiling with the
+> "--without-default-devices" configure switch).
+> 
+> Signed-off-by: Thomas Huth<thuth@redhat.com>
+> ---
+>   hw/arm/sbsa-ref.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 
-Signed-off-by: Clément Chigot <chigot@adacore.com>
----
- hw/arm/xlnx-zynqmp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 335cfc417d..5905a33015 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -213,7 +213,7 @@ static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
-                                    const char *boot_cpu, Error **errp)
- {
-     int i;
--    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
-+    int num_rpus = MIN((int)(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS),
-                        XLNX_ZYNQMP_NUM_RPU_CPUS);
- 
-     if (num_rpus <= 0) {
--- 
-2.25.1
-
+r~

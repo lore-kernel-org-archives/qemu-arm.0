@@ -1,95 +1,95 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2393450ejb;
-        Wed, 24 May 2023 01:21:01 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4YXJeoaVlmOpQCjlFu1Ioqo1F9zOoayvx3/pSWizE9W/+MZlGUphW7p4na783/8kUfOFOq
-X-Received: by 2002:ad4:5d48:0:b0:616:4c4b:c9b9 with SMTP id jk8-20020ad45d48000000b006164c4bc9b9mr30371169qvb.37.1684916461752;
-        Wed, 24 May 2023 01:21:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684916461; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2399095ejb;
+        Wed, 24 May 2023 01:35:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4qbVNEPcqUwUFBtWwHTXRW7mEknr2x/ij0Mq5e7eG2OJF7dPrw/Qgi2LbHeKTxWITJsO2v
+X-Received: by 2002:a05:6214:5093:b0:625:76bb:b25e with SMTP id kk19-20020a056214509300b0062576bbb25emr15280715qvb.20.1684917338566;
+        Wed, 24 May 2023 01:35:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684917338; cv=none;
         d=google.com; s=arc-20160816;
-        b=rkvO8wh6Vzz4M+E0qZuT9Vg3VTRmn60PNSudKaiI6h69DyYIyB6xZFQbjRQ8y1Cr+u
-         wLnuGYAEAGPMRPUbzGzmX3twzthUcOPt2rzVIPbbQQVKFusPPQu+PF/aIKn36gi82skS
-         kHVy9JcUuJ/IIQeuRJqC0PNeQK7f5wQFt3JNYftdzzwvqS5KDtSOr0Z6ifDLCwSZWFW7
-         EmcKg0P3fpps32Ha0K7BNrK0zrSi/dfeXL9BbYbpJOdSpeH/2wTPh7WObwAj7dBfNR0g
-         SMl6tr9VaCi/g9NOvgZHx3xm7Tzhh4nfqWf3Lgmt8wq5Me0Q9gt+3ZbsGBfygHL5EgUp
-         FzDA==
+        b=sLkFQXIESTud+vnyjiPlrFRt/zWbBKV8C0KywIDXXDKVyUuI4cHr2KIng4fIJR+G1N
+         ZAZGYvaBfsfIYCM6xEXCbt+vdoqUC/lGuWlmhyvji70b79VPujokFccwPUj4Yz7gx9Yj
+         9sjtHIoeKEpdVLL3nuYeTH7qSw8NZJWTDE1O6lIK/34SDg0pyNZf1c/v20pKKOtwyP70
+         96H/dvgyr+77VO7B/6ibnJhUvSNtyHCBPpmROaEoaTNJ5fXIiUhMjMQr6QrO55BBP+3Q
+         NvxuzXC0DGjLePBvzBe/fNvysWFqEwKeOGs9pBRGSPx15FbPVKVnv3AHpVE6Rbi/ZoyL
+         0qmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tKoJGBYIgfApa6z6v9N/YjXhD95adNm6Ki5W9wz0M50=;
-        b=yHUrxeJ58bhWkMBaIP5ip/ZITk/UDC3x5UgA4aF7kJBYEi409ip825gaRPKl0prQM/
-         oIumo72Jjp64JgDaAOF0hrgUBMLq6voRWh3pjwCG93Kk94zFaVR/FL8RqfnXPGCD9SCO
-         1Ozl8KBVudVR4LgDJbwpSMw3QwL84LK1efowQ0sc9s06jtWQ9eISHuwTKYZmrR/5G21w
-         +tpUuQkmB3epd2TkkY0RTv2I9YGBvtCvxgnDuTmcBJZzJabQVbj0gdENyZ3o+dIrQ8/D
-         WpXLBTsxXulOVymnHBVP/nOfOX931dhLyBw3xpqrXZ1qEqihZesAwj9WZ2T17U/3la0M
-         x9Iw==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=rw2JxgJFtRcsRh/kcI4RMhOf7QsAMloe6E7O5NnjpQ4=;
+        b=q2g/hNC8oXM6lkUXxWBuA8HhdsJ/BINDTRCKtrFlmpRB6twWupbpOY7oD2j/YGySZz
+         Fv/EvI01RRbIu8WKpzIq/sjtjMDCvgBVGk6rl5Llim4Y8Jp1kAYV2V/qMOBFDDDqiIYl
+         e3xJS6mMz0OGDnOzY0KWZ45Xc2gyQ4fNszESciaKMaPuJ2ClIX93vJD0s0NdIPo25R5I
+         LstqPyt5UohLc5hOYSo9wGoY3qmg/DMmajbhscHbnLT3zBc4c9nusuRyWZTwzfxJznwW
+         5Lkhwawc936bVnuR2ZwHm15Mg91aS1Q1suyc8Lc25nJ7+f1fTiIpihMzWwuENCGtI8mc
+         UE6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cUrVtccM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jq9-20020ad45fc9000000b0061b5c7b3f91si3723261qvb.13.2023.05.24.01.21.01
+        by mx.google.com with ESMTPS id 3-20020ad45ba3000000b006257782665csi4771907qvq.131.2023.05.24.01.35.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 01:21:01 -0700 (PDT)
+        Wed, 24 May 2023 01:35:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cUrVtccM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q1jjk-0006X3-FL; Wed, 24 May 2023 04:20:48 -0400
+	id 1q1jxz-0002cS-Tk; Wed, 24 May 2023 04:35:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1jjh-0006Wk-GR
- for qemu-arm@nongnu.org; Wed, 24 May 2023 04:20:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1q1jxx-0002bz-CY; Wed, 24 May 2023 04:35:30 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1jjf-0005hY-NW
- for qemu-arm@nongnu.org; Wed, 24 May 2023 04:20:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684916442;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=tKoJGBYIgfApa6z6v9N/YjXhD95adNm6Ki5W9wz0M50=;
- b=cUrVtccM4YOPUa+NTVvhIwE7HaKyPC6IDsQA31F3jfiTawM5tN0ylz/5nLX3WwAHS44vos
- 9bzN1KrYYvYM8aUGMDW5rdbsMEZ9DvwQWGWQVv0NqljWXgeXC2x1qg3iIHZEo6puK9Qhwy
- PuHpRKni2nGiGpJmiNU+juTiRuIW0ys=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-463-vQKVsVF5N7W2CRucLPEOWA-1; Wed, 24 May 2023 04:20:40 -0400
-X-MC-Unique: vQKVsVF5N7W2CRucLPEOWA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EC5ED8007D9;
- Wed, 24 May 2023 08:20:39 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.194.109])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C3FF37AE4;
- Wed, 24 May 2023 08:20:38 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>
-Subject: [PATCH] hw/arm: Use MachineClass->default_nic in the sbsa-ref machine
-Date: Wed, 24 May 2023 10:20:37 +0200
-Message-Id: <20230524082037.1620952-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1q1jxv-0008ME-9I; Wed, 24 May 2023 04:35:29 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.146.208])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 5205521F6B;
+ Wed, 24 May 2023 08:35:22 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG4EX2.mxp5.local (172.16.2.32)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 24 May
+ 2023 10:35:22 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R001a447bc52-2dc7-43e8-8232-2be635070245,
+ B4F797F232AA4FE69AC097E437AC38C0A7FFBD15) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <019afb96-5a94-e619-c864-d7c7ab46c9c3@kaod.org>
+Date: Wed, 24 May 2023 10:35:19 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v3 1/1] hw/arm/aspeed:Add vpd data for Rainier machine
+Content-Language: en-US
+To: Joel Stanley <joel@jms.id.au>
+CC: Ninad Palsule <ninad@linux.ibm.com>, <qemu-devel@nongnu.org>,
+ <peter.maydell@linaro.org>, <andrew@aj.id.au>, <qemu-arm@nongnu.org>
+References: <20230523214520.2102894-1-ninad@linux.ibm.com>
+ <20230523214520.2102894-2-ninad@linux.ibm.com>
+ <7fadea2f-39e0-902f-848a-8f9bd7ff1f52@kaod.org>
+ <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG4EX2.mxp5.local
+ (172.16.2.32)
+X-Ovh-Tracer-GUID: 0557040d-ae27-417a-b83b-2870f141f417
+X-Ovh-Tracer-Id: 14720578332827618086
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedvhedrfeejhedgtdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepkfffgggfuffvvehfhfgjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuieetffduledtieekgeefvefhkeeffffhkeetvedtueeggfevfeefjedvgedujeenucffohhmrghinhepvhhinhhiughrrdguvgdprhhtrdhvihhnpdhgihhthhhusgdrtghomhenucfkphepuddvjedrtddrtddruddpfeejrdehledrudegvddrleeipdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepuddvjedrtddrtddruddpmhgrihhlfhhrohhmpeeotghlgheskhgrohgurdhorhhgqedpnhgspghrtghpthhtohepuddprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdpnhhinhgrugeslhhinhhugidrihgsmhdrtghomhdpqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdpphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdgrnhgurhgvfiesrghjrdhiugdrrghupdhqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdfovfetjfhoshhtpehmohehvdelpd
+ hmohguvgepshhmthhpohhuth
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -106,47 +106,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XWr8A+EO/dVA
+X-TUID: PZPbaG4vtGPX
 
-Mark the default NIC via the new MachineClass->default_nic setting
-so that the machine-defaults code in vl.c can decide whether the
-default NIC is usable or not (for example when compiling with the
-"--without-default-devices" configure switch).
+On 5/24/23 09:44, Joel Stanley wrote:
+> On Wed, 24 May 2023 at 06:38, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> On 5/23/23 23:45, Ninad Palsule wrote:
+>>> The current modeling of Rainier machine creates zero filled VPDs(EEPROMs).
+>>> This makes some services and applications unhappy and causing them to fail.
+>>> Hence this drop adds some fabricated data for system and BMC FRU so that
+>>> vpd services are happy and active.
+>>>
+>>> Tested:
+>>>      - The system-vpd.service is active.
+>>>      - VPD service related to bmc is active.
+>>>
+>>> Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
+>>
+>> You can keep the R-b tag when you resend, unless there are a lot of changes.
+>>
+>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>
+>> Since I am curious, I started a rainier machine under QEMU and ran some
+>> commands :
+>>
+>>     root@p10bmc:~# hexdump -C /sys/bus/i2c/devices/i2c-8/8-0050/eeprom
+>>     00000000  00 00 00 00 00 00 00 00  00 00 00 84 28 00 52 54  |............(.RT|
+>>     00000010  04 56 48 44 52 56 44 02  01 00 50 54 0e 56 54 4f  |.VHDRVD...PT.VTO|
+>>     00000020  43 00 00 37 00 4a 00 00  00 00 00 50 46 08 00 00  |C..7.J.....PF...|
+>>     00000030  00 00 00 00 00 00 00 00  46 00 52 54 04 56 54 4f  |........F.RT.VTO|
+>>     00000040  43 50 54 38 56 49 4e 49  00 00 81 00 3a 00 00 00  |CPT8VINI....:...|
+>>     00000050  00 00 56 53 59 53 00 00  bb 00 27 00 00 00 00 00  |..VSYS....'.....|
+>>     00000060  56 43 45 4e 00 00 e2 00  27 00 00 00 00 00 56 53  |VCEN....'.....VS|
+>>     00000070  42 50 00 00 09 01 19 00  00 00 00 00 50 46 01 00  |BP..........PF..|
+>>     00000080  00 00 36 00 52 54 04 56  49 4e 49 44 52 04 44 45  |..6.RT.VINIDR.DE|
+>>     00000090  53 43 48 57 02 30 31 43  43 04 33 34 35 36 46 4e  |SCHW.01CC.3456FN|
+>>     000000a0  04 46 52 34 39 53 4e 04  53 52 31 32 50 4e 04 50  |.FR49SN.SR12PN.P|
+>>     000000b0  52 39 39 50 46 04 00 00  00 00 00 00 23 00 52 54  |R99PF.......#.RT|
+>>     000000c0  04 56 53 59 53 53 45 07  49 42 4d 53 59 53 31 54  |.VSYSSE.IBMSYS1T|
+>>     000000d0  4d 08 32 32 32 32 2d 32  32 32 50 46 04 00 00 00  |M.2222-222PF....|
+>>     000000e0  00 00 00 23 00 52 54 04  56 43 45 4e 53 45 07 31  |...#.RT.VCENSE.1|
+>>     000000f0  32 33 34 35 36 37 46 43  08 31 31 31 31 2d 31 31  |234567FC.1111-11|
+>>     00000100  31 50 46 04 00 00 00 00  00 00 15 00 52 54 04 56  |1PF.........RT.V|
+>>     00000110  53 42 50 49 4d 04 50 00  10 01 50 46 04 00 00 00  |SBPIM.P...PF....|
+>>     00000120  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+>>     *
+>>     00002000
+>>     root@p10bmc:~# hexdump -C /sys/bus/i2c/devices/i2c-8/8-0051/eeprom
+>>     00000000  00 00 00 00 00 00 00 00  00 00 00 84 28 00 52 54  |............(.RT|
+>>     00000010  04 56 48 44 52 56 44 02  01 00 50 54 0e 56 54 4f  |.VHDRVD...PT.VTO|
+>>     00000020  43 00 00 37 00 20 00 00  00 00 00 50 46 08 00 00  |C..7. .....PF...|
+>>     00000030  00 00 00 00 00 00 00 00  1c 00 52 54 04 56 54 4f  |..........RT.VTO|
+>>     00000040  43 50 54 0e 56 49 4e 49  00 00 57 00 1e 00 00 00  |CPT.VINI..W.....|
+>>     00000050  00 00 50 46 01 00 00 00  1a 00 52 54 04 56 49 4e  |..PF......RT.VIN|
+>>     00000060  49 44 52 04 44 45 53 43  48 57 02 30 31 50 46 04  |IDR.DESCHW.01PF.|
+>>     00000070  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+>>
+>> and
+>>
+>>     root@p10bmc:~# systemctl status  com.ibm.VPD.Manager.service  -l
+>>     * com.ibm.VPD.Manager.service - IBM VPD Manager
+>>          Loaded: loaded (/lib/systemd/system/com.ibm.VPD.Manager.service; enabled; preset: enabled)
+>>          Active: active (running) since Wed 2023-05-24 06:26:34 UTC; 1min 28s ago
+>>        Main PID: 2784 (vpd-manager)
+>>             CPU: 101ms
+>>          CGroup: /system.slice/com.ibm.VPD.Manager.service
+>>                  `-2784 /usr/bin/vpd-manager
+> 
+> When it works we should be able to do things like this, I'm told:
+> 
+> vpd-tool -r -O /system/chassis/motherboard -R VSYS -K TM
+> {
+>      "/system/chassis/motherboard": {
+>          "TM": "2222-222"
+>      }
+> }
+> 
+> 
+>>
+>> But, I also got this :
+>>
+>>     root@p10bmc:~# [   91.656331] watchdog: watchdog0: watchdog did not stop!
+>>     [   91.734858] systemd-shutdown[1]: Using hardware watchdog 'aspeed_wdt', version 0, device /dev/watchdog0
+>>     [   91.735766] systemd-shutdown[1]: Watchdog running with a timeout of 1min.
+>>     [   91.987363] systemd-shutdown[1]: Syncing filesystems and block devices.
+>>     [   93.471897] systemd-shutdown[1]: Sending SIGTERM to remaining processes...
+>>
+>> and the machine rebooted.
+>>
+>> Joel had the same problem :
+>>
+>>     https://github.com/openbmc/qemu/issues/39
+>>
+>> Is it unrelated ? I haven't started a rainier in 2 years at least so I can
+>> not tell.
+> 
+> I don't think it's related to Ninad's patches.
+> 
+> I am able to reproduce the issue on my old Skylake x86 machine, but it
+> doesn't happen on my M1 mac mini.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/sbsa-ref.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+I saw it on a Ryzen Threadripper PRO 5955WX.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 792371fdce..9c3e670ec6 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -596,6 +596,7 @@ static void create_pcie(SBSAMachineState *sms)
-     hwaddr size_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size;
-     hwaddr base_pio = sbsa_ref_memmap[SBSA_PCIE_PIO].base;
-     int irq = sbsa_ref_irqmap[SBSA_PCIE];
-+    MachineClass *mc = MACHINE_GET_CLASS(sms);
-     MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
-     MemoryRegion *ecam_alias, *ecam_reg;
-     DeviceState *dev;
-@@ -641,7 +642,7 @@ static void create_pcie(SBSAMachineState *sms)
-             NICInfo *nd = &nd_table[i];
- 
-             if (!nd->model) {
--                nd->model = g_strdup("e1000e");
-+                nd->model = g_strdup(mc->default_nic);
-             }
- 
-             pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-@@ -858,6 +859,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     mc->minimum_page_bits = 12;
-     mc->block_default_type = IF_IDE;
-     mc->no_cdrom = 1;
-+    mc->default_nic = "e1000e";
-     mc->default_ram_size = 1 * GiB;
-     mc->default_ram_id = "sbsa-ref.ram";
-     mc->default_cpus = 4;
--- 
-2.31.1
+> I suspect the emulation is moving too slowly, but the host's wall
+> clock is still ticking, so all of a sudden the BMC finds out that time
+> has passed an the watchdog bites. I could be wrong.
+> 
+> The rainier firmware crashes all over the place due to missing
+> hardware. These crashes cause applications to core dump due to
+> OpenBMC's C++ exception throwing coding style, causing the system to
+> go even slower which leads to more timeouts and more crashes. Ninad's
+> work is the first piece in an attempt to get us to "BMC ready" without
+> any services crashing.
+
+May be disable services from uboot with systemd.mask=... ?
+
+Cheers,
+
+C.
+
+
+> 
+> The status quo does make it hard to test.
+> 
+> Cheers,
+> 
+> Joel
 

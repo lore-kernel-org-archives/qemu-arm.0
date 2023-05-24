@@ -1,77 +1,73 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2443753ejb;
-        Wed, 24 May 2023 03:19:39 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4oOyJpabpRQCUKbUjNEH3euR4bTbzOWxoiARpWmpyNbvuM2TCqqZpWRoI4nZ0hA80DOTj2
-X-Received: by 2002:a05:620a:914:b0:75b:23a0:e7ca with SMTP id v20-20020a05620a091400b0075b23a0e7camr7134787qkv.43.1684923579095;
-        Wed, 24 May 2023 03:19:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684923579; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2447499ejb;
+        Wed, 24 May 2023 03:28:20 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7QzstnTh5qJOvE7Tqo4mJtRI5EdnyrfFvAgRkgwJWcwyyBm7MocDZZFvb+ob/HEWc1rqhZ
+X-Received: by 2002:a37:a802:0:b0:75b:23a1:3617 with SMTP id r2-20020a37a802000000b0075b23a13617mr6178370qke.40.1684924100596;
+        Wed, 24 May 2023 03:28:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1684924100; cv=none;
         d=google.com; s=arc-20160816;
-        b=C4n3QpWpgIykVmYJ/ShuH+AnN4uke0BvTAmaNowKdGcFhzP7fiwPosaNXbmyGrS7za
-         OPHAVZoMZywNwHZmjnoTQW151VWUUZ4rTaeZyQ1u0JSHpWtMWNRW7e6QOWqrMFNa1BB5
-         zQ8XYZqOR98ky7HwO8fRtfpbzmcbHoYI0CMAiwtuqvP2HQknezL/ktEGe5hrx2XmqwmH
-         CErkuZ3QXce286sWgruIIXgVmzTxuaasyH9bbASVNxwhkO2LmlN4sUomRGVJ72yzTXNH
-         4T3QN3kXTBB0aeI2lr1WekvLSvhJrv3zxhlBt754Msly6vNTh1KIjXtPa5+tm2qn14Ni
-         szlw==
+        b=tmX2DhE3MVOQnvc1Tj8oInnZ/+8jAm8DFSe6Eo8p98ZLZfT5opmzheQqyAxLLqiEnM
+         kcKrt3dgTXn77JK85fqW4XJjt3bpsyhFtH42DjBoabs88ISfXYDUqsOni6g6EFE17/ms
+         WN2+IPHIRCzItnf4BbmHPM8TB+UKRJyWCFCv+a3e1NapynHhmqlOAsm5VgQyKPTJ3/Qa
+         4zRD5uWmx+lXIN/6Ow7WuhK6/ZgdxHdbvWs/QnOsulFc2ovIPvajzcZmRjuTt7jRePZc
+         Mn2t4jTG8Nvq+BAXP2b3Umc6ycOAwIGo+mG+gzlPw80bVO6q/TXm7zsuy6Z5ZXGckSeN
+         k97g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=5iCtZ0zw0D63rzvbOkNUh8jiYEVh9oIGUX5sYXb6FkE=;
-        b=yrqj5Ffmzs/bznao/0VRNCbiRmXF7N7eoTcU69rCWNRebmdCPpGsU+gRjg1BQtqdHY
-         C340ELSFp6f9xc5suJ6ZQCBd1+ivgdg2Crm04uqFGIxAIiDy/Gh3qBpXxSTiyl8tFBzp
-         lcyX8zSKZsXYkQfvLR6HiEF3jQ0zzzjobX+U4Lln6D7dY5mE60hkzGCKy+Q47nEiEQto
-         SRdszteZJR7Cc0HBzbKG4BLydJ0TCi7wO6UyT/PLE3JI2Clb8LE/S0wj5ThYqGPOQUND
-         X6wlr7uLwz9FO1BBECuHRQ+wPB8p07ZWqvQYsxILjLlo5TN/UjYlwMX9aEnyALBM8kln
-         aqeg==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=m0vnoAedM3ACmNzGh243NipRZFiFDvlodBFWphvhLPI=;
+        b=oLaKQWGhMOPUWb091DZa1YVvk25NByBkiIcvZawAy2NST9khNjxFnJ9HpCJlBc1HZH
+         E1/CnlUiKppMBut9nBZ+mlgBtTU0+gkWVEawlGGoHmeIxyVa/lRUMhgI9F4AmXZo+ONq
+         fro/5XIn+4oAKjYQ3D3El+SP3SsHhu88HKFemTlZNCqmNLaSwiexFX8le6uMGuNZKBuq
+         j/WN77uA4Ba7/gYJP+TORfdWDWawGjNy7vBT1ZEULfC9Sjc2Nsu/h3SO8bX47DLw2fUY
+         HfoVUMIbWxxe0SQr8b2CPwDVzBdNlcTvFqmB/7NoL1yAuivE7ugACfprwKZTTGoU1Rnr
+         jubw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 23-20020a05620a071700b007465ee1d5ffsi6056851qkc.718.2023.05.24.03.19.38
+        by mx.google.com with ESMTPS id h24-20020a37de18000000b007577c53de4bsi6121007qkj.780.2023.05.24.03.28.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 May 2023 03:19:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 24 May 2023 03:28:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q1lZw-0003U8-Ej; Wed, 24 May 2023 06:18:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q1lid-0007ti-Cf; Wed, 24 May 2023 06:27:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1lZo-0003Q1-3x; Wed, 24 May 2023 06:18:41 -0400
+ id 1q1liX-0007pk-Cb; Wed, 24 May 2023 06:27:42 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1q1lZk-0006cn-1B; Wed, 24 May 2023 06:18:39 -0400
+ id 1q1liU-0000OC-RR; Wed, 24 May 2023 06:27:41 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id E34E5260287;
- Wed, 24 May 2023 12:18:32 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 608C7260C32;
+ Wed, 24 May 2023 12:27:36 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bsqOaSAfmlQY; Wed, 24 May 2023 12:18:31 +0200 (CEST)
+ with ESMTP id 7nvkcb2TaNJL; Wed, 24 May 2023 12:27:34 +0200 (CEST)
 Received: from applejack.lan (83.21.125.167.ipv4.supernova.orange.pl
  [83.21.125.167])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id B5997260B8B;
- Wed, 24 May 2023 12:18:29 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id CBB31260249;
+ Wed, 24 May 2023 12:27:33 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 3/5] hw/arm/sbsa-ref: honor "-vga none" argument
-Date: Wed, 24 May 2023 12:18:21 +0200
-Message-Id: <20230524101823.810737-3-marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v3 0/5] hw/arm/sbsa-ref: sort out graphics a bit
+Date: Wed, 24 May 2023 12:27:24 +0200
+Message-Id: <20230524102729.810892-1-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230524101823.810737-1-marcin.juszkiewicz@linaro.org>
-References: <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
- <20230524101823.810737-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: softfail client-ip=213.251.184.221;
@@ -82,43 +78,41 @@ X-Spam_bar: -
 X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rd9c2LutmiHu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MGJzzloiMqNI
 
-In case someone wants to run without graphics card.
+Thomas Huth gave me some hints on how to improve sbsa-ref configuration
+when it comes to graphics.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- hw/arm/sbsa-ref.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+With this patchset we are able to start sbsa-ref if qemu is build with
+"--without-default-devices" argument given to configure script.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 9c3e670ec6..c540b2f1ba 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -649,7 +649,9 @@ static void create_pcie(SBSAMachineState *sms)
-         }
-     }
- 
--    pci_create_simple(pci->bus, -1, "bochs-display");
-+    if (vga_interface_type != VGA_NONE) {
-+        pci_create_simple(pci->bus, -1, "bochs-display");
-+    }
- 
-     create_smmu(sms, pci->bus);
- }
+Marcin Juszkiewicz (4):
+  Add Bochs to list of vga_interfaces
+  hw/arm/sbsa-ref: honor "-vga none" argument
+  hw/arm/sbsa-ref: add gfx card only if we have pci
+  hw/arm/sbsa-ref: use MachineClass->default_display
+
+Thomas Huth (1):
+  hw/arm: Use MachineClass->default_nic in the sbsa-ref machine
+
+ hw/arm/sbsa-ref.c       | 11 ++++++++---
+ include/sysemu/sysemu.h |  2 +-
+ softmmu/vl.c            |  6 ++++++
+ 3 files changed, 15 insertions(+), 4 deletions(-)
+
 -- 
 2.40.1
 

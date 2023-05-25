@@ -1,228 +1,388 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp788479ejb;
-        Thu, 25 May 2023 16:28:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6eH029yOePUdgxLzkSdt49OkUa3Bm1gYALPpQCc2NmIsoDqtHmbEQEZotKNSrDjcB/c3s6
-X-Received: by 2002:a05:620a:2191:b0:75b:23a1:8e4b with SMTP id g17-20020a05620a219100b0075b23a18e4bmr362970qka.28.1685057302111;
-        Thu, 25 May 2023 16:28:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685057302; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp788475ejb;
+        Thu, 25 May 2023 16:28:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4AS8OZMQwd3STWtNHRsQ5n+EwovTdCU4CpSVUcU8IxPao70LdJ8Y1Uigv/PmbM2vv+KiLH
+X-Received: by 2002:a05:622a:54:b0:3f6:e2:398a with SMTP id y20-20020a05622a005400b003f600e2398amr105464qtw.31.1685057301721;
+        Thu, 25 May 2023 16:28:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685057301; cv=none;
         d=google.com; s=arc-20160816;
-        b=CWbRHtwrPbA6ffOTx0T3WJ4DqCj1X5RxINWBl99jTDIabClIwwiIAQQizcpkpWvFLP
-         ECVdfXu1wmWEyLCtw8uyRYp+Z9siy9fVY49K22JqTcrSpSM5SB7auRecjkCgsI5XptnB
-         4gdYxOaCsCrrANouA60DgWXkBjyITN1suQmXbpD/1rqPH13uPjNRV+8PCDPOKzhHDBK9
-         h/KZpEBzqV7ua9SEpqXQqyU/BmozuiTrs1ELGybnAcIV3VGJ1+E1MdFXKEO0YizPs1VL
-         sBjuK1afcnLFLn3qv9uQ3UbZ8x2DOPVu9tksE3Ezg2Ty/qJwVPg6DKJkxyIf3/imWIS4
-         noIw==
+        b=viita0Nt1ZG57N8XuvZV5Mj51Ffbky4u2YWv+VF0bzeDXw0Zz4FreybiulDBlFJF50
+         kHcs52sTlLp6em7//KTeoQpsPCI/4YHNSXF9GOR+8CyS8rWXj0xhSBP5PrzVir/4HaDn
+         t4GlhXJLjYOWrxPTfjn9w48FtFTD1+8WuaZU7PDocDtVzrmUg3k8Tkm+ACyu0bfQl7oA
+         jUEihOR4K45qk9682NW7ID1SuHI+Wo5FV19reAzzbCmz43qFPdlnv9eONXDRTU5epfdD
+         XExWnKbIL2Cgz4/HOU5JMtitBNrDK5EOFWcYwzv+8JAu5gBmdy+3PF//ZIC02j5DRyxS
+         Myfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=N/k1qWQ9n1nK/LPGBxkHi7oTQfCtAyyOXQtWzeqV16Y=;
-        b=SHfCfAR+zlOXqR4yhVg6lQTnKyq8awHzR7St+Sw2SS6nZl8ynAUshkhlCW8f2SeL1c
-         1bsDPi48kkrG0rFQWJSMdrpBGXpldPNvNrZ4vW9sW9WKXTncXQHS83JYWkCJZfniixZ3
-         2LgWPr0E5ul16bAFZ7ibplSM+KiWcgB33G5L6vV2LPCsFJy7r37XbiLiSMXwjEl3hIOw
-         osKKIM9WJKyqoWxTaN75NgYDTQeZsbR6nm0FsA65s2EOTGSa3gcNu+jwsvL1mF4pNXLy
-         1X5Ydiu4hkGoOu0tDlaSCv3EmN8fg8Yv/oWAXoEwaIS39Wa+9hr9bbR+5SEcoXIDOrX1
-         Ai3w==
+        bh=L9J2NnnSlzPHrP6ymAfgvQWzttJWy4QYx3ryvCW/W4k=;
+        b=ITseSLHB2tQBmX6VCoGgYfAtzn/MTpwG5kcRMKFAKgu1S3sfLTpVT664bX2s8Au2AR
+         h75fy/yo/x/xtLeu2cEcxW4fQB0qnH85L41O753ZvNH7ikQ24xCGaYVM7/z3FK90a/UV
+         zjcFvqBTLawWInXq7izKnAZVSDIPM5zl8huENx7w5Nd4SdfViCF+yJPZWmx4j7EpFtvg
+         8B1I9xYY4lzxQhRGjXEMD7PQ9l7/IA01x8LkHNInUwiRUM7PrMbRnkPcN/v0an0Dyh6l
+         TbUFM11bIg+fW/xrAJoKpvE1Vp/4hZ0zH4XtaZBf+BtWcYuJEjpwnM8tuKq/F2vCg+/Z
+         1mLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QPcqo3D9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=CaV97EC5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i27-20020a05620a151b00b0075b05e65a32si935042qkk.528.2023.05.25.16.28.21
+        by mx.google.com with ESMTPS id 3-20020ac85903000000b003f53da7b114si928537qty.527.2023.05.25.16.28.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 16:28:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 May 2023 16:28:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QPcqo3D9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=CaV97EC5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2KLa-0005rK-6p; Thu, 25 May 2023 19:26:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q2KLa-0005rW-Pv; Thu, 25 May 2023 19:26:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2KLV-0005n3-CN
- for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:13 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ id 1q2KLY-0005pz-EQ
+ for qemu-devel@nongnu.org; Thu, 25 May 2023 19:26:16 -0400
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2KLQ-0005md-AX
- for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:12 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-5144a9c11c7so103003a12.2
- for <qemu-arm@nongnu.org>; Thu, 25 May 2023 16:26:07 -0700 (PDT)
+ id 1q2KLV-0005n2-1q
+ for qemu-devel@nongnu.org; Thu, 25 May 2023 19:26:16 -0400
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-53f448cde66so97481a12.1
+ for <qemu-devel@nongnu.org>; Thu, 25 May 2023 16:26:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1685057167; x=1687649167;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=N/k1qWQ9n1nK/LPGBxkHi7oTQfCtAyyOXQtWzeqV16Y=;
- b=QPcqo3D9BOm9RWkUYTd0/sVdjwWj9QIa2ZcskEusulX3urqxaZ25taJ/8SsWe06hZC
- rP/rZ2ALkgf/fw+aBS1j3ec4sw+bqJ4pP/M38KEksLh11jmqyqzaHvzCmhiNxyIiexL4
- KFNpe+7H6yQAHS56MMM7PpMB5cgWqavevT5psd/SkoymXBnewc8ojYF7ACJPVGUAr4FE
- rdiZ64P/C5zQv7UrNOCRD4fcQU0vn9vlbzutUyEHmWyYptdBMRfg3Wf1dgoEHySyZkFL
- RaKNE+qPPtjTjaV45LVWATsI2ViuYtpe+GQHSeUMtBRpwH7UhfQzG+U1rll2jhAG1X79
- KJcQ==
+ bh=L9J2NnnSlzPHrP6ymAfgvQWzttJWy4QYx3ryvCW/W4k=;
+ b=CaV97EC5ZtPX3MUiFcGwxanBEPfNS9PuR75ztg7eKZjIFbncnAPK6dk1EQ7zxjAX+I
+ iD0E2Qzd/hrGzpCLrEuqqkUMWcuCc30FWI4nmfajKhjpnBmN7AO+TnJQMlvsfhdtDdRP
+ hBjtYJ6Y2s40xTrhZrWLLz0jdEvF++DHD59eLMjyNJqIpe6wEAaC1fTSWjUB6HQFz4eh
+ H6g6owkPDZqYeUYRks5orRZBz/Hhl4uIFPpX5EczywvLfY76IMN8WDJs7OEY+8qcdxuG
+ UIlwTQDxRubd1b5qsfSe5/Q9hk68E75JoKu2DlyNi1ucMTL7gsW8K9+LOj/9u11m77zP
+ h5xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20221208; t=1685057167; x=1687649167;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=N/k1qWQ9n1nK/LPGBxkHi7oTQfCtAyyOXQtWzeqV16Y=;
- b=IyaX4nwQUbZfvMm0Otbs8xBu0lRuTd0jlQKMG3HAGSvSnqwMOWhhkbomu7L3e3Pi+v
- 4gJ7TPMooF5/9STvYWBFd2n7ztaKscPE5ry43x+bx1avVs1kOqbw5Pt3AQcdvnaLqfEz
- DO/gs+OHRZh5sKRpifSCP/FK4k8OOy2xeTbjzRyz+P421hFpWSTkP2PS33pZGK2CnH+0
- OGlcqFf+EILdDO4z4E3+kKAQNWuBCd5pXJq/rMLhXm1L5AaT4BdxYDyc9v90naB7UrNX
- VqNV/SR4zG0O4IYH/GZPMsPnUTU2Jjf52do/Q2jk8M0P5nybf5f3YP68OsAyhPEi3z3y
- 3aUQ==
-X-Gm-Message-State: AC+VfDzM9k9aZATbfdmuIayFepu2XmoxsjWghzhesVOC2wTt7YHuyI1s
- uBBKOAQMAqrF37pTIeBJb9DK8w==
-X-Received: by 2002:a17:902:f801:b0:1ae:5212:748b with SMTP id
- ix1-20020a170902f80100b001ae5212748bmr288567plb.49.1685057166872; 
- Thu, 25 May 2023 16:26:06 -0700 (PDT)
+ bh=L9J2NnnSlzPHrP6ymAfgvQWzttJWy4QYx3ryvCW/W4k=;
+ b=CobMJHaGpYdQENQmW/e78mZc2U3dAbN3FaAKRI5Om9UfXlfYkoB+QcLf08Or2CPdWL
+ GJUqHyA1qo3zL1nLtU7Anno+9KG56AHdzsPOvzPwCzQOVh1f6geuFom91El3Yf8ijvhy
+ 2/VrsZYtgtHREAjn5+1epIcctGcuwQS57fQQyfjZDZJhnY0d9yBLdOfN21Lty5605NIH
+ smnxwE/dgoLc6H5abr89M/d50T+84qhScznLEUI8laRMW3vCphns8NOW43hITccSFQZ3
+ uoI9qssX0qfJOdeZgD2s+rt7hPIiCldTAoCGcfjFar0XIy840xsKpWnVxdI9ES+2LAin
+ qDjw==
+X-Gm-Message-State: AC+VfDxg0oJKBejhV3Js24wRI2c8hXDCrLBOnEGIdjb+COSPZHwPGX9D
+ Ud5bUdSqz+JEOhrtVx6y6sADVvFAnDbacs73g8c=
+X-Received: by 2002:a17:902:ecd2:b0:1ac:5717:fd5 with SMTP id
+ a18-20020a170902ecd200b001ac57170fd5mr278461plh.60.1685057167559; 
+ Thu, 25 May 2023 16:26:07 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:7ac5:31cc:3997:3a16])
  by smtp.gmail.com with ESMTPSA id
  s15-20020a170902ea0f00b0019e60c645b1sm1885036plg.305.2023.05.25.16.26.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 May 2023 16:26:06 -0700 (PDT)
+ Thu, 25 May 2023 16:26:07 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 09/20] target/arm: Load/store integer pair with one tcg
- operation
-Date: Thu, 25 May 2023 16:25:47 -0700
-Message-Id: <20230525232558.1758967-10-richard.henderson@linaro.org>
+Subject: [PATCH v2 10/20] target/arm: Hoist finalize_memop out of do_gpr_{ld,
+ st}
+Date: Thu, 25 May 2023 16:25:48 -0700
+Message-Id: <20230525232558.1758967-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230525232558.1758967-1-richard.henderson@linaro.org>
 References: <20230525232558.1758967-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F/zpz+1cBVSW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QlGuhkUdVGyh
 
-This is required for LSE2, where the pair must be treated atomically if
-it does not cross a 16-byte boundary.  But it simplifies the code to do
-this always.
+We are going to need the complete memop beforehand,
+so let's not compute it twice.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 70 ++++++++++++++++++++++++++--------
- 1 file changed, 55 insertions(+), 15 deletions(-)
+ target/arm/tcg/translate-a64.c | 61 +++++++++++++++++++---------------
+ 1 file changed, 35 insertions(+), 26 deletions(-)
 
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 19f0f20896..40c6adc9cc 100644
+index 40c6adc9cc..24e255aa34 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -2954,26 +2954,66 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-         TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
-+        MemOp mop = size + 1;
-+
-+        /*
-+         * With LSE2, non-sign-extending pairs are treated atomically if
-+         * aligned, and if unaligned one of the pair will be completely
-+         * within a 16-byte block and that element will be atomic.
-+         * Otherwise each element is separately atomic.
-+         * In all cases, issue one operation with the correct atomicity.
-+         *
-+         * This treats sign-extending loads like zero-extending loads,
-+         * since that reuses the most code below.
-+         */
-+        if (s->align_mem) {
-+            mop |= (size == 2 ? MO_ALIGN_4 : MO_ALIGN_8);
-+        }
-+        mop = finalize_memop_pair(s, mop);
+@@ -848,7 +848,6 @@ static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
+                              unsigned int iss_srt,
+                              bool iss_sf, bool iss_ar)
+ {
+-    memop = finalize_memop(s, memop);
+     tcg_gen_qemu_st_i64(source, tcg_addr, memidx, memop);
  
-         if (is_load) {
--            TCGv_i64 tmp = tcg_temp_new_i64();
-+            if (size == 2) {
-+                int o2 = s->be_data == MO_LE ? 32 : 0;
-+                int o1 = o2 ^ 32;
+     if (iss_valid) {
+@@ -883,7 +882,6 @@ static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
+                              bool iss_valid, unsigned int iss_srt,
+                              bool iss_sf, bool iss_ar)
+ {
+-    memop = finalize_memop(s, memop);
+     tcg_gen_qemu_ld_i64(dest, tcg_addr, memidx, memop);
  
--            /* Do not modify tcg_rt before recognizing any exception
--             * from the second load.
--             */
--            do_gpr_ld(s, tmp, clean_addr, size + is_signed * MO_SIGN,
--                      false, false, 0, false, false);
--            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
--            do_gpr_ld(s, tcg_rt2, clean_addr, size + is_signed * MO_SIGN,
--                      false, false, 0, false, false);
-+                tcg_gen_qemu_ld_i64(tcg_rt, clean_addr, get_mem_index(s), mop);
-+                if (is_signed) {
-+                    tcg_gen_sextract_i64(tcg_rt2, tcg_rt, o2, 32);
-+                    tcg_gen_sextract_i64(tcg_rt, tcg_rt, o1, 32);
-+                } else {
-+                    tcg_gen_extract_i64(tcg_rt2, tcg_rt, o2, 32);
-+                    tcg_gen_extract_i64(tcg_rt, tcg_rt, o1, 32);
-+                }
-+            } else {
-+                TCGv_i128 tmp = tcg_temp_new_i128();
+     if (extend && (memop & MO_SIGN)) {
+@@ -2637,6 +2635,7 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+     int o2_L_o1_o0 = extract32(insn, 21, 3) * 2 | is_lasr;
+     int size = extract32(insn, 30, 2);
+     TCGv_i64 clean_addr;
++    MemOp memop;
  
--            tcg_gen_mov_i64(tcg_rt, tmp);
-+                tcg_gen_qemu_ld_i128(tmp, clean_addr, get_mem_index(s), mop);
-+                if (s->be_data == MO_LE) {
-+                    tcg_gen_extr_i128_i64(tcg_rt, tcg_rt2, tmp);
-+                } else {
-+                    tcg_gen_extr_i128_i64(tcg_rt2, tcg_rt, tmp);
-+                }
-+            }
-         } else {
--            do_gpr_st(s, tcg_rt, clean_addr, size,
--                      false, 0, false, false);
--            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
--            do_gpr_st(s, tcg_rt2, clean_addr, size,
--                      false, 0, false, false);
-+            if (size == 2) {
-+                TCGv_i64 tmp = tcg_temp_new_i64();
-+
-+                if (s->be_data == MO_LE) {
-+                    tcg_gen_concat32_i64(tmp, tcg_rt, tcg_rt2);
-+                } else {
-+                    tcg_gen_concat32_i64(tmp, tcg_rt2, tcg_rt);
-+                }
-+                tcg_gen_qemu_st_i64(tmp, clean_addr, get_mem_index(s), mop);
-+            } else {
-+                TCGv_i128 tmp = tcg_temp_new_i128();
-+
-+                if (s->be_data == MO_LE) {
-+                    tcg_gen_concat_i64_i128(tmp, tcg_rt, tcg_rt2);
-+                } else {
-+                    tcg_gen_concat_i64_i128(tmp, tcg_rt2, tcg_rt);
-+                }
-+                tcg_gen_qemu_st_i128(tmp, clean_addr, get_mem_index(s), mop);
-+            }
+     switch (o2_L_o1_o0) {
+     case 0x0: /* STXR */
+@@ -2673,10 +2672,11 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+             gen_check_sp_alignment(s);
          }
+         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++        /* TODO: ARMv8.4-LSE SCTLR.nAA */
++        memop = finalize_memop(s, size | MO_ALIGN);
+         clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
+                                     true, rn != 31, size);
+-        /* TODO: ARMv8.4-LSE SCTLR.nAA */
+-        do_gpr_st(s, cpu_reg(s, rt), clean_addr, size | MO_ALIGN, true, rt,
++        do_gpr_st(s, cpu_reg(s, rt), clean_addr, memop, true, rt,
+                   disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
+         return;
+ 
+@@ -2691,10 +2691,11 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+         if (rn == 31) {
+             gen_check_sp_alignment(s);
+         }
++        /* TODO: ARMv8.4-LSE SCTLR.nAA */
++        memop = finalize_memop(s, size | MO_ALIGN);
+         clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
+                                     false, rn != 31, size);
+-        /* TODO: ARMv8.4-LSE SCTLR.nAA */
+-        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size | MO_ALIGN, false, true,
++        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, memop, false, true,
+                   rt, disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
+         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+         return;
+@@ -2802,9 +2803,9 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+     } else {
+         /* Only unsigned 32bit loads target 32bit registers.  */
+         bool iss_sf = opc != 0;
++        MemOp memop = finalize_memop(s, size + is_signed * MO_SIGN);
+ 
+-        do_gpr_ld(s, tcg_rt, clean_addr, size + is_signed * MO_SIGN,
+-                  false, true, rt, iss_sf, false);
++        do_gpr_ld(s, tcg_rt, clean_addr, memop, false, true, rt, iss_sf, false);
+     }
+ }
+ 
+@@ -3058,7 +3059,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+     bool post_index;
+     bool writeback;
+     int memidx;
+-
++    MemOp memop;
+     TCGv_i64 clean_addr, dirty_addr;
+ 
+     if (is_vector) {
+@@ -3085,7 +3086,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+             return;
+         }
+         is_store = (opc == 0);
+-        is_signed = extract32(opc, 1, 1);
++        is_signed = !is_store && extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
      }
  
+@@ -3119,6 +3120,8 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+     }
+ 
+     memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
++    memop = finalize_memop(s, size + is_signed * MO_SIGN);
++
+     clean_addr = gen_mte_check1_mmuidx(s, dirty_addr, is_store,
+                                        writeback || rn != 31,
+                                        size, is_unpriv, memidx);
+@@ -3134,10 +3137,10 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+         bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
+ 
+         if (is_store) {
+-            do_gpr_st_memidx(s, tcg_rt, clean_addr, size, memidx,
++            do_gpr_st_memidx(s, tcg_rt, clean_addr, memop, memidx,
+                              iss_valid, rt, iss_sf, false);
+         } else {
+-            do_gpr_ld_memidx(s, tcg_rt, clean_addr, size + is_signed * MO_SIGN,
++            do_gpr_ld_memidx(s, tcg_rt, clean_addr, memop,
+                              is_extended, memidx,
+                              iss_valid, rt, iss_sf, false);
+         }
+@@ -3186,8 +3189,8 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+     bool is_signed = false;
+     bool is_store = false;
+     bool is_extended = false;
+-
+     TCGv_i64 tcg_rm, clean_addr, dirty_addr;
++    MemOp memop;
+ 
+     if (extract32(opt, 1, 1) == 0) {
+         unallocated_encoding(s);
+@@ -3214,7 +3217,7 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+             return;
+         }
+         is_store = (opc == 0);
+-        is_signed = extract32(opc, 1, 1);
++        is_signed = !is_store && extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
+     }
+ 
+@@ -3227,6 +3230,8 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+     ext_and_shift_reg(tcg_rm, tcg_rm, opt, shift ? size : 0);
+ 
+     tcg_gen_add_i64(dirty_addr, dirty_addr, tcg_rm);
++
++    memop = finalize_memop(s, size + is_signed * MO_SIGN);
+     clean_addr = gen_mte_check1(s, dirty_addr, is_store, true, size);
+ 
+     if (is_vector) {
+@@ -3238,11 +3243,12 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+     } else {
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
+         bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
++
+         if (is_store) {
+-            do_gpr_st(s, tcg_rt, clean_addr, size,
++            do_gpr_st(s, tcg_rt, clean_addr, memop,
+                       true, rt, iss_sf, false);
+         } else {
+-            do_gpr_ld(s, tcg_rt, clean_addr, size + is_signed * MO_SIGN,
++            do_gpr_ld(s, tcg_rt, clean_addr, memop,
+                       is_extended, true, rt, iss_sf, false);
+         }
+     }
+@@ -3274,12 +3280,11 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+     int rn = extract32(insn, 5, 5);
+     unsigned int imm12 = extract32(insn, 10, 12);
+     unsigned int offset;
+-
+     TCGv_i64 clean_addr, dirty_addr;
+-
+     bool is_store;
+     bool is_signed = false;
+     bool is_extended = false;
++    MemOp memop;
+ 
+     if (is_vector) {
+         size |= (opc & 2) << 1;
+@@ -3301,7 +3306,7 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+             return;
+         }
+         is_store = (opc == 0);
+-        is_signed = extract32(opc, 1, 1);
++        is_signed = !is_store && extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
+     }
+ 
+@@ -3311,6 +3316,8 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+     dirty_addr = read_cpu_reg_sp(s, rn, 1);
+     offset = imm12 << size;
+     tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
++
++    memop = finalize_memop(s, size + is_signed * MO_SIGN);
+     clean_addr = gen_mte_check1(s, dirty_addr, is_store, rn != 31, size);
+ 
+     if (is_vector) {
+@@ -3323,10 +3330,9 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
+         bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
+         if (is_store) {
+-            do_gpr_st(s, tcg_rt, clean_addr, size,
+-                      true, rt, iss_sf, false);
++            do_gpr_st(s, tcg_rt, clean_addr, memop, true, rt, iss_sf, false);
+         } else {
+-            do_gpr_ld(s, tcg_rt, clean_addr, size + is_signed * MO_SIGN,
++            do_gpr_ld(s, tcg_rt, clean_addr, memop,
+                       is_extended, true, rt, iss_sf, false);
+         }
+     }
+@@ -3356,7 +3362,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+     bool a = extract32(insn, 23, 1);
+     TCGv_i64 tcg_rs, tcg_rt, clean_addr;
+     AtomicThreeOpFn *fn = NULL;
+-    MemOp mop = s->be_data | size | MO_ALIGN;
++    MemOp mop = finalize_memop(s, size | MO_ALIGN);
+ 
+     if (is_vector || !dc_isar_feature(aa64_atomics, s)) {
+         unallocated_encoding(s);
+@@ -3417,7 +3423,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+          * full load-acquire (we only need "load-acquire processor consistent"),
+          * but we choose to implement them as full LDAQ.
+          */
+-        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size, false,
++        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, mop, false,
+                   true, rt, disas_ldst_compute_iss_sf(size, false, 0), true);
+         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+         return;
+@@ -3463,6 +3469,7 @@ static void disas_ldst_pac(DisasContext *s, uint32_t insn,
+     bool use_key_a = !extract32(insn, 23, 1);
+     int offset;
+     TCGv_i64 clean_addr, dirty_addr, tcg_rt;
++    MemOp memop;
+ 
+     if (size != 3 || is_vector || !dc_isar_feature(aa64_pauth, s)) {
+         unallocated_encoding(s);
+@@ -3489,12 +3496,14 @@ static void disas_ldst_pac(DisasContext *s, uint32_t insn,
+     offset = sextract32(offset << size, 0, 10 + size);
+     tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
+ 
++    memop = finalize_memop(s, size);
++
+     /* Note that "clean" and "dirty" here refer to TBI not PAC.  */
+     clean_addr = gen_mte_check1(s, dirty_addr, false,
+                                 is_wback || rn != 31, size);
+ 
+     tcg_rt = cpu_reg(s, rt);
+-    do_gpr_ld(s, tcg_rt, clean_addr, size,
++    do_gpr_ld(s, tcg_rt, clean_addr, memop,
+               /* extend */ false, /* iss_valid */ !is_wback,
+               /* iss_srt */ rt, /* iss_sf */ true, /* iss_ar */ false);
+ 
+@@ -3536,7 +3545,7 @@ static void disas_ldst_ldapr_stlr(DisasContext *s, uint32_t insn)
+     }
+ 
+     /* TODO: ARMv8.4-LSE SCTLR.nAA */
+-    mop = size | MO_ALIGN;
++    mop = finalize_memop(s, size | MO_ALIGN);
+ 
+     switch (opc) {
+     case 0: /* STLURB */
 -- 
 2.34.1
 

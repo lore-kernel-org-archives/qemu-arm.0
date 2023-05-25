@@ -1,136 +1,166 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp433586ejb;
-        Thu, 25 May 2023 06:17:50 -0700 (PDT)
-X-Received: by 2002:a1c:4b03:0:b0:3f6:41f:5a68 with SMTP id y3-20020a1c4b03000000b003f6041f5a68mr2610105wma.29.1685020670472;
-        Thu, 25 May 2023 06:17:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685020670; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp551451ejb;
+        Thu, 25 May 2023 09:03:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4JnX2EGp04TrfO8QdiP8VsAS3/ULyTZv2EFJRazzgG5s58CS4xxuiY37F8ktPQ0dciG4/g
+X-Received: by 2002:a05:6214:252d:b0:579:5dbc:ab6e with SMTP id gg13-20020a056214252d00b005795dbcab6emr2082958qvb.3.1685030636752;
+        Thu, 25 May 2023 09:03:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685030636; cv=none;
         d=google.com; s=arc-20160816;
-        b=FeDezZJuiiMvEQrCe7/2ZvHadi0+qp2qiLhoe8xOgvZFpKME4GE0rFwAHpziy7Puem
-         zuS1KfzvcMs4wCpHnUMpqI2/rKz7FItZG1tITWdgEyZum68NCPe2JnVgCCtSUNF9/Tpo
-         80UIeKkuK25s/LXF/HMlTysIYJy6V1tkF3DJNsqPO8QvC6nu+gcFNAPCThBJC4J/XWb4
-         rI0mCtKw5FnBiXgek4iw804PiVlogZaZ/gBktiF0he9oLBZQbqYrzkR2EUSmPycvC1wa
-         Wh87q/r5iQfuk2+d5lC1ejq9lP6xtHVg/DaQLr6wY0j234iyBy9Sz5m4UXBjtsxyYeJW
-         3BjQ==
+        b=FZnCHKE2hu4InuQonV2VtVKG3NWWDEKgpKY5LfSYoNsx88ZP2dIL+pLYnm9Gml57QJ
+         rBMghg7vCT3Go8xDvt44XFY6YunvDFQ201dpXgqBamR/dtQow3DgMLS8DR7gmEIQZ6it
+         HptKqIoW2sPNQA+mksojz4Wj6X6x26xn/IixlJESWGqCnKO+DWysUTlgKutJGjPb3Ctx
+         4g6P3K+lHKtvsECpoTnYjOLI033TpCZkDUQuSxYy1kAReTNPZGfu0LL5+05KpsvAtVQz
+         60hf4IHCVzWCYrm8WDhtv0Fu6OgGuI0pNaYR/AOT+9itBvg5te+9bDcR0qg4xtTU9gtY
+         xZbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=pEEr3CfBdx2rP0p6nDBknQNxdaBA2M9y66YlDHR4tCo=;
-        b=g07TU4I7R2qFjrTlTwpStLBpvFo6EAWZ74rsxhikw7NrbXReFytEoviXWnZIigf05G
-         ygo/4t6WgsYu9Ff012ohEzgNY47NF/OxksrvX2w5VGqSgbcAhDyqXZ2BKP/0EI+S8f6b
-         T0PxyXgtdQ7sDRU69UsWUAOLJGmettl30fOrXZfGzavIWAW/XCC0kNaMON5i2JRUwTzi
-         qwHsByYALGcKtOootlB75P3j9DUtoyiPEH74lklKE+ntS2EPH5nyM4ti6KXhwq2+lnLo
-         5EV/FBoNBJ/793Tr6LLmiB4chod4Hp1eES1tcl3PBSTAAOFF+8uTqEcz//m8Lt10w/kP
-         fK2w==
+        bh=OmpLewKxfTHYmEpCTBYX85qQ15KnVmMlHVA/vC4rmlU=;
+        b=F5BttiDxugeQ532uuihgI4Lx/8lH169N75mQPpBr0YYPTQk0g75RF8kZM9raASfaSC
+         5kZT+Oh2LBuUQur2Hailoy//a+uv775rrYvXeVnx1YXdCnXR5Xx51lnRu1aruSxcEhvm
+         0zvRuy4/X6QnurVwvtwHIy4gfXOzigIR/pO5NYKUSHImibU/hL6IGFxohudabHogf8BQ
+         k3CKwZuoJtAgRBcRyRIBonnyDF5bbKa1KNAh9VLlN4/3H3nqA93K065cGJgFjzLQ2L/Z
+         hnvvTehw555e0leFfOJ5/a9JXRX1QFCCORZGCtmn5coLGrW8HQSaIObJPp6/Amn1erRr
+         RdsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kwr5Q3ez;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m19-20020a7bcb93000000b003f50ce4c15dsor399601wmi.8.2023.05.25.06.17.50
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Am6rbaKO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id eo15-20020ad4594f000000b005cea8d1ce9dsi589038qvb.310.2023.05.25.09.03.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 25 May 2023 06:17:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 May 2023 09:03:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kwr5Q3ez;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685020670; x=1687612670;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pEEr3CfBdx2rP0p6nDBknQNxdaBA2M9y66YlDHR4tCo=;
-        b=Kwr5Q3ezPqJobPcsxhROlvumiznT9DgL/c1JuRLY54I2Zsc6Q+iMCe1cv8RRQGT5pS
-         AkwcRTNTsNM6Zrg5mtCm2HXFH2Lxv2zna4tKxo+3mfSggMwAIhDINQ49kZwsIf2nekj2
-         JiG2KyAg9UO+jJ6foVgc9vHgBj4l2xCMWrO/xlA6ZEgANS/JfxfeI2T58ETQPwB7l2u+
-         1p1QpyO1nGwjCKdKx92vfoRuagFcAd63yS+CW/1XFuqbgL/ZVsDngOeLsb2Q/RVFfRD/
-         QaEqaLR7laelzpXzPAOdQjYprwqYiufHUEHAInG8ApZ3jeBLcwMGDhQ8B++Gbmc7pfd9
-         SrVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685020670; x=1687612670;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pEEr3CfBdx2rP0p6nDBknQNxdaBA2M9y66YlDHR4tCo=;
-        b=YXkqiN2H7sNYPYF5m2jYW7ZVS4cxREWXqYf8i/VI9raaL1sV1OPc+k4tMv9Yk9o428
-         dI7jDm5awr8jKwbwF8AChmGCxf94Y6jIeg2FAGprhUwGOBbKborTG7Razoh6IPdXJv9S
-         pIAcELmHyXAnFZcnTvFh/FXtVWrXTOkfPw2ysvBWYetpfZBDl1M4m9XsQUrjG0C0vUsn
-         fh293eN0os88N10f8mrsSwSne+MV/1VmeIaXKrdiwHLBdLEGGp4AcItm8tUolkCx1f+t
-         EaDi5fbXGhxJFE7PZqzARg4ifAfiNpvRi25wuJ75HKAI6qlCGbyo8O7BxHiP/vdzcs3N
-         1yLg==
-X-Gm-Message-State: AC+VfDyhPOsYcQOKh9CGCtX0Z3/sOdaBa2+ygREdaHZX/3Wbztxgq610
-	VC11fBN53Gx9eqN9xoQojLZijGXP32GUk3WSy/LYww==
-X-Google-Smtp-Source: ACHHUZ7sqmKBWbMWMQAhXe3tjx57Mnt83x0HgbHBnibfnMv31uZ7iYIUcFAd+1/KV0pAVoQoDawA3g==
-X-Received: by 2002:a05:600c:248:b0:3f4:fffc:cd74 with SMTP id 8-20020a05600c024800b003f4fffccd74mr2400775wmj.16.1685020670086;
-        Thu, 25 May 2023 06:17:50 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] (cor91-h02-176-184-30-254.dsl.sta.abo.bbox.fr. [176.184.30.254])
-        by smtp.gmail.com with ESMTPSA id v10-20020adfe28a000000b003063a1cdaf2sm1780166wri.48.2023.05.25.06.17.48
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 May 2023 06:17:49 -0700 (PDT)
-Message-ID: <af5d9e7a-a19c-b269-5a33-a3fc79e79094@linaro.org>
-Date: Thu, 25 May 2023 15:17:47 +0200
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Am6rbaKO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q2DR9-0005Wv-S4; Thu, 25 May 2023 12:03:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q2DR7-0005Ui-TW; Thu, 25 May 2023 12:03:33 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q2DR1-0001PQ-GF; Thu, 25 May 2023 12:03:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=OmpLewKxfTHYmEpCTBYX85qQ15KnVmMlHVA/vC4rmlU=; b=Am6rbaKOm0BMZtPByGGqKFip9e
+ AVSKfqIgTjhElzRbMFegbRbUj4512e3Ofc65odk/EuVxFVg+Mv5Mb4tEyG2MWRC+6fywmIcSSllDV
+ H3/+oSDkSaXO3oT/Aijp55xls7vtwAAJ2lfsjTyc0LuW9U1mYvJIJlyHn1NXw5YrA6gc+TmZJtQF8
+ Ikf5Z/WGQijZpgwmg8i1zPb3SUZ+YHNmZpBnTcDqWqUcBEZ1uMEgD1BqURXk7rxLC/U6yLPvDKgOp
+ WXuOS1PVkMwUgTubMVGai9TSZ7eJVcs8dpmdkbinap6ASWpZ7uNFhOjwbpZR0NhbNmiYKrwlQaadR
+ lJMmJynUruO51Rw87bgKtHb7SC7zvbYZE/lLHpAWLszkXH1+HOhM7jNZEkw5utX8YCeVR8UvMmMYV
+ B+tks20d7YiQ2hpXoNjy7UXaoDUzp5eRb8VE0QaXh4ybe0O1KM2xwyjY6u/MEEMHZHoZDBhQnLnKY
+ Zu/fvOr+Pj8GMXnjF3U/izJR+aUSyqWwHW/I3DI3EJ+2TrjZaL040KlAOFcVdmY8CC5aHW/z9+EES
+ WV1TWLkrg3VESg0zFVwZ7jpgf98+NkkB9s+EDUCVm7SY7O8Aq7pTg2IxiFLS6OIKNYOTWyzbhgK1M
+ xc7YV17BJnR0Szi9NNCr/8GB+z9FNkElzTTHW7LK4=;
+Received: from host86-130-37-216.range86-130.btcentralplus.com
+ ([86.130.37.216] helo=[10.8.0.6])
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q2DQn-0002DC-GH; Thu, 25 May 2023 17:03:13 +0100
+Message-ID: <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+Date: Thu, 25 May 2023 17:03:15 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 09/12] hw/char/pl011: Check if transmitter is enabled
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20230522153144.30610-1-philmd@linaro.org>
- <20230522153144.30610-10-philmd@linaro.org>
- <CAFEAcA_7dkWB9qPkzYmW6_F1eaAet0PPk0PHywGS2EpAkFAsUQ@mail.gmail.com>
- <87zg5stvyi.fsf@linaro.org>
- <CAFEAcA9EYLWnm6kEZGJn=Ah_wy1oE+8u0bZuVPq8=wTxtUo_Hw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9EYLWnm6kEZGJn=Ah_wy1oE+8u0bZuVPq8=wTxtUo_Hw@mail.gmail.com>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
+ <hpoussin@reactos.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20230523195608.125820-1-shentey@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20230523195608.125820-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: t4Mjy6FQ1XbK
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.130.37.216
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: f52yUc3bxUS0
 
-On 25/5/23 14:55, Peter Maydell wrote:
-> On Thu, 25 May 2023 at 13:52, Alex Bennée <alex.bennee@linaro.org> wrote:
->>
->>
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> On Mon, 22 May 2023 at 16:32, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>>>
->>>> Do not transmit characters when UART or transmitter are disabled.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>
->>> Last time somebody tried to add checks on the tx/rx enable bits
->>> for the PL011 it broke 'make check' because the hand-rolled
->>> UART code in boot-serial-test and migration-test doesn't
->>> set up the UART control register strictly correctly:
->>>
->>> https://lore.kernel.org/qemu-devel/CAFEAcA8ZDmjP7G0eVpxcB1jiSGarZAbqPV0xr5WquR213mBUBg@mail.gmail.com/
+On 23/05/2023 20:56, Bernhard Beschow wrote:
 
-Hmm I ran 'make check-qtest' my build directory only targets aarch64,
-I probably missed the arm (32-bit) tests :/
-
->>> Given that imposing these checks doesn't help anything
->>> much and might break naive bare-metal tested-only-on-QEMU
->>> code, is it worthwhile ?
->>
->> Surely we aim to be a correct model so the fix should be in our naive
->> and incorrect code?
+> This series:
+> * Removes dead code from omap_uart and i82378
+> * Resolves redundant code in the i8254 timer devices
 > 
-> In our own test suites, sure -- we should probably fix that
-> even if we don't change the PL011 model to require it.
-> But if we let this kind of thing get past us in our own testsuite,
-> it suggests there's probably a lot of similar naive code out
-> there in the world -- these Arm boards with PL011s are pretty
-> commonly used for "my first bare metal assembly program" stuff
-> and there's a lot of cargo-culting of how to do things like
-> serial output, and programs that were never tested on any
-> real hardware...
+> v3:
+> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>    https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
 
-OK. I'll add a comment, keep the current behavior when TX is
-disabled, but add a GUEST_ERROR log message.
+Oh I didn't see that this had already been merged :/
+
+It's not a reason to block this series, but I'd still like to see your changes to 
+ParallelState and ISAParallelState merged separately since they are a better match 
+for our QOM coding standards.
+
+> v2:
+> * Export ParallelState and ISAParallelState (Mark)
+> 
+> Testing done:
+> * `make check`
+> 
+> Bernhard Beschow (3):
+>    hw/timer/i8254_common: Share "iobase" property via base class
+>    hw/arm/omap: Remove unused omap_uart_attach()
+>    hw/isa/i82378: Remove unused "io" attribute
+> 
+>   include/hw/arm/omap.h   | 1 -
+>   hw/char/omap_uart.c     | 9 ---------
+>   hw/i386/kvm/i8254.c     | 1 -
+>   hw/isa/i82378.c         | 1 -
+>   hw/timer/i8254.c        | 6 ------
+>   hw/timer/i8254_common.c | 6 ++++++
+>   6 files changed, 6 insertions(+), 18 deletions(-)
+
+Do we know who is going to pick up these series? I can send a PR if no-one minds?
+
+
+ATB,
+
+Mark.

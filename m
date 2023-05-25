@@ -1,102 +1,108 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp441866ejb;
-        Thu, 25 May 2023 06:30:42 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4e+S1FeHG/XYubyBUF5bAqrLgzrByaURoyn+zmQAiT99lNpTPb2o/aacFGMdIv00lCpmgU
-X-Received: by 2002:a05:6214:e8e:b0:625:95f1:eb47 with SMTP id hf14-20020a0562140e8e00b0062595f1eb47mr1651690qvb.20.1685021441278;
-        Thu, 25 May 2023 06:30:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685021441; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp449040ejb;
+        Thu, 25 May 2023 06:40:53 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Ikv1PDPQ5ktLpm2nIJOV83VDvZrgq9U/B9NZVbiZAbr15yRtbugXTf9ZiFGJ7+tCAAolo
+X-Received: by 2002:ad4:5f0d:0:b0:621:33a2:4a3b with SMTP id fo13-20020ad45f0d000000b0062133a24a3bmr1263778qvb.48.1685022053230;
+        Thu, 25 May 2023 06:40:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685022053; cv=none;
         d=google.com; s=arc-20160816;
-        b=V6/yMSMU1GtrM6f4+R6fbE8GqdL2g0APGpeLP7D6ngYIju2R5OhiTBZxEByU5SVE9L
-         AjW3x0pz7zkXmouPieN5xjonVa64DALfaa/Ei/Q8vJbqT93Jwg/PITcuFAKzNzpraAe8
-         UDOfx4OPcmCfYOfY0TpLiTY72ptuwzSFSFUSdeTwSUsBZFR9RXmu8jPmsVjloq3qPmVz
-         unmh4XE9wjjpGBNcxm6LRR2rqB9wOo77qLgqL7Y9R/hkPkHMeIn6kc9ssIUuGoKIGiKj
-         HpaYz4pXO78IfqpIXuj4/DWykvEFI2ccBnsBN0sFGEb3FFtPUHRhhB6wF2yFk0MY/2Ib
-         LJEw==
+        b=AeDKLMX5PQHLb0jYlb9edpgWi3SPsIsCnmxlt/SnVv0ZZd+gS9jDoSIjgeoHueV4WR
+         Lp4Pa58CNIRlSAraWd8YhkqsK6E1nRfUafq55WKZoRHGPP1ENVjWwYO7jgR3qaFaJzHI
+         HM8gyr9oSGT78s2g+LPULCg8wgITJu/10VgYEWVrHleHnR1fNgdR4yCndGpbz2ZQSJry
+         9J3qlxkEM8rcwr1Ve65tgWYDrcK0ewzaoFHawoRHZXdGhObrlZviDxPk8sw/X4wsR7ld
+         O28qWWHi9cppziaWO0On6HnNQoeuDkqo8O4Uka5yHTM50l52LrrjEA2fxibew+nv9Q/0
+         iwWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=d+L/OmLfMMjzY1hSnnDaGxrLkcQDsPU5Pyru/t0KJIo=;
-        b=N+v/jMns8MTlELIYh1JsiItA7Bt60YL+ycZh5ZRlCHi3iTqqsbbA/nMLdnJgeBTDL8
-         29fjFkTSbqQ1w8VSIydbnFJrtZUKj74sJ914na0bgP054hVaVvHkLBa6DCYm8hp6wcl1
-         h6nbZ3jWNX6gF8mXxrYpo2la1wayoKDspb/YQ17U5XuBuD1mVpqQS5Zgpgp9eTDKD6nO
-         bOPpr4ZZy53pFnNN82BZfCmvo7yuP3Z325tJajMsHA4pigyWpwQn3MAofOUcF5nlZYsD
-         9WxIxFfqBktMp/CMiiOJDMqJLCb9y1KRWm5V/V/UJ/RV5RQFVDFUSQy3IqmJk1L3Uw7S
-         ACUA==
+         :content-language:in-reply-to:subject:organization:from:references
+         :cc:to:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
+        b=j01V/9AmmSeooI8NfxprCm8ifeWe4q+XXGe1CPKZDZH2KvEK8ZbBf3JloNjFjjVuZa
+         dJhDyIveQnkL1Kya1wzjZq/DEKPNdL3zi1515f0K9+0tDaXmxkfSoC6CBfcJGsLTx6TV
+         BuAbIXDMIIR9f5L2BtlsOHtxBT7I//KJynGE4udXYEv3zlJTOWFe4hQNQCwqYpa/wtfa
+         Fy7Ct+Cyf+1SBqo1BvZiQSE+7V8jNvna+eCq2XQPpjoHSNTjh6TyfmVL6OpYq/aw3dae
+         sm8acfT902BVuXp0GFXoyd5zObNbgBgMINj9qFlCZD2mldUbOQ8l4/tRWQ7zG1vgaxV1
+         A0hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D00+uq9P;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAkqVin+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 12-20020ad45b8c000000b006259fcebfdbsi475761qvp.189.2023.05.25.06.30.41
+        by mx.google.com with ESMTPS id gm13-20020a056214268d00b006236d96c8e3si482903qvb.348.2023.05.25.06.40.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 06:30:41 -0700 (PDT)
+        Thu, 25 May 2023 06:40:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D00+uq9P;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAkqVin+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2B2z-0005x7-HW; Thu, 25 May 2023 09:30:29 -0400
+	id 1q2BCo-000879-2W; Thu, 25 May 2023 09:40:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q2B2w-0005vK-Co
- for qemu-arm@nongnu.org; Thu, 25 May 2023 09:30:26 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q2B2l-0005Vf-1T
- for qemu-arm@nongnu.org; Thu, 25 May 2023 09:30:25 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-30a8dc89c33so1413639f8f.0
- for <qemu-arm@nongnu.org>; Thu, 25 May 2023 06:30:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685021408; x=1687613408;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=d+L/OmLfMMjzY1hSnnDaGxrLkcQDsPU5Pyru/t0KJIo=;
- b=D00+uq9PlaTC2y9z/mIc5SqQTrpc12nXMk8mwOBRxGAhaY7/PU9oAF6NoqIQoiLjYm
- GBXBnHL5lt3QhpoSEkTNuOdE1mG+/VYRLylvlHEgt3888/sGenFv9NSOPh7U+7nCI2Bn
- rhHiJTPY1KBWaLo3QgjonpLPiQ/iUUKpbZWIZpZv6Pq2aInO8Z7CuSXXgMeGvNzG3Cts
- IVB5paOSYlaCvnldAIVt/j9l/MsxswRWwveszmNulwGz5pWa0OiIh6Jz9P6pC0SvW5rN
- IWJq1jfVpGnkokaUeYYl1FnJM5JJesLiLv0XSIhZlakE7ISGUyvNyOGEBA0E7JJ4zxJO
- 9Adw==
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q2BCn-00085g-Bu
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 09:40:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q2BCY-0008UY-75
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 09:40:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685022021;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
+ b=QAkqVin+uSThlMmKYGXBJbZukZ8vzSC5d8SNVM+LgzJjTP7LfnzHhunJGKIlUm6Q0vUV8r
+ E+TIzkbyXGHgbbmrjuzJGdveEBl6F2J0QY2atMQ62ScSS7eM/p0+dxTo/cARK0vYCYkr6h
+ LYCaJChvJYqddBUf8ZjUtby81XaNix4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-382-W3HwIXyEOOqlYJqyt3N9ag-1; Thu, 25 May 2023 09:40:18 -0400
+X-MC-Unique: W3HwIXyEOOqlYJqyt3N9ag-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-3f5df65fa35so2583985e9.3
+ for <qemu-arm@nongnu.org>; Thu, 25 May 2023 06:40:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685021408; x=1687613408;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=d+L/OmLfMMjzY1hSnnDaGxrLkcQDsPU5Pyru/t0KJIo=;
- b=ilTm9XnevfknJHkkhsPzH9HqeqUhnaE+CcY3cTljKbxrNg7SgmvVFjPjHFGPbZhwLY
- zo+OgRASdz6bbuL5dFXDERRAgTaGrma7+O8RhmaI14bl7dxP2UVLaWO7wC+n8vdFKTA8
- exZmLUDJKBnNsWhhH+3Ta4QJRkU3E7Zo1P39udE/icsjS8e9BXb2d13HTFYZSO57JuFD
- iqLoGlKjOkyR8MspH9R4fhsNKIZMPe9U4wsGDgJkXVD36qrc/BZGusaDow17iP6FFUVn
- T2V/E1pvxQfwQ2CAb8MsWlCw/TbKqf0U2Yk4N96jLFL8HxZyeNeXCfd9Fx+XV1mBZoFR
- +WmA==
-X-Gm-Message-State: AC+VfDztrqWOrZyEzRXcXFbDnHrO9uvRhlcqch1GlYb37YWxm14+3d8E
- 7SJXv6SrqWicQlMJfv1u2lt3/g==
-X-Received: by 2002:adf:f404:0:b0:306:36e7:db27 with SMTP id
- g4-20020adff404000000b0030636e7db27mr2360790wro.16.1685021408076; 
- Thu, 25 May 2023 06:30:08 -0700 (PDT)
-Received: from [192.168.69.115] (cor91-h02-176-184-30-254.dsl.sta.abo.bbox.fr.
- [176.184.30.254]) by smtp.gmail.com with ESMTPSA id
- a13-20020adffacd000000b003064600cff9sm1863160wrs.38.2023.05.25.06.30.05
+ d=1e100.net; s=20221208; t=1685022017; x=1687614017;
+ h=content-transfer-encoding:in-reply-to:subject:organization:from
+ :references:cc:to:content-language:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
+ b=Hx32Ou5H585ma0P9BuCgA5r4FYaXmx5QjIDdpCsylO2zR135Jc/z+hzn1C4Qe30cq/
+ D7Wu71v2tV29WEfAWkSoE6HAz4WJUjKCwTqv0ElT7/OqIg0HecGoCOVS8PjsyWysY6jN
+ l12ZRMEUEKYhRlKJwf7ZtbpGVhWSD2ogcLSNIjuKY1Z/evZQA1zOECqVsAR3zUqgUjI8
+ c56sQcwQzrmH2LkT7M2Myc2GIB6t0V3F+nwy1SO/GWmfUi8EJPy7fnwsD53XXNpJb2aK
+ q+Z0Ndk9b7xXH9s4cgvHA87bBkKrzDGn/3zpzqnd/n1wlYY2nNEfPkA07y64zPY4inGS
+ TK6w==
+X-Gm-Message-State: AC+VfDzLCcJ1DQxZerlOb1UB1VPBJ/r3R8Erk8pL/Bw+lgt4Tu1veIVy
+ zgdEZ0XAj+Bwxwf/U98Wm4kOss+H+x6oaj67clv8miqoS6VL8tP+ikOioGHdz1v7PXFVI4RAid6
+ FYTjEOKoCZxB4
+X-Received: by 2002:a7b:ce96:0:b0:3f6:7af:8fe7 with SMTP id
+ q22-20020a7bce96000000b003f607af8fe7mr2442417wmj.10.1685022016963; 
+ Thu, 25 May 2023 06:40:16 -0700 (PDT)
+X-Received: by 2002:a7b:ce96:0:b0:3f6:7af:8fe7 with SMTP id
+ q22-20020a7bce96000000b003f607af8fe7mr2442393wmj.10.1685022016526; 
+ Thu, 25 May 2023 06:40:16 -0700 (PDT)
+Received: from ?IPV6:2a09:80c0:192:0:5dac:bf3d:c41:c3e7?
+ ([2a09:80c0:192:0:5dac:bf3d:c41:c3e7])
+ by smtp.gmail.com with ESMTPSA id
+ p26-20020a05600c205a00b003f4f1b884cdsm5653862wmg.36.2023.05.25.06.40.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 May 2023 06:30:07 -0700 (PDT)
-Message-ID: <d2b91574-a6cb-32be-2713-ba6bf6b7e565@linaro.org>
-Date: Thu, 25 May 2023 15:30:03 +0200
+ Thu, 25 May 2023 06:40:16 -0700 (PDT)
+Message-ID: <b2108d2d-3123-def0-a3af-d4de57e7f72e@redhat.com>
+Date: Thu, 25 May 2023 15:40:14 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH v1 2/3] memory-device: Factor out device memory
- initialization into memory_devices_init()
-Content-Language: en-US
-To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>,
  Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
@@ -113,18 +119,25 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Yanan Wang <wangyanan55@huawei.com>
 References: <20230523185144.533592-1-david@redhat.com>
  <20230523185144.533592-3-david@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230523185144.533592-3-david@redhat.com>
+ <d2b91574-a6cb-32be-2713-ba6bf6b7e565@linaro.org>
+From: David Hildenbrand <david@redhat.com>
+Organization: Red Hat
+Subject: Re: [PATCH v1 2/3] memory-device: Factor out device memory
+ initialization into memory_devices_init()
+In-Reply-To: <d2b91574-a6cb-32be-2713-ba6bf6b7e565@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.091, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,69 +153,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8xptnMsq28eZ
+X-TUID: HPgn2NHu9pdQ
 
-Hi David,
-
-On 23/5/23 20:51, David Hildenbrand wrote:
-> Let's factor the common setup out, to prepare for further changes.
+On 25.05.23 15:30, Philippe Mathieu-Daudé wrote:
+> Hi David,
 > 
-> On arm64, we'll add the subregion to system RAM now earlier -- which
-> shouldn't matter, because the system RAM memory region should already be
-> alive at that point.
+> On 23/5/23 20:51, David Hildenbrand wrote:
+>> Let's factor the common setup out, to prepare for further changes.
+>>
+>> On arm64, we'll add the subregion to system RAM now earlier -- which
+>> shouldn't matter, because the system RAM memory region should already be
+>> alive at that point.
+>>
+>> Signed-off-by: David Hildenbrand <david@redhat.com>
+>> ---
+>>    hw/arm/virt.c                  |  9 +--------
+>>    hw/i386/pc.c                   | 17 ++++++-----------
+>>    hw/loongarch/virt.c            | 14 ++++----------
+>>    hw/mem/memory-device.c         | 20 ++++++++++++++++++++
+>>    hw/ppc/spapr.c                 | 15 ++++++---------
+>>    include/hw/mem/memory-device.h |  2 ++
+>>    6 files changed, 39 insertions(+), 38 deletions(-)
 > 
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->   hw/arm/virt.c                  |  9 +--------
->   hw/i386/pc.c                   | 17 ++++++-----------
->   hw/loongarch/virt.c            | 14 ++++----------
->   hw/mem/memory-device.c         | 20 ++++++++++++++++++++
->   hw/ppc/spapr.c                 | 15 ++++++---------
->   include/hw/mem/memory-device.h |  2 ++
->   6 files changed, 39 insertions(+), 38 deletions(-)
+> Split in boring 'first add method then use it for each arch'
+> would be easier to review.
 
-Split in boring 'first add method then use it for each arch'
-would be easier to review.
+Right, I agree if I'd be touching more code (I consider this fairly 
+minimal and straight-forward refactoring).
 
-> diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-> index 6c025b02c1..d99ceb621a 100644
-> --- a/hw/mem/memory-device.c
-> +++ b/hw/mem/memory-device.c
-> @@ -17,6 +17,7 @@
->   #include "qemu/range.h"
->   #include "hw/virtio/vhost.h"
->   #include "sysemu/kvm.h"
-> +#include "exec/address-spaces.h"
->   #include "trace.h"
->   
->   static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
-> @@ -333,6 +334,25 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
->       return memory_region_size(mr);
->   }
->   
-> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
-> +{
-> +    g_assert(!ms->device_memory);
-> +    ms->device_memory = g_new0(DeviceMemoryState, 1);
-> +    ms->device_memory->base = base;
-> +
-> +    /*
-> +     * See memory_device_get_free_addr(): An empty device memory region
-> +     * means "this machine supports memory devices, but they are not enabled".
-> +     */
-> +    if (size > 0) {
-> +        memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
-> +                           size);
-> +        memory_region_add_subregion(get_system_memory(),
-> +                                    ms->device_memory->base,
-> +                                    &ms->device_memory->mr);
+> 
+>> diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+>> index 6c025b02c1..d99ceb621a 100644
+>> --- a/hw/mem/memory-device.c
+>> +++ b/hw/mem/memory-device.c
+>> @@ -17,6 +17,7 @@
+>>    #include "qemu/range.h"
+>>    #include "hw/virtio/vhost.h"
+>>    #include "sysemu/kvm.h"
+>> +#include "exec/address-spaces.h"
+>>    #include "trace.h"
+>>    
+>>    static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
+>> @@ -333,6 +334,25 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
+>>        return memory_region_size(mr);
+>>    }
+>>    
+>> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
+>> +{
+>> +    g_assert(!ms->device_memory);
+>> +    ms->device_memory = g_new0(DeviceMemoryState, 1);
+>> +    ms->device_memory->base = base;
+>> +
+>> +    /*
+>> +     * See memory_device_get_free_addr(): An empty device memory region
+>> +     * means "this machine supports memory devices, but they are not enabled".
+>> +     */
+>> +    if (size > 0) {
+>> +        memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
+>> +                           size);
+>> +        memory_region_add_subregion(get_system_memory(),
+>> +                                    ms->device_memory->base,
+>> +                                    &ms->device_memory->mr);
+> 
+> What about always init/register and set if enabled?
+> 
+>     memory_region_set_enabled(&ms->device_memory->mr, size > 0);
+> 
+> Otherwise why allocate ms->device_memory?
 
-What about always init/register and set if enabled?
+We have right now:
 
-   memory_region_set_enabled(&ms->device_memory->mr, size > 0);
+ms->device_memory not allocated: no support
+ms->device_memory->mr with size 0: not enabled
+ms->device_memory->mr with size > 0: enabled
 
-Otherwise why allocate ms->device_memory?
+Let me see if initializing a memory region with size 0 (and adding a 
+subregion with size 0) works.
 
-> +    }
-> +}
+Thanks!
+
+-- 
+Thanks,
+
+David / dhildenb
 

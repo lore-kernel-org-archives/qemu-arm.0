@@ -1,115 +1,112 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp403349ejb;
-        Thu, 25 May 2023 05:32:21 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6UGtljF9/65TWGKIOhFEyH1ZIWMTmNZSM5Znl+kSAxo768F7oaXhfc9cWUe5rbc50Y1/Yx
-X-Received: by 2002:ac8:5bc7:0:b0:3ec:47d5:ec65 with SMTP id b7-20020ac85bc7000000b003ec47d5ec65mr29193823qtb.60.1685017940838;
-        Thu, 25 May 2023 05:32:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685017940; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp410067ejb;
+        Thu, 25 May 2023 05:44:10 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Fj+z3uy3LzpV3zSSRxfhShuzBGSsPacMza9fI8QNZvDyJEWunbeZ5i+Y3yned9lfIbjdr
+X-Received: by 2002:a05:620a:6541:b0:75b:23a1:367d with SMTP id qc1-20020a05620a654100b0075b23a1367dmr9417384qkn.62.1685018650021;
+        Thu, 25 May 2023 05:44:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685018650; cv=none;
         d=google.com; s=arc-20160816;
-        b=H0xn15Sz82ThHKFM9/bYFPUIGX09StHmxgFvXaSkNDEfaB4aZDG8HtIQdgMyQ/ueyU
-         uMqf0PFVUnrFmWljOdRT3/MK2u3xAlyc2r8pt4J9tSTIjS7/TWcBXMTjMSPU6hihqjEy
-         nzNJz6Ta7LSuH0pGwvaSfj9PdTaEotc/oAYX6DV1IbrHqdm2lFnqizn3Irse4bfVkcCu
-         3iFcc1/jDUDKXSkc6p6hwTM3H4mGqJouk6dfTGwmIFQvQpeUGZsD2rKaKUJRzNBgzglx
-         NwR9G5m6S1PM31v3BhtTBmQqm03J6fH+c3bqKuIvKQoFYUCsfbz9+aayChw2Laojp+F1
-         /eRA==
+        b=Hi10wA9ZQYXS6RyVKrm0pewBdNvyfehX+Od7r217GvyVKfcBJ23D/Fbky2jNM/AXiP
+         jxzKsAu0sbcEXlACJo78QpJuHeI+0gQ+VkZaJDwyKtyel9VC9vZhH4eVU1kqS3ReW9kp
+         lVzmChIuQ9oie8J92Kea5lP2G5jWU+6TJy9M/sHA1YIxX3yaiXtXhQQ1o2rRKKeb/JMx
+         TyDlxEpocl7xves133KgzB12GtpyO+AcXMFD28cFhklo2l7Uw9Xu7CDtf6j5O2qLICzY
+         vteKfUA0yVBFxryt9qGqj/7Fs0qDq2OQpc1aeOFA1YloMtw3pAwNppOpWpcLRSibtgRJ
+         KfjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=3ci8KiRArS5mPzR7uxZK9qYXoJGoSQmwqgpLr6B6PAk=;
-        b=l7h98ZjRgNlw6/czwfmS6tHQstGFziwmt+4QlabT2bYIE0s4H7o7oGgioptBWms0cP
-         HTxNWAZcjDNg84E8+X6fNUGxr9Voh+AFgOIKznkrakZ09+FnLAEIpK1uf+GVXQn1Te4T
-         kuAMASok4ubTiO52Pft2jP8J4W7b31jiKxSE5RdLfbG2qIsnom9NHeUqLqrlDGj9UFiE
-         7BaijLteh4Z4xmKsEhSIzENAQbT4ed0Quo54zePHgbxUyO2PcvT59qh1nZCJtUBFi69g
-         W7YP12Z7TdKBu1ZC/PU63aN8lsL7/HyxUkmvmKD3NuODqmcolmoZ53AjVpVyynQgjvyM
-         pt1w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=HA/F61vPeDrWGjErZmjlvsJKcEf5NVSbiqdZpYg9p9Y=;
+        b=vht9Fktk0liX/QfnshwLGzI5vULjv987n7936U1OhUgN1G+jTMGq73CqKOHeuQwhPF
+         TmJbmA8svaeoUH9zNeHLqC0DM/Kh95HFb/Lj5qzMIkJXd4BGuX1XWxrfYz5Yv4CStq/b
+         FzPBvAu9QgDqWHN1756RvGlL6KAf2ussOkrznSA2wD86RlFrHPq5LQL6j8XWgUsLqTjk
+         O2ehsIOCzFvQA3ROMQbXUjfpn75daDpDDMOP1T+1KKjF+YxUrDqQFwL9UxXzNZd6UNmo
+         l+ZK43IlePGgHzAuYueZlHLD7139vKfo/36tlMxkUdb5xeFYf4PbVb6ntGqWUq2qYoNw
+         6ieA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ap4kOfp5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6-20020ac85bc6000000b003f6f71e5e9asi391682qtb.619.2023.05.25.05.32.20
+        by mx.google.com with ESMTPS id f23-20020a05620a069700b0074ac8fb7061si442209qkh.508.2023.05.25.05.44.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 05:32:20 -0700 (PDT)
+        Thu, 25 May 2023 05:44:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ap4kOfp5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2A8g-0008Cv-Nf; Thu, 25 May 2023 08:32:19 -0400
+	id 1q2AJw-00055A-Ku; Thu, 25 May 2023 08:43:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gaosong@loongson.cn>)
- id 1q2A8f-0008Cc-IS; Thu, 25 May 2023 08:32:17 -0400
-Received: from mail.loongson.cn ([114.242.206.163])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <gaosong@loongson.cn>)
- id 1q2A8c-0005ZP-Ky; Thu, 25 May 2023 08:32:17 -0400
-Received: from loongson.cn (unknown [10.20.42.57])
- by gateway (Coremail) with SMTP id _____8CxZ_FIVW9kmv0AAA--.2598S3;
- Thu, 25 May 2023 20:32:08 +0800 (CST)
-Received: from [10.20.42.57] (unknown [10.20.42.57])
- by localhost.localdomain (Coremail) with SMTP id
- AQAAf8Bx671GVW9klHh3AA--.539S3; 
- Thu, 25 May 2023 20:32:06 +0800 (CST)
-Subject: Re: [PATCH v1 2/3] memory-device: Factor out device memory
- initialization into memory_devices_init()
-To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20230523185144.533592-1-david@redhat.com>
- <20230523185144.533592-3-david@redhat.com>
-From: Song Gao <gaosong@loongson.cn>
-Message-ID: <fd275a97-aac9-706c-004e-afdd2ac833f8@loongson.cn>
-Date: Thu, 25 May 2023 20:32:06 +0800
-User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q2AJt-00053d-IO
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 08:43:53 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q2AJr-0000Sy-H6
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 08:43:53 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-510d1972d5aso3799232a12.0
+ for <qemu-arm@nongnu.org>; Thu, 25 May 2023 05:43:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685018629; x=1687610629;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HA/F61vPeDrWGjErZmjlvsJKcEf5NVSbiqdZpYg9p9Y=;
+ b=Ap4kOfp5QNIRWGZJuY8IJfMF9AYF6RtLJ+8AtZYTBgrKyrLCl1MZvmUyeP8qZsclLh
+ oNiotE3JtovoWZ3b8gCagWTWGkAzJ3CGCX/jR/+qy02E8UFsi2337UZaR3lStdjFTQdE
+ bJY6BV7WhlhJqJmCEKkCOWieOoyOiunKd1APTGsoZo74EBNskIP0vFtFdOjKXthR+eYa
+ DvIPm+Nrgl/lWahI5s525NGfNnbfwHm9i/bAhFHrYbJJCYqhEQEhvxVq3GaJ3bNJKeZf
+ CcWHJUI85e+RQXlkkclq0LwZgfh6LWiBLTfJP6YWKpxcYdxEf4xkj3Wn4vBsDfedw/6y
+ 8/bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685018629; x=1687610629;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HA/F61vPeDrWGjErZmjlvsJKcEf5NVSbiqdZpYg9p9Y=;
+ b=CPfyOu49XfGhoGYBzqhZP48cq5aKVhKdI7lnTRQVtknzq/ke73K+JMBCisewyIJKC8
+ wdTBadIkSjk0IETk2Erxbp3lZ/i6eDGz31/ZTytUV0GpFMwFhadM3FjlEJgxdB80O3yx
+ w3fq3ryY0Ko1yufmluFe6QMcqZGi9wKSLx3S6G1sIPhT3Jpp2nnDiLAbuJlS7Cg+niVe
+ /bbJb6x2AzwNN7ItqdkWxY3vKKf17Fyz86hAhjwtzoOcvbLErevoFYdJa4Yv/CSxQH/i
+ 9u9WSIe2l7MGmEegFg7o03A4j7WVONoP3B36FSx7nUUzYkNgKVQxJ0y3nxhmFcca8Tek
+ Aw+g==
+X-Gm-Message-State: AC+VfDzXFe80y+WbJWii/2ld03snPZ4eitPcC36Q2vDNucHqcogZXrq6
+ wSXClyQNoA1yrNq2Ud30UGb4BVAMawXrUDTHjL+YpA==
+X-Received: by 2002:aa7:c949:0:b0:50b:c62f:9ff0 with SMTP id
+ h9-20020aa7c949000000b0050bc62f9ff0mr3368720edt.30.1685018629652; Thu, 25 May
+ 2023 05:43:49 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20230523185144.533592-3-david@redhat.com>
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-CM-TRANSID: AQAAf8Bx671GVW9klHh3AA--.539S3
-X-CM-SenderInfo: 5jdr20tqj6z05rqj20fqof0/
-X-Coremail-Antispam: 1Uk129KBjvJXoWxKr45Aw1xWF1UXF4UGw4rKrg_yoWfGF4UpF
- yxAF95Gr1YgrnxGwn7ur1DWa48Gw10k3WrWFyxCrWv9Fn7Wr98Crykt3y8t3y8A39IqF15
- XFyDJF1xX3WYq3DanT9S1TB71UUUUjDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- qI5I8CrVACY4xI64kE6c02F40Ex7xfYxn0WfASr-VFAUDa7-sFnT9fnUUIcSsGvfJTRUUU
- bq8YFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s
- 1l1IIY67AEw4v_Jrv_JF1l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
- wVC0I7IYx2IY67AKxVWUCVW8JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwA2z4
- x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdM2kK
- e7AKxVWUAVWUtwAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI
- 0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUAVWUtwAv7VC2z280
- aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JMxk0xIA0c2IEe2
- xFo4CEbIxvr21lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC
- 6x0Yz7v_Jr0_Gr1l4IxYO2xFxVAFwI0_JF0_Jw1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s
- 026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF
- 0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0x
- vE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv
- 6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxU2-VyUUUUU
-Received-SPF: pass client-ip=114.242.206.163; envelope-from=gaosong@loongson.cn;
- helo=mail.loongson.cn
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, MIME_CHARSET_FARAWAY=2.45,
- NICE_REPLY_A=-0.091, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20230524145906.33156-1-philmd@linaro.org>
+ <20230524145906.33156-2-philmd@linaro.org>
+ <78cc4cd6-f961-a271-6d00-b04d5a5732ff@linaro.org>
+In-Reply-To: <78cc4cd6-f961-a271-6d00-b04d5a5732ff@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 25 May 2023 13:43:38 +0100
+Message-ID: <CAFEAcA-BocRfJ4SmA+Sy0t+LUrVvPkbRW9gGfGjG0Le-UFyG7w@mail.gmail.com>
+Subject: Re: [PATCH 01/10] hw/arm/realview: Simplify using 'break' statement
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,234 +121,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /Z6rLXjoV163
+X-TUID: UiYRIFgsWqjQ
 
-
-
-ÔÚ 2023/5/24 ÉÏÎç2:51, David Hildenbrand Ð´µÀ:
-> Let's factor the common setup out, to prepare for further changes.
+On Wed, 24 May 2023 at 20:01, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> On arm64, we'll add the subregion to system RAM now earlier -- which
-> shouldn't matter, because the system RAM memory region should already be
-> alive at that point.
+> On 5/24/23 07:58, Philippe Mathieu-Daud=C3=A9 wrote:
+> > The 'break' statement terminates the execution of the nearest
+> > enclosing 'for' statement in which it appears.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> > ---
+> >   hw/arm/realview.c | 6 ++----
+> >   1 file changed, 2 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> > index a5aa2f046a..a52ff35084 100644
+> > --- a/hw/arm/realview.c
+> > +++ b/hw/arm/realview.c
+> > @@ -88,7 +88,6 @@ static void realview_init(MachineState *machine,
+> >       I2CBus *i2c;
+> >       int n;
+> >       unsigned int smp_cpus =3D machine->smp.cpus;
+> > -    int done_nic =3D 0;
+> >       qemu_irq cpu_irq[4];
+> >       int is_mpcore =3D 0;
+> >       int is_pb =3D 0;
+> > @@ -294,14 +293,13 @@ static void realview_init(MachineState *machine,
+> >       for(n =3D 0; n < nb_nics; n++) {
+> >           nd =3D &nd_table[n];
+> >
+> > -        if (!done_nic && (!nd->model ||
+> > -                    strcmp(nd->model, is_pb ? "lan9118" : "smc91c111")=
+ =3D=3D 0)) {
+> > +        if (!nd->model || strcmp(nd->model, is_pb ? "lan9118" : "smc91=
+c111") =3D=3D 0) {
+> >               if (is_pb) {
+> >                   lan9118_init(nd, 0x4e000000, pic[28]);
+> >               } else {
+> >                   smc91c111_init(nd, 0x4e000000, pic[28]);
+> >               }
+> > -            done_nic =3D 1;
+> > +            break;
 >
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> ---
->   hw/arm/virt.c                  |  9 +--------
->   hw/i386/pc.c                   | 17 ++++++-----------
->   hw/loongarch/virt.c            | 14 ++++----------
->   hw/mem/memory-device.c         | 20 ++++++++++++++++++++
->   hw/ppc/spapr.c                 | 15 ++++++---------
->   include/hw/mem/memory-device.h |  2 ++
->   6 files changed, 39 insertions(+), 38 deletions(-)
-For LoongArch
+> While I agree this preserves existing behaviour, it doesn't seem like the=
+ logic is
+> actually correct.  This will only ever connect 1 of nb_nics.
 
-Tested-by: Song Gao <gaosong@loongson.cn>
+Does it preserve the existing behaviour, though? I think the
+intent of the code is:
+ * we only create one at most hard-wired NIC (the lan9118 or smc91c111,
+   depending on the board type), and we do that for the
+   first entry in the nd_table which specifies a matching 'model'
+ * every other NIC is a PCI rtl8139 (or ignored if the board
+   has no PCI)
 
-Thanks.
-Song Gao
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b99ae18501..284f45d998 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1816,10 +1816,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
->       virt_set_high_memmap(vms, base, pa_bits);
->   
->       if (device_memory_size > 0) {
-> -        ms->device_memory = g_malloc0(sizeof(*ms->device_memory));
-> -        ms->device_memory->base = device_memory_base;
-> -        memory_region_init(&ms->device_memory->mr, OBJECT(vms),
-> -                           "device-memory", device_memory_size);
-> +        memory_devices_init(ms, device_memory_base, device_memory_size);
->       }
->   }
->   
-> @@ -2260,10 +2257,6 @@ static void machvirt_init(MachineState *machine)
->   
->       memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
->                                   machine->ram);
-> -    if (machine->device_memory) {
-> -        memory_region_add_subregion(sysmem, machine->device_memory->base,
-> -                                    &machine->device_memory->mr);
-> -    }
->   
->       virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
->   
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index bb62c994fa..9d215df92e 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1039,13 +1039,11 @@ void pc_memory_init(PCMachineState *pcms,
->           exit(EXIT_FAILURE);
->       }
->   
-> -    /* always allocate the device memory information */
-> -    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
-> -
->       /* initialize device memory address space */
->       if (pcmc->has_reserved_memory &&
->           (machine->ram_size < machine->maxram_size)) {
->           ram_addr_t device_mem_size;
-> +        hwaddr device_mem_base;
->   
->           if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
->               error_report("unsupported amount of memory slots: %"PRIu64,
-> @@ -1060,19 +1058,16 @@ void pc_memory_init(PCMachineState *pcms,
->               exit(EXIT_FAILURE);
->           }
->   
-> -        pc_get_device_memory_range(pcms, &machine->device_memory->base, &device_mem_size);
-> +        pc_get_device_memory_range(pcms, &device_mem_base, &device_mem_size);
->   
-> -        if ((machine->device_memory->base + device_mem_size) <
-> -            device_mem_size) {
-> +        if (device_mem_base + device_mem_size < device_mem_size) {
->               error_report("unsupported amount of maximum memory: " RAM_ADDR_FMT,
->                            machine->maxram_size);
->               exit(EXIT_FAILURE);
->           }
-> -
-> -        memory_region_init(&machine->device_memory->mr, OBJECT(pcms),
-> -                           "device-memory", device_mem_size);
-> -        memory_region_add_subregion(system_memory, machine->device_memory->base,
-> -                                    &machine->device_memory->mr);
-> +        memory_devices_init(machine, device_mem_base, device_mem_size);
-> +    } else {
-> +        memory_devices_init(machine, 0, 0);
->       }
->   
->       if (pcms->cxl_devices_state.is_enabled) {
-> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> index 2b7588e32a..2ccc90feb4 100644
-> --- a/hw/loongarch/virt.c
-> +++ b/hw/loongarch/virt.c
-> @@ -45,7 +45,7 @@
->   #include "sysemu/block-backend.h"
->   #include "hw/block/flash.h"
->   #include "qemu/error-report.h"
-> -
-> +#include "hw/mem/memory-device.h"
->   
->   static void virt_flash_create(LoongArchMachineState *lams)
->   {
-> @@ -804,8 +804,8 @@ static void loongarch_init(MachineState *machine)
->   
->       /* initialize device memory address space */
->       if (machine->ram_size < machine->maxram_size) {
-> -        machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
->           ram_addr_t device_mem_size = machine->maxram_size - machine->ram_size;
-> +        hwaddr device_mem_base;
->   
->           if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
->               error_report("unsupported amount of memory slots: %"PRIu64,
-> @@ -820,14 +820,8 @@ static void loongarch_init(MachineState *machine)
->               exit(EXIT_FAILURE);
->           }
->           /* device memory base is the top of high memory address. */
-> -        machine->device_memory->base = 0x90000000 + highram_size;
-> -        machine->device_memory->base =
-> -            ROUND_UP(machine->device_memory->base, 1 * GiB);
-> -
-> -        memory_region_init(&machine->device_memory->mr, OBJECT(lams),
-> -                           "device-memory", device_mem_size);
-> -        memory_region_add_subregion(address_space_mem, machine->device_memory->base,
-> -                                    &machine->device_memory->mr);
-> +        device_mem_base = ROUND_UP(0x90000000 + highram_size, 1 * GiB);
-> +        memory_devices_init(machine, device_mem_base, device_mem_size);
->       }
->   
->       /* Add isa io region */
-> diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-> index 6c025b02c1..d99ceb621a 100644
-> --- a/hw/mem/memory-device.c
-> +++ b/hw/mem/memory-device.c
-> @@ -17,6 +17,7 @@
->   #include "qemu/range.h"
->   #include "hw/virtio/vhost.h"
->   #include "sysemu/kvm.h"
-> +#include "exec/address-spaces.h"
->   #include "trace.h"
->   
->   static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
-> @@ -333,6 +334,25 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
->       return memory_region_size(mr);
->   }
->   
-> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
-> +{
-> +    g_assert(!ms->device_memory);
-> +    ms->device_memory = g_new0(DeviceMemoryState, 1);
-> +    ms->device_memory->base = base;
-> +
-> +    /*
-> +     * See memory_device_get_free_addr(): An empty device memory region
-> +     * means "this machine supports memory devices, but they are not enabled".
-> +     */
-> +    if (size > 0) {
-> +        memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
-> +                           size);
-> +        memory_region_add_subregion(get_system_memory(),
-> +                                    ms->device_memory->base,
-> +                                    &ms->device_memory->mr);
-> +    }
-> +}
-> +
->   static const TypeInfo memory_device_info = {
->       .name          = TYPE_MEMORY_DEVICE,
->       .parent        = TYPE_INTERFACE,
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 1baea16c96..d66dc00ea5 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -2866,12 +2866,11 @@ static void spapr_machine_init(MachineState *machine)
->       /* map RAM */
->       memory_region_add_subregion(sysmem, 0, machine->ram);
->   
-> -    /* always allocate the device memory information */
-> -    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
-> -
->       /* initialize hotplug memory address space */
->       if (machine->ram_size < machine->maxram_size) {
->           ram_addr_t device_mem_size = machine->maxram_size - machine->ram_size;
-> +        hwaddr device_mem_base;
-> +
->           /*
->            * Limit the number of hotpluggable memory slots to half the number
->            * slots that KVM supports, leaving the other half for PCI and other
-> @@ -2890,12 +2889,10 @@ static void spapr_machine_init(MachineState *machine)
->               exit(1);
->           }
->   
-> -        machine->device_memory->base = ROUND_UP(machine->ram_size,
-> -                                                SPAPR_DEVICE_MEM_ALIGN);
-> -        memory_region_init(&machine->device_memory->mr, OBJECT(spapr),
-> -                           "device-memory", device_mem_size);
-> -        memory_region_add_subregion(sysmem, machine->device_memory->base,
-> -                                    &machine->device_memory->mr);
-> +        device_mem_base = ROUND_UP(machine->ram_size, SPAPR_DEVICE_MEM_ALIGN);
-> +        memory_devices_init(machine, device_mem_base, device_mem_size);
-> +    } else {
-> +        memory_devices_init(machine, 0, 0);
->       }
->   
->       if (smc->dr_lmb_enabled) {
-> diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
-> index 48d2611fc5..6e8a10e2f5 100644
-> --- a/include/hw/mem/memory-device.h
-> +++ b/include/hw/mem/memory-device.h
-> @@ -16,6 +16,7 @@
->   #include "hw/qdev-core.h"
->   #include "qapi/qapi-types-machine.h"
->   #include "qom/object.h"
-> +#include "exec/hwaddr.h"
->   
->   #define TYPE_MEMORY_DEVICE "memory-device"
->   
-> @@ -113,5 +114,6 @@ void memory_device_plug(MemoryDeviceState *md, MachineState *ms);
->   void memory_device_unplug(MemoryDeviceState *md, MachineState *ms);
->   uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
->                                          Error **errp);
-> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size);
->   
->   #endif
+Maybe I'm misreading the current code, but it looks to me
+like it does this: done_nic is a flag for "did we create
+the hardwired device", and we only create the hardwired
+device if the flag is false and the NIC model matches.
+Once we've created the hardwired device we set done_nic
+to true and the if() will then always take us into the
+rtl8139 part.
 
+On the other hand, this patch using break means that
+once the hardwired NIC has been created we'll exit the
+loop entirely and won't create any subsequent PCI devices.
+
+thanks
+-- PMM

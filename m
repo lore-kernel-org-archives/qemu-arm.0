@@ -1,144 +1,140 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp449040ejb;
-        Thu, 25 May 2023 06:40:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Ikv1PDPQ5ktLpm2nIJOV83VDvZrgq9U/B9NZVbiZAbr15yRtbugXTf9ZiFGJ7+tCAAolo
-X-Received: by 2002:ad4:5f0d:0:b0:621:33a2:4a3b with SMTP id fo13-20020ad45f0d000000b0062133a24a3bmr1263778qvb.48.1685022053230;
-        Thu, 25 May 2023 06:40:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685022053; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp688233ejb;
+        Thu, 25 May 2023 12:58:36 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ70ygC6kbhAcsx6TjCTYv+ItxjalqwdY6O0qg4YkLn5Z3Ukw5zzKluPgzXnlctTWLOCq5Mr
+X-Received: by 2002:a05:6214:e4d:b0:61a:281b:9a59 with SMTP id o13-20020a0562140e4d00b0061a281b9a59mr2219940qvc.32.1685044716041;
+        Thu, 25 May 2023 12:58:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685044716; cv=none;
         d=google.com; s=arc-20160816;
-        b=AeDKLMX5PQHLb0jYlb9edpgWi3SPsIsCnmxlt/SnVv0ZZd+gS9jDoSIjgeoHueV4WR
-         Lp4Pa58CNIRlSAraWd8YhkqsK6E1nRfUafq55WKZoRHGPP1ENVjWwYO7jgR3qaFaJzHI
-         HM8gyr9oSGT78s2g+LPULCg8wgITJu/10VgYEWVrHleHnR1fNgdR4yCndGpbz2ZQSJry
-         9J3qlxkEM8rcwr1Ve65tgWYDrcK0ewzaoFHawoRHZXdGhObrlZviDxPk8sw/X4wsR7ld
-         O28qWWHi9cppziaWO0On6HnNQoeuDkqo8O4Uka5yHTM50l52LrrjEA2fxibew+nv9Q/0
-         iwWw==
+        b=Rv/ULaFpFZee/sphn7RPmG9yYdge9AH0jHzUhZmY76bjrcINIcFQaVALoTArJ92Bqk
+         ctPBiyrqbLPlazXEm45gzkJghDZgs6ZYrD7HAfzsYw/ndkMtg289nhvxVbwKwLY5NXNf
+         uhkkEMqBSaLJWsM/3lBnAZDCoLwfoBgK7rb3QeGeeNFCtZb8j44dgIBCM9Lb1g+EhX7r
+         eK3qiBS2MRu96bry+eCCDsHd3f8BEQabc4Sxr8gH03o0oQMtcNMtVTX5ggiQbo2iq/im
+         fNWWzQLoG1R3s8rR6/aCY9EKOSZ2SNdFFAiIVclfLvkQkaO9CuXQqu6W7Qr4Vzi10jKH
+         Zmag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:subject:organization:from:references
-         :cc:to:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
-        b=j01V/9AmmSeooI8NfxprCm8ifeWe4q+XXGe1CPKZDZH2KvEK8ZbBf3JloNjFjjVuZa
-         dJhDyIveQnkL1Kya1wzjZq/DEKPNdL3zi1515f0K9+0tDaXmxkfSoC6CBfcJGsLTx6TV
-         BuAbIXDMIIR9f5L2BtlsOHtxBT7I//KJynGE4udXYEv3zlJTOWFe4hQNQCwqYpa/wtfa
-         Fy7Ct+Cyf+1SBqo1BvZiQSE+7V8jNvna+eCq2XQPpjoHSNTjh6TyfmVL6OpYq/aw3dae
-         sm8acfT902BVuXp0GFXoyd5zObNbgBgMINj9qFlCZD2mldUbOQ8l4/tRWQ7zG1vgaxV1
-         A0hA==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:date:message-id:dkim-signature;
+        bh=K4sjjUpWu4qp8a03WcUL80jIiCG1mi7qnzMivpinndg=;
+        b=gBKujVzIPEMyeQWHcKkiNo+CJjk6wfjHMXt0+KWtiASenb5nFMe6kWcc6kb+bqT3+p
+         R9AFC9qLi9tG0aXpNVPel6Qg0OaBM6runVvdnf/QTQOCmxWwi+vbrvk6Dcee+6phyv27
+         9+fvBDVeQwyxAYd8zefxbJr1vi8MtWFF+O1Kj8pKdsOBrrVMzbwrw1Q20ek7wLeqWHFY
+         Y/Y8a4cvdffz20bxcYqN/ZHbQNJUxi2l8TziEseCWhRMv+qrBdubrCg6HMrfLf6CukLk
+         p4Q7EbqyCGpn7gt5wyH4TFT7C//aJ/dGqU25VQXHa53t6b+y+T9XMq37UixjLnLSDqbf
+         wl1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAkqVin+;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=FhVYFnYj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gm13-20020a056214268d00b006236d96c8e3si482903qvb.348.2023.05.25.06.40.52
+        by mx.google.com with ESMTPS id g2-20020a0562141cc200b0061b7b47cd65si762783qvd.580.2023.05.25.12.58.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 06:40:53 -0700 (PDT)
+        Thu, 25 May 2023 12:58:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QAkqVin+;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=FhVYFnYj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2BCo-000879-2W; Thu, 25 May 2023 09:40:38 -0400
+	id 1q2H63-0002uc-3u; Thu, 25 May 2023 15:58:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q2BCn-00085g-Bu
- for qemu-arm@nongnu.org; Thu, 25 May 2023 09:40:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q2H61-0002u9-K9; Thu, 25 May 2023 15:58:01 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q2BCY-0008UY-75
- for qemu-arm@nongnu.org; Thu, 25 May 2023 09:40:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685022021;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
- b=QAkqVin+uSThlMmKYGXBJbZukZ8vzSC5d8SNVM+LgzJjTP7LfnzHhunJGKIlUm6Q0vUV8r
- E+TIzkbyXGHgbbmrjuzJGdveEBl6F2J0QY2atMQ62ScSS7eM/p0+dxTo/cARK0vYCYkr6h
- LYCaJChvJYqddBUf8ZjUtby81XaNix4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-382-W3HwIXyEOOqlYJqyt3N9ag-1; Thu, 25 May 2023 09:40:18 -0400
-X-MC-Unique: W3HwIXyEOOqlYJqyt3N9ag-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3f5df65fa35so2583985e9.3
- for <qemu-arm@nongnu.org>; Thu, 25 May 2023 06:40:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685022017; x=1687614017;
- h=content-transfer-encoding:in-reply-to:subject:organization:from
- :references:cc:to:content-language:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=p3TEsEg1Uyk/qryI/0DgbPNmc12+z7O76PXfVfETWas=;
- b=Hx32Ou5H585ma0P9BuCgA5r4FYaXmx5QjIDdpCsylO2zR135Jc/z+hzn1C4Qe30cq/
- D7Wu71v2tV29WEfAWkSoE6HAz4WJUjKCwTqv0ElT7/OqIg0HecGoCOVS8PjsyWysY6jN
- l12ZRMEUEKYhRlKJwf7ZtbpGVhWSD2ogcLSNIjuKY1Z/evZQA1zOECqVsAR3zUqgUjI8
- c56sQcwQzrmH2LkT7M2Myc2GIB6t0V3F+nwy1SO/GWmfUi8EJPy7fnwsD53XXNpJb2aK
- q+Z0Ndk9b7xXH9s4cgvHA87bBkKrzDGn/3zpzqnd/n1wlYY2nNEfPkA07y64zPY4inGS
- TK6w==
-X-Gm-Message-State: AC+VfDzLCcJ1DQxZerlOb1UB1VPBJ/r3R8Erk8pL/Bw+lgt4Tu1veIVy
- zgdEZ0XAj+Bwxwf/U98Wm4kOss+H+x6oaj67clv8miqoS6VL8tP+ikOioGHdz1v7PXFVI4RAid6
- FYTjEOKoCZxB4
-X-Received: by 2002:a7b:ce96:0:b0:3f6:7af:8fe7 with SMTP id
- q22-20020a7bce96000000b003f607af8fe7mr2442417wmj.10.1685022016963; 
- Thu, 25 May 2023 06:40:16 -0700 (PDT)
-X-Received: by 2002:a7b:ce96:0:b0:3f6:7af:8fe7 with SMTP id
- q22-20020a7bce96000000b003f607af8fe7mr2442393wmj.10.1685022016526; 
- Thu, 25 May 2023 06:40:16 -0700 (PDT)
-Received: from ?IPV6:2a09:80c0:192:0:5dac:bf3d:c41:c3e7?
- ([2a09:80c0:192:0:5dac:bf3d:c41:c3e7])
- by smtp.gmail.com with ESMTPSA id
- p26-20020a05600c205a00b003f4f1b884cdsm5653862wmg.36.2023.05.25.06.40.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 May 2023 06:40:16 -0700 (PDT)
-Message-ID: <b2108d2d-3123-def0-a3af-d4de57e7f72e@redhat.com>
-Date: Thu, 25 May 2023 15:40:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20230523185144.533592-1-david@redhat.com>
- <20230523185144.533592-3-david@redhat.com>
- <d2b91574-a6cb-32be-2713-ba6bf6b7e565@linaro.org>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-Subject: Re: [PATCH v1 2/3] memory-device: Factor out device memory
- initialization into memory_devices_init()
-In-Reply-To: <d2b91574-a6cb-32be-2713-ba6bf6b7e565@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q2H5y-0002CZ-N1; Thu, 25 May 2023 15:58:01 -0400
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 34PJn1Rx001730; Thu, 25 May 2023 19:57:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=K4sjjUpWu4qp8a03WcUL80jIiCG1mi7qnzMivpinndg=;
+ b=FhVYFnYjYLLa7Hi1BFsawqmES2CbsKl/whqxA3U2TNX1NUXrqHIROJoFyu58fYvNq8W+
+ +F25x4Oj1RV0Fe8U2l39C4glIq02EQoNeUchsG/gT2F3k0Dc68DaXlamXgDrowheQcFu
+ 87D7GsRBPC2y9YWAAgX6c+2j2rd4ubvHWRFqZGEulEr8yyrX7+/My/yU1EF7thYNSrlV
+ 1fnT+j/88wSt6FVzoxnz4Aci03YQg/ZuCQNUtIq7VjRTp04ouLATAbz9lUZJCOg/1nhp
+ rI8/vtuPrJR0Mk4XnfqmC/JasGrtEBFloNw/+60nUiQwtcb1QCxTPBqBOChHs8vzOsUD 0Q== 
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qtd681j07-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 25 May 2023 19:57:46 +0000
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 34PG7Z4w030528;
+ Thu, 25 May 2023 19:57:45 GMT
+Received: from smtprelay03.wdc07v.mail.ibm.com ([9.208.129.113])
+ by ppma04wdc.us.ibm.com (PPS) with ESMTPS id 3qppe7u624-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 25 May 2023 19:57:45 +0000
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 34PJviqd6095502
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 25 May 2023 19:57:44 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 037BD58052;
+ Thu, 25 May 2023 19:57:44 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B96BE5805D;
+ Thu, 25 May 2023 19:57:43 +0000 (GMT)
+Received: from [9.61.0.148] (unknown [9.61.0.148])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 25 May 2023 19:57:43 +0000 (GMT)
+Message-ID: <ba1e794c-ee3a-0dff-b008-7fac4b007255@linux.vnet.ibm.com>
+Date: Thu, 25 May 2023 14:57:43 -0500
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH v3 1/1] hw/arm/aspeed:Add vpd data for Rainier machine
 Content-Language: en-US
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Cc: Ninad Palsule <ninad@linux.ibm.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9_via?= <qemu-arm@nongnu.org>
+References: <20230523214520.2102894-1-ninad@linux.ibm.com>
+ <20230523214520.2102894-2-ninad@linux.ibm.com>
+ <7fadea2f-39e0-902f-848a-8f9bd7ff1f52@kaod.org>
+ <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
+ <80168e3a-b0f6-463e-b473-8488a897ef16@app.fastmail.com>
+ <164e53c1-03dd-a530-8c91-357a10517556@kaod.org>
+From: Ninad Palsule <ninad@linux.vnet.ibm.com>
+In-Reply-To: <164e53c1-03dd-a530-8c91-357a10517556@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: V5zcooxMh-CO9m7koVU0Ia5i560VBeva
+X-Proofpoint-ORIG-GUID: V5zcooxMh-CO9m7koVU0Ia5i560VBeva
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-05-25_12,2023-05-25_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 impostorscore=0
+ mlxlogscore=822 phishscore=0 malwarescore=0 suspectscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 priorityscore=1501 adultscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2305250165
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=ninad@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.091, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,87 +149,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HPgn2NHu9pdQ
+X-TUID: M1j5ahM7Sa0b
 
-On 25.05.23 15:30, Philippe Mathieu-Daudé wrote:
-> Hi David,
-> 
-> On 23/5/23 20:51, David Hildenbrand wrote:
->> Let's factor the common setup out, to prepare for further changes.
->>
->> On arm64, we'll add the subregion to system RAM now earlier -- which
->> shouldn't matter, because the system RAM memory region should already be
->> alive at that point.
->>
->> Signed-off-by: David Hildenbrand <david@redhat.com>
->> ---
->>    hw/arm/virt.c                  |  9 +--------
->>    hw/i386/pc.c                   | 17 ++++++-----------
->>    hw/loongarch/virt.c            | 14 ++++----------
->>    hw/mem/memory-device.c         | 20 ++++++++++++++++++++
->>    hw/ppc/spapr.c                 | 15 ++++++---------
->>    include/hw/mem/memory-device.h |  2 ++
->>    6 files changed, 39 insertions(+), 38 deletions(-)
-> 
-> Split in boring 'first add method then use it for each arch'
-> would be easier to review.
+Hello Cedric,
 
-Right, I agree if I'd be touching more code (I consider this fairly 
-minimal and straight-forward refactoring).
 
-> 
->> diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
->> index 6c025b02c1..d99ceb621a 100644
->> --- a/hw/mem/memory-device.c
->> +++ b/hw/mem/memory-device.c
->> @@ -17,6 +17,7 @@
->>    #include "qemu/range.h"
->>    #include "hw/virtio/vhost.h"
->>    #include "sysemu/kvm.h"
->> +#include "exec/address-spaces.h"
->>    #include "trace.h"
->>    
->>    static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
->> @@ -333,6 +334,25 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
->>        return memory_region_size(mr);
->>    }
->>    
->> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
->> +{
->> +    g_assert(!ms->device_memory);
->> +    ms->device_memory = g_new0(DeviceMemoryState, 1);
->> +    ms->device_memory->base = base;
->> +
->> +    /*
->> +     * See memory_device_get_free_addr(): An empty device memory region
->> +     * means "this machine supports memory devices, but they are not enabled".
->> +     */
->> +    if (size > 0) {
->> +        memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
->> +                           size);
->> +        memory_region_add_subregion(get_system_memory(),
->> +                                    ms->device_memory->base,
->> +                                    &ms->device_memory->mr);
-> 
-> What about always init/register and set if enabled?
-> 
->     memory_region_set_enabled(&ms->device_memory->mr, size > 0);
-> 
-> Otherwise why allocate ms->device_memory?
+On 5/25/23 1:37 AM, Cédric Le Goater wrote:
+> [ ... ]
+>
+>> However, regarding Cédric's log above, a reboot is expected on the first
+>> boot of a fresh image when there's valid VPD available. For the first
+>> boot of a fresh image we configure the kernel with a minimal devicetree
+>> that allows us to read the VPD data. This determines the system we're
+>> actually on and configures an appropriate devicetree for subsequent
+>> boots. We then reboot to pick up the new devicetree.
+>
+> Yes. Then, the behavior looks correct under QEMU :
+>
+>   https://www.kaod.org/qemu/aspeed/rainier/rainer.log
+>
+> Here are the services which still have with some issues :
+>
+> * clear-once.service                loaded failed failed          
+> Clear one time boot overrides
+> * ncsi-linkspeed@eth0.service       loaded failed failed          Set 
+> eth0 gigabit link speed
+> * ncsi-linkspeed@eth1.service       loaded failed failed          Set 
+> eth1 gigabit link speed
+> * obmc-flash-bios-init.service      loaded failed failed          
+> Setup Host FW directories
+> * system-vpd.service                loaded failed failed          
+> System VPD Collection
+> * trace-enable.service              loaded failed failed          
+> Enable Linux trace events in the boot loader
 
-We have right now:
+On my system system-vpd.service was active. I couldn't run your build on 
+my development machine.
 
-ms->device_memory not allocated: no support
-ms->device_memory->mr with size 0: not enabled
-ms->device_memory->mr with size > 0: enabled
+I am still checking it.
 
-Let me see if initializing a memory region with size 0 (and adding a 
-subregion with size 0) works.
-
-Thanks!
-
--- 
-Thanks,
-
-David / dhildenb
-
+>
+> C.
+>
+>
+>
+>

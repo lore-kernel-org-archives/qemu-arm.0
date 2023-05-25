@@ -1,112 +1,110 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp551451ejb;
-        Thu, 25 May 2023 09:03:57 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4JnX2EGp04TrfO8QdiP8VsAS3/ULyTZv2EFJRazzgG5s58CS4xxuiY37F8ktPQ0dciG4/g
-X-Received: by 2002:a05:6214:252d:b0:579:5dbc:ab6e with SMTP id gg13-20020a056214252d00b005795dbcab6emr2082958qvb.3.1685030636752;
-        Thu, 25 May 2023 09:03:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685030636; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp788181ejb;
+        Thu, 25 May 2023 16:27:30 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5llwhpuFK2IhD9/j8BrRxMXohIMQIzneln0MMW8LbRAeBTypwFr9Wed1vYsaduiaCm8lFF
+X-Received: by 2002:a05:622a:130a:b0:3f5:434c:3506 with SMTP id v10-20020a05622a130a00b003f5434c3506mr142777qtk.11.1685057250441;
+        Thu, 25 May 2023 16:27:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685057250; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZnCHKE2hu4InuQonV2VtVKG3NWWDEKgpKY5LfSYoNsx88ZP2dIL+pLYnm9Gml57QJ
-         rBMghg7vCT3Go8xDvt44XFY6YunvDFQ201dpXgqBamR/dtQow3DgMLS8DR7gmEIQZ6it
-         HptKqIoW2sPNQA+mksojz4Wj6X6x26xn/IixlJESWGqCnKO+DWysUTlgKutJGjPb3Ctx
-         4g6P3K+lHKtvsECpoTnYjOLI033TpCZkDUQuSxYy1kAReTNPZGfu0LL5+05KpsvAtVQz
-         60hf4IHCVzWCYrm8WDhtv0Fu6OgGuI0pNaYR/AOT+9itBvg5te+9bDcR0qg4xtTU9gtY
-         xZbw==
+        b=qTc/zVbTSzZlSZwNTNcICnpyK+mngZsvX0xaNt23i31k9rCPkS5PP0rT3RKeWy5229
+         vWyhRK1y8/tnNHIuusXmxPlYdEY+UXYyyEao6WuKG9fckHVa7NywgsTzHLsn6D359nZj
+         ocBWNriQ3ek/AdsTlg0H0rV+MuUEGEOhkH6RahWPXzL8HJT857X39+dPCB44IsJHVnLG
+         oQPKvPXNpBeSgsoC0qnqCRavkYqp0saEUqqlHmDCqmn6K8SI0HlmWkS8nEoOVCavcLl3
+         ITAARRHba3ej2+2awss1jpDen5aoi/kNZFstZl3aU09Uw3l6xeI9eVDEz2owr9mLQbg6
+         NVtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=OmpLewKxfTHYmEpCTBYX85qQ15KnVmMlHVA/vC4rmlU=;
-        b=F5BttiDxugeQ532uuihgI4Lx/8lH169N75mQPpBr0YYPTQk0g75RF8kZM9raASfaSC
-         5kZT+Oh2LBuUQur2Hailoy//a+uv775rrYvXeVnx1YXdCnXR5Xx51lnRu1aruSxcEhvm
-         0zvRuy4/X6QnurVwvtwHIy4gfXOzigIR/pO5NYKUSHImibU/hL6IGFxohudabHogf8BQ
-         k3CKwZuoJtAgRBcRyRIBonnyDF5bbKa1KNAh9VLlN4/3H3nqA93K065cGJgFjzLQ2L/Z
-         hnvvTehw555e0leFfOJ5/a9JXRX1QFCCORZGCtmn5coLGrW8HQSaIObJPp6/Amn1erRr
-         RdsQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ahaAtzWW51KvgGV6JaCQ4D8Qa6DKgj6D9JTYPTGz5GE=;
+        b=DUVocqClhHnU+f2jhEiBgeb4Kz3Wt1AFcoYvVqntD0/QqshrraOOkyuMqHKfl+GiWG
+         9n3p7dMRKv3nCct5w9eE5fwMW0qspPUTizFGs2bNvarZ58YjtW5tygW+wjgeUvE4ajOp
+         2ED7VGcThdsGjENyEZbDmAu0rZHeOIUTiIm12GXtqvMfudpLe0fosMalC4SI5a+QwCcu
+         mwyTtWzZVERarysc6fiaQTvRYaWEK3W0rugkvd/OBjDBEzcmmP9IP1md4Vig4uwtdlE8
+         BIFCZNqrNR/iMqs5u1YG3lMmzKOaO2lCZbMEHcNI/VR9IFZ8ukK2Sm2jYCiaOfTEAW71
+         zLwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Am6rbaKO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pqK6g7s7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eo15-20020ad4594f000000b005cea8d1ce9dsi589038qvb.310.2023.05.25.09.03.56
+        by mx.google.com with ESMTPS id t20-20020a05622a149400b003ec48dc4622si903665qtx.673.2023.05.25.16.27.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 09:03:56 -0700 (PDT)
+        Thu, 25 May 2023 16:27:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=Am6rbaKO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pqK6g7s7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q2DR9-0005Wv-S4; Thu, 25 May 2023 12:03:35 -0400
+	id 1q2KLV-0005ms-OF; Thu, 25 May 2023 19:26:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q2DR7-0005Ui-TW; Thu, 25 May 2023 12:03:33 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q2DR1-0001PQ-GF; Thu, 25 May 2023 12:03:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=OmpLewKxfTHYmEpCTBYX85qQ15KnVmMlHVA/vC4rmlU=; b=Am6rbaKOm0BMZtPByGGqKFip9e
- AVSKfqIgTjhElzRbMFegbRbUj4512e3Ofc65odk/EuVxFVg+Mv5Mb4tEyG2MWRC+6fywmIcSSllDV
- H3/+oSDkSaXO3oT/Aijp55xls7vtwAAJ2lfsjTyc0LuW9U1mYvJIJlyHn1NXw5YrA6gc+TmZJtQF8
- Ikf5Z/WGQijZpgwmg8i1zPb3SUZ+YHNmZpBnTcDqWqUcBEZ1uMEgD1BqURXk7rxLC/U6yLPvDKgOp
- WXuOS1PVkMwUgTubMVGai9TSZ7eJVcs8dpmdkbinap6ASWpZ7uNFhOjwbpZR0NhbNmiYKrwlQaadR
- lJMmJynUruO51Rw87bgKtHb7SC7zvbYZE/lLHpAWLszkXH1+HOhM7jNZEkw5utX8YCeVR8UvMmMYV
- B+tks20d7YiQ2hpXoNjy7UXaoDUzp5eRb8VE0QaXh4ybe0O1KM2xwyjY6u/MEEMHZHoZDBhQnLnKY
- Zu/fvOr+Pj8GMXnjF3U/izJR+aUSyqWwHW/I3DI3EJ+2TrjZaL040KlAOFcVdmY8CC5aHW/z9+EES
- WV1TWLkrg3VESg0zFVwZ7jpgf98+NkkB9s+EDUCVm7SY7O8Aq7pTg2IxiFLS6OIKNYOTWyzbhgK1M
- xc7YV17BJnR0Szi9NNCr/8GB+z9FNkElzTTHW7LK4=;
-Received: from host86-130-37-216.range86-130.btcentralplus.com
- ([86.130.37.216] helo=[10.8.0.6])
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q2DQn-0002DC-GH; Thu, 25 May 2023 17:03:13 +0100
-Message-ID: <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
-Date: Thu, 25 May 2023 17:03:15 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q2KLO-0005m9-Sn
+ for qemu-devel@nongnu.org; Thu, 25 May 2023 19:26:06 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q2KLJ-0005kd-Q0
+ for qemu-devel@nongnu.org; Thu, 25 May 2023 19:26:06 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-1ae875bf125so924535ad.1
+ for <qemu-devel@nongnu.org>; Thu, 25 May 2023 16:26:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685057160; x=1687649160;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ahaAtzWW51KvgGV6JaCQ4D8Qa6DKgj6D9JTYPTGz5GE=;
+ b=pqK6g7s7kqQ7PHwwEn4L7Zx4PvK/XwpN1uQxybLSFmZSlN+0H3hhTGuYSBdmoMUscc
+ RWoFqlfOxzZIaIi91cMvWapvHFvngGreI/e889mT/nzI2mliD9QyEWfibsnGI71s1k9O
+ yYsqQGKWYbS+3Fp2ENg0o7CUi0q6KA5aTBnEm4mgz9GijCc4iuANAOGRLYjkN+YCey69
+ voKHj2qS1bOUJRyjkN1+i79g8IPND+ViSNOk+zU5Djl/eywXYXdaZqVixAW4ADwD+ghO
+ ExOHr6LRmSyzJuxc8CGgouSJ0Ok/aeIMdLWtrfDT+E8kraY5nwCPM+hjk2ArcgkmWeYy
+ AgWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685057160; x=1687649160;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ahaAtzWW51KvgGV6JaCQ4D8Qa6DKgj6D9JTYPTGz5GE=;
+ b=EamNdgkcc3S9i2lDao9r8wpdlQXxxA+ckrHZr8jZ+obROFTfLrpKYJbDso7h0oKFyh
+ qhRZf1OmK7FJsQP02ekU4HBNnkHLHCk97ouABcGwW9qROh4CYGeqQnIp+ILczvaP67/e
+ GiUM0Hwk6KiSq9hVtW3cInBary2CMRpMSCTKNdW8o2r2OLKV6mIms9bDTzZJ+cH54/+g
+ 5Gqv//YxIoKwQoF9+LvUgY4VbnXsL51wUWDMwZUM/JEB0MTDL6LhGC3Iyc0+aDnvaXMK
+ WZVF3/Mdp1XVjJoumczBcO3C91kSimQo6zYVihDPSHk7HF6quv33+iNNFI5Er9xjLDS6
+ OROA==
+X-Gm-Message-State: AC+VfDx99zCYBJTVp/lFb2myswLCVh6By5S19VrPronBmn88ITX+VWSe
+ mHCsT9q3neeauhYpnYFEuq4kC/jiU4mwry1/0EI=
+X-Received: by 2002:a17:902:be14:b0:1a6:ff51:270 with SMTP id
+ r20-20020a170902be1400b001a6ff510270mr374940pls.29.1685057159622; 
+ Thu, 25 May 2023 16:25:59 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1598:4c01:7ac5:31cc:3997:3a16])
+ by smtp.gmail.com with ESMTPSA id
+ s15-20020a170902ea0f00b0019e60c645b1sm1885036plg.305.2023.05.25.16.25.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 May 2023 16:25:59 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 00/20] target/arm: Implement FEAT_LSE2
+Date: Thu, 25 May 2023 16:25:38 -0700
+Message-Id: <20230525232558.1758967-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson
- <richard.henderson@linaro.org>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20230523195608.125820-1-shentey@gmail.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230523195608.125820-1-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.130.37.216
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3 0/3] Trivial cleanups
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,46 +119,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f52yUc3bxUS0
+X-TUID: qQ/8jBknwquk
 
-On 23/05/2023 20:56, Bernhard Beschow wrote:
+v1: https://patchew.org/QEMU/20230216030854.1212208-1-richard.henderson@linaro.org/
 
-> This series:
-> * Removes dead code from omap_uart and i82378
-> * Resolves redundant code in the i8254 timer devices
-> 
-> v3:
-> * Drop TYPE_ISA_PARALLEL since they became obsolete by
->    https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
+All prerequisites are upstream.  There are still outstanding patches
+to improve the atomic16 support, but those are all optimizations.
 
-Oh I didn't see that this had already been merged :/
-
-It's not a reason to block this series, but I'd still like to see your changes to 
-ParallelState and ISAParallelState merged separately since they are a better match 
-for our QOM coding standards.
-
-> v2:
-> * Export ParallelState and ISAParallelState (Mark)
-> 
-> Testing done:
-> * `make check`
-> 
-> Bernhard Beschow (3):
->    hw/timer/i8254_common: Share "iobase" property via base class
->    hw/arm/omap: Remove unused omap_uart_attach()
->    hw/isa/i82378: Remove unused "io" attribute
-> 
->   include/hw/arm/omap.h   | 1 -
->   hw/char/omap_uart.c     | 9 ---------
->   hw/i386/kvm/i8254.c     | 1 -
->   hw/isa/i82378.c         | 1 -
->   hw/timer/i8254.c        | 6 ------
->   hw/timer/i8254_common.c | 6 ++++++
->   6 files changed, 6 insertions(+), 18 deletions(-)
-
-Do we know who is going to pick up these series? I can send a PR if no-one minds?
+Patches needing r-b:
+  01-target-arm-Add-commentary-for-CPUARMState.exclusi.patch
+  03-target-arm-Introduce-finalize_memop_-atom-pair.patch
+  04-target-arm-Use-tcg_gen_qemu_ld_i128-for-LDXP.patch
+  05-target-arm-Use-tcg_gen_qemu_-st-ld-_i128-for-do_f.patch
+  16-target-arm-Relax-ordered-atomic-alignment-checks-.patch
+  18-tests-tcg-aarch64-Use-stz2g-in-mte-7.c.patch
 
 
-ATB,
+r~
 
-Mark.
+
+Richard Henderson (20):
+  target/arm: Add commentary for CPUARMState.exclusive_high
+  target/arm: Add feature test for FEAT_LSE2
+  target/arm: Introduce finalize_memop_{atom,pair}
+  target/arm: Use tcg_gen_qemu_ld_i128 for LDXP
+  target/arm: Use tcg_gen_qemu_{st,ld}_i128 for do_fp_{st,ld}
+  target/arm: Use tcg_gen_qemu_st_i128 for STZG, STZ2G
+  target/arm: Use tcg_gen_qemu_{ld,st}_i128 in gen_sve_{ld,st}r
+  target/arm: Sink gen_mte_check1 into load/store_exclusive
+  target/arm: Load/store integer pair with one tcg operation
+  target/arm: Hoist finalize_memop out of do_gpr_{ld,st}
+  target/arm: Hoist finalize_memop out of do_fp_{ld,st}
+  target/arm: Pass memop to gen_mte_check1*
+  target/arm: Pass single_memop to gen_mte_checkN
+  target/arm: Check alignment in helper_mte_check
+  target/arm: Add SCTLR.nAA to TBFLAG_A64
+  target/arm: Relax ordered/atomic alignment checks for LSE2
+  target/arm: Move mte check for store-exclusive
+  tests/tcg/aarch64: Use stz2g in mte-7.c
+  tests/tcg/multiarch: Adjust sigbus.c
+  target/arm: Enable FEAT_LSE2 for -cpu max
+
+ docs/system/arm/emulation.rst  |   1 +
+ target/arm/cpu.h               |  15 +-
+ target/arm/internals.h         |   3 +-
+ target/arm/tcg/helper-a64.h    |   3 +
+ target/arm/tcg/translate-a64.h |   4 +-
+ target/arm/tcg/translate.h     |  65 ++++-
+ target/arm/tcg/cpu64.c         |   1 +
+ target/arm/tcg/helper-a64.c    |   7 +
+ target/arm/tcg/hflags.c        |   6 +
+ target/arm/tcg/mte_helper.c    |  18 ++
+ target/arm/tcg/translate-a64.c | 477 ++++++++++++++++++++++-----------
+ target/arm/tcg/translate-sve.c | 106 +++++---
+ target/arm/tcg/translate.c     |   1 +
+ tests/tcg/aarch64/mte-7.c      |   3 +-
+ tests/tcg/multiarch/sigbus.c   |  13 +-
+ 15 files changed, 522 insertions(+), 201 deletions(-)
+
+-- 
+2.34.1
+

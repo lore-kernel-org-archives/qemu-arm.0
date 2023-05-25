@@ -1,115 +1,114 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp788082ejb;
-        Thu, 25 May 2023 16:27:18 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6D1PItU67/FkNZrzv1ukjwakTjLtVsB+PMl8GC10IS9PQw3n9Qz7o+eyeL4afrVBBrv+ba
-X-Received: by 2002:a05:620a:3aca:b0:75b:23a1:3f8 with SMTP id ss10-20020a05620a3aca00b0075b23a103f8mr397472qkn.14.1685057238171;
-        Thu, 25 May 2023 16:27:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685057238; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp788151ejb;
+        Thu, 25 May 2023 16:27:26 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4IHP/+eX5WfVn7DHXo9sha88QUH1jY0bhZA/2HJ1ztnbgSk7n8FDtIDzuUSepJ4P6eZCxu
+X-Received: by 2002:a05:620a:6746:b0:75b:23a0:dec2 with SMTP id rq6-20020a05620a674600b0075b23a0dec2mr296342qkn.64.1685057246241;
+        Thu, 25 May 2023 16:27:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685057246; cv=none;
         d=google.com; s=arc-20160816;
-        b=E3ZxvY5MbWbUMJTzzeeI0gPJ1RWvggLZcpOgji/sqrXWKUN3nORxalcXIKJIXZ7Cd7
-         L5xyBIhioMEMvUwqQRi8GCV7vBwXaa6VKsWEJkD4VBz3uxbTjTyXI1KKL5fqIgSHSlGq
-         aSzoyfODbRPXvSj/64yedRKiIm0vPupEboAMbbcfRUhxJ84TJcwYBKyFLg2QkIdKaPgU
-         oG13E/hmsR5xkqrb74st7qOBzOJul+EhGm6FJuswwfDWJAVDj3M/fBtDQqL/aIpunS3+
-         QeqD1F8quUzOKz9Vr8tWkQhrxuBus0aiCGfQ58Qkqs7SF2vMIi/qXtMR/7O8ouL9KIWJ
-         H+5Q==
+        b=JWyqmYhVFgjp0lkJtfjcL4tQVLZXpgxkIrO2F7BhDoCocky0zDuCfNNOGK1gtnHI9U
+         G71Bzt+cpK6AHEnsnh3Wydq3jng576XNxEVyc11PCgO6pXN9ifGXe2Y/x9IrQeKT+wAC
+         KHk/aJzUk0Eax/DS4oEeFM4td/0nCnjxyjTE/jAqFQpCq7QKeBl9pOLQySQj0EvJ7YBN
+         CCw521VESi/7KhcDciR+L1n02EiIqqYRzQnNJvUiQq8wvT9hbN8SoJaubKK/z4olA0Lu
+         AjxrFYVky/l8bImPBxX36+VeFWhg8fIRWIpWw2AMhQ+mYwwi/tecz1zXoY2YCTXmJZ+z
+         8+QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=HmTrzaAymfCp1fyYj9R9fztmY/GgYJekROiEVCv4rCU=;
-        b=syg6d/yxMlu1pwuEjLY6An76WaGqXYl9kz840rioYCt/qfrCHonDRb869hkf4lYA5O
-         QhqRaOdGz2g9DMFM4l+2O2lrPaW8UhsxoMDatZwEW+eCZG8ptycro1oJPKCdcJjHOvlB
-         8ZrJpL5BmS6VkUzh5VIFKiKEPyqxSx9m9G77CDDJ2Gw4r5Oaa1pnyiaRBtBT9qYyvHU2
-         R7lWZc9oIIPF71NBCUjt1+e/akX8D8Py/Vcn51pmId4Xvy7ntevxeF1yw7NdSdR4j0r0
-         F+ZYoe2IBWRE1bqJDkKC6zIEl/CngDTFaOSG4734oeVYTg+KNF2tatu/p2uQu2XzFfsT
-         WZvQ==
+        bh=reNglzojAm/2eSC7ZTJRnNXnyOyaPQoOTSyZDoXpgF4=;
+        b=eKP+wO2vcIK43W/cLkYG2iJ6L0XYNQRJbrAfPJY4j6oKkvD846MpuSeZ6zW+wQb1xK
+         7yxuPLX97zsVuum11+5hkkaPUCv0oNGhP53tMIJDnLHsvZxFEHjkWp8nTuV6fEBRQs80
+         OrUKG38NkZnaNcJlD+rmB8cMf7vfszmusd/J/wLjwkIL5QV08JwwGiZzxgTY0cP8brq+
+         8BuPz0O26fUlyoZbDNtDd01Ttu3K/1LutWW/QosOIgAiqbTGqHYZg0AzcqgXAhf8lJwy
+         otkg8NniV9ejJ308joKeYEWxuKppmutbL9rxqr4aRbXejAugxhT6C7ceLDVTHi+ZNKo3
+         67pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D95VQ1tR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ttAFYgjU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i10-20020a37c20a000000b0075b0f18584asi617575qkm.445.2023.05.25.16.27.18
+        by mx.google.com with ESMTPS id t3-20020a05620a034300b0074e1ee30485si945330qkm.16.2023.05.25.16.27.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 16:27:18 -0700 (PDT)
+        Thu, 25 May 2023 16:27:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=D95VQ1tR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ttAFYgjU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2KLi-0005xa-9p; Thu, 25 May 2023 19:26:26 -0400
+	id 1q2KLa-0005rj-SE; Thu, 25 May 2023 19:26:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2KLd-0005v3-T6
- for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:24 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1q2KLV-0005n0-AQ
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:13 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2KLY-0005qG-2t
- for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:21 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-1ae79528d4dso1346755ad.2
- for <qemu-arm@nongnu.org>; Thu, 25 May 2023 16:26:15 -0700 (PDT)
+ id 1q2KLO-0005lR-Mt
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 19:26:10 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-1ae4baa77b2so939665ad.2
+ for <qemu-arm@nongnu.org>; Thu, 25 May 2023 16:26:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685057175; x=1687649175;
+ d=linaro.org; s=google; t=1685057163; x=1687649163;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HmTrzaAymfCp1fyYj9R9fztmY/GgYJekROiEVCv4rCU=;
- b=D95VQ1tRvJ2i3Xtl/TXHyO428ZCDEjHiiy8RNMauvE+2eLnZBxLjEPgwbOzI0AWKXd
- 0XlxlhGhDHyiGaEBF5z4ud6GED4fHoe0WusI1HIhYf/z8pSjugPfR3AZVqCcTLaIFo7C
- 16T7hOzI+/PVgW6RTirRgIjquhDbP9Wexl2tVagA5WXLFML9bE31byxjFIVBODpNPYDb
- XWMHjfy02fekXFX7zvaPpXVtsUxd2ujNdi2tMlC/6A52GXwDmIiY5YIgWVyucBDjeAeL
- EwAJRMxEc9WA8GavvLekx9S4HUO+tm1FDpx1qVx4uii2t3lOD1+PAswd71IWJrM1jIAZ
- OR+A==
+ bh=reNglzojAm/2eSC7ZTJRnNXnyOyaPQoOTSyZDoXpgF4=;
+ b=ttAFYgjUID5bqCY5HC/r3gQuI2aI9gNe+jagFjsluF337n7Lf025YSJ641UTid+hDq
+ n6/IHd4juVDXp7WaoZR3Jov4xLHTDmKc86LHJoyhpht2wY7opNAiHeta9TDyBoclnLNX
+ ueelr0BKoY8DHmyarT2HP7zYAypka3JN0rLCjfl5Q+JaoUkpybcNWxDEYjRNlhJ96aST
+ UREOucQlIuTC49VvzkGm7N23bxtt3jkSrLaWM2PoRBj+IQxP6QwnY0cYCuB43G9T81MT
+ brPPmXsF2YTRhWvKah0dao4f1cmovQjWFcVp5xjnnhFWauiJ9DKbU7h+jNRx6CYBz1GG
+ CDqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685057175; x=1687649175;
+ d=1e100.net; s=20221208; t=1685057163; x=1687649163;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=HmTrzaAymfCp1fyYj9R9fztmY/GgYJekROiEVCv4rCU=;
- b=WESBz0ApG+9GMy9UwiODjf8XohkN5xkhTjBZg23qJBIHHr/eEcUwGQ2rBepeFdb2mv
- Tl3VrgUvYAW5fSv35dNEHXw+EqeKmN6AxKegz2vRX9dMos/X3727INi7GE1HIe0TKGVT
- senAyn8ZaH9lsU1hbJGBRM8NVb1UOHe6REzxAv2C/r+i63VsQlsxj1q6DBHNErekfRfI
- jcRxNB/BH1U4IWqiHJDvnRGHCNyjuYUPdDw2EWF4KpNw71UMliPMAzvtF5m1q1MxkTra
- PisrmOBT/H0YAoqXTVqhGXJNJpmn9AkT7IB3d9xo3EhwjHs23TpJHiUX6blcXtggDVtf
- S/9w==
-X-Gm-Message-State: AC+VfDzLLB5+ZpuQAJX3WaBPhHRP64xn9DDKBp8cJg0Y3IbS++t090jS
- bCG3QHrSMuKB2n/mJ6BXf4JH/Q==
-X-Received: by 2002:a17:902:f686:b0:1aa:f78d:97b7 with SMTP id
- l6-20020a170902f68600b001aaf78d97b7mr433101plg.46.1685057174934; 
- Thu, 25 May 2023 16:26:14 -0700 (PDT)
+ bh=reNglzojAm/2eSC7ZTJRnNXnyOyaPQoOTSyZDoXpgF4=;
+ b=jA6lwx3JU2uui7EWOeyQ5SAxQ4w2AnG0WU1clwQcopJ40V0f98dYUWcESr4Ot3rYH1
+ SgusESh7iqTbsilvcNQmYwcn7gAj59Ocs3loiA87+yyH9UuSbpdXakmoZMsa48AkoFLT
+ CtpmRVxUWEYeSKwqKHlXk7ZD75LHeRebVnmkUwjdY09kiLYTjNfDYfXSplkQaQWrae64
+ kWnxYoAaKwpp1ny0mFO19Ikk+qFVxHBXdniI1kNNrBlenM6bGJeZ6GHwGsEsmsM4Dyql
+ 2E7AIq/RA3uwDvAScnjbWznt2JqyVHQbKzTyFT1YeFcJnzWR7Va+p1jm2aVA1kp5Z2xj
+ 2Gug==
+X-Gm-Message-State: AC+VfDyY6VPG+uJJEFat+14MqGgzeX4cqQgQao9i8+WgYkEsFIwdKpsl
+ mQTawwDpYT5h7ggJmvntVYfLGgUFFvVCl4X/rec=
+X-Received: by 2002:a17:902:d2c9:b0:1a9:90bc:c3c6 with SMTP id
+ n9-20020a170902d2c900b001a990bcc3c6mr464591plc.16.1685057162943; 
+ Thu, 25 May 2023 16:26:02 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:7ac5:31cc:3997:3a16])
  by smtp.gmail.com with ESMTPSA id
- s15-20020a170902ea0f00b0019e60c645b1sm1885036plg.305.2023.05.25.16.26.14
+ s15-20020a170902ea0f00b0019e60c645b1sm1885036plg.305.2023.05.25.16.26.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 May 2023 16:26:14 -0700 (PDT)
+ Thu, 25 May 2023 16:26:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 19/20] tests/tcg/multiarch: Adjust sigbus.c
-Date: Thu, 25 May 2023 16:25:57 -0700
-Message-Id: <20230525232558.1758967-20-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 04/20] target/arm: Use tcg_gen_qemu_ld_i128 for LDXP
+Date: Thu, 25 May 2023 16:25:42 -0700
+Message-Id: <20230525232558.1758967-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230525232558.1758967-1-richard.henderson@linaro.org>
 References: <20230525232558.1758967-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,49 +123,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P5ccsauqr+1j
+X-TUID: iTeoYM3ypgY/
 
-With -cpu max and FEAT_LSE2, the __aarch64__ section will only raise
-an alignment exception when the load crosses a 16-byte boundary.
+While we don't require 16-byte atomicity here, using a single larger
+load simplifies the code, and makes it a closer match to STXP.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/multiarch/sigbus.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ target/arm/tcg/translate-a64.c | 31 ++++++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
 
-diff --git a/tests/tcg/multiarch/sigbus.c b/tests/tcg/multiarch/sigbus.c
-index 8134c5fd56..f47c7390e7 100644
---- a/tests/tcg/multiarch/sigbus.c
-+++ b/tests/tcg/multiarch/sigbus.c
-@@ -6,8 +6,13 @@
- #include <endian.h>
- 
- 
--unsigned long long x = 0x8877665544332211ull;
--void * volatile p = (void *)&x + 1;
-+char x[32] __attribute__((aligned(16))) = {
-+  0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
-+  0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10,
-+  0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18,
-+  0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
-+};
-+void * volatile p = (void *)&x + 15;
- 
- void sigbus(int sig, siginfo_t *info, void *uc)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 967400ed68..0e720f2612 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2398,14 +2398,14 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+                                TCGv_i64 addr, int size, bool is_pair)
  {
-@@ -60,9 +65,9 @@ int main()
-      * We might as well validate the unaligned load worked.
-      */
-     if (BYTE_ORDER == LITTLE_ENDIAN) {
--        assert(tmp == 0x55443322);
-+        assert(tmp == 0x13121110);
+     int idx = get_mem_index(s);
+-    MemOp memop = s->be_data;
++    MemOp memop;
+ 
+     g_assert(size <= 3);
+     if (is_pair) {
+         g_assert(size >= 2);
+         if (size == 2) {
+             /* The pair must be single-copy atomic for the doubleword.  */
+-            memop |= MO_64 | MO_ALIGN;
++            memop = finalize_memop(s, MO_64 | MO_ALIGN);
+             tcg_gen_qemu_ld_i64(cpu_exclusive_val, addr, idx, memop);
+             if (s->be_data == MO_LE) {
+                 tcg_gen_extract_i64(cpu_reg(s, rt), cpu_exclusive_val, 0, 32);
+@@ -2415,21 +2415,30 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+                 tcg_gen_extract_i64(cpu_reg(s, rt2), cpu_exclusive_val, 0, 32);
+             }
+         } else {
+-            /* The pair must be single-copy atomic for *each* doubleword, not
+-               the entire quadword, however it must be quadword aligned.  */
+-            memop |= MO_64;
+-            tcg_gen_qemu_ld_i64(cpu_exclusive_val, addr, idx,
+-                                memop | MO_ALIGN_16);
++            /*
++             * The pair must be single-copy atomic for *each* doubleword, not
++             * the entire quadword, however it must be quadword aligned.
++             * Expose the complete load to tcg, for ease of tlb lookup,
++             * but indicate that only 8-byte atomicity is required.
++             */
++            TCGv_i128 t16 = tcg_temp_new_i128();
+ 
+-            TCGv_i64 addr2 = tcg_temp_new_i64();
+-            tcg_gen_addi_i64(addr2, addr, 8);
+-            tcg_gen_qemu_ld_i64(cpu_exclusive_high, addr2, idx, memop);
++            memop = finalize_memop_atom(s, MO_128 | MO_ALIGN_16,
++                                        MO_ATOM_IFALIGN_PAIR);
++            tcg_gen_qemu_ld_i128(t16, addr, idx, memop);
+ 
++            if (s->be_data == MO_LE) {
++                tcg_gen_extr_i128_i64(cpu_exclusive_val,
++                                      cpu_exclusive_high, t16);
++            } else {
++                tcg_gen_extr_i128_i64(cpu_exclusive_high,
++                                      cpu_exclusive_val, t16);
++            }
+             tcg_gen_mov_i64(cpu_reg(s, rt), cpu_exclusive_val);
+             tcg_gen_mov_i64(cpu_reg(s, rt2), cpu_exclusive_high);
+         }
      } else {
--        assert(tmp == 0x77665544);
-+        assert(tmp == 0x10111213);
+-        memop |= size | MO_ALIGN;
++        memop = finalize_memop(s, size | MO_ALIGN);
+         tcg_gen_qemu_ld_i64(cpu_exclusive_val, addr, idx, memop);
+         tcg_gen_mov_i64(cpu_reg(s, rt), cpu_exclusive_val);
      }
-     return EXIT_SUCCESS;
- }
 -- 
 2.34.1
 

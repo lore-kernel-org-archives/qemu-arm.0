@@ -1,112 +1,91 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp354351ejb;
-        Thu, 25 May 2023 04:07:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6iTGR8tKtmOL1tDUe7b1p5K1f1lqCe3/3EFwFdVsGsg/6Y1ysqTBv4vEp787XA0FdE9tke
-X-Received: by 2002:a05:620a:43a0:b0:75b:23a0:dea8 with SMTP id a32-20020a05620a43a000b0075b23a0dea8mr10453745qkp.38.1685012849230;
-        Thu, 25 May 2023 04:07:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685012849; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp365581ejb;
+        Thu, 25 May 2023 04:28:02 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5rkwFpuuhtd2oLiYHBzvod+sz4nP10WbUjmuu8peveGko3W91xeTscm0i+enxonfgyxRZx
+X-Received: by 2002:a05:6214:b6c:b0:625:aa48:e631 with SMTP id ey12-20020a0562140b6c00b00625aa48e631mr823991qvb.65.1685014082238;
+        Thu, 25 May 2023 04:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685014082; cv=none;
         d=google.com; s=arc-20160816;
-        b=yqsBPBqJJ/tjVNvFarXAGWvVuKBxxkge2h8L/+DQmZl9yxrTF1vEzInuCc/YKjqPhP
-         hXPTKyjInH2svcgnHLR3UpZP7VJn1DY6XPq2xV+y7xuqh4zM3MwWHD6uChIJWDAQmlbl
-         d4NCQvXwpIrjnqNZbi5S9+fC54MOu/qs0S3UZ7/iRTww7sKHehZts2r9w1WJndDcujW7
-         bTEjcIaMQTyhYvo+Brwlbfya9cB6yWXfGPCMVWcSIyQByV4kmG+w1r2BuWQ6wrblM/vK
-         lF0e/ZarRSYZud5boufqsejWegPrSRo7Q0cAvcOEoB0S4jsN6gsEj0/PiOtf4fTTKSny
-         EPHg==
+        b=dLxDarYMBh/H/X31OSQ+tHH49daQ3skFsxwgnd7Z5K184CKUTwC7zDdbOM/2n1shOX
+         zk3b75Rp3d58rLo9Uuz6bBV/m9Vufj/UQAJ0xns+/ITHGA6an23mMfTm8Dijl6zsqQa9
+         DVOYMJ/y12u5opcgDes5REyz1qIkqn2c55jvCv9Wch01rl2Ufihkhd37RSL0f7i0UX+4
+         SmpLVEEox6mZS6OCzEtGe/UwmIizSdghCCGWKvHSR0HiPFXZkGPCsaqdYlGXU5Sw9iNZ
+         xCTpkLJnmvyCglV98folIYBFwx5OLgRK8DigGpGZoNaw3DA/diqRT7mblYTXJU5RAFk4
+         woKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=jblAJnPWnvyFnA3yCYClNSMrQGHrKEvjN/RQraOXqjI=;
-        b=WWB1LdopK0t58L1LbCsWz5LyN1KJnCsrOOYdI4XQAcMIuZ8HmXAq0Va7qID1aNKLFt
-         jDkPId4mWzSiU5b3QXbH+VJAKRNrD3nr3G9HkFhgA4TbXImqCb5ggkVf/phLB4Xevz39
-         d7TnkbPtMz6YAarwimj011GGI/1CAmqm9zOmWMTxBX6YKMcnfM7RABXWxFFWR7vSY9SH
-         aNp5j7sTh1HeAqyetMTpzfUfrgMEmBXQ1OMitveuo/Iff3/5UNJgK2NVPo5RPwpTTzOd
-         mF9AHsBrpKbFLNkSdCYXEDCHEm1AhFn2Ca6j5gFBtUDQ77PI2RF7RiOmI+yPZn+W1fhA
-         jvbg==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=B0DZv5okggZX0P/p2aIWIUMSXAAfqpCudH7w8A8qqJY=;
+        b=NtG5rOwsW8BL0bZmArXCIyAbaQy1rvhIpu6w9Sv9jAMqRNOyaOCqF1U8+KkVK0pNpo
+         9JK/Ty8CBFLVqcEB8M+UEMaYHUHvFOce+96xYmWSl3rEJHc+Dt7uqyCPffyZALaIxWCP
+         Et5g1aaJw8d8Avz/J6FLmGk/vnibACstJ63PS6kcuCSIs5dwJn7eceLhFNtycrz15SZr
+         8PTsGdzW6eLoITEG1c8HF5HdFOfvW+Su0K2TEgmM2UCiPM2eebLA2zanMfudJBRZIDGv
+         VvZd+/103cpUD+OBxkuls2G7DrLuk1S9EzUH5ANwZ9YKN3dvbbnokfRu3a4tJYku51/X
+         qEuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=M0qSm4wd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t29-20020a05620a005d00b007577cd251f0si363055qkt.449.2023.05.25.04.07.29
+        by mx.google.com with ESMTPS id jx9-20020a0562142b0900b006187c933c7asi400289qvb.54.2023.05.25.04.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 04:07:29 -0700 (PDT)
+        Thu, 25 May 2023 04:28:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=M0qSm4wd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q28o8-0001Ez-7Z; Thu, 25 May 2023 07:07:00 -0400
+	id 1q298C-00089v-4X; Thu, 25 May 2023 07:27:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q28o6-0001Dj-4s; Thu, 25 May 2023 07:06:58 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1q2983-00083e-2W; Thu, 25 May 2023 07:27:38 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q28o4-00025F-Ah; Thu, 25 May 2023 07:06:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jblAJnPWnvyFnA3yCYClNSMrQGHrKEvjN/RQraOXqjI=; b=M0qSm4wdY10z7ZDQRR9haA57ZQ
- SxjMKePIFyN8XeTs9mFx8vQ5aHDBHfeiUjNlGP7tWxEJCDfEx9jYRIW9C2PtNM6hn646LrDJOJPgQ
- USS/DGFiSNsMDl4MKvXdoO7Q/8ccgj/OKngf2AjBko9JhMiBLCUZgKbFrHhNLIMb6VRMSAbP5sfRL
- 3sJjbkx5CoIjlxwy1WDfC9W0BRT8Omyov1iwmu31RoPMSnT1y/ixoRMaLnTtfEocaVzfL1VDVcdAS
- 9Gb2ZWKDO1R8zzb1Yls6ybNYRCmxh0za4uxxk5SD6Lcu+UJi9ARXG0pcXg2v+pW10T7itvC4DgRWZ
- YrucreEuUMJfOZ83U6iUJatJJl+LqtQo5x+1sSrUDEplkBFZcnN85yl+wtvG+VOdbKGzodDyK36Ni
- HNWcuWFwmYzZzhWLa/29NK/CzsRsblpHS5gNc6vHPS3jrGaNeT89XNyNDEOcIwCeNXTD4Fg8YNxO3
- KdybIcC9D8yRI3YpCQQtvyVu9XcDOcEMASOncew3fAoMXDQdDv4SmUCsBdVwH7xxonCTQCpct5/xF
- n80M92OKMq6wp7rJgZxGHZfuuI1v07uNzqVn+97r2Sy//k7tEx08dEDmmPgvLYlAUGoolcgFMWwEB
- z4RLY9+vrl9uqaYHo/tZCA9+Y/217dewyDzOGgRW8=;
-Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q28nx-000CG5-Fj; Thu, 25 May 2023 12:06:49 +0100
-Message-ID: <87675164-50ce-a387-12a8-f965b450eb28@ilande.co.uk>
-Date: Thu, 25 May 2023 12:06:48 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1q297z-0000aR-Pq; Thu, 25 May 2023 07:27:34 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QRlyf2BlHz6J7Fx;
+ Thu, 25 May 2023 19:22:34 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Thu, 25 May
+ 2023 12:27:12 +0100
+Date: Thu, 25 May 2023 12:27:11 +0100
+To: Klaus Jensen <its@irrelevant.dk>
+CC: <qemu-devel@nongnu.org>, Corey Minyard <cminyard@mvista.com>, Jeremy Kerr
+ <jk@codeconstruct.com.au>, <qemu-arm@nongnu.org>, Peter Delevoryas
+ <peter@pjd.dev>, Keith Busch <kbusch@kernel.org>, "=?ISO-8859-1?Q?C=E9dric?=
+ Le Goater" <clg@kaod.org>, Jason Wang <jasowang@redhat.com>, Lior Weintraub
+ <liorw@pliops.com>, <qemu-block@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Matt Johnston <matt@codeconstruct.com.au>, Klaus
+ Jensen <k.jensen@samsung.com>
+Subject: Re: [PATCH v2 1/3] hw/i2c: add mctp core
+Message-ID: <20230525122711.00002a61@Huawei.com>
+In-Reply-To: <20230425063540.46143-2-its@irrelevant.dk>
+References: <20230425063540.46143-1-its@irrelevant.dk>
+ <20230425063540.46143-2-its@irrelevant.dk>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <CAFEAcA9GamGybSzd8FKBtmZ2qMgjRFy6D=Vhu1y0dL8m9Sa80w@mail.gmail.com>
- <20230523155644.678524-1-marcin.juszkiewicz@linaro.org>
- <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
- <4101dedc-91d7-1735-4655-81082931b79d@linaro.org>
- <49fa8502-70f9-cdc4-1058-9d4202400db6@redhat.com>
- <CAFEAcA8OUP9vnJwRxcT7AUWPD5ANhc17ETgePYPe2=-N_ZvCsw@mail.gmail.com>
- <e6444d41-62ba-2381-3b26-78e75c2da56e@redhat.com>
- <CAFEAcA-BX6n3YWy+PtSED=Jex9waiez4vxqBK0+Ob3hT-SZmPg@mail.gmail.com>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <CAFEAcA-BX6n3YWy+PtSED=Jex9waiez4vxqBK0+Ob3hT-SZmPg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 1/2] docs: sbsa: correct graphics card name
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,69 +98,337 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ysVhAnhKwWFt
+X-TUID: k67Ci4dHHQqH
 
-On 25/05/2023 11:44, Peter Maydell wrote:
+On Tue, 25 Apr 2023 08:35:38 +0200
+Klaus Jensen <its@irrelevant.dk> wrote:
 
-> On Thu, 25 May 2023 at 11:32, Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 25/05/2023 12.05, Peter Maydell wrote:
->>> On Tue, 23 May 2023 at 19:41, Thomas Huth <thuth@redhat.com> wrote:
->>>>
->>>> On 23/05/2023 19.30, Marcin Juszkiewicz wrote:
->>>> ...
->>>>>> (is there a reason why it can't be disabled with "-vga none" or
->>>>>> "-nodefaults"?)
->>>>>
->>>>> That's something I need to check how it should be done.
->>>>
->>>> Other boards set mc->default_display in their ...class_init
->>>> function and then use pci_vga_init() (or vga_interface_type)
->>>> to instantiate their default display adapter ... however, that
->>>> does not seem to support the bochs adapter yet (see
->>>> vga_interfaces[] in softmmu/vl.c).
->>>>
->>>> Not sure whether it's worth the effort to extend vga_interfaces[]
->>>> in vl.c
->>>
->>> Isn't that a legacy-command-line-option thing? I feel like
->>> the recommended way to select a different graphics card
->>> these days would be to use -device my-pci-vga-card ...
->>
->> "-vga" is kind of legacy, indeed, but currently the sbsa-ref hard-codes the
->> graphics card to be always available, so if you add a "-device
->> something-vga-card" on the command line, you'd get two graphic cards on your
->> machine, even if you use -nodefaults.
+> From: Klaus Jensen <k.jensen@samsung.com>
 > 
-> At least some boards do "only create the default graphics
-> type if vga_interface_type != VGA_NONE".
+> Add an abstract MCTP over I2C endpoint model. This implements MCTP
+> control message handling as well as handling the actual I2C transport
+> (packetization).
 > 
-> Mostly what I would like here is consistency. But also, we
-> haven't added a new item to the '-vga' option list since
-> 2014, which makes me strongly suspect it's legacy and we
-> should only be keeping it for backwards compatibility.
+> Devices are intended to derive from this and implement the class
+> methods.
 > 
->> So there needs to be at least some logic dealing with vga_interface_type if
->> we want to be able to select a different graphics card for this machine.
->> Then why not go the full way and use pci_vga_init() here, too? ... that's
->> certainly the least confusing way for the users.
+> Parts of this implementation is inspired by code[1] previously posted by
+> Jonathan Cameron.
 > 
-> Is it? From an Arm perspective, having "-vga" do anything
-> at all is pretty confusing: it's a rather PC-centric option name.
-> (Also pretty noticeable for the Sparc TCX/CG3 framebuffers,
-> which are not VGA in any way.)
+>   [1]: https://lore.kernel.org/qemu-devel/20220520170128.4436-1-Jonathan.Cameron@huawei.com/
+> 
+> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
 
-Right. From the SPARC perspective it was added to allow the user to select either the 
-TCX (default) or CG3 framebuffers from the command line.
+This is very useful for the CXL MCTP CCI support - got rid of most of the
+nasty code when I moved over to using this (will post code shortly)
 
-However I guess that shouldn't be needed anymore now that mc->default_display exists. 
-Presumably there is now some kind of -global sun4m.default_display=cg3 command line 
-option that could set the machine default_display property value instead?
+A few comments inline - but all trivial stuff.
+
+What I can give now though is:
+Tested-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
 
-ATB,
+> diff --git a/hw/i2c/mctp.c b/hw/i2c/mctp.c
+> new file mode 100644
+> index 000000000000..0f4045d0d685
+> --- /dev/null
+> +++ b/hw/i2c/mctp.c
+> @@ -0,0 +1,352 @@
+...
 
-Mark.
+> +enum {
+> +    MCTP_CONTROL_SET_EID                    = 0x01,
+> +    MCTP_CONTROL_GET_EID                    = 0x02,
+> +    MCTP_CONTROL_GET_VERSION                = 0x04,
+> +    MCTP_CONTROL_GET_MESSAGE_TYPE_SUPPORT   = 0x05,
+> +};
+
+See below.  If the control command codes are down here, why
+not also bring the structure they go in out of the header as well.
+There should be no reason for an emulated device to be touching
+that directly (I think anyway?)
+
+
+> diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
+> index 3996564c25c6..fd1f9022fd96 100644
+> --- a/hw/i2c/meson.build
+> +++ b/hw/i2c/meson.build
+> @@ -1,5 +1,6 @@
+>  i2c_ss = ss.source_set()
+>  i2c_ss.add(when: 'CONFIG_I2C', if_true: files('core.c'))
+> +i2c_ss.add(when: 'CONFIG_MCTP_I2C', if_true: files('mctp.c'))
+>  i2c_ss.add(when: 'CONFIG_SMBUS', if_true: files('smbus_slave.c', 'smbus_master.c'))
+>  i2c_ss.add(when: 'CONFIG_ACPI_SMBUS', if_true: files('pm_smbus.c'))
+>  i2c_ss.add(when: 'CONFIG_ACPI_ICH9', if_true: files('smbus_ich9.c'))
+> diff --git a/hw/i2c/smbus_master.c b/hw/i2c/smbus_master.c
+> index 6a53c34e70b7..47f9eb24e033 100644
+> --- a/hw/i2c/smbus_master.c
+> +++ b/hw/i2c/smbus_master.c
+
+While it's first used in this patch, the smbus pec code stuff
+is from the SMBUS spec itself and stands independently of the rest of the
+set.  As such I'd make this a precursor patch.
+
+> @@ -15,6 +15,34 @@
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/i2c/smbus_master.h"
+>  
+> +static uint8_t crc8(uint16_t data)
+> +{
+> +#define POLY (0x1070U << 3)
+> +    int i;
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        if (data & 0x8000) {
+> +            data = data ^ POLY;
+> +        }
+> +
+> +        data = data << 1;
+> +    }
+> +
+> +    return (uint8_t)(data >> 8);
+> +#undef POLY
+> +}
+> +
+> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < len; i++) {
+> +        crc = crc8((crc ^ buf[i]) << 8);
+> +    }
+> +
+> +    return crc;
+> +}
+> +
+>  /* Master device commands.  */
+>  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read)
+>  {
+
+...
+
+
+> diff --git a/include/hw/i2c/mctp.h b/include/hw/i2c/mctp.h
+> new file mode 100644
+> index 000000000000..c53ee6a3b61b
+> --- /dev/null
+> +++ b/include/hw/i2c/mctp.h
+> @@ -0,0 +1,114 @@
+> +#ifndef QEMU_I2C_MCTP_H
+> +#define QEMU_I2C_MCTP_H
+> +
+> +#include "qom/object.h"
+> +#include "hw/qdev-core.h"
+> +#include "net/mctp.h"
+
+I'd definitely put some specification references in here to the
+MCTP SMBus/I2C Transport Binding Specification
+
+> +
+> +typedef struct MCTPI2CPacketHeader {
+> +    uint8_t dest;
+> +    uint8_t prot; 
+
+This is called Command Code in the spec I'm looking at...
+Why I have no idea given it always takes 0x0F
+
+> +    uint8_t byte_count;
+> +    uint8_t source;
+> +} MCTPI2CPacketHeader;
+> +
+> +typedef struct MCTPI2CPacket {
+> +    MCTPI2CPacketHeader i2c;
+> +    MCTPPacket          mctp;
+> +} MCTPI2CPacket;
+> +
+> +#define i2c_mctp_payload(buf) (buf + offsetof(MCTPI2CPacket, mctp.payload))
+> +
+> +#define TYPE_MCTP_I2C_ENDPOINT "mctp-i2c-endpoint"
+> +OBJECT_DECLARE_TYPE(MCTPI2CEndpoint, MCTPI2CEndpointClass, MCTP_I2C_ENDPOINT)
+> +
+> +struct MCTPI2CEndpointClass {
+> +    I2CSlaveClass parent_class;
+> +
+> +    int (*put_message_bytes)(MCTPI2CEndpoint *mctp, uint8_t *buf, size_t len);
+> +    size_t (*get_message_bytes)(MCTPI2CEndpoint *mctp, uint8_t *buf,
+> +                                size_t maxlen, uint8_t *mctp_flags);
+> +
+> +    void (*handle_message)(MCTPI2CEndpoint *mctp);
+> +    void (*reset_message)(MCTPI2CEndpoint *mctp);
+> +
+> +    size_t (*get_message_types)(MCTPI2CEndpoint *mctp, uint8_t *data,
+> +                                size_t maxlen);
+> +};
+> +
+> +/*
+> + * Maximum value of the SMBus Block Write "Byte Count" field (8 bits).
+> + *
+> + * This is the count of bytes that follow the Byte Count field and up to, but
+> + * not including, the PEC byte.
+> + */
+> +#define I2C_MCTP_MAXBLOCK 255
+> +
+> +/*
+> + * Maximum Transmission Unit under I2C.
+> + *
+> + * This is for the MCTP Packet Payload (255, subtracting the 4 byte MCTP Packet
+> + * Header or the 1 byte MCTP/I2C piggy-backed source address).
+> + */
+> +#define I2C_MCTP_MAXMTU (I2C_MCTP_MAXBLOCK - (sizeof(MCTPPacketHeader) + 1))
+> +
+> +/*
+> + * Maximum length of an MCTP/I2C packet.
+> + *
+> + * This is the sum of the three I2C header bytes (Destination target address,
+> + * Command Code and Byte Count), the maximum number of bytes in a message (255)
+> + * and the 1 byte Packet Error Code.
+> + */
+> +#define I2C_MCTP_MAX_LENGTH (3 + I2C_MCTP_MAXBLOCK + 1)
+> +
+> +/*
+> + * Maximum length of an MCTP/I2C Control Message.
+> + *
+> + * This is the 64 byte MCTP Baseline Maximum Transmission Unit, adding the
+> + * combined MCTP/I2C headers and the trailing 1 byte PEC.
+> + */
+> +#define I2C_MCTP_CONTROL_MAX_LENGTH \
+> +    (sizeof(MCTPI2CPacket) + MCTP_BASELINE_MTU + 1)
+> +
+> +typedef enum {
+> +    I2C_MCTP_STATE_IDLE,
+> +    I2C_MCTP_STATE_RX_STARTED,
+> +    I2C_MCTP_STATE_RX,
+> +    I2C_MCTP_STATE_WAIT_TX,
+> +    I2C_MCTP_STATE_TX,
+> +} MCTPState;
+> +
+> +typedef enum {
+> +    I2C_MCTP_STATE_TX_START_SEND,
+> +    I2C_MCTP_STATE_TX_SEND_BYTE,
+> +} MCTPTxState;
+> +
+> +typedef struct MCTPI2CEndpoint {
+> +    I2CSlave parent_obj;
+> +    I2CBus *i2c;
+> +
+> +    MCTPState state;
+> +
+> +    /* mctp endpoint identifier */
+> +    uint8_t my_eid;
+> +
+> +    uint8_t  buffer[I2C_MCTP_MAX_LENGTH];
+> +    uint64_t pos;
+> +    size_t   len;
+
+I'd not bother trying to align these. Just use 1 space
+everywhere. It's inconsistent already...
+
+> +
+> +    struct {
+> +        MCTPTxState state;
+> +        bool is_control;
+> +
+> +        uint8_t eid;
+> +        uint8_t addr;
+> +        uint8_t pktseq;
+> +        uint8_t flags;
+> +
+> +        QEMUBH *bh;
+> +    } tx;
+> +} MCTPI2CEndpoint;
+> +
+> +void i2c_mctp_schedule_send(MCTPI2CEndpoint *mctp);
+> +
+> +#endif /* QEMU_I2C_MCTP_H */
+> diff --git a/include/hw/i2c/smbus_master.h b/include/hw/i2c/smbus_master.h
+> index bb13bc423c22..ea5eff3a2cd0 100644
+> --- a/include/hw/i2c/smbus_master.h
+> +++ b/include/hw/i2c/smbus_master.h
+> @@ -27,6 +27,9 @@
+>  
+>  #include "hw/i2c/i2c.h"
+>  
+> +/* SMBus PEC */
+
+Trivial, but I'd not bother with the comment given the function
+name makes that clear.
+
+> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len);
+> +
+>  /* Master device commands.  */
+>  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read);
+>  int smbus_receive_byte(I2CBus *bus, uint8_t addr);
+> diff --git a/include/net/mctp.h b/include/net/mctp.h
+> new file mode 100644
+> index 000000000000..c936224ecf60
+> --- /dev/null
+> +++ b/include/net/mctp.h
+> @@ -0,0 +1,43 @@
+> +#ifndef QEMU_MCTP_H
+> +#define QEMU_MCTP_H
+> +
+> +#define MCTP_BASELINE_MTU 64
+> +
+> +enum {
+> +    MCTP_H_FLAGS_EOM = 1 << 6,
+> +    MCTP_H_FLAGS_SOM = 1 << 7,
+> +};
+> +
+> +enum {
+> +    MCTP_MESSAGE_TYPE_CONTROL   = 0x0,
+> +    MCTP_MESSAGE_TYPE_NMI       = 0x4,
+As there is no need for the core mctp support to know about
+the other protocols, I'd move them to the relevant device specific
+emulation.  Otherwise we'll have potential churn and merge conflicts
+in here if lots of new ones get added.
+> +
+> +    MCTP_MESSAGE_IC             = 1 << 7,
+
+That's nasty - just make it a define rather than pushing it into
+the enum.
+
+> +};
+> +
+> +typedef struct MCTPPacketHeader {
+> +    uint8_t version;
+> +    struct {
+> +        uint8_t dest;
+> +        uint8_t source;
+> +    } eid;
+> +    uint8_t flags;
+> +} MCTPPacketHeader;
+> +
+> +typedef struct MCTPPacket {
+> +    MCTPPacketHeader hdr;
+> +    uint8_t          payload[];
+> +} MCTPPacket;
+> +
+Maybe worth some spec references in here to help reviewers find the
+right tables.  This took a bit of finding...
+Figure 20 in 1.3.0
+
+> +typedef struct MCTPControlMessage {
+> +    uint8_t type;
+> +    uint8_t flags;
+
+Perhaps good to add defines for the various fields hidden in flags.
+
+> +    uint8_t command;
+
+Maybe worth an enum for the many command codes.
+Ah. There is one down in the implementation .c
+Why not push this structure down there as well? 
+
+> +    uint8_t data[];
+> +} MCTPControlMessage;
+> +
+> +enum {
+> +    MCTP_CONTROL_ERROR_UNSUPPORTED_CMD = 0x5,
+> +};
+> +
+> +#endif /* QEMU_MCTP_H */
 

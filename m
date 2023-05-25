@@ -1,186 +1,357 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp376912ejb;
-        Thu, 25 May 2023 04:49:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5mUyLWRCQabSmlxtKen0SB5mUa1rnlxX4KKFsK+mK1C0Ecg47W/4n+VBP6j7yyxKuSeADb
-X-Received: by 2002:a37:352:0:b0:75b:23a0:dec1 with SMTP id 79-20020a370352000000b0075b23a0dec1mr9739815qkd.63.1685015393389;
-        Thu, 25 May 2023 04:49:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685015393; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp403349ejb;
+        Thu, 25 May 2023 05:32:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6UGtljF9/65TWGKIOhFEyH1ZIWMTmNZSM5Znl+kSAxo768F7oaXhfc9cWUe5rbc50Y1/Yx
+X-Received: by 2002:ac8:5bc7:0:b0:3ec:47d5:ec65 with SMTP id b7-20020ac85bc7000000b003ec47d5ec65mr29193823qtb.60.1685017940838;
+        Thu, 25 May 2023 05:32:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685017940; cv=none;
         d=google.com; s=arc-20160816;
-        b=YvOHbWXdZSsPQ0PCi6y6Bib95qiOd5RJVxNYnlboW2/xKLYdnjiBiVb/hMMp0Xj/1v
-         +Qnch/z2J2u0YkQiutnyf0OBfWtaeiX2K0mmqhULUvCwsZr2CYvQullqz3ppW1WCR2oJ
-         3xHoKcxuebwPERNLTNn8e6tYm6JedyUKXBQdyLq3/3O0IKPUApRDhoJW5IDvAZkNCucp
-         9LZxUmvVcKZNbCvmo0Yk+u+QFnW8NBptPZFJX6boZJndLb0cjRIQg3rjV3oEwoMiFHj8
-         ooQrrU9s2SfszwIRea9Xo4JGILGiLQ7avdfKjTyve97tfczsNSan+Od4jjl5Hvw6i1mo
-         CcUA==
+        b=H0xn15Sz82ThHKFM9/bYFPUIGX09StHmxgFvXaSkNDEfaB4aZDG8HtIQdgMyQ/ueyU
+         uMqf0PFVUnrFmWljOdRT3/MK2u3xAlyc2r8pt4J9tSTIjS7/TWcBXMTjMSPU6hihqjEy
+         nzNJz6Ta7LSuH0pGwvaSfj9PdTaEotc/oAYX6DV1IbrHqdm2lFnqizn3Irse4bfVkcCu
+         3iFcc1/jDUDKXSkc6p6hwTM3H4mGqJouk6dfTGwmIFQvQpeUGZsD2rKaKUJRzNBgzglx
+         NwR9G5m6S1PM31v3BhtTBmQqm03J6fH+c3bqKuIvKQoFYUCsfbz9+aayChw2Laojp+F1
+         /eRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4dgPC8uTDwa1MM9V27R2UndeI639Y0bPbns0a3kp1FE=;
-        b=GIH3ieNRy+YYZZyDXmN3G1SehlZDYlbj1roONEMBoxzWxaEwkNHOH2BI7frotelNje
-         wcJOC9OtMlFW+wKCCscLjl6SrENGqdYNEXhGzMdkhAMdKVMOPwDV1sOtOjxzSN7KfMAa
-         4DLpEaLYGopBcFr0NHVyCF6QNi1bxm+SFokWuswn3jSZtb+1SMj09t9n/+JETPYUEHUo
-         KB9+xLjw9K8dPstExapRO3Z8yDRY/h6ebKyM2XX/2fO4l2ZB7jPcBRT/wyV/+2t6ijpA
-         SLjEv1h0yX70eWqSW4FBayeQFAjfteYh9OjKePaUwiq/alMffnRraPkvkNBLI19WrGac
-         rU0A==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=3ci8KiRArS5mPzR7uxZK9qYXoJGoSQmwqgpLr6B6PAk=;
+        b=l7h98ZjRgNlw6/czwfmS6tHQstGFziwmt+4QlabT2bYIE0s4H7o7oGgioptBWms0cP
+         HTxNWAZcjDNg84E8+X6fNUGxr9Voh+AFgOIKznkrakZ09+FnLAEIpK1uf+GVXQn1Te4T
+         kuAMASok4ubTiO52Pft2jP8J4W7b31jiKxSE5RdLfbG2qIsnom9NHeUqLqrlDGj9UFiE
+         7BaijLteh4Z4xmKsEhSIzENAQbT4ed0Quo54zePHgbxUyO2PcvT59qh1nZCJtUBFi69g
+         W7YP12Z7TdKBu1ZC/PU63aN8lsL7/HyxUkmvmKD3NuODqmcolmoZ53AjVpVyynQgjvyM
+         pt1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JO+G0pwg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o23-20020a05620a15d700b007469d22164fsi409063qkm.206.2023.05.25.04.49.53
+        by mx.google.com with ESMTPS id b6-20020ac85bc6000000b003f6f71e5e9asi391682qtb.619.2023.05.25.05.32.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 04:49:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 May 2023 05:32:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JO+G0pwg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q29T4-000759-Sl; Thu, 25 May 2023 07:49:18 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q2A8g-0008Cv-Nf; Thu, 25 May 2023 08:32:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q29T3-00074s-Qs
- for qemu-devel@nongnu.org; Thu, 25 May 2023 07:49:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q29T2-00051J-0d
- for qemu-devel@nongnu.org; Thu, 25 May 2023 07:49:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685015355;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4dgPC8uTDwa1MM9V27R2UndeI639Y0bPbns0a3kp1FE=;
- b=JO+G0pwgz0ECU+kwGD7wlAc1qBL69IVfDSalWlR9QcBjvd4UwvOeK6K1/P63F8XMNTPhKk
- pYsSSSHOY7vWTLPMeGUJA2Bd+Wu9mVFMARnuebftDl8BQqRcIpuZt6BhGS68pmWkfvZnEr
- JW1/NgmcGE1Al/UBjbgleLiG4cJHlTM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-220-Nec68Q94NY69ED3509M1fg-1; Thu, 25 May 2023 07:49:13 -0400
-X-MC-Unique: Nec68Q94NY69ED3509M1fg-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3078b9943d6so812786f8f.1
- for <qemu-devel@nongnu.org>; Thu, 25 May 2023 04:49:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685015352; x=1687607352;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4dgPC8uTDwa1MM9V27R2UndeI639Y0bPbns0a3kp1FE=;
- b=le3uaQ/hlLNO8mLTTh08JTr/BJmte1x3zWfJCAr2f/tS6/OFq+eI7xQmSN4mn9xuks
- oh7+vAPbsSBk8+RcsDEZMXug3RcMWgAyRepuuYdQse29iUki6eGcHle6Jvz5nDjFRwIX
- 96Q7b+pyw1gah910iL+AhqvM62a4GyqceXElXVCaba1ZtqD7bMVpjWAWQG0dzNSiWbS7
- cTkjFt8xHxBfHndt8uIBpa3xd0r6zd5pusfS+66M0zksRZKjENkXgW1sOROYyvgpfW9n
- eotVCrJidTk5Ky0P7RZX2oUN4oSwEoWZaeekXmu/2watrsJxXBWwcyxYDWoDXIky9oya
- MQag==
-X-Gm-Message-State: AC+VfDysRVMbO3SEkL29YoS4qeJlQjckyVHcmv06IbCLd68Ij9UCD6GF
- CYUn/fYquYcIireWtfobU3AT/s2VcEI8kBNDV5s1owf/4ydk01ehCXdk8T3Ts109rmx2/ZzBQ3Z
- 6ofXekwb4VVckon0=
-X-Received: by 2002:adf:f58f:0:b0:306:30e8:eb34 with SMTP id
- f15-20020adff58f000000b0030630e8eb34mr1782166wro.48.1685015352308; 
- Thu, 25 May 2023 04:49:12 -0700 (PDT)
-X-Received: by 2002:adf:f58f:0:b0:306:30e8:eb34 with SMTP id
- f15-20020adff58f000000b0030630e8eb34mr1782150wro.48.1685015351977; 
- Thu, 25 May 2023 04:49:11 -0700 (PDT)
-Received: from [192.168.0.3] (ip-109-43-177-30.web.vodafone.de.
- [109.43.177.30]) by smtp.gmail.com with ESMTPSA id
- g14-20020a5d540e000000b00307a86a4bcesm1581644wrv.35.2023.05.25.04.49.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 May 2023 04:49:11 -0700 (PDT)
-Message-ID: <cab14b32-5419-45be-1ec0-a34d228349c6@redhat.com>
-Date: Thu, 25 May 2023 13:49:09 +0200
+ (Exim 4.90_1) (envelope-from <gaosong@loongson.cn>)
+ id 1q2A8f-0008Cc-IS; Thu, 25 May 2023 08:32:17 -0400
+Received: from mail.loongson.cn ([114.242.206.163])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <gaosong@loongson.cn>)
+ id 1q2A8c-0005ZP-Ky; Thu, 25 May 2023 08:32:17 -0400
+Received: from loongson.cn (unknown [10.20.42.57])
+ by gateway (Coremail) with SMTP id _____8CxZ_FIVW9kmv0AAA--.2598S3;
+ Thu, 25 May 2023 20:32:08 +0800 (CST)
+Received: from [10.20.42.57] (unknown [10.20.42.57])
+ by localhost.localdomain (Coremail) with SMTP id
+ AQAAf8Bx671GVW9klHh3AA--.539S3; 
+ Thu, 25 May 2023 20:32:06 +0800 (CST)
+Subject: Re: [PATCH v1 2/3] memory-device: Factor out device memory
+ initialization into memory_devices_init()
+To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>
+References: <20230523185144.533592-1-david@redhat.com>
+ <20230523185144.533592-3-david@redhat.com>
+From: Song Gao <gaosong@loongson.cn>
+Message-ID: <fd275a97-aac9-706c-004e-afdd2ac833f8@loongson.cn>
+Date: Thu, 25 May 2023 20:32:06 +0800
+User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 1/2] docs: sbsa: correct graphics card name
+In-Reply-To: <20230523185144.533592-3-david@redhat.com>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Daniel P. Berrange" <berrange@redhat.com>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Leif Lindholm <quic_llindhol@quicinc.com>
-References: <CAFEAcA9GamGybSzd8FKBtmZ2qMgjRFy6D=Vhu1y0dL8m9Sa80w@mail.gmail.com>
- <20230523155644.678524-1-marcin.juszkiewicz@linaro.org>
- <e682f6d5-acbe-7910-54ef-4d75c88a3d28@redhat.com>
- <4101dedc-91d7-1735-4655-81082931b79d@linaro.org>
- <49fa8502-70f9-cdc4-1058-9d4202400db6@redhat.com>
- <CAFEAcA8OUP9vnJwRxcT7AUWPD5ANhc17ETgePYPe2=-N_ZvCsw@mail.gmail.com>
- <e6444d41-62ba-2381-3b26-78e75c2da56e@redhat.com>
- <CAFEAcA-BX6n3YWy+PtSED=Jex9waiez4vxqBK0+Ob3hT-SZmPg@mail.gmail.com>
- <87675164-50ce-a387-12a8-f965b450eb28@ilande.co.uk>
- <CAFEAcA8O2WF2JjJ5k5L9e6yn1fh8n23cpkAbxuLSkNguaUumWw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAFEAcA8O2WF2JjJ5k5L9e6yn1fh8n23cpkAbxuLSkNguaUumWw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.091, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-CM-TRANSID: AQAAf8Bx671GVW9klHh3AA--.539S3
+X-CM-SenderInfo: 5jdr20tqj6z05rqj20fqof0/
+X-Coremail-Antispam: 1Uk129KBjvJXoWxKr45Aw1xWF1UXF4UGw4rKrg_yoWfGF4UpF
+ yxAF95Gr1YgrnxGwn7ur1DWa48Gw10k3WrWFyxCrWv9Fn7Wr98Crykt3y8t3y8A39IqF15
+ XFyDJF1xX3WYq3DanT9S1TB71UUUUjDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ qI5I8CrVACY4xI64kE6c02F40Ex7xfYxn0WfASr-VFAUDa7-sFnT9fnUUIcSsGvfJTRUUU
+ bq8YFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s
+ 1l1IIY67AEw4v_Jrv_JF1l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
+ wVC0I7IYx2IY67AKxVWUCVW8JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwA2z4
+ x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdM2kK
+ e7AKxVWUAVWUtwAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI
+ 0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUAVWUtwAv7VC2z280
+ aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JMxk0xIA0c2IEe2
+ xFo4CEbIxvr21lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC
+ 6x0Yz7v_Jr0_Gr1l4IxYO2xFxVAFwI0_JF0_Jw1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s
+ 026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF
+ 0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0x
+ vE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv
+ 6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxU2-VyUUUUU
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=gaosong@loongson.cn;
+ helo=mail.loongson.cn
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, MIME_CHARSET_FARAWAY=2.45,
+ NICE_REPLY_A=-0.091, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4RnyJeQefrd3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /Z6rLXjoV163
 
-On 25/05/2023 13.39, Peter Maydell wrote:
-> On Thu, 25 May 2023 at 12:06, Mark Cave-Ayland
-> <mark.cave-ayland@ilande.co.uk> wrote:
->>
->> On 25/05/2023 11:44, Peter Maydell wrote:
->>
->>> On Thu, 25 May 2023 at 11:32, Thomas Huth <thuth@redhat.com> wrote:
->>>
->>>> So there needs to be at least some logic dealing with vga_interface_type if
->>>> we want to be able to select a different graphics card for this machine.
->>>> Then why not go the full way and use pci_vga_init() here, too? ... that's
->>>> certainly the least confusing way for the users.
->>>
->>> Is it? From an Arm perspective, having "-vga" do anything
->>> at all is pretty confusing: it's a rather PC-centric option name.
->>> (Also pretty noticeable for the Sparc TCX/CG3 framebuffers,
->>> which are not VGA in any way.)
->>
->> Right. From the SPARC perspective it was added to allow the user to select either the
->> TCX (default) or CG3 framebuffers from the command line.
->>
->> However I guess that shouldn't be needed anymore now that mc->default_display exists.
->> Presumably there is now some kind of -global sun4m.default_display=cg3 command line
->> option that could set the machine default_display property value instead?
-> 
-> Maybe. Handling builtin default devices remains kind of awkward.
-> But for this Arm board they're all just PCI cards, so the
-> only thing we really need is a way to say "don't create that
-> default device"...
 
-I wonder whether we could deprecate and finally remove "-vga" ... there is 
-also the "graphics" machine property that is used by some boards instead, so 
-maybe we could use that as a replacement for "-vga none" everywhere (and use 
-"-device xxx" as replacement for "vga xxx" of course). Thoughts?
 
-  Thomas
+ÔÚ 2023/5/24 ÉÏÎç2:51, David Hildenbrand Ð´µÀ:
+> Let's factor the common setup out, to prepare for further changes.
+>
+> On arm64, we'll add the subregion to system RAM now earlier -- which
+> shouldn't matter, because the system RAM memory region should already be
+> alive at that point.
+>
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> ---
+>   hw/arm/virt.c                  |  9 +--------
+>   hw/i386/pc.c                   | 17 ++++++-----------
+>   hw/loongarch/virt.c            | 14 ++++----------
+>   hw/mem/memory-device.c         | 20 ++++++++++++++++++++
+>   hw/ppc/spapr.c                 | 15 ++++++---------
+>   include/hw/mem/memory-device.h |  2 ++
+>   6 files changed, 39 insertions(+), 38 deletions(-)
+For LoongArch
+
+Tested-by: Song Gao <gaosong@loongson.cn>
+
+Thanks.
+Song Gao
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index b99ae18501..284f45d998 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1816,10 +1816,7 @@ static void virt_set_memmap(VirtMachineState *vms, int pa_bits)
+>       virt_set_high_memmap(vms, base, pa_bits);
+>   
+>       if (device_memory_size > 0) {
+> -        ms->device_memory = g_malloc0(sizeof(*ms->device_memory));
+> -        ms->device_memory->base = device_memory_base;
+> -        memory_region_init(&ms->device_memory->mr, OBJECT(vms),
+> -                           "device-memory", device_memory_size);
+> +        memory_devices_init(ms, device_memory_base, device_memory_size);
+>       }
+>   }
+>   
+> @@ -2260,10 +2257,6 @@ static void machvirt_init(MachineState *machine)
+>   
+>       memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+>                                   machine->ram);
+> -    if (machine->device_memory) {
+> -        memory_region_add_subregion(sysmem, machine->device_memory->base,
+> -                                    &machine->device_memory->mr);
+> -    }
+>   
+>       virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+>   
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index bb62c994fa..9d215df92e 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1039,13 +1039,11 @@ void pc_memory_init(PCMachineState *pcms,
+>           exit(EXIT_FAILURE);
+>       }
+>   
+> -    /* always allocate the device memory information */
+> -    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
+> -
+>       /* initialize device memory address space */
+>       if (pcmc->has_reserved_memory &&
+>           (machine->ram_size < machine->maxram_size)) {
+>           ram_addr_t device_mem_size;
+> +        hwaddr device_mem_base;
+>   
+>           if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
+>               error_report("unsupported amount of memory slots: %"PRIu64,
+> @@ -1060,19 +1058,16 @@ void pc_memory_init(PCMachineState *pcms,
+>               exit(EXIT_FAILURE);
+>           }
+>   
+> -        pc_get_device_memory_range(pcms, &machine->device_memory->base, &device_mem_size);
+> +        pc_get_device_memory_range(pcms, &device_mem_base, &device_mem_size);
+>   
+> -        if ((machine->device_memory->base + device_mem_size) <
+> -            device_mem_size) {
+> +        if (device_mem_base + device_mem_size < device_mem_size) {
+>               error_report("unsupported amount of maximum memory: " RAM_ADDR_FMT,
+>                            machine->maxram_size);
+>               exit(EXIT_FAILURE);
+>           }
+> -
+> -        memory_region_init(&machine->device_memory->mr, OBJECT(pcms),
+> -                           "device-memory", device_mem_size);
+> -        memory_region_add_subregion(system_memory, machine->device_memory->base,
+> -                                    &machine->device_memory->mr);
+> +        memory_devices_init(machine, device_mem_base, device_mem_size);
+> +    } else {
+> +        memory_devices_init(machine, 0, 0);
+>       }
+>   
+>       if (pcms->cxl_devices_state.is_enabled) {
+> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+> index 2b7588e32a..2ccc90feb4 100644
+> --- a/hw/loongarch/virt.c
+> +++ b/hw/loongarch/virt.c
+> @@ -45,7 +45,7 @@
+>   #include "sysemu/block-backend.h"
+>   #include "hw/block/flash.h"
+>   #include "qemu/error-report.h"
+> -
+> +#include "hw/mem/memory-device.h"
+>   
+>   static void virt_flash_create(LoongArchMachineState *lams)
+>   {
+> @@ -804,8 +804,8 @@ static void loongarch_init(MachineState *machine)
+>   
+>       /* initialize device memory address space */
+>       if (machine->ram_size < machine->maxram_size) {
+> -        machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
+>           ram_addr_t device_mem_size = machine->maxram_size - machine->ram_size;
+> +        hwaddr device_mem_base;
+>   
+>           if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
+>               error_report("unsupported amount of memory slots: %"PRIu64,
+> @@ -820,14 +820,8 @@ static void loongarch_init(MachineState *machine)
+>               exit(EXIT_FAILURE);
+>           }
+>           /* device memory base is the top of high memory address. */
+> -        machine->device_memory->base = 0x90000000 + highram_size;
+> -        machine->device_memory->base =
+> -            ROUND_UP(machine->device_memory->base, 1 * GiB);
+> -
+> -        memory_region_init(&machine->device_memory->mr, OBJECT(lams),
+> -                           "device-memory", device_mem_size);
+> -        memory_region_add_subregion(address_space_mem, machine->device_memory->base,
+> -                                    &machine->device_memory->mr);
+> +        device_mem_base = ROUND_UP(0x90000000 + highram_size, 1 * GiB);
+> +        memory_devices_init(machine, device_mem_base, device_mem_size);
+>       }
+>   
+>       /* Add isa io region */
+> diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+> index 6c025b02c1..d99ceb621a 100644
+> --- a/hw/mem/memory-device.c
+> +++ b/hw/mem/memory-device.c
+> @@ -17,6 +17,7 @@
+>   #include "qemu/range.h"
+>   #include "hw/virtio/vhost.h"
+>   #include "sysemu/kvm.h"
+> +#include "exec/address-spaces.h"
+>   #include "trace.h"
+>   
+>   static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
+> @@ -333,6 +334,25 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
+>       return memory_region_size(mr);
+>   }
+>   
+> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
+> +{
+> +    g_assert(!ms->device_memory);
+> +    ms->device_memory = g_new0(DeviceMemoryState, 1);
+> +    ms->device_memory->base = base;
+> +
+> +    /*
+> +     * See memory_device_get_free_addr(): An empty device memory region
+> +     * means "this machine supports memory devices, but they are not enabled".
+> +     */
+> +    if (size > 0) {
+> +        memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
+> +                           size);
+> +        memory_region_add_subregion(get_system_memory(),
+> +                                    ms->device_memory->base,
+> +                                    &ms->device_memory->mr);
+> +    }
+> +}
+> +
+>   static const TypeInfo memory_device_info = {
+>       .name          = TYPE_MEMORY_DEVICE,
+>       .parent        = TYPE_INTERFACE,
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 1baea16c96..d66dc00ea5 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2866,12 +2866,11 @@ static void spapr_machine_init(MachineState *machine)
+>       /* map RAM */
+>       memory_region_add_subregion(sysmem, 0, machine->ram);
+>   
+> -    /* always allocate the device memory information */
+> -    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
+> -
+>       /* initialize hotplug memory address space */
+>       if (machine->ram_size < machine->maxram_size) {
+>           ram_addr_t device_mem_size = machine->maxram_size - machine->ram_size;
+> +        hwaddr device_mem_base;
+> +
+>           /*
+>            * Limit the number of hotpluggable memory slots to half the number
+>            * slots that KVM supports, leaving the other half for PCI and other
+> @@ -2890,12 +2889,10 @@ static void spapr_machine_init(MachineState *machine)
+>               exit(1);
+>           }
+>   
+> -        machine->device_memory->base = ROUND_UP(machine->ram_size,
+> -                                                SPAPR_DEVICE_MEM_ALIGN);
+> -        memory_region_init(&machine->device_memory->mr, OBJECT(spapr),
+> -                           "device-memory", device_mem_size);
+> -        memory_region_add_subregion(sysmem, machine->device_memory->base,
+> -                                    &machine->device_memory->mr);
+> +        device_mem_base = ROUND_UP(machine->ram_size, SPAPR_DEVICE_MEM_ALIGN);
+> +        memory_devices_init(machine, device_mem_base, device_mem_size);
+> +    } else {
+> +        memory_devices_init(machine, 0, 0);
+>       }
+>   
+>       if (smc->dr_lmb_enabled) {
+> diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
+> index 48d2611fc5..6e8a10e2f5 100644
+> --- a/include/hw/mem/memory-device.h
+> +++ b/include/hw/mem/memory-device.h
+> @@ -16,6 +16,7 @@
+>   #include "hw/qdev-core.h"
+>   #include "qapi/qapi-types-machine.h"
+>   #include "qom/object.h"
+> +#include "exec/hwaddr.h"
+>   
+>   #define TYPE_MEMORY_DEVICE "memory-device"
+>   
+> @@ -113,5 +114,6 @@ void memory_device_plug(MemoryDeviceState *md, MachineState *ms);
+>   void memory_device_unplug(MemoryDeviceState *md, MachineState *ms);
+>   uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
+>                                          Error **errp);
+> +void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size);
+>   
+>   #endif
 

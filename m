@@ -1,115 +1,115 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp812523ejb;
-        Thu, 25 May 2023 17:25:00 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Ir+GTXBFOCAQr5MbswohRbwJpqxGWResiLLPBMHLUlGBSbt27naxKNBiSYDz+e2bmxJUD
-X-Received: by 2002:a05:620a:454a:b0:75b:23a0:d9f1 with SMTP id u10-20020a05620a454a00b0075b23a0d9f1mr576356qkp.71.1685060700418;
-        Thu, 25 May 2023 17:25:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685060700; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp812569ejb;
+        Thu, 25 May 2023 17:25:06 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Zaa7qxJxuccxKQGkytPPPvTHTYIKmc5VTWF1Ud8lrnoygwaS9X3GOp5h16Txq7atTpLtb
+X-Received: by 2002:ac8:7d4b:0:b0:3f3:8cf1:629c with SMTP id h11-20020ac87d4b000000b003f38cf1629cmr185578qtb.46.1685060706130;
+        Thu, 25 May 2023 17:25:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685060706; cv=none;
         d=google.com; s=arc-20160816;
-        b=SSYyYY/K7PB8HkK2WXgTkyczsOowkmAOllskrW1X86iykswdX40SXuWua5jJhL3yMI
-         qUlOh8EGT4FeBe/phjdsuqTO3iJQwcsLICCCNiLAeyxF94HMv0c1/UfpCL3c2c1SOh/U
-         +Xqgb9USXNpk9H3/6DDe0EUQD+aSzWN7HmiPH4mVIEmgUORB/KvGcrEmc/z4RGI7Bjuu
-         Ne+4HCB/4vk7Nq25Xlb3RKxUXTnJYo3JoX864T+TEQZnaQKPoGabAK0tapN2HRYChw7+
-         XoiUijkWoGwVC883bhk6NsHyf/q9BXSxipPR2oDUk2jj3u2Bt4w7vUhncRc+NMCFYobq
-         8nlg==
+        b=nPQMEV/iugeZtTIV32gdJS7xrSigQsImRJlLBHNv2ay+8iiONP+qG98k2KnByuB8n1
+         IhXjV6GrspkHPGCzXC9k5vih9HPu+H/kHfnUuCNiPl/Z3zxo04N/rlYUT7xc9HMqIXH6
+         QnRZCo8XjVEGuHtv18siMuneJcrzGY6PFq9esdsMhtyhmI4VxEh1o6P8Uymf0Eacnver
+         FfJelLzUWtwMK3fz9jBNyJtjRZV4az0TALhxO/2cB6UBeKPbIjQ5rWnN2COOxB1QLenh
+         oqNK5PQAovx4DK6+zaIdfiwPIq99A9MFWtbtEFNS1m5pUvMrHRJca8PaB8ThKN3Sl52j
+         DIWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MUe+ePpAXqeWQugAYIOwy5+kFWDdU+DeS/QoHodF2ms=;
-        b=dj0Szgw9rxXtkLOdRP9SRlkZsFYUUlmtv4H39LaYCvfU1KigRg8L2237jUMyCga/Jf
-         NIP0Tk4ZX8aJVagGC7vRAfON2dijDNglhVf7ujTvFYWDrzp2IjhekdYIahNz/829ZQHX
-         i5lBYNuujwe9WmACPQttfEYc7/fl6Vm1vcsvaFVuivtXBRMFVMzczSzxkEluZOKVfy3a
-         +fkpaqs8zMcUpQlauXF+dMxZGVyp/pkyha2nD1BoXv/jD00fOlGrlfif0k/cIjFU3yPj
-         u/NNK+ZoD1LR99DVub1RMF2HFdv3hC+geixLdq8fpom/FcGFqAvc47F7ac8KCu4/m4EF
-         463A==
+        bh=bnFiJZaU3RAw6rmWn/CeET2Ge0Ind0gP67YhCDMwmlw=;
+        b=B/mXRlPtORzX0BHYkXv8W1edVHpcXUBwx4UW/vsbUwGFA+EtFrv3e1drFokVSOCTB7
+         P6ZDLVJWSYaM8Vz5lgecLDWm3edP5w5TmYruPDyTD1iX4fBZ9bU2vJp5tfhS58bsx1EF
+         76Z9nJJ9ncEMawxyHYAZRhgWHrlPG7t8+/J6a3p7xhMrtiIbJ5lDJgpw64F0jcqrMVAZ
+         /w9EmFIN6ScxZUIHM4OVScWoZVn7grrI94wqUdmTnQKUehtrug6euggvfH/QmEwxIkH7
+         qvjEa03vdEdSNllN3/slTcMgzKWhM0Wif9Cg7RXtDKw4zDFJ5R7LO7IvL6xqyVBVqEzp
+         VK3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YPJL4LXa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wOTcdzHf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r29-20020a05620a03dd00b0074ecd00821csi976587qkm.522.2023.05.25.17.25.00
+        by mx.google.com with ESMTPS id e21-20020ac85995000000b003ef2ffb9611si932067qte.466.2023.05.25.17.25.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 May 2023 17:25:00 -0700 (PDT)
+        Thu, 25 May 2023 17:25:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YPJL4LXa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wOTcdzHf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q2LFU-0002hW-Ke; Thu, 25 May 2023 20:24:04 -0400
+	id 1q2LFF-0002aT-44; Thu, 25 May 2023 20:23:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2LFS-0002gg-S1
- for qemu-arm@nongnu.org; Thu, 25 May 2023 20:24:02 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1q2LFD-0002Ye-1Y
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 20:23:47 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q2LFD-0002Bt-HS
- for qemu-arm@nongnu.org; Thu, 25 May 2023 20:24:02 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-64d2a87b9daso277900b3a.0
- for <qemu-arm@nongnu.org>; Thu, 25 May 2023 17:23:47 -0700 (PDT)
+ id 1q2LF7-00029R-Ut
+ for qemu-arm@nongnu.org; Thu, 25 May 2023 20:23:46 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-64d2b42a8f9so289819b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 25 May 2023 17:23:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685060626; x=1687652626;
+ d=linaro.org; s=google; t=1685060620; x=1687652620;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MUe+ePpAXqeWQugAYIOwy5+kFWDdU+DeS/QoHodF2ms=;
- b=YPJL4LXaItaCdTT1Wk+w9SzMZexjbtJkqDF4P0Z5sLF/at1inAQAR+nvaNhcK9++tn
- 99n+8/a3lnGnrVmLBzAmxqZrrFmBW1T01xVJahK4Tc3U1knQ/dR98C9c6Zv3u+bNvD5w
- +MJF0eY1NwTv7PhUb761HObbb7RFYL/KRYE+XFvodJiBe793XinAMVG4rDKvRHR3wdJL
- bPk1WEaBrWjXkrBSOPcVUb1aNiTPZAW0KhN+7nLj0B+CrRiuWNOo5YB+XtGOYvPWNIzf
- CETl9Ex+I3NNlR5bKflG1kBaF4TNyG5wYFTKb4hPqaSFM3Auj/H4zk5DalazNMuxnaS2
- v2/Q==
+ bh=bnFiJZaU3RAw6rmWn/CeET2Ge0Ind0gP67YhCDMwmlw=;
+ b=wOTcdzHfJLidJwrK2ZGfFideXFVkfNy3hIlZUczETfyt1pLxVUR0ka/S46txtHmieB
+ 466rfL8rr7mgg7keVqTjfyRX/hk2/Xo64F5pSwFO33ru1gnNt2PQFr1B+1Mpr1/ptERG
+ gITCFrurCli8Z7Kuglh7C2fz2Fu7ogIQQwobqi8o+nrr+EvjfaUvDO0xIrSzv0+rfWRr
+ C3ry8M8LIIqT7lB8vPEAI5DDenxHjFr7sGtIU+i2FPN4NDTBq+zYAJZKBT2OMy6TeXpU
+ IMY6htobFLdTfh09tGV5L/IHPamXLr2iQvyTCKP9A6o9a7wmDySFxKZF0Uh/mnQX9aVd
+ uoKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685060626; x=1687652626;
+ d=1e100.net; s=20221208; t=1685060620; x=1687652620;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MUe+ePpAXqeWQugAYIOwy5+kFWDdU+DeS/QoHodF2ms=;
- b=GtvF5I5CZWwffPHyRk/5q2K0IPDyZPv3f5NbkM/zRXZNNq+6ax3da7OfVHAw4UKR7Z
- 68RP1pMW7MZXh+1P6+v0TMXfwaS2HCpas8xKf13u3NB4MZVCF62q9AS3q5G55DALwj3D
- bzigmDTQNIxzjuvX4lvJz/Qjfp7vYmEfFqqW2A+mUv1Bs315h5qPcZlKmzDm97Ar9wLe
- JlQT9toWf1lZXJo79YVUvuZeI1ExQyMQOt0wfb1hO3htVT0gG4gQQQyAFWi4MS0Zj6qu
- eM4qICmvmqrQLfXBjTDqxkDktDJLPxwCY/CYgXShyN+zOtamU+rPq7TMdkrZhOMVKseB
- Zf+w==
-X-Gm-Message-State: AC+VfDyMGXaL4GnBDfSOBJvP7xBqP/F5ZMpvddGD4o1cIi+v6iHqeHJB
- YUMYVqc8ZXgIOYj37mNWZyT3mw==
-X-Received: by 2002:a05:6a20:258b:b0:105:5800:c51b with SMTP id
- k11-20020a056a20258b00b001055800c51bmr25388429pzd.30.1685060626284; 
- Thu, 25 May 2023 17:23:46 -0700 (PDT)
+ bh=bnFiJZaU3RAw6rmWn/CeET2Ge0Ind0gP67YhCDMwmlw=;
+ b=NPqD8U7+oMjilR1bS/HDnFmFhTETvPI16xkDIpJDR1a29UJtbAta/+yIvYVFgGn4F1
+ rzoSvGLFbBrg+mUdVmT+tv+vLQXDZ+Rp4+CSAUECHfhMDVEyMqaD7tG7WZhmGUigOX52
+ r7HIYJ9+ODbC8RPt6Cn5lp9DcdCncu8OXwAeJbmZX0bHqDQaH/4dz2edmOHwCYjBQPuR
+ UWBNXkoTg2BLxZxNUMwJ8PTeFHXgCQ/uxFY+Rvzpm1Jf/7z+6FfHVAAowPyTVr5xe9OS
+ JX7toTELOO8Rf6mM/3zQfUfU0jsPDMRcar9SC6O1qtftzMwExo4KRlWDAaILBdKY1cGm
+ XDmw==
+X-Gm-Message-State: AC+VfDzAGT86AAyEDD8bbnCfh4NhdzYb1hzBgiHbDfp06DVxI66lN4wt
+ P3AyH8rYTxig1OGKQqX+lBVi1A==
+X-Received: by 2002:a05:6a00:2e92:b0:643:b489:246d with SMTP id
+ fd18-20020a056a002e9200b00643b489246dmr906127pfb.3.1685060620479; 
+ Thu, 25 May 2023 17:23:40 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:7ac5:31cc:3997:3a16])
  by smtp.gmail.com with ESMTPSA id
- s188-20020a635ec5000000b0053491d92b65sm1675593pgb.84.2023.05.25.17.23.45
+ s188-20020a635ec5000000b0053491d92b65sm1675593pgb.84.2023.05.25.17.23.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 May 2023 17:23:45 -0700 (PDT)
+ Thu, 25 May 2023 17:23:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v4 13/16] accel/tcg: Extract store_atom_insert_al16 to host
- header
-Date: Thu, 25 May 2023 17:23:31 -0700
-Message-Id: <20230526002334.1760495-14-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v4 06/16] tcg/aarch64: Rename temporaries
+Date: Thu, 25 May 2023 17:23:24 -0700
+Message-Id: <20230526002334.1760495-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230526002334.1760495-1-richard.henderson@linaro.org>
 References: <20230526002334.1760495-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,129 +124,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dTgrA9pZ/OMI
+X-TUID: ViFKm8bII4fT
 
+We will need to allocate a second general-purpose temporary.
+Rename the existing temps to add a distinguishing number.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- host/include/generic/host/store-insert-al16.h | 50 +++++++++++++++++++
- accel/tcg/ldst_atomicity.c.inc                | 40 +--------------
- 2 files changed, 51 insertions(+), 39 deletions(-)
- create mode 100644 host/include/generic/host/store-insert-al16.h
+ tcg/aarch64/tcg-target.c.inc | 50 ++++++++++++++++++------------------
+ 1 file changed, 25 insertions(+), 25 deletions(-)
 
-diff --git a/host/include/generic/host/store-insert-al16.h b/host/include/generic/host/store-insert-al16.h
-new file mode 100644
-index 0000000000..4a1662183d
---- /dev/null
-+++ b/host/include/generic/host/store-insert-al16.h
-@@ -0,0 +1,50 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Atomic store insert into 128-bit, generic version.
-+ *
-+ * Copyright (C) 2023 Linaro, Ltd.
-+ */
-+
-+#ifndef HOST_STORE_INSERT_AL16_H
-+#define HOST_STORE_INSERT_AL16_H
-+
-+/**
-+ * store_atom_insert_al16:
-+ * @p: host address
-+ * @val: shifted value to store
-+ * @msk: mask for value to store
-+ *
-+ * Atomically store @val to @p masked by @msk.
-+ */
-+static inline void ATTRIBUTE_ATOMIC128_OPT
-+store_atom_insert_al16(Int128 *ps, Int128 val, Int128 msk)
-+{
-+#if defined(CONFIG_ATOMIC128)
-+    __uint128_t *pu;
-+    Int128Alias old, new;
-+
-+    /* With CONFIG_ATOMIC128, we can avoid the memory barriers. */
-+    pu = __builtin_assume_aligned(ps, 16);
-+    old.u = *pu;
-+    msk = int128_not(msk);
-+    do {
-+        new.s = int128_and(old.s, msk);
-+        new.s = int128_or(new.s, val);
-+    } while (!__atomic_compare_exchange_n(pu, &old.u, new.u, true,
-+                                          __ATOMIC_RELAXED, __ATOMIC_RELAXED));
-+#else
-+    Int128 old, new, cmp;
-+
-+    ps = __builtin_assume_aligned(ps, 16);
-+    old = *ps;
-+    msk = int128_not(msk);
-+    do {
-+        cmp = old;
-+        new = int128_and(old, msk);
-+        new = int128_or(new, val);
-+        old = atomic16_cmpxchg(ps, cmp, new);
-+    } while (int128_ne(cmp, old));
-+#endif
-+}
-+
-+#endif /* HOST_STORE_INSERT_AL16_H */
-diff --git a/accel/tcg/ldst_atomicity.c.inc b/accel/tcg/ldst_atomicity.c.inc
-index 39ad89800d..6844f85d58 100644
---- a/accel/tcg/ldst_atomicity.c.inc
-+++ b/accel/tcg/ldst_atomicity.c.inc
-@@ -10,6 +10,7 @@
-  */
- 
- #include "host/load-extract-al16-al8.h"
-+#include "host/store-insert-al16.h"
- 
- #ifdef CONFIG_ATOMIC64
- # define HAVE_al8          true
-@@ -681,45 +682,6 @@ static void store_atom_insert_al8(uint64_t *p, uint64_t val, uint64_t msk)
-                                           __ATOMIC_RELAXED, __ATOMIC_RELAXED));
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index 84283665e7..8996e29ca9 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -71,8 +71,8 @@ static TCGReg tcg_target_call_oarg_reg(TCGCallReturnKind kind, int slot)
+     return TCG_REG_X0 + slot;
  }
  
--/**
-- * store_atom_insert_al16:
-- * @p: host address
-- * @val: shifted value to store
-- * @msk: mask for value to store
-- *
-- * Atomically store @val to @p masked by @msk.
-- */
--static void ATTRIBUTE_ATOMIC128_OPT
--store_atom_insert_al16(Int128 *ps, Int128Alias val, Int128Alias msk)
--{
--#if defined(CONFIG_ATOMIC128)
--    __uint128_t *pu, old, new;
--
--    /* With CONFIG_ATOMIC128, we can avoid the memory barriers. */
--    pu = __builtin_assume_aligned(ps, 16);
--    old = *pu;
--    do {
--        new = (old & ~msk.u) | val.u;
--    } while (!__atomic_compare_exchange_n(pu, &old, new, true,
--                                          __ATOMIC_RELAXED, __ATOMIC_RELAXED));
--#elif defined(CONFIG_CMPXCHG128)
--    __uint128_t *pu, old, new;
--
--    /*
--     * Without CONFIG_ATOMIC128, __atomic_compare_exchange_n will always
--     * defer to libatomic, so we must use __sync_*_compare_and_swap_16
--     * and accept the sequential consistency that comes with it.
--     */
--    pu = __builtin_assume_aligned(ps, 16);
--    do {
--        old = *pu;
--        new = (old & ~msk.u) | val.u;
--    } while (!__sync_bool_compare_and_swap_16(pu, old, new));
--#else
--    qemu_build_not_reached();
--#endif
--}
--
- /**
-  * store_bytes_leN:
-  * @pv: host address
+-#define TCG_REG_TMP TCG_REG_X30
+-#define TCG_VEC_TMP TCG_REG_V31
++#define TCG_REG_TMP0 TCG_REG_X30
++#define TCG_VEC_TMP0 TCG_REG_V31
+ 
+ #ifndef CONFIG_SOFTMMU
+ #define TCG_REG_GUEST_BASE TCG_REG_X28
+@@ -984,7 +984,7 @@ static bool tcg_out_dup_vec(TCGContext *s, TCGType type, unsigned vece,
+ static bool tcg_out_dupm_vec(TCGContext *s, TCGType type, unsigned vece,
+                              TCGReg r, TCGReg base, intptr_t offset)
+ {
+-    TCGReg temp = TCG_REG_TMP;
++    TCGReg temp = TCG_REG_TMP0;
+ 
+     if (offset < -0xffffff || offset > 0xffffff) {
+         tcg_out_movi(s, TCG_TYPE_PTR, temp, offset);
+@@ -1136,8 +1136,8 @@ static void tcg_out_ldst(TCGContext *s, AArch64Insn insn, TCGReg rd,
+     }
+ 
+     /* Worst-case scenario, move offset to temp register, use reg offset.  */
+-    tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP, offset);
+-    tcg_out_ldst_r(s, insn, rd, rn, TCG_TYPE_I64, TCG_REG_TMP);
++    tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP0, offset);
++    tcg_out_ldst_r(s, insn, rd, rn, TCG_TYPE_I64, TCG_REG_TMP0);
+ }
+ 
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
+@@ -1353,8 +1353,8 @@ static void tcg_out_call_int(TCGContext *s, const tcg_insn_unit *target)
+     if (offset == sextract64(offset, 0, 26)) {
+         tcg_out_insn(s, 3206, BL, offset);
+     } else {
+-        tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP, (intptr_t)target);
+-        tcg_out_insn(s, 3207, BLR, TCG_REG_TMP);
++        tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP0, (intptr_t)target);
++        tcg_out_insn(s, 3207, BLR, TCG_REG_TMP0);
+     }
+ }
+ 
+@@ -1491,7 +1491,7 @@ static void tcg_out_addsub2(TCGContext *s, TCGType ext, TCGReg rl,
+     AArch64Insn insn;
+ 
+     if (rl == ah || (!const_bh && rl == bh)) {
+-        rl = TCG_REG_TMP;
++        rl = TCG_REG_TMP0;
+     }
+ 
+     if (const_bl) {
+@@ -1508,7 +1508,7 @@ static void tcg_out_addsub2(TCGContext *s, TCGType ext, TCGReg rl,
+                possibility of adding 0+const in the low part, and the
+                immediate add instructions encode XSP not XZR.  Don't try
+                anything more elaborate here than loading another zero.  */
+-            al = TCG_REG_TMP;
++            al = TCG_REG_TMP0;
+             tcg_out_movi(s, ext, al, 0);
+         }
+         tcg_out_insn_3401(s, insn, ext, rl, al, bl);
+@@ -1549,7 +1549,7 @@ static void tcg_out_cltz(TCGContext *s, TCGType ext, TCGReg d,
+ {
+     TCGReg a1 = a0;
+     if (is_ctz) {
+-        a1 = TCG_REG_TMP;
++        a1 = TCG_REG_TMP0;
+         tcg_out_insn(s, 3507, RBIT, ext, a1, a0);
+     }
+     if (const_b && b == (ext ? 64 : 32)) {
+@@ -1558,7 +1558,7 @@ static void tcg_out_cltz(TCGContext *s, TCGType ext, TCGReg d,
+         AArch64Insn sel = I3506_CSEL;
+ 
+         tcg_out_cmp(s, ext, a0, 0, 1);
+-        tcg_out_insn(s, 3507, CLZ, ext, TCG_REG_TMP, a1);
++        tcg_out_insn(s, 3507, CLZ, ext, TCG_REG_TMP0, a1);
+ 
+         if (const_b) {
+             if (b == -1) {
+@@ -1571,7 +1571,7 @@ static void tcg_out_cltz(TCGContext *s, TCGType ext, TCGReg d,
+                 b = d;
+             }
+         }
+-        tcg_out_insn_3506(s, sel, ext, d, TCG_REG_TMP, b, TCG_COND_NE);
++        tcg_out_insn_3506(s, sel, ext, d, TCG_REG_TMP0, b, TCG_COND_NE);
+     }
+ }
+ 
+@@ -1588,7 +1588,7 @@ bool tcg_target_has_memory_bswap(MemOp memop)
+ }
+ 
+ static const TCGLdstHelperParam ldst_helper_param = {
+-    .ntmp = 1, .tmp = { TCG_REG_TMP }
++    .ntmp = 1, .tmp = { TCG_REG_TMP0 }
+ };
+ 
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+@@ -1847,7 +1847,7 @@ static void tcg_out_goto_tb(TCGContext *s, int which)
+ 
+     set_jmp_insn_offset(s, which);
+     tcg_out32(s, I3206_B);
+-    tcg_out_insn(s, 3207, BR, TCG_REG_TMP);
++    tcg_out_insn(s, 3207, BR, TCG_REG_TMP0);
+     set_jmp_reset_offset(s, which);
+ }
+ 
+@@ -1866,7 +1866,7 @@ void tb_target_set_jmp_target(const TranslationBlock *tb, int n,
+         ptrdiff_t i_offset = i_addr - jmp_rx;
+ 
+         /* Note that we asserted this in range in tcg_out_goto_tb. */
+-        insn = deposit32(I3305_LDR | TCG_REG_TMP, 5, 19, i_offset >> 2);
++        insn = deposit32(I3305_LDR | TCG_REG_TMP0, 5, 19, i_offset >> 2);
+     }
+     qatomic_set((uint32_t *)jmp_rw, insn);
+     flush_idcache_range(jmp_rx, jmp_rw, 4);
+@@ -2060,13 +2060,13 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+ 
+     case INDEX_op_rem_i64:
+     case INDEX_op_rem_i32:
+-        tcg_out_insn(s, 3508, SDIV, ext, TCG_REG_TMP, a1, a2);
+-        tcg_out_insn(s, 3509, MSUB, ext, a0, TCG_REG_TMP, a2, a1);
++        tcg_out_insn(s, 3508, SDIV, ext, TCG_REG_TMP0, a1, a2);
++        tcg_out_insn(s, 3509, MSUB, ext, a0, TCG_REG_TMP0, a2, a1);
+         break;
+     case INDEX_op_remu_i64:
+     case INDEX_op_remu_i32:
+-        tcg_out_insn(s, 3508, UDIV, ext, TCG_REG_TMP, a1, a2);
+-        tcg_out_insn(s, 3509, MSUB, ext, a0, TCG_REG_TMP, a2, a1);
++        tcg_out_insn(s, 3508, UDIV, ext, TCG_REG_TMP0, a1, a2);
++        tcg_out_insn(s, 3509, MSUB, ext, a0, TCG_REG_TMP0, a2, a1);
+         break;
+ 
+     case INDEX_op_shl_i64:
+@@ -2110,8 +2110,8 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+         if (c2) {
+             tcg_out_rotl(s, ext, a0, a1, a2);
+         } else {
+-            tcg_out_insn(s, 3502, SUB, 0, TCG_REG_TMP, TCG_REG_XZR, a2);
+-            tcg_out_insn(s, 3508, RORV, ext, a0, a1, TCG_REG_TMP);
++            tcg_out_insn(s, 3502, SUB, 0, TCG_REG_TMP0, TCG_REG_XZR, a2);
++            tcg_out_insn(s, 3508, RORV, ext, a0, a1, TCG_REG_TMP0);
+         }
+         break;
+ 
+@@ -2517,8 +2517,8 @@ static void tcg_out_vec_op(TCGContext *s, TCGOpcode opc,
+                             break;
+                         }
+                     }
+-                    tcg_out_dupi_vec(s, type, MO_8, TCG_VEC_TMP, 0);
+-                    a2 = TCG_VEC_TMP;
++                    tcg_out_dupi_vec(s, type, MO_8, TCG_VEC_TMP0, 0);
++                    a2 = TCG_VEC_TMP0;
+                 }
+                 if (is_scalar) {
+                     insn = cmp_scalar_insn[cond];
+@@ -2900,9 +2900,9 @@ static void tcg_target_init(TCGContext *s)
+     s->reserved_regs = 0;
+     tcg_regset_set_reg(s->reserved_regs, TCG_REG_SP);
+     tcg_regset_set_reg(s->reserved_regs, TCG_REG_FP);
+-    tcg_regset_set_reg(s->reserved_regs, TCG_REG_TMP);
+     tcg_regset_set_reg(s->reserved_regs, TCG_REG_X18); /* platform register */
+-    tcg_regset_set_reg(s->reserved_regs, TCG_VEC_TMP);
++    tcg_regset_set_reg(s->reserved_regs, TCG_REG_TMP0);
++    tcg_regset_set_reg(s->reserved_regs, TCG_VEC_TMP0);
+ }
+ 
+ /* Saving pairs: (X19, X20) .. (X27, X28), (X29(fp), X30(lr)).  */
 -- 
 2.34.1
 

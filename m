@@ -1,105 +1,88 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2245817ejb;
-        Tue, 30 May 2023 08:09:59 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6E8TLU1fvMpNrQLaQ0+AXrlXiuDXD0Vxtr5qOLODF4QHAQU8kNF7uKJCTzbCeNekJ3jo8S
-X-Received: by 2002:a05:622a:54e:b0:3f5:4c06:f4a5 with SMTP id m14-20020a05622a054e00b003f54c06f4a5mr2437286qtx.62.1685459399383;
-        Tue, 30 May 2023 08:09:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685459399; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2252140ejb;
+        Tue, 30 May 2023 08:18:51 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4VHZTTR9M/0dJ5G1N1+cwy6Bb2fUy2Hj2+xcDkf/BVFBeMjJIx/rnYe8i2O8yaKRUl0y9r
+X-Received: by 2002:a05:620a:2d81:b0:75b:23a1:831a with SMTP id tr1-20020a05620a2d8100b0075b23a1831amr2194949qkn.21.1685459931175;
+        Tue, 30 May 2023 08:18:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685459931; cv=none;
         d=google.com; s=arc-20160816;
-        b=qdTsuZtvbt/LVAuKbfsIzV2Wio7tNHpEDCn0lPEjHWZDZvRm1I09QblF3UUSLuEqMh
-         fqcXYApy4SNFYKEFzGES6H0VpNOX/ot6rZUg204fIMoohCRuNSvhLimHVAlNTYOhOytf
-         g9RMnWgp6JAQ7W8AzWK+VVghy5qEDTgr4YvwJrz7IgjJd76UKURgz6E9L/OgSO6lO7RU
-         MqJLEvdKPAFSNfc+VKB89S0t1DmYkJjtnnmldZjd/dVx+Yu9V9sm5I64ioxbLKXwR4Mf
-         pwjolxcaLSm92YYrYcsJOcVdjBtZH+E0m5o17SerBLsnbTh2ufOOit8tSm+gGUaNbeio
-         uvog==
+        b=mDTh7eLXYXR8dB4mm34GaTGgEMj8OYqKUDqoR6ZCvslD3p88TiQ+sg7GziW69nn+L7
+         z/PtnLmulG/aVEL/HL8B2cOBIvA3p5uKzYNnwJ5K62fUmbSn21cVpCf1YzKAXru52k1h
+         trOoyIUzhRmkT8iqc9yZOjmW8uG4NtFiahUbi5CIsFgFfz/FqL65oXF3kC39sYe14nPZ
+         aUoE5XjFUODTs0+tS+OgLkGG+esxF/0yMRflKPyT/dBEg+zM9IaQg1KxhCyLg+bW83OB
+         kVxrkjR1wviwl39qiPmN+JCXSuhrMUCS1crj7hkP5uUWHpy8T/23llWYKXYmUwbpFqs8
+         bklw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=YyVqbzMv110LWYWyqyeFqYv5nFiAxNJktsmCE/ovvzQ=;
-        b=y/QgiXPv7Zegkyd7JE1ovCuO2rXB25ebGTv9kyMrsTCaSIdqqu7OTnW0v5sqfFIWWq
-         F9OED6Xe9yAWlIf8t4wIjkiuzzmSu1w0g84+vp04nYiC7cERcL/iTrw1G0SNgITdx7ZM
-         HOFKk1NBIuuNBzMNdW8i1+co1HZB0KWN25YNS70F866jG2e3ujTmwDefvoeNKEn7IgvA
-         Jwee2ETPA9qknNu1bbAPet/rXk246QduN20q7bmjq3eZJr/6rTWpr2d0MEUkjAhSdgxo
-         XZTthZphP81pVVgEgTyjtkzsPKX35gjKzYeImxhMJ6TL9prMMmHNzZLhJCE+UyZ1Yqsn
-         X7Zg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=tVORMHIcX6LuKdvbuhlEaqupobkYB9pBO6CCzD1eKNs=;
+        b=Txscqno9SgpdpbQci79R4rKm34tzgVhNsP3khqrF3ByY6RG9L39s29/zyYJQuCfoMO
+         LOUWsz0cdSZjN7t3+AyTUR+9tNG6yXMZaFkWEjIZHDwqv/zDj6gpxdBTdbEcf5dUwsBF
+         5AUP7Pzvik7yhsizC+sXmAlXNYxvTTh7XXeFLmYrnyYBhmmZf9c4NPkFsswJs/Q34fgI
+         NoCBrajvJ2Zarwh0PQu4HhmkX64eIm1hpioVHbkSNQBZbzMSRNMIrdhhHO7qFsjIwwHp
+         rjEMTjGoI7pnmGNQ1GJT6KZpK319iYA9xdVkx3+yfEiSXgfEdj7pyM9WnZz65xAFGhk+
+         AM5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iqfuNwuK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HJM7YHov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6-20020a05622a048600b003ef537e7bfasi6500714qtx.91.2023.05.30.08.09.59
+        by mx.google.com with ESMTPS id i26-20020a05620a151a00b007582117618fsi6580132qkk.359.2023.05.30.08.18.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 08:09:59 -0700 (PDT)
+        Tue, 30 May 2023 08:18:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iqfuNwuK;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HJM7YHov;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q40yl-0000KG-7z; Tue, 30 May 2023 11:09:43 -0400
+	id 1q417S-00050r-3u; Tue, 30 May 2023 11:18:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q40yW-0008H1-Pp
- for qemu-arm@nongnu.org; Tue, 30 May 2023 11:09:28 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q417Q-0004uT-HK
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 11:18:40 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q40yT-0004hG-Vt
- for qemu-arm@nongnu.org; Tue, 30 May 2023 11:09:28 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-64d2b42a8f9so3589719b3a.3
- for <qemu-arm@nongnu.org>; Tue, 30 May 2023 08:09:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q417N-0007O9-6J
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 11:18:40 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-510d6b939bfso8285469a12.0
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 08:18:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685459364; x=1688051364;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YyVqbzMv110LWYWyqyeFqYv5nFiAxNJktsmCE/ovvzQ=;
- b=iqfuNwuKbbIYbLZLSsGE+r/CCpVt6K7anJY3gbNSPMAPqBGlcK8Qowz2V8s5qJ22nC
- oZ8eI/FMYu8EcdDYAPkUkQ78n56fbjYYR/YkmeXtf3MjsrOaVRZCVXCcRqvTWQ4WOYKD
- pcRu2cU3Ahcd17sfXPVqVaBL9+G99pPu3bM0lN/E02nxM1etzh+VZQNSooi91kZAwmIS
- 9xpp/jBXt0ECGkt/M1eNpKwsIWQ3kA7KpyiTsUzoeHSEFZTQbbIWM7fvpRxduhq8Hwoq
- Ho8wkppZqx+E9oNiJEptiJOhq3NoocrREQ0DWWUFDr73Qqa7GaKcRoihdPHU2BxabwPW
- PRWA==
+ d=linaro.org; s=google; t=1685459915; x=1688051915;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tVORMHIcX6LuKdvbuhlEaqupobkYB9pBO6CCzD1eKNs=;
+ b=HJM7YHov1KXF8blUZzHKAmJQ5ypZdpuCsqyOlRvX/Hoy7FV0CiupsP/b5wg2Mii9uD
+ 3keiKsMaME1qxDf8ka3WOxhFYdeKqewLgMoZfEcsfC33CxR4WSTDIxGOmn+ajk9nCq0S
+ VwhT8X1mwnpsz+BC2tktQpcUAVeSKAW5h+VqpiwJsJiLZ5EDi0xzlmHKYzrZbgG+Yx0R
+ QOVdDP8yYGfnA9M7/UtmcQHqfU+/YiU25FOxmlH5+bTf6BZ9Vg/hGPO04z6xx/DgdSCu
+ 8ttiklK7CBYIRiUFj80k8yFo21fSXUrI6tVs3ujkMCXjpaikoqogvZjSF5iSxd3dU3AV
+ 6NlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685459364; x=1688051364;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YyVqbzMv110LWYWyqyeFqYv5nFiAxNJktsmCE/ovvzQ=;
- b=JPecM6KOAOtAbDTfGpkCAe+lGZiaU/jH/ryWxzcc4lg6PmYDDVhFMBakrARxeXa0hD
- d665WMQi4Fmq5X8WwQuICxqicZJ8uz3v2fGa6ysjC4l9TrON2fASPVOTEkI90omv/bWb
- q8nZCYEc71fnkO5c81+Z9YLYruCuHJyOQ6CJpnIij458volqQ05LhQvaekjM7fcLM71a
- dTXVxrgpC90Z97niAh+keKs0n/gO3KGA7qGKNj/zpDsCuCpx/jG3XmnqQCNTLrdiBpEi
- Znh7V6bX5txSqJnvg3cKF3TvlO81Sx6I56cDz5CNZdLNhs4rndp6sT4jgSYikKbw5KP0
- LZaw==
-X-Gm-Message-State: AC+VfDxaN+S95M6UjL+15uyYI4zBLrGAtKyWl1NJAwUZmnEvgZuxK1bG
- nGy1lyNPCOsYTtllOUIzM0/NNwQz61+GIR8CrIw=
-X-Received: by 2002:a05:6a20:ce44:b0:111:c8a6:88ca with SMTP id
- id4-20020a056a20ce4400b00111c8a688camr2699946pzb.58.1685459364163; 
- Tue, 30 May 2023 08:09:24 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1598:4c01:35a2:c45d:7485:f488?
- ([2602:ae:1598:4c01:35a2:c45d:7485:f488])
- by smtp.gmail.com with ESMTPSA id
- 125-20020a630583000000b005348af1b84csm1117065pgf.74.2023.05.30.08.09.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 May 2023 08:09:23 -0700 (PDT)
-Message-ID: <528627e2-f4d5-fd44-a57b-23b37ca79935@linaro.org>
-Date: Tue, 30 May 2023 08:09:22 -0700
+ d=1e100.net; s=20221208; t=1685459915; x=1688051915;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tVORMHIcX6LuKdvbuhlEaqupobkYB9pBO6CCzD1eKNs=;
+ b=Umw2rXnhWeJO3mofXg7IImbvQj6b270oPzX/sNzkho4s22d/cCWl7ftzXfMMpK+H1H
+ VAMB0/HVam0YmNmF1/tNio6hx2b2AFAt4/mJhjsoObOBVwXZ03wiu6i254QK041SlHW2
+ kLE26zLJ56zzfMjK6u4QtUj5uu9/SyrzcT0+bmiHCLoj4GTox3dt4b2452lYl0FJNdql
+ +Qug3Do7bFVs3kevW0VtSWCt8IGgByPp5pMjjzJQKr9ytBOOR7wBLUemsuQWQwZAftt9
+ n/o+upzjJPE3k26seiqw5c+9ehkFcQWNS0SwsxRIqKMYMwR8Vpx6y+boIKERqIiAoqxT
+ GTow==
+X-Gm-Message-State: AC+VfDwg5e/boCJ5fzMWDW73kF1VHHHS+4ehLoj/3L3eHg+IYbJDVGJr
+ mzEUB88jNCqZZ4qRfH8OKGsiNmJCZttSnRwxkvHynw==
+X-Received: by 2002:aa7:d850:0:b0:514:9dd7:4bcc with SMTP id
+ f16-20020aa7d850000000b005149dd74bccmr1811366eds.14.1685459915506; Tue, 30
+ May 2023 08:18:35 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v4 02/16] accel/tcg: Fix check for page writeability in
- load_atomic16_or_exit
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20230526002334.1760495-1-richard.henderson@linaro.org>
  <20230526002334.1760495-3-richard.henderson@linaro.org>
  <CAFEAcA8E_wbiL=xxc=qzfbhBjTsGVxpMGYex_Ezsn_=47DJP3w@mail.gmail.com>
@@ -107,17 +90,23 @@ References: <20230526002334.1760495-1-richard.henderson@linaro.org>
  <CAFEAcA8tPuFMz8BZ5P-SJS42q8E_TZ1_5DJL-0kOvzeT-Fymmw@mail.gmail.com>
  <a7ba5e1c-ca59-b114-229a-07930f6ba683@linaro.org>
  <CAFEAcA_BS4b1MR=7zwVXB+eTXcVc2QhvzcvsoQn9mZ-xeps41w@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA_BS4b1MR=7zwVXB+eTXcVc2QhvzcvsoQn9mZ-xeps41w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <528627e2-f4d5-fd44-a57b-23b37ca79935@linaro.org>
+In-Reply-To: <528627e2-f4d5-fd44-a57b-23b37ca79935@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2023 16:18:24 +0100
+Message-ID: <CAFEAcA83A5Bj6SqcvXjEDtnCg2jdjAmM5zBhK8RDThoyyx31sw@mail.gmail.com>
+Subject: Re: [PATCH v4 02/16] accel/tcg: Fix check for page writeability in
+ load_atomic16_or_exit
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -134,29 +123,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Mxo0wky+sg44
+X-TUID: P87IWAaJC/11
 
-On 5/30/23 07:48, Peter Maydell wrote:
-> On Tue, 30 May 2023 at 15:29, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 5/30/23 07:06, Peter Maydell wrote:
->>>> This is about falling through to the cmpxchg below: if !PAGE_WRITE_ORG, then the page is
->>>> really not writable, we will SIGSEGV, and handle_sigsegv_accerr_write will kill the process.
->>>
->>> Right, but if !PAGE_WRITE_ORG then that implies also !PAGE_WRITE,
->>> so we do that even without this change ?
->>
->> But !PAGE_WRITE does not imply !PAGE_WRITE_ORG.
-> 
-> Hmm. In what situation do we mark a page writeable when the
-> guest didn't ask for it to be writeable ?
+On Tue, 30 May 2023 at 16:09, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 5/30/23 07:48, Peter Maydell wrote:
+> > On Tue, 30 May 2023 at 15:29, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> On 5/30/23 07:06, Peter Maydell wrote:
+> >>>> This is about falling through to the cmpxchg below: if !PAGE_WRITE_ORG, then the page is
+> >>>> really not writable, we will SIGSEGV, and handle_sigsegv_accerr_write will kill the process.
+> >>>
+> >>> Right, but if !PAGE_WRITE_ORG then that implies also !PAGE_WRITE,
+> >>> so we do that even without this change ?
+> >>
+> >> But !PAGE_WRITE does not imply !PAGE_WRITE_ORG.
+> >
+> > Hmm. In what situation do we mark a page writeable when the
+> > guest didn't ask for it to be writeable ?
+>
+> I don't know -- it seems backward, I know.
+>
+> I *think* it's a race condition, where PAGE_WRITE changes.
+> That's what the test case is trying to provoke, anyway.
 
-I don't know -- it seems backward, I know.
+That sounds like the theory I had earlier, that we
+don't have the mmap lock, so the other thread can
+get in and turn the RO-only-because-of-the-JIT page
+back to RW, so we don't want to do the non-atomic
+access for the "RO-only-because-of-JIT" cases.
 
-I *think* it's a race condition, where PAGE_WRITE changes.
-That's what the test case is trying to provoke, anyway.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-r~
-
+thanks
+-- PMM

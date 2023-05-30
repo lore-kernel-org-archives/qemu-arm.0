@@ -1,128 +1,109 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2140766ejb;
-        Tue, 30 May 2023 05:33:50 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5Cf+tlyrV9hqgxwNzumePGB88Xw0zIxLcg4AaliMXHMnWX32SK9EFt2Ii4EdPyeJ/3d+br
-X-Received: by 2002:a05:620a:19a6:b0:75b:23a1:d850 with SMTP id bm38-20020a05620a19a600b0075b23a1d850mr12149348qkb.18.1685450030527;
-        Tue, 30 May 2023 05:33:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685450030; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2143646ejb;
+        Tue, 30 May 2023 05:37:28 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5qFCxozs1XBEHpflAEC6RLYTwiSiWBXzu74hCtvuXQguWRDqFqRHXcSoQKQysQPmLB9Oyq
+X-Received: by 2002:ad4:596d:0:b0:626:3a5a:f8e9 with SMTP id eq13-20020ad4596d000000b006263a5af8e9mr854031qvb.54.1685450247860;
+        Tue, 30 May 2023 05:37:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685450247; cv=none;
         d=google.com; s=arc-20160816;
-        b=sCiK205eViezJlwh00OgzYQI5uwOo2dBPYKrt1Sq2zL012kRcgdhdua9tU5CuaeMt7
-         gDagVEkvmeBfBl8NHgnmk2T2NedC1JSZuDdcDLByaFtEjptMxIIa/JXQsu+K+AU4hIxZ
-         r3+unzQPZ58P0bNoRqCAOfrHk6uzWYwaikubJQFR+V5pISB2Gu4iJOHPoiXgkkTKxqFA
-         ZHWDojOE05gwt/D1rcGw3WrKNptIIkycrEH629N+4P7LtNyJRFWd6P1jSdenjdwte0VY
-         NGwhF/UPT74KUL25KIdmtLIDVo/BSlUm+mecZ1Z6ulH5V/4XKcrcslo+PL0MqzdQLM8d
-         6e0Q==
+        b=qkdecB/hCkMwdFWk6gLFJS0ofBZ5PylpnzxAS66IhOppvUROA1ELbC2I7l5a8FjBEf
+         xPkctIBbFfO9ShvlJG86iV7UqF93gJJLUyElz47M2qGFsfUORg7Kdpg+y1VDWS0Hfes2
+         zwh2WMVA8MGwVcg1kGjFjAfhLN7cpVidp+mmobbZe7nDAB5zZO8eBrYbfpzvUUa3jYZj
+         jtWTfKhfFwSv7fmnZPuxaQn2Ke/20bDPGdu57UBO64AvKVPpuhokLF7EmmA4Usjl3sPn
+         QISDFi4eI9evH/EUWCXYZh/xnieuHBbqlzmBfm92wK7Nsf+4e3KFxhSDAZslhCWaQnfd
+         mIBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6yEw4Igz3Ifgf3AUYhr+1yF+M1W44Rr9AltMv2QS7lc=;
-        b=YvBkJlrqUoQV8wbwQexEwZ3wdKGm1DXWC0/P5QTxiyK9eUu5F2YNYmM3jqcgftMKKx
-         yGRZ56QVMcwK7OzWK1xAQs57cq2K7wAPoFuDKlwzy6rvZeBgaeedRctRT0o/64cgjxuk
-         parrWjZlLVk0Dlkk8lkBWH0Ly00Z7/uiRdAZ0lMxNyGgwxD91JgfdiTEyiCyS1zFYORh
-         yD04+NfNuhdwwqFDKuNpxWJJByymP+rWN4h19B0aftdqKowZCelZ7FO/etXku4tXhDEK
-         eWPMIu5Z5UKxCHWAC76Ylv4bz7WaQ5Pqni987zNxmzpSNsZcgs0wBZj+86VGUq169gNi
-         Wbaw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Xj+iLiINqefgnt5kZosZHtx7moN7sXIAZMNLQ7bIJXI=;
+        b=KqzgF5eGmaB09EyEUPPvQSOBmypgrCx9Ohn8U6utPOQC+Z+P+ZIM7IaUydXf0ClhVY
+         Ez3fGJ9sq3P+3x6N+B5cH1NM+U8IAC8up2oAk27qbUtxM6BP1x/1olrJOJg/GoaIEQvf
+         KBAmobI612Gzqow6nExC2/S96pfH7IMe6Ok+avwtluc6iM6cUG5GLr+VQDJYeIB+Mp8j
+         UgPFZCkZbfP8aRB8V0A6HXwnOHMZaXguOxV0W3aGW0mB1ZkLCQZVQwvl5E+ub28JHuOX
+         wjHRDv3s5LIZq4kAymiYlD9JXYxQhiDEetn2L3U5Jnb7i8owQ8t+9kGX1uhs0FtTyAtn
+         g8jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d3aF0Rs/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uM5ZOP0q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7-20020a37c247000000b0075cead353efsi2613768qkm.122.2023.05.30.05.33.50
+        by mx.google.com with ESMTPS id r3-20020a0562140c4300b0061b5a6032b2si6437404qvj.571.2023.05.30.05.37.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 05:33:50 -0700 (PDT)
+        Tue, 30 May 2023 05:37:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d3aF0Rs/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=uM5ZOP0q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q3yXe-000353-Uv; Tue, 30 May 2023 08:33:35 -0400
+	id 1q3ybK-0004jJ-M5; Tue, 30 May 2023 08:37:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yXK-0002sz-8S
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:33:22 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q3ybJ-0004fx-M7
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:37:21 -0400
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yXF-0001qH-Pb
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:33:12 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3f60e730bf2so45875635e9.1
- for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:33:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q3yb3-0002jv-ET
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:37:21 -0400
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-4f3b5881734so4956156e87.0
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:36:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685449987; x=1688041987;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6yEw4Igz3Ifgf3AUYhr+1yF+M1W44Rr9AltMv2QS7lc=;
- b=d3aF0Rs/kmzmCTfDlDMO9LsQtKfiyjMqzEO2a7JJqVxuac0L/iOUtMzN75Xo15irhA
- bWuHEQMajp5jAQHYAhr7VfP/asD7SYPh9V+t2Pcl2zug4iDOg6qdB8prc7eafUzXHEov
- vaDM9PbJJ4pXksVQmkW1WUZTkwVirAkMkd6iuTkQ0BEsGq7u1tyhELBRdZVqpdMjPiu0
- aGQ62CiX/gXSbNrs1dwPK5ZMJouhLdbgRNGHErn8ouJzj5xtOfzqs59nxOwxRQMv15wn
- xgQen3Sjo7YNct/3pB292xL4aPlqhGqSxuVYqmwA1vAMITSitnJ5fW5cqlGaLeNhxCNX
- w29Q==
+ d=linaro.org; s=google; t=1685450214; x=1688042214;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xj+iLiINqefgnt5kZosZHtx7moN7sXIAZMNLQ7bIJXI=;
+ b=uM5ZOP0qmym2M5a5697zaKFm9QWjFHyevl0uj3kVlQs6iDdU/5/fvG+74NzLo6dy93
+ 9c0bIto9T74NHhLHJMqFcebpwN3XCIucmf3/X2XdWZsc6hsKLeeeBmp/M4gidnPIOzS7
+ St2QA7BE5kLB32KOFEoXBcYNg6gXwBZX8ftXkzccXuWxqm4lE36+KjPa1xQ0rpIiC+9/
+ tODhPDw10HIEZJycr34FRuPUk687KQ2D3aLugI/G2rXeatSLTAeVj+kLhmfh13AKwFEd
+ yMhqqJAJhRlXGXYv+H6vi0jVaEXuU5p3vz9K8DkiZAwF9jeEy0TlVkTHJxzlY5MlI3GX
+ NB8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685449987; x=1688041987;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6yEw4Igz3Ifgf3AUYhr+1yF+M1W44Rr9AltMv2QS7lc=;
- b=jeCQtLhQPsDciMVO26RGTgMDPc46i5agcACEV7EsquXa/ni5S+JQLQBZU3v1gzCPsJ
- PLAahVdzNEO9CVvcaHNSXFPY7AbD+qJAPnbmA8OCrExaMr/11axsD3BrVqinvOWjbQ7B
- 1JUjO0u2ozCtKDq8pISeU7xJurkU55rhFnwhUXbo0Mq7ANt6uVgn1eG1niuJifDeNfg7
- jySfr1uwPP3yII8M1FuMblMmrhiaHlRfZoJj+IhquBDbQl9ZfXxOuQ3RUfo1mp8NNhCg
- GI7xjgxBznmYf1RmSsUQ6klKsMG9VI2sNqxpg4avPWLWqWIiv5pW/b7Fj1RWp1lqJ5l6
- icWA==
-X-Gm-Message-State: AC+VfDy1CJIqbIWSdwEIBfaoubNM8Fr9ejLU787lrmCApUhRDaL73I3n
- ZZ07h9GGdk4C0I8SgOIY1QZ7rA==
-X-Received: by 2002:a05:600c:2242:b0:3f6:a44:73bb with SMTP id
- a2-20020a05600c224200b003f60a4473bbmr2083356wmm.8.1685449987160; 
- Tue, 30 May 2023 05:33:07 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.180.1])
- by smtp.gmail.com with ESMTPSA id
- t19-20020a7bc3d3000000b003f423508c6bsm16989091wmj.44.2023.05.30.05.33.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 May 2023 05:33:06 -0700 (PDT)
-Message-ID: <634c4c3f-c80c-44f1-6d9a-5247061395af@linaro.org>
-Date: Tue, 30 May 2023 14:33:03 +0200
+ d=1e100.net; s=20221208; t=1685450214; x=1688042214;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Xj+iLiINqefgnt5kZosZHtx7moN7sXIAZMNLQ7bIJXI=;
+ b=MVe4xbf8XVBbkbw6CtD14QwXl9JeLiCUzQYbzNcQg/bq8mjmjPxXKFBi0eZ6bd4YXP
+ R57sRAIpoGAq7u1RNv9XUVbkn5a9feQXrb469T0cF+tBooyY5egy/8NOYeSdcSUW9AZ8
+ FBfchD503Sm8si15QeFT+4iOWLfWdJ15QPKkS2K4rs++DjxmS9GnFbpFm0oDXsiS0+59
+ N6LBq6e/CooxfXS2Z4a1Um967uQCZAKLwWpnzx8Lj5dIibtT2XPSnaUo/yPqATvFFYWI
+ ujxYOHtZwcpvTJ5VHtYHh7FFNw/Otz6YY2UvipW7+l0LEPWA7oz3BNLiIiZZG6+iMyDd
+ l0bQ==
+X-Gm-Message-State: AC+VfDzGl0o5m6Di4H9/lxqDjVk8byqUlRrDdSaakRJbwCntIHmwVAkA
+ Tu+tdooXiKyjHMOjxpvSx0ouXF9hQUmJa4uiNHMEjg==
+X-Received: by 2002:ac2:5626:0:b0:4f2:34f1:cf24 with SMTP id
+ b6-20020ac25626000000b004f234f1cf24mr662955lff.22.1685450214427; Tue, 30 May
+ 2023 05:36:54 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 06/10] hw/i386/pc: Use memory_devices_init()
-Content-Language: en-US
-To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
-References: <20230530113838.257755-1-david@redhat.com>
- <20230530113838.257755-7-david@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230530113838.257755-7-david@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20230524113308.834675-1-marcin.juszkiewicz@linaro.org>
+ <20230524113308.834675-4-marcin.juszkiewicz@linaro.org>
+In-Reply-To: <20230524113308.834675-4-marcin.juszkiewicz@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2023 13:36:43 +0100
+Message-ID: <CAFEAcA-bjGmOn_hyT8a45c+jBnF_GuKBwB3XTOxqb7pzNJCdAg@mail.gmail.com>
+Subject: Re: [PATCH v3 3/4] docs: sbsa: document platform version changes
+To: marcin.juszkiewicz@linaro.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Leif Lindholm <quic_llindhol@quicinc.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,25 +118,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AlL3R6aglKDh
+X-TUID: CEwZtkOv2yxi
 
-On 30/5/23 13:38, David Hildenbrand wrote:
-> Let's use our new helper and stop always allocating ms->device_memory.
-> Once allcoated, we're sure that the size > 0 and that the base was
-> initialized.
-> 
-> Adjust the code in pc_memory_init() to check for machine->device_memory
-> instead of pcmc->has_reserved_memory and machine->device_memory->base.
-> 
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Eduardo Habkost <eduardo@habkost.net>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
+On Wed, 24 May 2023 at 12:33, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
+>
+> We plan to start adding more system information in DT so firmware does
+> not have to use hardcoded values.
+>
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 > ---
->   hw/i386/pc.c | 17 +++++------------
->   1 file changed, 5 insertions(+), 12 deletions(-)
+>  docs/system/arm/sbsa.rst | 31 +++++++++++++++++++++++++------
+>  1 file changed, 25 insertions(+), 6 deletions(-)
+>
+> diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+> index 016776aed8..922a29700d 100644
+> --- a/docs/system/arm/sbsa.rst
+> +++ b/docs/system/arm/sbsa.rst
+> @@ -6,16 +6,35 @@ any real hardware the ``sbsa-ref`` board intends to look like real
+>  hardware. The `Server Base System Architecture
+>  <https://developer.arm.com/documentation/den0029/latest>`_ defines a
+>  minimum base line of hardware support and importantly how the firmware
+> -reports that to any operating system. It is a static system that
+> -reports a very minimal DT to the firmware for non-discoverable
+> -information about components affected by the qemu command line (i.e.
+> -cpus and memory). As a result it must have a firmware specifically
+> -built to expect a certain hardware layout (as you would in a real
+> -machine).
+> +reports that to any operating system.
+>
+>  It is intended to be a machine for developing firmware and testing
+>  standards compliance with operating systems.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> +Platform versions
+> +"""""""""""""""""
 
+All this stuff about the DTB format isn't interesting to most
+users, so we should put it at the bottom of the doc, below
+the 'supported devices' part. Also, the subsection title should
+be something like "Board-to-firmware interface", and it should
+lead off with the text that clarifies that although the data
+blob provided by the board is in DT format it is not intended
+to be a complete compliant DT but is just a mechanism for
+providing the firmware with specific information about the
+non-discoverable components in the system.
+
+> +
+> +QEMU 7.1 brought support for "platform version major/minor" fields in
+> +DeviceTree.
+
+We don't generally document things in terms of which QEMU versions
+they appeared in. The docs just say what the current status is.
+
+> +
+> +Version 0.0
+> +'''''''''''
+> +
+> +It is a static system that reports a very minimal DT to the firmware for
+> +non-discoverable information about components affected by the qemu
+> +command line (i.e. cpus and memory). As a result it must have a firmware
+> +specifically built to expect a certain hardware layout (as you would in
+> +a real machine).
+> +
+> +Version 0.1
+> +'''''''''''
+> +
+> +Additional data are provided in DT to the firmware:
+> +  - address and size of GIC Distributor
+> +  - address and size of GIC Redistributor
+> +
+> +Simple "/intc/reg" field is used.
+> +
+>  Supported devices
+>  """""""""""""""""
+
+thanks
+-- PMM

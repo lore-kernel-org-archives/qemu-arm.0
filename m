@@ -1,138 +1,113 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1895503ejb;
-        Mon, 29 May 2023 19:44:10 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7wyx9GFnsLOLXyFu/L0dJVMuUgZb6c4M5oe6ch5ccm/cKnsDGGItnwrQx65WJ8jDXZZOfe
-X-Received: by 2002:a05:622a:24d:b0:3f4:c9b:24ca with SMTP id c13-20020a05622a024d00b003f40c9b24camr526820qtx.53.1685414650133;
-        Mon, 29 May 2023 19:44:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685414650; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2108177ejb;
+        Tue, 30 May 2023 04:40:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4GsjuFIMxUrYko25F9hcxTFGmKLkke7YYk3NaZrpQfnxZ+hFCyVJ6e7R4tgYSFufyDl0Uy
+X-Received: by 2002:a05:620a:8798:b0:75b:23a1:8345 with SMTP id py24-20020a05620a879800b0075b23a18345mr1468121qkn.64.1685446831291;
+        Tue, 30 May 2023 04:40:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685446831; cv=none;
         d=google.com; s=arc-20160816;
-        b=bjK1TFi6Z925oWyxo4K/jUWh16XDyzOQGrjvUUkMQ+J2pBCHfEIx2zmAqaxeFjK4JC
-         qCaSiFFk9lyXklkLPfFQlrYg97AssvPXkZDZa7r23e55kC6kVoXJGq1451Jqx3NkeY+5
-         spGiC9+Z4hhdohvy9GF3sm2FOZ7C28HoHJIzqkIGNHZuCvmlNJVH9yS+V5jyN3vCmczo
-         Q/Fc0guHsPTDl69C/6vdXFSBZ91yvqe3zuvRO3/fOCPMfdBtMpUNEFFdE/t0QPWjjTL5
-         7dWmjXad1p7UtmMUMdvc/MU82qfJL7eC+x1WO277shdNGTlMmoq/fccyLUBUcd/qUHen
-         px7A==
+        b=UmXxPjPhifgerpOTzHqmEjUqAetB9rX+286Js05vMMfUgUNU7Vc4vE82pehjqFi5uC
+         /CnD00rR9Tx/fctgIMreuMtZc/2LnJ1rKC77DLaOyQ1N9LFsqouin2VThG0bOcO7DENI
+         sBw/0h8A8sKm0r1sOZDCKUlm8K37bg3vmo+HQSMqxtrlZMEZ+jEvJqqhx0c8waaC5bZ6
+         NU0Dvaq7qH6ZHvIjjNTPtnVDu/ocppQMSVRydVCa/kDa+aJDSUN5/Z0Dz1pAkGjBqIrS
+         /FD/LKXhOMIL07dRp8SEUqBsrkULZLTkyZEQI7mtkLUYxWScH75ACRiySF2RU3UUb0KM
+         DC6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ejrIrGDi4fwDc42huLgpjGNxWrqatNvW4qPUqySFFzs=;
-        b=CRg1ANsTst8rOETXOzNQTHEXQni2KWfqF4DniLveHiD8G5RyX+QNUzHrzL1uPmeR7U
-         LxWFrXJ5bU81glni1Kp4sYYBmqL/B19FAnEuJQl1uVEv8Jt+kEZL9puE2uPScEn/qHNV
-         DVZUOX0WqKIqLMeBDe5JDmcB0rSh7wQugA7Omx5Ul5DE66wdjdFQgm1OtiYgBKJNP+5F
-         050dTeaY8pUMfjATcxSjtG1zYufNTtsdoLu1kHEKuk7u8YXzGJsiqfofMyYYygHMuC0h
-         t5+KGv2azq5ofLHgN+JIYiLziasFPrfGDo87B6gWHV2tvlaL7dhOLQoqfXEbPre3/D/a
-         ZgpA==
+        bh=DTaSB7tq88uaqaTxCgp6OdSh0CxSz9wsEaDtBmyhZgc=;
+        b=0Sy0+K2uV2bWqPkV0cSXrBhyktxrYZmhB74J0y7DrEFafxNRxeBnFJXDr2UeLQeoIC
+         YGl7zRrgJMxrogxg+nAjV+hzkH2oJNp5x6FCjIPP4gKKNJXlKDkXALcwMD71q+E8FVf/
+         FrJEKWU5TvSlba1DaByAV2Ttpzyoj4UvaoI7Dxqx29idq88KG2nVrf8NopQ5+c719oHE
+         lUzO8/XuYO5i5L3gyWlj38icY4YH+NFAW5pzOWfUwGGLnNiFJhCvSPlQ7i3A+gMuWKnJ
+         6lnnqkZIG0QdqejXj8MFxvtO81FJRoXCEyY/kPEnSs251nUYmDz5W99fjKSJlBSAL6/D
+         C03g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=bA03kVN0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jH5CrEBf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b10-20020ac85bca000000b003f6f83915f1si6006626qtb.596.2023.05.29.19.44.09
+        by mx.google.com with ESMTPS id j12-20020a05620a000c00b0074e08cdf531si4541508qki.427.2023.05.30.04.40.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 May 2023 19:44:10 -0700 (PDT)
+        Tue, 30 May 2023 04:40:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=bA03kVN0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jH5CrEBf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q3pKt-0000Tt-4I; Mon, 29 May 2023 22:43:47 -0400
+	id 1q3xhC-000822-T5; Tue, 30 May 2023 07:39:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1q3pKq-0000TP-J9
- for qemu-devel@nongnu.org; Mon, 29 May 2023 22:43:44 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1q3pKn-0005C3-2v
- for qemu-devel@nongnu.org; Mon, 29 May 2023 22:43:44 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-64fec2e0e25so669215b3a.1
- for <qemu-devel@nongnu.org>; Mon, 29 May 2023 19:43:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1685414619; x=1688006619;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ejrIrGDi4fwDc42huLgpjGNxWrqatNvW4qPUqySFFzs=;
- b=bA03kVN0LRRXIzKN4XRu7rfTWzkdAzIu5vrroA41QIqCpQkLzqpjwbAKDmNVrQc619
- sel8WanjG9YLk5mNX33VW98hchhdEjHAjMcVWMOs98OW41wGMxEr94iO1KxTFBIMgiPA
- mjJzoZXp3qVL1Firr5Vy8may4ZNLv7dUH3ERx5Uvq1sGdqZ3uKieNa3iZvE0Le9gfN1m
- VutCkV1KEbIvbRwPj4wqIy2kZTcaHUeJZ6aEezuK2d86xDfoF2+Kgn4zuSX2aTRnEtPW
- bA1j++wF+++Qk/bOAfW4Gd9EqnZ4kQYwpQoN9StGcROzUAjdbV6aRYnloFE3Wx4G3OBc
- oGgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685414619; x=1688006619;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ejrIrGDi4fwDc42huLgpjGNxWrqatNvW4qPUqySFFzs=;
- b=ReT/UF7aB3dLZPvn3uCN9ByZKbOoC0AF6qvb7USFF7ujUHf+KyzudT8g5hmq5IlZpk
- aCyuaEJUQyqO0SgoPDEzrsy+JDWUVIhyAPCcUB6t3N/duGqO4+/bg3+j2QopbLsTVR3q
- inaWRqd2Vl1m/U7SqxuNLyzCr1QkJwY1HYp5hqvuyCHDLHcTt4zXaQ1zHQMbllpfPAL0
- cTpgJ3t+qQf5D/9p9809JxJ3QBcbZGNuKN5LwOx3J4cX0HT/Y6DWIZqiKn0PAOoFPL5r
- ncSL6pa3YnYN6u+pbWhOfPF93rYSh/X6WdyRrFEwbNtF+QR5GGDnbvppyRQwxFG4lbME
- oFww==
-X-Gm-Message-State: AC+VfDwyVtnOsPOwi7VnSLVpH6gFizlR4j0YVn3JnQBwFypLtufwnEVl
- VWOt2HJ3G7TzPiykXlAImXZSAA==
-X-Received: by 2002:a05:6a20:d805:b0:10b:78d7:502 with SMTP id
- iv5-20020a056a20d80500b0010b78d70502mr906865pzb.36.1685414619631; 
- Mon, 29 May 2023 19:43:39 -0700 (PDT)
-Received: from alarm.. ([157.82.204.253]) by smtp.gmail.com with ESMTPSA id
- 63-20020a630542000000b0051baf3f1b3esm7801785pgf.76.2023.05.29.19.43.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 May 2023 19:43:39 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Mauro Matteo Cascella <mcascell@redhat.com>, P J P <pj.pandit@yahoo.co.in>,
- Alexander Bulekov <alxndr@bu.edu>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Stefan Weil <sw@weilnetz.de>,
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xgz-0007uS-2F
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xgx-00044Y-HZ
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685446746;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DTaSB7tq88uaqaTxCgp6OdSh0CxSz9wsEaDtBmyhZgc=;
+ b=jH5CrEBfl8hDhQUZbRxVfbGE/oYoxYdRxUBtry5013bZC6+LMNYulahnSXLFSELGpxyslL
+ LgwfFFZqSaQXNd/VkXS/5M6HE1t4m++DjU+AiIBPd2/PahdL6WZNPLQ/wNrzS3E/9wLsLP
+ yT/uszJhcJN9WjnFtlwVy3ApnEEhSMo=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-595-IJsiPpRUMRKbKhbAZide6w-1; Tue, 30 May 2023 07:39:01 -0400
+X-MC-Unique: IJsiPpRUMRKbKhbAZide6w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7C03E811E7C;
+ Tue, 30 May 2023 11:39:00 +0000 (UTC)
+Received: from t480s.redhat.com (unknown [10.39.194.167])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C0D2540CFD45;
+ Tue, 30 May 2023 11:38:56 +0000 (UTC)
+From: David Hildenbrand <david@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Thomas Huth <huth@tuxfamily.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
  Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Sven Schnelle <svens@stackframe.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Rob Herring <robh@kernel.org>, Gerd Hoffmann <kraxel@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- xen-devel@lists.xenproject.org, Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 2/2] net: Update MemReentrancyGuard for NIC
-Date: Tue, 30 May 2023 11:43:02 +0900
-Message-Id: <20230530024302.14215-3-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230530024302.14215-1-akihiko.odaki@daynix.com>
-References: <20230530024302.14215-1-akihiko.odaki@daynix.com>
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
+Subject: [PATCH 04/10] hw/ppc/spapr: Use memory_devices_init()
+Date: Tue, 30 May 2023 13:38:32 +0200
+Message-Id: <20230530113838.257755-5-david@redhat.com>
+In-Reply-To: <20230530113838.257755-1-david@redhat.com>
+References: <20230530113838.257755-1-david@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::42a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x42a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.167,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -148,81 +123,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VEe4sq3HHPcJ
+X-TUID: P2a3iNDC4cLH
 
-Recently MemReentrancyGuard was added to DeviceState to record that the
-device is engaging in I/O. The network device backend needs to update it
-when delivering a packet to a device.
+Let's use our new helper and stop always allocating ms->device_memory.
+There is no difference in common memory-device code anymore between
+ms->device_memory being NULL or the size being 0. So we only have to
+teach spapr code that ms->device_memory isn't always around.
 
-This implementation follows what bottom half does, but it does not add
-a tracepoint for the case that the network device backend started
-delivering a packet to a device which is already engaging in I/O. This
-is because such reentrancy frequently happens for
-qemu_flush_queued_packets() and is insignificant.
+We can now modify two maxram_size checks to rely on ms->device_memory
+for detecting whether we have memory devices.
 
-Reported-by: Alexander Bulekov <alxndr@bu.edu>
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: "Cédric Le Goater" <clg@kaod.org>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: Greg Kurz <groug@kaod.org>
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>
+Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- include/net/net.h |  1 +
- net/net.c         | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
+ hw/ppc/spapr.c       | 37 +++++++++++++++++++------------------
+ hw/ppc/spapr_hcall.c |  2 +-
+ 2 files changed, 20 insertions(+), 19 deletions(-)
 
-diff --git a/include/net/net.h b/include/net/net.h
-index a7d8deaccb..685ec58318 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -124,6 +124,7 @@ typedef QTAILQ_HEAD(NetClientStateList, NetClientState) NetClientStateList;
- typedef struct NICState {
-     NetClientState *ncs;
-     NICConf *conf;
-+    MemReentrancyGuard *reentrancy_guard;
-     void *opaque;
-     bool peer_deleted;
- } NICState;
-diff --git a/net/net.c b/net/net.c
-index 982df2479f..3523cceafc 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -332,6 +332,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
-     nic = g_malloc0(info->size + sizeof(NetClientState) * queues);
-     nic->ncs = (void *)nic + info->size;
-     nic->conf = conf;
-+    nic->reentrancy_guard = reentrancy_guard,
-     nic->opaque = opaque;
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index dcb7f1c70a..44155f6613 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -546,10 +546,8 @@ static int spapr_dt_dynamic_reconfiguration_memory(SpaprMachineState *spapr,
+                                 cpu_to_be32(lmb_size & 0xffffffff)};
+     MemoryDeviceInfoList *dimms = NULL;
  
-     for (i = 0; i < queues; i++) {
-@@ -805,6 +806,7 @@ static ssize_t qemu_deliver_packet_iov(NetClientState *sender,
-                                        int iovcnt,
-                                        void *opaque)
- {
-+    MemReentrancyGuard *owned_reentrancy_guard;
-     NetClientState *nc = opaque;
-     int ret;
- 
-@@ -817,12 +819,24 @@ static ssize_t qemu_deliver_packet_iov(NetClientState *sender,
+-    /*
+-     * Don't create the node if there is no device memory
+-     */
+-    if (machine->ram_size == machine->maxram_size) {
++    /* Don't create the node if there is no device memory. */
++    if (!machine->device_memory) {
          return 0;
      }
  
-+    if (nc->info->type != NET_CLIENT_DRIVER_NIC ||
-+        qemu_get_nic(nc)->reentrancy_guard->engaged_in_io) {
-+        owned_reentrancy_guard = NULL;
-+    } else {
-+        owned_reentrancy_guard = qemu_get_nic(nc)->reentrancy_guard;
-+        owned_reentrancy_guard->engaged_in_io = true;
+@@ -859,16 +857,23 @@ static void spapr_dt_rtas(SpaprMachineState *spapr, void *fdt)
+     int rtas;
+     GString *hypertas = g_string_sized_new(256);
+     GString *qemu_hypertas = g_string_sized_new(256);
+-    uint64_t max_device_addr = MACHINE(spapr)->device_memory->base +
+-        memory_region_size(&MACHINE(spapr)->device_memory->mr);
+     uint32_t lrdr_capacity[] = {
+-        cpu_to_be32(max_device_addr >> 32),
+-        cpu_to_be32(max_device_addr & 0xffffffff),
++        0,
++        0,
+         cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE >> 32),
+         cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE & 0xffffffff),
+         cpu_to_be32(ms->smp.max_cpus / ms->smp.threads),
+     };
+ 
++    /* Do we have device memory? */
++    if (MACHINE(spapr)->device_memory) {
++        uint64_t max_device_addr = MACHINE(spapr)->device_memory->base +
++            memory_region_size(&MACHINE(spapr)->device_memory->mr);
++
++        lrdr_capacity[0] = cpu_to_be32(max_device_addr >> 32);
++        lrdr_capacity[1] = cpu_to_be32(max_device_addr & 0xffffffff);
 +    }
 +
-     if (nc->info->receive_iov && !(flags & QEMU_NET_PACKET_FLAG_RAW)) {
-         ret = nc->info->receive_iov(nc, iov, iovcnt);
-     } else {
-         ret = nc_sendv_compat(nc, iov, iovcnt, flags);
+     _FDT(rtas = fdt_add_subnode(fdt, 0, "rtas"));
+ 
+     /* hypertas */
+@@ -2454,6 +2459,7 @@ static void spapr_create_lmb_dr_connectors(SpaprMachineState *spapr)
+     uint32_t nr_lmbs = (machine->maxram_size - machine->ram_size)/lmb_size;
+     int i;
+ 
++    g_assert(!nr_lmbs || machine->device_memory);
+     for (i = 0; i < nr_lmbs; i++) {
+         uint64_t addr;
+ 
+@@ -2866,12 +2872,11 @@ static void spapr_machine_init(MachineState *machine)
+     /* map RAM */
+     memory_region_add_subregion(sysmem, 0, machine->ram);
+ 
+-    /* always allocate the device memory information */
+-    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
+-
+     /* initialize hotplug memory address space */
+     if (machine->ram_size < machine->maxram_size) {
+         ram_addr_t device_mem_size = machine->maxram_size - machine->ram_size;
++        hwaddr device_mem_base;
++
+         /*
+          * Limit the number of hotpluggable memory slots to half the number
+          * slots that KVM supports, leaving the other half for PCI and other
+@@ -2890,12 +2895,8 @@ static void spapr_machine_init(MachineState *machine)
+             exit(1);
+         }
+ 
+-        machine->device_memory->base = ROUND_UP(machine->ram_size,
+-                                                SPAPR_DEVICE_MEM_ALIGN);
+-        memory_region_init(&machine->device_memory->mr, OBJECT(spapr),
+-                           "device-memory", device_mem_size);
+-        memory_region_add_subregion(sysmem, machine->device_memory->base,
+-                                    &machine->device_memory->mr);
++        device_mem_base = ROUND_UP(machine->ram_size, SPAPR_DEVICE_MEM_ALIGN);
++        memory_devices_init(machine, device_mem_base, device_mem_size);
      }
  
-+    if (owned_reentrancy_guard) {
-+        owned_reentrancy_guard->engaged_in_io = false;
-+    }
-+
-     if (ret == 0) {
-         nc->receive_disabled = 1;
+     if (smc->dr_lmb_enabled) {
+@@ -5109,7 +5110,7 @@ static bool phb_placement_2_7(SpaprMachineState *spapr, uint32_t index,
+     int i;
+ 
+     /* Do we have device memory? */
+-    if (MACHINE(spapr)->maxram_size > ram_top) {
++    if (MACHINE(spapr)->device_memory) {
+         /* Can't just use maxram_size, because there may be an
+          * alignment gap between normal and device memory regions
+          */
+diff --git a/hw/ppc/spapr_hcall.c b/hw/ppc/spapr_hcall.c
+index b904755575..1dd32f340f 100644
+--- a/hw/ppc/spapr_hcall.c
++++ b/hw/ppc/spapr_hcall.c
+@@ -31,7 +31,7 @@ bool is_ram_address(SpaprMachineState *spapr, hwaddr addr)
+     if (addr < machine->ram_size) {
+         return true;
+     }
+-    if ((addr >= dms->base)
++    if (dms && (addr >= dms->base)
+         && ((addr - dms->base) < memory_region_size(&dms->mr))) {
+         return true;
      }
 -- 
 2.40.1

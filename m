@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2108588ejb;
-        Tue, 30 May 2023 04:41:24 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5HzOFVKVe3k794YwpUPbtOOOjBLJMQQn3Dv/+mkjVYpUOVwpUv+xtlfQasRdenK4Ts1XkT
-X-Received: by 2002:a05:6214:48a:b0:625:b1f3:69c8 with SMTP id pt10-20020a056214048a00b00625b1f369c8mr2151598qvb.49.1685446883712;
-        Tue, 30 May 2023 04:41:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685446883; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2109482ejb;
+        Tue, 30 May 2023 04:43:07 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4NU41CsKstEGOS9IuR1ASMghwwZVdvTPP+sE6P3Rck8e42rBnjiBSufSLgngoN/wGCCNbp
+X-Received: by 2002:a05:620a:38c2:b0:75b:23a1:8e4d with SMTP id qq2-20020a05620a38c200b0075b23a18e4dmr1401408qkn.30.1685446986812;
+        Tue, 30 May 2023 04:43:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685446986; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZgH6WHROjt9hH2RSzHQvSzZ6WUGJ3/U85DXf1m37GC23dA1GeCOgdHbRrjITOQwMUc
-         y39CHxhOX7bLF8Vp5Wgh1nrpdeS4pZSs989Vap3BBZ7HIwGkr/Cj4eJCmEwNSm92VhCq
-         TJFKhBmHZK3jpHdYn5CyMZqhizn3HIug+tfEhTaTTOCdnsEzc5eVvE+bDc9ERumn2Rry
-         rsQA+SyMqKqI8Iv/OvrhN4emEMPAbFUYO/nyUJ2bko8V0YVXIQjy5N6A/zOzKdi5vZko
-         0U0hptU6c3+UlPdtgMQPMJu9LmFMlCXteU9IedNCzWlAQS26h1+Oj4KI7K7PnjwJcZ35
-         mipw==
+        b=zbVSjH6pDBrTm4Mr+p6crlDDV0JBDKqWLq9usXrtdeoKKRlU8lh7j4dST1+YVEsik7
+         eWclHRfbc2R1wUT3QlheeEkQl2FHUgTOKA2NTdn4KbOXrbXCzErAX/KaF9Boj0PXko49
+         sbqRs8AGdClVbPQMDij1kn2N4/VVOgNZ2bxxCwsWoP/K5pNui1rML5ABCcN66z01HMrg
+         gPrW8GY2Rr4AzrtG6wQxzU70/G2R/sR9+u/KhdIP6gg5pGi0bTb3kMn96CE8FbrTlAve
+         WUune5MJnDKEjxIEfVBA/SRZH7O2z9bXGV1JSONHNBP+rrzZsDMCw8IlIgKhAJ6b3a1k
+         uxOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ypSNjxk8rJUKShrG/cQHxTCZ8bHXJz6ssKLCoH3afkk=;
-        b=Kgch4lTxugoLwg23cBd0jMnLOVsM9fXzffgJPfkufysBvgdxpQYnr2yn3wO60m2E5L
-         3Na5d84Be/S8ZxSmW2v5ncdiwOOoIYgleOgWwP6oHDZ+D+m8+mw/BitIIVmHRkR4jhHa
-         PWGRm6cIsL8+BjtbX3o5MEjW05/IGDyMlvKROfmwMMAICaS5jBDK8YC9ht0Caj1FjVvj
-         +Rpg761C6CYD5zDQ/hilufx76/CBU3tAQDniCvyq0wAqmqIhPtLa3TitHQ5r64kYu3ni
-         SmI1/gEJzoiKN18gzwQPzlwWv4TEm5WYXHxq1yLZ7NgU6fZ4MiHozFI0NIBJAeYnp58v
-         KefA==
+        bh=cb4iSjQQh27x17LFuIUvzkQ0NEv7gRmk65M7DLN/NpQ=;
+        b=fg1FkUHnTdLbVCYxnXWDznG5DOg6gxPAAKFMVqa2KNrgzooFFI04zrM5B3px4FCHJF
+         TBmiPLQmWUdUFtvfcSzyTU6MuwqZVy6AtQ7zGnfGpBqNAQ/IkOb3z1GGLzVNSuJwPqDn
+         n7jSDPWCC4cWiYfbyD5Khxo2xmMFQU/3n2WgzB1Lbx5SbZIoIJZX1gE3JHpnY+pxgPq7
+         2ScglYxPDcFY+yXhs/Py+9VlCWwAxD/zLZ8IK4+ohiXS1OXgY4O8jjEWyA3U6E4bN8+R
+         4L1PrJZWN2ajp8A8aEbXvEpj6OH90YibH4e53puU/TCyI6NQhtXgPocXWALcNnGa+QKl
+         LMng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZeh1QPv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ALV/c8bz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020a05621420ae00b006238459f915si6506568qvd.230.2023.05.30.04.41.23
+        by mx.google.com with ESMTPS id j7-20020a37c247000000b0075cf0bebab5si1882619qkm.757.2023.05.30.04.43.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 04:41:23 -0700 (PDT)
+        Tue, 30 May 2023 04:43:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZeh1QPv;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="ALV/c8bz";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q3xhF-00083v-Mw; Tue, 30 May 2023 07:39:25 -0400
+	id 1q3xhL-0008Cv-Ex; Tue, 30 May 2023 07:39:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xh8-0007vo-4C
- for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:19 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xhI-00086p-0a
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xh6-00048i-Kb
- for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:17 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xhG-0004FZ-ED
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685446754;
+ s=mimecast20190719; t=1685446765;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ypSNjxk8rJUKShrG/cQHxTCZ8bHXJz6ssKLCoH3afkk=;
- b=MZeh1QPv1h1rGMLy/ajpIRwgQT/HHCFz6LgjGQLFW0EVOSph3XZrzCrz+Rj1Q3sFSQ/MXQ
- eJpGGrJKP1zULuOxhVha81zBkvN7q1+a51FfzkajPLQW9hRlAmyD5h7/lEUPwG1tnJmhRo
- V0ritnckNSnE42EcvPcLIFjmFkxTXOw=
+ bh=cb4iSjQQh27x17LFuIUvzkQ0NEv7gRmk65M7DLN/NpQ=;
+ b=ALV/c8bzelu/zWfKe2KJy8g73JjRNIKzVgutFeDyfmzXMgkUSBAUVPj1qb8ftRT5X1qyR/
+ Ns+oUfR4jKWgf1cAKOw090aZm0wYmHG6MCHq78VXpN6CP2xLoOte+cYbHH+MvyFMkWDQzx
+ 7KsF1fUADYzFlmN/EdccMiqSuRtrq1o=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-402-4IePjxoQObOgdcDZpBNbfA-1; Tue, 30 May 2023 07:39:08 -0400
-X-MC-Unique: 4IePjxoQObOgdcDZpBNbfA-1
+ us-mta-600-aM7XQF0uO6CQpYbyd7cHhg-1; Tue, 30 May 2023 07:39:19 -0400
+X-MC-Unique: aM7XQF0uO6CQpYbyd7cHhg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D7BB9101A53A;
- Tue, 30 May 2023 11:39:07 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7F3CF85A5A8;
+ Tue, 30 May 2023 11:39:18 +0000 (UTC)
 Received: from t480s.redhat.com (unknown [10.39.194.167])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D195040CFD48;
- Tue, 30 May 2023 11:39:04 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 50FF940CFD45;
+ Tue, 30 May 2023 11:39:15 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -91,9 +91,9 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
-Subject: [PATCH 06/10] hw/i386/pc: Use memory_devices_init()
-Date: Tue, 30 May 2023 13:38:34 +0200
-Message-Id: <20230530113838.257755-7-david@redhat.com>
+Subject: [PATCH 09/10] memory-device: Refactor memory_device_pre_plug()
+Date: Tue, 30 May 2023 13:38:37 +0200
+Message-Id: <20230530113838.257755-10-david@redhat.com>
 In-Reply-To: <20230530113838.257755-1-david@redhat.com>
 References: <20230530113838.257755-1-david@redhat.com>
 MIME-Version: 1.0
@@ -122,76 +122,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CVmCljqZ1ZJI
+X-TUID: bliMALwNyO/V
 
-Let's use our new helper and stop always allocating ms->device_memory.
-Once allcoated, we're sure that the size > 0 and that the base was
-initialized.
+Let's move memory_device_check_addable() and basic checks out of
+memory_device_get_free_addr() directly into memory_device_pre_plug().
 
-Adjust the code in pc_memory_init() to check for machine->device_memory
-instead of pcmc->has_reserved_memory and machine->device_memory->base.
+Separating basic checks from address assignment is cleaner and
+prepares for further changes.
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Eduardo Habkost <eduardo@habkost.net>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+As all memory device users now use memory_devices_init(), and that
+function enforces that the size is 0, we can drop the check for an empty
+region.
+
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/i386/pc.c | 17 +++++------------
- 1 file changed, 5 insertions(+), 12 deletions(-)
+ hw/mem/memory-device.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index bb62c994fa..920aa32b53 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1039,13 +1039,11 @@ void pc_memory_init(PCMachineState *pcms,
-         exit(EXIT_FAILURE);
+diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+index 2197dcf356..616067cbdc 100644
+--- a/hw/mem/memory-device.c
++++ b/hw/mem/memory-device.c
+@@ -69,9 +69,10 @@ static int memory_device_used_region_size(Object *obj, void *opaque)
+     return 0;
+ }
+ 
+-static void memory_device_check_addable(MachineState *ms, uint64_t size,
++static void memory_device_check_addable(MachineState *ms, MemoryRegion *mr,
+                                         Error **errp)
+ {
++    const uint64_t size = memory_region_size(mr);
+     uint64_t used_region_size = 0;
+ 
+     /* we will need a new memory slot for kvm and vhost */
+@@ -101,16 +102,9 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
+                                             uint64_t align, uint64_t size,
+                                             Error **errp)
+ {
+-    Error *err = NULL;
+     GSList *list = NULL, *item;
+     Range as, new = range_empty;
+ 
+-    if (!ms->device_memory || !memory_region_size(&ms->device_memory->mr)) {
+-        error_setg(errp, "the configuration is not prepared for memory devices"
+-                         " (e.g., for memory hotplug), consider specifying the"
+-                         " maxmem option");
+-        return 0;
+-    }
+     range_init_nofail(&as, ms->device_memory->base,
+                       memory_region_size(&ms->device_memory->mr));
+ 
+@@ -122,12 +116,6 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
+                     align);
      }
  
--    /* always allocate the device memory information */
--    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
+-    memory_device_check_addable(ms, size, &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return 0;
+-    }
 -
-     /* initialize device memory address space */
-     if (pcmc->has_reserved_memory &&
-         (machine->ram_size < machine->maxram_size)) {
-         ram_addr_t device_mem_size;
-+        hwaddr device_mem_base;
+     if (hint && !QEMU_IS_ALIGNED(*hint, align)) {
+         error_setg(errp, "address must be aligned to 0x%" PRIx64 " bytes",
+                    align);
+@@ -251,11 +239,23 @@ void memory_device_pre_plug(MemoryDeviceState *md, MachineState *ms,
+     uint64_t addr, align = 0;
+     MemoryRegion *mr;
  
-         if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
-             error_report("unsupported amount of memory slots: %"PRIu64,
-@@ -1060,19 +1058,14 @@ void pc_memory_init(PCMachineState *pcms,
-             exit(EXIT_FAILURE);
-         }
- 
--        pc_get_device_memory_range(pcms, &machine->device_memory->base, &device_mem_size);
-+        pc_get_device_memory_range(pcms, &device_mem_base, &device_mem_size);
- 
--        if ((machine->device_memory->base + device_mem_size) <
--            device_mem_size) {
-+        if (device_mem_base + device_mem_size < device_mem_size) {
-             error_report("unsupported amount of maximum memory: " RAM_ADDR_FMT,
-                          machine->maxram_size);
-             exit(EXIT_FAILURE);
-         }
--
--        memory_region_init(&machine->device_memory->mr, OBJECT(pcms),
--                           "device-memory", device_mem_size);
--        memory_region_add_subregion(system_memory, machine->device_memory->base,
--                                    &machine->device_memory->mr);
-+        memory_devices_init(machine, device_mem_base, device_mem_size);
++    if (!ms->device_memory) {
++        error_setg(errp, "the configuration is not prepared for memory devices"
++                         " (e.g., for memory hotplug), consider specifying the"
++                         " maxmem option");
++        return;
++    }
++
+     mr = mdc->get_memory_region(md, &local_err);
+     if (local_err) {
+         goto out;
      }
  
-     if (pcms->cxl_devices_state.is_enabled) {
-@@ -1120,7 +1113,7 @@ void pc_memory_init(PCMachineState *pcms,
- 
-     rom_set_fw(fw_cfg);
- 
--    if (pcmc->has_reserved_memory && machine->device_memory->base) {
-+    if (machine->device_memory) {
-         uint64_t *val = g_malloc(sizeof(*val));
-         PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-         uint64_t res_mem_end = machine->device_memory->base;
++    memory_device_check_addable(ms, mr, &local_err);
++    if (local_err) {
++        goto out;
++    }
++
+     if (legacy_align) {
+         align = *legacy_align;
+     } else {
 -- 
 2.40.1
 

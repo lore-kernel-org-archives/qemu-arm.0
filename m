@@ -1,177 +1,198 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp1440071ejb;
-        Mon, 29 May 2023 03:27:51 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7hcVa1nPaHRSSmtUOSJUXmLY+Zgrn0lZRU2mcyDxvXhtq5SA5wmiTtq7aYufq1d+V5sPAX
-X-Received: by 2002:a05:6a20:54a6:b0:10c:8f0c:f81c with SMTP id i38-20020a056a2054a600b0010c8f0cf81cmr8452025pzk.53.1685356070810;
-        Mon, 29 May 2023 03:27:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685356070; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2127490ejb;
+        Tue, 30 May 2023 05:13:01 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5L4bPExkkaS4aG++e321xTGPCOXiXbqXkEJ3OHqdD7+/3s3mTjGsySyVvqqvx9lFmDTKJ8
+X-Received: by 2002:ac8:7fc6:0:b0:3f4:427:dbb8 with SMTP id b6-20020ac87fc6000000b003f40427dbb8mr1592671qtk.2.1685448780982;
+        Tue, 30 May 2023 05:13:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685448780; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fk/kQq2NqL2PPBCLvVi7OnGkRN64pXPnOvWYshhjCUwXlOhTdBKcJVQ/QZkIf6adTO
-         wb2lrMw2UUre+BoRZDIvAtLRr6pa1mNkfRPcoS+lvPOFQy75//IUHqy/agLjBrQMo5nh
-         68Ljw2GjiXvWCsAwA69YOEXvL/Tk8Syb16QUCapiNm4o+hccvSjjHbr/+Oo+POJHTVGd
-         gCsm60+QVsM4I0sbdt39awZsyzPpfKWJ4/+m4g82vZwKdzXr/puZYIX3H/h+wfTxh1Ga
-         HkighnGamVO6DuMcJIvgZCTbWXLgCL33xkCn0REX+RRBhl3gsig+hZrBHjbiXYPm8kTO
-         8d0Q==
+        b=wun/gF5/mHcbOJknw/p8u2dXH+Qn/dlkYX/eY9csIll9cEF+oCEqwMPH5I6oH9SGle
+         FJvG052tmCewmALyX9katALJ+SerQx/kAWlpEiKbPYJ5o2/o6w4tALJRtYDeknWdmate
+         EJ5xNT0ZURyEllInzNBrj27HapClIOICMYcY8M0yn13NADwWAefkAw0MSzu6ApeMgWpK
+         a/6W4iGmESwcxbqkcnqvY4MWxjs14MYFaWQUXnJBI6GkEcbfbhTFun1w8MLixdWK6go3
+         ltbPOAcPs1IgBQAE5YDgpLVuC5joeN0qB2l4Do0mAwy3iUH8rh6QfNcjmrlX4fUmuuBa
+         7s9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=vJNgW7Vc6NDnBKEQWZLCi+QAbMD7KTMTqInMEGtIc9c=;
-        b=ea+jHO6ok3kmK7mCklkU9skrVKV/3T1+BE6JeLStoWHB09XL/LVTnG3RlSCo0J/2Si
-         gFj6B/i3vcthSXCNPx6DoJ0k4qXQqcbxzSjT8PC/bkRLNO5dH8lXmV+1lOqTVAoMnQ3w
-         en5e+udx16tawrQQg12kXcy7Mr0APrs7HSDfIG5WHZsXlZ2JFYTc+4tJZfPyJsoLE2/v
-         vxrH67zDQod9CYE54YLm9tlyXvCY4ClCWz2/A0Rcip2ikxDW9qoFQmOlR0+qvcEGFAPU
-         oVlNFd0oIUZDpPxIskZB15dJyKnd1hOYWur0lSjcnakOBm6BC+wwGlq+42LiZ8Xd0JyW
-         lxGA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=4/jlGgEm87FBCNta8BpLpBgKVYdmiXVpuZ1sVcQLpME=;
+        b=aTswte1NqT8uYzDzA3VQrEItkeH40jrLaJrCY4kIICj5z2KodTqs0Ws29soLKtO7Gd
+         FFFh/gDFyI6XPBe9ALZ8CdPBd3NO9SI7ndf3VULCIr7fyl4CCHZ66LFTgsIycufi+t3n
+         gIviMMnHNu91hA9fmH/mlEE+mm/Ssoall9RrbyIZ6KbKWFut2lIROiJkLAjWiWSogiZK
+         yYvsV2/C5pdf7gt+pFYuDYcOrycnLumzRt6L/hqOVDFMICG+QZ3P9f6v316fbP4AYJ2X
+         NX+jj6VKcGRtO5oxSf3rm0XHQ8JKWI1TN2ZkzJZzxRblZN5JKvcSQiTvf12VEqa1yHWh
+         soRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hemSZS+F;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G8lgqMs9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id i188-20020a636dc5000000b00519b9bfd43dsi9071340pgc.480.2023.05.29.03.27.50;
-        Mon, 29 May 2023 03:27:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f15-20020ac87f0f000000b003f6a8c3198csi6609192qtk.200.2023.05.30.05.13.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 May 2023 05:13:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hemSZS+F;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G8lgqMs9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230328AbjE2K1t (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Mon, 29 May 2023 06:27:49 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:34022 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229610AbjE2K1r (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 29 May 2023 06:27:47 -0400
-Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com [IPv6:2a00:1450:4864:20::529])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 6EE7F9C
-        for <kvm@vger.kernel.org>; Mon, 29 May 2023 03:27:46 -0700 (PDT)
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-514924ca903so2665112a12.2
-        for <kvm@vger.kernel.org>; Mon, 29 May 2023 03:27:46 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q3yDR-0002lN-Eu; Tue, 30 May 2023 08:12:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q3yDP-0002jq-0F
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:12:39 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q3yDN-0005Qc-DN
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:12:38 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-510f525e06cso7660434a12.2
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:12:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685356065; x=1687948065;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vJNgW7Vc6NDnBKEQWZLCi+QAbMD7KTMTqInMEGtIc9c=;
-        b=hemSZS+FE94+6En8EsFpBjhKr0XJ5fxgcWv0hM1OkLGAiNyY1P0lve9y0F0JP7PHXT
-         S6X07r0pYClwXvcgG3O6euQvCIL2pGCLzv0Kjv2DThAPG36mrISWiOLtpprqQdtH9vBc
-         DANp2xL5ve7VwVjHVUKHHAB/epE6wG/jJiK9BMCXVqDmJRDrYWTulZp9PK8l2WtCWre7
-         wMVj6j7RogqSKERJ4rtP3n8cBQn6KWcPYi3lL08rzR/cXh5lUp5ftSu/JzowAQ3dGqP0
-         7mU+Gw70zM12aXi0X43cbbnsdf5g9f5WALRAnLZMZ//B64MzUfJ4fHeQ/X9IrIOqDqWH
-         0WwA==
+ d=linaro.org; s=google; t=1685448755; x=1688040755;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=4/jlGgEm87FBCNta8BpLpBgKVYdmiXVpuZ1sVcQLpME=;
+ b=G8lgqMs9U9mfL7gudoEK0wFpXRtmwRi4x/3PHypZ6g2gxJpVzb2duyDFjGPZ0r4Yw6
+ B1Vxe47RrS/OU6nZ/uGYmRHhXF8KzIEbAwzucnUIHyTrYQxpKF4K8nX3E6t6TuVYzPg/
+ Mn1xkrgzcwbBy4+Q5WJYkLbJs8fe0jrGreoIcb5KkJgXnPO8x3MFDPB8GAuSXGTENWGh
+ tQYlrMBDX1HqaxP7niCkn/ZDglsqlbU5LjOvtWQ7+e/rXJXrkQ2b5u1xmmxlm+Kw/w/O
+ bUBIQO57J3uUH0eIORYh/DzFnabGCzYlwaHqEh2mKmFI6dleCS4+BPLdRcfR1myMUizT
+ KFvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685356065; x=1687948065;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vJNgW7Vc6NDnBKEQWZLCi+QAbMD7KTMTqInMEGtIc9c=;
-        b=hlO8DC4tfaNCNkF2KfJCtxsIQTm4I9hAN+wXKj0QoCytfDsTLXYFugFGX/XX9RcnPE
-         6M2V563rhjIgSA5PuCt2iwM4n4exNq2twMXJ+VyDRmrlAUz6l/9pZfvtvrpqS1k+FgSF
-         NAFfR8jV08XRFSLfalWPU0GB2ODd14/WtQ9ChcchZoXQCMZDswSdyfwZCWQUQeCIG14c
-         h04RxDXZqCqsBKkVwpn9jGPRwE4vMzYaijzQW/wBsMEscTfu6lUdYbe6Ns9Q/AHU3FDU
-         Cl1dY7qDidZJMBUp+6LzJrjJCEGClSIoqR1EW40GRE394sy+Y4fEyOSAfxQcQoM5GaIA
-         mYbQ==
-X-Gm-Message-State: AC+VfDxHkDDPI1HdIO/3nf3mFUehuCTxmVPlfT9b15VA7wu4rxqPeetf
-        wW6NYkkJJs8EgWiQq7DOXeB7mjzxHQgaUY36MZg+oQ==
-X-Received: by 2002:a05:6402:657:b0:50d:b16d:d21 with SMTP id
- u23-20020a056402065700b0050db16d0d21mr7201385edx.3.1685356064872; Mon, 29 May
- 2023 03:27:44 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1685448755; x=1688040755;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4/jlGgEm87FBCNta8BpLpBgKVYdmiXVpuZ1sVcQLpME=;
+ b=MonnzhxsjCgc2Stdof0m8bZpSb00ZTQ8j4VQc4APsvv+e5Z2hHl0WlzmCE9c8JinDb
+ neyMnExzISOeNcOLTpAQVDk1Nc5a76Ruci3rNNlqB4G4UcBfyKvsiY3/uXXPFbBaEQnC
+ FhwYD8iEs2l31QgHKQhCJilkLEsgbM1GqiRzWhKuPpyCRP4+l9egp22fcZspmbDH7wUw
+ esIrvXV7rKdEENA1gna96wP00fFqZO7gCGaxFkHNHwAw7isMnNJ3a+V6FCovUNpox7hS
+ LlnOBFg9sdmBuXJJXnQv6AcW8X7DcIWMiyqyJ2JgGw8ak/+463A7wuoispVP54uz4dpy
+ Q0Tw==
+X-Gm-Message-State: AC+VfDwtyPmQRLHwPbSXHBurYYW8Rprm/gMP6Mlco5HnhX9gsQzhfh0S
+ GRyb9iC7nkPm3+hkhnQmYrAt+IY0lQeYGKfllH1aRA==
+X-Received: by 2002:aa7:c3c8:0:b0:506:82b7:10c3 with SMTP id
+ l8-20020aa7c3c8000000b0050682b710c3mr1305507edr.41.1685448755581; Tue, 30 May
+ 2023 05:12:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230428095533.21747-1-cohuck@redhat.com> <87v8gkzi5v.fsf@redhat.com>
- <CABJz62MGU-49Ucs-CYsd2hdH8mejWtjXXBNcbs92Kx+V=T2EwA@mail.gmail.com>
-In-Reply-To: <CABJz62MGU-49Ucs-CYsd2hdH8mejWtjXXBNcbs92Kx+V=T2EwA@mail.gmail.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Mon, 29 May 2023 11:27:15 +0100
-Message-ID: <CAFEAcA-vFQRGsD0emmCwMfyVMd2YGhZL-k_U5x63=G9JaLo=GQ@mail.gmail.com>
-Subject: Re: [PATCH v7 0/1] arm: enable MTE for QEMU + kvm
-To:     Andrea Bolognani <abologna@redhat.com>
-Cc:     Cornelia Huck <cohuck@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Eric Auger <eauger@redhat.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Gavin Shan <gshan@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>
+References: <20230524191438.172019-1-sergey.kambalin@auriga.com>
+In-Reply-To: <20230524191438.172019-1-sergey.kambalin@auriga.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2023 13:12:24 +0100
+Message-ID: <CAFEAcA_PH8yAT28s3p7_0rqK9NodJ6gTXxv63J+98XoMQ_nJTg@mail.gmail.com>
+Subject: Re: [PATCH] Prepare bcm properties for videocore 4
+To: Sergey Kambalin <serg.oker@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Sergey Kambalin <sergey.kambalin@auriga.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: nMlvLPSVzFWz
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PuruwuyyQjZG
 
-On Mon, 29 May 2023 at 11:15, Andrea Bolognani <abologna@redhat.com> wrote:
+On Wed, 24 May 2023 at 20:15, Sergey Kambalin <serg.oker@gmail.com> wrote:
 >
-> On Mon, May 22, 2023 at 02:04:28PM +0200, Cornelia Huck wrote:
-> > On Fri, Apr 28 2023, Cornelia Huck <cohuck@redhat.com> wrote:
-> > > Another open problem is mte vs mte3: tcg emulates mte3, kvm gives the guest
-> > > whatever the host supports. Without migration support, this is not too much
-> > > of a problem yet, but for compatibility handling, we'll need a way to keep
-> > > QEMU from handing out mte3 for guests that might be migrated to a mte3-less
-> > > host. We could tack this unto the mte property (specifying the version or
-> > > max supported), or we could handle this via cpu properties if we go with
-> > > handling compatibility via cpu models (sorting this out for kvm is probably
-> > > going to be interesting in general.) In any case, I think we'll need a way
-> > > to inform kvm of it.
-> >
-> > Before I start to figure out the initialization breakage, I think it
-> > might be worth pointing to this open issue again. As Andrea mentioned in
-> > https://listman.redhat.com/archives/libvir-list/2023-May/239926.html,
-> > libvirt wants to provide a stable guest ABI, not only in the context of
-> > migration compatibility (which we can handwave away via the migration
-> > blocker.)
+> Hello!
+> Sorry for a quite a big patch, but most of the changes are the same type.
+> Most of the patch is about a definition of new constants/structs and replacing
+> magic numbers with those constants.
 >
-> Yeah, in order to guarantee a stable guest ABI it's critical that
-> libvirt can ask for a *specific* version of MTE (MTE or MTE3) and
-> either get exactly that version, or an error on QEMU's side.
 >
-> > The part I'm mostly missing right now is how to tell KVM to not present
-> > mte3 to a guest while running on a mte3 capable host (i.e. the KVM
-> > interface for that; it's more a case of "we don't have it right now",
-> > though.) I'd expect it to be on the cpu level, rather than on the vm
-> > level, but it's not there yet; we also probably want something that's
-> > not fighting whatever tcg (or other accels) end up doing.
-> >
-> > I see several options here:
-> > - Continue to ignore mte3 and its implications for now. The big risk is
-> >   that someone might end up implementing support for MTE in libvirt again,
-> >   with the same stable guest ABI issues as for this version.
-> > - Add a "version" qualifier to the mte machine prop (probably with
-> >   semantics similar to the gic stuff), with the default working with tcg
-> >   as it does right now (i.e. defaulting to mte3). KVM would only support
-> >   "no mte" or "same as host" (with no stable guest ABI guarantees) for
-> >   now. I'm not sure how hairy this might get if we end up with a per-cpu
-> >   configuration of mte (and other features) with kvm.
-> > - Add cpu properties for mte and mte3. I think we've been there before
-> >   :) It would likely match any KVM infrastructure well, but we gain
-> >   interactions with the machine property. Also, there's a lot in the
-> >   whole CPU model area that need proper figuring out first... if we go
-> >   that route, we won't be able to add MTE support with KVM anytime soon,
-> >   I fear.
-> >
-> > The second option might be the most promising, except for potential
-> > future headaches; but a lot depends on where we want to be going with
-> > cpu models for KVM in general.
->
-> What are the arguments for/against making MTE a machine type option
-> or CPU feature flag? IIUC on real hardware you get "mte" or "mte3"
-> listed in /proc/cpuinfo, so a CPU feature would seem a pretty natural
-> fit to me, but I seem to recall that Peter was pushing for keeping it
-> a machine property instead.
+> Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+> ---
 
-The arguments for a machine property are:
- * MTE needs not just CPU support but also system level support
-   (on real hardware there needs to be actual tag ram somewhere
-   out there in the system; for TCG we need to create the tag
-   RAM in the virt board code)
- * it's what we're already doing for TCG, so it keeps the UI
-   consistent between TCG and KVM
- * it's what we already do for things like the virtualization
-   extensions and TrustZone emulation (which also generally need
-   to be supported not just by the CPU but also by the board)
+
+> @@ -51,48 +98,48 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>          /* @(value + 8) : Request/response indicator */
+>          resplen = 0;
+>          switch (tag) {
+> -        case 0x00000000: /* End tag */
+> +        case RPI_FWREQ_PROPERTY_END: /* End tag */
+>              break;
+> -        case 0x00000001: /* Get firmware revision */
+> +        case RPI_FWREQ_GET_FIRMWARE_REVISION: /* Get firmware revision */
+>              stl_le_phys(&s->dma_as, value + 12, 346337);
+>              resplen = 4;
+>              break;
+> -        case 0x00010001: /* Get board model */
+> +        case RPI_FWREQ_GET_BOARD_MODEL: /* Get board model */
+>              qemu_log_mask(LOG_UNIMP,
+>                            "bcm2835_property: 0x%08x get board model NYI\n",
+>                            tag);
+>              resplen = 4;
+>              break;
+> -        case 0x00010002: /* Get board revision */
+> +        case RPI_FWREQ_GET_BOARD_REVISION: /* Get board revision */
+
+So mostly this is just updating hardcoded constants to
+symbolic constants, which is great.
+
+> -        case 0x00038002: /* Set clock rate */
+> -        case 0x00038004: /* Set max clock rate */
+> -        case 0x00038007: /* Set min clock rate */
+> +        case RPI_FWREQ_GET_CLOCKS: /* Get clocks */
+> +            /* TODO: add more clock IDs if needed */
+> +            stl_le_phys(&s->dma_as, value + 12, 0);
+> +            stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_ARM_CLK_ID);
+> +            resplen = 8;
+> +            break;
+
+But this is adding a new implementation of a new property...
+
+> +
+> +        case RPI_FWREQ_SET_CLOCK_RATE: /* Set clock rate */
+> +        case RPI_FWREQ_SET_MAX_CLOCK_RATE: /* Set max clock rate */
+> +        case RPI_FWREQ_SET_MIN_CLOCK_RATE: /* Set min clock rate */
+>              qemu_log_mask(LOG_UNIMP,
+>                            "bcm2835_property: 0x%08x set clock rate NYI\n",
+>                            tag);
+
+> @@ -295,6 +357,144 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>                                      resplen);
+>              break;
+>
+> +        case RPI_FWREQ_GET_THROTTLED: /* Get throttled */
+> +            stl_le_phys(&s->dma_as, value + 12, 0);
+> +            resplen = 4;
+> +            break;
+
+...and this and the other bits further down in this part of
+the patch are new properties too.
+
+New features should be in separate patches from refactoring cleanup,
+please.
+
+By the way: when you split up patches you don't need to send them
+just one at a time -- you can send a patchset of multiple related
+patches.
 
 thanks
 -- PMM

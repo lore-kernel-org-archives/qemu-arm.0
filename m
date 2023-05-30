@@ -1,110 +1,112 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2436902ejb;
-        Tue, 30 May 2023 13:57:03 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ577RiVZh6KtmCgz8KdaqONI+kbyHr5kyCsLk7Mq+IVAnmmeMMopA5ToMlIZlFj5HpTGxBL
-X-Received: by 2002:a05:620a:8a12:b0:75b:23a1:423 with SMTP id qt18-20020a05620a8a1200b0075b23a10423mr3282500qkn.57.1685480223398;
-        Tue, 30 May 2023 13:57:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685480223; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2442093ejb;
+        Tue, 30 May 2023 14:06:22 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5GoF+XUnG1y9Z/SoIYFdB6Av1okkBp4SlScJ7GiG56Vhg0tLI8D42C08P94MKtvyJbwJ0K
+X-Received: by 2002:a05:6214:410f:b0:621:65de:f600 with SMTP id kc15-20020a056214410f00b0062165def600mr4078490qvb.1.1685480782423;
+        Tue, 30 May 2023 14:06:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685480782; cv=none;
         d=google.com; s=arc-20160816;
-        b=i2E21ZuUgpvfIH+HYMET9kJTa1+m4BhMxfHz/9NX1aukJGgV2WN5+i+V1j29IRduCs
-         W6VJ1X/VkLEtnJfFe+CE9M9hTpCqW+KqyCK1w6iWiFP842pvOdZC8pbFePqHtfBnniAm
-         cfyD11PU/dPor8JkzYCdsZhgIz34U6ImqCwspsIX54ga+ivhiqxoqiqMYoUqvcIs9UcH
-         g0BRQevxu2QKf8Hd6Jo0Hg0olHO7yOapF+N6ZMkGaatqZzcs8cKVQP61vOS4UmiaK9DW
-         sNCGtaljLEG6v5e5gtg3IE6Mpfo/obZfLuo9rYs3tX327CwMRirk8WuZ9hN+4CbENpd4
-         xwhQ==
+        b=C4bJBgqmEym2vu04WK0A1iSasZSAYstK5JzgNWkleLkAkFmC44ZvoQpeWNLIgAo5Br
+         pLULSdb6YeN4BFJMnSLrlxW5THkLq2gWO+DhiUwPZBeWR0HnKRJVXKofkBtSz89xqic0
+         dvrPPh5dTyYHj5punXGc7MTcBCPBE9BnE345aplJKdmqAzhKayAiLQySD60UDQJTLsiO
+         doO5RtFhx5+o3VGSWsrBQ1Hb4uKyuW0Ff0QwC0rzfqg8JZ13FU9gxNlISKgrL9XuXGLL
+         CMB6fnIjVO4Md3D7qfC2p8EEl6uiMbpeYv7V7K/63IROXel417FuntcVLJ79KYtKsabx
+         it6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=VQSh4nyJNtfG4fQTBMsLnvOj6Tx0lKX2IP+60OpXJwU=;
-        b=T0ywzz4SijVv/K8o7/SI16p25+EBYD4w2d6LbAavfQDqfvdqsF8vWiWCpof/CIqDXd
-         VtG23x2XGpOipmldadE6H3IaeeFil8pfNI3m2iORoUwu1LOMZvRi4+v1Gjg1kN0Jvpcc
-         1q6kNCCskzpbSVjCoYi46+b6UqNIL6CIXgHL4vuawvzCv5p8jSY9H/B7zOvy2zMJGgOo
-         LArHXnlYS9XLUGIac2RaDWRT8evoySMxCazzzLo47Rvkhxt3ZgN0lC4IUIDqqcjQkkRE
-         ymWSVet+cRjQMUWp2el886aGZlM5kSscAFNs3at0NLZ0qPLspnKJLqQI0GjhflDOX1Bi
-         VOng==
+        bh=O7VkMhVGOxiOQ61TnY/jd9GpbjF7vhHIyXxCNbDCSLA=;
+        b=j7hnd/L4AN+UKJSojvB/Dzi+T3llYfeJtJPOpvfuTRTZLhLo/UO2Rb75Vvd8wz/NS/
+         4bOaXFiy8/0ucnmEk7K3jgnFpbqIfCMjF9si6lztVAuvySGJt52o1v79TaGd+tb3oPto
+         jdeck3nJ5TbYBUOW9uIFQR7JbVNVIXNYoOuhyBOvHOoRfWowpx7h4aReGg3ptKZjEo1u
+         8pu/fmdsv90Hlo1UdyojDXk87vX/jAhClCCLQjQ3ckdI/IULuA9Bff3KjMw3fuR/EX9S
+         FiAUpQWlfR/y0HTcZcFAQY75qkcxnTHAQw3Xz9LXVsiRS1NOdM1jWD0oWjUE9DMfX5tM
+         b/Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JA9xB+Qs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="aPN3Si/d";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w2-20020a05620a128200b0075b08d7b0c7si6927491qki.187.2023.05.30.13.57.03
+        by mx.google.com with ESMTPS id iu8-20020ad45cc8000000b00626080fa02dsi6537514qvb.553.2023.05.30.14.06.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 13:57:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 May 2023 14:06:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JA9xB+Qs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="aPN3Si/d";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q46OT-0005S2-UZ; Tue, 30 May 2023 16:56:37 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q46XJ-0008GZ-Ac; Tue, 30 May 2023 17:05:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q46OR-0005R7-FV
- for qemu-arm@nongnu.org; Tue, 30 May 2023 16:56:35 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q46XI-0008GB-1M
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 17:05:44 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q46OP-0000Mc-QV
- for qemu-arm@nongnu.org; Tue, 30 May 2023 16:56:35 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-30aea656e36so2108386f8f.1
- for <qemu-arm@nongnu.org>; Tue, 30 May 2023 13:56:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q46XF-0002Lh-VA
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 17:05:43 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3063433fa66so3560729f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 30 May 2023 14:05:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685480192; x=1688072192;
+ d=linaro.org; s=google; t=1685480740; x=1688072740;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=VQSh4nyJNtfG4fQTBMsLnvOj6Tx0lKX2IP+60OpXJwU=;
- b=JA9xB+QskiqbGWg7JjbaPNRBIA3Lh+FAbeVlULE1kfVXEZq96u05PQe53fwJ4txWgl
- LpZeTqnZqJYdSZesPGIm75Gxd+xHvlNZ7f/Y7ePJSY95GlAE2ljBnZk+Bm6IZ9T22/gA
- mo1+2xb5Fdef0k3ULQ+YodGgcZyWXadFqKhSAHaMmnBchVoCOVvE+zuwboyQaFx6+3RI
- mxPm1kSaj0Oi55SOOcnOie5uZF7bnMm59ladg9bYuQp0Uqnq5zLrBPUikC9tEB2SBoZe
- FcbXBbDR/FQN0qm/fRRFeKnMqcV9TeqxLeMU2+ELfqh+xFle51xhUylPIaicUMEvoU9w
- 6KZg==
+ bh=O7VkMhVGOxiOQ61TnY/jd9GpbjF7vhHIyXxCNbDCSLA=;
+ b=aPN3Si/d69SvkZmeFQskm4igjZs4hFcTcjUvgm1RzxYZsBDY87v3M9f3NcpOTMTQ+u
+ 6QWY4g5LT4Hz99YTdwe2ADbwvDfUGsEY2ai/i2Aa7vXpvGztPFRTGVpmwUPhwwRj7jTt
+ X5hEN1ORekpGPVu6H3+Ti0GNYYkKJe002zBhwnAuRJKA3mOLzZYLF+sijBbVpF/xghay
+ dpva20HfuLGH/3CC+gWJFaS+Kf+LyEDFgWK2z4+pHBQ9e9r9Lgdfg/kM7pP9xbSgW59p
+ vEAGrCPVr9JkOImSyhZ1igu3zu05IUb8jdIBphYeXGODf6jfMunEdEDTER90yZCHvT1+
+ pymQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685480192; x=1688072192;
+ d=1e100.net; s=20221208; t=1685480740; x=1688072740;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VQSh4nyJNtfG4fQTBMsLnvOj6Tx0lKX2IP+60OpXJwU=;
- b=O2rBRme2RvjyV/XAaYpplWenbhV3PRep991tm1XyWnU4+TDDs/pBnIa/SxBO0exnEI
- YwWmPhXd5AYrbSc/0cDkIUp6c93TBJdMp50ywPBIYGe1wCupYK9Yoka+aBIHJ4IU/PjY
- Q+aqXzZ5fG9yLEbS8tcKq63FePJqvokVTbRuOlDAv6/pmAZZ+W1y2hwtMZtsygS3x5O1
- yRX//c82m2qk6FxnSNJo2t3D3JFDU4uxu9K59F7zQLoXeoHEar6OH2X1RXr0dK0egnb6
- x0jBghzNzVaBRhK2A/NTkZlyBRo7XJrPYRc6/F6heeK2QxDKFLWUch4sJBOqEGPbixbV
- xEMg==
-X-Gm-Message-State: AC+VfDyeuv4JW/OwOWJ4qY5nG+EmTne0WoenBvlRqOtvehLMZH4Dryvn
- +P8LQmbvgq0FpI8s1scU4OU52g==
-X-Received: by 2002:a5d:58da:0:b0:309:3698:8006 with SMTP id
- o26-20020a5d58da000000b0030936988006mr2450000wrf.34.1685480192211; 
- Tue, 30 May 2023 13:56:32 -0700 (PDT)
+ bh=O7VkMhVGOxiOQ61TnY/jd9GpbjF7vhHIyXxCNbDCSLA=;
+ b=SVPyaOufa/Y8EkFa2QpXMBng+xIri3lkgj5zTlkx31OZ9Ue59HlMG3rGnpfy/wenir
+ bFHT8TzEG+YPTjHYEyaGc35eAaU8Wrh6i8e/xhT4XhlYzAFy7f9Uzg982yuyT9sBQUZ0
+ 2/VSqFoT4DwIW0B6VYdevAdl8XK69a3U3e7vqtl2mifXL18eXwp1P8fqWNurm2U7YGYR
+ NnNxPSpTHDAM4dwxjP0FV3+7K12Fyetgr4OvV0QYBdeSqwxeMIst/o6FOKT3T/0JEd4/
+ Z3H+zONrEfFaXDocbaM075yh99KZ+L516fKmzAmttXDhVIPOxa4KJ3X3tZ1wDOiR4JDF
+ Kw2g==
+X-Gm-Message-State: AC+VfDyFblvfhtVOWhuw1rnyxkiwB2dYjSzyHJUeuM7c9g4BOn8lOaj2
+ Q8t/iZRg/0RlHbM/kf3y1NyFWw==
+X-Received: by 2002:adf:e789:0:b0:305:ed26:8576 with SMTP id
+ n9-20020adfe789000000b00305ed268576mr2533019wrm.9.1685480740220; 
+ Tue, 30 May 2023 14:05:40 -0700 (PDT)
 Received: from [192.168.69.115] ([176.176.180.1])
  by smtp.gmail.com with ESMTPSA id
- l12-20020a5d4bcc000000b003062b2c5255sm4459893wrt.40.2023.05.30.13.56.30
+ t7-20020a5d4607000000b0030647449730sm4372519wrq.74.2023.05.30.14.05.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 May 2023 13:56:31 -0700 (PDT)
-Message-ID: <ad016c90-238c-2654-d550-9823bcb2a395@linaro.org>
-Date: Tue, 30 May 2023 22:56:29 +0200
+ Tue, 30 May 2023 14:05:39 -0700 (PDT)
+Message-ID: <f8a075cd-0100-f3d0-dc26-bf733917fbee@linaro.org>
+Date: Tue, 30 May 2023 23:05:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 06/12] aspeed/smc: Wire CS lines at reset
+Subject: Re: [PATCH 07/12] hw/ssi: Check for duplicate addresses
 Content-Language: en-US
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
 References: <20230508075859.3326566-1-clg@kaod.org>
- <20230508075859.3326566-7-clg@kaod.org>
+ <20230508075859.3326566-8-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230508075859.3326566-7-clg@kaod.org>
+In-Reply-To: <20230508075859.3326566-8-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -113,94 +115,67 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yj68j/VhMXWK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VmsoUnwRG1mq
 
 On 8/5/23 09:58, Cédric Le Goater wrote:
-> Currently, a set of default flash devices is created at machine init
-> and drives defined on the QEMU command line are associated to the FMC
-> and SPI controllers in sequence :
+> This to avoid address conflicts on the same SSI bus. Adapt machines
+> using multiple devices on the same bus to avoid breakage.
 > 
->     -drive file<file>,format=raw,if=mtd
->     -drive file<file1>,format=raw,if=mtd
-> 
-> The CS lines are wired in the same creation loop. This makes a strong
-> assumption on the ordering and is not very flexible since only a
-> limited set of flash devices can be defined : 1 FMC + 1 or 2 SPI,
-> which is less than what the SoC really supports.
-> 
-> A better alternative would be to define the flash devices on the
-> command line using a blockdev attached to a CS line of a SSI bus :
-> 
->      -blockdev node-name=fmc0,driver=file,filename=./flash.img
->      -device mx66u51235f,addr=0x0,bus=ssi.0,drive=fmc0
-> 
-> However, user created flash devices are not correctly wired to their
-> SPI controller and consequently can not be used by the machine. Fix
-> that and wire the CS lines of all available devices when the SSI bus
-> is reset.
-> 
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Alistair Francis <alistair@alistair23.me>
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->   hw/arm/aspeed.c     | 5 +----
->   hw/ssi/aspeed_smc.c | 8 ++++++++
->   2 files changed, 9 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index b654513f35..9a15899cbc 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -299,17 +299,14 @@ void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
->   
->       for (i = 0; i < count; ++i) {
->           DriveInfo *dinfo = drive_get(IF_MTD, 0, unit0 + i);
-> -        qemu_irq cs_line;
->           DeviceState *dev;
->   
->           dev = qdev_new(flashtype);
->           if (dinfo) {
->               qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
->           }
-> +        qdev_prop_set_uint32(dev, "addr", i);
->           qdev_realize_and_unref(dev, BUS(s->spi), &error_fatal);
-> -
-> -        cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> -        qdev_connect_gpio_out_named(DEVICE(s), "cs", i, cs_line);
->       }
+>   hw/arm/stellaris.c                  |  4 +++-
+>   hw/arm/xilinx_zynq.c                |  1 +
+>   hw/arm/xlnx-versal-virt.c           |  1 +
+>   hw/arm/xlnx-zcu102.c                |  2 ++
+>   hw/microblaze/petalogix_ml605_mmu.c |  1 +
+>   hw/ssi/ssi.c                        | 20 ++++++++++++++++++++
+>   6 files changed, 28 insertions(+), 1 deletion(-)
+
+
+> diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+> index a25e064417..685b7678e0 100644
+> --- a/hw/ssi/ssi.c
+> +++ b/hw/ssi/ssi.c
+> @@ -42,10 +42,30 @@ DeviceState *ssi_get_cs(SSIBus *bus, int addr)
+>       return NULL;
 >   }
 >   
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 7281169322..2a4001b774 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -692,6 +692,14 @@ static void aspeed_smc_reset(DeviceState *d)
->           memset(s->regs, 0, sizeof s->regs);
->       }
->   
-> +    for (i = 0; i < asc->cs_num_max; i++) {
-> +        DeviceState *dev = ssi_get_cs(s->spi, i);
-> +        if (dev) {
-> +            qemu_irq cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
-> +            qdev_connect_gpio_out_named(DEVICE(s), "cs", i, cs_line);
-> +        }
+> +static bool ssi_bus_check_address(BusState *b, DeviceState *dev, Error **errp)
+> +{
+> +    SSIPeripheral *s = SSI_PERIPHERAL(dev);
+> +
+> +    if (ssi_get_cs(SSI_BUS(b), s->addr)) {
+> +        error_setg(errp, "addr '0x%x' already in use", s->addr);
+
+We could return "... in use by a $MODEL device".
+
+   DeviceState *d = ssi_get_cs(SSI_BUS(b), s->addr);
+   if (d) {
+       "... in use by a %s device", ..., object_get_typename(OBJECT(d)));
+   }
+
+Anyhow,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +        return false;
 > +    }
+> +
+> +    return true;
+> +}
 
-Why did you chose the DeviceReset handler?
-Shouldn't this be done in aspeed_smc_realize(), the DeviceRealize handler?
-
->       /* Unselect all peripherals */
->       for (i = 0; i < asc->cs_num_max; ++i) {
->           s->regs[s->r_ctrl0 + i] |= CTRL_CE_STOP_ACTIVE;
 

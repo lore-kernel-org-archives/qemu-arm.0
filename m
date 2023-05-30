@@ -1,99 +1,98 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2133822ejb;
-        Tue, 30 May 2023 05:22:35 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ54XbrL6fLsSHrLJEu4pDWG7MGDTwjJ86QiSzpoei+EV+TRMOhRUUTlh0Iu5nyrYLxP5Qn2
-X-Received: by 2002:a05:6214:2526:b0:61e:f999:5394 with SMTP id gg6-20020a056214252600b0061ef9995394mr2353283qvb.0.1685449354810;
-        Tue, 30 May 2023 05:22:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685449354; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2133894ejb;
+        Tue, 30 May 2023 05:22:41 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5GYKCXAvhMltNQ0wA7KfztWnZTDDWf0zBbksS92jFwwdbxi5rb8pPHmMSQdjPx1LZqbxUN
+X-Received: by 2002:a05:6214:2aa3:b0:625:aa49:c346 with SMTP id js3-20020a0562142aa300b00625aa49c346mr1626583qvb.58.1685449360853;
+        Tue, 30 May 2023 05:22:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685449360; cv=none;
         d=google.com; s=arc-20160816;
-        b=eG1fTxFMQmsMl9iAC8UJz/Y2gSBnnSTuga37MCuMw8AWmXoT+Gxym1uLoWqHRIQ/3Z
-         qaHFN55mDueXnMYoSmenepGCRj1gQOl7+7ulIKF3BLIMtL6Lx0A3Lfl40UZzKCzJR5Li
-         v9cQdli4fsruSD4dbj2Vi3OLzHaHnNB1eIMWNzeaNqgPPw9c4f36IfofvBqWFBx4STm1
-         mZ/9sLur1dFERz0Joj/CqAgm6MIu3rWqmSSC2wWVaSCk9W/58f4JY71V9SDKKPdFTsba
-         6lYxxCZ6lN1qwyTC4qWRaws89EEMFFiGR9yBfzmx1A3xBbcthX5zNwnx2IqXj7ctqvrD
-         opWw==
+        b=UgXv6qmfqJ6M7G3z8o66V4yUi4ppYL56f95Ry1nNKbn6QbN9Iuw9fWxr+4zEX1jxyq
+         Pae1anVkBd9RqAitvz9q8pwKerZ4xmOysD2p8Gl5Sk0a7wzyZSBjLiN7plLr2/ZYqXPo
+         LV7AKRENxHNmm7X2e2MMXiMJ7/FdALJ4ffSRkmo9Ff9DruxXta1sGUePjMWoMEDJe7wR
+         2aSBBGX5PdjyPdKAlWHBjnlD2sKNm2ZewLS8nTY11LYUD/t6x/vYyxJp0gkOh+hcRiCI
+         ybBTTEhZyk0sXBid6moTGtgRmjfvrEHKR2ivZvHVmFIWAhJMI03OkKcy4lfbryeSuD0i
+         rTOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/iwjt5UzZyS/5OOqSTr1TjEPUXgE61Zu31mA7m8RfYY=;
-        b=PQGG4b3dPuZb3APtw3AuLnVeI0/PaOEm57GQp04wQByPGmYIb3DQvUrJMmrGIMZNtF
-         566P5y19iRfLKMD3tP768hfwaGjJZiABfg1zasvXl7FJsLu8sv5lxscgy7b0O9yAsID1
-         hD2ogZqC/+h8lH5jyVtQ3yNdC2kKxUZrerdCdZxZPJJRrhwNlz0lI+kobAoTEQ1lXJUb
-         Rw/91adQ0XncsomZ3KaGd6+WS2pP8UR5YaxC97cxiONqvtDq3AXdHRvoFH9A5PNCI6R+
-         EWhZRIlRHGBy5OF3/EX/ptd0pHLv+tLjReKcDsCIz/uir2Jja8jE4s7t/4jjEgCQA57y
-         wT5A==
+        bh=D1LKyft2/91dJcophWImOTWMocrtI2x+nbhDwIJH+7I=;
+        b=TOtfbWvegdOvPQ8dJXQbVoJ6xVd4OsLGogLFIbZDoheInPln3p0iPMmMkKP6PLzjk8
+         lTon/C+HdNV83UeO0ASoEejDBeCalBIc6HPB756ITmNC/ImqK0yDP8qIBCPIcq975ZJQ
+         2hyQIVxMWklk0BcYGITbJmQfLfOZQnOWGJ7Jk0/TWfRf5E1z4ixvzkPmwM1rni5DMziV
+         5L+tdb8u7eSGLz/ARaXPqKpqfxbxdLUm/LAPckNEvYWQyLEVFnDygSewiRBa0Ay2rBgI
+         bcE4rOiajuz9efnTRXbE8L/LY8/+UHhGKuwJNukJrRtXZYno1s1ZRNAa4EUgzkr+tiYk
+         OXTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iUdlziyC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fbSWlfab;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jl14-20020ad45e8e000000b0061ada7f42dfsi6629441qvb.182.2023.05.30.05.22.34
+        by mx.google.com with ESMTPS id iy10-20020a0562140f6a00b005adb460bc9bsi6342008qvb.412.2023.05.30.05.22.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 05:22:34 -0700 (PDT)
+        Tue, 30 May 2023 05:22:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iUdlziyC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fbSWlfab;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q3yMj-0002eh-SN; Tue, 30 May 2023 08:22:18 -0400
+	id 1q3yMz-0002yw-OP; Tue, 30 May 2023 08:22:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yMM-0002Ey-TI
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:21:54 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yMx-0002pJ-7F
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:22:31 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yML-0007fv-Ds
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:21:54 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-3f6094cb2d2so45853995e9.2
- for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:21:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yMv-0007ld-50
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:22:30 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-30af0aa4812so1161731f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:22:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685449311; x=1688041311;
+ d=linaro.org; s=google; t=1685449347; x=1688041347;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=/iwjt5UzZyS/5OOqSTr1TjEPUXgE61Zu31mA7m8RfYY=;
- b=iUdlziyCl4CBxT3sO6ElqxsIzo4/ZCpzB4LtA3fIZQrsvfFVfrjzC2nvHCqzWV5089
- yuC8pnDenxEoHHDSekmN7RhvnVqR/+pxTo1aSBiDLul7hVdpGtfK8UN0aeqs2AaFcXjU
- aVFaBeFEU0BVXLo5fwnzoEbOnW1RVSK0gQp3Nt253R8ffr1Tg5T6WjzltAnMAMifRImP
- tFAI9j9o7qdrkPQluRppf0e3H7eIj2FJT4igIkMLSlUdHtPNlCsEtkCh6XSgZn1xJ/W0
- /U2+4AuAVaodLGyFWgtcbjRYtJXOfNSsrFBJ0zec+Oeq5ZEGw0aMr+N4oHtc2/FksvuI
- T+sg==
+ bh=D1LKyft2/91dJcophWImOTWMocrtI2x+nbhDwIJH+7I=;
+ b=fbSWlfabF4A6S0jbrrLQPr0y7m2vrj6+aceNV4pEY20cEyMckwoy+wzPj1VzWT1zGe
+ j424UWV5TUAXaA3Z225KTOrji1e5AB2fY27kN+CbmkVLDb++Yc2dkLNN9CcBM9c16oKm
+ oPyTR1kHZxZck7RPBZdgtA9rrA6ebMpwe2ubiJYLS0fkFkY+977els3Eg2qyBwUuBnmq
+ xB+Lov3ooil0Iteb7ESBTK61vMHTqL+rnMrcKCiaO8asfOOi3S464IDfvlhDqkzSkY2p
+ LmPNGO6i3WjMRemaKqO7aaX7ygHaiUWjoOE6Wpo3Hyi9o083E8K7l4yOrfMa+lQrivAt
+ seXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685449311; x=1688041311;
+ d=1e100.net; s=20221208; t=1685449347; x=1688041347;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/iwjt5UzZyS/5OOqSTr1TjEPUXgE61Zu31mA7m8RfYY=;
- b=NjL2c9j53AizQ0LOqcZdBzGZVKLkGLNjBQGjC66/Qve+XPdKmnWebec2FDWk2eKSEl
- PDF8obrhKFqJXC3NGawoKkKRBteTaHCpqV2mXgrVlPb44egfKqH38/NqgHOXERMyxbma
- soPNd6298XGfSSbH+ZpZxVEWexIzK3x3U+Tez94WP3DlWgyBd/QIixLI4XJ3OqDHac3C
- YWkGQ93m/6jdAWCS44LuwkrPExKZu8eRQ4MvMfeveEUfTjJSP/SfdMZSZDOaxXf0Tsgo
- ONE+XW9nlD5tuItn+a4Hwd9gEJYjv+362CJDuBf3EtYzW8TTkn4hzfrCwZPTDfwLgR5L
- CTHA==
-X-Gm-Message-State: AC+VfDwUi+PE9D/3OKj4HW6PyKKf7i9ohzN3GIosTJfBD9kNJQjTuvs+
- 76si0mTePncQ0KauRf0OE4hWig==
-X-Received: by 2002:a1c:7516:0:b0:3f7:5d:4a0b with SMTP id
- o22-20020a1c7516000000b003f7005d4a0bmr1612494wmc.1.1685449310939; 
- Tue, 30 May 2023 05:21:50 -0700 (PDT)
+ bh=D1LKyft2/91dJcophWImOTWMocrtI2x+nbhDwIJH+7I=;
+ b=U6U7DqCZ9hGm3KkIy9KixD/cXOf7AvooKwqWOKtPe2WBrHvEyyJKA0NopzTDgXi4GI
+ JvVjJjvX3p8J4qrKJTpaAT1nJlti7m70P4gULOib0KUnycumdZxTxqeMGrKXrmsKf2+m
+ +MjNh4DFLImMGt7EQnwVUcmaDTUKeWFNqWt8gxD5TNPVBjm6Uh9a29vHYrNF83zGq2Y1
+ 1R6IoVjes7XuqbQ9yP6lLq3pIXDebh9Jip8Znk+Plp0OaWNfhs/gWNKezKj5OJ+GVq0Q
+ fr+4ZHO8rIUMQ810D/iXzDLJBK0wxSPnUaXz04AsDDHa8uLSYoWZtK8mg3S+X5xqFgUO
+ V93Q==
+X-Gm-Message-State: AC+VfDzgnrzl+mXozjSXUgHwE9sLLYaYAqLybRz05dpDY5jauZiT/VVp
+ y95TZ/mtfQHXJRiXgHIcRFI+WnffEF4qaAKt8wYjWQ==
+X-Received: by 2002:adf:f404:0:b0:30a:d8df:6800 with SMTP id
+ g4-20020adff404000000b0030ad8df6800mr1413209wro.33.1685449347478; 
+ Tue, 30 May 2023 05:22:27 -0700 (PDT)
 Received: from [192.168.69.115] ([176.176.180.1])
  by smtp.gmail.com with ESMTPSA id
- k14-20020a5d6e8e000000b003068f5cca8csm3081140wrz.94.2023.05.30.05.21.48
+ w12-20020a5d544c000000b002fed865c55esm3086126wrv.56.2023.05.30.05.22.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 May 2023 05:21:50 -0700 (PDT)
-Message-ID: <78c33a17-c3a7-134c-c2f2-0f4a46e38768@linaro.org>
-Date: Tue, 30 May 2023 14:21:48 +0200
+ Tue, 30 May 2023 05:22:27 -0700 (PDT)
+Message-ID: <c9406bef-2a9b-1c21-c11d-bcf8a85bec96@linaro.org>
+Date: Tue, 30 May 2023 14:22:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 07/10] hw/i386/acpi-build: Rely on machine->device_memory
- when building SRAT
+Subject: Re: [PATCH 08/10] hw/i386/pc: Remove PC_MACHINE_DEVMEM_REGION_SIZE
 Content-Language: en-US
 To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -110,13 +109,13 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
 References: <20230530113838.257755-1-david@redhat.com>
- <20230530113838.257755-8-david@redhat.com>
+ <20230530113838.257755-9-david@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230530113838.257755-8-david@redhat.com>
+In-Reply-To: <20230530113838.257755-9-david@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -138,16 +137,10 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +aE89n6bOWK8
+X-TUID: YYm2aim6kkT7
 
 On 30/5/23 13:38, David Hildenbrand wrote:
-> We're already looking at machine->device_memory when calling
-> build_srat_memory(), so let's simply avoid going via
-> PC_MACHINE_DEVMEM_REGION_SIZE to get the size and rely on
-> machine->device_memory directly.
-> 
-> Once machine->device_memory is set, we know that the size > 0. The code now
-> looks much more similar the hw/arm/virt-acpi-build.c variant.
+> There are no remaining users in the tree, so let's remove it.
 > 
 > Cc: Paolo Bonzini <pbonzini@redhat.com>
 > Cc: Richard Henderson <richard.henderson@linaro.org>
@@ -156,8 +149,9 @@ On 30/5/23 13:38, David Hildenbrand wrote:
 > Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 > Signed-off-by: David Hildenbrand <david@redhat.com>
 > ---
->   hw/i386/acpi-build.c | 9 +++------
->   1 file changed, 3 insertions(+), 6 deletions(-)
+>   hw/i386/pc.c         | 19 -------------------
+>   include/hw/i386/pc.h |  1 -
+>   2 files changed, 20 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

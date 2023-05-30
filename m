@@ -1,112 +1,193 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp2202424ejm;
-        Sun, 23 Apr 2023 03:50:26 -0700 (PDT)
-X-Received: by 2002:a5d:4645:0:b0:2cf:efa5:5322 with SMTP id j5-20020a5d4645000000b002cfefa55322mr11656738wrs.14.1682247026329;
-        Sun, 23 Apr 2023 03:50:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1682247026; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2108076ejb;
+        Tue, 30 May 2023 04:40:21 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4Fe04MCqNI/HYZTz6D5DY45tx5CVGHrZDJjwnqzn1VlWqe72ZjF6eYgXk8ZedUfr1QHibs
+X-Received: by 2002:a05:620a:4054:b0:75b:23a1:8e6d with SMTP id i20-20020a05620a405400b0075b23a18e6dmr1803725qko.62.1685446821185;
+        Tue, 30 May 2023 04:40:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685446821; cv=none;
         d=google.com; s=arc-20160816;
-        b=ca8GhauPFpXDSSV0B7tO0zIbpAbuzTJjc8l98CwA451VH0a2QbFOYeMTCLDfp7NnPg
-         WGEuGTnNPttEysLywEg+fvQFoCQZ05AM2jJfYbWPLgMkV+xDLlgnET2Yxbt36ebzgjrF
-         WAoEOpqzjkj+w1fKaPpMZVg0fl+QfxUWzxxiUT9getsvoX+b+ER77e+68OX50B6dqrRL
-         KYR9lCSa+J2V7iAlKmDUSDrlUIHVn6S2dobMH9sAtc3Gcl9N/Qv1W2f5mp/nuhaMJ2dq
-         aHIi/4FKugzhHh0T4dWvhIZEODAIqqYY+B9tSnntWAtm5/987QTS7Fh7bOovDhqUy8Z+
-         mJXg==
+        b=tBvWM0mupMyhHcNE8gTUwqpy9HZT9bp2GgMk34sTEo9UvwvH55vWTh4K6aMPNa1iwd
+         UollSzSS2C936jOARLxQh9QVzMGlQ3boc15UyzuX1LxWjHX5lsWDEa4zG2g1sIEWpHbf
+         vpxMnQq9qBUMMiRgmrzmWmx7mNmyxbXiSZPpGFka78ozBE3mLaCKkcfkjtNvpweDZlyl
+         AEPAbHGcg3jG5gF0/ykFCf52ab6fTfQlZRvXcArDVCFvrgx+1KIXqI3AthyvpMrGjd62
+         IKz2Tucf/djy2If3z0//KPz9AIdJvdGR5mMxssFL25SEKXUXzsIzU1IRz6dwaJ6osuaD
+         mXHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=OHMLCnP2qSgbk8dC2YujUSAdxCMOF5nyakmToRBHWPI=;
-        b=f+SwW4yGZMrgFbJvLveBF+kWSM9zSM6lS/VS+qrxbNJbNFNCvQYvAYiSUsI7gGkOgE
-         e/L4KW9zTbD3w4ObTb+SFY2RocBN80lzz6BTRQUe6szvfkJXWmQhos/hMrEZviZsRlAo
-         POqnRTn0YBegJV4NgJDXLwPIwrEDmt/kNAmIbe1vcFboQvl/1/dfjDV5q5Tg1r4SaN96
-         bzxqQmJCIX2q5ROt8uYpggEfWcSZ8ONEb2ls8oXvRdUSgZa9vtCsWsB9m4UAoRBjd620
-         Is7r3iVTx8XBFuJ5Gy07j3fYSVrYsA+dSFUqV2dp6CH7Q+fFCmm2Sg8QgSXy2E7IfPgz
-         KuHA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=fEpFnrqBabMN09y+0YSZgUsRDzt7crbSSBiCNJQKLNQ=;
+        b=sNVW3Qhag1ZOKhyByVZNdJnZb8A3FDStXHCv7TvIgsOC7aa3BX/HOZmpAvnA/zcqSS
+         b70MJKJhIgpXWByXn5xo6azC4YeToXkW8deNDc9fxc5YmyRS/9MuzS6N/i1zAL9eaUeG
+         P3U42+8xkdLAV+MWfwoEx2CvgJ5s0MNLsJwJYDLcVWundXcSwJjBnUk8GsJVLDjupGwD
+         Xvmfr9+oKujnwq0ddWVHxR/um6x9mOCMpbxghiGXAUain5m6u96eVYjGBDu3HIu/p6rs
+         oSD4gdw8PkjmfP4MdcPvLOLH/YNv6o5zCJ52GKnyBEGrmIBZYwZm1fj/l1gyeNjQXsla
+         Bd+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fC0hcaFS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id f18-20020a5d50d2000000b0030411c924fbsor1704004wrt.43.2023.04.23.03.50.26
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCZ3kqGg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m3-20020ae9e003000000b0075ce5f02f11si2781937qkk.254.2023.05.30.04.40.20
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 23 Apr 2023 03:50:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 May 2023 04:40:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fC0hcaFS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1682247026; x=1684839026;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OHMLCnP2qSgbk8dC2YujUSAdxCMOF5nyakmToRBHWPI=;
-        b=fC0hcaFSpRGseRDsoU1FtV0ZIaecE2iLO/cb0GITVHUs+AI8ZbZa25ajRAhgoR/GIL
-         VFG8VAZrRQ5iqozT1xpJQbOccZeyyVXdTAP+Ou24joazB2deMZFKMdvwVGzZihN1q8Ux
-         UpFqlR1Er/7yTK0bssv5CUYpcFw49HhjsWbhdO1jTk8V6vFzJhi0obgzR+/xGTkd/3K9
-         jqf+Xmn+bErlud/9W1VSToVxkBOmNadBgXIWyGbgqlQMth74RKEYv/TAQFcamHC2Z15L
-         7eWXOLX6p07r3Tc/ECdeAP+t9YOeEu11HikFqE0YD/dBtzE4o6XKRZfDYwLy+mI6yqoo
-         9Bpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682247026; x=1684839026;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=OHMLCnP2qSgbk8dC2YujUSAdxCMOF5nyakmToRBHWPI=;
-        b=B7RPyJKNMVEei4nFd5SuZu5qbUYXNxI7VV6jeJEDbL6mdG8OP53tX3eHc7o8zncyur
-         EbqeurpZ00xuuRQKUsC1bc5fPcZOLRPOLu7oRrPPCgGQ2kOBKtzHqYl7ef6TAtfJ17IQ
-         H39+VNRLdMJ/xMzU3KpqViD92Z2Xw/vcGqxlooogH7DNuk8xB+kNQZHB7aBaLSfrsOE2
-         JADVW7yOINNdTpUfeN01lUjwmfA8Ekc9H9cAuPYUSjYWreDT0J21MCiNZyfIzDjNhOT1
-         rDJ6i0OC2lU/6hSXg5YJ9ZQd6nTqeGnZpWeBVdImdzSEEAGvJ1j0puBZMeIZ8/TXFW9m
-         jacA==
-X-Gm-Message-State: AAQBX9c+XhsGl0iZCIiGL8TVsdY1VZ7XT0PYoAfvs0fn7d6PTdhe4uuB
-	3drlFwROEZkI51+xANvGzzh+b+R5
-X-Google-Smtp-Source: AKy350aD3xsY0xML8J+sMfY9glF2LMaZzch02CsRKWQFyVk+AYRz2nEwbf7Wtb+xSqKWvRx9A+zwKQ==
-X-Received: by 2002:a5d:6702:0:b0:2f2:7e53:db65 with SMTP id o2-20020a5d6702000000b002f27e53db65mr7880999wru.7.1682247026108;
-        Sun, 23 Apr 2023 03:50:26 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [10.43.4.99] (cust-west-loneq8-46-193-226-34.wb.wifirst.net. [46.193.226.34])
-        by smtp.gmail.com with ESMTPSA id z16-20020a5d4410000000b002fb0c5a0458sm8378600wrq.91.2023.04.23.03.50.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 23 Apr 2023 03:50:25 -0700 (PDT)
-Message-ID: <4d744ee9-372b-c1f1-0d0f-be06b4b63c6f@linaro.org>
-Date: Sun, 23 Apr 2023 11:50:24 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCZ3kqGg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q3xh7-0007u9-Cd; Tue, 30 May 2023 07:39:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xgq-0007ru-O4
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xgm-0003zt-QF
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685446736;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fEpFnrqBabMN09y+0YSZgUsRDzt7crbSSBiCNJQKLNQ=;
+ b=VCZ3kqGgvBMls93JDTrbtJPFASNb8/GK+bWCA7+2R+LP648yekUlor8ULD6OQUVWqMdBtp
+ uCnQYfKVp4Y8zCjsae7iIXV2MNZXe00K5aCDfrRnE4eNGVc6BCvn45S0vxgSLqsoXQVugF
+ jFZwfXb4NCWtppSTzwSkKjldm+YEUhk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-196-MtdJrl9CMjGhTs1Ksiq0Gg-1; Tue, 30 May 2023 07:38:53 -0400
+X-MC-Unique: MtdJrl9CMjGhTs1Ksiq0Gg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 27F80802A55;
+ Tue, 30 May 2023 11:38:52 +0000 (UTC)
+Received: from t480s.redhat.com (unknown [10.39.194.167])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 882A240CFD45;
+ Tue, 30 May 2023 11:38:48 +0000 (UTC)
+From: David Hildenbrand <david@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
+Subject: [PATCH 02/10] memory-device: Introduce memory_devices_init()
+Date: Tue, 30 May 2023 13:38:30 +0200
+Message-Id: <20230530113838.257755-3-david@redhat.com>
+In-Reply-To: <20230530113838.257755-1-david@redhat.com>
+References: <20230530113838.257755-1-david@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v10 04/11] target/arm: Do not expose all -cpu max features
- to qtests
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Claudio Fontana <cfontana@suse.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Cornelia Huck <cohuck@redhat.com>
-References: <20230412121829.14452-1-farosas@suse.de>
- <20230412121829.14452-5-farosas@suse.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230412121829.14452-5-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: KxuTNeaIE0pk
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.167,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9a3BZ59p0C9d
 
-On 4/12/23 13:18, Fabiano Rosas wrote:
-> We're about to move the TCG-only -cpu max configuration code under
-> CONFIG_TCG. To be able to do that we need to make sure the qtests
-> still have some cpu configured even when no other accelerator is
-> available.
-> 
-> Delineate now what is used with TCG-only and what is also used with
-> qtests to make the subsequent patches cleaner.
-> 
-> Signed-off-by: Fabiano Rosas<farosas@suse.de>
-> ---
->   target/arm/cpu64.c | 12 +++++++++---
->   1 file changed, 9 insertions(+), 3 deletions(-)
+Let's intrduce a new helper that we will use to replace existing memory
+device setup code during machine initialization. We'll enforce that the
+size has to be > 0.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Once all machines were converted, we'll only allocate ms->device_memory
+if the size > 0.
 
-r~
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+ hw/mem/memory-device.c         | 14 ++++++++++++++
+ include/hw/mem/memory-device.h |  2 ++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+index 49f86ec8a8..2197dcf356 100644
+--- a/hw/mem/memory-device.c
++++ b/hw/mem/memory-device.c
+@@ -17,6 +17,7 @@
+ #include "qemu/range.h"
+ #include "hw/virtio/vhost.h"
+ #include "sysemu/kvm.h"
++#include "exec/address-spaces.h"
+ #include "trace.h"
+ 
+ static gint memory_device_addr_sort(gconstpointer a, gconstpointer b)
+@@ -328,6 +329,19 @@ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
+     return memory_region_size(mr);
+ }
+ 
++void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size)
++{
++    g_assert(size);
++    g_assert(!ms->device_memory);
++    ms->device_memory = g_new0(DeviceMemoryState, 1);
++    ms->device_memory->base = base;
++
++    memory_region_init(&ms->device_memory->mr, OBJECT(ms), "device-memory",
++                       size);
++    memory_region_add_subregion(get_system_memory(), ms->device_memory->base,
++                                &ms->device_memory->mr);
++}
++
+ static const TypeInfo memory_device_info = {
+     .name          = TYPE_MEMORY_DEVICE,
+     .parent        = TYPE_INTERFACE,
+diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
+index 48d2611fc5..6e8a10e2f5 100644
+--- a/include/hw/mem/memory-device.h
++++ b/include/hw/mem/memory-device.h
+@@ -16,6 +16,7 @@
+ #include "hw/qdev-core.h"
+ #include "qapi/qapi-types-machine.h"
+ #include "qom/object.h"
++#include "exec/hwaddr.h"
+ 
+ #define TYPE_MEMORY_DEVICE "memory-device"
+ 
+@@ -113,5 +114,6 @@ void memory_device_plug(MemoryDeviceState *md, MachineState *ms);
+ void memory_device_unplug(MemoryDeviceState *md, MachineState *ms);
+ uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
+                                        Error **errp);
++void memory_devices_init(MachineState *ms, hwaddr base, uint64_t size);
+ 
+ #endif
+-- 
+2.40.1
+

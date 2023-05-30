@@ -1,153 +1,166 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2172751ejb;
-        Tue, 30 May 2023 06:20:47 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4vlczPN5xb9A+WVJWHFps1IlXaemegPGT+pcCL55OThD52V1L+CP2ibItTM/z6u/3a6x+B
-X-Received: by 2002:a05:620a:3e87:b0:75b:23a1:3659 with SMTP id tv7-20020a05620a3e8700b0075b23a13659mr1650332qkn.26.1685452847254;
-        Tue, 30 May 2023 06:20:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685452847; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2191090ejb;
+        Tue, 30 May 2023 06:52:18 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Sqv78VLCKXikWtlTwjzhOTqny7YTigV6SeFpazS5ZTAzXwMh3Y8e7utgSFOXt+JegDh8e
+X-Received: by 2002:aca:1c0e:0:b0:398:9ae:50cc with SMTP id c14-20020aca1c0e000000b0039809ae50ccmr1075147oic.41.1685454737834;
+        Tue, 30 May 2023 06:52:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685454737; cv=none;
         d=google.com; s=arc-20160816;
-        b=gEDrZOiN7kdD9iAyrSWdbmwtXjKkdiIkbCi4//AOzEi7CmsW/4MT38cXebDPVBmYPa
-         roksup1x1iT55lPkFEOsFn73HXya1GlWfEh8B+M2ByPSJKSym3vCjAkiX5LaVVOYsq01
-         TNBElsSA+rZPuJvNs2TPtR+6i+m2O5J6PIVyyOqizMniI2l3M6HwKgvYTy2CFbjeRgYC
-         Fh5UJd+ayFahF4iukONHbzQbGuVFMj1Wb+bNVmMQ8HSfg0cJYdFzNGG6aIjgxfw320uv
-         kOMUirhcco9f4B4YG+8Vx/sLn65ZloYEwHA3509GZCez32JdZmw/qXDjnjqcD7gJVU0V
-         qQ2w==
+        b=CzBKnBf6rCKPxwZWwVY3jNvQK5nL4Yzt2yGMbvqcRwQ9/zfvvVwu20yOqky5WyeS5Y
+         7EzkoUOICK/12prRSx4RDF7lCiqCHZotZJGqjgbR5PLiape0toTiPTzdP7vVRfVyTlMz
+         6EGK6n6YB+ip9MDsR4KosCQU1Ey+FIC6kitwTxYNT0YKvCs7E8BO9dU7hzoiE0b+d8yA
+         4hrFCI1/rBC3u+uqSI2mRTfWCLiFb30h82RHm51hlPeWu5cYiWzlP4sx1vzLfy99+Amz
+         PokHghGF28EZ+HEiLqUtkXmRoVDSmP3r0T7vkyimXVdk8/UUvkCvdmYrnGcS+X1Dqk9f
+         JrPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ILix0CPgry29EmQk+KfMSmwRrkQ9Bgg2StiqsuopACI=;
-        b=ICK5La+ncEsiXARTVN3rhPwq7GFAiTw2F8RxuQZwBlMfLz73tZdatBUDwZBtOEN+dm
-         5wDFy4ADO1S1V4Ga6tnJEeM53lu7EVXYFNYxSzjcJrOIufzzUzmFpk1ZawP18N0OLls7
-         ssDy/7KKJ08s7AxilsW1Z5BXq1Wh2Ac8y0laDgrjxWqsKasYHOy9uzDJQLafiQqbXvPz
-         2gfC/LIrwPlpyfeZe3mhWFqvqxJR/yV72vGKo5Y1BJYIJRzrBO/f2oun+keYr+YKKOFl
-         IQg6s7gsvhJrm1IaRvduaBVkTbVjAxUu3P/5Draa53z7J32Xu3sgc0akaEV/+8/dpKL1
-         IvxA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=eSsS+c4O61LoGylmuknmw4TIJpG7CvhXdLoSvJJxPjc=;
+        b=kcFF+pRxUN19mHHQl3xZbeFM+69nyIOPJu9OxpYmqFqT2O1qfDpxxAgCSLbZSZxuOk
+         qTBvCmL6MdpH+tEyZgJqZRrwM1YIJOdHoG0Bk6OsX5RchO1zLzBwGAe2hJerRjOUhl/x
+         5/Wm5TwiGsuSdFXA/2gTxU6hHZVJSv6jUCzRgY3w0ThLY4g50jQcR3vTyYLSWmX70j40
+         pOOWtbD6omxNj9GbwqZNwS4vpOC+tLg1o+D0fisqde0W0CKHUbHPL5x9P+AyLxYHgX7o
+         yx4TdVAPgrbpUSVNkgO1COUdH6gUkydEXr21ts1yhOhGpLo4pW9fJ7EjvVSby//uIQ7W
+         Ap8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l2Uy2ALW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h24-20020a37de18000000b007591280836bsi1047038qkj.745.2023.05.30.06.20.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 06:20:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dGa7mlCe;
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
+        by mx.google.com with ESMTPS id r63-20020acac142000000b003982b785a8bsi5643083oif.291.2023.05.30.06.52.17
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 May 2023 06:52:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l2Uy2ALW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q3zGF-0002HV-Cp; Tue, 30 May 2023 09:19:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q3zFq-00022p-0R
- for qemu-devel@nongnu.org; Tue, 30 May 2023 09:19:17 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q3zFi-0006x2-KT
- for qemu-devel@nongnu.org; Tue, 30 May 2023 09:19:09 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-51496f57e59so3814451a12.2
- for <qemu-devel@nongnu.org>; Tue, 30 May 2023 06:19:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685452744; x=1688044744;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ILix0CPgry29EmQk+KfMSmwRrkQ9Bgg2StiqsuopACI=;
- b=l2Uy2ALW9+QqTEoNfeeumUwDmLVL6cfzX0EeMrP18eFk0bp93J+qPHHrgRcOcAu38f
- HazLCWIMipO2gCco9CyHVOilj/zADc7kqsoQoaZJXFoZPQFz9KvbWB5MTO4KkNC2zIrM
- ucJOPD1aJ9o0OmevZ9eDBhqQeksbgPU4Pk0fbTuiw1RBB6adZf8VM+HNkVwItvm2v4ny
- UYe3+zyvScAqc8+iL5bbNt+xlS1fhJcW5kqq575LFplDGeratf4QjJ95Xtr0TPpIbD20
- uAuDUEmTvYsVmBGMnXHGxQaAYDYKoR3ZFPxR4N5LXf+ib1MXvq9W+P0xvdfeQT7ievZV
- yqzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685452744; x=1688044744;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ILix0CPgry29EmQk+KfMSmwRrkQ9Bgg2StiqsuopACI=;
- b=HXDnupSj07JTcMKMyywl49o7FaaSVHejLGeL0ZE03KXSbE36EKfD4VzRQzNc9J+LHW
- bUn+Wc9+ZVLVV8sLg7IvoJNeZ1jf/5WLCoF046W+p0n7rmkUNeyuEJQpfpumTpUar3dt
- Ubc4EwyYumzpQeYFQh+L7f6xCb5UiJLG7YSeo/mCbI+i0SOMm3poGrJLXkIZLAFKHxmN
- a9OnpTs9WPmPQg333T2Y1PeGGo9H38gXDHoAkj/mZh/gG/08tuhiVtU1M9V8xLxpU8g2
- y/nd7e9Y0gYYfYImf4THZ/fCWr0pQg34CugrCsvfspdrZ0lKDxLZ8HR6sCjRG+Se5kkE
- RPbQ==
-X-Gm-Message-State: AC+VfDyuVwmWVGMJSKvZvgjVb7elm++tdJ8GLXBJdUZGStfsTyuZ02tf
- 2ozxHnzLRXZQBCLhPsWbdUO5Zi6l4vXLJk3M4YuypQ==
-X-Received: by 2002:aa7:d6c2:0:b0:50d:82f9:6867 with SMTP id
- x2-20020aa7d6c2000000b0050d82f96867mr1851105edr.31.1685452744307; Tue, 30 May
- 2023 06:19:04 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dGa7mlCe;
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 78FFD6308E;
+	Tue, 30 May 2023 13:52:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C30DC433EF;
+	Tue, 30 May 2023 13:52:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685454736;
+	bh=3ndAr36uTBwYjy6I77BBaX0Rj0ALeAnFxLE6q/v9q9w=;
+	h=From:To:Cc:Subject:Date:From;
+	b=dGa7mlCe1a3Ou8/ZRKcAhDhOSjbuSLTHvFa3ABPMVScDhWK+XkBst/2iNCzpC8JyD
+	 +fR2K85IaKAiRxmCR8iL/NHvsfgW7NvnTGvTxdYcGpb5rObECbUKdvqTv6hjhedtU4
+	 GkzJHYunzOa7YciPOancSSN/YBpoYG5iT5VfJjkXZsf94oan9oLXf3embDGYKccgRH
+	 53NCbluPUOmq5lskUqp2Y7jr4Bz6KN5+0v6beGdayjDBInioSIiy1CIwIW1MLtVTuE
+	 9O8//us5foMIe1KS69xENnbXHVXXMgwUWNSnhUwAf6BHUBPkiltDi2sPxS+8DPHie0
+	 NdjponWBDUZjQ==
+From: Ard Biesheuvel <ardb@kernel.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [RFC PATCH] target/arm: use x86 intrinsics to implement AES instructions
+Date: Tue, 30 May 2023 15:52:04 +0200
+Message-Id: <20230530135204.2903761-1-ardb@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20230524191438.172019-1-sergey.kambalin@auriga.com>
- <CAFEAcA_PH8yAT28s3p7_0rqK9NodJ6gTXxv63J+98XoMQ_nJTg@mail.gmail.com>
- <15c444063e114814807551c36ea3389b@auriga.com>
-In-Reply-To: <15c444063e114814807551c36ea3389b@auriga.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2023 14:18:53 +0100
-Message-ID: <CAFEAcA8jJ5wQ7H9jR3FJzF3mCjWvaKOCTyho6yLoZe8v8Y3M3A@mail.gmail.com>
-Subject: Re: [PATCH] Prepare bcm properties for videocore 4
-To: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-Cc: Sergey Kambalin <serg.oker@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YY2JYqeQLVN/
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2890; i=ardb@kernel.org; h=from:subject; bh=3ndAr36uTBwYjy6I77BBaX0Rj0ALeAnFxLE6q/v9q9w=; b=owGbwMvMwCFmkMcZplerG8N4Wi2JIaX0f2Mtm1lPQIfLz7Lzf5sPpfVltpTUzFjxJm3uv5NLN 6ZbRVd2lLIwiHEwyIopsgjM/vtu5+mJUrXOs2Rh5rAygQxh4OIUgIlEdDD8j1R8V3zXXUZH/x+f XPOVjb/OCvfeX3br2PIppw7+3BF5YAojw/5V/zpN26Z4ymqqPX0542D94rd8rn4RP99WzeH6XjT NghMA
+X-Developer-Key: i=ardb@kernel.org; a=openpgp; fpr=F43D03328115A198C90016883D200E9CA6329909
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 83XEcP/xQtM9
 
-On Tue, 30 May 2023 at 14:00, Kambalin, Sergey
-<sergey.kambalin@auriga.com> wrote:
->
-> Got it! Thanks!
->
-> I'll split this one to three patches:
-> 1) replace magic numbers with named constants (refactoring)
->
-> 2) add new properties for VC 4
->
-> 3) Add some unit tests to check the newly added properties via mailbox
+ARM intrinsics for AES deviate from the x86 ones in the way they cover
+the different stages of each round, and so mapping one to the other is
+not entirely straight-forward. However, with a bit of care, we can still
+use the x86 ones to emulate the ARM ones, which makes them constant time
+(which is an important property in crypto) and substantially more
+efficient.
 
-Are the VC4 properties supposed to be present on
-all our existing raspi models? (i.e. is this a bug
-fix for our existing models rather than stuff we only
-want on the new raspi4b?)
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+---
+Suggestions welcome on how to make this more generic across targets and
+compilers etc.
 
-As a rule of thumb, stuff fixing issues with our
-existing code can be sent in as its own patch or
-patchset; changes which are specifically for a new
-board/SoC should be put together into the patchset
-which adds that new board.
+ target/arm/tcg/crypto_helper.c | 43 ++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
 
-> (Sorry for wasting your time by inappropriate patches - this is my first experience with OSS)
-
-No, that's fine -- the project's review/patch preferences
-are a bit confusing for people coming to it for the first time.
-
-thanks
--- PMM
+diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
+index d28690321f..961112b6bd 100644
+--- a/target/arm/tcg/crypto_helper.c
++++ b/target/arm/tcg/crypto_helper.c
+@@ -18,10 +18,32 @@
+ #include "crypto/sm4.h"
+ #include "vec_internal.h"
+ 
++#ifdef __x86_64
++#pragma GCC target ("aes")
++#include <cpuid.h>
++#include <wmmintrin.h>
++
++static bool have_aes(void)
++{
++    static int cpuid_have_aes = -1;
++
++    if (cpuid_have_aes == -1) {
++        unsigned int eax, ebx, ecx, edx;
++        int ret = __get_cpuid(0x1, &eax, &ebx, &ecx, &edx);
++
++        cpuid_have_aes = ret && (ecx & bit_AES);
++    }
++    return cpuid_have_aes > 0;
++}
++#endif
++
+ union CRYPTO_STATE {
+     uint8_t    bytes[16];
+     uint32_t   words[4];
+     uint64_t   l[2];
++#ifdef __x86_64
++    __m128i    vec;
++#endif
+ };
+ 
+ #if HOST_BIG_ENDIAN
+@@ -54,6 +76,16 @@ static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+     union CRYPTO_STATE st = { .l = { rn[0], rn[1] } };
+     int i;
+ 
++#ifdef __x86_64__
++    if (have_aes()) {
++        __m128i *d = (__m128i *)rd;
++
++        *d = decrypt ? _mm_aesdeclast_si128(rk.vec ^ st.vec, (__m128i){})
++                     : _mm_aesenclast_si128(rk.vec ^ st.vec, (__m128i){});
++        return;
++    }
++#endif
++
+     /* xor state vector with round key */
+     rk.l[0] ^= st.l[0];
+     rk.l[1] ^= st.l[1];
+@@ -217,6 +249,17 @@ static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, bool decrypt)
+     union CRYPTO_STATE st = { .l = { rm[0], rm[1] } };
+     int i;
+ 
++#ifdef __x86_64__
++    if (have_aes()) {
++        __m128i *d = (__m128i *)rd;
++
++        *d = decrypt ? _mm_aesdec_si128(_mm_aesenclast_si128(st.vec, (__m128i){}),
++                                        (__m128i){})
++                     : _mm_aesenc_si128(_mm_aesdeclast_si128(st.vec, (__m128i){}),
++                                        (__m128i){});
++        return;
++    }
++#endif
+     for (i = 0; i < 16; i += 4) {
+         CR_ST_WORD(st, i >> 2) =
+             mc[decrypt][CR_ST_BYTE(st, i)] ^
+-- 
+2.39.2

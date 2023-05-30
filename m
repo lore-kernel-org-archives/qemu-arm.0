@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2108384ejb;
-        Tue, 30 May 2023 04:40:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ57lSfYZiL2pB0ArAogVD0JU6aTNtms6MhQU3q7w4ASz761VbTNX2m0F6EQVRvIxJToiAm6
-X-Received: by 2002:ad4:5de4:0:b0:625:7fbc:d23f with SMTP id jn4-20020ad45de4000000b006257fbcd23fmr1417653qvb.34.1685446857823;
-        Tue, 30 May 2023 04:40:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685446857; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2108588ejb;
+        Tue, 30 May 2023 04:41:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5HzOFVKVe3k794YwpUPbtOOOjBLJMQQn3Dv/+mkjVYpUOVwpUv+xtlfQasRdenK4Ts1XkT
+X-Received: by 2002:a05:6214:48a:b0:625:b1f3:69c8 with SMTP id pt10-20020a056214048a00b00625b1f369c8mr2151598qvb.49.1685446883712;
+        Tue, 30 May 2023 04:41:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685446883; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mi8zt3wPHCqooJYlfr46VFjcsNh/eSNFsMcX9gR3nvNVsZLTIvquhz8HDxADe45Cbn
-         KFjmIa1n+Mlfj9DL3Jz0nUkshYlH7bkok8Er4Gq4zGI6WRqXfJrQtxdND2v86WyMTO9F
-         k82+6+QorZvC88sZwdWHtrri3AxK6oqsz1K2CxGeQzh8mBNk07CD3aWnX1qe4AKLWjk9
-         mRMJ/iLje+Wla1AWB2ooOm2AV0b4J0h3CxzP8BT2rWYJ2Iuv8CCTykfqwq7r4oqZyvm4
-         66bRg9i+jZJR7Or1RYwf6+kGpol9LlZm0Del5rWo/uteeb2q3RWQxbtKl4iuJQv7enTF
-         U6Dw==
+        b=ZgH6WHROjt9hH2RSzHQvSzZ6WUGJ3/U85DXf1m37GC23dA1GeCOgdHbRrjITOQwMUc
+         y39CHxhOX7bLF8Vp5Wgh1nrpdeS4pZSs989Vap3BBZ7HIwGkr/Cj4eJCmEwNSm92VhCq
+         TJFKhBmHZK3jpHdYn5CyMZqhizn3HIug+tfEhTaTTOCdnsEzc5eVvE+bDc9ERumn2Rry
+         rsQA+SyMqKqI8Iv/OvrhN4emEMPAbFUYO/nyUJ2bko8V0YVXIQjy5N6A/zOzKdi5vZko
+         0U0hptU6c3+UlPdtgMQPMJu9LmFMlCXteU9IedNCzWlAQS26h1+Oj4KI7K7PnjwJcZ35
+         mipw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=y1o8JwHfKO0g83U4avSDTqgBOKXfwEYHCi8B3HZYx1E=;
-        b=m9QhQaCpI256XNpw7Vk/XQN+Nl8SuXckaO8iUraM3ho3XnXTa4/2mJS3ddqeDjOaxh
-         naPEw3HWZo193lMk4njb89iV9TZAh5JGlSNzdsk/k2GRudBfjBDOlz/ID3fo/OKTDaL2
-         KARoKIB+e0upuA5iINrQYWm4oP2lUvm/KeXm8+G1R2w8fr2ulI2wIm6iCCrvwKsCuxjJ
-         6um4OBb3b9JMwXJlw76WaZdFBZaMh4JisaPs/kLiSemc5r6QXvKoxfyUYjwpC4AeDFX5
-         57ubUoK8l19OAMEOEbQnrxHjwwhlxwZ5cA5j/lcrwkf4VoBCFmvj15NA+n2ql4YFcdYa
-         HnTQ==
+        bh=ypSNjxk8rJUKShrG/cQHxTCZ8bHXJz6ssKLCoH3afkk=;
+        b=Kgch4lTxugoLwg23cBd0jMnLOVsM9fXzffgJPfkufysBvgdxpQYnr2yn3wO60m2E5L
+         3Na5d84Be/S8ZxSmW2v5ncdiwOOoIYgleOgWwP6oHDZ+D+m8+mw/BitIIVmHRkR4jhHa
+         PWGRm6cIsL8+BjtbX3o5MEjW05/IGDyMlvKROfmwMMAICaS5jBDK8YC9ht0Caj1FjVvj
+         +Rpg761C6CYD5zDQ/hilufx76/CBU3tAQDniCvyq0wAqmqIhPtLa3TitHQ5r64kYu3ni
+         SmI1/gEJzoiKN18gzwQPzlwWv4TEm5WYXHxq1yLZ7NgU6fZ4MiHozFI0NIBJAeYnp58v
+         KefA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpPJDXWE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZeh1QPv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gv9-20020a056214262900b00624d4b91560si4386953qvb.395.2023.05.30.04.40.57
+        by mx.google.com with ESMTPS id 14-20020a05621420ae00b006238459f915si6506568qvd.230.2023.05.30.04.41.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 04:40:57 -0700 (PDT)
+        Tue, 30 May 2023 04:41:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RpPJDXWE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MZeh1QPv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q3xhI-00087v-Rp; Tue, 30 May 2023 07:39:29 -0400
+	id 1q3xhF-00083v-Mw; Tue, 30 May 2023 07:39:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xhF-00083L-5t
- for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:25 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xh8-0007vo-4C
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xhC-0004EH-Nd
- for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:24 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q3xh6-00048i-Kb
+ for qemu-devel@nongnu.org; Tue, 30 May 2023 07:39:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685446762;
+ s=mimecast20190719; t=1685446754;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y1o8JwHfKO0g83U4avSDTqgBOKXfwEYHCi8B3HZYx1E=;
- b=RpPJDXWE7NfMxksijWJorH1DlE38cSphCZb7GIjxgU+xH94+SS2RNAaKgsOKqcTYze2qJ3
- Q5wGNU8QFLXPzG9dIv3fA5G9B5ivsMumGiPygklrSUYWz/geekKCADIYgxygrYKocmf7aS
- 1VVLr4QbMJmA3ExdjGdcYEyn2jkLBvI=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ypSNjxk8rJUKShrG/cQHxTCZ8bHXJz6ssKLCoH3afkk=;
+ b=MZeh1QPv1h1rGMLy/ajpIRwgQT/HHCFz6LgjGQLFW0EVOSph3XZrzCrz+Rj1Q3sFSQ/MXQ
+ eJpGGrJKP1zULuOxhVha81zBkvN7q1+a51FfzkajPLQW9hRlAmyD5h7/lEUPwG1tnJmhRo
+ V0ritnckNSnE42EcvPcLIFjmFkxTXOw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-538-EfHJyXHsNU6Zxu4j8ONrqQ-1; Tue, 30 May 2023 07:39:15 -0400
-X-MC-Unique: EfHJyXHsNU6Zxu4j8ONrqQ-1
+ us-mta-402-4IePjxoQObOgdcDZpBNbfA-1; Tue, 30 May 2023 07:39:08 -0400
+X-MC-Unique: 4IePjxoQObOgdcDZpBNbfA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 065192A59566;
- Tue, 30 May 2023 11:39:15 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D7BB9101A53A;
+ Tue, 30 May 2023 11:39:07 +0000 (UTC)
 Received: from t480s.redhat.com (unknown [10.39.194.167])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A25E540CFD45;
- Tue, 30 May 2023 11:39:11 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D195040CFD48;
+ Tue, 30 May 2023 11:39:04 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -91,9 +91,9 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
-Subject: [PATCH 08/10] hw/i386/pc: Remove PC_MACHINE_DEVMEM_REGION_SIZE
-Date: Tue, 30 May 2023 13:38:36 +0200
-Message-Id: <20230530113838.257755-9-david@redhat.com>
+Subject: [PATCH 06/10] hw/i386/pc: Use memory_devices_init()
+Date: Tue, 30 May 2023 13:38:34 +0200
+Message-Id: <20230530113838.257755-7-david@redhat.com>
 In-Reply-To: <20230530113838.257755-1-david@redhat.com>
 References: <20230530113838.257755-1-david@redhat.com>
 MIME-Version: 1.0
@@ -122,9 +122,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QMqjab1EzJ83
+X-TUID: CVmCljqZ1ZJI
 
-There are no remaining users in the tree, so let's remove it.
+Let's use our new helper and stop always allocating ms->device_memory.
+Once allcoated, we're sure that the size > 0 and that the base was
+initialized.
+
+Adjust the code in pc_memory_init() to check for machine->device_memory
+instead of pcmc->has_reserved_memory and machine->device_memory->base.
 
 Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: Richard Henderson <richard.henderson@linaro.org>
@@ -133,59 +138,60 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/i386/pc.c         | 19 -------------------
- include/hw/i386/pc.h |  1 -
- 2 files changed, 20 deletions(-)
+ hw/i386/pc.c | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
 diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 920aa32b53..c4789e2f35 100644
+index bb62c994fa..920aa32b53 100644
 --- a/hw/i386/pc.c
 +++ b/hw/i386/pc.c
-@@ -1646,21 +1646,6 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
-     return NULL;
- }
+@@ -1039,13 +1039,11 @@ void pc_memory_init(PCMachineState *pcms,
+         exit(EXIT_FAILURE);
+     }
  
--static void
--pc_machine_get_device_memory_region_size(Object *obj, Visitor *v,
--                                         const char *name, void *opaque,
--                                         Error **errp)
--{
--    MachineState *ms = MACHINE(obj);
--    int64_t value = 0;
+-    /* always allocate the device memory information */
+-    machine->device_memory = g_malloc0(sizeof(*machine->device_memory));
 -
--    if (ms->device_memory) {
--        value = memory_region_size(&ms->device_memory->mr);
--    }
--
--    visit_type_int(v, name, &value, errp);
--}
--
- static void pc_machine_get_vmport(Object *obj, Visitor *v, const char *name,
-                                   void *opaque, Error **errp)
- {
-@@ -1980,10 +1965,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     object_class_property_set_description(oc, PC_MACHINE_MAX_RAM_BELOW_4G,
-         "Maximum ram below the 4G boundary (32bit boundary)");
+     /* initialize device memory address space */
+     if (pcmc->has_reserved_memory &&
+         (machine->ram_size < machine->maxram_size)) {
+         ram_addr_t device_mem_size;
++        hwaddr device_mem_base;
  
--    object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
--        pc_machine_get_device_memory_region_size, NULL,
--        NULL, NULL);
--
-     object_class_property_add(oc, PC_MACHINE_VMPORT, "OnOffAuto",
-         pc_machine_get_vmport, pc_machine_set_vmport,
-         NULL, NULL);
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index c661e9cc80..6c9ad2d132 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -60,7 +60,6 @@ typedef struct PCMachineState {
+         if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
+             error_report("unsupported amount of memory slots: %"PRIu64,
+@@ -1060,19 +1058,14 @@ void pc_memory_init(PCMachineState *pcms,
+             exit(EXIT_FAILURE);
+         }
  
- #define PC_MACHINE_ACPI_DEVICE_PROP "acpi-device"
- #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
--#define PC_MACHINE_DEVMEM_REGION_SIZE "device-memory-region-size"
- #define PC_MACHINE_VMPORT           "vmport"
- #define PC_MACHINE_SMBUS            "smbus"
- #define PC_MACHINE_SATA             "sata"
+-        pc_get_device_memory_range(pcms, &machine->device_memory->base, &device_mem_size);
++        pc_get_device_memory_range(pcms, &device_mem_base, &device_mem_size);
+ 
+-        if ((machine->device_memory->base + device_mem_size) <
+-            device_mem_size) {
++        if (device_mem_base + device_mem_size < device_mem_size) {
+             error_report("unsupported amount of maximum memory: " RAM_ADDR_FMT,
+                          machine->maxram_size);
+             exit(EXIT_FAILURE);
+         }
+-
+-        memory_region_init(&machine->device_memory->mr, OBJECT(pcms),
+-                           "device-memory", device_mem_size);
+-        memory_region_add_subregion(system_memory, machine->device_memory->base,
+-                                    &machine->device_memory->mr);
++        memory_devices_init(machine, device_mem_base, device_mem_size);
+     }
+ 
+     if (pcms->cxl_devices_state.is_enabled) {
+@@ -1120,7 +1113,7 @@ void pc_memory_init(PCMachineState *pcms,
+ 
+     rom_set_fw(fw_cfg);
+ 
+-    if (pcmc->has_reserved_memory && machine->device_memory->base) {
++    if (machine->device_memory) {
+         uint64_t *val = g_malloc(sizeof(*val));
+         PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+         uint64_t res_mem_end = machine->device_memory->base;
 -- 
 2.40.1
 

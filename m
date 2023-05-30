@@ -1,165 +1,101 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2314104ejb;
-        Tue, 30 May 2023 09:59:07 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ63WYrh6lbOO07AS3KqaMdVdk4G9ZvzuEODcJKVo02JpY8MF2+W4bN42YWCvTg9Buadk/fm
-X-Received: by 2002:a05:6870:5b01:b0:19f:9340:fef9 with SMTP id ds1-20020a0568705b0100b0019f9340fef9mr1555846oab.16.1685465947334;
-        Tue, 30 May 2023 09:59:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685465947; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2317072ejb;
+        Tue, 30 May 2023 10:02:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6ngwviqJiNbwkc53IU/NW5vGbge/UYM722qxazPsF3zstsOX+mW83CjQ4cknQRT3fRaOqz
+X-Received: by 2002:a05:6830:2019:b0:6af:70b9:9672 with SMTP id e25-20020a056830201900b006af70b99672mr1501546otp.6.1685466171810;
+        Tue, 30 May 2023 10:02:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685466171; cv=none;
         d=google.com; s=arc-20160816;
-        b=OUJ8QBhj4kIhoQumMmuwKnngwS5VPGGp1IYkSnv3MvQqbzdK7vR0E7GPv5XMsGQ8/D
-         q/uNCWU1ZrUTl+jbl/0KAVN7VG9qjBpm21YZMbUbYgXl0x8JIwg6HUwmzYFfAq/Zj2At
-         2Yko/xxfaBvYJSL6+KSYwpa3qgelxMoBTBSzHxoKsTJOArUBOkOIEX2OlMZuTtTAeYFF
-         itzLqtnsbv4U2o0rLt5ueyk9S4b2czfPH/zS+eiUqY4hrWpL3AUEt3wrQHimUTUn/pXS
-         UO7r+LePRTpo2rWlNVBAL+ISFE4kx/0WtMkyaSoDE7+8Z17zh+jhtjR6kSj5jhejfACu
-         kWlQ==
+        b=JbpaX8YPKre7A/qWneC30ITs8vZA2DF+TGtYAZxjl3q/UJztXy6B2FLJd6XEmrXslA
+         hf/vp08G/+DddP6A9WLtjnX4/pdj+vjkJ1PV2Qzn74NjsRjIDkX5G8w2yK6ICTdg1iMx
+         l0B8HVFSwmUR/Lqx1stTpipZZ9l0d6oT+MZh8mA+YcQCIV3aYGFlvEUKg7sjW1nOL3iG
+         Y4Ks+vvY/fTMdVJU7UGFTAX2/qRv8Nabzzmzgf92WDSapuAcMzG8tirKGhP2OCzBUo68
+         TMK5kfFgNYmQJV7DQq76VNa0iNI3sBBRACfAzUB1yLVe144J0nCnSC0LSZ2mA+8MRnT0
+         m7VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=vir0NkpE56zJbbYe3SO72UiuZQhKRI4m/x7d8at/neE=;
-        b=KyDe/vj5/TooN7vtlngvClvdnAHSkczG8057Cm7RGzitrxFFSwL9rERxaNSKMUSG6w
-         cg1oAi0sl2cpAzCHb4H1Z6OX308dAR1nt0ruWWCxMioqeXu/4FjmP1QzGWaeSRACMplM
-         bYewJfjjF9YOEbDix3rCMiKP602GKw5vChOr6GCoAb5knw/8JTrv2VKbc2u1m6lgbGEi
-         YbczCzqSvjjT0J8OvZgpc/blblmsIbQEA0Dj8o9kJ1354y3ItHcPWh5/NZ+p+0gOEw5k
-         vVIypvmieR33GTAHDPYi1bN/dCYcqYVfKs/q5cfI+mvXuybgy1ghAieHl5Kk0NRcCKaj
-         WQ9Q==
+        bh=bZixs7nkFVC8ORerRLmRoiL6KtRrGjYzvtjjGE4ZH0E=;
+        b=az9yjImJHF9hg5R/UUy5K8Nwj7abbRxoEvTthoDkZDjP4L8+mzI2r59W/b2uFx8xF6
+         IscLL9l56nwPGnxd66NHD5vOBR8EEQNMRy62aIbf3prAtun2mztsks7kCMEIm+o1jOyr
+         HhLK7xO4e4yKl8lCW0Q7RTkozPJRpZ1AmMEN3LdvTdxJiEJ1CPlZNlNMxhRA0vD0jfNf
+         0F5bw9YsjyC41dlZH6TxNQpNxDNnoED+ywTid/ai9poaT9IJc5+P415mX82j0Bv3HbRa
+         IjMcjuDsURlsfBhseHnHIc8T9TJYhF/6qWWp7Uz8zSvrgrYo2luWQ+Z3IXCheKaS7q2O
+         dxuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="DCJqYTW/";
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MMoJVDWM;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id p2-20020a05687052c200b0018452951892si5668212oak.58.2023.05.30.09.59.07
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id cy19-20020a056830699300b006a442aafdd3si7487710otb.100.2023.05.30.10.02.51
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 May 2023 09:59:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+        Tue, 30 May 2023 10:02:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="DCJqYTW/";
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MMoJVDWM;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0271160DBA;
-	Tue, 30 May 2023 16:59:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C69F4C433EF;
-	Tue, 30 May 2023 16:59:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 77B0060DDD;
+	Tue, 30 May 2023 17:02:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E03E9C4339B;
+	Tue, 30 May 2023 17:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685465946;
-	bh=aiREaNoBxTIFPyj1qWO754P/cI+EmEr89qizdPzLSEI=;
+	s=k20201202; t=1685466170;
+	bh=bZixs7nkFVC8ORerRLmRoiL6KtRrGjYzvtjjGE4ZH0E=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=DCJqYTW/3TAxLjhsqgXAZ1GBAsWlDDKKfPX279o/zE2oe55OXudZTXOCPhZ/aUmzW
-	 F/mldylfTK3cZqxgEQZeFwHEdEVDqe9xApiVW/nJIRKYmbJdwc+KykVnvHgjOAXjox
-	 XPwsZqyhXwQA0kw5yDOFQVSb29MHsWQjiUWglDAmnO8HQ/+np0JIptfDDioj/wViZA
-	 d+ASNiGerjjlgMa/MlxJibn16fX8odHvQqONw5KaBDWOQLp1ib+yBZWR82RF9rM80K
-	 3TZgUOaNYSprbPmhVIrPELoXVXhtFdIA2LoxSOXxrfH2LCCi+A+UG+0g0HIz4Sdfwb
-	 bBFytMaXc9AGw==
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-4f3a99b9177so5527608e87.1;
-        Tue, 30 May 2023 09:59:06 -0700 (PDT)
-X-Gm-Message-State: AC+VfDxr2QqllUUC2IG/YCLmNR8SEFsOPepSepXqPwlewsH/1CoAg7W4
-	7D4/nCuLvSGb8wZuo6wVxAMWciX8hYW3pXZbMyg=
-X-Received: by 2002:a2e:98c7:0:b0:2af:23fe:98ef with SMTP id
- s7-20020a2e98c7000000b002af23fe98efmr1130462ljj.50.1685465944845; Tue, 30 May
- 2023 09:59:04 -0700 (PDT)
+	b=MMoJVDWMjFoDHhVqgzj5lQBTF+bwW3UpchbmOwQcb9PT9fjXNE1CMQUBAHImhe4n9
+	 GPgJPNZEpyiw1yaEgEHy5L6gClYuIO8ODBHDyAZQrElv3JExRswFV7F4v4l7F8h6S3
+	 H5eLhzCp4HL59b+jzcyI/XexyTIXRZSAtQDSPmGtyzrFuw632NN5Qu3Hc12llsPJTl
+	 agfU9c7bTXuDKFcbG7yutgqGqpirN4sDRrZzkJJtcy80bXzRWIJ54gRmn3SDZFefGK
+	 +FrUy591JmRzZdZ4Up5bmUHcae4y7sl4y8ToRJWQGWdgtkf/cm3shRWk+kLrUR1de6
+	 kgOmAb8dSpyLg==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-4f4f89f71b8so3328689e87.3;
+        Tue, 30 May 2023 10:02:50 -0700 (PDT)
+X-Gm-Message-State: AC+VfDxOp7ZEWcE2vNARFp8KnvRYl4gIs0RDGOeH+tMwjfBzMtJyaJn+
+	OYDku4yHve3GVNx2pa7FZ3v5wwOnBi9RJJ9OBBg=
+X-Received: by 2002:a2e:9f0d:0:b0:2ac:7889:3aa3 with SMTP id
+ u13-20020a2e9f0d000000b002ac78893aa3mr1253687ljk.18.1685466168935; Tue, 30
+ May 2023 10:02:48 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230530135204.2903761-1-ardb@kernel.org> <666b4b6c-380e-142e-9348-823006b35312@linaro.org>
-In-Reply-To: <666b4b6c-380e-142e-9348-823006b35312@linaro.org>
+References: <20230530135204.2903761-1-ardb@kernel.org> <CAFEAcA-RwXQWx4RhMhWk_xQLsJ0a1+MDKDXyKHdCmguqsuNKzQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-RwXQWx4RhMhWk_xQLsJ0a1+MDKDXyKHdCmguqsuNKzQ@mail.gmail.com>
 From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 30 May 2023 18:58:53 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXEE3X=m9X9DkMu885w=Vperp100NWcJ33XOTDm0O+1sWQ@mail.gmail.com>
-Message-ID: <CAMj1kXEE3X=m9X9DkMu885w=Vperp100NWcJ33XOTDm0O+1sWQ@mail.gmail.com>
+Date: Tue, 30 May 2023 19:02:37 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXFMnsAnXcUgnZjncwa8h0eHeJfR2F1dxMn=-sHrErQr-Q@mail.gmail.com>
+Message-ID: <CAMj1kXFMnsAnXcUgnZjncwa8h0eHeJfR2F1dxMn=-sHrErQr-Q@mail.gmail.com>
 Subject: Re: [RFC PATCH] target/arm: use x86 intrinsics to implement AES instructions
-To: Richard Henderson <richard.henderson@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: ZJYeRQjPKOHt
+X-TUID: T2URdDCXJEYZ
 
-On Tue, 30 May 2023 at 18:43, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, 30 May 2023 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On 5/30/23 06:52, Ard Biesheuvel wrote:
-> > +#ifdef __x86_64__
-> > +    if (have_aes()) {
-> > +        __m128i *d = (__m128i *)rd;
-> > +
-> > +        *d = decrypt ? _mm_aesdeclast_si128(rk.vec ^ st.vec, (__m128i){})
-> > +                     : _mm_aesenclast_si128(rk.vec ^ st.vec, (__m128i){});
->
-> Do I correctly understand that the ARM xor is pre-shift
->
-> > +        return;
-> > +    }
-> > +#endif
-> > +
-> >       /* xor state vector with round key */
-> >       rk.l[0] ^= st.l[0];
-> >       rk.l[1] ^= st.l[1];
->
-> (like so)
->
-> whereas the x86 xor is post-shift
->
-> > void glue(helper_aesenclast, SUFFIX)(CPUX86State *env, Reg *d, Reg *v, Reg *s)
-> > {
-> >     int i;
-> >     Reg st = *v;
-> >     Reg rk = *s;
+> On Tue, 30 May 2023 at 14:52, Ard Biesheuvel <ardb@kernel.org> wrote:
 > >
-> >     for (i = 0; i < 8 << SHIFT; i++) {
-> >         d->B(i) = rk.B(i) ^ (AES_sbox[st.B(AES_shifts[i & 15] + (i & ~15))]);
-> >     }
+> > ARM intrinsics for AES deviate from the x86 ones in the way they cover
+> > the different stages of each round, and so mapping one to the other is
+> > not entirely straight-forward. However, with a bit of care, we can still
+> > use the x86 ones to emulate the ARM ones, which makes them constant time
+> > (which is an important property in crypto) and substantially more
+> > efficient.
 >
-> (like so, from target/i386/ops_sse.h)?
->
-
-Indeed. Using the primitive operations defined in the AES paper, we
-basically have the following for n rounds of AES (for n in {10, 12,
-14})
-
-for (n-1 rounds) {
-  AddRoundKey
-  ShiftRows
-  SubBytes
-  MixColumns
-}
-AddRoundKey
-ShiftRows
-SubBytes
-AddRoundKey
-
-AddRoundKey is just XOR, but it is incorporated into the instructions
-that combine a couple of these steps.
-
-So on x86, we have
-
-aesenc:
-  ShiftRows
-  SubBytes
-  MixColumns
-  AddRoundKey
-
-aesenclast:
-  ShiftRows
-  SubBytes
-  AddRoundKey
-
-and on ARM we have
-
-aese:
-  AddRoundKey
-  ShiftRows
-  SubBytes
-
-aesmc:
-  MixColumns
-
-
-> What might help: could we do the reverse -- emulate the x86 aesdeclast instruction with
-> the aarch64 aesd instruction?
+> Do you have examples of workloads and speedups obtained,
+> by the way?
 >
 
-Help in what sense? To emulate the x86 instructions on a ARM host?
+I don't have any actual numbers to share, unfortunately.
 
-But yes, aesenclast can be implement using aese in a similar way,
-i.e., by passing a {0} vector as the round key into the instruction,
-and performing the XOR explicitly using the real round key afterwards.
+I implemented this when i was experimenting with TPM based measured
+boot and disk encryption in the guest. I'd say that running an OS
+under emulation that uses disk encryption would be the most relevant
+use case here.
+
+Accelerated AES is typically at least an order of magnitude faster
+than a table based C implementation, and does not stress the D-cache
+as much (the tables involved are not tiny).

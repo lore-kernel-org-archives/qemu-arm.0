@@ -1,138 +1,130 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2255055ejb;
-        Tue, 30 May 2023 08:22:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6hm+icdf90yjb/WgGs1lRohU7ewk7OVdO85o9WZwYKKI1aCD5iWxznHkvuxej5uVO19SP8
-X-Received: by 2002:a5d:4808:0:b0:306:3284:824f with SMTP id l8-20020a5d4808000000b003063284824fmr2013983wrq.8.1685460173158;
-        Tue, 30 May 2023 08:22:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685460173; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2306269ejb;
+        Tue, 30 May 2023 09:43:19 -0700 (PDT)
+X-Received: by 2002:a05:6a00:e13:b0:64d:42b9:6895 with SMTP id bq19-20020a056a000e1300b0064d42b96895mr2923303pfb.5.1685464999013;
+        Tue, 30 May 2023 09:43:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685464998; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbKtaZvdmGD3nY8sagrW76rZrqOP25iZF+YI9ttR8SojmUePgPK0cxt5OAOb6Uvp/F
-         6mNR7hNTWHY/lHaH2zZAjXTT500uR6hoJ5rpDC9ojGJpW4u+LDyHM4I5Qn/4OjGcbgSV
-         foTE0JX6Ln6XRQ5ex7OIwQA4ozcRKPHir5M1/Xls/TFAX/VH+i+n6gtVIJfC1GGpOxuE
-         EqEVCrEkYqqwepFyMQblab9XRX1Rjg2Ik1TprCp/0wZ1wC2ZppNAls3sbLl+lVmQ9iza
-         Izinf9UYe79DmzKI2RCQ1SfqW0UxPBrSDbopRxAPFVp5tblp9sA1NU+piVvMqT4HeIxW
-         SGAg==
+        b=jp9QVDMfPb1zHWfy7VBgu/PKSx5tlCxS/SClSl6XxC5IfX2JVDaJH5WUwOs0BDSHir
+         e4z9NMYBlMF6FY46yZA6AAn1DaioWwdMYJ6M9ZHM0Ybo3CFQkpwlkBRmgaozYDVS88oQ
+         nk4nnQhTXSBSa/j0nSYl+kyTG8F5gDMswYsgnvztLmCegrb6AO39Qz0uwZke78QJCpMb
+         g+pCg91nUPbecgpq4SgemyqSWEBaRjYClZqaalScVencXvmQy0TzNbbyUtQ5YEHFlhXv
+         2MVn1x8wigT5ILUYHhL08HsxcJboviW63YrGET3YSYmwio7/y4Kvq/6b/L3rC1Ez7Aya
+         WY5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=B5jrfqVNzivwpORp23yX5Kte9NN/laeiXYDsblUtuW8=;
-        b=Cv2hKH0inNuLnhOBiz0WnvwDPDW2eq5gQdbbxYGZ9T+9pql6PkZ5r7n04xpSYXx+ly
-         t23Xhy2eRicAvxKQWLOjIGWjuiY1TZPJoJtK+SXi5Ih5DbSWb3TDpwmEMU8RmXqXvI19
-         Dk+vKzNaDds5aKr1G++pPjslL5yl9jThKrSHaXHs9ldFoBkuws53mgN0op7oelFggCED
-         bJekncmgL6wfMgaQrMcGQRSYY3wNsweWm94w24yV2/v5N482lyazLKtSk2yc+Lk5SqJc
-         jQyQRom73D1EgtRymyreXlJ9ZT3YM56d3izr0mg2QH8cQDSaylT7MCw4Xmqb5q0YAbDw
-         Fmhg==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=oYKKJcIwvA4BWnLLgBDLEIzM820+dq4uOyDbON7XXKU=;
+        b=Y81jOk+Ci11owkvEV6TTjkzSj6iOG541FvIruu+gKHhccZXn8+n2kgebbu1J/8R4PD
+         nqoqCeylt7PZYksVDSw/kR3s5KkL16sEsiFVePykycf89ssJyfpO0m4QQ14OdRZoA997
+         WYSyaKpdJT94OqNWxu/QDOzd2o33FNWg4+DTouMt5KxgzM0DAf3Eda/KtmZ1UUwuE9h/
+         x+LkhAglBiB7ZBZSAV/BQSYyXTsZQKfRIux0kcn2TM7gSBuL/+hXvNVGtISCJPg8LzWX
+         z8hbCexzzMlVHoQIt9XLzSViZHEeBn+8GfRvxy1aFpfsbBR0k3EZei826EZwp1nFLEMB
+         XETA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <marcin.juszkiewicz@linaro.org>
-Received: from muminek.juszkiewicz.com.pl (muminek.juszkiewicz.com.pl. [213.251.184.221])
-        by mx.google.com with ESMTPS id v6-20020a5d5906000000b0030aeb35ee96si1459427wrd.1014.2023.05.30.08.22.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 May 2023 08:22:53 -0700 (PDT)
-Received-SPF: softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) client-ip=213.251.184.221;
+       dkim=pass header.i=@linaro.org header.s=google header.b=i5SRWzHP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ck4-20020a056a00328400b006410a66a48fsor968833pfb.0.2023.05.30.09.43.18
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 30 May 2023 09:43:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=softfail (google.com: domain of transitioning marcin.juszkiewicz@linaro.org does not designate 213.251.184.221 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id B800A2602B4;
-	Tue, 30 May 2023 17:22:51 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
-	by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JvwwKVhfywJH; Tue, 30 May 2023 17:22:49 +0200 (CEST)
-Received: from applejack.lan (83.21.93.182.ipv4.supernova.orange.pl [83.21.93.182])
-	by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 6BE84260172;
-	Tue, 30 May 2023 17:22:48 +0200 (CEST)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH 1/1] tests/avocado: update firmware to enable sbsa-ref/max
-Date: Tue, 30 May 2023 17:22:40 +0200
-Message-Id: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.40.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=i5SRWzHP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1685464998; x=1688056998;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oYKKJcIwvA4BWnLLgBDLEIzM820+dq4uOyDbON7XXKU=;
+        b=i5SRWzHPQKGUyuk36MzU9rgQNREpMs8QyJMK7O7Z2jGauIzfdiSCrE288HJ5oTk/M5
+         BU/BlDxKVUQ2SoT/qNsHeuY2t9s1DIg4AEU28CkRApqKYLBrRNAPzZ6f5fyszG5JzmDI
+         w/gBMjnFsUCdRUS1zf26TBUO2LF2pauYhMMcX+7aug85UgCy0xp3ld8l3ReP5EENs+c1
+         hh/U9mCwiQu046vtBsard9bARB1SCPfSw+GDMwCZuRFsBk5tPzZWloB+OHuUccsrozSw
+         aETqYboCwuybknJH9qpGIZw2lW52sIVUXTNM3PrbRr9rys4YbzgHfUrMrG6Pp0gw+XJp
+         +05w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685464998; x=1688056998;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oYKKJcIwvA4BWnLLgBDLEIzM820+dq4uOyDbON7XXKU=;
+        b=UdDjDblmmbvz3e7ULnpbBwFuTsx2VttmfVFN0g+BzL7MjRxbbWZpgLbzMGsfMUdbOB
+         mn14qt84/yALXUORn1aUXtxOOm2rHjY9KnxuQ+Yew5+hMd0qY/DDG8cDF5wyhWSzXAn6
+         yIZtwa+cGcHLUUIPMk1I9r4WYZ87/voxAsSIgB+ZFPHgs67rMIEtbDWlaDyJqiGw+P+H
+         1qs7dPmVQXrOmdq3NcAOxT6SpMEzfS0NyYUQiDBoKB5sku3WH42Dc9nDaBKRjTN/d8VF
+         y1ZEH8AOv5ZDNe+nrngt/sXFTReaP5l5om6UUezisvG8em6p8vSz3Qa8W3dtPqrCS6TY
+         Lfcw==
+X-Gm-Message-State: AC+VfDyrP7eUgwBa3rMS2LVHrwQkFX4RitXlvduSWBOZtWHAEIx7GZPm
+	B6UO8dPqnQ8LPaEG2Mvb37mMRCiU
+X-Google-Smtp-Source: ACHHUZ7E7Pb8GWV1W/6bTp75RRwGIThf/2AjJxRYRQtE26mQfePfQif3f5J8n5ZIl1YF+oxVC7mZEA==
+X-Received: by 2002:a05:6a20:728b:b0:f0:50c4:4c43 with SMTP id o11-20020a056a20728b00b000f050c44c43mr3248409pzk.5.1685464998462;
+        Tue, 30 May 2023 09:43:18 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:ae:1598:4c01:35a2:c45d:7485:f488? ([2602:ae:1598:4c01:35a2:c45d:7485:f488])
+        by smtp.gmail.com with ESMTPSA id z5-20020aa791c5000000b0064fabbc047dsm1874032pfa.55.2023.05.30.09.43.17
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 May 2023 09:43:18 -0700 (PDT)
+Message-ID: <666b4b6c-380e-142e-9348-823006b35312@linaro.org>
+Date: Tue, 30 May 2023 09:43:16 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: jVphDyJVK+ua
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [RFC PATCH] target/arm: use x86 intrinsics to implement AES
+ instructions
+Content-Language: en-US
+To: Ard Biesheuvel <ardb@kernel.org>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20230530135204.2903761-1-ardb@kernel.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230530135204.2903761-1-ardb@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: rg5tERYU2N0K
 
-Update prebuilt firmware images to have TF-A with FEAT_FGT support
-enabled. This allowed us to enable test for "max" cpu in sbsa-ref
-machine.
+On 5/30/23 06:52, Ard Biesheuvel wrote:
+> +#ifdef __x86_64__
+> +    if (have_aes()) {
+> +        __m128i *d = (__m128i *)rd;
+> +
+> +        *d = decrypt ? _mm_aesdeclast_si128(rk.vec ^ st.vec, (__m128i){})
+> +                     : _mm_aesenclast_si128(rk.vec ^ st.vec, (__m128i){});
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- tests/avocado/machine_aarch64_sbsaref.py | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+Do I correctly understand that the ARM xor is pre-shift
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 0a79fa7ab6..35f8042416 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -29,23 +29,23 @@ def fetch_firmware(self):
-         """
-         Flash volumes generated using:
- 
--        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
-+        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
- 
-         - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
- 
-         - Tianocore EDK II
--          https://github.com/tianocore/edk2/tree/494127613b
--          https://github.com/tianocore/edk2-non-osi/tree/41876073
--          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
-+          https://github.com/tianocore/edk2/tree/0f9283429dd4
-+          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
-+          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-         """
- 
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
-+            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-             "download/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
-+        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
-@@ -93,15 +93,15 @@ def test_sbsaref_edk2_firmware(self):
- 
-         # AP Trusted ROM
-         wait_for_console_pattern(self, "Booting Trusted Firmware")
--        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
-+        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
-         wait_for_console_pattern(self, "BL1: Booting BL2")
- 
-         # Trusted Boot Firmware
--        wait_for_console_pattern(self, "BL2: v2.8(release)")
-+        wait_for_console_pattern(self, "BL2: v2.9(release)")
-         wait_for_console_pattern(self, "Booting BL31")
- 
-         # EL3 Runtime Software
--        wait_for_console_pattern(self, "BL31: v2.8(release)")
-+        wait_for_console_pattern(self, "BL31: v2.9(release)")
- 
-         # Non-trusted Firmware
-         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
-@@ -150,7 +150,7 @@ def test_sbsaref_alpine_linux_neoverse_n1(self):
-         """
-         self.boot_alpine_linux("neoverse-n1")
- 
--    @skip("requires TF-A update to handle FEAT_FGT")
-+    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
-     def test_sbsaref_alpine_linux_max(self):
-         """
-         :avocado: tags=cpu:max
--- 
-2.40.1
+> +        return;
+> +    }
+> +#endif
+> +
+>       /* xor state vector with round key */
+>       rk.l[0] ^= st.l[0];
+>       rk.l[1] ^= st.l[1];
+
+(like so)
+
+whereas the x86 xor is post-shift
+
+> void glue(helper_aesenclast, SUFFIX)(CPUX86State *env, Reg *d, Reg *v, Reg *s)
+> {
+>     int i;
+>     Reg st = *v;
+>     Reg rk = *s;
+> 
+>     for (i = 0; i < 8 << SHIFT; i++) {
+>         d->B(i) = rk.B(i) ^ (AES_sbox[st.B(AES_shifts[i & 15] + (i & ~15))]);
+>     }
+
+(like so, from target/i386/ops_sse.h)?
+
+What might help: could we do the reverse -- emulate the x86 aesdeclast instruction with 
+the aarch64 aesd instruction?
+
+
+r~

@@ -1,152 +1,196 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2230243ejb;
-        Tue, 30 May 2023 07:48:56 -0700 (PDT)
-X-Received: by 2002:a05:6a00:21ca:b0:64e:bce9:3229 with SMTP id t10-20020a056a0021ca00b0064ebce93229mr2800440pfj.9.1685458135972;
-        Tue, 30 May 2023 07:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685458135; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2247018ejb;
+        Tue, 30 May 2023 08:11:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4Qbg1xPvVLJ57pxWJ2N5GQZG4+6eC3synsmlm9mHfBFkulvXraub9kAJiafCy+VySGkI5k
+X-Received: by 2002:a05:622a:1a85:b0:3f8:365:7aa3 with SMTP id s5-20020a05622a1a8500b003f803657aa3mr2718170qtc.3.1685459494600;
+        Tue, 30 May 2023 08:11:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685459494; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gu0AJdC/9jypHdS8UTtGy6HaVRCQq7wWlyopzYC6SXt02vCxj/KiO/lXY3LNY8j0lJ
-         Vlw3JvWu1bvXjc7bywitLz/eiod9q9Vy2G5QTTxOG5ZVaJaOwfYQrv7DiAtEACHJe7HH
-         pmJbI2npZSu4W7vNHzuwvKeyn3Ry3ZN/NmoqNQPJK8ykzjdXqgpCDHlPy9EB9SA3quOX
-         MH+mNx1wlBCrnod1QIj4r68+rW6lBncb/cjAp/EgXTxSniSVIrmLgAFOyzJ4ZgoUiR5r
-         AEm/ch3vJkMFEBCr8L/5iAOzW2SEDkWSwvWPUaNC4YZa7WnN5nPOMeyDVHGIgOuz6GVI
-         TcqA==
+        b=RCOu+WIKDvLRVjWDYv4gO0I6eNVb7X0CDIqxrgfOuZwv3cIGykIWWDnLjH5E7ai9rv
+         AZ56Dr0EIxck3DC8mUpxKFTJWfWg+3Oe2DUlvqhliyqmyVfF++1gjOCcAA9luYVne9h5
+         /OehkhY6IT//RT8os0q1Ow7m4bbWD3tSJgKjRGiF/IjibzYU3gRZn2Iw8lcaE9VTHsvy
+         /ngxwOG0IWxIDrvxAJJYwfvl7r2RpHk3sx0cKPAa8T+D06P9oqn8VoXc199zxTErhbCu
+         OHknpNzmj0+4X7pcqnK1P+uM9ZobamJcbwu1MFPN0v/erodBhDk0ZN6TxEpaDSU4TZGq
+         9MdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=/mRotw+iSAUVrUeFod2O6JDCzdceQwIv5HTL8rc+bKk=;
-        b=N1gKcXEVhHkQotbaUd/EF1RmrasJmHXByptdh1xBgxDgwqzXc/DF4NzG0UJiU2Hz94
-         wxmaqzvWPfNSnnFvkbFFcgqJZUM4gI25i7Z+g0/NxjC8lZzer1pxjyTQ7v4ZybX4Afo3
-         oDr1+eDqbv+r9fhxXt1ZWF014fol4a3cWTWSWI3sNKCyG3Hfbade4POAa0TavLQhyf9P
-         C/Gb8fsqKSbT15HQiwE1HLssBGBgUkpsGHe6lJx6pOkSP+5E9P6YHHjXilcz8aXls4p2
-         uxGek/iX37kQVHmE1vdB1jBOSQbH9JacqOLy9IFO5aV3g1Y3WQo3mDLl+Go0aEBQ/Ex+
-         7lJw==
+        bh=pgqSrsE6WKBGhIyN31uqtjp1Dlf7zxgJ52vhXZmBtsY=;
+        b=WYDknxXD+8xEinQdLtUuifz8dYtQLsB48HGYw7jFqvEcN7+Wfo5CTFPmrIJ8LLwhsy
+         SojycBQcvkMC8awHuRP5WIy5pebz80HA8bRtMkP+kzJfuV8OVCsesXGxlyPx9I3ef1bB
+         NWblUUrDwc15ZOVEuiM+cHATt60i8wF0mmC1IU4ArwsG5FkYQGcVixi5A7ir1Si9ag7O
+         kIhfZw65aKcmIsJ75DOoYmhr6AKTme9q+S2oBy9R3qAzeB/uIO2tODH1BQoZeMJuUk11
+         2hrO0gQQWfylqv2GyEnx0wtyu+dWGMTg4cGJy/azWetY0q+/OioGvGeCbTSPv9SYdUcu
+         DoVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zA28jFvu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xODxqIyg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id k6-20020a628406000000b006410a66b6d6sor1874891pfd.1.2023.05.30.07.48.55
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v22-20020a05622a015600b003f3940c6a77si6524774qtw.10.2023.05.30.08.11.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 30 May 2023 07:48:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 May 2023 08:11:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zA28jFvu;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xODxqIyg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q410S-0001lv-7R; Tue, 30 May 2023 11:11:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q410Q-0001kY-JL
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 11:11:26 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q410M-0005Gh-Lq
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 11:11:25 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-510d6b939bfso8273319a12.0
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 08:11:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685458135; x=1688050135;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/mRotw+iSAUVrUeFod2O6JDCzdceQwIv5HTL8rc+bKk=;
-        b=zA28jFvu3gU/sDQZjNw9sMAUfvHHjlM9OSzCjN+BmK2NEnI8wmRJJLuplOaTEXVG0P
-         6GWeYg8DPMscBeUW2D1ipfQY5g2MDkg5IJCy3kVbh0PTRFpRbALSYE4rMZboliXdQGbK
-         IPZtpuhcPTXPWTjvM+qsYzqvbN684fPrunaY9nCRlIf4Nw+OS+SmiglkVKtrSQ91MuPX
-         1+CghCn3C118vmbqcrwAP0x2rUXiG6OcrCuYyC4YR6b8yManb5puDH31YwaIBMBrAFf0
-         I7wT0r3hEQVbJCo5mgC2xwOQtqHHTaIVEbVtrGR+Q4NDzi52Wyav0irec47tw+2WPUDM
-         L2rA==
+ d=linaro.org; s=google; t=1685459481; x=1688051481;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=pgqSrsE6WKBGhIyN31uqtjp1Dlf7zxgJ52vhXZmBtsY=;
+ b=xODxqIyg0seQVT4nv1pMsiqN6j5/WK+Y0wNXor9cDC+6HKNzLcSLNt+o8CXRpIBedY
+ b5DEwfp0KGQh8jqhyEEJhz5jfB2XfpMwF1nbbSOAz5IBFpCm7Spe0McvC0vff2+ypDoS
+ km4z2eBS/MmzuLlwYnPbQAo8AicazAHa6ah/yEbO+2MR02fj/moCdH21CUm5hMSNMZp2
+ q+7VK0wnWS46bkKavY+NdTTVZKy5TaLD+CFDFoUPUb/NjMbm7Ss0tcWy7FkFwKnlHkOw
+ TuV/HOSRi7aCEdipAHNr7b9Bibi5q1L3VfGsYQU1B3XLYGgcm3EIalKmfXLcPcGU5ZFT
+ hqYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685458135; x=1688050135;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/mRotw+iSAUVrUeFod2O6JDCzdceQwIv5HTL8rc+bKk=;
-        b=i2iLhnGVkuCwXH5vMoul16Pfek3GcS5gkXxQ6tgZ6mqQLC0XLEklq+WzJzHmRlh//K
-         UGymkDwmoj4sRpzcO6x1Kv7yNxkTdOUaKAzYIloMc82q5mohukg9OebXnBmavunQiIgF
-         p9+3t1YYcuvi7Q5mClgDfUjnzz/Fev0CVqhnwzJwEoIuUUcNBkOVslh6fuMe30f9yvSM
-         Nf7jF5UuU3jJOCg5qhiO3C+MD+6h48+6ODwz4LwELLlC/A8cLVTTvDL1sWiKbcDuSBrI
-         p3tZnzSt8uJzWArrqi4VnlRzYTDLAguaGx+ZD1VpPg4PAN/UR+I68nFhdGv+g2WtpFyo
-         dQHA==
-X-Gm-Message-State: AC+VfDxRnpLDIl3wDOnGF4O03QccRnmUs12fE3Siwqwo08wNfQeK0XSP
-	cf1ZzuIay3w24cEu4l6EibAMIPPb
-X-Google-Smtp-Source: ACHHUZ6UFYshVBEpFlDiULXPoDQFGHGHQRNLicj152ZIxlhVGC/4BntXzMpwTvN0CjjJ0WLKZszvcg==
-X-Received: by 2002:a17:902:d4c3:b0:1ae:35ba:8c8f with SMTP id o3-20020a170902d4c300b001ae35ba8c8fmr3007356plg.13.1685458135474;
-        Tue, 30 May 2023 07:48:55 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:1598:4c01:35a2:c45d:7485:f488? ([2602:ae:1598:4c01:35a2:c45d:7485:f488])
-        by smtp.gmail.com with ESMTPSA id iw20-20020a170903045400b001b03b7f8adfsm4983013plb.246.2023.05.30.07.48.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 May 2023 07:48:55 -0700 (PDT)
-Message-ID: <d753128d-d334-e701-a7a2-33c50048e4fb@linaro.org>
-Date: Tue, 30 May 2023 07:48:53 -0700
+ d=1e100.net; s=20221208; t=1685459481; x=1688051481;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=pgqSrsE6WKBGhIyN31uqtjp1Dlf7zxgJ52vhXZmBtsY=;
+ b=FV17pUy1A9CM0V1IDo5ZDGobT3//Gcs6KdZfo1ribzZWxlN/B6C4t0t8xwcvWo2pkg
+ ufW5F4o5cGYnOFaxUIsfEyNRmIbf6ZL9EF5ssQJ/dSFzNnIbWkbnej6Jh55NHp5jAK/o
+ 7UR3+KGeNxiDEGMNwwwOdVTV9yQnaLfvQg3RzfdR3saBkhDGCckkY2ow174DMfojxeyv
+ G/mPSqKT+KBBG73UrALvmcIALJag38OUxsnLhtCA2QOos9LD/Gi6E9UBzt29dtYk692M
+ AUI3D7CrszGYaoVGsBr3kml8shMEVWTnLfvdxTbKbspvIXyIBFWJBOs5MHnLmhNOQw7w
+ 4bIQ==
+X-Gm-Message-State: AC+VfDy7ojTvP9AZAPwp7qdEUKRmvMETuaEqeIlPb7sb4ej+um+9WJCu
+ wvs5fy2TyGAw6W+31q2eb8KDTqJW4ZaCwDgXRJfxpQ==
+X-Received: by 2002:aa7:cfd8:0:b0:510:f8d7:1f4e with SMTP id
+ r24-20020aa7cfd8000000b00510f8d71f4emr1899162edy.3.1685459480851; Tue, 30 May
+ 2023 08:11:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [RFC PATCH] target/arm: use x86 intrinsics to implement AES
- instructions
-Content-Language: en-US
-To: Ard Biesheuvel <ardb@kernel.org>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20230530135204.2903761-1-ardb@kernel.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230530135204.2903761-1-ardb@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: r+JKce71VM3s
+References: <20230525232558.1758967-1-richard.henderson@linaro.org>
+ <20230525232558.1758967-2-richard.henderson@linaro.org>
+ <dbb368d0-839c-ad09-01de-09b1a62416af@linaro.org>
+ <87zg5r1kxx.fsf@secure.mitica>
+ <8f315f7c-2778-855a-0879-f928f9ca8054@linaro.org>
+In-Reply-To: <8f315f7c-2778-855a-0879-f928f9ca8054@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 May 2023 16:11:09 +0100
+Message-ID: <CAFEAcA8XnaEjh+BhfnfOEqXtEHXGxF-9iC83o8jNH65vhg5R6A@mail.gmail.com>
+Subject: Re: [PATCH v2 01/20] target/arm: Add commentary for
+ CPUARMState.exclusive_high
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: quintela@redhat.com,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /Pj8EWvOCAs5
 
-On 5/30/23 06:52, Ard Biesheuvel wrote:
-> ARM intrinsics for AES deviate from the x86 ones in the way they cover
-> the different stages of each round, and so mapping one to the other is
-> not entirely straight-forward. However, with a bit of care, we can still
-> use the x86 ones to emulate the ARM ones, which makes them constant time
-> (which is an important property in crypto) and substantially more
-> efficient.
-> 
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
-> ---
-> Suggestions welcome on how to make this more generic across targets and
-> compilers etc.
-> 
->   target/arm/tcg/crypto_helper.c | 43 ++++++++++++++++++++
->   1 file changed, 43 insertions(+)
-> 
-> diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
-> index d28690321f..961112b6bd 100644
-> --- a/target/arm/tcg/crypto_helper.c
-> +++ b/target/arm/tcg/crypto_helper.c
-> @@ -18,10 +18,32 @@
->   #include "crypto/sm4.h"
->   #include "vec_internal.h"
->   
-> +#ifdef __x86_64
-> +#pragma GCC target ("aes")
+On Fri, 26 May 2023 at 15:44, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 5/26/23 02:49, Juan Quintela wrote:
+> > Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+> >> Hi,
+> >>
+> >> On 26/5/23 01:25, Richard Henderson wrote:
+> >>> Document the meaning of exclusive_high in a big-endian context,
+> >>> and why we can't change it now.
+> >>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >>> ---
+> >>>    target/arm/cpu.h | 7 +++++++
+> >>>    1 file changed, 7 insertions(+)
+> >>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> >>> index d469a2637b..4e16eab82e 100644
+> >>> --- a/target/arm/cpu.h
+> >>> +++ b/target/arm/cpu.h
+> >>> @@ -677,8 +677,15 @@ typedef struct CPUArchState {
+> >>>            uint64_t zcr_el[4];   /* ZCR_EL[1-3] */
+> >>>            uint64_t smcr_el[4];  /* SMCR_EL[1-3] */
+> >>>        } vfp;
+> >>> +
+> >>>        uint64_t exclusive_addr;
+> >>>        uint64_t exclusive_val;
+> >>> +    /*
+> >>> +     * Contains the 'val' for the second 64-bit register of LDXP, wh=
+ich comes
+> >>> +     * from the higher address, not the high part of a complete 128-=
+bit value.
+> >>> +     * This is perhaps confusingly named, but the name is now baked =
+into the
+> >>> +     * migration format.
+> >>> +     */
+> >>>        uint64_t exclusive_high;
+> >>
+> >> Can't we rename the field if we add the old name to check_fields_match=
+()
+> >> in scripts/vmstate-static-checker.py?
 
-This doesn't work with clang.
+> It's not worth any effort to rename.  Just needed documentation.
 
-What does work is __attribute__((__target__("aes"))), which requires that you pull those 
-little code blocks out to separate functions to be annotated.  I believe they'll be 
-inlined afterward, but not really relevant for your improvement.
+Yeah; the important point here is "we can't trivially switch
+to recording the exclusive value as 'high:low' of a guest
+128 bit value" -- it has to remain "value from low address,
+value from high address". Really what is baked into the
+migration format is that the semantics of the two fields
+are from-low-addr and from-high-addr.
 
+If you replace this:
 
-> +#include <cpuid.h>
-> +#include <wmmintrin.h>
-> +
-> +static bool have_aes(void)
-> +{
-> +    static int cpuid_have_aes = -1;
-> +
-> +    if (cpuid_have_aes == -1) {
-> +        unsigned int eax, ebx, ecx, edx;
-> +        int ret = __get_cpuid(0x1, &eax, &ebx, &ecx, &edx);
-> +
-> +        cpuid_have_aes = ret && (ecx & bit_AES);
-> +    }
-> +    return cpuid_have_aes > 0;
-> +}
-> +#endif
+> >>> +     * This is perhaps confusingly named, but the name is now baked =
+into the
+> >>> +     * migration format.
 
-See "host/include/i386/host/cpuinfo.h" and "util/cpuinfo-i386.c".
+with:
+ * In some ways it might be more convenient to record the
+ * exclusive value as the low and high halves of a 128 bit
+ * data value, but the current semantics of these fields are
+ * baked into the migration format.
 
-I'll have a closer look at the other AES uses to see what might be sharable.
+then:
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-r~
+thanks
+-- PMM

@@ -1,106 +1,127 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2137841ejb;
-        Tue, 30 May 2023 05:29:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ470m1A3inE/br+7yGmwR4T7cGsMLMb0npXDRLzoHhD3xhJ3w460lg0ATXXJjyckmJzFwkH
-X-Received: by 2002:a05:620a:17ac:b0:75b:23a0:d9c3 with SMTP id ay44-20020a05620a17ac00b0075b23a0d9c3mr1926190qkb.25.1685449793543;
-        Tue, 30 May 2023 05:29:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685449793; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2138691ejb;
+        Tue, 30 May 2023 05:30:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5yZIZ0ZjTv6meByYF15okTZY25UNZhWm3IeIcFkh3SYcuiZflm1PzozGtfLH5cQi1qC022
+X-Received: by 2002:ac8:5b0e:0:b0:3f6:b49a:c137 with SMTP id m14-20020ac85b0e000000b003f6b49ac137mr1461167qtw.39.1685449855797;
+        Tue, 30 May 2023 05:30:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685449855; cv=none;
         d=google.com; s=arc-20160816;
-        b=jexdv34mXyjND337/g42BXUpHCEPYyzJQl6wkggqeoha0do6yDjLrYlkZCoT3Tfd23
-         tpfgL0AVyB4ctv+y5u3UUC6+f08v/3Ac7fsDAaCNRTHk0Z20ffVkRQ8YXRhA2bcB5QTV
-         Cpswqs8gDvivgENEJ52NNCT69Dhf+jKdst6KkAqlw7N9wEA4pDaPRnwyj1eGscdcyxOS
-         gYElK4Ds/KlB3uRzjTfdKdR/C2zMRmnWVeQ8Gv32zwz76CFOm3VPXPHb0U9yqblwNia+
-         b5XpSuGlE7/i1R4gec9kgawy0DMIa5Y69ljC8jk6aYceq1g6AmJlRfdwAKqjU3i1Sh0y
-         LbuA==
+        b=MvwaOzhYB5+HV8DnIDYOS0G3uzGKZe+bpLg//VDjkF8aQU16TlGPa/VYtLIoerXh6m
+         JjtxKltKBD4PwnXOT1zPfEWoDjoJDGDwE03Nn5MFn7hF9pJWXBk7EKHtg51bel99VBs9
+         pbgr5/JF/sSWj1LgsRClWsTkKrsEpdiVweyusb1XYFYWx83m4tqNi5W2hLtBsUt6n6/f
+         zuphXVDKcSUWeDQCeDx7OQsW9V38IUZRgIr4xndOiBPiNgkRJm8TUTmaYyhFLSLLd3ho
+         mfat2Hi1bUcoLccoCc5y9JLCkfWyXcZKcl0qO2fRLKyabJd5gTeFyjVA+L7XxYy7NQJ3
+         NfkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=IJHjy7EvRW6rB6ywYV3fseC3hbDe3gWjmarVrItmGRA=;
-        b=zUhjS/TjEhscd5Etwu04bOlExpYQaNuMyiN3dCIsHalDDzinkyJJto/P2x47geMnB4
-         pNKewM2Ld4Y7owbEDn5jOHn9xwNEwtzvL1ysxt44U8h+fclUwlgFnvhiAm/Ufl8ExUx1
-         kilcxM0pzfJOHgLQm6vsMeCOfEQliCmdUxLcyWwxlA8yIxxVSdBBQSASTzwMxaIvgwNE
-         EfXVFYW8o0KBhVXo0erUtdQP47TJNfz+cMyCgGXkDbyiBSLg7qQTX1ZyHkt1l7z6IWWa
-         QhSJG32/dW/4VHVjGJhWy0OfKzHR5YJq/pXJuHXoBfruXWkUZ7RUUUhLp+88f2a2F2Am
-         T7HA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5aCI4yNqcUK7XYzwGuwgqxLfmdzwJW23J4p5WWeGwAc=;
+        b=1K4ytUaitLrohrr9x3T2t6S2lOuH8RH2wE4UkBUJSoKZXw22GcjtMA2oUwUjSHYCMc
+         zFsOnBiyVr/RHodNaS+BpzeqHaWO953vNMSs7EZ1tKeLa/I80SPkGXRWOkMADmEWNS7R
+         uc6hzbFHTfod0LyGjuptwEf9Si8SQVY3V3ICNNMCTBRgnc+EYqF4K0+5UpJPo5Vjcv5W
+         T/XAJPNelbog/ze7mKWq7wO2UYYLiQhK+M4ii4ZvHpUAJb5G9NVpf3sjfbkWDXcIYRP5
+         aDzkE+yC9pu0zG7/qHAoLKEDEIvPENkU05L8lHKP4d/Hukq/VTL9Kl3aVm5vAqu5H/WS
+         75qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=El2JljDq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2pfDymF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16-20020a05620a143000b0075b2f840af1si6046669qkj.391.2023.05.30.05.29.53
+        by mx.google.com with ESMTPS id f39-20020a05622a1a2700b003b644b7e22bsi6328353qtb.155.2023.05.30.05.30.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 May 2023 05:29:53 -0700 (PDT)
+        Tue, 30 May 2023 05:30:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=El2JljDq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O2pfDymF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q3yTi-0001yx-8y; Tue, 30 May 2023 08:29:30 -0400
+	id 1q3yUY-0004Bh-27; Tue, 30 May 2023 08:30:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q3yTH-0001gz-Vt
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:29:05 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yUO-0003qc-Aa
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:30:12 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q3yTE-0000tP-1v
- for qemu-arm@nongnu.org; Tue, 30 May 2023 08:29:03 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5149bdb59daso3574439a12.2
- for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:28:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q3yUM-0001Fm-FF
+ for qemu-arm@nongnu.org; Tue, 30 May 2023 08:30:11 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-3f60e730bf2so45840455e9.1
+ for <qemu-arm@nongnu.org>; Tue, 30 May 2023 05:30:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685449735; x=1688041735;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=IJHjy7EvRW6rB6ywYV3fseC3hbDe3gWjmarVrItmGRA=;
- b=El2JljDqMB1II2GsN6qpdoC3QEhXbNbRx23gH0cIo7SMxiwbnswkBsoB6XTgtl+THH
- gEAzjC+ecm6sMN/DvI3A420l6KOuyJ8MxTQeRuwFKfM3sAlgZGQWEZ/oyEBT22XT+zLI
- g1xhCb0ERIAum+nz67Qq94O4S2BQZvgHzBl8uiJrgHTJHuGLl/K6weHe6rdvivF+VLnY
- gIKoslutbG1cIDZgppWP7wwhMgaPSonvEkVjLsSFB0b1G2DK8Z2B8CHhBSCYWf9aLXhL
- c+V3PTp+h5R2be5bxQN2Y2yfvqHn44x+9xROf0WiD30vZwH0pFa499XCdYDfi1yZuzAo
- dnQg==
+ d=linaro.org; s=google; t=1685449807; x=1688041807;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5aCI4yNqcUK7XYzwGuwgqxLfmdzwJW23J4p5WWeGwAc=;
+ b=O2pfDymFA1KVyq3dT7DAMEIwr+XCvexxOBZgysUbi7YOXTBsUTciExxEDi30o+cKIP
+ W4pcuzgr18kxb7WnBUAqvmwSduH0Va+Wja5GEgpR3+263hQ73PyyxjGNJZtFXP7VMgVJ
+ OkZ8MLow9QwQCvDtVhfoK/K0vb+2pnzM9c6IPuBB2JAIqy3omJawG49nE6wXd0jLhuy/
+ Kpriaj/FUOiMG0IUKGw6r377a5FhKWEGqubWTdfx1PU1/v32TTz8aZ33tBeCoLog0ACZ
+ EYOsCN1spk7LI0GFu+OxvsFBzRT97bTfdbma+QcwvpLhy93I0MBtbw24JiYY6gbVlxzD
+ sbJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685449735; x=1688041735;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=IJHjy7EvRW6rB6ywYV3fseC3hbDe3gWjmarVrItmGRA=;
- b=UXuXNsx+1jbqeND3Zpr2ukmI24Ys8G41tULZ6n7ojSPkKwhEq0gSX3bcYsH/AbPQiF
- vcxw92FT0ZqxTwvB4hdx5iwGCMXrT/T9e53UpwokAOoJhx1xp1r4k+r+noNuEGAlaXOq
- t94cOEz2MglXqKlIQ7PB5OWXLRFnVt6vxylg3p1elYgy53HoaEescOOa63UL4UxhaeAv
- pyN1mFRK/khtBWd9LE6i4Xnfaye2FfvqNlvvDN/eZJ09tRiRX/LRWOWVYcEcy1aOvJp4
- 8HnA64Xx0fruwAFWEQot38ecGwz8TWKVP2tLjD4jkgLYKaTzFT5FerFzgmJlM1g3HIku
- 8JeA==
-X-Gm-Message-State: AC+VfDwbI0nz8IL0ROTnl/wfpPcjjm1uHqr+kN5HDqfDyEnTPRJEaQYD
- kes3H1YOA3iYnXMZyKzIZV19Qgp6hzfmRI0iwFNpjQ==
-X-Received: by 2002:aa7:ce04:0:b0:514:75ff:6a86 with SMTP id
- d4-20020aa7ce04000000b0051475ff6a86mr1504796edv.29.1685449735573; Tue, 30 May
- 2023 05:28:55 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1685449807; x=1688041807;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5aCI4yNqcUK7XYzwGuwgqxLfmdzwJW23J4p5WWeGwAc=;
+ b=V5eUTeKp7gjecCQL48TAD8PE6PsoSfoet+yk/COv1yRDKeIJehQL5mmY3xaBlNW0x0
+ 6RHXZXxSyNqap4lkzxtmkGBFbMT+7iAYQu6AZKTbAvr14JtogWc5W79uw5zqYI6SWmJr
+ OZkvgUzZgcedjG+0OF1f0GAPKPF6XUJPNBBZOHFCFswc+UFpTIZikNoRRUtDGr3Wik3J
+ qmMHu+BKGRny/BfM0VJ7SKsvNLas5zFMtSixONCmeOq0yZp5+JpyXvjEB+r7bB+DKnYN
+ JtOyEUUBkjxYVNbRXyeGrN+mw6pTu7701m31xJjmDyOgwIlaBoCqLJFyThqfG0vLgvi+
+ WNLg==
+X-Gm-Message-State: AC+VfDyOr63UmsCN0lKJ2Iv8QWT+RcvS6+gljcpmIzIpKrvmPMZTGJlU
+ 7vQSF9qf3aNOcmdzkSQpNpScbA==
+X-Received: by 2002:a05:600c:2105:b0:3f4:2ae5:b35d with SMTP id
+ u5-20020a05600c210500b003f42ae5b35dmr1962471wml.40.1685449807147; 
+ Tue, 30 May 2023 05:30:07 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.180.1])
+ by smtp.gmail.com with ESMTPSA id
+ f9-20020a1c6a09000000b003f4272c2d0csm17220780wmc.36.2023.05.30.05.30.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 May 2023 05:30:06 -0700 (PDT)
+Message-ID: <68163136-0439-cb05-e13f-0aa49c1417dc@linaro.org>
+Date: Tue, 30 May 2023 14:30:04 +0200
 MIME-Version: 1.0
-References: <DS7PR12MB63096EDD683DE70EBC472E97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
- <DS7PR12MB6309A170F8BC7D7C956D6C97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
-In-Reply-To: <DS7PR12MB6309A170F8BC7D7C956D6C97AC7C9@DS7PR12MB6309.namprd12.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2023 13:28:44 +0100
-Message-ID: <CAFEAcA8+hq3zvnowmxN+7FKv0FFu56VbA1WUTnDukGExpFS0Nw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] tests/tcg/aarch64: add DC CVA[D]P tests
-To: Zhuojia Shen <chaosdefinition@hotmail.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH 01/10] memory-device: Unify enabled vs. supported error
+ messages
+Content-Language: en-US
+To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
+References: <20230530113838.257755-1-david@redhat.com>
+ <20230530113838.257755-2-david@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230530113838.257755-2-david@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -117,35 +138,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VNkNyaUZeuV3
+X-TUID: RuNGGYuwP0ap
 
-On Fri, 19 May 2023 at 23:12, Zhuojia Shen <chaosdefinition@hotmail.com> wrote:
->
-> Test execution of DC CVAP and DC CVADP instructions under user mode
-> emulation.
->
-> Signed-off-by: Zhuojia Shen <chaosdefinition@hotmail.com>
+On 30/5/23 13:38, David Hildenbrand wrote:
+> Let's unify the error messages, such that we can simply stop allocating
+> ms->device_memory if the size would be 0 (and there are no memory
+> devices ever).
+> 
+> The case of "not supported by the machine" should barely pop up either
+> way: if the machine doesn't support memory devices, it usually doesn't
+> call the pre_plug handler ...
+> 
+> Signed-off-by: David Hildenbrand <david@redhat.com>
 > ---
->  tests/tcg/aarch64/Makefile.target | 11 ++++++
->  tests/tcg/aarch64/dcpodp.c        | 58 +++++++++++++++++++++++++++++++
->  tests/tcg/aarch64/dcpop.c         | 58 +++++++++++++++++++++++++++++++
->  3 files changed, 127 insertions(+)
->  create mode 100644 tests/tcg/aarch64/dcpodp.c
->  create mode 100644 tests/tcg/aarch64/dcpop.c
+>   hw/mem/memory-device.c | 13 ++++---------
+>   1 file changed, 4 insertions(+), 9 deletions(-)
 
-> diff --git a/tests/tcg/aarch64/dcpodp.c b/tests/tcg/aarch64/dcpodp.c
-> new file mode 100644
-> index 0000000000..6f6301ac86
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/dcpodp.c
-> @@ -0,0 +1,58 @@
-> +/* Test execution of DC CVADP instruction */
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-All new files should start with the standard brief
-comment stating the copyright and license.
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM

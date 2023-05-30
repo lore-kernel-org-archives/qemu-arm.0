@@ -1,94 +1,165 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2307599ejb;
-        Tue, 30 May 2023 09:45:36 -0700 (PDT)
-X-Received: by 2002:a05:6512:15d:b0:4eb:1048:1285 with SMTP id m29-20020a056512015d00b004eb10481285mr1140548lfo.47.1685465135801;
-        Tue, 30 May 2023 09:45:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685465135; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2314104ejb;
+        Tue, 30 May 2023 09:59:07 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ63WYrh6lbOO07AS3KqaMdVdk4G9ZvzuEODcJKVo02JpY8MF2+W4bN42YWCvTg9Buadk/fm
+X-Received: by 2002:a05:6870:5b01:b0:19f:9340:fef9 with SMTP id ds1-20020a0568705b0100b0019f9340fef9mr1555846oab.16.1685465947334;
+        Tue, 30 May 2023 09:59:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685465947; cv=none;
         d=google.com; s=arc-20160816;
-        b=wVFuMpMYrjlOTubMsndIQ9jgy1+6TpDU0FQ70AeFYyXUOrvksBWyy0tCYB4iX9gO9b
-         qQ2tUjgBgiwg0NxFY7klawIhRAg4C7QCLbQRunxmMPdjP5jBGnr1WD8y/vDoSf4iaAF/
-         UJBwysqbAvdy+TO94L+vvaXeukS41nadVbDXrgkvFAHbRgs5PTUsxl29z2LhlT3R1Tmv
-         A5+uYfkyKX2IA6x3UqZ52EtOKH40F0/rCPOWAEGlDW5U+960T76OA3kJa/pIkLpZeaQk
-         HTOytKpmgI2FjCy2WqsUKWbKH2Og0To1syYIXaNyP49BFhv5uVvFdbk4DonyfWfJdNz2
-         Djig==
+        b=OUJ8QBhj4kIhoQumMmuwKnngwS5VPGGp1IYkSnv3MvQqbzdK7vR0E7GPv5XMsGQ8/D
+         q/uNCWU1ZrUTl+jbl/0KAVN7VG9qjBpm21YZMbUbYgXl0x8JIwg6HUwmzYFfAq/Zj2At
+         2Yko/xxfaBvYJSL6+KSYwpa3qgelxMoBTBSzHxoKsTJOArUBOkOIEX2OlMZuTtTAeYFF
+         itzLqtnsbv4U2o0rLt5ueyk9S4b2czfPH/zS+eiUqY4hrWpL3AUEt3wrQHimUTUn/pXS
+         UO7r+LePRTpo2rWlNVBAL+ISFE4kx/0WtMkyaSoDE7+8Z17zh+jhtjR6kSj5jhejfACu
+         kWlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=U9OoVmtBtifVAPYAGHIqRc0QgCbKza8ZHU5d3UDetPw=;
-        b=ZihawKv9w9/m3xxRP7ne6ony0wd1erD90mXfFaMAIHG/OUZV7ZjYUwhnoS7s+7OTa/
-         0rp52xJItWFJ1s3zyL2u9se+tPFY6/DpW5dcuDEYoNsz01CtDXW/GH3otwIgGCSMiXm3
-         kYvt3ntSM8V8VjN0l0pL9FLFVD8ga5dVGHkq1R8/gk82uHnQ8Oo8wu6nR7Zi3DRNfRPV
-         CDoSinVruu2zKss8CZmYdlhAjyT4MlC4JN1sz9nZfnSuGEARvo3oL51V32LcrORuwlxk
-         6T6FWiWH8Om0S0++5blnrrrb+MqdjmYY20dEviTzfKSF/BLWVWzOnJ2pAYf4ilguLoEW
-         n6yA==
+        bh=vir0NkpE56zJbbYe3SO72UiuZQhKRI4m/x7d8at/neE=;
+        b=KyDe/vj5/TooN7vtlngvClvdnAHSkczG8057Cm7RGzitrxFFSwL9rERxaNSKMUSG6w
+         cg1oAi0sl2cpAzCHb4H1Z6OX308dAR1nt0ruWWCxMioqeXu/4FjmP1QzGWaeSRACMplM
+         bYewJfjjF9YOEbDix3rCMiKP602GKw5vChOr6GCoAb5knw/8JTrv2VKbc2u1m6lgbGEi
+         YbczCzqSvjjT0J8OvZgpc/blblmsIbQEA0Dj8o9kJ1354y3ItHcPWh5/NZ+p+0gOEw5k
+         vVIypvmieR33GTAHDPYi1bN/dCYcqYVfKs/q5cfI+mvXuybgy1ghAieHl5Kk0NRcCKaj
+         WQ9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XmA+yJ6g;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v25-20020a50a459000000b0050ccd833775sor4002505edb.2.2023.05.30.09.45.35
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 30 May 2023 09:45:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="DCJqYTW/";
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
+        by mx.google.com with ESMTPS id p2-20020a05687052c200b0018452951892si5668212oak.58.2023.05.30.09.59.07
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 May 2023 09:59:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XmA+yJ6g;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685465135; x=1688057135;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=U9OoVmtBtifVAPYAGHIqRc0QgCbKza8ZHU5d3UDetPw=;
-        b=XmA+yJ6gkyDQtrUJg+tIBnvEuJDXtaltHae3LjbK493BdUh2tEFzAxoerRlItgqNoW
-         NCYwdk/ndwroxqKPRjejTNTG8DpXqH85oFGwxohVD5riCD4m1dSXm0XwgRb7Tml1qhBP
-         QfA5JQwguxguE6Isq5mN8ZlAZBG4qhBpikIPqjt3Vgxl287pdTmWyQtDkfEVHZQT+TkX
-         H8vNXvNncP9RqLxuH1l8ZosWfJAaE8+0GhclHPIffW7aVWFELUoHRmN+DaNSerACFCtW
-         BH3/ra2NQtRBv8PN4tsa2nToxOZm+GmZbH9V9IOhBvMubW3/BmHvbBj7HPtc7m+7MAAZ
-         JL5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685465135; x=1688057135;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=U9OoVmtBtifVAPYAGHIqRc0QgCbKza8ZHU5d3UDetPw=;
-        b=Wn5G+1SKSqu8QGbbPrC5EsERmw17DmnPQaLif0ldDiPM698q5LdHWsWORlq+PYUeS5
-         Jr98uj2ku2nGEyofj2hnrf1PrP/+yHcNEp9ZNfsRoYdPx9/YZ024w4phDgyp0GVyIdM9
-         xcN5YvK+Sd77/9X9dEVJdSN6+0E1cmvZP9q6/TVEzo0vCV+rOiIYsAG1Xr4tJ29szQwh
-         IuxwU58MglTy6/s9+n33ML4A57H+nrSgDCxYeRrRkqwRXpuXv7e2x8nrJ9evelb/R+4G
-         78H5y3PWDdargbMwhh7ofOorF6ujFHx8ALyKTSkOqK0mv3VAQNTq0unkgkG9kh+lW1MI
-         oyXw==
-X-Gm-Message-State: AC+VfDxRctjb5SbmK8FxbeV6v45uxy61S3uXreCIJLgMJB6bnGteAlST
-	LH8DjWDiozjZKnX0wPMDtwG+MAHAimU7zdiLTW2Cu2kX
-X-Google-Smtp-Source: ACHHUZ7TERjs//ikShUkljz4dhSu5wn4zN09q3RO4LOjTbUYSeq61GbNT97Na1QbkLo5/eaB5sHqJS118px5XPIadMY=
-X-Received: by 2002:a05:6402:7cd:b0:504:b6a6:cbe0 with SMTP id
- u13-20020a05640207cd00b00504b6a6cbe0mr1956712edy.12.1685465135479; Tue, 30
- May 2023 09:45:35 -0700 (PDT)
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="DCJqYTW/";
+       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 0271160DBA;
+	Tue, 30 May 2023 16:59:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C69F4C433EF;
+	Tue, 30 May 2023 16:59:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685465946;
+	bh=aiREaNoBxTIFPyj1qWO754P/cI+EmEr89qizdPzLSEI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=DCJqYTW/3TAxLjhsqgXAZ1GBAsWlDDKKfPX279o/zE2oe55OXudZTXOCPhZ/aUmzW
+	 F/mldylfTK3cZqxgEQZeFwHEdEVDqe9xApiVW/nJIRKYmbJdwc+KykVnvHgjOAXjox
+	 XPwsZqyhXwQA0kw5yDOFQVSb29MHsWQjiUWglDAmnO8HQ/+np0JIptfDDioj/wViZA
+	 d+ASNiGerjjlgMa/MlxJibn16fX8odHvQqONw5KaBDWOQLp1ib+yBZWR82RF9rM80K
+	 3TZgUOaNYSprbPmhVIrPELoXVXhtFdIA2LoxSOXxrfH2LCCi+A+UG+0g0HIz4Sdfwb
+	 bBFytMaXc9AGw==
+Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-4f3a99b9177so5527608e87.1;
+        Tue, 30 May 2023 09:59:06 -0700 (PDT)
+X-Gm-Message-State: AC+VfDxr2QqllUUC2IG/YCLmNR8SEFsOPepSepXqPwlewsH/1CoAg7W4
+	7D4/nCuLvSGb8wZuo6wVxAMWciX8hYW3pXZbMyg=
+X-Received: by 2002:a2e:98c7:0:b0:2af:23fe:98ef with SMTP id
+ s7-20020a2e98c7000000b002af23fe98efmr1130462ljj.50.1685465944845; Tue, 30 May
+ 2023 09:59:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230530135204.2903761-1-ardb@kernel.org>
-In-Reply-To: <20230530135204.2903761-1-ardb@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 May 2023 17:45:24 +0100
-Message-ID: <CAFEAcA-RwXQWx4RhMhWk_xQLsJ0a1+MDKDXyKHdCmguqsuNKzQ@mail.gmail.com>
+References: <20230530135204.2903761-1-ardb@kernel.org> <666b4b6c-380e-142e-9348-823006b35312@linaro.org>
+In-Reply-To: <666b4b6c-380e-142e-9348-823006b35312@linaro.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Tue, 30 May 2023 18:58:53 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXEE3X=m9X9DkMu885w=Vperp100NWcJ33XOTDm0O+1sWQ@mail.gmail.com>
+Message-ID: <CAMj1kXEE3X=m9X9DkMu885w=Vperp100NWcJ33XOTDm0O+1sWQ@mail.gmail.com>
 Subject: Re: [RFC PATCH] target/arm: use x86 intrinsics to implement AES instructions
-To: Ard Biesheuvel <ardb@kernel.org>
+To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: kqUKmi1TdQgX
+X-TUID: ZJYeRQjPKOHt
 
-On Tue, 30 May 2023 at 14:52, Ard Biesheuvel <ardb@kernel.org> wrote:
+On Tue, 30 May 2023 at 18:43, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> ARM intrinsics for AES deviate from the x86 ones in the way they cover
-> the different stages of each round, and so mapping one to the other is
-> not entirely straight-forward. However, with a bit of care, we can still
-> use the x86 ones to emulate the ARM ones, which makes them constant time
-> (which is an important property in crypto) and substantially more
-> efficient.
+> On 5/30/23 06:52, Ard Biesheuvel wrote:
+> > +#ifdef __x86_64__
+> > +    if (have_aes()) {
+> > +        __m128i *d = (__m128i *)rd;
+> > +
+> > +        *d = decrypt ? _mm_aesdeclast_si128(rk.vec ^ st.vec, (__m128i){})
+> > +                     : _mm_aesenclast_si128(rk.vec ^ st.vec, (__m128i){});
+>
+> Do I correctly understand that the ARM xor is pre-shift
+>
+> > +        return;
+> > +    }
+> > +#endif
+> > +
+> >       /* xor state vector with round key */
+> >       rk.l[0] ^= st.l[0];
+> >       rk.l[1] ^= st.l[1];
+>
+> (like so)
+>
+> whereas the x86 xor is post-shift
+>
+> > void glue(helper_aesenclast, SUFFIX)(CPUX86State *env, Reg *d, Reg *v, Reg *s)
+> > {
+> >     int i;
+> >     Reg st = *v;
+> >     Reg rk = *s;
+> >
+> >     for (i = 0; i < 8 << SHIFT; i++) {
+> >         d->B(i) = rk.B(i) ^ (AES_sbox[st.B(AES_shifts[i & 15] + (i & ~15))]);
+> >     }
+>
+> (like so, from target/i386/ops_sse.h)?
+>
 
-Do you have examples of workloads and speedups obtained,
-by the way?
+Indeed. Using the primitive operations defined in the AES paper, we
+basically have the following for n rounds of AES (for n in {10, 12,
+14})
 
-thanks
--- PMM
+for (n-1 rounds) {
+  AddRoundKey
+  ShiftRows
+  SubBytes
+  MixColumns
+}
+AddRoundKey
+ShiftRows
+SubBytes
+AddRoundKey
+
+AddRoundKey is just XOR, but it is incorporated into the instructions
+that combine a couple of these steps.
+
+So on x86, we have
+
+aesenc:
+  ShiftRows
+  SubBytes
+  MixColumns
+  AddRoundKey
+
+aesenclast:
+  ShiftRows
+  SubBytes
+  AddRoundKey
+
+and on ARM we have
+
+aese:
+  AddRoundKey
+  ShiftRows
+  SubBytes
+
+aesmc:
+  MixColumns
+
+
+> What might help: could we do the reverse -- emulate the x86 aesdeclast instruction with
+> the aarch64 aesd instruction?
+>
+
+Help in what sense? To emulate the x86 instructions on a ARM host?
+
+But yes, aesenclast can be implement using aese in a similar way,
+i.e., by passing a {0} vector as the round key into the instruction,
+and performing the XOR explicitly using the real round key afterwards.

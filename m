@@ -1,92 +1,118 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2843992ejb;
-        Wed, 31 May 2023 06:13:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5mnj5pN13GYRvZ1aohS3PiLotsZUY+s+kiF1OUAKfEo9SYKDmfRtrOwk5ROVGlkbA+Odux
-X-Received: by 2002:ac8:5709:0:b0:3f6:bcda:e77 with SMTP id 9-20020ac85709000000b003f6bcda0e77mr7005354qtw.55.1685538816707;
-        Wed, 31 May 2023 06:13:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685538816; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2855200ejb;
+        Wed, 31 May 2023 06:30:43 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Q5Q0yYPgXwI2FQS4vS+MNjeMiCGIVlqJPlJYya3FPnU2IAXBuhNZMLX6TqjzoncJEWzKW
+X-Received: by 2002:a05:6808:118e:b0:398:fd9:44cd with SMTP id j14-20020a056808118e00b003980fd944cdmr4709446oil.11.1685539843730;
+        Wed, 31 May 2023 06:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685539843; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMPZ6WCpM7DB/o3mkH3/MLzNmQlyM/4R0pSb1fPrxYqGudttyQKEJHL6BIvmDbZYoC
-         ryGjMkxl+38ccwTY3sTAdX9Mz8G1e4L6zorF/Na/2dCtZlH2leBffxJacLUd/wOl2E0I
-         h2fph5jUajG308R+GkxmKriTBkU47JTx0nSxOAL+luOyZkobWC7IXkkdR77q9a6uZwdy
-         DPe+aotrU4ECX2QEwwv+Pu7+WSMSsUG0VVg4j2fdn8oLlq3eKBD7g+A0DS1YJR3Hr5te
-         Axzp15iLwYX9RlwOg2JaBRu/uCn03KsC+rjD6KP2KW/CeJ4ZW8olOXSezv3kI3t/oB+E
-         XWsg==
+        b=G6DG5Izvwxo60dc6Ex/ySSHgRt3MVIoZew3zINl3nIr8KJ+ppeTBNMhtXQeE6chreo
+         O6svlMOEjjDprnjcH99QzxyVaRkSrxGR3/vwXPRA0t0ME6JdPUvwQv3vZw+AANpH5Sc8
+         UHiqLCg19JWiyeTuuMT23ebfTHdiicAfsl+xjMrr0vdCvVy1y3qgysQerkdavvGTD/r3
+         gY+7vCLpf5yux9fjP9CLK1WD1gkG4Uu7zNm1qreKG4SdWh0bJ4zbIzq/OftGh258uD8l
+         P9eHDdt9cGp1U8JbgB6kmYZVKhiNl3u0AaevzNs82sqsPUE/GTLqjmgMv/e1f22I4+6w
+         7Trw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=RbOa8PAml6rxfkGpsjRcYBEKufG03n3LpmXZSyRIkvU=;
-        b=IgD7tgfTcWSyGvM5u5WN1qGoLfLTC7Qu37hVItG13v5iaoOtdFH5b70z8bBxwYZJGI
-         OdExhSiwz6/QMQw82L8wK6bVaSGBUaPq8oaUY+XoCg2YiAnT8sQgpxLWoO9k4tzTjnup
-         Tz5vh3XwCBFl7hNlalR05t3zqbJZkws87g4pelhlwTclgFMPWsQHv2LxJPomGczNm32P
-         TUeHxsB5OpAOZXNVF2UUWfBJNA7xL7XDzdpQC2wOyzlMl13wLqJEkg4W44j9Q3V8nYJl
-         m8pH0lQb8+HKYvCZeE0MsY2ddjetKdDnml9xyDLR/A4+igokv6TKetnbv9iRZ5+aIb9V
-         gHYw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=3BFKUZg0jQcaYDbVumMdm4J067GgtUMgiaV2++h2izs=;
+        b=KuKQB2KC9CRwZMu8VDDAFCF1yLfFmkuhrk4sjHAE+P+Q03dedyvTv7mrOtoo49WzCh
+         5NdWxyHvWvDI11zO9s3lChcF2TC+kajNJTxEfsK8F4vvsVKMY9XPTufAJSxr+FSm0JmO
+         e3mDt9CdVjyUmCm9i2deuKxs/uwIzUBD47b5nyGHBRyEZxcg10YRY0q66kM9FU+ksXZN
+         RfU3IMLBFMgRP71uXvoSF6F6bZuytfhcsYrrVdfSMp6yNKLWgKE/XO4rGKerTOCeD5D2
+         xCoX/deh0xd87mPZHa6oWvYfstTZoZ3eLm+jLn16jcPYdDDforkPxSK46Kppq2p08TLI
+         9TEg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="E/qnULBw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s20-20020a05622a019400b003f6b8a4f19bsi7972532qtw.119.2023.05.31.06.13.36
+        by mx.google.com with ESMTPS id f25-20020a05620a15b900b0075b395bc3c3si7953828qkk.476.2023.05.31.06.30.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 06:13:36 -0700 (PDT)
+        Wed, 31 May 2023 06:30:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="E/qnULBw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Ldn-0006cr-Jq; Wed, 31 May 2023 09:13:30 -0400
+	id 1q4Lu8-0006YY-EZ; Wed, 31 May 2023 09:30:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1q4Ldl-0006ZK-EH; Wed, 31 May 2023 09:13:25 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1q4Ldj-000239-9n; Wed, 31 May 2023 09:13:25 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QWV5j0yQXz67nPF;
- Wed, 31 May 2023 21:11:37 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 31 May
- 2023 14:13:18 +0100
-Date: Wed, 31 May 2023 14:13:17 +0100
-To: Klaus Jensen <its@irrelevant.dk>
-CC: <qemu-devel@nongnu.org>, Corey Minyard <cminyard@mvista.com>, Keith Busch
- <kbusch@kernel.org>, Jason Wang <jasowang@redhat.com>, Lior Weintraub
- <liorw@pliops.com>, Paolo Bonzini <pbonzini@redhat.com>, Jeremy Kerr
- <jk@codeconstruct.com.au>, <qemu-arm@nongnu.org>, Matt Johnston
- <matt@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>,
- <qemu-block@nongnu.org>, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Klaus Jensen <k.jensen@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <gost.dev@samsung.com>
-Subject: Re: [PATCH v3 1/3] hw/i2c: add smbus pec utility function
-Message-ID: <20230531141317.00001912@Huawei.com>
-In-Reply-To: <20230531114744.9946-2-its@irrelevant.dk>
-References: <20230531114744.9946-1-its@irrelevant.dk>
- <20230531114744.9946-2-its@irrelevant.dk>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4Lu2-0006Y3-F6
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 09:30:14 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4Ltx-0005q8-ON
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 09:30:14 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-30aebe2602fso2751211f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 31 May 2023 06:30:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685539803; x=1688131803;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3BFKUZg0jQcaYDbVumMdm4J067GgtUMgiaV2++h2izs=;
+ b=E/qnULBwEEIyu+Z0Ozvtss9KNPKTDE3fOBIIxkr4XkE2ldEFQP5vF/vylWRfF63+Ga
+ DcgOn/MAx3zgjd1drRsfR2H/iS0n37Ap+LTdFTIucsQx1J3JBIoddAWh2NQPuUjpMWyq
+ 6W9I2xDNLWDlmGALhaqzhlw+0Wht9DrN2FtKtcdx5hKMZnW2z8gTiuCpNad31Dg7lDdD
+ l/EPkdcEgSOynJZfXC0Za+UrMeg7Wqs0hHq8ri0vnszD456f4qmN7aGqVO4PQGtJLHo3
+ 2ZcD5BPAjqNhv5W497cguiSObOgu4vBAGEKg8r8+yJwJ+YMjPaiOw98MeBdcEZxI8flL
+ wdLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685539803; x=1688131803;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3BFKUZg0jQcaYDbVumMdm4J067GgtUMgiaV2++h2izs=;
+ b=kXRUSTxhrUYRXdJZ7K9yyr7+RWJXYiY6tTvXTlNyPsvWj9BhxQdNC6sC8VirdDDaiW
+ jUFRWuSvXLClXdPoO3zdZADwQ+Wd3vS6e3N33m9I41erKVbTo8cSrBys+6k0QpnaWt5z
+ I4KvPiMnxitkTcZR0IdPtMuouuuJcFpI5MDMDL1K2JMaBOd13+gBbo88MC+DZJmddm/D
+ Sm8GL1SV+vaD0MScurhKQRrFY/Eav8AYaY92g212SUBH3aTYHKeFws5E6jLjdnVRLO9l
+ O4Dcc7+WC68n2zc6D2YIHXvOL5Ri3fltEhLF5THiYGER7PB6IG9/v1lkofAqzcK85AP3
+ aFWA==
+X-Gm-Message-State: AC+VfDxtZ30sfeosP/ewsG8C8b2Zix8+XFPL72dAhJbVLv8XMbx5GaJY
+ algplc+wwAu0rJQ97GX1OF216g==
+X-Received: by 2002:a05:6000:91:b0:306:44d0:2bcd with SMTP id
+ m17-20020a056000009100b0030644d02bcdmr3983986wrx.9.1685539803048; 
+ Wed, 31 May 2023 06:30:03 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.146.12])
+ by smtp.gmail.com with ESMTPSA id
+ f8-20020a1c6a08000000b003f41bb52834sm24636427wmc.38.2023.05.31.06.30.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 31 May 2023 06:30:02 -0700 (PDT)
+Message-ID: <364e5f10-693a-4e3d-0031-865ad4e79b67@linaro.org>
+Date: Wed, 31 May 2023 15:30:00 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH v1 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Content-Language: en-US
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>, rad@semihalf.com,
+ peter.maydell@linaro.org
+Cc: quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20230531095845.365019-1-wangyuquan1236@phytium.com.cn>
+ <20230531095845.365019-2-wangyuquan1236@phytium.com.cn>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230531095845.365019-2-wangyuquan1236@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,80 +125,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n9mQ6lNzHE+6
+X-TUID: 4rexzPkvMkPA
 
-On Wed, 31 May 2023 13:47:42 +0200
-Klaus Jensen <its@irrelevant.dk> wrote:
+Hi Yuquan,
 
-> From: Klaus Jensen <k.jensen@samsung.com>
+On 31/5/23 11:58, Yuquan Wang wrote:
+> The current sbsa-ref cannot use EHCI controller which is only
+> able to do 32-bit DMA, since sbsa-ref doesn't have RAM below 4GB.
+> Hence, this uses XHCI to provide a usb controller with 64-bit
+> DMA capablity instead of EHCI.
 > 
-> Add i2c_smbus_pec() to calculate the SMBus Packet Error Code for a
-> message.
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
-LGTM
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
+> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+> Change-Id: I1376f8bbc0e25dcd9d8a22b6e061cb56b3486394
 > ---
->  hw/i2c/smbus_master.c         | 28 ++++++++++++++++++++++++++++
->  include/hw/i2c/smbus_master.h |  2 ++
->  2 files changed, 30 insertions(+)
-> 
-> diff --git a/hw/i2c/smbus_master.c b/hw/i2c/smbus_master.c
-> index 6a53c34e70b7..47f9eb24e033 100644
-> --- a/hw/i2c/smbus_master.c
-> +++ b/hw/i2c/smbus_master.c
-> @@ -15,6 +15,34 @@
->  #include "hw/i2c/i2c.h"
->  #include "hw/i2c/smbus_master.h"
->  
-> +static uint8_t crc8(uint16_t data)
-> +{
-> +#define POLY (0x1070U << 3)
-> +    int i;
-> +
-> +    for (i = 0; i < 8; i++) {
-> +        if (data & 0x8000) {
-> +            data = data ^ POLY;
-> +        }
-> +
-> +        data = data << 1;
-> +    }
-> +
-> +    return (uint8_t)(data >> 8);
-> +#undef POLY
-> +}
-> +
-> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len)
-> +{
-> +    int i;
-> +
-> +    for (i = 0; i < len; i++) {
-> +        crc = crc8((crc ^ buf[i]) << 8);
-> +    }
-> +
-> +    return crc;
-> +}
-> +
->  /* Master device commands.  */
->  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read)
->  {
-> diff --git a/include/hw/i2c/smbus_master.h b/include/hw/i2c/smbus_master.h
-> index bb13bc423c22..d90f81767d86 100644
-> --- a/include/hw/i2c/smbus_master.h
-> +++ b/include/hw/i2c/smbus_master.h
-> @@ -27,6 +27,8 @@
->  
->  #include "hw/i2c/i2c.h"
->  
-> +uint8_t i2c_smbus_pec(uint8_t crc, uint8_t *buf, size_t len);
-> +
->  /* Master device commands.  */
->  int smbus_quick_command(I2CBus *bus, uint8_t addr, int read);
->  int smbus_receive_byte(I2CBus *bus, uint8_t addr);
+>   hw/arm/sbsa-ref.c | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
+
+
+> -static void create_ehci(const SBSAMachineState *sms)
+> +static void create_xhci(const SBSAMachineState *sms)
+>   {
+> -    hwaddr base = sbsa_ref_memmap[SBSA_EHCI].base;
+> -    int irq = sbsa_ref_irqmap[SBSA_EHCI];
+> +    hwaddr base = sbsa_ref_memmap[SBSA_XHCI].base;
+> +    int irq = sbsa_ref_irqmap[SBSA_XHCI];
+>   
+> -    sysbus_create_simple("platform-ehci-usb", base
+> +    sysbus_create_simple("sysbus-xhci", base,
+
+Please use the definition: TYPE_XHCI_SYSBUS.
+
+>                            qdev_get_gpio_in(sms->gic, irq));
+>   }
+
 

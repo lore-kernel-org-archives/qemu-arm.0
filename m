@@ -1,384 +1,306 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp49144ejb;
-        Wed, 31 May 2023 08:40:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6jfnv7WCqt7F//gb8rLk/TZCL3B+g8M+ZAzuwOWmUoX/+uQxuPyhA8M7uoOmMJEmV46gmy
-X-Received: by 2002:a05:622a:1208:b0:3f6:b32c:3766 with SMTP id y8-20020a05622a120800b003f6b32c3766mr6574172qtx.11.1685547636256;
-        Wed, 31 May 2023 08:40:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685547636; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp98733ejb;
+        Wed, 31 May 2023 09:56:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ65GrkqVOlmNZdJH5cswFRdkiBOaynS06ba/Ofk+8G1BgqOQkkN1Sx8PAPIomhdT/2MJUa2
+X-Received: by 2002:a05:6214:c4c:b0:5e3:d150:3163 with SMTP id r12-20020a0562140c4c00b005e3d1503163mr7841623qvj.20.1685552212720;
+        Wed, 31 May 2023 09:56:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685552212; cv=none;
         d=google.com; s=arc-20160816;
-        b=PCFQm78o7euzq0Ro3DLINEyj4ttSP5IUwopKEgzW6CxBmP/jCdiIyUtF2f+6sGwd4x
-         EoN2pvC2yspIhM1pzlwBs4RyYlmNmRhLRkwb9RyYrxyhP5mMT1pjaGcNze8F7wkNCUFj
-         ChD+YZohdWO7o7uUCSJ+2lX3RGWKwXpFXbYcyn1Az5wImAFgZ1kAZDwlGr5xAStB5div
-         bhZ0IVH0Fk0J44qgkYx4WDMonrsHMA3Mf05NhngYIEWQfj4v/UaFwRxtiUGLqHjUSocC
-         S9owWm4YX07rg+djjqIxC2f62mHNJkW7vPZXT6xsrGrayojqMfqD/NswmIrTB8n2OPOQ
-         k8yg==
+        b=LVG/X/SYAlnM4rkpJ86rwtTU6NBIzg3ZeOSt5jMJ9ExlPbDy1YizzK5DApyAgFuJk8
+         d2P8021MhfE7U84xyIeI1jVcHCc/URPoxY/TJbD20k9ZA78i5ckhOGE4KM5ILYKZ3BTO
+         H7ZG/2UH3n4iaHZIyrbGAK4cUan8QudtyxieNjSuhi+VMgDqJe8rdpWof1K9lSzcHgbe
+         ZdvJqCrgGYA+sJtbvJX4c8tEunJ+VX3aFtoDGMQi/Txb03i2iLcYsmLkimGFi4Q20RLx
+         FoYoO4aR3Ss28oZtRpFOnR1BMtsu9BIpUk27oq4u6vIKrA3gjK24PKhoFV0lc7UeqjoA
+         ue1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=KYn+v8gP7KgpSLwI29FxN/wllQSOv1nhk8fNPIntBUI=;
-        b=sezPJcmqB/k3Du/fKtDqd5B+pCav5yKYoxMaYRzT2kmj2kd18+dvvvkM+UaSppewCY
-         1TIcvhxralXOf3PqkzIr4r4A+e4iXerkTsmcCK1cBB8Nf8Zb+CtwL/mU3bEK93uxwaOZ
-         aqG9ZumVYk5OL1ez40czoRLgDCCj/vV6YyDnQupzk7kVT7fCQEnrqLQy3eyzho57xghS
-         6PhfUmnzZtqIRElfzk9jRKxmsSuaG/qRc+2g1uVk9DroW211LUAWU71Ezv6FC0YJxuV0
-         CLJcxLz/eoqct+g6IdGJuKyfj6Hxp1+bDhd8+73j4zH+XmZEQwtdOsAXCLBcEBX9hEMv
-         O9OA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=hRYLWzhdqiApyYA5TJlPzr8zZQfvw70K7aAt35D1jk0=;
+        b=wc6K6RVh3R67tO1KEy+6r2gxrEvC4oIOZ0J+zhpmrZ87pJMYvGR3ByyA+GZ1Xt6qJK
+         DF415zGbQ0q2sJLX6SwjFxw3YuhasNcrmgGXKo6QbhhQir38EFZZhyOjYJouAAeN8V2V
+         JCQb/ENf16y5t9FsoglO+yrpB7HLC0iAMP0Y7sUn0ZHEQz3EP8uSd4DjnMaVmuqeE2aA
+         TZuKKpn+86CZXnP+fkY1DoUXZWciVSKBYI/nZgQHnUrc1yMdLe10vP9L0NscM3q+ZAbj
+         QqcVTdqxg8A9SDpxZqu+PkNbiB5zLfTSuk/fv2XKiNlC72VVhMZzAlbSNj5qB+QGkfr4
+         IgWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20221208 header.b=MbishWFg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q7-20020a05622a04c700b003f0af4f4af0si8368615qtx.572.2023.05.31.08.40.36
+        by mx.google.com with ESMTPS id d12-20020a05620a140c00b0075c5e2f1dcbsi8253528qkj.242.2023.05.31.09.56.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 08:40:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 May 2023 09:56:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@google.com header.s=20221208 header.b=MbishWFg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Nvi-0004Ab-LK; Wed, 31 May 2023 11:40:07 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q4P7B-0001C9-34; Wed, 31 May 2023 12:56:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1q4Nvh-0004AL-U2; Wed, 31 May 2023 11:40:05 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1q4Nve-0001rO-TD; Wed, 31 May 2023 11:40:05 -0400
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QWYLw420qz67ftX;
- Wed, 31 May 2023 23:38:16 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Wed, 31 May
- 2023 16:39:57 +0100
-Date: Wed, 31 May 2023 16:39:57 +0100
-To: Klaus Jensen <its@irrelevant.dk>
-CC: <qemu-devel@nongnu.org>, Corey Minyard <cminyard@mvista.com>, Keith Busch
- <kbusch@kernel.org>, Jason Wang <jasowang@redhat.com>, Lior Weintraub
- <liorw@pliops.com>, Paolo Bonzini <pbonzini@redhat.com>, Jeremy Kerr
- <jk@codeconstruct.com.au>, <qemu-arm@nongnu.org>, Matt Johnston
- <matt@codeconstruct.com.au>, Peter Delevoryas <peter@pjd.dev>,
- <qemu-block@nongnu.org>, =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Klaus Jensen <k.jensen@samsung.com>, Peter Maydell
- <peter.maydell@linaro.org>, <gost.dev@samsung.com>
-Subject: Re: [PATCH v3 3/3] hw/nvme: add nvme management interface model
-Message-ID: <20230531163957.0000494e@Huawei.com>
-In-Reply-To: <20230531114744.9946-4-its@irrelevant.dk>
-References: <20230531114744.9946-1-its@irrelevant.dk>
- <20230531114744.9946-4-its@irrelevant.dk>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3GXx3ZAQKCho5BMK6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--flwu.bounces.google.com>)
+ id 1q4P78-0001BM-9l
+ for qemu-devel@nongnu.org; Wed, 31 May 2023 12:55:58 -0400
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3GXx3ZAQKCho5BMK6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--flwu.bounces.google.com>)
+ id 1q4P75-0002hD-SJ
+ for qemu-devel@nongnu.org; Wed, 31 May 2023 12:55:57 -0400
+Received: by mail-pg1-x549.google.com with SMTP id
+ 41be03b00d2f7-53f2128ab1bso3109325a12.1
+ for <qemu-devel@nongnu.org>; Wed, 31 May 2023 09:55:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1685552154; x=1688144154;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=hRYLWzhdqiApyYA5TJlPzr8zZQfvw70K7aAt35D1jk0=;
+ b=MbishWFgnoCHx1ckdl0CLoD5Wl7WND3ifGl1NMX4sR0SMJ/hP7VB923SbGDkSGxQfk
+ +ydQI7fjV9GId6ZXT04mwWOax9nONms1QyWHFaCalM/erqnl0omK3Ez1IkQ2VFMCTvdZ
+ mMnSmPbuAFoPySEkFZ9Pfz2Q7Y3RGBTvr1len2FveywSvX1znGg1ggX1j1PfVhhdzlTL
+ 8RF44JcVOxWrjiIyIIhaFJ2Z881tf+cML4NJ0HTd8jm0Hx+Cme6uK8REFkl5p4iK/Gs4
+ +/qFfxWKZFhdb4stnsLqz8/PPyp/poO8x2PlxJlZzDsX7Xic2XWmMNkWxBpkknrjUIcX
+ fOVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685552154; x=1688144154;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=hRYLWzhdqiApyYA5TJlPzr8zZQfvw70K7aAt35D1jk0=;
+ b=LWMQHrtK4qHKvehXPpjvw5BUV7VpwzIxzTUrfz+WtHItT/eNo3VzdFtt/dslWDkgba
+ 7SnIbcyibBRaQ5mR9IFdD5hoFf/BGQ9w3Y7LggV0LzBess93NSfA+fDroBvGD7vuBKX1
+ BgqNgB6T6l/ox2nU8KxL8Oj76nbMqiLm4J6FUo60P8AGzxSn337QpuNqcKxEG6+IDC1Y
+ PK3VmJYmIRweX3AENKgweZhuyZGBK3Brh1p85j3k0GN0lVufY+22DrL5U4GE0PbYo8wT
+ UX3rLt6wBu7HVHspVrzCVIJhC/Sd9k1wviX0LVFo+hr5leyTtUAytXylcEv49S/N0Nby
+ rdyQ==
+X-Gm-Message-State: AC+VfDwW1odXwlg0sheK9zSBFLyGqTQD/BIUfFgRYeeTUXvOR6k3RqJ0
+ St3LlmgB2+lFpprR42p7N8l8wKqG
+X-Received: from flwu.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:2200])
+ (user=flwu job=sendgmr) by 2002:a63:495f:0:b0:53f:7713:5e0e with
+ SMTP id
+ y31-20020a63495f000000b0053f77135e0emr1197520pgk.5.1685552153974; Wed, 31 May
+ 2023 09:55:53 -0700 (PDT)
+Date: Wed, 31 May 2023 16:55:37 +0000
+In-Reply-To: <20230531165537.3721999-1-flwu@google.com>
+Mime-Version: 1.0
+References: <20230531165537.3721999-1-flwu@google.com>
+X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
+Message-ID: <20230531165537.3721999-3-flwu@google.com>
+Subject: [PATCH 2/2] tests/qtest: Add qtest for for ASPEED GPIO gpio-set
+ property
+From: Jingbo Wu <flwu@google.com>
+To: clg@kaod.org, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Felix Wu <flwu@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
+ envelope-from=3GXx3ZAQKCho5BMK6EE6B4.2ECG4CK-34L4BDED6DK.EH6@flex--flwu.bounces.google.com;
+ helo=mail-pg1-x549.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mA1ywo0OY/dx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7GwZDnaBgYAb
 
-On Wed, 31 May 2023 13:47:44 +0200
-Klaus Jensen <its@irrelevant.dk> wrote:
+From: Felix Wu <flwu@google.com>
 
-> From: Klaus Jensen <k.jensen@samsung.com>
-> 
-> Add the 'nmi-i2c' device that emulates an NVMe Management Interface
-> controller.
-> 
-> Initial support is very basic (Read NMI DS, Configuration Get).
-> 
-> This is based on previously posted code by Padmakar Kalghatgi, Arun
-> Kumar Agasar and Saurav Kumar.
-> 
-> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+ - Added qtests to test gpio-set property for ASPEED.
+ - Added function to get uint in qdict.
 
-A few comments inline - I dug into the specs this time so some
-new questions.
+Signed-off-by: Felix Wu <flwu@google.com>
+---
+ include/qapi/qmp/qdict.h       |   1 +
+ qobject/qdict.c                |  13 ++++
+ tests/qtest/aspeed_gpio-test.c | 105 ++++++++++++++++++++++++++++++---
+ 3 files changed, 110 insertions(+), 9 deletions(-)
 
-Jonathan
+diff --git a/include/qapi/qmp/qdict.h b/include/qapi/qmp/qdict.h
+index 82e90fc072..50046f4285 100644
+--- a/include/qapi/qmp/qdict.h
++++ b/include/qapi/qmp/qdict.h
+@@ -57,6 +57,7 @@ void qdict_put_str(QDict *qdict, const char *key, const char *value);
+ 
+ double qdict_get_double(const QDict *qdict, const char *key);
+ int64_t qdict_get_int(const QDict *qdict, const char *key);
++uint64_t qdict_get_uint(const QDict *qdict, const char *key);
+ bool qdict_get_bool(const QDict *qdict, const char *key);
+ QList *qdict_get_qlist(const QDict *qdict, const char *key);
+ QDict *qdict_get_qdict(const QDict *qdict, const char *key);
+diff --git a/qobject/qdict.c b/qobject/qdict.c
+index 8faff230d3..916467958d 100644
+--- a/qobject/qdict.c
++++ b/qobject/qdict.c
+@@ -209,6 +209,19 @@ int64_t qdict_get_int(const QDict *qdict, const char *key)
+     return qnum_get_int(qobject_to(QNum, qdict_get(qdict, key)));
+ }
+ 
++/**
++ * qdict_get_uint(): Get an unsigned integer mapped by 'key'
++ *
++ * This function assumes that 'key' exists and it stores a
++ * QNum representable as uint.
++ *
++ * Return unsigned integer mapped by 'key'.
++ */
++uint64_t qdict_get_uint(const QDict *qdict, const char *key)
++{
++    return qnum_get_uint(qobject_to(QNum, qdict_get(qdict, key)));
++}
++
+ /**
+  * qdict_get_bool(): Get a bool mapped by 'key'
+  *
+diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+index d38f51d719..38000c7868 100644
+--- a/tests/qtest/aspeed_gpio-test.c
++++ b/tests/qtest/aspeed_gpio-test.c
+@@ -27,28 +27,115 @@
+ #include "qemu/timer.h"
+ #include "qapi/qmp/qdict.h"
+ #include "libqtest-single.h"
++#include "qemu/typedefs.h"
+ 
+ #define AST2600_GPIO_BASE 0x1E780000
+ 
+ #define GPIO_ABCD_DATA_VALUE 0x000
+ #define GPIO_ABCD_DIRECTION  0x004
+ 
++static uint32_t qtest_qom_get_uint32(QTestState *s, const char *path,
++                                     const char *property)
++{
++    QDict *r;
++
++    uint32_t res;
++    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
++                     "{ 'path': %s, 'property': %s } }", path, property);
++    res = qdict_get_uint(r, "return");
++    qobject_unref(r);
++
++    return res;
++}
++
++static void qtest_qom_set_uint32(QTestState *s, const char *path,
++                                 const char *property, uint32_t value)
++{
++    QDict *r;
++
++    r = qtest_qmp(s, "{ 'execute': 'qom-set', 'arguments': "
++                     "{ 'path': %s, 'property': %s, 'value': %" PRIu32 " } }",
++                     path, property, value);
++    qobject_unref(r);
++}
++
++static const char *resp_get_error(QDict *r, const char* error_key)
++{
++    QDict *qdict;
++
++    g_assert(r);
++
++    qdict = qdict_get_qdict(r, "error");
++    if (qdict) {
++        return qdict_get_str(qdict, error_key);
++    }
++
++    return NULL;
++}
++
++static bool qtest_qom_check_error(QTestState *s, const char *path,
++                                  const char *property, const char *error_msg,
++                                  const char *error_msg_key)
++{
++    QDict *r;
++    bool b;
++
++    r = qtest_qmp(s, "{ 'execute': 'qom-get', 'arguments': "
++                     "{ 'path': %s, 'property': %s } }", path, property);
++    b = g_str_equal(resp_get_error(r, error_msg_key), error_msg);
++    qobject_unref(r);
++
++    return b;
++}
++
+ static void test_set_colocated_pins(const void *data)
+ {
+     QTestState *s = (QTestState *)data;
+-
++    const char path[] = "/machine/soc/gpio";
+     /*
+      * gpioV4-7 occupy bits within a single 32-bit value, so we want to make
+      * sure that modifying one doesn't affect the other.
+      */
+-    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV4", true);
+-    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV5", false);
+-    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV6", true);
+-    qtest_qom_set_bool(s, "/machine/soc/gpio", "gpioV7", false);
+-    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV4"));
+-    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV5"));
+-    g_assert(qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV6"));
+-    g_assert(!qtest_qom_get_bool(s, "/machine/soc/gpio", "gpioV7"));
++    qtest_qom_set_bool(s, path, "gpioV4", true);
++    qtest_qom_set_bool(s, path, "gpioV5", false);
++    qtest_qom_set_bool(s, path, "gpioV6", true);
++    qtest_qom_set_bool(s, path, "gpioV7", false);
++    g_assert(qtest_qom_get_bool(s, path, "gpioV4"));
++    g_assert(!qtest_qom_get_bool(s, path, "gpioV5"));
++    g_assert(qtest_qom_get_bool(s, path, "gpioV6"));
++    g_assert(!qtest_qom_get_bool(s, path, "gpioV7"));
++
++    /*
++     * Testing the gpio-set[%d] properties, using individual gpio boolean
++     * properties to do cross check.
++     * We use gpioR4-7 for test, Setting them to be 0b1010.
++     */
++    qtest_qom_set_uint32(s, path, "gpio-set[4]", 0x0);
++    g_assert(qtest_qom_get_uint32(s, path, "gpio-set[4]") == 0x0);
++    qtest_qom_set_uint32(s, path, "gpio-set[4]", 0xa000);
++    g_assert(qtest_qom_get_uint32(s, path, "gpio-set[4]") == 0xa000);
++
++    g_assert(!qtest_qom_get_bool(s, path, "gpioR4"));
++    g_assert(qtest_qom_get_bool(s, path, "gpioR5"));
++    g_assert(!qtest_qom_get_bool(s, path, "gpioR6"));
++    g_assert(qtest_qom_get_bool(s, path, "gpioR7"));
++
++    /*
++     * Testing the invalid indexing, the response info should contain following
++     * info:
++     * {key: "class", value: "GenericError"}
++     *
++     * For pins, it should follow "gpio%2[A-Z]%1d" or "gpio%3[18A-E]%1d" format.
++     */
++    const char error_msg[] = "GenericError";
++    const char error_msg_key [] = "class";
++
++    g_assert(qtest_qom_check_error(s, path, "gpioR+1", error_msg,
++                                   error_msg_key));
++    g_assert(qtest_qom_check_error(s, path, "gpio-set[99]", error_msg,
++                                   error_msg_key));
++    g_assert(qtest_qom_check_error(s, path, "gpio-set[-3]", error_msg,
++                                   error_msg_key));
+ }
+ 
+ static void test_set_input_pins(const void *data)
+-- 
+2.41.0.rc0.172.g3f132b7071-goog
 
-> diff --git a/hw/nvme/nmi-i2c.c b/hw/nvme/nmi-i2c.c
-> new file mode 100644
-> index 000000000000..38e43e48fa51
-> --- /dev/null
-> +++ b/hw/nvme/nmi-i2c.c
-> @@ -0,0 +1,367 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + *
-> + * SPDX-FileCopyrightText: Copyright (c) 2022 Samsung Electronics Co., Ltd.
-
-Update to 2023?
-
-> +typedef struct NMIRequest {
-> +   uint8_t opc;
-> +   uint8_t rsvd1[3];
-> +   uint32_t dw0;
-> +   uint32_t dw1;
-> +   uint32_t mic;
-> +} NMIRequest;
-> +
-> +typedef struct NMIResponse {
-> +    uint8_t status;
-> +    uint8_t response[3];
-> +    uint8_t payload[]; /* includes the Message Integrity Check */
-> +} NMIResponse;
-
-Not used.
-
-> +
-> +typedef enum NMIReadDSType {
-> +    NMI_CMD_READ_NMI_DS_SUBSYSTEM       = 0x0,
-> +    NMI_CMD_READ_NMI_DS_PORTS           = 0x1,
-> +    NMI_CMD_READ_NMI_DS_CTRL_LIST       = 0x2,
-> +    NMI_CMD_READ_NMI_DS_CTRL_INFO       = 0x3,
-> +    NMI_CMD_READ_NMI_DS_CMD_SUPPORT     = 0x4,
-> +    NMI_CMD_READ_NMI_DS_MEB_CMD_SUPPORT = 0x5,
-> +} NMIReadDSType;
-> +
-> +static void nmi_set_parameter_error(NMIDevice *nmi, uint8_t bit, uint16_t byte)
-> +{
-> +    nmi->scratch[nmi->pos++] = 0x4;
-> +    nmi->scratch[nmi->pos++] = bit;
-
-Mask bit to only 3 bits?
-
-> +    nmi->scratch[nmi->pos++] = (byte >> 4) & 0xf;
-> +    nmi->scratch[nmi->pos++] = byte & 0xf;
-
-Not following how byte is split up.  Figure 29 in 1.1d suggests it should be
-in bits 23:08 and this doesn't match that.  Perhaps a reference given I guess
-I'm looking at wrong thing.
-
-> +}
-
-> +static void nmi_handle_mi_read_nmi_ds(NMIDevice *nmi, NMIRequest *request)
-> +{
-> +    I2CSlave *i2c = I2C_SLAVE(nmi);
-> +
-> +    uint32_t dw0 = le32_to_cpu(request->dw0);
-> +    uint8_t dtyp = (dw0 >> 24) & 0xf;
-> +    uint8_t *buf;
-> +    size_t len;
-> +
-> +    trace_nmi_handle_mi_read_nmi_ds(dtyp);
-> +
-> +    static uint8_t nmi_ds_subsystem[36] = {
-> +        0x00,       /* success */
-> +        0x20,       /* response data length */
-
-Not the easiest datasheet to read, but I think length is 2 bytes.
-Figure 93 in the 1.2b NMI spec has it as bits 15:00 in
-a 24 bit field. Ah. I see this is 1.1 definition, in that it's
-the same but in figure 89.
-
-
-> +        0x00, 0x00, /* reserved */
-> +        0x00,       /* number of ports */
-> +        0x01,       /* major version */
-> +        0x01,       /* minor version */
-> +    };
-> +
-> +    static uint8_t nmi_ds_ports[36] = {
-> +        0x00,       /* success */
-> +        0x20,       /* response data length */
-
-As above - this is 2 bytes.
-
-> +        0x00, 0x00, /* reserved */
-> +        0x02,       /* port type (smbus) */
-> +        0x00,       /* reserved */
-> +        0x40, 0x00, /* maximum mctp transission unit size (64 bytes) */
-> +        0x00, 0x00, 0x00, 0x00, /* management endpoint buffer size */
-> +        0x00, 0x00, /* vpd i2c address/freq */
-
-Give separate bytes for the two things, why not just have two lines and
-a comment for each one?
-
-> +        0x00, 0x01, /* management endpoint i2c address/freq */
-
-Same here though second byte isn't anything to do with frequency. Documnted
-as NVMe Basic Management and indicates if that command is supported.
-
-> +    };
-> +
-> +    static uint8_t nmi_ds_empty[8] = {
-> +        0x00,       /* success */
-> +        0x02,       /* response data length */
-> +        0x00, 0x00, /* reserved */
-> +        0x00, 0x00, /* number of controllers */
-A reference for this would be good as I'm not sure it's defined in the NMI spec.
-Is it the controller list from 4.4.1 in the main NVME 2.0 spec?
-
-
-> +        0x00, 0x00, /* padding */
-> +    };
-> +
-> +    switch (dtyp) {
-> +    case NMI_CMD_READ_NMI_DS_SUBSYSTEM:
-> +        len = 36;
-sizeof(nmi_ds_subsystem)  Might as well keep that 36 in just one place.
-> +        buf = nmi_ds_subsystem;
-> +
-> +        break;
-> +
-> +    case NMI_CMD_READ_NMI_DS_PORTS:
-> +        len = 36;
-> +        buf = nmi_ds_ports;
-same here?
-> +
-> +        /* patch in the i2c address of the endpoint */
-> +        buf[14] = i2c->address;
-
-If you have multiple instances of this as they will
-race over the static buffer.  Just make it non static and add
-a comment on why.
-
-> +
-> +        break;
-> +
-> +    case NMI_CMD_READ_NMI_DS_CTRL_LIST:
-> +    case NMI_CMD_READ_NMI_DS_CMD_SUPPORT:
-> +    case NMI_CMD_READ_NMI_DS_MEB_CMD_SUPPORT:
-> +        len = 8;
-> +        buf = nmi_ds_empty;
-> +
-> +        break;
-> +
-> +    default:
-> +        nmi_set_parameter_error(nmi, offsetof(NMIRequest, dw0) + 4, 0);
-> +
-> +        return;
-> +    }
-> +
-> +    memcpy(nmi->scratch + nmi->pos, buf, len);
-> +    nmi->pos += len;
-> +}
-> +
-> +enum {
-> +    NMI_CMD_CONFIGURATION_GET_SMBUS_FREQ                = 0x1,
-> +    NMI_CMD_CONFIGURATION_GET_HEALTH_STATUS_CHANGE      = 0x2,
-> +    NMI_CMD_CONFIGURATION_GET_MCTP_TRANSMISSION_UNIT    = 0x3,
-> +};
-> +
-> +static void nmi_handle_mi_config_get(NMIDevice *nmi, NMIRequest *request)
-> +{
-> +    uint32_t dw0 = le32_to_cpu(request->dw0);
-> +    uint8_t identifier = dw0 & 0xff;
-> +    uint8_t *buf;
-> +
-> +    static uint8_t smbus_freq[4] = {
-> +        0x00,               /* success */
-> +        0x01, 0x00, 0x00,   /* 100 kHz */
-> +    };
-> +
-> +    static uint8_t mtu[4] = {
-> +        0x00,               /* success */
-> +        0x40, 0x00, 0x00,   /* 64 */
-
-2 bytes only I think with another reserved.
-Figure 66 in 1.1d
-
-> +    };
-> +
-> +    trace_nmi_handle_mi_config_get(identifier);
-> +
-> +    switch (identifier) {
-> +    case NMI_CMD_CONFIGURATION_GET_SMBUS_FREQ:
-> +        buf = smbus_freq;
-> +        break;
-> +
-> +    case NMI_CMD_CONFIGURATION_GET_MCTP_TRANSMISSION_UNIT:
-> +        buf = mtu;
-> +        break;
-> +
-> +    default:
-> +        nmi_set_parameter_error(nmi, 0x0, offsetof(NMIRequest, dw0));
-> +        return;
-> +    }
-> +
-> +    memcpy(nmi->scratch + nmi->pos, buf, 4);
-> +    nmi->pos += 4;
-> +}
-> +
-> +enum {
-> +    NMI_CMD_READ_NMI_DS         = 0x0,
-> +    NMI_CMD_CONFIGURATION_GET   = 0x4,
-> +};
-> +
-> +static void nmi_handle_mi(NMIDevice *nmi, NMIMessage *msg)
-> +{
-> +    NMIRequest *request = (NMIRequest *)msg->payload;
-> +
-> +    trace_nmi_handle_mi(request->opc);
-> +
-> +    switch (request->opc) {
-> +    case NMI_CMD_READ_NMI_DS:
-> +        nmi_handle_mi_read_nmi_ds(nmi, request);
-> +        break;
-> +
-> +    case NMI_CMD_CONFIGURATION_GET:
-> +        nmi_handle_mi_config_get(nmi, request);
-> +        break;
-> +
-> +    default:
-> +        nmi_set_parameter_error(nmi, 0x0, 0x0);
-> +        fprintf(stderr, "nmi command 0x%x not handled\n", request->opc);
-> +
-> +        break;
-> +    }
-> +}
-> +
-> +enum {
-> +    NMI_MESSAGE_TYPE_NMI = 0x1,
-> +};
-> +
-
-
-
-> +static size_t nmi_get_types(MCTPI2CEndpoint *mctp, const uint8_t **data)
-> +{
-> +    static const uint8_t buf[] = {
-> +        0x0, 0x1, MCTP_MESSAGE_TYPE_NMI,
-> +    };
-
-Perhaps a comment that the 0x1 is the length.  Or you could define
-a structure for this with a variable length final field?
-
-Also, should the control type be reported?  I couldn't find a statement
-that it shouldn't and it has a message ID.
-
-> +
-> +    *data = buf;
-> +
-> +    return sizeof(buf);
-> +}
-> +

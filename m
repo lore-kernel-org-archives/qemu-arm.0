@@ -1,109 +1,107 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp41998ejb;
-        Wed, 31 May 2023 08:28:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6RDoje0ilQIlZ3JFUeVyEmDPdfwOdHZAlnq1ooAgYbaTPgf3faW/ccsC9mJzTEBa3rdX1P
-X-Received: by 2002:ad4:5947:0:b0:5ee:2789:160e with SMTP id eo7-20020ad45947000000b005ee2789160emr7374486qvb.52.1685546938664;
-        Wed, 31 May 2023 08:28:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685546938; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp53276ejb;
+        Wed, 31 May 2023 08:48:04 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4ZLvZfPkHb1xaznzaSTRyl6yNaY//2grGaL4pba+2+TgkeHA8EcdFEOlijeWpsUGDOowM/
+X-Received: by 2002:a05:620a:2855:b0:75b:23a0:e7b2 with SMTP id h21-20020a05620a285500b0075b23a0e7b2mr6299608qkp.19.1685548083986;
+        Wed, 31 May 2023 08:48:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685548083; cv=none;
         d=google.com; s=arc-20160816;
-        b=NNIvZMFrXzfHc0KrF1RHEEtAr0BWkuPK8hChZvFMxT3XwwzMRnDX3FLWFT90BNC8io
-         Gh7iGMpPdM91Nv1VANpwnqP+32TlUKk/lbqyXIJVv6GrEm5CfEb4qaIgB6Q3VWepV6Ln
-         EeiXaQQPwPpc6UL+D8eS+TVEtcHMwj9w2mIprGsuFQfdBGzHPyMs2SlXDOkMzyizNcPH
-         QmQE8VMldX/SUoJxWHWFzSQAAsIwUQA+tkN/KcKTziZtElTEfm74ZAfOn/GpEmj6wqfi
-         09g8QFH05BUphUvhJztoKgh/S3ggSrDM7lhySF7H3UAGAgaXo/JlLmRIZEedMHL+UeDu
-         atrg==
+        b=fIndK8qjcYdJqluQjlZkKnF9gn08HIAFuZ0iOc3V8ymA77CgHoUuJuysaYMrJeeEds
+         UB0zdvjvLOuSNVg/bS7hXTpJrdYnGxxQuv+ssRoS5FoCbgrzn0j7/QNWzSh+b77o7TZv
+         iDd9hywN5Km8kVc0cQU77ErgIrXUwv8FMKjTQSZJ4tboXDOAvYjW7olWltxi0O0FVkJ6
+         HOTnSo8SCNc4Wcavsuvx40GljVhJ+wPrSqqcN9dLc45GtafefqPs6S/iCvpheFRpkaYw
+         SY+V2TrBS871o5K7u27AwQmngz1iRvgWEScNU/hzwCosTjfHytZZtmcYf2FE1G1XPpTk
+         xwnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=KIcLj7EkGs6KAt2JC7AbOLpJYtKq2JKggaI9q8lYma0=;
-        b=MomnWKO7dXzL0KQEgVLXHjAQHPT5ANq5YQEJDIVXWCvq/H7pVzHTTSKlSUT4lSqEcm
-         DNLuImRQDtu0qpwkWxMcpS25iN+INdNAVrPPWsNl+ccijpZspNUs/oV7s5ExyH1cWCiF
-         3EDs+0v5JJMpGTbZNfmI2pEqG66pVxOzzEmCcREBufe0HhdClRRDbFdKZFhdPWagzfDX
-         SeIwuiYaqpFhD7pwlWWwIqCd7B9qOGxbGVedBzqcs6I4ftmRiS1g0BqZnHW8mtriomJm
-         uCkCuK6tUy4X+P0ySx0aDVub7EShiaqwfeNMSrJBhcQRyWtwUr7zdYhvW3mU7XoK75aP
-         CuBA==
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=0x17ewZV3pVP0QuVYwM73SxnJIteBbt/EYIzC7iITzE=;
+        b=AxGANIObdL0boPv+9wPCIRvYvIP64XJv/VurJGQtqIHuVpve/ZgumktiPOPbsfgxdO
+         LT19kQN8VU+nQBLTxnU46G6lYZPFULyPlQUmGFiYD/Hye+I7Lox8qRsKPg8jY1e3dMdS
+         sUz8gJWX7rUbxVvGgTInHtZ4oDzOS443rFvgaS1AgRwo7WKlsQLWepeZbbffISSD3dp5
+         UrwrnxCxrak2tWVCm17G7JCw9k22Mqz8RwGVbypHg0QMDWOF9nE4BoAQ5svTEZ2qLFZR
+         PQ9GnEYxi9nQNXGNuir9mzBRndFXLcY8zsmhnHnnRhZ/7dyesvmiIPQ0VMJ6eGG3r05z
+         dXZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UQ4whnL0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 11-20020a0562140d4b00b006262b1ea732si3763839qvr.222.2023.05.31.08.28.58
+        by mx.google.com with ESMTPS id da1-20020a05620a360100b00757799b6e23si7913074qkb.405.2023.05.31.08.48.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 08:28:58 -0700 (PDT)
+        Wed, 31 May 2023 08:48:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UQ4whnL0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Nkc-0000db-BG; Wed, 31 May 2023 11:28:38 -0400
+	id 1q4O3H-0008WF-3q; Wed, 31 May 2023 11:47:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q4NkZ-0000dM-Oe
- for qemu-arm@nongnu.org; Wed, 31 May 2023 11:28:35 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q4NkX-0008E3-8N
- for qemu-arm@nongnu.org; Wed, 31 May 2023 11:28:34 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-51456392cbbso2345871a12.0
- for <qemu-arm@nongnu.org>; Wed, 31 May 2023 08:28:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685546910; x=1688138910;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KIcLj7EkGs6KAt2JC7AbOLpJYtKq2JKggaI9q8lYma0=;
- b=UQ4whnL0GJOwEeRAZjx3s+aXdHN+P8YVmeccEZ0RiISHAQpq9jSKrgae3MOjyg3Vuh
- VfxLP6IvGqkypNPxsOwEml5rLpIx8Wlxv5+TkiA/dy6Uf9EFUStPyZemWUsMdgWNOhLJ
- iaxIUwCDzzXcvo2Sb5cTx4llA1OCwGJSnc3d5fxhWYh7SimE1veGvUizU+dLHkyl0FRP
- bV2T6Q3YBdJKi+jWPxJYNFqvnY/dVk45RgujohBcwHw2IkY0TSPTBfh8so6M1ZnXDqXa
- 2Xov1++xwfqgx3U3f0FhT2neBREfCKeGYlNzb8rZfH1QaX/Lr4OTOKN/cBMuL+Q9ro9G
- /png==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685546910; x=1688138910;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KIcLj7EkGs6KAt2JC7AbOLpJYtKq2JKggaI9q8lYma0=;
- b=h9Uf+IG6eMj5i0qsRNwBZCc0EBolJVTCT5ptVAOmF/uvkEpa1ezIMCH5hWHc/2vv5Q
- h2zNjS2gVtDHihGgh+5kybvl1eb61d+3pODNmhsXx3wEwo7IQWIB5CuB8+hLqQfbRQFk
- enOffuIzX/Ny3VIkblLL8mmBYY/DYma2CkN/lT0gLxg8Ndf3f1IuTFdWgfXexFcoU4hs
- wt0Cc42jdn0d4gCtLWLCgWKHSC9WaFgJKANinfUc2MxKxI2oBTlSMGLci7NJYsPKVaoL
- RLcMQLuAgTp/lWMbhNRboudo+xyMXXdzF8v8gmLbrKmdJbhiY+6OO5/cUQzGjwMQrQyb
- jWqw==
-X-Gm-Message-State: AC+VfDxhC06T0/Q4iiBgWEcbUPxALZ9+xZ5hGjk6SSksfiOj73w67739
- 90BLFyMUEN+3Ii1e6Gr10CPT7zeMRKGfCZqcWkrVlenXG4+Ni5Vb
-X-Received: by 2002:a05:6402:5107:b0:514:9311:e83a with SMTP id
- m7-20020a056402510700b005149311e83amr6533557edd.8.1685546909775; Wed, 31 May
- 2023 08:28:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q4O3D-0008Rx-T5; Wed, 31 May 2023 11:47:51 -0400
+Received: from hq-ms.auriga.com ([82.97.202.32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
+ id 1q4O38-0003gZ-Ew; Wed, 31 May 2023 11:47:49 -0400
+Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
+ hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.12; Wed, 31 May 2023 18:47:37 +0300
+Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
+ hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
+ 15.02.1258.012; Wed, 31 May 2023 18:47:37 +0300
+From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+To: =?gb2312?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkqKY=?= <philmd@linaro.org>, "Peter
+ Maydell" <peter.maydell@linaro.org>, Sergey Kambalin <serg.oker@gmail.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] Prepare bcm properties for videocore 4
+Thread-Topic: [PATCH] Prepare bcm properties for videocore 4
+Thread-Index: AQHZjnQFf0Q2c6tO7k+t5lGgZfG9869ykMkAgAA9vYX//+DiAIAB3+fL
+Date: Wed, 31 May 2023 15:47:37 +0000
+Message-ID: <49b0ba578bfb45f1be23f7608845d823@auriga.com>
+References: <20230524191438.172019-1-sergey.kambalin@auriga.com>
+ <CAFEAcA_PH8yAT28s3p7_0rqK9NodJ6gTXxv63J+98XoMQ_nJTg@mail.gmail.com>
+ <15c444063e114814807551c36ea3389b@auriga.com>,
+ <29192acf-0876-e14e-1331-45260cb179c3@linaro.org>
+In-Reply-To: <29192acf-0876-e14e-1331-45260cb179c3@linaro.org>
+Accept-Language: ru-RU, en-US
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [213.197.136.186]
+x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-as-result: No-10--21.756200-8.000000
+x-tmase-matchedrid: hanTHthjeUyJVA+ukO+5MW+O/HLchX8FfMhjt3b5PP1K0WT/zXAgkgPz
+ oKxdv+wmduRFO7j4H00QSWI9Xhv3LnSKEvagy0HjUgKYbZFF6GhRpObkR9DMwhHcd/N8tFps6PQ
+ HqhuqBva2x2RCqMUOG5MukukMeNp+0h9PZyvfl47fSQNpZkETVFTizEWrqKARSprpPKHJe892XX
+ WXwtX0rRusZ9M71G9oBoYRaA2j95wYsgf0x8DpECrLqyE6Ur/jasHf7GLW0UBOaDdl7pggvTcpX
+ pPCV0E384H0QJCUuBt3tlHqfT1SvI1DxVFCHBMnOjf3A4DTYuFNLPQl0QAltIG+e1larbBt1zOF
+ 7Lnq9EZhBHaMrj7UnZKGlulOhQfwriJx599t2CIotYKdGcWqiqiuB4qoLQw7IGqj5yPgTcgdjB1
+ KZ6xMAIj01BdLzHaRFQQuVfaYT97Vz7Pxa/IuwPUMs5eBUu2degIHHX2L4YxRiRl337i3b73mJh
+ WCLMZXULd14sEtBkH2CODBWINQwpK0D6qO4j3Nh2VzUlo4HVM10wJPYcToKALXROyKnJCr0kEAu
+ EiAO7DpAijIP5mRu0Z/+lkjO0bJ0pE6X2byGstFuZWv3TATSNNt36mCIttpOyxd6V963VS48WuR
+ FQVdauLzNWBegCW2dSg/jRMrTyd0DG5KjCRS/EgajxvGuzmhZffY7ZVRGrbOMLFwKL8lmxXz8NA
+ K1bHu5QQpGehcQAt/ASQXWxm67Q==
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--21.756200-8.000000
+x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
+x-tm-snts-smtp: 41CAFF3BA5A8BF05AB0AFC60F5A87C5865DF3EF5AB1DBEE34BE958B29EBFC9822000:8
+Content-Type: multipart/alternative;
+ boundary="_000_49b0ba578bfb45f1be23f7608845d823aurigacom_"
 MIME-Version: 1.0
-References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
- <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
- <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
-In-Reply-To: <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 31 May 2023 16:27:59 +0100
-Message-ID: <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-To: Graeme Gregory <graeme@xora.org.uk>
-Cc: wangyuquan1236@phytium.com.cn, quic_llindhol@quicinc.com, 
- chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=82.97.202.32;
+ envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
+X-Spam_score_int: 5
+X-Spam_score: 0.5
+X-Spam_bar: /
+X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,41 +116,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vVXuTGB05BpP
+X-TUID: E4csZOPYAJs/
 
-On Wed, 31 May 2023 at 15:58, Graeme Gregory <graeme@xora.org.uk> wrote:
->
-> On Wed, May 31, 2023 at 03:02:29PM +0800, wangyuquan1236@phytium.com.cn wrote:
-> > From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-> >
-> > The current sbsa-ref cannot use EHCI controller which is only
-> > able to do 32-bit DMA, since sbsa-ref doesn't have RAM above 4GB.
-> > Hence, this uses XHCI to provide a usb controller with 64-bit
-> > DMA capablity instead of EHCI.
-> >
->
-> Should this be below 4G?
+--_000_49b0ba578bfb45f1be23f7608845d823aurigacom_
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 
-It would be pretty disruptive to try to rearrange the memory
-map to put RAM below 4GB at this point, though in theory it's
-possible I guess. (I have a vague recollection that there was
-some reason the RAM was all put above 4GB, but can't find
-anything about that in my email archives. Perhaps Leif remembers?)
+SGVsbG8hDQoNClRoYW5rIHlvdSBndXlzIGZvciBjbGFyaWZpY2F0aW9ucyENCg0KDQo+IEFyZSB0
+aGUgVkM0IHByb3BlcnRpZXMgc3VwcG9zZWQgdG8gYmUgcHJlc2VudCBvbg0KPiBhbGwgb3VyIGV4
+aXN0aW5nIHJhc3BpIG1vZGVscz8gKGkuZS4gaXMgdGhpcyBhIGJ1Zw0KPiBmaXggZm9yIG91ciBl
+eGlzdGluZyBtb2RlbHMgcmF0aGVyIHRoYW4gc3R1ZmYgd2Ugb25seQ0KPiB3YW50IG9uIHRoZSBu
+ZXcgcmFzcGk0Yj8pDQoNCg0KWWVzLCB0aGV5J3JlIG5lZWRlZCB0byBzdXBwb3J0IFJQSTQgd29y
+ay4gQW5kIEkgdGhpbmsgY2Fubm90IGJlIGNvbnNpZGVyZWQgYXMgYSBidWcgZml4Lg0KDQpTbyBJ
+J20gZ29pbmcgdG8gc2VuZCBvbmUgcGF0Y2ggdG8gcmVwbGFjZSB0aGUgbWFnaWMgdmFsdWVzIHdp
+dGggbmFtZWQgY29uc3RhbnRzLg0KDQpBbmQgdGhlbiBJJ20gZ29pbmcgdG8gc3BlbmQgc29tZSB0
+aW1lIHRvIHNsaWNlIHRoZSBlbnRpcmUgcnBpNCBtYWNoaW5lIHRvIHNlcmllcyBvZiBzbWFsbCBw
+YXRjaGVzLg0KDQpBbSBJIHVuZGVyc3RhbmQgaXQgcmlnaHQgdGhhdCBlYWNoIHBhdGNoIGluIHRo
+ZSBzZXQgbXVzdCBwYXNzIGFsbCB0aGUgdGVzdHM/DQoNCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fDQqnsKfkOiBQaGlsaXBwZSBNYXRoaWV1LURhdWSopiA8cGhpbG1kQGxpbmFyby5v
+cmc+DQqnsKfkp+Gn4qfRp9On3afWp9+n4DogMzAgp96n0afxIDIwMjMgp9QuIDE3OjAyOjAwDQqn
+rKfgp96n5TogS2FtYmFsaW4sIFNlcmdleTsgUGV0ZXIgTWF5ZGVsbDsgU2VyZ2V5IEthbWJhbGlu
+DQqnrKfgp+Gn2qfxOiBxZW11LWFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcN
+Cqe0p9an3qfROiBSZTogW1BBVENIXSBQcmVwYXJlIGJjbSBwcm9wZXJ0aWVzIGZvciB2aWRlb2Nv
+cmUgNA0KDQpPbiAzMC81LzIzIDE1OjAwLCBLYW1iYWxpbiwgU2VyZ2V5IHdyb3RlOg0KPiBHb3Qg
+aXQhIFRoYW5rcyENCj4NCj4gSSdsbCBzcGxpdCB0aGlzIG9uZSB0byB0aHJlZSBwYXRjaGVzOg0K
+PiAxKSByZXBsYWNlIG1hZ2ljIG51bWJlcnMgd2l0aCBuYW1lZCBjb25zdGFudHMgKHJlZmFjdG9y
+aW5nKQ0KPg0KPiAyKSBhZGQgbmV3IHByb3BlcnRpZXMgZm9yIFZDIDQNCj4NCj4gMykgQWRkIHNv
+bWUgdW5pdCB0ZXN0cyB0byBjaGVjayB0aGUgbmV3bHkgYWRkZWQgcHJvcGVydGllcyB2aWEgbWFp
+bGJveA0KPg0KPg0KPiBJcyBpdCBPSz8NCg0KVGhpcyBsb29rcyBnb29kLiBUcnkgdG8gaW1hZ2lu
+ZSBzaXR0aW5nIG9uIHRoZSBvdGhlciBzaWRlLCB3aGVyZQ0KZGV2ZWxvcGVycyB3aWxsIHJldmll
+dyB5b3VyIGNvZGUuIFVzdWFsbHkgdGhlIHNpbXBsZXN0IHRoZSBiZXR0ZXIsDQpldmVuIGR1bWIg
+cGF0Y2hlcywgc2luY2UgdGhlcmUgaXMgbm8gcmlzayBmb3IgZG91YnQuIERvbid0IGJlIGFmcmFp
+ZA0KdG8gcG9zdCBtYW55IHNtYWxsIHBhdGNoZXMuDQoNClBlcnNvbmFsbHkgSSdkIGRvOg0KDQot
+IGltcG9ydCBMaW51eCBkZWZpbml0aW9ucw0KLSByZXBsYWNlIGN1cnJlbnQgbWFnaWMgdmFsdWVz
+IHdpdGggaW1wb3J0ZWQgTGludXggZGVmcw0KLSBhZGQgR0VUX0NMT0NLUyBwcm9wZXJ0eQ0KLSBh
+ZGQgR0VUX1RIUk9UVExFRCBwcm9wZXJ0eQ0KLSBhZGQgRlJBTUVCVUZGRVIgcHJvcGVydGllcw0K
+LSBhZGQgR1BJTyBwcm9wZXJ0aWVzDQotIGFkZCBWQ0hJUSBwcm9wZXJ0eQ0KDQpMb29rIGF0IGRv
+X3Rlc3RfYXJtX3Jhc3BpKigpIGluIHRlc3RzL2F2b2NhZG8vYm9vdF9saW51eF9jb25zb2xlLnB5
+LA0KeW91IGNvdWxkIGFkZCBuZXdlciBrZXJuZWxzIHdoaWNoIHVzZSB0aGUgcHJvcGVydGllcyB5
+b3UgYWRkZWQuDQoNCj4gKFNvcnJ5IGZvciB3YXN0aW5nIHlvdXIgdGltZSBieSBpbmFwcHJvcHJp
+YXRlIHBhdGNoZXMgLSB0aGlzIGlzIG15IGZpcnN0DQo+IGV4cGVyaWVuY2Ugd2l0aCBPU1MpDQoN
+ClNvIGZhciB5b3UgYXJlIGRvaW5nIGdyZWF0IQ0KDQpUaGFua3MsDQoNClBoaWwuDQo=
 
-> Also has EHCI never worked, or has it worked in some modes and so this
-> change should be versioned?
+--_000_49b0ba578bfb45f1be23f7608845d823aurigacom_
+Content-Type: text/html; charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
 
-AIUI, EHCI has never worked and can never have worked, because
-this board's RAM is all above 4G and the QEMU EHCI controller
-implementation only allows DMA descriptors with 32-bit addresses.
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dgb2312">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from text --><style><!-- .EmailQuote { margin-left: 1pt; pad=
+ding-left: 4pt; border-left: #800000 2px solid; } --></style>
+</head>
+<body>
+<meta content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css" style=3D"">
+<!--
+p
+	{margin-top:0;
+	margin-bottom:0}
+-->
+</style>
+<div dir=3D"ltr">
+<div id=3D"x_divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt; col=
+or:#000000; font-family:Calibri,Helvetica,sans-serif">
+<p><font size=3D"2"><span style=3D"font-size:10pt">Hello!<br>
+</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">Thank you guys for clari=
+fications!<br>
+</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt"><br>
+</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">&gt; Are the VC4 propert=
+ies supposed to be present on<br>
+&gt; all our existing raspi models? (i.e. is this a bug<br>
+&gt; fix for our existing models rather than stuff we only<br>
+&gt; want on the new raspi4b?)</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt"><br>
+</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">Yes, they're needed to s=
+upport RPI4 work. And I think cannot be considered as a bug fix.
+<br>
+</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">So I'm going to send one=
+ patch to replace the magic values with named constants.</span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">And then I'm going to sp=
+end some time to slice the entire rpi4 machine to series of small patches.<=
+/span></font></p>
+<p><font size=3D"2"><span style=3D"font-size:10pt">Am I understand it right=
+ that <b>each</b> patch in the set
+<b>must </b>pass all the tests?<br>
+</span></font></p>
+</div>
+<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
+<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" =
+color=3D"#000000" style=3D"font-size:11pt"><b>=A7=B0=A7=E4:</b> Philippe Ma=
+thieu-Daud=A8=A6 &lt;philmd@linaro.org&gt;<br>
+<b>=A7=B0=A7=E4=A7=E1=A7=E2=A7=D1=A7=D3=A7=DD=A7=D6=A7=DF=A7=E0:</b> 30 =A7=
+=DE=A7=D1=A7=F1 2023 =A7=D4. 17:02:00<br>
+<b>=A7=AC=A7=E0=A7=DE=A7=E5:</b> Kambalin, Sergey; Peter Maydell; Sergey Ka=
+mbalin<br>
+<b>=A7=AC=A7=E0=A7=E1=A7=DA=A7=F1:</b> qemu-arm@nongnu.org; qemu-devel@nong=
+nu.org<br>
+<b>=A7=B4=A7=D6=A7=DE=A7=D1:</b> Re: [PATCH] Prepare bcm properties for vid=
+eocore 4</font>
+<div>&nbsp;</div>
+</div>
+</div>
+<font size=3D"2"><span style=3D"font-size:10pt;">
+<div class=3D"PlainText">On 30/5/23 15:00, Kambalin, Sergey wrote:<br>
+&gt; Got it! Thanks!<br>
+&gt; <br>
+&gt; I'll split this one to three patches:<br>
+&gt; 1) replace magic numbers with named&nbsp;constants (refactoring)<br>
+&gt; <br>
+&gt; 2) add new properties for VC 4<br>
+&gt; <br>
+&gt; 3) Add some unit tests to check the newly added properties via mailbox=
+<br>
+&gt; <br>
+&gt; <br>
+&gt; Is it OK?<br>
+<br>
+This looks good. Try to imagine sitting on the other side, where<br>
+developers will review your code. Usually the simplest the better,<br>
+even dumb patches, since there is no risk for doubt. Don't be afraid<br>
+to post many small patches.<br>
+<br>
+Personally I'd do:<br>
+<br>
+- import Linux definitions<br>
+- replace current magic values with imported Linux defs<br>
+- add GET_CLOCKS property<br>
+- add GET_THROTTLED property<br>
+- add FRAMEBUFFER properties<br>
+- add GPIO properties<br>
+- add VCHIQ property<br>
+<br>
+Look at do_test_arm_raspi*() in tests/avocado/boot_linux_console.py,<br>
+you could add newer kernels which use the properties you added.<br>
+<br>
+&gt; (Sorry for wasting your time by inappropriate patches - this is my fir=
+st <br>
+&gt; experience with OSS)<br>
+<br>
+So far you are doing great!<br>
+<br>
+Thanks,<br>
+<br>
+Phil.<br>
+</div>
+</span></font>
+</body>
+</html>
 
-Looking back at the archives, it seems we discussed XHCI vs
-EHCI when the sbsa-ref board went in, and the conclusion was
-that XHCI would be better. But there wasn't a sysbus XHCI device
-at that point, so we ended up committing the sbsa-ref board
-with EHCI and a plan to switch to XHCI when the sysbus-xhci
-device was done, which we then forgot about:
-https://mail.gnu.org/archive/html/qemu-arm/2018-11/msg00638.html
-
-thanks
--- PMM
+--_000_49b0ba578bfb45f1be23f7608845d823aurigacom_--

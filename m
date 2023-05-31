@@ -1,90 +1,83 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2705764ejb;
-        Wed, 31 May 2023 01:48:24 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ584K+ryjHMH28uJzfz1Ab7nxmcYauaKeeNkrjxFDVWi7HVk41GFPKMFtb8/UnXZ9hRCK1M
-X-Received: by 2002:a05:620a:440c:b0:75b:23a1:35f4 with SMTP id v12-20020a05620a440c00b0075b23a135f4mr6218556qkp.5.1685522904271;
-        Wed, 31 May 2023 01:48:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685522904; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2736805ejb;
+        Wed, 31 May 2023 03:00:17 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6RgPRXIDgr6/KNZJ2qFeqF5qMfEFqtFmonE5tsLatlYhmHn+nCh0UylFBnRZvtpcx4xGcc
+X-Received: by 2002:a05:622a:15d1:b0:3f4:ee64:e30c with SMTP id d17-20020a05622a15d100b003f4ee64e30cmr5196383qty.52.1685527217142;
+        Wed, 31 May 2023 03:00:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685527217; cv=none;
         d=google.com; s=arc-20160816;
-        b=IPXi4diUunilK9Wsyz1Z+DYYrnWeWxDn6B3eCZQ55j2Gu6c9zP3picc9rQkKjBcW3p
-         nEQTSlZEAZ4zW+tc6WNEehKrHJsuQb+ksFXdykTkqOhNo8CBMbbPqdbVx8LNg9VsU0+Z
-         ezZq4+7b2IaN1AYfa6XYSt6yJZnwlY9PWwy5Nx7diwvvRvreFb0sXfKe7Co9Yih9kJSW
-         v5oj2GV+jom4dr7B2mbXP678YrpVykKWWHtvyXhBlQdOmFBngy3zwah10OTr6sm7dEUv
-         EApFZQIfSwR7+WHrtQeLxaltB3gAAcnKPI06dSVOxyp+UZcGX1CIv2csmYk+WjpcOzdi
-         ZtjQ==
+        b=epVHGEG762Aqh1rPUrP8roIUCo7XCotX4g18iwsQQBOC5PoKol7AQtHm+6XDjW1QF5
+         r5HlAWJxsLqcYbSi0aOI89Oli3nW6pEyW12GM98xXNgNAkUP/a7x/9U0toTJCWtMZrnR
+         7lApDodUcMK+REIXCxlOYxGwCA6ysgQY43jtsmCHxP14LY024j48UZMq15DM3dH3WYzJ
+         z1WSDJoFDfy7LG9tC0hS40SP4tI8WyiX7Sj7MdhHOOkus6xpooyFJm2ZrYiwLn4h5doR
+         y/xplFsoBQIIR9wVmmaRdccY6ZMgcDmRRt7GB9dRpAq+eh4FwG8/2TAm7b1ryZd0yqdl
+         d88g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=ELxa1Fgrb2o8tlS9jStyeCQn79uD9sPrThyoAONHGe0=;
-        b=GBLns1j3Y20t5/rL4lniYpTQo/AEL8mrt2IHLK7BD2lZcIpCodR1q8WAKH5fzvd6dw
-         AM6j5hCm1At2ecZZYk7vHsLrAAVy6iscDYgZSUQwx5K1nu3cu9WhQapncbxirbAHxA3p
-         3T31a8aqpSeN7PINb7N1Bu16fSciZYxK1eCcB94Mu4bEo0TNBfFL27xvwy/jT2iWLywi
-         4VKb43p93/n1sa/Mo5CXXqyT9PISUWUZy0Eb9vsDZSqtZ9HAlgA+Dix6Xg4R4zsDhy3p
-         o1fj8QeFqIlLUCU7FBxzOrfo5rnm9xwyjUdDJuwnnRQp8OBTHgwO+XmWtL4VgWw99mnG
-         FdVw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=fjIOM5Y42QSTijLxgjrRzhxa5nTruwxdEgJFaQEt/W4=;
+        b=IoZ7XS8btebLOnTVMYVGGEz1VaRfadmtqMlQXvnEgCAGq6ZPNzI+ryMmoZM5Y3M97M
+         94rdp05Pvau3o5e3FjsgXY+OuwhBpqQcWskmLsUymFbAkBp5/1dIaJvoHmzNQ4ovnqh0
+         D34sXGxbK72Ebzb8hnJWkQo4d7SEMNN5k1/CbVBLH6ptYY0C/wH2yxFOllF1vB6GzN1Y
+         TcEjan46zkoqW1n99cf8k71fQqfXV5+WPJTa/gulnIa6nW64cQOoB/wHjK8BiaJ7uEVZ
+         hVCKpVU88/uogtcvtFoLs/BLWVFNLP733TzadYoVeSfjQq4MObTAG8D9lFzlFwWUzjzc
+         mPGw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i14-20020a05620a144e00b0074679e5de80si7580317qkl.172.2023.05.31.01.48.24
+        by mx.google.com with ESMTPS id v10-20020a05622a130a00b003f69ae2f637si7946094qtk.364.2023.05.31.03.00.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 01:48:24 -0700 (PDT)
+        Wed, 31 May 2023 03:00:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4HVC-00082e-EF; Wed, 31 May 2023 04:48:18 -0400
+	id 1q4Ice-00027F-BN; Wed, 31 May 2023 06:00:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vahk=BU=kaod.org=clg@ozlabs.org>)
- id 1q4HUw-00081k-64; Wed, 31 May 2023 04:48:02 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vahk=BU=kaod.org=clg@ozlabs.org>)
- id 1q4HUt-0006jZ-Ez; Wed, 31 May 2023 04:48:01 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QWNFQ1zZzz4x4L;
- Wed, 31 May 2023 18:47:54 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QWNFL2bnQz4x46;
- Wed, 31 May 2023 18:47:50 +1000 (AEST)
-Message-ID: <34daee99-441c-4336-49d4-5e1a830c78ef@kaod.org>
-Date: Wed, 31 May 2023 10:47:44 +0200
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1q4Icc-000270-V1; Wed, 31 May 2023 06:00:03 -0400
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1q4Ica-0005Ab-CU; Wed, 31 May 2023 06:00:02 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwCXX9WTG3dkOSckAQ--.44620S2;
+ Wed, 31 May 2023 18:04:03 +0800 (CST)
+Received: from phytium.com.cn (unknown [123.150.8.50])
+ by mail (Coremail) with SMTP id AQAAfwB3xi+YGndkrncAAA--.2360S3;
+ Wed, 31 May 2023 17:59:53 +0800 (CST)
+From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+To: rad@semihalf.com,
+	peter.maydell@linaro.org
+Cc: quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>
+Subject: [PATCH v1 0/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Date: Wed, 31 May 2023 17:58:44 +0800
+Message-Id: <20230531095845.365019-1-wangyuquan1236@phytium.com.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 11/12] aspeed: Introduce a "uart" machine option
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Abhishek Singh Dagur <abhishek@drut.io>
-References: <20230508075859.3326566-1-clg@kaod.org>
- <20230508075859.3326566-12-clg@kaod.org>
- <d0dedd1a-e2b7-5db9-d710-595e94b084a0@linaro.org>
- <aeb9f6a3-30e4-ce5d-c041-600a5097b27e@kaod.org>
- <ab96deaf-ca3f-fd28-254e-1797eb69b88d@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <ab96deaf-ca3f-fd28-254e-1797eb69b88d@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=vahk=BU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-CM-TRANSID: AQAAfwB3xi+YGndkrncAAA--.2360S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWR2SqoDFgATsk
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,32 +92,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3wgXjaGyxiyj
+X-TUID: O6yv7dLw+8YT
 
->>>> +static void aspeed_set_uart(Object *obj, const char *value, Error **errp)
->>>> +{
->>>> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
->>>> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->>>> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
->>>> +    int val;
->>>> +
->>>> +    if (sscanf(value, "uart%u", &val) != 1) {
->>>> +        error_setg(errp, "Bad value for \"uart\" property");
->>>
->>> Why are you asking for a string and not an index?
->>
->> because the literal name is what people find in the DT. See files
->> arch/arm/boot/dts/aspeed-bmc-* under Linux.
-> 
-> OK. After looking at this file, I suppose people would expect
-> a "bmc-console" property name:
-> 
->    -M ast2500-evb,bmc-console=uart3
-> 
+Please review the change.
+ - Replace EHCI with XHCI on sbsa-ref board.
+v1 patchset has fixed my commit rebase problem in the last version.
 
-yes. This is better naming for the user. I will keep the internal
-'uart_chosen' though.
+Yuquan Wang (1):
+  hw/arm/sbsa-ref: use XHCI to replace EHCI
 
-Thanks,
+ hw/arm/sbsa-ref.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-C.
+-- 
+2.34.1
+

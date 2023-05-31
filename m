@@ -1,169 +1,154 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp92782ejb;
-        Wed, 31 May 2023 09:47:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7/rUBy4tX5z3cn1EHthmeNZyHorQSNVZi8j66izm8yb2BwaaPE0BIk35mjpTdkFQdAIe19
-X-Received: by 2002:a05:6830:2099:b0:6a5:e9ad:3990 with SMTP id y25-20020a056830209900b006a5e9ad3990mr2977583otq.26.1685551637447;
-        Wed, 31 May 2023 09:47:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685551637; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp94742ejb;
+        Wed, 31 May 2023 09:50:22 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7hQQaFr1XoSrHntV2XlszoAKOszBcjGB3D4J1Y/DL99lWcwrREStd1UUpcwE2hRuRcNEXb
+X-Received: by 2002:a05:620a:2cc5:b0:75b:23a0:d9d6 with SMTP id tc5-20020a05620a2cc500b0075b23a0d9d6mr5577716qkn.44.1685551821752;
+        Wed, 31 May 2023 09:50:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685551821; cv=none;
         d=google.com; s=arc-20160816;
-        b=kY2XA8x4wgTTzQ77hX88gewXyvVo3N8pKvzeCHc3p5vKPt1njmMuPhdsuvakLrmE2C
-         e2fL6Mhed+5t93p43D2Rc8p5UIG+kx1stGRtAqyp7bI4WZ7so0wdD68dO5vh7T6Hjve+
-         SpIrAbpomuH/k58ZApYXzGGaPwwj+k8kHkV31/oDDLFmMRkAgPBGkF664PUl60wBiThR
-         9DeWpD/9o2HgBzMEJiyFgjWI1WwiXnK/lh+LUnAUuTEdr4qY6NfoFD7BnIcSHN34Ce9p
-         0TfMiNYBouYXABwtor0phXpE4dEPKZK3vHiJOya4p8irOVwfWBOTSuNmleapGFXWm0hx
-         ctiw==
+        b=ZPi5JprevAHneSG/K7JvCBrsyQa3Y8ctuXrDAQ3oASt+dvdnermdWHsen+uK+9St4J
+         YSHLymJ+cF2YY9i1QujvVPCdEz7ycqmYbwYUAsc5zidQ0+fOraHFxQcnfofChK4j2irC
+         FilGL8eTsaDm++7sv5fIPSDMnmykKViV+MOU53NBrbHkUzkEQN/ZWgAYoAdL78vvTpTS
+         uyUzvFSWvcieNKRlf1C850SrmrWWCinH0fmzbXK95mMx/9185bMvejDSLDPVIkqzKM0X
+         pL5YfSlO3j2Dov2dzEzZcIl+Fl8Ev9GabRRlRDzWVtXL9irZTMJMPji05SjwA0Xq/qN1
+         WvSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=V+5uh1dx954yDM+NXOH/phpEgceCwe6D12FGJexmWG4=;
-        b=rq+1ooUtdQh7nyc4U7V+HlkAd5ZPm78HiFD7cJ28wc1o1gqx8KYsFy3Q81KFvAfsux
-         eioO038biZGj+3YwCctI4PovDXdFRchIBJM6cp32mSn2dqro5xM+/MyNBq83f5wDd0Lj
-         xv7pO/8GX4fpjDPPWsCIXGUmS6Rgq4YIesJN3N4bsj7Ov98c1KTTB2DyGvxkdEgehbaP
-         oRVSbq+2SkU2FZV7kH35YDB7mKJownDoXORLX8ynh+zgysRa/eHpQUH0Qf946VHJGRVZ
-         oAQPtasZDfOX2CtmLVxO09iu8eMoBmTpkdQLwq4aMn3etmEPjSxRYCJfN+cTro7gDKJh
-         1rGg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=qeVUxHhJUoMvN//JSF/0qLTCfXgdwXXHdn6/R9WVoAk=;
+        b=i3gckv9+KjsyHsugy/CM8vd9jhJK9QTOPsgMNK1+fqUVT8gR9eaVFH4UYjaRm6xgOI
+         GdyLRs7FddF5LyuwzweOeDPgYXP9d1JYKFTL7Tsiie/5+33JDtWYG28FofvNlVnP+qph
+         BoiEIpp3gmJUb+1aCa5V/3i4XUmS2IP8YDmHEfolwAkCi9iLyl6W21mq2GEyZtQ/d4Pv
+         XEuOsRsDUFW4O5X4rYFhOPC7NpVnxPz5ux/QyvWD1AvwBNvb669bEuRYjYP47Hi9Vs1L
+         XEBb8r63woRvnkZ7qwx1JNumxEAsqmO2jBQMIR4sYNbG+T7B56TINrtFk2AOfHO6iX0B
+         zcFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OEiC0aF9;
-       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id b1-20020a056830310100b006ab21cecd38si864424ots.199.2023.05.31.09.47.17
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 31 May 2023 09:47:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EiuupOFQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c5-20020a05620a164500b0075785c1637bsi5361045qko.565.2023.05.31.09.50.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 May 2023 09:50:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OEiC0aF9;
-       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 20FE560DE9;
-	Wed, 31 May 2023 16:47:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85AD7C4339B;
-	Wed, 31 May 2023 16:47:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685551636;
-	bh=hWQvyC99yol6jcmVA70uv8y0HTzTSGZUK01vDfymdiM=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OEiC0aF9crMv8JtI7+tX7XBMSYwSURF936T+2x93tv8WE6JGmMHgNZD08EXp0Fssk
-	 jT/tMJkfqM7m+ufxyLUtiNy66fA9RC/e7Fnou7iiA8W3lp48L1l3hB+qzGbzgB9yfd
-	 W5UyP3RFTdDFiB14aFzGOYS7AjsBSQSV+RQs8HOcoN+prTzF3e7bRMCe2MEoIa4Sx0
-	 1kZoSjag36UniZoN3zuSiDSYDy8qXMe7OlyluskwjEcmgynfNVlxoviunYtj82GvUJ
-	 Vcxy1ToqOidCKOUKwhF0r812Yc7dxZ7nHOI2SEJwoHBsC3XfDvdLIeAT+mDPX5zhbn
-	 4tfijasLjxZ4A==
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2af30a12e84so66138461fa.0;
-        Wed, 31 May 2023 09:47:16 -0700 (PDT)
-X-Gm-Message-State: AC+VfDyo2jX90pTo8XnAUN6+irXRE4PtJdu/6yjrlM0Ixn88kT4oUNoI
-	ec6LAW/4YaK9SrEkWZba8/L9ZuSDKOSQijZ4pMk=
-X-Received: by 2002:a2e:8050:0:b0:2a8:c75d:8167 with SMTP id
- p16-20020a2e8050000000b002a8c75d8167mr3179610ljg.4.1685551634509; Wed, 31 May
- 2023 09:47:14 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=EiuupOFQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4P1e-0004Py-UR; Wed, 31 May 2023 12:50:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q4P1J-0004Hb-NQ
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 12:49:59 -0400
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q4P1I-0001KU-5n
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 12:49:57 -0400
+Received: by mail-lj1-x22a.google.com with SMTP id
+ 38308e7fff4ca-2af2c7f2883so65915181fa.3
+ for <qemu-arm@nongnu.org>; Wed, 31 May 2023 09:49:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685551794; x=1688143794;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qeVUxHhJUoMvN//JSF/0qLTCfXgdwXXHdn6/R9WVoAk=;
+ b=EiuupOFQKC2aQ/Je8RyRN9OmA6OqAKyfo+FJ92VBYOUt/hETzwVEvAvKRv2kisrUQL
+ SqVLr86zEKLX15MuYgyMSonA13zoxQdwLegnM63q0ZdPqQ2v5CxWeer8wQb0W5MbOL7O
+ 79rqnZJv0zW+9Di+Jii6+i1/JlD8Gg2wuWgEFkqJDJTiJevI3eXcBLlvMT8O9xIDDYSv
+ qIyt/EPQ9ERmAbv9QnIRrwGF1NgGM6x3Qc8cMpmZkfEQ+APleKlYpMFWEEUZYkAfn8fz
+ pjdoH47+Q9WgWhkbIezasXDiNqUGHMFrRwQAK9qQXSkI6l7/AK+MN7aOTc/AJc0KB+vL
+ YAnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685551794; x=1688143794;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qeVUxHhJUoMvN//JSF/0qLTCfXgdwXXHdn6/R9WVoAk=;
+ b=CETSpeH/RXOYs6ueTPk8XgkGTgcokZiCoPzZlFB2jkbOLblZ902VHo/udHubI8zFQg
+ j5VlgDg5HSZiviFJwFw3nYLBzPE/Egim/QTFrqW2eGFJTCAWo0Fug/udAlpqy71yasns
+ yVj5cQqvbVu9536T7X9Pfj7X4LrYRmNjtpqhPH702dNmGpiFWr7a6fSp0MZmm4pbUcye
+ cbvmlC/uqEeFepTF3tn7F0WJIyUQigKztyik0Cx22izxvGvOuC/c+1k77mZUioTE/Ttx
+ 3RDyB4zrXSYMVocF1IMBQJFWx5Igul4FNXl8zr7XSwMviNzXDMp7RSkcB3UmNx5Njk4a
+ Ozjg==
+X-Gm-Message-State: AC+VfDwQlb8issTpL4jIoPJBc8FJDXYXNn92yv4OLh2dk1q81EG7X8u5
+ 7v/NhGmP3QP4Qr6gWpj//5rZQHNRVlPe88LJCwQ5PQ==
+X-Received: by 2002:a2e:9614:0:b0:2b0:626e:e90 with SMTP id
+ v20-20020a2e9614000000b002b0626e0e90mr2932525ljh.36.1685551794212; Wed, 31
+ May 2023 09:49:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230531112239.3164777-1-ardb@kernel.org> <722d7683-80b4-bb23-3ca2-77f8de23b801@linaro.org>
-In-Reply-To: <722d7683-80b4-bb23-3ca2-77f8de23b801@linaro.org>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Wed, 31 May 2023 18:47:03 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXEH4zFcOZGz0HvTbpcMUup+cyZEr0JQxH1uXpGcbAc6ow@mail.gmail.com>
-Message-ID: <CAMj1kXEH4zFcOZGz0HvTbpcMUup+cyZEr0JQxH1uXpGcbAc6ow@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Implement AES on ARM using x86 instructions and vv
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+References: <20230524191438.172019-1-sergey.kambalin@auriga.com>
+ <CAFEAcA_PH8yAT28s3p7_0rqK9NodJ6gTXxv63J+98XoMQ_nJTg@mail.gmail.com>
+ <15c444063e114814807551c36ea3389b@auriga.com>
+ <29192acf-0876-e14e-1331-45260cb179c3@linaro.org>
+ <49b0ba578bfb45f1be23f7608845d823@auriga.com>
+In-Reply-To: <49b0ba578bfb45f1be23f7608845d823@auriga.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 31 May 2023 17:49:23 +0100
+Message-ID: <CAFEAcA9NkQ_nTEaxiFfKHpV_Td7TQrPc50ysd8g-u=0m7J9Smw@mail.gmail.com>
+Subject: Re: [PATCH] Prepare bcm properties for videocore 4
+To: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Sergey Kambalin <serg.oker@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 6RHl6rVZ4Ayu
+Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hDucoT2bCaIR
 
-On Wed, 31 May 2023 at 18:33, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 31 May 2023 at 16:47, Kambalin, Sergey
+<sergey.kambalin@auriga.com> wrote:
 >
-> On 5/31/23 04:22, Ard Biesheuvel wrote:
-> > Use the host native instructions to implement the AES instructions
-> > exposed by the emulated target. The mapping is not 1:1, so it requires a
-> > bit of fiddling to get the right result.
-> >
-> > This is still RFC material - the current approach feels too ad-hoc, but
-> > given the non-1:1 correspondence, doing a proper abstraction is rather
-> > difficult.
-> >
-> > Changes since v1/RFC:
-> > - add second patch to implement x86 AES instructions on ARM hosts - this
-> >    helps illustrate what an abstraction should cover.
-> > - use cpuinfo framework to detect host support for AES instructions.
-> > - implement ARM aesimc using x86 aesimc directly
-> >
-> > Patch #1 produces a 1.5-2x speedup in tests using the Linux kernel's
-> > tcrypt benchmark (mode=500)
-> >
-> > Patch #2 produces a 2-3x speedup. The discrepancy is most likely due to
-> > the fact that ARM uses two instructions to implement a single AES round,
-> > whereas x86 only uses one.
+> Hello!
 >
-> Thanks.  I spent some time yesterday looking at this, with an encrypted disk test case and
-> could only measure 0.6% and 0.5% for total overhead of decrypt and encrypt respectively.
+> Thank you guys for clarifications!
 >
+>
+> > Are the VC4 properties supposed to be present on
+> > all our existing raspi models? (i.e. is this a bug
+> > fix for our existing models rather than stuff we only
+> > want on the new raspi4b?)
+>
+>
+> Yes, they're needed to support RPI4 work. And I think cannot be considered as a bug fix.
+>
+> So I'm going to send one patch to replace the magic values with named constants.
+>
+> And then I'm going to spend some time to slice the entire rpi4 machine to series of small patches.
+>
+> Am I understand it right that each patch in the set must pass all the tests?
 
-I don't understand what 'overhead' means in this context. Are you
-saying you saw barely any improvement?
+Yes, that's right -- every patch has to compile and pass
+'make check'. The usual way to arrange this is "put the new
+tests last".
 
-> > As for the design of an abstraction: I imagine we could introduce a
-> > host/aes.h API that implements some building blocks that the TCG helper
-> > implementation could use.
->
-> Indeed.  I was considering interfaces like
->
-> /* Perform SubBytes + ShiftRows on state. */
-> Int128 aesenc_SB_SR(Int128 state);
->
-> /* Perform MixColumns on state. */
-> Int128 aesenc_MC(Int128 state);
->
-> /* Perform SubBytes + ShiftRows + MixColumns on state. */
-> Int128 aesenc_SB_SR_MC(Int128 state);
->
-> /* Perform SubBytes + ShiftRows + MixColumns + AddRoundKey. */
-> Int128 aesenc_SB_SR_MC_AK(Int128 state, Int128 roundkey);
->
-> and so forth for aesdec as well.  All but aesenc_MC should be implementable on x86 and
-> Power7, and all of them on aarch64.
->
-
-aesenc_MC() can be implemented on x86 the way I did in patch #!, using
-aesdeclast+aesenc
-
-
-> > I suppose it really depends on whether there is a third host
-> > architecture that could make use of this, and how its AES instructions
-> > map onto the primitive AES ops above.
->
-> There is Power6 (v{,n}cipher{,last}) and RISC-V Zkn (aes64{es,esm,ds,dsm,im})
->
-> I got hung up yesterday was understanding the different endian requirements of x86 vs Power.
->
-> ppc64:
->
->      asm("lxvd2x 32,0,%1;"
->          "lxvd2x 33,0,%2;"
->          "vcipher 0,0,1;"
->          "stxvd2x 32,0,%0"
->          : : "r"(o), "r"(i), "r"(k), : "memory", "v0", "v1", "v2");
->
-> ppc64le:
->
->      unsigned char le[16] = {8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7};
->      asm("lxvd2x 32,0,%1;"
->          "lxvd2x 33,0,%2;"
->          "lxvd2x 34,0,%3;"
->          "vperm 0,0,0,2;"
->          "vperm 1,1,1,2;"
->          "vcipher 0,0,1;"
->          "vperm 0,0,0,2;"
->          "stxvd2x 32,0,%0"
->          : : "r"(o), "r"(i), "r"(k), "r"(le) : "memory", "v0", "v1", "v2");
->
-> There are also differences in their AES_Te* based C routines as well, which made me wonder
-> if we are handling host endianness differences correctly in emulation right now.  I think
-> I should most definitely add some generic-ish tests for this...
->
-
-The above kind of sums it up, no? Or isn't this working code?
+thanks
+-- PMM

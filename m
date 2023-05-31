@@ -1,119 +1,114 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2679368ejb;
-        Wed, 31 May 2023 00:40:03 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ731YFUoAeTCgSa8a2ki18AZ+V+qWkdix5hN2hd8iEN3nmyfHbYhnEMA+CWTyek/eMsrBw0
-X-Received: by 2002:a05:620a:27c9:b0:75b:23a1:830b with SMTP id i9-20020a05620a27c900b0075b23a1830bmr4953295qkp.6.1685518803603;
-        Wed, 31 May 2023 00:40:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685518803; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2681925ejb;
+        Wed, 31 May 2023 00:48:02 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6/eW3dhHDKt+kY140d72CViPXjkQnjGb6+Hl2uE5SiX1lY4zmORGGWfSVAP442S8eMLS4w
+X-Received: by 2002:a05:6214:21e6:b0:627:3d57:b3ae with SMTP id p6-20020a05621421e600b006273d57b3aemr2396022qvj.55.1685519282360;
+        Wed, 31 May 2023 00:48:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685519282; cv=none;
         d=google.com; s=arc-20160816;
-        b=U49622UBACKa2ULIzs3BK3Jzq33KQAdd8k98wcCLLCC6pc8tP1pDfNWo8BzEO+S1ca
-         l6F1c7t/q4sDsV6EnzkBC/UegSm3elhhc7veZic7Z1x68fxcTIGzWxYSNSNIqeZDNu1D
-         nsDsO0eN6wGR07uwU58vko+knyZ3xnSQIDgVsYkD7QA85UKrp2mlxVyFs16I9XBBRVcf
-         UMdr5SCk1I/B1e3wa9ci+XehlzEfr7kmidjHTOW+KxYbIWjzv4Y8/IN3lLRWDIX0l7J2
-         ne30Vbgk2fmgN4zNaRcrO1nyxK7leYri+2xl/n5LPfzvvVetCh1CIAb6yeh2V5kD5PQp
-         Ye6A==
+        b=QWPPP/LcEry9DbALICifU8vbx/Qx8uOeC8PRPbwE7bcdKAo809kk8QFSFFv9PdbYJP
+         Rz1aRuKUgkR1+htbW0EGu8WTONThD7ydEBoyg5jkyrxzx9m3iufExgbsKOQYpl2eLzBS
+         hrH96wgtNru/qH05AsvTTPFfRhFyV1L63niVAG5/20/oLCCAML6ENq1SLLZSrmCIZTuk
+         USlnEBNQUy5soFzVOYaZzgqBnk4clrokVVZUX3QOUzXXkOZ8+T5ZedLdBaF0hYbLgFjD
+         hNmiguVE3Bt4Xcbeyc95gDXOY8Rz81fzteAmPoEtweRtXc+3ppGIdt14qV6G6L1PyI7X
+         e6Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=VfI7uFPwssBLXE12qhBQRZBisDlkfu+WyG0nQatXIG0=;
-        b=xirkbYkXuGgy9FSeS70y2KgHutrhN0ZGbld+duqvpU8X3lJx5pXGaQi6bIIK/W9lh9
-         JRbbD51faqcCMBzpgH0OwZjtjXu3VD1rs5cAAwvBGdHxyr2IdYGwIqKoiB8qJpIBBjjE
-         CIK24rwjgPduvf/yOxCOVKfEnl/qjzBWJCdRT+ih6E6V7fy8HS4ty0nYzjFr/6Hn+Ffg
-         Wk453iPrwb6cgwlW9W4XBDkyUNAOpUffNZyxD1LG/lejC5iqoRNscUDkhYYMDEL5Pzal
-         5jvkS0RoPMsgoK1G/mXuQpOYeVHhG9HG1H00FNjQgjP6y1uz29DhpqJK1JSLEDPRz9qi
-         zVbg==
+        bh=vhp1eH68oQGsqdwowJaDRJJqZ0y6oVu12E49kh7J3pY=;
+        b=oDAOg6RUxbdCgFwi8G2AgXLSCRBzYjuDHeH6/Y64/pD/D7fDeUBapM+v1q2L3qMSO2
+         CFgsJGtTppCkjTqqNlClFAR/d5GuTlBdLpG5l0Nr5DiLhz2iIUjXJHArM7vivyoCzQmL
+         UfhzPhwydDSa35izQEoo7dNTdvMGvsSRLh9tfQPTO4MJdp37k0+u0TmrjNWUJ+3FaYlv
+         CABHvbJa4UNuleqBRQpcj8rBHJ1DPSQWOgbIHAfzfd2gEcyFaxWxpSQlQsNpNmO0jTsf
+         fIPlHHoWKwdv1ghfepjvu0ajVJll6Xub0LcKZ5/DwTnb4gw82qwcpZbqu9rpldaZw+it
+         iOGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J9murRE9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GbdZPB9P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020ae9c00a000000b0075904d201b2si7466642qkk.102.2023.05.31.00.40.03
+        by mx.google.com with ESMTPS id gu5-20020a056214260500b0062377b26dddsi8017678qvb.572.2023.05.31.00.48.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 00:40:03 -0700 (PDT)
+        Wed, 31 May 2023 00:48:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J9murRE9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GbdZPB9P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4GR1-0005gq-Ug; Wed, 31 May 2023 03:39:55 -0400
+	id 1q4GYl-0000jn-Al; Wed, 31 May 2023 03:47:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4GQl-0005fd-Ek
- for qemu-arm@nongnu.org; Wed, 31 May 2023 03:39:39 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4GYj-0000jC-3H
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 03:47:53 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4GQj-0008B8-4D
- for qemu-arm@nongnu.org; Wed, 31 May 2023 03:39:39 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-3f6da07ff00so57283005e9.3
- for <qemu-arm@nongnu.org>; Wed, 31 May 2023 00:39:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4GYh-0001ii-F6
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 03:47:52 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-30aeee7c8a0so498719f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 31 May 2023 00:47:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685518774; x=1688110774;
+ d=linaro.org; s=google; t=1685519270; x=1688111270;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=VfI7uFPwssBLXE12qhBQRZBisDlkfu+WyG0nQatXIG0=;
- b=J9murRE94kkAB9nnCI0n0Yh6Jr3zV6w+0czSzJ+Cwz/6nKnpzT9KIKx3+70Kb0veAk
- 4eDwHheI7HEuQHEn6EZwuZ7A8RDPbIdC/yS4Zr5ju4kA5dsSkVg5Ju7CeDPipStX4p+y
- c0ekL6oayxAbAkZQLwj00fJ/e6599lDEAJrzQi3IQh9cYSh/Wv+ls8vYRMBFo+h+w+Mr
- pgqDG8UR2U4+QX6vYYeykEo5ZNK59PPEex7N8EPxvGBGRmz3k4lqc5wXVd/ZBO2WqRJf
- /7ROBaROD0Whk3LzZKy95TGlEU+Xk3Qn06W+9w/aTsj0jwRMm63hviSf2olW+03W2f4Z
- rSzQ==
+ bh=vhp1eH68oQGsqdwowJaDRJJqZ0y6oVu12E49kh7J3pY=;
+ b=GbdZPB9P4I35lBa4K4cMz7jZk8jakR3wwymwzWthhstDs+zcojrouVs5zGaThCwwPe
+ k6BFlGRKQoXtQWNn2Av+W9o+wzR2lD5LcR9xPKQ2hVDg+MPXHvWa3fpjBNe8do6+0Rfj
+ 9n6J7CmAlMCFZ6AghZisQtm33sehls+XfaPvbg0ukDONLn9aL7Ssy/UTdO0Boerq9Urs
+ L/5nywCPkv5n/w5/JbKgRQ7LVs0i/4i73ddBMJfkd1euQJ8kpM8XMaWVKD6/jsJXYiJL
+ 4yf1/lnlL9p2z++B+82D+JhCZyb54ONjM9lMKl1Qj16R06ugbtkY5938G5AVOmHmrPNA
+ yCVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685518774; x=1688110774;
+ d=1e100.net; s=20221208; t=1685519270; x=1688111270;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VfI7uFPwssBLXE12qhBQRZBisDlkfu+WyG0nQatXIG0=;
- b=ceJ8MXU+7seu6awqyTrMk+bwR01JZsbO3onrzVDr3Fbrtupt5mR3wJWpXPsDQG1gZh
- MfR335OIzod1+5iN55lc9B3o7dvM5NdBaLcE2iGmEMTEpxRR76hBomxnl7k5oOUnHRGr
- +Z9QHDqex6hAZJHATIFYDWmxP1en6xgBnLNx2YT7fGfo5qWjOwF1Y18zxoqO9Acv+fQH
- 0zCoLAhtIdLRh5jrRtYBrGfXsNLuEjWK40D/AMmIfqLADh50RV+OdMsf/4g0msI4rQQH
- qFekCiMekT5Ki3Ay096t0+DzWyrY5wzUEicvaF/RDU4djmoiTR85crKz5gBqAZeq/bTo
- utuw==
-X-Gm-Message-State: AC+VfDyiheHEx3K8H+wKMgVOQWgqr+Zxn43+gx9grkvg0bR8dnsbydjM
- EunV7MtGJds86cPtsAuHh9a75g==
-X-Received: by 2002:a7b:c442:0:b0:3f6:4c4:d0ce with SMTP id
- l2-20020a7bc442000000b003f604c4d0cemr3543940wmi.8.1685518774421; 
- Wed, 31 May 2023 00:39:34 -0700 (PDT)
+ bh=vhp1eH68oQGsqdwowJaDRJJqZ0y6oVu12E49kh7J3pY=;
+ b=Dww8mCiO/LlzP8P5uFlX0ZJ1r/JWOrU96xZ/3U+2z/ZrqIiFhZK5qQL9VyAazj8M/h
+ +p/IMoK0RhTfe0faTxmbFxXHWrns/aXXccPpEEmp4zGH8Z9gz8Ehfr5H+YkaqtW/DoDG
+ rkjeNxDSuyHtvR7ntWYH3n4UZtYXVLWBuEW3Zp+LaUwjtcu1pLeeGDLh/ouAgibZkClU
+ TuzJZT3n09MzdnIcOb6WmfhiPSK7nXx2gf9+H+YVzVTre2XwEGHrKU/L0mTUZ0t6EiOk
+ kiKoD0o/VHKlFCgbH4rJwyHw3a22bA8EHJHT4s8czneSJO3PmGz9GGbhJGY7pkjnzRlC
+ AxlQ==
+X-Gm-Message-State: AC+VfDyS0gNP6C9opgMk5IelgsXzV9ueQQutTpP5gS3s90a/avALmrWH
+ l5cSpn0imkFIvl8cngrUu8PZZw==
+X-Received: by 2002:a05:6000:11ce:b0:307:869c:99ce with SMTP id
+ i14-20020a05600011ce00b00307869c99cemr4056530wrx.21.1685519269817; 
+ Wed, 31 May 2023 00:47:49 -0700 (PDT)
 Received: from [192.168.69.115] ([176.176.146.12])
  by smtp.gmail.com with ESMTPSA id
- x4-20020a05600c21c400b003f0aefcc457sm23466290wmj.45.2023.05.31.00.39.33
+ p13-20020a5d638d000000b0030ae3a6be5bsm5766684wru.78.2023.05.31.00.47.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 31 May 2023 00:39:34 -0700 (PDT)
-Message-ID: <36c9bda8-3af2-ebf5-f8b9-599cafea0735@linaro.org>
-Date: Wed, 31 May 2023 09:39:32 +0200
+ Wed, 31 May 2023 00:47:49 -0700 (PDT)
+Message-ID: <f29df320-5392-b6c0-9bb4-c5f0330fe91c@linaro.org>
+Date: Wed, 31 May 2023 09:47:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH 05/12] hw/ssi: Introduce a ssi_get_cs() helper
+Subject: Re: [PATCH 09/12] m25p80: Introduce an helper to retrieve the
+ BlockBackend of a device
 Content-Language: en-US
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eduardo Habkost <eduardo@habkost.net>, Bernhard Beschow <shentey@gmail.com>,
- Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
+ Alistair Francis <alistair@alistair23.me>
 References: <20230508075859.3326566-1-clg@kaod.org>
- <20230508075859.3326566-6-clg@kaod.org>
- <40c8647d-201e-3ceb-97ca-ec98bdc84e88@linaro.org>
- <0d11b78e-56f7-553a-3e85-0edef9b649ac@linaro.org>
- <523179dd-7842-7f03-14d6-678ed680a017@kaod.org>
- <6bfba08e-ce3e-539b-952d-697c8791fab2@linaro.org>
- <54d781f8-35d0-9e68-c2ec-743dd8f6a88e@kaod.org>
+ <20230508075859.3326566-10-clg@kaod.org>
+ <5587a39e-1c17-2997-f679-d43a023149c6@linaro.org>
+ <516d4f95-a070-a03c-317c-2276cd42e871@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <54d781f8-35d0-9e68-c2ec-743dd8f6a88e@kaod.org>
+In-Reply-To: <516d4f95-a070-a03c-317c-2276cd42e871@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -135,66 +130,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d/LaGgc0PI6Y
+X-TUID: c6Rs92Ag3O1G
 
-On 31/5/23 08:36, Cédric Le Goater wrote:
-> On 5/31/23 08:17, Philippe Mathieu-Daudé wrote:
->> +QOM tinkerers
->>
->> On 31/5/23 07:59, Cédric Le Goater wrote:
->>> On 5/30/23 23:15, Philippe Mathieu-Daudé wrote:
->>>> On 30/5/23 22:34, Philippe Mathieu-Daudé wrote:
->>>>> On 8/5/23 09:58, Cédric Le Goater wrote:
->>>>>> Simple routine to retrieve a DeviceState object on a SPI bus using 
->>>>>> its
->>>>>> address/cs. It will be useful for the board to wire the CS lines.
->>>>>>
->>>>>> Cc: Alistair Francis <alistair@alistair23.me>
->>>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>>>> ---
->>>>>>   include/hw/ssi/ssi.h |  2 ++
->>>>>>   hw/ssi/ssi.c         | 15 +++++++++++++++
->>>>>>   2 files changed, 17 insertions(+)
->>>>>>
->>>>>> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
->>>>>> index ffd3a34ba4..c7beabdb09 100644
->>>>>> --- a/include/hw/ssi/ssi.h
->>>>>> +++ b/include/hw/ssi/ssi.h
->>>>>> @@ -112,4 +112,6 @@ SSIBus *ssi_create_bus(DeviceState *parent, 
->>>>>> const char *name);
->>>>>>   uint32_t ssi_transfer(SSIBus *bus, uint32_t val);
->>>>>> +DeviceState *ssi_get_cs(SSIBus *bus, int addr);
->>>>
->>>> Also, this helper should (preferably) return a SSIPeripheral type.
+On 31/5/23 08:48, Cédric Le Goater wrote:
+> On 5/30/23 23:14, Philippe Mathieu-Daudé wrote:
+>> On 8/5/23 09:58, Cédric Le Goater wrote:
+>>> It will help in getting rid of some drive_get(IF_MTD) calls by
+>>> retrieving the BlockBackend directly from the m25p80 device.
 >>>
->>> Well, having a DeviceState is handy for the callers (today) and
->>> ssi_create_peripheral() returns a DeviceState. Let's keep it that
->>> way.
+>>> Cc: Alistair Francis <alistair@alistair23.me>
+>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>> ---
+>>>   include/hw/block/flash.h | 4 ++++
+>>>   hw/block/m25p80.c        | 6 ++++++
+>>>   2 files changed, 10 insertions(+)
+>>>
+>>> diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
+>>> index 7198953702..de93756cbe 100644
+>>> --- a/include/hw/block/flash.h
+>>> +++ b/include/hw/block/flash.h
+>>> @@ -76,4 +76,8 @@ uint8_t ecc_digest(ECCState *s, uint8_t sample);
+>>>   void ecc_reset(ECCState *s);
+>>>   extern const VMStateDescription vmstate_ecc_state;
+>>> +/* m25p80.c */
+>>> +
+>>> +BlockBackend *m25p80_get_blk(DeviceState *dev);
 >>
->> Yes I know it is handy :) I'm not against your patch; besides other
->> APIs do that. I'm wondering about QOM design here. Having Foo device,
->> should FOO API return the common qdev abstract type (DeviceState) or
->> a Foo type? Either ways we keep QOM-casting around, but I still tend
->> to consider FOO API returning Foo pointer provides some type check
->> safety, and also provides the API user hints about what is used.
->> Need more coffee.
+>> - Option 1, declare QOM typedef and use proper type:
+>>
+>>    #define TYPE_M25P80 "m25p80-generic"
+>>    OBJECT_DECLARE_TYPE(Flash, M25P80Class, M25P80)
+>>
+>>    BlockBackend *m25p80_get_blk(Flash *dev);
+>>
+>> - Option 2, preliminary patch renaming 'Flash' type to
+>> 'M25P80' then option 1 again
 > 
-> It is used in two code paths today:
-> 
->      ...
->          DeviceState *dev = ssi_get_cs(bmc->soc.fmc.spi, 0);
->          BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
->      ...
-> and
->      ...
->          DeviceState *dev = ssi_get_cs(s->spi, i);
->          if (dev) {
->              qemu_irq cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 
-> 0);
->      ...
-> 
-> 
-> Changing the interface is not a radical change, it will add two QOM-casts.
-> I can give it a try in v2.
+> That's a large change
 
-Hold on, lets see what others think first.
+Yes, it can be done later if you rather.
+
+> and we would need to introduce a m25p80.h with
+> these definitions.
+
+FlashPartInfo is used as pointer so can be forward-declared.
+Then we only need to move M25P80_INTERNAL_DATA_BUFFER_SZ.
+For 5 lines, "hw/block/flash.h" is good enough IMO, keeping
+all the rest to m25p80.c.
+
+> Given that the caller needs a DeviceState in the
+> end, may be not worth the extra hassle.
+> 
+> How would you rename 'Flash' ? 'SpiFlash' ?
+
+Since you ask, my preference is SpiNorFlash :)
+
+But again, this can be done later on top.
+
+Thanks,
+
+Phil.
+

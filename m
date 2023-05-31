@@ -1,110 +1,108 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp230795ejb;
-        Wed, 31 May 2023 13:39:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4THY7ZNGSa4DGopjLMz1TRnhudLofhmN9j59lzqZ6Gdk2aACqgQnXv1CekP9ke4YIFMrg0
-X-Received: by 2002:a05:622a:1ba0:b0:3f3:8057:9587 with SMTP id bp32-20020a05622a1ba000b003f380579587mr7457576qtb.20.1685565577632;
-        Wed, 31 May 2023 13:39:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685565577; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp29178ejb;
+        Wed, 31 May 2023 15:34:22 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5R0ZnNFRAhE5zNTzns06NJnXVjMFttkjByp04r/kSc1k64ZjDZvRxGFussr5n4/Lt0OsLe
+X-Received: by 2002:a05:622a:11c1:b0:3f4:917f:acf3 with SMTP id n1-20020a05622a11c100b003f4917facf3mr8819515qtk.35.1685572462553;
+        Wed, 31 May 2023 15:34:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685572462; cv=none;
         d=google.com; s=arc-20160816;
-        b=av4217TMqQamXxk/TQURP8LBl0CnZ2r258M75zFVhf0b8TAKp2+KOulS88PuOO5F1Y
-         SdsHw2xFgMOl7DSn1iviakuKQTtuOsJMx7AC3fK/F6pGpQs+0f6xLfXK3RPEmMmhtEyx
-         rc/PBIp9SFprX+P2xJ3h0XNHz9hrMjNckH4q4J3xmsgkBUEybjbIwR1U4DuwOblvPU9C
-         urYxOZQdmaOgSsXCVIn5/MPaP2pk2cJ0cvdg86SgB4834WkOxmpr5y8+RD1RgJxPpegf
-         Psb0KNThOImyINRd1Ct3G/HHCZxXrUNuWc+byS7NYJZURHHDBxMWOJWCuUXNpYZkx46a
-         VEfQ==
+        b=gV01MXP1CXDP/TBFSbao/xzjld2GHQXbj4xa1GqwnlSpc5fGgXFClPOy0gZY1Jt4dd
+         a3U7cl1G2j0Szexecgd4knsjnukrLJPf8Eqeg/rf7QOWAjOTbW0x9f5DyaB1Ca4++pwS
+         BGF606SOSpVDwYDMhU/wJc5rmAbBj5X+ymk0eX7Q7MgdAZ2KCjqFVQVzZ5b3zSFUUWjq
+         4W3T9fAb7XzhbVQcI9pjMemlDHLddWnR/IRSiEZPmVFXeDHl4BXjUjDgqHXO/nD9wOCi
+         5SShvYMsMuq5FHTqMftsBQIuzMg+qqE2IP0lwiIRS15o9Yx+y8+bQW6PTQudpr9CEBPv
+         p+Fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=+bApdHpHvphQGH6iJkkAkav6K47Z8aVKSZsLKgEzGjI=;
-        b=0VkLQK8EZ6H7JltruIsuPUn14W8yyYkL9m5GgMqMClz8C31HIWWMYgWCEOICQ0TY2e
-         twIS20Hj2GA/woahXeu+GM+dG/unpBvgSHkDKJCtmyrVR4n7Z8Xfkvpa9+8ZNh7U51cb
-         FNqL0I7e0Bwsr+KNQEkyEGZCNNv7/eGWj8L3wwPq7B/JQN3PTwaySqyGTl9talLoEmR2
-         1HSfwwW+3dd/Q9neo2JmLgvnJ7AYal7RX7PeQjTsxJPNDFu1QZQ+TE+q0BPlmpcobMeG
-         44lr0P42eE8IwfdRSo7Et9GDC6Nvp5wdwu0yocdgEiGyGPeTUauxFgTGPMMY+Ec+RhHw
-         Z7Nw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=knDkPGiUsAKV4vjHj0yXucrmS51UBie64TABOaedj0Y=;
+        b=AElMZojS0i35F85L+vtVUtuRHE1Pr/i7DCNFYq53OCxZDy/aLmEAeIsImwrZqU8MoO
+         dlnMdsDJ7oNufNXYnwKbG6cgrsLSF3zdzgInXdQ43bMBmh+SIOWI1uqBrlY5hXgv3Os4
+         RW+y9gG4bqe1s+Fnqlw8+WenGoBHLZUDHt7o0a+e6dmbSwnDLu/wz8/p0GZYoP0JnBAu
+         p8wUsUc7qWbVlp6avtMveXhwrxjTKcFgr6gHTk8LAIm7372aCQGPSXbMptEoTxLeSJiT
+         FVCvzKra2NqDxLiPOcF6dFluuC5kKbXeQxBREbqwqGp+8tPPVcahm8O77WeCrsBNN42r
+         Gj3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SjC2KJW2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O1yPop8f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14-20020ac859ce000000b003f6b9e32596si9060044qtf.747.2023.05.31.13.39.37
+        by mx.google.com with ESMTPS id t11-20020a05622a148b00b003f6856c175asi8600946qtx.94.2023.05.31.15.34.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 13:39:37 -0700 (PDT)
+        Wed, 31 May 2023 15:34:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SjC2KJW2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=O1yPop8f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4SYg-0007jf-0Y; Wed, 31 May 2023 16:36:38 -0400
+	id 1q4UO5-0001yz-FP; Wed, 31 May 2023 18:33:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4SYc-0007W0-MN
- for qemu-arm@nongnu.org; Wed, 31 May 2023 16:36:35 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UO4-0001uZ-Cz
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 18:33:48 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4SYa-0003IM-DG
- for qemu-arm@nongnu.org; Wed, 31 May 2023 16:36:34 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-3f6e72a1464so921145e9.1
- for <qemu-arm@nongnu.org>; Wed, 31 May 2023 13:36:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UO1-00050D-NP
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 18:33:48 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-3f6d3f83d0cso1949815e9.2
+ for <qemu-arm@nongnu.org>; Wed, 31 May 2023 15:33:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685565391; x=1688157391;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+bApdHpHvphQGH6iJkkAkav6K47Z8aVKSZsLKgEzGjI=;
- b=SjC2KJW26ls1HD58kz7BecXkM9dZ1U5aqRtnlE3a8cX3dLlv10QWAO5aBM5LhxY6Bx
- Vr7E3QsiG+GmAb5ODU9i7ZhRbmF8ZlGzfQQjqsyX8Ay654cpOdtqoKSVquN81hhbVV01
- u2Ymvw/N5Dyg0l2n3R7guL1BbiB18b1OI2FiBrlRKh6TOASo593nt7qg6FuxVKs2FB5G
- 38rWFyguhjusV/ZcSjnEO+3v34GaU+DLtVmWbrBhZ0XhuVYFsJwS6eNtBa/xWnOaRaKT
- 14KiOLb3cSjf5QuzWlK99B+tW8PmJGkmEPrUD4h09Bk6D+QQ/0N11ZjaZZzbIktelvgm
- ViBg==
+ d=linaro.org; s=google; t=1685572424; x=1688164424;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=knDkPGiUsAKV4vjHj0yXucrmS51UBie64TABOaedj0Y=;
+ b=O1yPop8fla84DddZQv5Kg+XTx1UYMGH3Sj/io/AgqjCI8syfnyjYbdJoVg7mre/1Ir
+ qpoSnBtEqbVbtXdC4kisQmxxJ+ZXyTugBrbu+ihYMFrw0uyj1K8qImwRwhtCQq/d79vs
+ cTTjvUDMnCt1/QijknQyT7bbwylogPT+AGaAre7kL3mwoNcZMykOldP+LsohUIk8SoOa
+ afSq6Sva1EpiHrBO/x6E7hgeq/S0f08LWozS4SUal5gx9oeZhZneA2yqDV2nY7NIRnQN
+ kFYcP5MSlJVHdQfn78rdSFN4Bof+6bZvtdBuWRHI3YmerMMb8OsF/Wm628nydxOaEr0l
+ vuWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685565391; x=1688157391;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+bApdHpHvphQGH6iJkkAkav6K47Z8aVKSZsLKgEzGjI=;
- b=bdnso/VnjHFAPbUtHry2Fhg0JsD5WndKYbHDqn8HOJJgriMPuKSwYij/alHZN3KcbE
- of2qQLXPw6ztydGnAbAKK8BYN6hgHg/1HV+lCex/nSQMJ/vE0PfqpQLqMTnCGxee9PnV
- lmGV3wH55Xh3hM7gZp9uonbex2DZYEOBCDL0qtQfaEMniDy1pbLod/0jAnm4yoZGsPQH
- 0fd1LlGCCxmIrmGCve35A8Fn/96GuWAbHnT8pz0TM2UhwD1vVttKbal6JmaaiIm9bo7s
- nFkhHbx5IwPqtBuk8lW5RMOyFDoTUT6566/FPOS8NNONFLhlIlbUOlWR9bcngL8ihuba
- 7uaw==
-X-Gm-Message-State: AC+VfDzYapVdy1zpg0x3eAHx2ZN7hIZwBTnxEfkLKZXifAMz64hiZd4h
- aqu21sRLmRfQB8k5CqOFUQDhMzyxBo3yNX7Tm9w=
-X-Received: by 2002:a05:600c:3658:b0:3f4:2328:b5c2 with SMTP id
- y24-20020a05600c365800b003f42328b5c2mr260494wmq.35.1685565391086; 
- Wed, 31 May 2023 13:36:31 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1685572424; x=1688164424;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=knDkPGiUsAKV4vjHj0yXucrmS51UBie64TABOaedj0Y=;
+ b=HrB7D8qKUW6zFW7F/r/RsNHwGZOyvlnL+2fJX1S9EoPnYHXBbQfCGHk1CGzUzfMZAK
+ jw6IdlIAVNsPszytiBmOPztglX9KXiZ2MidHwZfb7FCWW5c2LbfGy57Qlo4aScuEIF/M
+ IzzvgmeDhjXKG5dfuAfkBGylolBCeetwcfB9cNFdf2w0NJoHcff12nNU0EzHLA69Xt2w
+ l5cR7Njqf3SmNr7xISWnZM9xJuLOzZ8uTRKrbOykf6iNyfWqYswZTJfWZ15N6iFeP6F7
+ DWPJj8qAh2Dkx0ar1JXih9uyU/7Gx5BxSmvPP2n/8D1uwUNUhSP+o/1JKF9e6PkAOxDm
+ hz4w==
+X-Gm-Message-State: AC+VfDw4ODNxXWfC6a59yGgm6fB5ZiQxLHkJEC1D5bANkc4PGLGUKR9f
+ 24QO75PzsP7mrPVyekrbTndblQ==
+X-Received: by 2002:a1c:7206:0:b0:3f5:ce2:9c82 with SMTP id
+ n6-20020a1c7206000000b003f50ce29c82mr625426wmc.32.1685572424231; 
+ Wed, 31 May 2023 15:33:44 -0700 (PDT)
 Received: from localhost.localdomain ([176.176.146.12])
  by smtp.gmail.com with ESMTPSA id
- 9-20020a05600c028900b003f42a75ac2asm22049206wmk.23.2023.05.31.13.36.29
+ 9-20020a05600c028900b003f60482024fsm88700wmk.30.2023.05.31.15.33.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 31 May 2023 13:36:30 -0700 (PDT)
+ Wed, 31 May 2023 15:33:43 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Sergey Kambalin <serg.oker@gmail.com>,
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 05/15] hw/timer/arm_timer: CamelCase rename icp_pit_state ->
- IntegratorPitState
-Date: Wed, 31 May 2023 22:35:49 +0200
-Message-Id: <20230531203559.29140-6-philmd@linaro.org>
+Subject: [PATCH 0/7] hw/sysbus: Add sysbus_init_irqs and reduce
+ SYSBUS_DEVICE_GPIO_IRQ scope
+Date: Thu,  1 Jun 2023 00:33:34 +0200
+Message-Id: <20230531223341.34827-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230531203559.29140-1-philmd@linaro.org>
-References: <20230531203559.29140-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,68 +124,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XmURr29vyJh1
+X-TUID: 9x6Iusd5ITfE
 
-Following docs/devel/style.rst guidelines, rename icp_pit_state
-using CamelCase as IntegratorPitState.
+This series:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/timer/arm_timer.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+- Remove uses (out of sysbus.c) to the SYSBUS_DEVICE_GPIO_IRQ
+  definition, using proper SysBus API methods,
+- Reduce SYSBUS_DEVICE_GPIO_IRQ scope, making it SysBus API
+  internal,
+- Convert various for() loops iterating over sysbus_init_irq()
+  by calling a single sysbus_init_irqs() instead. Mostly an
+  automatic convertion except 4 files.
 
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 3dda3a73f8..fc8d25b0dc 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -337,9 +337,9 @@ static void sp804_class_init(ObjectClass *klass, void *data)
- /* Integrator/CP timer module.  */
- 
- #define TYPE_INTEGRATOR_PIT "integrator_pit"
--OBJECT_DECLARE_SIMPLE_TYPE(icp_pit_state, INTEGRATOR_PIT)
-+OBJECT_DECLARE_SIMPLE_TYPE(IntegratorPitState, INTEGRATOR_PIT)
- 
--struct icp_pit_state {
-+struct IntegratorPitState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion iomem;
-@@ -349,7 +349,7 @@ struct icp_pit_state {
- static uint64_t icp_pit_read(void *opaque, hwaddr offset,
-                              unsigned size)
- {
--    icp_pit_state *s = opaque;
-+    IntegratorPitState *s = opaque;
-     int n;
- 
-     /* ??? Don't know the PrimeCell ID for this device.  */
-@@ -365,7 +365,7 @@ static uint64_t icp_pit_read(void *opaque, hwaddr offset,
- static void icp_pit_write(void *opaque, hwaddr offset,
-                           uint64_t value, unsigned size)
- {
--    icp_pit_state *s = opaque;
-+    IntegratorPitState *s = opaque;
-     int n;
- 
-     n = offset >> 8;
-@@ -385,7 +385,7 @@ static const MemoryRegionOps icp_pit_ops = {
- 
- static void icp_pit_init(Object *obj)
- {
--    icp_pit_state *s = INTEGRATOR_PIT(obj);
-+    IntegratorPitState *s = INTEGRATOR_PIT(obj);
-     SysBusDevice *dev = SYS_BUS_DEVICE(obj);
- 
-     /* Timer 0 runs at the system clock speed (40MHz).  */
-@@ -409,7 +409,7 @@ static const TypeInfo arm_timer_types[] = {
-     {
-         .name           = TYPE_INTEGRATOR_PIT,
-         .parent         = TYPE_SYS_BUS_DEVICE,
--        .instance_size  = sizeof(icp_pit_state),
-+        .instance_size  = sizeof(IntegratorPitState),
-         .instance_init  = icp_pit_init,
- 
-     }, {
+The resulting code looks nicer IMHO, and is possibly less
+bug prone.
+
+Philippe Mathieu-Daudé (7):
+  hw/arm/xlnx-versal: Do not open-code sysbus_connect_irq()
+  hw/usb/xlnx: Do not open-code sysbus_pass_irq()
+  hw/sysbus: Introduce sysbus_init_irqs()
+  hw/usb/hcd-xhci: Use sysbus_init_irqs()
+  hw/sysbus: Make SYSBUS_DEVICE_GPIO_IRQ API internal
+  hw: Simplify using sysbus_init_irqs() [automatic]
+  hw: Simplify using sysbus_init_irqs() [manual]
+
+ include/hw/sysbus.h           |  3 +--
+ hw/arm/smmuv3.c               |  6 +-----
+ hw/arm/stellaris.c            |  5 +----
+ hw/arm/strongarm.c            |  5 +----
+ hw/arm/versatilepb.c          |  5 +----
+ hw/arm/xlnx-versal.c          |  4 +---
+ hw/char/pl011.c               |  5 +----
+ hw/char/renesas_sci.c         |  5 +----
+ hw/core/platform-bus.c        |  5 +----
+ hw/core/sysbus.c              |  9 ++++++++-
+ hw/dma/pl330.c                |  4 +---
+ hw/dma/sifive_pdma.c          |  5 +----
+ hw/gpio/sifive_gpio.c         |  5 +----
+ hw/i386/kvm/xen_evtchn.c      |  5 +----
+ hw/intc/arm_gic_common.c      | 20 +++++---------------
+ hw/intc/arm_gicv2m.c          |  5 +----
+ hw/intc/exynos4210_combiner.c |  5 +----
+ hw/intc/loongarch_extioi.c    |  7 ++-----
+ hw/intc/loongson_liointc.c    |  5 +----
+ hw/intc/omap_intc.c           |  3 +--
+ hw/intc/openpic.c             |  6 ++----
+ hw/intc/slavio_intctl.c       |  6 ++----
+ hw/misc/avr_power.c           |  4 +---
+ hw/misc/macio/gpio.c          |  5 +----
+ hw/misc/stm32f4xx_exti.c      |  5 +----
+ hw/net/cadence_gem.c          |  5 +----
+ hw/net/mcf_fec.c              |  5 +----
+ hw/pci-host/designware.c      |  5 +----
+ hw/pci-host/gpex.c            |  2 +-
+ hw/pci-host/ppce500.c         |  4 +---
+ hw/pci-host/raven.c           |  4 +---
+ hw/pci-host/sh_pci.c          |  5 +----
+ hw/pci-host/versatile.c       |  4 +---
+ hw/ppc/ppc405_uc.c            | 10 ++--------
+ hw/ppc/ppc440_uc.c            |  6 ++----
+ hw/ppc/ppc4xx_devs.c          |  4 +---
+ hw/ppc/ppc4xx_pci.c           |  5 +----
+ hw/ssi/ibex_spi_host.c        |  5 +----
+ hw/ssi/imx_spi.c              |  5 +----
+ hw/ssi/sifive_spi.c           |  5 +----
+ hw/ssi/xilinx_spi.c           |  5 +----
+ hw/ssi/xilinx_spips.c         |  4 +---
+ hw/ssi/xlnx-versal-ospi.c     |  4 +---
+ hw/timer/allwinner-a10-pit.c  |  4 +---
+ hw/timer/exynos4210_mct.c     |  4 +---
+ hw/timer/hpet.c               |  4 +---
+ hw/timer/renesas_cmt.c        |  5 +----
+ hw/timer/renesas_tmr.c        |  9 +++------
+ hw/timer/sifive_pwm.c         |  5 +----
+ hw/usb/hcd-xhci-sysbus.c      |  5 ++---
+ hw/usb/xlnx-usb-subsystem.c   |  2 +-
+ 51 files changed, 70 insertions(+), 197 deletions(-)
+
 -- 
 2.38.1
 

@@ -1,187 +1,169 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp86266ejb;
-        Wed, 31 May 2023 09:37:19 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6rgHPiofw8B7nDfYDl7cStZKnx6qIP+6kD4RbCjFUZxPhXZh2JbYsfWgRWGKjQUnt+ZiUD
-X-Received: by 2002:a05:620a:8906:b0:75b:23a0:d9aa with SMTP id ql6-20020a05620a890600b0075b23a0d9aamr6586381qkn.0.1685551039099;
-        Wed, 31 May 2023 09:37:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685551039; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp92782ejb;
+        Wed, 31 May 2023 09:47:17 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7/rUBy4tX5z3cn1EHthmeNZyHorQSNVZi8j66izm8yb2BwaaPE0BIk35mjpTdkFQdAIe19
+X-Received: by 2002:a05:6830:2099:b0:6a5:e9ad:3990 with SMTP id y25-20020a056830209900b006a5e9ad3990mr2977583otq.26.1685551637447;
+        Wed, 31 May 2023 09:47:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685551637; cv=none;
         d=google.com; s=arc-20160816;
-        b=csc6xZQib43NGFaSSA8bRDr0F6FblfPhUORnIGoDZ3a5J0E+r9iKamYRbU1zasR4Qi
-         d6pOZNyyyLjLlMzY6jaZClubGEEDDev3yW+gohkoZGANYy038WU4srIY0s7a7SrWsiId
-         +WXlkHv4MaxotP4ey5K08h9XGCG/j3X5EskGl5ybYeHDxeQs8Wnk4QU2xGyqYIBhxzv9
-         XfvU4wj85oLk7L9MjQtRO00YHDyQrxpwcBce7XFhHfGCr5xI7VEPcL7t72xVFUlsA6JM
-         1mIcEjrNWToMNU27wq5OjwZj4mF80w9PpwbfnniNZbaoEiewlrdFHt1o9shgApvlnp3p
-         /SLg==
+        b=kY2XA8x4wgTTzQ77hX88gewXyvVo3N8pKvzeCHc3p5vKPt1njmMuPhdsuvakLrmE2C
+         e2fL6Mhed+5t93p43D2Rc8p5UIG+kx1stGRtAqyp7bI4WZ7so0wdD68dO5vh7T6Hjve+
+         SpIrAbpomuH/k58ZApYXzGGaPwwj+k8kHkV31/oDDLFmMRkAgPBGkF664PUl60wBiThR
+         9DeWpD/9o2HgBzMEJiyFgjWI1WwiXnK/lh+LUnAUuTEdr4qY6NfoFD7BnIcSHN34Ce9p
+         0TfMiNYBouYXABwtor0phXpE4dEPKZK3vHiJOya4p8irOVwfWBOTSuNmleapGFXWm0hx
+         ctiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=19EwZCRqjqWnnqqHwEDlsu+AEj34DaE4EnF6WSEdfPg=;
-        b=Er6WgdxiUa+iS+ZunOjmxhg0nr9l+XDjguFLxgC4InLC1A6rMMiixd7r1VNJXGOZWN
-         7xLAjAwEmL03ujz3zmgB5+9/UviEjqdH4fpnTKvYl8OKBRpWITAaxc2kKa0/gQ1DIGyj
-         5OYGD8HZIFX6N534YK/rXCIr2SYzxvquydbV45E4Ie4oIBYToJm+vtCeqpCI9WfI8XUY
-         /B3isHxozclfh8bk877ZAftFdvGi8UW3VqZa3ozvbEyo29rBmgZzZr44m9bIyqeZwDaP
-         /+D86Z1GGKSvbzbP+B8kyzvhkAy6pOIeeTlVrZluLGLffgtaraqlqvQugKIm0OmctXTw
-         u5Og==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=V+5uh1dx954yDM+NXOH/phpEgceCwe6D12FGJexmWG4=;
+        b=rq+1ooUtdQh7nyc4U7V+HlkAd5ZPm78HiFD7cJ28wc1o1gqx8KYsFy3Q81KFvAfsux
+         eioO038biZGj+3YwCctI4PovDXdFRchIBJM6cp32mSn2dqro5xM+/MyNBq83f5wDd0Lj
+         xv7pO/8GX4fpjDPPWsCIXGUmS6Rgq4YIesJN3N4bsj7Ov98c1KTTB2DyGvxkdEgehbaP
+         oRVSbq+2SkU2FZV7kH35YDB7mKJownDoXORLX8ynh+zgysRa/eHpQUH0Qf946VHJGRVZ
+         oAQPtasZDfOX2CtmLVxO09iu8eMoBmTpkdQLwq4aMn3etmEPjSxRYCJfN+cTro7gDKJh
+         1rGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=FU8ih7uD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o19-20020a05620a15d300b007594a88de3esi8142579qkm.27.2023.05.31.09.37.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 09:37:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OEiC0aF9;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id b1-20020a056830310100b006ab21cecd38si864424ots.199.2023.05.31.09.47.17
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 May 2023 09:47:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=FU8ih7uD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Ooy-0006ZW-8f; Wed, 31 May 2023 12:37:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1q4Oow-0006ZF-Qk; Wed, 31 May 2023 12:37:10 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1q4Oos-0007Yd-9R; Wed, 31 May 2023 12:37:10 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 34VADKYV013999; Wed, 31 May 2023 16:37:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=19EwZCRqjqWnnqqHwEDlsu+AEj34DaE4EnF6WSEdfPg=;
- b=FU8ih7uDEuHziIVHXDRRrNoZuCmI8Sv3H8BvubSEGlNbQggmfwqYD6S0ucko+0PS3c3c
- BzaCCs7VPhHgV91tb36y4SBXZEyFOyTRS2TU3He0+JryYqyls6bVX3UfYZs/GYQ2Lt2L
- o3Lm2zoBvQ3m18jEsbGa280Uewf7BhNzKUDLyVpDI7wUCMkGZaj6HZ/BOuJsn/9MFt+o
- BALt5rGCaJwLLw5Z6pdDUY8GrBcOznA9NigiToBDFqUbOWU7GZvn8abT2fqzGmw+MGqe
- Sa0huzAOUj5FkYfzffy6Ukk7XdkmhI86pZMnhRcUmNQ6WHcmcoV1iJ6CPiT4hZeVoJSx tw== 
-Received: from nasanppmta01.qualcomm.com (i-global254.qualcomm.com
- [199.106.103.254])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qwnhf2r2t-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 31 May 2023 16:37:01 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
- [10.45.79.139])
- by NASANPPMTA01.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 34VGb0eO000366
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 31 May 2023 16:37:00 GMT
-Received: from [10.111.140.164] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Wed, 31 May
- 2023 09:36:58 -0700
-Message-ID: <b663fb55-dc8e-9fd8-9d82-7e693c3c4ad3@quicinc.com>
-Date: Wed, 31 May 2023 17:36:56 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=OEiC0aF9;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 20FE560DE9;
+	Wed, 31 May 2023 16:47:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85AD7C4339B;
+	Wed, 31 May 2023 16:47:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685551636;
+	bh=hWQvyC99yol6jcmVA70uv8y0HTzTSGZUK01vDfymdiM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=OEiC0aF9crMv8JtI7+tX7XBMSYwSURF936T+2x93tv8WE6JGmMHgNZD08EXp0Fssk
+	 jT/tMJkfqM7m+ufxyLUtiNy66fA9RC/e7Fnou7iiA8W3lp48L1l3hB+qzGbzgB9yfd
+	 W5UyP3RFTdDFiB14aFzGOYS7AjsBSQSV+RQs8HOcoN+prTzF3e7bRMCe2MEoIa4Sx0
+	 1kZoSjag36UniZoN3zuSiDSYDy8qXMe7OlyluskwjEcmgynfNVlxoviunYtj82GvUJ
+	 Vcxy1ToqOidCKOUKwhF0r812Yc7dxZ7nHOI2SEJwoHBsC3XfDvdLIeAT+mDPX5zhbn
+	 4tfijasLjxZ4A==
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2af30a12e84so66138461fa.0;
+        Wed, 31 May 2023 09:47:16 -0700 (PDT)
+X-Gm-Message-State: AC+VfDyo2jX90pTo8XnAUN6+irXRE4PtJdu/6yjrlM0Ixn88kT4oUNoI
+	ec6LAW/4YaK9SrEkWZba8/L9ZuSDKOSQijZ4pMk=
+X-Received: by 2002:a2e:8050:0:b0:2a8:c75d:8167 with SMTP id
+ p16-20020a2e8050000000b002a8c75d8167mr3179610ljg.4.1685551634509; Wed, 31 May
+ 2023 09:47:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.1
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-To: Peter Maydell <peter.maydell@linaro.org>, Graeme Gregory
- <graeme@xora.org.uk>
-CC: <wangyuquan1236@phytium.com.cn>, <chenbaozi@phytium.com.cn>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
- <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
- <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
- <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-In-Reply-To: <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: T-Tqo_L0GCOO1YiiMObq_dlYz79yKUIf
-X-Proofpoint-GUID: T-Tqo_L0GCOO1YiiMObq_dlYz79yKUIf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-05-31_11,2023-05-31_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 malwarescore=0 mlxlogscore=652 mlxscore=0
- priorityscore=1501 bulkscore=0 adultscore=0 spamscore=0 clxscore=1011
- phishscore=0 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2304280000 definitions=main-2305310141
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_llindhol@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JuY96GiIGc6w
+References: <20230531112239.3164777-1-ardb@kernel.org> <722d7683-80b4-bb23-3ca2-77f8de23b801@linaro.org>
+In-Reply-To: <722d7683-80b4-bb23-3ca2-77f8de23b801@linaro.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 31 May 2023 18:47:03 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXEH4zFcOZGz0HvTbpcMUup+cyZEr0JQxH1uXpGcbAc6ow@mail.gmail.com>
+Message-ID: <CAMj1kXEH4zFcOZGz0HvTbpcMUup+cyZEr0JQxH1uXpGcbAc6ow@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] Implement AES on ARM using x86 instructions and vv
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 6RHl6rVZ4Ayu
 
-On 2023-05-31 16:27, Peter Maydell wrote:
-> On Wed, 31 May 2023 at 15:58, Graeme Gregory <graeme@xora.org.uk> wrote:
->>> The current sbsa-ref cannot use EHCI controller which is only
->>> able to do 32-bit DMA, since sbsa-ref doesn't have RAM above 4GB.
->>> Hence, this uses XHCI to provide a usb controller with 64-bit
->>> DMA capablity instead of EHCI.
->>
->> Should this be below 4G?
-> 
-> It would be pretty disruptive to try to rearrange the memory
-> map to put RAM below 4GB at this point, though in theory it's
-> possible I guess. (I have a vague recollection that there was
-> some reason the RAM was all put above 4GB, but can't find
-> anything about that in my email archives. Perhaps Leif remembers?)
+On Wed, 31 May 2023 at 18:33, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 5/31/23 04:22, Ard Biesheuvel wrote:
+> > Use the host native instructions to implement the AES instructions
+> > exposed by the emulated target. The mapping is not 1:1, so it requires a
+> > bit of fiddling to get the right result.
+> >
+> > This is still RFC material - the current approach feels too ad-hoc, but
+> > given the non-1:1 correspondence, doing a proper abstraction is rather
+> > difficult.
+> >
+> > Changes since v1/RFC:
+> > - add second patch to implement x86 AES instructions on ARM hosts - this
+> >    helps illustrate what an abstraction should cover.
+> > - use cpuinfo framework to detect host support for AES instructions.
+> > - implement ARM aesimc using x86 aesimc directly
+> >
+> > Patch #1 produces a 1.5-2x speedup in tests using the Linux kernel's
+> > tcrypt benchmark (mode=500)
+> >
+> > Patch #2 produces a 2-3x speedup. The discrepancy is most likely due to
+> > the fact that ARM uses two instructions to implement a single AES round,
+> > whereas x86 only uses one.
+>
+> Thanks.  I spent some time yesterday looking at this, with an encrypted disk test case and
+> could only measure 0.6% and 0.5% for total overhead of decrypt and encrypt respectively.
+>
 
-I think Graeme was just pointing out a typo in Marcin's email.
+I don't understand what 'overhead' means in this context. Are you
+saying you saw barely any improvement?
 
-Yeah, we're not changing the DRAM base at this stage.
-I think the reason we put no RAM below 4GB was simply that we had 
-several real-world platforms where that was true, and given the intended 
-use-case for the platform, we explicitly wanted to trigger issues those 
-platforms might encounter.
+> > As for the design of an abstraction: I imagine we could introduce a
+> > host/aes.h API that implements some building blocks that the TCG helper
+> > implementation could use.
+>
+> Indeed.  I was considering interfaces like
+>
+> /* Perform SubBytes + ShiftRows on state. */
+> Int128 aesenc_SB_SR(Int128 state);
+>
+> /* Perform MixColumns on state. */
+> Int128 aesenc_MC(Int128 state);
+>
+> /* Perform SubBytes + ShiftRows + MixColumns on state. */
+> Int128 aesenc_SB_SR_MC(Int128 state);
+>
+> /* Perform SubBytes + ShiftRows + MixColumns + AddRoundKey. */
+> Int128 aesenc_SB_SR_MC_AK(Int128 state, Int128 roundkey);
+>
+> and so forth for aesdec as well.  All but aesenc_MC should be implementable on x86 and
+> Power7, and all of them on aarch64.
+>
 
->> Also has EHCI never worked, or has it worked in some modes and so this
->> change should be versioned?
-> 
-> AIUI, EHCI has never worked and can never have worked, because
-> this board's RAM is all above 4G and the QEMU EHCI controller
-> implementation only allows DMA descriptors with 32-bit addresses.
-> 
-> Looking back at the archives, it seems we discussed XHCI vs
-> EHCI when the sbsa-ref board went in, and the conclusion was
-> that XHCI would be better. But there wasn't a sysbus XHCI device
-> at that point, so we ended up committing the sbsa-ref board
-> with EHCI and a plan to switch to XHCI when the sysbus-xhci
-> device was done, which we then forgot about:
-> https://mail.gnu.org/archive/html/qemu-arm/2018-11/msg00638.html
-
-Ah, thanks! That explains why we did the thing that made no sense :)
-
-To skip the migration hazard, my prefernece is we just leave the EHCI 
-device in for now, and add a separate XHCI on PCIe. We can drop the
-EHCI device at some point in the future.
-
-/
-     Leif
+aesenc_MC() can be implemented on x86 the way I did in patch #!, using
+aesdeclast+aesenc
 
 
+> > I suppose it really depends on whether there is a third host
+> > architecture that could make use of this, and how its AES instructions
+> > map onto the primitive AES ops above.
+>
+> There is Power6 (v{,n}cipher{,last}) and RISC-V Zkn (aes64{es,esm,ds,dsm,im})
+>
+> I got hung up yesterday was understanding the different endian requirements of x86 vs Power.
+>
+> ppc64:
+>
+>      asm("lxvd2x 32,0,%1;"
+>          "lxvd2x 33,0,%2;"
+>          "vcipher 0,0,1;"
+>          "stxvd2x 32,0,%0"
+>          : : "r"(o), "r"(i), "r"(k), : "memory", "v0", "v1", "v2");
+>
+> ppc64le:
+>
+>      unsigned char le[16] = {8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7};
+>      asm("lxvd2x 32,0,%1;"
+>          "lxvd2x 33,0,%2;"
+>          "lxvd2x 34,0,%3;"
+>          "vperm 0,0,0,2;"
+>          "vperm 1,1,1,2;"
+>          "vcipher 0,0,1;"
+>          "vperm 0,0,0,2;"
+>          "stxvd2x 32,0,%0"
+>          : : "r"(o), "r"(i), "r"(k), "r"(le) : "memory", "v0", "v1", "v2");
+>
+> There are also differences in their AES_Te* based C routines as well, which made me wonder
+> if we are handling host endianness differences correctly in emulation right now.  I think
+> I should most definitely add some generic-ish tests for this...
+>
+
+The above kind of sums it up, no? Or isn't this working code?

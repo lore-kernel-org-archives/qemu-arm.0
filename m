@@ -1,89 +1,143 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2736841ejb;
-        Wed, 31 May 2023 03:00:21 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5tQP5P1c8z897vkzi4VYbTvxotsSbhb7/rYiw4ezhOaTcy8P5jPaEqtbiHlEEGf4tTcbfU
-X-Received: by 2002:ac8:5bc2:0:b0:3f5:3641:f3ba with SMTP id b2-20020ac85bc2000000b003f53641f3bamr6041589qtb.3.1685527221190;
-        Wed, 31 May 2023 03:00:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685527221; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2791023ejb;
+        Wed, 31 May 2023 04:48:19 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7QFWacB2ANXpqLu4LRnpOyycJhCNL6kCFYuaso4q2QGZACACSz+ifkQ9tmdaym/39c8efj
+X-Received: by 2002:a05:622a:1303:b0:3f3:96c9:b075 with SMTP id v3-20020a05622a130300b003f396c9b075mr5748515qtk.31.1685533698786;
+        Wed, 31 May 2023 04:48:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685533698; cv=none;
         d=google.com; s=arc-20160816;
-        b=boWekwaQ42Lq5UYndTZPuelkB1sZRsdIsDHJy64PO44HzyHu6PQaPv9dBXpHwcl079
-         RMqLVMiW39WsIYKoyHBsMdHUxyR8O17d2jaGcimjoGnzi+R+4RTBFlz5UqiZEz04vFd1
-         qQ7XNOGE1UJdGMq2/LnjgNI3oxaBGuRbbmiC8HS7ZdL2rojT9UWh1Ueynjg5rm7v6iss
-         0Q4rkU2MMwenrVqMZl5ZcV+OTS3BFyJayhE14ihgfeOPCGKUh7NyzgC/GeoBTjFAkYBB
-         KreYauiOrwcxEmnW6k/ZwPkJGmmdNH337yapqsqyFn3d97lvXC/OQzIFl7emAXyksiU4
-         pm+A==
+        b=lBH5zM3RxTpRTkQHLfxTZhEzU8BqblvOiZRaM1TVS53IuOb+TouWf91ZJ/xnXRnMgr
+         5QqjzDP9aR6x9s/rf/Rn0M1Q3+nHswatXTPWoYuwuPGYpCQ2EgBNT4YlEsIJbesP53LL
+         /Z/9Ml8f73Qj1BtcNbbd1JRhiI9mtnzLENrc6XV89FaKXI0KaZNF5rm1pxQxIz6MAEeY
+         wG2Hey2W68qiKKF0veB81YVlE0KfKrR8jJxZfBcEdTvJfZMeoH7xeOnnAHbJdWfdAUI+
+         7WkIvW6Gv4KnOXTIvMMo2/mYXz2YtxfM3wz3ageteW0aQVBFMGaPgkaSCmq9XDxpVO2u
+         2fMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=wLT7Cu8PPpskZ6YQhCqTSQxTAxG2G9IIFZTlbuE5xrI=;
-        b=BztNVttHc9BYDhPZhUq2VOiRBB1BWhr/ABecmMfvtMgneOPmZvTpxa3tXnwpKUGUN7
-         GkA7/uY+JdoxnOFEK8IKPy0jgDYtMQqcAkQ/p9MKYBZ04ur4TOURRdrEO6KRz6wSkcmV
-         8qHvEpO+BgkaAjWEa70l4sGkaLcCydRG6cVUHja+r2rCV30pRjYuRtahaNadUUfo/rMU
-         8+TAVRuWXT/i87BSp9+njtC22kIW0OD3retJgIa/0OGUdGvhyg9mZ8C0d4DR0k4109Vo
-         8eVFOktkEBkUcki/7myeEqbPOGde8CNfDsJPBLgsMDEf1pUtjHd8h94GbzJy4WKFT0rV
-         1Oug==
+         :mime-version:message-id:date:subject:cc:to:from:feedback-id
+         :dkim-signature:dkim-signature;
+        bh=a1k2OEmy5YzcGYZ7zxNK0XmeUsHldEWsiG8FKet/Kx0=;
+        b=XAn3D4Ur1zprTpc0vK1208awNZEe0FGV2xaTfmMeWwwAZNZfzg7JH7nQv2P2w3UqrJ
+         sLJysnT+vUjbRAaCeU8zZGeOQmBUg1JetqQGg0wIaaXKB3ZvtkFbyyrs+FjM9CdJLVGb
+         8Q/C9eS8gYJMZ+mF+LosoSsDrgo7+Gm7taOVW4+OVBnjA9wh7eWefHxY4PCGffgHe02W
+         CLSKyLpZ+lfGs/9kwKSkHhEGGxeaJfM2MX+EaNL5Q/q1j/y3T2Dj1ouL1ttRjJku+7It
+         YCgs6BJUzTarA9VML7L5Ai2SM2UpDtYJ7XtiFprQsujA5jOeWor1R0K0lid9WrjmKXDA
+         JApA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=XNqSbRdb;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=BRIdZs+O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a05622a13d100b003f6ac42f746si8078255qtk.405.2023.05.31.03.00.21
+        by mx.google.com with ESMTPS id u18-20020a05622a14d200b003f38d64e109si7762566qtx.722.2023.05.31.04.48.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 03:00:21 -0700 (PDT)
+        Wed, 31 May 2023 04:48:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@irrelevant.dk header.s=fm3 header.b=XNqSbRdb;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=BRIdZs+O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Icj-00027v-DL; Wed, 31 May 2023 06:00:09 -0400
+	id 1q4KJ9-0001On-SJ; Wed, 31 May 2023 07:48:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q4Ich-00027h-UD; Wed, 31 May 2023 06:00:07 -0400
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q4Icf-0005CF-QW; Wed, 31 May 2023 06:00:07 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAX+pRAGndkGreaAQ--.30303S2;
- Wed, 31 May 2023 17:58:24 +0800 (CST)
-Received: from phytium.com.cn (unknown [123.150.8.50])
- by mail (Coremail) with SMTP id AQAAfwB3xi+YGndkrncAAA--.2360S4;
- Wed, 31 May 2023 18:00:01 +0800 (CST)
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: rad@semihalf.com,
-	peter.maydell@linaro.org
-Cc: quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
- chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [PATCH v1 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-Date: Wed, 31 May 2023 17:58:45 +0800
-Message-Id: <20230531095845.365019-2-wangyuquan1236@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230531095845.365019-1-wangyuquan1236@phytium.com.cn>
-References: <20230531095845.365019-1-wangyuquan1236@phytium.com.cn>
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1q4KJ3-0001OC-H9; Wed, 31 May 2023 07:47:57 -0400
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
+ id 1q4KJ0-0002xx-RN; Wed, 31 May 2023 07:47:57 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 86FF35C0195;
+ Wed, 31 May 2023 07:47:49 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Wed, 31 May 2023 07:47:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:message-id:mime-version
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1685533669; x=
+ 1685620069; bh=a1k2OEmy5YzcGYZ7zxNK0XmeUsHldEWsiG8FKet/Kx0=; b=X
+ NqSbRdbM8GGItOMKjllLFbsNGVchuBn+jbgLLFVa09x+2NG657ftAgOFupAw+YOa
+ 7V9X+ZyDN/59F8G6oWVSDm+XvexkcPVW+MLBNhOXXtxIgM1WiXb4FkWibRv5aTsR
+ iXVUzzofhoRdGLgTDwxn3tij33Z4gTSMlLfe+IYzIqYR10GvXlmP8PQbxELOW4k+
+ xu9Uv289J+6sz69869EFf8n4G3ZUrW4je8rvn/5NU5KGa1/f74jll5UymnSi+aXH
+ R/OJ8TXrrt8Qjv0gcD6DBc/jM/20cTjOMdUG5DtLmvMTPHLqJOcQ41vK2teQ3krs
+ Qc3ierd1Mf5M6wfQFJfmg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:message-id:mime-version:reply-to:sender
+ :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm1; t=1685533669; x=1685620069; bh=a
+ 1k2OEmy5YzcGYZ7zxNK0XmeUsHldEWsiG8FKet/Kx0=; b=BRIdZs+O1t7XDHWCL
+ Eyhry9Bb784Da6mXXd5XLMYse2a5lIynjyBQi56p9ZjP5acq/gNGA165i2NGCVEg
+ NN//dG21KCrR/pbJoqI0rAsZz9uflq45JQSgsgkKifj8BmbeigNVfePEJUUGlh6C
+ hv81ldJ3PeUwJaw6tI+/zSe/CbnAPd4L+2PjHW0+AjSnV4TBAMK1RW7ArKvcuN1N
+ +GCe7zpbaR0qHALaEnII/7KXwgG/k4jfeBjijNEIPKpTVUATA5R4ziuLpxlviBoM
+ Y3MNBQcnKgA7w0VKdXJRta9P/p7c+EImXhienQ1DmPXvWrVG0bNcfdE9bOtAjyQf
+ S8bRw==
+X-ME-Sender: <xms:4zN3ZLJrQjtFfJ24PdRXF3Qqz7DQAKFgJbi5zFC1byZI6x2ZV7CTTQ>
+ <xme:4zN3ZPLiF9RekeXXTgr27UnEzBo2A53yvIJLoxMedceg9HHSxCWLgbF-8sRI6bE0m
+ TWLDBo9H0KDnBlRhiI>
+X-ME-Received: <xmr:4zN3ZDtlic5IONgErsOhepFsj-r9pojBrrVKCZ6BNtYpBYV0qqJ1eTnZqrLpS05FC-t5wgAgOtZRDEiFaH28ZAMWd2eQtvcGUwvwVRo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvhedrfeekledggeefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvvefufffkofgtggfgsehtkeertdertdejnecuhfhrohhmpefmlhgruhhs
+ ucflvghnshgvnhcuoehithhssehirhhrvghlvghvrghnthdrughkqeenucggtffrrghtth
+ gvrhhnpeefgfehudefjedvgffhheelvddvvdehfffgtedvffeugeeigefggffggefhieej
+ leenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepihhtshesihhrrhgvlhgvvhgrnhhtrdgukh
+X-ME-Proxy: <xmx:4zN3ZEaIuiK16peJSOs3AcyqeLY1MBLiNtszkjMu6NMNGOtXvUNoSw>
+ <xmx:4zN3ZCaupvAWtKD-W-nRKRM4XMikMTcAP7ByIaWXLAPdeoiQiUOIug>
+ <xmx:4zN3ZIDmXDdLWKRRZ0yuk5wdW_CCG6vND8R2u3oiIPZUOi3HpP3NFg>
+ <xmx:5TN3ZHLhbANHMV5dalcSr78pur1xwi6w09wliP0p9QeHNoZw42pgvA>
+Feedback-ID: idc91472f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 31 May 2023 07:47:45 -0400 (EDT)
+From: Klaus Jensen <its@irrelevant.dk>
+To: qemu-devel@nongnu.org
+Cc: Corey Minyard <cminyard@mvista.com>, Keith Busch <kbusch@kernel.org>,
+ Jason Wang <jasowang@redhat.com>, Lior Weintraub <liorw@pliops.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
+ qemu-arm@nongnu.org, Matt Johnston <matt@codeconstruct.com.au>,
+ Peter Delevoryas <peter@pjd.dev>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-block@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Klaus Jensen <its@irrelevant.dk>,
+ gost.dev@samsung.com
+Subject: [PATCH v3 0/3] hw/{i2c, nvme}: mctp endpoint,
+ nvme management interface model
+Date: Wed, 31 May 2023 13:47:41 +0200
+Message-Id: <20230531114744.9946-1-its@irrelevant.dk>
+X-Mailer: git-send-email 2.40.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3237; i=k.jensen@samsung.com;
+ h=from:subject; bh=4j/eaYhClLaSlHdkVQI4N2TzX2t5KsyuOnHaHFUytnY=;
+ b=owJ4nAFtAZL+kA0DAAoBTeGvMW1PDekByyZiAGR3M919i45+JRsZuRLELXCLjRWydkvQqx8fZ
+ aAZ7/tPASf6EokBMwQAAQoAHRYhBFIoM6p14tzmokdmwE3hrzFtTw3pBQJkdzPdAAoJEE3hrzFt
+ Tw3p//gIALovzf+ZLUwAMHTL5RqQhWvPjsAgsdQcSGU6SirKrvE5vebDIUUwMjrBMUIkxI7JRT+
+ ve/6VQmkxtI6KCaH6m253Wwl83OrRKtpAYbwtRZLT7hAwr8vN6qakHnUa8lR1bbaP04PKn4h9Ny
+ go2eWTIZ/UptmpUfUKiPojJefbpuvK6qA+R41p0P+U0FUKDSIrjTgmaf/Cex++4tvmNXUKlYk36
+ nspTh0WWzsaJ085J6zrnYmnuFO8SoeokMvoS7wNBpN6u/712Gdp2fGpLnqTvo3RPI+or6ll3oD1
+ C9ziZHTZH9l28SUOBRQSkz2uEL7uOqnEAtQmXeqm4HbEEq7tsyUAM6vI
+X-Developer-Key: i=k.jensen@samsung.com; a=openpgp;
+ fpr=DDCA4D9C9EF931CC3468427263D56FC5E55DA838
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwB3xi+YGndkrncAAA--.2360S4
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWR2SqoDewAAsa
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7uryfArWDAw1kAFyrtFykAFb_yoW8uryUpF
- 4UWr4Yka18tF4rJan3uw1UWF45C393Aa17Z3y7KFs7AF1DAF42grWDGa1jk3sxZFW8XrWj
- 9Fnxur109w1Iy3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=66.111.4.29; envelope-from=its@irrelevant.dk;
+ helo=out5-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,76 +152,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Eu7DobKSEA1S
+X-TUID: c/z2Z5J0nkzi
 
-The current sbsa-ref cannot use EHCI controller which is only
-able to do 32-bit DMA, since sbsa-ref doesn't have RAM below 4GB.
-Hence, this uses XHCI to provide a usb controller with 64-bit
-DMA capablity instead of EHCI.
+From: Klaus Jensen <k.jensen@samsung.com>
 
-Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Change-Id: I1376f8bbc0e25dcd9d8a22b6e061cb56b3486394
----
- hw/arm/sbsa-ref.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+This adds a generic MCTP endpoint model that other devices may derive
+from. I'm not 100% happy with the design of the class methods, but it's
+a start.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index de21200ff9..4c9a942a63 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -82,7 +82,7 @@ enum {
-     SBSA_SECURE_UART_MM,
-     SBSA_SECURE_MEM,
-     SBSA_AHCI,
--    SBSA_EHCI,
-+    SBSA_XHCI,
- };
- 
- struct SBSAMachineState {
-@@ -119,7 +119,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
-     /* Space here reserved for more SMMUs */
-     [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
--    [SBSA_EHCI] =               { 0x60110000, 0x00010000 },
-+    [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-     /* Space here reserved for other devices */
-     [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
-     /* 32-bit address PCIE MMIO space */
-@@ -139,7 +139,7 @@ static const int sbsa_ref_irqmap[] = {
-     [SBSA_SECURE_UART] = 8,
-     [SBSA_SECURE_UART_MM] = 9,
-     [SBSA_AHCI] = 10,
--    [SBSA_EHCI] = 11,
-+    [SBSA_XHCI] = 11,
-     [SBSA_SMMU] = 12, /* ... to 15 */
-     [SBSA_GWDT_WS0] = 16,
- };
-@@ -575,12 +575,12 @@ static void create_ahci(const SBSAMachineState *sms)
-     }
- }
- 
--static void create_ehci(const SBSAMachineState *sms)
-+static void create_xhci(const SBSAMachineState *sms)
- {
--    hwaddr base = sbsa_ref_memmap[SBSA_EHCI].base;
--    int irq = sbsa_ref_irqmap[SBSA_EHCI];
-+    hwaddr base = sbsa_ref_memmap[SBSA_XHCI].base;
-+    int irq = sbsa_ref_irqmap[SBSA_XHCI];
- 
--    sysbus_create_simple("platform-ehci-usb", base,
-+    sysbus_create_simple("sysbus-xhci", base,
-                          qdev_get_gpio_in(sms->gic, irq));
- }
- 
-@@ -803,7 +803,7 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_ahci(sms);
- 
--    create_ehci(sms);
-+    create_xhci(sms);
- 
-     create_pcie(sms);
- 
+Also included is a very basic implementation of an NVMe-MI device,
+supporting only a small subset of the required commands. Lior (CC'ed) has some
+patches coming up that adds futher support.
+
+Since this all relies on i2c target mode, this can currently only be
+used with an SoC that includes the Aspeed I2C controller.
+
+The easiest way to get up and running with this, is to grab my buildroot
+overlay[1]. It includes modified a modified dts as well as a couple of
+required packages.
+
+QEMU can then be launched along these lines:
+
+  qemu-system-arm \
+    -nographic \
+    -M ast2600-evb \
+    -kernel output/images/zImage \
+    -initrd output/images/rootfs.cpio \
+    -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
+    -nic user,hostfwd=tcp::2222-:22 \
+    -device nmi-i2c,address=0x3a \
+    -serial mon:stdio
+
+From within the booted system,
+
+  mctp addr add 8 dev mctpi2c15
+  mctp link set mctpi2c15 up
+  mctp route add 9 via mctpi2c15
+  mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
+  mi-mctp 1 9 info
+
+Comments are very welcome!
+
+  [1]: https://github.com/birkelund/buildroots/tree/main/mctp-i2c
+
+Changes since v2
+~~~~~~~~~~~~~~~~
+
+  - Applied a bunch of feedback from Jonathan:
+    + Moved a lot of internally used structs out of the include headers
+      and into the source files.
+    + Added spec references in various places
+    + Split the patch for i2c_smbus_pec() into its own
+    + Fix a compile error (and bug) in nmi-i2c.c.
+
+  - From Corey:
+    + Reworked the buffer handling. The deriving devices now returns a
+      pointer to their own buffer that the mctp core copies into.
+    + Added a couple of extra debugging trace events.
+
+Changes since v1
+~~~~~~~~~~~~~~~~
+
+  - Fix SPDX-License tag for hw/nvme/nmi-i2c.c (Philippe)
+  - Add some asserts to verify buffer indices (by request from Corey).
+  - Drop short packets that could result in underflow (Corey)
+  - Move i2c_smbus_pec() to smbus common code (Corey)
+  - A couple of logic fixes (patch from Jeremy squashed in)
+  - Added a patch to handle messages with dest eid 0 (Matt)
+    Maybe squash this as well.
+
+Klaus Jensen (3):
+  hw/i2c: add smbus pec utility function
+  hw/i2c: add mctp core
+  hw/nvme: add nvme management interface model
+
+ MAINTAINERS                   |   7 +
+ hw/arm/Kconfig                |   1 +
+ hw/i2c/Kconfig                |   4 +
+ hw/i2c/mctp.c                 | 398 ++++++++++++++++++++++++++++++++++
+ hw/i2c/meson.build            |   1 +
+ hw/i2c/smbus_master.c         |  28 +++
+ hw/i2c/trace-events           |  13 ++
+ hw/nvme/meson.build           |   1 +
+ hw/nvme/nmi-i2c.c             | 367 +++++++++++++++++++++++++++++++
+ hw/nvme/trace-events          |   6 +
+ include/hw/i2c/mctp.h         | 137 ++++++++++++
+ include/hw/i2c/smbus_master.h |   2 +
+ include/net/mctp.h            |  28 +++
+ 13 files changed, 993 insertions(+)
+ create mode 100644 hw/i2c/mctp.c
+ create mode 100644 hw/nvme/nmi-i2c.c
+ create mode 100644 include/hw/i2c/mctp.h
+ create mode 100644 include/net/mctp.h
+
 -- 
-2.34.1
+2.40.0
 

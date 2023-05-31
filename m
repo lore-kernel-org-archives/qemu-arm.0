@@ -1,82 +1,77 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2665309ejb;
-        Wed, 31 May 2023 00:04:04 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6HARIL+TgcQn3U0nChaLV0AdFat+zPAsqd8s4G8ay+ZATOXsD3ZJwv35bwSkwSrB2e4vhu
-X-Received: by 2002:a05:620a:1b83:b0:75b:23a0:e7d9 with SMTP id dv3-20020a05620a1b8300b0075b23a0e7d9mr5363600qkb.58.1685516644062;
-        Wed, 31 May 2023 00:04:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685516644; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2665544ejb;
+        Wed, 31 May 2023 00:04:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7fEAvDl7vAv0268qxISb+aeZoodN/u5jhgF8sX1oFZ+xi59GwyMJwRPSe7/LpI8i3oZS8E
+X-Received: by 2002:a05:6214:c24:b0:625:aa1a:937f with SMTP id a4-20020a0562140c2400b00625aa1a937fmr6398371qvd.59.1685516673797;
+        Wed, 31 May 2023 00:04:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685516673; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXIrMyhLyz2u64b7rdSxgfTOY5emH/8yeqfr1Tuvk+WUJdJ0m4T24zLLuABd283rpb
-         n2RoaHNULB/0zvtUJSL5rvNUqaibWR678w8k2G/zdBkz2e4LSPdKzLyXKF8ghi3gSUQH
-         Fifm7plRFZGjF7C7iWHkBCLEwET0CMhu89BpTCv1Pjg8nCzuCXMGi8/kcjkDASczvTKg
-         rdjg21w41GXWfAhRNJJOI1Di5Pb93VTd0RAcDVdfE306c2XI0iQQZ7bktTiIRYRkgSgM
-         3Yor+4Jjq7SZ7qryrtTfK2mZeGmcZ3JFwWuHOHZ4XF+BJxtyiGMVTkxz/mqLYrjUvRit
-         bDGg==
+        b=EHWs66j6rKDI4TF27ZsK8f86DG+704cM8JsBho6zO2uTzGslUKmslD3nfB//n7mUlU
+         pJEtGG1tipb27awO9WGAjCp+0wICc+iNYydhP6YROoUZnc5i43X40dr8uWcNtV//0pdA
+         A8rfVw3fo62Pzi3Bp8oorCV52pcfDaITLS+cpVtUGgGXY7OGbyrr2RLi3VPq7dvzLNbH
+         b4Vf7+A0EibcMdWyFoVJYBQ3wxrVwugwYryElN9O+8TUOEXnPnJE+8c9yLYHIIDrpR2s
+         Fyoy38Lziz97FLfkycyw/h6oABFuF8I+zGLgHB5+l9FG6KTc6zD+nDo6OXdhyqVx3eLB
+         GKfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=xKBM+wkhiQBjHryIjJ2CmLeA2g5e9/IIpfrn2Kiks8c=;
-        b=PGOzgXoNBHYaq694S2gn2XKuGa84ZmBKd2zOZ3yAt3sA4sgxyKHY3ETr0qSxKCeArB
-         cfhCAIAMwQhRTq3d0T7HH6+uEPE1O6rhWn+2N2pb49CahcPO0yYGz9Nq7vXaW8zRy3uw
-         b17iXBISxliHWG2B5ZQZPiyOS/nOfY5vhBngCkruaag5ZurnCJfb0RCO7CcPjqrq2xHI
-         BPeHx4OQRJBoxzjUev6yAhIlarHk2Uc7f4DkLPZ7FdhsLQDlbYiUQ+lcyRZiwBX1ELPc
-         k4oZmINgCJLs4oKvWVTrx9GDuMn9Zrq35/YSin7fDymd+nLENVPnL/nzlRtBOzCojKW1
-         UKFw==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=VQHSCxznbyqMyX+e4O8FxYFcTnt+EnynUrHBpKjzt7g=;
+        b=LDKiUlclDYc4pbrewJC8eUTPZvuXblqWNvuQxn5STuMUqR5D2m5JhlBIRuEElvr7+3
+         GwbqB516Uw3/PH+NuJ0mQfxtQ6L8VHp8bXb8xlX2zqLuqrYCf2np1e2rZ3l7OyngRLjO
+         Sj6H0ptvXHqYWPMDl/HtPPGbi2uVL0ZYwRm0M9k6SZ5Dkbo/oScRo8LGqrmiMewmYola
+         g1jFXt1yn65H3HmySszp+hA5UFdZC9X2XqFU5QLOglPdaLPUfoPjRmrPH+cSylXuBleX
+         XnZv1cImLmPXI9QbCJrJOqsKL+Pugr9vC5L4e87yO52ZF+bsjD0hDWeAu5N6jqGZmhC/
+         54pw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u27-20020a05620a121b00b007592174cb03si7405189qkj.153.2023.05.31.00.04.03
+        by mx.google.com with ESMTPS id bn48-20020a05620a2af000b00747a2434dbesi7544438qkb.778.2023.05.31.00.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 00:04:03 -0700 (PDT)
+        Wed, 31 May 2023 00:04:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4Fs5-000806-4Z; Wed, 31 May 2023 03:03:50 -0400
+	id 1q4Fsg-00087v-Hr; Wed, 31 May 2023 03:04:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q4Fs3-0007zZ-On; Wed, 31 May 2023 03:03:47 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ id 1q4Fs3-0007zY-Iz; Wed, 31 May 2023 03:03:47 -0400
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q4Fs1-0000Qb-CL; Wed, 31 May 2023 03:03:47 -0400
+ id 1q4Fs1-0000Pz-6b; Wed, 31 May 2023 03:03:47 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDHQthH8nZkr7ogAQ--.42979S2;
- Wed, 31 May 2023 15:07:51 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHztM_8nZkJ7ogAQ--.43761S2;
+ Wed, 31 May 2023 15:07:43 +0800 (CST)
 Received: from phytium.com.cn (unknown [123.150.8.50])
- by mail (Coremail) with SMTP id AQAAfwBXpi9F8XZkQlEAAA--.1437S4;
- Wed, 31 May 2023 15:03:41 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwBXpi9F8XZkQlEAAA--.1437S3;
+ Wed, 31 May 2023 15:03:33 +0800 (CST)
 From: wangyuquan1236@phytium.com.cn
 To: peter.maydell@linaro.org,
 	quic_llindhol@quicinc.com
 Cc: chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-Date: Wed, 31 May 2023 15:02:29 +0800
-Message-Id: <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
+Subject: [PATCH 0/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Date: Wed, 31 May 2023 15:02:28 +0800
+Message-Id: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
-References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwBXpi9F8XZkQlEAAA--.1437S4
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWR2SqoCMwAAsT
+X-CM-TRANSID: AQAAfwBXpi9F8XZkQlEAAA--.1437S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAPAWR0+SgIzAAQsa
 Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
  1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7uryfArWDAw1kAFyrtFykAFb_yoW8uFy3pF
- 4UWr4Yka18tF4rJan3uw1UWF45C393AayUZ3y3KFs7AF1DAr42grWDG3Wjk3sxXr4rZrWj
- 9Fn8ur109r1Iy3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=209.97.181.73;
  envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -96,78 +91,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7LtFZE35tdzI
+X-TUID: hOgPpNtcewk6
 
 From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
 
-The current sbsa-ref cannot use EHCI controller which is only
-able to do 32-bit DMA, since sbsa-ref doesn't have RAM above 4GB.
-Hence, this uses XHCI to provide a usb controller with 64-bit
-DMA capablity instead of EHCI.
+Please review the change.
+ - Replace EHCI with XHCI on sbsa-ref board.
 
-Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Change-Id: I1376f8bbc0e25dcd9d8a22b6e061cb56b3486394
----
+Yuquan Wang (1):
+  hw/arm/sbsa-ref: use XHCI to replace EHCI
+
  hw/arm/sbsa-ref.c | 16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 792371fdce..f9c0647353 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -81,7 +81,7 @@ enum {
-     SBSA_SECURE_UART_MM,
-     SBSA_SECURE_MEM,
-     SBSA_AHCI,
--    SBSA_EHCI,
-+    SBSA_XHCI,
- };
- 
- struct SBSAMachineState {
-@@ -118,7 +118,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_SMMU] =               { 0x60050000, 0x00020000 },
-     /* Space here reserved for more SMMUs */
-     [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
--    [SBSA_EHCI] =               { 0x60110000, 0x00010000 },
-+    [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-     /* Space here reserved for other devices */
-     [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
-     /* 32-bit address PCIE MMIO space */
-@@ -138,7 +138,7 @@ static const int sbsa_ref_irqmap[] = {
-     [SBSA_SECURE_UART] = 8,
-     [SBSA_SECURE_UART_MM] = 9,
-     [SBSA_AHCI] = 10,
--    [SBSA_EHCI] = 11,
-+    [SBSA_XHCI] = 11,
-     [SBSA_SMMU] = 12, /* ... to 15 */
-     [SBSA_GWDT_WS0] = 16,
- };
-@@ -558,12 +558,12 @@ static void create_ahci(const SBSAMachineState *sms)
-     }
- }
- 
--static void create_ehci(const SBSAMachineState *sms)
-+static void create_xhci(const SBSAMachineState *sms)
- {
--    hwaddr base = sbsa_ref_memmap[SBSA_EHCI].base;
--    int irq = sbsa_ref_irqmap[SBSA_EHCI];
-+    hwaddr base = sbsa_ref_memmap[SBSA_XHCI].base;
-+    int irq = sbsa_ref_irqmap[SBSA_XHCI];
- 
--    sysbus_create_simple("platform-ehci-usb", base,
-+    sysbus_create_simple("sysbus-xhci", base,
-                          qdev_get_gpio_in(sms->gic, irq));
- }
- 
-@@ -785,7 +785,7 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_ahci(sms);
- 
--    create_ehci(sms);
-+    create_xhci(sms);
- 
-     create_pcie(sms);
- 
 -- 
 2.34.1
 

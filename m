@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp29440ejb;
-        Wed, 31 May 2023 15:35:02 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Tg8agyTjPCQLmdNg7Nsh1OF3clAJv0i8Nkw8G+EKSskq9GUuM86t/14y6RuCAVXWTPp2G
-X-Received: by 2002:a05:6214:2305:b0:5dd:5c8d:866f with SMTP id gc5-20020a056214230500b005dd5c8d866fmr16826208qvb.23.1685572502480;
-        Wed, 31 May 2023 15:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685572502; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp29492ejb;
+        Wed, 31 May 2023 15:35:09 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6vebVN4qaDYtQl20OAbs7f0Y7l+6vfJKjLK+rSIw+BBlGZDUK1HF0LjCJnzljblJ/WrPhE
+X-Received: by 2002:a05:6214:d4d:b0:621:451b:6e1c with SMTP id 13-20020a0562140d4d00b00621451b6e1cmr8726934qvr.6.1685572508819;
+        Wed, 31 May 2023 15:35:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685572508; cv=none;
         d=google.com; s=arc-20160816;
-        b=nEbjaOYldqbJP2bBg2guT4wq/qkh7ALkI+ZwXKEOS3x8MVGvfPKRs4wqFJV7/0EsFu
-         cLfxxLa9TsrHEkKexuOVMR6zAiSI360anLqdZarTuwNZS9RZxqcA/bkZFZmpz96nAiLB
-         RjUbv2bGAvjRRHEYBWYsHoMjPRdQEJQ4940JPlW6ZcaIa71yyQlibDXEzFTJEvDP8Ozf
-         NWyRDTgBEeg9auPOVOMDUNlAT9sF+Lh1JlZvBHgf0n3Cb879CDUZrMQxJeIb6wuWc1HU
-         E72nouNsfk/9TJVf/RCQFjje3VzCSjFsD0LLzqlMr18grvASSke/5FOL967ghAdX7d4R
-         VrPw==
+        b=Pxo1EssaUgBXQMz7n8s6TLvCkKvJSV+0qaPmurbYBBW/e8jfrIM80G4KrbCkRSrnWx
+         I/kfPydEqZi3Wey6AyU3dxOwrlrxuAc4MTk9Xgn6f+irBQN5+uVNqkpFaF9Sub7b2I7D
+         OeOuaSLBrvjJ7gvJHeUcOvnlecPBYxkyAcYFOoON4b8N4jr8x8W+PKfCGK8iZsqBiXkL
+         IGOlZ1FH/MOXlnqgy0VNjO+7g9mTbWFEJs03cjm+mQzIRIm4GGwHbNYbI9HEjn0uLuD9
+         qSK5aC233UNW8Sa/NEU3KV6ODuR8x7IhmZHz0r7Heybp8SA6AlI9Ax8menTZQiLi8kAF
+         g0Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LTOXUlsQg1I2uqXYz0kosQk6IYoXK5LW0X8kOF6ZClA=;
-        b=LRVmivH9qppIZQ0gDtW0TdBiQN9MK0TepSD5hEmL2WdY/DL6S/kjlHfCuRyuYMDihh
-         e4kUEvInuhplW0+M5Tu4ty2BCVpW8sPOF/qXv7SaTFy24csEbEzWG/aiZoW8UAH37dxP
-         rS150QwBTzEnI94bL5qvQnYmL5zVmRd/HKA0/plawMUX48Vk62aWPSMLW0xGuPAasrPq
-         0WqXANugIrp3qypSqMKg3Oiu+ynax+7UJK8B/h4P9uVT7ZXTQiMxiftn/j8UdKbaxABF
-         ZMAmS6OO83OJA+9Zef4kWCjEwUtZpADpbPepjmY+pjHNJ2RrUda92lJmzxxOCxw6vIlL
-         ZQUg==
+        bh=cytFQrzGMvOi8slgASF27XRO51GqurNYCbfldEiqvjA=;
+        b=sGsZ1ESL8hgUogUTWfrJRJDoB51AbIJpQ+LhBxYQJWKqljjua8xtucpp/l6UDrrjv1
+         mGShnyWGwLaltL3HI5iDGCmt9GpjkEIaVf3ZNhbdqatkvR07Fp1fSC74EuvJtkR2u/Jk
+         5QvGpEed7APFEb87T3fzAVo+U1f3oWPZMCbwLVs8H3YVu4DcmC2OzBHPnZruYm98CTA8
+         PwSxvJNC6liYtwaN4EP/2wOOB1WJ8ys+IRTvlCxhr6+0/0ycFSnBW4kYo3SHIVDafPmf
+         csCJDEwpdDQaylbCBNehBYzulYqJvIAywG0kTrRv5x5j2SV4wns6UXiRB4zXpfLxqM05
+         KAzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iywQId/z";
+       dkim=pass header.i=@linaro.org header.s=google header.b="K4/ToxIZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8-20020ad45c68000000b0062616ba5397si6554127qvh.99.2023.05.31.15.35.02
+        by mx.google.com with ESMTPS id f8-20020a0562141d2800b0062529d9a496si9111454qvd.608.2023.05.31.15.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 15:35:02 -0700 (PDT)
+        Wed, 31 May 2023 15:35:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="iywQId/z";
+       dkim=pass header.i=@linaro.org header.s=google header.b="K4/ToxIZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4UOk-0004h3-DX; Wed, 31 May 2023 18:34:30 -0400
+	id 1q4UOG-0002aR-Gk; Wed, 31 May 2023 18:34:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UOe-0004bw-NX
- for qemu-arm@nongnu.org; Wed, 31 May 2023 18:34:24 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UOF-0002Tg-5Y
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 18:33:59 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UOc-00058d-Ox
- for qemu-arm@nongnu.org; Wed, 31 May 2023 18:34:24 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-30c2bd52f82so152770f8f.3
- for <qemu-arm@nongnu.org>; Wed, 31 May 2023 15:34:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4UOB-00052Z-W8
+ for qemu-arm@nongnu.org; Wed, 31 May 2023 18:33:58 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-3f6da07feb2so1946985e9.0
+ for <qemu-arm@nongnu.org>; Wed, 31 May 2023 15:33:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685572461; x=1688164461;
+ d=linaro.org; s=google; t=1685572434; x=1688164434;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LTOXUlsQg1I2uqXYz0kosQk6IYoXK5LW0X8kOF6ZClA=;
- b=iywQId/zgdVpx4dU8E0e4lromH4P+JTUbk0BQ59h6naJGrfSNCnL2bOf43uZQv5KUb
- sfiLpBWYhKvuhsbUiiwklvGZN1Y7MoAmDbzOKLN61mco/lzCQElfRrcgnHQerjVuUQI8
- UEbpWYu1F4jgzR+IPwLIpnB5M6uVSEMQpoPe76Zw7K6Msm7ktZ2LIErGo9ryptq00px5
- njvc8d0J7tkUneUZYKnDeT7l2UVxAbPxag3O32+KElUAR/9Ijm6fkiSaaLqW2Hk9rck5
- aHK/TCjYIfzw6C/L7PI3rwe+Pvm6qYsFVE6e291JK5dsIJ2QFCRAvoULTlzD3mHDuytq
- xFCw==
+ bh=cytFQrzGMvOi8slgASF27XRO51GqurNYCbfldEiqvjA=;
+ b=K4/ToxIZHVVXnyynSouEA6kbrFdLazOsGjRujeP4hK5R+TjDVxqilU0DGuVrGcK326
+ ij4uX1sqzjEGMCjVtwF8m7nqnz3+1pwmVo+0pcl8AUF9Dy/HeFpBpTgzlIomBWzdSfWk
+ Yiwea0jFmuof6ZlMomw7hWPjvVYJQGg0bjEY8zGwGT5ax9flktMVbUrfCPth4FbSqm9G
+ nlvFGrYKjYFoi8g+ifK0duMN7NTLHe5BdqldV2lg5QSOU2TxuV/5mFmBJia0EO5B/Yj4
+ AbVGIAI1kS+7a4MIkN9QNaloGQ+Ss2usHNRQug5bB/pBq82XZxpbBCWr9pHVf7vsImda
+ oP8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685572461; x=1688164461;
+ d=1e100.net; s=20221208; t=1685572434; x=1688164434;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LTOXUlsQg1I2uqXYz0kosQk6IYoXK5LW0X8kOF6ZClA=;
- b=ljAHFsmybvB1tgf5MfjA/ajP5e5fNCWrVSZcObsSJ04Q8QbCfc87z2iQxK5lFjYB/+
- Fs8NuMc3gwagVy0HPTxl3uI5XbYCeylfObpFQ2pkNV34fF2CMKrcdCPxQOxQ1qHqU4QL
- 5N78KkMAFFnOdCKGmGHe97k0sYg+WPKuuT/gnuhtN/W2DjrVOctaoM7jaNHlajaGurHt
- DitGvc6jVckrkeEdEr2pKXKTdakmFng5p9GTaoyo76bu1npjhTy7bzHxL7U/9rGRHAoq
- PBAXFHxYnyQXXdC8xYxaqVwTOISKdcJakZAQUrvhD/zsWOlF5q6wkhbmazmVa0+TKmql
- GiPg==
-X-Gm-Message-State: AC+VfDwp4+WR414d47Ll537jjrpaJyISEiNmuBM2toYIlHwOJTAlG+bj
- lw8AYWx7COgxJau8YqA2RT/NUA==
-X-Received: by 2002:adf:fd8a:0:b0:306:492c:cdd8 with SMTP id
- d10-20020adffd8a000000b00306492ccdd8mr382231wrr.15.1685572461397; 
- Wed, 31 May 2023 15:34:21 -0700 (PDT)
+ bh=cytFQrzGMvOi8slgASF27XRO51GqurNYCbfldEiqvjA=;
+ b=BB77DlidGknLt0CybAmMUF9I4Q53No/Zds+A2MECNoBcgsgB3n2kfvMlqdd4VoKX0S
+ s8He5V/GI+6zZU1WCLU4HgtgyxnwpSKZEjzSnPsx2PFyNbsVmAm7fxej5yof0TIgEhpS
+ 9apEQiIx/Y95BiLjUaivmtwQ/m602ruq9fXrN+imH3TCAsDK64NZHFMQTM2LZRzcEmU7
+ 4wi3rU0VWlhqcTU9GGBAcctJUHq7hGxPo31WNoGbSbYr4/zUNrWnFQ4CHdqL62cty0hV
+ 6d/AFnlDVPd6AmqySZrSUWzRMtaMZDuTjzyAfKZUb9uggWTO2zbjvT3AjF9J6l6G3aa2
+ A7cw==
+X-Gm-Message-State: AC+VfDzqo0381bO/YvpGFK8wLv6BSPMB6NTd2UjiBzxz5+w4+c/u69B6
+ EbD77mbwqBbDx3nuansbkb/nVQ==
+X-Received: by 2002:a1c:4c12:0:b0:3f4:271a:8aaf with SMTP id
+ z18-20020a1c4c12000000b003f4271a8aafmr609146wmf.38.1685572434603; 
+ Wed, 31 May 2023 15:33:54 -0700 (PDT)
 Received: from localhost.localdomain ([176.176.146.12])
  by smtp.gmail.com with ESMTPSA id
- n2-20020a5d4c42000000b0030af15d7e41sm8110254wrt.4.2023.05.31.15.34.20
+ f1-20020a1c6a01000000b003f423508c6bsm68086wmc.44.2023.05.31.15.33.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 31 May 2023 15:34:21 -0700 (PDT)
+ Wed, 31 May 2023 15:33:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -95,24 +95,24 @@ Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 7/7] hw: Simplify using sysbus_init_irqs() [manual]
-Date: Thu,  1 Jun 2023 00:33:41 +0200
-Message-Id: <20230531223341.34827-8-philmd@linaro.org>
+Subject: [PATCH 2/7] hw/usb/xlnx: Do not open-code sysbus_pass_irq()
+Date: Thu,  1 Jun 2023 00:33:36 +0200
+Message-Id: <20230531223341.34827-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230531223341.34827-1-philmd@linaro.org>
 References: <20230531223341.34827-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,86 +127,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EVt2wOPbj4rx
+X-TUID: PDHtfE0LUoKB
 
-Audit the sysbus_init_irq() calls and manually convert
-to sysbus_init_irqs() when a loop is involved.
+The SYSBUS_DEVICE_GPIO_IRQ definition should be internal to
+the SysBus API. Here we simply open-coded sysbus_pass_irq().
+Replace to use the proper API.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/intc/loongarch_extioi.c | 3 +--
- hw/intc/omap_intc.c        | 3 +--
- hw/pci-host/gpex.c         | 2 +-
- hw/timer/renesas_tmr.c     | 9 +++------
- 4 files changed, 6 insertions(+), 11 deletions(-)
+ hw/usb/xlnx-usb-subsystem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/intc/loongarch_extioi.c b/hw/intc/loongarch_extioi.c
-index db941de20e..c579636215 100644
---- a/hw/intc/loongarch_extioi.c
-+++ b/hw/intc/loongarch_extioi.c
-@@ -275,8 +275,7 @@ static void loongarch_extioi_instance_init(Object *obj)
-     LoongArchExtIOI *s = LOONGARCH_EXTIOI(obj);
-     int cpu, pin;
- 
--    sysbus_init_irqs(SYS_BUS_DEVICE(dev), s->irq, EXTIOI_IRQS);
--
-+    sysbus_init_irqs(dev, s->irq, EXTIOI_IRQS);
-     qdev_init_gpio_in(DEVICE(obj), extioi_setirq, EXTIOI_IRQS);
- 
-     for (cpu = 0; cpu < EXTIOI_CPUS; cpu++) {
-diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
-index 647bf324a8..f324b640e3 100644
---- a/hw/intc/omap_intc.c
-+++ b/hw/intc/omap_intc.c
-@@ -627,8 +627,7 @@ static void omap2_intc_init(Object *obj)
- 
-     s->level_only = 1;
-     s->nbanks = 3;
--    sysbus_init_irq(sbd, &s->parent_intr[0]);
--    sysbus_init_irq(sbd, &s->parent_intr[1]);
-+    sysbus_init_irqs(sbd, s->parent_intr, ARRAY_SIZE(s->parent_intr));
-     qdev_init_gpio_in(dev, omap_set_intr_noedge, s->nbanks * 32);
-     memory_region_init_io(&s->mmio, obj, &omap2_inth_mem_ops, s,
-                           "omap2-intc", 0x1000);
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index a6752fac5e..7b46e3e36e 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -128,8 +128,8 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
-         sysbus_init_mmio(sbd, &s->io_ioport);
+diff --git a/hw/usb/xlnx-usb-subsystem.c b/hw/usb/xlnx-usb-subsystem.c
+index d8deeb6ced..462ce6c3ff 100644
+--- a/hw/usb/xlnx-usb-subsystem.c
++++ b/hw/usb/xlnx-usb-subsystem.c
+@@ -49,7 +49,7 @@ static void versal_usb2_realize(DeviceState *dev, Error **errp)
      }
- 
-+    sysbus_init_irqs(sbd, s->irq, GPEX_NUM_IRQS);
-     for (i = 0; i < GPEX_NUM_IRQS; i++) {
--        sysbus_init_irq(sbd, &s->irq[i]);
-         s->irq_num[i] = -1;
-     }
- 
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index c15f654738..dd2929d6e7 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -428,17 +428,14 @@ static void rtmr_init(Object *obj)
- {
-     SysBusDevice *d = SYS_BUS_DEVICE(obj);
-     RTMRState *tmr = RTMR(obj);
--    int i;
- 
-     memory_region_init_io(&tmr->memory, OBJECT(tmr), &tmr_ops,
-                           tmr, "renesas-tmr", 0x10);
-     sysbus_init_mmio(d, &tmr->memory);
- 
--    for (i = 0; i < ARRAY_SIZE(tmr->ovi); i++) {
--        sysbus_init_irq(d, &tmr->cmia[i]);
--        sysbus_init_irq(d, &tmr->cmib[i]);
--        sysbus_init_irq(d, &tmr->ovi[i]);
--    }
-+    sysbus_init_irqs(d, tmr->cmia, ARRAY_SIZE(tmr->cmia));
-+    sysbus_init_irqs(d, tmr->cmib, ARRAY_SIZE(tmr->cmib));
-+    sysbus_init_irqs(d, tmr->ovi, ARRAY_SIZE(tmr->ovi));
-     timer_init_ns(&tmr->timer[0], QEMU_CLOCK_VIRTUAL, timer_event0, tmr);
-     timer_init_ns(&tmr->timer[1], QEMU_CLOCK_VIRTUAL, timer_event1, tmr);
+     sysbus_init_mmio(sbd, &s->dwc3_mr);
+     sysbus_init_mmio(sbd, &s->usb2Ctrl_mr);
+-    qdev_pass_gpios(DEVICE(&s->dwc3.sysbus_xhci), dev, SYSBUS_DEVICE_GPIO_IRQ);
++    sysbus_pass_irq(sbd, SYS_BUS_DEVICE(&s->dwc3.sysbus_xhci));
  }
+ 
+ static void versal_usb2_init(Object *obj)
 -- 
 2.38.1
 

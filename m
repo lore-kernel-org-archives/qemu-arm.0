@@ -1,138 +1,157 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp98913ejb;
-        Wed, 31 May 2023 09:57:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6FC9j8cFnssxSsasGa5aFROxW2pa17BEwTnXHrY5Y3WZZFJ/XG8OQBXZUDL1pV4mO1Z/MU
-X-Received: by 2002:a05:622a:489:b0:3f6:c202:b00b with SMTP id p9-20020a05622a048900b003f6c202b00bmr7602166qtx.24.1685552228496;
-        Wed, 31 May 2023 09:57:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685552228; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp114846ejb;
+        Wed, 31 May 2023 10:19:00 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4VDe6jEAAhIy0wjY7wYGgqeW+SgeNtxlMWp/rbya/Kz42DmI3TJrgphfWgNnPdVFEOQYr2
+X-Received: by 2002:a05:620a:271a:b0:75b:23a0:e7e4 with SMTP id b26-20020a05620a271a00b0075b23a0e7e4mr6291446qkp.69.1685553540238;
+        Wed, 31 May 2023 10:19:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685553540; cv=none;
         d=google.com; s=arc-20160816;
-        b=rOgC4Yw8ef9ecZIjSqnuT6lOF84FzllS7DVUgOhu2NWLQF77bwqTRDeL9BG0auOioq
-         3PnSfKcUt76dtBhaAcJwxin6x88vaoaiidiH2rOCnXPY3dd5c9jL3UCXcQyLGyHRGnom
-         EPtgo+B/tdmgSMDB8WSPTTGbtqqh7K+QBjx0BJMp7TOlj2Xpb721u40Xzz1n1kUe/CJV
-         jQK5nTY49AoIi+aL7lhQW3u4+2/ZyVIiIc2JTOzsacrt01g935aDnK5jtYafQ4fnTEV+
-         3jBg8X50VXaVawJWoSlrXdp90SlW44Tii8U3yeNHc6Nkv3rtG6FCQn2zeRc8TMfYxboq
-         Zhjw==
+        b=j9CyZskTTowfYcYHEDLZ34sX1QRx7rxWM4VJtzNf2i78kvFE3iePpXawL2596a8guz
+         XM8UVuCUGqUuHsmRuirxrdbl/uA7mFBcR1eEuhxUccqyQqnbiRs+RXMpnq+QSo+4p3tk
+         jspkT1f/b2iuJXpcMtzIKpqqTdz93EElY5m8CEKB4euH0r0pk5ws0b1fkOss9lw5QNCp
+         AhqgUDUkYFwRznRg5C6cECfWoETyGiXuXU7mJ8+gNBIUhhs1ZtXkkdvbnEckIf5tZk81
+         d/h97WL1d15Q1/BFFaI+5SaAbqvHJmXr+kl7pZ5ZxvjG2PKFk2ABjY1EYcsbKtw843vk
+         6Jww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=nk2APEzF/f+KlYCoahOjgtbapi9OrU7D3SgXtUw4m5Y=;
-        b=rm4DTZAozPbTWDSypL4nvdM4eBiu+ksHm0VsuYB5ZwZKhkoYWl15FDID2/8d3jQgg4
-         iMxbYtXVV/zvBlz7WyDWrJ/sZOoWjPgTkuVvyLrAYz5r0pRwnj2ui5uc+8VVdPlx7Z/A
-         oLh++67OU7PRVIZ25oLupp6I7h5olMgC3Uo9p7RTb7UFGR0LWklWpPEX+MRzu2F249zs
-         3OXJQzwon7QdeYNR4R4K9sg7rsJ3crgTQh2mzYsOhpUoyoCjjxgcdkqKBGhlXjfzq3xw
-         KVEDgWCQAPQx9+CoB3tCG9PdAsZ7ruvKNSYckZdHYsxUCYjoTCuE1Rn/HhkSRjO2UgCe
-         hFhQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=snbbRB4ema03X4hq1n+2qKekRsjOk1/KvEUZ5OyV9WY=;
+        b=05I1/Isa5yOoSreIkrSAzbhjMoUS1sTjRsFxQvo1fsJHiaRnVmJOSuOPZxOORutdbm
+         1HeUH/+xjSblbfDorgE9RQww+Fv0eLeGe82mPxEanJ6oE5N42BvU2ceHL+4WwNNIBSYO
+         qvt4vjLfH5KuvvZLUiol8hyPnpyD+RsWeNz0de+yAoltsGcXPKbj7+cSRhb8mdNVIj9m
+         FWmTXsHqGuAWrQIy7BupYznsUjMSYnwh1rhQLxTa9BBGQ4jOZHoiKCb8pPhzCh4szu0e
+         2WXZhdcq5JjoklIHc/VAjTAsQ5wuUQk92dyJmvLNkenHR6knRF/+8JaSQqnqlv86JZPR
+         c5Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=FEndrvXX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c18-20020ac85a92000000b003e37c789e9esi8553827qtc.684.2023.05.31.09.57.08
+        by mx.google.com with ESMTPS id pi20-20020a05620a379400b0075ba62aa25fsi8508997qkn.616.2023.05.31.10.19.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 09:57:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 May 2023 10:19:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20221208 header.b=FEndrvXX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q4P6y-000100-Og; Wed, 31 May 2023 12:55:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4PTK-0007fR-Ke; Wed, 31 May 2023 13:18:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3DHx3ZAQKCg0sy97t11tyr.p1z3rz7-qr8ry010t07.14t@flex--flwu.bounces.google.com>)
- id 1q4P6x-0000zV-J5
- for qemu-devel@nongnu.org; Wed, 31 May 2023 12:55:47 -0400
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3DHx3ZAQKCg0sy97t11tyr.p1z3rz7-qr8ry010t07.14t@flex--flwu.bounces.google.com>)
- id 1q4P6s-0002f5-F6
- for qemu-devel@nongnu.org; Wed, 31 May 2023 12:55:47 -0400
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-568a85f180dso48854357b3.2
- for <qemu-devel@nongnu.org>; Wed, 31 May 2023 09:55:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1685552140; x=1688144140;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=nk2APEzF/f+KlYCoahOjgtbapi9OrU7D3SgXtUw4m5Y=;
- b=FEndrvXXbeWLek8rePu5pp/IILCzklHygAkODqlwqG89/+A6wJTf8Kxvry33GWSDPa
- /HdSC73/+gYj5LWQviKqUAqfG6UA0cQ1TZbz0UO+F6ASEBAWvs0RxYkHQTiDb1OHfzoE
- VBw603hVw5OGk1usXOZRTgtXhsjJr4LsXKuFdRSMJaJSntSfW4QkilzHK6M1AIRZ8OYW
- iUp4QcUOYzPNv5/0cNW2uGY1HJrX192wsfda7zAnjOevzRy3zngTiiKR3LU9joGkC+Gy
- 6sqMsJnrcsWecmAHtnqkrMcn5N4pBZmH5rKT4wuwRJuwJiLH7TOn5O/0RzkmjTt59CXB
- jCfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685552140; x=1688144140;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nk2APEzF/f+KlYCoahOjgtbapi9OrU7D3SgXtUw4m5Y=;
- b=cy4dSTiwtsXGcrvFsccnZGw+j2c+rvf7JKzSSzCMT+agPAOcjdrY0EpQ5Pnur2lvcX
- BssFDkbOEhrYKUKNl41SDggjHbvs31ssvhIM1inJ03QnluO5RKfkEue3yq7QZF9B0yu7
- jO2GHlJzhmYIC6yI6UtSe4RnJ+OEexk2vtb04PPrzsIb67EigyEsa4tIk6broehGw3ZF
- 6alvfIQ/tVJHzMBti8Ezo9sVnEZY/S/rVlRnJCFfYB+0NkDB+iWynflE6aBgbZdVFCk9
- EXhLGTBr1yJ1knd0ZhvVW0IQCIYaYV3IZ6arzOuyEV7Cm15N5abGY76fWeU0sf1GZZll
- V0SA==
-X-Gm-Message-State: AC+VfDzO4udbw99HIRicaLpg2l6ZVZ8X2PDAicbGc6gt7hyY/WYcZUHT
- Ke3PRehccgXVRv2iWo6r62c8KU21
-X-Received: from flwu.c.googlers.com ([fda3:e722:ac3:cc00:24:72f4:c0a8:2200])
- (user=flwu job=sendgmr) by 2002:a81:b70c:0:b0:561:8e86:9818 with
- SMTP id
- v12-20020a81b70c000000b005618e869818mr3557834ywh.7.1685552140074; Wed, 31 May
- 2023 09:55:40 -0700 (PDT)
-Date: Wed, 31 May 2023 16:55:35 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.41.0.rc0.172.g3f132b7071-goog
-Message-ID: <20230531165537.3721999-1-flwu@google.com>
-Subject: [PATCH 0/2] Added 32 bits property for ASPEED GPIO with updated
- qtests. This change gives ASPEED GPIO similar behavior as Nuvoton.
-From: Jingbo Wu <flwu@google.com>
-To: clg@kaod.org, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Felix Wu <flwu@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3DHx3ZAQKCg0sy97t11tyr.p1z3rz7-qr8ry010t07.14t@flex--flwu.bounces.google.com;
- helo=mail-yw1-x114a.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q4PTJ-0007ez-7a; Wed, 31 May 2023 13:18:53 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q4PTG-0006we-LO; Wed, 31 May 2023 13:18:52 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id B892A260B95;
+ Wed, 31 May 2023 19:18:46 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wpi0D7Bo9RB0; Wed, 31 May 2023 19:18:44 +0200 (CEST)
+Received: from applejack.lan (83.21.93.182.ipv4.supernova.orange.pl
+ [83.21.93.182])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 949E7260078;
+ Wed, 31 May 2023 19:18:43 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] docs: sbsa: document board to firmware interface
+Date: Wed, 31 May 2023 19:18:34 +0200
+Message-Id: <20230531171834.236569-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lv3xYzbLhLXI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xekpY+HL9od6
 
-From: Felix Wu <flwu@google.com>
+We plan to add more hardware information into DeviceTree to limit amount
+of hardcoded values in firmware.
 
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ docs/system/arm/sbsa.rst | 28 +++++++++++++++++++++-------
+ 1 file changed, 21 insertions(+), 7 deletions(-)
 
-Felix Wu (2):
-  hw/gpio: Add property for ASPEED GPIO in 32 bits basis
-  tests/qtest: Add qtest for for ASPEED GPIO gpio-set property
-
- hw/gpio/aspeed_gpio.c          |  56 ++++++++++++++++++
- include/qapi/qmp/qdict.h       |   1 +
- qobject/qdict.c                |  13 ++++
- tests/qtest/aspeed_gpio-test.c | 105 ++++++++++++++++++++++++++++++---
- 4 files changed, 166 insertions(+), 9 deletions(-)
-
+diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+index 016776aed8..c5b3342b52 100644
+--- a/docs/system/arm/sbsa.rst
++++ b/docs/system/arm/sbsa.rst
+@@ -6,12 +6,7 @@ any real hardware the ``sbsa-ref`` board intends to look like real
+ hardware. The `Server Base System Architecture
+ <https://developer.arm.com/documentation/den0029/latest>`_ defines a
+ minimum base line of hardware support and importantly how the firmware
+-reports that to any operating system. It is a static system that
+-reports a very minimal DT to the firmware for non-discoverable
+-information about components affected by the qemu command line (i.e.
+-cpus and memory). As a result it must have a firmware specifically
+-built to expect a certain hardware layout (as you would in a real
+-machine).
++reports that to any operating system.
+ 
+ It is intended to be a machine for developing firmware and testing
+ standards compliance with operating systems.
+@@ -19,7 +14,7 @@ standards compliance with operating systems.
+ Supported devices
+ """""""""""""""""
+ 
+-The sbsa-ref board supports:
++The ``sbsa-ref`` board supports:
+ 
+   - A configurable number of AArch64 CPUs
+   - GIC version 3
+@@ -30,3 +25,22 @@ The sbsa-ref board supports:
+   - Bochs display adapter on PCIe bus
+   - A generic SBSA watchdog device
+ 
++
++Board to firmware interface
++"""""""""""""""""""""""""""
++``sbsa-ref`` is a static system that reports a very minimal DeviceTree to the
++firmware for non-discoverable information about system components. This
++includes both internal hardware and parts affected by the qemu command line
++(i.e. cpus and memory). As a result it must have a firmware specifically built
++to expect a certain hardware layout (as you would in a real machine).
++
++DeviceTree information
++'''''''''''''''''''''''
++
++Provided DeviceTree is not intended to be a complete compliant DT. Only
++minimal subset is provided:
++
++   - cpus
++   - memory
++   - platform version
++   - GIC addresses
 -- 
-2.41.0.rc0.172.g3f132b7071-goog
+2.40.1
 

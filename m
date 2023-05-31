@@ -1,100 +1,70 @@
-Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2683157ejb;
-        Wed, 31 May 2023 00:51:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4NbusDRpbHq/DyEHRJ9pLs24VGhYPCRuz2EjrCkUJYYax8mM1vfXke6Br97hPCb6mFmCho
-X-Received: by 2002:a05:6214:c6b:b0:614:da60:f44a with SMTP id t11-20020a0562140c6b00b00614da60f44amr4074908qvj.46.1685519497838;
-        Wed, 31 May 2023 00:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685519497; cv=none;
+Received: by 2002:a17:906:d7a2:b0:96f:a786:ac5c with SMTP id pk2csp2705764ejb;
+        Wed, 31 May 2023 01:48:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ584K+ryjHMH28uJzfz1Ab7nxmcYauaKeeNkrjxFDVWi7HVk41GFPKMFtb8/UnXZ9hRCK1M
+X-Received: by 2002:a05:620a:440c:b0:75b:23a1:35f4 with SMTP id v12-20020a05620a440c00b0075b23a135f4mr6218556qkp.5.1685522904271;
+        Wed, 31 May 2023 01:48:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685522904; cv=none;
         d=google.com; s=arc-20160816;
-        b=NBaWBX01roLidTOXWCra+48wEnYDLIThpdGEvm+sw5g3Y/uYr0BglslbsjLGcg0WZL
-         7h7uPKQ3PS14AnbHWdadhOXxZGqudUcae/WBK1ka3lwQd206ni9oLgxrXQxxwLYhFy3h
-         TaaAJ0T2NMpRcd7nVHbvv9R55skXufehasrVIWoxIpXod9kDcVtkMt1cIIFP5xjP0HTc
-         NcOkF2WFpHiSUMFgozT9XWAh8N0iu3ypnE72evqdmc3sBu0NBr1Yh0GyeJH2Bpwa+IUI
-         lHui52W/hv4nAsrb1a31jYWPvCTMLLv8FkpbttUh6/0rxGRuQw4KIAUGka1j5aqIk68G
-         f8og==
+        b=IPXi4diUunilK9Wsyz1Z+DYYrnWeWxDn6B3eCZQ55j2Gu6c9zP3picc9rQkKjBcW3p
+         nEQTSlZEAZ4zW+tc6WNEehKrHJsuQb+ksFXdykTkqOhNo8CBMbbPqdbVx8LNg9VsU0+Z
+         ezZq4+7b2IaN1AYfa6XYSt6yJZnwlY9PWwy5Nx7diwvvRvreFb0sXfKe7Co9Yih9kJSW
+         v5oj2GV+jom4dr7B2mbXP678YrpVykKWWHtvyXhBlQdOmFBngy3zwah10OTr6sm7dEUv
+         EApFZQIfSwR7+WHrtQeLxaltB3gAAcnKPI06dSVOxyp+UZcGX1CIv2csmYk+WjpcOzdi
+         ZtjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=XUdmigm9FpSN975aUBDxDCqv4/IzfntJba5UWOk/FLk=;
-        b=Dptp+W3y4a44uBgNnycQTNLKUchPgPQpT0Uj0PhHUKRiwtGkUgPqAEegS5ZuYSFsac
-         p2KIrwClOWPoMu/YWKa4ip2AvQuOrtWm+eVdHZaJ58sP3GWlS3p9OGYQOPW07pGSFlIQ
-         gxnhLP9Z/PurqO37mtSzxmR0JQGyjWobdAVlX7ddR1ZHO7+2iZrD1QMzKUpZb+twXV2m
-         iTLu1L1fB6liIW8xDPP/kF6KTDDHv0bAVQDl70sEtw9ko3CPmD1r45UFrXNxJ2gYzkT+
-         3h5nPcpjABss43isH1YwkjssyS9AgcgYFOX4+QvELVvrMpQbGXP6TX1RLSH+wbCEJK9j
-         dB+g==
+         :user-agent:mime-version:date:message-id;
+        bh=ELxa1Fgrb2o8tlS9jStyeCQn79uD9sPrThyoAONHGe0=;
+        b=GBLns1j3Y20t5/rL4lniYpTQo/AEL8mrt2IHLK7BD2lZcIpCodR1q8WAKH5fzvd6dw
+         AM6j5hCm1At2ecZZYk7vHsLrAAVy6iscDYgZSUQwx5K1nu3cu9WhQapncbxirbAHxA3p
+         3T31a8aqpSeN7PINb7N1Bu16fSciZYxK1eCcB94Mu4bEo0TNBfFL27xvwy/jT2iWLywi
+         4VKb43p93/n1sa/Mo5CXXqyT9PISUWUZy0Eb9vsDZSqtZ9HAlgA+Dix6Xg4R4zsDhy3p
+         o1fj8QeFqIlLUCU7FBxzOrfo5rnm9xwyjUdDJuwnnRQp8OBTHgwO+XmWtL4VgWw99mnG
+         FdVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+DMpKDm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1-20020a05622a024100b003f3e1e4d347si7975540qtx.138.2023.05.31.00.51.37
+        by mx.google.com with ESMTPS id i14-20020a05620a144e00b0074679e5de80si7580317qkl.172.2023.05.31.01.48.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 00:51:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 May 2023 01:48:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=I+DMpKDm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q4Gbe-0001uK-O5; Wed, 31 May 2023 03:50:54 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4HVC-00082e-EF; Wed, 31 May 2023 04:48:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4Gbc-0001tw-6V
- for qemu-devel@nongnu.org; Wed, 31 May 2023 03:50:52 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4GbZ-0002Rp-Dq
- for qemu-devel@nongnu.org; Wed, 31 May 2023 03:50:51 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-3f60e730bf2so55917355e9.1
- for <qemu-devel@nongnu.org>; Wed, 31 May 2023 00:50:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685519447; x=1688111447;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=XUdmigm9FpSN975aUBDxDCqv4/IzfntJba5UWOk/FLk=;
- b=I+DMpKDmSpEw7vby8mQz/93/ePaxEUGtvePWnNn8PduN78MDfQ0t7KTpVF6zf3p5CC
- g3X8wr7xbUjNBWuKTv4pDVYgTeptiQ05Izna0OgpQyg6rjbeS3DkGoiSt2Toi0PRj6R9
- R0LPJ0pwhpYzy44uC6ERjM6qZqag663gy5CTfGauz0E3bIA3/mQ9ho5CBpUMmMSkj3OI
- J6KzeQg+UYyKwrS94JpCDUMRCmuHfonpdO6HuxF933Eqgjqxzdarr+1ZyHyMAMMPvU9m
- 7KC8oE8rmbMB76dE4HzmvTYzHRCvmwq9u0DodkuDtQVAjgWSC+0Eb02T8DhfrUU2EhW5
- ph2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685519447; x=1688111447;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XUdmigm9FpSN975aUBDxDCqv4/IzfntJba5UWOk/FLk=;
- b=PE91ZDBR3q5AVmaMF/Kg3X2KgtaoSro0KJte/FZk40DjytcMi+fpng8SHkFJKFiWE9
- L2wtLaM49KMkp+AtaoRGgk/OcVqTEok6oR6Eb/RaLCTkGQKTX27HxmEzm28p0W8EQ3xf
- q0NKalYMB9XP3ijEc8TmF4kzU8vFDLuihzp8aK7ra08bqRS6+27se+XoVaTnJ/4awQp/
- 62wL9ZW4Jjy5GQWcZ7e8HVPBCDBIUplaqW6OGOsbsP5yAwgTuBiFeWBHJjxDsCCqDKsK
- p6lHI7FPkQQql6AdOX4LkBApPfcPkLKhrwbf57Va5agMc+0hYv6npYMN8p+6f7xU2k4H
- BM0g==
-X-Gm-Message-State: AC+VfDwZ0UZ/O1j6YXizE2YEkpFnSNKRekhgAAaWffrxcauDjpDr47Y2
- ugAuAD1DsN+amfIU4MwMbaibTQ==
-X-Received: by 2002:a7b:ca54:0:b0:3f1:72ec:4009 with SMTP id
- m20-20020a7bca54000000b003f172ec4009mr4696564wml.9.1685519447539; 
- Wed, 31 May 2023 00:50:47 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.146.12])
- by smtp.gmail.com with ESMTPSA id
- e21-20020a05600c219500b003f4fffccd73sm19900781wme.9.2023.05.31.00.50.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 31 May 2023 00:50:47 -0700 (PDT)
-Message-ID: <ab96deaf-ca3f-fd28-254e-1797eb69b88d@linaro.org>
-Date: Wed, 31 May 2023 09:50:45 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=vahk=BU=kaod.org=clg@ozlabs.org>)
+ id 1q4HUw-00081k-64; Wed, 31 May 2023 04:48:02 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=vahk=BU=kaod.org=clg@ozlabs.org>)
+ id 1q4HUt-0006jZ-Ez; Wed, 31 May 2023 04:48:01 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QWNFQ1zZzz4x4L;
+ Wed, 31 May 2023 18:47:54 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QWNFL2bnQz4x46;
+ Wed, 31 May 2023 18:47:50 +1000 (AEST)
+Message-ID: <34daee99-441c-4336-49d4-5e1a830c78ef@kaod.org>
+Date: Wed, 31 May 2023 10:47:44 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
 Subject: Re: [PATCH 11/12] aspeed: Introduce a "uart" machine option
 Content-Language: en-US
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
  Abhishek Singh Dagur <abhishek@drut.io>
@@ -102,156 +72,59 @@ References: <20230508075859.3326566-1-clg@kaod.org>
  <20230508075859.3326566-12-clg@kaod.org>
  <d0dedd1a-e2b7-5db9-d710-595e94b084a0@linaro.org>
  <aeb9f6a3-30e4-ce5d-c041-600a5097b27e@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <aeb9f6a3-30e4-ce5d-c041-600a5097b27e@kaod.org>
+ <ab96deaf-ca3f-fd28-254e-1797eb69b88d@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <ab96deaf-ca3f-fd28-254e-1797eb69b88d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=vahk=BU=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nMcnLhwAsuQs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3wgXjaGyxiyj
 
-On 31/5/23 08:28, Cédric Le Goater wrote:
-> On 5/30/23 23:22, Philippe Mathieu-Daudé wrote:
->> On 8/5/23 09:58, Cédric Le Goater wrote:
->>> Most of the Aspeed machines use the UART5 device for the boot console,
->>> and QEMU connects the first serial Chardev to this SoC device for this
->>> purpose. See routine connect_serial_hds_to_uarts().
+>>>> +static void aspeed_set_uart(Object *obj, const char *value, Error **errp)
+>>>> +{
+>>>> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
+>>>> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+>>>> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
+>>>> +    int val;
+>>>> +
+>>>> +    if (sscanf(value, "uart%u", &val) != 1) {
+>>>> +        error_setg(errp, "Bad value for \"uart\" property");
 >>>
->>> Nevertheless, some machines use another boot console, such as the fuji,
->>> and commit 5d63d0c76c ("hw/arm/aspeed: Allow machine to set UART
->>> default") introduced a SoC class attribute 'uart_default' and property
->>> to be able to change the boot console device. It was later changed by
->>> commit d2b3eaefb4 ("aspeed: Refactor UART init for multi-SoC machines").
->>>
->>> The "uart" machine option goes a step further and lets the user define
->>> the UART device from the QEMU command line without introducing a new
->>> machine definition. For instance, to use device UART3 (mapped on
->>> /dev/ttyS2 under Linux) instead of the default UART5, one would use :
->>>
->>>    -M ast2500-evb,uart=uart3
->>>
->>> Cc: Abhishek Singh Dagur <abhishek@drut.io>
->>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>> ---
->>>   docs/system/arm/aspeed.rst | 10 ++++++++++
->>>   hw/arm/aspeed.c            | 39 ++++++++++++++++++++++++++++++++++++--
->>>   2 files changed, 47 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
->>> index d4e293e7f9..e70f0aeea3 100644
->>> --- a/docs/system/arm/aspeed.rst
->>> +++ b/docs/system/arm/aspeed.rst
->>> @@ -122,6 +122,10 @@ Options specific to Aspeed machines are :
->>>    * ``spi-model`` to change the SPI Flash model.
->>> + * ``uart`` to change the default console device. Most of the machines
->>> +   use the ``UART5`` device for a boot console, which is mapped on
->>> +   ``/dev/ttyS4`` under Linux, but it is not always the case.
+>>> Why are you asking for a string and not an index?
 >>
->> This comment ...
->>
->>>   For instance, to start the ``ast2500-evb`` machine with a different
->>>   FMC chip and a bigger (64M) SPI chip, use :
->>> @@ -129,6 +133,12 @@ FMC chip and a bigger (64M) SPI chip, use :
->>>     -M ast2500-evb,fmc-model=mx25l25635e,spi-model=mx66u51235f
->>> +To change the boot console and use device ``UART3`` (``/dev/ttyS2``
->>> +under Linux), use :
->>
->> ... and this one suggest 'boot-console' could be a better name.
->>
->> Or 'boot-console-index'.
+>> because the literal name is what people find in the DT. See files
+>> arch/arm/boot/dts/aspeed-bmc-* under Linux.
 > 
-> you might be right. people expect to find the console messages on
-> this device. I will think about it.
+> OK. After looking at this file, I suppose people would expect
+> a "bmc-console" property name:
 > 
->>
->>> +.. code-block:: bash
->>> +
->>> +  -M ast2500-evb,uart=uart3
->>>   Aspeed minibmc family boards (``ast1030-evb``)
->>>   ==================================================================
->>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>> index 3d5488faf7..6c32f674b9 100644
->>> --- a/hw/arm/aspeed.c
->>> +++ b/hw/arm/aspeed.c
->>> @@ -43,6 +43,7 @@ struct AspeedMachineState {
->>>       AspeedSoCState soc;
->>>       MemoryRegion boot_rom;
->>>       bool mmio_exec;
->>> +    uint32_t uart_chosen;
->>>       char *fmc_model;
->>>       char *spi_model;
->>>   };
->>> @@ -331,10 +332,11 @@ static void 
->>> connect_serial_hds_to_uarts(AspeedMachineState *bmc)
->>>       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->>>       AspeedSoCState *s = &bmc->soc;
->>>       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->>> +    int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : 
->>> amc->uart_default;
->>> -    aspeed_soc_uart_set_chr(s, amc->uart_default, serial_hd(0));
->>> +    aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
->>>       for (int i = 1, uart = ASPEED_DEV_UART1; i < sc->uarts_num; 
->>> i++, uart++) {
->>> -        if (uart == amc->uart_default) {
->>> +        if (uart == uart_chosen) {
->>>               continue;
->>>           }
->>>           aspeed_soc_uart_set_chr(s, uart, serial_hd(i));
->>> @@ -1077,6 +1079,35 @@ static void aspeed_set_spi_model(Object *obj, 
->>> const char *value, Error **errp)
->>>       bmc->spi_model = g_strdup(value);
->>>   }
->>> +static char *aspeed_get_uart(Object *obj, Error **errp)
->>> +{
->>> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
->>> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->>> +    int uart_chosen = bmc->uart_chosen ? bmc->uart_chosen : 
->>> amc->uart_default;
->>> +
->>> +    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 
->>> + 1);
->>> +}
->>> +
->>> +static void aspeed_set_uart(Object *obj, const char *value, Error 
->>> **errp)
->>> +{
->>> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
->>> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
->>> +    AspeedSoCClass *sc = 
->>> ASPEED_SOC_CLASS(object_class_by_name(amc->soc_name));
->>> +    int val;
->>> +
->>> +    if (sscanf(value, "uart%u", &val) != 1) {
->>> +        error_setg(errp, "Bad value for \"uart\" property");
->>
->> Why are you asking for a string and not an index?
+>    -M ast2500-evb,bmc-console=uart3
 > 
-> because the literal name is what people find in the DT. See files
-> arch/arm/boot/dts/aspeed-bmc-* under Linux.
 
-OK. After looking at this file, I suppose people would expect
-a "bmc-console" property name:
+yes. This is better naming for the user. I will keep the internal
+'uart_chosen' though.
 
-   -M ast2500-evb,bmc-console=uart3
+Thanks,
 
+C.

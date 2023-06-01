@@ -1,139 +1,109 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp146271ejb;
-        Wed, 31 May 2023 20:19:59 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ53smnnXBPhwSqvPavlt45nF4m58qQdCYsIuj5OmQmFmsVU0m6hHDYtnmWb4TfBRomifOPv
-X-Received: by 2002:a05:622a:446:b0:3f7:ffb5:f551 with SMTP id o6-20020a05622a044600b003f7ffb5f551mr7967720qtx.37.1685589598744;
-        Wed, 31 May 2023 20:19:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685589598; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp198842ejb;
+        Wed, 31 May 2023 22:59:58 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5I2WFuNLWd84WOsDGjLcRKROcg4V9ctHj0pWPM+o/7jPoTuDGAoKG5KegniIoeE2SMDqHK
+X-Received: by 2002:a05:6214:242b:b0:621:78a:dd84 with SMTP id gy11-20020a056214242b00b00621078add84mr9951024qvb.47.1685599198178;
+        Wed, 31 May 2023 22:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685599198; cv=none;
         d=google.com; s=arc-20160816;
-        b=XYcJg8XgSnKJsyXr+IbeO8bOVdjHpRD/k3xplix7FlXOpNOQgIFPuTKHszILjKYY1v
-         GUFxiyB3IxFiRfEFgiXGgC9HtDDLExElIlH9z6q2sQAgUsCTpc+zImqOD2iNbFzYGG5b
-         v2k6CJfmg8mFu70O3tKN3TTFKLpAkylE4tOcXR6C8f3Ar8YYHQqzQFvSLqtWvS9m3Rvx
-         IqpDrcxgNC4oX4wL6atorJWN01saaB0gvWq4N5U6Y/thwqp+2bZAlZzLusOc9T4AbDEr
-         YuDxOLTT0a/tfftu1uAGMvK+OHPdy4SnIPJYabfHZ9OTBdhty41uAQiQbPZ48DioDaNo
-         maIA==
+        b=B5Pvw6OrFaQ5YH+0cuDQLUDt7CozIrCW7nWQKiPE99rt2O3KRmfEXBK6ZP5Hq5MSdA
+         SsOCcSe6lE+gPBHU1NYhZjuL9vh2rBbY5qkr9R0Pf4jym+0DubQZjvxkoliiZqQJ/0Hf
+         C0J7u948fUFatVnIH2mzP+sqPDhj/ZLFZZ6neLsq0oqujVLHZdOEi0+cinEUFg4ajVfA
+         e+l1t4cT9cCCF+47QzsH9BlGY9aj+6xdpSX4hZgKUKZyiaa2QJ0PDYXqnSLJIcLZ9BJ/
+         yqPa2jwLhS5PomaykSeSZKYKDA+fGmCbrQw4x5/GafetPKTCLL/9TD57sMU8zvyAKXS7
+         dP/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=DUSBfeomTiau/0Y+TQ+XPKgzi9WAbYuw9lFLHs7E/DQ=;
-        b=qmXBMgIEXGcndGd29/odENo1MoKBnV0CvAb+sNKEyNnCw3dS9SOz32Mn6Be4awTCpL
-         WBhmtw0BAvWvPw56XlRtb59S2EdAr49ISxDLmcGd/D+BfCHClqa+/A0nIk/3d64sjl6o
-         PtfOQhqEmFgOa7fnfb/V9Gi5IuZ7RWRZZXhGbheRJe/w43VUibQlHh/uLmcbXdd1Fk4D
-         Dlj/56tSBTZpoal+V5ksjEtgKm/G7T7vn26hQhmNTJVtnE3n685T3MD2oPwXKBtZP6/E
-         P8YrQjrQMu5jGqCiHdQ0PHeUF9ooLscqe9i9cORNAKJKrxaBH4V+BB740lbon89B9eU4
-         3tOg==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dkim-signature;
+        bh=c4+nJawB5C/rpOtXXJPGg1t+YY5vW5g1GOG7XGwr1/8=;
+        b=uI+ssPQGYg/r1dfg+Comr9+BbzPtSqDRXrDjxkqD2W3J74mrbX8hzAlv9uuQUIIJyP
+         ZkshM59pbJtOUUPutM3n9U1Vf4RV0Q2NqCpb/+VBRWakhFyyvG/pWVBtbpE0aLKPT73s
+         x5KF3HIplVzjIhQq47UAnEvhN2wjZRld8+PwTqCOhcA34d5QqFXl69ehqR0hXgyd60SD
+         ayC1qsf+pemJQjuNqjFjZvDDetGmjiLrqsax+Yt5Xiq8vxpq4y/UTnhV/quRGwZPaScN
+         nfDZoUQSxaXu1bxAmTGnQkeZY+K62uSCN0yzr1DC9Tj8zXxwsndK8VJjTICn4x4nTetc
+         LJ0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=ktmRdvCx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QnXM570u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a15-20020ac85b8f000000b003f6b793a20asi8939370qta.141.2023.05.31.20.19.58
+        by mx.google.com with ESMTPS id a13-20020a0562140c2d00b006211e345852si9294513qvd.443.2023.05.31.22.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 20:19:58 -0700 (PDT)
+        Wed, 31 May 2023 22:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=ktmRdvCx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QnXM570u;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4YqT-0007Nf-JK; Wed, 31 May 2023 23:19:25 -0400
+	id 1q4bLf-0002BS-RT; Thu, 01 Jun 2023 01:59:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1q4YqS-0007Mn-5Z
- for qemu-arm@nongnu.org; Wed, 31 May 2023 23:19:24 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1q4YqP-0003CU-9F
- for qemu-arm@nongnu.org; Wed, 31 May 2023 23:19:23 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-399e9455e9fso184771b6e.0
- for <qemu-arm@nongnu.org>; Wed, 31 May 2023 20:19:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1685589560; x=1688181560;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DUSBfeomTiau/0Y+TQ+XPKgzi9WAbYuw9lFLHs7E/DQ=;
- b=ktmRdvCxQh3OSxTh6Gi0PJfz9ly53h7ig1Gt6xyK+psiO5OhSI0KHf5e/NlBgMNL3q
- M/cbePLQW+A8/8bdFCY2HVoDnxp6qfzph4eusHS2DVSDQ6ij7RHH6UI9+owI+bqa0vXb
- EigZ6jKCpAG9gsxBJJGqti2X+y7fZsw01brJz86/uaoEE+p+Q2A5YGmQpp+6I0e4rbLa
- NXnaL6nmc4LLWDcKq6rUOcU/NbpcqxZPCqvYfQpAdf687RnQNDY8fmCJ5hDIjyKQb8Av
- 3mCevINLqtO0lCK0tomtm9LyVbcU7eo+n/jHxNij7l+6LgzWbmgGsJqI4nmJvk8c9lzB
- r/Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685589560; x=1688181560;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=DUSBfeomTiau/0Y+TQ+XPKgzi9WAbYuw9lFLHs7E/DQ=;
- b=NyjI5ADRy84/JZIzENy02qbMS8PfvHr4BskbiFLWj0jl2kYg2WziKP3t6Mu5Gaj1Ct
- zfY//rhEVVPAVIlXSpe0zTFWVccmT4UurgJrAIhKdOlpo5HqRYoQRiYVTsocStKrZm4E
- G/eszl0HDBRWAg35Bd2UI4EOLXUADdPs+MH2U16OwhRknO1tqiIeQ1Xq2c0lPiqSSjFx
- 1uASlKUJt6A/+1SwclwYlYuQ1etFHSswknGMjrWDh9FWNTxED6LOnfkgoBi0uQ4ixA0g
- LCVWi9ChUKhFVeVrkVbO4SsNe0o+FsUSNNi48LtAQlAzIceJhNuDzRat7bjlfDCUVDSf
- vdOw==
-X-Gm-Message-State: AC+VfDx0cWV64gnVVhKnbvh1upCXtb9aVHV7mwt0Ewym1QtX2cfKMG8y
- bJb9J7XCR34lvgzH2JNkFrfnqg==
-X-Received: by 2002:aca:f088:0:b0:383:e7c8:4000 with SMTP id
- o130-20020acaf088000000b00383e7c84000mr5341996oih.13.1685589560037; 
- Wed, 31 May 2023 20:19:20 -0700 (PDT)
-Received: from alarm.flets-east.jp ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
- by smtp.gmail.com with ESMTPSA id
- jd5-20020a170903260500b001a245b49731sm2146753plb.128.2023.05.31.20.19.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 May 2023 20:19:19 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-To: 
-Cc: Mauro Matteo Cascella <mcascell@redhat.com>, P J P <pj.pandit@yahoo.co.in>,
- Alexander Bulekov <alxndr@bu.edu>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Stefan Weil <sw@weilnetz.de>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
- Richard Henderson <richard.henderson@linaro.org>,
- Helge Deller <deller@gmx.de>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Thomas Huth <huth@tuxfamily.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Jan Kiszka <jan.kiszka@web.de>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Sven Schnelle <svens@stackframe.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- Rob Herring <robh@kernel.org>, Gerd Hoffmann <kraxel@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- xen-devel@lists.xenproject.org, Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 1/2] net: Provide MemReentrancyGuard * to qemu_new_nic()
-Date: Thu,  1 Jun 2023 12:18:58 +0900
-Message-Id: <20230601031859.7115-2-akihiko.odaki@daynix.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230601031859.7115-1-akihiko.odaki@daynix.com>
-References: <20230601031859.7115-1-akihiko.odaki@daynix.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1q4bLf-0002BI-7l
+ for qemu-arm@nongnu.org; Thu, 01 Jun 2023 01:59:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1q4bLc-00020u-4k
+ for qemu-arm@nongnu.org; Thu, 01 Jun 2023 01:59:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685599183;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=c4+nJawB5C/rpOtXXJPGg1t+YY5vW5g1GOG7XGwr1/8=;
+ b=QnXM570uxN1GHa/DlgSsok3Q19yRfMvmgNCzLH9JsvPUZboBO1VGq8tRNdKWeEd42Hce5U
+ 2tqhEIkKJ0vmb5xSQkEClvxktCiBzFSTPlWIuH2JYpp+hMQygt6CuRXMuwQCT1VFcUYb0a
+ xkIj7sprxsM7aV1wndGJ8MH7Oe9XyPg=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-325-Y6dswbWWOYq4fL-wNMgC9Q-1; Thu, 01 Jun 2023 01:59:36 -0400
+X-MC-Unique: Y6dswbWWOYq4fL-wNMgC9Q-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BAB5E1C05137;
+ Thu,  1 Jun 2023 05:59:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 914C4492B0A;
+ Thu,  1 Jun 2023 05:59:35 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7CD2021E692E; Thu,  1 Jun 2023 07:59:34 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,  Eduardo Habkost
+ <eduardo@habkost.net>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH 7/7] hw: Simplify using sysbus_init_irqs() [manual]
+References: <20230531223341.34827-1-philmd@linaro.org>
+ <20230531223341.34827-8-philmd@linaro.org>
+Date: Thu, 01 Jun 2023 07:59:34 +0200
+In-Reply-To: <20230531223341.34827-8-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 1 Jun 2023 00:33:41
+ +0200")
+Message-ID: <87mt1jafjt.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::22a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.163,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,617 +119,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XAT0CeXDponN
+X-TUID: YChh3RCS4wJ4
 
-Recently MemReentrancyGuard was added to DeviceState to record that the
-device is engaging in I/O. The network device backend needs to update it
-when delivering a packet to a device.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-In preparation for such a change, add MemReentrancyGuard * as a
-parameter of qemu_new_nic().
+> Audit the sysbus_init_irq() calls and manually convert
+> to sysbus_init_irqs() when a loop is involved.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/intc/loongarch_extioi.c | 3 +--
+>  hw/intc/omap_intc.c        | 3 +--
+>  hw/pci-host/gpex.c         | 2 +-
+>  hw/timer/renesas_tmr.c     | 9 +++------
+>  4 files changed, 6 insertions(+), 11 deletions(-)
+>
+> diff --git a/hw/intc/loongarch_extioi.c b/hw/intc/loongarch_extioi.c
+> index db941de20e..c579636215 100644
+> --- a/hw/intc/loongarch_extioi.c
+> +++ b/hw/intc/loongarch_extioi.c
+> @@ -275,8 +275,7 @@ static void loongarch_extioi_instance_init(Object *ob=
+j)
+>      LoongArchExtIOI *s =3D LOONGARCH_EXTIOI(obj);
+>      int cpu, pin;
+>=20=20
+> -    sysbus_init_irqs(SYS_BUS_DEVICE(dev), s->irq, EXTIOI_IRQS);
+> -
+> +    sysbus_init_irqs(dev, s->irq, EXTIOI_IRQS);
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
- include/net/net.h             | 1 +
- hw/net/allwinner-sun8i-emac.c | 3 ++-
- hw/net/allwinner_emac.c       | 3 ++-
- hw/net/cadence_gem.c          | 3 ++-
- hw/net/dp8393x.c              | 3 ++-
- hw/net/e1000.c                | 3 ++-
- hw/net/e1000e.c               | 2 +-
- hw/net/eepro100.c             | 4 +++-
- hw/net/etraxfs_eth.c          | 3 ++-
- hw/net/fsl_etsec/etsec.c      | 3 ++-
- hw/net/ftgmac100.c            | 3 ++-
- hw/net/i82596.c               | 2 +-
- hw/net/igb.c                  | 2 +-
- hw/net/imx_fec.c              | 2 +-
- hw/net/lan9118.c              | 3 ++-
- hw/net/mcf_fec.c              | 3 ++-
- hw/net/mipsnet.c              | 3 ++-
- hw/net/msf2-emac.c            | 3 ++-
- hw/net/mv88w8618_eth.c        | 3 ++-
- hw/net/ne2000-isa.c           | 3 ++-
- hw/net/ne2000-pci.c           | 3 ++-
- hw/net/npcm7xx_emc.c          | 3 ++-
- hw/net/opencores_eth.c        | 3 ++-
- hw/net/pcnet.c                | 3 ++-
- hw/net/rocker/rocker_fp.c     | 4 ++--
- hw/net/rtl8139.c              | 3 ++-
- hw/net/smc91c111.c            | 3 ++-
- hw/net/spapr_llan.c           | 3 ++-
- hw/net/stellaris_enet.c       | 3 ++-
- hw/net/sungem.c               | 2 +-
- hw/net/sunhme.c               | 3 ++-
- hw/net/tulip.c                | 3 ++-
- hw/net/virtio-net.c           | 6 ++++--
- hw/net/vmxnet3.c              | 2 +-
- hw/net/xen_nic.c              | 4 ++--
- hw/net/xgmac.c                | 3 ++-
- hw/net/xilinx_axienet.c       | 3 ++-
- hw/net/xilinx_ethlite.c       | 3 ++-
- hw/usb/dev-network.c          | 3 ++-
- net/net.c                     | 1 +
- 40 files changed, 75 insertions(+), 41 deletions(-)
+Commit message claims "when a loop is involved".  No loop here.  That
+work was actually done in the previous patch:
 
-diff --git a/include/net/net.h b/include/net/net.h
-index 1448d00afb..a7d8deaccb 100644
---- a/include/net/net.h
-+++ b/include/net/net.h
-@@ -157,6 +157,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
-                        NICConf *conf,
-                        const char *model,
-                        const char *name,
-+                       MemReentrancyGuard *reentrancy_guard,
-                        void *opaque);
- void qemu_del_nic(NICState *nic);
- NetClientState *qemu_get_subqueue(NICState *nic, int queue_index);
-diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
-index fac4405f45..cc350d40e5 100644
---- a/hw/net/allwinner-sun8i-emac.c
-+++ b/hw/net/allwinner-sun8i-emac.c
-@@ -824,7 +824,8 @@ static void allwinner_sun8i_emac_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_allwinner_sun8i_emac_info, &s->conf,
--                           object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
-index 372e5b66da..e10965de14 100644
---- a/hw/net/allwinner_emac.c
-+++ b/hw/net/allwinner_emac.c
-@@ -453,7 +453,8 @@ static void aw_emac_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_aw_emac_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     fifo8_create(&s->rx_fifo, RX_FIFO_SIZE);
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 42ea2411a2..a7bce1c120 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1633,7 +1633,8 @@ static void gem_realize(DeviceState *dev, Error **errp)
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
- 
-     s->nic = qemu_new_nic(&net_gem_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
- 
-     if (s->jumbo_max_len > MAX_FRAME_SIZE) {
-         error_setg(errp, "jumbo-max-len is greater than %d",
-diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-index 45b954e46c..abfcc6f69f 100644
---- a/hw/net/dp8393x.c
-+++ b/hw/net/dp8393x.c
-@@ -943,7 +943,8 @@ static void dp8393x_realize(DeviceState *dev, Error **errp)
-                           "dp8393x-regs", SONIC_REG_COUNT << s->it_shift);
- 
-     s->nic = qemu_new_nic(&net_dp83932_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     s->watchdog = timer_new_ns(QEMU_CLOCK_VIRTUAL, dp8393x_watchdog, s);
-diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-index 4dc4dd7704..7581378226 100644
---- a/hw/net/e1000.c
-+++ b/hw/net/e1000.c
-@@ -1696,7 +1696,8 @@ static void pci_e1000_realize(PCIDevice *pci_dev, Error **errp)
-                                macaddr);
- 
-     d->nic = qemu_new_nic(&net_e1000_info, &d->conf,
--                          object_get_typename(OBJECT(d)), dev->id, d);
-+                          object_get_typename(OBJECT(d)), dev->id,
-+                          &dev->mem_reentrancy_guard, d);
- 
-     qemu_format_nic_info_str(qemu_get_queue(d->nic), macaddr);
- 
-diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
-index c3848797b8..e41a6c1038 100644
---- a/hw/net/e1000e.c
-+++ b/hw/net/e1000e.c
-@@ -320,7 +320,7 @@ e1000e_init_net_peer(E1000EState *s, PCIDevice *pci_dev, uint8_t *macaddr)
-     int i;
- 
-     s->nic = qemu_new_nic(&net_e1000e_info, &s->conf,
--        object_get_typename(OBJECT(s)), dev->id, s);
-+        object_get_typename(OBJECT(s)), dev->id, &dev->mem_reentrancy_guard, s);
- 
-     s->core.max_queue_num = s->conf.peers.queues ? s->conf.peers.queues - 1 : 0;
- 
-diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
-index dc07984ae9..e2b03b787d 100644
---- a/hw/net/eepro100.c
-+++ b/hw/net/eepro100.c
-@@ -1874,7 +1874,9 @@ static void e100_nic_realize(PCIDevice *pci_dev, Error **errp)
-     nic_reset(s);
- 
-     s->nic = qemu_new_nic(&net_eepro100_info, &s->conf,
--                          object_get_typename(OBJECT(pci_dev)), pci_dev->qdev.id, s);
-+                          object_get_typename(OBJECT(pci_dev)),
-+                          pci_dev->qdev.id,
-+                          &pci_dev->qdev.mem_reentrancy_guard, s);
- 
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
-     TRACE(OTHER, logout("%s\n", qemu_get_queue(s->nic)->info_str));
-diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
-index 1b82aec794..ba57a978d1 100644
---- a/hw/net/etraxfs_eth.c
-+++ b/hw/net/etraxfs_eth.c
-@@ -618,7 +618,8 @@ static void etraxfs_eth_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_etraxfs_info, &s->conf,
--                          object_get_typename(OBJECT(s)), dev->id, s);
-+                          object_get_typename(OBJECT(s)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     s->phy.read = tdk_read;
-diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
-index 798ea33d08..00315f305d 100644
---- a/hw/net/fsl_etsec/etsec.c
-+++ b/hw/net/fsl_etsec/etsec.c
-@@ -391,7 +391,8 @@ static void etsec_realize(DeviceState *dev, Error **errp)
-     eTSEC        *etsec = ETSEC_COMMON(dev);
- 
-     etsec->nic = qemu_new_nic(&net_etsec_info, &etsec->conf,
--                              object_get_typename(OBJECT(dev)), dev->id, etsec);
-+                              object_get_typename(OBJECT(dev)), dev->id,
-+                              &dev->mem_reentrancy_guard, etsec);
-     qemu_format_nic_info_str(qemu_get_queue(etsec->nic), etsec->conf.macaddr.a);
- 
-     etsec->ptimer = ptimer_init(etsec_timer_hit, etsec, PTIMER_POLICY_LEGACY);
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index d3bf14be53..be2cf63c08 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -1118,7 +1118,8 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
- 
-     s->nic = qemu_new_nic(&net_ftgmac100_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/i82596.c b/hw/net/i82596.c
-index ec21e2699a..dc64246f75 100644
---- a/hw/net/i82596.c
-+++ b/hw/net/i82596.c
-@@ -743,7 +743,7 @@ void i82596_common_init(DeviceState *dev, I82596State *s, NetClientInfo *info)
-         qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     }
-     s->nic = qemu_new_nic(info, &s->conf, object_get_typename(OBJECT(dev)),
--                dev->id, s);
-+                dev->id, &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     if (USE_TIMER) {
-diff --git a/hw/net/igb.c b/hw/net/igb.c
-index 1c989d7677..141bc56d79 100644
---- a/hw/net/igb.c
-+++ b/hw/net/igb.c
-@@ -315,7 +315,7 @@ igb_init_net_peer(IGBState *s, PCIDevice *pci_dev, uint8_t *macaddr)
-     int i;
- 
-     s->nic = qemu_new_nic(&net_igb_info, &s->conf,
--        object_get_typename(OBJECT(s)), dev->id, s);
-+        object_get_typename(OBJECT(s)), dev->id, &dev->mem_reentrancy_guard, s);
- 
-     s->core.max_queue_num = s->conf.peers.queues ? s->conf.peers.queues - 1 : 0;
- 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 5d1f1f104c..6881e3e4f0 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -1334,7 +1334,7 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
- 
-     s->nic = qemu_new_nic(&imx_eth_net_info, &s->conf,
-                           object_get_typename(OBJECT(dev)),
--                          dev->id, s);
-+                          dev->id, &dev->mem_reentrancy_guard, s);
- 
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index e5c4af182d..cf7b8c897a 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -1361,7 +1361,8 @@ static void lan9118_realize(DeviceState *dev, Error **errp)
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
- 
-     s->nic = qemu_new_nic(&net_lan9118_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
-     s->eeprom[0] = 0xa5;
-     for (i = 0; i < 6; i++) {
-diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
-index 8aa27bd322..57dd49abea 100644
---- a/hw/net/mcf_fec.c
-+++ b/hw/net/mcf_fec.c
-@@ -643,7 +643,8 @@ static void mcf_fec_realize(DeviceState *dev, Error **errp)
-     mcf_fec_state *s = MCF_FEC_NET(dev);
- 
-     s->nic = qemu_new_nic(&net_mcf_fec_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/mipsnet.c b/hw/net/mipsnet.c
-index 2ade72dea0..8e925de867 100644
---- a/hw/net/mipsnet.c
-+++ b/hw/net/mipsnet.c
-@@ -255,7 +255,8 @@ static void mipsnet_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(sbd, &s->irq);
- 
-     s->nic = qemu_new_nic(&net_mipsnet_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
-index db3a04deb1..145a5e46ab 100644
---- a/hw/net/msf2-emac.c
-+++ b/hw/net/msf2-emac.c
-@@ -530,7 +530,8 @@ static void msf2_emac_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_msf2_emac_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/mv88w8618_eth.c b/hw/net/mv88w8618_eth.c
-index ef30b0d4a6..2185f1131a 100644
---- a/hw/net/mv88w8618_eth.c
-+++ b/hw/net/mv88w8618_eth.c
-@@ -350,7 +350,8 @@ static void mv88w8618_eth_realize(DeviceState *dev, Error **errp)
- 
-     address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
-     s->nic = qemu_new_nic(&net_mv88w8618_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
- }
- 
- static const VMStateDescription mv88w8618_eth_vmsd = {
-diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
-index 6ced6775ff..a79f7fad1f 100644
---- a/hw/net/ne2000-isa.c
-+++ b/hw/net/ne2000-isa.c
-@@ -74,7 +74,8 @@ static void isa_ne2000_realizefn(DeviceState *dev, Error **errp)
-     ne2000_reset(s);
- 
-     s->nic = qemu_new_nic(&net_ne2000_isa_info, &s->c,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->c.macaddr.a);
- }
- 
-diff --git a/hw/net/ne2000-pci.c b/hw/net/ne2000-pci.c
-index edc6689d33..fee93c6ec0 100644
---- a/hw/net/ne2000-pci.c
-+++ b/hw/net/ne2000-pci.c
-@@ -71,7 +71,8 @@ static void pci_ne2000_realize(PCIDevice *pci_dev, Error **errp)
- 
-     s->nic = qemu_new_nic(&net_ne2000_info, &s->c,
-                           object_get_typename(OBJECT(pci_dev)),
--                          pci_dev->qdev.id, s);
-+                          pci_dev->qdev.id,
-+                          &pci_dev->qdev.mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->c.macaddr.a);
- }
- 
-diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
-index 8156f701b0..1d4e8f59f3 100644
---- a/hw/net/npcm7xx_emc.c
-+++ b/hw/net/npcm7xx_emc.c
-@@ -821,7 +821,8 @@ static void npcm7xx_emc_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&emc->conf.macaddr);
-     emc->nic = qemu_new_nic(&net_npcm7xx_emc_info, &emc->conf,
--                            object_get_typename(OBJECT(dev)), dev->id, emc);
-+                            object_get_typename(OBJECT(dev)), dev->id,
-+                            &dev->mem_reentrancy_guard, emc);
-     qemu_format_nic_info_str(qemu_get_queue(emc->nic), emc->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/opencores_eth.c b/hw/net/opencores_eth.c
-index 0b3dc3146e..f96d6ea2cc 100644
---- a/hw/net/opencores_eth.c
-+++ b/hw/net/opencores_eth.c
-@@ -732,7 +732,8 @@ static void sysbus_open_eth_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(sbd, &s->irq);
- 
-     s->nic = qemu_new_nic(&net_open_eth_info, &s->conf,
--                          object_get_typename(OBJECT(s)), dev->id, s);
-+                          object_get_typename(OBJECT(s)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
- }
- 
- static void qdev_open_eth_reset(DeviceState *dev)
-diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
-index d456094575..1627f6939c 100644
---- a/hw/net/pcnet.c
-+++ b/hw/net/pcnet.c
-@@ -1718,7 +1718,8 @@ void pcnet_common_init(DeviceState *dev, PCNetState *s, NetClientInfo *info)
-     s->poll_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pcnet_poll_timer, s);
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
--    s->nic = qemu_new_nic(info, &s->conf, object_get_typename(OBJECT(dev)), dev->id, s);
-+    s->nic = qemu_new_nic(info, &s->conf, object_get_typename(OBJECT(dev)),
-+                          dev->id, &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     /* Initialize the PROM */
-diff --git a/hw/net/rocker/rocker_fp.c b/hw/net/rocker/rocker_fp.c
-index cbeed65bd5..0d21948ada 100644
---- a/hw/net/rocker/rocker_fp.c
-+++ b/hw/net/rocker/rocker_fp.c
-@@ -241,8 +241,8 @@ FpPort *fp_port_alloc(Rocker *r, char *sw_name,
-     port->conf.bootindex = -1;
-     port->conf.peers = *peers;
- 
--    port->nic = qemu_new_nic(&fp_port_info, &port->conf,
--                             sw_name, NULL, port);
-+    port->nic = qemu_new_nic(&fp_port_info, &port->conf, sw_name, NULL,
-+                             &DEVICE(r)->mem_reentrancy_guard, port);
-     qemu_format_nic_info_str(qemu_get_queue(port->nic),
-                              port->conf.macaddr.a);
- 
-diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
-index 5a5aaf868d..f4df03af71 100644
---- a/hw/net/rtl8139.c
-+++ b/hw/net/rtl8139.c
-@@ -3397,7 +3397,8 @@ static void pci_rtl8139_realize(PCIDevice *dev, Error **errp)
-     s->eeprom.contents[9] = s->conf.macaddr.a[4] | s->conf.macaddr.a[5] << 8;
- 
-     s->nic = qemu_new_nic(&net_rtl8139_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), d->id, s);
-+                          object_get_typename(OBJECT(dev)), d->id,
-+                          &d->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     s->cplus_txbuffer = NULL;
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index ad778cd8fc..4eda971ef3 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -783,7 +783,8 @@ static void smc91c111_realize(DeviceState *dev, Error **errp)
-     sysbus_init_irq(sbd, &s->irq);
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_smc91c111_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
-     /* ??? Save/restore.  */
- }
-diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
-index a6876a936d..475d5f3a34 100644
---- a/hw/net/spapr_llan.c
-+++ b/hw/net/spapr_llan.c
-@@ -325,7 +325,8 @@ static void spapr_vlan_realize(SpaprVioDevice *sdev, Error **errp)
-     memcpy(&dev->perm_mac.a, &dev->nicconf.macaddr.a, sizeof(dev->perm_mac.a));
- 
-     dev->nic = qemu_new_nic(&net_spapr_vlan_info, &dev->nicconf,
--                            object_get_typename(OBJECT(sdev)), sdev->qdev.id, dev);
-+                            object_get_typename(OBJECT(sdev)), sdev->qdev.id,
-+                            &sdev->qdev.mem_reentrancy_guard, dev);
-     qemu_format_nic_info_str(qemu_get_queue(dev->nic), dev->nicconf.macaddr.a);
- 
-     dev->rxp_timer = timer_new_us(QEMU_CLOCK_VIRTUAL, spapr_vlan_flush_rx_queue,
-diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-index 8dd60783d8..6768a6912f 100644
---- a/hw/net/stellaris_enet.c
-+++ b/hw/net/stellaris_enet.c
-@@ -492,7 +492,8 @@ static void stellaris_enet_realize(DeviceState *dev, Error **errp)
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
- 
-     s->nic = qemu_new_nic(&net_stellaris_enet_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/sungem.c b/hw/net/sungem.c
-index eb01520790..347ccdd19d 100644
---- a/hw/net/sungem.c
-+++ b/hw/net/sungem.c
-@@ -1361,7 +1361,7 @@ static void sungem_realize(PCIDevice *pci_dev, Error **errp)
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_sungem_info, &s->conf,
-                           object_get_typename(OBJECT(dev)),
--                          dev->id, s);
-+                          dev->id, &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic),
-                              s->conf.macaddr.a);
- }
-diff --git a/hw/net/sunhme.c b/hw/net/sunhme.c
-index 1f3d8011ae..82e38a428a 100644
---- a/hw/net/sunhme.c
-+++ b/hw/net/sunhme.c
-@@ -892,7 +892,8 @@ static void sunhme_realize(PCIDevice *pci_dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_sunhme_info, &s->conf,
--                          object_get_typename(OBJECT(d)), d->id, s);
-+                          object_get_typename(OBJECT(d)), d->id,
-+                          &d->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/net/tulip.c b/hw/net/tulip.c
-index 915e5fb595..1f8e45de5e 100644
---- a/hw/net/tulip.c
-+++ b/hw/net/tulip.c
-@@ -983,7 +983,8 @@ static void pci_tulip_realize(PCIDevice *pci_dev, Error **errp)
- 
-     s->nic = qemu_new_nic(&net_tulip_info, &s->c,
-                           object_get_typename(OBJECT(pci_dev)),
--                          pci_dev->qdev.id, s);
-+                          pci_dev->qdev.id,
-+                          &pci_dev->qdev.mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->c.macaddr.a);
- }
- 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index ed9f240bfd..9728158b72 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -3696,10 +3696,12 @@ static void virtio_net_device_realize(DeviceState *dev, Error **errp)
-          * Happen when virtio_net_set_netclient_name has been called.
-          */
-         n->nic = qemu_new_nic(&net_virtio_info, &n->nic_conf,
--                              n->netclient_type, n->netclient_name, n);
-+                              n->netclient_type, n->netclient_name,
-+                              &dev->mem_reentrancy_guard, n);
-     } else {
-         n->nic = qemu_new_nic(&net_virtio_info, &n->nic_conf,
--                              object_get_typename(OBJECT(dev)), dev->id, n);
-+                              object_get_typename(OBJECT(dev)), dev->id,
-+                              &dev->mem_reentrancy_guard, n);
-     }
- 
-     for (i = 0; i < n->max_queue_pairs; i++) {
-diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
-index 18b9edfdb2..5051818fe4 100644
---- a/hw/net/vmxnet3.c
-+++ b/hw/net/vmxnet3.c
-@@ -2083,7 +2083,7 @@ static void vmxnet3_net_init(VMXNET3State *s)
- 
-     s->nic = qemu_new_nic(&net_vmxnet3_info, &s->conf,
-                           object_get_typename(OBJECT(s)),
--                          d->id, s);
-+                          d->id, &d->mem_reentrancy_guard, s);
- 
-     s->peer_has_vhdr = vmxnet3_peer_has_vnet_hdr(s);
-     s->tx_sop = true;
-diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
-index 9bbf6599fc..e735f79c5b 100644
---- a/hw/net/xen_nic.c
-+++ b/hw/net/xen_nic.c
-@@ -293,8 +293,8 @@ static int net_init(struct XenLegacyDevice *xendev)
-         return -1;
-     }
- 
--    netdev->nic = qemu_new_nic(&net_xen_info, &netdev->conf,
--                               "xen", NULL, netdev);
-+    netdev->nic = qemu_new_nic(&net_xen_info, &netdev->conf, "xen", NULL,
-+                               &xendev->qdev.mem_reentrancy_guard, netdev);
- 
-     qemu_set_info_str(qemu_get_queue(netdev->nic),
-                       "nic: xenbus vif macaddr=%s", netdev->mac);
-diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
-index 0ab6ae91aa..1f4f277d84 100644
---- a/hw/net/xgmac.c
-+++ b/hw/net/xgmac.c
-@@ -402,7 +402,8 @@ static void xgmac_enet_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_xgmac_enet_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     s->regs[XGMAC_ADDR_HIGH(0)] = (s->conf.macaddr.a[5] << 8) |
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 5b19a01eaa..7d1fd37b4a 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -967,7 +967,8 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_xilinx_enet_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- 
-     tdk_init(&s->TEMAC.phy);
-diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-index 89f4f3b254..989afaf037 100644
---- a/hw/net/xilinx_ethlite.c
-+++ b/hw/net/xilinx_ethlite.c
-@@ -235,7 +235,8 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_xilinx_ethlite_info, &s->conf,
--                          object_get_typename(OBJECT(dev)), dev->id, s);
-+                          object_get_typename(OBJECT(dev)), dev->id,
-+                          &dev->mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
- }
- 
-diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
-index 5fff487ee5..2c33e36cad 100644
---- a/hw/usb/dev-network.c
-+++ b/hw/usb/dev-network.c
-@@ -1386,7 +1386,8 @@ static void usb_net_realize(USBDevice *dev, Error **errp)
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_usbnet_info, &s->conf,
--                          object_get_typename(OBJECT(s)), s->dev.qdev.id, s);
-+                          object_get_typename(OBJECT(s)), s->dev.qdev.id,
-+                          &s->dev.qdev.mem_reentrancy_guard, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
-     snprintf(s->usbstring_mac, sizeof(s->usbstring_mac),
-              "%02x%02x%02x%02x%02x%02x",
-diff --git a/net/net.c b/net/net.c
-index 6492ad530e..982df2479f 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -319,6 +319,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
-                        NICConf *conf,
-                        const char *model,
-                        const char *name,
-+                       MemReentrancyGuard *reentrancy_guard,
-                        void *opaque)
- {
-     NetClientState **peers = conf->peers.ncs;
--- 
-2.40.1
+  diff --git a/hw/intc/loongarch_extioi.c b/hw/intc/loongarch_extioi.c
+  index 0e7a3e32f3..db941de20e 100644
+  --- a/hw/intc/loongarch_extioi.c
+  +++ b/hw/intc/loongarch_extioi.c
+  @@ -273,11 +273,9 @@ static void loongarch_extioi_instance_init(Object *o=
+bj)
+   {
+       SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
+       LoongArchExtIOI *s =3D LOONGARCH_EXTIOI(obj);
+  -    int i, cpu, pin;
+  +    int cpu, pin;
+
+  -    for (i =3D 0; i < EXTIOI_IRQS; i++) {
+  -        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[i]);
+  -    }
+  +    sysbus_init_irqs(SYS_BUS_DEVICE(dev), s->irq, EXTIOI_IRQS);
+
+       qdev_init_gpio_in(DEVICE(obj), extioi_setirq, EXTIOI_IRQS);
+
+In this patch, you merely delete a superfluous type conversion that is
+present even before your series.
+
+There are more of them in this function.  Please delete them all, and in
+a separate patch.
+
+Actually, there are more elsewhere.  Coccinelle script
+
+    @@
+    typedef SysBusDevice;
+    SysBusDevice *dev;
+    @@
+    -    SYS_BUS_DEVICE(dev)
+    +    dev
+
+finds some in hw/arm/xlnx-versal.c and hw/rx/rx62n.c, too.
+
+Would be nice to do this for every QOM type, but I don't know how
+without duplicating the semantic patch for each of them.  There are
+almost 150 uses os OBJECT_DECLARE_TYPE()...
+
+You might want to address this in a separate series, to not delay this
+one.
+
+>      qdev_init_gpio_in(DEVICE(obj), extioi_setirq, EXTIOI_IRQS);
+>=20=20
+>      for (cpu =3D 0; cpu < EXTIOI_CPUS; cpu++) {
+> diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
+> index 647bf324a8..f324b640e3 100644
+> --- a/hw/intc/omap_intc.c
+> +++ b/hw/intc/omap_intc.c
+> @@ -627,8 +627,7 @@ static void omap2_intc_init(Object *obj)
+>=20=20
+>      s->level_only =3D 1;
+>      s->nbanks =3D 3;
+> -    sysbus_init_irq(sbd, &s->parent_intr[0]);
+> -    sysbus_init_irq(sbd, &s->parent_intr[1]);
+> +    sysbus_init_irqs(sbd, s->parent_intr, ARRAY_SIZE(s->parent_intr));
+
+Unrolled loop.  s->parent_intr[] indeed has 2 elements.  Okay.
+
+>      qdev_init_gpio_in(dev, omap_set_intr_noedge, s->nbanks * 32);
+>      memory_region_init_io(&s->mmio, obj, &omap2_inth_mem_ops, s,
+>                            "omap2-intc", 0x1000);
+
+[...]
 

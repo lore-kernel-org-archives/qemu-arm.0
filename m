@@ -1,156 +1,156 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp397843ejb;
-        Thu, 1 Jun 2023 05:22:45 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7f8DEjgEEkY32sZE39Bd7HYDSp6yYsoS6Seunj9offafrH+iIPiDtEpdZFxy9nZ4vJLc3I
-X-Received: by 2002:a5d:5111:0:b0:306:2ef0:d223 with SMTP id s17-20020a5d5111000000b003062ef0d223mr2061374wrt.62.1685622165134;
-        Thu, 01 Jun 2023 05:22:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685622165; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp405891ejb;
+        Thu, 1 Jun 2023 05:33:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7IBPQtz1kkCcVXcMdEht7MCDEmx+Pfb/bt8f2Upc069xtnGLxsmtAX/7jhDwkwa0XVqWuQ
+X-Received: by 2002:a05:6870:44c5:b0:19a:5e87:fd72 with SMTP id t5-20020a05687044c500b0019a5e87fd72mr7752742oai.4.1685622820118;
+        Thu, 01 Jun 2023 05:33:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685622820; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPhjagBWZ0xSTmTV3nBUwvyLTVgRbChzDzpFVL5T6cgXOJ7EVY866TYutIkCBJZHeJ
-         y/TMnp6kiL0PE6agfKujWLU40O80mxBCjMmPJh0nHKss60Kykv3D7iFFwSNIZ+0iUawr
-         dPXOGTB0jBYrUp5xeu+F2vF6KymWcoI3MYzX/jqbv2iqnnDTafATrBDk3U0CO+ruNK0L
-         3ANL/awOMO9WBMGIwUSw7pC6ozLgVzMI5bhPlIY5+GwKOU7638JUbR+xumTO9dtpyGco
-         gbnJwtL+yN5XPehZe+8X9JrGgo0nxHjCk8mYQqfrEboYXFlcdtm6RdAtLaQ26LcvsFol
-         sB3w==
+        b=yezLVM1Q+NH6sYjY3LNSgbp3fskGyk9YBt/qQl5to5ax8LJu/zDbYJ/Krk3PON8RDk
+         D2Q4rV0I7Og0ydNLxZbJRZ8mlISzZQeQ+kwQnyCHcgJkdi1JiF7lhQmWlhgmW8+FS2Lv
+         Q2eF94oPCkN6le5+ODLpzvZ3oVowiBIQ2jax0wQTPcMutecLSfkKdOxElvRWJZVl4/60
+         OGBN9YKReTJ75JaDUYYKrFfPdm70MJ3CS8bxVQoP9017fkoZWKHQOm9kVK5+KJmPOhYY
+         fAUsG4uDTWk07gtptDQpB/ffBecPZQPdMsR3oWT1kcJ92rNKsvgZ69Mo9iRMVvTapKH/
+         gugg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:from:references:cc:to:content-language
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=HSKD3P83MbZh067oRhg9s3nDZZ4+oIWE19Br1HlCraU=;
-        b=BLKq4lCyNdgYOJ/yEfAfojFF71xTm4zUPgdBgbfUeijLhxZS2b2QJHHsD9Pvdbou6O
-         NVeWPmfAPWGNVSe6dUzOHjHs5zzZBcnVMNwKiPHsQ9mqK/hFMmK8p+dLmshdWzNeVnun
-         EhD/6JsYKajwJLD+Z3M9hZ0QEXc40+A7TxzLPP8/qoDq7v1hEpIDtbTHM+eYlB2Ov8G4
-         2RiHyCvrYqwtaCp8EAc4FnpcFiJK+tkS9n6mExlSu7ztMxiGrA8tIWaWEVN3JFMhjfQF
-         hC6Y2ha9hON4rI508I0ouHfsciDdTNb4AwxElLmjAqk9MzB0Pi/iK1BE+7aFK/q4WgZb
-         eK+w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gs3lJZ5X0nS1wEoi46SJBIt6fEJ+mVI5qkhB2nHvBOI=;
+        b=GiW52k9Mjx5HhaIncchKuGrm3pdrh0pZ0w0u09WBoNr34ukf8IBRaXqKBXeYzo1EDc
+         3K4OU2/fmWxt5wCiQjfskbeDqFfdQSrMqMKr8cbQ/WMuHtdJJAh9TnA6e5gOtq/tj2On
+         i0obMhvJIwn6ek27tYwJjReQJ9Bd17kivT4LqfItGUu+AQa+0bszkAAMgsZlEpv6vGuC
+         Fxt18bXJFAGk69qik8VLwH5pEZZYTLY+hjTseZwtZDgveM+Z8VOMiSFR5yLfX+C8W42Q
+         ENvl6E1Q/uujgcQFQhHK/zhufe7Fv6M8kel7HBRPTepsu0nk4HpwQVtHwhaC8SjSXUJ3
+         UfTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DVG+5DRY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c7-20020a5d4147000000b0030ae487eedcsi4080568wrq.313.2023.06.01.05.22.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 05:22:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=LdBq8ScU;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <ardb@kernel.org>
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id 189-20020a4a1ec6000000b005586008ccf1si992024ooq.71.2023.06.01.05.33.39
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Jun 2023 05:33:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DVG+5DRY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q4hKA-0004IN-1r; Thu, 01 Jun 2023 08:22:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hK1-00044e-RW
- for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:22:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hJy-0000C5-UE
- for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:22:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685622146;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HSKD3P83MbZh067oRhg9s3nDZZ4+oIWE19Br1HlCraU=;
- b=DVG+5DRY+jpdLt2GHEUW4LAKWcFaImWubLKEnze0YI8LHgb6BS9oAMInPGGXHSP+Gzo6Bj
- 1wihOBxxNco7mpXTu4z8RH9Wev+Pz9Nz8rkyRNXf8RJzQN3I0hjsJfzXCeP0xag30RW5w+
- bGgokx+Uc3ErUAtV/k5xByzzvZADrIw=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-1-SwBEqfVEMQOVMw0uBuXINw-1; Thu, 01 Jun 2023 08:22:25 -0400
-X-MC-Unique: SwBEqfVEMQOVMw0uBuXINw-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-3f613f5d290so14462455e9.2
- for <qemu-devel@nongnu.org>; Thu, 01 Jun 2023 05:22:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685622144; x=1688214144;
- h=content-transfer-encoding:in-reply-to:organization:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HSKD3P83MbZh067oRhg9s3nDZZ4+oIWE19Br1HlCraU=;
- b=Egjs50yKcUAGOtB5ORRF8PQVIn2nu0VgpD57c/GElTZqFSOuL22aJO0iW7aoEHaF8o
- G84j7wRDkP3QNV9nQww0aa4whgLYhoyv8Vq3TrdvPHbHKCFFkpP6Wif6RXjtmlZzX3uc
- pk+wHwlsOb6i0XoicxFv+sDJBtJmq1MkuFQR56FXBD1eLRZwr8UoRVGPSHQUcc+UM1NH
- UjecVYx8RSrpTcZmt2mDX68tm21V2qo1KYwNJBTy2Um30WFsKyooR2VQbcussaIem/2U
- XhO+eEY9aSJpE5LlO9ffxPk1DgA+QxYShJcfafcmrl0ZiPCGzz30+y+tVA1VIGio28sF
- cQmQ==
-X-Gm-Message-State: AC+VfDz0bNFm6xuFEiTZafqTUSER6IOz5c64O+uwiVBVwRnlJB/8NWmJ
- Qk7HWz2d70So2aAqzh2g82bh5Mat6DwcI9IG4fou+kWpkWIpBrVxbQfJHKw/NEfPCgRRR4w+4Ro
- UJ/Z3YiO23/Aj6gdvRy7hDBPI9dgEF5iBZCwvu1Nwnh1x2S2lFBxETaNwjpePox6UFV2cTZk=
-X-Received: by 2002:a05:600c:a391:b0:3f6:e79:3a8e with SMTP id
- hn17-20020a05600ca39100b003f60e793a8emr2310574wmb.12.1685622143980; 
- Thu, 01 Jun 2023 05:22:23 -0700 (PDT)
-X-Received: by 2002:a05:600c:a391:b0:3f6:e79:3a8e with SMTP id
- hn17-20020a05600ca39100b003f60e793a8emr2310555wmb.12.1685622143572; 
- Thu, 01 Jun 2023 05:22:23 -0700 (PDT)
-Received: from ?IPV6:2a09:80c0:192:0:5dac:bf3d:c41:c3e7?
- ([2a09:80c0:192:0:5dac:bf3d:c41:c3e7])
- by smtp.gmail.com with ESMTPSA id
- n5-20020adffe05000000b00307bc4e39e5sm10274974wrr.117.2023.06.01.05.22.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Jun 2023 05:22:22 -0700 (PDT)
-Message-ID: <b6bd9dee-8503-1c30-87ac-43eb34fe7c31@redhat.com>
-Date: Thu, 1 Jun 2023 14:22:21 +0200
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=LdBq8ScU;
+       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C445F608D5;
+	Thu,  1 Jun 2023 12:33:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3353C4339C;
+	Thu,  1 Jun 2023 12:33:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1685622819;
+	bh=ybhCCaRaMtEWM/hqlDKZlEwr5UC1ZUvXv1DqWaYk9MA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=LdBq8ScUOELwb9t043Oo96oEIYYaBTlNLZzhG4nhfAVcb52kUYZIjTynJSAd9o46r
+	 6HzLJI6SwsVNM7VxuQZZNWz6JMyARKEObO5CaDx5iUcoiBkOo7E9fp9NuuhvigtC0t
+	 ecdDvBCx0HGuvqwcgkXbotefMAXbpj0iQrXZfe+pXOW3uRhxQONBbClWxnLMZBrvwF
+	 7+WQLEGPy4L9LuTHEtLoArrb+fcxHvrh4Q7WBMllFQ1OasO7IBa4gV4g+OwJ1pcr+z
+	 YhHz4hyxbOxhA73ZK6QvMuwdS3Mmmpez9Fy6Xqb/l7uOLFfQZZ+CLb4a+0TplRDXcl
+	 hm0cbzHVqlgxA==
+From: Ard Biesheuvel <ardb@kernel.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Ard Biesheuvel <ardb@kernel.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 1/2] target/arm: Use x86 intrinsics to implement PMULL.P64
+Date: Thu,  1 Jun 2023 14:33:31 +0200
+Message-Id: <20230601123332.3297404-2-ardb@kernel.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230601123332.3297404-1-ardb@kernel.org>
+References: <20230601123332.3297404-1-ardb@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] memory-device: Track used region size in DeviceMemoryState
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>
-References: <20230601121447.272487-1-david@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230601121447.272487-1-david@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2850; i=ardb@kernel.org; h=from:subject; bh=ybhCCaRaMtEWM/hqlDKZlEwr5UC1ZUvXv1DqWaYk9MA=; b=owGbwMvMwCFmkMcZplerG8N4Wi2JIaViglixxrJ5/yNtmaMur5FTufNlysLajHyX/+emhLWl6 ig9s3/aUcrCIMbBICumyCIw+++7nacnStU6z5KFmcPKBDKEgYtTACZSEcrIsHex0Z1na8PK9BYe VgkSTCljm3zOdU/V3KMzHQPs/vCuWsPwVz43oJbD7KbbT4PySzs3nt8qfMdk/cp3zru+TLr8W+z rVnYA
+X-Developer-Key: i=ardb@kernel.org; a=openpgp; fpr=F43D03328115A198C90016883D200E9CA6329909
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.166,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GSdSfVoVgkNK
+X-TUID: wC/yXP3p3Qw3
 
-On 01.06.23 14:14, David Hildenbrand wrote:
-> Let's avoid iterating over all devices and simply track it in the
-> DeviceMemoryState.
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: David Hildenbrand <david@redhat.com>
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+---
+ host/include/i386/host/cpuinfo.h |  1 +
+ target/arm/tcg/vec_helper.c      | 26 +++++++++++++++++++-
+ util/cpuinfo-i386.c              |  1 +
+ 3 files changed, 27 insertions(+), 1 deletion(-)
 
-Not my week for sending patches, ignore this one, it's a duplicate with 
-#10 ...
-
+diff --git a/host/include/i386/host/cpuinfo.h b/host/include/i386/host/cpuinfo.h
+index 073d0a426f31487d..cf4ced844760d28f 100644
+--- a/host/include/i386/host/cpuinfo.h
++++ b/host/include/i386/host/cpuinfo.h
+@@ -27,6 +27,7 @@
+ #define CPUINFO_ATOMIC_VMOVDQA  (1u << 16)
+ #define CPUINFO_ATOMIC_VMOVDQU  (1u << 17)
+ #define CPUINFO_AES             (1u << 18)
++#define CPUINFO_PMULL           (1u << 19)
+ 
+ /* Initialized with a constructor. */
+ extern unsigned cpuinfo;
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index f59d3b26eacf08f8..fb422627588439b3 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -25,6 +25,14 @@
+ #include "qemu/int128.h"
+ #include "vec_internal.h"
+ 
++#ifdef __x86_64__
++#include "host/cpuinfo.h"
++#include <wmmintrin.h>
++#define TARGET_PMULL  __attribute__((__target__("pclmul")))
++#else
++#define TARGET_PMULL
++#endif
++
+ /*
+  * Data for expanding active predicate bits to bytes, for byte elements.
+  *
+@@ -2010,12 +2018,28 @@ void HELPER(gvec_pmul_b)(void *vd, void *vn, void *vm, uint32_t desc)
+  * Because of the lanes are not accessed in strict columns,
+  * this probably cannot be turned into a generic helper.
+  */
+-void HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
++void TARGET_PMULL HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
+ {
+     intptr_t i, j, opr_sz = simd_oprsz(desc);
+     intptr_t hi = simd_data(desc);
+     uint64_t *d = vd, *n = vn, *m = vm;
+ 
++#ifdef __x86_64__
++    if (cpuinfo & CPUINFO_PMULL) {
++	switch (hi) {
++	case 0:
++		*(__m128i *)vd = _mm_clmulepi64_si128(*(__m128i *)vm, *(__m128i *)vn, 0x0);
++		break;
++	case 1:
++		*(__m128i *)vd = _mm_clmulepi64_si128(*(__m128i *)vm, *(__m128i *)vn, 0x11);
++		break;
++	default:
++		g_assert_not_reached();
++	}
++        return;
++    }
++#endif
++
+     for (i = 0; i < opr_sz / 8; i += 2) {
+         uint64_t nn = n[i + hi];
+         uint64_t mm = m[i + hi];
+diff --git a/util/cpuinfo-i386.c b/util/cpuinfo-i386.c
+index 3043f066c0182dc8..8930e13451201a64 100644
+--- a/util/cpuinfo-i386.c
++++ b/util/cpuinfo-i386.c
+@@ -40,6 +40,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
+         info |= (c & bit_MOVBE ? CPUINFO_MOVBE : 0);
+         info |= (c & bit_POPCNT ? CPUINFO_POPCNT : 0);
+         info |= (c & bit_AES ? CPUINFO_AES : 0);
++        info |= (c & bit_PCLMULQDQ ? CPUINFO_PMULL : 0);
+ 
+         /* For AVX features, we must check available and usable. */
+         if ((c & bit_AVX) && (c & bit_OSXSAVE)) {
 -- 
-Thanks,
-
-David / dhildenb
-
+2.39.2

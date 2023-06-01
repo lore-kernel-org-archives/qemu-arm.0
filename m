@@ -1,149 +1,176 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp600969ejb;
-        Thu, 1 Jun 2023 10:13:25 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5P2kCJM4j1U/+zr3dbq0b+T97Cm2lhYHyv/jL8lhXvzJ1MGnoKB5PBucpFFTGupiVehpss
-X-Received: by 2002:aca:1b0f:0:b0:398:51fc:8a4a with SMTP id b15-20020aca1b0f000000b0039851fc8a4amr4801657oib.16.1685639605305;
-        Thu, 01 Jun 2023 10:13:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685639605; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp628129ejb;
+        Thu, 1 Jun 2023 11:00:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ47OK3o50DT3u2T53w2ZCbJgux2XOhiUwdnoOGAkVxlNdZyEodH0BwhWMNC928PPkXsIDuj
+X-Received: by 2002:a05:6214:b6a:b0:626:25f7:3bee with SMTP id ey10-20020a0562140b6a00b0062625f73beemr11342621qvb.34.1685642437746;
+        Thu, 01 Jun 2023 11:00:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685642437; cv=none;
         d=google.com; s=arc-20160816;
-        b=RRvARCLsvHfCytPUtka9XaNywhGkp1qip+RORLBUUigoxQZil5R5vii1FDIIvswb+3
-         +U2WBQtSef+UnZXnRyC78kftRrPK7U57FPdemsMF91mZYMkYBeHfPdHdRnViW0jXwV32
-         r2pnc1rX49v1PeUSL7dVDfw2ZCQ1tt+oZLJt68erMOB/3q/2PiBykW7LIg00ernXWA0p
-         cODEVHpHyW2MzXwgyOfP5dRyZ3g+u8fgzxPkTUNwsngzKh0pHxoJwPjMwFwcwCQu2/Uq
-         Jyg5WiJtCSgI7F5pq8/LkT8ItxzjZ/DmWTOi7iyFWbC4iEEluH2V6gevRh4gKkjhXcnH
-         b1SA==
+        b=Ry25LM/Ydgx3k9kLQK74r2SBM9seXedEXNsZB/JSdy7C0bSW031tIGR9aAsoSwgHLW
+         g4j03lkNhmXaN0eOuI830XoiGGP4BSwBIjNyGryWoKysj9zOFGq3eBQX8ga7cPP2RE+k
+         /gRkDEnGN6qmMd77h1FhxrohAPTIuMCLF1ndNMV8iftNhEyv0egGc1b2R2k/T7Hqj2ZF
+         0s9dgVvKtH275HKGxHq5FBLMF+/8Jpm3bG4vX8faj3wazLimG20q/9+Y2dvddhzAOmIr
+         /tbAMgdAKnGq73k/GNLTN5IFzzx8hNCUUohCjzMstZEMBCdfhbrKPZJnzgqfxESIuKkW
+         mVDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ivMHhB7iOV6+PmdYQPkSePUraaS2ym/i690T5eSkWCo=;
-        b=N9JPae7EHtfJfR5xk4oApNSZfoba1oLINCTf8JFi3dCn3Er8gFH/iOibP+Y08ySY48
-         0c8pbTMy0/7y2S808iFxgx9f/p8n/mIMCTJr7HSmuHRO37qGOxQUjCJpxKXmomWBh3gG
-         anzndCwkpw9Q0NR8NDp6nM5/5z5IKI9Gx+SzqlGTWWj0vZW0Lcf2fL+tEFacsBJNBfBD
-         hUmZU30b+U1jsOYU5DU6iFeqwrrIUrUjj1uOIdr7gTSkWKK+0bvkxzbaQtyJvtMpFw/5
-         nbS/SxU8UI5TJ5KnzuIxY0rrA1D9MuWeHPaoK8SYRzR3hfoxrD22NtQBs/F+39YpRGf7
-         MDjA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=nr9w0MeK2BLdjFCVRvzFEMcHC14LSHDWOJGwLGvOafE=;
+        b=1DjoxkqX+MhHsmtxkdUQ+CJdtWxUrxAzDwgsu5AOgoIZaPTrB2kyaQmV/8YqZelBA1
+         wzvWxvYEeXG/+5RXT93iEUFsAHAtECuqWmR7rENHm4a4paYFBGOZwFMUZUvs9aP+I7oN
+         D6aqOTrsIYonxK3lYyt+AGDnQc1WD/5QnCO1PpJXgUQlR4cajqfy1g2+BqFHGUkxjM02
+         +eac7CQFKwiOlgJWPllj7+sudBM30N4nqFpB3dCbaD0wre1yAFr8WwarnauJQn+V+BXq
+         k95YRNGaQ1f94l+9ZMwPwP5SksDvDlFjQCPkb0HwofFmJWjOdYdSQ5JFum+IXgMyNBAX
+         QH4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=QNi7MEY7;
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id s7-20020a05680810c700b003924bf9c833si638627ois.315.2023.06.01.10.13.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Jun 2023 10:13:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=kvx67tZ6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pt17-20020a056214049100b006257724fddbsi10379385qvb.359.2023.06.01.11.00.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Jun 2023 11:00:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=QNi7MEY7;
-       spf=pass (google.com: domain of ardb@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id F3C8C6481A;
-	Thu,  1 Jun 2023 17:13:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66FCDC4339C;
-	Thu,  1 Jun 2023 17:13:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685639604;
-	bh=JvQL6Ij4GYJBpmlRzXvWsOCbEAPXdtU4JKFO6R7yHx0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=QNi7MEY7W/x/w1Nq9pJvdzPqfAM9QU+cDG/A9rzCswhZWHSigQrukR34u5mDERXBL
-	 lY8lsMu68LlXU4oRUzxbJ1NIzu7sqD5GyYoAujS75dtAUCjEIvxbOJtVESnbSR8N8l
-	 Ax5o78Hl2tGKZpt5BHXMBavsySJQNfm4wgB0fvMH6/neljE035P/jSbq0VDKr5S7zi
-	 8L7AO/TeZ+r6YBUT5UWqKpMeJvKy/iuYUu7JEwSlDtLVNj1rXVahM1Qagv4oO7iTjw
-	 LIoG9cvdd5/0z0PTy3LlW/+iyeBxYJ+QoKWrJhAiXy/YgO2LtWSjl+L12dgRXCWBMV
-	 TWB7/kVC5dwZA==
-Received: by mail-lf1-f52.google.com with SMTP id 2adb3069b0e04-4eed764a10cso1436341e87.0;
-        Thu, 01 Jun 2023 10:13:24 -0700 (PDT)
-X-Gm-Message-State: AC+VfDzSpkeyMMIdoBbbXfv4UtATjLb3u+RrJdNiS+ec8jBKL0WTu25c
-	cGO+u2sn/kB6Xl4FOMRMj7MoSntCLEOZSVbpZ2I=
-X-Received: by 2002:ac2:5a06:0:b0:4f4:b28f:6b9c with SMTP id
- q6-20020ac25a06000000b004f4b28f6b9cmr376808lfn.29.1685639602381; Thu, 01 Jun
- 2023 10:13:22 -0700 (PDT)
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=kvx67tZ6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4mau-000165-DB; Thu, 01 Jun 2023 14:00:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1q4mas-00015h-CX; Thu, 01 Jun 2023 14:00:14 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1q4maq-0005h5-1m; Thu, 01 Jun 2023 14:00:14 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 351HnXrL020297; Thu, 1 Jun 2023 18:00:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=nr9w0MeK2BLdjFCVRvzFEMcHC14LSHDWOJGwLGvOafE=;
+ b=kvx67tZ68IKk+H01q4zII2UJhklz++N5/4ja5axcvedCoZmT/+ksA2q46YdhWn7I4CGJ
+ p0HAxYmGLBNZ8fIw4O3LZC/9Pzedx6gQHSNotqbEUgNZAQo6Ld4tuMH3YD8DZMFFUywN
+ XkVmEybOIr1nhmTxIPL3oytsBESa0zVbNs2Haq5O7QapS6j8XrYb2agiv/8n6AqKS9Y3
+ jvLI2vvdNzrmPqPylpBqS62cAFRUlTd0bYOn+PmeaeOoH8mYuSfQz25OzTBw8ZF5Yd2B
+ R2aQQk5jjLmV0EkVnqA9h03sdnalLx7jDooki+musr+BO5fMRFpBskvtQcQ1e41ghaF5 sw== 
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qxqyd9g7t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 01 Jun 2023 18:00:03 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA03.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 351I02Wx029615
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 1 Jun 2023 18:00:02 GMT
+Received: from qc-i7.hemma.eciton.net (10.80.80.8) by
+ nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.42; Thu, 1 Jun 2023 11:00:00 -0700
+Date: Thu, 1 Jun 2023 18:59:56 +0100
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Graeme Gregory <graeme@xora.org.uk>, <wangyuquan1236@phytium.com.cn>,
+ <chenbaozi@phytium.com.cn>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, Ard Biesheuvel <ardb@kernel.org>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Message-ID: <ZHjcnHMWM9/Rl9lv@qc-i7.hemma.eciton.net>
+References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
+ <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
+ <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
+ <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
+ <b663fb55-dc8e-9fd8-9d82-7e693c3c4ad3@quicinc.com>
+ <CAFEAcA_9Prr1xV2s1q2+GpWEnrsEEFT57bbLDnop5Hw3MaxM0A@mail.gmail.com>
 MIME-Version: 1.0
-References: <20230601123332.3297404-1-ardb@kernel.org> <20230601123332.3297404-3-ardb@kernel.org>
-In-Reply-To: <20230601123332.3297404-3-ardb@kernel.org>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Thu, 1 Jun 2023 19:13:10 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXHmiqA-3hi2KLpSDZzaWFwSmz-x61sRgJqawt7TNPZqnA@mail.gmail.com>
-Message-ID: <CAMj1kXHmiqA-3hi2KLpSDZzaWFwSmz-x61sRgJqawt7TNPZqnA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] target/i386: Implement PCLMULQDQ using AArch64 PMULL instructions
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: J3Uw1KaeEM66
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_9Prr1xV2s1q2+GpWEnrsEEFT57bbLDnop5Hw3MaxM0A@mail.gmail.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: KvafatApxE1qt8sqafR7ApQvjyoV6luQ
+X-Proofpoint-GUID: KvafatApxE1qt8sqafR7ApQvjyoV6luQ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-06-01_08,2023-05-31_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0
+ mlxlogscore=631 phishscore=0 mlxscore=0 bulkscore=0 spamscore=0
+ adultscore=0 impostorscore=0 priorityscore=1501 lowpriorityscore=0
+ suspectscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2304280000 definitions=main-2306010156
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uZhhpuCO8+JT
 
-On Thu, 1 Jun 2023 at 14:33, Ard Biesheuvel <ardb@kernel.org> wrote:
->
-> Use the AArch64 PMULL{2}.P64 instructions to implement PCLMULQDQ instead
-> of emulating them in C code if the host supports this. This is used in
-> the implementation of GCM, which is widely used in IPsec VPN and HTTPS.
->
-> Somewhat surprising results: on my ThunderX2, enabling this on top of
-> the AES acceleration I sent out earlier, the speedup is substantial.
->
-> (1420 is a typical IPsec block size - in HTTPS, GCM operates on much
-> larger block sizes but the kernel mode benchmarks are not the best place
-> to measure its performance in this mode)
->
-> tcrypt: testing speed of rfc4106(gcm(aes)) (rfc4106-gcm-aesni) encryption
->
-> No acceleration
-> tcrypt: test 5 (160 bit key, 1420 byte blocks): 10046 operations in 1 seconds (14265320 bytes)
->
-> AES acceleration
-> tcrypt: test 5 (160 bit key, 1420 byte blocks): 13970 operations in 1 seconds (19837400 bytes)
->
-> AES + PMULL acceleration
-> tcrypt: test 5 (160 bit key, 1420 byte blocks): 24372 operations in 1 seconds (34608240 bytes)
->
++Ard
 
-User space benchmark (using OS's qemu-x86_64 vs one built with these
-changes applied)
+On Thu, Jun 01, 2023 at 16:01:43 +0100, Peter Maydell wrote:
+> > >> Also has EHCI never worked, or has it worked in some modes and so this
+> > >> change should be versioned?
+> > >
+> > > AIUI, EHCI has never worked and can never have worked, because
+> > > this board's RAM is all above 4G and the QEMU EHCI controller
+> > > implementation only allows DMA descriptors with 32-bit addresses.
+> > >
+> > > Looking back at the archives, it seems we discussed XHCI vs
+> > > EHCI when the sbsa-ref board went in, and the conclusion was
+> > > that XHCI would be better. But there wasn't a sysbus XHCI device
+> > > at that point, so we ended up committing the sbsa-ref board
+> > > with EHCI and a plan to switch to XHCI when the sysbus-xhci
+> > > device was done, which we then forgot about:
+> > > https://mail.gnu.org/archive/html/qemu-arm/2018-11/msg00638.html
+> >
+> > Ah, thanks! That explains why we did the thing that made no sense :)
+> >
+> > To skip the migration hazard, my prefernece is we just leave the EHCI
+> > device in for now, and add a separate XHCI on PCIe. We can drop the
+> > EHCI device at some point in the future.
+> 
+> Why PCIe for the XHCI and not sysbus? At the time the board
+> was originally added the argument was in favour of using
+> a sysbus USB controller (you can see Ard making that point
+> in the linked archive thread).
 
-Speedup is about 5x
+The original argument was that having the device on the sysbus
+1) enabled codepaths we wanted to exercise and
+2) more closely resembled the development systems available at the
+time.
 
+1 still applies, but I'm not sure 2 does. Ard?
 
-ard@gambale:~/build/openssl$ apps/openssl speed -evp aes-128-gcm
-Doing AES-128-GCM for 3s on 16 size blocks: 1692138 AES-128-GCM's in 2.98s
-Doing AES-128-GCM for 3s on 64 size blocks: 665012 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 256 size blocks: 203784 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 1024 size blocks: 49397 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 8192 size blocks: 6447 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 16384 size blocks: 3058 AES-128-GCM's in 3.00s
-version: 3.2.0-dev
-built on: Thu Jun  1 17:06:09 2023 UTC
-options: bn(64,64)
-compiler: x86_64-linux-gnu-gcc -pthread -m64 -Wa,--noexecstack -Wall
--O3 -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_BUILDING_OPENSSL
--DNDEBUG
-CPUINFO: OPENSSL_ia32cap=0xfed8320b0fcbfffd:0x8001020c01d843a9
-The 'numbers' are in 1000s of bytes per second processed.
-type             16 bytes     64 bytes    256 bytes   1024 bytes
-8192 bytes  16384 bytes
-AES-128-GCM       9085.30k    14186.92k    17389.57k    16860.84k
-17604.61k    16700.76k
-
-
-
-ard@gambale:~/build/openssl$ ../qemu/build/qemu-x86_64 apps/openssl
-speed -evp aes-128-gcm
-Doing AES-128-GCM for 3s on 16 size blocks: 2703271 AES-128-GCM's in 2.99s
-Doing AES-128-GCM for 3s on 64 size blocks: 1537884 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 256 size blocks: 653008 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 1024 size blocks: 203579 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 8192 size blocks: 29020 AES-128-GCM's in 3.00s
-Doing AES-128-GCM for 3s on 16384 size blocks: 14716 AES-128-GCM's in 2.99s
-version: 3.2.0-dev
-built on: Thu Jun  1 17:06:09 2023 UTC
-options: bn(64,64)
-compiler: x86_64-linux-gnu-gcc -pthread -m64 -Wa,--noexecstack -Wall
--O3 -DOPENSSL_USE_NODELETE -DL_ENDIAN -DOPENSSL_BUILDING_OPENSSL
--DNDEBUG
-CPUINFO: OPENSSL_ia32cap=0xfed8320b0fcbfffd:0x8001020c01d843a9
-The 'numbers' are in 1000s of bytes per second processed.
-type             16 bytes     64 bytes    256 bytes   1024 bytes
-8192 bytes  16384 bytes
-AES-128-GCM      14465.66k    32808.19k    55723.35k    69488.30k
-79243.95k    80637.77k
+/
+    Leif

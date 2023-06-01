@@ -1,786 +1,390 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp533271ejb;
-        Thu, 1 Jun 2023 08:31:51 -0700 (PDT)
-X-Received: by 2002:ac2:5e9d:0:b0:4f4:deee:efaf with SMTP id b29-20020ac25e9d000000b004f4deeeefafmr261827lfq.4.1685633511696;
-        Thu, 01 Jun 2023 08:31:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685633511; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp656639ejb;
+        Thu, 1 Jun 2023 11:48:28 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7eRIihsuJSiAOMtOLTBx1QqZfCWv8mSE60OalvRNuQltFWvnRquZF59xGpeBKtnTzhiQAo
+X-Received: by 2002:a05:622a:148f:b0:3f8:364:70da with SMTP id t15-20020a05622a148f00b003f8036470damr10642113qtx.32.1685645308694;
+        Thu, 01 Jun 2023 11:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685645308; cv=none;
         d=google.com; s=arc-20160816;
-        b=r6tA+X/+nQKJYuMjlTHWAhZ0kv3W6iogcdwyv7oh5m6cVeLFtuYCffS/r030hxhL0x
-         9UGq/LdgExxp5K+8p3m6sQgUQImmytTP4VR6hrRAX1eetGwG7ZzykXjm+vYyvpg2ClLr
-         utRDsyo8ds81KIaTO1bc9k5NFs0fFMZH7JIYD6HUFQfCyb87FQl/5b/Eg++Uc9tHoyaq
-         OT0ea2NUGVkQTZEekav/bkA/iyoevM660mE5Bn3OvKoRLXHP5eN0+iCRHwiJ2W1MfsNh
-         e8b5MJT/2R5sPHoFT4e/ZNEUpKjPrnh9Q+EN882W1RMayajFB+hYyQ4kASWv9Hh60rW8
-         phfA==
+        b=j4F/zKYKImqMMmzi7McXsXHMjI54q3r301SMOpkl1NXa4cRJrVIDkHB/zyHH5u529z
+         RM8FAtWtB+BSDTATUWd5brabw9XpLVVU5AB3JL5GBtdFcCKbNuxGjVH4oocNu56vUywU
+         Z098tVsw+6GruLuFRUn1QvNdhZU8QtkBcXCJHISYnUPvHXnLqiYL+ifOTgc2LhWb329Z
+         P/edahfZAJaa5IB77HocFgzgUqQpOyknYtSlSL49QTfu8TAkvxzkGvrZvvi8kIX19wSi
+         J2GcyJR+apT8f9nhrv7KuvX7CZ3nZ9dTSbPZOVTev0bNH4qJt3eDI5OCRxDu1af5RPCf
+         SAtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8Zn0c0UKseOi7S7AmGeZn7dlkhsld3M/mRfedn+v9cM=;
-        b=PeIhOAZdECvqzc2iysFKdx47hgkq+4d92pqJxJeK0JK94esYBoNbdw8X6/QGN7SZPe
-         ydLs6xlErj2gaPRC469UDnmoewJiFz7SuDarEAHvXzg5Be8ALOiKCwdDEYLTTIJZNgc9
-         J9JoQyQBzQg0XzuoCp35m7mIDgjgxUFOCG7TwEkJc39R0GP8SGkfCR1g6xiYSe2kVLkq
-         dZN9vC2TnrdbLUMD8hYkQOBJxRTymb9FE3AOWgA1dqu0lxCpFZxEdpKvyRln3mqa0wp6
-         sHZXheWVAlMVpilEMGki7w2Z18+b1e+gvJq3Qic4VIwa6XIpxNg1/HCb+ygl0RXccag2
-         ELkw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
+        b=H7q0P3+/GL7QMP7tysp9WyDGS7jfKK3iwwgF706j2P1U2PfRqlI8zbomNogWjuCYSR
+         RQEY9Q7snI2sqdmi1fQ9+/2lYr8zhcG+XD0EYe6fYFwqss+/1M/g9Z9SV8CLDu3M9M5d
+         1/hafhKNHC3ZK5UZBTRb9bkTJYd3lOIDAjYuEHDMSyIwGANUbRZyaZkN56clpVxtkQKu
+         j23aL8d8l2yBlBc40RvxI7KETMV4zK5FIYoIRh3N2gc9WosGAB+bL225TCpMyIQJocsv
+         jGjbM+1v9UyPNsU+MuN06CP+xRbbc01uIeHMDjpDe+e+KGyNjMGDjIUJrHpC676bULyF
+         xQhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=rzmOLT3E;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=sKPcEo9R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l17-20020a1c7911000000b003edf4cd4319sor5458250wme.4.2023.06.01.08.31.51
-        (Google Transport Security);
-        Thu, 01 Jun 2023 08:31:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x12-20020a05622a000c00b003ef3aa3a380si10266022qtw.798.2023.06.01.11.48.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Jun 2023 11:48:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=rzmOLT3E;
-       spf=pass (google.com: domain of francesco.cagnin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesco.cagnin@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=sKPcEo9R;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4nLP-00015G-VG; Thu, 01 Jun 2023 14:48:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1q4nLB-00010Z-Ix; Thu, 01 Jun 2023 14:48:07 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1q4nL9-0005nG-6b; Thu, 01 Jun 2023 14:48:05 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-565cdb77b01so11214847b3.0; 
+ Thu, 01 Jun 2023 11:48:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1685633511; x=1688225511;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8Zn0c0UKseOi7S7AmGeZn7dlkhsld3M/mRfedn+v9cM=;
-        b=rzmOLT3EWQCxJHTGNK5Q6+Naag9EhDfuVh1E0pBTebiOjN0q0LowerSCGLbHPrwyBF
-         ReSL/9hXMLUILsLovi0GPQfuUV279sI/YAPtPw84HQ/7RRzZptT8eKDJ/9L9rmLqQp3n
-         S8sFX4SrqG2sZtk08fDgxXhn+N0kiwlsiaVOf3ydrLR8bd1q6pUcF9gA9DquzQ0UO6Px
-         TnCGgDXvky+XHQYnHCH9hWxpxrxkR/mty6Gs8rWaoJhl8eVz3uRMsXeIv+12AKWMPv/W
-         EdDq/xeNIg1gc4PRWa4VfwMkBjJH46voixKNxdi549+dCvUeYOoT6c5mXAi8mfa7glAn
-         EvNw==
+ d=gmail.com; s=20221208; t=1685645281; x=1688237281;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
+ b=sKPcEo9RjYIO2A0YUC8EmvRE/EpsxPGMV1k0q41vDqnthyISf+Nxh4iXiuka7o0qmH
+ pPPZA/NsWtSIps+YyHp6FuuYYMxVw2DMkc3OKk4IRwGNgYRQbA5b4TRgWx5GmPEZ6zUQ
+ 25qRBMr0jE1cp2Ebg8x4+G9i0NvSFKeb2e56uJY2ezQnjeraO77tBKVqxgA42WWimG2j
+ E/35x2KN53q9IQuan1fKZ7kt45wGMJELwcFYnOA3AaGX2ERVBj+CsRhQpEoTJXB6CB0Z
+ qYuqHGcL5JPySrHqsZ1IQV/RGtHgsvitT74zZVvtoaESrAWH/Tdr+bRw3T7LtxiUWblE
+ Nb2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685633511; x=1688225511;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8Zn0c0UKseOi7S7AmGeZn7dlkhsld3M/mRfedn+v9cM=;
-        b=B1xpdM5WecjtIFGP/PK/jkxmPw6GASQ1KHd+GukMQ9KD7ucbvrO2byBZf+vt1gyyL/
-         /6hk0L2sXhLyWH20A2+cFWyGcfmtDyLZwjocVhTYq60RgPUXv4Mv18U70YvVY4jkls8F
-         T3UEjx2vRU09OyU70p+uE2Q/twq17Mlm4sBbN5gfxjT48C548PLq4LLQ2GYOmTmi2JW3
-         XsfoXVrWE2AfxL/AKFwf40lYQeLBtvdUaMk4ouLDxb3qVjpo9nAfSf1IQHXtMU3iWQY3
-         TiB2oA8v9w63UpuNU9t9fZg7l7eZ758Ejp/fI0LQG8ngeJYjBZMGnMqCZ806T+cgrMKF
-         EAow==
-X-Gm-Message-State: AC+VfDwP6xOHV7HCAV9VT1JfqB7Ws7cSAGiYR81NiN4qpcMWGAJReO9g
-	q1NLiaSRdPAous6iIvyRPCY=
-X-Google-Smtp-Source: ACHHUZ5Ej6TmJrh1xUuWnLnlJgkIPcjr0ZCnM+lIvAq0s0+swzy4QxWX2FCNCXKFy8nJBa7YiMSxrw==
-X-Received: by 2002:a1c:7206:0:b0:3f6:3486:1396 with SMTP id n6-20020a1c7206000000b003f634861396mr2563471wmc.33.1685633510990;
-        Thu, 01 Jun 2023 08:31:50 -0700 (PDT)
-Return-Path: <francesco.cagnin@gmail.com>
-Received: from omega.guest.bzh.qb (177.23.22.93.rev.sfr.net. [93.22.23.177])
-        by smtp.gmail.com with ESMTPSA id l14-20020a1ced0e000000b003f4289b18a7sm2763975wmh.5.2023.06.01.08.31.50
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 01 Jun 2023 08:31:50 -0700 (PDT)
-From: francesco.cagnin@gmail.com
-X-Google-Original-From: fcagnin@quarkslab.com
-To: qemu-devel@nongnu.org
-Cc: mads@ynddal.dk,
-	dirty@apple.com,
-	peter.maydell@linaro.org,
-	qemu-arm@nongnu.org,
-	agraf@csgraf.de,
-	pbonzini@redhat.com,
-	alex.bennee@linaro.org,
-	philmd@linaro.org,
-	Francesco Cagnin <fcagnin@quarkslab.com>
-Subject: [PATCH v5 4/4] hvf: add guest debugging handlers for Apple Silicon hosts
-Date: Thu,  1 Jun 2023 17:31:07 +0200
-Message-Id: <20230601153107.81955-5-fcagnin@quarkslab.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230601153107.81955-1-fcagnin@quarkslab.com>
-References: <20230601153107.81955-1-fcagnin@quarkslab.com>
+ d=1e100.net; s=20221208; t=1685645281; x=1688237281;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
+ b=Bi8RQPk+QtMWtvKq14DTbG87Z7qI23LmczAoaswFOzdoGPMFX6NNIyqp/QMyNbNmE9
+ d7PmNXEMB1tjJuE5xobtvmayEmENxUjvHjAohC3njcJfbVRfYHg59wb0iV7+lgnfdPKK
+ WAU/o8Ek/j3xpjbqRmykOhIXLq0Q5WGjxrWRi/6NksQ4uw7TEYsxzXO7nBgfYg6AvIfL
+ J6KWNRdquiygAj+PXtjtCUSu5VqdFBgKMBMg84QEhN/oCOR+72urew3lToiJgL1GMIFJ
+ z+uKVLYTH+BOr7JWLm+iL3Y9+FTqtTe2Gp79AJOJs8vMvaQiZLdFokA+4xPqSn7w7Jyj
+ KuFw==
+X-Gm-Message-State: AC+VfDz2i6Ayu71G1IvbBa4n07s6QTxWMLFu3aSvoxdE8c4JPNCRAJpV
+ 32/2CLEPCNIbuVeqxO25GL0bQBRpzAE+E1YMT40=
+X-Received: by 2002:a81:5e54:0:b0:565:2f72:f65c with SMTP id
+ s81-20020a815e54000000b005652f72f65cmr9788182ywb.44.1685645281537; Thu, 01
+ Jun 2023 11:48:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 2O/ZAXPWQEWz
+References: <20230523100508.32564-1-qianfanguijin@163.com>
+In-Reply-To: <20230523100508.32564-1-qianfanguijin@163.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 1 Jun 2023 20:47:50 +0200
+Message-ID: <CAPan3Wr1phuot=613sXh-hT0An1-A5vuhcxMZ9SCGTze9w_PdQ@mail.gmail.com>
+Subject: Re: [PATCH v5 00/11] *** Add allwinner-r40 support ***
+To: qianfanguijin@163.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000039359a05fd15e09e"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hEU9UIbB5DS+
 
-From: Francesco Cagnin <fcagnin@quarkslab.com>
+--00000000000039359a05fd15e09e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Guests can now be debugged through the gdbstub. Support is added for
-single-stepping, software breakpoints, hardware breakpoints and
-watchpoints. The code has been structured like the KVM counterpart.
+Hi Qianfan,
 
-While guest debugging is enabled, the guest can still read and write the
-DBG*_EL1 registers but they don't have any effect.
+Thanks for sending the v5. From my side, I have no further comments on the
+content.
+So please feel free to add the following to each of the patches 01-11 in
+the series:
 
-Signed-off-by: Francesco Cagnin <fcagnin@quarkslab.com>
----
- accel/hvf/hvf-accel-ops.c |  10 +
- accel/hvf/hvf-all.c       |   6 +
- include/sysemu/hvf.h      |  15 ++
- include/sysemu/hvf_int.h  |   1 +
- target/arm/hvf/hvf.c      | 474 +++++++++++++++++++++++++++++++++++++-
- target/arm/hvf_arm.h      |   7 +
- target/i386/hvf/hvf.c     |   9 +
- 7 files changed, 520 insertions(+), 2 deletions(-)
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 92601b1369..9c3da03c94 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -343,12 +343,18 @@ static int hvf_accel_init(MachineState *ms)
-     return hvf_arch_init();
- }
- 
-+static inline int hvf_gdbstub_sstep_flags(void)
-+{
-+    return SSTEP_ENABLE | SSTEP_NOIRQ;
-+}
-+
- static void hvf_accel_class_init(ObjectClass *oc, void *data)
- {
-     AccelClass *ac = ACCEL_CLASS(oc);
-     ac->name = "HVF";
-     ac->init_machine = hvf_accel_init;
-     ac->allowed = &hvf_allowed;
-+    ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
- }
- 
- static const TypeInfo hvf_accel_type = {
-@@ -398,6 +404,8 @@ static int hvf_init_vcpu(CPUState *cpu)
-     cpu->vcpu_dirty = 1;
-     assert_hvf_ok(r);
- 
-+    cpu->hvf->guest_debug_enabled = false;
-+
-     return hvf_arch_init_vcpu(cpu);
- }
- 
-@@ -582,6 +590,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
-     ops->insert_breakpoint = hvf_insert_breakpoint;
-     ops->remove_breakpoint = hvf_remove_breakpoint;
-     ops->remove_all_breakpoints = hvf_remove_all_breakpoints;
-+    ops->update_guest_debug = hvf_update_guest_debug;
-+    ops->supports_guest_debug = hvf_arch_supports_guest_debug;
- };
- static const TypeInfo hvf_accel_ops_type = {
-     .name = ACCEL_OPS_NAME("hvf"),
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index e983c23ad7..754707dbfb 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -61,3 +61,9 @@ int hvf_sw_breakpoints_active(CPUState *cpu)
- {
-     return !QTAILQ_EMPTY(&hvf_state->hvf_sw_breakpoints);
- }
-+
-+int hvf_update_guest_debug(CPUState *cpu)
-+{
-+    hvf_arch_update_guest_debug(cpu);
-+    return 0;
-+}
-diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
-index 386020a29c..70549b9158 100644
---- a/include/sysemu/hvf.h
-+++ b/include/sysemu/hvf.h
-@@ -56,6 +56,21 @@ int hvf_arch_insert_hw_breakpoint(target_ulong addr, target_ulong len,
- int hvf_arch_remove_hw_breakpoint(target_ulong addr, target_ulong len,
-                                   int type);
- void hvf_arch_remove_all_hw_breakpoints(void);
-+
-+/*
-+ * hvf_update_guest_debug:
-+ * @cs: CPUState for the CPU to update
-+ *
-+ * Update guest to enable or disable debugging. Per-arch specifics will be
-+ * handled by calling down to hvf_arch_update_guest_debug.
-+ */
-+int hvf_update_guest_debug(CPUState *cpu);
-+void hvf_arch_update_guest_debug(CPUState *cpu);
-+
-+/*
-+ * Return whether the guest supports debugging.
-+ */
-+bool hvf_arch_supports_guest_debug(void);
- #endif /* NEED_CPU_H */
- 
- #endif
-diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
-index 3592239fdc..6ab119e49f 100644
---- a/include/sysemu/hvf_int.h
-+++ b/include/sysemu/hvf_int.h
-@@ -54,6 +54,7 @@ struct hvf_vcpu_state {
-     void *exit;
-     bool vtimer_masked;
-     sigset_t unblock_ipi_mask;
-+    bool guest_debug_enabled;
- };
- 
- void assert_hvf_ok(hv_return_t ret);
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index bb83627727..2bd0a35cba 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -33,6 +33,116 @@
- 
- #include "exec/gdbstub.h"
- 
-+#define MDSCR_EL1_SS_SHIFT  0
-+#define MDSCR_EL1_MDE_SHIFT 15
-+
-+static uint16_t dbgbcr_regs[] = {
-+    HV_SYS_REG_DBGBCR0_EL1,
-+    HV_SYS_REG_DBGBCR1_EL1,
-+    HV_SYS_REG_DBGBCR2_EL1,
-+    HV_SYS_REG_DBGBCR3_EL1,
-+    HV_SYS_REG_DBGBCR4_EL1,
-+    HV_SYS_REG_DBGBCR5_EL1,
-+    HV_SYS_REG_DBGBCR6_EL1,
-+    HV_SYS_REG_DBGBCR7_EL1,
-+    HV_SYS_REG_DBGBCR8_EL1,
-+    HV_SYS_REG_DBGBCR9_EL1,
-+    HV_SYS_REG_DBGBCR10_EL1,
-+    HV_SYS_REG_DBGBCR11_EL1,
-+    HV_SYS_REG_DBGBCR12_EL1,
-+    HV_SYS_REG_DBGBCR13_EL1,
-+    HV_SYS_REG_DBGBCR14_EL1,
-+    HV_SYS_REG_DBGBCR15_EL1,
-+};
-+static uint16_t dbgbvr_regs[] = {
-+    HV_SYS_REG_DBGBVR0_EL1,
-+    HV_SYS_REG_DBGBVR1_EL1,
-+    HV_SYS_REG_DBGBVR2_EL1,
-+    HV_SYS_REG_DBGBVR3_EL1,
-+    HV_SYS_REG_DBGBVR4_EL1,
-+    HV_SYS_REG_DBGBVR5_EL1,
-+    HV_SYS_REG_DBGBVR6_EL1,
-+    HV_SYS_REG_DBGBVR7_EL1,
-+    HV_SYS_REG_DBGBVR8_EL1,
-+    HV_SYS_REG_DBGBVR9_EL1,
-+    HV_SYS_REG_DBGBVR10_EL1,
-+    HV_SYS_REG_DBGBVR11_EL1,
-+    HV_SYS_REG_DBGBVR12_EL1,
-+    HV_SYS_REG_DBGBVR13_EL1,
-+    HV_SYS_REG_DBGBVR14_EL1,
-+    HV_SYS_REG_DBGBVR15_EL1,
-+};
-+static uint16_t dbgwcr_regs[] = {
-+    HV_SYS_REG_DBGWCR0_EL1,
-+    HV_SYS_REG_DBGWCR1_EL1,
-+    HV_SYS_REG_DBGWCR2_EL1,
-+    HV_SYS_REG_DBGWCR3_EL1,
-+    HV_SYS_REG_DBGWCR4_EL1,
-+    HV_SYS_REG_DBGWCR5_EL1,
-+    HV_SYS_REG_DBGWCR6_EL1,
-+    HV_SYS_REG_DBGWCR7_EL1,
-+    HV_SYS_REG_DBGWCR8_EL1,
-+    HV_SYS_REG_DBGWCR9_EL1,
-+    HV_SYS_REG_DBGWCR10_EL1,
-+    HV_SYS_REG_DBGWCR11_EL1,
-+    HV_SYS_REG_DBGWCR12_EL1,
-+    HV_SYS_REG_DBGWCR13_EL1,
-+    HV_SYS_REG_DBGWCR14_EL1,
-+    HV_SYS_REG_DBGWCR15_EL1,
-+};
-+static uint16_t dbgwvr_regs[] = {
-+    HV_SYS_REG_DBGWVR0_EL1,
-+    HV_SYS_REG_DBGWVR1_EL1,
-+    HV_SYS_REG_DBGWVR2_EL1,
-+    HV_SYS_REG_DBGWVR3_EL1,
-+    HV_SYS_REG_DBGWVR4_EL1,
-+    HV_SYS_REG_DBGWVR5_EL1,
-+    HV_SYS_REG_DBGWVR6_EL1,
-+    HV_SYS_REG_DBGWVR7_EL1,
-+    HV_SYS_REG_DBGWVR8_EL1,
-+    HV_SYS_REG_DBGWVR9_EL1,
-+    HV_SYS_REG_DBGWVR10_EL1,
-+    HV_SYS_REG_DBGWVR11_EL1,
-+    HV_SYS_REG_DBGWVR12_EL1,
-+    HV_SYS_REG_DBGWVR13_EL1,
-+    HV_SYS_REG_DBGWVR14_EL1,
-+    HV_SYS_REG_DBGWVR15_EL1,
-+};
-+
-+static inline int hvf_arm_num_brps(hv_vcpu_config_t config)
-+{
-+    uint64_t val;
-+    hv_return_t ret;
-+    ret = hv_vcpu_config_get_feature_reg(config, HV_FEATURE_REG_ID_AA64DFR0_EL1,
-+                                         &val);
-+    assert_hvf_ok(ret);
-+    return FIELD_EX64(val, ID_AA64DFR0, BRPS) + 1;
-+}
-+
-+static inline int hvf_arm_num_wrps(hv_vcpu_config_t config)
-+{
-+    uint64_t val;
-+    hv_return_t ret;
-+    ret = hv_vcpu_config_get_feature_reg(config, HV_FEATURE_REG_ID_AA64DFR0_EL1,
-+                                         &val);
-+    assert_hvf_ok(ret);
-+    return FIELD_EX64(val, ID_AA64DFR0, WRPS) + 1;
-+}
-+
-+void hvf_arm_init_debug(void)
-+{
-+    hv_vcpu_config_t config;
-+    config = hv_vcpu_config_create();
-+
-+    max_hw_bps = hvf_arm_num_brps(config);
-+    hw_breakpoints =
-+        g_array_sized_new(true, true, sizeof(HWBreakpoint), max_hw_bps);
-+
-+    max_hw_wps = hvf_arm_num_wrps(config);
-+    hw_watchpoints =
-+        g_array_sized_new(true, true, sizeof(HWWatchpoint), max_hw_wps);
-+}
-+
- #define HVF_SYSREG(crn, crm, op0, op1, op2) \
-         ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
- #define PL1_WRITE_MASK 0x4
-@@ -465,6 +575,92 @@ int hvf_get_registers(CPUState *cpu)
-             continue;
-         }
- 
-+        if (cpu->hvf->guest_debug_enabled) {
-+            /* Handle debug registers */
-+            switch (hvf_sreg_match[i].reg) {
-+            case HV_SYS_REG_DBGBVR0_EL1:
-+            case HV_SYS_REG_DBGBCR0_EL1:
-+            case HV_SYS_REG_DBGWVR0_EL1:
-+            case HV_SYS_REG_DBGWCR0_EL1:
-+            case HV_SYS_REG_DBGBVR1_EL1:
-+            case HV_SYS_REG_DBGBCR1_EL1:
-+            case HV_SYS_REG_DBGWVR1_EL1:
-+            case HV_SYS_REG_DBGWCR1_EL1:
-+            case HV_SYS_REG_DBGBVR2_EL1:
-+            case HV_SYS_REG_DBGBCR2_EL1:
-+            case HV_SYS_REG_DBGWVR2_EL1:
-+            case HV_SYS_REG_DBGWCR2_EL1:
-+            case HV_SYS_REG_DBGBVR3_EL1:
-+            case HV_SYS_REG_DBGBCR3_EL1:
-+            case HV_SYS_REG_DBGWVR3_EL1:
-+            case HV_SYS_REG_DBGWCR3_EL1:
-+            case HV_SYS_REG_DBGBVR4_EL1:
-+            case HV_SYS_REG_DBGBCR4_EL1:
-+            case HV_SYS_REG_DBGWVR4_EL1:
-+            case HV_SYS_REG_DBGWCR4_EL1:
-+            case HV_SYS_REG_DBGBVR5_EL1:
-+            case HV_SYS_REG_DBGBCR5_EL1:
-+            case HV_SYS_REG_DBGWVR5_EL1:
-+            case HV_SYS_REG_DBGWCR5_EL1:
-+            case HV_SYS_REG_DBGBVR6_EL1:
-+            case HV_SYS_REG_DBGBCR6_EL1:
-+            case HV_SYS_REG_DBGWVR6_EL1:
-+            case HV_SYS_REG_DBGWCR6_EL1:
-+            case HV_SYS_REG_DBGBVR7_EL1:
-+            case HV_SYS_REG_DBGBCR7_EL1:
-+            case HV_SYS_REG_DBGWVR7_EL1:
-+            case HV_SYS_REG_DBGWCR7_EL1:
-+            case HV_SYS_REG_DBGBVR8_EL1:
-+            case HV_SYS_REG_DBGBCR8_EL1:
-+            case HV_SYS_REG_DBGWVR8_EL1:
-+            case HV_SYS_REG_DBGWCR8_EL1:
-+            case HV_SYS_REG_DBGBVR9_EL1:
-+            case HV_SYS_REG_DBGBCR9_EL1:
-+            case HV_SYS_REG_DBGWVR9_EL1:
-+            case HV_SYS_REG_DBGWCR9_EL1:
-+            case HV_SYS_REG_DBGBVR10_EL1:
-+            case HV_SYS_REG_DBGBCR10_EL1:
-+            case HV_SYS_REG_DBGWVR10_EL1:
-+            case HV_SYS_REG_DBGWCR10_EL1:
-+            case HV_SYS_REG_DBGBVR11_EL1:
-+            case HV_SYS_REG_DBGBCR11_EL1:
-+            case HV_SYS_REG_DBGWVR11_EL1:
-+            case HV_SYS_REG_DBGWCR11_EL1:
-+            case HV_SYS_REG_DBGBVR12_EL1:
-+            case HV_SYS_REG_DBGBCR12_EL1:
-+            case HV_SYS_REG_DBGWVR12_EL1:
-+            case HV_SYS_REG_DBGWCR12_EL1:
-+            case HV_SYS_REG_DBGBVR13_EL1:
-+            case HV_SYS_REG_DBGBCR13_EL1:
-+            case HV_SYS_REG_DBGWVR13_EL1:
-+            case HV_SYS_REG_DBGWCR13_EL1:
-+            case HV_SYS_REG_DBGBVR14_EL1:
-+            case HV_SYS_REG_DBGBCR14_EL1:
-+            case HV_SYS_REG_DBGWVR14_EL1:
-+            case HV_SYS_REG_DBGWCR14_EL1:
-+            case HV_SYS_REG_DBGBVR15_EL1:
-+            case HV_SYS_REG_DBGBCR15_EL1:
-+            case HV_SYS_REG_DBGWVR15_EL1:
-+            case HV_SYS_REG_DBGWCR15_EL1: {
-+                /*
-+                 * If the guest is being debugged, the vCPU's debug registers
-+                 * are holding the gdbstub's view of the registers (set in
-+                 * hvf_arch_update_guest_debug()).
-+                 * Since the environment is used to store only the guest's view
-+                 * of the registers, don't update it with the values from the
-+                 * vCPU but simply keep the values from the previous
-+                 * environment.
-+                 */
-+                const ARMCPRegInfo *ri;
-+                ri = get_arm_cp_reginfo(arm_cpu->cp_regs, hvf_sreg_match[i].key);
-+                val = read_raw_cp_reg(env, ri);
-+
-+                arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx] = val;
-+                continue;
-+            }
-+            }
-+        }
-+
-         ret = hv_vcpu_get_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, &val);
-         assert_hvf_ok(ret);
- 
-@@ -516,6 +712,82 @@ int hvf_put_registers(CPUState *cpu)
-             continue;
-         }
- 
-+        if (cpu->hvf->guest_debug_enabled) {
-+            /* Handle debug registers */
-+            switch (hvf_sreg_match[i].reg) {
-+            case HV_SYS_REG_DBGBVR0_EL1:
-+            case HV_SYS_REG_DBGBCR0_EL1:
-+            case HV_SYS_REG_DBGWVR0_EL1:
-+            case HV_SYS_REG_DBGWCR0_EL1:
-+            case HV_SYS_REG_DBGBVR1_EL1:
-+            case HV_SYS_REG_DBGBCR1_EL1:
-+            case HV_SYS_REG_DBGWVR1_EL1:
-+            case HV_SYS_REG_DBGWCR1_EL1:
-+            case HV_SYS_REG_DBGBVR2_EL1:
-+            case HV_SYS_REG_DBGBCR2_EL1:
-+            case HV_SYS_REG_DBGWVR2_EL1:
-+            case HV_SYS_REG_DBGWCR2_EL1:
-+            case HV_SYS_REG_DBGBVR3_EL1:
-+            case HV_SYS_REG_DBGBCR3_EL1:
-+            case HV_SYS_REG_DBGWVR3_EL1:
-+            case HV_SYS_REG_DBGWCR3_EL1:
-+            case HV_SYS_REG_DBGBVR4_EL1:
-+            case HV_SYS_REG_DBGBCR4_EL1:
-+            case HV_SYS_REG_DBGWVR4_EL1:
-+            case HV_SYS_REG_DBGWCR4_EL1:
-+            case HV_SYS_REG_DBGBVR5_EL1:
-+            case HV_SYS_REG_DBGBCR5_EL1:
-+            case HV_SYS_REG_DBGWVR5_EL1:
-+            case HV_SYS_REG_DBGWCR5_EL1:
-+            case HV_SYS_REG_DBGBVR6_EL1:
-+            case HV_SYS_REG_DBGBCR6_EL1:
-+            case HV_SYS_REG_DBGWVR6_EL1:
-+            case HV_SYS_REG_DBGWCR6_EL1:
-+            case HV_SYS_REG_DBGBVR7_EL1:
-+            case HV_SYS_REG_DBGBCR7_EL1:
-+            case HV_SYS_REG_DBGWVR7_EL1:
-+            case HV_SYS_REG_DBGWCR7_EL1:
-+            case HV_SYS_REG_DBGBVR8_EL1:
-+            case HV_SYS_REG_DBGBCR8_EL1:
-+            case HV_SYS_REG_DBGWVR8_EL1:
-+            case HV_SYS_REG_DBGWCR8_EL1:
-+            case HV_SYS_REG_DBGBVR9_EL1:
-+            case HV_SYS_REG_DBGBCR9_EL1:
-+            case HV_SYS_REG_DBGWVR9_EL1:
-+            case HV_SYS_REG_DBGWCR9_EL1:
-+            case HV_SYS_REG_DBGBVR10_EL1:
-+            case HV_SYS_REG_DBGBCR10_EL1:
-+            case HV_SYS_REG_DBGWVR10_EL1:
-+            case HV_SYS_REG_DBGWCR10_EL1:
-+            case HV_SYS_REG_DBGBVR11_EL1:
-+            case HV_SYS_REG_DBGBCR11_EL1:
-+            case HV_SYS_REG_DBGWVR11_EL1:
-+            case HV_SYS_REG_DBGWCR11_EL1:
-+            case HV_SYS_REG_DBGBVR12_EL1:
-+            case HV_SYS_REG_DBGBCR12_EL1:
-+            case HV_SYS_REG_DBGWVR12_EL1:
-+            case HV_SYS_REG_DBGWCR12_EL1:
-+            case HV_SYS_REG_DBGBVR13_EL1:
-+            case HV_SYS_REG_DBGBCR13_EL1:
-+            case HV_SYS_REG_DBGWVR13_EL1:
-+            case HV_SYS_REG_DBGWCR13_EL1:
-+            case HV_SYS_REG_DBGBVR14_EL1:
-+            case HV_SYS_REG_DBGBCR14_EL1:
-+            case HV_SYS_REG_DBGWVR14_EL1:
-+            case HV_SYS_REG_DBGWCR14_EL1:
-+            case HV_SYS_REG_DBGBVR15_EL1:
-+            case HV_SYS_REG_DBGBCR15_EL1:
-+            case HV_SYS_REG_DBGWVR15_EL1:
-+            case HV_SYS_REG_DBGWCR15_EL1:
-+                /*
-+                 * If the guest is being debugged, the vCPU's debug registers
-+                 * are already holding the gdbstub's view of the registers (set
-+                 * in hvf_arch_update_guest_debug()).
-+                 */
-+                continue;
-+            }
-+        }
-+
-         val = arm_cpu->cpreg_values[hvf_sreg_match[i].cp_idx];
-         ret = hv_vcpu_set_sys_reg(cpu->hvf->fd, hvf_sreg_match[i].reg, val);
-         assert_hvf_ok(ret);
-@@ -1532,11 +1804,13 @@ int hvf_vcpu_exec(CPUState *cpu)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
-+    int ret;
-     hv_vcpu_exit_t *hvf_exit = cpu->hvf->exit;
-     hv_return_t r;
-     bool advance_pc = false;
- 
--    if (hvf_inject_interrupts(cpu)) {
-+    if (!(cpu->singlestep_enabled & SSTEP_NOIRQ) &&
-+        hvf_inject_interrupts(cpu)) {
-         return EXCP_INTERRUPT;
-     }
- 
-@@ -1554,6 +1828,7 @@ int hvf_vcpu_exec(CPUState *cpu)
-     uint64_t syndrome = hvf_exit->exception.syndrome;
-     uint32_t ec = syn_get_ec(syndrome);
- 
-+    ret = 0;
-     qemu_mutex_lock_iothread();
-     switch (exit_reason) {
-     case HV_EXIT_REASON_EXCEPTION:
-@@ -1573,6 +1848,49 @@ int hvf_vcpu_exec(CPUState *cpu)
-     hvf_sync_vtimer(cpu);
- 
-     switch (ec) {
-+    case EC_SOFTWARESTEP: {
-+        ret = EXCP_DEBUG;
-+
-+        if (!cpu->singlestep_enabled) {
-+            error_report("EC_SOFTWARESTEP but single-stepping not enabled");
-+        }
-+        break;
-+    }
-+    case EC_AA64_BKPT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        if (!hvf_find_sw_breakpoint(cpu, env->pc)) {
-+            /* Re-inject into the guest */
-+            ret = 0;
-+            hvf_raise_exception(cpu, EXCP_BKPT, syn_aa64_bkpt(0));
-+        }
-+        break;
-+    }
-+    case EC_BREAKPOINT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        if (!find_hw_breakpoint(cpu, env->pc)) {
-+            error_report("EC_BREAKPOINT but unknown hw breakpoint");
-+        }
-+        break;
-+    }
-+    case EC_WATCHPOINT: {
-+        ret = EXCP_DEBUG;
-+
-+        cpu_synchronize_state(cpu);
-+
-+        CPUWatchpoint *wp =
-+            find_hw_watchpoint(cpu, hvf_exit->exception.virtual_address);
-+        if (!wp) {
-+            error_report("EXCP_DEBUG but unknown hw watchpoint");
-+        }
-+        cpu->watchpoint_hit = wp;
-+        break;
-+    }
-     case EC_DATAABORT: {
-         bool isv = syndrome & ARM_EL_ISV;
-         bool iswrite = (syndrome >> 6) & 1;
-@@ -1677,9 +1995,14 @@ int hvf_vcpu_exec(CPUState *cpu)
-         pc += 4;
-         r = hv_vcpu_set_reg(cpu->hvf->fd, HV_REG_PC, pc);
-         assert_hvf_ok(r);
-+
-+        /* Handle single-stepping over instructions which trigger a VM exit */
-+        if (cpu->singlestep_enabled) {
-+            ret = EXCP_DEBUG;
-+        }
-     }
- 
--    return 0;
-+    return ret;
- }
- 
- static const VMStateDescription vmstate_hvf_vtimer = {
-@@ -1711,6 +2034,9 @@ int hvf_arch_init(void)
-     hvf_state->vtimer_offset = mach_absolute_time();
-     vmstate_register(NULL, 0, &vmstate_hvf_vtimer, &vtimer);
-     qemu_add_vm_change_state_handler(hvf_vm_state_change, &vtimer);
-+
-+    hvf_arm_init_debug();
-+
-     return 0;
- }
- 
-@@ -1774,3 +2100,147 @@ void hvf_arch_remove_all_hw_breakpoints(void)
-         g_array_remove_range(hw_breakpoints, 0, cur_hw_bps);
-     }
- }
-+
-+/*
-+ * Update the vCPU with the gdbstub's view of debug registers. This view
-+ * consists of all hardware breakpoints and watchpoints inserted so far while
-+ * debugging the guest.
-+ */
-+static void hvf_put_gdbstub_debug_registers(CPUState *cpu)
-+{
-+    hv_return_t r = HV_SUCCESS;
-+    int i;
-+
-+    for (i = 0; i < cur_hw_bps; i++) {
-+        HWBreakpoint *bp = get_hw_bp(i);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbcr_regs[i], bp->bcr);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbvr_regs[i], bp->bvr);
-+        assert_hvf_ok(r);
-+    }
-+    for (i = cur_hw_bps; i < max_hw_bps; i++) {
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbcr_regs[i], 0);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbvr_regs[i], 0);
-+        assert_hvf_ok(r);
-+    }
-+
-+    for (i = 0; i < cur_hw_wps; i++) {
-+        HWWatchpoint *wp = get_hw_wp(i);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwcr_regs[i], wp->wcr);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwvr_regs[i], wp->wvr);
-+        assert_hvf_ok(r);
-+    }
-+    for (i = cur_hw_wps; i < max_hw_wps; i++) {
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwcr_regs[i], 0);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwvr_regs[i], 0);
-+        assert_hvf_ok(r);
-+    }
-+}
-+
-+/*
-+ * Update the vCPU with the guest's view of debug registers. This view is kept
-+ * in the environment at all times.
-+ */
-+static void hvf_put_guest_debug_registers(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    hv_return_t r = HV_SUCCESS;
-+    int i;
-+
-+    for (i = 0; i < max_hw_bps; i++) {
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbcr_regs[i],
-+                                env->cp15.dbgbcr[i]);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgbvr_regs[i],
-+                                env->cp15.dbgbvr[i]);
-+        assert_hvf_ok(r);
-+    }
-+
-+    for (i = 0; i < max_hw_wps; i++) {
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwcr_regs[i],
-+                                env->cp15.dbgwcr[i]);
-+        assert_hvf_ok(r);
-+        r = hv_vcpu_set_sys_reg(cpu->hvf->fd, dbgwvr_regs[i],
-+                                env->cp15.dbgwvr[i]);
-+        assert_hvf_ok(r);
-+    }
-+}
-+
-+static inline bool hvf_arm_hw_debug_active(CPUState *cpu)
-+{
-+    return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
-+}
-+
-+static void hvf_arch_set_traps(void)
-+{
-+    CPUState *cpu;
-+    bool should_enable_traps = false;
-+    hv_return_t r = HV_SUCCESS;
-+
-+    /* Check whether guest debugging is enabled for at least one vCPU; if it
-+     * is, enable exiting the guest on all vCPUs */
-+    CPU_FOREACH(cpu) {
-+        should_enable_traps |= cpu->hvf->guest_debug_enabled;
-+    }
-+    CPU_FOREACH(cpu) {
-+        /* Set whether debug exceptions exit the guest */
-+        r = hv_vcpu_set_trap_debug_exceptions(cpu->hvf->fd,
-+                                              should_enable_traps);
-+        assert_hvf_ok(r);
-+
-+        /* Set whether accesses to debug registers exit the guest */
-+        r = hv_vcpu_set_trap_debug_reg_accesses(cpu->hvf->fd,
-+                                                should_enable_traps);
-+        assert_hvf_ok(r);
-+    }
-+}
-+
-+void hvf_arch_update_guest_debug(CPUState *cpu)
-+{
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+
-+    /* Check whether guest debugging is enabled */
-+    cpu->hvf->guest_debug_enabled = cpu->singlestep_enabled ||
-+                                    hvf_sw_breakpoints_active(cpu) ||
-+                                    hvf_arm_hw_debug_active(cpu);
-+
-+    /* Update debug registers */
-+    if (cpu->hvf->guest_debug_enabled) {
-+        hvf_put_gdbstub_debug_registers(cpu);
-+    } else {
-+        hvf_put_guest_debug_registers(cpu);
-+    }
-+
-+    cpu_synchronize_state(cpu);
-+
-+    /* Enable/disable single-stepping */
-+    if (cpu->singlestep_enabled) {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_SS_SHIFT, 1, 1);
-+        pstate_write(env, pstate_read(env) | PSTATE_SS);
-+    } else {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_SS_SHIFT, 1, 0);
-+    }
-+
-+    /* Enable/disable Breakpoint exceptions */
-+    if (hvf_arm_hw_debug_active(cpu)) {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_MDE_SHIFT, 1, 1);
-+    } else {
-+        env->cp15.mdscr_el1 =
-+            deposit64(env->cp15.mdscr_el1, MDSCR_EL1_MDE_SHIFT, 1, 0);
-+    }
-+
-+    hvf_arch_set_traps();
-+}
-+
-+inline bool hvf_arch_supports_guest_debug(void)
-+{
-+    return true;
-+}
-diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
-index 9a9d1a0bf5..e848c1d27d 100644
---- a/target/arm/hvf_arm.h
-+++ b/target/arm/hvf_arm.h
-@@ -13,6 +13,13 @@
- 
- #include "cpu.h"
- 
-+/**
-+ * hvf_arm_init_debug() - initialize guest debug capabilities
-+ *
-+ * Should be called only once before using guest debug capabilities.
-+ */
-+void hvf_arm_init_debug(void);
-+
- void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
- 
- #endif
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 08bc96ecbc..f6775c942a 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -703,3 +703,12 @@ int hvf_arch_remove_hw_breakpoint(target_ulong addr, target_ulong len, int type)
- void hvf_arch_remove_all_hw_breakpoints(void)
- {
- }
-+
-+void hvf_arch_update_guest_debug(CPUState *cpu)
-+{
-+}
-+
-+inline bool hvf_arch_supports_guest_debug(void)
-+{
-+    return false;
-+}
--- 
-2.40.1
+As a reminder and explained here on this page, you'll need to make sure
+these lines gets added to each of the commit messages:
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html#proper-use-o=
+f-reviewed-by-tags-can-aid-review
+
+Doing so would require you to send another updated v6, and baselined on the
+latest master.
+
+Thanks again for contributing this to Qemu, hopefully we can see it merged
+soon.
+
+Regards,
+Niek
+
+On Tue, May 23, 2023 at 12:05=E2=80=AFPM <qianfanguijin@163.com> wrote:
+
+> From: qianfan Zhao <qianfanguijin@163.com>
+>
+> ***History***
+> # v1: 2023-03-21
+>
+> The first version which add allwinner-r40 support, supported features:
+>
+> + ccu
+> + dram controller
+> + uart
+> + i2c and pmic(axp221)
+> + sdcard
+> + emac/gmac
+>
+> Also provide a test case under avocado, running quickly test:
+>
+> $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \
+>     --verbose --show=3Dapp,console run -t machine:bpim2u \
+>     ../tests/avocado/boot_linux_console.py
+>
+> # v2: 2023-03-28
+>
+> 1. Fix the waring and error reported by checkpatch.pl
+> 2. Remove the other i2c controllers except that i2c0
+> 3. Use an array to register mmc and uart devices
+> 4. Rename axp209 to axp22x and add axp221 support
+> 5. Add a basic SRAM controller
+>
+> # v3: 2023-04-18
+>
+> 1. Update some commit messages
+> 2. Squash those two commit about sdcard
+>    hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
+>    hw: arm: allwinner-r40: Fix the mmc controller's type
+>
+> # v4: 2023-05-10
+>
+> 1. Rebase to master
+>
+> # v5: 2023-05-23
+>
+> 1. Rebase to master
+> 2. Update based on Niek Linnenbank's guide.
+>
+> qianfan Zhao (11):
+>   hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
+>   hw/arm/allwinner-r40: add Clock Control Unit
+>   hw: allwinner-r40: Complete uart devices
+>   hw: arm: allwinner-r40: Add i2c0 device
+>   hw/misc: Rename axp209 to axp22x and add support AXP221 PMU
+>   hw/arm/allwinner-r40: add SDRAM controller device
+>   hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
+>   hw: arm: allwinner-r40: Add emac and gmac support
+>   hw: arm: allwinner-sramc: Add SRAM Controller support for R40
+>   tests: avocado: boot_linux_console: Add test case for bpim2u
+>   docs: system: arm: Introduce bananapi_m2u
+>
+>  docs/system/arm/bananapi_m2u.rst      | 138 +++++++
+>  hw/arm/Kconfig                        |  14 +-
+>  hw/arm/allwinner-r40.c                | 526 ++++++++++++++++++++++++++
+>  hw/arm/bananapi_m2u.c                 | 145 +++++++
+>  hw/arm/meson.build                    |   1 +
+>  hw/misc/Kconfig                       |   5 +-
+>  hw/misc/allwinner-r40-ccu.c           | 209 ++++++++++
+>  hw/misc/allwinner-r40-dramc.c         | 513 +++++++++++++++++++++++++
+>  hw/misc/allwinner-sramc.c             | 184 +++++++++
+>  hw/misc/axp209.c                      | 238 ------------
+>  hw/misc/axp2xx.c                      | 283 ++++++++++++++
+>  hw/misc/meson.build                   |   5 +-
+>  hw/misc/trace-events                  |  26 +-
+>  hw/sd/allwinner-sdhost.c              |  72 +++-
+>  include/hw/arm/allwinner-r40.h        | 143 +++++++
+>  include/hw/misc/allwinner-r40-ccu.h   |  65 ++++
+>  include/hw/misc/allwinner-r40-dramc.h | 108 ++++++
+>  include/hw/misc/allwinner-sramc.h     |  69 ++++
+>  include/hw/sd/allwinner-sdhost.h      |   9 +
+>  tests/avocado/boot_linux_console.py   | 176 +++++++++
+>  20 files changed, 2681 insertions(+), 248 deletions(-)
+>  create mode 100644 docs/system/arm/bananapi_m2u.rst
+>  create mode 100644 hw/arm/allwinner-r40.c
+>  create mode 100644 hw/arm/bananapi_m2u.c
+>  create mode 100644 hw/misc/allwinner-r40-ccu.c
+>  create mode 100644 hw/misc/allwinner-r40-dramc.c
+>  create mode 100644 hw/misc/allwinner-sramc.c
+>  delete mode 100644 hw/misc/axp209.c
+>  create mode 100644 hw/misc/axp2xx.c
+>  create mode 100644 include/hw/arm/allwinner-r40.h
+>  create mode 100644 include/hw/misc/allwinner-r40-ccu.h
+>  create mode 100644 include/hw/misc/allwinner-r40-dramc.h
+>  create mode 100644 include/hw/misc/allwinner-sramc.h
+>
+> --
+> 2.25.1
+>
+>
+
+--=20
+Niek Linnenbank
+
+--00000000000039359a05fd15e09e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Qianfan,<br></div><div><br></div><div>=
+Thanks for sending the v5. From my side, I have no further comments on the =
+content. <br></div><div>So please feel free to add the following to each of=
+ the patches 01-11 in the series:</div><div><br></div><div>Reviewed-by: Nie=
+k Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank=
+@gmail.com</a>&gt;</div><div><br></div><div>As a reminder and explained her=
+e on this page, you&#39;ll need to make sure these lines gets added to each=
+ of the commit messages:<br></div><div><a href=3D"https://www.qemu.org/docs=
+/master/devel/submitting-a-patch.html#proper-use-of-reviewed-by-tags-can-ai=
+d-review" target=3D"_blank">https://www.qemu.org/docs/master/devel/submitti=
+ng-a-patch.html#proper-use-of-reviewed-by-tags-can-aid-review</a></div><div=
+><br></div><div>Doing so would require you to send another updated v6, and =
+baselined on the latest master.</div><div><br></div><div>Thanks again for c=
+ontributing this to Qemu, hopefully we can see it merged soon.</div><div><b=
+r></div><div>Regards,</div><div>Niek<br></div><div><br></div><div class=3D"=
+gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, May 23, 2023 at =
+12:05=E2=80=AFPM &lt;<a href=3D"mailto:qianfanguijin@163.com">qianfanguijin=
+@163.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex">From: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163.com" tar=
+get=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
+<br>
+***History***<br>
+# v1: 2023-03-21<br>
+<br>
+The first version which add allwinner-r40 support, supported features:<br>
+<br>
++ ccu<br>
++ dram controller<br>
++ uart<br>
++ i2c and pmic(axp221)<br>
++ sdcard<br>
++ emac/gmac<br>
+<br>
+Also provide a test case under avocado, running quickly test:<br>
+<br>
+$ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \<br>
+=C2=A0 =C2=A0 --verbose --show=3Dapp,console run -t machine:bpim2u \<br>
+=C2=A0 =C2=A0 ../tests/avocado/boot_linux_console.py<br>
+<br>
+# v2: 2023-03-28<br>
+<br>
+1. Fix the waring and error reported by <a href=3D"http://checkpatch.pl" re=
+l=3D"noreferrer" target=3D"_blank">checkpatch.pl</a><br>
+2. Remove the other i2c controllers except that i2c0<br>
+3. Use an array to register mmc and uart devices<br>
+4. Rename axp209 to axp22x and add axp221 support<br>
+5. Add a basic SRAM controller<br>
+<br>
+# v3: 2023-04-18<br>
+<br>
+1. Update some commit messages<br>
+2. Squash those two commit about sdcard<br>
+=C2=A0 =C2=A0hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
+=C2=A0 =C2=A0hw: arm: allwinner-r40: Fix the mmc controller&#39;s type<br>
+<br>
+# v4: 2023-05-10<br>
+<br>
+1. Rebase to master<br>
+<br>
+# v5: 2023-05-23<br>
+<br>
+1. Rebase to master<br>
+2. Update based on Niek Linnenbank&#39;s guide.<br>
+<br>
+qianfan Zhao (11):<br>
+=C2=A0 hw: arm: Add bananapi M2-Ultra and allwinner-r40 support<br>
+=C2=A0 hw/arm/allwinner-r40: add Clock Control Unit<br>
+=C2=A0 hw: allwinner-r40: Complete uart devices<br>
+=C2=A0 hw: arm: allwinner-r40: Add i2c0 device<br>
+=C2=A0 hw/misc: Rename axp209 to axp22x and add support AXP221 PMU<br>
+=C2=A0 hw/arm/allwinner-r40: add SDRAM controller device<br>
+=C2=A0 hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
+=C2=A0 hw: arm: allwinner-r40: Add emac and gmac support<br>
+=C2=A0 hw: arm: allwinner-sramc: Add SRAM Controller support for R40<br>
+=C2=A0 tests: avocado: boot_linux_console: Add test case for bpim2u<br>
+=C2=A0 docs: system: arm: Introduce bananapi_m2u<br>
+<br>
+=C2=A0docs/system/arm/bananapi_m2u.rst=C2=A0 =C2=A0 =C2=A0 | 138 +++++++<br=
+>
+=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 14 +-<br>
+=C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 | 526 ++++++++++++++++++++++++++<br>
+=C2=A0hw/arm/bananapi_m2u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0| 145 +++++++<br>
+=C2=A0hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+=C2=A0hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
+=C2=A0hw/misc/allwinner-r40-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+ 209 ++++++++++<br>
+=C2=A0hw/misc/allwinner-r40-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 513 =
++++++++++++++++++++++++++<br>
+=C2=A0hw/misc/allwinner-sramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0| 184 +++++++++<br>
+=C2=A0hw/misc/axp209.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 | 238 ------------<br>
+=C2=A0hw/misc/axp2xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 | 283 ++++++++++++++<br>
+=C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
+=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 |=C2=A0 26 +-<br>
+=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 72 +++-<br>
+=C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 143 +++++=
+++<br>
+=C2=A0include/hw/misc/allwinner-r40-ccu.h=C2=A0 =C2=A0|=C2=A0 65 ++++<br>
+=C2=A0include/hw/misc/allwinner-r40-dramc.h | 108 ++++++<br>
+=C2=A0include/hw/misc/allwinner-sramc.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 69 ++++<=
+br>
+=C2=A0include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A09 =
++<br>
+=C2=A0tests/avocado/boot_linux_console.py=C2=A0 =C2=A0| 176 +++++++++<br>
+=C2=A020 files changed, 2681 insertions(+), 248 deletions(-)<br>
+=C2=A0create mode 100644 docs/system/arm/bananapi_m2u.rst<br>
+=C2=A0create mode 100644 hw/arm/allwinner-r40.c<br>
+=C2=A0create mode 100644 hw/arm/bananapi_m2u.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-r40-ccu.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-r40-dramc.c<br>
+=C2=A0create mode 100644 hw/misc/allwinner-sramc.c<br>
+=C2=A0delete mode 100644 hw/misc/axp209.c<br>
+=C2=A0create mode 100644 hw/misc/axp2xx.c<br>
+=C2=A0create mode 100644 include/hw/arm/allwinner-r40.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-r40-ccu.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-r40-dramc.h<br>
+=C2=A0create mode 100644 include/hw/misc/allwinner-sramc.h<br>
+<br>
+-- <br>
+2.25.1<br>
+<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
+tr"><div>Niek Linnenbank<br><br></div></div></div></div>
+
+--00000000000039359a05fd15e09e--

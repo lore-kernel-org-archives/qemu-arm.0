@@ -1,164 +1,172 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp405920ejb;
-        Thu, 1 Jun 2023 05:33:42 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7HeCKyCDJmZ5fiKUZ//uD5PngTvGY0wMem6SIQ8hvDXgcRzZINeeakfKSj/R82JCnMWn8s
-X-Received: by 2002:a05:6830:189:b0:6a5:f7a8:3ec7 with SMTP id q9-20020a056830018900b006a5f7a83ec7mr3079034ota.20.1685622822121;
-        Thu, 01 Jun 2023 05:33:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685622822; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp493376ejb;
+        Thu, 1 Jun 2023 07:34:42 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4M4msgysfClcbaW7GQPw9pcKy5pdmDNCfC7hi+PwpMssv/Xnw6N2mGmld3vMEJcnPFdJ5J
+X-Received: by 2002:a05:6102:c01:b0:439:55ed:226c with SMTP id x1-20020a0561020c0100b0043955ed226cmr949950vss.14.1685630082477;
+        Thu, 01 Jun 2023 07:34:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685630082; cv=none;
         d=google.com; s=arc-20160816;
-        b=HqEKNgkWRekI9X0i2tzUUs/Dail32urV29tTCE3PCwFxnMp3aPBhvBSwRj2GkYoS10
-         crW0+NFCNhIWjOQ7KQCW07qss6P5FH7aQaDBXpi4P+mDERWu6pZziPEEEOuCFjfn62ym
-         R/yMmL7B3TFOuO1uG2Evu/yx6Kb023DRsqxa6i+BBW4usEu0x8IfTym+x4HpTCybSyJ1
-         caCq0gvoHh6aT/ShEoQKocqDqQp4b5diBHoBxgswGy7cZaj9jL6a65eRZcYEXUyVvq7x
-         bQ5Wm7u6Zzf+s3AaJkp6QI92yvqs/DFuWKed9hFL5vAc5vPwj03eXBGxl637SQ6lRP7X
-         w3iw==
+        b=T18aGPOAILIgSB+PyJc6BY/6H5siTE3d1/8PZbZKVlAZILhjTB0MAdgDNG3K4xI2+s
+         SEVkw+anuD+wjGLkdfyhITymBMbJcF8VC2zzgv4nrxq9tCOXwefz/ZhA9znfVev+cGJC
+         6b9DTJTok5uI/g5PgRwqJY/Tov0PkedZxbPlzUOspKN1B5nJxaTDMzViHh/KT7m1DSz8
+         G2nn7StNzhCsnFkb/N5qxuT7amveVNWrcWjQGg0vvRXE4QYjHWK2mWkeIQFs3eziDj2y
+         Sig62lkUqnP9jqa+q2pvvMMHedn1fU0a9gkAypk6pVdh8WERSr8g326/OOSbfqB922kA
+         GwsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6vpx5TYtcjQOEO25BXt+lzmn41Cv9OHTZKvB4B82/c4=;
-        b=inAbM9R6Eq7NepCr5s0PmrOw/EBZcesOhHwlLYOBe8hiefuIQsLtSIFQFEQaGcPNwd
-         CDko5T7Sqe39kww7oSYMjRJAq2v8fCL/m6nVOsEkn8X0WACKrHmsKjl9oYR99Z9smBHH
-         EuxuWzhyNOQ8G5cswSx/SnZge7cTkrVaFhfWdZmGwPfFivkyn5ig3GbCC8EOBWNk91nw
-         KPRv/MgRVjbqf/9Si5TK//podKOLzgDRKsjl0XQBbaTUmnea8IGoKysq7sHoi3wTA6oV
-         hoIzQtzHN5uYGTmsHniloM876Ju1IqCNGNbxi0Ci5tkw6wECCtwKmo28wGYCJDQngCbI
-         SBoQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=UwyHQTTZlcVVTRI4kY8cOHgzo3ZmQLCmSW5zsn62X3s=;
+        b=u5UgkNDWwd20oGWDsbWqPbVgZivlRy2MItYOlxZZiRm4+4tljVaCEVtAKPKmXkVuW4
+         Azav1BkHXHC06PovPK/aSYUPS+YQQ7kliC+0ls6SZDbc+UFMLDw7K1d90R1b1tB4qMMb
+         XuqGABvEcVYrOdaf1ZQUasziJOTQ2EccGBE9SXR3jk5wg8I4IulAuX98lQbp/fkWjdIZ
+         82GdvGKUYUjHKJA4fNvn/Z5pNteu/mVHhU34tWnn1R/OkyLGZ9aQmz8FCU5jXzAqMgcG
+         53e2MITRjJiua8ixwOJBYrhTuebNonEf9wLiAlN/f5eawC0nyC4gMDT0zpKe3KFuZtD6
+         YOjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GZOMIycM;
-       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <ardb@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id v21-20020a9d6055000000b006ab0a4b9298si284124otj.206.2023.06.01.05.33.41
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Jun 2023 05:33:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=HxHVC5em;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x16-20020ab04890000000b00783e5ae0690si2047296uac.78.2023.06.01.07.34.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Jun 2023 07:34:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GZOMIycM;
-       spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C3E1064405;
-	Thu,  1 Jun 2023 12:33:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2BDEC433D2;
-	Thu,  1 Jun 2023 12:33:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685622821;
-	bh=Altb9gx/izM5ctcWAjcLXu6Yyml5zlbxuXilVs0UmFo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GZOMIycMpsrQMgWQub7f7W5KecPa0htilzegtPRZVV7dX86TBWYfO8GC4k+7CVL1K
-	 fytcJcC2MRz42POdqP0eYPWYGVIiLyqMPOMR+qHc29odiSWy3gdHQn4oluwz/rvOIn
-	 kLeMxPxh4FbuGMYQvsYtoQUejIl+tE8MKuP0JruPTqt43HGA3ICuh9BZ4MNSOrQkeD
-	 CwBHBLmvmljrBQhx4bOxVdZQqcwANUtCXluwIThgkzG1BefRDcYgTLZL+zZ/BrIzbh
-	 GkU/weYMmjo8zO+dD80E9lFfGj60RALZjYCzRXj1InfI7qsfxCUhbspWhkJPhJ+GIe
-	 rW2UdIRZ4dVAA==
-From: Ard Biesheuvel <ardb@kernel.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Ard Biesheuvel <ardb@kernel.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 2/2] target/i386: Implement PCLMULQDQ using AArch64 PMULL instructions
-Date: Thu,  1 Jun 2023 14:33:32 +0200
-Message-Id: <20230601123332.3297404-3-ardb@kernel.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230601123332.3297404-1-ardb@kernel.org>
-References: <20230601123332.3297404-1-ardb@kernel.org>
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=HxHVC5em;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q4jNI-0000m9-UV; Thu, 01 Jun 2023 10:34:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_acaggian@quicinc.com>)
+ id 1q4jNG-0000lv-Qq; Thu, 01 Jun 2023 10:33:58 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_acaggian@quicinc.com>)
+ id 1q4jNE-0000os-B5; Thu, 01 Jun 2023 10:33:58 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 351CkAU6025251; Thu, 1 Jun 2023 14:33:46 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding :
+ content-type; s=qcppdkim1;
+ bh=UwyHQTTZlcVVTRI4kY8cOHgzo3ZmQLCmSW5zsn62X3s=;
+ b=HxHVC5em4B6woZQhs1rSNDZ616mQCEPGleBm6S3v30tm7TX4quN0OU4fts8lJiRLWcGM
+ aJ+PjZ4wFf0mxhHPokEbxtOVELbTmsGwoRntCo2xnMwTEvFHOo+vBs5IKyCk1+Tl2kS3
+ K3vfrbZ1Pm1SktvTIJJdKZ0zJ+KlamWqhBx8uopqE+3YP6iet9l6ZRfzkzmjQAd00iFJ
+ YPBTE5LpMXapVQl1PlkLxXLFHey/c5NwtYMCe2GEPc7ykiTpXIBOfbKh2g+ATVFqX0lV
+ 6A5vSuvpHiYqMjSlj8c8eSKMJ/1R/+502VJnTMcJW3cP9VkgkEMALyGOSy6326ixrx2E kA== 
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qxkbu1jap-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 01 Jun 2023 14:33:46 +0000
+Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com
+ [10.47.97.35])
+ by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 351EXi72007637
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 1 Jun 2023 14:33:45 GMT
+Received: from acaggian1-mac.qualcomm.com (10.80.80.8) by
+ nalasex01c.na.qualcomm.com (10.47.97.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.42; Thu, 1 Jun 2023 07:33:42 -0700
+From: Antonio Caggiano <quic_acaggian@quicinc.com>
+To: <qemu-devel@nongnu.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, "David
+ Hildenbrand" <david@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Mark Burton <quic_mburton@quicinc.com>, Alexander Graf
+ <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>, "open list:ARM
+ TCG CPUs" <qemu-arm@nongnu.org>
+Subject: [PATCH] hvf: Handle EC_INSNABORT
+Date: Thu, 1 Jun 2023 16:33:12 +0200
+Message-ID: <20230601143312.69691-1-quic_acaggian@quicinc.com>
+X-Mailer: git-send-email 2.40.0
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3517; i=ardb@kernel.org; h=from:subject; bh=Altb9gx/izM5ctcWAjcLXu6Yyml5zlbxuXilVs0UmFo=; b=owGbwMvMwCFmkMcZplerG8N4Wi2JIaVigvj0tBJulgUChyb9Smtwzz1c0CnMWP7nX2Hjpv+rP uZzKN/pKGVhEONgkBVTZBGY/ffdztMTpWqdZ8nCzGFlAhnCwMUpABNZUM7wh0M5+PSp2EWLTqs+ e/qF3Zs/9/aDTY9adUT3S4oKRE340cbwz2TO9Ak2e9/07FBraGhxmB+j3sbC01HyenqewiWLLsb v7AA=
-X-Developer-Key: i=ardb@kernel.org; a=openpgp; fpr=F43D03328115A198C90016883D200E9CA6329909
 Content-Transfer-Encoding: 8bit
-X-TUID: plm6c4E0MLoR
+Content-Type: text/plain
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01c.na.qualcomm.com (10.47.97.35)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: yN87quLyq9SqaDUXwy0Qha_t3Q0F85-A
+X-Proofpoint-GUID: yN87quLyq9SqaDUXwy0Qha_t3Q0F85-A
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-06-01_08,2023-05-31_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 adultscore=0
+ spamscore=0 malwarescore=0 phishscore=0 clxscore=1011 priorityscore=1501
+ suspectscore=0 impostorscore=0 mlxlogscore=527 mlxscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2306010128
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_acaggian@quicinc.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: R87/KKdjnIfW
 
-Use the AArch64 PMULL{2}.P64 instructions to implement PCLMULQDQ instead
-of emulating them in C code if the host supports this. This is used in
-the implementation of GCM, which is widely used in IPsec VPN and HTTPS.
+Instead of aborting immediately, try reading the physical address where
+the instruction should be fetched by calling address_space_read. This
+would give any memory regions ops callback a chance to allocate and/or
+register an RAM/Alias memory region needed for resolving that physical
+address. Then, if the memory transaction is OK, retry HVF execution at
+the same PC.
 
-Somewhat surprising results: on my ThunderX2, enabling this on top of
-the AES acceleration I sent out earlier, the speedup is substantial.
-
-(1420 is a typical IPsec block size - in HTTPS, GCM operates on much
-larger block sizes but the kernel mode benchmarks are not the best place
-to measure its performance in this mode)
-
-tcrypt: testing speed of rfc4106(gcm(aes)) (rfc4106-gcm-aesni) encryption
-
-No acceleration
-tcrypt: test 5 (160 bit key, 1420 byte blocks): 10046 operations in 1 seconds (14265320 bytes)
-
-AES acceleration
-tcrypt: test 5 (160 bit key, 1420 byte blocks): 13970 operations in 1 seconds (19837400 bytes)
-
-AES + PMULL acceleration
-tcrypt: test 5 (160 bit key, 1420 byte blocks): 24372 operations in 1 seconds (34608240 bytes)
-
-Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Antonio Caggiano <quic_acaggian@quicinc.com>
+Co-authored-by: Mark Burton <quic_mburton@quicinc.com>
 ---
- host/include/aarch64/host/cpuinfo.h |  1 +
- target/i386/ops_sse.h               | 24 ++++++++++++++++++++
- util/cpuinfo-aarch64.c              |  1 +
- 3 files changed, 26 insertions(+)
+ target/arm/hvf/hvf.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/host/include/aarch64/host/cpuinfo.h b/host/include/aarch64/host/cpuinfo.h
-index 05feeb4f4369fc19..da268dce1390cac0 100644
---- a/host/include/aarch64/host/cpuinfo.h
-+++ b/host/include/aarch64/host/cpuinfo.h
-@@ -10,6 +10,7 @@
- #define CPUINFO_LSE             (1u << 1)
- #define CPUINFO_LSE2            (1u << 2)
- #define CPUINFO_AES             (1u << 3)
-+#define CPUINFO_PMULL           (1u << 4)
- 
- /* Initialized with a constructor. */
- extern unsigned cpuinfo;
-diff --git a/target/i386/ops_sse.h b/target/i386/ops_sse.h
-index db79132778efd211..d7e7bd8b733122a8 100644
---- a/target/i386/ops_sse.h
-+++ b/target/i386/ops_sse.h
-@@ -2157,6 +2157,30 @@ void glue(helper_pclmulqdq, SUFFIX)(CPUX86State *env, Reg *d, Reg *v, Reg *s,
-     uint64_t a, b;
-     int i;
- 
-+#ifdef __aarch64__
-+    if (cpuinfo & CPUINFO_PMULL) {
-+        aes_vec_t vv = *(aes_vec_t *)v, vs = *(aes_vec_t *)s;
-+        aes_vec_t *vd = (aes_vec_t *)d;
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index ad65603445..6e527254b1 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1446,6 +1446,18 @@ int hvf_vcpu_exec(CPUState *cpu)
+             hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
+         }
+         break;
++    case EC_INSNABORT: {
++        uint32_t sas = (syndrome >> 22) & 3;
++        uint32_t len = 1 << sas;
++        uint64_t val = 0;
 +
-+        switch (ctrl & 0x11) {
-+        case 0x1:
-+            asm("ext %0.16b, %0.16b, %0.16b, #8":"+w"(vv));
-+            /* fallthrough */
-+        case 0x0:
-+            asm(".arch_extension aes\n"
-+                "pmull %0.1q, %1.1d, %2.1d":"=w"(*vd):"w"(vv),"w"(vs));
-+            break;
-+        case 0x10:
-+            asm("ext %0.16b, %0.16b, %0.16b, #8":"+w"(vv));
-+            /* fallthrough */
-+        case 0x11:
-+            asm(".arch_extension aes\n"
-+                "pmull2 %0.1q, %1.2d, %2.2d":"=w"(*vd):"w"(vv),"w"(vs));
-+        }
-+        return;
++        MemTxResult res = address_space_read(
++            &address_space_memory, hvf_exit->exception.physical_address,
++            MEMTXATTRS_UNSPECIFIED, &val, len);
++        assert(res == MEMTX_OK);
++        flush_cpu_state(cpu);
++        break;
 +    }
-+#endif
-+
-     for (i = 0; i < 1 << SHIFT; i += 2) {
-         a = v->Q(((ctrl & 1) != 0) + i);
-         b = s->Q(((ctrl & 16) != 0) + i);
-diff --git a/util/cpuinfo-aarch64.c b/util/cpuinfo-aarch64.c
-index 769cdfeb2fc32d5e..95ec1f4adfc829b9 100644
---- a/util/cpuinfo-aarch64.c
-+++ b/util/cpuinfo-aarch64.c
-@@ -57,6 +57,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
-     info |= (hwcap & HWCAP_ATOMICS ? CPUINFO_LSE : 0);
-     info |= (hwcap & HWCAP_USCAT ? CPUINFO_LSE2 : 0);
-     info |= (hwcap & HWCAP_AES ? CPUINFO_AES : 0);
-+    info |= (hwcap & HWCAP_PMULL ? CPUINFO_PMULL : 0);
- #endif
- #ifdef CONFIG_DARWIN
-     info |= sysctl_for_bool("hw.optional.arm.FEAT_LSE") * CPUINFO_LSE;
+     default:
+         cpu_synchronize_state(cpu);
+         trace_hvf_exit(syndrome, ec, env->pc);
 -- 
-2.39.2
+2.40.0
+

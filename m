@@ -1,150 +1,202 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp324355ejb;
-        Thu, 1 Jun 2023 03:34:23 -0700 (PDT)
-X-Received: by 2002:a1c:7712:0:b0:3f6:479:3983 with SMTP id t18-20020a1c7712000000b003f604793983mr1527958wmi.25.1685615663638;
-        Thu, 01 Jun 2023 03:34:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685615663; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp392101ejb;
+        Thu, 1 Jun 2023 05:15:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6aySDUTYCI/6cdL0eYRyBsc7+z8EqrusmCuj/Wgk0tkKX0c+UZC88vZW7woDN6zzzEJdU/
+X-Received: by 2002:a05:620a:984:b0:75b:23a0:e7c5 with SMTP id x4-20020a05620a098400b0075b23a0e7c5mr8594112qkx.38.1685621707857;
+        Thu, 01 Jun 2023 05:15:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685621707; cv=none;
         d=google.com; s=arc-20160816;
-        b=KS4suLeV07CRAfS5noda2qQDpjGozyyUUiEnQGTbkzTLdYTe9KbV9xgeDAtJHwNu6g
-         JzQXvKCeRuqxAjkZDZ1+ALSRShQoa1qmvHCFRalnU6WW7sYxcO2316VZyNn0NwSAgjkB
-         Waj1+J7kGLjAGCyxg2CIjEqylSwWYNxqVGA7caNTAJPlS+V9FyeQM7j60Ypi33eWBAS0
-         Qdti551Ptr8ZDsUGs/eWoqvn5j3/D1bcddvjMcQl8Gmt2ktWxpG11nbHpeeUNZxTwWQl
-         zSMF9NmIzYxKpfEk4cCr3/RBOfmGuuR1RjCgQhceWHcKrLXLkgVhfXG8TuVZ8ODM4vu5
-         GfAw==
+        b=WVjT7IFZYK8Lz7EIce5taJxq4LeWKQi7uBLqq0ZqubXsHljy7lurGL6kI/tC8vJUXu
+         5EOS0n90BzQtWcfN/UzZ9aRQPpipIgj+sDyMj+jM9MaI6Gtjsvv/dMQ9XYlYOUeQKEOH
+         BfXMjboPv09VeMgzcJbIXUc2fY3mVk/UeUlihabJ06ydBRKICRNmDBo7YC/miZkhIN8K
+         TWFpV9mE14sqWKI/9MuGH7zA2/Vkz2IHwuu7wc4a0fozPh5p/Kvez7f/pJlNr+MiiqZJ
+         OmBI7DKMKEVzcBLFZb8qHFNtNvhoMUBXFX7jg6qvKTBeU1Z8+/VtMdKh+wVEwCxYNcXR
+         fvEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=IzSdooUfPpfNOZEPCgWdZLTS54PXAKR1AaFq3KhI2/A=;
-        b=Cj+s6/9W+FViEo/TKFsZ/JlFj/lxv9rtz1MZqKEhGLxDMykydDAe5cHBkeG31gLUI4
-         ZK+2tsnJ7MCTbxQHxrVYD0kC89vPp2sTm3DgEHNe8k/yIo0RbPRET9L3AMbIwetz59bk
-         +YZwFTjFLhijanIY2XyyyxEOFf5ObrN6TJBLB5j6dZ4dj9KWFY5AFOY/ViAsX23CTbvh
-         J+D1crRm4dNiXaizg/zJL+ZvRzqfx5d1r8lEZpzPCqm79CWW9JNh/MNWuIXzmJb/O4lG
-         zaimyZ1Uaf+bBoUUD5oM/H14cBGvr+jpmWtK/F/SDOEPjdY5SBEyybcFefuNfuAACM9z
-         J55A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=nGACEA2aET2msOqUDIABoGnBLI/7CCZG+nBmgrENL+k=;
+        b=Vj5oJEoy5IYUUi7IIiYnePtQwR4BqhxziYNGne3ef2KuGSiW0OtjQfKyPRxiPKqQrv
+         68YxN8JFQYRrxr0+VE6aRWAMvEJtztgThU+WTZmonr+xGIQqt1y3ZT/LT4Dxz+GmxE8a
+         SVKDfTMYroDdxAXIO5x6Z6xzBYkWqbFMCz/BsVsLrRkWpefxO0sk+qSKEYJnEF3/dooo
+         6v7jp8h3g+1TQ3RzjgdnkK/pIIktqxOlaKVjRroCBhclqnOHyNLCnTqU1aH4mVEMUH1p
+         TausmusTQiIxDTK3x/9hkaKRYJXV4O/Gc45wjj5vIZM6aOTqNJHA9zlEp4KM5/aea2pY
+         TS6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c0MgPJbx;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z11-20020a05600c220b00b003f6ff0298b1sor3119969wml.0.2023.06.01.03.34.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuZrFlmJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o7-20020a05620a130700b0075caf48f741si9303705qkj.512.2023.06.01.05.15.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 01 Jun 2023 03:34:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Jun 2023 05:15:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c0MgPJbx;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1685615663; x=1688207663;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IzSdooUfPpfNOZEPCgWdZLTS54PXAKR1AaFq3KhI2/A=;
-        b=c0MgPJbxwqbpDAcwgFTUsvr8VRX2vyiw2yZi3A/Qd1YJ2SQ3mr2gEXIhuHWOsHy3/m
-         ukD/3HOpc0DJZAGMOneGawc6rGvQRkv6FnO8RjiOLYEsxCNpbGhdO88o9qV62bkYDdso
-         IrAoA/SME2nk89wvDZu3hyjLud2nDTk9vmzjuokvBH229wds5fGREoKkVVD/ZDfsBt7w
-         Gt6daoJhAnNkZXGRymPgJRZKoJ+aRQzzTDndh5i2M1sC3VRDNd++o5vLOoRoyzMDQHRf
-         OAXP6wz7HNh+KBf3UiCdjdnmNgzjifALHpqlpS1Yp0e3+ZoIyne1f1/UzaNzVPElHsVZ
-         XnSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1685615663; x=1688207663;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IzSdooUfPpfNOZEPCgWdZLTS54PXAKR1AaFq3KhI2/A=;
-        b=AFsF4fwzpqffUxu33pVgplsrj1tXaNMwh/gtXcgTGhiMcZF+/qIoNU38e5iwwP0B1n
-         yRKE7SvNnyS+xg83lQagEHXlq38cNCvpqeTNyiI3wKlkuoHH7DI5BoYyw5z62RhgTRrq
-         yaazQFWu0b8rv8rYpX9wHeNKsSIQLL1pAvrA7HPxnkwZBxo1Ae9n8cZG06mbVxhHxw3t
-         N/rFpCATut/8G9+6Bv4dnT1kmsOQExqJWZG0Ix7cQYvvM1nSLNg1mLTi6aXCOCDJwXSi
-         1VG2PAAdvsSiHHSY2l2Gvcgt5Yx2SJfmX1xbYNq7EN/Du2mgsHTLQiptKHgCqPPcf1kH
-         5Uvw==
-X-Gm-Message-State: AC+VfDyUxvctLBxdWcs6FmABRqi9C6hLNuy8xkSl2N+zRP88i4fdYMWF
-	fdpwFFeWKSu2d4AkeAw5sk/mh9gPokMit/IUYE7Bfw==
-X-Google-Smtp-Source: ACHHUZ5pmxVPQNDRaFzyGnwwIGFU3WUGvZfq2SDdpjV4YwIgujWivHTOGoMFHbfrpFfNOit9rqw+Xw==
-X-Received: by 2002:a05:600c:22d4:b0:3f6:552:8722 with SMTP id 20-20020a05600c22d400b003f605528722mr1621956wmg.18.1685615663265;
-        Thu, 01 Jun 2023 03:34:23 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.115] ([176.176.141.224])
-        by smtp.gmail.com with ESMTPSA id s16-20020adfeb10000000b0030630120e56sm9825231wrn.57.2023.06.01.03.34.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Jun 2023 03:34:22 -0700 (PDT)
-Message-ID: <de455326-5fee-db23-07c5-40941c1ccc8a@linaro.org>
-Date: Thu, 1 Jun 2023 12:34:20 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NuZrFlmJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q4hCk-0000K4-Ko; Thu, 01 Jun 2023 08:14:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCi-00007X-9m
+ for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:14:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCg-0006NF-7n
+ for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:14:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685621692;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=nGACEA2aET2msOqUDIABoGnBLI/7CCZG+nBmgrENL+k=;
+ b=NuZrFlmJQXfj0/Gpx6LXDmK6GCf15ZISP1QGDZQkF/hcaosELXsI+iYsD1jRimyhLPNdTW
+ 3YRBHUz9i+mvtlcUC8Nmfry/lpY2vFtYuRASWgJwCo3lkD45z9TFGZBFPRU3JgzIw5jm8g
+ SkQM181dvH+QtkitmQnA2pktWkutMfc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-487-OL41OmOHPOyGwmlVhlVyPg-1; Thu, 01 Jun 2023 08:14:49 -0400
+X-MC-Unique: OL41OmOHPOyGwmlVhlVyPg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CD875811E8D;
+ Thu,  1 Jun 2023 12:14:48 +0000 (UTC)
+Received: from t480s.redhat.com (unknown [10.22.8.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CD8452166B25;
+ Thu,  1 Jun 2023 12:14:47 +0000 (UTC)
+From: David Hildenbrand <david@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ David Hildenbrand <david@redhat.com>
+Subject: [PATCH] memory-device: Track used region size in DeviceMemoryState
+Date: Thu,  1 Jun 2023 14:14:36 +0200
+Message-Id: <20230601121447.272487-1-david@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH v2 7/7] hw: Simplify using sysbus_init_irqs() [manual]
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-ppc@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
-References: <20230601094625.39569-1-philmd@linaro.org>
- <20230601094625.39569-8-philmd@linaro.org>
- <CAFEAcA8wgaEJd03G8gNtFOUFT0jpm=KLfaZSjeYcOgvTYdvhJQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA8wgaEJd03G8gNtFOUFT0jpm=KLfaZSjeYcOgvTYdvhJQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tgDF8m21MKQY
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.166,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KAGh14Gy1vOk
 
-On 1/6/23 12:19, Peter Maydell wrote:
-> On Thu, 1 Jun 2023 at 10:48, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Audit the sysbus_init_irq() calls and manually convert
->> to sysbus_init_irqs() when a loop is involved.
->>
->> In omap2_intc_init(), the parent_intr[] array contains
->> 2 elements: use ARRAY_SIZE() to iterate over.
->>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
->> diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
->> index c15f654738..dd2929d6e7 100644
->> --- a/hw/timer/renesas_tmr.c
->> +++ b/hw/timer/renesas_tmr.c
->> @@ -428,17 +428,14 @@ static void rtmr_init(Object *obj)
->>   {
->>       SysBusDevice *d = SYS_BUS_DEVICE(obj);
->>       RTMRState *tmr = RTMR(obj);
->> -    int i;
->>
->>       memory_region_init_io(&tmr->memory, OBJECT(tmr), &tmr_ops,
->>                             tmr, "renesas-tmr", 0x10);
->>       sysbus_init_mmio(d, &tmr->memory);
->>
->> -    for (i = 0; i < ARRAY_SIZE(tmr->ovi); i++) {
->> -        sysbus_init_irq(d, &tmr->cmia[i]);
->> -        sysbus_init_irq(d, &tmr->cmib[i]);
->> -        sysbus_init_irq(d, &tmr->ovi[i]);
->> -    }
->> +    sysbus_init_irqs(d, tmr->cmia, ARRAY_SIZE(tmr->cmia));
->> +    sysbus_init_irqs(d, tmr->cmib, ARRAY_SIZE(tmr->cmib));
->> +    sysbus_init_irqs(d, tmr->ovi, ARRAY_SIZE(tmr->ovi));
-> 
-> Doesn't this change the order of the IRQs? Previously
-> we had channel 0 CMIA, channel 0 CMIA, channel 0 OVI,
-> channel 1 CMIA, channel 1 CMIB, channel 1 OVI. Now
-> we have channel 0 CMIA, channel 1 CMIA, channel 0 CMIB,
-> channel 1 CMIB, channel 0 OVI, channel 1 OVI. So they'll
-> get miswired in the board code now...
+Let's avoid iterating over all devices and simply track it in the
+DeviceMemoryState.
 
-Oops, good catch. Good case to show the sysbus_init_irq() is
-fragile. At least named_gpio are clearer.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+ hw/mem/memory-device.c | 22 +++-------------------
+ include/hw/boards.h    |  2 ++
+ 2 files changed, 5 insertions(+), 19 deletions(-)
 
-I'm surprised because v1 series passed CI, but looking closer
-the RX tests isn't run. And now I see commit e5d402b28f
-("tests/acceptance: disable machine_rx_gdbsim on GitLab").
+diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
+index 00c7755557..667d56bd29 100644
+--- a/hw/mem/memory-device.c
++++ b/hw/mem/memory-device.c
+@@ -52,28 +52,11 @@ static int memory_device_build_list(Object *obj, void *opaque)
+     return 0;
+ }
+ 
+-static int memory_device_used_region_size(Object *obj, void *opaque)
+-{
+-    uint64_t *size = opaque;
+-
+-    if (object_dynamic_cast(obj, TYPE_MEMORY_DEVICE)) {
+-        const DeviceState *dev = DEVICE(obj);
+-        const MemoryDeviceState *md = MEMORY_DEVICE(obj);
+-
+-        if (dev->realized) {
+-            *size += memory_device_get_region_size(md, &error_abort);
+-        }
+-    }
+-
+-    object_child_foreach(obj, memory_device_used_region_size, opaque);
+-    return 0;
+-}
+-
+ static void memory_device_check_addable(MachineState *ms, MemoryRegion *mr,
+                                         Error **errp)
+ {
++    const uint64_t used_region_size = ms->device_memory->used_region_size;
+     const uint64_t size = memory_region_size(mr);
+-    uint64_t used_region_size = 0;
+ 
+     /* we will need a new memory slot for kvm and vhost */
+     if (kvm_enabled() && !kvm_has_free_slot(ms)) {
+@@ -86,7 +69,6 @@ static void memory_device_check_addable(MachineState *ms, MemoryRegion *mr,
+     }
+ 
+     /* will we exceed the total amount of memory specified */
+-    memory_device_used_region_size(OBJECT(ms), &used_region_size);
+     if (used_region_size + size < used_region_size ||
+         used_region_size + size > ms->maxram_size - ms->ram_size) {
+         error_setg(errp, "not enough space, currently 0x%" PRIx64
+@@ -292,6 +274,7 @@ void memory_device_plug(MemoryDeviceState *md, MachineState *ms)
+     mr = mdc->get_memory_region(md, &error_abort);
+     g_assert(ms->device_memory);
+ 
++    ms->device_memory->used_region_size += memory_region_size(mr);
+     memory_region_add_subregion(&ms->device_memory->mr,
+                                 addr - ms->device_memory->base, mr);
+     trace_memory_device_plug(DEVICE(md)->id ? DEVICE(md)->id : "", addr);
+@@ -310,6 +293,7 @@ void memory_device_unplug(MemoryDeviceState *md, MachineState *ms)
+     g_assert(ms->device_memory);
+ 
+     memory_region_del_subregion(&ms->device_memory->mr, mr);
++    ms->device_memory->used_region_size -= memory_region_size(mr);
+     trace_memory_device_unplug(DEVICE(md)->id ? DEVICE(md)->id : "",
+                                mdc->get_addr(md));
+ }
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index be06e8a41f..fcaf40b9da 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -296,11 +296,13 @@ struct MachineClass {
+  * address space for memory devices starts
+  * @mr: address space container for memory devices
+  * @dimm_size: the sum of plugged DIMMs' sizes
++ * @used_region_size: the part of @mr already used by memory devices
+  */
+ typedef struct DeviceMemoryState {
+     hwaddr base;
+     MemoryRegion mr;
+     uint64_t dimm_size;
++    uint64_t used_region_size;
+ } DeviceMemoryState;
+ 
+ /**
+-- 
+2.40.1
 
-"Hopefully we can re-enable both
-     once the serial timing patches have been added."
-
-Alex, are these patches in the tree now?

@@ -1,116 +1,122 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp290845ejb;
-        Thu, 1 Jun 2023 02:36:34 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6xVbv4RacfS94HuTfyRTnKiVQOorjdUhZZYRIwAZIPrTARJ9MjZrmbqMoDHZdzYo4l1iEG
-X-Received: by 2002:a05:620a:3c83:b0:75b:23a1:8e43 with SMTP id tp3-20020a05620a3c8300b0075b23a18e43mr7506728qkn.20.1685612194245;
-        Thu, 01 Jun 2023 02:36:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685612194; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp369832ejb;
+        Thu, 1 Jun 2023 04:45:20 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6XWRuhviv4e+XcqRavu6w2x47p2t9S8gjeouhjTA3orPFOpphZFj9g4IyZ0zhoMsGiCTgZ
+X-Received: by 2002:a05:620a:cc3:b0:75b:23a1:442 with SMTP id b3-20020a05620a0cc300b0075b23a10442mr7763353qkj.8.1685619919797;
+        Thu, 01 Jun 2023 04:45:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685619919; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lu2FCGp4jqaICPCINDnCW/p1Gh9TGH/d/XTzelUBG11+CFWTsfEnDpxzh/JcjDL+n6
-         pXU2JJTmDgMT73iE+h1Ah2I5EKgPZ4fTpY4SHoKyer/F9B0hSNafGalZ90gY0IWX7co7
-         o52L8fc/mANFTD0QzOZx1IaehTt+LnqRh3Oz8syAuIN8XYu0GZlZAhTQsrVcPNxGleCK
-         /52MRwrtke7C0UAw3AxM4sTAAviaIh0mpQEuqNaF1i0PitWIp98e1A6ZFvxHDHqY1uWA
-         6ljtXWgCfhKGsrm3Jd6nqRGyucJkeSfHfr8jWCO4wWSx6rgTEVXVCmIN6PTi4hHmMr76
-         ocvA==
+        b=i3aCrXzh9KTHi75X0h3WVUiOAtfi8R+wJ+i7Rji1X/mGMyLYvqKdI3Juu0cM0lnw4A
+         b1CO54NyShZfMob1K4v3CI6qkXouMNlRBk9E+vissEpfBvICEBWIrQyl/qnApgtuXBde
+         QcieGOI2ThkNO3w6F/xKxG3EY6lEkgHVQmDfIEcYUMMVx7wWXyOiqDDsMBmhGpUE9uoJ
+         YUCxpIzyRyeqg1uxNKkaDmfKMOu0f+BuPFAfmzVc0T/aLE+pQX31YH/pWL5D/4WPhwE7
+         MSPLY/G/FhnjyDSwzw5XaE20z1T1v0wRabWRqiZRsnWsTqALP/4GoMK62RPrAd51EaJt
+         pmkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=TdXkShqXWPbWzEZ0sD1ST7mNiLXOQxbG4dnB48iOt9Y=;
-        b=ZV5dA33I0MGAU4Wftt83tEgRv9qBq7Za790FUvG1ZWxjBVP8JSMyUFyvlbAKvurxHy
-         /QWfPNju7FT/6gYYs70rONxAUypbn4SzPsbIAgzCpeizvCCDf6k9Oxc0ksAurPklwc0B
-         9BHvCctzxeizPeqd0mfKuJ0pmsbU3wmz41s4+Rk5GUuapMGvgWQb98+M8I5pujgfbJ4X
-         U9ny6I3mymGbjv9SNhAVcesm2xOx/MgbEZADw38nZ4vaYgh2DMiMLrttAfsMYCRzxLRN
-         lkC1V2KGv+WjIjT+3n3HB5HhsFQlBjk5W/X0uNUaRkwUxg4QU5cHoPkm7sMG45cua21W
-         pCsw==
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=XxTgZtev+GfJl7H6W7VhwGN30lrR7QMJprT1vBAnGgk=;
+        b=eV1FPKedxFu2S9bKA1zmYaFrIRDr6rJWXSAYNvyCZSk5Gs4r+Jm7l5Dx7NvM+nvyJc
+         FmddSr2LbfW5q7d9WMMQY83TBYAwQ3tJ5VBBL0znCskboiTwKh6gA7+e77+sFOzXIOwA
+         yTbA8B/sLKoSaFx5yMKa5gYlwiZ6kVdA9d/YHWqMcuXxX/iDUqeWQLuva0tISYPkhBEi
+         +5XV7Eb1ku86GRzuy6v6fgPKWZ73LwAhnXgE2/dbDhsD4OGfCGOAIDfji5bxD+C+Y6VT
+         dosXdBxW+5Otf8e44RWWiMPTlJZ3EBRvGpHnfXdqwIs4cnkmsO8A428leze80LQaOxOM
+         U0bg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ofFVUJM8;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=lOPtH9t9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id da1-20020a05620a360100b0075d031b1b96si3111790qkb.543.2023.06.01.02.36.34
+        by mx.google.com with ESMTPS id i5-20020a37c205000000b0075cf2aff7f7si4841907qkm.759.2023.06.01.04.45.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 02:36:34 -0700 (PDT)
+        Thu, 01 Jun 2023 04:45:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ofFVUJM8;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=lOPtH9t9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4eiM-0007mA-0Q; Thu, 01 Jun 2023 05:35:26 -0400
+	id 1q4gjp-00088P-Td; Thu, 01 Jun 2023 07:45:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4eiK-0007k2-C4
- for qemu-arm@nongnu.org; Thu, 01 Jun 2023 05:35:24 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q4gjh-00086F-9h; Thu, 01 Jun 2023 07:44:57 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q4eiH-0000GB-5p
- for qemu-arm@nongnu.org; Thu, 01 Jun 2023 05:35:24 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-30aeee7c8a0so486135f8f.1
- for <qemu-arm@nongnu.org>; Thu, 01 Jun 2023 02:35:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q4gjf-00071C-Cy; Thu, 01 Jun 2023 07:44:56 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5148f299105so1744075a12.1; 
+ Thu, 01 Jun 2023 04:44:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685612106; x=1688204106;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=gmail.com; s=20221208; t=1685619892; x=1688211892;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TdXkShqXWPbWzEZ0sD1ST7mNiLXOQxbG4dnB48iOt9Y=;
- b=ofFVUJM8Gprwb2GehV3ZgIqY+5QwlzSMP+jR+PaSFiwTTXTRNoYANiqH6fTKmAe6Cf
- fX6SNBC2ZZa9+T3WQsHCKVQeo6T5cHOWLz3BhSveo/l9k0MFjLpUDaTgt2TbKnbu77lf
- 4ORin8Xayfmeedfw70lk8RzKygNd2PPelXK5CQhFp4oPI8HPo4U3K3EilwgTPIC0hWRY
- oxqvb36St8OvE6Jl65vjszOefUnny4kgaDqwZ+Ra0qH2WVrhVQT30YU+JphAIExM6pt1
- JRjpyGnIzjKEj/k6GvPkEcFxfxhoV/eVSStbo2RMng+FJpnT213kx8mUBHJCDLUjrfA6
- /mWw==
+ bh=XxTgZtev+GfJl7H6W7VhwGN30lrR7QMJprT1vBAnGgk=;
+ b=lOPtH9t9JgWSU2PNf3IeQlXUkUKiYpnjsBG6b8BjB/OYQOnQ52GgxR/okG4hHR1R5f
+ j+WY7rgqxNNXR3GnmMT5qJ7JDVPiqHmyrDoqxwXbILLcSa3PsWOWJU0c8IvasH+9S/xP
+ yS+So5h/P0UgZ+pChIF4Ls3nqdUR6NIzfuwppfVI7exSn1LNgnqGAbKndc6FDUW3s+tp
+ Blk7Xv1jL32Hqph8m0XwdWiKdos52DagC+1U/ofNp+LcwNBdzLJVA9cdwnbySL3OqYlY
+ YQ2D76wLASRq5k7MPnw//DRSA1yv5zk9DEHdmdiasfEm1HbC+hD8imZgUUefrjDD5mP8
+ ZUuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685612106; x=1688204106;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20221208; t=1685619892; x=1688211892;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=TdXkShqXWPbWzEZ0sD1ST7mNiLXOQxbG4dnB48iOt9Y=;
- b=hmS04dBtIfARlRbaqr1ZEsommdcezRevnWPH9vxAXXEEecmgq614jztl7RCPX9jT7r
- qIVVn+L4K5qZThw0wfetCl9n4+t8X1jzR0yapBWqXJR1+KYLtXWwWRIZkwDcvqc6Cn9I
- OmLWx/T3ipLijdxpZ/GON8vmtdkMXRxyvBAyJltNC29f7n5ynNzZf6zUvR3iYoSKl6zZ
- oCBgGRivm5Iud67NjaWVE3UfUi3XuLVn213Aqet2iqfW1pxHOaW+R7MUQeE7bAD1uKsu
- QY/bvfiikObkfXS06gKu6eGAa3VgvIBSlI9wW7w6dzRZ7/AX4adR423ROjJBFFAnPpeZ
- 1pBA==
-X-Gm-Message-State: AC+VfDwZ33wPEwoBEJs0KtkH1HMmvLduxMOGxKxdApp0mbAAYS2R9CDL
- pwoexC8zKap7phXYLYQDu8OCxA==
-X-Received: by 2002:adf:dc91:0:b0:307:7d1a:20fd with SMTP id
- r17-20020adfdc91000000b003077d1a20fdmr1052138wrj.12.1685612105716; 
- Thu, 01 Jun 2023 02:35:05 -0700 (PDT)
-Received: from localhost.localdomain ([176.176.141.224])
- by smtp.gmail.com with ESMTPSA id
- o11-20020adfeacb000000b0030ae7bd1737sm9714903wrn.45.2023.06.01.02.35.04
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 01 Jun 2023 02:35:05 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
-Cc: qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 2/2] bulk: Remove pointless QOM casts
-Date: Thu,  1 Jun 2023 11:34:52 +0200
-Message-Id: <20230601093452.38972-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230601093452.38972-1-philmd@linaro.org>
-References: <20230601093452.38972-1-philmd@linaro.org>
+ bh=XxTgZtev+GfJl7H6W7VhwGN30lrR7QMJprT1vBAnGgk=;
+ b=VOtCmj+h/N1celEsE6sbBKo1+dLKTGKhwrQAhP5XAWOplgHfE7Vc9FYuQriGh8h1go
+ hgLMn+19HmErhBzkMhTLpyYNi2jB97U1e0xElQGRt0Cyvd8UvcrCCJJhUJOLcpulGAgW
+ tlRvsMKpyP70F9z1uOyXpPlehwFDjvR2Za/Nf+UFVTiWqzV2WvQYdA3mSqcmYbGC8CxI
+ 0t0kujThOoJa/UmEmZyRwNVRfkqaXbyYVKD4JrOGTBoZo8yff2+dxNvZimNogGQz0uBQ
+ TgvoS8xcP+eEZn5vUqaRIR8WJL5aPR6K+iLiXpuRNeHUvnpFtYZWZQV9K/Jb5EZq4YsM
+ UvVg==
+X-Gm-Message-State: AC+VfDwzyf6cY0r+cQSW962gp4sw/G3NsriQknVYeVE8y8vV5/xjPLPT
+ rOQf1vQjeDUIKrX/EbEgMSU=
+X-Received: by 2002:aa7:d047:0:b0:514:a016:9cd1 with SMTP id
+ n7-20020aa7d047000000b00514a0169cd1mr1518133edo.8.1685619892129; 
+ Thu, 01 Jun 2023 04:44:52 -0700 (PDT)
+Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ ca28-20020aa7cd7c000000b0050bc6d0e880sm7014762edb.61.2023.06.01.04.44.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Jun 2023 04:44:51 -0700 (PDT)
+Date: Thu, 01 Jun 2023 11:44:46 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+In-Reply-To: <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+References: <20230523195608.125820-1-shentey@gmail.com>
+ <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+Message-ID: <25280221-A771-4D77-9B9F-2C3FE45CE38C@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,544 +131,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w0eGievH6RqE
+X-TUID: GTo+L3uU0e9J
 
-Mechanical change running Coccinelle spatch with content
-generated from the qom-cast-macro-clean-cocci-gen.py added
-in the previous commit.
 
-Suggested-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- block/nbd.c                 |  4 ++--
- chardev/char-pty.c          |  2 +-
- hw/arm/musicpal.c           |  2 +-
- hw/arm/xlnx-versal.c        |  2 +-
- hw/display/vhost-user-gpu.c |  4 ++--
- hw/intc/loongarch_extioi.c  |  6 +++---
- hw/m68k/q800.c              |  2 +-
- hw/pci-host/bonito.c        |  2 +-
- hw/ppc/pnv_lpc.c            |  2 +-
- hw/ppc/pnv_occ.c            |  2 +-
- hw/ppc/pnv_sbe.c            |  2 +-
- hw/riscv/virt.c             | 10 +++++-----
- hw/rx/rx62n.c               |  2 +-
- hw/scsi/esp-pci.c           | 18 +++++++++---------
- hw/sparc/sun4m.c            |  4 ++--
- hw/virtio/virtio-mem-pci.c  |  6 +++---
- hw/virtio/virtio-pmem-pci.c |  6 +++---
- migration/fd.c              |  4 ++--
- migration/multifd.c         |  2 +-
- migration/yank_functions.c  |  4 ++--
- nbd/client-connection.c     |  2 +-
- nbd/server.c                |  2 +-
- softmmu/qdev-monitor.c      |  2 +-
- ui/vnc-ws.c                 |  6 +++---
- 24 files changed, 49 insertions(+), 49 deletions(-)
 
-diff --git a/block/nbd.c b/block/nbd.c
-index a3f8f8a9d5..5aef5cb6bd 100644
---- a/block/nbd.c
-+++ b/block/nbd.c
-@@ -397,7 +397,7 @@ static void coroutine_fn GRAPH_RDLOCK nbd_reconnect_attempt(BDRVNBDState *s)
- 
-     /* Finalize previous connection if any */
-     if (s->ioc) {
--        qio_channel_detach_aio_context(QIO_CHANNEL(s->ioc));
-+        qio_channel_detach_aio_context(s->ioc);
-         yank_unregister_function(BLOCKDEV_YANK_INSTANCE(s->bs->node_name),
-                                  nbd_yank, s->bs);
-         object_unref(OBJECT(s->ioc));
-@@ -1455,7 +1455,7 @@ static void nbd_yank(void *opaque)
-     BDRVNBDState *s = (BDRVNBDState *)bs->opaque;
- 
-     QEMU_LOCK_GUARD(&s->requests_lock);
--    qio_channel_shutdown(QIO_CHANNEL(s->ioc), QIO_CHANNEL_SHUTDOWN_BOTH, NULL);
-+    qio_channel_shutdown(s->ioc, QIO_CHANNEL_SHUTDOWN_BOTH, NULL);
-     s->state = NBD_CLIENT_QUIT;
- }
- 
-diff --git a/chardev/char-pty.c b/chardev/char-pty.c
-index 92fd33c854..4e5deac18a 100644
---- a/chardev/char-pty.c
-+++ b/chardev/char-pty.c
-@@ -334,7 +334,7 @@ static void char_pty_open(Chardev *chr,
-     s = PTY_CHARDEV(chr);
-     s->ioc = QIO_CHANNEL(qio_channel_file_new_fd(master_fd));
-     name = g_strdup_printf("chardev-pty-%s", chr->label);
--    qio_channel_set_name(QIO_CHANNEL(s->ioc), name);
-+    qio_channel_set_name(s->ioc, name);
-     g_free(name);
-     s->timer_src = NULL;
-     *be_opened = false;
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 58f3d30c9b..dc4e43e0ee 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1250,7 +1250,7 @@ static void musicpal_init(MachineState *machine)
-     uart_orgate = DEVICE(object_new(TYPE_OR_IRQ));
-     object_property_set_int(OBJECT(uart_orgate), "num-lines", 2, &error_fatal);
-     qdev_realize_and_unref(uart_orgate, NULL, &error_fatal);
--    qdev_connect_gpio_out(DEVICE(uart_orgate), 0,
-+    qdev_connect_gpio_out(uart_orgate, 0,
-                           qdev_get_gpio_in(pic, MP_UART_SHARED_IRQ));
- 
-     serial_mm_init(address_space_mem, MP_UART1_BASE, 2,
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index 69b1b99e93..db1e0dee6e 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -327,7 +327,7 @@ static void versal_create_rtc(Versal *s, qemu_irq *pic)
-     object_initialize_child(OBJECT(s), "rtc", &s->pmc.rtc,
-                             TYPE_XLNX_ZYNQMP_RTC);
-     sbd = SYS_BUS_DEVICE(&s->pmc.rtc);
--    sysbus_realize(SYS_BUS_DEVICE(sbd), &error_fatal);
-+    sysbus_realize(sbd, &error_fatal);
- 
-     mr = sysbus_mmio_get_region(sbd, 0);
-     memory_region_add_subregion(&s->mr_ps, MM_PMC_RTC, mr);
-diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
-index 71dfd956b8..1386e869e5 100644
---- a/hw/display/vhost-user-gpu.c
-+++ b/hw/display/vhost-user-gpu.c
-@@ -364,11 +364,11 @@ vhost_user_gpu_gl_flushed(VirtIOGPUBase *b)
-     VhostUserGPU *g = VHOST_USER_GPU(b);
- 
-     if (g->backend_blocked) {
--        vhost_user_gpu_unblock(VHOST_USER_GPU(g));
-+        vhost_user_gpu_unblock(g);
-         g->backend_blocked = false;
-     }
- 
--    vhost_user_gpu_update_blocked(VHOST_USER_GPU(g), false);
-+    vhost_user_gpu_update_blocked(g, false);
- }
- 
- static bool
-diff --git a/hw/intc/loongarch_extioi.c b/hw/intc/loongarch_extioi.c
-index 0e7a3e32f3..af75460643 100644
---- a/hw/intc/loongarch_extioi.c
-+++ b/hw/intc/loongarch_extioi.c
-@@ -276,7 +276,7 @@ static void loongarch_extioi_instance_init(Object *obj)
-     int i, cpu, pin;
- 
-     for (i = 0; i < EXTIOI_IRQS; i++) {
--        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[i]);
-+        sysbus_init_irq(dev, &s->irq[i]);
-     }
- 
-     qdev_init_gpio_in(DEVICE(obj), extioi_setirq, EXTIOI_IRQS);
-@@ -284,14 +284,14 @@ static void loongarch_extioi_instance_init(Object *obj)
-     for (cpu = 0; cpu < EXTIOI_CPUS; cpu++) {
-         memory_region_init_io(&s->extioi_iocsr_mem[cpu], OBJECT(s), &extioi_ops,
-                               s, "extioi_iocsr", 0x900);
--        sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->extioi_iocsr_mem[cpu]);
-+        sysbus_init_mmio(dev, &s->extioi_iocsr_mem[cpu]);
-         for (pin = 0; pin < LS3A_INTC_IP; pin++) {
-             qdev_init_gpio_out(DEVICE(obj), &s->parent_irq[cpu][pin], 1);
-         }
-     }
-     memory_region_init_io(&s->extioi_system_mem, OBJECT(s), &extioi_ops,
-                           s, "extioi_system_mem", 0x900);
--    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->extioi_system_mem);
-+    sysbus_init_mmio(dev, &s->extioi_system_mem);
- }
- 
- static void loongarch_extioi_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/m68k/q800.c b/hw/m68k/q800.c
-index b35ecafbc7..68f0cd8cac 100644
---- a/hw/m68k/q800.c
-+++ b/hw/m68k/q800.c
-@@ -525,7 +525,7 @@ static void q800_init(MachineState *machine)
-     qdev_realize_and_unref(escc_orgate, NULL, &error_fatal);
-     sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(escc_orgate, 0));
-     sysbus_connect_irq(sysbus, 1, qdev_get_gpio_in(escc_orgate, 1));
--    qdev_connect_gpio_out(DEVICE(escc_orgate), 0,
-+    qdev_connect_gpio_out(escc_orgate, 0,
-                           qdev_get_gpio_in(glue, GLUE_IRQ_IN_ESCC));
-     sysbus_mmio_map(sysbus, 0, SCC_BASE);
- 
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index 1cf25bab8d..4701481b9b 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -656,7 +656,7 @@ static void bonito_pci_realize(PCIDevice *dev, Error **errp)
-     PCIBonitoState *s = PCI_BONITO(dev);
-     SysBusDevice *sysbus = SYS_BUS_DEVICE(s->pcihost);
-     PCIHostState *phb = PCI_HOST_BRIDGE(s->pcihost);
--    BonitoState *bs = BONITO_PCI_HOST_BRIDGE(s->pcihost);
-+    BonitoState *bs = s->pcihost;
-     MemoryRegion *pcimem_alias = g_new(MemoryRegion, 1);
- 
-     /*
-diff --git a/hw/ppc/pnv_lpc.c b/hw/ppc/pnv_lpc.c
-index 605d390861..d692858bee 100644
---- a/hw/ppc/pnv_lpc.c
-+++ b/hw/ppc/pnv_lpc.c
-@@ -744,7 +744,7 @@ static void pnv_lpc_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(&lpc->opb_mr, LPC_HC_REGS_OPB_ADDR,
-                                 &lpc->lpc_hc_regs);
- 
--    qdev_init_gpio_out(DEVICE(dev), &lpc->psi_irq, 1);
-+    qdev_init_gpio_out(dev, &lpc->psi_irq, 1);
- }
- 
- static void pnv_lpc_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/ppc/pnv_occ.c b/hw/ppc/pnv_occ.c
-index 9fa6d91d31..48123ceae1 100644
---- a/hw/ppc/pnv_occ.c
-+++ b/hw/ppc/pnv_occ.c
-@@ -278,7 +278,7 @@ static void pnv_occ_realize(DeviceState *dev, Error **errp)
-                           occ, "occ-common-area",
-                           PNV_OCC_SENSOR_DATA_BLOCK_SIZE);
- 
--    qdev_init_gpio_out(DEVICE(dev), &occ->psi_irq, 1);
-+    qdev_init_gpio_out(dev, &occ->psi_irq, 1);
- }
- 
- static void pnv_occ_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/ppc/pnv_sbe.c b/hw/ppc/pnv_sbe.c
-index 1c7812a135..74cee4eea7 100644
---- a/hw/ppc/pnv_sbe.c
-+++ b/hw/ppc/pnv_sbe.c
-@@ -381,7 +381,7 @@ static void pnv_sbe_realize(DeviceState *dev, Error **errp)
-                           psc->xscom_mbox_ops, sbe, "xscom-sbe-mbox",
-                           psc->xscom_mbox_size);
- 
--    qdev_init_gpio_out(DEVICE(dev), &sbe->psi_irq, 1);
-+    qdev_init_gpio_out(dev, &sbe->psi_irq, 1);
- 
-     sbe->timer = timer_new_us(QEMU_CLOCK_VIRTUAL, sbe_timer, sbe);
- }
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 4e3efbee16..245c7b97b2 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1488,7 +1488,7 @@ static void virt_machine_init(MachineState *machine)
-     for (i = 0; i < VIRTIO_COUNT; i++) {
-         sysbus_create_simple("virtio-mmio",
-             memmap[VIRT_VIRTIO].base + i * memmap[VIRT_VIRTIO].size,
--            qdev_get_gpio_in(DEVICE(virtio_irqchip), VIRTIO_IRQ + i));
-+            qdev_get_gpio_in(virtio_irqchip, VIRTIO_IRQ + i));
-     }
- 
-     gpex_pcie_init(system_memory,
-@@ -1499,16 +1499,16 @@ static void virt_machine_init(MachineState *machine)
-                    virt_high_pcie_memmap.base,
-                    virt_high_pcie_memmap.size,
-                    memmap[VIRT_PCIE_PIO].base,
--                   DEVICE(pcie_irqchip));
-+                   pcie_irqchip);
- 
--    create_platform_bus(s, DEVICE(mmio_irqchip));
-+    create_platform_bus(s, mmio_irqchip);
- 
-     serial_mm_init(system_memory, memmap[VIRT_UART0].base,
--        0, qdev_get_gpio_in(DEVICE(mmio_irqchip), UART0_IRQ), 399193,
-+        0, qdev_get_gpio_in(mmio_irqchip, UART0_IRQ), 399193,
-         serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-     sysbus_create_simple("goldfish_rtc", memmap[VIRT_RTC].base,
--        qdev_get_gpio_in(DEVICE(mmio_irqchip), RTC_IRQ));
-+        qdev_get_gpio_in(mmio_irqchip, RTC_IRQ));
- 
-     virt_flash_create(s);
- 
-diff --git a/hw/rx/rx62n.c b/hw/rx/rx62n.c
-index fa5add9f9d..3e887a0fc7 100644
---- a/hw/rx/rx62n.c
-+++ b/hw/rx/rx62n.c
-@@ -154,7 +154,7 @@ static void register_icu(RX62NState *s)
-     sysbus_connect_irq(icu, 0, qdev_get_gpio_in(DEVICE(&s->cpu), RX_CPU_IRQ));
-     sysbus_connect_irq(icu, 1, qdev_get_gpio_in(DEVICE(&s->cpu), RX_CPU_FIR));
-     sysbus_connect_irq(icu, 2, s->irq[SWI]);
--    sysbus_mmio_map(SYS_BUS_DEVICE(icu), 0, RX62N_ICU_BASE);
-+    sysbus_mmio_map(icu, 0, RX62N_ICU_BASE);
- }
- 
- static void register_tmr(RX62NState *s, int unit)
-diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-index 2f7f11e70b..4e890db0e2 100644
---- a/hw/scsi/esp-pci.c
-+++ b/hw/scsi/esp-pci.c
-@@ -79,7 +79,7 @@ struct PCIESPState {
- 
- static void esp_pci_handle_idle(PCIESPState *pci, uint32_t val)
- {
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     trace_esp_pci_dma_idle(val);
-     esp_dma_enable(s, 0, 0);
-@@ -93,7 +93,7 @@ static void esp_pci_handle_blast(PCIESPState *pci, uint32_t val)
- 
- static void esp_pci_handle_abort(PCIESPState *pci, uint32_t val)
- {
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     trace_esp_pci_dma_abort(val);
-     if (s->current_req) {
-@@ -103,7 +103,7 @@ static void esp_pci_handle_abort(PCIESPState *pci, uint32_t val)
- 
- static void esp_pci_handle_start(PCIESPState *pci, uint32_t val)
- {
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     trace_esp_pci_dma_start(val);
- 
-@@ -161,7 +161,7 @@ static void esp_pci_dma_write(PCIESPState *pci, uint32_t saddr, uint32_t val)
- 
- static uint32_t esp_pci_dma_read(PCIESPState *pci, uint32_t saddr)
- {
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
-     uint32_t val;
- 
-     val = pci->dma_regs[saddr];
-@@ -183,7 +183,7 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
-                              uint64_t val, unsigned int size)
- {
-     PCIESPState *pci = opaque;
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     if (size < 4 || addr & 3) {
-         /* need to upgrade request: we only support 4-bytes accesses */
-@@ -228,7 +228,7 @@ static uint64_t esp_pci_io_read(void *opaque, hwaddr addr,
-                                 unsigned int size)
- {
-     PCIESPState *pci = opaque;
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
-     uint32_t ret;
- 
-     if (addr < 0x40) {
-@@ -315,7 +315,7 @@ static const MemoryRegionOps esp_pci_io_ops = {
- static void esp_pci_hard_reset(DeviceState *dev)
- {
-     PCIESPState *pci = PCI_ESP(dev);
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     esp_hard_reset(s);
-     pci->dma_regs[DMA_CMD] &= ~(DMA_CMD_DIR | DMA_CMD_INTE_D | DMA_CMD_INTE_P
-@@ -366,7 +366,7 @@ static void esp_pci_scsi_realize(PCIDevice *dev, Error **errp)
- {
-     PCIESPState *pci = PCI_ESP(dev);
-     DeviceState *d = DEVICE(dev);
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
-     uint8_t *pci_conf;
- 
-     if (!qdev_realize(DEVICE(s), NULL, errp)) {
-@@ -394,7 +394,7 @@ static void esp_pci_scsi_realize(PCIDevice *dev, Error **errp)
- static void esp_pci_scsi_exit(PCIDevice *d)
- {
-     PCIESPState *pci = PCI_ESP(d);
--    ESPState *s = ESP(&pci->esp);
-+    ESPState *s = &pci->esp;
- 
-     qemu_free_irq(s->irq);
- }
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index d9288326d6..17bf5f2879 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -982,7 +982,7 @@ static void sun4m_hw_init(MachineState *machine)
-     qdev_realize_and_unref(ms_kb_orgate, NULL, &error_fatal);
-     sysbus_connect_irq(s, 0, qdev_get_gpio_in(ms_kb_orgate, 0));
-     sysbus_connect_irq(s, 1, qdev_get_gpio_in(ms_kb_orgate, 1));
--    qdev_connect_gpio_out(DEVICE(ms_kb_orgate), 0, slavio_irq[14]);
-+    qdev_connect_gpio_out(ms_kb_orgate, 0, slavio_irq[14]);
- 
-     dev = qdev_new(TYPE_ESCC);
-     qdev_prop_set_uint32(dev, "disabled", 0);
-@@ -1004,7 +1004,7 @@ static void sun4m_hw_init(MachineState *machine)
-     qdev_realize_and_unref(serial_orgate, NULL, &error_fatal);
-     sysbus_connect_irq(s, 0, qdev_get_gpio_in(serial_orgate, 0));
-     sysbus_connect_irq(s, 1, qdev_get_gpio_in(serial_orgate, 1));
--    qdev_connect_gpio_out(DEVICE(serial_orgate), 0, slavio_irq[15]);
-+    qdev_connect_gpio_out(serial_orgate, 0, slavio_irq[15]);
- 
-     if (hwdef->apc_base) {
-         apc_init(hwdef->apc_base, qemu_allocate_irq(cpu_halt_signal, NULL, 0));
-diff --git a/hw/virtio/virtio-mem-pci.c b/hw/virtio/virtio-mem-pci.c
-index e8c338c5d9..b85c12668d 100644
---- a/hw/virtio/virtio-mem-pci.c
-+++ b/hw/virtio/virtio-mem-pci.c
-@@ -42,7 +42,7 @@ static MemoryRegion *virtio_mem_pci_get_memory_region(MemoryDeviceState *md,
-                                                       Error **errp)
- {
-     VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(md);
--    VirtIOMEM *vmem = VIRTIO_MEM(&pci_mem->vdev);
-+    VirtIOMEM *vmem = &pci_mem->vdev;
-     VirtIOMEMClass *vmc = VIRTIO_MEM_GET_CLASS(vmem);
- 
-     return vmc->get_memory_region(vmem, errp);
-@@ -60,7 +60,7 @@ static void virtio_mem_pci_fill_device_info(const MemoryDeviceState *md,
- {
-     VirtioMEMDeviceInfo *vi = g_new0(VirtioMEMDeviceInfo, 1);
-     VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(md);
--    VirtIOMEM *vmem = VIRTIO_MEM(&pci_mem->vdev);
-+    VirtIOMEM *vmem = &pci_mem->vdev;
-     VirtIOMEMClass *vpc = VIRTIO_MEM_GET_CLASS(vmem);
-     DeviceState *dev = DEVICE(md);
- 
-@@ -123,7 +123,7 @@ static void virtio_mem_pci_instance_init(Object *obj)
-                                 TYPE_VIRTIO_MEM);
- 
-     dev->size_change_notifier.notify = virtio_mem_pci_size_change_notify;
--    vmem = VIRTIO_MEM(&dev->vdev);
-+    vmem = &dev->vdev;
-     vmc = VIRTIO_MEM_GET_CLASS(vmem);
-     /*
-      * We never remove the notifier again, as we expect both devices to
-diff --git a/hw/virtio/virtio-pmem-pci.c b/hw/virtio/virtio-pmem-pci.c
-index 1b89ade9d1..197d219204 100644
---- a/hw/virtio/virtio-pmem-pci.c
-+++ b/hw/virtio/virtio-pmem-pci.c
-@@ -42,7 +42,7 @@ static MemoryRegion *virtio_pmem_pci_get_memory_region(MemoryDeviceState *md,
-                                                        Error **errp)
- {
-     VirtIOPMEMPCI *pci_pmem = VIRTIO_PMEM_PCI(md);
--    VirtIOPMEM *pmem = VIRTIO_PMEM(&pci_pmem->vdev);
-+    VirtIOPMEM *pmem = &pci_pmem->vdev;
-     VirtIOPMEMClass *vpc = VIRTIO_PMEM_GET_CLASS(pmem);
- 
-     return vpc->get_memory_region(pmem, errp);
-@@ -52,7 +52,7 @@ static uint64_t virtio_pmem_pci_get_plugged_size(const MemoryDeviceState *md,
-                                                  Error **errp)
- {
-     VirtIOPMEMPCI *pci_pmem = VIRTIO_PMEM_PCI(md);
--    VirtIOPMEM *pmem = VIRTIO_PMEM(&pci_pmem->vdev);
-+    VirtIOPMEM *pmem = &pci_pmem->vdev;
-     VirtIOPMEMClass *vpc = VIRTIO_PMEM_GET_CLASS(pmem);
-     MemoryRegion *mr = vpc->get_memory_region(pmem, errp);
- 
-@@ -65,7 +65,7 @@ static void virtio_pmem_pci_fill_device_info(const MemoryDeviceState *md,
- {
-     VirtioPMEMDeviceInfo *vi = g_new0(VirtioPMEMDeviceInfo, 1);
-     VirtIOPMEMPCI *pci_pmem = VIRTIO_PMEM_PCI(md);
--    VirtIOPMEM *pmem = VIRTIO_PMEM(&pci_pmem->vdev);
-+    VirtIOPMEM *pmem = &pci_pmem->vdev;
-     VirtIOPMEMClass *vpc = VIRTIO_PMEM_GET_CLASS(pmem);
-     DeviceState *dev = DEVICE(md);
- 
-diff --git a/migration/fd.c b/migration/fd.c
-index 6f2f50475f..0eb677dcae 100644
---- a/migration/fd.c
-+++ b/migration/fd.c
-@@ -38,7 +38,7 @@ void fd_start_outgoing_migration(MigrationState *s, const char *fdname, Error **
-         return;
-     }
- 
--    qio_channel_set_name(QIO_CHANNEL(ioc), "migration-fd-outgoing");
-+    qio_channel_set_name(ioc, "migration-fd-outgoing");
-     migration_channel_connect(s, ioc, NULL, NULL);
-     object_unref(OBJECT(ioc));
- }
-@@ -68,7 +68,7 @@ void fd_start_incoming_migration(const char *fdname, Error **errp)
-         return;
-     }
- 
--    qio_channel_set_name(QIO_CHANNEL(ioc), "migration-fd-incoming");
-+    qio_channel_set_name(ioc, "migration-fd-incoming");
-     qio_channel_add_watch_full(ioc, G_IO_IN,
-                                fd_accept_incoming_migration,
-                                NULL, NULL,
-diff --git a/migration/multifd.c b/migration/multifd.c
-index 0bf5958a9c..3387d8277f 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -894,7 +894,7 @@ static void multifd_new_send_channel_async(QIOTask *task, gpointer opaque)
- 
-     trace_multifd_new_send_channel_async(p->id);
-     if (!qio_task_propagate_error(task, &local_err)) {
--        p->c = QIO_CHANNEL(sioc);
-+        p->c = sioc;
-         qio_channel_set_delay(p->c, false);
-         p->running = true;
-         if (multifd_channel_connect(p, sioc, local_err)) {
-diff --git a/migration/yank_functions.c b/migration/yank_functions.c
-index 8c08aef14a..d5a710a3f2 100644
---- a/migration/yank_functions.c
-+++ b/migration/yank_functions.c
-@@ -35,7 +35,7 @@ void migration_ioc_register_yank(QIOChannel *ioc)
-     if (migration_ioc_yank_supported(ioc)) {
-         yank_register_function(MIGRATION_YANK_INSTANCE,
-                                migration_yank_iochannel,
--                               QIO_CHANNEL(ioc));
-+                               ioc);
-     }
- }
- 
-@@ -44,7 +44,7 @@ void migration_ioc_unregister_yank(QIOChannel *ioc)
-     if (migration_ioc_yank_supported(ioc)) {
-         yank_unregister_function(MIGRATION_YANK_INSTANCE,
-                                  migration_yank_iochannel,
--                                 QIO_CHANNEL(ioc));
-+                                 ioc);
-     }
- }
- 
-diff --git a/nbd/client-connection.c b/nbd/client-connection.c
-index e5b1046a1c..3d14296c04 100644
---- a/nbd/client-connection.c
-+++ b/nbd/client-connection.c
-@@ -156,7 +156,7 @@ static int nbd_connect(QIOChannelSocket *sioc, SocketAddress *addr,
-          * channel.
-          */
-         if (outioc && *outioc) {
--            qio_channel_close(QIO_CHANNEL(*outioc), NULL);
-+            qio_channel_close(*outioc, NULL);
-             object_unref(OBJECT(*outioc));
-             *outioc = NULL;
-         } else {
-diff --git a/nbd/server.c b/nbd/server.c
-index 2664d43bff..febe001a39 100644
---- a/nbd/server.c
-+++ b/nbd/server.c
-@@ -1189,7 +1189,7 @@ static int nbd_negotiate_options(NBDClient *client, Error **errp)
-                 }
-                 ret = 0;
-                 object_unref(OBJECT(client->ioc));
--                client->ioc = QIO_CHANNEL(tioc);
-+                client->ioc = tioc;
-                 break;
- 
-             case NBD_OPT_EXPORT_NAME:
-diff --git a/softmmu/qdev-monitor.c b/softmmu/qdev-monitor.c
-index b8d2c4dadd..74f4e41338 100644
---- a/softmmu/qdev-monitor.c
-+++ b/softmmu/qdev-monitor.c
-@@ -711,7 +711,7 @@ DeviceState *qdev_device_add_from_qdict(const QDict *opts,
-         goto err_del_dev;
-     }
- 
--    if (!qdev_realize(DEVICE(dev), bus, errp)) {
-+    if (!qdev_realize(dev, bus, errp)) {
-         goto err_del_dev;
-     }
-     return dev;
-diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
-index 6d79f3e5a5..9e3503d93d 100644
---- a/ui/vnc-ws.c
-+++ b/ui/vnc-ws.c
-@@ -40,9 +40,9 @@ static void vncws_tls_handshake_done(QIOTask *task,
-         if (vs->ioc_tag) {
-             g_source_remove(vs->ioc_tag);
-         }
--        vs->ioc_tag = qio_channel_add_watch(
--            QIO_CHANNEL(vs->ioc), G_IO_IN | G_IO_HUP | G_IO_ERR,
--            vncws_handshake_io, vs, NULL);
-+        vs->ioc_tag = qio_channel_add_watch(vs->ioc,
-+                                            G_IO_IN | G_IO_HUP | G_IO_ERR,
-+                                            vncws_handshake_io, vs, NULL);
-     }
- }
- 
--- 
-2.38.1
+Am 25=2E Mai 2023 16:03:15 UTC schrieb Mark Cave-Ayland <mark=2Ecave-aylan=
+d@ilande=2Eco=2Euk>:
+>On 23/05/2023 20:56, Bernhard Beschow wrote:
+>
+>> This series:
+>> * Removes dead code from omap_uart and i82378
+>> * Resolves redundant code in the i8254 timer devices
+>>=20
+>> v3:
+>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>>    https://lore=2Ekernel=2Eorg/qemu-devel/20230522115014=2E1110840-9-th=
+uth@redhat=2Ecom/
+>
+>Oh I didn't see that this had already been merged :/
+>
+>It's not a reason to block this series, but I'd still like to see your ch=
+anges to ParallelState and ISAParallelState merged separately since they ar=
+e a better match for our QOM coding standards=2E
+>
+>> v2:
+>> * Export ParallelState and ISAParallelState (Mark)
+>>=20
+>> Testing done:
+>> * `make check`
+>>=20
+>> Bernhard Beschow (3):
+>>    hw/timer/i8254_common: Share "iobase" property via base class
+>>    hw/arm/omap: Remove unused omap_uart_attach()
+>>    hw/isa/i82378: Remove unused "io" attribute
+>>=20
+>>   include/hw/arm/omap=2Eh   | 1 -
+>>   hw/char/omap_uart=2Ec     | 9 ---------
+>>   hw/i386/kvm/i8254=2Ec     | 1 -
+>>   hw/isa/i82378=2Ec         | 1 -
+>>   hw/timer/i8254=2Ec        | 6 ------
+>>   hw/timer/i8254_common=2Ec | 6 ++++++
+>>   6 files changed, 6 insertions(+), 18 deletions(-)
+>
+>Do we know who is going to pick up these series? I can send a PR if no-on=
+e minds?
 
+I guess the silence means that no one minds ;)
+
+Perhaps we could queue these changes together with my VIA/PCI IDE cleanup =
+series once it is fully reviewed?
+
+Best regards,
+Bernhard
+>
+>
+>ATB,
+>
+>Mark=2E

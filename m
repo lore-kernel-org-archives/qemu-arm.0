@@ -1,57 +1,57 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp405891ejb;
-        Thu, 1 Jun 2023 05:33:40 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7IBPQtz1kkCcVXcMdEht7MCDEmx+Pfb/bt8f2Upc069xtnGLxsmtAX/7jhDwkwa0XVqWuQ
-X-Received: by 2002:a05:6870:44c5:b0:19a:5e87:fd72 with SMTP id t5-20020a05687044c500b0019a5e87fd72mr7752742oai.4.1685622820118;
-        Thu, 01 Jun 2023 05:33:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685622820; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp405920ejb;
+        Thu, 1 Jun 2023 05:33:42 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7HeCKyCDJmZ5fiKUZ//uD5PngTvGY0wMem6SIQ8hvDXgcRzZINeeakfKSj/R82JCnMWn8s
+X-Received: by 2002:a05:6830:189:b0:6a5:f7a8:3ec7 with SMTP id q9-20020a056830018900b006a5f7a83ec7mr3079034ota.20.1685622822121;
+        Thu, 01 Jun 2023 05:33:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685622822; cv=none;
         d=google.com; s=arc-20160816;
-        b=yezLVM1Q+NH6sYjY3LNSgbp3fskGyk9YBt/qQl5to5ax8LJu/zDbYJ/Krk3PON8RDk
-         D2Q4rV0I7Og0ydNLxZbJRZ8mlISzZQeQ+kwQnyCHcgJkdi1JiF7lhQmWlhgmW8+FS2Lv
-         Q2eF94oPCkN6le5+ODLpzvZ3oVowiBIQ2jax0wQTPcMutecLSfkKdOxElvRWJZVl4/60
-         OGBN9YKReTJ75JaDUYYKrFfPdm70MJ3CS8bxVQoP9017fkoZWKHQOm9kVK5+KJmPOhYY
-         fAUsG4uDTWk07gtptDQpB/ffBecPZQPdMsR3oWT1kcJ92rNKsvgZ69Mo9iRMVvTapKH/
-         gugg==
+        b=HqEKNgkWRekI9X0i2tzUUs/Dail32urV29tTCE3PCwFxnMp3aPBhvBSwRj2GkYoS10
+         crW0+NFCNhIWjOQ7KQCW07qss6P5FH7aQaDBXpi4P+mDERWu6pZziPEEEOuCFjfn62ym
+         R/yMmL7B3TFOuO1uG2Evu/yx6Kb023DRsqxa6i+BBW4usEu0x8IfTym+x4HpTCybSyJ1
+         caCq0gvoHh6aT/ShEoQKocqDqQp4b5diBHoBxgswGy7cZaj9jL6a65eRZcYEXUyVvq7x
+         bQ5Wm7u6Zzf+s3AaJkp6QI92yvqs/DFuWKed9hFL5vAc5vPwj03eXBGxl637SQ6lRP7X
+         w3iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gs3lJZ5X0nS1wEoi46SJBIt6fEJ+mVI5qkhB2nHvBOI=;
-        b=GiW52k9Mjx5HhaIncchKuGrm3pdrh0pZ0w0u09WBoNr34ukf8IBRaXqKBXeYzo1EDc
-         3K4OU2/fmWxt5wCiQjfskbeDqFfdQSrMqMKr8cbQ/WMuHtdJJAh9TnA6e5gOtq/tj2On
-         i0obMhvJIwn6ek27tYwJjReQJ9Bd17kivT4LqfItGUu+AQa+0bszkAAMgsZlEpv6vGuC
-         Fxt18bXJFAGk69qik8VLwH5pEZZYTLY+hjTseZwtZDgveM+Z8VOMiSFR5yLfX+C8W42Q
-         ENvl6E1Q/uujgcQFQhHK/zhufe7Fv6M8kel7HBRPTepsu0nk4HpwQVtHwhaC8SjSXUJ3
-         UfTA==
+        bh=6vpx5TYtcjQOEO25BXt+lzmn41Cv9OHTZKvB4B82/c4=;
+        b=inAbM9R6Eq7NepCr5s0PmrOw/EBZcesOhHwlLYOBe8hiefuIQsLtSIFQFEQaGcPNwd
+         CDko5T7Sqe39kww7oSYMjRJAq2v8fCL/m6nVOsEkn8X0WACKrHmsKjl9oYR99Z9smBHH
+         EuxuWzhyNOQ8G5cswSx/SnZge7cTkrVaFhfWdZmGwPfFivkyn5ig3GbCC8EOBWNk91nw
+         KPRv/MgRVjbqf/9Si5TK//podKOLzgDRKsjl0XQBbaTUmnea8IGoKysq7sHoi3wTA6oV
+         hoIzQtzHN5uYGTmsHniloM876Ju1IqCNGNbxi0Ci5tkw6wECCtwKmo28wGYCJDQngCbI
+         SBoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=LdBq8ScU;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GZOMIycM;
        spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <ardb@kernel.org>
 Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by mx.google.com with ESMTPS id 189-20020a4a1ec6000000b005586008ccf1si992024ooq.71.2023.06.01.05.33.39
+        by mx.google.com with ESMTPS id v21-20020a9d6055000000b006ab0a4b9298si284124otj.206.2023.06.01.05.33.41
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Jun 2023 05:33:40 -0700 (PDT)
+        Thu, 01 Jun 2023 05:33:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=LdBq8ScU;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GZOMIycM;
        spf=pass (google.com: domain of ardb@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=ardb@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id C445F608D5;
+	by dfw.source.kernel.org (Postfix) with ESMTPS id C3E1064405;
+	Thu,  1 Jun 2023 12:33:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2BDEC433D2;
 	Thu,  1 Jun 2023 12:33:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3353C4339C;
-	Thu,  1 Jun 2023 12:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1685622819;
-	bh=ybhCCaRaMtEWM/hqlDKZlEwr5UC1ZUvXv1DqWaYk9MA=;
+	s=k20201202; t=1685622821;
+	bh=Altb9gx/izM5ctcWAjcLXu6Yyml5zlbxuXilVs0UmFo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LdBq8ScUOELwb9t043Oo96oEIYYaBTlNLZzhG4nhfAVcb52kUYZIjTynJSAd9o46r
-	 6HzLJI6SwsVNM7VxuQZZNWz6JMyARKEObO5CaDx5iUcoiBkOo7E9fp9NuuhvigtC0t
-	 ecdDvBCx0HGuvqwcgkXbotefMAXbpj0iQrXZfe+pXOW3uRhxQONBbClWxnLMZBrvwF
-	 7+WQLEGPy4L9LuTHEtLoArrb+fcxHvrh4Q7WBMllFQ1OasO7IBa4gV4g+OwJ1pcr+z
-	 YhHz4hyxbOxhA73ZK6QvMuwdS3Mmmpez9Fy6Xqb/l7uOLFfQZZ+CLb4a+0TplRDXcl
-	 hm0cbzHVqlgxA==
+	b=GZOMIycMpsrQMgWQub7f7W5KecPa0htilzegtPRZVV7dX86TBWYfO8GC4k+7CVL1K
+	 fytcJcC2MRz42POdqP0eYPWYGVIiLyqMPOMR+qHc29odiSWy3gdHQn4oluwz/rvOIn
+	 kLeMxPxh4FbuGMYQvsYtoQUejIl+tE8MKuP0JruPTqt43HGA3ICuh9BZ4MNSOrQkeD
+	 CwBHBLmvmljrBQhx4bOxVdZQqcwANUtCXluwIThgkzG1BefRDcYgTLZL+zZ/BrIzbh
+	 GkU/weYMmjo8zO+dD80E9lFfGj60RALZjYCzRXj1InfI7qsfxCUhbspWhkJPhJ+GIe
+	 rW2UdIRZ4dVAA==
 From: Ard Biesheuvel <ardb@kernel.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org,
@@ -60,97 +60,105 @@ Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 1/2] target/arm: Use x86 intrinsics to implement PMULL.P64
-Date: Thu,  1 Jun 2023 14:33:31 +0200
-Message-Id: <20230601123332.3297404-2-ardb@kernel.org>
+Subject: [PATCH 2/2] target/i386: Implement PCLMULQDQ using AArch64 PMULL instructions
+Date: Thu,  1 Jun 2023 14:33:32 +0200
+Message-Id: <20230601123332.3297404-3-ardb@kernel.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230601123332.3297404-1-ardb@kernel.org>
 References: <20230601123332.3297404-1-ardb@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2850; i=ardb@kernel.org; h=from:subject; bh=ybhCCaRaMtEWM/hqlDKZlEwr5UC1ZUvXv1DqWaYk9MA=; b=owGbwMvMwCFmkMcZplerG8N4Wi2JIaViglixxrJ5/yNtmaMur5FTufNlysLajHyX/+emhLWl6 ig9s3/aUcrCIMbBICumyCIw+++7nacnStU6z5KFmcPKBDKEgYtTACZSEcrIsHex0Z1na8PK9BYe VgkSTCljm3zOdU/V3KMzHQPs/vCuWsPwVz43oJbD7KbbT4PySzs3nt8qfMdk/cp3zru+TLr8W+z rVnYA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3517; i=ardb@kernel.org; h=from:subject; bh=Altb9gx/izM5ctcWAjcLXu6Yyml5zlbxuXilVs0UmFo=; b=owGbwMvMwCFmkMcZplerG8N4Wi2JIaVigvj0tBJulgUChyb9Smtwzz1c0CnMWP7nX2Hjpv+rP uZzKN/pKGVhEONgkBVTZBGY/ffdztMTpWqdZ8nCzGFlAhnCwMUpABNZUM7wh0M5+PSp2EWLTqs+ e/qF3Zs/9/aDTY9adUT3S4oKRE340cbwz2TO9Ak2e9/07FBraGhxmB+j3sbC01HyenqewiWLLsb v7AA=
 X-Developer-Key: i=ardb@kernel.org; a=openpgp; fpr=F43D03328115A198C90016883D200E9CA6329909
 Content-Transfer-Encoding: 8bit
-X-TUID: wC/yXP3p3Qw3
+X-TUID: plm6c4E0MLoR
+
+Use the AArch64 PMULL{2}.P64 instructions to implement PCLMULQDQ instead
+of emulating them in C code if the host supports this. This is used in
+the implementation of GCM, which is widely used in IPsec VPN and HTTPS.
+
+Somewhat surprising results: on my ThunderX2, enabling this on top of
+the AES acceleration I sent out earlier, the speedup is substantial.
+
+(1420 is a typical IPsec block size - in HTTPS, GCM operates on much
+larger block sizes but the kernel mode benchmarks are not the best place
+to measure its performance in this mode)
+
+tcrypt: testing speed of rfc4106(gcm(aes)) (rfc4106-gcm-aesni) encryption
+
+No acceleration
+tcrypt: test 5 (160 bit key, 1420 byte blocks): 10046 operations in 1 seconds (14265320 bytes)
+
+AES acceleration
+tcrypt: test 5 (160 bit key, 1420 byte blocks): 13970 operations in 1 seconds (19837400 bytes)
+
+AES + PMULL acceleration
+tcrypt: test 5 (160 bit key, 1420 byte blocks): 24372 operations in 1 seconds (34608240 bytes)
 
 Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
 ---
- host/include/i386/host/cpuinfo.h |  1 +
- target/arm/tcg/vec_helper.c      | 26 +++++++++++++++++++-
- util/cpuinfo-i386.c              |  1 +
- 3 files changed, 27 insertions(+), 1 deletion(-)
+ host/include/aarch64/host/cpuinfo.h |  1 +
+ target/i386/ops_sse.h               | 24 ++++++++++++++++++++
+ util/cpuinfo-aarch64.c              |  1 +
+ 3 files changed, 26 insertions(+)
 
-diff --git a/host/include/i386/host/cpuinfo.h b/host/include/i386/host/cpuinfo.h
-index 073d0a426f31487d..cf4ced844760d28f 100644
---- a/host/include/i386/host/cpuinfo.h
-+++ b/host/include/i386/host/cpuinfo.h
-@@ -27,6 +27,7 @@
- #define CPUINFO_ATOMIC_VMOVDQA  (1u << 16)
- #define CPUINFO_ATOMIC_VMOVDQU  (1u << 17)
- #define CPUINFO_AES             (1u << 18)
-+#define CPUINFO_PMULL           (1u << 19)
+diff --git a/host/include/aarch64/host/cpuinfo.h b/host/include/aarch64/host/cpuinfo.h
+index 05feeb4f4369fc19..da268dce1390cac0 100644
+--- a/host/include/aarch64/host/cpuinfo.h
++++ b/host/include/aarch64/host/cpuinfo.h
+@@ -10,6 +10,7 @@
+ #define CPUINFO_LSE             (1u << 1)
+ #define CPUINFO_LSE2            (1u << 2)
+ #define CPUINFO_AES             (1u << 3)
++#define CPUINFO_PMULL           (1u << 4)
  
  /* Initialized with a constructor. */
  extern unsigned cpuinfo;
-diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index f59d3b26eacf08f8..fb422627588439b3 100644
---- a/target/arm/tcg/vec_helper.c
-+++ b/target/arm/tcg/vec_helper.c
-@@ -25,6 +25,14 @@
- #include "qemu/int128.h"
- #include "vec_internal.h"
+diff --git a/target/i386/ops_sse.h b/target/i386/ops_sse.h
+index db79132778efd211..d7e7bd8b733122a8 100644
+--- a/target/i386/ops_sse.h
++++ b/target/i386/ops_sse.h
+@@ -2157,6 +2157,30 @@ void glue(helper_pclmulqdq, SUFFIX)(CPUX86State *env, Reg *d, Reg *v, Reg *s,
+     uint64_t a, b;
+     int i;
  
-+#ifdef __x86_64__
-+#include "host/cpuinfo.h"
-+#include <wmmintrin.h>
-+#define TARGET_PMULL  __attribute__((__target__("pclmul")))
-+#else
-+#define TARGET_PMULL
-+#endif
-+
- /*
-  * Data for expanding active predicate bits to bytes, for byte elements.
-  *
-@@ -2010,12 +2018,28 @@ void HELPER(gvec_pmul_b)(void *vd, void *vn, void *vm, uint32_t desc)
-  * Because of the lanes are not accessed in strict columns,
-  * this probably cannot be turned into a generic helper.
-  */
--void HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
-+void TARGET_PMULL HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
- {
-     intptr_t i, j, opr_sz = simd_oprsz(desc);
-     intptr_t hi = simd_data(desc);
-     uint64_t *d = vd, *n = vn, *m = vm;
- 
-+#ifdef __x86_64__
++#ifdef __aarch64__
 +    if (cpuinfo & CPUINFO_PMULL) {
-+	switch (hi) {
-+	case 0:
-+		*(__m128i *)vd = _mm_clmulepi64_si128(*(__m128i *)vm, *(__m128i *)vn, 0x0);
-+		break;
-+	case 1:
-+		*(__m128i *)vd = _mm_clmulepi64_si128(*(__m128i *)vm, *(__m128i *)vn, 0x11);
-+		break;
-+	default:
-+		g_assert_not_reached();
-+	}
++        aes_vec_t vv = *(aes_vec_t *)v, vs = *(aes_vec_t *)s;
++        aes_vec_t *vd = (aes_vec_t *)d;
++
++        switch (ctrl & 0x11) {
++        case 0x1:
++            asm("ext %0.16b, %0.16b, %0.16b, #8":"+w"(vv));
++            /* fallthrough */
++        case 0x0:
++            asm(".arch_extension aes\n"
++                "pmull %0.1q, %1.1d, %2.1d":"=w"(*vd):"w"(vv),"w"(vs));
++            break;
++        case 0x10:
++            asm("ext %0.16b, %0.16b, %0.16b, #8":"+w"(vv));
++            /* fallthrough */
++        case 0x11:
++            asm(".arch_extension aes\n"
++                "pmull2 %0.1q, %1.2d, %2.2d":"=w"(*vd):"w"(vv),"w"(vs));
++        }
 +        return;
 +    }
 +#endif
 +
-     for (i = 0; i < opr_sz / 8; i += 2) {
-         uint64_t nn = n[i + hi];
-         uint64_t mm = m[i + hi];
-diff --git a/util/cpuinfo-i386.c b/util/cpuinfo-i386.c
-index 3043f066c0182dc8..8930e13451201a64 100644
---- a/util/cpuinfo-i386.c
-+++ b/util/cpuinfo-i386.c
-@@ -40,6 +40,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
-         info |= (c & bit_MOVBE ? CPUINFO_MOVBE : 0);
-         info |= (c & bit_POPCNT ? CPUINFO_POPCNT : 0);
-         info |= (c & bit_AES ? CPUINFO_AES : 0);
-+        info |= (c & bit_PCLMULQDQ ? CPUINFO_PMULL : 0);
- 
-         /* For AVX features, we must check available and usable. */
-         if ((c & bit_AVX) && (c & bit_OSXSAVE)) {
+     for (i = 0; i < 1 << SHIFT; i += 2) {
+         a = v->Q(((ctrl & 1) != 0) + i);
+         b = s->Q(((ctrl & 16) != 0) + i);
+diff --git a/util/cpuinfo-aarch64.c b/util/cpuinfo-aarch64.c
+index 769cdfeb2fc32d5e..95ec1f4adfc829b9 100644
+--- a/util/cpuinfo-aarch64.c
++++ b/util/cpuinfo-aarch64.c
+@@ -57,6 +57,7 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
+     info |= (hwcap & HWCAP_ATOMICS ? CPUINFO_LSE : 0);
+     info |= (hwcap & HWCAP_USCAT ? CPUINFO_LSE2 : 0);
+     info |= (hwcap & HWCAP_AES ? CPUINFO_AES : 0);
++    info |= (hwcap & HWCAP_PMULL ? CPUINFO_PMULL : 0);
+ #endif
+ #ifdef CONFIG_DARWIN
+     info |= sysctl_for_bool("hw.optional.arm.FEAT_LSE") * CPUINFO_LSE;
 -- 
 2.39.2

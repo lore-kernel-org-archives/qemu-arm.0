@@ -1,162 +1,125 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp131698ejb;
-        Wed, 31 May 2023 19:38:44 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4P9v3Pk0nBv6/GJGlx5tatHEAovupcSS5WWxq/Gj8xAN4IJTR0HNRpY0U3DrluFHlj6LOR
-X-Received: by 2002:ac8:7d46:0:b0:3f6:9b4e:512a with SMTP id h6-20020ac87d46000000b003f69b4e512amr8314303qtb.54.1685587124541;
-        Wed, 31 May 2023 19:38:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685587124; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp161613ejb;
+        Wed, 31 May 2023 21:08:38 -0700 (PDT)
+X-Received: by 2002:a05:6808:f03:b0:38d:e3b7:7f14 with SMTP id m3-20020a0568080f0300b0038de3b77f14mr5681941oiw.44.1685592518369;
+        Wed, 31 May 2023 21:08:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685592518; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y4tYUngmsYA4WBewGXLnuoGEk+0vXLg0M8mSRCIWiynqp1PzRk6fYmvJcjwplCUsvd
-         WUkvaH/sHE+1xxMdC8nSJ85yAUwrVqyGtmgjzwcEaDNPpKOigwAxZQR463FsmpjDjKm4
-         1wsEMTRd5ypzRF5tn1J7CnNeunATA2bH/k+OKccQwrDk9ayPv7/dQPYjIg3RtBqy3GQd
-         EjnBcbA/Yhu5xCFNetuW61z5juzfsQCLyTMXZ3IixlKdv3erTcFdVdjdghU8syko9aBd
-         22jqjUzPduFMe4QyTw0VXqL91kakFHKSXLbsDhcZEizLBks9bLLjHvFGJZ1s0Htj/16p
-         HAmQ==
+        b=YbItz+rQMmK9nwMw6Nh7jFeuhz3Ua9dDhwq5BgrhtrbdqVKkhiewbbVyDbpgMH/DUc
+         r7itEqSSjpg4W5bQz+hwAuEis/vsYddDI3C3dA0M+oaqjAUrTi/gA3azcFH+RwlTCFCk
+         WZrQrtLVquIT5AXzeGBot2bCeMEfZBPBlWKLoqwk7fTPUp1vvRNfjpKY145xYa45JseB
+         O4H6Ibg/pi5H47+4vqnNiwzoqu0D2QP2coJ8KYIKuV3y+11FdRqntCqRaWC+TA/NzqH8
+         +tJZMDdJnyrZHKaG4bg8lQAPSpvOpxeAzosEhz5jmv2CpImbLX4yQnjgZoRl0xAczz7t
+         gASw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version;
-        bh=hKjMYQCzTpDG0cpl0UGLBaVgoPeGAeEu9yr3GLMNHkQ=;
-        b=H4i5RAeBIeXEgpCCAu/lQOSodJrs+AkmFd3dXYHllngpSIiKdQnes9VBU7hV0yEZq4
-         7vFcw8y3R8BwPjIuW50/JaGyiP2/tHGF4G/a1IMGndTmoQLMWc4CXFDUQWW7zh/PR1bk
-         n16YIob4Z/39JvCPNjoUpZcNRgZDj9SmoEywlHKypkrovIIFGH/oVspQdjt1lUhGjzT8
-         90AthEbmBT+yJ4MqV+yGY6jIS/+iTCw7BiiY1CmiHkG2oDLcFy6qDGcPT2reJdLdOLXz
-         JlvrNEcX8xclG1JvrveMlJp6ZZ5GWW9fpkNm1/JC3gmgQJXi70mc9DapY8vIdczCqGeY
-         aZnQ==
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=EpvVmzqeddbaeLR//NYYOjtq5SDhaE/nOLFYxPd2yGU=;
+        b=gjXLtLlaaj+MkpdYJZbVLT1/RmHskWrvVqp/95CvaHbu6O8Fv95DmsDxGmi4TWr547
+         pAnFjZSLvIbg4rFlq8YXUL6cFljQZUxGCIk3nNF5T5RKIHCDtCgjFQRniiwXNo8leQ+2
+         NRq//WnPbE/wDIkAr7jBfQlXfp/O7IoDCshWOKBPq4Bsjoti2M46iDhRN5aPOj6dCesM
+         q+E71a/hK/tcXGRxbbZyIPnMywIq5daXSqsB6xxUPFO4ohSfE66WIHpg4eOh8axHa2Iw
+         ZqLpPZiVYaNx09LGGNy6S0h1jzJOLYlnsTUTIFzgy4qhKgA3IXguWPamF5K56FyAryBv
+         LjxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h15-20020ac85e0f000000b003f530fda2cdsi9159510qtx.62.2023.05.31.19.38.44
+       dkim=pass header.i=@linaro.org header.s=google header.b=YGCJY4Gb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w185-20020acadfc2000000b0039a016e6a8esor824012oig.9.2023.05.31.21.08.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 May 2023 19:38:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 31 May 2023 21:08:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4YCe-0003K9-5i; Wed, 31 May 2023 22:38:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenbaozi@phytium.com.cn>)
- id 1q4YCc-0003Jt-T0; Wed, 31 May 2023 22:38:14 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <chenbaozi@phytium.com.cn>)
- id 1q4YCa-0003mS-Cg; Wed, 31 May 2023 22:38:14 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBX09iCBXhk55w3AQ--.47009S2;
- Thu, 01 Jun 2023 10:42:10 +0800 (CST)
-Received: from smtpclient.apple (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAnVV6CBHhkeF4AAA--.424S3;
- Thu, 01 Jun 2023 10:37:55 +0800 (CST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-From: Chen Baozi <chenbaozi@phytium.com.cn>
-In-Reply-To: <b663fb55-dc8e-9fd8-9d82-7e693c3c4ad3@quicinc.com>
-Date: Thu, 1 Jun 2023 10:37:44 +0800
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Graeme Gregory <graeme@xora.org.uk>, wangyuquan1236@phytium.com.cn,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <F9D991CE-BC05-483E-8289-93BE111CC7D6@phytium.com.cn>
-References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
- <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
- <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
- <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
- <b663fb55-dc8e-9fd8-9d82-7e693c3c4ad3@quicinc.com>
-To: Leif Lindholm <quic_llindhol@quicinc.com>
-X-Mailer: Apple Mail (2.3731.600.7)
-X-CM-TRANSID: AQAAfwAnVV6CBHhkeF4AAA--.424S3
-X-CM-SenderInfo: hfkh0updr2xqxsk13x1xpou0fpof0/1tbiAQAREWR3nCkBUQAAs3
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=chenbaozi@
- phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7KF13Kw48AF4UGF4kAw1UWrg_yoW8KFWUpF
- W5Ja47Kr4vka1Syrsavw1YvF43Aa1xZFy5Jr15Jry8AFZxJ34a9rWfKw15ua9xZw1fA34j
- qrWYq34fC3W3ZFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=chenbaozi@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YRWiBbX5nLuw
+       dkim=pass header.i=@linaro.org header.s=google header.b=YGCJY4Gb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1685592518; x=1688184518;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EpvVmzqeddbaeLR//NYYOjtq5SDhaE/nOLFYxPd2yGU=;
+        b=YGCJY4GbUxg32QdmKliOmZZ0YC06osFJagLhQP1AeNdwd+bo5oBUl+iVvWP3VFkDWn
+         khbLvJ0vnGY4SLu+Czm56sYX/BgJ0wJFVwaLX2ul4KlJ+jUlQp/n9Z3yoH28xZAwZcyf
+         vw7hhKLQj4ZrsF7EyhYpEDxTqRN7OncZWTwnhCCfVfENqJBF5YaqI9kDd+MmhIKmtrc8
+         RybumJ72f3xlF2iq9wZV2TS7nIwwQRbn2hzRUAoMZpf3FYjeFbHPljkCiQ/xGtrWf5vS
+         WVmPVKqBr0tbJX8U8dEQEV5O+DREg/REZKQ6zI1x4Epdu6XPiplRRLDnHeZhqmHb0gAR
+         e2+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1685592518; x=1688184518;
+        h=content-transfer-encoding:in-reply-to:references:cc:to:from
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EpvVmzqeddbaeLR//NYYOjtq5SDhaE/nOLFYxPd2yGU=;
+        b=ZSV/OfK1XanZHAQhUIDAdeRKw5KKKt1yGfSHnnI4sLdi2veBVF9i0sBZcWaoXAS2/0
+         kTRXy6wkHsjYyBmRAz/qiR6nAwCTfCvUR+lA04SwPYrNfp4FDpSTdNJnDdQquA4rfp8j
+         uGtQNV9shVUe/qQAlL9to0ob5wrBTBequoZVKHji4nTk4A6iJf1UPnUgouSiqsvOqymk
+         sfkdJI+PNSGo7THw0CIvPpm8y5cGKEAc9e5vwmK1XWfTqXomD0U4Wm++0g+jOln8Gvz7
+         9ALmfGiEeVhkpbbawGVvKG/gXt7rPT1rtxJNbkKZflRhMHgUE5KmvxldruBNlurtcMph
+         t5ag==
+X-Gm-Message-State: AC+VfDwzQbPFi3ewj5yAwJcPcxPjMZzSwTMxiCLSO2sEBP+EKinIA+x1
+	WTm62R+/8gzrtpZIfmAvhsr43o1i
+X-Google-Smtp-Source: ACHHUZ5iBVBa9RpIglrbqX8s1RAgs0aVo33WtuxlfRA63wz28nf3fWN0XmSfmV8OREgDfDHv3D4Uvg==
+X-Received: by 2002:aca:641:0:b0:398:2eeb:a9c2 with SMTP id 62-20020aca0641000000b003982eeba9c2mr4863346oig.32.1685592516491;
+        Wed, 31 May 2023 21:08:36 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:ae:1598:4c01:3019:d9fa:8bb1:50d7? ([2602:ae:1598:4c01:3019:d9fa:8bb1:50d7])
+        by smtp.gmail.com with ESMTPSA id u11-20020a170902b28b00b001b1920d000bsm819323plr.234.2023.05.31.21.08.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 31 May 2023 21:08:35 -0700 (PDT)
+Message-ID: <bd19daca-6b9c-0302-04e6-427a0cfe8072@linaro.org>
+Date: Wed, 31 May 2023 21:08:34 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 0/2] Implement AES on ARM using x86 instructions and vv
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+To: Ard Biesheuvel <ardb@kernel.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20230531112239.3164777-1-ardb@kernel.org>
+ <722d7683-80b4-bb23-3ca2-77f8de23b801@linaro.org>
+ <CAMj1kXEH4zFcOZGz0HvTbpcMUup+cyZEr0JQxH1uXpGcbAc6ow@mail.gmail.com>
+ <c8499cae-befb-7130-3114-350ee97bf49d@linaro.org>
+In-Reply-To: <c8499cae-befb-7130-3114-350ee97bf49d@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: +p94nEY3Y40W
 
-Hi Leif,
+On 5/31/23 10:08, Richard Henderson wrote:
+> On 5/31/23 09:47, Ard Biesheuvel wrote:
+>> On Wed, 31 May 2023 at 18:33, Richard Henderson
+>>> Thanks.  I spent some time yesterday looking at this, with an encrypted disk test case and
+>>> could only measure 0.6% and 0.5% for total overhead of decrypt and encrypt respectively.
+>>>
+>>
+>> I don't understand what 'overhead' means in this context. Are you
+>> saying you saw barely any improvement?
+> 
+> I saw, without changes, just over 1% of total system emulation time was devoted to aes, 
+> which gives an upper limit to the runtime improvement possible there.  But I'll have a 
+> look at tcrypt.
 
-> On Jun 1, 2023, at 00:36, Leif Lindholm <quic_llindhol@quicinc.com> =
-wrote:
->=20
-> On 2023-05-31 16:27, Peter Maydell wrote:
->> On Wed, 31 May 2023 at 15:58, Graeme Gregory <graeme@xora.org.uk> =
-wrote:
->>>> The current sbsa-ref cannot use EHCI controller which is only
->>>> able to do 32-bit DMA, since sbsa-ref doesn't have RAM above 4GB.
->>>> Hence, this uses XHCI to provide a usb controller with 64-bit
->>>> DMA capablity instead of EHCI.
->>>=20
->>> Should this be below 4G?
->> It would be pretty disruptive to try to rearrange the memory
->> map to put RAM below 4GB at this point, though in theory it's
->> possible I guess. (I have a vague recollection that there was
->> some reason the RAM was all put above 4GB, but can't find
->> anything about that in my email archives. Perhaps Leif remembers?)
->=20
-> I think Graeme was just pointing out a typo in Marcin's email.
->=20
-> Yeah, we're not changing the DRAM base at this stage.
-> I think the reason we put no RAM below 4GB was simply that we had =
-several real-world platforms where that was true, and given the intended =
-use-case for the platform, we explicitly wanted to trigger issues those =
-platforms might encounter.
->=20
->>> Also has EHCI never worked, or has it worked in some modes and so =
-this
->>> change should be versioned?
->> AIUI, EHCI has never worked and can never have worked, because
->> this board's RAM is all above 4G and the QEMU EHCI controller
->> implementation only allows DMA descriptors with 32-bit addresses.
->> Looking back at the archives, it seems we discussed XHCI vs
->> EHCI when the sbsa-ref board went in, and the conclusion was
->> that XHCI would be better. But there wasn't a sysbus XHCI device
->> at that point, so we ended up committing the sbsa-ref board
->> with EHCI and a plan to switch to XHCI when the sysbus-xhci
->> device was done, which we then forgot about:
->> https://mail.gnu.org/archive/html/qemu-arm/2018-11/msg00638.html
->=20
-> Ah, thanks! That explains why we did the thing that made no sense :)
->=20
-> To skip the migration hazard, my prefernece is we just leave the EHCI =
-device in for now, and add a separate XHCI on PCIe. We can drop the
-> EHCI device at some point in the future.
+Using
 
-What about introducing another SMMU for all the platform devices on =
-sbsa-ref? I was thinking over this solution for some time. If that can =
-be feasible, we then also have a prototype of IOMMU for platform device.
+# insmod /lib/modules/5.10.0-21-arm64/kernel/crypto/tcrypt.ko mode=600 sec=10
 
-Regards,
+I see
 
-Baozi.=
+   25.50%  qemu-system-aar  qemu-system-aarch64      [.] helper_crypto_aese
+   25.36%  qemu-system-aar  qemu-system-aarch64      [.] helper_crypto_aesmc
+    6.66%  qemu-system-aar  qemu-system-aarch64      [.] rebuild_hflags_a64
+    3.25%  qemu-system-aar  qemu-system-aarch64      [.] tb_lookup
+    2.52%  qemu-system-aar  qemu-system-aarch64      [.] fp_exception_el
+    2.35%  qemu-system-aar  qemu-system-aarch64      [.] helper_lookup_tb_ptr
 
+Obviously a crypto-heavy test, but 51% of runtime is certainly worth more work.
+
+
+r~

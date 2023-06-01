@@ -1,172 +1,211 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp493376ejb;
-        Thu, 1 Jun 2023 07:34:42 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4M4msgysfClcbaW7GQPw9pcKy5pdmDNCfC7hi+PwpMssv/Xnw6N2mGmld3vMEJcnPFdJ5J
-X-Received: by 2002:a05:6102:c01:b0:439:55ed:226c with SMTP id x1-20020a0561020c0100b0043955ed226cmr949950vss.14.1685630082477;
-        Thu, 01 Jun 2023 07:34:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685630082; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp498232ejb;
+        Thu, 1 Jun 2023 07:42:28 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7ovHyWwAQH1j5DnxYgEXpJADdy1xlGVttM5R+YjuxRbs/R5Pok6d5esUXoMrh3c563FdqG
+X-Received: by 2002:a05:622a:1003:b0:3f5:1de5:af48 with SMTP id d3-20020a05622a100300b003f51de5af48mr10789878qte.5.1685630548183;
+        Thu, 01 Jun 2023 07:42:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685630548; cv=none;
         d=google.com; s=arc-20160816;
-        b=T18aGPOAILIgSB+PyJc6BY/6H5siTE3d1/8PZbZKVlAZILhjTB0MAdgDNG3K4xI2+s
-         SEVkw+anuD+wjGLkdfyhITymBMbJcF8VC2zzgv4nrxq9tCOXwefz/ZhA9znfVev+cGJC
-         6b9DTJTok5uI/g5PgRwqJY/Tov0PkedZxbPlzUOspKN1B5nJxaTDMzViHh/KT7m1DSz8
-         G2nn7StNzhCsnFkb/N5qxuT7amveVNWrcWjQGg0vvRXE4QYjHWK2mWkeIQFs3eziDj2y
-         Sig62lkUqnP9jqa+q2pvvMMHedn1fU0a9gkAypk6pVdh8WERSr8g326/OOSbfqB922kA
-         GwsA==
+        b=yYWlEHp019xfgsTPbBxmx3IdBKF/iqQpu7fYdBmh/qMwEs0OvZ4fNmgfX4ytIL+LBf
+         USinW7y4OuQh8DyPPwVyvwdYhIVs94JaZfrQ004n/GL1zyOgnrFA2XSAOQY02C4LC36X
+         mV30TVLQxt2jRK6hXfOM/2cXjaT9NsV1wAH5pIrWHOsjfBkIB8x95w+EhxURkSLouhGL
+         HYoj8i/04JdR7jiwi6E6bUmkYBwzNuFMQunQmouklGhRMen82gkt29i1Eua1eXwPtdQR
+         ZoNh8C7v2Zdkq6tek5kQJ6TntxFkC6kcOvXlUHXDhmltMcpiFH24ZK37vP+EwdJXFMyJ
+         6P3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UwyHQTTZlcVVTRI4kY8cOHgzo3ZmQLCmSW5zsn62X3s=;
-        b=u5UgkNDWwd20oGWDsbWqPbVgZivlRy2MItYOlxZZiRm4+4tljVaCEVtAKPKmXkVuW4
-         Azav1BkHXHC06PovPK/aSYUPS+YQQ7kliC+0ls6SZDbc+UFMLDw7K1d90R1b1tB4qMMb
-         XuqGABvEcVYrOdaf1ZQUasziJOTQ2EccGBE9SXR3jk5wg8I4IulAuX98lQbp/fkWjdIZ
-         82GdvGKUYUjHKJA4fNvn/Z5pNteu/mVHhU34tWnn1R/OkyLGZ9aQmz8FCU5jXzAqMgcG
-         53e2MITRjJiua8ixwOJBYrhTuebNonEf9wLiAlN/f5eawC0nyC4gMDT0zpKe3KFuZtD6
-         YOjw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
+        bh=w1wVGRGnQhiIsvaLLPoQ2pVm/1vr9VeVIV76ZkS7tIc=;
+        b=WKOjyuZ1jMdvUxTy9e5xa7NZcx2TS+o+CtP1v43Q0EaX3aFSnwPdXJhQ0oJ4ZdAXVM
+         BNaafYWUApaNm9u6JUGTgU4TWeN2Wny7P5I57DY6CXGBZVrNIX/gJ9wdBCJO2uOBBBOe
+         SM7wopgK3rhn9NxjuPYeBiu3guS8EV7N7gY2ZL2mDxPevFaVXKBk9ifg3LXdEHsbuZsY
+         i51dDuuI83txJBtNhgvkwAliOs4YatIUPa6UrZFOvUdenqkKH+MFuSNxCt7J/zbN2YKC
+         1K5lnaZfagPgFGMMERERyGbUd+NKOtJtosvdG6XHvVgz/bgiJYzGSi1PHJlBH6ETpEUQ
+         qCoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=HxHVC5em;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=piksCgyX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020ab04890000000b00783e5ae0690si2047296uac.78.2023.06.01.07.34.42
+        by mx.google.com with ESMTPS id u5-20020ac858c5000000b003f1f272915bsi9863887qta.371.2023.06.01.07.42.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 07:34:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 01 Jun 2023 07:42:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=HxHVC5em;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=piksCgyX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q4jNI-0000m9-UV; Thu, 01 Jun 2023 10:34:00 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q4jVR-0004TO-Eg; Thu, 01 Jun 2023 10:42:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_acaggian@quicinc.com>)
- id 1q4jNG-0000lv-Qq; Thu, 01 Jun 2023 10:33:58 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q4jVN-0004Sq-6M
+ for qemu-arm@nongnu.org; Thu, 01 Jun 2023 10:42:22 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_acaggian@quicinc.com>)
- id 1q4jNE-0000os-B5; Thu, 01 Jun 2023 10:33:58 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 351CkAU6025251; Thu, 1 Jun 2023 14:33:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=from : to : cc :
- subject : date : message-id : mime-version : content-transfer-encoding :
- content-type; s=qcppdkim1;
- bh=UwyHQTTZlcVVTRI4kY8cOHgzo3ZmQLCmSW5zsn62X3s=;
- b=HxHVC5em4B6woZQhs1rSNDZ616mQCEPGleBm6S3v30tm7TX4quN0OU4fts8lJiRLWcGM
- aJ+PjZ4wFf0mxhHPokEbxtOVELbTmsGwoRntCo2xnMwTEvFHOo+vBs5IKyCk1+Tl2kS3
- K3vfrbZ1Pm1SktvTIJJdKZ0zJ+KlamWqhBx8uopqE+3YP6iet9l6ZRfzkzmjQAd00iFJ
- YPBTE5LpMXapVQl1PlkLxXLFHey/c5NwtYMCe2GEPc7ykiTpXIBOfbKh2g+ATVFqX0lV
- 6A5vSuvpHiYqMjSlj8c8eSKMJ/1R/+502VJnTMcJW3cP9VkgkEMALyGOSy6326ixrx2E kA== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qxkbu1jap-1
+ (Exim 4.90_1) (envelope-from <ninad@linux.vnet.ibm.com>)
+ id 1q4jVJ-00020E-Iz
+ for qemu-arm@nongnu.org; Thu, 01 Jun 2023 10:42:20 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 351EMNsm012479; Thu, 1 Jun 2023 14:39:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=w1wVGRGnQhiIsvaLLPoQ2pVm/1vr9VeVIV76ZkS7tIc=;
+ b=piksCgyXYsSPmuBOXF6YOuwWWljCjQdNir1Q4ibsHCVhOjDr04tleNvqOsfikoCKqNZJ
+ QGyrstJ1P7AeTiezDNf8zuyqzMTCyR7HYCENhMFPR8gianlJS4tkAfI3kL5n9MAYz3W5
+ iG9SEDFd7mJmRJuMGiIhAHrjFSF4jYDob3jFU5ONmsLNEgkiqqioAmWQLZYB+xP1iN/y
+ AQu63X2qBD0pqgOZ+RUTJSTBeje3uQ1Yap5MxxukdiToIucIfsk9slblLMA2VYeDAvCz
+ kdLcCf6qvLPGAqnnZhJVd3JlCHAfUNDrf8o84XjswBZe2aPawXRs4CJCZLM5L3/ixLDu Ag== 
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3qxw1q8nsr-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 01 Jun 2023 14:33:46 +0000
-Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com
- [10.47.97.35])
- by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 351EXi72007637
+ Thu, 01 Jun 2023 14:39:46 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 351DDN2B019382;
+ Thu, 1 Jun 2023 14:36:47 GMT
+Received: from smtprelay05.dal12v.mail.ibm.com ([9.208.130.101])
+ by ppma01dal.us.ibm.com (PPS) with ESMTPS id 3qu9g70dby-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 1 Jun 2023 14:33:45 GMT
-Received: from acaggian1-mac.qualcomm.com (10.80.80.8) by
- nalasex01c.na.qualcomm.com (10.47.97.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.42; Thu, 1 Jun 2023 07:33:42 -0700
-From: Antonio Caggiano <quic_acaggian@quicinc.com>
-To: <qemu-devel@nongnu.org>
-CC: Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, "David
- Hildenbrand" <david@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Mark Burton <quic_mburton@quicinc.com>, Alexander Graf
- <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>, "open list:ARM
- TCG CPUs" <qemu-arm@nongnu.org>
-Subject: [PATCH] hvf: Handle EC_INSNABORT
-Date: Thu, 1 Jun 2023 16:33:12 +0200
-Message-ID: <20230601143312.69691-1-quic_acaggian@quicinc.com>
-X-Mailer: git-send-email 2.40.0
-MIME-Version: 1.0
+ Thu, 01 Jun 2023 14:36:47 +0000
+Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
+ [10.241.53.102])
+ by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 351EakEV64028972
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 1 Jun 2023 14:36:46 GMT
+Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 250AF5805A;
+ Thu,  1 Jun 2023 14:36:46 +0000 (GMT)
+Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D25455803F;
+ Thu,  1 Jun 2023 14:36:45 +0000 (GMT)
+Received: from [9.61.87.138] (unknown [9.61.87.138])
+ by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu,  1 Jun 2023 14:36:45 +0000 (GMT)
+Message-ID: <57a102e4-f837-b5c5-cd77-60bf2ee945fa@linux.vnet.ibm.com>
+Date: Thu, 1 Jun 2023 09:36:45 -0500
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH v3 1/1] hw/arm/aspeed:Add vpd data for Rainier machine
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+Cc: Ninad Palsule <ninad@linux.ibm.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9_via?= <qemu-arm@nongnu.org>
+References: <20230523214520.2102894-1-ninad@linux.ibm.com>
+ <20230523214520.2102894-2-ninad@linux.ibm.com>
+ <7fadea2f-39e0-902f-848a-8f9bd7ff1f52@kaod.org>
+ <CACPK8XeSBh+SMWPZ68rkeRnOcTFE0_SFcCNoYZr85DLhzGsgtQ@mail.gmail.com>
+ <80168e3a-b0f6-463e-b473-8488a897ef16@app.fastmail.com>
+ <164e53c1-03dd-a530-8c91-357a10517556@kaod.org>
+ <ba1e794c-ee3a-0dff-b008-7fac4b007255@linux.vnet.ibm.com>
+ <72d241c8-635c-0c8d-4822-15a35fb9748d@kaod.org>
+Content-Language: en-US
+From: Ninad Palsule <ninad@linux.vnet.ibm.com>
+In-Reply-To: <72d241c8-635c-0c8d-4822-15a35fb9748d@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: fz-WIqeBeiyKgMwWOTM7J0m2quDyNBXm
+X-Proofpoint-ORIG-GUID: fz-WIqeBeiyKgMwWOTM7J0m2quDyNBXm
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01c.na.qualcomm.com (10.47.97.35)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: yN87quLyq9SqaDUXwy0Qha_t3Q0F85-A
-X-Proofpoint-GUID: yN87quLyq9SqaDUXwy0Qha_t3Q0F85-A
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
  definitions=2023-06-01_08,2023-05-31_03,2023-05-22_02
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 adultscore=0
- spamscore=0 malwarescore=0 phishscore=0 clxscore=1011 priorityscore=1501
- suspectscore=0 impostorscore=0 mlxlogscore=527 mlxscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ priorityscore=1501
+ lowpriorityscore=0 malwarescore=0 phishscore=0 mlxscore=0 bulkscore=0
+ adultscore=0 clxscore=1015 impostorscore=0 spamscore=0 mlxlogscore=999
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2304280000 definitions=main-2306010128
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_acaggian@quicinc.com; helo=mx0b-0031df01.pphosted.com
+Received-SPF: none client-ip=148.163.158.5;
+ envelope-from=ninad@linux.vnet.ibm.com; helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.1,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R87/KKdjnIfW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1lrCxisL1Noi
 
-Instead of aborting immediately, try reading the physical address where
-the instruction should be fetched by calling address_space_read. This
-would give any memory regions ops callback a chance to allocate and/or
-register an RAM/Alias memory region needed for resolving that physical
-address. Then, if the memory transaction is OK, retry HVF execution at
-the same PC.
+Hello Cedric,
 
-Signed-off-by: Antonio Caggiano <quic_acaggian@quicinc.com>
-Co-authored-by: Mark Burton <quic_mburton@quicinc.com>
----
- target/arm/hvf/hvf.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index ad65603445..6e527254b1 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1446,6 +1446,18 @@ int hvf_vcpu_exec(CPUState *cpu)
-             hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-         }
-         break;
-+    case EC_INSNABORT: {
-+        uint32_t sas = (syndrome >> 22) & 3;
-+        uint32_t len = 1 << sas;
-+        uint64_t val = 0;
-+
-+        MemTxResult res = address_space_read(
-+            &address_space_memory, hvf_exit->exception.physical_address,
-+            MEMTXATTRS_UNSPECIFIED, &val, len);
-+        assert(res == MEMTX_OK);
-+        flush_cpu_state(cpu);
-+        break;
-+    }
-     default:
-         cpu_synchronize_state(cpu);
-         trace_hvf_exit(syndrome, ec, env->pc);
--- 
-2.40.0
-
+On 5/26/23 1:18 AM, Cédric Le Goater wrote:
+> On 5/25/23 21:57, Ninad Palsule wrote:
+>> Hello Cedric,
+>>
+>>
+>> On 5/25/23 1:37 AM, Cédric Le Goater wrote:
+>>> [ ... ]
+>>>
+>>>> However, regarding Cédric's log above, a reboot is expected on the 
+>>>> first
+>>>> boot of a fresh image when there's valid VPD available. For the first
+>>>> boot of a fresh image we configure the kernel with a minimal 
+>>>> devicetree
+>>>> that allows us to read the VPD data. This determines the system we're
+>>>> actually on and configures an appropriate devicetree for subsequent
+>>>> boots. We then reboot to pick up the new devicetree.
+>>>
+>>> Yes. Then, the behavior looks correct under QEMU :
+>>>
+>>>   https://www.kaod.org/qemu/aspeed/rainier/rainer.log
+>>>
+>>> Here are the services which still have with some issues :
+>>>
+>>> * clear-once.service                loaded failed failed Clear one 
+>>> time boot overrides
+>>> * ncsi-linkspeed@eth0.service       loaded failed failed          
+>>> Set eth0 gigabit link speed
+>>> * ncsi-linkspeed@eth1.service       loaded failed failed          
+>>> Set eth1 gigabit link speed
+>>> * obmc-flash-bios-init.service      loaded failed failed Setup Host 
+>>> FW directories
+>>> * system-vpd.service                loaded failed failed System VPD 
+>>> Collection
+>>> * trace-enable.service              loaded failed failed Enable 
+>>> Linux trace events in the boot loader
+>>
+>> On my system system-vpd.service was active. I couldn't run your build 
+>> on my development machine.
+>
+> That's how I run it :
+>
+>   qemu-system-arm -M rainier-bmc -net user -drive 
+> file=./mmc-p10bmc.qcow2,format=qcow2,if=sd,id=sd2,index=2 -nographic 
+> -snapshot -serial mon:stdio
+>
+> You will need to use my branch to have emmc support.
+ok, Thanks you!
+>
+> Thanks,
+>
+> C.
+>

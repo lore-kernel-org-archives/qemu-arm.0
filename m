@@ -1,128 +1,127 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp675942ejb;
-        Thu, 1 Jun 2023 12:21:49 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7v/o71rnrUpXQt0qbcrtQXtHoroyHaEduf6r2VHEo5SG+z9FTDA827ppmRuTTvC0WnH4Iy
-X-Received: by 2002:a05:622a:1354:b0:3ef:6818:c937 with SMTP id w20-20020a05622a135400b003ef6818c937mr13796486qtk.1.1685647309418;
-        Thu, 01 Jun 2023 12:21:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685647309; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp686283ejb;
+        Thu, 1 Jun 2023 12:43:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4jG0xAe9O7xR99bS0A9vutLBz0wWLKeIaSmPGNu5jsh6IQbOjK6LSZ/xNnTvUNtDEpMQCX
+X-Received: by 2002:a05:6358:2496:b0:123:66a7:1400 with SMTP id m22-20020a056358249600b0012366a71400mr4101223rwc.26.1685648620226;
+        Thu, 01 Jun 2023 12:43:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685648620; cv=none;
         d=google.com; s=arc-20160816;
-        b=u/XY6DR03TbW1Tg3m9pM1SCnl/3Djs0YmQrCkZLy7I4jIr5M2JprMYhCk9OmY8YQd5
-         d+ybiL0+kbhOli3U7aLk1euyNO+bDBGznx1pEHhIcyDfQqKDSV0P4vkcnzvXlRTNP9jf
-         AN40jJges+up0rt/T4kitSlmr6ynDf6Gp6Lrsf4maINTtKzZQHxwqO1YmmS1i5PmuZ/9
-         X2qUmlI8N9NI0a6tjAgFOcw9gZOB9c4WcRohP/H797padxT67aCcbKedP3VeYJd8Im6f
-         ae/kaHuXkH8wAGu4sLeFxlWdMmGnQSVifDmJRHDkeTl/no7UJ35yjVOSO4w0VW3q7+MK
-         SGuQ==
+        b=X2D8eMpBvEwfQXb5D1QIMSQSyluLuhjKuFm/rAbN1+bxPgh9zwlY5qaRBUCeX87qoJ
+         nuYx6NxJAnFFBamZjDssiOXWXAywYaoekGYw90zmuaJ+YSRj3LRf5gZtleB8FgHa52oI
+         0vnKGnM8KobiKyfWv2uJiwyIprumGEnD+HAe76p/+NKMhEsxMR9LkMLXY6d95LY+ZQe5
+         jPiZeKKKqmEtNMOcsNxaNH/bIcN4DRoZj0e7rnDZZtea6x+5GNGzltDCidOFgxVvGkGa
+         WWla7nY/EhT48bSD9OV+TUnzPl8eJ8Ag6DRR05JgIjNHDJ8qPSumCNTHrQ6bzW2Gf4q8
+         A0jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=jy7Vz7+QoAV1gYOjVqIajxeJCEfuMb3sj9YDg0s+HeQ=;
-        b=M7i0tq8tNgYFBnbEoHjDwF1IeM+EbIyWcv6L/JsTIYMMsuy4zdLwwz40nyxWzsnMU7
-         HRiq2dMf5oQJp3yaZoeImhW4GIdHhZnM8FFsxH9UOjkAOr9tS8mjedp8PjIdgYHlbGJi
-         3uKQh13ZkAtVNSuPz1F/ZBE717gmBjgigJl+d2C47M02YuXhseU05pAt1PaF0Gv3gg28
-         jFmosbL7RK1wLxTm6C/Re+46zlDdCxi4Dt07d+HulwT13Qt5Dz1EZ2epRhSWlgBMl0f6
-         rCriXxrnEmL/hvgTtzCxuNsY1TDx70WwaQIUXxj9R+VZc4lr/MZX202AX/vacA/W9cwG
-         z3Ow==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=5z3sfd+u9XMiVAAiY2wszfBYA0kxwter/jGnF+RQ+IE=;
+        b=TfkIQfCqjIL/FBF0gQuC88XPWnvjhRm/4BwMhqJAPHmt5abVWokJY+WiFX6plhJeC7
+         TP3MSEbNmfdc+LCQX+oAtrtRUfBCCWhm88wttsgguLO3Qir1sSFUe9dHDU2aj8K6dyCz
+         JkKPvS2p4UyGb9j5waPmG1ubUQ7yAkYWFYfhDMMkqE1hLvR9FQk5mns3W8/zDEWOU5Iw
+         oKkXY/6P2vUjZSEOcGPGBVlVeCRuLElWIKtDGdd/q+hlq5ZkTZUWWYCN/hEodQ0uc0iB
+         9AsJbadncjfDRr1RkLZ+jmvgNamHCHQUqx4XL7Vf11LI/1+ZmqppMjjYyV5Mm/hMMv+I
+         F5jA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=IgxesAb7;
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=hjNoE8Th;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k16-20020a05622a03d000b003f200396348si10481903qtx.474.2023.06.01.12.21.49
+        by mx.google.com with ESMTPS id s29-20020a05620a031d00b0075cec278a60si6099350qkm.337.2023.06.01.12.43.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 12:21:49 -0700 (PDT)
+        Thu, 01 Jun 2023 12:43:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=IgxesAb7;
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=hjNoE8Th;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=acm.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4nrf-0004bj-MM; Thu, 01 Jun 2023 15:21:39 -0400
+	id 1q4oCd-0002es-FD; Thu, 01 Jun 2023 15:43:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mburton@quicinc.com>)
- id 1q4nrd-0004bO-3P; Thu, 01 Jun 2023 15:21:37 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mburton@quicinc.com>)
- id 1q4nrb-0004dL-3z; Thu, 01 Jun 2023 15:21:36 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 351CcSqF013666; Thu, 1 Jun 2023 19:21:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=content-type :
- mime-version : subject : from : in-reply-to : date : cc :
- content-transfer-encoding : message-id : references : to; s=qcppdkim1;
- bh=jy7Vz7+QoAV1gYOjVqIajxeJCEfuMb3sj9YDg0s+HeQ=;
- b=IgxesAb7exQx6PXReL2H85A8gX0dBRTtVpw7QTTDOydOR352K2ryCLUQPwVc2KjFmiOt
- P5B99R2sEjt+FHRIXOCcF3miuENISgQdY0cwiwS2ojZ3IkTkHD2etl9DJvgMjDkL7pnN
- wgcrDlDmSj48RSx3Ghh1O7PoBALUv2fGoFolQpiIO9uLAYW9jqLRD4OI3UUe45s5eRXV
- 75uIBKE3qaSQtgQ7Bq22gKHG5JheoW1nhW1T2evpiPqJur0YQ2C2qW6R+m9B6JNULSHs
- 4PWBAVRnYafQOjdp7NuRo11QSNBhvXAsPyvBM8SZMmeoPSvgdaIGGOMOo6YwxnvtRc7L GA== 
-Received: from nalasppmta04.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qxugr8ytg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 01 Jun 2023 19:21:28 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com
- [10.47.209.197])
- by NALASPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 351JLRvF007729
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 1 Jun 2023 19:21:27 GMT
-Received: from smtpclient.apple (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Thu, 1 Jun 2023
- 12:21:25 -0700
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
-Subject: Re: [PATCH] hvf: Handle EC_INSNABORT
-From: Mark Burton <quic_mburton@quicinc.com>
-In-Reply-To: <CAFEAcA8tCZ0shxEiA4hOVsHhOBvGmQ6HLJq1dPKDuSqBXKdtJw@mail.gmail.com>
-Date: Thu, 1 Jun 2023 21:21:21 +0200
-CC: Antonio Caggiano <quic_acaggian@quicinc.com>, "qemu-devel@nongnu.org
- Developers" <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alexander Graf
- <agraf@csgraf.de>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Transfer-Encoding: quoted-printable
-Message-ID: <033C707D-C8DF-4DA7-BE50-F19DE2A17FB4@quicinc.com>
-References: <20230601143312.69691-1-quic_acaggian@quicinc.com>
- <CAFEAcA-92-zExcOFMwaNYvP5pXLTUETsYi3mpuvTp2txfVEp9Q@mail.gmail.com>
- <11f8fb60-abe7-d99d-c3bb-aaa405425668@quicinc.com>
- <B0A9BD1B-B98C-4710-987D-03ADDBB993B7@quicinc.com>
- <CAFEAcA8tCZ0shxEiA4hOVsHhOBvGmQ6HLJq1dPKDuSqBXKdtJw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3696.120.41.1.3)
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-GUID: jL5a4r5oUDnE4qHSP8wyYbTb6lVt96Tw
-X-Proofpoint-ORIG-GUID: jL5a4r5oUDnE4qHSP8wyYbTb6lVt96Tw
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-06-01_08,2023-05-31_03,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0
- priorityscore=1501 adultscore=0 malwarescore=0 suspectscore=0
- impostorscore=0 lowpriorityscore=0 mlxlogscore=637 phishscore=0
- bulkscore=0 clxscore=1015 mlxscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2304280000 definitions=main-2306010167
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_mburton@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1q4oCU-0002eH-UB; Thu, 01 Jun 2023 15:43:11 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
+ id 1q4oCS-0008Gg-P3; Thu, 01 Jun 2023 15:43:10 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ 46e09a7af769-6af6df840ffso1048584a34.1; 
+ Thu, 01 Jun 2023 12:43:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685648585; x=1688240585;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5z3sfd+u9XMiVAAiY2wszfBYA0kxwter/jGnF+RQ+IE=;
+ b=hjNoE8Th3bNcNBZHmxkrCQPmV9mPM2Bt+UVu6EnAQfcfB8qlWB0lMxugfBonc435tk
+ 0aazZDcQLxiLqJHn4NvdSBlAr2F9GariiO1cLd4Mn1Ao8OsRCfuIsWJ96fHzOInteVgM
+ 2VrhzxZSVYJxQrw0e4iHIXHHWXhdS1XCj2tWZOjC2oFkjltrkfh8AF7eu07P/dbd6khf
+ JDbrivy/kJm/HNpIFafO8oBXfP0mrqMZhxQZLXxlRE+bnXW/oBurD/iXWQNPV2DxzWgA
+ OSorlxwYyTbvm3eslGJ5n2cfzZQAcyGyQTUDRBFSjaxBp+UG9pwcmBMXEwRKH7yzLfBO
+ +l1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685648585; x=1688240585;
+ h=in-reply-to:content-disposition:mime-version:references:reply-to
+ :message-id:subject:cc:to:from:date:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=5z3sfd+u9XMiVAAiY2wszfBYA0kxwter/jGnF+RQ+IE=;
+ b=MyBjGnr9zA0Q2ttSsC2zkc+PSQ5aDweJDwGZe4nWpC+iOXRiYWh/IU7e7E6WWzENqw
+ e4xNHgaV3cbdwzEr4J+zm9uQbvHtVp2l9UgKr0xnzVlUAdxriebMNGEhbygWitWay9u5
+ 96GTXwKTXn15LcdGa49hisiG0QrY14pqEonYaGcRHXfmL0HOICF7LaAW9YwVphv8m0MW
+ L3iXQdhfoJohDgSb3SRZ4N2kF6xMBijaQJiWvInteRWTjJV3x9WBoNc2IXJJQvO2pmDg
+ MYJ5YTRE+rWTEBoWEanXCt0L6u08ay9AMwZP+nDJxHIPH1T3ijcG0G+vaAXZtf+oOFsg
+ YE7Q==
+X-Gm-Message-State: AC+VfDxjM8oMDuP0weHTvmX6nY0sa6oE1hzFzWmY5vI656YWksNM/7CV
+ 7Wnt123fNvCfk309xDMRAg==
+X-Received: by 2002:a05:6830:18e:b0:6a4:4252:47aa with SMTP id
+ q14-20020a056830018e00b006a4425247aamr397410ota.21.1685648585294; 
+ Thu, 01 Jun 2023 12:43:05 -0700 (PDT)
+Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
+ by smtp.gmail.com with ESMTPSA id
+ r12-20020a9d750c000000b006af886703f2sm1857662otk.37.2023.06.01.12.43.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Jun 2023 12:43:04 -0700 (PDT)
+Received: from mail.minyard.net (unknown
+ [IPv6:2001:470:b8f6:1b:4d5a:813b:a2b2:477c])
+ by serve.minyard.net (Postfix) with ESMTPSA id A0AF7180047;
+ Thu,  1 Jun 2023 19:42:59 +0000 (UTC)
+Date: Thu, 1 Jun 2023 14:42:58 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Klaus Jensen <its@irrelevant.dk>
+Cc: qemu-devel@nongnu.org, Corey Minyard <cminyard@mvista.com>,
+ Keith Busch <kbusch@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Lior Weintraub <liorw@pliops.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Jeremy Kerr <jk@codeconstruct.com.au>, qemu-arm@nongnu.org,
+ Matt Johnston <matt@codeconstruct.com.au>,
+ Peter Delevoryas <peter@pjd.dev>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-block@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ Peter Maydell <peter.maydell@linaro.org>, gost.dev@samsung.com
+Subject: Re: [PATCH v3 0/3] hw/{i2c, nvme}: mctp endpoint, nvme management
+ interface model
+Message-ID: <ZHj0wnVHdY2HzL20@mail.minyard.net>
+References: <20230531114744.9946-1-its@irrelevant.dk>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230531114744.9946-1-its@irrelevant.dk>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=tcminyard@gmail.com; helo=mail-ot1-x335.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,66 +134,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: minyard@acm.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4cJ/XDpjaxPW
+X-TUID: 4/2svuRfu5vg
 
+On Wed, May 31, 2023 at 01:47:41PM +0200, Klaus Jensen wrote:
+> From: Klaus Jensen <k.jensen@samsung.com>
+> 
+> This adds a generic MCTP endpoint model that other devices may derive
+> from. I'm not 100% happy with the design of the class methods, but it's
+> a start.
+> 
+> Also included is a very basic implementation of an NVMe-MI device,
+> supporting only a small subset of the required commands. Lior (CC'ed) has some
+> patches coming up that adds futher support.
+> 
+> Since this all relies on i2c target mode, this can currently only be
+> used with an SoC that includes the Aspeed I2C controller.
+> 
+> The easiest way to get up and running with this, is to grab my buildroot
+> overlay[1]. It includes modified a modified dts as well as a couple of
+> required packages.
+> 
+> QEMU can then be launched along these lines:
+> 
+>   qemu-system-arm \
+>     -nographic \
+>     -M ast2600-evb \
+>     -kernel output/images/zImage \
+>     -initrd output/images/rootfs.cpio \
+>     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
+>     -nic user,hostfwd=tcp::2222-:22 \
+>     -device nmi-i2c,address=0x3a \
+>     -serial mon:stdio
+> 
+> From within the booted system,
+> 
+>   mctp addr add 8 dev mctpi2c15
+>   mctp link set mctpi2c15 up
+>   mctp route add 9 via mctpi2c15
+>   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
+>   mi-mctp 1 9 info
+> 
+> Comments are very welcome!
+> 
+>   [1]: https://github.com/birkelund/buildroots/tree/main/mctp-i2c
+> 
+> Changes since v2
+> ~~~~~~~~~~~~~~~~
+> 
+>   - Applied a bunch of feedback from Jonathan:
+>     + Moved a lot of internally used structs out of the include headers
+>       and into the source files.
+>     + Added spec references in various places
+>     + Split the patch for i2c_smbus_pec() into its own
+>     + Fix a compile error (and bug) in nmi-i2c.c.
+> 
+>   - From Corey:
+>     + Reworked the buffer handling. The deriving devices now returns a
+>       pointer to their own buffer that the mctp core copies into.
 
+You didn't do what I asked here, I guess I wasn't clear.  You have:
 
-> On 1 Jun 2023, at 18:45, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> WARNING: This email originated from outside of Qualcomm. Please be =
-wary of any links or attachments, and do not enable macros.
->=20
-> On Thu, 1 Jun 2023 at 17:00, Mark Burton <quic_mburton@quicinc.com> =
-wrote:
->> This patch came from a discussion on the KVM call the other day.
->> It may well be the case there is a better/different implementation
->> - so the patch is more by way of asking the question.
->>=20
->> Re-phrasing your question - I think it boils down to =E2=80=9Cshould =
-HVF
->> (and KVM) support executing instructions from IO space?=E2=80=9D.
->=20
-> I think this falls into "might theoretically be nice but is
-> probably too painful to actually implement". In practice
-> well-behaved guests don't try to execute out of MMIO devices.
->=20
++static void i2c_mctp_handle_control_set_eid(MCTPI2CEndpoint *mctp, uint8_t eid)
++{
++    mctp->my_eid = eid;
++
++    uint8_t buf[] = {
++        0x0, 0x0, eid, 0x0,
++    };
++
++    memcpy(i2c_mctp_control_data(mctp->buffer), buf, sizeof(buf));
++    mctp->len += sizeof(buf);
++}
 
->> In that case, this is a =E2=80=98partial=E2=80=99 answer to providing =
-such
->> support for HVF - partial in that it relies upon a memory
->> region being created =E2=80=9Cdynamically=E2=80=9D for the IO space =
-that
->> has been accessed as a side-effect of a normal access.
->=20
-> But nothing in (upstream) QEMU magically creates MemoryRegions
-> just because the guest tries to access them. Either there's
-> nothing there in the AddressSpace at all (definitely can't
-> execute from it) or there's already RAM (happy case) or there's
-> already a device there. If there's already a device there
-> then something would need to do a "put a bit of RAM in
-> temporarily, fill in the single instruction by doing an
-> address_space_read() to find the data value and writing it
-> to the scratch RAM, tell KVM/HVF to do a single-step, undo
-> everything again".
->=20
+That style of programming can lead to buffer overruns as code changes,
+as you aren't checking the length of the target buffer.  I don't think
+there are any issues now, but as people change the code you might end up
+with one if someone gets a length wrong.
 
-Indeed, that=E2=80=99s basically what we=E2=80=99re implementing. In TCG =
-mode you =E2=80=99see=E2=80=99 the access, we=E2=80=99re just making it =
-so that in HVF you equally =E2=80=98see=E2=80=99 such accesses to the =
-=E2=80=98device=E2=80=99 (so you can put the bit of RAM in, out, shake =
-it all about). A cleaner implementation may be some sort of =
-=E2=80=9Cpre-i-side-access-op I=E2=80=99m about to access this =
-device/address please register a =E2=80=98memory region=E2=80=99 I can =
-use (temporarily)=E2=80=9D. I=E2=80=99d have thought that could be =
-useful any time you execute from e.g. a temporary ram of any sort =
-(whatever the accelerator).
+What I would like is for you to create a function like:
 
-Cheers
-Mark.
+  i2c_mctp_add_bytes(mctp, buf, len)
 
+that checks that len bytes will fit, then does the addition of the
+bytes.  You need to adjust this to fit how you are doing things, and you
+probably want one that adds just one byte, but hopefully you get the idea.
 
-> -- PMM
+I'm sorry to be picky, but I've seen and fixed too many buffer overruns
+(including one in the qemu i2c code) in situations like this.  Corey's
+rule is: Never add anything to a buffer without checking the length.
 
+Everything else looks good.
+
+-corey
+
+>     + Added a couple of extra debugging trace events.
+> 
+> Changes since v1
+> ~~~~~~~~~~~~~~~~
+> 
+>   - Fix SPDX-License tag for hw/nvme/nmi-i2c.c (Philippe)
+>   - Add some asserts to verify buffer indices (by request from Corey).
+>   - Drop short packets that could result in underflow (Corey)
+>   - Move i2c_smbus_pec() to smbus common code (Corey)
+>   - A couple of logic fixes (patch from Jeremy squashed in)
+>   - Added a patch to handle messages with dest eid 0 (Matt)
+>     Maybe squash this as well.
+> 
+> Klaus Jensen (3):
+>   hw/i2c: add smbus pec utility function
+>   hw/i2c: add mctp core
+>   hw/nvme: add nvme management interface model
+> 
+>  MAINTAINERS                   |   7 +
+>  hw/arm/Kconfig                |   1 +
+>  hw/i2c/Kconfig                |   4 +
+>  hw/i2c/mctp.c                 | 398 ++++++++++++++++++++++++++++++++++
+>  hw/i2c/meson.build            |   1 +
+>  hw/i2c/smbus_master.c         |  28 +++
+>  hw/i2c/trace-events           |  13 ++
+>  hw/nvme/meson.build           |   1 +
+>  hw/nvme/nmi-i2c.c             | 367 +++++++++++++++++++++++++++++++
+>  hw/nvme/trace-events          |   6 +
+>  include/hw/i2c/mctp.h         | 137 ++++++++++++
+>  include/hw/i2c/smbus_master.h |   2 +
+>  include/net/mctp.h            |  28 +++
+>  13 files changed, 993 insertions(+)
+>  create mode 100644 hw/i2c/mctp.c
+>  create mode 100644 hw/nvme/nmi-i2c.c
+>  create mode 100644 include/hw/i2c/mctp.h
+>  create mode 100644 include/net/mctp.h
+> 
+> -- 
+> 2.40.0
+> 
+> 

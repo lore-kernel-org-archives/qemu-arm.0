@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp395746ejb;
-        Thu, 1 Jun 2023 05:19:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6FVCImcmTAEcGdAkz8TRL6w5dWfiLafGTIo3fw8P4JcC5UAYasE9JDftXaDjbGbQI6X+lk
-X-Received: by 2002:a05:600c:2310:b0:3f6:179:4506 with SMTP id 16-20020a05600c231000b003f601794506mr2630453wmo.38.1685621995915;
-        Thu, 01 Jun 2023 05:19:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685621995; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp396452ejb;
+        Thu, 1 Jun 2023 05:20:51 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ40HCUuCA/tOooojZ0+bxLll8nA7uL9E4BPt3gFR3V5Wcr+Le3d2R0VKRYX2EmBz88eeraA
+X-Received: by 2002:a05:6000:151:b0:30a:efd3:66a with SMTP id r17-20020a056000015100b0030aefd3066amr2035677wrx.40.1685622051228;
+        Thu, 01 Jun 2023 05:20:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685622051; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5AHUJ1vAQMdcKUI5+d69Xgqj5jE30evurHw7B6S4N2W3g6YmA8rm93CPqsGkg1Y9L
-         BnZSCe0b8x1e5xt9SNJIbacWE1SWJFhZ2FOSBIdXK/6lft2OR1+HZ6wPjwaCgCMIvGrP
-         4egLCpi8AnHUeH4f8ZOJDdt/+3rTaAFzzGpYA/qQMKdCzZobDLO+TlioyRjJhNibvEQ3
-         Qerm7+mFHcXDQA+yCWCl4So+BVFPa9/5JNkpBphWVsbsz5LTufjBAsUfVmwZvHPYoEhN
-         yOZFs3Xlr6xQ87YJQ7RcH+n5uzhYsV0xeXQcuh1bvRbFkQ5fqVoFP6geOeQ1gpKQ16zn
-         W8jQ==
+        b=c0v3ADQGGf/qFab71msklixL8kkfMB0PlJ5rnBmzqHJvMiW/jUJWHhD0XxDJAifmyx
+         ZpGCvGkIi0svdbiClVkZLYr52xr6GVu0aK5uHVGwTfTS7VZMQuxVc4A9ZwpH3RKAs99B
+         gc/84PmsH9oY9drJDXNxw2+ZG/pQbq2I/zNIWAn/idiqDwotrqzLEshaP7LzMJ0sleOv
+         laORO8GsGuZsLnw5h8p32XeAf0h/wlesGivqQFVIdM2QD7X9Rc6924LJ8oZYQ+DHZURI
+         EL0eBRwuIMA10c7Vu5bUv76ED5OHFqIKR8xTboUgAH2gPn7QfNRtgHweb7v/B5mjWjXF
+         2fqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=T6lLbn4wAevaYNir88uHLSoS3ayt4mzOGJLEgmNI+xk=;
-        b=uZUJorqJCo6ICKK0qCpDbivUhuXplneWkZ7yjZGBraoUqqsxgUauSVQJ3UP8tv08ta
-         WhxCxMZuXgKzgxwMuAhLTD+OSR9SSwoeor8gfIvUyeIWbmoSie7Hw2fj47/WcXZbVCUb
-         3zUfV1dLNYLBkOcAHEa6oAb3pPDLgVD7lo/HkuQwyDlcTCdGlRpf8jUAqcls12eDmQ5N
-         1Q+DbgQ9PvEjnumUkeeK9pfSC7ddjvfOQeI1SYi5EEBt4XiYF3BK7R1ERQD1eFaURiJv
-         82NL7Xij2c0JnAsZhQYd4AIfxtVXLPajaGA0JHG5G9DwVPhZ4TSVYZNFQBXog1cofNEV
-         Dwdg==
+        bh=7aUX/geBE6gcCUcvdeMA3YTIodD7jkhRvdSycb4ixhk=;
+        b=pWGVplU4DOYUkPmBkTlHYlnly3jsUxLd1y2k+dID1Xhq5MeB780u0eWvr5RVs5Bamd
+         Su1a3UIeO7Q/W3HAGcujj2lQwlQVUEIbLn0Od1U/hgs/7jY7dduvSmOx7ZUkV1Y+AazO
+         CY+FL+N8tRGl+dT15TXvB/gKKQ8rbwFgX0Y03xeLCibopggskfwEt0qJ0k+J+DUP4SHR
+         uzpptt1ZgDEkR+w5br0D3PFHcjItAtwl4TUGUUOm9pkCuF3H7CHYQklq8UQK52Rh7haT
+         O4trtmKz9Sv8gj3FR5MtPK01F3TekgLAKG7jseormVkqRtM52+FxrwMUqV9XzcWJWRgM
+         YaVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2ClcKIP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B5W+HfZP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b17-20020a05600c4e1100b003f517eecd94si831863wmq.168.2023.06.01.05.19.55
+        by mx.google.com with ESMTPS id w8-20020adff9c8000000b003062d81831asi4050883wrr.625.2023.06.01.05.20.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 05:19:55 -0700 (PDT)
+        Thu, 01 Jun 2023 05:20:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b2ClcKIP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B5W+HfZP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q4hDj-0001wW-80; Thu, 01 Jun 2023 08:16:01 -0400
+	id 1q4hFS-00044M-Se; Thu, 01 Jun 2023 08:17:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCm-0000S7-DM
- for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:15:02 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCy-0000nT-Q6
+ for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:15:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCk-0006P8-Fe
- for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:15:00 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q4hCv-0006UN-Vv
+ for qemu-devel@nongnu.org; Thu, 01 Jun 2023 08:15:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685621697;
+ s=mimecast20190719; t=1685621709;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=T6lLbn4wAevaYNir88uHLSoS3ayt4mzOGJLEgmNI+xk=;
- b=b2ClcKIPb5uA3tKrZfcRWp6kwGAr6p6sw3H30BZ9R+Bsw3YS46kGB06WwjzqPD3RcuRayx
- TI0FtwUBGibCpiU2oi9oX4G8SNgAmjx2S1k+rescsfb6uaPdXZs/7XMnNe8b7v/XtQIHTo
- zD38qiBt+zr8KMkR5c6uclcbLPXkg94=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=7aUX/geBE6gcCUcvdeMA3YTIodD7jkhRvdSycb4ixhk=;
+ b=B5W+HfZPyea6KWlw1NX9qkS5Dbv4abph7Rk8g0kdUS50sERTJ8lZTPFHqUniEvUfbtGYCP
+ +3nCkZ5ytBs25lESUQZ242X651DIYwaSxTzhb4fLkn5tqcHWDrhtS1CKIEl+rkZkAE4Cl6
+ 09P2FSPTwArM/qqm++jOMWKfeFgo9nU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-557-TbANzeAqOWC94ln3IAJPJw-1; Thu, 01 Jun 2023 08:14:53 -0400
-X-MC-Unique: TbANzeAqOWC94ln3IAJPJw-1
+ us-mta-517-q3IVP4-LPl2u7O2tnIDnkg-1; Thu, 01 Jun 2023 08:15:05 -0400
+X-MC-Unique: q3IVP4-LPl2u7O2tnIDnkg-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3AE312A59540;
- Thu,  1 Jun 2023 12:14:53 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8CAD1811E8F;
+ Thu,  1 Jun 2023 12:15:05 +0000 (UTC)
 Received: from t480s.redhat.com (unknown [10.22.8.170])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3E4402166B25;
- Thu,  1 Jun 2023 12:14:52 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8B28D2166B25;
+ Thu,  1 Jun 2023 12:15:04 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -81,14 +81,12 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
  David Hildenbrand <david@redhat.com>
-Subject: [PATCH v3 01/10] memory-device: Unify enabled vs. supported error
- messages
-Date: Thu,  1 Jun 2023 14:14:38 +0200
-Message-Id: <20230601121447.272487-3-david@redhat.com>
+Subject: [PATCH v3 09/10] memory-device: Refactor memory_device_pre_plug()
+Date: Thu,  1 Jun 2023 14:14:46 +0200
+Message-Id: <20230601121447.272487-11-david@redhat.com>
 In-Reply-To: <20230601121447.272487-1-david@redhat.com>
 References: <20230601121447.272487-1-david@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
@@ -99,7 +97,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.166,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,46 +112,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a3Jlij2pBW84
+X-TUID: asW1LgLPyUNj
 
-Let's unify the error messages, such that we can simply stop allocating
-ms->device_memory if the size would be 0 (and there are no memory
-devices ever).
+Let's move memory_device_check_addable() and basic checks out of
+memory_device_get_free_addr() directly into memory_device_pre_plug().
 
-The case of "not supported by the machine" should barely pop up either
-way: if the machine doesn't support memory devices, it usually doesn't
-call the pre_plug handler ...
+Separating basic checks from address assignment is cleaner and
+prepares for further changes.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+As all memory device users now use memory_devices_init(), and that
+function enforces that the size is 0, we can drop the check for an empty
+region.
+
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/mem/memory-device.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ hw/mem/memory-device.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index 1636db9679..49f86ec8a8 100644
+index bb9d7c2a20..00c7755557 100644
 --- a/hw/mem/memory-device.c
 +++ b/hw/mem/memory-device.c
-@@ -104,15 +104,10 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
+@@ -69,9 +69,10 @@ static int memory_device_used_region_size(Object *obj, void *opaque)
+     return 0;
+ }
+ 
+-static void memory_device_check_addable(MachineState *ms, uint64_t size,
++static void memory_device_check_addable(MachineState *ms, MemoryRegion *mr,
+                                         Error **errp)
+ {
++    const uint64_t size = memory_region_size(mr);
+     uint64_t used_region_size = 0;
+ 
+     /* we will need a new memory slot for kvm and vhost */
+@@ -101,16 +102,9 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
+                                             uint64_t align, uint64_t size,
+                                             Error **errp)
+ {
+-    Error *err = NULL;
      GSList *list = NULL, *item;
      Range as, new = range_empty;
  
--    if (!ms->device_memory) {
--        error_setg(errp, "memory devices (e.g. for memory hotplug) are not "
--                         "supported by the machine");
+-    if (!ms->device_memory || !memory_region_size(&ms->device_memory->mr)) {
+-        error_setg(errp, "the configuration is not prepared for memory devices"
+-                         " (e.g., for memory hotplug), consider specifying the"
+-                         " maxmem option");
+-        return 0;
+-    }
+     range_init_nofail(&as, ms->device_memory->base,
+                       memory_region_size(&ms->device_memory->mr));
+ 
+@@ -122,12 +116,6 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
+                     align);
+     }
+ 
+-    memory_device_check_addable(ms, size, &err);
+-    if (err) {
+-        error_propagate(errp, err);
 -        return 0;
 -    }
 -
--    if (!memory_region_size(&ms->device_memory->mr)) {
--        error_setg(errp, "memory devices (e.g. for memory hotplug) are not "
--                         "enabled, please specify the maxmem option");
-+    if (!ms->device_memory || !memory_region_size(&ms->device_memory->mr)) {
+     if (hint && !QEMU_IS_ALIGNED(*hint, align)) {
+         error_setg(errp, "address must be aligned to 0x%" PRIx64 " bytes",
+                    align);
+@@ -251,11 +239,23 @@ void memory_device_pre_plug(MemoryDeviceState *md, MachineState *ms,
+     uint64_t addr, align = 0;
+     MemoryRegion *mr;
+ 
++    if (!ms->device_memory) {
 +        error_setg(errp, "the configuration is not prepared for memory devices"
 +                         " (e.g., for memory hotplug), consider specifying the"
 +                         " maxmem option");
-         return 0;
++        return;
++    }
++
+     mr = mdc->get_memory_region(md, &local_err);
+     if (local_err) {
+         goto out;
      }
-     range_init_nofail(&as, ms->device_memory->base,
+ 
++    memory_device_check_addable(ms, mr, &local_err);
++    if (local_err) {
++        goto out;
++    }
++
+     if (legacy_align) {
+         align = *legacy_align;
+     } else {
 -- 
 2.40.1
 

@@ -1,130 +1,112 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1081879ejb;
-        Fri, 2 Jun 2023 04:58:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6wYVLhaiXSh9SV5rjl8cWx9CSWWCsSKPIsxaqJtmkQY69Y06u/8k9Jif0ozEFOpy4NM3mX
-X-Received: by 2002:a05:6214:20ed:b0:56b:f28e:628a with SMTP id 13-20020a05621420ed00b0056bf28e628amr14908109qvk.6.1685707109140;
-        Fri, 02 Jun 2023 04:58:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685707109; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1173570ejb;
+        Fri, 2 Jun 2023 07:22:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7iRqMEZEO0dbE8xLyLgeO5ktzh/RLQJAG/yDYZL34G9BhX6qWaeHf67RIE67MaHITsGaKk
+X-Received: by 2002:a05:6214:29e2:b0:628:6879:ee48 with SMTP id jv2-20020a05621429e200b006286879ee48mr3913342qvb.50.1685715753914;
+        Fri, 02 Jun 2023 07:22:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685715753; cv=none;
         d=google.com; s=arc-20160816;
-        b=QU1jhhzNFvG4NSzrZbP73R1nIQm2daYZJCrBWbLpf/qkPmTGKTw+eSE+p0B6d7a8lN
-         rhxnYiJsRjwwwLMQMAv51Q42ZMM+1dIlrwQNOD83PmUdE6FGoFtc4HmfmPiDijmcsO8J
-         IVarL8YTGfW7qG+Q39GJUBmtiPFfMfmOKkaoNgqbIZAoM97b4plLiMGULnYl8atHuPiR
-         pU7f4LYWoHF8h0AC2NvcNxBteWGVMxDXuT/zhUCtFpLvCaWZmvDBFKbad8rY8570uHPt
-         3dUsv+w5x/mPSDSEcE4ZURNfYdT/iQEE2ONf/io3X/53b3QzLbktMgDtJZLo1pTlrpDN
-         wnKw==
+        b=McismffeE0CoThppfQun/3yLyIwz9bBj4dynIsMhZzPDvtjgPzr/+euxW7M87qZ1e6
+         eaSC5gmGBfaRvYNW4et2uOzPku+HsHY7lbat+FxmXekkVKdVqYEjwlZ3p+SqR5uwp1yV
+         RYkD1Z3M0i5Y4y8rJQj+qB8rgos5+OrX7zu8adFIpElSoOsdwRIinzqDGWcwZan97Gkm
+         j9CbqbBYR5RYHETE/JOHPtiW9Pv6fQQ8iQM7MaXPAC8Njd1dIIMNBcXmxIUESjtxGGAd
+         tJh+K9rhnU928ftRn+wPlGV6KppS5TTgiAe5fgVrWHmv14DGgcVHXg+rEW/wU0iJ9w0q
+         lJeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=FOD6uKTUiUp5yCUXwedUApR+mPZPXLMZlA/byDP8TSk=;
-        b=du06dUqz+ONPjyKayTqZhOn8EOqFyiYEHYUZKrEVGVFJGMuqdL2NQfzcZC/sQy7zgg
-         Zfv/CyCtpCmWbfTDw1MLZ7PdjZVmW/Hpre5o8+kn+GR7zjZWnmZLGfJlid6l8JhAaTLl
-         MX8eaabgnujUThsFcos8qW8JYaIq/H1hS7vyAlpG6yklW6XtvBKf6a2zzQA4xoyVSzWQ
-         3+zY7qNJpZum9PDvZfsJniLM0EKN3N6QqkDyR0u4jvVLyT2wTlk6Yc59/CbTXILn7s+p
-         kEBrnBSUCIqgMaAgIkWHw7njTtE2p+mBI8eg8X5zBzUGNbIVv5888T35Zk41MzZ74Vo/
-         Cn7Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=T5r/LpHJMg7TbmN47HlK1bNQm+yT4WVmfzXQIP2d3t4=;
+        b=fh58QK5h0jhTrF/4ZLvxR2jrpS2JmQPLoY+Th+8BNs6F9byqkIFkVR8LjajED0+/Sz
+         YbafGXel0vYUGffEXQOeeoQ4cRHOnYMwP5knkXM05yZmHglWVJQfhLeb0gOZ2f5IVg+Z
+         FCx7WFO31icVli87OXXvWa4unJ6wNdU/1zSQrBSG2WxxOBDz6VjhH5/MdhSp/Wckh3rQ
+         rBWsxhiH3NhHJldSMTlQFWCQK89x+q+nNOXpS/dBb3QhbFwSznxiFNZOJ2lzj/f2dgrL
+         Ey+8qDGMnR+/3Du8er+8vdDkvGZPDVHcFMDZDkz2mg/Mzq6u2XGG3SAIAm5gi0jd7DQr
+         CIHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=KFpW27jE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rH3c9poL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq6-20020ad45966000000b006239faaf931si715843qvb.441.2023.06.02.04.58.28
+        by mx.google.com with ESMTPS id bp6-20020a05622a1b8600b003ef3704f5dasi872681qtb.463.2023.06.02.07.22.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 04:58:29 -0700 (PDT)
+        Fri, 02 Jun 2023 07:22:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=KFpW27jE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rH3c9poL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q53Q2-0008IN-Nc; Fri, 02 Jun 2023 07:58:10 -0400
+	id 1q55fd-0007Z0-Ts; Fri, 02 Jun 2023 10:22:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mburton@quicinc.com>)
- id 1q53Q0-0008IA-W0; Fri, 02 Jun 2023 07:58:09 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mburton@quicinc.com>)
- id 1q53Pv-0001Fd-7K; Fri, 02 Jun 2023 07:58:08 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 352ARdqN015457; Fri, 2 Jun 2023 11:57:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=content-type :
- mime-version : subject : from : in-reply-to : date : cc :
- content-transfer-encoding : message-id : references : to; s=qcppdkim1;
- bh=FOD6uKTUiUp5yCUXwedUApR+mPZPXLMZlA/byDP8TSk=;
- b=KFpW27jEb1aRf2thnQrLlPDgTFo11fj6qFb8euelJr0oHpbr21tBK1m2NP38rPFEQjpt
- WINO/REyFZ1ExGu99dqJYQEdGhdcs7M5eUr8MacJjP9b8jMlqn0AeQltil8VmfqxJDKE
- oDlDj5cR6WEXJl7gxOFYX4ybyNrVGhNykEv4knTYeJGZKB2rnERBBj2+kV/17aJKvt4n
- +AqNVzphOV1cnk8/3zrvpJBMLqfErihymvtmESA5ggo3Dm4VmweAPszrJTcolJnmFqG5
- IeFYvItO8U+Wt1ogAbg41IIDC/ucrOcY0apWAmFMoFn+b+0Dw8Qvpx9a1LKKtDtjPLcd 8A== 
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qybnbrhdr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 02 Jun 2023 11:57:53 +0000
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com
- [10.47.209.197])
- by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 352BvqwI008616
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 2 Jun 2023 11:57:52 GMT
-Received: from smtpclient.apple (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Fri, 2 Jun 2023
- 04:57:50 -0700
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
-Subject: Re: [PATCH] hvf: Handle EC_INSNABORT
-From: Mark Burton <quic_mburton@quicinc.com>
-In-Reply-To: <CAFEAcA-CSzE=bzCR-zx6hPqmiV9pv8CqwXqv9ui3sZXbWkZZjw@mail.gmail.com>
-Date: Fri, 2 Jun 2023 13:57:47 +0200
-CC: Antonio Caggiano <quic_acaggian@quicinc.com>, "qemu-devel@nongnu.org
- Developers" <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alexander Graf
- <agraf@csgraf.de>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Transfer-Encoding: quoted-printable
-Message-ID: <047EF681-240B-449D-BDBC-B43F8DD29745@quicinc.com>
-References: <20230601143312.69691-1-quic_acaggian@quicinc.com>
- <CAFEAcA-92-zExcOFMwaNYvP5pXLTUETsYi3mpuvTp2txfVEp9Q@mail.gmail.com>
- <11f8fb60-abe7-d99d-c3bb-aaa405425668@quicinc.com>
- <B0A9BD1B-B98C-4710-987D-03ADDBB993B7@quicinc.com>
- <CAFEAcA8tCZ0shxEiA4hOVsHhOBvGmQ6HLJq1dPKDuSqBXKdtJw@mail.gmail.com>
- <033C707D-C8DF-4DA7-BE50-F19DE2A17FB4@quicinc.com>
- <CAFEAcA-CSzE=bzCR-zx6hPqmiV9pv8CqwXqv9ui3sZXbWkZZjw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3696.120.41.1.3)
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-GUID: p9a7MSbx0P1bZ6xhApw7j0oczK5jQODk
-X-Proofpoint-ORIG-GUID: p9a7MSbx0P1bZ6xhApw7j0oczK5jQODk
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-06-02_08,2023-06-02_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- mlxlogscore=781 lowpriorityscore=0 bulkscore=0 malwarescore=0
- clxscore=1015 mlxscore=0 spamscore=0 impostorscore=0 adultscore=0
- suspectscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2304280000 definitions=main-2306020089
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=quic_mburton@quicinc.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q55fc-0007Ya-BO
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 10:22:24 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q55fa-0001Xo-Ke
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 10:22:24 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-30af159b433so2092485f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 07:22:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685715740; x=1688307740;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=T5r/LpHJMg7TbmN47HlK1bNQm+yT4WVmfzXQIP2d3t4=;
+ b=rH3c9poL6+VxRMz0zrH9MEbijYE5irYGZvtD3v4zY/cAltbltJBSXGBB2D0sxSFMnf
+ z9chXOb1GuN6KS+RGGQ+KHUBVv8BoYX9kUN9uZZXF+5yFbTF7y50QQAjopiahMJoExgz
+ fE2uTl9hso99Qnv0DuSH6y06bVolrIL91XJ/AgE87cWsiHMZO/UbSrhvyjNdXfpeR+PK
+ T8qgbASecb3vk3ipQgUh0VuW9eN61MkM0JJfuAYqBE+X8RBnIqtFvrxi6JUCl30MVlDE
+ KD060NWpl74bmVBzDHuJtYmv6Yvb0t6hzLEOLE5HWpARL4sKw299ezM1DNUOlJ34LsLJ
+ sr5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685715740; x=1688307740;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=T5r/LpHJMg7TbmN47HlK1bNQm+yT4WVmfzXQIP2d3t4=;
+ b=UfBteVK5eUk0ySSNAlmwAzZ03TiVzJ0nPkTckCcGtJC/kfBt6JkwPy1r4mneuIR+FS
+ c8+0xqpUfLDwNoho/hU/4THeF9B+ptawR9USOeMbrwp1Fdke8DqDiH2c/xoh802FFzdH
+ bgn7kJrOatLtpW/stgrHPBDOe8xZ9tFopnROsZMjtB2COTKmoY2PtUh16dojQxxGOVnX
+ KQCoKAEL7szikid0E9Pdd6A1UNjnue75oR88cI+zr9UFrFz0rV41H0sniYcLy4B3tbKy
+ DFLWU1LXcDuAPI3CC9w5flcvcAaS9PpWkVNKVpAeYmZgPpwy6SEsLzyeJpKIJd7c6xbd
+ bAzw==
+X-Gm-Message-State: AC+VfDzHSfMOvbwp1jgQF31D46db+0J+reJRjlNP8A7YUrht9kPsVVmB
+ wrQufGVYWvuxH9lJo7mhxPcQ2Jq2Dm8CE+MivfA=
+X-Received: by 2002:adf:f08b:0:b0:309:3a60:d791 with SMTP id
+ n11-20020adff08b000000b003093a60d791mr88693wro.54.1685715740643; 
+ Fri, 02 Jun 2023 07:22:20 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ e21-20020a05600c219500b003f17af4c4e0sm5753600wme.9.2023.06.02.07.22.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 02 Jun 2023 07:22:20 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: Fix return value from LDSMIN/LDSMAX 8/16 bit
+ atomics
+Date: Fri,  2 Jun 2023 15:22:19 +0100
+Message-Id: <20230602142219.1999756-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,95 +122,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 76hxsVEmc2G9
+X-TUID: uSyPjEp+6ipQ
 
+The atomic memory operations are supposed to return the old memory
+data value in the destination register.  This value is not
+sign-extended, even if the operation is the signed minimum or
+maximum.  (In the pseudocode for the instructions the returned data
+value is passed to ZeroExtend() to create the value in the register.)
 
+We got this wrong because we were doing a 32-to-64 zero extend on the
+result for 8 and 16 bit data values, rather than the correct amount
+of zero extension.
 
-> On 2 Jun 2023, at 11:07, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> WARNING: This email originated from outside of Qualcomm. Please be =
-wary of any links or attachments, and do not enable macros.
->=20
-> On Thu, 1 Jun 2023 at 20:21, Mark Burton <quic_mburton@quicinc.com> =
-wrote:
->>=20
->>=20
->>=20
->>> On 1 Jun 2023, at 18:45, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>>=20
->>> WARNING: This email originated from outside of Qualcomm. Please be =
-wary of any links or attachments, and do not enable macros.
->>>=20
->>> On Thu, 1 Jun 2023 at 17:00, Mark Burton <quic_mburton@quicinc.com> =
-wrote:
->>>> This patch came from a discussion on the KVM call the other day.
->>>> It may well be the case there is a better/different implementation
->>>> - so the patch is more by way of asking the question.
->>>>=20
->>>> Re-phrasing your question - I think it boils down to =E2=80=9Cshould =
-HVF
->>>> (and KVM) support executing instructions from IO space?=E2=80=9D.
->>>=20
->>> I think this falls into "might theoretically be nice but is
->>> probably too painful to actually implement". In practice
->>> well-behaved guests don't try to execute out of MMIO devices.
->>>=20
->>=20
->>>> In that case, this is a =E2=80=98partial=E2=80=99 answer to =
-providing such
->>>> support for HVF - partial in that it relies upon a memory
->>>> region being created =E2=80=9Cdynamically=E2=80=9D for the IO space =
-that
->>>> has been accessed as a side-effect of a normal access.
->>>=20
->>> But nothing in (upstream) QEMU magically creates MemoryRegions
->>> just because the guest tries to access them. Either there's
->>> nothing there in the AddressSpace at all (definitely can't
->>> execute from it) or there's already RAM (happy case) or there's
->>> already a device there. If there's already a device there
->>> then something would need to do a "put a bit of RAM in
->>> temporarily, fill in the single instruction by doing an
->>> address_space_read() to find the data value and writing it
->>> to the scratch RAM, tell KVM/HVF to do a single-step, undo
->>> everything again".
->=20
->> Indeed, that=E2=80=99s basically what we=E2=80=99re implementing. In =
-TCG mode you =E2=80=99see=E2=80=99 the access, we=E2=80=99re just making =
-it so that in HVF you equally =E2=80=98see=E2=80=99 such accesses to the =
-=E2=80=98device=E2=80=99 (so you can put the bit of RAM in, out, shake =
-it all about). A cleaner implementation may be some sort of =
-=E2=80=9Cpre-i-side-access-op I=E2=80=99m about to access this =
-device/address please register a =E2=80=98memory region=E2=80=99 I can =
-use (temporarily)=E2=80=9D. I=E2=80=99d have thought that could be =
-useful any time you execute from e.g. a temporary ram of any sort =
-(whatever the accelerator).
->=20
-> This patch doesn't do any of the "set up the RAM, single
-> step, tear it down again" work, though, which is the complicated
+Fix the bug by using ext8u and ext16u for the MO_8 and MO_16 data
+sizes rather than ext32u.
 
-(That would need to be done in the device I believe).
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/translate-a64.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-> bit. It just retries an access that ought to have worked directly
-> when HVF did it; which isn't really what you would want to
-> do if you were trying to handle HVF or KVM exec-from-device.
-> In that scenario the "read from the underlying device" would
-> be in the middle of a large amount of other complicated code.
-
-(Maybe not _so_ complicated given a suitable API, but this patch =
-doesn=E2=80=99t provide any such API).
-
-> And without all that other complicated code (which I tend
-> to feel is not worthwhile as a feature) this change is
-> completely unmotivated by anything we have upstream...
->=20
-
-I can=E2=80=99t help but agree on that :-)
-
-Cheers
-Mark.
-
-
-> -- PMM
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 741a6087399..075553e15f5 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -3401,8 +3401,22 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+      */
+     fn(tcg_rt, clean_addr, tcg_rs, get_mem_index(s), mop);
+ 
+-    if ((mop & MO_SIGN) && size != MO_64) {
+-        tcg_gen_ext32u_i64(tcg_rt, tcg_rt);
++    if (mop & MO_SIGN) {
++        switch (size) {
++        case MO_8:
++            tcg_gen_ext8u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_16:
++            tcg_gen_ext16u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_32:
++            tcg_gen_ext32u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_64:
++            break;
++        default:
++            g_assert_not_reached();
++        }
+     }
+ }
+ 
+-- 
+2.34.1
 

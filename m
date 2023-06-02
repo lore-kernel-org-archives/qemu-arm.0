@@ -1,120 +1,128 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1001958ejb;
-        Fri, 2 Jun 2023 02:08:18 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5VQ6lN18KqEHNaraXMBGYiNA02S6BW8QLz5It48E5/BglHit+qCmLqWpGJ+HZJ3XqS6OHj
-X-Received: by 2002:a05:620a:400a:b0:75b:23a1:35f2 with SMTP id h10-20020a05620a400a00b0075b23a135f2mr16992265qko.3.1685696898221;
-        Fri, 02 Jun 2023 02:08:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685696898; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1011057ejb;
+        Fri, 2 Jun 2023 02:29:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4ek4p7BjFhli6AsXe5+a/h7Aae1Cv9FZ61aL1LGg/c5yh8AMvCZvn6at2FIZXIydL/OK7Q
+X-Received: by 2002:a05:6214:1d21:b0:5ef:422c:be7f with SMTP id f1-20020a0562141d2100b005ef422cbe7fmr13971606qvd.12.1685698197009;
+        Fri, 02 Jun 2023 02:29:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685698196; cv=none;
         d=google.com; s=arc-20160816;
-        b=k+VjlayPg7FsbglhBxGlBaV3TTYqq/17Y1SgXvJIUUX62ifffYJ13ZUpDijQAyEDhk
-         3DkZMkXXpeojwzsVEvmuHXVhyODI+o6QTVMIFMpT6SQex3p0TfLHG1f25fbHDlJ0Up0Q
-         KfMMhociaex56ZubCN0t/goghvZE3QEH7cfikbOGzCjLFYfz3iRwUWqzHudhRhWrT6m3
-         HfagJcF+1gdy65wJAnSFRCQPHz8yRV1qEa9P+vKQfwOW3F+2/Gi+o8zTfvz6J/iix6l3
-         fjO6rfsYKnMIh9mDjnJEOfHnowvVPvxij/G7rpfgP7wX8XbMdHQMe+lTGukeo94TAtgC
-         mW3A==
+        b=lgkrxixtLYRo9V3e37smwKcyrmV6Sd006PNlEV+itWhwuqpawcxRN/MwkX19v/mmbT
+         JqWNHFQgai8hYu+SmCcsFfDcFhiHF9w3eb5ih97kyF/wo+WfxpwNCTKq2W9ZB3ZNXRw/
+         zdWyrVxEa8Pb3ID5jlNGnjImsFYJrf77S+h4rZ8DVa+PCCKhSHAkJT3xapX7zooRY//i
+         DGroNXqJxjqFM4D3RZ675eZWB/zGWwCedULOXt+h6BDP4HOCad4PZkF2ZJE+G6rCLpCF
+         LxOFhhxz+swdTtccaaNbJFNBEDehgP2A0hp0SRkA2JU1SKRKEx/mlxEUCHivwbXE+7dA
+         Y2sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=bu14ceylCClaJySjbsOXEaE9OqiNUXwrQIr4+8JYXZU=;
-        b=VnG03iL6yQAzThrq51tumGknjtYwOnvACjUmMh+1eAZ0JfK55qIpWbbU+SYW3w6Wwv
-         VCF2OIB6SD0JGzggKSEpUewIKVdxocHJDqTvvsEYL6tCiE3iNnB4zaLeABoOPrvNlTC8
-         42k5XzOPPD9bOQJzR0g4sLUZkXL43cRj8myFOyBrnrgsRK4NmY8CvBn/tggp07DMbYg7
-         1w6EkunN6fTCtUsKk/fVeNWh7W5gNB87A2HmbzES5NKZWcPDbmR85bZRrubdOrUIIDaL
-         2fPJeac5C7G091niV6sNk7TmSyfa7a/bE3AVz1tanEeukktsZ0XcltCF42C+y4b5gs4N
-         7+MQ==
+        bh=c5cSQ5eEJMT5gCdHQFyYmtY+Zcu3ctYRoAttPKpmKQo=;
+        b=Um9Tx4Vdo9hJLNlq0J74clRvz/4vpQpH0H+mbzG8JYlK3gWiEyIr1KS6VoRX+XlIhA
+         HgAkMCdCOs6fAHiZeGJh8OgarOAcXL4SOVZVahZL0w2bEE47ROzNFo9tp2KoL06M5yKH
+         4Wa7J/VH3GUz1KPOc+gRRiXhbYjaO0ag1I4S5JsrE+4Ghj6KxG609Pe59Ul8WMEayBga
+         CeuCzvDUrD8zwgnsET8WeS+EJj/3rdFi1/EDL8hx5pB5eHu/qdR+KCCDBtXDEYbFfrvu
+         /Y3deiN0QTTkVjlVXiy1a/H4cPqGA+GUayBK8fhQWuYhktNMi+5p9Jh5uvUSHRFkuk/K
+         K2yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GZay4lqK;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="g/ctjAmT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h7-20020a37de07000000b0075d1c827758si330172qkj.575.2023.06.02.02.08.18
+        by mx.google.com with ESMTPS id jk14-20020ad45d4e000000b006257d8becf6si578341qvb.420.2023.06.02.02.29.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 02:08:18 -0700 (PDT)
+        Fri, 02 Jun 2023 02:29:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GZay4lqK;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b="g/ctjAmT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q50lX-0006es-Mf; Fri, 02 Jun 2023 05:08:11 -0400
+	id 1q516T-0002HT-8C; Fri, 02 Jun 2023 05:29:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q50lW-0006eU-Mh
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 05:08:10 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q50lT-0003Jw-Ue
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 05:08:10 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5148f299105so3974609a12.1
- for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 02:08:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685696885; x=1688288885;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bu14ceylCClaJySjbsOXEaE9OqiNUXwrQIr4+8JYXZU=;
- b=GZay4lqKzU4XU7SA7g7DB8nfmzmyYxR2hZsx1zg+oWpAMG0Bev+nN8dtsmG4LPnNMA
- LA5/KOwKnKbR94WJQDj5xJTPG9/XkYzAQ3aP6SlzW3GwIhJK2MIjMgygSdPIohyUQ9XU
- zHn3dauPIdTtt4h5jXoXu+3L7v7LrWipTK9J2AuqHEOE3AAxyF1RcBgczzlL1u/U6VoV
- YlVkbhLySkynZSmsmjXW76wJ0SLRMJ/mS2J4cQLqOCmngmvnAsTeJ5iA5cmW4HYcfr34
- AyFCNfB0YmlOFMNqm6K2L0aRrikjKm4cGnG4FVtZepwdLWyue//Gn+/hTazP+DlU1pXb
- FRGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685696885; x=1688288885;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bu14ceylCClaJySjbsOXEaE9OqiNUXwrQIr4+8JYXZU=;
- b=CUMpItO/WDf8HvxXnYrGhjtX7/nbXpB5DsK7p08eWIYmQP7HGxKmcdsGx8WTxeSi3H
- AkIMOPuNyFr1iaqmpojgBMfmNodWDDroJbArb6Ks53ItGt17oC1FQiY6+m6sAL2PtLRu
- VjFBfGVqddGmazDbI2oR3caQGeo16C863j5jO5wAnqCElLBbLo6uLAugovdDt3QyQJbK
- O717FtZWjsRxKJCSc4MzPMgYFHyNKuxsx+jn16osu2fdvux8xz3GOBiT2006l6T+rcuU
- 48ZzP31uzJJpWtpXJvHYY2P+avESzyQFqSmmGNvXnO21Ubgx3+l1aWQLnqKd9wvrl2uY
- BZgg==
-X-Gm-Message-State: AC+VfDw5ONxQiTSOKB/BTuVXnBQlFCUga0391mE5BDRV3gCN/BFjhz84
- OA60x4CqxUoBjZEow/S4CTpRw/+7rNoT/eapUThsZg==
-X-Received: by 2002:a05:6402:8c3:b0:516:2aaa:9bdd with SMTP id
- d3-20020a05640208c300b005162aaa9bddmr1948946edz.7.1685696885539; Fri, 02 Jun
- 2023 02:08:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1q516R-0002EF-DC; Fri, 02 Jun 2023 05:29:47 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1q516P-0005tw-2S; Fri, 02 Jun 2023 05:29:47 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 3528kDM3000380; Fri, 2 Jun 2023 09:29:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=date : from : to :
+ cc : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=qcppdkim1; bh=c5cSQ5eEJMT5gCdHQFyYmtY+Zcu3ctYRoAttPKpmKQo=;
+ b=g/ctjAmTJPOCMSl/FCmFrkJl2WU1MU7mbGguajd764GwYpaNpCgDnegZaVM7PhiDqj4H
+ kBFTXuMiLa72Lszx7xN2UNva7Xx3d8rXr9OVOUPRC3f1W7d/QMjTfHVH+Rhn9S27ktJB
+ R4RpXGraN3/lZTxOD3KMIDvDwBLDInTUxs2rG2txDv/eB5pPDoLNqyR6FOqmkLi12zHw
+ y5Zjdfi766wVkUlgoSz9IHN7N+zcHWp4sDSDAyF81VviVhkaJY8PV4LQS3h9KMXQsOiU
+ cvErSrD8rMVatCeEBXb0eQqpGVHDVFbNOG8+Ciku1F2V5qn+DF+Pe2jxvRL0C7apn1R8 zQ== 
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3qyb6f0a93-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 02 Jun 2023 09:29:39 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 3529TcNf008178
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 2 Jun 2023 09:29:38 GMT
+Received: from qc-i7.hemma.eciton.net (10.80.80.8) by
+ nasanex01c.na.qualcomm.com (10.45.79.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.42; Fri, 2 Jun 2023 02:29:36 -0700
+Date: Fri, 2 Jun 2023 10:29:33 +0100
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+CC: Peter Maydell <peter.maydell@linaro.org>, Graeme Gregory
+ <graeme@xora.org.uk>, <chenbaozi@phytium.com.cn>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ Ard Biesheuvel <ardb@kernel.org>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Message-ID: <ZHm2ffBNii1tQkGM@qc-i7.hemma.eciton.net>
+References: <20230531070229.334124-1-wangyuquan1236@phytium.com.cn>
+ <20230531070229.334124-2-wangyuquan1236@phytium.com.cn>
+ <lfcmvvqjp64wngrdk33bvkb3k7op53l24lcoslah2evsyh3esc@at7jnsnrto7h>
+ <CAFEAcA8h9-YWUYsvuERttmsEK3xi+K+xasFdoWmnFm26S6npNw@mail.gmail.com>
+ <b663fb55-dc8e-9fd8-9d82-7e693c3c4ad3@quicinc.com>
+ <CAFEAcA_9Prr1xV2s1q2+GpWEnrsEEFT57bbLDnop5Hw3MaxM0A@mail.gmail.com>
+ <ZHjcnHMWM9/Rl9lv@qc-i7.hemma.eciton.net>
+ <20408f0d.c9.1887a225830.Coremail.wangyuquan1236@phytium.com.cn>
 MIME-Version: 1.0
-References: <20230601143312.69691-1-quic_acaggian@quicinc.com>
- <CAFEAcA-92-zExcOFMwaNYvP5pXLTUETsYi3mpuvTp2txfVEp9Q@mail.gmail.com>
- <11f8fb60-abe7-d99d-c3bb-aaa405425668@quicinc.com>
- <B0A9BD1B-B98C-4710-987D-03ADDBB993B7@quicinc.com>
- <CAFEAcA8tCZ0shxEiA4hOVsHhOBvGmQ6HLJq1dPKDuSqBXKdtJw@mail.gmail.com>
- <033C707D-C8DF-4DA7-BE50-F19DE2A17FB4@quicinc.com>
-In-Reply-To: <033C707D-C8DF-4DA7-BE50-F19DE2A17FB4@quicinc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 2 Jun 2023 10:07:54 +0100
-Message-ID: <CAFEAcA-CSzE=bzCR-zx6hPqmiV9pv8CqwXqv9ui3sZXbWkZZjw@mail.gmail.com>
-Subject: Re: [PATCH] hvf: Handle EC_INSNABORT
-To: Mark Burton <quic_mburton@quicinc.com>
-Cc: Antonio Caggiano <quic_acaggian@quicinc.com>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alexander Graf <agraf@csgraf.de>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20408f0d.c9.1887a225830.Coremail.wangyuquan1236@phytium.com.cn>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: CfGCXJLdESSz6ZaL_x231Ue3UllaArHg
+X-Proofpoint-ORIG-GUID: CfGCXJLdESSz6ZaL_x231Ue3UllaArHg
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-06-02_06,2023-05-31_03,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ mlxlogscore=473 clxscore=1015 bulkscore=0 spamscore=0 mlxscore=0
+ malwarescore=0 suspectscore=0 adultscore=0 phishscore=0 lowpriorityscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2306020071
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,70 +137,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8C+jy2VpKl8m
+X-TUID: 68r2pC+WOncS
 
-On Thu, 1 Jun 2023 at 20:21, Mark Burton <quic_mburton@quicinc.com> wrote:
->
->
->
-> > On 1 Jun 2023, at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote=
-:
-> >
-> > WARNING: This email originated from outside of Qualcomm. Please be wary=
- of any links or attachments, and do not enable macros.
-> >
-> > On Thu, 1 Jun 2023 at 17:00, Mark Burton <quic_mburton@quicinc.com> wro=
-te:
-> >> This patch came from a discussion on the KVM call the other day.
-> >> It may well be the case there is a better/different implementation
-> >> - so the patch is more by way of asking the question.
-> >>
-> >> Re-phrasing your question - I think it boils down to =E2=80=9Cshould H=
-VF
-> >> (and KVM) support executing instructions from IO space?=E2=80=9D.
-> >
-> > I think this falls into "might theoretically be nice but is
-> > probably too painful to actually implement". In practice
-> > well-behaved guests don't try to execute out of MMIO devices.
-> >
->
-> >> In that case, this is a =E2=80=98partial=E2=80=99 answer to providing =
-such
-> >> support for HVF - partial in that it relies upon a memory
-> >> region being created =E2=80=9Cdynamically=E2=80=9D for the IO space th=
-at
-> >> has been accessed as a side-effect of a normal access.
-> >
-> > But nothing in (upstream) QEMU magically creates MemoryRegions
-> > just because the guest tries to access them. Either there's
-> > nothing there in the AddressSpace at all (definitely can't
-> > execute from it) or there's already RAM (happy case) or there's
-> > already a device there. If there's already a device there
-> > then something would need to do a "put a bit of RAM in
-> > temporarily, fill in the single instruction by doing an
-> > address_space_read() to find the data value and writing it
-> > to the scratch RAM, tell KVM/HVF to do a single-step, undo
-> > everything again".
+Hi Yuquan,
 
-> Indeed, that=E2=80=99s basically what we=E2=80=99re implementing. In TCG =
-mode you =E2=80=99see=E2=80=99 the access, we=E2=80=99re just making it so =
-that in HVF you equally =E2=80=98see=E2=80=99 such accesses to the =E2=80=
-=98device=E2=80=99 (so you can put the bit of RAM in, out, shake it all abo=
-ut). A cleaner implementation may be some sort of =E2=80=9Cpre-i-side-acces=
-s-op I=E2=80=99m about to access this device/address please register a =E2=
-=80=98memory region=E2=80=99 I can use (temporarily)=E2=80=9D. I=E2=80=99d =
-have thought that could be useful any time you execute from e.g. a temporar=
-y ram of any sort (whatever the accelerator).
+On Fri, Jun 02, 2023 at 11:24:11 +0800, Yuquan Wang wrote:
+> > > > To skip the migration hazard, my prefernece is we just leave the EHCI
+> > > > device in for now, and add a separate XHCI on PCIe. We can drop the
+> > > > EHCI device at some point in the future.
+> > > 
+> > > Why PCIe for the XHCI and not sysbus? At the time the board
+> > > was originally added the argument was in favour of using
+> > > a sysbus USB controller (you can see Ard making that point
+> > > in the linked archive thread).
+> > 
+> > The original argument was that having the device on the sysbus
+> > 1) enabled codepaths we wanted to exercise and
+> 
+> Sorry, for my poor engineering experience, I am confused about the meaning 
+> of "enabled codepaths" here. Is it like a code target that to realize the 
+> original purpose of this board ?
 
-This patch doesn't do any of the "set up the RAM, single
-step, tear it down again" work, though, which is the complicated
-bit. It just retries an access that ought to have worked directly
-when HVF did it; which isn't really what you would want to
-do if you were trying to handle HVF or KVM exec-from-device.
-In that scenario the "read from the underlying device" would
-be in the middle of a large amount of other complicated code.
-And without all that other complicated code (which I tend
-to feel is not worthwhile as a feature) this change is
-completely unmotivated by anything we have upstream...
+It is a bit of a convoluted term.
 
--- PMM
+sbsa-ref isn't a normal platform. We are using it as a vehicle for
+developing and verifying common firmware and software for sbsa (or now
+SystemReady SR) compliant platforms.
+
+This means that we ideally want it to expose *permitted* but not
+necessarily ideal behaviours, so that the parts of software that deals
+with those situations get frequently exercised (enabled).
+It's code coverage for the hw-interacting pieces of code.
+
+/
+    Leif

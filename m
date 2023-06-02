@@ -1,535 +1,345 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1233130ejb;
-        Fri, 2 Jun 2023 08:55:17 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ76koayJXUYmdVQj0BX2HToR2xzQvVIcJdZgR74fEghulJiysbK4+ue3Kx5GfvwNbrdnxVE
-X-Received: by 2002:a05:620a:8798:b0:75b:23a1:8345 with SMTP id py24-20020a05620a879800b0075b23a18345mr11262623qkn.64.1685721316972;
-        Fri, 02 Jun 2023 08:55:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685721316; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1233551ejb;
+        Fri, 2 Jun 2023 08:55:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4ewVWuSD7X0uErhZpsLjs7t87TMVrtjysRnIVsrgqk0GznI6bqW/B1rKOCZ+tsH7yeugIu
+X-Received: by 2002:ad4:5d69:0:b0:628:5718:9661 with SMTP id fn9-20020ad45d69000000b0062857189661mr7246738qvb.48.1685721357389;
+        Fri, 02 Jun 2023 08:55:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685721357; cv=none;
         d=google.com; s=arc-20160816;
-        b=trOvTP4EwCwKSNiLa7PTHqA7dXynTMKMiS+gZbyuEbg3a61JxVWUeuf49+9ctiXZOy
-         G2kzuUKtlpMgppLOe+sBKy6DTL5qZohX1wIKFW5Yi0t18trYnQbc5j3ybcgDMAOmpq1M
-         zTvK0eZDFpcsmQP4g1Eo+uiUD1RYJHU02IbQm6shCKZIze4VJPvAA3W8gea2/nFt/vEC
-         gfFTXq2N4p7VCDUP+7v0MBOvGaQ1tHH5eisf8m1ww+dajcROz5M62ZRNqlWDcA/YY172
-         NcPkHx0NNcyAO7+/THHg2ULxxtEGXpTvC/J88ZI+OyBOx/x5vjBoPznv/tqhRlha3LSG
-         qm1w==
+        b=hUH5c6gbQuuebm/D1Adpl5Ni88N3ljuXFWzKXVzOBMwdncm1FNxU4hkxVDlvohFr6E
+         CGJXX7h+ETuQXZEyplc5IebdUXV7y9DiHlZm8Q4jhJeGJhdminYFUmZBOw1hZobX8WC7
+         2tQz4FKf3Phi6sNSEti30LM5PHK8l6rh6jv6Nasr9xpKhU2mYbr4BQamTlv44iP9N4pR
+         YozwjC6ELqmV8C7Do54cY2gMxvpBGRpGTClcDO/HuVO4E4SrlC46SgN3JWxqZY8Ij8yv
+         4lW6RIbEQBIudukznwYPSTV5S/vQrz4wQudEjagIiBBqpUi5dxDdXXl9b79Zu7M1C4u6
+         PQVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
-        b=fBjsR7Sl1PAnIqK/nNheFW9jGpjEGdQXayfoOALWqNpU/Uf6de5vWcSoKmGt5yDcXq
-         30PDqsVnOUotflgzNMcpq7gfMz4R3jG62GJJxLYJXh3ss8EibxNhZt81utx1QkrxrT0G
-         t3Wd2usM27+fRB9il/B//air6F0DzT1fOA+Z8h7Hbk4O828+KdbmfRhumPRxKRQoelCS
-         DXlgbXA3+c6bJpRGy3SnYfEefs4yFVfC5yHauKdUwv9HWzzB/AqBq9YoYXKi3r9vLbR1
-         lqvFmC5CJolDf7W6a8dsMBk+nsMOwtyNVuTPnx46IMtz8pumUlsx4DVoYA3+SWCw4dOd
-         +VdQ==
+        bh=a4i0A8Mu1QFnQmDW94246VyJQXPq6h6YfEV1eAsIzvI=;
+        b=yqzRXBwgLif7fYW2IQcgVUfjTh6kbU1wevhNUpUrHA4Ush7jZLfn9zbxGbuoatEKFI
+         UiHW2NEGPVpG1D1e/CroVK7TRgHoE9F5x+nfOeKe2bV6nMBvULI4+HnW7s1gCUt7If2W
+         Ue8QUyRvOFFWmTl/ej75oSok58EOnFLxBeoJCy+utH/w9v+O5ID7dh7eUYToFdY+PtKd
+         gPGTW6BNH4TdFx76neltOG5kErLkiqvODz5eJQhqX+mJn6BeS73YV/ah6b32tX6O/7PQ
+         x1jgGd0MLLQRYrogSJn+c9LzQpbJC1EHxrnZLNl2IVjvpx6MMMeJMGprhbAGZMdGraEU
+         JSNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PTJlbABv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HsgjNAeT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pc28-20020a05620a841c00b00759554bbe3dsi852953qkn.65.2023.06.02.08.55.16
+        by mx.google.com with ESMTPS id r12-20020a0562140c8c00b006238c680bb9si1061846qvr.190.2023.06.02.08.55.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 08:55:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Jun 2023 08:55:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PTJlbABv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HsgjNAeT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q5750-0003Hj-D1; Fri, 02 Jun 2023 11:52:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q5750-0003HC-2t; Fri, 02 Jun 2023 11:52:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q574w-0003Dm-BA
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 11:52:38 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1q574y-0003Fu-4A
+ for qemu-devel@nongnu.org; Fri, 02 Jun 2023 11:52:40 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q574r-0003Tc-1o
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 11:52:37 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-30789a4c537so1999119f8f.0
- for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 08:52:32 -0700 (PDT)
+ id 1q574s-0003Xe-Rl
+ for qemu-devel@nongnu.org; Fri, 02 Jun 2023 11:52:39 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-3f6042d605dso20943875e9.2
+ for <qemu-devel@nongnu.org>; Fri, 02 Jun 2023 08:52:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685721151; x=1688313151;
+ d=linaro.org; s=google; t=1685721153; x=1688313153;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
- b=PTJlbABv8hVCQIPt35zz4X+X94uRUZdn/27QNkLhGFb2bTHiNK+vMdibVoZlb4HMGo
- lVRo/bQxTR+KjgOE4sW+no31jyZFroRJCvcE4xKCPXaU5XcpOdF+yDj94zWQA2EJ0EFn
- 2gAEbLxaoguQbTgYO1Ejb3biBO8Hj6Y1yXcx4OpLe8XdFVMveS+bqrRtUtfgKZIx5S3U
- fCYIRkxapNpyP8zPyTxSJuk7dsfndv9QnGXD0sLg1lEIinE9vBBiLMAHF9KN/9n1kkSZ
- qTol++640szk1rZk8pOyBU30l+4Nw2kWVlJZc9oCFWOKbWMfqiNKLSxQMKaNLaUMrPvg
- RHxA==
+ :reply-to; bh=a4i0A8Mu1QFnQmDW94246VyJQXPq6h6YfEV1eAsIzvI=;
+ b=HsgjNAeTHApXLoYtagNnBMbH+mSTSu7kepIQt/yql5udHw3KFSFUCjapUGEZm8QuEO
+ 36K3gR5stEfVeutJCliDGOg0/LlvV6Zp+4LCaYmsywrr4EI2CQMahjtZu3LfHNTvBEKs
+ cPt78hHIKWVbmEqyqqV+FytqxHqyWptdPE3wzF1ySD/igZWwAJUEbS2kA2Q1VNWNpC8N
+ nExbyFqMY8D4oAECQL9pyxcxv92053KJlBJbhUdRLvSLliry6YzBG1m8sXkZyv0PRkvt
+ jD+XiLkR/8UVstFivCZ6JzUgEmEcKX7hisTKkYR/82GH7Mk8v1yumFXxUEgwWlttnYZl
+ DJMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685721151; x=1688313151;
+ d=1e100.net; s=20221208; t=1685721153; x=1688313153;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
- b=INshuDKVC4v9OY94Ge+u641pkon6BVL/rWHhcxNeNaUPocmN3rNPzUgmFXNu2pu1CM
- VOTHrIWOoaIzDslYHEFnm2XYw1qBxDBRvnA4PPLeuGnx85CxBSEHg7oZs10Eivsy3dJ9
- 2Vf1HW4ztahYkUXRfvrX6QwOgUokJxZyoHsavwXJIE0GDiJetOUKMi+eGqUNFEzoS1hE
- uIzWlBvj/gyrIomqpIiYpT7+24PTykfMqSRIeD6f0zcwGvb2GIzYLwhzWpOdwzyHl7K7
- WG8xQrospfQsDsC83GeUp0Kz8+yAnR3Rb30U+wAw9RLtocZaBNHU4sAUqCQvnzZpZVd+
- H1rw==
-X-Gm-Message-State: AC+VfDyXDTFHHQpbTyWPQeJnOn21tassKZvAXhazbDgxzra6EtvAb/m3
- mvQDl7XCpPoc0RIHvY00j8bYFJNu7JRigpptZfA=
-X-Received: by 2002:a5d:5945:0:b0:309:4176:702 with SMTP id
- e5-20020a5d5945000000b0030941760702mr292103wri.37.1685721151566; 
- Fri, 02 Jun 2023 08:52:31 -0700 (PDT)
+ bh=a4i0A8Mu1QFnQmDW94246VyJQXPq6h6YfEV1eAsIzvI=;
+ b=A9DWjIeL8UnPMfNHjLG2c4YzFw+7OqaiqTmPx1Nbj4KD8rVPr9P6dgESGcIm6rGJFV
+ e463X+SnhfgHEzKkyk7fOFsgJZZ7GNTvhQycFVYwHdI8ngHbmOmeLR/zeOQDbtAv5oec
+ ADQ1PlY1gR9DTk3sGW+JxNbfNoN22Dh3Yz4+sM9pNTZ7TrnPVOsbnNqxCHbeFkxt9gp2
+ 8wZRWOKV22xMaLCDejSnlYWcaJU5i+VG0Z4K6ZUcDVYljxGi8DYIoIH0zP5Mo8BfD2l9
+ 3iUR5+YtXusn2mkUVAEpiodw6WCujs7QxIiFb1vvSoHD1UeK8R+mZF3903/JpTv9eYxo
+ HDGg==
+X-Gm-Message-State: AC+VfDw9rjAk8cYYBezrq41pDoOdKduVrcLqibwQOXJKFMGcEFfYvAF7
+ DFVxnqJciTg0nB4uiFcnCma3nANpQhszI08G4N8=
+X-Received: by 2002:a7b:ce89:0:b0:3f6:552:8722 with SMTP id
+ q9-20020a7bce89000000b003f605528722mr2203106wmj.18.1685721153405; 
+ Fri, 02 Jun 2023 08:52:33 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- v7-20020a05600c214700b003f72a15301csm594952wml.2.2023.06.02.08.52.31
+ v7-20020a05600c214700b003f72a15301csm594952wml.2.2023.06.02.08.52.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jun 2023 08:52:31 -0700 (PDT)
+ Fri, 02 Jun 2023 08:52:33 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 11/20] target/arm: Convert load/store-pair to decodetree
-Date: Fri,  2 Jun 2023 16:52:14 +0100
-Message-Id: <20230602155223.2040685-12-peter.maydell@linaro.org>
+Subject: [PATCH 15/20] target/arm: Convert atomic memory ops to decodetree
+Date: Fri,  2 Jun 2023 16:52:18 +0100
+Message-Id: <20230602155223.2040685-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230602155223.2040685-1-peter.maydell@linaro.org>
 References: <20230602155223.2040685-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ElcmEJGrbFHt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fTwldc1X0UeH
 
-Convert the load/store register pair insns (LDP, STP,
-LDNP, STNP, LDPSW, STGP) to decodetree.
+Convert the insns in the atomic memory operations group to
+decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/a64.decode      |  62 +++++++
- target/arm/tcg/translate-a64.c | 299 ++++++++++++++-------------------
- 2 files changed, 192 insertions(+), 169 deletions(-)
+ target/arm/tcg/a64.decode      |  15 ++++
+ target/arm/tcg/translate-a64.c | 148 ++++++++++++---------------------
+ 2 files changed, 67 insertions(+), 96 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index e24db340714..0a3850fe8d5 100644
+index 189a30b1552..69635586718 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -264,3 +264,65 @@ LD_lit_v        10 011 1 00 ................... ..... @ldlit sz=4 sign=0
- 
- # PRFM
- NOP             11 011 0 00 ------------------- -----
+@@ -442,3 +442,18 @@ STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... ..... @ldst sign=0 ext=0
+ STR_v           00 111 1 00 10 1 ..... ... . 10 ..... ..... @ldst sign=0 ext=0 sz=4
+ LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... ..... @ldst sign=0 ext=0
+ LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... ..... @ldst sign=0 ext=0 sz=4
 +
-+%imms7          15:s7
-+&ldstpair       rt2 rt rn imm sz sign w p
-+@ldstpair       .. ... . ... . ....... rt2:5 rn:5 rt:5 &ldstpair imm=%imms7
++# Atomic memory operations
++&atomic         rs rn rt a r sz
++@atomic         sz:2 ... . .. a:1 r:1 . rs:5 . ... .. rn:5 rt:5 &atomic
++LDADD           .. 111 0 00 . . 1 ..... 0000 00 ..... ..... @atomic
++LDCLR           .. 111 0 00 . . 1 ..... 0001 00 ..... ..... @atomic
++LDEOR           .. 111 0 00 . . 1 ..... 0010 00 ..... ..... @atomic
++LDSET           .. 111 0 00 . . 1 ..... 0011 00 ..... ..... @atomic
++LDSMAX          .. 111 0 00 . . 1 ..... 0100 00 ..... ..... @atomic
++LDSMIN          .. 111 0 00 . . 1 ..... 0101 00 ..... ..... @atomic
++LDUMAX          .. 111 0 00 . . 1 ..... 0110 00 ..... ..... @atomic
++LDUMIN          .. 111 0 00 . . 1 ..... 0111 00 ..... ..... @atomic
++SWP             .. 111 0 00 . . 1 ..... 1000 00 ..... ..... @atomic
 +
-+# STNP, LDNP: Signed offset, non-temporal hint. We don't emulate caches
-+# so we ignore hints about data access patterns, and handle these like
-+# plain signed offset.
-+STP             00 101 0 000 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             00 101 0 000 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+STP             10 101 0 000 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+LDP             10 101 0 000 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           00 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+LDP_v           00 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+STP_v           01 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+LDP_v           01 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           10 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
-+LDP_v           10 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
-+
-+# STP and LDP: post-indexed
-+STP             00 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
-+LDP             00 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
-+LDP             01 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=1 w=1
-+STP             10 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
-+LDP             10 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
-+STP_v           00 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
-+LDP_v           00 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
-+STP_v           01 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
-+LDP_v           01 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
-+STP_v           10 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=1 w=1
-+LDP_v           10 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=1 w=1
-+
-+# STP and LDP: offset
-+STP             00 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             00 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             01 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=0 w=0
-+STP             10 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+LDP             10 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           00 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+LDP_v           00 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
-+STP_v           01 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+LDP_v           01 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           10 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
-+LDP_v           10 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
-+
-+# STP and LDP: pre-indexed
-+STP             00 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
-+LDP             00 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
-+LDP             01 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=0 w=1
-+STP             10 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
-+LDP             10 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
-+STP_v           00 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
-+LDP_v           00 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
-+STP_v           01 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
-+LDP_v           01 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
-+STP_v           10 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=1
-+LDP_v           10 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=1
-+
-+# STGP: store tag and pair
-+STGP            01 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
-+STGP            01 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
-+STGP            01 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
++LDAPR           sz:2 111 0 00 1 0 1 11111 1100 00 rn:5 rt:5
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 07bcc700e0b..bd591122628 100644
+index c3eb51e99ff..4e3bebab8e0 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -2737,181 +2737,146 @@ static bool trans_LD_lit_v(DisasContext *s, arg_ldlit *a)
+@@ -3070,111 +3070,31 @@ static bool trans_STR_v(DisasContext *s, arg_ldst *a)
      return true;
  }
  
--/*
-- * LDNP (Load Pair - non-temporal hint)
-- * LDP (Load Pair - non vector)
-- * LDPSW (Load Pair Signed Word - non vector)
-- * STNP (Store Pair - non-temporal hint)
-- * STP (Store Pair - non vector)
-- * LDNP (Load Pair of SIMD&FP - non-temporal hint)
-- * LDP (Load Pair of SIMD&FP)
-- * STNP (Store Pair of SIMD&FP - non-temporal hint)
-- * STP (Store Pair of SIMD&FP)
+-/* Atomic memory operations
 - *
-- *  31 30 29   27  26  25 24   23  22 21   15 14   10 9    5 4    0
-- * +-----+-------+---+---+-------+---+-----------------------------+
-- * | opc | 1 0 1 | V | 0 | index | L |  imm7 |  Rt2  |  Rn  | Rt   |
-- * +-----+-------+---+---+-------+---+-------+-------+------+------+
+- *  31  30      27  26    24    22  21   16   15    12    10    5     0
+- * +------+-------+---+-----+-----+---+----+----+-----+-----+----+-----+
+- * | size | 1 1 1 | V | 0 0 | A R | 1 | Rs | o3 | opc | 0 0 | Rn |  Rt |
+- * +------+-------+---+-----+-----+--------+----+-----+-----+----+-----+
 - *
-- * opc: LDP/STP/LDNP/STNP        00 -> 32 bit, 10 -> 64 bit
-- *      LDPSW/STGP               01
-- *      LDP/STP/LDNP/STNP (SIMD) 00 -> 32 bit, 01 -> 64 bit, 10 -> 128 bit
-- *   V: 0 -> GPR, 1 -> Vector
-- * idx: 00 -> signed offset with non-temporal hint, 01 -> post-index,
-- *      10 -> signed offset, 11 -> pre-index
-- *   L: 0 -> Store 1 -> Load
-- *
-- * Rt, Rt2 = GPR or SIMD registers to be stored
-- * Rn = general purpose register containing address
-- * imm7 = signed offset (multiple of 4 or 8 depending on size)
+- * Rt: the result register
+- * Rn: base address or SP
+- * Rs: the source register for the operation
+- * V: vector flag (always 0 as of v8.3)
+- * A: acquire flag
+- * R: release flag
 - */
--static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-+static void op_addr_ldstpair_pre(DisasContext *s, arg_ldstpair *a,
-+                                 TCGv_i64 *clean_addr, TCGv_i64 *dirty_addr,
-+                                 uint64_t offset, bool is_store)
+-static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+-                              int size, int rt, bool is_vector)
++
++static bool do_atomic_ld(DisasContext *s, arg_atomic *a, AtomicThreeOpFn *fn,
++                         int sign, bool invert)
  {
--    int rt = extract32(insn, 0, 5);
+-    int rs = extract32(insn, 16, 5);
 -    int rn = extract32(insn, 5, 5);
--    int rt2 = extract32(insn, 10, 5);
--    uint64_t offset = sextract64(insn, 15, 7);
--    int index = extract32(insn, 23, 2);
--    bool is_vector = extract32(insn, 26, 1);
--    bool is_load = extract32(insn, 22, 1);
--    int opc = extract32(insn, 30, 2);
--
--    bool is_signed = false;
--    bool postindex = false;
--    bool wback = false;
--    bool set_tag = false;
--
--    TCGv_i64 clean_addr, dirty_addr;
--
--    int size;
--
--    if (opc == 3) {
+-    int o3_opc = extract32(insn, 12, 4);
+-    bool r = extract32(insn, 22, 1);
+-    bool a = extract32(insn, 23, 1);
+-    TCGv_i64 tcg_rs, tcg_rt, clean_addr;
+-    AtomicThreeOpFn *fn = NULL;
+-    MemOp mop = s->be_data | size | MO_ALIGN;
++    MemOp mop = s->be_data | a->sz | MO_ALIGN | sign;
++    TCGv_i64 clean_addr, tcg_rs, tcg_rt;
+ 
+-    if (is_vector || !dc_isar_feature(aa64_atomics, s)) {
 -        unallocated_encoding(s);
 -        return;
 -    }
--
--    if (is_vector) {
--        size = 2 + opc;
--    } else if (opc == 1 && !is_load) {
--        /* STGP */
--        if (!dc_isar_feature(aa64_mte_insn_reg, s) || index == 0) {
+-    switch (o3_opc) {
+-    case 000: /* LDADD */
+-        fn = tcg_gen_atomic_fetch_add_i64;
+-        break;
+-    case 001: /* LDCLR */
+-        fn = tcg_gen_atomic_fetch_and_i64;
+-        break;
+-    case 002: /* LDEOR */
+-        fn = tcg_gen_atomic_fetch_xor_i64;
+-        break;
+-    case 003: /* LDSET */
+-        fn = tcg_gen_atomic_fetch_or_i64;
+-        break;
+-    case 004: /* LDSMAX */
+-        fn = tcg_gen_atomic_fetch_smax_i64;
+-        mop |= MO_SIGN;
+-        break;
+-    case 005: /* LDSMIN */
+-        fn = tcg_gen_atomic_fetch_smin_i64;
+-        mop |= MO_SIGN;
+-        break;
+-    case 006: /* LDUMAX */
+-        fn = tcg_gen_atomic_fetch_umax_i64;
+-        break;
+-    case 007: /* LDUMIN */
+-        fn = tcg_gen_atomic_fetch_umin_i64;
+-        break;
+-    case 010: /* SWP */
+-        fn = tcg_gen_atomic_xchg_i64;
+-        break;
+-    case 014: /* LDAPR, LDAPRH, LDAPRB */
+-        if (!dc_isar_feature(aa64_rcpc_8_3, s) ||
+-            rs != 31 || a != 1 || r != 0) {
 -            unallocated_encoding(s);
 -            return;
 -        }
--        size = 3;
--        set_tag = true;
--    } else {
--        size = 2 + extract32(opc, 1, 1);
--        is_signed = extract32(opc, 0, 1);
--        if (!is_load && is_signed) {
--            unallocated_encoding(s);
--            return;
--        }
--    }
--
--    switch (index) {
--    case 1: /* post-index */
--        postindex = true;
--        wback = true;
 -        break;
--    case 0:
--        /* signed offset with "non-temporal" hint. Since we don't emulate
--         * caches we don't care about hints to the cache system about
--         * data access patterns, and handle this identically to plain
--         * signed offset.
--         */
--        if (is_signed) {
--            /* There is no non-temporal-hint version of LDPSW */
--            unallocated_encoding(s);
--            return;
--        }
--        postindex = false;
--        break;
--    case 2: /* signed offset, rn not updated */
--        postindex = false;
--        break;
--    case 3: /* pre-index */
--        postindex = false;
--        wback = true;
--        break;
--    }
--
--    if (is_vector && !fp_access_check(s)) {
+-    default:
+-        unallocated_encoding(s);
 -        return;
 -    }
--
--    offset <<= (set_tag ? LOG2_TAG_GRANULE : size);
 -
 -    if (rn == 31) {
 +    if (a->rn == 31) {
          gen_check_sp_alignment(s);
      }
- 
--    dirty_addr = read_cpu_reg_sp(s, rn, 1);
--    if (!postindex) {
-+    *dirty_addr = read_cpu_reg_sp(s, a->rn, 1);
-+    if (!a->p) {
-+        tcg_gen_addi_i64(*dirty_addr, *dirty_addr, offset);
-+    }
-+
-+    *clean_addr = gen_mte_checkN(s, *dirty_addr, is_store,
-+                                 (a->w || a->rn != 31), 2 << a->sz);
-+}
-+
-+static void op_addr_ldstpair_post(DisasContext *s, arg_ldstpair *a,
-+                                  TCGv_i64 dirty_addr, uint64_t offset)
-+{
-+    if (a->w) {
-+        if (a->p) {
-+            tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
-+        }
-+        tcg_gen_mov_i64(cpu_reg_sp(s, a->rn), dirty_addr);
-+    }
-+}
-+
-+static bool trans_STP(DisasContext *s, arg_ldstpair *a)
-+{
-+    uint64_t offset = a->imm << a->sz;
-+    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2;
-+
-+    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, true);
+-    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn), false, rn != 31, size);
+-
+-    if (o3_opc == 014) {
+-        /*
+-         * LDAPR* are a special case because they are a simple load, not a
+-         * fetch-and-do-something op.
+-         * The architectural consistency requirements here are weaker than
+-         * full load-acquire (we only need "load-acquire processor consistent"),
+-         * but we choose to implement them as full LDAQ.
+-         */
+-        do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size, false,
+-                  true, rt, disas_ldst_compute_iss_sf(size, false, 0), true);
+-        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+-        return;
+-    }
+-
+-    tcg_rs = read_cpu_reg(s, rs, true);
+-    tcg_rt = cpu_reg(s, rt);
+-
+-    if (o3_opc == 1) { /* LDCLR */
++    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, a->rn), false,
++                                a->rn != 31, a->sz);
++    tcg_rs = read_cpu_reg(s, a->rs, true);
 +    tcg_rt = cpu_reg(s, a->rt);
-+    tcg_rt2 = cpu_reg(s, a->rt2);
-+    do_gpr_st(s, tcg_rt, clean_addr, a->sz, false, 0, false, false);
-+    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
-+    do_gpr_st(s, tcg_rt2, clean_addr, a->sz, false, 0, false, false);
-+    op_addr_ldstpair_post(s, a, dirty_addr, offset);
-+    return true;
-+}
-+
-+static bool trans_LDP(DisasContext *s, arg_ldstpair *a)
-+{
-+    uint64_t offset = a->imm << a->sz;
-+    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2, tmp;
-+
-+    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, false);
-+    tcg_rt = cpu_reg(s, a->rt);
-+    tcg_rt2 = cpu_reg(s, a->rt2);
-+    tmp = tcg_temp_new_i64();
-+
++    if (invert) {
+         tcg_gen_not_i64(tcg_rs, tcg_rs);
+     }
+-
+-    /* The tcg atomic primitives are all full barriers.  Therefore we
 +    /*
-+     * Do not modify tcg_rt before recognizing any exception
-+     * from the second load.
-+     */
-+    do_gpr_ld(s, tmp, clean_addr, a->sz + a->sign * MO_SIGN,
-+              false, false, 0, false, false);
-+    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
-+    do_gpr_ld(s, tcg_rt2, clean_addr, a->sz + a->sign * MO_SIGN,
-+              false, false, 0, false, false);
-+    tcg_gen_mov_i64(tcg_rt, tmp);
-+    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++     * The tcg atomic primitives are all full barriers.  Therefore we
+      * can ignore the Acquire and Release bits of this instruction.
+      */
+     fn(tcg_rt, clean_addr, tcg_rs, get_mem_index(s), mop);
+ 
+     if (mop & MO_SIGN) {
+-        switch (size) {
++        switch (a->sz) {
+         case MO_8:
+             tcg_gen_ext8u_i64(tcg_rt, tcg_rt);
+             break;
+@@ -3190,6 +3110,44 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+             g_assert_not_reached();
+         }
+     }
 +    return true;
 +}
 +
-+static bool trans_STP_v(DisasContext *s, arg_ldstpair *a)
++TRANS_FEAT(LDADD, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_add_i64, 0, false)
++TRANS_FEAT(LDCLR, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_and_i64, 0, true)
++TRANS_FEAT(LDEOR, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_xor_i64, 0, false)
++TRANS_FEAT(LDSET, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_or_i64, 0, false)
++TRANS_FEAT(LDSMAX, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_smax_i64, MO_SIGN, false)
++TRANS_FEAT(LDSMIN, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_smin_i64, MO_SIGN, false)
++TRANS_FEAT(LDUMAX, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_umax_i64, 0, false)
++TRANS_FEAT(LDUMIN, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_fetch_umin_i64, 0, false)
++TRANS_FEAT(SWP, aa64_atomics, do_atomic_ld, a, tcg_gen_atomic_xchg_i64, 0, false)
++
++static bool trans_LDAPR(DisasContext *s, arg_LDAPR *a)
 +{
-+    uint64_t offset = a->imm << a->sz;
-+    TCGv_i64 clean_addr, dirty_addr;
++    bool iss_sf = ldst_iss_sf(a->sz, false, false);
++    TCGv_i64 clean_addr;
 +
-+    if (!fp_access_check(s)) {
-+        return true;
-+    }
-+
-+    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, true);
-+    do_fp_st(s, a->rt, clean_addr, a->sz);
-+    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
-+    do_fp_st(s, a->rt2, clean_addr, a->sz);
-+    op_addr_ldstpair_post(s, a, dirty_addr, offset);
-+    return true;
-+}
-+
-+static bool trans_LDP_v(DisasContext *s, arg_ldstpair *a)
-+{
-+    uint64_t offset = a->imm << a->sz;
-+    TCGv_i64 clean_addr, dirty_addr;
-+
-+    if (!fp_access_check(s)) {
-+        return true;
-+    }
-+
-+    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, false);
-+    do_fp_ld(s, a->rt, clean_addr, a->sz);
-+    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
-+    do_fp_ld(s, a->rt2, clean_addr, a->sz);
-+    op_addr_ldstpair_post(s, a, dirty_addr, offset);
-+    return true;
-+}
-+
-+static bool trans_STGP(DisasContext *s, arg_ldstpair *a)
-+{
-+    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2;
-+    uint64_t offset = a->imm << LOG2_TAG_GRANULE;
-+
-+    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
++    if (!dc_isar_feature(aa64_atomics, s) ||
++        !dc_isar_feature(aa64_rcpc_8_3, s)) {
 +        return false;
 +    }
-+
 +    if (a->rn == 31) {
 +        gen_check_sp_alignment(s);
 +    }
-+
-+    dirty_addr = read_cpu_reg_sp(s, a->rn, 1);
-+    if (!a->p) {
-         tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
-     }
- 
--    if (set_tag) {
--        if (!s->ata) {
--            /*
--             * TODO: We could rely on the stores below, at least for
--             * system mode, if we arrange to add MO_ALIGN_16.
--             */
--            gen_helper_stg_stub(cpu_env, dirty_addr);
--        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
--            gen_helper_stg_parallel(cpu_env, dirty_addr, dirty_addr);
--        } else {
--            gen_helper_stg(cpu_env, dirty_addr, dirty_addr);
--        }
--    }
--
--    clean_addr = gen_mte_checkN(s, dirty_addr, !is_load,
--                                (wback || rn != 31) && !set_tag, 2 << size);
--
--    if (is_vector) {
--        if (is_load) {
--            do_fp_ld(s, rt, clean_addr, size);
--        } else {
--            do_fp_st(s, rt, clean_addr, size);
--        }
--        tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
--        if (is_load) {
--            do_fp_ld(s, rt2, clean_addr, size);
--        } else {
--            do_fp_st(s, rt2, clean_addr, size);
--        }
-+    if (!s->ata) {
-+        /*
-+         * TODO: We could rely on the stores below, at least for
-+         * system mode, if we arrange to add MO_ALIGN_16.
-+         */
-+        gen_helper_stg_stub(cpu_env, dirty_addr);
-+    } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
-+        gen_helper_stg_parallel(cpu_env, dirty_addr, dirty_addr);
-     } else {
--        TCGv_i64 tcg_rt = cpu_reg(s, rt);
--        TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
--
--        if (is_load) {
--            TCGv_i64 tmp = tcg_temp_new_i64();
--
--            /* Do not modify tcg_rt before recognizing any exception
--             * from the second load.
--             */
--            do_gpr_ld(s, tmp, clean_addr, size + is_signed * MO_SIGN,
--                      false, false, 0, false, false);
--            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
--            do_gpr_ld(s, tcg_rt2, clean_addr, size + is_signed * MO_SIGN,
--                      false, false, 0, false, false);
--
--            tcg_gen_mov_i64(tcg_rt, tmp);
--        } else {
--            do_gpr_st(s, tcg_rt, clean_addr, size,
--                      false, 0, false, false);
--            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
--            do_gpr_st(s, tcg_rt2, clean_addr, size,
--                      false, 0, false, false);
--        }
-+        gen_helper_stg(cpu_env, dirty_addr, dirty_addr);
-     }
- 
--    if (wback) {
--        if (postindex) {
--            tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
--        }
--        tcg_gen_mov_i64(cpu_reg_sp(s, rn), dirty_addr);
--    }
-+    clean_addr = gen_mte_checkN(s, dirty_addr, true, false, 2 << a->sz);
-+
-+    tcg_rt = cpu_reg(s, a->rt);
-+    tcg_rt2 = cpu_reg(s, a->rt2);
-+    do_gpr_st(s, tcg_rt, clean_addr, a->sz, false, 0, false, false);
-+    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
-+    do_gpr_st(s, tcg_rt2, clean_addr, a->sz, false, 0, false, false);
-+    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, a->rn), false,
++                                a->rn != 31, a->sz);
++    /*
++     * LDAPR* are a special case because they are a simple load, not a
++     * fetch-and-do-something op.
++     * The architectural consistency requirements here are weaker than
++     * full load-acquire (we only need "load-acquire processor consistent"),
++     * but we choose to implement them as full LDAQ.
++     */
++    do_gpr_ld(s, cpu_reg(s, a->rt), clean_addr, a->sz, false,
++              true, a->rt, iss_sf, true);
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
 +    return true;
  }
  
  /*
-@@ -4037,10 +4002,6 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
- static void disas_ldst(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 24, 6)) {
--    case 0x28: case 0x29:
--    case 0x2c: case 0x2d: /* Load/store pair (all forms) */
--        disas_ldst_pair(s, insn);
--        break;
-     case 0x38: case 0x39:
-     case 0x3c: case 0x3d: /* Load/store register (all forms) */
-         disas_ldst_reg(s, insn);
+@@ -3354,8 +3312,6 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
+         }
+         switch (extract32(insn, 10, 2)) {
+         case 0:
+-            disas_ldst_atomic(s, insn, size, rt, is_vector);
+-            return;
+         case 2:
+             break;
+         default:
 -- 
 2.34.1
 

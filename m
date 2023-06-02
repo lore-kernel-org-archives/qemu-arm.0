@@ -1,107 +1,106 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1232888ejb;
-        Fri, 2 Jun 2023 08:54:47 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6cjBsOcsFTTakUnadp20tw5dTMiCz19f8KI0CNMDCKd88kqh30Jap0P8hX06Uh72cyyXcx
-X-Received: by 2002:ac8:7f87:0:b0:3ef:3b04:b8d8 with SMTP id z7-20020ac87f87000000b003ef3b04b8d8mr12820961qtj.0.1685721287118;
-        Fri, 02 Jun 2023 08:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685721287; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1233130ejb;
+        Fri, 2 Jun 2023 08:55:17 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ76koayJXUYmdVQj0BX2HToR2xzQvVIcJdZgR74fEghulJiysbK4+ue3Kx5GfvwNbrdnxVE
+X-Received: by 2002:a05:620a:8798:b0:75b:23a1:8345 with SMTP id py24-20020a05620a879800b0075b23a18345mr11262623qkn.64.1685721316972;
+        Fri, 02 Jun 2023 08:55:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685721316; cv=none;
         d=google.com; s=arc-20160816;
-        b=IcNxDnVYP2cf7fYusDLCSS6DJjEIBVuvEzxE+mstwAIt9Qn8TU0MK9i0Ur2dUxIN7P
-         3LFY8pf4+JUWV3PO+OYv01B7mwZbe5jjB7cF/mS9oUkziEaVg41WUN7vdPea6UcaL90G
-         oetKxQ5m/0yvf+jD/1ZrUfMOg4M2iEgZ/1RZ9YQgrxEpLUg8Lhoqg4Y15GfiK822Y0Oa
-         WTSPJ2KID+uiH3EQuCDrfEzUh+to9Raobnaz7lexQo1tj4fZ3jSGRIGSKtZBbTZrBxCH
-         hRsMatw0+pw9trsSEQfk/zcaNFjriRRHTu+XjfeEJSWkAcrp0xhyluciA+mil/WcsUat
-         O4Yw==
+        b=trOvTP4EwCwKSNiLa7PTHqA7dXynTMKMiS+gZbyuEbg3a61JxVWUeuf49+9ctiXZOy
+         G2kzuUKtlpMgppLOe+sBKy6DTL5qZohX1wIKFW5Yi0t18trYnQbc5j3ybcgDMAOmpq1M
+         zTvK0eZDFpcsmQP4g1Eo+uiUD1RYJHU02IbQm6shCKZIze4VJPvAA3W8gea2/nFt/vEC
+         gfFTXq2N4p7VCDUP+7v0MBOvGaQ1tHH5eisf8m1ww+dajcROz5M62ZRNqlWDcA/YY172
+         NcPkHx0NNcyAO7+/THHg2ULxxtEGXpTvC/J88ZI+OyBOx/x5vjBoPznv/tqhRlha3LSG
+         qm1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YSnpw6zs5zZnKAA2d+Gsz/pFbi8gBmglbDw3R5ffAAE=;
-        b=yA5QmbhsytnKTKpb5j0Pc0HFVaHDCk8/fO/t2ADB+GDA0xWe3HNJK3TJmIP1HdG17H
-         VZs/t7o2xhtK7Rw4XqRcyIF50grb8I5Lhr7OZ+s1vAYnkuv20IzU9IZcZef7gT2YogXn
-         RaGHlVtdwq5qGy5V/n3lNdlNOlsYrsH0Qv+t/1i9+ZrHvc0KoBhLznK5o2VVVBPtY/v7
-         UMh4WmC8uRD45nwhInC2GrvZE7aCNLt1XywikjIa5THftZZsLFLarfHD3o56OAhGALQR
-         YdRZbiKaIisHlrzW+YkfrlnttwkEhNZWRm6i5tV4ZbE+jnT/+/54ET0JWk4fRPNfWlcO
-         Rmtw==
+        bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
+        b=fBjsR7Sl1PAnIqK/nNheFW9jGpjEGdQXayfoOALWqNpU/Uf6de5vWcSoKmGt5yDcXq
+         30PDqsVnOUotflgzNMcpq7gfMz4R3jG62GJJxLYJXh3ss8EibxNhZt81utx1QkrxrT0G
+         t3Wd2usM27+fRB9il/B//air6F0DzT1fOA+Z8h7Hbk4O828+KdbmfRhumPRxKRQoelCS
+         DXlgbXA3+c6bJpRGy3SnYfEefs4yFVfC5yHauKdUwv9HWzzB/AqBq9YoYXKi3r9vLbR1
+         lqvFmC5CJolDf7W6a8dsMBk+nsMOwtyNVuTPnx46IMtz8pumUlsx4DVoYA3+SWCw4dOd
+         +VdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VoBoIoki;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PTJlbABv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10-20020a05622a010a00b003f549b996a6si956685qtw.786.2023.06.02.08.54.46
+        by mx.google.com with ESMTPS id pc28-20020a05620a841c00b00759554bbe3dsi852953qkn.65.2023.06.02.08.55.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 08:54:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Jun 2023 08:55:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VoBoIoki;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=PTJlbABv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q574v-0003CJ-9x; Fri, 02 Jun 2023 11:52:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q5750-0003Hj-D1; Fri, 02 Jun 2023 11:52:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q574t-0003AD-3q
- for qemu-devel@nongnu.org; Fri, 02 Jun 2023 11:52:35 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1q574w-0003Dm-BA
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 11:52:38 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q574p-0003SG-0d
- for qemu-devel@nongnu.org; Fri, 02 Jun 2023 11:52:34 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-3f606912ebaso22543415e9.3
- for <qemu-devel@nongnu.org>; Fri, 02 Jun 2023 08:52:30 -0700 (PDT)
+ id 1q574r-0003Tc-1o
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 11:52:37 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-30789a4c537so1999119f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 08:52:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685721149; x=1688313149;
+ d=linaro.org; s=google; t=1685721151; x=1688313151;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=YSnpw6zs5zZnKAA2d+Gsz/pFbi8gBmglbDw3R5ffAAE=;
- b=VoBoIokizXRyK0S6OZ57irpBKij3cFKfDgX9tImrj3L+Tsy7XpepiPjjhRRlgh8Vw9
- GseTz7GXa9eRbXTZ+gmyi9Nu3dJE9apZLYuqp1ZXAFBro2e4GxgMbWyomJQre/neAaJf
- inVauwbk5fMqb6lj5ndZxRWmV5fODtCrL1+dXxjdg3uomBe02j8auVFwaVG2PfFhOnl0
- JFsuugX5uRS2MfJJmcqf1TK6t2/+QXXAOstBibX7HPIfr8AlDl+urt6ljL01kKbhTM6o
- +MdgsPcqHsI6XjcbF+8i1MYGFTIo1CWu0u2WrYqC8CFwSM0xWpegvvVgNKSt8b+ISQLb
- fsoQ==
+ :reply-to; bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
+ b=PTJlbABv8hVCQIPt35zz4X+X94uRUZdn/27QNkLhGFb2bTHiNK+vMdibVoZlb4HMGo
+ lVRo/bQxTR+KjgOE4sW+no31jyZFroRJCvcE4xKCPXaU5XcpOdF+yDj94zWQA2EJ0EFn
+ 2gAEbLxaoguQbTgYO1Ejb3biBO8Hj6Y1yXcx4OpLe8XdFVMveS+bqrRtUtfgKZIx5S3U
+ fCYIRkxapNpyP8zPyTxSJuk7dsfndv9QnGXD0sLg1lEIinE9vBBiLMAHF9KN/9n1kkSZ
+ qTol++640szk1rZk8pOyBU30l+4Nw2kWVlJZc9oCFWOKbWMfqiNKLSxQMKaNLaUMrPvg
+ RHxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685721149; x=1688313149;
+ d=1e100.net; s=20221208; t=1685721151; x=1688313151;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YSnpw6zs5zZnKAA2d+Gsz/pFbi8gBmglbDw3R5ffAAE=;
- b=Ed7fcS0iB6r+T3NJyfKRzk5E2qHQYgB/zsWFJpCscGvjjcu+cxs1wcnqnoMpWTWzoW
- wYYocZZWJv9MrJlSmq099GYhbYehc9HgnB4uIA3q9RO10AZF/jsb/aGsDxPYiciDOzx6
- oD8y+UlD8SLqjYh3tHov6Mm/DGGRQ5wjve2Kf/7zUUaA6U2xMipAny57vaKZpzLu/+6e
- 6gu+8mQRKeHQFE2JYC9LMKmYNfA1vNeelB9I072qq/x/NkSPS6uMVsc1pqFMrKlo3Gcf
- 1+lXJz54cfIkT4rORAgzswdsEaIP6bH6cpogZvIm263W3A5WzbHOK4WLgiM621RI3QhT
- LIWA==
-X-Gm-Message-State: AC+VfDyMpUUqWeiafXW4zckmcCLiWFDFCyEg16ksRezTNGh8fy8mUxHf
- ZWde0e2VqcdSxZGeZC+JLGStf6kp6liEvzIwLdg=
-X-Received: by 2002:a05:600c:b42:b0:3f1:7581:eaaf with SMTP id
- k2-20020a05600c0b4200b003f17581eaafmr2258724wmr.4.1685721149504; 
- Fri, 02 Jun 2023 08:52:29 -0700 (PDT)
+ bh=77RbFzojTtJ/okh5WW9K0do57l5DLpmb5dkhivoChhA=;
+ b=INshuDKVC4v9OY94Ge+u641pkon6BVL/rWHhcxNeNaUPocmN3rNPzUgmFXNu2pu1CM
+ VOTHrIWOoaIzDslYHEFnm2XYw1qBxDBRvnA4PPLeuGnx85CxBSEHg7oZs10Eivsy3dJ9
+ 2Vf1HW4ztahYkUXRfvrX6QwOgUokJxZyoHsavwXJIE0GDiJetOUKMi+eGqUNFEzoS1hE
+ uIzWlBvj/gyrIomqpIiYpT7+24PTykfMqSRIeD6f0zcwGvb2GIzYLwhzWpOdwzyHl7K7
+ WG8xQrospfQsDsC83GeUp0Kz8+yAnR3Rb30U+wAw9RLtocZaBNHU4sAUqCQvnzZpZVd+
+ H1rw==
+X-Gm-Message-State: AC+VfDyXDTFHHQpbTyWPQeJnOn21tassKZvAXhazbDgxzra6EtvAb/m3
+ mvQDl7XCpPoc0RIHvY00j8bYFJNu7JRigpptZfA=
+X-Received: by 2002:a5d:5945:0:b0:309:4176:702 with SMTP id
+ e5-20020a5d5945000000b0030941760702mr292103wri.37.1685721151566; 
+ Fri, 02 Jun 2023 08:52:31 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- v7-20020a05600c214700b003f72a15301csm594952wml.2.2023.06.02.08.52.29
+ v7-20020a05600c214700b003f72a15301csm594952wml.2.2023.06.02.08.52.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jun 2023 08:52:29 -0700 (PDT)
+ Fri, 02 Jun 2023 08:52:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 07/20] target/arm: Convert exception generation instructions
- to decodetree
-Date: Fri,  2 Jun 2023 16:52:10 +0100
-Message-Id: <20230602155223.2040685-8-peter.maydell@linaro.org>
+Subject: [PATCH 11/20] target/arm: Convert load/store-pair to decodetree
+Date: Fri,  2 Jun 2023 16:52:14 +0100
+Message-Id: <20230602155223.2040685-12-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230602155223.2040685-1-peter.maydell@linaro.org>
 References: <20230602155223.2040685-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,255 +109,427 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kpvWFPDHn0pp
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ElcmEJGrbFHt
 
-Convert the exception generation instructions SVC, HVC, SMC, BRK and
-HLT to decodetree.
-
-The old decoder decoded the halting-debug insnns DCPS1, DCPS2 and
-DCPS3 just in order to then make them UNDEF; as with DRPS, we don't
-bother to decode them, but document the patterns in a64.decode.
+Convert the load/store register pair insns (LDP, STP,
+LDNP, STNP, LDPSW, STGP) to decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/a64.decode      |  15 +++
- target/arm/tcg/translate-a64.c | 173 ++++++++++++---------------------
- 2 files changed, 79 insertions(+), 109 deletions(-)
+ target/arm/tcg/a64.decode      |  62 +++++++
+ target/arm/tcg/translate-a64.c | 299 ++++++++++++++-------------------
+ 2 files changed, 192 insertions(+), 169 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index e1a120ea4c0..aba27047b56 100644
+index e24db340714..0a3850fe8d5 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -215,3 +215,18 @@ MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
- SYS             1101 0101 00 l:1 01 op1:3 crn:4 crm:4 op2:3 rt:5 op0=1
- SYS             1101 0101 00 l:1 10 op1:3 crn:4 crm:4 op2:3 rt:5 op0=2
- SYS             1101 0101 00 l:1 11 op1:3 crn:4 crm:4 op2:3 rt:5 op0=3
+@@ -264,3 +264,65 @@ LD_lit_v        10 011 1 00 ................... ..... @ldlit sz=4 sign=0
+ 
+ # PRFM
+ NOP             11 011 0 00 ------------------- -----
 +
-+# Exception generation
++%imms7          15:s7
++&ldstpair       rt2 rt rn imm sz sign w p
++@ldstpair       .. ... . ... . ....... rt2:5 rn:5 rt:5 &ldstpair imm=%imms7
 +
-+@i16            .... .... ... imm:16           ... .. &i
-+SVC             1101 0100 000 ................ 000 01 @i16
-+HVC             1101 0100 000 ................ 000 10 @i16
-+SMC             1101 0100 000 ................ 000 11 @i16
-+BRK             1101 0100 001 ................ 000 00 @i16
-+HLT             1101 0100 010 ................ 000 00 @i16
-+# These insns always UNDEF unless in halting debug state, which
-+# we don't implement. So we don't need to decode them. The patterns
-+# are listed here as documentation.
-+# DCPS1         1101 0100 101 ................ 000 01 @i16
-+# DCPS2         1101 0100 101 ................ 000 10 @i16
-+# DCPS3         1101 0100 101 ................ 000 11 @i16
++# STNP, LDNP: Signed offset, non-temporal hint. We don't emulate caches
++# so we ignore hints about data access patterns, and handle these like
++# plain signed offset.
++STP             00 101 0 000 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++LDP             00 101 0 000 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++STP             10 101 0 000 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++LDP             10 101 0 000 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           00 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++LDP_v           00 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++STP_v           01 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++LDP_v           01 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           10 101 1 000 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
++LDP_v           10 101 1 000 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
++
++# STP and LDP: post-indexed
++STP             00 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
++LDP             00 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
++LDP             01 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=1 w=1
++STP             10 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
++LDP             10 101 0 001 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
++STP_v           00 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
++LDP_v           00 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=1 w=1
++STP_v           01 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
++LDP_v           01 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
++STP_v           10 101 1 001 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=1 w=1
++LDP_v           10 101 1 001 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=1 w=1
++
++# STP and LDP: offset
++STP             00 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++LDP             00 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++LDP             01 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=0 w=0
++STP             10 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++LDP             10 101 0 010 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           00 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++LDP_v           00 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=0
++STP_v           01 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++LDP_v           01 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           10 101 1 010 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
++LDP_v           10 101 1 010 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=0
++
++# STP and LDP: pre-indexed
++STP             00 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
++LDP             00 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
++LDP             01 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=1 p=0 w=1
++STP             10 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
++LDP             10 101 0 011 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
++STP_v           00 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
++LDP_v           00 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=2 sign=0 p=0 w=1
++STP_v           01 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
++LDP_v           01 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
++STP_v           10 101 1 011 0 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=1
++LDP_v           10 101 1 011 1 ....... ..... ..... ..... @ldstpair sz=4 sign=0 p=0 w=1
++
++# STGP: store tag and pair
++STGP            01 101 0 001 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=1 w=1
++STGP            01 101 0 010 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=0
++STGP            01 101 0 011 0 ....... ..... ..... ..... @ldstpair sz=3 sign=0 p=0 w=1
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 8e4d3676992..94410f6ece5 100644
+index 07bcc700e0b..bd591122628 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -2260,119 +2260,77 @@ static bool trans_SYS(DisasContext *s, arg_SYS *a)
+@@ -2737,181 +2737,146 @@ static bool trans_LD_lit_v(DisasContext *s, arg_ldlit *a)
      return true;
  }
  
--/* Exception generation
+-/*
+- * LDNP (Load Pair - non-temporal hint)
+- * LDP (Load Pair - non vector)
+- * LDPSW (Load Pair Signed Word - non vector)
+- * STNP (Store Pair - non-temporal hint)
+- * STP (Store Pair - non vector)
+- * LDNP (Load Pair of SIMD&FP - non-temporal hint)
+- * LDP (Load Pair of SIMD&FP)
+- * STNP (Store Pair of SIMD&FP - non-temporal hint)
+- * STP (Store Pair of SIMD&FP)
 - *
-- *  31             24 23 21 20                     5 4   2 1  0
-- * +-----------------+-----+------------------------+-----+----+
-- * | 1 1 0 1 0 1 0 0 | opc |          imm16         | op2 | LL |
-- * +-----------------------+------------------------+----------+
+- *  31 30 29   27  26  25 24   23  22 21   15 14   10 9    5 4    0
+- * +-----+-------+---+---+-------+---+-----------------------------+
+- * | opc | 1 0 1 | V | 0 | index | L |  imm7 |  Rt2  |  Rn  | Rt   |
+- * +-----+-------+---+---+-------+---+-------+-------+------+------+
+- *
+- * opc: LDP/STP/LDNP/STNP        00 -> 32 bit, 10 -> 64 bit
+- *      LDPSW/STGP               01
+- *      LDP/STP/LDNP/STNP (SIMD) 00 -> 32 bit, 01 -> 64 bit, 10 -> 128 bit
+- *   V: 0 -> GPR, 1 -> Vector
+- * idx: 00 -> signed offset with non-temporal hint, 01 -> post-index,
+- *      10 -> signed offset, 11 -> pre-index
+- *   L: 0 -> Store 1 -> Load
+- *
+- * Rt, Rt2 = GPR or SIMD registers to be stored
+- * Rn = general purpose register containing address
+- * imm7 = signed offset (multiple of 4 or 8 depending on size)
 - */
--static void disas_exc(DisasContext *s, uint32_t insn)
-+static bool trans_SVC(DisasContext *s, arg_i *a)
+-static void disas_ldst_pair(DisasContext *s, uint32_t insn)
++static void op_addr_ldstpair_pre(DisasContext *s, arg_ldstpair *a,
++                                 TCGv_i64 *clean_addr, TCGv_i64 *dirty_addr,
++                                 uint64_t offset, bool is_store)
  {
--    int opc = extract32(insn, 21, 3);
--    int op2_ll = extract32(insn, 0, 5);
--    int imm16 = extract32(insn, 5, 16);
--    uint32_t syndrome;
+-    int rt = extract32(insn, 0, 5);
+-    int rn = extract32(insn, 5, 5);
+-    int rt2 = extract32(insn, 10, 5);
+-    uint64_t offset = sextract64(insn, 15, 7);
+-    int index = extract32(insn, 23, 2);
+-    bool is_vector = extract32(insn, 26, 1);
+-    bool is_load = extract32(insn, 22, 1);
+-    int opc = extract32(insn, 30, 2);
 -
--    switch (opc) {
+-    bool is_signed = false;
+-    bool postindex = false;
+-    bool wback = false;
+-    bool set_tag = false;
+-
+-    TCGv_i64 clean_addr, dirty_addr;
+-
+-    int size;
+-
+-    if (opc == 3) {
+-        unallocated_encoding(s);
+-        return;
+-    }
+-
+-    if (is_vector) {
+-        size = 2 + opc;
+-    } else if (opc == 1 && !is_load) {
+-        /* STGP */
+-        if (!dc_isar_feature(aa64_mte_insn_reg, s) || index == 0) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        size = 3;
+-        set_tag = true;
+-    } else {
+-        size = 2 + extract32(opc, 1, 1);
+-        is_signed = extract32(opc, 0, 1);
+-        if (!is_load && is_signed) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-    }
+-
+-    switch (index) {
+-    case 1: /* post-index */
+-        postindex = true;
+-        wback = true;
+-        break;
 -    case 0:
--        /* For SVC, HVC and SMC we advance the single-step state
--         * machine before taking the exception. This is architecturally
--         * mandated, to ensure that single-stepping a system call
--         * instruction works properly.
+-        /* signed offset with "non-temporal" hint. Since we don't emulate
+-         * caches we don't care about hints to the cache system about
+-         * data access patterns, and handle this identically to plain
+-         * signed offset.
 -         */
--        switch (op2_ll) {
--        case 1:                                                     /* SVC */
--            syndrome = syn_aa64_svc(imm16);
--            if (s->fgt_svc) {
--                gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
--                break;
--            }
--            gen_ss_advance(s);
--            gen_exception_insn(s, 4, EXCP_SWI, syndrome);
--            break;
--        case 2:                                                     /* HVC */
--            if (s->current_el == 0) {
--                unallocated_encoding(s);
--                break;
--            }
--            /* The pre HVC helper handles cases when HVC gets trapped
--             * as an undefined insn by runtime configuration.
--             */
--            gen_a64_update_pc(s, 0);
--            gen_helper_pre_hvc(cpu_env);
--            gen_ss_advance(s);
--            gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(imm16), 2);
--            break;
--        case 3:                                                     /* SMC */
--            if (s->current_el == 0) {
--                unallocated_encoding(s);
--                break;
--            }
--            gen_a64_update_pc(s, 0);
--            gen_helper_pre_smc(cpu_env, tcg_constant_i32(syn_aa64_smc(imm16)));
--            gen_ss_advance(s);
--            gen_exception_insn_el(s, 4, EXCP_SMC, syn_aa64_smc(imm16), 3);
--            break;
--        default:
+-        if (is_signed) {
+-            /* There is no non-temporal-hint version of LDPSW */
 -            unallocated_encoding(s);
--            break;
+-            return;
 -        }
+-        postindex = false;
 -        break;
--    case 1:
--        if (op2_ll != 0) {
--            unallocated_encoding(s);
--            break;
--        }
--        /* BRK */
--        gen_exception_bkpt_insn(s, syn_aa64_bkpt(imm16));
+-    case 2: /* signed offset, rn not updated */
+-        postindex = false;
 -        break;
--    case 2:
--        if (op2_ll != 0) {
--            unallocated_encoding(s);
--            break;
--        }
--        /* HLT. This has two purposes.
--         * Architecturally, it is an external halting debug instruction.
--         * Since QEMU doesn't implement external debug, we treat this as
--         * it is required for halting debug disabled: it will UNDEF.
--         * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
--         */
--        if (semihosting_enabled(s->current_el == 0) && imm16 == 0xf000) {
--            gen_exception_internal_insn(s, EXCP_SEMIHOST);
--        } else {
--            unallocated_encoding(s);
--        }
+-    case 3: /* pre-index */
+-        postindex = false;
+-        wback = true;
 -        break;
--    case 5:
--        if (op2_ll < 1 || op2_ll > 3) {
--            unallocated_encoding(s);
--            break;
--        }
--        /* DCPS1, DCPS2, DCPS3 */
--        unallocated_encoding(s);
--        break;
--    default:
--        unallocated_encoding(s);
--        break;
-+    /*
-+     * For SVC, HVC and SMC we advance the single-step state
-+     * machine before taking the exception. This is architecturally
-+     * mandated, to ensure that single-stepping a system call
-+     * instruction works properly.
-+     */
-+    uint32_t syndrome = syn_aa64_svc(a->imm);
-+    if (s->fgt_svc) {
-+        gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
-+        return true;
+-    }
+-
+-    if (is_vector && !fp_access_check(s)) {
+-        return;
+-    }
+-
+-    offset <<= (set_tag ? LOG2_TAG_GRANULE : size);
+-
+-    if (rn == 31) {
++    if (a->rn == 31) {
+         gen_check_sp_alignment(s);
      }
-+    gen_ss_advance(s);
-+    gen_exception_insn(s, 4, EXCP_SWI, syndrome);
-+    return true;
- }
  
--/* Branches, exception generating and system instructions */
--static void disas_b_exc_sys(DisasContext *s, uint32_t insn)
-+static bool trans_HVC(DisasContext *s, arg_i *a)
- {
--    switch (extract32(insn, 25, 7)) {
--    case 0x6a: /* Exception generation / System */
--        if (insn & (1 << 24)) {
--            unallocated_encoding(s);
--        } else {
--            disas_exc(s, insn);
--        }
--        break;
--    default:
-+    if (s->current_el == 0) {
-         unallocated_encoding(s);
--        break;
+-    dirty_addr = read_cpu_reg_sp(s, rn, 1);
+-    if (!postindex) {
++    *dirty_addr = read_cpu_reg_sp(s, a->rn, 1);
++    if (!a->p) {
++        tcg_gen_addi_i64(*dirty_addr, *dirty_addr, offset);
++    }
++
++    *clean_addr = gen_mte_checkN(s, *dirty_addr, is_store,
++                                 (a->w || a->rn != 31), 2 << a->sz);
++}
++
++static void op_addr_ldstpair_post(DisasContext *s, arg_ldstpair *a,
++                                  TCGv_i64 dirty_addr, uint64_t offset)
++{
++    if (a->w) {
++        if (a->p) {
++            tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
++        }
++        tcg_gen_mov_i64(cpu_reg_sp(s, a->rn), dirty_addr);
++    }
++}
++
++static bool trans_STP(DisasContext *s, arg_ldstpair *a)
++{
++    uint64_t offset = a->imm << a->sz;
++    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2;
++
++    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, true);
++    tcg_rt = cpu_reg(s, a->rt);
++    tcg_rt2 = cpu_reg(s, a->rt2);
++    do_gpr_st(s, tcg_rt, clean_addr, a->sz, false, 0, false, false);
++    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
++    do_gpr_st(s, tcg_rt2, clean_addr, a->sz, false, 0, false, false);
++    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++    return true;
++}
++
++static bool trans_LDP(DisasContext *s, arg_ldstpair *a)
++{
++    uint64_t offset = a->imm << a->sz;
++    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2, tmp;
++
++    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, false);
++    tcg_rt = cpu_reg(s, a->rt);
++    tcg_rt2 = cpu_reg(s, a->rt2);
++    tmp = tcg_temp_new_i64();
++
++    /*
++     * Do not modify tcg_rt before recognizing any exception
++     * from the second load.
++     */
++    do_gpr_ld(s, tmp, clean_addr, a->sz + a->sign * MO_SIGN,
++              false, false, 0, false, false);
++    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
++    do_gpr_ld(s, tcg_rt2, clean_addr, a->sz + a->sign * MO_SIGN,
++              false, false, 0, false, false);
++    tcg_gen_mov_i64(tcg_rt, tmp);
++    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++    return true;
++}
++
++static bool trans_STP_v(DisasContext *s, arg_ldstpair *a)
++{
++    uint64_t offset = a->imm << a->sz;
++    TCGv_i64 clean_addr, dirty_addr;
++
++    if (!fp_access_check(s)) {
 +        return true;
++    }
++
++    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, true);
++    do_fp_st(s, a->rt, clean_addr, a->sz);
++    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
++    do_fp_st(s, a->rt2, clean_addr, a->sz);
++    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++    return true;
++}
++
++static bool trans_LDP_v(DisasContext *s, arg_ldstpair *a)
++{
++    uint64_t offset = a->imm << a->sz;
++    TCGv_i64 clean_addr, dirty_addr;
++
++    if (!fp_access_check(s)) {
++        return true;
++    }
++
++    op_addr_ldstpair_pre(s, a, &clean_addr, &dirty_addr, offset, false);
++    do_fp_ld(s, a->rt, clean_addr, a->sz);
++    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
++    do_fp_ld(s, a->rt2, clean_addr, a->sz);
++    op_addr_ldstpair_post(s, a, dirty_addr, offset);
++    return true;
++}
++
++static bool trans_STGP(DisasContext *s, arg_ldstpair *a)
++{
++    TCGv_i64 clean_addr, dirty_addr, tcg_rt, tcg_rt2;
++    uint64_t offset = a->imm << LOG2_TAG_GRANULE;
++
++    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
++        return false;
++    }
++
++    if (a->rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++
++    dirty_addr = read_cpu_reg_sp(s, a->rn, 1);
++    if (!a->p) {
+         tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
      }
-+    /*
-+     * The pre HVC helper handles cases when HVC gets trapped
-+     * as an undefined insn by runtime configuration.
-+     */
-+    gen_a64_update_pc(s, 0);
-+    gen_helper_pre_hvc(cpu_env);
-+    /* Architecture requires ss advance before we do the actual work */
-+    gen_ss_advance(s);
-+    gen_exception_insn_el(s, 4, EXCP_HVC, syn_aa64_hvc(a->imm), 2);
-+    return true;
-+}
+ 
+-    if (set_tag) {
+-        if (!s->ata) {
+-            /*
+-             * TODO: We could rely on the stores below, at least for
+-             * system mode, if we arrange to add MO_ALIGN_16.
+-             */
+-            gen_helper_stg_stub(cpu_env, dirty_addr);
+-        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
+-            gen_helper_stg_parallel(cpu_env, dirty_addr, dirty_addr);
+-        } else {
+-            gen_helper_stg(cpu_env, dirty_addr, dirty_addr);
+-        }
+-    }
+-
+-    clean_addr = gen_mte_checkN(s, dirty_addr, !is_load,
+-                                (wback || rn != 31) && !set_tag, 2 << size);
+-
+-    if (is_vector) {
+-        if (is_load) {
+-            do_fp_ld(s, rt, clean_addr, size);
+-        } else {
+-            do_fp_st(s, rt, clean_addr, size);
+-        }
+-        tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
+-        if (is_load) {
+-            do_fp_ld(s, rt2, clean_addr, size);
+-        } else {
+-            do_fp_st(s, rt2, clean_addr, size);
+-        }
++    if (!s->ata) {
++        /*
++         * TODO: We could rely on the stores below, at least for
++         * system mode, if we arrange to add MO_ALIGN_16.
++         */
++        gen_helper_stg_stub(cpu_env, dirty_addr);
++    } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
++        gen_helper_stg_parallel(cpu_env, dirty_addr, dirty_addr);
+     } else {
+-        TCGv_i64 tcg_rt = cpu_reg(s, rt);
+-        TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
+-
+-        if (is_load) {
+-            TCGv_i64 tmp = tcg_temp_new_i64();
+-
+-            /* Do not modify tcg_rt before recognizing any exception
+-             * from the second load.
+-             */
+-            do_gpr_ld(s, tmp, clean_addr, size + is_signed * MO_SIGN,
+-                      false, false, 0, false, false);
+-            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
+-            do_gpr_ld(s, tcg_rt2, clean_addr, size + is_signed * MO_SIGN,
+-                      false, false, 0, false, false);
+-
+-            tcg_gen_mov_i64(tcg_rt, tmp);
+-        } else {
+-            do_gpr_st(s, tcg_rt, clean_addr, size,
+-                      false, 0, false, false);
+-            tcg_gen_addi_i64(clean_addr, clean_addr, 1 << size);
+-            do_gpr_st(s, tcg_rt2, clean_addr, size,
+-                      false, 0, false, false);
+-        }
++        gen_helper_stg(cpu_env, dirty_addr, dirty_addr);
+     }
+ 
+-    if (wback) {
+-        if (postindex) {
+-            tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
+-        }
+-        tcg_gen_mov_i64(cpu_reg_sp(s, rn), dirty_addr);
+-    }
++    clean_addr = gen_mte_checkN(s, dirty_addr, true, false, 2 << a->sz);
 +
-+static bool trans_SMC(DisasContext *s, arg_i *a)
-+{
-+    if (s->current_el == 0) {
-+        unallocated_encoding(s);
-+        return true;
-+    }
-+    gen_a64_update_pc(s, 0);
-+    gen_helper_pre_smc(cpu_env, tcg_constant_i32(syn_aa64_smc(a->imm)));
-+    /* Architecture requires ss advance before we do the actual work */
-+    gen_ss_advance(s);
-+    gen_exception_insn_el(s, 4, EXCP_SMC, syn_aa64_smc(a->imm), 3);
-+    return true;
-+}
-+
-+static bool trans_BRK(DisasContext *s, arg_i *a)
-+{
-+    gen_exception_bkpt_insn(s, syn_aa64_bkpt(a->imm));
-+    return true;
-+}
-+
-+static bool trans_HLT(DisasContext *s, arg_i *a)
-+{
-+    /*
-+     * HLT. This has two purposes.
-+     * Architecturally, it is an external halting debug instruction.
-+     * Since QEMU doesn't implement external debug, we treat this as
-+     * it is required for halting debug disabled: it will UNDEF.
-+     * Secondly, "HLT 0xf000" is the A64 semihosting syscall instruction.
-+     */
-+    if (semihosting_enabled(s->current_el == 0) && a->imm == 0xf000) {
-+        gen_exception_internal_insn(s, EXCP_SEMIHOST);
-+    } else {
-+        unallocated_encoding(s);
-+    }
++    tcg_rt = cpu_reg(s, a->rt);
++    tcg_rt2 = cpu_reg(s, a->rt2);
++    do_gpr_st(s, tcg_rt, clean_addr, a->sz, false, 0, false, false);
++    tcg_gen_addi_i64(clean_addr, clean_addr, 1 << a->sz);
++    do_gpr_st(s, tcg_rt2, clean_addr, a->sz, false, 0, false, false);
++    op_addr_ldstpair_post(s, a, dirty_addr, offset);
 +    return true;
  }
  
  /*
-@@ -14035,9 +13993,6 @@ static bool btype_destination_ok(uint32_t insn, bool bt, int btype)
- static void disas_a64_legacy(DisasContext *s, uint32_t insn)
+@@ -4037,10 +4002,6 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+ static void disas_ldst(DisasContext *s, uint32_t insn)
  {
-     switch (extract32(insn, 25, 4)) {
--    case 0xa: case 0xb: /* Branch, exception generation and system insns */
--        disas_b_exc_sys(s, insn);
+     switch (extract32(insn, 24, 6)) {
+-    case 0x28: case 0x29:
+-    case 0x2c: case 0x2d: /* Load/store pair (all forms) */
+-        disas_ldst_pair(s, insn);
 -        break;
-     case 0x4:
-     case 0x6:
-     case 0xc:
+     case 0x38: case 0x39:
+     case 0x3c: case 0x3d: /* Load/store register (all forms) */
+         disas_ldst_reg(s, insn);
 -- 
 2.34.1
 

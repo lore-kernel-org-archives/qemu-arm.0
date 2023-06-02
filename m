@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1374188ejb;
-        Fri, 2 Jun 2023 12:57:55 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5FJqUKXXUMSvAauBNC4mzGfmNSz7r1tz91STYkAX7IRZjoMWDQ8OcZK0ZYnMVoZagCbmm7
-X-Received: by 2002:a05:620a:4147:b0:75b:23a1:362a with SMTP id k7-20020a05620a414700b0075b23a1362amr18368969qko.59.1685735875633;
-        Fri, 02 Jun 2023 12:57:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685735875; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1398900ejb;
+        Fri, 2 Jun 2023 13:51:27 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Gt6qaBzdIXdSTdZ4WsmBsOr8EABeBQRPE7u66FI7kMevoFZMIADsEwpDD1isvBDyWuCbb
+X-Received: by 2002:a05:622a:14f:b0:3ef:3808:dea0 with SMTP id v15-20020a05622a014f00b003ef3808dea0mr18333954qtw.0.1685739087398;
+        Fri, 02 Jun 2023 13:51:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685739087; cv=none;
         d=google.com; s=arc-20160816;
-        b=HxABCbSJ7OYD9lS78+u0Q2zQuW/bKt8zBkgQ5sBZBJx58uUiBlSFCBCL/rcEIpDaCG
-         7jT7GjHRTQTKQE765Zz7E/SuSEN2Zbz/U2rMjeOTJV6djJ6gHjYCDhJM9AcQmrHGevPg
-         83GKdjA61S2U4wuhVuY/EryQGEsmm4a5v6yfoyRy9ld5suIX+k0WFUlMYbCSU0INV7Tc
-         wF4F76PTW/+Lb4CvrHxI7wPU+uSR0NNeWq2bXLIIpbjuJ8znDKtaSH9yj2Ee6g3ODQAS
-         UMAoVvhRCElUkurrIfl+3ON9xFY9D7spuWD4rhMIR/NdAWqt9PUWgW7WIayX7HuSQZvq
-         Q51Q==
+        b=w2VDr7ReoGxw1uoIorDWEPLuOjQwRGUbpR1SdyeKmmvhYNnXur8IsPz6s/j9Gic/P3
+         MqCfa8y6NplixLhnhcz+ntMTsW9PgnOYHiLu6OehSoLKSDbzaUitFvAbSOFLJOw6TNP+
+         jsKtu5gyxC+zvb8pDViosAOxp+CnOd3JwTH4t5SMZ2cEI5mCAgZtHepysNxv8gLjPbMU
+         SpS5gnf6FUmPm9knB+v46QDi5QcCesW4TX4ArIlBxkgK0LD+Akr7PkriPJlCa4JaQErS
+         4u8ps8qb/JL/WQmjwGuRSoYhyeitzzGokTdZWAXIKQpQYHPxA3VFGjtJ4E5ZVe8VA5ul
+         Itsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2fzGVoQwkh7n2rngSk+6D3F8Wf7TQnDaQMpjWQRrkLQ=;
-        b=L7Hsq3Qmvcml7bsKd3Uv8Uw4XX2SDSR+J8docGNC4/zTCTx7muzcSu4n/5rbhgOR7m
-         WmY2XEGOUHzmb4VxrSahpg8HvKz+8D4KxpxzgrjJx9Eem3ud/F8kcvq/NHhCd9HZDxxA
-         KQ+OvXdBnJ+YUgkQ68RdzwsjpeZaSHPafaC3sKFSjBdzDVqdM1BHK9joxuJvj8aAYiUk
-         JfTqBNlMKV4YtfDQPsHgDdO3HsERv3vrrPlPC3ajvqo3lw9MZAWSVMR+aJK+ZbObWjYm
-         vmC34NUkxcWBtBE5TwSRInbKobLAM11bIl2ZLZgqkHREnpSg6qCPedCV5MC+cqW8SWvN
-         AGsA==
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=ILq7X2J+pi2vixuHRXBUFJqfwVeG4b710Mj2RhfZZdE=;
+        b=pHcIzExtT4KbhIZ/FsLOmQyoXT4Kp2UMWKiYUQN9k2WYfKE2sFRkK1c6YzCsbITSJX
+         l7wk98bCSsg2g8jOPLGt0uxGuyPSo/cQ+6IRlGFZ6iX/rYIUG6MTWiQM/Oifp6xEnKTR
+         aexDJOOllS+Ky6gpw0T/ekeeBn03j5Cwl2vDrU++ajEYitd6sfi2bYPPn0QNLba6YGAS
+         qQnZcSozpxBwmQ8KVQ9Qpj8oXvrtigdHEzvpOTc7qD5sQl9FzfIBlHthoIu07HgDN3q2
+         5uflDJGVen2lcg9HYoSpDvhZedel4DX2iGeyUwHvdywddgbrPMCtRZ3EiYCsfOfNj3JN
+         5W4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QuTLX1sW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p2j+zd57;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m21-20020a05620a13b500b0075cd7286b80si1178428qki.691.2023.06.02.12.57.55
+        by mx.google.com with ESMTPS id y14-20020a05622a164e00b003e80629bd5bsi1362903qtj.266.2023.06.02.13.51.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 12:57:55 -0700 (PDT)
+        Fri, 02 Jun 2023 13:51:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QuTLX1sW;
+       dkim=pass header.i=@linaro.org header.s=google header.b=p2j+zd57;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q5Aty-0002wB-K7; Fri, 02 Jun 2023 15:57:34 -0400
+	id 1q5Bjx-0000AK-7M; Fri, 02 Jun 2023 16:51:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5Atk-0002tN-4Q
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 15:57:26 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5Bjv-0000A4-Oh
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 16:51:15 -0400
 Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5Ati-0000qq-DJ
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 15:57:19 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5Bju-0002Cn-4B
+ for qemu-arm@nongnu.org; Fri, 02 Jun 2023 16:51:15 -0400
 Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3f6ffc2b314so28277465e9.0
- for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 12:57:17 -0700 (PDT)
+ 5b1f17b1804b1-3f611ccd06eso23978495e9.0
+ for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 13:51:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685735835; x=1688327835;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=linaro.org; s=google; t=1685739072; x=1688331072;
+ h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=2fzGVoQwkh7n2rngSk+6D3F8Wf7TQnDaQMpjWQRrkLQ=;
- b=QuTLX1sWEoopaXqSbAJi3ehWxEZa+8oMoG3HwEhtBnauoAhra37ZG9Dp5RqO7nJy2X
- HU1F2lWbaPMyb7AYn4B1eIVcWo+WjedgdZrz7dB4LZdHCyb4YoSUG5/dJNC10O1TrUqh
- NAVidA6n3k09plLiTvYPyXjWMin03d9otNDSUSsWfJKhHbW06jC5+Qaot9NUolYO91a2
- jqopmJWc713c/bqQeNyOBrOcB6E8LUYtF+OSx2zvkffe1JxMguaQxE2JPc8iX7co9jWu
- K7pAl+Jt7TvVBD2NgtUNS1Xoc9n7l0UI1hO1L4e4maq9XcS8b6XdKuK2LW3LtBkX109H
- GJ0w==
+ bh=ILq7X2J+pi2vixuHRXBUFJqfwVeG4b710Mj2RhfZZdE=;
+ b=p2j+zd57N0s4IghknKrdePv+zoO9HhaxMUUwNTiKkB+juV3L1of11ItZoigeL8MG4P
+ yD03PipQbFAahksmmjPzjcXuLwAwWmGrJc9UJrczsUXEOnLiSTrCfbJ01BSxJ6Ou3sD+
+ jMQySSeQWrbkuCay52kzWfgordRz3V2zauhEusYUX4AntMtzwc3J3Og7ulrdPIbYPIpf
+ X3hM3auTWGmdDUQGj4VRnt7k3eaZ3yJUS3Bys2PhwcNRxjejQ5EVC3TllvdJwuIQbyjY
+ sWs5UF1fFj1p5lTtVs1YeUUH/bEne+thFQuxwUAxScrgy4XYt7ctSEZGWL6pdi8ikLhY
+ 6xvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685735835; x=1688327835;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=1e100.net; s=20221208; t=1685739072; x=1688331072;
+ h=content-transfer-encoding:in-reply-to:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2fzGVoQwkh7n2rngSk+6D3F8Wf7TQnDaQMpjWQRrkLQ=;
- b=KcoXuS6uDB3sACyQWlJ2rxus3CQ1jNVohH8lDhx66k/Ad7fcHxefqpnRF7n5RepV71
- Bg/UYMMFV3RJSyZbQXHIQ7WA8Xyzw8KNj1hXUbuv9hGyOOGztAkCDvBS2hobYKVxQEY6
- vUFL/K39GrPAkufkzGJFsfFePUDIMcwRzCCBL917I4N2I9D9TyJq6abaN05tBTE69Zss
- CPWLlmjdRiNmgaycNYudZnqMX+EpVZwL2oVLXTe0FpnqVhGTyh5NwIb4VCUF63M5llY6
- ytu5HWOeIpGnsZctCejsRGVbgU3YXBFfxHH/VXEdWDGW7yD+gAnPzYyZtbu7/8IIm0OD
- YDOg==
-X-Gm-Message-State: AC+VfDy90vjX12jKvLx4ISN8/H1sfuiIiMKWdxVudmB5sC5/eARS6L5H
- xZeD2/uPlEAuzAjnTqPb1QBpVhzYcPVLbFe8Q1U=
-X-Received: by 2002:a05:600c:1c9c:b0:3f6:286:95d with SMTP id
- k28-20020a05600c1c9c00b003f60286095dmr2844246wms.18.1685735835294; 
- Fri, 02 Jun 2023 12:57:15 -0700 (PDT)
+ bh=ILq7X2J+pi2vixuHRXBUFJqfwVeG4b710Mj2RhfZZdE=;
+ b=lCAchkMavgUa6QO0JMcSzZPQ6QtCmyPEGU04FoSN0vzoFApvAMCyEtxby01kIS2HT/
+ wPqDjWn/mo2PHO1GT1tmdgrGE/hICHRVZ27n2WSdbEadcQGA8jf5wJ21D0D6JnWMistu
+ Xuq6kLpXEzPnKrZ3Lxp5OAC6f5tA/12xQB8Ya4q/Wxd2myya1jk5y+4Pvnc2bWFngqIh
+ 14ItT55gwrpTXDEQ0MsAhL8oM32kn0RBPsmXQrO0TlS0vjQ0JG/fawrwiFjinZAb5x2I
+ MIhgk+9zov2BZMbeDjOWzLHJ8nlbaIrc0pGgwKi/KXS9fh/Q1uMxomY/y+VVvI10DeCl
+ oqBg==
+X-Gm-Message-State: AC+VfDzw/aplFVEFMagSxuqwYBP7pLkJLJciACjgvzbMjYrqU8pjBOr4
+ r7OT6qfsRUBpoZQ7T76KIYRMxA==
+X-Received: by 2002:a7b:cd8f:0:b0:3f4:f0c2:125 with SMTP id
+ y15-20020a7bcd8f000000b003f4f0c20125mr2354066wmj.23.1685739072196; 
+ Fri, 02 Jun 2023 13:51:12 -0700 (PDT)
 Received: from [192.168.69.115] ([176.187.218.254])
  by smtp.gmail.com with ESMTPSA id
- m24-20020a7bca58000000b003f4dde07956sm6480762wml.42.2023.06.02.12.57.14
+ x17-20020a05600c21d100b003f4272c2d0csm2963338wmj.36.2023.06.02.13.51.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Jun 2023 12:57:14 -0700 (PDT)
-Message-ID: <3a83c3a9-1fbb-d5e3-471f-0daa02d877eb@linaro.org>
-Date: Fri, 2 Jun 2023 21:57:13 +0200
+ Fri, 02 Jun 2023 13:51:11 -0700 (PDT)
+Message-ID: <13e60074-adc0-f3f2-e5fe-f48e6778cf04@linaro.org>
+Date: Fri, 2 Jun 2023 22:51:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH] target/arm: Fix return value from LDSMIN/LDSMAX 8/16 bit
- atomics
+Subject: Re: [PATCH 13/20] target/arm: Convert LDR/STR with 12-bit immediate
+ to decodetree
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-stable@nongnu.org
-References: <20230602142219.1999756-1-peter.maydell@linaro.org>
+References: <20230602155223.2040685-1-peter.maydell@linaro.org>
+ <20230602155223.2040685-14-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230602142219.1999756-1-peter.maydell@linaro.org>
+In-Reply-To: <20230602155223.2040685-14-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::331;
  envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -21
@@ -126,27 +126,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bM893QVL8dMN
+X-TUID: A6JNEEEWxOF5
 
-On 2/6/23 16:22, Peter Maydell wrote:
-> The atomic memory operations are supposed to return the old memory
-> data value in the destination register.  This value is not
-> sign-extended, even if the operation is the signed minimum or
-> maximum.  (In the pseudocode for the instructions the returned data
-> value is passed to ZeroExtend() to create the value in the register.)
+Hi Peter,
+
+On 2/6/23 17:52, Peter Maydell wrote:
+> Convert the LDR and STR instructions which use a 12-bit immediate
+> offset to decodetree. We can reuse the existing LDR and STR
+> trans functions for these.
 > 
-> We got this wrong because we were doing a 32-to-64 zero extend on the
-> result for 8 and 16 bit data values, rather than the correct amount
-> of zero extension.
-> 
-> Fix the bug by using ext8u and ext16u for the MO_8 and MO_16 data
-> sizes rather than ext32u.
-> 
-> Cc: qemu-stable@nongnu.org
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/tcg/translate-a64.c | 18 ++++++++++++++++--
->   1 file changed, 16 insertions(+), 2 deletions(-)
+>   target/arm/tcg/a64.decode      |  25 ++++++++
+>   target/arm/tcg/translate-a64.c | 103 +++++----------------------------
+>   2 files changed, 41 insertions(+), 87 deletions(-)
+> 
+> diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+> index 4dfb7bbdc2e..c3a6d0b740a 100644
+> --- a/target/arm/tcg/a64.decode
+> +++ b/target/arm/tcg/a64.decode
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+> +# Load/store with an unsigned 12 bit immediate, which is scaled by the
+> +# element size. The function gets the sz:imm and returns the scaled immediate.
+> +%uimm_scaled   10:12 sz:3 !function=uimm_scaled
+> +
+> +@ldst_uimm      .. ... . .. .. ............ rn:5 rt:5 &ldst_imm unpriv=0 p=0 w=0 imm=%uimm_scaled
+> +
+> +STR_i           sz:2 111 0 01 00 ............ ..... ..... @ldst_uimm sign=0 ext=0
+> +LDR_i           00 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=0
+> +LDR_i           01 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=1
+> +LDR_i           10 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=2
+> +LDR_i           11 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=0 sz=3
+> +LDR_i           00 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=0
+> +LDR_i           01 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=1
+> +LDR_i           10 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=2
+> +LDR_i           00 111 0 01 11 ............ ..... ..... @ldst_uimm sign=1 ext=1 sz=0
+> +LDR_i           01 111 0 01 11 ............ ..... ..... @ldst_uimm sign=1 ext=1 sz=1
+
+Why not use "sz:2 111 0 01 sign:1 ext:1", returning false for the
+cases not covered?

@@ -1,735 +1,204 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1544249ejb;
-        Fri, 2 Jun 2023 19:34:50 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5qDNOzRG8PPwCimAnm/pzJWZXXpISwiOMU2uaJAOWDHBcYKnj0MsZiR4yKyXwIZDPqfSLB
-X-Received: by 2002:ad4:5f8e:0:b0:623:9cab:3e18 with SMTP id jp14-20020ad45f8e000000b006239cab3e18mr441449qvb.26.1685759689768;
-        Fri, 02 Jun 2023 19:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685759689; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1544425ejb;
+        Fri, 2 Jun 2023 19:35:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5+TZaukCnWC1wjcAVM+UDLeK7l+d+Oz7H7MI1fzwWuzW2qIQvV4Oga6Q0N2dgqgJCQu+2V
+X-Received: by 2002:a05:620a:28c3:b0:75b:23a1:3684 with SMTP id l3-20020a05620a28c300b0075b23a13684mr19068116qkp.69.1685759723947;
+        Fri, 02 Jun 2023 19:35:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685759723; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q+z87+tT4QSs2yObM1luQDRHOv+oAfrFZcvPAG3ZcJOVo/whaCu0mToBHU1VZLQ5tA
-         rw2t+ERVaPoBDGIz2IeWwXQZyy33Ujf81/ojZMk1sGqXH/jQonIPpJIvIEiulrTxEuZs
-         aA4o3ZB3kcUeDzeMSiXqBV4Q/oUepHAZhufqtt/aFhsM7UWcho+DDgoIxGD8ylWtOqda
-         TM9Vi1ZkRv7p9WqqSRc9uuX7uWin5u7TcY7OPjG4VS7Gj8M+qzLcLcKpvimeH9wX2SeK
-         38MaYEtohIoT4f4jRTsgCXvQCpwfppxMciTOK1enuM4/M+HgOsS2fGNrDP8iwzXFd/ex
-         PV0A==
+        b=TO7xqFo7WCSe4MGXIbHIUz+WJrpaR8FkGmq2FDiME0/9mj/e0TE4eH0YioWZPbTE6I
+         sFDkhpZwCVunhR/QCw/h4xlHiN9fDIikrl4kxvZAv8061fUyUvf16f8KZaw6bw1fUNMX
+         SDbqdS5tN6Djkrzz+yt8BkgFxKo56+jk6Mw9Y5EObwFjkva3BBaKolj37pKppPinTTRO
+         RAfiTkALYSnfzJtDhhvqzRoN+j/G2z7pUreytXChWfjZLyjpzUzjvbuLcKnHMAFchrjg
+         RqGneLg6Yu2L7tFba3LYyVrp0fapsi6ke47KsNFqr3mt6tnxFhOwQiNg4X7H2ujwaOaM
+         MYsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=L5wqOoQks7HDhH7GCCs9AvAc2AHNy+NlZH1p8dHBt8Y=;
-        b=ItGKODU0BDdPbmt6JeYq+2QPP3rDdHjBQ2tGs4xWZOz3liYEvgdPKsCOkpnjGJ2YT3
-         aD1K5oUUyMPSNs9mYDZXbvXBH+zGY3XPMB8/BNTPtGFnWSPbXQ5lddRmNUhryXPWRcdp
-         uKMLXJGG6daoAbSGRBjDWSgX5+tcJ5bagMTAlhjCcjQDBuVcXDqa37zqjd38MTCsEhjT
-         WTWtaLXzeKz7IBy7RPJmSHaWzmejVEIl69CEJjjwN6w0xgcYDVgW9Y8zatLAd4BYpw3R
-         a7uDgtidMA71xJAbbJkCLJBT2inZETHKFC4Au7JU+vGfA0o8r/Knt5MEUFswJLFlYrmV
-         6GEg==
+        bh=tqOStWj9wy4vSlw/JP9FJsk77s8bELBPoB35SE08RZM=;
+        b=KpytTZDyg0S46uYYNWIewRi+I9t+KPQMF8s8TsH15aOsanR1liI2ln/wBGD/vvOBIZ
+         G3up+/oOIgOjY0n9V3AITvzbCdfRTUBHquLV+gZvKQ/1RY0jc7tCsCE+n3pdNgbKyVwg
+         Rti5AHqEalFS2EJOM6raxNbH+YJJoKNHMxsDxX4TErjdBA7RoSqbzAyaAt6UjzVqg8Ae
+         WCYMWC+mDF80sbua9ZTJ4KxhNAkhBorfIAbreyFnMbs7Xg11VgzuCuVKR7CalXoiIweq
+         wijW2qJks8ttR9vh6/oTtjO6QnSnEcUq4H57cc7IFMo3ggQ0frKpSMQAR0ckMZW4EgAt
+         qSqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyJy7OZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WulAntH4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gy10-20020a056214242a00b006216ee5bc63si1849695qvb.241.2023.06.02.19.34.49
+        by mx.google.com with ESMTPS id g14-20020ae9e10e000000b0075b26727024si1639673qkm.160.2023.06.02.19.35.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 19:34:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 02 Jun 2023 19:35:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyJy7OZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WulAntH4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q5H6F-0000KC-Uh; Fri, 02 Jun 2023 22:34:41 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q5H6Q-0000T6-FK; Fri, 02 Jun 2023 22:34:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q5H6A-0000IR-7d
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 22:34:34 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+ id 1q5H6E-0000Jz-Bl
+ for qemu-devel@nongnu.org; Fri, 02 Jun 2023 22:34:39 -0400
+Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q5H66-0004gy-57
- for qemu-arm@nongnu.org; Fri, 02 Jun 2023 22:34:33 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id
- 46e09a7af769-6af78ce91b1so2495440a34.1
- for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 19:34:29 -0700 (PDT)
+ id 1q5H67-0004hU-IL
+ for qemu-devel@nongnu.org; Fri, 02 Jun 2023 22:34:37 -0400
+Received: by mail-oo1-xc2a.google.com with SMTP id
+ 006d021491bc7-5585f2f070bso1975903eaf.0
+ for <qemu-devel@nongnu.org>; Fri, 02 Jun 2023 19:34:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685759669; x=1688351669;
+ d=linaro.org; s=google; t=1685759670; x=1688351670;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=L5wqOoQks7HDhH7GCCs9AvAc2AHNy+NlZH1p8dHBt8Y=;
- b=kyJy7OZLyshE3nRh49YTnwzqrkK74Eppi6+SHXOD1mGR44EM1IcE/xpojR63ugk5Tn
- QjoCQyLfMijUuyD0/1pyO42702YJL5bPYBU8bYugYbogaj4DZgPF4hm980yrmOuByA3F
- ZhGJ4EoPmeT4niTK3xqNzf5Lic38HCpUgtexv1uciHsePfMMyOgwkBBAEAHMUhfj7IS/
- LmemrmM3wKaCjYgpkvkCzgRjHNjr6zpcmZHX1nLC9DutQbkfdl7ns5oAszDvuCzKGguQ
- D0uz4DXeSxJ8rOajaZt6z6ZugKm/62lGzT41CrlGY+DuSlE4/JfQU8WyA4QPuNsTHzY2
- +jyg==
+ bh=tqOStWj9wy4vSlw/JP9FJsk77s8bELBPoB35SE08RZM=;
+ b=WulAntH4HE494wgcKNFlm7uZR/9kx2mCN6tD/4dh5C3ACPdKg7Dw3/yaDQ8fZNWrBC
+ 8iLvOMXWVKEb6g2j8snAnRY9/Hmh5GKCgQrAfglN8ZpAs0jtsX1U1zVQGQTTYPiAtFni
+ vOhaR1OKU3CAd4u+QX5zLDOWHGRJh9FHV0wpWG6YgDBPAr549mCeTvKN5k6al/Al6Ki9
+ Pt05l+3RTE1AsWecOamac0yfGmjIwohCg6sdsxm6Em/CLO9bd/YWCKSVlZy/SmIN3spN
+ IHg8LIrLnf02h8bQkauGTexDzowD8L9O/i9KXk4uiBWH4dZyfOC+SqUnib2I0iXZDCLI
+ sEvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685759669; x=1688351669;
+ d=1e100.net; s=20221208; t=1685759670; x=1688351670;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=L5wqOoQks7HDhH7GCCs9AvAc2AHNy+NlZH1p8dHBt8Y=;
- b=TKy7qP96yisCQuesNutyeFvV94Bd3OT5ITePS91hia1LoAEafZ4SknPJdz21zO+Ara
- HdqH7yby7v/fxIs7B1Xr4XMcl+/lkf/qczWsoI7NCIkHrtRMY8ctKMxtUzABZ5S7yaTI
- 46b3pq71gEoHc/EVLCRMHh9fRooyuY09HL6p9ZshK4Sz+lijPN59sxOB/lDeror/k9hD
- 2fUTOrnxc5OSFrxAFCkOQd08SGATAGsI/OQeYtVQn90KI/TBp0rJvzRXTswDembGFAE4
- w/OheSbCCQRJGk3LAb/HqkObynjNxNiBKSdwCqH5AUT+cF0EGp08VJTCKNE09tWwHwAr
- 301g==
-X-Gm-Message-State: AC+VfDy8egekSWi3X7gQXNXl1WMShCLZZ6autnHR1pTjDSGPL0jauZzy
- Wkn/KhjtGSN+xJHyX+fVgYpG8g==
-X-Received: by 2002:a05:6358:b501:b0:127:f114:2d36 with SMTP id
- de1-20020a056358b50100b00127f1142d36mr3228322rwb.14.1685759668714; 
- Fri, 02 Jun 2023 19:34:28 -0700 (PDT)
+ bh=tqOStWj9wy4vSlw/JP9FJsk77s8bELBPoB35SE08RZM=;
+ b=MTYeb+njlBtRLVCUX7NMeLFK0CxKh5IApaogj8ok4vWmHmIdrtPJz3/wajuTgCOE1a
+ qHucmvMT/l9i+usyPU3W1Q9UlnfVaoNXZDkteB6iiI+gD+XqoBt7sG9f+MWoOV4MP6BK
+ PzNXXS87QSTW9EvZDBU3CQo7K+I0gJkgW1zFnUihGizWJLpehZczSLO6hov/iJDrB6z1
+ QnXEwO2yCD+xLYp04EIgaiLi6Qwoqw4VXr51cSX/Ex5qZkD4xDHgJJ1mHCnw0S2x0JIW
+ hDr+2x/+5ZxA6xoDhW+aFX+qG5wwcHkZPAwPIs+ILvnMXqsTselgEk5UHkuMsickvpQV
+ /C7w==
+X-Gm-Message-State: AC+VfDxJdNtHksv9rZ0vosFW0et7r+PRtbFnHGQsO9f/GMmwmTNsq79i
+ DjcWnHFdexe6N4nT+IMLrJadGb6/SzfJOKTiWF8=
+X-Received: by 2002:a05:6358:7208:b0:125:83c8:72f6 with SMTP id
+ h8-20020a056358720800b0012583c872f6mr15392888rwa.0.1685759670394; 
+ Fri, 02 Jun 2023 19:34:30 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:66a6:82c2:d794:68f6])
  by smtp.gmail.com with ESMTPSA id
- e91-20020a17090a6fe400b002508d73f4e8sm3914289pjk.57.2023.06.02.19.34.28
+ e91-20020a17090a6fe400b002508d73f4e8sm3914289pjk.57.2023.06.02.19.34.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jun 2023 19:34:28 -0700 (PDT)
+ Fri, 02 Jun 2023 19:34:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: ardb@kernel.org, berrange@redhat.com, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
-Subject: [PATCH 01/35] tests/multiarch: Add test-aes
-Date: Fri,  2 Jun 2023 19:33:52 -0700
-Message-Id: <20230603023426.1064431-2-richard.henderson@linaro.org>
+Subject: [PATCH 03/35] crypto/aes: Add constants for ShiftRows, InvShiftRows
+Date: Fri,  2 Jun 2023 19:33:54 -0700
+Message-Id: <20230603023426.1064431-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230603023426.1064431-1-richard.henderson@linaro.org>
 References: <20230603023426.1064431-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4wFQi7MsIpdr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iRqQtLhoMRQI
 
-Use a shared driver and backends for i386, aarch64, ppc64, riscv64.
+These symbols will avoid the indirection through memory
+when fully unrolling some new primitives.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/aarch64/test-aes.c            |  58 ++++++++
- tests/tcg/i386/test-aes.c               |  68 +++++++++
- tests/tcg/ppc64/test-aes.c              | 116 +++++++++++++++
- tests/tcg/riscv64/test-aes.c            |  76 ++++++++++
- tests/tcg/multiarch/test-aes-main.c.inc | 183 ++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target       |   4 +
- tests/tcg/i386/Makefile.target          |   4 +
- tests/tcg/ppc64/Makefile.target         |   1 +
- tests/tcg/riscv64/Makefile.target       |   4 +
- 9 files changed, 514 insertions(+)
- create mode 100644 tests/tcg/aarch64/test-aes.c
- create mode 100644 tests/tcg/i386/test-aes.c
- create mode 100644 tests/tcg/ppc64/test-aes.c
- create mode 100644 tests/tcg/riscv64/test-aes.c
- create mode 100644 tests/tcg/multiarch/test-aes-main.c.inc
+ crypto/aes.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 48 insertions(+), 2 deletions(-)
 
-diff --git a/tests/tcg/aarch64/test-aes.c b/tests/tcg/aarch64/test-aes.c
-new file mode 100644
-index 0000000000..2cd324f09b
---- /dev/null
-+++ b/tests/tcg/aarch64/test-aes.c
-@@ -0,0 +1,58 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "../multiarch/test-aes-main.c.inc"
-+
-+bool test_SB_SR(uint8_t *o, const uint8_t *i)
-+{
-+    /* aese also adds round key, so supply zero. */
-+    asm("ld1 { v0.16b }, [%1]\n\t"
-+        "movi v1.16b, #0\n\t"
-+        "aese v0.16b, v1.16b\n\t"
-+        "st1 { v0.16b }, [%0]"
-+        : : "r"(o), "r"(i) : "v0", "v1", "memory");
-+    return true;
-+}
-+
-+bool test_MC(uint8_t *o, const uint8_t *i)
-+{
-+    asm("ld1 { v0.16b }, [%1]\n\t"
-+        "aesmc v0.16b, v0.16b\n\t"
-+        "st1 { v0.16b }, [%0]"
-+        : : "r"(o), "r"(i) : "v0", "memory");
-+    return true;
-+}
-+
-+bool test_SB_SR_MC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-+
-+bool test_ISB_ISR(uint8_t *o, const uint8_t *i)
-+{
-+    /* aesd also adds round key, so supply zero. */
-+    asm("ld1 { v0.16b }, [%1]\n\t"
-+        "movi v1.16b, #0\n\t"
-+        "aesd v0.16b, v1.16b\n\t"
-+        "st1 { v0.16b }, [%0]"
-+        : : "r"(o), "r"(i) : "v0", "v1", "memory");
-+    return true;
-+}
-+
-+bool test_IMC(uint8_t *o, const uint8_t *i)
-+{
-+    asm("ld1 { v0.16b }, [%1]\n\t"
-+        "aesimc v0.16b, v0.16b\n\t"
-+        "st1 { v0.16b }, [%0]"
-+        : : "r"(o), "r"(i) : "v0", "memory");
-+    return true;
-+}
-+
-+bool test_ISB_ISR_AK_IMC(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-+
-+bool test_ISB_ISR_IMC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-diff --git a/tests/tcg/i386/test-aes.c b/tests/tcg/i386/test-aes.c
-new file mode 100644
-index 0000000000..199395e6cc
---- /dev/null
-+++ b/tests/tcg/i386/test-aes.c
-@@ -0,0 +1,68 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "../multiarch/test-aes-main.c.inc"
-+#include <immintrin.h>
-+
-+static bool test_SB_SR(uint8_t *o, const uint8_t *i)
-+{
-+    __m128i vi = _mm_loadu_si128((const __m128i_u *)i);
-+
-+    /* aesenclast also adds round key, so supply zero. */
-+    vi = _mm_aesenclast_si128(vi, _mm_setzero_si128());
-+
-+    _mm_storeu_si128((__m128i_u *)o, vi);
-+    return true;
-+}
-+
-+static bool test_MC(uint8_t *o, const uint8_t *i)
-+{
-+    return false;
-+}
-+
-+static bool test_SB_SR_MC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    __m128i vi = _mm_loadu_si128((const __m128i_u *)i);
-+    __m128i vk = _mm_loadu_si128((const __m128i_u *)k);
-+
-+    vi = _mm_aesenc_si128(vi, vk);
-+
-+    _mm_storeu_si128((__m128i_u *)o, vi);
-+    return true;
-+}
-+
-+static bool test_ISB_ISR(uint8_t *o, const uint8_t *i)
-+{
-+    __m128i vi = _mm_loadu_si128((const __m128i_u *)i);
-+
-+    /* aesdeclast also adds round key, so supply zero. */
-+    vi = _mm_aesdeclast_si128(vi, _mm_setzero_si128());
-+
-+    _mm_storeu_si128((__m128i_u *)o, vi);
-+    return true;
-+}
-+
-+static bool test_IMC(uint8_t *o, const uint8_t *i)
-+{
-+    __m128i vi = _mm_loadu_si128((const __m128i_u *)i);
-+
-+    vi = _mm_aesimc_si128(vi);
-+
-+    _mm_storeu_si128((__m128i_u *)o, vi);
-+    return true;
-+}
-+
-+static bool test_ISB_ISR_AK_IMC(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-+
-+static bool test_ISB_ISR_IMC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    __m128i vi = _mm_loadu_si128((const __m128i_u *)i);
-+    __m128i vk = _mm_loadu_si128((const __m128i_u *)k);
-+
-+    vi = _mm_aesdec_si128(vi, vk);
-+
-+    _mm_storeu_si128((__m128i_u *)o, vi);
-+    return true;
-+}
-diff --git a/tests/tcg/ppc64/test-aes.c b/tests/tcg/ppc64/test-aes.c
-new file mode 100644
-index 0000000000..1d2be488e9
---- /dev/null
-+++ b/tests/tcg/ppc64/test-aes.c
-@@ -0,0 +1,116 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "../multiarch/test-aes-main.c.inc"
-+
-+#undef BIG_ENDIAN
-+#define BIG_ENDIAN  (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
-+
-+static unsigned char bswap_le[16] __attribute__((aligned(16))) = {
-+    8,9,10,11,12,13,14,15,
-+    0,1,2,3,4,5,6,7
+diff --git a/crypto/aes.c b/crypto/aes.c
+index 72c95c38fb..1309a13e91 100644
+--- a/crypto/aes.c
++++ b/crypto/aes.c
+@@ -108,12 +108,58 @@ const uint8_t AES_isbox[256] = {
+     0xE1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0C, 0x7D,
+ };
+ 
++/* AES ShiftRows, for complete unrolling. */
++enum {
++    AES_SH_0 = 0x0,
++    AES_SH_1 = 0x5,
++    AES_SH_2 = 0xa,
++    AES_SH_3 = 0xf,
++    AES_SH_4 = 0x4,
++    AES_SH_5 = 0x9,
++    AES_SH_6 = 0xe,
++    AES_SH_7 = 0x3,
++    AES_SH_8 = 0x8,
++    AES_SH_9 = 0xd,
++    AES_SH_A = 0x2,
++    AES_SH_B = 0x7,
++    AES_SH_C = 0xc,
++    AES_SH_D = 0x1,
++    AES_SH_E = 0x6,
++    AES_SH_F = 0xb,
 +};
 +
-+bool test_SB_SR(uint8_t *o, const uint8_t *i)
-+{
-+    /* vcipherlast also adds round key, so supply zero. */
-+    if (BIG_ENDIAN) {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "vspltisb 1,0\n\t"
-+            "vcipherlast 0,0,1\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i) : "memory", "v0", "v1");
-+    } else {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 34,0,%2\n\t"
-+            "vspltisb 1,0\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "vcipherlast 0,0,1\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(bswap_le) : "memory", "v0", "v1", "v2");
-+    }
-+    return true;
-+}
-+
-+bool test_MC(uint8_t *o, const uint8_t *i)
-+{
-+    return false;
-+}
-+
-+bool test_SB_SR_MC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    if (BIG_ENDIAN) {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 33,0,%2\n\t"
-+            "vcipher 0,0,1\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(k) : "memory", "v0", "v1");
-+    } else {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 33,0,%2\n\t"
-+            "lxvd2x 34,0,%3\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "vperm 1,1,1,2\n\t"
-+            "vcipher 0,0,1\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(k), "r"(bswap_le)
-+              : "memory", "v0", "v1", "v2");
-+    }
-+    return true;
-+}
-+
-+bool test_ISB_ISR(uint8_t *o, const uint8_t *i)
-+{
-+    /* vcipherlast also adds round key, so supply zero. */
-+    if (BIG_ENDIAN) {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "vspltisb 1,0\n\t"
-+            "vncipherlast 0,0,1\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i) : "memory", "v0", "v1");
-+    } else {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 34,0,%2\n\t"
-+            "vspltisb 1,0\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "vncipherlast 0,0,1\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(bswap_le) : "memory", "v0", "v1", "v2");
-+    }
-+    return true;
-+}
-+
-+bool test_IMC(uint8_t *o, const uint8_t *i)
-+{
-+    return false;
-+}
-+
-+bool test_ISB_ISR_AK_IMC(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    if (BIG_ENDIAN) {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 33,0,%2\n\t"
-+            "vncipher 0,0,1\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(k) : "memory", "v0", "v1");
-+    } else {
-+        asm("lxvd2x 32,0,%1\n\t"
-+            "lxvd2x 33,0,%2\n\t"
-+            "lxvd2x 34,0,%3\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "vperm 1,1,1,2\n\t"
-+            "vncipher 0,0,1\n\t"
-+            "vperm 0,0,0,2\n\t"
-+            "stxvd2x 32,0,%0"
-+            : : "r"(o), "r"(i), "r"(k), "r"(bswap_le)
-+              : "memory", "v0", "v1", "v2");
-+    }
-+    return true;
-+}
-+
-+bool test_ISB_ISR_IMC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-diff --git a/tests/tcg/riscv64/test-aes.c b/tests/tcg/riscv64/test-aes.c
-new file mode 100644
-index 0000000000..3d7ef0e33a
---- /dev/null
-+++ b/tests/tcg/riscv64/test-aes.c
-@@ -0,0 +1,76 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include "../multiarch/test-aes-main.c.inc"
-+
-+bool test_SB_SR(uint8_t *o, const uint8_t *i)
-+{
-+    uint64_t *o8 = (uint64_t *)o;
-+    const uint64_t *i8 = (const uint64_t *)i;
-+
-+    asm("aes64es %0,%2,%3\n\t"
-+        "aes64es %1,%3,%2"
-+        : "=&r"(o8[0]), "=&r"(o8[1]) : "r"(i8[0]), "r"(i8[1]));
-+    return true;
-+}
-+
-+bool test_MC(uint8_t *o, const uint8_t *i)
-+{
-+    return false;
-+}
-+
-+bool test_SB_SR_MC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    uint64_t *o8 = (uint64_t *)o;
-+    const uint64_t *i8 = (const uint64_t *)i;
-+    const uint64_t *k8 = (const uint64_t *)k;
-+
-+    asm("aes64esm %0,%2,%3\n\t"
-+        "aes64esm %1,%3,%2\n\t"
-+        "xor %0,%0,%4\n\t"
-+        "xor %1,%1,%5"
-+        : "=&r"(o8[0]), "=&r"(o8[1])
-+        : "r"(i8[0]), "r"(i8[1]), "r"(k8[0]), "r"(k8[1]));
-+    return true;
-+}
-+
-+bool test_ISB_ISR(uint8_t *o, const uint8_t *i)
-+{
-+    uint64_t *o8 = (uint64_t *)o;
-+    const uint64_t *i8 = (const uint64_t *)i;
-+
-+    asm("aes64ds %0,%2,%3\n\t"
-+        "aes64ds %1,%3,%2"
-+        : "=&r"(o8[0]), "=&r"(o8[1]) : "r"(i8[0]), "r"(i8[1]));
-+    return true;
-+}
-+
-+bool test_IMC(uint8_t *o, const uint8_t *i)
-+{
-+    uint64_t *o8 = (uint64_t *)o;
-+    const uint64_t *i8 = (const uint64_t *)i;
-+
-+    asm("aes64im %0,%0\n\t"
-+        "aes64im %1,%1"
-+        : "=r"(o8[0]), "=r"(o8[1]) : "0"(i8[0]), "1"(i8[1]));
-+    return true;
-+}
-+
-+bool test_ISB_ISR_AK_IMC(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    return false;
-+}
-+
-+bool test_ISB_ISR_IMC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k)
-+{
-+    uint64_t *o8 = (uint64_t *)o;
-+    const uint64_t *i8 = (const uint64_t *)i;
-+    const uint64_t *k8 = (const uint64_t *)k;
-+
-+    asm("aes64dsm %0,%2,%3\n\t"
-+        "aes64dsm %1,%3,%2\n\t"
-+        "xor %0,%0,%4\n\t"
-+        "xor %1,%1,%5"
-+        : "=&r"(o8[0]), "=&r"(o8[1])
-+        : "r"(i8[0]), "r"(i8[1]), "r"(k8[0]), "r"(k8[1]));
-+    return true;
-+}
-diff --git a/tests/tcg/multiarch/test-aes-main.c.inc b/tests/tcg/multiarch/test-aes-main.c.inc
-new file mode 100644
-index 0000000000..0039f8ba55
---- /dev/null
-+++ b/tests/tcg/multiarch/test-aes-main.c.inc
-@@ -0,0 +1,183 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#include <stdint.h>
-+#include <stdbool.h>
-+#include <stdlib.h>
-+#include <string.h>
-+#include <stdio.h>
-+
-+static bool test_SB_SR(uint8_t *o, const uint8_t *i);
-+static bool test_MC(uint8_t *o, const uint8_t *i);
-+static bool test_SB_SR_MC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k);
-+
-+static bool test_ISB_ISR(uint8_t *o, const uint8_t *i);
-+static bool test_IMC(uint8_t *o, const uint8_t *i);
-+static bool test_ISB_ISR_AK_IMC(uint8_t *o, const uint8_t *i, const uint8_t *k);
-+static bool test_ISB_ISR_IMC_AK(uint8_t *o, const uint8_t *i, const uint8_t *k);
-+
-+/*
-+ * From https://doi.org/10.6028/NIST.FIPS.197-upd1,
-+ * Appendix B -- Cipher Example
-+ *
-+ * Note that the formatting of the 4x4 matrices in the document is
-+ * column-major, whereas C is row-major.  Therefore to get the bytes
-+ * in the same order as the text, the matrices are transposed.
-+ *
-+ * Note that we are not going to test SubBytes or ShiftRows separately,
-+ * so the "After SubBytes" column is omitted, using only the combined
-+ * result "After ShiftRows" column.
-+ */
-+
-+/* Ease the inline assembly by aligning everything. */
-+typedef struct {
-+    uint8_t b[16] __attribute__((aligned(16)));
-+} State;
-+
-+typedef struct {
-+    State start, after_sr, after_mc, round_key;
-+} Round;
-+
-+static const Round rounds[] = {
-+    /* Round 1 */
-+    { { { 0x19, 0x3d, 0xe3, 0xbe,       /* start */
-+          0xa0, 0xf4, 0xe2, 0x2b,
-+          0x9a, 0xc6, 0x8d, 0x2a,
-+          0xe9, 0xf8, 0x48, 0x08, } },
-+
-+      { { 0xd4, 0xbf, 0x5d, 0x30,       /* after shiftrows */
-+          0xe0, 0xb4, 0x52, 0xae,
-+          0xb8, 0x41, 0x11, 0xf1,
-+          0x1e, 0x27, 0x98, 0xe5, } },
-+
-+      { { 0x04, 0x66, 0x81, 0xe5,       /* after mixcolumns */
-+          0xe0, 0xcb, 0x19, 0x9a,
-+          0x48, 0xf8, 0xd3, 0x7a,
-+          0x28, 0x06, 0x26, 0x4c, } },
-+
-+      { { 0xa0, 0xfa, 0xfe, 0x17,       /* round key */
-+          0x88, 0x54, 0x2c, 0xb1,
-+          0x23, 0xa3, 0x39, 0x39,
-+          0x2a, 0x6c, 0x76, 0x05, } } },
-+
-+    /* Round 2 */
-+    { { { 0xa4, 0x9c, 0x7f, 0xf2,       /* start */
-+          0x68, 0x9f, 0x35, 0x2b,
-+          0x6b, 0x5b, 0xea, 0x43,
-+          0x02, 0x6a, 0x50, 0x49, } },
-+
-+      { { 0x49, 0xdb, 0x87, 0x3b,       /* after shiftrows */
-+          0x45, 0x39, 0x53, 0x89,
-+          0x7f, 0x02, 0xd2, 0xf1,
-+          0x77, 0xde, 0x96, 0x1a, } },
-+
-+      { { 0x58, 0x4d, 0xca, 0xf1,       /* after mixcolumns */
-+          0x1b, 0x4b, 0x5a, 0xac,
-+          0xdb, 0xe7, 0xca, 0xa8,
-+          0x1b, 0x6b, 0xb0, 0xe5, } },
-+
-+      { { 0xf2, 0xc2, 0x95, 0xf2,       /* round key */
-+          0x7a, 0x96, 0xb9, 0x43,
-+          0x59, 0x35, 0x80, 0x7a,
-+          0x73, 0x59, 0xf6, 0x7f, } } },
-+
-+    /* Round 3 */
-+    { { { 0xaa, 0x8f, 0x5f, 0x03,       /* start */
-+          0x61, 0xdd, 0xe3, 0xef,
-+          0x82, 0xd2, 0x4a, 0xd2,
-+          0x68, 0x32, 0x46, 0x9a, } },
-+
-+      { { 0xac, 0xc1, 0xd6, 0xb8,       /* after shiftrows */
-+          0xef, 0xb5, 0x5a, 0x7b,
-+          0x13, 0x23, 0xcf, 0xdf,
-+          0x45, 0x73, 0x11, 0xb5, } },
-+
-+      { { 0x75, 0xec, 0x09, 0x93,       /* after mixcolumns */
-+          0x20, 0x0b, 0x63, 0x33,
-+          0x53, 0xc0, 0xcf, 0x7c,
-+          0xbb, 0x25, 0xd0, 0xdc, } },
-+
-+      { { 0x3d, 0x80, 0x47, 0x7d,       /* round key */
-+          0x47, 0x16, 0xfe, 0x3e,
-+          0x1e, 0x23, 0x7e, 0x44,
-+          0x6d, 0x7a, 0x88, 0x3b, } } },
+ const uint8_t AES_shifts[16] = {
+-    0, 5, 10, 15, 4, 9, 14, 3, 8, 13, 2, 7, 12, 1, 6, 11
++    AES_SH_0, AES_SH_1, AES_SH_2, AES_SH_3,
++    AES_SH_4, AES_SH_5, AES_SH_6, AES_SH_7,
++    AES_SH_8, AES_SH_9, AES_SH_A, AES_SH_B,
++    AES_SH_C, AES_SH_D, AES_SH_E, AES_SH_F,
 +};
 +
-+static void verify_log(const char *prefix, const State *s)
-+{
-+    printf("%s:", prefix);
-+    for (int i = 0; i < sizeof(State); ++i) {
-+        printf(" %02x", s->b[i]);
-+    }
-+    printf("\n");
-+}
-+
-+static void verify(const State *ref, const State *tst, const char *which)
-+{
-+    if (!memcmp(ref, tst, sizeof(State))) {
-+        return;
-+    }
-+
-+    printf("Mismatch on %s\n", which);
-+    verify_log("ref", ref);
-+    verify_log("tst", tst);
-+    exit(EXIT_FAILURE);
-+}
-+
-+int main()
-+{
-+    int i, n = sizeof(rounds) / sizeof(Round);
-+    State t;
-+
-+    for (i = 0; i < n; ++i) {
-+        if (test_SB_SR(t.b, rounds[i].start.b)) {
-+            verify(&rounds[i].after_sr, &t, "SB+SR");
-+        }
-+    }
-+
-+    for (i = 0; i < n; ++i) {
-+        if (test_MC(t.b, rounds[i].after_sr.b)) {
-+            verify(&rounds[i].after_mc, &t, "MC");
-+        }
-+    }
-+
-+    /* The kernel of Cipher(). */
-+    for (i = 0; i < n - 1; ++i) {
-+        if (test_SB_SR_MC_AK(t.b, rounds[i].start.b, rounds[i].round_key.b)) {
-+            verify(&rounds[i + 1].start, &t, "SB+SR+MC+AK");
-+        }
-+    }
-+
-+    for (i = 0; i < n; ++i) {
-+        if (test_ISB_ISR(t.b, rounds[i].after_sr.b)) {
-+            verify(&rounds[i].start, &t, "ISB+ISR");
-+        }
-+    }
-+
-+    for (i = 0; i < n; ++i) {
-+        if (test_IMC(t.b, rounds[i].after_mc.b)) {
-+            verify(&rounds[i].after_sr, &t, "IMC");
-+        }
-+    }
-+
-+    /* The kernel of InvCipher(). */
-+    for (i = n - 1; i > 0; --i) {
-+        if (test_ISB_ISR_AK_IMC(t.b, rounds[i].after_sr.b,
-+                                rounds[i - 1].round_key.b)) {
-+            verify(&rounds[i - 1].after_sr, &t, "ISB+ISR+AK+IMC");
-+        }
-+    }
-+
-+    /*
-+     * The kernel of EqInvCipher().  
-+     * We must compute a different round key: apply InvMixColumns to
-+     * the standard round key, per KeyExpansion vs KeyExpansionEIC.
-+     */
-+    for (i = 1; i < n; ++i) {
-+        if (test_IMC(t.b, rounds[i - 1].round_key.b) &&
-+            test_ISB_ISR_IMC_AK(t.b, rounds[i].after_sr.b, t.b)) {
-+            verify(&rounds[i - 1].after_sr, &t, "ISB+ISR+IMC+AK");
-+        }
-+    }
-+
-+    return EXIT_SUCCESS;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 0315795487..7402d08d75 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -63,6 +63,10 @@ endif
- AARCH64_TESTS += sve-ioctls
- sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
++/* AES InvShiftRows, for complete unrolling. */
++enum {
++    AES_ISH_0 = 0x0,
++    AES_ISH_1 = 0xd,
++    AES_ISH_2 = 0xa,
++    AES_ISH_3 = 0x7,
++    AES_ISH_4 = 0x4,
++    AES_ISH_5 = 0x1,
++    AES_ISH_6 = 0xe,
++    AES_ISH_7 = 0xb,
++    AES_ISH_8 = 0x8,
++    AES_ISH_9 = 0x5,
++    AES_ISH_A = 0x2,
++    AES_ISH_B = 0xf,
++    AES_ISH_C = 0xc,
++    AES_ISH_D = 0x9,
++    AES_ISH_E = 0x6,
++    AES_ISH_F = 0x3,
+ };
  
-+AARCH64_TESTS += test-aes
-+test-aes: CFLAGS += -O -march=armv8-a+aes
-+test-aes: test-aes-main.c.inc
-+
- # Vector SHA1
- sha1-vector: CFLAGS=-O3
- sha1-vector: sha1.c
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index 821822ed0c..3ba61e3880 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -28,6 +28,10 @@ run-test-i386-bmi2: QEMU_OPTS += -cpu max
- test-i386-adcox: CFLAGS=-O2
- run-test-i386-adcox: QEMU_OPTS += -cpu max
+ const uint8_t AES_ishifts[16] = {
+-    0, 13, 10, 7, 4, 1, 14, 11, 8, 5, 2, 15, 12, 9, 6, 3
++    AES_ISH_0, AES_ISH_1, AES_ISH_2, AES_ISH_3,
++    AES_ISH_4, AES_ISH_5, AES_ISH_6, AES_ISH_7,
++    AES_ISH_8, AES_ISH_9, AES_ISH_A, AES_ISH_B,
++    AES_ISH_C, AES_ISH_D, AES_ISH_E, AES_ISH_F,
+ };
  
-+test-aes: CFLAGS += -O -msse2 -maes
-+test-aes: test-aes-main.c.inc
-+run-test-aes: QEMU_OPTS += -cpu max
-+
- #
- # hello-i386 is a barebones app
- #
-diff --git a/tests/tcg/ppc64/Makefile.target b/tests/tcg/ppc64/Makefile.target
-index b084963b9a..5721c159f2 100644
---- a/tests/tcg/ppc64/Makefile.target
-+++ b/tests/tcg/ppc64/Makefile.target
-@@ -36,5 +36,6 @@ run-vector: QEMU_OPTS += -cpu POWER10
- 
- PPC64_TESTS += signal_save_restore_xer
- PPC64_TESTS += xxspltw
-+PPC64_TESTS += test-aes
- 
- TESTS += $(PPC64_TESTS)
-diff --git a/tests/tcg/riscv64/Makefile.target b/tests/tcg/riscv64/Makefile.target
-index 9973ba3b5f..4002d14b9e 100644
---- a/tests/tcg/riscv64/Makefile.target
-+++ b/tests/tcg/riscv64/Makefile.target
-@@ -9,3 +9,7 @@ TESTS += noexec
- TESTS += test-noc
- test-noc: LDFLAGS = -nostdlib -static
- run-test-noc: QEMU_OPTS += -cpu rv64,c=false
-+
-+TESTS += test-aes
-+test-aes: CFLAGS += -O -march=rv64gzk
-+run-test-aes: QEMU_OPTS += -cpu rv64,zk=on
+ /*
 -- 
 2.34.1
 

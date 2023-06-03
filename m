@@ -1,118 +1,109 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1614387ejb;
-        Fri, 2 Jun 2023 23:10:12 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5wV+JIKnUxogPT3Su4GZkSZ/Z7fOORhj3FIKW8GZkwQIsRCThMtHU9M3MASCAeYuc+FztO
-X-Received: by 2002:a05:6214:4105:b0:625:8575:d298 with SMTP id kc5-20020a056214410500b006258575d298mr551149qvb.14.1685772611988;
-        Fri, 02 Jun 2023 23:10:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685772611; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1688119ejb;
+        Sat, 3 Jun 2023 02:30:47 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7efrP0hSTze8eEp+4KPkQXXP9KMnFDAhaWSlXFNr3+2wkYOJBo4ml9MX36TQZaUC5I6Yx+
+X-Received: by 2002:a05:620a:4889:b0:75b:23a1:464 with SMTP id ea9-20020a05620a488900b0075b23a10464mr15790503qkb.42.1685784647146;
+        Sat, 03 Jun 2023 02:30:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685784647; cv=none;
         d=google.com; s=arc-20160816;
-        b=PKgrz1VVH/bzUclwl5c07doZbeZgKEErse9ZnuNtBkk0zQDPLYtzGF5wUcKl6o+P79
-         xbiSqwE5QR1chr5YzNdnqSqz8WknnyNQEuJJO4zNiAFxA6Lv7Gnphj4ShuTJXHBKEvex
-         ElRpDW/D0qbHPXpfGwQT3FIhDGh5mr+K1qYuqvuChjkyOHkR8kX53QD1LVgE5NokmHXJ
-         37wBA3RFpUvivRL7Gla2oZgsqFs76Ac7fQSfWcSu7fPixV7cBVd3tq16o0eeohRbuBw3
-         fuInZ/fo7JI2A4yH7PS32J7DDmskCMyi2KK2KBXKEpEO32S3nmWGIdR5kfn8oBkNiqc/
-         8+KA==
+        b=DkMPJ/oqjuaY329R3/WSGel47GpQAKHCtbPuPaWIxbRXWlDkuCZMAELYo2QRpSqL0f
+         t1guwHrRhzDzNHZ8TPEqtmS4hSdcQabWz+ikvBT7RmV8GOzk6Ov5o2cEH5bSCaLWwkkr
+         Tzae61Y2PkSPZdKFYZS5gnkl6koihAfslgkAMzBa7+E0evnLE7mkWl6o6SCvmIjw2o/t
+         A3tbahc9/m/lr4PzocAULrQOlNwSDhIco28zgpdkeB5+g4yCSH4UUtmJ26kubfzy5Ii6
+         e3RNarO3o/Wy44lcjlrtiCLdtR5KVxwpD7mW5ldP26jS6IejwLV/gIYrbzKKzfA8NatX
+         3SQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:to:content-language:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=/BVnUD4/xN8HMF9BgOMr9cFZMOeJV+sr1gI7zpdYz7U=;
-        b=XOXGk02iT03XGKWvG1Ayw/9GZm9s+4v4JIoX2lwuwg/Tx8M3im3i7foFEyJoqAm0yT
-         jWkiO4ZRaYQmjtN60K7y3+T6GURlikfwQC5Zv5+OCZrxQaoqHY4XE7arDwN8XnoeN6fp
-         /ciMK2OazkPoAdshhVYf5JaLGMc+BTTEuodzih57cCI10VLioQI8WmtNnfcV805aWR9x
-         jINjAnHD0j8YD8JQUMbGK02ALJtJfxlL9vKLPqzLa4dZk9mPqGDXLp2YeeJpYOBYJYNm
-         31sK21HCol8h+ZWSdGTpg9bLSCOktSNJ/IGkc9Ghtgj+Z5CD7RHMxXk9lTfnDgOKzF2H
-         DTnQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eaeB0lPK+95xOOM4knOTecsRpN+AsiXNE1srT0bc1CY=;
+        b=QauM9VpCv35mEBfYvvSz3aiLTSqQVRtj9O4dkeG0vAyi310vfWWkX0HQ0AMqNKl9Z1
+         rX8KaJc2heKTSR71S7tsz8YkQrSW/LFBj4DWWgzbyuVtOB4BZaVJ/jIb9W0vt8NjCPPL
+         JIto4AW2YmsFNJ0He6wDwZ03z3OBRa1NWGqcYPZ2AMDWyCL1EOfWdXUgTpvGnA6hsKOh
+         n3BgVG67Utixi7OB0jTeGJJwz9JXq33MBPPY33yU70Un12VfJAtUwIGcV3Zl3rxgatWe
+         h/fFfBbsk7JoMd33bPx5qg6JdXhUvmlvCxHfVbp9bDtQmGtiCn1MDO2s7SR0p+jd7SO5
+         CgKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XgyLmhZa;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=a9LsWYM0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv12-20020a056214240c00b006261c92791bsi1966869qvb.316.2023.06.02.23.10.11
+        by mx.google.com with ESMTPS id dt52-20020a05620a47b400b00759038ed982si1908931qkb.307.2023.06.03.02.30.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Jun 2023 23:10:11 -0700 (PDT)
+        Sat, 03 Jun 2023 02:30:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XgyLmhZa;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=a9LsWYM0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q5KSa-00028f-3H; Sat, 03 Jun 2023 02:09:56 -0400
+	id 1q5NaL-00038S-Aj; Sat, 03 Jun 2023 05:30:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q5KST-00025y-Qi
- for qemu-arm@nongnu.org; Sat, 03 Jun 2023 02:09:49 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1q5NaK-00038D-2v; Sat, 03 Jun 2023 05:30:08 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q5KSS-0006ES-1b
- for qemu-arm@nongnu.org; Sat, 03 Jun 2023 02:09:49 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-1b011cffef2so27755715ad.3
- for <qemu-arm@nongnu.org>; Fri, 02 Jun 2023 23:09:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
+ id 1q5NaG-00074d-Rt; Sat, 03 Jun 2023 05:30:07 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2af2c35fb85so39289501fa.3; 
+ Sat, 03 Jun 2023 02:30:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685772586; x=1688364586;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/BVnUD4/xN8HMF9BgOMr9cFZMOeJV+sr1gI7zpdYz7U=;
- b=XgyLmhZaGkZwURE1s53X0ydbTQyQFp28RIJKITsuo28cBGU3aJmgvTZoW2gvJ+hbil
- vE012mf9KPyt4I1zGMcqv/qChVnZAp+Kzi3St/KL7QJU/7l141oQ4PafAeliHL3+E7yL
- hhajZEa67+jEx5yS99L150cOs7hdAcfAIFbmb0DQilNMtAQ8xsoU8gQ4XRH3cRf4naNM
- U8mMH5UQv/27NaBkoaaRVIiHNZzgjZQ3LGScQmXCYuSmlWaY+0NQFWJQcU0rrqW92lUv
- 64mRf33O43yQbQYmImkauwakMSCkmLwL88OyvtMhtI/p6u2pgf//2stSycnmX3B/DOXt
- ReUQ==
+ d=gmail.com; s=20221208; t=1685784600; x=1688376600;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=eaeB0lPK+95xOOM4knOTecsRpN+AsiXNE1srT0bc1CY=;
+ b=a9LsWYM0YPszLVtJgYC8r7Orfio62y6sqwdut6taHth8Uy2IYgHAXzS+RCrU34WLyW
+ odWOV5esKKenWVLInLFHvWXKp450AE5K8cHa55c68E5pU6FMGavedmelqgRtuYjfQYUs
+ utFpsigku2/e9yDAjhsuluqxcPIw1PWConxGeGQeUpScXJRMI3SqbC/lLmz4adGJ2tXD
+ sf1F4MXuIvo/nd13iRzRemWIxbzws7DV/y4UA/hHY1gTVwelgkM0++MRQPBq2WoJ0F/R
+ OXCg/wRx3o7Ey/Q8kzp3icu/JvNRvZj0fgG63bPhNO6hPeHiIGupILn1fD1FYMiCLAQv
+ G9oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685772586; x=1688364586;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/BVnUD4/xN8HMF9BgOMr9cFZMOeJV+sr1gI7zpdYz7U=;
- b=LfDB8ghyDV/xJgmTwJtxZHKKqxZ7MrfH8dzT5KtR7L5BiQSjQwgawlxCM0Io6EPcGr
- tWgaiXr62x+q+xxuZD1c8HlkhQLzeT8McEcEE2F06lVk75JlhgBxkIoQekn/AszTObnH
- Gkyydt+c4CqVeo3WxSHbROoxxS4LCxMKki9/eN45IKH+LrqahUqqrXQHw9ZF9HvwSkxL
- yELV9kCERw3jXTwSQ/TS/RfY6SC7J3NQgWkgJ79IuEN4TaY3cjA3lSuLuTkAIhI0duVN
- 5a/KST8a0L1htL4PLwQ/6cRnJnLIogI2gy7ykmpJPp8pchVHVDQ2+4F9ag5xzONineKx
- ESHw==
-X-Gm-Message-State: AC+VfDzD3EXGq33T4J/dZtGg9QTPaaYeTFRe3/N6l4snFmKP8gO6gxGt
- Ata04IHZ4onI3KvBi4TPPgLyyA==
-X-Received: by 2002:a17:903:22c9:b0:1ac:4a41:d38d with SMTP id
- y9-20020a17090322c900b001ac4a41d38dmr2244726plg.51.1685772586545; 
- Fri, 02 Jun 2023 23:09:46 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1598:4c01:66a6:82c2:d794:68f6?
- ([2602:ae:1598:4c01:66a6:82c2:d794:68f6])
+ d=1e100.net; s=20221208; t=1685784600; x=1688376600;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eaeB0lPK+95xOOM4knOTecsRpN+AsiXNE1srT0bc1CY=;
+ b=en40F3KEQ65yHAiIDnkd9ibbVkveBY0ZX3AqyFNmsa+TET7C+wZVD7m0cMl5EXEBu0
+ EfPqkJ2Ue3+FFlr4P4MTQZAal9dw6O0dXPBGSSmSE7cxUWtjzW6omtHhtz8/q96PONlE
+ IzmhEiIZrv+vFG6FgVcOKDCtkYAiHO6kKei/gthGJJfihxa6WmckvPYnRwqbv1Aq8wHz
+ LlqsnNUp0pilysgEwuySWnQIaVPoMVcFR8dXuNcv0igAWz+I2lhIGqXQ1rN8KWQFMFIg
+ r97VmcRkVE3uzsf3s3taDtZlKqK7oCLOwe9zrrktyKACbPEKgvA8P/3EVK23AzszULDz
+ epxw==
+X-Gm-Message-State: AC+VfDwqHdnQlycUfGXuA3ghhQxagQA+o7uhNuTPlLg28OKV2GJUrSTY
+ 8MXsjnOlPjaYggwtHIzNz5e28iSKaqFWsLKV
+X-Received: by 2002:a2e:9b52:0:b0:2a8:eee0:59f3 with SMTP id
+ o18-20020a2e9b52000000b002a8eee059f3mr1329603ljj.41.1685784599557; 
+ Sat, 03 Jun 2023 02:29:59 -0700 (PDT)
+Received: from localhost.localdomain ([185.200.240.39])
  by smtp.gmail.com with ESMTPSA id
- q5-20020a170902c74500b001ac55a5e5eesm2375372plq.121.2023.06.02.23.09.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Jun 2023 23:09:46 -0700 (PDT)
-Message-ID: <f887f9c5-a870-e5c9-c859-77ddbdcee76b@linaro.org>
-Date: Fri, 2 Jun 2023 23:09:44 -0700
+ o16-20020a2e7310000000b002ac871d0207sm560282ljc.88.2023.06.03.02.29.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 03 Jun 2023 02:29:58 -0700 (PDT)
+From: Sergey Kambalin <serg.oker@gmail.com>
+X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Sergey Kambalin <sergey.kambalin@auriga.com>
+Subject: [PATCH v2] Use named constants in BCM props
+Date: Sat,  3 Jun 2023 12:29:55 +0300
+Message-Id: <20230603092955.120966-1-sergey.kambalin@auriga.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 07/20] target/arm: Convert exception generation
- instructions to decodetree
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20230602155223.2040685-1-peter.maydell@linaro.org>
- <20230602155223.2040685-8-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230602155223.2040685-8-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=serg.oker@gmail.com; helo=mail-lj1-x22b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -129,23 +120,516 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KKYHSxK5QxPg
+X-TUID: Ev2GLxLm0cq5
 
-On 6/2/23 08:52, Peter Maydell wrote:
-> Convert the exception generation instructions SVC, HVC, SMC, BRK and
-> HLT to decodetree.
-> 
-> The old decoder decoded the halting-debug insnns DCPS1, DCPS2 and
-> DCPS3 just in order to then make them UNDEF; as with DRPS, we don't
-> bother to decode them, but document the patterns in a64.decode.
-> 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   target/arm/tcg/a64.decode      |  15 +++
->   target/arm/tcg/translate-a64.c | 173 ++++++++++++---------------------
->   2 files changed, 79 insertions(+), 109 deletions(-)
+- PI_FIRMWARE_*_RATE constsnts were moved to raspberrypi-fw-defs.h
+  (seems more suitable place for them)
+- inclusion of "qemu/osdep.h" has been removed
+- year in copyright header has been updated 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
+---
+ hw/misc/bcm2835_property.c            | 120 ++++++++++---------
+ include/hw/arm/raspi_platform.h       |   6 +
+ include/hw/misc/raspberrypi-fw-defs.h | 163 ++++++++++++++++++++++++++
+ 3 files changed, 236 insertions(+), 53 deletions(-)
+ create mode 100644 include/hw/misc/raspberrypi-fw-defs.h
 
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 251b3d865d..871f71fdcd 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -12,10 +12,12 @@
+ #include "migration/vmstate.h"
+ #include "hw/irq.h"
+ #include "hw/misc/bcm2835_mbox_defs.h"
++#include "hw/misc/raspberrypi-fw-defs.h"
+ #include "sysemu/dma.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
++#include "hw/arm/raspi_platform.h"
+ 
+ /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
+ 
+@@ -51,48 +53,48 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+         /* @(value + 8) : Request/response indicator */
+         resplen = 0;
+         switch (tag) {
+-        case 0x00000000: /* End tag */
++        case RPI_FWREQ_PROPERTY_END: /* End tag */
+             break;
+-        case 0x00000001: /* Get firmware revision */
++        case RPI_FWREQ_GET_FIRMWARE_REVISION: /* Get firmware revision */
+             stl_le_phys(&s->dma_as, value + 12, 346337);
+             resplen = 4;
+             break;
+-        case 0x00010001: /* Get board model */
++        case RPI_FWREQ_GET_BOARD_MODEL: /* Get board model */
+             qemu_log_mask(LOG_UNIMP,
+                           "bcm2835_property: 0x%08x get board model NYI\n",
+                           tag);
+             resplen = 4;
+             break;
+-        case 0x00010002: /* Get board revision */
++        case RPI_FWREQ_GET_BOARD_REVISION: /* Get board revision */
+             stl_le_phys(&s->dma_as, value + 12, s->board_rev);
+             resplen = 4;
+             break;
+-        case 0x00010003: /* Get board MAC address */
++        case RPI_FWREQ_GET_BOARD_MAC_ADDRESS: /* Get board MAC address */
+             resplen = sizeof(s->macaddr.a);
+             dma_memory_write(&s->dma_as, value + 12, s->macaddr.a, resplen,
+                              MEMTXATTRS_UNSPECIFIED);
+             break;
+-        case 0x00010004: /* Get board serial */
++        case RPI_FWREQ_GET_BOARD_SERIAL: /* Get board serial */
+             qemu_log_mask(LOG_UNIMP,
+                           "bcm2835_property: 0x%08x get board serial NYI\n",
+                           tag);
+             resplen = 8;
+             break;
+-        case 0x00010005: /* Get ARM memory */
++        case RPI_FWREQ_GET_ARM_MEMORY: /* Get ARM memory */
+             /* base */
+             stl_le_phys(&s->dma_as, value + 12, 0);
+             /* size */
+             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_base);
+             resplen = 8;
+             break;
+-        case 0x00010006: /* Get VC memory */
++        case RPI_FWREQ_GET_VC_MEMORY: /* Get VC memory */
+             /* base */
+             stl_le_phys(&s->dma_as, value + 12, s->fbdev->vcram_base);
+             /* size */
+             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_size);
+             resplen = 8;
+             break;
+-        case 0x00028001: /* Set power state */
++        case RPI_FWREQ_SET_POWER_STATE: /* Set power state */
+             /* Assume that whatever device they asked for exists,
+              * and we'll just claim we set it to the desired state
+              */
+@@ -103,38 +105,42 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+ 
+         /* Clocks */
+ 
+-        case 0x00030001: /* Get clock state */
++        case RPI_FWREQ_GET_CLOCK_STATE: /* Get clock state */
+             stl_le_phys(&s->dma_as, value + 16, 0x1);
+             resplen = 8;
+             break;
+ 
+-        case 0x00038001: /* Set clock state */
++        case RPI_FWREQ_SET_CLOCK_STATE: /* Set clock state */
+             qemu_log_mask(LOG_UNIMP,
+                           "bcm2835_property: 0x%08x set clock state NYI\n",
+                           tag);
+             resplen = 8;
+             break;
+ 
+-        case 0x00030002: /* Get clock rate */
+-        case 0x00030004: /* Get max clock rate */
+-        case 0x00030007: /* Get min clock rate */
++        case RPI_FWREQ_GET_CLOCK_RATE: /* Get clock rate */
++        case RPI_FWREQ_GET_MAX_CLOCK_RATE: /* Get max clock rate */
++        case RPI_FWREQ_GET_MIN_CLOCK_RATE: /* Get min clock rate */
+             switch (ldl_le_phys(&s->dma_as, value + 12)) {
+-            case 1: /* EMMC */
+-                stl_le_phys(&s->dma_as, value + 16, 50000000);
++            case RPI_FIRMWARE_EMMC_CLK_ID: /* EMMC */
++                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_EMMC_CLK_RATE);
+                 break;
+-            case 2: /* UART */
+-                stl_le_phys(&s->dma_as, value + 16, 3000000);
++            case RPI_FIRMWARE_UART_CLK_ID: /* UART */
++                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_UART_CLK_RATE);
++                break;
++            case RPI_FIRMWARE_CORE_CLK_ID: /* Core Clock */
++                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_CORE_CLK_RATE);
+                 break;
+             default:
+-                stl_le_phys(&s->dma_as, value + 16, 700000000);
++                stl_le_phys(&s->dma_as, value + 16,
++                            RPI_FIRMWARE_DEFAULT_CLK_RATE);
+                 break;
+             }
+             resplen = 8;
+             break;
+ 
+-        case 0x00038002: /* Set clock rate */
+-        case 0x00038004: /* Set max clock rate */
+-        case 0x00038007: /* Set min clock rate */
++        case RPI_FWREQ_SET_CLOCK_RATE: /* Set clock rate */
++        case RPI_FWREQ_SET_MAX_CLOCK_RATE: /* Set max clock rate */
++        case RPI_FWREQ_SET_MIN_CLOCK_RATE: /* Set min clock rate */
+             qemu_log_mask(LOG_UNIMP,
+                           "bcm2835_property: 0x%08x set clock rate NYI\n",
+                           tag);
+@@ -143,121 +149,128 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+ 
+         /* Temperature */
+ 
+-        case 0x00030006: /* Get temperature */
++        case RPI_FWREQ_GET_TEMPERATURE: /* Get temperature */
+             stl_le_phys(&s->dma_as, value + 16, 25000);
+             resplen = 8;
+             break;
+ 
+-        case 0x0003000A: /* Get max temperature */
++        case RPI_FWREQ_GET_MAX_TEMPERATURE: /* Get max temperature */
+             stl_le_phys(&s->dma_as, value + 16, 99000);
+             resplen = 8;
+             break;
+ 
+         /* Frame buffer */
+ 
+-        case 0x00040001: /* Allocate buffer */
++        case RPI_FWREQ_FRAMEBUFFER_ALLOCATE: /* Allocate buffer */
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.base);
+             stl_le_phys(&s->dma_as, value + 16,
+                         bcm2835_fb_get_size(&fbconfig));
+             resplen = 8;
+             break;
+-        case 0x00048001: /* Release buffer */
++        case RPI_FWREQ_FRAMEBUFFER_RELEASE: /* Release buffer */
+             resplen = 0;
+             break;
+-        case 0x00040002: /* Blank screen */
++        case RPI_FWREQ_FRAMEBUFFER_BLANK: /* Blank screen */
+             resplen = 4;
+             break;
+-        case 0x00044003: /* Test physical display width/height */
+-        case 0x00044004: /* Test virtual display width/height */
++        /* Test physical display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT:
++        /* Test virtual display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT:
+             resplen = 8;
+             break;
+-        case 0x00048003: /* Set physical display width/height */
++        /* Set physical display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT:
+             fbconfig.xres = ldl_le_phys(&s->dma_as, value + 12);
+             fbconfig.yres = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040003: /* Get physical display width/height */
++        /* Get physical display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres);
+             resplen = 8;
+             break;
+-        case 0x00048004: /* Set virtual display width/height */
++        /* Set virtual display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT:
+             fbconfig.xres_virtual = ldl_le_phys(&s->dma_as, value + 12);
+             fbconfig.yres_virtual = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040004: /* Get virtual display width/height */
++        /* Get virtual display width/height */
++        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT:
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres_virtual);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres_virtual);
+             resplen = 8;
+             break;
+-        case 0x00044005: /* Test depth */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH: /* Test depth */
+             resplen = 4;
+             break;
+-        case 0x00048005: /* Set depth */
++        case RPI_FWREQ_FRAMEBUFFER_SET_DEPTH: /* Set depth */
+             fbconfig.bpp = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040005: /* Get depth */
++        case RPI_FWREQ_FRAMEBUFFER_GET_DEPTH: /* Get depth */
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.bpp);
+             resplen = 4;
+             break;
+-        case 0x00044006: /* Test pixel order */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER: /* Test pixel order */
+             resplen = 4;
+             break;
+-        case 0x00048006: /* Set pixel order */
++        case RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER: /* Set pixel order */
+             fbconfig.pixo = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040006: /* Get pixel order */
++        case RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER: /* Get pixel order */
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.pixo);
+             resplen = 4;
+             break;
+-        case 0x00044007: /* Test pixel alpha */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE: /* Test pixel alpha */
+             resplen = 4;
+             break;
+-        case 0x00048007: /* Set alpha */
++        case RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE: /* Set alpha */
+             fbconfig.alpha = ldl_le_phys(&s->dma_as, value + 12);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040007: /* Get alpha */
++        case RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE: /* Get alpha */
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.alpha);
+             resplen = 4;
+             break;
+-        case 0x00040008: /* Get pitch */
++        case RPI_FWREQ_FRAMEBUFFER_GET_PITCH: /* Get pitch */
+             stl_le_phys(&s->dma_as, value + 12,
+                         bcm2835_fb_get_pitch(&fbconfig));
+             resplen = 4;
+             break;
+-        case 0x00044009: /* Test virtual offset */
++        /* Test virtual offset */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET:
+             resplen = 8;
+             break;
+-        case 0x00048009: /* Set virtual offset */
++        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET: /* Set virtual offset */
+             fbconfig.xoffset = ldl_le_phys(&s->dma_as, value + 12);
+             fbconfig.yoffset = ldl_le_phys(&s->dma_as, value + 16);
+             bcm2835_fb_validate_config(&fbconfig);
+             fbconfig_updated = true;
+             /* fall through */
+-        case 0x00040009: /* Get virtual offset */
++        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET: /* Get virtual offset */
+             stl_le_phys(&s->dma_as, value + 12, fbconfig.xoffset);
+             stl_le_phys(&s->dma_as, value + 16, fbconfig.yoffset);
+             resplen = 8;
+             break;
+-        case 0x0004000a: /* Get/Test/Set overscan */
+-        case 0x0004400a:
+-        case 0x0004800a:
++        case RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN: /* Get/Test/Set overscan */
++        case RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN:
++        case RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN:
+             stl_le_phys(&s->dma_as, value + 12, 0);
+             stl_le_phys(&s->dma_as, value + 16, 0);
+             stl_le_phys(&s->dma_as, value + 20, 0);
+             stl_le_phys(&s->dma_as, value + 24, 0);
+             resplen = 16;
+             break;
+-        case 0x0004800b: /* Set palette */
++        case RPI_FWREQ_FRAMEBUFFER_SET_PALETTE: /* Set palette */
+             offset = ldl_le_phys(&s->dma_as, value + 12);
+             length = ldl_le_phys(&s->dma_as, value + 16);
+             n = 0;
+@@ -270,18 +283,19 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             stl_le_phys(&s->dma_as, value + 12, 0);
+             resplen = 4;
+             break;
+-        case 0x00040013: /* Get number of displays */
++        /* Get number of displays */
++        case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
+             stl_le_phys(&s->dma_as, value + 12, 1);
+             resplen = 4;
+             break;
+ 
+-        case 0x00060001: /* Get DMA channels */
++        case RPI_FWREQ_GET_DMA_CHANNELS: /* Get DMA channels */
+             /* channels 2-5 */
+             stl_le_phys(&s->dma_as, value + 12, 0x003C);
+             resplen = 4;
+             break;
+ 
+-        case 0x00050001: /* Get command line */
++        case RPI_FWREQ_GET_COMMAND_LINE: /* Get command line */
+             /*
+              * We follow the firmware behaviour: no NUL terminator is
+              * written to the buffer, and if the buffer is too short
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 4a56dd4b89..92a317950a 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -170,4 +170,10 @@
+ #define INTERRUPT_ILLEGAL_TYPE0        6
+ #define INTERRUPT_ILLEGAL_TYPE1        7
+ 
++/* Clock rates */
++#define RPI_FIRMWARE_EMMC_CLK_RATE    50000000
++#define RPI_FIRMWARE_UART_CLK_RATE    3000000
++#define RPI_FIRMWARE_CORE_CLK_RATE    350000000
++#define RPI_FIRMWARE_DEFAULT_CLK_RATE 700000000
++
+ #endif
+diff --git a/include/hw/misc/raspberrypi-fw-defs.h b/include/hw/misc/raspberrypi-fw-defs.h
+new file mode 100644
+index 0000000000..4551fe7450
+--- /dev/null
++++ b/include/hw/misc/raspberrypi-fw-defs.h
+@@ -0,0 +1,163 @@
++/*
++ * Raspberry Pi firmware definitions
++ *
++ * Copyright (C) 2022  Auriga LLC, based on Linux kernel
++ *   `include/soc/bcm2835/raspberrypi-firmware.h` (Copyright © 2015 Broadcom)
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
++#define INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
++
++#include "qemu/osdep.h"
++
++enum rpi_firmware_property_tag {
++    RPI_FWREQ_PROPERTY_END =                           0,
++    RPI_FWREQ_GET_FIRMWARE_REVISION =                  0x00000001,
++    RPI_FWREQ_GET_FIRMWARE_VARIANT =                   0x00000002,
++    RPI_FWREQ_GET_FIRMWARE_HASH =                      0x00000003,
++
++    RPI_FWREQ_SET_CURSOR_INFO =                        0x00008010,
++    RPI_FWREQ_SET_CURSOR_STATE =                       0x00008011,
++
++    RPI_FWREQ_GET_BOARD_MODEL =                        0x00010001,
++    RPI_FWREQ_GET_BOARD_REVISION =                     0x00010002,
++    RPI_FWREQ_GET_BOARD_MAC_ADDRESS =                  0x00010003,
++    RPI_FWREQ_GET_BOARD_SERIAL =                       0x00010004,
++    RPI_FWREQ_GET_ARM_MEMORY =                         0x00010005,
++    RPI_FWREQ_GET_VC_MEMORY =                          0x00010006,
++    RPI_FWREQ_GET_CLOCKS =                             0x00010007,
++    RPI_FWREQ_GET_POWER_STATE =                        0x00020001,
++    RPI_FWREQ_GET_TIMING =                             0x00020002,
++    RPI_FWREQ_SET_POWER_STATE =                        0x00028001,
++    RPI_FWREQ_GET_CLOCK_STATE =                        0x00030001,
++    RPI_FWREQ_GET_CLOCK_RATE =                         0x00030002,
++    RPI_FWREQ_GET_VOLTAGE =                            0x00030003,
++    RPI_FWREQ_GET_MAX_CLOCK_RATE =                     0x00030004,
++    RPI_FWREQ_GET_MAX_VOLTAGE =                        0x00030005,
++    RPI_FWREQ_GET_TEMPERATURE =                        0x00030006,
++    RPI_FWREQ_GET_MIN_CLOCK_RATE =                     0x00030007,
++    RPI_FWREQ_GET_MIN_VOLTAGE =                        0x00030008,
++    RPI_FWREQ_GET_TURBO =                              0x00030009,
++    RPI_FWREQ_GET_MAX_TEMPERATURE =                    0x0003000a,
++    RPI_FWREQ_GET_STC =                                0x0003000b,
++    RPI_FWREQ_ALLOCATE_MEMORY =                        0x0003000c,
++    RPI_FWREQ_LOCK_MEMORY =                            0x0003000d,
++    RPI_FWREQ_UNLOCK_MEMORY =                          0x0003000e,
++    RPI_FWREQ_RELEASE_MEMORY =                         0x0003000f,
++    RPI_FWREQ_EXECUTE_CODE =                           0x00030010,
++    RPI_FWREQ_EXECUTE_QPU =                            0x00030011,
++    RPI_FWREQ_SET_ENABLE_QPU =                         0x00030012,
++    RPI_FWREQ_GET_DISPMANX_RESOURCE_MEM_HANDLE =       0x00030014,
++    RPI_FWREQ_GET_EDID_BLOCK =                         0x00030020,
++    RPI_FWREQ_GET_CUSTOMER_OTP =                       0x00030021,
++    RPI_FWREQ_GET_EDID_BLOCK_DISPLAY =                 0x00030023,
++    RPI_FWREQ_GET_DOMAIN_STATE =                       0x00030030,
++    RPI_FWREQ_GET_THROTTLED =                          0x00030046,
++    RPI_FWREQ_GET_CLOCK_MEASURED =                     0x00030047,
++    RPI_FWREQ_NOTIFY_REBOOT =                          0x00030048,
++    RPI_FWREQ_SET_CLOCK_STATE =                        0x00038001,
++    RPI_FWREQ_SET_CLOCK_RATE =                         0x00038002,
++    RPI_FWREQ_SET_VOLTAGE =                            0x00038003,
++    RPI_FWREQ_SET_MAX_CLOCK_RATE =                     0x00038004,
++    RPI_FWREQ_SET_MIN_CLOCK_RATE =                     0x00038007,
++    RPI_FWREQ_SET_TURBO =                              0x00038009,
++    RPI_FWREQ_SET_CUSTOMER_OTP =                       0x00038021,
++    RPI_FWREQ_SET_DOMAIN_STATE =                       0x00038030,
++    RPI_FWREQ_GET_GPIO_STATE =                         0x00030041,
++    RPI_FWREQ_SET_GPIO_STATE =                         0x00038041,
++    RPI_FWREQ_SET_SDHOST_CLOCK =                       0x00038042,
++    RPI_FWREQ_GET_GPIO_CONFIG =                        0x00030043,
++    RPI_FWREQ_SET_GPIO_CONFIG =                        0x00038043,
++    RPI_FWREQ_GET_PERIPH_REG =                         0x00030045,
++    RPI_FWREQ_SET_PERIPH_REG =                         0x00038045,
++    RPI_FWREQ_GET_POE_HAT_VAL =                        0x00030049,
++    RPI_FWREQ_SET_POE_HAT_VAL =                        0x00038049,
++    RPI_FWREQ_SET_POE_HAT_VAL_OLD =                    0x00030050,
++    RPI_FWREQ_NOTIFY_XHCI_RESET =                      0x00030058,
++    RPI_FWREQ_GET_REBOOT_FLAGS =                       0x00030064,
++    RPI_FWREQ_SET_REBOOT_FLAGS =                       0x00038064,
++    RPI_FWREQ_NOTIFY_DISPLAY_DONE =                    0x00030066,
++
++    /* Dispmanx TAGS */
++    RPI_FWREQ_FRAMEBUFFER_ALLOCATE =                   0x00040001,
++    RPI_FWREQ_FRAMEBUFFER_BLANK =                      0x00040002,
++    RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT =  0x00040003,
++    RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT =   0x00040004,
++    RPI_FWREQ_FRAMEBUFFER_GET_DEPTH =                  0x00040005,
++    RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER =            0x00040006,
++    RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE =             0x00040007,
++    RPI_FWREQ_FRAMEBUFFER_GET_PITCH =                  0x00040008,
++    RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET =         0x00040009,
++    RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN =               0x0004000a,
++    RPI_FWREQ_FRAMEBUFFER_GET_PALETTE =                0x0004000b,
++    RPI_FWREQ_FRAMEBUFFER_GET_LAYER =                  0x0004000c,
++    RPI_FWREQ_FRAMEBUFFER_GET_TRANSFORM =              0x0004000d,
++    RPI_FWREQ_FRAMEBUFFER_GET_VSYNC =                  0x0004000e,
++    RPI_FWREQ_FRAMEBUFFER_GET_TOUCHBUF =               0x0004000f,
++    RPI_FWREQ_FRAMEBUFFER_GET_GPIOVIRTBUF =            0x00040010,
++    RPI_FWREQ_FRAMEBUFFER_RELEASE =                    0x00048001,
++    RPI_FWREQ_FRAMEBUFFER_GET_DISPLAY_ID =             0x00040016,
++    RPI_FWREQ_FRAMEBUFFER_SET_DISPLAY_NUM =            0x00048013,
++    RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS =           0x00040013,
++    RPI_FWREQ_FRAMEBUFFER_GET_DISPLAY_SETTINGS =       0x00040014,
++    RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT = 0x00044003,
++    RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT =  0x00044004,
++    RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH =                 0x00044005,
++    RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER =           0x00044006,
++    RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE =            0x00044007,
++    RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET =        0x00044009,
++    RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN =              0x0004400a,
++    RPI_FWREQ_FRAMEBUFFER_TEST_PALETTE =               0x0004400b,
++    RPI_FWREQ_FRAMEBUFFER_TEST_LAYER =                 0x0004400c,
++    RPI_FWREQ_FRAMEBUFFER_TEST_TRANSFORM =             0x0004400d,
++    RPI_FWREQ_FRAMEBUFFER_TEST_VSYNC =                 0x0004400e,
++    RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT =  0x00048003,
++    RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT =   0x00048004,
++    RPI_FWREQ_FRAMEBUFFER_SET_DEPTH =                  0x00048005,
++    RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER =            0x00048006,
++    RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE =             0x00048007,
++    RPI_FWREQ_FRAMEBUFFER_SET_PITCH =                  0x00048008,
++    RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET =         0x00048009,
++    RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN =               0x0004800a,
++    RPI_FWREQ_FRAMEBUFFER_SET_PALETTE =                0x0004800b,
++
++    RPI_FWREQ_FRAMEBUFFER_SET_TOUCHBUF =               0x0004801f,
++    RPI_FWREQ_FRAMEBUFFER_SET_GPIOVIRTBUF =            0x00048020,
++    RPI_FWREQ_FRAMEBUFFER_SET_VSYNC =                  0x0004800e,
++    RPI_FWREQ_FRAMEBUFFER_SET_LAYER =                  0x0004800c,
++    RPI_FWREQ_FRAMEBUFFER_SET_TRANSFORM =              0x0004800d,
++    RPI_FWREQ_FRAMEBUFFER_SET_BACKLIGHT =              0x0004800f,
++
++    RPI_FWREQ_VCHIQ_INIT =                             0x00048010,
++
++    RPI_FWREQ_SET_PLANE =                              0x00048015,
++    RPI_FWREQ_GET_DISPLAY_TIMING =                     0x00040017,
++    RPI_FWREQ_SET_TIMING =                             0x00048017,
++    RPI_FWREQ_GET_DISPLAY_CFG =                        0x00040018,
++    RPI_FWREQ_SET_DISPLAY_POWER =                      0x00048019,
++    RPI_FWREQ_GET_COMMAND_LINE =                       0x00050001,
++    RPI_FWREQ_GET_DMA_CHANNELS =                       0x00060001,
++};
++
++enum rpi_firmware_clk_id {
++    RPI_FIRMWARE_EMMC_CLK_ID = 1,
++    RPI_FIRMWARE_UART_CLK_ID,
++    RPI_FIRMWARE_ARM_CLK_ID,
++    RPI_FIRMWARE_CORE_CLK_ID,
++    RPI_FIRMWARE_V3D_CLK_ID,
++    RPI_FIRMWARE_H264_CLK_ID,
++    RPI_FIRMWARE_ISP_CLK_ID,
++    RPI_FIRMWARE_SDRAM_CLK_ID,
++    RPI_FIRMWARE_PIXEL_CLK_ID,
++    RPI_FIRMWARE_PWM_CLK_ID,
++    RPI_FIRMWARE_HEVC_CLK_ID,
++    RPI_FIRMWARE_EMMC2_CLK_ID,
++    RPI_FIRMWARE_M2MC_CLK_ID,
++    RPI_FIRMWARE_PIXEL_BVB_CLK_ID,
++    RPI_FIRMWARE_VEC_CLK_ID,
++    RPI_FIRMWARE_NUM_CLK_ID,
++};
++
++#endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
+-- 
+2.34.1
 
-r~

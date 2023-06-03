@@ -1,108 +1,120 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1916051ejb;
-        Sat, 3 Jun 2023 11:13:26 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ42z5bJTD3YZk3x2kaGnZlcVuo/4IdnRFNB6btvZduP+w5oiIZ5MqujGkVBKBMNpHIkMtPA
-X-Received: by 2002:ac8:5705:0:b0:3f4:f5bf:e7be with SMTP id 5-20020ac85705000000b003f4f5bfe7bemr2763218qtw.56.1685816006199;
-        Sat, 03 Jun 2023 11:13:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685816006; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1994914ejb;
+        Sat, 3 Jun 2023 15:33:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7hgiUEcqneaFHcAVJzAro4QRXcZ9OWo3s/eTJTCd7Aow8uUej40iLERJYEj8+gB1EkHzQQ
+X-Received: by 2002:a05:6214:1d21:b0:61b:6a44:5f03 with SMTP id f1-20020a0562141d2100b0061b6a445f03mr3406414qvd.33.1685831585680;
+        Sat, 03 Jun 2023 15:33:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685831585; cv=none;
         d=google.com; s=arc-20160816;
-        b=hB8AHZG1sEjTgnfwpwb6wYGikruQJZJxSqwV7e40BHwFdUA+pVoU5q+zvjI7NJ9UUg
-         Hhs43xaojyr39SV3L4uVtthbajgd7NPOpuWYqNyyq+BLTEx8wrNPTRof01qesWcUT7ZS
-         SA8cuvKN2eD3lfZVayBS0UL3vGZV41MsP7J7kgKsXQnExvnQa+mzVp4xZ98uo32vlkOx
-         rq2Ip5669V33IptkNBsffIACZCBqph63oB/HrkYu+fkcXT6uNG4PmMzpDreZiBcFFII7
-         NcekFrbBY/nJvFo9Eqrui2knuXa7zKfJ0Ue3OyXHg+G6BFq4YJ9Nx/cWwQZy5cBEIRWc
-         YIaQ==
+        b=mOkciq6JOpCE8Vh8Ztb9OFosp7Ql7Q6QU3itPdnZAUD7bsY7iZD2eT8i60bi5kHVYC
+         ZMD4jgNb+bAaMgWm31V7Nj4Q1f/bRKdVoju7NEYGs5TSBoOJi0DkNQsgLp1VrooaEIq6
+         KI8vT0ALluaI/JAvIfcDhY6G25mg7GoXIVrBr+/7f0Zq8iRmxoBZCsdqOo/JHVfAC5gF
+         JerkQkycG6jTencw4xTU5C5TGWLCcP9tt4twlCE2ZcQQEqZiqi7R/8nVxWk97PjLImUs
+         ESZQeAwas1Hx85EO0slpYGLqkuR36W5ewIuxejD4vqI34lB9UmXqeci/NN1NPVMoNhHS
+         mJ8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:cc:to:from
-         :content-language:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=o7xeTLrY/aHBWFTydI0e+eOkpn97uhMNv8jGZ3aq+5o=;
-        b=PliF1iCoiKtK8DYKZjbRn91I0am7Irs5276joYfd7IyXvPtD9LFPVX9eXcioYps5VD
-         PrINdqzxseyqzptKzg30lCtBoNq/NiphejSusAjtrzuAR8jMGp2lH21a00MgdQaCKoQE
-         JrB7Y2OrRn+dORjqKXdxysiQZan8pjc135zVynG+3R3RKPEjiaq3ofwK9+W/VMGDBdkn
-         O75Ob2sk0bKD+r3ESPY3dyZqBD8EfySkRQ85sEHZUTNrAhEPUJicdl5A0IQR3KvxKOyJ
-         n+/zyRIlgHFc8XgyOLFiWYiBg14EzQcqhxjIrQkCG/V9fZFe+bqBXOm9SnsoSPgP/qVs
-         fr4g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=BBu7fFWdcmFaKomwmhRM7bSas7K76l10adFKiwZSZn0=;
+        b=n9jFTmhiExfkCUI676maP6jntGItQwWS10LutEFmR93VBN0KQtUhPo6vnQ8s8OWiuv
+         PHk3CC3tBwKm3rhPTocO9nkSAsnmb3ta0KK1bUePrIfumFM4QZOirq21fajdfvAf5Q1o
+         Xk0zPkEQsZGdQby76GaVnDPmy0+D7Z4whHO8lc/VEkTK+l12NLI7ERg5c8RUXlg/9Pnx
+         Gg6N41iqdHzMv3A+AeX9HQ0/HK/9x9GekCOJTGt6CQqi/lJFdBEmBg6R8rqw4Ou1PGib
+         PY04r6TdSvb5Dia+eS4pjJYWWpUPCZGJzB3Fkn3AiilsP8UdYwgM3yfxbe3MPDUbo+zt
+         NUGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=0LzCjlwN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jigYizfa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s18-20020ac85cd2000000b003f5619a8922si2524872qta.519.2023.06.03.11.13.26
+        by mx.google.com with ESMTPS id c13-20020a056214224d00b006276cb7e9d4si2932066qvc.62.2023.06.03.15.33.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Jun 2023 11:13:26 -0700 (PDT)
+        Sat, 03 Jun 2023 15:33:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=0LzCjlwN;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jigYizfa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q5VkZ-0000vM-S7; Sat, 03 Jun 2023 14:13:15 -0400
+	id 1q5Znj-0000ce-8m; Sat, 03 Jun 2023 18:32:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q5VkS-0000uf-2i; Sat, 03 Jun 2023 14:13:11 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q5VkP-0005Pk-3v; Sat, 03 Jun 2023 14:13:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:References:Cc:To:From:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=o7xeTLrY/aHBWFTydI0e+eOkpn97uhMNv8jGZ3aq+5o=; b=0LzCjlwN1lTMwo/Xv2v30GPPjs
- 6xmYARa1Zx2GvxtS8SA+wrdPlBEzgRvogGE43Gtqu0HW8AeAgwlsRoznbGZqg+2V6U+5w/MMpUvdL
- BK5ZGLDWh0XtIkkm9bh4gwhLln/jqXage6nXLpNKG8d7n+31VnXkt+WGOI14COAyQcgySeOwZ6EhG
- icnku3tIF8qfi8Eja9OeEKCJ+rK6My2GnQ+HJvxRqDrRM65ZQps4tO8iU4RGIkkUKA6GYT/rP6gPc
- mbQiO0IcZ7DN6pM8ToAxj0pHR7p3HlrwHAdf1gp/tH3rEAdOYV/LkBerdCk2xPG3cZ0DdlSmvIjRQ
- zTDuciUm4XjeZhKvPj9rdBba/mYrmV//MbzL6qytPqgBV2ZoHVWA3nesh6IllS0wh+8VFiEtFxx24
- HpEVXKygE4IJwp1Sf69JXmXjP9CPp4hf0FSfjcfz/qFwWlBZog8eaXnrcMfgwGC9nSqFvfHAsTcWq
- 9VozD2VjhZP4C6hKT3f/vbkMSsKKTz4OQQ5r1HQU7r0hUCTgyB9XYGL25Ygunuc4KmpboHnSCvD39
- p7H2WSMjBPD5s8Jatue2dLZ2nTaZsHf2osF97gItbdmJd5P4UQf6ho9cthnESNR8JL/rsVJPNndm5
- OJ6qEFZ+Yk++VorWyYsve4Xb7DQ6h9t+7UYadCE+o=;
-Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q5VkC-0000R1-Gs; Sat, 03 Jun 2023 19:12:56 +0100
-Message-ID: <eae9ddaa-a914-b4f2-7fea-0f1731ab0706@ilande.co.uk>
-Date: Sat, 3 Jun 2023 19:12:57 +0100
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q5Zni-0000cJ-AA
+ for qemu-arm@nongnu.org; Sat, 03 Jun 2023 18:32:46 -0400
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q5Zng-0006j9-PJ
+ for qemu-arm@nongnu.org; Sat, 03 Jun 2023 18:32:46 -0400
+Received: by mail-oa1-x2a.google.com with SMTP id
+ 586e51a60fabf-19f6f8c840bso3274432fac.3
+ for <qemu-arm@nongnu.org>; Sat, 03 Jun 2023 15:32:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685831563; x=1688423563;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BBu7fFWdcmFaKomwmhRM7bSas7K76l10adFKiwZSZn0=;
+ b=jigYizfaVLLbwoSVKJ0TIz5vMrq7+HEgXFcJXcBPgGYLMumbYiFgbztEwffu78WTLu
+ MaaECSQ7B87WQx2dZvsoghYXWS4fyeAN/REggfGjJnq7474mrxZLpaw2iCRi+yAme3Nr
+ zXZ63ygdMBH0jJRPbCFMDZ/a0VuXlBliDUbdSvsONoty56gEUolLSxAxb/eliRJppE6R
+ 0LMyKsq9TR1Iqwu7e9Yk+wHxVCskDaOeZK72YcEeJHWMxIxD5LgEkQgezDIolUFINs+S
+ MEu7x6OKlyGVN/nmtVr31HtxF92wgX0g27Z1XeQuXI3iVDbsqlXgRUHZtAsUvJ8RvlF4
+ 9pJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685831563; x=1688423563;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BBu7fFWdcmFaKomwmhRM7bSas7K76l10adFKiwZSZn0=;
+ b=QeSqZbV7gL17p8D/hGC6SLJLyRxTFHSx2nMpY/ZK3JLG9Ld2hBTbjgJcMKVNNpidT0
+ 6pwvQTlP38z6jEbWH+05eIf2v5wikCT26h5lCRiQda+EUff/TVsZp6W+pHbYibNm/vHW
+ Gns1bXWyzanz+VffsqZ+s2dIo5IupJ9QV4XtSqpVmVaSdWCDKVD/PRTBPMA0IEesovg0
+ El6GyJbx6urgPsZ5U4QIaPWAPO/A/I3cQPWDAyztbcFUO0MnbykWlWj8IGdKuzgHVHvV
+ 2ciLw/RQwm7lGtfSlkzIVnY00v+KNEQQIjGs1TllWtBZ3dL1CGNLLXjI2jusASehYfFT
+ 0JZA==
+X-Gm-Message-State: AC+VfDzWjyL5nFso4SnKIt8gOvmRcj3yTNnFJ5DrtJTtgCnOzkoMOuZW
+ BRLXMuXM5VtosCLkvvd+T4WuKw==
+X-Received: by 2002:a05:6870:37c5:b0:19e:c567:6020 with SMTP id
+ p5-20020a05687037c500b0019ec5676020mr5699991oai.38.1685831563542; 
+ Sat, 03 Jun 2023 15:32:43 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1598:4c01:9a37:84b6:b3f0:f301?
+ ([2602:ae:1598:4c01:9a37:84b6:b3f0:f301])
+ by smtp.gmail.com with ESMTPSA id
+ 6-20020a170902c24600b001a0567811fbsm3660706plg.127.2023.06.03.15.32.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 03 Jun 2023 15:32:43 -0700 (PDT)
+Message-ID: <37e65b77-8ad9-c6fb-d45c-714af02d7435@linaro.org>
+Date: Sat, 3 Jun 2023 15:32:41 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
+ Thunderbird/102.11.0
+Subject: Re: [PATCH 08/20] target/arm: Convert load/store exclusive and
+ ordered to decodetree
 Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Sergey Kambalin <serg.oker@gmail.com>
-References: <20230531203559.29140-1-philmd@linaro.org>
- <20230531203559.29140-16-philmd@linaro.org>
- <43f014f5-6dd7-7c46-eea4-ed9cffe8ec48@ilande.co.uk>
-In-Reply-To: <43f014f5-6dd7-7c46-eea4-ed9cffe8ec48@ilande.co.uk>
+References: <20230602155223.2040685-1-peter.maydell@linaro.org>
+ <20230602155223.2040685-9-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230602155223.2040685-9-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 15/15] hw/timer/arm_timer: QOM'ify ARM_TIMER
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::2a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2a.google.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.095,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,260 +129,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pYxwFHwi4okH
+X-TUID: p8cIyr3ssj6v
 
-On 03/06/2023 19:07, Mark Cave-Ayland wrote:
-
-> On 31/05/2023 21:35, Philippe Mathieu-Daudé wrote:
+On 6/2/23 08:52, Peter Maydell wrote:
+> Convert the instructions in the load/store exclusive (STXR,
+> STLXR, LDXR, LDAXR) and load/store ordered (STLR, STLLR,
+> LDAR, LDLAR) to decodetree.
 > 
->> Introduce the ARM_TIMER sysbus device.
->>
->> arm_timer_new() is converted as QOM instance init()/finalize()
->> handlers. Note in arm_timer_finalize() we release a ptimer handle
->> which was previously leaked.
->>
->> ArmTimerState is directly embedded into SP804State/IcpPitState,
->> and is initialized as a QOM child.
->>
->> Since the timer frequency belongs to ARM_TIMER, have it hold the
->> QOM property. SP804State/IcpPitState directly access it.
->>
->> Similarly the SP804State/IcpPitState input IRQ becomes the
->> ARM_TIMER sysbus output IRQ.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/timer/arm_timer.c | 109 +++++++++++++++++++++++++++----------------
->>   1 file changed, 70 insertions(+), 39 deletions(-)
->>
->> diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
->> index 82123b40c0..a929fbba62 100644
->> --- a/hw/timer/arm_timer.c
->> +++ b/hw/timer/arm_timer.c
->> @@ -17,6 +17,7 @@
->>   #include "qemu/module.h"
->>   #include "qemu/log.h"
->>   #include "qom/object.h"
->> +#include "qapi/error.h"
->>   /* Common timer implementation.  */
->> @@ -29,14 +30,18 @@
->>   #define TIMER_CTRL_PERIODIC     (1 << 6)
->>   #define TIMER_CTRL_ENABLE       (1 << 7)
->> -typedef struct {
->> +#define TYPE_ARM_TIMER "arm-timer"
->> +OBJECT_DECLARE_SIMPLE_TYPE(ArmTimerState, ARM_TIMER)
+> Note that for STLR, STLLR, LDAR, LDLAR this fixes an under-decoding
+> in the legacy decoder where we were not checking that the RES1 bits
+> in the Rs and Rt2 fields were set.
 > 
-> As per our QOM guidelines ArmTimerState and the OBJECT_* macro should live in a 
-> separate header file.
-
-Ah wait: does "ArmTimerState is directly embedded into SP804State/IcpPitState, and is 
-initialized as a QOM child." mean that ARM_TIMER is never instantiated externally?
-
->> +struct ArmTimerState {
->> +    SysBusDevice parent_obj;
+> The new function ldst_iss_sf() is equivalent to the existing
+> disas_ldst_compute_iss_sf(), but it takes the pre-decoded 'ext' field
+> rather than taking an undecoded two-bit opc field and extracting
+> 'ext' from it. Once all the loads and stores have been converted
+> to decodetree disas_ldst_compute_iss_sf() will be unused and
+> can be deleted.
 > 
-> And don't forget to add a blank line here too.
-> 
->>       ptimer_state *timer;
->>       uint32_t control;
->>       uint32_t limit;
->>       uint32_t freq;
->>       int int_level;
->>       qemu_irq irq;
->> -} ArmTimerState;
->> +};
->>   /* Check all active timers, and schedule the next timer interrupt.  */
->> @@ -172,23 +177,42 @@ static const VMStateDescription vmstate_arm_timer = {
->>       }
->>   };
->> -static void arm_timer_reset(ArmTimerState *s)
->> +static void arm_timer_reset(DeviceState *dev)
->>   {
->> +    ArmTimerState *s = ARM_TIMER(dev);
->> +
->>       s->control = TIMER_CTRL_IE;
->>   }
-> 
-> If you're currently set up to test the ARM timers with these changes, is it worth 
-> considering converting this to use the Resettable interface at the same time?
-> 
->> -static ArmTimerState *arm_timer_new(uint32_t freq, qemu_irq irq_out)
->> +static void arm_timer_init(Object *obj)
->>   {
->> -    ArmTimerState *s;
->> +    ArmTimerState *s = ARM_TIMER(obj);
->> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->> -    s = g_new0(ArmTimerState, 1);
->> -    s->freq = freq;
->> -    arm_timer_reset(s);
->> -
->> -    s->irq = irq_out;
->>       s->timer = ptimer_init(arm_timer_tick, s, PTIMER_POLICY_LEGACY);
->> -    vmstate_register(NULL, VMSTATE_INSTANCE_ID_ANY, &vmstate_arm_timer, s);
->> -    return s;
->> +
->> +    sysbus_init_irq(sbd, &s->irq);
->> +}
->> +
->> +static void arm_timer_finalize(Object *obj)
->> +{
->> +    ArmTimerState *s = ARM_TIMER(obj);
->> +
->> +    ptimer_free(s->timer);
->> +}
->> +
->> +static Property arm_timer_properties[] = {
->> +    DEFINE_PROP_UINT32("freq", ArmTimerState, freq, 0),
->> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +static void arm_timer_class_init(ObjectClass *oc, void *data)
->> +{
->> +    DeviceClass *dc = DEVICE_CLASS(oc);
->> +
->> +    dc->reset = arm_timer_reset;
->> +    dc->vmsd = &vmstate_arm_timer;
->> +    device_class_set_props(dc, arm_timer_properties);
->>   }
->>   /*
->> @@ -204,11 +228,9 @@ struct SP804State {
->>       SysBusDevice parent_obj;
->>       MemoryRegion iomem;
->> -    ArmTimerState *timer[2];
->> -    uint32_t freq[2];
->> +    ArmTimerState timer[2];
->>       int level[2];
->>       qemu_irq irq;
->> -    qemu_irq irq_in[2];
->>   };
->>   static const uint8_t sp804_ids[] = {
->> @@ -233,10 +255,10 @@ static uint64_t sp804_read(void *opaque, hwaddr offset,
->>       SP804State *s = opaque;
->>       if (offset < 0x20) {
->> -        return arm_timer_read(s->timer[0], offset);
->> +        return arm_timer_read(&s->timer[0], offset);
->>       }
->>       if (offset < 0x40) {
->> -        return arm_timer_read(s->timer[1], offset - 0x20);
->> +        return arm_timer_read(&s->timer[1], offset - 0x20);
->>       }
->>       /* TimerPeriphID */
->> @@ -265,12 +287,12 @@ static void sp804_write(void *opaque, hwaddr offset,
->>       SP804State *s = opaque;
->>       if (offset < 0x20) {
->> -        arm_timer_write(s->timer[0], offset, value);
->> +        arm_timer_write(&s->timer[0], offset, value);
->>           return;
->>       }
->>       if (offset < 0x40) {
->> -        arm_timer_write(s->timer[1], offset - 0x20, value);
->> +        arm_timer_write(&s->timer[1], offset - 0x20, value);
->>           return;
->>       }
->> @@ -304,6 +326,12 @@ static void sp804_init(Object *obj)
->>       memory_region_init_io(&s->iomem, obj, &sp804_ops, s,
->>                             "sp804", 0x1000);
->>       sysbus_init_mmio(sbd, &s->iomem);
->> +
->> +    qdev_init_gpio_in_named(DEVICE(obj), sp804_set_irq,
->> +                            "timer-in", ARRAY_SIZE(s->timer));
->> +    for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
->> +        object_initialize_child(obj, "timer[*]", &s->timer[i], TYPE_ARM_TIMER);
->> +    }
->>   }
->>   static void sp804_realize(DeviceState *dev, Error **errp)
->> @@ -311,23 +339,17 @@ static void sp804_realize(DeviceState *dev, Error **errp)
->>       SP804State *s = SP804(dev);
->>       for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
->> -        s->irq_in[i] = qemu_allocate_irq(sp804_set_irq, s, i);
->> -        s->timer[i] = arm_timer_new(s->freq[i], s->irq_in[i]);
->> -    }
->> -}
->> -
->> -static void sp804_unrealize(DeviceState *dev)
->> -{
->> -    SP804State *s = SP804(dev);
->> -
->> -    for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
->> -        qemu_free_irq(s->irq_in[i]);
->> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer[i]), errp)) {
->> +            return;
->> +        }
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer[i]), 0,
->> +                           qdev_get_gpio_in_named(dev, "timer-in", i));
->>       }
->>   }
->>   static Property sp804_properties[] = {
->> -    DEFINE_PROP_UINT32("freq0", SP804State, freq[0], 1000000),
->> -    DEFINE_PROP_UINT32("freq1", SP804State, freq[1], 1000000),
->> +    DEFINE_PROP_UINT32("freq0", SP804State, timer[0].freq, 1000000),
->> +    DEFINE_PROP_UINT32("freq1", SP804State, timer[1].freq, 1000000),
->>       DEFINE_PROP_END_OF_LIST(),
->>   };
->> @@ -336,7 +358,6 @@ static void sp804_class_init(ObjectClass *klass, void *data)
->>       DeviceClass *k = DEVICE_CLASS(klass);
->>       k->realize = sp804_realize;
->> -    k->unrealize = sp804_unrealize;
->>       device_class_set_props(k, sp804_properties);
->>       k->vmsd = &vmstate_sp804;
->>   }
->> @@ -350,8 +371,7 @@ struct IntegratorPitState {
->>       SysBusDevice parent_obj;
->>       MemoryRegion iomem;
->> -    ArmTimerState *timer[3];
->> -    qemu_irq irq_in[3];
->> +    ArmTimerState timer[3];
->>       qemu_irq irq[3];
->>   };
->> @@ -368,7 +388,7 @@ static uint64_t icp_pit_read(void *opaque, hwaddr offset,
->>           return 0;
->>       }
->> -    return arm_timer_read(s->timer[n], offset & 0xff);
->> +    return arm_timer_read(&s->timer[n], offset & 0xff);
->>   }
->>   static void icp_pit_write(void *opaque, hwaddr offset,
->> @@ -383,7 +403,7 @@ static void icp_pit_write(void *opaque, hwaddr offset,
->>           return;
->>       }
->> -    arm_timer_write(s->timer[n], offset & 0xff, value);
->> +    arm_timer_write(&s->timer[n], offset & 0xff, value);
->>   }
->>   static const MemoryRegionOps icp_pit_ops = {
->> @@ -414,7 +434,8 @@ static void icp_pit_init(Object *obj)
->>                               "timer-in", ARRAY_SIZE(s->timer));
->>       for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
->> -        s->timer[i] = arm_timer_new(tmr_freq[i], s->irq_in[i]);
->> +        object_initialize_child(obj, "timer[*]", &s->timer[i], TYPE_ARM_TIMER);
->> +        qdev_prop_set_uint32(DEVICE(&s->timer[i]), "freq", tmr_freq[i]);
->>           sysbus_init_irq(dev, &s->irq[i]);
->>       }
->> @@ -430,7 +451,10 @@ static void icp_pit_realize(DeviceState *dev, Error **errp)
->>       IntegratorPitState *s = INTEGRATOR_PIT(dev);
->>       for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
->> -        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
->> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->timer[i]), errp)) {
->> +            return;
->> +        }
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer[i]), 0,
->>                              qdev_get_gpio_in_named(dev, "timer-in", i));
->>       }
->>   }
->> @@ -444,6 +468,13 @@ static void icp_pit_class_init(ObjectClass *klass, void *data)
->>   static const TypeInfo arm_timer_types[] = {
->>       {
->> +        .name           = TYPE_ARM_TIMER,
->> +        .parent         = TYPE_SYS_BUS_DEVICE,
->> +        .instance_size  = sizeof(ArmTimerState),
->> +        .instance_init  = arm_timer_init,
->> +        .instance_finalize = arm_timer_finalize,
->> +        .class_init     = arm_timer_class_init,
->> +    }, {
->>           .name           = TYPE_INTEGRATOR_PIT,
->>           .parent         = TYPE_SYS_BUS_DEVICE,
->>           .instance_size  = sizeof(IntegratorPitState),
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+>   target/arm/tcg/a64.decode      |  11 +++
+>   target/arm/tcg/translate-a64.c | 164 ++++++++++++++++++++-------------
+>   2 files changed, 110 insertions(+), 65 deletions(-)
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-ATB,
-
-Mark.
-
+r~

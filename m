@@ -1,390 +1,179 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp656639ejb;
-        Thu, 1 Jun 2023 11:48:28 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7eRIihsuJSiAOMtOLTBx1QqZfCWv8mSE60OalvRNuQltFWvnRquZF59xGpeBKtnTzhiQAo
-X-Received: by 2002:a05:622a:148f:b0:3f8:364:70da with SMTP id t15-20020a05622a148f00b003f8036470damr10642113qtx.32.1685645308694;
-        Thu, 01 Jun 2023 11:48:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685645308; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2583994ejb;
+        Sun, 4 Jun 2023 22:49:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4zXJM2276f9gU88bQzxTjQCkh8xuuq0GYRRuFP4ZCTJ8TJPTVInVJXGjkwpi0IEcjWKTrY
+X-Received: by 2002:a05:6214:b62:b0:5ef:5144:9d2f with SMTP id ey2-20020a0562140b6200b005ef51449d2fmr8107973qvb.20.1685944174130;
+        Sun, 04 Jun 2023 22:49:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685944174; cv=none;
         d=google.com; s=arc-20160816;
-        b=j4F/zKYKImqMMmzi7McXsXHMjI54q3r301SMOpkl1NXa4cRJrVIDkHB/zyHH5u529z
-         RM8FAtWtB+BSDTATUWd5brabw9XpLVVU5AB3JL5GBtdFcCKbNuxGjVH4oocNu56vUywU
-         Z098tVsw+6GruLuFRUn1QvNdhZU8QtkBcXCJHISYnUPvHXnLqiYL+ifOTgc2LhWb329Z
-         P/edahfZAJaa5IB77HocFgzgUqQpOyknYtSlSL49QTfu8TAkvxzkGvrZvvi8kIX19wSi
-         J2GcyJR+apT8f9nhrv7KuvX7CZ3nZ9dTSbPZOVTev0bNH4qJt3eDI5OCRxDu1af5RPCf
-         SAtw==
+        b=wPDSvNtHwHBnf6Re4hlOY+3ahQPKTUf9SWB3MxcJiD2EazneeTMzfFjvD6uWeqfc57
+         v6uKi0KSn3z9jkGWwzB97sJ55of9JbTnIQJeu4Iqq1kUV1G12AQb9REAa+H7F8sdCX2Y
+         yI6PdVUQqpv9VBOOXkXstDWii1l21sfhe40HxgzS8D4b0k4IVfIKgZqSQdPuTlyv6M+P
+         v8d287fMFlrY7wK6TViF8D9agtKDL4hRKhLC2Zvd/8xM3R+lZAYVCcXJ59KdUC7frPwA
+         jjl+hU0bj5t3HS5RLhukWEnILaYND2h/SrXQRVlYRDtiFh3wl5+HReFGn6dRd3ls4Buv
+         jmFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
-        b=H7q0P3+/GL7QMP7tysp9WyDGS7jfKK3iwwgF706j2P1U2PfRqlI8zbomNogWjuCYSR
-         RQEY9Q7snI2sqdmi1fQ9+/2lYr8zhcG+XD0EYe6fYFwqss+/1M/g9Z9SV8CLDu3M9M5d
-         1/hafhKNHC3ZK5UZBTRb9bkTJYd3lOIDAjYuEHDMSyIwGANUbRZyaZkN56clpVxtkQKu
-         j23aL8d8l2yBlBc40RvxI7KETMV4zK5FIYoIRh3N2gc9WosGAB+bL225TCpMyIQJocsv
-         jGjbM+1v9UyPNsU+MuN06CP+xRbbc01uIeHMDjpDe+e+KGyNjMGDjIUJrHpC676bULyF
-         xQhg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=xbxIGkva9cM06+ZEWIu25Yil3KtZzhyxwMlRfrH9XiY=;
+        b=geoHbFynkNAO+M5N+9NeGfSH64dPm93yFMhIEcg7vjHZqE9YptLHGMkDg3QYaDsUY9
+         G4Bs/mOuRCBPBaZPh+QYy237xiaDHTv2rNoBsjJWUmfdgW8DtfXZYnMAOYyQV/XMDubP
+         gywI/PbT1Y0XpTIO4kKboaIS6WoFQV04CUH9vFZxXalV6MPVRhSQZgMcvLuk2HIP+kSt
+         CZPbZMzWB588UbKPGO4QYf0QK9UIx3+o1uolq/1rKo+YbI5Ehy57/hWG+VQM1k4MhHjL
+         C0u2HNteU39sod3Y/nKWlYLp7OgmoHAcJEOSCqXzxKGCD11IpykyUeYUhSKVyG2INVUn
+         earQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=sKPcEo9R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OnTby6wm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12-20020a05622a000c00b003ef3aa3a380si10266022qtw.798.2023.06.01.11.48.28
+        by mx.google.com with ESMTPS id s15-20020a0562140caf00b006260a87dc55si4290166qvs.153.2023.06.04.22.49.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Jun 2023 11:48:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 04 Jun 2023 22:49:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=sKPcEo9R;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=OnTby6wm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q4nLP-00015G-VG; Thu, 01 Jun 2023 14:48:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q635i-0001E9-QI; Mon, 05 Jun 2023 01:49:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1q4nLB-00010Z-Ix; Thu, 01 Jun 2023 14:48:07 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1q4nL9-0005nG-6b; Thu, 01 Jun 2023 14:48:05 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-565cdb77b01so11214847b3.0; 
- Thu, 01 Jun 2023 11:48:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1685645281; x=1688237281;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
- b=sKPcEo9RjYIO2A0YUC8EmvRE/EpsxPGMV1k0q41vDqnthyISf+Nxh4iXiuka7o0qmH
- pPPZA/NsWtSIps+YyHp6FuuYYMxVw2DMkc3OKk4IRwGNgYRQbA5b4TRgWx5GmPEZ6zUQ
- 25qRBMr0jE1cp2Ebg8x4+G9i0NvSFKeb2e56uJY2ezQnjeraO77tBKVqxgA42WWimG2j
- E/35x2KN53q9IQuan1fKZ7kt45wGMJELwcFYnOA3AaGX2ERVBj+CsRhQpEoTJXB6CB0Z
- qYuqHGcL5JPySrHqsZ1IQV/RGtHgsvitT74zZVvtoaESrAWH/Tdr+bRw3T7LtxiUWblE
- Nb2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685645281; x=1688237281;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0u4QpJtg7Y432atmDsMZRS+s1fSyoLU6X98JegFDOpA=;
- b=Bi8RQPk+QtMWtvKq14DTbG87Z7qI23LmczAoaswFOzdoGPMFX6NNIyqp/QMyNbNmE9
- d7PmNXEMB1tjJuE5xobtvmayEmENxUjvHjAohC3njcJfbVRfYHg59wb0iV7+lgnfdPKK
- WAU/o8Ek/j3xpjbqRmykOhIXLq0Q5WGjxrWRi/6NksQ4uw7TEYsxzXO7nBgfYg6AvIfL
- J6KWNRdquiygAj+PXtjtCUSu5VqdFBgKMBMg84QEhN/oCOR+72urew3lToiJgL1GMIFJ
- z+uKVLYTH+BOr7JWLm+iL3Y9+FTqtTe2Gp79AJOJs8vMvaQiZLdFokA+4xPqSn7w7Jyj
- KuFw==
-X-Gm-Message-State: AC+VfDz2i6Ayu71G1IvbBa4n07s6QTxWMLFu3aSvoxdE8c4JPNCRAJpV
- 32/2CLEPCNIbuVeqxO25GL0bQBRpzAE+E1YMT40=
-X-Received: by 2002:a81:5e54:0:b0:565:2f72:f65c with SMTP id
- s81-20020a815e54000000b005652f72f65cmr9788182ywb.44.1685645281537; Thu, 01
- Jun 2023 11:48:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q635f-0001Dc-Gd; Mon, 05 Jun 2023 01:49:15 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q635d-0003S0-Ey; Mon, 05 Jun 2023 01:49:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=xbxIGkva9cM06+ZEWIu25Yil3KtZzhyxwMlRfrH9XiY=; b=OnTby6wmSqnQK4uCmrXW/yvuuT
+ TpqjlGmLbmtid+UBlcyGqZ/8e5AtRHPJhqW83ZMtrZ+a9Hf5+jYWCjHZ1NAC1xbBObZEaFEB/0dAE
+ A/eUIhm2tXa0TxH/epUOzuLO+OPwidypqHQn9OGwMPnd411GKASCqkeFPlCkWl6iNwb/JkBD65if4
+ OtJ3+XuhXto2hZU2ZOCNGqRLP8ltbPHK2YSqfUe3NlGmgoDT3tz9CC3YyweUc0/da8PNYRxJigpB8
+ 9hhfq8id2SQcAmjM1siQRB4HVI37FLS6iRLY3Yu7uEHJwrFC/B6rCK36KNrflsPJVjHPOqD3DlVkm
+ GMoubGf+qn0UVwT2CnWO+TvQTJQKvE0BJNXhomeqMiMJTrUZjj3rLnua0joHJaq4UZXYwjTSn8q26
+ E5sP3iEOvNWvuTS0M8B3yJqR6JUlEiS7vNWJcqAp7Z5bBDhoJVLHIHhpFAghmUzsIKrMuGNQ5snAp
+ SgqG3NPU4TmEW0ZB+zDN9+O5KCatbrpoOIB8lvhRjbs+xW/lpE7y/LwbyrHtd21slO5elJMiVNR57
+ R/4iYbJtmOUANIGn7c5KDI/p9iO0dTacXoXSVi/lDtDdePMMd1uB9SC9V4PYxFOnK9lEgT0GTnUl6
+ Dp/tg6P61KVpBXVupMl156Yftj8jlbrQaQhwiVd3E=;
+Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q635R-0003AC-6u; Mon, 05 Jun 2023 06:49:01 +0100
+Message-ID: <0ac53238-364a-aa85-c371-ba2051cbf546@ilande.co.uk>
+Date: Mon, 5 Jun 2023 06:49:01 +0100
 MIME-Version: 1.0
-References: <20230523100508.32564-1-qianfanguijin@163.com>
-In-Reply-To: <20230523100508.32564-1-qianfanguijin@163.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 1 Jun 2023 20:47:50 +0200
-Message-ID: <CAPan3Wr1phuot=613sXh-hT0An1-A5vuhcxMZ9SCGTze9w_PdQ@mail.gmail.com>
-Subject: Re: [PATCH v5 00/11] *** Add allwinner-r40 support ***
-To: qianfanguijin@163.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000039359a05fd15e09e"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-yw1-x1134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Content-Language: en-US
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20230523195608.125820-1-shentey@gmail.com>
+ <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+ <20230601080655-mutt-send-email-mst@kernel.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20230601080655-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hEU9UIbB5DS+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IWHNVG9Rwkn6
 
---00000000000039359a05fd15e09e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 01/06/2023 13:07, Michael S. Tsirkin wrote:
 
-Hi Qianfan,
+> On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
+>> On 23/05/2023 20:56, Bernhard Beschow wrote:
+>>
+>>> This series:
+>>> * Removes dead code from omap_uart and i82378
+>>> * Resolves redundant code in the i8254 timer devices
+>>>
+>>> v3:
+>>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>>>     https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
+>>
+>> Oh I didn't see that this had already been merged :/
+>>
+>> It's not a reason to block this series, but I'd still like to see your
+>> changes to ParallelState and ISAParallelState merged separately since they
+>> are a better match for our QOM coding standards.
+>>
+>>> v2:
+>>> * Export ParallelState and ISAParallelState (Mark)
+>>>
+>>> Testing done:
+>>> * `make check`
+>>>
+>>> Bernhard Beschow (3):
+>>>     hw/timer/i8254_common: Share "iobase" property via base class
+>>>     hw/arm/omap: Remove unused omap_uart_attach()
+>>>     hw/isa/i82378: Remove unused "io" attribute
+>>>
+>>>    include/hw/arm/omap.h   | 1 -
+>>>    hw/char/omap_uart.c     | 9 ---------
+>>>    hw/i386/kvm/i8254.c     | 1 -
+>>>    hw/isa/i82378.c         | 1 -
+>>>    hw/timer/i8254.c        | 6 ------
+>>>    hw/timer/i8254_common.c | 6 ++++++
+>>>    6 files changed, 6 insertions(+), 18 deletions(-)
+>>
+>> Do we know who is going to pick up these series? I can send a PR if no-one minds?
+>>
+> 
+> 
+> Go ahead:
+> 
+> Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-Thanks for sending the v5. From my side, I have no further comments on the
-content.
-So please feel free to add the following to each of the patches 01-11 in
-the series:
+Thanks! I've applied this series to my qemu-sparc branch.
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-As a reminder and explained here on this page, you'll need to make sure
-these lines gets added to each of the commit messages:
-https://www.qemu.org/docs/master/devel/submitting-a-patch.html#proper-use-o=
-f-reviewed-by-tags-can-aid-review
+ATB,
 
-Doing so would require you to send another updated v6, and baselined on the
-latest master.
+Mark.
 
-Thanks again for contributing this to Qemu, hopefully we can see it merged
-soon.
-
-Regards,
-Niek
-
-On Tue, May 23, 2023 at 12:05=E2=80=AFPM <qianfanguijin@163.com> wrote:
-
-> From: qianfan Zhao <qianfanguijin@163.com>
->
-> ***History***
-> # v1: 2023-03-21
->
-> The first version which add allwinner-r40 support, supported features:
->
-> + ccu
-> + dram controller
-> + uart
-> + i2c and pmic(axp221)
-> + sdcard
-> + emac/gmac
->
-> Also provide a test case under avocado, running quickly test:
->
-> $ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \
->     --verbose --show=3Dapp,console run -t machine:bpim2u \
->     ../tests/avocado/boot_linux_console.py
->
-> # v2: 2023-03-28
->
-> 1. Fix the waring and error reported by checkpatch.pl
-> 2. Remove the other i2c controllers except that i2c0
-> 3. Use an array to register mmc and uart devices
-> 4. Rename axp209 to axp22x and add axp221 support
-> 5. Add a basic SRAM controller
->
-> # v3: 2023-04-18
->
-> 1. Update some commit messages
-> 2. Squash those two commit about sdcard
->    hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
->    hw: arm: allwinner-r40: Fix the mmc controller's type
->
-> # v4: 2023-05-10
->
-> 1. Rebase to master
->
-> # v5: 2023-05-23
->
-> 1. Rebase to master
-> 2. Update based on Niek Linnenbank's guide.
->
-> qianfan Zhao (11):
->   hw: arm: Add bananapi M2-Ultra and allwinner-r40 support
->   hw/arm/allwinner-r40: add Clock Control Unit
->   hw: allwinner-r40: Complete uart devices
->   hw: arm: allwinner-r40: Add i2c0 device
->   hw/misc: Rename axp209 to axp22x and add support AXP221 PMU
->   hw/arm/allwinner-r40: add SDRAM controller device
->   hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support
->   hw: arm: allwinner-r40: Add emac and gmac support
->   hw: arm: allwinner-sramc: Add SRAM Controller support for R40
->   tests: avocado: boot_linux_console: Add test case for bpim2u
->   docs: system: arm: Introduce bananapi_m2u
->
->  docs/system/arm/bananapi_m2u.rst      | 138 +++++++
->  hw/arm/Kconfig                        |  14 +-
->  hw/arm/allwinner-r40.c                | 526 ++++++++++++++++++++++++++
->  hw/arm/bananapi_m2u.c                 | 145 +++++++
->  hw/arm/meson.build                    |   1 +
->  hw/misc/Kconfig                       |   5 +-
->  hw/misc/allwinner-r40-ccu.c           | 209 ++++++++++
->  hw/misc/allwinner-r40-dramc.c         | 513 +++++++++++++++++++++++++
->  hw/misc/allwinner-sramc.c             | 184 +++++++++
->  hw/misc/axp209.c                      | 238 ------------
->  hw/misc/axp2xx.c                      | 283 ++++++++++++++
->  hw/misc/meson.build                   |   5 +-
->  hw/misc/trace-events                  |  26 +-
->  hw/sd/allwinner-sdhost.c              |  72 +++-
->  include/hw/arm/allwinner-r40.h        | 143 +++++++
->  include/hw/misc/allwinner-r40-ccu.h   |  65 ++++
->  include/hw/misc/allwinner-r40-dramc.h | 108 ++++++
->  include/hw/misc/allwinner-sramc.h     |  69 ++++
->  include/hw/sd/allwinner-sdhost.h      |   9 +
->  tests/avocado/boot_linux_console.py   | 176 +++++++++
->  20 files changed, 2681 insertions(+), 248 deletions(-)
->  create mode 100644 docs/system/arm/bananapi_m2u.rst
->  create mode 100644 hw/arm/allwinner-r40.c
->  create mode 100644 hw/arm/bananapi_m2u.c
->  create mode 100644 hw/misc/allwinner-r40-ccu.c
->  create mode 100644 hw/misc/allwinner-r40-dramc.c
->  create mode 100644 hw/misc/allwinner-sramc.c
->  delete mode 100644 hw/misc/axp209.c
->  create mode 100644 hw/misc/axp2xx.c
->  create mode 100644 include/hw/arm/allwinner-r40.h
->  create mode 100644 include/hw/misc/allwinner-r40-ccu.h
->  create mode 100644 include/hw/misc/allwinner-r40-dramc.h
->  create mode 100644 include/hw/misc/allwinner-sramc.h
->
-> --
-> 2.25.1
->
->
-
---=20
-Niek Linnenbank
-
---00000000000039359a05fd15e09e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Qianfan,<br></div><div><br></div><div>=
-Thanks for sending the v5. From my side, I have no further comments on the =
-content. <br></div><div>So please feel free to add the following to each of=
- the patches 01-11 in the series:</div><div><br></div><div>Reviewed-by: Nie=
-k Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank=
-@gmail.com</a>&gt;</div><div><br></div><div>As a reminder and explained her=
-e on this page, you&#39;ll need to make sure these lines gets added to each=
- of the commit messages:<br></div><div><a href=3D"https://www.qemu.org/docs=
-/master/devel/submitting-a-patch.html#proper-use-of-reviewed-by-tags-can-ai=
-d-review" target=3D"_blank">https://www.qemu.org/docs/master/devel/submitti=
-ng-a-patch.html#proper-use-of-reviewed-by-tags-can-aid-review</a></div><div=
-><br></div><div>Doing so would require you to send another updated v6, and =
-baselined on the latest master.</div><div><br></div><div>Thanks again for c=
-ontributing this to Qemu, hopefully we can see it merged soon.</div><div><b=
-r></div><div>Regards,</div><div>Niek<br></div><div><br></div><div class=3D"=
-gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, May 23, 2023 at =
-12:05=E2=80=AFPM &lt;<a href=3D"mailto:qianfanguijin@163.com">qianfanguijin=
-@163.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D=
-"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
-ft:1ex">From: qianfan Zhao &lt;<a href=3D"mailto:qianfanguijin@163.com" tar=
-get=3D"_blank">qianfanguijin@163.com</a>&gt;<br>
-<br>
-***History***<br>
-# v1: 2023-03-21<br>
-<br>
-The first version which add allwinner-r40 support, supported features:<br>
-<br>
-+ ccu<br>
-+ dram controller<br>
-+ uart<br>
-+ i2c and pmic(axp221)<br>
-+ sdcard<br>
-+ emac/gmac<br>
-<br>
-Also provide a test case under avocado, running quickly test:<br>
-<br>
-$ AVOCADO_ALLOW_LARGE_STORAGE=3Dyes tests/venv/bin/avocado \<br>
-=C2=A0 =C2=A0 --verbose --show=3Dapp,console run -t machine:bpim2u \<br>
-=C2=A0 =C2=A0 ../tests/avocado/boot_linux_console.py<br>
-<br>
-# v2: 2023-03-28<br>
-<br>
-1. Fix the waring and error reported by <a href=3D"http://checkpatch.pl" re=
-l=3D"noreferrer" target=3D"_blank">checkpatch.pl</a><br>
-2. Remove the other i2c controllers except that i2c0<br>
-3. Use an array to register mmc and uart devices<br>
-4. Rename axp209 to axp22x and add axp221 support<br>
-5. Add a basic SRAM controller<br>
-<br>
-# v3: 2023-04-18<br>
-<br>
-1. Update some commit messages<br>
-2. Squash those two commit about sdcard<br>
-=C2=A0 =C2=A0hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
-=C2=A0 =C2=A0hw: arm: allwinner-r40: Fix the mmc controller&#39;s type<br>
-<br>
-# v4: 2023-05-10<br>
-<br>
-1. Rebase to master<br>
-<br>
-# v5: 2023-05-23<br>
-<br>
-1. Rebase to master<br>
-2. Update based on Niek Linnenbank&#39;s guide.<br>
-<br>
-qianfan Zhao (11):<br>
-=C2=A0 hw: arm: Add bananapi M2-Ultra and allwinner-r40 support<br>
-=C2=A0 hw/arm/allwinner-r40: add Clock Control Unit<br>
-=C2=A0 hw: allwinner-r40: Complete uart devices<br>
-=C2=A0 hw: arm: allwinner-r40: Add i2c0 device<br>
-=C2=A0 hw/misc: Rename axp209 to axp22x and add support AXP221 PMU<br>
-=C2=A0 hw/arm/allwinner-r40: add SDRAM controller device<br>
-=C2=A0 hw: sd: allwinner-sdhost: Add sun50i-a64 SoC support<br>
-=C2=A0 hw: arm: allwinner-r40: Add emac and gmac support<br>
-=C2=A0 hw: arm: allwinner-sramc: Add SRAM Controller support for R40<br>
-=C2=A0 tests: avocado: boot_linux_console: Add test case for bpim2u<br>
-=C2=A0 docs: system: arm: Introduce bananapi_m2u<br>
-<br>
-=C2=A0docs/system/arm/bananapi_m2u.rst=C2=A0 =C2=A0 =C2=A0 | 138 +++++++<br=
->
-=C2=A0hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 14 +-<br>
-=C2=A0hw/arm/allwinner-r40.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 | 526 ++++++++++++++++++++++++++<br>
-=C2=A0hw/arm/bananapi_m2u.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0| 145 +++++++<br>
-=C2=A0hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-=C2=A0hw/misc/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
-=C2=A0hw/misc/allwinner-r40-ccu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
- 209 ++++++++++<br>
-=C2=A0hw/misc/allwinner-r40-dramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 513 =
-+++++++++++++++++++++++++<br>
-=C2=A0hw/misc/allwinner-sramc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 184 +++++++++<br>
-=C2=A0hw/misc/axp209.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 | 238 ------------<br>
-=C2=A0hw/misc/axp2xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 | 283 ++++++++++++++<br>
-=C2=A0hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A05 +-<br>
-=C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 |=C2=A0 26 +-<br>
-=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 |=C2=A0 72 +++-<br>
-=C2=A0include/hw/arm/allwinner-r40.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 143 +++++=
-++<br>
-=C2=A0include/hw/misc/allwinner-r40-ccu.h=C2=A0 =C2=A0|=C2=A0 65 ++++<br>
-=C2=A0include/hw/misc/allwinner-r40-dramc.h | 108 ++++++<br>
-=C2=A0include/hw/misc/allwinner-sramc.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 69 ++++<=
-br>
-=C2=A0include/hw/sd/allwinner-sdhost.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A09 =
-+<br>
-=C2=A0tests/avocado/boot_linux_console.py=C2=A0 =C2=A0| 176 +++++++++<br>
-=C2=A020 files changed, 2681 insertions(+), 248 deletions(-)<br>
-=C2=A0create mode 100644 docs/system/arm/bananapi_m2u.rst<br>
-=C2=A0create mode 100644 hw/arm/allwinner-r40.c<br>
-=C2=A0create mode 100644 hw/arm/bananapi_m2u.c<br>
-=C2=A0create mode 100644 hw/misc/allwinner-r40-ccu.c<br>
-=C2=A0create mode 100644 hw/misc/allwinner-r40-dramc.c<br>
-=C2=A0create mode 100644 hw/misc/allwinner-sramc.c<br>
-=C2=A0delete mode 100644 hw/misc/axp209.c<br>
-=C2=A0create mode 100644 hw/misc/axp2xx.c<br>
-=C2=A0create mode 100644 include/hw/arm/allwinner-r40.h<br>
-=C2=A0create mode 100644 include/hw/misc/allwinner-r40-ccu.h<br>
-=C2=A0create mode 100644 include/hw/misc/allwinner-r40-dramc.h<br>
-=C2=A0create mode 100644 include/hw/misc/allwinner-sramc.h<br>
-<br>
--- <br>
-2.25.1<br>
-<br>
-</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
-fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
-tr"><div>Niek Linnenbank<br><br></div></div></div></div>
-
---00000000000039359a05fd15e09e--

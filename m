@@ -1,188 +1,155 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2904417ejb;
-        Mon, 5 Jun 2023 09:21:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7ipqCT5t/zY2c89qWwWByNct1NUSW2fqjXc99IVotQZMKLU9w04xyptiK3C33+Ocp8+Alq
-X-Received: by 2002:ac8:5746:0:b0:3f8:14:58e9 with SMTP id 6-20020ac85746000000b003f8001458e9mr10139415qtx.13.1685982116611;
-        Mon, 05 Jun 2023 09:21:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685982116; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2955849ejb;
+        Mon, 5 Jun 2023 10:57:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ57sLDtZ5TjpJUl3YdAFCF6Lgnup7b8EOCMqOTNihBjYE0QX14Alu+GNS9Po5w9D2MPtmxZ
+X-Received: by 2002:ac8:5c4b:0:b0:3ef:25ad:27fb with SMTP id j11-20020ac85c4b000000b003ef25ad27fbmr8115159qtj.30.1685987831600;
+        Mon, 05 Jun 2023 10:57:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685987831; cv=none;
         d=google.com; s=arc-20160816;
-        b=nR1FPFZKa3X7uNlEBC94LHT7ia4nhEiIWlqB6JDhtdwwEq+tKk1DJy1HSHXG0y2xW0
-         VpknackC7qrwyzKsOmd4acnKm6qQ9QYmDksIpjd43NvuJcVZwKmpjDSC55V6opClsNN2
-         DYDtXr4O3tH38ND7BZg+NzAh7EoEdQl0Fwq6fpP17BmHismZJrr5/SjKV8hND6MNqer1
-         UiAJa0s2gCrQFEBPL7xjXCS+141ZrP3pufmYNiKJle7bw1urtQHIrZWwaFUd4PtDxvum
-         FEF9SDSMY8qxX53sY44hAFpqO+56/2PQYG0eRBvxsYYsJZnKBZEWOFluL+DTO7TNcWRt
-         oiLQ==
+        b=vzgG0Z9w5p2wodym+7rtWm77nKazDVgnaGdpEZ2CfT0pL/983zItn3fQhxgWRiXCBz
+         Ge/iOrRJRL5pGitfMi6ZHXbrFYCwmcyfc6pFp6k8hjKOhCcU2R7SJMGPPGDifkV0PedY
+         283f0rgfn9l+KFWPK/IDuJXAfETCrrbAenYGQ9Op3FhRn18v3Y82p+yUdj6rbRfZOukB
+         2dv3pwqHgDyiYMNnKmsG4kJSgvNB/DxgBLAulEB1VRitYkWl7PXpfnWIbwYPcmEjolnl
+         +Y9RrZXub+BtMoGOnrXwYS6Rim0jAuJHZw0AZsITUCAJK+W8PTOO1efzfKgm0tsheayp
+         Os3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=XnMtzO69TponQ6ZqDZam1EzWNSgGbuomWltlO03386E=;
-        b=Uurb1ymlouXSIwz/LEUdraaPQbGN6JNiBDY0u0NXfEUGXKYtA7W1xyseu4urTuxXMW
-         D32WTmlDoSJ+SvfB6g1N1q2DxQFFQU8HwngEvPmSiUKpTt0Qc/jhz3bC4dbWta8NtCS+
-         kTWXIvXFlsLTqdsSBtMRCvucVFROlBeu2vIZGJBdxY81mj5qan/9fq+AREGJaaHhlpoZ
-         qIwteER2Ph6Ck5C2RZ96nPXbz30XU0bFyA0csprIqC3nr5LCAFAtttaLZ3xDoqN5qxmE
-         9PoA7Yh13kcIyScy60meZa4SoZ93Dt+mBpN6qeKrmALvBDAfN2DI7bBsz2rOTDsxbaXC
-         ArBw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=p+Iw/1QCn4gWIQqU6bYdv/xs2QcFa6+Ox3iNu9xY0wY=;
+        b=OfsCOwM0El6rnoZiiLb6mgdNpRhyWChEap/87Y8+W8rGefugFHW8iBUIt6eSmiNgR4
+         oII5AgCHQ9FzSQQOe7BMBZ/w41mYe42+Spkz5W5bQkewRmc3yZE7UrUSriRxxQrLnrYB
+         wsSgxkMJd/OeWtOCS0Mdm6djAFjxJjzTrWJe66FOQWdtzfhxmYnKyqPiGvMAXNeoIVj5
+         yVjWyEoCAKr2d88DrHg1lgEnFJFvoAkiDjDSQG2qQucogjpQAQ/VUOcKKTqTnS3Hsi3m
+         /9A1DmVEyk1VtR765nSNRIGqGCHovNVysiOv1pPuTnQ0D9qg8+aSuqNcOsYCHNRy77jq
+         yVzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=EYcvUE2q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13-20020a05622a038d00b003ef5008333bsi4800784qtx.431.2023.06.05.09.21.56
+        by mx.google.com with ESMTPS id a16-20020a05622a065000b003f0afcf5dd2si5009198qtb.310.2023.06.05.10.57.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Jun 2023 09:21:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Jun 2023 10:57:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=EYcvUE2q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6Cxp-0008HK-7C; Mon, 05 Jun 2023 12:21:49 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q6ERw-00062i-Uq; Mon, 05 Jun 2023 13:57:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=6mOa=BZ=kaod.org=clg@ozlabs.org>)
- id 1q6Cxn-0008Go-Tm; Mon, 05 Jun 2023 12:21:47 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=6mOa=BZ=kaod.org=clg@ozlabs.org>)
- id 1q6Cxl-0000i4-Rr; Mon, 05 Jun 2023 12:21:47 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QZf4g4xpQz4x4G;
- Tue,  6 Jun 2023 02:21:39 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QZf4X6WX5z4x4C;
- Tue,  6 Jun 2023 02:21:32 +1000 (AEST)
-Message-ID: <aed4658a-4ee2-2ca0-1042-da5573d34774@kaod.org>
-Date: Mon, 5 Jun 2023 18:21:27 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6ERv-00061H-8m
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 13:56:59 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6ERt-0001UC-OH
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 13:56:59 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-3f61530506aso52256205e9.1
+ for <qemu-devel@nongnu.org>; Mon, 05 Jun 2023 10:56:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1685987816; x=1688579816;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=p+Iw/1QCn4gWIQqU6bYdv/xs2QcFa6+Ox3iNu9xY0wY=;
+ b=EYcvUE2qaOy/LJ5rv8Urz0q81DiVWO+ZCG4mfAsG95HaBAnrbWenxPtDjy421pFkRo
+ 27f7ipDxYr8e2f6rNqtbF5YSmF66Fm2lVlebDOw06K2j+cOWnDoE5hdg4WzjRRrXhI47
+ S8SBXi/uWg9wWLzjWm4n6Eo/JH92d4sO0uDEXQUSQW7EDCE63uNo7q13gApCwVLSTSZG
+ qNCv/GkBmXISWj3QUYegi1FGe42B8lUQbj0NEzMfbeeCxp5ZwkRy8Mhyp34mMoqeL4bY
+ rOpEuHmt2CpwAu1BYYl1DUh9a1fdsFJ8GMZzAKpYmax8NzbUa/rkGPms94ZbV8ni7Hrr
+ WfSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685987816; x=1688579816;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=p+Iw/1QCn4gWIQqU6bYdv/xs2QcFa6+Ox3iNu9xY0wY=;
+ b=DySXHrd16UZo7hWNtytZWfZm0xyhQ/XhNhhMzycgVOGnEzZG+LNE473qDKoIkyrekh
+ HN/LXqyDI6vDEkXwyvmGQqOX2I1aovq58UF7W2vmEni2S2RmCjRYMVljqzJFrdv8WDhe
+ neY0SKne0WjovugBG5qEwkq6DE1niQeAkksC8Eu5lwZ2y1XQnHA5ypPtesbWCgCOu2/N
+ HFtKDs9LVUzEsl9m6o09svVVDHG+TD6MbMPLq3vHF/yyTOeko9dIxjmXRUHIVVF5WRw6
+ BY1UexqMDKOvdebFCNlIaPHPI2eT86Gg3vM6gmHMPWXdiYcBJ9qnhPZyEQpw6v78LoO6
+ OlpA==
+X-Gm-Message-State: AC+VfDxqs9RFdnr3mSoqQkvGBXAxu8qEgOla8U6Gu47tlQo5Aihs+1/Q
+ A49GaoO9fDL4y9pP7otxDTsbNoMD+YkFSwRlnpI=
+X-Received: by 2002:a1c:f711:0:b0:3f6:53a:6665 with SMTP id
+ v17-20020a1cf711000000b003f6053a6665mr8873070wmh.19.1685987816071; 
+ Mon, 05 Jun 2023 10:56:56 -0700 (PDT)
+Received: from localhost.localdomain ([176.187.217.157])
+ by smtp.gmail.com with ESMTPSA id
+ q25-20020a7bce99000000b003f182a10106sm11524598wmj.8.2023.06.05.10.56.55
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 05 Jun 2023 10:56:55 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 1/5] util/cacheflush: Use declarations from
+ <OSCacheControl.h> on Darwin
+Date: Mon,  5 Jun 2023 19:56:43 +0200
+Message-Id: <20230605175647.88395-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230605175647.88395-1-philmd@linaro.org>
+References: <20230605175647.88395-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 05/12] hw/ssi: Introduce a ssi_get_cs() helper
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eduardo Habkost <eduardo@habkost.net>, Markus Armbruster
- <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
-References: <20230508075859.3326566-1-clg@kaod.org>
- <20230508075859.3326566-6-clg@kaod.org>
- <40c8647d-201e-3ceb-97ca-ec98bdc84e88@linaro.org>
- <0d11b78e-56f7-553a-3e85-0edef9b649ac@linaro.org>
- <523179dd-7842-7f03-14d6-678ed680a017@kaod.org>
- <6bfba08e-ce3e-539b-952d-697c8791fab2@linaro.org>
- <54d781f8-35d0-9e68-c2ec-743dd8f6a88e@kaod.org>
- <36c9bda8-3af2-ebf5-f8b9-599cafea0735@linaro.org>
- <467372F8-7DB7-41FB-8BA0-6CF12EC3AC50@gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <467372F8-7DB7-41FB-8BA0-6CF12EC3AC50@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=6mOa=BZ=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a5GtQ3TkjZdY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pmr6J716i7E2
 
-On 6/5/23 07:57, Bernhard Beschow wrote:
-> 
-> 
-> Am 31. Mai 2023 07:39:32 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->> On 31/5/23 08:36, Cédric Le Goater wrote:
->>> On 5/31/23 08:17, Philippe Mathieu-Daudé wrote:
->>>> +QOM tinkerers
->>>>
->>>> On 31/5/23 07:59, Cédric Le Goater wrote:
->>>>> On 5/30/23 23:15, Philippe Mathieu-Daudé wrote:
->>>>>> On 30/5/23 22:34, Philippe Mathieu-Daudé wrote:
->>>>>>> On 8/5/23 09:58, Cédric Le Goater wrote:
->>>>>>>> Simple routine to retrieve a DeviceState object on a SPI bus using its
->>>>>>>> address/cs. It will be useful for the board to wire the CS lines.
->>>>>>>>
->>>>>>>> Cc: Alistair Francis <alistair@alistair23.me>
->>>>>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>>>>>> ---
->>>>>>>>    include/hw/ssi/ssi.h |  2 ++
->>>>>>>>    hw/ssi/ssi.c         | 15 +++++++++++++++
->>>>>>>>    2 files changed, 17 insertions(+)
->>>>>>>>
->>>>>>>> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
->>>>>>>> index ffd3a34ba4..c7beabdb09 100644
->>>>>>>> --- a/include/hw/ssi/ssi.h
->>>>>>>> +++ b/include/hw/ssi/ssi.h
->>>>>>>> @@ -112,4 +112,6 @@ SSIBus *ssi_create_bus(DeviceState *parent, const char *name);
->>>>>>>>    uint32_t ssi_transfer(SSIBus *bus, uint32_t val);
->>>>>>>> +DeviceState *ssi_get_cs(SSIBus *bus, int addr);
->>>>>>
->>>>>> Also, this helper should (preferably) return a SSIPeripheral type.
->>>>>
->>>>> Well, having a DeviceState is handy for the callers (today) and
->>>>> ssi_create_peripheral() returns a DeviceState. Let's keep it that
->>>>> way.
->>>>
->>>> Yes I know it is handy :) I'm not against your patch; besides other
->>>> APIs do that. I'm wondering about QOM design here. Having Foo device,
->>>> should FOO API return the common qdev abstract type (DeviceState) or
->>>> a Foo type? Either ways we keep QOM-casting around, but I still tend
->>>> to consider FOO API returning Foo pointer provides some type check
->>>> safety, and also provides the API user hints about what is used.
->>>> Need more coffee.
->>>
->>> It is used in two code paths today:
->>>
->>>       ...
->>>           DeviceState *dev = ssi_get_cs(bmc->soc.fmc.spi, 0);
->>>           BlockBackend *fmc0 = dev ? m25p80_get_blk(dev) : NULL;
-> 
-> Looks like m25p80_get_blk() should take a more specific argument as well, like Phil suggested already. Wouldn't that avoid the QOM cast here?
+Per the cache(3) man page, sys_icache_invalidate() and
+sys_dcache_flush() are declared in <libkern/OSCacheControl.h>.
 
-Exposing the m25p80 internals could be painful. I'd rather keep the
-definitions where they are under m25p80.c.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ util/cacheflush.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-
-C.
-
-
-> 
-> Best regards,
-> Bernhard
-> 
->>>       ...
->>> and
->>>       ...
->>>           DeviceState *dev = ssi_get_cs(s->spi, i);
->>>           if (dev) {
->>>               qemu_irq cs_line = qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
->>>       ...
->>>
->>>
->>> Changing the interface is not a radical change, it will add two QOM-casts.
->>> I can give it a try in v2.
->>
->> Hold on, lets see what others think first.
+diff --git a/util/cacheflush.c b/util/cacheflush.c
+index 06c2333a60..de35616718 100644
+--- a/util/cacheflush.c
++++ b/util/cacheflush.c
+@@ -237,8 +237,8 @@ static void __attribute__((constructor)) init_cache_info(void)
+ 
+ #ifdef CONFIG_DARWIN
+ /* Apple does not expose CTR_EL0, so we must use system interfaces. */
+-extern void sys_icache_invalidate(void *start, size_t len);
+-extern void sys_dcache_flush(void *start, size_t len);
++#include <libkern/OSCacheControl.h>
++
+ void flush_idcache_range(uintptr_t rx, uintptr_t rw, size_t len)
+ {
+     sys_dcache_flush((void *)rw, len);
+-- 
+2.38.1
 

@@ -1,92 +1,92 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3083155ejb;
-        Mon, 5 Jun 2023 15:26:10 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ641Z5f4ukzO5c8FpvwIJsVmLJYg0fQfB+O4qYtxvN+NsLX4QB6YO/H3APoiHVic4Fl1iKC
-X-Received: by 2002:a05:6214:400a:b0:628:474b:aaef with SMTP id kd10-20020a056214400a00b00628474baaefmr175575qvb.25.1686003970085;
-        Mon, 05 Jun 2023 15:26:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686003970; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3083236ejb;
+        Mon, 5 Jun 2023 15:26:22 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6GaxR+4EZaDDQNHMUCJuXZ2eL6bOjYeNbK8zk9ib/7XosQ53MhDgldMqgrNeg2AHdSw2PC
+X-Received: by 2002:a05:620a:2a75:b0:75b:2b21:63b9 with SMTP id q53-20020a05620a2a7500b0075b2b2163b9mr97286qkp.54.1686003981794;
+        Mon, 05 Jun 2023 15:26:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686003981; cv=none;
         d=google.com; s=arc-20160816;
-        b=mkaBAhbczkLXnt3njXpcqBc+m1AHFtVJgUgZ2bBETi6na0kzySYY5b+iGne/EhVWhg
-         MOTfsFhTREziT7Mv0Gcii544gon2vhj3+agSlJhOONzKgQjf8Z49qeUIqbYItXHpanwL
-         yT9lc/ZXqUUrbEW19CMGlh/gFHxXZ6UdMzdPmpKG2I/+S9nLmWVvX6KklxUGyn1bj4ID
-         CWqFwX0zto0zB8HoWnKbHBv9l5cjDZwP2kiVtmNCWKA53RXMPnUs6Enju9arlkLyePS2
-         sTgjptdQVzWbnkZRFMfp8KcVHhh86Y53sLvEDi5n8JVG9USF3UXG2KFrH45pgG1Npgzm
-         J3nQ==
+        b=bdw79QTeCwduUoCZIlRU+6pv/pjbHJJA0pRU4LYXqt+ti4Mk5DmUFBMV4FREXUDIRj
+         WaT9wq2jfrgddBBgftpOpEN/BUbyBs+oAOyHGC0rD5EnJ5KC2Q34EC3lbFdYb3Smh0ZV
+         HieEdjOFsCKmJLotqGYOrdP1pKGRkrQgpWR1wCqp+lOGu2dfMFGf5su/P/2gwvk9yzh+
+         VoGRBEvZg+eo2wGR8lCcEhoeyHqXZ6gG1lR9r434u7HQUYo3Out0tcZhyYgBlslHJKcL
+         W4d6tTT99W+q7ChIV4pjJV4awsYx8uJBVbUEDDrLZG28a5ov9nfEk9cAVZ1Pi7ifQ5JR
+         A3+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iug9o5kY2rRDf7L6GzL4VJkrhoufA94Kp6D71aiQx4U=;
-        b=CEbB1b4x7IhJPXA2vlcAfPUmmh2LMuPXRw2pbrzOiU75cZjln+Polpf1bQcr9PJiA5
-         WaRMzaQUyAFUvn+/y+euWVJkkiApOoYjBCN99e5etspVk2VpLn+NnP597jNhEMBPj0Vc
-         am77S/q5q2s7V7m1o6G1VsPDJ01jkIVLVmbviRLEbZGSqz0KJaBFRV+GO2hy21LY290o
-         JSWxBQnrSJsvE1F/YKoi+Hfi16muRrAg/kuXaCuRTLce5XRfY5FxKN8lWfIrjisSHrF6
-         EBRoyY0ZwqZ9tKMR8NUgUgjB7Y0Tjhsdd3xO9CApgErnlWPSHZXqDHlg+3PUa0UGM0/Z
-         oTXw==
+        bh=+n5+QMgZVR0DsKuYLRLa0zum6v0eHEZ5kn5puaUvVbM=;
+        b=xh6JmWjXQ5z3ZBsviBVeKOmdzbDV5gL/RbdqAU1gpCNovccY19CVTrndjjyTW1Kbb5
+         DJAqKEJ0PIPKiJeJ34toRSV+ZJ+/5kNOm+x6L29sOpDyPvb5pvH3kOsjraUJ2MilqUJT
+         oiL+DsTwluivLyHYu93dgR9TDecazmWsaUOgppfok+fAyd0FVTvfW372Sa0uMBStf2ZY
+         jPpVxyeP8RSDBnqOfugnjTeoHrqnucr2hcJVQzRnQ6wOt9UwHNENfhGf0dA265etjAEE
+         O7ykmtCmIDod1pLwA4uj4K8h4DE2pct+pexOKy2p7CV752FV6OJplCErBHYbyF5LqcoF
+         FlQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QKXvWEnJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a+DRdN2h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p14-20020a05622a048e00b003f3875db680si5469339qtx.610.2023.06.05.15.26.09
+        by mx.google.com with ESMTPS id p8-20020a05620a132800b0075ebaf61ce1si1382818qkj.696.2023.06.05.15.26.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Jun 2023 15:26:10 -0700 (PDT)
+        Mon, 05 Jun 2023 15:26:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QKXvWEnJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a+DRdN2h;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q6Id7-0008PK-Or; Mon, 05 Jun 2023 18:24:49 -0400
+	id 1q6IdJ-000055-3H; Mon, 05 Jun 2023 18:25:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6Id6-0008O2-0d
- for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:24:48 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6IdH-0008VN-LG
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:24:59 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6Id4-00065y-68
- for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:24:47 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-30ae95c4e75so5529785f8f.2
- for <qemu-devel@nongnu.org>; Mon, 05 Jun 2023 15:24:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6IdF-0006Cv-1o
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:24:59 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-3f70fc4682aso47462395e9.1
+ for <qemu-devel@nongnu.org>; Mon, 05 Jun 2023 15:24:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686003884; x=1688595884;
+ d=linaro.org; s=google; t=1686003895; x=1688595895;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iug9o5kY2rRDf7L6GzL4VJkrhoufA94Kp6D71aiQx4U=;
- b=QKXvWEnJConX1M26MSrm0mYFpyEWj7C9CU+KVuXcLYXJ9XGFhS6ch1UnLNq98KrWTT
- ViUQzGw43thPhmjfjYOmSqCXrKjAnoa5yrhbYbvGoTfW18/5GQz1ZrHgQLqzB5V47hE6
- qTRabQVzy73gxBsSfr8CtPqXCdB1qDBDN9WLVuP4q/y+LpyVqQnbBfazPqvNiyk5Tzge
- rYa9e4VqIAaJSIiQJP47WbZG63fNdk1GHzdY4vF02i4U6ihPiUldZg4gOTknyjTkUwef
- FJNQYN+SQUx/X9WS8/w0Ei+3KKW1FXMoGsEk1N/iIJnvZaQcYkgDPYTSH4ilLpc7a/uw
- 1yQQ==
+ bh=+n5+QMgZVR0DsKuYLRLa0zum6v0eHEZ5kn5puaUvVbM=;
+ b=a+DRdN2hB/8iZzCgCSuKEuDPAn7W5ZMTV547E5ruJ4Oz6GkNLA/MdRGygZfv/pNn4t
+ m9eU9tAlSFkbLQIhFSgMOVaA43tXYlamDICUEp6RtN3vgWWDRwMzbIdMcgI6d1/qEECM
+ xBMj7dzICGqbZQEWobcTHT3Qb2PnkXxcOhvPeRBpCBOljbkMILYBgue3nNj0gHFKzeBZ
+ ytdck/ViRTUgfikQKpfsep8WGRP02onQ6kwsVem4oTvzlCX9H3K4mRUcpwsF77BhiNk8
+ 4YTRUrtSHxZTQeBxazkhYCs1U/eO8cLBs4Az1WknvHMPFZJFP1Bd4Ud3gnM7kpyRvsy4
+ va0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686003884; x=1688595884;
+ d=1e100.net; s=20221208; t=1686003895; x=1688595895;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iug9o5kY2rRDf7L6GzL4VJkrhoufA94Kp6D71aiQx4U=;
- b=hpRJDjc/c68ciD49aKcsmEAO0LuFaoxZRNgoxA6mdszRHNLOxktNjvVdB+33tqj+cD
- cL8Ig2ioNvefoAlPWMI9SpHjClUANWI31rTU991XrAYHP3GufWdBbTwaHkoX5W0sU8ZI
- dh+6y+hEO0cxYQXqldLzi7ntvr/Rg0sq+8tV9so5uMe9l6hFh3GeEmv4zn/fdnMxcDtk
- wxEnyViLf3NaF5EQfb86o6Wh01u9hRbi1Ylc1rtK2+hpj9C3m4VgQWvMOLz1lfWUqO1L
- ZsDuDGI7Sxy1RHJnW7Cxe1xf/kP0sXdm+INOnbrWr6K5GCOjFlQRtzumEVbNDhnDgKNG
- UM9Q==
-X-Gm-Message-State: AC+VfDyHTWEP76hMcLgjxa0MBJty0oXqTNyOhKhj+JqSGZ6nRHaPkXre
- D+/ZbDbEwOkRcaQCF8l/DD1bAG1JuYkETSgz/eA=
-X-Received: by 2002:a5d:4949:0:b0:30a:e5e3:ea66 with SMTP id
- r9-20020a5d4949000000b0030ae5e3ea66mr210048wrs.14.1686003884545; 
- Mon, 05 Jun 2023 15:24:44 -0700 (PDT)
+ bh=+n5+QMgZVR0DsKuYLRLa0zum6v0eHEZ5kn5puaUvVbM=;
+ b=S8QpfdWSoktMDp+1sxOQDgvmEBttkywNNbz/fmvwh9OmrF+PfQHebXyMNrrfCaqDEa
+ NXHMhgn9jOMZyecvfNDiqtAYlFnDnTBDuCum39ewO/E7gSNtn/JjNg9KmvFNcUBM+3nE
+ ANp38OiKGz8Aie4Xlyj18ELxo3a0tCX9Zq0BBs16YqzXT7UrgY9DiLLou8FDHFPniLwc
+ QRNL/4ORESVzz9ggISmVl6LRK4MoC6IR2Mg+d/F/qeHKSMGNEP6e8y3o833Kx0qusrYC
+ lNX5G/r6AabcqOUEttgA8y4Jr20CTSPTOHEpByXj8J8P6pjZLieoVwgoRVxcdoFnxY8M
+ 83Gw==
+X-Gm-Message-State: AC+VfDyINFuoZNz+T7mJ2OtesIu6Ue4InH9YH2i3298TjPVVS9cuOEXn
+ QODhRRrfT0em24l7sNrVOaoWeBEI2XOO6qZ63r0=
+X-Received: by 2002:a1c:770d:0:b0:3f4:2452:9669 with SMTP id
+ t13-20020a1c770d000000b003f424529669mr393924wmi.0.1686003895518; 
+ Mon, 05 Jun 2023 15:24:55 -0700 (PDT)
 Received: from localhost.localdomain ([176.187.217.157])
  by smtp.gmail.com with ESMTPSA id
- j5-20020a5d6185000000b0030af05fce4dsm10873473wru.77.2023.06.05.15.24.43
+ cx14-20020a056000092e00b003078681a1e8sm10846530wrb.54.2023.06.05.15.24.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 05 Jun 2023 15:24:44 -0700 (PDT)
+ Mon, 05 Jun 2023 15:24:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -94,18 +94,18 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-s390x@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-riscv@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH v2 4/9] target/ppc: Check for USER_ONLY definition instead
+Subject: [RFC PATCH v2 6/9] accel/tcg: Check for USER_ONLY definition instead
  of SOFTMMU one
-Date: Tue,  6 Jun 2023 00:24:15 +0200
-Message-Id: <20230605222420.14776-5-philmd@linaro.org>
+Date: Tue,  6 Jun 2023 00:24:17 +0200
+Message-Id: <20230605222420.14776-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230605222420.14776-1-philmd@linaro.org>
 References: <20230605222420.14776-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,143 +127,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6nH+GNDUsc4B
+X-TUID: cWuc8mnMzlll
 
 Since we *might* have user emulation with softmmu,
 replace the system emulation check by !user emulation one.
 
+Invert some if() ladders for clarity.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/ppc/cpu_init.c    | 20 ++++++++++----------
- target/ppc/helper_regs.c |  6 ++----
- 2 files changed, 12 insertions(+), 14 deletions(-)
+ accel/tcg/internal.h | 6 +++---
+ accel/tcg/cpu-exec.c | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 05bf73296b..a1b0bb2905 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -5840,7 +5840,7 @@ POWERPC_FAMILY(970)(ObjectClass *oc, void *data)
-                     (1ull << MSR_PMM) |
-                     (1ull << MSR_RI);
-     pcc->mmu_model = POWERPC_MMU_64B;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     pcc->hash64_opts = &ppc_hash64_opts_basic;
- #endif
-     pcc->excp_model = POWERPC_EXCP_970;
-@@ -5919,7 +5919,7 @@ POWERPC_FAMILY(POWER5P)(ObjectClass *oc, void *data)
-     pcc->lpcr_mask = LPCR_RMLS | LPCR_ILE | LPCR_LPES0 | LPCR_LPES1 |
-         LPCR_RMI | LPCR_HDICE;
-     pcc->mmu_model = POWERPC_MMU_2_03;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     pcc->hash64_opts = &ppc_hash64_opts_basic;
-     pcc->lrg_decr_bits = 32;
- #endif
-@@ -6036,7 +6036,7 @@ POWERPC_FAMILY(POWER7)(ObjectClass *oc, void *data)
-         LPCR_LPES0 | LPCR_LPES1 | LPCR_HDICE;
-     pcc->lpcr_pm = LPCR_P7_PECE0 | LPCR_P7_PECE1 | LPCR_P7_PECE2;
-     pcc->mmu_model = POWERPC_MMU_2_06;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     pcc->hash64_opts = &ppc_hash64_opts_POWER7;
-     pcc->lrg_decr_bits = 32;
- #endif
-@@ -6180,7 +6180,7 @@ POWERPC_FAMILY(POWER8)(ObjectClass *oc, void *data)
-     pcc->lpcr_pm = LPCR_P8_PECE0 | LPCR_P8_PECE1 | LPCR_P8_PECE2 |
-                    LPCR_P8_PECE3 | LPCR_P8_PECE4;
-     pcc->mmu_model = POWERPC_MMU_2_07;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     pcc->hash64_opts = &ppc_hash64_opts_POWER7;
-     pcc->lrg_decr_bits = 32;
-     pcc->n_host_threads = 8;
-@@ -6196,7 +6196,7 @@ POWERPC_FAMILY(POWER8)(ObjectClass *oc, void *data)
-     pcc->l1_icache_size = 0x8000;
- }
- 
+diff --git a/accel/tcg/internal.h b/accel/tcg/internal.h
+index 24f225cac7..65380ccb42 100644
+--- a/accel/tcg/internal.h
++++ b/accel/tcg/internal.h
+@@ -17,10 +17,10 @@
+  * memory related structures are protected with mmap_lock.
+  * In !user-mode we use per-page locks.
+  */
 -#ifdef CONFIG_SOFTMMU
-+#ifndef CONFIG_USER_ONLY
- /*
-  * Radix pg sizes and AP encodings for dt node ibm,processor-radix-AP-encodings
-  * Encoded as array of int_32s in the form:
-@@ -6213,7 +6213,7 @@ static struct ppc_radix_page_info POWER9_radix_page_info = {
-         0x4000001e  /*  1G - enc: 0x2 */
-     }
- };
--#endif /* CONFIG_SOFTMMU */
-+#endif /* CONFIG_USER_ONLY */
+-#define assert_memory_lock()
+-#else
++#ifdef CONFIG_USER_ONLY
+ #define assert_memory_lock() tcg_debug_assert(have_mmap_lock())
++#else
++#define assert_memory_lock()
+ #endif
  
- static void init_proc_POWER9(CPUPPCState *env)
- {
-@@ -6370,7 +6370,7 @@ POWERPC_FAMILY(POWER9)(ObjectClass *oc, void *data)
-         LPCR_HEIC | LPCR_LPES0 | LPCR_HVICE | LPCR_HDICE;
-     pcc->lpcr_pm = LPCR_PDEE | LPCR_HDEE | LPCR_EEE | LPCR_DEE | LPCR_OEE;
-     pcc->mmu_model = POWERPC_MMU_3_00;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     /* segment page size remain the same */
-     pcc->hash64_opts = &ppc_hash64_opts_POWER7;
-     pcc->radix_page_info = &POWER9_radix_page_info;
-@@ -6388,7 +6388,7 @@ POWERPC_FAMILY(POWER9)(ObjectClass *oc, void *data)
-     pcc->l1_icache_size = 0x8000;
- }
+ #if defined(CONFIG_SOFTMMU) && defined(CONFIG_DEBUG_TCG)
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 1cf4f1fa22..cf07e6740f 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -563,7 +563,7 @@ void cpu_exec_step_atomic(CPUState *cpu)
+         cpu_tb_exec(cpu, tb, &tb_exit);
+         cpu_exec_exit(cpu);
+     } else {
+-#ifndef CONFIG_SOFTMMU
++#ifdef CONFIG_USER_ONLY
+         clear_helper_retaddr();
+         if (have_mmap_lock()) {
+             mmap_unlock();
+@@ -1020,7 +1020,7 @@ static int cpu_exec_setjmp(CPUState *cpu, SyncClocks *sc)
+         /* Non-buggy compilers preserve this; assert the correct value. */
+         g_assert(cpu == current_cpu);
  
--#ifdef CONFIG_SOFTMMU
-+#ifndef CONFIG_USER_ONLY
- /*
-  * Radix pg sizes and AP encodings for dt node ibm,processor-radix-AP-encodings
-  * Encoded as array of int_32s in the form:
-@@ -6405,7 +6405,7 @@ static struct ppc_radix_page_info POWER10_radix_page_info = {
-         0x4000001e  /*  1G - enc: 0x2 */
-     }
- };
--#endif /* CONFIG_SOFTMMU */
-+#endif /* !CONFIG_USER_ONLY */
- 
- static void init_proc_POWER10(CPUPPCState *env)
- {
-@@ -6546,7 +6546,7 @@ POWERPC_FAMILY(POWER10)(ObjectClass *oc, void *data)
- 
-     pcc->lpcr_pm = LPCR_PDEE | LPCR_HDEE | LPCR_EEE | LPCR_DEE | LPCR_OEE;
-     pcc->mmu_model = POWERPC_MMU_3_00;
--#if defined(CONFIG_SOFTMMU)
-+#if !defined(CONFIG_USER_ONLY)
-     /* segment page size remain the same */
-     pcc->hash64_opts = &ppc_hash64_opts_POWER7;
-     pcc->radix_page_info = &POWER10_radix_page_info;
-diff --git a/target/ppc/helper_regs.c b/target/ppc/helper_regs.c
-index fb351c303f..537e835360 100644
---- a/target/ppc/helper_regs.c
-+++ b/target/ppc/helper_regs.c
-@@ -273,7 +273,7 @@ int hreg_store_msr(CPUPPCState *env, target_ulong value, int alter_hv)
-     return excp;
- }
- 
--#ifdef CONFIG_SOFTMMU
-+#ifndef CONFIG_USER_ONLY
- void store_40x_sler(CPUPPCState *env, uint32_t val)
- {
-     /* XXX: TO BE FIXED */
-@@ -283,9 +283,7 @@ void store_40x_sler(CPUPPCState *env, uint32_t val)
-     }
-     env->spr[SPR_405_SLER] = val;
- }
--#endif /* CONFIG_SOFTMMU */
- 
--#ifndef CONFIG_USER_ONLY
- void check_tlb_flush(CPUPPCState *env, bool global)
- {
-     CPUState *cs = env_cpu(env);
-@@ -304,7 +302,7 @@ void check_tlb_flush(CPUPPCState *env, bool global)
-         tlb_flush(cs);
-     }
- }
--#endif
-+#endif /* !CONFIG_USER_ONLY */
- 
- /**
-  * _spr_register
+-#ifndef CONFIG_SOFTMMU
++#ifdef CONFIG_USER_ONLY
+         clear_helper_retaddr();
+         if (have_mmap_lock()) {
+             mmap_unlock();
 -- 
 2.38.1
 

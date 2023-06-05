@@ -1,121 +1,121 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2633310ejb;
-        Mon, 5 Jun 2023 01:05:14 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7/bo7zDUfDBSJVG0rgzlggBOp3HVjSqH+1LYM7mRwhgcMRP2CGUVvrkTgOPGfp20uRFBZq
-X-Received: by 2002:a05:620a:2592:b0:75d:4025:99dc with SMTP id x18-20020a05620a259200b0075d402599dcmr6815936qko.10.1685952314160;
-        Mon, 05 Jun 2023 01:05:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1685952314; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2634249ejb;
+        Mon, 5 Jun 2023 01:07:19 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ45oeHh4USHKBwbJaUOlmGb2PuHYJg4A1E25NwHC8XMXy9xYeatlNUENGD3VpRle4xBhMii
+X-Received: by 2002:a05:6214:3008:b0:61b:5afc:d4be with SMTP id ke8-20020a056214300800b0061b5afcd4bemr6886245qvb.7.1685952439644;
+        Mon, 05 Jun 2023 01:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1685952439; cv=none;
         d=google.com; s=arc-20160816;
-        b=GSTV5UDq97KnGBbJPgQyOnPlMC4N0UGDAO/CrvxY2O/+degnBrOXEgBnWyUB0r8jUX
-         a+a/p1yaC5KLErhWgjJi6fNtugekGcHuswqDqWK0sOXcvCdXhFTOnPhvvq/tgbOcb3MW
-         ZQfavaS8WTzUhR4d9nsPX9xJM9OfeneGT/rd+RtraNykHi0+sTzaYCdCUJWBZrYOlu8h
-         XaY73t47cT+io35BXlBV6leB87+W/tS/oJ6Slcx1fzU1kgEA4DfRTHqJAHOvFq40q+Ts
-         tmz0XwAj2U5oxxPXGptu0Ap28JxmmfxjCR0h7kJyfZPcd/QJYEG+rwP0st5Sch8rFJ7G
-         sFbA==
+        b=wXeiii6duYjrlacNPhYcgEDnmIt3V+xK/ZPDpfdZCm4nOgM4DCy0DkFJvHU+3puY3M
+         QCtD3AJbB5gArBVqUUPkiw3pt9/4wTm7RWJxN417bamBk96H8xsYl+TD2ppYybYBnLRQ
+         fjAzrDeXyifzq0T+DY4rOTnPSRgq/+zqJH8EkN38JNuOgHVYSDPYBYKg7u4t7/TL6GUM
+         HMoJ+3e6Tmbs2+XH6JLjzyhL0lM+5OTMJuuLV6dFyXLNr4LZyRSZBtegd2yUEqPMHN29
+         4IfvdK3oOf3UXcJVGLP5puiLUarGQItAgjG37ICoxNCkJ/E1cQ+aoWMxU41U39HVxz4D
+         voVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature:ironport-hdrordr:ironport-data;
-        bh=w4A3jYCjeUqlQ62V5urF7yBovv+nvp0YeMEm8/LTD4Y=;
-        b=LihOLm/6pkthL80TCSD47zFigzoOrfCd/bLpe0tiaD0IyfuwS5LFren99T/04qp/ON
-         jdReaR4PFXwOaqiP7lZuZ7o4SQ7BhURQW1hepcZqJRDneUqRNb4oHEwHhs2TH2Pyzqi5
-         5/aOhBRVB6fLf/Y6E2U0v3VPSlnej3pq6+jTKcT/UBn55hJEFN0WY08LTlQojYFIM4Lr
-         Ff/bQXuP8ywcBCRmdcwijQQt8wYZyXI4/9azI4m4LZkllMQEiCLPjh2v0uUKQViElI80
-         6iYHgcjDt/vbPE0j0+5vmfivu4dPBI1Q499Bffgd2NhcmGDB6VTvPLX9GwN4fe1cwDQp
-         8SFA==
+        bh=nBsE6ZSAQNXrqj2aXIdHreYcEOPnXGm8mY8CFnppvpI=;
+        b=lvXPVJDeU7S0aOueLmjAA1CARcnbQ/VgFD+stJ+4e7KCsS33bWZwQNMGBBSDKZgOF3
+         CQq6Mvdp78MGRiBWjQdEV9STreqV8MhmNhhI+1T+bSQqmbdfXO6hg/h3KkvFHdEobu6w
+         65MvjGp1f3jRWKpWES9OlaSnsEzv44Ue4tirUlCyh1nAHxAzBTfXCKVYIAT67pM/14w8
+         HhGrl1Hy0jYfpkeoivkiVPiqLrXDaJivb7oeZhjd0a+iiCldpJgnLY7hWZmYVCwcTCxu
+         xy7Ex1RxuY5QxfSc9yFKFyKB9xbRuNZ6Rl6qQ7FmOKpGzRvGUsvXR3Kx4arw+4k5xcZI
+         Gd+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=IbMBN+vA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=IvQ9vEr6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bu.edu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pc47-20020a05620a842f00b0074acb879ac1si4112064qkn.33.2023.06.05.01.05.13
+        by mx.google.com with ESMTPS id jx12-20020a0562142b0c00b005e9032934efsi4105864qvb.43.2023.06.05.01.07.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Jun 2023 01:05:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Jun 2023 01:07:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=IbMBN+vA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@bu.edu header.s=s1gsbu header.b=IvQ9vEr6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=bu.edu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q65D4-0007rr-OD; Mon, 05 Jun 2023 04:05:02 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q65FA-00016U-Qa; Mon, 05 Jun 2023 04:07:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1q65D2-0007pw-HP
- for qemu-arm@nongnu.org; Mon, 05 Jun 2023 04:05:00 -0400
-Received: from esa5.hc2706-39.iphmx.com ([216.71.137.63])
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1q65F6-00012u-JS
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 04:07:10 -0400
+Received: from esa10.hc2706-39.iphmx.com ([216.71.140.198])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1q65D0-0002Jo-IF
- for qemu-arm@nongnu.org; Mon, 05 Jun 2023 04:05:00 -0400
-X-IronPort-RemoteIP: 209.85.219.70
-X-IronPort-MID: 295512773
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1q65F4-0002pk-IT
+ for qemu-devel@nongnu.org; Mon, 05 Jun 2023 04:07:08 -0400
+X-IronPort-RemoteIP: 209.85.219.198
+X-IronPort-MID: 285175985
 X-IronPort-Reputation: None
 X-IronPort-Listener: OutgoingMail
 X-IronPort-SenderGroup: RELAY_GSUITE
 X-IronPort-MailFlowPolicy: $RELAYED
-IronPort-Data: A9a23:WmUpialmxeYGfQU8W3TkRlPo5gwyJERdPkR7XQ2eYbSJt1+Wr1Gzt
- xIcXmGGb/6OMDCkL9tyO4qy/UxQup+EzdA3TgBv+HpjEC4T+ZvOCOrCEkqhZCn6wu8v7a5EA
- 2fyTvGacajYm1eF/k/F3oDJ9CU6jufQAOKnUoYoAwgpLSd8UiAtlBl/rOAwh49skLCRDhiE/
- Nj/uKUzAnf8s9JPGjxSs/rrRC9H5qyo42tG5gBmPJingXeF/5UrJMNHTU2OByagKmVkNrbSb
- /rOyri/4lTY838FYj9yuu+mGqGiaue60Tmm0xK6aYD76vRxjnVaPpIACRYpQRw/ZwNlPjxG4
- I4lWZSYEW/FN0BX8QgXe0Aw/ypWZMWq9FJbSJQWXAP6I0DuKhPRL/tS4E4ePo8U27xcDlx0t
- sc3ExEBRUi6ub2Y6efuIgVsrpxLwMjDOYoevjR502icA6l+B5/ERKrO6JlT2zJYasJmR66PI
- ZpEL2A2PVKfO3WjOX9OYH46tO6sln/zaRVStRSYqbdfD237ll0sjeG3b4WOEjCMbf9Ywn6Sq
- zrIxUKjJhI9OIe/lxWD+33504cjmgu+Aur+DoaQ7/NvnRia3Gk7DhoQWl2m5/6jhSaDt8l3L
- kUV/m83s/F3+hPzCNb6WBK8rTiPuRt0t8dsLtDWITqlksL8izt1zEBeJtKdQLTKbPMLeAE=
-IronPort-HdrOrdr: A9a23:L/O/i69dTbhd6c4Z/o9uk+AOI+orL9Y04lQ7vn2ZhyYlFfBws/
- re4cjztCWE8gr5PUtLpTnuAtjjfZqxz+8R3WBVB8bfYOCEghrSEGgB1/qa/9SIIUSXnZ8/6U
- 4jSdkHNDSZNzhHZK3BkW+F+rgbsb262ZHtr8vli1lWcSFWR5dJ0zpZYzzrbXGehzMrOXP6Lv
- ehDwZ8yQZIsE55D/iGOg==
-X-Talos-CUID: 9a23:kHLbZmFg+lO3tP/iqmJk9kI1QOsqT0ee91jrAkOTUV9XF5O8HAo=
-X-Talos-MUID: 9a23:Ma5aWAa7gMafxOBTjTKwvDtvbMlSxf6KC2cByrVYlM+NOnkl
-Received: from mail-qv1-f70.google.com ([209.85.219.70])
+IronPort-Data: A9a23:fZMyYqAoJM35CRVW/5fhw5YqxClBgxIJ4kV8jS/XYbTApDp0hT0Cy
+ TYfWz/VM/iLZzOkLohzaoXkpkpU757UzIJlTANkpHpgcSl2pJueD7x1DKtR0wB+jCHnZBg6h
+ ynLQoCYdKjYdleF+lH2dOCn9SImvU2xbuKUIPbePSxsThNTRi4kiBZy88Y0mYctitWia++3k
+ YqaT/b3Zhn9g1aYDkpOs/jY8E034Kyr0N8llgdWic5j7Qe2e0Y9Ucp3yZGZdxPQXoRSF+imc
+ OfPpJnRErTxpkpF5nuNy94XQ2VTKlLgFVHmZkl+AsBOtiN/Shkaic7XAha9hXB/0F1ll/gpo
+ DlEWAfZpQ0BZ8Ugk8xEO/VU/r0X0QSrN9YrLFDm2fF/wXEqfFPP6O9rC0ELLbY4xcRlBUFht
+ tdCMj8kO0Xra+KemNpXS8Fpj8UnadjhZcYR4yAwiz7eCvkiTNbIRKCiCd1whm9hwJATW6yHN
+ oxAOGoHgBfoOnWjPn8eDII4kP2AjGS5fjFFwL6QjfBnvjGMkV0hjdABNvLyYfCDee9QoHy6+
+ FP9+jv2DAoIGNuQnG/tHnWEw7WncTnAcJsfEaD9+vN0jVm7wGsVBxsLE1yhrpGEZlWWXtteL
+ wkF8HNro/FjpAqkSd7yWxD+q3mB1vIBZ+dt/yQBwFnl4sLpD8yxXADokhYphAQaifIL
+IronPort-HdrOrdr: A9a23:+5C1e6D9hOvMTLLlHel655DYdb4zR+YMi2TDGXoBLiC9Vvbo6v
+ xG/c5rryMc7Qx6ZJhOo6HjBEDtewK4yXcx2/hsAV7AZnichILLFvAa0WKK+VSJcFycygce79
+ YZT0EXMr3N5DNB/KDHCWeDYrId6ejC2oyTwcnl81dRYTdDV5xAhj0JdTpz0XcbeOCFP/cE/V
+ aniPavbgDOGEgqUg==
+X-Talos-CUID: 9a23:MplR0W068etk8AyEuG9G47xfOes/d3rd8WfrA3CaG2JJZ/6+E0Wf0fYx
+X-Talos-MUID: 9a23:DDAh2gUoTVbamLzq/Bj3qDheHsJW2YbwOXsIzpoIoNuoMiMlbg==
+Received: from mail-yb1-f198.google.com ([209.85.219.198])
  by ob1.hc2706-39.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 05 Jun 2023 04:04:49 -0400
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-6260e66ec46so51996086d6.3
- for <qemu-arm@nongnu.org>; Mon, 05 Jun 2023 01:04:49 -0700 (PDT)
+ 05 Jun 2023 04:07:04 -0400
+Received: by mail-yb1-f198.google.com with SMTP id
+ 3f1490d57ef6-bb2202e0108so5467924276.1
+ for <qemu-devel@nongnu.org>; Mon, 05 Jun 2023 01:07:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bu.edu; s=s1gsbu; t=1685952289; x=1688544289;
+ d=bu.edu; s=s1gsbu; t=1685952423; x=1688544423;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=w4A3jYCjeUqlQ62V5urF7yBovv+nvp0YeMEm8/LTD4Y=;
- b=IbMBN+vAcgK+aAFD29t1o/yfaumyrZlp4ewTvq96ZZQOXhdv75UQR+RD1v+hU8Qgn5
- T5Mx3YqU7U6354/hUsjKfa+olIYA8kn5Fckwqr6MaCuInDLfuxGosJJmUd9Vx8aDOtpr
- MV4thWNQaKDI7GGZpbxgOdKD1kRSDf190eNqHKhKs99JRTzYxgko1wDk4sxpQN2CsdtM
- AjK9svvdgZ0qEZb9o3YOjwSZ4uOoa4vciQLTNsJMBVuZSpBsibG2V5zY/R5soRUtQXek
- cCCIPXs7KV/2Yh6v6QibjKjK8pbJqPf6Cx/z5cs5FpkvO5oQs3enBFOW43bPGhpCoaPh
- QJBA==
+ bh=nBsE6ZSAQNXrqj2aXIdHreYcEOPnXGm8mY8CFnppvpI=;
+ b=IvQ9vEr6WpZq4NElD8pacuNJ7DlM9WTZT+XePmlRut+X7NZDHnEkW8zmZ98jm4anRo
+ A0YsWcLVMn8FcmYC0jbqLdFFml3r06c2pNNTwMo56vBWoE8DBllLI6COeH0IH7SapRfR
+ 3XhX4K3uB/tUClvhvJcuQAwUmNnGvtIqxOlm6zoo2tby2FkFMuITRHkjfkio8+oGlFbn
+ iMv63ln7BUlFnpjOPoWjChPGvQDgHRs8hs3bUVW2HiiYyB6W60xY7q1FrkIvM5OwbWor
+ d0m7MnYiAdE7iGA6rAgrzVQfVGUgvlMhBhvDAL+8A7uRg8j47vZ0oQLQev6WxTZsjQx6
+ 3u7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685952289; x=1688544289;
+ d=1e100.net; s=20221208; t=1685952423; x=1688544423;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=w4A3jYCjeUqlQ62V5urF7yBovv+nvp0YeMEm8/LTD4Y=;
- b=OswPd2luvSZ13/s2BRkkSivESCtjhpAx+dlMOBjsaiGJRYYbt31XNodiSVEguEZI69
- X0WwSDLa5ZB4j7i3JXvWTItEj6Rj9nYYi58q5OMqhclG0yWdKWExlY/035LQQwW2NxfN
- U1HNTKoqvagPV/gKobu8895HKxOBua7MWEjB3duVl5ck3vSner++ve1qg9nlZ7N+Ya3f
- rj/hFG+GpFdpTCsp9liRvZ1BuwdinPbEHDmS2BQZ/gV14RRHvYlFIOANN7DpBHkSfjx9
- /7X5eLxB6+4Kwlp9gHSJADMYOlk/cQ9l4V9kFr4/RLtAkeyHm0dmeustvNu2CnP1i1sz
- sIUw==
-X-Gm-Message-State: AC+VfDwCOb3+Mwoq7ratK0xic72Q18jbSx8HqDsLuTgjL2BUMTZ4m6Pp
- MxdROythHfQS2QEnUgi4AOyYyjPKN48wZyIi8PdBNeSuLedcxiX/6z1L7tAkcz/PwdJaEdCkXJS
- DoSpHessCEB9Tsm129kVRi5nVBUk=
-X-Received: by 2002:a05:6214:234c:b0:625:e039:5af1 with SMTP id
- hu12-20020a056214234c00b00625e0395af1mr6631334qvb.42.1685952288850; 
- Mon, 05 Jun 2023 01:04:48 -0700 (PDT)
-X-Received: by 2002:a05:6214:234c:b0:625:e039:5af1 with SMTP id
- hu12-20020a056214234c00b00625e0395af1mr6631314qvb.42.1685952288574; 
- Mon, 05 Jun 2023 01:04:48 -0700 (PDT)
+ bh=nBsE6ZSAQNXrqj2aXIdHreYcEOPnXGm8mY8CFnppvpI=;
+ b=cm7zav6rtI2cYclEt+h8jsBNYY0+6wNB96Dg4gj4e4udYQ9G0C1QHEF6hUqnknMQdU
+ nkGWmnQgIVa5Qs652KOx0DuNCci1xqWZ0W5lEGFQBXn1ZTM5TS8mIsrSmlcTuQcqk1/d
+ UAtWEDhXrdmqJAdlF69G7qRncmKdFLdiROUTrtl/HN6X8uUjns2XYacu6syAJrn+Bt2Q
+ z+DsDD2DDv8Z2lpanuI+aucjOSGQWviWNrepechnl+zibZK5S5GsfDooOANdmPV69acW
+ Ggq6nYaEkvvNcQ49OgTRiGH1LYBmfahtjMNZHLyPP4gpncb2BcmT0LcqHOW6Ea10v21E
+ s9ag==
+X-Gm-Message-State: AC+VfDxchIxVD2CA/qKQ76Kw/xGqWTlSJ3Mh+Zy+tRNY6j5xRrWBzOQd
+ fj/xmQWXUPFYQH05fPAL/14DmZZvo0g8CG7ldNUC+nj1jOfvqlXP4jfwSS6C4nlAk65Bbz2rgKS
+ hgB2SeQ9Tsw+y5yB161Zxfy69Pb54vA==
+X-Received: by 2002:a05:620a:608a:b0:75b:23a0:deba with SMTP id
+ dx10-20020a05620a608a00b0075b23a0debamr28828623qkb.56.1685952403364; 
+ Mon, 05 Jun 2023 01:06:43 -0700 (PDT)
+X-Received: by 2002:a05:620a:608a:b0:75b:23a0:deba with SMTP id
+ dx10-20020a05620a608a00b0075b23a0debamr28828575qkb.56.1685952403068; 
+ Mon, 05 Jun 2023 01:06:43 -0700 (PDT)
 Received: from mozz.bu.edu (mozz.bu.edu. [128.197.127.33])
  by smtp.gmail.com with ESMTPSA id
- c9-20020ac80549000000b003f4a76d4981sm4435084qth.66.2023.06.05.01.04.47
+ s15-20020a05620a16af00b00746b2ca65edsm3985583qkj.75.2023.06.05.01.06.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Jun 2023 01:04:48 -0700 (PDT)
-Date: Mon, 5 Jun 2023 04:04:40 -0400
+ Mon, 05 Jun 2023 01:06:42 -0700 (PDT)
+Date: Mon, 5 Jun 2023 04:06:38 -0400
 From: Alexander Bulekov <alxndr@bu.edu>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Mauro Matteo Cascella <mcascell@redhat.com>, P J P <pj.pandit@yahoo.co.in>,
@@ -147,17 +147,17 @@ Cc: Mauro Matteo Cascella <mcascell@redhat.com>, P J P <pj.pandit@yahoo.co.in>,
  Paul Durrant <paul@xen.org>, Rob Herring <robh@kernel.org>,
  Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, qemu-ppc@nongnu.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v2 2/2] net: Update MemReentrancyGuard for NIC
-Message-ID: <20230605080440.ljfqlc7u6f7ipdty@mozz.bu.edu>
+Subject: Re: [PATCH v2 1/2] net: Provide MemReentrancyGuard * to qemu_new_nic()
+Message-ID: <20230605080616.ooanu5pk2pvs57yi@mozz.bu.edu>
 References: <20230601031859.7115-1-akihiko.odaki@daynix.com>
- <20230601031859.7115-3-akihiko.odaki@daynix.com>
+ <20230601031859.7115-2-akihiko.odaki@daynix.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230601031859.7115-3-akihiko.odaki@daynix.com>
+In-Reply-To: <20230601031859.7115-2-akihiko.odaki@daynix.com>
 X-CES-GSUITE_AUTH: bf3aNvsZpxl8
-Received-SPF: pass client-ip=216.71.137.63; envelope-from=alxndr@bu.edu;
- helo=esa5.hc2706-39.iphmx.com
+Received-SPF: pass client-ip=216.71.140.198; envelope-from=alxndr@bu.edu;
+ helo=esa10.hc2706-39.iphmx.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -167,100 +167,88 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +PTPhoSPg1JN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: U8udYKpJGG/d
 
 On 230601 1218, Akihiko Odaki wrote:
 > Recently MemReentrancyGuard was added to DeviceState to record that the
 > device is engaging in I/O. The network device backend needs to update it
 > when delivering a packet to a device.
 > 
-> This implementation follows what bottom half does, but it does not add
-> a tracepoint for the case that the network device backend started
-> delivering a packet to a device which is already engaging in I/O. This
-> is because such reentrancy frequently happens for
-> qemu_flush_queued_packets() and is insignificant.
+> In preparation for such a change, add MemReentrancyGuard * as a
+> parameter of qemu_new_nic().
 > 
-> Fixes: CVE-2023-3019
-> Reported-by: Alexander Bulekov <alxndr@bu.edu>
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Acked-by: Alexander Bulekov <alxndr@bu.edu>
+
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+
+One minor comment below.
 
 > ---
->  include/net/net.h |  1 +
->  net/net.c         | 14 ++++++++++++++
->  2 files changed, 15 insertions(+)
+>  include/net/net.h             | 1 +
+>  hw/net/allwinner-sun8i-emac.c | 3 ++-
+>  hw/net/allwinner_emac.c       | 3 ++-
+>  hw/net/cadence_gem.c          | 3 ++-
+>  hw/net/dp8393x.c              | 3 ++-
+>  hw/net/e1000.c                | 3 ++-
+>  hw/net/e1000e.c               | 2 +-
+>  hw/net/eepro100.c             | 4 +++-
+>  hw/net/etraxfs_eth.c          | 3 ++-
+>  hw/net/fsl_etsec/etsec.c      | 3 ++-
+>  hw/net/ftgmac100.c            | 3 ++-
+>  hw/net/i82596.c               | 2 +-
+>  hw/net/igb.c                  | 2 +-
+>  hw/net/imx_fec.c              | 2 +-
+>  hw/net/lan9118.c              | 3 ++-
+>  hw/net/mcf_fec.c              | 3 ++-
+>  hw/net/mipsnet.c              | 3 ++-
+>  hw/net/msf2-emac.c            | 3 ++-
+>  hw/net/mv88w8618_eth.c        | 3 ++-
+>  hw/net/ne2000-isa.c           | 3 ++-
+>  hw/net/ne2000-pci.c           | 3 ++-
+>  hw/net/npcm7xx_emc.c          | 3 ++-
+>  hw/net/opencores_eth.c        | 3 ++-
+>  hw/net/pcnet.c                | 3 ++-
+>  hw/net/rocker/rocker_fp.c     | 4 ++--
+>  hw/net/rtl8139.c              | 3 ++-
+>  hw/net/smc91c111.c            | 3 ++-
+>  hw/net/spapr_llan.c           | 3 ++-
+>  hw/net/stellaris_enet.c       | 3 ++-
+>  hw/net/sungem.c               | 2 +-
+>  hw/net/sunhme.c               | 3 ++-
+>  hw/net/tulip.c                | 3 ++-
+>  hw/net/virtio-net.c           | 6 ++++--
+>  hw/net/vmxnet3.c              | 2 +-
+>  hw/net/xen_nic.c              | 4 ++--
+>  hw/net/xgmac.c                | 3 ++-
+>  hw/net/xilinx_axienet.c       | 3 ++-
+>  hw/net/xilinx_ethlite.c       | 3 ++-
+>  hw/usb/dev-network.c          | 3 ++-
+>  net/net.c                     | 1 +
+>  40 files changed, 75 insertions(+), 41 deletions(-)
 > 
 > diff --git a/include/net/net.h b/include/net/net.h
-> index a7d8deaccb..685ec58318 100644
+> index 1448d00afb..a7d8deaccb 100644
 > --- a/include/net/net.h
 > +++ b/include/net/net.h
-> @@ -124,6 +124,7 @@ typedef QTAILQ_HEAD(NetClientStateList, NetClientState) NetClientStateList;
->  typedef struct NICState {
->      NetClientState *ncs;
->      NICConf *conf;
-> +    MemReentrancyGuard *reentrancy_guard;
->      void *opaque;
->      bool peer_deleted;
->  } NICState;
-> diff --git a/net/net.c b/net/net.c
-> index 982df2479f..3523cceafc 100644
-> --- a/net/net.c
-> +++ b/net/net.c
-> @@ -332,6 +332,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
->      nic = g_malloc0(info->size + sizeof(NetClientState) * queues);
->      nic->ncs = (void *)nic + info->size;
->      nic->conf = conf;
-> +    nic->reentrancy_guard = reentrancy_guard,
->      nic->opaque = opaque;
->  
->      for (i = 0; i < queues; i++) {
-> @@ -805,6 +806,7 @@ static ssize_t qemu_deliver_packet_iov(NetClientState *sender,
->                                         int iovcnt,
->                                         void *opaque)
->  {
-> +    MemReentrancyGuard *owned_reentrancy_guard;
->      NetClientState *nc = opaque;
->      int ret;
->  
-> @@ -817,12 +819,24 @@ static ssize_t qemu_deliver_packet_iov(NetClientState *sender,
->          return 0;
->      }
->  
-> +    if (nc->info->type != NET_CLIENT_DRIVER_NIC ||
-> +        qemu_get_nic(nc)->reentrancy_guard->engaged_in_io) {
-> +        owned_reentrancy_guard = NULL;
-> +    } else {
-> +        owned_reentrancy_guard = qemu_get_nic(nc)->reentrancy_guard;
-> +        owned_reentrancy_guard->engaged_in_io = true;
-> +    }
-> +
->      if (nc->info->receive_iov && !(flags & QEMU_NET_PACKET_FLAG_RAW)) {
->          ret = nc->info->receive_iov(nc, iov, iovcnt);
->      } else {
->          ret = nc_sendv_compat(nc, iov, iovcnt, flags);
->      }
->  
-> +    if (owned_reentrancy_guard) {
-> +        owned_reentrancy_guard->engaged_in_io = false;
-> +    }
-> +
->      if (ret == 0) {
->          nc->receive_disabled = 1;
->      }
-> -- 
-> 2.40.1
-> 
+> @@ -157,6 +157,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
+>                         NICConf *conf,
+>                         const char *model,
+>                         const char *name,
+> +                       MemReentrancyGuard *reentrancy_guard,
+>                         void *opaque);
+
+Does it make sense to roll *reentrancy_guard into NICConf here?

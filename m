@@ -1,155 +1,107 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3704294ejb;
-        Tue, 6 Jun 2023 12:29:14 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5II+rn2YkPslZl2V40aRVk6/hRR58NFlHzdOY9vjQ76OxS3hNe9Q5dOCefrwjXkvtoQdfZ
-X-Received: by 2002:a81:4e55:0:b0:568:8e96:7008 with SMTP id c82-20020a814e55000000b005688e967008mr3447748ywb.0.1686079753700;
-        Tue, 06 Jun 2023 12:29:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686079753; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3735145ejb;
+        Tue, 6 Jun 2023 13:35:08 -0700 (PDT)
+X-Received: by 2002:a05:6808:b04:b0:39a:bc5c:3975 with SMTP id s4-20020a0568080b0400b0039abc5c3975mr2877721oij.17.1686083708536;
+        Tue, 06 Jun 2023 13:35:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686083708; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qvr0c8p6dEjrx+vdMewp7wfviweYDHllb5Gnofj9Pc0Yt35nlduKXwlq7xWxaYPRwN
-         a+w2y96qE85QWSzdWpF1M+6RllxC7HQaj6KN/A+UkqGIX/nIoxBwUbkzHoYUY8ERlBvE
-         ye8l4wxIkrYlUt2sgH+xDNQz6q5Q+GlUvqqnKHaN3Fq5Mk8GFJviH+fM/VUjDmNoMgTU
-         JvI3ZlaHr9pQjytxbfOurU2xH2KRND+cFnHIERbRbh8e1IXEWYz/JWVF6lYXKv6LhQIK
-         Wu1mN7Olo1AW5BWkKVc1jxo2+CubYklDgP8E2+DkcFaS3DZrwse2t4Wvu0vngAE/Yzml
-         5Qtw==
+        b=o37GkW5/t+UELk2FsVsKcPyF3v1WYM5SfxhO0Ufb6HbPnuq6EmSbzLdMzXHD7obVzr
+         m6XfFp/TiTnKkwSiXxe23zCG7CkevORvbFz0HRnZApVR+nkCpKoR+ecrz98ZPAkP7SXS
+         NK1qSxbVgnsGXZtrbX6fbjlukJn6iG5eTMshDVu1sqk+ikzxVVfGGFldalPi8Qfdm7AI
+         16tkzLxoRhEeGLG1yYRNcIqwx7hNuNw54fTjLdBSTVIOtsWAOTGQBW4R10E4Gzral1Pp
+         Efp5yROWCPuq2qQ2ZaX1v0TxX/cjqGNbzcRgdH4Xp5msI+lDqXR+CYU1iu9EotbSA3q1
+         ZFxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=n78VaPQMM4BWAcNTYBayvcjW5p5AXnzFDxlYIAeRgIM=;
-        b=UpD0S+1yjfovFL8ruZeMZXYvtFhxJSjxcPake11mpY/J9lDn1h86IOpRK8n+c1uENU
-         Td0jAAXitVQCMQoJ154c6VuotsRqf1g+HQwiUgvRzN9CRPWb8I4RG9kcKuYbGye9a+Lw
-         IcpC+8qFYD2yY5mrzfaQ+uNl4Tgi5KshrOZQcIqRcO5gNTKfAJsEk7JBhwIG9ngRAJvC
-         wWeaHfHVJp7Rj809Hg9onTcvxWF+wZv5KhVchYIZ7YDxhWVvZyeH9N1U5K8AOun3bKnc
-         LVDgfDFdTBOr8Ngc/VIbFF8coOlGc/ROzehMPDFyDe8arpwN54TjoITHbI+95AN+C2EP
-         brVQ==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=0JBotc/qIEtK+5N2qBf6KHpPBVmCH9Jae5s8Nn7fNcA=;
+        b=OKuB4RMT062gY9pQfVu5H7NQBe0HHU8Q0nMPTYf3kN9wYALf8UUxMyle/KHZTNP/Wv
+         8Vg/5/z35F5FGqlZ65T5uJhnQmiivZJ06VOb/3+F20UqGgp31lKD+BLxPB5XR3RUU3mr
+         iWMfeE7JSCthxlGzYEuTnaOeRcwR3AR3/Dvg8mnM4LmBI0ev8EMEUX7DU4lthaOSqX9k
+         yOWlVFRPsAk297+Pjaq2NgGDhrQUMeZmkh8dhEs/lRH3qiCwiXZFPKsoMwadcL6H6yb3
+         3vPLFTGsZfptsf4BfnQypR5yCw1UCTXNCClYIWTXQKz/uLifYD+1janRGuRK1ZjpwQF0
+         +dzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fmt6DQ4U;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id d10-20020a814f0a000000b00565bb3831a5si9348127ywb.412.2023.06.06.12.29.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Jun 2023 12:29:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T4g697jy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w124-20020acadf82000000b0038c658cfde9sor4109996oig.8.2023.06.06.13.35.08
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 06 Jun 2023 13:35:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fmt6DQ4U;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356JN1se023941;
-	Tue, 6 Jun 2023 19:29:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
- from : to : cc : date : in-reply-to : references : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=n78VaPQMM4BWAcNTYBayvcjW5p5AXnzFDxlYIAeRgIM=;
- b=fmt6DQ4U9H2aD727ghjtUZkzwinBII4Q51EMjiCQr0zmxq6aiwWqIX9thhMSANCUGpFG
- koHB8kLwzVmWTglFw/RTQig/DP85bRYF7SngRDHQvmU5deIWtwCE+bpGKgy7rQWuZrIw
- tZZwSXYYeXBPj1sZwwdVBNSToHC3ILozwuXN3YOsIVavHmZmzdeW/b4HrlrHVnZIYDyE
- IHRExZV1wJlW2WKpEwclX+wBLwWCfFqJ4i4rxmW4HJzZDuo9pYeANSe3KdoS68vRPdJb
- BX3biJNfy1lIj0NU7nrNhlM0ja1Q000tu124ejSMZ0xtvK3GpY2fukcJaQ3lu935u5HM +A== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r2awmr40j-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 19:29:13 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356JNjCm027051;
-	Tue, 6 Jun 2023 19:29:12 GMT
-Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com [169.51.49.102])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r2awmr3yj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 19:29:12 +0000
-Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
-	by ppma06ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 356IZD8K014735;
-	Tue, 6 Jun 2023 19:29:10 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
-	by ppma06ams.nl.ibm.com (PPS) with ESMTPS id 3r2a77g1qx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 19:29:10 +0000
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
-	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356JT8mP44892530
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 6 Jun 2023 19:29:08 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 2378420043;
-	Tue,  6 Jun 2023 19:29:08 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 7C31A20040;
-	Tue,  6 Jun 2023 19:29:07 +0000 (GMT)
-Received: from [9.171.41.107] (unknown [9.171.41.107])
-	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue,  6 Jun 2023 19:29:07 +0000 (GMT)
-Message-ID: <3c3df53d22f6f122cd389a9ed748c1655f8d77a6.camel@linux.ibm.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=T4g697jy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1686083708; x=1688675708;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=0JBotc/qIEtK+5N2qBf6KHpPBVmCH9Jae5s8Nn7fNcA=;
+        b=T4g697jyUs5bOxQF/NRjXCs1NQXMlAysB9l+qvPTmTgEnfcb8gWi7x5MglOJRGEwJm
+         csc1Dvl0vFoowiSshu0OxYsEl4no61gdpkhoKsNi2JU3D+MT0eMymdvEXAQb/fuES8Fl
+         lbABdOBJVPAvn31MMGq0uLbtg5qDVLgBYu8CKXa0eY8nlk4DWJKg+BOJ9aE/C0XnEOjQ
+         2neKh8/4GgGl3Ayf+hXg0LO9VQ8HpDAX8UTrssmgGK7oT3aQhhIBUhQQWhL7DhGultTb
+         iXbjLkaECHfKienmYxrW1Xnj2haRftCgATGd0G10FAj+H2JuZAQ5NnQ7iZWnqNFMVFSG
+         BMgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686083708; x=1688675708;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0JBotc/qIEtK+5N2qBf6KHpPBVmCH9Jae5s8Nn7fNcA=;
+        b=D78BbcT5Z1WqftimpcdtmDJZidv1yH0L8Fhy63Lj3Y3BIxhjOf8t74EXYfZPqhv7Gy
+         ukgG5TdzXfrmbqibkmMMzup9bOgxeCGIBWJnqngJppf5a8lPeIf+hLv0IISKvbT7K64n
+         x6+YEh9Wu2X3u0QbysL31mgoBvku/ZnEAQBqqxNcoVEM9f82izSdU5/1b+OUE6NCYwDk
+         gTz8Jd01zvZTFlem1M5aze8OrMqm8DUYz1uvuRGJnSkEi9AHyXbqWkzsRzg7ByXL4IzP
+         jrIe1QX7vMC3mDVxM7CGJZVXf/EHDjC6ej2BN5Rj28Zy1ggUvqMM0EPW8WoqH3wJ0KRw
+         gCXA==
+X-Gm-Message-State: AC+VfDyOGS5aUMweAZy2GsYyn3CSrns3A8lkJGvFTfkvmlbtKCewImkd
+	qP927HzGhwDr32xwA8++aH3IlRkU
+X-Google-Smtp-Source: ACHHUZ7h8cByxn2DsjX6R4chZAfxaLW42HX09YlN1im6nCnvXhftA/NsEkHAATzBVIkeSCAEdBEx9g==
+X-Received: by 2002:a54:4588:0:b0:39c:4553:9644 with SMTP id z8-20020a544588000000b0039c45539644mr3016392oib.42.1686083708137;
+        Tue, 06 Jun 2023 13:35:08 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPV6:2602:ae:1598:4c01:b7fa:ce59:1445:805a? ([2602:ae:1598:4c01:b7fa:ce59:1445:805a])
+        by smtp.gmail.com with ESMTPSA id d18-20020a170902aa9200b001b20dc1b3c9sm4441343plr.200.2023.06.06.13.35.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Jun 2023 13:35:07 -0700 (PDT)
+Message-ID: <dbeb72bd-ea92-a68b-e663-fe2b41525957@linaro.org>
+Date: Tue, 6 Jun 2023 13:35:05 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
 Subject: Re: [PATCH v3 2/8] linux-user: Add "safe" parameter to
  do_guest_openat()
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
-        Alex
- =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-        Laurent Vivier
- <laurent@vivier.eu>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        David
- Hildenbrand <david@redhat.com>
-Cc: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-Date: Tue, 06 Jun 2023 21:29:07 +0200
-In-Reply-To: <ad49111a-5dd9-671b-f18f-009a7eae73b0@linaro.org>
+Content-Language: en-US
+To: Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
 References: <20230606132743.1386003-1-iii@linux.ibm.com>
-	 <20230606132743.1386003-3-iii@linux.ibm.com>
-	 <ad49111a-5dd9-671b-f18f-009a7eae73b0@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37) 
-MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: BCib8dL1E-XC1SvputxouHPyBhQ_jmjm
-X-Proofpoint-ORIG-GUID: _dUF8T9s6hA8na34JGvTTX2v5gFWywa7
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-06-06_14,2023-06-06_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- malwarescore=0 priorityscore=1501 clxscore=1015 impostorscore=0
- spamscore=0 mlxscore=0 adultscore=0 mlxlogscore=696 phishscore=0
- bulkscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2305260000 definitions=main-2306060163
-X-TUID: Yo/5QwG1eiEW
+ <20230606132743.1386003-3-iii@linux.ibm.com>
+ <ad49111a-5dd9-671b-f18f-009a7eae73b0@linaro.org>
+ <3c3df53d22f6f122cd389a9ed748c1655f8d77a6.camel@linux.ibm.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <3c3df53d22f6f122cd389a9ed748c1655f8d77a6.camel@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: hafw5dGIgsv4
 
-On Tue, 2023-06-06 at 11:24 -0700, Richard Henderson wrote:
-> On 6/6/23 06:27, Ilya Leoshkevich wrote:
-> > @@ -8518,7 +8522,11 @@ int do_guest_openat(CPUArchState *cpu_env,
-> > int dirfd, const char *pathname,
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return fd;
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> > =C2=A0=20
-> > -=C2=A0=C2=A0=C2=A0 return safe_openat(dirfd, path(pathname), flags, mo=
-de);
-> > +=C2=A0=C2=A0=C2=A0 if (safe) {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return safe_openat(dirfd, p=
-ath(pathname), flags, mode);
-> > +=C2=A0=C2=A0=C2=A0 } else {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return openat(dirfd, path(p=
-athname), flags, mode);
-> > +=C2=A0=C2=A0=C2=A0 }
-> > =C2=A0 }
->=20
-> I'm not keen on this, as it seems like the wrong abstraction.=C2=A0 But I
-> can't immediately=20
-> think of how it could be better structured.
+On 6/6/23 12:29, Ilya Leoshkevich wrote:
+>> The only concrete objection I have is the change of API, which could
+>> be fixed with return
+>> get_errno(openat(...)).
+> 
+> I believe both openat() and safe_openat() return -1 on error and set
+> errno, or am I missing something?
+Oops, no, bad memory on my part -- I thought safe_foo returned -errno.
 
-I also thought about temporarily clearing signal_pending in gdbstub,
-but could not convince myself that this were safe.
 
-> The only concrete objection I have is the change of API, which could
-> be fixed with return=20
-> get_errno(openat(...)).
-
-I believe both openat() and safe_openat() return -1 on error and set
-errno, or am I missing something?
-
->=20
-> With that,
->=20
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->=20
->=20
-> r~
+r~

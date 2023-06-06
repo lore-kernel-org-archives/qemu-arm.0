@@ -1,174 +1,230 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3478922ejb;
-        Tue, 6 Jun 2023 06:14:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Py9MFh3RwvDhnLzShxtcNNAsQvFgOs7cMwAvHiRWJKL3T3RiNOX+fAITPDhQ3tBMxDYZd
-X-Received: by 2002:ac8:5ac5:0:b0:3f5:19e4:34ce with SMTP id d5-20020ac85ac5000000b003f519e434cemr2134667qtd.48.1686057248104;
-        Tue, 06 Jun 2023 06:14:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686057248; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3487677ejb;
+        Tue, 6 Jun 2023 06:27:58 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5R4GFYewi43mFIImbVmtotD72U/RcFupBprIocI8muAuVoCiihDlZ+LMsWXBxAPSOXg4r4
+X-Received: by 2002:a92:d484:0:b0:33d:6988:bfea with SMTP id p4-20020a92d484000000b0033d6988bfeamr1476232ilg.21.1686058077922;
+        Tue, 06 Jun 2023 06:27:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686058077; cv=none;
         d=google.com; s=arc-20160816;
-        b=ULUA+bQV+J4EKLEc27ofWcwNVuwo4gkGwlAUgPk8tVub7U2RuCYaMl6uepgNdjsEPO
-         TyizP7z0PYhOH40WLt+hjkphS2vx7y3idD1L08T5BHScT1UXa+4+nZq+xdctim1Gpj/Y
-         PxTu2ZyShEop0X3hLT9v2w81l8XYfDX8kee+v/gJ44HN/xheErPGBoU6yWEdnrZsjJwh
-         xuSvL4ZjyrsNAUnISxUhnBB8eaqV6hiG+GelF5ro+eSMuygPV1D9NZ6T4ikrsFBO37CT
-         0sFc6vFDZbPfKdIwGHAfN+vIOmFqRIR0pF4fJ6BVa1ZLt36PmWNTR2eZHNAFAKrwqWDf
-         ASxQ==
+        b=uHJ38yww+LN7l2tUYgDKC8A9qLIgy36+Boj1ED7SkWm38O2eaOaoTgS/CcgB4pipaJ
+         troi7G5NHHR+fShT2k4ls/y7E+fLS+gr+xZm7Kaolu3hxou1Ol0fSDTLSjBKKkbmZFV7
+         TLhJSP/Zj5f8J2zk3KmD+7v8yBpL5BrrwEw4Z/vhJxA8tTSpUyDLBrYqjv667YIAghfK
+         H+/XNR+z7nURaA6utb8GBaiHyd3kcQMEg0HAFk0oGf78b/s46NA5e/DaxwuGN6c2ru0l
+         q7ht+YEATRfiVEVda+mG2cR7swLBY9j7y54gwcDevOlilqH/g+1piio/hwREsO4UIH4U
+         OkLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=mKWhSrRCMQhVoMMnQJ7rvIRbYbcRujESbqCptnmoUF0=;
-        b=w59E/2ecLPLKkL1V3oYfOT368KiIOyPMfLoPlSf0ziStY07My3xTZNSDQzUXm9n6H/
-         F+KRrFlnXUCQ24dmY4wjqfA24o/otLsk2cDulGIWj6fCa9YpLik2B5vQFGJnNIX2saFc
-         E0hjkC0JrOSvDOi7LB8w83koUnr5MIcaaWbXUdCYcGXwJMFa8FpllRgt/A1Ec9SOAqUc
-         rOtGtbbC95vWVCFqn7ExwY4wHilyOMXBhQ15KkQqfWSyEu2HsVkUzjaXqM+9ebnEWaX2
-         aC5goINSDV0hif92D+3M1iYGnZxaiXmCu0jl9hW9CvzQViNV47ofi5HEtdA6baJna7Ui
-         ddAA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=xH5VHKp/pM0EgokTZ+MwXc2AaB4DAgaCu4DiQOQiJX4=;
+        b=NW0gdGKuRUuLlOneDzPIf9nlTkv1Z/LdsEy47Or3zYD3bLyntU8Kv+R8EZwCcKzxRF
+         AvU9lGyj4fASB/RBBxMZ+mIxnTc6k3cORm/p/bFvGeGVzPuntHSKjM1JLEXQsEezMrgK
+         z9XHeyKsqX/Be62n7x3Lvx3Cur7BX2mBYzFYvVMuQ1FsStitzfqW1HdDdemnm9NuMecd
+         kBdhtx8TvF+EykfAi6A4Gy8BTKcutV0ZzMLa9FRm2W0mVGe15zgRkinW1T6IjS6RNJSp
+         lDdnuDBO8GMaQxkKod55xx4vdVIUlf3ADqKvPBJ++JOroNIP0w41bDDOZID0z1HpY5uD
+         WHXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n64v3h9o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17-20020a05622a101100b003ef4a0fbacesi6110445qte.430.2023.06.06.06.14.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jun 2023 06:14:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DLRNrQhd;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id r17-20020a92ce91000000b0033aaabf8e07si4162042ilo.120.2023.06.06.06.27.57
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Jun 2023 06:27:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=n64v3h9o;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q6WVK-0002FS-Ln; Tue, 06 Jun 2023 09:13:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6WVF-0002EP-91
- for qemu-devel@nongnu.org; Tue, 06 Jun 2023 09:13:37 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6WV8-00017U-TF
- for qemu-devel@nongnu.org; Tue, 06 Jun 2023 09:13:33 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-3f6d7abe9a4so53146465e9.2
- for <qemu-devel@nongnu.org>; Tue, 06 Jun 2023 06:13:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686057209; x=1688649209;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=mKWhSrRCMQhVoMMnQJ7rvIRbYbcRujESbqCptnmoUF0=;
- b=n64v3h9oCbDMxz59DEeJMEtv1Fx/XtxzcQ6NT3UNC3RDmPYzDTugkgL2qmbqrShvqn
- AMKgPCg0rDw+IKFR5ZAVZpwoya67KLZhMX++gjSP220Ca+mmbJSppGkbOfzLpidsqS0s
- Gx8j8w8FB9kE/tYSF1HpskqKXzNMde6m6VCgdAXvB9H9szaCGc4Vg9myqyHvGi9/eR1p
- cz3dWF8YTldPFFDZEOBNSTuX0N+NmzXU50zocg4TJAZm0FHSu52qolSdLOeP2eY6qqoH
- dSOQ+vP2pKlZ7yqThw9svr2uO1HoJlBksO8/DmOV2oGwby3sbbjYoJOu84B3dOPKO3VB
- 5B9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686057209; x=1688649209;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mKWhSrRCMQhVoMMnQJ7rvIRbYbcRujESbqCptnmoUF0=;
- b=HvNzitySUL/iGM+i7Mo0faznR3NG7X6j1JPOy7vTM8J4l+QHLIqltC7DTaxbD05jaB
- IWNrpC9yKntSfUtlK3WKTkzkcJhjSulfMz/iUf9TLEk+VtwbHhL7ps7IWd2GfVrnJO98
- utgRk9aE8N0Q4hV42Tf0nhQLepFwYK/56TfugQJpIw1KT/NFKMSrn6HTkz9d17RKrMK1
- RrLunDY0UFlcmrgb0xRx/ryeJettyWq00fOP4d+tKF9UROqkaiHZXniYzEww1caixFHZ
- C3uBbZaCC+QtBYIc5KOKDfr5/ikK2gnE4+YotNvypNYrEMcg8qvthiDoYX5pnqp/+sIl
- Ovfw==
-X-Gm-Message-State: AC+VfDxyALqd1QOC9ZfMYAT+SW8mW8UJ2brUmtXzsvO0uzf36N07DgRz
- gvADPHGDag6RetEcVs7S+Fr6hw==
-X-Received: by 2002:a05:600c:2058:b0:3f4:2365:e5ac with SMTP id
- p24-20020a05600c205800b003f42365e5acmr2029596wmg.13.1686057208924; 
- Tue, 06 Jun 2023 06:13:28 -0700 (PDT)
-Received: from [192.168.69.115] (vbo91-h01-176-184-50-104.dsl.sta.abo.bbox.fr.
- [176.184.50.104]) by smtp.gmail.com with ESMTPSA id
- t14-20020a7bc3ce000000b003f60e143d38sm13951330wmj.11.2023.06.06.06.13.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jun 2023 06:13:28 -0700 (PDT)
-Message-ID: <d2d9d803-5cdd-6b31-6127-ac93ace39439@linaro.org>
-Date: Tue, 6 Jun 2023 15:13:26 +0200
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DLRNrQhd;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356DCBFK006696;
+	Tue, 6 Jun 2023 13:27:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=xH5VHKp/pM0EgokTZ+MwXc2AaB4DAgaCu4DiQOQiJX4=;
+ b=DLRNrQhd17jiTCUlQR8Kt0sjKX7E07+3+pdjL7/bTCywXo0DNFJGHS4f+ELk/+bLVe0g
+ enLpbB37lEajPz2xfAjS/4pJMy/Amctg0ZSrs9GW2JSoZbw7huas7mh6AsrV0g4qZjE1
+ mpBEGL6WHrkPW6tCzUmOrqVvvKGhOyJCdK+nU8rXYHm9gkXcSTlbABbr4Urea4P2pK/1
+ DeEIs0dh79YKtEntSCCcxNYh2Lx/RE1gG2jzXRyihanHZemlRAc1qnnAe+4M/AZopKOy
+ z286CU2Dnrrxv/iPVkGRvn1Gyhc+BlklzRHYM39KtADszLSIbxJ+EYorglwI4miXlq9q pQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25fm8fbr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 13:27:56 +0000
+Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356DCGZZ006837;
+	Tue, 6 Jun 2023 13:27:56 GMT
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25fm8faj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 13:27:55 +0000
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 3568Gl9R017253;
+	Tue, 6 Jun 2023 13:27:53 GMT
+Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
+	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3qyxg2hyja-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 13:27:53 +0000
+Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
+	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356DRp8u47579528
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 6 Jun 2023 13:27:51 GMT
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id F3E4620043;
+	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id B15E420040;
+	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+Received: from heavy.boeblingen.de.ibm.com (unknown [9.155.209.184])
+	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        David Hildenbrand <david@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v3 1/8] linux-user: Expose do_guest_openat() and do_guest_readlink()
+Date: Tue,  6 Jun 2023 15:27:36 +0200
+Message-Id: <20230606132743.1386003-2-iii@linux.ibm.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230606132743.1386003-1-iii@linux.ibm.com>
+References: <20230606132743.1386003-1-iii@linux.ibm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH 2/2] hw/sd/allwinner-sdhost: Don't send non-boolean IRQ
- line levels
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Guenter Roeck <linux@roeck-us.net>, qemu-stable@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-References: <20230606104609.3692557-1-peter.maydell@linaro.org>
- <20230606104609.3692557-3-peter.maydell@linaro.org>
- <635fdcd8-23fe-c0db-c912-3aa0517dd4b7@linaro.org>
- <CAFEAcA9cObnb11cSS_StbSHdP0aB6sDeqSHfjb3-qRBfy7K9Kw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9cObnb11cSS_StbSHdP0aB6sDeqSHfjb3-qRBfy7K9Kw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UJeSy0xxX6Te
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: Smpofwky4eEQxgPb9M6O5cgjP_WSouAO
+X-Proofpoint-ORIG-GUID: 5ngXxn_AIYDEyh66D0-7w60HAviRCDTU
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-06-06_08,2023-06-06_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ mlxlogscore=999 clxscore=1015 malwarescore=0 priorityscore=1501
+ lowpriorityscore=0 adultscore=0 phishscore=0 bulkscore=0 mlxscore=0
+ spamscore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2304280000 definitions=main-2306060110
+X-TUID: pNrfk/rDLI6Q
 
-On 6/6/23 14:55, Peter Maydell wrote:
-> On Tue, 6 Jun 2023 at 13:39, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi Peter,
->>
->> On 6/6/23 12:46, Peter Maydell wrote:
->>> QEMU allows qemu_irq lines to transfer arbitrary integers.  However
->>> the convention is that for a simple IRQ line the values transferred
->>> are always 0 and 1.  The A10 SD controller device instead assumes a
->>> 0-vs-non-0 convention, which happens to work with the interrupt
->>> controller it is wired up to.
->>>
->>> Coerce the value to boolean to follow our usual convention.
->>
->> I remember once wanting to convert qemu_set_irq() to take a boolean
->> argument but someone said using integer was more useful because ...?
->> I searched a bit but can't find that in my mail archives, maybe this
->> was on IRC. Any clue? (I find simpler to use a boolean rather than
->> having a convention of using integers restricted to [0, 1] range).
-> 
-> We have a lot of use cases where we just want to transfer a boolean
-> value between two devices. We have a few use cases where we want to
-> transfer an arbitrary integer across the channel between two devices.
-> (For instance hw/intc/etraxfs_pic.c:pic_update() sends a vector
-> number to the CPU via a qemu_irq -- see commit f4f643882d9dc467.)
+These functions will be required by the GDB stub in order to provide
+the guest view of /proc to GDB.
 
-Thanks for this reference!
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+---
+ linux-user/qemu.h    |  3 +++
+ linux-user/syscall.c | 54 ++++++++++++++++++++++++++++----------------
+ 2 files changed, 38 insertions(+), 19 deletions(-)
 
-> At the moment we use qemu_irq() for both. In theory we could
-> construct a parallel set of machinery for wiring up and setting
-> values for the "want an integer" case and restrict qemu_irq() to
-> bool only, but the lazy path is to use the same function for both.
-> (If we had machinery that made it easy to construct arbitrary
-> strongly-typed signal connections, that might perhaps be ideal.
-> But it's probably not very easy especially in C.)
-
-I see, thanks.
-
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 92f9f5af41c..a5830ec2396 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -165,6 +165,9 @@ typedef struct TaskState {
+ } TaskState;
+ 
+ abi_long do_brk(abi_ulong new_brk);
++int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
++                    int flags, mode_t mode);
++ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz);
+ 
+ /* user access */
+ 
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 83685f0aa59..2d3070cfd62 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8448,7 +8448,8 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
+ }
+ #endif
+ 
+-static int do_openat(CPUArchState *cpu_env, int dirfd, const char *pathname, int flags, mode_t mode)
++int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
++                    int flags, mode_t mode)
+ {
+     struct fake_open {
+         const char *filename;
+@@ -8520,6 +8521,36 @@ static int do_openat(CPUArchState *cpu_env, int dirfd, const char *pathname, int
+     return safe_openat(dirfd, path(pathname), flags, mode);
+ }
+ 
++ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz)
++{
++    ssize_t ret;
++
++    if (!pathname || !buf) {
++        errno = EFAULT;
++        return -1;
++    }
++
++    if (!bufsiz) {
++        /* Short circuit this for the magic exe check. */
++        errno = EINVAL;
++        return -1;
++    }
++
++    if (is_proc_myself((const char *)pathname, "exe")) {
++        /*
++         * Don't worry about sign mismatch as earlier mapping
++         * logic would have thrown a bad address error.
++         */
++        ret = MIN(strlen(exec_path), bufsiz);
++        /* We cannot NUL terminate the string. */
++        memcpy(buf, exec_path, ret);
++    } else {
++        ret = readlink(path(pathname), buf, bufsiz);
++    }
++
++    return ret;
++}
++
+ static int do_execveat(CPUArchState *cpu_env, int dirfd,
+                        abi_long pathname, abi_long guest_argp,
+                        abi_long guest_envp, int flags)
+@@ -8994,7 +9025,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_open:
+         if (!(p = lock_user_string(arg1)))
+             return -TARGET_EFAULT;
+-        ret = get_errno(do_openat(cpu_env, AT_FDCWD, p,
++        ret = get_errno(do_guest_openat(cpu_env, AT_FDCWD, p,
+                                   target_to_host_bitmask(arg2, fcntl_flags_tbl),
+                                   arg3));
+         fd_trans_unregister(ret);
+@@ -9004,7 +9035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_openat:
+         if (!(p = lock_user_string(arg2)))
+             return -TARGET_EFAULT;
+-        ret = get_errno(do_openat(cpu_env, arg1, p,
++        ret = get_errno(do_guest_openat(cpu_env, arg1, p,
+                                   target_to_host_bitmask(arg3, fcntl_flags_tbl),
+                                   arg4));
+         fd_trans_unregister(ret);
+@@ -10229,22 +10260,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             void *p2;
+             p = lock_user_string(arg1);
+             p2 = lock_user(VERIFY_WRITE, arg2, arg3, 0);
+-            if (!p || !p2) {
+-                ret = -TARGET_EFAULT;
+-            } else if (!arg3) {
+-                /* Short circuit this for the magic exe check. */
+-                ret = -TARGET_EINVAL;
+-            } else if (is_proc_myself((const char *)p, "exe")) {
+-                /*
+-                 * Don't worry about sign mismatch as earlier mapping
+-                 * logic would have thrown a bad address error.
+-                 */
+-                ret = MIN(strlen(exec_path), arg3);
+-                /* We cannot NUL terminate the string. */
+-                memcpy(p2, exec_path, ret);
+-            } else {
+-                ret = get_errno(readlink(path(p), p2, arg3));
+-            }
++            ret = get_errno(do_guest_readlink(p, p2, arg3));
+             unlock_user(p2, arg2, ret);
+             unlock_user(p, arg1, 0);
+         }
+-- 
+2.40.1

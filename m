@@ -1,224 +1,143 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3487686ejb;
-        Tue, 6 Jun 2023 06:27:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7XmLZR6seahT0Xr1VDF8FwYH55MIHlMRDvumsixsKXggAzn75DaN7Nb8K4OFbgm6YP7o9O
-X-Received: by 2002:a0d:e547:0:b0:569:43de:4abf with SMTP id o68-20020a0de547000000b0056943de4abfmr2064722ywe.40.1686058078519;
-        Tue, 06 Jun 2023 06:27:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686058078; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3499632ejb;
+        Tue, 6 Jun 2023 06:47:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5rlPOtDsWqsu0epJGiDiJ/a7FjKwWpltzg0l3T5NjCdCXnvKCcVgrMm5vOkEx9EV8A4+RO
+X-Received: by 2002:a05:6214:765:b0:629:e646:bdbe with SMTP id f5-20020a056214076500b00629e646bdbemr1746440qvz.24.1686059265778;
+        Tue, 06 Jun 2023 06:47:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686059265; cv=none;
         d=google.com; s=arc-20160816;
-        b=sQYmJBkifhqYtApTp7NKZEosFqEErYob/ZVaz7m20Wty41qmvbB4jpL6Wtt/8HTOhf
-         gS3LtmEyrwJLgTjFGSii5BdZhGhN248DW+OPFqcXD5rU0ONpn+1gyMr4TWwjPyB+GIsF
-         n8JuZ8xty8/Z505zKj7O81qxuXkVDObyjw20Zy5JvXu3N+AtHOyua3d1H5fJOFF4ifdY
-         46m8GTikK0ui3Tm5f9T200+fMqItW07Vmd2nQxGLL5h7EUxyV9KULyyQ9I2poKrkf4Mk
-         J/uLcpckqEi+CIHQLNDGskAmOSThGCC6HZmuPqVp3bjjBBupZRZi5RVeLmywkM40Jyu1
-         X1pw==
+        b=iZN70DHP4VB3Kx3TNRCF2+OBBP5WhaAeXQcFZG9ggmunah1K2ON4fyPnY+ghvhd5YH
+         +0RWBsVfYXRbIQCm1REB1bymhLx2vgmQUq9Zqa+WI6MgX9ygePO1taB/f/AqX+WsL4Sv
+         YlWAUTWpbRCJu0XttM+r0nze0K62LQKdI9EwnhqPNcw8l8FQZqe0RT4LVc+j1wvZm0SV
+         8V//YU49SX5qohIkVmWH2ptH/CQpuCOzjw3nW29VXZYRF4dBZXf7B9Qfk51nFVYXbqCS
+         vy/bB0doXvXY7vlXo0ibL5WpzSXOwUP/5hoxLNTe02FK/TiniZ9t4P8icRV/EWlh13tO
+         Tq/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=V55L8oLu++u0quixVVDzBN7/PotCahthoiOidjx/0sQ=;
-        b=oC5vxcrio74A43IHKcxIw7PBCC7+DLyYm0OmSto8tnSKNdCSRA2Onc2XK2DXl4TMyw
-         JEnV8B9av12wtzp9il4RxV3A4yxBPn2mwElHBmx5C82DmGKG5muS9F1oAkOs175sM6v3
-         uQ/aMuwovvICzu0K3wNEAIb6kfTfBI7jBsEqKDGq0bvVN04scq5UdyghkrQHW2ag8Zad
-         6TzteFQZrbO2enFVdiqOh8MjY1siDPr1BXZ+bRc2cZ0+sv3pO70ijafpnJCpcwCFsTNZ
-         SH8e+Cn5jm9zoxHeH0L8nD0o9lSDDEzQ2s4KD5nI/mkHXXOwXjWj4FxrCkoF5HwaIljf
-         ZrEw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:from:references:cc:to:content-language
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uX22wGQTarq3hyB8jiingQotPaacT1JRBeq8d/0Q2Ag=;
+        b=c3UaT4f1NnGHhgzzSu5mook6Idddok0aeVykUaR+GByGSqWRrcjBGV6LYwfsO7RrSc
+         u516PfPELFQBmqM/cw4W48PKcMlH2h1YkhI3vlysXC36RjyBRqNwfbVFVpcPovTjW/yA
+         3SrnIM119MFIG4uM1pGQWj9NdvfuT1zabZ1zt2vB3BwzlROB72XEfGkt/Seo0NGHf0xf
+         7J9BAm2DRaiWPlybkvjughKwFCWB8RtKQY61wgcUCrnlyRY3H/CFqjkvoHYlfWZR4HS1
+         I0ZCd1sLKNsxFR36xLIGknKYrppGNUb8stWu60Z8ET+xRuqnOtweI/GFouIaTQMXEUcS
+         v3Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Xc37LsER;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id c3-20020a814e03000000b00565beec0895si9335161ywb.124.2023.06.06.06.27.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Jun 2023 06:27:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qFOqutHV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j17-20020a05622a039100b003f3900226a0si6474457qtx.21.2023.06.06.06.47.45
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Jun 2023 06:47:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Xc37LsER;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356DLGbX003133;
-	Tue, 6 Jun 2023 13:27:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=V55L8oLu++u0quixVVDzBN7/PotCahthoiOidjx/0sQ=;
- b=Xc37LsERTI7DP0S5JrC1IJJkAzoZ/9jW18wqezB51GrF4aAiU/bVGt3XITwmEV4FX5ku
- THN0QFAstKGqWzuNZpvDSJl7slUqMGG0AmbdMjLISPpKntgpIs/6jvslB7v1gGzqOMPC
- 5zvuHN3ESneSqanIxe5Rj1rhgVIpUoaNwBsVe7zueSYMfy7WGZ3O3Z7V3W/aIP2I80ns
- 45vRIsvg4nsL5BUeaYGBWBXEztqA03r7PZzrvTVG6zjqOIyvKIR7sen1xfUJrQaOjBl9
- bn1iHsKPdVxBaVsIEGFCqDsrxJw3nYZvfLkqKl+VRQP/ESZ1Hikdg/5bnWWYp+glhA7U cA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25kr05we-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:57 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356DNvsM012672;
-	Tue, 6 Jun 2023 13:27:57 GMT
-Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com [159.122.73.72])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25kr05vu-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:57 +0000
-Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
-	by ppma06fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 356CjOVH016459;
-	Tue, 6 Jun 2023 13:27:55 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
-	by ppma06fra.de.ibm.com (PPS) with ESMTPS id 3qyx5q9hud-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:55 +0000
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
-	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356DRqv320316804
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 6 Jun 2023 13:27:52 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id ADCFC20040;
-	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 6C3E520043;
-	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
-Received: from heavy.boeblingen.de.ibm.com (unknown [9.155.209.184])
-	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 3/8] linux-user: Emulate /proc/self/smaps
-Date: Tue,  6 Jun 2023 15:27:38 +0200
-Message-Id: <20230606132743.1386003-4-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230606132743.1386003-1-iii@linux.ibm.com>
-References: <20230606132743.1386003-1-iii@linux.ibm.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=qFOqutHV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q6X21-000168-7J; Tue, 06 Jun 2023 09:47:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q6X20-00012P-1r
+ for qemu-arm@nongnu.org; Tue, 06 Jun 2023 09:47:28 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q6X1u-0000DU-1M
+ for qemu-arm@nongnu.org; Tue, 06 Jun 2023 09:47:27 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5147e441c33so12585906a12.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Jun 2023 06:47:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686059240; x=1688651240;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=uX22wGQTarq3hyB8jiingQotPaacT1JRBeq8d/0Q2Ag=;
+ b=qFOqutHVgpygBNGER/o/RItcrwQuG9fYa5uL33jqqIWS5AHjCb5U1RYLbWu/07udCO
+ wK8UCAzCtZMTDre6DET1Oy6YYW/8jGDhv/wB7b5iuVEAu1IRmvpT8Ksgk9ENVwb6899b
+ /4RlohxWGEKEDU9xPfsmJ1LpDd5pPh54zDLrkWohzr9Mxe7EhwWVy+SZJuXYC8ZldiOW
+ /fOjlaXVFyw1Hq3l9ZRneEtIUv80+FuBVe7JPi9WEBFdhdvYUJWkIpX4p0/OlYUmj9kY
+ Rp446BQ6Pm+5Y1yyOIX6faqt7FxOOfig2DuSc3XOuQTDWTyBXot/z6QkazErdw0oN/RJ
+ t71w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686059240; x=1688651240;
+ h=content-transfer-encoding:in-reply-to:organization:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uX22wGQTarq3hyB8jiingQotPaacT1JRBeq8d/0Q2Ag=;
+ b=U3RlPVSPYSeSb4v+0L5xQlRxCW2LvoskP84CHm0StJ9Qnq86jG9udLpC52IopQh6W5
+ IEwfR5ph/uF5AqmRsywL9qwRDWV+vmQacuZ44d9NTl6eq6PLOnbmguESfCv4Y21aExTn
+ PCa2o63dmrG9ly6xtJ7F88144d93PyxQjqBZoJQNSVfEuwSXgqDX6Qxk0ih9usWm+WSm
+ JDnPj1k1P8DVNMy8gSxyMxaIkYHQ9ZbSw6OJiONXp5Q8grXN/Rvx7bshId9vra62YE28
+ RcldCVN8u2810rzlZ1Ma2GSuS1h8ObHLucJuRQwoB0XIvcNnonKoU1e5D2xY5Ih5vviS
+ Q3Ww==
+X-Gm-Message-State: AC+VfDxuc+QC6z8ZcKXKjJhz2/VEjKh63VDD3Z/YdVInKpUtFHLdB59L
+ DvJoQUP2srzsIPsLm99VenvomQ==
+X-Received: by 2002:a05:6402:184d:b0:50b:7959:8b09 with SMTP id
+ v13-20020a056402184d00b0050b79598b09mr2566721edy.15.1686059240322; 
+ Tue, 06 Jun 2023 06:47:20 -0700 (PDT)
+Received: from [192.168.200.206] (83.21.93.182.ipv4.supernova.orange.pl.
+ [83.21.93.182]) by smtp.gmail.com with ESMTPSA id
+ q22-20020aa7d456000000b0051631518aabsm5014340edr.93.2023.06.06.06.47.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Jun 2023 06:47:20 -0700 (PDT)
+Message-ID: <1bf47953-8589-a453-5e05-6b36b28f4fbd@linaro.org>
+Date: Tue, 6 Jun 2023 15:47:18 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v3 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
+Content-Language: pl-PL, en-GB, en-HK
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>, rad@semihalf.com,
+ peter.maydell@linaro.org
+Cc: quic_llindhol@quicinc.com, chenbaozi@phytium.com.cn, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+References: <20230605095536.117384-1-wangyuquan1236@phytium.com.cn>
+ <20230605095536.117384-2-wangyuquan1236@phytium.com.cn>
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Organization: Linaro
+In-Reply-To: <20230605095536.117384-2-wangyuquan1236@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: qPYUydcvbwPaD_iVuKzDXC4XLUcu4F3f
-X-Proofpoint-GUID: gyh5TgK_QloDXicl0iQPT3eCPCpmYO5_
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-06-06_08,2023-06-06_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- mlxlogscore=999 clxscore=1015 adultscore=0 phishscore=0 malwarescore=0
- mlxscore=0 impostorscore=0 priorityscore=1501 bulkscore=0 suspectscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2306060110
-X-TUID: xKwm4idgRY8C
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NTqU98C5c4TM
 
-/proc/self/smaps is an extension of /proc/self/maps: it provides the
-same lines, plus additional information about each range.
+W dniu 5.06.2023 o 11:55, Yuquan Wang pisze:
+> The current sbsa-ref cannot use EHCI controller which is only
+> able to do 32-bit DMA, since sbsa-ref doesn't have RAM below 4GB.
+> Hence, this uses XHCI to provide a usb controller with 64-bit
+> DMA capablity instead of EHCI.
 
-GDB uses /proc/self/smaps when available, which means that
-generate-core-file tries it first before falling back to
-/proc/self/maps. This, in turn, causes it to dump the host mappings,
-since /proc/self/smaps is not emulated and is just passed through.
-
-Fix by emulating /proc/self/smaps. Provide true values only for
-Size, KernelPageSize, MMUPageSize and VmFlags. Leave all other values
-at 0, which is a valid conservative estimate.
-
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
----
- linux-user/syscall.c | 58 +++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 57 insertions(+), 1 deletion(-)
-
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 28a0b1f7882..c1045ea7925 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8042,7 +8042,36 @@ static int open_self_cmdline(CPUArchState *cpu_env, int fd)
-     return 0;
- }
- 
--static int open_self_maps(CPUArchState *cpu_env, int fd)
-+static void show_smaps(int fd, unsigned long size)
-+{
-+    unsigned long page_size_kb = TARGET_PAGE_SIZE >> 10;
-+    unsigned long size_kb = size >> 10;
-+
-+    dprintf(fd, "Size:                  %lu kB\n"
-+                "KernelPageSize:        %lu kB\n"
-+                "MMUPageSize:           %lu kB\n"
-+                "Rss:                   0 kB\n"
-+                "Pss:                   0 kB\n"
-+                "Pss_Dirty:             0 kB\n"
-+                "Shared_Clean:          0 kB\n"
-+                "Shared_Dirty:          0 kB\n"
-+                "Private_Clean:         0 kB\n"
-+                "Private_Dirty:         0 kB\n"
-+                "Referenced:            0 kB\n"
-+                "Anonymous:             0 kB\n"
-+                "LazyFree:              0 kB\n"
-+                "AnonHugePages:         0 kB\n"
-+                "ShmemPmdMapped:        0 kB\n"
-+                "FilePmdMapped:         0 kB\n"
-+                "Shared_Hugetlb:        0 kB\n"
-+                "Private_Hugetlb:       0 kB\n"
-+                "Swap:                  0 kB\n"
-+                "SwapPss:               0 kB\n"
-+                "Locked:                0 kB\n"
-+                "THPeligible:    0\n", size_kb, page_size_kb, page_size_kb);
-+}
-+
-+static int open_self_maps_1(CPUArchState *cpu_env, int fd, bool smaps)
- {
-     CPUState *cpu = env_cpu(cpu_env);
-     TaskState *ts = cpu->opaque;
-@@ -8089,6 +8118,18 @@ static int open_self_maps(CPUArchState *cpu_env, int fd)
-             } else {
-                 dprintf(fd, "\n");
-             }
-+            if (smaps) {
-+                show_smaps(fd, max - min);
-+                dprintf(fd, "VmFlags:%s%s%s%s%s%s%s%s\n",
-+                        (flags & PAGE_READ) ? " rd" : "",
-+                        (flags & PAGE_WRITE_ORG) ? " wr" : "",
-+                        (flags & PAGE_EXEC) ? " ex" : "",
-+                        e->is_priv ? "" : " sh",
-+                        (flags & PAGE_READ) ? " mr" : "",
-+                        (flags & PAGE_WRITE_ORG) ? " mw" : "",
-+                        (flags & PAGE_EXEC) ? " me" : "",
-+                        e->is_priv ? "" : " ms");
-+            }
-         }
-     }
- 
-@@ -8103,11 +8144,25 @@ static int open_self_maps(CPUArchState *cpu_env, int fd)
-                     " --xp 00000000 00:00 0",
-                     TARGET_VSYSCALL_PAGE, TARGET_VSYSCALL_PAGE + TARGET_PAGE_SIZE);
-     dprintf(fd, "%*s%s\n", 73 - count, "",  "[vsyscall]");
-+    if (smaps) {
-+        show_smaps(fd, TARGET_PAGE_SIZE);
-+        dprintf(fd, "VmFlags: ex\n");
-+    }
- #endif
- 
-     return 0;
- }
- 
-+static int open_self_maps(CPUArchState *cpu_env, int fd)
-+{
-+    return open_self_maps_1(cpu_env, fd, false);
-+}
-+
-+static int open_self_smaps(CPUArchState *cpu_env, int fd)
-+{
-+    return open_self_maps_1(cpu_env, fd, true);
-+}
-+
- static int open_self_stat(CPUArchState *cpu_env, int fd)
- {
-     CPUState *cpu = env_cpu(cpu_env);
-@@ -8459,6 +8514,7 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-     const struct fake_open *fake_open;
-     static const struct fake_open fakes[] = {
-         { "maps", open_self_maps, is_proc_myself },
-+        { "smaps", open_self_smaps, is_proc_myself },
-         { "stat", open_self_stat, is_proc_myself },
-         { "auxv", open_self_auxv, is_proc_myself },
-         { "cmdline", open_self_cmdline, is_proc_myself },
--- 
-2.40.1
+Please also modify hw/arm/Kconfig file so SBSA-ref will select XHCI 
+instead of EHCI there.

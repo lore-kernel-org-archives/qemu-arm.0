@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3487677ejb;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3487686ejb;
         Tue, 6 Jun 2023 06:27:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5R4GFYewi43mFIImbVmtotD72U/RcFupBprIocI8muAuVoCiihDlZ+LMsWXBxAPSOXg4r4
-X-Received: by 2002:a92:d484:0:b0:33d:6988:bfea with SMTP id p4-20020a92d484000000b0033d6988bfeamr1476232ilg.21.1686058077922;
-        Tue, 06 Jun 2023 06:27:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686058077; cv=none;
+X-Google-Smtp-Source: ACHHUZ7XmLZR6seahT0Xr1VDF8FwYH55MIHlMRDvumsixsKXggAzn75DaN7Nb8K4OFbgm6YP7o9O
+X-Received: by 2002:a0d:e547:0:b0:569:43de:4abf with SMTP id o68-20020a0de547000000b0056943de4abfmr2064722ywe.40.1686058078519;
+        Tue, 06 Jun 2023 06:27:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686058078; cv=none;
         d=google.com; s=arc-20160816;
-        b=uHJ38yww+LN7l2tUYgDKC8A9qLIgy36+Boj1ED7SkWm38O2eaOaoTgS/CcgB4pipaJ
-         troi7G5NHHR+fShT2k4ls/y7E+fLS+gr+xZm7Kaolu3hxou1Ol0fSDTLSjBKKkbmZFV7
-         TLhJSP/Zj5f8J2zk3KmD+7v8yBpL5BrrwEw4Z/vhJxA8tTSpUyDLBrYqjv667YIAghfK
-         H+/XNR+z7nURaA6utb8GBaiHyd3kcQMEg0HAFk0oGf78b/s46NA5e/DaxwuGN6c2ru0l
-         q7ht+YEATRfiVEVda+mG2cR7swLBY9j7y54gwcDevOlilqH/g+1piio/hwREsO4UIH4U
-         OkLQ==
+        b=sQYmJBkifhqYtApTp7NKZEosFqEErYob/ZVaz7m20Wty41qmvbB4jpL6Wtt/8HTOhf
+         gS3LtmEyrwJLgTjFGSii5BdZhGhN248DW+OPFqcXD5rU0ONpn+1gyMr4TWwjPyB+GIsF
+         n8JuZ8xty8/Z505zKj7O81qxuXkVDObyjw20Zy5JvXu3N+AtHOyua3d1H5fJOFF4ifdY
+         46m8GTikK0ui3Tm5f9T200+fMqItW07Vmd2nQxGLL5h7EUxyV9KULyyQ9I2poKrkf4Mk
+         J/uLcpckqEi+CIHQLNDGskAmOSThGCC6HZmuPqVp3bjjBBupZRZi5RVeLmywkM40Jyu1
+         X1pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xH5VHKp/pM0EgokTZ+MwXc2AaB4DAgaCu4DiQOQiJX4=;
-        b=NW0gdGKuRUuLlOneDzPIf9nlTkv1Z/LdsEy47Or3zYD3bLyntU8Kv+R8EZwCcKzxRF
-         AvU9lGyj4fASB/RBBxMZ+mIxnTc6k3cORm/p/bFvGeGVzPuntHSKjM1JLEXQsEezMrgK
-         z9XHeyKsqX/Be62n7x3Lvx3Cur7BX2mBYzFYvVMuQ1FsStitzfqW1HdDdemnm9NuMecd
-         kBdhtx8TvF+EykfAi6A4Gy8BTKcutV0ZzMLa9FRm2W0mVGe15zgRkinW1T6IjS6RNJSp
-         lDdnuDBO8GMaQxkKod55xx4vdVIUlf3ADqKvPBJ++JOroNIP0w41bDDOZID0z1HpY5uD
-         WHXA==
+        bh=V55L8oLu++u0quixVVDzBN7/PotCahthoiOidjx/0sQ=;
+        b=oC5vxcrio74A43IHKcxIw7PBCC7+DLyYm0OmSto8tnSKNdCSRA2Onc2XK2DXl4TMyw
+         JEnV8B9av12wtzp9il4RxV3A4yxBPn2mwElHBmx5C82DmGKG5muS9F1oAkOs175sM6v3
+         uQ/aMuwovvICzu0K3wNEAIb6kfTfBI7jBsEqKDGq0bvVN04scq5UdyghkrQHW2ag8Zad
+         6TzteFQZrbO2enFVdiqOh8MjY1siDPr1BXZ+bRc2cZ0+sv3pO70ijafpnJCpcwCFsTNZ
+         SH8e+Cn5jm9zoxHeH0L8nD0o9lSDDEzQ2s4KD5nI/mkHXXOwXjWj4FxrCkoF5HwaIljf
+         ZrEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DLRNrQhd;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Xc37LsER;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <iii@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id r17-20020a92ce91000000b0033aaabf8e07si4162042ilo.120.2023.06.06.06.27.57
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id c3-20020a814e03000000b00565beec0895si9335161ywb.124.2023.06.06.06.27.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Jun 2023 06:27:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+        Tue, 06 Jun 2023 06:27:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DLRNrQhd;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Xc37LsER;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356DCBFK006696;
-	Tue, 6 Jun 2023 13:27:57 GMT
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356DLGbX003133;
+	Tue, 6 Jun 2023 13:27:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=xH5VHKp/pM0EgokTZ+MwXc2AaB4DAgaCu4DiQOQiJX4=;
- b=DLRNrQhd17jiTCUlQR8Kt0sjKX7E07+3+pdjL7/bTCywXo0DNFJGHS4f+ELk/+bLVe0g
- enLpbB37lEajPz2xfAjS/4pJMy/Amctg0ZSrs9GW2JSoZbw7huas7mh6AsrV0g4qZjE1
- mpBEGL6WHrkPW6tCzUmOrqVvvKGhOyJCdK+nU8rXYHm9gkXcSTlbABbr4Urea4P2pK/1
- DeEIs0dh79YKtEntSCCcxNYh2Lx/RE1gG2jzXRyihanHZemlRAc1qnnAe+4M/AZopKOy
- z286CU2Dnrrxv/iPVkGRvn1Gyhc+BlklzRHYM39KtADszLSIbxJ+EYorglwI4miXlq9q pQ== 
+ content-transfer-encoding; s=pp1;
+ bh=V55L8oLu++u0quixVVDzBN7/PotCahthoiOidjx/0sQ=;
+ b=Xc37LsERTI7DP0S5JrC1IJJkAzoZ/9jW18wqezB51GrF4aAiU/bVGt3XITwmEV4FX5ku
+ THN0QFAstKGqWzuNZpvDSJl7slUqMGG0AmbdMjLISPpKntgpIs/6jvslB7v1gGzqOMPC
+ 5zvuHN3ESneSqanIxe5Rj1rhgVIpUoaNwBsVe7zueSYMfy7WGZ3O3Z7V3W/aIP2I80ns
+ 45vRIsvg4nsL5BUeaYGBWBXEztqA03r7PZzrvTVG6zjqOIyvKIR7sen1xfUJrQaOjBl9
+ bn1iHsKPdVxBaVsIEGFCqDsrxJw3nYZvfLkqKl+VRQP/ESZ1Hikdg/5bnWWYp+glhA7U cA== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25fm8fbr-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25kr05we-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:56 +0000
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356DCGZZ006837;
-	Tue, 6 Jun 2023 13:27:56 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25fm8faj-1
+	Tue, 06 Jun 2023 13:27:57 +0000
+Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356DNvsM012672;
+	Tue, 6 Jun 2023 13:27:57 GMT
+Received: from ppma06fra.de.ibm.com (48.49.7a9f.ip4.static.sl-reverse.com [159.122.73.72])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25kr05vu-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 13:27:57 +0000
+Received: from pps.filterd (ppma06fra.de.ibm.com [127.0.0.1])
+	by ppma06fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 356CjOVH016459;
+	Tue, 6 Jun 2023 13:27:55 GMT
+Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
+	by ppma06fra.de.ibm.com (PPS) with ESMTPS id 3qyx5q9hud-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
 	Tue, 06 Jun 2023 13:27:55 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
-	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 3568Gl9R017253;
-	Tue, 6 Jun 2023 13:27:53 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
-	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3qyxg2hyja-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:53 +0000
 Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
-	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356DRp8u47579528
+	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356DRqv320316804
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 6 Jun 2023 13:27:51 GMT
+	Tue, 6 Jun 2023 13:27:52 GMT
 Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id F3E4620043;
-	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id ADCFC20040;
+	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
 Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id B15E420040;
-	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 6C3E520043;
+	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
 Received: from heavy.boeblingen.de.ibm.com (unknown [9.155.209.184])
 	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue,  6 Jun 2023 13:27:50 +0000 (GMT)
+	Tue,  6 Jun 2023 13:27:52 +0000 (GMT)
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
         Laurent Vivier <laurent@vivier.eu>,
@@ -87,144 +87,138 @@ To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
         Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 1/8] linux-user: Expose do_guest_openat() and do_guest_readlink()
-Date: Tue,  6 Jun 2023 15:27:36 +0200
-Message-Id: <20230606132743.1386003-2-iii@linux.ibm.com>
+Subject: [PATCH v3 3/8] linux-user: Emulate /proc/self/smaps
+Date: Tue,  6 Jun 2023 15:27:38 +0200
+Message-Id: <20230606132743.1386003-4-iii@linux.ibm.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230606132743.1386003-1-iii@linux.ibm.com>
 References: <20230606132743.1386003-1-iii@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: Smpofwky4eEQxgPb9M6O5cgjP_WSouAO
-X-Proofpoint-ORIG-GUID: 5ngXxn_AIYDEyh66D0-7w60HAviRCDTU
+X-Proofpoint-ORIG-GUID: qPYUydcvbwPaD_iVuKzDXC4XLUcu4F3f
+X-Proofpoint-GUID: gyh5TgK_QloDXicl0iQPT3eCPCpmYO5_
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
  definitions=2023-06-06_08,2023-06-06_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
- mlxlogscore=999 clxscore=1015 malwarescore=0 priorityscore=1501
- lowpriorityscore=0 adultscore=0 phishscore=0 bulkscore=0 mlxscore=0
- spamscore=0 impostorscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2304280000 definitions=main-2306060110
-X-TUID: pNrfk/rDLI6Q
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ mlxlogscore=999 clxscore=1015 adultscore=0 phishscore=0 malwarescore=0
+ mlxscore=0 impostorscore=0 priorityscore=1501 bulkscore=0 suspectscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2304280000 definitions=main-2306060110
+X-TUID: xKwm4idgRY8C
 
-These functions will be required by the GDB stub in order to provide
-the guest view of /proc to GDB.
+/proc/self/smaps is an extension of /proc/self/maps: it provides the
+same lines, plus additional information about each range.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+GDB uses /proc/self/smaps when available, which means that
+generate-core-file tries it first before falling back to
+/proc/self/maps. This, in turn, causes it to dump the host mappings,
+since /proc/self/smaps is not emulated and is just passed through.
+
+Fix by emulating /proc/self/smaps. Provide true values only for
+Size, KernelPageSize, MMUPageSize and VmFlags. Leave all other values
+at 0, which is a valid conservative estimate.
+
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
- linux-user/qemu.h    |  3 +++
- linux-user/syscall.c | 54 ++++++++++++++++++++++++++++----------------
- 2 files changed, 38 insertions(+), 19 deletions(-)
+ linux-user/syscall.c | 58 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 57 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 92f9f5af41c..a5830ec2396 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -165,6 +165,9 @@ typedef struct TaskState {
- } TaskState;
- 
- abi_long do_brk(abi_ulong new_brk);
-+int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-+                    int flags, mode_t mode);
-+ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz);
- 
- /* user access */
- 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 83685f0aa59..2d3070cfd62 100644
+index 28a0b1f7882..c1045ea7925 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8448,7 +8448,8 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
- }
- #endif
- 
--static int do_openat(CPUArchState *cpu_env, int dirfd, const char *pathname, int flags, mode_t mode)
-+int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-+                    int flags, mode_t mode)
- {
-     struct fake_open {
-         const char *filename;
-@@ -8520,6 +8521,36 @@ static int do_openat(CPUArchState *cpu_env, int dirfd, const char *pathname, int
-     return safe_openat(dirfd, path(pathname), flags, mode);
+@@ -8042,7 +8042,36 @@ static int open_self_cmdline(CPUArchState *cpu_env, int fd)
+     return 0;
  }
  
-+ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz)
+-static int open_self_maps(CPUArchState *cpu_env, int fd)
++static void show_smaps(int fd, unsigned long size)
 +{
-+    ssize_t ret;
++    unsigned long page_size_kb = TARGET_PAGE_SIZE >> 10;
++    unsigned long size_kb = size >> 10;
 +
-+    if (!pathname || !buf) {
-+        errno = EFAULT;
-+        return -1;
-+    }
-+
-+    if (!bufsiz) {
-+        /* Short circuit this for the magic exe check. */
-+        errno = EINVAL;
-+        return -1;
-+    }
-+
-+    if (is_proc_myself((const char *)pathname, "exe")) {
-+        /*
-+         * Don't worry about sign mismatch as earlier mapping
-+         * logic would have thrown a bad address error.
-+         */
-+        ret = MIN(strlen(exec_path), bufsiz);
-+        /* We cannot NUL terminate the string. */
-+        memcpy(buf, exec_path, ret);
-+    } else {
-+        ret = readlink(path(pathname), buf, bufsiz);
-+    }
-+
-+    return ret;
++    dprintf(fd, "Size:                  %lu kB\n"
++                "KernelPageSize:        %lu kB\n"
++                "MMUPageSize:           %lu kB\n"
++                "Rss:                   0 kB\n"
++                "Pss:                   0 kB\n"
++                "Pss_Dirty:             0 kB\n"
++                "Shared_Clean:          0 kB\n"
++                "Shared_Dirty:          0 kB\n"
++                "Private_Clean:         0 kB\n"
++                "Private_Dirty:         0 kB\n"
++                "Referenced:            0 kB\n"
++                "Anonymous:             0 kB\n"
++                "LazyFree:              0 kB\n"
++                "AnonHugePages:         0 kB\n"
++                "ShmemPmdMapped:        0 kB\n"
++                "FilePmdMapped:         0 kB\n"
++                "Shared_Hugetlb:        0 kB\n"
++                "Private_Hugetlb:       0 kB\n"
++                "Swap:                  0 kB\n"
++                "SwapPss:               0 kB\n"
++                "Locked:                0 kB\n"
++                "THPeligible:    0\n", size_kb, page_size_kb, page_size_kb);
 +}
 +
- static int do_execveat(CPUArchState *cpu_env, int dirfd,
-                        abi_long pathname, abi_long guest_argp,
-                        abi_long guest_envp, int flags)
-@@ -8994,7 +9025,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-     case TARGET_NR_open:
-         if (!(p = lock_user_string(arg1)))
-             return -TARGET_EFAULT;
--        ret = get_errno(do_openat(cpu_env, AT_FDCWD, p,
-+        ret = get_errno(do_guest_openat(cpu_env, AT_FDCWD, p,
-                                   target_to_host_bitmask(arg2, fcntl_flags_tbl),
-                                   arg3));
-         fd_trans_unregister(ret);
-@@ -9004,7 +9035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-     case TARGET_NR_openat:
-         if (!(p = lock_user_string(arg2)))
-             return -TARGET_EFAULT;
--        ret = get_errno(do_openat(cpu_env, arg1, p,
-+        ret = get_errno(do_guest_openat(cpu_env, arg1, p,
-                                   target_to_host_bitmask(arg3, fcntl_flags_tbl),
-                                   arg4));
-         fd_trans_unregister(ret);
-@@ -10229,22 +10260,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-             void *p2;
-             p = lock_user_string(arg1);
-             p2 = lock_user(VERIFY_WRITE, arg2, arg3, 0);
--            if (!p || !p2) {
--                ret = -TARGET_EFAULT;
--            } else if (!arg3) {
--                /* Short circuit this for the magic exe check. */
--                ret = -TARGET_EINVAL;
--            } else if (is_proc_myself((const char *)p, "exe")) {
--                /*
--                 * Don't worry about sign mismatch as earlier mapping
--                 * logic would have thrown a bad address error.
--                 */
--                ret = MIN(strlen(exec_path), arg3);
--                /* We cannot NUL terminate the string. */
--                memcpy(p2, exec_path, ret);
--            } else {
--                ret = get_errno(readlink(path(p), p2, arg3));
--            }
-+            ret = get_errno(do_guest_readlink(p, p2, arg3));
-             unlock_user(p2, arg2, ret);
-             unlock_user(p, arg1, 0);
++static int open_self_maps_1(CPUArchState *cpu_env, int fd, bool smaps)
+ {
+     CPUState *cpu = env_cpu(cpu_env);
+     TaskState *ts = cpu->opaque;
+@@ -8089,6 +8118,18 @@ static int open_self_maps(CPUArchState *cpu_env, int fd)
+             } else {
+                 dprintf(fd, "\n");
+             }
++            if (smaps) {
++                show_smaps(fd, max - min);
++                dprintf(fd, "VmFlags:%s%s%s%s%s%s%s%s\n",
++                        (flags & PAGE_READ) ? " rd" : "",
++                        (flags & PAGE_WRITE_ORG) ? " wr" : "",
++                        (flags & PAGE_EXEC) ? " ex" : "",
++                        e->is_priv ? "" : " sh",
++                        (flags & PAGE_READ) ? " mr" : "",
++                        (flags & PAGE_WRITE_ORG) ? " mw" : "",
++                        (flags & PAGE_EXEC) ? " me" : "",
++                        e->is_priv ? "" : " ms");
++            }
          }
+     }
+ 
+@@ -8103,11 +8144,25 @@ static int open_self_maps(CPUArchState *cpu_env, int fd)
+                     " --xp 00000000 00:00 0",
+                     TARGET_VSYSCALL_PAGE, TARGET_VSYSCALL_PAGE + TARGET_PAGE_SIZE);
+     dprintf(fd, "%*s%s\n", 73 - count, "",  "[vsyscall]");
++    if (smaps) {
++        show_smaps(fd, TARGET_PAGE_SIZE);
++        dprintf(fd, "VmFlags: ex\n");
++    }
+ #endif
+ 
+     return 0;
+ }
+ 
++static int open_self_maps(CPUArchState *cpu_env, int fd)
++{
++    return open_self_maps_1(cpu_env, fd, false);
++}
++
++static int open_self_smaps(CPUArchState *cpu_env, int fd)
++{
++    return open_self_maps_1(cpu_env, fd, true);
++}
++
+ static int open_self_stat(CPUArchState *cpu_env, int fd)
+ {
+     CPUState *cpu = env_cpu(cpu_env);
+@@ -8459,6 +8514,7 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+     const struct fake_open *fake_open;
+     static const struct fake_open fakes[] = {
+         { "maps", open_self_maps, is_proc_myself },
++        { "smaps", open_self_smaps, is_proc_myself },
+         { "stat", open_self_stat, is_proc_myself },
+         { "auxv", open_self_auxv, is_proc_myself },
+         { "cmdline", open_self_cmdline, is_proc_myself },
 -- 
 2.40.1

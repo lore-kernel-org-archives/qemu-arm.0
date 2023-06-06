@@ -1,231 +1,178 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3487741ejb;
-        Tue, 6 Jun 2023 06:28:05 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6yu012QzrDjH3+prL//vB6/GL4/vAmXoGzImtZa+lgg8lFPVXQQITPgogCrPRHUP5j54OF
-X-Received: by 2002:a05:6e02:11b2:b0:33c:2a80:3721 with SMTP id 18-20020a056e0211b200b0033c2a803721mr2176151ilj.4.1686058085249;
-        Tue, 06 Jun 2023 06:28:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686058085; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3500871ejb;
+        Tue, 6 Jun 2023 06:50:00 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5jaQH0a0KxHeXqO1uI2uxSJvcdl2CedyXsNewp8R0DCRaw1tTIRiosHyiAZDbmArXC6/wi
+X-Received: by 2002:a05:6214:2a8e:b0:623:a60e:e50 with SMTP id jr14-20020a0562142a8e00b00623a60e0e50mr1829127qvb.40.1686059400560;
+        Tue, 06 Jun 2023 06:50:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686059400; cv=none;
         d=google.com; s=arc-20160816;
-        b=kYcG1WSOuSZJ7RVRycAl3iRCdaIuaCfqjp+3unCV6Zfq+896j2xNqQiq+VQmcRHtGB
-         Be0PytYpp5OHQzhZLFRtREOperV91Jil8s6pcmEW5IM8t59PCafcaTGlWLPb6vDdcnaS
-         aIhzDf6qxmqb8lPmX2jSbcU5mcIRVYHgX+yrloOlpycUdVxe4V+KyNA8CwK12vnP2XA4
-         wGEHo/5GRxm85fKIbZHcNn7EaJfc898mh2tY4jnumGlwC3udmGWTyGrPIW35B+SvpGlX
-         AeWNq2j3FagHp2HYnGpcHRyKkB2fwsG9AYLcWS5dUL8hRe66NW6Udm5I33ZDQGmxnbHr
-         OWhQ==
+        b=b9W70qnYRMmWTNajDFfY0+c17M5y4CbQ3LVm993VMivOo9i/QlUEqg50N2mQu8NAlP
+         7B14jhCelY+hnE48p6l69flXVTFniyfv5Nr5M2gEWK2uBxAe14zDLq3f2bp19xzAhhOn
+         l5UZa+uAwYk4gYmtQbxzpGuBSuxWMhoY/voFsAUAFB6Ou943rhz1HbizaGgNNmyne91e
+         A8uEZrHSVkOWctQHoZQRxQIbgSmK2dNTruZRG4Q0jpw7FWseX7sY36/g1+qVKDrwIsHU
+         cYOaQVATVH7MgL54TcOEREhLwnqAPRDdyBLOrLRUWDFKVnAS6vWqPK3kQ8RKT2eyzMqM
+         OXog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kxVkWuqJdgcUe81jaYZw/eiz0P5IB2KSrCOA061VjX4=;
-        b=WyI9eV+OEUkUpjt1qWQ8FVQsOcDcM/uvF1XfE+Qrvwwzyf9rb7DGjfTwwHV2BJna35
-         h+wmFTl0VAFeWK34IQ/cotx1V0crp9aK48E6rtwrNSR8YrWIyL3R46IWib9CguuD7I0H
-         eF4qY+hmBnWacmtoZMgQmDvuRKjyx3Tec+AXS4QORX9beh2zESeSI0BKPrEuiCm23U+x
-         oP/I1fP9bl1eAZpD8Mz/m3DTuWVkIILguLH//hqExncntVV7eF0SVCPQUQkzZW/Rh1nU
-         15SIhlGSSsISX/fx8p/AwYYZe64uOP2btiaQYrFVSo6zdDcnhOLqsUCTW+XgcU6SZez1
-         8YVA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=RdrpsAT8U3vpVlJ0tTA9gmGkITqwGBRiPD1ozdlKQgM=;
+        b=YRxgZLx9GcGrsrCkibAildQDGQ58YoeI9lTTyR60nhYpwjabjfQyIdVUXtxF1oV+sY
+         nitmW7GaKf//l9us6ZE83zOQqD89AHTlJNu2DY+Q+cHmc2AhF6wPsPH/09oDNL+Oel3C
+         e65Zj6ZJQe+yigEafwM989vygp3LFm8XcsuSi6JFWMb4/qXtdmestm6fwcEvP2S724ap
+         K2XSV5LN5EBJLlGwLXl0Ofg/+GAAliIo8W4LIDpfq0kW8UU1KYApFwBToNdi6/Uo4JVO
+         fWsrplhtkT/X80SF9J2aQiTqL6QAonUfPtvBgiUvFRS8+GhW9MvI5+cuhJAp/6eAjfRq
+         0qHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g3QR8eUr;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id t33-20020a05663834a100b0041abeb217cbsi4613552jal.88.2023.06.06.06.28.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Jun 2023 06:28:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=b4yLvTKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jm12-20020ad45ecc000000b006260ed55a0asi6226347qvb.242.2023.06.06.06.50.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Jun 2023 06:50:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g3QR8eUr;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356DGx7r021018;
-	Tue, 6 Jun 2023 13:28:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=kxVkWuqJdgcUe81jaYZw/eiz0P5IB2KSrCOA061VjX4=;
- b=g3QR8eUrQgFix6qBVSMMSzgAGRVJQ5YVo/ExBZ8RRAJmm3YfYUzEgaKscGyllRuA9qeF
- GTDTTUCyXUeK3acWCo7auEPFWyXiW9H2XgUTD+m1wT8qTAjFWNVVPKAxUrh4STm10GPq
- fOFJJFMIvj+EuvW5AkDHhOdJJv4YHwNFSZj2qwOLcTuRDrnXWbFyNfKp6WjxEnz3UVov
- CKpG33CtDxs7OUieeF2NhQ8cbrJmxjrbPbVJmhVShgaEW0cGqxocrum+mcvwnL9puy3G
- SGgWDtJ/JZvXfifkEqNOvE+6qHzyLW5nBGVx5/2Eox83v+syWTaNuLsCqlEXRLudYjZ6 cA== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25hyr9rs-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:28:03 +0000
-Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356DIbNQ025947;
-	Tue, 6 Jun 2023 13:28:02 GMT
-Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r25hyr9px-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:28:02 +0000
-Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
-	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 355Mx3Tq023788;
-	Tue, 6 Jun 2023 13:27:59 GMT
-Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
-	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3qyxg2hyjb-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 06 Jun 2023 13:27:59 +0000
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com [10.20.54.101])
-	by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356DRuR124576664
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 6 Jun 2023 13:27:56 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 6493520043;
-	Tue,  6 Jun 2023 13:27:56 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 21D1620040;
-	Tue,  6 Jun 2023 13:27:56 +0000 (GMT)
-Received: from heavy.boeblingen.de.ibm.com (unknown [9.155.209.184])
-	by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Tue,  6 Jun 2023 13:27:56 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 8/8] tests/tcg: Add a test for info proc mappings
-Date: Tue,  6 Jun 2023 15:27:43 +0200
-Message-Id: <20230606132743.1386003-9-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230606132743.1386003-1-iii@linux.ibm.com>
-References: <20230606132743.1386003-1-iii@linux.ibm.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=b4yLvTKw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q6X3s-0003DQ-Fe; Tue, 06 Jun 2023 09:49:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q6X3q-0003Ce-Fm
+ for qemu-devel@nongnu.org; Tue, 06 Jun 2023 09:49:22 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q6X3o-0000e1-N1
+ for qemu-devel@nongnu.org; Tue, 06 Jun 2023 09:49:22 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-3f60e536250so52006395e9.1
+ for <qemu-devel@nongnu.org>; Tue, 06 Jun 2023 06:49:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686059359; x=1688651359;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=RdrpsAT8U3vpVlJ0tTA9gmGkITqwGBRiPD1ozdlKQgM=;
+ b=b4yLvTKw2af8ln6D6aweyNmQMfqOEa0/r4v3tn6A6MDsEvtwsYUcV0I2PehJbYLJk9
+ 5ICcXDlNHngg+rpHtcI40Q674ksfneyPFG/yTflLCxozp5rFe6hQAGH8f0/XQ1BNcgLk
+ 9UOQhPgYRILdcZjVLFLQd+eYHXErdJOUSdIfZK+8yt1oAbbALboRqlHajbagjA6lQszb
+ Csa/K3OrzzsbCJuDbNnFaJ0rZoNh1LneytBvQfzJhycSAbi8nr/d+6TXJlhz2X1xyOYo
+ CC9Z8cmU+PwauL594FjDtAXp/1p49D/FzSCiQEEiAk9SUBUPOlSYb23uPzIxsDOJPjO6
+ 5RaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686059359; x=1688651359;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RdrpsAT8U3vpVlJ0tTA9gmGkITqwGBRiPD1ozdlKQgM=;
+ b=PojM74E4yGcrIJR9bPM7YP1MD9PaKx8cHrmLbBZzRbRhiPiyL8YagJHP1z/4RwTC8w
+ q1H4JhQVoHloriGuCwch1sL9G0nASEmhad/K4BBxUk++Tbns5e/sBJsukc6R2RZ+DAAU
+ hXAo8QvXGvxhT9vv+Oi3Xjj99rYl2twLRmzTBAFjhv3/HGuBtOSZvMzx9OZ/s5vjM8DE
+ uZnQObvQmSVKHqdpC58hTMB+JPNWykUNJRlAtmtqlovROfpx1ufdBDC/B8OkWH9XDKfE
+ 7tbgb4ztGFp7UYsiCZNJMk9AGKGMrOp7tIabokpjEd/JAbJDWqr73Kwy3KFlGxcMq3Xr
+ noAw==
+X-Gm-Message-State: AC+VfDwO6ooo1022Ck41MNKc6UxPzk0zwQkYKdRRtgluXDExZla4YqjR
+ F/s4WEo5MYHi+BYHSWuH9S82ww==
+X-Received: by 2002:a5d:4ece:0:b0:306:2713:f7f with SMTP id
+ s14-20020a5d4ece000000b0030627130f7fmr8494214wrv.11.1686059358809; 
+ Tue, 06 Jun 2023 06:49:18 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ g26-20020a7bc4da000000b003f50e88ffc1sm17802603wmk.0.2023.06.06.06.49.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Jun 2023 06:49:18 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org,
+	Joel Stanley <joel@jms.id.au>
+Subject: [PATCH] hw/timer/nrf51_timer: Don't lose time when timer is queried
+ in tight loop
+Date: Tue,  6 Jun 2023 14:49:17 +0100
+Message-Id: <20230606134917.3782215-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: Susbg_Kr8-PF65k27wg8Aay1i_1MUF3N
-X-Proofpoint-GUID: CBbXBiqnILJbqjvMcPGFKpKP9AZnK9he
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
- definitions=2023-06-06_08,2023-06-06_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- impostorscore=0 mlxscore=0 adultscore=0 suspectscore=0 priorityscore=1501
- phishscore=0 spamscore=0 bulkscore=0 clxscore=1015 mlxlogscore=802
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2304280000 definitions=main-2306060110
-X-TUID: TDVkYRvp5iO5
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RgzTPyqMRO6n
 
-Add a small test to prevent regressions.
-Since there are issues with how GDB interprets QEMU's target.xml,
-enable the test only on aarch64 and s390x for now.
+The nrf51_timer has a free-running counter which we implement using
+the pattern of using two fields (update_counter_ns, counter) to track
+the last point at which we calculated the counter value, and the
+counter value at that time.  Then we can find the current counter
+value by converting the difference in wall-clock time between then
+and now to a tick count that we need to add to the counter value.
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Unfortunately the nrf51_timer's implementation of this has a bug
+which means it loses time every time update_counter() is called.
+After updating s->counter it always sets s->update_counter_ns to
+'now', even though the actual point when s->counter hit the new value
+will be some point in the past (half a tick, say).  In the worst case
+(guest code in a tight loop reading the counter, icount mode) the
+counter is continually queried less than a tick after it was last
+read, so s->counter never advances but s->update_counter_ns does, and
+the guest never makes forward progress.
+
+The fix for this is to only advance update_counter_ns to the
+timestamp of the last tick, not all the way to 'now'.  (This is the
+pattern used in hw/misc/mps2-fpgaio.c's counter.)
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.target             |  3 +-
- tests/tcg/multiarch/Makefile.target           |  7 +++
- .../multiarch/gdbstub/test-proc-mappings.py   | 55 +++++++++++++++++++
- tests/tcg/s390x/Makefile.target               |  2 +-
- 4 files changed, 65 insertions(+), 2 deletions(-)
- create mode 100644 tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+The hang in icount mode was discovered by the Zephyr folks as part
+of their investigation into
+https://github.com/zephyrproject-rtos/zephyr/issues/57512
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 03157954871..38402b0ba1f 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -97,7 +97,8 @@ run-gdbstub-sve-ioctls: sve-ioctls
- 		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve-ioctl.py, \
- 	basic gdbstub SVE ZLEN support)
+ hw/timer/nrf51_timer.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/hw/timer/nrf51_timer.c b/hw/timer/nrf51_timer.c
+index 42be79c7363..50c6772383e 100644
+--- a/hw/timer/nrf51_timer.c
++++ b/hw/timer/nrf51_timer.c
+@@ -45,7 +45,12 @@ static uint32_t update_counter(NRF51TimerState *s, int64_t now)
+     uint32_t ticks = ns_to_ticks(s, now - s->update_counter_ns);
  
--EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
-+EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls \
-+              run-gdbstub-proc-mappings
- endif
- endif
+     s->counter = (s->counter + ticks) % BIT(bitwidths[s->bitmode]);
+-    s->update_counter_ns = now;
++    /*
++     * Only advance the sync time to the timestamp of the last tick,
++     * not all the way to 'now', so we don't lose time if we do
++     * multiple resyncs in a single tick.
++     */
++    s->update_counter_ns += ticks_to_ns(s, ticks);
+     return ticks;
+ }
  
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index 373db696481..cbc0b75787a 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -81,6 +81,13 @@ run-gdbstub-qxfer-auxv-read: sha1
- 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-qxfer-auxv-read.py, \
- 	basic gdbstub qXfer:auxv:read support)
- 
-+run-gdbstub-proc-mappings: sha1
-+	$(call run-test, $@, $(GDB_SCRIPT) \
-+		--gdb $(HAVE_GDB_BIN) \
-+		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
-+		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-proc-mappings.py, \
-+	proc mappings support)
-+
- run-gdbstub-thread-breakpoint: testthread
- 	$(call run-test, $@, $(GDB_SCRIPT) \
- 		--gdb $(HAVE_GDB_BIN) \
-diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-new file mode 100644
-index 00000000000..657e36a2fc7
---- /dev/null
-+++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
-@@ -0,0 +1,55 @@
-+"""Test that gdbstub has access to proc mappings.
-+
-+This runs as a sourced script (via -x, via run-test.py)."""
-+from __future__ import print_function
-+import gdb
-+import sys
-+
-+
-+n_failures = 0
-+
-+
-+def report(cond, msg):
-+    """Report success/fail of a test"""
-+    if cond:
-+        print("PASS: {}".format(msg))
-+    else:
-+        print("FAIL: {}".format(msg))
-+        global n_failures
-+        n_failures += 1
-+
-+
-+def run_test():
-+    """Run through the tests one by one"""
-+    mappings = gdb.execute("info proc mappings", False, True)
-+    report(isinstance(mappings, str), "Fetched the mappings from the inferior")
-+    report("/sha1" in mappings, "Found the test binary name in the mappings")
-+
-+
-+def main():
-+    """Prepare the environment and run through the tests"""
-+    try:
-+        inferior = gdb.selected_inferior()
-+        print("ATTACHED: {}".format(inferior.architecture().name()))
-+    except (gdb.error, AttributeError):
-+        print("SKIPPING (not connected)")
-+        exit(0)
-+
-+    if gdb.parse_and_eval('$pc') == 0:
-+        print("SKIP: PC not set")
-+        exit(0)
-+
-+    try:
-+        # These are not very useful in scripts
-+        gdb.execute("set pagination off")
-+        gdb.execute("set confirm off")
-+
-+        # Run the actual tests
-+        run_test()
-+    except gdb.error:
-+        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
-+    print("All tests complete: %d failures" % n_failures)
-+    exit(n_failures)
-+
-+
-+main()
-diff --git a/tests/tcg/s390x/Makefile.target b/tests/tcg/s390x/Makefile.target
-index 4899503e1db..d33960caa0a 100644
---- a/tests/tcg/s390x/Makefile.target
-+++ b/tests/tcg/s390x/Makefile.target
-@@ -78,7 +78,7 @@ run-gdbstub-signals-s390x: signals-s390x
- 		--bin $< --test $(S390X_SRC)/gdbstub/test-signals-s390x.py, \
- 	mixing signals and debugging)
- 
--EXTRA_RUNS += run-gdbstub-signals-s390x
-+EXTRA_RUNS += run-gdbstub-signals-s390x run-gdbstub-proc-mappings
- endif
- 
- # MVX versions of sha512
 -- 
-2.40.1
+2.34.1
+

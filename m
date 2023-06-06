@@ -1,148 +1,203 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3084371ejb;
-        Mon, 5 Jun 2023 15:29:06 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6ZHxzXForx+2QA9KdmGHqKUVFJ5KkVNtfH90/wOMHVqpH7Z6/xIab3d/nLOSkR5V+3Hwuu
-X-Received: by 2002:a37:68c1:0:b0:75d:46b5:b788 with SMTP id d184-20020a3768c1000000b0075d46b5b788mr18752qkc.61.1686004145887;
-        Mon, 05 Jun 2023 15:29:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686004145; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3289325ejb;
+        Mon, 5 Jun 2023 23:50:00 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4E64EgQc1ZxPE9C3LhLVtMam10MEtaaH7bBi/EXj7M6oyKNbzkAz8BK3R0swhyEsUuh9fK
+X-Received: by 2002:a05:620a:4802:b0:75e:c04b:ba1c with SMTP id eb2-20020a05620a480200b0075ec04bba1cmr866634qkb.50.1686034200619;
+        Mon, 05 Jun 2023 23:50:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686034200; cv=none;
         d=google.com; s=arc-20160816;
-        b=JWD2HhUqIM+XgUKeWLMOtGO1rrWFv/jyJCzVdkwwhiibtVeAKdaTN5V5IxXgILIKUK
-         FVBXxIH5GBm2T6LuoHy5w2bTkqBJ7cJb27a1KTv36lCxrLZfN0J2/rKw8T17SVkzbaI+
-         SMp1oQ69wZaqyjf2n7KVrfiWW1MQ0XffFlANeo9pm2e6wqx7Kp49Wn/+W/oqvhOJQx5R
-         cinYFSlnjyuPlHuDDogm8KG1qnyZ2ptMA+Zg6RKJChRmNia8yCTKU0DEwd1C6e2hdhKT
-         UJJZWjPC4F2LEaL87xuUFUHsolEzw13/+OmvJf7ZdTjVOGFRB2toucsjopS1l/zjJy4R
-         qhcg==
+        b=Z2b5TQCSA+ovcs76ScehxQlXERyt5jvHCWPsbGcLV3JDuwyXZ+h9meiAbXw1PU4HLq
+         HksEJvv7XtP+e61rXmPraXYYPJmdbaH3WxBjJIQtqDLfcRoEhxkkg/802rcrwXG8Vyo8
+         yNRjGrRIhU8GcHU60JryGGMbA0pVQXxDX9f+S/s6nj3gWFGrKFUKCrTCMNi+F2104jUP
+         6NHRX9JvWx0zJXOswSf5xIYS5/WKRy3WSxgsa1fltbG2tYrVcZA8rSeG1dkoprg5K9Eu
+         z9Csn4676o10jcA/05OXSADpB+XRiJoDFgKV5kIkPjRuhlB8Wm8GAdgoAs4fW2nsYW8W
+         vc0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=i9pFYJoabf9+fG2XLOa4UB/cKAfcHS9SyuF2Jty0mfY=;
-        b=KbNuu/mPjvsOnsfTNdpTaowop2jblG4shU50dbhoj9AMz7HOSj6RDcEHBFADcy8Ltv
-         Q7f5FFJV/rPB0DsG7p7ES1qNUWJaZiCVmawmxyovIX9S9sQ9bC1+uz2vbGSCyU9uQUXX
-         XZnOOiIILSPIlseHRJ4sg6PtOVYb0R3Ve9x+5nDvfolRCjSa0rXT11aey7k3jNwedr//
-         OM7vydgbxsHNehIlLI8H/4m+mG+E8DunzdR5S8+28t3fZ6576/NzdOL/S1gHUGs3dh4g
-         HdMb06p99wW4IjcQJrfeOOG+ksLeXc9CFmnt9ImhSipb2xopNH8t/F9Rbwk2qEiAPZs/
-         65DQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=0kjTQMHvurHakLs5QEBEICkdRhpch4fm+zP8C0Cj0cM=;
+        b=u1tbhl7u+QQnjE3a/JK3BXqxyN1tp2YAFjZgsBBECszC+d33WJDHN+p14et0Hli/F+
+         zm638mSOwzvwdG30ZoLtlvTELgfsbEuZEg4G+Pqrxt/r2Xt3gyBEzKr/FYa+wu+fK9Kv
+         npYTzN4d32R6t0vfcKF0K4Wi1vy2S56J1pMQNpw0wGBOt3lxPLBv8T8ORZFAJ87zlcRL
+         CyJz6KEWndx0qqoyVjH4/lHZJLro1XNlFtjfJBJoVzPHcSf5rrsusuvjEBw4fdftWpBC
+         /avGlH8khL3JAXk6G3E9aePKf8FWzSJ2IbyK5yltH38dYvagmrT5MEAqMaVJRaWW4qja
+         Y3DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=svUfHWDj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ESn+cjKH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1-20020ae9f701000000b0075b125ba4acsi5033934qkg.411.2023.06.05.15.29.05
+        by mx.google.com with ESMTPS id j8-20020a37c248000000b0075caac25a3bsi5412801qkm.123.2023.06.05.23.50.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Jun 2023 15:29:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Jun 2023 23:50:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=svUfHWDj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@ilande.co.uk header.s=20220518 header.b=ESn+cjKH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q6Ih5-0001kF-Gv; Mon, 05 Jun 2023 18:28:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q6QVV-0002h3-9P; Tue, 06 Jun 2023 02:49:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6Ih4-0001jc-28
- for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:28:54 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6Ih2-0000Du-Do
- for qemu-devel@nongnu.org; Mon, 05 Jun 2023 18:28:53 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-3f623adec61so55613545e9.0
- for <qemu-devel@nongnu.org>; Mon, 05 Jun 2023 15:28:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686004131; x=1688596131;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=i9pFYJoabf9+fG2XLOa4UB/cKAfcHS9SyuF2Jty0mfY=;
- b=svUfHWDj9uBtBnlrgLIQ3h1vKBcULXD445XN+eXje5BLzbScAe4Tu0QcdvY2GRUNXG
- cNLaWNc+q05kNjET3DVid8E8cHq8Jo/QE6yNqTHnNgCjsLM7hoKBK9uTlnsmYNv9LMqz
- C/yoDzKsnZbXw7d8VSxKNRqwIpGcJ/LzVJ7nJB52f/vRW4n5UHn/n40u4OOft1lcc/GL
- Mkoz0A8t3zr83sKZ5Ef5Ik+W4Mc++9Xi1o1qYHwv+OKrrMED5nH2uAEcyEl7PGzpvJZI
- 82QRCsQQHApa1vtkBnBP6NK0ENDI8f4aH//vBlmE7O6b2rrL/O3uQ3CUTOpjBCc2Wpr2
- Xo+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686004131; x=1688596131;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=i9pFYJoabf9+fG2XLOa4UB/cKAfcHS9SyuF2Jty0mfY=;
- b=T+jtYvnrdn9Y1sve6GWmCCopQ1ZiR0ilraCKLAhzCS8/dMwlyty9YFDl11tm5jRIt2
- xpJ39/ZtivMrzm6cIwgozebcLqi8sZu94nxcZ3FuIlJnSg3HhzMxrKXjzBmnhNmA+GMM
- Y4vesz8Ffgrd3+pX+9KUDyYMd2q2mg0nr+IHmnjyCsNquXyRH6q0JQYZxp4ZlDF1i+mx
- niMojOsqDwE8U5318sUdKN1A3w96YQq5eMaTbA6eAWrpL+dR3OYow9zcRFnWkF/3Ys8x
- mFlZkG7sE+qAwry0xiJqbwKus3O25qS00iTpKhgxr60X19zamyskTGV3gmZjPIz+WwxW
- j6ww==
-X-Gm-Message-State: AC+VfDxLZh4okBQBjJTS9yO2Bpp12pMS2tWobY+aDIOlWJZb9m75X/l4
- tnAoHmKwSpalyYpUtR9T8iuXJTneSbX/gj4PXLo=
-X-Received: by 2002:a05:600c:b45:b0:3f4:d18f:b2fb with SMTP id
- k5-20020a05600c0b4500b003f4d18fb2fbmr437916wmr.8.1686004130804; 
- Mon, 05 Jun 2023 15:28:50 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.217.157])
- by smtp.gmail.com with ESMTPSA id
- y7-20020a1c4b07000000b003f7e60622f0sm3185158wma.6.2023.06.05.15.28.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jun 2023 15:28:50 -0700 (PDT)
-Message-ID: <84a4cf50-547a-a384-ce18-069b0f34762b@linaro.org>
-Date: Tue, 6 Jun 2023 00:28:48 +0200
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q6QVT-0002fo-2T; Tue, 06 Jun 2023 02:49:27 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q6QVR-0002yg-8Z; Tue, 06 Jun 2023 02:49:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=0kjTQMHvurHakLs5QEBEICkdRhpch4fm+zP8C0Cj0cM=; b=ESn+cjKH/Bo3XQjvPPBH+P9YW1
+ CfzzqExjBs7vecEHtvg4VFLC5eooWP0gc1nWjDppn6hA+zrwKBhQYwDF2hc9j29EdTBL5qpAwZMyJ
+ INuhYox4CiGgUDMU2x+p+5jjwpVX9NzIKVWZ4VKZBDVBY5kgf6n/ev+1u8k3v6QA3B39iJflk5IbO
+ BYJlOxsQZDT7W48zCX5csyff731U0x3YzbGVdesRH/ft64kR/BFqoT/OhWFDMqVWzOV7kJz7BU9rW
+ pSZWSTJ1HewfiFc7Fruloni/IrD5g1O7BLIsRadOWlLSGbctYyFTJB4L6TrnhfwBfq1uAX4TBU75h
+ 4CFctzoL9wY+xKCF1dXX8L9VO3OnMCbNlhoIZP6sJXpLZ/ZfOBqVnPQDFmGD///kfsvUerAlk12+H
+ JHSFN0yPSSIaadYfNySEEe6Nc9y+dPiCa4rLqt6rWO4BIZ2q6g66f/xnkCXK+KxMFHJRpiI9dL5aE
+ bmu0+1mze+wwbyqMJLlViQ7DGQLrnt5MS8muABaX9CLSbdtvqkZRT5wyve2B3OiLqy2f+xS+hY1M/
+ Nd1oWJIAgDAaCZlj+rPjAT/44JRfBVBueGBHcfu88trlaWMGaGI0UFyeW5/zwZKjzXygbk9jpAFK0
+ wF3zwMh1mWPrxQggbCWZu9oeHdLXe0Sk1OTUjgluQ=;
+Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1q6QVB-00055U-B8; Tue, 06 Jun 2023 07:49:13 +0100
+Message-ID: <c753ab8b-4f9a-3309-ea16-3debaf2c4111@ilande.co.uk>
+Date: Tue, 6 Jun 2023 07:49:08 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [RFC PATCH v2 0/9] bulk: Replace CONFIG_SOFTMMU by
- !CONFIG_USER_ONLY/CONFIG_SYSTEM_ONLY
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
 Content-Language: en-US
-To: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org
-References: <20230605222420.14776-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230605222420.14776-1-philmd@linaro.org>
+To: Bernhard Beschow <shentey@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>
+References: <20230523195608.125820-1-shentey@gmail.com>
+ <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+ <20230601080655-mutt-send-email-mst@kernel.org>
+ <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
+ <8187BA4B-5031-4AC6-A94C-27AB714C850C@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <8187BA4B-5031-4AC6-A94C-27AB714C850C@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: H67D4TGNm7SI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1+MsEMqbrc6q
 
-On 6/6/23 00:24, Philippe Mathieu-Daudé wrote:
-> Richard clarified my confusion with CONFIG_SOFTMMU from v1:
-> https://lore.kernel.org/qemu-devel/7913570a-8bf6-2ac9-6869-fab87273742c@linaro.org/
+On 05/06/2023 07:58, Bernhard Beschow wrote:
+
+> Am 1. Juni 2023 12:45:47 UTC schrieb Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>:
+>> On 01/06/2023 13:07, Michael S. Tsirkin wrote:
+>>
+>>> On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
+>>>> On 23/05/2023 20:56, Bernhard Beschow wrote:
+>>>>
+>>>>> This series:
+>>>>> * Removes dead code from omap_uart and i82378
+>>>>> * Resolves redundant code in the i8254 timer devices
+>>>>>
+>>>>> v3:
+>>>>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>>>>>      https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
+>>>>
+>>>> Oh I didn't see that this had already been merged :/
+>>>>
+>>>> It's not a reason to block this series, but I'd still like to see your
+>>>> changes to ParallelState and ISAParallelState merged separately since they
+>>>> are a better match for our QOM coding standards.
+>>>>
+>>>>> v2:
+>>>>> * Export ParallelState and ISAParallelState (Mark)
+>>>>>
+>>>>> Testing done:
+>>>>> * `make check`
+>>>>>
+>>>>> Bernhard Beschow (3):
+>>>>>      hw/timer/i8254_common: Share "iobase" property via base class
+>>>>>      hw/arm/omap: Remove unused omap_uart_attach()
+>>>>>      hw/isa/i82378: Remove unused "io" attribute
+>>>>>
+>>>>>     include/hw/arm/omap.h   | 1 -
+>>>>>     hw/char/omap_uart.c     | 9 ---------
+>>>>>     hw/i386/kvm/i8254.c     | 1 -
+>>>>>     hw/isa/i82378.c         | 1 -
+>>>>>     hw/timer/i8254.c        | 6 ------
+>>>>>     hw/timer/i8254_common.c | 6 ++++++
+>>>>>     6 files changed, 6 insertions(+), 18 deletions(-)
+>>>>
+>>>> Do we know who is going to pick up these series? I can send a PR if no-one minds?
+>>>>
+>>>
+>>>
+>>> Go ahead:
+>>>
+>>> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>>
+>> Thanks Michael! Is there any objection to also including https://patchew.org/QEMU/20230531211043.41724-1-shentey@gmail.com/ at the same time?
+>>
+>> Bernhard: if you are able to submit a rebased version of the ISA_PARALLEL cleanups at https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/ I think it is worth considering those for inclusion in the PR as well (note the comments re: an updated commit message and register definitions, but I can't really do this myself because of the missing SoB).
 > 
-> This series tries to make it a bit more explicit by removing
-> mentions of CONFIG_SOFTMMU in non-TCG code.
-> 
-> We replace CONFIG_SOFTMMU by !CONFIG_USER_ONLY in C code and
-> by CONFIG_SYSTEM_ONLY in meson config files.
+> What could I put into the commit message?
 
-Now we could poison CONFIG_SOFTMMU on non-TCG files (to force the
-use of CONFIG_USER_ONLY), as the definition is only used here:
+That comment came from Zoltan (see 
+https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/20230521123049.312349-5-shentey@gmail.com/#77413450-244e-287b-ad21-e57cb5e2abf5@eik.bme.hu). 
+Zoltan, would you like to suggest some alternative wording?
 
-- accel/tcg/
-- include/tcg/tcg.h
-- plugins/api.c
-- tcg/
+If not, feel free to take my message at 
+https://patchew.org/QEMU/20230604131450.428797-1-mark.cave-ayland@ilande.co.uk/20230604131450.428797-14-mark.cave-ayland@ilande.co.uk/ 
+and tweak it accordingly.
+
+> I'm also wondering: Why export the structure but not the register definitions? Are the register definitions not part of the interface? I think these could be used in unittests -- if we had any -- to avoid magic numbers.
+
+In theory that could be possible, but it's not something that people have requested 
+(yet). From the QEMU perspective a device is something with memory regions and gpios 
+that can be wired up within a board, so unless the #defines are used directly within 
+ParallelState it doesn't make too much sense to export them currently.
+
+
+ATB,
+
+Mark.
+

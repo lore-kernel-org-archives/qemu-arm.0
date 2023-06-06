@@ -1,115 +1,114 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3529414ejb;
-        Tue, 6 Jun 2023 07:30:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7Mt1CsTvuNChW7CP5DVFJpzjAh9mgKjfnfRlPrq0y4WZgTkeBSb8TA8Lw+rC0TWzoHXJ6L
-X-Received: by 2002:a37:c84:0:b0:75e:d598:7d0 with SMTP id 126-20020a370c84000000b0075ed59807d0mr1298962qkm.15.1686061807915;
-        Tue, 06 Jun 2023 07:30:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686061807; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3538385ejb;
+        Tue, 6 Jun 2023 07:44:20 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5bedlWmJ76oCMyR+TGxjYwlFCsq3N8rIsxLP2ct9yazB4OWOJZC3VI1/HRI/lNwD9yvBBV
+X-Received: by 2002:a05:6214:e66:b0:56e:c066:3cd2 with SMTP id jz6-20020a0562140e6600b0056ec0663cd2mr2727618qvb.2.1686062660588;
+        Tue, 06 Jun 2023 07:44:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686062660; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bbtc4BD7Q7IwNW08hnS5WtWiL7UbqcxQ9MDO6oIer5Qyt7DEPDGfI+MSNU5EtHvFGr
-         Tzq72QQyl0oT/84vpxXBtUkIkbsU6Mswb+TRHMkI/Cncs8C/Ihrf+8vqLAid2E3bxwq5
-         IPAm8sgDPbm9VMIlira68n4d9FtWzpq/V7b93Zf+2/vmu2DY4mR2k6vCYEyli4T0DlkD
-         YpeJaWV8O71N5s+YpwOLhFZfR1nA5yRztO3Q1hLPznUhExrOiI7BOPIOrX/7zhJgd7t+
-         hQq3+VfXJTWPVpmLTQ6oxYSKUc4yHy6I4lpPM+0mJIrRy5ExZgLmde9+70Y3+h/KVH+v
-         BNxg==
+        b=kjrW1E1OcbPbV/pqTooR4/kTp8lSy2ZueWWMiEdLw5SPQoGPj5H0bT1LuNIitjmT2X
+         +mv9mnK2Y05fWUfpWQR54dMDPtW/iPqev9DzzkGRPzbpCAxf6D9v2UiJNFZbb+5q8Dlk
+         5c+0zKHUka139nK2vEic/OyTuCcszcnNqX3nDoQMYDi8XVhJ6YwOwti0VsfZY4NmItmk
+         tnnkxN9d9sAMYwobHtZwWD5wrovWtG80mXKcgofXNrEI/AzWw1Ki27X+O7mH99Nq/BHL
+         MCO8fcsgIYulduc2NTKUUBOFeMZQ/u/e0WOTCi/am8D9E1gYK9PK5XHI6VeotEk/wEyR
+         hPPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=o0XnDz4BJ5M9khAi12lzjtgCuFHU98s/PWfB01AaiPU=;
-        b=DmqvSALttpEwQ3Rd02OcHu2Y+nHTJEZ2LqVx7aBqYs7DI3JR2puQwwY/q+P6t/xHFv
-         cZ0ubSKqzcqOPf26fhpR83un6gpYxpi7rSNH1PEuVRKmKR3Fd7ZKvcVdPxb+LVfkw7yb
-         LCrXaWO5rt9ogy1M+7Pi0Nltsd+ZzOJKPweInDvvQfoH9lMjalCe/AR2U5b+0Mc0EltT
-         5IKc8UMWLhf8lp1usqhQQcQ9ybqxyseoakXtdMEKMUsWkowVK/c0qSqBapVop3kaE5aZ
-         YLlbNzM1bpZBAKvKtDKHVTtFPtRIktmOsv8mpYlFkvnlhwjDJCkCZrL/JW9bhWXcWEsY
-         m52w==
+        bh=+DmIAMbunq1pomrbFObBYHR3zPVk1GkroIuzxg71Tvs=;
+        b=yitrPlL4bYUk2Y7TDPAA9z8fslqJpBhfgZMuwKTsH2qxUXFgzIItql7cCwBcp+v1EI
+         sEioL5NDfAeVas3Qu+SLnWeuNa1W072yP1LhdD1+v9eQv/vyn5i22F3kq2tIdd+gCPBc
+         U0HKZdxOjTxvO5I3LA/vPsnl64l7JS1AWxWWBaXg8c/uEOvKoeYzsYs6ElCqKBgHG+Al
+         B2b6xztMA+sM33hQHEEYAzmO4BGdLAJHIuA/I/q3f5BFVHVfkXOCEqB9q7RHVxYgGSEB
+         8EU93lGjKJ9/G9dgT/8+zVQaSnCXiHiHfdXCVnHk4ch3egl+ygXwATP7S/uaYL5ahjOp
+         qJgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J2CyBKcY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=co+ciTo9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p28-20020a05620a113c00b00759348adce5si5785613qkk.196.2023.06.06.07.30.07
+        by mx.google.com with ESMTPS id s9-20020ae9f709000000b0075d0c5038d8si6050081qkg.291.2023.06.06.07.44.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jun 2023 07:30:07 -0700 (PDT)
+        Tue, 06 Jun 2023 07:44:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J2CyBKcY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=co+ciTo9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6XhA-00039M-Os; Tue, 06 Jun 2023 10:30:02 -0400
+	id 1q6Xuf-0005mv-Ur; Tue, 06 Jun 2023 10:43:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q6Xh4-00032m-LX
- for qemu-arm@nongnu.org; Tue, 06 Jun 2023 10:29:55 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ id 1q6Xue-0005kZ-J8
+ for qemu-arm@nongnu.org; Tue, 06 Jun 2023 10:43:56 -0400
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q6Xh3-0000a0-3w
- for qemu-arm@nongnu.org; Tue, 06 Jun 2023 10:29:54 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-256531ad335so5079390a91.0
- for <qemu-arm@nongnu.org>; Tue, 06 Jun 2023 07:29:52 -0700 (PDT)
+ id 1q6Xuc-0003hN-V2
+ for qemu-arm@nongnu.org; Tue, 06 Jun 2023 10:43:56 -0400
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-64d24136685so4493996b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 06 Jun 2023 07:43:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686061792; x=1688653792;
+ d=linaro.org; s=google; t=1686062633; x=1688654633;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=o0XnDz4BJ5M9khAi12lzjtgCuFHU98s/PWfB01AaiPU=;
- b=J2CyBKcYRJxR4uZyg3TRESo9+RxXyDoeFAQacTzIW5A5tvIdxfYs+lq1wlrQOEieVg
- u1pvyOdeXnq4zuo75bgOBQ5eG+hPhltMuvYJ7F4rWAsWT9WKEcfPBd0/FCjNJTgpONGK
- n3VWtCIktuXh6rDEXaLKRdaLMOpNmnHn1jaFGdbzxo3ZFoXisAaI+oVDiDZOzy9JukRq
- Gy66MkNy+JHk/clJqoQCg53FQ4c0eskWrJfgrr6bx30n/l0D2JRRYTOkB8rjvSKiOgRM
- 88tMfQkDM5DFeqjMtCjkkAvC448PkFuSalQ8UFMbjOjCH/CdL7CjxubWd+p3LNF6JmXc
- fG5w==
+ bh=+DmIAMbunq1pomrbFObBYHR3zPVk1GkroIuzxg71Tvs=;
+ b=co+ciTo9d//afNbYvWaad3TbOUv/eF6ZQhg/wRDZRO9Kebl110sLG09CiTrrdDB/cN
+ U5fzCSKpytAv3rCvr+FDAkb4t1OoK8vR9MZpIK0kWjlvoM8T9X43qrU59uVi5nMIaI+9
+ 8CM6HsDwlJbruhO/s0C94YwFcpOEDm9Ulp8N7ZUGYfDa2Rv6ZXZWuh6FAeK7Wi6aOmGr
+ PkgrAbTwhNu1xpIANL35iEsrfQWj99Kwvy25R8d2waxvhv5Jh7Kmb4JmI89Qwpa1pfJG
+ aqoltUIHegFZljemfPu8YLDbtVcVZ+FViwtfj6PHNSaQLqXAvfrRyOj7Q9y9lQo4E2YD
+ E0WA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686061792; x=1688653792;
+ d=1e100.net; s=20221208; t=1686062633; x=1688654633;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=o0XnDz4BJ5M9khAi12lzjtgCuFHU98s/PWfB01AaiPU=;
- b=MlL5rAQ2xLEQFZ+vlgDVB3FF8lc61/RP767KfFSYu7mWc2L8YVIQGgKNJkpyJ/khX7
- ByKx8qPyroWkUVqIfeIka+AMfKcDuRmqMGsrGyL1bghT/f5gXy+k7Sjnp003CjIyTqFI
- g1tURjhZxzgSUyiRbSR3ng1D9otpd2AZxHPhIAr4jXUH6fy2sCefiSWRYVw/vUlZPFn+
- 7km7saGW5FxOUfC6Vq7tuA9NLeBvAQHYT8DqD5gg9KEUpijBvKQVQUOgLRQci3DAEdrR
- Vj4gAE1Qt/G9FmMr1JsaRiaMe6RXs4600DCW1lS9578Wv8TMnvT7cfiDWx+9WuixLc3U
- R/8w==
-X-Gm-Message-State: AC+VfDxD0KS6fqRNMtfw1lEYK5paN98R+71hV83lQH8RkrMbIZ8cUPb1
- wNLQk4vlTSJU4ZhBh8SQnsccTw==
-X-Received: by 2002:a17:90a:194e:b0:259:224a:9d05 with SMTP id
- 14-20020a17090a194e00b00259224a9d05mr2090396pjh.3.1686061791808; 
- Tue, 06 Jun 2023 07:29:51 -0700 (PDT)
+ bh=+DmIAMbunq1pomrbFObBYHR3zPVk1GkroIuzxg71Tvs=;
+ b=YQ1Y2Gii1V8zR3QxRZ7fAFVPlee0moKNxNQ7PHE1UXmvO94S06Yn1viffc4id9XwlC
+ hFTQWwu4ANvufEn66l4N0GlzQ9/syTZQ8IrF9aNN8lbk5BuSZnrLPaegsY8C4DsFNcZu
+ WG3O37ZG5DRqBrk/4oqx+EOt29sF1LtyuHP8RBA+wm3HVBM/A6yiBdCjOJdY1AJl9wAj
+ 4pwWegh18/bBKLH9OoMYKLbOEF5xdWfJe7rLY5WHFwQlUVxGOWXebGj/qC+kg9il4gNA
+ OlxKA1OOIEuh+7rdZA06/x1Kk1D70uNhyMEgSTTNYwXU0BTCNH1YNXOecbOS7jlh7UJK
+ MMmA==
+X-Gm-Message-State: AC+VfDxI9KVow3lxWOqEOq3WyCVTb1/8ypwkvB/6zn0eAJBcREyM93IP
+ 0jrC3pzl0wALiNYt7kk8kkX4/A==
+X-Received: by 2002:a05:6a00:4403:b0:659:14c8:1f0b with SMTP id
+ br3-20020a056a00440300b0065914c81f0bmr3276276pfb.4.1686062633323; 
+ Tue, 06 Jun 2023 07:43:53 -0700 (PDT)
 Received: from ?IPV6:2602:ae:1598:4c01:b7fa:ce59:1445:805a?
  ([2602:ae:1598:4c01:b7fa:ce59:1445:805a])
  by smtp.gmail.com with ESMTPSA id
- em20-20020a17090b015400b002535a0f2028sm9551098pjb.51.2023.06.06.07.29.51
+ y23-20020a62b517000000b0064d2ad04cbesm6840668pfe.209.2023.06.06.07.43.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jun 2023 07:29:51 -0700 (PDT)
-Message-ID: <324917f6-62fd-9930-8d33-725ec934ee75@linaro.org>
-Date: Tue, 6 Jun 2023 07:29:49 -0700
+ Tue, 06 Jun 2023 07:43:52 -0700 (PDT)
+Message-ID: <cad000d7-f408-9337-9328-ccb262c5fcc7@linaro.org>
+Date: Tue, 6 Jun 2023 07:43:51 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH 5/5] tests/tcg/aarch64: Rename bti-crt.inc.c ->
- bti-crt.c.inc
+Subject: Re: [PATCH 4/5] target: Rename per-target 'helper.h' -> 'helper.h.inc'
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  qemu-arm@nongnu.org
 References: <20230606141252.95032-1-philmd@linaro.org>
- <20230606141252.95032-6-philmd@linaro.org>
+ <20230606141252.95032-5-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230606141252.95032-6-philmd@linaro.org>
+In-Reply-To: <20230606141252.95032-5-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: 3
 X-Spam_score: 0.3
 X-Spam_bar: /
@@ -132,7 +131,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: POaelspynoq7
+X-TUID: 8pz6C3Vp56IQ
 
 On 6/6/23 07:12, Philippe Mathieu-Daudé wrote:
 > Since commit 139c1837db ("meson: rename included C source files
@@ -146,17 +145,16 @@ On 6/6/23 07:12, Philippe Mathieu-Daudé wrote:
 >    the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
 >    being included for expansion.
 > 
-> Therefore rename 'bti-crt.inc.c' as 'bti-crt.c.inc'.
+> Therefore rename the included 'helper.h' as 'helper.h.inc' for
+> all targets (updating the documentation).
 > 
+> Suggested-by: Richard Henderson<richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
 > ---
->   tests/tcg/aarch64/bti-1.c                          | 2 +-
->   tests/tcg/aarch64/bti-3.c                          | 2 +-
->   tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} | 0
->   3 files changed, 2 insertions(+), 2 deletions(-)
->   rename tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} (100%)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+A bulk patch like this isn't ideal.  Targets that have a tcg/ subdir should have 
+helper.h.inc moved into there.  At the end, include/exec/helper-gen.h and 
+include/exec/helper-proto.h become unused and go away.
 
 
 r~

@@ -1,175 +1,155 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3694329ejb;
-        Tue, 6 Jun 2023 12:08:50 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7G+zD1N1y8llwk+JkRw7RZmFwU+FGtXwPoWN61uDZ7J6wj8NLkqE8K9ZtdyW0nxw/5ZSmR
-X-Received: by 2002:a05:622a:614:b0:3f9:1736:dc87 with SMTP id z20-20020a05622a061400b003f91736dc87mr769444qta.36.1686078530435;
-        Tue, 06 Jun 2023 12:08:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686078530; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3704294ejb;
+        Tue, 6 Jun 2023 12:29:14 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5II+rn2YkPslZl2V40aRVk6/hRR58NFlHzdOY9vjQ76OxS3hNe9Q5dOCefrwjXkvtoQdfZ
+X-Received: by 2002:a81:4e55:0:b0:568:8e96:7008 with SMTP id c82-20020a814e55000000b005688e967008mr3447748ywb.0.1686079753700;
+        Tue, 06 Jun 2023 12:29:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686079753; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMHEvDQa5DUuHS4Ky8RQoJGtVKZdrgLn1xUiRwMK5ut6Vjtxa40j71iJYiQziyj4bO
-         EFHIfyILh83+euW9A6W80Cpb/ENWE6yZcqnQyW+WvLrBLUtjgh4NMrFefi3IOZldT6bJ
-         GHHRfKBKhEGYtx0+kX3RtWzk2NmDUf+bf6f7VMehfL2rnd0QBnTi/EQPdY+m3eoUZvyl
-         VTS8GfaXhz+ekcoMsE3AnMu1xnsdhVZlKSaGd/evUte2GT5s9zpCnigvvdMhTSjw56Zm
-         7f3m777r0+H9a+qiHyo+kbyeDw5t+14D65TQdxocOXaCXWgDysGGW53CpCVse/Y2Ayst
-         H5rg==
+        b=Qvr0c8p6dEjrx+vdMewp7wfviweYDHllb5Gnofj9Pc0Yt35nlduKXwlq7xWxaYPRwN
+         a+w2y96qE85QWSzdWpF1M+6RllxC7HQaj6KN/A+UkqGIX/nIoxBwUbkzHoYUY8ERlBvE
+         ye8l4wxIkrYlUt2sgH+xDNQz6q5Q+GlUvqqnKHaN3Fq5Mk8GFJviH+fM/VUjDmNoMgTU
+         JvI3ZlaHr9pQjytxbfOurU2xH2KRND+cFnHIERbRbh8e1IXEWYz/JWVF6lYXKv6LhQIK
+         Wu1mN7Olo1AW5BWkKVc1jxo2+CubYklDgP8E2+DkcFaS3DZrwse2t4Wvu0vngAE/Yzml
+         5Qtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wOrDBTzQ9E+uGKXbx+R7xonXW0NREdkS+vLXdo+bW9o=;
-        b=CHsgnwIVoRAU3qk6M1QouYivMNdc0USP/7RQxo3cla/F5oHIi+TdCpkzMwJMZaOjZU
-         ku4LkKRrUiu6U88rIek9HEUp1Sdhlc3snmcZcQ7kBdmhh2DENVwG4OM/unH8l3NfwSCt
-         LxPPkaXwUqFPnaV6DvEF8BPcg0nYR0RS0lijmboB9PY1IQRzJV0z+IczjlNPKpfpKdFR
-         muOnnav2zzWRLtO7Y6OrI8TFu+eATW3WLYdXm3vD8s58ilfoWkTjCsCarRRCXWASCPXC
-         YjWvVdgS2Y1YmJFbLEvsPdDEW9DNxGK1OcrY0QkixFken1Z5IzK+GjMvTdXY45VgTnGW
-         LSng==
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=n78VaPQMM4BWAcNTYBayvcjW5p5AXnzFDxlYIAeRgIM=;
+        b=UpD0S+1yjfovFL8ruZeMZXYvtFhxJSjxcPake11mpY/J9lDn1h86IOpRK8n+c1uENU
+         Td0jAAXitVQCMQoJ154c6VuotsRqf1g+HQwiUgvRzN9CRPWb8I4RG9kcKuYbGye9a+Lw
+         IcpC+8qFYD2yY5mrzfaQ+uNl4Tgi5KshrOZQcIqRcO5gNTKfAJsEk7JBhwIG9ngRAJvC
+         wWeaHfHVJp7Rj809Hg9onTcvxWF+wZv5KhVchYIZ7YDxhWVvZyeH9N1U5K8AOun3bKnc
+         LVDgfDFdTBOr8Ngc/VIbFF8coOlGc/ROzehMPDFyDe8arpwN54TjoITHbI+95AN+C2EP
+         brVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BzB0ksE3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1-20020a05622a180100b003f6b8dbb9aesi6369606qtc.395.2023.06.06.12.08.50
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jun 2023 12:08:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fmt6DQ4U;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id d10-20020a814f0a000000b00565bb3831a5si9348127ywb.412.2023.06.06.12.29.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Jun 2023 12:29:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BzB0ksE3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q6c2w-0005tQ-Aw; Tue, 06 Jun 2023 15:08:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6c2v-0005s6-9u
- for qemu-devel@nongnu.org; Tue, 06 Jun 2023 15:08:45 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6c2s-0003b6-Cc
- for qemu-devel@nongnu.org; Tue, 06 Jun 2023 15:08:45 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-3f6dfc4dffaso55747415e9.0
- for <qemu-devel@nongnu.org>; Tue, 06 Jun 2023 12:08:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686078520; x=1688670520;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wOrDBTzQ9E+uGKXbx+R7xonXW0NREdkS+vLXdo+bW9o=;
- b=BzB0ksE3egzjUpV99CzhAupYsGfFQq9u4lLJ+ftWmhf5MA48UNXHxM/5ov1WurYdNt
- r5hVqXDc0nIFDkVvmYFFI7+9iP8cyNwqu4q61yiXsDfGwe1dorG6t462Sq8RFBcWH3rh
- T4/58c4lN4ccTnamcdBg9cSOikpR22f1SHqRObygxccjEIb5YfsWWsjPs4QwPgFoepm9
- FcZ04Uyi36OG/zLUns72JgpWBRlUjNmJgd7sxn2oxk6+9gUYcUNQjPQ7fJJIpR0wKFvT
- mK4RcPXIWMuVgyLkgXVlyDwTh7+/x3mJ8INKms88/JiJFym4OttAERXz5ziGXpZbsnpD
- rnwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686078520; x=1688670520;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wOrDBTzQ9E+uGKXbx+R7xonXW0NREdkS+vLXdo+bW9o=;
- b=TMkqTVs9b1z2E+m/sEY0nZaJNiBMjfJyDbydJ6vvh0VBQJJA24b+yvm8SZvArHilbR
- KONOla7DvAolLtCWvTt2IU7QcCkp1rs9PFpK3RLM8jCAjDt1eADebX/s7Vhv104/qHgV
- uW/hjR5PRjeuZXWog1O3703e9pv+gqxC9js9ckjL5WuiT9BZodPQBI92QO5K86gxqpA2
- WazJYKj2ZdfOxxaTyYskLUY8hsmO9t5C6qe12muEfFKulDe9BKEZnLknUyUvBZOUIQef
- XmLrxo/8obwOS5sxEN2+b1AFIZ6M2HN3SGfb6HJW/EJw85JHzgqwiro4CWEWBDY4iWOz
- H1dg==
-X-Gm-Message-State: AC+VfDxW/OHPo3wW0C02rD3SCYRKY3b+PiwvxsI8nROP9UGDR+0cDGKH
- TSoRONV8Xi46FV8Tk10yFM8A0ne6L11dm8U/Dyw=
-X-Received: by 2002:a7b:cb46:0:b0:3f5:39:240c with SMTP id
- v6-20020a7bcb46000000b003f50039240cmr2879826wmj.27.1686078520428; 
- Tue, 06 Jun 2023 12:08:40 -0700 (PDT)
-Received: from [192.168.69.115] (vbo91-h01-176-184-50-104.dsl.sta.abo.bbox.fr.
- [176.184.50.104]) by smtp.gmail.com with ESMTPSA id
- h4-20020adff4c4000000b0030647d1f34bsm13446489wrp.1.2023.06.06.12.08.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jun 2023 12:08:39 -0700 (PDT)
-Message-ID: <a5318869-9a20-2f4c-7ce5-fa0d13503007@linaro.org>
-Date: Tue, 6 Jun 2023 21:08:37 +0200
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=fmt6DQ4U;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 356JN1se023941;
+	Tue, 6 Jun 2023 19:29:13 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=n78VaPQMM4BWAcNTYBayvcjW5p5AXnzFDxlYIAeRgIM=;
+ b=fmt6DQ4U9H2aD727ghjtUZkzwinBII4Q51EMjiCQr0zmxq6aiwWqIX9thhMSANCUGpFG
+ koHB8kLwzVmWTglFw/RTQig/DP85bRYF7SngRDHQvmU5deIWtwCE+bpGKgy7rQWuZrIw
+ tZZwSXYYeXBPj1sZwwdVBNSToHC3ILozwuXN3YOsIVavHmZmzdeW/b4HrlrHVnZIYDyE
+ IHRExZV1wJlW2WKpEwclX+wBLwWCfFqJ4i4rxmW4HJzZDuo9pYeANSe3KdoS68vRPdJb
+ BX3biJNfy1lIj0NU7nrNhlM0ja1Q000tu124ejSMZ0xtvK3GpY2fukcJaQ3lu935u5HM +A== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r2awmr40j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 19:29:13 +0000
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 356JNjCm027051;
+	Tue, 6 Jun 2023 19:29:12 GMT
+Received: from ppma06ams.nl.ibm.com (66.31.33a9.ip4.static.sl-reverse.com [169.51.49.102])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3r2awmr3yj-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 19:29:12 +0000
+Received: from pps.filterd (ppma06ams.nl.ibm.com [127.0.0.1])
+	by ppma06ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 356IZD8K014735;
+	Tue, 6 Jun 2023 19:29:10 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+	by ppma06ams.nl.ibm.com (PPS) with ESMTPS id 3r2a77g1qx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 06 Jun 2023 19:29:10 +0000
+Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com [10.20.54.104])
+	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 356JT8mP44892530
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 6 Jun 2023 19:29:08 GMT
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2378420043;
+	Tue,  6 Jun 2023 19:29:08 +0000 (GMT)
+Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7C31A20040;
+	Tue,  6 Jun 2023 19:29:07 +0000 (GMT)
+Received: from [9.171.41.107] (unknown [9.171.41.107])
+	by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Tue,  6 Jun 2023 19:29:07 +0000 (GMT)
+Message-ID: <3c3df53d22f6f122cd389a9ed748c1655f8d77a6.camel@linux.ibm.com>
+Subject: Re: [PATCH v3 2/8] linux-user: Add "safe" parameter to
+ do_guest_openat()
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+        Alex
+ =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Laurent Vivier
+ <laurent@vivier.eu>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        David
+ Hildenbrand <david@redhat.com>
+Cc: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Date: Tue, 06 Jun 2023 21:29:07 +0200
+In-Reply-To: <ad49111a-5dd9-671b-f18f-009a7eae73b0@linaro.org>
+References: <20230606132743.1386003-1-iii@linux.ibm.com>
+	 <20230606132743.1386003-3-iii@linux.ibm.com>
+	 <ad49111a-5dd9-671b-f18f-009a7eae73b0@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4 (3.46.4-1.fc37) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH 1/5] bsd-user: Rename elfcore.c -> elfcore.c.inc
-Content-Language: en-US
-To: Warner Losh <imp@bsdimp.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-References: <20230606141252.95032-1-philmd@linaro.org>
- <20230606141252.95032-2-philmd@linaro.org>
- <c28e9cf1-5fa2-c63d-bb59-fbb4555e0150@linaro.org>
- <CANCZdfqjr8om2juzBN_BqTuoyGBq7zEuM1+J5-J3OP55qg5h9Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CANCZdfqjr8om2juzBN_BqTuoyGBq7zEuM1+J5-J3OP55qg5h9Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2Xzx/vtj+P9S
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: BCib8dL1E-XC1SvputxouHPyBhQ_jmjm
+X-Proofpoint-ORIG-GUID: _dUF8T9s6hA8na34JGvTTX2v5gFWywa7
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.573,FMLib:17.11.176.26
+ definitions=2023-06-06_14,2023-06-06_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ malwarescore=0 priorityscore=1501 clxscore=1015 impostorscore=0
+ spamscore=0 mlxscore=0 adultscore=0 mlxlogscore=696 phishscore=0
+ bulkscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2305260000 definitions=main-2306060163
+X-TUID: Yo/5QwG1eiEW
 
-On 6/6/23 20:08, Warner Losh wrote:
-> On Tue, Jun 6, 2023 at 8:29 AM Richard Henderson 
-> <richard.henderson@linaro.org <mailto:richard.henderson@linaro.org>> wrote:
-> 
->     On 6/6/23 07:12, Philippe Mathieu-Daudé wrote:
->      > Since commit 139c1837db ("meson: rename included C source files
->      > to .c.inc"), QEMU standard procedure for included C files is to
->      > use *.c.inc.
->      >
->      > Besides, since commit 6a0057aa22 ("docs/devel: make a statement
->      > about includes") this is documented as the Coding Style:
->      >
->      >    If you do use template header files they should be named with
->      >    the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
->      >    being included for expansion.
->      >
->      > Therefore rename the included 'elfcore.c' as 'elfcore.c.inc'.
->      >
->      > Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org
->     <mailto:philmd@linaro.org>>
->      > ---
->      >   bsd-user/elfload.c                    | 2 +-
->      >   bsd-user/{elfcore.c => elfcore.c.inc} | 0
->      >   2 files changed, 1 insertion(+), 1 deletion(-)
->      >   rename bsd-user/{elfcore.c => elfcore.c.inc} (100%)
-> 
->     Assuming Warner doesn't simply want to merge this small file, or
->     compile it separately. It
->     isn't actually included more than once.
-> 
-> 
-> I'd much rather inline it in elfload.c I did the include trick as a 
-> short-term
-> hack so I didn't have to upstream ALL of the core dump support to get
-> progress on other things in elfload.c.
-> 
-> So rather than rename it (which will cause some grief to me when I merge
-> things, but not a huge amount), it would be better to just inline what's
-> upstream now and I'll reconcile that when I upstream core dump support.
+On Tue, 2023-06-06 at 11:24 -0700, Richard Henderson wrote:
+> On 6/6/23 06:27, Ilya Leoshkevich wrote:
+> > @@ -8518,7 +8522,11 @@ int do_guest_openat(CPUArchState *cpu_env,
+> > int dirfd, const char *pathname,
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return fd;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> > =C2=A0=20
+> > -=C2=A0=C2=A0=C2=A0 return safe_openat(dirfd, path(pathname), flags, mo=
+de);
+> > +=C2=A0=C2=A0=C2=A0 if (safe) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return safe_openat(dirfd, p=
+ath(pathname), flags, mode);
+> > +=C2=A0=C2=A0=C2=A0 } else {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return openat(dirfd, path(p=
+athname), flags, mode);
+> > +=C2=A0=C2=A0=C2=A0 }
+> > =C2=A0 }
+>=20
+> I'm not keen on this, as it seems like the wrong abstraction.=C2=A0 But I
+> can't immediately=20
+> think of how it could be better structured.
 
-I'll just drop it in favor of yours.
+I also thought about temporarily clearing signal_pending in gdbstub,
+but could not convince myself that this were safe.
 
+> The only concrete objection I have is the change of API, which could
+> be fixed with return=20
+> get_errno(openat(...)).
+
+I believe both openat() and safe_openat() return -1 on error and set
+errno, or am I missing something?
+
+>=20
+> With that,
+>=20
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>=20
+>=20
+> r~

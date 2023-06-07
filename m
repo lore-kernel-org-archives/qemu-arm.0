@@ -1,107 +1,88 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp163836ejb;
-        Wed, 7 Jun 2023 04:06:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5bF8ufM33xs9qSP18NupFIqE8AnAHUJaQRwlBZQIQim0SFMIwXQFJeSSWTujdzk7lPyZd3
-X-Received: by 2002:ac8:7c50:0:b0:3f5:1626:6a3d with SMTP id o16-20020ac87c50000000b003f516266a3dmr3136008qtv.42.1686136018123;
-        Wed, 07 Jun 2023 04:06:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686136018; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp290059ejb;
+        Wed, 7 Jun 2023 07:16:42 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5zVdGpTKRsx56NKQBMN1GpPiTb3iXG3WTvxtzf3Kc7RceMjNFvd8aDdIRc6vjUDp3nscvk
+X-Received: by 2002:a05:620a:4689:b0:75d:50bb:b176 with SMTP id bq9-20020a05620a468900b0075d50bbb176mr2537653qkb.11.1686147402034;
+        Wed, 07 Jun 2023 07:16:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686147402; cv=none;
         d=google.com; s=arc-20160816;
-        b=JXr6637oM2k6y52tw1vvTkex+BD/IX7NP3ph3C1ei/iwm+qKCSq08blzwcN7vw4RhN
-         dkyfYzQlOAGBCku1+J2Hwn7UtopBGO4ZsqKD2pLcdpSB6LAYKbRcb6Fnd6aJ34bl+h7v
-         QF4lEUbgBWU94pBSbVEyLTKCIqzX8v1gOGp3IGoPzgmJQWYfUlQ3bnKCUKqo8ZCLnWIG
-         q9vSF9O5sdRB1+bzJTo6WG/dkGAFKxxrfYFLtvcLz1UNDsFymRL9Y/8nssqxD4p4KT6w
-         GrFMjcTlwH6/XDlyC2Dbh+uwXuf9h4ND7pGSWytlcb39BsOt3EUMWBm6y9gr6h6pSwqy
-         64Kw==
+        b=B+NFmf3cq3UgsqRw7H5WipWdAbw0ysrvpDxWhiVASH1ayPfSJPIEUaCz1ESY/EwseC
+         dn3CHFAmKUdW8k/8F2iJPBPbxEI6vY9bx1FIxL3k0gceUnfCeJklt8GvVcHpp7ytmXYe
+         6/OpZB7OZM9vNlTk21SuQCkDxFRhbkOfPBAIPJBeK3InIuyqQzpzMuSaztDQVTZ6YxXz
+         QMudAgp4JfOK/iVqts3x8Kkn4FVKClgSRL0gmJRTMcRxe50pXLpkBZ5L7Yq7+tOLuO8y
+         Ewv5TVQZmZ8g7b4RKzCtQfGccjR1qpR0WD+vmhLFqfuY+KqgzGn2iVS59uwmwh3N1U5o
+         lebQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=E2cMy1otWPsHOeUK6OYWVKw+FkrFxzqEE8sxNl3CDmE=;
-        b=lkBdtd+wmTrD3Pt7OWn+6cnWsYhZSRPAa5oRRyR81tEiqlXs28BS48rSiTGPl2+ZaH
-         VpXmzTeBtwlTbBJB4EpdOj0zkdlZ5XadMdSOIwN5UyHB+kVC9GGC5upM+43v6e4qS1Nq
-         r+R5WEcsXR+L3w/oZRyQF4xM4Qza9wL0yGhtXKxx1nImomwBqSSLObmJpljYG4+yzm6P
-         6HJseuXdg0wo0PCF2mPggnZq8KFM6AZoalJQM/JW47FLfiWfcxex7ockAO5UEx/vttnC
-         Y6eDPfN4J3rruQzk5sb7pgeUl6XStbwymFUslG/IVhT2Qiit1RVY0bCrnCtTuQCnSAqP
-         mBnw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Rtu7plXMXBtky8CIn+YkwIjOBVu+XmSdwtmhSG7ckvU=;
+        b=zlP2nXQO51U3wVbxMmGpvMpewmdJm7IDuncLAuFTxd0ogenSQxhSTs83BzJEG9FegN
+         79u+hSIeekT/WppIBwp79mBnkllKfoW13n7frrRVrkuRCcD7+UsL+XU3n2LwfuJyhufV
+         c05c0onfoxZI/iwn10riUB1MQCFPr/Zgij2KxcA2BJX657eW6Em7wIOzv4wqGlZqHzee
+         TrefCWJKckzCCr7O49/5MeiftsOj8kpGlksoga9Z4N7pgKosPzbjDydOERH/6NteAeyw
+         kPLjyGlEa1ExRQFMtt9Dclx8TOn4Xdq+nAbZLAktFzipWWIAzoRVEuzqX/z7MVV3KHW9
+         1ldg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=TWaEpM1r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3-20020a05622a00c300b003f6a9a060f4si7450179qtw.351.2023.06.07.04.06.57
+        by mx.google.com with ESMTPS id d16-20020a05620a159000b00757845e9ce7si5940745qkk.361.2023.06.07.07.16.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 04:06:58 -0700 (PDT)
+        Wed, 07 Jun 2023 07:16:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=TWaEpM1r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6qzt-0003bO-9I; Wed, 07 Jun 2023 07:06:38 -0400
+	id 1q6txM-0001iR-3i; Wed, 07 Jun 2023 10:16:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qzr-0003XM-LV; Wed, 07 Jun 2023 07:06:35 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qzo-0004k4-Rn; Wed, 07 Jun 2023 07:06:35 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-977e7d6945aso505921866b.2; 
- Wed, 07 Jun 2023 04:06:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jms.id.au; s=google; t=1686135987; x=1688727987;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=E2cMy1otWPsHOeUK6OYWVKw+FkrFxzqEE8sxNl3CDmE=;
- b=TWaEpM1rAKhTOT1DdftP1VY8x7xeJ3TMDlfXnc41Ot2i1s5SIRkBKWBMa8o/ER7sEM
- 8IixGu9SfbEcatpu//ZiZhcn5ejZ3QoIglO1583GoqOMkLs6o4XNr8kG2rhOAB+NCO+N
- HZ8wPXt90UhTu8+dqTTSM1Gj4RaA10it0DDqw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686135987; x=1688727987;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=E2cMy1otWPsHOeUK6OYWVKw+FkrFxzqEE8sxNl3CDmE=;
- b=IQR1i9oaE6wz0xw4tuZqYrKct76fO3PNr5mlCucQsWpr6ak1eGutptkTi8ec5G57cO
- 1QyBtLBCXuft3ySF2m8cKg1DS5udjGBW4aep79xoCeKsbjLn9bYRHbPg9eGuD0z+H8eg
- 34/6UWjwqSthcQa6MB5qMg1Zl/WA/xFc46OY6ofmFyHXIxh73/OKChoiRT2nYYEWlW5d
- FtWgZu7UxBGCUq80UacuI9SvW8NzdIAr+7lavoC+f4a1JZuDpwhAlc6FZbA53cRUSqZz
- Gpt+MzqcZkYGnEa0y4jVp7bNdcvNI7cIuudJR2+ZyQ6l2JmGciQKx917pihzw+ex/aS/
- AAGA==
-X-Gm-Message-State: AC+VfDyBlcKP+wg0aSKL32q6C07h2WGeS+mKu017Y+yhZ5ofwgqjW76o
- 68vDSaaq7ue5u6CPcSPO3HwYolf48dmuQhKFddE=
-X-Received: by 2002:a17:907:e9f:b0:966:53b1:b32a with SMTP id
- ho31-20020a1709070e9f00b0096653b1b32amr5804993ejc.53.1686135986718; Wed, 07
- Jun 2023 04:06:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=5JAy=B3=kaod.org=clg@ozlabs.org>)
+ id 1q6txG-0001fv-CZ; Wed, 07 Jun 2023 10:16:07 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=5JAy=B3=kaod.org=clg@ozlabs.org>)
+ id 1q6txE-0002yj-O1; Wed, 07 Jun 2023 10:16:06 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QbqBm4Mjbz4x4R;
+ Thu,  8 Jun 2023 00:16:00 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QbqBj6JJMz4x4K;
+ Thu,  8 Jun 2023 00:15:57 +1000 (AEST)
+Message-ID: <7f37de5f-d31d-b51c-340d-a04ae99230f0@kaod.org>
+Date: Wed, 7 Jun 2023 16:15:55 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v2 04/12] hw/ssi: Add an "addr" property to SSIPeripheral
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>
 References: <20230607043943.1837186-1-clg@kaod.org>
- <20230607043943.1837186-13-clg@kaod.org>
-In-Reply-To: <20230607043943.1837186-13-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 7 Jun 2023 11:06:13 +0000
-Message-ID: <CACPK8Xce052zza6XvQYijhPEL7NDqS3cKW0x3r0DGiJENYXDGw@mail.gmail.com>
-Subject: Re: [PATCH v2 12/12] target/arm: Allow users to set the number of VFP
- registers
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+ <20230607043943.1837186-5-clg@kaod.org>
+ <CACPK8XencE5MMgYdQ5H6iV_rTHaynv-UJYHZy=y-DaCXYBWWXg@mail.gmail.com>
+ <62e69c35-4869-8cc3-5983-9f83ff649da9@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <62e69c35-4869-8cc3-5983-9f83ff649da9@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=5JAy=B3=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.091, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,117 +97,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zoWZ2rRR2tiv
+X-TUID: IoHAdurSFMMw
 
-On Wed, 7 Jun 2023 at 04:40, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
-> have 16 64-bit FPU registers and not 32 registers. Let users set the
-> number of VFP registers with a CPU property.
->
-> The primary use case of this property is for the Cortex A7 of the
-> Aspeed AST2600 SoC.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+On 6/7/23 10:28, Philippe Mathieu-Daudé wrote:
+> On 7/6/23 10:06, Joel Stanley wrote:
+>> On Wed, 7 Jun 2023 at 04:40, Cédric Le Goater <clg@kaod.org> wrote:
+>>>
+>>> Boards will use this new property to identify the device CS line and
+>>> wire the SPI controllers accordingly.
+>>
+>> "addr" and not "cs" or even "chip-select"?
+> 
+> "chip-select" is a good suggestion!
 
-You saw a crash with a buildroot image without this change, as I recall?
+I thought of using "cs" initially as it makes more sense for SPI
+controllers, I do agree. But then, I tried to be consistent with
+what QEMU is proposing today : "bus" and "addr".
 
-The logic is a bit hard to follow but it is good to see a fix.
+This can be changed.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Thanks,
 
-> ---
->  target/arm/cpu.h        |  2 ++
->  hw/arm/aspeed_ast2600.c |  2 ++
->  target/arm/cpu.c        | 32 ++++++++++++++++++++++++++++++++
->  3 files changed, 36 insertions(+)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d469a2637b32..79f1a96ddf39 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -916,6 +916,8 @@ struct ArchCPU {
->      bool has_pmu;
->      /* CPU has VFP */
->      bool has_vfp;
-> +    /* CPU has 32 VFP registers */
-> +    bool has_vfp_d32;
->      /* CPU has Neon */
->      bool has_neon;
->      /* CPU has M-profile DSP extension */
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 1bf12461481c..a8b3a8065a11 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -316,6 +316,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->                                  &error_abort);
->          object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
->                                  &error_abort);
-> +        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", false,
-> +                                &error_abort);
->          object_property_set_link(OBJECT(&s->cpu[i]), "memory",
->                                   OBJECT(s->memory), &error_abort);
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 5182ed0c9113..74fe6ae78192 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1275,6 +1275,9 @@ static Property arm_cpu_cfgend_property =3D
->  static Property arm_cpu_has_vfp_property =3D
->              DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
->
-> +static Property arm_cpu_has_vfp_d32_property =3D
-> +            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
-> +
->  static Property arm_cpu_has_neon_property =3D
->              DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
->
-> @@ -1406,6 +1409,22 @@ void arm_cpu_post_init(Object *obj)
->          }
->      }
->
-> +    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
-> +        cpu->has_vfp_d32 =3D true;
-> +        if (!kvm_enabled()) {
-> +            /*
-> +             * The permitted values of the SIMDReg bits [3:0] on
-> +             * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
-> +             * make sure that has_vfp_d32 can not be set to false.
-> +             */
-> +            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
-> +                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
-> +                qdev_property_add_static(DEVICE(obj),
-> +                                         &arm_cpu_has_vfp_d32_property);
-> +            }
-> +        }
-> +    }
-> +
->      if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
->          cpu->has_neon =3D true;
->          if (!kvm_enabled()) {
-> @@ -1672,6 +1691,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
->          return;
->      }
->
-> +    if (cpu->has_vfp_d32 !=3D cpu->has_neon) {
-> +        error_setg(errp, "ARM CPUs must have both VFP-D32 and Neon or ne=
-ither");
-> +        return;
-> +    }
-> +
-> +   if (!cpu->has_vfp_d32) {
-> +        uint32_t u;
-> +
-> +        u =3D cpu->isar.mvfr0;
-> +        u =3D FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
-> +        cpu->isar.mvfr0 =3D u;
-> +    }
-> +
->      if (!cpu->has_vfp) {
->          uint64_t t;
->          uint32_t u;
-> --
-> 2.40.1
->
+C.
+
+> 
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>
+>>>
+>>> Cc: Alistair Francis <alistair@alistair23.me>
+>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>> ---
+>>>   include/hw/ssi/ssi.h | 3 +++
+>>>   hw/ssi/ssi.c         | 7 +++++++
+>>>   2 files changed, 10 insertions(+)
+> 
+

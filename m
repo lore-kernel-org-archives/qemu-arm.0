@@ -1,120 +1,82 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp92725ejb;
-        Wed, 7 Jun 2023 01:29:08 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ69jKaUhZyjqHF/EWMGlKSOenagMcINtZDyX4DCi4Ir5p5dVysTV7Dw+WfqmBkS20TY69O6
-X-Received: by 2002:a5d:5956:0:b0:30a:dd15:bb69 with SMTP id e22-20020a5d5956000000b0030add15bb69mr3487502wri.18.1686126548053;
-        Wed, 07 Jun 2023 01:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686126548; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp114822ejb;
+        Wed, 7 Jun 2023 02:21:59 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7Oz14exlzF7vFL46xuCkHNXjoGejdNEBq9COrImYZXuT8GF6vdN0TyvNKRoOaNzOgL3ut+
+X-Received: by 2002:ac8:5bd6:0:b0:3f3:96c9:b071 with SMTP id b22-20020ac85bd6000000b003f396c9b071mr2872887qtb.26.1686129719348;
+        Wed, 07 Jun 2023 02:21:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686129719; cv=none;
         d=google.com; s=arc-20160816;
-        b=AkyFugzk9zUza2/TGTa9m1tKbkrfnnNKpacL27B6Pn9+qEh2H4bfIEn2ZCajjITBKz
-         iefopwMLX4EtTIJECpnUGJTZcFFFE+mUCJKyh322esYvfjMGe37OSqTKsI40i/qEEAJc
-         GIZGx96uGgOROfxuJb0PWA/5oRZNpS4KBKvY4VpOnZ2FRgeO96G3xFyjozS6E2pGse81
-         7Zcygw8ecRKJkcu/W0BjF46+BfD3qOrBb1sFEQdlYNF2vB6LUtnTofdYbWVBWQ5ukxSB
-         9TmRcQRe3m2Uo18a6MU7k3aT1y0WvDaBHQqPVOMGMH9Jk9HmqNpJOdSYQA9BmMRQ/qwB
-         kG1g==
+        b=tnNOoWE1uZDFmRnP6ccGniTQsBBZ1yi/Pe6CTx/KlcrHtehROOqwsLj/Wp0wkLmLld
+         TKaA4Xfmmvy2KNM7qjN2tfdLXpO968XfqUVjfEO801d5QEabE7LbgFfndNFExyIZRoHp
+         WAyfjPudtijcFjCQ8N1jRTpezRTGQUYaFpcFulaYG4ZUSyHj4ibdgK2mh4M3wmNHTOed
+         Gv9BeFpCa0rucmrH6ZSyaqoAbpwZ2fqFqOE9Gm3eUN9Dr3W0LrETNxaDqattk7noC4QS
+         l7swnmkUimFyidchYQVNWAhwQVTQr1bWnLOVZqa6OwmnywYwARpYkxSeSxj9jN1CgNm1
+         KVLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8ymjBykz6oPkeD2DnN/+SlsP633S5A1gJPG1IcrUGQU=;
-        b=yIaJMamd+sNndQCPTjXnRS6WuaIE0Z6ktPsWh+LQrwYnZAaLyCGQphwQRgxUZ3ndhU
-         sWlwlI0pbSu1GRrUjypPncTGQuIoPonShFUqVPYg+yYJj5RnJ0l3Tu+mMfTRJrEhp/sA
-         RfQxziWzF7qPkBYV3AUcG26gzm4P9fGR3HHXqS1iGBbB7HwK2vI3zGxXwgDu3/6Nkerb
-         XcBTupPgxtkW+0zuulQFIimKM33j8z1fU2sYUKhjsbM5L1t4Ewj0dsYZozF877nwVz/K
-         OFZawUcKn6+ZDSN0b4WcJwPQLDNF7pFoCd7XkJaTCeAGfBqTxl9D6CJNpOcIQLa+3ChH
-         WVug==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=K6+3mXhasylhG3NCAfJQFpQhKfNebLWVdmyRgMEPFLw=;
+        b=in4lmLeaqBxtguYhpMhL72D9IUO+TvvdMzoO0+yfZiqK4sQDr56jg1IusYLcnonGmw
+         MOj8iwoDCuCltr21gol1TYgcBTFHmj4sP6Qq9kQRDk22vhgJVAxhqrdiVYxG4rBNTQHJ
+         YSmJEpzkTbozq+X1wQB+KzZ0UTaSwtWskopkNqTb87/0zkECpbX2UxRGItZPR3Ma6q08
+         GFB6/b2XGv1+rKEJSKS+BxEZNnHsiOrKmEVugT9wGyd5PQvFsafA+aFW7MdwEsWRIsn3
+         icaKrF2UFGmGT+Ag9XuyC7loNarkbUUG+vl0FRsNXxWH2bdlRJAKNFh/GNmBBaLBhIxB
+         VyhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CMNu3B2i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u6-20020adfed46000000b0030ae3aa1a4csi6326694wro.37.2023.06.07.01.29.07
+        by mx.google.com with ESMTPS id v14-20020a05622a014e00b003f684047805si7590386qtw.96.2023.06.07.02.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 01:29:08 -0700 (PDT)
+        Wed, 07 Jun 2023 02:21:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CMNu3B2i;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6oXK-0000tt-EL; Wed, 07 Jun 2023 04:28:58 -0400
+	id 1q6pMH-0002ER-2R; Wed, 07 Jun 2023 05:21:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6oXJ-0000th-9T
- for qemu-arm@nongnu.org; Wed, 07 Jun 2023 04:28:57 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6oXH-0002Om-PO
- for qemu-arm@nongnu.org; Wed, 07 Jun 2023 04:28:57 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-3f6d7abe9a4so59323335e9.2
- for <qemu-arm@nongnu.org>; Wed, 07 Jun 2023 01:28:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686126534; x=1688718534;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=8ymjBykz6oPkeD2DnN/+SlsP633S5A1gJPG1IcrUGQU=;
- b=CMNu3B2irewPXFGkFCykjhzSkjfgLf5XHuLQqIM29C/N71De//ASQzev0vxJYlmBrR
- 2oMlIt4YunpjzwX2OOkwOMcEswpcGOx0sTBluTb+13rXsfoxbOnx3NZ4U0Bkrlb51q0o
- MlT15Hgk8mxEKZWt2ilBVd2nZsCvhooi7ky7EEA9tuIMb5m2vzyEFj5eHZrHCeqOLTc/
- 4shAkMjmbEgB0PZDDrQnodmVQL095BtKDfHeFYMlV3u1o8Th43EFkaz2pDsV49Qu6Ros
- zAy0ArKD6ryMYey7lGYVgVPo7krMcpooJOWHmsDelNepkKCC11AZw+OZ/771Is7uQncn
- X3ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686126534; x=1688718534;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8ymjBykz6oPkeD2DnN/+SlsP633S5A1gJPG1IcrUGQU=;
- b=GXq60TcPqn/0QqW/f5kNtJhkraBXRYBemUw2apLquvrbObrGo+xS4xMTI4siEP0TCd
- jRF+jXKlbakDAsQlpXvZjs1mSS/TftnvLN6F7ZoZvDJjZHmmetClkF3CORAn2GPxNHjI
- R5a71wySQnvSdT8thAz8nfTR+wly2R+PcJo1O2Doqc/5rFi06IM9CRvQjn02I301I6zB
- sMYd8aHF7zgvtNhNTbcZ8yhLzvb36ZMR/Rj+PZ3tKGPubdS61ColDeXLzxf033bK/duW
- WI5NqxSBn4dNQv6o+SrL8zB0ePJSI6nYwZ4CIYTcOMcZgjh33//ZZRKv//nosCTwAyMQ
- 9QxA==
-X-Gm-Message-State: AC+VfDw/Ly0SItIJdfDQk8R558UkS+QimrCWwbJQn8Y+/cND7aNCn2qP
- 7qvgdMoi5NFV1svtjdfu1FtmHg==
-X-Received: by 2002:adf:dd05:0:b0:30a:e378:76e with SMTP id
- a5-20020adfdd05000000b0030ae378076emr3358951wrm.64.1686126534031; 
- Wed, 07 Jun 2023 01:28:54 -0700 (PDT)
-Received: from [192.168.69.115] (bd137-h02-176-184-46-52.dsl.sta.abo.bbox.fr.
- [176.184.46.52]) by smtp.gmail.com with ESMTPSA id
- d6-20020a5d5386000000b00307c46f4f08sm14797784wrv.79.2023.06.07.01.28.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jun 2023 01:28:53 -0700 (PDT)
-Message-ID: <62e69c35-4869-8cc3-5983-9f83ff649da9@linaro.org>
-Date: Wed, 7 Jun 2023 10:28:51 +0200
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q6pMG-0002EE-0b; Wed, 07 Jun 2023 05:21:36 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1q6pMA-0002ys-Mn; Wed, 07 Jun 2023 05:21:35 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 43D6A260AA3;
+ Wed,  7 Jun 2023 11:21:25 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TBbrlmDbPKqj; Wed,  7 Jun 2023 11:21:23 +0200 (CEST)
+Received: from applejack.lan (83.21.93.182.ipv4.supernova.orange.pl
+ [83.21.93.182])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 184BA260251;
+ Wed,  7 Jun 2023 11:21:22 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH 1/1] hw/arm/Kconfig: sbsa-ref uses Bochs display
+Date: Wed,  7 Jun 2023 11:21:12 +0200
+Message-Id: <20230607092112.655098-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH v2 04/12] hw/ssi: Add an "addr" property to SSIPeripheral
-Content-Language: en-US
-To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>
-References: <20230607043943.1837186-1-clg@kaod.org>
- <20230607043943.1837186-5-clg@kaod.org>
- <CACPK8XencE5MMgYdQ5H6iV_rTHaynv-UJYHZy=y-DaCXYBWWXg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CACPK8XencE5MMgYdQ5H6iV_rTHaynv-UJYHZy=y-DaCXYBWWXg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,26 +91,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BWvkcF2hUIEF
+X-TUID: m3ftw00l1pDl
 
-On 7/6/23 10:06, Joel Stanley wrote:
-> On Wed, 7 Jun 2023 at 04:40, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> Boards will use this new property to identify the device CS line and
->> wire the SPI controllers accordingly.
-> 
-> "addr" and not "cs" or even "chip-select"?
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-"chip-select" is a good suggestion!
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
->>
->> Cc: Alistair Francis <alistair@alistair23.me>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>   include/hw/ssi/ssi.h | 3 +++
->>   hw/ssi/ssi.c         | 7 +++++++
->>   2 files changed, 10 insertions(+)
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0f42c556d7..4484de67e8 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -249,6 +249,7 @@ config SBSA_REF
+     select PL061 # GPIO
+     select USB_EHCI_SYSBUS
+     select WDT_SBSA
++    select BOCHS_DISPLAY
+ 
+ config SABRELITE
+     bool
+-- 
+2.40.1
 

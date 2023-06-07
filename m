@@ -1,115 +1,125 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp66412ejb;
-        Wed, 7 Jun 2023 00:26:12 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Z8vs5MnAj4qYd2kQGBrPIEHKVETlM3RhnyexUeB/9BaiSy30CVMTkrbgIop3BXkQ1MztF
-X-Received: by 2002:ac8:5f83:0:b0:3e6:3851:b945 with SMTP id j3-20020ac85f83000000b003e63851b945mr2489022qta.67.1686122771892;
-        Wed, 07 Jun 2023 00:26:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686122771; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp77360ejb;
+        Wed, 7 Jun 2023 00:54:02 -0700 (PDT)
+X-Received: by 2002:a17:906:730c:b0:94f:956:b3f7 with SMTP id di12-20020a170906730c00b0094f0956b3f7mr4957538ejc.2.1686124442701;
+        Wed, 07 Jun 2023 00:54:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686124442; cv=none;
         d=google.com; s=arc-20160816;
-        b=vfHDJEYQLF7nTCc7NZ3LP0sD0cefDneTVNc+oDuhiDE9RF+sUIEnl7y2flEoDG4AAy
-         4KQu0au5T46p7cMplhDiYfZAExA0VcQV+Gm5dS02cv8jp3f2vv2Sd2kyQ2ZUWnwyu4qq
-         UwnckmgRCuL0dZynbZ9f7SCJVWhgm6vyXmO8Wt12GohwE/Gc6P5MUnZMJ0XYlk1w3cp7
-         nDhbYkKmfQDWeVEtb+XEcZf9FK0VNEBLF+6hprVmFce4VA2AMF7yLxG6JL1ukuJLFy1/
-         MpO+Ix8mBq6lz/g5+zBmYOlaz/4A0I0mj3L6Qum/H3Yr8weDwBSJVjxzRLJXbzurXLx2
-         mmrA==
+        b=is3G/1oN7CyZlHXfbehsgFw5gfnLOvHCs7VceL/3JBtSNCDuxyleAbfZoolaIi9wtR
+         i705b0tnwjGr+sIOfKgWT5N4If/yo4nAYUBRN8kWTzrN85pv4Dhm2fK6Ok9SgUr8ryQV
+         L6r9Mnv3CgM3v1wcD4PoZKO1PZLUFDL/LrqT7BaAf4xXw9GB9vjj+GrtvYLKmgRd9tnz
+         iHn4dgg89nym8MfDxvfqnfDiwLxfEAeDqZNxUV+f1r7sebEe/mJF+yy7uiUQvALqPsBm
+         IhPrFdZD09Sgs2tTdCRpbYh57zPg52iykz/5BWYLhYQ/Q3HVCkLMjVWgIB9KLsA+2yCJ
+         JSaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version;
-        bh=F9cTmcRX+5KUZJ5a7Xz8n7jbZyHiDM2yNww289XXwH8=;
-        b=rNuZcdY9W21iNjHsAZXDST4v3hJhQPdrM1b51O5Wi4LhpC+48EjyZm8oWy6oSmKTba
-         +mEYD8WsfLxFJUHj27+jg49YhXtTRn3lJ/+yoKMUIOuUd9jRiXBZmOH/hJNgtY8zSWUx
-         o7cbmxpmqU4iSssqrdbYsVP8QkyyQf+SXO2R99OecN5BZhxtwcA6yefHVeB6giXVvf44
-         8RWYZWXmdLAa9fXa6yDyQcYhp80qY4JsQ68fs5R7W/8jgcKvszxG8Gnr9rVTILlBMUvA
-         97D+tA9M2+WQCtyg4JG+YUFcL+tvr1NjvU8tqfBG6tstsHuTZi2ICoGHWKDltyhEUgAd
-         WEhw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=xfuzmuAuP3RR4ZsC7WG9jVcLx4gB5TI2PD98uD8BcDw=;
+        b=njhKO2v9ZQM5xbRowKcAYFgOYkoluoYcE1rygoehYEdgdURQJpSfvThodlvfP5yjKu
+         5O4mISncqXZN3qpgvyoQxmj3xIySmc4wikDUp/8L7XJbEUzYdm6A6YS1MKG9PY5gj3WA
+         fLMEu7frhlpat2+hICToFGuQ4ivkPk/pjyyTQZT9D4DZyoZoi6wyEk7T3eF2kyVHLLL1
+         Wub/NVf0y5mnlf6dZSHCL/8jbBuFt+XbG50olBNJK8T4zvtWNXxdXWol16e3us7pQ9aO
+         5GHwrQ3s+CTvMLVAiyF9goemAd5l02FRpCNLo7wAe2slX8ucr5gVx2S5joC6PIjKm0zv
+         TQBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3-20020ad45dc3000000b005edeebe81b1si7358308qvh.550.2023.06.07.00.26.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 00:26:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=FIDvUgi1;
+       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
+Return-Path: <joel.stan@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id mx9-20020a1709065a0900b0097461f17db7sor4152325ejc.1.2023.06.07.00.54.02
+        (Google Transport Security);
+        Wed, 07 Jun 2023 00:54:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6nYR-0006IO-N9; Wed, 07 Jun 2023 03:26:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chenbaozi@phytium.com.cn>)
- id 1q6nYP-0006Ht-Jv; Wed, 07 Jun 2023 03:26:01 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <chenbaozi@phytium.com.cn>)
- id 1q6nYL-0007e2-AU; Wed, 07 Jun 2023 03:26:01 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDXtI+TMIBkpQaMAg--.279S2;
- Wed, 07 Jun 2023 15:24:03 +0800 (CST)
-Received: from smtpclient.apple (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAHNEzuMIBkU2cAAA--.1400S3;
- Wed, 07 Jun 2023 15:25:34 +0800 (CST)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
-Subject: Re: [PATCH v4 1/1] hw/arm/sbsa-ref: use XHCI to replace EHCI
-From: Chen Baozi <chenbaozi@phytium.com.cn>
-In-Reply-To: <20230607023314.192439-2-wangyuquan1236@phytium.com.cn>
-Date: Wed, 7 Jun 2023 15:25:23 +0800
-Cc: rad@semihalf.com, Peter Maydell <peter.maydell@linaro.org>,
- pbonzini@redhat.com, marcin.juszkiewicz@linaro.org,
- quic_llindhol@quicinc.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+       dkim=pass header.i=@jms.id.au header.s=google header.b=FIDvUgi1;
+       spf=pass (google.com: domain of joel.stan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=joel.stan@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=jms.id.au; s=google; t=1686124442; x=1688716442;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xfuzmuAuP3RR4ZsC7WG9jVcLx4gB5TI2PD98uD8BcDw=;
+        b=FIDvUgi1mFm8aS7FEPicb6QopwKMD++7sWM4pY0s1g61xYVNkdCly29J6dTBJwpedp
+         nxhTqkAXZBV7o5ncjXRMIfoo3xk1vnUcl1SXRCXUuiGCjy+hY7oX1PCgKfdbTfSgb7vi
+         6aAjAzmdYI1Ms1WEYQSYCRl1UDvcliO0HP0EM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686124442; x=1688716442;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xfuzmuAuP3RR4ZsC7WG9jVcLx4gB5TI2PD98uD8BcDw=;
+        b=LrUW5+mE9mu/AqLvYrrnD6c/i/8VQYNItOZFC+9uvclH8G47SpAh01S1Jpvm8M3aEK
+         bWc8fBOU88V6j4xRnG6OJ4lAs9q8fo/VHUhV0C3U+eiC+SHesSurQCozRXjHT9ikahQD
+         C9AMYcuNFXg5+0Zq4Y/wVXYC89//vyoYmtd6VXmm1sJIUXpMyEI7aVVNswc/v0Kv7rG/
+         adhSJ10xPJkDHl59tEx4lSBKa88HGcJb1FUIpHh0/HOzzON1Qxo5M08L2VI5tTwYI99E
+         uTq8Oi4gHSujObbgOC8u+kScorefEhPAJf7YMbMHN9dzT1sj9FWMM+0EmzlJaYuc6mCq
+         PjEA==
+X-Gm-Message-State: AC+VfDyCqJwlS03EROx3qLdEWyOeifIezNasxefQIiv7MvhofNb80VqX
+	5FSlFxVL7LBnZ1kG882My84DGb5KkSFWIMJPdT4=
+X-Google-Smtp-Source: ACHHUZ6nUNVqLVceMfZ/lYyekJkMD6qN0MS5V9qOi02P3LJ5Q9qgTtx6NqyybKhGTl5PWdC0+tFYb5fy3j/wfIfvQkU=
+X-Received: by 2002:a17:907:7f93:b0:96f:bd84:b89c with SMTP id
+ qk19-20020a1709077f9300b0096fbd84b89cmr5692744ejc.70.1686124441590; Wed, 07
+ Jun 2023 00:54:01 -0700 (PDT)
+MIME-Version: 1.0
+References: <20230607043943.1837186-1-clg@kaod.org> <20230607043943.1837186-2-clg@kaod.org>
+In-Reply-To: <20230607043943.1837186-2-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 7 Jun 2023 07:53:49 +0000
+Message-ID: <CACPK8Xe1GcR8d0=_aYQbKtVxGMnA_jeJc9fd7BBD6g+kWwxyKw@mail.gmail.com>
+Subject: Re: [PATCH v2 01/12] aspeed/hace: Initialize g_autofree pointer
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Steven Lee <steven_lee@aspeedtech.com>, qemu-stable@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, Francisco Iglesias <frasse.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <A317ED6E-AD4B-475C-A889-0BD4E6A4D1B5@phytium.com.cn>
-References: <20230607023314.192439-1-wangyuquan1236@phytium.com.cn>
- <20230607023314.192439-2-wangyuquan1236@phytium.com.cn>
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-X-Mailer: Apple Mail (2.3731.600.7)
-X-CM-TRANSID: AQAAfwAHNEzuMIBkU2cAAA--.1400S3
-X-CM-SenderInfo: hfkh0updr2xqxsk13x1xpou0fpof0/1tbiAQADEWR-hSkCmgAAs8
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=chenbaozi@
- phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
- ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
- nUUI43ZEXa7xR_UUUUUUUUU==
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=chenbaozi@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OGTuLYLxGSL2
+X-TUID: xtKi+Z2s93Fz
 
+On Wed, 7 Jun 2023 at 04:40, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> As mentioned in docs/devel/style.rst "Automatic memory deallocation":
+>
+> * Variables declared with g_auto* MUST always be initialized,
+>   otherwise the cleanup function will use uninitialized stack memory
+>
+> This avoids QEMU to coredump when running the "hash test" command
+> under Zephyr.
 
-> On Jun 7, 2023, at 10:33, Yuquan Wang <wangyuquan1236@phytium.com.cn> =
-wrote:
->=20
-> The current sbsa-ref cannot use EHCI controller which is only
-> able to do 32-bit DMA, since sbsa-ref doesn't have RAM below 4GB.
-> Hence, this uses system bus XHCI to provide a usb controller with
-> 64-bit DMA capablity instead of EHCI.
->=20
-> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-Signed-off-by: Chen Baozi <chenbaozi@phytium.com.cn =
-<mailto:chenbaozi@phytium.com.cn>>
+Was never a fan of using this magic :)
 
+>
+> Cc: Steven Lee <steven_lee@aspeedtech.com>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: qemu-stable@nongnu.org
+> Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+> Message-Id: <20230421131547.2177449-1-clg@kaod.org>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  hw/misc/aspeed_hace.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+> index 12a761f1f55d..b07506ec04ef 100644
+> --- a/hw/misc/aspeed_hace.c
+> +++ b/hw/misc/aspeed_hace.c
+> @@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int=
+ algo, bool sg_mode,
+>                                bool acc_mode)
+>  {
+>      struct iovec iov[ASPEED_HACE_MAX_SG];
+> -    g_autofree uint8_t *digest_buf;
+> +    g_autofree uint8_t *digest_buf =3D NULL;
+>      size_t digest_len =3D 0;
+>      int niov =3D 0;
+>      int i;
+> --
+> 2.40.1
+>

@@ -1,119 +1,103 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3898829ejb;
-        Tue, 6 Jun 2023 20:22:26 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4ix9EbLxtnqy/0X0yMEy2i/gcz/Z3NsgrBfK9rFMzcf3p6204cKzR94XTpOu8RPQllFYCm
-X-Received: by 2002:a05:620a:4449:b0:75b:23a1:3688 with SMTP id w9-20020a05620a444900b0075b23a13688mr818330qkp.73.1686108146390;
-        Tue, 06 Jun 2023 20:22:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686108146; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp3565ejb;
+        Tue, 6 Jun 2023 21:40:03 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7ZqeOK01RcHSaQat0Blz48Youee/JoMYNUtdT2dV1U2JxMy9v8wHX+OgPDCf3D7ujvcFfG
+X-Received: by 2002:a05:6358:e81a:b0:129:c0a0:7d71 with SMTP id gi26-20020a056358e81a00b00129c0a07d71mr462633rwb.9.1686112803309;
+        Tue, 06 Jun 2023 21:40:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686112803; cv=none;
         d=google.com; s=arc-20160816;
-        b=mcQ+WfS/c+TMH9/RhRCCOSz8ocgMkp8x9n8GUl4rIFAs5R3OLWNiSQw/6AhhTm4fpa
-         r/harwnt4kE6UCkp6nJKi79ch+3YitQ9LXqMtv0TbtW6uucH2uVmMkYrfx5fcC18cUKj
-         QfmUt/w8JwvYRkyMgAp2c8ahOwDNMR2XgyOp3TnB2ot9KkXlm7gTF3hJN6aHbmmdOFgV
-         IvMcrtT/DMswm2NCFbtzvO/RGb6QjzIJayjy5eW52k2y0kDTHrx9DgPT8i/jblK2zY/H
-         RzKobb9BfR4wBkGlrhvp1FnW1ayr2U53Bf4IU7CYZUtfWv4RuEdaanLuuT7Z35W9kNeU
-         Rbpg==
+        b=kLl+ARLASCuqZQeg1cdnvksEspMb4lSW1ybE8Xt3TCTx8uC3gapYJn0pBNqa7ZwQ+E
+         zFsJDN88PSN4C5tl3Jc1wURIoFJivPD7L6doUNTjT58gn/GhAtQiOkyc7SKCBftIgA5R
+         WvLZSaQmPrKg39R6A7ke6jIxbyyTtpFFLPnioT1PpmLv/qVmmExTZ0yG1LUc6ytAfUlv
+         B+AhcRSMyaz+ysTJCW8OmGsvWMSS0IWaECu0THj0cTC4oouR+0pSILgNhxJf/7gsv/7b
+         5R05DPKN8hqZPg9ZDtpso9E9k72W8zv+r+XNJaMQnq7Ls/6O2bsY77+tUXS3fXjaRmmS
+         a5ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :message-id:mime-version:references:subject:cc:to:from:date;
-        bh=NsKSBWp5pUH7vtwipunTO45UCrC8KqXdwmYe9oHWKa8=;
-        b=VLUtNtZ3vxgwEnxOj8SRw8STGHC6gpvkilRZhm0/vKRNM7Vx/dVUuffn/v0wJ4AbB8
-         7GuOAW1fNXAtkz+wnjHhRz5aqbNo5fzpnKDCaL347oi/+nhNl58aGQGI6LAaKTBVSIRY
-         I6VC+lL4tzM/70qKtmhGuWU1NJhXBgXlk6Ko3zzXknKchD6aS47NhIDox5N9xyClNao3
-         TrCBpoXMaaOUjtjt2dW4MsDywuoHK7IFcj4Fstuk5eNKEOzG5zDKVdSymUwifH/KeXqL
-         NhLmK2YvJSp8d6eD+edMVezZQd8YERhFJ4Gwt19SNIdDU2wH89hKT3Pboac1iGfb0sf/
-         cSOg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=0L58gY+8M52l/1Aexz152I08e22x9DnBUyGlz9ruyYM=;
+        b=itY4MMtC3mNSnx4UOIc2uQmUP2bJFe3lRQTtbj6uA5I/65hS+cTh2KZQ+EHmZ4Diaa
+         BFEKgAHwSsojV0o8SpoC2D873TbusaZobpB2dZ6bG57oTbWMK1UKCRXK8HcrNgGT0UBS
+         p2eDW3jCpCgVjcO1XsNdcp341FDfBpk0CaaJB46lUrpmQKwS74r34mDgDsJb8hy8Xxl0
+         bNAxX1TkM7pwcCGYGba/ORpuNe3BvDlC5817GiAfExNGMELs2L5+709v/F+aPMUh02Kh
+         Fak/rCHjFSUyGtaOtkZmGtfFJb3xe/Yk8HsZcEVbzO0gLxbe3DsYGhtoQk6hnttBaxTC
+         9NIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9-20020a05620a102900b0074de91d7505si810388qkk.207.2023.06.06.20.22.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Jun 2023 20:22:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of srs0=5jay=b3=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=5JAy=B3=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=5JAy=B3=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
+        by mx.google.com with ESMTPS id i8-20020a639d08000000b0053b86623b3asi8265578pgd.577.2023.06.06.21.40.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Jun 2023 21:40:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srs0=5jay=b3=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6jk8-0000tq-8i; Tue, 06 Jun 2023 23:21:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q6jk7-0000tY-57; Tue, 06 Jun 2023 23:21:51 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1q6jjz-0007ik-U7; Tue, 06 Jun 2023 23:21:50 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDHkNbE+H9knkjfAQ--.55912S2;
- Wed, 07 Jun 2023 11:25:56 +0800 (CST)
-Received: from WYQ-S (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAHNU2s939k50IAAA--.2733S3;
- Wed, 07 Jun 2023 11:21:17 +0800 (CST)
-Date: Wed, 7 Jun 2023 11:21:17 +0800
-From: "wangyuquan1236@phytium.com.cn" <wangyuquan1236@phytium.com.cn>
-To: wangyuquan1236 <wangyuquan1236@phytium.com.cn>, rad <rad@semihalf.com>, 
- peter.maydell <peter.maydell@linaro.org>, pbonzini <pbonzini@redhat.com>
-Cc: marcin.juszkiewicz <marcin.juszkiewicz@linaro.org>, 
- quic_llindhol <quic_llindhol@quicinc.com>, 
- chenbaozi <chenbaozi@phytium.com.cn>, qemu-arm <qemu-arm@nongnu.org>, 
- qemu-devel <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v4 0/1] use XHCI to replace EHCI
-References: <20230607023314.192439-1-wangyuquan1236@phytium.com.cn>
-X-Priority: 3
-X-GUID: 72381A2D-4D80-4819-B290-9A261595E5C9
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.25.228[cn]
-Mime-Version: 1.0
-Message-ID: <202306071117462603910@phytium.com.cn>
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
-X-CM-TRANSID: AQAAfwAHNU2s939k50IAAA--.2733S3
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQADAWR-hSkBTgADs4
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvdXoW5Kw4xtF4kur4UKFyUXFy3XFb_yoWxWwb_W3
- y0vas7Wrs2yay29FykAF4Fvr9xtr4jkr10gw1IvrWUZr17CFn8Xr15Kr95Zr15WFWUWFyF
- vFWxCrWfWr13WjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
- Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
- UUUU=
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UmnrkVi1PSCh
+       spf=pass (google.com: domain of srs0=5jay=b3=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=5JAy=B3=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4QbZQ92GLKz4x48;
+	Wed,  7 Jun 2023 14:40:01 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4QbZQ50Qgnz4x3y;
+	Wed,  7 Jun 2023 14:39:56 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	qemu-stable@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>
+Subject: [PATCH v2 01/12] aspeed/hace: Initialize g_autofree pointer
+Date: Wed,  7 Jun 2023 06:39:32 +0200
+Message-Id: <20230607043943.1837186-2-clg@kaod.org>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230607043943.1837186-1-clg@kaod.org>
+References: <20230607043943.1837186-1-clg@kaod.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 7t27KljgcM4f
 
-T24gV2VkLCA3IEp1biAyMDIzIDEwOjMzOjEzICswODAwLCBZdXF1YW4gV2FuZyB3cm90ZToKCgoK
-PgoKCgo+IFBsZWFzZSByZXZpZXcgdGhlIGNoYW5nZS4KCgoKPsKgIC0gc2JzYS1yZWY6IFJlcGxh
-Y2UgRUhDSSB3aXRoIFhIQ0kgb24gc3lzYnVzLgoKCgo+IFRoaXMgdmVyc2lvbiB1cGRhdGVzIHJl
-bGV2YW50IEtjb25maWcgYW5kIHNic2EucnN0IGZpbGUuCgoKCj4KCgoKPiBZdXF1YW4gV2FuZyAo
-MSk6CgoKCj7CoMKgIGh3L2FybS9zYnNhLXJlZjogdXNlIFhIQ0kgdG8gcmVwbGFjZSBFSENJCgoK
-Cj4KCgoKPsKgIGRvY3Mvc3lzdGVtL2FybS9zYnNhLnJzdCB8wqAgMiArLQoKCgo+wqAgaHcvYXJt
-L0tjb25maWfCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMiArLQoKCgo+wqAgaHcvYXJtL3Nic2Et
-cmVmLmPCoMKgwqDCoMKgwqDCoCB8IDIxICsrKysrKysrKysrKy0tLS0tLS0tLQoKCgo+wqAgMyBm
-aWxlcyBjaGFuZ2VkLCAxNCBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKCgoKPgoKCgo+
-IC0tCgoKCj4gMi4zNC4xCgoKCgoKQmVsb3cgaXMgdGhlIGxpbmsgb2YgY29ycmVzcG9uZGluZyBl
-ZGsyIGZpcm13YXJlIHBhdGNoc2V0CgoKCmZvciBxZW11IHNpZGUgdGVzdGluZzoKCgoKaHR0cHM6
-Ly9lZGsyLmdyb3Vwcy5pby9nL2RldmVsL21lc3NhZ2UvMTA1NzI2CgoKCgoKTWFueSB0aGFua3MK
-CgoKWXVxdWFuCgoKCgo=
+As mentioned in docs/devel/style.rst "Automatic memory deallocation":
 
+* Variables declared with g_auto* MUST always be initialized,
+  otherwise the cleanup function will use uninitialized stack memory
+
+This avoids QEMU to coredump when running the "hash test" command
+under Zephyr.
+
+Cc: Steven Lee <steven_lee@aspeedtech.com>
+Cc: Joel Stanley <joel@jms.id.au>
+Cc: qemu-stable@nongnu.org
+Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20230421131547.2177449-1-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/misc/aspeed_hace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 12a761f1f55d..b07506ec04ef 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
+ {
+     struct iovec iov[ASPEED_HACE_MAX_SG];
+-    g_autofree uint8_t *digest_buf;
++    g_autofree uint8_t *digest_buf = NULL;
+     size_t digest_len = 0;
+     int niov = 0;
+     int i;
+-- 
+2.40.1

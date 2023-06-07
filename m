@@ -1,149 +1,315 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp339813ejb;
-        Wed, 7 Jun 2023 08:29:24 -0700 (PDT)
-X-Received: by 2002:a17:907:ea8:b0:974:2100:a2be with SMTP id ho40-20020a1709070ea800b009742100a2bemr7017291ejc.7.1686151764370;
-        Wed, 07 Jun 2023 08:29:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686151764; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp391100ejb;
+        Wed, 7 Jun 2023 09:49:30 -0700 (PDT)
+X-Received: by 2002:a17:902:bc8c:b0:1ac:9cad:1845 with SMTP id bb12-20020a170902bc8c00b001ac9cad1845mr2075179plb.18.1686156570166;
+        Wed, 07 Jun 2023 09:49:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686156570; cv=none;
         d=google.com; s=arc-20160816;
-        b=uocmRMikRmhgcCX5pCua2R9ka59uvM3johNIAKmtXr6HZLFzkjGIBHmGHxzAjG34Fz
-         0YmqnuEW+k9foMo4dj1q2R8yxO6fypx5N/e5WRxsJUBiR4JE3quRuJOLGoty3mVLB3l2
-         +JERfoT6Os+x0pkA3uvFyVvn5S4Uro+Hz3q3lMbpbnx5wfJ8F77PsEHlDT78VrG7ReJG
-         UKcytjgTG88dxvCjBFYUKHy5Y0Dkfy71cHSjgVEfBny8nXwiI/7SpiiuvlZMTruvb7oK
-         OYytuvKtUE4btgqtnheawiDVNND3+i0TpqhaoSQOtcEXABMqbmYjbqT7IimwonkGzpPi
-         OSaQ==
+        b=Ts4e2jhQCTuum7QhkJP4d6QsUHS64CPWvoyhXQ/4+DKCEuOK/fQMc7ue8G0N9wdu/q
+         j2WkgyqOJ00CIhMf4fL5xGL8qrc78H5YS7kpbv38BLn0aRjkH0Q7IWMaLXAtDEnmWG63
+         y0YT04lYsjldQQIp0GMqxoVomfu3+hrn1H3pficPpiZ4nmw7nEWA0JRU0vaS073OiEXZ
+         T0zrBVwtZXfL/Wlskg1AlPeNf73eVru6brKu3Klx416Iy1cHIyfEg5t5pg0am+/ABPJL
+         ixYlEF0iQhQ0xEQY0gU48BgNOVzzU3QWsjIR00SOVe+4TEG7dB+/B8hO+0LKCw7D4awC
+         ub/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=/M1orYe/+V7Ktowyt9+oLMALLQqkm72aIJzmWoM0vCs=;
-        b=YaGIxMiO3SJk9dzncvVunhdntE29d4eZ8WFy4jvA+eNgkpwe70rAS4dDK9FWq3DqTW
-         mP/GbfwF6Rv+c0CcY8j02tk2uD/CfvDOxZqyN3HbCgf9tLspipLqvjhtP0OZj9keDe53
-         0XsxbVf1jWQvF7Sve59vJnjL3yLHyMjzNrwKs5BbnXik8rztEc8HICQQBg2x9hcWrpcm
-         9l05a1daxrY4IGNLX6xf/+7C7QLOuRKCY4WQui4wF2DDKb097k6Y8eU6Y7d+5WISCHJX
-         4P761Prj4mJ8EeDMU6aARVcnB2mNM9khcxe1m/JT4CRPLOgb9xA8LK5P2GsP8rg4edaR
-         sJmQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=O3WaGEYLWcPiIzw6vB3RZqhbnQGY0LswNykwJliRoIg=;
+        b=Bd7Za0n7yATCMcnBlOm5BqgI3EoG6dOYj9Wp7OsjfbJQk/4rSDeAPw9kCUtxU4AAzL
+         VgBjgRizoV4/HBzKTn99sDXliD5GmoJBqqFeGmaTxWDouLgo+mdrvgxK612Fe4/c/WUp
+         Koed5xixKLuq4A95/ayNRDj5ahW1wGNL+179eOKDu2i8mFNdcMz3XALH8hdmNeHuXcJR
+         5MRYm+oRU+RosCSpTNHolLph6iGYM537UlFHJwCp0JN73J4qxENH+dDcW1KjYmn2B2QA
+         Eom2gOVpA8qdGWH048bGl30Mf8W7iEZcTVHW+mdDck0hFLmpfh0RH9hojWhCosakj/AK
+         811w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PWmClaQX;
-       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <marcin.juszkiewicz@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=YYFcplg8;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fufuyqqqqqq@gmail.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id wc5-20020a170907124500b0095393d34f27sor6560371ejb.10.2023.06.07.08.29.24
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id o22-20020a17090a9f9600b0024e52f605cfsor3235158pjp.1.2023.06.07.09.49.29
         (Google Transport Security);
-        Wed, 07 Jun 2023 08:29:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 07 Jun 2023 09:49:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PWmClaQX;
-       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=YYFcplg8;
+       spf=pass (google.com: domain of fufuyqqqqqq@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=fufuyqqqqqq@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686151764; x=1688743764;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=/M1orYe/+V7Ktowyt9+oLMALLQqkm72aIJzmWoM0vCs=;
-        b=PWmClaQXh/lUUNPdU5MgYiEL+ltL2oyH1cz6TRUtYiV/358Wv8WyuEdhkn6g4pmU5O
-         5iC0Jg7wGDBeAcM3eaJLLxA+qzEcQfm8T6l2gZFQbvnR4Vn64vbZFEHFk0dWdOcpc1Oa
-         CsfSCfnQAEUfXfuT1SF4f1GHyR4DS03/mJpB0eGBwJkQb7OTi/jvOy+ClRXnrCKDDxb1
-         55BLf2py3Jq395Gx9pxFJO/GtzpiCyPzo/FtCZ9BqRnTQ3ZSHV+tKQNx/9AVo677P9r6
-         DL0xT2jZNMXNOryuX1fRoYi3iMAzT2CvJEhR5483oiNTNn9Dm0NPZVw9bTwpVcwaG5Il
-         EOhQ==
+        d=gmail.com; s=20221208; t=1686156569; x=1688748569;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=O3WaGEYLWcPiIzw6vB3RZqhbnQGY0LswNykwJliRoIg=;
+        b=YYFcplg8tBZDSGn1Fl/Y1zYh7DNtnWYcFnj2LW1iuNiovSTRSQ8P3MkwEPjLHm4Hzp
+         6pdtmgy6EiRwu76gSzaQmWU/bR9h0tf6LgMvz/qBn4Kojxf+pI5Q+JIzjqPjatFT4VvF
+         HaG9IolWXaqzSHCnKP9rRZto+Va9Q53OtYk+3uCnf/zqf3hkrjI5ont7IaRPmVKgLSqU
+         ffk+sFMZLJ31EIO9e5oueB/3wuzLEAgAD3TG2pj7g9t2P6LCPaUB0Ip5hty6OVSYaANX
+         rSPiFMeVbBj6s+WDAfTvN+tnCeCqXRYFqW2jaiPFsUFMHUFH7fBfW7VS22QZF5lDreUr
+         uDyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686151764; x=1688743764;
-        h=content-transfer-encoding:in-reply-to:organization:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=/M1orYe/+V7Ktowyt9+oLMALLQqkm72aIJzmWoM0vCs=;
-        b=L83Vzvb9lXuEmll7hBFLT65q4mIK58IaxNDbxy2DuyoUCt7B/7N25IdpXumtbqkuy0
-         t/pjN+TJhzHiwgXDTUnfPZFJDchi+5h8HScCmko89AG8lvwWNM5eEvutKuV4E4OXxfeI
-         N2DGdO3Gm/WDUOLVExMMkLWKXkwvoFwpvryX58xRmb8ZCqXNBRT1fArkliHPboJEvMVD
-         ngA+/Gg/ntimAwBn35T0xdgkENH7TX932RKM5RcUQvX40UjJDwdJ/wceuEqdMdg9g27q
-         9jJzk4+yc9goBBUSUwU0y5g7zQh1y7252zpzPk+xEqDzg7S+eWeFWr+461ZB2ppImsXe
-         lMZQ==
-X-Gm-Message-State: AC+VfDwdDC/vWvuW67XuYeAHC3mLXXB1aQGHKwkAvr6lPlgCKzBHStXm
-	SitxldhM9lEXFWYYLJJ5uVPrtHoz
-X-Google-Smtp-Source: ACHHUZ6y6yxrV2yu4OJkg7Q0dwEwP2tZ+VH4HWXOD2kR/I+nyTt7iCYjdS2jh1CLMRYI6TqWZy9rGA==
-X-Received: by 2002:a17:907:3e99:b0:96a:29c0:8515 with SMTP id hs25-20020a1709073e9900b0096a29c08515mr6590776ejc.58.1686151763999;
-        Wed, 07 Jun 2023 08:29:23 -0700 (PDT)
-Return-Path: <marcin.juszkiewicz@linaro.org>
-Received: from [192.168.200.206] (83.21.93.182.ipv4.supernova.orange.pl. [83.21.93.182])
-        by smtp.gmail.com with ESMTPSA id z16-20020a170906241000b009788d99244csm293233eja.149.2023.06.07.08.29.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Jun 2023 08:29:23 -0700 (PDT)
-Message-ID: <50e8f35d-855b-4d0a-abdd-2aa42599bd65@linaro.org>
-Date: Wed, 7 Jun 2023 17:29:21 +0200
+        d=1e100.net; s=20221208; t=1686156569; x=1688748569;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=O3WaGEYLWcPiIzw6vB3RZqhbnQGY0LswNykwJliRoIg=;
+        b=B9AtaUbrn1SCltTPv0qkAa01V5MH4EZy1vyaDbJbxpWqMEAF8TD7c46fIhC7fqFAT8
+         AW6DPt4LvO5pz2N/xR52aP4sWearvcpF+5Ogc09W1ozJZhQaDodmbUKa7WRhkJT2vLjl
+         PSmKPyIBt/8suO07n4Qf02QtfiuWaTbvqan5Rzaoi1U+b3wSTE79AztDdooX/vEla4w0
+         Ydzu9DxzVsiurjguusgPXrRZDU8EdQEsJyx4uKzJ7da9DKErRJmpWcBsLxWoQhT2I1Ee
+         F0nYtz9+OoYAvrDbmHbiv9AQj9KhccJIRZGVGzm8nwPUC7USAZQ/Uw1ytvXc6AvQ0GIw
+         TU2A==
+X-Gm-Message-State: AC+VfDxdyVyKpHBQOdGnr6GdSpit99CS4cH4s24uASqE9/NxuHdaZtL6
+	+gH1xdGyR94P+DbFtLShIwPx3hVqQq7SiEUxlow=
+X-Google-Smtp-Source: ACHHUZ4hKpxnZf9pvcR+5WsqUFOIufUqlmCx6NIb0JCO3OX+ITK7s9LgZVri/XviOSo/UFP0ldRRFA==
+X-Received: by 2002:a17:90a:ca06:b0:259:ae4d:3377 with SMTP id x6-20020a17090aca0600b00259ae4d3377mr1730686pjt.27.1686156569266;
+        Wed, 07 Jun 2023 09:49:29 -0700 (PDT)
+Return-Path: <fufuyqqqqqq@gmail.com>
+Received: from localhost.localdomain ([223.104.40.226])
+        by smtp.gmail.com with ESMTPSA id 30-20020a17090a001e00b00250bf8495b3sm1671808pja.39.2023.06.07.09.49.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Jun 2023 09:49:28 -0700 (PDT)
+From: Yeqi Fu <fufuyqqqqqq@gmail.com>
+To: alex.bennee@linaro.org
+Cc: richard.henderson@linaro.org,
+	qemu-devel@nongnu.org,
+	Yeqi Fu <fufuyqqqqqq@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC v2 5/6] target/arm: Add native library calls
+Date: Thu,  8 Jun 2023 00:47:49 +0800
+Message-Id: <20230607164750.829586-6-fufuyqqqqqq@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230607164750.829586-1-fufuyqqqqqq@gmail.com>
+References: <20230607164750.829586-1-fufuyqqqqqq@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH 1/1] tests/avocado: update firmware to enable sbsa-ref/max
-Content-Language: pl-PL, en-GB, en-HK
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
- <ab3d3d19-2604-c519-03b0-af3952fb7718@linaro.org>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Organization: Linaro
-In-Reply-To: <ab3d3d19-2604-c519-03b0-af3952fb7718@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 1e2AaKu45k03
+X-TUID: jKN/HTrKnFoh
 
-W dniu 7.06.2023 o 16:33, Philippe Mathieu-Daudé pisze:
-> On 30/5/23 17:22, Marcin Juszkiewicz wrote:
->> Update prebuilt firmware images to have TF-A with FEAT_FGT support
->> enabled. This allowed us to enable test for "max" cpu in sbsa-ref
->> machine.
->>
->> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
->> ---
->>   tests/avocado/machine_aarch64_sbsaref.py | 22 +++++++++++-----------
->>   1 file changed, 11 insertions(+), 11 deletions(-)
->>
->> diff --git a/tests/avocado/machine_aarch64_sbsaref.py 
->> b/tests/avocado/machine_aarch64_sbsaref.py
->> index 0a79fa7ab6..35f8042416 100644
->> --- a/tests/avocado/machine_aarch64_sbsaref.py
->> +++ b/tests/avocado/machine_aarch64_sbsaref.py
->> @@ -29,23 +29,23 @@ def fetch_firmware(self):
->>           """
->>           Flash volumes generated using:
->> -        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 
->> 12.2.1-2)
->> +        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 
->> 13.1.1-2)
->>           - Trusted Firmware-A
->> -          
->> https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
->> +          
->> https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
->>           - Tianocore EDK II
->> -          https://github.com/tianocore/edk2/tree/494127613b
->> -          https://github.com/tianocore/edk2-non-osi/tree/41876073
->> -          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
->> +          https://github.com/tianocore/edk2/tree/0f9283429dd4
->> +          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
->> +          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-> 
-> Thanks for updating this comment!
+Signed-off-by: Yeqi Fu <fufuyqqqqqq@gmail.com>
+---
+ target/arm/helper.c            | 47 ++++++++++++++++++++++++++++++++++
+ target/arm/helper.h            |  6 +++++
+ target/arm/tcg/translate-a64.c | 22 ++++++++++++++++
+ target/arm/tcg/translate.c     | 25 +++++++++++++++++-
+ target/arm/tcg/translate.h     | 19 ++++++++++++++
+ 5 files changed, 118 insertions(+), 1 deletion(-)
 
-Having a way to reproduce is crucial for CI.
-
->> -    @skip("requires TF-A update to handle FEAT_FGT")
->> +    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might 
->> timeout")
-> 
-> Can it still timeout?
-
-All Linux based tests in this file have that @skipUnless as they take 
-some time:
-
-test_sbsaref_edk2_firmware: PASS (2.72 s)
-test_sbsaref_alpine_linux_cortex_a57: PASS (23.71 s)
-test_sbsaref_alpine_linux_neoverse_n1: PASS (23.53 s)
-test_sbsaref_alpine_linux_max: PASS (28.16 s)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0b7fd2e7e6..03fbc3724b 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -25,6 +25,7 @@
+ #include "sysemu/tcg.h"
+ #include "qapi/error.h"
+ #include "qemu/guest-random.h"
++#include "exec/cpu_ldst.h"
+ #ifdef CONFIG_TCG
+ #include "semihosting/common-semi.h"
+ #endif
+@@ -12045,3 +12046,49 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+     }
+ }
+ #endif
++
++#if defined(CONFIG_USER_ONLY)  && defined(CONFIG_USER_NATIVE_CALL)
++
++#define NATIVE_FN_W_3W()           \
++    target_ulong arg0, arg1, arg2; \
++    arg0 = env->regs[0];           \
++    arg1 = env->regs[1];           \
++    arg2 = env->regs[2];
++
++void helper_native_memcpy(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    NATIVE_FN_W_3W();
++    void *ret;
++    void *dest = g2h(cs, arg0);
++    void *src = g2h(cs, arg1);
++    size_t n = (size_t)arg2;
++    ret = memcpy(dest, src, n);
++    env->regs[0] = (target_ulong)h2g(ret);
++}
++
++void helper_native_memcmp(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    NATIVE_FN_W_3W();
++    int ret;
++    void *s1 = g2h(cs, arg0);
++    void *s2 = g2h(cs, arg1);
++    size_t n = (size_t)arg2;
++    ret = memcmp(s1, s2, n);
++    env->regs[0] = ret;
++}
++
++void helper_native_memset(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    NATIVE_FN_W_3W();
++    void *ret;
++    void *s = g2h(cs, arg0);
++    int c = (int)arg1;
++    size_t n = (size_t)arg2;
++    ret = memset(s, c, n);
++    env->regs[0] = (target_ulong)h2g(ret);
++}
++
++#endif
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 3335c2b10b..57144bf6fb 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1038,6 +1038,12 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_s, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ 
++#if defined(CONFIG_USER_ONLY)  && defined(CONFIG_USER_NATIVE_CALL)
++DEF_HELPER_1(native_memcpy, void, env)
++DEF_HELPER_1(native_memcmp, void, env)
++DEF_HELPER_1(native_memset, void, env)
++#endif
++
+ #ifdef TARGET_AARCH64
+ #include "tcg/helper-a64.h"
+ #include "tcg/helper-sve.h"
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 741a608739..04421af6c6 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -35,6 +35,7 @@
+ #include "cpregs.h"
+ #include "translate-a64.h"
+ #include "qemu/atomic128.h"
++#include "native/native-func.h"
+ 
+ static TCGv_i64 cpu_X[32];
+ static TCGv_i64 cpu_pc;
+@@ -2291,6 +2292,9 @@ static void disas_exc(DisasContext *s, uint32_t insn)
+             if (s->fgt_svc) {
+                 gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
+                 break;
++            } else if (native_bypass() && imm16 == 0xff) {
++                s->native_call_status = true;
++                break;
+             }
+             gen_ss_advance(s);
+             gen_exception_insn(s, 4, EXCP_SWI, syndrome);
+@@ -14203,6 +14207,24 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     s->fp_access_checked = false;
+     s->sve_access_checked = false;
+ 
++    if (native_bypass() && s->native_call_status) {
++        switch (insn) {
++        case NATIVE_MEMCPY:
++            gen_helper_native_memcpy(cpu_env);
++            break;
++        case NATIVE_MEMCMP:
++            gen_helper_native_memcmp(cpu_env);
++            break;
++        case NATIVE_MEMSET:
++            gen_helper_native_memset(cpu_env);
++            break;
++        default:
++            unallocated_encoding(s);
++        }
++        s->native_call_status = false;
++        return;
++    }
++
+     if (s->pstate_il) {
+         /*
+          * Illegal execution state. This has priority over BTI
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 7468476724..83ce0f7437 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -34,7 +34,7 @@
+ #include "exec/helper-gen.h"
+ #include "exec/log.h"
+ #include "cpregs.h"
+-
++#include "native/native-func.h"
+ 
+ #define ENABLE_ARCH_4T    arm_dc_feature(s, ARM_FEATURE_V4T)
+ #define ENABLE_ARCH_5     arm_dc_feature(s, ARM_FEATURE_V5)
+@@ -58,6 +58,10 @@ TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
+ TCGv_i64 cpu_exclusive_addr;
+ TCGv_i64 cpu_exclusive_val;
+ 
++#if defined(CONFIG_USER_ONLY) && !defined(TARGET_AARCH64)  \
++    && defined(CONFIG_USER_NATIVE_CALL)
++#endif
++
+ #include "exec/gen-icount.h"
+ 
+ static const char * const regnames[] =
+@@ -8576,6 +8580,8 @@ static bool trans_SVC(DisasContext *s, arg_SVC *a)
+         if (s->fgt_svc) {
+             uint32_t syndrome = syn_aa32_svc(a->imm, s->thumb);
+             gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, 2);
++        } else if (native_bypass() && a->imm == 0xff) {
++            s->native_call_status = true;
+         } else {
+             gen_update_pc(s, curr_insn_len(s));
+             s->svc_imm = a->imm;
+@@ -9372,6 +9378,23 @@ static void arm_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     insn = arm_ldl_code(env, &dc->base, pc, dc->sctlr_b);
+     dc->insn = insn;
+     dc->base.pc_next = pc + 4;
++    if (native_bypass() && dc->native_call_status) {
++        switch (insn) {
++        case NATIVE_MEMCPY:
++            gen_helper_native_memcpy(cpu_env);
++            break;
++        case NATIVE_MEMCMP:
++            gen_helper_native_memcmp(cpu_env);
++            break;
++        case NATIVE_MEMSET:
++            gen_helper_native_memset(cpu_env);
++            break;
++        default:
++            unallocated_encoding(dc);
++        }
++        dc->native_call_status = false;
++        return;
++    }
+     disas_arm_insn(dc, insn);
+ 
+     arm_post_translate_insn(dc);
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index a9d1f4adc2..19c4f7af7f 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -149,6 +149,13 @@ typedef struct DisasContext {
+     int c15_cpar;
+     /* TCG op of the current insn_start.  */
+     TCGOp *insn_start;
++    /*
++     * Indicate whether the next instruction is a native function call (true)
++     * or not (false).
++     */
++#if defined(CONFIG_USER_ONLY)  && defined(CONFIG_USER_NATIVE_CALL)
++    bool native_call_status;
++#endif
+ } DisasContext;
+ 
+ typedef struct DisasCompare {
+@@ -657,3 +664,15 @@ static inline void gen_restore_rmode(TCGv_i32 old, TCGv_ptr fpst)
+     }
+ 
+ #endif /* TARGET_ARM_TRANSLATE_H */
++
++/*
++ * Check if the native bypass feature is enabled.
++ */
++static inline bool native_bypass(void)
++{
++#if defined(CONFIG_USER_ONLY) && defined(CONFIG_USER_NATIVE_CALL)
++    return true;
++#else
++    return false;
++#endif
++}
+-- 
+2.34.1

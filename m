@@ -1,100 +1,99 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp83039ejb;
-        Wed, 7 Jun 2023 01:06:04 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4nVAxCU8Rltt6uHW7Pzx+BAejK50ahgQdi7k57ef+mMEOkLKcNs01ug4PCSfbTTLXtnY8H
-X-Received: by 2002:a05:622a:1193:b0:3f3:69ea:274d with SMTP id m19-20020a05622a119300b003f369ea274dmr2278397qtk.45.1686125163670;
-        Wed, 07 Jun 2023 01:06:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686125163; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp83617ejb;
+        Wed, 7 Jun 2023 01:07:13 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ56PpGqTZ7XueJF3jj3ViWnakBPA3zfdIQ6EPrgfowvNOLAHY5sFezM8yGOXonZdRWpvgJk
+X-Received: by 2002:a05:622a:1b86:b0:3f3:8f88:72f4 with SMTP id bp6-20020a05622a1b8600b003f38f8872f4mr2357044qtb.20.1686125233565;
+        Wed, 07 Jun 2023 01:07:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686125233; cv=none;
         d=google.com; s=arc-20160816;
-        b=rGb9V4xMWE8Z4u3eKCM0i1RoqjIOG3SuIWWgtpVZt5WHctItMJ6PDqQKDH6ztzmBcR
-         q7ylybHaN7Ooq92MdvqmnZDugfSfZXONG1Wu+aqmSzs+Y8mY/3mBH3tdzNm3csajLflb
-         KBz2kvdVQ7lcUJnifmYOrfFJk2iDydddFqBm8skGlG+jTUjmBHI53yZMZUFgc0nK8Tpr
-         8hDcrVi7pBDNTXcQjtSAzMyyYw0as6Rz2p2G8JkM0s2Kcp5s+jQRBvA0S6/+xr4XDQ76
-         YHTaoMJ8R9FAq+YpAfjf63e6KkA74lxpFeFMFbFQ4mhocqdTaac6ydDJ9PO37Xw390OY
-         mEfQ==
+        b=CkYGyInUH+D1A5MlalSD2KYsYtmT9uIMYYTWLdKoFNRuDSAQFiYtvfElP3NE+pQ4m9
+         rQU9QE8TlISS9AYXolVTo3Rks83Jp7xyriFfRMyBmghgI1ghS79IMQeS3p5iwwgm0UaS
+         lKPrpDq26z8VXF7aoa+xZa8kMId1pvHBYpwAXJZ5yR9q6OLOnjDkWEVBK1jf3ezGSbcj
+         FIe6JKgaYDWyh9d36Llj7sRGFuGPrAHUcQW1/BiVvwhdggKtxcc7CvL+fadZH0jx62ov
+         mP53eUl72PJlUIo+cVXXf610mbSlLK7wpE3RrT0IihVmA+wTFCuvrCTUFXLxaJyyNvV4
+         klzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=x7PWrZD7tdX0THKKfBC61FMRNJM2p3t1gV6Gtlaj72Y=;
-        b=q6xvUL5Y/e9EuAOo6dTxUonR0UceO98brJGErDU5WnjHAxlVP5LAnTkEJVEgoRhu3M
-         Mom7vsuBGLyiWx5krPI6WTscJxff1FIi2L2jrfbEFcq5WjVE4aQmW6gwmq58jXzC+n9E
-         6a9tlvETT9S9nz9f6rm54FkCWHEYBhrLvOe0XKJyV6n/DhUzd5s4zV2YZjU3HuSSPv+w
-         +hIfkX5M16gfqEqAR65/7hsjoDzeOdeg26mtIXEceBjm0UzrstMrk0NuS70DkmRBaCrG
-         cnYoikwoz9okSQvgYsqNfwDgTYz8nb2xKSwwl9f7fIPkjkySGPx0JmMkxSUm+fDVhAPJ
-         wAvQ==
+        bh=nzyfxXEkg4mwZuF47QujeTh0B75sADTfkMPP+0WPGGY=;
+        b=psRvcJfl1yvyzp4fHPpNnobuqqdA/Cp8DV/VuQdKsW9wiIU7gA0ekGmNKhAe2TwPMq
+         pnVHTgwGjou4cb5wqZSdOqQYFAr+khPcPWtc0NOxP1GTN4weGwVFxTaNy95+c6iE0bd4
+         E9/KkC7a6RwT9/JC2uTH9axz0+KvnHhilaU4uR1Wlglen+lpiQ9h0oYvEGXslRFcm5PR
+         7LhWz7FN2z//Up267imgiusGzSvAJW0tIA+4FDym0hv/FewdCSMd4JI5XSJrlyxxthHR
+         oBSy3XVpjqzPLLYepFotxahd4AMhf4ZyRnEMUuoCSgobS7j55OEqag7jLuxZ46V50sFO
+         rBNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=EqSwEs9r;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=naxuEslg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5-20020ac87dc5000000b003f0a436d7fasi7368024qte.523.2023.06.07.01.06.03
+        by mx.google.com with ESMTPS id 19-20020ac85753000000b003f52eb1a5cesi7121539qtx.632.2023.06.07.01.07.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 01:06:03 -0700 (PDT)
+        Wed, 07 Jun 2023 01:07:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=EqSwEs9r;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=naxuEslg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6oB8-0007ev-PG; Wed, 07 Jun 2023 04:06:02 -0400
+	id 1q6oBx-00005W-9g; Wed, 07 Jun 2023 04:06:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6oB7-0007dG-Ip; Wed, 07 Jun 2023 04:06:01 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1q6oBv-00005E-CM; Wed, 07 Jun 2023 04:06:51 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6oB5-0006vm-UR; Wed, 07 Jun 2023 04:06:01 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-5169f614977so430494a12.3; 
- Wed, 07 Jun 2023 01:05:59 -0700 (PDT)
+ id 1q6oBt-00074G-Iq; Wed, 07 Jun 2023 04:06:51 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-9741caaf9d4so1040929066b.0; 
+ Wed, 07 Jun 2023 01:06:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jms.id.au; s=google; t=1686125158; x=1688717158;
+ d=jms.id.au; s=google; t=1686125207; x=1688717207;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=x7PWrZD7tdX0THKKfBC61FMRNJM2p3t1gV6Gtlaj72Y=;
- b=EqSwEs9r6MZisz4sLoeuBgI2UnCb9npw+pRo0aVwPUZrGTTsSrDPQlPHg6sOICYgUN
- BXrCCiVvjTnU3I0Mp9h5zDKQmdcIOjCR4MRYGJGjNsAd0g3Rl5JxqMSz0a/+mKe8ACJM
- uL4VJ3ydn6Q4nYdVDN4umAK60cuSll8M8hMps=
+ bh=nzyfxXEkg4mwZuF47QujeTh0B75sADTfkMPP+0WPGGY=;
+ b=naxuEslgqluC8eXwzylc06kT2yjsUZ4i4aLNZBSGzPVj92iDu3WuCtSGoooZ1geGIr
+ OzjWihnZSASkb/miK51bAJjNO/qq919ToFMyOVgV0MU1vGhl6iD9DM65VTACn3VeGcvd
+ hCvMBNnccv1XgL3l2e4jCtqVBqpCu9H75wBcM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686125158; x=1688717158;
+ d=1e100.net; s=20221208; t=1686125207; x=1688717207;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=x7PWrZD7tdX0THKKfBC61FMRNJM2p3t1gV6Gtlaj72Y=;
- b=EsZleAMWb5NWjtc6VaXAMT6McLQR4TY/pTt8b/Cc4BF5FbW9rUuKbskI8qIWsD+pNd
- iL5oxWOgWL4UgSjt9jixtUmrOekH3aVvPnX1LjxAioC/i27txxtYBS354JyqZAoGU8OS
- UU5F0r9fZYCV9Ra/96ZR97HSRgB47F+vMX/zCrIw9k6k+wLGsYkibAjfftWkIhXlMpxv
- zRVRSE1Awad6P5v64XBwx1SKcuABwFQSJNestK/oLRCByMUfSvEcpkw2b1Z6qWDOtfiG
- Iep2ddpNNI23HgVWsvjEdnScfRzsftINF18rnserhz6pD8123jYFJMrAtoI6vLCT9BUD
- YB+g==
-X-Gm-Message-State: AC+VfDwzVmiWfoYddIzN27EropP30e9Kx/x6xmMF7s4tzelmgHFuiJwD
- N7Qs5DGWn3hHae4LcIbgrmSE7FH2jBz9l+Eeb7o=
-X-Received: by 2002:a17:906:d54a:b0:96f:cb13:8715 with SMTP id
- cr10-20020a170906d54a00b0096fcb138715mr5053454ejc.69.1686125157893; Wed, 07
- Jun 2023 01:05:57 -0700 (PDT)
+ bh=nzyfxXEkg4mwZuF47QujeTh0B75sADTfkMPP+0WPGGY=;
+ b=U3MDMUAOaLnE6XwFn7RaHaEIgpTwz1CmmnWJwmawexegXstl4QHtqxbRnkLseDD4Zs
+ aRKyMx9bpsD9dJ54aqjXCZqHkWbq6yWlPmq+4/OShLfCog9AFTtOVuqM0xDxeflsotLK
+ HhT9K6C/6JBpib9F8/zhBE9GH1OjksAegbBQTaSeNeXQAAafNqMFv9pg3VpX21mr3NwK
+ i9WG6sghCWaqgo7n71iHMieDFeYIur6Eq8Serge/W+V2e681+gM6LOLVx0t52u5mlDF2
+ jx0r1VbIlXzfgcxOzI+/WpGVmu3E7Dl8tEGzrL9LB/qKq/k8/obVV7GLix/MhhS3fi/K
+ RaAQ==
+X-Gm-Message-State: AC+VfDzkyGady/W0dZp3OOBtzs5OZTgoOSZ2+xFZyeMPGpJJWkv5GVjI
+ UzwfaoyK7PeSuNNtmh2QjPICCb/IK2ui6DAmXb4hR06K
+X-Received: by 2002:a17:907:9621:b0:970:bef:4393 with SMTP id
+ gb33-20020a170907962100b009700bef4393mr6479166ejc.7.1686125207067; Wed, 07
+ Jun 2023 01:06:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230607043943.1837186-1-clg@kaod.org>
- <20230607043943.1837186-4-clg@kaod.org>
-In-Reply-To: <20230607043943.1837186-4-clg@kaod.org>
+ <20230607043943.1837186-5-clg@kaod.org>
+In-Reply-To: <20230607043943.1837186-5-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 7 Jun 2023 08:05:45 +0000
-Message-ID: <CACPK8Xf-9xeYf4wwcBHLLbx3Bt-KiB=_0ZJbTc=P-H874Lbzfw@mail.gmail.com>
-Subject: Re: [PATCH v2 03/12] aspeed: Use the boot_rom region of the fby35
- machine
+Date: Wed, 7 Jun 2023 08:06:35 +0000
+Message-ID: <CACPK8XencE5MMgYdQ5H6iV_rTHaynv-UJYHZy=y-DaCXYBWWXg@mail.gmail.com>
+Subject: Re: [PATCH v2 04/12] hw/ssi: Add an "addr" property to SSIPeripheral
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Delevoryas <peter@pjd.dev>
+ Alistair Francis <alistair@alistair23.me>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=joel.stan@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -117,81 +116,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JlzlrDufSLyA
+X-TUID: VBxe0fVv9oR3
 
 On Wed, 7 Jun 2023 at 04:40, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> This change completes commits 5aa281d757 ("aspeed: Introduce a
-> spi_boot region under the SoC") and 8b744a6a47 ("aspeed: Add a
-> boot_rom overlap region in the SoC spi_boot container") which
-> introduced a spi_boot container at the SoC level to map the boot rom
-> region as an overlap.
->
-> It also fixes a Coverity report (CID 1508061) for a memory leak
-> warning when the QEMU process exits by using an bmc_boot_rom
-> MemoryRegion available at the machine level.
->
-> Cc: Peter Delevoryas <peter@pjd.dev>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Boards will use this new property to identify the device CS line and
+> wire the SPI controllers accordingly.
+
+"addr" and not "cs" or even "chip-select"?
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+>
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->  hw/arm/fby35.c | 29 +++++++++++++++--------------
->  1 file changed, 15 insertions(+), 14 deletions(-)
+>  include/hw/ssi/ssi.h | 3 +++
+>  hw/ssi/ssi.c         | 7 +++++++
+>  2 files changed, 10 insertions(+)
 >
-> diff --git a/hw/arm/fby35.c b/hw/arm/fby35.c
-> index f4600c290b62..f2ff6c1abfd9 100644
-> --- a/hw/arm/fby35.c
-> +++ b/hw/arm/fby35.c
-> @@ -70,8 +70,6 @@ static void fby35_bmc_write_boot_rom(DriveInfo *dinfo, =
-MemoryRegion *mr,
+> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+> index 6950f86810d3..9e0706a5248c 100644
+> --- a/include/hw/ssi/ssi.h
+> +++ b/include/hw/ssi/ssi.h
+> @@ -64,6 +64,9 @@ struct SSIPeripheral {
 >
->  static void fby35_bmc_init(Fby35State *s)
->  {
-> -    DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
-> -
->      object_initialize_child(OBJECT(s), "bmc", &s->bmc, "ast2600-a3");
->
->      memory_region_init(&s->bmc_memory, OBJECT(&s->bmc), "bmc-memory",
-> @@ -95,18 +93,21 @@ static void fby35_bmc_init(Fby35State *s)
->      aspeed_board_init_flashes(&s->bmc.fmc, "n25q00", 2, 0);
->
->      /* Install first FMC flash content as a boot rom. */
-> -    if (drive0) {
-> -        AspeedSMCFlash *fl =3D &s->bmc.fmc.flashes[0];
-> -        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
-> -        uint64_t size =3D memory_region_size(&fl->mmio);
-> -
-> -        if (!s->mmio_exec) {
-> -            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
-> -                                   size, &error_abort);
-> -            memory_region_add_subregion(&s->bmc_memory, FBY35_BMC_FIRMWA=
-RE_ADDR,
-> -                                        boot_rom);
-> -            fby35_bmc_write_boot_rom(drive0, boot_rom, FBY35_BMC_FIRMWAR=
-E_ADDR,
-> -                                     size, &error_abort);
-> +    if (!s->mmio_exec) {
-> +        DriveInfo *mtd0 =3D drive_get(IF_MTD, 0, 0);
+>      /* Chip select state */
+>      bool cs;
 > +
-> +        if (mtd0) {
-> +            AspeedSoCState *bmc =3D &s->bmc;
-> +            uint64_t rom_size =3D memory_region_size(&bmc->spi_boot);
-> +
-> +            memory_region_init_rom(&s->bmc_boot_rom, NULL, "aspeed.boot_=
-rom",
-> +                                   rom_size, &error_abort);
-> +            memory_region_add_subregion_overlap(&bmc->spi_boot_container=
-, 0,
-> +                                                &s->bmc_boot_rom, 1);
-> +
-> +            fby35_bmc_write_boot_rom(mtd0, &s->bmc_boot_rom,
-> +                                     FBY35_BMC_FIRMWARE_ADDR,
-> +                                     rom_size, &error_abort);
->          }
->      }
+> +    /* Chip select address/index */
+> +    uint8_t addr;
+>  };
+>
+>  extern const VMStateDescription vmstate_ssi_peripheral;
+> diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+> index d54a109beeb5..d4409535429c 100644
+> --- a/hw/ssi/ssi.c
+> +++ b/hw/ssi/ssi.c
+> @@ -13,6 +13,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "hw/qdev-properties.h"
+>  #include "hw/ssi/ssi.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/module.h"
+> @@ -71,6 +72,11 @@ static void ssi_peripheral_realize(DeviceState *dev, E=
+rror **errp)
+>      ssc->realize(s, errp);
 >  }
+>
+> +static Property ssi_peripheral_properties[] =3D {
+> +    DEFINE_PROP_UINT8("addr", SSIPeripheral, addr, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void ssi_peripheral_class_init(ObjectClass *klass, void *data)
+>  {
+>      SSIPeripheralClass *ssc =3D SSI_PERIPHERAL_CLASS(klass);
+> @@ -81,6 +87,7 @@ static void ssi_peripheral_class_init(ObjectClass *klas=
+s, void *data)
+>      if (!ssc->transfer_raw) {
+>          ssc->transfer_raw =3D ssi_transfer_raw_default;
+>      }
+> +    device_class_set_props(dc, ssi_peripheral_properties);
+>  }
+>
+>  static const TypeInfo ssi_peripheral_info =3D {
 > --
 > 2.40.1
 >

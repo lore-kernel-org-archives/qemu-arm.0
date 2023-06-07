@@ -1,100 +1,99 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp157514ejb;
-        Wed, 7 Jun 2023 03:55:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6knSeQRjloqoKcNG0l2qEtSwz2gtFdSdZQYKMMl9zXXr3ZZTjQyFsmAHyP/cC+dGi+20zH
-X-Received: by 2002:ad4:5f45:0:b0:62b:68cb:cb9b with SMTP id p5-20020ad45f45000000b0062b68cbcb9bmr2929982qvg.35.1686135358234;
-        Wed, 07 Jun 2023 03:55:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686135358; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp157581ejb;
+        Wed, 7 Jun 2023 03:56:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6udyRL2j8tn6JyRE7h4pA+ORR5sV9UhOTQDpL8rNFTUJCoDimUarPXbIBs7UR4tAeTPQF/
+X-Received: by 2002:ac8:5784:0:b0:3ef:3511:f494 with SMTP id v4-20020ac85784000000b003ef3511f494mr2910334qta.16.1686135370916;
+        Wed, 07 Jun 2023 03:56:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686135370; cv=none;
         d=google.com; s=arc-20160816;
-        b=dHajNVyRWDAJDjZnCYSGIafBvOj1Z9uyCzjJtHB3Ecg+rZ3cKJMx5dfYn6neG7HC6B
-         PJH7hmgZmDV2ekE8sXAMIJyTf4rNwwlTOvlf1G4qbxTWaBr3EhGljeCi2re2KXaz1wEA
-         3Jz1llKBSVAjBv+uZTmgOD2MEQT2vLIxOG6wJyPdZ+JDfW/EoCHA8C9xLu2j9G8JKK5I
-         PVch3G9Wa0A3pfJBLYuVNrhUfqU0Ep6H3lGkOWq2qb/wIk0MePQB2r3W/1uDn2jcIQwH
-         Zm6Qqy++5LoJJH1tDcB0S9dyxDIwZv+Am5XYekvF7z6Z6A5hrHQLF94aL0g9lVfvWUp1
-         7dSw==
+        b=fY6kcOXSKFWE8uqtFm4aw6T2krN3W7EukxB4JvGGZOKPm7yNLHVIsgBS/+qH+HFnd0
+         JS9Jq5IAqT7o+qh0fyBe6zESLHbDY3Vv35Sl46qHQG3LrdwgEZqV0QPv+RqN0eq7KxdO
+         g5YeN/KzUpQof8+ePKdFBM5UXhjfQCYz5NmRVg8d5FghfqeuouO/QDPVvUU1thfhcn2W
+         xmrBY6spiOgZyiBUGksxisIhWCd5Q8KGtYp+yyGMaf1pwuot/XeuaLztwweIs9PvWsSv
+         t7y8C5xLUeTjPhMjRsdrDPVei1QUQxb8wi8coduyY9dTuOcPmWeL2zD7xUoVZgNfJOjf
+         uIGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=9asYw7vpaUzs2Cw1L3wgCpr5l4u3ymdgFHG59ZE7HYs=;
-        b=Z10ADYLL/1QxL+owPkX9wDnYWMZXNRmCPr1FHIFqLTh4RZ+D5GGVznBEDJKKtsoar8
-         mJ9JBdGtsTjjZT6c+qLKPHf8KbraL8UiGZ+LK3p/OBE+y/KzjGtulIMflPU7EkANa3BN
-         wPsEabyVTPybAeP2x9uM0f8tnftyEWH8kMH9fo9PY3KZijW6cqxuFfmzVz7dX1ZStLTV
-         SZym4mDI+1uS7wvH+DrguPllQZGp3xm6FbRMmfsYXxqP+Om+9OdkCJIVhHJw37lrZax8
-         onm+yRkS6CbZT1O9G3AGxVlegHh1tXY++ij/SeU5cVNkKXC8G+sPYW9WelJgaUSZFAMR
-         ERCg==
+        bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
+        b=uWonPgNPYQXV71UjNdAmuQQbJrBjIB4Tf9NJy8nqL8Si0Q1F3COseAPNWmwdbBA7Kb
+         fEMmodWqpMYCU4LWf6GbW1Al+F5RXq4+LFIjq+OduX9FOD2/Xuo4WPIJQ+Yliiu/KuB+
+         8uWUga5lTMoOmVIKyeeFXbx45xhORfjX2Q3E3uwM/sIKDIWJ78BFGEX+n4Ym8fLHcsF2
+         u6b7YrU0ZdrFvmLUBnGjPL4RzQNooARPZ8skW2eJ67XC7h75QMR+ekELNXqBdwA/XUmJ
+         xP88MXV+U5g+HLzZbb5tlc2oMHjxsDpmInOMa0GPFxxZ1/EQWIsisGqEF/AS0ZQsOJ1n
+         4JTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=ZouV7kP9;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=R3929sJQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q15-20020ad4574f000000b0062b76742ff4si187136qvx.166.2023.06.07.03.55.58
+        by mx.google.com with ESMTPS id o5-20020ac87c45000000b003f53ff4be0bsi7669518qtv.46.2023.06.07.03.56.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 03:55:58 -0700 (PDT)
+        Wed, 07 Jun 2023 03:56:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=ZouV7kP9;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=R3929sJQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6qpK-0006LR-Af; Wed, 07 Jun 2023 06:55:42 -0400
+	id 1q6qpa-0006Ot-CZ; Wed, 07 Jun 2023 06:55:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qpH-0006KU-6D; Wed, 07 Jun 2023 06:55:40 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1q6qpZ-0006O9-RJ; Wed, 07 Jun 2023 06:55:57 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qpF-0001g4-Kb; Wed, 07 Jun 2023 06:55:38 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-978863fb00fso64806266b.3; 
- Wed, 07 Jun 2023 03:55:36 -0700 (PDT)
+ id 1q6qpY-0001jF-By; Wed, 07 Jun 2023 06:55:57 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-9768fd99c0cso97682666b.0; 
+ Wed, 07 Jun 2023 03:55:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jms.id.au; s=google; t=1686135335; x=1688727335;
+ d=jms.id.au; s=google; t=1686135354; x=1688727354;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9asYw7vpaUzs2Cw1L3wgCpr5l4u3ymdgFHG59ZE7HYs=;
- b=ZouV7kP9quQKOpo71zIR2x7+GM/1TGckmyxbc1j5dFNYaPwkjFdrqu1oayvqsPukE+
- taN2LcE+inIbgwkienNb+BhY7GneXpT882M2ERCjF1KlgpxF1Og+pPN6NQBpUzFiAHkH
- gWXiMl7DF0xhCNE8qUNZNItX6V3IbJpInramE=
+ bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
+ b=R3929sJQOd3me3oyX/IeFlAZ8irxYnxqKjkGvR6eD+Qj8KztoaxszFUVKclB+Q5ARG
+ wy979yaZQO0LozEnp2WypER1A6XMXKdIsH36vIb2x1jaqfW0i9xshHNYpa9hqR+FIMk1
+ k4kfxX2CsoOGkF/yE1AsdfmJZqYMVmApEEBu0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686135335; x=1688727335;
+ d=1e100.net; s=20221208; t=1686135354; x=1688727354;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9asYw7vpaUzs2Cw1L3wgCpr5l4u3ymdgFHG59ZE7HYs=;
- b=lB+lMSLROhZhKIkqPUEhsw8+uZWzyKReJ5xq8ndTkVcMicAo8OrzeXvtwykqF3PC3z
- nC0tXg0kmlNoSQXmISxMcDQfgZH7WL2+F8v8A2VQxz/SwmjH4/JB0JsG5RVPLR4pctSG
- fOGrXgzdHmjyFdlu1ZjMywUAm7JQ2tkGSp7qfRJ7yAuKEoIuCDbTn+90zAajDcV4HrZe
- H6UMfY+tCtSMCAnNUeF9zGG2o5kB+lqXWglJ0N2VT1Bp7FJ2bQszQ3U7mnvTjJphSO5C
- Fge7zFCkWendYAb4JDr5Zb08ML8vGI3ioSTadRs6KzLWTAxBqXCdw7P7GjaPEhI2jYlS
- oiqA==
-X-Gm-Message-State: AC+VfDybOV1Z+CSiRiagOkaC1oYrrfUKkpl3CMGGgPDatNFNDJ68GExI
- 1RuIls72UYYmVHBQ8RYlTGELJwQIoyyU2VGfGJE=
-X-Received: by 2002:a17:906:9751:b0:973:fa96:aff1 with SMTP id
- o17-20020a170906975100b00973fa96aff1mr5955881ejy.35.1686135335240; Wed, 07
- Jun 2023 03:55:35 -0700 (PDT)
+ bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
+ b=Vr7XBAx9plpzOQoFHtgYIWpmKnpHfqTQw+5/RFta8s0lUu9lPPK5ZneL9m3OBP7YBe
+ BpGUihlTzzfLV5B1ChVvAm9C9W7hz3z3ZGb9OKjzhtVvuaak1Y5JzYjUX5Q4+DwXMD0y
+ Svhp9C7RtAdUqM0Am7g0Erwy0X3UW3+EdySocQgflLdtoXKFYShlEOOAmy4KsaFhAC3a
+ oTmK1IANjvkdeyCqSHIinbJ8R4G/PRbtm6CCbcBtSEWYcCeAi2GWzuFWLrptYyqtPi6W
+ M0j3ecgoAXKz1UWiv7di/SW9t44pZlaCztaksyn1litYx/Jt0RBPwb0rrWzxVRD1xGHq
+ Kfdg==
+X-Gm-Message-State: AC+VfDx+uArmdkON7eSfhz9AyWTAqnF8gSS7OaHFs55xgjQUgxvFkGmy
+ mmRUyBkiznF+VuQyGUDRoppm8SVkLFGve30SpXxVuWdv
+X-Received: by 2002:a17:907:9816:b0:978:2b56:d76e with SMTP id
+ ji22-20020a170907981600b009782b56d76emr6153261ejc.12.1686135354281; Wed, 07
+ Jun 2023 03:55:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230607043943.1837186-1-clg@kaod.org>
- <20230607043943.1837186-10-clg@kaod.org>
-In-Reply-To: <20230607043943.1837186-10-clg@kaod.org>
+ <20230607043943.1837186-11-clg@kaod.org>
+In-Reply-To: <20230607043943.1837186-11-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 7 Jun 2023 10:55:23 +0000
-Message-ID: <CACPK8XfncDzLXFQvhzqjO8Lq5aF5QWzhzNXaKoC=rBw-VifO-w@mail.gmail.com>
-Subject: Re: [PATCH v2 09/12] m25p80: Introduce an helper to retrieve the
- BlockBackend of a device
+Date: Wed, 7 Jun 2023 10:55:41 +0000
+Message-ID: <CACPK8XfwFKB6rNq5SU=CbRNTdMEn18wk6jA2K72XdhXxVLF1mg@mail.gmail.com>
+Subject: Re: [PATCH v2 10/12] aspeed: Get the BlockBackend of FMC0 from the
+ flash device
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -117,64 +116,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U1N1BwIw6Vg1
+X-TUID: mDHHRV+YMlh7
 
 On Wed, 7 Jun 2023 at 04:40, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> It will help in getting rid of some drive_get(IF_MTD) calls by
-> retrieving the BlockBackend directly from the m25p80 device.
+> and get rid of an unnecessary drive_get(IF_MTD) call.
 >
-> Cc: Alistair Francis <alistair@alistair23.me>
 > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-One suggestion below after reading patch 10.
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  include/hw/block/flash.h | 4 ++++
->  hw/block/m25p80.c        | 6 ++++++
->  2 files changed, 10 insertions(+)
+>  hw/arm/aspeed.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 >
-> diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
-> index 7198953702b7..de93756cbe8f 100644
-> --- a/include/hw/block/flash.h
-> +++ b/include/hw/block/flash.h
-> @@ -76,4 +76,8 @@ uint8_t ecc_digest(ECCState *s, uint8_t sample);
->  void ecc_reset(ECCState *s);
->  extern const VMStateDescription vmstate_ecc_state;
->
-> +/* m25p80.c */
-> +
-> +BlockBackend *m25p80_get_blk(DeviceState *dev);
-> +
->  #endif
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index dc5ffbc4ff52..afc3fdf4d60b 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -25,6 +25,7 @@
->  #include "qemu/units.h"
->  #include "sysemu/block-backend.h"
->  #include "hw/block/block.h"
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index efc112ca37b0..8beed0c2a66e 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -15,6 +15,7 @@
+>  #include "hw/arm/aspeed.h"
+>  #include "hw/arm/aspeed_soc.h"
+>  #include "hw/arm/aspeed_eeprom.h"
 > +#include "hw/block/flash.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/qdev-properties-system.h"
->  #include "hw/ssi/ssi.h"
-> @@ -1830,3 +1831,8 @@ static void m25p80_register_types(void)
->  }
+>  #include "hw/i2c/i2c_mux_pca954x.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+>  #include "hw/misc/pca9552.h"
+> @@ -427,11 +428,12 @@ static void aspeed_machine_init(MachineState *machi=
+ne)
+>      }
 >
->  type_init(m25p80_register_types)
-> +
-> +BlockBackend *m25p80_get_blk(DeviceState *dev)
-> +{
-> +    return M25P80(dev)->blk;
-
-Is it qemu convention for the caller to do the null check on dev, or
-should it go in this helper?
-
-> +}
+>      if (!bmc->mmio_exec) {
+> -        DriveInfo *mtd0 =3D drive_get(IF_MTD, 0, 0);
+> +        DeviceState *dev =3D ssi_get_cs(bmc->soc.fmc.spi, 0);
+> +        BlockBackend *fmc0 =3D dev ? m25p80_get_blk(dev) : NULL;
+>
+> -        if (mtd0) {
+> +        if (fmc0) {
+>              uint64_t rom_size =3D memory_region_size(&bmc->soc.spi_boot)=
+;
+> -            aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(mtd0), rom_=
+size);
+> +            aspeed_install_boot_rom(bmc, fmc0, rom_size);
+>          }
+>      }
+>
 > --
 > 2.40.1
 >

@@ -1,99 +1,99 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp157581ejb;
-        Wed, 7 Jun 2023 03:56:11 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6udyRL2j8tn6JyRE7h4pA+ORR5sV9UhOTQDpL8rNFTUJCoDimUarPXbIBs7UR4tAeTPQF/
-X-Received: by 2002:ac8:5784:0:b0:3ef:3511:f494 with SMTP id v4-20020ac85784000000b003ef3511f494mr2910334qta.16.1686135370916;
-        Wed, 07 Jun 2023 03:56:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686135370; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp158914ejb;
+        Wed, 7 Jun 2023 03:59:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5TNDGhtS21DhCzLANH7O39eEJGwpH1zRIM7Z6T6Ia8+z61Vp+TW2OlnnU7lRFZCUwGBn0w
+X-Received: by 2002:ad4:5bc7:0:b0:625:aa1a:937f with SMTP id t7-20020ad45bc7000000b00625aa1a937fmr2325036qvt.59.1686135545251;
+        Wed, 07 Jun 2023 03:59:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686135545; cv=none;
         d=google.com; s=arc-20160816;
-        b=fY6kcOXSKFWE8uqtFm4aw6T2krN3W7EukxB4JvGGZOKPm7yNLHVIsgBS/+qH+HFnd0
-         JS9Jq5IAqT7o+qh0fyBe6zESLHbDY3Vv35Sl46qHQG3LrdwgEZqV0QPv+RqN0eq7KxdO
-         g5YeN/KzUpQof8+ePKdFBM5UXhjfQCYz5NmRVg8d5FghfqeuouO/QDPVvUU1thfhcn2W
-         xmrBY6spiOgZyiBUGksxisIhWCd5Q8KGtYp+yyGMaf1pwuot/XeuaLztwweIs9PvWsSv
-         t7y8C5xLUeTjPhMjRsdrDPVei1QUQxb8wi8coduyY9dTuOcPmWeL2zD7xUoVZgNfJOjf
-         uIGg==
+        b=fNdQ0moe1YBOcolhvoHUDlKIZMhFT75hLvJtKJlYc6N1fczyjBJ926VsxP6vbtbe2i
+         cxJwUsvWJ0vxOC8a7X/fOF7RpugZZcplZj7bZgKtfna4dWdkG5bvZoomOXvifbzPTiQW
+         9Wnm1fm2dqkmsG2dJPV1nTitYeYhR1HZR7yb5/fOM8mhsS/L/6O3JnROUcJ/RcWGZvpV
+         7nROgis8P6eMB+jJY5vWqGjLGt1GHUr7kOFoXXeKwzbDlxVhNu4O1UwjRYRzNWc1rWEA
+         ViS039osrwZoNaOXBFY5SUtp9MB5InrVvfXaVxfHdXZUSmeMSPV8Ton0AsSOsumZldA7
+         gRZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
-        b=uWonPgNPYQXV71UjNdAmuQQbJrBjIB4Tf9NJy8nqL8Si0Q1F3COseAPNWmwdbBA7Kb
-         fEMmodWqpMYCU4LWf6GbW1Al+F5RXq4+LFIjq+OduX9FOD2/Xuo4WPIJQ+Yliiu/KuB+
-         8uWUga5lTMoOmVIKyeeFXbx45xhORfjX2Q3E3uwM/sIKDIWJ78BFGEX+n4Ym8fLHcsF2
-         u6b7YrU0ZdrFvmLUBnGjPL4RzQNooARPZ8skW2eJ67XC7h75QMR+ekELNXqBdwA/XUmJ
-         xP88MXV+U5g+HLzZbb5tlc2oMHjxsDpmInOMa0GPFxxZ1/EQWIsisGqEF/AS0ZQsOJ1n
-         4JTg==
+        bh=kNVgHpd8dEnVUWkhoTMD4igCFeHsoqOTH4fKB7OFDyI=;
+        b=zChG88KUvbMxLYvjCyOIbwcmLem9LIFxiGoLlXZpvbhbuR5Y+DagTv1POk4j1pNdFX
+         kulnAJzmRraX7ngBpWvnUnFSXlEsNPoQf1Gpa6fxhJmtiIGpsmXeUmntRAehipvjE2J5
+         ryH0fBKmvIdEepa7hlWhJK4Y7f71n3RRm6H4PsQ7G9I9P7JSVHcVEdvUVVKtTp6ny5ZM
+         QTvLp/jtySfRD4HkoSoT0n2Z+Cj6W79XUxag8hLLYfHhfaze2XDv6WPju7ipVHf7QP2n
+         xczASg84DWXn7YqEILKkMoUz6pxu86iLY1EkNRavvYDuncvJdXD4CAUhhlgSiqmPVq2e
+         Ww3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=R3929sJQ;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=kLQmW1xH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5-20020ac87c45000000b003f53ff4be0bsi7669518qtv.46.2023.06.07.03.56.10
+        by mx.google.com with ESMTPS id c11-20020ac87dcb000000b003f3941c3cb7si7380676qte.246.2023.06.07.03.59.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Jun 2023 03:56:10 -0700 (PDT)
+        Wed, 07 Jun 2023 03:59:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=R3929sJQ;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=kLQmW1xH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q6qpa-0006Ot-CZ; Wed, 07 Jun 2023 06:55:58 -0400
+	id 1q6qsI-0008Hp-Kw; Wed, 07 Jun 2023 06:58:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qpZ-0006O9-RJ; Wed, 07 Jun 2023 06:55:57 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1q6qsG-0008Gr-Pj; Wed, 07 Jun 2023 06:58:44 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1q6qpY-0001jF-By; Wed, 07 Jun 2023 06:55:57 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-9768fd99c0cso97682666b.0; 
- Wed, 07 Jun 2023 03:55:55 -0700 (PDT)
+ id 1q6qsE-0002G4-Vi; Wed, 07 Jun 2023 06:58:44 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-51492ae66a4so1032422a12.1; 
+ Wed, 07 Jun 2023 03:58:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jms.id.au; s=google; t=1686135354; x=1688727354;
+ d=jms.id.au; s=google; t=1686135521; x=1688727521;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
- b=R3929sJQOd3me3oyX/IeFlAZ8irxYnxqKjkGvR6eD+Qj8KztoaxszFUVKclB+Q5ARG
- wy979yaZQO0LozEnp2WypER1A6XMXKdIsH36vIb2x1jaqfW0i9xshHNYpa9hqR+FIMk1
- k4kfxX2CsoOGkF/yE1AsdfmJZqYMVmApEEBu0=
+ bh=kNVgHpd8dEnVUWkhoTMD4igCFeHsoqOTH4fKB7OFDyI=;
+ b=kLQmW1xH2xZD8DFFCYSzUS7iTbKmULd3pxXaIxHG4odvvMR6E2MzQPum6O2uUb0IPn
+ S0VrA/OwOatcl6nieE8o+OM3Fec1P75krzwgo+6B7DrlfTUGS1G1E4NXIOQ08u0KYWV1
+ rFbuH/V8FqZHNCdbbh/6FWjJd0VNKIH1CW2CI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686135354; x=1688727354;
+ d=1e100.net; s=20221208; t=1686135521; x=1688727521;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ib/4dh6/10KWhyrEZa+6Se/dqChCjxMLXkvXYuPbCas=;
- b=Vr7XBAx9plpzOQoFHtgYIWpmKnpHfqTQw+5/RFta8s0lUu9lPPK5ZneL9m3OBP7YBe
- BpGUihlTzzfLV5B1ChVvAm9C9W7hz3z3ZGb9OKjzhtVvuaak1Y5JzYjUX5Q4+DwXMD0y
- Svhp9C7RtAdUqM0Am7g0Erwy0X3UW3+EdySocQgflLdtoXKFYShlEOOAmy4KsaFhAC3a
- oTmK1IANjvkdeyCqSHIinbJ8R4G/PRbtm6CCbcBtSEWYcCeAi2GWzuFWLrptYyqtPi6W
- M0j3ecgoAXKz1UWiv7di/SW9t44pZlaCztaksyn1litYx/Jt0RBPwb0rrWzxVRD1xGHq
- Kfdg==
-X-Gm-Message-State: AC+VfDx+uArmdkON7eSfhz9AyWTAqnF8gSS7OaHFs55xgjQUgxvFkGmy
- mmRUyBkiznF+VuQyGUDRoppm8SVkLFGve30SpXxVuWdv
-X-Received: by 2002:a17:907:9816:b0:978:2b56:d76e with SMTP id
- ji22-20020a170907981600b009782b56d76emr6153261ejc.12.1686135354281; Wed, 07
- Jun 2023 03:55:54 -0700 (PDT)
+ bh=kNVgHpd8dEnVUWkhoTMD4igCFeHsoqOTH4fKB7OFDyI=;
+ b=JcJy5qMxrtmZhHUFuJY6+srMeLpwzt4YEdMCA1tOAxUAcXz/x/XXcBTRoF13PkZuWf
+ ZXOrRvZPOgfAbzswFaLx9NAxnQRlCYCBDbwEZgJ83+Qinyhf7/Y0hcyaaj5Ivquco7am
+ H86YBX4vbM8mcDnyk5ckaSUXHEXv1NiSz+v0LuweB1QS44XUDmwGoIWLcwe499I87rBT
+ hjn4MWu03FzFUBVvX00IL4JrUhspAMAvn0mIHJHmLk3023uNmmpIKrwLnbDMquCtVkX7
+ Jvhj9K+ewXvdVa369qQW2I7zjGfkoU0nYiXo3fhlUT71U2XEikAIMPWzTWrnw4WSj0FT
+ 2wMQ==
+X-Gm-Message-State: AC+VfDzWy3Gz+Fkir7E1gTNgLr+JhVm2Y1Xfd6U729uCdG24ZmLe6/V8
+ VwfSzak4B5wODc6UD63PKTGT0nC9jFKexvDtoqA=
+X-Received: by 2002:a17:906:58cb:b0:978:8afb:d44c with SMTP id
+ e11-20020a17090658cb00b009788afbd44cmr394167ejs.60.1686135520552; Wed, 07 Jun
+ 2023 03:58:40 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230607043943.1837186-1-clg@kaod.org>
- <20230607043943.1837186-11-clg@kaod.org>
-In-Reply-To: <20230607043943.1837186-11-clg@kaod.org>
+ <20230607043943.1837186-12-clg@kaod.org>
+In-Reply-To: <20230607043943.1837186-12-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 7 Jun 2023 10:55:41 +0000
-Message-ID: <CACPK8XfwFKB6rNq5SU=CbRNTdMEn18wk6jA2K72XdhXxVLF1mg@mail.gmail.com>
-Subject: Re: [PATCH v2 10/12] aspeed: Get the BlockBackend of FMC0 from the
- flash device
+Date: Wed, 7 Jun 2023 10:58:28 +0000
+Message-ID: <CACPK8XfYpgPsxNU7280TJgF7_XQVGjO0JFmNtB3v03Bryqxrig@mail.gmail.com>
+Subject: Re: [PATCH v2 11/12] aspeed: Introduce a "bmc-console" machine option
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Abhishek Singh Dagur <abhishek@drut.io>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -116,52 +116,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mDHHRV+YMlh7
+X-TUID: a4FcUsvwZDeC
 
 On Wed, 7 Jun 2023 at 04:40, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> and get rid of an unnecessary drive_get(IF_MTD) call.
+> Most of the Aspeed machines use the UART5 device for the boot console,
+> and QEMU connects the first serial Chardev to this SoC device for this
+> purpose. See routine connect_serial_hds_to_uarts().
 >
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Nevertheless, some machines use another boot console, such as the fuji,
+> and commit 5d63d0c76c ("hw/arm/aspeed: Allow machine to set UART
+> default") introduced a SoC class attribute 'uart_default' and property
+> to be able to change the boot console device. It was later changed by
+> commit d2b3eaefb4 ("aspeed: Refactor UART init for multi-SoC machines").
+>
+> The "bmc-console" machine option goes a step further and lets the user de=
+fine
+> the UART device from the QEMU command line without introducing a new
+> machine definition. For instance, to use device UART3 (mapped on
+> /dev/ttyS2 under Linux) instead of the default UART5, one would use :
+>
+>   -M ast2500-evb,bmc-console=3Duart3
+>
+> Cc: Abhishek Singh Dagur <abhishek@drut.io>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  hw/arm/aspeed.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  docs/system/arm/aspeed.rst | 11 +++++++++++
+>  hw/arm/aspeed.c            | 40 ++++++++++++++++++++++++++++++++++++--
+>  2 files changed, 49 insertions(+), 2 deletions(-)
 >
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index d4e293e7f986..80538422a1a4 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -122,6 +122,11 @@ Options specific to Aspeed machines are :
+>
+>   * ``spi-model`` to change the SPI Flash model.
+>
+> + * ``bmc-console`` to change the default console device. Most of the
+> +   machines use the ``UART5`` device for a boot console, which is
+> +   mapped on ``/dev/ttyS4`` under Linux, but it is not always the
+> +   case.
+> +
+>  For instance, to start the ``ast2500-evb`` machine with a different
+>  FMC chip and a bigger (64M) SPI chip, use :
+>
+> @@ -129,6 +134,12 @@ FMC chip and a bigger (64M) SPI chip, use :
+>
+>    -M ast2500-evb,fmc-model=3Dmx25l25635e,spi-model=3Dmx66u51235f
+>
+> +To change the boot console and use device ``UART3`` (``/dev/ttyS2``
+> +under Linux), use :
+> +
+> +.. code-block:: bash
+> +
+> +  -M ast2500-evb,bmc-console=3Duart3
+>
+>  Aspeed minibmc family boards (``ast1030-evb``)
+>  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
 > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index efc112ca37b0..8beed0c2a66e 100644
+> index 8beed0c2a66e..d3e58936e68a 100644
 > --- a/hw/arm/aspeed.c
 > +++ b/hw/arm/aspeed.c
-> @@ -15,6 +15,7 @@
->  #include "hw/arm/aspeed.h"
->  #include "hw/arm/aspeed_soc.h"
->  #include "hw/arm/aspeed_eeprom.h"
-> +#include "hw/block/flash.h"
->  #include "hw/i2c/i2c_mux_pca954x.h"
->  #include "hw/i2c/smbus_eeprom.h"
->  #include "hw/misc/pca9552.h"
-> @@ -427,11 +428,12 @@ static void aspeed_machine_init(MachineState *machi=
-ne)
->      }
+> @@ -43,6 +43,7 @@ struct AspeedMachineState {
+>      AspeedSoCState soc;
+>      MemoryRegion boot_rom;
+>      bool mmio_exec;
+> +    uint32_t uart_chosen;
+>      char *fmc_model;
+>      char *spi_model;
+>  };
+> @@ -331,10 +332,11 @@ static void connect_serial_hds_to_uarts(AspeedMachi=
+neState *bmc)
+>      AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
+>      AspeedSoCState *s =3D &bmc->soc;
+>      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
+> +    int uart_chosen =3D bmc->uart_chosen ? bmc->uart_chosen : amc->uart_=
+default;
 >
->      if (!bmc->mmio_exec) {
-> -        DriveInfo *mtd0 =3D drive_get(IF_MTD, 0, 0);
-> +        DeviceState *dev =3D ssi_get_cs(bmc->soc.fmc.spi, 0);
-> +        BlockBackend *fmc0 =3D dev ? m25p80_get_blk(dev) : NULL;
->
-> -        if (mtd0) {
-> +        if (fmc0) {
->              uint64_t rom_size =3D memory_region_size(&bmc->soc.spi_boot)=
-;
-> -            aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(mtd0), rom_=
-size);
-> +            aspeed_install_boot_rom(bmc, fmc0, rom_size);
+> -    aspeed_soc_uart_set_chr(s, amc->uart_default, serial_hd(0));
+> +    aspeed_soc_uart_set_chr(s, uart_chosen, serial_hd(0));
+>      for (int i =3D 1, uart =3D ASPEED_DEV_UART1; i < sc->uarts_num; i++,=
+ uart++) {
+> -        if (uart =3D=3D amc->uart_default) {
+> +        if (uart =3D=3D uart_chosen) {
+>              continue;
 >          }
->      }
+>          aspeed_soc_uart_set_chr(s, uart, serial_hd(i));
+> @@ -1079,6 +1081,35 @@ static void aspeed_set_spi_model(Object *obj, cons=
+t char *value, Error **errp)
+>      bmc->spi_model =3D g_strdup(value);
+>  }
 >
+> +static char *aspeed_get_bmc_console(Object *obj, Error **errp)
+> +{
+> +    AspeedMachineState *bmc =3D ASPEED_MACHINE(obj);
+> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
+> +    int uart_chosen =3D bmc->uart_chosen ? bmc->uart_chosen : amc->uart_=
+default;
+> +
+> +    return g_strdup_printf("uart%d", uart_chosen - ASPEED_DEV_UART1 + 1)=
+;
+> +}
+> +
+> +static void aspeed_set_bmc_console(Object *obj, const char *value, Error=
+ **errp)
+> +{
+> +    AspeedMachineState *bmc =3D ASPEED_MACHINE(obj);
+> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_GET_CLASS(bmc);
+> +    AspeedSoCClass *sc =3D ASPEED_SOC_CLASS(object_class_by_name(amc->so=
+c_name));
+> +    int val;
+> +
+> +    if (sscanf(value, "uart%u", &val) !=3D 1) {
+> +        error_setg(errp, "Bad value for \"uart\" property");
+> +        return;
+> +    }
+> +
+> +    /* The number of UART depends on the SoC */
+> +    if (val < 1 || val > sc->uarts_num) {
+> +        error_setg(errp, "\"uart\" should be in range [1 - %d]", sc->uar=
+ts_num);
+> +        return;
+> +    }
+> +    bmc->uart_chosen =3D ASPEED_DEV_UART1 + val - 1;
+> +}
+> +
+>  static void aspeed_machine_class_props_init(ObjectClass *oc)
+>  {
+>      object_class_property_add_bool(oc, "execute-in-place",
+> @@ -1087,6 +1118,11 @@ static void aspeed_machine_class_props_init(Object=
+Class *oc)
+>      object_class_property_set_description(oc, "execute-in-place",
+>                             "boot directly from CE0 flash device");
+>
+> +    object_class_property_add_str(oc, "bmc-console", aspeed_get_bmc_cons=
+ole,
+> +                                  aspeed_set_bmc_console);
+> +    object_class_property_set_description(oc, "bmc-console",
+> +                           "Change the default UART to \"uartX\"");
+> +
+>      object_class_property_add_str(oc, "fmc-model", aspeed_get_fmc_model,
+>                                     aspeed_set_fmc_model);
+>      object_class_property_set_description(oc, "fmc-model",
 > --
 > 2.40.1
 >

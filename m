@@ -1,95 +1,96 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp366346ejb;
-        Thu, 8 Jun 2023 07:11:57 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6A4M+3Tru8hinIpkUNkuNg2FsCFXcV0f0yIq9QP26dkwD+Bk2c4Pr9DqBycwJRVJLrwGBR
-X-Received: by 2002:a05:620a:f10:b0:75e:14f3:5db1 with SMTP id v16-20020a05620a0f1000b0075e14f35db1mr6145107qkl.17.1686233516937;
-        Thu, 08 Jun 2023 07:11:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686233516; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp370254ejb;
+        Thu, 8 Jun 2023 07:17:09 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4KznF5vVjz2kHmUKKjz+FJNUtTGWyIdjXrm7FX4/y+k+wepOKXPJKe/D25/Ht5DkWtUCOU
+X-Received: by 2002:a37:4296:0:b0:75e:ba30:8cd3 with SMTP id p144-20020a374296000000b0075eba308cd3mr5042259qka.35.1686233829378;
+        Thu, 08 Jun 2023 07:17:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686233829; cv=none;
         d=google.com; s=arc-20160816;
-        b=eJoRhOsnv9mRDgrhc410K2TQebCZQJEurlX9+sIXpFpTTAJINMTJp4izxgAL3NcBh9
-         oa1XOQSuiQW9ea4y4xv9eqU0BMuEIGsL2D339RDjQ/5x3m73tD4AdTFsdii/IOs5m7AC
-         4mgC2VpwAqmUW/c1k4E+RzZlRjUyJQJSSS5OS6tU14gazcU7HNBanDbJ5K9dbxmbJtxM
-         L1mQ4P6TpUWFtnlkmJHFsgo5N++DiL6gugFCQgLLiI6M560cO/Bzq0Z6Q6wW/V/REIas
-         fGVSphuaTU0VZWS+NawxNWq6JG1J7C7tfkgJd70Z79257jcX4rF+n9lrlpGT8XS61fPK
-         +v/A==
+        b=Tth7IQQBi00TgvmFRD8UsJ/q7GCpNFByhn0uwGtB29bR8fxUB5LSof9U9B+wN927Lk
+         YDA6cxJWzIlkfloNKav11oX61JdpzPkMWWKEMuk7z0rccbENBV2mnS7PeR/t2mlPVB5G
+         CUqit7aRnYE7E0riV5EVv/Gx9XWYGQRbijCMDHPDHbNSS3sy5SPWJJmVpv11N9K6pnYW
+         gGWVnmF2h4RFWIq2ELLEaOjmxHqXvvGtCrXecbtdz9Kv2zVqsROYlqwTNXrYL8M4K5kl
+         stYrQwCQCs9L5EPq7cfQtcSBCBdC+A8KTMh/38css2PzAFuxU9fEaAQL3Mwn6DP0/9tQ
+         eIXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=P7nwgmLeW6QklNbBeX+2s5YD3VvWqzUl7W4rQ6KY9gs=;
-        b=HXyAEccSSTc9IYOkYN6SA+STrqSvy0Vg6jP4r8YTjkJcVV3x5owIOLI5L6HujyM8GC
-         iLis7yZeg91cpDRH6fLkRwrwrlF5fwHa69U4uiFj8tmpY71ZTRaEdmIc96GnRA2pNjtl
-         J8iFvGXRS2AEYPx/UV4emK4b4tPjwVTmYluTSNKM/PbKiaGwaVx+df99W2q2A1MR0heX
-         V0/FxFLtGHGLIN/T7+QuiEvXG0ir436h/wo6+xgGDrcvqFDLLKAeq0TVioWgf6n+HD3L
-         0DMfx3EYWaW5zQaSf9Izza4odBCk7I0IPLtsJR4SUeHb1j2EGqYLihVQ3BGg2uxnkQ4w
-         CBXg==
+        bh=QJMTqjxEuld/cPGA+RU9MRan9RmH9/ugPN5i3rn0OVY=;
+        b=Q87dlD0RijXciM7sFxiZLu1VxNjats3ew1zMLZcbWuCFoTPaM2OIRpuduu2maiIWtV
+         rxIwf1oLiBQoUAWMWoXDo0+5PCwFkWm4MtGyXFUO7BtobFzeXAs26bKRv1oy49p3vvWi
+         8XPyBCp5XBBdrxxFgarE1s/phIVg4M0pcVZFCjp6TvIMcLt3UKmdahsU/+wZH65utq6R
+         xT5qcr2RtkjLmK+VMOvpm6cBUxKtE1wtskgDHY8skqVk2MtyXnWSwhHf/8/ZZNSEYhiU
+         KXwFgXjDRjo1hcK6b9nXGHO3DOlVqwnPjQP7ZX3zXg0VpW12WWKxA8cKkwdh9cpQmu95
+         fWXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fn6IpD8F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SKBsbiIB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13-20020a05620a148d00b0075cddd096fasi649189qkj.190.2023.06.08.07.11.56
+        by mx.google.com with ESMTPS id d24-20020a05620a159800b00745a091388csi642430qkk.707.2023.06.08.07.17.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jun 2023 07:11:56 -0700 (PDT)
+        Thu, 08 Jun 2023 07:17:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Fn6IpD8F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SKBsbiIB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7GMe-0000uR-SY; Thu, 08 Jun 2023 10:11:48 -0400
+	id 1q7GRk-0004pO-Se; Thu, 08 Jun 2023 10:17:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q7GMc-0000tw-VI
- for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:11:47 -0400
+ id 1q7GRj-0004oW-W3
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:17:04 -0400
 Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q7GMa-0000Jf-Ll
- for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:11:46 -0400
+ id 1q7GRi-0001wB-58
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:17:03 -0400
 Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-51458187be1so1177946a12.2
- for <qemu-arm@nongnu.org>; Thu, 08 Jun 2023 07:11:44 -0700 (PDT)
+ 4fb4d7f45d1cf-5151934a4e3so1013680a12.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Jun 2023 07:17:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686233503; x=1688825503;
+ d=linaro.org; s=google; t=1686233819; x=1688825819;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=P7nwgmLeW6QklNbBeX+2s5YD3VvWqzUl7W4rQ6KY9gs=;
- b=Fn6IpD8FBA+4Uebewj94ViA5063CtqO503cr47hpUyC9GclyztzNVqr2M/Y7IfnxCj
- JHnOzSAArizhLtT5d2ZRe73E2FXI6qA4fvjbpH2m5JiOPQrraA6u+mhZNFKeqwsT23/w
- dNVPD+8TCRKXy+9gIWKOwnUOofqO7LxWGyVDf1iPRUSe94gOWv3YY1pnuirXXFodqS/0
- 2upVtkrBVXQpF6Gmc2siXocUyUmgu65U+obUMu3OEvNp0Vvny6o7+n8x25ttD2tQX6ih
- Zc4ZY0/rnMhG4grTdIJPgbc1CV6tiga55XYmABlaJa5XN0tH9msyK1oi8iDDTdcfQSBk
- E9Pw==
+ bh=QJMTqjxEuld/cPGA+RU9MRan9RmH9/ugPN5i3rn0OVY=;
+ b=SKBsbiIB6nSwE2amisKsiN8EbgqT2OhQXd1O3ro4ec6kRGKvwNcFDIvciGHi8g+pkk
+ awpSZkKW/Kw7RouIpJrhPLwKvzzYyJjcjK27U5DOB/UtKb7V4bcQQuTAAM5ghhio+zTe
+ Cg7Jnc/xYn1GtnMbCRC/0fryXL9184VulI6VzI11vxq7C2vdorlpsbHOe33UVhHTZTFg
+ hidzMDmJSckY0lJ7rJqFsQBT6S5Ugvzxq4KgZDDFML0As6fQLE8Ywl02vIRsnKFcwjlz
+ ul/ryd/Gw5FcPSd51hRrn2gYTiQLmZV7IwW9sOF6QD5zhXA6XdPpgN9gOZXN2xghRqTG
+ yUSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686233503; x=1688825503;
+ d=1e100.net; s=20221208; t=1686233819; x=1688825819;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=P7nwgmLeW6QklNbBeX+2s5YD3VvWqzUl7W4rQ6KY9gs=;
- b=l1csQPky4EBmGYsgydKsuXsQ6D7W6EHV66/KkDfvGnML02JkrnXPvyPPbU+xXXs0T3
- gnQJFdOWvkTnEhqSsdaCbWw/SYRrQ/vC6rinYnAPFAo5Wwc9GitninpqLdG/ZFqZJf0M
- pAs0+El80p9kryZS35KpKjrbtVli+F77tQwGKwQH+ms5Qcqx+EZ6uzWbHPudtQN0vNxK
- xqDALWHqaq/xKMrkUoVqD3fOOYXMqErtXiUP1kVp7N8lDcgi6JnwrOY2yyzdeYS+UfdV
- Z9GYHXvzbx4odsT7yUZfwRsT/xap+zzPOsHKskQGDpSt0hwY4uaejH3YjCfrVT1tDGqh
- F2tg==
-X-Gm-Message-State: AC+VfDwkw8smNZNTYLAun1bYP1Z4uKsgYWM+ioBVhmhxp6uXzzAC0YF2
- VtWasK2q2GnhMVXYX0NVxxLr/vSmHKvUm+72FgKWZlZ0NF0CqEOd1+k=
-X-Received: by 2002:a50:fb8f:0:b0:514:a4c9:e43b with SMTP id
- e15-20020a50fb8f000000b00514a4c9e43bmr105564edq.5.1686233502931; Thu, 08 Jun
- 2023 07:11:42 -0700 (PDT)
+ bh=QJMTqjxEuld/cPGA+RU9MRan9RmH9/ugPN5i3rn0OVY=;
+ b=PhEbz/ZrgxgE2/akm2WV/gYXgd+rx8w56nobRi5hMBtyIVOQR8dwWGrDyqgT8gn7Yt
+ aaMwNz24gVkr9VeqtouDgwqISptkZlV4p9bWaDR0eC5oD6kNW9bqQab8qMwjY8nZDr5T
+ gDAHOFTzjuLYmPrXoo5l+GrQupEKXi4RlMeO3SHhU9I+c5JFro0Vk2W1Lbpi3I/T3Tz2
+ d1FCfBnYqijw/OYL/NniDI6gbzMVicTvqA2R3n0AFfBgazdyESpotk6HHs2j11CU1nl3
+ xaGbrCHkxyiZMI/d6U3PRY8cSq4tjBBXnfbpGAIALXmuaSEPguW5bYEamNv+HQgss2le
+ fSug==
+X-Gm-Message-State: AC+VfDxjwSSl4r43eM4Ym6Cfow4fenuKXYiBs2biWNGnAYPk1SckUFKH
+ +iDVF+Z3/RHZQ/DQs+KXPMDEJ9ymqzHlODQfqd3bfQ==
+X-Received: by 2002:a05:6402:1390:b0:514:a244:2915 with SMTP id
+ b16-20020a056402139000b00514a2442915mr8215109edv.1.1686233819250; Thu, 08 Jun
+ 2023 07:16:59 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230517081204.30333-1-m.elsayed4420@gmail.com>
- <20230517081204.30333-8-m.elsayed4420@gmail.com>
-In-Reply-To: <20230517081204.30333-8-m.elsayed4420@gmail.com>
+ <20230517081204.30333-9-m.elsayed4420@gmail.com>
+In-Reply-To: <20230517081204.30333-9-m.elsayed4420@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Jun 2023 15:11:32 +0100
-Message-ID: <CAFEAcA9R-R3QZfy6ufDNUSzSAYu3ssXPqbLwuVexsPhLnUG6_g@mail.gmail.com>
-Subject: Re: [PATCH 7/8] tiva c board documentation
+Date: Thu, 8 Jun 2023 15:16:48 +0100
+Message-ID: <CAFEAcA_Tg3F6Q65eAGWtDONjcu8Lyd0BarhA4b10mF+gHzAJKg@mail.gmail.com>
+Subject: Re: [PATCH 8/8] adding tiva c to the qemu build system and adding my
+ info to the maintainers list
 To: Mohamed ElSayed <m.elsayed4420@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
@@ -101,7 +102,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,107 +117,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gaTjOgcPOcN2
+X-TUID: Q9zXeBdWGYqN
 
-On Wed, 17 May 2023 at 09:13, Mohamed ElSayed <m.elsayed4420@gmail.com> wrote:
+On Wed, 17 May 2023 at 09:14, Mohamed ElSayed <m.elsayed4420@gmail.com> wrote:
 >
 > Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
 > ---
->  docs/system/arm/tivac.rst | 47 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 47 insertions(+)
->  create mode 100644 docs/system/arm/tivac.rst
-
-This is missing the line to add this new file to the
-docs:
-
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -105,6 +105,7 @@ undocumented; you can get a complete list by running
-    arm/sx1
-    arm/stellaris
-    arm/stm32
-+   arm/tivac
-    arm/virt
-    arm/xlnx-versal-virt
-
-Without this Sphinx will complain, which should cause a build
-failure. Check that you're really building the docs
-(passing --enable-docs to configure will make it fail if
-you don't have the necessary tools installed to build docs).
-
-> diff --git a/docs/system/arm/tivac.rst b/docs/system/arm/tivac.rst
-> new file mode 100644
-> index 0000000000..8e78726c01
-> --- /dev/null
-> +++ b/docs/system/arm/tivac.rst
-> @@ -0,0 +1,47 @@
-> +Texas Instruments EK-TM4C123GXL Evaluation Board, ``Tiva C``
-> +========================================================================================
-
-Underlines below titles should be the same length as the title-text,
-not over-length.
-
+>  MAINTAINERS                             |  9 +++++++++
+>  configs/devices/arm-softmmu/default.mak |  1 +
+>  hw/arm/Kconfig                          | 13 +++++++++++++
+>  hw/arm/meson.build                      |  3 +++
+>  hw/char/Kconfig                         |  3 +++
+>  hw/char/meson.build                     |  1 +
+>  hw/gpio/Kconfig                         |  3 +++
+>  hw/gpio/meson.build                     |  1 +
+>  hw/misc/Kconfig                         |  3 +++
+>  hw/misc/meson.build                     |  1 +
+>  hw/timer/Kconfig                        |  3 +++
+>  hw/timer/meson.build                    |  1 +
+>  hw/watchdog/Kconfig                     |  3 +++
+>  hw/watchdog/meson.build                 |  1 +
+>  14 files changed, 46 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b22b85bc3a..dcd902fadf 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1008,6 +1008,15 @@ F: include/hw/misc/zynq_slcr.h
+>  F: include/hw/adc/zynq-xadc.h
+>  X: hw/ssi/xilinx_*
+>
+> +Tiva C
+> +M: Mohamed ElSayed <m.elsayed4420@gmail.com>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/*/tm4c123*
+> +F: include/hw/*/tm4c123*
+> +F: hw/arm/tivac.c
+> +F: docs/system/arm/tivac.rst
 > +
-> +The `Tiva C`_ board is an evaluation platform for ARM Cortex-M4-based microcontrollers.
 
-See remarks on board naming from patch 1.
+Subsections inside this file are in alphabetical order,
+so this should go a little further up, between
+"STM32VLDISCOVERY" and "Versatile Express".
 
-> +Its based on the `TM4C123GH6PM`_ microcontroller by Texas Instruments.
+>  Xilinx ZynqMP and Versal
+>  M: Alistair Francis <alistair@alistair23.me>
+>  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/arm-softmmu/default.mak
+> index 1b49a7830c..d3490f6d11 100644
+> --- a/configs/devices/arm-softmmu/default.mak
+> +++ b/configs/devices/arm-softmmu/default.mak
+> @@ -43,3 +43,4 @@ CONFIG_FSL_IMX6UL=y
+>  CONFIG_SEMIHOSTING=y
+>  CONFIG_ARM_COMPATIBLE_SEMIHOSTING=y
+>  CONFIG_ALLWINNER_H3=y
+> +CONFIG_TIVAC=y
 
-"It is"
+This file has changed recently, so now you only need
+a commented out line
+# CONFIG_TIVAC=n
 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index b53bd7f0b2..ef8046ab1b 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -581,3 +581,16 @@ config ARMSSE
+>      select UNIMP
+>      select SSE_COUNTER
+>      select SSE_TIMER
 > +
-> +.. _Tiva C: https://www.ti.com/tool/EK-TM4C123GXL
-> +.. _TM4C123GH6PM: https://www.ti.com/product/TM4C123GH6PM
+> +config TM4C123GH6PM_SOC
+> +    bool
+> +    select ARM_V7M
+> +    select TM4C123_USART
+> +    select TM4C123_SYSCTL
+> +    select TM4C123_GPIO
+> +    select TM4C123_WDT
+> +    select TM4C123_GPTM
 > +
-> +Supported modules
-> +-----------------
-> +
-> + * ARM Cortex-M4
-> + * General Purpose Input/Output (GPIO)
-> + * General Purpose Timers (GPTM)
-> + * Serial Ports (USART)
-> + * System Control (SYSCTL)
-> + * Watchdog Timers (WDT)
-> +
-> +Missing modules
-> +---------------
-> +
-> + * Dynamic Memory Access (uDMA)
-> + * Analog to Digital Converter (ADC)
-> + * Synchronous Serial Interface (SSI)
-> + * Inter-Integrated Circuit Interface (I2C)
-> + * Controller Area Network (CAN)
-> + * USB Controller
-> + * Analog Comparators
-> + * Pulse Width Modulator (PWM)
-> + * Quadrature Encoder Interface (QEI)
-> +
-> +Boot options
-> +------------
-> +
-> +The Tiva C machines could be started using the ``-kernel`` option to load a binary file.
+> +config TIVAC
+> +    bool
+> +    select TM4C123GH6PM_SOC
 
-"can be started"
+The same recent change that means the handling in default.mak
+is different also means that the config stanza for a board
+(but not for a SoC) also needs two new lines:
 
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M tivac -kernel binary.elf -s -S
+       default y
+       depends on TCG && ARM
 
-Are there any standard/well-known guest binaries that run on the board
-that we could point to? (If not, that's fine.)
+(These go just below the 'bool' line -- check eg STM32VLDISCOVERY
+for an example).
 
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index b545ba0e4f..29503388a5 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -62,10 +62,13 @@ arm_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.
+>  arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>  arm_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+>  arm_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+> +arm_ss.add(when: 'CONFIG_TM4C123GH6PM_SOC', if_true: files('tm4c123gh6pm_soc.c'))
+> +arm_ss.add(when: 'CONFIG_TIVAC', if_true: files('tivac.c'))
+>
+>  softmmu_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmu-common.c'))
+>  softmmu_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4_boards.c'))
+>  softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_peripherals.c'))
+>  softmmu_ss.add(when: 'CONFIG_TOSA', if_true: files('tosa.c'))
+>
 > +
-> +The ``-s -S`` switches are for debugging, in another terminal window you can do:
+>  hw_arch += {'arm': arm_ss}
+> diff --git a/hw/char/Kconfig b/hw/char/Kconfig
+> index 6b6cf2fc1d..88da979b75 100644
+> --- a/hw/char/Kconfig
+> +++ b/hw/char/Kconfig
+> @@ -71,3 +71,6 @@ config GOLDFISH_TTY
+>
+>  config SHAKTI_UART
+>      bool
 > +
-> +.. code-block:: bash
-> +
-> +   $ arm-none-eabi-gdb binary.elf
-> +   (gdb) target remote :1234
+> +config TM4C123_USART
+> +    bool
+> diff --git a/hw/char/meson.build b/hw/char/meson.build
+> index 0807e00ae4..8461748c8d 100644
+> --- a/hw/char/meson.build
+> +++ b/hw/char/meson.build
+> @@ -33,6 +33,7 @@ softmmu_ss.add(when: 'CONFIG_SH_SCI', if_true: files('sh_serial.c'))
+>  softmmu_ss.add(when: 'CONFIG_STM32F2XX_USART', if_true: files('stm32f2xx_usart.c'))
+>  softmmu_ss.add(when: 'CONFIG_MCHP_PFSOC_MMUART', if_true: files('mchp_pfsoc_mmuart.c'))
+>  softmmu_ss.add(when: 'CONFIG_HTIF', if_true: files('riscv_htif.c'))
+> +softmmu_ss.add(when: 'CONFIG_TM4C123_USART', if_true: files('tm4c123_usart.c'))
+>  softmmu_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
+>
+>  specific_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('terminal3270.c'))
 
-The -s and -S stuff is standard, so you don't need to mention
-it here.
+As I noted earlier, changes to meson.build and Kconfig for each
+device should go in that device's patch. The changes for
+the top level board go in the patch that adds the board
+(which should come last in the patch series).
 
 thanks
 -- PMM

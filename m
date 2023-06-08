@@ -1,119 +1,107 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp342001ejb;
-        Thu, 8 Jun 2023 06:34:43 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6fq430+Ju3VXwCeEcD1j9eyWQn35jNhwY7ii2B7kf6T9EWFllw/5MQh2ed0YnFMl0o0Hl1
-X-Received: by 2002:ac8:5893:0:b0:3e3:937b:2a64 with SMTP id t19-20020ac85893000000b003e3937b2a64mr7015959qta.18.1686231282091;
-        Thu, 08 Jun 2023 06:34:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686231282; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp361811ejb;
+        Thu, 8 Jun 2023 07:06:26 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5X5jUoWJPrvg+/TfLm5Wo97ggionMTP5ELHmTFOaRvUBlnwWGDgSk16GDj28cX2Z6Gb0LL
+X-Received: by 2002:a05:6102:2445:b0:439:544e:ded6 with SMTP id g5-20020a056102244500b00439544eded6mr2216075vss.10.1686233186623;
+        Thu, 08 Jun 2023 07:06:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686233186; cv=none;
         d=google.com; s=arc-20160816;
-        b=JiXNTikCifp9Pc3VJUuJyo7aaEHIc89cgrPLOZkZ1nqc3c4j/jHONOISu6NXxHLd7H
-         VhuUpbNcOjS1rwp1EOCeNRF5XETTpS1vyNHSbfu390L9U5jVJYlDSYYTD5D3Og/uKmop
-         lpkIDgucVShtl1D6MXdW6TaNYk/Zcnqc4OEpx5rlHOBeNzinKKe8cGTdogAqYf13h5J5
-         qflHus1lNqLj9jJpLNHm12LCWAjz1PNG42Srt8gzL1a5r7cXKreEgK70q4IPin4P9Rmn
-         R1uGvUhANQ2k5fPs7ErFbFs2BKvmikDy8EYpta7UguDCquDG38JcXhEsyExi512jN6Sq
-         somA==
+        b=B9YTKWLU8VYn4T6pziDoJekfOpaONb6bfZMcjIQR9/dT0SAYz2mC/1c6VyZ+qYSkX3
+         /EVuiBF/Uer/STAW001se1FysFIOtQ5AzraBiAJPgFP1CeueLe3cROblLvLwKpSKDZ/b
+         0hbRYVG6E8YelRvStVT8b0q5cW9sEQAa1lBEIKC5nLwjbjm5ijSi0rY7Mv9ZOB2m+i8B
+         8mv4mGm7vuk9X5Hv5GsMo39jjlc+a1ypOjKJCvZnmGBwFr5MsZjYOWQfPm0aBwc+OmKs
+         FtBJ9tIYw10FtZS8Ew4B5RX9rpwimJ7ZtRbTtx2jn2iE/JIXLb98yXj0vMLr3JCHUcOz
+         shZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=687bypAB/7t8xJBD4Gun81A0cQ2TsuTq5l2TZjpJ8W4=;
-        b=va1e991vFpojROtqnR2IET3XKz7YcvgiBuu70sEIHrWM5RjoX8KtYlwGqV5m1k5EKF
-         g+1QLWeEueHgKSfuJJgvFsRTPMVKPRmIXk7EomgO8ddtk0Vr+A6JcNrp0B4nir4nuzOg
-         fi35rccjLHtnUsJJVTzlMBdTTEbuu9/zhCVn8KAM6xiWes94yzBjHrqyTGMgIZrabl3U
-         ilWpjoc6CILPF3dbQ/gJj7dyFuMjAuhVuWb2sZffQV9UFpBCOY+JX4cDVcuqxfdm8CXV
-         6pK1QEVtiGVrfDXzh40cZLm9qPKU54+p26UJam4bEAfOes6BZOXUxMeDIRlP6D9Hdiym
-         9tzg==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=dAYS/l2DUM9PlpXuZSAtL8dWzCA7PHmkT0JRclpHbH8=;
+        b=JauFL2/s50C7YkCcGDRK9CaPPIh6hm6eVj25WTXw2NrUz85+uab+fDWLWhbStohKek
+         wLZHvjGpSAJHXwMnH/1FHOIQMvSMLUOVusS2bvrVgJCpGQL+LF7A+zJ0g9f9xr9JcMJM
+         GgVs9MI3pZse1GaBX8v+pex/8j6/3E6l4k0MudarOx6j/GHbJvU+/c/o5rlpQqkiEbOM
+         D2TLi4dpnNeKXq18Y16z1GS/2ylu/+kEPLZIX2RB8P7eCJncaNF5psC3PjfjJC0q3Me7
+         hTZvnG1po8/1PNR/SHY8JMoVp7U7ZH8biDlXOyV7tKokVMU0WMzMt5uT6laKHIneET4Q
+         z0nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JyL8ahp/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wNcJdrY8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11-20020a05622a190b00b003e4d857a7c7si615125qtc.107.2023.06.08.06.34.41
+        by mx.google.com with ESMTPS id g10-20020a67dc8a000000b004366d0da87dsi79708vsk.728.2023.06.08.07.06.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jun 2023 06:34:42 -0700 (PDT)
+        Thu, 08 Jun 2023 07:06:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JyL8ahp/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wNcJdrY8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7Fmf-0006yS-H6; Thu, 08 Jun 2023 09:34:37 -0400
+	id 1q7GGw-00066U-8j; Thu, 08 Jun 2023 10:05:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Fmd-0006qY-Kl
- for qemu-arm@nongnu.org; Thu, 08 Jun 2023 09:34:35 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q7GGu-000664-PS
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:05:52 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7FmZ-0006bm-MA
- for qemu-arm@nongnu.org; Thu, 08 Jun 2023 09:34:35 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-30af86a96b4so442149f8f.3
- for <qemu-arm@nongnu.org>; Thu, 08 Jun 2023 06:34:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1q7GGn-0007Sg-Kh
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 10:05:52 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-5149b63151aso1116146a12.3
+ for <qemu-arm@nongnu.org>; Thu, 08 Jun 2023 07:05:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686231269; x=1688823269;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=687bypAB/7t8xJBD4Gun81A0cQ2TsuTq5l2TZjpJ8W4=;
- b=JyL8ahp/TmFI57O6nHHpMl59k8c7vU7UVPH/Qy7y9yIA6/DF4Qw5SfGzQbee4gNCGL
- /oNZuYjutwB0Z/9RJwcsda9wLZtvAuiHmwAUuPuom4rhwL/ZMDtOpJ1GQerArwyv+Crh
- umBafa5nW4dkdqV0HDfLpMkUTtqeLn4MO8Rsy0RB9slTryXZ1Hb59sW1qR0/nQa3dwsp
- PzFZxTRBJTZthYNIW2ayW+SVrBE/RkAsg0SG5SYED7WyDHNGFkNPjHZe69zOxiP8N/0j
- 2HpzvifovZZ+VswP8hS0ZbI5rh9O9drVcveS+EGTw6bWmH/FbqBLiDcqLJpKPoxQWU6H
- 6veA==
+ d=linaro.org; s=google; t=1686233138; x=1688825138;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=dAYS/l2DUM9PlpXuZSAtL8dWzCA7PHmkT0JRclpHbH8=;
+ b=wNcJdrY8j922GxPLgXkHtAOWamPqbqZ3XO7lxl4yAk7ZKKR8Zb42zsNI+6kHChm9HI
+ MRmZlJMi4bextmsLcxe3PNow6SX1jTKVXHnoWOQP0Rg4pGFf4U+Ov44Fwl6DdxoJvQH3
+ 442Zs7VXujsGe2HltFbeagqWedpIwcqBEprdua3YHT/UQxdSzwndXcWHzz+70lkNFZlN
+ kTdAUjm8Kl8U2e0N9thQrX6DhR+DZ8FM5oFHbwocg/ufIvv2LaHGd5iR5Fvd/FUmtjq6
+ oqNUyDfpNcSvI93ZzK1gvzJviWTVdy64PstjNVqBPGXa8XbWGeZkTiPlkd5k34ehA2oe
+ crug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686231269; x=1688823269;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=687bypAB/7t8xJBD4Gun81A0cQ2TsuTq5l2TZjpJ8W4=;
- b=T+3GvQfWR5uj3mTysk6yDwJuGs5LJOg3Hs+ERZsMCj5L/btKnjFxJIeEou+6oDIVrN
- E+5sapVMogpfo8r1p6NeqijS8h5KXvhL73mLG1qSnhJ8zSnCRVRJstbhTyayq7Imu1rB
- 3wl6leJWG247h66mfgd28TBuCWGq4tJiofK80nc1E4pbBtY2Y5eDJO18psFz1S0P2XyV
- dw9ZrxAk4r6j7GS/7RP5wP0mCM6uXws4czwxlE4SIl5RGbcEv1tgEspZV9+wTY7mA3cG
- /SaUfYeyFRFj0/0RJflpNJ2kbURgJuc7T1I7Pr8zxK5KgkUwCyQ2MxNuGC2pSiCtHidi
- omew==
-X-Gm-Message-State: AC+VfDywJAuFUoXOnwEv6z6THSqUjAU/c2nSELLhGMehaez/GSyEZMiG
- PhhTqMrJbGjU/r/49P4bA6zyzE/a0POzVrJFSnc=
-X-Received: by 2002:a5d:534f:0:b0:30a:a478:f559 with SMTP id
- t15-20020a5d534f000000b0030aa478f559mr6643015wrv.2.1686231269190; 
- Thu, 08 Jun 2023 06:34:29 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.169.168])
- by smtp.gmail.com with ESMTPSA id
- t11-20020adfdc0b000000b0030ae3a6be5bsm1607171wri.78.2023.06.08.06.34.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 08 Jun 2023 06:34:28 -0700 (PDT)
-Message-ID: <2c4676f2-4c35-9156-e60d-fd3f0b0ad2a2@linaro.org>
-Date: Thu, 8 Jun 2023 15:34:27 +0200
+ d=1e100.net; s=20221208; t=1686233138; x=1688825138;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dAYS/l2DUM9PlpXuZSAtL8dWzCA7PHmkT0JRclpHbH8=;
+ b=iqS2Hr5s3HFcENB4jDmnlLFVbkgWC4NhXWpYRxZ5M3HuO9alCfEATsL0lJGNgMuFa7
+ vbQBNeSFB2AMHTg5sdlJsV4+pcWpQBXdjS8DRsK3zYxLj0rp4nlyuldPjd3jmVvhGEXs
+ xQRmcCPhZ0jcUDxKRaJjMCYIpyZkW1OPlF7sAJpYjHmdCy6jetUc8+PMKJKaUNYPABiG
+ b/o7fVwG7H8dAr1/oM3fNXFXbtlXodexb4FTj7zsQ0bleLLZdUk04iopuPMYZXpqezge
+ pWrMc+M3qFDyQ3LEWZ8kH1I9k4bS9a48PffZvU0N6NrcimWDP1Hk2SObffMbiAW2tkAc
+ YoBQ==
+X-Gm-Message-State: AC+VfDyi028i/Xm1BNxXglVNf7PdhTjup8yHAG2XU6SvrnU01tLfMTyX
+ 0Z4tnyO1Iwh53I91CACDZDSdjWZqSO/u1KIxgxDBTg==
+X-Received: by 2002:a05:6402:78b:b0:514:9248:d1dd with SMTP id
+ d11-20020a056402078b00b005149248d1ddmr9442719edy.24.1686233137852; Thu, 08
+ Jun 2023 07:05:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH v2 5/5] target: Bulk rename 'helper.h' -> 'helper.h.inc'
- for all targets
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org
-References: <20230608133108.72655-1-philmd@linaro.org>
- <20230608133108.72655-6-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230608133108.72655-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
-X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20230517081204.30333-1-m.elsayed4420@gmail.com>
+ <20230517081204.30333-6-m.elsayed4420@gmail.com>
+In-Reply-To: <20230517081204.30333-6-m.elsayed4420@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Jun 2023 15:05:27 +0100
+Message-ID: <CAFEAcA9hiOKsQ1DsLNEv6h5AJ9TGtY3S6=o6rJoJTCuiZiwCdQ@mail.gmail.com>
+Subject: Re: [PATCH 5/8] tiva c watchdog timers implementation
+To: Mohamed ElSayed <m.elsayed4420@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,113 +116,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hpkjlRCM9quL
+X-TUID: hogvViOyr80k
 
-On 8/6/23 15:31, Philippe Mathieu-Daudé wrote:
-> Since commit 139c1837db ("meson: rename included C source files
-> to .c.inc"), QEMU standard procedure for included C files is to
-> use *.c.inc.
-> 
-> Besides, since commit 6a0057aa22 ("docs/devel: make a statement
-> about includes") this is documented as the Coding Style:
-> 
->    If you do use template header files they should be named with
->    the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
->    being included for expansion.
-> 
-> Therefore rename the included 'helper.h' as 'helper.h.inc' for
-> all targets (
-
-Missing:
-
-"moving the headers which are not in the 'tcg/' subdirectory there and"
-
-> updating the documentation).
-> 
-> Unfortunately since the HELPER_H path definition is used by all
-> targets, we have to do all changes in a single bulk commit.
-> 
-> Mechanical change doing:
-> 
->    $ for t_a in target/*; do \
->        if test -f ${t_a}/helper.h; then \
->          mkdir -p ${t_a}/tcg; \
->          git mv ${t_a}/helper.h ${t_a}/tcg/helper.h.inc; \
->        fi; \
->      done
->    $ sed -i \
->      -e 's#define HELPER_H "helper.h"#define HELPER_H "tcg/helper.h.inc"#' \
->         $(git grep -l 'define HELPER_H')
-> 
-> then manually updating files in include/exec/ and docs/.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Wed, 17 May 2023 at 09:14, Mohamed ElSayed <m.elsayed4420@gmail.com> wrote:
+>
+> Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
 > ---
->   include/exec/helper-gen.h                        | 2 +-
->   include/exec/helper-proto.h                      | 2 +-
->   target/alpha/{helper.h => tcg/helper.h.inc}      | 0
->   target/arm/{helper.h => tcg/helper.h.inc}        | 0
->   target/avr/{helper.h => tcg/helper.h.inc}        | 0
->   target/cris/{helper.h => tcg/helper.h.inc}       | 0
->   target/hexagon/{helper.h => tcg/helper.h.inc}    | 0
->   target/hppa/{helper.h => tcg/helper.h.inc}       | 0
->   target/i386/{helper.h => tcg/helper.h.inc}       | 0
->   target/loongarch/{helper.h => tcg/helper.h.inc}  | 0
->   target/m68k/{helper.h => tcg/helper.h.inc}       | 0
->   target/microblaze/{helper.h => tcg/helper.h.inc} | 0
->   target/mips/{helper.h => tcg/helper.h.inc}       | 0
->   target/nios2/{helper.h => tcg/helper.h.inc}      | 0
->   target/openrisc/{helper.h => tcg/helper.h.inc}   | 0
->   target/ppc/{helper.h => tcg/helper.h.inc}        | 0
->   target/riscv/{helper.h => tcg/helper.h.inc}      | 0
->   target/rx/{helper.h => tcg/helper.h.inc}         | 0
->   target/s390x/{helper.h => tcg/helper.h.inc}      | 0
->   target/sh4/{helper.h => tcg/helper.h.inc}        | 0
->   target/sparc/{helper.h => tcg/helper.h.inc}      | 0
->   target/tricore/{helper.h => tcg/helper.h.inc}    | 0
->   target/xtensa/{helper.h => tcg/helper.h.inc}     | 0
->   target/alpha/translate.c                         | 2 +-
->   target/arm/tcg/translate.c                       | 2 +-
->   target/avr/translate.c                           | 2 +-
->   target/cris/translate.c                          | 2 +-
->   target/hexagon/translate.c                       | 2 +-
->   target/hppa/translate.c                          | 2 +-
->   target/i386/tcg/translate.c                      | 2 +-
->   target/loongarch/translate.c                     | 2 +-
->   target/m68k/translate.c                          | 2 +-
->   target/microblaze/translate.c                    | 2 +-
->   target/mips/tcg/translate.c                      | 2 +-
->   target/nios2/translate.c                         | 2 +-
->   target/openrisc/translate.c                      | 2 +-
->   target/ppc/translate.c                           | 2 +-
->   target/riscv/translate.c                         | 2 +-
->   target/rx/translate.c                            | 2 +-
->   target/s390x/tcg/translate.c                     | 2 +-
->   target/sh4/translate.c                           | 2 +-
->   target/sparc/translate.c                         | 2 +-
->   target/tricore/translate.c                       | 2 +-
->   target/xtensa/translate.c                        | 2 +-
->   44 files changed, 23 insertions(+), 23 deletions(-)
->   rename target/alpha/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/arm/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/avr/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/cris/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/hexagon/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/hppa/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/i386/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/loongarch/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/m68k/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/microblaze/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/mips/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/nios2/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/openrisc/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/ppc/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/riscv/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/rx/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/s390x/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/sh4/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/sparc/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/tricore/{helper.h => tcg/helper.h.inc} (100%)
->   rename target/xtensa/{helper.h => tcg/helper.h.inc} (100%)
+>  hw/watchdog/tm4c123_watchdog.c         | 297 +++++++++++++++++++++++++
+>  hw/watchdog/trace-events               |   3 +
+>  include/hw/watchdog/tm4c123_watchdog.h |  97 ++++++++
+>  3 files changed, 397 insertions(+)
+>  create mode 100644 hw/watchdog/tm4c123_watchdog.c
+>  create mode 100644 include/hw/watchdog/tm4c123_watchdog.h
 
+This one's just a variant of TYPE_LUMINARY_WATCHDOG,
+which you can find in hw/watchdog/cmsdk-apb-watchdog.c.
+Probably you only need to add a new variant with
+the ID register values different. You want the
+"is_luminary == true" behaviour in this variant.
 
+thanks
+-- PMM

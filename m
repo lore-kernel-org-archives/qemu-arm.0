@@ -1,215 +1,117 @@
-Received: by 2002:a17:906:779e:b0:94e:fe67:1757 with SMTP id s30csp468556ejm;
-        Thu, 20 Apr 2023 07:23:29 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bzQQH8ai9QSXMy/39EmjWRoZOmsaqiUVPlt6i9UOZfktBJ6dJouSp+AHtEFfL7Xf5tvkWK
-X-Received: by 2002:a05:622a:1312:b0:3ef:24df:5407 with SMTP id v18-20020a05622a131200b003ef24df5407mr2297287qtk.18.1682000609254;
-        Thu, 20 Apr 2023 07:23:29 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1682000609; cv=pass;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp103456ejb;
+        Thu, 8 Jun 2023 19:25:10 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6bApd4XXfpqVsyoEW9lEy8w6bqbjpUqzKwaTt51Vr7D/vCkx8/E3z3q+dvzeEvk96R4sAy
+X-Received: by 2002:a05:622a:15d3:b0:3e6:3611:46a1 with SMTP id d19-20020a05622a15d300b003e6361146a1mr5251887qty.9.1686277509852;
+        Thu, 08 Jun 2023 19:25:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686277509; cv=none;
         d=google.com; s=arc-20160816;
-        b=KsWvq6rIfCynxz5pVdVqDx7JbWFA6pt0dqv45y4WNCu6dyjnf5ngn/lrxxtIDM82Ob
-         L7UOzELxyNEo31/s6UEXXmKZpEYr/DZ/1AqUvWRJYKdm7u9bZ/0PP1XmHVS/DiLlLsL6
-         s73Zw07XYA9kYXw1NZZhk825XlDXqyWL9TRVD/mQKwczRyn56bkzqLiRGa4RmO7oEnzU
-         NWOp/Cs0EUcd44MS9aVaQ56M+QOJTwfg1IAN1gTnH1wXZmYme298OFZgAz0GRkZItL5Y
-         efUNW7JMxjvLGexiw4z3VA3JDDZMvLFHdh+iycePirwMDhfPcvVWzVg7gH+A7JZKfIId
-         ozSA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=n7Y2+BcCn2YZ3yUaUyYZHt1JiP6U36Ey+Ds+KglqJ2j2e2i0F3wPoilzhpqNwUWrPP
+         ZxywxGlufZ3eFQtz50BHXnLaLJMp0FkwO2PBcWraE92yWDqBJNQvhFn/Jjoc6AwlvG4w
+         1NkLEsTMUaRspD7IeXyoucf38Uok/cCgT3hh5p2f8quEW5wkZQPV8KBfGZLnqeFnUZ+A
+         x7ulNt5YG5U/LAcn2r3qf7DZrYLex6HummQNzxct4uXGYlLNrF063nDI7fv594JNEciH
+         up7L7NemC0xsitFdQ4RScXkhDdcRERUiEiusRWzZ+aYuXKdRDLsvUhliY74YCVAYe5En
+         aTWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:date:message-id:dkim-signature
-         :dkim-signature;
-        bh=JMh+dU9LySzUd0iXLymd67l80NCLQiehZU6oUAkx1/c=;
-        b=t4dVKOi/fQfc/q1g818dVJK1GVJoT2yiSLqnwzQQt3tlWJuWt6bjrUDiDhwYEKkorn
-         uZhZSKy2MacyxHy55RYuHLY/aCu+pP4w09hAQHI+hNpjudJxDJAcr7+rpQZGcQkEKdYW
-         kynY2rthvlh7dmtXrI2J+6SbiuTS91Gc01dyyV9c5qgBierpKV56rwPIU+kj+qbKqA64
-         d4skjAknI1QY7sBaPt5315sI4DLV5t1JbZ4yzYLWdk1S1HAxJekUsI/lAJC9Jv5AaBtS
-         MQqL8phoxBYqRQl71/KHeWx8R9wbAtc/dBuunVaaZKlldpQL/q2XLOPpdOl+jPk0k/3q
-         Jgng==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=YxWs2M2u;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=YRIRohE4;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Wav2LlfUYrH6X3G/qJ3+1S+s5uXr/vPS9iK8dstF4cA=;
+        b=jAjPnasOJVW7fYg8nJ96kYksgixDJ5us6V+kUA2vUnE6J5a86AvfhrB7ZYax+OVKGM
+         M66W89rJulV5SQd3azda1zpZbubKVb5z+E24JrBFRC3JdTcH/GxzuvqiIJ/673EdsYSt
+         tPkvv4HrVSXrZQWqD2uzUOOmvYMeLNtfuIyGHoKMJqzZWJVy69d+GUZX5QCDSkUPT9zS
+         ur0Z8bhEeHKejlhdhtrIaluipndd1/NsFqBPt9Lj2mCawxO3zZOWqUlw8WDv3vVUUwO+
+         h6SKnUO8zvh9/DRPvSgQ4NqJPQeRKjDCXLwtPNzurJTAetCFj7MiweOCO5O88LoAcgyd
+         F/lQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d7Z7rt1y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 17-20020ac85751000000b003e4e37fdd63si1427716qtx.499.2023.04.20.07.23.29
+        by mx.google.com with ESMTPS id r18-20020ac85c92000000b003f6b1b31fa4si1648714qta.43.2023.06.08.19.25.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Apr 2023 07:23:29 -0700 (PDT)
+        Thu, 08 Jun 2023 19:25:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-03-30 header.b=YxWs2M2u;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=YRIRohE4;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=d7Z7rt1y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ppVC0-00062j-Gr; Thu, 20 Apr 2023 10:23:25 -0400
+	id 1q7Rnk-0002iz-Ra; Thu, 08 Jun 2023 22:24:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1ppVBv-00061U-7G; Thu, 20 Apr 2023 10:23:19 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.devolder@oracle.com>)
- id 1ppVBr-00068S-62; Thu, 20 Apr 2023 10:23:18 -0400
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 33KDtaGP019441; Thu, 20 Apr 2023 14:23:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=corp-2023-03-30;
- bh=JMh+dU9LySzUd0iXLymd67l80NCLQiehZU6oUAkx1/c=;
- b=YxWs2M2ubZStJlHitzHQ8r6kLkgCx15DCtnvcCHnQos1MLSUJuT2Bt54efFiqlU8ivJ1
- ZIgaRPNJnPjm8Hm4sA8t0P0QsMxWKYqEUt/s9RZgTzdIyC5GR9K7yrtRG6FeF+e/vr7j
- vh+mfOrpYC1nmFM9Qi+Hpmy0ZK70QHj/Pw+kJ77MlyThy4uRzxySxwb03rQmgysUkKe5
- 9mplfDvxbt8XaBTFH33YYcOIxiciujZTs6rKE7m5X9h3DCRrs3LhjzbW6UmDuLmW7A1/
- /U6oj8PIu24a6K+xM19nhQ6k1+t6mGkmAV3wts812g0KFSpKtGmFtyEPz48ll06ao3f0 yw== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3pymfujyaj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 20 Apr 2023 14:23:06 +0000
-Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19)
- with ESMTP id 33KDkcPQ011136; Thu, 20 Apr 2023 14:23:05 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam11lp2173.outbound.protection.outlook.com [104.47.57.173])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 3pyjc7uvas-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 20 Apr 2023 14:23:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jmnf/nI4Auys3Q98y+AM1sQyhpMiA9MI0CP0M3ZO3RD9rHpmNxZeAGFbi2w3xMc9xuAkmqio12mLS5wCsP4y+2EUiZNvBkPMr0ACd0clm4PuCvwSUYm73mkANCjPV6MjF58Z8JzZxvmEyl8UuYwMS6ZlTb6AMi7kjGCypPIsTj8zxl+VfoBVtCHDeooycDmp+t6SB7pj/J8V5o9oLS9weP/Od8I5aFERpBHBxaXcks8y8Xodx5YOBZVNnD2jI3az1makddS6M47hQ6wt2q8dnKazPB1uDMSyIVQHfSRAT9YFDJsmm9+d1xTXYhyxgc4ir1fxULuCMerceCu1RhDL2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JMh+dU9LySzUd0iXLymd67l80NCLQiehZU6oUAkx1/c=;
- b=EqRO9q38IQlLRCENsIW+RUFr9yjPoCffLO0Q8RFHGmitj4GB2j3ZKQzWWP1gz+1Kxidk3Q1v118XQi5S6DkUR3/G8xNbXg3V/elPKR7kWgScc9SpvPMt6eAZJQ8vt62JfNkRtooFhOjAKub+uGW0L0Oyui1oefbz7JcyP+YuBJMKEaLtETaadRnLBbX7IJmB7I2T1PKKThkzLcs5WBis9sFe8J9SJWTH3RYGnZLkIWCTcyVkFpo6KZiYgtLQG6PoaKYzSXwkyIiOr34uiJC1Q9U/OtbaMI8WDhTPP5sENHC5fywFv6P0qlJNaAq3HAMLJ4dnT1hqRniayBDVedWbhg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q7Rnc-0002cU-7k
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 22:24:24 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q7RnQ-0005Zv-BN
+ for qemu-arm@nongnu.org; Thu, 08 Jun 2023 22:24:23 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-64d44b198baso989832b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 08 Jun 2023 19:24:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JMh+dU9LySzUd0iXLymd67l80NCLQiehZU6oUAkx1/c=;
- b=YRIRohE4wJz8D0VgtuEL3bGggoHS6diAZko3E7lU08ZnZeOQdOkHgES12uDoaL0Q1ynnS6AOm/Z2FFPOOigBNej8tzOHWlqNOaomwRWsZuwsBl4+RNlgEFPgDQatENirSFN94SMG1ORyGAftM6ZkeFY1oZ1IE/WqYwvBxs2wL7Q=
-Received: from CO1PR10MB4531.namprd10.prod.outlook.com (2603:10b6:303:6c::22)
- by PH7PR10MB6204.namprd10.prod.outlook.com (2603:10b6:510:1f0::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.30; Thu, 20 Apr
- 2023 14:23:03 +0000
-Received: from CO1PR10MB4531.namprd10.prod.outlook.com
- ([fe80::ac1a:bf88:bdbf:2573]) by CO1PR10MB4531.namprd10.prod.outlook.com
- ([fe80::ac1a:bf88:bdbf:2573%5]) with mapi id 15.20.6319.020; Thu, 20 Apr 2023
- 14:23:03 +0000
-Message-ID: <b0d86775-f7bc-fe38-c2ae-fc4f53173138@oracle.com>
-Date: Thu, 20 Apr 2023 09:22:57 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.1
-Subject: Re: [PATCH v2 3/4] hw/acpi: i386: bump MADT to revision 5
-Content-Language: en-US
-To: Ani Sinha <ani@anisinha.ca>
-Cc: shannon.zhaosl@gmail.com, mst@redhat.com, imammedo@redhat.com,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- boris.ostrovsky@oracle.com, MIGUEL_LUIS <miguel.luis@oracle.com>
-References: <20230418165219.2036-1-eric.devolder@oracle.com>
- <20230418165219.2036-4-eric.devolder@oracle.com>
- <CAARzgwwVAptvsR1_8ttUKroLuqKdLc1dHWtNe7S0S3N-Nq4otw@mail.gmail.com>
-From: Eric DeVolder <eric.devolder@oracle.com>
-In-Reply-To: <CAARzgwwVAptvsR1_8ttUKroLuqKdLc1dHWtNe7S0S3N-Nq4otw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: DS7PR07CA0021.namprd07.prod.outlook.com
- (2603:10b6:5:3af::23) To CO1PR10MB4531.namprd10.prod.outlook.com
- (2603:10b6:303:6c::22)
+ d=linaro.org; s=google; t=1686277450; x=1688869450;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Wav2LlfUYrH6X3G/qJ3+1S+s5uXr/vPS9iK8dstF4cA=;
+ b=d7Z7rt1yBU2Oms30p8qvGSbbn6f+Ww44BiNw0UX3DYKUDrYL3+g58FqHjrUUTeHiiC
+ UOegR/NR2nmYKpV5pbR2STSEoViLfRdivn+QnblU0PF8QRHoruL8HdOCEvOULe7mSXli
+ 4GRmBWgOrDPDuIqJ+MzY/BklP+iB6iLJpzVGJRgy34vTlj6glrDtHtLZXTRsCkFPNeuT
+ zZMfBSRuGXjBQR2z2XHJnISiwDpNXsVmMs+b590odiZZz5AaW80UX3hFR6lgnjmdmayQ
+ r9itHGAvtWBGELoiAxWp1o9SkU7eIH4pWkXGur1NGuqAbtgpYchBxLYGaQLLo5jslDHG
+ 4htA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686277450; x=1688869450;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Wav2LlfUYrH6X3G/qJ3+1S+s5uXr/vPS9iK8dstF4cA=;
+ b=buJQQyWljTUVxQFg6h3ojzfmOI7QDFEK4FlD5a4Y0gaXoVqCcYjGjiSbxae4Bqw9E0
+ yx9JZ3QNfvq1mB7S5GLMGtw0yFecDMQj0aOQwLKlZnT0N4Jr14Axx6itMmGsfI/B2qB7
+ NWc6yyt0NYyvDY+WUeRKg9ibLUQaQBZkWP1mQK04Zy3vpXKT1G9A6AuVLMLP3JnpXN/D
+ Bgpkpgwpp9wcRGRePsE9uFMk9EdCcxd0djVFEzvv4W94hU0hvWncUMKzBieD6ArkZ9eT
+ DHZEgOkVrQuGbhXd4ITvxeyO/9xVq+mhA8d5WedDMhyx8Gt7bsAMjQvNiaBEPo3UTAuV
+ E7hA==
+X-Gm-Message-State: AC+VfDyZX5yjm/UMs8dCc8Sz+rMOZSoJIMD71GmTpdh484saefwdzr18
+ mxb16/ClHiXQs1kW1pANuKw4KQ==
+X-Received: by 2002:a05:6a00:17a0:b0:656:c971:951 with SMTP id
+ s32-20020a056a0017a000b00656c9710951mr5103171pfg.8.1686277450692; 
+ Thu, 08 Jun 2023 19:24:10 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1598:4c01:b071:df63:5761:f449])
+ by smtp.gmail.com with ESMTPSA id
+ x25-20020a62fb19000000b0063afb08afeesm1686458pfm.67.2023.06.08.19.24.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Jun 2023 19:24:10 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 08/38] target/arm: Demultiplex AESE and AESMC
+Date: Thu,  8 Jun 2023 19:23:31 -0700
+Message-Id: <20230609022401.684157-9-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230609022401.684157-1-richard.henderson@linaro.org>
+References: <20230609022401.684157-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR10MB4531:EE_|PH7PR10MB6204:EE_
-X-MS-Office365-Filtering-Correlation-Id: e76f0729-92af-4e74-23cf-08db41aac032
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: LEqB72VmzH2ygFMBvvSfQ1Ar2pw+euzfsBDn+CnhmXcozlmQmggvl3CUg0O0Om5kjmcWELi6Xjv99OO1KTFSmUcRt9eprHUz9QaMO30fcFzjaUw1tIXXGyTQ9MqUGmZhO2A92JMUsgxYBQsWN3xKjbo5B/N6RqUk2BKelqNWrIdHb2DqD3h8FRsyGkbiIVBeQ1jdE1+fJlUcX5o1WqTnrGsST3EN+SU+A/pX+3ORmQArBOSMM6SAcuE0GjAFeqyqvfUMjL6Cs3jnSfunN24imt/i0nYurBVkCnYs0P7l/2ESkAUFVB1LfOeBur8dgsKtDEyPGgbwI8p9TVlNmwdd70h2COE7o1esowaEK/tqKzj9m2La582FsmAu2TIUbIS/W5wSUfASWLCGuLWmidau9xfTLmGVs6ujzbYAJDUSSjOzXaY/wafNZAmAgrxxySNczzvB6wTvi5pD7SceNze4KgCsR4eRzfUrUBbfU4jyan+Fww5mZIn80cAkkrrC9WqBJuSxTtAmhKBL/3sURezZCmzBqZO8G0Liicqgizpu6h9XLIxUPv8r9zRWSWpYEBEXZTFy1RCWwE4y4Irld/yEgno+Qt6JdWqvyfxuk2sTbrKgBjvwXjlj4F8xan1t+2nNpu4bbqhc8LQpSJYVVC9dJQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR10MB4531.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(136003)(396003)(39860400002)(376002)(346002)(451199021)(6506007)(4326008)(2616005)(83380400001)(6486002)(966005)(478600001)(107886003)(6666004)(53546011)(186003)(6512007)(66476007)(66556008)(36756003)(6916009)(5660300002)(316002)(7416002)(38100700002)(31686004)(66946007)(41300700001)(2906002)(31696002)(8936002)(8676002)(86362001)(43740500002)(45980500001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cDU3dmpaSVNocENQS0VkbEt1UFIycSsyYzl5Zklnb2ZOT1NVelVZZDBqRXFG?=
- =?utf-8?B?c2lRY2J4SUkwRVZQdEEzeFhyeXdZOEtMZWhJTjFwSmlEMjdPblhOa1BvUDNX?=
- =?utf-8?B?K1dFWjdTWFhGbHZuVHdyUkZJUlFqRDRZZzdHWXdVQ3NxMTRPVWhQS3FDUlRC?=
- =?utf-8?B?NXUrSEE4cW8xUmtlVUlxU1dpWWVvTENHblVZN1dKdmhWUnRWZFBqdEkwRFFi?=
- =?utf-8?B?MzZjcVhNc0FDSTlsZ1JVS3Bxdm9yNHl0RVJEQ3RRZGovT0FUSUZ3MEQ4REky?=
- =?utf-8?B?d2RLUHVMRjZzYzJRcFBsNTViOC9kYVFMOGV4NzVrUXdpOTJqbjllOU5Cam44?=
- =?utf-8?B?a1g0eFRjM2pCdlRqWTE3QndzN3FuMXlaUmFBTVJ0Q1dkMFlIYmtXRjFpZ3ho?=
- =?utf-8?B?dVZEUlhYakxyamlZM3hYLzUxeGU1ZEJXNkJ4alBrNkw2ZytDMy8yRklLNlUy?=
- =?utf-8?B?eHMyNUhlTEJmWG94Q1g1NWZucGFQVUlGZ25sd0EzYW9IaGsyR0IrWTBoVXl5?=
- =?utf-8?B?V0ovMmVJN2dobEJLcHF5b0l1WHRhdDI0U3BSTytlbG00K3lPaXpiWGM4THRW?=
- =?utf-8?B?LzVTdHNTbGx6aU1pNSs0MUt4dy9HVENmbi9IUXlacDRiTXQ4YzNkQlFLUkRu?=
- =?utf-8?B?K2FOVlRpZFZTd1QwaDJKakh1N2cwQkZ3bGs1T3dBUkR5bXVRMGNzVTlLbXNS?=
- =?utf-8?B?OHlGWVVvMWxpZEZaemxuNncyNkxqUkNtdTZMRTRkQ2pONm8zc3Z3eThVNHpQ?=
- =?utf-8?B?L09pNGNydGVjOUpVSWUzUHVld1hMenJRZDMvY0tiQXJtUTBxZm1mbDE2ZlNx?=
- =?utf-8?B?Y0czV2ZpNmF1WVFqUzVWQnJWLzBhWXMrV2l5dHVyOTdnaHdScG9zM1ZBQVpC?=
- =?utf-8?B?U3Fra2Q0YU13ckhGQWJIQ0F4LzZIUGlhRUpTY0FUc1JYSDEyUHI4c1FwYW1D?=
- =?utf-8?B?cnRhY2RqVlJwVzFmWmFvY29ZNnRTTDFTckVlYXpkRVRkZmtMRXVDLzBEaFRR?=
- =?utf-8?B?V0lFQ2NCZ2FiRGNqbnM3R05qOHhtM3pTSTFWODNaMXh6Y3Q5cXB6NFd0aFds?=
- =?utf-8?B?WHJXYWVlazNKaFA4dGFkTUZsOUFzY0w4UjV4cHV3MlFRaDZUNHFidHBSVWpO?=
- =?utf-8?B?RklCWllJQlh6MWxHVGZ1VkswSXY1eWVwUmJtdklEWXh3L2c1YW9UMkxaWExz?=
- =?utf-8?B?ZDE5QkdWTHp6QndrNGxEdGNCZzh4NFRmZUh4Z2U3YW9IMFhCSUhBbGVYVFMw?=
- =?utf-8?B?SzZuUHFZbjFXZGdrZDVHYVdJT29FdGJ3RHJHdWdFalBQbG5CL1pGUCtvbUFZ?=
- =?utf-8?B?dEdlVkRlTzd1SWxUUXhnSDFWUUNvVFlVamFzd3I0OXFxMHRESmVRMFNQblFk?=
- =?utf-8?B?cjVzTVhOVXhuRWdzVElUZmpYN0liUkgwUUlGSU8yWHJZMkhFVXJob3BDNW5i?=
- =?utf-8?B?OVZ6Rjc5KzhQWGV0RTZPQnJDcjR0T2Z2WmV2TmhDRUhhZC9sSHFXZ09kcFdX?=
- =?utf-8?B?TDArS2NvY25oOEc3K3h3MTVMVXdMUURaSDhkU0FFbzE5SFhqWXdwZzAvaXBx?=
- =?utf-8?B?bW5UcVNFS0FRUnJObStjSktKcCtRZFRBV21FZUtRY1ZPQzlGU092c05OQ25M?=
- =?utf-8?B?cjhHOG0xSVA3NVp2TjFaMUdMMkJQK0JnVEZhR1J1aW5CbjdJdEFEamhsU3Bw?=
- =?utf-8?B?d0RiT2VoRXhhbmJ6b2F4OCtveWx0MnRldXN5aUU2YVNJbmlwY3pvNXg2c1Zt?=
- =?utf-8?B?Y25WaHRiMTllQXgxZ3dJQ2ZSVFZpeXlpSHljVU1XQ1IxeGJkUm03MGZsTXY2?=
- =?utf-8?B?ZmNKNlpvUDVnLzVLeWxoejR6QkVra0Z2TC8rdFRYZWlqNUxVd0M2S1YxTWJm?=
- =?utf-8?B?MVhIYlMzVy9oM3hiVTJSTmNvU0VHOERYV2hKdVdiVkhoK0JRM1RnWmI4NkV4?=
- =?utf-8?B?c3p6RFpjZHhpUmdYWHNFQTI5R0N0dFdJZ1Qrb3g1ZEN6bDk1cDJrZkJUa3VF?=
- =?utf-8?B?TStQcHFndUU2bkRvdU5JSHUwTTA0WVRwTHFTOURPaXZTQUZRU3RTeUxlK2Mx?=
- =?utf-8?B?Nmo0a2VMQUs4amhsNStES2drd3RoNCtEWXZndmtVQi9KT0FMQTd4bmx5OWtl?=
- =?utf-8?B?RUpvMml0MXlsSWY4R1Bidm8yQVR1d2lnZE9TSWdmS1ZvMktRdnUyN01vSmZo?=
- =?utf-8?Q?uRYmZXPDSDDzZKf32RCrPXQ=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: C52XB3Uu5bSpSzMNFra++ZG5g4bMf8qtfYikruVb4xmSRzq/mc/6mKSSrmYq4St/6fkQ8wsWA3Zkje/qpIhGZN/eFbyHg2B1p5GdFxrm6bgkwEULZ2TztxetP0b75MAtXvzr4K3NTzXthuVSSgHz4tKDqbyMfj+fJXATXdI9xpdYI96gFih1zXui/rfh/fLXcMhV1lzBb+GFlA66Bojh5gI6cyQmlnisB8IlwuR3A5w2qnUAnhPo9+NRoQ04MHzccsdNmRJCBu3ER205X23Wrh5vQQIGATOH/bdvfqiCYK8vh2/gUeEWH7yWsTtjNzK3Vr09QB65pm4HLinzP8RqOVktjR0nlivipz0jF7IIdE3f+XZvuEDWFSyitTshEAnmDXk07x1sAr4YMQpB89dbXGCxARf7YKbnQ/9hGyFvRRfPaoDIUDGYXulbZHQR5sLJz8iCZWmetVK//2b6YtRcTFvwewqHL2KGAa3yZERcdK/XGnPBNJ1f87CoQafy4MNZp6ahJ1t5FwSdr31augR2jitzVDftNKyQweIIaHr2eutfX/VaN6AItSCC4pCkeMFhHp6I2Tdn8RdvwVdyIz/Odm/sPfZ0X3BJBDLifzeCZCB+XY5M69td5+fGanQ4FriOxN9reQgIatPDNMjt9rqJ5dgwFmVuYq+jm3FaKudia2Pc/hJej6w4wxNv51W8GtSyDb+QU7tZ6VjQLBELa8364F5gsYIHBcUEJRabDfEFmXAaJiyJqlmnKWf/e+Qp4b1EacCJp18k3y+sAEmZA1bvQse1VGsTyJj9kRYLE/tkVTx3rrghhrl5WF7ASbQbEXrx5VsQbMOwAiGK68p+wJ9WdnaaYRjqzLyvtt9PAmpusp9wOfbxqaGjZICDaXog+3T0LNJJnNdgHXHWnkCDvzek/A==
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e76f0729-92af-4e74-23cf-08db41aac032
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR10MB4531.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2023 14:23:03.0263 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2mZh+rFeDi0ueaL3H1XSQgCBSAvH7gnnzfnmnHlx6v3Zl5MdnsShRgLxux6rOB4Mmucnfxn+twUiUEilHsIA3jazYse84qtAIlpEi6HtOgs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR10MB6204
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-04-20_11,2023-04-20_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0
- malwarescore=0 mlxlogscore=999 mlxscore=0 bulkscore=0 phishscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2303200000 definitions=main-2304200117
-X-Proofpoint-GUID: oJlcmhMxPjvMtT76d-fHnvzTvM64cZFm
-X-Proofpoint-ORIG-GUID: oJlcmhMxPjvMtT76d-fHnvzTvM64cZFm
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=eric.devolder@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.669,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -224,80 +126,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qi3BtztrRl04
+X-TUID: FpGARu2X18Za
 
+Split these helpers so that we are not passing 'decrypt'
+within the simd descriptor.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper.h             |  2 ++
+ target/arm/tcg/sve.decode       |  4 ++--
+ target/arm/tcg/crypto_helper.c  | 37 +++++++++++++++++++++++----------
+ target/arm/tcg/translate-a64.c  | 13 ++++--------
+ target/arm/tcg/translate-neon.c |  4 ++--
+ target/arm/tcg/translate-sve.c  |  8 ++++---
+ 6 files changed, 41 insertions(+), 27 deletions(-)
 
-On 4/20/23 03:05, Ani Sinha wrote:
-> On Tue, Apr 18, 2023 at 10:22 PM Eric DeVolder <eric.devolder@oracle.com> wrote:
->>
->> Currently i386 QEMU generates MADT revision 3, and reports
->> MADT revision 1. ACPI 6.3 introduces MADT revision 5.
->>
->> For MADT revision 4, that introduces ARM GIC structures, which do
->> not apply to i386.
->>
->> For MADT revision 5, the Local APIC flags introduces the Online
->> Capable bitfield.
->>
->> Making MADT generate and report revision 5 will solve problems with
->> CPU hotplug (the Online Capable flag indicates hotpluggable CPUs).
->>
->> Link: https://lore.kernel.org/linux-acpi/20230327191026.3454-1-eric.devolder@oracle.com/T/#t
->> Signed-off-by: Eric DeVolder <eric.devolder@oracle.com>
->> ---
->>   hw/i386/acpi-common.c | 13 ++++++++++---
->>   1 file changed, 10 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
->> index 52e5c1439a..286c1c5c32 100644
->> --- a/hw/i386/acpi-common.c
->> +++ b/hw/i386/acpi-common.c
->> @@ -38,8 +38,15 @@ void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
->>   {
->>       uint32_t apic_id = apic_ids->cpus[uid].arch_id;
->>       /* Flags – Local APIC Flags */
->> -    uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
->> -                     1 /* Enabled */ : 0;
->> +    bool enabled = apic_ids->cpus[uid].cpu != NULL || force_enabled ?
->> +                     true : false;
-> 
-> how about "processor_enabled" instead of just "enabled" as the variable name.
-> 
->> +    /*
->> +     * ACPI 6.3 5.2.12.2 Local APIC Flags: OnlineCapable must be 0
->> +     * if Enabled is set.
->> +     */
->> +    bool onlinecapable = enabled ? false : true;
-> 
-> ugh, how about uint32 onlinecapable = enabled? 0x0 : 0x2 ?
-> 
->> +    uint32_t flags = onlinecapable ? 0x2 : 0x0 | /* Online Capable */
->> +                     enabled ? 0x1 : 0x0; /* Enabled */
-> 
-> then here, flags = onlinecapable | processor_enabled? 0x1 : 0x0;
-> 
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 3335c2b10b..95e32a697a 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -552,7 +552,9 @@ DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+ DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+ 
+ DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_aesd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_4(crypto_sha1su0, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(crypto_sha1c, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 14b3a69c36..04b6fcc0cf 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -1629,8 +1629,8 @@ STNT1_zprz      1110010 .. 10 ..... 001 ... ..... ..... \
+ ### SVE2 Crypto Extensions
+ 
+ # SVE2 crypto unary operations
+-# AESMC and AESIMC
+-AESMC           01000101 00 10000011100 decrypt:1 00000 rd:5
++AESMC           01000101 00 10000011100 0 00000 rd:5
++AESIMC          01000101 00 10000011100 1 00000 rd:5
+ 
+ # SVE2 crypto destructive binary operations
+ AESE            01000101 00 10001 0 11100 0 ..... .....  @rdn_rm_e0
+diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
+index 06254939d2..75882d9ea3 100644
+--- a/target/arm/tcg/crypto_helper.c
++++ b/target/arm/tcg/crypto_helper.c
+@@ -45,11 +45,9 @@ static void clear_tail_16(void *vd, uint32_t desc)
+     clear_tail(vd, opr_sz, max_sz);
+ }
+ 
+-static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+-                           uint64_t *rm, bool decrypt)
++static void do_crypto_aese(uint64_t *rd, uint64_t *rn, uint64_t *rm,
++                           const uint8_t *sbox, const uint8_t *shift)
+ {
+-    static uint8_t const * const sbox[2] = { AES_sbox, AES_isbox };
+-    static uint8_t const * const shift[2] = { AES_shifts, AES_ishifts };
+     union CRYPTO_STATE rk = { .l = { rm[0], rm[1] } };
+     union CRYPTO_STATE st = { .l = { rn[0], rn[1] } };
+     int i;
+@@ -60,7 +58,7 @@ static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+ 
+     /* combine ShiftRows operation and sbox substitution */
+     for (i = 0; i < 16; i++) {
+-        CR_ST_BYTE(st, i) = sbox[decrypt][CR_ST_BYTE(rk, shift[decrypt][i])];
++        CR_ST_BYTE(st, i) = sbox[CR_ST_BYTE(rk, shift[i])];
+     }
+ 
+     rd[0] = st.l[0];
+@@ -70,18 +68,26 @@ static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+ void HELPER(crypto_aese)(void *vd, void *vn, void *vm, uint32_t desc)
+ {
+     intptr_t i, opr_sz = simd_oprsz(desc);
+-    bool decrypt = simd_data(desc);
+ 
+     for (i = 0; i < opr_sz; i += 16) {
+-        do_crypto_aese(vd + i, vn + i, vm + i, decrypt);
++        do_crypto_aese(vd + i, vn + i, vm + i, AES_sbox, AES_shifts);
+     }
+     clear_tail(vd, opr_sz, simd_maxsz(desc));
+ }
+ 
+-static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, bool decrypt)
++void HELPER(crypto_aesd)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc);
++
++    for (i = 0; i < opr_sz; i += 16) {
++        do_crypto_aese(vd + i, vn + i, vm + i, AES_isbox, AES_ishifts);
++    }
++    clear_tail(vd, opr_sz, simd_maxsz(desc));
++}
++
++static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, const uint32_t *mc)
+ {
+     union CRYPTO_STATE st = { .l = { rm[0], rm[1] } };
+-    const uint32_t *mc = decrypt ? AES_imc_rot : AES_mc_rot;
+     int i;
+ 
+     for (i = 0; i < 16; i += 4) {
+@@ -99,10 +105,19 @@ static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, bool decrypt)
+ void HELPER(crypto_aesmc)(void *vd, void *vm, uint32_t desc)
+ {
+     intptr_t i, opr_sz = simd_oprsz(desc);
+-    bool decrypt = simd_data(desc);
+ 
+     for (i = 0; i < opr_sz; i += 16) {
+-        do_crypto_aesmc(vd + i, vm + i, decrypt);
++        do_crypto_aesmc(vd + i, vm + i, AES_mc_rot);
++    }
++    clear_tail(vd, opr_sz, simd_maxsz(desc));
++}
++
++void HELPER(crypto_aesimc)(void *vd, void *vm, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc);
++
++    for (i = 0; i < opr_sz; i += 16) {
++        do_crypto_aesmc(vd + i, vm + i, AES_imc_rot);
+     }
+     clear_tail(vd, opr_sz, simd_maxsz(desc));
+ }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index aa93f37e21..8b7337ad01 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -13566,7 +13566,6 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+     int opcode = extract32(insn, 12, 5);
+     int rn = extract32(insn, 5, 5);
+     int rd = extract32(insn, 0, 5);
+-    int decrypt;
+     gen_helper_gvec_2 *genfn2 = NULL;
+     gen_helper_gvec_3 *genfn3 = NULL;
+ 
+@@ -13577,20 +13576,16 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+ 
+     switch (opcode) {
+     case 0x4: /* AESE */
+-        decrypt = 0;
+         genfn3 = gen_helper_crypto_aese;
+         break;
+     case 0x6: /* AESMC */
+-        decrypt = 0;
+         genfn2 = gen_helper_crypto_aesmc;
+         break;
+     case 0x5: /* AESD */
+-        decrypt = 1;
+-        genfn3 = gen_helper_crypto_aese;
++        genfn3 = gen_helper_crypto_aesd;
+         break;
+     case 0x7: /* AESIMC */
+-        decrypt = 1;
+-        genfn2 = gen_helper_crypto_aesmc;
++        genfn2 = gen_helper_crypto_aesimc;
+         break;
+     default:
+         unallocated_encoding(s);
+@@ -13601,9 +13596,9 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+         return;
+     }
+     if (genfn2) {
+-        gen_gvec_op2_ool(s, true, rd, rn, decrypt, genfn2);
++        gen_gvec_op2_ool(s, true, rd, rn, 0, genfn2);
+     } else {
+-        gen_gvec_op3_ool(s, true, rd, rd, rn, decrypt, genfn3);
++        gen_gvec_op3_ool(s, true, rd, rd, rn, 0, genfn3);
+     }
+ }
+ 
+diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
+index 03913de047..8de4ceb203 100644
+--- a/target/arm/tcg/translate-neon.c
++++ b/target/arm/tcg/translate-neon.c
+@@ -3451,9 +3451,9 @@ static bool trans_VMVN(DisasContext *s, arg_2misc *a)
+     }
+ 
+ WRAP_2M_3_OOL_FN(gen_AESE, gen_helper_crypto_aese, 0)
+-WRAP_2M_3_OOL_FN(gen_AESD, gen_helper_crypto_aese, 1)
++WRAP_2M_3_OOL_FN(gen_AESD, gen_helper_crypto_aesd, 0)
+ WRAP_2M_2_OOL_FN(gen_AESMC, gen_helper_crypto_aesmc, 0)
+-WRAP_2M_2_OOL_FN(gen_AESIMC, gen_helper_crypto_aesmc, 1)
++WRAP_2M_2_OOL_FN(gen_AESIMC, gen_helper_crypto_aesimc, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA1H, gen_helper_crypto_sha1h, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA1SU1, gen_helper_crypto_sha1su1, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA256SU0, gen_helper_crypto_sha256su0, 0)
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index ff050626e6..b98f469cb1 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -7151,12 +7151,14 @@ TRANS_FEAT(USDOT_zzzz, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
+            a->esz == 2 ? gen_helper_gvec_usdot_b : NULL, a, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(AESMC, aa64_sve2_aes, gen_gvec_ool_zz,
+-                        gen_helper_crypto_aesmc, a->rd, a->rd, a->decrypt)
++                        gen_helper_crypto_aesmc, a->rd, a->rd, 0)
++TRANS_FEAT_NONSTREAMING(AESIMC, aa64_sve2_aes, gen_gvec_ool_zz,
++                        gen_helper_crypto_aesimc, a->rd, a->rd, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(AESE, aa64_sve2_aes, gen_gvec_ool_arg_zzz,
+-                        gen_helper_crypto_aese, a, false)
++                        gen_helper_crypto_aese, a, 0)
+ TRANS_FEAT_NONSTREAMING(AESD, aa64_sve2_aes, gen_gvec_ool_arg_zzz,
+-                        gen_helper_crypto_aese, a, true)
++                        gen_helper_crypto_aesd, a, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(SM4E, aa64_sve2_sm4, gen_gvec_ool_arg_zzz,
+                         gen_helper_crypto_sm4e, a, 0)
+-- 
+2.34.1
 
-Colleague Miguel Luis pointed out that this is simpler and equivalent:
-
-uint32_t flags = apic_ids->cpus[uid].cpu != NULL || force_enabled ? 1 /* Enabled */ : 2 /* Online 
-Capable */;
-
-Is that acceptable?
-eric
-
->>
->>       /* ACPI spec says that LAPIC entry for non present
->>        * CPU may be omitted from MADT or it must be marked
->> @@ -102,7 +109,7 @@ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
->>       MachineClass *mc = MACHINE_GET_CLASS(x86ms);
->>       const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
->>       AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
->> -    AcpiTable table = { .sig = "APIC", .rev = 1, .oem_id = oem_id,
->> +    AcpiTable table = { .sig = "APIC", .rev = 5, .oem_id = oem_id,
->>                           .oem_table_id = oem_table_id };
->>
->>       acpi_table_begin(&table, table_data);
->> --
->> 2.31.1
->>

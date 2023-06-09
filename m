@@ -1,185 +1,202 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289806ejb;
-        Fri, 9 Jun 2023 03:49:35 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7CT8txGCFjS9P7MVvmHv9qneaWMlnEFAbCasemeHMjIDvBRrOGksFG88m8FcL9Amp+chyn
-X-Received: by 2002:ad4:5bca:0:b0:61a:d6af:cb00 with SMTP id t10-20020ad45bca000000b0061ad6afcb00mr1477642qvt.9.1686307774837;
-        Fri, 09 Jun 2023 03:49:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686307774; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289827ejb;
+        Fri, 9 Jun 2023 03:49:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6raq1feBwGpqsg2rHpYR895vm7E2purrOOY8volQrWjH9E5RZUfBiAyohJiQ6/gtktdIE+
+X-Received: by 2002:a05:6214:2021:b0:61b:5dad:1b6f with SMTP id 1-20020a056214202100b0061b5dad1b6fmr1196311qvf.3.1686307778110;
+        Fri, 09 Jun 2023 03:49:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686307778; cv=none;
         d=google.com; s=arc-20160816;
-        b=zTJvcAY7pHz/jClGuiQ9YSkX7/BJGEcAizPm10Kqrbqi+hoM7R6EAYKqJdCSHzrGH2
-         Tp30ZJegRJgGbpd0AbQc06SdctsTvqL2NGuPtGh1DZwaI7W43ykXlCfqHnFcVvNeLHIM
-         OO0fI/u4VC9c2LBVi2Dooi1raZfVFZnL57Q67sOPbdopdBez9SQW/EriBXPrQVahgD74
-         XBYMZNX4S2Tq4DHaWFCrpIkrdd5lTAq5kWbJVWXTlWGSqVckl1E7W3ZLQDTDhGlZAu62
-         ds1saCImYk22MMTrbUUdqH40XLj0a9XNcsNlWvf+AMljntwi2bvcCtp1+9rq4Ks7sz8h
-         nPZw==
+        b=PJXVpSnHg/C9/Qol/Jy8FaP18jntmj/MUbt/QPaFw+j6c7pxJnqcey6E/AUj/TzTQi
+         K52D/I4QaUV0UEqAa5x3cVqet8mTRVxgkGMT0u47t2DP87hNXrEwuQNZJWaW40WLKuxG
+         Zi0OM1PrRShkVFEo7R/NtEW1EGNrATrhIK70mBpNn2xBjUqTt6IAaBYtAWwzPjullyD+
+         mmWBzt4uKRS0J0UmUV3iHE/PofpeY/2cWMbnRVZ3rOYZusadIZCP21qZIZ5OtL6tvUVD
+         pqvkAxNQcBPoD3S9x2EQ38sH+TC7fJU7uayaAqYyXHgvEBitEgqHOkVjacM5B9ZfnM/W
+         2u7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6EMxC9YLsY0bROTkA0K5UDqhCf1EdHUprhT+dzt+OvA=;
-        b=USP+YiS5eu3QGymjmy528GOR8QbiMHieKpQ0Vyk/K/1gTh8zCAGDYOLjIp4a6tcqtU
-         XLnUh8kLTaoQ1PLQs/jLa3wXLzofnweLJGjSr+k76Sf550nOWQCAZroWwCjEMmf8cO6q
-         oq6hpxdJWIWsm4s3ZvV1kMry1Vdu/IX5WfUG2W6AVSUYBg5293DHcA4wbBMwJ8o+jyrU
-         x4TGII2Eh/97h83RT5R3dxM4dW/6p1+pc+R36yI0VeKZsfXkeI6/RtTAritb9fp5ZMJJ
-         SVSiaXoEprzTp296DVNKfTwi4l2Kv/iGhPX0+adpVdqAfyIpD50+eZKVdGR792gvyMEX
-         fZXw==
+        bh=9vVibkDFYfG6DFhVF0ZSzLEwHPzqjB5BANscN4p9qZ4=;
+        b=jkA4hAOwgFecYHy20do2/UEpp8By3711J6ehU1mehSnjMAyIJ83Vje9KQWa5NsCkJQ
+         z8QGPSOsE1XAYxKurvHTr/aUMTzNDKYXbbIdb2o3zC+L/fov8hScC3chgwPtVK1kIpMB
+         Gt3DFE1sEY5bAAxBis7I0V+22587M/sjEimNiLXi7/nm1Ap+iM1gBgkFdg75glV8n765
+         pDfWcnx3DZOslMVjajei3whPbfslI7LekS9uxH2Qq5DS+OugiQQmnlhJtnXfb3rpG2eU
+         8ukaQ4ycRe+w+BBlga2RSrB0lqRMcm2/RPvtJPM678XYnydUJXGlEn/l8F5yNqyvtszh
+         Fgmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Sqn/LN1W";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=snXUvl+D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gs9-20020a056214226900b00626190ff5b5si2006060qvb.610.2023.06.09.03.49.34
+        by mx.google.com with ESMTPS id kc21-20020a056214411500b005ef6e02d541si2068014qvb.188.2023.06.09.03.49.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jun 2023 03:49:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Jun 2023 03:49:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Sqn/LN1W";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=snXUvl+D;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q7ZgP-0000DS-8t; Fri, 09 Jun 2023 06:49:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q7ZgC-00072T-UP; Fri, 09 Jun 2023 06:49:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZgN-0008WH-SD
- for qemu-devel@nongnu.org; Fri, 09 Jun 2023 06:49:27 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZgA-0006iS-M2
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:49:14 -0400
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZgL-0001h3-Fk
- for qemu-devel@nongnu.org; Fri, 09 Jun 2023 06:49:27 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-3f78a32266bso15626825e9.3
- for <qemu-devel@nongnu.org>; Fri, 09 Jun 2023 03:49:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zg8-0001eH-Lz
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:49:14 -0400
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-4f004cc54f4so2049794e87.3
+ for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:49:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686307764; x=1688899764;
+ d=linaro.org; s=google; t=1686307751; x=1688899751;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6EMxC9YLsY0bROTkA0K5UDqhCf1EdHUprhT+dzt+OvA=;
- b=Sqn/LN1WkDJdPGdGLfB/RjQCEMRWxVYe120t3R3CXD66+IOcx4HxvAoEFyjnvzuvmH
- zmCjNg/KLfTGeW6apFQXN9bVz3nxtIoJE104ul5Z9pQk4X1QEbmaUqf0i39D1Suikjw/
- xBxuYGNrVr4FRXb+asjWALL4HHExCnXkESK9dJUmEsrhQr0uuyCYv+6/kxDub9jngy6a
- aktiBKsqitgO7xViKG8TdusNG7npI7QENoXEdj61gzbLog83h/oMYCaGdu0ZVfgfKLgA
- moQNXNLHFYGlu63qeDzVbMNtnlk09D/evsdNOKTBAzOrAmg2PDI5FIQ11uZJbKa751sj
- V4Ug==
+ bh=9vVibkDFYfG6DFhVF0ZSzLEwHPzqjB5BANscN4p9qZ4=;
+ b=snXUvl+Dkxo33YpZvAGQs08bEAuQ30El4p/XugjuVXSuXKj03u5wrU6aN8mwkPLPRo
+ kun/4YMok3Cr9orZTqTO9ZjGfOJgZ9UlULxMXyY2HQterlpglIgPkQxeYhdo4pbdlMAx
+ MZN18La3m7W15scj9K/kmbqo/So5epWv9y9R9CbYn03yNZTgLivxM4eRwlc7Pllr/GoA
+ xWYB0HwlLz3GwRdrHFcODEsSP0tCIm/BWyBs6uOjR/e/4ssU4dnrT+G5cXPxwNVUmPiF
+ eVRcSUPZE1TzKtEtb1+LlhkW3gUSQ4NllDru2dBYxhUFaTAmJ8bnn4FYh3Up7x2EmHFI
+ RnAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686307764; x=1688899764;
+ d=1e100.net; s=20221208; t=1686307751; x=1688899751;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6EMxC9YLsY0bROTkA0K5UDqhCf1EdHUprhT+dzt+OvA=;
- b=O5O+9XiF1SjJXGLWqyP923SErj3OH4HJ7Ii/eUiVGRhwy0DbrAzcUv/sW/+3Efw6op
- C78SgYdKPyF9DNaWj1yqcLn+gCeW0gr2Gmg8gTG4g2xjMrEfFjrdZqKTHtzcfywebnAq
- ZNSdjJhqygTVxdG7glHCo4qHItOoy+5CxZdfN9YJTbbNEeotAtDStEdrVlZE6xYZzuOR
- 63arnKEAZcvB3FmdnBywSbv8WDxzqlaK6UxkHUeMUbwrc50lfWjTKs+aG2AEkVeVIUGN
- LnIXlJluItFNLSeRY14VBG2OP4SIi1RYbW6FPR9pCTo89A7G2UzVLPMvnasytxsYq1yN
- G3rg==
-X-Gm-Message-State: AC+VfDylPMnw4AO/KEqNUZQ4t/aNcYC+wJ6OAsgKihRtjfzdUpl68NDs
- xf4V7ORxVugLFh18uG3qBJjm2JEAyYDHSR8L1Xu7Xg==
-X-Received: by 2002:a7b:cbd6:0:b0:3f4:f7c2:d681 with SMTP id
- n22-20020a7bcbd6000000b003f4f7c2d681mr864169wmi.29.1686307763908; 
- Fri, 09 Jun 2023 03:49:23 -0700 (PDT)
+ bh=9vVibkDFYfG6DFhVF0ZSzLEwHPzqjB5BANscN4p9qZ4=;
+ b=lblgdzCwDa1/lGrrrICeowjjZQDNamGKi6V1FKw7kFqGiv4m/UYRZ0TFypQSgY0MXc
+ XXx1B+BPCdYncYtOTuDEVYXCRtX4lwHiOqi1PqXNAff6P49qwsNhQxCB51Aj96m/dcto
+ oy8tfMISMhLr89TZM1HYtnpB0zUsld07YgaMe2LYsMxozNcHDilsiU2ov7FZL8N/G5Xb
+ UdOA2aHMMEBaa/QjgnSNW86ICw+e/gUsym3khYGX9Rhgxh5CeWR2mMRNRFytf+7REAkD
+ P1YogoxwegRvFhAWSolfDWKHp9T/9gJUzt8D0T8aG0VNT4vHKfbBGguicyf9AD3uECYz
+ FsaQ==
+X-Gm-Message-State: AC+VfDxpuh6DA98WVggIWvVXq1d9ETTSiZQJbJQ9+lQw2/ltKiEZKcbn
+ KILYM1kTe3n2AYWaW4V9uk3lRQ==
+X-Received: by 2002:a05:6512:b0e:b0:4f3:bb14:6bac with SMTP id
+ w14-20020a0565120b0e00b004f3bb146bacmr599722lfu.56.1686307750991; 
+ Fri, 09 Jun 2023 03:49:10 -0700 (PDT)
 Received: from localhost.localdomain (23.171.88.92.rev.sfr.net. [92.88.171.23])
  by smtp.gmail.com with ESMTPSA id
- f3-20020a7bc8c3000000b003f1958eeadcsm2292119wml.17.2023.06.09.03.49.22
+ w11-20020a1cf60b000000b003f7ff6b1201sm2231660wmc.29.2023.06.09.03.49.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Jun 2023 03:49:23 -0700 (PDT)
+ Fri, 09 Jun 2023 03:49:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 19/22] target/arm/tcg: Reduce 'helper-sme.h.inc' inclusion
-Date: Fri,  9 Jun 2023 12:47:14 +0200
-Message-Id: <20230609104717.95555-20-philmd@linaro.org>
+Subject: [PATCH 17/22] target/arm/tcg: Reduce 'helper-mve.h.inc' inclusion
+Date: Fri,  9 Jun 2023 12:47:12 +0200
+Message-Id: <20230609104717.95555-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230609104717.95555-1-philmd@linaro.org>
 References: <20230609104717.95555-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::134;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wLo3yBkSwXCg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: klf4vVkcELel
 
-Instead of including helper-sme.h.inc via helper.h which
+Instead of including helper-mve.h.inc via helper.h which
 is included by all TCG files, restrict it to the few files
 that require it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/helper.h            | 1 -
- target/arm/tcg/sme_helper.c    | 5 +++++
- target/arm/tcg/translate-sme.c | 6 ++++++
- 3 files changed, 11 insertions(+), 1 deletion(-)
+ target/arm/helper.h            | 2 --
+ target/arm/tcg/mve_helper.c    | 5 +++++
+ target/arm/tcg/translate-mve.c | 6 ++++++
+ target/arm/tcg/translate.c     | 5 +++++
+ 4 files changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 5471d6e5d0..c1fb9b7b50 100644
+index 8983489cf0..4e431c2116 100644
 --- a/target/arm/helper.h
 +++ b/target/arm/helper.h
-@@ -559,5 +559,4 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
- #ifdef TARGET_AARCH64
+@@ -560,5 +560,3 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
  #include "tcg/helper-a64.h.inc"
- DEF_HELPER_FLAGS_3(set_svcr, TCG_CALL_NO_RWG, void, env, i32, i32) /* SME */
--#include "tcg/helper-sme.h.inc"
+ #include "tcg/helper-sme.h.inc"
  #endif
-diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
-index 1e67fcac30..95db4b7861 100644
---- a/target/arm/tcg/sme_helper.c
-+++ b/target/arm/tcg/sme_helper.c
-@@ -29,6 +29,11 @@
- #include "vec_internal.h"
- #include "sve_ldst_internal.h"
+-
+-#include "tcg/helper-mve.h.inc"
+diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
+index 9914f45b16..fc003b7c7d 100644
+--- a/target/arm/tcg/mve_helper.c
++++ b/target/arm/tcg/mve_helper.c
+@@ -32,6 +32,11 @@
+ #include "exec/helper-gen.h.inc"
+ #undef  HELPER_H
  
-+#define HELPER_H "tcg/helper-sme.h.inc"
++#define HELPER_H "tcg/helper-mve.h.inc"
 +#include "exec/helper-proto.h.inc"
 +#include "exec/helper-gen.h.inc"
 +#undef  HELPER_H
 +
- void helper_set_svcr(CPUARMState *env, uint32_t val, uint32_t mask)
+ static uint16_t mve_eci_mask(CPUARMState *env)
  {
-     aarch64_set_svcr(env, val, mask);
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 571bc10471..4396b649e1 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -31,6 +31,12 @@
- #include "exec/helper-gen.h.inc"
- #undef  HELPER_H
+     /*
+diff --git a/target/arm/tcg/translate-mve.c b/target/arm/tcg/translate-mve.c
+index bbc7b3f4ce..8577dc4377 100644
+--- a/target/arm/tcg/translate-mve.c
++++ b/target/arm/tcg/translate-mve.c
+@@ -21,6 +21,12 @@
+ #include "translate.h"
+ #include "translate-a32.h"
  
-+#define HELPER_H "tcg/helper-sme.h.inc"
++#define HELPER_H "tcg/helper-mve.h.inc"
 +#include "exec/helper-proto.h.inc"
 +#include "exec/helper-gen.h.inc"
 +#include "exec/helper-info.c.inc"
 +#undef  HELPER_H
 +
- /*
-  * Include the generated decoder.
-  */
+ static inline int vidup_imm(DisasContext *s, int x)
+ {
+     return 1 << x;
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 7bfced1bc6..da3e0445b2 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -34,6 +34,11 @@
+ #include "exec/helper-gen.h.inc"
+ #undef  HELPER_H
+ 
++#define HELPER_H "tcg/helper-mve.h.inc"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#undef  HELPER_H
++
+ #define HELPER_H "helper.h"
+ #include "exec/helper-info.c.inc"
+ #undef  HELPER_H
 -- 
 2.38.1
 

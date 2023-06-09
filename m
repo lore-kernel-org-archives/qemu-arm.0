@@ -1,225 +1,199 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289377ejb;
-        Fri, 9 Jun 2023 03:48:40 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6eSmyIcYy6vVdoaTHr7R+qQN9TrahP8XsLo3DPUx7rr9PRbxL9YLReVvCS2FsfiDBbvvE+
-X-Received: by 2002:ac8:5785:0:b0:3f4:427:dbb8 with SMTP id v5-20020ac85785000000b003f40427dbb8mr1089128qta.2.1686307719707;
-        Fri, 09 Jun 2023 03:48:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686307719; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289555ejb;
+        Fri, 9 Jun 2023 03:49:03 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5LFvudb5MsSK6gwLaIKYF+7Rym0S82GJ5Ouo/zzb9/sMhHTY89qsyy5U5j1mJMLhp/2IXn
+X-Received: by 2002:a05:6214:ccc:b0:628:2d00:5301 with SMTP id 12-20020a0562140ccc00b006282d005301mr1426966qvx.39.1686307743565;
+        Fri, 09 Jun 2023 03:49:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686307743; cv=none;
         d=google.com; s=arc-20160816;
-        b=WR+b7zBRhGXyfQC7EeK1v1DgxoEWdOWfUfHwCiPnd3ly+ENJ3ePsqhallOMz9zv/Oc
-         difFJTGtj+9LXWLLBSk/edkZ/ThrydoHaUlrmkdlIXjrhMkzaO+P3yQFv8ypXIywapO9
-         btlKAjIH2+Q7BjPuZY96DcGQ/r+zkKZAMyB29/RUgaNw0wfe6uMen8H8UMR1XlHnNjEn
-         FImTZUZUU1wKPcLbgGjE2/AleBrkG9zyNQgsxMnLYp0YcfXzMwkAhxqAquM91xVMQTc+
-         OiLi98NRNk6lUMCBSmBYm2UpwrVFYlQdZ1905F46B3ihttPvB1zGjoBUGtOai/P8ZV9J
-         xW9w==
+        b=b5hV+zpprN6bq4UQRNU9vnQH/0yRIN6DwENQQiHSbbZvZee9h2w6NJzJA/BV1eN72x
+         dvgumvlummrpGKKXtw8heH9D0n4CrNURY6GLAYgRT9GJNo5h/JPtqxOKBXhn2tAK34yO
+         3jOLjQwAe0EuhlJ6wJtOjiKZMZ7wvqjLsDI8ytw5aNjnBd0CL6lWvnG1Yhhn2B26u1BM
+         NeNCewXAUYmJPR7g6z4gjwSebyjmxYAFAdl35pKG5Hs6s/ugDGbN0giBbgfYiu6D+PQA
+         G+3qlQrGx4MvRm5ka4JriEHLi1mJBIgs+g8rm37rYS170Z0FKKy1O4kch13COvPYY/cc
+         CNNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HJ5HI0lL3qjrViOVTfhSFThyUieC3Zv2QHm9pLeOb3Y=;
-        b=A8loE1Q5LE/pxwsONKNkpfXpu0hohtQyz9rTCEkQgxGCds+z85AGSoeqEDT+22NBfF
-         NPgfWaHKr/owo9BZKxLGWH6yiL9GArPuQtZvwtmWm0zWv6oi4uqwv8nvzsB6bRm8X6CB
-         J5SdiO4fCGfTV9xJ6HKYz7IbbQcCdz0Ot1Hi8VcXANczWPzXa3hLWOTr2bgZ6iltvswS
-         1PDRnTCUN8IiNXt0fylwlZ6vo/8ZfgvLlZ8u/XY7TIVn0rfJXL5m3Spl8kPRx7Ix11+t
-         OjUEqmVaWA+Q/r799zWIGlBnQhoK/xz1t/Bv4D45KZPTgMG8tWVyAew4vod0Occr3FwP
-         zg6g==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=LkXS39fMyxDT7PDxjl903VAfYr5/Pxj8Kks7jV8gUII=;
+        b=C+Q7WgF5Q9vWM6hCHuc0Ybo3z/0JnRta0QxVlEV6SIMQp8jvPWcSJjlxS6/vqZWjVo
+         phzabw//9Zx/3mOz6+8KyTrjpaeLa0+lzuwslnM5173jl2dwNGkyreCIoRoLeLJfKiEr
+         lxVUc/tsI29LbUKT1bV9ehZTJbusLqfcEYwpl7NoAYc/aB++Mw60LPz5d20PHj6ag1mN
+         L+SzQjTsw5cvB+ov9fMkY3DE/8EnK+8DVMwommOHWXtbB3622UWSvvYb0Hg++MFXu+7B
+         qHCp3Ci0V76IhOuk2BjoM5bTv0QHLXxI9XUDLEPFswX7Q72CjYGX5y6mhnIfUtKdzpwk
+         yuZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CjcWwxj7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="XQC/Qydq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p19-20020a05622a00d300b003f6b8dbb9aesi1869806qtw.395.2023.06.09.03.48.39
+        by mx.google.com with ESMTPS id i10-20020ad45c6a000000b005ef641c3b77si2084672qvh.338.2023.06.09.03.49.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jun 2023 03:48:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Jun 2023 03:49:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CjcWwxj7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="XQC/Qydq";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7ZeQ-0000jT-Cq; Fri, 09 Jun 2023 06:47:26 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q7ZfA-0001pf-Bz; Fri, 09 Jun 2023 06:48:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZeP-0000iz-1w
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:25 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zf4-0001in-44
+ for qemu-devel@nongnu.org; Fri, 09 Jun 2023 06:48:06 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZeM-0001AG-SX
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:24 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-30aef0499b6so1102698f8f.1
- for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:47:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zf1-0001IV-Hb
+ for qemu-devel@nongnu.org; Fri, 09 Jun 2023 06:48:05 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-4f6255ad8aeso2034923e87.2
+ for <qemu-devel@nongnu.org>; Fri, 09 Jun 2023 03:48:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686307641; x=1688899641;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HJ5HI0lL3qjrViOVTfhSFThyUieC3Zv2QHm9pLeOb3Y=;
- b=CjcWwxj7J3aWhPFCLcAWd8QwV2klkvtWSZ8RsuH/yZovIYJFZbwJLOk53n8o4Cfdq0
- HArgQBPMXM3YAb8fLAjxajKD7BBpu31FZtHxjD6iq+LjNpvOJhYMZIv9UOsm3UwA1Znf
- oSpMpU3jUIIbAdKKcOB1BHINd9bxEa9ctjqw5kMTbblMthu6vsnx33btjl8ikevyv2ca
- QcwA+r8JG2nOGoTkfqjK1AzfYRp0jvfMReeIIUGdsgO5217VTwyj/zlnsrXCJj0pp9P0
- Uyzn5MaDFzDSl2bO1yxf/8e8Bl725KORS9bvGCGW+bKMyCTOOKwmwBWoG6G+l+1iAqR9
- fZMQ==
+ d=linaro.org; s=google; t=1686307681; x=1688899681;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LkXS39fMyxDT7PDxjl903VAfYr5/Pxj8Kks7jV8gUII=;
+ b=XQC/QydqPl2AZL4/XCjEnOodnq7FTgZ9DMj3v3oPxKokZTgogKBZXtNXFhrF/1Vgw4
+ Kh6BFAh21uCImTmIXVjJIDNikGIiMccB65MpJJ5RtGSOShvQrtLI+S52snP6pj2W7ypw
+ dnxfd9l60NGLk9X5ro2JqiLntHuDiaZgIGqLUPojDxVRFftEEJD4y3h/fydeMr0VDxIb
+ 4h/STGFejwCxJ+si5BNoedGYn1tDNM1BbB5NWbCEmH6mjc8zWE2nz8hslKZRRaR1FnBB
+ 24hsk0BWiCgUtjWI3U3JuPkBUEIZh6mcRh+VzFnpAPT9pjVD7p/elw8XtHZf6QJMBQK8
+ GLDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686307641; x=1688899641;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HJ5HI0lL3qjrViOVTfhSFThyUieC3Zv2QHm9pLeOb3Y=;
- b=cfnvu/D2SIebOXiSuxsjShgwNAyFdhUawLV4+klclLY6fv3g83XhsnbWGwHc0zE7IO
- gmSeUrBb0cxUwrxF1yodIZpBzlKIwexoyH4/EYwAI2bUfHCpdIbDODbvIB+13wU2viQ3
- KaRNqhUUwlcJT9tQmBDD/Fai/4ne3LR55ViygK5CLfXRT4QFmTWq/U6oyk78x3vKhkqO
- hw4wQOHh/dBxrCaTfrUBBRL0lH894p1ni8GAbk5CCzoSzx08zbJjb/e7qCqMBxepbUBG
- ibdS5F0uQohSxkyjyKBlfvMCHorupj4Ht3mfA0piCoU+gywMjt0oD0LerLMf4EYh2ZfX
- GRNg==
-X-Gm-Message-State: AC+VfDzZW3KvKjd6RNnscoBkH7geBCbFereOECcFZwjqv8vJ+rEHf9+7
- IqHIqM2qpZz5cgEewSuK7yBWrg==
-X-Received: by 2002:a5d:4bd0:0:b0:30a:eeee:2fba with SMTP id
- l16-20020a5d4bd0000000b0030aeeee2fbamr558252wrt.34.1686307641228; 
- Fri, 09 Jun 2023 03:47:21 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1686307681; x=1688899681;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=LkXS39fMyxDT7PDxjl903VAfYr5/Pxj8Kks7jV8gUII=;
+ b=NztTALeu9EaQXFKnwbAkd8sKWHPs0k2ULI/OtMv3HKrePJWKObxMQQZxx2ESoeXwQa
+ y9psOtfeHPyq4/6uP4OgfMod8B4Mg1LN2DRoR/VK2QZSrHfMB33qSkAM8TEHKTojl1qQ
+ Yqq7KKIzx6GDfvalsOunV67NlCzu+1+YLQ+NfE1ITkM4XlxgdhCkyTc6BEGlkFAHqTN/
+ kTp9eROg9xxiD3FIGkVMTCOA8IpM0ZlMuKrkOikoVuyeJPQwRncO+r2uFBBIKYO/EBcQ
+ ONjojYsdqf18u89aSpoh8HFlcM0AR4vU6LRFp+/761D9lvaxdOodyN4g77Ugnp5JuIod
+ HKLQ==
+X-Gm-Message-State: AC+VfDyBEueoQwdH960RMl3th6xdTaGUf2zEFlwCmODMbRr3Vb7gtjOe
+ rirrAZ79TP3apc0FUZrMIa79XyTY0t1AmzomtqHKzg==
+X-Received: by 2002:a05:6512:32ab:b0:4f3:b32d:f744 with SMTP id
+ q11-20020a05651232ab00b004f3b32df744mr692164lfe.11.1686307681674; 
+ Fri, 09 Jun 2023 03:48:01 -0700 (PDT)
 Received: from localhost.localdomain (23.171.88.92.rev.sfr.net. [92.88.171.23])
  by smtp.gmail.com with ESMTPSA id
- k10-20020adff5ca000000b003077a19cf75sm4108102wrp.60.2023.06.09.03.47.19
+ d6-20020adffd86000000b0030ae87bd3e3sm4110588wrr.18.2023.06.09.03.48.00
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Jun 2023 03:47:20 -0700 (PDT)
+ Fri, 09 Jun 2023 03:48:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/22] target/arm/tcg: Remove inclusions of
- 'exec/helper-[proto/gen].h'
-Date: Fri,  9 Jun 2023 12:46:55 +0200
-Message-Id: <20230609104717.95555-1-philmd@linaro.org>
+Subject: [PATCH 07/22] target/arm/tcg: Expose some iwmmxt methods in
+ 'translate.h'
+Date: Fri,  9 Jun 2023 12:47:02 +0200
+Message-Id: <20230609104717.95555-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230609104717.95555-1-philmd@linaro.org>
+References: <20230609104717.95555-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TcwfrCL6lmKN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5SwWY/XM/cV6
 
-Hi,
+Expose a few methods and variables before extracting iwmmxt
+code from translate.c.
 
-This series tries to do what Richard suggested in [*]:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/tcg/translate.h | 6 ++++++
+ target/arm/tcg/translate.c | 8 ++++----
+ 2 files changed, 10 insertions(+), 4 deletions(-)
 
-  Targets that have a tcg/ subdir should have helper.h.inc
-  moved into there.  At the end, include/exec/helper-gen.h
-  and include/exec/helper-proto.h become unused and go away.
-
-but only for the ARM target, to first see if this is heading
-in the correct direction.
-
-Instead of having TCG generated helpers included by all
-translate/helper units, they are reduced to the few places
-really needing them. I expect the build step to be slighly
-improved, since the compiler doesn't have to compile and
-track unused helpers definitions.
-
-[*] https://lore.kernel.org/qemu-devel/cad000d7-f408-9337-9328-ccb262c5fcc7@linaro.org/
-
-Philippe Mathieu-Daudé (22):
-  plugins: Remove unused 'exec/helper-proto.h' header
-  accel/tcg/cpu-exec: Use generic 'helper-proto-common.h' header
-  target/arm/tcg: Remove CONFIG_TCG #ifdef'ry check
-  target/arm/tcg: Rename helper template headers as '.h.inc'
-  target/arm/tcg: Extract iwMMXt helpers from the generic 'helper.h'
-  target/arm/tcg: Fix iwmmxt-related code style
-  target/arm/tcg: Expose some iwmmxt methods in 'translate.h'
-  target/arm/tcg: Extract iwmmxt code to translate-iwmmxt.c
-  target/arm/tcg: Reduce 'helper-iwmmxt.h.inc' inclusion
-  target/arm/tcg: Extract VFP definitions to 'helper-vfp.h.inc'
-  target/arm/tcg: Reduce 'helper-vfp.h.inc' inclusion
-  target/arm/tcg: Move neon_tbl() from op_helper.c to neon_helper.c
-  target/arm/tcg: Extract NEON definitions to 'helper-neon.h.inc'
-  target/arm/tcg: Reduce 'helper-neon.h.inc' inclusion
-  target/arm/tcg: Extract SVE2 definitions to 'helper-sve.h.inc'
-  target/arm/tcg: Reduce 'helper-sve.h.inc' inclusion
-  target/arm/tcg: Reduce 'helper-mve.h.inc' inclusion
-  target/arm/tcg: Define SME set_svcr() helper in common 'helper.h'
-  target/arm/tcg: Reduce 'helper-sme.h.inc' inclusion
-  target/arm/tcg: Reduce 'helper-a64.h.inc' inclusion
-  target/arm/tcg: Remove inclusions of 'exec/helper-[proto/gen].h'
-  tests/tcg/aarch64: Rename bti-crt.inc.c -> bti-crt.c.inc
-
- target/arm/tcg/translate.h                    |   11 +-
- .../tcg/{helper-a64.h => helper-a64.h.inc}    |    0
- target/arm/tcg/helper-iwmmxt.h.inc            |  114 ++
- .../tcg/{helper-mve.h => helper-mve.h.inc}    |    0
- target/arm/tcg/helper-neon.h.inc              |  205 +++
- .../tcg/{helper-sme.h => helper-sme.h.inc}    |    2 -
- .../tcg/{helper-sve.h => helper-sve.h.inc}    |   46 +
- target/arm/tcg/helper-vfp.h.inc               |  136 ++
- target/arm/{helper.h => tcg/helper.h.inc}     |  488 +-----
- accel/tcg/cpu-exec.c                          |    2 +-
- plugins/core.c                                |    1 -
- target/arm/debug_helper.c                     |    7 +-
- target/arm/helper.c                           |    7 +-
- target/arm/tcg/cpu32.c                        |    4 +-
- target/arm/tcg/crypto_helper.c                |    6 +-
- target/arm/tcg/helper-a64.c                   |   11 +-
- target/arm/tcg/hflags.c                       |    6 +-
- target/arm/tcg/iwmmxt_helper.c                |    6 +-
- target/arm/tcg/m_helper.c                     |   12 +-
- target/arm/tcg/mte_helper.c                   |    5 +-
- target/arm/tcg/mve_helper.c                   |   16 +-
- target/arm/tcg/neon_helper.c                  |   28 +-
- target/arm/tcg/op_helper.c                    |   28 +-
- target/arm/tcg/pauth_helper.c                 |    5 +-
- target/arm/tcg/psci.c                         |    6 +-
- target/arm/tcg/sme_helper.c                   |   11 +-
- target/arm/tcg/sve_helper.c                   |   20 +-
- target/arm/tcg/tlb_helper.c                   |    5 +-
- target/arm/tcg/translate-a64.c                |   16 +
- target/arm/tcg/translate-iwmmxt.c             | 1340 +++++++++++++++++
- target/arm/tcg/translate-mve.c                |    6 +
- target/arm/tcg/translate-neon.c               |   11 +
- target/arm/tcg/translate-sme.c                |   16 +
- target/arm/tcg/translate-sve.c                |    5 +
- target/arm/tcg/translate-vfp.c                |    6 +
- target/arm/tcg/translate.c                    | 1274 +---------------
- target/arm/tcg/vec_helper.c                   |   26 +-
- target/arm/vfp_helper.c                       |   11 +-
- tests/tcg/aarch64/bti-1.c                     |    2 +-
- tests/tcg/aarch64/bti-3.c                     |    2 +-
- .../aarch64/{bti-crt.inc.c => bti-crt.c.inc}  |    0
- target/arm/tcg/meson.build                    |    1 +
- 42 files changed, 2100 insertions(+), 1804 deletions(-)
- rename target/arm/tcg/{helper-a64.h => helper-a64.h.inc} (100%)
- create mode 100644 target/arm/tcg/helper-iwmmxt.h.inc
- rename target/arm/tcg/{helper-mve.h => helper-mve.h.inc} (100%)
- create mode 100644 target/arm/tcg/helper-neon.h.inc
- rename target/arm/tcg/{helper-sme.h => helper-sme.h.inc} (99%)
- rename target/arm/tcg/{helper-sve.h => helper-sve.h.inc} (98%)
- create mode 100644 target/arm/tcg/helper-vfp.h.inc
- rename target/arm/{helper.h => tcg/helper.h.inc} (56%)
- create mode 100644 target/arm/tcg/translate-iwmmxt.c
- rename tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} (100%)
-
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index d1cacff0b2..3d7c55d3b6 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -165,6 +165,7 @@ typedef struct DisasCompare {
+ } DisasCompare;
+ 
+ /* Share the TCG temporaries common between 32 and 64 bit modes.  */
++extern TCGv_i32 cpu_R[16];
+ extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
+ extern TCGv_i64 cpu_exclusive_addr;
+ extern TCGv_i64 cpu_exclusive_val;
+@@ -298,6 +299,11 @@ static inline int curr_insn_len(DisasContext *s)
+ /* CPU state was modified dynamically; no need to exit, but do not chain. */
+ #define DISAS_UPDATE_NOCHAIN  DISAS_TARGET_10
+ 
++/* These are TCG temporaries used only by the legacy iwMMXt decoder */
++extern TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
++int disas_iwmmxt_insn(DisasContext *s, uint32_t insn);
++int disas_dsp_insn(DisasContext *s, uint32_t insn);
++
+ #ifdef TARGET_AARCH64
+ void a64_translate_init(void);
+ void gen_a64_update_pc(DisasContext *s, target_long diff);
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 3238463f13..aaa479521e 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -45,9 +45,9 @@
+ #define ENABLE_ARCH_8     arm_dc_feature(s, ARM_FEATURE_V8)
+ 
+ /* These are TCG temporaries used only by the legacy iwMMXt decoder */
+-static TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
++TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
+ /* These are TCG globals which alias CPUARMState fields */
+-static TCGv_i32 cpu_R[16];
++TCGv_i32 cpu_R[16];
+ TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
+ TCGv_i64 cpu_exclusive_addr;
+ TCGv_i64 cpu_exclusive_val;
+@@ -1490,7 +1490,7 @@ static inline int gen_iwmmxt_shift(uint32_t insn, uint32_t mask, TCGv_i32 dest)
+  * Disassemble an iwMMXt instruction.
+  * Returns nonzero if an error occurred (ie. an undefined instruction).
+  */
+-static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
++int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+ {
+     int rd, wrd;
+     int rdhi, rdlo, rd0, rd1, i;
+@@ -2509,7 +2509,7 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+  * Disassemble an XScale DSP instruction.
+  * Returns nonzero if an error occurred (ie. an undefined instruction).
+  */
+-static int disas_dsp_insn(DisasContext *s, uint32_t insn)
++int disas_dsp_insn(DisasContext *s, uint32_t insn)
+ {
+     int acc, rd0, rd1, rdhi, rdlo;
+     TCGv_i32 tmp, tmp2;
 -- 
 2.38.1
 

@@ -1,207 +1,264 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp993500ejq;
-        Wed, 17 May 2023 03:51:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Ui/eo53HssOJA0PbW/8YNBG7vCEf6M9qekFDC51haxTxbllbChOnWMQZU1G+YhJnCUc5l
-X-Received: by 2002:aa7:d14d:0:b0:502:9a5b:206e with SMTP id r13-20020aa7d14d000000b005029a5b206emr1658172edo.9.1684320673671;
-        Wed, 17 May 2023 03:51:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684320673; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp103463ejb;
+        Thu, 8 Jun 2023 19:25:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4PQXDfeaZb8EIJpsf9s+SGaDJyfv2t2h6NHayTvD08MxpHYRksxKC8LuowK4MWnGI4D5lr
+X-Received: by 2002:a05:6214:f2f:b0:626:bfa:b240 with SMTP id iw15-20020a0562140f2f00b006260bfab240mr400205qvb.22.1686277511587;
+        Thu, 08 Jun 2023 19:25:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686277511; cv=none;
         d=google.com; s=arc-20160816;
-        b=ao/XTcPSh1/Q8pteD6q8J1FnjOa8Zr2fFJls3Jel0qdyCQ8dhFRKVeqI/CtUv3yCDR
-         5I9XMNhJlqrdqhsz/Fq7ZWuz4Ugb9+9F+9aeTLDZ2zFTdDf9MPAieLZzEKunZ/V0UNEU
-         GqIqvnNGurtBRnvEcsYjaNtCpcsZkow6Gxh8zL5ijGI9AF/ZInNEaU+oOC3aqEEf0zct
-         o8biIoH4Ld6e0RrI6aEyL6F5WDh3Z28Sh9abHGXpFsax3rM8uOU2svQ0eAIJaeP2BT38
-         cvV+ghxKI2X7lVZQnheOzqMV/Dpolc8zMHghRbBXbGNHMvNpyONp/w4wTJV7CaCB9UwP
-         6Sng==
+        b=JpkVlcsykV1pKuuGteVSgichH+16TmKNu2tl691Cljsq5VutmJNpflm4uHjW07Hx0u
+         C/88tiHB9vpXXRrEhIPaF62Uv6DEux0GC5nOWnQfoAwjFZRqUzI4aqz59BgBOG3SIW+F
+         L6bXdLKoXC1N3A89J8KK75POkRTCf2N3im7acCRQUJmQgjeB6gxGeejt17dYsmeVJkYw
+         B7R5HBHkG9H9Ps5mTxvUEnMZ6HnViZ7+MadmDOWjbmwGc29nc7O6vEKA6jFU54b/x0ha
+         bTm+/fqNNBvraRRy+l1yzMXkPWsn5ANtwTxxts74FWHafKHXy2rMpWUz4YE7uPAZ1k56
+         oSIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=G3OFtXxRc6EUtn8a7dG3Aj1fCYNAGD26Jo8vWwMNw8A=;
-        b=oD2T3tTdgAZZynJ0MYE8x46fp/k03euzm68HA/XTxQX2y3nHrItdRUzGe3u0Xdn0Ox
-         7/DFckD3uiSnE2mnQbivmI9b0mVUYTANQKNHXThJaqua5KsAI0WRzDOohOH0Be7aDy4J
-         6nVOXN/S2MNtK2ljTVK03mZ34k59PWGtHYQDiBgkMQsalHmXehdJovGAFZq/INc/YAZW
-         qCs8jK5b9v+PuLDc/WCc5NyIeYVDnxJaB9fZTKrAC71gtPOc/C1FNPXpYlGCQu9AI8/8
-         oTIdygv8kweqVIVLKJfr+qZvfG7Yxw8+UGySsKK0GBKOWyPInmejPu1Jov+stdD2vXB4
-         txZQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
+        b=BUavIoTT6sBAqGVdb/dn8roJ2munNy/iD6pmYWy2dU3LAKXSMtDBIZjmgK27cwl4GI
+         zNdG0Y9Z6X8igI0OaFZLQ+qdyOuToOVwAsoTZfdk9dswsuggWMFbbJYCL8RlB7hPeFvr
+         wjhLTkoqMCQBd76JGtu1Nqx9fq0YQV9q39iKucqTBZHcW2s8W/+muNbhzHMSrbieptC3
+         DTNbkMAi7EULb4GMewxqQ7/HYi8WEE6davWTkw/EkLlu4DgdlpPMofzXUU5jkwW9qiIT
+         0cuJZlHIyA0Bmw2PKrhRilIkk4k5ki6h4C7sBmjqOL1VNP4T1LSOqbCVAwwfLjSYTsCR
+         vzXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T/K0Vgf+";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id u1-20020a50eac1000000b0050bd35cd0cbsi16113602edp.591.2023.05.17.03.51.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=bwhI3GDI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l9-20020a05622a050900b003f9b26fb64asi1521312qtx.517.2023.06.08.19.25.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 May 2023 03:51:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 Jun 2023 19:25:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T/K0Vgf+";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1684320672;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G3OFtXxRc6EUtn8a7dG3Aj1fCYNAGD26Jo8vWwMNw8A=;
-	b=T/K0Vgf+abO4mnfqZ9oHeBUSeFqDSz3YGWRUdZEnXJI+9ME8+GRdObOpJqD7EcOxXKa1eB
-	L+aY++5cznR8OGZ7Y9hQYrg3RXoFY9IzHjIrBqXg9nPLcFS8WjfGThEBdUYHz8Dk2qUpCC
-	0Z9OKXy7V9+URKbum0iFRocleYxq4Y4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-584-735EsXnwO8GWDVeHmRsTAQ-1; Wed, 17 May 2023 06:51:09 -0400
-X-MC-Unique: 735EsXnwO8GWDVeHmRsTAQ-1
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3093b0cf714so242131f8f.2
-        for <alex.bennee@linaro.org>; Wed, 17 May 2023 03:51:09 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=bwhI3GDI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q7RnS-0002WG-00; Thu, 08 Jun 2023 22:24:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q7RnQ-0002V5-RF
+ for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:12 -0400
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q7RnK-0005We-RK
+ for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:12 -0400
+Received: by mail-oi1-x22a.google.com with SMTP id
+ 5614622812f47-39a3f165ac5so218972b6e.3
+ for <qemu-devel@nongnu.org>; Thu, 08 Jun 2023 19:24:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686277443; x=1688869443;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
+ b=bwhI3GDIartHY6OsgqnQNXSDy20T30R2C56Cxx6PXr0rch3JTx04T1ommn/v6jBRV+
+ Xj1BTvFgLVpS3f9E6bmp4Q0q74E/X3f8YQgdmzCXjleiLYH5xslSz3jmW9dEKbUcp4jG
+ kGyPs5PrJCqLNvpCUlWaTzGc6SyzxSYTKqCnbyuCH2j7Em4dl4uhqT6cMdKM0oW7jSJm
+ EQX1YCvfwH7wlJ8OepgvbgyBrjKm8PFCkDTzfCd63xtgfEewuE66tNIGUtA/3F9mCwT5
+ xiZ8RzzOc2YbleKjgbxg/p1QHZUKRVKqat/OHGk71DKomuUsBn4J/Plfml7k7asRxU+R
+ 1JMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1684320668; x=1686912668;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=G3OFtXxRc6EUtn8a7dG3Aj1fCYNAGD26Jo8vWwMNw8A=;
-        b=CH+tLPm2O2cfX3IlqBC1PhdvEXcXfBs65ueT8Nvk8QHAqQpMDabCsHc3YTyjjnHxpH
-         hf52jdrcoKtmYOlmN2FB6iBZZCQx/x8aExqY8zMhFJ7ES4hfWJTisUHQV7qmk1FnL+5D
-         MxhRNFL199ZGefXafTrF94KTOVfBSOSzqbK0y/JD5BSUy0UsMTMdXO0ITOh3aYK4QS8F
-         Jf5jXww0l5NEzyg1Vh35KFwcMcY+bhW0KJ2r5psgp3/vjVfTEDnXLbdW5/1uGQ8aDIn+
-         FOZl6LE+12TYMYZDpcOJDbXXarBXyZy2JfOOO79c878V5Hkozqeq2Ne/+feIUT2Exphz
-         RQDA==
-X-Gm-Message-State: AC+VfDzgNzjzbc+fttO2Q0pjBP4eS+ViMm/itaGlFPnOwXMFB0qKjzz7
-	Q8R9I03x3HkV/8ABa/S8oQJfbGC57fPEpV0Aq8vOICYeOvXQwNEgcw4iSjTEKv7LldOX8grD4yk
-	FFkdCP22oYTXOByPV
-X-Received: by 2002:a5d:4389:0:b0:306:2b40:1258 with SMTP id i9-20020a5d4389000000b003062b401258mr308920wrq.21.1684320668273;
-        Wed, 17 May 2023 03:51:08 -0700 (PDT)
-X-Received: by 2002:a5d:4389:0:b0:306:2b40:1258 with SMTP id i9-20020a5d4389000000b003062b401258mr308900wrq.21.1684320667897;
-        Wed, 17 May 2023 03:51:07 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.3] (ip-109-43-177-218.web.vodafone.de. [109.43.177.218])
-        by smtp.gmail.com with ESMTPSA id g6-20020adfe406000000b003093946ea60sm2344564wrm.46.2023.05.17.03.51.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 May 2023 03:51:06 -0700 (PDT)
-Message-ID: <496ffe3f-f56e-ab64-37b6-3379b9372669@redhat.com>
-Date: Wed, 17 May 2023 12:51:05 +0200
+ d=1e100.net; s=20221208; t=1686277443; x=1688869443;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
+ b=MTUwSK3A7HuyvLeAshI+nhP+G+9bSZobFlsZ5TSlXCTNiNzyc830LiL4GYNzTwVj5q
+ uiViyo5d2YsHcNeI1/WBZCU86+4smCYrFJjPkoEgETCM7a/QuTstKWm8N+eXQBtnHQwe
+ az3CyX8Ygp/cL9wbp/26hLRlsFsyX5SqBakRgWHRnXqHO82kdnVl2mgrtAbMdDbtETWl
+ h2UfuDQndwYSbm5Rz5TApkW/rdK6WksGW/uLxwUWz6FSacV9WC6PWNF/WYrme1XBPQp7
+ HMbH27qpN2nlUaO/0JDe+sMQOIj6L/iCRd5q4IBIbe4gjZ+Q9h7Kn5ky8+hj11+P7vk7
+ 8Fbg==
+X-Gm-Message-State: AC+VfDwzbs1Pig4jilxn6Dhy8EyOizkSgl0kfO7DDTpA5DqaqE3HH76n
+ VchXsXBPwmDQ40Uy7Rt7ry+bQcYX40UdaJjwwdU=
+X-Received: by 2002:a05:6808:997:b0:39a:abe8:afc3 with SMTP id
+ a23-20020a056808099700b0039aabe8afc3mr307550oic.38.1686277443071; 
+ Thu, 08 Jun 2023 19:24:03 -0700 (PDT)
+Received: from stoup.. ([2602:ae:1598:4c01:b071:df63:5761:f449])
+ by smtp.gmail.com with ESMTPSA id
+ x25-20020a62fb19000000b0063afb08afeesm1686458pfm.67.2023.06.08.19.24.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Jun 2023 19:24:02 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
+Subject: [PATCH v2 00/38] crypto: Provide aes-round.h and host accel
+Date: Thu,  8 Jun 2023 19:23:23 -0700
+Message-Id: <20230609022401.684157-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [RFC PATCH-for-8.0 1/3] hw/ppc: Replace tswap32() by const_le32()
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Alistair Francis <alistair@alistair23.me>,
- David Gibson <david@gibson.dropbear.id.au>, Jason Wang
- <jasowang@redhat.com>, Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
-References: <20221213125218.39868-1-philmd@linaro.org>
- <20221213125218.39868-2-philmd@linaro.org>
- <8d47b826-2011-3203-c682-aa32a76b8dc2@linaro.org>
- <d73fe725-565e-7fcb-e7d3-846189459545@linaro.org>
- <a1f4b5a6-0a8a-5a04-8ab6-f3f08b9d36aa@linaro.org>
- <CAFEAcA_F3Z+UPW-wHs8xedYX3TiV8CRQAom0DhefKLFH_Ejgog@mail.gmail.com>
- <b46e4c40-257f-8a89-85b8-8c2806f395be@linaro.org>
- <10186d7a-2df0-2fcf-8eef-8e34bcc2d8cc@kaod.org>
- <CAFEAcA8WF6GXaPt6+=KbaLSP5w+r1dps6fcc21+Um3VFAPDp5A@mail.gmail.com>
- <b270f7de-a0f1-3b1e-5540-550420acef26@kaod.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <b270f7de-a0f1-3b1e-5540-550420acef26@kaod.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MYsUl8baG0r6
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vZREHuqSPBBf
 
-On 13/12/2022 19.13, Cédric Le Goater wrote:
-> On 12/13/22 18:23, Peter Maydell wrote:
->> On Tue, 13 Dec 2022 at 16:53, Cédric Le Goater <clg@kaod.org> wrote:
->>>
->>> On 12/13/22 17:27, Richard Henderson wrote:
->>>> On 12/13/22 10:21, Peter Maydell wrote:
->>>>> It does seem odd, though. We have a value in host endianness
->>>>> (the EPAPR_MAGIC constant, which is host-endian by virtue of
->>>>> being a C constant). But we're storing it to env->gpr[], which
->>>>> is to say the CPUPPCState general purpose register array. Isn't
->>>>> that array *also* kept in host endianness order?
->>>>
->>>> Yes indeed.
->>>>
->>>>> If so, then the right thing here is "don't swap at all",
->>>>
->>>> So it would seem...
->>>>
->>>>> i.e. just "env->gpr[6] = EPAPR_MAGIC;". But that would imply
->>>>> that the current code is setting the wrong value for the GPR
->>>>> on little-endian hosts, which seems a bit unlikely...
->>>>
->>>> ... unless this board has only been tested on matching hosts.
->>>
->>> But these are register default values. Endianness doesn't apply
->>> there. Doesn't it ?
->>
->> Any time you have a value that's more than 1 byte wide,
->> endianness applies in some sense :-) We choose for our
->> emulated CPUs typically to keep register values in struct
->> fields and variables in the C code in host endianness. This
->> is the "obvious" choice given that you want to be able to
->> do things like do a simple host add to emulate a guest CPU
->> add, but in theory you could store the values the other
->> way around if you wanted (then "store register into RAM"
->> would be trivial, and "add 1 to register" would require
->> extra effort; currently it's the other way round.)
->>
->> Anyway, I think that in the virtex_ml507 and sam460ex code
->> the use of tswap32() should be removed. In hw/ppc/e500.c
->> we get this right:
->>      env->gpr[6] = EPAPR_MAGIC;
->>
->> We have a Linux kernel boot test in the avocado tests for
->> virtex_ml507 -- we really do set up this magic value wrongly
->> afaict, but it seems like the kernel doesn't check it (the
->> test passes regardless of whether we swap the value or not).
->>
->> I think what has happened here is that this bit of code is
->> setting up CPU registers for an EPAPR style boot, but the
->> test kernel at least doesn't expect that. It boots via the
->> code in arch/powerpc/kernel/head_44x.S. That file claims
->> in a comment that it expects
->>   *   r3 - Board info structure pointer (DRAM, frequency, MAC address, etc.)
->>   *   r4 - Starting address of the init RAM disk
->>   *   r5 - Ending address of the init RAM disk
->>   *   r6 - Start of kernel command line string (e.g. "mem=128")
->>   *   r7 - End of kernel command line string
->>
->> but actually it only cares that r3 == device-tree-blob.
->>
->> Documentation/powerpc/booting.rst says the expectation
->> (for a non-OpenFirmware boot) is:
->>                  r3 : physical pointer to the device-tree block
->>                  (defined in chapter II) in RAM
->>
->>                  r4 : physical pointer to the kernel itself. This is
->>                  used by the assembly code to properly disable the MMU
->>                  in case you are entering the kernel with MMU enabled
->>                  and a non-1:1 mapping.
->>
->>                  r5 : NULL (as to differentiate with method a)
->>
->> which isn't the same as what the kernel code actually cares about
->> or what the kernel's comment says it cares about...
->>
->> So my guess about what's happening here is that the intention
->> was that these boards should be able to boot both kernels built
->> to be entered directly in the way booting.rst says, and also
->> kernels and other guest programs built to assume boot by
->> EPAPR firmware, but this bug means that we're only currently
->> supporting the first of these two categories. The reason nobody's
->> noticed before is presumably that in practice nobody's trying to
->> boot the "built to boot from EPAPR firmware" type binary on
->> these two boards.
->>
->> TLDR: we should drop the "tswap32()" entirely from both files.
-> Yes. I think so too.
+Inspired by Ard Biesheuvel's RFC patches for accelerating AES
+under emulation, provide a set of primitives that maps between
+the guest and host fragments.
 
-I agree. Philippe, could you please respin this patch 1 here accordingly?
+There is a small guest correctness test case.
 
-  Thomas
+I think the end result is quite a bit cleaner, since the logic
+is now centralized, rather than spread across 4 different guests.
+
+Further work could clean up crypto/aes.c itself to use these
+instead of the tables directly.  I'm sure that's just an ultimate
+fallback when an appropriate system library is not available, and
+so not terribly important, but it could still significantly reduce
+the amount of code we carry.
+
+I would imagine structuring a polynomial multiplication header
+in a similar way.  There are 4 or 5 versions of those spread across
+the different guests.
+
+Changes for v2:
+  * Change aesenc_SB_SR -> aesenc_SB_SR_AK
+  * Change aesdec_ISB_ISR -> aesdec_ISB_ISR_AK
+
+  Both of these because if we have to provide a zero to x86 and ppc
+  hosts, we can do that at the guest level just as easily as the host.
+  Which allows x86 and ppc guests to provide the key their key.
+
+  * Add aesdec_ISB_ISR_AK_IMC
+
+  Provide a variation for the Power8 primitive.  Easy enough to do
+  with two x86 instructions.
+
+  * Add ppc host support.
+
+  Nasty issues with <altivec.h>, fighting with builtins vs bswap,
+  so everything is in inline asm.
+
+
+r~
+
+
+Richard Henderson (38):
+  tcg/ppc: Define _CALL_AIX for clang on ppc64(be)
+  util: Add cpuinfo-ppc.c
+  tests/multiarch: Add test-aes
+  target/arm: Move aesmc and aesimc tables to crypto/aes.c
+  crypto/aes: Add constants for ShiftRows, InvShiftRows
+  crypto: Add aesenc_SB_SR_AK
+  target/i386: Use aesenc_SB_SR_AK
+  target/arm: Demultiplex AESE and AESMC
+  target/arm: Use aesenc_SB_SR_AK
+  target/ppc: Use aesenc_SB_SR_AK
+  target/riscv: Use aesenc_SB_SR_AK
+  crypto: Add aesdec_ISB_ISR_AK
+  target/i386: Use aesdec_ISB_ISR_AK
+  target/arm: Use aesdec_ISB_ISR_AK
+  target/ppc: Use aesdec_ISB_ISR_AK
+  target/riscv: Use aesdec_ISB_ISR_AK
+  crypto: Add aesenc_MC
+  target/arm: Use aesenc_MC
+  crypto: Add aesdec_IMC
+  target/i386: Use aesdec_IMC
+  target/arm: Use aesdec_IMC
+  target/riscv: Use aesdec_IMC
+  crypto: Add aesenc_SB_SR_MC_AK
+  target/i386: Use aesenc_SB_SR_MC_AK
+  target/ppc: Use aesenc_SB_SR_MC_AK
+  target/riscv: Use aesenc_SB_SR_MC_AK
+  crypto: Add aesdec_ISB_ISR_IMC_AK
+  target/i386: Use aesdec_ISB_ISR_IMC_AK
+  target/riscv: Use aesdec_ISB_ISR_IMC_AK
+  crypto: Add aesdec_ISB_ISR_AK_IMC
+  target/ppc: Use aesdec_ISB_ISR_AK_IMC
+  crypto: Remove AES_shifts, AES_ishifts
+  crypto: Implement aesdec_IMC with AES_imc_rot
+  crypto: Remove AES_imc
+  crypto: Unexport AES_*_rot, AES_TeN, AES_TdN
+  host/include/i386: Implement aes-round.h
+  host/include/aarch64: Implement aes-round.h
+  host/include/ppc: Implement aes-round.h
+
+ meson.build                             |   9 +
+ host/include/aarch64/host/aes-round.h   | 205 ++++++
+ host/include/aarch64/host/cpuinfo.h     |   1 +
+ host/include/generic/host/aes-round.h   |  33 +
+ host/include/i386/host/aes-round.h      | 152 +++++
+ host/include/i386/host/cpuinfo.h        |   1 +
+ host/include/ppc/host/aes-round.h       | 181 ++++++
+ host/include/ppc/host/cpuinfo.h         |  30 +
+ host/include/ppc64/host/aes-round.h     |   1 +
+ host/include/ppc64/host/cpuinfo.h       |   1 +
+ host/include/x86_64/host/aes-round.h    |   1 +
+ include/crypto/aes-round.h              | 164 +++++
+ include/crypto/aes.h                    |  30 -
+ target/arm/helper.h                     |   2 +
+ target/i386/ops_sse.h                   |  60 +-
+ tcg/ppc/tcg-target.h                    |  16 +-
+ target/arm/tcg/sve.decode               |   4 +-
+ crypto/aes.c                            | 796 ++++++++++++++++--------
+ target/arm/tcg/crypto_helper.c          | 249 +++-----
+ target/arm/tcg/translate-a64.c          |  13 +-
+ target/arm/tcg/translate-neon.c         |   4 +-
+ target/arm/tcg/translate-sve.c          |   8 +-
+ target/ppc/int_helper.c                 |  50 +-
+ target/riscv/crypto_helper.c            | 138 ++--
+ tests/tcg/aarch64/test-aes.c            |  58 ++
+ tests/tcg/i386/test-aes.c               |  68 ++
+ tests/tcg/ppc64/test-aes.c              | 116 ++++
+ tests/tcg/riscv64/test-aes.c            |  76 +++
+ util/cpuinfo-aarch64.c                  |   2 +
+ util/cpuinfo-i386.c                     |   3 +
+ util/cpuinfo-ppc.c                      |  65 ++
+ tcg/ppc/tcg-target.c.inc                |  67 +-
+ tests/tcg/multiarch/test-aes-main.c.inc | 183 ++++++
+ tests/tcg/aarch64/Makefile.target       |   4 +
+ tests/tcg/i386/Makefile.target          |   4 +
+ tests/tcg/ppc64/Makefile.target         |   1 +
+ tests/tcg/riscv64/Makefile.target       |   4 +
+ util/meson.build                        |   2 +
+ 38 files changed, 2074 insertions(+), 728 deletions(-)
+ create mode 100644 host/include/aarch64/host/aes-round.h
+ create mode 100644 host/include/generic/host/aes-round.h
+ create mode 100644 host/include/i386/host/aes-round.h
+ create mode 100644 host/include/ppc/host/aes-round.h
+ create mode 100644 host/include/ppc/host/cpuinfo.h
+ create mode 100644 host/include/ppc64/host/aes-round.h
+ create mode 100644 host/include/ppc64/host/cpuinfo.h
+ create mode 100644 host/include/x86_64/host/aes-round.h
+ create mode 100644 include/crypto/aes-round.h
+ create mode 100644 tests/tcg/aarch64/test-aes.c
+ create mode 100644 tests/tcg/i386/test-aes.c
+ create mode 100644 tests/tcg/ppc64/test-aes.c
+ create mode 100644 tests/tcg/riscv64/test-aes.c
+ create mode 100644 util/cpuinfo-ppc.c
+ create mode 100644 tests/tcg/multiarch/test-aes-main.c.inc
+
+-- 
+2.34.1
+

@@ -1,112 +1,115 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp103463ejb;
-        Thu, 8 Jun 2023 19:25:11 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4PQXDfeaZb8EIJpsf9s+SGaDJyfv2t2h6NHayTvD08MxpHYRksxKC8LuowK4MWnGI4D5lr
-X-Received: by 2002:a05:6214:f2f:b0:626:bfa:b240 with SMTP id iw15-20020a0562140f2f00b006260bfab240mr400205qvb.22.1686277511587;
-        Thu, 08 Jun 2023 19:25:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686277511; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp103781ejb;
+        Thu, 8 Jun 2023 19:26:14 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4CShK9QUrBp5XWd2AN+XRXVhdXTTxOGEddrigzZY016iUvD4pi06m/0yss8CYAn3ZNeGim
+X-Received: by 2002:a05:6214:c6e:b0:626:2683:3bb1 with SMTP id t14-20020a0562140c6e00b0062626833bb1mr3863321qvj.3.1686277574039;
+        Thu, 08 Jun 2023 19:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686277574; cv=none;
         d=google.com; s=arc-20160816;
-        b=JpkVlcsykV1pKuuGteVSgichH+16TmKNu2tl691Cljsq5VutmJNpflm4uHjW07Hx0u
-         C/88tiHB9vpXXRrEhIPaF62Uv6DEux0GC5nOWnQfoAwjFZRqUzI4aqz59BgBOG3SIW+F
-         L6bXdLKoXC1N3A89J8KK75POkRTCf2N3im7acCRQUJmQgjeB6gxGeejt17dYsmeVJkYw
-         B7R5HBHkG9H9Ps5mTxvUEnMZ6HnViZ7+MadmDOWjbmwGc29nc7O6vEKA6jFU54b/x0ha
-         bTm+/fqNNBvraRRy+l1yzMXkPWsn5ANtwTxxts74FWHafKHXy2rMpWUz4YE7uPAZ1k56
-         oSIQ==
+        b=ydvv8wNv9wQaDHCMUL49bdJVacdGq9mhm2D/bCBhu05Pq25bSgOynTx9p/QdfEa+yG
+         hWu/pa+neqZgBRL3j3uwixAyVFAOc6RA+HXksd/uilMRpddFHrgQPx0gMKvg7FAij8qw
+         JPKhlmm5NuD4zioLt4iuFXAMMzHR2hd2Rbv5MH0jDRBUj2+2wTRRkWgMx5AJVJ2dIxJy
+         2m0nee4fmSqZAogf4lgZ0MRGMYtYXUZnl8Lt8nc33IDbJNn5/bQqTROizOGYDtz3qZFS
+         np8MxNjB6e6FgN/g74jJDRM8aaQgMzMX1zFa0doYWcS8uVtUjPpnatfp0QBaTBNxSTat
+         U7eQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
-        b=BUavIoTT6sBAqGVdb/dn8roJ2munNy/iD6pmYWy2dU3LAKXSMtDBIZjmgK27cwl4GI
-         zNdG0Y9Z6X8igI0OaFZLQ+qdyOuToOVwAsoTZfdk9dswsuggWMFbbJYCL8RlB7hPeFvr
-         wjhLTkoqMCQBd76JGtu1Nqx9fq0YQV9q39iKucqTBZHcW2s8W/+muNbhzHMSrbieptC3
-         DTNbkMAi7EULb4GMewxqQ7/HYi8WEE6davWTkw/EkLlu4DgdlpPMofzXUU5jkwW9qiIT
-         0cuJZlHIyA0Bmw2PKrhRilIkk4k5ki6h4C7sBmjqOL1VNP4T1LSOqbCVAwwfLjSYTsCR
-         vzXg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=QxTD/xLHfG91exbynguR/xDlsjcF1kIUdWem1n6YAAM=;
+        b=Os99Q0WPWB2pIUVVMfRsJDuSosa7ng1yI0FXLRQjTa33sSXSEabfo5KnEe6LtvA5eO
+         beIdNF1Af1hvaKibW+nAtEx9pHvXdT6DlMLtNwp+no8h0bqO3ttnfYtl/Twk3RRD1UT+
+         an/I5O180VD/1Ukw6x3IHmMyPM5MbaRJOYirMHfyav8U/8deYEoD8PRvxo+skVbSTWiK
+         ErPotI/UufeLaMghlGLcQDXoLhwIbNRLonQsO71+noiyBfURSEWBU5PNC3ojiF5z1xOG
+         8TLCAAKFy3pJOXQwxbzzVyzqMbacHsUcRn8EN0U4b4ckg2x9Ajk8GsnstFIEwnnraegp
+         67UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwhI3GDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wayBJzyX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9-20020a05622a050900b003f9b26fb64asi1521312qtx.517.2023.06.08.19.25.11
+        by mx.google.com with ESMTPS id o14-20020a05622a044e00b003f9ac43ae09si1540647qtx.612.2023.06.08.19.26.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Jun 2023 19:25:11 -0700 (PDT)
+        Thu, 08 Jun 2023 19:26:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwhI3GDI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wayBJzyX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q7RnS-0002WG-00; Thu, 08 Jun 2023 22:24:14 -0400
+	id 1q7RnQ-0002Ui-1P; Thu, 08 Jun 2023 22:24:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q7RnQ-0002V5-RF
- for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:12 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ id 1q7RnO-0002TN-Rt
+ for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:10 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q7RnK-0005We-RK
- for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:12 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-39a3f165ac5so218972b6e.3
- for <qemu-devel@nongnu.org>; Thu, 08 Jun 2023 19:24:04 -0700 (PDT)
+ id 1q7RnK-0005XM-AB
+ for qemu-devel@nongnu.org; Thu, 08 Jun 2023 22:24:08 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-64d44b198baso989785b3a.0
+ for <qemu-devel@nongnu.org>; Thu, 08 Jun 2023 19:24:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686277443; x=1688869443;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
- b=bwhI3GDIartHY6OsgqnQNXSDy20T30R2C56Cxx6PXr0rch3JTx04T1ommn/v6jBRV+
- Xj1BTvFgLVpS3f9E6bmp4Q0q74E/X3f8YQgdmzCXjleiLYH5xslSz3jmW9dEKbUcp4jG
- kGyPs5PrJCqLNvpCUlWaTzGc6SyzxSYTKqCnbyuCH2j7Em4dl4uhqT6cMdKM0oW7jSJm
- EQX1YCvfwH7wlJ8OepgvbgyBrjKm8PFCkDTzfCd63xtgfEewuE66tNIGUtA/3F9mCwT5
- xiZ8RzzOc2YbleKjgbxg/p1QHZUKRVKqat/OHGk71DKomuUsBn4J/Plfml7k7asRxU+R
- 1JMA==
+ d=linaro.org; s=google; t=1686277445; x=1688869445;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=QxTD/xLHfG91exbynguR/xDlsjcF1kIUdWem1n6YAAM=;
+ b=wayBJzyXxAXtNdin0sdvFPX3MKYnorpKfZgG8F1LK4THSQeaXofDwulvuw84Qzno1y
+ 7FtZNfsgvegXgxTs5/789rlc6YA0b963xxHFQ4arTHB2h9jGeqc5qI6nrUWyvB6XTllO
+ BKpGlIC8dWDxFiVrOD4eRvD1NewjSWbZAR0J2h+ETKLhzV457OL9IEyAyymKJF0Ut6nR
+ PH3ZWSgxRTPw3ZhIaP6YoEFxp+k94YjfwUAD01S4tPS7AdH2axqC2Icys/s1ymLLLU7F
+ JA1wOu0cna7X6Nxj6DffjpzBYx28h5A59EmubRd4ygqQdZ6gcaoUeYi6bKJn79Qp42QH
+ CAYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686277443; x=1688869443;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=K1QHrfC3muBZTrJWbSHBrtxTXfHamZ3QZJ+ErRShsLk=;
- b=MTUwSK3A7HuyvLeAshI+nhP+G+9bSZobFlsZ5TSlXCTNiNzyc830LiL4GYNzTwVj5q
- uiViyo5d2YsHcNeI1/WBZCU86+4smCYrFJjPkoEgETCM7a/QuTstKWm8N+eXQBtnHQwe
- az3CyX8Ygp/cL9wbp/26hLRlsFsyX5SqBakRgWHRnXqHO82kdnVl2mgrtAbMdDbtETWl
- h2UfuDQndwYSbm5Rz5TApkW/rdK6WksGW/uLxwUWz6FSacV9WC6PWNF/WYrme1XBPQp7
- HMbH27qpN2nlUaO/0JDe+sMQOIj6L/iCRd5q4IBIbe4gjZ+Q9h7Kn5ky8+hj11+P7vk7
- 8Fbg==
-X-Gm-Message-State: AC+VfDwzbs1Pig4jilxn6Dhy8EyOizkSgl0kfO7DDTpA5DqaqE3HH76n
- VchXsXBPwmDQ40Uy7Rt7ry+bQcYX40UdaJjwwdU=
-X-Received: by 2002:a05:6808:997:b0:39a:abe8:afc3 with SMTP id
- a23-20020a056808099700b0039aabe8afc3mr307550oic.38.1686277443071; 
- Thu, 08 Jun 2023 19:24:03 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1686277445; x=1688869445;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=QxTD/xLHfG91exbynguR/xDlsjcF1kIUdWem1n6YAAM=;
+ b=M9d54rLHQJouj0OFwecPSywH8HE5YNo2vQ+Jw0rP5eH99dvmhqJLzlN5Jms4zELUNa
+ 84xbQ34fFgLedYZ6JnLqeDkkYV/l9399eNpXVIvdDQNL7LVs2VsBfU95BDfJISinM1ac
+ 4KbvFjOxuy4Jvs0ZT4BFNKtbYpBppd/AHByfu+0kqpIfTQ2lCiVwjhIJnq7oNdPZzRSt
+ x58aoBq//W1/kfBj7AfPsYb8HBxkxjgun/6t2sbDeBZx/6hJ9nhHkFKdyXwc86Ht7Q+F
+ WUjmmpVURr+3TMNI0pIEUC2LIMGmwBsxx1sBJHcq3UVLyG/X/nwtmq/5Bs0AvZomYrrJ
+ ezZg==
+X-Gm-Message-State: AC+VfDznBrsCKVg4RLM8kFakM5txhk1yvwc0LteXITMR08CZ5pgfVf14
+ 66jFD0I61wYp5lmAwZtESt9JcVwIqOg6fbaZW7w=
+X-Received: by 2002:a05:6a00:238e:b0:64f:ad7c:70fb with SMTP id
+ f14-20020a056a00238e00b0064fad7c70fbmr361729pfc.17.1686277444929; 
+ Thu, 08 Jun 2023 19:24:04 -0700 (PDT)
 Received: from stoup.. ([2602:ae:1598:4c01:b071:df63:5761:f449])
  by smtp.gmail.com with ESMTPSA id
- x25-20020a62fb19000000b0063afb08afeesm1686458pfm.67.2023.06.08.19.24.02
+ x25-20020a62fb19000000b0063afb08afeesm1686458pfm.67.2023.06.08.19.24.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Jun 2023 19:24:02 -0700 (PDT)
+ Thu, 08 Jun 2023 19:24:04 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
-Subject: [PATCH v2 00/38] crypto: Provide aes-round.h and host accel
-Date: Thu,  8 Jun 2023 19:23:23 -0700
-Message-Id: <20230609022401.684157-1-richard.henderson@linaro.org>
+Subject: [PATCH v2 02/38] util: Add cpuinfo-ppc.c
+Date: Thu,  8 Jun 2023 19:23:25 -0700
+Message-Id: <20230609022401.684157-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230609022401.684157-1-richard.henderson@linaro.org>
+References: <20230609022401.684157-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,144 +124,236 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vZREHuqSPBBf
+X-TUID: 0qiw3DmS8RCl
 
-Inspired by Ard Biesheuvel's RFC patches for accelerating AES
-under emulation, provide a set of primitives that maps between
-the guest and host fragments.
+Move the code from tcg/.  Fix a bug in that PPC_FEATURE2_ARCH_3_10
+is actually spelled PPC_FEATURE2_ARCH_3_1.
 
-There is a small guest correctness test case.
-
-I think the end result is quite a bit cleaner, since the logic
-is now centralized, rather than spread across 4 different guests.
-
-Further work could clean up crypto/aes.c itself to use these
-instead of the tables directly.  I'm sure that's just an ultimate
-fallback when an appropriate system library is not available, and
-so not terribly important, but it could still significantly reduce
-the amount of code we carry.
-
-I would imagine structuring a polynomial multiplication header
-in a similar way.  There are 4 or 5 versions of those spread across
-the different guests.
-
-Changes for v2:
-  * Change aesenc_SB_SR -> aesenc_SB_SR_AK
-  * Change aesdec_ISB_ISR -> aesdec_ISB_ISR_AK
-
-  Both of these because if we have to provide a zero to x86 and ppc
-  hosts, we can do that at the guest level just as easily as the host.
-  Which allows x86 and ppc guests to provide the key their key.
-
-  * Add aesdec_ISB_ISR_AK_IMC
-
-  Provide a variation for the Power8 primitive.  Easy enough to do
-  with two x86 instructions.
-
-  * Add ppc host support.
-
-  Nasty issues with <altivec.h>, fighting with builtins vs bswap,
-  so everything is in inline asm.
-
-
-r~
-
-
-Richard Henderson (38):
-  tcg/ppc: Define _CALL_AIX for clang on ppc64(be)
-  util: Add cpuinfo-ppc.c
-  tests/multiarch: Add test-aes
-  target/arm: Move aesmc and aesimc tables to crypto/aes.c
-  crypto/aes: Add constants for ShiftRows, InvShiftRows
-  crypto: Add aesenc_SB_SR_AK
-  target/i386: Use aesenc_SB_SR_AK
-  target/arm: Demultiplex AESE and AESMC
-  target/arm: Use aesenc_SB_SR_AK
-  target/ppc: Use aesenc_SB_SR_AK
-  target/riscv: Use aesenc_SB_SR_AK
-  crypto: Add aesdec_ISB_ISR_AK
-  target/i386: Use aesdec_ISB_ISR_AK
-  target/arm: Use aesdec_ISB_ISR_AK
-  target/ppc: Use aesdec_ISB_ISR_AK
-  target/riscv: Use aesdec_ISB_ISR_AK
-  crypto: Add aesenc_MC
-  target/arm: Use aesenc_MC
-  crypto: Add aesdec_IMC
-  target/i386: Use aesdec_IMC
-  target/arm: Use aesdec_IMC
-  target/riscv: Use aesdec_IMC
-  crypto: Add aesenc_SB_SR_MC_AK
-  target/i386: Use aesenc_SB_SR_MC_AK
-  target/ppc: Use aesenc_SB_SR_MC_AK
-  target/riscv: Use aesenc_SB_SR_MC_AK
-  crypto: Add aesdec_ISB_ISR_IMC_AK
-  target/i386: Use aesdec_ISB_ISR_IMC_AK
-  target/riscv: Use aesdec_ISB_ISR_IMC_AK
-  crypto: Add aesdec_ISB_ISR_AK_IMC
-  target/ppc: Use aesdec_ISB_ISR_AK_IMC
-  crypto: Remove AES_shifts, AES_ishifts
-  crypto: Implement aesdec_IMC with AES_imc_rot
-  crypto: Remove AES_imc
-  crypto: Unexport AES_*_rot, AES_TeN, AES_TdN
-  host/include/i386: Implement aes-round.h
-  host/include/aarch64: Implement aes-round.h
-  host/include/ppc: Implement aes-round.h
-
- meson.build                             |   9 +
- host/include/aarch64/host/aes-round.h   | 205 ++++++
- host/include/aarch64/host/cpuinfo.h     |   1 +
- host/include/generic/host/aes-round.h   |  33 +
- host/include/i386/host/aes-round.h      | 152 +++++
- host/include/i386/host/cpuinfo.h        |   1 +
- host/include/ppc/host/aes-round.h       | 181 ++++++
- host/include/ppc/host/cpuinfo.h         |  30 +
- host/include/ppc64/host/aes-round.h     |   1 +
- host/include/ppc64/host/cpuinfo.h       |   1 +
- host/include/x86_64/host/aes-round.h    |   1 +
- include/crypto/aes-round.h              | 164 +++++
- include/crypto/aes.h                    |  30 -
- target/arm/helper.h                     |   2 +
- target/i386/ops_sse.h                   |  60 +-
- tcg/ppc/tcg-target.h                    |  16 +-
- target/arm/tcg/sve.decode               |   4 +-
- crypto/aes.c                            | 796 ++++++++++++++++--------
- target/arm/tcg/crypto_helper.c          | 249 +++-----
- target/arm/tcg/translate-a64.c          |  13 +-
- target/arm/tcg/translate-neon.c         |   4 +-
- target/arm/tcg/translate-sve.c          |   8 +-
- target/ppc/int_helper.c                 |  50 +-
- target/riscv/crypto_helper.c            | 138 ++--
- tests/tcg/aarch64/test-aes.c            |  58 ++
- tests/tcg/i386/test-aes.c               |  68 ++
- tests/tcg/ppc64/test-aes.c              | 116 ++++
- tests/tcg/riscv64/test-aes.c            |  76 +++
- util/cpuinfo-aarch64.c                  |   2 +
- util/cpuinfo-i386.c                     |   3 +
- util/cpuinfo-ppc.c                      |  65 ++
- tcg/ppc/tcg-target.c.inc                |  67 +-
- tests/tcg/multiarch/test-aes-main.c.inc | 183 ++++++
- tests/tcg/aarch64/Makefile.target       |   4 +
- tests/tcg/i386/Makefile.target          |   4 +
- tests/tcg/ppc64/Makefile.target         |   1 +
- tests/tcg/riscv64/Makefile.target       |   4 +
- util/meson.build                        |   2 +
- 38 files changed, 2074 insertions(+), 728 deletions(-)
- create mode 100644 host/include/aarch64/host/aes-round.h
- create mode 100644 host/include/generic/host/aes-round.h
- create mode 100644 host/include/i386/host/aes-round.h
- create mode 100644 host/include/ppc/host/aes-round.h
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ host/include/ppc/host/cpuinfo.h   | 29 ++++++++++++++++
+ host/include/ppc64/host/cpuinfo.h |  1 +
+ tcg/ppc/tcg-target.h              | 16 ++++-----
+ util/cpuinfo-ppc.c                | 57 +++++++++++++++++++++++++++++++
+ tcg/ppc/tcg-target.c.inc          | 44 +-----------------------
+ util/meson.build                  |  2 ++
+ 6 files changed, 98 insertions(+), 51 deletions(-)
  create mode 100644 host/include/ppc/host/cpuinfo.h
- create mode 100644 host/include/ppc64/host/aes-round.h
  create mode 100644 host/include/ppc64/host/cpuinfo.h
- create mode 100644 host/include/x86_64/host/aes-round.h
- create mode 100644 include/crypto/aes-round.h
- create mode 100644 tests/tcg/aarch64/test-aes.c
- create mode 100644 tests/tcg/i386/test-aes.c
- create mode 100644 tests/tcg/ppc64/test-aes.c
- create mode 100644 tests/tcg/riscv64/test-aes.c
  create mode 100644 util/cpuinfo-ppc.c
- create mode 100644 tests/tcg/multiarch/test-aes-main.c.inc
 
+diff --git a/host/include/ppc/host/cpuinfo.h b/host/include/ppc/host/cpuinfo.h
+new file mode 100644
+index 0000000000..7ec252ef52
+--- /dev/null
++++ b/host/include/ppc/host/cpuinfo.h
+@@ -0,0 +1,29 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Host specific cpu indentification for ppc.
++ */
++
++#ifndef HOST_CPUINFO_H
++#define HOST_CPUINFO_H
++
++/* Digested version of <cpuid.h> */
++
++#define CPUINFO_ALWAYS          (1u << 0)  /* so cpuinfo is nonzero */
++#define CPUINFO_V2_06           (1u << 1)
++#define CPUINFO_V2_07           (1u << 2)
++#define CPUINFO_V3_00           (1u << 3)
++#define CPUINFO_V3_10           (1u << 4)
++#define CPUINFO_ISEL            (1u << 5)
++#define CPUINFO_ALTIVEC         (1u << 6)
++#define CPUINFO_VSX             (1u << 7)
++
++/* Initialized with a constructor. */
++extern unsigned cpuinfo;
++
++/*
++ * We cannot rely on constructor ordering, so other constructors must
++ * use the function interface rather than the variable above.
++ */
++unsigned cpuinfo_init(void);
++
++#endif /* HOST_CPUINFO_H */
+diff --git a/host/include/ppc64/host/cpuinfo.h b/host/include/ppc64/host/cpuinfo.h
+new file mode 100644
+index 0000000000..2f036a0627
+--- /dev/null
++++ b/host/include/ppc64/host/cpuinfo.h
+@@ -0,0 +1 @@
++#include "host/include/ppc/host/cpuinfo.h"
+diff --git a/tcg/ppc/tcg-target.h b/tcg/ppc/tcg-target.h
+index c7552b6391..b632a5a647 100644
+--- a/tcg/ppc/tcg-target.h
++++ b/tcg/ppc/tcg-target.h
+@@ -25,6 +25,8 @@
+ #ifndef PPC_TCG_TARGET_H
+ #define PPC_TCG_TARGET_H
+ 
++#include "host/cpuinfo.h"
++
+ #define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
+ 
+ #define TCG_TARGET_NB_REGS 64
+@@ -61,14 +63,12 @@ typedef enum {
+     tcg_isa_3_10,
+ } TCGPowerISA;
+ 
+-extern TCGPowerISA have_isa;
+-extern bool have_altivec;
+-extern bool have_vsx;
+-
+-#define have_isa_2_06  (have_isa >= tcg_isa_2_06)
+-#define have_isa_2_07  (have_isa >= tcg_isa_2_07)
+-#define have_isa_3_00  (have_isa >= tcg_isa_3_00)
+-#define have_isa_3_10  (have_isa >= tcg_isa_3_10)
++#define have_isa_2_06  (cpuinfo & CPUINFO_V2_06)
++#define have_isa_2_07  (cpuinfo & CPUINFO_V2_07)
++#define have_isa_3_00  (cpuinfo & CPUINFO_V3_00)
++#define have_isa_3_10  (cpuinfo & CPUINFO_V3_10)
++#define have_altivec   (cpuinfo & CPUINFO_ALTIVEC)
++#define have_vsx       (cpuinfo & CPUINFO_VSX)
+ 
+ /* optional instructions automatically implemented */
+ #define TCG_TARGET_HAS_ext8u_i32        0 /* andi */
+diff --git a/util/cpuinfo-ppc.c b/util/cpuinfo-ppc.c
+new file mode 100644
+index 0000000000..ee761de33a
+--- /dev/null
++++ b/util/cpuinfo-ppc.c
+@@ -0,0 +1,57 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Host specific cpu indentification for ppc.
++ */
++
++#include "qemu/osdep.h"
++#include "host/cpuinfo.h"
++
++#ifdef CONFIG_GETAUXVAL
++# include <sys/auxv.h>
++#else
++# include <asm/cputable.h>
++# include "elf.h"
++#endif
++
++unsigned cpuinfo;
++
++/* Called both as constructor and (possibly) via other constructors. */
++unsigned __attribute__((constructor)) cpuinfo_init(void)
++{
++    unsigned info = cpuinfo;
++    unsigned long hwcap, hwcap2;
++
++    if (info) {
++        return info;
++    }
++
++    hwcap = qemu_getauxval(AT_HWCAP);
++    hwcap2 = qemu_getauxval(AT_HWCAP2);
++    info = CPUINFO_ALWAYS;
++
++    if (hwcap & PPC_FEATURE_ARCH_2_06) {
++        info |= CPUINFO_V2_06;
++    }
++    if (hwcap2 & PPC_FEATURE2_ARCH_2_07) {
++        info |= CPUINFO_V2_07;
++    }
++    if (hwcap2 & PPC_FEATURE2_ARCH_3_00) {
++        info |= CPUINFO_V3_00;
++    }
++    if (hwcap2 & PPC_FEATURE2_ARCH_3_1) {
++        info |= CPUINFO_V3_10;
++    }
++    if (hwcap2 & PPC_FEATURE2_HAS_ISEL) {
++        info |= CPUINFO_ISEL;
++    }
++    if (hwcap & PPC_FEATURE_HAS_ALTIVEC) {
++        info |= CPUINFO_ALTIVEC;
++        /* We only care about the portion of VSX that overlaps Altivec. */
++        if (hwcap & PPC_FEATURE_HAS_VSX) {
++            info |= CPUINFO_VSX;
++        }
++    }
++
++    cpuinfo = info;
++    return info;
++}
+diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
+index 5c8378f8f6..c866f2c997 100644
+--- a/tcg/ppc/tcg-target.c.inc
++++ b/tcg/ppc/tcg-target.c.inc
+@@ -101,10 +101,7 @@
+ #define ALL_GENERAL_REGS  0xffffffffu
+ #define ALL_VECTOR_REGS   0xffffffff00000000ull
+ 
+-TCGPowerISA have_isa;
+-static bool have_isel;
+-bool have_altivec;
+-bool have_vsx;
++#define have_isel  (cpuinfo & CPUINFO_ISEL)
+ 
+ #ifndef CONFIG_SOFTMMU
+ #define TCG_GUEST_BASE_REG 30
+@@ -3879,45 +3876,6 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
+ 
+ static void tcg_target_init(TCGContext *s)
+ {
+-    unsigned long hwcap = qemu_getauxval(AT_HWCAP);
+-    unsigned long hwcap2 = qemu_getauxval(AT_HWCAP2);
+-
+-    have_isa = tcg_isa_base;
+-    if (hwcap & PPC_FEATURE_ARCH_2_06) {
+-        have_isa = tcg_isa_2_06;
+-    }
+-#ifdef PPC_FEATURE2_ARCH_2_07
+-    if (hwcap2 & PPC_FEATURE2_ARCH_2_07) {
+-        have_isa = tcg_isa_2_07;
+-    }
+-#endif
+-#ifdef PPC_FEATURE2_ARCH_3_00
+-    if (hwcap2 & PPC_FEATURE2_ARCH_3_00) {
+-        have_isa = tcg_isa_3_00;
+-    }
+-#endif
+-#ifdef PPC_FEATURE2_ARCH_3_10
+-    if (hwcap2 & PPC_FEATURE2_ARCH_3_10) {
+-        have_isa = tcg_isa_3_10;
+-    }
+-#endif
+-
+-#ifdef PPC_FEATURE2_HAS_ISEL
+-    /* Prefer explicit instruction from the kernel. */
+-    have_isel = (hwcap2 & PPC_FEATURE2_HAS_ISEL) != 0;
+-#else
+-    /* Fall back to knowing Power7 (2.06) has ISEL. */
+-    have_isel = have_isa_2_06;
+-#endif
+-
+-    if (hwcap & PPC_FEATURE_HAS_ALTIVEC) {
+-        have_altivec = true;
+-        /* We only care about the portion of VSX that overlaps Altivec. */
+-        if (hwcap & PPC_FEATURE_HAS_VSX) {
+-            have_vsx = true;
+-        }
+-    }
+-
+     tcg_target_available_regs[TCG_TYPE_I32] = 0xffffffff;
+     tcg_target_available_regs[TCG_TYPE_I64] = 0xffffffff;
+     if (have_altivec) {
+diff --git a/util/meson.build b/util/meson.build
+index 3a93071d27..a375160286 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -113,4 +113,6 @@ if cpu == 'aarch64'
+   util_ss.add(files('cpuinfo-aarch64.c'))
+ elif cpu in ['x86', 'x86_64']
+   util_ss.add(files('cpuinfo-i386.c'))
++elif cpu in ['ppc', 'ppc64']
++  util_ss.add(files('cpuinfo-ppc.c'))
+ endif
 -- 
 2.34.1
 

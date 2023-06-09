@@ -1,166 +1,245 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp477692ejb;
-        Fri, 9 Jun 2023 08:55:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ45wrsP0bHkL2LQpU3jUbB9aH0PIP2b7Bb8jqIyxadNXaQmQzFBEjNsga8EKDy5ulqhKwoD
-X-Received: by 2002:ac8:7e88:0:b0:3f8:6c15:c3a5 with SMTP id w8-20020ac87e88000000b003f86c15c3a5mr2253196qtj.33.1686326129351;
-        Fri, 09 Jun 2023 08:55:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686326129; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp534592ejb;
+        Fri, 9 Jun 2023 10:23:55 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4+sHV9/dETb9m6Y3IpVT/i8FFJMzo8Fcc9S/ccKhzGBA8VBmoMudwy0/cCfDsNJXv8RXKM
+X-Received: by 2002:a17:90a:c403:b0:259:a7df:f6f8 with SMTP id i3-20020a17090ac40300b00259a7dff6f8mr1392496pjt.24.1686331435315;
+        Fri, 09 Jun 2023 10:23:55 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1686331435; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xGk8aGk+whKsOfmV8nnUHY6pUg3+1klQg93MLpGyweUhZdL9271bzM8Ajzt+OBYHJt
-         9LsMobkSaW3Fn6EbAHar/rYHVr9VU8lsPCisvIDXZOq4JCsbf9La9q9Wm7kCnca2LXgA
-         YT55NFuCFEDo3x73xsUgKswDbn0hrkhcgfszj77Aw5N73SwD4TEcuKJt1O4YRfKolpI4
-         abALv1Rq2dzbg8FQsu11YWDeagNu+ZGpuMWMJ6LP7b2AaDFzK2UjFnQi2CkOesVh5qJq
-         t/tNF62Kj4+bqa43GrJpchipAn3SPQzg0y6nzei7AGiAecWa32DgLbG7m8buBAZ/YrGS
-         ksnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=gzyK1+R1Q0PBbWpAgX7HkHDOH+bFjjAYfW6YaQlCD2E=;
-        b=iRhp3A6go9i37eDZzaSg7kDYVpBGcJcG8iC2STsh4wIZR4ZrB2aGJVxnKk0v8crU3m
-         TeZKs91RmYJMKOdGcDvZcpPEwyxvGb2ru63P3ir1jFXQLvEFGFROzMdaSL9hz/781j8X
-         PFWAlFWYvmN/8muCV/ReKJcR8w45Z8t84lF53CnQV5avn37OrVQobd7yWVDy6h8HUU2x
-         gOf/V+HHbxwccylPUONol9drzi4rabKWyt6y7UgjtZ6BUQlMtDevCI6wG5UYKGBqBWGN
-         A5dYW2OP6YyjT6lN89gW2GeuQ0kjXVwNE8Orc9E+6GBMQjVDddgLWLoAQe7S9qxs00SF
-         Hs5A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L9OOa69o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020ac8580d000000b003f36c78b040si2274497qtg.397.2023.06.09.08.55.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jun 2023 08:55:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=Ihjp2CXxv1npijFbb+h8TrBMgswko9v575ZL/iEEqOtvyOmery634TbrJEomH7zM+x
+         zZDzg+/72qGgX8mwFZlrmjohC8TxfC26ivWdAS4waABESPUz0r0CsWFJt8EP3mN75sDr
+         6xSOyo/EjlczGqnX1UxWTccj2ooCUF/ZfOc/c6IluxapczBL9gxhIM0rq+1Ux2PyXOhe
+         z21PJOJV7/GW773JRm593LurNqrtu5QlHA/+sOku30xon5kFwxj1wq1IpGQXXRqfx666
+         vfveUhMd1IwB4psQIRwFux2bGW7J5jvm36JX9cIcqwZU3HuZ/vWdnUW7pq+WUvXaFXB0
+         SGLA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=xcJxsvx6FUu9stgirpLFuzIgGEys/dzaCRNKasjZZQo=;
+        b=GPL0xATKCZbrgToMXP57TgJ45tEhj9/+iwTPATWuoBLbv9BVa229uqwjLKb2kc6Cdo
+         WWUMe26RDXlUZFT+l7AlMJfPzvzrgn1dtH5MuakwKXbPodOQa/MojlvCdpX41rHmqVTH
+         CCsV3YFFITozOi0ExXCVyrTaGF6xj7ko2ZwyYPzpZGlhyvSA6iDCy/5UiXisHBbq0K8X
+         tvALnoCMvoVfpP7CtSY9w9FYR96fufFFpLm+zLA/8KnGq2yWflmorVb/TC4LLJNViYW+
+         7AQJ3h3GZAPBSd2EuF1tBrVsaXM/QfseJkZb8rdXDOCu1UdbRugjZOjA4WvYVdz1S0X9
+         2/PA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=J638GnXE;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:fe5b::708 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (mail-bn8nam12on20708.outbound.protection.outlook.com. [2a01:111:f400:fe5b::708])
+        by mx.google.com with ESMTPS id z3-20020a17090a6d0300b0024e11f7a011si2896868pjj.100.2023.06.09.10.23.54
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Jun 2023 10:23:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:fe5b::708 as permitted sender) client-ip=2a01:111:f400:fe5b::708;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L9OOa69o;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7eSH-0001la-Ao; Fri, 09 Jun 2023 11:55:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q7eSB-0001l2-76
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 11:55:11 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q7eS6-0004wG-If
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 11:55:06 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-30aeee7c8a0so1498292f8f.1
- for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 08:55:01 -0700 (PDT)
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=J638GnXE;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:fe5b::708 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AAQCYmObKq3tkFaPueS1V1V14q7Pbe3bjEGZ4ZGbYuDLnNtvP5Xac4MtmlVIiNYg4j/HfSlloyx4WHDA9/IbBmcdeec0tfM9LaIy9sN+aB5NxvSuL99y39M6mfWTy21Jiqee6PfAORywyRLQ7Goa2eIvXFqfcREHQ0KdxMeCGvuSunJQDnmWwlD7JAgksfgysKWxi0JXRkRsoquwHGmciZkAXHXcnJfFOkxW/WxzkqOuoWkWZr+R7U5z41biwjrLGRZVLXH4LiY0PSCENjkAbsTyJ1sDwe/yGix1w0ZxzAESMHAfFtzecab9aRCWWgLzSoWjzzYTq0hq7bJjzkM6Bg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xcJxsvx6FUu9stgirpLFuzIgGEys/dzaCRNKasjZZQo=;
+ b=GIB+ynUIhLPU/uxHWhylIZ9QxT3aflicR5U2quYRts9T7YOvbKKh3s5LhOZJS6i2CjLPZfgntik0TZ4VHf5qC2oDrso9wi5rX49A/iwW/+IVwaIwTylc4TplCFt48NFuaUDa4K4+dkXHAYC38Ni908Y6l69oxNnaNsjdDHxo9wTksdPr0xMmjrn4hnqiOmnx31T19MMooYwluyNp3aTbguhw23EZ4ffsqfECyKnySGc0Hq4bPu8ySyQFct33Ej1o3FvRTV5dkTxRttlxSiaYT3DFgz+HczL6kS9zDP8kbqA4yAYnhrtz4A4lqIREpne1U4lQ26Z1nwxdR9Gc3nR8Mg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686326099; x=1688918099;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=gzyK1+R1Q0PBbWpAgX7HkHDOH+bFjjAYfW6YaQlCD2E=;
- b=L9OOa69oHb1k9ANzMZQXMiQZwzh8/3t2DSlz9zLXYsph7ulDJXuRW2o7lsKWY5kUV3
- 9Ki4K2wA8AGoB9rUkmaR3LFbT9wH9WZCwLX/4XowVKNO8PT4HbjpNMMmcwWIF0dKl6vK
- 5ObQKvphiQFF43RctanL04A93MdNPRSn7x2uD+FsdYVFxc8D+1Hwzl6Njc/+kv7FQRbQ
- qPG2ojgYc/6tpQH4cTfAKQatfLkoAUleVyCEEo0DVpgAh4V5FkeyHZFZsfFSgg7fLzx3
- p9gMpKc5VDVL1XTY4yWH4nFo6JavqkMh7vnsLISmgpMtz4SHyuYkFWkdCVDr6kT0E1l6
- teMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686326099; x=1688918099;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gzyK1+R1Q0PBbWpAgX7HkHDOH+bFjjAYfW6YaQlCD2E=;
- b=gI5nqe9UxpuLeI/8wGOv9TfQbb7i8CrnW0D6dLQYCLnCO4vvLG+vNmIfDP6uA2F/hm
- UoZWEiPwwykx43qQftf7ytLtaWFsQbzsUX3L9NKI0YsQVtwC3ZAgEROneoLynyequN+k
- yhMeNZaavEzZBKhgJCGSx8ewbK3yhhVfIO7yLTChCK3Usb1xrGTC9KSrZ95Wsu1NV7A9
- qM8omAdNqrSDh2YU6XD3KrjtWTN3PtkBnXt1UZBws/2rZEyNhOm3Z32z1jby9C+ptd4z
- rOsOnIdfBsKlcFzzToQXCkwks9vif7h+Ig5rAkOjZgwziN2J2Fn74fMeU6JtpRkJlt57
- CJZQ==
-X-Gm-Message-State: AC+VfDwDgqFeos6XktXF5OQ/k6IMwHzyf/TFajqU39LaLkxxTl9x/O/A
- tWfTmEE11IltDqI6419+KpjTrpJbR4Iu60VGXpo=
-X-Received: by 2002:adf:dd8d:0:b0:303:daff:f1a3 with SMTP id
- x13-20020adfdd8d000000b00303dafff1a3mr4556477wrl.1.1686326099189; 
- Fri, 09 Jun 2023 08:54:59 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- u26-20020a05600c211a00b003f42314832fsm3097686wml.18.2023.06.09.08.54.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Jun 2023 08:54:58 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	qemu-stable@nongnu.org
-Subject: [PATCH] target/arm: Return correct result for LDG when ATA=0
-Date: Fri,  9 Jun 2023 16:54:57 +0100
-Message-Id: <20230609155457.87848-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xcJxsvx6FUu9stgirpLFuzIgGEys/dzaCRNKasjZZQo=;
+ b=J638GnXErWVNGkiFaXEWYFrJpZHuCBMSsQBvvYeYbCAcA/h5S2tRJcfb8TL7YQWf7lf6Z3n0qyfh4hbm/j/sUQ2HZrR7+uhEFBi51Qf5FZIUCOKcQjk88/rqqqzoDKEF3nEFOSn5pK58QKY4Hz3MjQZdx0GQfV4LodogbRYvUVE=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ SJ2PR01MB8481.prod.exchangelabs.com (2603:10b6:a03:562::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6455.44; Fri, 9 Jun 2023 17:23:52 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::9a78:4703:c6a9:16ed]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::9a78:4703:c6a9:16ed%6]) with mapi id 15.20.6455.030; Fri, 9 Jun 2023
+ 17:23:52 +0000
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vincent Dehors <vincent.dehors@smile.fr>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+Subject: [PATCH v3 2/8] target/arm: v8.3 PAC ID_AA64ISAR[12] feature-detection
+Date: Fri,  9 Jun 2023 13:23:18 -0400
+Message-Id: <20230609172324.982888-3-aaron@os.amperecomputing.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230609172324.982888-1-aaron@os.amperecomputing.com>
+References: <20230609172324.982888-1-aaron@os.amperecomputing.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: saoDi9JcduwZ
+Content-Type: text/plain
+X-ClientProxiedBy: CH0PR03CA0009.namprd03.prod.outlook.com
+ (2603:10b6:610:b0::14) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
+Return-Path: aaron@os.amperecomputing.com
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|SJ2PR01MB8481:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6d0c2b5d-86d2-4332-4a36-08db690e4b59
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	tGFe8ABmkf8AOjLlZx1N6Yiahn6bVuGRwt5gPzCrs3gwgNM8R3MNPxIgUsy/Lk89b0Z0b2tNDs1U5pUyzRYh8g+WfShZMvBLDXiAowKtyYxBIbz05fGdpvwm8QzB9jB3j50pu/GKXJBR74il6B8bAvpvMRrfqko66HEdOGd2kcNWjXCXDTB1FukG8nz2F53KbTv8UVMvkXgaPKC5FBUZC7AiTrTIo9pvuWYmGuG+Bhn+NwDTTy1Zh68qWrCaVVQVVo8+274J9IBNu3crnd9pOgHwebs1Jzv8bamTGcAgZIMW1oM81DVfhhsuiQu3rZyX7prOk11cqs3NJPD8DDpP0UwJUGgJPvyRqFViJDW45oOZLnLZkVqIskmpA23kPxtZTRjCU4/jKLpfLMJtmnTOEJCqWR8Dk8Y4kRacABq6yLDWDecbkuI6tvhV1b0t6eDSBWQVUpWcCrBGhrglYLsGlRsgNtHQeT/ysqFw3H/HGFJ7uk3F8wv7f0qq1JBgRXHb/TdlTp0yFCiYEouBRLrBEGiAdlCg7S776ncMgFdBZjuieM9otd1HAjt3U1HSLiH5RAVoLUu2pG7FwAdmz9gAYL9tFT8xy4C217qFVITuYVLFqZ1Ff2YtQkvUuZOI4d+9
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(136003)(346002)(39850400004)(396003)(376002)(451199021)(2906002)(83380400001)(26005)(1076003)(6506007)(6512007)(478600001)(110136005)(107886003)(52116002)(6486002)(6666004)(8936002)(8676002)(41300700001)(5660300002)(2616005)(66946007)(66476007)(4326008)(66556008)(186003)(316002)(38100700002)(38350700002)(86362001);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?XBeQqbUup/3S9llsBFMJt2ScH3tZvVC3u9HGL31TBvyWycL8Ua6RqcMGRnIr?=
+ =?us-ascii?Q?+6VW0KI4gkDxWbFluzboROxyHre480VTXlkjUPfHjwY1JujF1ZJ4bTTux5zG?=
+ =?us-ascii?Q?eBNMn1oRqSLShInbWRW6isaAF+QJZsE758aLyLYv9OI7onnQk6Rd3Ba35WcX?=
+ =?us-ascii?Q?sGXjnzIu1DDEXJ54IKiS6aoa1ppswQ6C5fWMT8dwaxI5lj+S+/VtZfiyOSIg?=
+ =?us-ascii?Q?HqjN1OjfjvgmW9GTnajA0abuIUhyQu4/3Xy8IpiVOStLhxhUI3xMdGBY2Y9s?=
+ =?us-ascii?Q?9oi1W/lKUHKwsgweZPkhsrFdAxGv+Lq+vH4fRyiVG65+HivFncUGm7YWOXVO?=
+ =?us-ascii?Q?SRPqZgiINP56fy1mxkdWcbYWM8aus+scLvGsugT/EvSIbWbQBPxPqzuCripD?=
+ =?us-ascii?Q?N1y7cLTfFhs4xH3Vu583qJ84mu50v+ZM12MozcEPIN8jbircqbOX1Dj+qVH8?=
+ =?us-ascii?Q?x9VBOdOqAy/AA8Pmg86Oa2eM2P26xIhNgnjgPEkBt74L1HtRMkXgmD1ZF+Em?=
+ =?us-ascii?Q?Nt7o5+w96J0Xp/ncoS2UYkyddL/o3McFndj3+lZMYCHrPRs2E4im41OD9cKV?=
+ =?us-ascii?Q?oPqEttufGwRMlIsQM95sRMT8FAXkUIuVkHoRO++C3WOQDcz7e8PnX1xzuy79?=
+ =?us-ascii?Q?zqOEhM1/VqJ/E7+CooKkaVEGEUyOiAZf3mE8aAYz0usN7cXDiVJXcrF/qrsk?=
+ =?us-ascii?Q?oU1Mdb9X7e9Fk/AJvY7JIV+nLvBVUK521SxfA4EIEyqrKK69CiRjxAzaf46H?=
+ =?us-ascii?Q?xIz8nvxXothExQN6bQ35KEmUsgwFGgj6vFL49kajKBXwZC0TxgRCMV3CqIoA?=
+ =?us-ascii?Q?0iynCVrhk+x6OY/IR+o7pKAvq4kN6VbeJAJI4SnLt45pFrZqQVt9slU0I+XB?=
+ =?us-ascii?Q?amiG+46tzuhaLCZjOfsmj7sFgK4ijCHrS4a7wVNHx3kk9vX2oNssOnZZK8wq?=
+ =?us-ascii?Q?GzwyhTqnTGsePvTESldp19WXfvCX69FeYAAjft6aHG50KCO1NKhNq4lAYP5d?=
+ =?us-ascii?Q?5RLAb7x7N0OuPBDIJ+UFNcX0AsbELnoTy0oclp4+8lVhMdA9663NVkbD21nT?=
+ =?us-ascii?Q?5McJe40efS9N2z4QDQ+92DgWRbrT3cDJmSJrQ5Wgcd4rHXgTOem+pOafWry5?=
+ =?us-ascii?Q?e6iv96rnWzetwb9i0jxZtKkF6xYU4CWGHYkWWtdjMTLOAeqIU0pdU963nND4?=
+ =?us-ascii?Q?iUXjDyEAAb5frITk2VHBBeUKVwvBzw3o0xB7Lkt3FGlAKSj0HbUkxUSEtKqe?=
+ =?us-ascii?Q?Tp+imZkeks9PqIh+gXAQx/rNfDmbhiPpwfwNeWGB14wTH3xwgebwuymm7MC2?=
+ =?us-ascii?Q?L1IX2+NLxqie8ytH7mO9viJtFC5WLA5ll8ZUJ7waHnV4otuorsHOiTy7wC7W?=
+ =?us-ascii?Q?1V4AGkBao9tpmHP4oxMZD1CTZRDPLZxiBLFIfKU7sAeD9RAXaUZIQN81KOTM?=
+ =?us-ascii?Q?oDza+xbrGKhMZE0WPCenaR2iuIftAOZ6zVpgPpAKaEUQnWV8aT52BncYR5H0?=
+ =?us-ascii?Q?QyG2Dt8gVA7fhV9sK/ML4EzasdNmK3ebgzXtHRCMN15NgxLImNm+a69sjQhT?=
+ =?us-ascii?Q?mbsDq5lkPyZeHQ7GRUwanwM0yeC8W0oE2jiJR1aqLmLHTrp1kjIyiVTUqvN0?=
+ =?us-ascii?Q?8QNiD5PKDgAldkl9QwQ86yg=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6d0c2b5d-86d2-4332-4a36-08db690e4b59
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jun 2023 17:23:51.9173
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: P9e1UFooJ0Sld+v0HpPbac5cf2K8ACpqUWQNFAX31q2DZxZhXF3JigSJcV2FQUSHF9DHdA0Ic/Ry/wYzMQkCLQW8X1N4gmuVI2K8owezHL8W++5onI0tzdKT6r41e4aU
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR01MB8481
+X-TUID: a81v2/viN52j
 
-The LDG instruction loads the tag from a memory address (identified
-by [Xn + offset]), and then merges that tag into the destination
-register Xt. We implemented this correctly for the case when
-allocation tags are enabled, but didn't get it right when ATA=0:
-instead of merging the tag bits into Xt, we merged them into the
-memory address [Xn + offset] and then set Xt to that.
-
-Merge the tag bits into the old Xt value, as they should be.
-
-Cc: qemu-stable@nongnu.org
-Fixes: c15294c1e36a7dd9b25 ("target/arm: Implement LDG, STG, ST2G instructions")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
 ---
-Spotted this while I was doing decodetree conversion stuff.
-I guess nobody runs with MTE available but not turned on :-)
----
- target/arm/tcg/translate-a64.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ target/arm/cpu.h              | 65 +++++++++++++++++++++++++++++++++--
+ target/arm/tcg/pauth_helper.c |  2 +-
+ 2 files changed, 63 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index aa93f37e216..9ead91a450b 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -4187,9 +4187,13 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
-         if (s->ata) {
-             gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
-         } else {
-+            /*
-+             * Tag access disabled: we must check for aborts on the load
-+             * load from [rn+offset], and then insert a 0 tag into rt.
-+             */
-             clean_addr = clean_data_tbi(s, addr);
-             gen_probe_access(s, clean_addr, MMU_DATA_LOAD, MO_8);
--            gen_address_with_allocation_tag0(tcg_rt, addr);
-+            gen_address_with_allocation_tag0(tcg_rt, tcg_rt);
-         }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index df04c9a9ab..22dd898577 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3714,18 +3714,77 @@ static inline bool isar_feature_aa64_pauth(const ARMISARegisters *id)
+             (FIELD_DP64(0, ID_AA64ISAR1, APA, 0xf) |
+              FIELD_DP64(0, ID_AA64ISAR1, API, 0xf) |
+              FIELD_DP64(0, ID_AA64ISAR1, GPA, 0xf) |
+-             FIELD_DP64(0, ID_AA64ISAR1, GPI, 0xf))) != 0;
++             FIELD_DP64(0, ID_AA64ISAR1, GPI, 0xf))) != 0 ||
++           (id->id_aa64isar2 &
++            (FIELD_DP64(0, ID_AA64ISAR2, APA3, 0xf) |
++             FIELD_DP64(0, ID_AA64ISAR2, GPA3, 0xf))) != 0;
+ }
+ 
+-static inline bool isar_feature_aa64_pauth_arch(const ARMISARegisters *id)
++static inline bool isar_feature_aa64_pauth_arch_qarma5(const ARMISARegisters *id)
+ {
+     /*
+-     * Return true if pauth is enabled with the architected QARMA algorithm.
++     * Return true if pauth is enabled with the architected QARMA5 algorithm.
+      * QEMU will always set APA+GPA to the same value.
+      */
+     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, APA) != 0;
+ }
+ 
++static inline bool isar_feature_aa64_pauth_arch_qarma3(const ARMISARegisters *id)
++{
++    /*
++     * Return true if pauth is enabled with the architected QARMA3 algorithm.
++     * QEMU will always set APA3+GPA3 to the same result.
++     */
++    return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, APA3) != 0;
++}
++
++static inline bool isar_feature_aa64_pauth_arch(const ARMISARegisters *id)
++{
++    return isar_feature_aa64_pauth_arch_qarma5(id) ||
++        isar_feature_aa64_pauth_arch_qarma3(id);
++}
++
++static inline int isar_feature_pauth_get_features(const ARMISARegisters *id)
++{
++    if (isar_feature_aa64_pauth_arch_qarma5(id)) {
++        return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, APA);
++    } else if (isar_feature_aa64_pauth_arch_qarma3(id)) {
++        return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, APA3);
++    } else {
++        return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, API);
++    }
++}
++
++static inline bool isar_feature_aa64_pauth_epac(const ARMISARegisters *id)
++{
++    /*
++     * Note that unlike most AArch64 features, EPAC is treated (in the ARM
++     * psedocode, at least) as not being implemented by larger values of this
++     * field. Our usage of '>=' rather than '==' here causes our implementation
++     * of PAC logic to diverge from ARM pseudocode - we must check that
++     * isar_feature_aa64_pauth2() returns false AND
++     * isar_feature_aa64_pauth_epac() returns true, where the pseudocode reads
++     * as if EPAC is not implemented if the value of this register is > 0b10.
++     * See the implementation of pauth_addpac() for an example.
++     */
++    return isar_feature_pauth_get_features(id) >= 0b0010;
++}
++
++static inline bool isar_feature_aa64_pauth2(const ARMISARegisters *id)
++{
++    return isar_feature_pauth_get_features(id) >= 0b0011;
++}
++
++static inline bool isar_feature_aa64_fpac(const ARMISARegisters *id)
++{
++    return isar_feature_pauth_get_features(id) >= 0b0100;
++}
++
++static inline bool isar_feature_aa64_fpac_combine(const ARMISARegisters *id)
++{
++    return isar_feature_pauth_get_features(id) >= 0b0101;
++}
++
+ static inline bool isar_feature_aa64_tlbirange(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TLB) == 2;
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index 62af569341..3ff4610a26 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -282,7 +282,7 @@ static uint64_t pauth_computepac_impdef(uint64_t data, uint64_t modifier,
+ static uint64_t pauth_computepac(CPUARMState *env, uint64_t data,
+                                  uint64_t modifier, ARMPACKey key)
+ {
+-    if (cpu_isar_feature(aa64_pauth_arch, env_archcpu(env))) {
++    if (cpu_isar_feature(aa64_pauth_arch_qarma5, env_archcpu(env))) {
+         return pauth_computepac_architected(data, modifier, key);
      } else {
-         tcg_rt = cpu_reg_sp(s, rt);
+         return pauth_computepac_impdef(data, modifier, key);
 -- 
-2.34.1
-
+2.25.1

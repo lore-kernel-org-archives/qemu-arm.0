@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289247ejb;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289248ejb;
         Fri, 9 Jun 2023 03:48:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ75g+5+fMX0J/8wiGFPcNYySMpn+KHqHiaDBYQ/coHSNu+0XrEsIc0S7etaDG98+rrUSpTe
-X-Received: by 2002:ac8:5ac9:0:b0:3f6:af5f:29a6 with SMTP id d9-20020ac85ac9000000b003f6af5f29a6mr1446697qtd.33.1686307702332;
+X-Google-Smtp-Source: ACHHUZ45Apa4sMAtVhcqE+YEffTB+V3pkcE47rxD52OuOgtXAFMNw5dUMfxCjPfexOn7DCIW/CNs
+X-Received: by 2002:ac8:5955:0:b0:3f3:69ea:274d with SMTP id 21-20020ac85955000000b003f369ea274dmr992244qtz.45.1686307702453;
         Fri, 09 Jun 2023 03:48:22 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1686307702; cv=none;
         d=google.com; s=arc-20160816;
-        b=DAXawyxeYWHQtCve+BEFKSc+5Qw10locaEgSZ5i591Ox0sAukSCCOQMIjKjmgEiEgE
-         H2Th684/0LmnuH9+kEP2IsNgxVMKC96xAQxjkHWgWU62bvdMXUTr6I80lN14eBZJ7bWy
-         B6gaz6RieQ+ZAeMNOw7NypzwReqKdfr7uH5utgXlTRfSSGGg+60Ft8U4+5p+kd2n5FoJ
-         ouGKIYiH3Kl8Wt4sSDYa6WiQqZXLC9FzOmIuXVKPDVYKMRW6BITu22Mwpp6mViBICo64
-         VZbGoymInH4JF9GoWWPM2hm4pFcy2wBLf6gnjiSeoJQGggUqzQ5ilYarC534qFunmfw0
-         QBaQ==
+        b=PrurpZAlvCFNDgPpD0VTu6FQQR8N2FiNg8yGSYC6TQz0Ob3O+1eUOYyn3zn8SMxIQl
+         lEVGqtSWLDDgo2aHn3w4/GXtLLNpWmIDVkJq2XEOr7f5tEGgBrE/eDClAdD5iFnt5Yon
+         5dpq6QeHw3j6EQz+xTyOX9t+TqJPUFzBN+z0dVFnpyTunbNdd+44XC05wUxTNA+O50+E
+         h1HsmPdskYSZyFz3Tu+xBGvFVhu1fMT1i1q3nD4hj18jZ/XNqcnfvXWClIJoi+37bLtb
+         tGsNGMp0yNNiVBpHImx7g6jiMBGKnpy6t8WTBkJC2WnoeCvhiehYh4dKuBavtdoAG1+x
+         5qXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tKweUm+um7BdrfNBLJAXxXtSgHD1qY+FtAWIpdBpZZk=;
-        b=sQTiOfAuBMnaElOUQJXWvP6vitZ/r6TaBPctAzRjoH3TalEJK4SJC5THT/Y55oevLP
-         N+0C1vQjT3809qnbGHzmnERercSjYgtHrA9in9Er6lPmXdwfEhf9qoB3y/j0YgCU58ww
-         Tp3Dox7jZI4R5921SqJFMx4KZBydAOBkhBgoFAekJ+ZpyMNzRp186V+B7xD01NzdaIxE
-         unwtfZaiYMvPrPz9UWNeUOGQfXcrKWSY4vnju285m3XWsjrEI+xcIsqHfvfV/N7Q4MGM
-         5uTEGjGk+me1+cTn5t+hTXCT80+TL1vD5lm/RC5Lh3AGo/n88NQVXuvGaUoahOlC1PTn
-         flKw==
+        bh=QUgqw4NXTU/7cZToN1+FDVt4sWyyVhDU+bTCl3DfTsc=;
+        b=TqKWTDn4jziYn0JWor6vo2YSJE2fPkA7zPf0k0x/55I7DcK1CBhqgRtV3DJO7GhR5a
+         TfaKXsoOR8kXBcJDayodwVPaAISgwHHfm43PDIA+THbIgJnNshlO2aXVMqtXmfkD4OPs
+         +ghYxIF68w44FEmXGCkEPhnlYe+fh4/0/sDxasPP2gKDDpJE0CUOeXQq1xBunkQtw8q+
+         PbKY9AO2fqxgEYW/DM4ax1QKycLonVIJIFfnpIb0T+7ccA6k6zKgHMt9PdAlHN6btrro
+         D214KFx4/Ck/SsyIq8c6XjF1TxKRIOJ9e3i6BPdp2I5CYwzTC2DlWqTsdbAUYNfZNmYk
+         BfLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rCGC2gTU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zzbMq6TE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t8-20020ac85888000000b003f9ac4d2729si1981369qta.507.2023.06.09.03.48.22
+        by mx.google.com with ESMTPS id bp32-20020a05622a1ba000b003bfb6e305ebsi1866213qtb.8.2023.06.09.03.48.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 09 Jun 2023 03:48:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rCGC2gTU;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zzbMq6TE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7Zei-0000pm-6N; Fri, 09 Jun 2023 06:47:44 -0400
+	id 1q7Zez-0001fJ-Pd; Fri, 09 Jun 2023 06:48:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zeg-0000pX-Q3
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:42 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zey-0001Zy-4e
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:48:00 -0400
 Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zef-0001Cm-AK
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:42 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zev-0001Fh-D4
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:59 -0400
 Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-30ae4ec1ac7so1100953f8f.2
- for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:47:39 -0700 (PDT)
+ ffacd0b85a97d-30d181952a2so1575773f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:47:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686307659; x=1688899659;
+ d=linaro.org; s=google; t=1686307676; x=1688899676;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tKweUm+um7BdrfNBLJAXxXtSgHD1qY+FtAWIpdBpZZk=;
- b=rCGC2gTU/9KGtVjglyjTAQ5nPPQ8YdLm4D2P9KMDJ9H4vFAuYWLJBclc/P8BwZ1s10
- CMtsMI94BtkKlPaauJ9zHdaj0zxRpNTmLEghgJHE4ihbl+QJ3v35+ww+21PoH36Ymxk4
- LFg4vNEjeGGQrB/wxomzArAXH/W6sNu+p9vPMnnXH/T6WC8JjfnoRTCQUaBneKpCviPJ
- AqirFrIdBBSFbthkW7PC+7gT54MxSsPkApj3cSzqHyhaeKRojpnnp0OTyxDngwiJ6LAf
- F3ZovC9yjrQqwXZy1L7I+y06qg+JZlIZrduAh8hfmHylRE0bF1FYLP9FviHFB/r5vkBf
- MrYQ==
+ bh=QUgqw4NXTU/7cZToN1+FDVt4sWyyVhDU+bTCl3DfTsc=;
+ b=zzbMq6TE33Yu93zWdYNWlq5N6LkpkXeclG1gqTesOU7F7nHqjhOqeFqy8wHe98oibJ
+ ywRRvTO0Wwl8QAQWVbcxZouDjGUnDe3gpyoSeeDwBHzb6XG8BYR4zx7PQWru68W8arLD
+ FmewaKltvS4PzGXBKwxNERjCJD0LxDVB3y52DdAzX6WEWopDh77g9qoTEMF9kSW0dNHV
+ 6Be9bPLa4xjPKhwoQvoeWwSRheahufGH/yY1cUFBiKkznhPk+G3RAuvw/vQHUS/N/0hZ
+ VbgoI3Y0diXEKvpWrj+UC4w53zrS8vNnbfAMq+ufrS3efQrzH1xR4NAEORL3IeC1iPzi
+ UTKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686307659; x=1688899659;
+ d=1e100.net; s=20221208; t=1686307676; x=1688899676;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tKweUm+um7BdrfNBLJAXxXtSgHD1qY+FtAWIpdBpZZk=;
- b=SWZN8SOxYzqTnWGNo4Zc3n8oHJoyAy7CKPqsoSw92mNJIumzlqeGLyOCaKMC5gsDOT
- AmybE5qeRnEEc8y12TxKzlOJdnTshYWbRqCmiVPuftMHzljRVebHmGet2wsRY20811Mj
- lla3aHcsboQZBeuxBjw6ejzkv/p0bFntPAyEVaxbT+CoeAoiZi4xpnpi/Q/u+U99X2Pu
- f6NSC2AKDvRfoEmI710rthkU/levoSNVhCWXRpi8iTVRHnI4f2pZM6TO637jfC8OduNu
- 3kOUuVlH2J9JbKzuObYvQGLSgF4QulWpgi1Q0F/9flFQec0i8oGGj+Kjylx1hyAE8WRE
- YB/Q==
-X-Gm-Message-State: AC+VfDwEokBsp72i4WdmrvAd7g+gBB8TLZP8o5efxMjFeyIjiSlSHeQb
- QK0DWbhKnKhTa9P0ffRJRWTB+Q==
-X-Received: by 2002:a05:6000:1941:b0:30e:3dce:c49a with SMTP id
- e1-20020a056000194100b0030e3dcec49amr636763wry.2.1686307658956; 
- Fri, 09 Jun 2023 03:47:38 -0700 (PDT)
+ bh=QUgqw4NXTU/7cZToN1+FDVt4sWyyVhDU+bTCl3DfTsc=;
+ b=OJKWi8FdGAfvMVVQZk4SLajET2OHWcVQLsib3xz/oqaatd/AhmVt/d86zN2zIlFvpu
+ OUNN1VlUBozkACZ0bTa9FIzMpvuYBgOk9bYvYiQmhapohBGyQ0+gqq0JNKPH9qQdcQP4
+ QnF3jSqzgBFCjoQc8oFVeZM8q/0NkbDMD7X99BrjO9hI2EkBZh3OpYNd5tAfiimw9Sno
+ h3B4OxJjQr7TzlP6TShhLGZZJHNEyvAnOr7ftCAP6Vz8QcRTQiKIyqfDaSKpRTZM9d6Q
+ jMoqj6xmMy4QEOC1955kOLmW3ZEBPhQr3vlirW1EPxelSG0XfXmPwvbrzwGF78n/qXhF
+ +GSg==
+X-Gm-Message-State: AC+VfDyPeVk+ZdZHGZ+7tbExxBZk0yjEc0ic5TLzx5idTJiv0pzqCdfK
+ l3/NW2+qO0hVENylVKuAJ3VkjePRzDVWa3D/AOP9Dg==
+X-Received: by 2002:a5d:6104:0:b0:30a:e7cb:793 with SMTP id
+ v4-20020a5d6104000000b0030ae7cb0793mr858576wrt.15.1686307675801; 
+ Fri, 09 Jun 2023 03:47:55 -0700 (PDT)
 Received: from localhost.localdomain (23.171.88.92.rev.sfr.net. [92.88.171.23])
  by smtp.gmail.com with ESMTPSA id
- d8-20020a5d6dc8000000b0030aec5e020fsm4066472wrz.86.2023.06.09.03.47.37
+ x5-20020adff0c5000000b003078a3f3a24sm4098532wro.114.2023.06.09.03.47.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Jun 2023 03:47:38 -0700 (PDT)
+ Fri, 09 Jun 2023 03:47:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 03/22] target/arm/tcg: Remove CONFIG_TCG #ifdef'ry check
-Date: Fri,  9 Jun 2023 12:46:58 +0200
-Message-Id: <20230609104717.95555-4-philmd@linaro.org>
+Subject: [PATCH 06/22] target/arm/tcg: Fix iwmmxt-related code style
+Date: Fri,  9 Jun 2023 12:47:01 +0200
+Message-Id: <20230609104717.95555-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230609104717.95555-1-philmd@linaro.org>
 References: <20230609104717.95555-1-philmd@linaro.org>
@@ -124,60 +124,619 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qSWZF8UkmfV+
+X-TUID: c/DID5qBYU3Y
 
-CONFIG_TCG is always defined within target/arm/tcg/.
+In order to be able to move the iwmmxt-related code,
+fix its style to avoid:
+
+  ERROR: braces {} are necessary for all arms of this statement
+  ERROR: space prohibited before that '++' (ctx:WxB)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/tcg/cpu32.c    | 4 +---
- target/arm/tcg/m_helper.c | 6 ------
- 2 files changed, 1 insertion(+), 9 deletions(-)
+ target/arm/tcg/translate.c | 227 +++++++++++++++++++++++--------------
+ 1 file changed, 141 insertions(+), 86 deletions(-)
 
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index 47d2e8e781..0672519b89 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -13,11 +13,9 @@
- #include "hw/core/tcg-cpu-ops.h"
- #include "internals.h"
- #include "target/arm/idau.h"
-+#include "cpregs.h"
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/boards.h"
--#endif
--#include "cpregs.h"
--#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
- #include "hw/intc/armv7m_nvic.h"
- #endif
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 13c88ba1b9..3238463f13 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -1441,10 +1441,11 @@ static inline int gen_iwmmxt_address(DisasContext *s, uint32_t insn,
+     offset = (insn & 0xff) << ((insn >> 7) & 2);
+     if (insn & (1 << 24)) {
+         /* Pre indexed */
+-        if (insn & (1 << 23))
++        if (insn & (1 << 23)) {
+             tcg_gen_addi_i32(tmp, tmp, offset);
+-        else
++        } else {
+             tcg_gen_addi_i32(tmp, tmp, -offset);
++        }
+         tcg_gen_mov_i32(dest, tmp);
+         if (insn & (1 << 21)) {
+             store_reg(s, rd, tmp);
+@@ -1452,13 +1453,15 @@ static inline int gen_iwmmxt_address(DisasContext *s, uint32_t insn,
+     } else if (insn & (1 << 21)) {
+         /* Post indexed */
+         tcg_gen_mov_i32(dest, tmp);
+-        if (insn & (1 << 23))
++        if (insn & (1 << 23)) {
+             tcg_gen_addi_i32(tmp, tmp, offset);
+-        else
++        } else {
+             tcg_gen_addi_i32(tmp, tmp, -offset);
++        }
+         store_reg(s, rd, tmp);
+-    } else if (!(insn & (1 << 23)))
++    } else if (!(insn & (1 << 23))) {
+         return 1;
++    }
+     return 0;
+ }
  
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index 9cef70e5c9..0891acc29c 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -15,10 +15,8 @@
- #include "qemu/bitops.h"
- #include "qemu/log.h"
- #include "exec/exec-all.h"
--#ifdef CONFIG_TCG
- #include "exec/cpu_ldst.h"
- #include "semihosting/common-semi.h"
--#endif
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/intc/armv7m_nvic.h"
- #endif
-@@ -2345,11 +2343,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-         qemu_log_mask(CPU_LOG_INT,
-                       "...handling as semihosting call 0x%x\n",
-                       env->regs[0]);
--#ifdef CONFIG_TCG
-         do_common_semihosting(cs);
--#else
--        g_assert_not_reached();
--#endif
-         env->regs[15] += env->thumb ? 2 : 4;
-         return;
-     case EXCP_BKPT:
+@@ -1483,8 +1486,10 @@ static inline int gen_iwmmxt_shift(uint32_t insn, uint32_t mask, TCGv_i32 dest)
+     return 0;
+ }
+ 
+-/* Disassemble an iwMMXt instruction.  Returns nonzero if an error occurred
+-   (ie. an undefined instruction).  */
++/*
++ * Disassemble an iwMMXt instruction.
++ * Returns nonzero if an error occurred (ie. an undefined instruction).
++ */
+ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+ {
+     int rd, wrd;
+@@ -1570,8 +1575,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         return 0;
+     }
+ 
+-    if ((insn & 0x0f000000) != 0x0e000000)
++    if ((insn & 0x0f000000) != 0x0e000000) {
+         return 1;
++    }
+ 
+     switch (((insn >> 12) & 0xf00) | ((insn >> 4) & 0xff)) {
+     case 0x000:                                                 /* WOR */
+@@ -1586,8 +1592,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_set_cup();
+         break;
+     case 0x011:                                                 /* TMCR */
+-        if (insn & 0xf)
++        if (insn & 0xf) {
+             return 1;
++        }
+         rd = (insn >> 12) & 0xf;
+         wrd = (insn >> 16) & 0xf;
+         switch (wrd) {
+@@ -1627,8 +1634,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_set_cup();
+         break;
+     case 0x111:                                                 /* TMRC */
+-        if (insn & 0xf)
++        if (insn & 0xf) {
+             return 1;
++        }
+         rd = (insn >> 12) & 0xf;
+         wrd = (insn >> 16) & 0xf;
+         tmp = iwmmxt_load_creg(wrd);
+@@ -1662,10 +1670,11 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         rd0 = (insn >> 0) & 0xf;
+         rd1 = (insn >> 16) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+-        if (insn & (1 << 21))
++        if (insn & (1 << 21)) {
+             gen_op_iwmmxt_maddsq_M0_wRn(rd1);
+-        else
++        } else {
+             gen_op_iwmmxt_madduq_M0_wRn(rd1);
++        }
+         gen_op_iwmmxt_movq_wRn_M0(wrd);
+         gen_op_iwmmxt_set_mup();
+         break;
+@@ -1718,12 +1727,14 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         rd0 = (insn >> 16) & 0xf;
+         rd1 = (insn >> 0) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+-        if (insn & (1 << 22))
++        if (insn & (1 << 22)) {
+             gen_op_iwmmxt_sadw_M0_wRn(rd1);
+-        else
++        } else {
+             gen_op_iwmmxt_sadb_M0_wRn(rd1);
+-        if (!(insn & (1 << 20)))
++        }
++        if (!(insn & (1 << 20))) {
+             gen_op_iwmmxt_addl_M0_wRn(wrd);
++        }
+         gen_op_iwmmxt_movq_wRn_M0(wrd);
+         gen_op_iwmmxt_set_mup();
+         break;
+@@ -1733,15 +1744,17 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         rd1 = (insn >> 0) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         if (insn & (1 << 21)) {
+-            if (insn & (1 << 20))
++            if (insn & (1 << 20)) {
+                 gen_op_iwmmxt_mulshw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_mulslw_M0_wRn(rd1);
++            }
+         } else {
+-            if (insn & (1 << 20))
++            if (insn & (1 << 20)) {
+                 gen_op_iwmmxt_muluhw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_mululw_M0_wRn(rd1);
++            }
+         }
+         gen_op_iwmmxt_movq_wRn_M0(wrd);
+         gen_op_iwmmxt_set_mup();
+@@ -1751,10 +1764,11 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         rd0 = (insn >> 16) & 0xf;
+         rd1 = (insn >> 0) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+-        if (insn & (1 << 21))
++        if (insn & (1 << 21)) {
+             gen_op_iwmmxt_macsw_M0_wRn(rd1);
+-        else
++        } else {
+             gen_op_iwmmxt_macuw_M0_wRn(rd1);
++        }
+         if (!(insn & (1 << 20))) {
+             iwmmxt_load_reg(cpu_V1, wrd);
+             tcg_gen_add_i64(cpu_M0, cpu_M0, cpu_V1);
+@@ -1790,15 +1804,17 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         rd1 = (insn >> 0) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         if (insn & (1 << 22)) {
+-            if (insn & (1 << 20))
++            if (insn & (1 << 20)) {
+                 gen_op_iwmmxt_avgw1_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_avgw0_M0_wRn(rd1);
++            }
+         } else {
+-            if (insn & (1 << 20))
++            if (insn & (1 << 20)) {
+                 gen_op_iwmmxt_avgb1_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_avgb0_M0_wRn(rd1);
++            }
+         }
+         gen_op_iwmmxt_movq_wRn_M0(wrd);
+         gen_op_iwmmxt_set_mup();
+@@ -1817,8 +1833,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_set_mup();
+         break;
+     case 0x601: case 0x605: case 0x609: case 0x60d:     /* TINSR */
+-        if (((insn >> 6) & 3) == 3)
++        if (((insn >> 6) & 3) == 3) {
+             return 1;
++        }
+         rd = (insn >> 12) & 0xf;
+         wrd = (insn >> 16) & 0xf;
+         tmp = load_reg(s, rd);
+@@ -1846,8 +1863,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+     case 0x107: case 0x507: case 0x907: case 0xd07:     /* TEXTRM */
+         rd = (insn >> 12) & 0xf;
+         wrd = (insn >> 16) & 0xf;
+-        if (rd == 15 || ((insn >> 22) & 3) == 3)
++        if (rd == 15 || ((insn >> 22) & 3) == 3) {
+             return 1;
++        }
+         gen_op_iwmmxt_movq_M0_wRn(wrd);
+         tmp = tcg_temp_new_i32();
+         switch ((insn >> 22) & 3) {
+@@ -1877,8 +1895,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         store_reg(s, rd, tmp);
+         break;
+     case 0x117: case 0x517: case 0x917: case 0xd17:     /* TEXTRC */
+-        if ((insn & 0x000ff008) != 0x0003f000 || ((insn >> 22) & 3) == 3)
++        if ((insn & 0x000ff008) != 0x0003f000 || ((insn >> 22) & 3) == 3) {
+             return 1;
++        }
+         tmp = iwmmxt_load_creg(ARM_IWMMXT_wCASF);
+         switch ((insn >> 22) & 3) {
+         case 0:
+@@ -1895,8 +1914,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_set_nzcv(tmp);
+         break;
+     case 0x401: case 0x405: case 0x409: case 0x40d:     /* TBCST */
+-        if (((insn >> 6) & 3) == 3)
++        if (((insn >> 6) & 3) == 3) {
+             return 1;
++        }
+         rd = (insn >> 12) & 0xf;
+         wrd = (insn >> 16) & 0xf;
+         tmp = load_reg(s, rd);
+@@ -1915,20 +1935,21 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_set_mup();
+         break;
+     case 0x113: case 0x513: case 0x913: case 0xd13:     /* TANDC */
+-        if ((insn & 0x000ff00f) != 0x0003f000 || ((insn >> 22) & 3) == 3)
++        if ((insn & 0x000ff00f) != 0x0003f000 || ((insn >> 22) & 3) == 3) {
+             return 1;
++        }
+         tmp = iwmmxt_load_creg(ARM_IWMMXT_wCASF);
+         tmp2 = tcg_temp_new_i32();
+         tcg_gen_mov_i32(tmp2, tmp);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            for (i = 0; i < 7; i ++) {
++            for (i = 0; i < 7; i++) {
+                 tcg_gen_shli_i32(tmp2, tmp2, 4);
+                 tcg_gen_and_i32(tmp, tmp, tmp2);
+             }
+             break;
+         case 1:
+-            for (i = 0; i < 3; i ++) {
++            for (i = 0; i < 3; i++) {
+                 tcg_gen_shli_i32(tmp2, tmp2, 8);
+                 tcg_gen_and_i32(tmp, tmp, tmp2);
+             }
+@@ -1961,20 +1982,21 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_set_mup();
+         break;
+     case 0x115: case 0x515: case 0x915: case 0xd15:     /* TORC */
+-        if ((insn & 0x000ff00f) != 0x0003f000 || ((insn >> 22) & 3) == 3)
++        if ((insn & 0x000ff00f) != 0x0003f000 || ((insn >> 22) & 3) == 3) {
+             return 1;
++        }
+         tmp = iwmmxt_load_creg(ARM_IWMMXT_wCASF);
+         tmp2 = tcg_temp_new_i32();
+         tcg_gen_mov_i32(tmp2, tmp);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            for (i = 0; i < 7; i ++) {
++            for (i = 0; i < 7; i++) {
+                 tcg_gen_shli_i32(tmp2, tmp2, 4);
+                 tcg_gen_or_i32(tmp, tmp, tmp2);
+             }
+             break;
+         case 1:
+-            for (i = 0; i < 3; i ++) {
++            for (i = 0; i < 3; i++) {
+                 tcg_gen_shli_i32(tmp2, tmp2, 8);
+                 tcg_gen_or_i32(tmp, tmp, tmp2);
+             }
+@@ -1989,8 +2011,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+     case 0x103: case 0x503: case 0x903: case 0xd03:     /* TMOVMSK */
+         rd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+-        if ((insn & 0xf) != 0 || ((insn >> 22) & 3) == 3)
++        if ((insn & 0xf) != 0 || ((insn >> 22) & 3) == 3) {
+             return 1;
++        }
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         tmp = tcg_temp_new_i32();
+         switch ((insn >> 22) & 3) {
+@@ -2014,22 +2037,25 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_cmpgtsb_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_cmpgtub_M0_wRn(rd1);
++            }
+             break;
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_cmpgtsw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_cmpgtuw_M0_wRn(rd1);
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_cmpgtsl_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_cmpgtul_M0_wRn(rd1);
++            }
+             break;
+         case 3:
+             return 1;
+@@ -2045,22 +2071,25 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpacklsb_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpacklub_M0();
++            }
+             break;
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpacklsw_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpackluw_M0();
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpacklsl_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpacklul_M0();
++            }
+             break;
+         case 3:
+             return 1;
+@@ -2076,22 +2105,25 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpackhsb_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpackhub_M0();
++            }
+             break;
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpackhsw_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpackhuw_M0();
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_unpackhsl_M0();
+-            else
++            } else {
+                 gen_op_iwmmxt_unpackhul_M0();
++            }
+             break;
+         case 3:
+             return 1;
+@@ -2102,8 +2134,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         break;
+     case 0x204: case 0x604: case 0xa04: case 0xe04:     /* WSRL */
+     case 0x214: case 0x614: case 0xa14: case 0xe14:
+-        if (((insn >> 22) & 3) == 0)
++        if (((insn >> 22) & 3) == 0) {
+             return 1;
++        }
+         wrd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+@@ -2128,8 +2161,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         break;
+     case 0x004: case 0x404: case 0x804: case 0xc04:     /* WSRA */
+     case 0x014: case 0x414: case 0x814: case 0xc14:
+-        if (((insn >> 22) & 3) == 0)
++        if (((insn >> 22) & 3) == 0) {
+             return 1;
++        }
+         wrd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+@@ -2154,8 +2188,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         break;
+     case 0x104: case 0x504: case 0x904: case 0xd04:     /* WSLL */
+     case 0x114: case 0x514: case 0x914: case 0xd14:
+-        if (((insn >> 22) & 3) == 0)
++        if (((insn >> 22) & 3) == 0) {
+             return 1;
++        }
+         wrd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+@@ -2180,8 +2215,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         break;
+     case 0x304: case 0x704: case 0xb04: case 0xf04:     /* WROR */
+     case 0x314: case 0x714: case 0xb14: case 0xf14:
+-        if (((insn >> 22) & 3) == 0)
++        if (((insn >> 22) & 3) == 0) {
+             return 1;
++        }
+         wrd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+@@ -2218,22 +2254,25 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_minsb_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_minub_M0_wRn(rd1);
++            }
+             break;
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_minsw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_minuw_M0_wRn(rd1);
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_minsl_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_minul_M0_wRn(rd1);
++            }
+             break;
+         case 3:
+             return 1;
+@@ -2249,22 +2288,25 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 0:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_maxsb_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_maxub_M0_wRn(rd1);
++            }
+             break;
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_maxsw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_maxuw_M0_wRn(rd1);
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_maxsl_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_maxul_M0_wRn(rd1);
++            }
+             break;
+         case 3:
+             return 1;
+@@ -2387,30 +2429,34 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+     case 0x408: case 0x508: case 0x608: case 0x708:
+     case 0x808: case 0x908: case 0xa08: case 0xb08:
+     case 0xc08: case 0xd08: case 0xe08: case 0xf08:
+-        if (!(insn & (1 << 20)) || ((insn >> 22) & 3) == 0)
++        if (!(insn & (1 << 20)) || ((insn >> 22) & 3) == 0) {
+             return 1;
++        }
+         wrd = (insn >> 12) & 0xf;
+         rd0 = (insn >> 16) & 0xf;
+         rd1 = (insn >> 0) & 0xf;
+         gen_op_iwmmxt_movq_M0_wRn(rd0);
+         switch ((insn >> 22) & 3) {
+         case 1:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_packsw_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_packuw_M0_wRn(rd1);
++            }
+             break;
+         case 2:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_packsl_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_packul_M0_wRn(rd1);
++            }
+             break;
+         case 3:
+-            if (insn & (1 << 21))
++            if (insn & (1 << 21)) {
+                 gen_op_iwmmxt_packsq_M0_wRn(rd1);
+-            else
++            } else {
+                 gen_op_iwmmxt_packuq_M0_wRn(rd1);
++            }
+             break;
+         }
+         gen_op_iwmmxt_movq_wRn_M0(wrd);
+@@ -2424,8 +2470,9 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         wrd = (insn >> 5) & 0xf;
+         rd0 = (insn >> 12) & 0xf;
+         rd1 = (insn >> 0) & 0xf;
+-        if (rd0 == 0xf || rd1 == 0xf)
++        if (rd0 == 0xf || rd1 == 0xf) {
+             return 1;
++        }
+         gen_op_iwmmxt_movq_M0_wRn(wrd);
+         tmp = load_reg(s, rd0);
+         tmp2 = load_reg(s, rd1);
+@@ -2437,10 +2484,12 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+             gen_helper_iwmmxt_muladdsw(cpu_M0, cpu_M0, tmp, tmp2);
+             break;
+         case 0xc: case 0xd: case 0xe: case 0xf:                 /* TMIAxy */
+-            if (insn & (1 << 16))
++            if (insn & (1 << 16)) {
+                 tcg_gen_shri_i32(tmp, tmp, 16);
+-            if (insn & (1 << 17))
++            }
++            if (insn & (1 << 17)) {
+                 tcg_gen_shri_i32(tmp2, tmp2, 16);
++            }
+             gen_helper_iwmmxt_muladdswl(cpu_M0, cpu_M0, tmp, tmp2);
+             break;
+         default:
+@@ -2456,8 +2505,10 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+     return 0;
+ }
+ 
+-/* Disassemble an XScale DSP instruction.  Returns nonzero if an error occurred
+-   (ie. an undefined instruction).  */
++/*
++ * Disassemble an XScale DSP instruction.
++ * Returns nonzero if an error occurred (ie. an undefined instruction).
++ */
+ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+ {
+     int acc, rd0, rd1, rdhi, rdlo;
+@@ -2469,8 +2520,9 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+         rd1 = insn & 0xf;
+         acc = (insn >> 5) & 7;
+ 
+-        if (acc != 0)
++        if (acc != 0) {
+             return 1;
++        }
+ 
+         tmp = load_reg(s, rd0);
+         tmp2 = load_reg(s, rd1);
+@@ -2485,10 +2537,12 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+         case 0xd:                                       /* MIABT */
+         case 0xe:                                       /* MIATB */
+         case 0xf:                                       /* MIATT */
+-            if (insn & (1 << 16))
++            if (insn & (1 << 16)) {
+                 tcg_gen_shri_i32(tmp, tmp, 16);
+-            if (insn & (1 << 17))
++            }
++            if (insn & (1 << 17)) {
+                 tcg_gen_shri_i32(tmp2, tmp2, 16);
++            }
+             gen_helper_iwmmxt_muladdswl(cpu_M0, cpu_M0, tmp, tmp2);
+             break;
+         default:
+@@ -2505,8 +2559,9 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+         rdlo = (insn >> 12) & 0xf;
+         acc = insn & 7;
+ 
+-        if (acc != 0)
++        if (acc != 0) {
+             return 1;
++        }
+ 
+         if (insn & ARM_CP_RW_BIT) {                     /* MRA */
+             iwmmxt_load_reg(cpu_V0, acc);
 -- 
 2.38.1
 

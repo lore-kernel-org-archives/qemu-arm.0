@@ -1,109 +1,108 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289309ejb;
-        Fri, 9 Jun 2023 03:48:33 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7qJQDcnSOjS1Rq3lNHYiAH1exxsoNxWC2iYLJW0xtRIf+sgLVbHOcEOGBvm/JNxd7wUUCe
-X-Received: by 2002:a05:620a:3944:b0:75b:23a1:8e51 with SMTP id qs4-20020a05620a394400b0075b23a18e51mr656433qkn.34.1686307712868;
-        Fri, 09 Jun 2023 03:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686307712; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp289360ejb;
+        Fri, 9 Jun 2023 03:48:37 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5OJ+VsOiOpg1qZV7xHE058ohPktZv/YJilzRY5B7Z69PBcRqKfBIyvnqeOQvm4/feXAgII
+X-Received: by 2002:a05:620a:4608:b0:75b:23a0:e7ce with SMTP id br8-20020a05620a460800b0075b23a0e7cemr916896qkb.47.1686307717560;
+        Fri, 09 Jun 2023 03:48:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686307717; cv=none;
         d=google.com; s=arc-20160816;
-        b=M7Y/F5xfDEPeNVhfvrFEKzc9sunmKmvj9PvbadNvSKjfsKrOlDRZB/AO1GnPAwaj4B
-         YuSONn0EU23l2FDSRM6Opk9ik4fRTDoQmJelT4XxQaJmSwBpZ19+rsgDsTwQuWPYjtYd
-         9KIcNMxRsADaQV+YJvdc7XYF1Z6FVNCUdty8RMKciGf1BtKsrVe2JXHcZQBFBGFOckqV
-         RuWIBeCjf9khiVdpsME1lFlabFx06YvQg7io30FqpIVPrk4aDWApU0/c5mEgNdk1+zmy
-         4A5ZaZb3y4sUy3WsfEM45h6O/lYxjn5jwOmE/f0Rth01iWARtY4/iyUObiW/9cyWEKkI
-         qoQQ==
+        b=SXx25LAJrFY0LfBCSyWtUbSz1iv1IT9F9cunZC5K4+zEtBXpsTj7v4+sFpn9ZWy1O6
+         KsECyLfjspZXDQFzrgW3ILEX+XtkImq3Jtx6ES/as2JUv4frllQsAdnPu3auJG13XrtC
+         JDWwuAEoGytmShL5uJTAHuKDyFvLRT770AyOiqxqpFuEcYHa9VU9xL0S+Gv8GkCdCQeM
+         vWM7qKTG3LGS8Qh2cHE+/kDjiQYaI8iR1QwrdV78Vp2WPVe2DYDU/ITTRKULOu9GTH8+
+         TC968YKV4ZaNLZPZdV3WYBf/O//QVW/75nnp2zqMYsp28DMsfmObn9qlDTH6bePPD8sg
+         Ek6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=sWKAibTUADLLTxJ/+sZHZAPdH6D/uto5/x3pl3Mjmng=;
-        b=jM89dgI2N8+OdUlxFMQnfstx8C7uAU1eE03tCexqPbuHTE4FtcMH6Zsmrsv6IU01Gp
-         V6HaVN/1T8j/6RNaBYY9gWXBm6mAcwL98P71IZixrE5iHxz6w17Fq4el1nWElYfH/en0
-         P/deguk3+81Wk2HKLUkYfXHr2awTxB/dOrhu06NWWXw71qO7sIZ5ZIW+50nlxSeL97hy
-         cQEe3EwTfjjlWGVaT8LY56CcGDXp+M9q0Ha2y1xrzjno/OyeltwgFJSz4PQqMIHdw9qc
-         D8Le79MD2BeUsp+YYJyeNKA4wfxFih6Dq7HOPq/o4JAkXssHI8C1E7naHeQtVI3KYqQc
-         hXkg==
+        bh=uQVMFnSnRrSFcc+z/a3bT1hs0FZjoEq6vgTJcq2cEQg=;
+        b=mbgxIg8FAbCk477sEV+CuzMaS/AK+SfqQZzuoWdsBMDGXRosMf5VcrWTUeNrVaYFKp
+         TCOkEdkrF+ezfq/kCW+mfgmbeOfQKcmOqRtfA6dP4mcaBcJkjSusPcZFY6NtP3Vcp/MO
+         HmSZw7ofw7iAKp0KFB+yTuBRYtrg6dMps2CtakpNJ7PMjQpSA08FyZFD/reRVfw+vXFa
+         8hnQbLlW7/I3Rq/7KuB7/ymqWoEbfRN/bLY5YC82EbNDwrdvkT1D0Nfi0IbhCIPCODro
+         Y0WsZpgA7X1jT/JjMWQ6N18nHOwBJifeMcBo1MI4/yN37cLDU0mUWnzRtNShdkMVcHVs
+         yPvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xMAAe5xP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MHdemmay;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3-20020a05620a06c300b007468a0f1abasi1938675qky.600.2023.06.09.03.48.32
+        by mx.google.com with ESMTPS id g20-20020a05620a13d400b0075ebf7d8942si1843574qkl.640.2023.06.09.03.48.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Jun 2023 03:48:32 -0700 (PDT)
+        Fri, 09 Jun 2023 03:48:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xMAAe5xP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MHdemmay;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q7Zet-0001I1-Mj; Fri, 09 Jun 2023 06:47:55 -0400
+	id 1q7ZfT-00029d-EC; Fri, 09 Jun 2023 06:48:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zes-0001Fv-6A
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:54 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZfN-00022P-6f
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:48:26 -0400
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7Zep-0001Em-Tt
- for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:47:53 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-4f61d79b0f2so2073252e87.3
- for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:47:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q7ZfJ-0001UH-LB
+ for qemu-arm@nongnu.org; Fri, 09 Jun 2023 06:48:23 -0400
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-4f4b384c09fso1961864e87.3
+ for <qemu-arm@nongnu.org>; Fri, 09 Jun 2023 03:48:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686307670; x=1688899670;
+ d=linaro.org; s=google; t=1686307699; x=1688899699;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sWKAibTUADLLTxJ/+sZHZAPdH6D/uto5/x3pl3Mjmng=;
- b=xMAAe5xPdJB0WKbvxeRgyFr+oP/oBwWgSJVqQ/hAI+rhg/EuJRTmPS0EPvJfeWrmiw
- DnAI3oyyvf/BNIULcCbZZnPYSS6YxtNnoAjoIOBGOr5sMp0PQ6ALSjkbUCIKHLw4zumA
- zU7ypI2BIJYxD+ePZr9rjsSeOFOSn2VUzPtto3l+y4lmurWeqaeYUxYWRACgUznxmPYY
- 21XUPrLcDiRdwN155cvx8TH09tX2Jd+C62CS68OdaLAcWoGkaYFhUSj5Ff4nslFO/GPN
- wE5d102oAeIN7ewBN6I18BlqZDkTP0oLt339dXsWciJXeFKlmiNYEtbAX273Xp81yFPb
- wt+w==
+ bh=uQVMFnSnRrSFcc+z/a3bT1hs0FZjoEq6vgTJcq2cEQg=;
+ b=MHdemmayQ5ziEGP+L/Ai1iXPHkVN9FcLp3CfiSA11dr3mJciVZFNDMnzGD2tv00fT9
+ vXeQwMGXRX0lPZZNYsA7V8Ag60NeR3dA2bOpwzMTKsjozaxiPyoHpoiwmgoIj5mLAvwd
+ lrknnV8fw2bgv/6iP3D67oIZB1dz0P8nEGB8+3RblAOw4mhLhAWqlkWMBOfDMSvoD/cU
+ RtM0StqH9dqmxF4aGQKCSqP8p28JpVkNK65zBhXK60ZQfcXrNnIE/VKXSJkx3oXfj3iQ
+ cnsk4rEBdHrpIKJBvLBgLoZ/acc5TuHe8CHW2Zhu4hBNvafQjNAuqUZgchoSqYkG7RDx
+ GRiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686307670; x=1688899670;
+ d=1e100.net; s=20221208; t=1686307699; x=1688899699;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sWKAibTUADLLTxJ/+sZHZAPdH6D/uto5/x3pl3Mjmng=;
- b=e0P/NWij0qTVm0ioUV5cOOV2YCjM+gCT9GsKHzF+7hmrUUWK/2zlA8ksFuE9QnZGu5
- 7zoBc/siF/pULzejoJV3jawOH6ZpeQCKY7PmmRBhqK9Up9SxbKf6uzXl1dUiXyIBfeh3
- hew/nX9niIBIaFzctFjJl8LoxqSHVAizvqgdm6FshnBhDyqO0HKftSxw1TYsl492Lry/
- ymMsDtos/EZMUfPDwi/MtQYqRKIG0h8kvIj9nvocyFiwtJB63cBWyH1Bga8Sbxk0hFmV
- Njnv2pQtkIF6EYp8e9PetOsUnlwat/yBGF/xOO+j9oIRzVVSiIsEJBH7NU6DR/DzpcnE
- xckQ==
-X-Gm-Message-State: AC+VfDyYFQE6ZFYJpuIf3lCpk/AAfi5rNm8wEpOswfS4i9mylyHbgLET
- GPvAtGGEkmBE7zFKqYW0daCPemMlgRur0KvS+Sm64A==
-X-Received: by 2002:a05:6512:461:b0:4f3:b6b8:dabb with SMTP id
- x1-20020a056512046100b004f3b6b8dabbmr754595lfd.13.1686307670252; 
- Fri, 09 Jun 2023 03:47:50 -0700 (PDT)
+ bh=uQVMFnSnRrSFcc+z/a3bT1hs0FZjoEq6vgTJcq2cEQg=;
+ b=aYjFhQ9KKoNK+VCSr5TOyHXJiVReT88KU7jSaE2fZsduSoDH0CcgL9wCdvwXj9o8cg
+ ALwurUXF+qxiHCFKRSpjgem5oXa2QwDgrly3MBOBL3cFFgFh8A1MkWhaFpA+YIpnf3j0
+ zR/tTPVTeBxGF6Tm9SaCT5QWtQ4fcJTsjGzjszZD/TWRHLvRELjgdsGkTpWnvNVTHcMo
+ BrgrAimsaoILBOnqE9H2T0xTx7+BgQGO4c11VX7hnY8oOkIofYR3h9/0qp87IjnG3VKl
+ UxR9FazbgtPsz4WPr+t2yd/EAIHzlpfZPE0qCl2xFM3c3os0Fhn3XIhyv66smDTUZXTm
+ R3HQ==
+X-Gm-Message-State: AC+VfDwIqz/KaIcAJsO0omdkP+Qtnkgfr5iu3lLpuHNQKJirZuu1ZlVm
+ rhTRx9kiIk3NRTaezll6y1aIcWmzO+Bmh2U9y7vjJA==
+X-Received: by 2002:a19:674d:0:b0:4f6:43cc:5857 with SMTP id
+ e13-20020a19674d000000b004f643cc5857mr643148lfj.19.1686307699785; 
+ Fri, 09 Jun 2023 03:48:19 -0700 (PDT)
 Received: from localhost.localdomain (23.171.88.92.rev.sfr.net. [92.88.171.23])
  by smtp.gmail.com with ESMTPSA id
- w25-20020a1cf619000000b003f7f52c9988sm2317463wmc.21.2023.06.09.03.47.49
+ p7-20020a05600c204700b003f7a562ff31sm2325064wmg.6.2023.06.09.03.48.14
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Jun 2023 03:47:49 -0700 (PDT)
+ Fri, 09 Jun 2023 03:48:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 05/22] target/arm/tcg: Extract iwMMXt helpers from the generic
- 'helper.h'
-Date: Fri,  9 Jun 2023 12:47:00 +0200
-Message-Id: <20230609104717.95555-6-philmd@linaro.org>
+Subject: [PATCH 09/22] target/arm/tcg: Reduce 'helper-iwmmxt.h.inc' inclusion
+Date: Fri,  9 Jun 2023 12:47:04 +0200
+Message-Id: <20230609104717.95555-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230609104717.95555-1-philmd@linaro.org>
 References: <20230609104717.95555-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,247 +124,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iFq2Tzi9zwio
+X-TUID: xSKaS42akKDD
+
+Instead of including helper-iwmmxt.h.inc via helper.h which
+is included by all TCG files, restrict it to the few files
+that require it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/helper.h                |  96 +-----------------------
- target/arm/tcg/helper-iwmmxt.h.inc | 114 +++++++++++++++++++++++++++++
- 2 files changed, 115 insertions(+), 95 deletions(-)
- create mode 100644 target/arm/tcg/helper-iwmmxt.h.inc
+ target/arm/helper.h               | 1 -
+ target/arm/tcg/iwmmxt_helper.c    | 6 +++++-
+ target/arm/tcg/translate-iwmmxt.c | 6 ++++++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 4218d98b51..c4a321c0ea 100644
+index c4a321c0ea..dd12fee107 100644
 --- a/target/arm/helper.h
 +++ b/target/arm/helper.h
-@@ -445,101 +445,6 @@ DEF_HELPER_3(neon_acgt_f32, i32, i32, i32, ptr)
- DEF_HELPER_3(neon_acge_f64, i64, i64, i64, ptr)
- DEF_HELPER_3(neon_acgt_f64, i64, i64, i64, ptr)
- 
--/* iwmmxt_helper.c */
--DEF_HELPER_2(iwmmxt_maddsq, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_madduq, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_sadb, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_sadw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_mulslw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_mulshw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_mululw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_muluhw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_macsw, i64, i64, i64)
--DEF_HELPER_2(iwmmxt_macuw, i64, i64, i64)
--DEF_HELPER_1(iwmmxt_setpsr_nz, i32, i64)
--
--#define DEF_IWMMXT_HELPER_SIZE_ENV(name) \
--DEF_HELPER_3(iwmmxt_##name##b, i64, env, i64, i64) \
--DEF_HELPER_3(iwmmxt_##name##w, i64, env, i64, i64) \
--DEF_HELPER_3(iwmmxt_##name##l, i64, env, i64, i64) \
--
--DEF_IWMMXT_HELPER_SIZE_ENV(unpackl)
--DEF_IWMMXT_HELPER_SIZE_ENV(unpackh)
--
--DEF_HELPER_2(iwmmxt_unpacklub, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackluw, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpacklul, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhub, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhuw, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhul, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpacklsb, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpacklsw, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpacklsl, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhsb, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhsw, i64, env, i64)
--DEF_HELPER_2(iwmmxt_unpackhsl, i64, env, i64)
--
--DEF_IWMMXT_HELPER_SIZE_ENV(cmpeq)
--DEF_IWMMXT_HELPER_SIZE_ENV(cmpgtu)
--DEF_IWMMXT_HELPER_SIZE_ENV(cmpgts)
--
--DEF_IWMMXT_HELPER_SIZE_ENV(mins)
--DEF_IWMMXT_HELPER_SIZE_ENV(minu)
--DEF_IWMMXT_HELPER_SIZE_ENV(maxs)
--DEF_IWMMXT_HELPER_SIZE_ENV(maxu)
--
--DEF_IWMMXT_HELPER_SIZE_ENV(subn)
--DEF_IWMMXT_HELPER_SIZE_ENV(addn)
--DEF_IWMMXT_HELPER_SIZE_ENV(subu)
--DEF_IWMMXT_HELPER_SIZE_ENV(addu)
--DEF_IWMMXT_HELPER_SIZE_ENV(subs)
--DEF_IWMMXT_HELPER_SIZE_ENV(adds)
--
--DEF_HELPER_3(iwmmxt_avgb0, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_avgb1, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_avgw0, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_avgw1, i64, env, i64, i64)
--
--DEF_HELPER_3(iwmmxt_align, i64, i64, i64, i32)
--DEF_HELPER_4(iwmmxt_insr, i64, i64, i32, i32, i32)
--
--DEF_HELPER_1(iwmmxt_bcstb, i64, i32)
--DEF_HELPER_1(iwmmxt_bcstw, i64, i32)
--DEF_HELPER_1(iwmmxt_bcstl, i64, i32)
--
--DEF_HELPER_1(iwmmxt_addcb, i64, i64)
--DEF_HELPER_1(iwmmxt_addcw, i64, i64)
--DEF_HELPER_1(iwmmxt_addcl, i64, i64)
--
--DEF_HELPER_1(iwmmxt_msbb, i32, i64)
--DEF_HELPER_1(iwmmxt_msbw, i32, i64)
--DEF_HELPER_1(iwmmxt_msbl, i32, i64)
--
--DEF_HELPER_3(iwmmxt_srlw, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_srll, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_srlq, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_sllw, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_slll, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_sllq, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_sraw, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_sral, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_sraq, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_rorw, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_rorl, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_rorq, i64, env, i64, i32)
--DEF_HELPER_3(iwmmxt_shufh, i64, env, i64, i32)
--
--DEF_HELPER_3(iwmmxt_packuw, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_packul, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_packuq, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_packsw, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_packsl, i64, env, i64, i64)
--DEF_HELPER_3(iwmmxt_packsq, i64, env, i64, i64)
--
--DEF_HELPER_3(iwmmxt_muladdsl, i64, i64, i32, i32)
--DEF_HELPER_3(iwmmxt_muladdsw, i64, i64, i32, i32)
--DEF_HELPER_3(iwmmxt_muladdswl, i64, i64, i32, i32)
--
- DEF_HELPER_FLAGS_2(neon_unzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
- DEF_HELPER_FLAGS_2(neon_unzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
- DEF_HELPER_FLAGS_2(neon_qunzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
-@@ -1044,4 +949,5 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
+@@ -949,5 +949,4 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
  #include "tcg/helper-sme.h.inc"
  #endif
  
-+#include "tcg/helper-iwmmxt.h.inc"
+-#include "tcg/helper-iwmmxt.h.inc"
  #include "tcg/helper-mve.h.inc"
-diff --git a/target/arm/tcg/helper-iwmmxt.h.inc b/target/arm/tcg/helper-iwmmxt.h.inc
-new file mode 100644
-index 0000000000..b464290545
---- /dev/null
-+++ b/target/arm/tcg/helper-iwmmxt.h.inc
-@@ -0,0 +1,114 @@
-+/*
-+ *  XScale iwMMXt specific helper definitions
-+ *
-+ * Copyright (c) 2007 OpenedHand, Ltd.
-+ * Written by Andrzej Zaborowski <andrew@openedhand.com>
-+ * Copyright (c) 2008 CodeSourcery
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
+diff --git a/target/arm/tcg/iwmmxt_helper.c b/target/arm/tcg/iwmmxt_helper.c
+index 610b1b2103..fa84b5f672 100644
+--- a/target/arm/tcg/iwmmxt_helper.c
++++ b/target/arm/tcg/iwmmxt_helper.c
+@@ -22,7 +22,11 @@
+ #include "qemu/osdep.h"
+ 
+ #include "cpu.h"
+-#include "exec/helper-proto.h"
 +
-+DEF_HELPER_2(iwmmxt_maddsq, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_madduq, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_sadb, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_sadw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_mulslw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_mulshw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_mululw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_muluhw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_macsw, i64, i64, i64)
-+DEF_HELPER_2(iwmmxt_macuw, i64, i64, i64)
-+DEF_HELPER_1(iwmmxt_setpsr_nz, i32, i64)
++#define HELPER_H "tcg/helper-iwmmxt.h.inc"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#undef  HELPER_H
+ 
+ /* iwMMXt macros extracted from GNU gdb.  */
+ 
+diff --git a/target/arm/tcg/translate-iwmmxt.c b/target/arm/tcg/translate-iwmmxt.c
+index a054064c98..d241f64835 100644
+--- a/target/arm/tcg/translate-iwmmxt.c
++++ b/target/arm/tcg/translate-iwmmxt.c
+@@ -21,6 +21,12 @@
+ #include "translate.h"
+ #include "translate-a32.h"
+ 
++#define HELPER_H "tcg/helper-iwmmxt.h.inc"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#include "exec/helper-info.c.inc"
++#undef  HELPER_H
 +
-+#define DEF_IWMMXT_HELPER_SIZE_ENV(name) \
-+DEF_HELPER_3(iwmmxt_##name##b, i64, env, i64, i64) \
-+DEF_HELPER_3(iwmmxt_##name##w, i64, env, i64, i64) \
-+DEF_HELPER_3(iwmmxt_##name##l, i64, env, i64, i64) \
-+
-+DEF_IWMMXT_HELPER_SIZE_ENV(unpackl)
-+DEF_IWMMXT_HELPER_SIZE_ENV(unpackh)
-+
-+DEF_HELPER_2(iwmmxt_unpacklub, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackluw, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpacklul, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhub, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhuw, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhul, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpacklsb, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpacklsw, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpacklsl, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhsb, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhsw, i64, env, i64)
-+DEF_HELPER_2(iwmmxt_unpackhsl, i64, env, i64)
-+
-+DEF_IWMMXT_HELPER_SIZE_ENV(cmpeq)
-+DEF_IWMMXT_HELPER_SIZE_ENV(cmpgtu)
-+DEF_IWMMXT_HELPER_SIZE_ENV(cmpgts)
-+
-+DEF_IWMMXT_HELPER_SIZE_ENV(mins)
-+DEF_IWMMXT_HELPER_SIZE_ENV(minu)
-+DEF_IWMMXT_HELPER_SIZE_ENV(maxs)
-+DEF_IWMMXT_HELPER_SIZE_ENV(maxu)
-+
-+DEF_IWMMXT_HELPER_SIZE_ENV(subn)
-+DEF_IWMMXT_HELPER_SIZE_ENV(addn)
-+DEF_IWMMXT_HELPER_SIZE_ENV(subu)
-+DEF_IWMMXT_HELPER_SIZE_ENV(addu)
-+DEF_IWMMXT_HELPER_SIZE_ENV(subs)
-+DEF_IWMMXT_HELPER_SIZE_ENV(adds)
-+
-+DEF_HELPER_3(iwmmxt_avgb0, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_avgb1, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_avgw0, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_avgw1, i64, env, i64, i64)
-+
-+DEF_HELPER_3(iwmmxt_align, i64, i64, i64, i32)
-+DEF_HELPER_4(iwmmxt_insr, i64, i64, i32, i32, i32)
-+
-+DEF_HELPER_1(iwmmxt_bcstb, i64, i32)
-+DEF_HELPER_1(iwmmxt_bcstw, i64, i32)
-+DEF_HELPER_1(iwmmxt_bcstl, i64, i32)
-+
-+DEF_HELPER_1(iwmmxt_addcb, i64, i64)
-+DEF_HELPER_1(iwmmxt_addcw, i64, i64)
-+DEF_HELPER_1(iwmmxt_addcl, i64, i64)
-+
-+DEF_HELPER_1(iwmmxt_msbb, i32, i64)
-+DEF_HELPER_1(iwmmxt_msbw, i32, i64)
-+DEF_HELPER_1(iwmmxt_msbl, i32, i64)
-+
-+DEF_HELPER_3(iwmmxt_srlw, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_srll, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_srlq, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_sllw, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_slll, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_sllq, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_sraw, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_sral, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_sraq, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_rorw, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_rorl, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_rorq, i64, env, i64, i32)
-+DEF_HELPER_3(iwmmxt_shufh, i64, env, i64, i32)
-+
-+DEF_HELPER_3(iwmmxt_packuw, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_packul, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_packuq, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_packsw, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_packsl, i64, env, i64, i64)
-+DEF_HELPER_3(iwmmxt_packsq, i64, env, i64, i64)
-+
-+DEF_HELPER_3(iwmmxt_muladdsl, i64, i64, i32, i32)
-+DEF_HELPER_3(iwmmxt_muladdsw, i64, i64, i32, i32)
-+DEF_HELPER_3(iwmmxt_muladdswl, i64, i64, i32, i32)
+ #define ARM_CP_RW_BIT   (1 << 20)
+ 
+ static inline void iwmmxt_load_reg(TCGv_i64 var, int reg)
 -- 
 2.38.1
 

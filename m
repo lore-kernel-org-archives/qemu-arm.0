@@ -1,109 +1,240 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp636623ejb;
-        Fri, 9 Jun 2023 13:51:58 -0700 (PDT)
-X-Received: by 2002:a17:902:e810:b0:1b2:4042:d227 with SMTP id u16-20020a170902e81000b001b24042d227mr2705604plg.12.1686343917638;
-        Fri, 09 Jun 2023 13:51:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686343917; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp788279ejb;
+        Fri, 9 Jun 2023 20:48:50 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4cPIwSfiK4IxZQak0hffgqYhyjl+1KG/zhSTX8LnGpWAIB7VS/O+BpDNUbW2XAEVnvMvgd
+X-Received: by 2002:a17:907:6da1:b0:979:65f0:cced with SMTP id sb33-20020a1709076da100b0097965f0ccedmr3141152ejc.17.1686368930796;
+        Fri, 09 Jun 2023 20:48:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686368930; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yu8hgJKz1zj0e7ZAm+7qNc1fZ9DPxURxNnE1SWh8+BFuvCd+TFUEDTQqKSaMXAit8+
-         oW6OdWgTHmpkSfJn+6RU9FjU6G2FXoP+yxB0Lipl4EnnG3+eDuyQ21qToCtPDBYt/f/I
-         KVncQLto/m3sC1uqlnb2dlD9z6SfJ/hoXBJw4epZy09jVqPfIvYM+BJwHre0RUeNFCDz
-         MsgAsmZN5N7mZcdvaSb05w4cuciwD/RAZ+6czPHLBIWa8XVofIZilAKpq1MN4W/frECR
-         5Y6h/DggN17FOuF6rrTcQ59F8jBFBc/oEXmhOy/0+DIbYRxt66q4xqvCovIlCFHUoXDT
-         f+gw==
+        b=mN6eo1DB4pzWJ742nm1rMrTY6zKQAJ72FqcQFFE8taBM6F271dLL9kZ51VvfrcQ/Zz
+         Y5zhUhN56LzfMaJx7Wss+cLFea4y/N5nWKRuM2fNo1unIWPdUc1XfHNy2n3ubY7dQrXD
+         TvfP0HuDGilRR/cm29EALZltewXae/Lt+sgt4+LdFF8BqP4dNJ8a0PGbOkCOdx6oyD+a
+         exvK+65j3f1WVGSdO6zsT+oRgqYZaHpWIv+MKDKRtUGzhaEoqDxOiDXBohJYdyDbgzq4
+         BTgOo/EaWotgMJBxld9Ln46mlesHhKgbtKbUIjLRXP/iCi54IVo0odFYrTdmR9YnQIDe
+         jdBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=5LkCJbpSOakdaFx7ULhYJYv/yhnAQhR93g029V+P75k=;
-        b=tL7UjZlrQ4CxmMdbIMlinEpLyaKZDEpwhskbB7bIL66tWV/eQ2i6ZAuPhR9UoHaQIc
-         Q+13xon+7/249Ehvhj9v26++vCEFHTplcvj3SnISEaMNoxiQRckBPaCYC8kmwlkPbkG4
-         CFDcM/6YDlFxLzZQQdbUDka/jn7L92QyTw1Yx8DfAXFTKAAbKrwH4JX86UA1O5pyBqeV
-         8fwcDT+lU7lcbmmHq4i3u+WGWwnRXblO/92WspqRgSmfIJ+dCMfxr6La3l5p0+30oK3l
-         V5WrP0+IXH0EkNyIaDrZBYVqWgdKwX6ISGAA/kdJ8bHukFw7F5eb5Tn0QoMvaIXk8Qm6
-         pwRw==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to
+         :content-language:references:cc:to:from:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
+        b=LTgfvz29DppWQLE4iMWhhQMt/O5F7qVH8M/Uo5aewdBAQy2B7fI6itp6mrLs9PkCO7
+         yk0QKsih4cNUxwQoFhw6OnxLUmc+pZb7s6JOWe4DOnvfkcpDVATlxTgQRUMa+zDanlSk
+         DS2RYwBNaLH0RAL65r+Cdwub31eN3yuvax9poSTq9iKj9CdF8+ErpcxByeu3Ou4g3AqA
+         yEoBOKziKcUJwtrEgkejYBU3ErNj37AAobsA/KkTarhx9REJNyC8jg99/SzLVebIOPeJ
+         CS249/q2kfruZaMfQ44lNEzoON5GmW+lqC/EzQlhFLsp9l0ikJihcs48R0F8ZDyX6CF5
+         1aaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=punUdi3d;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l5-20020a170902e2c500b001ae3fe5f1c2sor2076556plc.7.2023.06.09.13.51.57
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 09 Jun 2023 13:51:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=OtWoyN26;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id fy19-20020a170906b7d300b0096f40b0433bsi2345252ejb.396.2023.06.09.20.48.50;
+        Fri, 09 Jun 2023 20:48:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=punUdi3d;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=OtWoyN26;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S231821AbjFJDsq (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Fri, 9 Jun 2023 23:48:46 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36746 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229854AbjFJDsm (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 9 Jun 2023 23:48:42 -0400
+Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com [IPv6:2607:f8b0:4864:20::52b])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5C3BB35B6
+        for <kvm@vger.kernel.org>; Fri,  9 Jun 2023 20:48:41 -0700 (PDT)
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-51b4ef5378bso1376938a12.1
+        for <kvm@vger.kernel.org>; Fri, 09 Jun 2023 20:48:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1686343917; x=1688935917;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5LkCJbpSOakdaFx7ULhYJYv/yhnAQhR93g029V+P75k=;
-        b=punUdi3dj7o5AhgM7n7auqIGFqjaQXyQFBFUhij+DeusTdjF8otsEuTuysqa9/FiSp
-         UDjcMNCMXSSUwLLD1lSQgLOxDIv4+x/nzDRyanJtqf6MoU1Irhf4EytptxyePOCmQJab
-         F/8VPjRrJo/EmORStPWqZmqk00+YGhAgqfwPJxzEx5FjUtTX3OtE3HpyMHdWBN9dA//F
-         VcbuA74e18mVjq7TEe/vmmuBqAJhpOCYs1DNaWSgnDXIorhJ0QPOCexXNJOjqLVi0DHg
-         KTW2tI4jm9ViYuRh6gykyJVmPpEGicpTYUNzku3KJsPyXxQSHbsoZXFxhOajAvtKjlwW
-         +Ppw==
+        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1686368921; x=1688960921;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
+        b=OtWoyN26fyfQcQOyLBBwZb2HNwlPMImXnUMGVmLkCSsmRmShdF0GXnklI6drsqvyiR
+         bJKwmChSmdHE4BrFxEJYjt/PEJViYDK/HkjNkuUk0s1iEogMaj7BELpnObZzLuCLISlz
+         XgvKfj8/Z5a8BfTefimUQlFI788VF5mIvomMO9OM0bDF2/Zhqc//F8Ix60uNVMNJthp1
+         MLpt9wuo8l+C0/osQSoshsL1T0N/F/pxzPAZCySIC9Pmz3aL8HUj0K1XOTrTG+EPaGX0
+         HgZGsgGtUp2AJKfNMmBAPjDstBH9sxqd0qn1Yy2V2XphxfdF31vNZeCGtq2WVMFM1Bjv
+         dp2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686343917; x=1688935917;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20221208; t=1686368921; x=1688960921;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5LkCJbpSOakdaFx7ULhYJYv/yhnAQhR93g029V+P75k=;
-        b=LfBD36PtK7Q7A8Vg+/TyOLq6V4whhaUsWO3cIqMARHIc/4hTP+IWTXkvs0nQtHaP2K
-         rkWw2V3pq5/u/N/bCjIJq5CHy1mDtWrgpskyOqBgvWz0B02JnwW+0O2pfm8zUKz3WMf1
-         YUlr2JhdPRt8S5ciYekazsBOCz3vtysA2QexCOekXZ3JRX/JI8mXTlGJgjlP9lpYmcjQ
-         wZxZ04rydRu+4WHCf3l82N4SWhJYU2WskTwMzMW/E8NlDWHy7n6rl6AUQiZWp24rijUk
-         lXGkSjE/FXUWmYQA/bncsmrxoDTWSQQkQcdWkzoRbMk1PgAULmEQMoJA95EbOy8vk/JU
-         dYfw==
-X-Gm-Message-State: AC+VfDy/jLUDrVQi4XM+/aI5yAc96S5a7fY9CDEa6Twumi6QzYy/nctw
-	qwIgfWjQ7z/nYwBSUq3EVvo6xKXN
-X-Google-Smtp-Source: ACHHUZ4BRdqvJf7t41ocDavO2eyzeYpwvAnQL+apFtxDyHHN8PT4d07iS2FAeRE8Hr5UOf0c9emIvA==
-X-Received: by 2002:a17:903:24c:b0:1a6:82ac:f277 with SMTP id j12-20020a170903024c00b001a682acf277mr2672069plh.14.1686343916869;
-        Fri, 09 Jun 2023 13:51:56 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from ?IPV6:2602:ae:1598:4c01:20be:c4cb:f609:8cca? ([2602:ae:1598:4c01:20be:c4cb:f609:8cca])
-        by smtp.gmail.com with ESMTPSA id a11-20020a1709027d8b00b001aadd0d7364sm3662918plm.83.2023.06.09.13.51.56
+        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
+        b=eyiI9SW/npNh/4GpqsDpbJ2bQ8qdhCeVpTc1kTwSIahqWk+q6+1a599ytnJhU5k7Oo
+         ltc3fWiDaW8MlzysBOpJWBIcp4F9rCv3rkpjMHV7Oy7jCet2cONklxlrzYfe+wgvGRE7
+         9/94fUEDYAFiFOjo6+Ni7C1IOcMjqfarVfo535DT9D2TncrK1cP4T1mL8tFTaNjjzATq
+         9DbAqhnsuNrgdiEkBDC5wAk6qUKrjhyXxQ3sy/ylN8dg6XewZR9b1vRRj6ehvmDLdxNT
+         cit5c1XbzmHiOCNGea8dfHnT8f3BTL0pQI+aG6G0ACK0Po5y2Zjj/JBrvuwjqkej3w9E
+         KGhA==
+X-Gm-Message-State: AC+VfDy3o5q8FRGIjMeBzfSWvOtGJM0tim0ABz5U00ibgk4G6UNgeTZQ
+        3F1hY6X8fpGp6BGQNzXop/yx8qp+fn9u6xMlPRc=
+X-Received: by 2002:a17:903:1209:b0:1b0:3224:e53a with SMTP id l9-20020a170903120900b001b03224e53amr986205plh.20.1686368920625;
+        Fri, 09 Jun 2023 20:48:40 -0700 (PDT)
+Received: from [157.82.204.253] ([157.82.204.253])
+        by smtp.gmail.com with ESMTPSA id w17-20020a170902e89100b001affb590696sm3912648plg.216.2023.06.09.20.48.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Jun 2023 13:51:56 -0700 (PDT)
-Message-ID: <351b3a2a-6676-ea4a-d345-3ff3a5cf0d88@linaro.org>
-Date: Fri, 9 Jun 2023 13:51:54 -0700
+        Fri, 09 Jun 2023 20:48:39 -0700 (PDT)
+Message-ID: <735b9728-8d9a-0b1b-22c9-f8dac3723740@daynix.com>
+Date:   Sat, 10 Jun 2023 12:48:37 +0900
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v3 2/8] target/arm: v8.3 PAC ID_AA64ISAR[12]
- feature-detection
+Subject: Re: [PATCH] accel/kvm: Specify default IPA size for arm64
+From:   Akihiko Odaki <akihiko.odaki@daynix.com>
+To:     Paolo Bonzini <pbonzini@redhat.com>
+Cc:     Richard Henderson <richard.henderson@linaro.org>,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
+        Peter Maydell <peter.maydell@linaro.org>
+References: <20230109062259.79074-1-akihiko.odaki@daynix.com>
+ <481867e4-b019-80de-5369-9a503fa049ac@linaro.org>
+ <fb435604-1638-c4ee-efca-bdbe2a4be98b@daynix.com>
+ <CAFEAcA8dT+uvhCspUU9P-ev57UR9r5MDxkinPzwf+TieW_mUYg@mail.gmail.com>
+ <1453e91d-c630-0d95-156d-cdf97774db1b@daynix.com>
 Content-Language: en-US
-To: Aaron Lindsay <aaron@os.amperecomputing.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Vincent Dehors <vincent.dehors@smile.fr>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20230609172324.982888-1-aaron@os.amperecomputing.com>
- <20230609172324.982888-3-aaron@os.amperecomputing.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230609172324.982888-3-aaron@os.amperecomputing.com>
+In-Reply-To: <1453e91d-c630-0d95-156d-cdf97774db1b@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 0Mf//nhWkAkb
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-2.0 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
+        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1+cmHp7csS0b
 
-On 6/9/23 10:23, Aaron Lindsay wrote:
-> +static inline int isar_feature_pauth_get_features(const ARMISARegisters *id)
-> +{
-> +    if (isar_feature_aa64_pauth_arch_qarma5(id)) {
-> +        return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, APA);
-> +    } else if (isar_feature_aa64_pauth_arch_qarma3(id)) {
-> +        return FIELD_EX64(id->id_aa64isar2, ID_AA64ISAR2, APA3);
-> +    } else {
-> +        return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, API);
-> +    }
-> +}
+On 2023/04/24 19:58, Akihiko Odaki wrote:
+> On 2023/01/16 20:18, Peter Maydell wrote:
+>> On Sat, 14 Jan 2023 at 06:49, Akihiko Odaki <akihiko.odaki@daynix.com> 
+>> wrote:
+>>>
+>>> On 2023/01/14 14:23, Richard Henderson wrote:
+>>>> On 1/8/23 22:22, Akihiko Odaki wrote:
+>>>>> libvirt uses "none" machine type to test KVM availability. Before this
+>>>>> change, QEMU used to pass 0 as machine type when calling 
+>>>>> KVM_CREATE_VM.
+>>>>>
+>>>>> The kernel documentation says:
+>>>>>> On arm64, the physical address size for a VM (IPA Size limit) is
+>>>>>> limited to 40bits by default. The limit can be configured if the host
+>>>>>> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
+>>>>>> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine 
+>>>>>> type
+>>>>>> identifier, where IPA_Bits is the maximum width of any physical
+>>>>>> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
+>>>>>> machine type identifier.
+>>>>>>
+>>>>>> e.g, to configure a guest to use 48bit physical address size::
+>>>>>>
+>>>>>>       vm_fd = ioctl(dev_fd, KVM_CREATE_VM, 
+>>>>>> KVM_VM_TYPE_ARM_IPA_SIZE(48));
+>>>>>>
+>>>>>> The requested size (IPA_Bits) must be:
+>>>>>>
+>>>>>>    ==   =========================================================
+>>>>>>     0   Implies default size, 40bits (for backward compatibility)
+>>>>>>     N   Implies N bits, where N is a positive integer such that,
+>>>>>>         32 <= N <= Host_IPA_Limit
+>>>>>>    ==   =========================================================
+>>>>>
+>>>>>> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
+>>>>>> and is dependent on the CPU capability and the kernel configuration.
+>>>>>> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
+>>>>>> KVM_CHECK_EXTENSION ioctl() at run-time.
+>>>>>>
+>>>>>> Creation of the VM will fail if the requested IPA size (whether it is
+>>>>>> implicit or explicit) is unsupported on the host.
+>>>>> https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
+>>>>>
+>>>>> So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
+>>>>> incorrectly thinks KVM is not available. This actually happened on M2
+>>>>> MacBook Air.
+>>>>>
+>>>>> Fix this by specifying 32 for IPA_Bits as any arm64 system should
+>>>>> support the value according to the documentation.
+>>>>>
+>>>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>>> ---
+>>>>>    accel/kvm/kvm-all.c | 4 ++++
+>>>>>    1 file changed, 4 insertions(+)
+>>>>>
+>>>>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+>>>>> index e86c33e0e6..776ac7efcc 100644
+>>>>> --- a/accel/kvm/kvm-all.c
+>>>>> +++ b/accel/kvm/kvm-all.c
+>>>>> @@ -2294,7 +2294,11 @@ static int kvm_init(MachineState *ms)
+>>>>>        KVMState *s;
+>>>>>        const KVMCapabilityInfo *missing_cap;
+>>>>>        int ret;
+>>>>> +#ifdef TARGET_AARCH64
+>>>>> +    int type = 32;
+>>>>> +#else
+>>>>>        int type = 0;
+>>>>> +#endif
+>>>>
+>>>> No need for an ifdef.  Down below we have,
+>>>>
+>>>>       if (object_property_find(OBJECT(current_machine), "kvm-type")) {
+>>>>           g_autofree char *kvm_type =
+>>>> object_property_get_str(OBJECT(current_machine),
+>>>>                                                               
+>>>> "kvm-type",
+>>>>                                                               
+>>>> &error_abort);
+>>>>           type = mc->kvm_type(ms, kvm_type);
+>>>>       } else if (mc->kvm_type) {
+>>>>           type = mc->kvm_type(ms, NULL);
+>>>>       }
+>>>>
+>>>> and the aarch64 -M virt machine provides virt_kvm_type as mc->kvm_type.
+>>>>
+>>>> How did you hit this?  Are you trying to implement your own board 
+>>>> model?
+>>>>
+>>>> Looking at this, I'm surprised this is a board hook and not a cpu hook.
+>>>> But I suppose the architecture specific 'type' can hide any number of
+>>>> sins.  Anyway, if you are doing your own board model, I suggest
+>>>> arranging to share the virt board hook -- maybe moving it to
+>>>> target/arm/kvm.c in the process?
+>>
+>>> I hit this problem when I used libvirt; libvirt uses "none" machine type
+>>> to probe the availability of KVM and "none" machine type does not
+>>> provide kvm_type hook.
+>>>
+>>> As the implementation of "none" machine type is shared among different
+>>> architectures, we cannot remove ifdef by moving it to the hook.
+>>>
+>>> Although implementing the hook for "none" machine type is still
+>>> possible, I  think the default type should provide the lowest common
+>>> denominator and "none" machine type shouldn't try to work around when
+>>> the type is wrong. Otherwise it doesn't make sense to provide the 
+>>> "default".
+>>
+>> Yes, the problem is that the 'none' board type is all
+>> architecture-independent code, and so is this kvm_init() code, so
+>> there's no obvious arm-specific place to say "pick the best IPA size
+>> that will work for this host".
+>>
+>> Perhaps we should create somewhere in here a target-arch specific
+>> hook: we already have ifdefs in this function for S390X and PPC
+>> (printing some special case error strings if the ioctl fails), so
+>> maybe a hook that does "take the type provided by the machine hook,
+>> if any, sanitize or reject it, do the ioctl call, print arch-specific
+>> help/error messages if relevant" ? Paolo, do you have an opinion?
+>>
+>> thanks
+>> -- PMM
+> 
+> Hi Paolo,
+> 
+> I have sent this patch a while ago but it's kind of missed so I'm about 
+> to push this forward again. Can you have a look at this?
+> 
+> Regards,
+> Akihiko Odaki
 
-As I mentioned in previous review, exactly one of these fields will be non-zero, so you 
-can just OR them all together without the conditionals.
-
-
-r~
+ping?

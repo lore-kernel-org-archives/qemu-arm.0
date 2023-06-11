@@ -1,240 +1,238 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp788279ejb;
-        Fri, 9 Jun 2023 20:48:50 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4cPIwSfiK4IxZQak0hffgqYhyjl+1KG/zhSTX8LnGpWAIB7VS/O+BpDNUbW2XAEVnvMvgd
-X-Received: by 2002:a17:907:6da1:b0:979:65f0:cced with SMTP id sb33-20020a1709076da100b0097965f0ccedmr3141152ejc.17.1686368930796;
-        Fri, 09 Jun 2023 20:48:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686368930; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1370334ejb;
+        Sun, 11 Jun 2023 01:58:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4vUgl4muSXJ/SJ5dmAWOXUqZT+1p694/WJRwklfiKysmCXTl9Cihcq62PfRHjyT9YCnwYG
+X-Received: by 2002:a05:622a:24c:b0:3ef:3808:dea0 with SMTP id c12-20020a05622a024c00b003ef3808dea0mr8212078qtx.0.1686473936853;
+        Sun, 11 Jun 2023 01:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686473936; cv=none;
         d=google.com; s=arc-20160816;
-        b=mN6eo1DB4pzWJ742nm1rMrTY6zKQAJ72FqcQFFE8taBM6F271dLL9kZ51VvfrcQ/Zz
-         Y5zhUhN56LzfMaJx7Wss+cLFea4y/N5nWKRuM2fNo1unIWPdUc1XfHNy2n3ubY7dQrXD
-         TvfP0HuDGilRR/cm29EALZltewXae/Lt+sgt4+LdFF8BqP4dNJ8a0PGbOkCOdx6oyD+a
-         exvK+65j3f1WVGSdO6zsT+oRgqYZaHpWIv+MKDKRtUGzhaEoqDxOiDXBohJYdyDbgzq4
-         BTgOo/EaWotgMJBxld9Ln46mlesHhKgbtKbUIjLRXP/iCi54IVo0odFYrTdmR9YnQIDe
-         jdBQ==
+        b=odYPRlQBIDfHbh+Dc+i7A4433nhkQ6+/eMVgkt8mTOxp6SXen16nZdDNrZK1M3qDwg
+         R3Ou0yzP9jwfE+Batw9vgVVTnfaWmLIUuNTCZ7Zz7Yxsw4WYDpyt9ILLurRD/IGzDFTD
+         9Chx7H5QJleGn9PzUZmOpZTFNjbahcMpEJYb5nRpKjQsulspsPT7XaCJdntDdiJPHxtn
+         mYhH1oEAY7mS9rwNSbjdIc8RShrHfAHYDVZ2611uRyWWqZdUh78uTIrlTDKUGHRYAu+r
+         i+Zagf0M0ZH00eRsxobul6K7r+kz8s981Le23S7A8Q8DQAJtNOY/dYq5W/RWAEK2fI2W
+         39UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to
-         :content-language:references:cc:to:from:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
-        b=LTgfvz29DppWQLE4iMWhhQMt/O5F7qVH8M/Uo5aewdBAQy2B7fI6itp6mrLs9PkCO7
-         yk0QKsih4cNUxwQoFhw6OnxLUmc+pZb7s6JOWe4DOnvfkcpDVATlxTgQRUMa+zDanlSk
-         DS2RYwBNaLH0RAL65r+Cdwub31eN3yuvax9poSTq9iKj9CdF8+ErpcxByeu3Ou4g3AqA
-         yEoBOKziKcUJwtrEgkejYBU3ErNj37AAobsA/KkTarhx9REJNyC8jg99/SzLVebIOPeJ
-         CS249/q2kfruZaMfQ44lNEzoON5GmW+lqC/EzQlhFLsp9l0ikJihcs48R0F8ZDyX6CF5
-         1aaw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=t0NdcEUrbCPnpVDr1IxBm04NJqSbsxwlcbwIYAJr9rc=;
+        b=QjGSz11G1ZjTRpHzA0+3zsEFQH6hnvwPGxjiE+VXmy+5TbvvJzMQoFh7QefQI9bVy1
+         Dm9bM8CnERG5s3g/FNqdS9EDp1SZCkjHmRlanYSWVyawksFyE4JOzvRkxvhHRQMbg9uR
+         3RK63FzE0PoDJI/GS3fctvfWRiKzs0dawXS+PGgmeMvY3q9oC3SZQtvQY1oLLA6KDeUZ
+         6dxrrRtHU58Byg0JKEyO6yz1x6978lAldEQKxOhNFjGbzDPjiyW+rNlKxWxcItcMrjWo
+         IxMcTuVGNeZOpdOW/4jP1J61KxWEOkFIFCrm4QhoNhXXXRLX6i5tm1yUS5MdkZGw2Vts
+         Oukw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=OtWoyN26;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id fy19-20020a170906b7d300b0096f40b0433bsi2345252ejb.396.2023.06.09.20.48.50;
-        Fri, 09 Jun 2023 20:48:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@linaro.org header.s=google header.b=on3FdXsl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c13-20020ac87dcd000000b003e4e9ddc6f9si4466750qte.118.2023.06.11.01.58.56
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 11 Jun 2023 01:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20221208.gappssmtp.com header.s=20221208 header.b=OtWoyN26;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231821AbjFJDsq (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Fri, 9 Jun 2023 23:48:46 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:36746 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229854AbjFJDsm (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 9 Jun 2023 23:48:42 -0400
-Received: from mail-pg1-x52b.google.com (mail-pg1-x52b.google.com [IPv6:2607:f8b0:4864:20::52b])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5C3BB35B6
-        for <kvm@vger.kernel.org>; Fri,  9 Jun 2023 20:48:41 -0700 (PDT)
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-51b4ef5378bso1376938a12.1
-        for <kvm@vger.kernel.org>; Fri, 09 Jun 2023 20:48:41 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=on3FdXsl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q8GuT-0000vl-Uk; Sun, 11 Jun 2023 04:58:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GuS-0000v0-7z
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 04:58:52 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GuQ-0003WC-3x
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 04:58:52 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-30e53cacc10so1966005f8f.0
+ for <qemu-arm@nongnu.org>; Sun, 11 Jun 2023 01:58:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20221208.gappssmtp.com; s=20221208; t=1686368921; x=1688960921;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
-        b=OtWoyN26fyfQcQOyLBBwZb2HNwlPMImXnUMGVmLkCSsmRmShdF0GXnklI6drsqvyiR
-         bJKwmChSmdHE4BrFxEJYjt/PEJViYDK/HkjNkuUk0s1iEogMaj7BELpnObZzLuCLISlz
-         XgvKfj8/Z5a8BfTefimUQlFI788VF5mIvomMO9OM0bDF2/Zhqc//F8Ix60uNVMNJthp1
-         MLpt9wuo8l+C0/osQSoshsL1T0N/F/pxzPAZCySIC9Pmz3aL8HUj0K1XOTrTG+EPaGX0
-         HgZGsgGtUp2AJKfNMmBAPjDstBH9sxqd0qn1Yy2V2XphxfdF31vNZeCGtq2WVMFM1Bjv
-         dp2A==
+ d=linaro.org; s=google; t=1686473928; x=1689065928;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=t0NdcEUrbCPnpVDr1IxBm04NJqSbsxwlcbwIYAJr9rc=;
+ b=on3FdXsl5dhsFFVczV/rqMkXbSgfQII83oFFUY5IwPa6xMltx7VlG00QMhPttGwvCk
+ xoLHKEhs8lvQUq2UCqncxCLf9Arbbc6ga9C8QT+ZpFfIbzKlvhYQfeUId1ZB2+Ma5OLW
+ 3uvGJFqiPIQTB0vmzkSMcl6+PTG+ieijHPeLsFbhk6z+i64voCxTtbpbwXqfoW9uZgZg
+ kRALVtmWTzZNxqxe4NvR/Ts1SVRJKpi+mLcifJSCTkzHmyXh1xyXIh30oLbL4Wbd/7TM
+ WZaokynOr5HYadrj9VB5OxWQtxcHWjOFFn3EIVpIOT0CtgKRuII2u+r6Z4Ez6/n/SlpV
+ QEOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1686368921; x=1688960921;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VnWMydR8I7AjHGk8PbtlJMwJlD444VqmITbEIIyb36o=;
-        b=eyiI9SW/npNh/4GpqsDpbJ2bQ8qdhCeVpTc1kTwSIahqWk+q6+1a599ytnJhU5k7Oo
-         ltc3fWiDaW8MlzysBOpJWBIcp4F9rCv3rkpjMHV7Oy7jCet2cONklxlrzYfe+wgvGRE7
-         9/94fUEDYAFiFOjo6+Ni7C1IOcMjqfarVfo535DT9D2TncrK1cP4T1mL8tFTaNjjzATq
-         9DbAqhnsuNrgdiEkBDC5wAk6qUKrjhyXxQ3sy/ylN8dg6XewZR9b1vRRj6ehvmDLdxNT
-         cit5c1XbzmHiOCNGea8dfHnT8f3BTL0pQI+aG6G0ACK0Po5y2Zjj/JBrvuwjqkej3w9E
-         KGhA==
-X-Gm-Message-State: AC+VfDy3o5q8FRGIjMeBzfSWvOtGJM0tim0ABz5U00ibgk4G6UNgeTZQ
-        3F1hY6X8fpGp6BGQNzXop/yx8qp+fn9u6xMlPRc=
-X-Received: by 2002:a17:903:1209:b0:1b0:3224:e53a with SMTP id l9-20020a170903120900b001b03224e53amr986205plh.20.1686368920625;
-        Fri, 09 Jun 2023 20:48:40 -0700 (PDT)
-Received: from [157.82.204.253] ([157.82.204.253])
-        by smtp.gmail.com with ESMTPSA id w17-20020a170902e89100b001affb590696sm3912648plg.216.2023.06.09.20.48.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Jun 2023 20:48:39 -0700 (PDT)
-Message-ID: <735b9728-8d9a-0b1b-22c9-f8dac3723740@daynix.com>
-Date:   Sat, 10 Jun 2023 12:48:37 +0900
+ d=1e100.net; s=20221208; t=1686473928; x=1689065928;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=t0NdcEUrbCPnpVDr1IxBm04NJqSbsxwlcbwIYAJr9rc=;
+ b=L03fYsEghWgqA4ZoFaJ4Z4dmkU9a3Rbt2vnTsBPeSnC/dHCOSDFcek3Y1T++KK2qSK
+ YJfoK7sbRCGyynfb7m8F75EkmGQ30TubifUZIvawrNOcaTm3JDRxwzpeYHfRDfR5/nXT
+ 2DQGzvBpo78qO/Kg/8zBWHDCpTwTc6oJ/UPECERwD2eRuNOMEkAEiQmPrzTUSDE/H0ME
+ Mk6kNYt9tFWkP+s7Wpq/oev+Dnjb5c86priYaV649GJZyK0R9Wc5rr+wx7Rx31aGSFdw
+ upLjLGEYlOOpXs8gAJJ+ul8o3/r3PwNdT1hFDDSZALR3dvlRln+YjamChAymF8IFWlp8
+ knKQ==
+X-Gm-Message-State: AC+VfDw+SUh5we+ObNonWMIETxkuZCMb0UYzaaZZRqm4Vkms5PatqtZg
+ U013rdWWER1PwC2IhWzn7U0MvQ==
+X-Received: by 2002:adf:e8c3:0:b0:30a:efb0:ce5c with SMTP id
+ k3-20020adfe8c3000000b0030aefb0ce5cmr2143123wrn.45.1686473927971; 
+ Sun, 11 Jun 2023 01:58:47 -0700 (PDT)
+Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
+ [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
+ e8-20020adff348000000b00304adbeeabbsm9113851wrp.99.2023.06.11.01.58.47
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sun, 11 Jun 2023 01:58:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 00/26] target/arm/tcg: Remove inclusions of
+ 'exec/helper-[proto/gen].h'
+Date: Sun, 11 Jun 2023 10:58:20 +0200
+Message-Id: <20230611085846.21415-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] accel/kvm: Specify default IPA size for arm64
-From:   Akihiko Odaki <akihiko.odaki@daynix.com>
-To:     Paolo Bonzini <pbonzini@redhat.com>
-Cc:     Richard Henderson <richard.henderson@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
-        Peter Maydell <peter.maydell@linaro.org>
-References: <20230109062259.79074-1-akihiko.odaki@daynix.com>
- <481867e4-b019-80de-5369-9a503fa049ac@linaro.org>
- <fb435604-1638-c4ee-efca-bdbe2a4be98b@daynix.com>
- <CAFEAcA8dT+uvhCspUU9P-ev57UR9r5MDxkinPzwf+TieW_mUYg@mail.gmail.com>
- <1453e91d-c630-0d95-156d-cdf97774db1b@daynix.com>
-Content-Language: en-US
-In-Reply-To: <1453e91d-c630-0d95-156d-cdf97774db1b@daynix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.0 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,SPF_HELO_NONE,SPF_NONE,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 1+cmHp7csS0b
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WgrE29knOHfm
 
-On 2023/04/24 19:58, Akihiko Odaki wrote:
-> On 2023/01/16 20:18, Peter Maydell wrote:
->> On Sat, 14 Jan 2023 at 06:49, Akihiko Odaki <akihiko.odaki@daynix.com> 
->> wrote:
->>>
->>> On 2023/01/14 14:23, Richard Henderson wrote:
->>>> On 1/8/23 22:22, Akihiko Odaki wrote:
->>>>> libvirt uses "none" machine type to test KVM availability. Before this
->>>>> change, QEMU used to pass 0 as machine type when calling 
->>>>> KVM_CREATE_VM.
->>>>>
->>>>> The kernel documentation says:
->>>>>> On arm64, the physical address size for a VM (IPA Size limit) is
->>>>>> limited to 40bits by default. The limit can be configured if the host
->>>>>> supports the extension KVM_CAP_ARM_VM_IPA_SIZE. When supported, use
->>>>>> KVM_VM_TYPE_ARM_IPA_SIZE(IPA_Bits) to set the size in the machine 
->>>>>> type
->>>>>> identifier, where IPA_Bits is the maximum width of any physical
->>>>>> address used by the VM. The IPA_Bits is encoded in bits[7-0] of the
->>>>>> machine type identifier.
->>>>>>
->>>>>> e.g, to configure a guest to use 48bit physical address size::
->>>>>>
->>>>>>       vm_fd = ioctl(dev_fd, KVM_CREATE_VM, 
->>>>>> KVM_VM_TYPE_ARM_IPA_SIZE(48));
->>>>>>
->>>>>> The requested size (IPA_Bits) must be:
->>>>>>
->>>>>>    ==   =========================================================
->>>>>>     0   Implies default size, 40bits (for backward compatibility)
->>>>>>     N   Implies N bits, where N is a positive integer such that,
->>>>>>         32 <= N <= Host_IPA_Limit
->>>>>>    ==   =========================================================
->>>>>
->>>>>> Host_IPA_Limit is the maximum possible value for IPA_Bits on the host
->>>>>> and is dependent on the CPU capability and the kernel configuration.
->>>>>> The limit can be retrieved using KVM_CAP_ARM_VM_IPA_SIZE of the
->>>>>> KVM_CHECK_EXTENSION ioctl() at run-time.
->>>>>>
->>>>>> Creation of the VM will fail if the requested IPA size (whether it is
->>>>>> implicit or explicit) is unsupported on the host.
->>>>> https://docs.kernel.org/virt/kvm/api.html#kvm-create-vm
->>>>>
->>>>> So if Host_IPA_Limit < 40, such KVM_CREATE_VM will fail, and libvirt
->>>>> incorrectly thinks KVM is not available. This actually happened on M2
->>>>> MacBook Air.
->>>>>
->>>>> Fix this by specifying 32 for IPA_Bits as any arm64 system should
->>>>> support the value according to the documentation.
->>>>>
->>>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>> ---
->>>>>    accel/kvm/kvm-all.c | 4 ++++
->>>>>    1 file changed, 4 insertions(+)
->>>>>
->>>>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->>>>> index e86c33e0e6..776ac7efcc 100644
->>>>> --- a/accel/kvm/kvm-all.c
->>>>> +++ b/accel/kvm/kvm-all.c
->>>>> @@ -2294,7 +2294,11 @@ static int kvm_init(MachineState *ms)
->>>>>        KVMState *s;
->>>>>        const KVMCapabilityInfo *missing_cap;
->>>>>        int ret;
->>>>> +#ifdef TARGET_AARCH64
->>>>> +    int type = 32;
->>>>> +#else
->>>>>        int type = 0;
->>>>> +#endif
->>>>
->>>> No need for an ifdef.  Down below we have,
->>>>
->>>>       if (object_property_find(OBJECT(current_machine), "kvm-type")) {
->>>>           g_autofree char *kvm_type =
->>>> object_property_get_str(OBJECT(current_machine),
->>>>                                                               
->>>> "kvm-type",
->>>>                                                               
->>>> &error_abort);
->>>>           type = mc->kvm_type(ms, kvm_type);
->>>>       } else if (mc->kvm_type) {
->>>>           type = mc->kvm_type(ms, NULL);
->>>>       }
->>>>
->>>> and the aarch64 -M virt machine provides virt_kvm_type as mc->kvm_type.
->>>>
->>>> How did you hit this?  Are you trying to implement your own board 
->>>> model?
->>>>
->>>> Looking at this, I'm surprised this is a board hook and not a cpu hook.
->>>> But I suppose the architecture specific 'type' can hide any number of
->>>> sins.  Anyway, if you are doing your own board model, I suggest
->>>> arranging to share the virt board hook -- maybe moving it to
->>>> target/arm/kvm.c in the process?
->>
->>> I hit this problem when I used libvirt; libvirt uses "none" machine type
->>> to probe the availability of KVM and "none" machine type does not
->>> provide kvm_type hook.
->>>
->>> As the implementation of "none" machine type is shared among different
->>> architectures, we cannot remove ifdef by moving it to the hook.
->>>
->>> Although implementing the hook for "none" machine type is still
->>> possible, I  think the default type should provide the lowest common
->>> denominator and "none" machine type shouldn't try to work around when
->>> the type is wrong. Otherwise it doesn't make sense to provide the 
->>> "default".
->>
->> Yes, the problem is that the 'none' board type is all
->> architecture-independent code, and so is this kvm_init() code, so
->> there's no obvious arm-specific place to say "pick the best IPA size
->> that will work for this host".
->>
->> Perhaps we should create somewhere in here a target-arch specific
->> hook: we already have ifdefs in this function for S390X and PPC
->> (printing some special case error strings if the ioctl fails), so
->> maybe a hook that does "take the type provided by the machine hook,
->> if any, sanitize or reject it, do the ioctl call, print arch-specific
->> help/error messages if relevant" ? Paolo, do you have an opinion?
->>
->> thanks
->> -- PMM
-> 
-> Hi Paolo,
-> 
-> I have sent this patch a while ago but it's kind of missed so I'm about 
-> to push this forward again. Can you have a look at this?
-> 
-> Regards,
-> Akihiko Odaki
+Since v1:
+- Addressed rth's review comments (unnecessary helper-gen)
+- Added R-b
+- Extract M-profile helpers
+- Fixed licence in new files
 
-ping?
+Hi,
+
+This series tries to do what Richard suggested in [*]:
+
+  Targets that have a tcg/ subdir should have helper.h.inc
+  moved into there.  At the end, include/exec/helper-gen.h
+  and include/exec/helper-proto.h become unused and go away.
+
+but only for the ARM target, to first see if this is heading
+in the correct direction.
+
+Instead of having TCG generated helpers included by all
+translate/helper units, they are reduced to the few places
+really needing them. I expect the build step to be slighly
+improved, since the compiler doesn't have to compile and
+track unused helpers definitions.
+
+[*] https://lore.kernel.org/qemu-devel/cad000d7-f408-9337-9328-ccb262c5fcc7@linaro.org/
+
+Philippe Mathieu-Daudé (26):
+  plugins: Remove unused 'exec/helper-proto.h' header
+  accel/tcg/cpu-exec: Use generic 'helper-proto-common.h' header
+  target/arm/tcg: Remove CONFIG_TCG #ifdef'ry check
+  target/arm/tcg: Rename helper template headers as '.h.inc'
+  target/arm/tcg: Extract iwMMXt helpers from the generic 'helper.h'
+  target/arm/tcg: Fix iwmmxt-related code style
+  target/arm/tcg: Expose some iwmmxt methods in 'translate.h'
+  target/arm/tcg: Extract iwmmxt code to translate-iwmmxt.c
+  target/arm/tcg: Reduce 'helper-iwmmxt.h.inc' inclusion
+  target/arm/tcg: Extract VFP definitions to 'helper-vfp.h.inc'
+  target/arm/tcg: Reduce 'helper-vfp.h.inc' inclusion
+  target/arm/tcg: Move neon_tbl() from op_helper.c to neon_helper.c
+  target/arm/tcg: Extract NEON definitions to 'helper-neon.h.inc'
+  target/arm/tcg: Reduce 'helper-neon.h.inc' inclusion
+  target/arm/tcg: Extract SVE2 definitions to 'helper-sve.h.inc'
+  target/arm/tcg: Reduce 'helper-sve.h.inc' inclusion
+  target/arm/tcg: Reduce 'helper-mve.h.inc' inclusion
+  target/arm/tcg: Reduce 'helper-sme.h.inc' inclusion
+  target/arm/tcg: Reduce 'helper-a64.h.inc' inclusion
+  target/arm/tcg: Move v8m_stackcheck() from op_helper.c to m_helper.c
+  target/arm/tcg: Extract M-profile definitions to 'helper-m.h.inc'
+  target/arm/tcg: Reduce 'helper-m.h.inc' inclusion
+  target/arm/tcg: Inline 'exec/helper-gen.h'
+  target/arm/tcg: Inline 'exec/helper-proto.h'
+  target/arm/tcg: Rename 'helper.h' -> 'tcg/helper.h.inc'
+  tests/tcg/aarch64: Rename bti-crt.inc.c -> bti-crt.c.inc
+
+ target/arm/tcg/translate.h                    |   10 +-
+ .../tcg/{helper-a64.h => helper-a64.h.inc}    |    0
+ target/arm/tcg/helper-iwmmxt.h.inc            |  103 ++
+ target/arm/tcg/helper-m.h.inc                 |   23 +
+ .../tcg/{helper-mve.h => helper-mve.h.inc}    |    0
+ target/arm/tcg/helper-neon.h.inc              |  213 +++
+ .../tcg/{helper-sme.h => helper-sme.h.inc}    |    0
+ .../tcg/{helper-sve.h => helper-sve.h.inc}    |   46 +
+ target/arm/tcg/helper-vfp.h.inc               |  163 ++
+ target/arm/{helper.h => tcg/helper.h.inc}     |  524 -------
+ accel/tcg/cpu-exec.c                          |    2 +-
+ plugins/core.c                                |    1 -
+ target/arm/debug_helper.c                     |    6 +-
+ target/arm/helper.c                           |    7 +-
+ target/arm/tcg/cpu32.c                        |    4 +-
+ target/arm/tcg/crypto_helper.c                |    5 +-
+ target/arm/tcg/helper-a64.c                   |    9 +-
+ target/arm/tcg/hflags.c                       |    5 +-
+ target/arm/tcg/iwmmxt_helper.c                |    5 +-
+ target/arm/tcg/m_helper.c                     |   31 +-
+ target/arm/tcg/mte_helper.c                   |    4 +-
+ target/arm/tcg/mve_helper.c                   |    9 +-
+ target/arm/tcg/neon_helper.c                  |   27 +-
+ target/arm/tcg/op_helper.c                    |   43 +-
+ target/arm/tcg/pauth_helper.c                 |    4 +-
+ target/arm/tcg/psci.c                         |    5 +-
+ target/arm/tcg/sme_helper.c                   |    5 +-
+ target/arm/tcg/sve_helper.c                   |   12 +-
+ target/arm/tcg/tlb_helper.c                   |    4 +-
+ target/arm/tcg/translate-a64.c                |   18 +
+ target/arm/tcg/translate-iwmmxt.c             | 1331 +++++++++++++++++
+ target/arm/tcg/translate-m-nocp.c             |   11 +
+ target/arm/tcg/translate-mve.c                |    6 +
+ target/arm/tcg/translate-neon.c               |   10 +
+ target/arm/tcg/translate-sme.c                |   14 +
+ target/arm/tcg/translate-sve.c                |    5 +
+ target/arm/tcg/translate-vfp.c                |   10 +
+ target/arm/tcg/translate.c                    | 1278 +---------------
+ target/arm/tcg/vec_helper.c                   |   21 +-
+ target/arm/vfp_helper.c                       |    9 +-
+ tests/tcg/aarch64/bti-1.c                     |    2 +-
+ tests/tcg/aarch64/bti-3.c                     |    2 +-
+ .../aarch64/{bti-crt.inc.c => bti-crt.c.inc}  |    0
+ target/arm/tcg/meson.build                    |    1 +
+ 44 files changed, 2133 insertions(+), 1855 deletions(-)
+ rename target/arm/tcg/{helper-a64.h => helper-a64.h.inc} (100%)
+ create mode 100644 target/arm/tcg/helper-iwmmxt.h.inc
+ create mode 100644 target/arm/tcg/helper-m.h.inc
+ rename target/arm/tcg/{helper-mve.h => helper-mve.h.inc} (100%)
+ create mode 100644 target/arm/tcg/helper-neon.h.inc
+ rename target/arm/tcg/{helper-sme.h => helper-sme.h.inc} (100%)
+ rename target/arm/tcg/{helper-sve.h => helper-sve.h.inc} (98%)
+ create mode 100644 target/arm/tcg/helper-vfp.h.inc
+ rename target/arm/{helper.h => tcg/helper.h.inc} (53%)
+ create mode 100644 target/arm/tcg/translate-iwmmxt.c
+ rename tests/tcg/aarch64/{bti-crt.inc.c => bti-crt.c.inc} (100%)
+
+-- 
+2.38.1
+

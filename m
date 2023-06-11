@@ -1,101 +1,101 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1371088ejb;
-        Sun, 11 Jun 2023 02:00:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4If73HivPnV6XEGQQ2jfWjPvxxZzNoligOkAmNceYpkLnGbpz/SKZact7aWuRRLQzSYBkQ
-X-Received: by 2002:ad4:5bce:0:b0:62b:6b5b:f776 with SMTP id t14-20020ad45bce000000b0062b6b5bf776mr7738369qvt.0.1686474056673;
-        Sun, 11 Jun 2023 02:00:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686474056; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1371362ejb;
+        Sun, 11 Jun 2023 02:01:37 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7psp7IobNy/Kvt9Y3+9mTA0FQb9AIJ274LzfTBPi3nVmblLmfOSS3VGpsa0vbtfYRHlM5a
+X-Received: by 2002:ac8:7dcc:0:b0:3f9:c207:3123 with SMTP id c12-20020ac87dcc000000b003f9c2073123mr5944722qte.45.1686474097433;
+        Sun, 11 Jun 2023 02:01:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686474097; cv=none;
         d=google.com; s=arc-20160816;
-        b=nJtZ6TTvpGG0B2bQvjoIKoq2YaHn48TNeciUb45p/+h8/TVpaPGDeslesNjBIQSd7c
-         Ne2nFgN2viQBqu5XHubMZjPL3JQ3JUKiAPu//No9BgfXNWOi7h1WPBzur4nyT1Y8IFJL
-         joxknw+Sy1sPXqO7Tdp86+28N6pZgw1uwnkZkELFulfOtkM2VbdbgrJ+hLEyO6GDBUWF
-         pmlVts0FX11W6FIWrLJy/BR6j8UrLcJBOCp5dS6laVuu5/x3KE8EjMgittE3yZxQKmRc
-         Mpco3z8qpq7XAqqTXxfBz25Dw12vuT5IKFbqYTA6ZEk+j7kgmK4PxnmIk0yoGdPnYpPt
-         Sjlw==
+        b=JnAZi4hZfNdlgiQI/HSvyNhgZOiiYacPHMBAbuJkQRHl+yAJk+8wRm4jLe05dr3fcJ
+         3RQ4ytb8//uyD9XnY3tiPUGin+HRM2QJIp7mxczUQp652Z3RrWZvsf8z6GQMpCjegZV5
+         6mGShDc4q9ojIXW2lpyjETorVGakFt8Cf3pnsDsYzmvUZwrBOp/f2Ls/CJUceLQCLt5J
+         p1+nAN6zOeOZNdEekFFjkw7pdHLk0u0V/Y3b+Dmt531kNzhIUalqFI/zuV6JVV/Z2WTJ
+         8Kcr0xrCaN5O2UdCt4tuSHstjb1AwmoB2yj/cY/6mx2VyKMJoKxyjoUAnC03jvEVt7KQ
+         Hmvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cI5tDvyzjBGzw5l/XkLwcYgWT6+N8zbnEiW/1PeWfOw=;
-        b=NN88KSHJ/YbNaqOo/2/IcJmlP64zigWn9//JjLWv42VkGiRNQtKx2/pu3sHFfTUDVl
-         rMF1b2Q9G9nchc4X8MeBYdFNCiAuN70zEOJOosl6Ndz1iXer6L+E04A9FRQWbU1F8hs4
-         HlDQaZHgteufp8J9E2DvjcboU0og+w7j6RqSX9SU2Y8CWkTd4B4paDR0krhue5NcBzhS
-         2UmK8gf2ocd0tDn9Gh5aG8nYFcEGCsf+SoA6T4iGbp8aAYBMmtYkzR/vOM4Zl5G5q//c
-         X6F+j21HyoYA6K9UKlArqlgWkBjAft3h2AgHHD+7ScFHHCLRDwyKKZiT1Qnhnm/8vgQf
-         pYSg==
+        bh=QVdVsutRh46jRwa2PoJBROMIYsAkmEcJwwavIyUiJGE=;
+        b=sjvk/NC1G0fYJKoVdnCl5HObo71jMQsYRaAnaQiV7tOceFjRavOpoAAyUECsECh4Ja
+         p/IYhsUXsq4u/h5W8zmq6Qf4ydlSzTbRES3Su+iYbqw18RHE7Dg+fU6gLndMcbPd/oRm
+         kYed4EUDv419lH6/ecSHkc+Aqx/L3697zGJV+5cyAnaxf6xJ/9bguuKfJ6VQe1+Nzgbv
+         j3Q2GZBtxKnMOGDyEPcqTz81H3rnssWWWRUYP7QNvy8uiY0AiKYKwuCe82D5ML6/cP84
+         V+FfjCoHdcs2Y9vqlG5hq4zaDaxp+5w6HxcS0OGkmi0U8lzwBEJ8v9nVta0gPINXWMCw
+         4gHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=onYxBlIv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WViQk21z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10-20020ac85b8a000000b003f9cd59bb47si4326479qta.725.2023.06.11.02.00.56
+        by mx.google.com with ESMTPS id c16-20020ac87d90000000b003f9bbac80d7si4201927qtd.171.2023.06.11.02.01.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Jun 2023 02:00:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 11 Jun 2023 02:01:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=onYxBlIv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WViQk21z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q8Gvs-0002eJ-LU; Sun, 11 Jun 2023 05:00:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q8Gw2-0002xd-Oc; Sun, 11 Jun 2023 05:00:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GvI-0002KA-DZ
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 04:59:46 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GvQ-0002Sc-1q
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 04:59:52 -0400
 Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GvG-0003ix-SG
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 04:59:44 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8GvK-0003js-3T
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 04:59:49 -0400
 Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-3f7fc9014fdso23747665e9.3
- for <qemu-devel@nongnu.org>; Sun, 11 Jun 2023 01:59:41 -0700 (PDT)
+ 5b1f17b1804b1-3f7a8089709so34262685e9.1
+ for <qemu-arm@nongnu.org>; Sun, 11 Jun 2023 01:59:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686473980; x=1689065980;
+ d=linaro.org; s=google; t=1686473985; x=1689065985;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cI5tDvyzjBGzw5l/XkLwcYgWT6+N8zbnEiW/1PeWfOw=;
- b=onYxBlIvsAEMelIaiMMsa1RUIC+5AVADZKAyOheNc5XcnTGqIgqsxXJcAJRMHrGwU4
- AFLPwC9c4W/v/jHdjEWdQiCNL9ICbvm6ri4HNldBuCBZJh1YL2tj3OPSvVG4PrriUqBB
- HT9OAFkLgCzYsXbbBjpPTcmrqdTiTwe7MADiQVK6VWN3r1Wv4jZOokkGh/UqnEPTDomy
- Q2TFdDpFkz0Lun/ay3315U3zX7iS0j9nLwnH3JIQenRp/LRdPiiFGSgsy48UGWeciAc0
- NJgBtdFLqCEKy1fIRM9He1sPmLYIRxlDKgOdydFJ6ZRhdvALefxPauCVYgaomHrY78VZ
- ozOA==
+ bh=QVdVsutRh46jRwa2PoJBROMIYsAkmEcJwwavIyUiJGE=;
+ b=WViQk21z2QcHR80MDEUpGqwwxqEOC9/bM2qlRy8fQ96jbRD6xZLukAuZvB3hUry4VX
+ xL8SPWSewEsppjHoewBoDrKTEFIN/5faT2FouAYQsLcKT8MdJObXFvMYnYBNjfhWOdW1
+ 7ZOm5OYrafSygyXLOOQeYIhrEyM3nZ5TsnQJ6M8E6P5UJytVbgPPoDirHpRgUZmWFFlZ
+ ljEV7yVQNT9X/2QCmaKq1iuFjVACx8h9DlWmvYtN1L3+9CuVYoMneuVlhsCiLvp1xTEi
+ jmWAx/h6JvGKboM1X4W9oQQ+DcXOa+yrZ60zDEy6uqdBlYFDesFSdrWLR/RHqrfnpbhM
+ Edog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686473980; x=1689065980;
+ d=1e100.net; s=20221208; t=1686473985; x=1689065985;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cI5tDvyzjBGzw5l/XkLwcYgWT6+N8zbnEiW/1PeWfOw=;
- b=SxGx88FUql8w6OAF2ZKQOaeofSiBKtpNVIICbylTkm4GH0IdIAbA9K166Lidsyc65j
- NoK/tA8qfdKZd03o8qpKWHOgmHEpYxgi+5yRejAw+2N9nUolz3YW0CJ58842OilWNxR7
- qcIxktSFlWi0Tu04SdUimE7lOH1ns5gTWvhbz5K3MMV41rDgTYZYPIh4RRdPG3tk+rKT
- mbjby4I/h3iwTj3XIp0bRp9syZJca7Kt8MLYbfad7YR54rLkSpbb5lS8+e0NDjB+czIJ
- bWr7fa+9dL4uv4O6BAm1/erGFi1Fq57iCya4SCbEc92fGKwg4dmnKq4l1pLKD4tXWMcu
- fROw==
-X-Gm-Message-State: AC+VfDx3zhFx1dKym4M5+aHBFX6iuhIlxCCOXiSndDsarANqDtSvlPqv
- jnGpwycNNZmNLfSzHWeqTZE+JTiyPko4geX0QlM=
-X-Received: by 2002:a05:600c:21c7:b0:3f7:3651:450c with SMTP id
- x7-20020a05600c21c700b003f73651450cmr4555420wmj.6.1686473980472; 
- Sun, 11 Jun 2023 01:59:40 -0700 (PDT)
+ bh=QVdVsutRh46jRwa2PoJBROMIYsAkmEcJwwavIyUiJGE=;
+ b=flYQuFuCLyNMxAS0FBhbFGQCvf20okxrp8rm/2EU+CoEMZe6xUM7BE+4hZdMZWhlkR
+ tcQrFd30TK2+PMNzTiTggSeLCY1EpDm6KSdoEko4P/dDOsygweIxyV5kvemr9owUwWNW
+ VHrpcMJFyOBfpdcbuz/g0/JiHNlJ5i+JBjBrJ+dlrA6vKqmsykDYVaGGD2BLjndHsamC
+ TJLfdRpwQg4FvexJw/+I0R4gobbn+mCUezrIzSw/Bv+GKmo1NOzd1QuV4wDxEmxcDecO
+ 3e3HgL0RKXsdKeukGklV1W0ebVA/zLq9D0D69ncBt/RsppTWmS5CYJ2ZXXcVcK3sC4JH
+ 4NBw==
+X-Gm-Message-State: AC+VfDy8zkeruLtYdEQ2dh+eiQ6VWGe1SPfxZr57vOBMnBthSXfR+/Hi
+ L4EAjWRuPPL9EeaBYwHwawjFaA==
+X-Received: by 2002:a1c:7203:0:b0:3f4:28bd:74f5 with SMTP id
+ n3-20020a1c7203000000b003f428bd74f5mr5015404wmc.25.1686473984712; 
+ Sun, 11 Jun 2023 01:59:44 -0700 (PDT)
 Received: from localhost.localdomain (91-163-26-170.subs.proxad.net.
  [91.163.26.170]) by smtp.gmail.com with ESMTPSA id
- k10-20020adff5ca000000b003077a19cf75sm9081745wrp.60.2023.06.11.01.59.39
+ 16-20020a05600c021000b003f7f6827ab9sm7825038wmi.31.2023.06.11.01.59.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 11 Jun 2023 01:59:40 -0700 (PDT)
+ Sun, 11 Jun 2023 01:59:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 12/26] target/arm/tcg: Move neon_tbl() from op_helper.c to
- neon_helper.c
-Date: Sun, 11 Jun 2023 10:58:32 +0200
-Message-Id: <20230611085846.21415-13-philmd@linaro.org>
+Subject: [PATCH v2 13/26] target/arm/tcg: Extract NEON definitions to
+ 'helper-neon.h.inc'
+Date: Sun, 11 Jun 2023 10:58:33 +0200
+Message-Id: <20230611085846.21415-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230611085846.21415-1-philmd@linaro.org>
 References: <20230611085846.21415-1-philmd@linaro.org>
@@ -110,97 +110,505 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VFWl0M+Bw6/6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3p34zUWK6iLd
 
-neon_tbl() helper is only called by NEON files. No need
-to have it in the generic op_helper.c, move it with the
-rest of the NEON helpers.
+helper.h is used by all units, but not all require the NEON
+definitions. Move them to a new header; the next commit will
+remove it from the common helper.h.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/neon_helper.c | 22 ++++++++++++++++++++++
- target/arm/tcg/op_helper.c   | 22 ----------------------
- 2 files changed, 22 insertions(+), 22 deletions(-)
+ target/arm/helper.h              | 207 +-----------------------------
+ target/arm/tcg/helper-neon.h.inc | 213 +++++++++++++++++++++++++++++++
+ 2 files changed, 214 insertions(+), 206 deletions(-)
+ create mode 100644 target/arm/tcg/helper-neon.h.inc
 
-diff --git a/target/arm/tcg/neon_helper.c b/target/arm/tcg/neon_helper.c
-index bc6c4a54e9..0a4ab3e42c 100644
---- a/target/arm/tcg/neon_helper.c
-+++ b/target/arm/tcg/neon_helper.c
-@@ -1738,3 +1738,25 @@ void HELPER(neon_zip16)(void *vd, void *vm)
-     rm[0] = m0;
-     rd[0] = d0;
- }
-+
-+uint64_t HELPER(neon_tbl)(CPUARMState *env, uint32_t desc,
-+                          uint64_t ireg, uint64_t def)
-+{
-+    uint64_t tmp, val = 0;
-+    uint32_t maxindex = ((desc & 3) + 1) * 8;
-+    uint32_t base_reg = desc >> 2;
-+    uint32_t shift, index, reg;
-+
-+    for (shift = 0; shift < 64; shift += 8) {
-+        index = (ireg >> shift) & 0xff;
-+        if (index < maxindex) {
-+            reg = base_reg + (index >> 3);
-+            tmp = *aa32_vfp_dreg(env, reg);
-+            tmp = ((tmp >> ((index & 7) << 3)) & 0xff) << shift;
-+        } else {
-+            tmp = def & (0xffull << shift);
-+        }
-+        val |= tmp;
-+    }
-+    return val;
-+}
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 3baf8004f6..70a9c37b74 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -82,28 +82,6 @@ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint32_t syndrome,
-     raise_exception(env, excp, syndrome, target_el);
- }
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 1041accf71..97d97dc9d8 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -105,8 +105,6 @@ DEF_HELPER_FLAGS_5(probe_access, TCG_CALL_NO_WG, void, env, tl, i32, i32, i32)
  
--uint64_t HELPER(neon_tbl)(CPUARMState *env, uint32_t desc,
--                          uint64_t ireg, uint64_t def)
--{
--    uint64_t tmp, val = 0;
--    uint32_t maxindex = ((desc & 3) + 1) * 8;
--    uint32_t base_reg = desc >> 2;
--    uint32_t shift, index, reg;
+ DEF_HELPER_FLAGS_2(set_rmode, TCG_CALL_NO_RWG, i32, i32, ptr)
+ 
+-DEF_HELPER_FLAGS_4(neon_tbl, TCG_CALL_NO_RWG, i64, env, i32, i64, i64)
 -
--    for (shift = 0; shift < 64; shift += 8) {
--        index = (ireg >> shift) & 0xff;
--        if (index < maxindex) {
--            reg = base_reg + (index >> 3);
--            tmp = *aa32_vfp_dreg(env, reg);
--            tmp = ((tmp >> ((index & 7) << 3)) & 0xff) << shift;
--        } else {
--            tmp = def & (0xffull << shift);
--        }
--        val |= tmp;
--    }
--    return val;
--}
+ DEF_HELPER_3(shl_cc, i32, env, i32, i32)
+ DEF_HELPER_3(shr_cc, i32, env, i32, i32)
+ DEF_HELPER_3(sar_cc, i32, env, i32, i32)
+@@ -117,191 +115,6 @@ DEF_HELPER_FLAGS_2(fjcvtzs, TCG_CALL_NO_RWG, i64, f64, ptr)
+ 
+ DEF_HELPER_FLAGS_3(check_hcr_el2_trap, TCG_CALL_NO_WG, void, env, i32, i32)
+ 
+-/* neon_helper.c */
+-DEF_HELPER_FLAGS_3(neon_qadd_u8, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_qadd_s8, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_qadd_u16, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_qadd_s16, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_qadd_u32, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_qadd_s32, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_uqadd_s8, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_uqadd_s16, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_uqadd_s32, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_uqadd_s64, TCG_CALL_NO_RWG, i64, env, i64, i64)
+-DEF_HELPER_FLAGS_3(neon_sqadd_u8, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_sqadd_u16, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_sqadd_u32, TCG_CALL_NO_RWG, i32, env, i32, i32)
+-DEF_HELPER_FLAGS_3(neon_sqadd_u64, TCG_CALL_NO_RWG, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qsub_u8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qsub_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qsub_u16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qsub_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qsub_u32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qsub_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qadd_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qadd_s64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qsub_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qsub_s64, i64, env, i64, i64)
 -
- void HELPER(v8m_stackcheck)(CPUARMState *env, uint32_t newvalue)
- {
-     /*
+-DEF_HELPER_2(neon_hadd_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_hadd_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_hadd_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_hadd_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_hadd_s32, s32, s32, s32)
+-DEF_HELPER_2(neon_hadd_u32, i32, i32, i32)
+-DEF_HELPER_2(neon_rhadd_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_rhadd_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_rhadd_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_rhadd_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_rhadd_s32, s32, s32, s32)
+-DEF_HELPER_2(neon_rhadd_u32, i32, i32, i32)
+-DEF_HELPER_2(neon_hsub_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_hsub_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_hsub_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_hsub_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_hsub_s32, s32, s32, s32)
+-DEF_HELPER_2(neon_hsub_u32, i32, i32, i32)
+-
+-DEF_HELPER_2(neon_pmin_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmin_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_pmax_s16, i32, i32, i32)
+-
+-DEF_HELPER_2(neon_shl_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_shl_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s8, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s16, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u32, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_s32, i32, i32, i32)
+-DEF_HELPER_2(neon_rshl_u64, i64, i64, i64)
+-DEF_HELPER_2(neon_rshl_s64, i64, i64, i64)
+-DEF_HELPER_3(neon_qshl_u8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshl_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qshl_s64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qshlu_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qshlu_s64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qrshl_u8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s8, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrshl_u64, i64, env, i64, i64)
+-DEF_HELPER_3(neon_qrshl_s64, i64, env, i64, i64)
+-
+-DEF_HELPER_2(neon_add_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_add_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_padd_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_padd_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
+-
+-DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
+-DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
+-DEF_HELPER_2(neon_tst_u32, i32, i32, i32)
+-
+-DEF_HELPER_1(neon_clz_u8, i32, i32)
+-DEF_HELPER_1(neon_clz_u16, i32, i32)
+-DEF_HELPER_1(neon_cls_s8, i32, i32)
+-DEF_HELPER_1(neon_cls_s16, i32, i32)
+-DEF_HELPER_1(neon_cls_s32, i32, i32)
+-DEF_HELPER_1(neon_cnt_u8, i32, i32)
+-DEF_HELPER_FLAGS_1(neon_rbit_u8, TCG_CALL_NO_RWG_SE, i32, i32)
+-
+-DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
+-DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
+-DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
+-DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
+-DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
+-DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
+-DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
+-
+-DEF_HELPER_1(neon_narrow_u8, i32, i64)
+-DEF_HELPER_1(neon_narrow_u16, i32, i64)
+-DEF_HELPER_2(neon_unarrow_sat8, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u8, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s8, i32, env, i64)
+-DEF_HELPER_2(neon_unarrow_sat16, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u16, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s16, i32, env, i64)
+-DEF_HELPER_2(neon_unarrow_sat32, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_u32, i32, env, i64)
+-DEF_HELPER_2(neon_narrow_sat_s32, i32, env, i64)
+-DEF_HELPER_1(neon_narrow_high_u8, i32, i64)
+-DEF_HELPER_1(neon_narrow_high_u16, i32, i64)
+-DEF_HELPER_1(neon_narrow_round_high_u8, i32, i64)
+-DEF_HELPER_1(neon_narrow_round_high_u16, i32, i64)
+-DEF_HELPER_1(neon_widen_u8, i64, i32)
+-DEF_HELPER_1(neon_widen_s8, i64, i32)
+-DEF_HELPER_1(neon_widen_u16, i64, i32)
+-DEF_HELPER_1(neon_widen_s16, i64, i32)
+-
+-DEF_HELPER_2(neon_addl_u16, i64, i64, i64)
+-DEF_HELPER_2(neon_addl_u32, i64, i64, i64)
+-DEF_HELPER_2(neon_paddl_u16, i64, i64, i64)
+-DEF_HELPER_2(neon_paddl_u32, i64, i64, i64)
+-DEF_HELPER_2(neon_subl_u16, i64, i64, i64)
+-DEF_HELPER_2(neon_subl_u32, i64, i64, i64)
+-DEF_HELPER_3(neon_addl_saturate_s32, i64, env, i64, i64)
+-DEF_HELPER_3(neon_addl_saturate_s64, i64, env, i64, i64)
+-DEF_HELPER_2(neon_abdl_u16, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s16, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_u32, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s32, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_u64, i64, i32, i32)
+-DEF_HELPER_2(neon_abdl_s64, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_u8, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_s8, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_u16, i64, i32, i32)
+-DEF_HELPER_2(neon_mull_s16, i64, i32, i32)
+-
+-DEF_HELPER_1(neon_negl_u16, i64, i64)
+-DEF_HELPER_1(neon_negl_u32, i64, i64)
+-
+-DEF_HELPER_FLAGS_2(neon_qabs_s8, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s16, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s32, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qabs_s64, TCG_CALL_NO_RWG, i64, env, i64)
+-DEF_HELPER_FLAGS_2(neon_qneg_s8, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s16, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s32, TCG_CALL_NO_RWG, i32, env, i32)
+-DEF_HELPER_FLAGS_2(neon_qneg_s64, TCG_CALL_NO_RWG, i64, env, i64)
+-
+-DEF_HELPER_3(neon_ceq_f32, i32, i32, i32, ptr)
+-DEF_HELPER_3(neon_cge_f32, i32, i32, i32, ptr)
+-DEF_HELPER_3(neon_cgt_f32, i32, i32, i32, ptr)
+-DEF_HELPER_3(neon_acge_f32, i32, i32, i32, ptr)
+-DEF_HELPER_3(neon_acgt_f32, i32, i32, i32, ptr)
+-DEF_HELPER_3(neon_acge_f64, i64, i64, i64, ptr)
+-DEF_HELPER_3(neon_acgt_f64, i64, i64, i64, ptr)
+-
+-DEF_HELPER_FLAGS_2(neon_unzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_unzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qunzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_zip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_zip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+-DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+-
+ DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ 
+@@ -403,13 +216,6 @@ DEF_HELPER_FLAGS_6(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_6(gvec_fcmlad, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, i32)
+ 
+-DEF_HELPER_FLAGS_5(neon_paddh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_pmaxh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_pminh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_padds, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_pmaxs, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_pmins, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+-
+ DEF_HELPER_FLAGS_4(gvec_sstoh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_sitos, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_ustoh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+@@ -630,8 +436,6 @@ DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
+-DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+-
+ DEF_HELPER_FLAGS_3(gvec_ssra_b, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(gvec_ssra_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(gvec_ssra_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+@@ -710,16 +514,6 @@ DEF_HELPER_FLAGS_5(gvec_mls_idx_s, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_5(gvec_mls_idx_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ 
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqdmulh_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_h, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-DEF_HELPER_FLAGS_5(neon_sqrdmulh_s, TCG_CALL_NO_RWG,
+-                   void, ptr, ptr, ptr, ptr, i32)
+-
+ DEF_HELPER_FLAGS_4(sve2_sqdmulh_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_sqdmulh_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_sqdmulh_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+@@ -795,4 +589,5 @@ DEF_HELPER_FLAGS_5(gvec_uclamp_d, TCG_CALL_NO_RWG,
+ #include "tcg/helper-sme.h.inc"
+ #endif
+ 
++#include "tcg/helper-neon.h.inc"
+ #include "tcg/helper-mve.h.inc"
+diff --git a/target/arm/tcg/helper-neon.h.inc b/target/arm/tcg/helper-neon.h.inc
+new file mode 100644
+index 0000000000..5ea58c058c
+--- /dev/null
++++ b/target/arm/tcg/helper-neon.h.inc
+@@ -0,0 +1,213 @@
++/*
++ * ARM NEON helper definitions
++ *
++ * Copyright (c) 2007, 2008 CodeSourcery.
++ * Written by Paul Brook
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++DEF_HELPER_FLAGS_4(neon_tbl, TCG_CALL_NO_RWG, i64, env, i32, i64, i64)
++
++DEF_HELPER_FLAGS_3(neon_qadd_u8, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_qadd_s8, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_qadd_u16, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_qadd_s16, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_qadd_u32, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_qadd_s32, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_uqadd_s8, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_uqadd_s16, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_uqadd_s32, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_uqadd_s64, TCG_CALL_NO_RWG, i64, env, i64, i64)
++DEF_HELPER_FLAGS_3(neon_sqadd_u8, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_sqadd_u16, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_sqadd_u32, TCG_CALL_NO_RWG, i32, env, i32, i32)
++DEF_HELPER_FLAGS_3(neon_sqadd_u64, TCG_CALL_NO_RWG, i64, env, i64, i64)
++DEF_HELPER_3(neon_qsub_u8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qsub_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qsub_u16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qsub_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qsub_u32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qsub_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qadd_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qadd_s64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qsub_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qsub_s64, i64, env, i64, i64)
++
++DEF_HELPER_2(neon_hadd_s8, i32, i32, i32)
++DEF_HELPER_2(neon_hadd_u8, i32, i32, i32)
++DEF_HELPER_2(neon_hadd_s16, i32, i32, i32)
++DEF_HELPER_2(neon_hadd_u16, i32, i32, i32)
++DEF_HELPER_2(neon_hadd_s32, s32, s32, s32)
++DEF_HELPER_2(neon_hadd_u32, i32, i32, i32)
++DEF_HELPER_2(neon_rhadd_s8, i32, i32, i32)
++DEF_HELPER_2(neon_rhadd_u8, i32, i32, i32)
++DEF_HELPER_2(neon_rhadd_s16, i32, i32, i32)
++DEF_HELPER_2(neon_rhadd_u16, i32, i32, i32)
++DEF_HELPER_2(neon_rhadd_s32, s32, s32, s32)
++DEF_HELPER_2(neon_rhadd_u32, i32, i32, i32)
++DEF_HELPER_2(neon_hsub_s8, i32, i32, i32)
++DEF_HELPER_2(neon_hsub_u8, i32, i32, i32)
++DEF_HELPER_2(neon_hsub_s16, i32, i32, i32)
++DEF_HELPER_2(neon_hsub_u16, i32, i32, i32)
++DEF_HELPER_2(neon_hsub_s32, s32, s32, s32)
++DEF_HELPER_2(neon_hsub_u32, i32, i32, i32)
++
++DEF_HELPER_2(neon_pmin_u8, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_s8, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_u16, i32, i32, i32)
++DEF_HELPER_2(neon_pmin_s16, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_u8, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_s8, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_u16, i32, i32, i32)
++DEF_HELPER_2(neon_pmax_s16, i32, i32, i32)
++
++DEF_HELPER_2(neon_shl_u16, i32, i32, i32)
++DEF_HELPER_2(neon_shl_s16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u8, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s8, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s16, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u32, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_s32, i32, i32, i32)
++DEF_HELPER_2(neon_rshl_u64, i64, i64, i64)
++DEF_HELPER_2(neon_rshl_s64, i64, i64, i64)
++DEF_HELPER_3(neon_qshl_u8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshl_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qshl_s64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qshlu_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qshlu_s64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qrshl_u8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s8, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrshl_u64, i64, env, i64, i64)
++DEF_HELPER_3(neon_qrshl_s64, i64, env, i64, i64)
++
++DEF_HELPER_2(neon_add_u8, i32, i32, i32)
++DEF_HELPER_2(neon_add_u16, i32, i32, i32)
++DEF_HELPER_2(neon_padd_u8, i32, i32, i32)
++DEF_HELPER_2(neon_padd_u16, i32, i32, i32)
++DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
++DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
++DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
++DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
++
++DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
++DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
++DEF_HELPER_2(neon_tst_u32, i32, i32, i32)
++
++DEF_HELPER_1(neon_clz_u8, i32, i32)
++DEF_HELPER_1(neon_clz_u16, i32, i32)
++DEF_HELPER_1(neon_cls_s8, i32, i32)
++DEF_HELPER_1(neon_cls_s16, i32, i32)
++DEF_HELPER_1(neon_cls_s32, i32, i32)
++DEF_HELPER_1(neon_cnt_u8, i32, i32)
++DEF_HELPER_FLAGS_1(neon_rbit_u8, TCG_CALL_NO_RWG_SE, i32, i32)
++
++DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
++DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
++DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
++DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
++DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
++DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
++DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
++
++DEF_HELPER_1(neon_narrow_u8, i32, i64)
++DEF_HELPER_1(neon_narrow_u16, i32, i64)
++DEF_HELPER_2(neon_unarrow_sat8, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u8, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s8, i32, env, i64)
++DEF_HELPER_2(neon_unarrow_sat16, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u16, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s16, i32, env, i64)
++DEF_HELPER_2(neon_unarrow_sat32, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_u32, i32, env, i64)
++DEF_HELPER_2(neon_narrow_sat_s32, i32, env, i64)
++DEF_HELPER_1(neon_narrow_high_u8, i32, i64)
++DEF_HELPER_1(neon_narrow_high_u16, i32, i64)
++DEF_HELPER_1(neon_narrow_round_high_u8, i32, i64)
++DEF_HELPER_1(neon_narrow_round_high_u16, i32, i64)
++DEF_HELPER_1(neon_widen_u8, i64, i32)
++DEF_HELPER_1(neon_widen_s8, i64, i32)
++DEF_HELPER_1(neon_widen_u16, i64, i32)
++DEF_HELPER_1(neon_widen_s16, i64, i32)
++
++DEF_HELPER_2(neon_addl_u16, i64, i64, i64)
++DEF_HELPER_2(neon_addl_u32, i64, i64, i64)
++DEF_HELPER_2(neon_paddl_u16, i64, i64, i64)
++DEF_HELPER_2(neon_paddl_u32, i64, i64, i64)
++DEF_HELPER_2(neon_subl_u16, i64, i64, i64)
++DEF_HELPER_2(neon_subl_u32, i64, i64, i64)
++DEF_HELPER_3(neon_addl_saturate_s32, i64, env, i64, i64)
++DEF_HELPER_3(neon_addl_saturate_s64, i64, env, i64, i64)
++DEF_HELPER_2(neon_abdl_u16, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s16, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_u32, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s32, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_u64, i64, i32, i32)
++DEF_HELPER_2(neon_abdl_s64, i64, i32, i32)
++DEF_HELPER_2(neon_mull_u8, i64, i32, i32)
++DEF_HELPER_2(neon_mull_s8, i64, i32, i32)
++DEF_HELPER_2(neon_mull_u16, i64, i32, i32)
++DEF_HELPER_2(neon_mull_s16, i64, i32, i32)
++
++DEF_HELPER_1(neon_negl_u16, i64, i64)
++DEF_HELPER_1(neon_negl_u32, i64, i64)
++
++DEF_HELPER_FLAGS_2(neon_qabs_s8, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s16, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s32, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qabs_s64, TCG_CALL_NO_RWG, i64, env, i64)
++DEF_HELPER_FLAGS_2(neon_qneg_s8, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s16, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s32, TCG_CALL_NO_RWG, i32, env, i32)
++DEF_HELPER_FLAGS_2(neon_qneg_s64, TCG_CALL_NO_RWG, i64, env, i64)
++
++DEF_HELPER_3(neon_ceq_f32, i32, i32, i32, ptr)
++DEF_HELPER_3(neon_cge_f32, i32, i32, i32, ptr)
++DEF_HELPER_3(neon_cgt_f32, i32, i32, i32, ptr)
++DEF_HELPER_3(neon_acge_f32, i32, i32, i32, ptr)
++DEF_HELPER_3(neon_acgt_f32, i32, i32, i32, ptr)
++DEF_HELPER_3(neon_acge_f64, i64, i64, i64, ptr)
++DEF_HELPER_3(neon_acgt_f64, i64, i64, i64, ptr)
++
++DEF_HELPER_FLAGS_2(neon_unzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_unzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qunzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_zip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_zip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip8, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
++DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
++
++DEF_HELPER_FLAGS_5(neon_paddh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_pmaxh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_pminh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_padds, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_pmaxs, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_pmins, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqdmulh_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqdmulh_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_h, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(neon_sqrdmulh_s, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
 -- 
 2.38.1
 

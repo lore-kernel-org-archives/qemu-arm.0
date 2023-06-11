@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1541064ejb;
-        Sun, 11 Jun 2023 09:04:00 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6sW0dAoD/3huFdoW/eyPs+0dtGo7tg4tWGpmEGZrGzKruxIzAC60vCHiUo/SYgd00mBye9
-X-Received: by 2002:a05:6a20:3c88:b0:10b:e88f:597c with SMTP id b8-20020a056a203c8800b0010be88f597cmr7764765pzj.44.1686499440239;
-        Sun, 11 Jun 2023 09:04:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686499440; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1541137ejb;
+        Sun, 11 Jun 2023 09:04:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4zRuuyiDkMKqrhQQyvESHjyXOJFOWlDAlKivbkWXHJNp1eJrhGOWvn2v1YRb4r04HApxDn
+X-Received: by 2002:ad4:5ccf:0:b0:628:8012:bee7 with SMTP id iu15-20020ad45ccf000000b006288012bee7mr9193321qvb.20.1686499447847;
+        Sun, 11 Jun 2023 09:04:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686499447; cv=none;
         d=google.com; s=arc-20160816;
-        b=TfG7seJUKxWf2kkzkIMPaBTC4KjUIAzFVzCzOn7SuZDAezC1JEvuyS/MS0x+n4hS99
-         9kJRGOoxX38heRqn/hnIqP6gr50EJmNbJT2bIplkSatApMWSufpOGNMtdXZBqVCC98WP
-         whekAQJdaC+bw5ufktyES2w4XcxhzP/Z1Vmnj1MgSlnQVQblg8t0bKRbgq1G6tPJhyqa
-         ycWnFuplQlT9tBUXmHyXw/VlwmH92ojyzf3FRExV29enkHmL1J5cDmaq3FYCcqTqzYZH
-         n/H7N7pow45Vh01K3tFTp8H9lSFPCI9KJ6xSrLjxRlMu3AnklJau1hxvyEFF2K8y+7rt
-         sGCw==
+        b=epI4/cFlvXuesf66bSNGtnj6lAVP2D6rw0zuUkUgsS+BLBr4QFmMMIlc2Ma+LeQ1d7
+         iDxkSlyFyoNZdT30fradNZ85ob2jZQNlXsgE6oVmZQjJFJv3usu9peyxuir8z5NHhKgb
+         4rpXf/m97ZWosrqG/Ausf3RI80RfFozRnAZBuzqHx3/inInmbu2vlxBaZMGM6yZ2xi8x
+         GKR72BcM47WrFZVT4EcTA4SjxdrAaa5t7JSlK9N52M6tuWzEEhB4LOnMYIcPtweOvb/H
+         GhMteUCXojAesiwtDLnS6QoS5Lw8TZprrm+WOHtzI+tJkJ7CuKe5Jup6CP0ZDi0s4via
+         8FXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=N3PW9VYsAGC1K2Fi7FePAHwlou4P1DBl1fvZGT4Ua6o=;
-        b=Nq1UAm+LUcded9g2khGePxTvpe3W7KaDWXiEPIB9I28YGmN6Q7haJY3XglV9dmtmC0
-         mAK1pg+/eTzr6m2A1H52+D3QvDfKQa2XZvjTrUnnA1lUZKEWPnYZHm8ZSFfkUx0gBl51
-         4Gkr6IO/+TjzdOG4a4TDoJSWwVZ/OX4Na/r+odb0Kx8cE0TDElrFng+VW8cenYK8qT/B
-         GOr5MYjYNblfs/dfOIi85rZYEDjJvxCj2+GMzCR6ealWt33eW6TLkvcIIrGyZbfMkgyB
-         0SjEDPqDwRdUQUG04D3ohD5rrExMubu87EH/lDWBMdDPUAkTWZjV25v8H8kCvye3kgnR
-         KFlw==
+        bh=QYoLjQUBzDtsQLiewQeHZyMx2G0pXSiMumiEHL4MRBM=;
+        b=l9nD4hIiNTcPjwtpct/qlzdIXvrdVmHauzNfgyFUl4mtc63fgZU95RRJv35l7De/aT
+         FhHdOh9143eebW8Dqupap7LoEobxp7c7rvW6vf27gxhkq9dMFstdnfeGKOLynw0JyOTk
+         exY2YTGm3rfCu0RopcD+JVdLDS4AUewseRAq9K3MhsE/gcNZzh93kGCpWW2k9clKwrFc
+         6zVRipsFt+ajIYAG1CBUzVfJKfxlEedOP4/NKF0xvKskdMtZCZKESXExHyCs22/h2Ubt
+         cpSWUFzdCvGN2e6BjT63uqlRdC+M9mdE1lnzFlc+dn+lrNp8+LPqtotpokICYXR7hvfr
+         aX3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R3EahtEM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mcCaaGOR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21-20020ab05595000000b0078a2ad8f50dsi688921uaa.80.2023.06.11.09.04.00
+        by mx.google.com with ESMTPS id o11-20020a0562140e4b00b006286abef06asi4928020qvc.63.2023.06.11.09.04.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Jun 2023 09:04:00 -0700 (PDT)
+        Sun, 11 Jun 2023 09:04:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=R3EahtEM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mcCaaGOR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q8NVi-0006dW-QN; Sun, 11 Jun 2023 12:01:46 -0400
+	id 1q8NVV-0006Id-6L; Sun, 11 Jun 2023 12:01:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUu-00061i-JM
- for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:01:00 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1q8NUe-0005ow-EK
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:00:49 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUm-0000SB-F9
- for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:00:56 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3f736e0c9a8so25492795e9.2
- for <qemu-arm@nongnu.org>; Sun, 11 Jun 2023 09:00:47 -0700 (PDT)
+ id 1q8NUa-0000R4-Uv
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:00:39 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-30fb7e668c8so619037f8f.1
+ for <qemu-arm@nongnu.org>; Sun, 11 Jun 2023 09:00:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686499247; x=1689091247;
+ d=linaro.org; s=google; t=1686499234; x=1689091234;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=N3PW9VYsAGC1K2Fi7FePAHwlou4P1DBl1fvZGT4Ua6o=;
- b=R3EahtEMoyCM0Z+UROplgAYMMPCKNPfbwBnGvJKOfrWp5vOkPJbW8ZK9hJc3ZbUpVI
- 5+qqx618f7pY/7FbXgfn8CkyjwBbG0Jzdp/GlPrr618ap7R+HqFv2l9d+9tpFfIo46Xy
- bnfwPL67QDXA/nnDyryiQBW7OhM0OiRnelNdWlsyzgp4g+k230yOKmMb1Sz+rM8H3brs
- T/TRT/Jc6ud0kmsDgRoaPrzfrKiTh1YGVP1syU9xLaC0r2+siCc21hmE10kHn+To0591
- ZoDUT9eeL5GqqdaaDvVkBevbZb+yZn/5K+CW2IXbP/GFL22m+tb+PaBdStjwr96JEAJW
- wv4g==
+ :reply-to; bh=QYoLjQUBzDtsQLiewQeHZyMx2G0pXSiMumiEHL4MRBM=;
+ b=mcCaaGORXLo8u5KAwAVL5dLyFA6eMej5XUaOFzf6IxmKNQOB5DKtc3BgaYWNqz8k1G
+ 02Yb44mXos0nErkqy7h9llSFN2L9nxPLOIeNGdvedR7748a6Tpn+Ie2RjsNqBkNuUxT3
+ Oa0JVh8SlpFjzVFD0OthX2Ek2ZgPuDqlRZgO/1oyfJGJ/jl0YNmMdhHsngA6Yo3sTRcs
+ QxQDP7u1Ai/fjrXeIrEFLuwodnvFI4voNWMYax/F3CEnaUsAm1010AHoHLEST6i5st2i
+ EqX33OSdOZczgw1hTfkmB0Cm6LsGnB6MDKIGwLVlRDO2ukn9CxLvS0H3oJudPxinbg33
+ D1JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686499247; x=1689091247;
+ d=1e100.net; s=20221208; t=1686499234; x=1689091234;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=N3PW9VYsAGC1K2Fi7FePAHwlou4P1DBl1fvZGT4Ua6o=;
- b=HoFA/04T8WmMO0vdVoizjTdFzBUvYXwVRIlW4cd1ks5ZcicDzauHARq8rBBzUOkZ0v
- S+7URkHsTF1qYoVHVTHJDcW66S7f9ZwoK0/cfB3wQPNYDA2F2kqwaziwLWiiSlT2HITd
- CIfQBtDUMLs27vvizeHh/Zxrtu97SbQ6KZOCAnUhpFhJL4Q4hzMx8iccnA777k6pruhk
- kW1lyyQA43TiQfnRkCdd14NWYtKo/L57qk/RCvxWNTuS/iItU//eNWiDJltWf6f7li0D
- wfsZU0bF0C/NJnjBd8YUX6jlbUaL9uiCsG4x9tgktgIhS20VzpzB8RvCKmU6zeLCMla6
- v/vw==
-X-Gm-Message-State: AC+VfDxgCmzRobHu4i16zSZ1L5SwSYkS1aP3lMe98Qcex2RwLwlhTsCe
- mZuQbyht7SVs7hMKoH4sb7VHLkMOcVZt4EYsh8o=
-X-Received: by 2002:adf:e906:0:b0:30f:be0f:fbf with SMTP id
- f6-20020adfe906000000b0030fbe0f0fbfmr1109970wrm.22.1686499247015; 
- Sun, 11 Jun 2023 09:00:47 -0700 (PDT)
+ bh=QYoLjQUBzDtsQLiewQeHZyMx2G0pXSiMumiEHL4MRBM=;
+ b=KuG2GQ1aA0rL2UoB5e7jYTgBpUZipeEpF2kAlodmjrH8nBAlYr6bdC9j7oErx7zghr
+ 4KV1u/KRDtdD0LJrtrIAPv42zcguv10fOozFSHbRPwt+JLKyKGcO457x/+uxNxWpEo5L
+ 4dbKmYt5oqLnQDJdDrhjMM+S0Q2iyfAN3ywEeweofKBNx5C6A+hWhswRp/M0UcIfy7TP
+ Vtl4rUZHnj6betdeUaqOl1gcUWi9qb8RbPl0snKh7DPh+bAg5l+CGNh7faoIGPrDdnzw
+ CfTwNB0PFcrnlbYqRNHC6HagqwWu8+w0/RhocezbOmsZrWFH9zbJ/ELi4Lv1zWHsaNdO
+ mtrA==
+X-Gm-Message-State: AC+VfDyyYfXt6FGzeyTUHtmLfHFJfex2Pq2GFE89fXQdtSv+bXhuVgcm
+ fRzjjJIHI5i6vFing9Ensc/tmE/sRzz4smxXxfk=
+X-Received: by 2002:a5d:5265:0:b0:30f:b0de:f100 with SMTP id
+ l5-20020a5d5265000000b0030fb0def100mr3240746wrc.23.1686499234418; 
+ Sun, 11 Jun 2023 09:00:34 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.46
+ m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Jun 2023 09:00:46 -0700 (PDT)
+ Sun, 11 Jun 2023 09:00:34 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 23/23] target/arm: Convert load/store tags insns to
- decodetree
-Date: Sun, 11 Jun 2023 17:00:32 +0100
-Message-Id: <20230611160032.274823-24-peter.maydell@linaro.org>
+Subject: [PATCH v2 01/23] target/arm: Fix return value from LDSMIN/LDSMAX 8/16
+ bit atomics
+Date: Sun, 11 Jun 2023 17:00:10 +0100
+Message-Id: <20230611160032.274823-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230611160032.274823-1-peter.maydell@linaro.org>
 References: <20230611160032.274823-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,469 +123,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RMgHicCkC11K
+X-TUID: yUb4a4y20oFo
 
-Convert the instructions in the load/store memory tags instruction
-group to decodetree.
+The atomic memory operations are supposed to return the old memory
+data value in the destination register.  This value is not
+sign-extended, even if the operation is the signed minimum or
+maximum.  (In the pseudocode for the instructions the returned data
+value is passed to ZeroExtend() to create the value in the register.)
 
+We got this wrong because we were doing a 32-to-64 zero extend on the
+result for 8 and 16 bit data values, rather than the correct amount
+of zero extension.
+
+Fix the bug by using ext8u and ext16u for the MO_8 and MO_16 data
+sizes rather than ext32u.
+
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230602155223.2040685-21-peter.maydell@linaro.org
+Message-id: 20230602155223.2040685-2-peter.maydell@linaro.org
 ---
- target/arm/tcg/a64.decode      |  25 +++
- target/arm/tcg/translate-a64.c | 360 ++++++++++++++++-----------------
- 2 files changed, 199 insertions(+), 186 deletions(-)
+ target/arm/tcg/translate-a64.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 4ffdc91865f..ef64a3f9cba 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -528,3 +528,28 @@ LD_single          0 . 001101 . 1 . ..... 10 . 001 ..... .....  @ldst_single_d
- 
- # Replicating load case
- LD_single_repl  0 q:1 001101 p:1 1 . rm:5 11 . 0 scale:2 rn:5 rt:5 selem=%ldst_single_selem
-+
-+%tag_offset     12:s9 !function=scale_by_log2_tag_granule
-+&ldst_tag       rn rt imm p w
-+@ldst_tag       ........ .. . ......... .. rn:5 rt:5 &ldst_tag imm=%tag_offset
-+@ldst_tag_mult  ........ .. . 000000000 .. rn:5 rt:5 &ldst_tag imm=0
-+
-+STZGM           11011001 00 1 ......... 00 ..... ..... @ldst_tag_mult p=0 w=0
-+STG             11011001 00 1 ......... 01 ..... ..... @ldst_tag p=1 w=1
-+STG             11011001 00 1 ......... 10 ..... ..... @ldst_tag p=0 w=0
-+STG             11011001 00 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
-+
-+LDG             11011001 01 1 ......... 00 ..... ..... @ldst_tag p=0 w=0
-+STZG            11011001 01 1 ......... 01 ..... ..... @ldst_tag p=1 w=1
-+STZG            11011001 01 1 ......... 10 ..... ..... @ldst_tag p=0 w=0
-+STZG            11011001 01 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
-+
-+STGM            11011001 10 1 ......... 00 ..... ..... @ldst_tag_mult p=0 w=0
-+ST2G            11011001 10 1 ......... 01 ..... ..... @ldst_tag p=1 w=1
-+ST2G            11011001 10 1 ......... 10 ..... ..... @ldst_tag p=0 w=0
-+ST2G            11011001 10 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
-+
-+LDGM            11011001 11 1 ......... 00 ..... ..... @ldst_tag_mult p=0 w=0
-+STZ2G           11011001 11 1 ......... 01 ..... ..... @ldst_tag p=1 w=1
-+STZ2G           11011001 11 1 ......... 10 ..... ..... @ldst_tag p=0 w=0
-+STZ2G           11011001 11 1 ......... 11 ..... ..... @ldst_tag p=0 w=1
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 6e7fe1f35cf..43963287a8c 100644
+index aa93f37e216..246e3c15145 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -62,6 +62,12 @@ static int uimm_scaled(DisasContext *s, int x)
-     return imm << scale;
- }
+@@ -3545,8 +3545,22 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+      */
+     fn(tcg_rt, clean_addr, tcg_rs, get_mem_index(s), mop);
  
-+/* For load/store memory tags: scale offset by LOG2_TAG_GRANULE */
-+static int scale_by_log2_tag_granule(DisasContext *s, int x)
-+{
-+    return x << LOG2_TAG_GRANULE;
-+}
-+
- /*
-  * Include the generated decoders.
-  */
-@@ -3712,185 +3718,184 @@ static bool trans_LD_single_repl(DisasContext *s, arg_LD_single_repl *a)
-     return true;
- }
- 
--/*
-- * Load/Store memory tags
-- *
-- *  31 30 29         24     22  21     12    10      5      0
-- * +-----+-------------+-----+---+------+-----+------+------+
-- * | 1 1 | 0 1 1 0 0 1 | op1 | 1 | imm9 | op2 |  Rn  |  Rt  |
-- * +-----+-------------+-----+---+------+-----+------+------+
-- */
--static void disas_ldst_tag(DisasContext *s, uint32_t insn)
-+static bool trans_STZGM(DisasContext *s, arg_ldst_tag *a)
- {
--    int rt = extract32(insn, 0, 5);
--    int rn = extract32(insn, 5, 5);
--    uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
--    int op2 = extract32(insn, 10, 2);
--    int op1 = extract32(insn, 22, 2);
--    bool is_load = false, is_pair = false, is_zero = false, is_mult = false;
--    int index = 0;
-     TCGv_i64 addr, clean_addr, tcg_rt;
-+    int size = 4 << s->dcz_blocksize;
- 
--    /* We checked insn bits [29:24,21] in the caller.  */
--    if (extract32(insn, 30, 2) != 3) {
--        goto do_unallocated;
-+    if (!dc_isar_feature(aa64_mte, s)) {
-+        return false;
-+    }
-+    if (s->current_el == 0) {
-+        return false;
-     }
- 
--    /*
--     * @index is a tri-state variable which has 3 states:
--     * < 0 : post-index, writeback
--     * = 0 : signed offset
--     * > 0 : pre-index, writeback
--     */
--    switch (op1) {
--    case 0:
--        if (op2 != 0) {
--            /* STG */
--            index = op2 - 2;
--        } else {
--            /* STZGM */
--            if (s->current_el == 0 || offset != 0) {
--                goto do_unallocated;
--            }
--            is_mult = is_zero = true;
--        }
--        break;
--    case 1:
--        if (op2 != 0) {
--            /* STZG */
--            is_zero = true;
--            index = op2 - 2;
--        } else {
--            /* LDG */
--            is_load = true;
--        }
--        break;
--    case 2:
--        if (op2 != 0) {
--            /* ST2G */
--            is_pair = true;
--            index = op2 - 2;
--        } else {
--            /* STGM */
--            if (s->current_el == 0 || offset != 0) {
--                goto do_unallocated;
--            }
--            is_mult = true;
--        }
--        break;
--    case 3:
--        if (op2 != 0) {
--            /* STZ2G */
--            is_pair = is_zero = true;
--            index = op2 - 2;
--        } else {
--            /* LDGM */
--            if (s->current_el == 0 || offset != 0) {
--                goto do_unallocated;
--            }
--            is_mult = is_load = true;
--        }
--        break;
--
--    default:
--    do_unallocated:
--        unallocated_encoding(s);
--        return;
--    }
--
--    if (is_mult
--        ? !dc_isar_feature(aa64_mte, s)
--        : !dc_isar_feature(aa64_mte_insn_reg, s)) {
--        goto do_unallocated;
--    }
--
--    if (rn == 31) {
-+    if (a->rn == 31) {
-         gen_check_sp_alignment(s);
-     }
- 
--    addr = read_cpu_reg_sp(s, rn, true);
--    if (index >= 0) {
-+    addr = read_cpu_reg_sp(s, a->rn, true);
-+    tcg_gen_addi_i64(addr, addr, a->imm);
-+    tcg_rt = cpu_reg(s, a->rt);
-+
-+    if (s->ata) {
-+        gen_helper_stzgm_tags(cpu_env, addr, tcg_rt);
-+    }
-+    /*
-+     * The non-tags portion of STZGM is mostly like DC_ZVA,
-+     * except the alignment happens before the access.
-+     */
-+    clean_addr = clean_data_tbi(s, addr);
-+    tcg_gen_andi_i64(clean_addr, clean_addr, -size);
-+    gen_helper_dc_zva(cpu_env, clean_addr);
-+    return true;
-+}
-+
-+static bool trans_STGM(DisasContext *s, arg_ldst_tag *a)
-+{
-+    TCGv_i64 addr, clean_addr, tcg_rt;
-+
-+    if (!dc_isar_feature(aa64_mte, s)) {
-+        return false;
-+    }
-+    if (s->current_el == 0) {
-+        return false;
-+    }
-+
-+    if (a->rn == 31) {
-+        gen_check_sp_alignment(s);
-+    }
-+
-+    addr = read_cpu_reg_sp(s, a->rn, true);
-+    tcg_gen_addi_i64(addr, addr, a->imm);
-+    tcg_rt = cpu_reg(s, a->rt);
-+
-+    if (s->ata) {
-+        gen_helper_stgm(cpu_env, addr, tcg_rt);
-+    } else {
-+        MMUAccessType acc = MMU_DATA_STORE;
-+        int size = 4 << GMID_EL1_BS;
-+
-+        clean_addr = clean_data_tbi(s, addr);
-+        tcg_gen_andi_i64(clean_addr, clean_addr, -size);
-+        gen_probe_access(s, clean_addr, acc, size);
-+    }
-+    return true;
-+}
-+
-+static bool trans_LDGM(DisasContext *s, arg_ldst_tag *a)
-+{
-+    TCGv_i64 addr, clean_addr, tcg_rt;
-+
-+    if (!dc_isar_feature(aa64_mte, s)) {
-+        return false;
-+    }
-+    if (s->current_el == 0) {
-+        return false;
-+    }
-+
-+    if (a->rn == 31) {
-+        gen_check_sp_alignment(s);
-+    }
-+
-+    addr = read_cpu_reg_sp(s, a->rn, true);
-+    tcg_gen_addi_i64(addr, addr, a->imm);
-+    tcg_rt = cpu_reg(s, a->rt);
-+
-+    if (s->ata) {
-+        gen_helper_ldgm(tcg_rt, cpu_env, addr);
-+    } else {
-+        MMUAccessType acc = MMU_DATA_LOAD;
-+        int size = 4 << GMID_EL1_BS;
-+
-+        clean_addr = clean_data_tbi(s, addr);
-+        tcg_gen_andi_i64(clean_addr, clean_addr, -size);
-+        gen_probe_access(s, clean_addr, acc, size);
-+        /* The result tags are zeros.  */
-+        tcg_gen_movi_i64(tcg_rt, 0);
-+    }
-+    return true;
-+}
-+
-+static bool trans_LDG(DisasContext *s, arg_ldst_tag *a)
-+{
-+    TCGv_i64 addr, clean_addr, tcg_rt;
-+
-+    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
-+        return false;
-+    }
-+
-+    if (a->rn == 31) {
-+        gen_check_sp_alignment(s);
-+    }
-+
-+    addr = read_cpu_reg_sp(s, a->rn, true);
-+    if (!a->p) {
-         /* pre-index or signed offset */
--        tcg_gen_addi_i64(addr, addr, offset);
-+        tcg_gen_addi_i64(addr, addr, a->imm);
-     }
- 
--    if (is_mult) {
--        tcg_rt = cpu_reg(s, rt);
-+    tcg_gen_andi_i64(addr, addr, -TAG_GRANULE);
-+    tcg_rt = cpu_reg(s, a->rt);
-+    if (s->ata) {
-+        gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
-+    } else {
-+        /*
-+         * Tag access disabled: we must check for aborts on the load
-+         * load from [rn+offset], and then insert a 0 tag into rt.
-+         */
-+        clean_addr = clean_data_tbi(s, addr);
-+        gen_probe_access(s, clean_addr, MMU_DATA_LOAD, MO_8);
-+        gen_address_with_allocation_tag0(tcg_rt, tcg_rt);
-+    }
- 
--        if (is_zero) {
--            int size = 4 << s->dcz_blocksize;
--
--            if (s->ata) {
--                gen_helper_stzgm_tags(cpu_env, addr, tcg_rt);
--            }
--            /*
--             * The non-tags portion of STZGM is mostly like DC_ZVA,
--             * except the alignment happens before the access.
--             */
--            clean_addr = clean_data_tbi(s, addr);
--            tcg_gen_andi_i64(clean_addr, clean_addr, -size);
--            gen_helper_dc_zva(cpu_env, clean_addr);
--        } else if (s->ata) {
--            if (is_load) {
--                gen_helper_ldgm(tcg_rt, cpu_env, addr);
--            } else {
--                gen_helper_stgm(cpu_env, addr, tcg_rt);
--            }
--        } else {
--            MMUAccessType acc = is_load ? MMU_DATA_LOAD : MMU_DATA_STORE;
--            int size = 4 << GMID_EL1_BS;
--
--            clean_addr = clean_data_tbi(s, addr);
--            tcg_gen_andi_i64(clean_addr, clean_addr, -size);
--            gen_probe_access(s, clean_addr, acc, size);
--
--            if (is_load) {
--                /* The result tags are zeros.  */
--                tcg_gen_movi_i64(tcg_rt, 0);
--            }
-+    if (a->w) {
-+        /* pre-index or post-index */
-+        if (a->p) {
-+            /* post-index */
-+            tcg_gen_addi_i64(addr, addr, a->imm);
-         }
--        return;
-+        tcg_gen_mov_i64(cpu_reg_sp(s, a->rn), addr);
-+    }
-+    return true;
-+}
-+
-+static bool do_STG(DisasContext *s, arg_ldst_tag *a, bool is_zero, bool is_pair)
-+{
-+    TCGv_i64 addr, tcg_rt;
-+
-+    if (a->rn == 31) {
-+        gen_check_sp_alignment(s);
-     }
- 
--    if (is_load) {
--        tcg_gen_andi_i64(addr, addr, -TAG_GRANULE);
--        tcg_rt = cpu_reg(s, rt);
--        if (s->ata) {
--            gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
-+    addr = read_cpu_reg_sp(s, a->rn, true);
-+    if (!a->p) {
-+        /* pre-index or signed offset */
-+        tcg_gen_addi_i64(addr, addr, a->imm);
-+    }
-+    tcg_rt = cpu_reg_sp(s, a->rt);
-+    if (!s->ata) {
-+        /*
-+         * For STG and ST2G, we need to check alignment and probe memory.
-+         * TODO: For STZG and STZ2G, we could rely on the stores below,
-+         * at least for system mode; user-only won't enforce alignment.
-+         */
-+        if (is_pair) {
-+            gen_helper_st2g_stub(cpu_env, addr);
-         } else {
--            /*
--             * Tag access disabled: we must check for aborts on the load
--             * load from [rn+offset], and then insert a 0 tag into rt.
--             */
--            clean_addr = clean_data_tbi(s, addr);
--            gen_probe_access(s, clean_addr, MMU_DATA_LOAD, MO_8);
--            gen_address_with_allocation_tag0(tcg_rt, tcg_rt);
-+            gen_helper_stg_stub(cpu_env, addr);
+-    if ((mop & MO_SIGN) && size != MO_64) {
+-        tcg_gen_ext32u_i64(tcg_rt, tcg_rt);
++    if (mop & MO_SIGN) {
++        switch (size) {
++        case MO_8:
++            tcg_gen_ext8u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_16:
++            tcg_gen_ext16u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_32:
++            tcg_gen_ext32u_i64(tcg_rt, tcg_rt);
++            break;
++        case MO_64:
++            break;
++        default:
++            g_assert_not_reached();
 +        }
-+    } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
-+        if (is_pair) {
-+            gen_helper_st2g_parallel(cpu_env, addr, tcg_rt);
-+        } else {
-+            gen_helper_stg_parallel(cpu_env, addr, tcg_rt);
-         }
-     } else {
--        tcg_rt = cpu_reg_sp(s, rt);
--        if (!s->ata) {
--            /*
--             * For STG and ST2G, we need to check alignment and probe memory.
--             * TODO: For STZG and STZ2G, we could rely on the stores below,
--             * at least for system mode; user-only won't enforce alignment.
--             */
--            if (is_pair) {
--                gen_helper_st2g_stub(cpu_env, addr);
--            } else {
--                gen_helper_stg_stub(cpu_env, addr);
--            }
--        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
--            if (is_pair) {
--                gen_helper_st2g_parallel(cpu_env, addr, tcg_rt);
--            } else {
--                gen_helper_stg_parallel(cpu_env, addr, tcg_rt);
--            }
-+        if (is_pair) {
-+            gen_helper_st2g(cpu_env, addr, tcg_rt);
-         } else {
--            if (is_pair) {
--                gen_helper_st2g(cpu_env, addr, tcg_rt);
--            } else {
--                gen_helper_stg(cpu_env, addr, tcg_rt);
--            }
-+            gen_helper_stg(cpu_env, addr, tcg_rt);
-         }
      }
- 
-@@ -3911,32 +3916,21 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
-         }
-     }
- 
--    if (index != 0) {
-+    if (a->w) {
-         /* pre-index or post-index */
--        if (index < 0) {
-+        if (a->p) {
-             /* post-index */
--            tcg_gen_addi_i64(addr, addr, offset);
-+            tcg_gen_addi_i64(addr, addr, a->imm);
-         }
--        tcg_gen_mov_i64(cpu_reg_sp(s, rn), addr);
-+        tcg_gen_mov_i64(cpu_reg_sp(s, a->rn), addr);
-     }
-+    return true;
  }
  
--/* Loads and stores */
--static void disas_ldst(DisasContext *s, uint32_t insn)
--{
--    switch (extract32(insn, 24, 6)) {
--    case 0x19:
--        if (extract32(insn, 21, 1) != 0) {
--            disas_ldst_tag(s, insn);
--        } else {
--            unallocated_encoding(s);
--        }
--        break;
--    default:
--        unallocated_encoding(s);
--        break;
--    }
--}
-+TRANS_FEAT(STG, aa64_mte_insn_reg, do_STG, a, false, false)
-+TRANS_FEAT(STZG, aa64_mte_insn_reg, do_STG, a, true, false)
-+TRANS_FEAT(ST2G, aa64_mte_insn_reg, do_STG, a, false, true)
-+TRANS_FEAT(STZ2G, aa64_mte_insn_reg, do_STG, a, true, true)
- 
- typedef void ArithTwoOp(TCGv_i64, TCGv_i64, TCGv_i64);
- 
-@@ -13832,12 +13826,6 @@ static bool btype_destination_ok(uint32_t insn, bool bt, int btype)
- static void disas_a64_legacy(DisasContext *s, uint32_t insn)
- {
-     switch (extract32(insn, 25, 4)) {
--    case 0x4:
--    case 0x6:
--    case 0xc:
--    case 0xe:      /* Loads and stores */
--        disas_ldst(s, insn);
--        break;
-     case 0x5:
-     case 0xd:      /* Data processing - register */
-         disas_data_proc_reg(s, insn);
 -- 
 2.34.1
 

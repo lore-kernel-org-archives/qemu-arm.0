@@ -1,304 +1,463 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1540751ejb;
-        Sun, 11 Jun 2023 09:03:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6XdZnKxhqZNpvYpe14WIzj0uZv5M36n7DQASSMUZFalPbk8kwafjzbTcJmU58Ns6DIUCqn
-X-Received: by 2002:a05:620a:4550:b0:75e:fc97:9e78 with SMTP id u16-20020a05620a455000b0075efc979e78mr8785821qkp.73.1686499409787;
-        Sun, 11 Jun 2023 09:03:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686499409; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1541017ejb;
+        Sun, 11 Jun 2023 09:03:55 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7DVw/CcDfBJNmNqO+e7quGol57f1jsbrSzo0DhpOie42XOQcN/BiBf+wS9IJmGR4gCR7xY
+X-Received: by 2002:ac8:5708:0:b0:3f9:e6ac:f352 with SMTP id 8-20020ac85708000000b003f9e6acf352mr5058386qtw.51.1686499435376;
+        Sun, 11 Jun 2023 09:03:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686499435; cv=none;
         d=google.com; s=arc-20160816;
-        b=cz7/NvgYLCFg9tb1saR3JRpT3V8W1zxX3mpPoY14ZTJtcYkV/wDYTBk3Gs/tfn9Z+d
-         wORmlTDDDQt+F3lIPhrqeTknOxrR/aNIWmrQQ5dKw95K+AoV4QAnFXxUUgOsiB2WzJFp
-         0/f1q9jq4FNpG4eBz7nRr16ra7SUZkY10vDznl0naoc67U6iHt/jZFl7+TVdIxqEhbYV
-         gymt8MWZVlJHjIppgvIkIfQXv8Q88M2n0TdDDXsQE4PQUfCIP+d3tn8fWQSl1u2zS7iy
-         oZO69PE0EqVnItjXDZYPy3sGzVSsEJMxLGI1VQGINFlKrseVyHOdGR3AVIiM8io5n86o
-         zXRg==
+        b=Zlcc+E3uAwIn+0a04GUUuHg6Xb9oOA4QktY3PpzNbj630ftoil0ntUAs3kRQ6MAfT4
+         xJG0E+KPMpa3zAr+up5Rk+E9ZWnFAwfWQ9oczST0GCzAqZHTFPTZQUQepj7BAs/IMLwB
+         oKUwnYqIDWzLIBxcYLy5WFU4fe+ZQZf2qZFFSHO7+BGQxIrmWAxzao4LCx6sY4qFLiYe
+         e+2Ttpdd60LuP+l4iLKjYM+3SaLY8NaIhkUFs1TpdLjLkkT81g1ozIAgTXd3YkUHpORc
+         6QGCbyWEOJP4AybiBdw713plD4cpFRvYyMXP7HIVk9o6xwAYnQJnXX4g92q6xPsA7ZWn
+         JzKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=oJIgChC16XW2w2F+7O8jEKJMEfu8u6OYMg1OR7BVh28=;
-        b=knSBXGM3mOGukzidTy38BqatNJ6iTvwScCDcwRu3DwmCtSIi3Ua8mXwJulPTi+QRGq
-         rcI9giwWFyMT+Y/3R7yfUPky8OJBLblQu9cjHXfqJZfCg9iIHR1ZoNeuPuKOkl5YvigH
-         qU7RwGTcuQv3gvFlEZszhZi3Er9B4kQdtsgRIf+vR2SCAIqavPfmXGesBXv1k+PQ4pHO
-         /8cTf+x23k9lz4kQvHnpw8aAYgfNFk6L94/KOBUPspnZ3KBxrl1njYR8FpqZLyQlrzLn
-         SsJzoht3mPQ4cO+N2UW/uS/sslAEYG14qUjcyMlSwB1+SiApoP1YYoVuxAL8rJi+qfXq
-         lq6Q==
+        bh=2RxZp4L2OOp86GeN9wdwmMgvMFkloHNsLM24GLSIa0U=;
+        b=H99+8NwBOlKZHE65jNYyScQ91ZT2qV1XoaaKTGUrMlKSwxtnhnce2Mrum75Mh10HQd
+         VHGlq2q7l2xABEk3m53L+lhetGYRE7iRsZsKkDwPlcGiQVi19B5Z8nTtXy4pCIq6Ljxt
+         IsSxQx0J4hYKz48epC6+n2YSDYcmmypiKLChpPRzSTD8LlyPYyCjchc9Kq2zR0dRHata
+         GyLgNRx0ixOes1Fgy1y7ID5Z/f/sMpzHziaeophX6iMaJIsypyhQjVeWHwdJXGcrMB0B
+         00utHiFmZlUZbIR2FTv3AmRvktvfPvK7wKxN1V3S0ejbnKe36rtopX/ZPm8YkhGF54OX
+         VKMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mbwAZKuj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eoAJnuGR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cz6-20020a05620a36c600b00730749b412fsi4712984qkb.612.2023.06.11.09.03.29
+        by mx.google.com with ESMTPS id t10-20020ac8588a000000b003ef2ffb9611si4973753qta.466.2023.06.11.09.03.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Jun 2023 09:03:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 11 Jun 2023 09:03:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mbwAZKuj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eoAJnuGR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q8NVm-0006kM-SU; Sun, 11 Jun 2023 12:01:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q8NVm-0006kX-Vc; Sun, 11 Jun 2023 12:01:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUo-0005vt-BG
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:00:52 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1q8NUs-00060v-UI
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:01:00 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUi-0000UQ-Vn
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:00:49 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-30ae95c4e75so3440925f8f.2
- for <qemu-devel@nongnu.org>; Sun, 11 Jun 2023 09:00:43 -0700 (PDT)
+ id 1q8NUl-0000XG-82
+ for qemu-arm@nongnu.org; Sun, 11 Jun 2023 12:00:54 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-30e412a852dso2205564f8f.0
+ for <qemu-arm@nongnu.org>; Sun, 11 Jun 2023 09:00:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686499242; x=1689091242;
+ d=linaro.org; s=google; t=1686499246; x=1689091246;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=oJIgChC16XW2w2F+7O8jEKJMEfu8u6OYMg1OR7BVh28=;
- b=mbwAZKujyQJePHrSKKzPrhn7BxUcT0TjONhTQzBDWL4RUALWlpsaehYh+TWDTs1Hyv
- aVhmpsleT21QhWOT3YFJUXsyy4r8g6PjF00p4KTuRyI7wZEQmIOr1zUMdC80BqXRRLGA
- 77OfIr9I69xWe0m7zYuaWjpGgG+2OeT0WTm2Y/qZc4fCEudcroMH1x4T+STlwGZHQNkG
- kl6tFU+/6YTeoOzfqEFB1nnHLlqhHqtCzP35G/IdpvWq+6fTBFWP8WtRYKbvL94c2HWQ
- SsmnrIfHK8c2TW2NNWnZ9UhHjXWIVXQhmm2YevdUQDWRF5STR9oP2+8txBmPbKRlQC/4
- BxyQ==
+ :reply-to; bh=2RxZp4L2OOp86GeN9wdwmMgvMFkloHNsLM24GLSIa0U=;
+ b=eoAJnuGRZa9p4qK/jadAodscf5DyoMNOwEAgGqxG8OtUn1mnpBAZ2lxOkTNpURuWou
+ BgkWwGONwLZ74CHChimq4u0rZyDsmS3s9MNXC3J6xXwY0lOiFzeuGocD+vlEx0lpiIVM
+ lFkxho2zLtz7Pq360SI2gNhfdyACwHARsJ4buYAAtwdwk22ZKyAgI7hpwqsx/1bs30xo
+ AyTHKbcNgpCut45b4vB7Q7BhkqWam4hgEJwf+MIPhsRMiGWNJ7+lppobdBiMSFbM9tIt
+ z6r0rmII9lwJ0C/g/G6Z1ACcqS/2c+45iOzDitL390/dZxu2Mi+T2rfTdOQY6ULbd4GQ
+ nA6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686499242; x=1689091242;
+ d=1e100.net; s=20221208; t=1686499246; x=1689091246;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oJIgChC16XW2w2F+7O8jEKJMEfu8u6OYMg1OR7BVh28=;
- b=TjupjdVlMOje1ytfC3+ZxMt5povn1VnuTz4a8WXnxExWQ8stJQGSfABQcivKVBT9Sf
- EwHPEKc9NXl2dOUIQMOH9KuEkN2UibQALQqOnMEgAMwpbTrDatDIpKtGrjavQstFND5h
- EghuTYoa56fmiJTKY/jfwPRnpiY4ds5XMwebAuH88bcm2q0Qs9Tl2vH9xv6QCQ8VZY9S
- vSkqooLgBPY+HBq8Z79WYoXLM/h9hjEesi+xX7TCDw714wOFS7/4/FH2QIU3FiH3VNfh
- /nKkYFN1c1PKshs42gJx3gfX4Mp2aMpytzogSVlFiAPsDFn6sVHQj+t9VyG+e+WxRAz0
- ZYIQ==
-X-Gm-Message-State: AC+VfDxnmHNJxqvgCl/IRrykscLa34VBT1wUpUQeZ7xvEwreRwWPTrAh
- Hfwx57EaHsh8A+jHnEwvzucdFPCrccWGfGGtcNE=
-X-Received: by 2002:adf:f48a:0:b0:30f:c27c:a36d with SMTP id
- l10-20020adff48a000000b0030fc27ca36dmr121940wro.69.1686499242678; 
- Sun, 11 Jun 2023 09:00:42 -0700 (PDT)
+ bh=2RxZp4L2OOp86GeN9wdwmMgvMFkloHNsLM24GLSIa0U=;
+ b=MlnDPfpjHvC274LDRxx3FP2NoO6ldMprMWljN/pxMFbzq1X9PEpD9UZ5OTK7ATx5Oc
+ oV74O/R7umyVMQV0HxurUQkvGjM05+mN0GdDXmvQ3b6EtpVBd+cDVAsfiMrtkqLKbEVU
+ cCRsqgUiFO0lidroXkcXx3akWXE1SRo3bNQ/6JycZrfetpXLzs09knZBMmh2f+/nbVCI
+ mFNJLX976bWfajuPo2LyWLvvZx4qZo4K8jzjTAzztYRZPUMpErbM2RGABLfw6pbBAO7y
+ OA+lVSJI8VDLzsahvlflxuO8GVouBdfh74bVoz+9gaGct8ck+kpu+wtQVbzDHIw9agSx
+ vFtQ==
+X-Gm-Message-State: AC+VfDwpMaB4wjsRotQKCWdqQ9b087BVHWueptYMF/FtptZ+dvFFgilt
+ YqjiERYMp5qnN/SMuRNUsWzcmXjZS+Xf716khvM=
+X-Received: by 2002:a5d:6a87:0:b0:2cf:e747:b0d4 with SMTP id
+ s7-20020a5d6a87000000b002cfe747b0d4mr2417583wru.40.1686499245790; 
+ Sun, 11 Jun 2023 09:00:45 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.42
+ m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Jun 2023 09:00:42 -0700 (PDT)
+ Sun, 11 Jun 2023 09:00:45 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 16/23] target/arm: Convert LDR/STR with 12-bit immediate to
- decodetree
-Date: Sun, 11 Jun 2023 17:00:25 +0100
-Message-Id: <20230611160032.274823-17-peter.maydell@linaro.org>
+Subject: [PATCH v2 21/23] target/arm: Convert load/store (multiple structures)
+ to decodetree
+Date: Sun, 11 Jun 2023 17:00:30 +0100
+Message-Id: <20230611160032.274823-22-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230611160032.274823-1-peter.maydell@linaro.org>
 References: <20230611160032.274823-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aCtvbEXL0blB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: U2/5LhYpV0qi
 
-Convert the LDR and STR instructions which use a 12-bit immediate
-offset to decodetree. We can reuse the existing LDR and STR
-trans functions for these.
+Convert the instructions in the ASIMD load/store multiple structures
+instruction classes to decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230602155223.2040685-14-peter.maydell@linaro.org
+Message-id: 20230602155223.2040685-19-peter.maydell@linaro.org
 ---
- target/arm/tcg/a64.decode      |  25 ++++++++
- target/arm/tcg/translate-a64.c | 104 +++++----------------------------
- 2 files changed, 41 insertions(+), 88 deletions(-)
+ target/arm/tcg/a64.decode      |  20 +++
+ target/arm/tcg/translate-a64.c | 222 ++++++++++++++++-----------------
+ 2 files changed, 131 insertions(+), 111 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index d55c09684a7..d6b31c10838 100644
+index db4f44c4f40..69bdfa2e73b 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -395,3 +395,28 @@ STR_v_i         sz:2 111 1 00 00 0 ......... 11 ..... ..... @ldst_imm_pre sign=0
- STR_v_i         00 111 1 00 10 0 ......... 11 ..... ..... @ldst_imm_pre sign=0 ext=0 sz=4
- LDR_v_i         sz:2 111 1 00 01 0 ......... 11 ..... ..... @ldst_imm_pre sign=0 ext=0
- LDR_v_i         00 111 1 00 11 0 ......... 11 ..... ..... @ldst_imm_pre sign=0 ext=0 sz=4
+@@ -474,3 +474,23 @@ LDAPR_i         01 011001 10 0 ......... 00 ..... ..... @ldapr_stlr_i sign=1 ext
+ LDAPR_i         10 011001 10 0 ......... 00 ..... ..... @ldapr_stlr_i sign=1 ext=0 sz=2
+ LDAPR_i         00 011001 11 0 ......... 00 ..... ..... @ldapr_stlr_i sign=1 ext=1 sz=0
+ LDAPR_i         01 011001 11 0 ......... 00 ..... ..... @ldapr_stlr_i sign=1 ext=1 sz=1
 +
-+# Load/store with an unsigned 12 bit immediate, which is scaled by the
-+# element size. The function gets the sz:imm and returns the scaled immediate.
-+%uimm_scaled   10:12 sz:3 !function=uimm_scaled
++# Load/store multiple structures
++# The 4-bit opcode in [15:12] encodes repeat count and structure elements
++&ldst_mult      rm rn rt sz q p rpt selem
++@ldst_mult      . q:1 ...... p:1 . . rm:5 .... sz:2 rn:5 rt:5 &ldst_mult
++ST_mult         0 . 001100 . 0 0 ..... 0000 .. ..... ..... @ldst_mult rpt=1 selem=4
++ST_mult         0 . 001100 . 0 0 ..... 0010 .. ..... ..... @ldst_mult rpt=4 selem=1
++ST_mult         0 . 001100 . 0 0 ..... 0100 .. ..... ..... @ldst_mult rpt=1 selem=3
++ST_mult         0 . 001100 . 0 0 ..... 0110 .. ..... ..... @ldst_mult rpt=3 selem=1
++ST_mult         0 . 001100 . 0 0 ..... 0111 .. ..... ..... @ldst_mult rpt=1 selem=1
++ST_mult         0 . 001100 . 0 0 ..... 1000 .. ..... ..... @ldst_mult rpt=1 selem=2
++ST_mult         0 . 001100 . 0 0 ..... 1010 .. ..... ..... @ldst_mult rpt=2 selem=1
 +
-+@ldst_uimm      .. ... . .. .. ............ rn:5 rt:5 &ldst_imm unpriv=0 p=0 w=0 imm=%uimm_scaled
-+
-+STR_i           sz:2 111 0 01 00 ............ ..... ..... @ldst_uimm sign=0 ext=0
-+LDR_i           00 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=0
-+LDR_i           01 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=1
-+LDR_i           10 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=1 sz=2
-+LDR_i           11 111 0 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=0 sz=3
-+LDR_i           00 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=0
-+LDR_i           01 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=1
-+LDR_i           10 111 0 01 10 ............ ..... ..... @ldst_uimm sign=1 ext=0 sz=2
-+LDR_i           00 111 0 01 11 ............ ..... ..... @ldst_uimm sign=1 ext=1 sz=0
-+LDR_i           01 111 0 01 11 ............ ..... ..... @ldst_uimm sign=1 ext=1 sz=1
-+
-+# PRFM
-+NOP             11 111 0 01 10 ------------ ----- -----
-+
-+STR_v_i         sz:2 111 1 01 00 ............ ..... ..... @ldst_uimm sign=0 ext=0
-+STR_v_i         00 111 1 01 10 ............ ..... ..... @ldst_uimm sign=0 ext=0 sz=4
-+LDR_v_i         sz:2 111 1 01 01 ............ ..... ..... @ldst_uimm sign=0 ext=0
-+LDR_v_i         00 111 1 01 11 ............ ..... ..... @ldst_uimm sign=0 ext=0 sz=4
++LD_mult         0 . 001100 . 1 0 ..... 0000 .. ..... ..... @ldst_mult rpt=1 selem=4
++LD_mult         0 . 001100 . 1 0 ..... 0010 .. ..... ..... @ldst_mult rpt=4 selem=1
++LD_mult         0 . 001100 . 1 0 ..... 0100 .. ..... ..... @ldst_mult rpt=1 selem=3
++LD_mult         0 . 001100 . 1 0 ..... 0110 .. ..... ..... @ldst_mult rpt=3 selem=1
++LD_mult         0 . 001100 . 1 0 ..... 0111 .. ..... ..... @ldst_mult rpt=1 selem=1
++LD_mult         0 . 001100 . 1 0 ..... 1000 .. ..... ..... @ldst_mult rpt=1 selem=2
++LD_mult         0 . 001100 . 1 0 ..... 1010 .. ..... ..... @ldst_mult rpt=2 selem=1
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 4cabdadde41..e1936c7c246 100644
+index 54383211006..1c8a57f7b52 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -46,6 +46,22 @@ enum a64_shift_type {
-     A64_SHIFT_TYPE_ROR = 3
- };
+@@ -3417,99 +3417,28 @@ static bool trans_STLR_i(DisasContext *s, arg_ldapr_stlr_i *a)
+     return true;
+ }
  
-+/*
-+ * Helpers for extracting complex instruction fields
-+ */
+-/* AdvSIMD load/store multiple structures
+- *
+- *  31  30  29           23 22  21         16 15    12 11  10 9    5 4    0
+- * +---+---+---------------+---+-------------+--------+------+------+------+
+- * | 0 | Q | 0 0 1 1 0 0 0 | L | 0 0 0 0 0 0 | opcode | size |  Rn  |  Rt  |
+- * +---+---+---------------+---+-------------+--------+------+------+------+
+- *
+- * AdvSIMD load/store multiple structures (post-indexed)
+- *
+- *  31  30  29           23 22  21  20     16 15    12 11  10 9    5 4    0
+- * +---+---+---------------+---+---+---------+--------+------+------+------+
+- * | 0 | Q | 0 0 1 1 0 0 1 | L | 0 |   Rm    | opcode | size |  Rn  |  Rt  |
+- * +---+---+---------------+---+---+---------+--------+------+------+------+
+- *
+- * Rt: first (or only) SIMD&FP register to be transferred
+- * Rn: base address or SP
+- * Rm (post-index only): post-index register (when !31) or size dependent #imm
+- */
+-static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
++static bool trans_LD_mult(DisasContext *s, arg_ldst_mult *a)
+ {
+-    int rt = extract32(insn, 0, 5);
+-    int rn = extract32(insn, 5, 5);
+-    int rm = extract32(insn, 16, 5);
+-    int size = extract32(insn, 10, 2);
+-    int opcode = extract32(insn, 12, 4);
+-    bool is_store = !extract32(insn, 22, 1);
+-    bool is_postidx = extract32(insn, 23, 1);
+-    bool is_q = extract32(insn, 30, 1);
+     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
+     MemOp endian, align, mop;
+ 
+     int total;    /* total bytes */
+     int elements; /* elements per vector */
+-    int rpt;    /* num iterations */
+-    int selem;  /* structure elements */
+     int r;
++    int size = a->sz;
+ 
+-    if (extract32(insn, 31, 1) || extract32(insn, 21, 1)) {
+-        unallocated_encoding(s);
+-        return;
++    if (!a->p && a->rm != 0) {
++        /* For non-postindexed accesses the Rm field must be 0 */
++        return false;
+     }
+-
+-    if (!is_postidx && rm != 0) {
+-        unallocated_encoding(s);
+-        return;
++    if (size == 3 && !a->q && a->selem != 1) {
++        return false;
+     }
+-
+-    /* From the shared decode logic */
+-    switch (opcode) {
+-    case 0x0:
+-        rpt = 1;
+-        selem = 4;
+-        break;
+-    case 0x2:
+-        rpt = 4;
+-        selem = 1;
+-        break;
+-    case 0x4:
+-        rpt = 1;
+-        selem = 3;
+-        break;
+-    case 0x6:
+-        rpt = 3;
+-        selem = 1;
+-        break;
+-    case 0x7:
+-        rpt = 1;
+-        selem = 1;
+-        break;
+-    case 0x8:
+-        rpt = 1;
+-        selem = 2;
+-        break;
+-    case 0xa:
+-        rpt = 2;
+-        selem = 1;
+-        break;
+-    default:
+-        unallocated_encoding(s);
+-        return;
+-    }
+-
+-    if (size == 3 && !is_q && selem != 1) {
+-        /* reserved */
+-        unallocated_encoding(s);
+-        return;
+-    }
+-
+     if (!fp_access_check(s)) {
+-        return;
++        return true;
+     }
+ 
+-    if (rn == 31) {
++    if (a->rn == 31) {
+         gen_check_sp_alignment(s);
+     }
+ 
+@@ -3519,22 +3448,22 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+         endian = MO_LE;
+     }
+ 
+-    total = rpt * selem * (is_q ? 16 : 8);
+-    tcg_rn = cpu_reg_sp(s, rn);
++    total = a->rpt * a->selem * (a->q ? 16 : 8);
++    tcg_rn = cpu_reg_sp(s, a->rn);
+ 
+     /*
+      * Issue the MTE check vs the logical repeat count, before we
+      * promote consecutive little-endian elements below.
+      */
+-    clean_addr = gen_mte_checkN(s, tcg_rn, is_store, is_postidx || rn != 31,
+-                                total, finalize_memop_asimd(s, size));
++    clean_addr = gen_mte_checkN(s, tcg_rn, false, a->p || a->rn != 31, total,
++                                finalize_memop_asimd(s, size));
+ 
+     /*
+      * Consecutive little-endian elements from a single register
+      * can be promoted to a larger little-endian operation.
+      */
+     align = MO_ALIGN;
+-    if (selem == 1 && endian == MO_LE) {
++    if (a->selem == 1 && endian == MO_LE) {
+         align = pow2_align(size);
+         size = 3;
+     }
+@@ -3543,45 +3472,119 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+     }
+     mop = endian | size | align;
+ 
+-    elements = (is_q ? 16 : 8) >> size;
++    elements = (a->q ? 16 : 8) >> size;
+     tcg_ebytes = tcg_constant_i64(1 << size);
+-    for (r = 0; r < rpt; r++) {
++    for (r = 0; r < a->rpt; r++) {
+         int e;
+         for (e = 0; e < elements; e++) {
+             int xs;
+-            for (xs = 0; xs < selem; xs++) {
+-                int tt = (rt + r + xs) % 32;
+-                if (is_store) {
+-                    do_vec_st(s, tt, e, clean_addr, mop);
+-                } else {
+-                    do_vec_ld(s, tt, e, clean_addr, mop);
+-                }
++            for (xs = 0; xs < a->selem; xs++) {
++                int tt = (a->rt + r + xs) % 32;
++                do_vec_ld(s, tt, e, clean_addr, mop);
+                 tcg_gen_add_i64(clean_addr, clean_addr, tcg_ebytes);
+             }
+         }
+     }
+ 
+-    if (!is_store) {
+-        /* For non-quad operations, setting a slice of the low
+-         * 64 bits of the register clears the high 64 bits (in
+-         * the ARM ARM pseudocode this is implicit in the fact
+-         * that 'rval' is a 64 bit wide variable).
+-         * For quad operations, we might still need to zero the
+-         * high bits of SVE.
+-         */
+-        for (r = 0; r < rpt * selem; r++) {
+-            int tt = (rt + r) % 32;
+-            clear_vec_high(s, is_q, tt);
++    /*
++     * For non-quad operations, setting a slice of the low 64 bits of
++     * the register clears the high 64 bits (in the ARM ARM pseudocode
++     * this is implicit in the fact that 'rval' is a 64 bit wide
++     * variable).  For quad operations, we might still need to zero
++     * the high bits of SVE.
++     */
++    for (r = 0; r < a->rpt * a->selem; r++) {
++        int tt = (a->rt + r) % 32;
++        clear_vec_high(s, a->q, tt);
++    }
 +
-+/*
-+ * For load/store with an unsigned 12 bit immediate scaled by the element
-+ * size. The input has the immediate field in bits [14:3] and the element
-+ * size in [2:0].
-+ */
-+static int uimm_scaled(DisasContext *s, int x)
-+{
-+    unsigned imm = x >> 3;
-+    unsigned scale = extract32(x, 0, 3);
-+    return imm << scale;
++    if (a->p) {
++        if (a->rm == 31) {
++            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
++        } else {
++            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, a->rm));
++        }
++    }
++    return true;
 +}
 +
- /*
-  * Include the generated decoders.
-  */
-@@ -3237,91 +3253,6 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
++static bool trans_ST_mult(DisasContext *s, arg_ldst_mult *a)
++{
++    TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
++    MemOp endian, align, mop;
++
++    int total;    /* total bytes */
++    int elements; /* elements per vector */
++    int r;
++    int size = a->sz;
++
++    if (!a->p && a->rm != 0) {
++        /* For non-postindexed accesses the Rm field must be 0 */
++        return false;
++    }
++    if (size == 3 && !a->q && a->selem != 1) {
++        return false;
++    }
++    if (!fp_access_check(s)) {
++        return true;
++    }
++
++    if (a->rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++
++    /* For our purposes, bytes are always little-endian.  */
++    endian = s->be_data;
++    if (size == 0) {
++        endian = MO_LE;
++    }
++
++    total = a->rpt * a->selem * (a->q ? 16 : 8);
++    tcg_rn = cpu_reg_sp(s, a->rn);
++
++    /*
++     * Issue the MTE check vs the logical repeat count, before we
++     * promote consecutive little-endian elements below.
++     */
++    clean_addr = gen_mte_checkN(s, tcg_rn, true, a->p || a->rn != 31, total,
++                                finalize_memop_asimd(s, size));
++
++    /*
++     * Consecutive little-endian elements from a single register
++     * can be promoted to a larger little-endian operation.
++     */
++    align = MO_ALIGN;
++    if (a->selem == 1 && endian == MO_LE) {
++        align = pow2_align(size);
++        size = 3;
++    }
++    if (!s->align_mem) {
++        align = 0;
++    }
++    mop = endian | size | align;
++
++    elements = (a->q ? 16 : 8) >> size;
++    tcg_ebytes = tcg_constant_i64(1 << size);
++    for (r = 0; r < a->rpt; r++) {
++        int e;
++        for (e = 0; e < elements; e++) {
++            int xs;
++            for (xs = 0; xs < a->selem; xs++) {
++                int tt = (a->rt + r + xs) % 32;
++                do_vec_st(s, tt, e, clean_addr, mop);
++                tcg_gen_add_i64(clean_addr, clean_addr, tcg_ebytes);
++            }
+         }
      }
+ 
+-    if (is_postidx) {
+-        if (rm == 31) {
++    if (a->p) {
++        if (a->rm == 31) {
+             tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
+         } else {
+-            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
++            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, a->rm));
+         }
+     }
++    return true;
  }
  
--/*
-- * Load/store (unsigned immediate)
-- *
-- * 31 30 29   27  26 25 24 23 22 21        10 9     5
-- * +----+-------+---+-----+-----+------------+-------+------+
-- * |size| 1 1 1 | V | 0 1 | opc |   imm12    |  Rn   |  Rt  |
-- * +----+-------+---+-----+-----+------------+-------+------+
-- *
-- * For non-vector:
-- *   size: 00-> byte, 01 -> 16 bit, 10 -> 32bit, 11 -> 64bit
-- *   opc: 00 -> store, 01 -> loadu, 10 -> loads 64, 11 -> loads 32
-- * For vector:
-- *   size is opc<1>:size<1:0> so 100 -> 128 bit; 110 and 111 unallocated
-- *   opc<0>: 0 -> store, 1 -> load
-- * Rn: base address register (inc SP)
-- * Rt: target register
-- */
--static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
--                                        int opc,
--                                        int size,
--                                        int rt,
--                                        bool is_vector)
--{
--    int rn = extract32(insn, 5, 5);
--    unsigned int imm12 = extract32(insn, 10, 12);
--    unsigned int offset;
--    TCGv_i64 clean_addr, dirty_addr;
--    bool is_store;
--    bool is_signed = false;
--    bool is_extended = false;
--    MemOp memop;
--
--    if (is_vector) {
--        size |= (opc & 2) << 1;
--        if (size > 4) {
--            unallocated_encoding(s);
--            return;
--        }
--        is_store = !extract32(opc, 0, 1);
--        if (!fp_access_check(s)) {
--            return;
--        }
--        memop = finalize_memop_asimd(s, size);
--    } else {
--        if (size == 3 && opc == 2) {
--            /* PRFM - prefetch */
--            return;
--        }
--        if (opc == 3 && size > 1) {
--            unallocated_encoding(s);
--            return;
--        }
--        is_store = (opc == 0);
--        is_signed = !is_store && extract32(opc, 1, 1);
--        is_extended = (size < 3) && extract32(opc, 0, 1);
--        memop = finalize_memop(s, size + is_signed * MO_SIGN);
--    }
--
--    if (rn == 31) {
--        gen_check_sp_alignment(s);
--    }
--    dirty_addr = read_cpu_reg_sp(s, rn, 1);
--    offset = imm12 << size;
--    tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
--
--    clean_addr = gen_mte_check1(s, dirty_addr, is_store, rn != 31, memop);
--
--    if (is_vector) {
--        if (is_store) {
--            do_fp_st(s, rt, clean_addr, memop);
--        } else {
--            do_fp_ld(s, rt, clean_addr, memop);
--        }
--    } else {
--        TCGv_i64 tcg_rt = cpu_reg(s, rt);
--        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
--        if (is_store) {
--            do_gpr_st(s, tcg_rt, clean_addr, memop, true, rt, iss_sf, false);
--        } else {
--            do_gpr_ld(s, tcg_rt, clean_addr, memop,
--                      is_extended, true, rt, iss_sf, false);
--        }
--    }
--}
--
- /* Atomic memory operations
-  *
-  *  31  30      27  26    24    22  21   16   15    12    10    5     0
-@@ -3621,9 +3552,6 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
-             return;
-         }
+ /* AdvSIMD load/store single structure
+@@ -3934,9 +3937,6 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+ static void disas_ldst(DisasContext *s, uint32_t insn)
+ {
+     switch (extract32(insn, 24, 6)) {
+-    case 0x0c: /* AdvSIMD load/store multiple structures */
+-        disas_ldst_multiple_struct(s, insn);
+-        break;
+     case 0x0d: /* AdvSIMD load/store single structure */
+         disas_ldst_single_struct(s, insn);
          break;
--    case 1:
--        disas_ldst_reg_unsigned_imm(s, insn, opc, size, rt, is_vector);
--        return;
-     }
-     unallocated_encoding(s);
- }
 -- 
 2.34.1
 

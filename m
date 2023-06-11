@@ -1,114 +1,114 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1540119ejb;
-        Sun, 11 Jun 2023 09:02:44 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7XGBMucc7WOKjArVYCbdc/eT2LG/lQrqfAmO5Iibm+TsU+fQGp826UFWDEemqSDsaXlVMs
-X-Received: by 2002:a1f:3f96:0:b0:44f:e32a:148 with SMTP id m144-20020a1f3f96000000b0044fe32a0148mr2549642vka.8.1686499363942;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1540111ejb;
+        Sun, 11 Jun 2023 09:02:43 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7W9uj0rgorPnkpwRnwUl1qgPAgUhGb7jCJtbBZ61bqv6mNT/S2IqaEGWO3UkA7GXXzMaKR
+X-Received: by 2002:a67:eb4c:0:b0:437:e5ce:7e8f with SMTP id x12-20020a67eb4c000000b00437e5ce7e8fmr3260688vso.4.1686499363663;
         Sun, 11 Jun 2023 09:02:43 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1686499363; cv=none;
         d=google.com; s=arc-20160816;
-        b=JOYn1hy8srHJ25O6oYAi11agwcrXg1sN75mlIv7b48SsJ08rW2iQPAl/BpLnMOjHrP
-         RDRRkuuPZlb7kWHNWqFVVBMJYcSh778pMwjCIpLYSmrrdTWjyKRN7U6rWyCEfx2pLIsD
-         dKbNylbhx4AhuRpqHoDJMmSv2GQTwHWfLaZ+1obB6UHSN4kSrJb9bmmmKC/hzr4bN8o7
-         4HUjzPu7sjV5JJcfp+W7XnPXtOZmsilYJzzctWxawxMkda/NrD8NNnJqf6a+JaANly3L
-         7Y79dN69si1zLxG89YPwt36nch49zr2rGMMoO7SsOIyDMjrDK4Hp6k9FWrqbOrMD/SVQ
-         1Qvg==
+        b=WzIFhEphph6MQ/R8jJrNQmVKCS4pJwi7eZuANsrcI6pKJmpE+JQIEmn6EHuYYI622h
+         UOo/M+2RzbsjY51hqhU80kwA9q37jmy9DXxhXdMGuTgFlfkLm/Twx70vizCDn++kYRvj
+         l+SZuKQnPeS5FkC97UwIJyHBlYCQ0o5HX0sVe4yDTNYIzit2FG+zmz/lOOM/Q9UCryj4
+         I9UhG3MnBVDSebGN9/osfxbV1w7G2bumSzioIfv5vdaBI1/3PPcxFTacx7e0/7o/xbVm
+         e1hbTxthGPQn+bD/NfL/M2hfIzbphXssqVOl7ciCxohfdoXIB6mChKzY40zReg2EWBDz
+         LxGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=tdjaSXSdLsKu4MO87YZyRq3fS44rsN7i4e3GLBzxGpI=;
-        b=lb5JixVN6DuPIJ+LCDY1Zr83z1kgszNZDS8iodN1KZMqfgjMA7Nl7KtPX7LYh5O1uQ
-         zMOnVw4qedjT2dlBnwDC74YZ9EcKwJRg9tIdt/my4WTAH/aF4fy5HsQmYhHU1DqaIjE5
-         Gt5QM6nBX47PbI2hjXvNdRKFuUqNwIElogq24AVkOQIHgRgq3E0C74UeuK8sW3SCOKIA
-         z/SOQxVKrILiNQiy+ACm4igg4DrjS4o/aY8VcjCEnxO1YQIv/Vydjm6tNPP58X9oV0KK
-         ACjP1R5cfssM1lqvYQGVtAR14HieSAtl8CKI34aIcx1vW0PTnBWVTBHI593Dq+CqxHH3
-         /ZhQ==
+        bh=Tjmthin5TQuDssMEMCBUr/UdC5X7+Wb+s2H58zsniSY=;
+        b=PtgxY4L3lEMnkM6efsIEnAtyvBA9gICimy2LEvVBbrUkffLFaklqkOc7IfuTNWLgh5
+         yoeZTrSdUllSvjbTXqwjMOzucROA8mm81B+4MsvO4cOgccvCJ7r+hcFLipjpyYDm2hDF
+         V7tGB9Dn49SBQ2Ngdw2lmFLG5cJprmRzKiFXBfNtdFU6rEdooJXA7E2MuSL7BYJEHB/L
+         m8vO8oxFqsAMK8alex8LapQT34Qj8i5vraaNhjCQjp7jUp9sqAD2NXVooHPxpS44giAB
+         UvNFRdT4BhJ2iz4XSfDf/cC/zRzlRf6dlvbrI6kDbqFcffsqUhQRL+tWCEet6yGzlKku
+         JhiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GrAVhpes;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Lju/q0TO";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r185-20020a1fdac2000000b00443932ebf1csi551955vkg.23.2023.06.11.09.02.43
+        by mx.google.com with ESMTPS id a12-20020a05610222cc00b0043d5d77bc39si480533vsh.46.2023.06.11.09.02.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 11 Jun 2023 09:02:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GrAVhpes;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Lju/q0TO";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q8NVa-0006Nv-D2; Sun, 11 Jun 2023 12:01:38 -0400
+	id 1q8NVj-0006eY-Kl; Sun, 11 Jun 2023 12:01:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUg-0005ph-FW
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:00:50 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1q8NUt-000611-48
+ for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:01:00 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q8NUc-0000Ru-7Z
- for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:00:41 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-3f6d7abe9a4so24670405e9.2
- for <qemu-devel@nongnu.org>; Sun, 11 Jun 2023 09:00:37 -0700 (PDT)
+ id 1q8NUm-0000XV-El
+ for qemu-devel@nongnu.org; Sun, 11 Jun 2023 12:00:54 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-3f7f6341bf9so35039965e9.1
+ for <qemu-devel@nongnu.org>; Sun, 11 Jun 2023 09:00:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686499236; x=1689091236;
+ d=linaro.org; s=google; t=1686499246; x=1689091246;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=tdjaSXSdLsKu4MO87YZyRq3fS44rsN7i4e3GLBzxGpI=;
- b=GrAVhpesV/vOpDjAWBgmbsaQ5nB9zyuAeSUVrjO8t3X9dgp3KaHoCnVpyN6UWwuyHD
- jt5hB59yssTkT73UOElTRWlB7PIup/lcuighshQvSNT9Gy4YrLWze1fW2SjwDzqjudJf
- 9WSvLYDvVLjUROz5iFFQnCii/4nroQlG/QPxcpfw5LMJxFr9nRDsGW1b89/DHk4o2gNz
- HrGezyof+9TRUxA6MOj6G5XGQm4wwpemw1CuvCaQ3nJbVAxstDe+kAEFiSfT8zKQnC7C
- lKnFJESyCN5J1jdYHCL/bSX9hAKfSyKCTGgEoEHaT5fckYeY/Cn0tnA88q2YTM8DNQZ5
- wBlg==
+ :reply-to; bh=Tjmthin5TQuDssMEMCBUr/UdC5X7+Wb+s2H58zsniSY=;
+ b=Lju/q0TO9G1cE68bmBTRp3Nf1tEI8A/zakHeNQNTRrvYHijd3iYUeeqrH9yjUVsXiR
+ Myq/OQ1MMkVdnFElEbVyBZ3JyIBAUTNNZTVvQin2carC/o3z/4DGrQZ3LxUzO7CqS77g
+ yyLA5IYj5X7E81JuqAPdYlJBUuafGAcTA2bmjZTdOZ4Rg3az/2diw1VaM5VuACxqIKq6
+ J24POTSNFy7nwL7OciLcSW/DE080pYbEwIf0aig/XKeqJ7QMAhaQLPv003VDRjpmQ4Yp
+ kz2bdYDqf7OKLqS+bPwzICQtwEMyuJ+8+ggwSLJkjmm1eB0G5ARjPJfqJc8XTdCOCXOx
+ +Fcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686499236; x=1689091236;
+ d=1e100.net; s=20221208; t=1686499246; x=1689091246;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tdjaSXSdLsKu4MO87YZyRq3fS44rsN7i4e3GLBzxGpI=;
- b=E4KZmsShagSzkQLYPI20HjjtZk9uVxzhBe8suMsOkTNN9hYs4UQsbBZonUgYLvew7A
- Z9yi6MIKFTXEzwbiMaCUyq4+pV6FBwVjfnfYde77cU+u8GrwCitSJOKW69bcd8elSjuB
- 9IpR19zqy1oTBDpO9zWpAXLsd2WepQfavEL/mOW/VYn/yqqVG/i0Oqda6DgKx+GXo0s8
- UTqXRyNq3Qmuej9Ccerd5gKuILXwxCltL2p7a8pnYsM65KP3RmI226LZj2QslUQKyQOe
- jRfcQ/2BhQP+HfE7+FXv2DyUDYfjzgzMb29sis9KRiWkixsV8zU/3/Ai6r61JWwKAHrs
- oaLw==
-X-Gm-Message-State: AC+VfDwl129BfqzlxSr3X0Z3yiNWwp8eNvvLKOE7lXYn/l/Jan39iJfn
- 44Z8AcnUwKR9NRoxfZAkYLV0ug==
-X-Received: by 2002:a7b:cc82:0:b0:3f6:f4b:38bd with SMTP id
- p2-20020a7bcc82000000b003f60f4b38bdmr4487715wma.8.1686499236652; 
- Sun, 11 Jun 2023 09:00:36 -0700 (PDT)
+ bh=Tjmthin5TQuDssMEMCBUr/UdC5X7+Wb+s2H58zsniSY=;
+ b=d+szbYstzrDcqcSI0EdIvri27B25voEh6ckf8T0acESztOeISddHAUnhu0kvJlKOOL
+ ZR9gUf9pehB9sgIPhJgKOrU1D+6bNzWjne5HzWv4GpC7qp6Irdwl1YEIQE73ON3PvBSG
+ SiwOcGWRacTDt2aRqNvHhc0fOCtV/EFu1d4+H9CoYJdbtL6Br2uEsXaW9lXFu2yzbEQ5
+ OM+FbltaLP7mtIDAiCRGTbNOI3tJEqZfst3yGJMX7mPfAF+qB4t6+QnYBCP9YnhDAGxD
+ b6IKlBOajLpZiWG+2YDpwF1WSfyFUfy19uMpBNYIA6X0pY17JuN22Dvtky0BfRkPVdnz
+ 779g==
+X-Gm-Message-State: AC+VfDxYya0g8X52Ar7EN31ZizvK+VFqv5DpYCA27ft5Eicehvwa9O4H
+ NaSsZu8u6FOwfDmfCpou87HbHVtvL0VqPhnbX3I=
+X-Received: by 2002:a5d:6107:0:b0:30a:ec3b:58d8 with SMTP id
+ v7-20020a5d6107000000b0030aec3b58d8mr3326192wrt.3.1686499246427; 
+ Sun, 11 Jun 2023 09:00:46 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.36
+ m9-20020a056000008900b0030ae499da59sm9923022wrx.111.2023.06.11.09.00.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Jun 2023 09:00:36 -0700 (PDT)
+ Sun, 11 Jun 2023 09:00:46 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 05/23] target/arm: Convert hint instruction space to
+Subject: [PATCH v2 22/23] target/arm: Convert load/store single structure to
  decodetree
-Date: Sun, 11 Jun 2023 17:00:14 +0100
-Message-Id: <20230611160032.274823-6-peter.maydell@linaro.org>
+Date: Sun, 11 Jun 2023 17:00:31 +0100
+Message-Id: <20230611160032.274823-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230611160032.274823-1-peter.maydell@linaro.org>
 References: <20230611160032.274823-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,360 +123,317 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: K5i9LsUFQ+WX
+X-TUID: QZHEE2ppN/0a
 
-Convert the various instructions in the hint instruction space
-to decodetree.
+Convert the ASIMD load/store single structure insns to decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20230602155223.2040685-3-peter.maydell@linaro.org
+Message-id: 20230602155223.2040685-20-peter.maydell@linaro.org
 ---
- target/arm/tcg/a64.decode      |  31 ++++
- target/arm/tcg/translate-a64.c | 277 ++++++++++++++++++---------------
- 2 files changed, 185 insertions(+), 123 deletions(-)
+ target/arm/tcg/a64.decode      |  34 +++++
+ target/arm/tcg/translate-a64.c | 219 +++++++++++++++------------------
+ 2 files changed, 136 insertions(+), 117 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 12a310d0a31..1efd436e175 100644
+index 69bdfa2e73b..4ffdc91865f 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -150,3 +150,34 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
- # the processor is in halting debug state (which we don't implement).
- # The pattern is listed here as documentation.
- # DRPS            1101011 0101 11111 000000 11111 00000
+@@ -494,3 +494,37 @@ LD_mult         0 . 001100 . 1 0 ..... 0110 .. ..... ..... @ldst_mult rpt=3 sele
+ LD_mult         0 . 001100 . 1 0 ..... 0111 .. ..... ..... @ldst_mult rpt=1 selem=1
+ LD_mult         0 . 001100 . 1 0 ..... 1000 .. ..... ..... @ldst_mult rpt=1 selem=2
+ LD_mult         0 . 001100 . 1 0 ..... 1010 .. ..... ..... @ldst_mult rpt=2 selem=1
 +
-+# Hint instruction group
-+{
-+  [
-+    YIELD       1101 0101 0000 0011 0010 0000 001 11111
-+    WFE         1101 0101 0000 0011 0010 0000 010 11111
-+    WFI         1101 0101 0000 0011 0010 0000 011 11111
-+    # We implement WFE to never block, so our SEV/SEVL are NOPs
-+    # SEV       1101 0101 0000 0011 0010 0000 100 11111
-+    # SEVL      1101 0101 0000 0011 0010 0000 101 11111
-+    # Our DGL is a NOP because we don't merge memory accesses anyway.
-+    # DGL       1101 0101 0000 0011 0010 0000 110 11111
-+    XPACLRI     1101 0101 0000 0011 0010 0000 111 11111
-+    PACIA1716   1101 0101 0000 0011 0010 0001 000 11111
-+    PACIB1716   1101 0101 0000 0011 0010 0001 010 11111
-+    AUTIA1716   1101 0101 0000 0011 0010 0001 100 11111
-+    AUTIB1716   1101 0101 0000 0011 0010 0001 110 11111
-+    ESB         1101 0101 0000 0011 0010 0010 000 11111
-+    PACIAZ      1101 0101 0000 0011 0010 0011 000 11111
-+    PACIASP     1101 0101 0000 0011 0010 0011 001 11111
-+    PACIBZ      1101 0101 0000 0011 0010 0011 010 11111
-+    PACIBSP     1101 0101 0000 0011 0010 0011 011 11111
-+    AUTIAZ      1101 0101 0000 0011 0010 0011 100 11111
-+    AUTIASP     1101 0101 0000 0011 0010 0011 101 11111
-+    AUTIBZ      1101 0101 0000 0011 0010 0011 110 11111
-+    AUTIBSP     1101 0101 0000 0011 0010 0011 111 11111
-+  ]
-+  # The canonical NOP has CRm == op2 == 0, but all of the space
-+  # that isn't specifically allocated to an instruction must NOP
-+  NOP           1101 0101 0000 0011 0010 ---- --- 11111
-+}
++# Load/store single structure
++&ldst_single    rm rn rt p selem index scale
++
++%ldst_single_selem 13:1 21:1 !function=plus_1
++
++%ldst_single_index_b  30:1 10:3
++%ldst_single_index_h  30:1 11:2
++%ldst_single_index_s  30:1 12:1
++
++@ldst_single_b     .. ...... p:1 .. rm:5 ...... rn:5 rt:5 \
++                   &ldst_single scale=0 selem=%ldst_single_selem \
++                   index=%ldst_single_index_b
++@ldst_single_h     .. ...... p:1 .. rm:5 ...... rn:5 rt:5 \
++                   &ldst_single scale=1 selem=%ldst_single_selem \
++                   index=%ldst_single_index_h
++@ldst_single_s     .. ...... p:1 .. rm:5 ...... rn:5 rt:5 \
++                   &ldst_single scale=2 selem=%ldst_single_selem \
++                   index=%ldst_single_index_s
++@ldst_single_d     . index:1 ...... p:1 .. rm:5 ...... rn:5 rt:5 \
++                   &ldst_single scale=3 selem=%ldst_single_selem
++
++ST_single          0 . 001101 . 0 . ..... 00 . ... ..... .....  @ldst_single_b
++ST_single          0 . 001101 . 0 . ..... 01 . ..0 ..... .....  @ldst_single_h
++ST_single          0 . 001101 . 0 . ..... 10 . .00 ..... .....  @ldst_single_s
++ST_single          0 . 001101 . 0 . ..... 10 . 001 ..... .....  @ldst_single_d
++
++LD_single          0 . 001101 . 1 . ..... 00 . ... ..... .....  @ldst_single_b
++LD_single          0 . 001101 . 1 . ..... 01 . ..0 ..... .....  @ldst_single_h
++LD_single          0 . 001101 . 1 . ..... 10 . .00 ..... .....  @ldst_single_s
++LD_single          0 . 001101 . 1 . ..... 10 . 001 ..... .....  @ldst_single_d
++
++# Replicating load case
++LD_single_repl  0 q:1 001101 p:1 1 . rm:5 11 . 0 scale:2 rn:5 rt:5 selem=%ldst_single_selem
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 1108f8287b8..eb8addac1b3 100644
+index 1c8a57f7b52..6e7fe1f35cf 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -1649,133 +1649,167 @@ static bool trans_ERETA(DisasContext *s, arg_reta *a)
+@@ -3587,141 +3587,129 @@ static bool trans_ST_mult(DisasContext *s, arg_ldst_mult *a)
      return true;
  }
  
--/* HINT instruction group, including various allocated HINTs */
--static void handle_hint(DisasContext *s, uint32_t insn,
--                        unsigned int op1, unsigned int op2, unsigned int crm)
-+static bool trans_NOP(DisasContext *s, arg_NOP *a)
+-/* AdvSIMD load/store single structure
+- *
+- *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
+- * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+- * | 0 | Q | 0 0 1 1 0 1 0 | L R | 0 0 0 0 0 | opc | S | size |  Rn  |  Rt  |
+- * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+- *
+- * AdvSIMD load/store single structure (post-indexed)
+- *
+- *  31  30  29           23 22 21 20       16 15 13 12  11  10 9    5 4    0
+- * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+- * | 0 | Q | 0 0 1 1 0 1 1 | L R |     Rm    | opc | S | size |  Rn  |  Rt  |
+- * +---+---+---------------+-----+-----------+-----+---+------+------+------+
+- *
+- * Rt: first (or only) SIMD&FP register to be transferred
+- * Rn: base address or SP
+- * Rm (post-index only): post-index register (when !31) or size dependent #imm
+- * index = encoded in Q:S:size dependent on size
+- *
+- * lane_size = encoded in R, opc
+- * transfer width = encoded in opc, S, size
+- */
+-static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
++static bool trans_ST_single(DisasContext *s, arg_ldst_single *a)
  {
--    unsigned int selector = crm << 3 | op2;
-+    return true;
-+}
+-    int rt = extract32(insn, 0, 5);
+-    int rn = extract32(insn, 5, 5);
+-    int rm = extract32(insn, 16, 5);
+-    int size = extract32(insn, 10, 2);
+-    int S = extract32(insn, 12, 1);
+-    int opc = extract32(insn, 13, 3);
+-    int R = extract32(insn, 21, 1);
+-    int is_load = extract32(insn, 22, 1);
+-    int is_postidx = extract32(insn, 23, 1);
+-    int is_q = extract32(insn, 30, 1);
+-
+-    int scale = extract32(opc, 1, 2);
+-    int selem = (extract32(opc, 0, 1) << 1 | R) + 1;
+-    bool replicate = false;
+-    int index = is_q << 3 | S << 2 | size;
+-    int xs, total;
++    int xs, total, rt;
+     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
+     MemOp mop;
  
--    if (op1 != 3) {
+-    if (extract32(insn, 31, 1)) {
 -        unallocated_encoding(s);
 -        return;
-+static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
-+{
-+    /*
-+     * When running in MTTCG we don't generate jumps to the yield and
-+     * WFE helpers as it won't affect the scheduling of other vCPUs.
-+     * If we wanted to more completely model WFE/SEV so we don't busy
-+     * spin unnecessarily we would need to do something more involved.
-+     */
-+    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
-+        s->base.is_jmp = DISAS_YIELD;
++    if (!a->p && a->rm != 0) {
++        return false;
      }
-+    return true;
-+}
- 
--    switch (selector) {
--    case 0b00000: /* NOP */
--        break;
--    case 0b00011: /* WFI */
--        s->base.is_jmp = DISAS_WFI;
--        break;
--    case 0b00001: /* YIELD */
--        /* When running in MTTCG we don't generate jumps to the yield and
--         * WFE helpers as it won't affect the scheduling of other vCPUs.
--         * If we wanted to more completely model WFE/SEV so we don't busy
--         * spin unnecessarily we would need to do something more involved.
-+static bool trans_WFI(DisasContext *s, arg_WFI *a)
-+{
-+    s->base.is_jmp = DISAS_WFI;
-+    return true;
-+}
-+
-+static bool trans_WFE(DisasContext *s, arg_WFI *a)
-+{
-+    /*
-+     * When running in MTTCG we don't generate jumps to the yield and
-+     * WFE helpers as it won't affect the scheduling of other vCPUs.
-+     * If we wanted to more completely model WFE/SEV so we don't busy
-+     * spin unnecessarily we would need to do something more involved.
-+     */
-+    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
-+        s->base.is_jmp = DISAS_WFE;
-+    }
-+    return true;
-+}
-+
-+static bool trans_XPACLRI(DisasContext *s, arg_XPACLRI *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_xpaci(cpu_X[30], cpu_env, cpu_X[30]);
-+    }
-+    return true;
-+}
-+
-+static bool trans_PACIA1716(DisasContext *s, arg_PACIA1716 *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_pacia(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
-+    }
-+    return true;
-+}
-+
-+static bool trans_PACIB1716(DisasContext *s, arg_PACIB1716 *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_pacib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
-+    }
-+    return true;
-+}
-+
-+static bool trans_AUTIA1716(DisasContext *s, arg_AUTIA1716 *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autia(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
-+    }
-+    return true;
-+}
-+
-+static bool trans_AUTIB1716(DisasContext *s, arg_AUTIB1716 *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
-+    }
-+    return true;
-+}
-+
-+static bool trans_ESB(DisasContext *s, arg_ESB *a)
-+{
-+    /* Without RAS, we must implement this as NOP. */
-+    if (dc_isar_feature(aa64_ras, s)) {
-+        /*
-+         * QEMU does not have a source of physical SErrors,
-+         * so we are only concerned with virtual SErrors.
-+         * The pseudocode in the ARM for this case is
-+         *   if PSTATE.EL IN {EL0, EL1} && EL2Enabled() then
-+         *      AArch64.vESBOperation();
-+         * Most of the condition can be evaluated at translation time.
-+         * Test for EL2 present, and defer test for SEL2 to runtime.
-          */
--        if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--            s->base.is_jmp = DISAS_YIELD;
-+        if (s->current_el <= 1 && arm_dc_feature(s, ARM_FEATURE_EL2)) {
-+            gen_helper_vesb(cpu_env);
-         }
--        break;
--    case 0b00010: /* WFE */
--        if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--            s->base.is_jmp = DISAS_WFE;
+-    if (!is_postidx && rm != 0) {
+-        unallocated_encoding(s);
+-        return;
+-    }
+-
+-    switch (scale) {
+-    case 3:
+-        if (!is_load || S) {
+-            unallocated_encoding(s);
+-            return;
 -        }
+-        scale = size;
+-        replicate = true;
 -        break;
--    case 0b00100: /* SEV */
--    case 0b00101: /* SEVL */
--    case 0b00110: /* DGH */
--        /* we treat all as NOP at least for now */
+-    case 0:
 -        break;
--    case 0b00111: /* XPACLRI */
--        if (s->pauth_active) {
--            gen_helper_xpaci(cpu_X[30], cpu_env, cpu_X[30]);
+-    case 1:
+-        if (extract32(size, 0, 1)) {
+-            unallocated_encoding(s);
+-            return;
 -        }
+-        index >>= 1;
 -        break;
--    case 0b01000: /* PACIA1716 */
--        if (s->pauth_active) {
--            gen_helper_pacia(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
+-    case 2:
+-        if (extract32(size, 1, 1)) {
+-            unallocated_encoding(s);
+-            return;
 -        }
--        break;
--    case 0b01010: /* PACIB1716 */
--        if (s->pauth_active) {
--            gen_helper_pacib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
--        }
--        break;
--    case 0b01100: /* AUTIA1716 */
--        if (s->pauth_active) {
--            gen_helper_autia(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
--        }
--        break;
--    case 0b01110: /* AUTIB1716 */
--        if (s->pauth_active) {
--            gen_helper_autib(cpu_X[17], cpu_env, cpu_X[17], cpu_X[16]);
--        }
--        break;
--    case 0b10000: /* ESB */
--        /* Without RAS, we must implement this as NOP. */
--        if (dc_isar_feature(aa64_ras, s)) {
--            /*
--             * QEMU does not have a source of physical SErrors,
--             * so we are only concerned with virtual SErrors.
--             * The pseudocode in the ARM for this case is
--             *   if PSTATE.EL IN {EL0, EL1} && EL2Enabled() then
--             *      AArch64.vESBOperation();
--             * Most of the condition can be evaluated at translation time.
--             * Test for EL2 present, and defer test for SEL2 to runtime.
--             */
--            if (s->current_el <= 1 && arm_dc_feature(s, ARM_FEATURE_EL2)) {
--                gen_helper_vesb(cpu_env);
+-        if (!extract32(size, 0, 1)) {
+-            index >>= 2;
+-        } else {
+-            if (S) {
+-                unallocated_encoding(s);
+-                return;
 -            }
--        }
--        break;
--    case 0b11000: /* PACIAZ */
--        if (s->pauth_active) {
--            gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30],
--                             tcg_constant_i64(0));
--        }
--        break;
--    case 0b11001: /* PACIASP */
--        if (s->pauth_active) {
--            gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
--        }
--        break;
--    case 0b11010: /* PACIBZ */
--        if (s->pauth_active) {
--            gen_helper_pacib(cpu_X[30], cpu_env, cpu_X[30],
--                             tcg_constant_i64(0));
--        }
--        break;
--    case 0b11011: /* PACIBSP */
--        if (s->pauth_active) {
--            gen_helper_pacib(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
--        }
--        break;
--    case 0b11100: /* AUTIAZ */
--        if (s->pauth_active) {
--            gen_helper_autia(cpu_X[30], cpu_env, cpu_X[30],
--                             tcg_constant_i64(0));
--        }
--        break;
--    case 0b11101: /* AUTIASP */
--        if (s->pauth_active) {
--            gen_helper_autia(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
--        }
--        break;
--    case 0b11110: /* AUTIBZ */
--        if (s->pauth_active) {
--            gen_helper_autib(cpu_X[30], cpu_env, cpu_X[30],
--                             tcg_constant_i64(0));
--        }
--        break;
--    case 0b11111: /* AUTIBSP */
--        if (s->pauth_active) {
--            gen_helper_autib(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
+-            index >>= 3;
+-            scale = 3;
 -        }
 -        break;
 -    default:
--        /* default specified as NOP equivalent */
--        break;
+-        g_assert_not_reached();
+-    }
+-
+     if (!fp_access_check(s)) {
+-        return;
++        return true;
+     }
+ 
+-    if (rn == 31) {
++    if (a->rn == 31) {
+         gen_check_sp_alignment(s);
+     }
+ 
+-    total = selem << scale;
+-    tcg_rn = cpu_reg_sp(s, rn);
++    total = a->selem << a->scale;
++    tcg_rn = cpu_reg_sp(s, a->rn);
+ 
+-    mop = finalize_memop_asimd(s, scale);
+-
+-    clean_addr = gen_mte_checkN(s, tcg_rn, !is_load, is_postidx || rn != 31,
++    mop = finalize_memop_asimd(s, a->scale);
++    clean_addr = gen_mte_checkN(s, tcg_rn, true, a->p || a->rn != 31,
+                                 total, mop);
+ 
+-    tcg_ebytes = tcg_constant_i64(1 << scale);
+-    for (xs = 0; xs < selem; xs++) {
+-        if (replicate) {
+-            /* Load and replicate to all elements */
+-            TCGv_i64 tcg_tmp = tcg_temp_new_i64();
+-
+-            tcg_gen_qemu_ld_i64(tcg_tmp, clean_addr, get_mem_index(s), mop);
+-            tcg_gen_gvec_dup_i64(scale, vec_full_reg_offset(s, rt),
+-                                 (is_q + 1) * 8, vec_full_reg_size(s),
+-                                 tcg_tmp);
+-        } else {
+-            /* Load/store one element per register */
+-            if (is_load) {
+-                do_vec_ld(s, rt, index, clean_addr, mop);
+-            } else {
+-                do_vec_st(s, rt, index, clean_addr, mop);
+-            }
+-        }
++    tcg_ebytes = tcg_constant_i64(1 << a->scale);
++    for (xs = 0, rt = a->rt; xs < a->selem; xs++, rt = (rt + 1) % 32) {
++        do_vec_st(s, rt, a->index, clean_addr, mop);
+         tcg_gen_add_i64(clean_addr, clean_addr, tcg_ebytes);
+-        rt = (rt + 1) % 32;
+     }
+ 
+-    if (is_postidx) {
+-        if (rm == 31) {
++    if (a->p) {
++        if (a->rm == 31) {
+             tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
+         } else {
+-            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
++            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, a->rm));
+         }
      }
 +    return true;
 +}
 +
-+static bool trans_PACIAZ(DisasContext *s, arg_PACIAZ *a)
++static bool trans_LD_single(DisasContext *s, arg_ldst_single *a)
 +{
-+    if (s->pauth_active) {
-+        gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30], tcg_constant_i64(0));
++    int xs, total, rt;
++    TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
++    MemOp mop;
++
++    if (!a->p && a->rm != 0) {
++        return false;
++    }
++    if (!fp_access_check(s)) {
++        return true;
++    }
++
++    if (a->rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++
++    total = a->selem << a->scale;
++    tcg_rn = cpu_reg_sp(s, a->rn);
++
++    mop = finalize_memop_asimd(s, a->scale);
++    clean_addr = gen_mte_checkN(s, tcg_rn, false, a->p || a->rn != 31,
++                                total, mop);
++
++    tcg_ebytes = tcg_constant_i64(1 << a->scale);
++    for (xs = 0, rt = a->rt; xs < a->selem; xs++, rt = (rt + 1) % 32) {
++        do_vec_ld(s, rt, a->index, clean_addr, mop);
++        tcg_gen_add_i64(clean_addr, clean_addr, tcg_ebytes);
++    }
++
++    if (a->p) {
++        if (a->rm == 31) {
++            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
++        } else {
++            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, a->rm));
++        }
 +    }
 +    return true;
 +}
 +
-+static bool trans_PACIASP(DisasContext *s, arg_PACIASP *a)
++static bool trans_LD_single_repl(DisasContext *s, arg_LD_single_repl *a)
 +{
-+    if (s->pauth_active) {
-+        gen_helper_pacia(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
-+    }
-+    return true;
-+}
++    int xs, total, rt;
++    TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
++    MemOp mop;
 +
-+static bool trans_PACIBZ(DisasContext *s, arg_PACIBZ *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_pacib(cpu_X[30], cpu_env, cpu_X[30], tcg_constant_i64(0));
++    if (!a->p && a->rm != 0) {
++        return false;
 +    }
-+    return true;
-+}
-+
-+static bool trans_PACIBSP(DisasContext *s, arg_PACIBSP *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_pacib(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
++    if (!fp_access_check(s)) {
++        return true;
 +    }
-+    return true;
-+}
 +
-+static bool trans_AUTIAZ(DisasContext *s, arg_AUTIAZ *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autia(cpu_X[30], cpu_env, cpu_X[30], tcg_constant_i64(0));
++    if (a->rn == 31) {
++        gen_check_sp_alignment(s);
 +    }
-+    return true;
-+}
 +
-+static bool trans_AUTIASP(DisasContext *s, arg_AUTIASP *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autia(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
++    total = a->selem << a->scale;
++    tcg_rn = cpu_reg_sp(s, a->rn);
++
++    mop = finalize_memop_asimd(s, a->scale);
++    clean_addr = gen_mte_checkN(s, tcg_rn, false, a->p || a->rn != 31,
++                                total, mop);
++
++    tcg_ebytes = tcg_constant_i64(1 << a->scale);
++    for (xs = 0, rt = a->rt; xs < a->selem; xs++, rt = (rt + 1) % 32) {
++        /* Load and replicate to all elements */
++        TCGv_i64 tcg_tmp = tcg_temp_new_i64();
++
++        tcg_gen_qemu_ld_i64(tcg_tmp, clean_addr, get_mem_index(s), mop);
++        tcg_gen_gvec_dup_i64(a->scale, vec_full_reg_offset(s, rt),
++                             (a->q + 1) * 8, vec_full_reg_size(s), tcg_tmp);
++        tcg_gen_add_i64(clean_addr, clean_addr, tcg_ebytes);
 +    }
-+    return true;
-+}
 +
-+static bool trans_AUTIBZ(DisasContext *s, arg_AUTIBZ *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autib(cpu_X[30], cpu_env, cpu_X[30], tcg_constant_i64(0));
-+    }
-+    return true;
-+}
-+
-+static bool trans_AUTIBSP(DisasContext *s, arg_AUTIBSP *a)
-+{
-+    if (s->pauth_active) {
-+        gen_helper_autib(cpu_X[30], cpu_env, cpu_X[30], cpu_X[31]);
++    if (a->p) {
++        if (a->rm == 31) {
++            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
++        } else {
++            tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, a->rm));
++        }
 +    }
 +    return true;
  }
  
- static void gen_clrex(DisasContext *s, uint32_t insn)
-@@ -2302,9 +2336,6 @@ static void disas_system(DisasContext *s, uint32_t insn)
-             return;
-         }
-         switch (crn) {
--        case 2: /* HINT (including allocated hints like NOP, YIELD, etc) */
--            handle_hint(s, insn, op1, op2, crm);
--            break;
-         case 3: /* CLREX, DSB, DMB, ISB */
-             handle_sync(s, insn, op1, op2, crm);
-             break;
+ /*
+@@ -3937,9 +3925,6 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+ static void disas_ldst(DisasContext *s, uint32_t insn)
+ {
+     switch (extract32(insn, 24, 6)) {
+-    case 0x0d: /* AdvSIMD load/store single structure */
+-        disas_ldst_single_struct(s, insn);
+-        break;
+     case 0x19:
+         if (extract32(insn, 21, 1) != 0) {
+             disas_ldst_tag(s, insn);
 -- 
 2.34.1
 

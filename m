@@ -1,641 +1,160 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp1963653ejb;
-        Mon, 12 Jun 2023 05:00:57 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ74hJM7qKi2WiFatlKz+tnvO5243nyUBaI+KnPvpHdtoi3SwuxbOlathp9zcOqQAusUny1F
-X-Received: by 2002:a05:620a:674a:b0:75e:c579:69e0 with SMTP id rq10-20020a05620a674a00b0075ec57969e0mr8029242qkn.21.1686571256928;
-        Mon, 12 Jun 2023 05:00:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686571256; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2013173ejb;
+        Mon, 12 Jun 2023 06:18:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5nGeOSYsXLzEFGpnHMyNeDTIo+AOqjwDsMdAJ/Hrj/MhTH1qmmSY3P4T4LjC508+rLUT1Z
+X-Received: by 2002:a17:907:5c2:b0:973:8c47:2a02 with SMTP id wg2-20020a17090705c200b009738c472a02mr10175883ejb.38.1686575914205;
+        Mon, 12 Jun 2023 06:18:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1686575914; cv=pass;
         d=google.com; s=arc-20160816;
-        b=k/+yivxG5Xf0UZdwz8bnM4AJ5QfKgFCAn1Wh+6N6N3MP36jv2Rs6yYxSGs4DjpgMii
-         j8sZcwfddSmdStrOmAQOOn1dQiAIrXeAhfrv9LV7fCdXVfj+TIwkxwwVNkGXIcAmng3J
-         CDKpDglZ33V4DYpyFhqM+WWaI4/oK3dCG0wrQbFLOgVsdjxPcPIXQP/vQ6tK++64Cwrz
-         gcmDOqVEoXMoXD3A1oMiiaLrMBqaKMfBejlQiGe4doaZco1yCdQRUrms0PAL2m69qSyr
-         BwkJZWAWfDuGAQoT8acjTSWSB/sXyA5mbYn5XFlwaq0i6LSkRK2NWdH0fDHVyTnzvEBv
-         nfSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uHReZ0Lx0WvKbkCI6sE/oOgsiPhDR1RQjangIkX+Aa4=;
-        b=nZp1ifgwndvMmZt/IiK3+g78oPVGaKkzjKfFprD8Iy1uqJ9laAacWbWdXD4imp1MGo
-         FUjn9Zfq+53bmQLEf0A9r8+7yXmsVLjG3tNtSD1SnEKsisyf+yGsRzJw+UupIOJvhgHv
-         khs1qLvX/CLvS6N14F9I8DIwjBx8GRgOj/lKM8iTbhRq9jGwZr8aylL7/BeiI/iBx1T5
-         R+Bp9l1UMxe6iscS4CQLBdpELF6WdbLU3K/iZxzAYPZLeg0gJwAXCsSsWqkFvcyyQwS+
-         FGPPZghhvTnGjEuNW9pLzcwkq71BZHmozKcVJgW9oXzX8hloWOoCXrwgHFOBWq8nnpWL
-         QaDA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Z22pFmg7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p25-20020a05620a133900b0075f1b8be402si2832042qkj.318.2023.06.12.05.00.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jun 2023 05:00:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=caLmBRi2qQX8c1RNdtyInZJMEb2TemqLhjQe0JtgMguzuY2pAd3FlkWlzSQig9dazc
+         K/jUYVStu9DGsRB37tksVVxmIjWty1TZHvbhbZrm8t2UyLRkHSWh6FaBQ6SVXdtHzKYO
+         SyLJssf7Y8H6uYGlGqS+Ysqu5lJtaMBhoK07yFciBZZ3lo5KwTj6Sc3MQlBA2o3yfOAR
+         N6iPoowo4PLk71o/+QB98/lSxyJLoOudz90E7cwKSlHM8n+4ff2d5Fl7QYGq0v660dCh
+         NzgTmuj6bIheeEAZng4LkQvY27C3M6xtBdUP5RZ2F7GDqn7QMbrFwS7ASF60oWf8RO+O
+         Mk1A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:in-reply-to:content-disposition:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=OAdObKJ/ZklxbnrCPTGmh15MOjr2/PmQ1hvkiUjfZ/w=;
+        b=ZcIgiSo8EXQk8nXbFcJ7CbxXJV5/QY/369CsJGzamikmcoTyjxK8sjVu7LLWFMjeHd
+         M5Tf8KNojKpFePPOYeW8zUql2FCg7oAX1RZZ/SghSA9KP/Bv3cn+B0HO8BRtTqpaAH2y
+         klI0IbtZhb+a3tgvlsVxMmzHueu3EFoqxGRxY9eiw97Y93QvOydilewC7zWoSVbOSUUL
+         hQbGOXNGFoOq84XP7Kr9BuEAVZKN7Gs/BiTOh1jyAUtiN/ITAZH/qr4ZVRAJZphWm/+O
+         +AmQKVqhfriymFuuTvClQIrAAxaAZQNSgF5p+IudYm8hqbm1WjUbGRSbm3ih49kfSpUh
+         SEpA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=RorqHZSt;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e89::723 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (mail-mw2nam10on20723.outbound.protection.outlook.com. [2a01:111:f400:7e89::723])
+        by mx.google.com with ESMTPS id p6-20020a170906b20600b009785e767bdasi4947275ejz.502.2023.06.12.06.18.33
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Jun 2023 06:18:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e89::723 as permitted sender) client-ip=2a01:111:f400:7e89::723;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Z22pFmg7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q8gDp-0001ty-5A; Mon, 12 Jun 2023 08:00:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1q8gDM-0001f6-99; Mon, 12 Jun 2023 08:00:05 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <serg.oker@gmail.com>)
- id 1q8gDI-0002x1-V0; Mon, 12 Jun 2023 08:00:03 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3f6dfc4dffaso31217355e9.0; 
- Mon, 12 Jun 2023 04:59:59 -0700 (PDT)
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=RorqHZSt;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 2a01:111:f400:7e89::723 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nMs1tW3Ubv1XcRVoSBJkVfg4U1e2Bfmnz1PEADt1aJPclO8zCedJ33gqAmP0lJTQhyGZ2a2OMGqfTCu1zsHZjpg4hl3f4wEIlVsnGrxTl06QD8Z94Enj5hZ5QUXHR2GTO16PIw8IuURNpovJuT1/hTZrGoKz+mHtXF7DXdzmun4QkMEUou6ZzfNJca9HmlDaU+27fxWQwQLHJSexfhZrq+ZB0gATmLVqmm/CnqWhCLY4A1Y024PIxNOLSg4bqGL9uuZeY4jFLaAZ2otJawOXYMjaIGAxQi/AbdpdQx+Xe3JXNJDz7gGQ7Oa5zb1/oTsnJ26S3PLQhu97d1tfNaW8Tg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OAdObKJ/ZklxbnrCPTGmh15MOjr2/PmQ1hvkiUjfZ/w=;
+ b=c0fFWU3MZu9xVHy3WTJ9jmf11Aflg5J/3Xmq4ChNKozcI9M3mRHJ6pjX5QeFgYBTahtboH8j/ppbCJIh869Z4zJc2DueEiBrBUbOJdFuuNvWp79eScF9kkh2oDEsHrGBj1GU1j0iLABP9CTXoMC0sT+U+NhwbJfhAohEOOkRdRUjFSJD8ktr/uIA7X9TUcSHIc4WhKSjYRb+ZxFSOHpIj9ldID0YDmPXRLhO2AhiBYlmXPx9c0KgcD5urGxqGQofe5BpsEi9Oye4GXD4pyBaTD3+By9pVlt55tCup03bTAZzj35HgjKoo11hjL5qbzNEJSIkSInAC8iNemrofHEb6g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1686571198; x=1689163198;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uHReZ0Lx0WvKbkCI6sE/oOgsiPhDR1RQjangIkX+Aa4=;
- b=Z22pFmg7IwqZKs8DkadKGT8p8GG9pX6z1LbNCkRV7kJA5JjsNmzXX+5hE1Eu0CcSmD
- gzVREEedy2CyyXuCschZqvMm/m8DyMC3HID01GT7XJ67cvwEXe6LZJUbXbvKrtzHoBT/
- EvTw+0Mv00Rin126gKbMmnNRICcXKKtH3adKRcOTNF7veJCB+DZnL0qKJgWE9qMIVg64
- oZJeCostwh1j0bAKPRGTP2veIMXVhIF2wgfcoAwRrYl4sSk2Jg5u9oLONrcjm5CEyVEw
- FWgUetcopKG6lsApHlaDgByfLgZuIZSq2Z3ZgnpgdeIICQPmyxtEDKivsR/oRGEIuDCK
- RVxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686571198; x=1689163198;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uHReZ0Lx0WvKbkCI6sE/oOgsiPhDR1RQjangIkX+Aa4=;
- b=EoZyPYom9bX48Ai6HspjQA0xVJXii/gdcRAoraMGq3bP68wuo7piWXbxsZV4mdGgTC
- RGDobznu7hasVJ4oDypn8lPWtzXtppCjrIPd0gr6W/jMSfxM6ixIogMgIz+QWR/fCcp/
- jR8bdl/nt+fs7VvlOnJjtPk7K2BSz16kzK3mXd491NqJdxobnOZWVm80h5Ed5c0EV2p/
- U0Xn1Zl3i4v46F6peb4DqfLn0A2ut+TI/HSB1VwlGeYt45X25Qsi1jY9wrpucIpyp1kf
- AD2a9dKVP6bWMkY7iQRipZFTl2F9t17D9RGzpqby9GkdXG5d8iurI7ebTqWaY6uWvhzc
- YLYw==
-X-Gm-Message-State: AC+VfDx9tcpG5xSYjDKlBArD+adY4tUsDi1e6czvGxudcmJCjVGIPh/z
- gOOIMM2pim4khTWYHYuz2HE4fImaKTflSQ==
-X-Received: by 2002:a05:600c:3792:b0:3f7:e548:6611 with SMTP id
- o18-20020a05600c379200b003f7e5486611mr5421922wmr.40.1686571197703; 
- Mon, 12 Jun 2023 04:59:57 -0700 (PDT)
-Received: from sergevik-thinkpad.localdomain ([213.197.136.186])
- by smtp.gmail.com with ESMTPSA id
- 10-20020a05600c24ca00b003f7e4d143cfsm11153271wmu.15.2023.06.12.04.59.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jun 2023 04:59:56 -0700 (PDT)
-From: Sergey Kambalin <serg.oker@gmail.com>
-X-Google-Original-From: Sergey Kambalin <sergey.kambalin@auriga.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Sergey Kambalin <sergey.kambalin@auriga.com>
-Subject: [PATCH v2] Use named constants in BCM props
-Date: Mon, 12 Jun 2023 14:59:50 +0300
-Message-Id: <20230612115950.5002-1-sergey.kambalin@auriga.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <5b407848-2a4c-6447-6726-cf85f278f3e7@linaro.org>
-References: <5b407848-2a4c-6447-6726-cf85f278f3e7@linaro.org>
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OAdObKJ/ZklxbnrCPTGmh15MOjr2/PmQ1hvkiUjfZ/w=;
+ b=RorqHZStGtZCE7Mbv5XVAoeNk6Lvalmp0UUoaj4FvPSvwMSRi7C18qQfThWcgC2DK++/f/A7Ts1K+uih6Uz2qLbYooYM1AEI0Ca7vys8UnKYXoKy5WxQeERlWP2QitcgQRkldhx9YoEcionzJH5O2KUONRgngF1mNy4ROFXq1CQ=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from CH0PR01MB7124.prod.exchangelabs.com (2603:10b6:610:f3::20) by
+ SA1PR01MB6560.prod.exchangelabs.com (2603:10b6:806:1aa::14) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6477.29; Mon, 12 Jun 2023 13:18:28 +0000
+Received: from CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::9a78:4703:c6a9:16ed]) by CH0PR01MB7124.prod.exchangelabs.com
+ ([fe80::9a78:4703:c6a9:16ed%6]) with mapi id 15.20.6477.028; Mon, 12 Jun 2023
+ 13:18:28 +0000
+Date: Mon, 12 Jun 2023 09:18:15 -0400
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Vincent Dehors <vincent.dehors@smile.fr>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v3 1/8] target/arm: Add ID_AA64ISAR2_EL1
+Message-ID: <ZIcbF8zShOr1N2Sl@strawberry.localdomain>
+References: <20230609172324.982888-1-aaron@os.amperecomputing.com>
+ <20230609172324.982888-2-aaron@os.amperecomputing.com>
+ <a8db353d-b258-c856-d5ce-1236b0893a53@linaro.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a8db353d-b258-c856-d5ce-1236b0893a53@linaro.org>
+X-ClientProxiedBy: CH0PR04CA0085.namprd04.prod.outlook.com
+ (2603:10b6:610:74::30) To CH0PR01MB7124.prod.exchangelabs.com
+ (2603:10b6:610:f3::20)
+Return-Path: aaron@os.amperecomputing.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=serg.oker@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YmOPAhhFt+Dk
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR01MB7124:EE_|SA1PR01MB6560:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9daf7138-17cc-438c-c690-08db6b4782b9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	Py+TNA/julEpCK9b3y+u5WDpKyY/Yi23JUmS3VEqO0kPPWgyLgFvZRpqf0gPFxargU3j/OhWs2NgEZWTHyFg3iR47opOT2oKaZENjiJWrdUUvHl+rtXsAzWUQpcesbW6o6jzjTfCWTyW9NUZEas7bqoNaQoKcII2rxXY/yXSNrDMYxncPtC298IkQV7F7wjmK+pLq8G1AyoIWuW2HLW7Xd55Cactzyhsjs1+2Hg1jA4qlRExe7mfokWGkJeoHapMSdSj8VLW/7pqurbRmVmTzcZdyYWS9LmU+i0QprahSYz/m+jdtbz2ptZd+nuPJt5G3GPtiGDzNijPF4YzK102wYRjSz5Q8Tthd0vp6ONPk21SoKrnB84xh9QPXNp0pQyET9egIfvodntexgr3wjRqHh/ywv3FoAzGeYsjOK2OlrVAMKjcC2LkA8erN/NYQ3TdxIbVGRiFDKvLgvwBmrQjhYOEBbTov/8qb8n3T3rodH5+aYtY+tQlDhlU5PJsUf7Z/XWwbana2ur5WgBl7sh+bNT3gDKv6e/5hkKoHl4kXNN/mdW5waotuJyDCV21W4EB
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR01MB7124.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(39850400004)(366004)(376002)(346002)(136003)(396003)(451199021)(54906003)(5660300002)(4326008)(66946007)(66556008)(6916009)(8936002)(8676002)(41300700001)(316002)(186003)(2906002)(478600001)(66476007)(6666004)(6486002)(6512007)(6506007)(53546011)(26005)(83380400001)(9686003)(86362001)(38100700002);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?b+NRnTPopHhnbCp9D2OZhfEhGt0j4STJsHlQcKFVt4wGw39AI9tzhF/hwEFY?=
+ =?us-ascii?Q?DIKb65/bBZCrg1vG2wQizfgxiNyhS8ffDM9EfLqc0W6DCe/ACPUW8JauFxFB?=
+ =?us-ascii?Q?/ZVScFSjk2wsRejSgKlLaB8WxmGYQVupfah9cXPfhT7Ksvknk0rmqRaNJMVs?=
+ =?us-ascii?Q?xlfLBV8xCMVyLEBOHnnEOJcpWfqR0XU2GnynixGt03GL1VUdpI4dY1vS1i3Z?=
+ =?us-ascii?Q?M/erYuubFMopMkIY8GbdMgyKgjt0HDoSKtiPc6lHH1VDZZ1iL21YUhr6AmWk?=
+ =?us-ascii?Q?s2PsfZ9SzCjzj0J3Crwp0bGILM3OKU99IUPkUT4K1nlMU0ULuGJZ9U325TqG?=
+ =?us-ascii?Q?Q9JnaVEhN6XpE9PtPW6jivyfntLTUPcUvTP6kGkEeR04cIjX/ZKxltiuS6Th?=
+ =?us-ascii?Q?uI70GrqbLLwudNrUaTYWLBXoO0b7O3pHwBv4MmDfdVM69YwWG+zDVQeMQoyE?=
+ =?us-ascii?Q?qK/lFKPUW8usUIKNmeDYF/qIHOc7S+ct0WSm0BW2jDaRIXFk+UrfEDvqHNKq?=
+ =?us-ascii?Q?Qu+vpk5+9ErMrI1UJDuwlhrgfU5abIYQ44caiEKJLfj355CvZM2dUKZhFyWj?=
+ =?us-ascii?Q?L4pxaUGNrKD/9/+a3UW5qwx3HzRlnRy8UFJAVIdT0fdW6ZNGrhIGu3EMSVzF?=
+ =?us-ascii?Q?zvFwMBroxI7DwHdNOO2VuzVAqhqgLbMDjj7oDJb713nBl0HDGTuk1E/GjPUT?=
+ =?us-ascii?Q?nigbTPqt+ygXALt0/fsN1zkftAc4hg7kH57OhNH3mu3XkYBwphUKh/Ht57YG?=
+ =?us-ascii?Q?7Ur6KCYduX/biUPPxj23iTTvR/lgzjf21aIIZeKN2V7nyeE4Rmlq0G4f7cnu?=
+ =?us-ascii?Q?7jmqQR+bo3qwNkunA7+b0Z1IPKsvbO6dj4fquVoadU/Mzvcxorw3jlyJSE/H?=
+ =?us-ascii?Q?D7N2R6IyL+SXyHUvZ33LTpq0QPG/cJP8mocvhjRGSRqnFoX4z3OKj2o/iQiX?=
+ =?us-ascii?Q?5Vbu07Z3DAB+H6ewlRKszPuc1D8+39J90qp0DbbrGGi7MSKWsp8+w0Jj7h9d?=
+ =?us-ascii?Q?VHf95s3kuWMJxaCiqSgd5Ix/pY/4L4ICkq25VRK5trpxMtvI45Utc21lNzFd?=
+ =?us-ascii?Q?FHv8f/s98Brmbizggz9CvACjFfBdwX1tpj+ggyW7+gG2ejhXK0VNY/OAv8R1?=
+ =?us-ascii?Q?93+xTZ5xZ5Ba5SGoiBvqLT7TOQKC6UOWzghFWKMiRmXKA1Mwr7itoWUYLJ0D?=
+ =?us-ascii?Q?gsKGYOcbSQOa4gdnRU0WobVB3nztoylH8Y2r1RI7ckWmIbAMPRruo0gaIMV8?=
+ =?us-ascii?Q?boWL1kYOM3QCrSxaWNYUw+poqx6WhtU7Ev199QO92jstKsQZqtrRC5HHfnPN?=
+ =?us-ascii?Q?2KubCT+AMwbwD4HqNBeb+6arBMmlHBEvWFbnhNnWvyw5cWRWGa69zeryxLgp?=
+ =?us-ascii?Q?R9YlC1ULQ2wsfxdwQOJ1aSNxFogJGpvJz5QS8yx97C5OBDNdQWO5ri5r8vRe?=
+ =?us-ascii?Q?PYrBtmvbzQ3FFL0XwO3AxdfNDzZE0qeGNLQVdfH2VlZZHL6S4nvpE1A9aS+8?=
+ =?us-ascii?Q?9ACazw7Yd+9dr+PrTd17NacbFIUODmQzxt/l6QlJoBYmtUcM6m2Z0kjPoeEy?=
+ =?us-ascii?Q?2C4d715PeJtUdNOtge+1e0FuMLC57sZr3+W5DwNEYcmC8pnWCluvQEMXcOQ3?=
+ =?us-ascii?Q?4yhKf4BbxCYXcS7zkdwr5vw=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9daf7138-17cc-438c-c690-08db6b4782b9
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR01MB7124.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jun 2023 13:18:28.5328
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: IRxpvmbb++hMTpKXIna0tURCpG+D055hMGrXcm1B51QErpBIkrmsEXVT3qTfCPbKBqhI044Epqnu7y9YzIEvp3/l/pjKt41axqjUU7VsoNYZOhivdFJC0jXAtSFXxI8g
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR01MB6560
+X-TUID: zsjenb98d9qg
 
-ping
+On Jun 09 13:49, Richard Henderson wrote:
+> On 6/9/23 10:23, Aaron Lindsay wrote:
+> > --- a/target/arm/hvf/hvf.c
+> > +++ b/target/arm/hvf/hvf.c
+> > @@ -847,6 +847,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+> >           { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
+> >           { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
+> >           { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
+> > +        { HV_SYS_REG_ID_AA64ISAR2_EL1, &host_isar.id_aa64isar2 },
+> 
+> Sadly not defined for MacOSX13.1.sdk, and it's an enum so you can't #ifdef it either.
+> 
+> You'll need a meson probe for it.
 
-- PI_FIRMWARE_*_RATE constsnts were moved to raspberrypi-fw-defs.h
-  (seems more suitable place for them)
-- inclusion of "qemu/osdep.h" has been removed
-- year in copyright header has been updated 
+I'm not very familiar with HVF or meson - I am not sure I understand
+what you're suggesting here (and a few attempts to grep around for an
+example didn't turn up anything that looked helpful). Are you suggesting
+some sort of build-time auto-detection, a "dumb" configuration switch
+that a user could use to manually enable this, or something else? And/or
+is there an example you could point me to of what you're thinking?
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
----
- hw/misc/bcm2835_property.c            | 120 ++++++++++---------
- include/hw/arm/raspi_platform.h       |   6 +
- include/hw/misc/raspberrypi-fw-defs.h | 163 ++++++++++++++++++++++++++
- 3 files changed, 236 insertions(+), 53 deletions(-)
- create mode 100644 include/hw/misc/raspberrypi-fw-defs.h
-
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 251b3d865d..871f71fdcd 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -12,10 +12,12 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
-+#include "hw/misc/raspberrypi-fw-defs.h"
- #include "sysemu/dma.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
-+#include "hw/arm/raspi_platform.h"
- 
- /* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
- 
-@@ -51,48 +53,48 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         /* @(value + 8) : Request/response indicator */
-         resplen = 0;
-         switch (tag) {
--        case 0x00000000: /* End tag */
-+        case RPI_FWREQ_PROPERTY_END: /* End tag */
-             break;
--        case 0x00000001: /* Get firmware revision */
-+        case RPI_FWREQ_GET_FIRMWARE_REVISION: /* Get firmware revision */
-             stl_le_phys(&s->dma_as, value + 12, 346337);
-             resplen = 4;
-             break;
--        case 0x00010001: /* Get board model */
-+        case RPI_FWREQ_GET_BOARD_MODEL: /* Get board model */
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x get board model NYI\n",
-                           tag);
-             resplen = 4;
-             break;
--        case 0x00010002: /* Get board revision */
-+        case RPI_FWREQ_GET_BOARD_REVISION: /* Get board revision */
-             stl_le_phys(&s->dma_as, value + 12, s->board_rev);
-             resplen = 4;
-             break;
--        case 0x00010003: /* Get board MAC address */
-+        case RPI_FWREQ_GET_BOARD_MAC_ADDRESS: /* Get board MAC address */
-             resplen = sizeof(s->macaddr.a);
-             dma_memory_write(&s->dma_as, value + 12, s->macaddr.a, resplen,
-                              MEMTXATTRS_UNSPECIFIED);
-             break;
--        case 0x00010004: /* Get board serial */
-+        case RPI_FWREQ_GET_BOARD_SERIAL: /* Get board serial */
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x get board serial NYI\n",
-                           tag);
-             resplen = 8;
-             break;
--        case 0x00010005: /* Get ARM memory */
-+        case RPI_FWREQ_GET_ARM_MEMORY: /* Get ARM memory */
-             /* base */
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             /* size */
-             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_base);
-             resplen = 8;
-             break;
--        case 0x00010006: /* Get VC memory */
-+        case RPI_FWREQ_GET_VC_MEMORY: /* Get VC memory */
-             /* base */
-             stl_le_phys(&s->dma_as, value + 12, s->fbdev->vcram_base);
-             /* size */
-             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_size);
-             resplen = 8;
-             break;
--        case 0x00028001: /* Set power state */
-+        case RPI_FWREQ_SET_POWER_STATE: /* Set power state */
-             /* Assume that whatever device they asked for exists,
-              * and we'll just claim we set it to the desired state
-              */
-@@ -103,38 +105,42 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
- 
-         /* Clocks */
- 
--        case 0x00030001: /* Get clock state */
-+        case RPI_FWREQ_GET_CLOCK_STATE: /* Get clock state */
-             stl_le_phys(&s->dma_as, value + 16, 0x1);
-             resplen = 8;
-             break;
- 
--        case 0x00038001: /* Set clock state */
-+        case RPI_FWREQ_SET_CLOCK_STATE: /* Set clock state */
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x set clock state NYI\n",
-                           tag);
-             resplen = 8;
-             break;
- 
--        case 0x00030002: /* Get clock rate */
--        case 0x00030004: /* Get max clock rate */
--        case 0x00030007: /* Get min clock rate */
-+        case RPI_FWREQ_GET_CLOCK_RATE: /* Get clock rate */
-+        case RPI_FWREQ_GET_MAX_CLOCK_RATE: /* Get max clock rate */
-+        case RPI_FWREQ_GET_MIN_CLOCK_RATE: /* Get min clock rate */
-             switch (ldl_le_phys(&s->dma_as, value + 12)) {
--            case 1: /* EMMC */
--                stl_le_phys(&s->dma_as, value + 16, 50000000);
-+            case RPI_FIRMWARE_EMMC_CLK_ID: /* EMMC */
-+                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_EMMC_CLK_RATE);
-                 break;
--            case 2: /* UART */
--                stl_le_phys(&s->dma_as, value + 16, 3000000);
-+            case RPI_FIRMWARE_UART_CLK_ID: /* UART */
-+                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_UART_CLK_RATE);
-+                break;
-+            case RPI_FIRMWARE_CORE_CLK_ID: /* Core Clock */
-+                stl_le_phys(&s->dma_as, value + 16, RPI_FIRMWARE_CORE_CLK_RATE);
-                 break;
-             default:
--                stl_le_phys(&s->dma_as, value + 16, 700000000);
-+                stl_le_phys(&s->dma_as, value + 16,
-+                            RPI_FIRMWARE_DEFAULT_CLK_RATE);
-                 break;
-             }
-             resplen = 8;
-             break;
- 
--        case 0x00038002: /* Set clock rate */
--        case 0x00038004: /* Set max clock rate */
--        case 0x00038007: /* Set min clock rate */
-+        case RPI_FWREQ_SET_CLOCK_RATE: /* Set clock rate */
-+        case RPI_FWREQ_SET_MAX_CLOCK_RATE: /* Set max clock rate */
-+        case RPI_FWREQ_SET_MIN_CLOCK_RATE: /* Set min clock rate */
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x set clock rate NYI\n",
-                           tag);
-@@ -143,121 +149,128 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
- 
-         /* Temperature */
- 
--        case 0x00030006: /* Get temperature */
-+        case RPI_FWREQ_GET_TEMPERATURE: /* Get temperature */
-             stl_le_phys(&s->dma_as, value + 16, 25000);
-             resplen = 8;
-             break;
- 
--        case 0x0003000A: /* Get max temperature */
-+        case RPI_FWREQ_GET_MAX_TEMPERATURE: /* Get max temperature */
-             stl_le_phys(&s->dma_as, value + 16, 99000);
-             resplen = 8;
-             break;
- 
-         /* Frame buffer */
- 
--        case 0x00040001: /* Allocate buffer */
-+        case RPI_FWREQ_FRAMEBUFFER_ALLOCATE: /* Allocate buffer */
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.base);
-             stl_le_phys(&s->dma_as, value + 16,
-                         bcm2835_fb_get_size(&fbconfig));
-             resplen = 8;
-             break;
--        case 0x00048001: /* Release buffer */
-+        case RPI_FWREQ_FRAMEBUFFER_RELEASE: /* Release buffer */
-             resplen = 0;
-             break;
--        case 0x00040002: /* Blank screen */
-+        case RPI_FWREQ_FRAMEBUFFER_BLANK: /* Blank screen */
-             resplen = 4;
-             break;
--        case 0x00044003: /* Test physical display width/height */
--        case 0x00044004: /* Test virtual display width/height */
-+        /* Test physical display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT:
-+        /* Test virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT:
-             resplen = 8;
-             break;
--        case 0x00048003: /* Set physical display width/height */
-+        /* Set physical display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT:
-             fbconfig.xres = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yres = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040003: /* Get physical display width/height */
-+        /* Get physical display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres);
-             resplen = 8;
-             break;
--        case 0x00048004: /* Set virtual display width/height */
-+        /* Set virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT:
-             fbconfig.xres_virtual = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yres_virtual = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040004: /* Get virtual display width/height */
-+        /* Get virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres_virtual);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres_virtual);
-             resplen = 8;
-             break;
--        case 0x00044005: /* Test depth */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH: /* Test depth */
-             resplen = 4;
-             break;
--        case 0x00048005: /* Set depth */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_DEPTH: /* Set depth */
-             fbconfig.bpp = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040005: /* Get depth */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_DEPTH: /* Get depth */
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.bpp);
-             resplen = 4;
-             break;
--        case 0x00044006: /* Test pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER: /* Test pixel order */
-             resplen = 4;
-             break;
--        case 0x00048006: /* Set pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER: /* Set pixel order */
-             fbconfig.pixo = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040006: /* Get pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER: /* Get pixel order */
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.pixo);
-             resplen = 4;
-             break;
--        case 0x00044007: /* Test pixel alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE: /* Test pixel alpha */
-             resplen = 4;
-             break;
--        case 0x00048007: /* Set alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE: /* Set alpha */
-             fbconfig.alpha = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040007: /* Get alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE: /* Get alpha */
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.alpha);
-             resplen = 4;
-             break;
--        case 0x00040008: /* Get pitch */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PITCH: /* Get pitch */
-             stl_le_phys(&s->dma_as, value + 12,
-                         bcm2835_fb_get_pitch(&fbconfig));
-             resplen = 4;
-             break;
--        case 0x00044009: /* Test virtual offset */
-+        /* Test virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET:
-             resplen = 8;
-             break;
--        case 0x00048009: /* Set virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET: /* Set virtual offset */
-             fbconfig.xoffset = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yoffset = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040009: /* Get virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET: /* Get virtual offset */
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xoffset);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yoffset);
-             resplen = 8;
-             break;
--        case 0x0004000a: /* Get/Test/Set overscan */
--        case 0x0004400a:
--        case 0x0004800a:
-+        case RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN: /* Get/Test/Set overscan */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN:
-+        case RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN:
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             stl_le_phys(&s->dma_as, value + 16, 0);
-             stl_le_phys(&s->dma_as, value + 20, 0);
-             stl_le_phys(&s->dma_as, value + 24, 0);
-             resplen = 16;
-             break;
--        case 0x0004800b: /* Set palette */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PALETTE: /* Set palette */
-             offset = ldl_le_phys(&s->dma_as, value + 12);
-             length = ldl_le_phys(&s->dma_as, value + 16);
-             n = 0;
-@@ -270,18 +283,19 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             resplen = 4;
-             break;
--        case 0x00040013: /* Get number of displays */
-+        /* Get number of displays */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
-             break;
- 
--        case 0x00060001: /* Get DMA channels */
-+        case RPI_FWREQ_GET_DMA_CHANNELS: /* Get DMA channels */
-             /* channels 2-5 */
-             stl_le_phys(&s->dma_as, value + 12, 0x003C);
-             resplen = 4;
-             break;
- 
--        case 0x00050001: /* Get command line */
-+        case RPI_FWREQ_GET_COMMAND_LINE: /* Get command line */
-             /*
-              * We follow the firmware behaviour: no NUL terminator is
-              * written to the buffer, and if the buffer is too short
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 4a56dd4b89..92a317950a 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -170,4 +170,10 @@
- #define INTERRUPT_ILLEGAL_TYPE0        6
- #define INTERRUPT_ILLEGAL_TYPE1        7
- 
-+/* Clock rates */
-+#define RPI_FIRMWARE_EMMC_CLK_RATE    50000000
-+#define RPI_FIRMWARE_UART_CLK_RATE    3000000
-+#define RPI_FIRMWARE_CORE_CLK_RATE    350000000
-+#define RPI_FIRMWARE_DEFAULT_CLK_RATE 700000000
-+
- #endif
-diff --git a/include/hw/misc/raspberrypi-fw-defs.h b/include/hw/misc/raspberrypi-fw-defs.h
-new file mode 100644
-index 0000000000..4551fe7450
---- /dev/null
-+++ b/include/hw/misc/raspberrypi-fw-defs.h
-@@ -0,0 +1,163 @@
-+/*
-+ * Raspberry Pi firmware definitions
-+ *
-+ * Copyright (C) 2022  Auriga LLC, based on Linux kernel
-+ *   `include/soc/bcm2835/raspberrypi-firmware.h` (Copyright © 2015 Broadcom)
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
-+#define INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
-+
-+#include "qemu/osdep.h"
-+
-+enum rpi_firmware_property_tag {
-+    RPI_FWREQ_PROPERTY_END =                           0,
-+    RPI_FWREQ_GET_FIRMWARE_REVISION =                  0x00000001,
-+    RPI_FWREQ_GET_FIRMWARE_VARIANT =                   0x00000002,
-+    RPI_FWREQ_GET_FIRMWARE_HASH =                      0x00000003,
-+
-+    RPI_FWREQ_SET_CURSOR_INFO =                        0x00008010,
-+    RPI_FWREQ_SET_CURSOR_STATE =                       0x00008011,
-+
-+    RPI_FWREQ_GET_BOARD_MODEL =                        0x00010001,
-+    RPI_FWREQ_GET_BOARD_REVISION =                     0x00010002,
-+    RPI_FWREQ_GET_BOARD_MAC_ADDRESS =                  0x00010003,
-+    RPI_FWREQ_GET_BOARD_SERIAL =                       0x00010004,
-+    RPI_FWREQ_GET_ARM_MEMORY =                         0x00010005,
-+    RPI_FWREQ_GET_VC_MEMORY =                          0x00010006,
-+    RPI_FWREQ_GET_CLOCKS =                             0x00010007,
-+    RPI_FWREQ_GET_POWER_STATE =                        0x00020001,
-+    RPI_FWREQ_GET_TIMING =                             0x00020002,
-+    RPI_FWREQ_SET_POWER_STATE =                        0x00028001,
-+    RPI_FWREQ_GET_CLOCK_STATE =                        0x00030001,
-+    RPI_FWREQ_GET_CLOCK_RATE =                         0x00030002,
-+    RPI_FWREQ_GET_VOLTAGE =                            0x00030003,
-+    RPI_FWREQ_GET_MAX_CLOCK_RATE =                     0x00030004,
-+    RPI_FWREQ_GET_MAX_VOLTAGE =                        0x00030005,
-+    RPI_FWREQ_GET_TEMPERATURE =                        0x00030006,
-+    RPI_FWREQ_GET_MIN_CLOCK_RATE =                     0x00030007,
-+    RPI_FWREQ_GET_MIN_VOLTAGE =                        0x00030008,
-+    RPI_FWREQ_GET_TURBO =                              0x00030009,
-+    RPI_FWREQ_GET_MAX_TEMPERATURE =                    0x0003000a,
-+    RPI_FWREQ_GET_STC =                                0x0003000b,
-+    RPI_FWREQ_ALLOCATE_MEMORY =                        0x0003000c,
-+    RPI_FWREQ_LOCK_MEMORY =                            0x0003000d,
-+    RPI_FWREQ_UNLOCK_MEMORY =                          0x0003000e,
-+    RPI_FWREQ_RELEASE_MEMORY =                         0x0003000f,
-+    RPI_FWREQ_EXECUTE_CODE =                           0x00030010,
-+    RPI_FWREQ_EXECUTE_QPU =                            0x00030011,
-+    RPI_FWREQ_SET_ENABLE_QPU =                         0x00030012,
-+    RPI_FWREQ_GET_DISPMANX_RESOURCE_MEM_HANDLE =       0x00030014,
-+    RPI_FWREQ_GET_EDID_BLOCK =                         0x00030020,
-+    RPI_FWREQ_GET_CUSTOMER_OTP =                       0x00030021,
-+    RPI_FWREQ_GET_EDID_BLOCK_DISPLAY =                 0x00030023,
-+    RPI_FWREQ_GET_DOMAIN_STATE =                       0x00030030,
-+    RPI_FWREQ_GET_THROTTLED =                          0x00030046,
-+    RPI_FWREQ_GET_CLOCK_MEASURED =                     0x00030047,
-+    RPI_FWREQ_NOTIFY_REBOOT =                          0x00030048,
-+    RPI_FWREQ_SET_CLOCK_STATE =                        0x00038001,
-+    RPI_FWREQ_SET_CLOCK_RATE =                         0x00038002,
-+    RPI_FWREQ_SET_VOLTAGE =                            0x00038003,
-+    RPI_FWREQ_SET_MAX_CLOCK_RATE =                     0x00038004,
-+    RPI_FWREQ_SET_MIN_CLOCK_RATE =                     0x00038007,
-+    RPI_FWREQ_SET_TURBO =                              0x00038009,
-+    RPI_FWREQ_SET_CUSTOMER_OTP =                       0x00038021,
-+    RPI_FWREQ_SET_DOMAIN_STATE =                       0x00038030,
-+    RPI_FWREQ_GET_GPIO_STATE =                         0x00030041,
-+    RPI_FWREQ_SET_GPIO_STATE =                         0x00038041,
-+    RPI_FWREQ_SET_SDHOST_CLOCK =                       0x00038042,
-+    RPI_FWREQ_GET_GPIO_CONFIG =                        0x00030043,
-+    RPI_FWREQ_SET_GPIO_CONFIG =                        0x00038043,
-+    RPI_FWREQ_GET_PERIPH_REG =                         0x00030045,
-+    RPI_FWREQ_SET_PERIPH_REG =                         0x00038045,
-+    RPI_FWREQ_GET_POE_HAT_VAL =                        0x00030049,
-+    RPI_FWREQ_SET_POE_HAT_VAL =                        0x00038049,
-+    RPI_FWREQ_SET_POE_HAT_VAL_OLD =                    0x00030050,
-+    RPI_FWREQ_NOTIFY_XHCI_RESET =                      0x00030058,
-+    RPI_FWREQ_GET_REBOOT_FLAGS =                       0x00030064,
-+    RPI_FWREQ_SET_REBOOT_FLAGS =                       0x00038064,
-+    RPI_FWREQ_NOTIFY_DISPLAY_DONE =                    0x00030066,
-+
-+    /* Dispmanx TAGS */
-+    RPI_FWREQ_FRAMEBUFFER_ALLOCATE =                   0x00040001,
-+    RPI_FWREQ_FRAMEBUFFER_BLANK =                      0x00040002,
-+    RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT =  0x00040003,
-+    RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT =   0x00040004,
-+    RPI_FWREQ_FRAMEBUFFER_GET_DEPTH =                  0x00040005,
-+    RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER =            0x00040006,
-+    RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE =             0x00040007,
-+    RPI_FWREQ_FRAMEBUFFER_GET_PITCH =                  0x00040008,
-+    RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET =         0x00040009,
-+    RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN =               0x0004000a,
-+    RPI_FWREQ_FRAMEBUFFER_GET_PALETTE =                0x0004000b,
-+    RPI_FWREQ_FRAMEBUFFER_GET_LAYER =                  0x0004000c,
-+    RPI_FWREQ_FRAMEBUFFER_GET_TRANSFORM =              0x0004000d,
-+    RPI_FWREQ_FRAMEBUFFER_GET_VSYNC =                  0x0004000e,
-+    RPI_FWREQ_FRAMEBUFFER_GET_TOUCHBUF =               0x0004000f,
-+    RPI_FWREQ_FRAMEBUFFER_GET_GPIOVIRTBUF =            0x00040010,
-+    RPI_FWREQ_FRAMEBUFFER_RELEASE =                    0x00048001,
-+    RPI_FWREQ_FRAMEBUFFER_GET_DISPLAY_ID =             0x00040016,
-+    RPI_FWREQ_FRAMEBUFFER_SET_DISPLAY_NUM =            0x00048013,
-+    RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS =           0x00040013,
-+    RPI_FWREQ_FRAMEBUFFER_GET_DISPLAY_SETTINGS =       0x00040014,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT = 0x00044003,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT =  0x00044004,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH =                 0x00044005,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER =           0x00044006,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE =            0x00044007,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET =        0x00044009,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN =              0x0004400a,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_PALETTE =               0x0004400b,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_LAYER =                 0x0004400c,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_TRANSFORM =             0x0004400d,
-+    RPI_FWREQ_FRAMEBUFFER_TEST_VSYNC =                 0x0004400e,
-+    RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT =  0x00048003,
-+    RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT =   0x00048004,
-+    RPI_FWREQ_FRAMEBUFFER_SET_DEPTH =                  0x00048005,
-+    RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER =            0x00048006,
-+    RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE =             0x00048007,
-+    RPI_FWREQ_FRAMEBUFFER_SET_PITCH =                  0x00048008,
-+    RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET =         0x00048009,
-+    RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN =               0x0004800a,
-+    RPI_FWREQ_FRAMEBUFFER_SET_PALETTE =                0x0004800b,
-+
-+    RPI_FWREQ_FRAMEBUFFER_SET_TOUCHBUF =               0x0004801f,
-+    RPI_FWREQ_FRAMEBUFFER_SET_GPIOVIRTBUF =            0x00048020,
-+    RPI_FWREQ_FRAMEBUFFER_SET_VSYNC =                  0x0004800e,
-+    RPI_FWREQ_FRAMEBUFFER_SET_LAYER =                  0x0004800c,
-+    RPI_FWREQ_FRAMEBUFFER_SET_TRANSFORM =              0x0004800d,
-+    RPI_FWREQ_FRAMEBUFFER_SET_BACKLIGHT =              0x0004800f,
-+
-+    RPI_FWREQ_VCHIQ_INIT =                             0x00048010,
-+
-+    RPI_FWREQ_SET_PLANE =                              0x00048015,
-+    RPI_FWREQ_GET_DISPLAY_TIMING =                     0x00040017,
-+    RPI_FWREQ_SET_TIMING =                             0x00048017,
-+    RPI_FWREQ_GET_DISPLAY_CFG =                        0x00040018,
-+    RPI_FWREQ_SET_DISPLAY_POWER =                      0x00048019,
-+    RPI_FWREQ_GET_COMMAND_LINE =                       0x00050001,
-+    RPI_FWREQ_GET_DMA_CHANNELS =                       0x00060001,
-+};
-+
-+enum rpi_firmware_clk_id {
-+    RPI_FIRMWARE_EMMC_CLK_ID = 1,
-+    RPI_FIRMWARE_UART_CLK_ID,
-+    RPI_FIRMWARE_ARM_CLK_ID,
-+    RPI_FIRMWARE_CORE_CLK_ID,
-+    RPI_FIRMWARE_V3D_CLK_ID,
-+    RPI_FIRMWARE_H264_CLK_ID,
-+    RPI_FIRMWARE_ISP_CLK_ID,
-+    RPI_FIRMWARE_SDRAM_CLK_ID,
-+    RPI_FIRMWARE_PIXEL_CLK_ID,
-+    RPI_FIRMWARE_PWM_CLK_ID,
-+    RPI_FIRMWARE_HEVC_CLK_ID,
-+    RPI_FIRMWARE_EMMC2_CLK_ID,
-+    RPI_FIRMWARE_M2MC_CLK_ID,
-+    RPI_FIRMWARE_PIXEL_BVB_CLK_ID,
-+    RPI_FIRMWARE_VEC_CLK_ID,
-+    RPI_FIRMWARE_NUM_CLK_ID,
-+};
-+
-+#endif /* INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_ */
--- 
-2.34.1
-
+-Aaron

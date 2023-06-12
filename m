@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2018751ejb;
-        Mon, 12 Jun 2023 06:28:00 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4IyoevsIaJNniFj7a/918ObJbbGFESVVnqCTkUSjANlK8sHAalKZv9HyoUnhuc3DibemiU
-X-Received: by 2002:ac8:5bc1:0:b0:3f9:b70a:3a79 with SMTP id b1-20020ac85bc1000000b003f9b70a3a79mr11134442qtb.20.1686576479979;
-        Mon, 12 Jun 2023 06:27:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686576479; cv=none;
+Received: by 2002:a17:906:fcb7:b0:974:3dd3:6e73 with SMTP id qw23csp2019847ejb;
+        Mon, 12 Jun 2023 06:29:51 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7a77e6/SehaFW1Zom77XMdsImSkDzydEQa5xlfkKhPztp6RVEhjFHCtlfx7limxGD7CJu3
+X-Received: by 2002:a05:620a:8a17:b0:75e:c678:d49a with SMTP id qt23-20020a05620a8a1700b0075ec678d49amr8544882qkn.37.1686576591130;
+        Mon, 12 Jun 2023 06:29:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686576591; cv=none;
         d=google.com; s=arc-20160816;
-        b=AJBq5tyhu60ApvLUdmnm4j3FEbxn52btGMRsuCXTl07UWVwePTiUdthQ33eEtHsguX
-         pjvzDoj3HbupoZmR/KsGTJeuZsfquSD6aKC3Bno2AP8gJXuPKhE2CUxZMdYu4198K3vB
-         nFbjrg/vSLmHXSFaB6wPeH8m7BzDID2x21vCccpCMjfTzQMQ8PTP+dpayXaZKPtj2lXz
-         mMc9lMT+6Vvucu+oVd+1yz4zsMQzXxqY0czUPjZ9vzYoJhpJnW2pamOviuz2S1GzOaIZ
-         /kXciBSIQgrDekO5KQo0TpTUuu72tUZGYYkwmmmkXqtJ0fzhax8J45EhNT+L/h0cXRmt
-         13HQ==
+        b=axUdESKAGLyUKTefflmTu0L030i8OeJWwyokHnl8rvK2iZZX0MN4xA/cz7pXiBWAzp
+         awImQJSscgLWFKFkpK0oIRzwXANPidc0RezVitqEY25hVLWojEFMdhZ6AsZ8XMtt3axp
+         l2Zzkktm2MjfhOSX4gALclB+AltHbvL0RBxrIpPidGfFrbP6oeyU+irR9CN+y+hTW8jv
+         IPcm11QFfw2aSvf9oxyHWo8/0amwu+FxOwqDeXQe6RVUMt2ujHdqsrF5erVN3LzQL32M
+         mwy88EdFtBMayJuUpcEmEuXB4EFURkdQfhBE6sXRYHJ6FiWysz88fJS1oDI9ktMx+0Te
+         cWzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=v9GFd/XLGn7s2Ohq4cs9ru5eulHKEtKUWQdKGMRNXO8=;
-        b=rWf5xX7tSTqVy1oujhVckglN/Jx0j+3cDtIrbeRoVLcNWm6Vf9yG/wcQadVmRj91n3
-         B73EMgJPd0quQUMWVMicozppakychKsZuDh87Qn9Mo1FVTd/r7x61X4GAmaq+FYJA5fd
-         CKbSCoWc5ZtLi8U4lWIUURclqqoIdacaNWZp4nClYeZokBBTgjpdl5Ktjks/D+rlE7GC
-         06ZFHXnZ8F1N1eeHh/qLSwSgFChgnvTYBCcB3bmj1F5rMogtxpu1ZQslcXA8VBFYRKQD
-         sONyYNTmCUkU8uWGE6F6Q97aGG8BHexbFQnGMIHluE1dz9w/exJmh/ygjc61xGVrmji3
-         wAgQ==
+        bh=oq75FS5O+TGyHcGuY002+D2eSqgy0kMaom//55soKN0=;
+        b=VMgI0CqQYyFu6q/a7DM1IQbhTv3wKX2+IPvNVDWAz/AuZwGCMAz223o3udzjVohUwE
+         s/zSc0/ilxH9dCeyr2sk9QVD285v9xVx5cGeOlXHE8qUw8+WNMOlxI+VYeJZU0cQ4eEI
+         Q1F9ECGxZScNbZ17rbv1xGBle8WnysxJJ2BAFZkvK2mPn0sXsE43awNOu4GzuJiRzK0F
+         liueT722isaiw3Zv6To+wvAiaBfqePGEuZe2pXaeMUwy/D6wRXBd5gustnDswOOuiZfZ
+         1CoIu+zXeEIrSQnlBEyY+Uh0uZ2k6FaDQmsXf6A4AqhVzfe7F7QM1D3QqmZyTFv48F58
+         t83w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=B+vzTNlI;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=oUqQtms9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u19-20020a05622a011300b003f68b7f34dcsi5993948qtw.340.2023.06.12.06.27.59
+        by mx.google.com with ESMTPS id 20-20020a05620a06d400b0076098a1922asi338075qky.358.2023.06.12.06.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jun 2023 06:27:59 -0700 (PDT)
+        Mon, 12 Jun 2023 06:29:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=B+vzTNlI;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=oUqQtms9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q8ha4-00074z-IN; Mon, 12 Jun 2023 09:27:36 -0400
+	id 1q8hbt-0000yl-G2; Mon, 12 Jun 2023 09:29:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1q8hZr-0006z7-AA; Mon, 12 Jun 2023 09:27:23 -0400
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+ id 1q8hbH-0000pN-JH; Mon, 12 Jun 2023 09:28:56 -0400
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1q8hZo-0003Xh-4z; Mon, 12 Jun 2023 09:27:23 -0400
-Received: by mail-oa1-x2a.google.com with SMTP id
- 586e51a60fabf-19f2fb9b1cdso2206796fac.0; 
- Mon, 12 Jun 2023 06:27:18 -0700 (PDT)
+ id 1q8hbG-0003o3-0F; Mon, 12 Jun 2023 09:28:51 -0400
+Received: by mail-oa1-x35.google.com with SMTP id
+ 586e51a60fabf-1a1fa977667so2847848fac.1; 
+ Mon, 12 Jun 2023 06:28:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1686576438; x=1689168438;
+ d=gmail.com; s=20221208; t=1686576528; x=1689168528;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=v9GFd/XLGn7s2Ohq4cs9ru5eulHKEtKUWQdKGMRNXO8=;
- b=B+vzTNlI9IF4qq5rEmSBAmP4L8ZHTvE/PAmqYfGRWhS7qcsihOXz+R7Rew10r4quyN
- PPCXBhjrLHryQVlR92bSkdBQtN5i0HFW8RnxBwzcD6NndNC/+Dgt4WVBEFKnsO1Jt9EB
- 6pPpfCkdvXUKqCdeeIkg5cBbefo2mjeyooN+7kiefGynfgk4ybCorCIhIfx0lM4n6lFW
- SxR761GWkvPSa0JyN4LOpdsPLnKMSZ988O69f/ZJxadjIJmwSXQdDjCQVsCvRl3FvUls
- Mi+d/6Apak6g1UkTcttlGML9WR5alpdzwh/XF662lGYlY8FVFx8g8RPWO/vWFKaUt4nj
- 2n7A==
+ bh=oq75FS5O+TGyHcGuY002+D2eSqgy0kMaom//55soKN0=;
+ b=oUqQtms9hlTN+5UhBvfBr29FLVvlIqj3jGdjggqRn3wJKDYSuXRwDTpbVg6L2sATp3
+ 9+lhMBE88qdcNFIpxn4YVjBTsxrB21z9OfWcFTZK1CcPRm9eKKKW40gHSkv4+sWlA7W1
+ 9anvocr8y3mr8q71tZEiJ4/70N/VtGOWy473gB8shdmmEbmR11iHnG77BwK8S6ZhHQ6X
+ AADEkVcDjZX3+sarT68kxGTBze8ByqJvCfZDraXhDp0wVS7DhJg7xKCewK4Qgee5orZC
+ CSAhz/H5TUqBWgOU7JXqprEE6utzUHmu3z0/hyhNxR/ce1lzNS0M4EYyVBLVAIk5woa7
+ 3jjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686576438; x=1689168438;
+ d=1e100.net; s=20221208; t=1686576528; x=1689168528;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=v9GFd/XLGn7s2Ohq4cs9ru5eulHKEtKUWQdKGMRNXO8=;
- b=YIn3+YEtV1FRsRJCC99jykJqpbCtRYsyUriy/AP+PSDdM2KTxHcaPOIWlN6XgtFODZ
- hTgF+zUPPLf0qOrxUe9gMsvl0pziv3ELfcPq1sNUEzzN79SCC4YQnBLAW/iptTLOKZkR
- pcA1pLOULyJ+uUxHm89q+rQtlMg/DCtCyDSEAs1nsiGZoMhL7RdDI+9VZKoFZxhDGttP
- 9f74bRwZr+G03EsZcFeLwjayNxh3I9rgaPhWt4WkjhhU3zP7saiL/M7M/uoBp+KQIJYG
- kgNmiLey24vk6FYOAD4KOQoqFZR83zDPHoaM/TLnDMsCC2qxOY7ESDB13i31JhJK2O3u
- dmGA==
-X-Gm-Message-State: AC+VfDy5X8/t3K0Xxbhb9VWUSw6di2WHO067/g1gQOtXXIO5Opxvejwd
- p79BKPh1iPJVMmJe0B7ZzZU=
-X-Received: by 2002:a05:6870:a114:b0:1a6:8911:61a9 with SMTP id
- m20-20020a056870a11400b001a6891161a9mr1722625oae.29.1686576437811; 
- Mon, 12 Jun 2023 06:27:17 -0700 (PDT)
+ bh=oq75FS5O+TGyHcGuY002+D2eSqgy0kMaom//55soKN0=;
+ b=AEk16Vj3cHTZSGy1v4IAv12rRrDDuKiXaWtzta5UXqEtav22S1KdpasEhIGuFGVl8a
+ 0sJ1h7k9EsHAftIUkqxgreuRBLUjjV/eo7KQ6/8yqT4wXjDpHaYLClDEsz+FkoO4IZVa
+ 2dEDkzj+ze0XxjjHAZ9OSc5WYwGecp0ZScmiP+0gZLadf/XoLJCQE2nja0GwSelOd0Fx
+ vjdE49vUW440kW/06kf7qHaVK8xSFSh8VYFfTRYUVUGTT5EwdY9Os9w8aIRGI2aSNAa2
+ iGN9vdD62CuPZosq6X6CY4gfxJ18t9jnJUTRz9eI4PAr9qfJo9EVs588StAfiOPbCdGO
+ CKyQ==
+X-Gm-Message-State: AC+VfDxNnw96yaQaZxQFHlthuSCqtdcP2PEUjSGDGFDclEdEZaHkSi4t
+ N0d/UBE2HCsGNeSqel8vWe1B+mDFSv0=
+X-Received: by 2002:a05:6871:44c:b0:1a6:751e:3dfc with SMTP id
+ e12-20020a056871044c00b001a6751e3dfcmr2410431oag.5.1686576527831; 
+ Mon, 12 Jun 2023 06:28:47 -0700 (PDT)
 Received: from [192.168.68.107] ([177.170.117.52])
  by smtp.gmail.com with ESMTPSA id
- r21-20020a05687032d500b001a663e49523sm2663699oac.36.2023.06.12.06.27.15
+ b5-20020a056830104500b006b169acf1b5sm3860730otp.63.2023.06.12.06.28.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jun 2023 06:27:17 -0700 (PDT)
-Message-ID: <1a7d9338-ec1f-0708-c4d0-930ff960d6bf@gmail.com>
-Date: Mon, 12 Jun 2023 10:27:14 -0300
+ Mon, 12 Jun 2023 06:28:47 -0700 (PDT)
+Message-ID: <03be94a3-a891-fc5a-abc2-5bcb3c5009ff@gmail.com>
+Date: Mon, 12 Jun 2023 10:28:44 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.10.0
-Subject: Re: [PATCH v2 02/38] util: Add cpuinfo-ppc.c
+Subject: Re: [PATCH v2 31/38] target/ppc: Use aesdec_ISB_ISR_AK_IMC
 Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
 References: <20230609022401.684157-1-richard.henderson@linaro.org>
- <20230609022401.684157-3-richard.henderson@linaro.org>
+ <20230609022401.684157-32-richard.henderson@linaro.org>
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230609022401.684157-3-richard.henderson@linaro.org>
+In-Reply-To: <20230609022401.684157-32-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2a;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x2a.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::35;
+ envelope-from=danielhb413@gmail.com; helo=mail-oa1-x35.google.com
 X-Spam_score_int: -19
 X-Spam_score: -2.0
 X-Spam_bar: --
@@ -127,239 +127,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EZdPgLE3I14f
+X-TUID: j/4I1A4v/Lts
 
 
 
 On 6/8/23 23:23, Richard Henderson wrote:
-> Move the code from tcg/.  Fix a bug in that PPC_FEATURE2_ARCH_3_10
-> is actually spelled PPC_FEATURE2_ARCH_3_1.
+> This implements the VNCIPHER instruction.
 > 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
 
 Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
->   host/include/ppc/host/cpuinfo.h   | 29 ++++++++++++++++
->   host/include/ppc64/host/cpuinfo.h |  1 +
->   tcg/ppc/tcg-target.h              | 16 ++++-----
->   util/cpuinfo-ppc.c                | 57 +++++++++++++++++++++++++++++++
->   tcg/ppc/tcg-target.c.inc          | 44 +-----------------------
->   util/meson.build                  |  2 ++
->   6 files changed, 98 insertions(+), 51 deletions(-)
->   create mode 100644 host/include/ppc/host/cpuinfo.h
->   create mode 100644 host/include/ppc64/host/cpuinfo.h
->   create mode 100644 util/cpuinfo-ppc.c
+>   target/ppc/int_helper.c | 19 ++++---------------
+>   1 file changed, 4 insertions(+), 15 deletions(-)
 > 
-> diff --git a/host/include/ppc/host/cpuinfo.h b/host/include/ppc/host/cpuinfo.h
-> new file mode 100644
-> index 0000000000..7ec252ef52
-> --- /dev/null
-> +++ b/host/include/ppc/host/cpuinfo.h
-> @@ -0,0 +1,29 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Host specific cpu indentification for ppc.
-> + */
-> +
-> +#ifndef HOST_CPUINFO_H
-> +#define HOST_CPUINFO_H
-> +
-> +/* Digested version of <cpuid.h> */
-> +
-> +#define CPUINFO_ALWAYS          (1u << 0)  /* so cpuinfo is nonzero */
-> +#define CPUINFO_V2_06           (1u << 1)
-> +#define CPUINFO_V2_07           (1u << 2)
-> +#define CPUINFO_V3_00           (1u << 3)
-> +#define CPUINFO_V3_10           (1u << 4)
-> +#define CPUINFO_ISEL            (1u << 5)
-> +#define CPUINFO_ALTIVEC         (1u << 6)
-> +#define CPUINFO_VSX             (1u << 7)
-> +
-> +/* Initialized with a constructor. */
-> +extern unsigned cpuinfo;
-> +
-> +/*
-> + * We cannot rely on constructor ordering, so other constructors must
-> + * use the function interface rather than the variable above.
-> + */
-> +unsigned cpuinfo_init(void);
-> +
-> +#endif /* HOST_CPUINFO_H */
-> diff --git a/host/include/ppc64/host/cpuinfo.h b/host/include/ppc64/host/cpuinfo.h
-> new file mode 100644
-> index 0000000000..2f036a0627
-> --- /dev/null
-> +++ b/host/include/ppc64/host/cpuinfo.h
-> @@ -0,0 +1 @@
-> +#include "host/include/ppc/host/cpuinfo.h"
-> diff --git a/tcg/ppc/tcg-target.h b/tcg/ppc/tcg-target.h
-> index c7552b6391..b632a5a647 100644
-> --- a/tcg/ppc/tcg-target.h
-> +++ b/tcg/ppc/tcg-target.h
-> @@ -25,6 +25,8 @@
->   #ifndef PPC_TCG_TARGET_H
->   #define PPC_TCG_TARGET_H
+> diff --git a/target/ppc/int_helper.c b/target/ppc/int_helper.c
+> index 1e477924b7..834da80fe3 100644
+> --- a/target/ppc/int_helper.c
+> +++ b/target/ppc/int_helper.c
+> @@ -2947,22 +2947,11 @@ void helper_vcipherlast(ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)
 >   
-> +#include "host/cpuinfo.h"
-> +
->   #define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
->   
->   #define TCG_TARGET_NB_REGS 64
-> @@ -61,14 +63,12 @@ typedef enum {
->       tcg_isa_3_10,
->   } TCGPowerISA;
->   
-> -extern TCGPowerISA have_isa;
-> -extern bool have_altivec;
-> -extern bool have_vsx;
-> -
-> -#define have_isa_2_06  (have_isa >= tcg_isa_2_06)
-> -#define have_isa_2_07  (have_isa >= tcg_isa_2_07)
-> -#define have_isa_3_00  (have_isa >= tcg_isa_3_00)
-> -#define have_isa_3_10  (have_isa >= tcg_isa_3_10)
-> +#define have_isa_2_06  (cpuinfo & CPUINFO_V2_06)
-> +#define have_isa_2_07  (cpuinfo & CPUINFO_V2_07)
-> +#define have_isa_3_00  (cpuinfo & CPUINFO_V3_00)
-> +#define have_isa_3_10  (cpuinfo & CPUINFO_V3_10)
-> +#define have_altivec   (cpuinfo & CPUINFO_ALTIVEC)
-> +#define have_vsx       (cpuinfo & CPUINFO_VSX)
->   
->   /* optional instructions automatically implemented */
->   #define TCG_TARGET_HAS_ext8u_i32        0 /* andi */
-> diff --git a/util/cpuinfo-ppc.c b/util/cpuinfo-ppc.c
-> new file mode 100644
-> index 0000000000..ee761de33a
-> --- /dev/null
-> +++ b/util/cpuinfo-ppc.c
-> @@ -0,0 +1,57 @@
-> +/*
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + * Host specific cpu indentification for ppc.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "host/cpuinfo.h"
-> +
-> +#ifdef CONFIG_GETAUXVAL
-> +# include <sys/auxv.h>
-> +#else
-> +# include <asm/cputable.h>
-> +# include "elf.h"
-> +#endif
-> +
-> +unsigned cpuinfo;
-> +
-> +/* Called both as constructor and (possibly) via other constructors. */
-> +unsigned __attribute__((constructor)) cpuinfo_init(void)
-> +{
-> +    unsigned info = cpuinfo;
-> +    unsigned long hwcap, hwcap2;
-> +
-> +    if (info) {
-> +        return info;
-> +    }
-> +
-> +    hwcap = qemu_getauxval(AT_HWCAP);
-> +    hwcap2 = qemu_getauxval(AT_HWCAP2);
-> +    info = CPUINFO_ALWAYS;
-> +
-> +    if (hwcap & PPC_FEATURE_ARCH_2_06) {
-> +        info |= CPUINFO_V2_06;
-> +    }
-> +    if (hwcap2 & PPC_FEATURE2_ARCH_2_07) {
-> +        info |= CPUINFO_V2_07;
-> +    }
-> +    if (hwcap2 & PPC_FEATURE2_ARCH_3_00) {
-> +        info |= CPUINFO_V3_00;
-> +    }
-> +    if (hwcap2 & PPC_FEATURE2_ARCH_3_1) {
-> +        info |= CPUINFO_V3_10;
-> +    }
-> +    if (hwcap2 & PPC_FEATURE2_HAS_ISEL) {
-> +        info |= CPUINFO_ISEL;
-> +    }
-> +    if (hwcap & PPC_FEATURE_HAS_ALTIVEC) {
-> +        info |= CPUINFO_ALTIVEC;
-> +        /* We only care about the portion of VSX that overlaps Altivec. */
-> +        if (hwcap & PPC_FEATURE_HAS_VSX) {
-> +            info |= CPUINFO_VSX;
-> +        }
-> +    }
-> +
-> +    cpuinfo = info;
-> +    return info;
-> +}
-> diff --git a/tcg/ppc/tcg-target.c.inc b/tcg/ppc/tcg-target.c.inc
-> index 5c8378f8f6..c866f2c997 100644
-> --- a/tcg/ppc/tcg-target.c.inc
-> +++ b/tcg/ppc/tcg-target.c.inc
-> @@ -101,10 +101,7 @@
->   #define ALL_GENERAL_REGS  0xffffffffu
->   #define ALL_VECTOR_REGS   0xffffffff00000000ull
->   
-> -TCGPowerISA have_isa;
-> -static bool have_isel;
-> -bool have_altivec;
-> -bool have_vsx;
-> +#define have_isel  (cpuinfo & CPUINFO_ISEL)
->   
->   #ifndef CONFIG_SOFTMMU
->   #define TCG_GUEST_BASE_REG 30
-> @@ -3879,45 +3876,6 @@ static TCGConstraintSetIndex tcg_target_op_def(TCGOpcode op)
->   
->   static void tcg_target_init(TCGContext *s)
+>   void helper_vncipher(ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)
 >   {
-> -    unsigned long hwcap = qemu_getauxval(AT_HWCAP);
-> -    unsigned long hwcap2 = qemu_getauxval(AT_HWCAP2);
-> -
-> -    have_isa = tcg_isa_base;
-> -    if (hwcap & PPC_FEATURE_ARCH_2_06) {
-> -        have_isa = tcg_isa_2_06;
-> -    }
-> -#ifdef PPC_FEATURE2_ARCH_2_07
-> -    if (hwcap2 & PPC_FEATURE2_ARCH_2_07) {
-> -        have_isa = tcg_isa_2_07;
-> -    }
-> -#endif
-> -#ifdef PPC_FEATURE2_ARCH_3_00
-> -    if (hwcap2 & PPC_FEATURE2_ARCH_3_00) {
-> -        have_isa = tcg_isa_3_00;
-> -    }
-> -#endif
-> -#ifdef PPC_FEATURE2_ARCH_3_10
-> -    if (hwcap2 & PPC_FEATURE2_ARCH_3_10) {
-> -        have_isa = tcg_isa_3_10;
-> -    }
-> -#endif
-> -
-> -#ifdef PPC_FEATURE2_HAS_ISEL
-> -    /* Prefer explicit instruction from the kernel. */
-> -    have_isel = (hwcap2 & PPC_FEATURE2_HAS_ISEL) != 0;
-> -#else
-> -    /* Fall back to knowing Power7 (2.06) has ISEL. */
-> -    have_isel = have_isa_2_06;
-> -#endif
-> -
-> -    if (hwcap & PPC_FEATURE_HAS_ALTIVEC) {
-> -        have_altivec = true;
-> -        /* We only care about the portion of VSX that overlaps Altivec. */
-> -        if (hwcap & PPC_FEATURE_HAS_VSX) {
-> -            have_vsx = true;
-> -        }
+> -    /* This differs from what is written in ISA V2.07.  The RTL is */
+> -    /* incorrect and will be fixed in V2.07B.                      */
+> -    int i;
+> -    ppc_avr_t tmp;
+> +    AESState *ad = (AESState *)r;
+> +    AESState *st = (AESState *)a;
+> +    AESState *rk = (AESState *)b;
+>   
+> -    VECTOR_FOR_INORDER_I(i, u8) {
+> -        tmp.VsrB(i) = b->VsrB(i) ^ AES_isbox[a->VsrB(AES_ishifts[i])];
 > -    }
 > -
->       tcg_target_available_regs[TCG_TYPE_I32] = 0xffffffff;
->       tcg_target_available_regs[TCG_TYPE_I64] = 0xffffffff;
->       if (have_altivec) {
-> diff --git a/util/meson.build b/util/meson.build
-> index 3a93071d27..a375160286 100644
-> --- a/util/meson.build
-> +++ b/util/meson.build
-> @@ -113,4 +113,6 @@ if cpu == 'aarch64'
->     util_ss.add(files('cpuinfo-aarch64.c'))
->   elif cpu in ['x86', 'x86_64']
->     util_ss.add(files('cpuinfo-i386.c'))
-> +elif cpu in ['ppc', 'ppc64']
-> +  util_ss.add(files('cpuinfo-ppc.c'))
->   endif
+> -    VECTOR_FOR_INORDER_I(i, u32) {
+> -        r->VsrW(i) =
+> -            AES_imc[tmp.VsrB(4 * i + 0)][0] ^
+> -            AES_imc[tmp.VsrB(4 * i + 1)][1] ^
+> -            AES_imc[tmp.VsrB(4 * i + 2)][2] ^
+> -            AES_imc[tmp.VsrB(4 * i + 3)][3];
+> -    }
+> +    aesdec_ISB_ISR_AK_IMC(ad, st, rk, true);
+>   }
+>   
+>   void helper_vncipherlast(ppc_avr_t *r, ppc_avr_t *a, ppc_avr_t *b)

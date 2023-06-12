@@ -1,117 +1,111 @@
-Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp160923ejb;
-        Mon, 12 Jun 2023 15:18:03 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4d1lqYQa9FHmBo/rVZ/mR9TZVY9aaihcKq5enXsuyM7Olvvk4vgxfldkXgC742QPDmufkT
-X-Received: by 2002:a1f:4a82:0:b0:45a:f5be:9c18 with SMTP id x124-20020a1f4a82000000b0045af5be9c18mr3308977vka.12.1686608283412;
-        Mon, 12 Jun 2023 15:18:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686608283; cv=none;
+Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp167790ejb;
+        Mon, 12 Jun 2023 15:35:20 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5k23RA/7CDpo9XswrO6h/FjYcA3pHv15TQhbSJ0fnLpk0MaPo+AUD3TwiMb9hfdvUFNt3d
+X-Received: by 2002:ac8:7f41:0:b0:3f5:3b4b:b2bb with SMTP id g1-20020ac87f41000000b003f53b4bb2bbmr12144161qtk.41.1686609320713;
+        Mon, 12 Jun 2023 15:35:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686609320; cv=none;
         d=google.com; s=arc-20160816;
-        b=bMwkwHyMYuf7aAIMXPzYmqPGQqaOy4IHM8E1YkCMMek4smZUkNvszMMDp/N/j2XGmI
-         Za8ezuKh5unSRAzKu30+4HtTcrS3mvxOb7rf+z007d6Ua9IOVgGJ3DpztueWnOq9jF3p
-         e35904h+o8ymwVkieqw+w/ZVYK7XUwIYUqyoaXeXotqby8VsZ5LAE8cbDw/2d0CCgt+v
-         k6d7uokn0OEbesddHHPCTIAWp6QcN8D3yHe6ZZZYuNI5RiSUeGTmQo+Ah6ZxOy1ITikR
-         LoYrcdku4zlJTXJYKoQudyS+114QflMFFoQMTLg3uuFHs8QeCy3nzAOsGBdE8hDbi7s1
-         Ot3g==
+        b=NV2YoVU5dCireRRG8n3WcKaEcj4hmtN9FkskMnD0wvPtulKapT3YfIam30cxvO6SKu
+         NdC08GZhZ58M4jo2b00y9wjhCV/QWnp98uf/SinPadm3zPRmzfFJ3CeRjcWdFartA/Tk
+         PfapqulJL1TE5YwiDTKoOHK7/XjCMhp+HOxXDbQ/Uo1IXyabC/S7I0dRK+trYDZ3hKAP
+         8ZyD0liAaPbwAs7BLJobadw1Ttm6jiUikQPwFI+NPHFRcZan3bXVlej5wqgcYG4Yu9F1
+         l6Fv4FsMT5cloSYqvOw0olhNWiW6M5M+ef8F5HDenS6+M92OaDJZrY9tijtb96iXy4dT
+         S5nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=b0f5TjXlgRyoRtOMkfcy9jl0thKSw7AmRg3kqPelvws=;
-        b=jLscffOSr45gZrSRXsC2WDCJefdEXsSuJJWJYm+uQBHljVfWGELjLBFW6O77MwVITc
-         ih/6jTMYg6ndmKQ7DXhUROMT4kkm0tBK12hG9KZjTbW2xOSruBP38KHE4nf7x5BGZJ5O
-         9npi0b5biQYHovCGDa8b3dzfL7Y/PrWU3yi9WM753Dfd5Kg+yWgyDSZ/P0n1XqXBKdWb
-         N+bU0WSRbO2TJ5QxA8h3tYHxHdrP+LqV3uAjIEHmRsjQfHXafNUeEVNoXgCe6Qcg8jT4
-         ZDjrGz/4Upw4aPwq4AZBiolTWbWMCxfFQ2L/9XdcdQXLBj5iqp8Zst6AeXwKB9BQ05O4
-         SHVw==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=SqhlRkXOcH7EyYnTn68FA9nqTZvBqxPLUfNCO5zF92Q=;
+        b=VFOWzoZn+zXbaGMaZpaplT87ILvlmuFnQuSEHrqR+gCJzVVzvAvA2LNPak7O66Fx3E
+         vMnYpDL2a5q++WBSPt2akzGas3P3MLnVqCprKt7eb62kEkVB8YzqAxuYK7ViqEofDevk
+         el1vRtMyvWansximaWusDitondLOl0/Z19qbdB7zl5Y1Bh8usrbz5GJ8n73mPkCrZKbS
+         i3AYjRrEaXVUnAsfCUe7rgzM+xOkhZXzLE3BAYdc0I9l7VhY5JYnbJCihL1l8za7mDr8
+         deg8C2ueJDYHZVhr7KaPrR6fVN2TVOWwHkh5InFB3NSGsO4Vbf4J60c9WrOVU38Hqnqq
+         Ygqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="h522zqq/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kEDhXScO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eq15-20020ad4596f000000b005e869240425si6845212qvb.300.2023.06.12.15.18.03
+        by mx.google.com with ESMTPS id v19-20020a05622a145300b003f6b71f1967si6871137qtx.552.2023.06.12.15.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jun 2023 15:18:03 -0700 (PDT)
+        Mon, 12 Jun 2023 15:35:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="h522zqq/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=kEDhXScO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q8pqq-0006ug-5I; Mon, 12 Jun 2023 18:17:28 -0400
+	id 1q8q7u-0001aW-1J; Mon, 12 Jun 2023 18:35:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8pqo-0006tr-0u
- for qemu-arm@nongnu.org; Mon, 12 Jun 2023 18:17:26 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8q7s-0001a7-NR
+ for qemu-arm@nongnu.org; Mon, 12 Jun 2023 18:35:05 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8pqm-0004ra-Di
- for qemu-arm@nongnu.org; Mon, 12 Jun 2023 18:17:25 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-9745c5fed21so711626766b.3
- for <qemu-arm@nongnu.org>; Mon, 12 Jun 2023 15:17:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8q7q-0007dV-PX
+ for qemu-arm@nongnu.org; Mon, 12 Jun 2023 18:35:04 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-977d6aa3758so880645366b.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jun 2023 15:34:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686608242; x=1689200242;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=b0f5TjXlgRyoRtOMkfcy9jl0thKSw7AmRg3kqPelvws=;
- b=h522zqq/PIgZLUffQUjDgZZJ/lrgKZOjiwxvNuveiOJFddL/2sfPW9JJDyrwolSKZR
- V1pbWMpUiKn6da6TV5KlDo/ef9sxHXE51YHEn7YqovbxWQEVbYGV4b+wtVSJ9JIaqp7P
- hl/WEfxjGaqmWb2FPh7lveye96rM1+zRKkgSAD951KarsQMmpL30YMulu/7P9MaZ1zPT
- FC/f0Vdn8n9vFAPDc2SW1OHmxAYMxgrglHBIkxUCAbzlhAGbheYHaeJBssrnsZ4tAfs4
- Us5E/02eDQhGajzAvHbYoIxTyxU8gNFeLtVmUyGsPMZOb5/O+x9pKMBx+aWpNKtGol3o
- 6iZw==
+ d=linaro.org; s=google; t=1686609299; x=1689201299;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=SqhlRkXOcH7EyYnTn68FA9nqTZvBqxPLUfNCO5zF92Q=;
+ b=kEDhXScOIvT6oF80U+aW5oGYOdkhuJLcJBS+Ka1GseFVbpXV9ynDLbXIos63othYHc
+ vNtmWjCJ5jALFQogj9a3n3zQm5Sb2wjHeMNZ56I2utscXxHiGqyegt6ZpVJ+kcD7QzTI
+ Xx/yJYeZP6X0TMDb/p0OFzyt5opv7NcljMZk14S603kiZCRdaBLx+4rgzbHh31NwT+6Z
+ k7RZRVAeQEQDOsmqba2YNDFeqxjZFktA18K49+C1abWV7HNcysDOPtfg01P1HiqzG6l6
+ 6ancD0RQWuy8psvXWV+5zqtwH8u6tXzBS8SSrBzlqrE0ih24vKXhMHv2Ft3ITKSCTsW3
+ CicQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686608242; x=1689200242;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=b0f5TjXlgRyoRtOMkfcy9jl0thKSw7AmRg3kqPelvws=;
- b=BLSSL9wXD2aKzH+bSWkc0SvLhPxepVlWVW4lHvyMEeVKHpB/uZQ4CugDuqm3oWswTl
- 6z4LnflRyVVPDLx46ptJcgRaAFUjU8WIK2DDKowxLEcVfdXRftWx7dU+EOtDPoy3sX9r
- PMevrQtzWXg0t7DRzlL9/0TbZbi39wblmSswsrpqyvlxf8F5Hp5w2xYf09+ip6H2fkU2
- douglBELMsnKVhdp3z2p8FeTpo13Rb+hT+nGcKBrEdKXzu/OtJghp0V07ofPrYMv63VK
- RXsDRm/7wQt1icK8EQCUwPZ8x9uYO4gxWyhvinDpkfvaHZ68Kg8b/uhSj4ycK4u0mJIt
- 48Zg==
-X-Gm-Message-State: AC+VfDx71CddrwcSURiRAsx+302LDgmlvQDu80pvmLOZfWw6NxANmeTU
- tT/sumkNfQmFd5t/2gp+2M25Wg==
-X-Received: by 2002:a17:907:318d:b0:974:6176:2223 with SMTP id
- xe13-20020a170907318d00b0097461762223mr12259944ejb.13.1686608242167; 
- Mon, 12 Jun 2023 15:17:22 -0700 (PDT)
-Received: from [10.10.0.115] ([185.140.244.249])
+ d=1e100.net; s=20221208; t=1686609299; x=1689201299;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SqhlRkXOcH7EyYnTn68FA9nqTZvBqxPLUfNCO5zF92Q=;
+ b=Qvf8tGwTH0muqipL3qlrqH/d84KeTIVteo6Zu7t2+NPNCguZrwha1RxFBxHZq4uCBD
+ fi/+1XpBq38MDfvgZuvk+tqKTNGjYu3cH1+VMWZOEq30PkjhxKUXWgIUUskg5mUkXClw
+ 8PPrAL9M3X8Qx6dzSSSGL80ysEvxxzPNwlEUMkvr568Z3l1FQoY2DtsV4z0UqcdNc2LT
+ 6KlnuvMpq+A9+cnJ5F76xY2355p0msE+h4FYRRuEl1j1LzDJYSWG/g5Ipx5mGhVCsouT
+ BqqvNfa/hCizxN8T1asJ4krFfXC/GHMtOXrjMc+TKNVb9xeENf29t257eXzYDyloQ4+U
+ t2lw==
+X-Gm-Message-State: AC+VfDxpRSaY71DyfR9tF+h1U/pwGTes8P08+l5CvfIuwlNfA93XGmUJ
+ sjbznjA7R1/gktmSqdR8ICXZPNScqmpygl/wYL68uw==
+X-Received: by 2002:a17:907:36c8:b0:978:af67:c7ea with SMTP id
+ bj8-20020a17090736c800b00978af67c7eamr11761566ejc.41.1686609298809; 
+ Mon, 12 Jun 2023 15:34:58 -0700 (PDT)
+Received: from localhost.localdomain ([185.140.244.249])
  by smtp.gmail.com with ESMTPSA id
- p22-20020a170906229600b009745c628bcdsm5752124eja.93.2023.06.12.15.17.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jun 2023 15:17:21 -0700 (PDT)
-Message-ID: <239a543f-6d97-eb14-ba4f-284093fccfba@linaro.org>
-Date: Mon, 12 Jun 2023 15:23:53 +0200
+ p4-20020a1709060dc400b0096f937b0d3esm5802572eji.3.2023.06.12.15.34.57
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 12 Jun 2023 15:34:58 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Sergey Kambalin <sergey.kambalin@auriga.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 0/4] hw/arm/raspi: Use named constants in BCM props
+Date: Tue, 13 Jun 2023 00:34:52 +0200
+Message-Id: <20230612223456.33824-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH] imx_serial: set wake bit when we receive a data byte
-Content-Language: en-US
-To: Martin Kaiser <martin@kaiser.cx>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20230608154129.133169-1-martin@kaiser.cx>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230608154129.133169-1-martin@kaiser.cx>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.096, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,70 +120,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CDmXWqqmyOy9
+X-TUID: L7Tf+xw02Akd
 
-Hi Martin,
+v2: https://lore.kernel.org/qemu-devel/20230612115950.5002-1-sergey.kambalin@auriga.com/
 
-On 8/6/23 17:41, Martin Kaiser wrote:
-> The linux kernel added a flood check for rx data recently in commmit
-> 496a4471b7c3 ("serial: imx: work-around for hardware RX flood"). This
-> check uses the wake bit in the uart status register 2. The wake bit
-> indicates that the receiver detected a start bit. If the kernel sees a
-> number of rx interrupts without the wake bit being set, it treats this as
-> spurious data and resets the uart port. imx_serial does never set the
-> wake bit and triggers the kernel's flood check.
-> 
-> This patch adds support for the wake bit. wake is set when we receive a
-> new character (it's not set for break events). It seems that wake is
-> cleared by the kernel driver, the hardware does not have to clear it
-> automatically after data was read.
-> 
-> Signed-off-by: Martin Kaiser <martin@kaiser.cx>
-> ---
->   hw/char/imx_serial.c | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-> index ee1375e26d..44125d5f47 100644
-> --- a/hw/char/imx_serial.c
-> +++ b/hw/char/imx_serial.c
-> @@ -321,6 +321,9 @@ static void imx_put_data(void *opaque, uint32_t value)
->   
->   static void imx_receive(void *opaque, const uint8_t *buf, int size)
->   {
-> +    IMXSerialState *s = (IMXSerialState *)opaque;
-> +
-> +    s->usr2 |= USR2_WAKE;
->       imx_put_data(opaque, *buf);
->   }
->   
+This is a respin of Sergey's patch but
+- split in multiple patches
+- removing redundant comments
 
-Shouldn't we mask this bit for interruptions now?
+Sergey Kambalin (4):
+  hw/arm/raspi: Import Linux raspi definitions as
+    'raspberrypi-fw-defs.h'
+  hw/misc/bcm2835_property: Use 'raspberrypi-fw-defs.h' definitions
+  hw/misc/bcm2835_property: Replace magic frequency values by
+    definitions
+  hw/misc/bcm2835_property: Handle CORE_CLK_ID firmware property
 
--- >8 --
-diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
-index 91c9894ad5..b823f94519 100644
---- a/include/hw/char/imx_serial.h
-+++ b/include/hw/char/imx_serial.h
-@@ -71,6 +71,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
+ include/hw/arm/raspi_platform.h       |   6 +
+ include/hw/misc/raspberrypi-fw-defs.h | 163 ++++++++++++++++++++++++++
+ hw/misc/bcm2835_property.c            | 112 +++++++++---------
+ 3 files changed, 228 insertions(+), 53 deletions(-)
+ create mode 100644 include/hw/misc/raspberrypi-fw-defs.h
 
-  #define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt 
-enable */
-  #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
-+#define UCR4_WKEN       BIT(7)    /* WAKE interrupt enable */
+-- 
+2.38.1
 
-  #define UTS1_TXEMPTY    (1<<6)
-  #define UTS1_RXEMPTY    (1<<5)
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index ee1375e26d..c8ec247350 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -80,7 +80,7 @@ static void imx_update(IMXSerialState *s)
-       * TCEN and TXDC are both bit 3
-       * RDR and DREN are both bit 0
-       */
--    mask |= s->ucr4 & (UCR4_TCEN | UCR4_DREN);
-+    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN);
-
-      usr2 = s->usr2 & mask;
----

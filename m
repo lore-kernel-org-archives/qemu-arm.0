@@ -1,108 +1,100 @@
-Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp598232ejb;
-        Tue, 13 Jun 2023 08:06:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6j5xuHIoyECRwIxMLr0CWaCrsBqCo74wqtzNJYRqxr65pN/o5cSQEy9maac7AmGxtfO6pG
-X-Received: by 2002:a05:622a:1302:b0:3f9:ab64:8bc8 with SMTP id v2-20020a05622a130200b003f9ab648bc8mr17815739qtk.24.1686668797490;
-        Tue, 13 Jun 2023 08:06:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686668797; cv=none;
+Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp777982ejb;
+        Tue, 13 Jun 2023 13:24:07 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6/tyowlYi2dr4mX0KOssAFu8tI8AmznPQt6lTCG/w7fMEOfhjWV3ZEsTI5DeIA7/Ale+wv
+X-Received: by 2002:a05:620a:8c06:b0:75d:4f92:dd0e with SMTP id qz6-20020a05620a8c0600b0075d4f92dd0emr12197535qkn.20.1686687847484;
+        Tue, 13 Jun 2023 13:24:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686687847; cv=none;
         d=google.com; s=arc-20160816;
-        b=iwXkQI4fnLjqyKPaAyoCrl+0bBfyL1egEkiBj3UN1fGIjXfJFKd+nMl6txNLdObuIz
-         AHmZHGtzH42q5waAV7TnVSR/2w383lrUemKyFBCPys9ww/o1hSBiretxCilSjeu9mcou
-         9CtV5UTUwuD9PizKEIBVrwucQhFT8WIpQfWNYI3Cxxol7RdHyoJVjE2YKo+35NPAvGMn
-         Lw3iWrPbBChAEdoEsvdB/kCme0l6Ot88VI0nI9Y6+b9XaY56wBcvlFQgXNj3r6eJyzhT
-         S07geALwKCFcwywc9zWAetqu8jqV8iwIwI+80YSgdB6JpLUMVkrGcU9Lr5RfYYfQs0oG
-         V6Yg==
+        b=tHq3E6gLsrJapb4SUeV+xrDbNH2acrHAOJjboHd1fTyW0b5v1v8cCGymfnjX7KY2Ld
+         AgezVmoP/E4UzyMDziDxL5C5Ms7zBWYtg2NIh0lsBLXeVtzFLufBIYpmDC+R96yjBCvl
+         6Hpy7gdMVG0+AC7uYMJx7U0d6AfLpKcjkP5JzZZcfKpGxXjBDmN1QnD2HjVk8nbMXn4m
+         LVldEvyYa58st1u9rkqMN180hdurnvw2Ff90twCvWZ92oZJj1loDXFkJdwnr7xsk9Woe
+         ngi+dmgEYk72+oTTRpKOZ7TnY0pV1SPvXKwNcwp2WCxvDu7ErfTokt+erYIv9VUOWyHU
+         5Gvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Z2POMW3TMVP/4Qu6yG9T5YmMR7W9tPy57BNy9w0vSDA=;
-        b=M5VFECAkH9ZJKONgMGnEPngJfctkkcAhd3zf+eks+cyJd3lV2FDEtpe4hKjai0+LJG
-         2k0bhXJIhNS5UQ7CabdfmOEJ2icrJ4peOrh65JRuOc3ecKiJs6SBAHJparoDmiwCe3j0
-         gn4KiSLMG/H0rjltGXbdLz6YMWbHXY2ekRsLacP1mCA5sHVu5leDPW77VqFRnc6hm4XU
-         UOfnYOxeRsdGVlqpTkRgDCKl8zQfHz1Q2I9DuIyrb1PBPrve11QWzkvPqsZmxgbXb6v1
-         5yWqRpX7gcQVfB8qB7p1ODu240eMbrJ6GqWpzB4HVcHlbnQI7/c+q2tYVlrdO4sMPPMY
-         rL+g==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=3wnTEsZduFED1t29Ud0nFVF99SyZU8AnimO/gTyj8Ko=;
+        b=arW0PUkFi2JHS3Mydp980sy1EsEb9sOQyAkj9nReYJ94y1JW8WBSXg8PmpRVXdIv6W
+         K1y78vthASwqU52+pHbW+6ZC1eMUgP83/wDIif/TtGw1y+RE+7A/yxBETftTLoAf3yIi
+         7qlJY4XKtjBhQ07IwnOuO6U9Hg6wJ75Q4jx3/voDIsnacLe+oJF7emPIyPhB91J3UqGA
+         ldX024N/KxS4oXXnNWDhwkToGQ0rmHrfk6CeNiSa34B1GkHJEYRog98QUgl2mHkyM5A0
+         aNAz062jC4sIpsVLfwibMuqKDyuAKgGDxTuH5biB7qXIZpIUKr/XpXtXi4lSWj0ERYcK
+         HkKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GanX0qFo;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=RUG6FcCv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h16-20020ac85850000000b003f52faf7908si7610839qth.258.2023.06.13.08.06.37
+        by mx.google.com with ESMTPS id q12-20020ae9e40c000000b0075daf23cc6dsi4182591qkc.762.2023.06.13.13.24.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jun 2023 08:06:37 -0700 (PDT)
+        Tue, 13 Jun 2023 13:24:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GanX0qFo;
+       dkim=fail header.i=@mail.uni-paderborn.de header.s=20170601 header.b=RUG6FcCv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=uni-paderborn.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q95Z0-0005Sh-Ev; Tue, 13 Jun 2023 11:04:06 -0400
+	id 1q9AYB-0005IK-W0; Tue, 13 Jun 2023 16:23:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q95Y5-0003wn-5S
- for qemu-devel@nongnu.org; Tue, 13 Jun 2023 11:03:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1q9AY9-0005Hj-I7; Tue, 13 Jun 2023 16:23:33 -0400
+Received: from nylar.uni-paderborn.de ([2001:638:502:c003::18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1q95Xa-000057-Cf
- for qemu-devel@nongnu.org; Tue, 13 Jun 2023 11:02:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1686668557;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Z2POMW3TMVP/4Qu6yG9T5YmMR7W9tPy57BNy9w0vSDA=;
- b=GanX0qFoSM48Stg411gFt6pobEWQGMZSEFzbsaM8+0qK9WAgGWp7KZCbNBWWLCVjFW8SaM
- Lw3z85mdOYB9QJ4rRB5D4QK7kbalNWiK3krjYp9agaseKEcTPmcaZeDQEYgYmKXmASLU4K
- CMt5p475T9oBl97LK5lWAnSWOVL4uj4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-130-SpyaN_TvN6eBM_TmvdEteA-1; Tue, 13 Jun 2023 11:02:28 -0400
-X-MC-Unique: SpyaN_TvN6eBM_TmvdEteA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 41F06811E97;
- Tue, 13 Jun 2023 15:02:20 +0000 (UTC)
-Received: from t480s.fritz.box (unknown [10.39.192.249])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 96BE140C20F5;
- Tue, 13 Jun 2023 15:02:18 +0000 (UTC)
-From: David Hildenbrand <david@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Gavin Shan <gshan@redhat.com>
-Subject: [PATCH v1 4/5] pc: Support unplug of virtio-mem-pci devices
-Date: Tue, 13 Jun 2023 17:02:09 +0200
-Message-Id: <20230613150210.449406-5-david@redhat.com>
-In-Reply-To: <20230613150210.449406-1-david@redhat.com>
-References: <20230613150210.449406-1-david@redhat.com>
+ (Exim 4.90_1) (envelope-from <kbastian@mail.uni-paderborn.de>)
+ id 1q9AY7-0007I3-CZ; Tue, 13 Jun 2023 16:23:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mail.uni-paderborn.de; s=20170601; h=In-Reply-To:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=3wnTEsZduFED1t29Ud0nFVF99SyZU8AnimO/gTyj8Ko=; b=RUG6FcCvdaayJTOnKO2GtigIXv
+ I+HS6+lyhfqcK84jGwqTl0QQIANVQ9NQ4Oa+jKTcggyFP3P5FlzzrAvKnA9pLR0BNtnP5S/dhPNUE
+ VGqPU9qzUu2UjznaCvp80JFYJuDhzZOgvyNGcGAEAE8/dO4mO6vnGu0ZuYIFpWtfQe9E=;
+Date: Tue, 13 Jun 2023 22:23:12 +0200
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+ Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, 
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ qemu-ppc@nongnu.org
+Subject: Re: [PATCH v3 2/9] target/tricore: Remove pointless CONFIG_SOFTMMU
+ guard
+Message-ID: <chx4axanw4ddnwhdbdh2guy5jctcguyq6xbchtzipzeu5a7tiw@36j6zeemonis>
+References: <20230613133347.82210-1-philmd@linaro.org>
+ <20230613133347.82210-3-philmd@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+In-Reply-To: <20230613133347.82210-3-philmd@linaro.org>
+X-IMT-Source: Extern
+X-IMT-Spam-Score: 0.0 ()
+X-IMT-rspamd-score: 19
+X-IMT-rspamd-bar: +
+X-PMX-Version: 6.4.9.2830568, Antispam-Engine: 2.7.2.2107409,
+ Antispam-Data: 2023.6.13.201521, AntiVirus-Engine: 6.0.0,
+ AntiVirus-Data: 2023.6.13.600000
+X-Sophos-SenderHistory: ip=79.202.219.6, fs=532687, da=174296860, mc=53, sc=0,
+ hc=53, sp=0, fso=532687, re=0, sd=0, hd=0
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+Received-SPF: pass client-ip=2001:638:502:c003::18;
+ envelope-from=kbastian@mail.uni-paderborn.de; helo=nylar.uni-paderborn.de
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,82 +109,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 37Jj6JzNcW3B
+X-TUID: ORY4FDLGeDeo
 
-Let's support unplug of virtio-mem-pci devices by granting (forwarding)
-unplug requests if it's safe to unplug a virtio-mem device.
+On Tue, Jun 13, 2023 at 03:33:40PM +0200, Philippe Mathieu-Daudé wrote:
+> We don't build any user emulation target for Tricore,
+> only the system emulation. No need to check for it as
+> it is always defined.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/tricore/helper.c | 2 --
+>  1 file changed, 2 deletions(-)
 
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- hw/i386/pc.c | 48 +++++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 41 insertions(+), 7 deletions(-)
+Reviewed-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index fdd7062929..996757794e 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1549,13 +1549,6 @@ static void pc_virtio_md_pci_plug(HotplugHandler *hotplug_dev,
-     error_propagate(errp, local_err);
- }
- 
--static void pc_virtio_md_pci_unplug_request(HotplugHandler *hotplug_dev,
--                                            DeviceState *dev, Error **errp)
--{
--    /* We don't support hot unplug of virtio based memory devices */
--    error_setg(errp, "virtio based memory devices cannot be unplugged.");
--}
--
- static void pc_virtio_md_pci_unplug(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
- {
-@@ -1580,6 +1573,47 @@ static void pc_virtio_md_pci_unplug(HotplugHandler *hotplug_dev,
-     }
- }
- 
-+static void pc_virtio_md_pci_unplug_request(HotplugHandler *hotplug_dev,
-+                                            DeviceState *dev, Error **errp)
-+{
-+    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
-+    HotplugHandlerClass *hdc;
-+    Error *local_err = NULL;
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI)) {
-+        error_setg(errp, "virtio-pmem devices cannot be unplugged.");
-+        return;
-+    }
-+
-+    if (!hotplug_dev2) {
-+        error_setg(errp, "hotunplug of virtio based memory devices not"
-+                   "supported on this bus");
-+        return;
-+    }
-+
-+    /* Verify whether it is *currently* safe to unplug the virtio-mem device. */
-+    g_assert(object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI));
-+    virtio_mem_pci_unplug_request_check(VIRTIO_MEM_PCI(dev), &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    /*
-+     * Forward the async request or turn it into a sync request (handling it
-+     * like qdev_unplug()).
-+     */
-+    hdc = HOTPLUG_HANDLER_GET_CLASS(hotplug_dev2);
-+    if (hdc->unplug_request) {
-+        hotplug_handler_unplug_request(hotplug_dev2, dev, &local_err);
-+    } else {
-+        pc_virtio_md_pci_unplug(hotplug_dev, dev, &local_err);
-+        if (!local_err) {
-+            object_unparent(OBJECT(dev));
-+        }
-+    }
-+}
-+
- static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-                                           DeviceState *dev, Error **errp)
- {
--- 
-2.40.1
-
+Cheers,
+Bastian

@@ -1,109 +1,106 @@
-Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp168157ejb;
-        Mon, 12 Jun 2023 15:36:20 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5mNA65oCqcoOPuLu7wbTCTKMblupbrVftDgAhxaibdwL/x2qAsB/xudQa/wl4G5M5rQZvq
-X-Received: by 2002:a05:620a:688e:b0:75e:c36c:e3e8 with SMTP id rv14-20020a05620a688e00b0075ec36ce3e8mr12042585qkn.37.1686609380646;
-        Mon, 12 Jun 2023 15:36:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686609380; cv=none;
+Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp535624ejb;
+        Tue, 13 Jun 2023 06:35:24 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4Xi1OFNxiIHjkux03M0ItPqv5xIzB8LXE7PdGWXjt5f1BGzbD5OCBzLWxjQNpIgjDZtjXX
+X-Received: by 2002:ac8:5c04:0:b0:3f3:a0c0:cd6f with SMTP id i4-20020ac85c04000000b003f3a0c0cd6fmr17929536qti.9.1686663324146;
+        Tue, 13 Jun 2023 06:35:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686663324; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZSGWaBIW5g17QGNX2CDJbVD47/mNp8Rm/JdEL2BnfSURFnaRCsYR1qbu4tOxflyCqC
-         VHe9uLk7YJAfYbucS+rhZY4nfvlsLFll33YAozV4d+7jBCixrWYDcPen2rtZ+81ObpD1
-         +XMH+czB5366pRhItCwBEBZhyVXqFeTl0JVE+iPrNUQviEiZyUV2h78Ouy/BJXzcH3Yv
-         8s8rPk3GXn4gFn8ENoO2t/WwlLmZh6Ex6Bx3w0f59SXi3XBK7fcgprTPB1iqk1ny2egS
-         2wfRcwsQyyran+gXQ6Vp+lSusZ7kG8oIzb7Iiiy3M7cm5h8Pfmr/U960T8ht98KDU4PK
-         za7A==
+        b=tgBeFcEd//Ky8OKIXc9qZzO3HtR+OUuAPUBYsPYcpN43KbYrIvMFnonNdxdzwefr/q
+         i7IWh3onEeLnjch7TxaBx8vJaIK+w1kufHHJjpfe7Q41uljIf5y9uNGoBi4G9JvFwKHY
+         9dGQTYZea+m/uIccX6P76VGWEYR2LpYFDhhTTIf/lDDpAgUFRg2CKC3niFjAXxLxAWuH
+         yYX7njq6e342HG+TDGg3xm0fxCN31cL/rZIzFOY3nEDRNrOHVkUBh+tBK2LipY4APSAl
+         iFo61XMikUJXE8WYOEQblmnGKdhzckDEzFKwfOfCtV8DbspJwX9M/ue/2vxiEwIQ0gjq
+         XnRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=vgLyKz9BCFYWpYlkXL1B5ecjS40jUV0mgb/FFd9TOhc=;
-        b=rkpa5ItXYMx8ey1XElAy2G05JL86OZ6XiwsGIgitQrjb5P13zXA4UqOWhXiEww62NM
-         hWMNBaKzrd5t8emBRKBB/r9XTvnq3sc+Qr5aqn6mdoGdHZQSy67BqM0pKD1mx/hoqhQM
-         U71v+hm3yWIbUiQxI8Y7H+pNdxwmWTpGlDfPiwFw74idJU2E16Kc6VBD/H/RZ4ExwPmB
-         758LXDP3hya7/LzM6HikhdWe76ba9w5lVAJQj8JuZlu3a99X6u1/t5w6ByAfCFJBXoLe
-         lEhMcTi6SMCTlYCBsHXCoasUyb7S5zILAE1hUwyXRQD5HewIfq21cRbSiO2CxNhPB0c2
-         MkOQ==
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gBFSVqesPLYVNvOpKpmvg4XLW+9gcOy7P9MjR5bQqc0=;
+        b=p8hTr3/db3ktMx5JOiBRiJgB27iB5shywJyvtZbquu++SWRbRNP/e5UnP9r1zxlslc
+         wGxALQRBzhSHArx+YVD8Ry0uTaBH9und05eNv33pzPEaq+P/uUijz+dk3d/2+/oXvNKz
+         /S0kR7znfeMvKuL7GeqLnSqY3H1t5xEIOUa30mQbry6+ppPC+81pKmC9ULR5dhb9Vggd
+         zfoXaRbvGUcWIaFoWugUcZjfC02fYPRKmpulSwFLAZAzTSjnhssllyq6TNMb9zFKTRZp
+         8FKDG1h3jzhHiiOKh8FivCAXN60p4bageQ/T7Fa+7hdp92x18xGTTR8S/cX32sEaPLfz
+         ktKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M1a8xQiL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eBMpvCWD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12-20020a05620a164c00b0074fc77150ffsi6474554qko.200.2023.06.12.15.36.20
+        by mx.google.com with ESMTPS id c22-20020ac87d96000000b003f20d11ef10si7567327qtd.82.2023.06.13.06.35.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Jun 2023 15:36:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Jun 2023 06:35:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M1a8xQiL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eBMpvCWD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1q8q84-0001cn-M1; Mon, 12 Jun 2023 18:35:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1q94AF-0006G4-JF; Tue, 13 Jun 2023 09:34:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8q80-0001c7-M2
- for qemu-devel@nongnu.org; Mon, 12 Jun 2023 18:35:15 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q94AD-0006EJ-Qu
+ for qemu-arm@nongnu.org; Tue, 13 Jun 2023 09:34:25 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8q7y-0007pQ-BM
- for qemu-devel@nongnu.org; Mon, 12 Jun 2023 18:35:12 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-4f642a24568so5829930e87.2
- for <qemu-devel@nongnu.org>; Mon, 12 Jun 2023 15:35:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q94A1-00021K-1s
+ for qemu-arm@nongnu.org; Tue, 13 Jun 2023 09:34:16 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-5187aa18410so463926a12.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Jun 2023 06:34:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686609307; x=1689201307;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vgLyKz9BCFYWpYlkXL1B5ecjS40jUV0mgb/FFd9TOhc=;
- b=M1a8xQiLJv+kZDdxHPXbuVRgKVgjyyOjbcQ/YYf9ZzPc1k99S20jOSmA5lM5eQtGip
- 0KCOdMPz6jTr4VtDMuM46WgycQCETfNam0uBn4x1ChTEkY6dTZpl7CeVADlfn4uPMibk
- gQ/l9irRyjpV5Y6GmANQ7XILPIPvsSD7SFICejDSR8PzM+b5b8oo6sy5sUMkgmt4BjNW
- wrrOX9KTU/UyeN7XIvyFjXftbuncQWSiEsBVUiHl0XNi+0L2ykW8lxnoXHlKtHR8VU4o
- Xys0eiZO+BeCFhW19KXkmOfYNhg2u8dHVkhVbz3s+qT0YCgYQTtxe7Wa9RyDZ3v10zfK
- hZqg==
+ d=linaro.org; s=google; t=1686663251; x=1689255251;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gBFSVqesPLYVNvOpKpmvg4XLW+9gcOy7P9MjR5bQqc0=;
+ b=eBMpvCWDRgAGb497ldgG467Ib67WHof5rqsmbhIbDLRcBMQE4SdLHgNOWTEB4f7M7D
+ fYFoRAVipghhQYnXwzkgLc+pPD9p+3rJLQcfy9qT83OdTdnbXm1cXZk1Rwo9d9yXt44Y
+ 0OCHWoIe21LiOJielueRrko0zVuNRQqm7yXlNGRr7ubtVwocJABygl0K+oZcRImsnpgg
+ fB23W2EpL79f1wO4kD+sc+pUKwqRO+oWUdNWGCWPVCnSlnOMZArgDaZfzoL0rzXgBIbq
+ kYSC+/QKbstZ9h9FW8gcNMr5BUALQtSitWWtbR9rA8O3kK6E8CXyPXNqrLq4vjC2Xe/y
+ RolQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686609307; x=1689201307;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vgLyKz9BCFYWpYlkXL1B5ecjS40jUV0mgb/FFd9TOhc=;
- b=g9Qc4DcRf6Q2edohPzhXGRABPpH12frDEZUikx2HLP1shO9Nv+GK++lug0lVJrgJBP
- 7FUxpVL+XF8+7623vJucRC1BU2tiv5S/6ZgcxvDxJIGvNuWfeEoDo39m41JY5ea3wwY9
- 0QWqtyUZ3lMGab9LiPN3XVl+shVLllgqVvdtvbfCahOTmRimE9pwM52/1ZA9o6Rm0amq
- +oLQb3uEGWeMn+Q1QmYDxcnNeiFxTg6sjwbZj414r8jtOqHlNmwMIpdrKt0KT1EKBlaB
- mW92okLZ0kSXEPyPmb/6K4A5VwdeWz9KhWMF/szSfMasDjgooOq2koMOiy7B5huQ5j2e
- lHCQ==
-X-Gm-Message-State: AC+VfDxUlFhI+beRlo7gZG/H4UL0fkMl0Ev6xcAKc+/1DKDd10XOG/Mh
- Nn5GEB9iyRuGv21doboUaTvyOTn4OwirtE3Czi0S7w==
-X-Received: by 2002:ac2:4db4:0:b0:4f3:789c:8bcf with SMTP id
- h20-20020ac24db4000000b004f3789c8bcfmr4687321lfe.4.1686609307402; 
- Mon, 12 Jun 2023 15:35:07 -0700 (PDT)
-Received: from localhost.localdomain ([185.140.244.249])
+ d=1e100.net; s=20221208; t=1686663251; x=1689255251;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gBFSVqesPLYVNvOpKpmvg4XLW+9gcOy7P9MjR5bQqc0=;
+ b=TUhx4RO/yAmjQASR1wWytXZ3q+VdfguBQ/cXAzUNbaIFtYkuG2nlMfOgFjeqc8HITz
+ poMAfGslV7aHV3qHlxgXLNktfCUInbh7sKTazNWOvQ/sRtlVxCfNgDKXIZvXQ8Mn6UPa
+ yE2MGHETIRCkb7KSv/+pUIuwqYWPwq0D8iN9v60Fe1+YmSD+yB+Eg5LJHZc2FLdrsaUe
+ GuC0ettnTrkcJ3UZS4pOk+W8ep2WqvzHX5/zjWa/pZ0OxGrIdT+AulGU6m2pdsYSU81y
+ u1PbOkDxqmHPvS2cScAYBFhUWbNHUElV8e9kLbiI91kOXI3pEJLBehGhQGZH/TbzTFHq
+ DSmw==
+X-Gm-Message-State: AC+VfDyFxdn39iepdiIbIHgdUM+ema+DnvSN3zM2CPyo+2oiCsgwNuY6
+ jKJ1meuMwqDzttHfiKdD1CpQzA==
+X-Received: by 2002:a17:907:948e:b0:982:416f:1963 with SMTP id
+ dm14-20020a170907948e00b00982416f1963mr1063297ejc.39.1686663251226; 
+ Tue, 13 Jun 2023 06:34:11 -0700 (PDT)
+Received: from localhost.localdomain ([213.235.133.109])
  by smtp.gmail.com with ESMTPSA id
- q24-20020aa7d458000000b00518286f5837sm3476840edr.58.2023.06.12.15.35.06
+ p10-20020a17090635ca00b00961277a426dsm6608330ejb.205.2023.06.13.06.34.01
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 12 Jun 2023 15:35:07 -0700 (PDT)
+ Tue, 13 Jun 2023 06:34:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Sergey Kambalin <sergey.kambalin@auriga.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 2/4] hw/misc/bcm2835_property: Use 'raspberrypi-fw-defs.h'
- definitions
-Date: Tue, 13 Jun 2023 00:34:54 +0200
-Message-Id: <20230612223456.33824-3-philmd@linaro.org>
+Cc: qemu-block@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 0/9] bulk: Replace CONFIG_SOFTMMU by
+ !CONFIG_USER_ONLY/CONFIG_SYSTEM_ONLY
+Date: Tue, 13 Jun 2023 15:33:38 +0200
+Message-Id: <20230613133347.82210-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230612223456.33824-1-philmd@linaro.org>
-References: <20230612223456.33824-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x134.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,323 +109,171 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8zHYD6AbPFU6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eqh1W7C1gc2S
 
-From: Sergey Kambalin <sergey.kambalin@auriga.com>
+Missing review: 1, 7, 8
 
-Replace magic property values by a proper definition,
-removing redundant comments.
+Since v2:
+- Rebased
+- Added R-b tags
+- Rework i386_tr_init_disas_context() patch (Richard)
+- Dropped RFC prefix
 
-Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
-Message-Id: <20230531155258.8361-1-sergey.kambalin@auriga.com>
-[PMD: Split from bigger patch: 2/4]
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/misc/bcm2835_property.c | 101 +++++++++++++++++++------------------
- 1 file changed, 51 insertions(+), 50 deletions(-)
+This series aims to clarify the CONFIG_[USER|SYSTEM] vs CONFIG_SOFTMMU
+confusion [*] by using explicit definitions, removing mentions of
+CONFIG_SOFTMMU in non-TCG code.
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 251b3d865d..7d398a6f75 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -12,6 +12,7 @@
- #include "migration/vmstate.h"
- #include "hw/irq.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
-+#include "hw/misc/raspberrypi-fw-defs.h"
- #include "sysemu/dma.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-@@ -51,48 +52,48 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         /* @(value + 8) : Request/response indicator */
-         resplen = 0;
-         switch (tag) {
--        case 0x00000000: /* End tag */
-+        case RPI_FWREQ_PROPERTY_END:
-             break;
--        case 0x00000001: /* Get firmware revision */
-+        case RPI_FWREQ_GET_FIRMWARE_REVISION:
-             stl_le_phys(&s->dma_as, value + 12, 346337);
-             resplen = 4;
-             break;
--        case 0x00010001: /* Get board model */
-+        case RPI_FWREQ_GET_BOARD_MODEL:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x get board model NYI\n",
-                           tag);
-             resplen = 4;
-             break;
--        case 0x00010002: /* Get board revision */
-+        case RPI_FWREQ_GET_BOARD_REVISION:
-             stl_le_phys(&s->dma_as, value + 12, s->board_rev);
-             resplen = 4;
-             break;
--        case 0x00010003: /* Get board MAC address */
-+        case RPI_FWREQ_GET_BOARD_MAC_ADDRESS:
-             resplen = sizeof(s->macaddr.a);
-             dma_memory_write(&s->dma_as, value + 12, s->macaddr.a, resplen,
-                              MEMTXATTRS_UNSPECIFIED);
-             break;
--        case 0x00010004: /* Get board serial */
-+        case RPI_FWREQ_GET_BOARD_SERIAL:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x get board serial NYI\n",
-                           tag);
-             resplen = 8;
-             break;
--        case 0x00010005: /* Get ARM memory */
-+        case RPI_FWREQ_GET_ARM_MEMORY:
-             /* base */
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             /* size */
-             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_base);
-             resplen = 8;
-             break;
--        case 0x00010006: /* Get VC memory */
-+        case RPI_FWREQ_GET_VC_MEMORY:
-             /* base */
-             stl_le_phys(&s->dma_as, value + 12, s->fbdev->vcram_base);
-             /* size */
-             stl_le_phys(&s->dma_as, value + 16, s->fbdev->vcram_size);
-             resplen = 8;
-             break;
--        case 0x00028001: /* Set power state */
-+        case RPI_FWREQ_SET_POWER_STATE:
-             /* Assume that whatever device they asked for exists,
-              * and we'll just claim we set it to the desired state
-              */
-@@ -103,26 +104,26 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
- 
-         /* Clocks */
- 
--        case 0x00030001: /* Get clock state */
-+        case RPI_FWREQ_GET_CLOCK_STATE:
-             stl_le_phys(&s->dma_as, value + 16, 0x1);
-             resplen = 8;
-             break;
- 
--        case 0x00038001: /* Set clock state */
-+        case RPI_FWREQ_SET_CLOCK_STATE:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x set clock state NYI\n",
-                           tag);
-             resplen = 8;
-             break;
- 
--        case 0x00030002: /* Get clock rate */
--        case 0x00030004: /* Get max clock rate */
--        case 0x00030007: /* Get min clock rate */
-+        case RPI_FWREQ_GET_CLOCK_RATE:
-+        case RPI_FWREQ_GET_MAX_CLOCK_RATE:
-+        case RPI_FWREQ_GET_MIN_CLOCK_RATE:
-             switch (ldl_le_phys(&s->dma_as, value + 12)) {
--            case 1: /* EMMC */
-+            case RPI_FIRMWARE_EMMC_CLK_ID:
-                 stl_le_phys(&s->dma_as, value + 16, 50000000);
-                 break;
--            case 2: /* UART */
-+            case RPI_FIRMWARE_UART_CLK_ID:
-                 stl_le_phys(&s->dma_as, value + 16, 3000000);
-                 break;
-             default:
-@@ -132,9 +133,9 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 8;
-             break;
- 
--        case 0x00038002: /* Set clock rate */
--        case 0x00038004: /* Set max clock rate */
--        case 0x00038007: /* Set min clock rate */
-+        case RPI_FWREQ_SET_CLOCK_RATE:
-+        case RPI_FWREQ_SET_MAX_CLOCK_RATE:
-+        case RPI_FWREQ_SET_MIN_CLOCK_RATE:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: 0x%08x set clock rate NYI\n",
-                           tag);
-@@ -143,121 +144,121 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
- 
-         /* Temperature */
- 
--        case 0x00030006: /* Get temperature */
-+        case RPI_FWREQ_GET_TEMPERATURE:
-             stl_le_phys(&s->dma_as, value + 16, 25000);
-             resplen = 8;
-             break;
- 
--        case 0x0003000A: /* Get max temperature */
-+        case RPI_FWREQ_GET_MAX_TEMPERATURE:
-             stl_le_phys(&s->dma_as, value + 16, 99000);
-             resplen = 8;
-             break;
- 
-         /* Frame buffer */
- 
--        case 0x00040001: /* Allocate buffer */
-+        case RPI_FWREQ_FRAMEBUFFER_ALLOCATE:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.base);
-             stl_le_phys(&s->dma_as, value + 16,
-                         bcm2835_fb_get_size(&fbconfig));
-             resplen = 8;
-             break;
--        case 0x00048001: /* Release buffer */
-+        case RPI_FWREQ_FRAMEBUFFER_RELEASE:
-             resplen = 0;
-             break;
--        case 0x00040002: /* Blank screen */
-+        case RPI_FWREQ_FRAMEBUFFER_BLANK:
-             resplen = 4;
-             break;
--        case 0x00044003: /* Test physical display width/height */
--        case 0x00044004: /* Test virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_PHYSICAL_WIDTH_HEIGHT:
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_WIDTH_HEIGHT:
-             resplen = 8;
-             break;
--        case 0x00048003: /* Set physical display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PHYSICAL_WIDTH_HEIGHT:
-             fbconfig.xres = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yres = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040003: /* Get physical display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PHYSICAL_WIDTH_HEIGHT:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres);
-             resplen = 8;
-             break;
--        case 0x00048004: /* Set virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_WIDTH_HEIGHT:
-             fbconfig.xres_virtual = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yres_virtual = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040004: /* Get virtual display width/height */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_WIDTH_HEIGHT:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xres_virtual);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yres_virtual);
-             resplen = 8;
-             break;
--        case 0x00044005: /* Test depth */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_DEPTH:
-             resplen = 4;
-             break;
--        case 0x00048005: /* Set depth */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_DEPTH:
-             fbconfig.bpp = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040005: /* Get depth */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_DEPTH:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.bpp);
-             resplen = 4;
-             break;
--        case 0x00044006: /* Test pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_PIXEL_ORDER:
-             resplen = 4;
-             break;
--        case 0x00048006: /* Set pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PIXEL_ORDER:
-             fbconfig.pixo = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040006: /* Get pixel order */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PIXEL_ORDER:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.pixo);
-             resplen = 4;
-             break;
--        case 0x00044007: /* Test pixel alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_ALPHA_MODE:
-             resplen = 4;
-             break;
--        case 0x00048007: /* Set alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_ALPHA_MODE:
-             fbconfig.alpha = ldl_le_phys(&s->dma_as, value + 12);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040007: /* Get alpha */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_ALPHA_MODE:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.alpha);
-             resplen = 4;
-             break;
--        case 0x00040008: /* Get pitch */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_PITCH:
-             stl_le_phys(&s->dma_as, value + 12,
-                         bcm2835_fb_get_pitch(&fbconfig));
-             resplen = 4;
-             break;
--        case 0x00044009: /* Test virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_VIRTUAL_OFFSET:
-             resplen = 8;
-             break;
--        case 0x00048009: /* Set virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_VIRTUAL_OFFSET:
-             fbconfig.xoffset = ldl_le_phys(&s->dma_as, value + 12);
-             fbconfig.yoffset = ldl_le_phys(&s->dma_as, value + 16);
-             bcm2835_fb_validate_config(&fbconfig);
-             fbconfig_updated = true;
-             /* fall through */
--        case 0x00040009: /* Get virtual offset */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_VIRTUAL_OFFSET:
-             stl_le_phys(&s->dma_as, value + 12, fbconfig.xoffset);
-             stl_le_phys(&s->dma_as, value + 16, fbconfig.yoffset);
-             resplen = 8;
-             break;
--        case 0x0004000a: /* Get/Test/Set overscan */
--        case 0x0004400a:
--        case 0x0004800a:
-+        case RPI_FWREQ_FRAMEBUFFER_GET_OVERSCAN:
-+        case RPI_FWREQ_FRAMEBUFFER_TEST_OVERSCAN:
-+        case RPI_FWREQ_FRAMEBUFFER_SET_OVERSCAN:
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             stl_le_phys(&s->dma_as, value + 16, 0);
-             stl_le_phys(&s->dma_as, value + 20, 0);
-             stl_le_phys(&s->dma_as, value + 24, 0);
-             resplen = 16;
-             break;
--        case 0x0004800b: /* Set palette */
-+        case RPI_FWREQ_FRAMEBUFFER_SET_PALETTE:
-             offset = ldl_le_phys(&s->dma_as, value + 12);
-             length = ldl_le_phys(&s->dma_as, value + 16);
-             n = 0;
-@@ -270,18 +271,18 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             stl_le_phys(&s->dma_as, value + 12, 0);
-             resplen = 4;
-             break;
--        case 0x00040013: /* Get number of displays */
-+        case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
-             break;
- 
--        case 0x00060001: /* Get DMA channels */
-+        case RPI_FWREQ_GET_DMA_CHANNELS:
-             /* channels 2-5 */
-             stl_le_phys(&s->dma_as, value + 12, 0x003C);
-             resplen = 4;
-             break;
- 
--        case 0x00050001: /* Get command line */
-+        case RPI_FWREQ_GET_COMMAND_LINE:
-             /*
-              * We follow the firmware behaviour: no NUL terminator is
-              * written to the buffer, and if the buffer is too short
+We replace CONFIG_SOFTMMU by !CONFIG_USER_ONLY in C code and
+by CONFIG_SYSTEM_ONLY in meson config files.
+
+[*] Richard clarified my confusion with CONFIG_SOFTMMU on v1:
+https://lore.kernel.org/qemu-devel/7913570a-8bf6-2ac9-6869-fab87273742c@linaro.org/
+
+Philippe Mathieu-Daudé (9):
+  target/i386: Simplify i386_tr_init_disas_context()
+  target/tricore: Remove pointless CONFIG_SOFTMMU guard
+  target/m68k: Check for USER_ONLY definition instead of SOFTMMU one
+  target/ppc: Check for USER_ONLY definition instead of SOFTMMU one
+  hw/core/cpu: Check for USER_ONLY definition instead of SOFTMMU one
+  accel/tcg: Check for USER_ONLY definition instead of SOFTMMU one
+  meson: Alias CONFIG_SOFTMMU -> CONFIG_SYSTEM_ONLY
+  meson: Replace CONFIG_SOFTMMU -> CONFIG_SYSTEM_ONLY
+  meson: Replace softmmu_ss -> system_ss
+
+ docs/devel/build-system.rst        |  14 +--
+ meson.build                        |  15 +--
+ accel/tcg/internal.h               |   6 +-
+ include/hw/core/cpu.h              |   4 +-
+ include/hw/core/tcg-cpu-ops.h      | 102 ++++++++++----------
+ target/m68k/helper.h               |   2 +-
+ accel/tcg/cpu-exec.c               |   4 +-
+ target/i386/tcg/translate.c        |   3 -
+ target/m68k/cpu.c                  |  14 ++-
+ target/m68k/helper.c               |   4 +-
+ target/m68k/translate.c            |  28 +++---
+ target/ppc/cpu_init.c              |  20 ++--
+ target/ppc/helper_regs.c           |   6 +-
+ target/tricore/helper.c            |   2 -
+ accel/meson.build                  |   4 +-
+ accel/qtest/meson.build            |   2 +-
+ accel/stubs/meson.build            |   2 +-
+ accel/tcg/meson.build              |   6 +-
+ audio/meson.build                  |   8 +-
+ backends/meson.build               |  20 ++--
+ backends/tpm/meson.build           |   8 +-
+ block/meson.build                  |   6 +-
+ block/monitor/meson.build          |   2 +-
+ chardev/meson.build                |   2 +-
+ disas/meson.build                  |   2 +-
+ dump/meson.build                   |   4 +-
+ ebpf/meson.build                   |   2 +-
+ fsdev/meson.build                  |   4 +-
+ gdbstub/meson.build                |  10 +-
+ hw/9pfs/meson.build                |   2 +-
+ hw/acpi/meson.build                |  10 +-
+ hw/adc/meson.build                 |  10 +-
+ hw/arm/meson.build                 |   8 +-
+ hw/audio/meson.build               |  28 +++---
+ hw/block/meson.build               |  28 +++---
+ hw/char/meson.build                |  70 +++++++-------
+ hw/core/meson.build                |  22 ++---
+ hw/cpu/meson.build                 |   6 +-
+ hw/cxl/meson.build                 |   4 +-
+ hw/display/meson.build             |  76 +++++++--------
+ hw/dma/meson.build                 |  32 +++----
+ hw/gpio/meson.build                |  26 ++---
+ hw/i2c/meson.build                 |   2 +-
+ hw/i386/kvm/meson.build            |   2 +-
+ hw/ide/meson.build                 |  28 +++---
+ hw/input/meson.build               |  32 +++----
+ hw/intc/meson.build                |  44 ++++-----
+ hw/ipack/meson.build               |   2 +-
+ hw/ipmi/meson.build                |   2 +-
+ hw/isa/meson.build                 |  18 ++--
+ hw/mem/meson.build                 |   8 +-
+ hw/misc/macio/meson.build          |   2 +-
+ hw/misc/meson.build                | 148 ++++++++++++++---------------
+ hw/net/can/meson.build             |  16 ++--
+ hw/net/meson.build                 |  96 +++++++++----------
+ hw/nubus/meson.build               |   2 +-
+ hw/nvme/meson.build                |   2 +-
+ hw/nvram/meson.build               |  26 ++---
+ hw/pci-bridge/meson.build          |   4 +-
+ hw/pci-host/meson.build            |   2 +-
+ hw/pci/meson.build                 |   8 +-
+ hw/pcmcia/meson.build              |   4 +-
+ hw/rdma/meson.build                |   2 +-
+ hw/remote/meson.build              |   2 +-
+ hw/rtc/meson.build                 |  28 +++---
+ hw/scsi/meson.build                |   2 +-
+ hw/sd/meson.build                  |  24 ++---
+ hw/sensor/meson.build              |  18 ++--
+ hw/smbios/meson.build              |   6 +-
+ hw/ssi/meson.build                 |  26 ++---
+ hw/timer/meson.build               |  74 +++++++--------
+ hw/tpm/meson.build                 |  14 +--
+ hw/usb/meson.build                 |  74 +++++++--------
+ hw/virtio/meson.build              |  12 +--
+ hw/watchdog/meson.build            |  18 ++--
+ hw/xen/meson.build                 |   4 +-
+ migration/meson.build              |  12 +--
+ monitor/meson.build                |   6 +-
+ net/can/meson.build                |   2 +-
+ net/meson.build                    |  38 ++++----
+ qapi/meson.build                   |   2 +-
+ qom/meson.build                    |   2 +-
+ replay/meson.build                 |   2 +-
+ semihosting/meson.build            |   2 +-
+ softmmu/meson.build                |  12 +--
+ stats/meson.build                  |   2 +-
+ target/alpha/meson.build           |   6 +-
+ target/arm/hvf/meson.build         |   2 +-
+ target/arm/meson.build             |   6 +-
+ target/arm/tcg/meson.build         |   2 +-
+ target/avr/meson.build             |   6 +-
+ target/cris/meson.build            |   6 +-
+ target/hppa/meson.build            |   6 +-
+ target/i386/hax/meson.build        |   6 +-
+ target/i386/hvf/meson.build        |   2 +-
+ target/i386/kvm/meson.build        |   4 +-
+ target/i386/meson.build            |   8 +-
+ target/i386/nvmm/meson.build       |   4 +-
+ target/i386/tcg/sysemu/meson.build |   2 +-
+ target/i386/whpx/meson.build       |   2 +-
+ target/loongarch/meson.build       |   6 +-
+ target/m68k/meson.build            |   6 +-
+ target/microblaze/meson.build      |   6 +-
+ target/mips/meson.build            |   4 +-
+ target/mips/sysemu/meson.build     |   2 +-
+ target/mips/tcg/sysemu/meson.build |   2 +-
+ target/nios2/meson.build           |   6 +-
+ target/openrisc/meson.build        |   6 +-
+ target/ppc/meson.build             |  10 +-
+ target/riscv/meson.build           |   6 +-
+ target/s390x/kvm/meson.build       |   2 +-
+ target/s390x/meson.build           |   6 +-
+ target/sh4/meson.build             |   6 +-
+ target/sparc/meson.build           |   6 +-
+ target/tricore/meson.build         |   4 +-
+ target/xtensa/meson.build          |   6 +-
+ tcg/meson.build                    |   2 +-
+ trace/meson.build                  |   2 +-
+ ui/meson.build                     |  30 +++---
+ 119 files changed, 816 insertions(+), 824 deletions(-)
+
 -- 
 2.38.1
 

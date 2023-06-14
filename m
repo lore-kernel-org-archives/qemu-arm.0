@@ -1,289 +1,121 @@
-Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp738772ejb;
-        Tue, 13 Jun 2023 12:01:51 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7b58jW7TE+UX11G8XQS4sjS7bxW8mFxm9e6PMRn1iJYeu0V/NH1Bml4inIee8ow2mHGTTm
-X-Received: by 2002:a05:6870:730:b0:1a6:8fa1:10b3 with SMTP id ea48-20020a056870073000b001a68fa110b3mr4484812oab.6.1686682911657;
-        Tue, 13 Jun 2023 12:01:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686682911; cv=none;
+Received: by 2002:a17:906:ae84:b0:982:368b:d395 with SMTP id md4csp950165ejb;
+        Tue, 13 Jun 2023 20:40:38 -0700 (PDT)
+X-Received: by 2002:adf:f082:0:b0:30a:eac6:9d29 with SMTP id n2-20020adff082000000b0030aeac69d29mr7974522wro.49.1686714038594;
+        Tue, 13 Jun 2023 20:40:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686714038; cv=none;
         d=google.com; s=arc-20160816;
-        b=AKF7574VsJvC7pb4SYlHcY27As91pEvPFvv6xZeoQ30aTJsuPyn444ZMICAUtgr4CE
-         SMo09vlsLlYjMMmmss86pRIgR0V2yy9TQuDgeXLqnlQwbHidp+lkoAkZXVFR6ZYH9m5o
-         qRxRrNuYXjJVLXwJVuXxJAa9SgkhsKDjFH3zNmzdq8w9kLN5NBj/w5ChzzTUsP/50sZs
-         O3smdS0XRJnP5uaXpEqFwTpytcy1GSH64e/h5Gx/QSa2xMVzjQYlNoCUMbBvVvRLaUh8
-         HOFBzpVdpXFIwVpMPyNg3Pvc19nepqh2vaHtfAZNueZQIbS8DWgqim8kaF+p53n6+HE7
-         JoCA==
+        b=cFHx/XBdBXnnvftdasD7IOURQJcZyVugVk9+BuIZ3QG/AuRgVLqqJFufI2yBb7pbmV
+         FEFhUSEnNKJp5Ih4mHX+I/CpUytmIX6jUfgxBsFpw3B2ENJwbJnjvSotcU3V9Iyycl9H
+         ucZm4GZgwPwFzDLd4E7BcFg8QAVMKFZgsbqPh0lPF+Fn3dBC8lvwIdfYTEJAMge8xAfa
+         dYLQyYo8qIdYgamuyj8eP+XhVefRQpXDS3elyIScaUDGf0q7ogeAbPzduHfOMXmr2qf1
+         5xXO6EklwmGU8nDnz79R+mOJq1X6AX7+uanNLDEiXQ6LvN2+A7RoM9bVHPtR3KA46NZ7
+         rxFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=ahCF7mmrjpRI8fjUwKbquVRl4NTSzXbEEu0CAi3Icas=;
-        b=YuqAw67aueK1cUA7uqrZ2Aio88sWD562NfJrLarkoj3toPOQXSD53L6p1xQeRLhHa2
-         /WPVV/pzeHY92SdrWWctNbjK95Dk9kntS3jGQHPzp1BMkjRHwrHUyfHETvDArenU9Kjc
-         FH1Ooir7V1vAc8anyTu/OttIligMEOS3qZ9OvLLFalktW3aJqnAst9DGJ3lLDB+HFn86
-         y4IHx4v5z8zXJywWubR/uFvVj+bUpDUs6wKQoreQ73For9SJPzekG4liOTO/7AY0JIrh
-         ZA7P8SAutW6auutpozYMy3EaD1eTVHH+kXGBrteGkzb089MoLUE3fb/Pnv1cj2xQfWZw
-         s0lg==
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=L6K/NmwQs8K/GbD67mVMV6a2RgYlMcLBnHP5k6Y04s4=;
+        b=O6rNj9RPbfR4gdnLmqZCMsGVSUiif4IZUMV1ZIR4sw8UQQlMKh8BqBwtU0py/tTs4G
+         4oT7XVCXr4XRt/pff6b8sthEierYwstILn4YrdvKOHQrOShCSA+yhJp+tAqaVgMglMp7
+         4YdW9I/kH/9DKQXeUt98zmORblArgwlvkln5gMahdvQ25SW2KPUJFbyp+stsptDzsVzO
+         tMegEH/uiYoSP7N91gOhc1bEH73U5WyX8NjOvY6U4mW1du4BuR+IdTSN7r9UHD2i/tVl
+         rRTUqkEpVzNiMQ9dYVpwbIQULyquxbZEDuV5wUJK68Tta1L2dehCF3/Rs+MmO5vjcAUO
+         1YMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6-20020a05620a118600b0075f0540ce56si5598822qkk.386.2023.06.13.12.01.51
+       dkim=pass header.i=@linaro.org header.s=google header.b=iorcpyY9;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l21-20020a7bc455000000b003f7e65f7aecsor491805wmi.6.2023.06.13.20.40.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Jun 2023 12:01:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 13 Jun 2023 20:40:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q99GR-0007x9-Do; Tue, 13 Jun 2023 15:01:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q99GQ-0007w8-A9; Tue, 13 Jun 2023 15:01:10 -0400
-Received: from hq-ms.auriga.com ([82.97.202.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sergey.kambalin@auriga.com>)
- id 1q99GM-0006HR-By; Tue, 13 Jun 2023 15:01:09 -0400
-Received: from HQ-MS1.office.auriga.msk (82.97.202.32) by
- hq-ms1.office.auriga.msk (82.97.202.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Tue, 13 Jun 2023 22:00:57 +0300
-Received: from HQ-MS1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f]) by
- hq-ms1.office.auriga.msk ([fe80::e2f8:5f63:adc1:868f%8]) with mapi id
- 15.02.1258.012; Tue, 13 Jun 2023 22:00:57 +0300
-From: "Kambalin, Sergey" <sergey.kambalin@auriga.com>
-To: =?gb2312?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkqKY=?= <philmd@linaro.org>, "Sergey
- Kambalin" <serg.oker@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2] Use named constants in BCM props
-Thread-Topic: [PATCH v2] Use named constants in BCM props
-Thread-Index: AQHZnSVtuceQCRhQG0GzQIhzANeD2K+HjoKAgAGC8e4=
-Date: Tue, 13 Jun 2023 19:00:57 +0000
-Message-ID: <60638efd8f464e66afc5e2a106f09d5f@auriga.com>
-References: <5b407848-2a4c-6447-6726-cf85f278f3e7@linaro.org>
- <20230612115950.5002-1-sergey.kambalin@auriga.com>,
- <6fe833be-d884-663d-a58e-d3716e52e3d9@linaro.org>
-In-Reply-To: <6fe833be-d884-663d-a58e-d3716e52e3d9@linaro.org>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [90.131.37.98]
-x-tm-as-product-ver: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-as-result: No-10--18.360800-8.000000
-x-tmase-matchedrid: FWxETXsSM3yJVA+ukO+5MWg4D2QV/2zL6r3HCixfuKcc4ri4RJV/1d/O
- 0TkwpBlDW5prtLhe9fW2kdECpOqtDcgM2GUFlvvaAjqAxuWkdTGOVGny5q72hpbI+L60qto8csx
- FLHbqBOKueOHAsvFJr1fQosWj+mfx+niVaMBfU7P/McoAQhls9ByVg41UOfy6DpnuR5eZKJYdjB
- 1KZ6xMAIj01BdLzHaRp0zWEHov9BuYdDw4MLzGtmQFd4bOnrT6Yb/nLV/lbk9UjspoiX02F44FX
- KY0aP1xdEFcfN2dct7j9ZxpJJDibYgrKnsJ1GRgzYK5U+QI3O7BOVz0Jwcxl6vCrG0TnfVUg9xe
- 4gtUJtpPfFsDwKf5665pphoUR1Toa2mlFaJP/q4IoUOTWQl7Et4Z4Nykx3k2NWO9z3c712SkLR5
- cMEnz0dY8qTWNMLWmFVZ/qX6HeZqPaFHMfVTC4FSeX1pUaPNfAX9GIncKpj2DcQaLKMLN/Ydm7I
- Pxq/o0Bqf2t8ki2oqbESrt9trA9C+rMhAlqq34
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--18.360800-8.000000
-x-tmase-version: SMEX-14.0.0.1158-9.0.1002-27556.003
-x-tm-snts-smtp: BBE18B43475DF6BC277C72E2A1E92ACA3D6DABE300A6C01FF418B9CE24FB24A42000:8
-Content-Type: multipart/alternative;
- boundary="_000_60638efd8f464e66afc5e2a106f09d5faurigacom_"
+       dkim=pass header.i=@linaro.org header.s=google header.b=iorcpyY9;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1686714038; x=1689306038;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=L6K/NmwQs8K/GbD67mVMV6a2RgYlMcLBnHP5k6Y04s4=;
+        b=iorcpyY999QWehIb+CAgrA/F1N36in6cm7c1xcz3U7MfL2vyFgHedlBylx1ziCuvVS
+         6hDNVpZ6lP7/9eAFG96KxzKNl2HhnwnKPK5QObniPPw2KacRaR45KHN5BNwQ/fBN1TXQ
+         U5RpYQn/tF0sz0HWy9+ubLlJ7YnSBixn33/5t6Eq0CtS6cKkyc6K6OYYMQ/eFjAqYHCb
+         hXETirYPQAPIQA8VlSLXLSEaDNiuMIatOAOvJhC+kyTgDnkFMtRqcljuLWr2TCuqESGi
+         ocDTciV7b4uNGmeum+J6Upimotn2JRrMfMVdsGmEYxK3plrzy86NRJ5xIlO+VqD33li6
+         D79Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1686714038; x=1689306038;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=L6K/NmwQs8K/GbD67mVMV6a2RgYlMcLBnHP5k6Y04s4=;
+        b=PTHLrgIb2g+fO2eurEt7rX6Kk9544DqvoUY7O4dZMnNawbN4+/linJSfLuUszeW8x9
+         HpjRwWqkth7nV995735s+cP8KSc436s7VDGeVX9CtQFk/SY3S0hToDVxYAjKvH8FnR3k
+         G4FRTQp/F6o9enFWKDkprqrzrWHELC9VjGbZ8oclL/gCmJ+d0YnQtAfKkAemg+IPXMRc
+         /R7yBYA+u8O7U2gywaDz3bWeoQSRKYvOY89Yejhuk/QEuxetRATs/yRA4iRG2sWOJBMk
+         eQvVO7FkLOJ3husWZMlhnLQ2fmAoSFSgh5djYK5UaJQjalu+lZsdxcEigJd861mgvJGu
+         /1Dw==
+X-Gm-Message-State: AC+VfDytkqRFkWnhtPW5SYnnUpXKQvvj0R1QL3iqhLfbuH0jqY6HtOci
+	WJggGcWvCKHJFlKXJWnrImR7ffAuMMew/YUdww58ykqhV4E=
+X-Google-Smtp-Source: ACHHUZ4aWTG5W05cUIT4zylXDSRz78kF6JI8I9XWAoMiPFUy6icBSFAV4yrrX70Rn2DB1VQxr5htrw==
+X-Received: by 2002:adf:fa85:0:b0:30f:ba73:dff8 with SMTP id h5-20020adffa85000000b0030fba73dff8mr6002074wrr.28.1686714038089;
+        Tue, 13 Jun 2023 20:40:38 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.4.112] (90-182-62-66.rcp.o2.cz. [90.182.62.66])
+        by smtp.gmail.com with ESMTPSA id q25-20020a7bce99000000b003f17848673fsm16017895wmj.27.2023.06.13.20.40.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Jun 2023 20:40:37 -0700 (PDT)
+Message-ID: <cd379806-ef2b-d13e-472c-a15d21532bb3@linaro.org>
+Date: Wed, 14 Jun 2023 05:40:35 +0200
 MIME-Version: 1.0
-Received-SPF: pass client-ip=82.97.202.32;
- envelope-from=sergey.kambalin@auriga.com; helo=hq-ms.auriga.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- MIME_CHARSET_FARAWAY=2.45, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DepXVhl/BxhQ
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v2 03/38] tests/multiarch: Add test-aes
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
+ qemu-devel@nongnu.org
+References: <20230609022401.684157-1-richard.henderson@linaro.org>
+ <20230609022401.684157-4-richard.henderson@linaro.org>
+ <87zg5468ed.fsf@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <87zg5468ed.fsf@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: IIsw/htarVqi
 
---_000_60638efd8f464e66afc5e2a106f09d5faurigacom_
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
+On 6/12/23 16:46, Alex Bennée wrote:
+> 
+> Richard Henderson <richard.henderson@linaro.org> writes:
+> 
+>> Use a shared driver and backends for i386, aarch64, ppc64, riscv64.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   tests/tcg/aarch64/test-aes.c            |  58 ++++++++
+>>   tests/tcg/i386/test-aes.c               |  68 +++++++++
+>>   tests/tcg/ppc64/test-aes.c              | 116 +++++++++++++++
+>>   tests/tcg/riscv64/test-aes.c            |  76 ++++++++++
+>>   tests/tcg/multiarch/test-aes-main.c.inc | 183
+>> ++++++++++++++++++++++++
+> 
+> I find it odd the file with the main function is the c.inc and the per
+> guest impl's are the plain .c files. Is it possible to have it the other
+> way around?
 
-DQoNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18NCqewp+Q6IFBoaWxpcHBlIE1h
-dGhpZXUtRGF1ZKimIDxwaGlsbWRAbGluYXJvLm9yZz4NCqewp+Sn4afip9Gn06fdp9an36fgOiAx
-MyCn2qfwp9+n8SAyMDIzIKfULiAxOjMwDQqnrKfgp96n5TogU2VyZ2V5IEthbWJhbGluOyBxZW11
-LWFybUBub25nbnUub3JnDQqnrKfgp+Gn2qfxOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IEthbWJh
-bGluLCBTZXJnZXkNCqe0p9an3qfROiBSZTogW1BBVENIIHYyXSBVc2UgbmFtZWQgY29uc3RhbnRz
-IGluIEJDTSBwcm9wcw0KDQpPbiAxMi82LzIzIDEzOjU5LCBTZXJnZXkgS2FtYmFsaW4gd3JvdGU6
-DQo+IHBpbmcNCj4NCj4gLSBQSV9GSVJNV0FSRV8qX1JBVEUgY29uc3RzbnRzIHdlcmUgbW92ZWQg
-dG8gcmFzcGJlcnJ5cGktZnctZGVmcy5oDQo+ICAgIChzZWVtcyBtb3JlIHN1aXRhYmxlIHBsYWNl
-IGZvciB0aGVtKQ0KPiAtIGluY2x1c2lvbiBvZiAicWVtdS9vc2RlcC5oIiBoYXMgYmVlbiByZW1v
-dmVkDQo+IC0geWVhciBpbiBjb3B5cmlnaHQgaGVhZGVyIGhhcyBiZWVuIHVwZGF0ZWQNCj4NCj4g
-U2lnbmVkLW9mZi1ieTogU2VyZ2V5IEthbWJhbGluIDxzZXJnZXkua2FtYmFsaW5AYXVyaWdhLmNv
-bT4NCj4gLS0tDQo+ICAgaHcvbWlzYy9iY20yODM1X3Byb3BlcnR5LmMgICAgICAgICAgICB8IDEy
-MCArKysrKysrKysrLS0tLS0tLS0tDQo+ICAgaW5jbHVkZS9ody9hcm0vcmFzcGlfcGxhdGZvcm0u
-aCAgICAgICB8ICAgNiArDQo+ICAgaW5jbHVkZS9ody9taXNjL3Jhc3BiZXJyeXBpLWZ3LWRlZnMu
-aCB8IDE2MyArKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgIDMgZmlsZXMgY2hhbmdlZCwg
-MjM2IGluc2VydGlvbnMoKyksIDUzIGRlbGV0aW9ucygtKQ0KPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBpbmNsdWRlL2h3L21pc2MvcmFzcGJlcnJ5cGktZnctZGVmcy5oDQoNCg0KPiBkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS9ody9hcm0vcmFzcGlfcGxhdGZvcm0uaCBiL2luY2x1ZGUvaHcvYXJtL3Jhc3Bp
-X3BsYXRmb3JtLmgNCj4gaW5kZXggNGE1NmRkNGI4OS4uOTJhMzE3OTUwYSAxMDA2NDQNCj4gLS0t
-IGEvaW5jbHVkZS9ody9hcm0vcmFzcGlfcGxhdGZvcm0uaA0KPiArKysgYi9pbmNsdWRlL2h3L2Fy
-bS9yYXNwaV9wbGF0Zm9ybS5oDQo+IEBAIC0xNzAsNCArMTcwLDEwIEBADQo+ICAgI2RlZmluZSBJ
-TlRFUlJVUFRfSUxMRUdBTF9UWVBFMCAgICAgICAgNg0KPiAgICNkZWZpbmUgSU5URVJSVVBUX0lM
-TEVHQUxfVFlQRTEgICAgICAgIDcNCj4NCj4gKy8qIENsb2NrIHJhdGVzICovDQo+ICsjZGVmaW5l
-IFJQSV9GSVJNV0FSRV9FTU1DX0NMS19SQVRFICAgIDUwMDAwMDAwDQoNCk9LLg0KDQo+ICsjZGVm
-aW5lIFJQSV9GSVJNV0FSRV9VQVJUX0NMS19SQVRFICAgIDMwMDAwMDANCg0KT0suDQoNCj4gKyNk
-ZWZpbmUgUlBJX0ZJUk1XQVJFX0NPUkVfQ0xLX1JBVEUgICAgMzUwMDAwMDAwDQoNClNlZW1zIFZD
-NCBmcmVxdWVuY3kgcmFuZ2UsIGFkYXB0ZWQgZm9yIHJhc3BpMyAoQkNNMjgzNykuDQoNCklJVUMg
-dGhlIFZDNiAocmFzcGk0KSBpcyBjbG9ja2VkIGF0IDUwME1Iei4NCg0KUy5LLjogWW91J3JlIHJp
-Z2h0ISBUaGVyZSBzaG91bGQgYmUgMjUwIE1IeiBhcyB0aGVzZSBhcmUgYmNtMjgzNSB2YWx1ZXMs
-IG5vdCBiY20yNzExKHJwaTQpDQoNCj4gKyNkZWZpbmUgUlBJX0ZJUk1XQVJFX0RFRkFVTFRfQ0xL
-X1JBVEUgNzAwMDAwMDAwDQoNClNlZW1zIFZDNCBmcmVxIGZvciByYXNwaTEgKEJDTTI4MzUpDQoN
-Ckxpa2VseSB3ZSBkb24ndCB3YW50IHRvIHVzZSBhIGRlZmF1bHQsIGJ1dCB0aGUgY29ycmVjdCBw
-ZXItc29jDQp2YWx1ZS4uLg0KDQpTLksuOiAgUGVyLXNvYyB2YWx1ZXMgYXJlIG5vdCBpbXBsZW1l
-bnRlZCB5ZXQsIGFuZCBJJ20gbm90IDEwMCUgc3VyZSBpZiBpdCdzIG5lZWRlZC4NCiAgICAgICAg
-ICBTbyBJIGRlY2lkZWQgdG8gcmV0dXJuIEJDTTI4MzUgY29yZSBjbG9jayBhcyBhIGRlZmF1bHQg
-dmFsdWUuDQogICAgICAgICAgTWF5IGJlIGxlYXZpbmcgTE9HX1VOSU1QIG1lc3NhZ2Ugd291bGQg
-aGF2ZSBiZWVuIGEgYmV0dGVyIG9wdGlvbj8NCg0KU2hvdWxkIEkgZml4IGl0IHRoZXJlIG9yIHB1
-bGwgeW91ciBzcGxpdCBwYXRjaCBhbmQgY29udGludWUgaXQgYXMgdjQ/DQo=
+Not with the way tests/tcg is structured, no.
 
---_000_60638efd8f464e66afc5e2a106f09d5faurigacom_
-Content-Type: text/html; charset="gb2312"
-Content-Transfer-Encoding: quoted-printable
+> If we have a fallback library function for aes then we could
+> enable the test for all targets (a true multiarch test) with some having CPU specific
+> accelerations where available.
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dgb2312">
-<style type=3D"text/css" style=3D"display:none;"><!-- P {margin-top:0;margi=
-n-bottom:0;} --></style>
-</head>
-<body dir=3D"ltr">
-<div id=3D"divtagdefaultwrapper" style=3D"font-size:12pt;color:#000000;font=
--family:Calibri,Helvetica,sans-serif;" dir=3D"ltr">
-<p><br>
-</p>
-<br>
-<br>
-<div style=3D"color: rgb(0, 0, 0);">
-<div>
-<hr tabindex=3D"-1" style=3D"display:inline-block; width:98%">
-<div id=3D"x_divRplyFwdMsg" dir=3D"ltr"><font style=3D"font-size:11pt" face=
-=3D"Calibri, sans-serif" color=3D"#000000"><b>=A7=B0=A7=E4:</b> Philippe Ma=
-thieu-Daud=A8=A6 &lt;philmd@linaro.org&gt;<br>
-<b>=A7=B0=A7=E4=A7=E1=A7=E2=A7=D1=A7=D3=A7=DD=A7=D6=A7=DF=A7=E0:</b> 13 =A7=
-=DA=A7=F0=A7=DF=A7=F1 2023 =A7=D4. 1:30<br>
-<b>=A7=AC=A7=E0=A7=DE=A7=E5:</b> Sergey Kambalin; qemu-arm@nongnu.org<br>
-<b>=A7=AC=A7=E0=A7=E1=A7=DA=A7=F1:</b> qemu-devel@nongnu.org; Kambalin, Ser=
-gey<br>
-<b>=A7=B4=A7=D6=A7=DE=A7=D1:</b> Re: [PATCH v2] Use named constants in BCM =
-props</font>
-<div>&nbsp;</div>
-</div>
-</div>
-<font size=3D"2"><span style=3D"font-size:10pt;">
-<div class=3D"PlainText">On 12/6/23 13:59, Sergey Kambalin wrote:<br>
-&gt; ping<br>
-&gt; <br>
-&gt; - PI_FIRMWARE_*_RATE constsnts were moved to raspberrypi-fw-defs.h<br>
-&gt;&nbsp;&nbsp;&nbsp; (seems more suitable place for them)<br>
-&gt; - inclusion of &quot;qemu/osdep.h&quot; has been removed<br>
-&gt; - year in copyright header has been updated<br>
-&gt; <br>
-&gt; Signed-off-by: Sergey Kambalin &lt;sergey.kambalin@auriga.com&gt;<br>
-&gt; ---<br>
-&gt;&nbsp;&nbsp; hw/misc/bcm2835_property.c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 120 &#43;&#43;&#43;&#43;&#43;&#43;&#43=
-;&#43;&#43;&#43;---------<br>
-&gt;&nbsp;&nbsp; include/hw/arm/raspi_platform.h&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp; |&nbsp;&nbsp; 6 &#43;<br>
-&gt;&nbsp;&nbsp; include/hw/misc/raspberrypi-fw-defs.h | 163 &#43;&#43;&#43=
-;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43=
-;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;<br>
-&gt;&nbsp;&nbsp; 3 files changed, 236 insertions(&#43;), 53 deletions(-)<br=
->
-&gt;&nbsp;&nbsp; create mode 100644 include/hw/misc/raspberrypi-fw-defs.h<b=
-r>
-<br>
-<br>
-&gt; diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_pl=
-atform.h<br>
-&gt; index 4a56dd4b89..92a317950a 100644<br>
-&gt; --- a/include/hw/arm/raspi_platform.h<br>
-&gt; &#43;&#43;&#43; b/include/hw/arm/raspi_platform.h<br>
-&gt; @@ -170,4 &#43;170,10 @@<br>
-&gt;&nbsp;&nbsp; #define INTERRUPT_ILLEGAL_TYPE0&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp; 6<br>
-&gt;&nbsp;&nbsp; #define INTERRUPT_ILLEGAL_TYPE1&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp; 7<br>
-&gt;&nbsp;&nbsp; <br>
-&gt; &#43;/* Clock rates */<br>
-&gt; &#43;#define RPI_FIRMWARE_EMMC_CLK_RATE&nbsp;&nbsp;&nbsp; 50000000<br>
-<br>
-OK.<br>
-<br>
-&gt; &#43;#define RPI_FIRMWARE_UART_CLK_RATE&nbsp;&nbsp;&nbsp; 3000000<br>
-<br>
-OK.<br>
-<br>
-&gt; &#43;#define RPI_FIRMWARE_CORE_CLK_RATE&nbsp;&nbsp;&nbsp; 350000000<br=
->
-<br>
-Seems VC4 frequency range, adapted for raspi3 (BCM2837).<br>
-<br>
-IIUC the VC6 (raspi4) is clocked at 500MHz.</div>
-<div class=3D"PlainText"><br>
-</div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-S.K.: You're right! There should be 250 MHz as these are bcm2835 values, no=
-t bcm2711(rpi4</span>)<br>
-<br>
-&gt; &#43;#define RPI_FIRMWARE_DEFAULT_CLK_RATE 700000000<br>
-<br>
-Seems VC4 freq for raspi1 (BCM2835)<br>
-<br>
-Likely we don't want to use a default, but the correct per-soc<br>
-value...</div>
-<div class=3D"PlainText"><br>
-</div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-S.K.:&nbsp; Per-soc values are not implemented yet, and I'm not 100% sure i=
-f it's needed.
-</span><br>
-</div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; So I decided to retu=
-rn
-</span><font size=3D"2"><span style=3D"font-size: 10pt; background-color: r=
-gb(0, 255, 0);">BCM2835</span></font><span style=3D"background-color: rgb(0=
-, 255, 0);"> core clock as a default value.
-</span><br>
-</div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
-<span style=3D"background-color: rgb(0, 255, 0);">May be leaving </span><sp=
-an style=3D"background-color: rgb(0, 255, 0);">LOG_UNIMP</span><span style=
-=3D"background-color: rgb(0, 255, 0);"> message would have been a better op=
-tion?</span></div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-<br>
-</span></div>
-<div class=3D"PlainText"><span style=3D"background-color: rgb(0, 255, 0);">=
-Should I fix it there or pull your split patch and continue it as v4?
-<br>
-</span></div>
-</span></font></div>
-</div>
-</body>
-</html>
+We don't have that either.
 
---_000_60638efd8f464e66afc5e2a106f09d5faurigacom_--
+
+r~

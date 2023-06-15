@@ -1,161 +1,104 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp767097ejt;
-        Thu, 15 Jun 2023 07:24:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6PJ/+HGv/3y/LkStU1Fw/WlifqyOWmSzVubZMQrQKQQzZ/rGR/FnHP8wTYIEKQ/3vQhXvO
-X-Received: by 2002:a05:620a:201b:b0:75e:cd1f:d93 with SMTP id c27-20020a05620a201b00b0075ecd1f0d93mr17729777qka.50.1686839076244;
-        Thu, 15 Jun 2023 07:24:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686839076; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp890882ejt;
+        Thu, 15 Jun 2023 10:35:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5gWhy/GWyQnLGOP8KfWpNiPmdLEAdGCiIy1k+8/I8h0h7d07HOFPzVSxwP22wPOyuuOaKx
+X-Received: by 2002:a05:6a20:6a10:b0:10a:dd79:65bd with SMTP id p16-20020a056a206a1000b0010add7965bdmr6995932pzk.27.1686850546124;
+        Thu, 15 Jun 2023 10:35:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686850546; cv=none;
         d=google.com; s=arc-20160816;
-        b=rTyCKV4/eJS/bcxOkKnaaDDltO3owUslKn00jR9WXJ8igy/A+kNgqnhuo4KRUkx499
-         oX/n9fYdNXLTgLXvD7PPuq/Ph8qgtHIG5tf1zyf1P7EnmQGdvmacwHAhN6C4ZpmW4kkH
-         ZibCdGvu8Pk0yZSK4Dwo19+EX/Q9LG0HJiBIFlxPYgL6B8jLS+nHyDcv5k+G13q+1lvn
-         1JglYHj4nFTIGcJhQF0/fFRYLMCSni7cLmwMkvHp8zLxneqLTVHk+e+yo5cNIikMVmnI
-         gb5Xo5u1lGGjSfvUjdgzVc49QktJMISfDDemkbSjD7OquT03G1u5SK57Fj4N90mMlvam
-         2R2g==
+        b=Jr2qevDNISOcCM12sn3K2BAs9BGDuAeXY0UB9lMEd0zTQycTzUCvwMZPlypCsgudEQ
+         9DDOc7DJt6VEp2Xjz2zX6xTm+TkQVXD0FjFy6a/96efyZ49TS/wcuIhgvJrzvw6rHM6N
+         iUXSX0d5AxnFMS0GCk5bEqSlrRGLIpK9grBpiCv+dix6UmuQbUHO6HqkJGyez89HODX1
+         5p4PEyJHjp2Uj9SuKiKahn2sP1te7dbKRB/OjWDMpvXIA524/5QYRUhzVlF7JV9cNmYY
+         lQvNkPLnnBBlbsGK9TFElgNF0x0IztzpnpRE9GVULlW8zVkFDG3XnQmXPlXlxB9jRy+v
+         bY2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=yA71C8OFTIOl8Hd1ZXAKfYQtoI2BdzK4hETTxGSuuP0=;
-        b=BnDv6/e92YEJ7PCfgdFttVoIDEuOjcmkYMMh0M0mIQcoMJlwPd+wlDST+M7ojCzVmW
-         Yf4xefgQ4gzV5682DNUDaAYv5aoArFBXCYH8mXx0cA9uy5XV12pJBD9XeXm8nCuZe9k6
-         7ZxXa2/f6smse0fJRE4LU0TStGXp+pPJ7gQV9PefB7NsgNPR4/GRFPYSCx3fpEFX6o20
-         35zVH16n1BByv9g/SVAcmfKscThHmjHER8tiJ97TOkvDvMGtGN/W52ffzw1CYv+c2Jqk
-         oFfBWWZtekZ0Yid37xhvX9UHuwZR6ymy5GwlHbfWdlXAanNTPRM18JrZD5uISJ0MU5Sp
-         o/jQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=5NZQZYSrkWL01PTGVhgoTKAK9RCWNtqSzPiUaqiOjCU=;
+        b=zg5H4Kq+VhrrYwjgpUY2oYxY/DghJp2T91GvE719W8ikMyoNK63HvoqvtaIsxIgH3F
+         Vo+brpKXWC3JyZVzJT+KrQjW3nlwyRaRyFhqkbZTCdidhsjDBBf/04OFH/vFp9HW/OyF
+         5vc+bcSPti6viwIbuNLrY5NYuRpR24WscOpZHz+A7AOqWp0LGh4/cQA0oRacvdZZ1s2L
+         rf63dtUrORRFtYPEGzTVSSA+EN5Sq5QXIcq4iJ9GMzMOx61b/ydoqnz/7WbeqmefvcGr
+         a6DG3hOZr+mkB6p0yHkUZkzphkBGCZ+pUu0dzyziuhi7hsNrXJ1LlIFlocgtUR9NZw74
+         Uxvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m16-20020ae9e710000000b0075ced896377si9568381qka.19.2023.06.15.07.24.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Jun 2023 07:24:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of srs0=xcjj=cd=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=xCJj=CD=kaod.org=clg@ozlabs.org"
+Return-Path: <SRS0=xCJj=CD=kaod.org=clg@ozlabs.org>
+Received: from gandalf.ozlabs.org (mail.ozlabs.org. [2404:9400:2221:ea00::3])
+        by mx.google.com with ESMTPS id n127-20020a632785000000b0053592294fc0si11343441pgn.256.2023.06.15.10.35.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Jun 2023 10:35:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of srs0=xcjj=cd=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) client-ip=2404:9400:2221:ea00::3;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q9ntk-0003BB-50; Thu, 15 Jun 2023 10:24:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <postmaster@kaiser.cx>)
- id 1q9nti-0003Aw-4g; Thu, 15 Jun 2023 10:24:26 -0400
-Received: from viti.kaiser.cx ([2a01:238:43fe:e600:cd0c:bd4a:7a3:8e9f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <postmaster@kaiser.cx>)
- id 1q9ntg-00086e-JY; Thu, 15 Jun 2023 10:24:25 -0400
-Received: from [94.118.66.68] (helo=martin-debian-2.paytec.ch)
- by viti.kaiser.cx with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <martin@kaiser.cx>)
- id 1q9ntX-0001T5-QI; Thu, 15 Jun 2023 16:24:16 +0200
-From: Martin Kaiser <martin@kaiser.cx>
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Martin Kaiser <martin@kaiser.cx>
-Subject: [PATCH v3] imx_serial: set wake bit when we receive a data byte
-Date: Thu, 15 Jun 2023 15:22:56 +0100
-Message-Id: <20230615142256.1142849-1-martin@kaiser.cx>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20230608154129.133169-1-martin@kaiser.cx>
-References: <20230608154129.133169-1-martin@kaiser.cx>
+       spf=pass (google.com: domain of srs0=xcjj=cd=kaod.org=clg@ozlabs.org designates 2404:9400:2221:ea00::3 as permitted sender) smtp.mailfrom="SRS0=xCJj=CD=kaod.org=clg@ozlabs.org"
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+	by gandalf.ozlabs.org (Postfix) with ESMTP id 4QhqFX1TqSz4x0K;
+	Fri, 16 Jun 2023 03:35:44 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 4QhqFQ0pTXz4x08;
+	Fri, 16 Jun 2023 03:35:37 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Joel Stanley <joel@jms.id.au>,
+	qemu-stable@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>
+Subject: [PULL 2/6] aspeed/hace: Initialize g_autofree pointer
+Date: Thu, 15 Jun 2023 19:35:21 +0200
+Message-Id: <20230615173525.428831-3-clg@kaod.org>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230615173525.428831-1-clg@kaod.org>
+References: <20230615173525.428831-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2a01:238:43fe:e600:cd0c:bd4a:7a3:8e9f;
- envelope-from=postmaster@kaiser.cx; helo=viti.kaiser.cx
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VvizefZ6o97R
+X-TUID: XtyHOyuzdEug
 
-The Linux kernel added a flood check for RX data recently in commit
-496a4471b7c3 ("serial: imx: work-around for hardware RX flood"). This
-check uses the wake bit in the UART status register 2. The wake bit
-indicates that the receiver detected a start bit on the RX line. If the
-kernel sees a number of RX interrupts without the wake bit being set, it
-treats this as spurious data and resets the UART port. imx_serial does
-never set the wake bit and triggers the kernel's flood check.
+As mentioned in docs/devel/style.rst "Automatic memory deallocation":
 
-This patch adds support for the wake bit. wake is set when we receive a
-new character (it's not set for break events). It seems that wake is
-cleared by the kernel driver, the hardware does not have to clear it
-automatically after data was read.
+* Variables declared with g_auto* MUST always be initialized,
+  otherwise the cleanup function will use uninitialized stack memory
 
-The wake bit can be configured as an interrupt source. Support this
-mechanism as well.
+This avoids QEMU to coredump when running the "hash test" command
+under Zephyr.
 
-Co-developed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Cc: Steven Lee <steven_lee@aspeedtech.com>
+Cc: Joel Stanley <joel@jms.id.au>
+Cc: qemu-stable@nongnu.org
+Fixes: c5475b3f9a ("hw: Model ASPEED's Hash and Crypto Engine")
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Martin Kaiser <martin@kaiser.cx>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+Message-Id: <20230421131547.2177449-1-clg@kaod.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
-v3:
- - fix some spelling mistakes in the commit message
- - add Philippe's Reviewed-by
+ hw/misc/aspeed_hace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-v2:
- - support interrupts from wake
- - clean up the commit message
-
- hw/char/imx_serial.c         | 5 ++++-
- include/hw/char/imx_serial.h | 1 +
- 2 files changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index ee1375e26d..1b75a89588 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -80,7 +80,7 @@ static void imx_update(IMXSerialState *s)
-      * TCEN and TXDC are both bit 3
-      * RDR and DREN are both bit 0
-      */
--    mask |= s->ucr4 & (UCR4_TCEN | UCR4_DREN);
-+    mask |= s->ucr4 & (UCR4_WKEN | UCR4_TCEN | UCR4_DREN);
- 
-     usr2 = s->usr2 & mask;
- 
-@@ -321,6 +321,9 @@ static void imx_put_data(void *opaque, uint32_t value)
- 
- static void imx_receive(void *opaque, const uint8_t *buf, int size)
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 12a761f1f55d..b07506ec04ef 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -189,7 +189,7 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
  {
-+    IMXSerialState *s = (IMXSerialState *)opaque;
-+
-+    s->usr2 |= USR2_WAKE;
-     imx_put_data(opaque, *buf);
- }
- 
-diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
-index 91c9894ad5..b823f94519 100644
---- a/include/hw/char/imx_serial.h
-+++ b/include/hw/char/imx_serial.h
-@@ -71,6 +71,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(IMXSerialState, IMX_SERIAL)
- 
- #define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt enable */
- #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
-+#define UCR4_WKEN       BIT(7)    /* WAKE interrupt enable */
- 
- #define UTS1_TXEMPTY    (1<<6)
- #define UTS1_RXEMPTY    (1<<5)
+     struct iovec iov[ASPEED_HACE_MAX_SG];
+-    g_autofree uint8_t *digest_buf;
++    g_autofree uint8_t *digest_buf = NULL;
+     size_t digest_len = 0;
+     int niov = 0;
+     int i;
 -- 
-2.30.2
-
+2.40.1

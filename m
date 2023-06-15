@@ -1,71 +1,70 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp891064ejt;
-        Thu, 15 Jun 2023 10:36:05 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5ieTJOgWEIbejsFX0Qt7MloPaA+DMDXsjzIEdGGqrgoyt6NtyBIp8i8uFvHr0U+ouBszyj
-X-Received: by 2002:ac8:5943:0:b0:3f8:67d7:e99a with SMTP id 3-20020ac85943000000b003f867d7e99amr6882299qtz.11.1686850565406;
-        Thu, 15 Jun 2023 10:36:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686850565; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp891517ejt;
+        Thu, 15 Jun 2023 10:36:54 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6LGUS19Ur6f96rUWdyw61V1G+OiFPnQ7sAjqAdyaQWuOyZF/JfJ9UBd9RO2VZgzHpbouGK
+X-Received: by 2002:a67:f787:0:b0:43b:3cf8:bead with SMTP id j7-20020a67f787000000b0043b3cf8beadmr219693vso.0.1686850613714;
+        Thu, 15 Jun 2023 10:36:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686850613; cv=none;
         d=google.com; s=arc-20160816;
-        b=dIQW297G1bkKLqpMs0TTKqznt0uK4/78jnYdQu+YfoBR0mrUJTK9Hp341Zol2n6lLn
-         yWVYIFN9YawCvjT+5W0wC1vjsPQ/wCEbthCIf6Fgaxof94One6TwrCvp2N1szWZoSG1p
-         /B5/irDm4MAkDONr+VkSjooYLORaTb4qXLDpH0Rz1UhGtFErLmxqZ7cjN8dfFr8zsZ45
-         BaRgmvqRN+Fpinu8z8J1hbfWLlNskDAXAEbJq091beRlHxp6w6cB/qyfhq7Ex1uMtNwO
-         NMApV+enudfeXfOsQWI8VgleNq6Yd+Iw3KqYnYeYBeu0YHJetKjBZoyzjmSqldIR3fY7
-         Shhg==
+        b=HzKj4BnvM3qpQZLUCCUEfwYGM3XADOKlgxi1CfNiI673JatfiNriZ1uXwYww+ScAVe
+         v2/hsRUFeMNxuWu2r0QV1KE+g+LIcejh1vHvTo0eVKTiu04rP0hGFyo9zM9gqyp+5feS
+         aoS+r3j1kg/JZG/fA+4tuZ+UCOvogjBuSi1mAzQowVhuHM8O6ReSNaWcROSLFbnJqOjw
+         l1X0hJ6ZdDgNDRTV4pT+vTSQDhZjevpRjI6nYR3OL2+wKMpS7aeE7sH3VJSvTKvi8aPG
+         Ip2hK6A90wydenrGBlxMLcI/Fwl4bK123WroCGAgTXENCXRW/ENri3BB2XnFJg38VCmx
+         PVMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from;
-        bh=VNDtqNWnd/kZ2uPsQfk9lztu1jw4hl/8ZPAbAjPT0jA=;
-        b=f9ux0obIsgw46yjcvF2HF3+jRSOKz+w9yoPq/tWuHkcseqHJJG4+euR0Rqx8cl4SFC
-         b0ZsFsvqo7IWvkIN+oGe03f2aaUcHSEwFirwpZ33ls8DRIS50t0W3V+gDwhtS58sRtNY
-         lQVObw3mOELh4HG+K3xTcBF7v+NHQ6ZySoUUvr+wQxTGaj5PRotsykjuD5DTMqCoBgS9
-         fmLWC87HzmyIpdSB6Y2BKdixj9hC/tAhSCjdIaLJ/HJtYWBbkT0MNa+Mw7w9RYHCz5sG
-         kp+6Xwfp4seJ3Vitn2Auxo9w+W+WZGk0ISDZEKaRdcd/ogtR+oDpzBng2T4WNJZm1RAx
-         eNjg==
+        bh=nWeAIK0o70buwGDdId1ea4OIMyqreFJSOKooEp8HcQ4=;
+        b=QPA7xNv0jP4n0OIL+BsS+dFy29Eqd9ewpog0uN5Rpqh+9JgdMKm131+0o6OnwVvVJP
+         0jj8ZBMO2JHraEtK8QjV0h//Gjh3HeBQkHn1ud7vYGUL3P3ImCQq+wSj5Ta6wvv8QAWY
+         935ZdUysyBJ16HbCQ7KujuARbOU02l4OrCnnpy03dVUL6Z6Q7C8dzl432e1XmihtQ9rW
+         CihqLiwdBh/HGyRh8eWKa03iQbcO04ZEjjX4abNj1V+/PluwHlDVrkWgiC4YRunAJIw/
+         f8+QbBMPvNOgNIAmCsCczqwYzUkwrSweoSP2kVqfOvDdn4uaDMI3EV9/qriq4xwCvODt
+         YvoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1-20020a05622a198100b003ef472c8b33si9642179qtc.658.2023.06.15.10.36.05
+        by mx.google.com with ESMTPS id pc19-20020a05620a841300b0075cf1f0d9aasi9830588qkn.42.2023.06.15.10.36.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Jun 2023 10:36:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Jun 2023 10:36:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q9qt1-0000cF-TT; Thu, 15 Jun 2023 13:35:56 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1q9qt9-0000gS-78; Thu, 15 Jun 2023 13:36:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=xCJj=CD=kaod.org=clg@ozlabs.org>)
- id 1q9qsu-0000Zr-Re; Thu, 15 Jun 2023 13:35:48 -0400
+ id 1q9qt7-0000fL-PS; Thu, 15 Jun 2023 13:36:01 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=xCJj=CD=kaod.org=clg@ozlabs.org>)
- id 1q9qsp-0007gQ-JS; Thu, 15 Jun 2023 13:35:48 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QhqFP44Z3z4x0G;
- Fri, 16 Jun 2023 03:35:37 +1000 (AEST)
+ id 1q9qt5-0007kh-B3; Thu, 15 Jun 2023 13:36:01 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QhqFm2dcTz4x0H;
+ Fri, 16 Jun 2023 03:35:56 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QhqFM4TqKz4x0B;
- Fri, 16 Jun 2023 03:35:35 +1000 (AEST)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QhqFk1KJ0z4x08;
+ Fri, 16 Jun 2023 03:35:53 +1000 (AEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
- Ninad Palsule <ninad@linux.ibm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 1/6] hw/arm/aspeed: Add VPD data for Rainier machine
-Date: Thu, 15 Jun 2023 19:35:20 +0200
-Message-Id: <20230615173525.428831-2-clg@kaod.org>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 6/6] target/arm: Allow users to set the number of VFP registers
+Date: Thu, 15 Jun 2023 19:35:25 +0200
+Message-Id: <20230615173525.428831-7-clg@kaod.org>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230615173525.428831-1-clg@kaod.org>
 References: <20230615173525.428831-1-clg@kaod.org>
@@ -82,131 +81,121 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sxZ9ZwjHYxFo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wFifaVOPrPqA
 
-From: Ninad Palsule <ninad@linux.ibm.com>
+Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
+have 16 64-bit FPU registers and not 32 registers. Let users set the
+number of VFP registers with a CPU property.
 
-The current modeling of Rainier machine creates zero filled VPDs(EEPROMs).
-This makes some services and applications unhappy and causing them to fail.
-Hence this drop adds some fabricated data for system and BMC FRU so that
-vpd services are happy and active.
+The primary use case of this property is for the Cortex A7 of the
+Aspeed AST2600 SoC.
 
-Tested:
-   - The system-vpd.service is active.
-   - VPD service related to bmc is active.
-
-Signed-off-by: Ninad Palsule <ninad@linux.ibm.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-[ clg: commit title cleanup ]
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_eeprom.h |  5 +++++
- hw/arm/aspeed.c        |  6 ++++--
- hw/arm/aspeed_eeprom.c | 45 +++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 53 insertions(+), 3 deletions(-)
+ target/arm/cpu.h        |  2 ++
+ hw/arm/aspeed_ast2600.c |  2 ++
+ target/arm/cpu.c        | 32 ++++++++++++++++++++++++++++++++
+ 3 files changed, 36 insertions(+)
 
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index 86db6f0479b7..bbf9e54365b8 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -22,4 +22,9 @@ extern const size_t fby35_bmc_fruid_len;
- extern const uint8_t yosemitev2_bmc_fruid[];
- extern const size_t yosemitev2_bmc_fruid_len;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 36c608f0e6e1..af0119addfb6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -924,6 +924,8 @@ struct ArchCPU {
+     bool has_pmu;
+     /* CPU has VFP */
+     bool has_vfp;
++    /* CPU has 32 VFP registers */
++    bool has_vfp_d32;
+     /* CPU has Neon */
+     bool has_neon;
+     /* CPU has M-profile DSP extension */
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 1bf12461481c..a8b3a8065a11 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -316,6 +316,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                                 &error_abort);
+         object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
+                                 &error_abort);
++        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", false,
++                                &error_abort);
+         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+                                  OBJECT(s->memory), &error_abort);
  
-+extern const uint8_t rainier_bb_fruid[];
-+extern const size_t rainier_bb_fruid_len;
-+extern const uint8_t rainier_bmc_fruid[];
-+extern const size_t rainier_bmc_fruid_len;
-+
- #endif
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 0b29028fe115..bfc2070bd2ed 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -788,8 +788,10 @@ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
-                      0x48);
-     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
-                      0x4a);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 64 * KiB);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 64 * KiB);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
-+                          64 * KiB, rainier_bb_fruid, rainier_bb_fruid_len);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
-+                          64 * KiB, rainier_bmc_fruid, rainier_bmc_fruid_len);
-     create_pca9552(soc, 8, 0x60);
-     create_pca9552(soc, 8, 0x61);
-     /* Bus 8: ucd90320@11 */
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index dc33a88a5466..ace5266cec91 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -119,9 +119,52 @@ const uint8_t yosemitev2_bmc_fruid[] = {
-     0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
- };
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4d5bb57f0797..353fc4856739 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1277,6 +1277,9 @@ static Property arm_cpu_cfgend_property =
+ static Property arm_cpu_has_vfp_property =
+             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
  
-+const uint8_t rainier_bb_fruid[] = {
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-+    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-+    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
-+    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 0x4e, 0x49,
-+    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x56, 0x53,
-+    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 0x19, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 0x36, 0x00,
-+    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 0x44, 0x45,
-+    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 0x33, 0x34,
-+    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 0x4e, 0x04,
-+    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 0x39, 0x50,
-+    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 0x4d, 0x53,
-+    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 0x2d, 0x32,
-+    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23,
-+    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 0x07, 0x31,
-+    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 0x31, 0x31,
-+    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 0x50, 0x49,
-+    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00,
-+    0x00, 0x00,
-+};
++static Property arm_cpu_has_vfp_d32_property =
++            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
 +
-+/* Rainier BMC FRU */
-+const uint8_t rainier_bmc_fruid[] = {
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-+    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-+    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
-+    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 0x4e, 0x49,
-+    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46,
-+    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 0x49, 0x4e,
-+    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 0x02, 0x30,
-+    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-+};
+ static Property arm_cpu_has_neon_property =
+             DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
+ 
+@@ -1408,6 +1411,22 @@ void arm_cpu_post_init(Object *obj)
+         }
+     }
+ 
++    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
++        cpu->has_vfp_d32 = true;
++        if (!kvm_enabled()) {
++            /*
++             * The permitted values of the SIMDReg bits [3:0] on
++             * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
++             * make sure that has_vfp_d32 can not be set to false.
++             */
++            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
++                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
++                qdev_property_add_static(DEVICE(obj),
++                                         &arm_cpu_has_vfp_d32_property);
++            }
++        }
++    }
 +
- const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
- const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
- const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
- const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
--
- const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
-+const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
-+const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
+     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+         cpu->has_neon = true;
+         if (!kvm_enabled()) {
+@@ -1674,6 +1693,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (cpu->has_vfp_d32 != cpu->has_neon) {
++        error_setg(errp, "ARM CPUs must have both VFP-D32 and Neon or neither");
++        return;
++    }
++
++   if (!cpu->has_vfp_d32) {
++        uint32_t u;
++
++        u = cpu->isar.mvfr0;
++        u = FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
++        cpu->isar.mvfr0 = u;
++    }
++
+     if (!cpu->has_vfp) {
+         uint64_t t;
+         uint32_t u;
 -- 
 2.40.1
 

@@ -1,83 +1,87 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1216620ejt;
-        Fri, 16 Jun 2023 00:23:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ425771/Ej0T+UV6Jg6cRXzkxkLC2TW+CQQR37pHAUHFCP1nlZnLHx7pFPoHGJwD0jEqX3c
-X-Received: by 2002:a05:622a:587:b0:3f3:90a8:6906 with SMTP id c7-20020a05622a058700b003f390a86906mr2119650qtb.17.1686900210361;
-        Fri, 16 Jun 2023 00:23:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686900210; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1223464ejt;
+        Fri, 16 Jun 2023 00:44:15 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7sbAB1tPcEJItZSiVZ9PnzbsuChTqYSVgaW4LSUNSLREWbqE5CuH8LXXWE9NHnv/jaa+dX
+X-Received: by 2002:ac8:5846:0:b0:3f6:bbf6:3c2e with SMTP id h6-20020ac85846000000b003f6bbf63c2emr7691355qth.13.1686901455117;
+        Fri, 16 Jun 2023 00:44:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686901455; cv=none;
         d=google.com; s=arc-20160816;
-        b=oE5gzsGdaCIXKHAGYxr0mlr8MXhjrVjei/1d6yMI835OkeBTTnDlm8Qc2KhUy/dKB0
-         SchNLw5RaaUEx2zrWMTuACQdnBUDq1aOlQaP6vcHidfZSAQRRjZ8MoUX4MMa9p58oEvJ
-         mnRkFcjVCNC636wTclvotDpQGoxbJ1ws64TuOcHYTEc+sKIs8E2y++WSJLIGqg5wRCUd
-         /xUZ6YTukhdrVttOSMoADN5H103bcYwLzGea22O8sW9VbPjjQC/HUyVlD4w27QtNXGyt
-         LAyPouOLC7VQT1ir4SXKcR1yl7oTTBh4+p1ZYqtmb/91BHtLJRUyfIkvsjYX5FMbhyMe
-         MFGA==
+        b=qetKNAxbjMGmbFwu8BH9XPNz+lQVaXTgBlnXLPPxNEleU7b/hqBq7O9TKGNZ6TLsFi
+         vnaR64MejgI2pF1ovx02cN2nPYIR5hJZNWWSCuLpfUM9lJK/DRBWiwJ6LOgdiUNLabkl
+         2m6N1qTTX5N1NDkkF5bVh1k6jlnqJ4SzWr2kFe1+JYqFLgQ+aKAkEnlmOGY8XOJaNjMK
+         QvG6LA3h0GFO6UgORH3DumYYxEA14puzjpwPUgSVboK9cIiOeXwhB4E0azO6F5ieroLq
+         T0nGKgM+T9MBCm0O5wIXJJr6TYnUZRv7odZd+rY38M/CV17P37BOV9HusARORTfdguwO
+         HQ8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:from:subject:to:message-id:date
-         :mime-version:dkim-signature;
-        bh=wuYYOpPr+FECaM+EopRP6sN3+vJLkhPjkW25BdC4XsY=;
-        b=gbAygPeYwcVURM/hR3ZtqMjcwg2uqukwUpm/OM7NCCxaMlJuhBIJscXmstiolXWrfJ
-         O8LygjVu2iGYg2D12b9gxIZ7swuHWiBbS2Kr4bf2V/2MvlCe0+qZrrIGd9YDe2WKpe0e
-         ZH1+7OLJL5MibBZ4ZzR0An2q32/BmO1/lFP8JKqGYGKm/9Qzaxb5aFdIWUFFj80nIGst
-         JkxSHx7lW6R/9TUeK2goF0x5GJh4xImOvHFbqm517+TKPRiVWJo9h+e8gsEAuTDO8tpN
-         C1mR7sf5eSRwadFxMz7Il9LlrepeaUOMx48+YcbUoG4etVBL3Bz6w2+f/zsRPtfqyAb5
-         irAQ==
+         :list-unsubscribe:list-id:precedence:message-id:mime-version:subject
+         :cc:to:from:date;
+        bh=l0fJJhvSAP2oV9J2jIE8CXtcSS2LoOgIB/s+LlyYCDM=;
+        b=Lvku6XZZFfgAMWGtIHCf+uS6Ntx5TbQz7we+OW3kEOxMeeOhM2MzlBKwm2gX6wvBzL
+         SHUnK/GZd7zwhTyYoOOzQRSaC2w0zVg/pwrLLWI41US24cZQ2Q+qOptAIM9tw3OVfGp6
+         yEURipMwc+49x1IcCVLrYU9JTsLz635o1wiAS1coLBLE9ksrYzQpopAtNGCgj4KyAbWs
+         UdKF7JdhehA5CGEqZwCHh9Af7KoHzIwM/bfukvWb4K86O+7nd+dFmuIlgoYMMSXv4oYv
+         Wmaxm6qFQ9Pb9ApwyPcCmVUuUlURVvB1TOoLB+elazF2USA3gv4JzIEtXB+aniS32Pkv
+         iRuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@enjoymove.com header.s=feishu2304261427 header.b=bEqOUVau;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=enjoymove.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1-20020a05622a134100b003f9b57f32efsi10311987qtk.770.2023.06.16.00.23.29
+        by mx.google.com with ESMTPS id c12-20020ac87d8c000000b003f691051eafsi10369036qtd.708.2023.06.16.00.44.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Jun 2023 00:23:29 -0700 (PDT)
+        Fri, 16 Jun 2023 00:44:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@enjoymove.com header.s=feishu2304261427 header.b=bEqOUVau;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=enjoymove.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qA3nd-0007Dh-4C; Fri, 16 Jun 2023 03:23:16 -0400
+	id 1qA47b-0002Pm-V3; Fri, 16 Jun 2023 03:43:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xian.lv@enjoymove.com>)
- id 1qA3nW-0007DQ-Qp
- for qemu-arm@nongnu.org; Fri, 16 Jun 2023 03:23:06 -0400
-Received: from t03.bc.larksuite.com ([209.127.231.39])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xian.lv@enjoymove.com>)
- id 1qA3nT-0001sA-IL
- for qemu-arm@nongnu.org; Fri, 16 Jun 2023 03:23:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- s=feishu2304261427; d=enjoymove.com; t=1686900175; h=from:subject:
- mime-version:from:date:message-id:subject:to:cc:reply-to:content-type:
- mime-version:in-reply-to:message-id;
- bh=wuYYOpPr+FECaM+EopRP6sN3+vJLkhPjkW25BdC4XsY=;
- b=bEqOUVaukIXCxdJg/B051bzA5dSwE0EKmYUCgomDVzMLu6ktZxu5lIWPLv1txd5Az255Qf
- seEpbJMp4nX19MGquLa5hSUKSA1UQt3j2Vp8iWMxO3YYfI+XO6y5/ZZ5IG7ckIkrKLCeht
- RgA9Wf1118Yw8N9b1PlimFlrZAMg4HrjCOBuUuR9L1vDbOG52B9wvQJ4mOZ3NUhOjgLOqm
- dUaK4QD2eQn8NDa5P/e1bPUHA+a3qR2KZTr0qIBuL2g7jSEeWQn4VfztzNN/YpR1rj7nHH
- qtt5DJdFlXyNK/wmE+CDkGtml1VvD508c+pDoQzXQdAIXmDzCOYxMJ++a2YkDA==
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1qA47a-0002O0-Fm; Fri, 16 Jun 2023 03:43:50 -0400
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1qA47T-0007vP-Vi; Fri, 16 Jun 2023 03:43:49 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAnrF04Eoxk0yU6AA--.29718S2;
+ Fri, 16 Jun 2023 15:41:44 +0800 (CST)
+Received: from WYQ-S (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwA3dAahEoxkR3IAAA--.1739S3;
+ Fri, 16 Jun 2023 15:43:30 +0800 (CST)
+Date: Fri, 16 Jun 2023 15:43:31 +0800
+From: "Yuquan Wang" <wangyuquan1236@phytium.com.cn>
+To: jonathan.cameron <jonathan.cameron@huawei.com>, 
+ "Gregory Price" <gregory.price@memverge.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, 
+	qemu-devel <qemu-devel@nongnu.org>
+Subject: A confusion about CXL in arm virt machine
+X-Priority: 3
+X-GUID: 1CA737B7-7292-4BAB-85B6-16F638FABB2E
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.228[cn]
 Mime-Version: 1.0
-X-Lms-Return-Path: <lba+1648c0dce+220f0b+nongnu.org+xian.lv@enjoymove.com>
+Message-ID: <2023061615433049315231@phytium.com.cn>
 Content-Type: multipart/alternative;
- boundary=bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
-Date: Fri, 16 Jun 2023 15:22:54 +0800
-Message-Id: <cdacca34302f3eb2b71addffba1e6b89d7f4a190.59e36293.4646.46a0.a1bb.76c2198a3286@feishu.cn>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: No print info when starrting qemu-system-aarch64
-From: =?utf-8?q?=E5=90=95=E8=B4=A4?= <xian.lv@enjoymove.com>
-Received-SPF: pass client-ip=209.127.231.39;
- envelope-from=xian.lv@enjoymove.com; helo=t03.bc.larksuite.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ boundary="----=_001_NextPart601833761820_=----"
+X-CM-TRANSID: AQAAfwA3dAahEoxkR3IAAA--.1739S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAMAWSLYqgCrgABsE
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_FONT_LOW_CONTRAST=0.001,
+ HTML_MESSAGE=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_KAM_HTML_FONT_INVALID=0.01,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,197 +97,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dhjeMoKCutzK
+X-TUID: NbBNWKRc6dOd
 
---bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
+This is a multi-part message in MIME format.
+
+------=_001_NextPart601833761820_=----
+Content-Type: text/plain;
+	charset="GB2312"
+Content-Transfer-Encoding: base64
+
+SGksIEdyZWdvcnkNCg0KVGhlcmUgaXMgb25lIGNvbmZ1c2lvbiBhYm91dCBDWEwgaW4gUUVNVSBJ
+IGhvcGUgdG8gY29uc3VsdC4gDQpJZiB5b3UgaGF2ZSBzb21lIHRpbWUgdG8gbG9vayBhdCB0aGlz
+IGVtYWlsLCBJIHdvdWxkIGhhdmUgYmV0dGVyIHVuZGVyc3RhbmRpbmcgb2YgQ1hMIA0KZW11bGF0
+aW9uIGluIFFFTVUuDQoNCk9uIGRvY3Mvc3lzdGVtL2RldmljZXMvY3hsLnJzdCAsICBHcmVnb3J5
+IHdyb3RlOg0KQSB2ZXJ5IHNpbXBsZSBzZXR1cCB3aXRoIGp1c3Qgb25lIGRpcmVjdGx5IGF0dGFj
+aGVkIENYTCBUeXBlIDMgVm9sYXRpbGUgTWVtb3J5IGRldmljZTo6DQpxZW11LXN5c3RlbS1hYXJj
+aDY0IC1NIHZpcnQsZ2ljLXZlcnNpb249MyxjeGw9b24gLW0gNGcsbWF4bWVtPThHLHNsb3RzPTgg
+LWNwdSBtYXggXA0KLi4uLi4uDQoNCkFzIHRoZSBjdXJyZW50IG1hc3RlciBicmFuY2ggb2YgUUVN
+VSBoYXMgbm90IHlldCBjb21wbGVtZW50ZWQgdGhlIENYTCBvcHRpb24vZXhwYW5zaW9uIA0KaW4g
+YXJtIHZpcnQgbWFjaGluZSwgaG93IHRoaXMgZXhhbXBsZSBjb21tYW5kIGxpbmVzIHdvcmtlZD8g
+T3IgaGVyZSB1c2VkIGFub3RoZXIgYnJhbmNoIA0KcmF0aGVyIHRoYW4gbWFzdGVyPw0KDQpNYW55
+IHRoYW5rcw0KWXVxdWFuDQo=
+
+------=_001_NextPart601833761820_=----
+Content-Type: text/html;
+	charset="GB2312"
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
 
-Dear qemu guys,
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
+t=3DGB2312"><style>body { line-height: 1.5; }blockquote { margin-top: 0px;=
+ margin-bottom: 0px; margin-left: 0.5em; }div.FoxDiv20230616153421567746 {=
+ }body { font-size: 13px; font-family: "Times New Roman"; color: rgb(0, 0,=
+ 0); line-height: 1.5; }</style></head><body>=0A<div><span></span></div><b=
+lockquote style=3D"margin-Top: 0px; margin-Bottom: 0px; margin-Left: 0.5em=
+; margin-Right: inherit"><div><span style=3D"background-color: transparent=
+;">Hi,&nbsp;</span><span style=3D"background-color: transparent;">G</span>=
+<span style=3D"background-color: transparent;">regory</span></div><div><di=
+v class=3D"FoxDiv20230616153421567746"><div><span style=3D"background-colo=
+r: transparent;"><br></span></div><div><span style=3D"background-color: tr=
+ansparent;">There is one confusion about CXL in QEMU&nbsp;</span><span sty=
+le=3D"background-color: transparent;">I hope to consult</span><span style=
+=3D"background-color: transparent;">.&nbsp;</span></div><div><span style=
+=3D"background-color: transparent;">If you have some time&nbsp;</span><spa=
+n style=3D"color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);">to&nb=
+sp;look&nbsp;at&nbsp;this email,&nbsp;</span><span style=3D"color: rgb(0, =
+0, 0); background-color: rgba(0, 0, 0, 0);">I would have better understand=
+ing of CXL&nbsp;</span></div><div><span style=3D"color: rgb(0, 0, 0); back=
+ground-color: rgba(0, 0, 0, 0);">emulation in QEMU.</span></div><div><span=
+ style=3D"background-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0);"><br></=
+span></div>=0AOn&nbsp;docs/system/devices/cxl.rst&nbsp;,&nbsp; G<span>rego=
+ry</span>&nbsp;wrote:<div><span style=3D"background-color: rgba(0, 0, 0, 0=
+); color: rgb(0, 0, 0);">A&nbsp;very&nbsp;simple&nbsp;setup&nbsp;with&nbsp=
+;just&nbsp;one&nbsp;directly&nbsp;attached&nbsp;CXL&nbsp;Type&nbsp;3&nbsp;=
+Volatile&nbsp;Memory&nbsp;device::</span></div><div><span style=3D"color: =
+rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0);">qemu-system-aarch64&nbs=
+p;-M&nbsp;virt,gic-version=3D3,cxl=3Don&nbsp;-m&nbsp;4g,maxmem=3D8G,slots=
+=3D8&nbsp;-cpu&nbsp;max&nbsp;\</span><br><div></div><div>......</div><div>=
+<br></div><div>As the current master branch of&nbsp;<span style=3D"backgro=
+und-color: transparent;">QEMU has not yet complemented the CXL option/</sp=
+an><span style=3D"background-color: transparent;">expansion&nbsp;</span></=
+div><div><span style=3D"background-color: transparent;">in arm virt machin=
+e, how this e</span><span style=3D"background-color: rgba(0, 0, 0, 0); col=
+or: rgb(0, 0, 0);">xample&nbsp;command&nbsp;lines worked? Or here used ano=
+ther branch&nbsp;</span></div><div><span style=3D"background-color: rgba(0=
+, 0, 0, 0); color: rgb(0, 0, 0);">rather than master?</span></div><div><br=
+></div><div>Many thanks</div><div>Yuquan</div></div></div></div></blockquo=
+te>=0A</body></html>
+------=_001_NextPart601833761820_=------
 
-=C2=A0=C2=A0=C2=A0 I've met with a strange problem when using qemu as simul=
-ator for arm64.
-I tried to start qemu with the command below:
-------
-sudo qemu-system-aarch64 -machine virt -cpu=C2=A0cortex-a72 -smp 2 -m 2048 =
--kernel=C2=A0Image=C2=A0-append "console=3DttyAMA0 root=3D/dev/vda" -nograp=
-hic -drive file=3Dramdisk.img -drive file=3Ddisk.img -nic tap,model=3De1000=
-,script=3D/etc/qemu-ifup
-------
-The file:Image=C2=A0is the kernel bin of linux kernel =C2=A0which=C2=A0comp=
-iled with default config.
-While I tried with linux kernel-5.15, then the simulator can=C2=A0be starte=
-d properly.
-For=C2=A0the=C2=A0kernel 6.3.8; kernel-5.10.130, the result is OK as well
-But there's no output info after the command executed if the kernel before =
-4.19 is used.
-Is there any problem when early linux kernel (before 4.19) is used for qemu=
- tools ?
-Thank you so much.
-
-BestRegards,
-Rex=C2=A0
---bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset=UTF-8
-
-<div id=3D"editor_version_1.36.9_yHIsAnuG" style=3D"word-break:break-word;"=
-><div data-zone-id=3D"0" data-line-index=3D"0" data-line=3D"true" style=3D"=
-font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><s=
-pan style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFo=
-nt, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tah=
-oma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb=
-(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">Dear q=
-emu guys,</span></span></span></span></div><div data-zone-id=3D"0" data-lin=
-e-index=3D"1" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px;=
- margin-bottom: 4px; line-height: 1.6;"><br></div><div data-zone-id=3D"0" d=
-ata-line-index=3D"2" data-line=3D"true" style=3D"font-size: 14px; margin-to=
-p: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14=
-px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChi=
-neseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quo=
-t;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
-=3D"background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp; I've met with=
- a strange problem when using qemu as simulator for arm64.</span></span></s=
-pan></span></div><div data-zone-id=3D"0" data-line-index=3D"3" data-line=3D=
-"true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-=
-height: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: =
-LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMa=
-cSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span sty=
-le=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 25=
-5, 255);">I tried to start qemu with the command below:</span></span></span=
-></span></div><div data-zone-id=3D"0" data-line-index=3D"4" data-line=3D"tr=
-ue" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-hei=
-ght: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: Lar=
-kHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSy=
-stemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=
-=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255,=
- 255);">------</span></span></span></span></div><div data-zone-id=3D"0" dat=
-a-line-index=3D"5" data-line=3D"true" style=3D"font-size: 14px; margin-top:=
- 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px=
-;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChine=
-seQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;=
-, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
-=3D"background-color: rgb(255, 255, 255);">sudo qemu-system-aarch64 -machin=
-e virt </span></span></span></span><span style=3D"font-size: 14px;"><span s=
-tyle=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -=
-apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, s=
-ans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"backgrou=
-nd-color: rgb(255, 255, 255);">-cpu</span></span></span></span><span style=
-=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkE=
-mojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quo=
-t;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, =
-41);"><span style=3D"background-color: rgb(255, 255, 255);">&nbsp;cortex-a7=
-2 -smp 2 -m 2048 -kernel</span></span></span></span><span style=3D"font-siz=
-e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
-rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
-C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
-style=3D"background-color: rgb(255, 255, 255);"><b>&nbsp;Image</b></span></=
-span></span></span><span style=3D"font-size: 14px;"><span style=3D"font-fam=
-ily: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Bl=
-inkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><spa=
-n style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(25=
-5, 255, 255);">&nbsp;-append "console=3DttyAMA0 root=3D/dev/vda" -nographic=
- -drive file=3Dramdisk.img -drive file=3Ddisk.img -nic tap,model=3De1000,sc=
-ript=3D/etc/qemu-ifup</span></span></span></span></div><div data-zone-id=3D=
-"0" data-line-index=3D"6" data-line=3D"true" style=3D"font-size: 14px; marg=
-in-top: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-siz=
-e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
-rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
-C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
-style=3D"background-color: rgb(255, 255, 255);">------</span></span></span>=
-</span></div><div data-zone-id=3D"0" data-line-index=3D"7" data-line=3D"tru=
-e" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-heig=
-ht: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: Lark=
-HackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSys=
-temFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=
-=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255,=
- 255);">The file:</span></span></span></span><span style=3D"font-size: 14px=
-;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChine=
-seQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;=
-, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
-=3D"background-color: rgb(255, 255, 255);"><b>Image</b></span></span></span=
-></span><span style=3D"font-size: 14px;"><span style=3D"font-family: LarkHa=
-ckSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSyste=
-mFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"=
-color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255=
-);">&nbsp;is the kernel bin of linux kernel &nbsp;</span></span></span></sp=
-an><span style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSaf=
-ariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont=
-, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color=
-: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">w=
-hich</span></span></span></span><span style=3D"font-size: 14px;"><span styl=
-e=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -app=
-le-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans=
--serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-=
-color: rgb(255, 255, 255);">&nbsp;compiled with default config.</span></spa=
-n></span></span></div><div data-zone-id=3D"0" data-line-index=3D"8" data-li=
-ne=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; =
-line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-fam=
-ily: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Bl=
-inkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><spa=
-n style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(25=
-5, 255, 255);">While I tried with linux kernel-5.15, then the simulator </s=
-pan></span></span></span><span style=3D"font-size: 14px;"><span style=3D"fo=
-nt-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-syst=
-em, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;=
-"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: =
-rgb(255, 255, 255);">can</span></span></span></span><span style=3D"font-siz=
-e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
-rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
-C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
-style=3D"background-color: rgb(255, 255, 255);">&nbsp;be started properly.<=
-/span></span></span></span></div><div data-zone-id=3D"0" data-line-index=3D=
-"9" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bo=
-ttom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=
-=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -appl=
-e-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-=
-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-c=
-olor: rgb(255, 255, 255);">For</span></span></span></span><span style=3D"fo=
-nt-size: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFo=
-nt, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;Ping=
-Fang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);">=
-<span style=3D"background-color: rgb(255, 255, 255);">&nbsp;the</span></spa=
-n></span></span><span style=3D"font-size: 14px;"><span style=3D"font-family=
-: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Blink=
-MacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span s=
-tyle=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, =
-255, 255);">&nbsp;kernel 6.3.8; kernel-5.10.130, the result is OK as well</=
-span></span></span></span></div><div data-zone-id=3D"0" data-line-index=3D"=
-10" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bo=
-ttom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=
-=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -appl=
-e-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-=
-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-c=
-olor: rgb(255, 255, 255);">But there's no output info after the command exe=
-cuted if the kernel before 4.19 is used.</span></span></span></span></div><=
-div data-zone-id=3D"0" data-line-index=3D"11" data-line=3D"true" style=3D"f=
-ont-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><sp=
-an style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFon=
-t, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Taho=
-ma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(=
-31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">Is ther=
-e any problem when early linux kernel (before 4.19) is used for qemu tools =
-?</span></span></span></span></div><div data-zone-id=3D"0" data-line-index=
-=3D"12" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margi=
-n-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span st=
-yle=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -a=
-pple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sa=
-ns-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"backgroun=
-d-color: rgb(255, 255, 255);">Thank you so much.</span></span></span></span=
-></div><div data-zone-id=3D"0" data-line-index=3D"13" data-line=3D"true" st=
-yle=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1=
-.6;"><br></div><div data-zone-id=3D"0" data-line-index=3D"14" data-line=3D"=
-true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-h=
-eight: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: L=
-arkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMac=
-SystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span styl=
-e=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255=
-, 255);">BestRegards,</span></span></span></span></div><div data-zone-id=3D=
-"0" data-line-index=3D"15" data-line=3D"true" style=3D"font-size: 14px; mar=
-gin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-si=
-ze: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, L=
-arkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang =
-SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span=
- style=3D"background-color: rgb(255, 255, 255);">Rex&nbsp;</span></span></s=
-pan></span></div></div>
---bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a--

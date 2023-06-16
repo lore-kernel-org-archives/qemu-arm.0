@@ -1,314 +1,209 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1438555ejt;
-        Fri, 16 Jun 2023 07:45:35 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ75iBxjlcpEBpAxZE15XHL72cHujBeOHLOsD1IbCwATIHyzJ9kGxAEYVc4fh4jDjkhk5bdz
-X-Received: by 2002:ac8:7e86:0:b0:3f6:c0f7:a5c4 with SMTP id w6-20020ac87e86000000b003f6c0f7a5c4mr2843830qtj.25.1686926734940;
-        Fri, 16 Jun 2023 07:45:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686926734; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1557039ejt;
+        Fri, 16 Jun 2023 11:11:15 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ40cAt3m1ycKHjKRX3kB21DqHra1tS+J4gXsFO3V0GKxnr0365ZWzNym80q+xL8UVi/5FVJ
+X-Received: by 2002:a05:6214:caa:b0:62b:4f6e:35ca with SMTP id s10-20020a0562140caa00b0062b4f6e35camr3608539qvs.47.1686939075049;
+        Fri, 16 Jun 2023 11:11:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1686939075; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uiCX9klyQHk13Bc+CjN3cakM/kvO0eAqwiyuymCkcBGBicWSKXxluEDfCZQRlQgrr0
-         Wo+82rRfo6ChhfgFlGxZkKZr3FKYKKDb5X6pRoETvT8s891g2te2KXpTo8r0Tm1OA4Xh
-         aelwb2vi6n4zY9M4O5rmlTWXK2R5YZawB3oPFSYpg/AK2Wy4bxI+9TxlHGP9R/jVBzKY
-         KAboEkmazcIUTzWpsHFLnmJ/Htr6Xb4QUc3dpnT+u4VKC9HMjs9pbHq1PjqnW3kWk11c
-         F93368mxHg75oNuWyNJruFpuNKImZcEkEZrYN//sxCXTLYIcswFBCy6+zvvLL8hxiuVx
-         7Q+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=at9cYuwY6dTr+Wt7Sfsfcgm3dgsHLGeSbVULCwtE+6d7VJpKCwHPqxfZ/EkszKTw2h
+         5sn+bQT8AEGLd21GPDrA0KzIIpWsBUAwZM2P9l8I68YeQau8md2yFVTUvrHgP3484LaD
+         dYMfqxpSfFlJWbV8wXVoSPX7ggDPhTouwdrwfO3O037FITRS9E4/lJq6Mer7aa5veoA5
+         hdnccE6Bcsfn3ssUvUylfynb/D7NQSOoulFD75TTWqYeUrQ3c4NHjR8b9NrsuLvOoMWN
+         sVi16iWWFb32Mvt1Ul8ftqZTlDIhqzmkFtdhDJ4VXvn4knAzEmzOcWBn5Xorr+TAw0Ie
+         BhyA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
+         :content-disposition:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=4PEESTFEwGOyD5A7B35RXNYYYjRW1i8IabcsUrOKSeI=;
-        b=JsOG2Ba0btM85MaxD4vz3P8NqYW15NztK7MB83/ZzO43ZzKCwf0ZOiADSyGGIK24W4
-         /XrBVtSom20q3+HqXsSfwex6Ca9HsDfDhWlgPmEt5tgYqlLrg1avo16xfvWMok4rj7Pz
-         d+ZhWQHeM2ogeDJ0emSmTDeKRW2A/Qj1UHjgaSvSFaItzifAO9dAsa/GnbMzrNPKwSYC
-         DOGzeWWlwcsrVHx65xMyJKPnEa57eU8PnxtjH2HSH6+EODC/Eno2NN2vH1bfdRoN6gUO
-         kn2OGGpMF0w97H+JEPy9NLJuaxNWNnT4DKZt71U7hoeTVuJbpMGBfBOLljHizS8abt46
-         t0wQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=My23+SJr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        bh=kJY7KbunT8r7hWpYcde8uDT+I2bn9vWRvisFD+kPpUs=;
+        b=TVniDEya7Y7SpEqptsSMdQRnwiK1pgn1N4dpWGua3Ei1dkJ9yvgE5lmvDmge595x2j
+         pfPUpnpAowb/4W04r6Va6ZFUEcA6UD/7+DAiA1x/12jDoXapHoJFGr5HNXrWusmQpmWX
+         xVodDsW3ljBNQ+AJ1eFW/7dCspUygeQQuZzM/fRy/Ch8Vm5wmHfSdwlXTd58t1EhF8Eb
+         y/f5/YVFQ8Y45v6hKbw0fQ9+S8NEWdhEA7SK2UdTRSdZgt7Rhpp4roD8oqBcaBaJP5ue
+         9Vf/2WqHMWPBar4RUtnc6HflVOCzXeZJW4/nYkfL3XdXYTtDMu2aJ5UmMkYUWK2WUnGF
+         2pNg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@memverge.com header.s=selector2 header.b=habPrhBx;
+       arc=pass (i=1 spf=pass spfdomain=memverge.com dkim=pass dkdomain=memverge.com dmarc=pass fromdomain=memverge.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=memverge.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t8-20020ac85888000000b003f6bb129f91si10365126qta.807.2023.06.16.07.45.34
+        by mx.google.com with ESMTPS id g8-20020a0562140ac800b00625b5ee1e47si11567558qvi.368.2023.06.16.11.11.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Jun 2023 07:45:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Jun 2023 11:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=My23+SJr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@memverge.com header.s=selector2 header.b=habPrhBx;
+       arc=pass (i=1 spf=pass spfdomain=memverge.com dkim=pass dkdomain=memverge.com dmarc=pass fromdomain=memverge.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=memverge.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qAAhW-0004x0-OZ; Fri, 16 Jun 2023 10:45:22 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qADuB-0001dV-Ad; Fri, 16 Jun 2023 14:10:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qAAhV-0004wK-6F
- for qemu-arm@nongnu.org; Fri, 16 Jun 2023 10:45:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <gregory.price@memverge.com>)
+ id 1qADu9-0001c7-0A; Fri, 16 Jun 2023 14:10:37 -0400
+Received: from mail-dm6nam12on20607.outbound.protection.outlook.com
+ ([2a01:111:f400:fe59::607]
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qAAhR-0002QD-Ju
- for qemu-arm@nongnu.org; Fri, 16 Jun 2023 10:45:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1686926708;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4PEESTFEwGOyD5A7B35RXNYYYjRW1i8IabcsUrOKSeI=;
- b=My23+SJrncDrada6rsHurY4FPAZOf2xjSoYJ0xDZ054cPzS0F4BYxeXHaBlrLgyIQU3Cim
- VUZ9Cdtd65YRk3bWN6WG5Xi/gez3U1Ilt9MfMkPFerkYVEUv06dPPtr9hXP4YqAXzA1YvY
- 1LtCn/FgTPAWM5SpaHJfeLXnC4tOFW4=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-524-MMbo4hd7NgWQeDz0x0UOKw-1; Fri, 16 Jun 2023 10:45:07 -0400
-X-MC-Unique: MMbo4hd7NgWQeDz0x0UOKw-1
-Received: by mail-lf1-f72.google.com with SMTP id
- 2adb3069b0e04-4f658076c93so638063e87.0
- for <qemu-arm@nongnu.org>; Fri, 16 Jun 2023 07:45:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686926706; x=1689518706;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4PEESTFEwGOyD5A7B35RXNYYYjRW1i8IabcsUrOKSeI=;
- b=GRajEmrfzF5wkKDynPo8+CBo8gcjCFkeu9zhqL0gCVlq3Z54gQX1yFL3LJNfZlwKmq
- 4Ky1zSWVLM03Gk/5iKU5CnSZXCf5SjBOv2y17Azmc/AYlN0w0c+GITc+WzChHbhfBVSE
- PBF3sOq5FsGZ0aJDvy8qGKedx9sNM7OKCstN4IXR3rGkeT0WIqVYfbIQJn3+6hpERseA
- eV/pJUJhA6LEHt2yfL5y2MoFdEZGaBa4Iq8nvyyIFZvLNF9RwMRkKSODVxcLBuZ6O4GY
- fABrWKORTOxjra5Jc6Vene2LulpU6oYVBwSG8y/QShQdkm0Pbldi8QPooziEhJGh3sSe
- a6qg==
-X-Gm-Message-State: AC+VfDyTkTGu/1LngsUjEpwjUASyjryHr0dGjWt6pk/ZQmj2yNyriKLG
- 1jX51iklYB+ndzwGo4rf+0UavrhWc6rdiLqfmNXdA5XRl5SXti/DdNndDivEddVzE+i4FggiX4H
- uZ0d5weBeu7KE
-X-Received: by 2002:a05:6512:2f4:b0:4f8:582e:f4f2 with SMTP id
- m20-20020a05651202f400b004f8582ef4f2mr1328157lfq.47.1686926705670; 
- Fri, 16 Jun 2023 07:45:05 -0700 (PDT)
-X-Received: by 2002:a05:6512:2f4:b0:4f8:582e:f4f2 with SMTP id
- m20-20020a05651202f400b004f8582ef4f2mr1328134lfq.47.1686926705259; 
- Fri, 16 Jun 2023 07:45:05 -0700 (PDT)
-Received: from redhat.com (46-223-98.internethome.cytanet.com.cy.
- [46.199.223.98]) by smtp.gmail.com with ESMTPSA id
- o25-20020a1c7519000000b003f427687ba7sm2380545wmc.41.2023.06.16.07.45.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Jun 2023 07:45:04 -0700 (PDT)
-Date: Fri, 16 Jun 2023 10:45:01 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 05/12] hw/virtio: Add support for apple virtio-blk
-Message-ID: <20230616104401-mutt-send-email-mst@kernel.org>
-References: <20230614224038.86148-1-graf>
- <20230614225626.97734-1-graf@amazon.com>
- <ZIxMIyi1KY7Ku9Xm@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <ZIxMIyi1KY7Ku9Xm@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <gregory.price@memverge.com>)
+ id 1qADu7-0004Zj-1i; Fri, 16 Jun 2023 14:10:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dbNuA94Dzm1J5D7nWiN82/Uo4ioutZkzAfkYgOX1544rGZ+F/UC4dLL0j1upnlqw25a5Bdd+DsnkEJsdB1Utp5fDDUzySj/GrJ4mN9L0WIyacMbWt3vagEZazSCoKDGyl7ss1Dc1TvO4kzvg1R79KyyTmEkPaTSEJxdsk62BUME4ipWYmEayOviwiyJCg2XHpPXBTRRgkymbVzwwWnFklk4BSgtvaDuWLAsLfh7bYkzF2luQpb2rvBrkA9WIt5RIZWKrmldlEdimipzJpWpo+DjBXY09KapGL4tiUkoANJDWxJV47/8uYEk/eTXaXPO7EK/WmgmvEv68+reO1KgQXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kJY7KbunT8r7hWpYcde8uDT+I2bn9vWRvisFD+kPpUs=;
+ b=jkg6Xv/sMKBNgDvfv98jB2L935E+Pik0CTRU9XU4ovlA8F3p3kMe8PDeRsqUnCme/WzavMgjTQX8u4c9sgEXEOKpNuZ8g8tdn5VlAhrxOIKHJjv0caT/4Q5ezzZHCWQXVBg8pXAJIx75vhi9MHSA27kWxhoyH43OIbyqNkUDk9TgA73Hns1XCy7Dc+c32UNP/1My2zEYg+InkO9UyZL2YkbUoWUCqIUTgUqLrRXDVBvWzdir26tbx07DyVS0D7x0cW9HsBKe8abSJdKeXE6Bcrbsed2XRq/leCQZkyI3j7rC0YhVKM1McRVRJGp0cVD8QKn+v3DAsEBwk/JPVxDxbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=memverge.com; dmarc=pass action=none header.from=memverge.com;
+ dkim=pass header.d=memverge.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=memverge.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kJY7KbunT8r7hWpYcde8uDT+I2bn9vWRvisFD+kPpUs=;
+ b=habPrhBxQtNjtQnnTLeEU4fU5GW5ELwnoORcORg1Nd2jOsaPBmVKreq2kdTSF4bYKw/bmMwonPbLMZAk7zonAccMbWDdZurJrUMjVU4/qybxQ5QZNiPnpQF5KhCeIOpSSoP7Hqw5iQldnBj4iJ8u+iEA7v9F9N/G1dKtVVc1Jqo=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=memverge.com;
+Received: from SJ0PR17MB5512.namprd17.prod.outlook.com (2603:10b6:a03:394::19)
+ by BL3PR17MB6114.namprd17.prod.outlook.com (2603:10b6:208:3ba::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.29; Fri, 16 Jun
+ 2023 18:10:28 +0000
+Received: from SJ0PR17MB5512.namprd17.prod.outlook.com
+ ([fe80::7e82:eb7d:47cd:2ebc]) by SJ0PR17MB5512.namprd17.prod.outlook.com
+ ([fe80::7e82:eb7d:47cd:2ebc%4]) with mapi id 15.20.6500.029; Fri, 16 Jun 2023
+ 18:10:28 +0000
+Date: Fri, 16 Jun 2023 14:10:24 -0400
+From: Gregory Price <gregory.price@memverge.com>
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+Cc: "jonathan.cameron" <jonathan.cameron@huawei.com>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: A confusion about CXL in arm virt machine
+Message-ID: <ZIylkIt38MXaTytx@memverge.com>
+References: <2023061615433049315231@phytium.com.cn>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+In-Reply-To: <2023061615433049315231@phytium.com.cn>
+X-ClientProxiedBy: SJ0PR03CA0203.namprd03.prod.outlook.com
+ (2603:10b6:a03:2ef::28) To SJ0PR17MB5512.namprd17.prod.outlook.com
+ (2603:10b6:a03:394::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ0PR17MB5512:EE_|BL3PR17MB6114:EE_
+X-MS-Office365-Filtering-Correlation-Id: 412e36b9-b6a0-4460-56af-08db6e94f6d0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KMGm0Wk1kP8w7mvJkKHQW1VZ3/j1c8r11gkXn53+79gx0FYF5gX95VvVtX/k1c7kzvjIxFoIXrauw1f/S0yZcF4X+515lcqmkiph3yvomoXjWOJshxl2J7KoV3QOy+SzZ04pwPg7Kuvzl4AnmHNUvBhMTFa6U+9749PzfXBWj5XEa86mrUU7xHW1P3DVcJ4Y3Sv0WVGCtnPyGYQf3j7pkEZ7meXnU/qR2nV3esDlo1DmOX1LC44TyCacS6Q2q0O5TCAkBdTNizteGvZTbaD/FpGqjQ29zEI8e5Ez1yG5QGUK8TDmQmAP7HoCqL+oWHCTJ4oyAvG+QhDypF7QKCe/SAloGdNhF5hnXqAhP0Yba6Qe7wDzFWANrGoZxKud1oo/WhbcWKFP0VquiMVW6LaqE+TosSd0mOq8Mnf8WtxXygU6jGa1rPK4QX/zBEuojJpvXkjpEwe1/f3yKoUjrJ8015p4dPH8G2Y7Y6cCKYTtTFt0AVnNJtPe+Yl8GlKNeQZEkO73S9RI8sUOpWvutSSGThJyfHNjoj6dl6i9rFIgqvc=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR17MB5512.namprd17.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(396003)(366004)(376002)(346002)(136003)(39840400004)(451199021)(966005)(6486002)(316002)(41300700001)(2906002)(86362001)(6506007)(186003)(26005)(44832011)(2616005)(6512007)(38100700002)(83380400001)(5660300002)(8936002)(36756003)(66946007)(66476007)(8676002)(478600001)(54906003)(6666004)(4326008)(66556008)(6916009);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qgLhPBfO215PhgOAFevDUKGwZ6SVpxrMKiimrNbyunxn795MnFECjWwPNmK/?=
+ =?us-ascii?Q?wjgpMS2xNGT2BhE4NkSnH+11Sw79q24rpTiTcja4FA6e5i3hEp7lesnFeOvt?=
+ =?us-ascii?Q?VDd03A0ceuo05uoAFfmdAjojFcBPhQ8LHzYyBDuT42d/dP3AR8A7wi09B4xx?=
+ =?us-ascii?Q?QJxR0lkMeWbrXLKpQWEXXjie4QidqyyRkdh5blkJQpwH6thfNjQyatRdnfUo?=
+ =?us-ascii?Q?IwKilCePNafyCUuT0tPc8FQl9sFk+sSbftN3IzRE1weygl6tNyf6sfyqAqzz?=
+ =?us-ascii?Q?ehi7HS3IuM7Z9h0Q4QCBmA1eC3J6JeVL/E7CaiOn/Zr8kWSfNMfXc9cFy+5v?=
+ =?us-ascii?Q?ZuxzqE7bXyvK42/XnyjXKiDvaCWuVTwdH0dQmLQy4sid0RyPgrGiyMt2a7HG?=
+ =?us-ascii?Q?Nxjkj/HdC1KmdXKUjv077zTbCHXVv+TgNxkEne5N1sJLt9fhJO5khc2mZ6yv?=
+ =?us-ascii?Q?J/N7kCN3s5TqSM+BO1bHemMzml1DMsSyAMNPk3H8rNFs+QytCKuhdJTXSWfd?=
+ =?us-ascii?Q?onbAFWYElvQ/gMijZ82HboQ0swttS9z5nDeNqvktAy3dMMKam30gyVDT9nkv?=
+ =?us-ascii?Q?j26/UEmbCS3QsXLZkOBByq79yrS9VOYjryPLxvlKjtRX1h+QdoB+JXHJOpbV?=
+ =?us-ascii?Q?bIwjz9fb4241Wb3hHxcm1QYyc699JKZ5j/OC8tPVM18auuKmxJ+k/GuLRLcU?=
+ =?us-ascii?Q?w+k4CyIcN2OqW7xJvDupO5he9lFsLZpUZIlyw3GTpQIPlqlEaeh5W/B/appS?=
+ =?us-ascii?Q?MeZLHz5enec/Czp7BnzG/+SRSiUflgynw7pxkASK3tnSqHe8obPHmAzNRLyQ?=
+ =?us-ascii?Q?Fx0/dBcKc4U/TVQUUQS4y+IBxJvijgPSghEpzNY4bq/jxVHFU8r5X+/yKcwR?=
+ =?us-ascii?Q?+6JjzOWfTm//Kx3SOOa2nTyYF+kiTnS3HovfX+lCz+uOsEc+dlxPkC6DNbbS?=
+ =?us-ascii?Q?rkkY9nrhBVOavmVgOfiAPvpKdxAhi7yly45IGpSZn39Zo1MeF5J4FOUUDPBe?=
+ =?us-ascii?Q?VJmk35mINPJ8vflDTzA4CyRYxhWnS2m2Pz7LhlF0N7cm8WBX9JxDDUCZu9K6?=
+ =?us-ascii?Q?Kb/DY8omtbKkELkaUhTwdoADv7G6zwkZ20MY3LbrLLyQ77Scy0wFzQz/Qy52?=
+ =?us-ascii?Q?UXMgFVbEFJRf5KTM1FcoFOa3zneO12oMErSNuWQpT8YfUYPfxsHMEbZtbKqr?=
+ =?us-ascii?Q?LytJUTC99H4qMtgWP3RBcCSD9YI22WfCIWBMU7lCC6Otg40fFaVT/EdlGnv6?=
+ =?us-ascii?Q?9D0oBexsVejhVwXApa467otTTML364QllE6KvjpiP2VROVze6pNjUjxM1p0h?=
+ =?us-ascii?Q?8RLvx+JlMz8oqXS1s+HzoosC3sOePcc3ApuWfV8OImsAxZwvFB0tFcZfxpL2?=
+ =?us-ascii?Q?U/zs+QyPTUVmERHm2n2TqkiXYip+NlFI6S8EPOIHLTLLVJSj8KQ4jTpjYdnI?=
+ =?us-ascii?Q?RAM61DNkDt9FKxNnf3bT9kFDi6uMKjdxo3zDoUSKFPqVKzC1yhC2B4/Kjf2M?=
+ =?us-ascii?Q?D3YzItV5iOWK6GscqnjHY5uKzBQBAc6JjzNVMCAXPCrN2sB7jK5vCyGVOwj1?=
+ =?us-ascii?Q?tvUqwlbEJyA96KKnFP4Etp52pf4KeIbrZqUUCq3xeub0qqW4OHuYAnzRI1RX?=
+ =?us-ascii?Q?hw=3D=3D?=
+X-OriginatorOrg: memverge.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 412e36b9-b6a0-4460-56af-08db6e94f6d0
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR17MB5512.namprd17.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jun 2023 18:10:28.0254 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5c90cb59-37e7-4c81-9c07-00473d5fb682
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HvYeXghQ0PlE2mlhZOc+EtCiESIr2GZ+yAiD+yfGPQrFDr6NS4ct9RsD6U/r2Ak8CfW+iYKW+pRF/ZIUgDbNfBsPeeVlnifh/iduU+7wR1o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR17MB6114
+Received-SPF: none client-ip=2a01:111:f400:fe59::607;
+ envelope-from=gregory.price@memverge.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
+ SPF_HELO_PASS=-0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wmwt1FFWeehG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 95IX8BrBoFfr
 
-On Fri, Jun 16, 2023 at 01:48:51PM +0200, Kevin Wolf wrote:
-> Am 15.06.2023 um 00:56 hat Alexander Graf geschrieben:
-> > Apple has its own virtio-blk PCI device ID where it deviates from the
-> > official virtio-pci spec slightly: It puts a new "apple type"
-> > field at a static offset in config space and introduces a new discard
-> > command.
+On Fri, Jun 16, 2023 at 03:43:31PM +0800, Yuquan Wang wrote:
+> Hi, Gregory
 > 
-> In other words, it's a different device. We shouldn't try to
-> differentiate only with a property, but actually model it as a separate
-> device.
+> There is one confusion about CXL in QEMU I hope to consult. 
+> If you have some time to look at this email, I would have better understanding of CXL 
+> emulation in QEMU.
 > 
-> > This patch adds a new qdev property called "apple-type" to virtio-blk-pci.
-> > When that property is set, we assume the virtio-blk device is an Apple one
-> > of the specific type and act accordingly.
+> On docs/system/devices/cxl.rst ,  Gregory wrote:
+> A very simple setup with just one directly attached CXL Type 3 Volatile Memory device::
+> qemu-system-aarch64 -M virt,gic-version=3,cxl=on -m 4g,maxmem=8G,slots=8 -cpu max \
+> ......
 > 
-> Do we have any information on what the number in "apple-type" actually
-> means or do we have to treat it as a black box?
+> As the current master branch of QEMU has not yet complemented the CXL option/expansion 
+> in arm virt machine, how this example command lines worked? Or here used another branch 
+> rather than master?
 > 
-> > Signed-off-by: Alexander Graf <graf@amazon.com>
-> > ---
-> >  hw/block/virtio-blk.c                       | 23 +++++++++++++++++++++
-> >  hw/virtio/virtio-blk-pci.c                  |  7 +++++++
-> >  include/hw/pci/pci_ids.h                    |  1 +
-> >  include/hw/virtio/virtio-blk.h              |  1 +
-> >  include/standard-headers/linux/virtio_blk.h |  3 +++
-> >  5 files changed, 35 insertions(+)
-> > 
-> > diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> > index 39e7f23fab..76b85bb3cb 100644
-> > --- a/hw/block/virtio-blk.c
-> > +++ b/hw/block/virtio-blk.c
-> > @@ -1120,6 +1120,20 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-> >  
-> >          break;
-> >      }
-> > +    case VIRTIO_BLK_T_APPLE1:
-> 
-> Can we have a more descriptive name?
-> 
-> > +    {
-> > +        if (s->conf.x_apple_type) {
-> > +            /* Only valid on Apple Virtio */
-> > +            char buf[iov_size(in_iov, in_num)];
-> > +            memset(buf, 0, sizeof(buf));
-> > +            iov_from_buf(in_iov, in_num, 0, buf, sizeof(buf));
-> > +            virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-> 
-> So this is a command that simply fills the guest buffer with zeros
-> without accessing the disk content? Weird, but ok, if that's what they
-> are doing...
-> 
-> The commit message talks about a discard command. I would have expected
-> a command that discards/unmaps data from the disk. I think it would be
-> good to call it something else in the commit message if it has nothing
-> to do with this.
-> 
-> > +        } else {
-> > +            virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-> > +        }
-> > +        virtio_blk_free_request(req);
-> > +        break;
-> > +    }
-> >      default:
-> >          virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-> >          virtio_blk_free_request(req);
-> > @@ -1351,6 +1365,10 @@ static void virtio_blk_update_config(VirtIODevice *vdev, uint8_t *config)
-> >      } else {
-> >          blkcfg.zoned.model = VIRTIO_BLK_Z_NONE;
-> >      }
-> > +    if (s->conf.x_apple_type) {
-> > +        /* Apple abuses the same location for its type id */
-> > +        blkcfg.max_secure_erase_sectors = s->conf.x_apple_type;
-> 
-> Ideally, blkcfg would contain a union there. Since this is a type
-> imported from the kernel, we can't change it inside of QEMU only. Works
-> for me with this comment.
-> 
-> > +    }
-> >      memcpy(config, &blkcfg, s->config_size);
-> >  }
-> >  
-> > @@ -1625,6 +1643,10 @@ static void virtio_blk_device_realize(DeviceState *dev, Error **errp)
-> >  
-> >      s->config_size = virtio_get_config_size(&virtio_blk_cfg_size_params,
-> >                                              s->host_features);
-> > +    if (s->conf.x_apple_type) {
-> > +        /* Apple Virtio puts the blk type at 0x3c, make sure we have space. */
-> > +        s->config_size = MAX(s->config_size, 0x3d);
-> > +    }
-> >      virtio_init(vdev, VIRTIO_ID_BLOCK, s->config_size);
-> >  
-> >      s->blk = conf->conf.blk;
-> > @@ -1734,6 +1756,7 @@ static Property virtio_blk_properties[] = {
-> >                         conf.max_write_zeroes_sectors, BDRV_REQUEST_MAX_SECTORS),
-> >      DEFINE_PROP_BOOL("x-enable-wce-if-config-wce", VirtIOBlock,
-> >                       conf.x_enable_wce_if_config_wce, true),
-> > +    DEFINE_PROP_UINT32("x-apple-type", VirtIOBlock, conf.x_apple_type, 0),
-> 
-> In a separate device, this would probably be called "apple-type"
-> (without "x-") like promised in the commit message?
-> 
-> If not, what is the reason for having an "x-" prefix?
-> 
-> >      DEFINE_PROP_END_OF_LIST(),
-> >  };
-> >  
-> > diff --git a/hw/virtio/virtio-blk-pci.c b/hw/virtio/virtio-blk-pci.c
-> > index 9743bee965..5fbf98f750 100644
-> > --- a/hw/virtio/virtio-blk-pci.c
-> > +++ b/hw/virtio/virtio-blk-pci.c
-> > @@ -62,6 +62,13 @@ static void virtio_blk_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-> >      }
-> >  
-> >      qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-> > +
-> > +    if (conf->x_apple_type) {
-> > +        /* Apple virtio-blk uses a different vendor/device id */
-> > +        pci_config_set_vendor_id(vpci_dev->pci_dev.config, PCI_VENDOR_ID_APPLE);
-> > +        pci_config_set_device_id(vpci_dev->pci_dev.config,
-> > +                                 PCI_DEVICE_ID_APPLE_VIRTIO_BLK);
-> > +    }
-> >  }
-> >  
-> >  static void virtio_blk_pci_class_init(ObjectClass *klass, void *data)
-> > diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-> > index e4386ebb20..74e589a298 100644
-> > --- a/include/hw/pci/pci_ids.h
-> > +++ b/include/hw/pci/pci_ids.h
-> > @@ -188,6 +188,7 @@
-> >  #define PCI_DEVICE_ID_APPLE_UNI_N_AGP    0x0020
-> >  #define PCI_DEVICE_ID_APPLE_U3_AGP       0x004b
-> >  #define PCI_DEVICE_ID_APPLE_UNI_N_GMAC   0x0021
-> > +#define PCI_DEVICE_ID_APPLE_VIRTIO_BLK   0x1a00
-> >  
-> >  #define PCI_VENDOR_ID_SUN                0x108e
-> >  #define PCI_DEVICE_ID_SUN_EBUS           0x1000
-> > diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
-> > index dafec432ce..7117ce754c 100644
-> > --- a/include/hw/virtio/virtio-blk.h
-> > +++ b/include/hw/virtio/virtio-blk.h
-> > @@ -46,6 +46,7 @@ struct VirtIOBlkConf
-> >      uint32_t max_discard_sectors;
-> >      uint32_t max_write_zeroes_sectors;
-> >      bool x_enable_wce_if_config_wce;
-> > +    uint32_t x_apple_type;
-> >  };
-> >  
-> >  struct VirtIOBlockDataPlane;
-> > diff --git a/include/standard-headers/linux/virtio_blk.h b/include/standard-headers/linux/virtio_blk.h
-> > index 7155b1a470..bbea5d50b9 100644
-> > --- a/include/standard-headers/linux/virtio_blk.h
-> > +++ b/include/standard-headers/linux/virtio_blk.h
-> > @@ -204,6 +204,9 @@ struct virtio_blk_config {
-> >  /* Reset All zones command */
-> >  #define VIRTIO_BLK_T_ZONE_RESET_ALL 26
-> >  
-> > +/* Write zeroes command */
-> > +#define VIRTIO_BLK_T_APPLE1	0x10000
-> 
-> Hm... The commit message says discard, this says write zeroes, and the
-> implementation seems to be read zeroes? I'm confused.
+> Many thanks
+> Yuquan
 
-You can't add it here, this is from Linux.
+As of today, the qemu/qemu.git master branch does have the required
+patch for volatile region support: adacc814f541af9281c922e750d8ba4b90c1a73e
 
-> > +
-> >  #ifndef VIRTIO_BLK_NO_LEGACY
-> >  /* Barrier before this op. */
-> >  #define VIRTIO_BLK_T_BARRIER	0x80000000
-> 
-> Kevin
+however, the last time i tested it on x86, the master branch was
+incapable of enabling these regions with the latest kernel (6.3.x)
+despite that kernel having sufficient support to do so.  I have not dug
+into what the discrepency between master and johnathan's working branch
+are just yet.
 
+Last I tested cxl-2023-05-25 branch of Johnathan's fork is working on x86: 
+
+https://gitlab.com/jic23/qemu/-/tree/cxl-2023-05-25
+
+I have not worked with the ARM machine, but Johnathan may be able to
+comment on the state of ARM support for this code.
+
+~Gregory

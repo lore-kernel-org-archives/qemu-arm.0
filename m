@@ -1,85 +1,117 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp892608ejt;
-        Thu, 15 Jun 2023 10:38:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5yPLkA6ehQmfMdpbdluOP9STJH7NrCT9dNCZTNySBqpuEwRcojp8aWofa3OA/n3Mg/Bfe3
-X-Received: by 2002:a05:620a:4723:b0:75b:23a1:366f with SMTP id bs35-20020a05620a472300b0075b23a1366fmr19784040qkb.48.1686850736643;
-        Thu, 15 Jun 2023 10:38:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686850736; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1296759ejt;
+        Fri, 16 Jun 2023 03:30:25 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4T4GpumivMHlLOOFMMOtsXTYExVS3G+/Cy7hywRf1DXuISd66GX8z0lSgetOURKkJ8g33/
+X-Received: by 2002:ac8:7c44:0:b0:3f6:a19b:fcb4 with SMTP id o4-20020ac87c44000000b003f6a19bfcb4mr2185873qtv.47.1686911425640;
+        Fri, 16 Jun 2023 03:30:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686911425; cv=none;
         d=google.com; s=arc-20160816;
-        b=vh94MvqtX4wpmNRI/m13D4GLVbFJySnBGQE8tzQZV+PvHQ6e7gbKGFMh1Z7NLiYFLo
-         7rFF16xZQeuqJornd4g7WI6M9k/urYtgzkhPkeiN/pepCVSVX4Yh+JvjEuGJGG6wumAJ
-         25f38SAaBykXRK8jPoiI/Exfa/MeDwn0iDSlaj2Nit6sUgCLLLnmm0Mu6RdxjdGnnSlW
-         aQmMMMQOBb9Ykgmmelz7d0N7U+2l6aMf4GxZuCtk8bfByPQ2ma539uWJVVvmHHh+WFCm
-         1nZJ2NaLkgHwoodgDXdjEPmbJeQxysekXK95ACSvrz/XVqhpNk233vY2YIbKeNU6ltzw
-         eFmA==
+        b=U/MAiq6luTV/RIFkuJfzCPEYUmxuPr2hkWaVyzahMIhnG40cewsax/pOScdNWc+olZ
+         7/wS2gcMbH9AdMC+krABGrbuo3Q3YvqOtD4eUe+0cMhsnz/pN0UuMC9u8WSAFfGa3dtd
+         u3gkCVeKSyb4Pa2JCOsT/HpPRWMPa5S9hEa7XgdXoxdMpKfLjQFRMSNGLcNt8gCkPky4
+         dFGMxKMCkTr2Z4K3/2NwtBLIgk246yt5n/93J6EwYW1QfB2fXacNSpeygiZLGCsCX4r8
+         iu/1dLpY/D1WkR7d2u8IDun0ierApYA9A0WxaqddJnno/oKwYXPBCCYQRcslL+wS1Vo1
+         5IUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=kssWgeCApOsOcp9kciJKxwv9zRomzLj/N8xGZFFsE/w=;
-        b=yatKvsmBzXJoEooE6kyzJu2FSq8poqosKRry2g4T+lVvzUbe8nFRB9hGV6O5cElNYu
-         M2/scadZCwOxMwLW64DCrOqCOB7JlzP0hvEATmNCZIfxGs1xdOYi2bGmunO09XR5H0W2
-         ChFTsSEjY0OYY2vjaL7HmAa+aNsfN3B8BJzDE6clwomuPRSWhMA7NseGxHMSintOtus4
-         9JoiQba4cz/uxMrIKN1foM3wj7WZY98CCKaDBuvtVhD5q2EbdL9dsdxnMOHJxIYCWPmv
-         fPiqHLlLmMOrgCcyaxddIQYtQQPanGb7M9K3bHf7yS9Zufw36l9+2o6YcOsg6L/ysy7b
-         Wo0g==
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=92xWwc/xn57EVrGt32pxXKL5nOzCl0xs34WGS1IXpSE=;
+        b=RWRMvlpVvcamw00nxS1iLMak9T1NcF8jZ19E9pGU1d1BQQk4GHi7N+NWjLkPHtTQXU
+         eyu6GjFADgdvSquTZ6nVmoLnosuN7ezG+NrS+2BzmXFh9RHTZCd4V39nlAKxXYAoL7iJ
+         dfPl7JRBUwnQ0yGSWE7i0iEpoDsTCM2+7ojajIZfpbMqc5Z/edzveU5uILWnxo6ld47O
+         ifOzCrMu/zSNpc0hNi6jm4+6i9ZmkDQam6jI9nntZj1t9T5jAKGGPxdKNMsRgLLMaIyO
+         PcirA4Q6ogiyD5+vg0mtPiERqsgBYHkllnZxLoiblB7rhl59ybRUOE9pPiUzgs1Ehpx4
+         XFUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="P08M/cyz";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21-20020ae9c215000000b0075f008549f2si7465547qkg.130.2023.06.15.10.38.56
+        by mx.google.com with ESMTPS id i6-20020ac85e46000000b003f534327c38si10914968qtx.348.2023.06.16.03.30.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Jun 2023 10:38:56 -0700 (PDT)
+        Fri, 16 Jun 2023 03:30:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="P08M/cyz";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q9qt6-0000e7-5B; Thu, 15 Jun 2023 13:36:00 -0400
+	id 1qA6i2-0006lW-VB; Fri, 16 Jun 2023 06:29:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=xCJj=CD=kaod.org=clg@ozlabs.org>)
- id 1q9qt1-0000bo-FN; Thu, 15 Jun 2023 13:35:55 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=xCJj=CD=kaod.org=clg@ozlabs.org>)
- id 1q9qsx-0007ha-OV; Thu, 15 Jun 2023 13:35:54 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QhqFb1SHlz4x1R;
- Fri, 16 Jun 2023 03:35:47 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QhqFX5LZQz4x0H;
- Fri, 16 Jun 2023 03:35:44 +1000 (AEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Joel Stanley <joel@jms.id.au>
-Subject: [PULL 3/6] aspeed: Introduce a boot_rom region at the machine level
-Date: Thu, 15 Jun 2023 19:35:22 +0200
-Message-Id: <20230615173525.428831-4-clg@kaod.org>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230615173525.428831-1-clg@kaod.org>
-References: <20230615173525.428831-1-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qA6i0-0006ks-Su
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 06:29:36 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qA6hz-0006Mm-8P
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 06:29:36 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-51a3e7a9127so568913a12.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Jun 2023 03:29:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686911372; x=1689503372;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=92xWwc/xn57EVrGt32pxXKL5nOzCl0xs34WGS1IXpSE=;
+ b=P08M/cyzR3ByoOAAbGav9X2nKlnEJ6MjrWNZFmgoD9Ss7uxAzFmMSHoYZdbptbD0+9
+ GJr1c+6iWWprSVKLmG6vG4ew0FzdhPvhh2cTyyfvKistGOS4gCy/vKdlE9moqyT4zkpH
+ A9cEKdRdXhzEZcPIOOZZ9aFk1ZSaHEnJFFoBAnW5iI973UVm1tyZVCPPEFaAio8cuIrI
+ jurKGugsDtMYAyYNCPuUrf6SGeSEeRZslHGsqDdkDolO6fQGVu/rJxfKAmi0/rb4OE/X
+ 7cpxcu4YD6kYwL+5xJvvohgxeuOXCnoj41Begpzhc9hEhK3hRAt8/3i4onyn90Hd9amy
+ ezgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686911372; x=1689503372;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=92xWwc/xn57EVrGt32pxXKL5nOzCl0xs34WGS1IXpSE=;
+ b=Lnjc1pFHgZ5uyUEjD8d4aDA3/Xr/xO5KJrvuvM64oO0CKnAdEcJuIi64zpVeLBTobd
+ 1jn2gbMQzSEfAWSIrS+3ZVQ6Z5DOKvBnwooqagPTSG/49XxsaYlJs1seZ2jhWShebA/0
+ FbR2leIzDmolUWMLvV7hskPjurUvEBhhBEmkVVVCe/JOGqDN73xrYhFgnYMN3fsQGJMT
+ dPWWSqVzp574DbdNUajGrdUjPtyZivhsFz4KByXrgs09bC5NKQGpGvlZ8ZmTMfdLzZzo
+ Ttdx9ml5Tu4IrQf4llUP54wAvsLm08Yk0kccvcH7KhWYoKwAcKJehJurV1oMSCb8rwkz
+ 3EDA==
+X-Gm-Message-State: AC+VfDxNFIhEFlI/ugwhsvEsV0dEbMsSjBv5TYqeCpEvd8yRJRuaIeHd
+ MePdFQ/u4L+eHJsa8gk+DT8Bpg==
+X-Received: by 2002:aa7:d0c2:0:b0:518:79d2:208c with SMTP id
+ u2-20020aa7d0c2000000b0051879d2208cmr1399255edo.18.1686911372614; 
+ Fri, 16 Jun 2023 03:29:32 -0700 (PDT)
+Received: from [192.168.85.227] ([91.223.100.45])
+ by smtp.gmail.com with ESMTPSA id
+ f9-20020a056402068900b0051495ce23absm9695536edy.10.2023.06.16.03.29.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Jun 2023 03:29:32 -0700 (PDT)
+Message-ID: <c8f2136b-9564-a1c7-b1ba-409c1f700e60@linaro.org>
+Date: Fri, 16 Jun 2023 12:29:29 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PULL 0/6] aspeed queue
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230615173525.428831-1-clg@kaod.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230615173525.428831-1-clg@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=xCJj=CD=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,62 +126,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u6O7DwmlvQDa
+X-TUID: T5tLhaEUBWfB
 
-This should also avoid Coverity to report a memory leak warning when
-the QEMU process exits. See CID 1508061.
+On 6/15/23 19:35, Cédric Le Goater wrote:
+> The following changes since commit 7efd65423ab22e6f5890ca08ae40c84d6660242f:
+> 
+>    Merge tag 'pull-riscv-to-apply-20230614' ofhttps://github.com/alistair23/qemu  into staging (2023-06-14 05:28:51 +0200)
+> 
+> are available in the Git repository at:
+> 
+>    https://github.com/legoater/qemu/  tags/pull-aspeed-20230615
+> 
+> for you to fetch changes up to 42bea956f6f7477c06186c7add62fa0107a27a9c:
+> 
+>    target/arm: Allow users to set the number of VFP registers (2023-06-15 18:35:58 +0200)
+> 
+> ----------------------------------------------------------------
+> aspeed queue:
+> 
+> * extension of the rainier machine with VPD contents
+> * fixes for Coverity issues
+> * new "bmc-console" machine option
+> * new "vfp-d32" ARM CPU property
 
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/8.1 as appropriate.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bfc2070bd2ed..76a1e7303de1 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -40,6 +40,7 @@ struct AspeedMachineState {
-     /* Public */
- 
-     AspeedSoCState soc;
-+    MemoryRegion boot_rom;
-     bool mmio_exec;
-     char *fmc_model;
-     char *spi_model;
-@@ -275,15 +276,15 @@ static void write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
-  * Create a ROM and copy the flash contents at the expected address
-  * (0x0). Boots faster than execute-in-place.
-  */
--static void aspeed_install_boot_rom(AspeedSoCState *soc, BlockBackend *blk,
-+static void aspeed_install_boot_rom(AspeedMachineState *bmc, BlockBackend *blk,
-                                     uint64_t rom_size)
- {
--    MemoryRegion *boot_rom = g_new(MemoryRegion, 1);
-+    AspeedSoCState *soc = &bmc->soc;
- 
--    memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom", rom_size,
-+    memory_region_init_rom(&bmc->boot_rom, NULL, "aspeed.boot_rom", rom_size,
-                            &error_abort);
-     memory_region_add_subregion_overlap(&soc->spi_boot_container, 0,
--                                        boot_rom, 1);
-+                                        &bmc->boot_rom, 1);
-     write_boot_rom(blk, ASPEED_SOC_SPI_BOOT_ADDR, rom_size, &error_abort);
- }
- 
-@@ -431,8 +432,7 @@ static void aspeed_machine_init(MachineState *machine)
- 
-         if (mtd0) {
-             uint64_t rom_size = memory_region_size(&bmc->soc.spi_boot);
--            aspeed_install_boot_rom(&bmc->soc, blk_by_legacy_dinfo(mtd0),
--                                    rom_size);
-+            aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(mtd0), rom_size);
-         }
-     }
- 
--- 
-2.40.1
+
+r~
 

@@ -1,160 +1,173 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1409601ejt;
-        Fri, 16 Jun 2023 07:01:41 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7Yc+D9F16+IShB6aUjGSR0IKyJNiRaMYQ3y1zMN7WZE7/hC3EO8xzF+o45+ZEsUG1H2efu
-X-Received: by 2002:a05:620a:f91:b0:75d:50fa:4fb8 with SMTP id b17-20020a05620a0f9100b0075d50fa4fb8mr1752897qkn.17.1686924100616;
-        Fri, 16 Jun 2023 07:01:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686924100; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1425091ejt;
+        Fri, 16 Jun 2023 07:23:09 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5KNxkEHuGu5jTwOIZdIoJbwIftap5CVv0/wtCr3o2PTfFtl2PWSWSc4H+1snPZ6RZs+BB1
+X-Received: by 2002:ac8:5a0f:0:b0:3f6:a9bb:85be with SMTP id n15-20020ac85a0f000000b003f6a9bb85bemr3184206qta.67.1686925389183;
+        Fri, 16 Jun 2023 07:23:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686925389; cv=none;
         d=google.com; s=arc-20160816;
-        b=rc16WiA7PGNC9pzNerBqU72/qCi1Rjyj9wy407bin1ZvTqWPrIhMmGx6TGeNQey4Wd
-         EbKET0VPx2Rptjk4PrkKqx9ue//lvLZsITS0ehr34UZGDVNPUwUA7L3rr4GIBT8x7NKf
-         zgH2y4BR2yaBGQNHm8UyT57NV4eRf7SIkoCW2ORbbXI/WA1B68j664bf799CTvk8Kc5b
-         0NuOgtDRjmshROCKAFrtazqXbk46yKA9BSmD6lFDqXWOC861iiiDjmm5iG1USja1b82a
-         ICk/IB8qM1OffqjG5HDsA+SaDFsZbSbDQA0kqIqujjp1NXMyy17rgCxDS+6/pJuSj6IY
-         K1hg==
+        b=UzxNpAoz7YHTym6N70sQW3NfMWHRBW9tnLJieSBv2MouRkzXYGFqhMU58Mlyoy8Y9v
+         MdrXP8+eNSNTqAv6yZo/e1ZAt8oyPDt/WpJ5yJCYuuH5kzjrzj+DyKKW+SyfvARsbGTT
+         MnQoui3TAuvCU1Sg6Lcy9STiFDdp7iF8FGE8skSSoh6RertWTayPb44mw6zLctvkh7kM
+         D6HNQsIHJM0hgjKj1PfLIc7OPqkO9VLKraGch3DFlv/zjTxl8tOXcbqXXmY4n6vFIIPf
+         f1w7J09Ktu0WxYoL80FJbfo/zS2eh32lipj6PzzdAGra57IUrvX3gPzl8AO+TWzA7/z9
+         jtiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=n8AuekZeNcC6N2BLHlhkki18GOpXN0XdSt2mq7QEgMg=;
-        b=DjgIjlHNDJxSa7wZ+EUg2li+IdbkMKy86a8dI2GlaIhkhPS6ZyvwhYlpAwy9eM88wA
-         TSjzM409wm6wbaD0LDF97184qjf5vnhPYUztXHTDz3HCx4AyKb63z31MG4/0kS8OGTmQ
-         lojKQhfzgrq3z/z+Vjhwl23QEDFeNus8OakbiAM1h7J2E3oFTLDykUDsZUMMs79+1lQp
-         rCqMZHl+T3XYqYpU6cA+K3BEAsM8JMdv+11z5sqhtPfIraxVQm/Vuhd3ZP7S5W7MmXln
-         yZ6cZWMlQUGH7eEp8GbDIR48xvC2/qPwBkUw6GrMV7gfMSjf+nU241Q7IR/px8RrH+KW
-         Bang==
+        bh=DeX3KyPKortp3rPNyHMB/Ut8QFSXN2/GQdkoFMKovoY=;
+        b=Il6tKO1NqjCI67Ix25GyvGJigNJdsu8ZzJtk0qgaTcDE9lHxtAe1koz8IXKq9pwhGZ
+         1xHyOP2B/+vAEfnVu/X+0cdS/bMgJCRUyRwhbXNG54UaVqTAH8897X3dP0PVmtkPDV3M
+         RtiIA7RLqXDq9qBcdLWytpdDHw7AueHAzjbA0X80qDSdadqSFDpSFtmz0QODl6yHt0f6
+         Jw5+AAUZl4P6IR6uuJrFVzbmgfV6XspM6kVshfDCX3Ap12LnnxloIXGNU6MKWqxxfhcc
+         f4ymw+GYUSXOeIxkEa7sVS4Tdr8fqLN/0lO1yFkqVNSaXfbRS6bd3aVh6DX2xxYGjBYB
+         pvjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hi1Fthb4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b1rjfkUc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x24-20020ae9f818000000b0075b39115540si10125204qkh.502.2023.06.16.07.01.40
+        by mx.google.com with ESMTPS id b17-20020ac85bd1000000b003f6beed5efasi10822377qtb.3.2023.06.16.07.23.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Jun 2023 07:01:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Jun 2023 07:23:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hi1Fthb4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=b1rjfkUc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qAA0k-0006Qg-1v; Fri, 16 Jun 2023 10:01:10 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qAALf-0000A4-U1; Fri, 16 Jun 2023 10:22:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qAA0g-0006P1-VX
- for qemu-devel@nongnu.org; Fri, 16 Jun 2023 10:01:07 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qAALb-00009F-38
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 10:22:45 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qAA0e-0004wi-FH
- for qemu-devel@nongnu.org; Fri, 16 Jun 2023 10:01:06 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-30c4c1fd511so560850f8f.1
- for <qemu-devel@nongnu.org>; Fri, 16 Jun 2023 07:01:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qAALY-0002x6-AG
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 10:22:42 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-3f8d5262dc8so6547015e9.0
+ for <qemu-arm@nongnu.org>; Fri, 16 Jun 2023 07:22:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686924063; x=1689516063;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1686925358; x=1689517358;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=n8AuekZeNcC6N2BLHlhkki18GOpXN0XdSt2mq7QEgMg=;
- b=hi1Fthb4Y841gHS9od+cFebkadJlLHSBzr5zBiO3bAvXXOLIgzCVNYLQULW2RGajc0
- 2unBkPpJRRx4uNWzT9BTxSuJJuclycB2AsErz3gQfzlcZ+UdqyCKec7zbdbv/Cvpkxxk
- mbiPVfIL8LsZeioe2GN/g1vSdUq08AcGk4y9vexeZ2TlQQp+Fn6a8C6bLDEl5WHuaCii
- O64VhA1tfBXzNWQiRGe0HVQmkXgoJrwY75tGbv0KUd2am23DaK7TmxezoljV3lqfzYVK
- NOF1CL3YM5l1FPjmnfR4vnKogcUrkFCDfWq88yDfWdgaCSazENRKFB2R4A8PvU5gdgxi
- SW/Q==
+ bh=DeX3KyPKortp3rPNyHMB/Ut8QFSXN2/GQdkoFMKovoY=;
+ b=b1rjfkUcxXon35TQHL4RPIBoB0JRujOTpC6M3VS6anznM4G7dgivqTB7h+bcQqOnW1
+ gXhS7oQdTeiwe0FX2BTvU0+1offNKpc5R3kT/+bdIgfRQaXAsIy97kw5j48TbZ0iEYgz
+ zUi6gmk60LXTf2dfJvvXNjxjTDlqJ02vaeD+Ya8NkwiGz7G2APX7niDAL+bw7yo8BaT8
+ 1XJBHjyHS1mVItNjQaLhdHTs95+/M5upsEpRDrwQlyCLj980ucNNhkqs72zrQvRwcr9Z
+ WbSAxl06mssNWudmCVUEhFOl3dg0Di4WAOj2G0FWH6cUNfLSCx9CGEaDftubVluEdzM/
+ 4JPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686924063; x=1689516063;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20221208; t=1686925358; x=1689517358;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=n8AuekZeNcC6N2BLHlhkki18GOpXN0XdSt2mq7QEgMg=;
- b=GGJUncbRGnkziBIbzwyDonOpq7FIvbRZ0A4jGr3MDVigJ1pPS7h5Odve4N0eBwX5YP
- +jeoHCS2WgTGj6VSBi0Cm0cNZ6NUID8TB2odleeS56zNYR8C85iG2IRzlyVjZqvZDvCZ
- TURL0C02VNIZCCJMRcG/V1tptVJ8j5DNlRia33dNxAJICQGdhCDT3KWVeL0RlttIACXk
- hm1F96EK9czj3Omp3Rmz8VhVDqiUDJ6sv3gdfnm7dpEKNM7jdmIdSxDEgUNbJzjkXTmS
- 2pQn/MVCcbKCX8NP3uJ+IJUGUOhZ8P1fjYkivk2erDElXKFRr8USwTyRyLS6mhht2PHk
- RFaA==
-X-Gm-Message-State: AC+VfDzavodXRV2J2em1sqpkUH/WRViEx+fg4X2aShUCDu8HzJXI6VbN
- bPlS8bS3dfxHVF6Am7eXXVJ6Wg==
-X-Received: by 2002:adf:f046:0:b0:30f:c3e4:506b with SMTP id
- t6-20020adff046000000b0030fc3e4506bmr1528003wro.44.1686924062166; 
- Fri, 16 Jun 2023 07:01:02 -0700 (PDT)
+ bh=DeX3KyPKortp3rPNyHMB/Ut8QFSXN2/GQdkoFMKovoY=;
+ b=lfqXfrbvA5CnBFD4iz9xi6o17ysPcbaaGI0dz2kMlX1A+jDmgshWoj4fGuXxtOmCE7
+ rBnX4JxAy0ZT4DkYdQITwB1OtYT+417lCvfJxi+GIlQJMYMbQeOUNZ/IKJKCnpeefnwY
+ vj4aUBOC4+Eq+J7jGfjytjWTibL/H9FBD2ei+57rDMej1BLqIEwjxnVFzajzYjp/2vgp
+ KvGEfSxpex977p2Udwnq/3H5o7SjNB/2sRhuQZlU53osasDUi36RByC5v2jrpKW8Sh1b
+ q+kSjXxfzZbKjRrLUhAoEBnotTDHfiQUcsa7tLEFZQqplu/dXFlB/MwhEl4s2vJdkd3j
+ JaSA==
+X-Gm-Message-State: AC+VfDzUyVNPwZNhqk9F8J83IMU2j963PfRnPoqbly/BKNUiJOFFbmYL
+ r4zsWRFD+bG29yTWUrcVZIMkNA==
+X-Received: by 2002:a05:600c:ca:b0:3f1:731e:cdb1 with SMTP id
+ u10-20020a05600c00ca00b003f1731ecdb1mr1943023wmm.6.1686925358477; 
+ Fri, 16 Jun 2023 07:22:38 -0700 (PDT)
 Received: from [192.168.164.175] (146.red-88-29-160.dynamicip.rima-tde.net.
  [88.29.160.146]) by smtp.gmail.com with ESMTPSA id
- t11-20020adfdc0b000000b0030ae3a6be5bsm23837728wri.78.2023.06.16.07.01.00
+ x7-20020a1c7c07000000b003f809461162sm2348858wmc.16.2023.06.16.07.22.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Jun 2023 07:01:01 -0700 (PDT)
-Message-ID: <a0604a0d-a3ed-c852-bb8c-b565d95b5a3f@linaro.org>
-Date: Fri, 16 Jun 2023 12:31:00 +0200
+ Fri, 16 Jun 2023 07:22:38 -0700 (PDT)
+Message-ID: <15b16012-9284-c810-fd5c-75bca5c89158@linaro.org>
+Date: Fri, 16 Jun 2023 16:22:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH 04/12] hvf: arm: Ignore writes to CNTP_CTL_EL0
-Content-Language: en-US
-To: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-arm@nongnu.org,
+Subject: Re: [PATCH 05/12] hw/virtio: Add support for apple virtio-blk
+To: Kevin Wolf <kwolf@redhat.com>, Alexander Graf <graf@amazon.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
  Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
  Stefan Hajnoczi <stefanha@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
+ <mst@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20230614224038.86148-1-graf>
- <20230614225407.96216-1-graf@amazon.com>
+ <20230614225626.97734-1-graf@amazon.com> <ZIxMIyi1KY7Ku9Xm@redhat.com>
+Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230614225407.96216-1-graf@amazon.com>
+In-Reply-To: <ZIxMIyi1KY7Ku9Xm@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_03_06=1.592,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.093, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.093,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TLsfpNttbQv5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: k8XpHAu/RWXC
 
-On 15/6/23 00:54, Alexander Graf wrote:
-> MacOS unconditionally disables interrupts of the physical timer on boot
-> and then continues to use the virtual one. We don't really want to support
-> a full physical timer emulation, so let's just ignore those writes.
+On 16/6/23 13:48, Kevin Wolf wrote:
+> Am 15.06.2023 um 00:56 hat Alexander Graf geschrieben:
+>> Apple has its own virtio-blk PCI device ID where it deviates from the
+>> official virtio-pci spec slightly: It puts a new "apple type"
+>> field at a static offset in config space and introduces a new discard
+>> command.
 > 
-> Signed-off-by: Alexander Graf <graf@amazon.com>
-> ---
->   target/arm/hvf/hvf.c | 7 +++++++
->   1 file changed, 7 insertions(+)
+> In other words, it's a different device. We shouldn't try to
+> differentiate only with a property, but actually model it as a separate
+> device.
 
+I was thinking of qdev inheritance:
 
-> @@ -1551,6 +1552,12 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
->       case SYSREG_OSLAR_EL1:
->           env->cp15.oslsr_el1 = val & 1;
->           break;
-> +    case SYSREG_CNTP_CTL_EL0:
-> +        /*
-> +         * Guests should not rely on the physical counter, but macOS emits
-> +         * disable writes to it. Let it do so, but ignore the requests.
-> +         */
+#define TYPE_VIRTIO_BLK_PCI_APPLE "virtio-blk-pci-apple"
+OBJECT_DECLARE_SIMPLE_TYPE(VirtIOBlkPCIApple, TYPE_VIRTIO_BLK_PCI_APPLE)
 
-Still it could be useful to report that calling
-qemu_log_mask(LOG_UNIMP,...) here.
+struct VirtIOBlkPCIApple {
+     VirtIOBlkPCI parent_obj;
+};
 
-> +        break;
+and add an optional custom handler in VirtioDeviceClass to handle the
+VIRTIO_BLK_T_APPLE1 case.
+
+>> This patch adds a new qdev property called "apple-type" to virtio-blk-pci.
+>> When that property is set, we assume the virtio-blk device is an Apple one
+>> of the specific type and act accordingly.
+> 
+> Do we have any information on what the number in "apple-type" actually
+> means or do we have to treat it as a black box?
+> 
+>> Signed-off-by: Alexander Graf <graf@amazon.com>
+>> ---
+>>   hw/block/virtio-blk.c                       | 23 +++++++++++++++++++++
+>>   hw/virtio/virtio-blk-pci.c                  |  7 +++++++
+>>   include/hw/pci/pci_ids.h                    |  1 +
+>>   include/hw/virtio/virtio-blk.h              |  1 +
+>>   include/standard-headers/linux/virtio_blk.h |  3 +++
+>>   5 files changed, 35 insertions(+)
+

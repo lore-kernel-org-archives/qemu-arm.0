@@ -1,116 +1,88 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp363779ejt;
-        Wed, 14 Jun 2023 15:56:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6pm7ifawHR9usl1lSxlbfrbyKbh9hh10JY/qB+YXGokQ8m0PEIcRJe9RdWZVYvCm9v/YVf
-X-Received: by 2002:ac8:5994:0:b0:3f8:365:7a99 with SMTP id e20-20020ac85994000000b003f803657a99mr4460703qte.55.1686783417968;
-        Wed, 14 Jun 2023 15:56:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1686783417; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp1216620ejt;
+        Fri, 16 Jun 2023 00:23:30 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ425771/Ej0T+UV6Jg6cRXzkxkLC2TW+CQQR37pHAUHFCP1nlZnLHx7pFPoHGJwD0jEqX3c
+X-Received: by 2002:a05:622a:587:b0:3f3:90a8:6906 with SMTP id c7-20020a05622a058700b003f390a86906mr2119650qtb.17.1686900210361;
+        Fri, 16 Jun 2023 00:23:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1686900210; cv=none;
         d=google.com; s=arc-20160816;
-        b=oayEYB97NmkODjByZMr9I1Xeev0RXnrT6BOo1ylYGV+cPIh7qlGyTahkC/sCrkasSg
-         BoMqBsKV3dL0e9IFsUr7ggVzOq8Dj6WEwZjImJMw4UzVp7BqXtjxc+VEUTd7dVqk2cB9
-         QAHrxmUsrXSGDUxUugl/wbOJnbYhTeBGCzlw3nXuNWVzAOLY9J89ivi2YW+Io+oGfB+s
-         h/ULoQcAmp+nLBhKR1s9O6r8fB3LZ0X86g8VDDv8dNBvS28fJ0KxyKmnu21sUzLFW/Li
-         lynbOZxcX8r40liAixx23nEjwC/aOeit6tlMRL2m008iX1vLS8K1c4P1hlajMW4P/aIk
-         wiTw==
+        b=oE5gzsGdaCIXKHAGYxr0mlr8MXhjrVjei/1d6yMI835OkeBTTnDlm8Qc2KhUy/dKB0
+         SchNLw5RaaUEx2zrWMTuACQdnBUDq1aOlQaP6vcHidfZSAQRRjZ8MoUX4MMa9p58oEvJ
+         mnRkFcjVCNC636wTclvotDpQGoxbJ1ws64TuOcHYTEc+sKIs8E2y++WSJLIGqg5wRCUd
+         /xUZ6YTukhdrVttOSMoADN5H103bcYwLzGea22O8sW9VbPjjQC/HUyVlD4w27QtNXGyt
+         LAyPouOLC7VQT1ir4SXKcR1yl7oTTBh4+p1ZYqtmb/91BHtLJRUyfIkvsjYX5FMbhyMe
+         MFGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:content-transfer-encoding:precedence
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=HkoVjAiIpnHIOcBeQ5R/tis/X7PpChro1Dy9refD3/o=;
-        b=ImXsQoj56c+kkCYJv8/ZIubdxDsk2zV2eLlIMOO1/7KM3PFDSAUnwMAi8JaO71SM5J
-         LJxAzkRIkAqH0WP7YCTG7y4CU5TccBbA3Q4dHrygCvRyTogiddHc0rRKceY5xmQjWDE7
-         xcJxRomwG+lTUsJg/lSxvxqmhARSSnrlQ9tF8ONVIlkbK9efdHkxiB3rB0Bc8JNmE440
-         Ga+TWyFEls782fflZyZp6rXFmuRiaN8ZcooanPMRNBghQl0qoBRb8mmZGMMw566deFhK
-         NEXumeL4UVjhOT/gifGQZ4aIArP4HLCmVHALap0GjUyTbLY41VODBxkNHC+9f0yNXGv4
-         85VA==
+         :list-unsubscribe:list-id:precedence:from:subject:to:message-id:date
+         :mime-version:dkim-signature;
+        bh=wuYYOpPr+FECaM+EopRP6sN3+vJLkhPjkW25BdC4XsY=;
+        b=gbAygPeYwcVURM/hR3ZtqMjcwg2uqukwUpm/OM7NCCxaMlJuhBIJscXmstiolXWrfJ
+         O8LygjVu2iGYg2D12b9gxIZ7swuHWiBbS2Kr4bf2V/2MvlCe0+qZrrIGd9YDe2WKpe0e
+         ZH1+7OLJL5MibBZ4ZzR0An2q32/BmO1/lFP8JKqGYGKm/9Qzaxb5aFdIWUFFj80nIGst
+         JkxSHx7lW6R/9TUeK2goF0x5GJh4xImOvHFbqm517+TKPRiVWJo9h+e8gsEAuTDO8tpN
+         C1mR7sf5eSRwadFxMz7Il9LlrepeaUOMx48+YcbUoG4etVBL3Bz6w2+f/zsRPtfqyAb5
+         irAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=sg6EZ+wN;
+       dkim=pass header.i=@enjoymove.com header.s=feishu2304261427 header.b=bEqOUVau;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=enjoymove.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f28-20020a05622a1a1c00b003f5129f3175si9070746qtb.226.2023.06.14.15.56.57
+        by mx.google.com with ESMTPS id w1-20020a05622a134100b003f9b57f32efsi10311987qtk.770.2023.06.16.00.23.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Jun 2023 15:56:57 -0700 (PDT)
+        Fri, 16 Jun 2023 00:23:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amazon.com header.s=amazon201209 header.b=sg6EZ+wN;
+       dkim=pass header.i=@enjoymove.com header.s=feishu2304261427 header.b=bEqOUVau;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amazon.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=enjoymove.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1q9ZPw-00085O-1A; Wed, 14 Jun 2023 18:56:46 -0400
+	id 1qA3nd-0007Dh-4C; Fri, 16 Jun 2023 03:23:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=52269c73c=graf@amazon.de>)
- id 1q9ZPr-00084U-7g; Wed, 14 Jun 2023 18:56:39 -0400
-Received: from smtp-fw-52003.amazon.com ([52.119.213.152])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=52269c73c=graf@amazon.de>)
- id 1q9ZPo-0000eb-0o; Wed, 14 Jun 2023 18:56:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1686783396; x=1718319396;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=HkoVjAiIpnHIOcBeQ5R/tis/X7PpChro1Dy9refD3/o=;
- b=sg6EZ+wNPBg7EAousLqSpqeU6H1xpo80DT3fjFbajc/m7GaFRbUoDIy6
- ugTNZEwTbKVAfvRmEqwYXqO+975GAY7dF9fG7rJIwFeTaA5DcgmTpJmJR
- 0TXZ/kyUTFEy1DT4w/ofs7raNa/5lJ1wS8QFEU9eDTgkd7MUl/A29/Lc/ I=;
-X-IronPort-AV: E=Sophos;i="6.00,243,1681171200"; d="scan'208";a="590668780"
-Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
- email-inbound-relay-iad-1e-m6i4x-7dc0ecf1.us-east-1.amazon.com) ([10.43.8.6])
- by smtp-border-fw-52003.iad7.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jun 2023 22:56:35 +0000
-Received: from EX19MTAUWB001.ant.amazon.com
- (iad12-ws-svc-p26-lb9-vlan2.iad.amazon.com [10.40.163.34])
- by email-inbound-relay-iad-1e-m6i4x-7dc0ecf1.us-east-1.amazon.com (Postfix)
- with ESMTPS id CFD0380FA5; Wed, 14 Jun 2023 22:56:30 +0000 (UTC)
-Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 14 Jun 2023 22:56:30 +0000
-Received: from dev-dsk-graf-1a-5ce218e4.eu-west-1.amazon.com (10.253.83.51) by
- EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 14 Jun 2023 22:56:28 +0000
-From: Alexander Graf <graf@amazon.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-block@nongnu.org>, <qemu-arm@nongnu.org>, Cameron Esfahani
- <dirty@apple.com>, Roman Bolshakov <r.bolshakov@yadro.com>, Stefan Hajnoczi
- <stefanha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf
- <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, "Peter
- Maydell" <peter.maydell@linaro.org>
-Subject: [PATCH 05/12] hw/virtio: Add support for apple virtio-blk
-Date: Wed, 14 Jun 2023 22:56:22 +0000
-Message-ID: <20230614225626.97734-1-graf@amazon.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230614224038.86148-1-graf>
-References: <20230614224038.86148-1-graf>
-MIME-Version: 1.0
-X-Originating-IP: [10.253.83.51]
-X-ClientProxiedBy: EX19D040UWB004.ant.amazon.com (10.13.138.91) To
- EX19D020UWC004.ant.amazon.com (10.13.138.149)
-Precedence: Bulk
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=52.119.213.152;
- envelope-from=prvs=52269c73c=graf@amazon.de; helo=smtp-fw-52003.amazon.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ (Exim 4.90_1) (envelope-from <xian.lv@enjoymove.com>)
+ id 1qA3nW-0007DQ-Qp
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 03:23:06 -0400
+Received: from t03.bc.larksuite.com ([209.127.231.39])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <xian.lv@enjoymove.com>)
+ id 1qA3nT-0001sA-IL
+ for qemu-arm@nongnu.org; Fri, 16 Jun 2023 03:23:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ s=feishu2304261427; d=enjoymove.com; t=1686900175; h=from:subject:
+ mime-version:from:date:message-id:subject:to:cc:reply-to:content-type:
+ mime-version:in-reply-to:message-id;
+ bh=wuYYOpPr+FECaM+EopRP6sN3+vJLkhPjkW25BdC4XsY=;
+ b=bEqOUVaukIXCxdJg/B051bzA5dSwE0EKmYUCgomDVzMLu6ktZxu5lIWPLv1txd5Az255Qf
+ seEpbJMp4nX19MGquLa5hSUKSA1UQt3j2Vp8iWMxO3YYfI+XO6y5/ZZ5IG7ckIkrKLCeht
+ RgA9Wf1118Yw8N9b1PlimFlrZAMg4HrjCOBuUuR9L1vDbOG52B9wvQJ4mOZ3NUhOjgLOqm
+ dUaK4QD2eQn8NDa5P/e1bPUHA+a3qR2KZTr0qIBuL2g7jSEeWQn4VfztzNN/YpR1rj7nHH
+ qtt5DJdFlXyNK/wmE+CDkGtml1VvD508c+pDoQzXQdAIXmDzCOYxMJ++a2YkDA==
+Mime-Version: 1.0
+X-Lms-Return-Path: <lba+1648c0dce+220f0b+nongnu.org+xian.lv@enjoymove.com>
+Content-Type: multipart/alternative;
+ boundary=bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
+Date: Fri, 16 Jun 2023 15:22:54 +0800
+Message-Id: <cdacca34302f3eb2b71addffba1e6b89d7f4a190.59e36293.4646.46a0.a1bb.76c2198a3286@feishu.cn>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: No print info when starrting qemu-system-aarch64
+From: =?utf-8?q?=E5=90=95=E8=B4=A4?= <xian.lv@enjoymove.com>
+Received-SPF: pass client-ip=209.127.231.39;
+ envelope-from=xian.lv@enjoymove.com; helo=t03.bc.larksuite.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -121,150 +93,197 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eNaAwjFAy8A8
+X-TUID: dhjeMoKCutzK
 
-Apple has its own virtio-blk PCI device ID where it deviates from the
-official virtio-pci spec slightly: It puts a new "apple type"
-field at a static offset in config space and introduces a new discard
-command.
+--bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-This patch adds a new qdev property called "apple-type" to virtio-blk-pci.
-When that property is set, we assume the virtio-blk device is an Apple one
-of the specific type and act accordingly.
+Dear qemu guys,
 
-Signed-off-by: Alexander Graf <graf@amazon.com>
----
- hw/block/virtio-blk.c                       | 23 +++++++++++++++++++++
- hw/virtio/virtio-blk-pci.c                  |  7 +++++++
- include/hw/pci/pci_ids.h                    |  1 +
- include/hw/virtio/virtio-blk.h              |  1 +
- include/standard-headers/linux/virtio_blk.h |  3 +++
- 5 files changed, 35 insertions(+)
+=C2=A0=C2=A0=C2=A0 I've met with a strange problem when using qemu as simul=
+ator for arm64.
+I tried to start qemu with the command below:
+------
+sudo qemu-system-aarch64 -machine virt -cpu=C2=A0cortex-a72 -smp 2 -m 2048 =
+-kernel=C2=A0Image=C2=A0-append "console=3DttyAMA0 root=3D/dev/vda" -nograp=
+hic -drive file=3Dramdisk.img -drive file=3Ddisk.img -nic tap,model=3De1000=
+,script=3D/etc/qemu-ifup
+------
+The file:Image=C2=A0is the kernel bin of linux kernel =C2=A0which=C2=A0comp=
+iled with default config.
+While I tried with linux kernel-5.15, then the simulator can=C2=A0be starte=
+d properly.
+For=C2=A0the=C2=A0kernel 6.3.8; kernel-5.10.130, the result is OK as well
+But there's no output info after the command executed if the kernel before =
+4.19 is used.
+Is there any problem when early linux kernel (before 4.19) is used for qemu=
+ tools ?
+Thank you so much.
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 39e7f23fab..76b85bb3cb 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -1120,6 +1120,20 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
- 
-         break;
-     }
-+    case VIRTIO_BLK_T_APPLE1:
-+    {
-+        if (s->conf.x_apple_type) {
-+            /* Only valid on Apple Virtio */
-+            char buf[iov_size(in_iov, in_num)];
-+            memset(buf, 0, sizeof(buf));
-+            iov_from_buf(in_iov, in_num, 0, buf, sizeof(buf));
-+            virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-+        } else {
-+            virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-+        }
-+        virtio_blk_free_request(req);
-+        break;
-+    }
-     default:
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-         virtio_blk_free_request(req);
-@@ -1351,6 +1365,10 @@ static void virtio_blk_update_config(VirtIODevice *vdev, uint8_t *config)
-     } else {
-         blkcfg.zoned.model = VIRTIO_BLK_Z_NONE;
-     }
-+    if (s->conf.x_apple_type) {
-+        /* Apple abuses the same location for its type id */
-+        blkcfg.max_secure_erase_sectors = s->conf.x_apple_type;
-+    }
-     memcpy(config, &blkcfg, s->config_size);
- }
- 
-@@ -1625,6 +1643,10 @@ static void virtio_blk_device_realize(DeviceState *dev, Error **errp)
- 
-     s->config_size = virtio_get_config_size(&virtio_blk_cfg_size_params,
-                                             s->host_features);
-+    if (s->conf.x_apple_type) {
-+        /* Apple Virtio puts the blk type at 0x3c, make sure we have space. */
-+        s->config_size = MAX(s->config_size, 0x3d);
-+    }
-     virtio_init(vdev, VIRTIO_ID_BLOCK, s->config_size);
- 
-     s->blk = conf->conf.blk;
-@@ -1734,6 +1756,7 @@ static Property virtio_blk_properties[] = {
-                        conf.max_write_zeroes_sectors, BDRV_REQUEST_MAX_SECTORS),
-     DEFINE_PROP_BOOL("x-enable-wce-if-config-wce", VirtIOBlock,
-                      conf.x_enable_wce_if_config_wce, true),
-+    DEFINE_PROP_UINT32("x-apple-type", VirtIOBlock, conf.x_apple_type, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/hw/virtio/virtio-blk-pci.c b/hw/virtio/virtio-blk-pci.c
-index 9743bee965..5fbf98f750 100644
---- a/hw/virtio/virtio-blk-pci.c
-+++ b/hw/virtio/virtio-blk-pci.c
-@@ -62,6 +62,13 @@ static void virtio_blk_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-     }
- 
-     qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-+
-+    if (conf->x_apple_type) {
-+        /* Apple virtio-blk uses a different vendor/device id */
-+        pci_config_set_vendor_id(vpci_dev->pci_dev.config, PCI_VENDOR_ID_APPLE);
-+        pci_config_set_device_id(vpci_dev->pci_dev.config,
-+                                 PCI_DEVICE_ID_APPLE_VIRTIO_BLK);
-+    }
- }
- 
- static void virtio_blk_pci_class_init(ObjectClass *klass, void *data)
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index e4386ebb20..74e589a298 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -188,6 +188,7 @@
- #define PCI_DEVICE_ID_APPLE_UNI_N_AGP    0x0020
- #define PCI_DEVICE_ID_APPLE_U3_AGP       0x004b
- #define PCI_DEVICE_ID_APPLE_UNI_N_GMAC   0x0021
-+#define PCI_DEVICE_ID_APPLE_VIRTIO_BLK   0x1a00
- 
- #define PCI_VENDOR_ID_SUN                0x108e
- #define PCI_DEVICE_ID_SUN_EBUS           0x1000
-diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
-index dafec432ce..7117ce754c 100644
---- a/include/hw/virtio/virtio-blk.h
-+++ b/include/hw/virtio/virtio-blk.h
-@@ -46,6 +46,7 @@ struct VirtIOBlkConf
-     uint32_t max_discard_sectors;
-     uint32_t max_write_zeroes_sectors;
-     bool x_enable_wce_if_config_wce;
-+    uint32_t x_apple_type;
- };
- 
- struct VirtIOBlockDataPlane;
-diff --git a/include/standard-headers/linux/virtio_blk.h b/include/standard-headers/linux/virtio_blk.h
-index 7155b1a470..bbea5d50b9 100644
---- a/include/standard-headers/linux/virtio_blk.h
-+++ b/include/standard-headers/linux/virtio_blk.h
-@@ -204,6 +204,9 @@ struct virtio_blk_config {
- /* Reset All zones command */
- #define VIRTIO_BLK_T_ZONE_RESET_ALL 26
- 
-+/* Write zeroes command */
-+#define VIRTIO_BLK_T_APPLE1	0x10000
-+
- #ifndef VIRTIO_BLK_NO_LEGACY
- /* Barrier before this op. */
- #define VIRTIO_BLK_T_BARRIER	0x80000000
--- 
-2.39.2 (Apple Git-143)
+BestRegards,
+Rex=C2=A0
+--bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
 
-
-
-
-Amazon Development Center Germany GmbH
-Krausenstr. 38
-10117 Berlin
-Geschaeftsfuehrung: Christian Schlaeger, Jonathan Weiss
-Eingetragen am Amtsgericht Charlottenburg unter HRB 149173 B
-Sitz: Berlin
-Ust-ID: DE 289 237 879
-
-
-
+<div id=3D"editor_version_1.36.9_yHIsAnuG" style=3D"word-break:break-word;"=
+><div data-zone-id=3D"0" data-line-index=3D"0" data-line=3D"true" style=3D"=
+font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><s=
+pan style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFo=
+nt, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tah=
+oma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb=
+(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">Dear q=
+emu guys,</span></span></span></span></div><div data-zone-id=3D"0" data-lin=
+e-index=3D"1" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px;=
+ margin-bottom: 4px; line-height: 1.6;"><br></div><div data-zone-id=3D"0" d=
+ata-line-index=3D"2" data-line=3D"true" style=3D"font-size: 14px; margin-to=
+p: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14=
+px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChi=
+neseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quo=
+t;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
+=3D"background-color: rgb(255, 255, 255);">&nbsp;&nbsp;&nbsp; I've met with=
+ a strange problem when using qemu as simulator for arm64.</span></span></s=
+pan></span></div><div data-zone-id=3D"0" data-line-index=3D"3" data-line=3D=
+"true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-=
+height: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: =
+LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMa=
+cSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span sty=
+le=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 25=
+5, 255);">I tried to start qemu with the command below:</span></span></span=
+></span></div><div data-zone-id=3D"0" data-line-index=3D"4" data-line=3D"tr=
+ue" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-hei=
+ght: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: Lar=
+kHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSy=
+stemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=
+=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255,=
+ 255);">------</span></span></span></span></div><div data-zone-id=3D"0" dat=
+a-line-index=3D"5" data-line=3D"true" style=3D"font-size: 14px; margin-top:=
+ 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px=
+;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChine=
+seQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;=
+, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
+=3D"background-color: rgb(255, 255, 255);">sudo qemu-system-aarch64 -machin=
+e virt </span></span></span></span><span style=3D"font-size: 14px;"><span s=
+tyle=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -=
+apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, s=
+ans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"backgrou=
+nd-color: rgb(255, 255, 255);">-cpu</span></span></span></span><span style=
+=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkE=
+mojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quo=
+t;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, =
+41);"><span style=3D"background-color: rgb(255, 255, 255);">&nbsp;cortex-a7=
+2 -smp 2 -m 2048 -kernel</span></span></span></span><span style=3D"font-siz=
+e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
+rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
+C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
+style=3D"background-color: rgb(255, 255, 255);"><b>&nbsp;Image</b></span></=
+span></span></span><span style=3D"font-size: 14px;"><span style=3D"font-fam=
+ily: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Bl=
+inkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><spa=
+n style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(25=
+5, 255, 255);">&nbsp;-append "console=3DttyAMA0 root=3D/dev/vda" -nographic=
+ -drive file=3Dramdisk.img -drive file=3Ddisk.img -nic tap,model=3De1000,sc=
+ript=3D/etc/qemu-ifup</span></span></span></span></div><div data-zone-id=3D=
+"0" data-line-index=3D"6" data-line=3D"true" style=3D"font-size: 14px; marg=
+in-top: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-siz=
+e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
+rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
+C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
+style=3D"background-color: rgb(255, 255, 255);">------</span></span></span>=
+</span></div><div data-zone-id=3D"0" data-line-index=3D"7" data-line=3D"tru=
+e" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-heig=
+ht: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: Lark=
+HackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSys=
+temFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=
+=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255,=
+ 255);">The file:</span></span></span></span><span style=3D"font-size: 14px=
+;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChine=
+seQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;=
+, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=
+=3D"background-color: rgb(255, 255, 255);"><b>Image</b></span></span></span=
+></span><span style=3D"font-size: 14px;"><span style=3D"font-family: LarkHa=
+ckSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSyste=
+mFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"=
+color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255=
+);">&nbsp;is the kernel bin of linux kernel &nbsp;</span></span></span></sp=
+an><span style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSaf=
+ariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont=
+, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color=
+: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">w=
+hich</span></span></span></span><span style=3D"font-size: 14px;"><span styl=
+e=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -app=
+le-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans=
+-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-=
+color: rgb(255, 255, 255);">&nbsp;compiled with default config.</span></spa=
+n></span></span></div><div data-zone-id=3D"0" data-line-index=3D"8" data-li=
+ne=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; =
+line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-fam=
+ily: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Bl=
+inkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><spa=
+n style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(25=
+5, 255, 255);">While I tried with linux kernel-5.15, then the simulator </s=
+pan></span></span></span><span style=3D"font-size: 14px;"><span style=3D"fo=
+nt-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-syst=
+em, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;=
+"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: =
+rgb(255, 255, 255);">can</span></span></span></span><span style=3D"font-siz=
+e: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, La=
+rkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang S=
+C&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span =
+style=3D"background-color: rgb(255, 255, 255);">&nbsp;be started properly.<=
+/span></span></span></span></div><div data-zone-id=3D"0" data-line-index=3D=
+"9" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bo=
+ttom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=
+=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -appl=
+e-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-=
+serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-c=
+olor: rgb(255, 255, 255);">For</span></span></span></span><span style=3D"fo=
+nt-size: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFo=
+nt, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;Ping=
+Fang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);">=
+<span style=3D"background-color: rgb(255, 255, 255);">&nbsp;the</span></spa=
+n></span></span><span style=3D"font-size: 14px;"><span style=3D"font-family=
+: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, Blink=
+MacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span s=
+tyle=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, =
+255, 255);">&nbsp;kernel 6.3.8; kernel-5.10.130, the result is OK as well</=
+span></span></span></span></div><div data-zone-id=3D"0" data-line-index=3D"=
+10" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margin-bo=
+ttom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span style=
+=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -appl=
+e-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-=
+serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"background-c=
+olor: rgb(255, 255, 255);">But there's no output info after the command exe=
+cuted if the kernel before 4.19 is used.</span></span></span></span></div><=
+div data-zone-id=3D"0" data-line-index=3D"11" data-line=3D"true" style=3D"f=
+ont-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><sp=
+an style=3D"font-size: 14px;"><span style=3D"font-family: LarkHackSafariFon=
+t, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMacSystemFont, Taho=
+ma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(=
+31, 35, 41);"><span style=3D"background-color: rgb(255, 255, 255);">Is ther=
+e any problem when early linux kernel (before 4.19) is used for qemu tools =
+?</span></span></span></span></div><div data-zone-id=3D"0" data-line-index=
+=3D"12" data-line=3D"true" style=3D"font-size: 14px; margin-top: 4px; margi=
+n-bottom: 4px; line-height: 1.6;"><span style=3D"font-size: 14px;"><span st=
+yle=3D"font-family: LarkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -a=
+pple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sa=
+ns-serif;"><span style=3D"color: rgb(31, 35, 41);"><span style=3D"backgroun=
+d-color: rgb(255, 255, 255);">Thank you so much.</span></span></span></span=
+></div><div data-zone-id=3D"0" data-line-index=3D"13" data-line=3D"true" st=
+yle=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-height: 1=
+.6;"><br></div><div data-zone-id=3D"0" data-line-index=3D"14" data-line=3D"=
+true" style=3D"font-size: 14px; margin-top: 4px; margin-bottom: 4px; line-h=
+eight: 1.6;"><span style=3D"font-size: 14px;"><span style=3D"font-family: L=
+arkHackSafariFont, LarkEmojiFont, LarkChineseQuote, -apple-system, BlinkMac=
+SystemFont, Tahoma, &quot;PingFang SC&quot;, Arial, sans-serif;"><span styl=
+e=3D"color: rgb(31, 35, 41);"><span style=3D"background-color: rgb(255, 255=
+, 255);">BestRegards,</span></span></span></span></div><div data-zone-id=3D=
+"0" data-line-index=3D"15" data-line=3D"true" style=3D"font-size: 14px; mar=
+gin-top: 4px; margin-bottom: 4px; line-height: 1.6;"><span style=3D"font-si=
+ze: 14px;"><span style=3D"font-family: LarkHackSafariFont, LarkEmojiFont, L=
+arkChineseQuote, -apple-system, BlinkMacSystemFont, Tahoma, &quot;PingFang =
+SC&quot;, Arial, sans-serif;"><span style=3D"color: rgb(31, 35, 41);"><span=
+ style=3D"background-color: rgb(255, 255, 255);">Rex&nbsp;</span></span></s=
+pan></span></div></div>
+--bfa2fb542e7323460e7575b0de93ad2b4ebe872ff96219d724d6a1e8549a--

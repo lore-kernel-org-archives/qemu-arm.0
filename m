@@ -1,37 +1,36 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2919837ejt;
-        Mon, 19 Jun 2023 10:09:53 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5wtyGcrjcbhFUXyvsLIWfCr3KJb6w7Gwt7KYNO+4JDjA5oUPc5l6R0E3RCZYdEGl0WEq9p
-X-Received: by 2002:a05:622a:151:b0:3ff:1fce:e9b9 with SMTP id v17-20020a05622a015100b003ff1fcee9b9mr3798364qtw.4.1687194593588;
-        Mon, 19 Jun 2023 10:09:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687194593; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2919989ejt;
+        Mon, 19 Jun 2023 10:10:11 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7bhhtUUvAqZ4PU8fEubqk4kMuCxQ675yvrXo+84a5Xf+YsVKipvfLqBsYI50mwFhQkQjnM
+X-Received: by 2002:a05:622a:13d1:b0:3f8:6b32:480d with SMTP id p17-20020a05622a13d100b003f86b32480dmr14159639qtk.46.1687194611000;
+        Mon, 19 Jun 2023 10:10:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687194610; cv=none;
         d=google.com; s=arc-20160816;
-        b=FLQ1TQUPVKrtB/XCu0o1c8D1Xx9fG6GvQGp2ObU3HfE/lCiq2atgFqkr71mWzBbtNz
-         8uLWnTOGsZTB69k5m6/LEiysEGB/wKTRrjByb8jqIkC+W0iYtZCLtV1rn+GdmMdCz+1S
-         xPIhQFQn6hZ7oaRozDXOYtey6dZyJ+ZpmJqh6HvHxxHX0xQ67CDsTjRKKtDxQoLNYoxR
-         Kkltwko6iOP/gkIPA7L3j7kefS0OyjKIGP2gpVvAHKsj+82ttjNZXjO4Hqo5H07rxx/H
-         vP1S1yRjI2XpD0SZucZ+zTRhv62YUNmP2jDV2peQFt4Xh+15NNQKaNrryMA5+z/EKRwb
-         Qu1g==
+        b=BNqDtgN7xibdqZjRQqt4ICYOKGxjkiXeenX+eAzR1yHqeHxJQ2gjaRxPHnen2H6L6l
+         DkacgLoicPBgQcAaYDCIeI1oImErKcU7oNtJ0HVBCiqjYWK5ALswyY358v1NmRr4t3uf
+         W79izQsyNf4u9wHO+qcENRYXYE7nz4aurBPE87QDrdMy52HH7uHEZj6NfphDRBUwKJdH
+         zUNuQ/Yz5P6zqp/XCsSk20UgVi3i9LxHjz3YPQUDncGXxBBZZvOwwoIfPfh1BwfJ++ge
+         YChczFiVcLdM08Goyh4H2uEqx5Z4gDMFXCbyE+8iodpIarlKMQfehotBJWRQ/rTde1l9
+         HNyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=8tqRzNQry+oIJdY9MRz3+Bx5bLiZS8jxo/siYf4Uh70=;
-        b=OFcUyXyDjeFWPrBYnpuxJsmwKuMOqBpOgNuLFhLG4waACooiF7kbCxn0SwbmO2YryG
-         dknyFs6zjrB5BhpYOfZyZ34A3a6MkQh6eqe99pgmKywsE9vcG2CG1lKvVIOkMntQsSMb
-         MCNAl8Bmt58hWNN+izz/6EQJxtIm8Qszus0ZG7pW5nS/HqfZQ4+3V1F985Ex2SRaCjfM
-         esFPug+yCEqudKXnl5/ql0hJChi+8H0lnHp9izzqrTwfG8mrYIPqQpF0XXwVo4Nb1Oek
-         D6wy+GlxmqsOAI8JPQpytl+aXbCCoN97/Nkbi5CCsSn3CSxF43pR38WalHFlkHhztgTe
-         249Q==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=qvZDt4sgYb6C7On5VH8+3EKFJn7NoF2S7Uh6Y5GL7TM=;
+        b=SR8MEbCRyJhCR0D5HuOkNSd4lUHaDpLWvYpvhUx5GtAUZqdIK1N8eLnp/UxX1Lwldb
+         OIu26+q3XqJyJibt2rFpbfWRcgnGSd04ypFYiUPl16npXYG9tBELPRzAPceUXlZUZRh7
+         3BWxG5zqqONf8ikmXxcPrfvImnc0CQpmckH4We71OZoVvrp1QzZfTG+W1XVU7ssrpbQR
+         SKceyd8SLmg8tM/XApizGbcMUJFhOhrI5i1EBYcdamaQvRNRW5hI62DFy5iJKcm+0fBN
+         MWnHsnLbzaftRhneB8jTnYqKAoiS0wfBDrlRs1AP0/E8nO1E3P3yvybqs8uyLx45VWOi
+         YgPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6-20020ac85f06000000b003f6a6046c0esi59130qta.559.2023.06.19.10.09.53
+        by mx.google.com with ESMTPS id o13-20020a05622a044d00b003f6bb129f8esi50678qtx.808.2023.06.19.10.10.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 10:09:53 -0700 (PDT)
+        Mon, 19 Jun 2023 10:10:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -39,25 +38,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBINm-0001Nf-Lr; Mon, 19 Jun 2023 13:09:38 -0400
+	id 1qBINm-0001Ne-K1; Mon, 19 Jun 2023 13:09:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1qBINl-0001NF-BY; Mon, 19 Jun 2023 13:09:37 -0400
+ id 1qBINl-0001NE-8d; Mon, 19 Jun 2023 13:09:37 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1qBINj-0000ko-D7; Mon, 19 Jun 2023 13:09:37 -0400
+ id 1qBINj-0000kp-Dc; Mon, 19 Jun 2023 13:09:37 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 148CE26021A;
- Mon, 19 Jun 2023 19:09:32 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id DFE4A260ADB;
+ Mon, 19 Jun 2023 19:09:31 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NXWlSrKFxUhY; Mon, 19 Jun 2023 19:09:30 +0200 (CEST)
+ with ESMTP id eafiISAUVR0d; Mon, 19 Jun 2023 19:09:29 +0200 (CEST)
 Received: from applejack.lan (83.11.39.176.ipv4.supernova.orange.pl
  [83.11.39.176])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id DF9F4260ABD;
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 5483126021A;
  Mon, 19 Jun 2023 19:09:29 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
@@ -66,12 +65,10 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Leif Lindholm <quic_llindhol@quicinc.com>,
  Radoslaw Biernacki <rad@semihalf.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 1/1] hw/arm/sbsa-ref: add ITS support in SBSA GIC
-Date: Mon, 19 Jun 2023 19:09:13 +0200
-Message-Id: <20230619170913.517373-2-marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v2 0/1] hw/arm/sbsa-ref: add ITS support in GIC
+Date: Mon, 19 Jun 2023 19:09:12 +0200
+Message-Id: <20230619170913.517373-1-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230619170913.517373-1-marcin.juszkiewicz@linaro.org>
-References: <20230619170913.517373-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: softfail client-ip=213.251.184.221;
@@ -95,148 +92,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0rvVHS0io8n8
+X-TUID: EPXJGpZXAFjC
 
-From: Shashi Mallela <shashi.mallela@linaro.org>
+In 2021 Shashi Mallela sent v8 of GIC ITS patchset [1]. At that time it
+was decided to do platform versioning first.
 
-Create ITS as part of SBSA platform GIC initialization.
+1. https://lore.kernel.org/qemu-devel/20210812165341.40784-8-shashi.mallela@linaro.org/
 
-GIC ITS information is in DeviceTree so TF-A can pass it to EDK2.
+Now we are going through our list of changes for SBSA Reference Platform
+and GIC ITS is one of early ones. There was decision that there will be
+no option to disable it and platform version will get a minor bump.
 
-Bumping platform version to 0.2 as this is important hardware change.
+This is refreshed version of v8 one from 2021. GIC ITS is placed behind
+GIC Redistributor in memory space to allow use of older EDK2 firmware.
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
-Co-authored-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
+New address is placed in DeviceTree for firmware to use. Due to it we
+also bump platform version to 0.2 version.
+
+Trusted Firmware will read GIC ITS address and provide to EDK2 via
+Secure Monitor Call (SMC). Same way as it is done with GIC addresses
+already.
+
+Changes since v1:
+- everything in one patch
+- removed bogus check for kvm_irqchip_in_kernel()
+- documentation about platform version changes added
+
+
+Shashi Mallela (1):
+  hw/arm/sbsa-ref: add ITS support in SBSA GIC
+
  docs/system/arm/sbsa.rst | 14 ++++++++++++++
  hw/arm/sbsa-ref.c        | 33 ++++++++++++++++++++++++++++++---
  2 files changed, 44 insertions(+), 3 deletions(-)
 
-diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
-index f571fe645e..a8e0b530a2 100644
---- a/docs/system/arm/sbsa.rst
-+++ b/docs/system/arm/sbsa.rst
-@@ -46,6 +46,9 @@ to be a complete compliant DT. It currently reports:
-    - platform version
-    - GIC addresses
- 
-+Platform version
-+''''''''''''''''
-+
- The platform version is only for informing platform firmware about
- what kind of ``sbsa-ref`` board it is running on. It is neither
- a QEMU versioned machine type nor a reflection of the level of the
-@@ -54,3 +57,14 @@ SBSA/SystemReady SR support provided.
- The ``machine-version-major`` value is updated when changes breaking
- fw compatibility are introduced. The ``machine-version-minor`` value
- is updated when features are added that don't break fw compatibility.
-+
-+Platform version changes:
-+
-+0.0
-+  Devicetree holds information about CPUs, memory and platform version.
-+
-+0.1
-+  GIC information is present in devicetree.
-+
-+0.2
-+  GIC ITS information is present in devicetree.
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index de21200ff9..0639f97dd5 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -65,6 +65,7 @@ enum {
-     SBSA_CPUPERIPHS,
-     SBSA_GIC_DIST,
-     SBSA_GIC_REDIST,
-+    SBSA_GIC_ITS,
-     SBSA_SECURE_EC,
-     SBSA_GWDT_WS0,
-     SBSA_GWDT_REFRESH,
-@@ -108,6 +109,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
-     [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
-     [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
-+    [SBSA_GIC_ITS] =            { 0x44081000, 0x00020000 },
-     [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
-     [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
-     [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
-@@ -181,8 +183,15 @@ static void sbsa_fdt_add_gic_node(SBSAMachineState *sms)
-                                  2, sbsa_ref_memmap[SBSA_GIC_REDIST].base,
-                                  2, sbsa_ref_memmap[SBSA_GIC_REDIST].size);
- 
-+    nodename = g_strdup_printf("/intc/its");
-+    qemu_fdt_add_subnode(sms->fdt, nodename);
-+    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-+                                 2, sbsa_ref_memmap[SBSA_GIC_ITS].base,
-+                                 2, sbsa_ref_memmap[SBSA_GIC_ITS].size);
-+
-     g_free(nodename);
- }
-+
- /*
-  * Firmware on this machine only uses ACPI table to load OS, these limited
-  * device tree nodes are just to let firmware know the info which varies from
-@@ -219,7 +228,7 @@ static void create_fdt(SBSAMachineState *sms)
-      *                        fw compatibility.
-      */
-     qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
--    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 1);
-+    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 2);
- 
-     if (ms->numa_state->have_numa_distance) {
-         int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-@@ -409,7 +418,20 @@ static void create_secure_ram(SBSAMachineState *sms,
-     memory_region_add_subregion(secure_sysmem, base, secram);
- }
- 
--static void create_gic(SBSAMachineState *sms)
-+static void create_its(SBSAMachineState *sms)
-+{
-+    const char *itsclass = its_class_name();
-+    DeviceState *dev;
-+
-+    dev = qdev_new(itsclass);
-+
-+    object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(sms->gic),
-+                             &error_abort);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, sbsa_ref_memmap[SBSA_GIC_ITS].base);
-+}
-+
-+static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
- {
-     unsigned int smp_cpus = MACHINE(sms)->smp.cpus;
-     SysBusDevice *gicbusdev;
-@@ -436,6 +458,10 @@ static void create_gic(SBSAMachineState *sms)
-     qdev_prop_set_uint32(sms->gic, "len-redist-region-count", 1);
-     qdev_prop_set_uint32(sms->gic, "redist-region-count[0]", redist0_count);
- 
-+    object_property_set_link(OBJECT(sms->gic), "sysmem",
-+                             OBJECT(mem), &error_fatal);
-+    qdev_prop_set_bit(sms->gic, "has-lpi", true);
-+
-     gicbusdev = SYS_BUS_DEVICE(sms->gic);
-     sysbus_realize_and_unref(gicbusdev, &error_fatal);
-     sysbus_mmio_map(gicbusdev, 0, sbsa_ref_memmap[SBSA_GIC_DIST].base);
-@@ -482,6 +508,7 @@ static void create_gic(SBSAMachineState *sms)
-         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-     }
-+    create_its(sms);
- }
- 
- static void create_uart(const SBSAMachineState *sms, int uart,
-@@ -788,7 +815,7 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_secure_ram(sms, secure_sysmem);
- 
--    create_gic(sms);
-+    create_gic(sms, sysmem);
- 
-     create_uart(sms, SBSA_UART, sysmem, serial_hd(0));
-     create_uart(sms, SBSA_SECURE_UART, secure_sysmem, serial_hd(1));
 -- 
 2.40.1
 

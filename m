@@ -1,106 +1,123 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2819750ejt;
-        Mon, 19 Jun 2023 06:47:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7JQD7P+kJlMoAaN1LST2Ynug4bhNBQx/Sd6W2447DoryozlthRKvhx8gXm2T6GdKuKUc9N
-X-Received: by 2002:a05:6214:2aad:b0:630:463:3676 with SMTP id js13-20020a0562142aad00b0063004633676mr1067310qvb.61.1687182441926;
-        Mon, 19 Jun 2023 06:47:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687182441; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2822751ejt;
+        Mon, 19 Jun 2023 06:54:38 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5o/jWp6sPvo8yQQ9KMVXxDDIczepuWSXPeUhJ4O1j84lgiwwH9CmLJ0Y/FzDJ5QqLBIne0
+X-Received: by 2002:a05:620a:2814:b0:75b:23a1:362e with SMTP id f20-20020a05620a281400b0075b23a1362emr1109207qkp.63.1687182878698;
+        Mon, 19 Jun 2023 06:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687182878; cv=none;
         d=google.com; s=arc-20160816;
-        b=lbZQhR7ISU6fRMNy8EEPzT4fbcNwAJhZYp6Wq1WltZ7oOOFZn5gKYNDD5Ep2J9NX04
-         HyZCageAIzIui6pq7EJB1XWENZNjZLdioCErDONYfiVwn21NNEg4hmNFhHD3bLZx4CNj
-         jXHpmzU4Fw/rKHKKZZ/qOYf1F9d22InKc1G4sooKfpyKtwUcFCA4vYSV8LXBX1736ANt
-         qhEAtux6+ST7m0jpiz5lRSah2VPDf4MIr+u4ThC9utrrIA5UdaUjHgLq72rQzEakaosv
-         g0aojlVDMtLrhE5f3oFvNZSNF5vtN8qlFIo6Mdun916XFz0J4boekZTOZYCTwoG5vyTZ
-         CBHw==
+        b=Zn8Ij/2yhM9+U6JThSnJwyHXyNnp90cHmk/fGo4UfpMomEyG9BJV0sYp5Nt4cf5G13
+         gJMRpQ78Yv8QnrIlcOdI4amgn7MVZRyblV8UGHxSI4q80y2iLx6Ztlj/71Gm/X1IFyPt
+         BSwoln5VNxqZtwkrMwOKZE18mgjTvqawF1FkvXbVu9snFrA/8/P1MZZrj9LDAAP/Hrq1
+         q5kLJMbK6aaWO7gr1m6cjWjX1xEbmS1CWp6kS8Iij8n7GevnN5P2nup4aWY9zHXVs14B
+         IGZpKURAHwp7L+wz2bMeZFeQUTCiC/06cIhAk7K0gsQtAp4B6hciAg/0B5mRtbJeqf6D
+         hBjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=EcDTfFvPiDbu6xKRzq1KBQP9u7bfAG3ORDug4/njrBc=;
-        b=C9bovT48B1DuOmDZEP+KrsAiB0SoWrSDhGiKNTyDeymvgTnXMtOyiFwgXqHzhMQqif
-         hdG2LSNkZiD6mCwVqsqfrgpH1mC+Bk8LlmS+xqqx4ucR9zq2v7JOzmV+TsUM8GNhcJXq
-         WrCEK18YFjkZk/j9SjGzhXj2QAIBWd9KX28kygMCG/Rb/cMBt66GA+MuZ/JOqd/rj0YS
-         dbdlVnJinoevrJhTItItd4KIF9hqU1Tvt7JrnVawDjWCNSKw2F7JBzJ9fv9LDWEldH/x
-         Gb24AHoMB1JW4LhpbxbBdJGbi7S2A8bINLouwGPZturjqpeCW34OoXQjKzj9L7jUpoLY
-         M+/Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=9lLwy27m6/bOV10TzIoobGu46pwKRFpktlflZ0/jQXA=;
+        b=PoWeslWfdD5xTCN5fsbFomZCFhDWFuLtUV4FjKb59AqW4DVRCqH1JmctdUzjp4Brnk
+         h4kTbOlCd+RWZRbj0hR6/8RpM/fXZ52AfY+leafIZjkd2ypCbjFyndJslale03D8T4aa
+         oyPw4GxnNMUoYYGIHX5qzka5CRlbnwLk0L5sWEI5ZNf0oqbYkaTCGpe0X2TfatPM5Vzl
+         S10t4QEKjL/ranh3RbzWRG5pBNWK/9qqmvkky/fW/4DzmJBc+lo+nIL75qFccXrOxlHA
+         AJZHz/OsqfkLICjI9MBE0Mkd2IK6jXsrC0AnPiAtkDaqWligAj671HyIndN7wErY9hGS
+         j2Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=HOYRyX3Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3AAi8FL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gg9-20020a056214252900b0062de959e6b6si458907qvb.13.2023.06.19.06.47.21
+        by mx.google.com with ESMTPS id dy1-20020a05620a60c100b0074dfd94ea83si13080842qkb.742.2023.06.19.06.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 06:47:21 -0700 (PDT)
+        Mon, 19 Jun 2023 06:54:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=HOYRyX3Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=E3AAi8FL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBFDt-00030H-97; Mon, 19 Jun 2023 09:47:13 -0400
+	id 1qBFKv-0005SE-N7; Mon, 19 Jun 2023 09:54:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBFDn-0002wQ-3N
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:47:07 -0400
-Received: from qs51p00im-qukt01080501.me.com ([17.57.155.22])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBFDk-0006PL-UZ
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:47:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- t=1687182423; bh=EcDTfFvPiDbu6xKRzq1KBQP9u7bfAG3ORDug4/njrBc=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
- b=HOYRyX3YnwaAGY0t8g2X1MuWPmdySTYmN+ez62Q2qhKcaA9JTD8Io6w9idAk6x5mB
- SoDp2WObu409/2plc2SaQpvvvUZHLtKAyjkKlyAxU3w4ZMMrhS10luwWm/K58WTKqq
- 3YfOpRSg5a/Rv9iphtBxhb2iR6WNbchYHOqRkobZGhJsvGEvgVaMDod03C2jlwtV46
- oDttjmRplBT/TqJx8v5BDggoAdBCO6iG5stysWYhaNeGuKZHnpwd3zKRZrzFyeHlS5
- 5RiTmy4qSMbGfhqUYRaW2B6uWPgpPiPqFkq5dR+awASc56w7k1WKZoUDQ9Kd+ypMuH
- L9QXcrZWIny1A==
-Received: from smtpclient.apple (qs51p00im-dlb-asmtp-mailmevip.me.com
- [17.57.155.28])
- by qs51p00im-qukt01080501.me.com (Postfix) with ESMTPSA id F3FDF19802C7;
- Mon, 19 Jun 2023 13:47:00 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBFKt-0005Rx-UP
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:54:27 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBFKs-0008Rl-8B
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:54:27 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-982a0232bdcso574652966b.1
+ for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 06:54:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1687182865; x=1689774865;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=9lLwy27m6/bOV10TzIoobGu46pwKRFpktlflZ0/jQXA=;
+ b=E3AAi8FLPMOk0V4vUDro7QpQb/nFWFIwYfdgb0Pc42msOA/ieXubd39Oo3mvF0agb/
+ JLfZoDYjU04zNN4iAVYMb5RtDeDq9rdK2za5TOYX+yQldU2yonuzLdgfiI+0xuUkICV7
+ ArDx/RV5LUj7taY0nRfRrxYJ3xUPOphR5iHEvCXRnFn5JdXmlMJvzbF6sEk/s6Ibvimo
+ nA08g1fPqFydHqbqGZ5KbEXGJP/mv+yXmBEDy0C+8zIO6Ealzn8ry4GgkECSnq0JS/iF
+ rU06eTyefbTmv1mvmu0qoP1U3ehazHy5svtVyHg/r5wCRbRCnz6ztRS4NEXFdlqH5U2H
+ rYLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687182865; x=1689774865;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9lLwy27m6/bOV10TzIoobGu46pwKRFpktlflZ0/jQXA=;
+ b=Yer/T+8I6pVvQAu7kHnvqN5bbyJN3nS9xevTijFelApqmDV5MksY8KqxM5+J/dxBuZ
+ TrXuDF+b6oPAJrDELPc9sM58+8RHVv4cvJ+Ha6ZCGHaerUwvdrrd5L9IcwDb9zc67KdN
+ w/E+B/5hujTKcTaYS9A8OTKGoX7sEt+0vwh/fbXY7edtqP8/NmK74KZ9+TJ1IbEH98Vu
+ /XiwPvg3ZubnmmmpA0m+EIwrS7XgsbFq32P6pZeIujtJaUiq1TDoiQF2RrgIurWKnUxp
+ 0hK9l2RBybeNh52hzwEIotDbFgpIiSQP8kdWrRNcF12EG0OTsqjaowyOl4ClFz2EpK5e
+ 2Krg==
+X-Gm-Message-State: AC+VfDycW0DFEgTAKR9PdUFp9chxtWuuPhldMNkzxYkJZZu/75oxXIIP
+ zM+e3aNBWc77y5Us2HojhsJsFQ==
+X-Received: by 2002:a17:907:78e:b0:982:7545:efb6 with SMTP id
+ xd14-20020a170907078e00b009827545efb6mr9812230ejb.66.1687182864472; 
+ Mon, 19 Jun 2023 06:54:24 -0700 (PDT)
+Received: from [192.168.69.129] (sar95-h02-176-184-10-225.dsl.sta.abo.bbox.fr.
+ [176.184.10.225]) by smtp.gmail.com with ESMTPSA id
+ x14-20020a170906804e00b009884f015a44sm2721166ejw.49.2023.06.19.06.54.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Jun 2023 06:54:24 -0700 (PDT)
+Message-ID: <e0825fab-e4cb-7551-949b-6c1dfc3d0a44@linaro.org>
+Date: Mon, 19 Jun 2023 15:54:20 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
 Subject: Re: [PATCH v2 12/12] target/arm: Allow users to set the number of VFP
  registers
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <c027687b-da81-3e3f-9305-43a6eadc17fe@kaod.org>
-Date: Mon, 19 Jun 2023 15:46:49 +0200
-Cc: "open list:ARM cores" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <21DCF8D7-06DA-4F3E-B3E8-890B9D401978@ynddal.dk>
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>
+Cc: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
 References: <20230607043943.1837186-1-clg@kaod.org>
  <20230607043943.1837186-13-clg@kaod.org>
  <955C217E-FE0F-41E2-8E97-9AFD8C4A0DBE@ynddal.dk>
- <c027687b-da81-3e3f-9305-43a6eadc17fe@kaod.org>
-To: =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-X-Mailer: Apple Mail (2.3731.600.7)
-X-Proofpoint-ORIG-GUID: QrN7nG6HdqmsH9aEXif00vEOAxBWskLb
-X-Proofpoint-GUID: QrN7nG6HdqmsH9aEXif00vEOAxBWskLb
-X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
- =?UTF-8?Q?2903e8d5c8f:6.0.425,18.0.790,17.0.605.474.0000000_definitions?=
- =?UTF-8?Q?=3D2022-01-12=5F03:2022-01-11=5F01,2022-01-12=5F03,2020-01-23?=
- =?UTF-8?Q?=5F02_signatures=3D0?=
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0 clxscore=1030
- bulkscore=0 phishscore=0 suspectscore=0 spamscore=0 mlxlogscore=595
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2306190126
-Received-SPF: pass client-ip=17.57.155.22; envelope-from=mads@ynddal.dk;
- helo=qs51p00im-qukt01080501.me.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <CAFEAcA-siVrV0NWOZYR10UanT-Rrh37CqJ7Xm83Y90eGV91jSw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA-siVrV0NWOZYR10UanT-Rrh37CqJ7Xm83Y90eGV91jSw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,93 +133,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iJ5RrpjUrHlK
+X-TUID: URoduGruOywr
+
+On 6/19/23 15:41, Peter Maydell wrote:
+> On Mon, 19 Jun 2023 at 13:47, Mads Ynddal <mads@ynddal.dk> wrote:
+>>
+>> Sorry, if this has already been acknowledged, but I couldn't find it on the
+>> mailinglist.
+>>
+>> This commit seems to break compatibility with macOS accelerator hvf when
+>> virtualizing ARM CPUs.
+>>
+>> It breaks the VM on boot-up with the message "ARM CPUs must have both VFP-D32
+>> and Neon or neither". I haven't looked into what VFP-D32 and Neon are, but the
+>> same VM worked on earlier versions of QEMU.
+>>
+>> It can be reproduced with the following:
+>>
+>> qemu-system-aarch64 \
+>>    -nodefaults \
+>>    -display "none" \
+>>    -machine "virt" \
+>>    -accel "hvf" \
+>>    -cpu "host" \
+>>    -serial "mon:stdio"
+>> qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
+>>
+>>
+>> If you fix/work on this issue in a separate thread/patch, you can add
+>> reported-by, so I'll automatically follow and help test it:
+>>
+>> Reported-by: Mads Ynddal <mads@ynddal.dk>
+>>
+> 
+> 
+>>> @@ -1406,6 +1409,22 @@ void arm_cpu_post_init(Object *obj)
+>>>          }
+>>>      }
+>>>
+>>> +    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
+>>> +        cpu->has_vfp_d32 = true;
+>>> +        if (!kvm_enabled()) {
+> 
+> Probably this should be "if (!kvm_enabled() && !hvf_enabled())".
+> Is that sufficient to fix the regression ? (I have a feeling it
+> isn't, but we might as well test...)
+
+Yes, insufficient.  But I'm also changing these to tcg || qtest.
+
+> 
+>>> +            /*
+>>> +             * The permitted values of the SIMDReg bits [3:0] on
+>>> +             * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
+>>> +             * make sure that has_vfp_d32 can not be set to false.
+>>> +             */
+>>> +            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
+>>> +                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
+>>> +                qdev_property_add_static(DEVICE(obj),
+>>> +                                         &arm_cpu_has_vfp_d32_property);
+>>> +            }
+>>> +        }
+>>> +    }
+>>> +
+>>>      if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+>>>          cpu->has_neon = true;
+>>>          if (!kvm_enabled()) {
+>>> @@ -1672,6 +1691,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>>>          return;
+>>>      }
+>>>
+>>> +    if (cpu->has_vfp_d32 != cpu->has_neon) {
+>>> +        error_setg(errp, "ARM CPUs must have both VFP-D32 and Neon or neither");
+>>> +        return;
+>>> +    }
+> 
+> The other thing I see looking again at this code is that it
+> doesn't account for CPUs which don't have AArch32 support
+> at all. The MVFR0 register which the aa32_simd_r32 feature
+> test is looking at is an AArch32 register, and the test
+> will not return a sensible answer on an AArch64-only CPU.
+
+This is the problem.  The code needs restructuring (which I am about to test).
+
+> On the other side of this, target/arm/hvf/hvf.c always
+> sets ARM_FEATURE_NEON, which I think is probably not
+> correct given that Neon is also an AArch32-only thing.
+
+At one time NEON also meant AdvSIMD, though we have now changed aa64 to the isar test.  We 
+could probably get rid of NEON now too, with just a little more cleanup.
 
 
-> ARM's "Vector Floating Point" unit has many implementation with =
-different
-> features: VFPv3-D16/D32, *FP16, VFPv4-D16/D32, Neon, etc. The test =
-might
-> be too strict and could possibly be removed.
->=20
-> Could you send us the result of 'cat /proc/cpuinfo' on the host ?
->=20
-> Thanks,
->=20
-> C.
-
-The host is macOS, so there's no '/proc/cpuinfo'. I can get this from =
-sysctl:
-
-$ sysctl -a | grep hw.optional
-hw.optional.arm.FEAT_FlagM: 1
-hw.optional.arm.FEAT_FlagM2: 1
-hw.optional.arm.FEAT_FHM: 1
-hw.optional.arm.FEAT_DotProd: 1
-hw.optional.arm.FEAT_SHA3: 1
-hw.optional.arm.FEAT_RDM: 1
-hw.optional.arm.FEAT_LSE: 1
-hw.optional.arm.FEAT_SHA256: 1
-hw.optional.arm.FEAT_SHA512: 1
-hw.optional.arm.FEAT_SHA1: 1
-hw.optional.arm.FEAT_AES: 1
-hw.optional.arm.FEAT_PMULL: 1
-hw.optional.arm.FEAT_SPECRES: 0
-hw.optional.arm.FEAT_SB: 1
-hw.optional.arm.FEAT_FRINTTS: 1
-hw.optional.arm.FEAT_LRCPC: 1
-hw.optional.arm.FEAT_LRCPC2: 1
-hw.optional.arm.FEAT_FCMA: 1
-hw.optional.arm.FEAT_JSCVT: 1
-hw.optional.arm.FEAT_PAuth: 1
-hw.optional.arm.FEAT_PAuth2: 0
-hw.optional.arm.FEAT_FPAC: 0
-hw.optional.arm.FEAT_DPB: 1
-hw.optional.arm.FEAT_DPB2: 1
-hw.optional.arm.FEAT_BF16: 0
-hw.optional.arm.FEAT_I8MM: 0
-hw.optional.arm.FEAT_ECV: 1
-hw.optional.arm.FEAT_LSE2: 1
-hw.optional.arm.FEAT_CSV2: 1
-hw.optional.arm.FEAT_CSV3: 1
-hw.optional.arm.FEAT_DIT: 1
-hw.optional.arm.FEAT_FP16: 1
-hw.optional.arm.FEAT_SSBS: 1
-hw.optional.arm.FEAT_BTI: 0
-hw.optional.arm.FP_SyncExceptions: 1
-hw.optional.floatingpoint: 1
-hw.optional.neon: 1
-hw.optional.neon_hpfp: 1
-hw.optional.neon_fp16: 1
-hw.optional.armv8_1_atomics: 1
-hw.optional.armv8_2_fhm: 1
-hw.optional.armv8_2_sha512: 1
-hw.optional.armv8_2_sha3: 1
-hw.optional.armv8_3_compnum: 1
-hw.optional.watchpoint: 4
-hw.optional.breakpoint: 6
-hw.optional.armv8_crc32: 1
-hw.optional.armv8_gpi: 1
-hw.optional.AdvSIMD: 1
-hw.optional.AdvSIMD_HPFPCvt: 1
-hw.optional.ucnormal_mem: 1
-hw.optional.arm64: 1
-
-
-If it's any help, the Linux guest looks like this:
-
-$ cat /proc/cpuinfo
-processor : 0
-BogoMIPS : 48.00
-Features : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp =
-asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 =
-asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint
-CPU implementer : 0x00
-CPU architecture: 8
-CPU variant : 0x0
-CPU part : 0x000
-CPU revision : 0
-
-=E2=80=94
-Mads Ynddal
+r~
 

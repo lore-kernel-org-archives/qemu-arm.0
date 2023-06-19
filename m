@@ -1,101 +1,100 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2884436ejt;
-        Mon, 19 Jun 2023 08:59:09 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4BVEBpGOWOu1RkCfuR3NiQOslXcJUqyQ+XVtCZnCj3d/xcAdn5FwFvvXhy39jQ+iIq8Xme
-X-Received: by 2002:a05:620a:22cb:b0:75f:4eb:6bd8 with SMTP id o11-20020a05620a22cb00b0075f04eb6bd8mr7871081qki.77.1687190349157;
-        Mon, 19 Jun 2023 08:59:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687190349; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2884535ejt;
+        Mon, 19 Jun 2023 08:59:19 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ50YKw/L4jj/QdKRyUzZ8UK7ZPJLLTQdQtHAcvlApi+iEs5T7AHMWyH+v+1Ro/xpAbZhcC3
+X-Received: by 2002:ad4:5c81:0:b0:62d:fd62:45fa with SMTP id o1-20020ad45c81000000b0062dfd6245famr15352794qvh.54.1687190359676;
+        Mon, 19 Jun 2023 08:59:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687190359; cv=none;
         d=google.com; s=arc-20160816;
-        b=ei8ADpHH+DbkK2wg/L1vZ1Jf/Tz+4YhV6Q6Eadw6Vx+dfPly8/YF2OfaatUq+ufPIb
-         rAHMjrnf+uZOqahmkW+kHGFoajdF9q525cnFLWNC7wKoiwfpuXAxc7MU/Y637zRWRGy2
-         XVFH00dwg8v8zomfykp6dp4wUQomHPhpViarg2f5PrjwKqEfxa7h1vlBMi/9gI5AonVs
-         XLJopujG9OY9IN5vfgdtfeG8FfOVBdvjmIHdzcbxjs+3OyWQX/k7c0SrpF7UtpVS+D2s
-         MM+Ri2a/b0Mlh7Pqji66ugqrT8PtPKGEqIxPgfdxIsIrPE99kfV90GadgCRPobYR1YRF
-         c9jA==
+        b=IJpLDVKl0mDqugKQtgcrE7+as22ToW4TB5sA8+kIlmi6ul7Iyrl6l5S234i0BjFojx
+         qa2ms2diH+Cn1GuKm+03aogK5vppEs6Gi6QVCNgMHFLimxoJns9Dw8+fB259Jm1p7T1o
+         aqOQIvlAxyWKstqKlXTHJPwbqhunyzDB38JdUMlxOvSJKRmRKJpZPGSdTKjE+Q2uR3m6
+         gX5I/xMLlk41Br1U70wJ62oX69UqlJqa7FcS0x59/yEJU4dSZ7zPTgXuvHErphghoS/X
+         vR6AXQFlhJ1S2iW+ZsS6DzJX89yPps6y/orD8Hl9xPylz/yR51IbQ7x2YQUFWIhiVyL8
+         BjjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Rdk+XeZoEXG/u6oKHpGn3TbpaF/+hAR3XMc4ZFEmMlk=;
-        b=URAa3tExXUFLr7mIpUSfGAvWgJ6SozG+/2HhP/EsCxFQUnWnjMzUu1Ini9S/c8yZpy
-         RE64awbVvLQTZ9RPhCaPYX/GFzMoG4YNM+IcrQuFZAi4Jr9FUemKmocAJDSXBZHeRppx
-         tq8Bt87w/Bkx6pybh7p1XsSH+ProMQ2KV6V7JxbVwUu2UXjUTbaRx0qjtjeKrT1q9+bM
-         NiXQi7ctriqCUjwNcJ1lTtvJq33qfc2DZ6gUhuqxgmp5yHbkXMVxyWb22nQVy5hWOOL/
-         RXDrytPAE+xnC7Wow0rFGWCBpkld8BlQ1LxddBYuFporP0x1V+P139S97oHmN01N6zF0
-         VyZA==
+        bh=Yhu8d6diQ3is2pZ2Ay7Lkxc29r3qyYX7d/FAwcjykEo=;
+        b=rlxbASiORGXU5SOADQTZUVxp2jGn60srW80LalKBb3bhhrWygKWt4G1EwP3R1i/Jr7
+         8l2LDWJchvEbvEO83rSVi8nBMadQBBUgJXWBEV6RP3r9dGNTDYu1TUD7mYClpeX3eYFq
+         +u0ZY7uL06PiA0GYz8KH0wm6W4ITBq4/e9J838TnieYS/38dI1ljjcTyIED/uIIQ2bKz
+         Z6PYgo/+E2PjQHiTXAPon9P+8Q4Zr9W2105FhvsWiR0Xujy2sy1APfg9g0CiH60+ewGe
+         LuA51QXqxt87SrjbcVd2c6LA+Zsu5N5GGaSqY1h2ZDj9NJ928FUbNLhEqXUrCtIJ72PP
+         S5ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mqgA9urS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UoZ5Twea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13-20020a05620a142d00b00761cc80a08dsi54978qkj.512.2023.06.19.08.59.09
+        by mx.google.com with ESMTPS id 8-20020a05621420c800b0063019b42725si89127qve.37.2023.06.19.08.59.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 08:59:09 -0700 (PDT)
+        Mon, 19 Jun 2023 08:59:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mqgA9urS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UoZ5Twea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBHFa-0000QT-Cj; Mon, 19 Jun 2023 11:57:06 -0400
+	id 1qBHGS-0002BJ-22; Mon, 19 Jun 2023 11:58:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBHFT-00009O-NV
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 11:57:01 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBHG3-0000kC-Ox
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 11:57:39 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBHFR-0005Bj-0m
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 11:56:58 -0400
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-9741caaf9d4so442260666b.0
- for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 08:56:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBHG1-0005Ig-K7
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 11:57:35 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5187aa18410so3738751a12.0
+ for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 08:57:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687190214; x=1689782214;
+ d=linaro.org; s=google; t=1687190252; x=1689782252;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Rdk+XeZoEXG/u6oKHpGn3TbpaF/+hAR3XMc4ZFEmMlk=;
- b=mqgA9urSUQ1ecZZpFL1BCiT3PK0fmt0KAUDD72LdPeoHWekTvDFMy+TE9XLv8rEMnX
- BGCcaX7TTMvMdq9BoS0QwKtZyeemV0HDn1wVOMrWzLVfP+WZb9bJThnK/GvEzOjTl88g
- hs8cpyYztsnIxcYKJKsm1sm/9UxlIH0JcsdBoO9/4LLs2DS+6HbzVOF6lguy+vuzQMaB
- vz4Y6HPFjdSfAMOJ4s2/124xEfNZFhzwLvYUDbPas8Aza36cF9hMhVCLdkxvkTEsC2eZ
- c4iGpHLaoE1UpBXQhzbb21kBvTsjpzukrcrBPcJQZSzVMNTc8WLCXJ+mBciyojICFpxo
- UMEg==
+ bh=Yhu8d6diQ3is2pZ2Ay7Lkxc29r3qyYX7d/FAwcjykEo=;
+ b=UoZ5Tweaq01fz9vMxPO3V6ToIpKxpEQJH8aTwQyxFciQRpp7RAUBMrRM16Fdnee0m0
+ oAXZ4vZPGk53Jbg3lupubkM/xxq8wsKflZ3ofid79NVA9n83W8Yx5jkDas8miwRBBw+9
+ eycu76FWF63yvoY1VYpiGCLO+QnsUeWwGTEsWKd7ULGYrmlpO+HZoKM6WUv63NQFWN1v
+ EU3YytKTdCaW5ubABBDPa3xTzNvq0t1JDU+4bbkSmhRvh16E8mozwBmNONuKfoOJpL7x
+ /SRpz9ukzpO9OOXU3MgCwpmWBiPNEGWr8WFLYnHFLB7pNMDmYfoskPOgKvMYcLaSkfll
+ 0Xng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687190214; x=1689782214;
+ d=1e100.net; s=20221208; t=1687190252; x=1689782252;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Rdk+XeZoEXG/u6oKHpGn3TbpaF/+hAR3XMc4ZFEmMlk=;
- b=Ts9ipYp/IwfQ/H0V+O+D+HYgv15ymcM4GkBI0GG65ITHuCfeXKp0qMRPHaf9Tm8jEu
- 6jGo8QllHPqRbwcWc4EQkan5P1EN0zdWY38Pdz5J0+/ImPXcVuJR00j5cuM3WfQy0bCV
- qnKCjzRDsZEpJ1xGdBS3vpPxdX2z8l4T9G8gMhmm7xyl3OY6Fy1gHHep+kW78DXg9Pbz
- q7wT/AKvnuogbMiGvEaud7rysTLksFw1NS3CoihVZusvrZvMXsSwxHbkcME1t0EkTc57
- Fvyion1HiX417Et40hoDCuxtJzunicCnhU8AosfInz2RFiJieG+LQPHj8cim5DsBDdfg
- LWnQ==
-X-Gm-Message-State: AC+VfDxGulkBx6CdFtWalB6EyPMDiuxd9Fq1e8tQ3fHnFq+V3BdDH61z
- D2azq4+X5FBj43etYLRbJ5Mdqq2hFbB1p9Gt4KqipA==
-X-Received: by 2002:a17:906:da8a:b0:96f:e45f:92e9 with SMTP id
- xh10-20020a170906da8a00b0096fe45f92e9mr7841643ejb.16.1687190214532; 
- Mon, 19 Jun 2023 08:56:54 -0700 (PDT)
+ bh=Yhu8d6diQ3is2pZ2Ay7Lkxc29r3qyYX7d/FAwcjykEo=;
+ b=ll33vEew6c5ysRj7v4l1zHWOK9+izUocriPUq9234gpif2OS6Gdl1BUm60jFQRL74t
+ XU60Z4x/yga4RGzqnloPtDXwmsZpHOe2hxEYYiSPN46ZRMTmVKOgXJ+hbAqHX3JPEi6M
+ DDmzaokTGVsKYoD+WSA0nBHh9zUe8KwG7R8Rq93ntdXNG3M/zTenJwqclnHHCC2DZJRO
+ Q8CnE3u8PhgGvhO3bKJ+4KZu5gwdb2ByamEgV1Yo86H5LBPvouhmztLbtYUUjKcCRfxA
+ m+xCaxXR5ut3TRJiNd3clP7MZVOWAIZ9TvZy//iQxar1GAb6Mf7YuZN+QC7aYIyzb8nQ
+ i1Ew==
+X-Gm-Message-State: AC+VfDyCrEh1zQrbfUW1AVMfxesF9uGu4COGhusjis5sHMkZd06kcIdq
+ RslaF2oDdPNjeBJFYBc8nWC2zkth5mgvsBNEdYXbsw==
+X-Received: by 2002:a05:6402:2043:b0:51b:7c2d:4b28 with SMTP id
+ bc3-20020a056402204300b0051b7c2d4b28mr1128702edb.10.1687190252421; 
+ Mon, 19 Jun 2023 08:57:32 -0700 (PDT)
 Received: from m1x-phil.lan (sar95-h02-176-184-10-225.dsl.sta.abo.bbox.fr.
  [176.184.10.225]) by smtp.gmail.com with ESMTPSA id
- a13-20020a170906684d00b0096f7500502csm14913530ejs.199.2023.06.19.08.56.53
+ c7-20020aa7df07000000b00514b854c399sm13222120edy.84.2023.06.19.08.57.30
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 19 Jun 2023 08:56:54 -0700 (PDT)
+ Mon, 19 Jun 2023 08:57:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 25/34] target/arm/tcg: Extract PAuth definitions to
- 'helper-pauth.h.inc'
-Date: Mon, 19 Jun 2023 17:55:01 +0200
-Message-Id: <20230619155510.80991-13-philmd@linaro.org>
+Subject: [PATCH v3 31/34] target/arm/tcg: Inline 'exec/helper-gen.h'
+Date: Mon, 19 Jun 2023 17:55:07 +0200
+Message-Id: <20230619155510.80991-19-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230619155510.80991-1-philmd@linaro.org>
 References: <20230619154302.80350-1-philmd@linaro.org>
@@ -103,8 +102,8 @@ References: <20230619154302.80350-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,103 +125,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VDEIU7yYuwkJ
+X-TUID: kMktitC39nf3
 
-helper.h is used by all units, but not all require the crypto
-definitions. Move them to a new header, which we only include
-where necessary, removing the need for "exec/helper-proto.h".
-
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/tcg/helper-a64.h.inc   | 12 ------------
- target/arm/tcg/helper-pauth.h.inc | 19 +++++++++++++++++++
- target/arm/tcg/pauth_helper.c     |  4 +++-
- target/arm/tcg/translate-a64.c    |  6 ++++++
- 4 files changed, 28 insertions(+), 13 deletions(-)
- create mode 100644 target/arm/tcg/helper-pauth.h.inc
+ target/arm/tcg/translate.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/helper-a64.h.inc b/target/arm/tcg/helper-a64.h.inc
-index adff15600d..2f1aeb3ea5 100644
---- a/target/arm/tcg/helper-a64.h.inc
-+++ b/target/arm/tcg/helper-a64.h.inc
-@@ -69,18 +69,6 @@ DEF_HELPER_2(sqrt_f16, f16, f16, ptr)
- DEF_HELPER_2(exception_return, void, env, i64)
- DEF_HELPER_FLAGS_2(dc_zva, TCG_CALL_NO_WG, void, env, i64)
- 
--DEF_HELPER_FLAGS_3(pacia, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(pacib, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(pacda, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(pacdb, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(pacga, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(autia, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(autib, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(autda, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
--DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
--DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
--
- DEF_HELPER_FLAGS_3(mte_check, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(mte_check_zva, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
-diff --git a/target/arm/tcg/helper-pauth.h.inc b/target/arm/tcg/helper-pauth.h.inc
-new file mode 100644
-index 0000000000..b5bf8aae24
---- /dev/null
-+++ b/target/arm/tcg/helper-pauth.h.inc
-@@ -0,0 +1,19 @@
-+/*
-+ * ARM v8.3-PAuth helper definitions
-+ *
-+ * Copyright (c) 2019 Linaro, Ltd.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+DEF_HELPER_FLAGS_3(pacia, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(pacib, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(pacda, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(pacdb, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(pacga, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(autia, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(autib, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(autda, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
-+DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
-diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
-index 62af569341..c872f7e337 100644
---- a/target/arm/tcg/pauth_helper.c
-+++ b/target/arm/tcg/pauth_helper.c
-@@ -22,10 +22,12 @@
- #include "internals.h"
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index 7d57a71b67..13d59d8417 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -6,9 +6,11 @@
+ #include "tcg/tcg-op-gvec.h"
  #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
--#include "exec/helper-proto.h"
- #include "tcg/tcg-gvec-desc.h"
- #include "qemu/xxhash.h"
+ #include "exec/translator.h"
+-#include "exec/helper-gen.h"
+ #include "internals.h"
  
-+#define HELPER_H "tcg/helper-pauth.h.inc"
-+#include "exec/helper-proto.h.inc"
-+#undef  HELPER_H
- 
- static uint64_t pac_cell_shuffle(uint64_t i)
- {
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index f4c9448582..0d74e5b6e4 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -46,6 +46,12 @@
- #include "exec/helper-gen.h.inc"
- #undef  HELPER_H
- 
-+#define HELPER_H "tcg/helper-pauth.h.inc"
-+#include "exec/helper-proto.h.inc"
++#define HELPER_H "helper.h"
 +#include "exec/helper-gen.h.inc"
-+#include "exec/helper-info.c.inc"
 +#undef  HELPER_H
-+
- static TCGv_i64 cpu_X[32];
- static TCGv_i64 cpu_pc;
+ 
+ /* internal defines */
  
 -- 
 2.38.1

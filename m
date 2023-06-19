@@ -1,120 +1,86 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2718588ejt;
-        Mon, 19 Jun 2023 02:54:55 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5mIh912Dj81NHosw/iTNwLX15qMfYFMDxc3UixUifqg8+jmJYqVV0cOkOvlhZx1QaU11jK
-X-Received: by 2002:ac8:5c91:0:b0:3f9:cb01:9dae with SMTP id r17-20020ac85c91000000b003f9cb019daemr10994269qta.50.1687168494983;
-        Mon, 19 Jun 2023 02:54:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687168494; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2719982ejt;
+        Mon, 19 Jun 2023 02:58:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ529u3IhisnziB5lLQbsFC1v/xzVU5/znTbCyrmgReM66XU2cTnDFrlISpYu/4VJjU0vhEo
+X-Received: by 2002:a05:620a:900a:b0:763:9e50:669a with SMTP id rk10-20020a05620a900a00b007639e50669amr1124585qkn.2.1687168732621;
+        Mon, 19 Jun 2023 02:58:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687168732; cv=none;
         d=google.com; s=arc-20160816;
-        b=zkAb0JXccD3AgcFr37G4WOxL0rE15J4bOLzViejTNJS7QHMxqmu1mExBKAMFfANfz7
-         sIYWyEzHdYP+sY9atSMSdAsuT6+HdcXwe7vWeynfdszWoZn/qdcQ3ihgNRaFqNpJrpGw
-         unOCXpUEERmvy+2Uv4TFpZORxjQJr4Y5Q/NqrL6Z5CMPPD8lNKmEYEiyeLhBdKTKZAQt
-         ZgJSSbqrAMLQwSnuziUtshZADwAjJH8rvE4gqHQJnJsh/PfBZCg8kNj8iWF61q4qrXP1
-         FrjqsAIfBiZcg/hxUxE1al2O7s3xKQIJv9bzyYzF1mag4pR1JV+bFnRMu94BYqEcE7L4
-         JWKA==
+        b=oCGNmuQB6Mhatmy6fy3JomejMH2x3a4mzOlDDUyuUYDjm9wvik/hY3yV/JMlZ8pHZS
+         jpb9y6qYCj5f8ZRoj3tq2+DZB8XStygF01NPY5NvkjfJaDnQer3hGWwyHNForxcky77G
+         0Puu6x8TZC0M2itpsWC1kr73gSh7bD+jkeJYkeWGpHVmjQ8n6Tnex+fVZtK5sSLHv2Oa
+         0H8wJbFFbkHx/9Y+F0bz86kRPxpdr1psM53vVw8scyivCa39Nln+3ViOVEGdMtPvvAQL
+         jGQ5hIO+YMrJYUvammrxLZ1fmdT28pGZJ9z6ks6jqTHYJnbTwRWymgYAybTe9oh4SP7e
+         CG4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=bJC0ZOYLGGFywn0IevTM4EiGvprzqsGKkYPh8vZdReE=;
-        b=wHfJf2pgn+SQowxEKwvfEYQn0SfKu/mEA1Jt5RVRUyXimXkQy+OGBA/0CyHokMLU2Z
-         54JZsvdqn2eo3qkWk8jcP7h+jS7zyZvnpx1pqWXdFuG0IwJco2cfBymTt8JY0EFoN+Ct
-         dBvVmfuX/3aEkWN2CXlBopzG5fFiZ3uPKWPzb/DBH/8jUuZPfdtuN5RkHPuK+wk2YpEz
-         QmQT+Vo9QGfTWwjt7168+T1SSlFBaz0J0P32lgmS60Cc+fZcYgCDiZ5Gt+IA4HVQXUIW
-         ofIvgfnzlRTmbQTi5gObt9A6llRK3tq1+euaNoLG0QBgJxGbnKvatRS1HK1pK7eF/9Vm
-         OmHQ==
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=d6Cd33YmIWOPb5BlraLL1A/gsokAxnp93TpGHJGyiOw=;
+        b=kvzsNuWVH2Z0ISBR4IimovhC9sRlqH7Jgzb5J8D9gg5aTSSI1YFPPZsOkly+hOj4Fd
+         /8TY/kAaMcMXb2Qm9rjNgGwSYo5KqILf48MhxRy5L/YpG5lgFmIMkjYG9VHpXObwCd1X
+         FPQTdGHnU7Zd5HJ8i3Plh6ePHKdlOTOcUrd9h1UvEZ0XjA712U6h88Q0ffwJyIXblc3n
+         U4SKofvGO8C924BqWMXyNowqf5j/pf5cCei0ZNWGRhskVswn9UOo2r4tymY2pWAaOZD+
+         Sf2EQmHCnidz6+emVYIAsgEw52qT00KtjGTekg0BeCbr59Nw8hWHNPCFVilf+9a8iZrK
+         V5DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u0tKBBx+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13-20020ac857cd000000b003ff22859f9csi394426qta.381.2023.06.19.02.54.54
+        by mx.google.com with ESMTPS id j6-20020a05620a000600b00760983ea377si7444322qki.8.2023.06.19.02.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 02:54:54 -0700 (PDT)
+        Mon, 19 Jun 2023 02:58:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u0tKBBx+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBBaO-0007eo-Ci; Mon, 19 Jun 2023 05:54:13 -0400
+	id 1qBBeV-0003NA-2I; Mon, 19 Jun 2023 05:58:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBBaM-0007eO-W4
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 05:54:11 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBBaL-0001ko-66
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 05:54:10 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-31129591288so1590168f8f.1
- for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 02:54:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687168447; x=1689760447;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=bJC0ZOYLGGFywn0IevTM4EiGvprzqsGKkYPh8vZdReE=;
- b=u0tKBBx+xTt6DgsgNST+/7XmY/agvl745Opy0/9ZI+mmQVBLHZJ48WLMNU7H6qLm4X
- gJXc36SxNXT9OarsMf3+Xm0Yh3gJ9Z9nX2cRQOnRvYobsC2sqaURXHkCfr2NET1gSsR3
- kQ+9Bhal4BU2CB1u04qL3a63fSpi8Pve973FGKE+ZsTALQpTcvAQQ9eMJXPO54UlVLpP
- bZtUdm9p7TzIZLNfiCbAeyinTHhHVARbOrB2HLhPm4U02s1cW5/Pq8Ac5MRn1ZM+t/FU
- UwDFlxILURgtXZPutTg0FrppEoRPtlif3C0XtaA6dPPglWP93DDgRHweLpS5aUNDNXqy
- vFZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687168447; x=1689760447;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bJC0ZOYLGGFywn0IevTM4EiGvprzqsGKkYPh8vZdReE=;
- b=AsS10M4h6ipd55OIeX0J3+27iMzzlDHzbrGlWTKLKzfO0V9A652BorcyELXNiHizHi
- LtGtsIbTnAvWHlvAIEox2G+vNnHVOJuEYEbRaSI6Wx/bxlm3Sxu1fpApSWHGAdRiKL68
- Wi4ZtNwXacn6AvEid4oFn7aM4eiA+xXWfb1j1ueG+B2YoIkd4LVOj1X8f8zLWRYoYpKu
- NHNKe+acOqdU7vqyCOvoI1R56iJM66q1dyBWpoPo9586Cz3naSlEAQUB0Y7EG33oORlf
- yOcYc/jpkzkdPZILP2/7nV5Ud2Man7Ee92XNrhzaRlnUFWKlQ/s3dVmcSVNfY70+cD8q
- 2xpQ==
-X-Gm-Message-State: AC+VfDzGqSsA7CFQwOh0Zue52w4TQn8iNOpFCM41EkTE2Y7HDz9VpVnc
- oGSAQ40bW/ILMDMHL9WhfLD60Q==
-X-Received: by 2002:adf:f00f:0:b0:311:1120:f298 with SMTP id
- j15-20020adff00f000000b003111120f298mr5658059wro.1.1687168447515; 
- Mon, 19 Jun 2023 02:54:07 -0700 (PDT)
-Received: from [192.168.69.129] (sar95-h02-176-184-10-225.dsl.sta.abo.bbox.fr.
- [176.184.10.225]) by smtp.gmail.com with ESMTPSA id
- y3-20020a5d6203000000b003062c0ef959sm31037711wru.69.2023.06.19.02.54.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jun 2023 02:54:07 -0700 (PDT)
-Message-ID: <ece02116-0041-ca15-c958-eb989156d854@linaro.org>
-Date: Mon, 19 Jun 2023 11:54:02 +0200
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qBBeT-0003Mb-Hr; Mon, 19 Jun 2023 05:58:25 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qBBeQ-0002Sq-Ms; Mon, 19 Jun 2023 05:58:24 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Ql4rk75W6z67ZHW;
+ Mon, 19 Jun 2023 17:55:34 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 19 Jun
+ 2023 10:58:10 +0100
+Date: Mon, 19 Jun 2023 10:58:09 +0100
+To: Gregory Price <gregory.price@memverge.com>
+CC: Yuquan Wang <wangyuquan1236@phytium.com.cn>, qemu-arm
+ <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Subject: Re: A confusion about CXL in arm virt machine
+Message-ID: <20230619105809.000007b9@Huawei.com>
+In-Reply-To: <ZIylkIt38MXaTytx@memverge.com>
+References: <2023061615433049315231@phytium.com.cn>
+ <ZIylkIt38MXaTytx@memverge.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v2 2/2] accel/tcg: Make probe_access() a generic TCG helper
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20230619091901.51607-1-philmd@linaro.org>
- <20230619091901.51607-3-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230619091901.51607-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,42 +93,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cHuNUp+m/kLD
+X-TUID: T6xVhg2GN7Yq
 
-On 6/19/23 11:19, Philippe Mathieu-Daudé wrote:
-> +
-> +void HELPER(probe_access)(CPUArchState *env, uint64_t ptr,
-> +                          uint32_t access_type, uint32_t mmu_idx,
-> +                          uint32_t size)
-> +{
-> +    uint32_t in_page = -((uint32_t)ptr | TARGET_PAGE_SIZE);
-> +    uintptr_t ra = GETPC();
-> +
-> +    if (likely(size <= in_page)) {
-> +        probe_access(env, ptr, size, access_type, mmu_idx, ra);
-> +    } else {
-> +        probe_access(env, ptr, in_page, access_type, mmu_idx, ra);
-> +        probe_access(env, ptr + in_page, size - in_page,
-> +                     access_type, mmu_idx, ra);
-> +    }
-> +}
+On Fri, 16 Jun 2023 14:10:24 -0400
+Gregory Price <gregory.price@memverge.com> wrote:
 
-This works if and only if size is <= TARGET_PAGE_SIZE.
-This should probably have been documented for Arm, but
-should definitely be documented for its new location.
+> On Fri, Jun 16, 2023 at 03:43:31PM +0800, Yuquan Wang wrote:
+> > Hi, Gregory
+> > 
+> > There is one confusion about CXL in QEMU I hope to consult. 
+> > If you have some time to look at this email, I would have better understanding of CXL 
+> > emulation in QEMU.
+> > 
+> > On docs/system/devices/cxl.rst ,  Gregory wrote:
+> > A very simple setup with just one directly attached CXL Type 3 Volatile Memory device::
+> > qemu-system-aarch64 -M virt,gic-version=3,cxl=on -m 4g,maxmem=8G,slots=8 -cpu max \
+> > ......
+> > 
+> > As the current master branch of QEMU has not yet complemented the CXL option/expansion 
+> > in arm virt machine, how this example command lines worked? Or here used another branch 
+> > rather than master?
+> > 
+> > Many thanks
+> > Yuquan  
+> 
+> As of today, the qemu/qemu.git master branch does have the required
+> patch for volatile region support: adacc814f541af9281c922e750d8ba4b90c1a73e
+> 
+> however, the last time i tested it on x86, the master branch was
+> incapable of enabling these regions with the latest kernel (6.3.x)
+> despite that kernel having sufficient support to do so.  I have not dug
+> into what the discrepency between master and johnathan's working branch
+> are just yet.
 
-It looks like this could be used for
+Events support is missing so the upstream kernel drivers won't probe
+successfully.  That's queued up for merge but hasn't happened quite yet.
+*fingers crossed* it should go in soon.
 
-hexagon: HELPER(probe_noshuf_load)
-s390x/tcg/mem_helper.c:void HELPER(probe_write_access)
+> 
+> Last I tested cxl-2023-05-25 branch of Johnathan's fork is working on x86: 
+> 
+> https://gitlab.com/jic23/qemu/-/tree/cxl-2023-05-25
+> 
+> I have not worked with the ARM machine, but Johnathan may be able to
+> comment on the state of ARM support for this code.
 
-Although s390x is written to handle much larger SIZE, the maximum that it will ever issue 
-is 16 * 16 = 256 for op_vstm.  But it also handles target-specific address wrap at the end 
-of the address space, which the above does not.
+ARM support is not yet upstream.  There are some precursor problems we still
+have to solve because arm-virt should also support device tree bindings.
+See talk I gave at Linaro connect that includes some of them:
+https://resources.linaro.org/en/resource/hM986DSHfoTrZ98UjpvLg1
 
-So perhaps it's not worth moving this after all?
+For now, I'm carrying the arm-virt + ACPI support on the tree above.
+There are a lot of things we still need to provide support for in QEMU CXL
+world so for now figuring out the path forward for upstreaming ARM support
+isn't at the top of my list.  I'll get back to it at somepoint - probably
+next month.
+
+Jonathan
 
 
-r~
+> 
+> ~Gregory
+

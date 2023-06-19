@@ -1,141 +1,261 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2806957ejt;
-        Mon, 19 Jun 2023 06:20:07 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Hb/fTlC70/xe1JWO6ITOnCctOrLhnV31KLjTJ/Js0y983D5Eseew5IdjaWozsgkCAPVxJ
-X-Received: by 2002:a1f:db87:0:b0:45e:892b:d436 with SMTP id s129-20020a1fdb87000000b0045e892bd436mr1209800vkg.12.1687180807395;
-        Mon, 19 Jun 2023 06:20:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687180807; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2807789ejt;
+        Mon, 19 Jun 2023 06:21:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5Nol83zDg8fNI0QAtm1IpoDqiAXo9MPyyAZIwrYvthD7sU3HvPju7Fu+uhYG6emeYOKiIK
+X-Received: by 2002:a05:620a:22e3:b0:763:a191:71f0 with SMTP id p3-20020a05620a22e300b00763a19171f0mr1123587qki.29.1687180915754;
+        Mon, 19 Jun 2023 06:21:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687180915; cv=none;
         d=google.com; s=arc-20160816;
-        b=sejXwmZFcjZQ3cLMzsYtZ0xMZHanSH4sCsh7BW70TmT7WrfzkbDW+VVxA/k6fivK7I
-         gXe/xeKYEuMKG6zG8VRDPSXe/8YnHx6tY2EKXtM+JV7aVbT+vb0dPKGNggIUjBTnyt1v
-         DMIdg40fGFoby2OLjSf/xFOTW0jjJownaBWdfRlkZS0wKMZbxM5t2WtbQoOyb9ZrLHN/
-         9lLtV8yySD5pdKjbv8uXyOYUMN0Dwaj7yXc0htOrTwePk1KMbCxOWsXjJ9oNDyL2fsCM
-         d9h3gCxa96yoUtT+CZpTPTOJDIWN01Vw4IVu1i0jemyIazLu1uuooTEHzR3dSXSottMJ
-         6IeA==
+        b=ZgBftk/lvoL2ggOr1gbCMk0hEXRchO9RCaZeBtjs3tZcO722f3AtJnKyWk+A06vHaW
+         bAbGoR56jGsoxwwQoBDmH85zVYRCIFL1oTIWIEothuKgxzipCX7ghfK6zfYrKphjQJBw
+         55F1U6wdMF8Wu/skaGsT4eYE+qgP5N0YyKg8gDIuFSOxiR5Vxj/0dMQ5DzgSggTfE1dP
+         TKdAbcd77i6CeU0bPAnu7af9G/x07EoPOdtaMTqt9r77sMT5eeDR9OeTCUjOXyEBto/G
+         qIgEJ7XbJc7QFZaL9ACCzEP1+Nms/tK0djl76t9WLow3vBSGtJtcxZe0nItZT3obeJ1W
+         gNDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ssGzWqawQlgeXFiF6NNz5/NTa6EML9WoWRfq7SATZJw=;
-        b=PGS20AZA0KOyd22p2CpSR+yzUwvHj2dIHFqD/vHz1dGU1Q+S81rcaezuMLYXADjvHF
-         PlovwVqJDCEOFR31WU508OWtdJuKEJICIrYfr2inG7gpBJ3GRrCPxCyXDoBdos8tnFBI
-         j/w9Pt/MCfsHl/ltRgKEkeTWNzeOjyfUX52j3KDGZsoVR4PupKM20uCHxpRoydHQ/miX
-         b9zDvYOHkcBNWskhboQ7g4EpGGWtkBj/pAb4Uufb/L5CvJOa/5TP1awMkKP4QLD7zWae
-         baD3nwOx3mfEVfIneJJt84OytMA7ZpqhAmDWi4XhxmFtort6LOHub3Ja7HWr+bSJcvND
-         aE1g==
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:dkim-signature;
+        bh=FFzNkptbgATmjC8nSalWyxoHI2Uv/48+gwf1Mj1XpNc=;
+        b=qsoBDddDukHgpu4nTl0kEonVnzbyLsKyRF+nM2PAZ2zrOdf4Pb55tzFlQCa4Q96oBS
+         nUA3TIYLEgyADf97C+sJU4NY52ZW1Q3LPlgrk5l7qYPMHFZ6Jlitci+wnxTTpGLesX9T
+         BXd57PQr9suFnD6gH60ADr5fLNBv4Ore3Bif++6fcewOt2kVndtu7UUjg3Ao//sD1ZzW
+         eLBgqd55uQoC5HSia88AUVWEkneA0YAdVCaYLeWB/rA4vOr3uGozm3Tigm6uHkCCOFlw
+         YJuUkwBYvTc8pcVxkIRp5+BqYzdwJ9/boX1x9CY1r4+Py7/NJZMXWMmlY4sA475WRRwM
+         Wb8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fNJXJS9G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=R2Epj7Eo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pt10-20020a056214048a00b006261c759939si10643033qvb.130.2023.06.19.06.20.07
+        by mx.google.com with ESMTPS id x1-20020a05620a14a100b007639b939561si545895qkj.613.2023.06.19.06.21.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Jun 2023 06:20:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Jun 2023 06:21:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fNJXJS9G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=R2Epj7Eo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBEnO-0005he-Fz; Mon, 19 Jun 2023 09:19:51 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qBEIG-00032S-I5; Mon, 19 Jun 2023 08:47:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBEn4-0005XT-Op
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:19:32 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qBEn2-0005ln-2n
- for qemu-arm@nongnu.org; Mon, 19 Jun 2023 09:19:30 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-3f9b258f3d8so6410025e9.1
- for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 06:19:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687180766; x=1689772766;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ssGzWqawQlgeXFiF6NNz5/NTa6EML9WoWRfq7SATZJw=;
- b=fNJXJS9G1XQrqUjzJ/i2oNHNyRQWgHVcj82nUFDYW6FqT3rm0c7/1RWe9KgZY2DgAN
- qT/mYC8ztTYOZJKgPMSfBwryhEqxDSiQ/x1/mORWOwexkPuhrZhoQ/8kfFfCCdSu/AA2
- Bet4HLvHBRwd3hUfgtZQhza+cVBs9UUB3gDzinNW1CtC0b1vvg5S9pK/qeLfo7qm/X8h
- +QSW1unM4XkQPi83zClCq6NeyfaCh4RGKasFS7gkYR8m9zJ45TWoO6m1n2ySm9FPEKI2
- M0aqdEb9vD3+XnqyJpRipilNVnvKMq/Rfg5i7VCJtxojNChi6fKNCs+JW9A7/1jkAYL2
- PtoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687180766; x=1689772766;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ssGzWqawQlgeXFiF6NNz5/NTa6EML9WoWRfq7SATZJw=;
- b=Oael70LDVv5Rv6gi4wfa5BascqyGID/6J6dC2Y8TUGCC1/cCFaQ9RACZ1uyEJdzn5r
- xQ+BglSEQaDSEcJpubpkE6IqMVXPOLRHj242B60qqGP88Ud36AoB5rvsR4G94y/nsa+m
- F7FIz/WOilnO2miPhTfurvVgTqBh6D86YCfUt+kogy9v/CX/E5E9ovVmljWLbQ5qDrOD
- 6hQE0GaOD2xXlr7YO7tzuukkZQrlX6+DI0NqMynjtePdL+sxZqif/9I8wtDGE5ggNIHe
- qWJ5yM+rupAcLjpUwPA+PWJ5SViTZvav5/7+owZnDTvZ3qE2L4AN9/byEQh1bKl3ylya
- 7r9w==
-X-Gm-Message-State: AC+VfDw0jcrH69ueD1dZv9dc+TORhYD7J81xoOWn+KsI9eW7eE0X8CpV
- GnL1JJ2f7B7ZCTKEdMVfmdpilQ==
-X-Received: by 2002:a05:600c:808a:b0:3f9:b93:ed5 with SMTP id
- ew10-20020a05600c808a00b003f90b930ed5mr3412332wmb.12.1687180766461; 
- Mon, 19 Jun 2023 06:19:26 -0700 (PDT)
-Received: from [192.168.69.115] (sar95-h02-176-184-10-225.dsl.sta.abo.bbox.fr.
- [176.184.10.225]) by smtp.gmail.com with ESMTPSA id
- t13-20020a1c770d000000b003f91e32b1ebsm4259668wmi.17.2023.06.19.06.19.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jun 2023 06:19:26 -0700 (PDT)
-Message-ID: <c51dbeec-d470-1f77-fa00-53e17032d213@linaro.org>
-Date: Mon, 19 Jun 2023 15:19:24 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH v2 34/38] crypto: Remove AES_imc
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: ardb@kernel.org, berrange@redhat.com, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com
-References: <20230609022401.684157-1-richard.henderson@linaro.org>
- <20230609022401.684157-35-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230609022401.684157-35-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBEI8-0002xm-Hf
+ for qemu-devel@nongnu.org; Mon, 19 Jun 2023 08:47:33 -0400
+Received: from st43p00im-ztbu10063601.me.com ([17.58.63.174])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBEI6-0004hM-2V
+ for qemu-devel@nongnu.org; Mon, 19 Jun 2023 08:47:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+ t=1687178841; bh=FFzNkptbgATmjC8nSalWyxoHI2Uv/48+gwf1Mj1XpNc=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
+ b=R2Epj7EoSbw5yV/9PaQDUkEmO71OGF8i11BzHPQNunZ1b2Eo1O9YOhSFu2wdWt88x
+ m/qp8aSB1qvFdlCl/j4RTnGN1qt7c1OhJr2f+RTtuiC+4VnQy0/q4CZ6whgXd0r1FO
+ tZiswPv4ClIgw6dyzGIMGGpaNrvnVAsyHCdXIJwa57yfFGH2JAIyxrDEpplOWrysOm
+ xgrKcgrsD9efwk4Y+j6fVdMWyPu7IepARr4v7/nyCMbM0PdTLOYtecFmf1XxiAdxj5
+ /iMJkEziYU9kvz0WQM4AwF0dINKrrmDvrRd3fyndMj5jcKrmnOzafTd6eXouqKnP1I
+ p3lE/PXMU7t+g==
+Received: from smtpclient.apple (st43p00im-dlb-asmtp-mailmevip.me.com
+ [17.42.251.41])
+ by st43p00im-ztbu10063601.me.com (Postfix) with ESMTPSA id 3D74A8C0370;
+ Mon, 19 Jun 2023 12:47:18 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
+Subject: Re: [PATCH v2 12/12] target/arm: Allow users to set the number of VFP
+ registers
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20230607043943.1837186-13-clg@kaod.org>
+Date: Mon, 19 Jun 2023 14:47:06 +0200
+Cc: "open list:ARM cores" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <955C217E-FE0F-41E2-8E97-9AFD8C4A0DBE@ynddal.dk>
+References: <20230607043943.1837186-1-clg@kaod.org>
+ <20230607043943.1837186-13-clg@kaod.org>
+To: =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+X-Mailer: Apple Mail (2.3731.600.7)
+X-Proofpoint-GUID: KfUQjuliEM0WDdCSrfLwHNo4IWUPdXss
+X-Proofpoint-ORIG-GUID: KfUQjuliEM0WDdCSrfLwHNo4IWUPdXss
+X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
+ =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.572,17.0.605.474.0000000_definitions?=
+ =?UTF-8?Q?=3D2020-02-14=5F11:2020-02-14=5F02,2020-02-14=5F11,2020-01-23?=
+ =?UTF-8?Q?=5F02_signatures=3D0?=
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ bulkscore=0 clxscore=1030
+ mlxlogscore=999 suspectscore=0 mlxscore=0 spamscore=0 malwarescore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2306190117
+Received-SPF: pass client-ip=17.58.63.174; envelope-from=mads@ynddal.dk;
+ helo=st43p00im-ztbu10063601.me.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kgbFOHf+n7MG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hxDlI+AeeZKd
 
-On 9/6/23 04:23, Richard Henderson wrote:
-> This array is no longer used.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Sorry, if this has already been acknowledged, but I couldn't find it on =
+the
+mailinglist.
+
+This commit seems to break compatibility with macOS accelerator hvf when
+virtualizing ARM CPUs.
+
+It breaks the VM on boot-up with the message "ARM CPUs must have both =
+VFP-D32
+and Neon or neither". I haven't looked into what VFP-D32 and Neon are, =
+but the
+same VM worked on earlier versions of QEMU.
+
+It can be reproduced with the following:
+
+qemu-system-aarch64 \
+  -nodefaults \
+  -display "none" \
+  -machine "virt" \
+  -accel "hvf" \
+  -cpu "host" \
+  -serial "mon:stdio"
+qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
+
+
+If you fix/work on this issue in a separate thread/patch, you can add
+reported-by, so I'll automatically follow and help test it:
+
+Reported-by: Mads Ynddal <mads@ynddal.dk>
+
+=E2=80=94
+Mads Ynddal
+
+> On 7 Jun 2023, at 06.39, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>=20
+> Cortex A7 CPUs with an FPU implementing VFPv4 without NEON support
+> have 16 64-bit FPU registers and not 32 registers. Let users set the
+> number of VFP registers with a CPU property.
+>=20
+> The primary use case of this property is for the Cortex A7 of the
+> Aspeed AST2600 SoC.
+>=20
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->   include/crypto/aes.h |   7 --
->   crypto/aes.c         | 264 -------------------------------------------
->   2 files changed, 271 deletions(-)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> target/arm/cpu.h        |  2 ++
+> hw/arm/aspeed_ast2600.c |  2 ++
+> target/arm/cpu.c        | 32 ++++++++++++++++++++++++++++++++
+> 3 files changed, 36 insertions(+)
+>=20
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index d469a2637b32..79f1a96ddf39 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -916,6 +916,8 @@ struct ArchCPU {
+>     bool has_pmu;
+>     /* CPU has VFP */
+>     bool has_vfp;
+> +    /* CPU has 32 VFP registers */
+> +    bool has_vfp_d32;
+>     /* CPU has Neon */
+>     bool has_neon;
+>     /* CPU has M-profile DSP extension */
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 1bf12461481c..a8b3a8065a11 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -316,6 +316,8 @@ static void aspeed_soc_ast2600_realize(DeviceState =
+*dev, Error **errp)
+>                                 &error_abort);
+>         object_property_set_bool(OBJECT(&s->cpu[i]), "neon", false,
+>                                 &error_abort);
+> +        object_property_set_bool(OBJECT(&s->cpu[i]), "vfp-d32", =
+false,
+> +                                &error_abort);
+>         object_property_set_link(OBJECT(&s->cpu[i]), "memory",
+>                                  OBJECT(s->memory), &error_abort);
+>=20
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 5182ed0c9113..74fe6ae78192 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1275,6 +1275,9 @@ static Property arm_cpu_cfgend_property =3D
+> static Property arm_cpu_has_vfp_property =3D
+>             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
+>=20
+> +static Property arm_cpu_has_vfp_d32_property =3D
+> +            DEFINE_PROP_BOOL("vfp-d32", ARMCPU, has_vfp_d32, true);
+> +
+> static Property arm_cpu_has_neon_property =3D
+>             DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
+>=20
+> @@ -1406,6 +1409,22 @@ void arm_cpu_post_init(Object *obj)
+>         }
+>     }
+>=20
+> +    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
+> +        cpu->has_vfp_d32 =3D true;
+> +        if (!kvm_enabled()) {
+> +            /*
+> +             * The permitted values of the SIMDReg bits [3:0] on
+> +             * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
+> +             * make sure that has_vfp_d32 can not be set to false.
+> +             */
+> +            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
+> +                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
+> +                qdev_property_add_static(DEVICE(obj),
+> +                                         =
+&arm_cpu_has_vfp_d32_property);
+> +            }
+> +        }
+> +    }
+> +
+>     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+>         cpu->has_neon =3D true;
+>         if (!kvm_enabled()) {
+> @@ -1672,6 +1691,19 @@ static void arm_cpu_realizefn(DeviceState *dev, =
+Error **errp)
+>         return;
+>     }
+>=20
+> +    if (cpu->has_vfp_d32 !=3D cpu->has_neon) {
+> +        error_setg(errp, "ARM CPUs must have both VFP-D32 and Neon or =
+neither");
+> +        return;
+> +    }
+> +
+> +   if (!cpu->has_vfp_d32) {
+> +        uint32_t u;
+> +
+> +        u =3D cpu->isar.mvfr0;
+> +        u =3D FIELD_DP32(u, MVFR0, SIMDREG, 1); /* 16 registers */
+> +        cpu->isar.mvfr0 =3D u;
+> +    }
+> +
+>     if (!cpu->has_vfp) {
+>         uint64_t t;
+>         uint32_t u;
+> --=20
+> 2.40.1
+>=20
+>=20
+>=20
 

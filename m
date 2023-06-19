@@ -1,138 +1,188 @@
-Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2739623ejt;
-        Mon, 19 Jun 2023 03:51:48 -0700 (PDT)
-X-Received: by 2002:a05:6402:1357:b0:51a:40d2:c7b8 with SMTP id y23-20020a056402135700b0051a40d2c7b8mr5266588edw.27.1687171907956;
-        Mon, 19 Jun 2023 03:51:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687171907; cv=none;
+Received: by 2002:a17:906:494e:b0:982:8c08:340e with SMTP id f14csp2826590ejt;
+        Mon, 19 Jun 2023 07:02:34 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4CjFKqUd91OGEkb84/6m7ex4tU/pHuV1PAzqDx3JjRE+UL0YUCwhLl1LVfTy0NEEcwagov
+X-Received: by 2002:a05:6214:c4b:b0:61b:75e0:6a19 with SMTP id r11-20020a0562140c4b00b0061b75e06a19mr10998653qvj.14.1687183354559;
+        Mon, 19 Jun 2023 07:02:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687183354; cv=none;
         d=google.com; s=arc-20160816;
-        b=lFm9NbCwasW8ukJ+aTdbWdFTYpw0R9a/vxQcHBBgsawx6ewmGeO6l3so8rbjAYCKKQ
-         pb1My0+ZT5yi0wlvVxgajpmMmgz3PpcygzVkBHSqCexgqTfKAO/tFyIGE6brPgKD23Xf
-         R6CpHdO0RQPstj+8epl1shbh8wcF7S99UUvGiasmaot9F0tuych0KSrdAKATvvViJY6p
-         d5kbInKPU2tJo0zJGWB78upNwuPpDMPFHrXBto50abfxlhc9MUOdR1B9qgeRBFzfnR74
-         eRqb4ABTddewPf6urX4NWuHnhyDSBR4SSNHCFmw5FgHL51v8RxxGcar+MF1FShbxTn0C
-         Ehvg==
+        b=rVOsVkZJQrUkgn5/WE4pkdrMEBryM+7juuanYrF4mbW8CJBqbZodLD422nj74kekOd
+         MLJPwl5NT87xRmasWK8KWtsxMEcLpbSwrw0zu8e2JZ0evikIO+KDtrXfngMFvTt26f/P
+         wstWVKxh5qEMLKE4YNPrDgd0nkff9trIV7R5e+ydNg0ipviKiIq3LRRSzbJtUj/ILQuy
+         oM5EtmrSsc+anUs/Qrt31E81ruiPpYvzBC2nCS5aRBBJvBRwqRgchSukHJBjrEpeLJEw
+         vAzgv6skHS5UEEybORo10qyQVrDGvlas17fpmXpYst2u/7JXKhf7xyEU46dY5WJCnYOV
+         m+/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=NzeOQqm6bMSH4mmgZgIqSWTWkGzqi873UyO1dzFYfJw=;
-        b=JXIwE5yec0uherg7vHWq+ECEms65VmiZ4xT0hwNPfqY1o0Gd7S1uAYMdiJBHW0GCzG
-         m5PPy6u3ZAxt69XZxurHuET4e0AsrM0nQeH1ABjkl3bjdx4SpbPiFYBAoAdNDkuOsURE
-         BmWgC6NxXscC7sh6d5wWI7nBHlntO1GoNpTO6Ifv4VZNQPKtHwqGfLM2FS8GmDTFtuKp
-         XEB18RHBfQNtXgrJSKCKa4d/57g5hGIMBzPi+pjyi/pB6RI7W65TqV02f0bJmf3HIpsU
-         UJZpvWFk2/JL0XgNIAO9iuNSIN+5POTZgFKRF0uS8G0q8Zm/mT9mKeKQFv4WV7YzRZnD
-         nSuw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ic2ReGah2UVp+gcQLs0X9D8a6Pz1giA0UurYzsdrHBE=;
+        b=qycXpI8lEsBlp9GcVqjgiTyGBBdvOm5b7uZUqhRwy67kTHrhRsz3eJVgPsi2MOB1WQ
+         OzkAGMxHxvyxsQBJGzveJuStrNBzbqI8rml3gM2uPOFuZAMhOCEC0QV5XEJVdlNwzjAV
+         /tiJJ8meQwi/FbLiry72aHrxTnB42T5f5yPTO/cDYpi/0328gr2fwY/jlxHVIL3sDoX/
+         WAGuBN6ozbpy0bhxz3of3aeyFNXq92vWgoE/Ju4fA9sgYPhbPxlCDuzqoj92XlrKXRrD
+         EnhAWZaZGqBkB59cT4UWcflYnLsNB77c2UnpObQicNouV4trOee8utV/eRvB5tyc6/Gk
+         7Jfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUIn5DYw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LtpvvRO4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v7-20020a509547000000b00510b585c213sor5151776eda.7.2023.06.19.03.51.47
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z20-20020a056214041400b006259adfabbcsi9735570qvx.283.2023.06.19.07.02.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 19 Jun 2023 03:51:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Jun 2023 07:02:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUIn5DYw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LtpvvRO4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qBFSc-0000Zp-Ta; Mon, 19 Jun 2023 10:02:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBFSb-0000ZS-Hz
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 10:02:25 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBFSZ-0003BK-Rg
+ for qemu-arm@nongnu.org; Mon, 19 Jun 2023 10:02:25 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-3f9b4a71623so2851555e9.1
+ for <qemu-arm@nongnu.org>; Mon, 19 Jun 2023 07:02:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687171907; x=1689763907;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=NzeOQqm6bMSH4mmgZgIqSWTWkGzqi873UyO1dzFYfJw=;
-        b=zUIn5DYwTse08kTz8WdCdV2etI9/44Gsfauc2G7JwbRdslVziZgCV/TwQSFzT4ruuL
-         07OOnys6bkOTkBkR4I7f9iqO4utIknCnKXVss/RNJSL7H0rZGYgOYJ4/e8KLlisCqOLt
-         ABcx9CZtvVRuLx2WRzEqT8EYaNPmqHJxhXoAoamHJtyoaHZvqbZ4pn9H2tUBmJQ+VvBF
-         et9snbINgP0mMlJnaZFnI+TO8qqJAXOaH4DPeUYdmdH1OKtZj4CJMdLjr/Z78VCQVGfs
-         znVWHTRd6+e6aql2KE7cxBO1gFOfV+PgpgYt1gq6As4rxnYPwZ4ig0ywr2DSizIntJvg
-         RdOA==
+ d=linaro.org; s=google; t=1687183339; x=1689775339;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ic2ReGah2UVp+gcQLs0X9D8a6Pz1giA0UurYzsdrHBE=;
+ b=LtpvvRO4zt4quL1dEy5DnKcLc86AMrp+4xk5crZUGSCvXrabcjLTICz768Iwqs2eob
+ FoP1BQLZQ4Jmk6JoDNilQD1rKybgnBn1JJt9ZHGUhFnWXYqrqfy5WC1bma1VArIlv5/A
+ 4h5+BA3tblWo9Wjg0zaLyDjbOP1iwUDZ5um/uqfTfx/w+XXeVjSE/sDvNk54OpS4kViF
+ EAjEaagevZZWOyKPdU3naaYqS4SN8YFlIJzUKU0ftaurxzhQmzzN4pmbgEuOkQMcO01A
+ G6z9egEMpw9K5paaOZHqrn3DhAt2yYGCXYLkLu2/PeJwFLFd8IAwvp03IPPh6ZMbMKg8
+ HaGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687171907; x=1689763907;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NzeOQqm6bMSH4mmgZgIqSWTWkGzqi873UyO1dzFYfJw=;
-        b=KqwEBYBk+cfpdOHiq6ksggx8yD2l8SVWDP7GFzOfyYqlQIE408SZlW/QC3n8Yj5p/e
-         GZ48+qqVMI8MipaOt9sf8Hthy+6ny8RSU0nv/chChSTGpG34sQ4g6CVfK0+qeBrlZxvW
-         ITHiZAy5B8XA9nKtPu8jSAxDVygsRpU/vwzGaoMrvFfxMnVJt9vAC/dE03+AL1cDvwWI
-         Nqucdu3RL53FqU+LS6BxA4TwDwxtj3jyQJrR/VI8Khul8Ndq1RPd9slg+w1WtblJfR6P
-         1CNyvLH2ZvgRpwu+hzybyxIEagbmwfqLNwCHVqet3VO2lBgXnEbR9cCwsbKdxD4/PV5C
-         +t1A==
-X-Gm-Message-State: AC+VfDyDiUvmE8198M7ZV/wH78gJoM8f1DGkX+0YicPu2Iz52QTnb6b9
-	7yL/9hGvp6Hp4bl0o7mj+XYi/JmHqXhKF6icMr1KAZgE
-X-Google-Smtp-Source: ACHHUZ6ML9XD4PlGOd+JB8ds9ln8X9H9YMOVLPdzSueI1xR02ukibsfSdas3hoRPQvCt0X/ZyMQvN2TCx+Fgy4xioEQ=
-X-Received: by 2002:aa7:db8d:0:b0:514:9929:1b01 with SMTP id
- u13-20020aa7db8d000000b0051499291b01mr5854201edt.8.1687171907432; Mon, 19 Jun
- 2023 03:51:47 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1687183339; x=1689775339;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ic2ReGah2UVp+gcQLs0X9D8a6Pz1giA0UurYzsdrHBE=;
+ b=BxJMmfRF3AJQG7E4f0wl9y5871h9jpjlFV1owmuDLcZ4Rm4PZAOJyZIjs359c4y4DO
+ s5N/c2In2hW8ncGxc3VOILjL3S9svPv+cm14KaOHE52QWxaqk4BBfJOLDioCGOcu6iF/
+ ZuWEuQQsXNJP5lwMsfS7CO7NugCPfsgE7NiAxNFpJ6EVM10/tIBa/69bTxI4btrXt+Wr
+ WPZy5C79cyBb5yaOI/A3vDWZviwdY49TECqrTIBPZFxzzI79BSUaNI3db5D9ad9ddcmF
+ WD/105FPXNlXmyV5u5qH9xNkSTprJNQai8gYamZH+Hy0pvWqggpmm5wGlctOgta08y/C
+ hijQ==
+X-Gm-Message-State: AC+VfDzxGphCtHtWVo7ge6wjumZAhyAS2u18/3PpUKrVY9HtWeQNePj+
+ YgSP7aWqb0BBaT3NNVPQDCSYj9dmSSAb6hcdfamPqm9I
+X-Received: by 2002:a05:600c:246:b0:3f6:cfc7:8bc7 with SMTP id
+ 6-20020a05600c024600b003f6cfc78bc7mr6769919wmj.17.1687183339279; 
+ Mon, 19 Jun 2023 07:02:19 -0700 (PDT)
+Received: from stoup.lan (sar95-h02-176-184-10-225.dsl.sta.abo.bbox.fr.
+ [176.184.10.225]) by smtp.gmail.com with ESMTPSA id
+ k24-20020a7bc318000000b003f733c1129fsm10797816wmj.33.2023.06.19.07.02.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Jun 2023 07:02:18 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Mads Ynddal <mads@ynddal.dk>
+Subject: [PATCH] target/arm: Restructure has_vfp_d32 test
+Date: Mon, 19 Jun 2023 16:02:16 +0200
+Message-Id: <20230619140216.402530-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20230609172324.982888-1-aaron@os.amperecomputing.com>
- <20230609172324.982888-2-aaron@os.amperecomputing.com> <a8db353d-b258-c856-d5ce-1236b0893a53@linaro.org>
- <ZIcbF8zShOr1N2Sl@strawberry.localdomain>
-In-Reply-To: <ZIcbF8zShOr1N2Sl@strawberry.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 19 Jun 2023 11:51:36 +0100
-Message-ID: <CAFEAcA8pjgXXnUcLxcnm-9mcakps4KcXKOvHQxzj7n_CzY2zSA@mail.gmail.com>
-Subject: Re: [PATCH v3 1/8] target/arm: Add ID_AA64ISAR2_EL1
-To: Aaron Lindsay <aaron@os.amperecomputing.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
-	qemu-arm@nongnu.org, Vincent Dehors <vincent.dehors@smile.fr>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: UIF/kWOkm3Ui
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0DBRDGC+d0pM
 
-On Mon, 12 Jun 2023 at 14:18, Aaron Lindsay
-<aaron@os.amperecomputing.com> wrote:
->
-> On Jun 09 13:49, Richard Henderson wrote:
-> > On 6/9/23 10:23, Aaron Lindsay wrote:
-> > > --- a/target/arm/hvf/hvf.c
-> > > +++ b/target/arm/hvf/hvf.c
-> > > @@ -847,6 +847,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> > >           { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
-> > >           { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
-> > >           { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
-> > > +        { HV_SYS_REG_ID_AA64ISAR2_EL1, &host_isar.id_aa64isar2 },
-> >
-> > Sadly not defined for MacOSX13.1.sdk, and it's an enum so you can't #ifdef it either.
-> >
-> > You'll need a meson probe for it.
->
-> I'm not very familiar with HVF or meson - I am not sure I understand
-> what you're suggesting here (and a few attempts to grep around for an
-> example didn't turn up anything that looked helpful). Are you suggesting
-> some sort of build-time auto-detection, a "dumb" configuration switch
-> that a user could use to manually enable this, or something else? And/or
-> is there an example you could point me to of what you're thinking?
+One cannot test for feature aa32_simd_r32 without first
+testing if AArch32 mode is supported at all.  This leads to
 
-So the first thing here is: where is HV_SYS_REG_ID_AA64ISAR2_EL1
-defined in the first place?
-https://developer.apple.com/documentation/hypervisor/hv_sys_reg_t
-does not list it.
+qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
 
-If this is really the right name for the value, then:
+for Apple M1 cpus.
 
-We do our build-time detection of stuff that might or might
-not be present using meson's facilities or that kind of
-thing. These are all in meson.build. In this case I think
-that what you want to use is has_header_symbol(), which
-checks for presence of some symbol in a given header. There's
-examples in meson.build, you want something like
+We already have a check for ARMv8-A never setting vfp-d32 true,
+so restructure the code so that AArch64 avoids the test entirely.
 
-config_host_data.set('HAVE_HV_SYS_REG_ID_AA64ISAR2_EL1',
-                     cc.has_header_symbol('whatever.h',
-'HV_SYS_REG_ID_AA64ISAR2_EL1'))
+Reported-by: Mads Ynddal <mads@ynddal.dk>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-which tells meson "if this header has this symbol then define
-this preprocessor value HAVE_...". Then you can #ifdef on that.
-(We're inconsistent about whether we use CONFIG_FOO or HAVE_FOO
-for this sort of test.)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 353fc48567..706dbd37b1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1402,25 +1402,27 @@ void arm_cpu_post_init(Object *obj)
+      * KVM does not currently allow us to lie to the guest about its
+      * ID/feature registers, so the guest always sees what the host has.
+      */
+-    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)
+-        ? cpu_isar_feature(aa64_fp_simd, cpu)
+-        : cpu_isar_feature(aa32_vfp, cpu)) {
+-        cpu->has_vfp = true;
+-        if (!kvm_enabled()) {
+-            qdev_property_add_static(DEVICE(obj), &arm_cpu_has_vfp_property);
++    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++        if (cpu_isar_feature(aa64_fp_simd, cpu)) {
++            cpu->has_vfp = true;
++            cpu->has_vfp_d32 = true;
++            if (tcg_enabled() || qtest_enabled()) {
++                qdev_property_add_static(DEVICE(obj),
++                                         &arm_cpu_has_vfp_property);
++            }
+         }
+-    }
+-
+-    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
+-        cpu->has_vfp_d32 = true;
+-        if (!kvm_enabled()) {
++    } else if (cpu_isar_feature(aa32_vfp, cpu)) {
++        cpu->has_vfp = true;
++        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
++            cpu->has_vfp_d32 = true;
+             /*
+              * The permitted values of the SIMDReg bits [3:0] on
+              * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
+              * make sure that has_vfp_d32 can not be set to false.
+              */
+-            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
+-                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
++            if ((tcg_enabled() || qtest_enabled())
++                && !(arm_feature(&cpu->env, ARM_FEATURE_V8)
++                     && !arm_feature(&cpu->env, ARM_FEATURE_M))) {
+                 qdev_property_add_static(DEVICE(obj),
+                                          &arm_cpu_has_vfp_d32_property);
+             }
+-- 
+2.34.1
 
-Or alternatively, since this is macos specific and Apple are
-quite careful about API versioning, it may be simpler to use
-macos's own version macros to ifdef things so we only try to
-use the enum value when building for a macos version that knows
-about it. Grepping for 'MAC_OS_VERSION' brings up examples of
-that approach.
-
-thanks
--- PMM

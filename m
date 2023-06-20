@@ -1,104 +1,109 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp199197ejt;
-        Tue, 20 Jun 2023 04:10:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6p0rVWp/j4ZfVYVqjPCAnsL2kk8oR9mp2Sg4LycqiGcTymgqpDQgvDW/8gmcSQeeUSvHMW
-X-Received: by 2002:a05:6214:5098:b0:630:1faa:a404 with SMTP id kk24-20020a056214509800b006301faaa404mr5429504qvb.39.1687259421718;
-        Tue, 20 Jun 2023 04:10:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687259421; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp199224ejt;
+        Tue, 20 Jun 2023 04:10:25 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4lny3y32k1rsTm7ngRlQZyXRqdTcJEEi56ETzaJC92V2DOwwrMJBqxeQ9epCj9ZSDfkpTU
+X-Received: by 2002:ac8:7e8d:0:b0:3f5:41d9:fde8 with SMTP id w13-20020ac87e8d000000b003f541d9fde8mr14998782qtj.57.1687259425386;
+        Tue, 20 Jun 2023 04:10:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687259425; cv=none;
         d=google.com; s=arc-20160816;
-        b=EAIQKAkM6YAIS9COQmfIAsa39wrFN7yigQf+zT0GVnn1asHwPDIorSJbkif4nNDE2y
-         ncia/K9zIYvt7d0vjTRwK6f0fO4fjrSzHUkxh9VS/38WfKgBgdWLeOJbTikXriDsrrvd
-         EtTT/uQMffdbyWOT9qPDlIi0C1Ae8nnvR5gLaBHjboM+sg24fAoV76zyOojzwyUGrG6Z
-         r+O3YpFhjANMr8w79MfrUQTnBh+OUwX3F2o4vexhISVB2buvC4ERMx4F7iAr/nBtzNxH
-         PmxWAeDsfr9VRzBMyZ8p+l7sEZdfTioUVooUaV8kCZlfqouSAMDjB2vr5brvaqd7c2tO
-         xAFg==
+        b=w5RaDcjZh+3zygJPqlSHAphpfKlr9J1EgVZnJuQZtzkYZPN9I7QfS6NsEv1wdGU7X0
+         +njk3airLv9+PeVTXuOxNEBpP94et6vgfEPUE8EakBnuvFWqEgnSjOD3p6gFd4sFGvV+
+         tSW+CFBDxzXcqbXv/berYFYQtlkjtYbaHnlDI8WzsMmoGa4HMgQXg+zOXCHMFXlc4wTu
+         ITShjTfBV7gvb1xZP7bbrM1YFca3K58ZGrM0sqdcxzXE3YBHwbBuf0IQiGyyaiBko3L8
+         2jHSnUxWGqzTDRZsrTl7EaWH3zjBM0NI9blzrCpsTkf1HOrOnSvPTs2bXluWkXXYa6St
+         STug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=D5/vYkPDFLt1l7Tb4jfX3kGecL1wjKktKxnAYE4Wl7w=;
-        b=E2RtO285xU2R87cGoOtAxkOK+dHJowSpd6mLu9WUPrsdT920O1MxqJH9tnOirtp+64
-         pBEHTMitJXrn+7UC9pJHVbt92SGEF1Fsplf7nu/R5Vm9HLzult25VTlEk3AAEPjsHws6
-         QDyyaNSEFim14DCg362sixl6HufjoDwuUPj5cvOr36uxvEXwIfk1XRA0v6ixSzI64Voc
-         +2WVddkvQLInvqbiaUbvI+V5eP8gijXi1K1h1FNgyWIbfYUHKSXyon0N7TaGxbC2DOTH
-         1v+/LYA0xEveXVNfN75izdQ04sF1r1ofm3mSUGiwe56iAEV95kdINtUv38Xvyx3egBxL
-         Lmqw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=24csfVfVB/om++z3Dw6ZmC6sozEjrnY9D1BEg+uRKMI=;
+        b=Ns7/psQvt3/7k4YjeRiU/+avxdGAscyqyvMiMqgj5henCfpmrEVJmYMWdHp2nGR8zG
+         7b96emj0ZVRzCsgy5mgumWwbs+Vtu49/tKRzyshuecOjDyaXUIVBeeM3D0LMkbo1WnYm
+         z/7M5U7QRWWldXn6ozRQhfmhWY2Tr1FkS8s0QBmDC4tzFQ9Ev/g6utYIP0PrudLppe91
+         WTN3llAttr0w1FFXwMBHuH8cxx5wd3wdpff5iwwlUFTGRmta0thZNXjs5IeqJtJUpW1s
+         vpX/RJesx8HRi422UADPD/PYSDlA5viAvBoDo2bi4C6ifHq9j6x0O7IVA/WW1GlfDLpM
+         KqPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DrFKpuiS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ep1i8g4U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12-20020a056214062c00b00626330ba04asi728529qvx.221.2023.06.20.04.10.21
+        by mx.google.com with ESMTPS id r22-20020ac85c96000000b003f7f583efecsi669903qta.376.2023.06.20.04.10.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jun 2023 04:10:21 -0700 (PDT)
+        Tue, 20 Jun 2023 04:10:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DrFKpuiS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ep1i8g4U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qBZDY-0005ot-E3; Tue, 20 Jun 2023 07:08:12 -0400
+	id 1qBZDf-00063J-W1; Tue, 20 Jun 2023 07:08:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBZDW-0005n1-Cr
- for qemu-devel@nongnu.org; Tue, 20 Jun 2023 07:08:10 -0400
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+ id 1qBZDd-0005yj-Oh
+ for qemu-devel@nongnu.org; Tue, 20 Jun 2023 07:08:17 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBZDS-0004A8-7x
- for qemu-devel@nongnu.org; Tue, 20 Jun 2023 07:08:10 -0400
-Received: by mail-lj1-x22c.google.com with SMTP id
- 38308e7fff4ca-2b4725e9917so36357751fa.2
- for <qemu-devel@nongnu.org>; Tue, 20 Jun 2023 04:08:05 -0700 (PDT)
+ id 1qBZDY-0004DU-VK
+ for qemu-devel@nongnu.org; Tue, 20 Jun 2023 07:08:17 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-5189f49c315so4819752a12.2
+ for <qemu-devel@nongnu.org>; Tue, 20 Jun 2023 04:08:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687259282; x=1689851282;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=D5/vYkPDFLt1l7Tb4jfX3kGecL1wjKktKxnAYE4Wl7w=;
- b=DrFKpuiSuoDaGlmoBvnDuTXfInP2X8Gn1/2CkjfD+VLmZflb1ynXXVkV9untygF2F1
- VnBcZ1aGZhBj5M+I+kxapZsxzcSh0KTnex+KbE/tqCYY5ngslnlfu9c+D1kNFdconI6y
- HfNuqMb6WeM8aOXmB4MsK09xkAaxLNFKhN6u7pbYqJzA8a/OAtH8WHLl7DTdUjNtnvBh
- 1Xzjgjfwo/8+AHCS/hxfJPonrPYagTmFqfr96yzxUqc4Qhf3o9bxv65Nnur+6o2Z8gA1
- qMxfrNhjvt+Thl+twJBtC/7lAqZMaqI6CzBl28hi3GnU89zC8bn/oOq8X5XEyrjtGMt1
- eS0w==
+ d=linaro.org; s=google; t=1687259291; x=1689851291;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=24csfVfVB/om++z3Dw6ZmC6sozEjrnY9D1BEg+uRKMI=;
+ b=Ep1i8g4UXYmNDu8Ua1ZGPGqRdJjXE9ba65yIErdiSR9vv+IIYadkDn+xbfi5nTGV5+
+ Ug7yBvqLZTlWRPr6vRC1LudeYNbvhVf9Y0BqWNRYgee0Ue3YhMJuGbQHx+XE87KZqQWs
+ dkAW3WvEMQzRRshYDj5utDpLklu7coDNJ9Xk6xQsKA/mEM+ef3uuYb+arHRoLjEJZ31r
+ AXFwtl4rqGhLpVQXMeC0oPUfzRuV/9V8j/XUavqnRw+dNhu+qzOT2jNV4HeuNSyWyFPd
+ wH9QOECioRjBCWkjUX8swqyHhsEIpOb5wzuOUt/sbWH+UHTRmz6aVvW3HSvPWT8ETBSz
+ 8BCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687259282; x=1689851282;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=D5/vYkPDFLt1l7Tb4jfX3kGecL1wjKktKxnAYE4Wl7w=;
- b=UrYJgwkYq6ucK1UVqHX2O2IFy0Ja/5Iex+N32qOMGcEbXGSvL+cd2pMxAV6v91Qphe
- AZOevEjK479yEoFAVlebNaRyeVGjzB504e2x2ss00EAD+4meitNwL3f+VPxLnDt3OZ8C
- VrGVBt2Do0ESXYUZh/WzeeT+JGzUf6M1lTK7jFdJv3M5AQHaF565fLLpVbufxK2Nj02D
- A+CDfMIdkCiCnXzUu/EVmSv9TZfmqMTLYVszcoRYtc2Oy2naaXN8KqywKjJW3yub7Mm0
- eHgUOjaaGqgVzTo8/yrxioX21dx+RCPmQo5CMiq3idoIPP7UU7WGOWXCczi1EiFSaNPO
- +DgA==
-X-Gm-Message-State: AC+VfDzumE1gYam+hHrCm7Hv/AZ4dNzcAdAGCXzOUKY0oYkFA0SChchx
- xII4MCtbPKuw0Ebr+L5twgPx/GbrmWHRkoq8uZx+9sOy
-X-Received: by 2002:a2e:9217:0:b0:2b3:5002:8255 with SMTP id
- k23-20020a2e9217000000b002b350028255mr8335591ljg.39.1687259281924; 
- Tue, 20 Jun 2023 04:08:01 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1687259291; x=1689851291;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=24csfVfVB/om++z3Dw6ZmC6sozEjrnY9D1BEg+uRKMI=;
+ b=SX2Wrmls9yH2ew2s2NUaJBkfMKnwXB8PqieGabDTJSwknGA6IKzQKpHGBJgMew4t8w
+ GoST6Glo3dtEvBHVdSMNG4jQXMeoJgqbvveD4pXpu/HS+5ArWnq/W73AcDeln9IuM0hJ
+ eCzceb5u4a85vlNYvDywu/g2sNW3KCucPXM05qtXXWMy59LOhYLc4712Tq1zCyQ1j9ZM
+ DHkGCEC0pK0ebbfQk0On+5J1d+zKnTEdLOt+CfC6jZ4EeoQP2j1I0idgL/Rm256ioQVv
+ jDNNayPCjAvrfOsWymBJ47tsilbml1MVIFGshnNYpneb3hnmlNjqZs3LdMaqzLi4wOin
+ dQEA==
+X-Gm-Message-State: AC+VfDxQBeA5IIfVuFbkpke6TrOIK4oPbJLFPzhuwzEUVHOpVMYbgwVn
+ Rs6BS2i2CkEv9TQJAhKkL3DFugWKS1Y+kieYhdvUUfHW
+X-Received: by 2002:a17:907:3189:b0:974:2169:5f81 with SMTP id
+ xe9-20020a170907318900b0097421695f81mr10493104ejb.22.1687259291599; 
+ Tue, 20 Jun 2023 04:08:11 -0700 (PDT)
 Received: from stoup.lan ([176.176.183.29]) by smtp.gmail.com with ESMTPSA id
- x17-20020a170906711100b009884f015a44sm1170687ejj.49.2023.06.20.04.08.00
+ x17-20020a170906711100b009884f015a44sm1170687ejj.49.2023.06.20.04.08.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Jun 2023 04:08:01 -0700 (PDT)
+ Tue, 20 Jun 2023 04:08:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: berrange@redhat.com, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v3 00/37] crypto: Provide aes-round.h and host accel
-Date: Tue, 20 Jun 2023 13:07:21 +0200
-Message-Id: <20230620110758.787479-1-richard.henderson@linaro.org>
+ qemu-riscv@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 07/37] target/arm: Demultiplex AESE and AESMC
+Date: Tue, 20 Jun 2023 13:07:28 +0200
+Message-Id: <20230620110758.787479-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230620110758.787479-1-richard.henderson@linaro.org>
+References: <20230620110758.787479-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x22c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,138 +125,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xPLDp9Apj47o
+X-TUID: b3SEqXXf1/Vg
 
-Inspired by Ard Biesheuvel's RFC patches for accelerating AES
-under emulation, provide a set of primitives that maps between
-the guest and host fragments.
+Split these helpers so that we are not passing 'decrypt'
+within the simd descriptor.
 
-Changes for v3:
-  * Move host/include/*/{,crypto/}aes-round.h.
-  * Add some r-b.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper.h             |  2 ++
+ target/arm/tcg/sve.decode       |  4 ++--
+ target/arm/tcg/crypto_helper.c  | 37 +++++++++++++++++++++++----------
+ target/arm/tcg/translate-a64.c  | 13 ++++--------
+ target/arm/tcg/translate-neon.c |  4 ++--
+ target/arm/tcg/translate-sve.c  |  8 ++++---
+ 6 files changed, 41 insertions(+), 27 deletions(-)
 
-Patches missing r-b:
-  02-tests-multiarch-Add-test-aes.patch
-  05-crypto-Add-aesenc_SB_SR_AK.patch
-  08-target-arm-Use-aesenc_SB_SR_AK.patch
-  10-target-riscv-Use-aesenc_SB_SR_AK.patch
-  11-crypto-Add-aesdec_ISB_ISR_AK.patch
-  13-target-arm-Use-aesdec_ISB_ISR_AK.patch
-  15-target-riscv-Use-aesdec_ISB_ISR_AK.patch
-  16-crypto-Add-aesenc_MC.patch
-  17-target-arm-Use-aesenc_MC.patch
-  18-crypto-Add-aesdec_IMC.patch
-  19-target-i386-Use-aesdec_IMC.patch
-  20-target-arm-Use-aesdec_IMC.patch
-  21-target-riscv-Use-aesdec_IMC.patch
-  22-crypto-Add-aesenc_SB_SR_MC_AK.patch
-  23-target-i386-Use-aesenc_SB_SR_MC_AK.patch
-  25-target-riscv-Use-aesenc_SB_SR_MC_AK.patch
-  26-crypto-Add-aesdec_ISB_ISR_IMC_AK.patch
-  27-target-i386-Use-aesdec_ISB_ISR_IMC_AK.patch
-  28-target-riscv-Use-aesdec_ISB_ISR_IMC_AK.patch
-  35-host-include-i386-Implement-aes-round.h.patch
-  36-host-include-aarch64-Implement-aes-round.h.patch
-
-
-r~
-
-
-Richard Henderson (37):
-  util: Add cpuinfo-ppc.c
-  tests/multiarch: Add test-aes
-  target/arm: Move aesmc and aesimc tables to crypto/aes.c
-  crypto/aes: Add constants for ShiftRows, InvShiftRows
-  crypto: Add aesenc_SB_SR_AK
-  target/i386: Use aesenc_SB_SR_AK
-  target/arm: Demultiplex AESE and AESMC
-  target/arm: Use aesenc_SB_SR_AK
-  target/ppc: Use aesenc_SB_SR_AK
-  target/riscv: Use aesenc_SB_SR_AK
-  crypto: Add aesdec_ISB_ISR_AK
-  target/i386: Use aesdec_ISB_ISR_AK
-  target/arm: Use aesdec_ISB_ISR_AK
-  target/ppc: Use aesdec_ISB_ISR_AK
-  target/riscv: Use aesdec_ISB_ISR_AK
-  crypto: Add aesenc_MC
-  target/arm: Use aesenc_MC
-  crypto: Add aesdec_IMC
-  target/i386: Use aesdec_IMC
-  target/arm: Use aesdec_IMC
-  target/riscv: Use aesdec_IMC
-  crypto: Add aesenc_SB_SR_MC_AK
-  target/i386: Use aesenc_SB_SR_MC_AK
-  target/ppc: Use aesenc_SB_SR_MC_AK
-  target/riscv: Use aesenc_SB_SR_MC_AK
-  crypto: Add aesdec_ISB_ISR_IMC_AK
-  target/i386: Use aesdec_ISB_ISR_IMC_AK
-  target/riscv: Use aesdec_ISB_ISR_IMC_AK
-  crypto: Add aesdec_ISB_ISR_AK_IMC
-  target/ppc: Use aesdec_ISB_ISR_AK_IMC
-  crypto: Remove AES_shifts, AES_ishifts
-  crypto: Implement aesdec_IMC with AES_imc_rot
-  crypto: Remove AES_imc
-  crypto: Unexport AES_*_rot, AES_TeN, AES_TdN
-  host/include/i386: Implement aes-round.h
-  host/include/aarch64: Implement aes-round.h
-  host/include/ppc: Implement aes-round.h
-
- MAINTAINERS                                  |   1 +
- meson.build                                  |   9 +
- host/include/aarch64/host/cpuinfo.h          |   1 +
- host/include/aarch64/host/crypto/aes-round.h | 205 +++++
- host/include/generic/host/crypto/aes-round.h |  33 +
- host/include/i386/host/cpuinfo.h             |   1 +
- host/include/i386/host/crypto/aes-round.h    | 152 ++++
- host/include/ppc/host/cpuinfo.h              |  30 +
- host/include/ppc/host/crypto/aes-round.h     | 182 +++++
- host/include/ppc64/host/cpuinfo.h            |   1 +
- host/include/ppc64/host/crypto/aes-round.h   |   1 +
- host/include/x86_64/host/crypto/aes-round.h  |   1 +
- include/crypto/aes-round.h                   | 164 ++++
- include/crypto/aes.h                         |  30 -
- target/arm/helper.h                          |   2 +
- target/i386/ops_sse.h                        |  60 +-
- tcg/ppc/tcg-target.h                         |  16 +-
- target/arm/tcg/sve.decode                    |   4 +-
- crypto/aes.c                                 | 808 ++++++++++++-------
- target/arm/tcg/crypto_helper.c               | 249 ++----
- target/arm/tcg/translate-a64.c               |  13 +-
- target/arm/tcg/translate-neon.c              |   4 +-
- target/arm/tcg/translate-sve.c               |   8 +-
- target/ppc/int_helper.c                      |  50 +-
- target/riscv/crypto_helper.c                 | 138 +---
- tests/tcg/aarch64/test-aes.c                 |  58 ++
- tests/tcg/i386/test-aes.c                    |  68 ++
- tests/tcg/ppc64/test-aes.c                   | 116 +++
- tests/tcg/riscv64/test-aes.c                 |  76 ++
- util/cpuinfo-aarch64.c                       |   2 +
- util/cpuinfo-i386.c                          |   3 +
- util/cpuinfo-ppc.c                           |  64 ++
- tcg/ppc/tcg-target.c.inc                     |  44 +-
- tests/tcg/multiarch/test-aes-main.c.inc      | 183 +++++
- tests/tcg/aarch64/Makefile.target            |   4 +
- tests/tcg/i386/Makefile.target               |   4 +
- tests/tcg/ppc64/Makefile.target              |   1 +
- tests/tcg/riscv64/Makefile.target            |  13 +
- util/meson.build                             |   2 +
- 39 files changed, 2080 insertions(+), 721 deletions(-)
- create mode 100644 host/include/aarch64/host/crypto/aes-round.h
- create mode 100644 host/include/generic/host/crypto/aes-round.h
- create mode 100644 host/include/i386/host/crypto/aes-round.h
- create mode 100644 host/include/ppc/host/cpuinfo.h
- create mode 100644 host/include/ppc/host/crypto/aes-round.h
- create mode 100644 host/include/ppc64/host/cpuinfo.h
- create mode 100644 host/include/ppc64/host/crypto/aes-round.h
- create mode 100644 host/include/x86_64/host/crypto/aes-round.h
- create mode 100644 include/crypto/aes-round.h
- create mode 100644 tests/tcg/aarch64/test-aes.c
- create mode 100644 tests/tcg/i386/test-aes.c
- create mode 100644 tests/tcg/ppc64/test-aes.c
- create mode 100644 tests/tcg/riscv64/test-aes.c
- create mode 100644 util/cpuinfo-ppc.c
- create mode 100644 tests/tcg/multiarch/test-aes-main.c.inc
-
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 3335c2b10b..95e32a697a 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -552,7 +552,9 @@ DEF_HELPER_FLAGS_2(neon_qzip16, TCG_CALL_NO_RWG, void, ptr, ptr)
+ DEF_HELPER_FLAGS_2(neon_qzip32, TCG_CALL_NO_RWG, void, ptr, ptr)
+ 
+ DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(crypto_aesd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
++DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_4(crypto_sha1su0, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(crypto_sha1c, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 14b3a69c36..04b6fcc0cf 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -1629,8 +1629,8 @@ STNT1_zprz      1110010 .. 10 ..... 001 ... ..... ..... \
+ ### SVE2 Crypto Extensions
+ 
+ # SVE2 crypto unary operations
+-# AESMC and AESIMC
+-AESMC           01000101 00 10000011100 decrypt:1 00000 rd:5
++AESMC           01000101 00 10000011100 0 00000 rd:5
++AESIMC          01000101 00 10000011100 1 00000 rd:5
+ 
+ # SVE2 crypto destructive binary operations
+ AESE            01000101 00 10001 0 11100 0 ..... .....  @rdn_rm_e0
+diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
+index 06254939d2..75882d9ea3 100644
+--- a/target/arm/tcg/crypto_helper.c
++++ b/target/arm/tcg/crypto_helper.c
+@@ -45,11 +45,9 @@ static void clear_tail_16(void *vd, uint32_t desc)
+     clear_tail(vd, opr_sz, max_sz);
+ }
+ 
+-static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+-                           uint64_t *rm, bool decrypt)
++static void do_crypto_aese(uint64_t *rd, uint64_t *rn, uint64_t *rm,
++                           const uint8_t *sbox, const uint8_t *shift)
+ {
+-    static uint8_t const * const sbox[2] = { AES_sbox, AES_isbox };
+-    static uint8_t const * const shift[2] = { AES_shifts, AES_ishifts };
+     union CRYPTO_STATE rk = { .l = { rm[0], rm[1] } };
+     union CRYPTO_STATE st = { .l = { rn[0], rn[1] } };
+     int i;
+@@ -60,7 +58,7 @@ static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+ 
+     /* combine ShiftRows operation and sbox substitution */
+     for (i = 0; i < 16; i++) {
+-        CR_ST_BYTE(st, i) = sbox[decrypt][CR_ST_BYTE(rk, shift[decrypt][i])];
++        CR_ST_BYTE(st, i) = sbox[CR_ST_BYTE(rk, shift[i])];
+     }
+ 
+     rd[0] = st.l[0];
+@@ -70,18 +68,26 @@ static void do_crypto_aese(uint64_t *rd, uint64_t *rn,
+ void HELPER(crypto_aese)(void *vd, void *vn, void *vm, uint32_t desc)
+ {
+     intptr_t i, opr_sz = simd_oprsz(desc);
+-    bool decrypt = simd_data(desc);
+ 
+     for (i = 0; i < opr_sz; i += 16) {
+-        do_crypto_aese(vd + i, vn + i, vm + i, decrypt);
++        do_crypto_aese(vd + i, vn + i, vm + i, AES_sbox, AES_shifts);
+     }
+     clear_tail(vd, opr_sz, simd_maxsz(desc));
+ }
+ 
+-static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, bool decrypt)
++void HELPER(crypto_aesd)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc);
++
++    for (i = 0; i < opr_sz; i += 16) {
++        do_crypto_aese(vd + i, vn + i, vm + i, AES_isbox, AES_ishifts);
++    }
++    clear_tail(vd, opr_sz, simd_maxsz(desc));
++}
++
++static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, const uint32_t *mc)
+ {
+     union CRYPTO_STATE st = { .l = { rm[0], rm[1] } };
+-    const uint32_t *mc = decrypt ? AES_imc_rot : AES_mc_rot;
+     int i;
+ 
+     for (i = 0; i < 16; i += 4) {
+@@ -99,10 +105,19 @@ static void do_crypto_aesmc(uint64_t *rd, uint64_t *rm, bool decrypt)
+ void HELPER(crypto_aesmc)(void *vd, void *vm, uint32_t desc)
+ {
+     intptr_t i, opr_sz = simd_oprsz(desc);
+-    bool decrypt = simd_data(desc);
+ 
+     for (i = 0; i < opr_sz; i += 16) {
+-        do_crypto_aesmc(vd + i, vm + i, decrypt);
++        do_crypto_aesmc(vd + i, vm + i, AES_mc_rot);
++    }
++    clear_tail(vd, opr_sz, simd_maxsz(desc));
++}
++
++void HELPER(crypto_aesimc)(void *vd, void *vm, uint32_t desc)
++{
++    intptr_t i, opr_sz = simd_oprsz(desc);
++
++    for (i = 0; i < opr_sz; i += 16) {
++        do_crypto_aesmc(vd + i, vm + i, AES_imc_rot);
+     }
+     clear_tail(vd, opr_sz, simd_maxsz(desc));
+ }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 3baab6aa60..7d0c8f79a7 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -13210,7 +13210,6 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+     int opcode = extract32(insn, 12, 5);
+     int rn = extract32(insn, 5, 5);
+     int rd = extract32(insn, 0, 5);
+-    int decrypt;
+     gen_helper_gvec_2 *genfn2 = NULL;
+     gen_helper_gvec_3 *genfn3 = NULL;
+ 
+@@ -13221,20 +13220,16 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+ 
+     switch (opcode) {
+     case 0x4: /* AESE */
+-        decrypt = 0;
+         genfn3 = gen_helper_crypto_aese;
+         break;
+     case 0x6: /* AESMC */
+-        decrypt = 0;
+         genfn2 = gen_helper_crypto_aesmc;
+         break;
+     case 0x5: /* AESD */
+-        decrypt = 1;
+-        genfn3 = gen_helper_crypto_aese;
++        genfn3 = gen_helper_crypto_aesd;
+         break;
+     case 0x7: /* AESIMC */
+-        decrypt = 1;
+-        genfn2 = gen_helper_crypto_aesmc;
++        genfn2 = gen_helper_crypto_aesimc;
+         break;
+     default:
+         unallocated_encoding(s);
+@@ -13245,9 +13240,9 @@ static void disas_crypto_aes(DisasContext *s, uint32_t insn)
+         return;
+     }
+     if (genfn2) {
+-        gen_gvec_op2_ool(s, true, rd, rn, decrypt, genfn2);
++        gen_gvec_op2_ool(s, true, rd, rn, 0, genfn2);
+     } else {
+-        gen_gvec_op3_ool(s, true, rd, rd, rn, decrypt, genfn3);
++        gen_gvec_op3_ool(s, true, rd, rd, rn, 0, genfn3);
+     }
+ }
+ 
+diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
+index 03913de047..8de4ceb203 100644
+--- a/target/arm/tcg/translate-neon.c
++++ b/target/arm/tcg/translate-neon.c
+@@ -3451,9 +3451,9 @@ static bool trans_VMVN(DisasContext *s, arg_2misc *a)
+     }
+ 
+ WRAP_2M_3_OOL_FN(gen_AESE, gen_helper_crypto_aese, 0)
+-WRAP_2M_3_OOL_FN(gen_AESD, gen_helper_crypto_aese, 1)
++WRAP_2M_3_OOL_FN(gen_AESD, gen_helper_crypto_aesd, 0)
+ WRAP_2M_2_OOL_FN(gen_AESMC, gen_helper_crypto_aesmc, 0)
+-WRAP_2M_2_OOL_FN(gen_AESIMC, gen_helper_crypto_aesmc, 1)
++WRAP_2M_2_OOL_FN(gen_AESIMC, gen_helper_crypto_aesimc, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA1H, gen_helper_crypto_sha1h, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA1SU1, gen_helper_crypto_sha1su1, 0)
+ WRAP_2M_2_OOL_FN(gen_SHA256SU0, gen_helper_crypto_sha256su0, 0)
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index ff050626e6..b98f469cb1 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -7151,12 +7151,14 @@ TRANS_FEAT(USDOT_zzzz, aa64_sve_i8mm, gen_gvec_ool_arg_zzzz,
+            a->esz == 2 ? gen_helper_gvec_usdot_b : NULL, a, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(AESMC, aa64_sve2_aes, gen_gvec_ool_zz,
+-                        gen_helper_crypto_aesmc, a->rd, a->rd, a->decrypt)
++                        gen_helper_crypto_aesmc, a->rd, a->rd, 0)
++TRANS_FEAT_NONSTREAMING(AESIMC, aa64_sve2_aes, gen_gvec_ool_zz,
++                        gen_helper_crypto_aesimc, a->rd, a->rd, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(AESE, aa64_sve2_aes, gen_gvec_ool_arg_zzz,
+-                        gen_helper_crypto_aese, a, false)
++                        gen_helper_crypto_aese, a, 0)
+ TRANS_FEAT_NONSTREAMING(AESD, aa64_sve2_aes, gen_gvec_ool_arg_zzz,
+-                        gen_helper_crypto_aese, a, true)
++                        gen_helper_crypto_aesd, a, 0)
+ 
+ TRANS_FEAT_NONSTREAMING(SM4E, aa64_sve2_sm4, gen_gvec_ool_arg_zzz,
+                         gen_helper_crypto_sm4e, a, 0)
 -- 
 2.34.1
 

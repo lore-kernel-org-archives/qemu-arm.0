@@ -1,189 +1,109 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp202936ejt;
-        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4PYmSmSwVi43FLK1bNfJPtEvZYmcm8oyinTdq3pNLPJR11tWMyl4elcJw8KOZEDoKzHteR
-X-Received: by 2002:a05:6214:21c1:b0:62d:e3c1:b884 with SMTP id d1-20020a05621421c100b0062de3c1b884mr14274138qvh.16.1687259907444;
-        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687259907; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp277946ejt;
+        Tue, 20 Jun 2023 06:47:02 -0700 (PDT)
+X-Received: by 2002:a17:907:940e:b0:988:3ce8:c5bf with SMTP id dk14-20020a170907940e00b009883ce8c5bfmr5981993ejc.33.1687268822173;
+        Tue, 20 Jun 2023 06:47:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687268822; cv=none;
         d=google.com; s=arc-20160816;
-        b=oJgpCGr7mjTVDGsH9f0FygDUEciSpDu4nO8rqAukptZrm6Qd38vrZS6PfX1mvx3FhP
-         rISpDIQdXU1BcEtVbofM+inGMEhygWwyYnM/JJhS5SzNH6Xk3Sflu8nYgs9MJ+Ylim6z
-         knicEaiNQ/IhuVC/LSrGnA9NDTbpI1Nf0guud2i00mDFqd2r0oBX23BBhAOitBQCNIaB
-         YC+n19RiMbRtgZEFYXt8kshcb0+cuBqvpI0l5qd7WGkGT8/U044ow8NPhqYExZRUt3IC
-         2Rzk6YrUfZOsEFPGrL2WNkMiVHWFlYpLrv5JzWho2RdJi9joD6XXF7NPxZigjCCO0v+W
-         KJxw==
+        b=KxzUi19OSTZWXem0pRh91mQpf67F6kDpWt8X4+v/y3C1ddH3YEpSylWpigUIuocOMh
+         E26/CVGeb3JzlsR6oBZXY5KvucPCGLqP7ELVqb9RJa/U9ZIVbUMPHDpcAIBFW1C0Z0e4
+         L7Rmhi5qf6fiJzM7+Az0sRz0SimRP3i7pzqKCImhC50CwfksVa2j2TG+IIDwYewg2sO9
+         wHNO545vozn/QzdY0osFivbpkKy4cdwEan65/T7vy6ceByh7vVV3LJKdh9nS2NNB/Ztq
+         JLxA0BONkWuyhScS6vKJwcp1/xQiYCttyqPET+RYmZR2qqCcYPHMeTjuSbZ7MQemmHhw
+         7leg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:references:message-id
-         :content-transfer-encoding:cc:date:in-reply-to:from:subject
-         :mime-version:dkim-signature;
-        bh=dG5Rc0PCllhhaYpBxMghZWbAcodEUEjgv6iCawS3ORM=;
-        b=hud6nmkyozEPia6ikaM1goOKFfPhNO5XYcGGPAbT417Q/qiCSSWvtxpEmRGGNNsnvI
-         aeYn3Wa7+1dJmZxkWroIauMxqDMF3eiXagu4Hdfc9NhcqsKhty9LSPvSLUCErPV5iS9h
-         bit/RhSOtvtT8D9A096jnn2E84gkxu4sD6vSEv1MOFpX7bbefcdJLBChmng889/6Xl/k
-         ae+mduI8FXri984dRu5WWGI3I7Hlr7kX8kecIJE6NLcMqwbhaEnyyBznfIsfrT0vUQ2X
-         yzqWbTt4efCkj29jNBTTpL+YLjrAgjV4n5OVEY90NsCUQ0KTFosP9keRx7u+RALTBBUC
-         Wbpg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=OwP43XlwUIRhrsR/2qColpGgw5TXdrc1w9pzp3fk9ac=;
+        b=tz0QhhOhz2fDY/PdBDFc/2ih1vL/s1mAVRW+F1PsRUXEHQG0+1mWhEJ1QC5vuAaeKg
+         ShAaO92gaJ8XA6ZiVwqP5tieDZZ3Z9Q7XwFVWdhHKN0LXPjn+Cqw3/s/IfoJBhNG4ujO
+         MElWrTNpEmnsUQogu9jvL2ffLuYUzjgYzLuWJo+hRJ8GLRLHFDzTR+iKpVTocaPMyMo/
+         M0KWLeaw2MHC7bDfZJFnOhAibnvjE9IQ9UyWXu66ISBrfc9shgkJGwJH8vOLFQxftsvL
+         on+NktbssLhwar45HNVDKmRFR1l4Egp2N9JOZuvMFS6oILbAwcvkjsk6Eni9t2PwC7aX
+         zhlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=c2ILi5ag;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10-20020a05621420ea00b005adb460bc9bsi701000qvk.412.2023.06.20.04.18.27
+       dkim=pass header.i=@linaro.org header.s=google header.b=qqs6h7FU;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id kv9-20020a17090778c900b0098289e6c4d1sor728881ejc.9.2023.06.20.06.47.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 20 Jun 2023 06:47:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=c2ILi5ag;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBZMm-00037V-Fs; Tue, 20 Jun 2023 07:17:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBZMk-00036X-UC
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 07:17:42 -0400
-Received: from mr85p00im-zteg06021901.me.com ([17.58.23.194])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBZMj-0006jl-0P
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 07:17:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
- t=1687259859; bh=dG5Rc0PCllhhaYpBxMghZWbAcodEUEjgv6iCawS3ORM=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
- b=c2ILi5ag640YDiy22KuJOQ5LPxYFNglWipXYk2DIU1M0Gk00J9HGiztddMYbweNnm
- gkoTUP8D1ZPfQcndbDF/vMoqsK09P3Xv3XMWyH1KdfsD47vN327RfdhsZhNtx3Rusm
- nKZqGEGuyo8LoLQf0zZIJCAJzOW9CxwPGG0GFGxpr9RLT9bLfSyDuWsjKPNBmqzcUF
- YYOTS537ivl2I6UGkEW42m2EJN69+eUARy5eSSyQ4WeAZGPVVe1gR+mKILU6kKLI90
- +sKqifZXXiWYTZ6ZyhEzN4z96n8cWiVf1vQ5mWqwO1DWotB2UZxcMJfFx2zLtKc2+F
- d5AxNT8WSuPBQ==
-Received: from smtpclient.apple (mr38p00im-dlb-asmtp-mailmevip.me.com
- [17.57.152.18])
- by mr85p00im-zteg06021901.me.com (Postfix) with ESMTPSA id 38D4774006D;
- Tue, 20 Jun 2023 11:17:36 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
-Subject: Re: [PATCH 00/12] Introduce new vmapple machine type
-From: Mads Ynddal <mads@ynddal.dk>
-In-Reply-To: <20230614224038.86148-1-graf@amazon.com>
-Date: Tue, 20 Jun 2023 13:17:23 +0200
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- "open list:ARM cores" <qemu-arm@nongnu.org>,
- Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Content-Transfer-Encoding: 7bit
-Message-Id: <ACE1A94A-4CB8-4B23-B09A-D2B1685E402E@ynddal.dk>
-References: <20230614224038.86148-1-graf@amazon.com>
-To: Alexander Graf <graf@amazon.com>
-X-Mailer: Apple Mail (2.3731.600.7)
-X-Proofpoint-GUID: uXnx1zlMLQ7Nu4NAVJoZNbwry9ZOmjvX
-X-Proofpoint-ORIG-GUID: uXnx1zlMLQ7Nu4NAVJoZNbwry9ZOmjvX
-X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
- =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.572,17.11.62.513.0000000_definitions?=
- =?UTF-8?Q?=3D2020-02-14=5F11:2020-02-14=5F02,2020-02-14=5F11,2021-12-02?=
- =?UTF-8?Q?=5F01_signatures=3D0?=
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxscore=0 adultscore=0
- spamscore=0 bulkscore=0 clxscore=1030 suspectscore=0 malwarescore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2306200101
-Received-SPF: pass client-ip=17.58.23.194; envelope-from=mads@ynddal.dk;
- helo=mr85p00im-zteg06021901.me.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o5t/qjcf6JWs
+       dkim=pass header.i=@linaro.org header.s=google header.b=qqs6h7FU;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1687268822; x=1689860822;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OwP43XlwUIRhrsR/2qColpGgw5TXdrc1w9pzp3fk9ac=;
+        b=qqs6h7FUMyqmOMkKgvJCgoSMoAUh4HcQQSHSS7Q1BcFZvZ3mhUv223LizHoSE4ivST
+         UajeIfrvWjDrkR+eeYzbEwMwtn2y0wrnWgoCsC7LcWqW5kyZY1+wVbxCaGEzwjgwQAiI
+         nK9vjUx3A7Mz4ohiyp0cL3kAwvw0qhqLdBn0rT6PWPTTblrl9Q2t1E3wszdOIlH0nnNA
+         E1FX/8kOrVvzp5zdWdMKigoZF40k9oOUrYBBaVmEURbFdEX9HSAsvkb+BnnHe8LvrmaP
+         d5ZLkiiWFUlBfqCXubaLhuBTRgrqZgTjyvmeALXzEEEsWhlxTU6TUQiDJgn9Fn0yfyHz
+         /Lgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1687268822; x=1689860822;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OwP43XlwUIRhrsR/2qColpGgw5TXdrc1w9pzp3fk9ac=;
+        b=QRv6e4emE6TF4TgG9K6xysu3Q9lMYcFI35yhaP0Gs8ETMxiGao3icem8XNyuTSGdbi
+         o3ZRgezf2wcWT3hx7NRcBz4wW13Oim+5g/+jqtUknfg1JKNFtGcym3NUhM34VD/e53KG
+         UJV6bybuS4SlYAU+jN/4LJ5ivr12PdVySIZXbnN6rNDaayflR8cck8W3sDM3uz7P2tJx
+         VOsgk64JBt93Pq3OTFidMgCl/Z2St9VNaTgprS1ZPB0xKeWRNSEaw9fwVrLkW2j3Ycgx
+         CJkXw2jVAhDiOg+qBes/OPuhUQWLIBy3/sfgFINoCDnenRxY+wFllYEqyuHyZhSupK++
+         Z2GQ==
+X-Gm-Message-State: AC+VfDxrCHu9nTAc5Rcb7l8XpDfeJtX9eJknQ/BYYjkCWd87nFmBpXbC
+	Z2J7oHK/4Uh8PxDnJLuSM5jjz9btyAJlG7A2YkT/sPmTaxo=
+X-Google-Smtp-Source: ACHHUZ6FnJtUg63/2YRbHRdJpjV6AJN3wQ814XajEzPHm7O9rewHeGY4rUpXQfJagDPv8yDsucBOIg==
+X-Received: by 2002:a17:907:9623:b0:988:9a65:eae6 with SMTP id gb35-20020a170907962300b009889a65eae6mr5786550ejc.38.1687268821727;
+        Tue, 20 Jun 2023 06:47:01 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from stoup.lan ([176.176.183.29])
+        by smtp.gmail.com with ESMTPSA id gu1-20020a170906f28100b009829a5ae8b3sm1449187ejb.64.2023.06.20.06.47.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Jun 2023 06:47:01 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Mark Rutland <mark.rutland@arm.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] target/arm: Fix sve prediate store, 8 <= VQ <= 15
+Date: Tue, 20 Jun 2023 15:46:59 +0200
+Message-Id: <20230620134659.817559-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 40ar1XoGG47t
 
+Brown bag time: store instead of load results in uninitialized temp.
 
-> On 15 Jun 2023, at 00.40, Alexander Graf <graf@amazon.com> wrote:
-> 
-> This patch set introduces a new ARM and HVF specific machine type
-> called "vmapple". It mimicks the device model that Apple's proprietary
-> Virtualization.Framework exposes, but implements it in QEMU.
-> 
-> With this new machine type, you can run macOS guests on Apple Silicon
-> systems via HVF. To do so, you need to first install macOS using
-> Virtualization.Framework onto a virtual disk image using a tool like
-> macosvm (https://github.com/s-u/macosvm)
-> 
->  $ macosvm --disk disk.img,size=32g --aux aux.img \
->            --restore UniversalMac_12.0.1_21A559_Restore.ipsw vm.json
-> 
-> Then, extract the ECID from the installed VM:
-> 
->  $ cat "$DIR/macosvm.json" | python3 -c                                 \
->  'import json,sys;obj=json.load(sys.stdin);print(obj["machineId"]) |    \
->  base64 -d | plutil -extract ECID raw -
+Reported-by: Mark Rutland <mark.rutland@arm.com>
+Fixes: e6dd5e782be ("target/arm: Use tcg_gen_qemu_{ld, st}_i128 in gen_sve_{ld, st}r")
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/translate-sve.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Beware, that the file will be called 'vm.json' and DIR is undefined following
-the previous line. Also, it's missing a single-quote at the end of
-`["machineId"])`.
-
-> In addition, cut off the first 16kb of the aux.img:
-> 
->  $ dd if=aux.img of=aux.img.trimmed bs=$(( 0x4000 )) skip=1
-> 
-> Now, you can just launch QEMU with the bits generated above:
-> 
->  $ qemu-system-aarch64 -serial mon:stdio                                \
->  -m 4G                                                                  \
->  -M vmapple,uuid=6240349656165161789                                    \
->  -bios /Sys*/Lib*/Fra*/Virtualization.f*/R*/AVPBooter.vmapple2.bin      \
->  -pflash aux.img.trimmed                                                \
->  -pflash disk.img                                                       \
->  -drive file=disk.img,if=none,id=root                                   \
->  -device virtio-blk-pci,drive=root,x-apple-type=1                       \
->  -drive file=aux.img.trimmed,if=none,id=aux                             \
->  -device virtio-blk-pci,drive=aux,x-apple-type=2                        \
->  -accel hvf -no-reboot
-
-Just for clarity, I'd add that the 'vmapple,uuid=...' has to be set to the
-ECID the previous step.
-
-You haven't defined a display, but I'm not sure if that is on purpose to
-show a minimal setup. I had to add '-display sdl' for it to fully work.
-
-> There are a few limitations with this implementation:
-> 
->  - Only runs on macOS because it relies on
->    ParavirtualizesGraphics.Framework
->  - Something is not fully correct on interrupt delivery or
->    similar - the keyboard does not work
->  - No Rosetta in the guest because we lack the private
->    entitlement to enable TSO
-
-Would it be possible to mitigate the keyboard issue using an emulated USB
-keyboard? I tried poking around with it, but with no success.
-
-> Over time, I hope that some of the limitations above could cease to exist.
-> This device model would enable very nice use cases with KVM on an Asahi
-> Linux device.
-
-
-
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index ff050626e6..225d358922 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -4329,7 +4329,7 @@ void gen_sve_str(DisasContext *s, TCGv_ptr base, int vofs,
+     /* Predicate register stores can be any multiple of 2.  */
+     if (len_remain >= 8) {
+         t0 = tcg_temp_new_i64();
+-        tcg_gen_st_i64(t0, base, vofs + len_align);
++        tcg_gen_ld_i64(t0, base, vofs + len_align);
+         tcg_gen_qemu_st_i64(t0, clean_addr, midx, MO_LEUQ | MO_ATOM_NONE);
+         len_remain -= 8;
+         len_align += 8;
+-- 
+2.34.1

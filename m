@@ -1,111 +1,118 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp923837ejq;
-        Wed, 17 May 2023 01:14:19 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ515Us9tV31pfYDUBv2pDBbARpfkM6e5DtgguFpVQaDFZXAi9B8Vauhh+BFXgq6xZKPgISO
-X-Received: by 2002:a05:6214:c2b:b0:623:7707:5650 with SMTP id a11-20020a0562140c2b00b0062377075650mr8042928qvd.15.1684311258835;
-        Wed, 17 May 2023 01:14:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684311258; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp179531ejt;
+        Tue, 20 Jun 2023 03:20:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5iPW8ekj7ImRRqJB4WqnhkXT3BWJaO/txp5X0AY3hw3zzQqJ/nUubS3OZjd9bf5urd2kR3
+X-Received: by 2002:a05:622a:1488:b0:3f1:f599:c259 with SMTP id t8-20020a05622a148800b003f1f599c259mr15993777qtx.24.1687256439570;
+        Tue, 20 Jun 2023 03:20:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687256439; cv=none;
         d=google.com; s=arc-20160816;
-        b=kzPwU72Ou52ZOJbVezh0Bt/YwyvNvyx9DJY+aNkh8B1Z1QlrcmI3G+PvzLp9x+628v
-         ogPKM7/L7L8KGKOJi91fzn0AwSHP0R7P0qJyAH6A9faSPtIJr8vXGY9qHnU0gMhcpSYn
-         Lcx8s9rBxzrWhvl9DvwhCbT96Sd+LuXux8+uKdx3ab1E2xXpUZcFOX6eCeaIaZG0rkGV
-         +X71U2ceyNm8yBWzS0uBQzyvn3m6Pp1XIG1l7nuxA9hE3US4nhY0L3L/18gj+Gnm6AX8
-         0VNwD5EHDn79eAIpjkKvTVVOdtGva1DWVWuLus4aBEq6QVH7eMv+hFzNgLfiUCie326B
-         qBpw==
+        b=huAYB5xK7hDNSW+17QuvCaI/z9t9XFFIT7+6cXXfdtQx/uE59kk3TaOYJ63ljwgtiz
+         wqlF18Ozibbc64RgbqfqYQGIhpN5cCFQE9ZcyRFjIfOTYSiN/K6sHm0ikJOLpkC0KRQ+
+         dm5MegwY4Ys4gPPVsVWRZeYRI4r4CwNVRraxi6v8sVx/3UpxBJcjQEwlGoODi8V5XLMI
+         inqAWGlFgeE89lLzJjIxdzXjiHuhkQ+PkcZDJaF5jlFoTl1VONKgD1p0ayp64HeMJOM4
+         oDUJC+v7v7vY2lVBZqfovo4yVUPzLSxqstUHyXzGQMvItwnNDZftcoD9i3rRmnYC3OOZ
+         /ziw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Pc+h22qrBgYh6YvkhQsj0ayYok4y4K6400dOTySuxLA=;
-        b=sTK+JIjkQ9ihGsPK5Hp7eHXF+684fq44kgdj3OF+Bjas4xmar9h+aO3tgOcNPqE7Hi
-         vjrX4xZUzP5uWzxymoT8U/kLW3cn1jiH2A+sXdpBmxkitPyyIPTZLT6NXjyFb9p/olFh
-         VT2WSmJQpPB8+Pb1SqRjbTHgQQqKHMIcJYH8gWF3cbmBCQ6vtfDVWUNlt5cuPp1KruVF
-         RlNzrNkBRVZZZom0HG0WTazaXfqLj/BdWuRPBpykCme2dSMp9iPk8xlsWk4Ev01tvie5
-         thYPFXS1zPHfPEgvziNIaHfllzQKFCZ2J1r1kdM9HgWCe4XH1D2jAgs1vxJj709+kwF2
-         Oibw==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=cZ4Lf7PYLzHFbYI/Bcp8whIN6D9flP1VF3TTHkr7mJM=;
+        b=OOR+S80XJjiywPLmtAZYLGjtFb3khxb86dr8aSSB0exTvLuw+aheRHT7xvzKtVQLVr
+         MfZHvq4wYbM5rl7s7kyS/xdYpwv7hEgpwf1GDhuN3nwZmIUD8SOcHumTSk7UXntptGEo
+         WRrjCEW3IVpGon54WlqGsBo/FBFYfs1IT0AeYfxJJZNapAWvLVN++XBcjiPT9ahkSp8P
+         ojYYDiYOP5XngFMakaLRvZJj2V+X5xJfkT1PFtHvSL8XZFW/Omrx5CtmAzKNe8iEhsFA
+         gna/LIwqcuYBJl5lgacgoJN5YhsA+39eQhHtFtCZ1/QtTdAfjlSQBn9aMYALjbRFgJLx
+         pnlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=siotNUOm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dQ3mijDB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ed15-20020ad44eaf000000b006213759dd5csi12857439qvb.232.2023.05.17.01.14.18
+        by mx.google.com with ESMTPS id i7-20020ac85c07000000b003f9cc7c484bsi615358qti.398.2023.06.20.03.20.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 May 2023 01:14:18 -0700 (PDT)
+        Tue, 20 Jun 2023 03:20:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=siotNUOm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dQ3mijDB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1pzCGy-00068s-Cm; Wed, 17 May 2023 04:12:36 -0400
+	id 1qBYTA-0006Qb-3K; Tue, 20 Jun 2023 06:20:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pzCGq-0005uT-NF; Wed, 17 May 2023 04:12:28 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBYT7-0006Ps-Kn
+ for qemu-devel@nongnu.org; Tue, 20 Jun 2023 06:20:13 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <m.elsayed4420@gmail.com>)
- id 1pzCGk-0003Mj-Hk; Wed, 17 May 2023 04:12:28 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-30796c0cbcaso421649f8f.1; 
- Wed, 17 May 2023 01:12:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBYT5-0008Nm-M7
+ for qemu-devel@nongnu.org; Tue, 20 Jun 2023 06:20:12 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-51878f8e541so5310166a12.3
+ for <qemu-devel@nongnu.org>; Tue, 20 Jun 2023 03:20:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684311140; x=1686903140;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Pc+h22qrBgYh6YvkhQsj0ayYok4y4K6400dOTySuxLA=;
- b=siotNUOmOWflEPo740kwQAQir/z8pc/CuLL7nhbqHb2f/6+bcCWsqo4rItaa8TuOld
- 7g4HjeSnHgzVQBe1lu4PPpkJaGvlKc7Cgs+laGou+v9gzSCJ6VlLpsOhli+7dk02hJXg
- 5AF+HF6FzGQWeyqS1l7EA4B3v68Ln0tjD4Ls7m9/WjzE689ekoWYpKpPZh1kwOy0t/B1
- sMpcyd3//xOHHDUOvShytvtWbuFpIJ4tBADALKtDazPl22HpGxFudfOPOrOw9UWKjPaF
- tBY+66q1+aBOBTQffPPtqPZ3wu4ocwxFHTy0TENCBZ+hut8V/xg/jPfm7swjrFVw5EXl
- R25Q==
+ d=linaro.org; s=google; t=1687256410; x=1689848410;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cZ4Lf7PYLzHFbYI/Bcp8whIN6D9flP1VF3TTHkr7mJM=;
+ b=dQ3mijDBRU7WQa3rn1ol0yKk0u1tTKwT/RS3nQC3Ur4dVVzCzGRuVoaFbcVzfXo7N2
+ 4tZq7sku2Su5Ni9zOG5pu6tVW7w3YLnjer5fNeImdHytB3ED8Z50oux5KgAJYKhQArvV
+ U5jQIXO0sjPvXcYKkiwa2/eOxFnwHv/KnMGUTC5VI+g+F9W/A2STj81Rn/c53Fy4GRxP
+ HJqdm/MiCYXfDmgYES8KdoNZ7dmdnlFW8l0nwNeIaTHP7IGlGufJBWLsCGfuDw/asezz
+ ulsv8zFjzPgiBr1oFJr+bEGFKFrTs3zhHGo2iJCsWvvXu1Zby+HoFDrlp8EcJWQIP7rp
+ IeMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684311140; x=1686903140;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Pc+h22qrBgYh6YvkhQsj0ayYok4y4K6400dOTySuxLA=;
- b=U4JuJUUTSamqSM3oz3LAUVk6+vHzTEci+r/Npk4ZBtfQacU21Cf1QsVB19RkLfBZsL
- qO/Z11fAWN41BDaHtWmBGqEIU3fY6xDN28Ioj8vv7QxiKz94n9nMF+xtKtAfGS+UUtMk
- 3FS44aZxOtuLcD4I6OtaS0pUx79kvvZv6PCM7c+idmUGPKq0nCQnSsaahmTUb7zwAMD5
- eBK86L9F/S3hp4MOon2GCvJhiegi0W+BUjiMQaWm2YxYz6KDt6XgrH4jD8efNMNUO6TA
- BHhmyU0eR1Nn0Nyv+Hj0qtxkKQ7l63R8IdXGvYcEHqbveUI9bukJ2Csz4bRo2oNvWYqE
- A3/A==
-X-Gm-Message-State: AC+VfDwKe/euzCFxHUxVD0+Fx6ENC9Mj30Vtfo8gYSgwfXfXbvJq39Cn
- Tgobv1qH48eEFUrP3EhX/+x3VjjMIBg=
-X-Received: by 2002:a5d:4c8c:0:b0:2f5:3dfd:f4d2 with SMTP id
- z12-20020a5d4c8c000000b002f53dfdf4d2mr29187143wrs.64.1684311140380; 
- Wed, 17 May 2023 01:12:20 -0700 (PDT)
-Received: from i.. ([41.236.82.205]) by smtp.gmail.com with ESMTPSA id
- o24-20020a1c7518000000b003f42158288dsm1414942wmc.20.2023.05.17.01.12.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 May 2023 01:12:20 -0700 (PDT)
-From: Mohamed ElSayed <m.elsayed4420@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Mohamed ElSayed <m.elsayed4420@gmail.com>
-Subject: [PATCH 5/8] tiva c watchdog timers implementation
-Date: Wed, 17 May 2023 11:12:01 +0300
-Message-Id: <20230517081204.30333-6-m.elsayed4420@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230517081204.30333-1-m.elsayed4420@gmail.com>
-References: <20230517081204.30333-1-m.elsayed4420@gmail.com>
+ d=1e100.net; s=20221208; t=1687256410; x=1689848410;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cZ4Lf7PYLzHFbYI/Bcp8whIN6D9flP1VF3TTHkr7mJM=;
+ b=CP8etgXcXMVlgpPrEXnezzzPpJ2OoYRr7+UsZgtXgKlibPn6M9WhuQWn4HNPBEjgI+
+ k/ecDy4HuJTrs2F+5WutQRwrHsA45Q96yp2ZLa5Iicwm0dCHJJHUse4cRpW7l0xWwyzC
+ PsDcHSbl8CO7Di6isWJS5ItsjboITFIEuAcfrJ7pOHmwpTbEogWW6ALc2qeYjG7Kx7Zy
+ SsHYOLHNsswFJhJe7mOZitsq93zcZY4ZvtY5t3xm1KY2IxHDXJ+4aBYe33d392cPYwAo
+ McQsl5ud4DifxqJSgAMQpV9JfIdx+Z1UdhO7e47YAUerW2O9F+mGcsjOfQlgFtuNENBI
+ UwCQ==
+X-Gm-Message-State: AC+VfDwJb6HWfWJC0EA39ZEXk5nxS97psX3184Ch3akcaFx5+ZLuODpX
+ 4I5T2YZ17i/brORGLz0H0TCT7A==
+X-Received: by 2002:a05:6402:2cd:b0:51a:2d8a:a656 with SMTP id
+ b13-20020a05640202cd00b0051a2d8aa656mr7803728edx.27.1687256410023; 
+ Tue, 20 Jun 2023 03:20:10 -0700 (PDT)
+Received: from [192.168.69.129] ([176.176.183.29])
+ by smtp.gmail.com with ESMTPSA id
+ c8-20020aa7c748000000b0050bc4eb9846sm933288eds.1.2023.06.20.03.20.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Jun 2023 03:20:09 -0700 (PDT)
+Message-ID: <ae1120d9-6ce1-13de-3a7d-90f8b2f4a215@linaro.org>
+Date: Tue, 20 Jun 2023 12:20:02 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v3 09/34] target/arm/tcg: Move VFP helpers from
+ helper-a64.c to vfp_helper.c
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20230619154302.80350-1-philmd@linaro.org>
+ <20230619154302.80350-10-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230619154302.80350-10-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=m.elsayed4420@gmail.com; helo=mail-wr1-x42a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,436 +129,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nF8Z9tUC7zyV
+X-TUID: kLT5VcMYJze8
 
-Signed-off-by: Mohamed ElSayed <m.elsayed4420@gmail.com>
----
- hw/watchdog/tm4c123_watchdog.c         | 297 +++++++++++++++++++++++++
- hw/watchdog/trace-events               |   3 +
- include/hw/watchdog/tm4c123_watchdog.h |  97 ++++++++
- 3 files changed, 397 insertions(+)
- create mode 100644 hw/watchdog/tm4c123_watchdog.c
- create mode 100644 include/hw/watchdog/tm4c123_watchdog.h
+On 6/19/23 17:42, Philippe Mathieu-Daudé wrote:
+> Keep the VFP helpers in the same file, guarding them with #ifdef'ry.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   target/arm/tcg/helper-a64.c | 87 ----------------------------------
+>   target/arm/vfp_helper.c     | 93 ++++++++++++++++++++++++++++++++++++-
+>   2 files changed, 92 insertions(+), 88 deletions(-)
 
-diff --git a/hw/watchdog/tm4c123_watchdog.c b/hw/watchdog/tm4c123_watchdog.c
-new file mode 100644
-index 0000000000..ea0a41f3c0
---- /dev/null
-+++ b/hw/watchdog/tm4c123_watchdog.c
-@@ -0,0 +1,297 @@
-+/*
-+ * TM4C123 Watchdog Timers
-+ *
-+ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/watchdog/tm4c123_watchdog.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/qdev-clock.h"
-+#include "sysemu/runstate.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/nmi.h"
-+#include "trace.h"
-+
-+#define LOG(mask, fmt, args...) qemu_log_mask(mask, "%s: " fmt, __func__, ## args)
-+#define READONLY LOG(LOG_GUEST_ERROR, "0x%"HWADDR_PRIx" is a readonly field\n.", addr)
-+
-+static bool locked;
-+
-+static void tm4c123_wdt_expired(void *opaque)
-+{
-+    TM4C123WatchdogState *s = opaque;
-+    /*if this is the first timeout/the ris is not cleared */
-+    if (!test_bit(0, (const unsigned long *)&s->wdt_mis)) {
-+        set_bit(0, (unsigned long *)&s->wdt_mis);
-+        nmi_monitor_handle(0, NULL);
-+        qemu_irq_pulse(s->irq);
-+    } else {
-+        if (test_bit(1, (const unsigned long *)&s->wdt_ctl))
-+            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-+        else {
-+            nmi_monitor_handle(0, NULL);
-+            qemu_irq_pulse(s->irq);
-+        }
-+    }
-+}
-+
-+static bool wdt_clock_enabled(TM4C123SysCtlState *s, hwaddr addr)
-+{
-+    switch (addr) {
-+        case WDT_0:
-+            return s->sysctl_rcgcwd & (1 << 0);
-+            break;
-+        case WDT_1:
-+            return s->sysctl_rcgcwd & (1 << 1);
-+            break;
-+    }
-+    return false;
-+}
-+
-+static void tm4c123_wdt_reset(DeviceState *dev)
-+{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(dev);
-+
-+    s->wdt_load = 0xFFFFFFFF;
-+    s->wdt_value = 0xFFFFFFFF;
-+    s->wdt_ctl = (s->mmio.addr == WDT_0 ? 0x00000000 : 0x80000000);
-+    s->wdt_icr = 0x00000000;
-+    s->wdt_ris = 0x00000000;
-+    s->wdt_mis = 0x00000000;
-+    s->wdt_test = 0x00000000;
-+    s->wdt_lock = 0x00000000;
-+    s->wdt_per_id4 = 0x00000000;
-+    s->wdt_per_id5 = 0x00000000;
-+    s->wdt_per_id6 = 0x00000000;
-+    s->wdt_per_id7 = 0x00000000;
-+    s->wdt_per_id0 = 0x00000005;
-+    s->wdt_per_id1 = 0x00000018;
-+    s->wdt_per_id2 = 0x00000018;
-+    s->wdt_per_id3 = 0x00000001;
-+    s->wdt_pcell_id0 = 0x0000000D;
-+    s->wdt_pcell_id1 = 0x000000F0;
-+    s->wdt_pcell_id2 = 0x00000006;
-+    s->wdt_pcell_id3 = 0x000000B1;
-+}
-+
-+static uint64_t tm4c123_wdt_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    TM4C123WatchdogState *s = opaque;
-+
-+    if (!wdt_clock_enabled(s->sysctl, s->mmio.addr)) {
-+        hw_error("Watchdog timer module clock is not enabled");
-+    }
-+
-+    switch (addr) {
-+        case WDT_LOAD:
-+            return s->wdt_load;
-+        case WDT_VALUE:
-+            return ptimer_get_count(s->timer);
-+        case WDT_CTL:
-+            return s->wdt_ctl;
-+        case WDT_ICR:
-+            return s->wdt_icr;
-+        case WDT_RIS:
-+            return s->wdt_ris;
-+        case WDT_MIS:
-+            return s->wdt_mis;
-+        case WDT_TEST:
-+            return s->wdt_test;
-+        case WDT_LOCK:
-+            return s->wdt_lock;
-+        case WDT_PER_ID4:
-+            return s->wdt_per_id4;
-+        case WDT_PER_ID5:
-+            return s->wdt_per_id5;
-+        case WDT_PER_ID6:
-+            return s->wdt_per_id6;
-+        case WDT_PER_ID7:
-+            return s->wdt_per_id7;
-+        case WDT_PER_ID0:
-+            return s->wdt_per_id0;
-+        case WDT_PER_ID1:
-+            return s->wdt_per_id1;
-+        case WDT_PER_ID2:
-+            return s->wdt_per_id2;
-+        case WDT_PER_ID3:
-+            return s->wdt_per_id3;
-+        case WDT_PCELL_ID0:
-+            return s->wdt_pcell_id0;
-+        case WDT_PCELL_ID1:
-+            return s->wdt_pcell_id1;
-+        case WDT_PCELL_ID2:
-+            return s->wdt_pcell_id2;
-+        case WDT_PCELL_ID3:
-+            return s->wdt_pcell_id3;
-+        default:
-+            LOG(LOG_GUEST_ERROR, "Bad address 0x%"HWADDR_PRIx"\n", addr);
-+    }
-+    return 0;
-+}
-+
-+static void tm4c123_wdt_write(void *opaque, hwaddr addr, uint64_t val64, unsigned int size)
-+{
-+    TM4C123WatchdogState *s = opaque;
-+    uint32_t val32 = val64;
-+
-+    trace_tm4c123_wdt_write(addr, val64);
-+    if (!wdt_clock_enabled(s->sysctl, s->mmio.addr)) {
-+        hw_error("Watchdog module clock is not enabled");
-+    }
-+
-+    switch (addr) {
-+        case WDT_LOAD:
-+            s->wdt_load = val32;
-+            locked = true;
-+            s->wdt_ctl |= WDT_CTL_INTEN;
-+            ptimer_transaction_begin(s->timer);
-+            ptimer_set_count(s->timer, s->wdt_load);
-+            ptimer_set_limit(s->timer, s->wdt_load, 1);
-+            ptimer_run(s->timer, 0);
-+            ptimer_transaction_commit(s->timer);
-+            break;
-+        case WDT_VALUE:
-+            READONLY;
-+            break;
-+        case WDT_CTL:
-+            s->wdt_ctl = val32;
-+            break;
-+        case WDT_ICR:
-+            ptimer_transaction_begin(s->timer);
-+            ptimer_set_limit(s->timer, s->wdt_load, 1);
-+            ptimer_transaction_commit(s->timer);
-+            clear_bit(0, (unsigned long *)&s->wdt_ris);
-+            clear_bit(0, (unsigned long *)&s->wdt_mis);
-+            s->wdt_icr = val32;
-+            break;
-+        case WDT_RIS:
-+            READONLY;
-+            break;
-+        case WDT_MIS:
-+            READONLY;
-+            break;
-+        case WDT_TEST:
-+            s->wdt_test = val32;
-+            break;
-+        case WDT_LOCK:
-+            /* The actual hardware never locks the module */
-+            if (val32 == UNLOCK_VALUE) {
-+                locked = false;
-+                s->wdt_lock = 0;
-+            }
-+            break;
-+        case WDT_PER_ID4:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID5:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID6:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID7:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID0:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID1:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID2:
-+            READONLY;
-+            break;
-+        case WDT_PER_ID3:
-+            READONLY;
-+            break;
-+        case WDT_PCELL_ID0:
-+            READONLY;
-+            break;
-+        case WDT_PCELL_ID1:
-+            READONLY;
-+            break;
-+        case WDT_PCELL_ID2:
-+            READONLY;
-+            break;
-+        case WDT_PCELL_ID3:
-+            READONLY;
-+            break;
-+        default:
-+            LOG(LOG_GUEST_ERROR, "Bad address 0x%"HWADDR_PRIx"\n", addr);
-+    }
-+}
-+
-+const struct MemoryRegionOps tm4c123_wdt_ops = {
-+    .read = tm4c123_wdt_read,
-+    .write = tm4c123_wdt_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static void tm4c123_wdt_init(Object *obj)
-+{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(obj);
-+
-+    s->wdt_clock = qdev_init_clock_in(DEVICE(s), "wdt_clock", NULL, NULL, 0);
-+
-+    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
-+    memory_region_init_io(&s->mmio, obj, &tm4c123_wdt_ops, s, TYPE_TM4C123_WATCHDOG, 0xFFF);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-+}
-+
-+static void tm4c123_wdt_realize(DeviceState *dev, Error **errp)
-+{
-+    TM4C123WatchdogState *s = TM4C123_WATCHDOG(dev);
-+    qdev_connect_clock_in(dev, "wdt_clock", qdev_get_clock_out(DEVICE(s->sysctl), "outclk"));
-+
-+    s->timer = ptimer_init(tm4c123_wdt_expired, s,
-+                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
-+                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
-+
-+    ptimer_transaction_begin(s->timer);
-+    ptimer_set_period_from_clock(s->timer, s->wdt_clock, 1);
-+    ptimer_set_limit(s->timer, 0xFFFFFFFF, 0);
-+    ptimer_transaction_commit(s->timer);
-+}
-+
-+static void tm4c123_wdt_class_init(ObjectClass *kclass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(kclass);
-+    dc->realize = tm4c123_wdt_realize;
-+    dc->reset = tm4c123_wdt_reset;
-+}
-+
-+static const TypeInfo tm4c123_wdt_info = {
-+    .name = TYPE_TM4C123_WATCHDOG,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TM4C123WatchdogState),
-+    .instance_init = tm4c123_wdt_init,
-+    .class_init = tm4c123_wdt_class_init,
-+};
-+
-+static void tm4c123_wdt_register_types(void)
-+{
-+    type_register_static(&tm4c123_wdt_info);
-+}
-+
-+type_init(tm4c123_wdt_register_types)
-diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
-index 2739570652..802aed4a6f 100644
---- a/hw/watchdog/trace-events
-+++ b/hw/watchdog/trace-events
-@@ -1,5 +1,8 @@
- # See docs/devel/tracing.rst for syntax documentation.
- 
-+# tm4c123_wdt.c
-+tm4c123_wdt_write(uint64_t offset, uint64_t data) "TM4C123-WDT Write: [ Offset 0x%" PRIx64 " - Data 0x%" PRIx64 "]"
-+
- # allwinner-wdt.c
- allwinner_wdt_read(uint64_t offset, uint64_t data, unsigned size) "Allwinner watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- allwinner_wdt_write(uint64_t offset, uint64_t data, unsigned size) "Allwinner watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-diff --git a/include/hw/watchdog/tm4c123_watchdog.h b/include/hw/watchdog/tm4c123_watchdog.h
-new file mode 100644
-index 0000000000..2621b5d805
---- /dev/null
-+++ b/include/hw/watchdog/tm4c123_watchdog.h
-@@ -0,0 +1,97 @@
-+/*
-+ * TM4C123 Watchdog Timers
-+ *
-+ * Copyright (c) 2023 Mohamed ElSayed <m.elsayed4420@gmail.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+
-+#ifndef HW_ARM_TM4C123_WATCHDOG_H
-+#define HW_ARM_TM4C123_WATCHDOG_H
-+
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+#include "hw/misc/tm4c123_sysctl.h"
-+#include "hw/ptimer.h"
-+
-+#define WDT_0 0x40000000
-+#define WDT_1 0x40001000
-+
-+#define WDT_LOAD 0x000
-+#define WDT_VALUE 0x004
-+#define WDT_CTL 0x008
-+#define WDT_ICR 0x00C
-+#define WDT_RIS 0x010
-+#define WDT_MIS 0x014
-+#define WDT_TEST 0x418
-+#define WDT_LOCK 0xC00
-+#define WDT_PER_ID4 0xFD0
-+#define WDT_PER_ID5 0xFD4
-+#define WDT_PER_ID6 0xFD8
-+#define WDT_PER_ID7 0xFDC
-+#define WDT_PER_ID0 0xFE0
-+#define WDT_PER_ID1 0xFE4
-+#define WDT_PER_ID2 0xFE8
-+#define WDT_PER_ID3 0xFEC
-+#define WDT_PCELL_ID0 0xFF0
-+#define WDT_PCELL_ID1 0xFF4
-+#define WDT_PCELL_ID2 0xFF8
-+#define WDT_PCELL_ID3 0xFFC
-+
-+#define UNLOCK_VALUE 0x1ACCE551
-+
-+#define WDT_CTL_INTEN (1 << 0)
-+#define WDT_CTL_INTTYPE (1 << 2)
-+
-+#define TYPE_TM4C123_WATCHDOG "tm4c123-watchdog"
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(TM4C123WatchdogState, TM4C123_WATCHDOG)
-+
-+struct TM4C123WatchdogState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion mmio;
-+    qemu_irq irq;
-+    struct ptimer_state *timer;
-+    TM4C123SysCtlState* sysctl;
-+
-+    uint32_t wdt_load;
-+    uint32_t wdt_value;
-+    uint32_t wdt_ctl;
-+    uint32_t wdt_icr;
-+    uint32_t wdt_ris;
-+    uint32_t wdt_mis;
-+    uint32_t wdt_test;
-+    uint32_t wdt_lock;
-+    uint32_t wdt_per_id4;
-+    uint32_t wdt_per_id5;
-+    uint32_t wdt_per_id6;
-+    uint32_t wdt_per_id7;
-+    uint32_t wdt_per_id0;
-+    uint32_t wdt_per_id1;
-+    uint32_t wdt_per_id2;
-+    uint32_t wdt_per_id3;
-+    uint32_t wdt_pcell_id0;
-+    uint32_t wdt_pcell_id1;
-+    uint32_t wdt_pcell_id2;
-+    uint32_t wdt_pcell_id3;
-+
-+    Clock* wdt_clock;
-+};
-+
-+#endif
--- 
-2.34.1
+I'm not keen on this.  First, because we have not yet disentangled vfp_helper.c from the 
+bits required by KVM, so to move the rest into tcg/.  Second because large ifdef blocks 
+are a sign that something wants splitting anyway.
 
+Perhaps tcg/vfp_a64_helper.c?  There's probably a better name we could use...
+
+
+r~

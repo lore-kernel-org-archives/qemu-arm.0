@@ -1,113 +1,108 @@
-Received: by 2002:a17:906:4810:b0:965:a47e:1721 with SMTP id w16csp945874ejq;
-        Wed, 17 May 2023 02:06:36 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7I5d83e9O/H6LMj+6PyJcIUccaZDKCJszG8B2Gmuf1XJMLFNPoAlvs2W3kUlmk1G8tPQsC
-X-Received: by 2002:ad4:5ecf:0:b0:5ef:4233:ee7a with SMTP id jm15-20020ad45ecf000000b005ef4233ee7amr64822403qvb.2.1684314396094;
-        Wed, 17 May 2023 02:06:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1684314396; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp202936ejt;
+        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4PYmSmSwVi43FLK1bNfJPtEvZYmcm8oyinTdq3pNLPJR11tWMyl4elcJw8KOZEDoKzHteR
+X-Received: by 2002:a05:6214:21c1:b0:62d:e3c1:b884 with SMTP id d1-20020a05621421c100b0062de3c1b884mr14274138qvh.16.1687259907444;
+        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687259907; cv=none;
         d=google.com; s=arc-20160816;
-        b=xfw5Aa0Tf0WfgD6rYLzC05GqXiSygLZRiOWpXXuy+1vH/Vz48UfOGK29CczydWnUmk
-         OXF6W+LAbbrTEVAwUK0VUgIka9bBW52f0GdJp8CDfcGKmsc7CWcrKYzTfzZRGD2p5hNA
-         NJmpEWXM43YJOjE/J1piDxzhsxm9FvVEa4SG8an/bbrQ3oC0J6KmqUO8vdQ8C7LbtbJ5
-         H00p3SbTIefje30H34y5+hwGghB3oOwT9qgPCrGVq5S/EzdMXHMdZm5FK8PIyt4/oi7D
-         lE5d1D7TV7Dk9NpNZy/nT31ctlGMqk9M6y5mZuBvyasN+Kgqg1ZRkehkPafxifs7OENX
-         uo0A==
+        b=oJgpCGr7mjTVDGsH9f0FygDUEciSpDu4nO8rqAukptZrm6Qd38vrZS6PfX1mvx3FhP
+         rISpDIQdXU1BcEtVbofM+inGMEhygWwyYnM/JJhS5SzNH6Xk3Sflu8nYgs9MJ+Ylim6z
+         knicEaiNQ/IhuVC/LSrGnA9NDTbpI1Nf0guud2i00mDFqd2r0oBX23BBhAOitBQCNIaB
+         YC+n19RiMbRtgZEFYXt8kshcb0+cuBqvpI0l5qd7WGkGT8/U044ow8NPhqYExZRUt3IC
+         2Rzk6YrUfZOsEFPGrL2WNkMiVHWFlYpLrv5JzWho2RdJi9joD6XXF7NPxZigjCCO0v+W
+         KJxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=hzzhUu6NqXhYwAMhgp72/3S4BHobstJjZ3S9dtyR02U=;
-        b=cIV1pxcs/fEr54fNOHfzpvbMzhzXRXgM0/nMfeT+xHw9dRqUIm+28WvIO24ozq5tyH
-         yXoHz9iCW9K/9qfYh1FJsfb6pfYaAvvPqQKhB5Z3X6E8YFX/XetDgNpnpFUVjDM61kzx
-         KhIPHfdLa2U+yzDZscI7F0tx13ih1OBe+qfi7+tLufNQkmJAjz+o34c9+9T6kExD9PZI
-         XKsIg/0wBCjMQwuPZTqPva28ui5qsOwd2wUN8M0UhTbDfuJherm0OhgMPf80tJA8NayN
-         IqcnHtlyay6oa+SvG03jcj7WzZylOkuWBzV+ms1A23Rflj+dviOFzjqkX/RdBDGJegDl
-         /JrA==
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:dkim-signature;
+        bh=dG5Rc0PCllhhaYpBxMghZWbAcodEUEjgv6iCawS3ORM=;
+        b=hud6nmkyozEPia6ikaM1goOKFfPhNO5XYcGGPAbT417Q/qiCSSWvtxpEmRGGNNsnvI
+         aeYn3Wa7+1dJmZxkWroIauMxqDMF3eiXagu4Hdfc9NhcqsKhty9LSPvSLUCErPV5iS9h
+         bit/RhSOtvtT8D9A096jnn2E84gkxu4sD6vSEv1MOFpX7bbefcdJLBChmng889/6Xl/k
+         ae+mduI8FXri984dRu5WWGI3I7Hlr7kX8kecIJE6NLcMqwbhaEnyyBznfIsfrT0vUQ2X
+         yzqWbTt4efCkj29jNBTTpL+YLjrAgjV4n5OVEY90NsCUQ0KTFosP9keRx7u+RALTBBUC
+         Wbpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gefh7voe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=c2ILi5ag;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jl10-20020ad45e8a000000b0062126972463si13174987qvb.417.2023.05.17.02.06.35
+        by mx.google.com with ESMTPS id 10-20020a05621420ea00b005adb460bc9bsi701000qvk.412.2023.06.20.04.18.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 May 2023 02:06:36 -0700 (PDT)
+        Tue, 20 Jun 2023 04:18:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Gefh7voe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ynddal.dk header.s=sig1 header.b=c2ILi5ag;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1pzD6o-0007Bh-Jz; Wed, 17 May 2023 05:06:10 -0400
+	id 1qBZMm-00037V-Fs; Tue, 20 Jun 2023 07:17:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pzD6n-0007BR-6i
- for qemu-arm@nongnu.org; Wed, 17 May 2023 05:06:09 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1pzD6k-0005Dg-8V
- for qemu-arm@nongnu.org; Wed, 17 May 2023 05:06:08 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-306f2b42a86so288818f8f.3
- for <qemu-arm@nongnu.org>; Wed, 17 May 2023 02:06:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684314364; x=1686906364;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=hzzhUu6NqXhYwAMhgp72/3S4BHobstJjZ3S9dtyR02U=;
- b=Gefh7voe1sJKpFJinwFGm2QGHuj0q13Vm0WdTR7d0xpk8EBshVh8rbkdkQD43nKcvG
- qaQBkmZ6kOqOSH0xnGGq4opMoTWnPPKAEqf1g8Vo4yi8FqinRH0A/sSaI2hIT5H4HnX/
- QDGG9Ye74zcDvuH5ydC0it8O5bDco8WvidOYhy8jJ3vEgRqQ8LG8SZ+tNQSy6P8Ol4Dv
- cgWED9g12CK7Eb4g/LtQcSpTjhUNqgL4AlTNa2vBrSOa/tMYlceUMc/FyXfxAIjYH6eg
- Euv1+f65zFnPb00yr6hGpTxNq0JFsWyh73Tg151OFfRWL9G82XiSYYmCq9ZK//n0nk+Y
- 3+CA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684314364; x=1686906364;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hzzhUu6NqXhYwAMhgp72/3S4BHobstJjZ3S9dtyR02U=;
- b=YPFwhXmQPETUWU5l9UYtIE6VsFZH0MprWSXX4oIxyd7D81P4bp4INH+7ypqHoJBJK0
- R1D/69YXqgSrRTKcKO40CstcugxnnWWlkEeEwZmfVH2p1uxnI1y+WmO3LIYzEa6hOWKZ
- XdMPBd/DR08CiLnB2YMlko0vTpvq6skq1++M/Lj91Esjd2OZhgQdUCjMY0qYAmPfUGgu
- F2zlrS+ZRk/+1cEE1H8/72m6WLoKj+bup7zRySSCBRf0GuMmXndkCP50OJzDW1DL/3Pr
- 945ou2YHNwkxe+Y0IU40vUM3qj0Ed4v+N6Q1bog+6uLgqq7QDv1jiyGDSwehYSejt9Rd
- rVHQ==
-X-Gm-Message-State: AC+VfDykGaTIAt6BDLWKSEyBCuzvf+oeopYog3CCUgUsDauCgi8fsmV5
- sX3DW7eMcVOOuZvuvfRO9r+3XA==
-X-Received: by 2002:a5d:6ac4:0:b0:309:42f3:4c3a with SMTP id
- u4-20020a5d6ac4000000b0030942f34c3amr93181wrw.32.1684314363783; 
- Wed, 17 May 2023 02:06:03 -0700 (PDT)
-Received: from myrica (5750a5b3.skybroadband.com. [87.80.165.179])
- by smtp.gmail.com with ESMTPSA id
- u16-20020adff890000000b00307bbbecd29sm2126674wrp.62.2023.05.17.02.06.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 May 2023 02:06:03 -0700 (PDT)
-Date: Wed, 17 May 2023 10:06:06 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, richard.henderson@linaro.org
-Subject: Re: [PATCH v4 00/10] Add stage-2 translation for SMMUv3
-Message-ID: <20230517090606.GB1415802@myrica>
-References: <20230516203327.2051088-1-smostafa@google.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230516203327.2051088-1-smostafa@google.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBZMk-00036X-UC
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 07:17:42 -0400
+Received: from mr85p00im-zteg06021901.me.com ([17.58.23.194])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mads@ynddal.dk>) id 1qBZMj-0006jl-0P
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 07:17:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ynddal.dk; s=sig1;
+ t=1687259859; bh=dG5Rc0PCllhhaYpBxMghZWbAcodEUEjgv6iCawS3ORM=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
+ b=c2ILi5ag640YDiy22KuJOQ5LPxYFNglWipXYk2DIU1M0Gk00J9HGiztddMYbweNnm
+ gkoTUP8D1ZPfQcndbDF/vMoqsK09P3Xv3XMWyH1KdfsD47vN327RfdhsZhNtx3Rusm
+ nKZqGEGuyo8LoLQf0zZIJCAJzOW9CxwPGG0GFGxpr9RLT9bLfSyDuWsjKPNBmqzcUF
+ YYOTS537ivl2I6UGkEW42m2EJN69+eUARy5eSSyQ4WeAZGPVVe1gR+mKILU6kKLI90
+ +sKqifZXXiWYTZ6ZyhEzN4z96n8cWiVf1vQ5mWqwO1DWotB2UZxcMJfFx2zLtKc2+F
+ d5AxNT8WSuPBQ==
+Received: from smtpclient.apple (mr38p00im-dlb-asmtp-mailmevip.me.com
+ [17.57.152.18])
+ by mr85p00im-zteg06021901.me.com (Postfix) with ESMTPSA id 38D4774006D;
+ Tue, 20 Jun 2023 11:17:36 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.600.7\))
+Subject: Re: [PATCH 00/12] Introduce new vmapple machine type
+From: Mads Ynddal <mads@ynddal.dk>
+In-Reply-To: <20230614224038.86148-1-graf@amazon.com>
+Date: Tue, 20 Jun 2023 13:17:23 +0200
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ "open list:ARM cores" <qemu-arm@nongnu.org>,
+ Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Transfer-Encoding: 7bit
+Message-Id: <ACE1A94A-4CB8-4B23-B09A-D2B1685E402E@ynddal.dk>
+References: <20230614224038.86148-1-graf@amazon.com>
+To: Alexander Graf <graf@amazon.com>
+X-Mailer: Apple Mail (2.3731.600.7)
+X-Proofpoint-GUID: uXnx1zlMLQ7Nu4NAVJoZNbwry9ZOmjvX
+X-Proofpoint-ORIG-GUID: uXnx1zlMLQ7Nu4NAVJoZNbwry9ZOmjvX
+X-Proofpoint-Virus-Version: =?UTF-8?Q?vendor=3Dfsecure_engine=3D1.1.170-22c6f66c430a71ce266a39bfe25bc?=
+ =?UTF-8?Q?2903e8d5c8f:6.0.138,18.0.572,17.11.62.513.0000000_definitions?=
+ =?UTF-8?Q?=3D2020-02-14=5F11:2020-02-14=5F02,2020-02-14=5F11,2021-12-02?=
+ =?UTF-8?Q?=5F01_signatures=3D0?=
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxscore=0 adultscore=0
+ spamscore=0 bulkscore=0 clxscore=1030 suspectscore=0 malwarescore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2306200101
+Received-SPF: pass client-ip=17.58.23.194; envelope-from=mads@ynddal.dk;
+ helo=mr85p00im-zteg06021901.me.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,16 +118,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bvJqAf+xQT/0
+X-TUID: o5t/qjcf6JWs
 
-On Tue, May 16, 2023 at 08:33:07PM +0000, Mostafa Saleh wrote:
-> This patch series can be used to run Linux pKVM SMMUv3 patches (currently on the list)
-> which controls stage-2 (from EL2) while providing a paravirtualized
-> interface the host(EL1)
-> https://lore.kernel.org/kvmarm/20230201125328.2186498-1-jean-philippe@linaro.org/
 
-I've been using these patches for pKVM, and also tested the normal stage-2
-flow with Linux and VFIO
+> On 15 Jun 2023, at 00.40, Alexander Graf <graf@amazon.com> wrote:
+> 
+> This patch set introduces a new ARM and HVF specific machine type
+> called "vmapple". It mimicks the device model that Apple's proprietary
+> Virtualization.Framework exposes, but implements it in QEMU.
+> 
+> With this new machine type, you can run macOS guests on Apple Silicon
+> systems via HVF. To do so, you need to first install macOS using
+> Virtualization.Framework onto a virtual disk image using a tool like
+> macosvm (https://github.com/s-u/macosvm)
+> 
+>  $ macosvm --disk disk.img,size=32g --aux aux.img \
+>            --restore UniversalMac_12.0.1_21A559_Restore.ipsw vm.json
+> 
+> Then, extract the ECID from the installed VM:
+> 
+>  $ cat "$DIR/macosvm.json" | python3 -c                                 \
+>  'import json,sys;obj=json.load(sys.stdin);print(obj["machineId"]) |    \
+>  base64 -d | plutil -extract ECID raw -
 
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Beware, that the file will be called 'vm.json' and DIR is undefined following
+the previous line. Also, it's missing a single-quote at the end of
+`["machineId"])`.
+
+> In addition, cut off the first 16kb of the aux.img:
+> 
+>  $ dd if=aux.img of=aux.img.trimmed bs=$(( 0x4000 )) skip=1
+> 
+> Now, you can just launch QEMU with the bits generated above:
+> 
+>  $ qemu-system-aarch64 -serial mon:stdio                                \
+>  -m 4G                                                                  \
+>  -M vmapple,uuid=6240349656165161789                                    \
+>  -bios /Sys*/Lib*/Fra*/Virtualization.f*/R*/AVPBooter.vmapple2.bin      \
+>  -pflash aux.img.trimmed                                                \
+>  -pflash disk.img                                                       \
+>  -drive file=disk.img,if=none,id=root                                   \
+>  -device virtio-blk-pci,drive=root,x-apple-type=1                       \
+>  -drive file=aux.img.trimmed,if=none,id=aux                             \
+>  -device virtio-blk-pci,drive=aux,x-apple-type=2                        \
+>  -accel hvf -no-reboot
+
+Just for clarity, I'd add that the 'vmapple,uuid=...' has to be set to the
+ECID the previous step.
+
+You haven't defined a display, but I'm not sure if that is on purpose to
+show a minimal setup. I had to add '-display sdl' for it to fully work.
+
+> There are a few limitations with this implementation:
+> 
+>  - Only runs on macOS because it relies on
+>    ParavirtualizesGraphics.Framework
+>  - Something is not fully correct on interrupt delivery or
+>    similar - the keyboard does not work
+>  - No Rosetta in the guest because we lack the private
+>    entitlement to enable TSO
+
+Would it be possible to mitigate the keyboard issue using an emulated USB
+keyboard? I tried poking around with it, but with no success.
+
+> Over time, I hope that some of the limitations above could cease to exist.
+> This device model would enable very nice use cases with KVM on an Asahi
+> Linux device.
+
+
 

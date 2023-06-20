@@ -1,112 +1,112 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp114418ejt;
-        Tue, 20 Jun 2023 00:20:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4ZLNRVI7zsB3fjvbavrx5lxY/V470fod3Iqy2cjgjTf8jspYwjAqZ0dr4m105mjE95TfP/
-X-Received: by 2002:a05:6214:d8b:b0:619:a7e3:99e2 with SMTP id e11-20020a0562140d8b00b00619a7e399e2mr15868279qve.17.1687245613021;
-        Tue, 20 Jun 2023 00:20:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687245613; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp151992ejt;
+        Tue, 20 Jun 2023 02:07:28 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4PcqYtr5TtNJSz6cTks3u8px2nlOsoo6P2u1rwWAvOW2jE4bU9Jxq9K17GVvaRD0J63yyl
+X-Received: by 2002:a05:620a:6648:b0:763:b1b5:c610 with SMTP id qg8-20020a05620a664800b00763b1b5c610mr1016655qkn.3.1687252048631;
+        Tue, 20 Jun 2023 02:07:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687252048; cv=none;
         d=google.com; s=arc-20160816;
-        b=mJTngIfxAqcmS8CVBOYLcsdEJ2gaHpCJ8HKSl4hC6+QyUUN+mdWo0OjA0eOqCh0THU
-         9wZraZKCs+TsG9kjmtZ2p1vpxTPYAqhRrW5aJTZ8yOPFF/duxpKlKfMERBoVLPDF17Kq
-         7P6xCtH3gYTwsCk/bJqEPFXNseMlI+cK7ABILDrK7AdS/gdzyokMcxxTLlE//lbMJPgu
-         jrRIbGccsm1bbWVVgqGByxPnhBiwE+V71BiraESCyo0Oe6d5pb/Ylh2hEAusx2WzaPEu
-         UbAoDkEDxOojnpRhcnNj1SCwh0oxUfLUiN+n5LqVgktUMX/tCnHjhtqwA2rmnCbY3mhB
-         BJXQ==
+        b=Vi9rQINxed3f5EdMoIUx9A5w8R61J0LMXeP62aMCWatmTkEY5wnTvLZAeVxdcGba69
+         9+K3uxgNMFOQEq6rJlXl7hcrIg7I25ZpPdsByNrIwqQXA4ovec+0Xh+oFfX1u/bMeg+o
+         4+Cx9nKyQ2zO/7s5jfM8dBez97qUxwh3W/dzLH5SFpdwI0W2sWw6xy4sCCk+0fML3KAq
+         QnuUfk1fliw5zlY1RfLMXV1Y+AJxuGjh/ZpIoCHwGOFIBoYSXvAWkB9YD/GSQ85Laesb
+         V8QolF4reqs1QAXkfE08eXcDANQTgJOXGXYNEZBdi/WAW+R89Yh3UlZ14OPaNqv4E29v
+         jbAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=yhtF8z0ppmNV1niZXvzfL2WVmvMTDQ7j4oO0+pxYj2o=;
-        b=fmd4dNJTVLfCOBzh5I5QXvRL3iBLBzWoW6JIZdxkMv860wa7fR/KcoE44jNbkdN2JE
-         aXrchPtiu8ufH9F7WNgUO83vQRoPxNmCYPEmvfXKGDw3Y76VOhY3d9jX6fjIAI583KBa
-         8F8GG2bIoJ0EGnyRZZbkWd2+GvfKFTxo8s+KjZ5sLQfcKP2ddmEeVR+LHdZTRWIsmCGK
-         52ZFLVS8YztIC2Zg8yer3ZUQAHSh8HaHxDwVQnBYWk+G/pMrndY1MkJZMTBwd8e8Ju9K
-         HugKLMzr0WzOhk/6evoTGfToygAmuZULwWYAUo/Y4wjKpaRr+KD+JHbP+rg4bfbkRr/w
-         zeIw==
+        bh=uEXy/sFbNilZkusZAAfg0sxo7ANWRwlcWgIGsfEGbpE=;
+        b=oLTR3BXiO58YOpekz64QapUfKmDtOqja9Nc3LWmyyvwfzV4ijjuCRE09EftEQEY1bq
+         6vBSrfSP2qFGRiopJEeJTqDNDNawAVCJJc3V8muQmilGqHURqWUMfHvJAnnkdAfbLT6U
+         dqBW40hn6xnVclyX/j7MITjdmU3QaG8dCgOwZFCpOE7LSswp/hed/8yfLnHaDqmj3Mdd
+         gDmpOpz3m0wID/zfIz5dzPXeCwqky22L7oMAjgy1rFG/jKANZKj0gIKVTmRhx3k+66Uj
+         nyVURMhMRykuI+JPnStTNB8IJws+yhEZaiGyFMRegCjCHjwR0US9/3PyBWhToA6gwz76
+         R/bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G3D6/8sC";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ECrUITd9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r2-20020a05620a03c200b0075c9e048b18si569800qkm.679.2023.06.20.00.20.12
+        by mx.google.com with ESMTPS id z23-20020ae9c117000000b00761fae866b1si644592qki.0.2023.06.20.02.07.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jun 2023 00:20:13 -0700 (PDT)
+        Tue, 20 Jun 2023 02:07:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="G3D6/8sC";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ECrUITd9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBVej-0005Or-FP; Tue, 20 Jun 2023 03:20:01 -0400
+	id 1qBXKJ-00010B-OI; Tue, 20 Jun 2023 05:07:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBVeg-0005Le-LV
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 03:19:59 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ id 1qBXKG-0000zI-8k
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 05:07:00 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBVec-0006OV-On
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 03:19:58 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-970028cfb6cso694620466b.1
- for <qemu-arm@nongnu.org>; Tue, 20 Jun 2023 00:19:50 -0700 (PDT)
+ id 1qBXKD-0007qE-ST
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 05:06:59 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-51a4088c4ebso4164029a12.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Jun 2023 02:06:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687245588; x=1689837588;
+ d=linaro.org; s=google; t=1687252016; x=1689844016;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yhtF8z0ppmNV1niZXvzfL2WVmvMTDQ7j4oO0+pxYj2o=;
- b=G3D6/8sCdpH5X6/65wwCvqF8KIdmcA8t+t7V0YCw4Ei/tCNIzWtVBWid11gEbUaV4e
- xkiuZQdzx9GTxTl6qKyq4qP8DIZek3zEmV8d0ax5LrrfyvoPta3MVf0BYm/G00XSLXl+
- NXLNQTBrSwSivKk+jo2vI9ciYhDBzhvBQYoaNhDd89qlzJjpRga5OqXVyKkrcIUJwt0Q
- 2KVNNGBPARfkdDaCE5vNMU/KicUiuWs4rnGgdurTUM07uJf/cLcGJO7iU6Gy6Z2INhQA
- qofF4BaaERItmyvhkE9yfE+Rv0EVVd2rCmHogOr7EIeBt8W0WKUU/DLQudAogODK4Ozq
- 6qZw==
+ bh=uEXy/sFbNilZkusZAAfg0sxo7ANWRwlcWgIGsfEGbpE=;
+ b=ECrUITd9L5kwoLST9rrbIvbOCvORuaZuBCYN/cXF9mb0PViwibuE/YiRCL3yByQn87
+ w/j5WjS81wnEnrqMoVhxxp0XhE0ys32Aprz4PF7k3hMLG6kfkoCYSredIMFMiv/Vb6i0
+ HY6l3zWTrffuU0SLC+U+Peigoagx0zZfizFAO42Ovt41p13Pwfrj9y26G3hzPcCmPCd6
+ 0H+TDmukxVR71ZrxPa8x6ep0RSydP5Hnlg4BH69YPm+LbqrPkVIhOVt7BeQeqsju402B
+ 11z7NM+GIZyJhomKSgE97L9rG9fmcBu4b/bUVf6GyxUC7ZrVguku8VxMwRpZ4D+Ouv3K
+ aGYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687245588; x=1689837588;
+ d=1e100.net; s=20221208; t=1687252016; x=1689844016;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yhtF8z0ppmNV1niZXvzfL2WVmvMTDQ7j4oO0+pxYj2o=;
- b=QaruscG3GCJ8nRMhGPnaqodf7gjvcDVa2Pj3X16R3lnw7sTacU4LNmzy1Z/NYh0OMf
- JsPeIz8XD6iMETdeT0Yk6SS+Cj02ecSI6XY9vA94D+vyCDXkikm0MA1T8HShSvzbBFkX
- OHZCoQE/6XXtEsD4ERuAmP/PaH1g5G0fCBs0vYqOP3H5E/BJnKYAqmeb1bFgEsCS8V+G
- dWgXvpxVqJQttBbnHgXi7JYxN80FKlPRMvYw0ZZBzpe1vziPCEm6lRFZNMg357hMo/fW
- 9c0ECftkoGGaqA7yJEvP1YsXb0f0sqEtW/GNDnEte1tam6ECbckDZeMZNbbICtpAW5Ay
- DsWg==
-X-Gm-Message-State: AC+VfDwMQ7G6DnBaPPlUDMAdZZ4LE1NFyvFXFYB6fUQAMXvHakA++jYT
- HvdgdGZc7i2fqiQAktD2JjKaAg==
-X-Received: by 2002:a17:907:9621:b0:988:803d:24d9 with SMTP id
- gb33-20020a170907962100b00988803d24d9mr6884477ejc.22.1687245587764; 
- Tue, 20 Jun 2023 00:19:47 -0700 (PDT)
+ bh=uEXy/sFbNilZkusZAAfg0sxo7ANWRwlcWgIGsfEGbpE=;
+ b=fUa7slVCIxbrvwPqkN5abzkQFe7u5B5wovIGnfIhFF032QcnEQF5KM3d91UHnjWe4E
+ bbnA6F9U+pOacuuE/0kAwRUtPRwZL2IqH+aX6c7FxuX2v7IXWuppYJAFxrvLnL0GNo7w
+ gFRpkRD1QiTaghqkPtD7YuEMedFB5SYB0AHH/1Pe6OGLfQJ45tCJCKSgvTpgeLg7DqSH
+ nxQ2msHV+jJeMprGoZmiPmiL87rVr2eYy/fIcvFwGjtL4IlU2gdUXZtblqo+Q8w+MRdQ
+ uEVzqqUJo69LlA5vWHNmHtnbWzHG5M9luA9Sk91vm+L3o8qoia7kIoJpy1yY73Z5cHZL
+ swqQ==
+X-Gm-Message-State: AC+VfDyqI9cS8b8kwWrYnyqTfpuUfBEwET+kpOQHZq+A7cl43KZsZEOX
+ bghXaDtliNoO7yv6U6Xucv29eA==
+X-Received: by 2002:a17:906:da8a:b0:96f:e45f:92e9 with SMTP id
+ xh10-20020a170906da8a00b0096fe45f92e9mr10060744ejb.16.1687252016017; 
+ Tue, 20 Jun 2023 02:06:56 -0700 (PDT)
 Received: from [192.168.69.129] ([176.176.183.29])
  by smtp.gmail.com with ESMTPSA id
- bv24-20020a170906b1d800b00987cd2db33fsm824031ejb.131.2023.06.20.00.19.46
+ t4-20020a17090605c400b009663582a90bsm1019233ejt.19.2023.06.20.02.06.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Jun 2023 00:19:47 -0700 (PDT)
-Message-ID: <bd29541d-3458-821a-7c2d-baf3645ddcfd@linaro.org>
-Date: Tue, 20 Jun 2023 09:19:39 +0200
+ Tue, 20 Jun 2023 02:06:55 -0700 (PDT)
+Message-ID: <9de0430e-c74e-27fd-6f8a-c858a70fbba8@linaro.org>
+Date: Tue, 20 Jun 2023 11:06:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH] target/arm: Restructure has_vfp_d32 test
+Subject: Re: [PATCH v3 08/34] target/arm/tcg: Un-inline VFP translation helpers
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Mads Ynddal <mads@ynddal.dk>
-References: <20230619140216.402530-1-richard.henderson@linaro.org>
- <6222171f-13b6-cf5a-8431-eb68b4e8b764@linaro.org>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20230619154302.80350-1-philmd@linaro.org>
+ <20230619154302.80350-9-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <6222171f-13b6-cf5a-8431-eb68b4e8b764@linaro.org>
+In-Reply-To: <20230619154302.80350-9-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -128,90 +128,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a3onnQGsKuqg
+X-TUID: BBVVn9rjrPfI
 
-On 6/20/23 07:29, Philippe Mathieu-Daudé wrote:
-> On 19/6/23 16:02, Richard Henderson wrote:
->> One cannot test for feature aa32_simd_r32 without first
->> testing if AArch32 mode is supported at all.  This leads to
->>
->> qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
->>
->> for Apple M1 cpus.
->>
->> We already have a check for ARMv8-A never setting vfp-d32 true,
->> so restructure the code so that AArch64 avoids the test entirely.
->>
->> Reported-by: Mads Ynddal <mads@ynddal.dk>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/cpu.c | 28 +++++++++++++++-------------
->>   1 file changed, 15 insertions(+), 13 deletions(-)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 353fc48567..706dbd37b1 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -1402,25 +1402,27 @@ void arm_cpu_post_init(Object *obj)
->>        * KVM does not currently allow us to lie to the guest about its
->>        * ID/feature registers, so the guest always sees what the host has.
->>        */
->> -    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)
->> -        ? cpu_isar_feature(aa64_fp_simd, cpu)
->> -        : cpu_isar_feature(aa32_vfp, cpu)) {
->> -        cpu->has_vfp = true;
->> -        if (!kvm_enabled()) {
->> -            qdev_property_add_static(DEVICE(obj), &arm_cpu_has_vfp_property);
->> +    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->> +        if (cpu_isar_feature(aa64_fp_simd, cpu)) {
->> +            cpu->has_vfp = true;
->> +            cpu->has_vfp_d32 = true;
->> +            if (tcg_enabled() || qtest_enabled()) {
->> +                qdev_property_add_static(DEVICE(obj),
->> +                                         &arm_cpu_has_vfp_property);
->> +            }
->>           }
->> -    }
->> -
->> -    if (cpu->has_vfp && cpu_isar_feature(aa32_simd_r32, cpu)) {
->> -        cpu->has_vfp_d32 = true;
->> -        if (!kvm_enabled()) {
->> +    } else if (cpu_isar_feature(aa32_vfp, cpu)) {
->> +        cpu->has_vfp = true;
->> +        if (cpu_isar_feature(aa32_simd_r32, cpu)) {
->> +            cpu->has_vfp_d32 = true;
->>               /*
->>                * The permitted values of the SIMDReg bits [3:0] on
->>                * Armv8-A are either 0b0000 and 0b0010. On such CPUs,
->>                * make sure that has_vfp_d32 can not be set to false.
->>                */
->> -            if (!(arm_feature(&cpu->env, ARM_FEATURE_V8) &&
->> -                  !arm_feature(&cpu->env, ARM_FEATURE_M))) {
->> +            if ((tcg_enabled() || qtest_enabled())
->> +                && !(arm_feature(&cpu->env, ARM_FEATURE_V8)
->> +                     && !arm_feature(&cpu->env, ARM_FEATURE_M))) {
->>                   qdev_property_add_static(DEVICE(obj),
->>                                            &arm_cpu_has_vfp_d32_property);
->>               }
+On 6/19/23 17:42, Philippe Mathieu-Daudé wrote:
+> In order to restrict lookup_cp_reg() and set_rmode() helpers
+> to VFP translation, un-inline gen_lookup_cp_reg and gen_set /
+> gen_restore_rmode.
 > 
-> Shouldn't we also change:
-> 
-> -- >8 --
-> @@ -1431,7 +1431,7 @@ void arm_cpu_post_init(Object *obj)
-> 
->       if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
->           cpu->has_neon = true;
-> -        if (!kvm_enabled()) {
-> +        if (tcg_enabled() || qtest_enabled()) {
->               qdev_property_add_static(DEVICE(obj), &arm_cpu_has_neon_property);
->           }
->       }
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> 
-> ?
+>   target/arm/tcg/translate.h     | 22 +++-------------------
+>   target/arm/tcg/translate-vfp.c | 21 +++++++++++++++++++++
+>   2 files changed, 24 insertions(+), 19 deletions(-)
 
-Yes, I missed that, being just out of view.  :-)
+While set_rmode is vfp, lookup_cp_reg is not.
+However, you could uninline lookup_cp_reg to translate.c.
+
 
 r~
-
-

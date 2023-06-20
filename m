@@ -1,102 +1,101 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp308460ejt;
-        Tue, 20 Jun 2023 07:41:29 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6+jopB7H3zoKHSAH6+tZYsJUrk/uhMmDi9af6PwkxeK895mWTGCKUOam06UWvwEnF5Z3Vs
-X-Received: by 2002:a05:622a:1a0b:b0:3fd:e203:e698 with SMTP id f11-20020a05622a1a0b00b003fde203e698mr10046924qtb.14.1687272088712;
-        Tue, 20 Jun 2023 07:41:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687272088; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp427770ejt;
+        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Iyf9xRGKT/5eZCc0DFtKBs2AGlzDTu3goQn7GGys3ND5Q6EFodG6TmqRsv2C/ibbsiRF9
+X-Received: by 2002:a05:622a:130b:b0:3ff:2a34:1cef with SMTP id v11-20020a05622a130b00b003ff2a341cefmr4912453qtk.1.1687286010316;
+        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687286010; cv=none;
         d=google.com; s=arc-20160816;
-        b=i1hh74gcx+0p1oTTKMugcOx4pUktp4Fyw12puFzpQx/uRC4x1eL6UfVtqkCfoq3JhH
-         WQpL3NWjP5FdcxGJ3KIWnsr/30RGwn2MtSsOY8ENMa9kG6mFeLi7q+ZhIA8RTxCKzNPg
-         K2+ilGj3Ksh1Y3f9z/ADvpXH5qaOtz0eVrXIQ3xJB24fUrsDtg1j1Mjbm+1LAXNAoODh
-         rwPHI7GDN9OBXu9qdohGVjqzpDmoJsE4eMAFhd40sluOwLJPb0TXVOoDOKDnl6bza1/s
-         gmy1YMxXaU6hsywL2s1u/Y17O8eQVSYUJqOA3MVnioay07x1CqgX/syRhn/Q5HhqBYOK
-         spgA==
+        b=RO9eWMcZh+L/vfDZgxfH4Ob4iAEqE0wYH/5clrDdTNrYmwQmP4FBpFosXYdPOoQ3nt
+         xIAmPrdJ+l5GsFk0/UvjLRK/RlI7TJhwcEmvDP9JHeCVGVXCGT0FsmLygmqGaTEnAS9/
+         /LlTjmHkMaYZngIRtHbArXmmOiHO0WOfLNv8kJ/PSag8ffn0D/TwUNa80jf4awN36Amf
+         F/hBi1Wet4hMwwraaHkSiao0VjjeGCpj6NRhddlwAP1PlOroGWMNO859TYeg2HVf4uWg
+         irdUkznIkC3mJGWiTyRFRFIMHe+EFLgDfYgKQkwlLvv/pFJG7QQikcTvD5Ec2pebmLxI
+         5/Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=NS6iJj9ZYraYMqYtcqEbHnR62qF6mLsZRWuy0Yfoj5g=;
-        b=okK2bUzw1MZ3OLgZlactg8MbyDr126UFt5hP0LE0aE7OsA5t0tptkI8q3+NYCdlJ79
-         V0vpQCJdQAjZN6nSFmVehoOINxzzqgrL9zAXjRwAyHlkO1LHMnP6j7S0nnfseeROaFqe
-         VxrkmxX80ZN7SH4ZALBxBnWu1ECyLxgAJ3YcUn+4sLNhTiPuzF6GWEoCPihA2ufAprNk
-         5rs11nUoVu+8+mgpKmlRMCrCF/TGb347vpj+NKMHdrw3F04HCoaoVtPKm7/g53C49N6k
-         mkY+KRIFGwe3WGyUsM4xOgvaCnMIR6N82yjYIc+pll0sKFYkRtK71Z7oRjfRRILTrIzh
-         mDpA==
+        bh=x11f5g11vdxrx0fJe129Gy7Hy7yhV926S3geMwzS4Vo=;
+        b=XC/S+cxgIJHbZi1ZIIZLUulES6vZW9OeMHoTzLl7CyM1Vxw1aO48K4JuT8dzI4/JJ9
+         biPE2EZ+zzDFCMGKO+l0I/tQReJJPOjSQFucQjWDZVXbESsVqFJfheSuVTHxWSlSMXuS
+         Z7txHp8Y0wZ4hInmvjq5kqIWep0ekRS/Fu6kwyeeX1Swx2gGgvi49FXtQANUA+YPVPwu
+         O2ZGt7FLEnY30wBwHog5kYIffxlIX6lv8KMrz3QIk5iMYiOOKgtFNuo/+Xly/GncCeqt
+         mFUEj7wLrqCiPCHeTg3Iy6TKew/4VE+qyFjvepIM3NWditDfdKkyeveUXbhUErOmad5T
+         EJvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCSjE9Nu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iJ2nN8mo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c20-20020a05622a025400b003f525da7fe3si804332qtx.710.2023.06.20.07.41.28
+        by mx.google.com with ESMTPS id c22-20020ac87dd6000000b003f9b92c58e8si1039063qte.187.2023.06.20.11.33.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jun 2023 07:41:28 -0700 (PDT)
+        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VCSjE9Nu;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iJ2nN8mo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBcXb-0004UV-Rm; Tue, 20 Jun 2023 10:41:07 -0400
+	id 1qBg9r-0004ZB-VP; Tue, 20 Jun 2023 14:32:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qBcXa-0004TM-3b
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 10:41:06 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qBg9f-0004Y0-NE
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 14:32:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qBcXY-0007AZ-Lo
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 10:41:05 -0400
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qBg9d-0000nZ-Pa
+ for qemu-arm@nongnu.org; Tue, 20 Jun 2023 14:32:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687272060;
+ s=mimecast20190719; t=1687285955;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=NS6iJj9ZYraYMqYtcqEbHnR62qF6mLsZRWuy0Yfoj5g=;
- b=VCSjE9NuRv5PsjQZaKEvqmg8NNSEhmryZXH8e+MxTSHr8irb5kjIG8a3343E+cWAb3x/6Z
- 3MEyQccmArqWjfRCNRn5uhJJgSeR2l8L/JExlp4p7TNKpVZXPLxke/DeUDWWVkiIbWIX2b
- urZjkeRkwjYJkYNd/yK80jzsXh6k3Uc=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=x11f5g11vdxrx0fJe129Gy7Hy7yhV926S3geMwzS4Vo=;
+ b=iJ2nN8moGla58XrbYYCaxcaEbLQTp4tLhnYEosfyXI58PqS89xZeGMUS0zwC2QADcYEpXk
+ Mwt8YMX/uxI93bTtckG2qZZXqvAqK0yV43BoaUkg33LTM1m0wvm6o6XGoZhEw+d8kqA6NL
+ sswY9qJoke/da3PN8GmMnojZOIcWFTQ=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-329-eF1IDbo6Nkqsd4mlfzO_ag-1; Tue, 20 Jun 2023 10:40:44 -0400
-X-MC-Unique: eF1IDbo6Nkqsd4mlfzO_ag-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
+ us-mta-605-TD-aCi_1PXOqe0ivHOYN2w-1; Tue, 20 Jun 2023 14:32:33 -0400
+X-MC-Unique: TD-aCi_1PXOqe0ivHOYN2w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 797978CB787;
- Tue, 20 Jun 2023 14:35:39 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.199])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EB5DC40C2063;
- Tue, 20 Jun 2023 14:35:38 +0000 (UTC)
-Date: Tue, 20 Jun 2023 16:35:37 +0200
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F2FE81C08965;
+ Tue, 20 Jun 2023 18:32:29 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.119])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2A2529E9C;
+ Tue, 20 Jun 2023 18:32:28 +0000 (UTC)
+Date: Tue, 20 Jun 2023 20:32:27 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org,
  Cameron Esfahani <dirty@apple.com>,
  Roman Bolshakov <r.bolshakov@yadro.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH 05/12] hw/virtio: Add support for apple virtio-blk
-Message-ID: <20230620143537.GD2625194@fedora>
+Message-ID: <ZJHwu+YWmNKCtpfa@redhat.com>
 References: <20230614224038.86148-1-graf>
  <20230614225626.97734-1-graf@amazon.com>
+ <20230620143537.GD2625194@fedora>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="f+gUStivgWLpd+Tn"
+ protocol="application/pgp-signature"; boundary="TzgUut/zgvatE2El"
 Content-Disposition: inline
-In-Reply-To: <20230614225626.97734-1-graf@amazon.com>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+In-Reply-To: <20230620143537.GD2625194@fedora>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -119,54 +118,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: deudQCR4bDvK
+X-TUID: isOTcT7GsBMr
 
 
---f+gUStivgWLpd+Tn
+--TzgUut/zgvatE2El
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 14, 2023 at 10:56:22PM +0000, Alexander Graf wrote:
-> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> index 39e7f23fab..76b85bb3cb 100644
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -1120,6 +1120,20 @@ static int virtio_blk_handle_request(VirtIOBlockRe=
-q *req, MultiReqBuffer *mrb)
-> =20
->          break;
->      }
-> +    case VIRTIO_BLK_T_APPLE1:
-> +    {
-> +        if (s->conf.x_apple_type) {
-> +            /* Only valid on Apple Virtio */
-> +            char buf[iov_size(in_iov, in_num)];
+Am 20.06.2023 um 16:35 hat Stefan Hajnoczi geschrieben:
+> On Wed, Jun 14, 2023 at 10:56:22PM +0000, Alexander Graf wrote:
+> > diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+> > index 39e7f23fab..76b85bb3cb 100644
+> > --- a/hw/block/virtio-blk.c
+> > +++ b/hw/block/virtio-blk.c
+> > @@ -1120,6 +1120,20 @@ static int virtio_blk_handle_request(VirtIOBlock=
+Req *req, MultiReqBuffer *mrb)
+> > =20
+> >          break;
+> >      }
+> > +    case VIRTIO_BLK_T_APPLE1:
+> > +    {
+> > +        if (s->conf.x_apple_type) {
+> > +            /* Only valid on Apple Virtio */
+> > +            char buf[iov_size(in_iov, in_num)];
+>=20
+> I'm concerned that a variable-sized stack buffer could be abused by a
+> malicious guest. Even if it's harmless in the Apple use case, someone
+> else might copy this approach and use it where it creates a security
+> problem. Please either implement iov_memset() or allocate the temporary
+> buffer using bdrv_blockalign() (and free it with qemu_vfree()).
+>=20
+> > +            memset(buf, 0, sizeof(buf));
+> > +            iov_from_buf(in_iov, in_num, 0, buf, sizeof(buf));
+> > +            virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
 
-I'm concerned that a variable-sized stack buffer could be abused by a
-malicious guest. Even if it's harmless in the Apple use case, someone
-else might copy this approach and use it where it creates a security
-problem. Please either implement iov_memset() or allocate the temporary
-buffer using bdrv_blockalign() (and free it with qemu_vfree()).
+Good point, even more so when iov_memset() should do the job with
+simpler code.
 
-> +            memset(buf, 0, sizeof(buf));
-> +            iov_from_buf(in_iov, in_num, 0, buf, sizeof(buf));
-> +            virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
+Kevin
 
---f+gUStivgWLpd+Tn
+--TzgUut/zgvatE2El
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmSRuTkACgkQnKSrs4Gr
-c8gXyQf/a/dAGy7yH5m+O8jsAgPajzhILNEhPzumEK/q/YdHE58pEBhJPl6KDcfc
-X1fllPg9yiqfocCqGIIgqHBrj965W9P3O7MCMy/aFeIobK5BUYbhmtaB3OyYzbvd
-fmMVoRZ4igjlQ50gyvoMYK6sKJ7/K9rjZlVyj9jQtNfJv++srwXwtbriNUgVKRgz
-Qkil3OaaA3iuMqYE45z2LVifVd2VrsSj7K9E3W85gL+tRe0veBC9amhx/z//Dt4l
-i8DmqNBd5lMNo4sqnqmtFzdYy+7Xv1B5C0GVr0Tw0lrdZchGsbZXdydJMa6n8sqQ
-i7XiN/+L8o36OM08f8Eujc430udbpg==
-=yRQO
+iQIzBAEBCAAdFiEE3D3rFZqa+V09dFb+fwmycsiPL9YFAmSR8LoACgkQfwmycsiP
+L9aIng//QRDMiPXkpxaA5mcUxnG1DuPIXXjBXRbxu2EU2R67sjNsUX9BYbK13152
+t/y7e7zAg+nzfrUc/PG3fd/FS1MkMOeoJOLM3sVVKf3NXEPomNFOnCy/hcdjQ1so
+B/l08Ma98moNs00G/JXyXO39YtxbmMMmaqR/aWYVht0VJ2CR6X5894/J20vyUyAZ
+TTFJi8IHV3hIknW6E7eCzQ0m3RFf8HNzzOtvIxxuzxkZh5h+W6HxAeysnKhcy8xj
+QzG5gPYAjU+1kd1+vDfLmPLbqUdh2WG3+9pEFw5PElHLh+4UkAkCFOS7uiKRBf/g
+2U9Xbc+VV5sMVcOt0wBFtIRYQSjHQJJemNQdRg5GL30OTeb4LHjYi02lyoJZu4Wa
+bY/2YlHEy1gL9AAa9Uw3xM06e/bnE22BnaBawHxtLqTTf5S3ZeTcTR1BKYnrrYO/
+RXLeDWTM+bb2XtLN7mMhcDXlxDtvMc9InMmWOsOnIB+M7qe8MRbhNrECiZ9Fp5br
+LjRScZn7qfuYN2f26Fm7SO4W0xkN7uRdV90qfUXuEpDAamH+AkS5ejVUAUhwc634
+R4hSTAPN630CbT1RU69VWJH2VbN84c427AGGKA3pO1zg9VNfFyxpJYVjOldsMZeE
+oc99QXRmcij1GWmfwn5m0OdhqgzIteAwrnVN1s+U5IRC+ZhYEB8=
+=ZyLf
 -----END PGP SIGNATURE-----
 
---f+gUStivgWLpd+Tn--
+--TzgUut/zgvatE2El--
 

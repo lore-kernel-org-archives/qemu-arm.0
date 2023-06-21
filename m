@@ -1,106 +1,106 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp807479ejt;
-        Wed, 21 Jun 2023 05:19:52 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5iIPfAO2okIKJOQtJMaaHoBfpugBndtAk3RKdSYiw5+I+fSN5MTiutRznnhv7kAN56QJOg
-X-Received: by 2002:a05:6214:501b:b0:62f:f23e:14f8 with SMTP id jo27-20020a056214501b00b0062ff23e14f8mr17557121qvb.42.1687349992774;
-        Wed, 21 Jun 2023 05:19:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687349992; cv=none;
+Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp807503ejt;
+        Wed, 21 Jun 2023 05:19:56 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7RjUZlhGbr+dMwZkMBN9Xubzr8yuIFFSUikfW/jHEI3GZnN7kJrHdbFdPVtQdJl/eJEbD+
+X-Received: by 2002:a05:6358:e9d:b0:12b:dc0e:d33e with SMTP id 29-20020a0563580e9d00b0012bdc0ed33emr10415841rwg.23.1687349996619;
+        Wed, 21 Jun 2023 05:19:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687349996; cv=none;
         d=google.com; s=arc-20160816;
-        b=G2e310NdZO8UX8NbtOw/uAeAYrW7kMp3w5zGPhTPXNvJJXFfEQakPeUk9wCJbJeNoA
-         MyLG3kopJTmm3Vms2T2XhRB8SrHeFQtBSHcwxClkXcfz84QGeFuA9iqMHWgYeZ/RDpuq
-         sGxZzelxw7fBiXkZ3zyV5cn1iw8NXrHzCLr58eDfSZZgKZkt+X3Y2VchiB9MfKH2fSu7
-         oBbxLreG7Ug1P1iMZ7rJxr1P8PjrL8yGgR5grSOh4Tdb2xLgCDGznP8gnHhx+AGbs8yB
-         lweU5Da5nKsuaM05z0faiJfLbytGgZcdfHH7ciyiNcmYGsRh2dkCR0x6/wsFPNay5WQg
-         gLaw==
+        b=wyxFv1T33syUFHrCpagv+SKuwEU4mC9/jt9GjRV3GnXQuTElPfCg0bN4tZREWnmT6t
+         OfId7FFql7ZRhu4Ly/bTYD32lpDb7IvMZsydR9XyeUEChF4JdZW6K9xMIG/TzQsCmaXY
+         VQGvry0g01ng8h4tvW8Eslwf/TpRZ7HJAIrxBX4M7xzf28kogHBAve3mecTj/LjLuCFO
+         NcpY2t++Wyn44eBAJDi+6xAHFsZiRMYOdcU1TwZhyt3cpNKyZ9wUtG/slsYWIMbp8+AR
+         KhuvLQoCWmiqhVGsNyKMbSgopeZg6nVY+TmoC+AVyWw8UssCdKWjVMaw659auHj93033
+         Ou5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jgqAbaPN1d4W9rZooKKid+wiSp+1N29sW2yxha1lmeQ=;
-        b=YMX7xA+uptn2TckUjsUufTB+x65MHXP8bIOlKH5+piWi5NAgjOBXnKofCbF7BN9Rw/
-         HEp5Z3+PKrCtfnXsCdAhb24XCLSObUCiKaXZGt1GIn4B+IUkFNbBo02wNtYcn3C7dOuZ
-         kOXvNo1+NPKQBO4bEDnA/msondpBHPpuzxzfxs5ZN5PA21748TKPfqU/P8yqx4Z+ZHXt
-         xTGLSJy0PXAra/4d2ns3Ru1VIOHD1T/2jTg6uROZjWo7/yPwfdYsdLZhWZREz/YkK4ny
-         GgHEPQg8Su1E4GpWeELNeWVVdHwphT656qTJK+CvbrZoR6IP4m5boi7ecuPexy9cGbe6
-         HMLg==
+        bh=yJm2HHOE+JbF1SBBMy6pxmjuiMpXMHdJ6dJJZMNNmag=;
+        b=s8aokpShT6knhBS1Al2Kv2s9sTmKk7uq9es+Q8g6sfvv5xMDDgwngjiEHYAoIhJ0PD
+         OotzhnSc7FU2exEPXvoALcwRmmOKRUgjDSq42HdFQRnppBKQ2WIb0kkhnx0/qEYQ2ExJ
+         Ge/kUPZ8a0q63YW8bnifSQ1Q9hEUKhMY4S7svPa4ITp4nzVb3acaeP0xh1bZIN6TK9ZC
+         rDp3LjzZwLZ/tpAbK8QXMkCM0Fk7thmFBguSqQh76HfB+m8AA8Fk4ZnptMOM5sPAVxbp
+         zI+l0MEiFTi+R9H9Ijba8lgVf4Nlp+DYd8FlH2TuysxbrmW7iR06qvDwBHCGMi2dQyvo
+         /KLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EMClaJq9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RGV+bKP2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g4-20020ac87d04000000b003f6832a33bfsi1701519qtb.763.2023.06.21.05.19.52
+        by mx.google.com with ESMTPS id z19-20020ac87f93000000b003e388b3400fsi1661451qtj.176.2023.06.21.05.19.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Jun 2023 05:19:52 -0700 (PDT)
+        Wed, 21 Jun 2023 05:19:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EMClaJq9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RGV+bKP2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qBwo4-0006eE-Mr; Wed, 21 Jun 2023 08:19:30 -0400
+	id 1qBwo9-0006nW-EW; Wed, 21 Jun 2023 08:19:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBwnm-0006aZ-Gq
- for qemu-devel@nongnu.org; Wed, 21 Jun 2023 08:19:10 -0400
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ id 1qBwnu-0006e3-Iy
+ for qemu-devel@nongnu.org; Wed, 21 Jun 2023 08:19:21 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qBwnj-0000GC-Ih
- for qemu-devel@nongnu.org; Wed, 21 Jun 2023 08:19:10 -0400
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-2b466744368so66018021fa.0
- for <qemu-devel@nongnu.org>; Wed, 21 Jun 2023 05:19:07 -0700 (PDT)
+ id 1qBwns-0000K3-P7
+ for qemu-devel@nongnu.org; Wed, 21 Jun 2023 08:19:18 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-5149aafef44so6965448a12.0
+ for <qemu-devel@nongnu.org>; Wed, 21 Jun 2023 05:19:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687349946; x=1689941946;
+ d=linaro.org; s=google; t=1687349951; x=1689941951;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jgqAbaPN1d4W9rZooKKid+wiSp+1N29sW2yxha1lmeQ=;
- b=EMClaJq9Bv02tiOB76o4+o3foPo+UXj3ZCIUWYYqoB2F0v3Z5owuks/qGTJoZf1+/y
- zqLf3dYoVTtcUC75C4JeehVqF6gUEwy0PlI9O8B0CIzlN/bzB4/u0zdFBixcpnJL9b7n
- /pyKisKhod6kJxLinE8LWcuuOPI34v8SD46r3DKQkXeMTxxbJw6U75pYYTIGTYMNVPVe
- v8DcAJkW53MaIU+wM0OywGtQlD8ivWGoatus3ljlqB80XViwz2IM03EBmziy/Ih1/rld
- RNf95Ed3MfpdRVcRV7foXC7LekT9LtJrR155rVeEU28BRqZCna0TuH/RYwwJIRUUO0dJ
- DM3Q==
+ bh=yJm2HHOE+JbF1SBBMy6pxmjuiMpXMHdJ6dJJZMNNmag=;
+ b=RGV+bKP26P4vvhtYwLfzeH1JRUKooTPZj6S3PeV3ZWJS+mHwAxYwVmdxh1xcgEZIUM
+ mAEFA/hCZBTB4NqhF3E6qleNkEl+tnVUSbVD16g5tswjSMFATZuRI1DTRVswAOztDwO5
+ 65n/MgWlHO15bSUjvU62rIvD+jmnTYek4OWHni7PBXCimRtGJPHr1JeM9ZHZkHGLnAN7
+ u5c4CjkSSMPRpYLvqzkeXTFcxPhrqZi84LLRuy/JNlCCiYtf5IbV/D9wD0XXvXFhuhh5
+ G3OaH0qVk5mev1QnW/KeUfbUWLdys9trKuRNQyRe8+/tESk9mWD1CzyU1SXQr0Y4M6mH
+ JxYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687349946; x=1689941946;
+ d=1e100.net; s=20221208; t=1687349951; x=1689941951;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jgqAbaPN1d4W9rZooKKid+wiSp+1N29sW2yxha1lmeQ=;
- b=Tj77ahyw+B+8YaKehc0gUxp2UV+Iy4bX/Kj5FK+uU6fwxSA9mVrnVqlZg9Gy/Nobau
- 50xqLRb5KelOI/cacfoZlp0Rqkkb8nxQGce9pMRCZYwp+vFc4D1pfDIBVAMnaeUMVjFu
- /9w0iEP+v5YlLvzO6neZHV6GdJbMZDKmX3vHRGoSRCfmbN/kVzYXUmjfLI7DbpUvLTtf
- xYXkaNDjWquXY7L7NxS3D9UPVDgz/lyKF9/0/cI4RJoUHeb0EwmuqOK2IYv/K9sddQ+W
- 8/lg5BpnsLmEkuVUBRRosgtyfQSN/XAOzJXUlGKISrorjgcUMHbvDjRUYGx9b5i2EsS7
- JNrQ==
-X-Gm-Message-State: AC+VfDxDE6qTxJqMQY9PzJC29kLuAYmUIw1uPzFE9wOKm1OKJZh9eFTu
- m0M4zpLhJIoozGGSTdGz6o4OSwhOP6rqUsT5k39Rf39v
-X-Received: by 2002:a2e:9c82:0:b0:2b4:6678:da57 with SMTP id
- x2-20020a2e9c82000000b002b46678da57mr7374896lji.6.1687349945564; 
- Wed, 21 Jun 2023 05:19:05 -0700 (PDT)
+ bh=yJm2HHOE+JbF1SBBMy6pxmjuiMpXMHdJ6dJJZMNNmag=;
+ b=HJp7rHlqzFRUpqQsXjdCLfnjwmu2kG+P1iNlPihcSUkHNNUUUMGc43WpI3KdnoeyeL
+ Dns5EMELWgF0DH25k9N2WuT9XsuABe78riGWEzfkPjiToshKqDxu2nL7bcPnB/1ztWrA
+ dX2BH8qbIOzPrK2FvKdHb4u984ZjG3WWV++win9/3mRKdN93OVh4f/gJt2sg45bl4ALU
+ 5zZdchONkfW+yBAdtE/R4V+yc/zr5d4e638kHZcNX/IVoG6dYggherrwCgUKhIgWIw0H
+ VsbE+uJs32dP9y6QqLTgGqZAwJkMldo/zRVzRgZ7oITHCo8In9+wKjUSOi1joQmg7bJv
+ SCiA==
+X-Gm-Message-State: AC+VfDyPxJNY+dbXui96X0LUcXYE0gOPVlU+dqSrqY5oebz0tv/ODSVM
+ 3j3Az0YQCnyamzpeqivUC+FYmW0Efb4UHdZh0AeZCVAz
+X-Received: by 2002:a05:6402:344c:b0:51a:5ac3:4df7 with SMTP id
+ l12-20020a056402344c00b0051a5ac34df7mr5454152edc.0.1687349951425; 
+ Wed, 21 Jun 2023 05:19:11 -0700 (PDT)
 Received: from stoup.lan ([176.176.128.70]) by smtp.gmail.com with ESMTPSA id
- s6-20020a056402014600b0051bdf152295sm543176edu.76.2023.06.21.05.19.04
+ s6-20020a056402014600b0051bdf152295sm543176edu.76.2023.06.21.05.19.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Jun 2023 05:19:05 -0700 (PDT)
+ Wed, 21 Jun 2023 05:19:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 1/9] accel/tcg: Store some tlb flags in CPUTLBEntryFull
-Date: Wed, 21 Jun 2023 14:18:54 +0200
-Message-Id: <20230621121902.1392277-2-richard.henderson@linaro.org>
+Subject: [PATCH v2 7/9] accel/tcg: Add TLB_CHECK_ALIGNED
+Date: Wed, 21 Jun 2023 14:19:00 +0200
+Message-Id: <20230621121902.1392277-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230621121902.1392277-1-richard.henderson@linaro.org>
 References: <20230621121902.1392277-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x229.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,269 +122,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WlGSiV9vg5bf
+X-TUID: 0GgIjSI72fBn
 
-We have run out of bits we can use within the CPUTLBEntry comparators,
-as TLB_FLAGS_MASK cannot overlap alignment.
-
-Store slow_flags[] in CPUTLBEntryFull, and merge with the flags from
-the comparator.  A new TLB_FORCE_SLOW bit is set within the comparator
-as an indication that the slow path must be used.
-
-Move TLB_BSWAP to TLB_SLOW_FLAGS_MASK.  Since we are out of bits,
-we cannot create a new bit without moving an old one.
+This creates a per-page method for checking of alignment.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu-all.h  | 21 +++++++--
- include/exec/cpu-defs.h |  6 +++
- accel/tcg/cputlb.c      | 96 ++++++++++++++++++++++++-----------------
- 3 files changed, 80 insertions(+), 43 deletions(-)
+ include/exec/cpu-all.h |  4 +++-
+ accel/tcg/cputlb.c     | 27 ++++++++++++++++++++++++++-
+ 2 files changed, 29 insertions(+), 2 deletions(-)
 
 diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 09bf4c0cc6..4422f4bb07 100644
+index 8018ce783e..e61100fc80 100644
 --- a/include/exec/cpu-all.h
 +++ b/include/exec/cpu-all.h
-@@ -327,17 +327,30 @@ CPUArchState *cpu_copy(CPUArchState *env);
- #define TLB_MMIO            (1 << (TARGET_PAGE_BITS_MIN - 3))
+@@ -346,8 +346,10 @@ CPUArchState *cpu_copy(CPUArchState *env);
+ #define TLB_BSWAP            (1 << 0)
  /* Set if TLB entry contains a watchpoint.  */
- #define TLB_WATCHPOINT      (1 << (TARGET_PAGE_BITS_MIN - 4))
--/* Set if TLB entry requires byte swap.  */
--#define TLB_BSWAP           (1 << (TARGET_PAGE_BITS_MIN - 5))
-+/* Set if the slow path must be used; more flags in CPUTLBEntryFull. */
-+#define TLB_FORCE_SLOW      (1 << (TARGET_PAGE_BITS_MIN - 5))
- /* Set if TLB entry writes ignored.  */
- #define TLB_DISCARD_WRITE   (1 << (TARGET_PAGE_BITS_MIN - 6))
+ #define TLB_WATCHPOINT       (1 << 1)
++/* Set if TLB entry requires aligned accesses.  */
++#define TLB_CHECK_ALIGNED    (1 << 2)
  
--/* Use this mask to check interception with an alignment mask
-+/*
-+ * Use this mask to check interception with an alignment mask
-  * in a TCG backend.
-  */
- #define TLB_FLAGS_MASK \
-     (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO \
--    | TLB_WATCHPOINT | TLB_BSWAP | TLB_DISCARD_WRITE)
-+    | TLB_WATCHPOINT | TLB_FORCE_SLOW | TLB_DISCARD_WRITE)
-+
-+/*
-+ * Flags stored in CPUTLBEntryFull.slow_flags[x].
-+ * TLB_FORCE_SLOW must be set in CPUTLBEntry.addr_idx[x].
-+ */
-+/* Set if TLB entry requires byte swap.  */
-+#define TLB_BSWAP            (1 << 0)
-+
-+#define TLB_SLOW_FLAGS_MASK  TLB_BSWAP
-+
-+/* The two sets of flags must not overlap. */
-+QEMU_BUILD_BUG_ON(TLB_FLAGS_MASK & TLB_SLOW_FLAGS_MASK);
+-#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT)
++#define TLB_SLOW_FLAGS_MASK  (TLB_BSWAP | TLB_WATCHPOINT | TLB_CHECK_ALIGNED)
  
- /**
-  * tlb_hit_page: return true if page aligned @addr is a hit against the
-diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-index 4cb77c8dec..c174d5371a 100644
---- a/include/exec/cpu-defs.h
-+++ b/include/exec/cpu-defs.h
-@@ -124,6 +124,12 @@ typedef struct CPUTLBEntryFull {
-     /* @lg_page_size contains the log2 of the page size. */
-     uint8_t lg_page_size;
- 
-+    /*
-+     * Additional tlb flags for use by the slow path. If non-zero,
-+     * the corresponding CPUTLBEntry comparator must have TLB_FORCE_SLOW.
-+     */
-+    uint8_t slow_flags[3];
-+
-     /*
-      * Allow target-specific additions to this structure.
-      * This may be used to cache items from the guest cpu
+ /* The two sets of flags must not overlap. */
+ QEMU_BUILD_BUG_ON(TLB_FLAGS_MASK & TLB_SLOW_FLAGS_MASK);
 diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 14ce97c33b..b40ce5ea0f 100644
+index 61f4d94a4d..cb7b4b01e9 100644
 --- a/accel/tcg/cputlb.c
 +++ b/accel/tcg/cputlb.c
-@@ -1110,6 +1110,24 @@ static void tlb_add_large_page(CPUArchState *env, int mmu_idx,
-     env_tlb(env)->d[mmu_idx].large_page_mask = lp_mask;
- }
- 
-+static inline void tlb_set_compare(CPUTLBEntryFull *full, CPUTLBEntry *ent,
-+                                   target_ulong address, int flags,
-+                                   MMUAccessType access_type, bool enable)
-+{
-+    if (enable) {
-+        address |= flags & TLB_FLAGS_MASK;
-+        flags &= TLB_SLOW_FLAGS_MASK;
-+        if (flags) {
-+            address |= TLB_FORCE_SLOW;
-+        }
-+    } else {
-+        address = -1;
-+        flags = 0;
-+    }
-+    ent->addr_idx[access_type] = address;
-+    full->slow_flags[access_type] = flags;
-+}
-+
- /*
-  * Add a new TLB entry. At most one entry for a given virtual address
-  * is permitted. Only a single TARGET_PAGE_SIZE region is mapped, the
-@@ -1125,9 +1143,7 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-     CPUTLB *tlb = env_tlb(env);
-     CPUTLBDesc *desc = &tlb->d[mmu_idx];
-     MemoryRegionSection *section;
--    unsigned int index;
--    target_ulong address;
--    target_ulong write_address;
-+    unsigned int index, read_flags, write_flags;
-     uintptr_t addend;
-     CPUTLBEntry *te, tn;
-     hwaddr iotlb, xlat, sz, paddr_page;
-@@ -1156,13 +1172,13 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-               " prot=%x idx=%d\n",
-               vaddr, full->phys_addr, prot, mmu_idx);
- 
--    address = vaddr_page;
-+    read_flags = 0;
-     if (full->lg_page_size < TARGET_PAGE_BITS) {
-         /* Repeat the MMU check and TLB fill on every access.  */
--        address |= TLB_INVALID_MASK;
-+        read_flags |= TLB_INVALID_MASK;
-     }
-     if (full->attrs.byte_swap) {
--        address |= TLB_BSWAP;
-+        read_flags |= TLB_BSWAP;
-     }
- 
-     is_ram = memory_region_is_ram(section->mr);
-@@ -1176,7 +1192,7 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-         addend = 0;
-     }
- 
--    write_address = address;
-+    write_flags = read_flags;
-     if (is_ram) {
-         iotlb = memory_region_get_ram_addr(section->mr) + xlat;
-         /*
-@@ -1185,9 +1201,9 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-          */
-         if (prot & PAGE_WRITE) {
-             if (section->readonly) {
--                write_address |= TLB_DISCARD_WRITE;
-+                write_flags |= TLB_DISCARD_WRITE;
-             } else if (cpu_physical_memory_is_clean(iotlb)) {
--                write_address |= TLB_NOTDIRTY;
-+                write_flags |= TLB_NOTDIRTY;
-             }
-         }
-     } else {
-@@ -1198,9 +1214,9 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-          * Reads to romd devices go through the ram_ptr found above,
-          * but of course reads to I/O must go through MMIO.
-          */
--        write_address |= TLB_MMIO;
-+        write_flags |= TLB_MMIO;
-         if (!is_romd) {
--            address = write_address;
-+            read_flags = write_flags;
-         }
-     }
- 
-@@ -1253,36 +1269,30 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-      * vaddr we add back in io_readx()/io_writex()/get_page_addr_code().
-      */
-     desc->fulltlb[index] = *full;
--    desc->fulltlb[index].xlat_section = iotlb - vaddr_page;
--    desc->fulltlb[index].phys_addr = paddr_page;
-+    full = &desc->fulltlb[index];
-+    full->xlat_section = iotlb - vaddr_page;
-+    full->phys_addr = paddr_page;
- 
-     /* Now calculate the new entry */
-     tn.addend = addend - vaddr_page;
--    if (prot & PAGE_READ) {
--        tn.addr_read = address;
--        if (wp_flags & BP_MEM_READ) {
--            tn.addr_read |= TLB_WATCHPOINT;
--        }
--    } else {
--        tn.addr_read = -1;
--    }
- 
--    if (prot & PAGE_EXEC) {
--        tn.addr_code = address;
--    } else {
--        tn.addr_code = -1;
--    }
-+    tlb_set_compare(full, &tn, vaddr_page, read_flags,
-+                    MMU_INST_FETCH, prot & PAGE_EXEC);
- 
--    tn.addr_write = -1;
--    if (prot & PAGE_WRITE) {
--        tn.addr_write = write_address;
--        if (prot & PAGE_WRITE_INV) {
--            tn.addr_write |= TLB_INVALID_MASK;
--        }
--        if (wp_flags & BP_MEM_WRITE) {
--            tn.addr_write |= TLB_WATCHPOINT;
--        }
-+    if (wp_flags & BP_MEM_READ) {
-+        read_flags |= TLB_WATCHPOINT;
-     }
-+    tlb_set_compare(full, &tn, vaddr_page, read_flags,
-+                    MMU_DATA_LOAD, prot & PAGE_READ);
-+
-+    if (prot & PAGE_WRITE_INV) {
-+        write_flags |= TLB_INVALID_MASK;
-+    }
-+    if (wp_flags & BP_MEM_WRITE) {
-+        write_flags |= TLB_WATCHPOINT;
-+    }
-+    tlb_set_compare(full, &tn, vaddr_page, write_flags,
-+                    MMU_DATA_STORE, prot & PAGE_WRITE);
- 
-     copy_tlb_helper_locked(te, &tn);
-     tlb_n_used_entries_inc(env, mmu_idx);
-@@ -1512,7 +1522,8 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-     CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-     target_ulong tlb_addr = tlb_read_idx(entry, access_type);
-     target_ulong page_addr = addr & TARGET_PAGE_MASK;
--    int flags = TLB_FLAGS_MASK;
-+    int flags = TLB_FLAGS_MASK & ~TLB_FORCE_SLOW;
-+    CPUTLBEntryFull *full;
- 
-     if (!tlb_hit_page(tlb_addr, page_addr)) {
-         if (!victim_tlb_hit(env, mmu_idx, index, access_type, page_addr)) {
-@@ -1541,7 +1552,8 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-     }
-     flags &= tlb_addr;
- 
--    *pfull = &env_tlb(env)->d[mmu_idx].fulltlb[index];
-+    *pfull = full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
-+    flags |= full->slow_flags[access_type];
+@@ -1553,7 +1553,7 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
+     flags |= full->slow_flags[access_type];
  
      /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
-     if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
-@@ -1764,6 +1776,8 @@ static bool mmu_lookup1(CPUArchState *env, MMULookupPageData *data,
-     CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-     target_ulong tlb_addr = tlb_read_idx(entry, access_type);
-     bool maybe_resized = false;
-+    CPUTLBEntryFull *full;
-+    int flags;
- 
-     /* If the TLB entry is for a different page, reload and try again.  */
-     if (!tlb_hit(tlb_addr, addr)) {
-@@ -1777,8 +1791,12 @@ static bool mmu_lookup1(CPUArchState *env, MMULookupPageData *data,
-         tlb_addr = tlb_read_idx(entry, access_type) & ~TLB_INVALID_MASK;
+-    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
++    if (flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY | TLB_CHECK_ALIGNED)) {
+         *phost = NULL;
+         return TLB_MMIO;
+     }
+@@ -1909,6 +1909,31 @@ static bool mmu_lookup(CPUArchState *env, target_ulong addr, MemOpIdx oi,
+         tcg_debug_assert((flags & TLB_BSWAP) == 0);
      }
  
--    data->flags = tlb_addr & TLB_FLAGS_MASK;
--    data->full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
-+    full = &env_tlb(env)->d[mmu_idx].fulltlb[index];
-+    flags = tlb_addr & (TLB_FLAGS_MASK & ~TLB_FORCE_SLOW);
-+    flags |= full->slow_flags[access_type];
++    /*
++     * This alignment check differs from the one above, in that this is
++     * based on the atomicity of the operation. The intended use case is
++     * the ARM memory type field of each PTE, where access to pages with
++     * Device memory type require alignment.
++     */
++    if (unlikely(flags & TLB_CHECK_ALIGNED)) {
++        MemOp size = l->memop & MO_SIZE;
 +
-+    data->full = full;
-+    data->flags = flags;
-     /* Compute haddr speculatively; depending on flags it might be invalid. */
-     data->haddr = (void *)((uintptr_t)addr + entry->addend);
++        switch (l->memop & MO_ATOM_MASK) {
++        case MO_ATOM_NONE:
++            size = MO_8;
++            break;
++        case MO_ATOM_IFALIGN_PAIR:
++        case MO_ATOM_WITHIN16_PAIR:
++            size = size ? size - 1 : 0;
++            break;
++        default:
++            break;
++        }
++        if (addr & ((1 << size) - 1)) {
++            cpu_unaligned_access(env_cpu(env), addr, type, l->mmu_idx, ra);
++        }
++    }
++
+     return crosspage;
+ }
  
 -- 
 2.34.1

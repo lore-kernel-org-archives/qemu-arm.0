@@ -1,182 +1,340 @@
-Received: by 2002:a17:906:6dca:b0:989:33b4:be89 with SMTP id j10csp427770ejt;
-        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Iyf9xRGKT/5eZCc0DFtKBs2AGlzDTu3goQn7GGys3ND5Q6EFodG6TmqRsv2C/ibbsiRF9
-X-Received: by 2002:a05:622a:130b:b0:3ff:2a34:1cef with SMTP id v11-20020a05622a130b00b003ff2a341cefmr4912453qtk.1.1687286010316;
-        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687286010; cv=none;
-        d=google.com; s=arc-20160816;
-        b=RO9eWMcZh+L/vfDZgxfH4Ob4iAEqE0wYH/5clrDdTNrYmwQmP4FBpFosXYdPOoQ3nt
-         xIAmPrdJ+l5GsFk0/UvjLRK/RlI7TJhwcEmvDP9JHeCVGVXCGT0FsmLygmqGaTEnAS9/
-         /LlTjmHkMaYZngIRtHbArXmmOiHO0WOfLNv8kJ/PSag8ffn0D/TwUNa80jf4awN36Amf
-         F/hBi1Wet4hMwwraaHkSiao0VjjeGCpj6NRhddlwAP1PlOroGWMNO859TYeg2HVf4uWg
-         irdUkznIkC3mJGWiTyRFRFIMHe+EFLgDfYgKQkwlLvv/pFJG7QQikcTvD5Ec2pebmLxI
-         5/Sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=x11f5g11vdxrx0fJe129Gy7Hy7yhV926S3geMwzS4Vo=;
-        b=XC/S+cxgIJHbZi1ZIIZLUulES6vZW9OeMHoTzLl7CyM1Vxw1aO48K4JuT8dzI4/JJ9
-         biPE2EZ+zzDFCMGKO+l0I/tQReJJPOjSQFucQjWDZVXbESsVqFJfheSuVTHxWSlSMXuS
-         Z7txHp8Y0wZ4hInmvjq5kqIWep0ekRS/Fu6kwyeeX1Swx2gGgvi49FXtQANUA+YPVPwu
-         O2ZGt7FLEnY30wBwHog5kYIffxlIX6lv8KMrz3QIk5iMYiOOKgtFNuo/+Xly/GncCeqt
-         mFUEj7wLrqCiPCHeTg3Iy6TKew/4VE+qyFjvepIM3NWditDfdKkyeveUXbhUErOmad5T
-         EJvQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iJ2nN8mo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22-20020ac87dd6000000b003f9b92c58e8si1039063qte.187.2023.06.20.11.33.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Jun 2023 11:33:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iJ2nN8mo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qBg9r-0004ZB-VP; Tue, 20 Jun 2023 14:32:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qBg9f-0004Y0-NE
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 14:32:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1qBg9d-0000nZ-Pa
- for qemu-arm@nongnu.org; Tue, 20 Jun 2023 14:32:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687285955;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=x11f5g11vdxrx0fJe129Gy7Hy7yhV926S3geMwzS4Vo=;
- b=iJ2nN8moGla58XrbYYCaxcaEbLQTp4tLhnYEosfyXI58PqS89xZeGMUS0zwC2QADcYEpXk
- Mwt8YMX/uxI93bTtckG2qZZXqvAqK0yV43BoaUkg33LTM1m0wvm6o6XGoZhEw+d8kqA6NL
- sswY9qJoke/da3PN8GmMnojZOIcWFTQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-605-TD-aCi_1PXOqe0ivHOYN2w-1; Tue, 20 Jun 2023 14:32:33 -0400
-X-MC-Unique: TD-aCi_1PXOqe0ivHOYN2w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F2FE81C08965;
- Tue, 20 Jun 2023 18:32:29 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.119])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2A2529E9C;
- Tue, 20 Jun 2023 18:32:28 +0000 (UTC)
-Date: Tue, 20 Jun 2023 20:32:27 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Alexander Graf <graf@amazon.com>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, qemu-arm@nongnu.org,
- Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 05/12] hw/virtio: Add support for apple virtio-blk
-Message-ID: <ZJHwu+YWmNKCtpfa@redhat.com>
-References: <20230614224038.86148-1-graf>
- <20230614225626.97734-1-graf@amazon.com>
- <20230620143537.GD2625194@fedora>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id n11-20020a5d4c4b000000b003113ccbf388sm4139773wrt.13.2023.06.21.03.21.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Jun 2023 03:21:07 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D8EB71FFBB;
+	Wed, 21 Jun 2023 11:21:06 +0100 (BST)
+References: <20230606132743.1386003-1-iii@linux.ibm.com>
+ <20230606132743.1386003-7-iii@linux.ibm.com>
+User-agent: mu4e 1.11.6; emacs 29.0.92
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Ilya Leoshkevich <iii@linux.ibm.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, Peter Maydell
+ <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>, David Hildenbrand <david@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org, Dominik 'Disconnect3d'
+ Czarnota <dominik.b.czarnota@gmail.com>
+Subject: Re: [PATCH v3 6/8] gdbstub: Add support for info proc mappings
+Date: Wed, 21 Jun 2023 11:19:45 +0100
+In-reply-to: <20230606132743.1386003-7-iii@linux.ibm.com>
+Message-ID: <87pm5pglpp.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="TzgUut/zgvatE2El"
-Content-Disposition: inline
-In-Reply-To: <20230620143537.GD2625194@fedora>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: isOTcT7GsBMr
-
-
---TzgUut/zgvatE2El
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-TUID: HVnCae31KiJv
 
-Am 20.06.2023 um 16:35 hat Stefan Hajnoczi geschrieben:
-> On Wed, Jun 14, 2023 at 10:56:22PM +0000, Alexander Graf wrote:
-> > diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> > index 39e7f23fab..76b85bb3cb 100644
-> > --- a/hw/block/virtio-blk.c
-> > +++ b/hw/block/virtio-blk.c
-> > @@ -1120,6 +1120,20 @@ static int virtio_blk_handle_request(VirtIOBlock=
-Req *req, MultiReqBuffer *mrb)
-> > =20
-> >          break;
-> >      }
-> > +    case VIRTIO_BLK_T_APPLE1:
-> > +    {
-> > +        if (s->conf.x_apple_type) {
-> > +            /* Only valid on Apple Virtio */
-> > +            char buf[iov_size(in_iov, in_num)];
->=20
-> I'm concerned that a variable-sized stack buffer could be abused by a
-> malicious guest. Even if it's harmless in the Apple use case, someone
-> else might copy this approach and use it where it creates a security
-> problem. Please either implement iov_memset() or allocate the temporary
-> buffer using bdrv_blockalign() (and free it with qemu_vfree()).
->=20
-> > +            memset(buf, 0, sizeof(buf));
-> > +            iov_from_buf(in_iov, in_num, 0, buf, sizeof(buf));
-> > +            virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
 
-Good point, even more so when iov_memset() should do the job with
-simpler code.
+Ilya Leoshkevich <iii@linux.ibm.com> writes:
 
-Kevin
+> Currently the GDB's generate-core-file command doesn't work well with
+> qemu-user: the resulting dumps are huge [1] and at the same time
+> incomplete (argv and envp are missing). The reason is that GDB has no
+> access to proc mappings and therefore has to fall back to using
+> heuristics for discovering them. This is, in turn, because qemu-user
+> does not implement the Host I/O feature of the GDB Remote Serial
+> Protocol.
+>
+> Implement vFile:{open,close,pread,readlink} and also
+> qXfer:exec-file:read+. With that, generate-core-file begins to work on
+> aarch64 and s390x.
+>
+> [1] https://sourceware.org/pipermail/gdb-patches/2023-May/199432.html
+>
+> Co-developed-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmai=
+l.com>
+> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+> ---
+>  gdbstub/gdbstub.c     |  45 +++++++++++++-
+>  gdbstub/internals.h   |   5 ++
+>  gdbstub/user-target.c | 139 ++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 187 insertions(+), 2 deletions(-)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index c7e3ee71f2f..d2efefd3528 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -1337,6 +1337,36 @@ static const GdbCmdParseEntry gdb_v_commands_table=
+[] =3D {
+>          .cmd =3D "Kill;",
+>          .cmd_startswith =3D 1
+>      },
+> +#ifdef CONFIG_USER_ONLY
+> +    /*
+> +     * Host I/O Packets. See [1] for details.
+> +     * [1] https://sourceware.org/gdb/onlinedocs/gdb/Host-I_002fO-Packet=
+s.html
+> +     */
+> +    {
+> +        .handler =3D gdb_handle_v_file_open,
+> +        .cmd =3D "File:open:",
+> +        .cmd_startswith =3D 1,
+> +        .schema =3D "s,L,L0"
+> +    },
+> +    {
+> +        .handler =3D gdb_handle_v_file_close,
+> +        .cmd =3D "File:close:",
+> +        .cmd_startswith =3D 1,
+> +        .schema =3D "l0"
+> +    },
+> +    {
+> +        .handler =3D gdb_handle_v_file_pread,
+> +        .cmd =3D "File:pread:",
+> +        .cmd_startswith =3D 1,
+> +        .schema =3D "l,L,L0"
+> +    },
+> +    {
+> +        .handler =3D gdb_handle_v_file_readlink,
+> +        .cmd =3D "File:readlink:",
+> +        .cmd_startswith =3D 1,
+> +        .schema =3D "s0"
+> +    },
+> +#endif
+>  };
+>=20=20
+>  static void handle_v_commands(GArray *params, void *user_ctx)
+> @@ -1482,11 +1512,14 @@ static void handle_query_supported(GArray *params=
+, void *user_ctx)
+>              ";ReverseStep+;ReverseContinue+");
+>      }
+>=20=20
+> -#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+> +#if defined(CONFIG_USER_ONLY)
+> +#if defined(CONFIG_LINUX)
+>      if (gdbserver_state.c_cpu->opaque) {
+>          g_string_append(gdbserver_state.str_buf, ";qXfer:auxv:read+");
+>      }
+>  #endif
+> +    g_string_append(gdbserver_state.str_buf, ";qXfer:exec-file:read+");
+> +#endif
+>=20=20
+>      if (params->len &&
+>          strstr(get_param(params, 0)->data, "multiprocess+")) {
+> @@ -1625,13 +1658,21 @@ static const GdbCmdParseEntry gdb_gen_query_table=
+[] =3D {
+>          .cmd_startswith =3D 1,
+>          .schema =3D "s:l,l0"
+>      },
+> -#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+> +#if defined(CONFIG_USER_ONLY)
+> +#if defined(CONFIG_LINUX)
+>      {
+>          .handler =3D gdb_handle_query_xfer_auxv,
+>          .cmd =3D "Xfer:auxv:read::",
+>          .cmd_startswith =3D 1,
+>          .schema =3D "l,l0"
+>      },
+> +#endif
+> +    {
+> +        .handler =3D gdb_handle_query_xfer_exec_file,
+> +        .cmd =3D "Xfer:exec-file:read:",
+> +        .cmd_startswith =3D 1,
+> +        .schema =3D "l:l,l0"
+> +    },
+>  #endif
+>      {
+>          .handler =3D gdb_handle_query_attached,
+> diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+> index 25e4d5eeaa6..f2b46cce412 100644
+> --- a/gdbstub/internals.h
+> +++ b/gdbstub/internals.h
+> @@ -189,6 +189,11 @@ typedef union GdbCmdVariant {
+>  void gdb_handle_query_rcmd(GArray *params, void *user_ctx); /* softmmu */
+>  void gdb_handle_query_offsets(GArray *params, void *user_ctx); /* user */
+>  void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user =
+*/
+> +void gdb_handle_v_file_open(GArray *params, void *user_ctx); /* user */
+> +void gdb_handle_v_file_close(GArray *params, void *user_ctx); /* user */
+> +void gdb_handle_v_file_pread(GArray *params, void *user_ctx); /* user */
+> +void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user=
+ */
+> +void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /*=
+ user */
+>=20=20
+>  void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both =
+*/
+>=20=20
+> diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
+> index fa0e59ec9a5..aa64a8b9440 100644
+> --- a/gdbstub/user-target.c
+> +++ b/gdbstub/user-target.c
+> @@ -11,6 +11,10 @@
+>  #include "exec/gdbstub.h"
+>  #include "qemu.h"
+>  #include "internals.h"
+> +#ifdef CONFIG_LINUX
+> +#include "linux-user/loader.h"
+> +#include "linux-user/qemu.h"
+> +#endif
+>=20=20
+>  /*
+>   * Map target signal numbers to GDB protocol signal numbers and vice
+> @@ -281,3 +285,138 @@ void gdb_handle_query_xfer_auxv(GArray *params, voi=
+d *user_ctx)
+>                        gdbserver_state.str_buf->len, true);
+>  }
+>  #endif
+> +
+> +static const char *get_filename_param(GArray *params, int i)
+> +{
+> +    const char *hex_filename =3D get_param(params, i)->data;
+> +    gdb_hextomem(gdbserver_state.mem_buf, hex_filename,
+> +                 strlen(hex_filename) / 2);
+> +    g_byte_array_append(gdbserver_state.mem_buf, (const guint8 *)"", 1);
+> +    return (const char *)gdbserver_state.mem_buf->data;
+> +}
+> +
+> +static void hostio_reply_with_data(const void *buf, size_t n)
+> +{
+> +    g_string_printf(gdbserver_state.str_buf, "F%lx;", n);
+> +    gdb_memtox(gdbserver_state.str_buf, buf, n);
+> +    gdb_put_packet_binary(gdbserver_state.str_buf->str,
+> +                          gdbserver_state.str_buf->len, true);
+> +}
 
---TzgUut/zgvatE2El
-Content-Type: application/pgp-signature; name="signature.asc"
+This fails on 64/32 builds:
 
------BEGIN PGP SIGNATURE-----
+  ../gdbstub/user-target.c: In function =E2=80=98hostio_reply_with_data=E2=
+=80=99:
+  ../gdbstub/user-target.c:300:50: error: format =E2=80=98%lx=E2=80=99 expe=
+cts argument of type =E2=80=98long unsigned int=E2=80=99, but argument 3 ha=
+s type =E2=80=98size_t=E2=80=99 {aka =E2=80=98unsigned int=E2=80=99} [-Werr=
+or=3Dformat=3D]
+    300 |     g_string_printf(gdbserver_state.str_buf, "F%lx;", n);
+        |                                                ~~^    ~
+        |                                                  |    |
+        |                                                  |    size_t {aka=
+ unsigned int}
+        |                                                  long unsigned int
+        |                                                %x
+  cc1: all warnings being treated as errors
 
-iQIzBAEBCAAdFiEE3D3rFZqa+V09dFb+fwmycsiPL9YFAmSR8LoACgkQfwmycsiP
-L9aIng//QRDMiPXkpxaA5mcUxnG1DuPIXXjBXRbxu2EU2R67sjNsUX9BYbK13152
-t/y7e7zAg+nzfrUc/PG3fd/FS1MkMOeoJOLM3sVVKf3NXEPomNFOnCy/hcdjQ1so
-B/l08Ma98moNs00G/JXyXO39YtxbmMMmaqR/aWYVht0VJ2CR6X5894/J20vyUyAZ
-TTFJi8IHV3hIknW6E7eCzQ0m3RFf8HNzzOtvIxxuzxkZh5h+W6HxAeysnKhcy8xj
-QzG5gPYAjU+1kd1+vDfLmPLbqUdh2WG3+9pEFw5PElHLh+4UkAkCFOS7uiKRBf/g
-2U9Xbc+VV5sMVcOt0wBFtIRYQSjHQJJemNQdRg5GL30OTeb4LHjYi02lyoJZu4Wa
-bY/2YlHEy1gL9AAa9Uw3xM06e/bnE22BnaBawHxtLqTTf5S3ZeTcTR1BKYnrrYO/
-RXLeDWTM+bb2XtLN7mMhcDXlxDtvMc9InMmWOsOnIB+M7qe8MRbhNrECiZ9Fp5br
-LjRScZn7qfuYN2f26Fm7SO4W0xkN7uRdV90qfUXuEpDAamH+AkS5ejVUAUhwc634
-R4hSTAPN630CbT1RU69VWJH2VbN84c427AGGKA3pO1zg9VNfFyxpJYVjOldsMZeE
-oc99QXRmcij1GWmfwn5m0OdhqgzIteAwrnVN1s+U5IRC+ZhYEB8=
-=ZyLf
------END PGP SIGNATURE-----
+I think "%zx" is the portable format string you want.
 
---TzgUut/zgvatE2El--
 
+> +void gdb_handle_v_file_open(GArray *params, void *user_ctx)
+> +{
+> +    const char *filename =3D get_filename_param(params, 0);
+> +    uint64_t flags =3D get_param(params, 1)->val_ull;
+> +    uint64_t mode =3D get_param(params, 2)->val_ull;
+> +
+> +#ifdef CONFIG_LINUX
+> +    int fd =3D do_guest_openat(gdbserver_state.g_cpu->env_ptr, 0, filena=
+me,
+> +                             flags, mode, false);
+> +#else
+> +    int fd =3D open(filename, flags, mode);
+> +#endif
+> +    if (fd < 0) {
+> +        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
+> +    } else {
+> +        g_string_printf(gdbserver_state.str_buf, "F%d", fd);
+> +    }
+> +    gdb_put_strbuf();
+> +}
+> +
+> +void gdb_handle_v_file_close(GArray *params, void *user_ctx)
+> +{
+> +    int fd =3D get_param(params, 0)->val_ul;
+> +
+> +    if (close(fd) =3D=3D -1) {
+> +        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
+> +        gdb_put_strbuf();
+> +        return;
+> +    }
+> +
+> +    gdb_put_packet("F00");
+> +}
+> +
+> +#define BUFSIZ 8192
+> +
+> +void gdb_handle_v_file_pread(GArray *params, void *user_ctx)
+> +{
+> +    int fd =3D get_param(params, 0)->val_ul;
+> +    size_t count =3D get_param(params, 1)->val_ull;
+> +    off_t offset =3D get_param(params, 2)->val_ull;
+> +
+> +    size_t bufsiz =3D MIN(count, BUFSIZ);
+> +    g_autofree char *buf =3D g_try_malloc(bufsiz);
+> +    if (buf =3D=3D NULL) {
+> +        gdb_put_packet("E12");
+> +        return;
+> +    }
+> +
+> +    ssize_t n =3D pread(fd, buf, bufsiz, offset);
+> +    if (n < 0) {
+> +        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
+> +        gdb_put_strbuf();
+> +        return;
+> +    }
+> +    hostio_reply_with_data(buf, n);
+> +}
+> +
+> +void gdb_handle_v_file_readlink(GArray *params, void *user_ctx)
+> +{
+> +    const char *filename =3D get_filename_param(params, 0);
+> +
+> +    g_autofree char *buf =3D g_try_malloc(BUFSIZ);
+> +    if (buf =3D=3D NULL) {
+> +        gdb_put_packet("E12");
+> +        return;
+> +    }
+> +
+> +#ifdef CONFIG_LINUX
+> +    ssize_t n =3D do_guest_readlink(filename, buf, BUFSIZ);
+> +#else
+> +    ssize_t n =3D readlink(filename, buf, BUFSIZ);
+> +#endif
+> +    if (n < 0) {
+> +        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
+> +        gdb_put_strbuf();
+> +        return;
+> +    }
+> +    hostio_reply_with_data(buf, n);
+> +}
+> +
+> +void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx)
+> +{
+> +    uint32_t pid =3D get_param(params, 0)->val_ul;
+> +    uint32_t offset =3D get_param(params, 1)->val_ul;
+> +    uint32_t length =3D get_param(params, 2)->val_ul;
+> +
+> +    GDBProcess *process =3D gdb_get_process(pid);
+> +    if (!process) {
+> +        gdb_put_packet("E00");
+> +        return;
+> +    }
+> +
+> +    CPUState *cpu =3D gdb_get_first_cpu_in_process(process);
+> +    if (!cpu) {
+> +        gdb_put_packet("E00");
+> +        return;
+> +    }
+> +
+> +    TaskState *ts =3D cpu->opaque;
+> +    if (!ts || !ts->bprm || !ts->bprm->filename) {
+> +        gdb_put_packet("E00");
+> +        return;
+> +    }
+> +
+> +    size_t total_length =3D strlen(ts->bprm->filename);
+> +    if (offset > total_length) {
+> +        gdb_put_packet("E00");
+> +        return;
+> +    }
+> +    if (offset + length > total_length) {
+> +        length =3D total_length - offset;
+> +    }
+> +
+> +    g_string_printf(gdbserver_state.str_buf, "l%.*s", length,
+> +                    ts->bprm->filename + offset);
+> +    gdb_put_strbuf();
+> +}
+
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

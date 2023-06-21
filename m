@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp128099ejb;
-        Wed, 21 Jun 2023 13:36:54 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4YCO5tgQtNhEyrtvA7WhAKvjGHHVPHGuXIubSDM0wtrPfSzluv68fAUHQc/xf1e0PUYtic
-X-Received: by 2002:a25:e751:0:b0:bac:fc30:3913 with SMTP id e78-20020a25e751000000b00bacfc303913mr14000255ybh.21.1687379814094;
-        Wed, 21 Jun 2023 13:36:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687379814; cv=none;
+Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp128125ejb;
+        Wed, 21 Jun 2023 13:36:59 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ50DlejCyRyY0C43koPHlZynbqm1sDBeYKk5ILdJlY8ny+ywUtZVr7VPTnK7vj8nFznzs+A
+X-Received: by 2002:a5e:880b:0:b0:774:84f4:6ea with SMTP id l11-20020a5e880b000000b0077484f406eamr13077134ioj.11.1687379819285;
+        Wed, 21 Jun 2023 13:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687379819; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ub2XWOR5AmXVhs3tM1DFdYhVkax9kKlFsh8Qpz/xQrMmwOgj/rYlcLmRvS3mv+q+G2
-         ml3w6xiazbfSyLxcUUIyKrZtsWoWhtPoVApylloajtw1gk9g1v1nzirsWUPeo1GcKVrb
-         ksxOrKkdDNNdUuCUZY9IPExb5Yf4s5rpLoEmfkl8IY+nu84E7t8KOACcjN2ghj2lFSI/
-         hn1fHb55brB2z6CKO8Yaq73c/VnJyt9W0qQDZaOUd1jFIaDZI85SB/SeCH/MKFZ/L7Vd
-         AVxT/RHNhDBu48veYHhQURlagVUTFuFjKfaCOcPJeraQqGAQwLA6txTlSYQiiHFboAV6
-         kTtA==
+        b=wCTQU7n7ppexBkfexljap0L8QV7ceVDRyzLbHLYh0hyB+gyLZypitIcqak55AQ4ENS
+         JwxPm7XigG7t7ngCvHErmazke5rkdafZxB75BPFQtItlOir+Z1uGJu31/5mxkK+unEpa
+         ovPKKIeixH3XjZelhZaGrH9bTRZkDXJVPduDRQGlhuIz7mCTtcq09Q0+oFb9UlHafI9S
+         Glc3Ky3XFMlpaIugMLgqNqwWZxi0KiKwVW6nuqwlic6Zo0MipOX/JW99ZMCp6HJ8zkvs
+         +7Svsp2MfMiKeMsTtwMk4i8a+GOBHVR4lTZAnpw5e0EoOVDfRQ4SfCJuEHHBeWN72TZh
+         2/2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ng7WfdXlg9ZV8SK9VXpYm3h2tEulweiCY+p5AzwDX5o=;
-        b=0j18u95EqSFxyJiPSJ5YnLkBILNi336N+8mm05L2pO/3LqDrnqSsftOTDwNmbnhz3S
-         2acpFH+fLZdVQh7OFP/lrM0M+XDpVeqKpU+GqsYEahIjf/eiFxhx7PuRCFElK8SVLWjC
-         F4ulrqUsQ3fDctOb96Rhoo9AAXT+vBeNnCu/ygc0ofkQyASBRppmETvzFCbKpOksb/b6
-         HTKz2hC8zO4gTGN6yJnVB+McUsptZcXxiWtN3EyhmseQOl/HzPx/j+68JyPvquLGPfIC
-         fz3WW3POCq0DmNWO6Lyu/WVuwdIggVvuwlyM/SKji/0cMogz8O42fZsww0JfAaaD1re7
-         SIag==
+        bh=hkF6Ozvx4FPBA20KrX19IeWIjWHpcac1PcepJTSpkNA=;
+        b=LrfeonW1hvtPKrkSkemKfMyzzoa+meJbxjHBt3plJVJPJ3yPa8QX7RIzujbXm7zzEQ
+         dLUk1VXPnDQfTpm095Px9Cfz7Bqsa0J9MQWwUAsTwc41Ojjr07YoipKlf2D/PqTFIHCW
+         q7vAAo7HLGAwEt+5LpHLW15XiArGlAIRf999R2MRaSXYztgnmaVMahsTvrx2k23CCTaq
+         m97isnVoRxEKeWtLrsIGjSODIdcM4E5Y1mqa7UcTUjCD6UsYJlX75DWjn3qpxTJ7VjFC
+         uUkv5PL78+33fMG24z3g9ZHeLtsZhaSTDtYffKt7P/7mRfaytNlgfPRhE9LcSgx+GXv4
+         bGPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g1wZSB2y;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="i8tav/Pt";
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id x33-20020a25ace1000000b00bac530d712bsi4420618ybd.187.2023.06.21.13.36.53
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id x9-20020a056638248900b0042525b82212si2369470jat.89.2023.06.21.13.36.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Jun 2023 13:36:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+        Wed, 21 Jun 2023 13:36:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g1wZSB2y;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b="i8tav/Pt";
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
        dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 35LKTmmw026718;
-	Wed, 21 Jun 2023 20:36:53 GMT
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 35LKEKiS021963;
+	Wed, 21 Jun 2023 20:36:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
  : date : message-id : in-reply-to : references : mime-version :
  content-type : content-transfer-encoding; s=pp1;
- bh=Ng7WfdXlg9ZV8SK9VXpYm3h2tEulweiCY+p5AzwDX5o=;
- b=g1wZSB2y/IECQGExvUAk0LNFlvdF64DhAgy45vdWd8DdpZUttE8VohLRP9NWBAsJYwFP
- PbkcrXWw6taJshYGjy/XcqhjA4F9ql0q/tWXy/8jNgYUd5eSal9BMEKgJPe4hWRNWhfm
- 1ih/RE75M9cWkYwc1m1lFEmWUxZ5US2attNvU28oYyFJyjsEGRnT99oJptdBQf8x5Nba
- u1JrpnSfi20WLo/JRMDdMtK9zV9aQxpY4YjXV0s43flp02tbfMSvVOApm+1qX9Xoq1g4
- e9srOJwh9z31/qmiMeLlfUm9DslLotjUWmqLOGyo02HEfV5Vjz3ylNEe5+Kh5sOI9uvK 7A== 
+ bh=hkF6Ozvx4FPBA20KrX19IeWIjWHpcac1PcepJTSpkNA=;
+ b=i8tav/PtsvNIz0jSxH8Rd+Fu+xOrjICCfY5QCodaiEmKzc54EIKJ562ZyZTUIb9OQJMo
+ JwQg4hp3JTgk0koJnVHsB+T5rWPPE5SIZTrMigT218zBTiUp06oFWmCDsSvvsyIkrhd4
+ zbTtDeFirHmbBhS+WgIl7ZwS64YPGNONwckbjQ6TxaryHOQxluwAfSsyip1Y+Qoilm3L
+ nY/BAWUzTqEZEnr1mQRPqT5gT8AEf7bKp+IE0O7Z2/mbnHtdYY8u0OZmmTuYNEoyx/a6
+ M9yN+GQB4a55Q430YrmctIzvzBbUcYmf2Zj29gUbGTDUTCxJvXc+RM+a37BaIkEXKgPp Yw== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc89pg60m-1
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc82g8f2w-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:36:53 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 35LKUapB029089;
-	Wed, 21 Jun 2023 20:36:52 GMT
-Received: from ppma02fra.de.ibm.com (47.49.7a9f.ip4.static.sl-reverse.com [159.122.73.71])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc89pg5xv-1
+	Wed, 21 Jun 2023 20:36:58 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 35LKKpv0010792;
+	Wed, 21 Jun 2023 20:36:57 GMT
+Received: from ppma03ams.nl.ibm.com (62.31.33a9.ip4.static.sl-reverse.com [169.51.49.98])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc82g8f24-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:36:52 +0000
-Received: from pps.filterd (ppma02fra.de.ibm.com [127.0.0.1])
-	by ppma02fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 35LFaGE6031816;
-	Wed, 21 Jun 2023 20:36:50 GMT
-Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
-	by ppma02fra.de.ibm.com (PPS) with ESMTPS id 3r94f5aam1-1
+	Wed, 21 Jun 2023 20:36:57 +0000
+Received: from pps.filterd (ppma03ams.nl.ibm.com [127.0.0.1])
+	by ppma03ams.nl.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 35L3AgBn029539;
+	Wed, 21 Jun 2023 20:36:54 GMT
+Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
+	by ppma03ams.nl.ibm.com (PPS) with ESMTPS id 3r94f532s3-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:36:50 +0000
+	Wed, 21 Jun 2023 20:36:54 +0000
 Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com [10.20.54.102])
-	by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 35LKamwn16057020
+	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 35LKaq7o5767806
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 21 Jun 2023 20:36:48 GMT
+	Wed, 21 Jun 2023 20:36:52 GMT
 Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 52FC22004B;
-	Wed, 21 Jun 2023 20:36:48 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 3EB262004B;
+	Wed, 21 Jun 2023 20:36:52 +0000 (GMT)
 Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id CC22620040;
-	Wed, 21 Jun 2023 20:36:47 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id A93B120040;
+	Wed, 21 Jun 2023 20:36:51 +0000 (GMT)
 Received: from heavy.boeblingen.de.ibm.com (unknown [9.179.1.208])
 	by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 21 Jun 2023 20:36:47 +0000 (GMT)
+	Wed, 21 Jun 2023 20:36:51 +0000 (GMT)
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
         Laurent Vivier <laurent@vivier.eu>,
@@ -87,9 +87,9 @@ To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
         Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v4 5/8] gdbstub: Report the actual qemu-user pid
-Date: Wed, 21 Jun 2023 22:36:24 +0200
-Message-Id: <20230621203627.1808446-6-iii@linux.ibm.com>
+Subject: [PATCH v4 7/8] docs: Document security implications of debugging
+Date: Wed, 21 Jun 2023 22:36:26 +0200
+Message-Id: <20230621203627.1808446-8-iii@linux.ibm.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20230621203627.1808446-1-iii@linux.ibm.com>
 References: <20230621203627.1808446-1-iii@linux.ibm.com>
@@ -97,83 +97,53 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: AXPk5wnf-_p4Z-NMVCDfqwR7g9Nz4307
-X-Proofpoint-ORIG-GUID: AF_Cuca7twhGw6Q8nUMi450LRQ98OGAY
+X-Proofpoint-ORIG-GUID: 8woW_lOX8HUWM-kvDYVt8SFJly4uC4Tr
+X-Proofpoint-GUID: GR9kkEMBaZrw5-Fk9_oi7kMvyRb1f2uE
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
  definitions=2023-06-21_12,2023-06-16_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 mlxscore=0
- lowpriorityscore=0 malwarescore=0 suspectscore=0 adultscore=0
- impostorscore=0 priorityscore=1501 clxscore=1015 bulkscore=0
- mlxlogscore=999 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2305260000 definitions=main-2306210167
-X-TUID: MfN9HzclSjSW
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0
+ priorityscore=1501 spamscore=0 lowpriorityscore=0 phishscore=0
+ clxscore=1015 adultscore=0 bulkscore=0 impostorscore=0 mlxscore=0
+ suspectscore=0 mlxlogscore=999 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2305260000 definitions=main-2306210172
+X-TUID: GQcWYNoMJsIB
 
-Currently qemu-user reports pid 1 to GDB. Resolve the TODO and report
-the actual PID. Using getpid() relies on the assumption that there is
-only one GDBProcess. Add an assertion to make sure that future changes
-don't break it.
+Now that the GDB stub explicitly implements reading host files (note
+that it was already possible by changing the emulated code to open and
+read those files), concerns may arise that it undermines security.
+
+Document the status quo, which is that the users are already
+responsible for securing the GDB connection themselves.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
- gdbstub/gdbstub.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
+ docs/system/gdb.rst | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 9139fec92a..c7e3ee71f2 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -202,13 +202,16 @@ void gdb_memtox(GString *buf, const char *mem, int len)
+diff --git a/docs/system/gdb.rst b/docs/system/gdb.rst
+index 7d3718deef..9906991b84 100644
+--- a/docs/system/gdb.rst
++++ b/docs/system/gdb.rst
+@@ -214,3 +214,18 @@ The memory mode can be checked by sending the following command:
  
- static uint32_t gdb_get_cpu_pid(CPUState *cpu)
- {
--    /* TODO: In user mode, we should use the task state PID */
-+#ifdef CONFIG_USER_ONLY
-+    return getpid();
-+#else
-     if (cpu->cluster_index == UNASSIGNED_CLUSTER_INDEX) {
-         /* Return the default process' PID */
-         int index = gdbserver_state.process_num - 1;
-         return gdbserver_state.processes[index].pid;
-     }
-     return cpu->cluster_index + 1;
-+#endif
- }
- 
- GDBProcess *gdb_get_process(uint32_t pid)
-@@ -2146,19 +2149,25 @@ void gdb_read_byte(uint8_t ch)
- void gdb_create_default_process(GDBState *s)
- {
-     GDBProcess *process;
--    int max_pid = 0;
-+    int pid;
- 
-+#ifdef CONFIG_USER_ONLY
-+    assert(gdbserver_state.process_num == 0);
-+    pid = getpid();
-+#else
-     if (gdbserver_state.process_num) {
--        max_pid = s->processes[s->process_num - 1].pid;
-+        pid = s->processes[s->process_num - 1].pid;
-+    } else {
-+        pid = 0;
-     }
-+    /* We need an available PID slot for this process */
-+    assert(pid < UINT32_MAX);
-+    pid++;
-+#endif
- 
-     s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
-     process = &s->processes[s->process_num - 1];
--
--    /* We need an available PID slot for this process */
--    assert(max_pid < UINT32_MAX);
--
--    process->pid = max_pid + 1;
-+    process->pid = pid;
-     process->attached = false;
-     process->target_xml[0] = '\0';
- }
+ ``maintenance packet Qqemu.PhyMemMode:0``
+     This will change it back to normal memory mode.
++
++Security considerations
++=======================
++
++Connecting to the GDB socket allows running arbitrary code inside the guest;
++in case of the TCG emulation, which is not considered a security boundary, this
++also means running arbitrary code on the host. Additionally, when debugging
++qemu-user, it allows directly downloading any file readable by QEMU from the
++host.
++
++The GDB socket is not protected by authentication, authorization or encryption.
++It is therefore a responsibility of the user to make sure that only authorized
++clients can connect to it, e.g., by using a unix socket with proper
++permissions, or by opening a TCP socket only on interfaces that are not
++reachable by potential attackers.
 -- 
 2.40.1

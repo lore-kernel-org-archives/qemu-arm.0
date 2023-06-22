@@ -1,109 +1,117 @@
-Received: by 2002:a05:7022:ef18:b0:66:7a29:38e1 with SMTP id qy24csp3805055dlb;
-        Wed, 21 Jun 2023 09:43:40 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5jkptERnYDa65LZMOKCuBPsKzouC/gqpDGUmIVRAidOzBqNXiyWuczOduFasrK3F+q3wXw
-X-Received: by 2002:ac8:7f84:0:b0:3f3:96a3:c76f with SMTP id z4-20020ac87f84000000b003f396a3c76fmr19853740qtj.22.1687365819907;
-        Wed, 21 Jun 2023 09:43:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687365819; cv=none;
+Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp278097ejb;
+        Wed, 21 Jun 2023 21:53:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5T0UFHNFz+4sPPIBtNC16gDLzKJJj72GslTtz+vY5JbVXUIPwac6FRlQ0muTZ0nWZ5kBFG
+X-Received: by 2002:a05:6214:124f:b0:630:4ac:3489 with SMTP id r15-20020a056214124f00b0063004ac3489mr25182186qvv.35.1687409618763;
+        Wed, 21 Jun 2023 21:53:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687409618; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJpW9i8thprcMJRGS0WO7dWagyz/RetuAPeNbCzHvmzR+/BJn4IopZE7oJ4BFAhU0Z
-         /UwHzTKgorQstn2smeFuXUMBPzCpUznhGU4L/T5Sw9Zwml0jZwvN619vD14B8nK8Mwqa
-         bEbawll0+kmk1He3/6824K4cNaZpECp6zsl1/Vy21KmA17YsC3AEDkWRg4KC8jSHjxBn
-         zHHPp4g01zoIyw+m3gGKxesRYpYkbu1M/ZITHiFe297m2UejMWZtjkpiYssC/aP5oJC2
-         qz5jIhJH5aqeOLLDkKQAvVZq/839RDMAfFuItCiF7UmDWIvRaHNK4mK0aZL9hGZnhuIb
-         4Grw==
+        b=ji+R6ul8hzPc/lCbcb73P6Cjl00G5uPzXeIqqfQIJg3cCHNh13ihM4U1YuXs6yr96N
+         0rBaY+c5C+WAKu4uaq5W5+whnR9XsPuwg86ppNwHuC9duwuS8EAjPdHm+/0KfuTSOyvN
+         Ztx6DPAKuRf69/Bm8CdEXODf+tkif6DwjZCQXXViIofwKXh+QcAvVuWPYCRlgso+Bo2j
+         np8qKBPAYd5Gb8yjrvMu5JsjvJi21x5OP5rwuhJuKsao4xV0g1KvCwWxR4BJqMS1OlDD
+         UV0sFnLIpojpKE5ykub3SsKmKUIRoSp0GgP9um0PxZwZcGuAgqvH4brYc6zHR4eRQWG9
+         JLTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Yke3TL7j7AabmOFekvtWm48sFMuuC+Argv+QQoSN+N8=;
-        b=i1QnqxuY1S79Fxe+WXV3mx6lfZ1+spPk8+yXAoT/PVchbDJJ8JqQ9JnMwR7I9rbFCN
-         7Fbhbu2Lt4d/tvnioQmJ6p4/QuwvFbgOBC6VLRK429DOqpQyZoP0/+nmOg3MK3yq6C1e
-         qm691ObyVU1SPVmPP+DGyC6Y7rQyff/aER+SGMByM6qyAvKRcfipGgly+xeECHvCM1xF
-         gTKvVJHVGK9zU/BmDeHCrQDvHeVAwwdx1PkLXuHZbopbdRLoROi7ZOAJbJ3QZkZVyhcJ
-         CGX5GXVhJE4qLcZM0MMOlCS3ogw8zAms4rQTXGaIBD7vUKRw9SgsnRMdhwvS6SV2S/OL
-         P1MQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=SXti0mB7XzGaXBJrNPs/RcZqGfjO6pKp5r+aSUyXw5o=;
+        b=WS3NzvbY+RK8thTN3b6ZNYcPAnL5qM0Ql7f3Lbonavzjm4OeeWNHiLiDeDlynnC4ze
+         5P3IJ0ixEnPt8qekGicU5escEb1ZN7j7ITT9ZdzLHpUR9QQzj+CY8K5YosXS+deiJGcR
+         WNgN+bBf/tRvra5yPpKI72Ytq/z8VBdZtjSrdgJWZxLIacKotaeYwZfa7Ky0W384BN8s
+         hFpKEZY4SHOkl9FPCXnvMAUl/pYZwWKylSd2NxZmyJiwUgBuO/CxHjlELwevwFn0A2g0
+         sAMfcgq8wiHZ2QQQtp35kaYg+22HiagMDi2PPUBkMMdZBAgY6bM7NauD6oLCgIy+wMDm
+         /aOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2NCutzr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LfrmZl58;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d6-20020a05622a100600b003f221c60353si1880560qte.748.2023.06.21.09.43.39
+        by mx.google.com with ESMTPS id kk7-20020a056214508700b00630138406a4si2352188qvb.537.2023.06.21.21.53.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Jun 2023 09:43:39 -0700 (PDT)
+        Wed, 21 Jun 2023 21:53:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2NCutzr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LfrmZl58;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qC0vU-0002Xv-My; Wed, 21 Jun 2023 12:43:24 -0400
+	id 1qCCJj-0002RX-41; Thu, 22 Jun 2023 00:53:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qC0vT-0002Vm-ES
- for qemu-arm@nongnu.org; Wed, 21 Jun 2023 12:43:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1qC0vR-0004D4-9J
- for qemu-arm@nongnu.org; Wed, 21 Jun 2023 12:43:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687365799;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Yke3TL7j7AabmOFekvtWm48sFMuuC+Argv+QQoSN+N8=;
- b=h2NCutzrElqgDZR/RZ/N8hShMgKnRS+cM7seJXDbCz4JnXRkBs95U+t4XAsr8FnImYkZD1
- UmJNNdY1vnDSipAnyYBXBSoZMmCF+JOMMsRnKPs0IHqAVRnrtKyYy/ejarbD0n7bpGCBQo
- NszBL9Q0hXKWoxdwlBl7tRi8ryJ8pbQ=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-441-2nlj6bJLNYa78rOMG_NT4g-1; Wed, 21 Jun 2023 12:43:09 -0400
-X-MC-Unique: 2nlj6bJLNYa78rOMG_NT4g-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 735373C11C6E;
- Wed, 21 Jun 2023 16:42:58 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AEBE8200BA8B;
- Wed, 21 Jun 2023 16:42:57 +0000 (UTC)
-Date: Wed, 21 Jun 2023 17:42:55 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v3 34/37] crypto: Unexport AES_*_rot, AES_TeN, AES_TdN
-Message-ID: <ZJMoj1HlvwvdLiHK@redhat.com>
-References: <20230620110758.787479-1-richard.henderson@linaro.org>
- <20230620110758.787479-35-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qCCJW-0002QQ-60
+ for qemu-arm@nongnu.org; Thu, 22 Jun 2023 00:52:58 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qCCJT-0004Ng-6a
+ for qemu-arm@nongnu.org; Thu, 22 Jun 2023 00:52:57 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-51bdc87feb1so1590979a12.3
+ for <qemu-arm@nongnu.org>; Wed, 21 Jun 2023 21:52:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1687409573; x=1690001573;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=SXti0mB7XzGaXBJrNPs/RcZqGfjO6pKp5r+aSUyXw5o=;
+ b=LfrmZl58oyrVQHGSFq200RQmUGyRvh94Q6wg6dc1Ii+SrcJ2eMKZ6F/hzc+U2dIYIJ
+ XcwlO8IEhTrhzvi5AyReXnaG4V/3F+b0AqHWei9OgamAQzxQUCaBsUYr6GjtSbV68pgK
+ +Ln8nyiF8yWJ6VaLmljcqaBxeo//eAvEeU2rkAuEcabVb6zEGkwgf41rvxMOrRWCtbbo
+ K6N4Jq51zPmwSRrsiU9qZE1R1OLinpq8cCbCbFXmJEYpq0MPO9Cx56Aumv1elW5HBFDj
+ unPNxizCVWKI6CmnShOH+Mo4+bow7XpUQ/Rh8i+0EPIz7gdFEJ+pCTRWwPHk6PDA2olo
+ KTIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687409573; x=1690001573;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=SXti0mB7XzGaXBJrNPs/RcZqGfjO6pKp5r+aSUyXw5o=;
+ b=PtrxixVGaJZ/JqZcQgYfnp/Nak9TjfbFGjbY1ubpLlygYXNK9amQg6vnjy7cfAolgS
+ BELFE2dVpn9jVdR27m6ARY0VMELa1ybMvYSWDZm62fK/2V2jLWrjPUvKYRO/ycTrTTsP
+ OwpmD/n9eeNPkJ+3zYwiUJm36WoLEyNpMzorn4oftnTKgX9v4RdLBU8DT2v7JpP5kBNt
+ Evy+tMtAO9KBR/yEVOuSW41oo+TyOO3OCygNY9/hnGyHwpfkwumx9AwH01v2+TfkG8tS
+ dZdbFJkvUfBlCm+DQKsLKMA/RN5Qoc23jB+8e+6C+VSfEdWLxI5cQAmFt9V1yNYbNvAo
+ WFgw==
+X-Gm-Message-State: AC+VfDyYxuClJkhaYfACRfSc/yqEcrUxq/Z5+WKNhxoe641NVJ2UF0xZ
+ 7qwMAcojiLWk4gYKdYbikFGVIw==
+X-Received: by 2002:a17:907:843:b0:94f:7a8:a902 with SMTP id
+ ww3-20020a170907084300b0094f07a8a902mr17313756ejb.14.1687409573147; 
+ Wed, 21 Jun 2023 21:52:53 -0700 (PDT)
+Received: from [192.168.69.129] ([176.176.171.45])
+ by smtp.gmail.com with ESMTPSA id
+ qu21-20020a170907111500b00982cfe1fe5dsm3925198ejb.65.2023.06.21.21.52.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Jun 2023 21:52:52 -0700 (PDT)
+Message-ID: <59e80d79-4465-f99e-0515-7a8693879946@linaro.org>
+Date: Thu, 22 Jun 2023 06:52:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230620110758.787479-35-richard.henderson@linaro.org>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH v3 00/37] crypto: Provide aes-round.h and host accel
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: berrange@redhat.com, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+References: <20230620110758.787479-1-richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20230620110758.787479-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.093,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,28 +125,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vYbr4FRm6W9C
+X-TUID: F4l3EowM3yC6
 
-On Tue, Jun 20, 2023 at 01:07:55PM +0200, Richard Henderson wrote:
-> These arrays are no longer used outside of aes.c.
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  include/crypto/aes.h | 25 -------------------------
->  crypto/aes.c         | 33 +++++++++++++++++++++------------
->  2 files changed, 21 insertions(+), 37 deletions(-)
+On 6/20/23 13:07, Richard Henderson wrote:
+> Patches missing r-b:
+>    08-target-arm-Use-aesenc_SB_SR_AK.patch
+>    10-target-riscv-Use-aesenc_SB_SR_AK.patch
+>    13-target-arm-Use-aesdec_ISB_ISR_AK.patch
+>    15-target-riscv-Use-aesdec_ISB_ISR_AK.patch
+>    17-target-arm-Use-aesenc_MC.patch
+>    19-target-i386-Use-aesdec_IMC.patch
+>    20-target-arm-Use-aesdec_IMC.patch
+>    21-target-riscv-Use-aesdec_IMC.patch
+>    23-target-i386-Use-aesenc_SB_SR_MC_AK.patch
+>    25-target-riscv-Use-aesenc_SB_SR_MC_AK.patch
+>    27-target-i386-Use-aesdec_ISB_ISR_IMC_AK.patch
+>    28-target-riscv-Use-aesdec_ISB_ISR_IMC_AK.patch
+>    35-host-include-i386-Implement-aes-round.h.patch
+>    36-host-include-aarch64-Implement-aes-round.h.patch
 
-Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+The crypto/ portion of the patch set has now been reviewed (thanks Daniel P.B.), as well 
+as the target/ppc/ portions (thanks Daniel H.B.).
+
+What's left are the x86 and aa64 host accel, target/{arm,i386,riscv}.
+
+Would it make anything easier if I re-sorted and separated the unreviewed patches per target?
 
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+r~

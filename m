@@ -1,84 +1,84 @@
-Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp551056ejb;
-        Thu, 22 Jun 2023 09:10:14 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6EPrUA28FVSqzAecFtpRX/RDXHpzP76i2cw8drzJptxB71dKfZd1+NiyDPqzvParbvAi3T
-X-Received: by 2002:a05:6a00:1888:b0:668:6eed:7c0a with SMTP id x8-20020a056a00188800b006686eed7c0amr16691393pfh.19.1687450214383;
-        Thu, 22 Jun 2023 09:10:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687450214; cv=none;
+Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp551168ejb;
+        Thu, 22 Jun 2023 09:10:23 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7EmL9xji1tq6kTaV2rxRLh6isRO2OQ/bEFEZoX/LnPk69ub6xODeRxRqJjaFA32Wg2eVct
+X-Received: by 2002:a17:90a:db49:b0:25e:a1c0:af23 with SMTP id u9-20020a17090adb4900b0025ea1c0af23mr14526076pjx.38.1687450223151;
+        Thu, 22 Jun 2023 09:10:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687450223; cv=none;
         d=google.com; s=arc-20160816;
-        b=eBimNVb1Th94dg6qbyZBKNjYPGiPffthr+K176hHPw5k7KXmsGkVj6TVefFWGqnqX8
-         t7ooo7JWToYQAVK8PT8jWh9HFPN/KyBzuKl3qjFMA55htCzgBEFzs84+yv1UO4HTu2HL
-         y6b8rWVFPdMzjw2JQ+ZS91Yvqw0hzMw7+tlEPEtcrDmkfCtEWS/R1xE2YFvPUzXOMD+O
-         puVAnyk3GwxnD5WKQMSU8pBtTBOBlBtA0NyCnkU6lVtNVgzvmAfNN7tqlZi+3ArjDXPv
-         klUoTxmTpNWrxMFeByROVwECrD6Pe4OTQhIPLvfjg86WNME7+hm6zonJ46kKTq7HxkAF
-         +OOg==
+        b=GPlvlXmKSkWULXV4k4GLsixq9Gq1bqBjwbG1mMjhUYbRUqyVkbv+zA7s/rjpm67JOE
+         e/QKYB8DY2nZN3QhNaTgD5rYHzdIJkBHojp4FsMOVv08PH482Lyb30Js7qEzroBVjpJa
+         kToi5txJWgVMGX609bBh07LXWuMmJTdGwKu0li0v+rWF+LAj7UvpXvv6vgs61ZFZo0xF
+         z5cC83KE2oElOfjw7c+MlZGKRbl+jlVBGf3p5XYgSKFT1BE0F5xZMfzrH5Ge0XKigiKz
+         j6I1XdmuIA5guW/0z+2gkK/0hiFykyX2kfRPPyvw/DghEl476xdA5Jnl+2VQYBcmWZr6
+         lxQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=0HtP5OMiHV1uHyCREuOsPgXLNdWuwc5y+seBeAIuir0=;
-        b=NVlsD2h+4oLyZZOWni+CBSUXWpL/+BWN3Ebi2Uc3y04+eE4+V5RxmzbBVt26FnSdg3
-         JlYroYLx2ms3nRtAdAsVZNVNyFMybcfeoX6BzFHXfiyOsQKtpb2DYhX37AxnyRFsCJQW
-         gW/xuA6pTHypVPg5BsaP3QPEgsBIP1e1j0oaa/Z/Yg/pwos/zfiGuHOZjLFYkR23P5mg
-         muhkyxkHtEQxYHVpKlLWdYYirhTsoMRSn3kk4++FSoRZ7sCs2npgDyBste0qQGDxMHAm
-         +nOFhsLqFjUCLNhiN79DoyY+W/86K4Eg+HnBUuE1+oY7As9fUTAXihmF/PDqebiqmuRm
-         yUig==
+        bh=DKJxOwJmFtwOPAoIICT6M4A+Kzh99mIVYxe/d/9G77Y=;
+        b=rlHIDxqmt/j78XHu0si0QIdDgd7bgZATox7RPlvcP2xal2LqSQ3MrbVTyJcMV/bKAu
+         23nzI3rQ2R5X7X7wKmmaeKJ8TofdNC5tym9C4Ywmp6GvPGGxpzbXKJGc5UVCeXGE0V8J
+         LWMX+sXNwLZfzLeP9Tk8qS9FfV+S6cUDtDEIQIfSZrMr6WHRlCzu7eD0ZofQ0q/Uq4Z1
+         QQYqdSwfXGaiPqnGqXlF9yLoffVT5ZW26F77fl4LZ17RYc0IvFjBdq42OtE0zRdfD6vo
+         CeSdzlzsNlWMA/GfB3TV64tH78lqnO6+viQSsuImCtATPZ8mY5xEHH30MBa4oBoLEG8T
+         PAUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fD2yFKYV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eg02hjlf;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id d16-20020aa797b0000000b0066a4236908dsi3075027pfq.304.2023.06.22.09.10.14;
-        Thu, 22 Jun 2023 09:10:14 -0700 (PDT)
+        by mx.google.com with ESMTP id s8-20020a17090a13c800b0024e1ae3fb36si2726861pjf.128.2023.06.22.09.10.22;
+        Thu, 22 Jun 2023 09:10:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fD2yFKYV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eg02hjlf;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S230341AbjFVQKM (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 22 Jun 2023 12:10:12 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:50304 "EHLO
+        id S230478AbjFVQKV (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Thu, 22 Jun 2023 12:10:21 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:50416 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S230262AbjFVQKL (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 22 Jun 2023 12:10:11 -0400
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com [IPv6:2a00:1450:4864:20::431])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 83C6C1BD6
-        for <kvm@vger.kernel.org>; Thu, 22 Jun 2023 09:10:02 -0700 (PDT)
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3128fcd58f3so2076190f8f.1
-        for <kvm@vger.kernel.org>; Thu, 22 Jun 2023 09:10:02 -0700 (PDT)
+        with ESMTP id S230384AbjFVQKR (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 22 Jun 2023 12:10:17 -0400
+Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com [IPv6:2a00:1450:4864:20::42b])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 684DC19BE
+        for <kvm@vger.kernel.org>; Thu, 22 Jun 2023 09:10:12 -0700 (PDT)
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-311099fac92so8483998f8f.0
+        for <kvm@vger.kernel.org>; Thu, 22 Jun 2023 09:10:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687450201; x=1690042201;
+        d=linaro.org; s=google; t=1687450211; x=1690042211;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0HtP5OMiHV1uHyCREuOsPgXLNdWuwc5y+seBeAIuir0=;
-        b=fD2yFKYVUSbELRWkgGW0danFEJd49UvIoHVUaoL+iV8IqYQvNfiml31iLxtBJeKK+2
-         BhYPg4qUhHRzjckRgaA9Y7ICZhNcCZMhqc202pVq8XOrpxWtk6WoH7hxA67ck5XYCSA2
-         a1mUXkxpR3fQsnOmFzfz0iq4qYue5q1tdAT5/kH9rAuDXlR9gqshBZLvQbP2e7xh87Rz
-         116ue4dKX7z8nRG43aPZMWOGjKu3Mtzz5LGCpfwr8CqoismIj/q6QyBXeNO1kiC0U6lz
-         /+jW94I7TghlhujpjnaWLHWAqKt+jU29K9hKNOv+XTxyLGAUr4jy4FnAEonFW8sot8W/
-         zLTg==
+        bh=DKJxOwJmFtwOPAoIICT6M4A+Kzh99mIVYxe/d/9G77Y=;
+        b=eg02hjlfgcDaH24aEbjvIFOFqry3t+y3ca6mONxnjQGWPL1Jdtwu4KdzlrO2pncUEm
+         v2uAXFNtaqYiIggOc18WWF8JNx7doFAbVKyL4i5VvjAKuJTrn61jQREqSGuH7wbxPOHB
+         SQl9lpmkdOY2I8TmvPTRmSHTV/xdmaBelLgPfNn9zpSA2OubeWfB677UATrlvOYIbcR5
+         Xd77M5NfRhzJ8nLGIWLXvPckfbvl62BDfMBhKFdJDV8OUDdGPmWJ81CYWWuuNJVbGqz8
+         ykGAHRraJs8kr5Nc/YT6E4MagkrdbYLZbwKyQ84h9/BoPe+M9i29JT/WKZ3nt6qAzCaS
+         onVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687450201; x=1690042201;
+        d=1e100.net; s=20221208; t=1687450211; x=1690042211;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0HtP5OMiHV1uHyCREuOsPgXLNdWuwc5y+seBeAIuir0=;
-        b=d9RHWVA7UUkAC2UzLwck+i8goRaDst48keYIasz3crzCkvs4bI5m5cmOz8CzfHfmvB
-         qNTz4JttwiJuxQ9xS6AuoMqXRJ6kjWGKpVIkhPrg1v5cS0P6r0dir0pkCTo9LYd/O7ga
-         oQbxmIbUsALp3cyqjfdkbtquQJ02W/iqs+jwIFvGKs385vyBUnoWHscqjHoKszo6cKJ2
-         KTxWuL006AblGvhp4RvuUSdp7til1aGWGqNtHcspkRyd27IWElN7POpSEusY58ewd5GN
-         ngHwNH28uH7oUfYGwaPs6J4ecebAdeE01iYF/+Bp1OXEQSF99UpFM3gFEfJZd8CQyznW
-         8LOQ==
-X-Gm-Message-State: AC+VfDxFLACqGQpHXLtZuKpTG62Yq4d06pxaB9UrWJeUY6JBj1n9KNFX
-        gBFvG2tu+OP9vpr99wm/jGv2Pw==
-X-Received: by 2002:adf:e611:0:b0:309:fcbe:748a with SMTP id p17-20020adfe611000000b00309fcbe748amr17046247wrm.11.1687450201085;
-        Thu, 22 Jun 2023 09:10:01 -0700 (PDT)
+        bh=DKJxOwJmFtwOPAoIICT6M4A+Kzh99mIVYxe/d/9G77Y=;
+        b=eq7bnVyIbXXsp3GQP6HN6YSJVKk7WV2UrukEskEhQfqLzi1xL0g7OnVlaNxYVnRpzZ
+         BrDl9GdSU5XjPy79HvRHzxRhr2uEluyL2BAB3rvVBDMwo+J3bl1TYCEuFIhGBzNTR6Ms
+         ehAkPUHXi+OyZ+e+pqe5oRH71jFIMJZjSQMSZ/b4uI3E8LRDLK9qvP4tgUs3qdzzyF0F
+         FyPyVHTwvY+4q7WjA05onO2NrPHkrxty6zP99kM5mH1lL2fI769VWsc52dyed6eYujcL
+         ajBww2fQ6INbu8dnnIQcly3pB4Pc6K3VWpnWaHDK2LWWSwifoFw6oAtBjL4DoXFfdRtS
+         3EQQ==
+X-Gm-Message-State: AC+VfDzB3TGtrRzkxnxVxfMoqCgzQVv1Tfl4gtrPcFFA1+wIT3s5/yjI
+        TuSkeryEjh5ACZJTa885y8TYoQ==
+X-Received: by 2002:a5d:5751:0:b0:30f:c943:f925 with SMTP id q17-20020a5d5751000000b0030fc943f925mr15315373wrw.49.1687450210926;
+        Thu, 22 Jun 2023 09:10:10 -0700 (PDT)
 Received: from localhost.localdomain (230.red-88-28-3.dynamicip.rima-tde.net. [88.28.3.230])
-        by smtp.gmail.com with ESMTPSA id 18-20020a05600c231200b003f9063fc3cbsm15728619wmo.44.2023.06.22.09.09.56
+        by smtp.gmail.com with ESMTPSA id p1-20020adfcc81000000b0030ada01ca78sm7404978wrj.10.2023.06.22.09.10.06
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 22 Jun 2023 09:10:00 -0700 (PDT)
+        Thu, 22 Jun 2023 09:10:10 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To:     qemu-devel@nongnu.org
 Cc:     Reinoud Zandijk <reinoud@netbsd.org>, qemu-arm@nongnu.org,
@@ -97,9 +97,9 @@ Cc:     Reinoud Zandijk <reinoud@netbsd.org>, qemu-arm@nongnu.org,
         xen-devel@lists.xenproject.org,
         Eduardo Habkost <eduardo@habkost.net>,
         Cameron Esfahani <dirty@apple.com>
-Subject: [PATCH v2 09/16] accel: Remove NVMM unreachable error path
-Date:   Thu, 22 Jun 2023 18:08:16 +0200
-Message-Id: <20230622160823.71851-10-philmd@linaro.org>
+Subject: [PATCH v2 10/16] accel: Rename NVMM 'struct qemu_vcpu' -> AccelCPUState
+Date:   Thu, 22 Jun 2023 18:08:17 +0200
+Message-Id: <20230622160823.71851-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230622160823.71851-1-philmd@linaro.org>
 References: <20230622160823.71851-1-philmd@linaro.org>
@@ -115,31 +115,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: mdmtGJLviyON
+X-TUID: a8ZFmnaQhDI7
 
-g_malloc0() can not fail. Remove the unreachable error path.
+We want all accelerators to share the same opaque pointer in
+CPUState. Rename NVMM 'qemu_vcpu' as 'AccelCPUState'; directly
+use the typedef, remove unnecessary casts.
 
-https://developer-old.gnome.org/glib/stable/glib-Memory-Allocation.html#glib-Memory-Allocation.description
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/nvmm/nvmm-all.c | 4 ----
- 1 file changed, 4 deletions(-)
+ target/i386/nvmm/nvmm-all.c | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
 
 diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
-index 50b96ced45..0588a328ae 100644
+index 0588a328ae..e5ee4af084 100644
 --- a/target/i386/nvmm/nvmm-all.c
 +++ b/target/i386/nvmm/nvmm-all.c
-@@ -943,10 +943,6 @@ nvmm_init_vcpu(CPUState *cpu)
+@@ -26,7 +26,7 @@
+ 
+ #include <nvmm.h>
+ 
+-struct qemu_vcpu {
++struct AccelCPUState {
+     struct nvmm_vcpu vcpu;
+     uint8_t tpr;
+     bool stop;
+@@ -49,10 +49,10 @@ struct qemu_machine {
+ static bool nvmm_allowed;
+ static struct qemu_machine qemu_mach;
+ 
+-static struct qemu_vcpu *
++static AccelCPUState *
+ get_qemu_vcpu(CPUState *cpu)
+ {
+-    return (struct qemu_vcpu *)cpu->accel;
++    return cpu->accel;
+ }
+ 
+ static struct nvmm_machine *
+@@ -86,7 +86,7 @@ nvmm_set_registers(CPUState *cpu)
+ {
+     CPUX86State *env = cpu->env_ptr;
+     struct nvmm_machine *mach = get_nvmm_mach();
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     struct nvmm_x64_state *state = vcpu->state;
+     uint64_t bitmap;
+@@ -223,7 +223,7 @@ nvmm_get_registers(CPUState *cpu)
+ {
+     CPUX86State *env = cpu->env_ptr;
+     struct nvmm_machine *mach = get_nvmm_mach();
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     struct nvmm_x64_state *state = vcpu->state;
+@@ -347,7 +347,7 @@ static bool
+ nvmm_can_take_int(CPUState *cpu)
+ {
+     CPUX86State *env = cpu->env_ptr;
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     struct nvmm_machine *mach = get_nvmm_mach();
+ 
+@@ -372,7 +372,7 @@ nvmm_can_take_int(CPUState *cpu)
+ static bool
+ nvmm_can_take_nmi(CPUState *cpu)
+ {
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+ 
+     /*
+      * Contrary to INTs, NMIs always schedule an exit when they are
+@@ -395,7 +395,7 @@ nvmm_vcpu_pre_run(CPUState *cpu)
+ {
+     CPUX86State *env = cpu->env_ptr;
+     struct nvmm_machine *mach = get_nvmm_mach();
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     struct nvmm_x64_state *state = vcpu->state;
+@@ -478,7 +478,7 @@ nvmm_vcpu_pre_run(CPUState *cpu)
+ static void
+ nvmm_vcpu_post_run(CPUState *cpu, struct nvmm_vcpu_exit *exit)
+ {
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     CPUX86State *env = cpu->env_ptr;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     uint64_t tpr;
+@@ -565,7 +565,7 @@ static int
+ nvmm_handle_rdmsr(struct nvmm_machine *mach, CPUState *cpu,
+     struct nvmm_vcpu_exit *exit)
+ {
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     struct nvmm_x64_state *state = vcpu->state;
+@@ -610,7 +610,7 @@ static int
+ nvmm_handle_wrmsr(struct nvmm_machine *mach, CPUState *cpu,
+     struct nvmm_vcpu_exit *exit)
+ {
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     struct nvmm_x64_state *state = vcpu->state;
+@@ -686,7 +686,7 @@ nvmm_vcpu_loop(CPUState *cpu)
+ {
+     CPUX86State *env = cpu->env_ptr;
+     struct nvmm_machine *mach = get_nvmm_mach();
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+     struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+     X86CPU *x86_cpu = X86_CPU(cpu);
+     struct nvmm_vcpu_exit *exit = vcpu->exit;
+@@ -892,7 +892,7 @@ static void
+ nvmm_ipi_signal(int sigcpu)
+ {
+     if (current_cpu) {
+-        struct qemu_vcpu *qcpu = get_qemu_vcpu(current_cpu);
++        AccelCPUState *qcpu = get_qemu_vcpu(current_cpu);
+ #if NVMM_USER_VERSION >= 2
+         struct nvmm_vcpu *vcpu = &qcpu->vcpu;
+         nvmm_vcpu_stop(vcpu);
+@@ -926,7 +926,7 @@ nvmm_init_vcpu(CPUState *cpu)
+     struct nvmm_vcpu_conf_cpuid cpuid;
+     struct nvmm_vcpu_conf_tpr tpr;
+     Error *local_error = NULL;
+-    struct qemu_vcpu *qcpu;
++    AccelCPUState *qcpu;
+     int ret, err;
+ 
+     nvmm_init_cpu_signals();
+@@ -942,7 +942,7 @@ nvmm_init_vcpu(CPUState *cpu)
+         }
      }
  
-     qcpu = g_malloc0(sizeof(*qcpu));
--    if (qcpu == NULL) {
--        error_report("NVMM: Failed to allocate VCPU context.");
--        return -ENOMEM;
--    }
+-    qcpu = g_malloc0(sizeof(*qcpu));
++    qcpu = g_new0(AccelCPUState, 1);
  
      ret = nvmm_vcpu_create(mach, cpu->cpu_index, &qcpu->vcpu);
      if (ret == -1) {
+@@ -991,7 +991,7 @@ nvmm_init_vcpu(CPUState *cpu)
+     }
+ 
+     cpu->vcpu_dirty = true;
+-    cpu->accel = (struct AccelCPUState *)qcpu;
++    cpu->accel = qcpu;
+ 
+     return 0;
+ }
+@@ -1023,7 +1023,7 @@ void
+ nvmm_destroy_vcpu(CPUState *cpu)
+ {
+     struct nvmm_machine *mach = get_nvmm_mach();
+-    struct qemu_vcpu *qcpu = get_qemu_vcpu(cpu);
++    AccelCPUState *qcpu = get_qemu_vcpu(cpu);
+ 
+     nvmm_vcpu_destroy(mach, &qcpu->vcpu);
+     g_free(cpu->accel);
 -- 
 2.38.1

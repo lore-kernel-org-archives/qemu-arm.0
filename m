@@ -1,385 +1,163 @@
-Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp128214ejb;
-        Wed, 21 Jun 2023 13:37:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7ZO3KHIJnchdoCFWb0U5dAXOnsuGD9GtXJdm7UEhKx6+vvDRczjYB5TvW9qSwvSJr/ANbc
-X-Received: by 2002:a25:4c84:0:b0:bca:1d11:c02e with SMTP id z126-20020a254c84000000b00bca1d11c02emr16287264yba.13.1687379833507;
-        Wed, 21 Jun 2023 13:37:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687379833; cv=none;
+Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp480029ejb;
+        Thu, 22 Jun 2023 06:59:59 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5M9ZEmaKEwTP3ZsbvajVzA2gJncOytdJUyHiR7ocMcoY0QyAIVYDJ+9kVusa2H8/8+wu3l
+X-Received: by 2002:a05:622a:1819:b0:3ff:2e69:c33 with SMTP id t25-20020a05622a181900b003ff2e690c33mr8782623qtc.48.1687442399065;
+        Thu, 22 Jun 2023 06:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687442399; cv=none;
         d=google.com; s=arc-20160816;
-        b=pDcmyBlszu1bun3rTaHox2P725UdtEmcUCMPQaVRvixUWLLwWLGgoV/UTE3ngywXVI
-         PWHP14nRHiDy1yG3qJaeWubLZgZs4KsmCtoZD9VtE+ZDzy+GV/Ak/zeM+WIxY1KUoGjr
-         6F56QT4WW2RsnDWjbbrra+FVs/XSnnzINVg4qTrO7RSR4N37CFknZ1HqhCsD/usXKitN
-         cesSnwe4p4J5vpyhDA78vmqyEBRmvn4pzKQyqH+P4LHT/4+h8mTvkPMiAkQ9MFb+wvE9
-         p2Ah+kE8SG6j/Zktfn7kFssGPw7sRCiwhIWVZNkkb0w8bIjpD2RixVw6PybbPEzOrQNl
-         ihPQ==
+        b=zWPVdul/4VF8crjpOEMR4EHIb75j5M3sis/DdQwqTnFzWhEBiza4VVXJvuhnaINfji
+         JSnVyuHIicpfL997MQDej1mrzI647cnj4+oLniDQUus6OJvgBtgVLQKZY8Z3Iw3N+BEw
+         vWWkkd64Ew17dCfEXONY8cjdWFr9GlOaLuYJa45CVdKjixP2qgNxiRtIwImUUuMapt0z
+         26HjJnSXLNX5E+w9UynMQumm69bhdx1gjIE133itBOW5P5HH8KJ+0EdxkiAxl5cs8Cdn
+         4vwy2JNB7jJDCUlQ+k1oY7nyydqdlELr62GURqXwUdOYPJsOFwdrtvjL3imth+Kb3Xzq
+         Rs2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ahMhY2u/DpFVErbZsXrJH0wjQ5jtL+O7LQPw+xOoAZY=;
-        b=TydRvyVV1pZY8I/6haHSPjPvaMfL0Uq7C8zLUVpfRCW4EC5lMR9H6LMND/CrsvnhBG
-         0eJIPvznNT1yAOdfZsyMtGU2pWfym0nPHJ70d5My4+41IwT7hjGos4DFhwURVZ63aB2u
-         CBiFuIdCvSMAEBtq04ak9C6vkRW+LpQ5gXVprd3jJwechFLy3kH5f993MZHDd433qJVd
-         G1JtMEelH5tua2x1OP4P9rOmhVne5pu2UTk864gCBRwuxD79rV9cbu5tW5uk+O4cVZya
-         CdLoPRteKTTytxG8EUnVo32kIkLV6SwNNcgT4JWo/Rvaz8I+w5a/28ngznk41EuCu1i+
-         zv8g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=bhCGK1Udctd5tXAFEWdQfmo/teRerH5/qe8OPBdNwJA=;
+        b=GZDXq1sepHPsxiBUHvJTpIizcmUjl42wYFRBmBwjPbnfzV5nNRQPmqG8c1aeSX8Ju7
+         ma0r08MCkTJm/2hkqv5bpY5/xbToc69lW5a6LbDZpUAEmujen7VM9rveVVGQO/ll4aAK
+         +V+aTRu9pKDPHWhCWfdgOoC4MsRpBDdadP49UL9ZhHlcCgsUa81QYWCqBLphBiaVD6t2
+         8BdS4chDa34la5e098Z40nf/X/cd+xdG7Az+7NVMEeN8vYN30ZE5suTp/9+lVf2Er/1Z
+         E2mWEh1/xB4fnVld1KQpnsrIHVpapGCHMF1jvPm5w662u4L4vRwrODJIEEXcvxVoJgbQ
+         W31g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Vq+K4Fmc;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id e78-20020a256951000000b00bcdccf26648si4644715ybc.283.2023.06.21.13.37.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 21 Jun 2023 13:37:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wep8NQYt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 18-20020ac85712000000b003ff23c87469si2672723qtw.315.2023.06.22.06.59.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 22 Jun 2023 06:59:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Vq+K4Fmc;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 35LK9td2016315;
-	Wed, 21 Jun 2023 20:37:13 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : content-transfer-encoding
- : mime-version; s=pp1; bh=ahMhY2u/DpFVErbZsXrJH0wjQ5jtL+O7LQPw+xOoAZY=;
- b=Vq+K4FmcCS/mlkH5Xz/d02SAva98Q8nH6yOlf246mafkhj64t3dIimMP8H4gGpwU/UT2
- Uqb/Tv2sGz/yFNiWa5HIv27eGe+3/h3z+iByao7GjDwjoOdPIgwTf8/h1nZHmIwmM2Gn
- ZqtoJj8XoCS8PhIb5Ev24MeM1n4Y457KuiRYBRGYjKxcEY8SjoZSEx+53ecgtuXQ9X4u
- D9KYpeZJ+PLjkyQadyJrFnwu85AWdZC/rseWIgP9VqkkV0j1r/KVePk05K8OaxURmgDG
- x30yK7Vwt1wVBmKGJgsOhWB3qD9/99fsxNbStoQsmK00dKV9+vTODsqpG8irWPcd0B1j 5w== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc7u98thp-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:37:12 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 35LKOHR3006902;
-	Wed, 21 Jun 2023 20:37:11 GMT
-Received: from ppma01fra.de.ibm.com (46.49.7a9f.ip4.static.sl-reverse.com [159.122.73.70])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3rc7u98t48-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:37:11 +0000
-Received: from pps.filterd (ppma01fra.de.ibm.com [127.0.0.1])
-	by ppma01fra.de.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 35LFbkM2015370;
-	Wed, 21 Jun 2023 20:36:52 GMT
-Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
-	by ppma01fra.de.ibm.com (PPS) with ESMTPS id 3r94f52ahv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 21 Jun 2023 20:36:52 +0000
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com [10.20.54.102])
-	by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 35LKaoRS46924232
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 21 Jun 2023 20:36:50 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 48D892004B;
-	Wed, 21 Jun 2023 20:36:50 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id B6E9B20040;
-	Wed, 21 Jun 2023 20:36:49 +0000 (GMT)
-Received: from heavy.boeblingen.de.ibm.com (unknown [9.179.1.208])
-	by smtpav03.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 21 Jun 2023 20:36:49 +0000 (GMT)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        David Hildenbrand <david@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        Ilya Leoshkevich <iii@linux.ibm.com>,
-        "Dominik 'Disconnect3d' Czarnota" <dominik.b.czarnota@gmail.com>
-Subject: [PATCH v4 6/8] gdbstub: Add support for info proc mappings
-Date: Wed, 21 Jun 2023 22:36:25 +0200
-Message-Id: <20230621203627.1808446-7-iii@linux.ibm.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20230621203627.1808446-1-iii@linux.ibm.com>
-References: <20230621203627.1808446-1-iii@linux.ibm.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: 3KnuIU4Ai-9KmgKPHNT_6B_B8_4uigum
-X-Proofpoint-ORIG-GUID: XiEP9650TWIyHcFGih4pvr8Xf7-_8s7T
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wep8NQYt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qCKpf-0001t2-Tt; Thu, 22 Jun 2023 09:58:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qCKpe-0001d8-5U
+ for qemu-arm@nongnu.org; Thu, 22 Jun 2023 09:58:42 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qCKpc-00020l-6H
+ for qemu-arm@nongnu.org; Thu, 22 Jun 2023 09:58:41 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-51bdca52424so2129594a12.3
+ for <qemu-arm@nongnu.org>; Thu, 22 Jun 2023 06:58:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1687442318; x=1690034318;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bhCGK1Udctd5tXAFEWdQfmo/teRerH5/qe8OPBdNwJA=;
+ b=Wep8NQYtoF06+cC7hZDTmkqE68iHopq7xFBixC0hEBP8sEBdSxZdqElPV2ZK7nN/89
+ 2XL3i3hVSbtQYZufLbm6RW9kfpXKUU+QaJ/vWhC0NINnF7fT0Yn6LRJsHmQVEkQZhRPN
+ TRIhtDBA6hTCDJGKbecaDq38rCRBg1segGE4O+rnn2U1nbVdDbE1qWKCWvH8ulMKfIpd
+ mqMu3kuj9z4d8klfldOPqgQiuVQVkzI4XQ7GtScLPAsZxlNQJ1GGCOzm28/SRe8xDvtN
+ /lDl1G10gXBC3IkSZUo8fmm2EIhTZwuMPdEvc8OqNkkA7xW/TmSoa4jVpf0saDSMZPmN
+ sQ/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687442318; x=1690034318;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=bhCGK1Udctd5tXAFEWdQfmo/teRerH5/qe8OPBdNwJA=;
+ b=bueIFJidteYfcVVA0quxcyPOk0bO7qyqD/TKPqPjQt5K6n3PjNpU62wsk3hYxwG07Z
+ FN3308iScrAD5NDJ2piv0pzspZHH9zGxwYIV6R11IYD0OhsCGCSLS1L4wCodr2upqvfa
+ p0gDpzPQxUFiuIiEgv82swgE/xSxZaRKsvAoys2UmMCGmPcMTv6ttUp4yqvJVTQpXlnE
+ zM1CtK1FgfYbm4g+v5dipNKelRe2kJPaQG+8gbssZBgIa5uzxvIoIcBDb3HilS3ZEypj
+ zqkW7EGbe2piNkuzwyRlbUgXO+kINzseIQg5lIHE3hmXoOv6Mijw90pevuNtRdhvlr45
+ eJtQ==
+X-Gm-Message-State: AC+VfDwceMdwgSBSxbYXiECX5GL1MW+87vm7FkgzTkaYFTnH0giQwPwX
+ f8bZ7q0L4wETNS5OoAbyxWSFSW8mkxNqu5+ef8DckZCCAhOg299Q
+X-Received: by 2002:a50:ed9a:0:b0:51a:5b89:8d06 with SMTP id
+ h26-20020a50ed9a000000b0051a5b898d06mr8296985edr.8.1687442318152; Thu, 22 Jun
+ 2023 06:58:38 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-06-21_12,2023-06-16_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=999 bulkscore=0
- lowpriorityscore=0 malwarescore=0 clxscore=1015 phishscore=0
- suspectscore=0 mlxscore=0 priorityscore=1501 adultscore=0 impostorscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2305260000 definitions=main-2306210172
-X-TUID: luoGaWbmAkBA
+References: <cdacca34302f3eb2b71addffba1e6b89d7f4a190.59e36293.4646.46a0.a1bb.76c2198a3286@feishu.cn>
+In-Reply-To: <cdacca34302f3eb2b71addffba1e6b89d7f4a190.59e36293.4646.46a0.a1bb.76c2198a3286@feishu.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Jun 2023 14:58:27 +0100
+Message-ID: <CAFEAcA_mdccrdJOUui-4fQByoyyKHsr2ikxRECgtXPEAZwG=qQ@mail.gmail.com>
+Subject: Re: No print info when starrting qemu-system-aarch64
+To: =?UTF-8?B?5ZCV6LSk?= <xian.lv@enjoymove.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VAcKYKk10JvC
 
-Currently the GDB's generate-core-file command doesn't work well with
-qemu-user: the resulting dumps are huge [1] and at the same time
-incomplete (argv and envp are missing). The reason is that GDB has no
-access to proc mappings and therefore has to fall back to using
-heuristics for discovering them. This is, in turn, because qemu-user
-does not implement the Host I/O feature of the GDB Remote Serial
-Protocol.
+On Fri, 16 Jun 2023 at 08:23, =E5=90=95=E8=B4=A4 <xian.lv@enjoymove.com> wr=
+ote:
+>
+> Dear qemu guys,
+>
+>     I've met with a strange problem when using qemu as simulator for arm6=
+4.
+> I tried to start qemu with the command below:
+> ------
+> sudo qemu-system-aarch64 -machine virt -cpu cortex-a72 -smp 2 -m 2048 -ke=
+rnel Image -append "console=3DttyAMA0 root=3D/dev/vda" -nographic -drive fi=
+le=3Dramdisk.img -drive file=3Ddisk.img -nic tap,model=3De1000,script=3D/et=
+c/qemu-ifup
+> ------
+> The file:Image is the kernel bin of linux kernel  which compiled with def=
+ault config.
+> While I tried with linux kernel-5.15, then the simulator can be started p=
+roperly.
+> For the kernel 6.3.8; kernel-5.10.130, the result is OK as well
+> But there's no output info after the command executed if the kernel befor=
+e 4.19 is used.
+> Is there any problem when early linux kernel (before 4.19) is used for qe=
+mu tools ?
 
-Implement vFile:{open,close,pread,readlink} and also
-qXfer:exec-file:read+. With that, generate-core-file begins to work on
-aarch64 and s390x.
+The further back in kernel history you go, the more likely it
+is that you will run into some kernel bug or other that
+was fixed in later versions. 4.19 was first released nearly
+5 years ago, which makes it pretty ancient in the aarch64 world.
+There was also some point at which the defconfig had the
+extra devices added into it to make it boot on QEMU, so if you're
+building a kernel before that point you need to manually
+add them. I forget when that was.
 
-[1] https://sourceware.org/pipermail/gdb-patches/2023-May/199432.html
+If you care about trying to track this down you probably need
+to start debugging the cause of the boot failure, and perhaps
+bisecting the upstream kernels to see when it started booting
+OK. But the simplest approach is "don't use such old kernel
+versions" :-)
 
-Co-developed-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
----
- gdbstub/gdbstub.c     |  45 +++++++++++++-
- gdbstub/internals.h   |   5 ++
- gdbstub/user-target.c | 139 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 187 insertions(+), 2 deletions(-)
-
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index c7e3ee71f2..d2efefd352 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -1337,6 +1337,36 @@ static const GdbCmdParseEntry gdb_v_commands_table[] = {
-         .cmd = "Kill;",
-         .cmd_startswith = 1
-     },
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * Host I/O Packets. See [1] for details.
-+     * [1] https://sourceware.org/gdb/onlinedocs/gdb/Host-I_002fO-Packets.html
-+     */
-+    {
-+        .handler = gdb_handle_v_file_open,
-+        .cmd = "File:open:",
-+        .cmd_startswith = 1,
-+        .schema = "s,L,L0"
-+    },
-+    {
-+        .handler = gdb_handle_v_file_close,
-+        .cmd = "File:close:",
-+        .cmd_startswith = 1,
-+        .schema = "l0"
-+    },
-+    {
-+        .handler = gdb_handle_v_file_pread,
-+        .cmd = "File:pread:",
-+        .cmd_startswith = 1,
-+        .schema = "l,L,L0"
-+    },
-+    {
-+        .handler = gdb_handle_v_file_readlink,
-+        .cmd = "File:readlink:",
-+        .cmd_startswith = 1,
-+        .schema = "s0"
-+    },
-+#endif
- };
- 
- static void handle_v_commands(GArray *params, void *user_ctx)
-@@ -1482,11 +1512,14 @@ static void handle_query_supported(GArray *params, void *user_ctx)
-             ";ReverseStep+;ReverseContinue+");
-     }
- 
--#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
-+#if defined(CONFIG_USER_ONLY)
-+#if defined(CONFIG_LINUX)
-     if (gdbserver_state.c_cpu->opaque) {
-         g_string_append(gdbserver_state.str_buf, ";qXfer:auxv:read+");
-     }
- #endif
-+    g_string_append(gdbserver_state.str_buf, ";qXfer:exec-file:read+");
-+#endif
- 
-     if (params->len &&
-         strstr(get_param(params, 0)->data, "multiprocess+")) {
-@@ -1625,13 +1658,21 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
-         .cmd_startswith = 1,
-         .schema = "s:l,l0"
-     },
--#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
-+#if defined(CONFIG_USER_ONLY)
-+#if defined(CONFIG_LINUX)
-     {
-         .handler = gdb_handle_query_xfer_auxv,
-         .cmd = "Xfer:auxv:read::",
-         .cmd_startswith = 1,
-         .schema = "l,l0"
-     },
-+#endif
-+    {
-+        .handler = gdb_handle_query_xfer_exec_file,
-+        .cmd = "Xfer:exec-file:read:",
-+        .cmd_startswith = 1,
-+        .schema = "l:l,l0"
-+    },
- #endif
-     {
-         .handler = gdb_handle_query_attached,
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 25e4d5eeaa..f2b46cce41 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -189,6 +189,11 @@ typedef union GdbCmdVariant {
- void gdb_handle_query_rcmd(GArray *params, void *user_ctx); /* softmmu */
- void gdb_handle_query_offsets(GArray *params, void *user_ctx); /* user */
- void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
-+void gdb_handle_v_file_open(GArray *params, void *user_ctx); /* user */
-+void gdb_handle_v_file_close(GArray *params, void *user_ctx); /* user */
-+void gdb_handle_v_file_pread(GArray *params, void *user_ctx); /* user */
-+void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user */
-+void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
- 
- void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
- 
-diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
-index fa0e59ec9a..5f0098c806 100644
---- a/gdbstub/user-target.c
-+++ b/gdbstub/user-target.c
-@@ -11,6 +11,10 @@
- #include "exec/gdbstub.h"
- #include "qemu.h"
- #include "internals.h"
-+#ifdef CONFIG_LINUX
-+#include "linux-user/loader.h"
-+#include "linux-user/qemu.h"
-+#endif
- 
- /*
-  * Map target signal numbers to GDB protocol signal numbers and vice
-@@ -281,3 +285,138 @@ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx)
-                       gdbserver_state.str_buf->len, true);
- }
- #endif
-+
-+static const char *get_filename_param(GArray *params, int i)
-+{
-+    const char *hex_filename = get_param(params, i)->data;
-+    gdb_hextomem(gdbserver_state.mem_buf, hex_filename,
-+                 strlen(hex_filename) / 2);
-+    g_byte_array_append(gdbserver_state.mem_buf, (const guint8 *)"", 1);
-+    return (const char *)gdbserver_state.mem_buf->data;
-+}
-+
-+static void hostio_reply_with_data(const void *buf, size_t n)
-+{
-+    g_string_printf(gdbserver_state.str_buf, "F%zx;", n);
-+    gdb_memtox(gdbserver_state.str_buf, buf, n);
-+    gdb_put_packet_binary(gdbserver_state.str_buf->str,
-+                          gdbserver_state.str_buf->len, true);
-+}
-+
-+void gdb_handle_v_file_open(GArray *params, void *user_ctx)
-+{
-+    const char *filename = get_filename_param(params, 0);
-+    uint64_t flags = get_param(params, 1)->val_ull;
-+    uint64_t mode = get_param(params, 2)->val_ull;
-+
-+#ifdef CONFIG_LINUX
-+    int fd = do_guest_openat(gdbserver_state.g_cpu->env_ptr, 0, filename,
-+                             flags, mode, false);
-+#else
-+    int fd = open(filename, flags, mode);
-+#endif
-+    if (fd < 0) {
-+        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-+    } else {
-+        g_string_printf(gdbserver_state.str_buf, "F%d", fd);
-+    }
-+    gdb_put_strbuf();
-+}
-+
-+void gdb_handle_v_file_close(GArray *params, void *user_ctx)
-+{
-+    int fd = get_param(params, 0)->val_ul;
-+
-+    if (close(fd) == -1) {
-+        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-+        gdb_put_strbuf();
-+        return;
-+    }
-+
-+    gdb_put_packet("F00");
-+}
-+
-+#define BUFSIZ 8192
-+
-+void gdb_handle_v_file_pread(GArray *params, void *user_ctx)
-+{
-+    int fd = get_param(params, 0)->val_ul;
-+    size_t count = get_param(params, 1)->val_ull;
-+    off_t offset = get_param(params, 2)->val_ull;
-+
-+    size_t bufsiz = MIN(count, BUFSIZ);
-+    g_autofree char *buf = g_try_malloc(bufsiz);
-+    if (buf == NULL) {
-+        gdb_put_packet("E12");
-+        return;
-+    }
-+
-+    ssize_t n = pread(fd, buf, bufsiz, offset);
-+    if (n < 0) {
-+        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-+        gdb_put_strbuf();
-+        return;
-+    }
-+    hostio_reply_with_data(buf, n);
-+}
-+
-+void gdb_handle_v_file_readlink(GArray *params, void *user_ctx)
-+{
-+    const char *filename = get_filename_param(params, 0);
-+
-+    g_autofree char *buf = g_try_malloc(BUFSIZ);
-+    if (buf == NULL) {
-+        gdb_put_packet("E12");
-+        return;
-+    }
-+
-+#ifdef CONFIG_LINUX
-+    ssize_t n = do_guest_readlink(filename, buf, BUFSIZ);
-+#else
-+    ssize_t n = readlink(filename, buf, BUFSIZ);
-+#endif
-+    if (n < 0) {
-+        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-+        gdb_put_strbuf();
-+        return;
-+    }
-+    hostio_reply_with_data(buf, n);
-+}
-+
-+void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx)
-+{
-+    uint32_t pid = get_param(params, 0)->val_ul;
-+    uint32_t offset = get_param(params, 1)->val_ul;
-+    uint32_t length = get_param(params, 2)->val_ul;
-+
-+    GDBProcess *process = gdb_get_process(pid);
-+    if (!process) {
-+        gdb_put_packet("E00");
-+        return;
-+    }
-+
-+    CPUState *cpu = gdb_get_first_cpu_in_process(process);
-+    if (!cpu) {
-+        gdb_put_packet("E00");
-+        return;
-+    }
-+
-+    TaskState *ts = cpu->opaque;
-+    if (!ts || !ts->bprm || !ts->bprm->filename) {
-+        gdb_put_packet("E00");
-+        return;
-+    }
-+
-+    size_t total_length = strlen(ts->bprm->filename);
-+    if (offset > total_length) {
-+        gdb_put_packet("E00");
-+        return;
-+    }
-+    if (offset + length > total_length) {
-+        length = total_length - offset;
-+    }
-+
-+    g_string_printf(gdbserver_state.str_buf, "l%.*s", length,
-+                    ts->bprm->filename + offset);
-+    gdb_put_strbuf();
-+}
--- 
-2.40.1
+thanks
+-- PMM

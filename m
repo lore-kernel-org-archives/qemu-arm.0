@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp114649ejn;
-        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6Wkrqp9vYwf2vaTlJfPqbR+FPl0Ym5Wyslgt0L6iR7Vw0D9f60VRiiY8x6a3FNOMlauWDL
-X-Received: by 2002:a05:622a:c5:b0:3fd:ecdc:1e0f with SMTP id p5-20020a05622a00c500b003fdecdc1e0fmr18033799qtw.17.1687523025304;
-        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687523025; cv=none;
+Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp115947ejn;
+        Fri, 23 Jun 2023 05:27:10 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6ZyXarKF88j/5m5YQBr9oBWlhqIY5Hx835NaZzR7sFmzYb90PQjLYjp2HtR7IVSStngprq
+X-Received: by 2002:a05:620a:3183:b0:763:a424:5dbd with SMTP id bi3-20020a05620a318300b00763a4245dbdmr16536240qkb.2.1687523230034;
+        Fri, 23 Jun 2023 05:27:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687523230; cv=none;
         d=google.com; s=arc-20160816;
-        b=IGF1WvvZ0evT5TBOWzrOWLmeNlD/zHIubQFvOyF4jpWfKTXrucLfESPSZDkSC3c+2T
-         hN4aguWUpXEyVfpEhtTpWkgeG9rU/LqElNDUwZ1R9g8MJGF0gi7lcVt26rFXzji/jVsa
-         wWU0B8byO+i1Lgskj/5igTgDeqMBgqrO8EvrvfS/2HnTcjnslWAU5WCcmN10UMv8DwZ0
-         tsbLkIC0r3sJjXzlAb6M0Zsm8rdTMfHcPjNV6NL6x9N8muk0d/rczrsl1ucoe1CPJ9O0
-         UyWb+HqP0xXjJQcxnCPZmIrUmog0gjjn7wheefazmfptwA42Wpmj9jV1yKuqIiTR4df6
-         4nBg==
+        b=vT4lUCXc0mjDtVz2DP/4KO57yMfk9698khm6awMRHh7Y1aZS2JeAsDqyCSfSWFKK0T
+         NYYbeGXDQXyAhqz8Bjzp/R6NPa5R9j9tUr5kYlSqzjKcJYe3N9n8jMMk1cZKMELRkRNM
+         LJqI6NGcJvUlyHzSO8wd9UUi3w/fnvMwSllYgPbWkoztdgqoFgcNpJQmQCy+Is1JO1LM
+         hS50schJL6lXMUfMWixD/zj5LTBqP0mwEpkBA1Uww84cA0+hLHytau3LhuInVRoRJ2fK
+         Lxgl+N2n1zDDL6L9T27mCZM5WWRn6ZDqS5CRSudjVXDqPAl9Ldki6+XJXvFXi5/R00Sn
+         NHhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gielJ0AfJn9CLfmIJKUbtg9iV98xhrfLsmzzHLQYtZs=;
-        b=a1gj1vneonil4JDqqIsrlYNyvv9j+/ZAeqemMmqeRv1Au3b7/tU/SMe4TmhFJ8zrQj
-         yZz0jMptpneunegIuCF9UyhQGPEGT/u0Xetz2/5ytbB3i8U91zGcp8S0pxJey930L9Gt
-         Jn+444AxBTX0Xgked6J+CQ2qsjQ/+CexsqGMgZxT3JWc6ruIyBNBN9PnVKL8iXisPas+
-         qfhq8eyxs3/wc/VBTFoQhw3lP3m8hEgaPlYyK9Dy0y0XeVDKPnMYpJ88pAxT0fnq8wP7
-         YqKGg3psN7hbIh88cfj/6nfDQ0iGkg8yeL3ARW2g9JVTrA1Vngqlj26siSsqFkG7M1kr
-         Uj2g==
+        bh=mTfWgILLS5CV/xqEdjYYPZcg+3sDe504OZ5hHa88weI=;
+        b=TuOg42U1PuTE+plzUKS8xM68npuO+PYykjZcPQfrZ4C6fPdFyXNbqCtpO/E91ABqSG
+         sZgcFn4FZ4mCUHBUlPWHQz5UYmutU+ZPGR4ih/fZh+Mj0S52daBOn3BrtUY9q3Kh1w0o
+         OAmaqU5US//ZFfk+Y1PCPaSlfoEMOGXqKL53tIlXiHgWASzFI+SRycn12Uq9z624YNi4
+         PMSasj7Z8RO4zm5Ee9I9Uc1DcbTTN4Ml4E1kD+NtRyetZy0rf9+rmeLoKpR/9UT2wnZ4
+         Xk9122Qdcve/RrAcv9asGf8gZx2/DerncOCb2eeOa3nSoc7yedaJ+qMVmEFOkYgcVOi3
+         BSnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AK9DCVKV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WSLaFPCf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7-20020ac85c07000000b003f6bece648dsi3529857qti.659.2023.06.23.05.23.45
+        by mx.google.com with ESMTPS id g22-20020a05620a219600b0076544551353si719435qka.592.2023.06.23.05.27.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
+        Fri, 23 Jun 2023 05:27:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AK9DCVKV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WSLaFPCf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qCfo3-00052c-7U; Fri, 23 Jun 2023 08:22:28 -0400
+	id 1qCfoR-0006F7-20; Fri, 23 Jun 2023 08:22:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfn3-0003pW-QD
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfmx-0003ob-Vl
  for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfmv-0003nR-AP
- for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:23 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfmp-0003jh-VR
+ for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687522874;
+ s=mimecast20190719; t=1687522869;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gielJ0AfJn9CLfmIJKUbtg9iV98xhrfLsmzzHLQYtZs=;
- b=AK9DCVKVmcufFeF5o0hjk1mCzKCtHeDd50NANc5mn41wF+aulKrx0WXa4zxF9j/ZzMy6hq
- qE4vIdffPTocxmgytAeStg04xAN0eWM5WT/paRNL9e168U7ec3yoZomw6V2EfpALQTNcvu
- ui9iqNhd6OCalskOBBJhJEMT7V2c1Hw=
+ bh=mTfWgILLS5CV/xqEdjYYPZcg+3sDe504OZ5hHa88weI=;
+ b=WSLaFPCfM4Mxl4UbvTu6qdawpmbHQN3+LFaKESw7bK1/O4Fgt/4S4Q75RgpjtLEiEUs+/u
+ nYTdHzGjpRrKEVNukHrLPcvtcbqklWnqU11Hv3buyF9qi/xiC2x2FbmLpsKyJltGbnvxDg
+ aWLk8UQfhf4v02QkPKgSCKkWDLNeA14=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-673-TE4BoRlJOoyRR2X56HbnFg-1; Fri, 23 Jun 2023 08:21:10 -0400
-X-MC-Unique: TE4BoRlJOoyRR2X56HbnFg-1
+ us-mta-628-XHG7csNdP6-22g8VekBreQ-1; Fri, 23 Jun 2023 08:21:05 -0400
+X-MC-Unique: XHG7csNdP6-22g8VekBreQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A92D38CC200;
- Fri, 23 Jun 2023 12:21:09 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E70E180027F;
+ Fri, 23 Jun 2023 12:21:04 +0000 (UTC)
 Received: from t480s.redhat.com (unknown [10.22.32.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6061C40C2063;
- Fri, 23 Jun 2023 12:21:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A6F7D40C2063;
+ Fri, 23 Jun 2023 12:21:02 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -85,16 +85,16 @@ Cc: David Hildenbrand <david@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
  Gavin Shan <gshan@redhat.com>
-Subject: [PATCH v2 4/7] virtio-md-pci: Handle unplug of virtio based memory
+Subject: [PATCH v2 2/7] pc: Factor out (un)plug handling of virtio-md-pci
  devices
-Date: Fri, 23 Jun 2023 14:20:53 +0200
-Message-Id: <20230623122056.374312-5-david@redhat.com>
+Date: Fri, 23 Jun 2023 14:20:51 +0200
+Message-Id: <20230623122056.374312-3-david@redhat.com>
 In-Reply-To: <20230623122056.374312-1-david@redhat.com>
 References: <20230623122056.374312-1-david@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -103,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,66 +118,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i0OxfdgIFZmN
+X-TUID: atWfBreYc6Ja
 
-While we fence unplug requests from the outside, the VM can still
-trigger unplug of virtio based memory devices, for example, in Linux
-doing on a virtio-mem-pci device:
-    # echo 0 > /sys/bus/pci/slots/3/power
-
-While doing that is not really expected to work without harming the
-guest OS (e.g., removing a virtio-mem device while it still provides
-memory), let's make sure that we properly handle it on the QEMU side.
-
-We'll add support for unplugging of virtio-mem devices in some
-configurations next.
+Let's factor out (un)plug handling, to be reused from arm/virt code.
 
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/virtio/virtio-md-pci.c | 23 ++++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+ hw/i386/pc.c                      | 90 ++++---------------------------
+ hw/virtio/virtio-md-pci.c         | 63 ++++++++++++++++++++++
+ include/hw/virtio/virtio-md-pci.h |  6 +++
+ 3 files changed, 80 insertions(+), 79 deletions(-)
 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index fc52772fdd..462b33bc2c 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -88,13 +88,11 @@
+ #include "hw/net/ne2000-isa.h"
+ #include "standard-headers/asm-x86/bootparam.h"
+ #include "hw/virtio/virtio-iommu.h"
+-#include "hw/virtio/virtio-pmem-pci.h"
+-#include "hw/virtio/virtio-mem-pci.h"
++#include "hw/virtio/virtio-md-pci.h"
+ #include "hw/i386/kvm/xen_overlay.h"
+ #include "hw/i386/kvm/xen_evtchn.h"
+ #include "hw/i386/kvm/xen_gnttab.h"
+ #include "hw/i386/kvm/xen_xenstore.h"
+-#include "hw/mem/memory-device.h"
+ #include "sysemu/replay.h"
+ #include "target/i386/cpu.h"
+ #include "e820_memory_layout.h"
+@@ -1500,68 +1498,6 @@ static void pc_memory_unplug(HotplugHandler *hotplug_dev,
+     error_propagate(errp, local_err);
+ }
+ 
+-static void pc_virtio_md_pci_pre_plug(HotplugHandler *hotplug_dev,
+-                                      DeviceState *dev, Error **errp)
+-{
+-    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
+-    Error *local_err = NULL;
+-
+-    if (!hotplug_dev2 && dev->hotplugged) {
+-        /*
+-         * Without a bus hotplug handler, we cannot control the plug/unplug
+-         * order. We should never reach this point when hotplugging on x86,
+-         * however, better add a safety net.
+-         */
+-        error_setg(errp, "hotplug of virtio based memory devices not supported"
+-                   " on this bus.");
+-        return;
+-    }
+-    /*
+-     * First, see if we can plug this memory device at all. If that
+-     * succeeds, branch of to the actual hotplug handler.
+-     */
+-    memory_device_pre_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev), NULL,
+-                           &local_err);
+-    if (!local_err && hotplug_dev2) {
+-        hotplug_handler_pre_plug(hotplug_dev2, dev, &local_err);
+-    }
+-    error_propagate(errp, local_err);
+-}
+-
+-static void pc_virtio_md_pci_plug(HotplugHandler *hotplug_dev,
+-                                  DeviceState *dev, Error **errp)
+-{
+-    HotplugHandler *hotplug_dev2 = qdev_get_bus_hotplug_handler(dev);
+-    Error *local_err = NULL;
+-
+-    /*
+-     * Plug the memory device first and then branch off to the actual
+-     * hotplug handler. If that one fails, we can easily undo the memory
+-     * device bits.
+-     */
+-    memory_device_plug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
+-    if (hotplug_dev2) {
+-        hotplug_handler_plug(hotplug_dev2, dev, &local_err);
+-        if (local_err) {
+-            memory_device_unplug(MEMORY_DEVICE(dev), MACHINE(hotplug_dev));
+-        }
+-    }
+-    error_propagate(errp, local_err);
+-}
+-
+-static void pc_virtio_md_pci_unplug_request(HotplugHandler *hotplug_dev,
+-                                            DeviceState *dev, Error **errp)
+-{
+-    /* We don't support hot unplug of virtio based memory devices */
+-    error_setg(errp, "virtio based memory devices cannot be unplugged.");
+-}
+-
+-static void pc_virtio_md_pci_unplug(HotplugHandler *hotplug_dev,
+-                                    DeviceState *dev, Error **errp)
+-{
+-    /* We don't support hot unplug of virtio based memory devices */
+-}
+-
+ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+                                           DeviceState *dev, Error **errp)
+ {
+@@ -1569,9 +1505,8 @@ static void pc_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+         pc_memory_pre_plug(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         x86_cpu_pre_plug(hotplug_dev, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+-               object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+-        pc_virtio_md_pci_pre_plug(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
++        virtio_md_pci_pre_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+         /* Declare the APIC range as the reserved MSI region */
+         char *resv_prop_str = g_strdup_printf("0xfee00000:0xfeefffff:%d",
+@@ -1603,9 +1538,8 @@ static void pc_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         pc_memory_plug(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         x86_cpu_plug(hotplug_dev, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+-               object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+-        pc_virtio_md_pci_plug(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
++        virtio_md_pci_plug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+     }
+ }
+ 
+@@ -1616,9 +1550,9 @@ static void pc_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+         pc_memory_unplug_request(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         x86_cpu_unplug_request_cb(hotplug_dev, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+-               object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+-        pc_virtio_md_pci_unplug_request(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
++        virtio_md_pci_unplug_request(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev),
++                                     errp);
+     } else {
+         error_setg(errp, "acpi: device unplug request for not supported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -1632,9 +1566,8 @@ static void pc_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+         pc_memory_unplug(hotplug_dev, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         x86_cpu_unplug_cb(hotplug_dev, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+-               object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI)) {
+-        pc_virtio_md_pci_unplug(hotplug_dev, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI)) {
++        virtio_md_pci_unplug(VIRTIO_MD_PCI(dev), MACHINE(hotplug_dev), errp);
+     } else {
+         error_setg(errp, "acpi: device unplug for not supported device"
+                    " type: %s", object_get_typename(OBJECT(dev)));
+@@ -1646,8 +1579,7 @@ static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
+ {
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_CPU) ||
+-        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_PMEM_PCI) ||
+-        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MEM_PCI) ||
++        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MD_PCI) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI) ||
+         object_dynamic_cast(OBJECT(dev), TYPE_X86_IOMMU_DEVICE)) {
+         return HOTPLUG_HANDLER(machine);
 diff --git a/hw/virtio/virtio-md-pci.c b/hw/virtio/virtio-md-pci.c
-index e849c3131d..a22a259e2d 100644
+index 6b02ff908e..e849c3131d 100644
 --- a/hw/virtio/virtio-md-pci.c
 +++ b/hw/virtio/virtio-md-pci.c
-@@ -14,6 +14,7 @@
+@@ -13,6 +13,69 @@
+ #include "qemu/osdep.h"
  #include "hw/virtio/virtio-md-pci.h"
  #include "hw/mem/memory-device.h"
- #include "qapi/error.h"
-+#include "qemu/error-report.h"
- 
- void virtio_md_pci_pre_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
- {
-@@ -74,7 +75,27 @@ void virtio_md_pci_unplug_request(VirtIOMDPCI *vmd, MachineState *ms,
- 
- void virtio_md_pci_unplug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
- {
--    /* We don't support hot unplug of virtio based memory devices */
++#include "qapi/error.h"
++
++void virtio_md_pci_pre_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
++{
 +    DeviceState *dev = DEVICE(vmd);
 +    HotplugHandler *bus_handler = qdev_get_bus_hotplug_handler(dev);
 +    MemoryDeviceState *md = MEMORY_DEVICE(vmd);
 +    Error *local_err = NULL;
 +
-+    /* Unplug the memory device while it is still realized. */
-+    memory_device_unplug(md, ms);
-+
-+    if (bus_handler) {
-+        hotplug_handler_unplug(bus_handler, dev, &local_err);
-+        if (local_err) {
-+            /* Not expected to fail ... but still try to recover. */
-+            memory_device_plug(md, ms);
-+            error_propagate(errp, local_err);
-+            return;
-+        }
-+    } else {
-+        /* Very unexpected, but let's just try to do the right thing. */
-+        warn_report("Unexpected unplug of virtio based memory device");
-+        qdev_unrealize(dev);
++    if (!bus_handler && dev->hotplugged) {
++        /*
++         * Without a bus hotplug handler, we cannot control the plug/unplug
++         * order. We should never reach this point when hotplugging on x86,
++         * however, better add a safety net.
++         */
++        error_setg(errp, "hotplug of virtio based memory devices not supported"
++                   " on this bus.");
++        return;
 +    }
- }
++    /*
++     * First, see if we can plug this memory device at all. If that
++     * succeeds, branch of to the actual hotplug handler.
++     */
++    memory_device_pre_plug(md, ms, NULL, &local_err);
++    if (!local_err && bus_handler) {
++        hotplug_handler_pre_plug(bus_handler, dev, &local_err);
++    }
++    error_propagate(errp, local_err);
++}
++
++void virtio_md_pci_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
++{
++    DeviceState *dev = DEVICE(vmd);
++    HotplugHandler *bus_handler = qdev_get_bus_hotplug_handler(dev);
++    MemoryDeviceState *md = MEMORY_DEVICE(vmd);
++    Error *local_err = NULL;
++
++    /*
++     * Plug the memory device first and then branch off to the actual
++     * hotplug handler. If that one fails, we can easily undo the memory
++     * device bits.
++     */
++    memory_device_plug(md, ms);
++    if (bus_handler) {
++        hotplug_handler_plug(bus_handler, dev, &local_err);
++        if (local_err) {
++            memory_device_unplug(md, ms);
++        }
++    }
++    error_propagate(errp, local_err);
++}
++
++void virtio_md_pci_unplug_request(VirtIOMDPCI *vmd, MachineState *ms,
++                                  Error **errp)
++{
++    /* We don't support hot unplug of virtio based memory devices */
++    error_setg(errp, "virtio based memory devices cannot be unplugged.");
++}
++
++void virtio_md_pci_unplug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
++{
++    /* We don't support hot unplug of virtio based memory devices */
++}
  
  static const TypeInfo virtio_md_pci_info = {
+     .name = TYPE_VIRTIO_MD_PCI,
+diff --git a/include/hw/virtio/virtio-md-pci.h b/include/hw/virtio/virtio-md-pci.h
+index a241b54fcd..f9fa857aec 100644
+--- a/include/hw/virtio/virtio-md-pci.h
++++ b/include/hw/virtio/virtio-md-pci.h
+@@ -32,4 +32,10 @@ struct VirtIOMDPCI {
+     VirtIOPCIProxy parent_obj;
+ };
+ 
++void virtio_md_pci_pre_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp);
++void virtio_md_pci_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp);
++void virtio_md_pci_unplug_request(VirtIOMDPCI *vmd, MachineState *ms,
++                                  Error **errp);
++void virtio_md_pci_unplug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp);
++
+ #endif
 -- 
 2.40.1
 

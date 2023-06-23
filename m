@@ -1,217 +1,203 @@
-Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp124934ejn;
-        Fri, 23 Jun 2023 05:48:11 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6TRJlyYqbCS6o9aHEZVHEl3cwJ2gDacVki7HsWRyiBCVjVdZ+UXUp37eoVl8m5QNhTPSOK
-X-Received: by 2002:adf:e7d0:0:b0:30a:8e6a:3d77 with SMTP id e16-20020adfe7d0000000b0030a8e6a3d77mr20461427wrn.1.1687524491737;
-        Fri, 23 Jun 2023 05:48:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687524491; cv=none;
+Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp268784ejn;
+        Fri, 23 Jun 2023 10:37:26 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7pBqwoLh6ADMY0kPtnDZQMzKoHzdTHK9M13Hz+Zql6zyD8Ci+kier50ULjcfZVKyIgZo9k
+X-Received: by 2002:ad4:5be5:0:b0:634:6e1f:29ec with SMTP id k5-20020ad45be5000000b006346e1f29ecmr276237qvc.37.1687541846109;
+        Fri, 23 Jun 2023 10:37:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687541846; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIPlen+42nggELhrq6vxdJr1GoP98+SfZbg93hagl5bWEKPuyTHvBqGEM49/zyY5hJ
-         sItJku4NCbcCiIPftgCpZ1rQd/9kUDYjyHWdCSSLQ8wW3gdK/stxeH4TJzh/jeeUWsYP
-         tN+WBArC8i+906Dtevds0rjGIKdG3u6ddmVzGYQ2uJ0eL1YZ/oaq5nR4fUYpgxREXZrS
-         yhkRiS7ddRNV2CrQeeIlKrEaK95ikaem9k7uCR/4gYP+f0ZADDm43rt8/FatbiHRkoco
-         wPWgfgpHb5RD+DFr6OVjiGoj9zSQikYOb1L7s0g7qYGQRkP/YXf6OykxRw3BuSLFgUxu
-         9YNg==
+        b=PrvF7x0xWpB9hb6g8Zw99xpl5vFY5gi1XFOO6Jxwge/oG1hGYH+pUhvGyCEd/HXAu0
+         /1yR5SsbeUnIz7SbSKk5xskAj6yiOVyy+skQMLa38t4OaS0wH1dV7lulSQ6t3aC4uFqN
+         yDBWn3rSILZ7aoE6QjXCE1LTwOWKYLSl04cO2NLvsJ057SKdW5g3aBiNs9nJ0IG4ZRNT
+         rXP0gZTsN/JY8s9Sw+W3dOpf7BJ0LWvnfc1YJdCdFhr7SyJs4fYF3hXfIZ9bjzJGa+fe
+         6jphMN6uevFvxjdUKKIjJrkEZj+qyxJGG0Dep2GFzR/wSPBaLe3jvLmatlf+tqqUyHCt
+         N2PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=EC4/yct8sIAw5ODpRfK2OCvTa9g83NRaxOMLluErnc8=;
-        b=WykYFnVQ7ylxQHoGAdp9d+AiHxy18+m/UdsvOeZa8bAqXPK+zYjsz3k1JKCkch05fB
-         WIBxlPxDV7ol0Cq53dyd5NGVYSk6r+ORRnqISAgavKgFzG23RSxBzuWz2duusd7ThoqZ
-         rYY3YIce2p4InhAoyHlEgsQ1WWJDlN/XlO7wuUrTSDJ5yfDicW1yWqRcznvM2Hw/JEOZ
-         Arc6iJMHDxBkxGxOksRoF7yi/n+CWm/SpC7TtDfRTuqEhdy4FXFmantMexoa386cP7By
-         43V/+dd38efsXLpenmvobSCV7hePTXapm89KyHCDLwpPX8Jzic8oSdRCVkLZOKuJ2XXK
-         YtDQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=kvbYavrrZ/b3ZYTQHWLJz2aS3Re5dZbFrgauqNrMUZw=;
+        b=phpL2kO6hP5O4KVqxRYh910BFbqjk9MApuqFWKWZEnTdhzM0FVlMF5e8fRE3XxUDBv
+         sHkILIsLksL6+GOZ3Lbekormgu0opKZqUel3bqtHd1eu20PxOrvmEebZMtRcNSLLLBUr
+         NFe0vb3IrkBQ9GRc9ovDbiTw3Mr9jR+Pmm4rVZ8hMJ3O1WRCnq72zGnyUAMnzRfk5Ca9
+         ts+Ffq3lR1NBVrdBQ7ApFqic/P3QuO8ev3pqQPtAEMn7LU0pAWHXY3l7EvX3nq5AvdeK
+         ILtWRB8S1aiRGFe8iwfHlL5Qdmg+FjC4WzfcJZaFf2FBOO5LI4kcIcUKqTkhEf0nJj/F
+         twHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W2jDDy1p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b="YJ+SYi/R";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18-20020adfd092000000b0031140570336si5548657wrh.367.2023.06.23.05.48.11
+        by mx.google.com with ESMTPS id e10-20020a05622a110a00b003f86195769dsi3784016qty.408.2023.06.23.10.37.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Jun 2023 05:48:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Jun 2023 10:37:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W2jDDy1p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b="YJ+SYi/R";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qCgBr-0002U7-Ub; Fri, 23 Jun 2023 08:47:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qCkid-0003aI-Nj; Fri, 23 Jun 2023 13:37:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCgBW-000221-MW
- for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:46:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCgBT-0000sJ-9Z
- for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:46:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687524398;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EC4/yct8sIAw5ODpRfK2OCvTa9g83NRaxOMLluErnc8=;
- b=W2jDDy1pcMsIjrqfpUXdJ0smAix7NwWrN82T5ztkgElq7WzU/g5HChYeJKmSFabuD9I44y
- l8lRGZn13M9ap8ZScqjX2ZdIrKdAMGNzZCuaxPoi8imVh2aAoo4oqnwdhBpRvXej2vlkVs
- iLMHBlgpSQMHjTFkA7YJOHCe/mZXTAg=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-45-PYd8v78vOnmHtC99LKd82w-1; Fri, 23 Jun 2023 08:46:35 -0400
-X-MC-Unique: PYd8v78vOnmHtC99LKd82w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 32B7529AA3B6;
- Fri, 23 Jun 2023 12:46:34 +0000 (UTC)
-Received: from t480s.redhat.com (unknown [10.22.32.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C55991121314;
- Fri, 23 Jun 2023 12:46:30 +0000 (UTC)
-From: David Hildenbrand <david@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1qCkiU-0003Zm-D4; Fri, 23 Jun 2023 13:37:03 -0400
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1qCkiR-0008W7-VH; Fri, 23 Jun 2023 13:37:01 -0400
+Received: by mail-ot1-x330.google.com with SMTP id
+ 46e09a7af769-6b72329b63eso758962a34.0; 
+ Fri, 23 Jun 2023 10:36:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1687541817; x=1690133817;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:sender
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kvbYavrrZ/b3ZYTQHWLJz2aS3Re5dZbFrgauqNrMUZw=;
+ b=YJ+SYi/RbZe9gNYO/e2O0m/NmKr7Dlc9wKZLVKW3xXqCnSSaznZNvEhsFPS8MCok6y
+ WTtZgAGD/ZXwM0afFvfGna/WROY13qnClFi76Ek1aks0WV6vnPYLgwxxhOgAmsPcGScd
+ oi+gNv3B8MR58otMKjExKnVuD699LEfUvKMzzfNI9B634xID4QA78WK8PYWBTxLnPdUN
+ Ro+BEAcdTWDvMJTWWvXQee7jMFUZZgCkg7g5kIHeC2OK8Nrd2GaXSQu2C6HRKtpLqR3m
+ J97BbHIo9l0mmoAwjzap3njiUosaqxU6B2HZQ8PN4vrqEjh/QrEKNFM+QlG3HFbZyiFA
+ YsAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687541817; x=1690133817;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:sender
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kvbYavrrZ/b3ZYTQHWLJz2aS3Re5dZbFrgauqNrMUZw=;
+ b=dFo2TkzgmjtHoq9lRgrkweUMN0SppUZwtqjkUjs4fpWKiQ27HgGgG7zKdFz/xx7vfI
+ EpH1wgg9vDpLwK84aZxnLJ/R8wv+qtwccdJMu4JHCSflyLRxEGvofVSCAe+pVesKtBBZ
+ 3E0eTvhzlV25cBF1Fp0c7LeDbLbWQFvI3WnJ7l3ns6PZPuVMFN89+ozZbA37sxXrS1yo
+ nYK+3C+/++SOMuYClPP+dBaOSCqGG71NghjkPZtDESb5jcIE9Kxk5v/rim64ediJ5DtF
+ YK6Ew8B+xTzSSDKbAPdcxuMwAU8e0ArUZrDljqmoDwpPGfp2RspjmqZnbXQDuueWPy+9
+ rRtw==
+X-Gm-Message-State: AC+VfDyFpblBpCKhX1CAKMPBpjaBRiXlo1/OFtRk+lcCMeXJUySWpWbq
+ 4vDkdBp9ETYHKTks+fT4Lko=
+X-Received: by 2002:a05:6359:282:b0:123:26fe:3346 with SMTP id
+ ek2-20020a056359028200b0012326fe3346mr16317905rwb.2.1687541817383; 
+ Fri, 23 Jun 2023 10:36:57 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ k23-20020a63f017000000b00528513c6bbcsm6642494pgh.28.2023.06.23.10.36.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Jun 2023 10:36:56 -0700 (PDT)
+Date: Fri, 23 Jun 2023 10:36:55 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: qianfan <qianfanguijin@163.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
-Subject: [PATCH v4 09/10] memory-device: Refactor memory_device_pre_plug()
-Date: Fri, 23 Jun 2023 14:45:52 +0200
-Message-Id: <20230623124553.400585-10-david@redhat.com>
-In-Reply-To: <20230623124553.400585-1-david@redhat.com>
-References: <20230623124553.400585-1-david@redhat.com>
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>
+Subject: Re: [PATCH v5 01/11] hw: arm: Add bananapi M2-Ultra and
+ allwinner-r40 support
+Message-ID: <b8954841-db12-46ae-b92a-d805eb446a69@roeck-us.net>
+References: <20230523100508.32564-1-qianfanguijin@163.com>
+ <20230523100508.32564-2-qianfanguijin@163.com>
+ <41e71eae-72ad-410d-9cd8-cc495c06dac4@roeck-us.net>
+ <10cf3c5e-655d-fc8b-cf48-3949588c2dcf@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+In-Reply-To: <10cf3c5e-655d-fc8b-cf48-3949588c2dcf@163.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=groeck7@gmail.com; helo=mail-ot1-x330.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LVVbk+ZUx4Pn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sNMTFstHrpd/
 
-Let's move memory_device_check_addable() and basic checks out of
-memory_device_get_free_addr() directly into memory_device_pre_plug().
+On Sun, Jun 18, 2023 at 08:40:28AM +0800, qianfan wrote:
+> 
+> 在 2023/6/18 0:29, Guenter Roeck 写道:
+> > Hi,
+> > 
+> > On Tue, May 23, 2023 at 06:04:58PM +0800, qianfanguijin@163.com wrote:
+> > > From: qianfan Zhao <qianfanguijin@163.com>
+> > > 
+> > > Allwinner R40 (sun8i) SoC features a Quad-Core Cortex-A7 ARM CPU,
+> > > and a Mali400 MP2 GPU from ARM. It's also known as the Allwinner T3
+> > > for In-Car Entertainment usage, A40i and A40pro are variants that
+> > > differ in applicable temperatures range (industrial and military).
+> > > 
+> > > Signed-off-by: qianfan Zhao <qianfanguijin@163.com>
+> > > Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > I tried this in mainline linux with the following command.
+> > 
+> > qemu-system-arm -M bpim2u \
+> > 	-kernel arch/arm/boot/zImage -no-reboot \
+> > 	-snapshot -drive file=rootfs-armv7a.ext2,format=raw,if=sd \
+> > 	-nic user \
+> > 	--append "root=/dev/mmcblk0 rootwait console=ttyS0,115200" \
+> > 	-dtb arch/arm/boot/dts/sun8i-r40-bananapi-m2-ultra.dtb \
+> > 	-nographic -monitor null -serial stdio
+> > 
+> > Main problem is that the SD card gets instantiated randomly to
+> > mmc0, mmc1, or mmc2, making it all but impossible to specify a
+> > root file system device. The non-instantiated cards are always
+> > reported as non-removable, including mmc0. Example:
+> > 
+> > mmc0: Failed to initialize a non-removable card
+> > 
+> > Using "-sd <file>" instead of "-drive file=<file>" does not
+> > make a difference.
+> > 
+> > I can fix (work around ?) the problem by adding the following information
+> > to the devicetree file.
+> > 
+> >          aliases {
+> >                  ethernet0 = &gmac;
+> >                  serial0 = &uart0;
+> > +               mmc0 = &mmc0;
+> > +               mmc1 = &mmc1;
+> > +               mmc2 = &mmc2;
+> >          };
+> > 
+> > Linux upstream commits fa2d0aa96941 and 2a43322ca7f3 describe the
+> > logic behind this change.
+> > 
+> > Is this a bug in the Linux kernel, or a problem with the qemu emulation ?
+> 
+> On my work, the linux kenrel doesn't startup ext4 rootfs directly, it start
+> 
+> a custom ramdisk and we can handle this in ramdisk scripts.
+> 
 
-Separating basic checks from address assignment is cleaner and
-prepares for further changes.
+That won't help for automated testing.
+I guess that means the answer to my question below is "no".
 
-As all memory device users now use memory_devices_init(), and that
-function enforces that the size is 0, we can drop the check for an empty
-region.
+Thanks,
+Guenter
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: David Hildenbrand <david@redhat.com>
----
- hw/mem/memory-device.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index bb9d7c2a20..00c7755557 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -69,9 +69,10 @@ static int memory_device_used_region_size(Object *obj, void *opaque)
-     return 0;
- }
- 
--static void memory_device_check_addable(MachineState *ms, uint64_t size,
-+static void memory_device_check_addable(MachineState *ms, MemoryRegion *mr,
-                                         Error **errp)
- {
-+    const uint64_t size = memory_region_size(mr);
-     uint64_t used_region_size = 0;
- 
-     /* we will need a new memory slot for kvm and vhost */
-@@ -101,16 +102,9 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
-                                             uint64_t align, uint64_t size,
-                                             Error **errp)
- {
--    Error *err = NULL;
-     GSList *list = NULL, *item;
-     Range as, new = range_empty;
- 
--    if (!ms->device_memory || !memory_region_size(&ms->device_memory->mr)) {
--        error_setg(errp, "the configuration is not prepared for memory devices"
--                         " (e.g., for memory hotplug), consider specifying the"
--                         " maxmem option");
--        return 0;
--    }
-     range_init_nofail(&as, ms->device_memory->base,
-                       memory_region_size(&ms->device_memory->mr));
- 
-@@ -122,12 +116,6 @@ static uint64_t memory_device_get_free_addr(MachineState *ms,
-                     align);
-     }
- 
--    memory_device_check_addable(ms, size, &err);
--    if (err) {
--        error_propagate(errp, err);
--        return 0;
--    }
--
-     if (hint && !QEMU_IS_ALIGNED(*hint, align)) {
-         error_setg(errp, "address must be aligned to 0x%" PRIx64 " bytes",
-                    align);
-@@ -251,11 +239,23 @@ void memory_device_pre_plug(MemoryDeviceState *md, MachineState *ms,
-     uint64_t addr, align = 0;
-     MemoryRegion *mr;
- 
-+    if (!ms->device_memory) {
-+        error_setg(errp, "the configuration is not prepared for memory devices"
-+                         " (e.g., for memory hotplug), consider specifying the"
-+                         " maxmem option");
-+        return;
-+    }
-+
-     mr = mdc->get_memory_region(md, &local_err);
-     if (local_err) {
-         goto out;
-     }
- 
-+    memory_device_check_addable(ms, mr, &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-+
-     if (legacy_align) {
-         align = *legacy_align;
-     } else {
--- 
-2.40.1
-
+> > Either case, is there a way to specify a qemu command line that doesn't
+> > result in random assignments of the provided drive to mmc0/1/2 ?
+> > 
+> > Thanks,
+> > Guenter
+> 

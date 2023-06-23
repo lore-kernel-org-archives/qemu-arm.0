@@ -1,79 +1,79 @@
-Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp114624ejn;
-        Fri, 23 Jun 2023 05:23:41 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7QDY0chuZk8FHjLONyiIGpLg3I+jz1Zy9qZOhXxwLcFNHpSyXq8g2dLFY/ZDEK6EBi2UDD
-X-Received: by 2002:a05:622a:292:b0:3ff:3150:11ba with SMTP id z18-20020a05622a029200b003ff315011bamr13515643qtw.8.1687523021368;
-        Fri, 23 Jun 2023 05:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687523021; cv=none;
+Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp114649ejn;
+        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Wkrqp9vYwf2vaTlJfPqbR+FPl0Ym5Wyslgt0L6iR7Vw0D9f60VRiiY8x6a3FNOMlauWDL
+X-Received: by 2002:a05:622a:c5:b0:3fd:ecdc:1e0f with SMTP id p5-20020a05622a00c500b003fdecdc1e0fmr18033799qtw.17.1687523025304;
+        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687523025; cv=none;
         d=google.com; s=arc-20160816;
-        b=LuRGblQDYWTI8fOKSDedDhMurOUuaJVAsNq+3KX0XOA9VviMN1YEUbzDwQ7KKLPlKz
-         nCRdaUot4ap+6+uci8Nq/Nh5Y0u1qphFQpkadSytfPS1k8M+ijE/a7Ijj0xkD2anDIn5
-         CRg73/nwnwqLNZQucLylyy/bL+FS/gVApKK8CWrFI+ROQg2Dmmuod/s/MQNanPkTaMtf
-         dQryd5PrCFNG+rC7WshvnbdVDZU+G8r4ZDm++D1hdSqk/RjREjSZioYIDKcrc/C9eohK
-         9FqmzZLq8lxYbXXdAFbDHxC1C2LL5B1KAQQhnHXkt9NujUVlh9uOZlPEFpJx2xADxbYh
-         TN5A==
+        b=IGF1WvvZ0evT5TBOWzrOWLmeNlD/zHIubQFvOyF4jpWfKTXrucLfESPSZDkSC3c+2T
+         hN4aguWUpXEyVfpEhtTpWkgeG9rU/LqElNDUwZ1R9g8MJGF0gi7lcVt26rFXzji/jVsa
+         wWU0B8byO+i1Lgskj/5igTgDeqMBgqrO8EvrvfS/2HnTcjnslWAU5WCcmN10UMv8DwZ0
+         tsbLkIC0r3sJjXzlAb6M0Zsm8rdTMfHcPjNV6NL6x9N8muk0d/rczrsl1ucoe1CPJ9O0
+         UyWb+HqP0xXjJQcxnCPZmIrUmog0gjjn7wheefazmfptwA42Wpmj9jV1yKuqIiTR4df6
+         4nBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xvAOyyso/d96OeLCp/LopB3F79UeURE4NzHYAGLndjw=;
-        b=0RoxGdBCxU94D8wZ2S3t1PFP6UhkTgbWc/yJEFWsF3WrNWagIHKoiiFjXguAWrMeCF
-         NJh8Ssi0CqZP15/6bIMyyyPEkcHZJ7hXSfW+FfreotcvlY9Jdceae65ACFXSMg5DsDz1
-         eI53JMUzV3bnWCgyM77vILkMgz1eHpl2w9rw3Ox2l748EqsjXwkAmQbUPotXj0mGG3PV
-         wNPuWZ8MK5z/cWU+bfPrwuHpk1UNHgersZFilRrioy1ydeIqiJEaTgI9Zsxyn9olovD/
-         LZYr2vrpE0JwIvi3xhsSwyaiWlXmMnIy8FYJmWOkFTEnvt8Hq0i9sJmcTqlRinkmAn6d
-         6tEw==
+        bh=gielJ0AfJn9CLfmIJKUbtg9iV98xhrfLsmzzHLQYtZs=;
+        b=a1gj1vneonil4JDqqIsrlYNyvv9j+/ZAeqemMmqeRv1Au3b7/tU/SMe4TmhFJ8zrQj
+         yZz0jMptpneunegIuCF9UyhQGPEGT/u0Xetz2/5ytbB3i8U91zGcp8S0pxJey930L9Gt
+         Jn+444AxBTX0Xgked6J+CQ2qsjQ/+CexsqGMgZxT3JWc6ruIyBNBN9PnVKL8iXisPas+
+         qfhq8eyxs3/wc/VBTFoQhw3lP3m8hEgaPlYyK9Dy0y0XeVDKPnMYpJ88pAxT0fnq8wP7
+         YqKGg3psN7hbIh88cfj/6nfDQ0iGkg8yeL3ARW2g9JVTrA1Vngqlj26siSsqFkG7M1kr
+         Uj2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P64X+uUq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AK9DCVKV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22-20020ac87dd6000000b003f95686685asi3524324qte.214.2023.06.23.05.23.41
+        by mx.google.com with ESMTPS id i7-20020ac85c07000000b003f6bece648dsi3529857qti.659.2023.06.23.05.23.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Jun 2023 05:23:41 -0700 (PDT)
+        Fri, 23 Jun 2023 05:23:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P64X+uUq;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AK9DCVKV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qCfnk-00048F-1C; Fri, 23 Jun 2023 08:22:08 -0400
+	id 1qCfo3-00052c-7U; Fri, 23 Jun 2023 08:22:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfn7-0003rc-GN
- for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:33 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfn3-0003pW-QD
+ for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfn3-0003pa-BN
- for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:27 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qCfmv-0003nR-AP
+ for qemu-devel@nongnu.org; Fri, 23 Jun 2023 08:21:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687522879;
+ s=mimecast20190719; t=1687522874;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xvAOyyso/d96OeLCp/LopB3F79UeURE4NzHYAGLndjw=;
- b=P64X+uUqlBJF10h2FwzzFce+n2qyUuk7gLyF8tfRKalF+ACrkvyVRwHx0WI3JZIINbV/82
- 5+DgrXt2o5NK2QflpcdFWxekJNCtpyUOo8U5rvooL+2S9xj1SV2AQCACdVDDwuWMwojDd1
- kUCh8jleL5hkaMU5QXW9xdwMAOmYwb0=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=gielJ0AfJn9CLfmIJKUbtg9iV98xhrfLsmzzHLQYtZs=;
+ b=AK9DCVKVmcufFeF5o0hjk1mCzKCtHeDd50NANc5mn41wF+aulKrx0WXa4zxF9j/ZzMy6hq
+ qE4vIdffPTocxmgytAeStg04xAN0eWM5WT/paRNL9e168U7ec3yoZomw6V2EfpALQTNcvu
+ ui9iqNhd6OCalskOBBJhJEMT7V2c1Hw=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-33-YuGVt_8WMzahFY1LUjcuLg-1; Fri, 23 Jun 2023 08:21:17 -0400
-X-MC-Unique: YuGVt_8WMzahFY1LUjcuLg-1
+ us-mta-673-TE4BoRlJOoyRR2X56HbnFg-1; Fri, 23 Jun 2023 08:21:10 -0400
+X-MC-Unique: TE4BoRlJOoyRR2X56HbnFg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CAAE13C23100;
- Fri, 23 Jun 2023 12:21:16 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A92D38CC200;
+ Fri, 23 Jun 2023 12:21:09 +0000 (UTC)
 Received: from t480s.redhat.com (unknown [10.22.32.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C58C340C2070;
- Fri, 23 Jun 2023 12:21:14 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6061C40C2063;
+ Fri, 23 Jun 2023 12:21:07 +0000 (UTC)
 From: David Hildenbrand <david@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>,
@@ -85,9 +85,10 @@ Cc: David Hildenbrand <david@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
  Gavin Shan <gshan@redhat.com>
-Subject: [PATCH v2 7/7] virtio-mem-pci: Device unplug support
-Date: Fri, 23 Jun 2023 14:20:56 +0200
-Message-Id: <20230623122056.374312-8-david@redhat.com>
+Subject: [PATCH v2 4/7] virtio-md-pci: Handle unplug of virtio based memory
+ devices
+Date: Fri, 23 Jun 2023 14:20:53 +0200
+Message-Id: <20230623122056.374312-5-david@redhat.com>
 In-Reply-To: <20230623122056.374312-1-david@redhat.com>
 References: <20230623122056.374312-1-david@redhat.com>
 MIME-Version: 1.0
@@ -117,104 +118,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ysw2xEugYEqs
+X-TUID: i0OxfdgIFZmN
 
-Let's support device unplug by forwarding the unplug_request_check()
-callback to the virtio-mem device.
+While we fence unplug requests from the outside, the VM can still
+trigger unplug of virtio based memory devices, for example, in Linux
+doing on a virtio-mem-pci device:
+    # echo 0 > /sys/bus/pci/slots/3/power
 
-Further, disallow changing the requested-size once an unplug request is
-pending.
+While doing that is not really expected to work without harming the
+guest OS (e.g., removing a virtio-mem device while it still provides
+memory), let's make sure that we properly handle it on the QEMU side.
 
-Disallowing requested-size changes handles corner cases such as
-(1) pausing the VM (2) requesting device unplug and (3) adjusting the
-requested size. If the VM would plug memory (due to the requested size
-change) before processing the unplug request, we would be in trouble.
+We'll add support for unplugging of virtio-mem devices in some
+configurations next.
 
 Signed-off-by: David Hildenbrand <david@redhat.com>
 ---
- hw/virtio/virtio-mem-pci.c | 49 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 46 insertions(+), 3 deletions(-)
+ hw/virtio/virtio-md-pci.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
-diff --git a/hw/virtio/virtio-mem-pci.c b/hw/virtio/virtio-mem-pci.c
-index 2ef0f07630..c4597e029e 100644
---- a/hw/virtio/virtio-mem-pci.c
-+++ b/hw/virtio/virtio-mem-pci.c
-@@ -93,12 +93,53 @@ static void virtio_mem_pci_size_change_notify(Notifier *notifier, void *data)
-     g_free(qom_path);
- }
+diff --git a/hw/virtio/virtio-md-pci.c b/hw/virtio/virtio-md-pci.c
+index e849c3131d..a22a259e2d 100644
+--- a/hw/virtio/virtio-md-pci.c
++++ b/hw/virtio/virtio-md-pci.c
+@@ -14,6 +14,7 @@
+ #include "hw/virtio/virtio-md-pci.h"
+ #include "hw/mem/memory-device.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
  
-+static void virtio_mem_pci_unplug_request_check(VirtIOMDPCI *vmd, Error **errp)
-+{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(vmd);
-+    VirtIOMEM *vmem = &pci_mem->vdev;
-+    VirtIOMEMClass *vpc = VIRTIO_MEM_GET_CLASS(vmem);
-+
-+    vpc->unplug_request_check(vmem, errp);
-+}
-+
-+static void virtio_mem_pci_get_requested_size(Object *obj, Visitor *v,
-+                                              const char *name, void *opaque,
-+                                              Error **errp)
-+{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
-+
-+    object_property_get(OBJECT(&pci_mem->vdev), name, v, errp);
-+}
-+
-+static void virtio_mem_pci_set_requested_size(Object *obj, Visitor *v,
-+                                              const char *name, void *opaque,
-+                                              Error **errp)
-+{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    /*
-+     * If we passed virtio_mem_pci_unplug_request_check(), making sure that
-+     * the requested size is 0, don't allow modifying the requested size
-+     * anymore, otherwise the VM might end up hotplugging memory before
-+     * handling the unplug request.
-+     */
-+    if (dev->pending_deleted_event) {
-+        error_setg(errp, "'%s' cannot be changed if the device is in the"
-+                   " process of unplug", name);
-+        return;
-+    }
-+
-+    object_property_set(OBJECT(&pci_mem->vdev), name, v, errp);
-+}
-+
- static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
+ void virtio_md_pci_pre_plug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
-     PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
-     MemoryDeviceClass *mdc = MEMORY_DEVICE_CLASS(klass);
-+    VirtIOMDPCIClass *vmdc = VIRTIO_MD_PCI_CLASS(klass);
+@@ -74,7 +75,27 @@ void virtio_md_pci_unplug_request(VirtIOMDPCI *vmd, MachineState *ms,
  
-     k->realize = virtio_mem_pci_realize;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-@@ -111,6 +152,8 @@ static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
-     mdc->get_memory_region = virtio_mem_pci_get_memory_region;
-     mdc->fill_device_info = virtio_mem_pci_fill_device_info;
-     mdc->get_min_alignment = virtio_mem_pci_get_min_alignment;
+ void virtio_md_pci_unplug(VirtIOMDPCI *vmd, MachineState *ms, Error **errp)
+ {
+-    /* We don't support hot unplug of virtio based memory devices */
++    DeviceState *dev = DEVICE(vmd);
++    HotplugHandler *bus_handler = qdev_get_bus_hotplug_handler(dev);
++    MemoryDeviceState *md = MEMORY_DEVICE(vmd);
++    Error *local_err = NULL;
 +
-+    vmdc->unplug_request_check = virtio_mem_pci_unplug_request_check;
++    /* Unplug the memory device while it is still realized. */
++    memory_device_unplug(md, ms);
++
++    if (bus_handler) {
++        hotplug_handler_unplug(bus_handler, dev, &local_err);
++        if (local_err) {
++            /* Not expected to fail ... but still try to recover. */
++            memory_device_plug(md, ms);
++            error_propagate(errp, local_err);
++            return;
++        }
++    } else {
++        /* Very unexpected, but let's just try to do the right thing. */
++        warn_report("Unexpected unplug of virtio based memory device");
++        qdev_unrealize(dev);
++    }
  }
  
- static void virtio_mem_pci_instance_init(Object *obj)
-@@ -135,9 +178,9 @@ static void virtio_mem_pci_instance_init(Object *obj)
-                               OBJECT(&dev->vdev), VIRTIO_MEM_BLOCK_SIZE_PROP);
-     object_property_add_alias(obj, VIRTIO_MEM_SIZE_PROP, OBJECT(&dev->vdev),
-                               VIRTIO_MEM_SIZE_PROP);
--    object_property_add_alias(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP,
--                              OBJECT(&dev->vdev),
--                              VIRTIO_MEM_REQUESTED_SIZE_PROP);
-+    object_property_add(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP, "size",
-+                        virtio_mem_pci_get_requested_size,
-+                        virtio_mem_pci_set_requested_size, NULL, NULL);
- }
- 
- static const VirtioPCIDeviceTypeInfo virtio_mem_pci_info = {
+ static const TypeInfo virtio_md_pci_info = {
 -- 
 2.40.1
 

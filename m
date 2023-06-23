@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z20-20020a05600c221400b003f8f8fc3c32sm2211198wml.31.2023.06.23.05.30.49
+        by smtp.gmail.com with ESMTPSA id p16-20020a5d6390000000b003113943bb66sm9344371wru.110.2023.06.23.05.30.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 23 Jun 2023 05:30:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 89A521FFC0;
-	Fri, 23 Jun 2023 13:21:03 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 7EF031FFC8;
+	Fri, 23 Jun 2023 13:21:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -38,87 +38,92 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Yanan Wang <wangyanan55@huawei.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 25/26] docs/devel: split qom-api reference into new file
-Date: Fri, 23 Jun 2023 13:20:59 +0100
-Message-Id: <20230623122100.1640995-26-alex.bennee@linaro.org>
+Subject: [PATCH 17/26] tests/avocado: update firmware to enable sbsa-ref/max
+Date: Fri, 23 Jun 2023 13:20:51 +0100
+Message-Id: <20230623122100.1640995-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230623122100.1640995-1-alex.bennee@linaro.org>
 References: <20230623122100.1640995-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3nrqgf4DZ7EI
+X-TUID: n2hxl9HAUWan
 
-Lets try and keep the overview of the sub-system digestible by
-splitting the core API stuff into a separate file. As QOM and QDEV
-work together we should also try and enumerate the qdev_ functions.
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Update prebuilt firmware images to have TF-A with FEAT_FGT support
+enabled. This allowed us to enable test for "max" cpu in sbsa-ref
+machine.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Message-Id: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230619171437.357374-5-alex.bennee@linaro.org>
-
 ---
-v2
-  - also include qdev API
----
- docs/devel/index-api.rst | 2 ++
- docs/devel/qdev-api.rst  | 7 +++++++
- docs/devel/qom-api.rst   | 9 +++++++++
- docs/devel/qom.rst       | 3 ++-
- 4 files changed, 20 insertions(+), 1 deletion(-)
- create mode 100644 docs/devel/qdev-api.rst
- create mode 100644 docs/devel/qom-api.rst
+ tests/avocado/machine_aarch64_sbsaref.py | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/docs/devel/index-api.rst b/docs/devel/index-api.rst
-index 7108821746..539ad29c21 100644
---- a/docs/devel/index-api.rst
-+++ b/docs/devel/index-api.rst
-@@ -11,5 +11,7 @@ generated from in-code annotations to function prototypes.
-    loads-stores
-    memory
-    modules
-+   qom-api
-+   qdev-api
-    ui
-    zoned-storage
-diff --git a/docs/devel/qdev-api.rst b/docs/devel/qdev-api.rst
-new file mode 100644
-index 0000000000..3f35eea025
---- /dev/null
-+++ b/docs/devel/qdev-api.rst
-@@ -0,0 +1,7 @@
-+.. _qdev-api:
-+
-+================================
-+QEMU Device (qdev) API Reference
-+================================
-+
-+.. kernel-doc:: include/hw/qdev-core.h
-diff --git a/docs/devel/qom-api.rst b/docs/devel/qom-api.rst
-new file mode 100644
-index 0000000000..ed1f17e797
---- /dev/null
-+++ b/docs/devel/qom-api.rst
-@@ -0,0 +1,9 @@
-+.. _qom-api:
-+
-+=====================================
-+QEMU Object Model (QOM) API Reference
-+=====================================
-+
-+This is the complete API documentation for :ref:`qom`.
-+
-+.. kernel-doc:: include/qom/object.h
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index 2828843058..c342ce18e3 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -387,4 +387,5 @@ OBJECT_DEFINE_ABSTRACT_TYPE() macro can be used instead:
- API Reference
- -------------
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 0a79fa7ab6..35f8042416 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -29,23 +29,23 @@ def fetch_firmware(self):
+         """
+         Flash volumes generated using:
  
--.. kernel-doc:: include/qom/object.h
-+See the :ref:`QOM API<qom-api>` and :ref:`QDEV API<qdev-api>`
-+documents for the complete API description.
+-        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
++        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
+ 
+         - Trusted Firmware-A
+-          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
++          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
+ 
+         - Tianocore EDK II
+-          https://github.com/tianocore/edk2/tree/494127613b
+-          https://github.com/tianocore/edk2-non-osi/tree/41876073
+-          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
++          https://github.com/tianocore/edk2/tree/0f9283429dd4
++          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
++          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+-            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
++            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
+             "download/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
++        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
+         archive.extract(tar_xz_path, self.workdir)
+         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+@@ -93,15 +93,15 @@ def test_sbsaref_edk2_firmware(self):
+ 
+         # AP Trusted ROM
+         wait_for_console_pattern(self, "Booting Trusted Firmware")
+-        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
++        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
+         wait_for_console_pattern(self, "BL1: Booting BL2")
+ 
+         # Trusted Boot Firmware
+-        wait_for_console_pattern(self, "BL2: v2.8(release)")
++        wait_for_console_pattern(self, "BL2: v2.9(release)")
+         wait_for_console_pattern(self, "Booting BL31")
+ 
+         # EL3 Runtime Software
+-        wait_for_console_pattern(self, "BL31: v2.8(release)")
++        wait_for_console_pattern(self, "BL31: v2.9(release)")
+ 
+         # Non-trusted Firmware
+         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
+@@ -150,7 +150,7 @@ def test_sbsaref_alpine_linux_neoverse_n1(self):
+         """
+         self.boot_alpine_linux("neoverse-n1")
+ 
+-    @skip("requires TF-A update to handle FEAT_FGT")
++    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
+     def test_sbsaref_alpine_linux_max(self):
+         """
+         :avocado: tags=cpu:max
 -- 
 2.39.2

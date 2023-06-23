@@ -1,132 +1,107 @@
-Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp660394ejb;
-        Thu, 22 Jun 2023 13:14:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7O6yoMNFriIOoJxriNHMnOW2wmxY9tQDH9KEQ0875JAa5H3drFml5aCQnz7oZf4b4YPLAf
-X-Received: by 2002:a05:620a:372b:b0:75d:4a80:68a1 with SMTP id de43-20020a05620a372b00b0075d4a8068a1mr22697116qkb.22.1687464853263;
-        Thu, 22 Jun 2023 13:14:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687464853; cv=none;
+Received: by 2002:a17:906:d8da:b0:98d:c41:35ab with SMTP id re26csp772156ejb;
+        Thu, 22 Jun 2023 18:30:27 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5isXvwyscEC96bV8gyjwLdVW+jl9rlPp6Bg8yfc9Y7wUJ/a8A2YFzMMFBbuJISPMsr+ja5
+X-Received: by 2002:a05:622a:134b:b0:400:797e:d690 with SMTP id w11-20020a05622a134b00b00400797ed690mr4890682qtk.1.1687483827627;
+        Thu, 22 Jun 2023 18:30:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687483827; cv=none;
         d=google.com; s=arc-20160816;
-        b=JIezPaLn+NzjnaFGmLkSLrMLfayWgCuqna4kRswUwJo99v1Sn2qmzSfQtGVhuDEEZ2
-         6Xv3fEe6A3xPb0wnWfnyHdcTTDOGO5GpVM5qwbty7Teevuy8p2wsy/22f6lZo4p/9+ea
-         su58TQ0y2dfu09jKWXcoy/RYAwWM0tduWuPhGwmOH1ZRKy308pbvM3W11gel9DPL3CvL
-         km2orcx8+N/Hx/sjB++KDv2NrW4tu+St1MsBarHf1I0tPRmDHsQMhKB9WObrOe0uXUET
-         PFbyNhWcyOlbpotgZVwnYpYRJ7UXMFeRGCa6ZbFncJxwqXkU4SEr7kVIRRmf71B0cuq6
-         7g8g==
+        b=wBX6RsERJU+GVSi1VzRK1wPm7mwFDOC7eu+uTJq7jIVEyr/9YlN+XS8sYW3+hOvp7u
+         mhB7uPpY5rplKOw4mVJeX1Y42xzXhf74fGk3IKXUnOiKx5HPSJRXJhkoC28K/OhUjDKv
+         D4Vj2m6BCiE1JwC6tDglLyEP4WbP4aplq+CYNA2NZNH2udNR6vuiTDAPEX7t7ZJZEN77
+         mSnDEZX2/tZNN9Rx1nmyzSV/JTExYiDpJHw/v8PgNxhc22E9Bqz3eCflJXjbDbLIN9EF
+         6Rr/QBXF5EpAhP8dlETTYntx+YbYS9DAnKAWFZi9jeFAyHul6QNqRKhQjCs6b149mdfD
+         tshw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=XubY0rqvt0/p6OB1uA8q+9GRjQII2pVurqbY7EUIcZ8=;
-        b=nLvI0QTixz6SOVdY6ua7DGymkkonsN1YQzZyw8En/z+AYk5o3puLLLxzXcQYHeHlk7
-         mVpuLH+unO7nlpWzr4NacWW9MnzH94K56x/VYdDSHRMYeV5R9jsiJF2KWRw8GkhCAs1r
-         l6RIyVvv8u+GBN0xXKo5vxDEbQWu9pR+tvcaYWYlO91R6aaaZ8tWHTGFobTUG+6zbjQ4
-         nIdFbMCOb/x1oCCf4AFaDVX0adHyEmjiI7iDqAGP68UwA5kn7TJjo6vK5L9Ut2+GhdKa
-         hxhBZk3wYxK6Jg8O0U6tqYBbiijbepVZc9uJGKTdJijYnDx57wc2QhOj5Khat2z2b7gk
-         oRaQ==
+        bh=3tBre2goC4FnDdGhp6Tr8OgTUP7YsYcjc8aD1go3/jM=;
+        b=R4yeieKLCs1wJRZ6OxE588FRLhSQjRVW4UsPKtwta93XV1TkSapbRk9aPlKeVLhUAm
+         DgX2ogE8qTPs4KCVW8So+qpXCx/DiSGYuZnmycwSM9fWd5F07jYel0uVqREh7ITBR9H/
+         SCJ+AAkEt2MKVZL8iB3lvENj4sgeK/gf/StuHAhkP/MZXaXRDE0Z+aqztWFX4p/BCk77
+         zBxDWlT9ZrkK9PQPkxh5soaXa9PKqefWWplns99mJazzeNgalJsRGkrpvtBg5PYiRpek
+         WAlJETtsL04HyG7yo10PSD+DDNRIxdgn/VD7iCpQrN/uuG/Lww6Mg23BXVMu48psBGUC
+         Da9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R28My3pU;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KLnyX3jF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt14-20020a05620a478e00b0076214ccb868si2970422qkb.747.2023.06.22.13.14.13
+        by mx.google.com with ESMTPS id n12-20020a05622a11cc00b003f6b0eedcf9si3121246qtk.595.2023.06.22.18.30.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Jun 2023 13:14:13 -0700 (PDT)
+        Thu, 22 Jun 2023 18:30:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R28My3pU;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=KLnyX3jF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qCQgi-0005z2-2k; Thu, 22 Jun 2023 16:13:52 -0400
+	id 1qCVcx-0000MV-Qk; Thu, 22 Jun 2023 21:30:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qCQgg-0005xq-TO
- for qemu-arm@nongnu.org; Thu, 22 Jun 2023 16:13:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qCQgf-0007EN-Cn
- for qemu-arm@nongnu.org; Thu, 22 Jun 2023 16:13:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687464828;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=XubY0rqvt0/p6OB1uA8q+9GRjQII2pVurqbY7EUIcZ8=;
- b=R28My3pUXrlRp3nQIxpo9SWIlQYGTTycIpnDH56pAWYjsHfAlFA+OjKj3L1omKyxxtp/tW
- jhyqZv1wC+EPOFu/1jNArcpFqGS+nM3PHRg5LLZQgO2jncjCBYnd/vfg7gOcnmYXbwQdYN
- QHUrSai3UfwE87hfncVYpwtfhmflU0s=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-647-vwv6VAtvPVeVtoLngT8-5Q-1; Thu, 22 Jun 2023 16:13:41 -0400
-X-MC-Unique: vwv6VAtvPVeVtoLngT8-5Q-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3f814f78af2so35832665e9.0
- for <qemu-arm@nongnu.org>; Thu, 22 Jun 2023 13:13:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687464819; x=1690056819;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qCVcw-0000MI-Mn; Thu, 22 Jun 2023 21:30:18 -0400
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qCVcu-00088l-3f; Thu, 22 Jun 2023 21:30:18 -0400
+Received: by mail-qv1-xf35.google.com with SMTP id
+ 6a1803df08f44-62fe6773c4fso1279366d6.2; 
+ Thu, 22 Jun 2023 18:30:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1687483814; x=1690075814;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XubY0rqvt0/p6OB1uA8q+9GRjQII2pVurqbY7EUIcZ8=;
- b=iLnKAAUxfSFhnr3fmzBUfq6svEUCpXKd2SetlVrOwixWD2ASoToq2240/noJt+miNh
- Gi1W8GDymKsCYaqEpq85vPffEV1BgfGq0CyLWEGBDfrnt+A+ig5ao5/iOP8Lbk2bKesv
- F9yZNc7Xdo0T9dnWK+boaVv8cs49glu/n1XCUTWPUuFiRo5JJ9WkqDZvcS3Ikm697+Tv
- l7TDb/EPZ+vS7y/IAdM9lgGJENmxgIvdWjmXYfiXp1ednc100+wmO7AtwzyYHC/yxA8w
- 1RPiiIzwGi2o5u3POY25zWqkAd1/5Q0Jmsrtgg/lYvETZ5nffhW51RF+bh8ngDDh/j4Y
- eJeQ==
-X-Gm-Message-State: AC+VfDy9HuHkODAS5IOyEyj+c8qluAwCAER8NqqXfJQRpcxeSGfqsdRI
- THfsfPP+io1XpinpHKviNZSinPvGRJDhSydkFj9OVuld74hUQ89E9SuWy/uCmME1e4EUb+QNDf1
- ECSrIo+tJFJNB
-X-Received: by 2002:a05:6000:1008:b0:311:1501:ba53 with SMTP id
- a8-20020a056000100800b003111501ba53mr13990339wrx.49.1687464819301; 
- Thu, 22 Jun 2023 13:13:39 -0700 (PDT)
-X-Received: by 2002:a05:6000:1008:b0:311:1501:ba53 with SMTP id
- a8-20020a056000100800b003111501ba53mr13990310wrx.49.1687464819009; 
- Thu, 22 Jun 2023 13:13:39 -0700 (PDT)
-Received: from redhat.com ([2.52.149.110]) by smtp.gmail.com with ESMTPSA id
- e10-20020a5d65ca000000b002f28de9f73bsm7752224wrw.55.2023.06.22.13.13.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Jun 2023 13:13:38 -0700 (PDT)
-Date: Thu, 22 Jun 2023 16:13:34 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: David Hildenbrand <david@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <eduardo@habkost.net>, Greg Kurz <groug@kaod.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>
-Subject: Re: [PATCH 00/10] memory-device: Some cleanups
-Message-ID: <20230622161320-mutt-send-email-mst@kernel.org>
-References: <20230530113838.257755-1-david@redhat.com>
+ bh=3tBre2goC4FnDdGhp6Tr8OgTUP7YsYcjc8aD1go3/jM=;
+ b=KLnyX3jFHgd//VtC4h5qahNiVmcLBz+3Z3AOlMgKyUnIUgC9D7OJ3Swzv0Vkhl/SPk
+ OxxSZPv9HnYr4kQaUkEGwpf9+grV6lLmIyhjFUx/q2d2SpQJ7VTAnJ97/udwAfcn3P6m
+ 9JIvrcaI5QNSKppRbZe30WhHMeIuYtFwOw4jPT88xIlcqe9Eyx+QbM0lcxVIzIrJ9ZM/
+ gxORgfq8j/HxzcMQvrf27aAvjJfTbn/MohSNFqSS3+3GqSKevD8Lyi56tcmwulwEzVpp
+ qaJq4QnVox1aMgwhikTmjUvXoh1wH55uCX5rFSjkaQbtuZBQDmElQ5DJmGfJhGsmtB5C
+ uADw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687483814; x=1690075814;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3tBre2goC4FnDdGhp6Tr8OgTUP7YsYcjc8aD1go3/jM=;
+ b=G4u6r1Vp7Pl0atQ39cOGXJuzo3TEC266hsWLStMm3lPyD4M9NZJNDr0mEQ2dgtlh4P
+ G9aPNesPYD7jNbLd7xssCqVVJRKbmampL+x5LglsFVuO+BAlI0CIljDNcMGpEm4Ir5RB
+ URS7w8QsmvIK3Eo+/p3N9n9rroNLn68Qtdhso3yTh66KIKE6rUVuEyGjomYXJwU2w8Il
+ eICFOQgqQxGWn/JQ/NqAZ+nHRANFnWXEVC7AsorUR8s/ZprK+vFrf0rX0lxg1KFL1RRv
+ GYC1YqbRsw9D6Gu/Cfga/TZ30adBbpPC7xXDty+dQK7T5YtGbCAay7WMofP5s142GZfA
+ wD8A==
+X-Gm-Message-State: AC+VfDzaMRyLcxWL5JM/mOsXudlu9vp/tEmUAHr4arUnbutVDXyXZmF+
+ FVwb46O6Dm1U9v5VB3B6Heyhtlq8QPA99vrW8W4=
+X-Received: by 2002:a05:6214:20c5:b0:62b:4b5b:6a5e with SMTP id
+ 5-20020a05621420c500b0062b4b5b6a5emr27425023qve.33.1687483814211; Thu, 22 Jun
+ 2023 18:30:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20230530113838.257755-1-david@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20230619221819.6882-1-lucas@osdyne.com>
+In-Reply-To: <20230619221819.6882-1-lucas@osdyne.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 23 Jun 2023 11:29:47 +1000
+Message-ID: <CAKmqyKMGcsD7XQokTLTdr7X89WJaJq_g+7kf8Co_E-19j1J8Ww@mail.gmail.com>
+Subject: Re: [PATCH] STM32F100: support different density lines
+To: Lucas Villa Real <lucas@osdyne.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, erdnaxe@crans.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
+ envelope-from=alistair23@gmail.com; helo=mail-qv1-xf35.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,47 +117,493 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7aFdWHStC9O8
+X-TUID: fosrugITjXEv
 
-On Tue, May 30, 2023 at 01:38:28PM +0200, David Hildenbrand wrote:
-> Working on adding multi-memslot support for virtio-mem (teaching memory
-> device code about memory devices that can consume multiple memslots), I
-> have some preparatory cleanups in my queue that make sense independent of
-> the actual memory-device/virtio-mem extensions.
+On Tue, Jun 20, 2023 at 8:20=E2=80=AFAM Lucas Villa Real <lucas@osdyne.com>=
+ wrote:
+>
+> This patch adds support for the emulation of different density lines
+> (low, medium, and high). A new class property stm32f100-soc.density=3D
+> has been introduced to allow users to state the desired configuration.
+> That property is recognized by a new machine, stm32f1-generic. The SOC
+> is configured according to the following:
+>
+>    density=3Dlow       32 KB FLASH, 2 SPIs
+>    density=3Dmedium   128 KB FLASH, 2 SPIs
+>    density=3Dhigh     512 KB FLASH, 3 SPIs
+>
+> With this code change we should be able to introduce richer features
+> to STM32F100, such as support for FSMC (so that a machine with more
+> RAM capacity can be properly emulated). FSMC is supported on high
+> density line devices only.
+>
+> Signed-off-by: Lucas C. Villa Real <lucas@osdyne.com>
+> ---
+>  configs/devices/arm-softmmu/default.mak |  1 +
+>  docs/system/arm/stm32.rst               | 14 ++++
+>  hw/arm/Kconfig                          |  6 ++
+>  hw/arm/meson.build                      |  1 +
+>  hw/arm/stm32f100_soc.c                  | 92 +++++++++++++++++++++----
+>  hw/arm/stm32f1_generic.c                | 70 +++++++++++++++++++
+>  hw/arm/stm32vldiscovery.c               |  3 +-
+>  include/hw/arm/stm32f100_soc.h          | 18 ++++-
+>  8 files changed, 189 insertions(+), 16 deletions(-)
+>  create mode 100644 hw/arm/stm32f1_generic.c
+>
+> diff --git a/configs/devices/arm-softmmu/default.mak b/configs/devices/ar=
+m-softmmu/default.mak
+> index 980c48a7d9..4f0f2e99c0 100644
+> --- a/configs/devices/arm-softmmu/default.mak
+> +++ b/configs/devices/arm-softmmu/default.mak
+> @@ -19,6 +19,7 @@ CONFIG_ARM_VIRT=3Dy
+>  # CONFIG_NSERIES=3Dn
+>  # CONFIG_STELLARIS=3Dn
+>  # CONFIG_STM32VLDISCOVERY=3Dn
+> +# CONFIG_STM32F1_GENERIC=3Dn
+>  # CONFIG_REALVIEW=3Dn
+>  # CONFIG_VERSATILE=3Dn
+>  # CONFIG_VEXPRESS=3Dn
+> diff --git a/docs/system/arm/stm32.rst b/docs/system/arm/stm32.rst
+> index d7265b763d..d0a3b1a7eb 100644
+> --- a/docs/system/arm/stm32.rst
+> +++ b/docs/system/arm/stm32.rst
+> @@ -10,6 +10,12 @@ The STM32F1 series is based on ARM Cortex-M3 core. The=
+ following machines are
+>  based on this chip :
+>
+>  - ``stm32vldiscovery``  STM32VLDISCOVERY board with STM32F100RBT6 microc=
+ontroller
+> +- ``stm32f1-generic``   Generic STM32F1 board supporting low, medium and=
+ high
+> +                        density devices. Low-density emulates a 32KB FLA=
+SH;
+> +                        medium-density emulates a 128KB FLASH; high-dens=
+ity
+> +                        emulates a 512KB FLASH. The density also affects=
+ the
+> +                        number of peripherals exposed by QEMU for the em=
+ulated
+> +                        device. See ``Boot options`` below for more deta=
+ils.
+>
+>  The STM32F2 series is based on ARM Cortex-M3 core. The following machine=
+s are
+>  based on this chip :
+> @@ -65,3 +71,11 @@ firmware. Example:
+>  .. code-block:: bash
+>
+>    $ qemu-system-arm -M stm32vldiscovery -kernel firmware.bin
+> +
+> +Additionally, the ``stm32f1-generic`` board supports the ``density`` opt=
+ion
+> +to select the device density line.  The following values are supported:
+> +``low``, ``medium``, ``high``. Example:
+> +
+> +.. code-block:: bash
+> +
+> +  $ qemu-system-arm -M stm32f1-generic -global stm32f100-soc.density=3Dm=
+edium ...
+> \ No newline at end of file
 
-pc/acpi things:
+You are missing a new line here
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 2159de3ce6..822441945c 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -301,6 +301,12 @@ config STM32VLDISCOVERY
+>      depends on TCG && ARM
+>      select STM32F100_SOC
+>
+> +config STM32F1_GENERIC
+> +    bool
+> +    default y
+> +    depends on TCG && ARM
+> +    select STM32F100_SOC
+> +
+>  config STRONGARM
+>      bool
+>      select PXA2XX
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index 870ec67376..f88b5fe3c8 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -23,6 +23,7 @@ arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('rea=
+lview.c'))
+>  arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
+>  arm_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
+>  arm_ss.add(when: 'CONFIG_STM32VLDISCOVERY', if_true: files('stm32vldisco=
+very.c'))
+> +arm_ss.add(when: 'CONFIG_STM32F1_GENERIC', if_true: files('stm32f1_gener=
+ic.c'))
+>  arm_ss.add(when: 'CONFIG_COLLIE', if_true: files('collie.c'))
+>  arm_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
+>  arm_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
+> diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+> index f7b344ba9f..c157ffd644 100644
+> --- a/hw/arm/stm32f100_soc.c
+> +++ b/hw/arm/stm32f100_soc.c
+> @@ -38,10 +38,11 @@
+>
+>  static const uint32_t usart_addr[STM_NUM_USARTS] =3D { 0x40013800, 0x400=
+04400,
+>      0x40004800 };
+> -static const uint32_t spi_addr[STM_NUM_SPIS] =3D { 0x40013000, 0x4000380=
+0 };
+> +static const uint32_t spi_addr[STM_NUM_SPIS] =3D { 0x40013000, 0x4000380=
+0,
+> +    0x40003C00 };
+>
+>  static const int usart_irq[STM_NUM_USARTS] =3D {37, 38, 39};
+> -static const int spi_irq[STM_NUM_SPIS] =3D {35, 36};
+> +static const int spi_irq[STM_NUM_SPIS] =3D {35, 36, 51};
+>
+>  static void stm32f100_soc_initfn(Object *obj)
+>  {
+> @@ -50,17 +51,21 @@ static void stm32f100_soc_initfn(Object *obj)
+>
+>      object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
+>
+> +    /*
+> +     * All density lines feature the same number of USARTs, so they can =
+be
+> +     * initialized in this function. The number of SPIs is density-depen=
+dent,
+> +     * though, so SPIs are initialized in stm32f100_soc_realize().
+> +     */
+>      for (i =3D 0; i < STM_NUM_USARTS; i++) {
+>          object_initialize_child(obj, "usart[*]", &s->usart[i],
+>                                  TYPE_STM32F2XX_USART);
+>      }
+>
+> -    for (i =3D 0; i < STM_NUM_SPIS; i++) {
+> -        object_initialize_child(obj, "spi[*]", &s->spi[i], TYPE_STM32F2X=
+X_SPI);
+> -    }
+> -
+>      s->sysclk =3D qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0)=
+;
+>      s->refclk =3D qdev_init_clock_in(DEVICE(s), "refclk", NULL, NULL, 0)=
+;
+> +
+> +    /* Default density. May be overridden by the machine or cmdline opti=
+on */
+> +    s->density =3D STM32F100_DENSITY_HIGH;
+>  }
+>
+>  static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+> @@ -70,6 +75,17 @@ static void stm32f100_soc_realize(DeviceState *dev_soc=
+, Error **errp)
+>      SysBusDevice *busdev;
+>      int i;
+>
+> +    if (s->density =3D=3D STM32F100_DENSITY_HIGH) {
+> +        s->num_spis =3D 3;
+> +        s->flash_size =3D FLASH_SIZE_HD;
+> +    } else if (s->density =3D=3D STM32F100_DENSITY_MEDIUM) {
+> +        s->num_spis =3D 2;
+> +        s->flash_size =3D FLASH_SIZE_MD;
+> +    } else {
+> +        s->num_spis =3D 2;
+> +        s->flash_size =3D FLASH_SIZE_LD;
+> +    }
+> +
+>      MemoryRegion *system_memory =3D get_system_memory();
+>
+>      /*
+> @@ -101,9 +117,10 @@ static void stm32f100_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>       * Flash starts at 0x08000000 and then is aliased to boot memory at =
+0x0
+>       */
+>      memory_region_init_rom(&s->flash, OBJECT(dev_soc), "STM32F100.flash"=
+,
+> -                           FLASH_SIZE, &error_fatal);
+> +                           s->flash_size, &error_fatal);
+>      memory_region_init_alias(&s->flash_alias, OBJECT(dev_soc),
+> -                             "STM32F100.flash.alias", &s->flash, 0, FLAS=
+H_SIZE);
+> +                             "STM32F100.flash.alias", &s->flash, 0,
+> +                             s->flash_size);
+>      memory_region_add_subregion(system_memory, FLASH_BASE_ADDRESS, &s->f=
+lash);
+>      memory_region_add_subregion(system_memory, 0, &s->flash_alias);
+>
+> @@ -137,8 +154,11 @@ static void stm32f100_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>          sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irq=
+[i]));
+>      }
+>
+> -    /* SPI 1 and 2 */
+> -    for (i =3D 0; i < STM_NUM_SPIS; i++) {
+> +    /* Initialize all SPIs supported by the selected density line */
+> +    for (i =3D 0; i < s->num_spis; i++) {
+> +        object_initialize_child(OBJECT(dev_soc), "spi[*]", &s->spi[i],
+> +                                TYPE_STM32F2XX_SPI);
+> +
+>          dev =3D DEVICE(&(s->spi[i]));
+>          if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
+>              return;
+> @@ -153,9 +173,14 @@ static void stm32f100_soc_realize(DeviceState *dev_s=
+oc, Error **errp)
+>      create_unimplemented_device("timer[4]",  0x40000800, 0x400);
+>      create_unimplemented_device("timer[6]",  0x40001000, 0x400);
+>      create_unimplemented_device("timer[7]",  0x40001400, 0x400);
+> +    create_unimplemented_device("timer[12]", 0x40001800, 0x400);
+> +    create_unimplemented_device("timer[13]", 0x40001C00, 0x400);
+> +    create_unimplemented_device("timer[14]", 0x40002000, 0x400);
+>      create_unimplemented_device("RTC",       0x40002800, 0x400);
+>      create_unimplemented_device("WWDG",      0x40002C00, 0x400);
+>      create_unimplemented_device("IWDG",      0x40003000, 0x400);
+> +    create_unimplemented_device("UART4",     0x40004C00, 0x400);
+> +    create_unimplemented_device("UART5",     0x40005000, 0x400);
+>      create_unimplemented_device("I2C1",      0x40005400, 0x400);
+>      create_unimplemented_device("I2C2",      0x40005800, 0x400);
+>      create_unimplemented_device("BKP",       0x40006C00, 0x400);
+> @@ -169,12 +194,15 @@ static void stm32f100_soc_realize(DeviceState *dev_=
+soc, Error **errp)
+>      create_unimplemented_device("GPIOC",     0x40011000, 0x400);
+>      create_unimplemented_device("GPIOD",     0x40011400, 0x400);
+>      create_unimplemented_device("GPIOE",     0x40011800, 0x400);
+> +    create_unimplemented_device("GPIOF",     0x40011C00, 0x400);
+> +    create_unimplemented_device("GPIOG",     0x40012000, 0x400);
+>      create_unimplemented_device("ADC1",      0x40012400, 0x400);
+>      create_unimplemented_device("timer[1]",  0x40012C00, 0x400);
+>      create_unimplemented_device("timer[15]", 0x40014000, 0x400);
+>      create_unimplemented_device("timer[16]", 0x40014400, 0x400);
+>      create_unimplemented_device("timer[17]", 0x40014800, 0x400);
+> -    create_unimplemented_device("DMA",       0x40020000, 0x400);
+> +    create_unimplemented_device("DMA1",      0x40020000, 0x400);
+> +    create_unimplemented_device("DMA2",      0x40020400, 0x400);
+>      create_unimplemented_device("RCC",       0x40021000, 0x400);
+>      create_unimplemented_device("Flash Int", 0x40022000, 0x400);
+>      create_unimplemented_device("CRC",       0x40023000, 0x400);
+> @@ -185,12 +213,50 @@ static Property stm32f100_soc_properties[] =3D {
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>
+> -static void stm32f100_soc_class_init(ObjectClass *klass, void *data)
+> +static char *stm32f100_get_density(Object *obj, Error **errp)
+>  {
+> -    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    STM32F100State *s =3D STM32F100_SOC(obj);
+> +
+> +    switch (s->density) {
+> +    case STM32F100_DENSITY_LOW:
+> +        return g_strdup("low");
+> +    case STM32F100_DENSITY_MEDIUM:
+> +        return g_strdup("medium");
+> +    case STM32F100_DENSITY_HIGH:
+> +        return g_strdup("high");
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +}
+> +
+> +static void stm32f100_set_density(Object *obj, const char *value, Error =
+**errp)
+> +{
+> +    STM32F100State *s =3D STM32F100_SOC(obj);
+> +
+> +    if (!strcmp(value, "low")) {
+> +        s->density =3D STM32F100_DENSITY_LOW;
+> +    } else if (!strcmp(value, "medium")) {
+> +        s->density =3D STM32F100_DENSITY_MEDIUM;
+> +    } else if (!strcmp(value, "high")) {
+> +        s->density =3D STM32F100_DENSITY_HIGH;
+> +    } else {
+> +        error_setg(errp, "Invalid density value '%s'", value);
+> +        error_append_hint(errp, "Valid values: 'low', 'medium', 'high'\n=
+");
+> +    }
+> +}
+> +
+> +static void stm32f100_soc_class_init(ObjectClass *oc, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(oc);
+>
+>      dc->realize =3D stm32f100_soc_realize;
+>      device_class_set_props(dc, stm32f100_soc_properties);
+> +
+> +    object_class_property_add_str(oc, "density", stm32f100_get_density,
+> +        stm32f100_set_density);
+> +    object_class_property_set_description(oc, "density",
+> +        "Set the STM32F100 density line device. "
+> +        "Valid values are 'low', 'medium', and 'high' (default).");
+>  }
 
+This should be split into a separate commit from adding the machine
 
-> v1 -> v2:
-> - Allocate ms->device_memory only if the size > 0.
-> - Split it up and include more cleanups
-> 
-> David Hildenbrand (10):
->   memory-device: Unify enabled vs. supported error messages
->   memory-device: Introduce memory_devices_init()
->   hw/arm/virt: Use memory_devices_init()
->   hw/ppc/spapr: Use memory_devices_init()
->   hw/loongarch/virt: Use memory_devices_init()
->   hw/i386/pc: Use memory_devices_init()
->   hw/i386/acpi-build: Rely on machine->device_memory when building SRAT
->   hw/i386/pc: Remove PC_MACHINE_DEVMEM_REGION_SIZE
->   memory-device: Refactor memory_device_pre_plug()
->   memory-device: Track used region size in DeviceMemoryState
-> 
->  hw/arm/virt.c                  |  9 +----
->  hw/i386/acpi-build.c           |  9 ++---
->  hw/i386/pc.c                   | 36 +++---------------
->  hw/loongarch/virt.c            | 14 ++-----
->  hw/mem/memory-device.c         | 69 +++++++++++++++-------------------
->  hw/ppc/spapr.c                 | 37 +++++++++---------
->  hw/ppc/spapr_hcall.c           |  2 +-
->  include/hw/boards.h            |  2 +
->  include/hw/i386/pc.h           |  1 -
->  include/hw/mem/memory-device.h |  2 +
->  10 files changed, 68 insertions(+), 113 deletions(-)
-> 
-> -- 
-> 2.40.1
+>
+>  static const TypeInfo stm32f100_soc_info =3D {
+> diff --git a/hw/arm/stm32f1_generic.c b/hw/arm/stm32f1_generic.c
+> new file mode 100644
+> index 0000000000..63d2a58bdc
+> --- /dev/null
+> +++ b/hw/arm/stm32f1_generic.c
+> @@ -0,0 +1,70 @@
+> +/*
+> + * ST generic STM32F1 board
+> + *
+> + * Copyright (c) 2023 Lucas C. Villa Real <lucas@osdyne.com>
+> + * Copyright (c) 2021 Alexandre Iooss <erdnaxe@crans.org>
+> + * Copyright (c) 2014 Alistair Francis <alistair@alistair23.me>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
+> + * of this software and associated documentation files (the "Software"),=
+ to deal
+> + * in the Software without restriction, including without limitation the=
+ rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/boards.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/qdev-clock.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/arm/stm32f100_soc.h"
+> +#include "hw/arm/boot.h"
+> +
+> +/* Main SYSCLK frequency in Hz (24MHz) */
+> +#define SYSCLK_FRQ 24000000ULL
+> +
+> +static void stm32f1_generic_init(MachineState *machine)
+> +{
+> +    STM32F100State *s;
+> +    DeviceState *dev;
+> +    Clock *sysclk;
+> +
+> +    /* This clock doesn't need migration because it is fixed-frequency *=
+/
+> +    sysclk =3D clock_new(OBJECT(machine), "SYSCLK");
+> +    clock_set_hz(sysclk, SYSCLK_FRQ);
+> +
+> +    /*
+> +     * Note that we don't set the "density" property so that the default
+> +     * value ("high") can be changed via "-global stm32f100-soc.density=
+=3D..."
+> +     */
+> +    dev =3D qdev_new(TYPE_STM32F100_SOC);
+> +    qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3")=
+);
+> +    qdev_connect_clock_in(dev, "sysclk", sysclk);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> +
+> +    s =3D STM32F100_SOC(OBJECT(dev));
+> +    armv7m_load_kernel(ARM_CPU(first_cpu),
+> +                       machine->kernel_filename,
+> +                       0, s->flash_size);
+> +}
 
+Isn't this exactly the same as the stm32vldiscovery board? Which is
+already very similar to the netduino2 machine. I'm not sure we need
+another machine.
+
+It could make more sense to deprecate the stm32vldiscovery machine and
+replace it with this generic one. At least we could keep everything in
+the one file and reuse a lot of the code.
+
+Alistair
+
+> +
+> +static void stm32f1_generic_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc =3D "STM32F1 generic (Cortex-M3)";
+> +    mc->init =3D stm32f1_generic_init;
+> +}
+> +
+> +DEFINE_MACHINE("stm32f1-generic", stm32f1_generic_machine_init)
+> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+> index 67675e952f..3c4bffe5d4 100644
+> --- a/hw/arm/stm32vldiscovery.c
+> +++ b/hw/arm/stm32vldiscovery.c
+> @@ -47,13 +47,14 @@ static void stm32vldiscovery_init(MachineState *machi=
+ne)
+>      clock_set_hz(sysclk, SYSCLK_FRQ);
+>
+>      dev =3D qdev_new(TYPE_STM32F100_SOC);
+> +    qdev_prop_set_string(dev, "density", "medium");
+>      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3")=
+);
+>      qdev_connect_clock_in(dev, "sysclk", sysclk);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>
+>      armv7m_load_kernel(ARM_CPU(first_cpu),
+>                         machine->kernel_filename,
+> -                       0, FLASH_SIZE);
+> +                       0, FLASH_SIZE_MD);
+>  }
+>
+>  static void stm32vldiscovery_machine_init(MachineClass *mc)
+> diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_so=
+c.h
+> index 40cd415b28..5305e342e3 100644
+> --- a/include/hw/arm/stm32f100_soc.h
+> +++ b/include/hw/arm/stm32f100_soc.h
+> @@ -34,14 +34,24 @@
+>  #define TYPE_STM32F100_SOC "stm32f100-soc"
+>  OBJECT_DECLARE_SIMPLE_TYPE(STM32F100State, STM32F100_SOC)
+>
+> +/* Definitions for high-density value line devices */
+>  #define STM_NUM_USARTS 3
+> -#define STM_NUM_SPIS 2
+> +#define STM_NUM_SPIS 3
+>
+>  #define FLASH_BASE_ADDRESS 0x08000000
+> -#define FLASH_SIZE (128 * 1024)
+> +#define FLASH_SIZE_LD (32 * 1024)
+> +#define FLASH_SIZE_MD (128 * 1024)
+> +#define FLASH_SIZE_HD (512 * 1024)
+>  #define SRAM_BASE_ADDRESS 0x20000000
+>  #define SRAM_SIZE (8 * 1024)
+>
+> +/* Supported density value lines */
+> +typedef enum {
+> +    STM32F100_DENSITY_LOW,
+> +    STM32F100_DENSITY_MEDIUM,
+> +    STM32F100_DENSITY_HIGH,
+> +} STM32F100Density;
+> +
+>  struct STM32F100State {
+>      /*< private >*/
+>      SysBusDevice parent_obj;
+> @@ -60,6 +70,10 @@ struct STM32F100State {
+>
+>      Clock *sysclk;
+>      Clock *refclk;
+> +
+> +    STM32F100Density density;
+> +    uint8_t num_spis;
+> +    uint32_t flash_size;
+>  };
+>
+>  #endif
+> --
+> 2.39.2 (Apple Git-143)
+>
+>

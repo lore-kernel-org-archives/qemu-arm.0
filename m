@@ -1,137 +1,192 @@
-Received: by 2002:a17:906:6453:b0:98d:a79e:b696 with SMTP id l19csp198997ejn;
-        Fri, 23 Jun 2023 08:14:17 -0700 (PDT)
-X-Received: by 2002:a7b:c411:0:b0:3f7:ee69:869f with SMTP id k17-20020a7bc411000000b003f7ee69869fmr15165708wmi.5.1687533257109;
-        Fri, 23 Jun 2023 08:14:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687533257; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp193634ejx;
+        Sat, 24 Jun 2023 10:41:33 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7oGdGgeuo2D3JrH6acTv77iJWQgMjdmS9g7Jv2+rapzemvAGKf4qy8E7jpcQNwUKLLDLbg
+X-Received: by 2002:a17:90a:eb0c:b0:253:727e:4b41 with SMTP id j12-20020a17090aeb0c00b00253727e4b41mr12653825pjz.34.1687628493480;
+        Sat, 24 Jun 2023 10:41:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687628493; cv=none;
         d=google.com; s=arc-20160816;
-        b=Opfnf3DNEUgQm702tVeP1plB/AXtzCkqK3cxRw3kSlX/7WVa7ZrNnAacWyPd5YVtXo
-         CiAqGdj+rtU2KWZafAAGcem/6/g31Oa6UkN2rrDE2dzWE7JSvyzJptJ4jNHvdlVpGPja
-         aFV4a4Z/Z94OzqMMruA6ZKJR/CLQ+dSMDBBuzoZ7Yby0BaEcGlla6Nk8QotSyAE6AKt0
-         Ve+neh2V3FdB7czIZ0xj14kY3BXkuC18CrAtCUPeS8JmYyz5dvoXBUQuzfl9Ejk809M0
-         WaWsLDpJp7h7/1kuGNUyXLtcAKsINYlwDI6WWCcXlIQh70EPd7QSpLfUExt26iKatnx0
-         M5zQ==
+        b=iRbSoW/+ZcsbrsurE/pVCseXN9cSDeE3jK667JuAr3rA5+xR73aYS1NZ378PyOUp9w
+         DVbfmJ1Bc7tJ6tjM153eAC7OLbzE2TEblsPh2/j8JDCUonoTQFvde1Nu6jbsA4yBK7Pv
+         JyesPilxU1i2zAE9vzo72BHACfbWthlylLH6+uYtJINu8j8vIuUZHyTJVELYZjHV1XqD
+         kaSQGQTZVvJWMjP1X6k2LHCENPIyDgz7zHDtZe5QK8DmNnud22co5kzrtrBxKjKsakoD
+         Vsz7+G49Ed3mIzQkASPzMxOt1OIRLPJE/dDksJLJsMOJzvrvnN46VPNdlW6e93gpSz/z
+         yjJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=fnnKEbUvj74y6swt1Yen5ynIV0kpGjzEKPfjFjq0Wh8=;
-        b=I25ADNLDAMaHsKPS1C0fVr8MTVdnXHtOnXHnQgk7M1XUJNzrqIG2jm+cP7L+swwQE/
-         LLrWbMxOoQecTyHtgjj3L6AiadwI5yj4FE0/jwKEBvGjq1X84uJjo74FCv4rtV7nFawN
-         0ExK9d2fsNVc9gJzy9WIItUjKoblsJnvrCFE3az/zcATnzUU/5JxNTvs/T8pUkn79XWn
-         GWBkc+u0RmJbtLWWEcf0aU0isIUARvXDpoU4z9KQ35PEQVPhryFOznwToIeiCC2o2rM1
-         FXbzoe4rzw9Jwh3g6MIN+OsZmNe3sVU1C8H/KYKFj7m6nty4oXR6O9nkdStBgWPLYK4N
-         UCRA==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9DD8JyzZ0D9c0TVJWROVlnDQP9z+YeCBvlalUwzeBRo=;
+        fh=dxlO8U8n9FJbkfu3NZ9xTJMkF/Fn5IQj359CkmYw0tg=;
+        b=qw5P1URoJ5KQUUYdCAXtWSyNL52aLK6c7BVJ/5Plojhx0TVfhZDK3CtO3tk0AIzgpY
+         aprjVFsidMiTaN9b9rWpjXJc0hJxOjOChgpXZhQS4ofMpUmDVwzRsAQlw1Rp+JNwdpeu
+         8IUOYAebhTNLBw0Aux1sKLKFz3of/iM0YqVyzxAmE6aun92PhFHWJ7dBx5GNmsD3md/J
+         oT9ymx+SBHFjPWzWpqw72/hCJbyy+61cAlOPFjyVHPfBr4MW651EdCnPLwoexJkXYfsC
+         YmvtzxGKxvCySIownDh9wuJT+YFL+b5ud/F9mKFVwAVBs/tRI1UTiICgDLrvjIH90hl6
+         4CXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k/rjukvs";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S8HxrYQ2;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u18-20020a05600c00d200b003f78fd2cf61sor3378633wmm.8.2023.06.23.08.14.17
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 23 Jun 2023 08:14:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id i9-20020a17090a650900b002509d96227esi3992367pjj.173.2023.06.24.10.41.33;
+        Sat, 24 Jun 2023 10:41:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k/rjukvs";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S8HxrYQ2;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S233141AbjFXRl3 (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Sat, 24 Jun 2023 13:41:29 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38678 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229448AbjFXRl1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 24 Jun 2023 13:41:27 -0400
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com [IPv6:2a00:1450:4864:20::32b])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9198B1BC2
+        for <kvm@vger.kernel.org>; Sat, 24 Jun 2023 10:41:26 -0700 (PDT)
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-3fa70ec8d17so26238365e9.1
+        for <kvm@vger.kernel.org>; Sat, 24 Jun 2023 10:41:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687533256; x=1690125256;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fnnKEbUvj74y6swt1Yen5ynIV0kpGjzEKPfjFjq0Wh8=;
-        b=k/rjukvsLyYNZDYRZmqpjkibMcZK5loRr4qfUGqJJfcVivIw9OelHpuBRHyIhkZEW7
-         S9QscsGXp9eFAhLtH4CSpSwskf0NgzK3/ARnYVPVsZ3VqAprjF6TOrvpgVjpxby+FS03
-         kX1hgTowCMXS88QhG28zeyhn6LXmpVQ1ExQmnyZ4g/ncPacgG405Bv54glCJsR8ercDK
-         ln1hWXAHTDq+kComd9dKyiEkRqOKBZap8jAVet6PYncRtpnLzL4SXKIC/iKE5A1bctSF
-         L1Rx6Wrs1q1NsDD+zvG7lIQtxwHiDJouLgm7FZcfehqHGJnD5oDl1bDr2eFU9Exxoi+s
-         jWTg==
+        d=linaro.org; s=google; t=1687628485; x=1690220485;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9DD8JyzZ0D9c0TVJWROVlnDQP9z+YeCBvlalUwzeBRo=;
+        b=S8HxrYQ2qhgw56X9JXNpzNmjfiViWtcbiWCpgQccPHZivixZ7QAzwnG0azVoU7xVwb
+         akuxl0mdCTpThLPPNG44q2zM7WFBYRf++FIjeb7OZaKYcNCoxQVVFO06aKvqykPLZlYZ
+         ZvpNiq98b5G8YgGvHvAodfNZ2LcJFFazSZG27b+pSB9bw6v7bdgijzZhhCtwRpACo7M0
+         slPhBm89C1gJKR7y1ERfGhGue/oWbU0iTwXu9x0IUylVr99MqavVrVlJRD4xj8CSGUvm
+         6za9HdL9/cV4dMDN2/DHhAKDF5i4CxvXeVSa4T7v0NhA1XGwrIFxIoVXTwJ+ThKpvofI
+         84Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687533256; x=1690125256;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fnnKEbUvj74y6swt1Yen5ynIV0kpGjzEKPfjFjq0Wh8=;
-        b=ggQgaS6qWs7DeCuBys2EklepkJinXR/2pCI9HuJHicCfddgToDIvmteRTw0nrTn5ay
-         dbMNbTTpEsvcBHuNS0YSNByStSK9fIVcleHa4trTWd/T995N7OuTWVxuYfEY+ZFy+0yg
-         W+tqfcELTGjM5wAb2wvVZMvtcjMMwBQcv8gs1LWzXHDbVCFX8u7TDeLSnzE1SDC5lWWE
-         wZOCEzdJJbpWaUa5j0JcAc9nu4lx/HPmGF6fz2RHWMZZOpGthXSbyWwBiTnfeX29hq2v
-         k2IyIdX5b+VxBHx6z3CmOVE0FgBBWffsg1ZNwUuAT01eG3cDjezuwaeVz3WO4a5+U25b
-         ufaA==
-X-Gm-Message-State: AC+VfDzrmHxg7S4S83XtIkVIcLqLVsiQX2RgdxgCUlBuAR0SUd8VtHmh
-	9LprWO2afoGaSpCaDMxt4OnpKi46Eoqhheh6oLbVgpsf
-X-Google-Smtp-Source: ACHHUZ4qreyV1AcIE3FHgVDqR7ryKxuELlgnep9l/AqSEERbTkINCRebEkpcqvT4QfBqWWkNlzHB7Q==
-X-Received: by 2002:a1c:cc15:0:b0:3f9:bf0f:1cf5 with SMTP id h21-20020a1ccc15000000b003f9bf0f1cf5mr5812632wmb.20.1687533256577;
-        Fri, 23 Jun 2023 08:14:16 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.93.175] (94.red-88-29-173.dynamicip.rima-tde.net. [88.29.173.94])
-        by smtp.gmail.com with ESMTPSA id u2-20020a5d5142000000b003113dc327fbsm9788630wrt.22.2023.06.23.08.14.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Jun 2023 08:14:16 -0700 (PDT)
-Message-ID: <93fb759a-e66d-cf2b-984c-59cb3e074bd5@linaro.org>
-Date: Fri, 23 Jun 2023 17:14:11 +0200
+        d=1e100.net; s=20221208; t=1687628485; x=1690220485;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=9DD8JyzZ0D9c0TVJWROVlnDQP9z+YeCBvlalUwzeBRo=;
+        b=fHqY69rUIN+EB2gwKThOUMmBVwJASHogJYJ/8FzT/k/UYJb1DD8hIvB0Pl695grU7/
+         lU68SD6cUDb8LeOPqkZFRndmun6EZb4OV3c2CHn7cEzdyctQtm8gTm+l6AGwwWETX14E
+         J0a0y9QvmyVTeSLaexlWCDLVDMkAAsdep4qnnSjKCORf6VNrgVdmO9141yGReIMCdnP4
+         6QaJl5aMcpaNz5ISQ2u0TLY1DMUd3RbIKs1IVBimvrTbx/H2RZGSzz0If54ZDlbPtSyh
+         oP73rJHWMgmtrHIVTf1rjOYjYUkeLYjDeCfmg1kXjC8tM2xwm3xdU6BAsp1bbsGm8Tma
+         gq5Q==
+X-Gm-Message-State: AC+VfDxBE97n4LTR9parVTbb+lOZYGpUlPV0sR5V9wgXnexvyCUCeO9J
+        FWYigaTlvtz9SmtqFmEfjJ+z4g==
+X-Received: by 2002:a05:600c:2942:b0:3f7:e7a2:25f6 with SMTP id n2-20020a05600c294200b003f7e7a225f6mr21913470wmd.17.1687628485030;
+        Sat, 24 Jun 2023 10:41:25 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.217.150])
+        by smtp.gmail.com with ESMTPSA id p23-20020a1c7417000000b003f9b0f640b1sm2711760wmc.22.2023.06.24.10.41.22
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sat, 24 Jun 2023 10:41:24 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Alexander Graf <agraf@csgraf.de>,
+        xen-devel@lists.xenproject.org,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Yanan Wang <wangyanan55@huawei.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Paul Durrant <paul@xen.org>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Eduardo Habkost <eduardo@habkost.net>,
+        Cameron Esfahani <dirty@apple.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 00/16] accel: Share CPUState accel context (HAX/NVMM/WHPX/HVF)
+Date:   Sat, 24 Jun 2023 19:41:05 +0200
+Message-Id: <20230624174121.11508-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH 17/26] tests/avocado: update firmware to enable
- sbsa-ref/max
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Juan Quintela <quintela@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
- Eduardo Habkost <eduardo@habkost.net>, Riku Voipio <riku.voipio@iki.fi>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Bandan Das <bsd@redhat.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, Alexander Bulekov <alxndr@bu.edu>,
- Leif Lindholm <quic_llindhol@quicinc.com>, Qiuhao Li
- <Qiuhao.Li@outlook.com>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Leonardo Bras <leobras@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Bin Meng <bmeng.cn@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20230623122100.1640995-1-alex.bennee@linaro.org>
- <20230623122100.1640995-18-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230623122100.1640995-18-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: MCPhiTb8qwD+
+X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: UfqC35E3rsH3
 
-On 23/6/23 14:20, Alex Bennée wrote:
-> From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> 
-> Update prebuilt firmware images to have TF-A with FEAT_FGT support
-> enabled. This allowed us to enable test for "max" cpu in sbsa-ref
-> machine.
-> 
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> Message-Id: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/avocado/machine_aarch64_sbsaref.py | 22 +++++++++++-----------
->   1 file changed, 11 insertions(+), 11 deletions(-)
+This series is part of the single binary effort.
 
+All accelerator will share their per-vCPU context in
+an opaque 'accel' pointer within the CPUState.
 
-> @@ -150,7 +150,7 @@ def test_sbsaref_alpine_linux_neoverse_n1(self):
->           """
->           self.boot_alpine_linux("neoverse-n1")
->   
-> -    @skip("requires TF-A update to handle FEAT_FGT")
-> +    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
+First handle HAX/NVMM/WHPX/HVF. KVM and TCG will follow
+as two different (bigger) follow-up series.
 
-Same comment as v1, we can remove the @skip* tags.
+Except HVF/intel, all has been (cross-)build tested.
 
-Similarly to v1:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+I plan to send the PR myself.
 
-v1: 
-https://lore.kernel.org/qemu-devel/579fb938-dc8a-5f85-143f-644ba1f1db40@linaro.org/
+Since v2:
+- Addressed rth's review comments
+- Added rth's R-b tag
+
+Since v1:
+- Addressed rth's review comments
+- Added rth's R-b tag
+- Converted HVF intel (untested)
+- Rebased
+
+Philippe Mathieu-Daudé (16):
+  MAINTAINERS: Update Roman Bolshakov email address
+  accel: Document generic accelerator headers
+  accel: Remove unused hThread variable on TCG/WHPX
+  accel: Fix a leak on Windows HAX
+  accel: Destroy HAX vCPU threads once done
+  accel: Rename 'hax_vcpu' as 'accel' in CPUState
+  accel: Rename HAX 'struct hax_vcpu_state' -> AccelCPUState
+  accel: Move HAX hThread to accelerator context
+  accel: Remove NVMM unreachable error path
+  accel: Rename NVMM 'struct qemu_vcpu' -> AccelCPUState
+  accel: Inline NVMM get_qemu_vcpu()
+  accel: Remove WHPX unreachable error path
+  accel: Rename WHPX 'struct whpx_vcpu' -> AccelCPUState
+  accel: Inline WHPX get_whpx_vcpu()
+  accel: Rename 'cpu_state' -> 'cs'
+  accel: Rename HVF 'struct hvf_vcpu_state' -> AccelCPUState
+
+ MAINTAINERS                       |   4 +-
+ include/hw/core/cpu.h             |  10 +-
+ include/qemu/typedefs.h           |   1 +
+ include/sysemu/hax.h              |   2 +
+ include/sysemu/hvf_int.h          |   2 +-
+ include/sysemu/kvm.h              |   2 +
+ include/sysemu/nvmm.h             |   2 +
+ include/sysemu/tcg.h              |   2 +
+ include/sysemu/whpx.h             |   2 +
+ include/sysemu/xen.h              |   2 +
+ target/i386/hax/hax-i386.h        |  12 +-
+ target/i386/hvf/vmx.h             |  22 +-
+ target/i386/hvf/x86hvf.h          |  18 +-
+ accel/hvf/hvf-accel-ops.c         |  18 +-
+ accel/tcg/tcg-accel-ops-mttcg.c   |   4 -
+ accel/tcg/tcg-accel-ops-rr.c      |   3 -
+ target/arm/hvf/hvf.c              | 108 ++++-----
+ target/i386/hax/hax-accel-ops.c   |   5 +-
+ target/i386/hax/hax-all.c         |  26 ++-
+ target/i386/hax/hax-posix.c       |   4 +-
+ target/i386/hax/hax-windows.c     |   6 +-
+ target/i386/hvf/hvf.c             | 104 ++++-----
+ target/i386/hvf/x86.c             |  28 +--
+ target/i386/hvf/x86_descr.c       |  26 +--
+ target/i386/hvf/x86_emu.c         |  62 ++---
+ target/i386/hvf/x86_mmu.c         |   4 +-
+ target/i386/hvf/x86_task.c        |  10 +-
+ target/i386/hvf/x86hvf.c          | 372 +++++++++++++++---------------
+ target/i386/nvmm/nvmm-all.c       |  42 ++--
+ target/i386/whpx/whpx-accel-ops.c |   3 -
+ target/i386/whpx/whpx-all.c       |  45 ++--
+ .mailmap                          |   3 +-
+ 32 files changed, 469 insertions(+), 485 deletions(-)
+
+-- 
+2.38.1

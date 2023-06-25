@@ -1,377 +1,142 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp193910ejx;
-        Sat, 24 Jun 2023 10:42:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7fqYm/YdZWs4Gs7LKFf9HEG31l2d2pdmbWf7+OfBzoblUKHyIQNrdqn4au0aDLW2tCWhlR
-X-Received: by 2002:a05:6808:18a3:b0:39a:b35b:a06c with SMTP id bi35-20020a05680818a300b0039ab35ba06cmr21435301oib.30.1687628550348;
-        Sat, 24 Jun 2023 10:42:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687628550; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp314157ejx;
+        Sat, 24 Jun 2023 18:59:27 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6HX/6w2Mo++S1KXhcdAzSFAVL0c1R1mq8hOZovTja/XxkpyhtiGybnlD17pIBxSjBWvVZ/
+X-Received: by 2002:a05:620a:e17:b0:75b:23a1:364b with SMTP id y23-20020a05620a0e1700b0075b23a1364bmr22916759qkm.12.1687658367532;
+        Sat, 24 Jun 2023 18:59:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687658367; cv=none;
         d=google.com; s=arc-20160816;
-        b=LYTzJKEL8h8uqPvI+enZBCvbBUiBcBxY90gjNSHbbrp3yr0qsrlsPLY1FOJhl9fIBQ
-         Jx0XkEN0dsLtTZfDeGpiLpggsrTVHhdngkQs4Aduz86rY6vgulTOLQzsRabtjsyOYlrl
-         4AvLGMiYJskXQodN1KKjY9stiY7qkWaSOn6Nsm+u+Q1sFfYPzvhzhkClLthRG+mZJx5U
-         H/MamJbkwrjDCYadhXjVAkQqJSIGDK8ovXraKvuS8ysaXnPYKAf9+9hdX902VL+rs6Gg
-         YU+U7+60QuKZ+foKdYFIckxQMRTc/TJ2bnngy7P1EADP4zHK66PtRvI4FOqo4PSDlYMR
-         yQpw==
+        b=ByVv2W9EEqf4ArWPXB2qGAsfdQpXP96wh4NLmK8Fn+pR+vBuxndpWjKQIyOCWeLmLt
+         q1WcCIrEr9W1y3Hekgj1yVF7zAcx/4IoJ7VmohVBfOIML5kb52xfFVqViuf8K6dHAIHd
+         GZIKcAVQSUgqmDc9TwzWNl1eWwuVrdsN24Az66aAp4QUe0AGWKgaey7bvit/X1+r4Syl
+         jKEft1GHo+XZhYiTFZ9Z2EF4bvU5jIy88lmkkcwjWNwNpytxGKRqcGuXD9WVWP7o1apI
+         Eh0wQ7/cmk5ZRfQRszdAAg5lOuXsUX5u3TtRDyHnAibZoGRnUkYQy1orQ1MX937gLN3h
+         7VRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=jesYnGv71+FK9NHqSWoHnqh4nOCgnV66g281tGNK4XE=;
-        fh=dxlO8U8n9FJbkfu3NZ9xTJMkF/Fn5IQj359CkmYw0tg=;
-        b=m2HMNkkALKNRlX3JsaYTimgnnE+EftlZrpblWIF6/VuI8yRaLzJYi3dyHaPLZeBUcz
-         acBJvDY1xW3jYdPboAwOpAnRtyhPv+onzp/jFwHfkvyLFjV+0140fWRuftbFH6fV3CEV
-         VAP4xyt7pu5XxoqYK3sZ0nu5B8808R7NKyTPSTxhVot5gVsATDpyP12QEJMM1wl04N3c
-         cMyOHTwUTU5XvxONqD1HKOwKOhQ/jMkRtpkcVbVDp5fkTbIBesGht8sH/dQQEsacG6gL
-         rf0se92jjKYTQxwkq43ZMfX7rh+OYx6HW7CLChIiKbtx0vfSAVpJDTsIV55FhcC1hfDr
-         s3Fg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:feedback-id
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=LyjMKOB8wDfS6GJPUG8sO3EsP7uI/oVjLkbKrtt2x4I=;
+        fh=u/dg7BYWhV94tEn9nc2iTiCYxM6O4KWA5PXh8TwOXwc=;
+        b=fwXlgDvlEgdv+pk4jBmoQj8r7D0IP3mZ9yRQppzv1+qY0pS6xQSVBo0S7ZjB0/NsOC
+         8xpUB5ji2OhlmwvvTzCshgt/eft5jvT9PrM0o1WW18DSvkAR1UnG8u53h+tcnR0SnAaF
+         ilUbPqQmCX70TC8mkIb1mXZy42CfkMFVwT5FBGH1Y28snubzN37J31F2C1/ggq+WLIGk
+         hxlPQJ0MAZmTRYI0mn3Bkam6cp5EoMJ/XYH83MElaiFM5OVfueXBj/b8BGRGR4tlqW/W
+         BgGEcmRDDJikvjCpGAD0DkIBNSrzVcB9zG8zXwmLUzfh9fBa9m+7v+9Phs/Ic7wG/d8E
+         Necw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PSP13nJm;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id i9-20020a17090a650900b002509d96227esi3992367pjj.173.2023.06.24.10.42.30;
-        Sat, 24 Jun 2023 10:42:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a7-20020a05620a438700b0076395d8a560si948642qkp.46.2023.06.24.18.59.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 24 Jun 2023 18:59:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PSP13nJm;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S233175AbjFXRm3 (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Sat, 24 Jun 2023 13:42:29 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:39518 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S233217AbjFXRmX (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 24 Jun 2023 13:42:23 -0400
-Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com [IPv6:2a00:1450:4864:20::134])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 9E58F1BF7
-        for <kvm@vger.kernel.org>; Sat, 24 Jun 2023 10:42:18 -0700 (PDT)
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-4f86dbce369so2319910e87.0
-        for <kvm@vger.kernel.org>; Sat, 24 Jun 2023 10:42:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687628537; x=1690220537;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jesYnGv71+FK9NHqSWoHnqh4nOCgnV66g281tGNK4XE=;
-        b=PSP13nJmGuGfUIHZYTQrZ7FoGcAETjiVze80Ga5o8kpBQN7EVd6/ZzsWnI0bc5+cf2
-         7P4AegcanBm6I0AqxSivnZhhIHWzc1EVaUqUBxf50e78O1SpYR4am8GUmpXnKT00dLaD
-         YtjYLG64eb2fi0Z3rW8DTkUaUQ1+9LB1hJizePMmfW38t13xGzSESQ8rr931uMREPgJH
-         P/L9BhrWugNQhyCgnRt4wqGOi+9bLjVPyPkRVECeAFCL4odpYkKQuWMMJuNDEEDTmIji
-         09xQDF2Yw87T4a6e+eKg+ZG6yJNlTJfQ65Pq4Dryt28VK/9aRDBbVC4TNa/AjZOKojLp
-         qRvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687628537; x=1690220537;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=jesYnGv71+FK9NHqSWoHnqh4nOCgnV66g281tGNK4XE=;
-        b=UXC8jV202omaTr/zQZIbvfCyJWrYpyXW4dxP7G/zxhm+K/muGLwTMJmBbpjbMjeg9F
-         bN/Fa/Hhyze+ff0i8T7+cJmiB8z8k8wpoXheh1GuwS3koZTd5zDKF02hYiS17uCukJXM
-         agfkWkhaJUW8+8TsQra3Hjn9p5YRFwDVOh6pVbHHTqzBhlG4ORvyd2kUeIBm7swNO2qT
-         Q+H4QRt//TPqOo4ofQ4ECHwr2xkjTUh2RzEah8iL91GRNokGejWQ7y7v+2pk/2SST2jT
-         JabVqpgXL2NTVFtJuMkpxNEWozKaI9cAIPFpGD7g1pvjhht4MuQW09lyQBe4I+zIxXgZ
-         9KUA==
-X-Gm-Message-State: AC+VfDzhwPowEGaXx/FBFDVlPV+YG+0FzDtM530NHKLKR/HIhp8z/ark
-        uoE9R1IcaRbjP5cbFw9BO9X95w==
-X-Received: by 2002:a05:6512:31c7:b0:4f9:5cb9:5be5 with SMTP id j7-20020a05651231c700b004f95cb95be5mr7691618lfe.65.1687628536208;
-        Sat, 24 Jun 2023 10:42:16 -0700 (PDT)
-Received: from m1x-phil.lan ([176.187.217.150])
-        by smtp.gmail.com with ESMTPSA id a25-20020a5d4579000000b003048477729asm2596667wrc.81.2023.06.24.10.42.12
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 24 Jun 2023 10:42:15 -0700 (PDT)
-From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To:     qemu-devel@nongnu.org
-Cc:     kvm@vger.kernel.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
-        Richard Henderson <richard.henderson@linaro.org>,
-        Alexander Graf <agraf@csgraf.de>,
-        xen-devel@lists.xenproject.org,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Yanan Wang <wangyanan55@huawei.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-        Paul Durrant <paul@xen.org>,
-        Reinoud Zandijk <reinoud@netbsd.org>,
-        Eduardo Habkost <eduardo@habkost.net>,
-        Cameron Esfahani <dirty@apple.com>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 07/16] accel: Rename HAX 'struct hax_vcpu_state' -> AccelCPUState
-Date:   Sat, 24 Jun 2023 19:41:12 +0200
-Message-Id: <20230624174121.11508-8-philmd@linaro.org>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230624174121.11508-1-philmd@linaro.org>
-References: <20230624174121.11508-1-philmd@linaro.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qDF1T-0001WC-HK; Sat, 24 Jun 2023 21:58:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
+ id 1qDF1R-0001Vu-U2; Sat, 24 Jun 2023 21:58:37 -0400
+Received: from bg4.exmail.qq.com ([43.155.67.158])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bmeng@tinylab.org>)
+ id 1qDF1Q-0002je-5j; Sat, 24 Jun 2023 21:58:37 -0400
+X-QQ-mid: bizesmtp75t1687658032t9nasj0i
+Received: from ubuntu.. ( [111.196.130.174]) by bizesmtp.qq.com (ESMTP) with 
+ id ; Sun, 25 Jun 2023 09:53:51 +0800 (CST)
+X-QQ-SSF: 00200000000000E0G000000A0000000
+X-QQ-FEAT: t8fpqlBPu6qJ8hXdfEjkkXfPawsLS015n2oeohl4nPjBP9iT21tn36OcqKjft
+ xyGhKgQDd8mnKF+fZR0SYXnv9nWRZTfXczseblTS7f0V9HeNBDouLTXLPka4w6wcUPQomCU
+ pRR6V58VxxdC/fLZAjgzYBK3kDcckuM5DPpkqZyQyWJXk/yI+cJIcDpLuhxkv9G2m5xlrrH
+ iDjPYuuhxxLSBXEWSZwE4O6IUCiHfxc6CxQKrNiXkmvo0fzL5Toqmdrp0O0OOyArL0RjQ4y
+ 9jMdDzOHHTqfGBNCgUkum/U5R4DjE3E2sP8OUw8344WZAaIePf3n+vW4+0+3eTBkvaFANI4
+ DgUMWNbA2/wajA+b6AI63qy023BLagAMggENcR8
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 5247651207143805087
+From: Bin Meng <bmeng@tinylab.org>
+To: Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+Subject: [PATCH v7 9/9] hw/net: ftgmac100: Drop the small packet check in the
+ receive path
+Date: Sun, 25 Jun 2023 09:53:21 +0800
+Message-Id: <20230625015321.77987-10-bmeng@tinylab.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230625015321.77987-1-bmeng@tinylab.org>
+References: <20230625015321.77987-1-bmeng@tinylab.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.1 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
-        autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: G05y2EEopxmY
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:tinylab.org:qybglogicsvrgz:qybglogicsvrgz7a-0
+Received-SPF: pass client-ip=43.155.67.158; envelope-from=bmeng@tinylab.org;
+ helo=bg4.exmail.qq.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SBL=0.141,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VYK0lFrhtpo8
 
-We want all accelerators to share the same opaque pointer in
-CPUState. Start with the HAX context, renaming its forward
-declarated structure 'hax_vcpu_state' as 'AccelCPUState'.
-Document the CPUState field. Directly use the typedef.
+Now that we have implemented unified short frames padding in the
+QEMU networking codes, the small packet check logic in the receive
+path is no longer needed.
 
-Remove the amusing but now unnecessary casts in NVMM / WHPX.
+Suggested-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Bin Meng <bmeng@tinylab.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h         |  5 ++---
- include/qemu/typedefs.h       |  1 +
- target/i386/hax/hax-i386.h    |  9 +++++----
- target/i386/hax/hax-all.c     | 16 ++++++++--------
- target/i386/hax/hax-posix.c   |  4 ++--
- target/i386/hax/hax-windows.c |  4 ++--
- target/i386/nvmm/nvmm-all.c   |  2 +-
- target/i386/whpx/whpx-all.c   |  2 +-
- 8 files changed, 22 insertions(+), 21 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 84b5a866e7..a7fae8571e 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -240,7 +240,6 @@ typedef struct SavedIOTLB {
- struct KVMState;
- struct kvm_run;
+Changes in v7:
+- new patch: "hw/net: ftgmac100: Drop the small packet check in the receive path"
+
+ hw/net/ftgmac100.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index d3bf14be53..702b001be2 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -968,14 +968,6 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
+         return -1;
+     }
  
--struct hax_vcpu_state;
- struct hvf_vcpu_state;
- 
- /* work queue */
-@@ -308,6 +307,7 @@ struct qemu_work_item;
-  * @next_cpu: Next CPU sharing TB cache.
-  * @opaque: User data.
-  * @mem_io_pc: Host Program Counter at which the memory was accessed.
-+ * @accel: Pointer to accelerator specific state.
-  * @kvm_fd: vCPU file descriptor for KVM.
-  * @work_mutex: Lock to prevent multiple access to @work_list.
-  * @work_list: List of pending asynchronous work.
-@@ -422,6 +422,7 @@ struct CPUState {
-     uint32_t can_do_io;
-     int32_t exception_index;
- 
-+    AccelCPUState *accel;
-     /* shared by kvm, hax and hvf */
-     bool vcpu_dirty;
- 
-@@ -441,8 +442,6 @@ struct CPUState {
-     /* Used for user-only emulation of prctl(PR_SET_UNALIGN). */
-     bool prctl_unalign_sigbus;
- 
--    struct hax_vcpu_state *accel;
+-    /* TODO : Pad to minimum Ethernet frame length */
+-    /* handle small packets.  */
+-    if (size < 10) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: dropped frame of %zd bytes\n",
+-                      __func__, size);
+-        return size;
+-    }
 -
-     struct hvf_vcpu_state *hvf;
- 
-     /* track IOMMUs whose translations we've cached in the TCG TLB */
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 8c1840bfc1..834b0e47a0 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -21,6 +21,7 @@
-  * Incomplete struct types
-  * Please keep this list in case-insensitive alphabetical order.
-  */
-+typedef struct AccelCPUState AccelCPUState;
- typedef struct AccelState AccelState;
- typedef struct AdapterInfo AdapterInfo;
- typedef struct AddressSpace AddressSpace;
-diff --git a/target/i386/hax/hax-i386.h b/target/i386/hax/hax-i386.h
-index 409ebdb4af..4372ee596d 100644
---- a/target/i386/hax/hax-i386.h
-+++ b/target/i386/hax/hax-i386.h
-@@ -25,7 +25,8 @@ typedef HANDLE hax_fd;
- #endif
- 
- extern struct hax_state hax_global;
--struct hax_vcpu_state {
-+
-+struct AccelCPUState {
-     hax_fd fd;
-     int vcpu_id;
-     struct hax_tunnel *tunnel;
-@@ -46,7 +47,7 @@ struct hax_vm {
-     hax_fd fd;
-     int id;
-     int numvcpus;
--    struct hax_vcpu_state **vcpus;
-+    AccelCPUState **vcpus;
- };
- 
- /* Functions exported to host specific mode */
-@@ -57,7 +58,7 @@ int valid_hax_tunnel_size(uint16_t size);
- int hax_mod_version(struct hax_state *hax, struct hax_module_version *version);
- int hax_inject_interrupt(CPUArchState *env, int vector);
- struct hax_vm *hax_vm_create(struct hax_state *hax, int max_cpus);
--int hax_vcpu_run(struct hax_vcpu_state *vcpu);
-+int hax_vcpu_run(AccelCPUState *vcpu);
- int hax_vcpu_create(int id);
- void hax_kick_vcpu_thread(CPUState *cpu);
- 
-@@ -76,7 +77,7 @@ int hax_host_create_vm(struct hax_state *hax, int *vm_id);
- hax_fd hax_host_open_vm(struct hax_state *hax, int vm_id);
- int hax_host_create_vcpu(hax_fd vm_fd, int vcpuid);
- hax_fd hax_host_open_vcpu(int vmid, int vcpuid);
--int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu);
-+int hax_host_setup_vcpu_channel(AccelCPUState *vcpu);
- hax_fd hax_mod_open(void);
- void hax_memory_init(void);
- 
-diff --git a/target/i386/hax/hax-all.c b/target/i386/hax/hax-all.c
-index 3865ff9419..9d9011cc38 100644
---- a/target/i386/hax/hax-all.c
-+++ b/target/i386/hax/hax-all.c
-@@ -62,7 +62,7 @@ int valid_hax_tunnel_size(uint16_t size)
- 
- hax_fd hax_vcpu_get_fd(CPUArchState *env)
- {
--    struct hax_vcpu_state *vcpu = env_cpu(env)->accel;
-+    AccelCPUState *vcpu = env_cpu(env)->accel;
-     if (!vcpu) {
-         return HAX_INVALID_FD;
+     if (!ftgmac100_filter(s, buf, size)) {
+         return size;
      }
-@@ -136,7 +136,7 @@ static int hax_version_support(struct hax_state *hax)
- 
- int hax_vcpu_create(int id)
- {
--    struct hax_vcpu_state *vcpu = NULL;
-+    AccelCPUState *vcpu = NULL;
-     int ret;
- 
-     if (!hax_global.vm) {
-@@ -149,7 +149,7 @@ int hax_vcpu_create(int id)
-         return 0;
-     }
- 
--    vcpu = g_new0(struct hax_vcpu_state, 1);
-+    vcpu = g_new0(AccelCPUState, 1);
- 
-     ret = hax_host_create_vcpu(hax_global.vm->fd, id);
-     if (ret) {
-@@ -188,7 +188,7 @@ int hax_vcpu_create(int id)
- 
- int hax_vcpu_destroy(CPUState *cpu)
- {
--    struct hax_vcpu_state *vcpu = cpu->accel;
-+    AccelCPUState *vcpu = cpu->accel;
- 
-     if (!hax_global.vm) {
-         fprintf(stderr, "vcpu %x destroy failed, vm is null\n", vcpu->vcpu_id);
-@@ -263,7 +263,7 @@ struct hax_vm *hax_vm_create(struct hax_state *hax, int max_cpus)
-     }
- 
-     vm->numvcpus = max_cpus;
--    vm->vcpus = g_new0(struct hax_vcpu_state *, vm->numvcpus);
-+    vm->vcpus = g_new0(AccelCPUState *, vm->numvcpus);
-     for (i = 0; i < vm->numvcpus; i++) {
-         vm->vcpus[i] = NULL;
-     }
-@@ -415,7 +415,7 @@ static int hax_handle_io(CPUArchState *env, uint32_t df, uint16_t port,
- static int hax_vcpu_interrupt(CPUArchState *env)
- {
-     CPUState *cpu = env_cpu(env);
--    struct hax_vcpu_state *vcpu = cpu->accel;
-+    AccelCPUState *vcpu = cpu->accel;
-     struct hax_tunnel *ht = vcpu->tunnel;
- 
-     /*
-@@ -447,7 +447,7 @@ static int hax_vcpu_interrupt(CPUArchState *env)
- 
- void hax_raise_event(CPUState *cpu)
- {
--    struct hax_vcpu_state *vcpu = cpu->accel;
-+    AccelCPUState *vcpu = cpu->accel;
- 
-     if (!vcpu) {
-         return;
-@@ -468,7 +468,7 @@ static int hax_vcpu_hax_exec(CPUArchState *env)
-     int ret = 0;
-     CPUState *cpu = env_cpu(env);
-     X86CPU *x86_cpu = X86_CPU(cpu);
--    struct hax_vcpu_state *vcpu = cpu->accel;
-+    AccelCPUState *vcpu = cpu->accel;
-     struct hax_tunnel *ht = vcpu->tunnel;
- 
-     if (!hax_enabled()) {
-diff --git a/target/i386/hax/hax-posix.c b/target/i386/hax/hax-posix.c
-index ac1a51096e..a057a5bd94 100644
---- a/target/i386/hax/hax-posix.c
-+++ b/target/i386/hax/hax-posix.c
-@@ -205,7 +205,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
-     return fd;
- }
- 
--int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
-+int hax_host_setup_vcpu_channel(AccelCPUState *vcpu)
- {
-     int ret;
-     struct hax_tunnel_info info;
-@@ -227,7 +227,7 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
-     return 0;
- }
- 
--int hax_vcpu_run(struct hax_vcpu_state *vcpu)
-+int hax_vcpu_run(AccelCPUState *vcpu)
- {
-     return ioctl(vcpu->fd, HAX_VCPU_IOCTL_RUN, NULL);
- }
-diff --git a/target/i386/hax/hax-windows.c b/target/i386/hax/hax-windows.c
-index 59afa213a6..bf4b0ad941 100644
---- a/target/i386/hax/hax-windows.c
-+++ b/target/i386/hax/hax-windows.c
-@@ -301,7 +301,7 @@ hax_fd hax_host_open_vcpu(int vmid, int vcpuid)
-     return hDeviceVCPU;
- }
- 
--int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
-+int hax_host_setup_vcpu_channel(AccelCPUState *vcpu)
- {
-     hax_fd hDeviceVCPU = vcpu->fd;
-     int ret;
-@@ -327,7 +327,7 @@ int hax_host_setup_vcpu_channel(struct hax_vcpu_state *vcpu)
-     return 0;
- }
- 
--int hax_vcpu_run(struct hax_vcpu_state *vcpu)
-+int hax_vcpu_run(AccelCPUState *vcpu)
- {
-     int ret;
-     HANDLE hDeviceVCPU = vcpu->fd;
-diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
-index cf4f0af24b..b3c3adc59a 100644
---- a/target/i386/nvmm/nvmm-all.c
-+++ b/target/i386/nvmm/nvmm-all.c
-@@ -995,7 +995,7 @@ nvmm_init_vcpu(CPUState *cpu)
-     }
- 
-     cpu->vcpu_dirty = true;
--    cpu->accel = (struct hax_vcpu_state *)qcpu;
-+    cpu->accel = qcpu;
- 
-     return 0;
- }
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index d1ad6f156a..410b34d8ec 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -2258,7 +2258,7 @@ int whpx_init_vcpu(CPUState *cpu)
- 
-     vcpu->interruptable = true;
-     cpu->vcpu_dirty = true;
--    cpu->accel = (struct hax_vcpu_state *)vcpu;
-+    cpu->accel = vcpu;
-     max_vcpu_index = max(max_vcpu_index, cpu->cpu_index);
-     qemu_add_vm_change_state_handler(whpx_cpu_update_state, cpu->env_ptr);
- 
 -- 
-2.38.1
+2.34.1
+

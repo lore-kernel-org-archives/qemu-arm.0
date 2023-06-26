@@ -1,104 +1,91 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp335647ejx;
-        Sat, 24 Jun 2023 20:43:09 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4FrtyEVHKIzhhCbvSKyxQnRUWEgwHH0UVDfabe4VnDJiW0+jsFGjtp/2knz3nbIoJbd+Qa
-X-Received: by 2002:a05:6214:e4d:b0:632:1e12:cc35 with SMTP id o13-20020a0562140e4d00b006321e12cc35mr12221213qvc.28.1687664589307;
-        Sat, 24 Jun 2023 20:43:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687664589; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp750142ejx;
+        Sun, 25 Jun 2023 23:21:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ757MmiXhHg44WSgOi3ej2j4vfiqcqj4hupkqoZ0BJ4WmaDIUsyEe+KWcN24DgjeOOU3yZB
+X-Received: by 2002:a05:6214:da9:b0:635:df71:1fa7 with SMTP id h9-20020a0562140da900b00635df711fa7mr3014399qvh.45.1687760465235;
+        Sun, 25 Jun 2023 23:21:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687760465; cv=none;
         d=google.com; s=arc-20160816;
-        b=O0h8/9Pf8fCZ9iXIABEoT/KAhFyIHoou/+MJvBSTf27dfpXrPYdp37GeijiD0N5hqr
-         R+5auDFLfTkqPQJ3hmL/DdiQwZweDXa3PuOCllcmH7dzjDkryqKiBVaL6u173VrNgfZk
-         SNk8UnVy2O5TT0ym7kMWd3WDV+wcmquXhn/+tMG6QivvN+T3uoM2Rp5zK3L1nS2Us7VK
-         RkulxmWoMB4uDIv6a6wK15BCq3gf8kFi6exjN+YP7ESWA0vH/BTgQCppri7aNID2Wf8m
-         /8qIxXQyAt+zMFRfdGrQ0BtkZhR1Ftaf4GiqMP9vonBRUW4ncCv8HWPy2KikwT93tpxx
-         gk1A==
+        b=JKaxjahLEtuKJ52yMUZRSqog7QKlDqkFlvjwihQYwFAOLzam/s2BZO9MazesN2i1vn
+         VUHxSs38xu0XqbcsbO+NX4PU9F+QwRaoWSM9JcfJexY4UYL3nESMOaz1/0wJTiSZb8rL
+         7x8kJQI/R3yS32cqYhl9lJxjgqMdAyByFtrj/8eikkLSH4GHNdVNvnsTbckKgngA/qux
+         dLP40N0/VGyOTQjXAq4eLKtxizaDwLuwGvCSS0je4O2DtBv4vZBewJ1/xi8V/WCPZGjy
+         4+WZazjvn7KCTKhYz8bp7+GN5DMKcDO3H0SHZdzKIKhFKcH6sM1KEvwfsEZq14VwyeaD
+         uZcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=btRCrFdiAQ6utPzCLjUxjVDbNA8YKZ7oAKcDGXjmwSY=;
-        fh=d5ZHZNyUV0j+gvRYjT2Of8BPkScbTvhq87D0abwGAPc=;
-        b=zASP375KdS2TvWa6fTj+dEta0txbPHpCuAv7jwo8U2zgRS9MuXJbTY8vAToaDDTl+P
-         uscTwNs7dCRrjMaM/+AnDd/Pd6U1AwJrKRJyvdkPL4cBFTp0YCIR8hqUM95AMrdfOkH3
-         uP/B9xHQ5880V2u0L0UZtKSE5Jownz+3actvagFh8Y6n4hFBKGnFScGnRp6J396F7dS2
-         R6IJatXyor+VcU0AGOh8FE4aVHTeHGHj5Rm0WthABprWqsNpNOpxS8/BMRKA7q86GnkT
-         ZVmUBuxUAm59HDguTV1Cj6ceIf0ChzXPNC/zbRw2oXOHV8eZXZzujC0YLCz//e8bDewP
-         ur9w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=pwKx2lBCxOqOZbqTlV5artnALoF0Xg1hzzijf6SWtDA=;
+        fh=OqFNbUwHRoSd8veIt0JHXdMBeIFDOhQ5fc7fWkBsUZQ=;
+        b=kzX2+pVK4G4hJEOP4baWFcga30WsjC/3vznerXMn43IiYLEzSpED69Y9PzpIaELvbi
+         7igHp0FmfoxXxDWw8rrNdwbBjrdspHV0lQ+Z+dvP9SyU3aeSogpKBYw738IIGt+cfHpJ
+         lqwawufZmdfUPFNaMyWoonPyv/o1+xLAd3Lv73cdTRH0pqLxoG/ozKnqGlicQyOtvj0R
+         Ehhd4KRkLhvkrqiaaEqnbEatHBFEOsr/F8kDL0k6+eWwvPgYvXZRbazzHAhtePj4LwaP
+         ceQHb263o/78N1QYAhvYfwxV4CJUGgLyrcLIF3g/OqD4cYbmiHTWNs1Am10C0f1Ugqg2
+         gQDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@osdyne.com header.s=google header.b=IX80fcd1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jx15-20020a0562142b0f00b005e32104628dsi1084098qvb.9.2023.06.24.20.43.09
+        by mx.google.com with ESMTPS id t14-20020a0562140c6e00b0062637fe2190si1795783qvj.167.2023.06.25.23.21.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Jun 2023 20:43:09 -0700 (PDT)
+        Sun, 25 Jun 2023 23:21:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@osdyne.com header.s=google header.b=IX80fcd1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qDGeY-0000sB-C2; Sat, 24 Jun 2023 23:43:06 -0400
+	id 1qDfaq-0007zM-AX; Mon, 26 Jun 2023 02:21:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucas@osdyne.com>) id 1qDGeW-0000qr-Sl
- for qemu-arm@nongnu.org; Sat, 24 Jun 2023 23:43:04 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucas@osdyne.com>) id 1qDGeV-00054p-2m
- for qemu-arm@nongnu.org; Sat, 24 Jun 2023 23:43:04 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-25eabe8b5fcso413087a91.1
- for <qemu-arm@nongnu.org>; Sat, 24 Jun 2023 20:43:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=osdyne.com; s=google; t=1687664581; x=1690256581;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=btRCrFdiAQ6utPzCLjUxjVDbNA8YKZ7oAKcDGXjmwSY=;
- b=IX80fcd1ovjsVCfmhANr9aDzwjanWMYixNE9+YhSroY8ihZ25rnVWSnaNm2Hgq4Svz
- O8UI/ytidCe+r7C+oM195dncJGveVAU6fHT0l1VxQJtaGLAX0x1ebQhKQtNx/XG72xRX
- 1xer3XkDPhs2se8PcAQ9LppXtbtFoXDiNC9ZSWYuGLE5Y0thMgvkzaPXTinvXb4JLSI5
- S+qBWkjFTa1ckXtDlxb0qgytVnlNfNKiT28vBjWTPa3o+aVxYg1FbA+k6HKqkHGUENcK
- Q/5iJD6QRb9G9p3OtztvjKgJWs/j+XNbgKFXDfcBOY+V+cNNn6oYXyZ7ZqWL/QExxuSV
- rxiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687664581; x=1690256581;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=btRCrFdiAQ6utPzCLjUxjVDbNA8YKZ7oAKcDGXjmwSY=;
- b=j+2+uYGklxWLdGLXCq70fAEeay9mKrMUNEy9/TCl+Zl8yqR/FticRGCsy5usxNfAYF
- NSqKsWlTQyAu5ajSeu7fTlBUSRFqcFlK8l9j133TOzZppfUua2Tk1yNblo4qkNEJMjlA
- x13WWHOoRAVUs3ds+s9GI562EI5WXFEWMfhdufdPJCp4KwHUAUj6BtWuMRSp4p00NQkk
- rf2ZqqGXZI9oTXT73bqbSm5Ak70/MBAD50GaWfET6EGRvV/IC6RvcXnovCE++s6psbKn
- 7QCXV+EYAjXMcPsfAF81TU6oPFWGXtpduE5xKEEySGEvXUxI+pG6UwQrTGR8Llhd9sny
- uQhw==
-X-Gm-Message-State: AC+VfDz1KykzZwe14Ha/Wa1CczXGHBZrmP1WHsxynCiAB0NSPL7zFtLz
- GwpHXtGX9xSLFXXx7FZUnAp99thiwXYYlnB7ozEfsg==
-X-Received: by 2002:a17:90b:1b0c:b0:252:b342:a84a with SMTP id
- nu12-20020a17090b1b0c00b00252b342a84amr30320376pjb.0.1687664581693; Sat, 24
- Jun 2023 20:43:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <SRS0=U+Ap=CO=kaod.org=clg@ozlabs.org>)
+ id 1qDfaa-0007u6-7t; Mon, 26 Jun 2023 02:20:48 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=U+Ap=CO=kaod.org=clg@ozlabs.org>)
+ id 1qDfaX-00054G-NU; Mon, 26 Jun 2023 02:20:39 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QqHlQ5LjVz4wb6;
+ Mon, 26 Jun 2023 16:20:34 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QqHlM6pDzz4wb3;
+ Mon, 26 Jun 2023 16:20:31 +1000 (AEST)
+Message-ID: <ea305c7b-503a-2e63-3c0a-9e4e842921d0@kaod.org>
+Date: Mon, 26 Jun 2023 08:20:29 +0200
 MIME-Version: 1.0
-References: <20230619221819.6882-1-lucas@osdyne.com>
- <CAKmqyKMGcsD7XQokTLTdr7X89WJaJq_g+7kf8Co_E-19j1J8Ww@mail.gmail.com>
-In-Reply-To: <CAKmqyKMGcsD7XQokTLTdr7X89WJaJq_g+7kf8Co_E-19j1J8Ww@mail.gmail.com>
-From: "Lucas C. Villa Real" <lucas@osdyne.com>
-Date: Sun, 25 Jun 2023 00:42:50 -0300
-Message-ID: <CAL+Dfo4pcJAcyovOVUyEcOXH7iRXeH_vnvN06ofbhqZe5d_3FA@mail.gmail.com>
-Subject: Re: [PATCH] STM32F100: support different density lines
-To: Alistair Francis <alistair23@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, erdnaxe@crans.org
-Content-Type: multipart/alternative; boundary="000000000000e46a2805feec0762"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=lucas@osdyne.com; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v7 9/9] hw/net: ftgmac100: Drop the small packet check in
+ the receive path
+Content-Language: en-US
+To: Bin Meng <bmeng@tinylab.org>, Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20230625015321.77987-1-bmeng@tinylab.org>
+ <20230625015321.77987-10-bmeng@tinylab.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230625015321.77987-10-bmeng@tinylab.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=U+Ap=CO=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.089,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,83 +100,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KmCyIVXzYdQx
+X-TUID: LWJcxP2cb/t2
 
---000000000000e46a2805feec0762
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 6/25/23 03:53, Bin Meng wrote:
+> Now that we have implemented unified short frames padding in the
+> QEMU networking codes, the small packet check logic in the receive
+> path is no longer needed.
+> 
+> Suggested-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Bin Meng <bmeng@tinylab.org>
 
-On Thu, Jun 22, 2023 at 10:30=E2=80=AFPM Alistair Francis <alistair23@gmail=
-.com>
-wrote:
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-> > +
-> > +    object_class_property_add_str(oc, "density", stm32f100_get_density=
-,
-> > +        stm32f100_set_density);
-> > +    object_class_property_set_description(oc, "density",
-> > +        "Set the STM32F100 density line device. "
-> > +        "Valid values are 'low', 'medium', and 'high' (default).");
-> >  }
->
-> This should be split into a separate commit from adding the machine
->
+Thanks Bin,
 
-Ok, I'll do that.
+C.
 
 
-> Isn't this exactly the same as the stm32vldiscovery board? Which is
-> already very similar to the netduino2 machine. I'm not sure we need
-> another machine.
->
-> It could make more sense to deprecate the stm32vldiscovery machine and
-> replace it with this generic one. At least we could keep everything in
-> the one file and reuse a lot of the code.
->
+> 
+> ---
+> 
+> Changes in v7:
+> - new patch: "hw/net: ftgmac100: Drop the small packet check in the receive path"
+> 
+>   hw/net/ftgmac100.c | 8 --------
+>   1 file changed, 8 deletions(-)
+> 
+> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> index d3bf14be53..702b001be2 100644
+> --- a/hw/net/ftgmac100.c
+> +++ b/hw/net/ftgmac100.c
+> @@ -968,14 +968,6 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
+>           return -1;
+>       }
+>   
+> -    /* TODO : Pad to minimum Ethernet frame length */
+> -    /* handle small packets.  */
+> -    if (size < 10) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: dropped frame of %zd bytes\n",
+> -                      __func__, size);
+> -        return size;
+> -    }
+> -
+>       if (!ftgmac100_filter(s, buf, size)) {
+>           return size;
+>       }
 
-What is the protocol for deprecating a machine? Should I just submit a
-patch that removes it along with the corresponding entry in the MAINTAINERS
-file? Should I coordinate that offline with the maintainer of the machine
-that's to be retired?
-
-Thanks,
-Lucas
-
---000000000000e46a2805feec0762
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">On Thu, Jun 22, 2023 at 10:30=E2=80=AFPM Alistair Francis =
-&lt;<a href=3D"mailto:alistair23@gmail.com">alistair23@gmail.com</a>&gt; wr=
-ote:<div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">&gt; +<br>
-&gt; +=C2=A0 =C2=A0 object_class_property_add_str(oc, &quot;density&quot;, =
-stm32f100_get_density,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 stm32f100_set_density);<br>
-&gt; +=C2=A0 =C2=A0 object_class_property_set_description(oc, &quot;density=
-&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;Set the STM32F100 density line devi=
-ce. &quot;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;Valid values are &#39;low&#39;, &#3=
-9;medium&#39;, and &#39;high&#39; (default).&quot;);<br>
-&gt;=C2=A0 }<br>
-<br>
-This should be split into a separate commit from adding the machine<br></bl=
-ockquote><div><br></div><div>Ok, I&#39;ll do that.<br></div><div>=C2=A0<br>=
-</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
-order-left:1px solid rgb(204,204,204);padding-left:1ex">
-Isn&#39;t this exactly the same as the stm32vldiscovery board? Which is<br>
-already very similar to the netduino2 machine. I&#39;m not sure we need<br>
-another machine.<br>
-<br>
-It could make more sense to deprecate the stm32vldiscovery machine and<br>
-replace it with this generic one. At least we could keep everything in<br>
-the one file and reuse a lot of the code.<br></blockquote><div><br></div><d=
-iv>What is the protocol for deprecating a machine? Should I just submit a p=
-atch that removes it along with the corresponding entry in the MAINTAINERS =
-file? Should I coordinate that offline with the maintainer of the machine t=
-hat&#39;s to be retired?</div><div><br></div><div>Thanks,</div><div>Lucas<b=
-r></div></div></div>
-
---000000000000e46a2805feec0762--

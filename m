@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l17-20020a5d5611000000b0030c6751a49dsm8364006wrv.115.2023.06.26.14.59.28
+        by smtp.gmail.com with ESMTPSA id c25-20020a7bc019000000b003f819faff24sm11761754wmb.40.2023.06.26.14.59.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 14:59:29 -0700 (PDT)
+        Mon, 26 Jun 2023 14:59:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6EAC81FFC0;
-	Mon, 26 Jun 2023 22:59:27 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 15D3C1FFBB;
+	Mon, 26 Jun 2023 22:59:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Bulekov <alxndr@bu.edu>,
@@ -38,62 +38,66 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 05/26] tests/tcg: add mechanism to handle plugin arguments
-Date: Mon, 26 Jun 2023 22:59:05 +0100
-Message-Id: <20230626215926.2522656-6-alex.bennee@linaro.org>
+Subject: [PATCH v2 11/26] tests/lcitool: update to latest version
+Date: Mon, 26 Jun 2023 22:59:11 +0100
+Message-Id: <20230626215926.2522656-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
 References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: u2fat7ZlJPqP
+X-TUID: TmS3LkXbPTJ8
 
-We recently missed a regression that should have been picked up by
-check-tcg. This was because the libmem plugin is effectively a NOP if
-the user doesn't specify the type to use.
+We need this for the riscv64 and gcc-native mappings. As the older
+alpine release has been dropped from the mappings we also need to bump
+the version of alpine we use.
 
-Rather than changing the default behaviour add an additional expansion
-so we can take this into account in future.
-
-Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
+Message-Id: <20230623122100.1640995-13-alex.bennee@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/Makefile.target | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ tests/docker/dockerfiles/alpine.docker | 4 ++--
+ tests/lcitool/libvirt-ci               | 2 +-
+ tests/lcitool/refresh                  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 72876cc84e..2462c26000 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
+diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
+index 0097637dca..43370f7b36 100644
+--- a/tests/docker/dockerfiles/alpine.docker
++++ b/tests/docker/dockerfiles/alpine.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all alpine-316 qemu
++#  $ lcitool dockerfile --layers all alpine-318 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
- RUN_TESTS+=$(EXTRA_RUNS)
+-FROM docker.io/library/alpine:3.16
++FROM docker.io/library/alpine:3.18
  
-+# Some plugins need additional arguments above the default to fully
-+# exercise things. We can define them on a per-test basis here.
-+run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
-+
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-%: %
- 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 
- run-plugin-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 		-d plugin -D $*.pout \
- 		 $(call strip-plugin,$<))
- else
-@@ -189,7 +193,7 @@ run-plugin-%:
- 	$(call run-test, $@, \
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
--	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 	    	  -d plugin -D $*.pout \
- 		  $(QEMU_OPTS) $(call strip-plugin,$<))
- endif
+ RUN apk update && \
+     apk upgrade && \
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index c8971e90ac..b0f44f929a 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit c8971e90ac169ee2b539c747f74d96c876debdf9
++Subproject commit b0f44f929a81c0a604fb7fbf8afc34d37ab0eae9
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index f1570b54df..5d36a62b10 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -115,7 +115,7 @@ try:
+     #
+     # Standard native builds
+     #
+-    generate_dockerfile("alpine", "alpine-316")
++    generate_dockerfile("alpine", "alpine-318")
+     generate_dockerfile("centos8", "centos-stream-8")
+     generate_dockerfile("debian-amd64", "debian-11",
+                         trailer="".join(debian11_extras))
 -- 
 2.39.2

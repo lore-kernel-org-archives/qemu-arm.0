@@ -1,107 +1,83 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp757707ejx;
-        Sun, 25 Jun 2023 23:51:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4Gayg9PtTPIyBD7GeRhdY4bxH8mUfblPCyoW7R0SzZUzfqeaSrH0q0N0ibl1QGFDEZOsoI
-X-Received: by 2002:a05:622a:190e:b0:400:8fe3:9c40 with SMTP id w14-20020a05622a190e00b004008fe39c40mr9644232qtc.11.1687762297242;
-        Sun, 25 Jun 2023 23:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687762297; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp776011ejx;
+        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ40veOFf+u2ChxmOm4y09TT+ZM7vTvOQVs/Jdw7uuq+2MQS4xDo+cmaeP0LVSU1mHO956B0
+X-Received: by 2002:a05:620a:459f:b0:765:3a81:c3eb with SMTP id bp31-20020a05620a459f00b007653a81c3ebmr11304676qkb.6.1687766010618;
+        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687766010; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uq0bzyQVT3aG+/6amFNlmQeYLVz63I8axvQRh8hOtsp41C+rAnv9UNEYf8KeJoD77c
-         A4apw53jyz0r1dZhXL3Jlodn/uk5xBF20Djy6mIL1afow6TRrwW/479BpyD/bqDM+Y5D
-         AYgik0z/Cv0nt+rDPyeIjm61fM8L9XoFVVWcWOJpcXmyE5zrxn8da/QEHxEaqnB4eOJn
-         ue9SyYbtkUVWLBIQURYdg34F8vFQVrBZwwhE78L/ndyJ92R4/Q4XNY+/aNKzt0FRq03e
-         OWLkwdvTp0nVhoiOlcbZK3y13aTccGprXyENiy43MWWiYIvDGtuDdEb93c9WHM74KJ+h
-         LhMw==
+        b=mFwUsRdSk4pte/dXjALFG0A8nFvehr5ZfwkTW3d9reUWyAS73oOD2ykq6XFecG4jMQ
+         cD97GSKDeNVGWw1L84pv88r27cq8CwhMySUvQZ/EMqe8vvkuShHhW7mLNBjJ2zyxfOHx
+         jwy4STEbvwQixL4B/mUXK+PrlE2Qe9Y3B5T4cw3h9fnMEDem+iIhwfSfGtOrRygCtIyf
+         h0FQ/u9hRxhfm36yGlosj2W401QuouMzJgShKDmsKFEazKSz7PwTuEVfCtF1WH88EQAv
+         tBvAyfJatg/qy1OeyNSzKQRBfRQVHLrPODfXqR/SqYnv2DX7jUx946W0Q8d57+UkL1t5
+         i3xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=8Ltet2rZykILGRABaVJtvsAKFyyK8WBzxZAFNXdaFdQ=;
-        fh=DWJcSPkfMQ1TZNlLoQ1lDdnD2Ur6b4liGIOM+Hifm6I=;
-        b=pqs97lq4ptmhDk/WaVYno3K/PEdpkZ2/M5ICN+UfeBQDEwXdTC3Ji+G8JuDBmX3RV7
-         UZF+hKldElrk87ogLL7dgD998VApYOYbSukrbguFEAaC8xXQKw7QPFMBRJEqUa+GAL+0
-         /SEFagNGyQE99Imnmz5uOewxAJJ7pmB5ESpvByAgazuZFhYqZsE8xpT2r/61Ecl+tLSz
-         AD6wvg13k1RVCj+QxMse/o/L7u2Q1sw0j8U3aYvBFHvnS9zJzeJaazEpm/+1iO6SCQ2R
-         269RD9HRpknpnT6q+mvqR5m8cjHxVCwFjLPGLssvtnHtzMsc1+uEsvFy/bQwbedNsco9
-         2KpA==
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=zsgmO9LYlTM54wBq0P5A8wqThQrPESUnfoCoyhUnAY0=;
+        fh=re3e8uwTPvv2vlr5qKUSD6AnvIT0rqiJLN7RYjQH7Vw=;
+        b=TmgbtVfJ/IXOYVOJNz1Bkhz9SETNdEecOiaWCLrNCjvsoPtCHdr3ipADCYWyV1KJHe
+         IEPP7muHODYtsAqEAjRE4w/X5TdbvT7i2xNtKu49PhzaXELoI6SlawjEgMsABz2+XDmb
+         hTMVgVatM+iuI8ckrS2qNW1/32OYayJ8xriDF8pZDSrGb8dgSCsMdNG3VX0cZ12QaOrl
+         9z84t47HQWrhxWs+bvVSEDoh4uEsRkwxke3E8Bq9w8aNYWVgRtKVlHBV9EDu4TEcw834
+         CbqR2Is1aKCCuWv62Kh5X87pqSLk1Eh49VWOZ2iI3rvEqzWaiZx2T62ImHl2jNfZgJWS
+         GtvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bPIcQyY9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t27-20020a05622a181b00b003f697aa276dsi1643847qtc.482.2023.06.25.23.51.37
+        by mx.google.com with ESMTPS id jo29-20020a056214501d00b0062164c72369si1906887qvb.28.2023.06.26.00.53.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Jun 2023 23:51:37 -0700 (PDT)
+        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bPIcQyY9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qDg2x-0006Af-Hr; Mon, 26 Jun 2023 02:49:59 -0400
+	id 1qDh25-0005cS-Kt; Mon, 26 Jun 2023 03:53:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1qDg2s-00069C-Gg
- for qemu-devel@nongnu.org; Mon, 26 Jun 2023 02:49:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1qDh1m-0005OS-Vc; Mon, 26 Jun 2023 03:52:52 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
- id 1qDg2n-0004Qh-A0
- for qemu-devel@nongnu.org; Mon, 26 Jun 2023 02:49:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687762188;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8Ltet2rZykILGRABaVJtvsAKFyyK8WBzxZAFNXdaFdQ=;
- b=bPIcQyY9FCTx3JshrteM1o+2ylXEilDdEE9cWsdguj/xGpgGGmUPVAciS7ap19MJ3TF0gl
- bdnjZM8gSsqViHMAZusxxDEubeeHXEFehz6DQScDk+VcArFj5/lgg82sltU6PFgb1orEcM
- J1jkbdbmaSfmO1D6iJ3ET71/oooqpdU=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-554-AN71jvxLO92Vvc_ngPc2mg-1; Mon, 26 Jun 2023 02:49:43 -0400
-X-MC-Unique: AN71jvxLO92Vvc_ngPc2mg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5B58D1C07249;
- Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
- (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 526C1200C0CD;
- Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
-From: Shaoqin Huang <shahuang@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: oliver.upton@linux.dev, salil.mehta@huawei.com, james.morse@arm.com,
- gshan@redhat.com, Shaoqin Huang <shahuang@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v1 3/5] target/arm: make psci call can be used by kvm
-Date: Mon, 26 Jun 2023 02:49:07 -0400
-Message-Id: <20230626064910.1787255-4-shahuang@redhat.com>
-In-Reply-To: <20230626064910.1787255-1-shahuang@redhat.com>
-References: <20230626064910.1787255-1-shahuang@redhat.com>
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1qDh1X-0003fQ-Pj; Mon, 26 Jun 2023 03:52:48 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 0968F260A77;
+ Mon, 26 Jun 2023 09:52:31 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TkikLRAoM7ZU; Mon, 26 Jun 2023 09:52:28 +0200 (CEST)
+Received: from applejack.lan (83.21.150.32.ipv4.supernova.orange.pl
+ [83.21.150.32])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 7889E26009E;
+ Mon, 26 Jun 2023 09:52:28 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
+Date: Mon, 26 Jun 2023 09:51:56 +0200
+Message-ID: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,31 +92,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LgwhZPY+6/I0
+X-TUID: OaECN9432toV
 
-Now the psci call can only be used when tcg_enabled, we want to reuse it
-when kvm_enabled, which will be used in subsequent patch which enable
-the psci handling in userspace.
+Add PCI Express information into DeviceTree as part of SBSA-REF
+versioning.
 
-Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+Trusted Firmware will read it and provide to next firmware level.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 ---
- target/arm/helper.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d4bee43bd0..58063a92a6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11020,7 +11020,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
-                       env->exception.syndrome);
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 0639f97dd5..b87d2ee3b2 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+     return arm_cpu_mp_affinity(idx, clustersz);
+ }
+ 
++static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
++{
++    char *nodename;
++
++    nodename = g_strdup_printf("/pcie");
++    qemu_fdt_add_subnode(sms->fdt, nodename);
++    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
++                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
++                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
++
++    g_free(nodename);
++}
++
+ static void sbsa_fdt_add_gic_node(SBSAMachineState *sms)
+ {
+     char *nodename;
+@@ -286,6 +305,7 @@ static void create_fdt(SBSAMachineState *sms)
      }
  
--    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
-+    if ((tcg_enabled() || kvm_enabled()) &&
-+         arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-         return;
+     sbsa_fdt_add_gic_node(sms);
++    sbsa_fdt_add_pcie_node(sms);
+ }
+ 
+ #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
 -- 
-2.39.1
+2.41.0
 

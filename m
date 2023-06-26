@@ -1,129 +1,93 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp910096ejx;
-        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ46Wl9TztcE74zDn9I6DqDxUwH0+kMUP2Fxy3J1M1OuUJaS7JkYYK+cCpFe0jmuBc5MUDWQ
-X-Received: by 2002:a05:6512:3b0e:b0:4fb:7387:82ed with SMTP id f14-20020a0565123b0e00b004fb738782edmr2349128lfv.68.1687786960661;
-        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687786960; cv=none;
-        d=google.com; s=arc-20160816;
-        b=BXYjCXbQMkChg8QEbtb5u1tlgdY5ygf2rKUX5kQQkHvoBRVuIS4GqDAhAoY6h6FNqA
-         ueCvCasZ/3N9TP//pI3HvCII3NzG/+W21BWUZgyXN6q/wHCSl+a5mPk8cwjvHf9mHbCS
-         yOm78m1UgnlCnoecYNV0waChWy0I6Yn9IKYo8rCAnTwYuZUdBV5S+7SITuTL4j3vnQJ3
-         5fQCnOIpyU56REqKmE8wQ8/dMLVCjhoHKPearo6dgplB3GjR6GRaXaZjlOZk/3cy9p3/
-         XpYnRNJxinskWlCrQ3+XRZMGLi3pkB738KoGkJzaCgJX+a+3650nCPPhyL4CVmOWi+pF
-         jKSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:content-transfer-encoding
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from;
-        bh=iNqO3ObAOyfwinqv9/5zRiqeXYZO5AR1RSlSbUUHBnI=;
-        fh=zsLHaSQRTXCRcN9CR3gE2pzgH3UunuExKbvUkGQkmFo=;
-        b=pukO8MkYncPMsuQyDrSsu2MN25ne9dtxX5DFHZ7AwDhs+tu56Xth1wU9xu81S0uXKI
-         G25+5E6WQnojEFrFq9kZnBsnj0oLKzty3vpJ2pt8PPvmBzxZbwVDKr2fKgp8mx4NeawG
-         PgThVG9yYJXCVwGGvYDC2ifTU2NMQVALVKXk/owCNhkmqBmufaooKAAvpBLu13NjArUK
-         wENpKND8IiF8xf/Yvn72vngyUxTtO+y6xvdv3CN+/WvkbrUr80Clpy6I6OfDDgZMiuo9
-         6wFSm3dsRI1rxhlSu/k16f3fkRZ+wf1lGX9PD/ZJzHgu3vcM5nQvT2Nh7iX2EVRDBQ0/
-         8DzA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id o3-20020aa7d3c3000000b0051d9a0fb13esi1072849edr.486.2023.06.26.06.42.40;
-        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229795AbjFZNmj convert rfc822-to-8bit (ORCPT
-        <rfc822;mathieu.poirier@linaro.org> + 2 others);
-        Mon, 26 Jun 2023 09:42:39 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45506 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229570AbjFZNmi (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 26 Jun 2023 09:42:38 -0400
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5E119D1
-        for <kvm@vger.kernel.org>; Mon, 26 Jun 2023 06:42:37 -0700 (PDT)
-Received: from lhrpeml500006.china.huawei.com (unknown [172.18.147.226])
-        by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QqTV23PlNz67qq2;
-        Mon, 26 Jun 2023 21:39:38 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 26 Jun 2023 14:42:34 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.027;
- Mon, 26 Jun 2023 14:42:34 +0100
-From:   Salil Mehta <salil.mehta@huawei.com>
-To:     Shaoqin Huang <shahuang@redhat.com>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC:     "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-        "james.morse@arm.com" <james.morse@arm.com>,
-        "gshan@redhat.com" <gshan@redhat.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Salil Mehta <salil.mehta@opnsrc.net>
-Subject: RE: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-Thread-Topic: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-Thread-Index: AQHZp/pp444fl0T5A0KjPRKELV/ZGK+dFe3A
-Date:   Mon, 26 Jun 2023 13:42:34 +0000
-Message-ID: <9df973ede74e4757b510f26cd5786036@huawei.com>
-References: <20230626064910.1787255-1-shahuang@redhat.com>
-In-Reply-To: <20230626064910.1787255-1-shahuang@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.48.157.164]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id d17-20020adffbd1000000b002fb60c7995esm8347280wrs.8.2023.06.26.13.25.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Jun 2023 13:25:16 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 1C0751FFBB;
+	Mon, 26 Jun 2023 21:25:16 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Qiuhao Li <Qiuhao.Li@outlook.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Peter Xu <peterx@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Bin Meng <bmeng.cn@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Cleber Rosa <crosa@redhat.com>,
+	Alexander Bulekov <alxndr@bu.edu>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Bandan Das <bsd@redhat.com>,
+	Leonardo Bras <leobras@redhat.com>,
+	qemu-arm@nongnu.org,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH v2 0/6] maintainer omnibus: testing, fuzz, plugins, documentation
+Date: Mon, 26 Jun 2023 21:25:09 +0100
+Message-Id: <20230626202516.2507915-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Spam-Status: No, score=-4.2 required=5.0 tests=BAYES_00,RCVD_IN_DNSWL_MED,
-        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_PASS,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kQ+LuBfGpCAG
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: g2YOSsvObJml
 
-> From: Shaoqin Huang <shahuang@redhat.com>
-> Sent: Monday, June 26, 2023 7:49 AM
-> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: oliver.upton@linux.dev; Salil Mehta <salil.mehta@huawei.com>;
-> james.morse@arm.com; gshan@redhat.com; Shaoqin Huang <shahuang@redhat.com>;
-> Cornelia Huck <cohuck@redhat.com>; kvm@vger.kernel.org; Michael S. Tsirkin
-> <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>; Peter Maydell
-> <peter.maydell@linaro.org>
-> Subject: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-> 
-> The userspace SMCCC call filtering[1] provides the ability to forward the SMCCC
-> calls to the userspace. The vCPU hotplug[2] would be the first legitimate use
-> case to handle the psci calls in userspace, thus the vCPU hotplug can deny the
-> PSCI_ON call if the vCPU is not present now.
-> 
-> This series try to enable the userspace SMCCC call filtering, thus can handle
-> the SMCCC call in userspace. The first enabled SMCCC call is psci call, by using
-> the new added option 'user-smccc', we can enable handle psci calls in userspace.
-> 
-> qemu-system-aarch64 -machine virt,user-smccc=on
-> 
-> This series reuse the qemu implementation of the psci handling, thus the
-> handling process is very simple. But when handling psci in userspace when using
-> kvm, the reset vcpu process need to be taking care, the detail is included in
-> the patch05.
+As softfreeze is fast approaching I thought it would be work combining
+my various trees into an omnibus series to ease the review and
+merging.
 
-This change in intended for VCPU Hotplug and we are duplicating the code
-we are working on. Unless this change is also intended for any other
-feature I would request you to defer this.
+The testing updates exposed a number of latent leaks that confused the
+oss-fuzz jobs (hence the test-fuzz addition to help debug that). This
+also includes some minor plugin updates and finally some documentation
+updates that clean-up and expose the QOM and QDEV APIs which are so
+core to emulating anything in QEMU.
 
+v2
+  - applied a bunch of review tags
+  - added missing doc suggestions from Paolo
+  - tweaked the plugin fix for CI
 
-Thanks
-Salil
+The following patches need review:
+
+ - qemu-keymap: properly check return from xkb_keymap_mod_get_index
+
+Alex Bennée (3):
+  gitlab: reduce testing scope of check-gcov
+  tests/tcg: add mechanism to handle plugin arguments
+  qemu-keymap: properly check return from xkb_keymap_mod_get_index
+
+Ani Sinha (1):
+  docs/devel: remind developers to run CI container pipeline when
+    updating images
+
+Daniel P. Berrangé (2):
+  gitlab: explicit set artifacts publishing criteria
+  gitlab: ensure coverage job also publishes meson log
+
+ docs/devel/testing.rst               |  6 ++++++
+ qemu-keymap.c                        | 24 ++++++++++++++++--------
+ .gitlab-ci.d/buildtest-template.yml  |  4 +++-
+ .gitlab-ci.d/buildtest.yml           |  7 ++++++-
+ .gitlab-ci.d/crossbuild-template.yml |  1 +
+ .gitlab-ci.d/crossbuilds.yml         |  2 ++
+ .gitlab-ci.d/opensbi.yml             |  1 +
+ tests/tcg/Makefile.target            |  8 ++++++--
+ 8 files changed, 41 insertions(+), 12 deletions(-)
+
+-- 
+2.39.2

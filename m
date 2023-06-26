@@ -1,147 +1,129 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp776011ejx;
-        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ40veOFf+u2ChxmOm4y09TT+ZM7vTvOQVs/Jdw7uuq+2MQS4xDo+cmaeP0LVSU1mHO956B0
-X-Received: by 2002:a05:620a:459f:b0:765:3a81:c3eb with SMTP id bp31-20020a05620a459f00b007653a81c3ebmr11304676qkb.6.1687766010618;
-        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687766010; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp910096ejx;
+        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ46Wl9TztcE74zDn9I6DqDxUwH0+kMUP2Fxy3J1M1OuUJaS7JkYYK+cCpFe0jmuBc5MUDWQ
+X-Received: by 2002:a05:6512:3b0e:b0:4fb:7387:82ed with SMTP id f14-20020a0565123b0e00b004fb738782edmr2349128lfv.68.1687786960661;
+        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687786960; cv=none;
         d=google.com; s=arc-20160816;
-        b=mFwUsRdSk4pte/dXjALFG0A8nFvehr5ZfwkTW3d9reUWyAS73oOD2ykq6XFecG4jMQ
-         cD97GSKDeNVGWw1L84pv88r27cq8CwhMySUvQZ/EMqe8vvkuShHhW7mLNBjJ2zyxfOHx
-         jwy4STEbvwQixL4B/mUXK+PrlE2Qe9Y3B5T4cw3h9fnMEDem+iIhwfSfGtOrRygCtIyf
-         h0FQ/u9hRxhfm36yGlosj2W401QuouMzJgShKDmsKFEazKSz7PwTuEVfCtF1WH88EQAv
-         tBvAyfJatg/qy1OeyNSzKQRBfRQVHLrPODfXqR/SqYnv2DX7jUx946W0Q8d57+UkL1t5
-         i3xg==
+        b=BXYjCXbQMkChg8QEbtb5u1tlgdY5ygf2rKUX5kQQkHvoBRVuIS4GqDAhAoY6h6FNqA
+         ueCvCasZ/3N9TP//pI3HvCII3NzG/+W21BWUZgyXN6q/wHCSl+a5mPk8cwjvHf9mHbCS
+         yOm78m1UgnlCnoecYNV0waChWy0I6Yn9IKYo8rCAnTwYuZUdBV5S+7SITuTL4j3vnQJ3
+         5fQCnOIpyU56REqKmE8wQ8/dMLVCjhoHKPearo6dgplB3GjR6GRaXaZjlOZk/3cy9p3/
+         XpYnRNJxinskWlCrQ3+XRZMGLi3pkB738KoGkJzaCgJX+a+3650nCPPhyL4CVmOWi+pF
+         jKSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=zsgmO9LYlTM54wBq0P5A8wqThQrPESUnfoCoyhUnAY0=;
-        fh=re3e8uwTPvv2vlr5qKUSD6AnvIT0rqiJLN7RYjQH7Vw=;
-        b=TmgbtVfJ/IXOYVOJNz1Bkhz9SETNdEecOiaWCLrNCjvsoPtCHdr3ipADCYWyV1KJHe
-         IEPP7muHODYtsAqEAjRE4w/X5TdbvT7i2xNtKu49PhzaXELoI6SlawjEgMsABz2+XDmb
-         hTMVgVatM+iuI8ckrS2qNW1/32OYayJ8xriDF8pZDSrGb8dgSCsMdNG3VX0cZ12QaOrl
-         9z84t47HQWrhxWs+bvVSEDoh4uEsRkwxke3E8Bq9w8aNYWVgRtKVlHBV9EDu4TEcw834
-         CbqR2Is1aKCCuWv62Kh5X87pqSLk1Eh49VWOZ2iI3rvEqzWaiZx2T62ImHl2jNfZgJWS
-         GtvQ==
+        h=list-id:precedence:mime-version:content-transfer-encoding
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:cc:to:from;
+        bh=iNqO3ObAOyfwinqv9/5zRiqeXYZO5AR1RSlSbUUHBnI=;
+        fh=zsLHaSQRTXCRcN9CR3gE2pzgH3UunuExKbvUkGQkmFo=;
+        b=pukO8MkYncPMsuQyDrSsu2MN25ne9dtxX5DFHZ7AwDhs+tu56Xth1wU9xu81S0uXKI
+         G25+5E6WQnojEFrFq9kZnBsnj0oLKzty3vpJ2pt8PPvmBzxZbwVDKr2fKgp8mx4NeawG
+         PgThVG9yYJXCVwGGvYDC2ifTU2NMQVALVKXk/owCNhkmqBmufaooKAAvpBLu13NjArUK
+         wENpKND8IiF8xf/Yvn72vngyUxTtO+y6xvdv3CN+/WvkbrUr80Clpy6I6OfDDgZMiuo9
+         6wFSm3dsRI1rxhlSu/k16f3fkRZ+wf1lGX9PD/ZJzHgu3vcM5nQvT2Nh7iX2EVRDBQ0/
+         8DzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jo29-20020a056214501d00b0062164c72369si1906887qvb.28.2023.06.26.00.53.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Jun 2023 00:53:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id o3-20020aa7d3c3000000b0051d9a0fb13esi1072849edr.486.2023.06.26.06.42.40;
+        Mon, 26 Jun 2023 06:42:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qDh25-0005cS-Kt; Mon, 26 Jun 2023 03:53:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1qDh1m-0005OS-Vc; Mon, 26 Jun 2023 03:52:52 -0400
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1qDh1X-0003fQ-Pj; Mon, 26 Jun 2023 03:52:48 -0400
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 0968F260A77;
- Mon, 26 Jun 2023 09:52:31 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TkikLRAoM7ZU; Mon, 26 Jun 2023 09:52:28 +0200 (CEST)
-Received: from applejack.lan (83.21.150.32.ipv4.supernova.orange.pl
- [83.21.150.32])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 7889E26009E;
- Mon, 26 Jun 2023 09:52:28 +0200 (CEST)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
-Date: Mon, 26 Jun 2023 09:51:56 +0200
-Message-ID: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
-X-Mailer: git-send-email 2.41.0
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229795AbjFZNmj convert rfc822-to-8bit (ORCPT
+        <rfc822;mathieu.poirier@linaro.org> + 2 others);
+        Mon, 26 Jun 2023 09:42:39 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:45506 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229570AbjFZNmi (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 26 Jun 2023 09:42:38 -0400
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5E119D1
+        for <kvm@vger.kernel.org>; Mon, 26 Jun 2023 06:42:37 -0700 (PDT)
+Received: from lhrpeml500006.china.huawei.com (unknown [172.18.147.226])
+        by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QqTV23PlNz67qq2;
+        Mon, 26 Jun 2023 21:39:38 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 26 Jun 2023 14:42:34 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.027;
+ Mon, 26 Jun 2023 14:42:34 +0100
+From:   Salil Mehta <salil.mehta@huawei.com>
+To:     Shaoqin Huang <shahuang@redhat.com>,
+        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC:     "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+        "james.morse@arm.com" <james.morse@arm.com>,
+        "gshan@redhat.com" <gshan@redhat.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Salil Mehta <salil.mehta@opnsrc.net>
+Subject: RE: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+Thread-Topic: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+Thread-Index: AQHZp/pp444fl0T5A0KjPRKELV/ZGK+dFe3A
+Date:   Mon, 26 Jun 2023 13:42:34 +0000
+Message-ID: <9df973ede74e4757b510f26cd5786036@huawei.com>
+References: <20230626064910.1787255-1-shahuang@redhat.com>
+In-Reply-To: <20230626064910.1787255-1-shahuang@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.48.157.164]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OaECN9432toV
+X-CFilter-Loop: Reflected
+X-Spam-Status: No, score=-4.2 required=5.0 tests=BAYES_00,RCVD_IN_DNSWL_MED,
+        RCVD_IN_MSPIKE_H4,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_PASS,
+        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: kQ+LuBfGpCAG
 
-Add PCI Express information into DeviceTree as part of SBSA-REF
-versioning.
+> From: Shaoqin Huang <shahuang@redhat.com>
+> Sent: Monday, June 26, 2023 7:49 AM
+> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> Cc: oliver.upton@linux.dev; Salil Mehta <salil.mehta@huawei.com>;
+> james.morse@arm.com; gshan@redhat.com; Shaoqin Huang <shahuang@redhat.com>;
+> Cornelia Huck <cohuck@redhat.com>; kvm@vger.kernel.org; Michael S. Tsirkin
+> <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>; Peter Maydell
+> <peter.maydell@linaro.org>
+> Subject: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+> 
+> The userspace SMCCC call filtering[1] provides the ability to forward the SMCCC
+> calls to the userspace. The vCPU hotplug[2] would be the first legitimate use
+> case to handle the psci calls in userspace, thus the vCPU hotplug can deny the
+> PSCI_ON call if the vCPU is not present now.
+> 
+> This series try to enable the userspace SMCCC call filtering, thus can handle
+> the SMCCC call in userspace. The first enabled SMCCC call is psci call, by using
+> the new added option 'user-smccc', we can enable handle psci calls in userspace.
+> 
+> qemu-system-aarch64 -machine virt,user-smccc=on
+> 
+> This series reuse the qemu implementation of the psci handling, thus the
+> handling process is very simple. But when handling psci in userspace when using
+> kvm, the reset vcpu process need to be taking care, the detail is included in
+> the patch05.
 
-Trusted Firmware will read it and provide to next firmware level.
+This change in intended for VCPU Hotplug and we are duplicating the code
+we are working on. Unless this change is also intended for any other
+feature I would request you to defer this.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
- hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 0639f97dd5..b87d2ee3b2 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-     return arm_cpu_mp_affinity(idx, clustersz);
- }
- 
-+static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
-+{
-+    char *nodename;
-+
-+    nodename = g_strdup_printf("/pcie");
-+    qemu_fdt_add_subnode(sms->fdt, nodename);
-+    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
-+                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
-+
-+    g_free(nodename);
-+}
-+
- static void sbsa_fdt_add_gic_node(SBSAMachineState *sms)
- {
-     char *nodename;
-@@ -286,6 +305,7 @@ static void create_fdt(SBSAMachineState *sms)
-     }
- 
-     sbsa_fdt_add_gic_node(sms);
-+    sbsa_fdt_add_pcie_node(sms);
- }
- 
- #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
--- 
-2.41.0
-
+Thanks
+Salil

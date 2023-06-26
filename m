@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id d17-20020adffbd1000000b002fb60c7995esm8347280wrs.8.2023.06.26.13.25.16
+        by smtp.gmail.com with ESMTPSA id v2-20020a5d6102000000b003127a21e986sm8193795wrt.104.2023.06.26.13.25.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 26 Jun 2023 13:25:16 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1C0751FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id 3FA4E1FFBC;
 	Mon, 26 Jun 2023 21:25:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,56 +38,133 @@ Cc: Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 0/6] maintainer omnibus: testing, fuzz, plugins, documentation
-Date: Mon, 26 Jun 2023 21:25:09 +0100
-Message-Id: <20230626202516.2507915-1-alex.bennee@linaro.org>
+Subject: [PATCH v2 1/6] gitlab: explicit set artifacts publishing criteria
+Date: Mon, 26 Jun 2023 21:25:10 +0100
+Message-Id: <20230626202516.2507915-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230626202516.2507915-1-alex.bennee@linaro.org>
+References: <20230626202516.2507915-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: g2YOSsvObJml
+X-TUID: Q52/czylh0MD
 
-As softfreeze is fast approaching I thought it would be work combining
-my various trees into an omnibus series to ease the review and
-merging.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-The testing updates exposed a number of latent leaks that confused the
-oss-fuzz jobs (hence the test-fuzz addition to help debug that). This
-also includes some minor plugin updates and finally some documentation
-updates that clean-up and expose the QOM and QDEV APIs which are so
-core to emulating anything in QEMU.
+If not set explicitly, gitlab assumes 'when: on_success" as the
+publishing criteria for artifacts. This is reasonable if the
+artifact is an output deliverable of the job. This is useless
+if the artifact is a log file to be used for debugging job
+failures.
 
-v2
-  - applied a bunch of review tags
-  - added missing doc suggestions from Paolo
-  - tweaked the plugin fix for CI
+This change makes the desired criteria explicit for every job
+that publishes artifacts.
 
-The following patches need review:
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-2-alex.bennee@linaro.org>
+Message-Id: <20230503145535.91325-2-berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ .gitlab-ci.d/buildtest-template.yml  | 4 +++-
+ .gitlab-ci.d/buildtest.yml           | 2 ++
+ .gitlab-ci.d/crossbuild-template.yml | 1 +
+ .gitlab-ci.d/crossbuilds.yml         | 2 ++
+ .gitlab-ci.d/opensbi.yml             | 1 +
+ 5 files changed, 9 insertions(+), 1 deletion(-)
 
- - qemu-keymap: properly check return from xkb_keymap_mod_get_index
-
-Alex Bennée (3):
-  gitlab: reduce testing scope of check-gcov
-  tests/tcg: add mechanism to handle plugin arguments
-  qemu-keymap: properly check return from xkb_keymap_mod_get_index
-
-Ani Sinha (1):
-  docs/devel: remind developers to run CI container pipeline when
-    updating images
-
-Daniel P. Berrangé (2):
-  gitlab: explicit set artifacts publishing criteria
-  gitlab: ensure coverage job also publishes meson log
-
- docs/devel/testing.rst               |  6 ++++++
- qemu-keymap.c                        | 24 ++++++++++++++++--------
- .gitlab-ci.d/buildtest-template.yml  |  4 +++-
- .gitlab-ci.d/buildtest.yml           |  7 ++++++-
- .gitlab-ci.d/crossbuild-template.yml |  1 +
- .gitlab-ci.d/crossbuilds.yml         |  2 ++
- .gitlab-ci.d/opensbi.yml             |  1 +
- tests/tcg/Makefile.target            |  8 ++++++--
- 8 files changed, 41 insertions(+), 12 deletions(-)
-
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index 5da61f4277..f3e39b7eb1 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -25,6 +25,7 @@
+ # rebuilding all the object files we skip in the artifacts
+ .native_build_artifact_template:
+   artifacts:
++    when: on_success
+     expire_in: 2 days
+     paths:
+       - build
+@@ -53,6 +54,7 @@
+   extends: .common_test_job_template
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/meson-logs/testlog.txt
+@@ -68,7 +70,7 @@
+     policy: pull-push
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+-    when: on_failure
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/tests/results/latest/results.xml
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index aa833b62ca..24bba061cd 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -462,6 +462,7 @@ gcov:
+   coverage: /^\s*lines:\s*\d+.\d+\%/
+   artifacts:
+     name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
++    when: on_success
+     expire_in: 2 days
+     reports:
+       coverage_report:
+@@ -587,6 +588,7 @@ pages:
+     - make -C build install DESTDIR=$(pwd)/temp-install
+     - mv temp-install/usr/local/share/doc/qemu/* public/
+   artifacts:
++    when: on_success
+     paths:
+       - public
+   variables:
+diff --git a/.gitlab-ci.d/crossbuild-template.yml b/.gitlab-ci.d/crossbuild-template.yml
+index 6efb0d2a54..d97611053b 100644
+--- a/.gitlab-ci.d/crossbuild-template.yml
++++ b/.gitlab-ci.d/crossbuild-template.yml
+@@ -55,6 +55,7 @@
+ .cross_test_artifacts:
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/meson-logs/testlog.txt
+diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+index 1e0e6c7f2c..34f9df2be9 100644
+--- a/.gitlab-ci.d/crossbuilds.yml
++++ b/.gitlab-ci.d/crossbuilds.yml
+@@ -169,6 +169,7 @@ cross-win32-system:
+     CROSS_SKIP_TARGETS: alpha-softmmu avr-softmmu hppa-softmmu m68k-softmmu
+                         microblazeel-softmmu mips64el-softmmu nios2-softmmu
+   artifacts:
++    when: on_success
+     paths:
+       - build/qemu-setup*.exe
+ 
+@@ -184,6 +185,7 @@ cross-win64-system:
+                         or1k-softmmu rx-softmmu sh4eb-softmmu sparc64-softmmu
+                         tricore-softmmu xtensaeb-softmmu
+   artifacts:
++    when: on_success
+     paths:
+       - build/qemu-setup*.exe
+ 
+diff --git a/.gitlab-ci.d/opensbi.yml b/.gitlab-ci.d/opensbi.yml
+index b4d7eef688..fd293e6c31 100644
+--- a/.gitlab-ci.d/opensbi.yml
++++ b/.gitlab-ci.d/opensbi.yml
+@@ -63,6 +63,7 @@ build-opensbi:
+   stage: build
+   needs: ['docker-opensbi']
+   artifacts:
++    when: on_success
+     paths: # 'artifacts.zip' will contains the following files:
+       - pc-bios/opensbi-riscv32-generic-fw_dynamic.bin
+       - pc-bios/opensbi-riscv64-generic-fw_dynamic.bin
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z12-20020a05600c114c00b003f8d0308616sm8825948wmz.32.2023.06.26.14.59.29
+        by smtp.gmail.com with ESMTPSA id s8-20020adff808000000b00313e23edbd5sm8053448wrp.102.2023.06.26.14.59.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 14:59:31 -0700 (PDT)
+        Mon, 26 Jun 2023 14:59:34 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 673D21FFBD;
-	Mon, 26 Jun 2023 22:59:28 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 39F781FFBE;
+	Mon, 26 Jun 2023 22:59:29 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Bulekov <alxndr@bu.edu>,
@@ -38,173 +38,38 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 13/26] tests/lcitool: add an explicit gcc-native package
-Date: Mon, 26 Jun 2023 22:59:13 +0100
-Message-Id: <20230626215926.2522656-14-alex.bennee@linaro.org>
+Subject: [PATCH v2 19/26] plugins: update lockstep to use g_memdup2
+Date: Mon, 26 Jun 2023 22:59:19 +0100
+Message-Id: <20230626215926.2522656-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
 References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZmCTA/sFPWRo
+X-TUID: S9NlSbOs04ca
 
-We need a native compiler to build the hexagon codegen tools. In our
-current images we already have a gcc as a side effect of a broken
-dependency between gcovr and lcov but this will be fixed when we move
-to bookworm. See
-https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=987818 for details.
+The old g_memdup is deprecated, use the replacement.
 
-Update the packages while we are at it.
-
-Message-Id: <20230623122100.1640995-15-alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-21-alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-amd64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-arm64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armel-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armhf-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-mips64el-cross.docker | 1 +
- tests/docker/dockerfiles/debian-mipsel-cross.docker   | 1 +
- tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 1 +
- tests/docker/dockerfiles/debian-s390x-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win32-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win64-cross.docker    | 1 +
- tests/lcitool/projects/qemu.yml                       | 1 +
- 11 files changed, 11 insertions(+)
+ contrib/plugins/lockstep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 40a2b6acc4..016c2321f1 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index c99300bbfa..3c114efa11 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
-index 5db5c78b31..dfbd47db89 100644
---- a/tests/docker/dockerfiles/debian-armel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armel-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index ae6600b25f..4e0084e896 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index daa2d48e36..88adf333e9 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 5af04e2054..256e8b5dfe 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 1eeba7fcab..4d19cd2bd7 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index 52e89a6dab..642bbde3d1 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index a0a3cd9e5b..e3dfd68bed 100644
---- a/tests/docker/dockerfiles/fedora-win32-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
-@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
-                diffutils \
-                findutils \
-                flex \
-+               gcc \
-                gcovr \
-                git \
-                glib2-devel \
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index b6c1a6a339..0e15c9643a 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
-                diffutils \
-                findutils \
-                flex \
-+               gcc \
-                gcovr \
-                git \
-                glib2-devel \
-diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
-index 566db8313b..21fd3d2cf9 100644
---- a/tests/lcitool/projects/qemu.yml
-+++ b/tests/lcitool/projects/qemu.yml
-@@ -24,6 +24,7 @@ packages:
-  - fuse3
-  - g++
-  - gcc
-+ - gcc-native
-  - gcovr
-  - gettext
-  - glib2
+diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+index e36f0b9562..3614c3564c 100644
+--- a/contrib/plugins/lockstep.c
++++ b/contrib/plugins/lockstep.c
+@@ -130,7 +130,7 @@ static void report_divergance(ExecState *us, ExecState *them)
+         }
+     }
+     divergence_log = g_slist_prepend(divergence_log,
+-                                     g_memdup(&divrec, sizeof(divrec)));
++                                     g_memdup2(&divrec, sizeof(divrec)));
+ 
+     /* Output short log entry of going out of sync... */
+     if (verbose || divrec.distance == 1 || diverged) {
 -- 
 2.39.2

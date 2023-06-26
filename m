@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 25-20020a05600c029900b003f42158288dsm11730705wmk.20.2023.06.26.14.59.27
+        by smtp.gmail.com with ESMTPSA id f4-20020a0560001b0400b00307a86a4bcesm8511640wrz.35.2023.06.26.14.59.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 14:59:28 -0700 (PDT)
+        Mon, 26 Jun 2023 14:59:29 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 566031FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 863FA1FFC1;
 	Mon, 26 Jun 2023 22:59:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -37,53 +37,67 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Radoslaw Biernacki <rad@semihalf.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Ani Sinha <anisinha@redhat.com>
-Subject: [PATCH v2 04/26] docs/devel: remind developers to run CI container pipeline when updating images
-Date: Mon, 26 Jun 2023 22:59:04 +0100
-Message-Id: <20230626215926.2522656-5-alex.bennee@linaro.org>
+	Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH v2 06/26] qemu-keymap: properly check return from xkb_keymap_mod_get_index
+Date: Mon, 26 Jun 2023 22:59:06 +0100
+Message-Id: <20230626215926.2522656-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
 References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YlAJl63dfVQv
+X-TUID: Vl3FIZGiirGx
 
-From: Ani Sinha <anisinha@redhat.com>
+We can return XKB_MOD_INVALID which rightly gets flagged by sanitisers
+as an overly wide shift attempt.
 
-When new dependencies and packages are added to containers, its important to
-run CI container generation pipelines on gitlab to make sure that there are no
-obvious conflicts between packages that are being added and those that are
-already present. Running CI container pipelines will make sure that there are
-no such breakages before we commit the change updating the containers. Add a
-line in the documentation reminding developers to run the pipeline before
-submitting the change. It will also ease the life of the maintainers.
-
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230506072012.10350-1-anisinha@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/testing.rst | 6 ++++++
- 1 file changed, 6 insertions(+)
+ qemu-keymap.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index 203facb417..8f18052ba7 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -485,6 +485,12 @@ first to contribute the mapping to the ``libvirt-ci`` project:
-    `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
-    page on how to trigger gitlab CI pipelines on your change.
+diff --git a/qemu-keymap.c b/qemu-keymap.c
+index 229866e004..8c80f7a4ed 100644
+--- a/qemu-keymap.c
++++ b/qemu-keymap.c
+@@ -140,6 +140,18 @@ static void usage(FILE *out)
+             names.options ?: "-");
+ }
  
-+ * Please also trigger gitlab container generation pipelines on your change
-+   for as many OS distros as practical to make sure that there are no
-+   obvious breakages when adding the new pre-requisite. Please see
-+   `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
-+   page on how to trigger gitlab CI pipelines on your change.
++static xkb_mod_mask_t get_mod(struct xkb_keymap *map, const char *name)
++{
++    xkb_mod_index_t mod;
++    xkb_mod_mask_t mask = 0;
 +
- For enterprise distros that default to old, end-of-life versions of the
- Python runtime, QEMU uses a separate set of mappings that work with more
- recent versions.  These can be found in ``tests/lcitool/mappings.yml``.
++    mod = xkb_keymap_mod_get_index(map, name);
++    if (mod != XKB_MOD_INVALID) {
++        mask = (1 << mod);
++    }
++    return mask;
++}
++
+ int main(int argc, char *argv[])
+ {
+     struct xkb_context *ctx;
+@@ -215,14 +227,10 @@ int main(int argc, char *argv[])
+                 mod, xkb_keymap_mod_get_name(map, mod));
+     }
+ 
+-    mod = xkb_keymap_mod_get_index(map, "Shift");
+-    shift = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "Control");
+-    ctrl = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "AltGr");
+-    altgr = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "NumLock");
+-    numlock = (1 << mod);
++    shift = get_mod(map, "Shift");
++    ctrl = get_mod(map, "Control");
++    altgr = get_mod(map, "AltGr");
++    numlock = get_mod(map, "NumLock");
+ 
+     state = xkb_state_new(map);
+     xkb_keymap_key_for_each(map, walk_map, state);
 -- 
 2.39.2

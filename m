@@ -1,280 +1,591 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp757397ejx;
-        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7C2lYFGMuRVVMw6ue884Yi2WNVQgPDCV60CbeR2eClIPrzLLKppKzlQUE3JSG2DDTliUIm
-X-Received: by 2002:a17:907:844:b0:982:9dc1:a434 with SMTP id ww4-20020a170907084400b009829dc1a434mr25562669ejb.19.1687762225145;
-        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687762225; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp757437ejx;
+        Sun, 25 Jun 2023 23:50:32 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6A6eOnLgvGVwJiS1uvlUZ+4IGH6tqdRXYwOdwEzEaRrc8sNzcudreor1dplZaZyzJHQrJj
+X-Received: by 2002:a05:622a:38b:b0:400:8036:6f0d with SMTP id j11-20020a05622a038b00b0040080366f0dmr12170336qtx.3.1687762232289;
+        Sun, 25 Jun 2023 23:50:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687762232; cv=none;
         d=google.com; s=arc-20160816;
-        b=OQL8ZiZkDK77FA2xtnboHjX5v6ZR/taJMR7lKrWol1pjiof0BxJBhiWwmZGP0vBdBf
-         ZPWqKCXl1YekPDjzuh4ZIE0tyl5xaQlfC80YFvJPeQSncdqL7B+/PKI65jbPpz3ibBOW
-         fSLt+AnBQfLxECV6sMUWx9b/vsC2txLlLbz4tOvKIOdasF8ico9RN/ZzP9EChnzowt1I
-         eZT5Iv+gxVQv9xGj6/aLaOPtWpDF2qAHJzErS7UJnYm4kcE0mL9nrdlgbOedfP+WL0+w
-         eLcG9zBMK6NWIWm994sUe+dLwL0ts0d0btndouztCwQv/i+3YAExOr/ORhXQgT3PzXwR
-         cTyw==
+        b=hmfDwVW1Zf2O75H3LDbe8U1HqsrwZzcWRgT3GaIDW7EPq8O8k01zWKBovaeM1M0Z9U
+         77b7camGmmU7c05/gov0tLJSXLtaSPs47Y7v9Gz+PaaAU3NO1zb/gFp57tGVxn5WiZRS
+         GHo+rHwxtfsMVIPB/z61inMtdvlpjwkeMYlnmAffOxDFNa+OWogIafI9P9UkpGiThgtX
+         qg3WamIWjd5mXItzv2i9ryq4pMLeqcse3zXAdWN8dvT0e9LLg3E+H0g0tUOpZ6UZaZIo
+         c2O55COkSyGgDr258qcRlxJoY8TlNp4/ZEyf03uKG2nrz0TXoowsF1IyzgyPlqsKC6Df
+         UJQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=WX90kZNBwe7dwYkh6anqQDpSify7IhqnpPmXu2ebVnc=;
-        fh=YAdnYj3+m+E7VJyuRradUdB56qtGbrG41Zg/enJD64Q=;
-        b=Py0bRCByQjXcq1bW2pTBSI0ilrJMYpjvRzEInsusGiVK9+FPZCyFMb5YfCb0GetWTr
-         ni+AiuDiPzPsCoTHt2CmNdYc+wtPNLwXoPffwa4nguK9xUKae2OrtYVUGgBtjHed3TpK
-         5X9SMpIgDpB+WIQ34LTg+Kas37tmDUSd/kCrUACmuflqb60BSI2LQSycib9YpP7QsuIg
-         9th679FxIzw/nDtpr9ejV6WFqzOfWxYg4OsC+OtRgM6o6EZzKAUjXB3UYNObPx/Dug2Q
-         0dBp0WtrAJzCSZ4QDFsgm4QSLTV2U2RZ+xqX1bB4UhZ15QcPsnm906K6bE2xDAjNhy88
-         S/MA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=/BQYQtN3VbWMwr3hdUAz6460NfGMHaYQQTnVCrZDbJs=;
+        fh=AW1dyr3eCT1ZAgrUix7DddvW9bfG8i2U49yLMKr1Vzs=;
+        b=O1PvsHveC8rzTTrax2iEokb/dbCYXV1TzD5h8tvJQCFBwO1KMno4UIWBcObTVjNe2j
+         paSVf9u/EsaGYpRgBDVWEixxyqsI7npzUe3kbcxAYd/woX2Y2oKOeiUQh7bFVXRqheFc
+         dYccwjh1/NCtLdRj+nfBygHSneE5WL7uppAP6KtDgKlVOEQCdE8ay6By0VgTw1MklpIW
+         nB24BLslSCtuG0+NvwJGxPm/w3h9SbgHANoAgSMcG9j949UBj0wo1KZNescM1VebSR+M
+         GipA+2fjdAXmhrb9r1Gp12SD3SAVact4pS+SMdpvuO4GIybmYhpUHwz7KFcxvjNZ8UfS
+         wXsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EXO2ugRB;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i11leek7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id ss26-20020a170907039a00b0098e422d675csi1302344ejb.311.2023.06.25.23.50.24;
-        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gc6-20020a056214230600b006213d2222b6si1772588qvb.277.2023.06.25.23.50.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 25 Jun 2023 23:50:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EXO2ugRB;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i11leek7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S229582AbjFZGuY (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Mon, 26 Jun 2023 02:50:24 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:48834 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S229530AbjFZGuW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 26 Jun 2023 02:50:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 574541B7
-        for <kvm@vger.kernel.org>; Sun, 25 Jun 2023 23:49:48 -0700 (PDT)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qDg2q-00068A-30; Mon, 26 Jun 2023 02:49:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1qDg2o-00067r-4Y
+ for qemu-devel@nongnu.org; Mon, 26 Jun 2023 02:49:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1qDg2l-0004Ph-Kl
+ for qemu-devel@nongnu.org; Mon, 26 Jun 2023 02:49:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1687762187;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=WX90kZNBwe7dwYkh6anqQDpSify7IhqnpPmXu2ebVnc=;
-        b=EXO2ugRB8e2sjs+Pl/hxy9yeur5KxNx223x7MeIcVp1zg6G8BZuVlhOuH/lJY0H8iK7gcm
-        hZ6+ODEGLhJcf9mW7G6SoxhP03+uJeoCCpdng0iSLIql1Pya37qhmhO1vV4+d+sh9Vq4bM
-        Ok5ABaHN8nWiwMY7BJEiuRDET5jwhwg=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1687762185;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/BQYQtN3VbWMwr3hdUAz6460NfGMHaYQQTnVCrZDbJs=;
+ b=i11leek7nG+KW7tcibchfhG395Xc2/8WirgxZbtErY+cJ6A7wGIstTJgK/Sa2GZnoCGoyr
+ AAVSDo6KZEQNzhiKFxgKrGmWRlHY/O2HtBVYRHvvN6m9TdzpEPYPU+HAE2IdA99cYZT4lk
+ pPXTlwHj3ybYiVdbRPHbljGD7bWJ43c=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-329-k4yhj1csPmSg0UdimX50_Q-1; Mon, 26 Jun 2023 02:49:44 -0400
-X-MC-Unique: k4yhj1csPmSg0UdimX50_Q-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7FF7A3C0F671;
-        Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
-Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 76ADF200BA8D;
-        Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
-From:   Shaoqin Huang <shahuang@redhat.com>
-To:     qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc:     oliver.upton@linux.dev, salil.mehta@huawei.com,
-        james.morse@arm.com, gshan@redhat.com,
-        Shaoqin Huang <shahuang@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
-Subject: [PATCH v1 4/5] arm/kvm: add skeleton implementation for userspace SMCCC call handling
-Date:   Mon, 26 Jun 2023 02:49:08 -0400
-Message-Id: <20230626064910.1787255-5-shahuang@redhat.com>
+ us-mta-144-SDuf4AXTOxuTVvbSA_8NSA-1; Mon, 26 Jun 2023 02:49:43 -0400
+X-MC-Unique: SDuf4AXTOxuTVvbSA_8NSA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1FF4C104458C;
+ Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
+Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com
+ (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0DF28200B677;
+ Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
+From: Shaoqin Huang <shahuang@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: oliver.upton@linux.dev, salil.mehta@huawei.com, james.morse@arm.com,
+ gshan@redhat.com, Shaoqin Huang <shahuang@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
+Subject: [PATCH v1 1/5] linux-headers: Update to v6.4-rc7
+Date: Mon, 26 Jun 2023 02:49:05 -0400
+Message-Id: <20230626064910.1787255-2-shahuang@redhat.com>
 In-Reply-To: <20230626064910.1787255-1-shahuang@redhat.com>
 References: <20230626064910.1787255-1-shahuang@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-X-Spam-Status: No, score=-3.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
-        RCVD_IN_MSPIKE_H5,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE,
-        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yQhUUIeylo18
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xGsFBZbKQTFc
 
-The SMCCC call filtering provide the ability to forward the SMCCC call
-to userspace, so we provide a new option `user-smccc` to enable handling
-SMCCC call in userspace, the default value is off.
-
-And add the skeleton implementation for userspace SMCCC call
-initialization and handling.
+Update to commit 45a3e24f65e9 ("Linux 6.4-rc7").
 
 Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
 ---
- docs/system/arm/virt.rst |  4 +++
- hw/arm/virt.c            | 21 ++++++++++++++++
- include/hw/arm/virt.h    |  1 +
- target/arm/kvm.c         | 54 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 80 insertions(+)
+ include/standard-headers/linux/const.h        |  2 +-
+ include/standard-headers/linux/virtio_blk.h   | 18 +++----
+ .../standard-headers/linux/virtio_config.h    |  6 +++
+ include/standard-headers/linux/virtio_net.h   |  1 +
+ linux-headers/asm-arm64/kvm.h                 | 33 ++++++++++++
+ linux-headers/asm-riscv/kvm.h                 | 53 ++++++++++++++++++-
+ linux-headers/asm-riscv/unistd.h              |  9 ++++
+ linux-headers/asm-s390/unistd_32.h            |  1 +
+ linux-headers/asm-s390/unistd_64.h            |  1 +
+ linux-headers/asm-x86/kvm.h                   |  3 ++
+ linux-headers/linux/const.h                   |  2 +-
+ linux-headers/linux/kvm.h                     | 12 +++--
+ linux-headers/linux/psp-sev.h                 |  7 +++
+ linux-headers/linux/userfaultfd.h             | 17 +++++-
+ 14 files changed, 149 insertions(+), 16 deletions(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 1cab33f02e..ff43d52f04 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -155,6 +155,10 @@ dtb-randomness
-   DTB to be non-deterministic. It would be the responsibility of
-   the firmware to come up with a seed and pass it on if it wants to.
+diff --git a/include/standard-headers/linux/const.h b/include/standard-headers/linux/const.h
+index 5e48987251..1eb84b5087 100644
+--- a/include/standard-headers/linux/const.h
++++ b/include/standard-headers/linux/const.h
+@@ -28,7 +28,7 @@
+ #define _BITUL(x)	(_UL(1) << (x))
+ #define _BITULL(x)	(_ULL(1) << (x))
  
-+user-smccc
-+  Set ``on``/``off`` to enable/disable handling smccc call in userspace
-+  instead of kernel.
-+
- dtb-kaslr-seed
-   A deprecated synonym for dtb-randomness.
+-#define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (typeof(x))(a) - 1)
++#define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+ #define __ALIGN_KERNEL_MASK(x, mask)	(((x) + (mask)) & ~(mask))
  
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9b9f7d9c68..767720321c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -42,6 +42,7 @@
- #include "hw/vfio/vfio-amd-xgbe.h"
- #include "hw/display/ramfb.h"
- #include "net/net.h"
-+#include "qom/object.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/numa.h"
- #include "sysemu/runstate.h"
-@@ -2511,6 +2512,19 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
-     strncpy(vms->oem_table_id, value, 8);
- }
+ #define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+diff --git a/include/standard-headers/linux/virtio_blk.h b/include/standard-headers/linux/virtio_blk.h
+index 7155b1a470..d7be3cf5e4 100644
+--- a/include/standard-headers/linux/virtio_blk.h
++++ b/include/standard-headers/linux/virtio_blk.h
+@@ -138,11 +138,11 @@ struct virtio_blk_config {
  
-+static bool virt_get_user_smccc(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->user_smccc;
-+}
-+
-+static void virt_set_user_smccc(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->user_smccc = value;
-+}
- 
- bool virt_is_acpi_enabled(VirtMachineState *vms)
- {
-@@ -3155,6 +3169,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "in ACPI table header."
-                                           "The string may be up to 8 bytes in size");
- 
-+    object_class_property_add_bool(oc, "user-smccc",
-+                                   virt_get_user_smccc,
-+                                   virt_set_user_smccc);
-+    object_class_property_set_description(oc, "user-smccc",
-+                                          "Set on/off to enable/disable "
-+                                          "handling smccc call in userspace");
-+
- }
- 
- static void virt_instance_init(Object *obj)
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index e1ddbea96b..4f1bc12680 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -160,6 +160,7 @@ struct VirtMachineState {
-     bool ras;
-     bool mte;
-     bool dtb_randomness;
-+    bool user_smccc;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-     VirtIOMMUType iommu;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 84da49332c..579c6edd49 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -9,6 +9,8 @@
+ 	/* Zoned block device characteristics (if VIRTIO_BLK_F_ZONED) */
+ 	struct virtio_blk_zoned_characteristics {
+-		uint32_t zone_sectors;
+-		uint32_t max_open_zones;
+-		uint32_t max_active_zones;
+-		uint32_t max_append_sectors;
+-		uint32_t write_granularity;
++		__virtio32 zone_sectors;
++		__virtio32 max_open_zones;
++		__virtio32 max_active_zones;
++		__virtio32 max_append_sectors;
++		__virtio32 write_granularity;
+ 		uint8_t model;
+ 		uint8_t unused2[3];
+ 	} zoned;
+@@ -239,11 +239,11 @@ struct virtio_blk_outhdr {
   */
+ struct virtio_blk_zone_descriptor {
+ 	/* Zone capacity */
+-	uint64_t z_cap;
++	__virtio64 z_cap;
+ 	/* The starting sector of the zone */
+-	uint64_t z_start;
++	__virtio64 z_start;
+ 	/* Zone write pointer position in sectors */
+-	uint64_t z_wp;
++	__virtio64 z_wp;
+ 	/* Zone type */
+ 	uint8_t z_type;
+ 	/* Zone state */
+@@ -252,7 +252,7 @@ struct virtio_blk_zone_descriptor {
+ };
  
- #include "qemu/osdep.h"
-+#include <asm-arm64/kvm.h>
-+#include <linux/arm-smccc.h>
- #include <sys/ioctl.h>
+ struct virtio_blk_zone_report {
+-	uint64_t nr_zones;
++	__virtio64 nr_zones;
+ 	uint8_t reserved[56];
+ 	struct virtio_blk_zone_descriptor zones[];
+ };
+diff --git a/include/standard-headers/linux/virtio_config.h b/include/standard-headers/linux/virtio_config.h
+index 965ee6ae23..8a7d0dc8b0 100644
+--- a/include/standard-headers/linux/virtio_config.h
++++ b/include/standard-headers/linux/virtio_config.h
+@@ -97,6 +97,12 @@
+  */
+ #define VIRTIO_F_SR_IOV			37
  
- #include <linux/kvm.h>
-@@ -247,6 +249,20 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
-     return ret > 0 ? ret : 40;
- }
++/*
++ * This feature indicates that the driver passes extra data (besides
++ * identifying the virtqueue) in its device notifications.
++ */
++#define VIRTIO_F_NOTIFICATION_DATA	38
++
+ /*
+  * This feature indicates that the driver can reset a queue individually.
+  */
+diff --git a/include/standard-headers/linux/virtio_net.h b/include/standard-headers/linux/virtio_net.h
+index c0e797067a..2325485f2c 100644
+--- a/include/standard-headers/linux/virtio_net.h
++++ b/include/standard-headers/linux/virtio_net.h
+@@ -61,6 +61,7 @@
+ #define VIRTIO_NET_F_GUEST_USO6	55	/* Guest can handle USOv6 in. */
+ #define VIRTIO_NET_F_HOST_USO	56	/* Host can handle USO in. */
+ #define VIRTIO_NET_F_HASH_REPORT  57	/* Supports hash report */
++#define VIRTIO_NET_F_GUEST_HDRLEN  59	/* Guest provides the exact hdr_len value. */
+ #define VIRTIO_NET_F_RSS	  60	/* Supports RSS RX steering */
+ #define VIRTIO_NET_F_RSC_EXT	  61	/* extended coalescing info */
+ #define VIRTIO_NET_F_STANDBY	  62	/* Act as standby for another device
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+index d7e7bb885e..38e5957526 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -198,6 +198,15 @@ struct kvm_arm_copy_mte_tags {
+ 	__u64 reserved[2];
+ };
  
-+static int kvm_arm_init_smccc_filter(KVMState *s)
-+{
-+    int ret = 0;
++/*
++ * Counter/Timer offset structure. Describe the virtual/physical offset.
++ * To be used with KVM_ARM_SET_COUNTER_OFFSET.
++ */
++struct kvm_arm_counter_offset {
++	__u64 counter_offset;
++	__u64 reserved;
++};
 +
-+    if (kvm_vm_check_attr(s, KVM_ARM_VM_SMCCC_CTRL, KVM_ARM_VM_SMCCC_FILTER)) {
-+        error_report("ARM SMCCC filter not supported");
-+        ret = -EINVAL;
-+        goto out;
-+    }
-+
-+out:
-+    return ret;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     int ret = 0;
-@@ -282,6 +298,10 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+ #define KVM_ARM_TAGS_TO_GUEST		0
+ #define KVM_ARM_TAGS_FROM_GUEST		1
  
-     kvm_arm_init_debug(s);
+@@ -363,6 +372,10 @@ enum {
+ 	KVM_REG_ARM_VENDOR_HYP_BIT_PTP		= 1,
+ };
  
-+    if (ret == 0 && object_property_get_bool(OBJECT(ms), "user-smccc", NULL)) {
-+        ret = kvm_arm_init_smccc_filter(s);
-+    }
++/* Device Control API on vm fd */
++#define KVM_ARM_VM_SMCCC_CTRL		0
++#define   KVM_ARM_VM_SMCCC_FILTER	0
 +
-     return ret;
- }
+ /* Device Control API: ARM VGIC */
+ #define KVM_DEV_ARM_VGIC_GRP_ADDR	0
+ #define KVM_DEV_ARM_VGIC_GRP_DIST_REGS	1
+@@ -402,6 +415,8 @@ enum {
+ #define KVM_ARM_VCPU_TIMER_CTRL		1
+ #define   KVM_ARM_VCPU_TIMER_IRQ_VTIMER		0
+ #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
++#define   KVM_ARM_VCPU_TIMER_IRQ_HVTIMER	2
++#define   KVM_ARM_VCPU_TIMER_IRQ_HPTIMER	3
+ #define KVM_ARM_VCPU_PVTIME_CTRL	2
+ #define   KVM_ARM_VCPU_PVTIME_IPA	0
  
-@@ -912,6 +932,37 @@ static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-     return -1;
- }
+@@ -458,6 +473,24 @@ enum {
+ /* run->fail_entry.hardware_entry_failure_reason codes. */
+ #define KVM_EXIT_FAIL_ENTRY_CPU_UNSUPPORTED	(1ULL << 0)
  
-+static void kvm_arm_smccc_return_result(CPUState *cs, struct arm_smccc_res *res)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
++enum kvm_smccc_filter_action {
++	KVM_SMCCC_FILTER_HANDLE = 0,
++	KVM_SMCCC_FILTER_DENY,
++	KVM_SMCCC_FILTER_FWD_TO_USER,
 +
-+    env->xregs[0] = res->a0;
-+    env->xregs[1] = res->a1;
-+    env->xregs[2] = res->a2;
-+    env->xregs[3] = res->a3;
-+}
++};
 +
-+static int kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
-+{
-+    uint32_t fn = run->hypercall.nr;
-+    struct arm_smccc_res res = {
-+        .a0     = SMCCC_RET_NOT_SUPPORTED,
-+    };
-+    int ret = 0;
++struct kvm_smccc_filter {
++	__u32 base;
++	__u32 nr_functions;
++	__u8 action;
++	__u8 pad[15];
++};
 +
-+    kvm_cpu_synchronize_state(cs);
++/* arm64-specific KVM_EXIT_HYPERCALL flags */
++#define KVM_HYPERCALL_EXIT_SMC		(1U << 0)
++#define KVM_HYPERCALL_EXIT_16BIT	(1U << 1)
 +
-+    switch (ARM_SMCCC_OWNER_NUM(fn)) {
-+    default:
-+        break;
-+    }
+ #endif
+ 
+ #endif /* __ARM_KVM_H__ */
+diff --git a/linux-headers/asm-riscv/kvm.h b/linux-headers/asm-riscv/kvm.h
+index 92af6f3f05..f92790c948 100644
+--- a/linux-headers/asm-riscv/kvm.h
++++ b/linux-headers/asm-riscv/kvm.h
+@@ -12,6 +12,7 @@
+ #ifndef __ASSEMBLY__
+ 
+ #include <linux/types.h>
++#include <asm/bitsperlong.h>
+ #include <asm/ptrace.h>
+ 
+ #define __KVM_HAVE_READONLY_MEM
+@@ -52,6 +53,7 @@ struct kvm_riscv_config {
+ 	unsigned long mvendorid;
+ 	unsigned long marchid;
+ 	unsigned long mimpid;
++	unsigned long zicboz_block_size;
+ };
+ 
+ /* CORE registers for KVM_GET_ONE_REG and KVM_SET_ONE_REG */
+@@ -64,7 +66,7 @@ struct kvm_riscv_core {
+ #define KVM_RISCV_MODE_S	1
+ #define KVM_RISCV_MODE_U	0
+ 
+-/* CSR registers for KVM_GET_ONE_REG and KVM_SET_ONE_REG */
++/* General CSR registers for KVM_GET_ONE_REG and KVM_SET_ONE_REG */
+ struct kvm_riscv_csr {
+ 	unsigned long sstatus;
+ 	unsigned long sie;
+@@ -78,6 +80,17 @@ struct kvm_riscv_csr {
+ 	unsigned long scounteren;
+ };
+ 
++/* AIA CSR registers for KVM_GET_ONE_REG and KVM_SET_ONE_REG */
++struct kvm_riscv_aia_csr {
++	unsigned long siselect;
++	unsigned long iprio1;
++	unsigned long iprio2;
++	unsigned long sieh;
++	unsigned long siph;
++	unsigned long iprio1h;
++	unsigned long iprio2h;
++};
 +
-+    kvm_arm_smccc_return_result(cs, &res);
+ /* TIMER registers for KVM_GET_ONE_REG and KVM_SET_ONE_REG */
+ struct kvm_riscv_timer {
+ 	__u64 frequency;
+@@ -105,9 +118,29 @@ enum KVM_RISCV_ISA_EXT_ID {
+ 	KVM_RISCV_ISA_EXT_SVINVAL,
+ 	KVM_RISCV_ISA_EXT_ZIHINTPAUSE,
+ 	KVM_RISCV_ISA_EXT_ZICBOM,
++	KVM_RISCV_ISA_EXT_ZICBOZ,
++	KVM_RISCV_ISA_EXT_ZBB,
++	KVM_RISCV_ISA_EXT_SSAIA,
+ 	KVM_RISCV_ISA_EXT_MAX,
+ };
+ 
++/*
++ * SBI extension IDs specific to KVM. This is not the same as the SBI
++ * extension IDs defined by the RISC-V SBI specification.
++ */
++enum KVM_RISCV_SBI_EXT_ID {
++	KVM_RISCV_SBI_EXT_V01 = 0,
++	KVM_RISCV_SBI_EXT_TIME,
++	KVM_RISCV_SBI_EXT_IPI,
++	KVM_RISCV_SBI_EXT_RFENCE,
++	KVM_RISCV_SBI_EXT_SRST,
++	KVM_RISCV_SBI_EXT_HSM,
++	KVM_RISCV_SBI_EXT_PMU,
++	KVM_RISCV_SBI_EXT_EXPERIMENTAL,
++	KVM_RISCV_SBI_EXT_VENDOR,
++	KVM_RISCV_SBI_EXT_MAX,
++};
 +
-+    return ret;
-+}
+ /* Possible states for kvm_riscv_timer */
+ #define KVM_RISCV_TIMER_STATE_OFF	0
+ #define KVM_RISCV_TIMER_STATE_ON	1
+@@ -118,6 +151,8 @@ enum KVM_RISCV_ISA_EXT_ID {
+ /* If you need to interpret the index values, here is the key: */
+ #define KVM_REG_RISCV_TYPE_MASK		0x00000000FF000000
+ #define KVM_REG_RISCV_TYPE_SHIFT	24
++#define KVM_REG_RISCV_SUBTYPE_MASK	0x0000000000FF0000
++#define KVM_REG_RISCV_SUBTYPE_SHIFT	16
+ 
+ /* Config registers are mapped as type 1 */
+ #define KVM_REG_RISCV_CONFIG		(0x01 << KVM_REG_RISCV_TYPE_SHIFT)
+@@ -131,8 +166,12 @@ enum KVM_RISCV_ISA_EXT_ID {
+ 
+ /* Control and status registers are mapped as type 3 */
+ #define KVM_REG_RISCV_CSR		(0x03 << KVM_REG_RISCV_TYPE_SHIFT)
++#define KVM_REG_RISCV_CSR_GENERAL	(0x0 << KVM_REG_RISCV_SUBTYPE_SHIFT)
++#define KVM_REG_RISCV_CSR_AIA		(0x1 << KVM_REG_RISCV_SUBTYPE_SHIFT)
+ #define KVM_REG_RISCV_CSR_REG(name)	\
+ 		(offsetof(struct kvm_riscv_csr, name) / sizeof(unsigned long))
++#define KVM_REG_RISCV_CSR_AIA_REG(name)	\
++	(offsetof(struct kvm_riscv_aia_csr, name) / sizeof(unsigned long))
+ 
+ /* Timer registers are mapped as type 4 */
+ #define KVM_REG_RISCV_TIMER		(0x04 << KVM_REG_RISCV_TYPE_SHIFT)
+@@ -152,6 +191,18 @@ enum KVM_RISCV_ISA_EXT_ID {
+ /* ISA Extension registers are mapped as type 7 */
+ #define KVM_REG_RISCV_ISA_EXT		(0x07 << KVM_REG_RISCV_TYPE_SHIFT)
+ 
++/* SBI extension registers are mapped as type 8 */
++#define KVM_REG_RISCV_SBI_EXT		(0x08 << KVM_REG_RISCV_TYPE_SHIFT)
++#define KVM_REG_RISCV_SBI_SINGLE	(0x0 << KVM_REG_RISCV_SUBTYPE_SHIFT)
++#define KVM_REG_RISCV_SBI_MULTI_EN	(0x1 << KVM_REG_RISCV_SUBTYPE_SHIFT)
++#define KVM_REG_RISCV_SBI_MULTI_DIS	(0x2 << KVM_REG_RISCV_SUBTYPE_SHIFT)
++#define KVM_REG_RISCV_SBI_MULTI_REG(__ext_id)	\
++		((__ext_id) / __BITS_PER_LONG)
++#define KVM_REG_RISCV_SBI_MULTI_MASK(__ext_id)	\
++		(1UL << ((__ext_id) % __BITS_PER_LONG))
++#define KVM_REG_RISCV_SBI_MULTI_REG_LAST	\
++		KVM_REG_RISCV_SBI_MULTI_REG(KVM_RISCV_SBI_EXT_MAX - 1)
 +
- int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
- {
-     int ret = 0;
-@@ -927,6 +978,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
-         ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
-                                        run->arm_nisv.fault_ipa);
-         break;
-+    case KVM_EXIT_HYPERCALL:
-+        ret = kvm_arm_handle_hypercall(cs, run);
-+        break;
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
-                       __func__, run->exit_reason);
+ #endif
+ 
+ #endif /* __LINUX_KVM_RISCV_H */
+diff --git a/linux-headers/asm-riscv/unistd.h b/linux-headers/asm-riscv/unistd.h
+index 73d7cdd2ec..950ab3fd44 100644
+--- a/linux-headers/asm-riscv/unistd.h
++++ b/linux-headers/asm-riscv/unistd.h
+@@ -43,3 +43,12 @@
+ #define __NR_riscv_flush_icache (__NR_arch_specific_syscall + 15)
+ #endif
+ __SYSCALL(__NR_riscv_flush_icache, sys_riscv_flush_icache)
++
++/*
++ * Allows userspace to query the kernel for CPU architecture and
++ * microarchitecture details across a given set of CPUs.
++ */
++#ifndef __NR_riscv_hwprobe
++#define __NR_riscv_hwprobe (__NR_arch_specific_syscall + 14)
++#endif
++__SYSCALL(__NR_riscv_hwprobe, sys_riscv_hwprobe)
+diff --git a/linux-headers/asm-s390/unistd_32.h b/linux-headers/asm-s390/unistd_32.h
+index 8e644d65f5..800f3adb20 100644
+--- a/linux-headers/asm-s390/unistd_32.h
++++ b/linux-headers/asm-s390/unistd_32.h
+@@ -419,6 +419,7 @@
+ #define __NR_landlock_create_ruleset 444
+ #define __NR_landlock_add_rule 445
+ #define __NR_landlock_restrict_self 446
++#define __NR_memfd_secret 447
+ #define __NR_process_mrelease 448
+ #define __NR_futex_waitv 449
+ #define __NR_set_mempolicy_home_node 450
+diff --git a/linux-headers/asm-s390/unistd_64.h b/linux-headers/asm-s390/unistd_64.h
+index 51da542fec..399a605901 100644
+--- a/linux-headers/asm-s390/unistd_64.h
++++ b/linux-headers/asm-s390/unistd_64.h
+@@ -367,6 +367,7 @@
+ #define __NR_landlock_create_ruleset 444
+ #define __NR_landlock_add_rule 445
+ #define __NR_landlock_restrict_self 446
++#define __NR_memfd_secret 447
+ #define __NR_process_mrelease 448
+ #define __NR_futex_waitv 449
+ #define __NR_set_mempolicy_home_node 450
+diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
+index 2937e7bf69..2b3a8f7bd2 100644
+--- a/linux-headers/asm-x86/kvm.h
++++ b/linux-headers/asm-x86/kvm.h
+@@ -557,4 +557,7 @@ struct kvm_pmu_event_filter {
+ #define KVM_VCPU_TSC_CTRL 0 /* control group for the timestamp counter (TSC) */
+ #define   KVM_VCPU_TSC_OFFSET 0 /* attribute for the TSC offset */
+ 
++/* x86-specific KVM_EXIT_HYPERCALL flags. */
++#define KVM_EXIT_HYPERCALL_LONG_MODE	BIT(0)
++
+ #endif /* _ASM_X86_KVM_H */
+diff --git a/linux-headers/linux/const.h b/linux-headers/linux/const.h
+index 5e48987251..1eb84b5087 100644
+--- a/linux-headers/linux/const.h
++++ b/linux-headers/linux/const.h
+@@ -28,7 +28,7 @@
+ #define _BITUL(x)	(_UL(1) << (x))
+ #define _BITULL(x)	(_ULL(1) << (x))
+ 
+-#define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (typeof(x))(a) - 1)
++#define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (__typeof__(x))(a) - 1)
+ #define __ALIGN_KERNEL_MASK(x, mask)	(((x) + (mask)) & ~(mask))
+ 
+ #define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index 599de3c6e3..65b145b317 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -341,8 +341,11 @@ struct kvm_run {
+ 			__u64 nr;
+ 			__u64 args[6];
+ 			__u64 ret;
+-			__u32 longmode;
+-			__u32 pad;
++
++			union {
++				__u32 longmode;
++				__u64 flags;
++			};
+ 		} hypercall;
+ 		/* KVM_EXIT_TPR_ACCESS */
+ 		struct {
+@@ -1182,6 +1185,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_S390_PROTECTED_ASYNC_DISABLE 224
+ #define KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP 225
+ #define KVM_CAP_PMU_EVENT_MASKED_EVENTS 226
++#define KVM_CAP_COUNTER_OFFSET 227
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
+@@ -1449,7 +1453,7 @@ struct kvm_vfio_spapr_tce {
+ #define KVM_CREATE_VCPU           _IO(KVMIO,   0x41)
+ #define KVM_GET_DIRTY_LOG         _IOW(KVMIO,  0x42, struct kvm_dirty_log)
+ #define KVM_SET_NR_MMU_PAGES      _IO(KVMIO,   0x44)
+-#define KVM_GET_NR_MMU_PAGES      _IO(KVMIO,   0x45)
++#define KVM_GET_NR_MMU_PAGES      _IO(KVMIO,   0x45)  /* deprecated */
+ #define KVM_SET_USER_MEMORY_REGION _IOW(KVMIO, 0x46, \
+ 					struct kvm_userspace_memory_region)
+ #define KVM_SET_TSS_ADDR          _IO(KVMIO,   0x47)
+@@ -1541,6 +1545,8 @@ struct kvm_s390_ucas_mapping {
+ #define KVM_SET_PMU_EVENT_FILTER  _IOW(KVMIO,  0xb2, struct kvm_pmu_event_filter)
+ #define KVM_PPC_SVM_OFF		  _IO(KVMIO,  0xb3)
+ #define KVM_ARM_MTE_COPY_TAGS	  _IOR(KVMIO,  0xb4, struct kvm_arm_copy_mte_tags)
++/* Available with KVM_CAP_COUNTER_OFFSET */
++#define KVM_ARM_SET_COUNTER_OFFSET _IOW(KVMIO,  0xb5, struct kvm_arm_counter_offset)
+ 
+ /* ioctl for vm fd */
+ #define KVM_CREATE_DEVICE	  _IOWR(KVMIO,  0xe0, struct kvm_create_device)
+diff --git a/linux-headers/linux/psp-sev.h b/linux-headers/linux/psp-sev.h
+index 51d8b3940e..12ccb70099 100644
+--- a/linux-headers/linux/psp-sev.h
++++ b/linux-headers/linux/psp-sev.h
+@@ -36,6 +36,13 @@ enum {
+  * SEV Firmware status code
+  */
+ typedef enum {
++	/*
++	 * This error code is not in the SEV spec. Its purpose is to convey that
++	 * there was an error that prevented the SEV firmware from being called.
++	 * The SEV API error codes are 16 bits, so the -1 value will not overlap
++	 * with possible values from the specification.
++	 */
++	SEV_RET_NO_FW_CALL = -1,
+ 	SEV_RET_SUCCESS = 0,
+ 	SEV_RET_INVALID_PLATFORM_STATE,
+ 	SEV_RET_INVALID_GUEST_STATE,
+diff --git a/linux-headers/linux/userfaultfd.h b/linux-headers/linux/userfaultfd.h
+index ba5d0df52f..14e402263a 100644
+--- a/linux-headers/linux/userfaultfd.h
++++ b/linux-headers/linux/userfaultfd.h
+@@ -38,7 +38,8 @@
+ 			   UFFD_FEATURE_MINOR_HUGETLBFS |	\
+ 			   UFFD_FEATURE_MINOR_SHMEM |		\
+ 			   UFFD_FEATURE_EXACT_ADDRESS |		\
+-			   UFFD_FEATURE_WP_HUGETLBFS_SHMEM)
++			   UFFD_FEATURE_WP_HUGETLBFS_SHMEM |	\
++			   UFFD_FEATURE_WP_UNPOPULATED)
+ #define UFFD_API_IOCTLS				\
+ 	((__u64)1 << _UFFDIO_REGISTER |		\
+ 	 (__u64)1 << _UFFDIO_UNREGISTER |	\
+@@ -203,6 +204,12 @@ struct uffdio_api {
+ 	 *
+ 	 * UFFD_FEATURE_WP_HUGETLBFS_SHMEM indicates that userfaultfd
+ 	 * write-protection mode is supported on both shmem and hugetlbfs.
++	 *
++	 * UFFD_FEATURE_WP_UNPOPULATED indicates that userfaultfd
++	 * write-protection mode will always apply to unpopulated pages
++	 * (i.e. empty ptes).  This will be the default behavior for shmem
++	 * & hugetlbfs, so this flag only affects anonymous memory behavior
++	 * when userfault write-protection mode is registered.
+ 	 */
+ #define UFFD_FEATURE_PAGEFAULT_FLAG_WP		(1<<0)
+ #define UFFD_FEATURE_EVENT_FORK			(1<<1)
+@@ -217,6 +224,7 @@ struct uffdio_api {
+ #define UFFD_FEATURE_MINOR_SHMEM		(1<<10)
+ #define UFFD_FEATURE_EXACT_ADDRESS		(1<<11)
+ #define UFFD_FEATURE_WP_HUGETLBFS_SHMEM		(1<<12)
++#define UFFD_FEATURE_WP_UNPOPULATED		(1<<13)
+ 	__u64 features;
+ 
+ 	__u64 ioctls;
+@@ -297,6 +305,13 @@ struct uffdio_writeprotect {
+ struct uffdio_continue {
+ 	struct uffdio_range range;
+ #define UFFDIO_CONTINUE_MODE_DONTWAKE		((__u64)1<<0)
++	/*
++	 * UFFDIO_CONTINUE_MODE_WP will map the page write protected on
++	 * the fly.  UFFDIO_CONTINUE_MODE_WP is available only if the
++	 * write protected ioctl is implemented for the range
++	 * according to the uffdio_register.ioctls.
++	 */
++#define UFFDIO_CONTINUE_MODE_WP			((__u64)1<<1)
+ 	__u64 mode;
+ 
+ 	/*
 -- 
 2.39.1
+

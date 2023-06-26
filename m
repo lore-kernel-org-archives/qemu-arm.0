@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id b3-20020a056000054300b002c70ce264bfsm8543321wrf.76.2023.06.26.15.05.48
+        by smtp.gmail.com with ESMTPSA id da16-20020a056000197000b0031274a184d5sm8519676wrb.109.2023.06.26.15.05.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 15:05:48 -0700 (PDT)
+        Mon, 26 Jun 2023 15:05:49 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5A95B1FFCB;
-	Mon, 26 Jun 2023 22:59:29 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 1111D1FFD0;
+	Mon, 26 Jun 2023 22:59:30 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Bulekov <alxndr@bu.edu>,
@@ -38,101 +38,118 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 20/26] docs/devel: add some front matter to the devel index
-Date: Mon, 26 Jun 2023 22:59:20 +0100
-Message-Id: <20230626215926.2522656-21-alex.bennee@linaro.org>
+Subject: [PATCH v2 26/26] tests/plugin: Remove duplicate insn log from libinsn.so
+Date: Mon, 26 Jun 2023 22:59:26 +0100
+Message-Id: <20230626215926.2522656-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
 References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xyn0c94KLh7w
+X-TUID: MciAk1y1XwpX
 
-Give an overview of the most useful bits of the devel documentation to
-read depending on what the developer wants to do.
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+This is a perfectly natural occurrence for x86 "rep movb",
+where the "rep" prefix forms a counted loop of the one insn.
+
+During the tests/tcg/multiarch/memory test, this logging is
+triggered over 350000 times.  Within the context of cross-i386-tci
+build, which is already slow by nature, the logging is sufficient
+to push the test into timeout.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230621111520.1390967-1-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230619171437.357374-2-alex.bennee@linaro.org>
-
 ---
-v2
-  - removed excessive start
----
- docs/devel/index-process.rst |  2 ++
- docs/devel/index-tcg.rst     |  2 ++
- docs/devel/index.rst         | 24 ++++++++++++++++++++++--
- docs/devel/tcg.rst           |  2 ++
- 4 files changed, 28 insertions(+), 2 deletions(-)
+ tests/plugin/insn.c                      | 9 +--------
+ tests/tcg/i386/Makefile.softmmu-target   | 9 ---------
+ tests/tcg/i386/Makefile.target           | 6 ------
+ tests/tcg/x86_64/Makefile.softmmu-target | 9 ---------
+ 4 files changed, 1 insertion(+), 32 deletions(-)
 
-diff --git a/docs/devel/index-process.rst b/docs/devel/index-process.rst
-index d50dd74c3e..362f97ee30 100644
---- a/docs/devel/index-process.rst
-+++ b/docs/devel/index-process.rst
-@@ -1,3 +1,5 @@
-+.. _development_process:
-+
- QEMU Community Processes
- ------------------------
+diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c
+index e251a84d86..5fd3017c2b 100644
+--- a/tests/plugin/insn.c
++++ b/tests/plugin/insn.c
+@@ -19,7 +19,6 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
+ #define MAX_CPUS 8 /* lets not go nuts */
  
-diff --git a/docs/devel/index-tcg.rst b/docs/devel/index-tcg.rst
-index b44ff8b5a4..a992844e5c 100644
---- a/docs/devel/index-tcg.rst
-+++ b/docs/devel/index-tcg.rst
-@@ -1,3 +1,5 @@
-+.. _tcg:
-+
- TCG Emulation
- -------------
+ typedef struct {
+-    uint64_t last_pc;
+     uint64_t insn_count;
+ } InstructionCount;
  
-diff --git a/docs/devel/index.rst b/docs/devel/index.rst
-index 09cfb322be..abf60457c2 100644
---- a/docs/devel/index.rst
-+++ b/docs/devel/index.rst
-@@ -2,10 +2,30 @@
- Developer Information
- ---------------------
+@@ -51,13 +50,7 @@ static void vcpu_insn_exec_before(unsigned int cpu_index, void *udata)
+ {
+     unsigned int i = cpu_index % MAX_CPUS;
+     InstructionCount *c = &counts[i];
+-    uint64_t this_pc = GPOINTER_TO_UINT(udata);
+-    if (this_pc == c->last_pc) {
+-        g_autofree gchar *out = g_strdup_printf("detected repeat execution @ 0x%"
+-                                                PRIx64 "\n", this_pc);
+-        qemu_plugin_outs(out);
+-    }
+-    c->last_pc = this_pc;
++
+     c->insn_count++;
+ }
  
--This section of the manual documents various parts of the internals of QEMU.
--You only need to read it if you are interested in reading or
-+This section of the manual documents various parts of the internals of
-+QEMU. You only need to read it if you are interested in reading or
- modifying QEMU's source code.
+diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
+index ed922d59c8..5266f2335a 100644
+--- a/tests/tcg/i386/Makefile.softmmu-target
++++ b/tests/tcg/i386/Makefile.softmmu-target
+@@ -33,14 +33,5 @@ EXTRA_RUNS+=$(MULTIARCH_RUNS)
  
-+QEMU is a large and mature project with a number of complex subsystems
-+that can be overwhelming to understand. The development documentation
-+is not comprehensive but hopefully presents enough to get you started.
-+If there are areas that are unclear please reach out either via the
-+IRC channel or mailing list and hopefully we can improve the
-+documentation for future developers.
-+
-+All developers will want to familiarise themselves with
-+:ref:`development_process` and how the community interacts. Please pay
-+particular attention to the :ref:`coding-style` and
-+:ref:`submitting-a-patch` sections to avoid common pitfalls.
-+
-+If you wish to implement a new hardware model you will want to read
-+through the :ref:`qom` documentation to understand how QEMU's object
-+model works.
-+
-+Those wishing to enhance or add new CPU emulation capabilities will
-+want to read our :ref:`tcg` documentation, especially the overview of
-+the :ref:`tcg_internals`.
-+
- .. toctree::
-    :maxdepth: 1
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
  
-diff --git a/docs/devel/tcg.rst b/docs/devel/tcg.rst
-index b4096a17df..2786f2f679 100644
---- a/docs/devel/tcg.rst
-+++ b/docs/devel/tcg.rst
-@@ -1,3 +1,5 @@
-+.. _tcg_internals:
-+
- ====================
- Translator Internals
- ====================
+-# non-inline runs will trigger the duplicate instruction heuristics in libinsn.so
+-run-plugin-%-with-libinsn.so:
+-	$(call run-test, $@, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
+-                  -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
+-	    	  -d plugin -D $*-with-libinsn.so.pout \
+-		  $(QEMU_OPTS) $*)
+-
+ # Running
+ QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index 821822ed0c..f2ee7a4db7 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -63,12 +63,6 @@ else
+ SKIP_I386_TESTS+=test-i386-fprem
+ endif
+ 
+-# non-inline runs will trigger the duplicate instruction heuristics in libinsn.so
+-run-plugin-%-with-libinsn.so:
+-	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-	       -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
+-	       -d plugin -D $*-with-libinsn.so.pout $*)
+-
+ # Update TESTS
+ I386_TESTS:=$(filter-out $(SKIP_I386_TESTS), $(ALL_X86_TESTS))
+ TESTS=$(MULTIARCH_TESTS) $(I386_TESTS)
+diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
+index 7207fee94c..1bd763f2e6 100644
+--- a/tests/tcg/x86_64/Makefile.softmmu-target
++++ b/tests/tcg/x86_64/Makefile.softmmu-target
+@@ -33,14 +33,5 @@ EXTRA_RUNS+=$(MULTIARCH_RUNS)
+ 
+ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+ 
+-# non-inline runs will trigger the duplicate instruction heuristics in libinsn.so
+-run-plugin-%-with-libinsn.so:
+-	$(call run-test, $@, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
+-                  -plugin ../../plugin/libinsn.so$(COMMA)inline=on \
+-	    	  -d plugin -D $*-with-libinsn.so.pout \
+-		  $(QEMU_OPTS) $*)
+-
+ # Running
+ QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
 -- 
 2.39.2

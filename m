@@ -1,103 +1,170 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f10-20020a7bcd0a000000b003fa99969e61sm3018272wmj.45.2023.06.26.13.25.17
+        by smtp.gmail.com with ESMTPSA id s6-20020a5d4ec6000000b0030ae849c70csm8468891wrv.37.2023.06.26.14.59.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 13:25:18 -0700 (PDT)
+        Mon, 26 Jun 2023 14:59:27 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BBFB31FFC1;
-	Mon, 26 Jun 2023 21:25:16 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 0979A1FFBC;
+	Mon, 26 Jun 2023 22:59:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Qiuhao Li <Qiuhao.Li@outlook.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+Cc: Alexander Bulekov <alxndr@bu.edu>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
+	Juan Quintela <quintela@redhat.com>,
 	Alexandre Iooss <erdnaxe@crans.org>,
-	Peter Xu <peterx@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Bin Meng <bmeng.cn@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	Cleber Rosa <crosa@redhat.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Radoslaw Biernacki <rad@semihalf.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	Bandan Das <bsd@redhat.com>,
 	Leonardo Bras <leobras@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Beraldo Leal <bleal@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Xu <peterx@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Bin Meng <bmeng.cn@gmail.com>,
 	qemu-arm@nongnu.org,
-	Darren Kenny <darren.kenny@oracle.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 6/6] qemu-keymap: properly check return from xkb_keymap_mod_get_index
-Date: Mon, 26 Jun 2023 21:25:15 +0100
-Message-Id: <20230626202516.2507915-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 01/26] gitlab: explicit set artifacts publishing criteria
+Date: Mon, 26 Jun 2023 22:59:01 +0100
+Message-Id: <20230626215926.2522656-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230626202516.2507915-1-alex.bennee@linaro.org>
-References: <20230626202516.2507915-1-alex.bennee@linaro.org>
+In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
+References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: odpKqFdTxgE4
+X-TUID: +uat20U4G4jA
 
-We can return XKB_MOD_INVALID which rightly gets flagged by sanitisers
-as an overly wide shift attempt.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
+If not set explicitly, gitlab assumes 'when: on_success" as the
+publishing criteria for artifacts. This is reasonable if the
+artifact is an output deliverable of the job. This is useless
+if the artifact is a log file to be used for debugging job
+failures.
+
+This change makes the desired criteria explicit for every job
+that publishes artifacts.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-2-alex.bennee@linaro.org>
+Message-Id: <20230503145535.91325-2-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- qemu-keymap.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ .gitlab-ci.d/buildtest-template.yml  | 4 +++-
+ .gitlab-ci.d/buildtest.yml           | 2 ++
+ .gitlab-ci.d/crossbuild-template.yml | 1 +
+ .gitlab-ci.d/crossbuilds.yml         | 2 ++
+ .gitlab-ci.d/opensbi.yml             | 1 +
+ 5 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/qemu-keymap.c b/qemu-keymap.c
-index 229866e004..8c80f7a4ed 100644
---- a/qemu-keymap.c
-+++ b/qemu-keymap.c
-@@ -140,6 +140,18 @@ static void usage(FILE *out)
-             names.options ?: "-");
- }
+diff --git a/.gitlab-ci.d/buildtest-template.yml b/.gitlab-ci.d/buildtest-template.yml
+index 5da61f4277..f3e39b7eb1 100644
+--- a/.gitlab-ci.d/buildtest-template.yml
++++ b/.gitlab-ci.d/buildtest-template.yml
+@@ -25,6 +25,7 @@
+ # rebuilding all the object files we skip in the artifacts
+ .native_build_artifact_template:
+   artifacts:
++    when: on_success
+     expire_in: 2 days
+     paths:
+       - build
+@@ -53,6 +54,7 @@
+   extends: .common_test_job_template
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/meson-logs/testlog.txt
+@@ -68,7 +70,7 @@
+     policy: pull-push
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+-    when: on_failure
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/tests/results/latest/results.xml
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index aa833b62ca..24bba061cd 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -462,6 +462,7 @@ gcov:
+   coverage: /^\s*lines:\s*\d+.\d+\%/
+   artifacts:
+     name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
++    when: on_success
+     expire_in: 2 days
+     reports:
+       coverage_report:
+@@ -587,6 +588,7 @@ pages:
+     - make -C build install DESTDIR=$(pwd)/temp-install
+     - mv temp-install/usr/local/share/doc/qemu/* public/
+   artifacts:
++    when: on_success
+     paths:
+       - public
+   variables:
+diff --git a/.gitlab-ci.d/crossbuild-template.yml b/.gitlab-ci.d/crossbuild-template.yml
+index 6efb0d2a54..d97611053b 100644
+--- a/.gitlab-ci.d/crossbuild-template.yml
++++ b/.gitlab-ci.d/crossbuild-template.yml
+@@ -55,6 +55,7 @@
+ .cross_test_artifacts:
+   artifacts:
+     name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    when: always
+     expire_in: 7 days
+     paths:
+       - build/meson-logs/testlog.txt
+diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+index 1e0e6c7f2c..34f9df2be9 100644
+--- a/.gitlab-ci.d/crossbuilds.yml
++++ b/.gitlab-ci.d/crossbuilds.yml
+@@ -169,6 +169,7 @@ cross-win32-system:
+     CROSS_SKIP_TARGETS: alpha-softmmu avr-softmmu hppa-softmmu m68k-softmmu
+                         microblazeel-softmmu mips64el-softmmu nios2-softmmu
+   artifacts:
++    when: on_success
+     paths:
+       - build/qemu-setup*.exe
  
-+static xkb_mod_mask_t get_mod(struct xkb_keymap *map, const char *name)
-+{
-+    xkb_mod_index_t mod;
-+    xkb_mod_mask_t mask = 0;
-+
-+    mod = xkb_keymap_mod_get_index(map, name);
-+    if (mod != XKB_MOD_INVALID) {
-+        mask = (1 << mod);
-+    }
-+    return mask;
-+}
-+
- int main(int argc, char *argv[])
- {
-     struct xkb_context *ctx;
-@@ -215,14 +227,10 @@ int main(int argc, char *argv[])
-                 mod, xkb_keymap_mod_get_name(map, mod));
-     }
+@@ -184,6 +185,7 @@ cross-win64-system:
+                         or1k-softmmu rx-softmmu sh4eb-softmmu sparc64-softmmu
+                         tricore-softmmu xtensaeb-softmmu
+   artifacts:
++    when: on_success
+     paths:
+       - build/qemu-setup*.exe
  
--    mod = xkb_keymap_mod_get_index(map, "Shift");
--    shift = (1 << mod);
--    mod = xkb_keymap_mod_get_index(map, "Control");
--    ctrl = (1 << mod);
--    mod = xkb_keymap_mod_get_index(map, "AltGr");
--    altgr = (1 << mod);
--    mod = xkb_keymap_mod_get_index(map, "NumLock");
--    numlock = (1 << mod);
-+    shift = get_mod(map, "Shift");
-+    ctrl = get_mod(map, "Control");
-+    altgr = get_mod(map, "AltGr");
-+    numlock = get_mod(map, "NumLock");
- 
-     state = xkb_state_new(map);
-     xkb_keymap_key_for_each(map, walk_map, state);
+diff --git a/.gitlab-ci.d/opensbi.yml b/.gitlab-ci.d/opensbi.yml
+index b4d7eef688..fd293e6c31 100644
+--- a/.gitlab-ci.d/opensbi.yml
++++ b/.gitlab-ci.d/opensbi.yml
+@@ -63,6 +63,7 @@ build-opensbi:
+   stage: build
+   needs: ['docker-opensbi']
+   artifacts:
++    when: on_success
+     paths: # 'artifacts.zip' will contains the following files:
+       - pc-bios/opensbi-riscv32-generic-fw_dynamic.bin
+       - pc-bios/opensbi-riscv64-generic-fw_dynamic.bin
 -- 
 2.39.2

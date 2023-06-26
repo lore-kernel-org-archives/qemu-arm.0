@@ -1,213 +1,280 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp750972ejx;
-        Sun, 25 Jun 2023 23:24:44 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7MIRHYvduZJrpl/QhBwpWXRSBDctFkM+esBJ8MSplZI5yRgxu8AGnJt7he9RWr/ZcwmTFN
-X-Received: by 2002:a05:620a:3884:b0:762:43de:3b36 with SMTP id qp4-20020a05620a388400b0076243de3b36mr23350560qkn.13.1687760684326;
-        Sun, 25 Jun 2023 23:24:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687760684; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp757397ejx;
+        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7C2lYFGMuRVVMw6ue884Yi2WNVQgPDCV60CbeR2eClIPrzLLKppKzlQUE3JSG2DDTliUIm
+X-Received: by 2002:a17:907:844:b0:982:9dc1:a434 with SMTP id ww4-20020a170907084400b009829dc1a434mr25562669ejb.19.1687762225145;
+        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687762225; cv=none;
         d=google.com; s=arc-20160816;
-        b=tJkiUxRxPP62KzQP+Fc6pSj+nkmQ96QhLedGDstQ8aG0dWPeXUQaRTW8m0pVGw2+h7
-         nQ7AcW786orSmgFmEtvJmlsON2LmVnIxbV4BLcZWVZKxlD8+fh7DKr+3vGjo+23YasJm
-         5/qk/n04jtRMFcGT5EXJyF2wKEGqw8JbrHf3HIzc5IK9NdraHOlApzO5ENE2+uy8/wr/
-         jzKtKTFtHWdgsjcqd7gw8sMZ5krCt3iYLk3pyl7WftUNqpK7GOMewSHaD5uqUj+RNODI
-         6LYqhTvFG2OP5JmYi4kQi5QCnmiApWDMImCRGrleTNudVJQalMdwqmJ3uBBe/LmULv62
-         V5tA==
+        b=OQL8ZiZkDK77FA2xtnboHjX5v6ZR/taJMR7lKrWol1pjiof0BxJBhiWwmZGP0vBdBf
+         ZPWqKCXl1YekPDjzuh4ZIE0tyl5xaQlfC80YFvJPeQSncdqL7B+/PKI65jbPpz3ibBOW
+         fSLt+AnBQfLxECV6sMUWx9b/vsC2txLlLbz4tOvKIOdasF8ico9RN/ZzP9EChnzowt1I
+         eZT5Iv+gxVQv9xGj6/aLaOPtWpDF2qAHJzErS7UJnYm4kcE0mL9nrdlgbOedfP+WL0+w
+         eLcG9zBMK6NWIWm994sUe+dLwL0ts0d0btndouztCwQv/i+3YAExOr/ORhXQgT3PzXwR
+         cTyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:subject
-         :organization:from:content-language:references:cc:to:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=i79IuxnAmv/lCC14GxyxC1VDPkpud/SzVtUk0jmjyng=;
-        fh=OvVaqgdMExHg+v5rDGQ7PAMuRC07tquYgPT61Qd5lcs=;
-        b=LGiUk12FTfhKCK5ATlrVDDgye61BepQblKP2xqV3yIqmE4t0uI15rIeYLlhS+nGfdy
-         d1U4IrmFkDrEo8u5YqfN6b4RqhJPkQ9ARhQXRGk5m4ZQvxfJUhxtvqCC2BgJ5PWvyIGL
-         im0d8adJpb4YgH34f06DwV/lLy0L4zmH8bnXLToAIvGV8/Mt1tdccGDqhDNmh63sOY6z
-         FQ4axJ3ZGkrFlEg1W85GhXe+9NarZmFbFrJvH23B9hXs62sQE6xBLISEhwGgsiBNdwXg
-         FT8Cce2Z2gnOZ2ItmpBSUzWDnO1NUPR374SjovpaasBlQFjuXn5SBdMt+A8CBAziowbQ
-         EBSg==
+        h=list-id:precedence:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=WX90kZNBwe7dwYkh6anqQDpSify7IhqnpPmXu2ebVnc=;
+        fh=YAdnYj3+m+E7VJyuRradUdB56qtGbrG41Zg/enJD64Q=;
+        b=Py0bRCByQjXcq1bW2pTBSI0ilrJMYpjvRzEInsusGiVK9+FPZCyFMb5YfCb0GetWTr
+         ni+AiuDiPzPsCoTHt2CmNdYc+wtPNLwXoPffwa4nguK9xUKae2OrtYVUGgBtjHed3TpK
+         5X9SMpIgDpB+WIQ34LTg+Kas37tmDUSd/kCrUACmuflqb60BSI2LQSycib9YpP7QsuIg
+         9th679FxIzw/nDtpr9ejV6WFqzOfWxYg4OsC+OtRgM6o6EZzKAUjXB3UYNObPx/Dug2Q
+         0dBp0WtrAJzCSZ4QDFsgm4QSLTV2U2RZ+xqX1bB4UhZ15QcPsnm906K6bE2xDAjNhy88
+         S/MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@crans.org header.s=mail header.b=J7LYNdPn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m19-20020a05620a291300b0076560e5836asi1570380qkp.687.2023.06.25.23.24.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Jun 2023 23:24:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EXO2ugRB;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id ss26-20020a170907039a00b0098e422d675csi1302344ejb.311.2023.06.25.23.50.24;
+        Sun, 25 Jun 2023 23:50:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@crans.org header.s=mail header.b=J7LYNdPn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=crans.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qDfe8-0000gn-1S; Mon, 26 Jun 2023 02:24:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1qDfe6-0000gW-5e; Mon, 26 Jun 2023 02:24:18 -0400
-Received: from redisdead.crans.org ([2a0c:700:2::ff:fe01:2402])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erdnaxe@crans.org>)
- id 1qDfe3-00063S-RQ; Mon, 26 Jun 2023 02:24:17 -0400
-Received: from [192.168.1.35] (lcs07-lyo-176-188-229-245.sfr.lns.abo.bbox.fr
- [176.188.229.245])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by redisdead.crans.org (Postfix) with ESMTPSA id 0E0492B0;
- Mon, 26 Jun 2023 08:23:59 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crans.org; s=mail;
- t=1687760640; bh=i79IuxnAmv/lCC14GxyxC1VDPkpud/SzVtUk0jmjyng=;
- h=Date:To:Cc:References:From:Subject:In-Reply-To:From;
- b=J7LYNdPn2QmLRBt6tQByZZ9OIUGGNAMTBk+uCWHCGFEvHBPCujPp7qyVX2TAx8lPg
- E6YQ3yQBagPhhpRTCCyiOK0hgw/lwdlGcc3jUvdt9dBM8oXUT1UBjnhJcJYoMK55UR
- MaiIcoPD9fw6bkiV8elVpiett+nbFF5z2EcWJN/1+KDwNN6FOEL1Ps0fDAGongnmey
- zcR+/LXAg4bxqztAMFyQ83wpQ41GaDWyvrQwvOkFM+nnQKtTT3GpQY53fGypUOaRE+
- WM0zWmRJBu1IYefuRpSBvyp7+cLFWMiyjloskkClXP3F1XS4tXOT544Ys6dH83UmYn
- VylWPUWwrq5cv54hbDq4pFR2zEpH7WgeGs/qPHAuAxWgvXSk/UL+weumSj5AyVoDzW
- msuHyN6ZTH72kfr28O6aZD0qHz1Qhb7vTvLP2FYGTGYrp42nQu5T6Qp50/Kv5OcjRr
- A/gioDhlk47sjAVNKT3ILQWaueNIsiKQkInFIGE8xy/PWuQ6lLn2Hq+bfrQwvWnaXu
- nXyxm3oS+5ztsYaC16wI17vxvndYz5zB2Sm/RIchPMoh1CYycs74b9/zMsG0UCivEa
- W3JljiKhgmlRjjvkhR34DZjc9AH0mqLz1rKQ8XclqgyRYie1X3IQrNy9FM9AxzUqmI
- o7/tJV+QPhPwqazT4oij+/ak=
-Message-ID: <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
-Date: Mon, 26 Jun 2023 08:23:58 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EXO2ugRB;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229582AbjFZGuY (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Mon, 26 Jun 2023 02:50:24 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:48834 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229530AbjFZGuW (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 26 Jun 2023 02:50:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 574541B7
+        for <kvm@vger.kernel.org>; Sun, 25 Jun 2023 23:49:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1687762187;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=WX90kZNBwe7dwYkh6anqQDpSify7IhqnpPmXu2ebVnc=;
+        b=EXO2ugRB8e2sjs+Pl/hxy9yeur5KxNx223x7MeIcVp1zg6G8BZuVlhOuH/lJY0H8iK7gcm
+        hZ6+ODEGLhJcf9mW7G6SoxhP03+uJeoCCpdng0iSLIql1Pya37qhmhO1vV4+d+sh9Vq4bM
+        Ok5ABaHN8nWiwMY7BJEiuRDET5jwhwg=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-329-k4yhj1csPmSg0UdimX50_Q-1; Mon, 26 Jun 2023 02:49:44 -0400
+X-MC-Unique: k4yhj1csPmSg0UdimX50_Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7FF7A3C0F671;
+        Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
+Received: from virt-mtcollins-01.lab.eng.rdu2.redhat.com (virt-mtcollins-01.lab.eng.rdu2.redhat.com [10.8.1.196])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 76ADF200BA8D;
+        Mon, 26 Jun 2023 06:49:43 +0000 (UTC)
+From:   Shaoqin Huang <shahuang@redhat.com>
+To:     qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc:     oliver.upton@linux.dev, salil.mehta@huawei.com,
+        james.morse@arm.com, gshan@redhat.com,
+        Shaoqin Huang <shahuang@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org
+Subject: [PATCH v1 4/5] arm/kvm: add skeleton implementation for userspace SMCCC call handling
+Date:   Mon, 26 Jun 2023 02:49:08 -0400
+Message-Id: <20230626064910.1787255-5-shahuang@redhat.com>
+In-Reply-To: <20230626064910.1787255-1-shahuang@redhat.com>
+References: <20230626064910.1787255-1-shahuang@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-To: Lucas Villa Real <lucas@osdyne.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20230619221819.6882-1-lucas@osdyne.com>
-Content-Language: en-US
-From: Alexandre IOOSS <erdnaxe@crans.org>
-Organization: Crans
-Subject: Re: [PATCH] STM32F100: support different density lines
-In-Reply-To: <20230619221819.6882-1-lucas@osdyne.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------hG1mjlQiT3T5vtgj16DBqeMj"
-Received-SPF: pass client-ip=2a0c:700:2::ff:fe01:2402;
- envelope-from=erdnaxe@crans.org; helo=redisdead.crans.org
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5zlMFOaZyQ1Q
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+X-Spam-Status: No, score=-3.1 required=5.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+        DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,RCVD_IN_DNSWL_NONE,
+        RCVD_IN_MSPIKE_H5,RCVD_IN_MSPIKE_WL,SPF_HELO_NONE,SPF_NONE,
+        T_SCC_BODY_TEXT_LINE autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: yQhUUIeylo18
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------hG1mjlQiT3T5vtgj16DBqeMj
-Content-Type: multipart/mixed; boundary="------------BR0DOpDE40zcfg32V3TqrLc6";
- protected-headers="v1"
-From: Alexandre IOOSS <erdnaxe@crans.org>
-To: Lucas Villa Real <lucas@osdyne.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-Message-ID: <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
-Subject: Re: [PATCH] STM32F100: support different density lines
-References: <20230619221819.6882-1-lucas@osdyne.com>
-In-Reply-To: <20230619221819.6882-1-lucas@osdyne.com>
+The SMCCC call filtering provide the ability to forward the SMCCC call
+to userspace, so we provide a new option `user-smccc` to enable handling
+SMCCC call in userspace, the default value is off.
 
---------------BR0DOpDE40zcfg32V3TqrLc6
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+And add the skeleton implementation for userspace SMCCC call
+initialization and handling.
 
-T24gNi8yMC8yMyAwMDoxOCwgTHVjYXMgVmlsbGEgUmVhbCB3cm90ZToNCj4gVGhpcyBwYXRj
-aCBhZGRzIHN1cHBvcnQgZm9yIHRoZSBlbXVsYXRpb24gb2YgZGlmZmVyZW50IGRlbnNpdHkg
-bGluZXMNCj4gKGxvdywgbWVkaXVtLCBhbmQgaGlnaCkuIEEgbmV3IGNsYXNzIHByb3BlcnR5
-IHN0bTMyZjEwMC1zb2MuZGVuc2l0eT0NCj4gaGFzIGJlZW4gaW50cm9kdWNlZCB0byBhbGxv
-dyB1c2VycyB0byBzdGF0ZSB0aGUgZGVzaXJlZCBjb25maWd1cmF0aW9uLg0KPiBUaGF0IHBy
-b3BlcnR5IGlzIHJlY29nbml6ZWQgYnkgYSBuZXcgbWFjaGluZSwgc3RtMzJmMS1nZW5lcmlj
-LiBUaGUgU09DDQo+IGlzIGNvbmZpZ3VyZWQgYWNjb3JkaW5nIHRvIHRoZSBmb2xsb3dpbmc6
-DQo+IA0KPiAgICAgZGVuc2l0eT1sb3cgICAgICAgMzIgS0IgRkxBU0gsIDIgU1BJcw0KPiAg
-ICAgZGVuc2l0eT1tZWRpdW0gICAxMjggS0IgRkxBU0gsIDIgU1BJcw0KPiAgICAgZGVuc2l0
-eT1oaWdoICAgICA1MTIgS0IgRkxBU0gsIDMgU1BJcw0KPiANCj4gV2l0aCB0aGlzIGNvZGUg
-Y2hhbmdlIHdlIHNob3VsZCBiZSBhYmxlIHRvIGludHJvZHVjZSByaWNoZXIgZmVhdHVyZXMN
-Cj4gdG8gU1RNMzJGMTAwLCBzdWNoIGFzIHN1cHBvcnQgZm9yIEZTTUMgKHNvIHRoYXQgYSBt
-YWNoaW5lIHdpdGggbW9yZQ0KPiBSQU0gY2FwYWNpdHkgY2FuIGJlIHByb3Blcmx5IGVtdWxh
-dGVkKS4gRlNNQyBpcyBzdXBwb3J0ZWQgb24gaGlnaA0KPiBkZW5zaXR5IGxpbmUgZGV2aWNl
-cyBvbmx5Lg0KDQpUaGFua3MgYSBsb3QgZm9yIHRoZSBwYXRjaGVzIQ0KDQpTVE0zMiBmYW1p
-bGllcyBsb29rIHZlcnkgc2ltaWxhciB0byBlYWNoIG90aGVyLCBpdCBtYWtlcyBncmVhdCBz
-ZW5zZSB0byANCnRha2UgYSBnZW5lcmljIGFwcHJvYWNoIHJhdGhlciB0aGFuIGJsb2F0aW5n
-IFFFTVUgd2l0aCBtYW55IG1hY2hpbmVzLg0KDQpZb3UgcGF0Y2ggcHJvcG9zZXMgdG8gY3Jl
-YXRlIGEgInN0bTMyZjEtZ2VuZXJpYyIgbWFjaGluZS4gSSBiZWxpZXZlIHdlIA0Kc2hvdWxk
-IHJhdGhlciBuYW1lIHRoaXMgbWFjaGluZSAic3RtMzJmMTAwLWdlbmVyaWMiOg0KICAgLSBT
-VE0zMkYxMDEgaGFzIGEgWEwtZGVuc2l0eSBsaW5lLCBTVE0zMkYxMDAgZG9lcyBub3QgaGF2
-ZSBhIA0KWEwtZGVuc2l0eSBsaW5lLg0KICAgLSBTVE0zMkYxMDAgaGlnaCBkZW5zaXR5IGxp
-bmUgZG9lcyBub3QgaGF2ZSB0aGUgc2FtZSBtYXhpbXVtIFNSQU0gDQpzaXplLCB0aW1lcnMs
-IFVTQVJUIG51bWJlcnMsIGNsb2NrIGZyZXF1ZW5jaWVzIGFuZCBDRUMgcGVyaXBoZXJhbHMg
-YXMgDQp0aGUgU1RNMzJGMTAxIGhpZ2ggZGVuc2l0eSBsaW5lLg0KDQpSZWdhcmRpbmcgdGhl
-IHN0bTMydmxkaXNjb3ZlcnkgbWFjaGluZSwgSSBhbSBub3QgYWdhaW5zdCBkZXByZWNhdGlu
-ZyBpdCANCmlmIHdlIHdhcm4gdXNlcnMgdG8gdXNlIHN0bTMyZjEwMC1nZW5lcmljIHdpdGgg
-ZGVuc2l0eT1tZWRpdW0uIFRoaXMgDQptYWtlcyBzZW5zZSBhcyB0aGUgZGV2ZWxvcG1lbnQg
-Ym9hcmQgZG9lcyBub3QgYWRkIGFueXRoaW5nIG1vcmUgdGhhbiANCmp1c3Qgc29tZSBidXR0
-b25zIGFuZCBMRUQuDQpNYXliZSAic3RtMzJ2bGRpc2NvdmVyeSIgY291bGQgYmVjb21lIGFu
-IGFsaWFzIGZvciBzdG0zMmYxMDAtZ2VuZXJpYyANCm1hY2hpbmUgPw0KQEFsaXN0YWlyOiBE
-byB5b3UgaGF2ZSBhbiBvcGluaW9uIG9uIGFsaWFzaW5nIHRoZSBvbGQgbWFjaGluZT8gSXMg
-dGhpcyANCnNvbWV0aGluZyBjb21tb24gaW4gUUVNVT8NCg0KSW4gdGhlIGxvbmcgcnVuLCB3
-ZSBzaG91bGQgbWF5YmUgcmVuYW1lICJzdG0zMmYxMDAtc29jLmMiIHRvIA0KInN0bTMyZjEt
-c29jLmMiIGFuZCBhZGQgYW5vdGhlciBjbGFzcyBwcm9wZXJ0eSB0byBjaG9vc2UgdGhlIHN1
-Yi1mYW1pbHkuIA0KVGhpcyB3b3VsZCBoaWdobHkgcmVkdWNlIHBvdGVudGlhbCBjb2RlIGR1
-cGxpY2F0aW9uLg0KU1RNMzJGMSBtYWNoaW5lcyBjb3VsZCB0YWtlIHRoaXMgc3RydWN0dXJl
-Og0KICAtIHN0bTMyZjEwMC1nZW5lcmljIG1hY2hpbmUNCiAgICAtIHN0bTMyZjEtc29jLmZh
-bWlseT1mMTAwIHN0bTMyZjEtc29jLmRlbnNpdHk9bG93DQogICAgLSBzdG0zMmYxLXNvYy5m
-YW1pbHk9ZjEwMCBzdG0zMmYxLXNvYy5kZW5zaXR5PW1lZGl1bQ0KICAgICAgKGFsaWFzIHN0
-bTMydmxkaXNjb3ZlcnkpDQogICAgLSBzdG0zMmYxLXNvYy5mYW1pbHk9ZjEwMCBzdG0zMmYx
-LXNvYy5kZW5zaXR5PWhpZ2gNCiAgLSBzdG0zMmYxMDEtZ2VuZXJpYyBtYWNoaW5lDQogICAg
-LSBzdG0zMmYxLXNvYy5mYW1pbHk9ZjEwMSBzdG0zMmYxLXNvYy5kZW5zaXR5PWxvdw0KICAg
-IC0gc3RtMzJmMS1zb2MuZmFtaWx5PWYxMDEgc3RtMzJmMS1zb2MuZGVuc2l0eT1tZWRpdW0N
-CiAgICAtIHN0bTMyZjEtc29jLmZhbWlseT1mMTAxIHN0bTMyZjEtc29jLmRlbnNpdHk9aGln
-aA0KICAgIC0gc3RtMzJmMS1zb2MuZmFtaWx5PWYxMDEgc3RtMzJmMS1zb2MuZGVuc2l0eT14
-bA0KICAtIHN0bTMyZjEwMi1nZW5lcmljIG1hY2hpbmUNCiAgICAtIHN0bTMyZjEtc29jLmZh
-bWlseT1mMTAyIHN0bTMyZjEtc29jLmRlbnNpdHk9bG93DQogICAgLSBzdG0zMmYxLXNvYy5m
-YW1pbHk9ZjEwMiBzdG0zMmYxLXNvYy5kZW5zaXR5PW1lZGl1bQ0KICAtIHN0bTMyZjEwMy1n
-ZW5lcmljIG1hY2hpbmUNCiAgICAtIHN0bTMyZjEtc29jLmZhbWlseT1mMTAzIHN0bTMyZjEt
-c29jLmRlbnNpdHk9bG93DQogICAgLSBzdG0zMmYxLXNvYy5mYW1pbHk9ZjEwMyBzdG0zMmYx
-LXNvYy5kZW5zaXR5PW1lZGl1bQ0KICAgICAgKGFsaWFzIHN0bTMyLW51Y2xlby1mMTAzcmIp
-DQogICAgLSBzdG0zMmYxLXNvYy5mYW1pbHk9ZjEwMyBzdG0zMmYxLXNvYy5kZW5zaXR5PWhp
-Z2gNCiAgICAtIHN0bTMyZjEtc29jLmZhbWlseT1mMTAzIHN0bTMyZjEtc29jLmRlbnNpdHk9
-eGwNCkBBbGlzdGFpcjogV291bGQgc3VjaCBtb2RpZmljYXRpb24gbWFrZSBhbHNvIHNlbnNl
-IHJlZ2FyZGluZyBzdG0zMmYyIGFuZCANCnN0bTMyZjQgZmFtaWxpZXM/DQoNClRoYW5rcywN
-Ci0tIA0KQWxleGFuZHJlDQo=
+Signed-off-by: Shaoqin Huang <shahuang@redhat.com>
+---
+ docs/system/arm/virt.rst |  4 +++
+ hw/arm/virt.c            | 21 ++++++++++++++++
+ include/hw/arm/virt.h    |  1 +
+ target/arm/kvm.c         | 54 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 80 insertions(+)
 
---------------BR0DOpDE40zcfg32V3TqrLc6--
-
---------------hG1mjlQiT3T5vtgj16DBqeMj
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEELTca0n4rvHeX4bdZbHknjz/NzAIFAmSZLv4FAwAAAAAACgkQbHknjz/NzAIk
-FA/+MwAIvUFATyBS08D0LSmzfyRS80K0A8lr/L8ES+NeUCd/hkEcIi+LlnWU1/d/6GrRfVJJcNxb
-0HTnFuP0UjHRjXsPTcOA2ntNZXWnBQl7wo1uOXqsoklnwlZEdLhKqRA346pincX943JTvFzRXOyN
-uDTeb/QaOmybQxZkwyIDahZXJR4adIoVhRsoc+vE0HjZ6DSABG4H0WTz4dP7aEyhKELk3h6PPZau
-98xnpttVawrj5AvIpV4mTviE1GaMimmVpXmm7/RjYeZ/QN18o7+hZMqKxSDlN+9jQMP0r6BFquyn
-mP+7+YxkM6gQHMBX4znyokZ+dZEU+Y9V/uhZoo/EzS7TmWES3WdRnCcZIF5dzGrofvcYXa4hc799
-wgeQaBPLu8YlzslyW05Fpm1OHTSS2vwftVgnBPFfPeUt0grp+RC5q4PU7d3WKLDZmNXbJJtiE3vI
-xLlQV4MZPbc8H1gwMRTK4bxUGFEMm88QJwIzt/m65wODMnXqePYRaM4XWGyrDSDuUasivjCZFzVK
-2mk24W2MjyRGL+TkhR3+EK+TW8imKwfgMUJIZVzA4BAL6YJ2ZsbMOLz7U/omYBmRoLyoGV/fvGVZ
-e7RDOZzl2eX97GG/eNP/8Y3uOLxy/PGIoT/3rz0QK//CRTwwlI+FUDWNHajnfJikJ1HkCl/qiBj2
-ZTw=
-=1uV/
------END PGP SIGNATURE-----
-
---------------hG1mjlQiT3T5vtgj16DBqeMj--
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 1cab33f02e..ff43d52f04 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -155,6 +155,10 @@ dtb-randomness
+   DTB to be non-deterministic. It would be the responsibility of
+   the firmware to come up with a seed and pass it on if it wants to.
+ 
++user-smccc
++  Set ``on``/``off`` to enable/disable handling smccc call in userspace
++  instead of kernel.
++
+ dtb-kaslr-seed
+   A deprecated synonym for dtb-randomness.
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9b9f7d9c68..767720321c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -42,6 +42,7 @@
+ #include "hw/vfio/vfio-amd-xgbe.h"
+ #include "hw/display/ramfb.h"
+ #include "net/net.h"
++#include "qom/object.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/runstate.h"
+@@ -2511,6 +2512,19 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+     strncpy(vms->oem_table_id, value, 8);
+ }
+ 
++static bool virt_get_user_smccc(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->user_smccc;
++}
++
++static void virt_set_user_smccc(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->user_smccc = value;
++}
+ 
+ bool virt_is_acpi_enabled(VirtMachineState *vms)
+ {
+@@ -3155,6 +3169,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "in ACPI table header."
+                                           "The string may be up to 8 bytes in size");
+ 
++    object_class_property_add_bool(oc, "user-smccc",
++                                   virt_get_user_smccc,
++                                   virt_set_user_smccc);
++    object_class_property_set_description(oc, "user-smccc",
++                                          "Set on/off to enable/disable "
++                                          "handling smccc call in userspace");
++
+ }
+ 
+ static void virt_instance_init(Object *obj)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index e1ddbea96b..4f1bc12680 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -160,6 +160,7 @@ struct VirtMachineState {
+     bool ras;
+     bool mte;
+     bool dtb_randomness;
++    bool user_smccc;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 84da49332c..579c6edd49 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -9,6 +9,8 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include <asm-arm64/kvm.h>
++#include <linux/arm-smccc.h>
+ #include <sys/ioctl.h>
+ 
+ #include <linux/kvm.h>
+@@ -247,6 +249,20 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms, bool *fixed_ipa)
+     return ret > 0 ? ret : 40;
+ }
+ 
++static int kvm_arm_init_smccc_filter(KVMState *s)
++{
++    int ret = 0;
++
++    if (kvm_vm_check_attr(s, KVM_ARM_VM_SMCCC_CTRL, KVM_ARM_VM_SMCCC_FILTER)) {
++        error_report("ARM SMCCC filter not supported");
++        ret = -EINVAL;
++        goto out;
++    }
++
++out:
++    return ret;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     int ret = 0;
+@@ -282,6 +298,10 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+ 
+     kvm_arm_init_debug(s);
+ 
++    if (ret == 0 && object_property_get_bool(OBJECT(ms), "user-smccc", NULL)) {
++        ret = kvm_arm_init_smccc_filter(s);
++    }
++
+     return ret;
+ }
+ 
+@@ -912,6 +932,37 @@ static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
+     return -1;
+ }
+ 
++static void kvm_arm_smccc_return_result(CPUState *cs, struct arm_smccc_res *res)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    env->xregs[0] = res->a0;
++    env->xregs[1] = res->a1;
++    env->xregs[2] = res->a2;
++    env->xregs[3] = res->a3;
++}
++
++static int kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
++{
++    uint32_t fn = run->hypercall.nr;
++    struct arm_smccc_res res = {
++        .a0     = SMCCC_RET_NOT_SUPPORTED,
++    };
++    int ret = 0;
++
++    kvm_cpu_synchronize_state(cs);
++
++    switch (ARM_SMCCC_OWNER_NUM(fn)) {
++    default:
++        break;
++    }
++
++    kvm_arm_smccc_return_result(cs, &res);
++
++    return ret;
++}
++
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     int ret = 0;
+@@ -927,6 +978,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
+                                        run->arm_nisv.fault_ipa);
+         break;
++    case KVM_EXIT_HYPERCALL:
++        ret = kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+-- 
+2.39.1

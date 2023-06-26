@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id p9-20020a05600c204900b003f93c450657sm8626035wmg.38.2023.06.26.13.25.16
+        by smtp.gmail.com with ESMTPSA id t24-20020a1c7718000000b003f91e32b1ebsm11506372wmi.17.2023.06.26.13.25.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 13:25:17 -0700 (PDT)
+        Mon, 26 Jun 2023 13:25:18 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 71B171FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id A447E1FFC0;
 	Mon, 26 Jun 2023 21:25:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,40 +38,62 @@ Cc: Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 3/6] gitlab: reduce testing scope of check-gcov
-Date: Mon, 26 Jun 2023 21:25:12 +0100
-Message-Id: <20230626202516.2507915-4-alex.bennee@linaro.org>
+Subject: [PATCH v2 5/6] tests/tcg: add mechanism to handle plugin arguments
+Date: Mon, 26 Jun 2023 21:25:14 +0100
+Message-Id: <20230626202516.2507915-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626202516.2507915-1-alex.bennee@linaro.org>
 References: <20230626202516.2507915-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +5TsfKA6b1W8
+X-TUID: UX4an64wG5OC
 
-This keeps timing out on gitlab due to some qtests taking a long time.
-As this is just ensuring the gcov machinery is working and not
-attempting to be comprehensive lets skip qtest in this run.
+We recently missed a regression that should have been picked up by
+check-tcg. This was because the libmem plugin is effectively a NOP if
+the user doesn't specify the type to use.
 
-Message-Id: <20230623122100.1640995-4-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Rather than changing the default behaviour add an additional expansion
+so we can take this into account in future.
+
+Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/Makefile.target | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index a8fd9a0c1f..77dc83a6be 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -454,7 +454,7 @@ gcov:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-gcov
-     TARGETS: aarch64-softmmu ppc64-softmmu s390x-softmmu x86_64-softmmu
--    MAKE_CHECK_ARGS: check
-+    MAKE_CHECK_ARGS: check-unit check-softfloat
-   after_script:
-     - cd build
-     - gcovr --xml-pretty --exclude-unreachable-branches --print-summary
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 72876cc84e..2462c26000 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
+ 
+ RUN_TESTS+=$(EXTRA_RUNS)
+ 
++# Some plugins need additional arguments above the default to fully
++# exercise things. We can define them on a per-test basis here.
++run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
++
+ ifeq ($(filter %-softmmu, $(TARGET)),)
+ run-%: %
+ 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
+ 
+ run-plugin-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
+ 		-d plugin -D $*.pout \
+ 		 $(call strip-plugin,$<))
+ else
+@@ -189,7 +193,7 @@ run-plugin-%:
+ 	$(call run-test, $@, \
+ 	  $(QEMU) -monitor none -display none \
+ 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
+-	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
++	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
+ 	    	  -d plugin -D $*.pout \
+ 		  $(QEMU_OPTS) $(call strip-plugin,$<))
+ endif
 -- 
 2.39.2

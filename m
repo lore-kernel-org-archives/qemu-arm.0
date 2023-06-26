@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t15-20020a0560001a4f00b00313f676832bsm2289262wry.93.2023.06.26.14.59.28
+        by smtp.gmail.com with ESMTPSA id t8-20020a1c7708000000b003f50d6ee334sm8708659wmi.47.2023.06.26.14.59.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 26 Jun 2023 14:59:29 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id EB63D1FFC5;
+	by zen.linaroharston (Postfix) with ESMTP id D0D571FFC4;
 	Mon, 26 Jun 2023 22:59:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,39 +38,60 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 10/26] Makefile: add lcitool-refresh to UNCHECKED_GOALS
-Date: Mon, 26 Jun 2023 22:59:10 +0100
-Message-Id: <20230626215926.2522656-11-alex.bennee@linaro.org>
+Subject: [PATCH v2 09/26] tests/docker: add test-fuzz
+Date: Mon, 26 Jun 2023 22:59:09 +0100
+Message-Id: <20230626215926.2522656-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
 References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1/xn7O//mTUA
+X-TUID: NEgQ34pL5hK6
 
-This is yet another make target you usually run in the top level of
-the source directory.
+Running the fuzzer requires some hoop jumping and some problems only
+show up in containers. This basically replicates the build-oss-fuzz
+job from our CI so we can run in the same containers we use in CI.
 
-Message-Id: <20230623122100.1640995-12-alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/docker/test-fuzz | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100755 tests/docker/test-fuzz
 
-diff --git a/Makefile b/Makefile
-index 804a5681e0..5d48dfac18 100644
---- a/Makefile
-+++ b/Makefile
-@@ -28,7 +28,7 @@ quiet-command = $(quiet-@)$(call quiet-command-run,$1,$2,$3)
- 
- UNCHECKED_GOALS := TAGS gtags cscope ctags dist \
-     help check-help print-% \
--    docker docker-% vm-help vm-test vm-build-%
-+    docker docker-% lcitool-refresh vm-help vm-test vm-build-%
- 
- all:
- .PHONY: all clean distclean recurse-all dist msi FORCE
+diff --git a/tests/docker/test-fuzz b/tests/docker/test-fuzz
+new file mode 100755
+index 0000000000..7e506ae1f6
+--- /dev/null
++++ b/tests/docker/test-fuzz
+@@ -0,0 +1,28 @@
++#!/bin/bash -e
++#
++# Compile and check with oss-fuzz.
++#
++# Copyright (c) 2023 Linaro Ltd.
++#
++# Authors:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++. common.rc
++
++requires_binary clang
++
++# the build script runs out of $src so we need to copy across
++cd "$BUILD_DIR"
++cp -a $QEMU_SRC .
++cd src
++mkdir build-oss-fuzz
++export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
++env CC="clang" CXX="clang++" CFLAGS="-fsanitize=address" ./scripts/oss-fuzz/build.sh
++export ASAN_OPTIONS="fast_unwind_on_malloc=0"
++for fuzzer in $(find ./build-oss-fuzz/DEST_DIR/ -executable -type f | grep -v slirp); do
++        grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
++        echo Testing ${fuzzer} ... ;
++        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
++done
 -- 
 2.39.2

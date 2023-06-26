@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id i11-20020adfefcb000000b0030ae3a6be5bsm8456990wrp.78.2023.06.26.14.59.27
+        by smtp.gmail.com with ESMTPSA id c25-20020a7bc019000000b003f819faff24sm11761757wmb.40.2023.06.26.14.59.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 14:59:27 -0700 (PDT)
+        Mon, 26 Jun 2023 14:59:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D9AF81FFBB;
-	Mon, 26 Jun 2023 22:59:26 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 35E111FFBC;
+	Mon, 26 Jun 2023 22:59:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Bulekov <alxndr@bu.edu>,
@@ -37,142 +37,114 @@ Cc: Alexander Bulekov <alxndr@bu.edu>,
 	Radoslaw Biernacki <rad@semihalf.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v2 00/26] maintainer omnibus: testing, fuzz, plugins, documentation
-Date: Mon, 26 Jun 2023 22:59:00 +0100
-Message-Id: <20230626215926.2522656-1-alex.bennee@linaro.org>
+	Laurent Vivier <lvivier@redhat.com>,
+	Erik Skultety <eskultet@redhat.com>
+Subject: [PATCH v2 12/26] tests/lcitool: Bump fedora container versions
+Date: Mon, 26 Jun 2023 22:59:12 +0100
+Message-Id: <20230626215926.2522656-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
+References: <20230626215926.2522656-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: baARXr1eA66u
+X-TUID: 3HUY/Ruut+Km
 
-As softfreeze is fast approaching I thought it would be work combining
-my various trees into an omnibus series to ease the review and
-merging.
+From: Erik Skultety <eskultet@redhat.com>
 
-The testing updates exposed a number of latent leaks that confused the
-oss-fuzz jobs (hence the test-fuzz addition to help debug that). This
-also includes some minor plugin updates and finally some documentation
-updates that clean-up and expose the QOM and QDEV APIs which are so
-core to emulating anything in QEMU.
+Fedora 37 -> 38
 
-v2
-  - applied a bunch of review tags
-  - added missing doc suggestions from Paolo
-  - tweaked the plugin fix for CI
+Signed-off-by: Erik Skultety <eskultet@redhat.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-14-alex.bennee@linaro.org>
+Message-Id: <c9b00e573a7a80fc6ce5c68595382f5c916a9195.1685528076.git.eskultet@redhat.com>
+[AJB: Dropped alpine (in prev commit), reflow commit msg]
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/docker/dockerfiles/fedora-win32-cross.docker | 4 ++--
+ tests/docker/dockerfiles/fedora-win64-cross.docker | 4 ++--
+ tests/docker/dockerfiles/fedora.docker             | 4 ++--
+ tests/lcitool/refresh                              | 6 +++---
+ 4 files changed, 9 insertions(+), 9 deletions(-)
 
-The following patches need review:
-
- - qemu-keymap: properly check return from xkb_keymap_mod_get_index
-
-Alex Bennée (19):
-  gitlab: reduce testing scope of check-gcov
-  tests/tcg: add mechanism to handle plugin arguments
-  qemu-keymap: properly check return from xkb_keymap_mod_get_index
-  scripts/oss-fuzz: add a suppression for keymap
-  tests/qtests: clean-up and fix leak in generic_fuzz
-  tests/docker: add test-fuzz
-  Makefile: add lcitool-refresh to UNCHECKED_GOALS
-  tests/lcitool: update to latest version
-  tests/lcitool: add an explicit gcc-native package
-  tests/lcitool: introduce qemu-minimal
-  tests/docker: convert riscv64-cross to lcitool
-  plugins: force slow path when plugins instrument memory ops
-  plugins: fix memory leak while parsing options
-  plugins: update lockstep to use g_memdup2
-  docs/devel: add some front matter to the devel index
-  include/migration: mark vmstate_register() as a legacy function
-  include/hw/qdev-core: fixup kerneldoc annotations
-  docs/devel: split qom-api reference into new file
-  docs/devel: introduce some key concepts for QOM development
-
-Ani Sinha (1):
-  docs/devel: remind developers to run CI container pipeline when
-    updating images
-
-Daniel P. Berrangé (2):
-  gitlab: explicit set artifacts publishing criteria
-  gitlab: ensure coverage job also publishes meson log
-
-Erik Skultety (1):
-  tests/lcitool: Bump fedora container versions
-
-Marcin Juszkiewicz (1):
-  tests/avocado: update firmware to enable sbsa-ref/max
-
-Philippe Mathieu-Daudé (1):
-  docs/devel/qom.rst: Correct code style
-
-Richard Henderson (1):
-  tests/plugin: Remove duplicate insn log from libinsn.so
-
- docs/devel/index-api.rst                      |   2 +
- docs/devel/index-process.rst                  |   2 +
- docs/devel/index-tcg.rst                      |   2 +
- docs/devel/index.rst                          |  24 +-
- docs/devel/qdev-api.rst                       |   7 +
- docs/devel/qom-api.rst                        |   9 +
- docs/devel/qom.rst                            |  65 +++-
- docs/devel/tcg.rst                            |   2 +
- docs/devel/testing.rst                        |   6 +
- Makefile                                      |   2 +-
- include/exec/cpu-all.h                        |   2 +-
- include/hw/core/cpu.h                         |  17 +
- include/hw/qdev-core.h                        | 365 ++++++++++++------
- include/migration/vmstate.h                   |   9 +-
- accel/tcg/cputlb.c                            |   4 +-
- accel/tcg/user-exec.c                         |   8 +-
- contrib/plugins/cache.c                       |   2 +-
- contrib/plugins/drcov.c                       |   2 +-
- contrib/plugins/execlog.c                     |   2 +-
- contrib/plugins/hotblocks.c                   |   2 +-
- contrib/plugins/hotpages.c                    |   2 +-
- contrib/plugins/howvec.c                      |   2 +-
- contrib/plugins/hwprofile.c                   |   2 +-
- contrib/plugins/lockstep.c                    |   4 +-
- qemu-keymap.c                                 |  24 +-
- target/arm/tcg/sve_helper.c                   |   4 -
- tests/plugin/bb.c                             |   2 +-
- tests/plugin/insn.c                           |  11 +-
- tests/plugin/mem.c                            |   2 +-
- tests/plugin/syscall.c                        |   2 +-
- tests/qtest/fuzz/generic_fuzz.c               |  11 +-
- .gitlab-ci.d/buildtest-template.yml           |   4 +-
- .gitlab-ci.d/buildtest.yml                    |   7 +-
- .gitlab-ci.d/crossbuild-template.yml          |   1 +
- .gitlab-ci.d/crossbuilds.yml                  |   2 +
- .gitlab-ci.d/opensbi.yml                      |   1 +
- scripts/oss-fuzz/lsan_suppressions.txt        |   3 +
- tests/avocado/machine_aarch64_sbsaref.py      |  23 +-
- tests/docker/dockerfiles/alpine.docker        |   4 +-
- .../dockerfiles/debian-amd64-cross.docker     |   1 +
- .../dockerfiles/debian-arm64-cross.docker     |   1 +
- .../dockerfiles/debian-armel-cross.docker     |   1 +
- .../dockerfiles/debian-armhf-cross.docker     |   1 +
- .../dockerfiles/debian-mips64el-cross.docker  |   1 +
- .../dockerfiles/debian-mipsel-cross.docker    |   1 +
- .../dockerfiles/debian-ppc64el-cross.docker   |   1 +
- .../dockerfiles/debian-riscv64-cross.docker   | 119 +++---
- .../dockerfiles/debian-s390x-cross.docker     |   1 +
- .../dockerfiles/fedora-win32-cross.docker     |   5 +-
- .../dockerfiles/fedora-win64-cross.docker     |   5 +-
- tests/docker/dockerfiles/fedora.docker        |   4 +-
- tests/docker/test-fuzz                        |  28 ++
- tests/lcitool/libvirt-ci                      |   2 +-
- tests/lcitool/projects/qemu-minimal.yml       |  27 ++
- tests/lcitool/projects/qemu.yml               |   1 +
- tests/lcitool/refresh                         |  18 +-
- tests/tcg/Makefile.target                     |   8 +-
- tests/tcg/aarch64/Makefile.target             |   8 +
- tests/tcg/i386/Makefile.softmmu-target        |   9 -
- tests/tcg/i386/Makefile.target                |   6 -
- tests/tcg/x86_64/Makefile.softmmu-target      |   9 -
- 61 files changed, 632 insertions(+), 270 deletions(-)
- create mode 100644 docs/devel/qdev-api.rst
- create mode 100644 docs/devel/qom-api.rst
- create mode 100755 tests/docker/test-fuzz
- create mode 100644 tests/lcitool/projects/qemu-minimal.yml
-
+diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
+index dc72ae9cc9..a0a3cd9e5b 100644
+--- a/tests/docker/dockerfiles/fedora-win32-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all --cross mingw32 fedora-37 qemu
++#  $ lcitool dockerfile --layers all --cross mingw32 fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
+ 
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
+ 
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index 7eb4a5dba2..b6c1a6a339 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all --cross mingw64 fedora-37 qemu
++#  $ lcitool dockerfile --layers all --cross mingw64 fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
+ 
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
+ 
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+index 3a69eefdda..8a35a17617 100644
+--- a/tests/docker/dockerfiles/fedora.docker
++++ b/tests/docker/dockerfiles/fedora.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all fedora-37 qemu
++#  $ lcitool dockerfile --layers all fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
+ 
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
+ 
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 5d36a62b10..5e06fb2cf5 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -119,7 +119,7 @@ try:
+     generate_dockerfile("centos8", "centos-stream-8")
+     generate_dockerfile("debian-amd64", "debian-11",
+                         trailer="".join(debian11_extras))
+-    generate_dockerfile("fedora", "fedora-37")
++    generate_dockerfile("fedora", "fedora-38")
+     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
+     generate_dockerfile("ubuntu2004", "ubuntu-2004")
+     generate_dockerfile("ubuntu2204", "ubuntu-2204")
+@@ -169,12 +169,12 @@ try:
+                         trailer=cross_build("s390x-linux-gnu-",
+                                             "s390x-softmmu,s390x-linux-user"))
+ 
+-    generate_dockerfile("fedora-win32-cross", "fedora-37",
++    generate_dockerfile("fedora-win32-cross", "fedora-38",
+                         cross="mingw32",
+                         trailer=cross_build("i686-w64-mingw32-",
+                                             "i386-softmmu"))
+ 
+-    generate_dockerfile("fedora-win64-cross", "fedora-37",
++    generate_dockerfile("fedora-win64-cross", "fedora-38",
+                         cross="mingw64",
+                         trailer=cross_build("x86_64-w64-mingw32-",
+                                             "x86_64-softmmu"))
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id r11-20020adfce8b000000b00313f3c11512sm5416736wrn.89.2023.06.27.09.15.49
+        by smtp.gmail.com with ESMTPSA id n2-20020a5d67c2000000b003127741d7desm10713516wrw.58.2023.06.27.09.15.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:15:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A9AE51FFD0;
-	Tue, 27 Jun 2023 17:09:46 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id C2A7D1FFDB;
+	Tue, 27 Jun 2023 17:09:47 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -39,58 +39,87 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH v3 23/36] docs/devel/qom.rst: Correct code style
-Date: Tue, 27 Jun 2023 17:09:30 +0100
-Message-Id: <20230627160943.2956928-24-alex.bennee@linaro.org>
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v3 33/36] gdbstub: Report the actual qemu-user pid
+Date: Tue, 27 Jun 2023 17:09:40 +0100
+Message-Id: <20230627160943.2956928-34-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8yqFXF9MQ/R7
+X-TUID: A9tT7G4Ep1+h
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Per commit 067109a11c ("docs/devel: mention the spacing requirement
-for QOM"):
+Currently qemu-user reports pid 1 to GDB. Resolve the TODO and report
+the actual PID. Using getpid() relies on the assumption that there is
+only one GDBProcess. Add an assertion to make sure that future changes
+don't break it.
 
-  For a storage structure the first declaration should always be
-  called “parent_obj” and for a class structure the first member
-  should always be called “parent_class”
-
-Adapt the QOM rST document accordingly.
-
-Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230622101717.70468-1-philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20230621203627.1808446-6-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/qom.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ gdbstub/gdbstub.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index c9237950d0..2828843058 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -26,7 +26,7 @@ features:
-    typedef DeviceClass MyDeviceClass;
-    typedef struct MyDevice
-    {
--       DeviceState parent;
-+       DeviceState parent_obj;
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index ce3e4a2671..697dd4bbad 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -202,13 +202,16 @@ void gdb_memtox(GString *buf, const char *mem, int len)
  
-        int reg0, reg1, reg2;
-    } MyDevice;
-@@ -147,7 +147,7 @@ will also have a wrapper function to call it easily:
+ static uint32_t gdb_get_cpu_pid(CPUState *cpu)
+ {
+-    /* TODO: In user mode, we should use the task state PID */
++#ifdef CONFIG_USER_ONLY
++    return getpid();
++#else
+     if (cpu->cluster_index == UNASSIGNED_CLUSTER_INDEX) {
+         /* Return the default process' PID */
+         int index = gdbserver_state.process_num - 1;
+         return gdbserver_state.processes[index].pid;
+     }
+     return cpu->cluster_index + 1;
++#endif
+ }
  
-    typedef struct MyDeviceClass
-    {
--       DeviceClass parent;
-+       DeviceClass parent_class;
+ GDBProcess *gdb_get_process(uint32_t pid)
+@@ -2137,19 +2140,25 @@ void gdb_read_byte(uint8_t ch)
+ void gdb_create_default_process(GDBState *s)
+ {
+     GDBProcess *process;
+-    int max_pid = 0;
++    int pid;
  
-        void (*frobnicate) (MyDevice *obj);
-    } MyDeviceClass;
++#ifdef CONFIG_USER_ONLY
++    assert(gdbserver_state.process_num == 0);
++    pid = getpid();
++#else
+     if (gdbserver_state.process_num) {
+-        max_pid = s->processes[s->process_num - 1].pid;
++        pid = s->processes[s->process_num - 1].pid;
++    } else {
++        pid = 0;
+     }
++    /* We need an available PID slot for this process */
++    assert(pid < UINT32_MAX);
++    pid++;
++#endif
+ 
+     s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
+     process = &s->processes[s->process_num - 1];
+-
+-    /* We need an available PID slot for this process */
+-    assert(max_pid < UINT32_MAX);
+-
+-    process->pid = max_pid + 1;
++    process->pid = pid;
+     process->attached = false;
+     process->target_xml[0] = '\0';
+ }
 -- 
 2.39.2

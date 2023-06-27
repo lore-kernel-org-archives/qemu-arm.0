@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id da16-20020a056000197000b0031274a184d5sm10906551wrb.109.2023.06.27.09.09.46
+        by smtp.gmail.com with ESMTPSA id p23-20020a1c7417000000b003f9b0f640b1sm11192228wmc.22.2023.06.27.09.09.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Jun 2023 09:09:48 -0700 (PDT)
+        Tue, 27 Jun 2023 09:09:49 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6FAA41FFBE;
+	by zen.linaroharston (Postfix) with ESMTP id A53901FFC7;
 	Tue, 27 Jun 2023 17:09:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,173 +39,214 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 13/36] tests/lcitool: add an explicit gcc-native package
-Date: Tue, 27 Jun 2023 17:09:20 +0100
-Message-Id: <20230627160943.2956928-14-alex.bennee@linaro.org>
+Subject: [PATCH v3 15/36] tests/docker: convert riscv64-cross to lcitool
+Date: Tue, 27 Jun 2023 17:09:22 +0100
+Message-Id: <20230627160943.2956928-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2mVimTL0DbEx
+X-TUID: q6YrXYXcgcUr
 
-We need a native compiler to build the hexagon codegen tools. In our
-current images we already have a gcc as a side effect of a broken
-dependency between gcovr and lcov but this will be fixed when we move
-to bookworm. See
-https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=987818 for details.
+We still need to base this on Debian Sid until riscv64 is promoted to
+a release architecture (or another distro provides a full cross
+compile target). We use the new qemu-minimal project description to
+avoid bringing in all the extra dependencies because every extra
+package is another chance for sid to fail.
 
-Update the packages while we are at it.
-
-Message-Id: <20230623122100.1640995-15-alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-amd64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-arm64-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armel-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-armhf-cross.docker    | 1 +
- tests/docker/dockerfiles/debian-mips64el-cross.docker | 1 +
- tests/docker/dockerfiles/debian-mipsel-cross.docker   | 1 +
- tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 1 +
- tests/docker/dockerfiles/debian-s390x-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win32-cross.docker    | 1 +
- tests/docker/dockerfiles/fedora-win64-cross.docker    | 1 +
- tests/lcitool/projects/qemu.yml                       | 1 +
- 11 files changed, 11 insertions(+)
+ .../dockerfiles/debian-riscv64-cross.docker   | 119 +++++++++++-------
+ tests/lcitool/projects/qemu-minimal.yml       |   4 +
+ tests/lcitool/refresh                         |  10 +-
+ 3 files changed, 87 insertions(+), 46 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 40a2b6acc4..016c2321f1 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
+diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
+index 081404e014..a2d879ee1f 100644
+--- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
++++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
+@@ -1,54 +1,85 @@
++# THIS FILE WAS AUTO-GENERATED
+ #
+-# Docker cross-compiler target for riscv64
++#  $ lcitool dockerfile --layers all --cross riscv64 debian-sid qemu-minimal
+ #
+-# Currently the only distro that gets close to cross compiling riscv64
+-# images is Debian Sid (with unofficial ports). As this is a moving
+-# target we keep the library list minimal and are aiming to migrate
+-# from this hack as soon as we are able.
+-#
+-FROM docker.io/library/debian:sid-slim
++# https://gitlab.com/libvirt/libvirt-ci
+ 
+-# Add ports
+-RUN apt update && \
+-    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
+-    DEBIAN_FRONTEND=noninteractive eatmydata apt update -yy && \
+-    DEBIAN_FRONTEND=noninteractive eatmydata apt upgrade -yy
+-
+-# Install common build utilities
+-RUN DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
+-    bison \
+-    bc \
+-    build-essential \
+-    ca-certificates \
+-    debian-ports-archive-keyring \
+-    dpkg-dev \
+-    flex \
+-    gettext \
+-    git \
+-    libglib2.0-dev \
+-    ninja-build \
+-    pkg-config \
+-    python3 \
+-    python3-venv
++FROM docker.io/library/debian:sid-slim
+ 
+-# Add ports and riscv64 architecture
+-RUN echo "deb http://ftp.ports.debian.org/debian-ports/ sid main" >> /etc/apt/sources.list
+-RUN dpkg --add-architecture riscv64
++RUN export DEBIAN_FRONTEND=noninteractive && \
++    apt-get update && \
++    apt-get install -y eatmydata && \
++    eatmydata apt-get dist-upgrade -y && \
++    eatmydata apt-get install --no-install-recommends -y \
++                      bash \
++                      bc \
++                      bison \
++                      ca-certificates \
++                      ccache \
++                      findutils \
++                      flex \
 +                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index c99300bbfa..3c114efa11 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
-index 5db5c78b31..dfbd47db89 100644
---- a/tests/docker/dockerfiles/debian-armel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armel-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index ae6600b25f..4e0084e896 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index daa2d48e36..88adf333e9 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 5af04e2054..256e8b5dfe 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 1eeba7fcab..4d19cd2bd7 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index 52e89a6dab..642bbde3d1 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       exuberant-ctags \
-                       findutils \
-                       flex \
-+                      gcc \
-                       gcovr \
-                       gettext \
-                       git \
-diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index a0a3cd9e5b..e3dfd68bed 100644
---- a/tests/docker/dockerfiles/fedora-win32-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
-@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
-                diffutils \
-                findutils \
-                flex \
-+               gcc \
-                gcovr \
-                git \
-                glib2-devel \
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index b6c1a6a339..0e15c9643a 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
-                diffutils \
-                findutils \
-                flex \
-+               gcc \
-                gcovr \
-                git \
-                glib2-devel \
-diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
-index 566db8313b..21fd3d2cf9 100644
---- a/tests/lcitool/projects/qemu.yml
-+++ b/tests/lcitool/projects/qemu.yml
-@@ -24,6 +24,7 @@ packages:
-  - fuse3
++                      git \
++                      libglib2.0-dev \
++                      locales \
++                      make \
++                      meson \
++                      ninja-build \
++                      pkgconf \
++                      python3 \
++                      python3-venv \
++                      sed \
++                      tar && \
++    eatmydata apt-get autoremove -y && \
++    eatmydata apt-get autoclean -y && \
++    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
++    dpkg-reconfigure locales
+ 
+-# Duplicate deb line as deb-src
+-RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
++ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
++ENV LANG "en_US.UTF-8"
++ENV MAKE "/usr/bin/make"
++ENV NINJA "/usr/bin/ninja"
++ENV PYTHON "/usr/bin/python3"
+ 
+-RUN apt update && \
+-    DEBIAN_FRONTEND=noninteractive eatmydata \
+-    apt install -y --no-install-recommends \
+-         gcc-riscv64-linux-gnu \
+-         libc6-dev-riscv64-cross \
+-         libfdt-dev:riscv64 \
+-         libffi-dev:riscv64 \
+-         libglib2.0-dev:riscv64 \
+-         libpixman-1-dev:riscv64
++RUN export DEBIAN_FRONTEND=noninteractive && \
++    dpkg --add-architecture riscv64 && \
++    eatmydata apt-get install debian-ports-archive-keyring && \
++    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ sid main' > /etc/apt/sources.list.d/ports.list && \
++    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ unreleased main' >> /etc/apt/sources.list.d/ports.list && \
++    eatmydata apt-get update && \
++    eatmydata apt-get dist-upgrade -y && \
++    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
++    eatmydata apt-get install --no-install-recommends -y \
++                      g++-riscv64-linux-gnu \
++                      gcc-riscv64-linux-gnu \
++                      libc6-dev:riscv64 \
++                      libfdt-dev:riscv64 \
++                      libffi-dev:riscv64 \
++                      libglib2.0-dev:riscv64 \
++                      libpixman-1-dev:riscv64 && \
++    eatmydata apt-get autoremove -y && \
++    eatmydata apt-get autoclean -y && \
++    mkdir -p /usr/local/share/meson/cross && \
++    printf "[binaries]\n\
++c = '/usr/bin/riscv64-linux-gnu-gcc'\n\
++ar = '/usr/bin/riscv64-linux-gnu-gcc-ar'\n\
++strip = '/usr/bin/riscv64-linux-gnu-strip'\n\
++pkgconfig = '/usr/bin/riscv64-linux-gnu-pkg-config'\n\
++\n\
++[host_machine]\n\
++system = 'linux'\n\
++cpu_family = 'riscv64'\n\
++cpu = 'riscv64'\n\
++endian = 'little'\n" > /usr/local/share/meson/cross/riscv64-linux-gnu && \
++    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt && \
++    mkdir -p /usr/libexec/ccache-wrappers && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-c++ && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-cc && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-g++ && \
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-gcc
+ 
+-# Specify the cross prefix for this image (see tests/docker/common.rc)
++ENV ABI "riscv64-linux-gnu"
++ENV MESON_OPTS "--cross-file=riscv64-linux-gnu"
+ ENV QEMU_CONFIGURE_OPTS --cross-prefix=riscv64-linux-gnu-
+ ENV DEF_TARGET_LIST riscv64-softmmu,riscv64-linux-user
+ # As a final step configure the user (if env is defined)
+diff --git a/tests/lcitool/projects/qemu-minimal.yml b/tests/lcitool/projects/qemu-minimal.yml
+index b60fec715c..d44737dc1d 100644
+--- a/tests/lcitool/projects/qemu-minimal.yml
++++ b/tests/lcitool/projects/qemu-minimal.yml
+@@ -4,6 +4,8 @@ packages:
+  - bash
+  - bc
+  - bison
++ - ccache
++ - findutils
+  - flex
   - g++
   - gcc
-+ - gcc-native
-  - gcovr
-  - gettext
-  - glib2
+@@ -21,3 +23,5 @@ packages:
+  - pkg-config
+  - python3
+  - python3-venv
++ - sed
++ - tar
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 5e06fb2cf5..b54566edcc 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -63,12 +63,12 @@ add_user_mapping = [
+     "  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi\n"
+ ]
+ 
+-def generate_dockerfile(host, target, cross=None, trailer=None):
++def generate_dockerfile(host, target, project="qemu", cross=None, trailer=None):
+     filename = Path(src_dir, "tests", "docker", "dockerfiles", host + ".docker")
+     cmd = lcitool_cmd + ["dockerfile"]
+     if cross is not None:
+         cmd.extend(["--cross", cross])
+-    cmd.extend([target, "qemu"])
++    cmd.extend([target, project])
+ 
+     if trailer is not None:
+         trailer += "\n".join(add_user_mapping)
+@@ -164,6 +164,12 @@ try:
+                         trailer=cross_build("powerpc64le-linux-gnu-",
+                                             "ppc64-softmmu,ppc64-linux-user"))
+ 
++    generate_dockerfile("debian-riscv64-cross", "debian-sid",
++                        project="qemu-minimal",
++                        cross="riscv64",
++                        trailer=cross_build("riscv64-linux-gnu-",
++                                            "riscv64-softmmu,riscv64-linux-user"))
++
+     generate_dockerfile("debian-s390x-cross", "debian-11",
+                         cross="s390x",
+                         trailer=cross_build("s390x-linux-gnu-",
 -- 
 2.39.2

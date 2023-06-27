@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id m21-20020a7bca55000000b003f4248dcfcbsm14145540wml.30.2023.06.27.09.07.01
+        by smtp.gmail.com with ESMTPSA id t12-20020a7bc3cc000000b003f604793989sm13855945wmj.18.2023.06.27.09.07.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:07:03 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5968A1FFC0;
+	by zen.linaroharston (Postfix) with ESMTP id BD5531FFBB;
 	Tue, 27 Jun 2023 17:07:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,62 +39,79 @@ Cc: qemu-arm@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v3 05/36] tests/tcg: add mechanism to handle plugin arguments
-Date: Tue, 27 Jun 2023 17:06:29 +0100
-Message-Id: <20230627160700.2955547-6-alex.bennee@linaro.org>
+Subject: [PATCH v3 09/36] tests/docker: add test-fuzz
+Date: Tue, 27 Jun 2023 17:06:33 +0100
+Message-Id: <20230627160700.2955547-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160700.2955547-1-alex.bennee@linaro.org>
 References: <20230627160700.2955547-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ewoELYGxs/Ir
+X-TUID: DRM+EKBKZ3JR
 
-We recently missed a regression that should have been picked up by
-check-tcg. This was because the libmem plugin is effectively a NOP if
-the user doesn't specify the type to use.
+Running the fuzzer requires some hoop jumping and some problems only
+show up in containers. This basically replicates the build-oss-fuzz
+job from our CI so we can run in the same containers we use in CI.
 
-Rather than changing the default behaviour add an additional expansion
-so we can take this into account in future.
-
-Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
+Message-Id: <20230626215926.2522656-10-alex.bennee@linaro.org>
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/Makefile.target | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 72876cc84e..2462c26000 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
- 
- RUN_TESTS+=$(EXTRA_RUNS)
- 
-+# Some plugins need additional arguments above the default to fully
-+# exercise things. We can define them on a per-test basis here.
-+run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
+---
+v3
+ - checkpatch cleanups
+---
+ MAINTAINERS            |  1 +
+ tests/docker/test-fuzz | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+)
+ create mode 100755 tests/docker/test-fuzz
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e07746ac7d..3cfc389db0 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3106,6 +3106,7 @@ R: Qiuhao Li <Qiuhao.Li@outlook.com>
+ S: Maintained
+ F: tests/qtest/fuzz/
+ F: tests/qtest/fuzz-*test.c
++F: tests/docker/test-fuzz
+ F: scripts/oss-fuzz/
+ F: hw/mem/sparse-mem.c
+ F: docs/devel/fuzzing.rst
+diff --git a/tests/docker/test-fuzz b/tests/docker/test-fuzz
+new file mode 100755
+index 0000000000..7e506ae1f6
+--- /dev/null
++++ b/tests/docker/test-fuzz
+@@ -0,0 +1,28 @@
++#!/bin/bash -e
++#
++# Compile and check with oss-fuzz.
++#
++# Copyright (c) 2023 Linaro Ltd.
++#
++# Authors:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-%: %
- 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 
- run-plugin-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 		-d plugin -D $*.pout \
- 		 $(call strip-plugin,$<))
- else
-@@ -189,7 +193,7 @@ run-plugin-%:
- 	$(call run-test, $@, \
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
--	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 	    	  -d plugin -D $*.pout \
- 		  $(QEMU_OPTS) $(call strip-plugin,$<))
- endif
++. common.rc
++
++requires_binary clang
++
++# the build script runs out of $src so we need to copy across
++cd "$BUILD_DIR"
++cp -a $QEMU_SRC .
++cd src
++mkdir build-oss-fuzz
++export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
++env CC="clang" CXX="clang++" CFLAGS="-fsanitize=address" ./scripts/oss-fuzz/build.sh
++export ASAN_OPTIONS="fast_unwind_on_malloc=0"
++for fuzzer in $(find ./build-oss-fuzz/DEST_DIR/ -executable -type f | grep -v slirp); do
++        grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
++        echo Testing ${fuzzer} ... ;
++        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
++done
 -- 
 2.39.2

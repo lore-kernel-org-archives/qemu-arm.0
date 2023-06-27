@@ -1,197 +1,247 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1431429ejx;
-        Tue, 27 Jun 2023 06:27:56 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ62kubodrN10bBVJE5dxXK8jhawXLC/vRFjsF9OL4Ft5H1u1EYp0nkC4xHsIUEmzqhfl1vz
-X-Received: by 2002:a05:622a:184:b0:3fd:d53a:2cdc with SMTP id s4-20020a05622a018400b003fdd53a2cdcmr40147290qtw.31.1687872476014;
-        Tue, 27 Jun 2023 06:27:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687872476; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1453309ejx;
+        Tue, 27 Jun 2023 07:09:35 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4/oh7GSFvvz5/9Qt9YgkvirtyXRnJvaF4YP3Dn9nClfdel+FhXYysKN8N243dyFMI4cSlz
+X-Received: by 2002:a05:6214:3015:b0:635:e796:f707 with SMTP id ke21-20020a056214301500b00635e796f707mr4387619qvb.19.1687874974749;
+        Tue, 27 Jun 2023 07:09:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687874974; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hr85Xp6IBufzKLc8BknUcaY7hNEwJ8e6ixUfPWWzEmigrZE4HKWnO/huHlGjb2qZzx
-         MfZyD/yXtNRhxIEA5v78vIzlWHdbIyvW88X5ZrxIhEj6kgIq5GfJTG2ksjdlXHXQsqVr
-         hqjqbM3p+izjOm53RWV2upVDzJmS6DVw7MVol4XcLsPpq+7aNsrnI8kZF9lU5YHv2YFR
-         Q7J9kKSWlj4u3Vci+NSQgax3n7BIVKYi1hxg17fhbDgvl2T6BGOG5eR7VfpYqzl6VnLN
-         PpduKzVd0la4H/2JMH3xlJG6bbe30nz0tmeFaVwE/ahWCugqd5tJ2ol2eokPQlgMQKwG
-         cCcw==
+        b=q+TGnAsv0l4ZldV+hpBtGrutagmv76I8HxW83cEIvFY+YWzRm9ntxPF5f4BVkOFHBD
+         shKqHFLiLQ1GNM+RyaT1pj1G0umWjkGbp1e9psKj70Tco0LLS0iQvBrfDE6u3JmSydKF
+         0R6H5JHXePONRIgiURocdn0tLIo9SOYDfqmQz/EhzAT75rVfyiCbq1liuw2PvWxelsGX
+         JeLVOqvZGYw/ukbmnZ6ft8M6XRwMFDew/OyBgQQpZRfsUD0B7KruhrxwmsSM6KDaaYpN
+         wCfWH4ZRfjDFXRSubqv9eWOytPcx/WKa/aLGN0cj1GA7UfSmzFtu+8VK4n/dturLbOTM
+         slGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=rhb34US/1lRYqkodFSuCtYHiQR/FRAfKBgB3zQh1JLM=;
-        fh=KBlgtE3ERa0ZUYgqV31WqhalP1RAhAFOCovn4+lLDmk=;
-        b=sGE0MnlElv0SQUevrA8weYzWOk058To6UvkI5MXVZ8JLJDG8RBPGGX/3Ue88e89+bn
-         LeKRFGHsq0WFJ7mXtmI3CvV5bqpmvpj0X3MuMKUkeXVdWvvVkaA21T4L8oc5gWkc07JG
-         zYwtM1hwi6hgvXgIgusVCxViX8+lJTkQa3ByziYl+J5TLSpibfwPFGND31043M+uTpkl
-         dwBF8icstgMV9BU+3NTPEIxyAr/miXq5QD9916APzxXTfVIr7QwVUw5yxG8jDqic+8yV
-         5NJdv8/kZN9HZoKhhaCC34cUtKhb5huJ1dDgKc0aGt0sj3+h18bkNK1+RUAGJQ3j70Uo
-         1H2A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=3HQpuaHA0YzORmVMVQEZOPMNbUH11gGX8DWcXtX+zDk=;
+        fh=MlEuZ6Z7NRXV7Fo71eu+rWdtjt4EJO6NDQkxG8geMOk=;
+        b=VkBAqidyWjWx/Um/szD/ztcUtuinIkEz8CO5haekdKN6w63odOO1osJT/lLST7A1yA
+         iiIOYTyayoix/gIY7jiVSebjTgeHHgrfIEKzcu8yXrc18WUlpTDYK8yhyHndfBX0oQjU
+         XTuax5ACEtJGBYosf9CozpKg7gK+hzynsbZvJq3cQUewMA0HvINBpAM2cD+4YKL5alNY
+         hiIGaA64RnTGoVB4zYUlC0cBCg6KUepQW7C/7/svHpbEPyQrnwSJmnIR9Q5+Og9+uceJ
+         QijgEetnClfbQgRFANB73Vrj5+Tbg4SKsf46Z9t7x/13zHPy3h1Byfs51SAnlpvljzHc
+         TPWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SC2y8OUA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=fgf9LA+E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11-20020ac85ccb000000b003f1f84728e2si2951510qta.788.2023.06.27.06.27.55
+        by mx.google.com with ESMTPS id s1-20020a05620a29c100b0075cf2b02883si1522740qkp.572.2023.06.27.07.09.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jun 2023 06:27:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Jun 2023 07:09:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SC2y8OUA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=fgf9LA+E;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qE8jS-0006G0-Sn; Tue, 27 Jun 2023 09:27:46 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qE9Nk-0005tB-0R; Tue, 27 Jun 2023 10:09:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE8jQ-0006EA-8X
- for qemu-devel@nongnu.org; Tue, 27 Jun 2023 09:27:44 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE8jN-0004gP-Rj
- for qemu-devel@nongnu.org; Tue, 27 Jun 2023 09:27:43 -0400
-Received: by mail-lf1-x130.google.com with SMTP id
- 2adb3069b0e04-4f9fdb0ef35so4302927e87.0
- for <qemu-devel@nongnu.org>; Tue, 27 Jun 2023 06:27:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687872460; x=1690464460;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=rhb34US/1lRYqkodFSuCtYHiQR/FRAfKBgB3zQh1JLM=;
- b=SC2y8OUAU/P7NmBHj05K/obwnrzJztdTLGS37CcE2TZHEVp2ss4GiXvKGa2Z65yxMD
- SU/khviMeUrGr442hstiY/tUtTZBJEbE4BaSq29RfW5kT3+zL0CRTwY4kJR1sAIc8nES
- HQPGtNL8VmhbnbHrSK8h/MuaukVfoMQcsUwk2SgXB38KuAlPLQxECrdAhJccaV5pLxM3
- pyQERu9wj68ilHZc2hOTsxYNZiMrB8nyV8lgF76bK8qbQoF/B/TuIRbz8gNEzvIR7tIN
- fIWKtmD06YrOxBDERVgt1pbAPjpKUpdPPur9QCM8wR3LRBfyIn06b/uarcz0CfsEhiNW
- ov4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687872460; x=1690464460;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=rhb34US/1lRYqkodFSuCtYHiQR/FRAfKBgB3zQh1JLM=;
- b=WpUsBhdwW+aeicxuGB3rbRxyEWb++S9p8gHoEGjMWELSQPXFj4EdyxwL+6PPh5bL5Y
- 65LstlkCaueJEBRPFhf+VpStUFbuSOye/bzTgp41c8U+FHR9EzOT+1ofrIr4EpoLEEiS
- UanUoYdWRtoDbtF9U4YTw4GIgzj625iGM9yOKt+Dmjf5db1YL5WluEj0To4rWmheY+7/
- OYy6GDF7TjiH9eoMNctuILNKTgMzVCB0h4Iu8/6Qm3+h/p4V01uwy1D2HDr/8zMkQSqy
- AlJYXnEfDhNgTy6kFRwaVjSyrRzEsrJ+LwrkkHpdM8sGxo4Rgoc9IB7RROWhFrpi6WkP
- FLbg==
-X-Gm-Message-State: AC+VfDzNJd66fAf+zn+PKiz5xjjWHGe+aBvsYDobGds5NaOUWbTPFGAI
- 0KrB7r7j/Owx7PsN6iB4cpg4/YBvqHexudeHayiz9w==
-X-Received: by 2002:a05:6512:224c:b0:4fa:f79f:85a with SMTP id
- i12-20020a056512224c00b004faf79f085amr4652348lfu.69.1687872459887; Tue, 27
- Jun 2023 06:27:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qE9Na-0005s6-2F; Tue, 27 Jun 2023 10:09:14 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qE9NY-0006PI-1t; Tue, 27 Jun 2023 10:09:13 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 35R6HqBV019157; Tue, 27 Jun 2023 14:09:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=3HQpuaHA0YzORmVMVQEZOPMNbUH11gGX8DWcXtX+zDk=;
+ b=fgf9LA+EksEXUFDy4Qa4jhX7X6Mrl8h+z4y05qqGpBBIeprR8XQMpyksd47M8QxyhmSG
+ zAqs0GYLXD+gsjaIQWB3WuxX0SOcvToM8VjtyB0HNKY2FEftgy0u3/6JpU1gUccrpQfD
+ J2R9qz+A0rfL3AMXPK5Lumt72+RLx7S9gegNPcy4xG8rCr3h4cbIF1zQAg6BfNsOtuFq
+ syNrpUx8k1lKk/PgS9PMFDL8SHOOC+ztNKYbSNgKxBn6lSDyrHME7BVoKCxi0yFDkAR7
+ qWpToZRdwA5j0vwjiZaQp0EUcHkiYlpEHtM+xa2iNqiRAGW+1Xnl3O9BznAFTGOi7Wuh xg== 
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rfbfcaqme-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Jun 2023 14:09:08 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 35RE97Ql017521
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Jun 2023 14:09:07 GMT
+Received: from [10.111.135.140] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Tue, 27 Jun
+ 2023 07:09:06 -0700
+Message-ID: <d8e93b7b-5e86-5e26-21cd-fefb76f88204@quicinc.com>
+Date: Tue, 27 Jun 2023 15:09:03 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ <qemu-devel@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ <qemu-arm@nongnu.org>
 References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
  <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
  <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
-In-Reply-To: <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Jun 2023 14:27:29 +0100
-Message-ID: <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
-To: Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org, 
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: yt0qlR_X4M0iQdUrWu-mfUHcdqLD1WfE
+X-Proofpoint-GUID: yt0qlR_X4M0iQdUrWu-mfUHcdqLD1WfE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-06-27_09,2023-06-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ spamscore=0 impostorscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999
+ phishscore=0 clxscore=1015 bulkscore=0 lowpriorityscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2305260000 definitions=main-2306270130
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.103,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wRpIAZ+49jUD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +EyaYEgqShdQ
 
-On Tue, 27 Jun 2023 at 13:52, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
->
-> On 2023-06-27 13:12, Peter Maydell wrote:
-> > On Mon, 26 Jun 2023 at 08:52, Marcin Juszkiewicz
-> > <marcin.juszkiewicz@linaro.org> wrote:
-> >>
-> >> Add PCI Express information into DeviceTree as part of SBSA-REF
-> >> versioning.
-> >>
-> >> Trusted Firmware will read it and provide to next firmware level.
-> >>
-> >> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> >> ---
-> >>   hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
-> >>   1 file changed, 20 insertions(+)
-> >>
-> >> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> >> index 0639f97dd5..b87d2ee3b2 100644
-> >> --- a/hw/arm/sbsa-ref.c
-> >> +++ b/hw/arm/sbsa-ref.c
-> >> @@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-> >>       return arm_cpu_mp_affinity(idx, clustersz);
-> >>   }
-> >>
-> >> +static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
-> >> +{
-> >> +    char *nodename;
-> >> +
-> >> +    nodename = g_strdup_printf("/pcie");
-> >> +    qemu_fdt_add_subnode(sms->fdt, nodename);
-> >> +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
-> >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
-> >> +
-> >> +    g_free(nodename);
-> >
-> >
-> > Why do we need to do this? The firmware should just
-> > know exactly where the PCIE windows are, the same way
-> > it knows where the flash, the UART, the RTC etc etc
-> > all are in the memory map.
->
-> That is not automatically true (it was not for at least one SoC I have
-> worked on). In a real system which had these dynamically decided, some
-> coprocessor would program the CMN to route these address ranges to
-> certain offsets within certain components, and that same coprocessor
-> could then provide a mechanism for how TF-A could discover these and
-> provide it to later-stage firmware via SiP SMC calls.
->
-> Sticking the information in the DT lets us emulate this without actually
-> emulating the CMN and the coprocessor, and prototype (and verify) the
-> same firmware interfaces for developing i.e. edk2 support.
+On 2023-06-27 14:27, Peter Maydell wrote:
+> On Tue, 27 Jun 2023 at 13:52, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
+>>
+>> On 2023-06-27 13:12, Peter Maydell wrote:
+>>> On Mon, 26 Jun 2023 at 08:52, Marcin Juszkiewicz
+>>> <marcin.juszkiewicz@linaro.org> wrote:
+>>>>
+>>>> Add PCI Express information into DeviceTree as part of SBSA-REF
+>>>> versioning.
+>>>>
+>>>> Trusted Firmware will read it and provide to next firmware level.
+>>>>
+>>>> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+>>>> ---
+>>>>    hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
+>>>>    1 file changed, 20 insertions(+)
+>>>>
+>>>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+>>>> index 0639f97dd5..b87d2ee3b2 100644
+>>>> --- a/hw/arm/sbsa-ref.c
+>>>> +++ b/hw/arm/sbsa-ref.c
+>>>> @@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+>>>>        return arm_cpu_mp_affinity(idx, clustersz);
+>>>>    }
+>>>>
+>>>> +static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
+>>>> +{
+>>>> +    char *nodename;
+>>>> +
+>>>> +    nodename = g_strdup_printf("/pcie");
+>>>> +    qemu_fdt_add_subnode(sms->fdt, nodename);
+>>>> +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
+>>>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
+>>>> +
+>>>> +    g_free(nodename);
+>>>
+>>>
+>>> Why do we need to do this? The firmware should just
+>>> know exactly where the PCIE windows are, the same way
+>>> it knows where the flash, the UART, the RTC etc etc
+>>> all are in the memory map.
+>>
+>> That is not automatically true (it was not for at least one SoC I have
+>> worked on). In a real system which had these dynamically decided, some
+>> coprocessor would program the CMN to route these address ranges to
+>> certain offsets within certain components, and that same coprocessor
+>> could then provide a mechanism for how TF-A could discover these and
+>> provide it to later-stage firmware via SiP SMC calls.
+>>
+>> Sticking the information in the DT lets us emulate this without actually
+>> emulating the CMN and the coprocessor, and prototype (and verify) the
+>> same firmware interfaces for developing i.e. edk2 support.
+> 
+> OK. This is the kind of rationale that needs to be described
+> in the commit message and comments, though, so it's clear
+> why the PCI controller is special in this way.
 
-OK. This is the kind of rationale that needs to be described
-in the commit message and comments, though, so it's clear
-why the PCI controller is special in this way.
+I mean, ultimately it's not. We've kept static mappings for the items 
+that it wouldn't really provide any additional benefit anywhere to be 
+able to shuffle around. (Which failed with EHCI.)
+Having the UART static has minor debug advantages. Everything else is 
+static because it's poor return on investment (it doesn't let us test 
+anything interesting in the firmware stacks) to make them dynamic.
 
-What I'm trying to avoid here is that we start off saying
-"the dtb we pass to the firmware is just a convenient format
-for passing a tiny amount of information to it" and then
-gradually add more and more stuff to it until we've backed
-ourselves into "actually it's almost a complete dtb except
-it's not compliant with the spec". That means there needs
-to be a clear rationale for what is in the dtb versus
-what is "the firmware knows what hardware it runs on".
+> What I'm trying to avoid here is that we start off saying
+> "the dtb we pass to the firmware is just a convenient format
+> for passing a tiny amount of information to it" and then
+> gradually add more and more stuff to it until we've backed
+> ourselves into "actually it's almost a complete dtb except
+> it's not compliant with the spec". That means there needs
+> to be a clear rationale for what is in the dtb versus
+> what is "the firmware knows what hardware it runs on".
 
-thanks
--- PMM
+Yet again I find myself wishing I'd invented a custom format instead of 
+using a DT to pass the information across. And I'm not even being sarky 
+- it keeps confusing people, and across multiple projects we're being 
+asked to repeatedly justify why we're not conforming to bindings that 
+are not designed for what we want to do, when we only opted to use an 
+existing storage format in order to maximise code reuse.
+
+The purpose of the DT in this platform is to pass information about the 
+machine configuration to the highest-level firmware that in real 
+hardware it would have means of determining programmatically *handwavy* 
+"in other ways", so that that higher-level firmware can abstract the 
+information away behind SMC calls that lower levels of firmware can 
+access throug into reusable libraries that will also be useful for 
+actual hardware platforms.
+*and* let us wiggle things around to try to shake out bugs in those (and 
+other) firmware components.
+
+Serious question: would it be preferable if we moved to a custom DT node 
+where we stick everything in as KEY=VALUE pairs to reduce this confusion?
+
+The end goal at some point in the future is to add an (emulated or 
+co-emulated) SCP that can provide us with this information, at which 
+point the (not a linux bindings)DT can simply go away forever.
+
+/
+     Leif
+

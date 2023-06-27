@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f4-20020a0560001b0400b00307a86a4bcesm10877402wrz.35.2023.06.27.09.09.45
+        by smtp.gmail.com with ESMTPSA id hn10-20020a05600ca38a00b003fba586100fsm2240688wmb.6.2023.06.27.09.09.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:09:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7269F1FFC1;
-	Tue, 27 Jun 2023 17:09:44 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 3C0D31FFC6;
+	Tue, 27 Jun 2023 17:09:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -38,63 +38,114 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 05/36] tests/tcg: add mechanism to handle plugin arguments
-Date: Tue, 27 Jun 2023 17:09:12 +0100
-Message-Id: <20230627160943.2956928-6-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Erik Skultety <eskultet@redhat.com>
+Subject: [PATCH v3 12/36] tests/lcitool: Bump fedora container versions
+Date: Tue, 27 Jun 2023 17:09:19 +0100
+Message-Id: <20230627160943.2956928-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: wChErrCXhYCE
+X-TUID: uOYW8xCaWeWW
 
-We recently missed a regression that should have been picked up by
-check-tcg. This was because the libmem plugin is effectively a NOP if
-the user doesn't specify the type to use.
+From: Erik Skultety <eskultet@redhat.com>
 
-Rather than changing the default behaviour add an additional expansion
-so we can take this into account in future.
+Fedora 37 -> 38
 
-Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
+Signed-off-by: Erik Skultety <eskultet@redhat.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-14-alex.bennee@linaro.org>
+Message-Id: <c9b00e573a7a80fc6ce5c68595382f5c916a9195.1685528076.git.eskultet@redhat.com>
+[AJB: Dropped alpine (in prev commit), reflow commit msg]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/Makefile.target | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ tests/docker/dockerfiles/fedora-win32-cross.docker | 4 ++--
+ tests/docker/dockerfiles/fedora-win64-cross.docker | 4 ++--
+ tests/docker/dockerfiles/fedora.docker             | 4 ++--
+ tests/lcitool/refresh                              | 6 +++---
+ 4 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 72876cc84e..2462c26000 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
+diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
+index dc72ae9cc9..a0a3cd9e5b 100644
+--- a/tests/docker/dockerfiles/fedora-win32-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all --cross mingw32 fedora-37 qemu
++#  $ lcitool dockerfile --layers all --cross mingw32 fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
- RUN_TESTS+=$(EXTRA_RUNS)
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
  
-+# Some plugins need additional arguments above the default to fully
-+# exercise things. We can define them on a per-test basis here.
-+run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
-+
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-%: %
- 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index 7eb4a5dba2..b6c1a6a339 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all --cross mingw64 fedora-37 qemu
++#  $ lcitool dockerfile --layers all --cross mingw64 fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
- run-plugin-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 		-d plugin -D $*.pout \
- 		 $(call strip-plugin,$<))
- else
-@@ -189,7 +193,7 @@ run-plugin-%:
- 	$(call run-test, $@, \
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
--	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 	    	  -d plugin -D $*.pout \
- 		  $(QEMU_OPTS) $(call strip-plugin,$<))
- endif
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
+ 
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+index 3a69eefdda..8a35a17617 100644
+--- a/tests/docker/dockerfiles/fedora.docker
++++ b/tests/docker/dockerfiles/fedora.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all fedora-37 qemu
++#  $ lcitool dockerfile --layers all fedora-38 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
+ 
+-FROM registry.fedoraproject.org/fedora:37
++FROM registry.fedoraproject.org/fedora:38
+ 
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 5d36a62b10..5e06fb2cf5 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -119,7 +119,7 @@ try:
+     generate_dockerfile("centos8", "centos-stream-8")
+     generate_dockerfile("debian-amd64", "debian-11",
+                         trailer="".join(debian11_extras))
+-    generate_dockerfile("fedora", "fedora-37")
++    generate_dockerfile("fedora", "fedora-38")
+     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
+     generate_dockerfile("ubuntu2004", "ubuntu-2004")
+     generate_dockerfile("ubuntu2204", "ubuntu-2204")
+@@ -169,12 +169,12 @@ try:
+                         trailer=cross_build("s390x-linux-gnu-",
+                                             "s390x-softmmu,s390x-linux-user"))
+ 
+-    generate_dockerfile("fedora-win32-cross", "fedora-37",
++    generate_dockerfile("fedora-win32-cross", "fedora-38",
+                         cross="mingw32",
+                         trailer=cross_build("i686-w64-mingw32-",
+                                             "i386-softmmu"))
+ 
+-    generate_dockerfile("fedora-win64-cross", "fedora-37",
++    generate_dockerfile("fedora-win64-cross", "fedora-38",
+                         cross="mingw64",
+                         trailer=cross_build("x86_64-w64-mingw32-",
+                                             "x86_64-softmmu"))
 -- 
 2.39.2

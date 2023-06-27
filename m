@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t12-20020a7bc3cc000000b003f604793989sm13855945wmj.18.2023.06.27.09.07.02
+        by smtp.gmail.com with ESMTPSA id da16-20020a056000197000b0031274a184d5sm10900882wrb.109.2023.06.27.09.07.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:07:03 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BD5531FFBB;
+	by zen.linaroharston (Postfix) with ESMTP id D74361FFC4;
 	Tue, 27 Jun 2023 17:07:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,79 +39,39 @@ Cc: qemu-arm@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v3 09/36] tests/docker: add test-fuzz
-Date: Tue, 27 Jun 2023 17:06:33 +0100
-Message-Id: <20230627160700.2955547-10-alex.bennee@linaro.org>
+Subject: [PATCH v3 10/36] Makefile: add lcitool-refresh to UNCHECKED_GOALS
+Date: Tue, 27 Jun 2023 17:06:34 +0100
+Message-Id: <20230627160700.2955547-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160700.2955547-1-alex.bennee@linaro.org>
 References: <20230627160700.2955547-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: DRM+EKBKZ3JR
+X-TUID: PcatXw+iho4Y
 
-Running the fuzzer requires some hoop jumping and some problems only
-show up in containers. This basically replicates the build-oss-fuzz
-job from our CI so we can run in the same containers we use in CI.
+This is yet another make target you usually run in the top level of
+the source directory.
 
-Message-Id: <20230626215926.2522656-10-alex.bennee@linaro.org>
-Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+Message-Id: <20230623122100.1640995-12-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
- - checkpatch cleanups
----
- MAINTAINERS            |  1 +
- tests/docker/test-fuzz | 28 ++++++++++++++++++++++++++++
- 2 files changed, 29 insertions(+)
- create mode 100755 tests/docker/test-fuzz
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e07746ac7d..3cfc389db0 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3106,6 +3106,7 @@ R: Qiuhao Li <Qiuhao.Li@outlook.com>
- S: Maintained
- F: tests/qtest/fuzz/
- F: tests/qtest/fuzz-*test.c
-+F: tests/docker/test-fuzz
- F: scripts/oss-fuzz/
- F: hw/mem/sparse-mem.c
- F: docs/devel/fuzzing.rst
-diff --git a/tests/docker/test-fuzz b/tests/docker/test-fuzz
-new file mode 100755
-index 0000000000..7e506ae1f6
---- /dev/null
-+++ b/tests/docker/test-fuzz
-@@ -0,0 +1,28 @@
-+#!/bin/bash -e
-+#
-+# Compile and check with oss-fuzz.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Authors:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+. common.rc
-+
-+requires_binary clang
-+
-+# the build script runs out of $src so we need to copy across
-+cd "$BUILD_DIR"
-+cp -a $QEMU_SRC .
-+cd src
-+mkdir build-oss-fuzz
-+export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
-+env CC="clang" CXX="clang++" CFLAGS="-fsanitize=address" ./scripts/oss-fuzz/build.sh
-+export ASAN_OPTIONS="fast_unwind_on_malloc=0"
-+for fuzzer in $(find ./build-oss-fuzz/DEST_DIR/ -executable -type f | grep -v slirp); do
-+        grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
-+        echo Testing ${fuzzer} ... ;
-+        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
-+done
+diff --git a/Makefile b/Makefile
+index 804a5681e0..5d48dfac18 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ quiet-command = $(quiet-@)$(call quiet-command-run,$1,$2,$3)
+ 
+ UNCHECKED_GOALS := TAGS gtags cscope ctags dist \
+     help check-help print-% \
+-    docker docker-% vm-help vm-test vm-build-%
++    docker docker-% lcitool-refresh vm-help vm-test vm-build-%
+ 
+ all:
+ .PHONY: all clean distclean recurse-all dist msi FORCE
 -- 
 2.39.2

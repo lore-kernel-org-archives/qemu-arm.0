@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id hn10-20020a05600ca38a00b003fba586100fsm2240688wmb.6.2023.06.27.09.09.45
+        by smtp.gmail.com with ESMTPSA id g6-20020a5d6986000000b003047dc162f7sm10825408wru.67.2023.06.27.09.09.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:09:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3C0D31FFC6;
+	by zen.linaroharston (Postfix) with ESMTP id 1B9931FFBD;
 	Tue, 27 Jun 2023 17:09:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,114 +38,67 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Erik Skultety <eskultet@redhat.com>
-Subject: [PATCH v3 12/36] tests/lcitool: Bump fedora container versions
-Date: Tue, 27 Jun 2023 17:09:19 +0100
-Message-Id: <20230627160943.2956928-13-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 11/36] tests/lcitool: update to latest version
+Date: Tue, 27 Jun 2023 17:09:18 +0100
+Message-Id: <20230627160943.2956928-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: uOYW8xCaWeWW
+X-TUID: vRVCJS1iVPFC
 
-From: Erik Skultety <eskultet@redhat.com>
+We need this for the riscv64 and gcc-native mappings. As the older
+alpine release has been dropped from the mappings we also need to bump
+the version of alpine we use.
 
-Fedora 37 -> 38
-
-Signed-off-by: Erik Skultety <eskultet@redhat.com>
+Message-Id: <20230623122100.1640995-13-alex.bennee@linaro.org>
 Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230623122100.1640995-14-alex.bennee@linaro.org>
-Message-Id: <c9b00e573a7a80fc6ce5c68595382f5c916a9195.1685528076.git.eskultet@redhat.com>
-[AJB: Dropped alpine (in prev commit), reflow commit msg]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/fedora-win32-cross.docker | 4 ++--
- tests/docker/dockerfiles/fedora-win64-cross.docker | 4 ++--
- tests/docker/dockerfiles/fedora.docker             | 4 ++--
- tests/lcitool/refresh                              | 6 +++---
- 4 files changed, 9 insertions(+), 9 deletions(-)
+ tests/docker/dockerfiles/alpine.docker | 4 ++--
+ tests/lcitool/libvirt-ci               | 2 +-
+ tests/lcitool/refresh                  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
-index dc72ae9cc9..a0a3cd9e5b 100644
---- a/tests/docker/dockerfiles/fedora-win32-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
+diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
+index 0097637dca..43370f7b36 100644
+--- a/tests/docker/dockerfiles/alpine.docker
++++ b/tests/docker/dockerfiles/alpine.docker
 @@ -1,10 +1,10 @@
  # THIS FILE WAS AUTO-GENERATED
  #
--#  $ lcitool dockerfile --layers all --cross mingw32 fedora-37 qemu
-+#  $ lcitool dockerfile --layers all --cross mingw32 fedora-38 qemu
+-#  $ lcitool dockerfile --layers all alpine-316 qemu
++#  $ lcitool dockerfile --layers all alpine-318 qemu
  #
  # https://gitlab.com/libvirt/libvirt-ci
  
--FROM registry.fedoraproject.org/fedora:37
-+FROM registry.fedoraproject.org/fedora:38
+-FROM docker.io/library/alpine:3.16
++FROM docker.io/library/alpine:3.18
  
- RUN dnf install -y nosync && \
-     printf '#!/bin/sh\n\
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index 7eb4a5dba2..b6c1a6a339 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross mingw64 fedora-37 qemu
-+#  $ lcitool dockerfile --layers all --cross mingw64 fedora-38 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
- 
--FROM registry.fedoraproject.org/fedora:37
-+FROM registry.fedoraproject.org/fedora:38
- 
- RUN dnf install -y nosync && \
-     printf '#!/bin/sh\n\
-diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index 3a69eefdda..8a35a17617 100644
---- a/tests/docker/dockerfiles/fedora.docker
-+++ b/tests/docker/dockerfiles/fedora.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all fedora-37 qemu
-+#  $ lcitool dockerfile --layers all fedora-38 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
- 
--FROM registry.fedoraproject.org/fedora:37
-+FROM registry.fedoraproject.org/fedora:38
- 
- RUN dnf install -y nosync && \
-     printf '#!/bin/sh\n\
+ RUN apk update && \
+     apk upgrade && \
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index c8971e90ac..b0f44f929a 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit c8971e90ac169ee2b539c747f74d96c876debdf9
++Subproject commit b0f44f929a81c0a604fb7fbf8afc34d37ab0eae9
 diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 5d36a62b10..5e06fb2cf5 100755
+index f1570b54df..5d36a62b10 100755
 --- a/tests/lcitool/refresh
 +++ b/tests/lcitool/refresh
-@@ -119,7 +119,7 @@ try:
+@@ -115,7 +115,7 @@ try:
+     #
+     # Standard native builds
+     #
+-    generate_dockerfile("alpine", "alpine-316")
++    generate_dockerfile("alpine", "alpine-318")
      generate_dockerfile("centos8", "centos-stream-8")
      generate_dockerfile("debian-amd64", "debian-11",
                          trailer="".join(debian11_extras))
--    generate_dockerfile("fedora", "fedora-37")
-+    generate_dockerfile("fedora", "fedora-38")
-     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
-     generate_dockerfile("ubuntu2004", "ubuntu-2004")
-     generate_dockerfile("ubuntu2204", "ubuntu-2204")
-@@ -169,12 +169,12 @@ try:
-                         trailer=cross_build("s390x-linux-gnu-",
-                                             "s390x-softmmu,s390x-linux-user"))
- 
--    generate_dockerfile("fedora-win32-cross", "fedora-37",
-+    generate_dockerfile("fedora-win32-cross", "fedora-38",
-                         cross="mingw32",
-                         trailer=cross_build("i686-w64-mingw32-",
-                                             "i386-softmmu"))
- 
--    generate_dockerfile("fedora-win64-cross", "fedora-37",
-+    generate_dockerfile("fedora-win64-cross", "fedora-38",
-                         cross="mingw64",
-                         trailer=cross_build("x86_64-w64-mingw32-",
-                                             "x86_64-softmmu"))
 -- 
 2.39.2

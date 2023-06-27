@@ -1,236 +1,202 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id h10-20020a5d504a000000b00313e8dc7facsm6692504wrt.116.2023.06.26.15.15.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jun 2023 15:15:48 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E0ECD1FFC9;
-	Mon, 26 Jun 2023 22:59:28 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Alexander Bulekov <alxndr@bu.edu>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Juan Quintela <quintela@redhat.com>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Bandan Das <bsd@redhat.com>,
-	Leonardo Bras <leobras@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Beraldo Leal <bleal@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Bin Meng <bmeng.cn@gmail.com>,
-	qemu-arm@nongnu.org,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Darren Kenny <darren.kenny@oracle.com>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Qiuhao Li <Qiuhao.Li@outlook.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Robert Henry <robhenry@microsoft.com>,
-	Aaron Lindsay <aaron@os.amperecomputing.com>
-Subject: [PATCH v2 17/26] plugins: force slow path when plugins instrument memory ops
-Date: Mon, 26 Jun 2023 22:59:17 +0100
-Message-Id: <20230626215926.2522656-18-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230626215926.2522656-1-alex.bennee@linaro.org>
-References: <20230626215926.2522656-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1209919ejx;
+        Mon, 26 Jun 2023 19:35:17 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7zDAQE3D1djKFoYLJgu2JZDCIT5ilWF7VsbFVVywa7wElbQHHcOUwOyJw7BHu7MK3Oa62o
+X-Received: by 2002:a05:620a:1992:b0:765:44c2:826d with SMTP id bm18-20020a05620a199200b0076544c2826dmr14456647qkb.27.1687833316860;
+        Mon, 26 Jun 2023 19:35:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687833316; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0LS4GvCyTsQXX3Yg1Jj/Mfi8KtfmZEdRnC7ciMzM662Nu1qE4RtJvp157rhxogwRZM
+         8nu2bk5d7C6mIU8GKY/UCrfJS0q/vkZHPvhyfsQUkmmnLGsslEV6UaWpPf91jV4H63dg
+         tECeLWydZpzKxJY0h/ps/cfpwp+h3YCJZubvz8RQOYxGA8TnwmBKp8ynN0jaUNubx9Bs
+         c+U7utsyPPPeqvPLVZW1TocW2JefeZZSJgAevjm3Gln3gccSMRWkfXuN6nt04uQZsgSN
+         1mviQ0eUIBXFhNCQQE4oNyMtnseIjxpLcX950Nj3bajgBOuJ1/jZ7yrGJ+Etiek4OH3c
+         aSpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=wu4+qGRzze9rNAF/oBI8QT0UDNN6zhdjUkN+ApOnm6A=;
+        fh=p01iR0kXXdHzswPfYtCM/PuHg1+ebGVnt+Xmrsr4zF8=;
+        b=rLNVgofcLOAHMNixV/gL0+9zPPWRkw+vX7hawr42nRHRCdISesYMEEJ6TWjO9wl3Gf
+         RqJPnHTnsry5/cPPcDh6xQrWzRoAgnW2KDBLytJTEfU43SkK93s7UbOhSGxRklFczd42
+         ss5S+xjR9PXep4vJxMmeEfqLxVAWsMZJLkcmYGRHaRK2CtysO7Hiemxy88Ep9iXbYhug
+         km6bKc4MbakEVqZEzI0DmBbbOeWo3xlIoCG0uA57/KIKCoiIqGQDoY8oYPUHyhkSFgh+
+         fyVvNpp1OMHzXqJTRMiG6VwrG6GgqPkecBhiRCn5NjjK9wZMy85p01xWAsl61YOHcSa6
+         HNfQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=diPK0sLa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x1-20020a05620a098100b00757937fa64csi1496405qkx.484.2023.06.26.19.35.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 26 Jun 2023 19:35:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=diPK0sLa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qDyXc-0007mg-LU; Mon, 26 Jun 2023 22:34:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1qDyXb-0007mW-Vx
+ for qemu-arm@nongnu.org; Mon, 26 Jun 2023 22:34:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shahuang@redhat.com>)
+ id 1qDyXY-0006Wn-3K
+ for qemu-arm@nongnu.org; Mon, 26 Jun 2023 22:34:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1687833286;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wu4+qGRzze9rNAF/oBI8QT0UDNN6zhdjUkN+ApOnm6A=;
+ b=diPK0sLaaHDRRYanSh97rOS5rI9AdlEnFRSqYMaxE670rAxh7DVe5QFFwqI2/O93tsIf73
+ fkeYuJ51F3Ty2e9kX1TGqShbEvKJKP0E+890HWAUD4A5pI9KPQKHUuxiF/+/0o7h0E1tRO
+ 3Pa9AoUJaHZozVK/yLNXWdGe53Jegm0=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-384-MKB-ZBS0Nh-E51JtkfCy8g-1; Mon, 26 Jun 2023 22:34:42 -0400
+X-MC-Unique: MKB-ZBS0Nh-E51JtkfCy8g-1
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-1b80c4ca6c5so1278595ad.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Jun 2023 19:34:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687833281; x=1690425281;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wu4+qGRzze9rNAF/oBI8QT0UDNN6zhdjUkN+ApOnm6A=;
+ b=k9yd395scsfsIvlbejqwzu1716R8sazOFBnmQKXeWyVwZMMgDwBrVLoAZgnpQ9RXbL
+ Hawp8DbphNE921YBosrbpoRTGrR6051aK/GbugTAFfLGc6KBp2QG2SJSmc8dJAyNSsEl
+ UvWhP2t+5Ni+pU6LMYjgcgRloEbDe/z3usFwXnUBjz+aIxpSVz/OGnBYuKEiqvMTjMda
+ piLL9Uddgk0yp3LmQgvr3+o9uiIfGdSfuA5v4b7/JeXT17lls3KR7BRXKQnqVB6uacAU
+ gi7EzUqy7cgYNmVYKzSrv0QO7MYMu7LRPRsmgtE6n9wpQBYg1y941RrczZejucSJ38ys
+ Hd8Q==
+X-Gm-Message-State: AC+VfDyggm1NBKfReRVUsJgjFVTG0gFRtQj7UkGO5/7m60/Rf+x+Rne7
+ 5ZsjwiYaz07lMHRwcwMUZJJQL5BLB1h5lIGjFhgLifrP9VLr3GvxDv5HuOUATzUrl7oKjGqAYoh
+ T/gZ0rglFrlhK
+X-Received: by 2002:a17:903:1ca:b0:1b5:32ec:df97 with SMTP id
+ e10-20020a17090301ca00b001b532ecdf97mr36654229plh.5.1687833280751; 
+ Mon, 26 Jun 2023 19:34:40 -0700 (PDT)
+X-Received: by 2002:a17:903:1ca:b0:1b5:32ec:df97 with SMTP id
+ e10-20020a17090301ca00b001b532ecdf97mr36654214plh.5.1687833280521; 
+ Mon, 26 Jun 2023 19:34:40 -0700 (PDT)
+Received: from [10.66.61.39] ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id
+ jn22-20020a170903051600b001b3eed9cf24sm4821765plb.54.2023.06.26.19.34.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Jun 2023 19:34:40 -0700 (PDT)
+Message-ID: <fb5e8d4d-2388-3ab0-aaac-a1dd91e74b08@redhat.com>
+Date: Tue, 27 Jun 2023 10:34:35 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: hyE7UAHYtP/a
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+To: Salil Mehta <salil.mehta@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "james.morse@arm.com" <james.morse@arm.com>,
+ "gshan@redhat.com" <gshan@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Salil Mehta <salil.mehta@opnsrc.net>
+References: <20230626064910.1787255-1-shahuang@redhat.com>
+ <9df973ede74e4757b510f26cd5786036@huawei.com>
+From: Shaoqin Huang <shahuang@redhat.com>
+In-Reply-To: <9df973ede74e4757b510f26cd5786036@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=shahuang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GVmu2K24/WLK
 
-The lack of SVE memory instrumentation has been an omission in plugin
-handling since it was introduced. Fortunately we can utilise the
-probe_* functions to force all all memory access to follow the slow
-path. We do this by checking the access type and presence of plugin
-memory callbacks and if set return the TLB_MMIO flag.
+Hi Salil,
 
-We have to jump through a few hoops in user mode to re-use the flag
-but it was the desired effect:
+On 6/26/23 21:42, Salil Mehta wrote:
+>> From: Shaoqin Huang <shahuang@redhat.com>
+>> Sent: Monday, June 26, 2023 7:49 AM
+>> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+>> Cc: oliver.upton@linux.dev; Salil Mehta <salil.mehta@huawei.com>;
+>> james.morse@arm.com; gshan@redhat.com; Shaoqin Huang <shahuang@redhat.com>;
+>> Cornelia Huck <cohuck@redhat.com>; kvm@vger.kernel.org; Michael S. Tsirkin
+>> <mst@redhat.com>; Paolo Bonzini <pbonzini@redhat.com>; Peter Maydell
+>> <peter.maydell@linaro.org>
+>> Subject: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+>>
+>> The userspace SMCCC call filtering[1] provides the ability to forward the SMCCC
+>> calls to the userspace. The vCPU hotplug[2] would be the first legitimate use
+>> case to handle the psci calls in userspace, thus the vCPU hotplug can deny the
+>> PSCI_ON call if the vCPU is not present now.
+>>
+>> This series try to enable the userspace SMCCC call filtering, thus can handle
+>> the SMCCC call in userspace. The first enabled SMCCC call is psci call, by using
+>> the new added option 'user-smccc', we can enable handle psci calls in userspace.
+>>
+>> qemu-system-aarch64 -machine virt,user-smccc=on
+>>
+>> This series reuse the qemu implementation of the psci handling, thus the
+>> handling process is very simple. But when handling psci in userspace when using
+>> kvm, the reset vcpu process need to be taking care, the detail is included in
+>> the patch05.
+> 
+> This change in intended for VCPU Hotplug and we are duplicating the code
+> we are working on. Unless this change is also intended for any other
+> feature I would request you to defer this.
 
- ./qemu-system-aarch64 -display none -serial mon:stdio \
-   -M virt -cpu max -semihosting-config enable=on \
-   -kernel ./tests/tcg/aarch64-softmmu/memory-sve \
-   -plugin ./contrib/plugins/libexeclog.so,ifilter=st1w,afilter=0x40001808 -d plugin
+Thanks for sharing me the information. I'm not intended for merging this 
+series, but discuss something about the VCPU Hotplug, since I'm also 
+following the work of vCPU Hotplug.
 
-gives (disas doesn't currently understand st1w):
+Just curious, what is your plan to update a new version of VCPU Hotplug 
+which is based on the userspace SMCCC filtering?
 
-  0, 0x40001808, 0xe54342a0, ".byte 0xa0, 0x42, 0x43, 0xe5", store, 0x40213010, RAM, store, 0x40213014, RAM, store, 0x40213018, RAM
+Thanks,
+Shaoqin
 
-And for user-mode:
+> 
+> 
+> Thanks
+> Salil
+> 
 
-  ./qemu-aarch64 \
-    -plugin contrib/plugins/libexeclog.so,afilter=0x4007c0 \
-    -d plugin \
-    ./tests/tcg/aarch64-linux-user/sha512-sve
-
-gives:
-
-  1..10
-  ok 1 - do_test(&tests[i])
-  0, 0x4007c0, 0xa4004b80, ".byte 0x80, 0x4b, 0x00, 0xa4", load, 0x5500800370, load, 0x5500800371, load, 0x5500800372, load, 0x5500800373, load, 0x5500800374, load, 0x5500800375, load, 0x5500800376, load, 0x5500800377, load, 0x5500800378, load, 0x5500800379, load, 0x550080037a, load, 0x550080037b, load, 0x550080037c, load, 0x550080037d, load, 0x550080037e, load, 0x550080037f, load, 0x5500800380, load, 0x5500800381, load, 0x5500800382, load, 0x5500800383, load, 0x5500800384, load, 0x5500800385, load, 0x5500800386, lo
-  ad, 0x5500800387, load, 0x5500800388, load, 0x5500800389, load, 0x550080038a, load, 0x550080038b, load, 0x550080038c, load, 0x550080038d, load, 0x550080038e, load, 0x550080038f, load, 0x5500800390, load, 0x5500800391, load, 0x5500800392, load, 0x5500800393, load, 0x5500800394, load, 0x5500800395, load, 0x5500800396, load, 0x5500800397, load, 0x5500800398, load, 0x5500800399, load, 0x550080039a, load, 0x550080039b, load, 0x550080039c, load, 0x550080039d, load, 0x550080039e, load, 0x550080039f, load, 0x55008003a0, load, 0x55008003a1, load, 0x55008003a2, load, 0x55008003a3, load, 0x55008003a4, load, 0x55008003a5, load, 0x55008003a6, load, 0x55008003a7, load, 0x55008003a8, load, 0x55008003a9, load, 0x55008003aa, load, 0x55008003ab, load, 0x55008003ac, load, 0x55008003ad, load, 0x55008003ae, load, 0x55008003af
-
-(4007c0 is the ld1b in the sha512-sve)
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Cc: Robert Henry <robhenry@microsoft.com>
-Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
-
----
-v2
-  - allow TLB_MMIO to appear in user-mode probe_access
----
- include/exec/cpu-all.h            |  2 +-
- include/hw/core/cpu.h             | 17 +++++++++++++++++
- accel/tcg/cputlb.c                |  4 +++-
- accel/tcg/user-exec.c             |  8 ++++++--
- target/arm/tcg/sve_helper.c       |  4 ----
- tests/tcg/aarch64/Makefile.target |  8 ++++++++
- 6 files changed, 35 insertions(+), 8 deletions(-)
-
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 09bf4c0cc6..2b10173c61 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -301,7 +301,7 @@ CPUArchState *cpu_copy(CPUArchState *env);
-  * be signaled by probe_access_flags().
-  */
- #define TLB_INVALID_MASK    (1 << (TARGET_PAGE_BITS_MIN - 1))
--#define TLB_MMIO            0
-+#define TLB_MMIO            (1 << (TARGET_PAGE_BITS_MIN - 2))
- #define TLB_WATCHPOINT      0
- 
- #else
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 3b765beb9b..a4405a6dd6 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -981,6 +981,23 @@ void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
- void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
- #endif
- 
-+/**
-+ * cpu_plugin_mem_cbs_enabled() - are plugin memory callbacks enabled?
-+ * @cs: CPUState pointer
-+ *
-+ * The memory callbacks are installed if a plugin has instrumented an
-+ * instruction for memory. This can be useful to know if you want to
-+ * force a slow path for a series of memory accesses.
-+ */
-+static inline bool cpu_plugin_mem_cbs_enabled(const CPUState *cpu)
-+{
-+#ifdef CONFIG_PLUGIN
-+    return !!cpu->plugin_mem_cbs;
-+#else
-+    return false;
-+#endif
-+}
-+
- /**
-  * cpu_get_address_space:
-  * @cpu: CPU to get address space from
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 14ce97c33b..e2888a7e7a 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1544,7 +1544,9 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-     *pfull = &env_tlb(env)->d[mmu_idx].fulltlb[index];
- 
-     /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
--    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
-+    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))
-+        ||
-+        (access_type != MMU_INST_FETCH && cpu_plugin_mem_cbs_enabled(env_cpu(env)))) {
-         *phost = NULL;
-         return TLB_MMIO;
-     }
-diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-index dc8d6b5d40..6944115d2d 100644
---- a/accel/tcg/user-exec.c
-+++ b/accel/tcg/user-exec.c
-@@ -745,6 +745,10 @@ static int probe_access_internal(CPUArchState *env, target_ulong addr,
-     if (guest_addr_valid_untagged(addr)) {
-         int page_flags = page_get_flags(addr);
-         if (page_flags & acc_flag) {
-+            if ((acc_flag == PAGE_READ || acc_flag == PAGE_WRITE)
-+                && cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
-+                return TLB_MMIO;
-+            }
-             return 0; /* success */
-         }
-         maperr = !(page_flags & PAGE_VALID);
-@@ -767,7 +771,7 @@ int probe_access_flags(CPUArchState *env, target_ulong addr, int size,
- 
-     g_assert(-(addr | TARGET_PAGE_MASK) >= size);
-     flags = probe_access_internal(env, addr, size, access_type, nonfault, ra);
--    *phost = flags ? NULL : g2h(env_cpu(env), addr);
-+    *phost = (flags & TLB_INVALID_MASK) ? NULL : g2h(env_cpu(env), addr);
-     return flags;
- }
- 
-@@ -778,7 +782,7 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
- 
-     g_assert(-(addr | TARGET_PAGE_MASK) >= size);
-     flags = probe_access_internal(env, addr, size, access_type, false, ra);
--    g_assert(flags == 0);
-+    g_assert((flags & ~TLB_MMIO) == 0);
- 
-     return size ? g2h(env_cpu(env), addr) : NULL;
- }
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index 0097522470..7c103fc9f7 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -5688,9 +5688,6 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
- 
-     flags = info.page[0].flags | info.page[1].flags;
-     if (unlikely(flags != 0)) {
--#ifdef CONFIG_USER_ONLY
--        g_assert_not_reached();
--#else
-         /*
-          * At least one page includes MMIO.
-          * Any bus operation can fail with cpu_transaction_failed,
-@@ -5727,7 +5724,6 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-             memcpy(&env->vfp.zregs[(rd + i) & 31], &scratch[i], reg_max);
-         }
-         return;
--#endif
-     }
- 
-     /* The entire operation is in RAM, on valid pages. */
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 3430fd3cd8..cec1d4b287 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -91,6 +91,14 @@ sha512-vector: sha512.c
- 
- TESTS += sha512-vector
- 
-+ifneq ($(CROSS_CC_HAS_SVE),)
-+sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
-+sha512-sve: sha512.c
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
-+
-+TESTS += sha512-sve
-+endif
-+
- ifeq ($(HOST_GDB_SUPPORTS_ARCH),y)
- GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
- 
 -- 
-2.39.2
+Shaoqin
+

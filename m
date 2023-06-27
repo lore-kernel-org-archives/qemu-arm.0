@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id v14-20020a1cf70e000000b003f9b2c602c0sm14205358wmh.37.2023.06.27.09.09.44
+        by smtp.gmail.com with ESMTPSA id n9-20020a1c7209000000b003fbacc853ccsm80148wmc.18.2023.06.27.09.09.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:09:44 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 403BD1FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 5964E1FFC0;
 	Tue, 27 Jun 2023 17:09:44 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,41 +38,53 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 03/36] gitlab: reduce testing scope of check-gcov
-Date: Tue, 27 Jun 2023 17:09:10 +0100
-Message-Id: <20230627160943.2956928-4-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Ani Sinha <anisinha@redhat.com>
+Subject: [PATCH v3 04/36] docs/devel: remind developers to run CI container pipeline when updating images
+Date: Tue, 27 Jun 2023 17:09:11 +0100
+Message-Id: <20230627160943.2956928-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: hTzdW5G156x6
+X-TUID: VMrO8KJxGLW9
 
-This keeps timing out on gitlab due to some qtests taking a long time.
-As this is just ensuring the gcov machinery is working and not
-attempting to be comprehensive lets skip qtest in this run.
+From: Ani Sinha <anisinha@redhat.com>
 
-Message-Id: <20230623122100.1640995-4-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+When new dependencies and packages are added to containers, its important to
+run CI container generation pipelines on gitlab to make sure that there are no
+obvious conflicts between packages that are being added and those that are
+already present. Running CI container pipelines will make sure that there are
+no such breakages before we commit the change updating the containers. Add a
+line in the documentation reminding developers to run the pipeline before
+submitting the change. It will also ease the life of the maintainers.
+
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20230506072012.10350-1-anisinha@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/devel/testing.rst | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index a8fd9a0c1f..77dc83a6be 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -454,7 +454,7 @@ gcov:
-     IMAGE: ubuntu2204
-     CONFIGURE_ARGS: --enable-gcov
-     TARGETS: aarch64-softmmu ppc64-softmmu s390x-softmmu x86_64-softmmu
--    MAKE_CHECK_ARGS: check
-+    MAKE_CHECK_ARGS: check-unit check-softfloat
-   after_script:
-     - cd build
-     - gcovr --xml-pretty --exclude-unreachable-branches --print-summary
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 203facb417..8f18052ba7 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -485,6 +485,12 @@ first to contribute the mapping to the ``libvirt-ci`` project:
+    `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
+    page on how to trigger gitlab CI pipelines on your change.
+ 
++ * Please also trigger gitlab container generation pipelines on your change
++   for as many OS distros as practical to make sure that there are no
++   obvious breakages when adding the new pre-requisite. Please see
++   `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
++   page on how to trigger gitlab CI pipelines on your change.
++
+ For enterprise distros that default to old, end-of-life versions of the
+ Python runtime, QEMU uses a separate set of mappings that work with more
+ recent versions.  These can be found in ``tests/lcitool/mappings.yml``.
 -- 
 2.39.2

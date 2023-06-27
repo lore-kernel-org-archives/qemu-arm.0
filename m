@@ -1,127 +1,124 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1407682ejx;
-        Tue, 27 Jun 2023 05:43:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7gyF6rrFAqCn7t9N5g6q+cC45jdggosn+cQ91L9L3VqoEl74b+s97RaLV2z3kOSh4dwn5R
-X-Received: by 2002:a05:6214:2265:b0:635:4113:bb07 with SMTP id gs5-20020a056214226500b006354113bb07mr11478438qvb.16.1687869817825;
-        Tue, 27 Jun 2023 05:43:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687869817; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1411365ejx;
+        Tue, 27 Jun 2023 05:53:06 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5ehWfvIRLXHaiBgU2PdPY7n1joksWDPP9yzYNJ+HKW1EoIfOFjF3pgKzJbOStjrXrwevcg
+X-Received: by 2002:a05:620a:290b:b0:765:7957:1b06 with SMTP id m11-20020a05620a290b00b0076579571b06mr11107498qkp.10.1687870386265;
+        Tue, 27 Jun 2023 05:53:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687870386; cv=none;
         d=google.com; s=arc-20160816;
-        b=u30GMPyMh06L6qDj1/9geXIvLJcp8XKmx1GleR3tD18u09cR0yUcf7H/5C4tLRBcxF
-         ZrK1Z90fHAZw0zKKuJGrGdG0GkVbsHQqAdugTVwx0q+C2I3Vvf4nml289yUIuxH7cEn4
-         XaIveRsQ6pDhJw2VGwn+O5VHBVqMRtAYHImeMM0iguZrfwqpkhZqo6qrmoph/TkqTb00
-         kB85my4FQzb16f/Pdgi9MCArf5o5YS1V3YIeemENp0vlTG/473RdXJz17p9SZylljRzF
-         XlkQBmekD5M7aSu/5xIazNL6p3ZcFlbnPVZV2nxC+tTevoEIjwGY+gI0aXXodowN3nDr
-         qzGg==
+        b=RLmYPEwM5onwhSVrbyh+1mCkcgHfMvYl/OHH2TonjdUNvwrRFPUyOZ4xTW9n62uFTS
+         g7nr3NfVTL/tI0HryOAcubgvrMANTSkozTuaF2Fe4Swa3hIyVunFdug1ZyhCvpQjVJ1y
+         QWEYWdU0blotq2yaeod6sCaiAdMg2jR4sO8uvmyZZ0ZONOPQY6xTaTrRD3SIyrksiQxz
+         SFOz8GWtXn7dAge4+uuNp+ftc8TUHoKcwBAWtNHtyhJd8nD4cTpZvNdFizrscDZ3gpyN
+         INTcwwjWBHSTMgWnbcQ7wuGi6vUoJ/597VRDsqV3cJSmBuJBdvjE73YRqYN7Js/tXGSL
+         Rzzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=1mTG0cvKU+zMeoqHlEai9X0XN4bdRY0Fj+S2ZVFglsw=;
-        fh=TZ3SxzYDRdeSHrUGYCqpR0aWpnEmk0xJVMOqphAVtnQ=;
-        b=r6fuhz7Ym3rvQuDEwVdWfZ+7tfzKEiCr965oaF4lV7U7tHTILs9XUEABfo6SspBWTA
-         2iWC6Qusqh7C3XavfyTL8a3EVgGptTsdTQXZa6kqq7n5KnR9Ho+rVt4ivcFi8Yt0IOn1
-         QbveX6pz4qrrGGIdGiwP2PXMk5MBc6uAWYfwgNiKi3vfB3IdqToU4hPNP0TLvdosN54s
-         r6hYSeu5w7BT/kg8uRORoKMXiMTgkE9Jqz2xG93ezuTf7fQnwY9e2YkNohCIMEpt6hr9
-         R8tQNZ2P+moauEkAF5snxdJRuXyAdx6ErhCmav/NIb3IbMjJYizB8XFaolHIlKpT4CpR
-         7ILA==
+         :in-reply-to:from:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=v4ff5Ye615VwfmhzhdQIsGtbXc6slQm1U7qomvrltJM=;
+        fh=xiBvKei3A053PeZQVel3Yy4b1POjpdCPo0DlGksf/1k=;
+        b=xpR9UQRAKIlke4EWqOJgP7BzIpqLVb5g+LfCDc/ApfGxC68FJaETtvSML672TIz8H5
+         XJFQslCe7o/3qtwCRM8IUE5MS6sTS6s9L57YsaJEJXWorgRkMavBe5uM6q9xX5gAli3O
+         hTT+1ljRRjIVdO8sSK5TohDp5Ac/c0b9ALSTS7cKcSf1NmJ+OLZl4uwGK6kX94svSl0L
+         /PC9pqxTO9cRB9jcoGlb5aSCOC4QxcnFif1cBIDk78Nv+roPqUcO9Jqb421+n86W01Ix
+         M7VkTtUWclkmc4ZH3cEoHD2t2v+Se789SBcbWgGGY4UcWJhvNyR4zj3tZewVkv2Hoc2R
+         /DcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JGscvSjG;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=QC8FEpQi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pn16-20020a056214131000b006261e6b4780si3200901qvb.197.2023.06.27.05.43.37
+        by mx.google.com with ESMTPS id de42-20020a05620a372a00b0074e61ba2abfsi1800822qkb.782.2023.06.27.05.53.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jun 2023 05:43:37 -0700 (PDT)
+        Tue, 27 Jun 2023 05:53:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JGscvSjG;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=QC8FEpQi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qE82h-0006kL-0G; Tue, 27 Jun 2023 08:43:35 -0400
+	id 1qE8Bq-0005RT-NL; Tue, 27 Jun 2023 08:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qE82f-0006fq-MI
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 08:43:33 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qE82d-0001Zn-Db
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 08:43:33 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-98de21518fbso442098866b.0
- for <qemu-arm@nongnu.org>; Tue, 27 Jun 2023 05:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687869809; x=1690461809;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1mTG0cvKU+zMeoqHlEai9X0XN4bdRY0Fj+S2ZVFglsw=;
- b=JGscvSjGoIt5zVRLMj+z4pQB3/0FtPmXup22DqGc0zhhp0riN4aIMg20E/BBLW2E98
- WdgKEMXAsf/vjSlW+0rzfMzh92/bntJIhsUWrs+pYQ2RCqNBJn7CruxkEX4Num2CPpjq
- Cu1VAziumpAykPKlGGwPoVrLybX8oEiiXC+oMQ6cOOpJ6MspwTxN5xTynf2HfJc/4PuS
- agFOT6HJF3FjtKyGBOUzZ4+wnAxZAWbCIkMijKhC8/MTL7fmrPW4o1umQGjvwNPZj3qk
- Dv8C/gAh/xvAnE5RsFwiY2mA4XOXlcUBSuvjWJC3jAaqrWkQFNjoTjLU6ISTyg2Xge7U
- FZ4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687869809; x=1690461809;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1mTG0cvKU+zMeoqHlEai9X0XN4bdRY0Fj+S2ZVFglsw=;
- b=F0r5uAlHgnTQOK0hxpq+FvU2MKs8HXJiSGfM7q2agJlBNiE7Of/5ThzknFcCSPMReF
- wy/qqBkA+82Ky/x6m+P75dudulMIrfSXTW/+1Fc0MqmY6pBOH4mVfYJ9sHg7+gUvK1Nr
- HaS37Y86ipr+1qMZgGUB+K0VnO0tkVeisGz1FA9akkHvXIZJWunAmcuEeOkqHD778taI
- 6wN6rRj2hLxY8+E+fMTlna3HyQE0J8WQ7+Hd3TzRQIv6M4JwIeyGc0PQSeNU2HWTVx2a
- K7UCb/eR80jKPXb6HdY9axLNdbGk/qhYHdmZgv1tB5/iHXQbjkce0nGWk+OM7pkk/hp4
- GdJA==
-X-Gm-Message-State: AC+VfDzYlUbT63oPo+WU4j0QTzglMl9UokqbxMeYGNaUlYTXuYrcn2mX
- PtmO9SSr+UasECSHaE8ObY5NOg==
-X-Received: by 2002:a17:907:a42c:b0:991:bf04:204f with SMTP id
- sg44-20020a170907a42c00b00991bf04204fmr5098434ejc.60.1687869809706; 
- Tue, 27 Jun 2023 05:43:29 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.199.204])
- by smtp.gmail.com with ESMTPSA id
- k19-20020a1709061c1300b0098dd3981be9sm4477872ejg.224.2023.06.27.05.43.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Jun 2023 05:43:29 -0700 (PDT)
-Message-ID: <7b6c659f-a9d3-c883-ff53-3226c8d31bb8@linaro.org>
-Date: Tue, 27 Jun 2023 14:43:26 +0200
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qE8Bp-0005Qu-1o; Tue, 27 Jun 2023 08:53:01 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1qE8Bm-0004F8-P4; Tue, 27 Jun 2023 08:53:00 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 35R8GriD006160; Tue, 27 Jun 2023 12:52:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=qcppdkim1;
+ bh=v4ff5Ye615VwfmhzhdQIsGtbXc6slQm1U7qomvrltJM=;
+ b=QC8FEpQixa5Q0XYQ5zFWVuaKMzNiJHxPJH9kKAuIX6oE5CMTPMvuOQrH5B35bnfv4vnk
+ IPFrbYNUnVfOuF/YqImmSxjRo5M0CQP3GGt+IWpPxUQdCNmw90xNKPDuCYf4PXl/08I5
+ 8GFzHA6zwG+DXrb3+VaSil7Ae5UobDFv6Y1vo5/DktVgk4XRZDPm5MMhQOi4xwTVFChy
+ 2uerGj6p0yHttdOxNzi2bAv8otypJm5/DTiSnr0y/O/2tHDp93BrxFZvJaTTb1QZ7oHz
+ Wp330sP53baOI8dfklhS+jpZH20XqykXv89BYSNDNoxxsME6WYlAnmix789GE9xkdoD6 HQ== 
+Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rfbfcajn7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Jun 2023 12:52:54 +0000
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA02.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 35RCqrhM020046
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 27 Jun 2023 12:52:53 GMT
+Received: from [10.111.135.140] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Tue, 27 Jun
+ 2023 05:52:52 -0700
+Message-ID: <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
+Date: Tue, 27 Jun 2023 13:52:49 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH v3 16/16] accel: Rename HVF 'struct hvf_vcpu_state' ->
- AccelCPUState
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, xen-devel@lists.xenproject.org,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Yanan Wang <wangyanan55@huawei.com>, Paul Durrant <paul@xen.org>,
- Reinoud Zandijk <reinoud@netbsd.org>, Eduardo Habkost <eduardo@habkost.net>,
- Cameron Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20230624174121.11508-1-philmd@linaro.org>
- <20230624174121.11508-17-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230624174121.11508-17-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
+To: Peter Maydell <peter.maydell@linaro.org>, Marcin Juszkiewicz
+ <marcin.juszkiewicz@linaro.org>
+CC: <qemu-devel@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ <qemu-arm@nongnu.org>
+References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
+ <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: CJPQ_d7ouQyNDnl7D9TlswPVdZb6jwmd
+X-Proofpoint-GUID: CJPQ_d7ouQyNDnl7D9TlswPVdZb6jwmd
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-06-27_08,2023-06-27_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ spamscore=0 impostorscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999
+ phishscore=0 clxscore=1015 bulkscore=0 lowpriorityscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2305260000 definitions=main-2306270119
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.103,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -137,38 +134,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VYw8lf4KGKDj
+X-TUID: dJLSKPBRhbZS
 
-On 24/6/23 19:41, Philippe Mathieu-Daudé wrote:
-> We want all accelerators to share the same opaque pointer in
-> CPUState.
+On 2023-06-27 13:12, Peter Maydell wrote:
+> On Mon, 26 Jun 2023 at 08:52, Marcin Juszkiewicz
+> <marcin.juszkiewicz@linaro.org> wrote:
+>>
+>> Add PCI Express information into DeviceTree as part of SBSA-REF
+>> versioning.
+>>
+>> Trusted Firmware will read it and provide to next firmware level.
+>>
+>> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+>> ---
+>>   hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
+>>   1 file changed, 20 insertions(+)
+>>
+>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+>> index 0639f97dd5..b87d2ee3b2 100644
+>> --- a/hw/arm/sbsa-ref.c
+>> +++ b/hw/arm/sbsa-ref.c
+>> @@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+>>       return arm_cpu_mp_affinity(idx, clustersz);
+>>   }
+>>
+>> +static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
+>> +{
+>> +    char *nodename;
+>> +
+>> +    nodename = g_strdup_printf("/pcie");
+>> +    qemu_fdt_add_subnode(sms->fdt, nodename);
+>> +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
+>> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
+>> +
+>> +    g_free(nodename);
 > 
-> Rename the 'hvf_vcpu_state' structure as 'AccelCPUState'.
 > 
-> Use the generic 'accel' field of CPUState instead of 'hvf'.
-> 
-> Replace g_malloc0() by g_new0() for readability.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> Not even built on x86!
+> Why do we need to do this? The firmware should just
+> know exactly where the PCIE windows are, the same way
+> it knows where the flash, the UART, the RTC etc etc
+> all are in the memory map.
 
-Per IRC chat:
-Tested-by: Peter Maydell <peter.maydell@linaro.org>
+That is not automatically true (it was not for at least one SoC I have 
+worked on). In a real system which had these dynamically decided, some 
+coprocessor would program the CMN to route these address ranges to 
+certain offsets within certain components, and that same coprocessor 
+could then provide a mechanism for how TF-A could discover these and 
+provide it to later-stage firmware via SiP SMC calls.
 
-> ---
->   include/hw/core/cpu.h       |   4 -
->   include/sysemu/hvf_int.h    |   2 +-
->   target/i386/hvf/vmx.h       |  22 ++--
->   accel/hvf/hvf-accel-ops.c   |  18 ++--
->   target/arm/hvf/hvf.c        | 108 +++++++++----------
->   target/i386/hvf/hvf.c       | 104 +++++++++---------
->   target/i386/hvf/x86.c       |  28 ++---
->   target/i386/hvf/x86_descr.c |  26 ++---
->   target/i386/hvf/x86_emu.c   |  62 +++++------
->   target/i386/hvf/x86_mmu.c   |   4 +-
->   target/i386/hvf/x86_task.c  |  10 +-
->   target/i386/hvf/x86hvf.c    | 208 ++++++++++++++++++------------------
->   12 files changed, 296 insertions(+), 300 deletions(-)
+Sticking the information in the DT lets us emulate this without actually 
+emulating the CMN and the coprocessor, and prototype (and verify) the 
+same firmware interfaces for developing i.e. edk2 support.
+
+/
+     Leif
 

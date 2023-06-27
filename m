@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id n2-20020a5d67c2000000b003127741d7desm10713516wrw.58.2023.06.27.09.15.49
+        by smtp.gmail.com with ESMTPSA id a16-20020adfdd10000000b00313ef2150dcsm7136675wrm.45.2023.06.27.09.15.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:15:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C2A7D1FFDB;
+	by zen.linaroharston (Postfix) with ESMTP id A75691FFD9;
 	Tue, 27 Jun 2023 17:09:47 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -40,86 +40,119 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 33/36] gdbstub: Report the actual qemu-user pid
-Date: Tue, 27 Jun 2023 17:09:40 +0100
-Message-Id: <20230627160943.2956928-34-alex.bennee@linaro.org>
+Subject: [PATCH v3 32/36] gdbstub: Expose gdb_get_process() and gdb_get_first_cpu_in_process()
+Date: Tue, 27 Jun 2023 17:09:39 +0100
+Message-Id: <20230627160943.2956928-33-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: A9tT7G4Ep1+h
+X-TUID: xDFCJWGO/NUz
 
 From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Currently qemu-user reports pid 1 to GDB. Resolve the TODO and report
-the actual PID. Using getpid() relies on the assumption that there is
-only one GDBProcess. Add an assertion to make sure that future changes
-don't break it.
+These functions will be needed by user-target.c in order to retrieve
+the name of the executable.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20230621203627.1808446-6-iii@linux.ibm.com>
+Message-Id: <20230621203627.1808446-5-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/gdbstub.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
+ gdbstub/internals.h |  2 ++
+ gdbstub/gdbstub.c   | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
 
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 33d21d6488..25e4d5eeaa 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -129,6 +129,8 @@ void gdb_read_byte(uint8_t ch);
+  */
+ bool gdb_got_immediate_ack(void);
+ /* utility helpers */
++GDBProcess *gdb_get_process(uint32_t pid);
++CPUState *gdb_get_first_cpu_in_process(GDBProcess *process);
+ CPUState *gdb_first_attached_cpu(void);
+ void gdb_append_thread_id(CPUState *cpu, GString *buf);
+ int gdb_get_cpu_index(CPUState *cpu);
 diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index ce3e4a2671..697dd4bbad 100644
+index 49143c7d83..ce3e4a2671 100644
 --- a/gdbstub/gdbstub.c
 +++ b/gdbstub/gdbstub.c
-@@ -202,13 +202,16 @@ void gdb_memtox(GString *buf, const char *mem, int len)
- 
- static uint32_t gdb_get_cpu_pid(CPUState *cpu)
- {
--    /* TODO: In user mode, we should use the task state PID */
-+#ifdef CONFIG_USER_ONLY
-+    return getpid();
-+#else
-     if (cpu->cluster_index == UNASSIGNED_CLUSTER_INDEX) {
-         /* Return the default process' PID */
-         int index = gdbserver_state.process_num - 1;
-         return gdbserver_state.processes[index].pid;
-     }
+@@ -211,7 +211,7 @@ static uint32_t gdb_get_cpu_pid(CPUState *cpu)
      return cpu->cluster_index + 1;
-+#endif
  }
  
- GDBProcess *gdb_get_process(uint32_t pid)
-@@ -2137,19 +2140,25 @@ void gdb_read_byte(uint8_t ch)
- void gdb_create_default_process(GDBState *s)
+-static GDBProcess *gdb_get_process(uint32_t pid)
++GDBProcess *gdb_get_process(uint32_t pid)
  {
-     GDBProcess *process;
--    int max_pid = 0;
-+    int pid;
+     int i;
  
-+#ifdef CONFIG_USER_ONLY
-+    assert(gdbserver_state.process_num == 0);
-+    pid = getpid();
-+#else
-     if (gdbserver_state.process_num) {
--        max_pid = s->processes[s->process_num - 1].pid;
-+        pid = s->processes[s->process_num - 1].pid;
-+    } else {
-+        pid = 0;
-     }
-+    /* We need an available PID slot for this process */
-+    assert(pid < UINT32_MAX);
-+    pid++;
-+#endif
- 
-     s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
-     process = &s->processes[s->process_num - 1];
--
--    /* We need an available PID slot for this process */
--    assert(max_pid < UINT32_MAX);
--
--    process->pid = max_pid + 1;
-+    process->pid = pid;
-     process->attached = false;
-     process->target_xml[0] = '\0';
+@@ -247,7 +247,7 @@ static CPUState *find_cpu(uint32_t thread_id)
+     return NULL;
  }
+ 
+-static CPUState *get_first_cpu_in_process(GDBProcess *process)
++CPUState *gdb_get_first_cpu_in_process(GDBProcess *process)
+ {
+     CPUState *cpu;
+ 
+@@ -325,7 +325,7 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
+             return NULL;
+         }
+ 
+-        return get_first_cpu_in_process(process);
++        return gdb_get_first_cpu_in_process(process);
+     } else {
+         /* a specific thread */
+         cpu = find_cpu(tid);
+@@ -354,7 +354,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     size_t len;
+     int i;
+     const char *name;
+-    CPUState *cpu = get_first_cpu_in_process(process);
++    CPUState *cpu = gdb_get_first_cpu_in_process(process);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+     len = 0;
+@@ -490,7 +490,7 @@ void gdb_register_coprocessor(CPUState *cpu,
+ 
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+ {
+-    CPUState *cpu = get_first_cpu_in_process(p);
++    CPUState *cpu = gdb_get_first_cpu_in_process(p);
+ 
+     while (cpu) {
+         gdb_breakpoint_remove_all(cpu);
+@@ -647,7 +647,7 @@ static int gdb_handle_vcont(const char *p)
+                 return -EINVAL;
+             }
+ 
+-            cpu = get_first_cpu_in_process(process);
++            cpu = gdb_get_first_cpu_in_process(process);
+             while (cpu) {
+                 if (newstates[cpu->cpu_index] == 1) {
+                     newstates[cpu->cpu_index] = cur_action;
+@@ -1270,7 +1270,7 @@ static void handle_v_attach(GArray *params, void *user_ctx)
+         goto cleanup;
+     }
+ 
+-    cpu = get_first_cpu_in_process(process);
++    cpu = gdb_get_first_cpu_in_process(process);
+     if (!cpu) {
+         goto cleanup;
+     }
+@@ -1393,7 +1393,7 @@ static void handle_query_curr_tid(GArray *params, void *user_ctx)
+      * first thread).
+      */
+     process = gdb_get_cpu_process(gdbserver_state.g_cpu);
+-    cpu = get_first_cpu_in_process(process);
++    cpu = gdb_get_first_cpu_in_process(process);
+     g_string_assign(gdbserver_state.str_buf, "QC");
+     gdb_append_thread_id(cpu, gdbserver_state.str_buf);
+     gdb_put_strbuf();
 -- 
 2.39.2

@@ -1,168 +1,136 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1393209ejx;
-        Tue, 27 Jun 2023 05:12:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7S7Cpz9sZKMYvzwXrI0P+69u3HJ1N6CDY9o2/VCAcFQDHYhmbCXJ+DvoYsNi/i8TnJzOvS
-X-Received: by 2002:a05:6214:27e4:b0:635:ee77:8d69 with SMTP id jt4-20020a05621427e400b00635ee778d69mr2065541qvb.22.1687867958255;
-        Tue, 27 Jun 2023 05:12:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687867958; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1407496ejx;
+        Tue, 27 Jun 2023 05:43:17 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4JMr5btaHvLJdkVXwVxBDckdphIJdtB3XwCu0ZqT5RKukqStVkx9dKmcCREPTULslL3biy
+X-Received: by 2002:a17:90a:188:b0:262:c9f4:141 with SMTP id 8-20020a17090a018800b00262c9f40141mr8285489pjc.42.1687869797396;
+        Tue, 27 Jun 2023 05:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687869797; cv=none;
         d=google.com; s=arc-20160816;
-        b=n8LjdxW7HZHB3Q+XxGPbUL0zqtVQOrrPjmvehbBIM5HZtqFN7eNGegisB41uAiRard
-         0sJ3YayinKCWmiMUvEPXt595RUQgdK9kGd+pE4lF4rVl+dCfSryBiSQMX8lUeJLZpbqN
-         GKGO86yeJs1anwq0O9D4xK/8wqb1EzBtgV8RtG0zac9xwEO90P8uO1+LWs0WeLztUC3O
-         bOVNVw59CF4hkhQwyrPHos7qh8rh19VxNa4LxWzxPhk/pCaSOR//rW6hiZZIkRjZ2Y85
-         QvYZuDIKqlSAVBwNZRgHeSrlRI0/kr7KKgTeWNdwCgDvI22HJLdZ66zJ5XSCVB1rIdwG
-         EdGA==
+        b=fMezeIhrTqXfva8rRfCpPVBsUdmVIsHJLRT3I+SBMqcb7WrxsBPnge+6REn5csCx3D
+         KAV22mE1ThPLEWIFtvQtT+O0VXyBd86hjuq7su38Gb+DfmdPvhXqjGvuLx1SCk5V03l7
+         3c2/kMuNbCjRmWOzVTa/OV+W0gD5EWHpTvIMErvhLXHM4/o/9E0RmcRn8lvWqE9+J1RC
+         ZE13YZuKNPKKI6KMVLqJs/2HbXv08wLCXZPcND0tkqLa5BTeaMBNW6mCOI5QDP8KRjVn
+         NRgvY/yLq5qT4HQDmGTDbic8DfzIBQJ1dZpgifh6OjlqpmuVBKFHTbsoexMGrydQWiZw
+         5kbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+R0bx70T6FRoSzBP92juYNpgA41gealJZHkeJuD1QBk=;
-        fh=wxXsFREv4Ek6t1hwyYmFWPnd1Z57BcRYjhnGgrbMJuk=;
-        b=TuvwxUdzHzI5p6NXhUdQXpDPCo92N74W/UGCFxORZk5oWcXXrt54K/cfRtMXDoKGLq
-         32deHUqtmXlca++xKYP27ZThcImiino9dyjkT7yIgzUuelr2bw7h6/Z05U9QxXl+oXCC
-         CMC4/gK255T0iimLC8t10HyUf9KPXvXleOKnsrWFwIw8LW3/vsDW4UxmaiDw5DafPvy6
-         FKgEFcnEn1OMPoyvD9lQ3jxfiAoG9EaFVCOjp68tke8kAozSKkFtM0y6NnQAml6elPhL
-         jFr4OLjupgtV/eeAKcKN2BfY1ZVVzzyQFMWYRVFo3fLHfQEWzeg+09dlo7xkWlqyioO8
-         V9eg==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=oiGMShFqsK5vy0r+ZoVprgd+7ONOa51b6TZq+l7w8nA=;
+        fh=TZ3SxzYDRdeSHrUGYCqpR0aWpnEmk0xJVMOqphAVtnQ=;
+        b=SsuiEez7Bj22H5701Tyvna67GYrOkzGw+0SSCZDJ3JScWJnPIBkmAi96UWXYu/K2VX
+         yPmeG1CxqOUnWZKwUjZOEyF51toJIKFVt3y+DvCVQx+ybA6zNSWrGU3MoSH8ZD6otTEW
+         pXoE/EMo5d8cFsw0X3AuyMMT7wZliMzYlKq1dFx2JRWS1eOPKcLcrPNfxY4DYf3lmeHD
+         yN6Xa3h1SecSf+uMlWBe1uaM1Piomi7i7bQR4DWfKrUJvf8nx+VrP8+hunlh+DpSEX8T
+         UnDxQQNFISAznl7W0zlaIMisTHWVNbV79H+k9xUxfZvj62irLOK7ipYVpoJJTAbpq8yu
+         kHyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O1yZm554;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=N9jYqZxd;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q4-20020a05622a030400b003f78b03635bsi3029555qtw.768.2023.06.27.05.12.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jun 2023 05:12:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id lp14-20020a17090b4a8e00b0025bae7f2b10si10294105pjb.13.2023.06.27.05.43.17;
+        Tue, 27 Jun 2023 05:43:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O1yZm554;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=N9jYqZxd;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qE7YZ-0005JE-LB; Tue, 27 Jun 2023 08:12:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE7YW-0005Ij-5D
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 08:12:24 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE7YU-00023M-EA
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 08:12:23 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-51d95aed33aso2492019a12.3
- for <qemu-arm@nongnu.org>; Tue, 27 Jun 2023 05:12:21 -0700 (PDT)
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S229732AbjF0MnQ (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 27 Jun 2023 08:43:16 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:46416 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S229468AbjF0MnO (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 27 Jun 2023 08:43:14 -0400
+Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com [IPv6:2a00:1450:4864:20::630])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 87931269E
+        for <kvm@vger.kernel.org>; Tue, 27 Jun 2023 05:43:13 -0700 (PDT)
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-986d8332f50so567170866b.0
+        for <kvm@vger.kernel.org>; Tue, 27 Jun 2023 05:43:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687867941; x=1690459941;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+R0bx70T6FRoSzBP92juYNpgA41gealJZHkeJuD1QBk=;
- b=O1yZm554d1l/tG5AFVhQxYYr74GDUBmbAOH6uAFlO9BB49CNYiD+YkQAlXmYH7YAyf
- KVxpMbmdbKHFQEdi+oJXD3OBbgIgEXdj+0ecgzrcjbutzLOwgHF/H4sWu8n5AymjFPai
- MtK30tQplVD3HmmGfW21CjBQzLCNN/jc23/HOKFwLnT1Tn/GKGCKuZENefIz4I0xzZV0
- QsD+bEJZO+bbbwiM9XNl/DQSajiNPahdr7RGvWe9EMxEpwSGf5iQEe9mSDT2Wtw6ZLPI
- ZBk08H8LVRuopQAhDFBiUaVNL19cQnyA0y5Jnw3PvnmgQonACtnR7BCCi2UUsZ1Kq6oL
- 1Aew==
+        d=linaro.org; s=google; t=1687869792; x=1690461792;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oiGMShFqsK5vy0r+ZoVprgd+7ONOa51b6TZq+l7w8nA=;
+        b=N9jYqZxdR661UImV0f2eqz9etcpnHRQWFJOWqbKzx+pPrr0rGpTyRrmz5XuUcm1Jel
+         baeVg/QwQJBCIEde+fmbP7LG4Izl1AuD0EKT+rEyp5sfJSH192El68xs7rbT6+K4WH9y
+         IfQhrB0iGU5wf9XPYsYmDFUbqjvN0yAjtDAbR5RKLJJX7UPC2owKWr4ScVk8mulj3v1M
+         rUlnRkKpW+k6Vp3tBKcP/u8zcAy+nchDJTbp1UFf/jwRX/gpGEnEqqlo9lImfk5IYIgt
+         /E/zRUzGds4zgAE/1m6/1FiPOwoCYKzmruujyCiOPEFDktm5hG65u6lqnFuN24x3EXwg
+         3F0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687867941; x=1690459941;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+R0bx70T6FRoSzBP92juYNpgA41gealJZHkeJuD1QBk=;
- b=gUtFladHFhUI23yfgsLNeaf/kGjc1ltBt8NKEbd0lydgKLPMBCVGLBmGhpezhq3O9F
- qNq3HaYDJ75jEt9/rpGJ9otvUTbem+jjOODO8rPeSQtkS9RsYFe4jXN0TcIOr9hyErFf
- Fcg100qsfFOPe5pX+VP0qFcedoe50kJrBLv+uYyXdA4Lbn9jbNna8BiaFMyn/IczD2rq
- SwuuRWwPjQ2Ky0OKjvjF/keRGPkLbZQ+a+A0V3oLuy4vc803WlaZPA0RsRf+TzMN1SDM
- geWXjA2aX0foqcdCiD0DrFytV9QMu4yZefeLxnVbfn6pyjn0q2deQvizbqAdo2OQabBG
- Vtuw==
-X-Gm-Message-State: AC+VfDxac+EZPIEtsOO3hsiAxFuW4RJe0rfkqgrLOqLOHvfJYvANz54K
- bf8x/hkX4vv3kXxQCpRuYcDyAO/gABUle4vV1v6E6w==
-X-Received: by 2002:aa7:d405:0:b0:51d:907d:b927 with SMTP id
- z5-20020aa7d405000000b0051d907db927mr4636805edq.11.1687867940809; Tue, 27 Jun
- 2023 05:12:20 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1687869792; x=1690461792;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oiGMShFqsK5vy0r+ZoVprgd+7ONOa51b6TZq+l7w8nA=;
+        b=TTZngoVcScsxa81o2UhPL42y8o6GZshMZfCH+APgesbp0yBAQXZAM3jEOqwCFB+rjH
+         h3Jy3edczaGy0Q/lfwteT4dbsjVxl0mGSa6Uk8ja48rQig7ScS71yOvK2BN1DhfsyTU7
+         6DuefJPCSyv/1P6TSHEdKatxobLCNNay0tc/DUarfuNeihTyTZlYlUHyk9PreTNWWUv8
+         Et/Gp37VyFbgrSEwJE+5dZTjoRgkam6El/33pGoCKP5jHJOOO1HRkyLuGC/3vMamao7t
+         hp2h52dmKq5VhdUyl46ybWyQYq0UJU0/cuTJm8aKfuy5Nf+j6geheKBJPEdZvzvkUvrQ
+         IA6g==
+X-Gm-Message-State: AC+VfDxEESBjfLzLsas3xfCcy9MV+yPkbJd0oaxj/eTXFwo7thaoe0UI
+        3Shucm9lCRfl0IchZUVBYCyWqQ==
+X-Received: by 2002:a17:907:c0a:b0:96f:d345:d0f7 with SMTP id ga10-20020a1709070c0a00b0096fd345d0f7mr28092609ejc.62.1687869792013;
+        Tue, 27 Jun 2023 05:43:12 -0700 (PDT)
+Received: from [192.168.69.115] ([176.187.199.204])
+        by smtp.gmail.com with ESMTPSA id kg1-20020a17090776e100b0098e2eaec395sm3430672ejc.130.2023.06.27.05.43.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 Jun 2023 05:43:11 -0700 (PDT)
+Message-ID: <9d54d187-dd61-9d48-01bc-d0d6a44d119e@linaro.org>
+Date:   Tue, 27 Jun 2023 14:43:08 +0200
 MIME-Version: 1.0
-References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
-In-Reply-To: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Jun 2023 13:12:09 +0100
-Message-ID: <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ydzDSfiYwyQR
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH v3 15/16] accel: Rename 'cpu_state' -> 'cs'
+Content-Language: en-US
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Alexander Graf <agraf@csgraf.de>,
+        xen-devel@lists.xenproject.org,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Yanan Wang <wangyanan55@huawei.com>,
+        Paul Durrant <paul@xen.org>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Eduardo Habkost <eduardo@habkost.net>,
+        Cameron Esfahani <dirty@apple.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+References: <20230624174121.11508-1-philmd@linaro.org>
+ <20230624174121.11508-16-philmd@linaro.org>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230624174121.11508-16-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Em3QJW2obk2l
 
-On Mon, 26 Jun 2023 at 08:52, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> Add PCI Express information into DeviceTree as part of SBSA-REF
-> versioning.
->
-> Trusted Firmware will read it and provide to next firmware level.
->
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+On 24/6/23 19:41, Philippe Mathieu-Daudé wrote:
+> Most of the codebase uses 'CPUState *cpu' or 'CPUState *cs'.
+> While 'cpu_state' is kind of explicit, it makes the code
+> harder to review. Simply rename as 'cs'.
+> 
+> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
->
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 0639f97dd5..b87d2ee3b2 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
->      return arm_cpu_mp_affinity(idx, clustersz);
->  }
->
-> +static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
-> +{
-> +    char *nodename;
-> +
-> +    nodename = g_strdup_printf("/pcie");
-> +    qemu_fdt_add_subnode(sms->fdt, nodename);
-> +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
-> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
-> +
-> +    g_free(nodename);
+>   target/i386/hvf/x86hvf.h |  18 +-
+>   target/i386/hvf/x86hvf.c | 372 +++++++++++++++++++--------------------
+>   2 files changed, 195 insertions(+), 195 deletions(-)
 
-
-Why do we need to do this? The firmware should just
-know exactly where the PCIE windows are, the same way
-it knows where the flash, the UART, the RTC etc etc
-all are in the memory map.
-
-thanks
--- PMM
+Per IRC chat:
+Tested-by: Peter Maydell <peter.maydell@linaro.org>

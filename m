@@ -1,210 +1,167 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1464333ejx;
-        Tue, 27 Jun 2023 07:27:57 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ63ZftiqBtiyhXmCtIPcrcPFRFleCILM1WD/jocczBHDgU5BZshi3ATQ4kx8Pdvl44uLBOB
-X-Received: by 2002:a05:620a:1a1e:b0:765:6524:8441 with SMTP id bk30-20020a05620a1a1e00b0076565248441mr10753337qkb.22.1687876077334;
-        Tue, 27 Jun 2023 07:27:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687876077; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1489638ejx;
+        Tue, 27 Jun 2023 08:14:08 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4NdPh8JUctqQpF2EelxlVAseYNvgJ1LmwEy/tpk8uglyV9ruSVHVEJ59xftcGpbjSpiXmz
+X-Received: by 2002:a92:d24b:0:b0:345:becd:63a5 with SMTP id v11-20020a92d24b000000b00345becd63a5mr1558026ilg.6.1687878848039;
+        Tue, 27 Jun 2023 08:14:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687878848; cv=none;
         d=google.com; s=arc-20160816;
-        b=KqQfo+vMtwLFjYe8NmLNcqm0Zt6suokt/Umv7MC/HkbBQffRXMu4o53q1Ia6Xw44AU
-         kJbLbarjR7lq5bz6PQ3yVuPySPjbBjeARMVAPA3rNzpryovtQt1S47gS+5XfNdSriKGY
-         dl1yZNk2AlIQn1XwcH1z5KBq/7x3qyFoKKgI1PksUkl6YO2hoZk5JlI7fDKyA0FUOYdW
-         pMRm+ZlOQ8SK1hrVG7cnW++5HX+ThEVtg6z5l7mgBPCkJkcpsjcFCvqXg0gpGnBx7vOL
-         +5kpbZLg+fay7Ou4BXqEMhB6VRP8dSh98HLnHFeBSN7LZZplIOGzZCtXePgbOo0Yrc8w
-         R8XA==
+        b=KNQ1Ty7SQ2nqw+vDU2tNXwI1yFnQImJ/MFl2q8wJ8hIJ6oscQe7VEF5xXCmXbAYdiy
+         RVQwXfTLV2Xu6eEAAxaGBxRllvBOgTGheXmYvKp+AWcxR/b9JWc9DSkxdsrPSmOHLUjw
+         QOLP7bGsQSKgcUiA/4+TcXgKTDVlUXJlR7KtTNFQNcd+yV95LZJxt/8OBoqc/APXD1cV
+         eGfMvJjVjCGxLo4eI+8VRrD9vimjTXYz/U9UULVcPmJsYd+6Jqcd6gtaN+aPu6bDvYwE
+         yDPD1sD4kEUoJsr2lHLQDKYWPuAxGnkryKZhnj7DgUYdXV0dfjlQfjjLD+8PzVrpi/7t
+         cz5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+JxuZKlt7rEQ6Do2L/qjII+HMlmfBcZln2gs6DAb+0w=;
-        fh=KBlgtE3ERa0ZUYgqV31WqhalP1RAhAFOCovn4+lLDmk=;
-        b=xhAmvOoUgpkcMFNqGx4SLl34puc78fkPfK3Yk61QlU9Czfvgod6aaZIL67meEsPvwF
-         xmim47mnk/qUwk07VtQundaQA1VAceDgZygWclJSeU11ECTQoJe19acbZjyazF88pkpl
-         mkAhmLuPLHKWMxseMEFeZl2RNwXWkioOj5D7K4z9/qvmcnmfUwdBMFtcy9i7ZOmoKQ9e
-         d5BM014s/ctl6h5fQTPyOCSsNcOcAiI5T05gaPBr6cCv7N7uri4WWYHxTL9vFN+b1AaN
-         WcZ7eDKFyq1D6RTQtIfWpFVLhZtxh5kwHa2dprB4EMcNM9deqle5EdMJ4r+Ymcp3VEpg
-         fhKg==
+        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
+         :references:cc:to:content-language:subject:user-agent:mime-version
+         :date:message-id:dkim-signature;
+        bh=1hLkHKgBAbZUuk0W8oE9AqIRXF820+oX61/uVYQAwns=;
+        fh=TZ3SxzYDRdeSHrUGYCqpR0aWpnEmk0xJVMOqphAVtnQ=;
+        b=SB0CSVlxoGZeMD/Ae+Ux0Q9PBuc0t3IFmdMKbc9QW+QObkx5/Mv5EvKy0LVNm3YivP
+         bn86XVK2545bhUVSxGGtcs40RzguBTAUp9jdXUAGZi5TWFOxQBzECkZSoba8jzdgXFIZ
+         OCfK0/qQ/TEWq4v5d0oOSlXEBWDLUKhfKlw4vKDkvJK4ybupDYwoZ8kuu4SWYPlKOZYJ
+         cXaS33NLZObF+9oLfck4D6wrqHPKBxpcezu64D6cz+YpKxjKx5QoKM5BUdJ1i0ASV9g5
+         SVw1iGCYui7qgWl4s2bkysFZtKcIjV23OVBJC2vuDVuk4FOi50tsrvdoUrFT7VBB56Mq
+         1MEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SYbJjSWh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RHSJC9x8;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id tl2-20020a05620a3b0200b00766fd044cf2si1291701qkn.3.2023.06.27.07.27.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jun 2023 07:27:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
+        by mx.google.com with ESMTP id y22-20020a17090aa41600b00262e1adb2c7si5653717pjp.51.2023.06.27.08.14.07;
+        Tue, 27 Jun 2023 08:14:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SYbJjSWh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RHSJC9x8;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qE9fU-0007vG-5p; Tue, 27 Jun 2023 10:27:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE9fR-0007uk-9e
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 10:27:41 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qE9fO-0002Yz-Dl
- for qemu-arm@nongnu.org; Tue, 27 Jun 2023 10:27:41 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-51d89664272so4242095a12.1
- for <qemu-arm@nongnu.org>; Tue, 27 Jun 2023 07:27:37 -0700 (PDT)
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S231781AbjF0POG (ORCPT <rfc822;mathieu.poirier@linaro.org>
+        + 2 others); Tue, 27 Jun 2023 11:14:06 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38714 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S230003AbjF0POF (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 27 Jun 2023 11:14:05 -0400
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com [IPv6:2a00:1450:4864:20::62b])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 2E95E26B3
+        for <kvm@vger.kernel.org>; Tue, 27 Jun 2023 08:14:04 -0700 (PDT)
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-9891c73e0fbso837972066b.1
+        for <kvm@vger.kernel.org>; Tue, 27 Jun 2023 08:14:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687876057; x=1690468057;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+JxuZKlt7rEQ6Do2L/qjII+HMlmfBcZln2gs6DAb+0w=;
- b=SYbJjSWhHiFPxNZAd1tqKhfavO/QcO7YPLaf+mgwvbFLmdOS+VmOuXxvlM8iRqNKhr
- UGhKyK2tK/h95HfypgFcQGXUGxwVc6nYTGfwpeeBjj3iS9GeBgqBqzW9Wz8207vEvyTA
- 6qNsxX81rR2j1jWaAEqOT+lf9DBDT+ziQhk4bDk0JQ5uJBtM/bEXXmFF7Umq7LvBXx+E
- 0ZzxN+xhQqhIdtgFSSmMa/G7GoD9I4Ucxasq0jGtXNK8N7FZLnnTDLpPC39AzQ4e6Wwo
- wXiH4tnsfLc4LUjcXXnf5klRHzSY4f8GwtMzxU8ZrVJoTGxM9C+g61eK/dr+e5WiNtac
- 1C8A==
+        d=linaro.org; s=google; t=1687878842; x=1690470842;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1hLkHKgBAbZUuk0W8oE9AqIRXF820+oX61/uVYQAwns=;
+        b=RHSJC9x8UfCPz2FSbqOh2Ao54TcsCXhLbDK36yeB1DEJ4hj8Sl//hI37GaNYUgS+fs
+         y4GXgRTnzQOM1uZVi38YmTqIyNo79pOMoci/EMI21MPW3l/lqt4OWFxhD0crUv1+Jlb9
+         HAOtsR6oW56BaUJI4kAcsAxbPwP1gziEWSlXXCLlw13fsJZ46+EXCC7yWYT+y9jAT4m2
+         e37yJcRCJEf80dlpoCKw2ihRR+G97nQEWmYOKSl3kIWFhrwA65/8u/9cIRWyQlcvD9VH
+         FtltpgqEHEOcfVtyLsREChlxiSDkV4CjXzltjoOAxfty5o4YqGw18zEI/gJw6anC6zz4
+         g8oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687876057; x=1690468057;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+JxuZKlt7rEQ6Do2L/qjII+HMlmfBcZln2gs6DAb+0w=;
- b=aFwDI+Pwf8rkL3GadaRnC4fmUhKdlsB7NHrVOxD2ip9XLVJLFPnnjv36bfbPCNKfg4
- +ZRoOlUCnVugSIflXQq7tau8iOmoJj28NEMaI8PWYsWZxPwoDZSZrTKdUxoH0xDOY0AE
- u0jVEA4ilzy0b2wsqQ44Dzi82M7BWQGB8yCC1mNwwJKcKEkRJo0V6/bbzIviq8JIwQP+
- 76REm0jZjCOEJMWtEWShRnfZelZ21MZm964Eqel7PP+zAyaZba4AfCHPeqF7dcHmtwZi
- 93X2hKK8eRoiZmSF9uucrODYOJEj7e3xc1rgmUmHps6640miUWiEIkcXjV84s7qT9zUr
- CAnw==
-X-Gm-Message-State: AC+VfDzfd9Wofe3l/jF3MiUIPHKcieCa7w7/K99Vz0c8KQK0ZJbgvAgL
- rXAR7M5VnRpIqxbziOBpXbFHiu3n+wfvXrXmo0Z6rQ==
-X-Received: by 2002:aa7:c257:0:b0:51c:ef63:380a with SMTP id
- y23-20020aa7c257000000b0051cef63380amr7341736edo.27.1687876056952; Tue, 27
- Jun 2023 07:27:36 -0700 (PDT)
+        d=1e100.net; s=20221208; t=1687878842; x=1690470842;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1hLkHKgBAbZUuk0W8oE9AqIRXF820+oX61/uVYQAwns=;
+        b=RKm3YfLLDgiau0w9UpKjN9qwKZQ0s0PN/QOKqta6eNhL2y36bNBdjyNwGawLjoQaqC
+         CrJPzHzh0mMEOMOcITEdL0OerMOtZAd88mS9jm45HBOER+kKmuoluJwzedlTIR7AV/0T
+         UkmJPSYRY+UXfR+cjEi7v38AKPVF4VqgMM1DimXxPqtdc1DMMcIy2r1JglShkz1k1VlT
+         b3nUHm8cMm5R0FeiASuVXYLrQoV5+8axfe3VVGeYQqYESVPSpvcJ2EJixJmfUB0dzvk1
+         XjrW+7VQRjS18Y6Hn5knXBtnyOL+28N442M4JOwxrlSUtTAEbgz28z6XPGNOn/KodwWH
+         vB9w==
+X-Gm-Message-State: AC+VfDzeEQX+Udo3xx3KgcchucVYVeuuGwRNZ/qivJ7Qa5oWBLVfak+K
+        8+iECToYPpegKldxezD2zMr5GwOxpF45AORG5bg=
+X-Received: by 2002:a17:907:3f87:b0:977:d660:c5aa with SMTP id hr7-20020a1709073f8700b00977d660c5aamr30961510ejc.31.1687878842634;
+        Tue, 27 Jun 2023 08:14:02 -0700 (PDT)
+Received: from [192.168.69.115] ([176.187.199.204])
+        by smtp.gmail.com with ESMTPSA id ss26-20020a170907039a00b0098e422d6758sm3262608ejb.219.2023.06.27.08.14.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 27 Jun 2023 08:14:02 -0700 (PDT)
+Message-ID: <dcf96b9e-16c5-b1d5-14a5-276fc0556bee@linaro.org>
+Date:   Tue, 27 Jun 2023 17:13:58 +0200
 MIME-Version: 1.0
-References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
- <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
- <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
- <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
- <d8e93b7b-5e86-5e26-21cd-fefb76f88204@quicinc.com>
-In-Reply-To: <d8e93b7b-5e86-5e26-21cd-fefb76f88204@quicinc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Jun 2023 15:27:26 +0100
-Message-ID: <CAFEAcA8L--h_3QvKff66mw3VG7G__hwv=syw2hU2Qby8jkJPRw@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
-To: Leif Lindholm <quic_llindhol@quicinc.com>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org, 
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SlGSXdcCxjaa
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH v3 00/16] accel: Share CPUState accel context
+ (HAX/NVMM/WHPX/HVF)
+Content-Language: en-US
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+        Richard Henderson <richard.henderson@linaro.org>,
+        Alexander Graf <agraf@csgraf.de>,
+        xen-devel@lists.xenproject.org,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Yanan Wang <wangyanan55@huawei.com>,
+        Paul Durrant <paul@xen.org>,
+        Reinoud Zandijk <reinoud@netbsd.org>,
+        Eduardo Habkost <eduardo@habkost.net>,
+        Cameron Esfahani <dirty@apple.com>,
+        Paolo Bonzini <pbonzini@redhat.com>
+References: <20230624174121.11508-1-philmd@linaro.org>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230624174121.11508-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
+        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
+        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,URIBL_BLOCKED
+        autolearn=ham autolearn_force=no version=3.4.6
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
+        lindbergh.monkeyblade.net
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: aKB3RbxcGvLK
 
-On Tue, 27 Jun 2023 at 15:09, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
-> On 2023-06-27 14:27, Peter Maydell wrote:
-> > OK. This is the kind of rationale that needs to be described
-> > in the commit message and comments, though, so it's clear
-> > why the PCI controller is special in this way.
->
-> I mean, ultimately it's not. We've kept static mappings for the items
-> that it wouldn't really provide any additional benefit anywhere to be
-> able to shuffle around. (Which failed with EHCI.)
-> Having the UART static has minor debug advantages. Everything else is
-> static because it's poor return on investment (it doesn't let us test
-> anything interesting in the firmware stacks) to make them dynamic.
->
-> > What I'm trying to avoid here is that we start off saying
-> > "the dtb we pass to the firmware is just a convenient format
-> > for passing a tiny amount of information to it" and then
-> > gradually add more and more stuff to it until we've backed
-> > ourselves into "actually it's almost a complete dtb except
-> > it's not compliant with the spec". That means there needs
-> > to be a clear rationale for what is in the dtb versus
-> > what is "the firmware knows what hardware it runs on".
->
-> Yet again I find myself wishing I'd invented a custom format instead of
-> using a DT to pass the information across. And I'm not even being sarky
-> - it keeps confusing people, and across multiple projects we're being
-> asked to repeatedly justify why we're not conforming to bindings that
-> are not designed for what we want to do, when we only opted to use an
-> existing storage format in order to maximise code reuse.
->
-> The purpose of the DT in this platform is to pass information about the
-> machine configuration to the highest-level firmware that in real
-> hardware it would have means of determining programmatically *handwavy*
-> "in other ways", so that that higher-level firmware can abstract the
-> information away behind SMC calls that lower levels of firmware can
-> access throug into reusable libraries that will also be useful for
-> actual hardware platforms.
-> *and* let us wiggle things around to try to shake out bugs in those (and
-> other) firmware components.
->
-> Serious question: would it be preferable if we moved to a custom DT node
-> where we stick everything in as KEY=VALUE pairs to reduce this confusion?
+On 24/6/23 19:41, Philippe Mathieu-Daudé wrote:
+> This series is part of the single binary effort.
+> 
+> All accelerator will share their per-vCPU context in
+> an opaque 'accel' pointer within the CPUState.
+> 
+> First handle HAX/NVMM/WHPX/HVF. KVM and TCG will follow
+> as two different (bigger) follow-up series.
+> 
+> Except HVF/intel, all has been (cross-)build tested.
+> 
+> I plan to send the PR myself.
+> 
+> Since v2:
+> - Addressed rth's review comments
+> - Added rth's R-b tag
+> 
+> Since v1:
+> - Addressed rth's review comments
+> - Added rth's R-b tag
+> - Converted HVF intel (untested)
+> - Rebased
+> 
+> Philippe Mathieu-Daudé (16):
+>    MAINTAINERS: Update Roman Bolshakov email address
+>    accel: Document generic accelerator headers
+>    accel: Remove unused hThread variable on TCG/WHPX
+>    accel: Fix a leak on Windows HAX
+>    accel: Destroy HAX vCPU threads once done
+>    accel: Rename 'hax_vcpu' as 'accel' in CPUState
+>    accel: Rename HAX 'struct hax_vcpu_state' -> AccelCPUState
+>    accel: Move HAX hThread to accelerator context
+>    accel: Remove NVMM unreachable error path
+>    accel: Rename NVMM 'struct qemu_vcpu' -> AccelCPUState
+>    accel: Inline NVMM get_qemu_vcpu()
+>    accel: Remove WHPX unreachable error path
+>    accel: Rename WHPX 'struct whpx_vcpu' -> AccelCPUState
+>    accel: Inline WHPX get_whpx_vcpu()
+>    accel: Rename 'cpu_state' -> 'cs'
+>    accel: Rename HVF 'struct hvf_vcpu_state' -> AccelCPUState
 
-I don't really mind, I just want it to be clear what is going on here
-so that when I'm reviewing patches I have a design I can keep in mind.
-The way this was presented to me originally, at least as I recall
-it, was "this board will work the way that real hardware does, ie
-the firmware knows what hardware it was built for". In that
-setup QEMU doesn't need to tell the firmware anything, except
-a very limited set of things which it's more convenient to have
-flexible and specifiable on the QEMU command line, like number of
-CPUs and size of RAM. And that's what the comments in the source say
-at the moment:
-
-/*
- * Firmware on this machine only uses ACPI table to load OS, these limited
- * device tree nodes are just to let firmware know the info which varies from
- * command line parameters, so it is not necessary to be fully compatible
- * with the kernel CPU and NUMA binding rules.
- */
-
-So that's the design I've been implicitly reviewing these changes
-against.
-
-It is pretty surprising to me to hear that in real-world systems
-the firmware is not built to know exactly where its UART, USB
-controller, etc are and that it is instead asking some board
-management controller chip for all this information and being
-fully-flexible in the firmware that runs on the application CPU,
-but I have zero experience in that area so that's just my
-lack of knowledge speaking.
-
-If there's a standard/common protocol for how the BMC communicates
-that info to the application-CPU firmware then it might be
-less confusing to use it, I guess. But I'm not inherently
-opposed to putting this stuff in a dtb-format blob.
-
-(Side note: is the commit message line "Trusted Firmware will
-read it and provide to next firmware level." intended to
-mean "TF will take this dtb node and pass it on", or merely
-"TF will take the information in this dtb node and use
-it to construct or modify the ACPI tables it passes to the
-next level"?)
-
-thanks
--- PMM
+Except the MAINTAINERS patch, all the rest is reviewed, so I plan
+to send a PR tomorrow (dropping the first patch, nobody complained
+about Roman email bouncing for months so we can keep ignoring the
+automated emails).

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a25-20020a5d4579000000b003048477729asm10824061wrc.81.2023.06.27.09.07.03
+        by smtp.gmail.com with ESMTPSA id z26-20020a1c4c1a000000b003f91e32b1ebsm1868903wmf.17.2023.06.27.09.07.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Jun 2023 09:07:03 -0700 (PDT)
+        Tue, 27 Jun 2023 09:07:04 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 009E91FFBC;
+	by zen.linaroharston (Postfix) with ESMTP id 6B6121FFC6;
 	Tue, 27 Jun 2023 17:07:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,66 +39,60 @@ Cc: qemu-arm@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v3 11/36] tests/lcitool: update to latest version
-Date: Tue, 27 Jun 2023 17:06:35 +0100
-Message-Id: <20230627160700.2955547-12-alex.bennee@linaro.org>
+Subject: [PATCH v3 14/36] tests/lcitool: introduce qemu-minimal
+Date: Tue, 27 Jun 2023 17:06:38 +0100
+Message-Id: <20230627160700.2955547-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160700.2955547-1-alex.bennee@linaro.org>
 References: <20230627160700.2955547-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0ha5JijuFMxx
+X-TUID: 54xpTruyXw0C
 
-We need this for the riscv64 and gcc-native mappings. As the older
-alpine release has been dropped from the mappings we also need to bump
-the version of alpine we use.
+This is a very bare bones set of dependencies for a minimal build of
+QEMU. This will be useful for minimal cross-compile sanity check based
+on things like Debian Sid where stuff isn't always in sync.
 
-Message-Id: <20230623122100.1640995-13-alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-16-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/docker/dockerfiles/alpine.docker | 4 ++--
- tests/lcitool/libvirt-ci               | 2 +-
- tests/lcitool/refresh                  | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 0097637dca..43370f7b36 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all alpine-316 qemu
-+#  $ lcitool dockerfile --layers all alpine-318 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
- 
--FROM docker.io/library/alpine:3.16
-+FROM docker.io/library/alpine:3.18
- 
- RUN apk update && \
-     apk upgrade && \
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index c8971e90ac..b0f44f929a 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit c8971e90ac169ee2b539c747f74d96c876debdf9
-+Subproject commit b0f44f929a81c0a604fb7fbf8afc34d37ab0eae9
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index f1570b54df..5d36a62b10 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -115,7 +115,7 @@ try:
-     #
-     # Standard native builds
-     #
--    generate_dockerfile("alpine", "alpine-316")
-+    generate_dockerfile("alpine", "alpine-318")
-     generate_dockerfile("centos8", "centos-stream-8")
-     generate_dockerfile("debian-amd64", "debian-11",
-                         trailer="".join(debian11_extras))
+---
+v2
+  - minor rewording
+---
+ tests/lcitool/projects/qemu-minimal.yml | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+ create mode 100644 tests/lcitool/projects/qemu-minimal.yml
+
+diff --git a/tests/lcitool/projects/qemu-minimal.yml b/tests/lcitool/projects/qemu-minimal.yml
+new file mode 100644
+index 0000000000..b60fec715c
+--- /dev/null
++++ b/tests/lcitool/projects/qemu-minimal.yml
+@@ -0,0 +1,23 @@
++# Very minimal set of qemu packages, used for minimal cross-compile sanity checks
++---
++packages:
++ - bash
++ - bc
++ - bison
++ - flex
++ - g++
++ - gcc
++ - gcc-native
++ - glib2
++ - glib2-native
++ - glib2-static
++ - libc-static
++ - libfdt
++ - libffi
++ - make
++ - meson
++ - ninja
++ - pixman
++ - pkg-config
++ - python3
++ - python3-venv
 -- 
 2.39.2

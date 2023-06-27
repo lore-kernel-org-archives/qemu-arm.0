@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id da16-20020a056000197000b0031274a184d5sm10900882wrb.109.2023.06.27.09.07.02
+        by smtp.gmail.com with ESMTPSA id a10-20020a05600c224a00b003faef96ee78sm5045149wmm.33.2023.06.27.09.07.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:07:03 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D74361FFC4;
+	by zen.linaroharston (Postfix) with ESMTP id A265F1FFC3;
 	Tue, 27 Jun 2023 17:07:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,39 +39,50 @@ Cc: qemu-arm@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v3 10/36] Makefile: add lcitool-refresh to UNCHECKED_GOALS
-Date: Tue, 27 Jun 2023 17:06:34 +0100
-Message-Id: <20230627160700.2955547-11-alex.bennee@linaro.org>
+Subject: [PATCH v3 08/36] tests/qtests: clean-up and fix leak in generic_fuzz
+Date: Tue, 27 Jun 2023 17:06:32 +0100
+Message-Id: <20230627160700.2955547-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160700.2955547-1-alex.bennee@linaro.org>
 References: <20230627160700.2955547-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PcatXw+iho4Y
+X-TUID: FXakIOqbhjnr
 
-This is yet another make target you usually run in the top level of
-the source directory.
+An update to the clang tooling detects more issues with the code
+including a memory leak from the g_string_new() allocation. Clean up
+the code to avoid the allocation and use ARRAY_SIZE while we are at
+it.
 
-Message-Id: <20230623122100.1640995-12-alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/fuzz/generic_fuzz.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 804a5681e0..5d48dfac18 100644
---- a/Makefile
-+++ b/Makefile
-@@ -28,7 +28,7 @@ quiet-command = $(quiet-@)$(call quiet-command-run,$1,$2,$3)
+diff --git a/tests/qtest/fuzz/generic_fuzz.c b/tests/qtest/fuzz/generic_fuzz.c
+index c525d22951..d0a59f7475 100644
+--- a/tests/qtest/fuzz/generic_fuzz.c
++++ b/tests/qtest/fuzz/generic_fuzz.c
+@@ -954,17 +954,10 @@ static void register_generic_fuzz_targets(void)
+             .crossover = generic_fuzz_crossover
+     });
  
- UNCHECKED_GOALS := TAGS gtags cscope ctags dist \
-     help check-help print-% \
--    docker docker-% vm-help vm-test vm-build-%
-+    docker docker-% lcitool-refresh vm-help vm-test vm-build-%
- 
- all:
- .PHONY: all clean distclean recurse-all dist msi FORCE
+-    GString *name;
+-    const generic_fuzz_config *config;
+-
+-    for (int i = 0;
+-         i < sizeof(predefined_configs) / sizeof(generic_fuzz_config);
+-         i++) {
++    for (int i = 0; i < ARRAY_SIZE(predefined_configs); i++) {
+         config = predefined_configs + i;
+-        name = g_string_new("generic-fuzz");
+-        g_string_append_printf(name, "-%s", config->name);
+         fuzz_add_target(&(FuzzTarget){
+-                .name = name->str,
++                .name = g_strconcat("generic-fuzz-", config->name, NULL),
+                 .description = "Predefined generic-fuzz config.",
+                 .get_init_cmdline = generic_fuzz_predefined_config_cmdline,
+                 .pre_fuzz = generic_pre_fuzz,
 -- 
 2.39.2

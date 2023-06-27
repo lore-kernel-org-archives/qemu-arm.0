@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a10-20020a05600c224a00b003faef96ee78sm5067377wmm.33.2023.06.27.09.15.48
+        by smtp.gmail.com with ESMTPSA id z2-20020a5d6542000000b00313eee8c080sm7285706wrv.98.2023.06.27.09.15.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:15:49 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3A7141FFCD;
-	Tue, 27 Jun 2023 17:09:46 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 3968E1FFBC;
+	Tue, 27 Jun 2023 17:09:48 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -38,39 +38,129 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 19/36] plugins: update lockstep to use g_memdup2
-Date: Tue, 27 Jun 2023 17:09:26 +0100
-Message-Id: <20230627160943.2956928-20-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v3 36/36] tests/tcg: Add a test for info proc mappings
+Date: Tue, 27 Jun 2023 17:09:43 +0100
+Message-Id: <20230627160943.2956928-37-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: inLNMExqu5NL
+X-TUID: Ror8mCvXPmkF
 
-The old g_memdup is deprecated, use the replacement.
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Message-Id: <20230623122100.1640995-21-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Add a small test to prevent regressions.
+
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20230621203627.1808446-9-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/lockstep.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/multiarch/Makefile.target           |  9 ++-
+ .../multiarch/gdbstub/test-proc-mappings.py   | 65 +++++++++++++++++++
+ 2 files changed, 73 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/multiarch/gdbstub/test-proc-mappings.py
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index e36f0b9562..3614c3564c 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -130,7 +130,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-         }
-     }
-     divergence_log = g_slist_prepend(divergence_log,
--                                     g_memdup(&divrec, sizeof(divrec)));
-+                                     g_memdup2(&divrec, sizeof(divrec)));
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 373db69648..43bddeaf21 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -81,6 +81,13 @@ run-gdbstub-qxfer-auxv-read: sha1
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-qxfer-auxv-read.py, \
+ 	basic gdbstub qXfer:auxv:read support)
  
-     /* Output short log entry of going out of sync... */
-     if (verbose || divrec.distance == 1 || diverged) {
++run-gdbstub-proc-mappings: sha1
++	$(call run-test, $@, $(GDB_SCRIPT) \
++		--gdb $(HAVE_GDB_BIN) \
++		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
++		--bin $< --test $(MULTIARCH_SRC)/gdbstub/test-proc-mappings.py, \
++	proc mappings support)
++
+ run-gdbstub-thread-breakpoint: testthread
+ 	$(call run-test, $@, $(GDB_SCRIPT) \
+ 		--gdb $(HAVE_GDB_BIN) \
+@@ -97,7 +104,7 @@ run-gdbstub-%:
+ 	$(call skip-test, "gdbstub test $*", "need working gdb")
+ endif
+ EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+-	      run-gdbstub-thread-breakpoint
++	      run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint
+ 
+ # ARM Compatible Semi Hosting Tests
+ #
+diff --git a/tests/tcg/multiarch/gdbstub/test-proc-mappings.py b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+new file mode 100644
+index 0000000000..7b596ac21b
+--- /dev/null
++++ b/tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+@@ -0,0 +1,65 @@
++"""Test that gdbstub has access to proc mappings.
++
++This runs as a sourced script (via -x, via run-test.py)."""
++from __future__ import print_function
++import gdb
++import sys
++
++
++n_failures = 0
++
++
++def report(cond, msg):
++    """Report success/fail of a test"""
++    if cond:
++        print("PASS: {}".format(msg))
++    else:
++        print("FAIL: {}".format(msg))
++        global n_failures
++        n_failures += 1
++
++
++def run_test():
++    """Run through the tests one by one"""
++    try:
++        mappings = gdb.execute("info proc mappings", False, True)
++    except gdb.error as exc:
++        exc_str = str(exc)
++        if "Not supported on this target." in exc_str:
++            # Detect failures due to an outstanding issue with how GDB handles
++            # the x86_64 QEMU's target.xml, which does not contain the
++            # definition of orig_rax. Skip the test in this case.
++            print("SKIP: {}".format(exc_str))
++            return
++        raise
++    report(isinstance(mappings, str), "Fetched the mappings from the inferior")
++    report("/sha1" in mappings, "Found the test binary name in the mappings")
++
++
++def main():
++    """Prepare the environment and run through the tests"""
++    try:
++        inferior = gdb.selected_inferior()
++        print("ATTACHED: {}".format(inferior.architecture().name()))
++    except (gdb.error, AttributeError):
++        print("SKIPPING (not connected)")
++        exit(0)
++
++    if gdb.parse_and_eval('$pc') == 0:
++        print("SKIP: PC not set")
++        exit(0)
++
++    try:
++        # These are not very useful in scripts
++        gdb.execute("set pagination off")
++        gdb.execute("set confirm off")
++
++        # Run the actual tests
++        run_test()
++    except gdb.error:
++        report(False, "GDB Exception: {}".format(sys.exc_info()[0]))
++    print("All tests complete: %d failures" % n_failures)
++    exit(n_failures)
++
++
++main()
 -- 
 2.39.2

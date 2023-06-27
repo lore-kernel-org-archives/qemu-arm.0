@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id g6-20020a5d6986000000b003047dc162f7sm10825408wru.67.2023.06.27.09.09.45
+        by smtp.gmail.com with ESMTPSA id bf11-20020a0560001ccb00b003062b2c5255sm10812234wrb.40.2023.06.27.09.09.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:09:46 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1B9931FFBD;
-	Tue, 27 Jun 2023 17:09:45 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id F25DE1FFBC;
+	Tue, 27 Jun 2023 17:09:44 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -39,66 +39,39 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 11/36] tests/lcitool: update to latest version
-Date: Tue, 27 Jun 2023 17:09:18 +0100
-Message-Id: <20230627160943.2956928-12-alex.bennee@linaro.org>
+Subject: [PATCH v3 10/36] Makefile: add lcitool-refresh to UNCHECKED_GOALS
+Date: Tue, 27 Jun 2023 17:09:17 +0100
+Message-Id: <20230627160943.2956928-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vRVCJS1iVPFC
+X-TUID: DiyUHYZThnik
 
-We need this for the riscv64 and gcc-native mappings. As the older
-alpine release has been dropped from the mappings we also need to bump
-the version of alpine we use.
+This is yet another make target you usually run in the top level of
+the source directory.
 
-Message-Id: <20230623122100.1640995-13-alex.bennee@linaro.org>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-12-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/alpine.docker | 4 ++--
- tests/lcitool/libvirt-ci               | 2 +-
- tests/lcitool/refresh                  | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 0097637dca..43370f7b36 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all alpine-316 qemu
-+#  $ lcitool dockerfile --layers all alpine-318 qemu
- #
- # https://gitlab.com/libvirt/libvirt-ci
+diff --git a/Makefile b/Makefile
+index 804a5681e0..5d48dfac18 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ quiet-command = $(quiet-@)$(call quiet-command-run,$1,$2,$3)
  
--FROM docker.io/library/alpine:3.16
-+FROM docker.io/library/alpine:3.18
+ UNCHECKED_GOALS := TAGS gtags cscope ctags dist \
+     help check-help print-% \
+-    docker docker-% vm-help vm-test vm-build-%
++    docker docker-% lcitool-refresh vm-help vm-test vm-build-%
  
- RUN apk update && \
-     apk upgrade && \
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index c8971e90ac..b0f44f929a 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit c8971e90ac169ee2b539c747f74d96c876debdf9
-+Subproject commit b0f44f929a81c0a604fb7fbf8afc34d37ab0eae9
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index f1570b54df..5d36a62b10 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -115,7 +115,7 @@ try:
-     #
-     # Standard native builds
-     #
--    generate_dockerfile("alpine", "alpine-316")
-+    generate_dockerfile("alpine", "alpine-318")
-     generate_dockerfile("centos8", "centos-stream-8")
-     generate_dockerfile("debian-amd64", "debian-11",
-                         trailer="".join(debian11_extras))
+ all:
+ .PHONY: all clean distclean recurse-all dist msi FORCE
 -- 
 2.39.2

@@ -1,246 +1,199 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1502301ejx;
-        Tue, 27 Jun 2023 08:39:27 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5hddGCLXda2rHYj1o3pROS5EWS8D4VTIaSBjqvCLZnoyLg7eT6EPzSt6Ak25GNPsnfkaxF
-X-Received: by 2002:a05:6102:11f2:b0:43b:3e78:9886 with SMTP id e18-20020a05610211f200b0043b3e789886mr10390419vsg.26.1687880367097;
-        Tue, 27 Jun 2023 08:39:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687880367; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ShXhis/SG5ParXVJqCuGmrv7e3WWbS7Kj25brtVxefA5221vQLNEJKYl6JHaNaFVyg
-         KI98X9KWgC7lTyKEJpy4T8t1l3IgotiN7maW+S25yhor0bJEpHJRWuVhONdNW5s7ha+5
-         MRriiSoYWaWUWQiUudgT3CGRqaNO9fvCmaGTQ89DXyWyai2oXoY8GvI0y+4bf0OhhNMM
-         Gpp5BLZcWDzAdN5Kn7Er1N41cK19YGYGCI9aF0HmMAk1aZG6xYi3A2l97lYGhww+JWtW
-         jKFVRisCYQbU6Butiz9tdOFyr26YDVn7TZzLLLJ0K34kQUjj5QrX93JIr6olCSLyoaWW
-         ySVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=C9XtCg7ib6Y1so2sFbQZ4q+7D9uO9H50xx2zsF5d9XM=;
-        fh=MlEuZ6Z7NRXV7Fo71eu+rWdtjt4EJO6NDQkxG8geMOk=;
-        b=Q6lAzZManNMvZvSy/WYxLLfTwU78QJZfeERwi1zut0pfGgt59lUR9aXpQrhn1t33nY
-         ZsPjLzWtjv9T4M4uNWbyEh12to+2MmUQkWOAChVp45kdszjn+qjcxgMnAlwosBWvfXYH
-         pouxpKEvH/hY6AIVaPiv6isS7kvQyVOYRZZ8BHw7hs/vlF4m600P4mvN9bwKbGG6lcjs
-         PwS0eW9Tm2Ksgx4o+32dXW6/YkzOZePVcRb5jeAAVQpaGL4zu/ntzqcnSvVmmoqSgyao
-         kRKbIwzI2bqzcKwD3bN1z4/CZfBTOnaZragoYqZpp+L9SL4wkm8baHYkBW82ggBnIJ0T
-         AF6w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=U+hZJG8Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22-20020ac84e96000000b003fddf30e673si3208246qtp.484.2023.06.27.08.39.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Jun 2023 08:39:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=U+hZJG8Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qEAmW-0003em-HW; Tue, 27 Jun 2023 11:39:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qEAmU-0003cG-Bv; Tue, 27 Jun 2023 11:39:02 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
- id 1qEAmS-0004dX-91; Tue, 27 Jun 2023 11:39:02 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 35REd3Zf007112; Tue, 27 Jun 2023 15:38:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=qcppdkim1;
- bh=C9XtCg7ib6Y1so2sFbQZ4q+7D9uO9H50xx2zsF5d9XM=;
- b=U+hZJG8Zmy84QA4zQSHUya4VAR5Xy/jhjOmGmxBnPZ70qCYjfATtzuJ+XaZ9J/DBZoj0
- PBFz200T2L0n7pobo+zpEFcFiaZ246QVsCHemovaDu5fMOnYR/0xutOtVpExj4QMbqbP
- VRUUE+Q7f9GmO560CNWgxSEev+vgfc8iZUXHhROh3V5BRpQ1EcKTCieQg/b965WJ9Y3i
- p81JeAUbZxFD25qnhxUhsZilHnocTl4J2gFhCrJqYEO5xwsOAqjrhfVo6y35aQ4Azvaq
- TXRQmf6mttxaU1jtEcN9rcNLVeOeRc2qfgMn7XG9X8Dl61G99NHieWX3SR5Wbleu4ptk og== 
-Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
- [199.106.103.254])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3rfrdt9bd1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 27 Jun 2023 15:38:57 +0000
-Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
- [10.45.79.139])
- by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 35RFctmN020253
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 27 Jun 2023 15:38:55 GMT
-Received: from [10.111.135.140] (10.80.80.8) by nasanex01c.na.qualcomm.com
- (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.42; Tue, 27 Jun
- 2023 08:38:54 -0700
-Message-ID: <16bc062c-f479-54b2-1435-f4ce53e30f2f@quicinc.com>
-Date: Tue, 27 Jun 2023 16:38:52 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id u8-20020a05600c210800b003f9b4330880sm11262112wml.29.2023.06.27.09.07.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Jun 2023 09:07:01 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C6D3A1FFBB;
+	Tue, 27 Jun 2023 17:07:00 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Leonardo Bras <leobras@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Bandan Das <bsd@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Bin Meng <bmeng.cn@gmail.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Juan Quintela <quintela@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Peter Xu <peterx@redhat.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Alexander Bulekov <alxndr@bu.edu>
+Subject: [PATCH v3 00/36] maintainer omnibus: testing, fuzz, plugins, documentation (pre-PR)
+Date: Tue, 27 Jun 2023 17:06:24 +0100
+Message-Id: <20230627160700.2955547-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- <qemu-devel@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>,
- <qemu-arm@nongnu.org>
-References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
- <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
- <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
- <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
- <d8e93b7b-5e86-5e26-21cd-fefb76f88204@quicinc.com>
- <CAFEAcA8L--h_3QvKff66mw3VG7G__hwv=syw2hU2Qby8jkJPRw@mail.gmail.com>
-From: Leif Lindholm <quic_llindhol@quicinc.com>
-In-Reply-To: <CAFEAcA8L--h_3QvKff66mw3VG7G__hwv=syw2hU2Qby8jkJPRw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01c.na.qualcomm.com (10.45.79.139)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: rxwCvJcb6RHxlKTCBZ1EQyZc8RwvAXlS
-X-Proofpoint-GUID: rxwCvJcb6RHxlKTCBZ1EQyZc8RwvAXlS
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.254,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
- definitions=2023-06-27_10,2023-06-27_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- impostorscore=0 suspectscore=0 phishscore=0 mlxlogscore=999
- lowpriorityscore=0 clxscore=1015 adultscore=0 mlxscore=0 bulkscore=0
- spamscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2305260000 definitions=main-2306270143
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_llindhol@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.103,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W18BkIUH9ZUq
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: +BibO3ufHLI4
 
-On 2023-06-27 15:27, Peter Maydell wrote:
->> Serious question: would it be preferable if we moved to a custom DT node
->> where we stick everything in as KEY=VALUE pairs to reduce this confusion?
-> 
-> I don't really mind, I just want it to be clear what is going on here
-> so that when I'm reviewing patches I have a design I can keep in mind.
+As softfreeze is fast approaching I thought it would be work combining
+my various trees into an omnibus series to ease the review and
+merging.
 
-No, I totally understand that. I'm just feeling that the call we made to 
-use DT to pass this information tends to put everyone's mind into the 
-wrong state when reviewing.
+The testing updates exposed a number of latent leaks that confused the
+oss-fuzz jobs (hence the test-fuzz addition to help debug that). This
+also includes some minor plugin updates and finally some documentation
+updates that clean-up and expose the QOM and QDEV APIs which are so
+core to emulating anything in QEMU.
 
-> The way this was presented to me originally, at least as I recall
-> it, was "this board will work the way that real hardware does, ie
-> the firmware knows what hardware it was built for".
- >
-> In that
-> setup QEMU doesn't need to tell the firmware anything, except
-> a very limited set of things which it's more convenient to have
-> flexible and specifiable on the QEMU command line, like number of
-> CPUs and size of RAM. And that's what the comments in the source say
-> at the moment:
-> 
-> /*
->   * Firmware on this machine only uses ACPI table to load OS, these limited
->   * device tree nodes are just to let firmware know the info which varies from
->   * command line parameters, so it is not necessary to be fully compatible
->   * with the kernel CPU and NUMA binding rules.
->   */
-> 
-> So that's the design I've been implicitly reviewing these changes
-> against.
+v2
+  - applied a bunch of review tags
+  - added missing doc suggestions from Paolo
+  - tweaked the plugin fix for CI
 
-I still agree fully with the above. But possibly I meant less by what I 
-said than you heard. Human language, eh?
+v3
+  - few more tags
+  - checkpatch cleanups
 
-The only things that *need* hardcoding really are:
-- What (family of) platform(s) is this? (sbsa-ref)
-- Start of Secure memory.
-- Start of Non-secure memory.
-- Mechanism by which to receive platform configuration data that might
-   differ at runtime.
+Alex Bennée (21):
+  gitlab: reduce testing scope of check-gcov
+  tests/tcg: add mechanism to handle plugin arguments
+  qemu-keymap: properly check return from xkb_keymap_mod_get_index
+  scripts/oss-fuzz: add a suppression for keymap
+  tests/qtests: clean-up and fix leak in generic_fuzz
+  tests/docker: add test-fuzz
+  Makefile: add lcitool-refresh to UNCHECKED_GOALS
+  tests/lcitool: update to latest version
+  tests/lcitool: add an explicit gcc-native package
+  tests/lcitool: introduce qemu-minimal
+  tests/docker: convert riscv64-cross to lcitool
+  plugins: force slow path when plugins instrument memory ops
+  plugins: fix memory leak while parsing options
+  plugins: update lockstep to use g_memdup2
+  docs/devel: add some front matter to the devel index
+  include/migration: mark vmstate_register() as a legacy function
+  include/hw/qdev-core: fixup kerneldoc annotations
+  docs/devel: split qom-api reference into new file
+  docs/devel: introduce some key concepts for QOM development
+  gdbstub: lightly refactor connection to avoid snprintf
+  gdbstub: clean-up vcont handling to avoid goto
 
-Admittedly, using QEMU gives us more flexibility than would be likely in 
-a real platform - like specifying any supported CPU that can access the 
-whole address map. A real platform would be very unlikely to have 
-runtime detection for everything from Cortex-A57 to Neoverse-N2 - but 
-it's genuinely useful for our (non-platform-specific) firmware 
-development to be able to do that.
+Ani Sinha (1):
+  docs/devel: remind developers to run CI container pipeline when
+    updating images
 
-> It is pretty surprising to me to hear that in real-world systems
-> the firmware is not built to know exactly where its UART, USB
-> controller, etc are and that it is instead asking some board
-> management controller chip for all this information and being
-> fully-flexible in the firmware that runs on the application CPU,
-> but I have zero experience in that area so that's just my
-> lack of knowledge speaking.
+Daniel P. Berrangé (2):
+  gitlab: explicit set artifacts publishing criteria
+  gitlab: ensure coverage job also publishes meson log
 
-As an example, in said previous design we were prototyping having the 
-ability to hold PCIe space inside 48 bits (to work with non-LPA2-aware
-operating systems utilising 4k pages) and having a software-configurable 
-option to expand into 52 bits (enabling more space for both DRAM and 
-PCIe), where an LPA2-aware (or 64k-paged) OS was used.
+Erik Skultety (1):
+  tests/lcitool: Bump fedora container versions
 
-The addresses (from the application processor's perspective) of certain 
-other i/o blocks were also ultimately decided by a microcontroller 
-programming the CMN. So even if we "decided" on locations for them and 
-stuck to those for simplicity, they weren't actually hard-wired.
+Ilya Leoshkevich (8):
+  linux-user: Expose do_guest_openat() and do_guest_readlink()
+  linux-user: Add "safe" parameter to do_guest_openat()
+  linux-user: Emulate /proc/self/smaps
+  gdbstub: Expose gdb_get_process() and gdb_get_first_cpu_in_process()
+  gdbstub: Report the actual qemu-user pid
+  gdbstub: Add support for info proc mappings
+  docs: Document security implications of debugging
+  tests/tcg: Add a test for info proc mappings
 
-> If there's a standard/common protocol for how the BMC communicates
-> that info to the application-CPU firmware then it might be
-> less confusing to use it, I guess. But I'm not inherently
-> opposed to putting this stuff in a dtb-format blob.
+Marcin Juszkiewicz (1):
+  tests/avocado: update firmware to enable sbsa-ref/max
 
-Not really. If anything I'm hoping to inspire standardisation along 
-those axes by having libraries available to just plug in.
+Nicholas Piggin (1):
+  gdbstub: Permit reverse step/break to provide stop response
 
-> (Side note: is the commit message line "Trusted Firmware will
-> read it and provide to next firmware level." intended to
-> mean "TF will take this dtb node and pass it on", or merely
-> "TF will take the information in this dtb node and use
-> it to construct or modify the ACPI tables it passes to the
-> next level"?)
+Philippe Mathieu-Daudé (1):
+  docs/devel/qom.rst: Correct code style
 
-The latter.
-We're kind of working our way backwards towards the design we ultimately 
-want, so the DT was originally placed in NS DRAM since that let us reuse 
-more of the mach-virt code in edk2 rather than needing to rewrite 
-everything to get anything working.
+ MAINTAINERS                                   |   1 +
+ docs/devel/index-api.rst                      |   2 +
+ docs/devel/index-process.rst                  |   2 +
+ docs/devel/index-tcg.rst                      |   2 +
+ docs/devel/index.rst                          |  24 +-
+ docs/devel/qdev-api.rst                       |   7 +
+ docs/devel/qom-api.rst                        |   9 +
+ docs/devel/qom.rst                            |  65 +++-
+ docs/devel/tcg.rst                            |   2 +
+ docs/devel/testing.rst                        |   6 +
+ docs/system/gdb.rst                           |  15 +
+ Makefile                                      |   2 +-
+ gdbstub/internals.h                           |   7 +
+ include/exec/cpu-all.h                        |   2 +-
+ include/hw/core/cpu.h                         |  17 +
+ include/hw/qdev-core.h                        | 367 ++++++++++++------
+ include/migration/vmstate.h                   |  10 +-
+ linux-user/qemu.h                             |   3 +
+ accel/tcg/cputlb.c                            |   5 +-
+ accel/tcg/user-exec.c                         |   8 +-
+ contrib/plugins/cache.c                       |   2 +-
+ contrib/plugins/drcov.c                       |   2 +-
+ contrib/plugins/execlog.c                     |   2 +-
+ contrib/plugins/hotblocks.c                   |   2 +-
+ contrib/plugins/hotpages.c                    |   2 +-
+ contrib/plugins/howvec.c                      |   2 +-
+ contrib/plugins/hwprofile.c                   |   2 +-
+ contrib/plugins/lockstep.c                    |   4 +-
+ gdbstub/gdbstub.c                             | 115 ++++--
+ gdbstub/softmmu.c                             |  19 +-
+ gdbstub/user-target.c                         | 139 +++++++
+ linux-user/syscall.c                          | 128 ++++--
+ qemu-keymap.c                                 |  24 +-
+ target/arm/tcg/sve_helper.c                   |   4 -
+ tests/plugin/bb.c                             |   2 +-
+ tests/plugin/insn.c                           |   2 +-
+ tests/plugin/mem.c                            |   2 +-
+ tests/plugin/syscall.c                        |   2 +-
+ tests/qtest/fuzz/generic_fuzz.c               |  11 +-
+ .gitlab-ci.d/buildtest-template.yml           |   4 +-
+ .gitlab-ci.d/buildtest.yml                    |   7 +-
+ .gitlab-ci.d/crossbuild-template.yml          |   1 +
+ .gitlab-ci.d/crossbuilds.yml                  |   2 +
+ .gitlab-ci.d/opensbi.yml                      |   1 +
+ scripts/oss-fuzz/lsan_suppressions.txt        |   3 +
+ tests/avocado/machine_aarch64_sbsaref.py      |  23 +-
+ tests/docker/dockerfiles/alpine.docker        |   4 +-
+ .../dockerfiles/debian-amd64-cross.docker     |   1 +
+ .../dockerfiles/debian-arm64-cross.docker     |   1 +
+ .../dockerfiles/debian-armel-cross.docker     |   1 +
+ .../dockerfiles/debian-armhf-cross.docker     |   1 +
+ .../dockerfiles/debian-mips64el-cross.docker  |   1 +
+ .../dockerfiles/debian-mipsel-cross.docker    |   1 +
+ .../dockerfiles/debian-ppc64el-cross.docker   |   1 +
+ .../dockerfiles/debian-riscv64-cross.docker   | 119 +++---
+ .../dockerfiles/debian-s390x-cross.docker     |   1 +
+ .../dockerfiles/fedora-win32-cross.docker     |   5 +-
+ .../dockerfiles/fedora-win64-cross.docker     |   5 +-
+ tests/docker/dockerfiles/fedora.docker        |   4 +-
+ tests/docker/test-fuzz                        |  28 ++
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/projects/qemu-minimal.yml       |  27 ++
+ tests/lcitool/projects/qemu.yml               |   1 +
+ tests/lcitool/refresh                         |  18 +-
+ tests/tcg/Makefile.target                     |   8 +-
+ tests/tcg/aarch64/Makefile.target             |   8 +
+ tests/tcg/multiarch/Makefile.target           |   9 +-
+ .../multiarch/gdbstub/test-proc-mappings.py   |  65 ++++
+ 68 files changed, 1061 insertions(+), 313 deletions(-)
+ create mode 100644 docs/devel/qdev-api.rst
+ create mode 100644 docs/devel/qom-api.rst
+ create mode 100755 tests/docker/test-fuzz
+ create mode 100644 tests/lcitool/projects/qemu-minimal.yml
+ create mode 100644 tests/tcg/multiarch/gdbstub/test-proc-mappings.py
 
-Now we're getting versioning in place, we will eventually deprecate that 
-and move the DT to Secure DRAM, dropping access to it for Non-secure 
-firmware. But we never exposed the DT to the OS as a configuration 
-table, it was always used to generate the bits of ACPI that weren't just 
-hardcoded.
-
-/
-     Leif
-
-
-
-/
-     Leif
-
-
+-- 
+2.39.2

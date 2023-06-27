@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f4-20020a1c6a04000000b003fba2734f1esm2525151wmc.1.2023.06.27.09.09.46
+        by smtp.gmail.com with ESMTPSA id 14-20020a05600c020e00b003f8d6647661sm14109513wmi.15.2023.06.27.09.09.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Jun 2023 09:09:49 -0700 (PDT)
+        Tue, 27 Jun 2023 09:09:51 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BE23F1FFC8;
-	Tue, 27 Jun 2023 17:09:45 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 71F201FFD6;
+	Tue, 27 Jun 2023 17:09:47 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -38,110 +38,104 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 16/36] tests/avocado: update firmware to enable sbsa-ref/max
-Date: Tue, 27 Jun 2023 17:09:23 +0100
-Message-Id: <20230627160943.2956928-17-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v3 30/36] linux-user: Add "safe" parameter to do_guest_openat()
+Date: Tue, 27 Jun 2023 17:09:37 +0100
+Message-Id: <20230627160943.2956928-31-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: aumcpLJBlDWO
+X-TUID: J9F1KfhoH7NJ
 
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Update prebuilt firmware images to have TF-A with FEAT_FGT support
-enabled. This allowed us to enable test for "max" cpu in sbsa-ref
-machine.
+gdbstub cannot meaningfully handle QEMU_ERESTARTSYS, and it doesn't
+need to. Add a parameter to do_guest_openat() that makes it use
+openat() instead of safe_openat(), so that it becomes usable from
+gdbstub.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Message-Id: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230621203627.1808446-3-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - re-enable for CI
----
- tests/avocado/machine_aarch64_sbsaref.py | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
+ linux-user/qemu.h    |  2 +-
+ linux-user/syscall.c | 18 +++++++++++++-----
+ 2 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 0a79fa7ab6..cce6ef9f65 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -29,23 +29,23 @@ def fetch_firmware(self):
-         """
-         Flash volumes generated using:
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index a5830ec239..9b8e0860d7 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -166,7 +166,7 @@ typedef struct TaskState {
  
--        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
-+        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
+ abi_long do_brk(abi_ulong new_brk);
+ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+-                    int flags, mode_t mode);
++                    int flags, mode_t mode, bool safe);
+ ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz);
  
-         - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
+ /* user access */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index fa83737192..ecd9f5e23d 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8449,7 +8449,7 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
+ #endif
  
-         - Tianocore EDK II
--          https://github.com/tianocore/edk2/tree/494127613b
--          https://github.com/tianocore/edk2-non-osi/tree/41876073
--          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
-+          https://github.com/tianocore/edk2/tree/0f9283429dd4
-+          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
-+          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-         """
+ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+-                    int flags, mode_t mode)
++                    int flags, mode_t mode, bool safe)
+ {
+     struct fake_open {
+         const char *filename;
+@@ -8476,7 +8476,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+     };
  
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
-+            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-             "download/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
-+        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
-@@ -93,15 +93,15 @@ def test_sbsaref_edk2_firmware(self):
+     if (is_proc_myself(pathname, "exe")) {
+-        return safe_openat(dirfd, exec_path, flags, mode);
++        if (safe) {
++            return safe_openat(dirfd, exec_path, flags, mode);
++        } else {
++            return openat(dirfd, exec_path, flags, mode);
++        }
+     }
  
-         # AP Trusted ROM
-         wait_for_console_pattern(self, "Booting Trusted Firmware")
--        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
-+        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
-         wait_for_console_pattern(self, "BL1: Booting BL2")
+     for (fake_open = fakes; fake_open->filename; fake_open++) {
+@@ -8518,7 +8522,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+         return fd;
+     }
  
-         # Trusted Boot Firmware
--        wait_for_console_pattern(self, "BL2: v2.8(release)")
-+        wait_for_console_pattern(self, "BL2: v2.9(release)")
-         wait_for_console_pattern(self, "Booting BL31")
+-    return safe_openat(dirfd, path(pathname), flags, mode);
++    if (safe) {
++        return safe_openat(dirfd, path(pathname), flags, mode);
++    } else {
++        return openat(dirfd, path(pathname), flags, mode);
++    }
+ }
  
-         # EL3 Runtime Software
--        wait_for_console_pattern(self, "BL31: v2.8(release)")
-+        wait_for_console_pattern(self, "BL31: v2.9(release)")
- 
-         # Non-trusted Firmware
-         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
-@@ -136,21 +136,18 @@ def boot_alpine_linux(self, cpu):
-         self.vm.launch()
-         wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
- 
--    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
-     def test_sbsaref_alpine_linux_cortex_a57(self):
-         """
-         :avocado: tags=cpu:cortex-a57
-         """
-         self.boot_alpine_linux("cortex-a57")
- 
--    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
-     def test_sbsaref_alpine_linux_neoverse_n1(self):
-         """
-         :avocado: tags=cpu:max
-         """
-         self.boot_alpine_linux("neoverse-n1")
- 
--    @skip("requires TF-A update to handle FEAT_FGT")
-     def test_sbsaref_alpine_linux_max(self):
-         """
-         :avocado: tags=cpu:max
+ ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz)
+@@ -9027,7 +9035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             return -TARGET_EFAULT;
+         ret = get_errno(do_guest_openat(cpu_env, AT_FDCWD, p,
+                                   target_to_host_bitmask(arg2, fcntl_flags_tbl),
+-                                  arg3));
++                                  arg3, true));
+         fd_trans_unregister(ret);
+         unlock_user(p, arg1, 0);
+         return ret;
+@@ -9037,7 +9045,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             return -TARGET_EFAULT;
+         ret = get_errno(do_guest_openat(cpu_env, arg1, p,
+                                   target_to_host_bitmask(arg3, fcntl_flags_tbl),
+-                                  arg4));
++                                  arg4, true));
+         fd_trans_unregister(ret);
+         unlock_user(p, arg2, 0);
+         return ret;
 -- 
 2.39.2

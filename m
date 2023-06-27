@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y12-20020a05600c364c00b003f7f249e7dfsm14308607wmq.4.2023.06.27.09.15.49
+        by smtp.gmail.com with ESMTPSA id r11-20020adfce8b000000b00313f3c11512sm5416736wrn.89.2023.06.27.09.15.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 27 Jun 2023 09:15:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3AAB01FFC6;
-	Tue, 27 Jun 2023 17:09:47 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id A9AE51FFD0;
+	Tue, 27 Jun 2023 17:09:46 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -38,124 +38,59 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Qiuhao Li <Qiuhao.Li@outlook.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 28/36] gdbstub: clean-up vcont handling to avoid goto
-Date: Tue, 27 Jun 2023 17:09:35 +0100
-Message-Id: <20230627160943.2956928-29-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH v3 23/36] docs/devel/qom.rst: Correct code style
+Date: Tue, 27 Jun 2023 17:09:30 +0100
+Message-Id: <20230627160943.2956928-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230627160943.2956928-1-alex.bennee@linaro.org>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: VOSwcVssNv2z
+X-TUID: 8yqFXF9MQ/R7
 
-We can handle all the error exit cases by using g_autofree() for the
-one thing that needs cleaning up on the exit.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Per commit 067109a11c ("docs/devel: mention the spacing requirement
+for QOM"):
+
+  For a storage structure the first declaration should always be
+  called “parent_obj” and for a class structure the first member
+  should always be called “parent_class”
+
+Adapt the QOM rST document accordingly.
+
+Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230622101717.70468-1-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- gdbstub/gdbstub.c | 28 +++++++++-------------------
- 1 file changed, 9 insertions(+), 19 deletions(-)
+ docs/devel/qom.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 9496d7b175..49143c7d83 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -573,7 +573,6 @@ static int gdb_handle_vcont(const char *p)
- {
-     int res, signal = 0;
-     char cur_action;
--    char *newstates;
-     unsigned long tmp;
-     uint32_t pid, tid;
-     GDBProcess *process;
-@@ -581,7 +580,7 @@ static int gdb_handle_vcont(const char *p)
-     GDBThreadIdKind kind;
-     unsigned int max_cpus = gdb_get_max_cpus();
-     /* uninitialised CPUs stay 0 */
--    newstates = g_new0(char, max_cpus);
-+    g_autofree char *newstates = g_new0(char, max_cpus);
+diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
+index c9237950d0..2828843058 100644
+--- a/docs/devel/qom.rst
++++ b/docs/devel/qom.rst
+@@ -26,7 +26,7 @@ features:
+    typedef DeviceClass MyDeviceClass;
+    typedef struct MyDevice
+    {
+-       DeviceState parent;
++       DeviceState parent_obj;
  
-     /* mark valid CPUs with 1 */
-     CPU_FOREACH(cpu) {
-@@ -597,8 +596,7 @@ static int gdb_handle_vcont(const char *p)
-     res = 0;
-     while (*p) {
-         if (*p++ != ';') {
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
+        int reg0, reg1, reg2;
+    } MyDevice;
+@@ -147,7 +147,7 @@ will also have a wrapper function to call it easily:
  
-         cur_action = *p++;
-@@ -606,13 +604,12 @@ static int gdb_handle_vcont(const char *p)
-             cur_action = qemu_tolower(cur_action);
-             res = qemu_strtoul(p, &p, 16, &tmp);
-             if (res) {
--                goto out;
-+                return res;
-             }
-             signal = gdb_signal_to_target(tmp);
-         } else if (cur_action != 'c' && cur_action != 's') {
-             /* unknown/invalid/unsupported command */
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
+    typedef struct MyDeviceClass
+    {
+-       DeviceClass parent;
++       DeviceClass parent_class;
  
-         if (*p == '\0' || *p == ';') {
-@@ -625,14 +622,12 @@ static int gdb_handle_vcont(const char *p)
-         } else if (*p++ == ':') {
-             kind = read_thread_id(p, &p, &pid, &tid);
-         } else {
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
- 
-         switch (kind) {
-         case GDB_READ_THREAD_ERR:
--            res = -EINVAL;
--            goto out;
-+            return -EINVAL;
- 
-         case GDB_ALL_PROCESSES:
-             cpu = gdb_first_attached_cpu();
-@@ -649,8 +644,7 @@ static int gdb_handle_vcont(const char *p)
-             process = gdb_get_process(pid);
- 
-             if (!process->attached) {
--                res = -EINVAL;
--                goto out;
-+                return -EINVAL;
-             }
- 
-             cpu = get_first_cpu_in_process(process);
-@@ -668,8 +662,7 @@ static int gdb_handle_vcont(const char *p)
- 
-             /* invalid CPU/thread specified */
-             if (!cpu) {
--                res = -EINVAL;
--                goto out;
-+                return -EINVAL;
-             }
- 
-             /* only use if no previous match occourred */
-@@ -679,12 +672,9 @@ static int gdb_handle_vcont(const char *p)
-             break;
-         }
-     }
-+
-     gdbserver_state.signal = signal;
-     gdb_continue_partial(newstates);
--
--out:
--    g_free(newstates);
--
-     return res;
- }
- 
+        void (*frobnicate) (MyDevice *obj);
+    } MyDeviceClass;
 -- 
 2.39.2

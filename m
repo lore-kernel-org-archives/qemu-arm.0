@@ -1,281 +1,288 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1813665ejx;
-        Tue, 27 Jun 2023 23:32:07 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4NHGZqN72VpJi6NHgy9MszkLL2r66AwDtZYwPjFPqXfpTXSeoZ4in0w6+0c8irJkJBUBaH
-X-Received: by 2002:a05:620a:4502:b0:75b:23a1:69f0 with SMTP id t2-20020a05620a450200b0075b23a169f0mr47713476qkp.7.1687933927193;
-        Tue, 27 Jun 2023 23:32:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1687933927; cv=pass;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1875931ejx;
+        Wed, 28 Jun 2023 02:37:59 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6bGwZh6/TR52eozi/K9r9xnqEcXMem+r0rCQiLKjCZWhRso4+msXlbr9EuYZMXQ+MAEAn0
+X-Received: by 2002:a05:622a:14cc:b0:3f9:a6ad:e734 with SMTP id u12-20020a05622a14cc00b003f9a6ade734mr46793566qtx.3.1687945079035;
+        Wed, 28 Jun 2023 02:37:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687945079; cv=none;
         d=google.com; s=arc-20160816;
-        b=ox7jetsNDydOEoWV7AE7/We4NoNdLFz87Fu956gFksoeuDC0OtcUOSvigp6spQfkhw
-         Gqxf68s6rWv1gqLKqiTXJKqA/8VEhvwrJlhdHtvZJFE0shPmb/sD3CairbykG+FV0Pzk
-         LvdS2xwX0yaIGWEHB+ObYVGv17qpHthmNghS5pysU4rZ4PXORoYplfvSRJALCHpbSsXg
-         LXzZaY4c48/htpVAcPxMabfMekD8DVjPwYlnwVh425f9DPYUIUgOIAvh1Py8/lSDhSXF
-         U2jXKpqH4qYvfpHsZV15yJW2fI5G4Z8I79JWINcOnKp3okOQt9OjLtUtKoQJoG5ouAcB
-         ojXQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=Wpkr5HQR/3UKw9Mrv3wM4ePxX7APx1l1v6UxLpgpJBo=;
-        fh=+l4ylZdkYc1sS9JumSwrD9MdoYjgOvxe90Bujz4cLXM=;
-        b=kf+6C2woVUlCKdu8jKWoFjhRyBj8uEJTn4Ocps30uNuH6BDFZP6VrK5zOASbRUQCvx
-         S9BM35lPyllPSbYDyJ7EamOPss+1c6MuXf/pAXMthWC+EKwh7CHgWd3GAlVGw5MAKAnw
-         sqIAv7zQbpSGflwsdNtxwodSan5vygyQrzPJmx62xu9WYEHwbBQ1e4flktym6OoppAa6
-         LS9dI0aZWyXtlysaxSMvAB1g7VF5ikXWzJ8O24NewdBnBFncSCt2mW6q6qlMOTo81bUh
-         Lst0eDHwXvFGWWEZ6XHYvZtxx4+DxZa+9xLF7ctH3kKRqvraJGC8LUMfw+NdgesqDvBr
-         +DiA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@ddn.com header.s=selector2 header.b=nvZ6CV3C;
-       arc=pass (i=1 spf=pass spfdomain=ddn.com dkim=pass dkdomain=ddn.com dmarc=pass fromdomain=ddn.com);
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ddn.com
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id e82-20020a253755000000b00be8d988804bsi7215411yba.634.2023.06.27.23.32.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Jun 2023 23:32:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+        b=zF50fHBgQOLMiDPuFkJ/GUVXdITbNBuh1No5PKeVYl7bCh9w9Czj9VS7kJH0m6CjLI
+         o5ZUlXcIh4FvjxHuDLy9Go67CBfuurjBBCpdfzp611G9nRA5pHYqxeAOHxW7XeeUj0Uj
+         sX2+aBFiy6qup/9lWIJ4ky66EfehutsqEQaD8ZziihvS9YxLmPh4eQvICeZamkqsk/Ab
+         3ylimVLheKmTBZchzMrkGELmCjFst+Y/9bgdlKenRqmb/atyP3RyRyY+LcHlysRb4LAq
+         36Yv7HtFoXGZlDjdgHO+AD7lEoBFlFm3exFX+Go2cCXXdV+rWdsPk8coiK6J66D+yCCe
+         GzrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:message-id:subject:date:from;
+        bh=e8+Uk0cKwJ54aI6qvwc9JhBOkeMHXHKbVA464aUU6rU=;
+        fh=81lGxyN0jz+Y9Va/jw4tbgz1JWxwebTNAdoE6oNPgaY=;
+        b=Yw+3gFEsdCDZOwvoVIyjLAwpi9w6JWi/dsuz7mm1NepWdZpPewWZZJaCYJGIZV13Hw
+         65kbR3M2xAqaOhTOcwH6XiJ76+H/T2k6EhWTaDOAWB5dx4igLoeep3rLR8GAGVxrA6vy
+         qbv2xFbval7s2brOrRl0bDHAIENMoNksx3tFU4u4AeUAM9L/m0ZHEioNZx6ALqcjTKz4
+         vosi9Xu0OfJSTI82s8xkY/FJ90TluAyxqnZng3OTfO9sy1z/opSw0lFHSga+hKpY5fW3
+         eFyRsFELUrld4qMIrkLUOI1o67+wOgEhZG3uBoWzOc3j2rdbg+VVXxSxFuFGJZYquYww
+         niNQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c11-20020a05622a024b00b004009ca7608bsi3651626qtx.675.2023.06.28.02.37.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 Jun 2023 02:37:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ddn.com header.s=selector2 header.b=nvZ6CV3C;
-       arc=pass (i=1 spf=pass spfdomain=ddn.com dkim=pass dkdomain=ddn.com dmarc=pass fromdomain=ddn.com);
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ddn.com
-Received: from list by lists.xenproject.org with outflank-mailman.556321.868757 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1qEOhI-0002sD-7r; Wed, 28 Jun 2023 06:30:36 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 556321.868757; Wed, 28 Jun 2023 06:30:36 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1qEOhI-0002s6-3Z; Wed, 28 Jun 2023 06:30:36 +0000
-Received: by outflank-mailman (input) for mailman id 556321;
- Wed, 28 Jun 2023 06:20:41 +0000
-Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
- helo=se1-gles-flk1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
- <SRS0=TiqJ=CQ=ddn.com=rbolshakov@srs-se1.protection.inumbo.net>)
- id 1qEOXh-0001ul-43
- for xen-devel@lists.xenproject.org; Wed, 28 Jun 2023 06:20:41 +0000
-Received: from outbound-ip7a.ess.barracuda.com
- (outbound-ip7a.ess.barracuda.com [209.222.82.174])
- by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
- id cf1f6c1a-157b-11ee-8611-37d641c3527e;
- Wed, 28 Jun 2023 08:20:37 +0200 (CEST)
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam04lp2177.outbound.protection.outlook.com [104.47.73.177]) by
- mx-outbound41-38.us-east-2c.ess.aws.cudaops.com (version=TLSv1.2
- cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 28 Jun 2023 06:19:56 +0000
-Received: from LV8PR19MB8249.namprd19.prod.outlook.com (2603:10b6:408:191::12)
- by CO6PR19MB5353.namprd19.prod.outlook.com (2603:10b6:303:144::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.26; Wed, 28 Jun
- 2023 06:19:52 +0000
-Received: from LV8PR19MB8249.namprd19.prod.outlook.com
- ([fe80::a05d:58f5:99dc:75ef]) by LV8PR19MB8249.namprd19.prod.outlook.com
- ([fe80::a05d:58f5:99dc:75ef%4]) with mapi id 15.20.6500.045; Wed, 28 Jun 2023
- 06:19:52 +0000
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: cf1f6c1a-157b-11ee-8611-37d641c3527e
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eoMdz46ehLEsEusQRqidDoSR6Wy2gXJiu1/+e76Vwuor8pJ0/QRjkASvMhbg3OZIWWpHOzQn+aRFGAq3lgYqut3Pp4USIG5PzLQyglr+iRqYHI+NJjLokB3gdlxOF81zjLgGqDb41h8P8sa+sPDfUtjCmgjkwoMD+zu/3Izfhgb+G0H3+VcztNUgPtuJoGTDbBQ7rTZ+BDa0csRxd/qmmWRfeggr3U69shHBo1oFJValvFkK2+YiqFzSmUkkZy+HIK3n+3le97qUsPadTqbM8PnoEu8xxkGfk1TpbSOoFa6JqMtbk0g7nloazi1D6Cr6CfNFVFj5bJ7DdxXV7u+moQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Wpkr5HQR/3UKw9Mrv3wM4ePxX7APx1l1v6UxLpgpJBo=;
- b=oRcYaXBBK8SPIP/G1TIP43F5GBilWa5WXeRpWzrT8KQMo5oF0qTlN9V5aacUzgrIWmqj89q1wWOEeWQN44Z4KDtY2Dakztnr+sg6z08Bot8J2Wkxuclah+JarMHTXhTPl3hFCgtOIvYieoAnAbPJKLQq7ce8WOalFmZCW60BqYpA3J5JJitONAUZA+yJ57zlXsMLlWD9rbS1qIcSnYUkXsNm2XwVUesmXVkufUAMkwFmVdyg+0GvDrwAiKxLv0PfTjlAZSG0QLANnJnKSGn7ld611SFpW/QeP0ckrR8C+37GBxe5Sk1Y7tnmP8oXp0YrtRcrbLkTkDqgQ4VOLv+5lA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=ddn.com; dmarc=pass action=none header.from=ddn.com; dkim=pass
- header.d=ddn.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ddn.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wpkr5HQR/3UKw9Mrv3wM4ePxX7APx1l1v6UxLpgpJBo=;
- b=nvZ6CV3CRdv0FzgoJT09vXaDS3nfSuJPaGWhp7htdz9ZadeTRn8OxVeHHmww8DjVGNmPgU7VTXAMkchZ7cWa4Pfin6K4nENtdPyVvCJ8vKvSsGQcuhiMnPc+tZTQpS0wc/bCcBsr5o3tMY1vqnHDefi7MHX9jkuR63pHKJHO8/Y=
-From: Roman Bolshakov <rbolshakov@ddn.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "kvm@vger.kernel.org" <kvm@vger.kernel.org>, Marcel Apfelbaum
-	<marcel.apfelbaum@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Richard Henderson
-	<richard.henderson@linaro.org>, Alexander Graf <agraf@csgraf.de>,
-	"xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>, Sunil
- Muthuswamy <sunilmut@microsoft.com>, Anthony Perard
-	<anthony.perard@citrix.com>, Stefano Stabellini <sstabellini@kernel.org>,
-	Yanan Wang <wangyanan55@huawei.com>, Paul Durrant <paul@xen.org>, Reinoud
- Zandijk <reinoud@netbsd.org>, Eduardo Habkost <eduardo@habkost.net>, Cameron
- Esfahani <dirty@apple.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v3 01/16] MAINTAINERS: Update Roman Bolshakov email
- address
-Thread-Topic: [PATCH v3 01/16] MAINTAINERS: Update Roman Bolshakov email
- address
-Thread-Index: AQHZpsMheyi/SuGliUuOPtsU0HotzK+fw5cA
-Date: Wed, 28 Jun 2023 06:19:51 +0000
-Message-ID: <c2fda5c9-56c6-8d8d-c3de-287c4f31b97c@ddn.com>
-References: <20230624174121.11508-1-philmd@linaro.org>
- <20230624174121.11508-2-philmd@linaro.org>
-In-Reply-To: <20230624174121.11508-2-philmd@linaro.org>
-Accept-Language: ru-RU, en-US
-Content-Language: ru-RU
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=ddn.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: LV8PR19MB8249:EE_|CO6PR19MB5353:EE_
-x-ms-office365-filtering-correlation-id: 363550ed-5cd1-490f-6c65-08db779faedc
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info:
- OxR44FwCmEgoxDRsdH/NgqalO+BB/vao4G62Fuc8gDS+M1pdiBlIgJaZe6XrzWdOyUx2P8SEDI/0drTc4Z+BZ6TtAykS9QIYwREXNa8KbTvVnM2QODgO+jok80rlopvblukfy5LTQgvXYlfTC/8sEK4IqQwB1X287Y5XAJAQUSqVZ41mlEZFdKSaWi3VZ2LMjjlJhSRjs/fjNGTMuEIG+upmUOypl1fSEtmZE547FQJlE3mG+ywzc0Qpv0dwEsDD/rsyDQLSjppRlBVLWwRbV3yIoeIyfj4WM0gE8Wmkwk+rc0oqroHJf0D8MuctvCFjTW3ZazdcvTYV80TO8EngcLqT7eZ+Ex5QJ4LMJ15d+QlgKV8D348lQ+0k5Bv+PYecwhaZ7IFGuUeKMlqYBV8FuoSpJye8PKWyfboyBaORCY0n944eYflmnvX1fqP01MQh0rAJ6jii2yv9E7QCD1tyoBKuE35Ay6dMJLsltWYUY6Qd9Ms1PQzHgqjq7bQfCPHIHQWUz9rMi3SFw5f9XHeB21zgewuRLDsTQe5KepBbUX+OTFzydR/V3aUPmPSyy6LIooi+nTfJM7HSc3pnmQvoSLaKSVOJDDFv2qyWYTxPC30cqmP9AIerWF2B2MnqSFrOh4MsyqD3+6bMN1GVFogoZg==
-x-forefront-antispam-report:
- CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV8PR19MB8249.namprd19.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230028)(4636009)(366004)(396003)(136003)(39850400004)(346002)(376002)(451199021)(6512007)(66446008)(31686004)(38070700005)(26005)(66556008)(66476007)(122000001)(5660300002)(7416002)(66574015)(86362001)(8936002)(41300700001)(4326008)(316002)(8676002)(66946007)(76116006)(64756008)(31696002)(38100700002)(110136005)(966005)(36756003)(6506007)(6486002)(186003)(2906002)(15650500001)(71200400001)(83380400001)(54906003)(2616005)(478600001)(45980500001);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0:
- =?utf-8?B?RVNRcitVREYwbzBneEdlelhUT2JocXM5MG9nSWI1c0d6RnZ3SmR1c3ROSDEx?=
- =?utf-8?B?aFVIbTk4M0h6QTlXSCtOZVk5ZlZ4RTRrbDIzUkRpUXlZQ0F1L2R0RXZPaUNN?=
- =?utf-8?B?TXBjSlp3WFRUcmR5QmQ2OGJkZ1Q3akZxWVBuN0t4MnlQc0RrNXlLUm5vL2o5?=
- =?utf-8?B?Z3dJS3NjVGF6NVdxWVBtaGhxMjlaME4ydjlLTEtxZjMwMjU1SkpaWEVGNlhX?=
- =?utf-8?B?TG1WUmFab1N2K3NNUVBldVNTdWRTZDllU2c5Z2JWVGdzV1Q3eUNsWWY3cTZG?=
- =?utf-8?B?YWxwZ0xOUEgwYnJyVGxoWFBNOXZXZGJQaE5UNm93Zk9MYk5XZ2Q3dUFLZ2M1?=
- =?utf-8?B?V0R6bEx6bXE0TVhhWTR5N05IMVBlc25uSlpDVWZKb2pyOHdkT1NCOEdBanhw?=
- =?utf-8?B?WkhhTExCMktoRGVrRlVCMHNVYnRySFc2SWpteFl2MEZLVEVENzc4SjJGU2Fl?=
- =?utf-8?B?ODBHNlZtSlNGS1RVRDNJdjZrL05JUUlJTkdPNmJ4ZjF1OTVoSm1WbCtuaUYx?=
- =?utf-8?B?QndRRmFKUVUvVmRLREV6WFJ4T2xuQ2R2djM0bWNPL0JHL2ZZMjgwbGx3T3dH?=
- =?utf-8?B?NHJLbFNUUGpBV1psSEZLUm1OWjY0TnQzWTMwM1lMZWp1YStNUzc4QU9wci9y?=
- =?utf-8?B?Tlc2TW40QzNja01RWGduY0ovQmJwWndDdXNpdlBKdTZ0RnhYYm8rQzZBZU1u?=
- =?utf-8?B?M3VhamxOSWhtQnpLaVZVelAxbzNHeE9laTRHWlMrM2hRZGxiRGZCUFlCb1pJ?=
- =?utf-8?B?clVMa3NFSjF1c1ZZbE44NVJyL2sycDk0dnQ3QytMc3VkTHZybzRsTjNBa2Q3?=
- =?utf-8?B?Uk9WS05DeTFPdVpxTGZPbmNBS25KWVNML1FVSlpmZVFFMFg1YktkMHc4cG9X?=
- =?utf-8?B?d1NFMXlxNDUvY0Nyck90WnBmditLTmxUS1kxazdBQUNYNW9JVEhOS3o5R0s2?=
- =?utf-8?B?ZHNvSXJUWXdCWGVHYmdoODd2ZFlxMTR0TjdSdGI1eW9QQWE2eUszWHB6a09S?=
- =?utf-8?B?MDhId1ZBNzN6VWVNOFZVTXVKYUk0YVBRb0VqelFIL29NNDJrL0cwL1BHeTNw?=
- =?utf-8?B?NVNTUlJEWXZ1cUphdjRudEpudFI0R3l5MVI1RkdZTWJBZU9NQ042VG5MWGlh?=
- =?utf-8?B?SDJiaTdJRU1ObkZkQlQxSUVKOUl5alJxMjh1MGswMDRCTFZ3dVRmekJjZ0ND?=
- =?utf-8?B?Y1cwcUNXL1hkVEFxUzExdmwyV0d3bktRY0FDWVczVFdIdTFUUzNuZTBjV1dL?=
- =?utf-8?B?cGI1MGdtTUhwajN3Z3hiem81L0tJaFlkYVVtTlpkSGlXS1l5TVozUVFwTkxB?=
- =?utf-8?B?RTZJSW9McndqZXV2NHNjaFJWNk9zdTZyRi80YUphbW9Ja1hCMXN4R3VCTTlw?=
- =?utf-8?B?N3NyVHNiZ3FidGE4dERMbXNwS3JBN1hBdWozUHBZWSthaG85cWVUUTkvVXBW?=
- =?utf-8?B?QSszTDhGclFPR2NGd2dVZnk4L0MyQXpNRGRSNE5TTG92WTJjM3JlN0dPaDJH?=
- =?utf-8?B?VXlNeVVFc1NjcURpVmVLT2kwOUtONnlXcGpjUUZGSmM4dUhWYXlKdmZzb1Nq?=
- =?utf-8?B?QVpKSEV3eFFIWmtWd1BzMnEyZnBQZVdFQmpBdHNMdXVCRFpVVXVSdmtsVlZL?=
- =?utf-8?B?VkV2MTJYYmtKeGpTWEp5N29GT25od2lnckFnOE1Ic1cyRTJWb2EvaEpBQzdD?=
- =?utf-8?B?SzdMSFlWOG9rVjBaYnRrK1BuNVpvang1OERINVB0MXV2WTdXK000RDY1Zzdk?=
- =?utf-8?B?VE1jWmNvQzdCR214SHBrWU1wMFVpNUM0Y0tJNGpSUUNiWXpZaTlqeHV2aWhN?=
- =?utf-8?B?SmI0T3RXeE5zczdLM1FyY1lOSFRJUXBCVGZiS1RPTE9EVTZlUVo2M1daeEVT?=
- =?utf-8?B?OTVOWDZTamF2V0kzK05mVWRGQzkyejREbHkwR1VGb0NXaXhzZzNFU095TW5X?=
- =?utf-8?B?VjNJZ0hVSE5LeDhZZDRvRm51cUhBQ1F6eVFsc3E2bHB4bFYwRVhHNjhZOFB4?=
- =?utf-8?B?MkNmZTlRMzZ3WC9uTy9wTTdYOVdJWllYNFkxdi8zVFNSc3VyM2JQVkp2Q0R4?=
- =?utf-8?B?MlBFemZzOUIyL3hRN1E3ajVBWHNsZEYxdHdNeU5XU0NhMjNGMlJMR3JHSUJK?=
- =?utf-8?Q?ovVI=3D?=
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qERbk-0007LG-VT; Wed, 28 Jun 2023 05:37:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1qERbi-0007Jc-L5; Wed, 28 Jun 2023 05:37:02 -0400
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1qERbg-0008Qw-AB; Wed, 28 Jun 2023 05:37:02 -0400
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 0E26211EECC;
+ Wed, 28 Jun 2023 09:36:58 +0000 (UTC)
+From: ~ssinprem <ssinprem@git.sr.ht>
+Date: Wed, 28 Jun 2023 16:09:23 +0700
+Subject: [PATCH qemu] aspeed add montblanc bmc reference from fuji
+Message-ID: <168794501779.28884.3336012012258765799-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: ssinprem@celestica.com, clg@kaod.org, peter.maydell@linaro.org,
+ andrew@aj.id.au, joel@jms.id.a, qemu-stable@nongnu.org,
+ srikanth@celestica.com, ssumet@celestica.com, thangavelu.v@celestica.com,
+ kgengan@celestica.com, anandaramanv@celestica.com
 Content-Type: text/plain; charset="utf-8"
-Content-ID: <D14D5FFAF0F0C64EBAD1047B4DD3516A@namprd19.prod.outlook.com>
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
-	=?utf-8?B?dEpOWkR4ZGxtdVpoVTlXNjUxQzE5Q1dycUpyQ3pPWHNjc01NRllIa25LZ2Fq?=
- =?utf-8?B?K3kyMk1zazR2di8vVE84enZuTXl5cVBtOTROeDM0aUUrZGRqcnNyVzFzWmVP?=
- =?utf-8?B?eE9mS3czMmJzVU55ZGkzYVZNYTlIWXFzRkVKRXIvZHFwSzBDVGN4SjlxWGpV?=
- =?utf-8?B?K2lKU1Bmc3ZBdjg0ZDhXVWFmMDBDTkQ5ZDJmdWZhbnZrTUVtblNaWFVxNG1q?=
- =?utf-8?B?VzF2bmg0V3U5SURUOFd4cUJpSXVRZFQ2d3RwV2RZR2daYXdrWk50Ty8rU2Nm?=
- =?utf-8?B?UHY3SnNDRHJ5aHFrdElqTC84bTYvLzR6TWpvV01yL21VRUtLRThhZXRsaUV4?=
- =?utf-8?B?clBuTmJLdndQT1lPL29ISFhXamxiN2pDbWY4aEd4QWpTS2tTQWJybnZGbG94?=
- =?utf-8?B?aENBVTdQbXJlQXBJdmRWME8wcHpxRnZtT1ZFU0NNVWZJMHgvZTJzS2lxdlZ1?=
- =?utf-8?B?ZkJwNTJZMm84NnZXakdEcm5PSFNReVkxMHJxQlVLTnl1T0h6cVdENFd1dEdM?=
- =?utf-8?B?THJNR3A0M2ZtME1qeXhncG1HU3VOV054NHlGZW5BdEp2b0xsTTg3SmVoREZx?=
- =?utf-8?B?WmdYOWJPTGRTVVZJWEMreWdSMnBWQkoxODdHay90YURaV0d4ZjdPQnZnWlRj?=
- =?utf-8?B?YXhOZnNXUUg5cjRPWU9pSmtvVGVYYzFNazBIRDlUL1p6a2xBMGNvdGFoY2Ni?=
- =?utf-8?B?ZWxMRHc1NDdwWnRqcEJXb3BDeGxxbC9WWFI0SCtIVSt5SFBNUStmZXJMNXNP?=
- =?utf-8?B?SU5wSHRCc29IYlU0NTEvMmZyRmxrR21LTWtUQjJtTFVPeXl4R1FuWG1HZUxh?=
- =?utf-8?B?SGthcEp4WlBjZXlOV1FHYUlWam9hZk1NYjh4bEVhM3NadmxTWnNWM2VxYnNi?=
- =?utf-8?B?OVJ2NVVhdG8xVGRVMU9kU0UxQ1V6VGw4bWZVUmNtSkJvWHRiRzRlb2RSN1NN?=
- =?utf-8?B?bmQzOUdja3k1RlhDcCthNE4yOENPbEhQazJyZDBtSGNDMm50bENmdnlGMVdM?=
- =?utf-8?B?MW82VC9USHJuMzZXYnJwaHdxdmlQL25OemxuNnY1OXpwM2JWQnlOT1dkdGlQ?=
- =?utf-8?B?b2Z2eGZGcFltWDh0TEFXYlVQVVpwMkhNSnFBcEJCZ1JNVlkvUll0THVoRUF5?=
- =?utf-8?B?eGxBRWt1eTdIbEJwZGZsbURsdGdrUW5TdHBhZEE1L0VEOGZmcFZZZHFpblRo?=
- =?utf-8?B?UnE5eFQ2ZnZGb2t6TDMwZXBZWFRhLzZBbUpqVTVsQUJVYWNyaGF5dnlMNVRY?=
- =?utf-8?B?c05vMnRVYkdTZmlmck55UEdsRE9ReXNkUzloL1ppdXF5SVIvV1MrNC95NWpo?=
- =?utf-8?B?Qy9md3Y0OWQ3dWlsNjA2TGxRT09YVnI5N2kwSU5Xbno4Z3ZjUjB6aWx1SytT?=
- =?utf-8?B?TDREVUNiR1I4RXZQTHF3QnhWZkZWWmJuNEd2Skl3WEIxR2NibjQ4a0tJS0Jl?=
- =?utf-8?B?cnJHRnpXdHUzMXFJN3BJd1FQaXcrWGcrZ25HZnlod0dzOUlibFF0TCtoOG1X?=
- =?utf-8?B?cFgrV0lRMlpCNlpGREN4cW5EaStHNzFwWXROeFRaT1BuYUFTRlRzMEpQYkl4?=
- =?utf-8?B?Tjg5WjVHVmNodmpDVnd6aVJybmxWMFFwSGZZeTFvQlcxdXg0S1V4bGZ2TlRu?=
- =?utf-8?Q?fnNWRgVBGcTsqP3Et6w94esh1XXYp2IEiBfVG1eylizk=3D?=
-X-OriginatorOrg: ddn.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR19MB8249.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 363550ed-5cd1-490f-6c65-08db779faedc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jun 2023 06:19:51.9759
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 753b6e26-6fd3-43e6-8248-3f1735d59bb4
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: txC4pu41dSOMYjTTPu/qICBOQjD5uW9hn4P8EKJ3TvNtIWtgc9OV71094kj45jtcMXrwVzECiMpc4uWp4bfQ5A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR19MB5353
-X-BESS-ID: 1687933195-110534-5423-89471-1
-X-BESS-VER: 2019.1_20230620.2205
-X-BESS-Apparent-Source-IP: 104.47.73.177
-X-BESS-Parts: H4sIAAAAAAACA4uuVkqtKFGyUioBkjpK+cVKVkYGRoZAVgZQ0MAwJckyKSXJNC
-	nZzMzCwsIsJdHIwCIx2cg4KSUxzcJYqTYWADYob8lBAAAA
-X-BESS-Outbound-Spam-Score: 0.50
-X-BESS-Outbound-Spam-Report: Code version 3.2, rules version 3.2.2.249133 [from 
-	cloudscan16-57.us-east-2b.ess.aws.cudaops.com]
-	Rule breakdown below
-	 pts rule name              description
-	---- ---------------------- --------------------------------
-	0.50 BSF_RULE7568M          META: Custom Rule 7568M 
-	0.00 BSF_BESS_OUTBOUND      META: BESS Outbound 
-X-BESS-Outbound-Spam-Status: SCORE=0.50 using account:ESS124931 scores of KILL_LEVEL=7.0 tests=BSF_RULE7568M, BSF_BESS_OUTBOUND
-X-BESS-BRTS-Status:1
-X-TUID: jzFpg2YvQOeg
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: ~ssinprem <ssinprem@celestica.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qBybMrRXscry
 
-MjQuMDYuMjAyMyAyMDo0MSwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kg0L/QuNGI0LXRgjoNCj4g
-ci5ib2xzaGFrb3ZAeWFkcm8uY29tIGlzIGJvdW5jaW5nOiBVcGRhdGUgUm9tYW4ncyBlbWFpbCBh
-ZGRyZXNzDQo+IHVzaW5nIG9uZSBmb3VuZCBzb21ld2hlcmUgb24gdGhlIEludGVybmV0OyB0aGlz
-IHdheSBoZSBjYW4gQWNrLWJ5Lg0KPg0KPiAoUmVvcmRlciBUYXlsb3IncyBsaW5lIHRvIGtlZXAg
-dGhlIHNlY3Rpb24gc29ydGVkIGFscGhhYmV0aWNhbGx5KS4NCj4NCj4gU2lnbmVkLW9mZi1ieTog
-UGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPg0KPiAtLS0NCj4gICBN
-QUlOVEFJTkVSUyB8IDQgKystLQ0KPiAgIC5tYWlsbWFwICAgIHwgMyArKy0NCj4gICAyIGZpbGVz
-IGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkNCj4NCj4gZGlmZiAtLWdp
-dCBhL01BSU5UQUlORVJTIGIvTUFJTlRBSU5FUlMNCj4gaW5kZXggN2YzMjNjZDJlYi4uMWRhMTM1
-YjBjOCAxMDA2NDQNCj4gLS0tIGEvTUFJTlRBSU5FUlMNCj4gKysrIGIvTUFJTlRBSU5FUlMNCj4g
-QEAgLTQ5NywxNCArNDk3LDE0IEBAIEY6IHRhcmdldC9hcm0vaHZmLw0KPiAgIA0KPiAgIFg4NiBI
-VkYgQ1BVcw0KPiAgIE06IENhbWVyb24gRXNmYWhhbmkgPGRpcnR5QGFwcGxlLmNvbT4NCj4gLU06
-IFJvbWFuIEJvbHNoYWtvdiA8ci5ib2xzaGFrb3ZAeWFkcm8uY29tPg0KPiArTTogUm9tYW4gQm9s
-c2hha292IDxyYm9sc2hha292QGRkbi5jb20+DQo+ICAgVzogaHR0cHM6Ly93aWtpLnFlbXUub3Jn
-L0ZlYXR1cmVzL0hWRg0KPiAgIFM6IE1haW50YWluZWQNCj4gICBGOiB0YXJnZXQvaTM4Ni9odmYv
-DQo+ICAgDQo+ICAgSFZGDQo+ICAgTTogQ2FtZXJvbiBFc2ZhaGFuaSA8ZGlydHlAYXBwbGUuY29t
-Pg0KPiAtTTogUm9tYW4gQm9sc2hha292IDxyLmJvbHNoYWtvdkB5YWRyby5jb20+DQo+ICtNOiBS
-b21hbiBCb2xzaGFrb3YgPHJib2xzaGFrb3ZAZGRuLmNvbT4NCj4gICBXOiBodHRwczovL3dpa2ku
-cWVtdS5vcmcvRmVhdHVyZXMvSFZGDQo+ICAgUzogTWFpbnRhaW5lZA0KPiAgIEY6IGFjY2VsL2h2
-Zi8NCj4gZGlmZiAtLWdpdCBhLy5tYWlsbWFwIGIvLm1haWxtYXANCj4gaW5kZXggYjU3ZGE0ODI3
-ZS4uNjRlZjlmNGRlNiAxMDA2NDQNCj4gLS0tIGEvLm1haWxtYXANCj4gKysrIGIvLm1haWxtYXAN
-Cj4gQEAgLTc2LDkgKzc2LDEwIEBAIFBhdWwgQnVydG9uIDxwYXVsYnVydG9uQGtlcm5lbC5vcmc+
-IDxwYnVydG9uQHdhdmVjb21wLmNvbT4NCj4gICBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhp
-bG1kQGxpbmFyby5vcmc+IDxmNGJ1Z0BhbXNhdC5vcmc+DQo+ICAgUGhpbGlwcGUgTWF0aGlldS1E
-YXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPiA8cGhpbG1kQHJlZGhhdC5jb20+DQo+ICAgUGhpbGlw
-cGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPiA8cGhpbG1kQGZ1bmdpYmxlLmNv
-bT4NCj4gK1JvbWFuIEJvbHNoYWtvdiA8cmJvbHNoYWtvdkBkZG4uY29tPiA8ci5ib2xzaGFrb3ZA
-eWFkcm8uY29tPg0KPiAgIFN0ZWZhbiBCcmFua292aWMgPHN0ZWZhbi5icmFua292aWNAc3lybWlh
-LmNvbT4gPHN0ZWZhbi5icmFua292aWNAcnQtcmsuY29tLmNvbT4NCj4gLVlvbmdib2sgS2ltIDx5
-b25nYm9rLmtpbUBtaXBzLmNvbT4gPHlvbmdib2sua2ltQGltZ3RlYy5jb20+DQo+ICAgVGF5bG9y
-IFNpbXBzb24gPGx0YXlsb3JzaW1wc29uQGdtYWlsLmNvbT4gPHRzaW1wc29uQHF1aWNpbmMuY29t
-Pg0KPiArWW9uZ2JvayBLaW0gPHlvbmdib2sua2ltQG1pcHMuY29tPiA8eW9uZ2Jvay5raW1AaW1n
-dGVjLmNvbT4NCj4gICANCj4gICAjIEFsc28gbGlzdCBwcmVmZXJyZWQgbmFtZSBmb3JtcyB3aGVy
-ZSBwZW9wbGUgaGF2ZSBjaGFuZ2VkIHRoZWlyDQo+ICAgIyBnaXQgYXV0aG9yIGNvbmZpZywgb3Ig
-aGFkIHV0ZjgvbGF0aW4xIGVuY29kaW5nIGlzc3Vlcy4NCg0KSGkgUGhpbGlwcGUsDQoNClJldmll
-d2VkLWJ5OiBSb21hbiBCb2xzaGFrb3YgPHJib2xzaGFrb3ZAZGRuLmNvbT4NCg0KVGhhbmtzIGZv
-ciB1cGRhdGluZyB0aGUgZW1haWwuDQoNCg==
+From: Sittisak Sinprem <ssinprem@celestica.com>
+
+- I2C list follow I2C Tree v1.6 20230320
+- fru eeprom data use FB FRU format version 4
+
+Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
+---
+ hw/arm/aspeed.c        | 67 ++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c | 50 +++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.h |  7 +++++
+ 3 files changed, 124 insertions(+)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6880998484..df154cbf52 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -182,6 +182,10 @@ struct AspeedMachineState {
+ #define FUJI_BMC_HW_STRAP1    0x00000000
+ #define FUJI_BMC_HW_STRAP2    0x00000000
+=20
++/* Montblanc hardware value */
++#define MONTBLANC_BMC_HW_STRAP1    0x00000000
++#define MONTBLANC_BMC_HW_STRAP2    0x00000000
++
+ /* Bletchley hardware value */
+ /* TODO: Leave same as EVB for now. */
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+@@ -918,6 +922,39 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+     }
+ }
+=20
++static void montblanc_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc =3D &bmc->soc;
++    I2CBus *i2c[16] =3D {};
++
++    for (int i =3D 0; i < 16; i++) {
++        i2c[i] =3D aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    /* Ref from Minipack3_I2C_Tree_V1.6 20230320 */
++    at24c_eeprom_init(i2c[3], 0x56, montblanc_scm_fruid, 8192, true);
++    at24c_eeprom_init(i2c[6], 0x53, montblanc_fcm_fruid, 8192, true);
++
++    /* CPLD and FPGA */
++    aspeed_eeprom_init(i2c[1], 0x35, 256);  /* SCM CPLD */
++    aspeed_eeprom_init(i2c[5], 0x35, 256);  /* COMe CPLD TODO: need to updat=
+e */
++    aspeed_eeprom_init(i2c[12], 0x60, 256); /* MCB PWR CPLD */
++    aspeed_eeprom_init(i2c[13], 0x35, 256); /* IOB FPGA */
++
++    /* on BMC board */
++    at24c_eeprom_init(i2c[8], 0x51, montblanc_bmc_fruid, 8192, true);
++                                                      /* BMC EEPROM */
++    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x48); /* Thermal Sensor */
++
++    /* COMe Sensor/EEPROM */
++    aspeed_eeprom_init(i2c[0], 0x56, 16384);          /* FRU EEPROM */
++    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x48); /* INLET Sensor */
++    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x4A); /* OUTLET Sensor */
++
++    /* It expects a pca9555 but a pca9552 is compatible */
++    create_pca9552(soc, 4, 0x27);
++}
++
+ #define TYPE_TMP421 "tmp421"
+=20
+ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+@@ -1450,6 +1487,32 @@ static void aspeed_machine_fuji_class_init(ObjectClass=
+ *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+=20
++/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
++#if HOST_LONG_BITS =3D=3D 32
++#define MONTBLANC_BMC_RAM_SIZE (1 * GiB)
++#else
++#define MONTBLANC_BMC_RAM_SIZE (2 * GiB)
++#endif
++static void aspeed_machine_montblanc_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc =3D "Facebook Montblanc BMC (Cortex-A7)";
++    amc->soc_name =3D "ast2600-a3";
++    amc->hw_strap1 =3D MONTBLANC_BMC_HW_STRAP1;
++    amc->hw_strap2 =3D MONTBLANC_BMC_HW_STRAP2;
++    amc->fmc_model =3D "mx66l1g45g";
++    amc->spi_model =3D "mx66l1g45g";
++    amc->num_cs =3D 2;
++    amc->macs_mask =3D ASPEED_MAC3_ON;
++    amc->i2c_init =3D montblanc_bmc_i2c_init;
++    amc->uart_default =3D ASPEED_DEV_UART1;
++    mc->default_ram_size =3D MONTBLANC_BMC_RAM_SIZE;
++    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+ #if HOST_LONG_BITS =3D=3D 32
+ #define BLETCHLEY_BMC_RAM_SIZE (1 * GiB)
+@@ -1706,6 +1769,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+         .name          =3D MACHINE_TYPE_NAME("fuji-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+         .class_init    =3D aspeed_machine_fuji_class_init,
++    }, {
++        .name          =3D MACHINE_TYPE_NAME("montblanc-bmc"),
++        .parent        =3D TYPE_ASPEED_MACHINE,
++        .class_init    =3D aspeed_machine_montblanc_class_init,
+     }, {
+         .name          =3D MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index ace5266cec..bcde346e9b 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -161,6 +161,53 @@ const uint8_t rainier_bmc_fruid[] =3D {
+     0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
+ };
+=20
++/* Montblanc BMC FRU */
++const uint8_t montblanc_scm_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x53, 0x43, 0x4d, 0x02, 0x08, 0x32, 0x30, 0x30,
++    0x30, 0x32, 0x39, 0x34, 0x35, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
++    0x30, 0x31, 0x36, 0x34, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
++    0x30, 0x30, 0x30, 0x31, 0x32, 0x37, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
++    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x30, 0x33, 0x30, 0x31, 0x07,
++    0x0d, 0x41, 0x30, 0x33, 0x31, 0x33, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
++    0x0d, 0x4d, 0x32, 0x32, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
++    0x30, 0x32, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
++    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
++    0x43, 0x54, 0x48, 0x10, 0x06, 0xb4, 0xbd, 0x00, 0x00, 0x00, 0x01, 0x13,
++    0x03, 0x53, 0x43, 0x4d, 0xfa, 0x02, 0x11, 0x07,
++};
++
++const uint8_t montblanc_fcm_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x46, 0x43, 0x42, 0x02, 0x08, 0x33, 0x30, 0x30,
++    0x30, 0x30, 0x31, 0x36, 0x31, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
++    0x30, 0x31, 0x36, 0x33, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
++    0x30, 0x30, 0x30, 0x31, 0x33, 0x30, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
++    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x31, 0x32, 0x30, 0x31, 0x07,
++    0x0d, 0x41, 0x31, 0x32, 0x31, 0x32, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
++    0x0d, 0x46, 0x35, 0x30, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
++    0x30, 0x35, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
++    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
++    0x43, 0x54, 0x48, 0x10, 0x06, 0xb4, 0xbd, 0x00, 0x00, 0x00, 0x02, 0x11,
++    0x06, 0xb4, 0xbd, 0x00, 0x00, 0x00, 0x03, 0x12, 0x02, 0x8a, 0x00, 0x13,
++    0x03, 0x46, 0x43, 0x42, 0xfa, 0x02, 0x0e, 0x61,
++};
++
++const uint8_t montblanc_bmc_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x42, 0x4d, 0x43, 0x04, 0x0c, 0x31, 0x33, 0x32,
++    0x30, 0x30, 0x30, 0x31, 0x33, 0x36, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31,
++    0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x38, 0x36, 0x30, 0x35, 0x20, 0x06,
++    0x0c, 0x52, 0x33, 0x30, 0x39, 0x37, 0x47, 0x30, 0x30, 0x30, 0x32, 0x30,
++    0x37, 0x07, 0x0d, 0x42, 0x30, 0x32, 0x37, 0x34, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x08, 0x01, 0x04, 0x09, 0x01, 0x00, 0x0a, 0x01,
++    0x00, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32, 0x33,
++    0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03, 0x43,
++    0x54, 0x48, 0x13, 0x03, 0x42, 0x4d, 0x43, 0xfa, 0x02, 0xef, 0xba,
++};
++
+ const size_t tiogapass_bmc_fruid_len =3D sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len =3D sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len =3D sizeof(fby35_bb_fruid);
+@@ -168,3 +215,6 @@ const size_t fby35_bmc_fruid_len =3D sizeof(fby35_bmc_fru=
+id);
+ const size_t yosemitev2_bmc_fruid_len =3D sizeof(yosemitev2_bmc_fruid);
+ const size_t rainier_bb_fruid_len =3D sizeof(rainier_bb_fruid);
+ const size_t rainier_bmc_fruid_len =3D sizeof(rainier_bmc_fruid);
++const size_t montblanc_scm_fruid_len =3D sizeof(montblanc_scm_fruid);
++const size_t montblanc_fcm_fruid_len =3D sizeof(montblanc_fcm_fruid);
++const size_t montblanc_bmc_fruid_len =3D sizeof(montblanc_bmc_fruid);
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index bbf9e54365..b8fbdd0734 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -27,4 +27,11 @@ extern const size_t rainier_bb_fruid_len;
+ extern const uint8_t rainier_bmc_fruid[];
+ extern const size_t rainier_bmc_fruid_len;
+=20
++extern const uint8_t montblanc_scm_fruid[];
++extern const uint8_t montblanc_fcm_fruid[];
++extern const uint8_t montblanc_bmc_fruid[];
++extern const size_t montblanc_scm_fruid_len;
++extern const size_t montblanc_fcm_fruid_len;
++extern const size_t montblanc_bmc_fruid_len;
++
+ #endif
+--=20
+2.38.5

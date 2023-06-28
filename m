@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1857454ejx;
-        Wed, 28 Jun 2023 01:42:52 -0700 (PDT)
-X-Received: by 2002:a2e:81c6:0:b0:2b6:b779:c68 with SMTP id s6-20020a2e81c6000000b002b6b7790c68mr2387677ljg.15.1687941772372;
-        Wed, 28 Jun 2023 01:42:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1687941772; cv=none;
+Received: by 2002:a17:906:9417:b0:98e:baa:bd63 with SMTP id q23csp1856256ejx;
+        Wed, 28 Jun 2023 01:38:27 -0700 (PDT)
+X-Received: by 2002:a05:600c:214d:b0:3fb:a576:3212 with SMTP id v13-20020a05600c214d00b003fba5763212mr2989478wml.39.1687941507828;
+        Wed, 28 Jun 2023 01:38:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1687941507; cv=none;
         d=google.com; s=arc-20160816;
-        b=jluQbxENZRhYgqUZ6z5tcS5cQ/4WwPzJE75rNdiTyeRbA5JxPHb0caW6vrj0ffmAOq
-         UfZ1WUtXeJWt3v9kkIrWq943azDUvewZQGgx/K+yUjD0Sy+JxxmIU2VhhafMkMge/rjQ
-         D4mVtpGH7Yon+HlbHxkemTOoA/hrMXX+1s5TaK2F8TmiiF6fLqO4t7CTwBK1j4JcoNGB
-         efZSbLuvpxYtp3GksjN78JhcSziKozBogezVEDLM3Es4az2MNCjpeYL8SLZEU4aAw/fY
-         7K0mbPFDFrhBy6vXSWAC2veIId/KWAR+moIy3QGlmKLkM9CIGAoFjnN5Wz5dTPbe9Ymd
-         X1fg==
+        b=0BbL6plCYizCHf4imapD/sfQWlcvgHDGNZ3x7LQRUB7mBzXmv/X6q8sZUdCu0ZBbWI
+         TVJV6MrExQTabIDZ2J+u5tKPycsPHWvptB1NFsKs9dRy5QeSrvoesOgFg4zIfdGvtiI5
+         q/7zWP7PWKM8YfF2yEd8L1keHG44beKdc25EilY885VKGSYCNoBXxcqTmEPzTmH7S6H/
+         A/8SP7+JUY8LzskZeoXXmLxhKaADE03g4+zZn+PhvZ1Cm2dwnihT1PYMg2xaacPoDeob
+         KlBNrKMoChaONWwffI98g50joIIHR3YYITBAv0vRKuHrAJZsJTM6hRrhqnz4fspLTpqV
+         2Dlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=FIMYxIjfgrJTa4Sr5WYwWDlTONw1iuSwOUaxogh89fI=;
+        bh=W/XpKXvP62dKscJ32XVUD0R+qNXsILZ9xTkZ/daFwu4=;
         fh=b+t/FAgjZ7G5k2Av0DENm9ClElwuldlNUYmeE5L1xxU=;
-        b=YeP2MC8nCY0zUUO2fFL6R7lhtzCNdzLsLGI20Cm4jJjxJ0IR+UVRpwJ6G++1r12Wme
-         zvlYGUW8OVVwgHekS05rU72kKj4AK3lStyB59Ee6ImUJxbahLRvXLSnuXipzWCjZzZPz
-         4rj22nfuetRS/52zUZx5gF3cfriLkzKXnYaW0UwmDz/Cm5iG9vrXlIjclz0kybqBTmux
-         ie4lWtE/xvUAjHpRyek5seP6HbmKk3v/7jCOAaWvzbv57wSV7V+0Cve/iqSUkmH7qi3o
-         OemiyTkraJauURbZLn5GOzBS0IlVTMqTHGLtBZA2jx9TFtlwcm0ZOAZIY0mkKPqsk+WT
-         9YSA==
+        b=JLiP9/dbgACoMjkCeIcrQeKW30KFyDYEY0agI4wj6A1hegjE2HRYU6HMY5wfWNTP5R
+         x5HSgah0zQDCiY3uhqfmj+TneMSZYMnWUDPlC4jY73XoGYja1NpmNW7+0gcWPjgrpxyw
+         ka7XBfSrCkIWx8bwlA+zNpSrc2zdIPhXVJtrOlCutOi3U6vuX6l+NT6QdfGEH9HvBls3
+         zowNBumv2RxI6wLBIhyIx/gW5c81y56EOKPx1yYeV0mNMn6qCJGu0I/Ubi2fMB4xdKbM
+         BaUjFSp6Y2tFMYmvQScE8rTV6BQ3VvsDhSQxezLXlKZGFt+whUwGSbnoKIjmvUxrjXQV
+         iTHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvQjEHW1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nekdtCm4;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s3-20020a05651c200300b002b6a6f690c5sor1991007ljo.1.2023.06.28.01.42.52
+        by mx.google.com with SMTPS id y11-20020a05600c364b00b003fa981988d2sor2344745wmq.6.2023.06.28.01.38.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 28 Jun 2023 01:42:52 -0700 (PDT)
+        Wed, 28 Jun 2023 01:38:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvQjEHW1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nekdtCm4;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1687941772; x=1690533772;
+        d=linaro.org; s=google; t=1687941507; x=1690533507;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=FIMYxIjfgrJTa4Sr5WYwWDlTONw1iuSwOUaxogh89fI=;
-        b=PvQjEHW12dQYdIrIyKByCVrugYlqvHXSlynYIqA5si7Ix3pU0hBammuMRio9jnu1R9
-         H81u6/cPTZfmaEL7WzEMo3VGRIZZEl1BcQYItEC3wwMaec4x2cDcjquA9ChpGgu7/+be
-         XJ9y0OIF9DT4tHJtDfFduWBCio30GJje22xDBr9I/15SHBAKX8WXzjmk+tjtbcYoq75r
-         ungXt9I/TSYQ4I21yr4iLQb4s9Kdmr7KFrgaYXr8Zn6ZfRcGbhlIaW9UeGQP8U6fiIbF
-         4kNVW32FbvtJc6zT/E7PKlaWTXN7968Aj8JuWAQuhQjIC047vc6c9rTfmnKXIluot5GH
-         +B2g==
+        bh=W/XpKXvP62dKscJ32XVUD0R+qNXsILZ9xTkZ/daFwu4=;
+        b=nekdtCm41gKFJRW+ZxRrbZXaN7cAQZ5SzaieTmLPbsR1nw8IdQPJztv0rGiKAd1OV7
+         tZo3cfKLkufRjaLXJVQn6t9+Ab3IRbngyCTvEZYGr7qaHUSrW/KBsfeGPg9cOOq3VLwu
+         fdtA6LirLs0WAIqwENb+u9YdbdMGAYFkOHag4tx1yxquNceaGwWWjvS2owOoer8EkIN1
+         YMHR386Fk0vjebyfBvnwiAZepK8eDDyqQ9InJyZKCqr8MG2EkiPgvgI9r5AfM24THFNN
+         9KjxDsc/aO4lhUMkBw4g0kgmEma1IBeoPzOM/9qBfUvEe9PIj2HgIV4gKOT/Cu4vznKt
+         Vf9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1687941772; x=1690533772;
+        d=1e100.net; s=20221208; t=1687941507; x=1690533507;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FIMYxIjfgrJTa4Sr5WYwWDlTONw1iuSwOUaxogh89fI=;
-        b=Fl0ID2ASNyE0CBQZFjJ/EYKUFI4rpSMv/CuaWXqC+/+25vAVUAMHOeSRN77YbvYR2i
-         kcVrQzRjPwBvgTEGZhrPpkANmrNmmYhTViAO9iLctR7Ac7f9L9hGqUEw8rEWbEsHvjQl
-         qzOKMKHaUgJguAqJJP/FzqfHz0h2PJUMKDQU+o7EIZyappDLQnucifN9x9bZwyTfSv7J
-         OdNQ8/P5ZB3ISLsphDEAh9iRy5gSHZfAIqV6AxgHNQCkAEIpHAK8T54seAkX4KKMUHzQ
-         x1/K8Ni8WXxvVybepWF3h2ZKpcM0ZocT5dfxrKGf9O9MKRaFcgWWc3wzMWZy5R0+quJn
-         GUng==
-X-Gm-Message-State: AC+VfDwvNT7hZCGLvxU/y0wu+6r3YYDHjIDLBjBRyKgBNHCM0UoPcUNH
-	ltbprB4qcDxP/oPM+zb28emZEmAYSME6RBO+QB/BOPRP3ec=
-X-Google-Smtp-Source: ACHHUZ7/xU90SYDSgotyG0ljoYcC3VK0BeCu+UI1CBhuuo2T1+zV3t3/UmIYF6m9eWsIGHcQKWGDBw==
-X-Received: by 2002:a05:651c:109:b0:2b4:78f6:d330 with SMTP id a9-20020a05651c010900b002b478f6d330mr18685318ljb.2.1687941771826;
-        Wed, 28 Jun 2023 01:42:51 -0700 (PDT)
+        bh=W/XpKXvP62dKscJ32XVUD0R+qNXsILZ9xTkZ/daFwu4=;
+        b=YXtLYu7nzJo1Zbur1EGJidwgola+Qn2jBqH+6TE6gHjl88B+sZxDTIifoCjwVCaiKl
+         LjtbxeT3iDknfpUdL8ymrU9CF5iFo891dtYd5cDW3ca8hsc62lIQVtjClr0ZBsaEXODb
+         cb8X44xZMdk9Bqky2guoq5iLpg4JJjJ5Z2e2uevyW3BHdmTpweDmHFv15vbZiydOkTq1
+         +qO9AuWTyyMZb+k/ydDuf2bxvFKMrtksfkLd0AovgwOM5W82dTIkn4K5ocz/aNHr0dE8
+         kEYiIg0bvKjFF1YQ2sVzy/cZn7jrJ0HtfzVmnhI3xXfOXZYd2yKe9mhkUV53eztlVTVH
+         Lq2Q==
+X-Gm-Message-State: AC+VfDxikbUnpEaFmg/FoULiDKwZvv2eDpSNkKQCQx8HhNcXloFvQtCh
+	HUukIMo1UYQ8YhovFXF6VrJCnBQzcx1INAm/H9EyFzunQ3g=
+X-Google-Smtp-Source: ACHHUZ4nNzGKdhNcnC5eEQl6KRDb+Q/S5pYGe3x09a0lx5JjcRhnlQAS7io9SLzsOmXeZe2SraXOxg==
+X-Received: by 2002:a05:600c:29a:b0:3fb:a8ef:edfe with SMTP id 26-20020a05600c029a00b003fba8efedfemr2783441wmk.18.1687941507354;
+        Wed, 28 Jun 2023 01:38:27 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.208] ([139.47.41.103])
-        by smtp.gmail.com with ESMTPSA id h2-20020a1ccc02000000b003fa74bff02asm12994082wmb.26.2023.06.28.01.42.49
+        by smtp.gmail.com with ESMTPSA id y12-20020a05600c364c00b003f7f249e7dfsm16174140wmq.4.2023.06.28.01.38.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Jun 2023 01:42:51 -0700 (PDT)
-Message-ID: <7658f042-15d1-7d4f-f316-756b2a299dee@linaro.org>
-Date: Wed, 28 Jun 2023 10:42:48 +0200
+        Wed, 28 Jun 2023 01:38:27 -0700 (PDT)
+Message-ID: <fd860df5-f8d0-77ef-f99f-629f1631d577@linaro.org>
+Date: Wed, 28 Jun 2023 10:38:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v3 28/36] gdbstub: clean-up vcont handling to avoid goto
+Subject: Re: [PATCH v3 15/36] tests/docker: convert riscv64-cross to lcitool
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
@@ -98,23 +98,34 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
  Mahmoud Mandour <ma.mandourr@gmail.com>, Riku Voipio <riku.voipio@iki.fi>
 References: <20230627160943.2956928-1-alex.bennee@linaro.org>
- <20230627160943.2956928-29-alex.bennee@linaro.org>
+ <20230627160943.2956928-16-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230627160943.2956928-29-alex.bennee@linaro.org>
+In-Reply-To: <20230627160943.2956928-16-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: WXNorJ5VteyR
+X-TUID: SSQxhN+q/QMT
 
 On 6/27/23 18:09, Alex Bennée wrote:
-> We can handle all the error exit cases by using g_autofree() for the
-> one thing that needs cleaning up on the exit.
-> 
-> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   gdbstub/gdbstub.c | 28 +++++++++-------------------
->   1 file changed, 9 insertions(+), 19 deletions(-)
+> --- a/tests/lcitool/projects/qemu-minimal.yml
+> +++ b/tests/lcitool/projects/qemu-minimal.yml
+> @@ -4,6 +4,8 @@ packages:
+>    - bash
+>    - bc
+>    - bison
+> + - ccache
+> + - findutils
+>    - flex
+>    - g++
+>    - gcc
+> @@ -21,3 +23,5 @@ packages:
+>    - pkg-config
+>    - python3
+>    - python3-venv
+> + - sed
+> + - tar
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Same comment as against v2: Why not squash this patch with previous, which adds 
+qemu-minimal.yml.  Especially since you're changing it here in the next patch.
+
 
 r~

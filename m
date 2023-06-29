@@ -1,169 +1,231 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp314078ejy;
-        Thu, 29 Jun 2023 05:38:47 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ459sFS9p2rXQnxJ3v6dHaniXhHVZ2mEhsagt0Nqi6ItO9xiVF5+kQhi9fhpu+dPexalcR4
-X-Received: by 2002:a17:902:e5c2:b0:1b6:72af:623d with SMTP id u2-20020a170902e5c200b001b672af623dmr12772436plf.55.1688042327160;
-        Thu, 29 Jun 2023 05:38:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688042327; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp320698ejy;
+        Thu, 29 Jun 2023 05:55:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6l69H6rFFd6DSRs8jamrqaO4ps3Ca1jatLTCjo0a7ylNv1hYUcv3CI7lIEON2XfNvTZyWf
+X-Received: by 2002:a05:6102:3013:b0:443:7635:34d with SMTP id s19-20020a056102301300b004437635034dmr5305514vsa.30.1688043339234;
+        Thu, 29 Jun 2023 05:55:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688043339; cv=none;
         d=google.com; s=arc-20160816;
-        b=sgqGagWhY3S/Wt8jxa/7bv1wnSnEc3i/1ntqgx1upEcSM1LBOX9POsgRzZ2OowWcaD
-         /liFZn9DwMwr9MZrM3gS74799nbjJISWcZQYNeWwl3UOsisvr4wk4zuwUpnSQIo0VeDo
-         bKI/MTRN43ssatBkhaAlSwiBu/0GZJmWXnz7K+UPytsHoSTU8ppiv/fGTusw94/q/ALy
-         qEl3tBPU/qGcda1EKaJWOw6cnD/bfXnvFWw2QBMP7dWKd7Qj6u0wjkWsy3sPbaBR0Rgk
-         6ESqzQdnz8DG3RcF7cgIIg8imKR+zz8hxOj8zQlBvDaxAyzAl2r7tapwMoS7FhmxQKrC
-         UMMA==
+        b=XawJDYBbf1sZDBcdOD9F3XCdBbI7B0a/CEYyhl0lBRIjb4e2YhiiMy8g/8dpi9xlG6
+         5LK9bPjwulnRRPSIsOhE3aP1J7/RysEF9opxUXRiY9REo1p+bba2ibxrnaO7wG4/VCdh
+         psPmSIB5w8R91oAt+m2tItd94Q49xwsfFTIyGoYQrL/gafip6e6febbYHo3tPMwTTvAQ
+         rPlfndjpaCE0m8JN4R5ApH4gzpi0mYU2d8qAx6mE20zQVRl5pZv5sZRiE8ksOl+eeSdq
+         hmYZFC6S2zgFmtPjuicrH7RgrJHOWmWJWEbdHoz3SGYH1QhpufJDNdtE7jCZMQ4x8HYE
+         LLQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:in-reply-to:from
-         :references:cc:to:content-language:subject:user-agent:mime-version
-         :date:message-id:dkim-signature;
-        bh=hxfhJxOdFDvYU3qX7hvs8tBo8Gmcl1dQu4NFgo5HPEU=;
-        fh=+NDfB8LD27t/o7fjEE/3/TxnXP/jDExJEmzBo2HNfcM=;
-        b=qP+rKT2rA+Wxqtwa4/0g/u0Gpou0ktHkapqqKVp1/a65mU41TwwiKbV9Emn9tO+0NT
-         A++4FKVR8rZAlt13v7QKSOg64TFkGmBEX5vomYMs02DW8CgUDnbPczQ6PxSi95drYZjf
-         n0th8c5nHyocxGAFPX7yP64BLlQPqj9klR8WtzkOLBaE05A0+xFim4fQnrv6MtGUfrTw
-         h9qZ1igFR20ajOsa/g+LEKyHs78InzOqd69xD1HDpKCTVl72i22yScDTuX8DT8ey64Ki
-         3/gC6nwH7nJ36LnN0g+yObb9rUNllPBNlB/3PFihSPq5GebptW3041t0uZKbvn8MKsS/
-         jN0g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+k+EZiPsbqU979sALNTepkIWmx3NZEF8XVlueEy6VNo=;
+        fh=qyJ7eyCs9BuG68e8YyZAbIPtkiJwFzDD2GU3+7ZjRFw=;
+        b=0pWikvekJPjFnIV/YNC3mFI0cr3kMFYOEpUABv7Jn5XsxpP9MuirbUGBEYgthz+2Hx
+         /A17Na6Zyt2pztbCFHW5r+3OoHJQKXPriNe9MPaa6p6LGFRJmydKJmuNFAffiR4HHT4t
+         jnrhnbGMvZgzt4zK6OVHviPGFa4WpzAihtvcgF9m8aubn+TVhbt4Tc70J3icowMG2nQ9
+         O5pK/akkIqkfJAZRacIEu5SLceVa4HRFFxE71FEmxLgnaG7OOKAkJJYPoH7Mf1vpuaDX
+         yXargH9cYmtH9AkWX6yTAB+MOz0oqZ+IK10n9N/80Qdr615znHGqBjJAG0Y55e1wx5Z3
+         1p8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rGRM8DCp;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id o21-20020a170903211500b001b8433a86c2si2178281ple.72.2023.06.29.05.38.46;
-        Thu, 29 Jun 2023 05:38:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Te5eowZa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fw13-20020a056214238d00b0062df978c2d9si6148990qvb.532.2023.06.29.05.55.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 29 Jun 2023 05:55:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rGRM8DCp;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231445AbjF2Miq (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Thu, 29 Jun 2023 08:38:46 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:60236 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231245AbjF2Mio (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 29 Jun 2023 08:38:44 -0400
-Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com [IPv6:2a00:1450:4864:20::131])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 62005297B
-        for <kvm@vger.kernel.org>; Thu, 29 Jun 2023 05:38:43 -0700 (PDT)
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-4f76a0a19d4so940524e87.2
-        for <kvm@vger.kernel.org>; Thu, 29 Jun 2023 05:38:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688042321; x=1690634321;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hxfhJxOdFDvYU3qX7hvs8tBo8Gmcl1dQu4NFgo5HPEU=;
-        b=rGRM8DCpGxMdjMclSO/y9NELDVEbR56kDAMryk/iLX8KknlyUbwkX18E0exGVUkNV1
-         x89tvo2xhDeB0GpklKnNGgUPQBLaW69FmFcc65ezE8DFo27sg0nD1scbtcZ561XwkD14
-         h7C7dO6i5QQPJq2NbhposzInyEgZpi6Bdz7F1n9BeubNhzTSgtblrNSml7Dg+pwJlmv7
-         V+HVb+IxQl1ZyTBTiPp0m9S86Mw/RKlhni7OF0zMt8/Qsfl1GqN+HP8i0Q8DncQ88r36
-         iwNUYyCp/G9tpQEMuX6TE70AJ4+stZZU9oh/Fxvsdg+vHMwkaVnRTnnIRzFSrZalcN+W
-         lueQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688042321; x=1690634321;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hxfhJxOdFDvYU3qX7hvs8tBo8Gmcl1dQu4NFgo5HPEU=;
-        b=CbEvqCsATZVkcSGro3iF1s1/8Bw+/SQe9zlsG4+Z6j5WKpyMWm1TBQg+vTBqe3as/Q
-         leEM75H0uiwKWDLLDucBT3JHCQ0SFKX7lc4mGp53zX+AgzF8cvI+jJ72Xa0+AcexoCNh
-         30H3kP7xMVnwkwMMm00Wj5/m6kItBC5+KFPab+kSx8ozjkPJjcTpG5jrdjb0oQeSdadu
-         a2c++tJS2poYIcMYTHYY5bk8eqzobcZrnkJbSjyamnazdxr+Dt+iQzUFlbNOG6KWhKK6
-         1f/8FfQ8Cx+7rXw1Y7qch6QwlDNMYBbpFiyhJO2Frt/4qbkJaw7C0fRJiRGtiVMHV4ca
-         6xKQ==
-X-Gm-Message-State: AC+VfDzE6TRXsisQSo5/f2NFTEJ/iDAn8cAvnoZDLdSfkf27nl1KKWQ4
-        L24HInlp5nBzjs8xYi2TX8gMHQ==
-X-Received: by 2002:a05:6512:1319:b0:4f8:6625:f2ca with SMTP id x25-20020a056512131900b004f86625f2camr14962047lfu.61.1688042321634;
-        Thu, 29 Jun 2023 05:38:41 -0700 (PDT)
-Received: from [192.168.69.115] ([176.176.166.242])
-        by smtp.gmail.com with ESMTPSA id s11-20020a5d69cb000000b00313f07ccca4sm11605117wrw.117.2023.06.29.05.38.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Jun 2023 05:38:41 -0700 (PDT)
-Message-ID: <0d527f32-4e69-55a8-20b8-e357292f64a3@linaro.org>
-Date:   Thu, 29 Jun 2023 14:38:39 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Te5eowZa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qErB0-0001bC-0Y; Thu, 29 Jun 2023 08:55:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qErAu-0001aE-T9
+ for qemu-arm@nongnu.org; Thu, 29 Jun 2023 08:55:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qErAr-0007Bh-Mq
+ for qemu-arm@nongnu.org; Thu, 29 Jun 2023 08:55:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1688043300;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+k+EZiPsbqU979sALNTepkIWmx3NZEF8XVlueEy6VNo=;
+ b=Te5eowZan2d0bwgtal5iLIuVsKJnE8miW1suEhgIOLrVtYggXnG/KRdm1Of2UK6a6FHiWu
+ PIauWxJfIC55dP0WSNniWJFS8qOFZqpzOVYBSxWMmh7Mou7L2ExDFMD6T+q4wa9hf2P1eZ
+ Sbk7KDzXIVjEvZ3n9leqnj1i2+SWlM0=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-609-otZ0DLfkNn6EC3MG7UDMBg-1; Thu, 29 Jun 2023 08:54:54 -0400
+X-MC-Unique: otZ0DLfkNn6EC3MG7UDMBg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A5DE31C09048;
+ Thu, 29 Jun 2023 12:54:53 +0000 (UTC)
+Received: from thuth.com (dhcp-192-205.str.redhat.com [10.33.192.205])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 956402166B27;
+ Thu, 29 Jun 2023 12:54:51 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH] hw: Simplify calls to pci_nic_init_nofail()
+Date: Thu, 29 Jun 2023 14:54:49 +0200
+Message-Id: <20230629125449.234945-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [RFC PATCH 0/2] accel/kvm: Extract 'sysemu/kvm_irq.h' from
- 'sysemu/kvm.h'
-Content-Language: en-US
-To:     qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc:     qemu-arm@nongnu.org, kvm@vger.kernel.org, qemu-s390x@nongnu.org,
-        qemu-ppc@nongnu.org
-References: <20230405163001.98573-1-philmd@linaro.org>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230405163001.98573-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Spam-Status: No, score=-2.2 required=5.0 tests=BAYES_00,DKIM_SIGNED,
-        DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,NICE_REPLY_A,RCVD_IN_DNSWL_NONE,
-        SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE autolearn=ham
-        autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: mqqWGLUE8U1f
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kKytj6bExztq
 
-Ping?
+pci_nic_init_nofail() calls qemu_find_nic_model(), and this function
+sets nd->model = g_strdup(default_model) if it has not been initialized
+yet. So we don't have to set nd->model to the default_nic in the
+calling sites.
 
-On 5/4/23 18:29, Philippe Mathieu-Daudé wrote:
-> Posted individually because it is modifying a lot of files.
-> 
-> RFC: this might not be the best API cut, but "sysemu/kvm.h"
->       is a mixed bag hard to sort...
-> 
-> Based-on: <20230405160454.97436-1-philmd@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/sbsa-ref.c        | 8 +-------
+ hw/arm/virt.c            | 8 +-------
+ hw/loongarch/virt.c      | 8 +-------
+ hw/mips/loongson3_virt.c | 8 +-------
+ hw/xtensa/virt.c         | 8 +-------
+ 5 files changed, 5 insertions(+), 35 deletions(-)
 
-(not based-on actually)
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index b774d80291..d8e13ddbfe 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -683,13 +683,7 @@ static void create_pcie(SBSAMachineState *sms)
+     pci = PCI_HOST_BRIDGE(dev);
+     if (pci->bus) {
+         for (i = 0; i < nb_nics; i++) {
+-            NICInfo *nd = &nd_table[i];
+-
+-            if (!nd->model) {
+-                nd->model = g_strdup(mc->default_nic);
+-            }
+-
+-            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
++            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
+         }
+     }
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3937e30477..b660119bce 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1477,13 +1477,7 @@ static void create_pcie(VirtMachineState *vms)
+     vms->bus = pci->bus;
+     if (vms->bus) {
+         for (i = 0; i < nb_nics; i++) {
+-            NICInfo *nd = &nd_table[i];
+-
+-            if (!nd->model) {
+-                nd->model = g_strdup(mc->default_nic);
+-            }
+-
+-            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
++            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
+         }
+     }
+ 
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index ca8824b6ef..51a453fa9a 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -547,13 +547,7 @@ static void loongarch_devices_init(DeviceState *pch_pic, LoongArchMachineState *
+ 
+     /* Network init */
+     for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-
+-        if (!nd->model) {
+-            nd->model = g_strdup(mc->default_nic);
+-        }
+-
+-        pci_nic_init_nofail(nd, pci_bus, nd->model, NULL);
++        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
+     }
+ 
+     /*
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index 216812f660..3dd91da7a6 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -454,13 +454,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+     }
+ 
+     for (i = 0; i < nb_nics; i++) {
+-        NICInfo *nd = &nd_table[i];
+-
+-        if (!nd->model) {
+-            nd->model = g_strdup(mc->default_nic);
+-        }
+-
+-        pci_nic_init_nofail(nd, pci_bus, nd->model, NULL);
++        pci_nic_init_nofail(&nd_table[i], pci_bus, mc->default_nic, NULL);
+     }
+ }
+ 
+diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
+index b87f842e74..a6cf646e99 100644
+--- a/hw/xtensa/virt.c
++++ b/hw/xtensa/virt.c
+@@ -103,13 +103,7 @@ static void create_pcie(MachineState *ms, CPUXtensaState *env, int irq_base,
+     pci = PCI_HOST_BRIDGE(dev);
+     if (pci->bus) {
+         for (i = 0; i < nb_nics; i++) {
+-            NICInfo *nd = &nd_table[i];
+-
+-            if (!nd->model) {
+-                nd->model = g_strdup(mc->default_nic);
+-            }
+-
+-            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
++            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
+         }
+     }
+ }
+-- 
+2.39.3
 
-> Philippe Mathieu-Daudé (2):
->    accel/kvm: Extract 'sysemu/kvm_irq.h' from 'sysemu/kvm.h'
->    accel/kvm: Declare kvm_arch_irqchip_create() in 'sysemu/kvm_int.h'
-> 
->   include/sysemu/kvm.h           |  88 -----------------------------
->   include/sysemu/kvm_int.h       |  13 +++++
->   include/sysemu/kvm_irq.h       | 100 +++++++++++++++++++++++++++++++++
->   target/i386/kvm/kvm_i386.h     |   1 +
->   accel/kvm/kvm-all.c            |   2 +
->   accel/stubs/kvm-stub.c         |   1 +
->   hw/arm/virt.c                  |   1 +
->   hw/cpu/a15mpcore.c             |   1 +
->   hw/hyperv/hyperv.c             |   1 +
->   hw/i386/intel_iommu.c          |   1 +
->   hw/i386/kvm/apic.c             |   1 +
->   hw/i386/kvm/i8259.c            |   1 +
->   hw/i386/kvm/ioapic.c           |   1 +
->   hw/i386/kvmvapic.c             |   1 +
->   hw/i386/pc.c                   |   1 +
->   hw/i386/x86-iommu.c            |   1 +
->   hw/intc/arm_gic.c              |   1 +
->   hw/intc/arm_gic_common.c       |   1 +
->   hw/intc/arm_gic_kvm.c          |   1 +
->   hw/intc/arm_gicv3_common.c     |   1 +
->   hw/intc/arm_gicv3_its_common.c |   1 +
->   hw/intc/arm_gicv3_kvm.c        |   1 +
->   hw/intc/ioapic.c               |   1 +
->   hw/intc/openpic_kvm.c          |   1 +
->   hw/intc/s390_flic_kvm.c        |   1 +
->   hw/intc/spapr_xive_kvm.c       |   1 +
->   hw/intc/xics.c                 |   1 +
->   hw/intc/xics_kvm.c             |   1 +
->   hw/misc/ivshmem.c              |   1 +
->   hw/ppc/e500.c                  |   1 +
->   hw/ppc/spapr_irq.c             |   1 +
->   hw/remote/proxy.c              |   1 +
->   hw/s390x/virtio-ccw.c          |   1 +
->   hw/vfio/pci.c                  |   1 +
->   hw/vfio/platform.c             |   1 +
->   hw/virtio/virtio-pci.c         |   1 +
->   target/arm/kvm.c               |   1 +
->   target/i386/kvm/kvm.c          |   2 +
->   target/i386/kvm/xen-emu.c      |   2 +
->   target/i386/sev.c              |   1 +
->   target/s390x/kvm/kvm.c         |   2 +
->   41 files changed, 155 insertions(+), 88 deletions(-)
->   create mode 100644 include/sysemu/kvm_irq.h
-> 

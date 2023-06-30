@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y17-20020a1c4b11000000b003f90a604885sm19691989wma.34.2023.06.30.11.04.24
+        by smtp.gmail.com with ESMTPSA id c1-20020a05600c0ac100b003fba6a0c881sm10400961wmr.43.2023.06.30.11.04.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 11:04:25 -0700 (PDT)
+        Fri, 30 Jun 2023 11:04:26 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5AC8F1FFBF;
+	by zen.linaroharston (Postfix) with ESMTP id 748461FFC0;
 	Fri, 30 Jun 2023 19:04:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,54 +38,63 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	Ani Sinha <anisinha@redhat.com>
-Subject: [PATCH v4 04/38] docs/devel: remind developers to run CI container pipeline when updating images
-Date: Fri, 30 Jun 2023 19:03:49 +0100
-Message-Id: <20230630180423.558337-5-alex.bennee@linaro.org>
+	Alexander Bulekov <alxndr@bu.edu>
+Subject: [PATCH v4 05/38] tests/tcg: add mechanism to handle plugin arguments
+Date: Fri, 30 Jun 2023 19:03:50 +0100
+Message-Id: <20230630180423.558337-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ub/49j42jDMS
+X-TUID: gCta7akNg1BT
 
-From: Ani Sinha <anisinha@redhat.com>
+We recently missed a regression that should have been picked up by
+check-tcg. This was because the libmem plugin is effectively a NOP if
+the user doesn't specify the type to use.
 
-When new dependencies and packages are added to containers, its important to
-run CI container generation pipelines on gitlab to make sure that there are no
-obvious conflicts between packages that are being added and those that are
-already present. Running CI container pipelines will make sure that there are
-no such breakages before we commit the change updating the containers. Add a
-line in the documentation reminding developers to run the pipeline before
-submitting the change. It will also ease the life of the maintainers.
+Rather than changing the default behaviour add an additional expansion
+so we can take this into account in future.
 
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20230506072012.10350-1-anisinha@redhat.com>
+Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/devel/testing.rst | 6 ++++++
- 1 file changed, 6 insertions(+)
+ tests/tcg/Makefile.target | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index e85e26c4ca..fb651eae11 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -485,6 +485,12 @@ first to contribute the mapping to the ``libvirt-ci`` project:
-    `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
-    page on how to trigger gitlab CI pipelines on your change.
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 72876cc84e..2462c26000 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
  
-+ * Please also trigger gitlab container generation pipelines on your change
-+   for as many OS distros as practical to make sure that there are no
-+   obvious breakages when adding the new pre-requisite. Please see
-+   `CI <https://www.qemu.org/docs/master/devel/ci.html>`__ documentation
-+   page on how to trigger gitlab CI pipelines on your change.
+ RUN_TESTS+=$(EXTRA_RUNS)
+ 
++# Some plugins need additional arguments above the default to fully
++# exercise things. We can define them on a per-test basis here.
++run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
 +
- For enterprise distros that default to old, end-of-life versions of the
- Python runtime, QEMU uses a separate set of mappings that work with more
- recent versions.  These can be found in ``tests/lcitool/mappings.yml``.
+ ifeq ($(filter %-softmmu, $(TARGET)),)
+ run-%: %
+ 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
+ 
+ run-plugin-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
+ 		-d plugin -D $*.pout \
+ 		 $(call strip-plugin,$<))
+ else
+@@ -189,7 +193,7 @@ run-plugin-%:
+ 	$(call run-test, $@, \
+ 	  $(QEMU) -monitor none -display none \
+ 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
+-	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
++	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
+ 	    	  -d plugin -D $*.pout \
+ 		  $(QEMU_OPTS) $(call strip-plugin,$<))
+ endif
 -- 
 2.39.2

@@ -1,157 +1,227 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp1003535ejy;
-        Fri, 30 Jun 2023 10:51:46 -0700 (PDT)
-X-Received: by 2002:a19:7418:0:b0:4f9:5d2a:e0f6 with SMTP id v24-20020a197418000000b004f95d2ae0f6mr2720434lfe.14.1688147506259;
-        Fri, 30 Jun 2023 10:51:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688147506; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MxOli8O/+FPkLpxLCgZ0sgaNvsJJFC1yRvETa7QCUEd/pmjo2hUy9Kx/UU0aavMJFE
-         +/+KnVXHOMZvzgrTPZvB4kZaUeMjBFMnZCPWqiQgAMjxACUN/sPB+IK4FSZZy85Bw4cI
-         +YOCxcZ6u275tHA99lSMCgOWQGFbuWisBAuE3WDlaNWKwb+ztVqRKfe/53zTiVlKCLMZ
-         SG/2akX6NBc7xXYl+7UzPJFkgNVlPyd7k5Cmv8cPBDsDjNALM6Btr9YvomkRgEiFYgTf
-         hw5VS6kUrvKZELMqlpk/OBMT/KRRIBIQtQIlIMzT78LTlmze0PKpzMil+G2y5GGkePjQ
-         AKfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BMniqV8Qa24ce3aH/nfEq1ieh79OKRsSEbO0YUUdqc4=;
-        fh=eQ8y4mkJYSrqYQiT2aNW9yygQGn+xHBbVIU/HHnJ9N4=;
-        b=sv9YPOT4+nqldfHXOBc8b5BMorKYgDmwe9u98bPrEZW94UfxwO9AoJckKDThfks95g
-         xdBQQh+HLgmQdFW+NNWpQEahpvO/hB7sqQaG5gRy7pD2yKZNlcVXvlQBpcSz7NfIhSKE
-         p+m42QNx0T/coaOSIVy/Gut/Of4RE6VyBouSzLH7HKBtq0AJ5cBVNfNMhFXo2Yo/ilNY
-         qvpvsgv+mmCAlrPA82iJ6dR55LZHmuYuOhhcAdl9UxRkWZNtSxSXL2lIc8w2OZKEaycD
-         5oX0sC4jqAamNOdUjxDPODRTrTY0GDcrOAZWm7T9AuWQz7S2nVFdhoGHtu4KH09+OhXr
-         C+yg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIF+UPmW;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b22-20020a196456000000b004f607f926fdsor5782363lfj.10.2023.06.30.10.51.46
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 30 Jun 2023 10:51:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIF+UPmW;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688147506; x=1690739506;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BMniqV8Qa24ce3aH/nfEq1ieh79OKRsSEbO0YUUdqc4=;
-        b=fIF+UPmWasW2PfmGGUXn42ROcmwATgvJy90h3W0/BWfVvnfLWjBlOluXWCbBuUNwOk
-         hsYIvuqCYlS5LCJBEuT/ueymBZoR4bnriSbEK2KDRwJgYOmLdh8B+jXG0r4TGRCRulqk
-         9rORyDm97Hxio9vRmJWy6uuYIDXki69UuyCvsLpOxo+iydZV27WoA/nJxfu7PLvuCKu8
-         s/paX3oDkgaZ4RIMYaZCaZ92CzHR6jXM8qdA5jBS+4+MqMT1lCg2X1exY7tOIeRpv6MC
-         5NPqswzptQKNAEvA2LcySWRrKDDC9o1aoitsfp21bfkgV/6qeanzAVmy3SCVhGo7HDAt
-         5v/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688147506; x=1690739506;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BMniqV8Qa24ce3aH/nfEq1ieh79OKRsSEbO0YUUdqc4=;
-        b=VLwWiqp4+im/Jn+zNIM9SD22U4OHdQg7PW4GKztx3AXRB3J67Pe3fE9hbu/r5t9Xwo
-         8tyE9/jLS7kv7Q8Pml2gtjElnekGlR+d3x6jEWrWtkbaBTRruy98YN8MCOHoFtTxKAed
-         8gFmNHAsNSRgscIgFQtsmg9cyaZNVT+QzhtE9Cclc3D/yuqzwDhh+kMH/ovgon4qbgyZ
-         hFVO9Cpk5y+2qS/MKjLpRppqd530g3qhmdfpcRJFR8Kxx3eNsycrD86ijMpbiyksEazj
-         u7KJsqBWXAq1UKQkFGZKXFfzjQRZxGTc4T55p2G/MlqdoQo9WBkKMcwKKootcD89k9Y3
-         QkcA==
-X-Gm-Message-State: ABy/qLbZkSfBcrv2ImF7h/ajWTrIIlHLmK24fSLK7V3/Jfr7sk/sdjem
-	evCTyPXL0vgQxnX1RIifqkNRs5zi
-X-Google-Smtp-Source: APBJJlESa29bUtSPxqS248gMCmZETvtNnWupWDfKc+G1dpQMFgKHsMqEzcsLw16ZpXGSlQ8LrxtygA==
-X-Received: by 2002:a05:6512:3c98:b0:4f8:7614:48a5 with SMTP id h24-20020a0565123c9800b004f8761448a5mr3210195lfv.66.1688147505772;
-        Fri, 30 Jun 2023 10:51:45 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.208] ([139.47.41.96])
-        by smtp.gmail.com with ESMTPSA id u20-20020a05600c211400b003fbb618f7adsm5479822wml.15.2023.06.30.10.51.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 30 Jun 2023 10:51:45 -0700 (PDT)
-Message-ID: <e4997bdf-502e-5e45-f0a6-63f6fed0cef7@linaro.org>
-Date: Fri, 30 Jun 2023 19:51:42 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id d10-20020adfe2ca000000b0031272fced4dsm18937313wrj.52.2023.06.30.11.04.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Jun 2023 11:04:24 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id E0F7E1FFBB;
+	Fri, 30 Jun 2023 19:04:23 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Leonardo Bras <leobras@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Peter Xu <peterx@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Qiuhao Li <Qiuhao.Li@outlook.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Bin Meng <bmeng.cn@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Bandan Das <bsd@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	qemu-arm@nongnu.org,
+	Darren Kenny <darren.kenny@oracle.com>,
+	Alexander Bulekov <alxndr@bu.edu>
+Subject: [PATCH v4 00/38] maintainer omnibus: testing, fuzz, plugins, documentation, gdbstub (pre-PR)
+Date: Fri, 30 Jun 2023 19:03:45 +0100
+Message-Id: <20230630180423.558337-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH v3 1/8] target/arm: Add ID_AA64ISAR2_EL1
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Aaron Lindsay <aaron@os.amperecomputing.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Vincent Dehors <vincent.dehors@smile.fr>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20230609172324.982888-1-aaron@os.amperecomputing.com>
- <20230609172324.982888-2-aaron@os.amperecomputing.com>
- <a8db353d-b258-c856-d5ce-1236b0893a53@linaro.org>
- <ZIcbF8zShOr1N2Sl@strawberry.localdomain>
- <CAFEAcA8pjgXXnUcLxcnm-9mcakps4KcXKOvHQxzj7n_CzY2zSA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA8pjgXXnUcLxcnm-9mcakps4KcXKOvHQxzj7n_CzY2zSA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: Msp1Y+qFQSaA
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: rg2DJvWWWjrG
 
-On 6/19/23 12:51, Peter Maydell wrote:
-> On Mon, 12 Jun 2023 at 14:18, Aaron Lindsay
-> <aaron@os.amperecomputing.com> wrote:
->>
->> On Jun 09 13:49, Richard Henderson wrote:
->>> On 6/9/23 10:23, Aaron Lindsay wrote:
->>>> --- a/target/arm/hvf/hvf.c
->>>> +++ b/target/arm/hvf/hvf.c
->>>> @@ -847,6 +847,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>>>            { HV_SYS_REG_ID_AA64DFR1_EL1, &host_isar.id_aa64dfr1 },
->>>>            { HV_SYS_REG_ID_AA64ISAR0_EL1, &host_isar.id_aa64isar0 },
->>>>            { HV_SYS_REG_ID_AA64ISAR1_EL1, &host_isar.id_aa64isar1 },
->>>> +        { HV_SYS_REG_ID_AA64ISAR2_EL1, &host_isar.id_aa64isar2 },
->>>
->>> Sadly not defined for MacOSX13.1.sdk, and it's an enum so you can't #ifdef it either.
->>>
->>> You'll need a meson probe for it.
->>
->> I'm not very familiar with HVF or meson - I am not sure I understand
->> what you're suggesting here (and a few attempts to grep around for an
->> example didn't turn up anything that looked helpful). Are you suggesting
->> some sort of build-time auto-detection, a "dumb" configuration switch
->> that a user could use to manually enable this, or something else? And/or
->> is there an example you could point me to of what you're thinking?
-> 
-> So the first thing here is: where is HV_SYS_REG_ID_AA64ISAR2_EL1
-> defined in the first place?
-> https://developer.apple.com/documentation/hypervisor/hv_sys_reg_t
-> does not list it.
-> 
-> If this is really the right name for the value, then:
-> 
-> We do our build-time detection of stuff that might or might
-> not be present using meson's facilities or that kind of
-> thing. These are all in meson.build. In this case I think
-> that what you want to use is has_header_symbol(), which
-> checks for presence of some symbol in a given header. There's
-> examples in meson.build, you want something like
-> 
-> config_host_data.set('HAVE_HV_SYS_REG_ID_AA64ISAR2_EL1',
->                       cc.has_header_symbol('whatever.h',
-> 'HV_SYS_REG_ID_AA64ISAR2_EL1'))
-> 
-> which tells meson "if this header has this symbol then define
-> this preprocessor value HAVE_...". Then you can #ifdef on that.
-> (We're inconsistent about whether we use CONFIG_FOO or HAVE_FOO
-> for this sort of test.)
-> 
-> Or alternatively, since this is macos specific and Apple are
-> quite careful about API versioning, it may be simpler to use
-> macos's own version macros to ifdef things so we only try to
-> use the enum value when building for a macos version that knows
-> about it. Grepping for 'MAC_OS_VERSION' brings up examples of
-> that approach.
+As softfreeze is fast approaching I thought it would be work combining
+my various trees into an omnibus series to ease the review and
+merging.
 
-AFAICS, there is no macos version that contains this register, because there is no Apple 
-cpu that contains it.  I think we should be fine, for now, in omitting any HVF change, 
-letting the register default to 0.
+The testing updates exposed a number of latent leaks that confused the
+oss-fuzz jobs (hence the test-fuzz addition to help debug that). This
+also includes some minor plugin updates and finally some documentation
+updates that clean-up and expose the QOM and QDEV APIs which are so
+core to emulating anything in QEMU.
 
+I was intending to roll the PR from the last post but as there is
+still un-reviewed stuff and some changes I'd missed from previous
+reviews so I though it was worth one last posting. I'll roll on
+Monday.
 
-r~
+v2
+  - applied a bunch of review tags
+  - added missing doc suggestions from Paolo
+  - tweaked the plugin fix for CI
+
+v3
+  - few more tags
+  - checkpatch cleanups
+  - rolled in gdbstub/next
+
+v4
+  - added #ifdef CONFIG_TCG to the arm_casq_ptw
+  - fixed plugin memory instrumentation with new helper for mmu access
+  - added Thomas' test_arm_bpim2u_gmac tweak
+  - moved pkgs from riscv64-cross patch to earlier qemu-minimal patch
+
+The following are still missing review:
+
+ - gdbstub: lightly refactor connection to avoid snprintf
+ - tests/docker: convert riscv64-cross to lcitool
+ - tests/lcitool: introduce qemu-minimal
+ - tests/lcitool: add an explicit gcc-native package (1 acks, 1 sobs, 0 tbs)
+ - tests/lcitool: update to latest version (1 acks, 1 sobs, 0 tbs)
+ - tests/qtests: clean-up and fix leak in generic_fuzz
+
+Alex Bennée (22):
+  gitlab: reduce testing scope of check-gcov
+  tests/tcg: add mechanism to handle plugin arguments
+  qemu-keymap: properly check return from xkb_keymap_mod_get_index
+  scripts/oss-fuzz: add a suppression for keymap
+  tests/qtests: clean-up and fix leak in generic_fuzz
+  tests/docker: add test-fuzz
+  Makefile: add lcitool-refresh to UNCHECKED_GOALS
+  tests/lcitool: update to latest version
+  tests/lcitool: add an explicit gcc-native package
+  tests/lcitool: introduce qemu-minimal
+  tests/docker: convert riscv64-cross to lcitool
+  target/arm: make arm_casq_ptw CONFIG_TCG only
+  plugins: force slow path when plugins instrument memory ops
+  plugins: fix memory leak while parsing options
+  plugins: update lockstep to use g_memdup2
+  docs/devel: add some front matter to the devel index
+  include/migration: mark vmstate_register() as a legacy function
+  include/hw/qdev-core: fixup kerneldoc annotations
+  docs/devel: split qom-api reference into new file
+  docs/devel: introduce some key concepts for QOM development
+  gdbstub: lightly refactor connection to avoid snprintf
+  gdbstub: clean-up vcont handling to avoid goto
+
+Ani Sinha (1):
+  docs/devel: remind developers to run CI container pipeline when
+    updating images
+
+Daniel P. Berrangé (2):
+  gitlab: explicit set artifacts publishing criteria
+  gitlab: ensure coverage job also publishes meson log
+
+Erik Skultety (1):
+  tests/lcitool: Bump fedora container versions
+
+Ilya Leoshkevich (8):
+  linux-user: Expose do_guest_openat() and do_guest_readlink()
+  linux-user: Add "safe" parameter to do_guest_openat()
+  linux-user: Emulate /proc/self/smaps
+  gdbstub: Expose gdb_get_process() and gdb_get_first_cpu_in_process()
+  gdbstub: Report the actual qemu-user pid
+  gdbstub: Add support for info proc mappings
+  docs: Document security implications of debugging
+  tests/tcg: Add a test for info proc mappings
+
+Marcin Juszkiewicz (1):
+  tests/avocado: update firmware to enable sbsa-ref/max
+
+Nicholas Piggin (1):
+  gdbstub: Permit reverse step/break to provide stop response
+
+Philippe Mathieu-Daudé (1):
+  docs/devel/qom.rst: Correct code style
+
+Thomas Huth (1):
+  tests/avocado: Make the test_arm_bpim2u_gmac test more reliable
+
+ MAINTAINERS                                   |   1 +
+ docs/devel/index-api.rst                      |   2 +
+ docs/devel/index-process.rst                  |   2 +
+ docs/devel/index-tcg.rst                      |   2 +
+ docs/devel/index.rst                          |  24 +-
+ docs/devel/qdev-api.rst                       |   7 +
+ docs/devel/qom-api.rst                        |   9 +
+ docs/devel/qom.rst                            |  65 +++-
+ docs/devel/tcg.rst                            |   2 +
+ docs/devel/testing.rst                        |   6 +
+ docs/system/gdb.rst                           |  15 +
+ Makefile                                      |   2 +-
+ gdbstub/internals.h                           |   7 +
+ include/exec/cpu-all.h                        |   2 +-
+ include/exec/exec-all.h                       |  23 ++
+ include/hw/core/cpu.h                         |  17 +
+ include/hw/qdev-core.h                        | 368 ++++++++++++------
+ include/migration/vmstate.h                   |  10 +-
+ linux-user/qemu.h                             |   3 +
+ accel/tcg/cputlb.c                            |  41 +-
+ accel/tcg/user-exec.c                         |   8 +-
+ contrib/plugins/cache.c                       |   2 +-
+ contrib/plugins/drcov.c                       |   2 +-
+ contrib/plugins/execlog.c                     |   2 +-
+ contrib/plugins/hotblocks.c                   |   2 +-
+ contrib/plugins/hotpages.c                    |   2 +-
+ contrib/plugins/howvec.c                      |   2 +-
+ contrib/plugins/hwprofile.c                   |   2 +-
+ contrib/plugins/lockstep.c                    |   4 +-
+ gdbstub/gdbstub.c                             | 115 ++++--
+ gdbstub/softmmu.c                             |  19 +-
+ gdbstub/user-target.c                         | 137 +++++++
+ linux-user/syscall.c                          | 128 ++++--
+ qemu-keymap.c                                 |  24 +-
+ target/arm/ptw.c                              |  18 +-
+ target/arm/tcg/sve_helper.c                   |   4 -
+ tests/plugin/bb.c                             |   2 +-
+ tests/plugin/insn.c                           |   2 +-
+ tests/plugin/mem.c                            |   2 +-
+ tests/plugin/syscall.c                        |   2 +-
+ tests/qtest/fuzz/generic_fuzz.c               |  13 +-
+ .gitlab-ci.d/buildtest-template.yml           |   4 +-
+ .gitlab-ci.d/buildtest.yml                    |   7 +-
+ .gitlab-ci.d/crossbuild-template.yml          |   1 +
+ .gitlab-ci.d/crossbuilds.yml                  |   2 +
+ .gitlab-ci.d/opensbi.yml                      |   1 +
+ scripts/oss-fuzz/lsan_suppressions.txt        |   3 +
+ tests/avocado/boot_linux_console.py           |   4 +-
+ tests/avocado/machine_aarch64_sbsaref.py      |  23 +-
+ tests/docker/dockerfiles/alpine.docker        |   4 +-
+ .../dockerfiles/debian-amd64-cross.docker     |   1 +
+ .../dockerfiles/debian-arm64-cross.docker     |   1 +
+ .../dockerfiles/debian-armel-cross.docker     |   1 +
+ .../dockerfiles/debian-armhf-cross.docker     |   1 +
+ .../dockerfiles/debian-mips64el-cross.docker  |   1 +
+ .../dockerfiles/debian-mipsel-cross.docker    |   1 +
+ .../dockerfiles/debian-ppc64el-cross.docker   |   1 +
+ .../dockerfiles/debian-riscv64-cross.docker   | 119 +++---
+ .../dockerfiles/debian-s390x-cross.docker     |   1 +
+ .../dockerfiles/fedora-win32-cross.docker     |   5 +-
+ .../dockerfiles/fedora-win64-cross.docker     |   5 +-
+ tests/docker/dockerfiles/fedora.docker        |   4 +-
+ tests/docker/test-fuzz                        |  28 ++
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/projects/qemu-minimal.yml       |  27 ++
+ tests/lcitool/projects/qemu.yml               |   1 +
+ tests/lcitool/refresh                         |  18 +-
+ tests/tcg/Makefile.target                     |   8 +-
+ tests/tcg/aarch64/Makefile.target             |   8 +
+ tests/tcg/multiarch/Makefile.target           |   9 +-
+ .../multiarch/gdbstub/test-proc-mappings.py   |  65 ++++
+ 71 files changed, 1125 insertions(+), 331 deletions(-)
+ create mode 100644 docs/devel/qdev-api.rst
+ create mode 100644 docs/devel/qom-api.rst
+ create mode 100755 tests/docker/test-fuzz
+ create mode 100644 tests/lcitool/projects/qemu-minimal.yml
+ create mode 100644 tests/tcg/multiarch/gdbstub/test-proc-mappings.py
+
+-- 
+2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id q9-20020a1ce909000000b003fbc90e030csm1682204wmc.37.2023.06.30.11.13.27
+        by smtp.gmail.com with ESMTPSA id cx16-20020a056000093000b00301a351a8d6sm19019624wrb.84.2023.06.30.11.13.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:27 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9EDD21FFD7;
-	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 54E291FFBC;
+	Fri, 30 Jun 2023 19:04:26 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -38,104 +38,213 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
-	Alexander Bulekov <alxndr@bu.edu>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v4 32/38] linux-user: Add "safe" parameter to do_guest_openat()
-Date: Fri, 30 Jun 2023 19:04:17 +0100
-Message-Id: <20230630180423.558337-33-alex.bennee@linaro.org>
+	Alexander Bulekov <alxndr@bu.edu>
+Subject: [PATCH v4 20/38] plugins: fix memory leak while parsing options
+Date: Fri, 30 Jun 2023 19:04:05 +0100
+Message-Id: <20230630180423.558337-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: H9gn+ezl5M/J
+X-TUID: FYgWrJjn2DJh
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+It was hard to track down this leak as it was an internal allocation
+by glib and the backtraces did not give much away. The autofree was
+freeing the allocation with g_free() but not taking care of the
+individual strings. They should have been freed with g_strfreev()
+instead.
 
-gdbstub cannot meaningfully handle QEMU_ERESTARTSYS, and it doesn't
-need to. Add a parameter to do_guest_openat() that makes it use
-openat() instead of safe_openat(), so that it becomes usable from
-gdbstub.
+Searching the glib source code for the correct string free function
+led to:
 
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+  G_DEFINE_AUTO_CLEANUP_FREE_FUNC(GStrv, g_strfreev, NULL)
+
+and indeed if you read to the bottom of the documentation page you
+will find:
+
+  typedef gchar** GStrv;
+
+  A typedef alias for gchar**. This is mostly useful when used together with g_auto().
+
+So fix up all the g_autofree g_strsplit case that smugly thought they
+had de-allocation covered.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20230621203627.1808446-3-iii@linux.ibm.com>
+Message-Id: <20230623122100.1640995-20-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- linux-user/qemu.h    |  2 +-
- linux-user/syscall.c | 18 +++++++++++++-----
- 2 files changed, 14 insertions(+), 6 deletions(-)
+ contrib/plugins/cache.c     | 2 +-
+ contrib/plugins/drcov.c     | 2 +-
+ contrib/plugins/execlog.c   | 2 +-
+ contrib/plugins/hotblocks.c | 2 +-
+ contrib/plugins/hotpages.c  | 2 +-
+ contrib/plugins/howvec.c    | 2 +-
+ contrib/plugins/hwprofile.c | 2 +-
+ contrib/plugins/lockstep.c  | 2 +-
+ tests/plugin/bb.c           | 2 +-
+ tests/plugin/insn.c         | 2 +-
+ tests/plugin/mem.c          | 2 +-
+ tests/plugin/syscall.c      | 2 +-
+ 12 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index a5830ec239..9b8e0860d7 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -166,7 +166,7 @@ typedef struct TaskState {
+diff --git a/contrib/plugins/cache.c b/contrib/plugins/cache.c
+index 2e25184a7f..5036213f1b 100644
+--- a/contrib/plugins/cache.c
++++ b/contrib/plugins/cache.c
+@@ -772,7 +772,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
  
- abi_long do_brk(abi_ulong new_brk);
- int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
--                    int flags, mode_t mode);
-+                    int flags, mode_t mode, bool safe);
- ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz);
+     for (i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
  
- /* user access */
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index fa83737192..ecd9f5e23d 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -8449,7 +8449,7 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
- #endif
- 
- int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
--                    int flags, mode_t mode)
-+                    int flags, mode_t mode, bool safe)
+         if (g_strcmp0(tokens[0], "iblksize") == 0) {
+             l1_iblksize = STRTOLL(tokens[1]);
+diff --git a/contrib/plugins/drcov.c b/contrib/plugins/drcov.c
+index b4a855adaf..686ae0a537 100644
+--- a/contrib/plugins/drcov.c
++++ b/contrib/plugins/drcov.c
+@@ -148,7 +148,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
+                         int argc, char **argv)
  {
-     struct fake_open {
-         const char *filename;
-@@ -8476,7 +8476,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-     };
+     for (int i = 0; i < argc; i++) {
+-        g_autofree char **tokens = g_strsplit(argv[i], "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(argv[i], "=", 2);
+         if (g_strcmp0(tokens[0], "filename") == 0) {
+             file_name = g_strdup(tokens[1]);
+         }
+diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+index e255bd21fd..7129d526f8 100644
+--- a/contrib/plugins/execlog.c
++++ b/contrib/plugins/execlog.c
+@@ -227,7 +227,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
  
-     if (is_proc_myself(pathname, "exe")) {
--        return safe_openat(dirfd, exec_path, flags, mode);
-+        if (safe) {
-+            return safe_openat(dirfd, exec_path, flags, mode);
-+        } else {
-+            return openat(dirfd, exec_path, flags, mode);
-+        }
-     }
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+         if (g_strcmp0(tokens[0], "ifilter") == 0) {
+             parse_insn_match(tokens[1]);
+         } else if (g_strcmp0(tokens[0], "afilter") == 0) {
+diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
+index 062200a7a4..6b74d25fea 100644
+--- a/contrib/plugins/hotblocks.c
++++ b/contrib/plugins/hotblocks.c
+@@ -135,7 +135,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
+ {
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+         if (g_strcmp0(tokens[0], "inline") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_inline)) {
+                 fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
+diff --git a/contrib/plugins/hotpages.c b/contrib/plugins/hotpages.c
+index 0d12910af6..8316ae50c7 100644
+--- a/contrib/plugins/hotpages.c
++++ b/contrib/plugins/hotpages.c
+@@ -169,7 +169,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
  
-     for (fake_open = fakes; fake_open->filename; fake_open++) {
-@@ -8518,7 +8522,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
-         return fd;
-     }
+     for (i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", -1);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", -1);
  
--    return safe_openat(dirfd, path(pathname), flags, mode);
-+    if (safe) {
-+        return safe_openat(dirfd, path(pathname), flags, mode);
-+    } else {
-+        return openat(dirfd, path(pathname), flags, mode);
-+    }
- }
+         if (g_strcmp0(tokens[0], "sortby") == 0) {
+             if (g_strcmp0(tokens[1], "reads") == 0) {
+diff --git a/contrib/plugins/howvec.c b/contrib/plugins/howvec.c
+index 4a5ec3d936..0ed01ea931 100644
+--- a/contrib/plugins/howvec.c
++++ b/contrib/plugins/howvec.c
+@@ -333,7 +333,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
  
- ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz)
-@@ -9027,7 +9035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-             return -TARGET_EFAULT;
-         ret = get_errno(do_guest_openat(cpu_env, AT_FDCWD, p,
-                                   target_to_host_bitmask(arg2, fcntl_flags_tbl),
--                                  arg3));
-+                                  arg3, true));
-         fd_trans_unregister(ret);
-         unlock_user(p, arg1, 0);
-         return ret;
-@@ -9037,7 +9045,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-             return -TARGET_EFAULT;
-         ret = get_errno(do_guest_openat(cpu_env, arg1, p,
-                                   target_to_host_bitmask(arg3, fcntl_flags_tbl),
--                                  arg4));
-+                                  arg4, true));
-         fd_trans_unregister(ret);
-         unlock_user(p, arg2, 0);
-         return ret;
+     for (i = 0; i < argc; i++) {
+         char *p = argv[i];
+-        g_autofree char **tokens = g_strsplit(p, "=", -1);
++        g_auto(GStrv) tokens = g_strsplit(p, "=", -1);
+         if (g_strcmp0(tokens[0], "inline") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_inline)) {
+                 fprintf(stderr, "boolean argument parsing failed: %s\n", p);
+diff --git a/contrib/plugins/hwprofile.c b/contrib/plugins/hwprofile.c
+index 691d4edb0c..739ac0c66b 100644
+--- a/contrib/plugins/hwprofile.c
++++ b/contrib/plugins/hwprofile.c
+@@ -263,7 +263,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
+ 
+     for (i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+ 
+         if (g_strcmp0(tokens[0], "track") == 0) {
+             if (g_strcmp0(tokens[1], "read") == 0) {
+diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+index a41ffe83fa..e36f0b9562 100644
+--- a/contrib/plugins/lockstep.c
++++ b/contrib/plugins/lockstep.c
+@@ -323,7 +323,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+ 
+     for (i = 0; i < argc; i++) {
+         char *p = argv[i];
+-        g_autofree char **tokens = g_strsplit(p, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(p, "=", 2);
+ 
+         if (g_strcmp0(tokens[0], "verbose") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &verbose)) {
+diff --git a/tests/plugin/bb.c b/tests/plugin/bb.c
+index 7d470a1011..df50d1fd3b 100644
+--- a/tests/plugin/bb.c
++++ b/tests/plugin/bb.c
+@@ -104,7 +104,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+ 
+     for (i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+         if (g_strcmp0(tokens[0], "inline") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_inline)) {
+                 fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
+diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c
+index 9bd6e44f73..5fd3017c2b 100644
+--- a/tests/plugin/insn.c
++++ b/tests/plugin/insn.c
+@@ -189,7 +189,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+ {
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+         if (g_strcmp0(tokens[0], "inline") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_inline)) {
+                 fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
+diff --git a/tests/plugin/mem.c b/tests/plugin/mem.c
+index 4570f7d815..f3b9f696a0 100644
+--- a/tests/plugin/mem.c
++++ b/tests/plugin/mem.c
+@@ -83,7 +83,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+ 
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+ 
+         if (g_strcmp0(tokens[0], "haddr") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_haddr)) {
+diff --git a/tests/plugin/syscall.c b/tests/plugin/syscall.c
+index 96040c578f..72e1a5bf90 100644
+--- a/tests/plugin/syscall.c
++++ b/tests/plugin/syscall.c
+@@ -121,7 +121,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+ 
+     for (int i = 0; i < argc; i++) {
+         char *opt = argv[i];
+-        g_autofree char **tokens = g_strsplit(opt, "=", 2);
++        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+ 
+         if (g_strcmp0(tokens[0], "print") == 0) {
+             if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_print)) {
 -- 
 2.39.2

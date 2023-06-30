@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l1-20020adff481000000b003113ed02080sm18720230wro.95.2023.06.30.11.13.28
+        by smtp.gmail.com with ESMTPSA id e1-20020a5d5941000000b00313e59cb371sm17576229wri.12.2023.06.30.11.13.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D5D191FFDB;
-	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id D8BBD1FFCF;
+	Fri, 30 Jun 2023 19:04:26 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,120 +39,58 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v4 34/38] gdbstub: Expose gdb_get_process() and gdb_get_first_cpu_in_process()
-Date: Fri, 30 Jun 2023 19:04:19 +0100
-Message-Id: <20230630180423.558337-35-alex.bennee@linaro.org>
+	BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH v4 25/38] docs/devel/qom.rst: Correct code style
+Date: Fri, 30 Jun 2023 19:04:10 +0100
+Message-Id: <20230630180423.558337-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8alaAdZre96k
+X-TUID: vJsHqTngiaAu
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-These functions will be needed by user-target.c in order to retrieve
-the name of the executable.
+Per commit 067109a11c ("docs/devel: mention the spacing requirement
+for QOM"):
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20230621203627.1808446-5-iii@linux.ibm.com>
+  For a storage structure the first declaration should always be
+  called “parent_obj” and for a class structure the first member
+  should always be called “parent_class”
+
+Adapt the QOM rST document accordingly.
+
+Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230622101717.70468-1-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- gdbstub/internals.h |  2 ++
- gdbstub/gdbstub.c   | 16 ++++++++--------
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ docs/devel/qom.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/gdbstub/internals.h b/gdbstub/internals.h
-index 33d21d6488..25e4d5eeaa 100644
---- a/gdbstub/internals.h
-+++ b/gdbstub/internals.h
-@@ -129,6 +129,8 @@ void gdb_read_byte(uint8_t ch);
-  */
- bool gdb_got_immediate_ack(void);
- /* utility helpers */
-+GDBProcess *gdb_get_process(uint32_t pid);
-+CPUState *gdb_get_first_cpu_in_process(GDBProcess *process);
- CPUState *gdb_first_attached_cpu(void);
- void gdb_append_thread_id(CPUState *cpu, GString *buf);
- int gdb_get_cpu_index(CPUState *cpu);
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 49143c7d83..ce3e4a2671 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -211,7 +211,7 @@ static uint32_t gdb_get_cpu_pid(CPUState *cpu)
-     return cpu->cluster_index + 1;
- }
+diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
+index c9237950d0..2828843058 100644
+--- a/docs/devel/qom.rst
++++ b/docs/devel/qom.rst
+@@ -26,7 +26,7 @@ features:
+    typedef DeviceClass MyDeviceClass;
+    typedef struct MyDevice
+    {
+-       DeviceState parent;
++       DeviceState parent_obj;
  
--static GDBProcess *gdb_get_process(uint32_t pid)
-+GDBProcess *gdb_get_process(uint32_t pid)
- {
-     int i;
+        int reg0, reg1, reg2;
+    } MyDevice;
+@@ -147,7 +147,7 @@ will also have a wrapper function to call it easily:
  
-@@ -247,7 +247,7 @@ static CPUState *find_cpu(uint32_t thread_id)
-     return NULL;
- }
+    typedef struct MyDeviceClass
+    {
+-       DeviceClass parent;
++       DeviceClass parent_class;
  
--static CPUState *get_first_cpu_in_process(GDBProcess *process)
-+CPUState *gdb_get_first_cpu_in_process(GDBProcess *process)
- {
-     CPUState *cpu;
- 
-@@ -325,7 +325,7 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
-             return NULL;
-         }
- 
--        return get_first_cpu_in_process(process);
-+        return gdb_get_first_cpu_in_process(process);
-     } else {
-         /* a specific thread */
-         cpu = find_cpu(tid);
-@@ -354,7 +354,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
-     size_t len;
-     int i;
-     const char *name;
--    CPUState *cpu = get_first_cpu_in_process(process);
-+    CPUState *cpu = gdb_get_first_cpu_in_process(process);
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-     len = 0;
-@@ -490,7 +490,7 @@ void gdb_register_coprocessor(CPUState *cpu,
- 
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
- {
--    CPUState *cpu = get_first_cpu_in_process(p);
-+    CPUState *cpu = gdb_get_first_cpu_in_process(p);
- 
-     while (cpu) {
-         gdb_breakpoint_remove_all(cpu);
-@@ -647,7 +647,7 @@ static int gdb_handle_vcont(const char *p)
-                 return -EINVAL;
-             }
- 
--            cpu = get_first_cpu_in_process(process);
-+            cpu = gdb_get_first_cpu_in_process(process);
-             while (cpu) {
-                 if (newstates[cpu->cpu_index] == 1) {
-                     newstates[cpu->cpu_index] = cur_action;
-@@ -1270,7 +1270,7 @@ static void handle_v_attach(GArray *params, void *user_ctx)
-         goto cleanup;
-     }
- 
--    cpu = get_first_cpu_in_process(process);
-+    cpu = gdb_get_first_cpu_in_process(process);
-     if (!cpu) {
-         goto cleanup;
-     }
-@@ -1393,7 +1393,7 @@ static void handle_query_curr_tid(GArray *params, void *user_ctx)
-      * first thread).
-      */
-     process = gdb_get_cpu_process(gdbserver_state.g_cpu);
--    cpu = get_first_cpu_in_process(process);
-+    cpu = gdb_get_first_cpu_in_process(process);
-     g_string_assign(gdbserver_state.str_buf, "QC");
-     gdb_append_thread_id(cpu, gdbserver_state.str_buf);
-     gdb_put_strbuf();
+        void (*frobnicate) (MyDevice *obj);
+    } MyDeviceClass;
 -- 
 2.39.2

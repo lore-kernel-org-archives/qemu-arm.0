@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id s25-20020a7bc399000000b003fa96fe2bebsm14598535wmj.41.2023.06.30.11.13.28
+        by smtp.gmail.com with ESMTPSA id v1-20020adfe281000000b00311299df211sm18857193wri.77.2023.06.30.11.13.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 11:13:28 -0700 (PDT)
+        Fri, 30 Jun 2023 11:13:29 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3742A1FFD1;
+	by zen.linaroharston (Postfix) with ESMTP id 1D09D1FFC0;
 	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,77 +39,151 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 28/38] gdbstub: lightly refactor connection to avoid snprintf
-Date: Fri, 30 Jun 2023 19:04:13 +0100
-Message-Id: <20230630180423.558337-29-alex.bennee@linaro.org>
+Subject: [PATCH v4 27/38] docs/devel: introduce some key concepts for QOM development
+Date: Fri, 30 Jun 2023 19:04:12 +0100
+Message-Id: <20230630180423.558337-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ULsI3VJN704n
+X-TUID: raBoaDqA/Z1N
 
-This may be a bit too much to avoid an snprintf and the slightly dodgy
-assign to a const variable. But hopefully not.
+Using QOM correctly is increasingly important to maintaining a modern
+code base. However the current documentation skips some important
+concepts before launching into a simple example. Lets:
+
+  - at least mention properties
+  - mention TYPE_OBJECT and TYPE_DEVICE
+  - talk about why we have realize/unrealize
+  - mention the QOM tree
+  - lightly re-arrange the order we mention things
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20230619171437.357374-6-alex.bennee@linaro.org>
 
 ---
-v2
-  - fix checkpatch warning
+v3
+  - moved around as per Paolo's review
 ---
- gdbstub/softmmu.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+ docs/devel/qom.rst | 58 +++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 52 insertions(+), 6 deletions(-)
 
-diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
-index 99d994e6bf..f509b7285d 100644
---- a/gdbstub/softmmu.c
-+++ b/gdbstub/softmmu.c
-@@ -332,11 +332,9 @@ static void create_processes(GDBState *s)
- 
- int gdbserver_start(const char *device)
- {
--    trace_gdbstub_op_start(device);
--
--    char gdbstub_device_name[128];
-     Chardev *chr = NULL;
-     Chardev *mon_chr;
-+    g_autoptr(GString) cs = g_string_new(device);
- 
-     if (!first_cpu) {
-         error_report("gdbstub: meaningless to attach gdb to a "
-@@ -350,15 +348,16 @@ int gdbserver_start(const char *device)
-         return -1;
-     }
- 
--    if (!device) {
-+    if (cs->len == 0) {
-         return -1;
-     }
--    if (strcmp(device, "none") != 0) {
--        if (strstart(device, "tcp:", NULL)) {
+diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
+index c342ce18e3..0b506426d7 100644
+--- a/docs/devel/qom.rst
++++ b/docs/devel/qom.rst
+@@ -13,6 +13,24 @@ features:
+ - System for dynamically registering types
+ - Support for single-inheritance of types
+ - Multiple inheritance of stateless interfaces
++- Mapping internal members to publicly exposed properties
 +
-+    trace_gdbstub_op_start(cs->str);
++The root object class is TYPE_OBJECT which provides for the basic
++object methods.
 +
-+    if (g_strcmp0(cs->str, "none") != 0) {
-+        if (g_str_has_prefix(cs->str, "tcp:")) {
-             /* enforce required TCP attributes */
--            snprintf(gdbstub_device_name, sizeof(gdbstub_device_name),
--                     "%s,wait=off,nodelay=on,server=on", device);
--            device = gdbstub_device_name;
-+            g_string_append_printf(cs, ",wait=off,nodelay=on,server=on");
-         }
- #ifndef _WIN32
-         else if (strcmp(device, "stdio") == 0) {
-@@ -373,7 +372,7 @@ int gdbserver_start(const char *device)
-          * FIXME: it's a bit weird to allow using a mux chardev here
-          * and implicitly setup a monitor. We may want to break this.
-          */
--        chr = qemu_chr_new_noreplay("gdb", device, true, NULL);
-+        chr = qemu_chr_new_noreplay("gdb", cs->str, true, NULL);
-         if (!chr) {
-             return -1;
-         }
++The QOM tree
++============
++
++The QOM tree is a composition tree which represents all of the objects
++that make up a QEMU "machine". You can view this tree by running
++``info qom-tree`` in the :ref:`QEMU monitor`. It will contain both
++objects created by the machine itself as well those created due to
++user configuration.
++
++Creating a QOM class
++====================
++
++A simple minimal device implementation may look something like bellow:
+ 
+ .. code-block:: c
+    :caption: Creating a minimal type
+@@ -48,6 +66,12 @@ In the above example, we create a simple type that is described by #TypeInfo.
+ #TypeInfo describes information about the type including what it inherits
+ from, the instance and class size, and constructor/destructor hooks.
+ 
++The TYPE_DEVICE class is the parent class for all modern devices
++implemented in QEMU and adds some specific methods to handle QEMU
++device model. This includes managing the lifetime of devices from
++creation through to when they become visible to the guest and
++eventually unrealized.
++
+ Alternatively several static types could be registered using helper macro
+ DEFINE_TYPES()
+ 
+@@ -98,7 +122,7 @@ when the object is needed.
+    module_obj(TYPE_MY_DEVICE);
+ 
+ Class Initialization
+-====================
++--------------------
+ 
+ Before an object is initialized, the class for the object must be
+ initialized.  There is only one class object for all instance objects
+@@ -168,7 +192,7 @@ will also have a wrapper function to call it easily:
+    }
+ 
+ Interfaces
+-==========
++----------
+ 
+ Interfaces allow a limited form of multiple inheritance.  Instances are
+ similar to normal types except for the fact that are only defined by
+@@ -182,7 +206,7 @@ an argument to a method on its corresponding SomethingIfClass, or to
+ dynamically cast it to an object that implements the interface.
+ 
+ Methods
+-=======
++-------
+ 
+ A *method* is a function within the namespace scope of
+ a class. It usually operates on the object instance by passing it as a
+@@ -275,8 +299,8 @@ Alternatively, object_class_by_name() can be used to obtain the class and
+ its non-overridden methods for a specific type. This would correspond to
+ ``MyClass::method(...)`` in C++.
+ 
+-The first example of such a QOM method was #CPUClass.reset,
+-another example is #DeviceClass.realize.
++One example of such methods is ``DeviceClass.reset``. More examples
++can be found at :ref:`device-life-cycle`.
+ 
+ Standard type declaration and definition macros
+ ===============================================
+@@ -382,10 +406,32 @@ OBJECT_DEFINE_ABSTRACT_TYPE() macro can be used instead:
+    OBJECT_DEFINE_ABSTRACT_TYPE(MyDevice, my_device,
+                                MY_DEVICE, DEVICE)
+ 
++.. _device-life-cycle:
++
++Device Life-cycle
++=================
++
++As class initialisation cannot fail devices have an two additional
++methods to handle the creation of dynamic devices. The ``realize``
++function is called with ``Error **`` pointer which should be set if
++the device cannot complete its setup. Otherwise on successful
++completion of the ``realize`` method the device object is added to the
++QOM tree and made visible to the guest.
++
++The reverse function is ``unrealize`` and should be were clean-up
++code lives to tidy up after the system is done with the device.
++
++All devices can be instantiated by C code, however only some can
++created dynamically via the command line or monitor.
+ 
++Likewise only some can be unplugged after creation and need an
++explicit ``unrealize`` implementation. This is determined by the
++``user_creatable`` variable in the root ``DeviceClass`` structure.
++Devices can only be unplugged if their ``parent_bus`` has a registered
++``HotplugHandler``.
+ 
+ API Reference
+--------------
++=============
+ 
+ See the :ref:`QOM API<qom-api>` and :ref:`QDEV API<qdev-api>`
+ documents for the complete API description.
 -- 
 2.39.2

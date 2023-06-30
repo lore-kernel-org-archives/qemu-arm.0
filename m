@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id v1-20020adfe281000000b00311299df211sm18857193wri.77.2023.06.30.11.13.28
+        by smtp.gmail.com with ESMTPSA id c13-20020adfe74d000000b0030ae499da59sm3805869wrn.111.2023.06.30.11.13.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 11:13:29 -0700 (PDT)
+        Fri, 30 Jun 2023 11:13:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1D09D1FFC0;
-	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 1A9831FFE1;
+	Fri, 30 Jun 2023 19:04:28 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -38,152 +38,298 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
-	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 27/38] docs/devel: introduce some key concepts for QOM development
-Date: Fri, 30 Jun 2023 19:04:12 +0100
-Message-Id: <20230630180423.558337-28-alex.bennee@linaro.org>
+	Alexander Bulekov <alxndr@bu.edu>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+Subject: [PATCH v4 36/38] gdbstub: Add support for info proc mappings
+Date: Fri, 30 Jun 2023 19:04:21 +0100
+Message-Id: <20230630180423.558337-37-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: raBoaDqA/Z1N
+X-TUID: +HgZeqetf8zT
 
-Using QOM correctly is increasingly important to maintaining a modern
-code base. However the current documentation skips some important
-concepts before launching into a simple example. Lets:
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-  - at least mention properties
-  - mention TYPE_OBJECT and TYPE_DEVICE
-  - talk about why we have realize/unrealize
-  - mention the QOM tree
-  - lightly re-arrange the order we mention things
+Currently the GDB's generate-core-file command doesn't work well with
+qemu-user: the resulting dumps are huge [1] and at the same time
+incomplete (argv and envp are missing). The reason is that GDB has no
+access to proc mappings and therefore has to fall back to using
+heuristics for discovering them. This is, in turn, because qemu-user
+does not implement the Host I/O feature of the GDB Remote Serial
+Protocol.
 
+Implement vFile:{open,close,pread,readlink} and also
+qXfer:exec-file:read+. With that, generate-core-file begins to work on
+aarch64 and s390x.
+
+[1] https://sourceware.org/pipermail/gdb-patches/2023-May/199432.html
+
+Co-developed-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20230621203627.1808446-7-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230619171437.357374-6-alex.bennee@linaro.org>
 
 ---
 v3
-  - moved around as per Paolo's review
+  - remove #define BUFSIZ (both linux and BSD define it but BSD complains if
+  you redefine it)
 ---
- docs/devel/qom.rst | 58 +++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 52 insertions(+), 6 deletions(-)
+ gdbstub/internals.h   |   5 ++
+ gdbstub/gdbstub.c     |  45 +++++++++++++-
+ gdbstub/user-target.c | 137 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 185 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index c342ce18e3..0b506426d7 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -13,6 +13,24 @@ features:
- - System for dynamically registering types
- - Support for single-inheritance of types
- - Multiple inheritance of stateless interfaces
-+- Mapping internal members to publicly exposed properties
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 25e4d5eeaa..f2b46cce41 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -189,6 +189,11 @@ typedef union GdbCmdVariant {
+ void gdb_handle_query_rcmd(GArray *params, void *user_ctx); /* softmmu */
+ void gdb_handle_query_offsets(GArray *params, void *user_ctx); /* user */
+ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx); /*user */
++void gdb_handle_v_file_open(GArray *params, void *user_ctx); /* user */
++void gdb_handle_v_file_close(GArray *params, void *user_ctx); /* user */
++void gdb_handle_v_file_pread(GArray *params, void *user_ctx); /* user */
++void gdb_handle_v_file_readlink(GArray *params, void *user_ctx); /* user */
++void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx); /* user */
+ 
+ void gdb_handle_query_attached(GArray *params, void *user_ctx); /* both */
+ 
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 697dd4bbad..6911b73c07 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1327,6 +1327,36 @@ static const GdbCmdParseEntry gdb_v_commands_table[] = {
+         .cmd = "Kill;",
+         .cmd_startswith = 1
+     },
++#ifdef CONFIG_USER_ONLY
++    /*
++     * Host I/O Packets. See [1] for details.
++     * [1] https://sourceware.org/gdb/onlinedocs/gdb/Host-I_002fO-Packets.html
++     */
++    {
++        .handler = gdb_handle_v_file_open,
++        .cmd = "File:open:",
++        .cmd_startswith = 1,
++        .schema = "s,L,L0"
++    },
++    {
++        .handler = gdb_handle_v_file_close,
++        .cmd = "File:close:",
++        .cmd_startswith = 1,
++        .schema = "l0"
++    },
++    {
++        .handler = gdb_handle_v_file_pread,
++        .cmd = "File:pread:",
++        .cmd_startswith = 1,
++        .schema = "l,L,L0"
++    },
++    {
++        .handler = gdb_handle_v_file_readlink,
++        .cmd = "File:readlink:",
++        .cmd_startswith = 1,
++        .schema = "s0"
++    },
++#endif
+ };
+ 
+ static void handle_v_commands(GArray *params, void *user_ctx)
+@@ -1472,11 +1502,14 @@ static void handle_query_supported(GArray *params, void *user_ctx)
+             ";ReverseStep+;ReverseContinue+");
+     }
+ 
+-#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
++#if defined(CONFIG_USER_ONLY)
++#if defined(CONFIG_LINUX)
+     if (gdbserver_state.c_cpu->opaque) {
+         g_string_append(gdbserver_state.str_buf, ";qXfer:auxv:read+");
+     }
+ #endif
++    g_string_append(gdbserver_state.str_buf, ";qXfer:exec-file:read+");
++#endif
+ 
+     if (params->len &&
+         strstr(get_param(params, 0)->data, "multiprocess+")) {
+@@ -1615,13 +1648,21 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+         .cmd_startswith = 1,
+         .schema = "s:l,l0"
+     },
+-#if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
++#if defined(CONFIG_USER_ONLY)
++#if defined(CONFIG_LINUX)
+     {
+         .handler = gdb_handle_query_xfer_auxv,
+         .cmd = "Xfer:auxv:read::",
+         .cmd_startswith = 1,
+         .schema = "l,l0"
+     },
++#endif
++    {
++        .handler = gdb_handle_query_xfer_exec_file,
++        .cmd = "Xfer:exec-file:read:",
++        .cmd_startswith = 1,
++        .schema = "l:l,l0"
++    },
+ #endif
+     {
+         .handler = gdb_handle_query_attached,
+diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
+index fa0e59ec9a..6e21c3161c 100644
+--- a/gdbstub/user-target.c
++++ b/gdbstub/user-target.c
+@@ -11,6 +11,10 @@
+ #include "exec/gdbstub.h"
+ #include "qemu.h"
+ #include "internals.h"
++#ifdef CONFIG_LINUX
++#include "linux-user/loader.h"
++#include "linux-user/qemu.h"
++#endif
+ 
+ /*
+  * Map target signal numbers to GDB protocol signal numbers and vice
+@@ -281,3 +285,136 @@ void gdb_handle_query_xfer_auxv(GArray *params, void *user_ctx)
+                       gdbserver_state.str_buf->len, true);
+ }
+ #endif
 +
-+The root object class is TYPE_OBJECT which provides for the basic
-+object methods.
++static const char *get_filename_param(GArray *params, int i)
++{
++    const char *hex_filename = get_param(params, i)->data;
++    gdb_hextomem(gdbserver_state.mem_buf, hex_filename,
++                 strlen(hex_filename) / 2);
++    g_byte_array_append(gdbserver_state.mem_buf, (const guint8 *)"", 1);
++    return (const char *)gdbserver_state.mem_buf->data;
++}
 +
-+The QOM tree
-+============
++static void hostio_reply_with_data(const void *buf, size_t n)
++{
++    g_string_printf(gdbserver_state.str_buf, "F%zx;", n);
++    gdb_memtox(gdbserver_state.str_buf, buf, n);
++    gdb_put_packet_binary(gdbserver_state.str_buf->str,
++                          gdbserver_state.str_buf->len, true);
++}
 +
-+The QOM tree is a composition tree which represents all of the objects
-+that make up a QEMU "machine". You can view this tree by running
-+``info qom-tree`` in the :ref:`QEMU monitor`. It will contain both
-+objects created by the machine itself as well those created due to
-+user configuration.
++void gdb_handle_v_file_open(GArray *params, void *user_ctx)
++{
++    const char *filename = get_filename_param(params, 0);
++    uint64_t flags = get_param(params, 1)->val_ull;
++    uint64_t mode = get_param(params, 2)->val_ull;
 +
-+Creating a QOM class
-+====================
++#ifdef CONFIG_LINUX
++    int fd = do_guest_openat(gdbserver_state.g_cpu->env_ptr, 0, filename,
++                             flags, mode, false);
++#else
++    int fd = open(filename, flags, mode);
++#endif
++    if (fd < 0) {
++        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++    } else {
++        g_string_printf(gdbserver_state.str_buf, "F%d", fd);
++    }
++    gdb_put_strbuf();
++}
 +
-+A simple minimal device implementation may look something like bellow:
- 
- .. code-block:: c
-    :caption: Creating a minimal type
-@@ -48,6 +66,12 @@ In the above example, we create a simple type that is described by #TypeInfo.
- #TypeInfo describes information about the type including what it inherits
- from, the instance and class size, and constructor/destructor hooks.
- 
-+The TYPE_DEVICE class is the parent class for all modern devices
-+implemented in QEMU and adds some specific methods to handle QEMU
-+device model. This includes managing the lifetime of devices from
-+creation through to when they become visible to the guest and
-+eventually unrealized.
++void gdb_handle_v_file_close(GArray *params, void *user_ctx)
++{
++    int fd = get_param(params, 0)->val_ul;
 +
- Alternatively several static types could be registered using helper macro
- DEFINE_TYPES()
- 
-@@ -98,7 +122,7 @@ when the object is needed.
-    module_obj(TYPE_MY_DEVICE);
- 
- Class Initialization
--====================
-+--------------------
- 
- Before an object is initialized, the class for the object must be
- initialized.  There is only one class object for all instance objects
-@@ -168,7 +192,7 @@ will also have a wrapper function to call it easily:
-    }
- 
- Interfaces
--==========
-+----------
- 
- Interfaces allow a limited form of multiple inheritance.  Instances are
- similar to normal types except for the fact that are only defined by
-@@ -182,7 +206,7 @@ an argument to a method on its corresponding SomethingIfClass, or to
- dynamically cast it to an object that implements the interface.
- 
- Methods
--=======
-+-------
- 
- A *method* is a function within the namespace scope of
- a class. It usually operates on the object instance by passing it as a
-@@ -275,8 +299,8 @@ Alternatively, object_class_by_name() can be used to obtain the class and
- its non-overridden methods for a specific type. This would correspond to
- ``MyClass::method(...)`` in C++.
- 
--The first example of such a QOM method was #CPUClass.reset,
--another example is #DeviceClass.realize.
-+One example of such methods is ``DeviceClass.reset``. More examples
-+can be found at :ref:`device-life-cycle`.
- 
- Standard type declaration and definition macros
- ===============================================
-@@ -382,10 +406,32 @@ OBJECT_DEFINE_ABSTRACT_TYPE() macro can be used instead:
-    OBJECT_DEFINE_ABSTRACT_TYPE(MyDevice, my_device,
-                                MY_DEVICE, DEVICE)
- 
-+.. _device-life-cycle:
++    if (close(fd) == -1) {
++        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        gdb_put_strbuf();
++        return;
++    }
 +
-+Device Life-cycle
-+=================
++    gdb_put_packet("F00");
++}
 +
-+As class initialisation cannot fail devices have an two additional
-+methods to handle the creation of dynamic devices. The ``realize``
-+function is called with ``Error **`` pointer which should be set if
-+the device cannot complete its setup. Otherwise on successful
-+completion of the ``realize`` method the device object is added to the
-+QOM tree and made visible to the guest.
++void gdb_handle_v_file_pread(GArray *params, void *user_ctx)
++{
++    int fd = get_param(params, 0)->val_ul;
++    size_t count = get_param(params, 1)->val_ull;
++    off_t offset = get_param(params, 2)->val_ull;
 +
-+The reverse function is ``unrealize`` and should be were clean-up
-+code lives to tidy up after the system is done with the device.
++    size_t bufsiz = MIN(count, BUFSIZ);
++    g_autofree char *buf = g_try_malloc(bufsiz);
++    if (buf == NULL) {
++        gdb_put_packet("E12");
++        return;
++    }
 +
-+All devices can be instantiated by C code, however only some can
-+created dynamically via the command line or monitor.
- 
-+Likewise only some can be unplugged after creation and need an
-+explicit ``unrealize`` implementation. This is determined by the
-+``user_creatable`` variable in the root ``DeviceClass`` structure.
-+Devices can only be unplugged if their ``parent_bus`` has a registered
-+``HotplugHandler``.
- 
- API Reference
---------------
-+=============
- 
- See the :ref:`QOM API<qom-api>` and :ref:`QDEV API<qdev-api>`
- documents for the complete API description.
++    ssize_t n = pread(fd, buf, bufsiz, offset);
++    if (n < 0) {
++        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        gdb_put_strbuf();
++        return;
++    }
++    hostio_reply_with_data(buf, n);
++}
++
++void gdb_handle_v_file_readlink(GArray *params, void *user_ctx)
++{
++    const char *filename = get_filename_param(params, 0);
++
++    g_autofree char *buf = g_try_malloc(BUFSIZ);
++    if (buf == NULL) {
++        gdb_put_packet("E12");
++        return;
++    }
++
++#ifdef CONFIG_LINUX
++    ssize_t n = do_guest_readlink(filename, buf, BUFSIZ);
++#else
++    ssize_t n = readlink(filename, buf, BUFSIZ);
++#endif
++    if (n < 0) {
++        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        gdb_put_strbuf();
++        return;
++    }
++    hostio_reply_with_data(buf, n);
++}
++
++void gdb_handle_query_xfer_exec_file(GArray *params, void *user_ctx)
++{
++    uint32_t pid = get_param(params, 0)->val_ul;
++    uint32_t offset = get_param(params, 1)->val_ul;
++    uint32_t length = get_param(params, 2)->val_ul;
++
++    GDBProcess *process = gdb_get_process(pid);
++    if (!process) {
++        gdb_put_packet("E00");
++        return;
++    }
++
++    CPUState *cpu = gdb_get_first_cpu_in_process(process);
++    if (!cpu) {
++        gdb_put_packet("E00");
++        return;
++    }
++
++    TaskState *ts = cpu->opaque;
++    if (!ts || !ts->bprm || !ts->bprm->filename) {
++        gdb_put_packet("E00");
++        return;
++    }
++
++    size_t total_length = strlen(ts->bprm->filename);
++    if (offset > total_length) {
++        gdb_put_packet("E00");
++        return;
++    }
++    if (offset + length > total_length) {
++        length = total_length - offset;
++    }
++
++    g_string_printf(gdbserver_state.str_buf, "l%.*s", length,
++                    ts->bprm->filename + offset);
++    gdb_put_strbuf();
++}
 -- 
 2.39.2

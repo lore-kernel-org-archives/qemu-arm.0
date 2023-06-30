@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id l21-20020a7bc455000000b003fa95c466a1sm15232380wmi.5.2023.06.30.11.13.27
+        by smtp.gmail.com with ESMTPSA id q9-20020a1ce909000000b003fbc90e030csm1682204wmc.37.2023.06.30.11.13.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:27 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 696FD1FFD5;
+	by zen.linaroharston (Postfix) with ESMTP id 9EDD21FFD7;
 	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,126 +38,104 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
-	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 30/38] gdbstub: clean-up vcont handling to avoid goto
-Date: Fri, 30 Jun 2023 19:04:15 +0100
-Message-Id: <20230630180423.558337-31-alex.bennee@linaro.org>
+	Alexander Bulekov <alxndr@bu.edu>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v4 32/38] linux-user: Add "safe" parameter to do_guest_openat()
+Date: Fri, 30 Jun 2023 19:04:17 +0100
+Message-Id: <20230630180423.558337-33-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 45JSckjyaBSJ
+X-TUID: H9gn+ezl5M/J
 
-We can handle all the error exit cases by using g_autofree() for the
-one thing that needs cleaning up on the exit.
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Message-Id: <20230627160943.2956928-29-alex.bennee@linaro.org>
+gdbstub cannot meaningfully handle QEMU_ERESTARTSYS, and it doesn't
+need to. Add a parameter to do_guest_openat() that makes it use
+openat() instead of safe_openat(), so that it becomes usable from
+gdbstub.
+
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230621203627.1808446-3-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- gdbstub/gdbstub.c | 28 +++++++++-------------------
- 1 file changed, 9 insertions(+), 19 deletions(-)
+ linux-user/qemu.h    |  2 +-
+ linux-user/syscall.c | 18 +++++++++++++-----
+ 2 files changed, 14 insertions(+), 6 deletions(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 9496d7b175..49143c7d83 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -573,7 +573,6 @@ static int gdb_handle_vcont(const char *p)
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index a5830ec239..9b8e0860d7 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -166,7 +166,7 @@ typedef struct TaskState {
+ 
+ abi_long do_brk(abi_ulong new_brk);
+ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+-                    int flags, mode_t mode);
++                    int flags, mode_t mode, bool safe);
+ ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz);
+ 
+ /* user access */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index fa83737192..ecd9f5e23d 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8449,7 +8449,7 @@ static int open_hardware(CPUArchState *cpu_env, int fd)
+ #endif
+ 
+ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+-                    int flags, mode_t mode)
++                    int flags, mode_t mode, bool safe)
  {
-     int res, signal = 0;
-     char cur_action;
--    char *newstates;
-     unsigned long tmp;
-     uint32_t pid, tid;
-     GDBProcess *process;
-@@ -581,7 +580,7 @@ static int gdb_handle_vcont(const char *p)
-     GDBThreadIdKind kind;
-     unsigned int max_cpus = gdb_get_max_cpus();
-     /* uninitialised CPUs stay 0 */
--    newstates = g_new0(char, max_cpus);
-+    g_autofree char *newstates = g_new0(char, max_cpus);
+     struct fake_open {
+         const char *filename;
+@@ -8476,7 +8476,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+     };
  
-     /* mark valid CPUs with 1 */
-     CPU_FOREACH(cpu) {
-@@ -597,8 +596,7 @@ static int gdb_handle_vcont(const char *p)
-     res = 0;
-     while (*p) {
-         if (*p++ != ';') {
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
- 
-         cur_action = *p++;
-@@ -606,13 +604,12 @@ static int gdb_handle_vcont(const char *p)
-             cur_action = qemu_tolower(cur_action);
-             res = qemu_strtoul(p, &p, 16, &tmp);
-             if (res) {
--                goto out;
-+                return res;
-             }
-             signal = gdb_signal_to_target(tmp);
-         } else if (cur_action != 'c' && cur_action != 's') {
-             /* unknown/invalid/unsupported command */
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
- 
-         if (*p == '\0' || *p == ';') {
-@@ -625,14 +622,12 @@ static int gdb_handle_vcont(const char *p)
-         } else if (*p++ == ':') {
-             kind = read_thread_id(p, &p, &pid, &tid);
-         } else {
--            res = -ENOTSUP;
--            goto out;
-+            return -ENOTSUP;
-         }
- 
-         switch (kind) {
-         case GDB_READ_THREAD_ERR:
--            res = -EINVAL;
--            goto out;
-+            return -EINVAL;
- 
-         case GDB_ALL_PROCESSES:
-             cpu = gdb_first_attached_cpu();
-@@ -649,8 +644,7 @@ static int gdb_handle_vcont(const char *p)
-             process = gdb_get_process(pid);
- 
-             if (!process->attached) {
--                res = -EINVAL;
--                goto out;
-+                return -EINVAL;
-             }
- 
-             cpu = get_first_cpu_in_process(process);
-@@ -668,8 +662,7 @@ static int gdb_handle_vcont(const char *p)
- 
-             /* invalid CPU/thread specified */
-             if (!cpu) {
--                res = -EINVAL;
--                goto out;
-+                return -EINVAL;
-             }
- 
-             /* only use if no previous match occourred */
-@@ -679,12 +672,9 @@ static int gdb_handle_vcont(const char *p)
-             break;
-         }
+     if (is_proc_myself(pathname, "exe")) {
+-        return safe_openat(dirfd, exec_path, flags, mode);
++        if (safe) {
++            return safe_openat(dirfd, exec_path, flags, mode);
++        } else {
++            return openat(dirfd, exec_path, flags, mode);
++        }
      }
-+
-     gdbserver_state.signal = signal;
-     gdb_continue_partial(newstates);
--
--out:
--    g_free(newstates);
--
-     return res;
+ 
+     for (fake_open = fakes; fake_open->filename; fake_open++) {
+@@ -8518,7 +8522,11 @@ int do_guest_openat(CPUArchState *cpu_env, int dirfd, const char *pathname,
+         return fd;
+     }
+ 
+-    return safe_openat(dirfd, path(pathname), flags, mode);
++    if (safe) {
++        return safe_openat(dirfd, path(pathname), flags, mode);
++    } else {
++        return openat(dirfd, path(pathname), flags, mode);
++    }
  }
  
+ ssize_t do_guest_readlink(const char *pathname, char *buf, size_t bufsiz)
+@@ -9027,7 +9035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             return -TARGET_EFAULT;
+         ret = get_errno(do_guest_openat(cpu_env, AT_FDCWD, p,
+                                   target_to_host_bitmask(arg2, fcntl_flags_tbl),
+-                                  arg3));
++                                  arg3, true));
+         fd_trans_unregister(ret);
+         unlock_user(p, arg1, 0);
+         return ret;
+@@ -9037,7 +9045,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             return -TARGET_EFAULT;
+         ret = get_errno(do_guest_openat(cpu_env, arg1, p,
+                                   target_to_host_bitmask(arg3, fcntl_flags_tbl),
+-                                  arg4));
++                                  arg4, true));
+         fd_trans_unregister(ret);
+         unlock_user(p, arg2, 0);
+         return ret;
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a16-20020adfdd10000000b00313ef2150dcsm15111904wrm.45.2023.06.30.11.13.27
+        by smtp.gmail.com with ESMTPSA id s25-20020a7bc399000000b003fa96fe2bebsm14598535wmj.41.2023.06.30.11.13.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:28 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6C88B1FFCC;
-	Fri, 30 Jun 2023 19:04:26 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 3742A1FFD1;
+	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,39 +39,77 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 21/38] plugins: update lockstep to use g_memdup2
-Date: Fri, 30 Jun 2023 19:04:06 +0100
-Message-Id: <20230630180423.558337-22-alex.bennee@linaro.org>
+Subject: [PATCH v4 28/38] gdbstub: lightly refactor connection to avoid snprintf
+Date: Fri, 30 Jun 2023 19:04:13 +0100
+Message-Id: <20230630180423.558337-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dqsUj7lFw8/p
+X-TUID: ULsI3VJN704n
 
-The old g_memdup is deprecated, use the replacement.
+This may be a bit too much to avoid an snprintf and the slightly dodgy
+assign to a const variable. But hopefully not.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230627160943.2956928-20-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- contrib/plugins/lockstep.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index e36f0b9562..3614c3564c 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -130,7 +130,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-         }
-     }
-     divergence_log = g_slist_prepend(divergence_log,
--                                     g_memdup(&divrec, sizeof(divrec)));
-+                                     g_memdup2(&divrec, sizeof(divrec)));
+---
+v2
+  - fix checkpatch warning
+---
+ gdbstub/softmmu.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/gdbstub/softmmu.c b/gdbstub/softmmu.c
+index 99d994e6bf..f509b7285d 100644
+--- a/gdbstub/softmmu.c
++++ b/gdbstub/softmmu.c
+@@ -332,11 +332,9 @@ static void create_processes(GDBState *s)
  
-     /* Output short log entry of going out of sync... */
-     if (verbose || divrec.distance == 1 || diverged) {
+ int gdbserver_start(const char *device)
+ {
+-    trace_gdbstub_op_start(device);
+-
+-    char gdbstub_device_name[128];
+     Chardev *chr = NULL;
+     Chardev *mon_chr;
++    g_autoptr(GString) cs = g_string_new(device);
+ 
+     if (!first_cpu) {
+         error_report("gdbstub: meaningless to attach gdb to a "
+@@ -350,15 +348,16 @@ int gdbserver_start(const char *device)
+         return -1;
+     }
+ 
+-    if (!device) {
++    if (cs->len == 0) {
+         return -1;
+     }
+-    if (strcmp(device, "none") != 0) {
+-        if (strstart(device, "tcp:", NULL)) {
++
++    trace_gdbstub_op_start(cs->str);
++
++    if (g_strcmp0(cs->str, "none") != 0) {
++        if (g_str_has_prefix(cs->str, "tcp:")) {
+             /* enforce required TCP attributes */
+-            snprintf(gdbstub_device_name, sizeof(gdbstub_device_name),
+-                     "%s,wait=off,nodelay=on,server=on", device);
+-            device = gdbstub_device_name;
++            g_string_append_printf(cs, ",wait=off,nodelay=on,server=on");
+         }
+ #ifndef _WIN32
+         else if (strcmp(device, "stdio") == 0) {
+@@ -373,7 +372,7 @@ int gdbserver_start(const char *device)
+          * FIXME: it's a bit weird to allow using a mux chardev here
+          * and implicitly setup a monitor. We may want to break this.
+          */
+-        chr = qemu_chr_new_noreplay("gdb", device, true, NULL);
++        chr = qemu_chr_new_noreplay("gdb", cs->str, true, NULL);
+         if (!chr) {
+             return -1;
+         }
 -- 
 2.39.2

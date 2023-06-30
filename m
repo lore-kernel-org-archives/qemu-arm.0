@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f10-20020a7bcd0a000000b003fa99969e61sm13990081wmj.45.2023.06.30.11.04.25
+        by smtp.gmail.com with ESMTPSA id z3-20020a5d4c83000000b0030497b3224bsm18740547wrs.64.2023.06.30.11.04.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:04:26 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A49A71FFC2;
+	by zen.linaroharston (Postfix) with ESMTP id F0F111FFC4;
 	Fri, 30 Jun 2023 19:04:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,49 +39,39 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 07/38] scripts/oss-fuzz: add a suppression for keymap
-Date: Fri, 30 Jun 2023 19:03:52 +0100
-Message-Id: <20230630180423.558337-8-alex.bennee@linaro.org>
+Subject: [PATCH v4 10/38] Makefile: add lcitool-refresh to UNCHECKED_GOALS
+Date: Fri, 30 Jun 2023 19:03:55 +0100
+Message-Id: <20230630180423.558337-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vWB1jOEgrw2t
+X-TUID: A7iol/jqzjYJ
 
-When updating to the latest fedora the santizer found more leaks
-inside xkbmap:
+This is yet another make target you usually run in the top level of
+the source directory.
 
-  FAILED: pc-bios/keymaps/ar
-  /builds/stsquad/qemu/build-oss-fuzz/qemu-keymap -f pc-bios/keymaps/ar -l ara
-  =================================================================
-  ==3604==ERROR: LeakSanitizer: detected memory leaks
-  Direct leak of 1424 byte(s) in 1 object(s) allocated from:
-      #0 0x56316418ebec in __interceptor_calloc (/builds/stsquad/qemu/build-oss-fuzz/qemu-keymap+0x127bec) (BuildId: a2ad9da3190962acaa010fa8f44a9269f9081e1c)
-      #1 0x7f60d4dc067e  (/lib64/libxkbcommon.so.0+0x1c67e) (BuildId: b243a34e4e58e6a30b93771c256268b114d34b80)
-      #2 0x7f60d4dc2137 in xkb_keymap_new_from_names (/lib64/libxkbcommon.so.0+0x1e137) (BuildId: b243a34e4e58e6a30b93771c256268b114d34b80)
-      #3 0x5631641ca50f in main /builds/stsquad/qemu/build-oss-fuzz/../qemu-keymap.c:215:11
-
-and many more. As we can't do anything about the library add a
-suppression to keep the CI going with what its meant to be doing.
-
-Message-Id: <20230623122100.1640995-9-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20230623122100.1640995-12-alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/oss-fuzz/lsan_suppressions.txt | 3 +++
- 1 file changed, 3 insertions(+)
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/oss-fuzz/lsan_suppressions.txt b/scripts/oss-fuzz/lsan_suppressions.txt
-index 02ec0a6ed5..7d90c280d0 100644
---- a/scripts/oss-fuzz/lsan_suppressions.txt
-+++ b/scripts/oss-fuzz/lsan_suppressions.txt
-@@ -1,2 +1,5 @@
- # The tcmalloc on Fedora37 confuses things
- leak:/lib64/libtcmalloc_minimal.so.4
-+
-+# libxkbcommon also leaks in qemu-keymap
-+leak:/lib64/libxkbcommon.so.0
+diff --git a/Makefile b/Makefile
+index 804a5681e0..5d48dfac18 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,7 +28,7 @@ quiet-command = $(quiet-@)$(call quiet-command-run,$1,$2,$3)
+ 
+ UNCHECKED_GOALS := TAGS gtags cscope ctags dist \
+     help check-help print-% \
+-    docker docker-% vm-help vm-test vm-build-%
++    docker docker-% lcitool-refresh vm-help vm-test vm-build-%
+ 
+ all:
+ .PHONY: all clean distclean recurse-all dist msi FORCE
 -- 
 2.39.2

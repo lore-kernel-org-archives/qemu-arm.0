@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t1-20020adfe441000000b00313f45f74a8sm13308744wrm.103.2023.06.30.11.13.28
+        by smtp.gmail.com with ESMTPSA id l1-20020adff481000000b003113ed02080sm18720230wro.95.2023.06.30.11.13.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 044331FFD0;
+	by zen.linaroharston (Postfix) with ESMTP id D5D191FFDB;
 	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -38,88 +38,121 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
-	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 26/38] docs/devel: split qom-api reference into new file
-Date: Fri, 30 Jun 2023 19:04:11 +0100
-Message-Id: <20230630180423.558337-27-alex.bennee@linaro.org>
+	Alexander Bulekov <alxndr@bu.edu>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v4 34/38] gdbstub: Expose gdb_get_process() and gdb_get_first_cpu_in_process()
+Date: Fri, 30 Jun 2023 19:04:19 +0100
+Message-Id: <20230630180423.558337-35-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: G3w/V72qryRu
+X-TUID: 8alaAdZre96k
 
-Lets try and keep the overview of the sub-system digestible by
-splitting the core API stuff into a separate file. As QOM and QDEV
-work together we should also try and enumerate the qdev_ functions.
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+These functions will be needed by user-target.c in order to retrieve
+the name of the executable.
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20230621203627.1808446-5-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20230619171437.357374-5-alex.bennee@linaro.org>
-
 ---
-v2
-  - also include qdev API
----
- docs/devel/index-api.rst | 2 ++
- docs/devel/qdev-api.rst  | 7 +++++++
- docs/devel/qom-api.rst   | 9 +++++++++
- docs/devel/qom.rst       | 3 ++-
- 4 files changed, 20 insertions(+), 1 deletion(-)
- create mode 100644 docs/devel/qdev-api.rst
- create mode 100644 docs/devel/qom-api.rst
+ gdbstub/internals.h |  2 ++
+ gdbstub/gdbstub.c   | 16 ++++++++--------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/docs/devel/index-api.rst b/docs/devel/index-api.rst
-index 7108821746..539ad29c21 100644
---- a/docs/devel/index-api.rst
-+++ b/docs/devel/index-api.rst
-@@ -11,5 +11,7 @@ generated from in-code annotations to function prototypes.
-    loads-stores
-    memory
-    modules
-+   qom-api
-+   qdev-api
-    ui
-    zoned-storage
-diff --git a/docs/devel/qdev-api.rst b/docs/devel/qdev-api.rst
-new file mode 100644
-index 0000000000..3f35eea025
---- /dev/null
-+++ b/docs/devel/qdev-api.rst
-@@ -0,0 +1,7 @@
-+.. _qdev-api:
-+
-+================================
-+QEMU Device (qdev) API Reference
-+================================
-+
-+.. kernel-doc:: include/hw/qdev-core.h
-diff --git a/docs/devel/qom-api.rst b/docs/devel/qom-api.rst
-new file mode 100644
-index 0000000000..ed1f17e797
---- /dev/null
-+++ b/docs/devel/qom-api.rst
-@@ -0,0 +1,9 @@
-+.. _qom-api:
-+
-+=====================================
-+QEMU Object Model (QOM) API Reference
-+=====================================
-+
-+This is the complete API documentation for :ref:`qom`.
-+
-+.. kernel-doc:: include/qom/object.h
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index 2828843058..c342ce18e3 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -387,4 +387,5 @@ OBJECT_DEFINE_ABSTRACT_TYPE() macro can be used instead:
- API Reference
- -------------
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 33d21d6488..25e4d5eeaa 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -129,6 +129,8 @@ void gdb_read_byte(uint8_t ch);
+  */
+ bool gdb_got_immediate_ack(void);
+ /* utility helpers */
++GDBProcess *gdb_get_process(uint32_t pid);
++CPUState *gdb_get_first_cpu_in_process(GDBProcess *process);
+ CPUState *gdb_first_attached_cpu(void);
+ void gdb_append_thread_id(CPUState *cpu, GString *buf);
+ int gdb_get_cpu_index(CPUState *cpu);
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 49143c7d83..ce3e4a2671 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -211,7 +211,7 @@ static uint32_t gdb_get_cpu_pid(CPUState *cpu)
+     return cpu->cluster_index + 1;
+ }
  
--.. kernel-doc:: include/qom/object.h
-+See the :ref:`QOM API<qom-api>` and :ref:`QDEV API<qdev-api>`
-+documents for the complete API description.
+-static GDBProcess *gdb_get_process(uint32_t pid)
++GDBProcess *gdb_get_process(uint32_t pid)
+ {
+     int i;
+ 
+@@ -247,7 +247,7 @@ static CPUState *find_cpu(uint32_t thread_id)
+     return NULL;
+ }
+ 
+-static CPUState *get_first_cpu_in_process(GDBProcess *process)
++CPUState *gdb_get_first_cpu_in_process(GDBProcess *process)
+ {
+     CPUState *cpu;
+ 
+@@ -325,7 +325,7 @@ static CPUState *gdb_get_cpu(uint32_t pid, uint32_t tid)
+             return NULL;
+         }
+ 
+-        return get_first_cpu_in_process(process);
++        return gdb_get_first_cpu_in_process(process);
+     } else {
+         /* a specific thread */
+         cpu = find_cpu(tid);
+@@ -354,7 +354,7 @@ static const char *get_feature_xml(const char *p, const char **newp,
+     size_t len;
+     int i;
+     const char *name;
+-    CPUState *cpu = get_first_cpu_in_process(process);
++    CPUState *cpu = gdb_get_first_cpu_in_process(process);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
+ 
+     len = 0;
+@@ -490,7 +490,7 @@ void gdb_register_coprocessor(CPUState *cpu,
+ 
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+ {
+-    CPUState *cpu = get_first_cpu_in_process(p);
++    CPUState *cpu = gdb_get_first_cpu_in_process(p);
+ 
+     while (cpu) {
+         gdb_breakpoint_remove_all(cpu);
+@@ -647,7 +647,7 @@ static int gdb_handle_vcont(const char *p)
+                 return -EINVAL;
+             }
+ 
+-            cpu = get_first_cpu_in_process(process);
++            cpu = gdb_get_first_cpu_in_process(process);
+             while (cpu) {
+                 if (newstates[cpu->cpu_index] == 1) {
+                     newstates[cpu->cpu_index] = cur_action;
+@@ -1270,7 +1270,7 @@ static void handle_v_attach(GArray *params, void *user_ctx)
+         goto cleanup;
+     }
+ 
+-    cpu = get_first_cpu_in_process(process);
++    cpu = gdb_get_first_cpu_in_process(process);
+     if (!cpu) {
+         goto cleanup;
+     }
+@@ -1393,7 +1393,7 @@ static void handle_query_curr_tid(GArray *params, void *user_ctx)
+      * first thread).
+      */
+     process = gdb_get_cpu_process(gdbserver_state.g_cpu);
+-    cpu = get_first_cpu_in_process(process);
++    cpu = gdb_get_first_cpu_in_process(process);
+     g_string_assign(gdbserver_state.str_buf, "QC");
+     gdb_append_thread_id(cpu, gdbserver_state.str_buf);
+     gdb_put_strbuf();
 -- 
 2.39.2

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t25-20020a7bc3d9000000b003fbb8c7c799sm4838941wmj.30.2023.06.30.11.04.25
+        by smtp.gmail.com with ESMTPSA id o23-20020a05600c379700b003fae92e7a8dsm13436586wmr.27.2023.06.30.11.04.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 11:04:26 -0700 (PDT)
+        Fri, 30 Jun 2023 11:04:29 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D870D1FFC3;
-	Fri, 30 Jun 2023 19:04:24 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 6E25D1FFBE;
+	Fri, 30 Jun 2023 19:04:25 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,79 +39,173 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 09/38] tests/docker: add test-fuzz
-Date: Fri, 30 Jun 2023 19:03:54 +0100
-Message-Id: <20230630180423.558337-10-alex.bennee@linaro.org>
+Subject: [PATCH v4 13/38] tests/lcitool: add an explicit gcc-native package
+Date: Fri, 30 Jun 2023 19:03:58 +0100
+Message-Id: <20230630180423.558337-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: a5VLWO6q7sx/
+X-TUID: j+/ElVueSZ30
 
-Running the fuzzer requires some hoop jumping and some problems only
-show up in containers. This basically replicates the build-oss-fuzz
-job from our CI so we can run in the same containers we use in CI.
+We need a native compiler to build the hexagon codegen tools. In our
+current images we already have a gcc as a side effect of a broken
+dependency between gcovr and lcov but this will be fixed when we move
+to bookworm. See
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=987818 for details.
 
-Message-Id: <20230626215926.2522656-10-alex.bennee@linaro.org>
-Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+Update the packages while we are at it.
+
+Message-Id: <20230623122100.1640995-15-alex.bennee@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
- - checkpatch cleanups
----
- MAINTAINERS            |  1 +
- tests/docker/test-fuzz | 28 ++++++++++++++++++++++++++++
- 2 files changed, 29 insertions(+)
- create mode 100755 tests/docker/test-fuzz
+ tests/docker/dockerfiles/debian-amd64-cross.docker    | 1 +
+ tests/docker/dockerfiles/debian-arm64-cross.docker    | 1 +
+ tests/docker/dockerfiles/debian-armel-cross.docker    | 1 +
+ tests/docker/dockerfiles/debian-armhf-cross.docker    | 1 +
+ tests/docker/dockerfiles/debian-mips64el-cross.docker | 1 +
+ tests/docker/dockerfiles/debian-mipsel-cross.docker   | 1 +
+ tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 1 +
+ tests/docker/dockerfiles/debian-s390x-cross.docker    | 1 +
+ tests/docker/dockerfiles/fedora-win32-cross.docker    | 1 +
+ tests/docker/dockerfiles/fedora-win64-cross.docker    | 1 +
+ tests/lcitool/projects/qemu.yml                       | 1 +
+ 11 files changed, 11 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4feea49a6e..7164cf55a1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3106,6 +3106,7 @@ R: Qiuhao Li <Qiuhao.Li@outlook.com>
- S: Maintained
- F: tests/qtest/fuzz/
- F: tests/qtest/fuzz-*test.c
-+F: tests/docker/test-fuzz
- F: scripts/oss-fuzz/
- F: hw/mem/sparse-mem.c
- F: docs/devel/fuzzing.rst
-diff --git a/tests/docker/test-fuzz b/tests/docker/test-fuzz
-new file mode 100755
-index 0000000000..7e506ae1f6
---- /dev/null
-+++ b/tests/docker/test-fuzz
-@@ -0,0 +1,28 @@
-+#!/bin/bash -e
-+#
-+# Compile and check with oss-fuzz.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Authors:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+. common.rc
-+
-+requires_binary clang
-+
-+# the build script runs out of $src so we need to copy across
-+cd "$BUILD_DIR"
-+cp -a $QEMU_SRC .
-+cd src
-+mkdir build-oss-fuzz
-+export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
-+env CC="clang" CXX="clang++" CFLAGS="-fsanitize=address" ./scripts/oss-fuzz/build.sh
-+export ASAN_OPTIONS="fast_unwind_on_malloc=0"
-+for fuzzer in $(find ./build-oss-fuzz/DEST_DIR/ -executable -type f | grep -v slirp); do
-+        grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
-+        echo Testing ${fuzzer} ... ;
-+        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
-+done
+diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
+index 40a2b6acc4..016c2321f1 100644
+--- a/tests/docker/dockerfiles/debian-amd64-cross.docker
++++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
+index c99300bbfa..3c114efa11 100644
+--- a/tests/docker/dockerfiles/debian-arm64-cross.docker
++++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-armel-cross.docker b/tests/docker/dockerfiles/debian-armel-cross.docker
+index 5db5c78b31..dfbd47db89 100644
+--- a/tests/docker/dockerfiles/debian-armel-cross.docker
++++ b/tests/docker/dockerfiles/debian-armel-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
+index ae6600b25f..4e0084e896 100644
+--- a/tests/docker/dockerfiles/debian-armhf-cross.docker
++++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+index daa2d48e36..88adf333e9 100644
+--- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
+index 5af04e2054..256e8b5dfe 100644
+--- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
++++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+index 1eeba7fcab..4d19cd2bd7 100644
+--- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
+index 52e89a6dab..642bbde3d1 100644
+--- a/tests/docker/dockerfiles/debian-s390x-cross.docker
++++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
+@@ -24,6 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       exuberant-ctags \
+                       findutils \
+                       flex \
++                      gcc \
+                       gcovr \
+                       gettext \
+                       git \
+diff --git a/tests/docker/dockerfiles/fedora-win32-cross.docker b/tests/docker/dockerfiles/fedora-win32-cross.docker
+index a0a3cd9e5b..e3dfd68bed 100644
+--- a/tests/docker/dockerfiles/fedora-win32-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win32-cross.docker
+@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
+                diffutils \
+                findutils \
+                flex \
++               gcc \
+                gcovr \
+                git \
+                glib2-devel \
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index b6c1a6a339..0e15c9643a 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -29,6 +29,7 @@ exec "$@"\n' > /usr/bin/nosync && \
+                diffutils \
+                findutils \
+                flex \
++               gcc \
+                gcovr \
+                git \
+                glib2-devel \
+diff --git a/tests/lcitool/projects/qemu.yml b/tests/lcitool/projects/qemu.yml
+index 566db8313b..21fd3d2cf9 100644
+--- a/tests/lcitool/projects/qemu.yml
++++ b/tests/lcitool/projects/qemu.yml
+@@ -24,6 +24,7 @@ packages:
+  - fuse3
+  - g++
+  - gcc
++ - gcc-native
+  - gcovr
+  - gettext
+  - glib2
 -- 
 2.39.2

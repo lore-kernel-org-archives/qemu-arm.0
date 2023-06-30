@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id z26-20020a1c4c1a000000b003f91e32b1ebsm10231195wmf.17.2023.06.30.11.23.27
+        by smtp.gmail.com with ESMTPSA id m9-20020adff389000000b00313f551b032sm13070406wro.53.2023.06.30.11.23.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:23:27 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A2C991FFC7;
+	by zen.linaroharston (Postfix) with ESMTP id EB88E1FFCA;
 	Fri, 30 Jun 2023 19:04:25 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,198 +39,54 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 15/38] tests/docker: convert riscv64-cross to lcitool
-Date: Fri, 30 Jun 2023 19:04:00 +0100
-Message-Id: <20230630180423.558337-16-alex.bennee@linaro.org>
+Subject: [PATCH v4 18/38] target/arm: make arm_casq_ptw CONFIG_TCG only
+Date: Fri, 30 Jun 2023 19:04:03 +0100
+Message-Id: <20230630180423.558337-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iGsoY4lY56OR
+X-TUID: PI+M3vlFa5Kq
 
-We still need to base this on Debian Sid until riscv64 is promoted to
-a release architecture (or another distro provides a full cross
-compile target). We use the new qemu-minimal project description to
-avoid bringing in all the extra dependencies because every extra
-package is another chance for sid to fail.
+The ptw code is accessed by non-TCG code (specifically arm_pamax and
+arm_cpu_get_phys_page_attrs_debug) but most of it is really only for
+TCG emulation. Seeing as we already assert for a non TARGET_AARCH64
+build lets extend the test rather than further messing with the ifdef
+ladder.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 ---
-v4
-  - moved qemu-minimal changes to previous commit
+v2
+  - tweak comment to rth's suggestion
 ---
- .../dockerfiles/debian-riscv64-cross.docker   | 119 +++++++++++-------
- tests/lcitool/refresh                         |  10 +-
- 2 files changed, 83 insertions(+), 46 deletions(-)
+ target/arm/ptw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 081404e014..a2d879ee1f 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -1,54 +1,85 @@
-+# THIS FILE WAS AUTO-GENERATED
- #
--# Docker cross-compiler target for riscv64
-+#  $ lcitool dockerfile --layers all --cross riscv64 debian-sid qemu-minimal
- #
--# Currently the only distro that gets close to cross compiling riscv64
--# images is Debian Sid (with unofficial ports). As this is a moving
--# target we keep the library list minimal and are aiming to migrate
--# from this hack as soon as we are able.
--#
--FROM docker.io/library/debian:sid-slim
-+# https://gitlab.com/libvirt/libvirt-ci
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 6015121b99..42355caa9b 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -628,7 +628,7 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+                              uint64_t new_val, S1Translate *ptw,
+                              ARMMMUFaultInfo *fi)
+ {
+-#ifdef TARGET_AARCH64
++#if defined(TARGET_AARCH64) && defined(CONFIG_TCG)
+     uint64_t cur_val;
+     void *host = ptw->out_host;
  
--# Add ports
--RUN apt update && \
--    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
--    DEBIAN_FRONTEND=noninteractive eatmydata apt update -yy && \
--    DEBIAN_FRONTEND=noninteractive eatmydata apt upgrade -yy
--
--# Install common build utilities
--RUN DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
--    bison \
--    bc \
--    build-essential \
--    ca-certificates \
--    debian-ports-archive-keyring \
--    dpkg-dev \
--    flex \
--    gettext \
--    git \
--    libglib2.0-dev \
--    ninja-build \
--    pkg-config \
--    python3 \
--    python3-venv
-+FROM docker.io/library/debian:sid-slim
+@@ -709,7 +709,7 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
  
--# Add ports and riscv64 architecture
--RUN echo "deb http://ftp.ports.debian.org/debian-ports/ sid main" >> /etc/apt/sources.list
--RUN dpkg --add-architecture riscv64
-+RUN export DEBIAN_FRONTEND=noninteractive && \
-+    apt-get update && \
-+    apt-get install -y eatmydata && \
-+    eatmydata apt-get dist-upgrade -y && \
-+    eatmydata apt-get install --no-install-recommends -y \
-+                      bash \
-+                      bc \
-+                      bison \
-+                      ca-certificates \
-+                      ccache \
-+                      findutils \
-+                      flex \
-+                      gcc \
-+                      git \
-+                      libglib2.0-dev \
-+                      locales \
-+                      make \
-+                      meson \
-+                      ninja-build \
-+                      pkgconf \
-+                      python3 \
-+                      python3-venv \
-+                      sed \
-+                      tar && \
-+    eatmydata apt-get autoremove -y && \
-+    eatmydata apt-get autoclean -y && \
-+    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
-+    dpkg-reconfigure locales
- 
--# Duplicate deb line as deb-src
--RUN cat /etc/apt/sources.list | sed "s/^deb\ /deb-src /" >> /etc/apt/sources.list
-+ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
-+ENV LANG "en_US.UTF-8"
-+ENV MAKE "/usr/bin/make"
-+ENV NINJA "/usr/bin/ninja"
-+ENV PYTHON "/usr/bin/python3"
- 
--RUN apt update && \
--    DEBIAN_FRONTEND=noninteractive eatmydata \
--    apt install -y --no-install-recommends \
--         gcc-riscv64-linux-gnu \
--         libc6-dev-riscv64-cross \
--         libfdt-dev:riscv64 \
--         libffi-dev:riscv64 \
--         libglib2.0-dev:riscv64 \
--         libpixman-1-dev:riscv64
-+RUN export DEBIAN_FRONTEND=noninteractive && \
-+    dpkg --add-architecture riscv64 && \
-+    eatmydata apt-get install debian-ports-archive-keyring && \
-+    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ sid main' > /etc/apt/sources.list.d/ports.list && \
-+    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ unreleased main' >> /etc/apt/sources.list.d/ports.list && \
-+    eatmydata apt-get update && \
-+    eatmydata apt-get dist-upgrade -y && \
-+    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
-+    eatmydata apt-get install --no-install-recommends -y \
-+                      g++-riscv64-linux-gnu \
-+                      gcc-riscv64-linux-gnu \
-+                      libc6-dev:riscv64 \
-+                      libfdt-dev:riscv64 \
-+                      libffi-dev:riscv64 \
-+                      libglib2.0-dev:riscv64 \
-+                      libpixman-1-dev:riscv64 && \
-+    eatmydata apt-get autoremove -y && \
-+    eatmydata apt-get autoclean -y && \
-+    mkdir -p /usr/local/share/meson/cross && \
-+    printf "[binaries]\n\
-+c = '/usr/bin/riscv64-linux-gnu-gcc'\n\
-+ar = '/usr/bin/riscv64-linux-gnu-gcc-ar'\n\
-+strip = '/usr/bin/riscv64-linux-gnu-strip'\n\
-+pkgconfig = '/usr/bin/riscv64-linux-gnu-pkg-config'\n\
-+\n\
-+[host_machine]\n\
-+system = 'linux'\n\
-+cpu_family = 'riscv64'\n\
-+cpu = 'riscv64'\n\
-+endian = 'little'\n" > /usr/local/share/meson/cross/riscv64-linux-gnu && \
-+    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt && \
-+    mkdir -p /usr/libexec/ccache-wrappers && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-c++ && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-cc && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-g++ && \
-+    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-gcc
- 
--# Specify the cross prefix for this image (see tests/docker/common.rc)
-+ENV ABI "riscv64-linux-gnu"
-+ENV MESON_OPTS "--cross-file=riscv64-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=riscv64-linux-gnu-
- ENV DEF_TARGET_LIST riscv64-softmmu,riscv64-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 5e06fb2cf5..b54566edcc 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -63,12 +63,12 @@ add_user_mapping = [
-     "  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi\n"
- ]
- 
--def generate_dockerfile(host, target, cross=None, trailer=None):
-+def generate_dockerfile(host, target, project="qemu", cross=None, trailer=None):
-     filename = Path(src_dir, "tests", "docker", "dockerfiles", host + ".docker")
-     cmd = lcitool_cmd + ["dockerfile"]
-     if cross is not None:
-         cmd.extend(["--cross", cross])
--    cmd.extend([target, "qemu"])
-+    cmd.extend([target, project])
- 
-     if trailer is not None:
-         trailer += "\n".join(add_user_mapping)
-@@ -164,6 +164,12 @@ try:
-                         trailer=cross_build("powerpc64le-linux-gnu-",
-                                             "ppc64-softmmu,ppc64-linux-user"))
- 
-+    generate_dockerfile("debian-riscv64-cross", "debian-sid",
-+                        project="qemu-minimal",
-+                        cross="riscv64",
-+                        trailer=cross_build("riscv64-linux-gnu-",
-+                                            "riscv64-softmmu,riscv64-linux-user"))
-+
-     generate_dockerfile("debian-s390x-cross", "debian-11",
-                         cross="s390x",
-                         trailer=cross_build("s390x-linux-gnu-",
+     return cur_val;
+ #else
+-    /* AArch32 does not have FEAT_HADFS. */
++    /* AArch32 does not have FEAT_HADFS; non-TCG guests only use debug-mode. */
+     g_assert_not_reached();
+ #endif
+ }
 -- 
 2.39.2

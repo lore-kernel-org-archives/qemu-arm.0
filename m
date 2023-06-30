@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f10-20020a7bc8ca000000b003fbad1b4904sm8379012wml.0.2023.06.30.11.13.30
+        by smtp.gmail.com with ESMTPSA id c5-20020a5d4145000000b00314145e6d61sm4976168wrq.6.2023.06.30.11.23.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jun 2023 11:13:33 -0700 (PDT)
+        Fri, 30 Jun 2023 11:23:27 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BA7B41FFC8;
-	Fri, 30 Jun 2023 19:04:25 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id A35E51FFCD;
+	Fri, 30 Jun 2023 19:04:26 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,109 +39,54 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 16/38] tests/avocado: update firmware to enable sbsa-ref/max
-Date: Fri, 30 Jun 2023 19:04:01 +0100
-Message-Id: <20230630180423.558337-17-alex.bennee@linaro.org>
+Subject: [PATCH v4 23/38] include/migration: mark vmstate_register() as a legacy function
+Date: Fri, 30 Jun 2023 19:04:08 +0100
+Message-Id: <20230630180423.558337-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vq2gtHAN4Y6O
+X-TUID: afPDmDcIbWDl
 
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Mention that QOM-ified devices already have support for registering
+the description.
 
-Update prebuilt firmware images to have TF-A with FEAT_FGT support
-enabled. This allowed us to enable test for "max" cpu in sbsa-ref
-machine.
-
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Message-Id: <20230530152240.79160-1-marcin.juszkiewicz@linaro.org>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Acked-by: Peter Xu <peterx@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20230619171437.357374-3-alex.bennee@linaro.org>
 
 ---
 v3
-  - re-enable for CI
+  - checkpatch cleanups
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
+ include/migration/vmstate.h | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 0a79fa7ab6..cce6ef9f65 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -29,23 +29,23 @@ def fetch_firmware(self):
-         """
-         Flash volumes generated using:
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 084f5e784a..d1b8abe08d 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -1209,7 +1209,15 @@ int vmstate_register_with_alias_id(VMStateIf *obj, uint32_t instance_id,
+                                    int required_for_version,
+                                    Error **errp);
  
--        - Fedora GNU Toolchain version 12.2.1 20220819 (Red Hat Cross 12.2.1-2)
-+        - Fedora GNU Toolchain version 13.1.1 20230511 (Red Hat 13.1.1-2)
- 
-         - Trusted Firmware-A
--          https://github.com/ARM-software/arm-trusted-firmware/tree/5fdb2e54
-+          https://github.com/ARM-software/arm-trusted-firmware/tree/c0d8ee38
- 
-         - Tianocore EDK II
--          https://github.com/tianocore/edk2/tree/494127613b
--          https://github.com/tianocore/edk2-non-osi/tree/41876073
--          https://github.com/tianocore/edk2-platforms/tree/8efa4f42
-+          https://github.com/tianocore/edk2/tree/0f9283429dd4
-+          https://github.com/tianocore/edk2-non-osi/tree/f0bb00937ad6
-+          https://github.com/tianocore/edk2-platforms/tree/7880b92e2a04
-         """
- 
-         # Secure BootRom (TF-A code)
-         fs0_xz_url = (
--            "https://fileserver.linaro.org/s/ATnSmq6k8SoXgbH/"
-+            "https://fileserver.linaro.org/s/HrYMCjP7MEccjRP/"
-             "download/SBSA_FLASH0.fd.xz"
-         )
--        fs0_xz_hash = "a210a09692bcbe0a3743ffd0df44e80e0c7ad8ab"
-+        fs0_xz_hash = "447eff64a90b84ce47703c6ec41fbfc25befaaea"
-         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash)
-         archive.extract(tar_xz_path, self.workdir)
-         fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
-@@ -93,15 +93,15 @@ def test_sbsaref_edk2_firmware(self):
- 
-         # AP Trusted ROM
-         wait_for_console_pattern(self, "Booting Trusted Firmware")
--        wait_for_console_pattern(self, "BL1: v2.8(release):v2.8")
-+        wait_for_console_pattern(self, "BL1: v2.9(release):v2.9")
-         wait_for_console_pattern(self, "BL1: Booting BL2")
- 
-         # Trusted Boot Firmware
--        wait_for_console_pattern(self, "BL2: v2.8(release)")
-+        wait_for_console_pattern(self, "BL2: v2.9(release)")
-         wait_for_console_pattern(self, "Booting BL31")
- 
-         # EL3 Runtime Software
--        wait_for_console_pattern(self, "BL31: v2.8(release)")
-+        wait_for_console_pattern(self, "BL31: v2.9(release)")
- 
-         # Non-trusted Firmware
-         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
-@@ -136,21 +136,18 @@ def boot_alpine_linux(self, cpu):
-         self.vm.launch()
-         wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
- 
--    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
-     def test_sbsaref_alpine_linux_cortex_a57(self):
-         """
-         :avocado: tags=cpu:cortex-a57
-         """
-         self.boot_alpine_linux("cortex-a57")
- 
--    @skipUnless(os.getenv("AVOCADO_TIMEOUT_EXPECTED"), "Test might timeout")
-     def test_sbsaref_alpine_linux_neoverse_n1(self):
-         """
-         :avocado: tags=cpu:max
-         """
-         self.boot_alpine_linux("neoverse-n1")
- 
--    @skip("requires TF-A update to handle FEAT_FGT")
-     def test_sbsaref_alpine_linux_max(self):
-         """
-         :avocado: tags=cpu:max
+-/* Returns: 0 on success, -1 on failure */
++/**
++ * vmstate_register() - legacy function to register state
++ * serialisation description
++ *
++ * New code shouldn't be using this function as QOM-ified devices have
++ * dc->vmsd to store the serialisation description.
++ *
++ * Returns: 0 on success, -1 on failure
++ */
+ static inline int vmstate_register(VMStateIf *obj, int instance_id,
+                                    const VMStateDescription *vmsd,
+                                    void *opaque)
 -- 
 2.39.2

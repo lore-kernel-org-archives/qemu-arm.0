@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id c1-20020a05600c0ac100b003fba6a0c881sm10400961wmr.43.2023.06.30.11.04.25
+        by smtp.gmail.com with ESMTPSA id y5-20020a05600c364500b003fbc9d178a8sm1192326wmq.4.2023.06.30.11.04.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:04:26 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 748461FFC0;
+	by zen.linaroharston (Postfix) with ESMTP id 8BF481FFC1;
 	Fri, 30 Jun 2023 19:04:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -39,62 +39,69 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>
-Subject: [PATCH v4 05/38] tests/tcg: add mechanism to handle plugin arguments
-Date: Fri, 30 Jun 2023 19:03:50 +0100
-Message-Id: <20230630180423.558337-6-alex.bennee@linaro.org>
+Subject: [PATCH v4 06/38] qemu-keymap: properly check return from xkb_keymap_mod_get_index
+Date: Fri, 30 Jun 2023 19:03:51 +0100
+Message-Id: <20230630180423.558337-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: gCta7akNg1BT
+X-TUID: 5epfD23kw/a6
 
-We recently missed a regression that should have been picked up by
-check-tcg. This was because the libmem plugin is effectively a NOP if
-the user doesn't specify the type to use.
+We can return XKB_MOD_INVALID for AltGr which rightly gets flagged by
+sanitisers as an overly wide shift attempt. Properly check the return
+type and leave the bitmap as zero in that case. Tested output before
+and after is unchanged with the gb and ara keymaps.
 
-Rather than changing the default behaviour add an additional expansion
-so we can take this into account in future.
-
-Message-Id: <20230623122100.1640995-6-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 ---
- tests/tcg/Makefile.target | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ qemu-keymap.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 72876cc84e..2462c26000 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -169,13 +169,17 @@ extract-plugin = $(wordlist 2, 2, $(subst -with-, ,$1))
+diff --git a/qemu-keymap.c b/qemu-keymap.c
+index 229866e004..8c80f7a4ed 100644
+--- a/qemu-keymap.c
++++ b/qemu-keymap.c
+@@ -140,6 +140,18 @@ static void usage(FILE *out)
+             names.options ?: "-");
+ }
  
- RUN_TESTS+=$(EXTRA_RUNS)
- 
-+# Some plugins need additional arguments above the default to fully
-+# exercise things. We can define them on a per-test basis here.
-+run-plugin-%-with-libmem.so: PLUGIN_ARGS=$(COMMA)inline=true$(COMMA)callback=true
++static xkb_mod_mask_t get_mod(struct xkb_keymap *map, const char *name)
++{
++    xkb_mod_index_t mod;
++    xkb_mod_mask_t mask = 0;
 +
- ifeq ($(filter %-softmmu, $(TARGET)),)
- run-%: %
- 	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
++    mod = xkb_keymap_mod_get_index(map, name);
++    if (mod != XKB_MOD_INVALID) {
++        mask = (1 << mod);
++    }
++    return mask;
++}
++
+ int main(int argc, char *argv[])
+ {
+     struct xkb_context *ctx;
+@@ -215,14 +227,10 @@ int main(int argc, char *argv[])
+                 mod, xkb_keymap_mod_get_name(map, mod));
+     }
  
- run-plugin-%:
- 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
--		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 		-d plugin -D $*.pout \
- 		 $(call strip-plugin,$<))
- else
-@@ -189,7 +193,7 @@ run-plugin-%:
- 	$(call run-test, $@, \
- 	  $(QEMU) -monitor none -display none \
- 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
--	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
-+	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@)$(PLUGIN_ARGS) \
- 	    	  -d plugin -D $*.pout \
- 		  $(QEMU_OPTS) $(call strip-plugin,$<))
- endif
+-    mod = xkb_keymap_mod_get_index(map, "Shift");
+-    shift = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "Control");
+-    ctrl = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "AltGr");
+-    altgr = (1 << mod);
+-    mod = xkb_keymap_mod_get_index(map, "NumLock");
+-    numlock = (1 << mod);
++    shift = get_mod(map, "Shift");
++    ctrl = get_mod(map, "Control");
++    altgr = get_mod(map, "AltGr");
++    numlock = get_mod(map, "NumLock");
+ 
+     state = xkb_state_new(map);
+     xkb_keymap_key_for_each(map, walk_map, state);
 -- 
 2.39.2

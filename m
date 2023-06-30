@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id e1-20020a5d5941000000b00313e59cb371sm17576229wri.12.2023.06.30.11.13.28
+        by smtp.gmail.com with ESMTPSA id 25-20020a05600c029900b003f42158288dsm22573094wmk.20.2023.06.30.11.13.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 30 Jun 2023 11:13:30 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D8BBD1FFCF;
-	Fri, 30 Jun 2023 19:04:26 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 4FF8A1FFD3;
+	Fri, 30 Jun 2023 19:04:27 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -39,58 +39,56 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-arm@nongnu.org,
 	Darren Kenny <darren.kenny@oracle.com>,
 	Alexander Bulekov <alxndr@bu.edu>,
-	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH v4 25/38] docs/devel/qom.rst: Correct code style
-Date: Fri, 30 Jun 2023 19:04:10 +0100
-Message-Id: <20230630180423.558337-26-alex.bennee@linaro.org>
+	Nicholas Piggin <npiggin@gmail.com>,
+	qemu-stable@nongnu.org,
+	Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
+	Taylor Simpson <tsimpson@quicinc.com>
+Subject: [PATCH v4 29/38] gdbstub: Permit reverse step/break to provide stop response
+Date: Fri, 30 Jun 2023 19:04:14 +0100
+Message-Id: <20230630180423.558337-30-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230630180423.558337-1-alex.bennee@linaro.org>
 References: <20230630180423.558337-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vJsHqTngiaAu
+X-TUID: qVrcg1BRakC5
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Nicholas Piggin <npiggin@gmail.com>
 
-Per commit 067109a11c ("docs/devel: mention the spacing requirement
-for QOM"):
+The final part of the reverse step and break handling is to bring
+the machine back to a debug stop state. gdb expects a response.
 
-  For a storage structure the first declaration should always be
-  called “parent_obj” and for a class structure the first member
-  should always be called “parent_class”
+A gdb 'rsi' command hangs forever because the gdbstub filters out
+the response (also observable with reverse_debugging.py avocado
+tests).
 
-Adapt the QOM rST document accordingly.
+Fix by setting allow_stop_reply for the gdb backward packets.
 
-Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20230622101717.70468-1-philmd@linaro.org>
+Fixes: 758370052fb ("gdbstub: only send stop-reply packets when allowed to")
+Cc: qemu-stable@nongnu.org
+Cc: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Cc: Alex Bennée <alex.bennee@linaro.org>
+Cc: Taylor Simpson <tsimpson@quicinc.com>
+Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
+Acked-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Message-Id: <20230623035304.279833-1-npiggin@gmail.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/qom.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ gdbstub/gdbstub.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index c9237950d0..2828843058 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -26,7 +26,7 @@ features:
-    typedef DeviceClass MyDeviceClass;
-    typedef struct MyDevice
-    {
--       DeviceState parent;
-+       DeviceState parent_obj;
- 
-        int reg0, reg1, reg2;
-    } MyDevice;
-@@ -147,7 +147,7 @@ will also have a wrapper function to call it easily:
- 
-    typedef struct MyDeviceClass
-    {
--       DeviceClass parent;
-+       DeviceClass parent_class;
- 
-        void (*frobnicate) (MyDevice *obj);
-    } MyDeviceClass;
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index be18568d0a..9496d7b175 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1814,6 +1814,7 @@ static int gdb_handle_packet(const char *line_buf)
+                 .handler = handle_backward,
+                 .cmd = "b",
+                 .cmd_startswith = 1,
++                .allow_stop_reply = true,
+                 .schema = "o0"
+             };
+             cmd_parser = &backward_cmd_desc;
 -- 
 2.39.2

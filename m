@@ -1,88 +1,114 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp713210ejy;
-        Thu, 29 Jun 2023 23:35:31 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE5cDB8aRdvLyyMmyKaDiEpG39AdXiXHEJ0G+4S2lgIrxpAE4Ed3VZQ67GAdfCd6BBpZb1b
-X-Received: by 2002:a05:6214:164d:b0:635:f48d:5b8a with SMTP id f13-20020a056214164d00b00635f48d5b8amr1541780qvw.1.1688106931068;
-        Thu, 29 Jun 2023 23:35:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688106931; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp1583711ejy;
+        Sat, 1 Jul 2023 18:35:57 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4AZz0/DxTR3kmapOB2/Lfn6aJ6D/T1BzjC8NPcPSdyP037WHnRbVIXxp+6bjcH9EmBHN7O
+X-Received: by 2002:ac8:7f81:0:b0:3f9:c539:c9d5 with SMTP id z1-20020ac87f81000000b003f9c539c9d5mr7283762qtj.68.1688261757651;
+        Sat, 01 Jul 2023 18:35:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688261757; cv=none;
         d=google.com; s=arc-20160816;
-        b=atdlb+ouAnNUfF8EOLlmGUYmeR2dCi4V/prvJqfpt6ADB54V5CgaQD7Gr8Wh656pqj
-         RZ0Sdv1YKyzt3c0l1WjZ/RQCzBTVkkY02H4xwqswPq6wRNHM4NF3gl4KuDh78Rh5th//
-         5LOYcZptkI6fqgjSWC7niqkaEGYtmu+RXDb5D9A1llBjfVbRT7myumfrzuXJUnWsktKn
-         J0YvxtpaFUQmMwbUR7jSWlI6Qy37su76uHTHM7KY6sMCqqLXv9tLOZWaZibrG2ShZo6f
-         QkcpBfS6S6m02uTc5dGN8mH34QbdBuuXUWGG3sjGbpAOD1UXXcMqMkfBJEsrrqc3Mgdc
-         Lznw==
+        b=XNypsoew/Tg9G5lMbjxlZIb3zkyTrAlO1GppLnSWiYe3nxqhJM52jOGkXFd4wvby7R
+         YudSCYaETBHwnircOpMytlWdzp/EJGFppKbLY3B7HRN4JtHrzM6eqizbOxqTbrtqpdd4
+         CcqexiPkMPt7yHmbYBE0jD98ZqWxzY2NGoxANcVaPXRI6HTO4oISV55mZcMLOrMK5+BW
+         baDVKa0Igy/LY+6icc3QqCy6lxm/X7/F8Jyei6it9J7uEukv8r2KzhgmxhVV1QnHQAhk
+         RwmIjmbqCOwlfi672/cPkWORPYw3eTZftwzpos0ayfiQ+ayLrmgHb4sn1asEfBkolR6h
+         Kf+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=mO6w3jM1zSzrAcP8KwouQfooKTncPM7Z516ynFt5dCc=;
-        fh=8m4gzN8W7ZjNuuL4MyP8AmMXjKvDAhe+jK8foc4P3Hg=;
-        b=GSJpwKzf+fhrT2Naw/KanwMFal3FkXjkEuD8rThF96i7FjpCZOq+CvZi177w3kGqpl
-         oOXnvgrH42nWgm0jALFow9RvL9eNV/3kyfR57NP2nAc7AdWBsglx0YkkevxxBLfq0xQL
-         A654pm2sHr4M+Dd910/YbBLcAibf0e0T8MB0xGK5ow32TU1608l0xGvQcJJqaa8fYolb
-         bUBv5gsNx/ZpRqBWIFYhLYZAvGXIg3SSVDvFekXpeMltY4+KaaJ/fwrZVVZLkz17Kz5u
-         V1fbumSGOQleNUexWeQTZ2K9XRw+/rLGsBYkL/X3/lRCu3YzrEvYi5w5WLdMrzQDmPKS
-         hsPw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=5j0ylvlbGyI2o543n1+Hlev2yR/lbdvBfoJ89tLrDBU=;
+        fh=zo7Wz1o1/TZeCsPuYvWsqmU2x9Jm9pIDnDO12F7ESBw=;
+        b=KQLrPFAPibyKu5chSAMVvrTOLm55pCrd4+lfSztvkzlbQIfJhtVCzXsmI+cCH9AUg7
+         DccObole+AaFLnwlYFRxx+gT7KP+tpdRYXSBRMqTPOLjmj/CeNnZhjz2Bjfr/i9GJdnA
+         oxUFA5HIjfsnwirjjoSVGd1KaqH66t7/yCzAk6Meq0TJ1bgPhX1hRunw1nkVi8mFELwY
+         97lKP4bS7zQuigAwaG+2ALZRJv3xIa8mD6Vfvf5aodn5slrbZVV/SOdtMI1B+KMj9qhW
+         JYrXk1Ws2oL9KKNokoxhnwzLFK8FikGIQO7YAZd+rG9COt/GYiqPh//lCE0d/Ztp2vaO
+         QtsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=kUlmuVb2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7-20020a05621421c700b00631eaf54a92si7969229qvh.407.2023.06.29.23.35.30
+        by mx.google.com with ESMTPS id v5-20020a05622a014500b004034d531656si1475529qtw.437.2023.07.01.18.35.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Jun 2023 23:35:31 -0700 (PDT)
+        Sat, 01 Jul 2023 18:35:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=kUlmuVb2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qF7j0-0007Ek-1r; Fri, 30 Jun 2023 02:35:22 -0400
+	id 1qFm0A-0001K9-JU; Sat, 01 Jul 2023 21:35:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qF7ix-0007EE-Hr; Fri, 30 Jun 2023 02:35:19 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qF7iv-00070e-J2; Fri, 30 Jun 2023 02:35:19 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7448A103B9;
- Fri, 30 Jun 2023 09:35:14 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 0560510931;
- Fri, 30 Jun 2023 09:35:14 +0300 (MSK)
-Message-ID: <d8381a65-bdc2-e49e-722b-823ff42876af@tls.msk.ru>
-Date: Fri, 30 Jun 2023 09:35:13 +0300
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1qFm08-0001Hv-2j; Sat, 01 Jul 2023 21:35:44 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1qFm05-0007fY-Gc; Sat, 01 Jul 2023 21:35:43 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-3fbc244d307so32768425e9.1; 
+ Sat, 01 Jul 2023 18:35:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1688261732; x=1690853732;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5j0ylvlbGyI2o543n1+Hlev2yR/lbdvBfoJ89tLrDBU=;
+ b=kUlmuVb298DiS/8NqG1XMgkdQY+KnESkwbVtFR6RaOyeAXaCGiIMsVJfHc6ipDPeoF
+ CykiaxFV52/HM1oLtW/ESvQYl5XjcfK0c2O+j+Poq403vsILbcM8CyPuBjsmMfbfYQNz
+ ZW1e0wGMB7/knGs8SjKYw8Ri7iNh5dMxarlGhbJRHTv7tF+DNKg5pAX3bWYpuY8Mo8AR
+ WEsEsr6R0r25w0rOuwAIIgH9Znq8gxnShOd1UjSrrTQtFGvTD+GRZLC9+TmXvoa+38ZD
+ AIKZiVzX3EuK7tZvmXPWyrL9G1CR3z7cxrCzsBlVdAVxu2DKJ4NfF50WnkJ98zh1B0sO
+ ca6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688261732; x=1690853732;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=5j0ylvlbGyI2o543n1+Hlev2yR/lbdvBfoJ89tLrDBU=;
+ b=YYHlU1dD7b4QHrY5iKJh+EumEczgNpnGHZ6plJFK1lxP6vNXf8bHaQw07dnZwtj/Ea
+ 80MjIWxhg1mkEPzf6qPiyPD/yPMH3+fGEOUuuoBBYV3JNLvT+ADBDsG0+fhB6lLSRkhz
+ OwuIUan2dCBMlZpgRQ32wyN2ZxXJzwVWoAf3XBZaS3XDJa2G3d4H6O9K/td32rLMh4Jc
+ Cp1VyC/37br6fx5S/pImWdfBgPdhVUdu+/C7YWzcfKsf4Zno9EXc3peP8qnDYsX7vkfe
+ StxnQt+FRVVbqUbEstsySmJq2lRB9NULSKerr4tTnrrB2wycipn40LaSJUx0+SthMQ/y
+ WSig==
+X-Gm-Message-State: AC+VfDzQSHL+L8hx4+DdFhZLSUOY58PW7LiKR0FV47XRoo3GRgniWAKw
+ YjT95OoylVdNjyDWeux1bUnvWwbtVtvz+DlF+JA=
+X-Received: by 2002:a05:600c:b54:b0:3f9:846:d892 with SMTP id
+ k20-20020a05600c0b5400b003f90846d892mr5564867wmr.9.1688261731941; Sat, 01 Jul
+ 2023 18:35:31 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] hw: Simplify calls to pci_nic_init_nofail()
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>
-References: <20230629125449.234945-1-thuth@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230629125449.234945-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.093,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20230625015321.77987-1-bmeng@tinylab.org>
+In-Reply-To: <20230625015321.77987-1-bmeng@tinylab.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 2 Jul 2023 09:35:19 +0800
+Message-ID: <CAEUhbmXVL8YLEDgPhj9zxhAt70nMF5=TXn491-tCOxoHaF=+QA@mail.gmail.com>
+Subject: Re: [PATCH v7 0/9] net: Pad short frames for network backends
+To: Bin Meng <bmeng@tinylab.org>
+Cc: Jason Wang <jasowang@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
+ Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, Helge Deller <deller@gmx.de>,
+ Joel Stanley <joel@jms.id.au>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,44 +124,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ynBE7ZdIsR9G
+X-TUID: FuxpQbevDBDU
 
-29.06.2023 15:54, Thomas Huth пишет:
-> pci_nic_init_nofail() calls qemu_find_nic_model(), and this function
-> sets nd->model = g_strdup(default_model) if it has not been initialized
-> yet. So we don't have to set nd->model to the default_nic in the
-> calling sites.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/arm/sbsa-ref.c        | 8 +-------
->   hw/arm/virt.c            | 8 +-------
->   hw/loongarch/virt.c      | 8 +-------
->   hw/mips/loongson3_virt.c | 8 +-------
->   hw/xtensa/virt.c         | 8 +-------
->   5 files changed, 5 insertions(+), 35 deletions(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index b774d80291..d8e13ddbfe 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -683,13 +683,7 @@ static void create_pcie(SBSAMachineState *sms)
->       pci = PCI_HOST_BRIDGE(dev);
->       if (pci->bus) {
->           for (i = 0; i < nb_nics; i++) {
-> -            NICInfo *nd = &nd_table[i];
-> -
-> -            if (!nd->model) {
-> -                nd->model = g_strdup(mc->default_nic);
-> -            }
-> -
-> -            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-> +            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
->           }
->       }
+On Sun, Jun 25, 2023 at 9:59=E2=80=AFAM Bin Meng <bmeng@tinylab.org> wrote:
+>
+> The minimum Ethernet frame length is 60 bytes. For short frames with
+> smaller length like ARP packets (only 42 bytes), on a real world NIC
+> it can choose either padding its length to the minimum required 60
+> bytes, or sending it out directly to the wire. Such behavior can be
+> hardcoded or controled by a register bit. Similarly on the receive
+> path, NICs can choose either dropping such short frames directly or
+> handing them over to software to handle.
+>
+> On the other hand, for the network backends like SLiRP/TAP, they
+> don't expose a way to control the short frame behavior. As of today
+> they just send/receive data from/to the other end connected to them,
+> which means any sized packet is acceptable. So they can send and
+> receive short frames without any problem. It is observed that ARP
+> packets sent from SLiRP/TAP are 42 bytes, and SLiRP/TAP just send
+> these ARP packets to the other end which might be a NIC model that
+> does not allow short frames to pass through.
+>
+> To provide better compatibility, for packets sent from QEMU network
+> backends like SLiRP/TAP, we change to pad short frames before sending
+> it out to the other end, if the other end does not forbid it via the
+> nc->do_not_pad flag. This ensures a backend as an Ethernet sender
+> does not violate the spec. But with this change, the behavior of
+> dropping short frames from SLiRP/TAP interfaces in the NIC model
+> cannot be emulated because it always receives a packet that is spec
+> complaint. The capability of sending short frames from NIC models is
+> still supported and short frames can still pass through SLiRP/TAP.
+>
+> This series should be able to fix the issue as reported with some
+> NIC models before, that ARP requests get dropped, preventing the
+> guest from becoming visible on the network. It was workarounded in
+> these NIC models on the receive path, that when a short frame is
+> received, it is padded up to 60 bytes.
+>
+> Only the first 4 patches of the v5 series [1] were applied in QEMU 6.0,
+> and the reset was said to be queued for 6.1 but for some reason they
+> never landed in QEMU mainline.
+>
+> Hopefully this series will make it for QEMU 8.1.
+>
+> [1] https://lore.kernel.org/qemu-devel/859cd26a-feb2-ed62-98d5-764841a468=
+cf@redhat.com/
+>
+> Changes in v7:
+> - new patch: "hw/net: ftgmac100: Drop the small packet check in the recei=
+ve path"
+>
 
-What a wonderful copy-spagetti it was :)
-
-Applied to my trivial-patches branch, thank you!
-
-/mjt
+Ping?

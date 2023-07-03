@@ -1,103 +1,152 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id t14-20020a5d460e000000b0031433760a92sm3843950wrq.115.2023.07.03.05.13.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Jul 2023 05:13:56 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5AEDA1FFBB;
-	Mon,  3 Jul 2023 13:13:56 +0100 (BST)
-References: <20230625212707.1078951-1-fufuyqqqqqq@gmail.com>
- <20230625212707.1078951-10-fufuyqqqqqq@gmail.com>
-User-agent: mu4e 1.11.8; emacs 29.0.92
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Yeqi Fu <fufuyqqqqqq@gmail.com>
-Cc: richard.henderson@linaro.org, qemu-devel@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [RFC v3 09/10] target/arm: Add support for native library calls
-Date: Mon, 03 Jul 2023 13:13:17 +0100
-In-reply-to: <20230625212707.1078951-10-fufuyqqqqqq@gmail.com>
-Message-ID: <87cz19i457.fsf@linaro.org>
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2248281ejy;
+        Mon, 3 Jul 2023 05:48:49 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGQfaSGjtJRTFtCYxjzmigQIgU6iMuBmUNiwXs9azRPXf19qIk8YF2NZVW4dwGMT7R7AwT2
+X-Received: by 2002:a81:5305:0:b0:577:1d1c:7b94 with SMTP id h5-20020a815305000000b005771d1c7b94mr10076052ywb.18.1688388529357;
+        Mon, 03 Jul 2023 05:48:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688388529; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PBgRy11IP/8NaDQptF/p+pWmFpuNMzCrhuVuvTvsTYiFYYjrrtmOmwcYKF2hU8PRD9
+         MxNaCdp4NXls7yW3b5cq65NqXlcFd+mcxsK41c4xQH9KNAX8fXd8lC70QRtmi5yCiDpi
+         3Wss6ZHmaJ8WmDFuITiymT13QZ1R5TA/xFWs04J169PPUqllkI1AZsg++MZ/YFHVI4/y
+         1qYNGtD1oRqwyKTinWWaSOrKgGn7YnHXo82FGWU7P27WzSsrCfFbxJMVaa+7bjtSsrst
+         qdgjpLwXRprIMkPJ1bX2OOeAmRbyiiPhUru0p7af86m4b6cXL5OFpJz4inCM75oI9w1L
+         3VNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=HmDywMfT6xUYqEWEUgj0Dt9z+yVFzGNxICOP3XcJyjw=;
+        fh=x2Usg3E6v2VAwrH89jzEIBKdcT9JbOJNRARi8ywhCq4=;
+        b=YdMqMiWrmGFVt5U0WsG96Cd4c7JLgjebvW+R9p+kWeaSIw7Wa3mEuhUKQdAtq95Mnn
+         o2As0H0zmsN1tBUsweUzMR3GLUpyDAALzdbXiUonDuN/BXriLKdBMjc3ApNiz1gHVJNh
+         5zqJLFrMIYwQ1fGZEy9CKJB4tVTHBGOCbG/eModeK6hNRDZi5sFMn4KBiloQSjS8ByjI
+         B0wLW/MDBSG0EAmCD84221sJCCNFoB/X2mZTK9bmQgcBnug+i+rXTuYIiuQopr0QLP3/
+         +hRUCnQ5GnGiifxeaRiMLGCoQsOKkkNsUjfRZI7NIHlzjWHdeRepEtSkk2WorRlNExqo
+         1H9A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i19-20020ac85c13000000b003f6b5567c92si9634036qti.411.2023.07.03.05.48.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 03 Jul 2023 05:48:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qGIyK-0007A0-LD; Mon, 03 Jul 2023 08:48:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=mKPa=CV=kaod.org=clg@ozlabs.org>)
+ id 1qGIyI-00078v-Fi; Mon, 03 Jul 2023 08:48:02 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=mKPa=CV=kaod.org=clg@ozlabs.org>)
+ id 1qGIyG-0007mK-Ap; Mon, 03 Jul 2023 08:48:02 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Qvm161FkPz4wxR;
+ Mon,  3 Jul 2023 22:47:54 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Qvm134DCLz4wqX;
+ Mon,  3 Jul 2023 22:47:51 +1000 (AEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH] aspeed: Introduce helper for 32-bit hosts limitation
+Date: Mon,  3 Jul 2023 14:47:46 +0200
+Message-ID: <20230703124746.2456684-1-clg@kaod.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: CK07kgbzwg1o
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=mKPa=CV=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ntij6v8pnSy/
 
+On 32-bit hosts, RAM has a 2047 MB limit. Use a macro to define the
+default ram size of machines (AST2600 SoC) that can have 2 GB.
 
-Yeqi Fu <fufuyqqqqqq@gmail.com> writes:
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed.c | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
 
-> Upon encountering specialized instructions reserved for native calls,
-> store the function id and argument types, then invoke helper.
->
-> Signed-off-by: Yeqi Fu <fufuyqqqqqq@gmail.com>
-> ---
->  target/arm/tcg/translate-a64.c | 27 ++++++++++++++++++++++++++-
->  target/arm/tcg/translate.c     | 25 +++++++++++++++++++++++--
->  target/arm/tcg/translate.h     |  6 ++++++
->  3 files changed, 55 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a6=
-4.c
-> index 741a608739..24a664b928 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-<snip>
-> --- a/target/arm/tcg/translate.c
-> +++ b/target/arm/tcg/translate.c
-> @@ -34,7 +34,7 @@
->  #include "exec/helper-gen.h"
->  #include "exec/log.h"
->  #include "cpregs.h"
-> -
-> +#include "native/native-defs.h"
->=20=20
->  #define ENABLE_ARCH_4T    arm_dc_feature(s, ARM_FEATURE_V4T)
->  #define ENABLE_ARCH_5     arm_dc_feature(s, ARM_FEATURE_V5)
-> @@ -58,6 +58,7 @@ TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
->  TCGv_i64 cpu_exclusive_addr;
->  TCGv_i64 cpu_exclusive_val;
->=20=20
-> +
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6880998484cd..9fca644d920e 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -47,6 +47,13 @@ struct AspeedMachineState {
+     char *spi_model;
+ };
+ 
++/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
++#if HOST_LONG_BITS == 32
++#define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
++#else
++#define ASPEED_RAM_SIZE(sz) (sz)
++#endif
++
+ /* Palmetto hardware value: 0x120CE416 */
+ #define PALMETTO_BMC_HW_STRAP1 (                                        \
+         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
+@@ -1423,12 +1430,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+-#if HOST_LONG_BITS == 32
+-#define FUJI_BMC_RAM_SIZE (1 * GiB)
+-#else
+-#define FUJI_BMC_RAM_SIZE (2 * GiB)
+-#endif
++#define FUJI_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+ {
+@@ -1450,12 +1452,7 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+-/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+-#if HOST_LONG_BITS == 32
+-#define BLETCHLEY_BMC_RAM_SIZE (1 * GiB)
+-#else
+-#define BLETCHLEY_BMC_RAM_SIZE (2 * GiB)
+-#endif
++#define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+ {
+-- 
+2.41.0
 
-stray whitespace which will often make re-basing patches a pain.
-
->  #include "exec/gen-icount.h"
->=20=20
->  static const char * const regnames[] =3D
-> @@ -1147,12 +1148,32 @@ static inline void gen_hlt(DisasContext *s, int i=
-mm)
->       * semihosting, to provide some semblance of security
->       * (and for consistency with our 32-bit semihosting).
->       */
-> +    if (native_call_enabled() && (!s->native_call_status)) {
-> +        s->native_call_status =3D true;
-> +        s->native_call_id =3D imm;
-> +        return;
-> +    } else if (native_call_enabled() && (s->native_call_status)) {
-> +        TCGv_i32 arg1 =3D load_reg(s, 0);
-> +        TCGv_i32 arg2 =3D load_reg(s, 1);
-> +        TCGv_i32 arg3 =3D load_reg(s, 2);
-> +
-> +        TCGv_i32 abi_map =3D tcg_constant_i32(imm);
-> +        TCGv_i32 func_id =3D tcg_constant_i32(s->native_call_id);
-> +        TCGv_i32 res =3D tcg_temp_new_i32();
-> +        TCGv_i32 mmu_idx =3D tcg_constant_i32(MMU_USER_IDX);
-> +        gen_helper_native_call_i32(res, cpu_env, arg1, arg2, arg3,
-> +                                    abi_map, func_id, mmu_idx);
-> +
-> +        store_reg(s, 0, res);
-> +        s->native_call_status =3D false;
-> +        s->native_call_id =3D 0;
-> +        return;
-> +    }
->      if (semihosting_enabled(s->current_el =3D=3D 0) &&
->          (imm =3D=3D (s->thumb ? 0x3c : 0xf000))) {
->          gen_exception_internal_insn(s, EXCP_SEMIHOST);
->          return;
->      }
-> -
-
-also here.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

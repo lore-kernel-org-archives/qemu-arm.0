@@ -1,371 +1,287 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2174075ejy;
-        Mon, 3 Jul 2023 03:13:34 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlESV9J43H6/JsNgEVhmN25nsERJsTZoAK91FZRSyY4I9tsGF0Qn0NZfco7ptOuhTkky4NuK
-X-Received: by 2002:a05:620a:3907:b0:767:6b08:578a with SMTP id qr7-20020a05620a390700b007676b08578amr2835726qkn.71.1688379214368;
-        Mon, 03 Jul 2023 03:13:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688379214; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2228330ejy;
+        Mon, 3 Jul 2023 05:11:43 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7k7tjQNsGesKlHQv+c8XPrAQsQrmvmWk8jbcfBY5Nq1gX63AzbqwGV8hKtkfkaH3ZG8k2u
+X-Received: by 2002:a05:620a:404a:b0:767:923:48d8 with SMTP id i10-20020a05620a404a00b00767092348d8mr12996771qko.27.1688386303290;
+        Mon, 03 Jul 2023 05:11:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688386303; cv=none;
         d=google.com; s=arc-20160816;
-        b=CcOVNk121/NhC1+UaFJAHxSwGGqf34TEGsaBhgDW5/b7DhJuVcRf1lvhZzqVushJw5
-         0qNuhmUyY4hmC0GkSPFO0FGCJ1UN1bhD9NX3Z4u9bcIjS0MUS3llUt7JqMgPx0enSzvL
-         V0UJWQ3B0Qqwdv3yjhkU3FBHkpEjhTLOI1xX55yg9LgUerg7+ZwBunH0CyHhwCgiRiTe
-         SMaWApZhknm1IJhMswULvac8T2sqshGb5OxQ9ts7VmTugxkYmPn7gZPdm1bBpgU8ajzd
-         VTPvu/QfQZg0zQZzj/Hvk6MwUOiFbSDIYogTXsfrhPjJRzEDSc67s6XgbbndKYUuBlQ6
-         jpag==
+        b=Of/7VZ7QCQYvBYmjsPVn9gm+lP75A4tD/t0aSRGPb2SFcznyevVLtK6XFNqPg8kFWd
+         Fhn09V9vtfxPPihXYHe3gHJUCFV8Iw47KVFfQxH0GBUr6tshidSIbiwQdKmIeEl88RMX
+         U3uqXRkeJIiPQY/FhS5C6GFqyHdyPiMm9mADp5i94uvd+fzaQ+34/MddAH+RT/YKJBm4
+         LfvB53NUAf4xaQyexB7LWuP3ikIbvIaKqrl3jLQwr+XY/wP0ql8vefsKnYWA0swe+kMo
+         MC/P/EwM9amKu2xrGsEbHt6z9r7Coa25c9jCP+jYzv2C52lV49GC3OHlTO35F1y6k5P6
+         +iNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=tquFfTdtw0sVSZbN7ZybV+/6BBhwf96oST0EwHIj8d8=;
-        fh=DiqGMcF5+wJ0/Fe6a4a0YfMDHaiC5n3qovds/BNTPmI=;
-        b=tN3YmgUGW1aDMDNl9om3BbwvIXfUjfiWIii06QVwhjcOUZ+Y18T6hTtgbKelB7HnGs
-         SHTo7GxcRqASHcWArYf9+bepXUUb7JwjDVzPtTk5G89+xcRmHWDnwIEmRs4BMDaHP2ZW
-         gboW7MOgCaGRK3onHOCB42ijS0lIphWHiCa7E7YeDgAZo8ZY/UmtsT3tDIqIO0PKqyWh
-         WkKJrDy2pmEkhVXG6GLZf/J9r9T3o5rkMbKpJwYaexDdBQLVkIg6K+Nfy1lyUywDGkS8
-         cARI/UOu6uKSG5iMer8DIO3ygI3Fh0Kn9O7ShDydbDLnopjB6ueVD46txo0rxFECNjWc
-         eYNQ==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:cc:to:message-id:subject:date:from;
+        bh=y30EVrPpM4PIe2rmEx4epdCA6qWxChsGvu5IKl3o4zg=;
+        fh=N5s0KVR2Ft9aFKYAPHofMIkGR7CimWqmo2z6K+KXLiA=;
+        b=avjZgE7QnzM1zDTMGTboPqcnqafPoqx/DCeQJLS9GUurqVPWlsp3W5xa85lt1weYVn
+         NC6ikvOL2L/WDtKKNO52mtDXwSG6bpFzSqaLbCFXCM9392yIngMuffQfWakIyDxzDy+u
+         m1EKbtvNzNNk4CmJDEheSosYrMuFZb08soiBUuE9vriudWwkiD/TgEumi9+hTtDYLdZk
+         azp6PQhb6f/57Lkf8xPNAfbkTP3xZsbjDAC8TIGkuIFC08Lix+Wb/uAXUA7TgesVyf86
+         k2TeowBvNue2W9ybN7WOBpqZKJsDFUMB4tSal+bFHWWJkI0pWRzYhE6NcnKjuLIL0TN7
+         9RWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=owwWZUom;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h20-20020a05620a10b400b00767379df5bbsi5894563qkk.20.2023.07.03.03.13.34
+        by mx.google.com with ESMTPS id g9-20020a05620a40c900b007659d454b51si12469065qko.38.2023.07.03.05.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jul 2023 03:13:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Jul 2023 05:11:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=owwWZUom;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=sr.ht
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qGGRZ-0002wh-6k; Mon, 03 Jul 2023 06:06:05 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qGIOz-0005BE-5C; Mon, 03 Jul 2023 08:11:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qGGRK-0002gB-Tv
- for qemu-devel@nongnu.org; Mon, 03 Jul 2023 06:05:50 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1qGGRF-0005pA-LO
- for qemu-devel@nongnu.org; Mon, 03 Jul 2023 06:05:50 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3fbc54cab6fso33964315e9.0
- for <qemu-devel@nongnu.org>; Mon, 03 Jul 2023 03:05:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688378737; x=1690970737;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tquFfTdtw0sVSZbN7ZybV+/6BBhwf96oST0EwHIj8d8=;
- b=owwWZUomaZMItKwgFZNjSF8ClG3c5cEoOgYqiw3UKkmLvZ0ryXEzifBtmKdvbqFIYN
- +ltnJCaRdCER62HwW3UKbvVBokjCJeUwZZNpdr6jdKhVfzzP/XmOPwFhUZSR+zqNFPvS
- GiAr0YSl7PNJ3sEMrG7dUQLhSVKaNn8qe6udXaUgiJgc+79/XCGnBXKUJQHN3tI6I6qm
- TtFvcIj7CelJiHLjD1E4Yac+Sm7DNrJTJk55b08y8K8bysDoYqXKOoUqYhLsTFrizct/
- wuMCdCpPvRSPGTLGzw4ea3IBLJjFqbItz8v2R0drDAe9+xGSGbyDo4U7E9zcxAm14/SR
- H5qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688378737; x=1690970737;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=tquFfTdtw0sVSZbN7ZybV+/6BBhwf96oST0EwHIj8d8=;
- b=RSV4CKaMckjXrDbrfq8lJOX8L+vCCMkJqfduzXMYAo7EL2XI5Qp+F0BqMSWDDxg5nx
- OYXpH2AzM94R80W1vppgPuK9ahRe8NB8pMDAiG164TQQvEOFPe0JMIygR7hz3zsXZSs/
- w21p7h9V1a1Wz08fEfwkwtGE3FWldB747FRAekIKtz2FUQr+1v2XTX2/d/hGZ6bMPIyN
- s01deb9acydwa1GNOHgddR0lsJ6Axjp13TNFUWOmB47YgQYB33UYSNPtaxONDbPlQZHr
- P4IGfEKXDgTbEaAPnPLBRskb0tRBa79qCoBkOW3wSSFM4iTkjVfjfKn9RWi7AeDE0G8f
- ObmA==
-X-Gm-Message-State: AC+VfDzYQdQB2gpCQLd8rr10xmYUrL2y8rB6Y85Ncd49d4afwLvQK7DZ
- I7VvUGc3VfqrFGgpfji9sfEUFbdbg99qPSWQDjHONw==
-X-Received: by 2002:a05:600c:2219:b0:3fb:c217:7243 with SMTP id
- z25-20020a05600c221900b003fbc2177243mr7728393wml.18.1688378736847; 
- Mon, 03 Jul 2023 03:05:36 -0700 (PDT)
-Received: from stoup.home (91.232.79.188.dynamic.jazztel.es. [188.79.232.91])
- by smtp.gmail.com with ESMTPSA id
- t5-20020a05600001c500b00313f7b077fesm18446562wrx.59.2023.07.03.03.05.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jul 2023 03:05:36 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
- eduardo@habkost.net, alistair.francis@wdc.com, danielhb413@gmail.com
-Subject: [PATCH v4 14/37] host/include/ppc: Implement aes-round.h
-Date: Mon,  3 Jul 2023 12:04:57 +0200
-Message-Id: <20230703100520.68224-15-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230703100520.68224-1-richard.henderson@linaro.org>
-References: <20230703100520.68224-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1qGIOx-0005AH-Gk; Mon, 03 Jul 2023 08:11:31 -0400
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1qGIOv-0006A7-6d; Mon, 03 Jul 2023 08:11:31 -0400
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 0508F11EE64;
+ Mon,  3 Jul 2023 12:11:26 +0000 (UTC)
+From: ~ssinprem <ssinprem@git.sr.ht>
+Date: Mon, 03 Jul 2023 18:55:23 +0700
+Subject: [PATCH qemu v2] aspeed add montblanc bmc reference from fuji
+Message-ID: <168838628582.4303.2511941115126164692-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org,
+ peter.maydell@linaro.org
+Cc: ssinprem@celestica.com, ssumet@celestica.com, srikanth@celestica.com,
+ kgengan@celestica.com, andrew@aj.id.au, joel@jms.id.au
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ag9gSNebKPPd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~ssinprem <ssinprem@celestica.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LQlhui1SGpTD
 
-Detect CRYPTO in cpuinfo; implement the accel hooks.
+From: Sittisak Sinprem <ssinprem@celestica.com>
 
-Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+- I2C list follow I2C Tree v1.6 20230320
+- fru eeprom data use FB FRU format version 4
+
+Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
 ---
- host/include/ppc/host/cpuinfo.h            |   1 +
- host/include/ppc/host/crypto/aes-round.h   | 182 +++++++++++++++++++++
- host/include/ppc64/host/crypto/aes-round.h |   1 +
- util/cpuinfo-ppc.c                         |   8 +
- 4 files changed, 192 insertions(+)
- create mode 100644 host/include/ppc/host/crypto/aes-round.h
- create mode 100644 host/include/ppc64/host/crypto/aes-round.h
+ hw/arm/aspeed.c        | 67 ++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c | 50 +++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.h |  7 +++++
+ 3 files changed, 124 insertions(+)
 
-diff --git a/host/include/ppc/host/cpuinfo.h b/host/include/ppc/host/cpuinfo.h
-index df11e8d417..29ee7f9ef8 100644
---- a/host/include/ppc/host/cpuinfo.h
-+++ b/host/include/ppc/host/cpuinfo.h
-@@ -16,6 +16,7 @@
- #define CPUINFO_ISEL            (1u << 5)
- #define CPUINFO_ALTIVEC         (1u << 6)
- #define CPUINFO_VSX             (1u << 7)
-+#define CPUINFO_CRYPTO          (1u << 8)
- 
- /* Initialized with a constructor. */
- extern unsigned cpuinfo;
-diff --git a/host/include/ppc/host/crypto/aes-round.h b/host/include/ppc/host/crypto/aes-round.h
-new file mode 100644
-index 0000000000..8062d2a537
---- /dev/null
-+++ b/host/include/ppc/host/crypto/aes-round.h
-@@ -0,0 +1,182 @@
-+/*
-+ * Power v2.07 specific aes acceleration.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6880998484..e54685b9e6 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -182,6 +182,10 @@ struct AspeedMachineState {
+ #define FUJI_BMC_HW_STRAP1    0x00000000
+ #define FUJI_BMC_HW_STRAP2    0x00000000
+=20
++/* Montblanc hardware value */
++#define MONTBLANC_BMC_HW_STRAP1    0x00000000
++#define MONTBLANC_BMC_HW_STRAP2    0x00000000
 +
-+#ifndef PPC_HOST_CRYPTO_AES_ROUND_H
-+#define PPC_HOST_CRYPTO_AES_ROUND_H
-+
-+#ifdef __ALTIVEC__
-+#include "host/cpuinfo.h"
-+
-+#ifdef __CRYPTO__
-+# define HAVE_AES_ACCEL  true
-+#else
-+# define HAVE_AES_ACCEL  likely(cpuinfo & CPUINFO_CRYPTO)
-+#endif
-+#define ATTR_AES_ACCEL
-+
-+/*
-+ * While there is <altivec.h>, both gcc and clang "aid" with the
-+ * endianness issues in different ways. Just use inline asm instead.
-+ */
-+
-+/* Bytes in memory are host-endian; bytes in register are @be. */
-+static inline AESStateVec aes_accel_ld(const AESState *p, bool be)
-+{
-+    AESStateVec r;
-+
-+    if (be) {
-+        asm("lvx %0, 0, %1" : "=v"(r) : "r"(p), "m"(*p));
-+    } else if (HOST_BIG_ENDIAN) {
-+        AESStateVec rev = {
-+            15, 14, 13, 12, 11, 10, 9, 8, 7,  6,  5,  4,  3,  2,  1,  0,
-+        };
-+        asm("lvx %0, 0, %1\n\t"
-+            "vperm %0, %0, %0, %2"
-+            : "=v"(r) : "r"(p), "v"(rev), "m"(*p));
-+    } else {
-+#ifdef __POWER9_VECTOR__
-+        asm("lxvb16x %x0, 0, %1" : "=v"(r) : "r"(p), "m"(*p));
-+#else
-+        asm("lxvd2x %x0, 0, %1\n\t"
-+            "xxpermdi %x0, %x0, %x0, 2"
-+            : "=v"(r) : "r"(p), "m"(*p));
-+#endif
-+    }
-+    return r;
-+}
-+
-+static void aes_accel_st(AESState *p, AESStateVec r, bool be)
-+{
-+    if (be) {
-+        asm("stvx %1, 0, %2" : "=m"(*p) : "v"(r), "r"(p));
-+    } else if (HOST_BIG_ENDIAN) {
-+        AESStateVec rev = {
-+            15, 14, 13, 12, 11, 10, 9, 8, 7,  6,  5,  4,  3,  2,  1,  0,
-+        };
-+        asm("vperm %1, %1, %1, %2\n\t"
-+            "stvx %1, 0, %3"
-+            : "=m"(*p), "+v"(r) : "v"(rev), "r"(p));
-+    } else {
-+#ifdef __POWER9_VECTOR__
-+        asm("stxvb16x %x1, 0, %2" : "=m"(*p) : "v"(r), "r"(p));
-+#else
-+        asm("xxpermdi %x1, %x1, %x1, 2\n\t"
-+            "stxvd2x %x1, 0, %2"
-+            : "=m"(*p), "+v"(r) : "r"(p));
-+#endif
-+    }
-+}
-+
-+static inline AESStateVec aes_accel_vcipher(AESStateVec d, AESStateVec k)
-+{
-+    asm("vcipher %0, %0, %1" : "+v"(d) : "v"(k));
-+    return d;
-+}
-+
-+static inline AESStateVec aes_accel_vncipher(AESStateVec d, AESStateVec k)
-+{
-+    asm("vncipher %0, %0, %1" : "+v"(d) : "v"(k));
-+    return d;
-+}
-+
-+static inline AESStateVec aes_accel_vcipherlast(AESStateVec d, AESStateVec k)
-+{
-+    asm("vcipherlast %0, %0, %1" : "+v"(d) : "v"(k));
-+    return d;
-+}
-+
-+static inline AESStateVec aes_accel_vncipherlast(AESStateVec d, AESStateVec k)
-+{
-+    asm("vncipherlast %0, %0, %1" : "+v"(d) : "v"(k));
-+    return d;
-+}
-+
-+static inline void
-+aesenc_MC_accel(AESState *ret, const AESState *st, bool be)
-+{
-+    AESStateVec t, z = { };
-+
-+    t = aes_accel_ld(st, be);
-+    t = aes_accel_vncipherlast(t, z);
-+    t = aes_accel_vcipher(t, z);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesenc_SB_SR_AK_accel(AESState *ret, const AESState *st,
-+                      const AESState *rk, bool be)
-+{
-+    AESStateVec t, k;
-+
-+    t = aes_accel_ld(st, be);
-+    k = aes_accel_ld(rk, be);
-+    t = aes_accel_vcipherlast(t, k);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesenc_SB_SR_MC_AK_accel(AESState *ret, const AESState *st,
-+                         const AESState *rk, bool be)
-+{
-+    AESStateVec t, k;
-+
-+    t = aes_accel_ld(st, be);
-+    k = aes_accel_ld(rk, be);
-+    t = aes_accel_vcipher(t, k);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesdec_IMC_accel(AESState *ret, const AESState *st, bool be)
-+{
-+    AESStateVec t, z = { };
-+
-+    t = aes_accel_ld(st, be);
-+    t = aes_accel_vcipherlast(t, z);
-+    t = aes_accel_vncipher(t, z);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesdec_ISB_ISR_AK_accel(AESState *ret, const AESState *st,
-+                        const AESState *rk, bool be)
-+{
-+    AESStateVec t, k;
-+
-+    t = aes_accel_ld(st, be);
-+    k = aes_accel_ld(rk, be);
-+    t = aes_accel_vncipherlast(t, k);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesdec_ISB_ISR_AK_IMC_accel(AESState *ret, const AESState *st,
-+                            const AESState *rk, bool be)
-+{
-+    AESStateVec t, k;
-+
-+    t = aes_accel_ld(st, be);
-+    k = aes_accel_ld(rk, be);
-+    t = aes_accel_vncipher(t, k);
-+    aes_accel_st(ret, t, be);
-+}
-+
-+static inline void
-+aesdec_ISB_ISR_IMC_AK_accel(AESState *ret, const AESState *st,
-+                            const AESState *rk, bool be)
-+{
-+    AESStateVec t, k, z = { };
-+
-+    t = aes_accel_ld(st, be);
-+    k = aes_accel_ld(rk, be);
-+    t = aes_accel_vncipher(t, z);
-+    aes_accel_st(ret, t ^ k, be);
-+}
-+#else
-+/* Without ALTIVEC, we can't even write inline assembly. */
-+#include "host/include/generic/host/crypto/aes-round.h"
-+#endif
-+
-+#endif /* PPC_HOST_CRYPTO_AES_ROUND_H */
-diff --git a/host/include/ppc64/host/crypto/aes-round.h b/host/include/ppc64/host/crypto/aes-round.h
-new file mode 100644
-index 0000000000..5eeba6dcb7
---- /dev/null
-+++ b/host/include/ppc64/host/crypto/aes-round.h
-@@ -0,0 +1 @@
-+#include "host/include/ppc/host/crypto/aes-round.h"
-diff --git a/util/cpuinfo-ppc.c b/util/cpuinfo-ppc.c
-index d95adc8ccd..7212afa45d 100644
---- a/util/cpuinfo-ppc.c
-+++ b/util/cpuinfo-ppc.c
-@@ -48,6 +48,14 @@ unsigned __attribute__((constructor)) cpuinfo_init(void)
-         /* We only care about the portion of VSX that overlaps Altivec. */
-         if (hwcap & PPC_FEATURE_HAS_VSX) {
-             info |= CPUINFO_VSX;
-+            /*
-+             * We use VSX especially for little-endian, but we should
-+             * always have both anyway, since VSX came with Power7
-+             * and crypto came with Power8.
-+             */
-+            if (hwcap2 & PPC_FEATURE2_HAS_VEC_CRYPTO) {
-+                info |= CPUINFO_CRYPTO;
-+            }
-         }
+ /* Bletchley hardware value */
+ /* TODO: Leave same as EVB for now. */
+ #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+@@ -918,6 +922,39 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
      }
- 
--- 
-2.34.1
-
+ }
+=20
++static void montblanc_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc =3D &bmc->soc;
++    I2CBus *i2c[16] =3D {};
++
++    for (int i =3D 0; i < 16; i++) {
++        i2c[i] =3D aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    /* Ref from Minipack3_I2C_Tree_V1.6 20230320 */
++    at24c_eeprom_init_rom(i2c[3], 0x56, 8192, montblanc_scm_fruid, true);
++    at24c_eeprom_init_rom(i2c[6], 0x53, 8192, montblanc_fcm_fruid, true);
++
++    /* CPLD and FPGA */
++    at24c_eeprom_init(i2c[1], 0x35, 256);  /* SCM CPLD */
++    at24c_eeprom_init(i2c[5], 0x35, 256);  /* COMe CPLD TODO: need to update=
+ */
++    at24c_eeprom_init(i2c[12], 0x60, 256); /* MCB PWR CPLD */
++    at24c_eeprom_init(i2c[13], 0x35, 256); /* IOB FPGA */
++
++    /* on BMC board */
++    at24c_eeprom_init_rom(i2c[8], 0x51, 8192, montblanc_bmc_fruid, true);
++                                                      /* BMC EEPROM */
++    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x48); /* Thermal Sensor */
++
++    /* COMe Sensor/EEPROM */
++    at24c_eeprom_init(i2c[0], 0x56, 16384);          /* FRU EEPROM */
++    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x48); /* INLET Sensor */
++    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x4A); /* OUTLET Sensor */
++
++    /* It expects a pca9555 but a pca9552 is compatible */
++    create_pca9552(soc, 4, 0x27);
++}
++
+ #define TYPE_TMP421 "tmp421"
+=20
+ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+@@ -1450,6 +1487,32 @@ static void aspeed_machine_fuji_class_init(ObjectClass=
+ *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+=20
++/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
++#if HOST_LONG_BITS =3D=3D 32
++#define MONTBLANC_BMC_RAM_SIZE (1 * GiB)
++#else
++#define MONTBLANC_BMC_RAM_SIZE (2 * GiB)
++#endif
++static void aspeed_machine_montblanc_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc =3D "Facebook Montblanc BMC (Cortex-A7)";
++    amc->soc_name =3D "ast2600-a3";
++    amc->hw_strap1 =3D MONTBLANC_BMC_HW_STRAP1;
++    amc->hw_strap2 =3D MONTBLANC_BMC_HW_STRAP2;
++    amc->fmc_model =3D "mx66l1g45g";
++    amc->spi_model =3D "mx66l1g45g";
++    amc->num_cs =3D 2;
++    amc->macs_mask =3D ASPEED_MAC3_ON;
++    amc->i2c_init =3D montblanc_bmc_i2c_init;
++    amc->uart_default =3D ASPEED_DEV_UART1;
++    mc->default_ram_size =3D MONTBLANC_BMC_RAM_SIZE;
++    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+ #if HOST_LONG_BITS =3D=3D 32
+ #define BLETCHLEY_BMC_RAM_SIZE (1 * GiB)
+@@ -1706,6 +1769,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+         .name          =3D MACHINE_TYPE_NAME("fuji-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+         .class_init    =3D aspeed_machine_fuji_class_init,
++    }, {
++        .name          =3D MACHINE_TYPE_NAME("montblanc-bmc"),
++        .parent        =3D TYPE_ASPEED_MACHINE,
++        .class_init    =3D aspeed_machine_montblanc_class_init,
+     }, {
+         .name          =3D MACHINE_TYPE_NAME("bletchley-bmc"),
+         .parent        =3D TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index ace5266cec..6b3ffba0f8 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -161,6 +161,53 @@ const uint8_t rainier_bmc_fruid[] =3D {
+     0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
+ };
+=20
++/* Montblanc BMC FRU */
++const uint8_t montblanc_scm_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x53, 0x43, 0x4d, 0x02, 0x08, 0x32, 0x30, 0x30,
++    0x30, 0x32, 0x39, 0x34, 0x35, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
++    0x30, 0x31, 0x36, 0x34, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
++    0x30, 0x30, 0x30, 0x31, 0x32, 0x37, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
++    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x30, 0x33, 0x30, 0x31, 0x07,
++    0x0d, 0x41, 0x30, 0x33, 0x31, 0x33, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
++    0x0d, 0x4d, 0x32, 0x32, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
++    0x30, 0x32, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
++    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
++    0x43, 0x54, 0x48, 0x10, 0x06, 0x01, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x13,
++    0x03, 0x53, 0x43, 0x4d, 0xfa, 0x02, 0x02, 0x61,
++};
++
++const uint8_t montblanc_fcm_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x46, 0x43, 0x42, 0x02, 0x08, 0x33, 0x30, 0x30,
++    0x30, 0x30, 0x31, 0x36, 0x31, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
++    0x30, 0x31, 0x36, 0x33, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
++    0x30, 0x30, 0x30, 0x31, 0x33, 0x30, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
++    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x31, 0x32, 0x30, 0x31, 0x07,
++    0x0d, 0x41, 0x31, 0x32, 0x31, 0x32, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
++    0x0d, 0x46, 0x35, 0x30, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
++    0x30, 0x35, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
++    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
++    0x43, 0x54, 0x48, 0x10, 0x06, 0x02, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x11,
++    0x06, 0x03, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x12, 0x02, 0x8a, 0x00, 0x13,
++    0x03, 0x46, 0x43, 0x42, 0xfa, 0x02, 0x50, 0x47,
++};
++
++const uint8_t montblanc_bmc_fruid[8192] =3D {
++    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
++    0x43, 0x4b, 0x33, 0x5f, 0x42, 0x4d, 0x43, 0x04, 0x0c, 0x31, 0x33, 0x32,
++    0x30, 0x30, 0x30, 0x31, 0x33, 0x36, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31,
++    0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x38, 0x36, 0x30, 0x35, 0x20, 0x06,
++    0x0c, 0x52, 0x33, 0x30, 0x39, 0x37, 0x47, 0x30, 0x30, 0x30, 0x32, 0x30,
++    0x37, 0x07, 0x0d, 0x42, 0x30, 0x32, 0x37, 0x34, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x08, 0x01, 0x04, 0x09, 0x01, 0x00, 0x0a, 0x01,
++    0x00, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32, 0x33,
++    0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03, 0x43,
++    0x54, 0x48, 0x13, 0x03, 0x42, 0x4d, 0x43, 0xfa, 0x02, 0xef, 0xba,
++};
++
+ const size_t tiogapass_bmc_fruid_len =3D sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len =3D sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len =3D sizeof(fby35_bb_fruid);
+@@ -168,3 +215,6 @@ const size_t fby35_bmc_fruid_len =3D sizeof(fby35_bmc_fru=
+id);
+ const size_t yosemitev2_bmc_fruid_len =3D sizeof(yosemitev2_bmc_fruid);
+ const size_t rainier_bb_fruid_len =3D sizeof(rainier_bb_fruid);
+ const size_t rainier_bmc_fruid_len =3D sizeof(rainier_bmc_fruid);
++const size_t montblanc_scm_fruid_len =3D sizeof(montblanc_scm_fruid);
++const size_t montblanc_fcm_fruid_len =3D sizeof(montblanc_fcm_fruid);
++const size_t montblanc_bmc_fruid_len =3D sizeof(montblanc_bmc_fruid);
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index bbf9e54365..b8fbdd0734 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -27,4 +27,11 @@ extern const size_t rainier_bb_fruid_len;
+ extern const uint8_t rainier_bmc_fruid[];
+ extern const size_t rainier_bmc_fruid_len;
+=20
++extern const uint8_t montblanc_scm_fruid[];
++extern const uint8_t montblanc_fcm_fruid[];
++extern const uint8_t montblanc_bmc_fruid[];
++extern const size_t montblanc_scm_fruid_len;
++extern const size_t montblanc_fcm_fruid_len;
++extern const size_t montblanc_bmc_fruid_len;
++
+ #endif
+--=20
+2.38.5

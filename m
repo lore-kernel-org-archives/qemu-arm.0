@@ -1,64 +1,59 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id f10-20020a7bc8ca000000b003fbad1b4904sm15798249wml.0.2023.07.03.06.50.03
+        by smtp.gmail.com with ESMTPSA id da16-20020a056000197000b0031274a184d5sm25819195wrb.109.2023.07.03.06.53.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Jul 2023 06:50:04 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 86E061FFBC;
-	Mon,  3 Jul 2023 14:50:03 +0100 (BST)
-References: <20230703124746.2456684-1-clg@kaod.org>
-User-agent: mu4e 1.11.8; emacs 29.0.92
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Joel
- Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] aspeed: Introduce helper for 32-bit hosts limitation
-Date: Mon, 03 Jul 2023 14:47:17 +0100
-In-reply-to: <20230703124746.2456684-1-clg@kaod.org>
-Message-ID: <878rbxhzp0.fsf@linaro.org>
+        Mon, 03 Jul 2023 06:53:29 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D11691FFBE;
+	Mon,  3 Jul 2023 14:44:29 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 18/38] target/arm: make arm_casq_ptw CONFIG_TCG only
+Date: Mon,  3 Jul 2023 14:44:07 +0100
+Message-Id: <20230703134427.1389440-19-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230703134427.1389440-1-alex.bennee@linaro.org>
+References: <20230703134427.1389440-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: r6okz1hyQgzx
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: hshuowpMbXUU
 
+The ptw code is accessed by non-TCG code (specifically arm_pamax and
+arm_cpu_get_phys_page_attrs_debug) but most of it is really only for
+TCG emulation. Seeing as we already assert for a non TARGET_AARCH64
+build lets extend the test rather than further messing with the ifdef
+ladder.
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20230630180423.558337-19-alex.bennee@linaro.org>
 
-> On 32-bit hosts, RAM has a 2047 MB limit. Use a macro to define the
-> default ram size of machines (AST2600 SoC) that can have 2 GB.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  hw/arm/aspeed.c | 21 +++++++++------------
->  1 file changed, 9 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 6880998484cd..9fca644d920e 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -47,6 +47,13 @@ struct AspeedMachineState {
->      char *spi_model;
->  };
->=20=20
-> +/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
-> +#if HOST_LONG_BITS =3D=3D 32
-> +#define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
-> +#else
-> +#define ASPEED_RAM_SIZE(sz) (sz)
-> +#endif
-> +
-
-On the one hand this seems a bit hacky to change the guest definition
-based on the host architecture - to revive an ongoing argument about
-64-on-32 configurations this seems an even more obvious subset of the
-problem because regardless of the hoop jumping we do in code generation
-we are limited in how much ram we can allocate.
-
-On the other hand at least this moves the hackiness to one place:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 6015121b99..42355caa9b 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -628,7 +628,7 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+                              uint64_t new_val, S1Translate *ptw,
+                              ARMMMUFaultInfo *fi)
+ {
+-#ifdef TARGET_AARCH64
++#if defined(TARGET_AARCH64) && defined(CONFIG_TCG)
+     uint64_t cur_val;
+     void *host = ptw->out_host;
+ 
+@@ -709,7 +709,7 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
+ 
+     return cur_val;
+ #else
+-    /* AArch32 does not have FEAT_HADFS. */
++    /* AArch32 does not have FEAT_HADFS; non-TCG guests only use debug-mode. */
+     g_assert_not_reached();
+ #endif
+ }
+-- 
+2.39.2

@@ -1,201 +1,195 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2089791ejy;
-        Sun, 2 Jul 2023 23:24:34 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4WbvhHdUGORDGrZG7jJt4HzTrM+eREcdpss2m+NuwRtp5lpNG43RMyT1/hMhBQ5nVV1oCH
-X-Received: by 2002:ac8:4e55:0:b0:401:e2bb:e423 with SMTP id e21-20020ac84e55000000b00401e2bbe423mr11241537qtw.55.1688365474723;
-        Sun, 02 Jul 2023 23:24:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688365474; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2118778ejy;
+        Mon, 3 Jul 2023 00:47:12 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4GZisuy5lcLprx/7RHB1TSh+rpkngw8lumxfZmO85U8VwA9jk/lt28FMPHjlVwWIcoUNN0
+X-Received: by 2002:ac8:5812:0:b0:403:2844:5ee9 with SMTP id g18-20020ac85812000000b0040328445ee9mr15387483qtg.31.1688370432339;
+        Mon, 03 Jul 2023 00:47:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688370432; cv=none;
         d=google.com; s=arc-20160816;
-        b=xZXPqR9p0Vl5wj8jH3ozs1R0b8Irj89XxNo0qkd33yhyh0oP0K83Wi4fndn/4bR5BD
-         m5SX+Y57x44kKsUe1WOceNyGpoZyeLc4r038ARyBDV5JfC76l22KU6JxwyiECAaT2xBU
-         QGTLnCr/P1dhHwAuUM4+UBpWQDbcFNjwVMJwSIKP+WPDdcRLBFMr3+JbFtFF7ZCJIqRv
-         34JAk9ZRfZAonO9vv8uMzahHupbv7DJqUa7rK/tcaH5r+p1saPcSeA4ci0Y6gneh+pFi
-         WdLOXZONr9SkEm3vOGleAnUv/Jps/I+dfMJ2U6rPa8iTZOk7zBn83ADJXY2QTMdZjYRd
-         o1eg==
+        b=pbv4Q8wqClsZcC+ZlgAIiqjwZagNN7gFfp4u3I1fK5AP8pfWjBjvZxoRn+vd92v9de
+         vVWmsCTRfsuDDUxf54zn8aowsW5ITh8Q5N+dWS0gktf56y7ngTjhjz97R0CpnYwnStIx
+         IG9bXNDtxhuMy78u/xjBw7DEQQtFEVLIKJqwmbszzSgrvKzwLUJGA7yQ2qhduCAbv0Gq
+         ZwvgmW390r0245dPo4iIi3e+Znk54QlUYmZipww4CsZy6/45akeLezLw0hghhasPjWMb
+         b4zNMQLEWtZzbol5dp1hM8uzoCC1IUO3qwcx//AwEn8g62V93FQrL+nNdfTXkyBfR7LY
+         fp7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=4pguoLjcaCAIS9WVe6zFE6TPqIxfCYwiZtN7MF4sCZg=;
-        fh=Ds1b/2l5QebFMNAtDf8k4SI64N1ZJNlBKuV202q2SP8=;
-        b=oGiihRyDbAfEbkAPuSykv9dviNFyDDPo9cunSoUkMNHJWvhJLdai0eT92D2kGCi/oW
-         pek+n1dezng18ZKeKbC2zQXNLDETnUy6ylNkQQ+l2xtu4hMzIXmMC6XqIJH505QzyjSG
-         /eh3aFrGRXZi1R9rg6GqH8N97XvNUPr19nNW8rZfHqsoG6/B11+ttCeTF2tfXZ7mdfNl
-         GshwAynsG6YFmq/mAyKxsPrNJVAU2sQdPdeLHQglOCruWth2TEZ/UJ1CUdIH/cwPIuwN
-         MrksIuZOzulk3KjjN3tzb0zn84ny1YaidVzJ10/aFhjxpV/NcjysY7iapGJDd3fq9wHF
-         T6Qg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lIPJH8PZ+Te67CPqFmwDLk0RADZV744C10qjFrgmkNg=;
+        fh=n/6oFT7sJ+aM67Yh5Z4Y3gY/hdxGl26ZmeP+L39/JFY=;
+        b=RrPXVIHrnCfkmDp+6oedTHFDpLQo5p9Mm4yheHA3eyRADaXR3yxF52KnLTERUE2Zh+
+         ieUKK9usvhp4ICtykJmtoxiMz1pj1YUd6J+IGz9dVrz9HB15+0WJNLRjpNob4rrQ9cpf
+         LF94a8Ck4v5qwAUZHlEzGDmi7t7jnOGmA/CF7dplAKwBucGMBzuXUDQUBwVgyHld9JmQ
+         HYTL0ri0sclWb3cD9itMoBl5nceNxv3uPRTbWAq8Hn2mWzaGC7OzWfoPmSfBN0YVhMjS
+         vzPP5zcQGus12mFe9emIF8JpsdLtIO78nQxQ+8Z0gQgOrqtGrMr5UGBsRF+HBZlHoVkt
+         n3iA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R9MGGYh0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=m1dHfzho;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10-20020ac87f8a000000b0040353e47eddsi2425802qtj.776.2023.07.02.23.24.34
+        by mx.google.com with ESMTPS id d11-20020a05622a100b00b003ef499add83si10374280qte.516.2023.07.03.00.47.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jul 2023 23:24:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Jul 2023 00:47:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R9MGGYh0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=m1dHfzho;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGCz3-0006kt-T6; Mon, 03 Jul 2023 02:24:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qGEGw-00057s-A5; Mon, 03 Jul 2023 03:46:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1qGCz2-0006kc-2p
- for qemu-arm@nongnu.org; Mon, 03 Jul 2023 02:24:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1qGCyz-0000sx-Uh
- for qemu-arm@nongnu.org; Mon, 03 Jul 2023 02:24:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688365460;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4pguoLjcaCAIS9WVe6zFE6TPqIxfCYwiZtN7MF4sCZg=;
- b=R9MGGYh0qjfb3gBYZ0BWEoQDhchzLzwjU5DuvM11md6l/NA0mChfcVHYejAaoQvA0M0bX/
- y8uLsoKbPbN7PoI34ssjArCdzVElO1bmfjncTc6ylKkgvALVrkAH7kmvzXyJHKGGTkBX/P
- /aawlr+TUNDYjIOdIIxndz66qgvhP2o=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-596-CfAdm7N_NdmCaNA5rdXAeg-1; Mon, 03 Jul 2023 02:24:19 -0400
-X-MC-Unique: CfAdm7N_NdmCaNA5rdXAeg-1
-Received: by mail-lj1-f197.google.com with SMTP id
- 38308e7fff4ca-2b6ad88815eso35502441fa.3
- for <qemu-arm@nongnu.org>; Sun, 02 Jul 2023 23:24:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGEGp-00056d-GZ
+ for qemu-devel@nongnu.org; Mon, 03 Jul 2023 03:46:51 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGEGn-0007dk-2r
+ for qemu-devel@nongnu.org; Mon, 03 Jul 2023 03:46:51 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-3fbc0981756so38329675e9.0
+ for <qemu-devel@nongnu.org>; Mon, 03 Jul 2023 00:46:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688370407; x=1690962407;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lIPJH8PZ+Te67CPqFmwDLk0RADZV744C10qjFrgmkNg=;
+ b=m1dHfzhoGSQq9N8FUvmV51aWQye4n7mOu4qzHWG14R7hhQOf2fhGarvcsGc4CSBTi5
+ 7lxUPyyJ6OAVLZ6P48eW3Sl2lPGKeQ9pU07/hBmNC8pHLtXJ7NRNq0I79I4qI4xOS2qx
+ rudj0tZEZ4JC/Fk9dT61rQbaEIM1TH297lzN0MB9mvAYCL8eRAkLddiyCmjl5CNGNNMf
+ o7LRrM2mlwWbkT6kuyBvR/wNmes+V4DgRjHrl79WKj/QQp8Sq6dCQnEM+smu/O975N1H
+ 54t1hYSe+DrYuDERKfkflp80tITHEG1z1gCBIWfcQv4GRDsHrS0XAF7MkP2RWTRtT8V0
+ 0lHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688365458; x=1690957458;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4pguoLjcaCAIS9WVe6zFE6TPqIxfCYwiZtN7MF4sCZg=;
- b=CYxFC/EPY4ifE4yCDEMuetG1AQ16f7IkxH7msypg4KxyuzDfYcq9YoomrH/wQo4zhY
- PRz6WYHlssIP2gtcdMs/0GeEmS9h7Ppv6H3NqclueEaRi80ag85nUW2JGS0rzL76F0KV
- 7FjGNRmfp/plIPyNGorj6tftbv6ONh2OMsbOqbqmV353kyDdYdDCnAK4zG16vrW/yK/Y
- ywXaD/2iAZ9iMy34eLe6b7IMUaJROpwlMOZONjaJBnQbjOtdqA1QgduMcpo3oOn1UhIt
- TG+0LXltleLbIm5kF8kpvnjO1kFHkxfmb80alqiK9MQFS6Ixv/wUXldl9reb+IMFCrf+
- Xhrg==
-X-Gm-Message-State: ABy/qLazz1WtTgQTfL9JJT6VKuvrA7hc02HMV9Jzq/g2y4rVMQAl21PK
- qmhYylvLlUxjxlJXFeegtFtzR7bFwTXwtdDCjXBoyhJwI+IAIRps54i2+l4t2z+mcRrxC5bWo8Z
- jcwlFQ2o4cqFjKw22Sq+9jOaQGcWQ
-X-Received: by 2002:a2e:9856:0:b0:2b6:c349:e276 with SMTP id
- e22-20020a2e9856000000b002b6c349e276mr6236458ljj.20.1688365458188; 
- Sun, 02 Jul 2023 23:24:18 -0700 (PDT)
-X-Received: by 2002:a2e:9856:0:b0:2b6:c349:e276 with SMTP id
- e22-20020a2e9856000000b002b6c349e276mr6236436ljj.20.1688365457865; Sun, 02
- Jul 2023 23:24:17 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1688370407; x=1690962407;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lIPJH8PZ+Te67CPqFmwDLk0RADZV744C10qjFrgmkNg=;
+ b=TSBe49SMuxUdHu1d6+YqilWPG5MJYjeOnPWEl3aSnw7n0pfHjn1Svu0T3l4vNR+Sz/
+ ozvM1qBFTETAlfXM16S7awpj4E+Iw0o9Yq2SouOAckhACLTxNit7uIRRstOOnMaHVUgQ
+ m/3mWGtsWYyRyazqxQ6mgT39DcVGV/InV2VxbQcgjry7HA2oOh/pxZPtFNbn8KR0+3eq
+ SQx+Pd0EKJdtAxBDwze5a4qDk7oyyb35aNvMpU/2DiOG2symUPvUSAcxHPSXVf7ekels
+ YRCFV9eaIpnIPFdTCGqx5+sF9I2AXNPEFh3d9HWMElZUiLY2Ua1hqkP/GTdoO0ungLxk
+ 9WUg==
+X-Gm-Message-State: ABy/qLZjOU5J6s/ssFDHTSoZ7zS6k11UYeBXolGDOx27TcOCyZcynBAw
+ PyU4bcskQ/Nz25K/LsBc7vlWGg==
+X-Received: by 2002:adf:fe85:0:b0:2d1:3eb9:c3c2 with SMTP id
+ l5-20020adffe85000000b002d13eb9c3c2mr6938589wrr.54.1688370407478; 
+ Mon, 03 Jul 2023 00:46:47 -0700 (PDT)
+Received: from [192.168.69.115] ([176.176.178.91])
+ by smtp.gmail.com with ESMTPSA id
+ e1-20020a5d5941000000b00313e59cb371sm23515317wri.12.2023.07.03.00.46.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Jul 2023 00:46:47 -0700 (PDT)
+Message-ID: <e08863cd-f4ac-9ffa-b79b-5f9c594f1db4@linaro.org>
+Date: Mon, 3 Jul 2023 09:46:43 +0200
 MIME-Version: 1.0
-References: <20230625015321.77987-1-bmeng@tinylab.org>
- <CAEUhbmXVL8YLEDgPhj9zxhAt70nMF5=TXn491-tCOxoHaF=+QA@mail.gmail.com>
-In-Reply-To: <CAEUhbmXVL8YLEDgPhj9zxhAt70nMF5=TXn491-tCOxoHaF=+QA@mail.gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Mon, 3 Jul 2023 14:24:06 +0800
-Message-ID: <CACGkMEsirSC0Y-r_F+tvGim+S=uFB7LypjLjjjMz3htwdSj4ow@mail.gmail.com>
-Subject: Re: [PATCH v7 0/9] net: Pad short frames for network backends
-To: Bin Meng <bmeng.cn@gmail.com>
-Cc: Bin Meng <bmeng@tinylab.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
- Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, Helge Deller <deller@gmx.de>,
- Joel Stanley <joel@jms.id.au>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH] riscv: Generate devicetree only after machine
+ initialization is complete
+Content-Language: en-US
+To: Guenter Roeck <linux@roeck-us.net>, Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, Alistair Francis <alistair23@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Bin Meng <bin.meng@windriver.com>,
+ Jia Liu <proljc@gmail.com>, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Burton <paulburton@kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ Song Gao <gaosong@loongson.cn>, Stafford Horne <shorne@gmail.com>,
+ Weiwei Li <liweiwei@iscas.ac.cn>, Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20230703034614.3909079-1-linux@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230703034614.3909079-1-linux@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: H645AZnfA3y6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Rm3UbLOKqbdW
 
-On Sun, Jul 2, 2023 at 9:35=E2=80=AFAM Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> On Sun, Jun 25, 2023 at 9:59=E2=80=AFAM Bin Meng <bmeng@tinylab.org> wrot=
-e:
-> >
-> > The minimum Ethernet frame length is 60 bytes. For short frames with
-> > smaller length like ARP packets (only 42 bytes), on a real world NIC
-> > it can choose either padding its length to the minimum required 60
-> > bytes, or sending it out directly to the wire. Such behavior can be
-> > hardcoded or controled by a register bit. Similarly on the receive
-> > path, NICs can choose either dropping such short frames directly or
-> > handing them over to software to handle.
-> >
-> > On the other hand, for the network backends like SLiRP/TAP, they
-> > don't expose a way to control the short frame behavior. As of today
-> > they just send/receive data from/to the other end connected to them,
-> > which means any sized packet is acceptable. So they can send and
-> > receive short frames without any problem. It is observed that ARP
-> > packets sent from SLiRP/TAP are 42 bytes, and SLiRP/TAP just send
-> > these ARP packets to the other end which might be a NIC model that
-> > does not allow short frames to pass through.
-> >
-> > To provide better compatibility, for packets sent from QEMU network
-> > backends like SLiRP/TAP, we change to pad short frames before sending
-> > it out to the other end, if the other end does not forbid it via the
-> > nc->do_not_pad flag. This ensures a backend as an Ethernet sender
-> > does not violate the spec. But with this change, the behavior of
-> > dropping short frames from SLiRP/TAP interfaces in the NIC model
-> > cannot be emulated because it always receives a packet that is spec
-> > complaint. The capability of sending short frames from NIC models is
-> > still supported and short frames can still pass through SLiRP/TAP.
-> >
-> > This series should be able to fix the issue as reported with some
-> > NIC models before, that ARP requests get dropped, preventing the
-> > guest from becoming visible on the network. It was workarounded in
-> > these NIC models on the receive path, that when a short frame is
-> > received, it is padded up to 60 bytes.
-> >
-> > Only the first 4 patches of the v5 series [1] were applied in QEMU 6.0,
-> > and the reset was said to be queued for 6.1 but for some reason they
-> > never landed in QEMU mainline.
-> >
-> > Hopefully this series will make it for QEMU 8.1.
-> >
-> > [1] https://lore.kernel.org/qemu-devel/859cd26a-feb2-ed62-98d5-764841a4=
-68cf@redhat.com/
-> >
-> > Changes in v7:
-> > - new patch: "hw/net: ftgmac100: Drop the small packet check in the rec=
-eive path"
-> >
->
-> Ping?
+On 3/7/23 05:46, Guenter Roeck wrote:
+> If the devicetree is created before machine initialization is complete,
+> it misses dynamic devices. Specifically, the tpm device is not added
+> to the devicetree file and is therefore not instantiated in Linux.
+> Create devicetree in virt_machine_done() to solve the problem.
 
-I've queued this series.
+This makes sense, but what about the other archs/machines?
+Shouldn't we fix this generically?
 
-Thanks
-
->
+> Cc: Alistair Francis <alistair23@gmail.com>
+> Fixes: 325b7c4e75 hw/riscv: Enable TPM backends
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>   hw/riscv/virt.c | 9 ++++++---
+>   1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index ed4c27487e..08876284f5 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -1248,6 +1248,11 @@ static void virt_machine_done(Notifier *notifier, void *data)
+>       uint64_t kernel_entry = 0;
+>       BlockBackend *pflash_blk0;
+>   
+> +    /* create devicetree if not provided */
+> +    if (!machine->dtb) {
+> +        create_fdt(s, memmap);
+> +    }
+> +
+>       /*
+>        * Only direct boot kernel is currently supported for KVM VM,
+>        * so the "-bios" parameter is not supported when KVM is enabled.
+> @@ -1508,15 +1513,13 @@ static void virt_machine_init(MachineState *machine)
+>       }
+>       virt_flash_map(s, system_memory);
+>   
+> -    /* load/create device tree */
+> +    /* load device tree */
+>       if (machine->dtb) {
+>           machine->fdt = load_device_tree(machine->dtb, &s->fdt_size);
+>           if (!machine->fdt) {
+>               error_report("load_device_tree() failed");
+>               exit(1);
+>           }
+> -    } else {
+> -        create_fdt(s, memmap);
+>       }
+>   
+>       s->machine_done.notify = virt_machine_done;
 

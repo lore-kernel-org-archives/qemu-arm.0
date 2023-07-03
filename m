@@ -1,315 +1,202 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2278236ejy;
-        Mon, 3 Jul 2023 06:34:37 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5VNC0xhLgSBry4F9Gyt9U8i2qsGa8nv2b1ljIVptyY3CQ+UCgx6cO/+WQK9K5KF+FlNWJr
-X-Received: by 2002:a05:622a:1313:b0:3ff:21f1:949 with SMTP id v19-20020a05622a131300b003ff21f10949mr14081380qtk.9.1688391277523;
-        Mon, 03 Jul 2023 06:34:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688391277; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2300308ejy;
+        Mon, 3 Jul 2023 07:11:41 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7yiQzdNAHu1DIGrutC9wkwx6dwQrVE21U/DrIP0LMGlEVkgrvblA5s4IxVjl90eqEZQ5z9
+X-Received: by 2002:a05:600c:2259:b0:3f7:aee8:c23a with SMTP id a25-20020a05600c225900b003f7aee8c23amr13302979wmm.19.1688393501234;
+        Mon, 03 Jul 2023 07:11:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688393501; cv=none;
         d=google.com; s=arc-20160816;
-        b=w6omipC1EpUPes0xuZFk3xP1HZyC0W1H6JADmn/3hdBXBY7LaJhpjheBmuQKLDVXHi
-         b9cGzrGyhB/UmPbOCiG2O28xXMJEi2mtFXgMrtW4WZM1ZXDRdohKZZnDCDMiLkCnAX6N
-         EsRetusxRsHAYl9OkyL2sdUri88uStDbgprVs7f9sNqoW8pxP8kVP13OFh3vpxphgTBa
-         LVXwbZJljE6M3x9Lwqh4uy1i5xywZnLH/H4Q8E4vxW7CupOjZUwsBKtOLS4DEbd3MtTh
-         4heG6lfS0Ga7NYoLeW3p0AYpPQbQLGpN1/5781pTFNcpSdzEarBjv9gnXrC5MQiXTFl+
-         ezKg==
+        b=s71Tn2gcrhej8OXWMnyDhdsL3fkD9AFu7nqpNpXDt16aQ78lYskEbKaeUp6sbQ5E2b
+         0NPhdTV+33QKuA0Gdd93soxjVgGXI3NMroi0BnR2H0xpzztNXLu8gFyWTXe9CfugkHsC
+         IEAiTem0yci9BHnjFt9IamqASR5NNUpmCaQnmD8gq2wraBIatMKdTUhaNPG7sBvsSW8r
+         l4O+jwmQb9SFhikkPkqxw5a6Z8nE8E5D3209yC/17J+bJjojpP8jAYMst8Nqf7a6mTV7
+         Mw7XE8q3K0qN7iiFpOc10pskFjnZuRkSeaWcQn1kLotJ0NxwYpv8BNniXh01QMYtu9Oq
+         kCDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=w7XMj+MZlSNld2SZMItWvwfhyTO9Sq60v8RsyjVS+l0=;
-        fh=An8KaUG0eIIULXNPrsSBpAe9CQqyhL+C0UaYGGPzDSk=;
-        b=MPhIOssWDcEuMCEVXcKnk+HJcxkxwcesWo3jiCUyFwz7GSyG4xp/HGr/OY6ewqzLq8
-         UPwITwAAFYJBpwa9dWST8A+Ngp8Ri6oIV7mTT8mkWWMYV1sMJuk0lYES4EVbBI2FxxMl
-         SwRQJABReS6JNz2dapEfUwGsqcWi6gVfdUn5FA1qDaZwT4NicybJ7rMiSgdDXV4a8bxd
-         pV+u1W6j/uV9jiHqu67nipdr//t4lXJ/VubgcL5rojsslu/UNOvLVX/1OBqadUUq7aNI
-         dB/9n7EITly0ruZbxPXN4vNmGIw4MCqVsb6YQsmk582kQdIzBFOzYJM1vcnOgobXS+zJ
-         3aug==
+         :in-reply-to:subject:from:references:cc:to:content-language
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=m8O6s7v9ZvaIFftldwIB6Y3Vt8Am4q3YdNxGm1LPC3I=;
+        fh=Mh6s2dfsUq3r0tqPmNQSLmKbijpmXp1FlukScB5eR7M=;
+        b=F4RFzVKLcIElfu/LRjwjwhwnGBhy2ANlPrh6aIzzNvYomFSPBgXW2VqDbtayzpKIGB
+         xHeye9MMeJJQe3zbvLVlcK+gZcHevcl5uOZQ0OBymse8fViQFqZxs6M2iqAB2ZKtPrEw
+         WYR8s8FNlOZkbythwk6JeqVsNozUyb9mURsM5e/GeXdg4MS79aVtxsdOSfAgGFAPiW9T
+         ZCd4obIdeTpKO6hhTA/1mi6/my1qB316fR4DJeP0ndxLTrcjk1GNh7iqSMgsgVD6Dk4F
+         XU7AClKxseqr6EenS3DXywevXo10Y7WH1KFutsY2RdqccekKHrt5L5we5gVFuAMMUiSt
+         z0GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=qmbJcXt2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j16-20020a05622a039000b00403428bec1csi4706526qtx.710.2023.07.03.06.34.37
+        by mx.google.com with ESMTPS id p1-20020a05600c204100b003fbdcc2c5e1si751074wmg.98.2023.07.03.07.11.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jul 2023 06:34:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Jul 2023 07:11:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20221208 header.b=qmbJcXt2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qGJfq-00025j-AN; Mon, 03 Jul 2023 09:33:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qGKGd-0002w1-4Q; Mon, 03 Jul 2023 10:11:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mKPa=CV=kaod.org=clg@ozlabs.org>)
- id 1qGJeM-00019Z-KN; Mon, 03 Jul 2023 09:31:37 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mKPa=CV=kaod.org=clg@ozlabs.org>)
- id 1qGJeJ-0002Sz-Nu; Mon, 03 Jul 2023 09:31:29 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QvmzJ3D5dz4wxn;
- Mon,  3 Jul 2023 23:31:24 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QvmzF0FWvz4wqZ;
- Mon,  3 Jul 2023 23:31:20 +1000 (AEST)
-Message-ID: <020268f0-9dee-c732-f543-8ee1a84a97a5@kaod.org>
-Date: Mon, 3 Jul 2023 15:31:18 +0200
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1qGKGS-0002uj-6i; Mon, 03 Jul 2023 10:10:52 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1qGKGO-0005UV-Pq; Mon, 03 Jul 2023 10:10:51 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-579dd20b1c8so26982197b3.1; 
+ Mon, 03 Jul 2023 07:10:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1688393447; x=1690985447;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=m8O6s7v9ZvaIFftldwIB6Y3Vt8Am4q3YdNxGm1LPC3I=;
+ b=qmbJcXt2BTWPOC2tMnassY1A3LlPWyZaOOITtwbac+3/i4vwJyAE4fGDzQp7nCRco0
+ +GC+fIdAA1g7gq9ZSHaNCxOobwg7qq+DBcIMxKZUIdTjNNy7Jx/7nCIUQ0ZsTf22jxIo
+ UrIJDku+KwTOJmp3QNqdZmQpSWm0DyT4/xc8PqdkogIkvwwCKs2gR097Ts4UwVTaRVQl
+ yHWeeasM4Dt9frDSYVLNsxfUZK9fpTmmKdIP08VRDNrBpA08G5O0uKXwELBZXl+xuIdF
+ /vdhpqor7EDl7Hgv1FN9w1/EKFjG+by77svKtzy8PDLQKFdvzzmnYE0LoEDG35fx2Y9a
+ 3QLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688393447; x=1690985447;
+ h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
+ :content-language:user-agent:mime-version:date:message-id:sender
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=m8O6s7v9ZvaIFftldwIB6Y3Vt8Am4q3YdNxGm1LPC3I=;
+ b=RRFD65/KOrPhICP9M+bRASqiUBgNJH3j3PM5r8NGTAL0IP+UE9G7ZbvbiPUinj0ple
+ eV+oHimq2il1HvZ4MCTpDnjgzOF1ECggjWsIm219NdwfVjoAQFRvHhFP0mMcubG1KWY8
+ N4gbnIzB3IQFxQjJdJA0oC1ifHaIui3+juoCaZWc7D22R5uC7LLugzNvBxAop1AF86HA
+ COq4gB8J+KW3wm+JLifZ6iDLucMmUVRD204E1HqaBq+08axyVgu3PKahlC5rXFRZP72Y
+ I2X8teGun4vFD66PkLYC9p7FX+GCMTKGWWvt0gkP6VjUWA3fgEIwunFzyh9cEkABwVTw
+ iE9A==
+X-Gm-Message-State: ABy/qLZ2+bXP8WNQY7m9q272SEffuROmT1Uas/M42igI0DcFpvP9LNSA
+ R2p0MiHgXHfaY/02bXjxVWA=
+X-Received: by 2002:a81:6dc3:0:b0:559:ed0a:96c4 with SMTP id
+ i186-20020a816dc3000000b00559ed0a96c4mr9270093ywc.44.1688393447056; 
+ Mon, 03 Jul 2023 07:10:47 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ y186-20020a817dc3000000b0057736c436f1sm2251846ywc.141.2023.07.03.07.10.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Jul 2023 07:10:46 -0700 (PDT)
+Message-ID: <189ab78e-805c-983f-c1c7-f8c81f79b00f@roeck-us.net>
+Date: Mon, 3 Jul 2023 07:10:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH qemu v3] aspeed add montblanc bmc reference from fuji
+ Thunderbird/102.11.0
 Content-Language: en-US
-To: ~ssinprem <ssinprem@celestica.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Cc: ssumet@celestica.com, srikanth@celestica.com, kgengan@celestica.com,
- andrew@aj.id.au, joel@jms.id.au, thangavelu.v@celestica.com,
- anandaramanv@celestica.com
-References: <168839101774.24055.8166021147074925227-0@git.sr.ht>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <168839101774.24055.8166021147074925227-0@git.sr.ht>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, Alistair Francis <alistair23@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Jia Liu <proljc@gmail.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Paul Burton <paulburton@kernel.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ Song Gao <gaosong@loongson.cn>, Stafford Horne <shorne@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <20230703034614.3909079-1-linux@roeck-us.net>
+ <e08863cd-f4ac-9ffa-b79b-5f9c594f1db4@linaro.org>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH] riscv: Generate devicetree only after machine
+ initialization is complete
+In-Reply-To: <e08863cd-f4ac-9ffa-b79b-5f9c594f1db4@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=mKPa=CV=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=groeck7@gmail.com; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CPc9ujKPB0o5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LnN5XZqGHDH9
 
-On 7/3/23 15:06, ~ssinprem wrote:
-> From: Sittisak Sinprem <ssinprem@celestica.com>
+On 7/3/23 00:46, Philippe Mathieu-Daudé wrote:
+> On 3/7/23 05:46, Guenter Roeck wrote:
+>> If the devicetree is created before machine initialization is complete,
+>> it misses dynamic devices. Specifically, the tpm device is not added
+>> to the devicetree file and is therefore not instantiated in Linux.
+>> Create devicetree in virt_machine_done() to solve the problem.
 > 
-> - I2C list follow I2C Tree v1.6 20230320
-> - fru eeprom data use FB FRU format version 4
+> This makes sense, but what about the other archs/machines?
+> Shouldn't we fix this generically?
 > 
-> Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
 
-Super !
+I had a brief look into various implementations. To me the code looks
+all very machine specific. I don't think it can be solved generically
+(if other machines are even affected), but then I am not a qemu expert
+and may be wrong.
 
+Guenter
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-
-
-> ---
->   docs/system/arm/aspeed.rst |  1 +
->   hw/arm/aspeed.c            | 63 ++++++++++++++++++++++++++++++++++++++
->   hw/arm/aspeed_eeprom.c     | 50 ++++++++++++++++++++++++++++++
->   hw/arm/aspeed_eeprom.h     |  7 +++++
->   4 files changed, 121 insertions(+)
+>> Cc: Alistair Francis <alistair23@gmail.com>
+>> Fixes: 325b7c4e75 hw/riscv: Enable TPM backends
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> ---
+>>   hw/riscv/virt.c | 9 ++++++---
+>>   1 file changed, 6 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+>> index ed4c27487e..08876284f5 100644
+>> --- a/hw/riscv/virt.c
+>> +++ b/hw/riscv/virt.c
+>> @@ -1248,6 +1248,11 @@ static void virt_machine_done(Notifier *notifier, void *data)
+>>       uint64_t kernel_entry = 0;
+>>       BlockBackend *pflash_blk0;
+>> +    /* create devicetree if not provided */
+>> +    if (!machine->dtb) {
+>> +        create_fdt(s, memmap);
+>> +    }
+>> +
+>>       /*
+>>        * Only direct boot kernel is currently supported for KVM VM,
+>>        * so the "-bios" parameter is not supported when KVM is enabled.
+>> @@ -1508,15 +1513,13 @@ static void virt_machine_init(MachineState *machine)
+>>       }
+>>       virt_flash_map(s, system_memory);
+>> -    /* load/create device tree */
+>> +    /* load device tree */
+>>       if (machine->dtb) {
+>>           machine->fdt = load_device_tree(machine->dtb, &s->fdt_size);
+>>           if (!machine->fdt) {
+>>               error_report("load_device_tree() failed");
+>>               exit(1);
+>>           }
+>> -    } else {
+>> -        create_fdt(s, memmap);
+>>       }
+>>       s->machine_done.notify = virt_machine_done;
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 80538422a1..5e0824f48b 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -33,6 +33,7 @@ AST2600 SoC based machines :
->   - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
->   - ``rainier-bmc``          IBM Rainier POWER10 BMC
->   - ``fuji-bmc``             Facebook Fuji BMC
-> +- ``montblanc-bmc``        Facebook Montblanc BMC
->   - ``bletchley-bmc``        Facebook Bletchley BMC
->   - ``fby35-bmc``            Facebook fby35 BMC
->   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 9fca644d92..91bd4e5637 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -189,6 +189,10 @@ struct AspeedMachineState {
->   #define FUJI_BMC_HW_STRAP1    0x00000000
->   #define FUJI_BMC_HW_STRAP2    0x00000000
->   
-> +/* Montblanc hardware value */
-> +#define MONTBLANC_BMC_HW_STRAP1    0x00000000
-> +#define MONTBLANC_BMC_HW_STRAP2    0x00000000
-> +
->   /* Bletchley hardware value */
->   /* TODO: Leave same as EVB for now. */
->   #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
-> @@ -925,6 +929,39 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->       }
->   }
->   
-> +static void montblanc_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = &bmc->soc;
-> +    I2CBus *i2c[16] = {};
-> +
-> +    for (int i = 0; i < 16; i++) {
-> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-> +    }
-> +
-> +    /* Ref from Minipack3_I2C_Tree_V1.6 20230320 */
-> +    at24c_eeprom_init_rom(i2c[3], 0x56, 8192, montblanc_scm_fruid, true);
-> +    at24c_eeprom_init_rom(i2c[6], 0x53, 8192, montblanc_fcm_fruid, true);
-> +
-> +    /* CPLD and FPGA */
-> +    at24c_eeprom_init(i2c[1], 0x35, 256);  /* SCM CPLD */
-> +    at24c_eeprom_init(i2c[5], 0x35, 256);  /* COMe CPLD TODO: need to update */
-> +    at24c_eeprom_init(i2c[12], 0x60, 256); /* MCB PWR CPLD */
-> +    at24c_eeprom_init(i2c[13], 0x35, 256); /* IOB FPGA */
-> +
-> +    /* on BMC board */
-> +    at24c_eeprom_init_rom(i2c[8], 0x51, 8192, montblanc_bmc_fruid, true);
-> +                                                      /* BMC EEPROM */
-> +    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x48); /* Thermal Sensor */
-> +
-> +    /* COMe Sensor/EEPROM */
-> +    at24c_eeprom_init(i2c[0], 0x56, 16384);          /* FRU EEPROM */
-> +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x48); /* INLET Sensor */
-> +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x4A); /* OUTLET Sensor */
-> +
-> +    /* It expects a pca9555 but a pca9552 is compatible */
-> +    create_pca9552(soc, 4, 0x27);
-> +}
-> +
->   #define TYPE_TMP421 "tmp421"
->   
->   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
-> @@ -1452,6 +1489,28 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
->           aspeed_soc_num_cpus(amc->soc_name);
->   };
->   
-> +#define MONTBLANC_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-> +
-> +static void aspeed_machine_montblanc_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Facebook Montblanc BMC (Cortex-A7)";
-> +    amc->soc_name = "ast2600-a3";
-> +    amc->hw_strap1 = MONTBLANC_BMC_HW_STRAP1;
-> +    amc->hw_strap2 = MONTBLANC_BMC_HW_STRAP2;
-> +    amc->fmc_model = "mx66l1g45g";
-> +    amc->spi_model = "mx66l1g45g";
-> +    amc->num_cs = 2;
-> +    amc->macs_mask = ASPEED_MAC3_ON;
-> +    amc->i2c_init = montblanc_bmc_i2c_init;
-> +    amc->uart_default = ASPEED_DEV_UART1;
-> +    mc->default_ram_size = MONTBLANC_BMC_RAM_SIZE;
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +};
-> +
->   #define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
->   
->   static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
-> @@ -1703,6 +1762,10 @@ static const TypeInfo aspeed_machine_types[] = {
->           .name          = MACHINE_TYPE_NAME("fuji-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
->           .class_init    = aspeed_machine_fuji_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("montblanc-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_montblanc_class_init,
->       }, {
->           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
->           .parent        = TYPE_ASPEED_MACHINE,
-> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-> index ace5266cec..6b3ffba0f8 100644
-> --- a/hw/arm/aspeed_eeprom.c
-> +++ b/hw/arm/aspeed_eeprom.c
-> @@ -161,6 +161,53 @@ const uint8_t rainier_bmc_fruid[] = {
->       0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
->   };
->   
-> +/* Montblanc BMC FRU */
-> +const uint8_t montblanc_scm_fruid[8192] = {
-> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
-> +    0x43, 0x4b, 0x33, 0x5f, 0x53, 0x43, 0x4d, 0x02, 0x08, 0x32, 0x30, 0x30,
-> +    0x30, 0x32, 0x39, 0x34, 0x35, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
-> +    0x30, 0x31, 0x36, 0x34, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
-> +    0x30, 0x30, 0x30, 0x31, 0x32, 0x37, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
-> +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x30, 0x33, 0x30, 0x31, 0x07,
-> +    0x0d, 0x41, 0x30, 0x33, 0x31, 0x33, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
-> +    0x0d, 0x4d, 0x32, 0x32, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
-> +    0x30, 0x32, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
-> +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
-> +    0x43, 0x54, 0x48, 0x10, 0x06, 0x01, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x13,
-> +    0x03, 0x53, 0x43, 0x4d, 0xfa, 0x02, 0x02, 0x61,
-> +};
-> +
-> +const uint8_t montblanc_fcm_fruid[8192] = {
-> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
-> +    0x43, 0x4b, 0x33, 0x5f, 0x46, 0x43, 0x42, 0x02, 0x08, 0x33, 0x30, 0x30,
-> +    0x30, 0x30, 0x31, 0x36, 0x31, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
-> +    0x30, 0x31, 0x36, 0x33, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
-> +    0x30, 0x30, 0x30, 0x31, 0x33, 0x30, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
-> +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x31, 0x32, 0x30, 0x31, 0x07,
-> +    0x0d, 0x41, 0x31, 0x32, 0x31, 0x32, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
-> +    0x0d, 0x46, 0x35, 0x30, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
-> +    0x30, 0x35, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
-> +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
-> +    0x43, 0x54, 0x48, 0x10, 0x06, 0x02, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x11,
-> +    0x06, 0x03, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x12, 0x02, 0x8a, 0x00, 0x13,
-> +    0x03, 0x46, 0x43, 0x42, 0xfa, 0x02, 0x50, 0x47,
-> +};
-> +
-> +const uint8_t montblanc_bmc_fruid[8192] = {
-> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
-> +    0x43, 0x4b, 0x33, 0x5f, 0x42, 0x4d, 0x43, 0x04, 0x0c, 0x31, 0x33, 0x32,
-> +    0x30, 0x30, 0x30, 0x31, 0x33, 0x36, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31,
-> +    0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x38, 0x36, 0x30, 0x35, 0x20, 0x06,
-> +    0x0c, 0x52, 0x33, 0x30, 0x39, 0x37, 0x47, 0x30, 0x30, 0x30, 0x32, 0x30,
-> +    0x37, 0x07, 0x0d, 0x42, 0x30, 0x32, 0x37, 0x34, 0x58, 0x58, 0x58, 0x58,
-> +    0x58, 0x58, 0x58, 0x58, 0x08, 0x01, 0x04, 0x09, 0x01, 0x00, 0x0a, 0x01,
-> +    0x00, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32, 0x33,
-> +    0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03, 0x43,
-> +    0x54, 0x48, 0x13, 0x03, 0x42, 0x4d, 0x43, 0xfa, 0x02, 0xef, 0xba,
-> +};
-> +
->   const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
->   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
->   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
-> @@ -168,3 +215,6 @@ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
->   const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
->   const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
->   const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
-> +const size_t montblanc_scm_fruid_len = sizeof(montblanc_scm_fruid);
-> +const size_t montblanc_fcm_fruid_len = sizeof(montblanc_fcm_fruid);
-> +const size_t montblanc_bmc_fruid_len = sizeof(montblanc_bmc_fruid);
-> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-> index bbf9e54365..b8fbdd0734 100644
-> --- a/hw/arm/aspeed_eeprom.h
-> +++ b/hw/arm/aspeed_eeprom.h
-> @@ -27,4 +27,11 @@ extern const size_t rainier_bb_fruid_len;
->   extern const uint8_t rainier_bmc_fruid[];
->   extern const size_t rainier_bmc_fruid_len;
->   
-> +extern const uint8_t montblanc_scm_fruid[];
-> +extern const uint8_t montblanc_fcm_fruid[];
-> +extern const uint8_t montblanc_bmc_fruid[];
-> +extern const size_t montblanc_scm_fruid_len;
-> +extern const size_t montblanc_fcm_fruid_len;
-> +extern const size_t montblanc_bmc_fruid_len;
-> +
->   #endif
 

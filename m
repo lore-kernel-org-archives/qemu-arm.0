@@ -1,103 +1,103 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2044996ejy;
-        Sun, 2 Jul 2023 21:03:46 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5zfZIO5mPdYNgu8ju3ZMF40ku1P9EjpJr9yFc/qGP2d4MCEOv07LhuN43NBqKxzz52eL87
-X-Received: by 2002:a05:620a:44c7:b0:762:3ab0:6dde with SMTP id y7-20020a05620a44c700b007623ab06ddemr10928999qkp.32.1688357026018;
-        Sun, 02 Jul 2023 21:03:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688357026; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2046212ejy;
+        Sun, 2 Jul 2023 21:07:33 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6m81jm+RmTtcOpcUHy/Xo4V4so9VULq9ssuKf+zaHeKqj1q3PzUQ71yxvEGy9Wg+xtKURm
+X-Received: by 2002:a05:620a:468c:b0:765:449d:1391 with SMTP id bq12-20020a05620a468c00b00765449d1391mr13222911qkb.19.1688357253291;
+        Sun, 02 Jul 2023 21:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688357253; cv=none;
         d=google.com; s=arc-20160816;
-        b=NhRkYclgbskwXXNk2IkigaowrVSaZN5JbBCyeZ/O3Uk2503kW5e8r241rYhH5lmMfo
-         OE/TOI5idXW117wq58tLf/RGuqCxaZzb5wNVWiboqFVrqLWqCfy5OW93JgI5yjxlc+al
-         fSjmIe8zq8hCxAF9alQkvG+cha8NeJqfEG7Sc5utSaO/r/d9YW6y/OnFk3rhXSBTChF2
-         TGX/Jg+DIz/ju6NF1ehkQBJArR4/a3D43uRTXEZ63wdl5F857Fe9A9nJ6YKKdWIa5U5k
-         rYX8aL8X7FaLxHkYZYppRT0O+cNsqwY43jMTDR0hky5zU9bmI3ygIFSL7x6rKFSR6ZKy
-         h62g==
+        b=EetM6K5HE6M8HflYpGopuGgaZxc7M0eBgzG2oA6wpM3fvUn8vkA8NAvyDbgC9kXVZE
+         DYZt73Uy8gojKKjB5HjDKqdWHtH60f+H1fYVXyiw+XasGNY50GRxL3ukWDUmtq1HCv9+
+         aYh2uf+geuVX6zrbdazLflXqo08NR2GBde/I6LWXBpVx0WaFnfg0oj7diwkONAMKBtcj
+         fBa9TInKMMD2H/yiU0odIqCZSK+yo8cEJDF0+Vw1QvtGjLlJetrAUerN7LqWWTTKto4q
+         cu1oXChlnMBNwpVf+sOY8w9Ty6wqIL9OQzCcvtUNZi/RrPgR9+f8xVtY1QbZ+UUjlg4F
+         BIYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
-        fh=ExErNleYJDQJFt+kBbUBpBMS8e4oY6Q1sifjcQJ0mQg=;
-        b=lpASHSf4abnB0tn11aVhS3yTx5TZgDm98q+6TVhP8ErlOV6fOIXbnpgqi9sLsMfM9H
-         MEnEahmMLbZY9CYRts7zTFrWYvnQxolCd9iEZdcwvJ1/eCNi/nhZrRO3dd7eHBQA310j
-         bL0q3EuMSCONkKIG0ym+/5auLdkX/vvg2cqhSrzNyEDDj0hX8va+3v449N0QuMCcNgS6
-         PUUauDlcLIw84KjNhOTdVbONyDActNINLKUn0E8wnJ+jTrEY+GeyDyIbzrEqlZ2q0TK/
-         dEFh6POwYCjAEm+vwAI+yJcK0j+gvjSCTzCgz6uOkrjhqh+WgI0pBfrMvbaAld22pMsN
-         Tdsg==
+        bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
+        fh=ldVv/Ht3DxUuVvzuKG5OdFBRSFHJOql67NL6/qpb6bo=;
+        b=oVt8aEcEDgEwmka9/yeHSkNBG9DByZWB/Z27hcwWI5hsK16o8IANAnG3istZtHwM2L
+         p96JpvCUxoLb6r9lDQRVgMpezjJUlIxlGcyfXnMZ64vINzcwfe750ZcIAaxvh9MLqVuz
+         g0zU0jWThJo5TFf4dSM8BOb7JAeht6yn/ZBoOZBJl9+aC6A5fBJbgn71n0UF+uNWPcBf
+         kW3ANXm8jDb2X5Yh8E0Z84+6Mrv2VtOKRULaW6Sbbh2tnZFTlo297BuZ2s9czk4hMBCp
+         eugddengk1AA7HOE3MzYvSWbU9cp2OHIg8oLiTnS83lEc64B2JxcrbRHPKsSsZHeDutj
+         kN/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bTDMTbUN;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=IIvph13z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ox9-20020a05620a828900b00767203a745esi7189600qkn.234.2023.07.02.21.03.45
+        by mx.google.com with ESMTPS id d18-20020a05620a205200b007670bac16e4si8920888qka.695.2023.07.02.21.07.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jul 2023 21:03:46 -0700 (PDT)
+        Sun, 02 Jul 2023 21:07:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bTDMTbUN;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=IIvph13z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGAmc-0002VW-6Y; Mon, 03 Jul 2023 00:03:26 -0400
+	id 1qGAqS-0003cT-4y; Mon, 03 Jul 2023 00:07:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qGAma-0002Tv-Jw; Mon, 03 Jul 2023 00:03:24 -0400
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+ id 1qGAqR-0003cI-M0; Mon, 03 Jul 2023 00:07:23 -0400
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qGAmY-00028R-RY; Mon, 03 Jul 2023 00:03:24 -0400
-Received: by mail-ua1-x934.google.com with SMTP id
- a1e0cc1a2514c-791b8500a21so908287241.2; 
- Sun, 02 Jul 2023 21:03:22 -0700 (PDT)
+ id 1qGAqQ-0002xP-3C; Mon, 03 Jul 2023 00:07:23 -0400
+Received: by mail-vk1-xa31.google.com with SMTP id
+ 71dfb90a1353d-460eb67244eso1317087e0c.1; 
+ Sun, 02 Jul 2023 21:07:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1688357001; x=1690949001;
+ d=gmail.com; s=20221208; t=1688357240; x=1690949240;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
- b=bTDMTbUNd9mgFgcyMwcjmPKJJCgXve0+RuimYTMZI818P9R0tPDFinYrVUfmRNLYoQ
- BmkopLvNiEabVslypk4apaiJ3zXollJgYX8KQHeMMRZfli3Lo85/0Hi27AIt0uGsX1XB
- qSiyyzCfyBeU5EmDCc7VJ4egBS+pQ6lL5kVABNnWGlHIwdc4p4KBncz4E8sBE6+pDDRU
- nnPB+3HcI/aOyCQNg+8v10032hAbSPM1tBKwXPxDIoK/T441o17P06XkXIAaGD6i2n9s
- S7yIU8j+wLgkVsscSp463TvshRuyLu4+ODJ6kSG2P/2lQ8o5Wpcw5wzbSX+cidyolkjd
- vlcw==
+ bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
+ b=IIvph13z4bDe7N3Itoy/Tbr0xY2/P9YTdcl46flfU7y09VxzNk0b+3gGbYy5tzlV8b
+ 7D5T2CbPJkScL4FMi2ogkUQVV6EgrMnwVAu8xGbV0gbHe5Lp8Kw8iPfDk08hzHsAsEa8
+ deUiETwjqaUaUNmjFsqOHqsv7eVAYqymWZViAzqPUj0GhSrA6VT6XazGr/lmvNZa4IQ2
+ 0Cpjv1LIrVdSTLl6QI2I7oMKlWjJ5N0aEZRD06l2I3KL0AtPebE70lNU/irkerrmsUY1
+ gHkxCX4Mz2PI2LuvUdkhTWDuGMCA6pkYOXS1Mfe9E72MlZ7yEKHf8jM8PwQirCX9e0Nd
+ mnVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688357001; x=1690949001;
+ d=1e100.net; s=20221208; t=1688357240; x=1690949240;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
- b=PuChw5LGM4AyfdNNHBTJ4olxf1hzIFK5P1sazNhSWoqaIPG4PJAFgW0kcIJWIv1nWR
- 4jubQSqmbpi8U0MurUlQmVoHYwlGTVbzExAYtF92KDX652fFj6eST7wc6VKrEcIqXota
- fiZwiCgizdXL2xu+Qw09SqEuIo15d8s4h+WenD6JQjA+fu8amR416JbQ9LVJasjiWs9x
- jV5e3kBzn1wUqjsifn1P6Me/2EJPH2sJOkcjnUeyyZsE0T7QawKKsh9y/5smcIBcINNH
- dofUhJ4xFK1sVLKlj1g/QCwIkkxeFQoc7gwNfHpeixqEWfZdR/g4FbFOAvI1yUjM/UYy
- SPGQ==
-X-Gm-Message-State: ABy/qLYcXoefUm7dBe9/G0jYo/D1ITzqoal/m55j8FaIpdR9mrMODpWw
- ACdkvPGMvgh9KquMXxNnswh+31hIbvOviNYg2lwDthWRYuHJjvBv
-X-Received: by 2002:a05:6102:1347:b0:443:5389:b653 with SMTP id
- j7-20020a056102134700b004435389b653mr2604923vsl.26.1688357001385; Sun, 02 Jul
- 2023 21:03:21 -0700 (PDT)
+ bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
+ b=SRXE9c7P0aiYIhYse6OKXsSa4oKrcQ++l7hN9LD33gmUxPE+0Jwck94jt3NIr50EoM
+ +ZqT5orHsX+QCNBVoOZl8XrC3xEVEwm4fQkvbmiI3zCM8hu9pvGj2XqL2zdmVs5PPJ1S
+ 1K+pO7hgyemGZEsDRpmUaH2tRL9rUimY5/wdpj7Z8suyWRSXoiLD2dypdMux3aWKHQcG
+ MPw05LsIdAzqSvU9dgdK79xlupSi0N1Tt5yl+6L/8A8oIokyFP6wBWGFY6eeNb6GifFH
+ /EBxUBhKIgmhYrp4xyoI+lmb90XYZyvdI8ijpBEq4XcosSse5P9k5Wc5Iz/4p21YpnUm
+ Bcfg==
+X-Gm-Message-State: ABy/qLZEjrVJfacYJ6yvCcuP0s4tvetZcahkrUaySUE3CfDhRJbifTxa
+ tzMKTPj2OmDlbCjSRAFznDk7uL+CzFoClRJcXGc=
+X-Received: by 2002:ac5:c957:0:b0:471:7996:228f with SMTP id
+ s23-20020ac5c957000000b004717996228fmr4088313vkm.7.1688357240624; Sun, 02 Jul
+ 2023 21:07:20 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230619221819.6882-1-lucas@osdyne.com>
- <CAKmqyKMGcsD7XQokTLTdr7X89WJaJq_g+7kf8Co_E-19j1J8Ww@mail.gmail.com>
- <CAL+Dfo4pcJAcyovOVUyEcOXH7iRXeH_vnvN06ofbhqZe5d_3FA@mail.gmail.com>
-In-Reply-To: <CAL+Dfo4pcJAcyovOVUyEcOXH7iRXeH_vnvN06ofbhqZe5d_3FA@mail.gmail.com>
+ <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
+In-Reply-To: <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 3 Jul 2023 14:02:55 +1000
-Message-ID: <CAKmqyKPp5171nYm5ED4OGDUBLZWqCnAFkenk7FSAyVm-4SGsPw@mail.gmail.com>
+Date: Mon, 3 Jul 2023 14:06:54 +1000
+Message-ID: <CAKmqyKOJ1Tq7Dwce=82tbCE2v60U=2k_gpeA7Zojt-co2h694Q@mail.gmail.com>
 Subject: Re: [PATCH] STM32F100: support different density lines
-To: "Lucas C. Villa Real" <lucas@osdyne.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, erdnaxe@crans.org
+To: Alexandre IOOSS <erdnaxe@crans.org>
+Cc: Lucas Villa Real <lucas@osdyne.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::934;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x934.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a31;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa31.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -120,50 +120,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WBp5Fx9FzEDC
+X-TUID: MCvua3JVZAaN
 
-On Sun, Jun 25, 2023 at 1:43=E2=80=AFPM Lucas C. Villa Real <lucas@osdyne.c=
-om> wrote:
+On Mon, Jun 26, 2023 at 4:24=E2=80=AFPM Alexandre IOOSS <erdnaxe@crans.org>=
+ wrote:
 >
-> On Thu, Jun 22, 2023 at 10:30=E2=80=AFPM Alistair Francis <alistair23@gma=
-il.com> wrote:
->>
->> > +
->> > +    object_class_property_add_str(oc, "density", stm32f100_get_densit=
-y,
->> > +        stm32f100_set_density);
->> > +    object_class_property_set_description(oc, "density",
->> > +        "Set the STM32F100 density line device. "
->> > +        "Valid values are 'low', 'medium', and 'high' (default).");
->> >  }
->>
->> This should be split into a separate commit from adding the machine
+> On 6/20/23 00:18, Lucas Villa Real wrote:
+> > This patch adds support for the emulation of different density lines
+> > (low, medium, and high). A new class property stm32f100-soc.density=3D
+> > has been introduced to allow users to state the desired configuration.
+> > That property is recognized by a new machine, stm32f1-generic. The SOC
+> > is configured according to the following:
+> >
+> >     density=3Dlow       32 KB FLASH, 2 SPIs
+> >     density=3Dmedium   128 KB FLASH, 2 SPIs
+> >     density=3Dhigh     512 KB FLASH, 3 SPIs
+> >
+> > With this code change we should be able to introduce richer features
+> > to STM32F100, such as support for FSMC (so that a machine with more
+> > RAM capacity can be properly emulated). FSMC is supported on high
+> > density line devices only.
 >
+> Thanks a lot for the patches!
 >
-> Ok, I'll do that.
+> STM32 families look very similar to each other, it makes great sense to
+> take a generic approach rather than bloating QEMU with many machines.
 >
->>
->> Isn't this exactly the same as the stm32vldiscovery board? Which is
->> already very similar to the netduino2 machine. I'm not sure we need
->> another machine.
->>
->> It could make more sense to deprecate the stm32vldiscovery machine and
->> replace it with this generic one. At least we could keep everything in
->> the one file and reuse a lot of the code.
+> You patch proposes to create a "stm32f1-generic" machine. I believe we
+> should rather name this machine "stm32f100-generic":
+>    - STM32F101 has a XL-density line, STM32F100 does not have a
+> XL-density line.
+>    - STM32F100 high density line does not have the same maximum SRAM
+> size, timers, USART numbers, clock frequencies and CEC peripherals as
+> the STM32F101 high density line.
 >
->
-> What is the protocol for deprecating a machine? Should I just submit a pa=
-tch that removes it along with the corresponding entry in the MAINTAINERS f=
-ile? Should I coordinate that offline with the maintainer of the machine th=
-at's to be retired?
+> Regarding the stm32vldiscovery machine, I am not against deprecating it
+> if we warn users to use stm32f100-generic with density=3Dmedium. This
+> makes sense as the development board does not add anything more than
+> just some buttons and LED.
+> Maybe "stm32vldiscovery" could become an alias for stm32f100-generic
+> machine ?
+> @Alistair: Do you have an opinion on aliasing the old machine? Is this
+> something common in QEMU?
 
-There is an official deprecation policy:
-https://www.qemu.org/docs/master/about/deprecated.html#deprecated-features
+I don't think we have any aliased machines. I think we could do
+something like that as well. So the "aliased" machines end up just
+being pre-configured generic machines. We just want to do it in a way
+to avoid code duplication where we can.
 
-The board will be listed as deprecated for two releases and then removed.
+>
+> In the long run, we should maybe rename "stm32f100-soc.c" to
+> "stm32f1-soc.c" and add another class property to choose the sub-family.
+> This would highly reduce potential code duplication.
+> STM32F1 machines could take this structure:
+>   - stm32f100-generic machine
+>     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dlow
+>     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dmedium
+>       (alias stm32vldiscovery)
+>     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dhigh
+>   - stm32f101-generic machine
+>     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dlow
+>     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dmedium
+>     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dhigh
+>     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dxl
+>   - stm32f102-generic machine
+>     - stm32f1-soc.family=3Df102 stm32f1-soc.density=3Dlow
+>     - stm32f1-soc.family=3Df102 stm32f1-soc.density=3Dmedium
+>   - stm32f103-generic machine
+>     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dlow
+>     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dmedium
+>       (alias stm32-nucleo-f103rb)
+>     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dhigh
+>     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dxl
+> @Alistair: Would such modification make also sense regarding stm32f2 and
+> stm32f4 families?
+
+I think that's also ok, but it really only makes sense to do when we
+have differentiating features implemented in QEMU.
 
 Alistair
 
 >
 > Thanks,
-> Lucas
+> --
+> Alexandre

@@ -1,110 +1,103 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2029405ejy;
-        Sun, 2 Jul 2023 20:11:20 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4keB1ylzV+0PTmrq+OsSkAMIUkxtNBe5Vp5GDQC6qr+D/ohg6YAQwL1/zOPveKLZdipo3z
-X-Received: by 2002:a05:620a:b89:b0:766:fbe6:ccbc with SMTP id k9-20020a05620a0b8900b00766fbe6ccbcmr8811890qkh.29.1688353880481;
-        Sun, 02 Jul 2023 20:11:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688353880; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2044996ejy;
+        Sun, 2 Jul 2023 21:03:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5zfZIO5mPdYNgu8ju3ZMF40ku1P9EjpJr9yFc/qGP2d4MCEOv07LhuN43NBqKxzz52eL87
+X-Received: by 2002:a05:620a:44c7:b0:762:3ab0:6dde with SMTP id y7-20020a05620a44c700b007623ab06ddemr10928999qkp.32.1688357026018;
+        Sun, 02 Jul 2023 21:03:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688357026; cv=none;
         d=google.com; s=arc-20160816;
-        b=AWs25C4kY1h2RheDTgbcHCpbbzozGhBGjJs2AvptZ4jvvpR/qq5emiX1xKNCLuF3UW
-         OfyvauhxOX5FYY6GA2CY8DUsiBkIv97bHx7JHz2uvUlSjSmfvFrHsb8H8K1Nu+/bbszC
-         YUy9rajYHSjfwjKtTtuLwD7E/IiOqTAixNeHpywqp86Mgcn2m4vJZnWQ5H0PDaoTgbdc
-         CmINeSb5ii1JBKFL6OogO0+ucV0BuPWmiTFyH/SGw8zfWIt/npG6cO3WIZO1Ful0VDjC
-         pPojvB3+TupuXrIiX7cI4pShimx1oBay5n/TafLSxAgnIaiOJ0ve/HZ5A618qmrm/tQ/
-         hwVA==
+        b=NhRkYclgbskwXXNk2IkigaowrVSaZN5JbBCyeZ/O3Uk2503kW5e8r241rYhH5lmMfo
+         OE/TOI5idXW117wq58tLf/RGuqCxaZzb5wNVWiboqFVrqLWqCfy5OW93JgI5yjxlc+al
+         fSjmIe8zq8hCxAF9alQkvG+cha8NeJqfEG7Sc5utSaO/r/d9YW6y/OnFk3rhXSBTChF2
+         TGX/Jg+DIz/ju6NF1ehkQBJArR4/a3D43uRTXEZ63wdl5F857Fe9A9nJ6YKKdWIa5U5k
+         rYX8aL8X7FaLxHkYZYppRT0O+cNsqwY43jMTDR0hky5zU9bmI3ygIFSL7x6rKFSR6ZKy
+         h62g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ykgI1ofWRr111JVHkpLtE1AyjguNIBIofNVn2Tu8VPw=;
-        fh=mqiXKolOZdFmiSeXx/uc8BteH8Mk8cLSU+nEoeC3Ghk=;
-        b=OTH5njElwrHSRvkvFIaWLDnkaQwbKsixZWgkLflOvml/mHAuBpDqMA2UW+LLZtO0SR
-         fW4fHf1SNxMjI3N3tQQKKioyLu3b4R/+tUo3hLC2D9HOtIwapOx4oGDZwVeHCt33cZPa
-         EB6sxTwoL4vDhR/KtWTIuAEA5+38ICwJMSmrUcUlp0GHoNeK98SIdkH1fAbGLeYJPDK3
-         X4+1Iqkzy6S9bJJyqKZjWUGOxJhIvTXq+SiaX+ni02G0SY3dj7WayAa6IMhycKxOFVZV
-         P71mRGnws3FBN3XqcecvBnasvl+cGzCBBw5iw62vCVsiA7WwlIEKk4Za5oPFJG/PGxAv
-         rARA==
+        bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
+        fh=ExErNleYJDQJFt+kBbUBpBMS8e4oY6Q1sifjcQJ0mQg=;
+        b=lpASHSf4abnB0tn11aVhS3yTx5TZgDm98q+6TVhP8ErlOV6fOIXbnpgqi9sLsMfM9H
+         MEnEahmMLbZY9CYRts7zTFrWYvnQxolCd9iEZdcwvJ1/eCNi/nhZrRO3dd7eHBQA310j
+         bL0q3EuMSCONkKIG0ym+/5auLdkX/vvg2cqhSrzNyEDDj0hX8va+3v449N0QuMCcNgS6
+         PUUauDlcLIw84KjNhOTdVbONyDActNINLKUn0E8wnJ+jTrEY+GeyDyIbzrEqlZ2q0TK/
+         dEFh6POwYCjAEm+vwAI+yJcK0j+gvjSCTzCgz6uOkrjhqh+WgI0pBfrMvbaAld22pMsN
+         Tdsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=SdvXsqp5;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bTDMTbUN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10-20020a05620a12ca00b0075cead353efsi5436520qkl.122.2023.07.02.20.11.20
+        by mx.google.com with ESMTPS id ox9-20020a05620a828900b00767203a745esi7189600qkn.234.2023.07.02.21.03.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jul 2023 20:11:20 -0700 (PDT)
+        Sun, 02 Jul 2023 21:03:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=SdvXsqp5;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=bTDMTbUN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qG9xz-000058-Ly; Sun, 02 Jul 2023 23:11:07 -0400
+	id 1qGAmc-0002VW-6Y; Mon, 03 Jul 2023 00:03:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qG9xy-0008W3-Go; Sun, 02 Jul 2023 23:11:06 -0400
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+ id 1qGAma-0002Tv-Jw; Mon, 03 Jul 2023 00:03:24 -0400
+Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qG9xw-0001aN-UI; Sun, 02 Jul 2023 23:11:06 -0400
-Received: by mail-ua1-x935.google.com with SMTP id
- a1e0cc1a2514c-783f17f0a00so1092138241.2; 
- Sun, 02 Jul 2023 20:11:03 -0700 (PDT)
+ id 1qGAmY-00028R-RY; Mon, 03 Jul 2023 00:03:24 -0400
+Received: by mail-ua1-x934.google.com with SMTP id
+ a1e0cc1a2514c-791b8500a21so908287241.2; 
+ Sun, 02 Jul 2023 21:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1688353863; x=1690945863;
+ d=gmail.com; s=20221208; t=1688357001; x=1690949001;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ykgI1ofWRr111JVHkpLtE1AyjguNIBIofNVn2Tu8VPw=;
- b=SdvXsqp59e9q9OTHh6rNKsdUDJwKLmhNSMvasGIZSRhnFP62Fa/hFsE6RrvKffKSi6
- LRqnD2Hk35zBckmMIKoQFGcMTaCMvqB58cusc66Zyp/7ewpG82g8SHlqnyxCytyIh81S
- S6tjC58/VVvuXDU+0QUyE3cKiFQqeoZGGIf0hxI94RR92IAzIOaT5ZJbjzeCKvbasU2q
- Oy/lD/kUtIEPOaD+oiGAARn4mSB+5OfYHC0mxY3rDckKKNZaIUnQVsudP4yhFc28d75U
- 0CsfozqG52CTFE5xEvM7UxsHC8pqtEgrAnq6TUccAT7mUvx6WWEg0RA2eiJnof4+PG7G
- /EZg==
+ bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
+ b=bTDMTbUNd9mgFgcyMwcjmPKJJCgXve0+RuimYTMZI818P9R0tPDFinYrVUfmRNLYoQ
+ BmkopLvNiEabVslypk4apaiJ3zXollJgYX8KQHeMMRZfli3Lo85/0Hi27AIt0uGsX1XB
+ qSiyyzCfyBeU5EmDCc7VJ4egBS+pQ6lL5kVABNnWGlHIwdc4p4KBncz4E8sBE6+pDDRU
+ nnPB+3HcI/aOyCQNg+8v10032hAbSPM1tBKwXPxDIoK/T441o17P06XkXIAaGD6i2n9s
+ S7yIU8j+wLgkVsscSp463TvshRuyLu4+ODJ6kSG2P/2lQ8o5Wpcw5wzbSX+cidyolkjd
+ vlcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688353863; x=1690945863;
+ d=1e100.net; s=20221208; t=1688357001; x=1690949001;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ykgI1ofWRr111JVHkpLtE1AyjguNIBIofNVn2Tu8VPw=;
- b=apT/O5YuDzkCi+K4VF10jGeT2f54Z7MqkXAjVZpgmb+PrgXHbntQubhUTAVMJu1rqW
- opnqCf0/8WVmhG/ukeyI58KjRA6eW9CGKqk4QO0NfB3WQJt71mFwaI65/b/0Z1hMZPpI
- up6fQhvx5CMW74NT7ZuuwphplprV63SAyJ0hYztLcC2MVcYTZV8wyg9mT8qkQHLOLLna
- TSFtlNbGWbFKg0mrO6C73A7CsYmsYLD16bQA0v3SvYirysgtuw3Nav6UMjPfh8znZz3Z
- 3JH+Z8qTJLoY4NGELpur4secA36v51iMlQqInHKK9lNxlly5/c6PTs4Cn5BWEcXws2P7
- dHbA==
-X-Gm-Message-State: ABy/qLZmwOYKGyCHeLkCQKj7QMFDcs3ojJ63qkSSJhHNoE2P7rPzqYIv
- W9AHs2lImWmmHON3lAvvA9AiHqbBULByn19fp2k=
-X-Received: by 2002:a05:6102:50d:b0:443:6e00:d32 with SMTP id
- l13-20020a056102050d00b004436e000d32mr3611697vsa.8.1688353863038; Sun, 02 Jul
- 2023 20:11:03 -0700 (PDT)
+ bh=TH1rMi6aEDjvyfQeRNmwBGfn1xWZSnrsIlsHO2qtImU=;
+ b=PuChw5LGM4AyfdNNHBTJ4olxf1hzIFK5P1sazNhSWoqaIPG4PJAFgW0kcIJWIv1nWR
+ 4jubQSqmbpi8U0MurUlQmVoHYwlGTVbzExAYtF92KDX652fFj6eST7wc6VKrEcIqXota
+ fiZwiCgizdXL2xu+Qw09SqEuIo15d8s4h+WenD6JQjA+fu8amR416JbQ9LVJasjiWs9x
+ jV5e3kBzn1wUqjsifn1P6Me/2EJPH2sJOkcjnUeyyZsE0T7QawKKsh9y/5smcIBcINNH
+ dofUhJ4xFK1sVLKlj1g/QCwIkkxeFQoc7gwNfHpeixqEWfZdR/g4FbFOAvI1yUjM/UYy
+ SPGQ==
+X-Gm-Message-State: ABy/qLYcXoefUm7dBe9/G0jYo/D1ITzqoal/m55j8FaIpdR9mrMODpWw
+ ACdkvPGMvgh9KquMXxNnswh+31hIbvOviNYg2lwDthWRYuHJjvBv
+X-Received: by 2002:a05:6102:1347:b0:443:5389:b653 with SMTP id
+ j7-20020a056102134700b004435389b653mr2604923vsl.26.1688357001385; Sun, 02 Jul
+ 2023 21:03:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220420055248.960491-1-alistair.francis@opensource.wdc.com>
- <20220420055248.960491-7-alistair.francis@opensource.wdc.com>
- <3c07be7c-4af2-4a2b-8b0a-236e2f6a4a62@roeck-us.net>
- <d9007e92-c2d2-4ce6-aaf8-9d8d37b2d119@roeck-us.net>
-In-Reply-To: <d9007e92-c2d2-4ce6-aaf8-9d8d37b2d119@roeck-us.net>
+References: <20230619221819.6882-1-lucas@osdyne.com>
+ <CAKmqyKMGcsD7XQokTLTdr7X89WJaJq_g+7kf8Co_E-19j1J8Ww@mail.gmail.com>
+ <CAL+Dfo4pcJAcyovOVUyEcOXH7iRXeH_vnvN06ofbhqZe5d_3FA@mail.gmail.com>
+In-Reply-To: <CAL+Dfo4pcJAcyovOVUyEcOXH7iRXeH_vnvN06ofbhqZe5d_3FA@mail.gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 3 Jul 2023 13:10:37 +1000
-Message-ID: <CAKmqyKN5e4vf7ZupS5oo0k8YB9yoivMuHs+fsmROBBZabXcOzQ@mail.gmail.com>
-Subject: Re: [PATCH v4 6/6] hw/riscv: Enable TPM backends
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Alistair Francis <alistair.francis@opensource.wdc.com>,
- qemu-riscv@nongnu.org, 
- qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair@alistair23.me>, Bin Meng <bin.meng@windriver.com>, 
- Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, bmeng.cn@gmail.com, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 3 Jul 2023 14:02:55 +1000
+Message-ID: <CAKmqyKPp5171nYm5ED4OGDUBLZWqCnAFkenk7FSAyVm-4SGsPw@mail.gmail.com>
+Subject: Re: [PATCH] STM32F100: support different density lines
+To: "Lucas C. Villa Real" <lucas@osdyne.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, erdnaxe@crans.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::935;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x935.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::934;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x934.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -127,96 +120,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xuXl7VmtpftO
+X-TUID: WBp5Fx9FzEDC
 
-On Wed, Jun 21, 2023 at 4:34=E2=80=AFPM Guenter Roeck <linux@roeck-us.net> =
-wrote:
+On Sun, Jun 25, 2023 at 1:43=E2=80=AFPM Lucas C. Villa Real <lucas@osdyne.c=
+om> wrote:
 >
-> On Mon, Jun 19, 2023 at 01:32:34PM -0700, Guenter Roeck wrote:
-> > Hi Alistair,
-> >
-> > On Wed, Apr 20, 2022 at 03:52:48PM +1000, Alistair Francis wrote:
-> > > From: Alistair Francis <alistair.francis@wdc.com>
-> > >
-> > > Imply the TPM sysbus devices. This allows users to add TPM devices to
-> > > the RISC-V virt board.
-> > >
-> > > This was tested by first creating an emulated TPM device:
-> > >
-> > >     swtpm socket --tpm2 -t -d --tpmstate dir=3D/tmp/tpm \
-> > >         --ctrl type=3Dunixio,path=3Dswtpm-sock
-> > >
-> > > Then launching QEMU with:
-> > >
-> > >     -chardev socket,id=3Dchrtpm,path=3Dswtpm-sock \
-> > >     -tpmdev emulator,id=3Dtpm0,chardev=3Dchrtpm \
-> > >     -device tpm-tis-device,tpmdev=3Dtpm0
-> > >
-> > > The TPM device can be seen in the memory tree and the generated devic=
-e
-> > > tree.
-> > >
-> > I tried to get this working with qemu 8.0, but I did not have any succe=
-ss.
-> > I am quite sure I have the above command line correctly, and it does wo=
-rk
-> > with arm64. Any idea what I might be missing ?
-> >
+> On Thu, Jun 22, 2023 at 10:30=E2=80=AFPM Alistair Francis <alistair23@gma=
+il.com> wrote:
+>>
+>> > +
+>> > +    object_class_property_add_str(oc, "density", stm32f100_get_densit=
+y,
+>> > +        stm32f100_set_density);
+>> > +    object_class_property_set_description(oc, "density",
+>> > +        "Set the STM32F100 density line device. "
+>> > +        "Valid values are 'low', 'medium', and 'high' (default).");
+>> >  }
+>>
+>> This should be split into a separate commit from adding the machine
 >
-> Answering my own question: Nothing. The problem is that the devicetree
-> is created too early, before the tpm device is instantiated/realized in
-> qemu. The tpm device therefore does not show up in devicetree, and the
-> tom device does not instantiate in Linux. The patch below fixes the probl=
-em
-> for me.
-
-Thanks for looking into this!
-
 >
-> Any comments / thoughts ? Is that change acceptable, or should it be
-> implemented differently ?
+> Ok, I'll do that.
+>
+>>
+>> Isn't this exactly the same as the stm32vldiscovery board? Which is
+>> already very similar to the netduino2 machine. I'm not sure we need
+>> another machine.
+>>
+>> It could make more sense to deprecate the stm32vldiscovery machine and
+>> replace it with this generic one. At least we could keep everything in
+>> the one file and reuse a lot of the code.
+>
+>
+> What is the protocol for deprecating a machine? Should I just submit a pa=
+tch that removes it along with the corresponding entry in the MAINTAINERS f=
+ile? Should I coordinate that offline with the maintainer of the machine th=
+at's to be retired?
 
-The diff below looks fine to me. Do you mind sending a patch?
+There is an official deprecation policy:
+https://www.qemu.org/docs/master/about/deprecated.html#deprecated-features
+
+The board will be listed as deprecated for two releases and then removed.
 
 Alistair
 
 >
 > Thanks,
-> Guenter
->
-> ---
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index 4e3efbee16..ea259d7ade 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1247,6 +1247,11 @@ static void virt_machine_done(Notifier *notifier, =
-void *data)
->      uint32_t fdt_load_addr;
->      uint64_t kernel_entry;
->
-> +    /* create devicetree if not provided */
-> +    if (!machine->dtb) {
-> +        create_fdt(s, memmap);
-> +    }
-> +
->      /*
->       * Only direct boot kernel is currently supported for KVM VM,
->       * so the "-bios" parameter is not supported when KVM is enabled.
-> @@ -1519,15 +1524,13 @@ static void virt_machine_init(MachineState *machi=
-ne)
->      }
->      virt_flash_map(s, system_memory);
->
-> -    /* load/create device tree */
-> +    /* load device tree */
->      if (machine->dtb) {
->          machine->fdt =3D load_device_tree(machine->dtb, &s->fdt_size);
->          if (!machine->fdt) {
->              error_report("load_device_tree() failed");
->              exit(1);
->          }
-> -    } else {
-> -        create_fdt(s, memmap);
->      }
->
->      s->machine_done.notify =3D virt_machine_done;
+> Lucas

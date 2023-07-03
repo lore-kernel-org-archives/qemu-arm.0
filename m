@@ -1,109 +1,111 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2046212ejy;
-        Sun, 2 Jul 2023 21:07:33 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6m81jm+RmTtcOpcUHy/Xo4V4so9VULq9ssuKf+zaHeKqj1q3PzUQ71yxvEGy9Wg+xtKURm
-X-Received: by 2002:a05:620a:468c:b0:765:449d:1391 with SMTP id bq12-20020a05620a468c00b00765449d1391mr13222911qkb.19.1688357253291;
-        Sun, 02 Jul 2023 21:07:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688357253; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2074817ejy;
+        Sun, 2 Jul 2023 22:41:05 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7REQRZPeN2QpjmTVFLP+JhK3JABEjjuZ9w6pcKTDjrwq9ONBuCQFCHC/XLDiTxL3UoLD+N
+X-Received: by 2002:a05:620a:4456:b0:75b:23a1:35f9 with SMTP id w22-20020a05620a445600b0075b23a135f9mr15045853qkp.10.1688362865192;
+        Sun, 02 Jul 2023 22:41:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688362865; cv=none;
         d=google.com; s=arc-20160816;
-        b=EetM6K5HE6M8HflYpGopuGgaZxc7M0eBgzG2oA6wpM3fvUn8vkA8NAvyDbgC9kXVZE
-         DYZt73Uy8gojKKjB5HjDKqdWHtH60f+H1fYVXyiw+XasGNY50GRxL3ukWDUmtq1HCv9+
-         aYh2uf+geuVX6zrbdazLflXqo08NR2GBde/I6LWXBpVx0WaFnfg0oj7diwkONAMKBtcj
-         fBa9TInKMMD2H/yiU0odIqCZSK+yo8cEJDF0+Vw1QvtGjLlJetrAUerN7LqWWTTKto4q
-         cu1oXChlnMBNwpVf+sOY8w9Ty6wqIL9OQzCcvtUNZi/RrPgR9+f8xVtY1QbZ+UUjlg4F
-         BIYQ==
+        b=lJyuvgnFoGr7vRnU87fnuQjuQz1k6fp72QsJWye8SthRbrUc17vC1sdAwZMLUBq5R3
+         998YMXfcncui20yOP5p5SHQAQEJoVUckexVyNj4mujyCUPsCOe0g+qrjBA6jDqWjm4/6
+         yafYIdui7tZlm597mSMouk5q6DW5l3EAk3ECrN7VrcZMya6O3dnW+TINTLyH6Pi8KLsM
+         lX0HegOQASq5btsByrmxjaVYE60xnDH71urrxoHp/QfrRUJnsDBlWga6sTo+zC+o9HvB
+         enhs2jZ3qnNvKQGl6uENIyVAMYAPHidp5MUEw+8ei7uU/ae8bwXvIu2CdXOwVcxrhq+U
+         I96Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
-        fh=ldVv/Ht3DxUuVvzuKG5OdFBRSFHJOql67NL6/qpb6bo=;
-        b=oVt8aEcEDgEwmka9/yeHSkNBG9DByZWB/Z27hcwWI5hsK16o8IANAnG3istZtHwM2L
-         p96JpvCUxoLb6r9lDQRVgMpezjJUlIxlGcyfXnMZ64vINzcwfe750ZcIAaxvh9MLqVuz
-         g0zU0jWThJo5TFf4dSM8BOb7JAeht6yn/ZBoOZBJl9+aC6A5fBJbgn71n0UF+uNWPcBf
-         kW3ANXm8jDb2X5Yh8E0Z84+6Mrv2VtOKRULaW6Sbbh2tnZFTlo297BuZ2s9czk4hMBCp
-         eugddengk1AA7HOE3MzYvSWbU9cp2OHIg8oLiTnS83lEc64B2JxcrbRHPKsSsZHeDutj
-         kN/Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=t98XxY/RzSdDeAir8vtH+CEe9x+aVmxEV/vx1UdEPnM=;
+        fh=nlvs0DNuaumhRSTpzOJfqYeZdKSzkZJr/D9gNRTQd+M=;
+        b=DHr1ZoHHYv55Kfv1+iYtHbPUm+TcksEA84vh6AC8vWx0XEgczmBQ1tNYRVOpEu1R3/
+         BxlvRRPiMI/Rs2Fpvq887M2BiqOUxaVvikYWWPE6mAghFDRlzKt8QiTYQbtDxUm009Yu
+         0BEIlim0JBSaVMjbX9QfMLQMsg/xzFGWR4173YVPnQlSda29frnap2GdKeH2EIqX/5Pk
+         978BTxIEsVOOWvQVfGOyOSSsl0AhBD9cKtTkg8Y8OtwK72TY8uwnXr9E3yJgCjvXoDwb
+         lkhsJMecY64eocZjvZBKWRa5YS21jIrlWL0RQispoxCWmp30lYD+92PvEXwMKhnlhWct
+         kXLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=IIvph13z;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=ENIAGb3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18-20020a05620a205200b007670bac16e4si8920888qka.695.2023.07.02.21.07.33
+        by mx.google.com with ESMTPS id v23-20020a05620a0a9700b007514d3d0aa3si7985866qkg.419.2023.07.02.22.41.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jul 2023 21:07:33 -0700 (PDT)
+        Sun, 02 Jul 2023 22:41:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20221208 header.b=IIvph13z;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=ENIAGb3X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGAqS-0003cT-4y; Mon, 03 Jul 2023 00:07:24 -0400
+	id 1qGCIl-0003Y0-9V; Mon, 03 Jul 2023 01:40:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qGAqR-0003cI-M0; Mon, 03 Jul 2023 00:07:23 -0400
-Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
+ (Exim 4.90_1) (envelope-from <patilabhijit180@gmail.com>)
+ id 1qGCIg-0003XV-EE
+ for qemu-arm@nongnu.org; Mon, 03 Jul 2023 01:40:38 -0400
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qGAqQ-0002xP-3C; Mon, 03 Jul 2023 00:07:23 -0400
-Received: by mail-vk1-xa31.google.com with SMTP id
- 71dfb90a1353d-460eb67244eso1317087e0c.1; 
- Sun, 02 Jul 2023 21:07:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <patilabhijit180@gmail.com>)
+ id 1qGCIc-0001k9-JH
+ for qemu-arm@nongnu.org; Mon, 03 Jul 2023 01:40:37 -0400
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-bfee66a5db6so3546041276.0
+ for <qemu-arm@nongnu.org>; Sun, 02 Jul 2023 22:40:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1688357240; x=1690949240;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
- b=IIvph13z4bDe7N3Itoy/Tbr0xY2/P9YTdcl46flfU7y09VxzNk0b+3gGbYy5tzlV8b
- 7D5T2CbPJkScL4FMi2ogkUQVV6EgrMnwVAu8xGbV0gbHe5Lp8Kw8iPfDk08hzHsAsEa8
- deUiETwjqaUaUNmjFsqOHqsv7eVAYqymWZViAzqPUj0GhSrA6VT6XazGr/lmvNZa4IQ2
- 0Cpjv1LIrVdSTLl6QI2I7oMKlWjJ5N0aEZRD06l2I3KL0AtPebE70lNU/irkerrmsUY1
- gHkxCX4Mz2PI2LuvUdkhTWDuGMCA6pkYOXS1Mfe9E72MlZ7yEKHf8jM8PwQirCX9e0Nd
- mnVw==
+ d=gmail.com; s=20221208; t=1688362833; x=1690954833;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=t98XxY/RzSdDeAir8vtH+CEe9x+aVmxEV/vx1UdEPnM=;
+ b=ENIAGb3XPlytPlWHuh0trdNSfotfmoiG2wizZCQ8ocqhTKpzhb6L+bFcLYEPZHBCbN
+ vjmVhJJQMOB7RpGzd5mRnIj46jrNPbXRRy/fk7X8Nua013U8nroV2lhkn3/IkE8Ai+Gp
+ J2af55UNeCvkGDvnf6Ha4tfKxCTV3ieKDJwmCf9OK+9Q4N50f8sbC9KUzh+35LDJ3cNq
+ QFf72hTOu/lJhHQoHIx2Zz0LgDyP6rUI5Zi7h7cdsUcJSEIeldZ9rykbqQJkLlHyzs7G
+ PAQewRqlbZNenPJ+fnqJO+YF4/wGGMDRxIdbkQ+aLcf6B0feKsud7Eby6xnZF1/X00Sp
+ 9t4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688357240; x=1690949240;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zggpSKb8QJ1LKxFl5cc74TRt3PJdpXQ19gbD3ICxNSM=;
- b=SRXE9c7P0aiYIhYse6OKXsSa4oKrcQ++l7hN9LD33gmUxPE+0Jwck94jt3NIr50EoM
- +ZqT5orHsX+QCNBVoOZl8XrC3xEVEwm4fQkvbmiI3zCM8hu9pvGj2XqL2zdmVs5PPJ1S
- 1K+pO7hgyemGZEsDRpmUaH2tRL9rUimY5/wdpj7Z8suyWRSXoiLD2dypdMux3aWKHQcG
- MPw05LsIdAzqSvU9dgdK79xlupSi0N1Tt5yl+6L/8A8oIokyFP6wBWGFY6eeNb6GifFH
- /EBxUBhKIgmhYrp4xyoI+lmb90XYZyvdI8ijpBEq4XcosSse5P9k5Wc5Iz/4p21YpnUm
- Bcfg==
-X-Gm-Message-State: ABy/qLZEjrVJfacYJ6yvCcuP0s4tvetZcahkrUaySUE3CfDhRJbifTxa
- tzMKTPj2OmDlbCjSRAFznDk7uL+CzFoClRJcXGc=
-X-Received: by 2002:ac5:c957:0:b0:471:7996:228f with SMTP id
- s23-20020ac5c957000000b004717996228fmr4088313vkm.7.1688357240624; Sun, 02 Jul
- 2023 21:07:20 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1688362833; x=1690954833;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=t98XxY/RzSdDeAir8vtH+CEe9x+aVmxEV/vx1UdEPnM=;
+ b=O5IlRUkCiMnKwAoOw6srapSNlQZf1gwbuH5VlAC4lPWkRflOqqRQj0V7/ix4POfxDS
+ J5EDun1Nz4XnwKx4t7QVxj1lACoUwCIhkzElnMGCyBBKxFa5dXIbbPiFTpkjGoUVSuhK
+ Z7BgnoyXx69XbBkJZ5g32gX2GTYatdu4vYDZd+CoIG6bFarkftCaJ6nzWjsoUNx8e/Ka
+ cZPE/8cUQCUkD+4/plfax26AuWKID9JCX1wf1y5Jw1ZrdJfwaq1RF2y5LsB31PrNRVV8
+ A7A+2HHDFXaCPg8Lgbbd9icKXQtaTkR4qFkUrVEos4SObTbvX7kmZqYE+qEg60QYHjf/
+ lVkw==
+X-Gm-Message-State: ABy/qLb6TvQ27nhujijpKZ5Rp1WUGxmaKdBgHtiAae5bMiEBSaqSoctp
+ bJ3ZsvjOw1rqkzwOa6tyPmjapX0+q/qi+TaA6ow=
+X-Received: by 2002:a25:26c4:0:b0:c40:f090:98bf with SMTP id
+ m187-20020a2526c4000000b00c40f09098bfmr8405997ybm.28.1688362833006; Sun, 02
+ Jul 2023 22:40:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230619221819.6882-1-lucas@osdyne.com>
- <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
-In-Reply-To: <6fa294a1-1f1f-7f30-add0-bb49f7d04a65@crans.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 3 Jul 2023 14:06:54 +1000
-Message-ID: <CAKmqyKOJ1Tq7Dwce=82tbCE2v60U=2k_gpeA7Zojt-co2h694Q@mail.gmail.com>
-Subject: Re: [PATCH] STM32F100: support different density lines
-To: Alexandre IOOSS <erdnaxe@crans.org>
-Cc: Lucas Villa Real <lucas@osdyne.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a31;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa31.google.com
+References: <CAJ-ErDDkWPE6QFF5Qvq2OQ55aaMoRPKXT9a-+1Ma79XVkw_c6A@mail.gmail.com>
+ <CAFEAcA9vjp3o08F+aLB9DPga0tQgmHhaweZADB_wrniZ38GrBQ@mail.gmail.com>
+ <CAJ-ErDCb_bvCg-RYYnsawxhM47wSnAj3qFeP4hKB9AdjDDswKA@mail.gmail.com>
+ <CAJ-ErDBJi_0SeeOBjjNbyEE5BiYjcgEBA4tx7uULgOB1=FfUEw@mail.gmail.com>
+ <CAFEAcA-Ww0qDs63mbBbVGbGFD_iWmfV0WPMz6tLq=7jmew+UTg@mail.gmail.com>
+ <CAJ-ErDAF0n9UoSSXHDz36VFzntidjKYyAzOCtXnL2CqPDS9OiQ@mail.gmail.com>
+ <CAJ-ErDCzaF0MCExzMketiQzjEsKP80NYyo0JSFqVhwjJP4N0Yg@mail.gmail.com>
+ <CAJ-ErDCh_h3wsxpDZenLAwuNpuGUtrP-oWCow-NyBSjizZFUhQ@mail.gmail.com>
+In-Reply-To: <CAJ-ErDCh_h3wsxpDZenLAwuNpuGUtrP-oWCow-NyBSjizZFUhQ@mail.gmail.com>
+From: abhijit patil <patilabhijit180@gmail.com>
+Date: Mon, 3 Jul 2023 11:10:22 +0530
+Message-ID: <CAJ-ErDDn_jqo0hNfcOZweZhsQZQULxirNh7RR9KAPtzDqtVWgw@mail.gmail.com>
+Subject: Re: Regarding hello world program for ARM M7 (s32k312) using qemu
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000e9d53605ff8e9a1a"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=patilabhijit180@gmail.com; helo=mail-yb1-xb35.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -120,87 +122,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MCvua3JVZAaN
+X-TUID: wxNgzxyK5Vy3
 
-On Mon, Jun 26, 2023 at 4:24=E2=80=AFPM Alexandre IOOSS <erdnaxe@crans.org>=
- wrote:
->
-> On 6/20/23 00:18, Lucas Villa Real wrote:
-> > This patch adds support for the emulation of different density lines
-> > (low, medium, and high). A new class property stm32f100-soc.density=3D
-> > has been introduced to allow users to state the desired configuration.
-> > That property is recognized by a new machine, stm32f1-generic. The SOC
-> > is configured according to the following:
-> >
-> >     density=3Dlow       32 KB FLASH, 2 SPIs
-> >     density=3Dmedium   128 KB FLASH, 2 SPIs
-> >     density=3Dhigh     512 KB FLASH, 3 SPIs
-> >
-> > With this code change we should be able to introduce richer features
-> > to STM32F100, such as support for FSMC (so that a machine with more
-> > RAM capacity can be properly emulated). FSMC is supported on high
-> > density line devices only.
->
-> Thanks a lot for the patches!
->
-> STM32 families look very similar to each other, it makes great sense to
-> take a generic approach rather than bloating QEMU with many machines.
->
-> You patch proposes to create a "stm32f1-generic" machine. I believe we
-> should rather name this machine "stm32f100-generic":
->    - STM32F101 has a XL-density line, STM32F100 does not have a
-> XL-density line.
->    - STM32F100 high density line does not have the same maximum SRAM
-> size, timers, USART numbers, clock frequencies and CEC peripherals as
-> the STM32F101 high density line.
->
-> Regarding the stm32vldiscovery machine, I am not against deprecating it
-> if we warn users to use stm32f100-generic with density=3Dmedium. This
-> makes sense as the development board does not add anything more than
-> just some buttons and LED.
-> Maybe "stm32vldiscovery" could become an alias for stm32f100-generic
-> machine ?
-> @Alistair: Do you have an opinion on aliasing the old machine? Is this
-> something common in QEMU?
+--000000000000e9d53605ff8e9a1a
+Content-Type: text/plain; charset="UTF-8"
 
-I don't think we have any aliased machines. I think we could do
-something like that as well. So the "aliased" machines end up just
-being pre-configured generic machines. We just want to do it in a way
-to avoid code duplication where we can.
+Hi can you please help on urgent basis
 
+On Sun, Jul 2, 2023, 8:07 PM abhijit patil <patilabhijit180@gmail.com>
+wrote:
+
+> Need a startup.s file ...mail. c file and linker file with commands also
+> to run hello world program for mps2-an500 on qemu....need these files as
+> its really imp for work ...request you to share if you have please
+> today....I badly needed it today please help
 >
-> In the long run, we should maybe rename "stm32f100-soc.c" to
-> "stm32f1-soc.c" and add another class property to choose the sub-family.
-> This would highly reduce potential code duplication.
-> STM32F1 machines could take this structure:
->   - stm32f100-generic machine
->     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dlow
->     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dmedium
->       (alias stm32vldiscovery)
->     - stm32f1-soc.family=3Df100 stm32f1-soc.density=3Dhigh
->   - stm32f101-generic machine
->     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dlow
->     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dmedium
->     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dhigh
->     - stm32f1-soc.family=3Df101 stm32f1-soc.density=3Dxl
->   - stm32f102-generic machine
->     - stm32f1-soc.family=3Df102 stm32f1-soc.density=3Dlow
->     - stm32f1-soc.family=3Df102 stm32f1-soc.density=3Dmedium
->   - stm32f103-generic machine
->     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dlow
->     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dmedium
->       (alias stm32-nucleo-f103rb)
->     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dhigh
->     - stm32f1-soc.family=3Df103 stm32f1-soc.density=3Dxl
-> @Alistair: Would such modification make also sense regarding stm32f2 and
-> stm32f4 families?
-
-I think that's also ok, but it really only makes sense to do when we
-have differentiating features implemented in QEMU.
-
-Alistair
-
+> On Sun, Jul 2, 2023, 7:43 PM abhijit patil <patilabhijit180@gmail.com>
+> wrote:
 >
-> Thanks,
-> --
-> Alexandre
+>> Need a startup.s file ...mail. c file and linker file with commands also
+>> to run hello world program for mps2-an500 on qemu....need these files as
+>> its really imp for work ...request you to share if you have please
+>> today...thanks in advance
+>>
+>> On Tue, Jun 27, 2023, 8:44 PM abhijit patil <patilabhijit180@gmail.com>
+>> wrote:
+>>
+>>> Awesome, thanks for the info!
+>>>
+>>> On Tue, Jun 27, 2023, 8:02 PM Peter Maydell <peter.maydell@linaro.org>
+>>> wrote:
+>>>
+>>>> On Tue, 27 Jun 2023 at 15:09, abhijit patil <patilabhijit180@gmail.com>
+>>>> wrote:
+>>>> >
+>>>> > Does it have for ARM M7 any board?...I read somewhere that if you
+>>>> have latest version 5 for qemu then it supports the ARM M7 machine...is it
+>>>> right?...and if yes where can we download the same and the programs and
+>>>> other things for ARM M7 using qemu
+>>>>
+>>>> Yes, QEMU supports the Cortex-M7; the machine using it is the
+>>>> mps2-an500 (which is a model of an FPGA image for an Arm
+>>>> development board).
+>>>>
+>>>> We (ie the upstream QEMU community) provide QEMU in source
+>>>> code form. You can find more information about compiling it
+>>>> here: https://www.qemu.org/download/
+>>>> Or if you're running a Linux distro it's probably more
+>>>> convenient to use the distro-packaged QEMU.
+>>>>
+>>>> Generally we do not try to provide support for how to build
+>>>> and run guest binaries -- there are too many possible
+>>>> development environments and target boards and so on for
+>>>> that. We provide the emulated hardware, you have to bring
+>>>> the software :-)
+>>>>
+>>>> thanks
+>>>> -- PMM
+>>>>
+>>>
+
+--000000000000e9d53605ff8e9a1a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Hi can you please help on urgent=C2=A0basis</div><br><div=
+ class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Jul 2,=
+ 2023, 8:07 PM abhijit patil &lt;<a href=3D"mailto:patilabhijit180@gmail.co=
+m">patilabhijit180@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex"><div dir=3D"auto"><span style=3D"font-size:12.8px">Need a startup.=
+s file ...mail. c file and linker file with commands also to run hello worl=
+d program for mps2-an500 on qemu....need these files as its really imp for =
+work ...request you to share if you have please today....I badly needed it =
+today please help</span></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Sun, Jul 2, 2023, 7:43 PM abhijit patil &lt;<a h=
+ref=3D"mailto:patilabhijit180@gmail.com" target=3D"_blank" rel=3D"noreferre=
+r">patilabhijit180@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
+eft:1ex"><div dir=3D"auto">Need a startup.s file ...mail. c file and linker=
+ file with commands also to run hello world program for mps2-an500 on qemu.=
+...need these files as its really imp for work ...request you to share if y=
+ou have please today...thanks in advance=C2=A0</div><br><div class=3D"gmail=
+_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jun 27, 2023, 8:44 PM=
+ abhijit patil &lt;<a href=3D"mailto:patilabhijit180@gmail.com" rel=3D"nore=
+ferrer noreferrer" target=3D"_blank">patilabhijit180@gmail.com</a>&gt; wrot=
+e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bo=
+rder-left:1px #ccc solid;padding-left:1ex"><div dir=3D"auto">Awesome, thank=
+s for the info!=C2=A0</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Tue, Jun 27, 2023, 8:02 PM Peter Maydell &lt;<a hre=
+f=3D"mailto:peter.maydell@linaro.org" rel=3D"noreferrer noreferrer noreferr=
+er" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
+cc solid;padding-left:1ex">On Tue, 27 Jun 2023 at 15:09, abhijit patil &lt;=
+<a href=3D"mailto:patilabhijit180@gmail.com" rel=3D"noreferrer noreferrer n=
+oreferrer noreferrer" target=3D"_blank">patilabhijit180@gmail.com</a>&gt; w=
+rote:<br>
+&gt;<br>
+&gt; Does it have for ARM M7 any board?...I read somewhere that if you have=
+ latest version 5 for qemu then it supports the ARM M7 machine...is it righ=
+t?...and if yes where can we download the same and the programs and other t=
+hings for ARM M7 using qemu<br>
+<br>
+Yes, QEMU supports the Cortex-M7; the machine using it is the<br>
+mps2-an500 (which is a model of an FPGA image for an Arm<br>
+development board).<br>
+<br>
+We (ie the upstream QEMU community) provide QEMU in source<br>
+code form. You can find more information about compiling it<br>
+here: <a href=3D"https://www.qemu.org/download/" rel=3D"noreferrer noreferr=
+er noreferrer noreferrer noreferrer" target=3D"_blank">https://www.qemu.org=
+/download/</a><br>
+Or if you&#39;re running a Linux distro it&#39;s probably more<br>
+convenient to use the distro-packaged QEMU.<br>
+<br>
+Generally we do not try to provide support for how to build<br>
+and run guest binaries -- there are too many possible<br>
+development environments and target boards and so on for<br>
+that. We provide the emulated hardware, you have to bring<br>
+the software :-)<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+
+--000000000000e9d53605ff8e9a1a--

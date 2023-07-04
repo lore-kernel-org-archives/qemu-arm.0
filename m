@@ -1,108 +1,104 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2894777ejy;
-        Tue, 4 Jul 2023 06:07:48 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6+74nAVp+XRxB/B9fIrPbvrjyf2U8IY8XIhDk9H/nkQFOI4Ail6VuXt48688fXn3B3NNu/
-X-Received: by 2002:a05:622a:594:b0:400:8b8a:6f1b with SMTP id c20-20020a05622a059400b004008b8a6f1bmr18284241qtb.4.1688476068477;
-        Tue, 04 Jul 2023 06:07:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688476068; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2905105ejy;
+        Tue, 4 Jul 2023 06:22:16 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlH6pPBL97U797PT2pZ8qK+yYArgSAl1ypnc2+M5U97/ZxWo4TGRTOycJKOZdV+mJnIebYft
+X-Received: by 2002:ad4:5d6d:0:b0:629:78ae:80f8 with SMTP id fn13-20020ad45d6d000000b0062978ae80f8mr18253283qvb.10.1688476936225;
+        Tue, 04 Jul 2023 06:22:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688476936; cv=none;
         d=google.com; s=arc-20160816;
-        b=DS64ioNgS+Nqf7FLnJ8modEVYJKnxAITAptkxBgdKfBXuij7ITE9VT9Hu60RUs2iKO
-         kUFbtcLtkDqLb+tM3IRg7hPLW8aXOqcCUfuWH4xaPCnxWlCdHSehl3NVhF3+tWpUTh2a
-         HApF4GSdmQFxoJNcQtwwmCKb9z5B8bDOMvANB2jY+mQzPxCgx1t211xfWxXxlf6VMGg/
-         VuyG5+kW5JiH0+9ohjlDU76zssTsmaSl1BJrV9lI/ipKMf5cLHN/RikS2GS6OfjCVJq1
-         v7E2R/eAZW2A41vKyH0ehuo0hPdCGDv+T2iQGC6NMfSWeRJMfSdWcV5+WOGKJ6lyCE1h
-         XPVg==
+        b=UQ7O2LJ9k7PG8HNR2MhBqyAE+w/8QPXWwAPhQhGRpNVWht/gMh+t4TpRZYaiCrkdjo
+         uT0FXTy13YnyguVLh+HTH3pVTuW2zWXP4a+t2hD9GL0jeJ+oiXYuTdmSqC6FXlHHI3EC
+         lFt5MapnwvXa7iOUtZAJRJhnUd+em5UIVv9Irzbf75KyFzY97nSECoRsuNMwzJutYdhV
+         a5yyw/qSaZxGhOW0X6CN+Beq5kl7p3UZZbuFakAV3GCz3AvbrZabq5iVOXyfeGuHTtu5
+         lxBtdKIErJORcb+cdUcLFdfIqP4+aspc7KsEYMzNed2XOixWzLcwWBIAdskQjHmjz6ej
+         FpvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=o63W7D3dZ+IsTd+CBM4Ktiq6kGzSxYbY5hWwGmlhVKI=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=uR6U/zFzcNgc8eiQclRexl+R2+E2vCMat3MSXbXm6M7X8yJuP/YzYFnzQZYsdqaeBh
-         vlwtRLydbOMHMSqfEQBYMu5uBV+vUDz3aYhFDykL1d47YRd8ohtV094GwBPyxqg4YRNE
-         iXkTFNf64TSus/TedhKxJY+h8RCD9A1Q9FLBk47ekLHLnQAshsOSuPxEWnCDv7uHwR8X
-         YldZAzMsSiwV1bxb48S37RCqBcCmJO470vsyLDi5/8ALcVg3w6PwDBilj+ZBKREGMEwT
-         TQTBzzwsozOHZKxKFeSuI4nqbjjyywTLlAW/vcdpIRVSFKHTcbhh1ouJzdjRL1vrR8lh
-         Xu5g==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=p2bayySQ6FpgW3ti56DIy/pwdOCtOffRBdRrh1f2cdE=;
+        fh=KBlgtE3ERa0ZUYgqV31WqhalP1RAhAFOCovn4+lLDmk=;
+        b=n1vXBvo92Ff1qqJsaNmrdGrbB6pFzW25SiE6K2z4CrWepEh2QXNajh60ZC1S2j+ZyM
+         PAoIE+BNAU1RXUOjLYvijrzUU/vjzZOnIpvHw/pRouvtX2HY9P5NSHZWmOLTAIo/ZLEk
+         EY7Fu2PPyD5mNOtbwDdWL/3BChPa4o9rK009xBEx33UwYIbCiCrwPe2pO/NjNcZv9rtp
+         cxdfcfOPUNfkDouueqMvXsHAuUsCPgDTPqk0s3weQ7m242QaZl5FQKqalOaJG9wcQiZN
+         2l06S8jDfkc8cnK28ANNt5TnRgNQY+IJMNVbTMuyMmLP9KrlxmzYlB2cgPIZzuwEK4rQ
+         qXWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="o/7LlAin";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nMgQIVaC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m19-20020a05622a119300b0040355bdd802si3719351qtk.569.2023.07.04.06.07.48
+        by mx.google.com with ESMTPS id jr7-20020a0562142a8700b006350899946bsi2556011qvb.39.2023.07.04.06.22.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jul 2023 06:07:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Jul 2023 06:22:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="o/7LlAin";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=nMgQIVaC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qGfk8-0001S2-GQ; Tue, 04 Jul 2023 09:06:57 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qGfys-0004HZ-NS; Tue, 04 Jul 2023 09:22:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qGfk6-0001Qw-M5
- for qemu-devel@nongnu.org; Tue, 04 Jul 2023 09:06:54 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1qGfyq-0004DR-Nv
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:22:08 -0400
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qGfk4-0003UR-PJ
- for qemu-devel@nongnu.org; Tue, 04 Jul 2023 09:06:54 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3110ab7110aso6341106f8f.3
- for <qemu-devel@nongnu.org>; Tue, 04 Jul 2023 06:06:52 -0700 (PDT)
+ id 1qGfyo-0007r1-Q5
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:22:08 -0400
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-4fbbfaacfc1so433768e87.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 06:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688476011; x=1691068011;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=o63W7D3dZ+IsTd+CBM4Ktiq6kGzSxYbY5hWwGmlhVKI=;
- b=o/7LlAin+0uYGz9C3AJ7WPZGIXtjSpAzH/8HH/LAwM1WX1i5PviJvpWlvnP3DTGR97
- Smlm5NYu6jGCyEW4mVMcyq+B1W9v93SidGGnJrq5SX9SxR+R71u40KlCcnzFjyMC7Kni
- PPW2A5DWNPx5dWaxXJFcpldgxa5kuM8nvDxisIDQvnzIZBiYjYbrzezW7zhTZUl7XbJa
- WD0qq8yFHXI1oxtEGl7I17mKy3ZriRgGR+azn3ClGPxFTbYv4QbwstWDjFRNRNivC/MO
- il3w3JyT5qfLtwbDeMuqKpl3so+xLVqmfZacU2mSEyFoMwLMzadggjIm69+NAtUmRA24
- Oktw==
+ d=linaro.org; s=google; t=1688476925; x=1691068925;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=p2bayySQ6FpgW3ti56DIy/pwdOCtOffRBdRrh1f2cdE=;
+ b=nMgQIVaCuaHER0lYEHjKV/UWu9LT/aRG9MTOB13xhnPgWq+QLVGqyzCl/9lpRphOKj
+ fnFw9N/f2v/RJSo2bP8mOO9j/8LeJLLcw1U4YQOB1duFd729WcaVHdFRx1Cm518rtcx4
+ pWsPMXyfAv89340PzUgxno3hriOVU3LSpU6DprpfrkrKelkwL/uTt/BMBExxAgPJX49s
+ tYLmiGg8MQIlpeoOR1fG1gGV7AnChcKncbSjtkAO6ZySM/2uN67d2SpZjBjWLX/lug17
+ HGJVLxLZCYnBPkEZdn012+BJxPQsSaP5+2ua6MfLQ7HsbVgvgik4cmT9+a4JO71E3jUm
+ JWzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688476011; x=1691068011;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=o63W7D3dZ+IsTd+CBM4Ktiq6kGzSxYbY5hWwGmlhVKI=;
- b=OcdZvtGHnsbGXvf23tTOPoQEP7JxioCXewELl4R4qQQuHEtaR0w+DM4MpfhSUFFPOq
- hT3Bw/KhWL+FvnssrIELDElmEj2fztjqlbxJN2ASZkbNcvdAeFEeDpMrnvrK1FVOxqpj
- knjfzQrwNLXbXBXYkqsYCQCX4tULi1ggkYuZcTcAveDMxDSNtCLKW4iYnid0xiM02q6F
- h+OQ8sJAZzfZqIfjQRclcMfqCfIhuKlUZg9ZWpy4G8bc5CvqekBqcggPXvaVC8inrFjZ
- 2RLwBHU9cnuPjIxArmpvGqiZ1k0cs5o7Tzo9m43AQYNoM4nZAHNxlVehLBYYoRx6xOed
- AQpQ==
-X-Gm-Message-State: ABy/qLbWMgwPDqFJOve46G824D/IcydEeJWEKdG6A/42u+NBdFQn4k3W
- EggWIf5bnFyyh7PT9aLBPfg8nA==
-X-Received: by 2002:a5d:4445:0:b0:314:3a3d:5d1f with SMTP id
- x5-20020a5d4445000000b003143a3d5d1fmr4353699wrr.19.1688476010311; 
- Tue, 04 Jul 2023 06:06:50 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- a10-20020adfeeca000000b00314103d6daesm15834737wrp.47.2023.07.04.06.06.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Jul 2023 06:06:50 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 1/2] target/arm: Suppress more TCG unimplemented features in
- ID registers
-Date: Tue,  4 Jul 2023 14:06:46 +0100
-Message-Id: <20230704130647.2842917-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230704130647.2842917-1-peter.maydell@linaro.org>
-References: <20230704130647.2842917-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20221208; t=1688476925; x=1691068925;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=p2bayySQ6FpgW3ti56DIy/pwdOCtOffRBdRrh1f2cdE=;
+ b=XvGJgXGFc8r82oh3IYn33oZJhDYg0W/KiQWTEUXPOtiyeNZMJuPaSNNC0CA1UYuh7j
+ mvqbrEsOY+7TEtRMoWJB4jlHoJaJ6nt5tc4IGcW9bq8mgXQR7oL0jl2/gSf5eh1DZ6nu
+ Bh7BqyqyXeVYqhkH13SfQknP45lxrD06pv49B7frq+rBb6cyztl3oVVtHYqAqQxIV5k+
+ /OzG8St4Z54fifYbGEmdul1ffp93AGOBrZgZ1oY2MqtvGqRHsYTee8qJKGUgqJlMkmcQ
+ 5aY3KpjWG2SQBGmBSpU7QV3bK8WMhnuaQRTFWFsCmpChpiByJk8Q09Qu7s2kJpFuJrVT
+ J6OQ==
+X-Gm-Message-State: ABy/qLZN2b8BNbyPxF3TVO/Ivz6kDEVi3OAJ1DVc7/BWFsOvbxKM/ddT
+ vWmukfEqhBGuSACNxTLw+EgqO1z162pLY7aeI8h28w==
+X-Received: by 2002:a05:6512:1595:b0:4f8:56c8:e6b4 with SMTP id
+ bp21-20020a056512159500b004f856c8e6b4mr11374253lfb.47.1688476924851; Tue, 04
+ Jul 2023 06:22:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+References: <20230626075207.623535-1-marcin.juszkiewicz@linaro.org>
+ <CAFEAcA-K_2SLxbq90TpUyzLpiC0U2WVJe7ffaC_TH66K-=GV4A@mail.gmail.com>
+ <b26c98d3-3e9f-331e-acbd-ae0c451e0ed3@quicinc.com>
+ <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_rg4CbE1Y9mTQmPs_KBqb-S=3Z5Hh78gbVUD6R7DR0hg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Jul 2023 14:21:54 +0100
+Message-ID: <CAFEAcA8mk0upQUqXsdm3YXvRjAJc+6npkXAWWLtHS+3A8bMJKA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: add PCIe node into DT
+To: Leif Lindholm <quic_llindhol@quicinc.com>
+Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org, 
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,90 +107,96 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2EgnfLKTa9jE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: taM0rfZ20A5H
 
-We already squash the ID register field for FEAT_SPE (the Statistical
-Profiling Extension) because TCG does not implement it and if we
-advertise it to the guest the guest will crash trying to look at
-non-existent system registers.  Do the same for some other features
-which a real hardware Neoverse-V1 implements but which TCG doesn't:
- * FEAT_TRF (Self-hosted Trace Extension)
- * Trace Macrocell system register access
- * Memory mapped trace
- * FEAT_AMU (Activity Monitors Extension)
- * FEAT_MPAM (Memory Partitioning and Monitoring Extension)
- * FEAT_NV (Nested Virtualization)
+On Tue, 27 Jun 2023 at 14:27, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 27 Jun 2023 at 13:52, Leif Lindholm <quic_llindhol@quicinc.com> wrote:
+> >
+> > On 2023-06-27 13:12, Peter Maydell wrote:
+> > > On Mon, 26 Jun 2023 at 08:52, Marcin Juszkiewicz
+> > > <marcin.juszkiewicz@linaro.org> wrote:
+> > >>
+> > >> Add PCI Express information into DeviceTree as part of SBSA-REF
+> > >> versioning.
+> > >>
+> > >> Trusted Firmware will read it and provide to next firmware level.
+> > >>
+> > >> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+> > >> ---
+> > >>   hw/arm/sbsa-ref.c | 20 ++++++++++++++++++++
+> > >>   1 file changed, 20 insertions(+)
+> > >>
+> > >> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > >> index 0639f97dd5..b87d2ee3b2 100644
+> > >> --- a/hw/arm/sbsa-ref.c
+> > >> +++ b/hw/arm/sbsa-ref.c
+> > >> @@ -171,6 +171,25 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+> > >>       return arm_cpu_mp_affinity(idx, clustersz);
+> > >>   }
+> > >>
+> > >> +static void sbsa_fdt_add_pcie_node(SBSAMachineState *sms)
+> > >> +{
+> > >> +    char *nodename;
+> > >> +
+> > >> +    nodename = g_strdup_printf("/pcie");
+> > >> +    qemu_fdt_add_subnode(sms->fdt, nodename);
+> > >> +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].base,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_ECAM].size,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].base,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_PIO].size,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].base,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO].size,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base,
+> > >> +                                 2, sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size);
+> > >> +
+> > >> +    g_free(nodename);
+> > >
+> > >
+> > > Why do we need to do this? The firmware should just
+> > > know exactly where the PCIE windows are, the same way
+> > > it knows where the flash, the UART, the RTC etc etc
+> > > all are in the memory map.
+> >
+> > That is not automatically true (it was not for at least one SoC I have
+> > worked on). In a real system which had these dynamically decided, some
+> > coprocessor would program the CMN to route these address ranges to
+> > certain offsets within certain components, and that same coprocessor
+> > could then provide a mechanism for how TF-A could discover these and
+> > provide it to later-stage firmware via SiP SMC calls.
+> >
+> > Sticking the information in the DT lets us emulate this without actually
+> > emulating the CMN and the coprocessor, and prototype (and verify) the
+> > same firmware interfaces for developing i.e. edk2 support.
+>
+> OK. This is the kind of rationale that needs to be described
+> in the commit message and comments, though, so it's clear
+> why the PCI controller is special in this way.
 
-Most of these, like FEAT_SPE, are "introspection/trace" type features
-which QEMU is unlikely to ever implement.  The odd-one-out here is
-FEAT_NV -- we could implement that and at some point we probably
-will.
+Just to be clear about the status of this patch, I don't
+have a problem with the code changes, but it does definitely
+need a much clearer commit message to explain why we're changing
+the way we handle the PCI controller. So I'm dropping this from
+my to-review list on the assumption there will be a v2.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.c | 33 +++++++++++++++++++++++++++++----
- 1 file changed, 29 insertions(+), 4 deletions(-)
+We could also do with expanding the commentary in the source
+file to clarify the design approach we're using w.r.t. what
+we do and don't want to put into the "dt" blob, but that would
+probably be best in a different patch.
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a1e77698ba2..7eb7e909097 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2048,13 +2048,38 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-     if (tcg_enabled()) {
-         /*
--         * Don't report the Statistical Profiling Extension in the ID
--         * registers, because TCG doesn't implement it yet (not even a
--         * minimal stub version) and guests will fall over when they
--         * try to access the non-existent system registers for it.
-+         * Don't report some architectural features in the ID registers
-+         * where TCG does not yet implement it (not even a minimal
-+         * stub version). This avoids guests falling over when they
-+         * try to access the non-existent system registers for them.
-          */
-+        /* FEAT_SPE (Statistical Profiling Extension) */
-         cpu->isar.id_aa64dfr0 =
-             FIELD_DP64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, PMSVER, 0);
-+        /* FEAT_TRF (Self-hosted Trace Extension) */
-+        cpu->isar.id_aa64dfr0 =
-+            FIELD_DP64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, TRACEFILT, 0);
-+        cpu->isar.id_dfr0 =
-+            FIELD_DP32(cpu->isar.id_dfr0, ID_DFR0, TRACEFILT, 0);
-+        /* Trace Macrocell system register access */
-+        cpu->isar.id_aa64dfr0 =
-+            FIELD_DP64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, TRACEVER, 0);
-+        cpu->isar.id_dfr0 =
-+            FIELD_DP32(cpu->isar.id_dfr0, ID_DFR0, COPTRC, 0);
-+        /* Memory mapped trace */
-+        cpu->isar.id_dfr0 =
-+            FIELD_DP32(cpu->isar.id_dfr0, ID_DFR0, MMAPTRC, 0);
-+        /* FEAT_AMU (Activity Monitors Extension) */
-+        cpu->isar.id_aa64pfr0 =
-+            FIELD_DP64(cpu->isar.id_aa64pfr0, ID_AA64PFR0, AMU, 0);
-+        cpu->isar.id_pfr0 =
-+            FIELD_DP32(cpu->isar.id_pfr0, ID_PFR0, AMU, 0);
-+        /* FEAT_MPAM (Memory Partitioning and Monitoring Extension) */
-+        cpu->isar.id_aa64pfr0 =
-+            FIELD_DP64(cpu->isar.id_aa64pfr0, ID_AA64PFR0, MPAM, 0);
-+        /* FEAT_NV (Nested Virtualization) */
-+        cpu->isar.id_aa64mmfr2 =
-+            FIELD_DP64(cpu->isar.id_aa64mmfr2, ID_AA64MMFR2, NV, 0);
-     }
- 
-     /* MPU can be configured out of a PMSA CPU either by setting has-mpu
--- 
-2.34.1
-
+thanks
+-- PMM

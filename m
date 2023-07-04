@@ -1,330 +1,187 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2933661ejy;
-        Tue, 4 Jul 2023 07:08:10 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ75mN2pHL1AeOnQWbSMkMwJafF8H+Re0JCuipyaH74lokgHrpnrLJ1BDpxIlj7a2iXJRl4V
-X-Received: by 2002:a05:620a:3191:b0:765:3e81:e74c with SMTP id bi17-20020a05620a319100b007653e81e74cmr15595815qkb.21.1688479690543;
-        Tue, 04 Jul 2023 07:08:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688479690; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2945234ejy;
+        Tue, 4 Jul 2023 07:25:46 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5nffpfh4eUmUhvP1Yqiy1HPiEiUH26WQjfDONtnbFFnEfyrU2fqCf/sr3diPvLt+wcklcT
+X-Received: by 2002:ac8:5b55:0:b0:3ff:405e:9117 with SMTP id n21-20020ac85b55000000b003ff405e9117mr19456651qtw.66.1688480745931;
+        Tue, 04 Jul 2023 07:25:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688480745; cv=none;
         d=google.com; s=arc-20160816;
-        b=c2L5t+D4d2Hx5fNvv94wXwgU5T27sBdjfcoYSzCdxrAbuek8B9eDsj6NxBvP5H/iKJ
-         sXyLIXIaLSIFetfaRb//6mIWtaq3TkazeFWyJfbDAMvm5Vgx4xh3tZySIa6nwCS0ajiU
-         Tex64ZOFC41pWF3W1SZEtK8JqqqH+YBZrsmPKNgY962F2S4Dcn1mn0oEMTiNsF+DpnUV
-         gBs4HV/k5N7M/W3A83oOKhxJx66LjGCWd5n2mZWXO+8BU9WUfOVBbFgqWamxA/yS3arj
-         muwXiRIZbc3oVHXSiuRPNZ15vvLa/CluQ3GbTKj76j/9yhB4zE4gnOto+WWpaplKNIJU
-         84Hg==
+        b=G60OiQb/XRT8mkZzjIBbeaTSN7qB25xrcUEXDe3vcQZdOfvxOPT+3y50oiiqOiQL8z
+         efqZVBkPepmxZKtszoR9uB+s8V3BXdKHqXOiU7e5G0gktkA58RXxRHXL4pLapgc8djG8
+         ff+LX9neuaW7Ek7N70r1/cjBtj3cyWD9t6YG/x+kZ8VlEw1vuUX6F8ygdf2GQF9qaMQ+
+         whCv2qbRyu22OByAueSmbqZW3el2skJRZ7la+51qAqDxD0PHxwdwOHreIxrhaGTOPT1R
+         /LOLGlI1oXpyLajF45+ay0Icy4JHpTLWisG4orPRm4tL0v9S0sJUIhNtlI6r6dMcUsWZ
+         SX0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id;
-        bh=8L+mARjbskmm9/fnZDEXCdh8w219hjakApukot1cy5k=;
-        fh=0CLHrXXyA1zjkSUQcB1fJGYlRfQIEhsWVL+AtADJMkk=;
-        b=rGDeMSwQzWv0AX1Z2JD1RrEcpBTq9oe/QuBDW5dqVi9ZCxzxncssngW0lspLP0+6T8
-         6c40X+PAxltHJFLx8nL9KqEftJ3WFmzwGVrn42uT49FfmcRPwaZOwWJ1sNzuG+2LeVDc
-         OQjE/Lqc1d+POZ892HroH81v9xIMrnPC1ykSn8+NOgBJYv/Bt9vcqh3qE8P2PTCg7RjY
-         ODE9v+kOcLXprsYmR/CVd7QfbCH8yk14NODuXhhxbrqn1fi8KN7s9qVuvW3oCM6dQDyl
-         JPELtD1PIoGgw3Yal/US/tJn++tfF/yCNHbq7GSk4s0pHEt44+ddhqW6S7NQ9JkgRCA0
-         YfPg==
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GyE3CXPeXedQL5IGhlbGJ9w1KGn4iyl/4Ih2AUEQGDU=;
+        fh=io2b6Ltg0uchImskinPivNiiEkwsX5U7IbfoIL9vHTM=;
+        b=LpCqCABFNSZ7+hh7taJaQbP1ShUxQOSODAq/H5351OwGFRJbiB2s7bDphIKsNkT4c4
+         J0RuHSb0y5s+Sqnf57znDSuL2MYHPSePFHkrk9B45bSiz/Z/xP+pKMFhqGl6gXbH3Wok
+         bqkOG5uvsuSd1DTW5Cy9jlB7R0TQlWkR+GEH8tDVIOWkUmzuoC/eSGbyyCapDqIxqJhs
+         Shfu/ZHykn6MLOF/wFbqtozosVPr9k3cIhlRBuE+qLkqoRrjB+8IgebPiXspgFRRutYj
+         2oDQ+6Go0RunPjkV7qfDlARx05aBuPblpz6OwmfI3oEOHaAem0c87wuBxKIoa0gRW0Mu
+         1STQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=u6Gt11xQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id sm12-20020a05620a944c00b0076714ac5d7esi10281901qkn.408.2023.07.04.07.08.10
+        by mx.google.com with ESMTPS id h8-20020ac85e08000000b004031ae3ae07si10321744qtx.28.2023.07.04.07.25.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jul 2023 07:08:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Jul 2023 07:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=u6Gt11xQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qGggm-0002h2-DN; Tue, 04 Jul 2023 10:07:32 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qGgyG-0003LM-BD; Tue, 04 Jul 2023 10:25:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=18er=CW=kaod.org=clg@ozlabs.org>)
- id 1qGggk-0002gb-PG; Tue, 04 Jul 2023 10:07:30 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=18er=CW=kaod.org=clg@ozlabs.org>)
- id 1qGggi-0002CZ-01; Tue, 04 Jul 2023 10:07:30 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4QwPkL3ZG2z4wxW;
- Wed,  5 Jul 2023 00:07:22 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4QwPkF0drRz4wZp;
- Wed,  5 Jul 2023 00:07:16 +1000 (AEST)
-Message-ID: <ad5ea665-dce2-46d3-de14-558db8694eb5@kaod.org>
-Date: Tue, 4 Jul 2023 16:07:14 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGgyE-0003L3-PU
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:25:34 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGgyC-00060x-5m
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:25:34 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-31434226a2eso3632392f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 07:25:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688480727; x=1691072727;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GyE3CXPeXedQL5IGhlbGJ9w1KGn4iyl/4Ih2AUEQGDU=;
+ b=u6Gt11xQ7odwivWClsNDIy2Tn4hnuxAuoEvKhVxJDUXqYakv1RyFBPz8fLT2d0qhT5
+ AwgblWyoZtc3c8jLeJqZCxbm96PwlmjoZmbjQi9TNu3z4KnFA5HpOSL29jQiHcvTPljk
+ hdW9zRYfCpN14eiaIsKYDN949y5kHWhILgAeiraU9lNq9QabUofRMZfvximdyNeKx2an
+ EMegRm7Y84RDzEBUoayXuGx20yNH3R1/ilN7V0b4BQ6tj0H8hXiiaRhzumlpRW3PO9LW
+ 1APqMJkCBSDMiqD1Ame65EkoYSAMsK+VgQXZN2zgIzalpRu5w8WcGH23c3ok9VYdbMdK
+ pVzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688480727; x=1691072727;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GyE3CXPeXedQL5IGhlbGJ9w1KGn4iyl/4Ih2AUEQGDU=;
+ b=BvXRxDq+lzc95JpSyF7UDGQWP12HBWP8OzSMvvTwEYesvwrnqvdSNN0ksP9v+ANjNt
+ qShMXIWzf+HW7f+ddxIu6+iCH3ECjL+V+LedsqxcGj2t4hBBZgFYzychLRIpAAmLka8v
+ R24fAjGCR2WAGn6KS30ARuxTbFDn7ELxEloH0pwQy0GCwS0gxE1SIwdnbJnVmgi3D2Kx
+ 8E9fPegRgv4dFHYv9MCtWmB2pAE01dbeHFxu4PfDUpdKDU9I1FlsEQWG1p7thfyrNfqw
+ Trp5grfhs+vS3UueffOsjujRJegr9l+zWs3I3lH/GhNbHwsv7HVrL0XsJIeLAAu+g8g/
+ lGLA==
+X-Gm-Message-State: ABy/qLbh3LX6G7ppfd37XSaKvpTeJB2ZYUNnXRdPswgpuRJaTkQfLulB
+ ZTOeLkt4TzoA4MpYxXEfhQuAWQ==
+X-Received: by 2002:a5d:5942:0:b0:314:3c8f:d267 with SMTP id
+ e2-20020a5d5942000000b003143c8fd267mr3884554wri.45.1688480727420; 
+ Tue, 04 Jul 2023 07:25:27 -0700 (PDT)
+Received: from [192.168.1.102] ([176.176.157.122])
+ by smtp.gmail.com with ESMTPSA id
+ r3-20020adfda43000000b0030ae3a6be4asm28615167wrl.72.2023.07.04.07.25.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Jul 2023 07:25:27 -0700 (PDT)
+Message-ID: <36110549-9404-17c8-905e-46a81af4ea82@linaro.org>
+Date: Tue, 4 Jul 2023 16:25:25 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH qemu v5] aspeed add montblanc bmc reference from fuji
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH 13/15] hw/timer/arm_timer: Fix misuse of SysBus IRQ in
+ IcpPitState
 Content-Language: en-US
-To: Sittisak Sinprem <ssinprem@celestica.com>, Bin Huang <binhuang@meta.com>, 
- Tao Ren <taoren@meta.com>, Mike Choi <mikechoi@meta.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- andrew@aj.id.au, Joel Stanley <joel@jms.id.au>, qemu-stable@nongnu.org,
- srikanth@celestica.com, ssumet@celestica.com, thangavelu.v@celestica.com,
- kgengan@celestica.com, anandaramanv@celestica.com
-References: <168846918238.25928.7102858062933368556-0@git.sr.ht>
- <3cda00c1-54f8-57db-8992-3cafa97d4564@kaod.org>
- <CAE+aGtX9qcaPXhEYyqDuW_PLsKY9bVXhWiWb=oMT+5X-AXg3zg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAE+aGtX9qcaPXhEYyqDuW_PLsKY9bVXhWiWb=oMT+5X-AXg3zg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Sergey Kambalin <serg.oker@gmail.com>
+References: <20230531203559.29140-1-philmd@linaro.org>
+ <20230531203559.29140-14-philmd@linaro.org>
+ <CAFEAcA8GTuV0AtHnFHbvii9bgDqYjhAJjsjq0CX3WRHrkkaFvw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA8GTuV0AtHnFHbvii9bgDqYjhAJjsjq0CX3WRHrkkaFvw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=18er=CW=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.09, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CQqoawS8wZHH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6rbjCEBM9D3F
 
-On 7/4/23 15:27, Sittisak Sinprem wrote:
-> Hi Meta Team,
-> 
-> the FRU EEPROM content, I think for now detail still be confidential,
-> Please confirm, Can we add the description in Qemu upstream following Cedric's request?
+On 8/6/23 17:09, Peter Maydell wrote:
+> On Wed, 31 May 2023 at 21:37, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> SysBus IRQ are *output* IRQs. As some sort of simplification
+>> to avoid to forward it, IcpPitState misuses it as ARM timer
+>> input IRQ. Fix that by using a simple IRQ forwarder handler.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/timer/arm_timer.c | 15 ++++++++++++++-
+>>   1 file changed, 14 insertions(+), 1 deletion(-)
 
-We don't need all the details, and not the confidential part of course.
 
-C.
+>> +static void icp_pit_fwd_irq(void *opaque, int n, int level)
+>> +{
+>> +    IntegratorPitState *s = opaque;
+>> +
+>> +    qemu_set_irq(s->irq[n], level);
+>> +}
+>> +
+>>   static void icp_pit_init(Object *obj)
+>>   {
+>>       static const uint32_t tmr_freq[] = {
+>> @@ -402,9 +410,14 @@ static void icp_pit_init(Object *obj)
+>>       IntegratorPitState *s = INTEGRATOR_PIT(obj);
+>>       SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+>>
+>> +    qdev_init_gpio_in_named(DEVICE(obj), icp_pit_fwd_irq,
+>> +                            "timer-in", ARRAY_SIZE(s->timer));
+>> +
+>>       for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
+>>           s->timer[i] = arm_timer_new(tmr_freq[i], s->irq_in[i]);
+>> -        sysbus_init_irq(dev, &s->irq_in[i]);
+>> +        sysbus_init_irq(dev, &s->irq[i]);
+>> +        sysbus_connect_irq(dev, i,
+>> +                           qdev_get_gpio_in_named(DEVICE(obj), "timer-in", i));
+>>       }
+> 
+> This feels a bit clunky but I think it's what we have to do,
+> since the various _pass_ APIs for forwarding GPIOs and
+> IRQs from a container to an inner device only work with
+> an entire set of IRQs.
 
-> 
-> On Tue, Jul 4, 2023 at 6:19 PM Cédric Le Goater <clg@kaod.org <mailto:clg@kaod.org>> wrote:
-> 
->     On 7/4/23 13:06, ~ssinprem wrote:
->      > From: Sittisak Sinprem <ssinprem@celestica.com <mailto:ssinprem@celestica.com>>
->      >
->      > - I2C list follow I2C Tree v1.6 20230320
->      > - fru eeprom data use FB FRU format version 4
->      >
->      > Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com <mailto:ssinprem@celestica.com>>
-> 
->     You shoot too fast :) Please add some description for the EEPROM contents.
->     What they enable when the OS/FW boots is good to know for QEMU.
-> 
->     Thanks,
-> 
->     C.
-> 
-> 
->      > ---
->      >   docs/system/arm/aspeed.rst |  1 +
->      >   hw/arm/aspeed.c            | 65 ++++++++++++++++++++++++++++++++++++++
->      >   hw/arm/aspeed_eeprom.c     | 50 +++++++++++++++++++++++++++++
->      >   hw/arm/aspeed_eeprom.h     |  7 ++++
->      >   4 files changed, 123 insertions(+)
->      >
->      > diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
->      > index 80538422a1..5e0824f48b 100644
->      > --- a/docs/system/arm/aspeed.rst
->      > +++ b/docs/system/arm/aspeed.rst
->      > @@ -33,6 +33,7 @@ AST2600 SoC based machines :
->      >   - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
->      >   - ``rainier-bmc``          IBM Rainier POWER10 BMC
->      >   - ``fuji-bmc``             Facebook Fuji BMC
->      > +- ``montblanc-bmc``        Facebook Montblanc BMC
->      >   - ``bletchley-bmc``        Facebook Bletchley BMC
->      >   - ``fby35-bmc``            Facebook fby35 BMC
->      >   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
->      > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->      > index 9fca644d92..bbb7a3392c 100644
->      > --- a/hw/arm/aspeed.c
->      > +++ b/hw/arm/aspeed.c
->      > @@ -189,6 +189,10 @@ struct AspeedMachineState {
->      >   #define FUJI_BMC_HW_STRAP1    0x00000000
->      >   #define FUJI_BMC_HW_STRAP2    0x00000000
->      >
->      > +/* Montblanc hardware value */
->      > +#define MONTBLANC_BMC_HW_STRAP1    0x00000000
->      > +#define MONTBLANC_BMC_HW_STRAP2    0x00000000
->      > +
->      >   /* Bletchley hardware value */
->      >   /* TODO: Leave same as EVB for now. */
->      >   #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
->      > @@ -925,6 +929,41 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
->      >       }
->      >   }
->      >
->      > +static void montblanc_bmc_i2c_init(AspeedMachineState *bmc)
->      > +{
->      > +    AspeedSoCState *soc = &bmc->soc;
->      > +    I2CBus *i2c[16] = {};
->      > +
->      > +    for (int i = 0; i < 16; i++) {
->      > +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
->      > +    }
->      > +
->      > +    /* Ref from Minipack3_I2C_Tree_V1.6 20230320 */
->      > +    at24c_eeprom_init_rom(i2c[3], 0x56, 8192, montblanc_scm_fruid,
->      > +                          montblanc_scm_fruid_len);
->      > +    at24c_eeprom_init_rom(i2c[6], 0x53, 8192, montblanc_fcm_fruid,
->      > +                          montblanc_fcm_fruid_len);
->      > +
->      > +    /* CPLD and FPGA */
->      > +    at24c_eeprom_init(i2c[1], 0x35, 256);  /* SCM CPLD */
->      > +    at24c_eeprom_init(i2c[5], 0x35, 256);  /* COMe CPLD TODO: need to update */
->      > +    at24c_eeprom_init(i2c[12], 0x60, 256); /* MCB PWR CPLD */
->      > +    at24c_eeprom_init(i2c[13], 0x35, 256); /* IOB FPGA */
->      > +
->      > +    /* on BMC board */
->      > +    at24c_eeprom_init_rom(i2c[8], 0x51, 8192, montblanc_bmc_fruid,
->      > +                          montblanc_bmc_fruid_len); /* BMC EEPROM */
->      > +    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x48); /* Thermal Sensor */
->      > +
->      > +    /* COMe Sensor/EEPROM */
->      > +    at24c_eeprom_init(i2c[0], 0x56, 16384);          /* FRU EEPROM */
->      > +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x48); /* INLET Sensor */
->      > +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x4A); /* OUTLET Sensor */
->      > +
->      > +    /* It expects a pca9555 but a pca9552 is compatible */
->      > +    create_pca9552(soc, 4, 0x27);
->      > +}
->      > +
->      >   #define TYPE_TMP421 "tmp421"
->      >
->      >   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
->      > @@ -1452,6 +1491,28 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
->      >           aspeed_soc_num_cpus(amc->soc_name);
->      >   };
->      >
->      > +#define MONTBLANC_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
->      > +
->      > +static void aspeed_machine_montblanc_class_init(ObjectClass *oc, void *data)
->      > +{
->      > +    MachineClass *mc = MACHINE_CLASS(oc);
->      > +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->      > +
->      > +    mc->desc = "Facebook Montblanc BMC (Cortex-A7)";
->      > +    amc->soc_name = "ast2600-a3";
->      > +    amc->hw_strap1 = MONTBLANC_BMC_HW_STRAP1;
->      > +    amc->hw_strap2 = MONTBLANC_BMC_HW_STRAP2;
->      > +    amc->fmc_model = "mx66l1g45g";
->      > +    amc->spi_model = "mx66l1g45g";
->      > +    amc->num_cs = 2;
->      > +    amc->macs_mask = ASPEED_MAC3_ON;
->      > +    amc->i2c_init = montblanc_bmc_i2c_init;
->      > +    amc->uart_default = ASPEED_DEV_UART1;
->      > +    mc->default_ram_size = MONTBLANC_BMC_RAM_SIZE;
->      > +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
->      > +        aspeed_soc_num_cpus(amc->soc_name);
->      > +};
->      > +
->      >   #define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
->      >
->      >   static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
->      > @@ -1703,6 +1764,10 @@ static const TypeInfo aspeed_machine_types[] = {
->      >           .name          = MACHINE_TYPE_NAME("fuji-bmc"),
->      >           .parent        = TYPE_ASPEED_MACHINE,
->      >           .class_init    = aspeed_machine_fuji_class_init,
->      > +    }, {
->      > +        .name          = MACHINE_TYPE_NAME("montblanc-bmc"),
->      > +        .parent        = TYPE_ASPEED_MACHINE,
->      > +        .class_init    = aspeed_machine_montblanc_class_init,
->      >       }, {
->      >           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
->      >           .parent        = TYPE_ASPEED_MACHINE,
->      > diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
->      > index ace5266cec..8cc73f83dc 100644
->      > --- a/hw/arm/aspeed_eeprom.c
->      > +++ b/hw/arm/aspeed_eeprom.c
->      > @@ -161,6 +161,53 @@ const uint8_t rainier_bmc_fruid[] = {
->      >       0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
->      >   };
->      >
->      > +/* Montblanc BMC FRU */
->      > +const uint8_t montblanc_scm_fruid[] = {
->      > +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
->      > +    0x43, 0x4b, 0x33, 0x5f, 0x53, 0x43, 0x4d, 0x02, 0x08, 0x32, 0x30, 0x30,
->      > +    0x30, 0x32, 0x39, 0x34, 0x35, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
->      > +    0x30, 0x31, 0x36, 0x34, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
->      > +    0x30, 0x30, 0x30, 0x31, 0x32, 0x37, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
->      > +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x30, 0x33, 0x30, 0x31, 0x07,
->      > +    0x0d, 0x41, 0x30, 0x33, 0x31, 0x33, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
->      > +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
->      > +    0x0d, 0x4d, 0x32, 0x32, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
->      > +    0x30, 0x32, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
->      > +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
->      > +    0x43, 0x54, 0x48, 0x10, 0x06, 0x01, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x13,
->      > +    0x03, 0x53, 0x43, 0x4d, 0xfa, 0x02, 0x02, 0x61,
->      > +};
->      > +
->      > +const uint8_t montblanc_fcm_fruid[] = {
->      > +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
->      > +    0x43, 0x4b, 0x33, 0x5f, 0x46, 0x43, 0x42, 0x02, 0x08, 0x33, 0x30, 0x30,
->      > +    0x30, 0x30, 0x31, 0x36, 0x31, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
->      > +    0x30, 0x31, 0x36, 0x33, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
->      > +    0x30, 0x30, 0x30, 0x31, 0x33, 0x30, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
->      > +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x31, 0x32, 0x30, 0x31, 0x07,
->      > +    0x0d, 0x41, 0x31, 0x32, 0x31, 0x32, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
->      > +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
->      > +    0x0d, 0x46, 0x35, 0x30, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
->      > +    0x30, 0x35, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
->      > +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
->      > +    0x43, 0x54, 0x48, 0x10, 0x06, 0x02, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x11,
->      > +    0x06, 0x03, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x12, 0x02, 0x8a, 0x00, 0x13,
->      > +    0x03, 0x46, 0x43, 0x42, 0xfa, 0x02, 0x50, 0x47,
->      > +};
->      > +
->      > +const uint8_t montblanc_bmc_fruid[] = {
->      > +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
->      > +    0x43, 0x4b, 0x33, 0x5f, 0x42, 0x4d, 0x43, 0x04, 0x0c, 0x31, 0x33, 0x32,
->      > +    0x30, 0x30, 0x30, 0x31, 0x33, 0x36, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31,
->      > +    0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x38, 0x36, 0x30, 0x35, 0x20, 0x06,
->      > +    0x0c, 0x52, 0x33, 0x30, 0x39, 0x37, 0x47, 0x30, 0x30, 0x30, 0x32, 0x30,
->      > +    0x37, 0x07, 0x0d, 0x42, 0x30, 0x32, 0x37, 0x34, 0x58, 0x58, 0x58, 0x58,
->      > +    0x58, 0x58, 0x58, 0x58, 0x08, 0x01, 0x04, 0x09, 0x01, 0x00, 0x0a, 0x01,
->      > +    0x00, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32, 0x33,
->      > +    0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03, 0x43,
->      > +    0x54, 0x48, 0x13, 0x03, 0x42, 0x4d, 0x43, 0xfa, 0x02, 0xef, 0xba,
->      > +};
->      > +
->      >   const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
->      >   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
->      >   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
->      > @@ -168,3 +215,6 @@ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
->      >   const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
->      >   const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
->      >   const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
->      > +const size_t montblanc_scm_fruid_len = sizeof(montblanc_scm_fruid);
->      > +const size_t montblanc_fcm_fruid_len = sizeof(montblanc_fcm_fruid);
->      > +const size_t montblanc_bmc_fruid_len = sizeof(montblanc_bmc_fruid);
->      > diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
->      > index bbf9e54365..b8fbdd0734 100644
->      > --- a/hw/arm/aspeed_eeprom.h
->      > +++ b/hw/arm/aspeed_eeprom.h
->      > @@ -27,4 +27,11 @@ extern const size_t rainier_bb_fruid_len;
->      >   extern const uint8_t rainier_bmc_fruid[];
->      >   extern const size_t rainier_bmc_fruid_len;
->      >
->      > +extern const uint8_t montblanc_scm_fruid[];
->      > +extern const uint8_t montblanc_fcm_fruid[];
->      > +extern const uint8_t montblanc_bmc_fruid[];
->      > +extern const size_t montblanc_scm_fruid_len;
->      > +extern const size_t montblanc_fcm_fruid_len;
->      > +extern const size_t montblanc_bmc_fruid_len;
->      > +
->      >   #endif
-> 
+Indeed. sysbus_pass_irq() could resolve the last unused IRQ index
+and amend starting at that index, but this doesn't seem a lot of
+need for a such use (so far). We might consider it if we ever merge
+sysbus IRQ API into qdev.
+
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Thanks!
+
+Phil.
 

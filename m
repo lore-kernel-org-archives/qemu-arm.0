@@ -1,115 +1,109 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2979945ejy;
-        Tue, 4 Jul 2023 08:21:58 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE9FZqhnwLveyGHt60w9bpg4NC6oa4J1N3StRxkJZagGrT9bdy89KYctgrfQ12aUURpvZll
-X-Received: by 2002:ad4:594c:0:b0:630:1732:7090 with SMTP id eo12-20020ad4594c000000b0063017327090mr14039383qvb.55.1688484117918;
-        Tue, 04 Jul 2023 08:21:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688484117; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2992592ejy;
+        Tue, 4 Jul 2023 08:43:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ61uNSctZGtfUr+xmcP5VsQe5KmvHLdq94M0C4yMZfaKP7Vn8qKndi2zgw7wOlnCwhWo+1O
+X-Received: by 2002:ac8:5c4c:0:b0:3ff:797d:5e89 with SMTP id j12-20020ac85c4c000000b003ff797d5e89mr21230621qtj.10.1688485431997;
+        Tue, 04 Jul 2023 08:43:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688485431; cv=none;
         d=google.com; s=arc-20160816;
-        b=J4c9rggU9F07gezYegMIt6Ix/g3wzEPHRBtBjLgAGxLJRCvCTchpVca2pxqDKYEDh9
-         vQ23x/NT/6XX+lrgwW24Pdg/sI5TFkJua0Gn4nYV4RQWaA2cJwYL7dLRxUaBLY+UqsnC
-         Kxzw3Cra+z7jY+3kctbCNQFlxJFYrGX1Tahh0Mqk+h4kBEkHhM7L9Jc96QzT5CcZWTeM
-         zctGzFIxhooXV8bilDoDh+iCN9No80AqDwp5HwuvJcLxX6s4HVbI5SI3VOlf9iWtP1f8
-         VnB2FOLSPtv9PPnlhUMpK+gMEC1Ng+LCGRrt2lA2UQ7lRRjAKXft41RBOzdKF9hU/dWJ
-         EH5A==
+        b=SNUP2xU+nzBs6KfAEPQz92sI0qc001B35J4yFlhC/HT08UwP+HAJT9Dw3uS4Grk0Gd
+         5SywfK1BLuwoEbIWqiA+pqAY5+d4MGxe8yKIesP1kY61/AL05W2BiG8KQxs+gJXSqIgr
+         NuEEli0GFSfdSSMHxbBBz6miOs8H9BEf3IxqZA3/uVQx4gJaB3Cd8Jqj44QTuQbAYQgm
+         T1ZbBy8qhsHwAunrtKShEGk0abKYVWgkjlk7mUYJDb/IeIfinQ+15LkXsheGb7gNPnKO
+         n3ePJxnE7EijDcTTFpqCMgOxJ19U4p+jHecNU2v+YVpdpoVSZzMwJT9gQZWU403ZnZTJ
+         Az/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=gbS8ou3K3WgLGLWO7F6RM3pjaHqkGe6mRJLuqkjTdNw=;
-        fh=sKOliLpsPmef7CS5atamlyEPWIP0kxb6Hu7HmDEzLZo=;
-        b=SaB59eXysTTjvXn2KV6NPlWTkuJuYsoqqfDTOMh8RE7+5HUNt3X1qn1dShFjhGJCtx
-         RQDLe7TlU2nTWzURFvfXtlOJq69m3xkxRX+aEaQnzivJxpInLmtMtrFyaYl3+elRkio8
-         5CAHemUw6/ygcQtPcVwrpfa05GgHRFbo1i7dOUqAbj8Zx44sAx5cmM8K4IHDXb0bPHwT
-         4FxyPTbZe77drsPOqs7wJCYLc3eHZVF79zWbBi8Ps4MF5LIDORhiKP+j3ETtl19mn0+7
-         kv4Pbu0uOjMH0Wqxme6nOOc/uK4F/w715poh1rt6YA2JJmE1HyUNKbDbZLYOrtgIKTYo
-         h6jQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ygTlGglnECShwUVIe7MpU8KSDdPM2zi5lkhBBqOyaMs=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=byLyPJp3qtDT8TsbqZbbiKC0cEJbPre5U7ZZm8Eh5WUwCzirAt0/EcWlDEk+TnsEyM
+         aYuA4lo/BC9dq+J+2KlEd1rFdNvenGnKOnMP3Q3pbpuWOmUKL7ugLikpmunX19NtAjuQ
+         kkCy8TcIois92UPpUnOBIQo284TUyaztd8iIpJj25QA9FrhcGV6B2Kyl8hmemxzesGcx
+         7OTL7rC+rgpOEcJuI+7ZRtLhlTgg/mGyLlnpHkjpLXUxbyrEgESKUo3/+uxeIU3QMgu2
+         nwvvriOON5AgeHgR5DLacLv3+dQVFApIoc6kSuso+8l2+a25c6S3kVOcdZBbXAAIdC4y
+         uQEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SB+MMuLk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tdp5jZQ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ke26-20020a056214301a00b00631eb39b7b2si11092019qvb.63.2023.07.04.08.21.57
+        by mx.google.com with ESMTPS id u2-20020a05622a010200b0040079335675si13087140qtw.206.2023.07.04.08.43.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jul 2023 08:21:57 -0700 (PDT)
+        Tue, 04 Jul 2023 08:43:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SB+MMuLk;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tdp5jZQ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGhqR-0000CZ-EW; Tue, 04 Jul 2023 11:21:35 -0400
+	id 1qGiBn-0000Hh-8Q; Tue, 04 Jul 2023 11:43:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhqP-0000Bp-S3
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 11:21:33 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qGiBl-0000Gu-MJ
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 11:43:37 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhqO-0001oY-52
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 11:21:33 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3fbd33a57ddso32814185e9.1
- for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 08:21:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qGiBk-0006EF-46
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 11:43:37 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-313f61890fbso6226637f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 08:43:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688484090; x=1691076090;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=gbS8ou3K3WgLGLWO7F6RM3pjaHqkGe6mRJLuqkjTdNw=;
- b=SB+MMuLkgrZNh/Dd0t8m3Ngtt8j4VfZrJL3WjI9nFv9VPTg30LbfSgGaH23eWn6aUM
- IxNmEzL8S9sM7RgoVPWXDpJwnwBu1hGkVEjdIpFD+sqbibFbgiKRGX4/KoaODEonYB0c
- Edu6Hm0Si1Azme3sO+KnRarOaeZjg+Kxi7/wANoQye+336MUZbhOksgI7D8KK/rqcx+D
- j0NSY9kkVq4cIQMP/c3FtachzlG/mU3HfF/AdI9y6RvVN5+ydGsUzQZv3CgGDPDu4Ezz
- DIOX2xaoabk+Io42GBK9cRVdnLHpO5XLKgxSl9mNYhPLEKyukGlKtQDorYg9XP3cc8vz
- M6CA==
+ d=linaro.org; s=google; t=1688485414; x=1691077414;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ygTlGglnECShwUVIe7MpU8KSDdPM2zi5lkhBBqOyaMs=;
+ b=tdp5jZQ0XfrL0uyp09kCyzGEBDquBP11sTjXswWfaeGNYqUcy1yQyUtUhZPBUHypA2
+ YdlwloU+m8gnPxRYMaHEVEyQ4ZMkME5mDGwqPE3BbDf4llFrQXWeW+cd9EUg2hHoBpOH
+ /cduyymkMFNzkkQZsTy3kFCL/Va9iRp2pI3MNR2zxrYtRNT4R+DrI9SaNa8pAp76thDI
+ IuuToxFqin6n9SVcR1XFqfgdtK4V0fQ3Rl2Osdx9p2cw5K+IHHQF7JCiACX/CzDnV/8a
+ wAwwjpAzVwEvZo13Ghx9P9vKdYG4m+UyD/GACgK8jQ2ZcD/VSHMhE5Rb9xR0Zx7IW52G
+ 8Fjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688484090; x=1691076090;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gbS8ou3K3WgLGLWO7F6RM3pjaHqkGe6mRJLuqkjTdNw=;
- b=bHKMMt+1SmJQdPlPl/hvAkCws4k0Smw5ItguoJVQ84CR7iRVcp9mjRRTiqTJCx/yrI
- 0Du1NkPxUnrXY3POzI064p+mqC/dFYY5Sxgo+l4hW09N7kh0yNyc1v15UKrLHQY8PK5z
- NLHu6sxO3/ByCpYYFBHytnO9WkWl2qi+FEWr7N+Xxr7uZqFHA3r49Id8g86uSotcmCID
- uXLaRZgmf/fwcfkYJZee/iCsvIKpAxxZEY5SgoA9SgCuXJFDQ9t24MgNT5DuZpIhVkZb
- csWq5mijycp23OT2ArQXqKeBrBqjScgs4KQlx7ioWSwvhUJ3gzaNseTH3RC3xRZR05dn
- yabw==
-X-Gm-Message-State: ABy/qLbSaRHiNHTbnT1O/MH/MsXSauYn28TkB5n/IssSvqBknOrigwCP
- jqs3WBMGgqgVFtDVADzG7DNmlCtuHFSUIj58lXs=
-X-Received: by 2002:a05:600c:2041:b0:3fb:e189:3535 with SMTP id
- p1-20020a05600c204100b003fbe1893535mr1859439wmg.27.1688484090473; 
- Tue, 04 Jul 2023 08:21:30 -0700 (PDT)
-Received: from [192.168.1.102] ([176.176.157.122])
+ d=1e100.net; s=20221208; t=1688485414; x=1691077414;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ygTlGglnECShwUVIe7MpU8KSDdPM2zi5lkhBBqOyaMs=;
+ b=bLhu64kchEOkeTE9dR0j6UkLXBu+hnjQjH8DJyDea4zCjoXCbI+AkQ0rlQd/jM8Y8r
+ RkJbUW2198th5MKj+tXl32b716KeCv/X64KLsSO+ogySMykECIT2Kjo7VKDFg2+j9yPj
+ DSiMVpYMI4DfN3HTGKJ5SAxTLy0eHyQ0c9DKnccSMeBuCsdYxeiB7zuZKKrE8a9iHwMS
+ l7MD+X/nS9jFjKvotFpY+0meVC9ZrRgfgQd/gAtFM8AsXNCLNm2SiAUtmSIOYyY2RlSg
+ b1X8FKvVUt5Xe75zRDeDRfRkzAx864yKHMw4Jwyb9oTA67DhQA1CAE1ArdvPpzepBDPt
+ wFjQ==
+X-Gm-Message-State: ABy/qLYN0ZoJeT/KOzDsO01BpPo6PXKE6T7phz+k4OfqooOOY3IFlVvT
+ u9F4kVocSLbX2s/ZdIPwIJPXzrQRjSmMU431hAs=
+X-Received: by 2002:adf:f20d:0:b0:313:e80b:2273 with SMTP id
+ p13-20020adff20d000000b00313e80b2273mr10912590wro.46.1688485414428; 
+ Tue, 04 Jul 2023 08:43:34 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- c9-20020adfe749000000b0031416362e23sm14362382wrn.3.2023.07.04.08.21.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Jul 2023 08:21:30 -0700 (PDT)
-Message-ID: <d8f954dc-8a69-7593-716c-e360d2c8e47b@linaro.org>
-Date: Tue, 4 Jul 2023 17:21:01 +0200
+ l1-20020adff481000000b003113ed02080sm28472427wro.95.2023.07.04.08.43.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Jul 2023 08:43:34 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Avoid over-length shift in arm_cpu_sve_finalize()
+ error case
+Date: Tue,  4 Jul 2023 16:43:32 +0100
+Message-Id: <20230704154332.3014896-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH] target/arm: gdbstub: Guard M-profile code with CONFIG_TCG
-Content-Language: en-US
-To: Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20230628164821.16771-1-farosas@suse.de>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230628164821.16771-1-farosas@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -126,70 +120,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CB5IhxzfdEVQ
+X-TUID: m3/psscaMtFW
 
-On 28/6/23 18:48, Fabiano Rosas wrote:
-> This code is only relevant when TCG is present in the build. Building
-> with --disable-tcg --enable-xen on an x86 host we get:
-> 
-> $ ../configure --target-list=x86_64-softmmu,aarch64-softmmu --disable-tcg --enable-xen
-> $ make -j$(nproc)
-> ...
-> libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub.c.o: in function `m_sysreg_ptr':
->   ../target/arm/gdbstub.c:358: undefined reference to `arm_v7m_get_sp_ptr'
->   ../target/arm/gdbstub.c:361: undefined reference to `arm_v7m_get_sp_ptr'
-> 
-> libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub.c.o: in function `arm_gdb_get_m_systemreg':
-> ../target/arm/gdbstub.c:405: undefined reference to `arm_v7m_mrs_control'
-> 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
-> ---
-> This is a respin of:
-> https://lore.kernel.org/r/20230313151058.19645-5-farosas@suse.de
-> ---
->   target/arm/gdbstub.c | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index 03b17c814f..f421c5d041 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -324,6 +324,7 @@ static int arm_gen_dynamic_sysreg_xml(CPUState *cs, int base_reg)
->       return cpu->dyn_sysreg_xml.num;
->   }
->   
-> +#ifdef CONFIG_TCG
+If you build QEMU with the clang sanitizer enabled, you can see it
+fire when running the arm-cpu-features test:
 
-OK.
+$ QTEST_QEMU_BINARY=./build/arm-clang/qemu-system-aarch64 ./build/arm-clang/tests/qtest/arm-cpu-features
+[...]
+../../target/arm/cpu64.c:125:19: runtime error: shift exponent 64 is too large for 64-bit type 'unsigned long long'
+[...]
 
->   typedef enum {
->       M_SYSREG_MSP,
->       M_SYSREG_PSP,
-> @@ -481,6 +482,7 @@ static int arm_gen_dynamic_m_secextreg_xml(CPUState *cs, int orig_base_reg)
->       return cpu->dyn_m_secextreg_xml.num;
->   }
->   #endif
-> +#endif /* CONFIG_TCG */
->   
->   const char *arm_gdb_get_dynamic_xml(CPUState *cs, const char *xmlname)
->   {
-> @@ -561,6 +563,7 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
->                                arm_gen_dynamic_sysreg_xml(cs, cs->gdb_num_regs),
->                                "system-registers.xml", 0);
->   
-> +#ifdef CONFIG_TCG
+This happens because the user can specify some incorrect SVE
+properties that result in our calculating a max_vq of 0.  We catch
+this and error out, but before we do that we calculate
 
-IIUC tcg_enabled(), this guard shouldn't be necessary; if CONFIG_TCG
-is not defined, tcg_enabled() evaluates to 0, and the compiler should
-elide the whole block.
+ vq_mask = MAKE_64BIT_MASK(0, max_vq);$
 
->       if (arm_feature(env, ARM_FEATURE_M) && tcg_enabled()) {
->           gdb_register_coprocessor(cs,
->               arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
-> @@ -575,4 +578,5 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
->           }
->   #endif
->       }
-> +#endif /* CONFIG_TCG */
->   }
+and the MAKE_64BIT_MASK() call is only valid for lengths that are
+greater than zero, so we hit the undefined behaviour.
+
+Change the logic so that if max_vq is 0 we specifically set vq_mask
+to 0 without going via MAKE_64BIT_MASK().  This lets us drop the
+max_vq check from the error-exit logic, because if max_vq is 0 then
+vq_map must now be 0.
+
+The UB only happens in the case where the user passed us an incorrect
+set of SVE properties, so it's not a big problem in practice.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu64.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 6eaf8e32cfa..6012e4ef549 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -122,10 +122,10 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+         vq = ctz32(tmp) + 1;
+ 
+         max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
+-        vq_mask = MAKE_64BIT_MASK(0, max_vq);
++        vq_mask = max_vq > 0 ? MAKE_64BIT_MASK(0, max_vq) : 0;
+         vq_map = vq_supported & ~vq_init & vq_mask;
+ 
+-        if (max_vq == 0 || vq_map == 0) {
++        if (vq_map == 0) {
+             error_setg(errp, "cannot disable sve%d", vq * 128);
+             error_append_hint(errp, "Disabling sve%d results in all "
+                               "vector lengths being disabled.\n",
+-- 
+2.34.1
 

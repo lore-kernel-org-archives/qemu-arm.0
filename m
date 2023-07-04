@@ -1,152 +1,384 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2793372ejy;
-        Tue, 4 Jul 2023 02:58:25 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFDECOFRviceSKQPXYYnKeYY2WZxEKyEFno6PL+V4BaUWdmg4i/rLW/PM0VCgDO26qvZSLF
-X-Received: by 2002:a17:902:d2cd:b0:1b2:46ab:a9e1 with SMTP id n13-20020a170902d2cd00b001b246aba9e1mr11053373plc.28.1688464705046;
-        Tue, 04 Jul 2023 02:58:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688464705; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2806818ejy;
+        Tue, 4 Jul 2023 03:25:19 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7XM7A9PnFgt1o5lu8myk7kxQpOxok6H/Nqc/HAV7K4iC8pTU0wlZDYlOpcZlUMyecqYwjx
+X-Received: by 2002:a05:620a:3c17:b0:75e:da13:544b with SMTP id tn23-20020a05620a3c1700b0075eda13544bmr11161775qkn.3.1688466319321;
+        Tue, 04 Jul 2023 03:25:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688466319; cv=none;
         d=google.com; s=arc-20160816;
-        b=QW1a5kOXsLq9u349MxZBQJvuWw3LXoIQfo5qUImWSqp1Qkghd2t1ygfyrAJ4hvuQqB
-         4s4BoaPA3qIxg5cwse5V5i5dYIoXv7VkFIAjcZcMWo/eALhIfSkmnmWjhAb6crCHJL5L
-         rDmkCTRN1toY1HhQmxLVu1lPqk8xsdylJ1gVt/CxhLq4Nt+7GhwYmscD4dRCK+LBRBOq
-         YJRtM05d/2Xm0eb04y4ztozohDTJUM4WUhjlVn++llZgfVzP1mP3/zYkuySstk4nLXgO
-         dF4JjhhzWHYHjwJdXXNrvohadmb1PvO2hH3HRQK0DgJoF7jwtsWfMu3+jTKb/jTo+Hy7
-         cyXw==
+        b=XRyLim4Y+gsnGgKCuRDLjY4+AIAjNxlA8Hq9rzRh6RW2ubj9svDDvgww9XfS0gCUUL
+         LskpcDnqJ0ujplS2yJ26pO+hPGp1522s7fbo/FOjIn2SVA+QYH+zv+4mi2Dmg1P3Prkt
+         PhZPIDsTakNRHngO5krczK3p2fAMTnDhMNCWOgQ+jMV2TgGu9828ufXC645eq9KBT65K
+         Sm0zza50cWG+RXE03I83tproelYOI1StEcfEtJUnAtit145YK0rypV960YyATuzizzFC
+         Q90MGTTF284qxFafqlv4zs475HMWQSd6WFwTkyJMIbWrU2d9VtCNlm1FisZz/j1SP5H5
+         FQwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:mime-version:content-transfer-encoding
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from;
-        bh=etOsuhlKBD1jHxJ8q9Ve4qVj2IhunIHjo/NzzVEGdt8=;
-        fh=zsLHaSQRTXCRcN9CR3gE2pzgH3UunuExKbvUkGQkmFo=;
-        b=V7yNQuShnlKrEo3S9QUCpbQzr0Q4g1hNx8u0YTJox26gAuEyF8x9qb5BKxn1/tF7x0
-         NdR6oBBuNPFbSIYbSvo59sTTYKJXqkCpKV8KZQzaxPtMhLiwjsDmY82htOKhXwcqhZ/e
-         +BkIzIJUSlBaUvIfxNu/QIbxfzLo1EMrZz3II9UNytkcVQohDLGNX/o7E4ke5Q5GUitt
-         xhccBav7b0reUUdQKr5awI0CIOXS3VxIKv3KjpXs+yL/3+XotZOTPaD1knY7B1gfg55S
-         alNWye12hC+HCKbApkX4rwwDpSUqtWAm/+vz8mQ6XSKMtDPEIck86smAhfCbyLVisITB
-         v/ZQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:references:cc:to:from:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=OH942YClW+VERN4yklQq1ZA0Gdh+iIqNt9T/QaqxeJA=;
+        fh=An8KaUG0eIIULXNPrsSBpAe9CQqyhL+C0UaYGGPzDSk=;
+        b=TDeLpDpYTpw9li9/xlLb0othxihwLSiypOsqEoxWwEmvpoiAZ3oSlIEFIN8q8D8Pxy
+         6K8CMH74LteXtABUaMi+qEljOFtVBYg6cY9NgIzBAw8sJQT7z0cd4wAEFpDrhENun4f6
+         rZLRdbJlbHaIBwf3H7QpE/JP795uvToNYyFoXJ4P5VPsRma9at4rbNAQh0y8COUXJb9D
+         JqggKcOXgcwju2JiOW0ybAFK5ipAfrpXw/TK89RLUOIanI1VTn5Miv+ZvHi4NFk43Rxy
+         m5gm4Z401Es26YKKr4RmDgVIyUpNR+ok5LPKSuM+PHiDxAmFC3mm89xDN6mpUfqNIi6d
+         YQvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from out1.vger.email (out1.vger.email. [2620:137:e000::1:20])
-        by mx.google.com with ESMTP id n7-20020a170902d2c700b001b8a8f7fe9fsi311663plc.78.2023.07.04.02.58.24;
-        Tue, 04 Jul 2023 02:58:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) client-ip=2620:137:e000::1:20;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x11-20020a05620a098b00b0075ec79a2071si11963500qkx.47.2023.07.04.03.25.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Jul 2023 03:25:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 2620:137:e000::1:20 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S231328AbjGDJ6Y (ORCPT <rfc822;mathieu.poirier@linaro.org>
-        + 2 others); Tue, 4 Jul 2023 05:58:24 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:37312 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S231139AbjGDJ6U (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 4 Jul 2023 05:58:20 -0400
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 1A040E5
-        for <kvm@vger.kernel.org>; Tue,  4 Jul 2023 02:58:18 -0700 (PDT)
-Received: from lhrpeml500003.china.huawei.com (unknown [172.18.147.226])
-        by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4QwJ8v27qlz6J7Tr;
-        Tue,  4 Jul 2023 17:56:31 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 4 Jul 2023 10:58:16 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.027;
- Tue, 4 Jul 2023 10:58:16 +0100
-From:   Salil Mehta <salil.mehta@huawei.com>
-To:     Shaoqin Huang <shahuang@redhat.com>,
-        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC:     "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-        "james.morse@arm.com" <james.morse@arm.com>,
-        "gshan@redhat.com" <gshan@redhat.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Salil Mehta <salil.mehta@opnsrc.net>
-Subject: RE: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-Thread-Topic: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-Thread-Index: AQHZp/pp444fl0T5A0KjPRKELV/ZGK+dFe3AgADJLYCAC4aZ8A==
-Date:   Tue, 4 Jul 2023 09:58:15 +0000
-Message-ID: <539e6a25b89a45839de37fe92b27d0d3@huawei.com>
-References: <20230626064910.1787255-1-shahuang@redhat.com>
- <9df973ede74e4757b510f26cd5786036@huawei.com>
- <fb5e8d4d-2388-3ab0-aaac-a1dd91e74b08@redhat.com>
-In-Reply-To: <fb5e8d4d-2388-3ab0-aaac-a1dd91e74b08@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.48.147.121]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qGdDY-00005b-9g; Tue, 04 Jul 2023 06:25:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=18er=CW=kaod.org=clg@ozlabs.org>)
+ id 1qGdDU-00005I-RB; Tue, 04 Jul 2023 06:25:05 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=18er=CW=kaod.org=clg@ozlabs.org>)
+ id 1qGdDQ-0001lF-0w; Tue, 04 Jul 2023 06:25:03 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4QwJnd531tz4wxS;
+ Tue,  4 Jul 2023 20:24:53 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4QwJnY4hH7z4wZw;
+ Tue,  4 Jul 2023 20:24:48 +1000 (AEST)
+Message-ID: <a59b2ef2-3a44-7729-2260-bc75d0cc50d9@kaod.org>
+Date: Tue, 4 Jul 2023 12:24:46 +0200
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Spam-Status: No, score=-4.2 required=5.0 tests=BAYES_00,RCVD_IN_DNSWL_MED,
-        RCVD_IN_MSPIKE_H2,SPF_HELO_NONE,SPF_PASS,T_SCC_BODY_TEXT_LINE,
-        URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.6
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on
-        lindbergh.monkeyblade.net
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: YgeDBXrQc6ii
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH qemu v3] aspeed add montblanc bmc reference from fuji
+Content-Language: en-US
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+To: ~ssinprem <ssinprem@celestica.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Cc: ssumet@celestica.com, srikanth@celestica.com, kgengan@celestica.com,
+ andrew@aj.id.au, joel@jms.id.au, thangavelu.v@celestica.com,
+ anandaramanv@celestica.com
+References: <168839101774.24055.8166021147074925227-0@git.sr.ht>
+ <020268f0-9dee-c732-f543-8ee1a84a97a5@kaod.org>
+In-Reply-To: <020268f0-9dee-c732-f543-8ee1a84a97a5@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=18er=CW=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.09, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VOIcsZTFf45H
 
-SGkgU2hhb3FpbiwNCkp1c3Qgc2F3IHRoaXMuIEFwb2xvZ2llcy4gSSBtaXNzZWQgdG8gcmVwbHkg
-dGhpcyBlYXJsaWVyIGFzIEkgd2FzIGJpdA0KZGlzY29ubmVjdGVkIGZvciBsYXN0IGZldyBkYXlz
-Lg0KDQoNCj4gRnJvbTogU2hhb3FpbiBIdWFuZyA8c2hhaHVhbmdAcmVkaGF0LmNvbT4NCj4gU2Vu
-dDogVHVlc2RheSwgSnVuZSAyNywgMjAyMyAzOjM1IEFNDQoNCj4gSGkgU2FsaWwsDQo+IA0KPiBP
-biA2LzI2LzIzIDIxOjQyLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gPj4gRnJvbTogU2hhb3FpbiBI
-dWFuZyA8c2hhaHVhbmdAcmVkaGF0LmNvbT4NCj4gPj4gU2VudDogTW9uZGF5LCBKdW5lIDI2LCAy
-MDIzIDc6NDkgQU0NCj4gPj4gVG86IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS1hcm1Abm9u
-Z251Lm9yZw0KPiA+PiBDYzogb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsgU2FsaWwgTWVodGEgPHNh
-bGlsLm1laHRhQGh1YXdlaS5jb20+Ow0KPiA+PiBqYW1lcy5tb3JzZUBhcm0uY29tOyBnc2hhbkBy
-ZWRoYXQuY29tOyBTaGFvcWluIEh1YW5nIDxzaGFodWFuZ0ByZWRoYXQuY29tPjsNCj4gPj4gQ29y
-bmVsaWEgSHVjayA8Y29odWNrQHJlZGhhdC5jb20+OyBrdm1Admdlci5rZXJuZWwub3JnOyBNaWNo
-YWVsIFMuIFRzaXJraW4NCj4gPj4gPG1zdEByZWRoYXQuY29tPjsgUGFvbG8gQm9uemluaSA8cGJv
-bnppbmlAcmVkaGF0LmNvbT47IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9y
-Zz4NCj4gPj4gU3ViamVjdDogW1BBVENIIHYxIDAvNV0gdGFyZ2V0L2FybTogSGFuZGxlIHBzY2kg
-Y2FsbHMgaW4gdXNlcnNwYWNlDQo+ID4+DQo+ID4+IFRoZSB1c2Vyc3BhY2UgU01DQ0MgY2FsbCBm
-aWx0ZXJpbmdbMV0gcHJvdmlkZXMgdGhlIGFiaWxpdHkgdG8gZm9yd2FyZCB0aGUgU01DQ0MNCj4g
-Pj4gY2FsbHMgdG8gdGhlIHVzZXJzcGFjZS4gVGhlIHZDUFUgaG90cGx1Z1syXSB3b3VsZCBiZSB0
-aGUgZmlyc3QgbGVnaXRpbWF0ZSB1c2UNCj4gPj4gY2FzZSB0byBoYW5kbGUgdGhlIHBzY2kgY2Fs
-bHMgaW4gdXNlcnNwYWNlLCB0aHVzIHRoZSB2Q1BVIGhvdHBsdWcgY2FuIGRlbnkgdGhlDQo+ID4+
-IFBTQ0lfT04gY2FsbCBpZiB0aGUgdkNQVSBpcyBub3QgcHJlc2VudCBub3cuDQo+ID4+DQo+ID4+
-IFRoaXMgc2VyaWVzIHRyeSB0byBlbmFibGUgdGhlIHVzZXJzcGFjZSBTTUNDQyBjYWxsIGZpbHRl
-cmluZywgdGh1cyBjYW4gaGFuZGxlDQo+ID4+IHRoZSBTTUNDQyBjYWxsIGluIHVzZXJzcGFjZS4g
-VGhlIGZpcnN0IGVuYWJsZWQgU01DQ0MgY2FsbCBpcyBwc2NpIGNhbGwsIGJ5IHVzaW5nDQo+ID4+
-IHRoZSBuZXcgYWRkZWQgb3B0aW9uICd1c2VyLXNtY2NjJywgd2UgY2FuIGVuYWJsZSBoYW5kbGUg
-cHNjaSBjYWxscyBpbiB1c2Vyc3BhY2UuDQo+ID4+DQo+ID4+IHFlbXUtc3lzdGVtLWFhcmNoNjQg
-LW1hY2hpbmUgdmlydCx1c2VyLXNtY2NjPW9uDQo+ID4+DQo+ID4+IFRoaXMgc2VyaWVzIHJldXNl
-IHRoZSBxZW11IGltcGxlbWVudGF0aW9uIG9mIHRoZSBwc2NpIGhhbmRsaW5nLCB0aHVzIHRoZQ0K
-PiA+PiBoYW5kbGluZyBwcm9jZXNzIGlzIHZlcnkgc2ltcGxlLiBCdXQgd2hlbiBoYW5kbGluZyBw
-c2NpIGluIHVzZXJzcGFjZSB3aGVuIHVzaW5nDQo+ID4+IGt2bSwgdGhlIHJlc2V0IHZjcHUgcHJv
-Y2VzcyBuZWVkIHRvIGJlIHRha2luZyBjYXJlLCB0aGUgZGV0YWlsIGlzIGluY2x1ZGVkIGluDQo+
-ID4+IHRoZSBwYXRjaDA1Lg0KPiA+DQo+ID4gVGhpcyBjaGFuZ2UgaXMgaW50ZW5kZWQgZm9yIFZD
-UFUgSG90cGx1ZyBhbmQgYXJlIGR1cGxpY2F0aW5nIHRoZSBjb2RlDQo+ID4gd2UgYXJlIHdvcmtp
-bmcgb24uIFVubGVzcyB0aGlzIGNoYW5nZSBpcyBhbHNvIGludGVuZGVkIGZvciBhbnkgb3RoZXIN
-Cj4gPiBmZWF0dXJlIEkgd291bGQgcmVxdWVzdCB5b3UgdG8gZGVmZXIgdGhpcy4NCj4gDQo+IFRo
-YW5rcyBmb3Igc2hhcmluZyBtZSB0aGUgaW5mb3JtYXRpb24uIEknbSBub3QgaW50ZW5kZWQgZm9y
-IG1lcmdpbmcgdGhpcw0KPiBzZXJpZXMsIGJ1dCBkaXNjdXNzIHNvbWV0aGluZyBhYm91dCB0aGUg
-VkNQVSBIb3RwbHVnLCBzaW5jZSBJJ20gYWxzbw0KPiBmb2xsb3dpbmcgdGhlIHdvcmsgb2YgdkNQ
-VSBIb3RwbHVnLg0KDQpTdXJlLiBJIGFtIG5vdCBhZ2FpbnN0IHRoaXMgd29yayBpbiBhbnkgd2F5
-IGJ1dCB0aGVyZSB3YXMgYml0IG9mIGFuIG92ZXJsYXAgYW5kIHdhcw0KdHJ5aW5nIHRvIGF2b2lk
-IHRoYXQuIA0KDQo+IA0KPiBKdXN0IGN1cmlvdXMsIHdoYXQgaXMgeW91ciBwbGFuIHRvIHVwZGF0
-ZSBhIG5ldyB2ZXJzaW9uIG9mIFZDUFUgSG90cGx1Zw0KPiB3aGljaCBpcyBiYXNlZCBvbiB0aGUg
-dXNlcnNwYWNlIFNNQ0NDIGZpbHRlcmluZz8NCg0KV2UgaGF2ZSBhbHJlYWR5IGluY29ycG9yYXRl
-ZCB0aGlzLiBXZSBoYXZlIG5vdCB0ZXN0ZWQgaXQgcHJvcGVybHkgdGhvdWdoIGFuZA0KdGhlcmUg
-YXJlIHNvbWUgaXNzdWVzIHJlbGF0ZWQgdG8gdGhlIG1pZ3JhdGlvbiB3ZSBhcmUgZml4aW5nLg0K
-DQpJIGRpZCBtZW50aW9uIGFib3V0IHRoaXMgaW4gdGhlIEtWTUZvcnVtMjAyMyBwcmVzZW50YXRp
-b24gYXMgd2VsbC4NCg0KTGF0ZXN0IFFlbXUgUHJvdG90eXBlIChQcmUgUkZDIFYyKSAoTm90IGlu
-IHRoZSBmaW5hbCBzaGFwZSBvZiB0aGUgcGF0Y2hlcykNCmh0dHBzOi8vZ2l0aHViLmNvbS9zYWxp
-bC1tZWh0YS9xZW11LmdpdMKgIMKgdmlydC1jcHVocC1hcm12OC9yZmMtdjEtcG9ydDExMDUyMDIz
-LmRldi0xDQoNCg0Kc2hvdWxkIHdvcmsgYWdhaW5zdCBiZWxvdyBrZXJuZWwgY2hhbmdlcyBhcyBj
-b25maXJtZWQgYnkgSmFtZXMsDQoNCkxhdGVzdCBLZXJuZWwgUHJvdG90eXBlIChQcmUgUkZDIFYy
-ID0gUkZDIFYxICsgRml4ZXMpwqANCmh0dHBzOi8vZ2l0LmdpdGxhYi5hcm0uY29tL2xpbnV4LWFy
-bS9saW51eC1qbS5naXTCoCAgdmlydHVhbF9jcHVfaG90cGx1Zy9yZmMvdjIgIA0KDQoNCldlIGhh
-dmUgbm90IGFkZGVkIHRoZSBzdXBwb3J0IG9mIHVzZXItY29uZmlndXJhYmlsaXR5IHdoaWNoIHlv
-dXIgcGF0Y2gtc2V0IGRvZXMuDQoNCg0KTWFueSB0aGFua3MNClNhbGlsLg0KDQoNCg0KDQoNCg0K
-DQoNCg0KDQoNCg==
+On 7/3/23 15:31, Cédric Le Goater wrote:
+> On 7/3/23 15:06, ~ssinprem wrote:
+>> From: Sittisak Sinprem <ssinprem@celestica.com>
+>>
+>> - I2C list follow I2C Tree v1.6 20230320
+>> - fru eeprom data use FB FRU format version 4
+>>
+>> Signed-off-by: Sittisak Sinprem <ssinprem@celestica.com>
+> 
+> Super !
+> 
+> 
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Taking that back.
+  
+I missed a few things. See below.
+
+
+> 
+>> ---
+>>   docs/system/arm/aspeed.rst |  1 +
+>>   hw/arm/aspeed.c            | 63 ++++++++++++++++++++++++++++++++++++++
+>>   hw/arm/aspeed_eeprom.c     | 50 ++++++++++++++++++++++++++++++
+>>   hw/arm/aspeed_eeprom.h     |  7 +++++
+>>   4 files changed, 121 insertions(+)
+>>
+>> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+>> index 80538422a1..5e0824f48b 100644
+>> --- a/docs/system/arm/aspeed.rst
+>> +++ b/docs/system/arm/aspeed.rst
+>> @@ -33,6 +33,7 @@ AST2600 SoC based machines :
+>>   - ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
+>>   - ``rainier-bmc``          IBM Rainier POWER10 BMC
+>>   - ``fuji-bmc``             Facebook Fuji BMC
+>> +- ``montblanc-bmc``        Facebook Montblanc BMC
+>>   - ``bletchley-bmc``        Facebook Bletchley BMC
+>>   - ``fby35-bmc``            Facebook fby35 BMC
+>>   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index 9fca644d92..91bd4e5637 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -189,6 +189,10 @@ struct AspeedMachineState {
+>>   #define FUJI_BMC_HW_STRAP1    0x00000000
+>>   #define FUJI_BMC_HW_STRAP2    0x00000000
+>> +/* Montblanc hardware value */
+>> +#define MONTBLANC_BMC_HW_STRAP1    0x00000000
+>> +#define MONTBLANC_BMC_HW_STRAP2    0x00000000
+>> +
+>>   /* Bletchley hardware value */
+>>   /* TODO: Leave same as EVB for now. */
+>>   #define BLETCHLEY_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+>> @@ -925,6 +929,39 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
+>>       }
+>>   }
+>> +static void montblanc_bmc_i2c_init(AspeedMachineState *bmc)
+>> +{
+>> +    AspeedSoCState *soc = &bmc->soc;
+>> +    I2CBus *i2c[16] = {};
+>> +
+>> +    for (int i = 0; i < 16; i++) {
+>> +        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+>> +    }
+>> +
+>> +    /* Ref from Minipack3_I2C_Tree_V1.6 20230320 */
+>> +    at24c_eeprom_init_rom(i2c[3], 0x56, 8192, montblanc_scm_fruid, true);
+>> +    at24c_eeprom_init_rom(i2c[6], 0x53, 8192, montblanc_fcm_fruid, true);
+>> +
+>> +    /* CPLD and FPGA */
+>> +    at24c_eeprom_init(i2c[1], 0x35, 256);  /* SCM CPLD */
+>> +    at24c_eeprom_init(i2c[5], 0x35, 256);  /* COMe CPLD TODO: need to update */
+>> +    at24c_eeprom_init(i2c[12], 0x60, 256); /* MCB PWR CPLD */
+>> +    at24c_eeprom_init(i2c[13], 0x35, 256); /* IOB FPGA */
+>> +
+>> +    /* on BMC board */
+>> +    at24c_eeprom_init_rom(i2c[8], 0x51, 8192, montblanc_bmc_fruid, true);
+>> +                                                      /* BMC EEPROM */
+>> +    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x48); /* Thermal Sensor */
+>> +
+>> +    /* COMe Sensor/EEPROM */
+>> +    at24c_eeprom_init(i2c[0], 0x56, 16384);          /* FRU EEPROM */
+>> +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x48); /* INLET Sensor */
+>> +    i2c_slave_create_simple(i2c[0], TYPE_LM75, 0x4A); /* OUTLET Sensor */
+>> +
+>> +    /* It expects a pca9555 but a pca9552 is compatible */
+>> +    create_pca9552(soc, 4, 0x27);
+>> +}
+>> +
+>>   #define TYPE_TMP421 "tmp421"
+>>   static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+>> @@ -1452,6 +1489,28 @@ static void aspeed_machine_fuji_class_init(ObjectClass *oc, void *data)
+>>           aspeed_soc_num_cpus(amc->soc_name);
+>>   };
+>> +#define MONTBLANC_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+>> +
+>> +static void aspeed_machine_montblanc_class_init(ObjectClass *oc, void *data)
+>> +{
+>> +    MachineClass *mc = MACHINE_CLASS(oc);
+>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>> +
+>> +    mc->desc = "Facebook Montblanc BMC (Cortex-A7)";
+>> +    amc->soc_name = "ast2600-a3";
+>> +    amc->hw_strap1 = MONTBLANC_BMC_HW_STRAP1;
+>> +    amc->hw_strap2 = MONTBLANC_BMC_HW_STRAP2;
+>> +    amc->fmc_model = "mx66l1g45g";
+>> +    amc->spi_model = "mx66l1g45g";
+>> +    amc->num_cs = 2;
+>> +    amc->macs_mask = ASPEED_MAC3_ON;
+>> +    amc->i2c_init = montblanc_bmc_i2c_init;
+>> +    amc->uart_default = ASPEED_DEV_UART1;
+>> +    mc->default_ram_size = MONTBLANC_BMC_RAM_SIZE;
+>> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
+>> +        aspeed_soc_num_cpus(amc->soc_name);
+>> +};
+>> +
+>>   #define BLETCHLEY_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+>>   static void aspeed_machine_bletchley_class_init(ObjectClass *oc, void *data)
+>> @@ -1703,6 +1762,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>>           .name          = MACHINE_TYPE_NAME("fuji-bmc"),
+>>           .parent        = TYPE_ASPEED_MACHINE,
+>>           .class_init    = aspeed_machine_fuji_class_init,
+>> +    }, {
+>> +        .name          = MACHINE_TYPE_NAME("montblanc-bmc"),
+>> +        .parent        = TYPE_ASPEED_MACHINE,
+>> +        .class_init    = aspeed_machine_montblanc_class_init,
+>>       }, {
+>>           .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
+>>           .parent        = TYPE_ASPEED_MACHINE,
+>> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+>> index ace5266cec..6b3ffba0f8 100644
+>> --- a/hw/arm/aspeed_eeprom.c
+>> +++ b/hw/arm/aspeed_eeprom.c
+>> @@ -161,6 +161,53 @@ const uint8_t rainier_bmc_fruid[] = {
+>>       0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
+>>   };
+>> +/* Montblanc BMC FRU */
+>> +const uint8_t montblanc_scm_fruid[8192] = {
+
+
+Please don't specify a 8k size. same below.
+
+>> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
+>> +    0x43, 0x4b, 0x33, 0x5f, 0x53, 0x43, 0x4d, 0x02, 0x08, 0x32, 0x30, 0x30,
+>> +    0x30, 0x32, 0x39, 0x34, 0x35, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
+>> +    0x30, 0x31, 0x36, 0x34, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
+>> +    0x30, 0x30, 0x30, 0x31, 0x32, 0x37, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
+>> +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x30, 0x33, 0x30, 0x31, 0x07,
+>> +    0x0d, 0x41, 0x30, 0x33, 0x31, 0x33, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+>> +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
+>> +    0x0d, 0x4d, 0x32, 0x32, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
+>> +    0x30, 0x32, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
+>> +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
+>> +    0x43, 0x54, 0x48, 0x10, 0x06, 0x01, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x13,
+>> +    0x03, 0x53, 0x43, 0x4d, 0xfa, 0x02, 0x02, 0x61,
+>> +};
+>> +
+>> +const uint8_t montblanc_fcm_fruid[8192] = {
+>> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
+>> +    0x43, 0x4b, 0x33, 0x5f, 0x46, 0x43, 0x42, 0x02, 0x08, 0x33, 0x30, 0x30,
+>> +    0x30, 0x30, 0x31, 0x36, 0x31, 0x04, 0x0c, 0x31, 0x33, 0x32, 0x30, 0x30,
+>> +    0x30, 0x31, 0x36, 0x33, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31, 0x33, 0x31,
+>> +    0x30, 0x30, 0x30, 0x31, 0x33, 0x30, 0x30, 0x31, 0x20, 0x06, 0x0c, 0x52,
+>> +    0x33, 0x32, 0x31, 0x34, 0x47, 0x30, 0x30, 0x31, 0x32, 0x30, 0x31, 0x07,
+>> +    0x0d, 0x41, 0x31, 0x32, 0x31, 0x32, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+>> +    0x58, 0x58, 0x08, 0x01, 0x01, 0x09, 0x01, 0x00, 0x0a, 0x01, 0x00, 0x0b,
+>> +    0x0d, 0x46, 0x35, 0x30, 0x31, 0x33, 0x32, 0x33, 0x31, 0x37, 0x30, 0x30,
+>> +    0x30, 0x35, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32,
+>> +    0x33, 0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03,
+>> +    0x43, 0x54, 0x48, 0x10, 0x06, 0x02, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x11,
+>> +    0x06, 0x03, 0x00, 0x00, 0x91, 0xdb, 0xb4, 0x12, 0x02, 0x8a, 0x00, 0x13,
+>> +    0x03, 0x46, 0x43, 0x42, 0xfa, 0x02, 0x50, 0x47,
+>> +};
+>> +
+>> +const uint8_t montblanc_bmc_fruid[8192] = {
+>> +    0xfb, 0xfb, 0x04, 0xff, 0x01, 0x0d, 0x4d, 0x49, 0x4e, 0x49, 0x50, 0x41,
+>> +    0x43, 0x4b, 0x33, 0x5f, 0x42, 0x4d, 0x43, 0x04, 0x0c, 0x31, 0x33, 0x32,
+>> +    0x30, 0x30, 0x30, 0x31, 0x33, 0x36, 0x30, 0x31, 0x20, 0x05, 0x0c, 0x31,
+>> +    0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x38, 0x36, 0x30, 0x35, 0x20, 0x06,
+>> +    0x0c, 0x52, 0x33, 0x30, 0x39, 0x37, 0x47, 0x30, 0x30, 0x30, 0x32, 0x30,
+>> +    0x37, 0x07, 0x0d, 0x42, 0x30, 0x32, 0x37, 0x34, 0x58, 0x58, 0x58, 0x58,
+>> +    0x58, 0x58, 0x58, 0x58, 0x08, 0x01, 0x04, 0x09, 0x01, 0x00, 0x0a, 0x01,
+>> +    0x00, 0x0c, 0x03, 0x43, 0x4c, 0x53, 0x0d, 0x08, 0x32, 0x30, 0x32, 0x33,
+>> +    0x30, 0x35, 0x30, 0x31, 0x0e, 0x03, 0x57, 0x55, 0x53, 0x0f, 0x03, 0x43,
+>> +    0x54, 0x48, 0x13, 0x03, 0x42, 0x4d, 0x43, 0xfa, 0x02, 0xef, 0xba,
+>> +};
+
+These arrays decode as :
+
+         montblanc_scm
+	
+	......MINIPACK3.SCM..20002945..13200016401...13100012701...R
+	3214G000301..A0313XXXXXXXX...........M221323170002..CLS..202
+	30501..WUS..CTH..........SCM...a
+
+         montblanc_fcm
+	
+	......MINIPACK3.FCB..30000161..13200016301...13100013001...R
+	3214G001201..A1212XXXXXXXX...........F501323170005..CLS..202
+	30501..WUS..CTH......................FCB..PG
+
+         montblanc_bmc
+	
+	......MINIPACK3.BMC..13200013601...13100008605...R3097G00020
+	7..B0274XXXXXXXX...........CLS..20230501..WUS..CTH..BMC....
+
+
+where as :
+
+         tiogapass_bmc
+	
+	...........6...XXXXXX.BMC.Storage.Module.XXXXXXXXXXXXX.XXXXX
+	XXXXXXXXX.1.0.XXXXXXXXX.XXXXXXXXXXXXXXXXXX.9....XXXXXX.Tioga
+	.Pass.Single2.XXXXXXXXXXXXXX.XXX2.XXXXXXXXXXXXX.XXXXXXX.1.0.
+	XXXXXXXXX.Config.A.E
+
+         fby35_nic
+	
+	...............XXXXXXXX.Mellanox.ConnectX.6.DX.OCP3.0.XXXXXX
+	XXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXX.FRU.Ver.0.02.......
+	....XXXXXXXX.Mellanox.ConnectX.6.DX.OCP3.0.XXXXXXXXXXXXXXXXX
+	XXXX.A9..................XXXXXXXXXXXXXXXXXXXXXXXX.....Connec
+	tX.6.DX...........0.y...........d..........F................
+	.........
+
+         fby35_bb
+	
+	............N.A.N.A............XXXXXX.Management.Board.wBMC.
+	XXXXXXXXXXXXX.XXXXXXXXXXXXXX.1.0.XXXXXXXXX.XXXXXXXXXXXXXXXXX
+	X...........XXXXXX.Yosemite.V3.5.EVT2.XXXXXXXXXXXXXX.EVT2.XX
+	XXXXXXXXXXX.XXXXXXX.1.0.XXXXXXXXX.N.A......C
+
+         fby35_bmc
+	
+	...........6...XXXXXX.BMC.Storage.Module.XXXXXXXXXXXXX.XXXXX
+	XXXXXXXXX.1.0.XXXXXXXXX.XXXXXXXXXXXXXXXXXX.9....XXXXXX.Yosem
+	ite.V3.5.EVT2.XXXXXXXXXXXXXX.EVT2.XXXXXXXXXXXXX.XXXXXXX.1.0.
+	XXXXXXXXX.Config.A.E
+
+         yosemitev2_bmc
+	
+	...........6...XXXXXX.Baseboard.MP.......XXXXXXXXXXXXX.XXXXX
+	XXXXXXXXX.1.0.XXXXXXXXX.XXXXXXXXXXXXXXXXXX.9....XXXXXX.Yosem
+	ite.V2.MP.....XXXXXXXXXXXXXX.EVT2.XXXXXXXXXXXXX.XXXXXXX.1.0.
+	XXXXXXXXX.Config.A.E
+
+
+Are the montblanc contents real numbers ? If so, could you clean
+them up please.
+
+Thanks,
+
+C.
+
+>>   const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+>>   const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+>>   const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+>> @@ -168,3 +215,6 @@ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+>>   const size_t yosemitev2_bmc_fruid_len = sizeof(yosemitev2_bmc_fruid);
+>>   const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
+>>   const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
+>> +const size_t montblanc_scm_fruid_len = sizeof(montblanc_scm_fruid);
+>> +const size_t montblanc_fcm_fruid_len = sizeof(montblanc_fcm_fruid);
+>> +const size_t montblanc_bmc_fruid_len = sizeof(montblanc_bmc_fruid);
+>> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+>> index bbf9e54365..b8fbdd0734 100644
+>> --- a/hw/arm/aspeed_eeprom.h
+>> +++ b/hw/arm/aspeed_eeprom.h
+>> @@ -27,4 +27,11 @@ extern const size_t rainier_bb_fruid_len;
+>>   extern const uint8_t rainier_bmc_fruid[];
+>>   extern const size_t rainier_bmc_fruid_len;
+>> +extern const uint8_t montblanc_scm_fruid[];
+>> +extern const uint8_t montblanc_fcm_fruid[];
+>> +extern const uint8_t montblanc_bmc_fruid[];
+>> +extern const size_t montblanc_scm_fruid_len;
+>> +extern const size_t montblanc_fcm_fruid_len;
+>> +extern const size_t montblanc_bmc_fruid_len;
+>> +
+>>   #endif
+> 
+> 
+

@@ -1,113 +1,113 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2947832ejy;
-        Tue, 4 Jul 2023 07:30:25 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGWihJr8MQOCGXXV87szEcx/Dcdw3l3DNvfNIHBXQ5x4avLFCgOAbmiWpyzQnTzW2IsXK8q
-X-Received: by 2002:a05:620a:4056:b0:767:47dd:15f with SMTP id i22-20020a05620a405600b0076747dd015fmr15981105qko.15.1688481025052;
-        Tue, 04 Jul 2023 07:30:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688481025; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2955348ejy;
+        Tue, 4 Jul 2023 07:43:40 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6bXuW0Tpq4i8DIO1mV/Ajh6kQUknv0SyKisGSPaFnbtb0//l6h5sVwCSXqAmqIpt9nqcb0
+X-Received: by 2002:ac8:7dc6:0:b0:3ff:2088:79d8 with SMTP id c6-20020ac87dc6000000b003ff208879d8mr18001573qte.4.1688481820333;
+        Tue, 04 Jul 2023 07:43:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688481820; cv=none;
         d=google.com; s=arc-20160816;
-        b=DYX6RcWB0kk7W8JiBQDaSEjdNhjuZKqAhDzSbmIV5XSmFtjLYiBxJCtxFkzOQxxFxf
-         8/KjXTPkzHFqbluLMGsbfTcymL30EKJ1J3/jZbaRxkfgaJNd/oYsDCydvz+IvY9uS4hG
-         nz7Lzv11WYtsKqsQyks/ReDyXk8CluCejszZCy1/JSCCMH6gfYDo4ME3ohK7IOPXdJ3M
-         8uow67dRdqGgcptizGz+MCDhQibc937fRrzZX4JoZMc6+uBOi58LlBmvCzFT2E1KBfKG
-         7xY1dwWfwK45hfsuKBceAuI18KuX6tNSjbXNRkjDNtfh1F0a8r01MaWgfZe/21utNydP
-         8oUw==
+        b=vc1qgmGlq5FaVU+gvq7OAPsCaNsKlTL9hFyIT1U2zbtydSTC6joq/G6wWwx8wMLi66
+         9uXBAfilyNwHZru84QDFxJOgqB7rrTAsBkF1FLKL9EQf0PQPLANK2l6LUAedTRGStT/g
+         AkFIw+cz5bpWaiwo+9LXKer/axCdl0PSoY6sdv3cLgMf/ZUdkMnpUSQnzpowqlmw1WPu
+         m5jwTHTBHQP+nGlS1huTr4M2UkRZHk3RBaGXxugxJmiceNWGq2manzq9XKFMvjJWfeQl
+         iYRrisEDMqCrql0AtloLyfJT+IOPBZ1hzy7p3rWkekdaabcbzUbV5Q84So3t5Rn/IQIi
+         B+Lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=XEsfGONhUXyIvqAMq1pA305psYj/evf+95AVezYLCWQ=;
+        bh=c/MhayssYSEpEhJFfD4NExHaxpwopuCo3xwJwvudW7o=;
         fh=io2b6Ltg0uchImskinPivNiiEkwsX5U7IbfoIL9vHTM=;
-        b=tz6hLFjr3hFXLShlqC0DWteIoWqL+V6avqXtzEFl8yvq6Cjz9VTvCZlJcJgybGhBvt
-         SP0NJXO4dN2bwqwuixW9fMi3sHNPZZKKSawF5Si0M2hrbOaDWXhAQee6z64UMndOMWB0
-         eOpf91R41QrC7pN1fB/wQnqdiHSfsg73/W6uMYm86KEQNQfKDiww49Xso3f3lK0KxtaS
-         10TX9/ByCROm7u8iCDiCcr2xxiO3Up+m43BuiqJwsr3F8x2NNvjDzjIm+fZyiO/EVQE2
-         CCIUGwdo08APOSFq5byv777R/1LbZggCkt0Bt36wnCueqsBvtys+ooeWtQGVkPCgKwg5
-         jInA==
+        b=fEX/K0MvmulfemdQyNZmE3ot0DuQ0rUrU7DqFEhC+RjGD5etlWqMVlk3kn1fVp9w90
+         wk7lW91vaUy27Q/O/XThP/xPYXPDkUi6sBCnKhvAgbNGUMyQVUDyGFT84dU0OE/B+Eck
+         tFdFq/wiEuWjTJUhTfvgzSWUfkTnvVG/9Vqdfmb3PdODLb7gFeXrfEC0hpt4eikjnF1R
+         SErii9BYNDV9Bs1JOkRKUatToJ4VE9zsmb0w9WYX3wZ+G5lAk5kRr6iLySWH+A/7K3gB
+         bezP+xy7ysc7trKCBTpcPRK+hXLk+UpxqYDBDR5YrhMzFXYaDnjzP89CLLvp+tc9SCcd
+         rruw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HTHwn0/K";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EqwAGPKa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j17-20020a05620a147100b00767736f875bsi1987194qkl.643.2023.07.04.07.30.24
+        by mx.google.com with ESMTPS id u34-20020a05622a19a200b003f982793805si13466311qtc.331.2023.07.04.07.43.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jul 2023 07:30:25 -0700 (PDT)
+        Tue, 04 Jul 2023 07:43:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="HTHwn0/K";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EqwAGPKa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGh2X-0005CW-LV; Tue, 04 Jul 2023 10:30:01 -0400
+	id 1qGhFf-00008e-UI; Tue, 04 Jul 2023 10:43:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGh2W-0005AB-BH
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:30:00 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhFe-0008T0-CZ
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:43:34 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGh2U-0006dd-Ny
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:30:00 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3fbac8b01b3so47128085e9.1
- for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 07:29:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhFc-0001Ex-OZ
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 10:43:34 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-3fba545d743so74558245e9.0
+ for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 07:43:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688480997; x=1691072997;
+ d=linaro.org; s=google; t=1688481810; x=1691073810;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=XEsfGONhUXyIvqAMq1pA305psYj/evf+95AVezYLCWQ=;
- b=HTHwn0/KvwZzbEIQaE7Fb923FvnJW4vtepasqX8qVwl2YwoORRqf16LN8Cmh7nMcLp
- ILyAIbaqt1VO84drmbHMPyn9kxUxlMRNmnrnXoqO+jTjLnyamhFz2Ykm+dW9FkgL3wTX
- 5XrDHROnp4nb9t7FmVhuHHbdEMU+8Nzr+diiT7E3QxaeOB+ztboPUEHCUruqWB8t+tTx
- e7bt4NJYPt1KfMlxMj/QRBHHmo6Zl/5sTN1OLuskxn5RbLl5dCQG2DPwSTOBUZ5CSq/l
- 7BnqATdXWeTFoM0JKxgiJyHcNpLny5BWM4onUsGwjxOfuRkaoHmkZUZPMqoSSjPWJh0m
- 9esQ==
+ bh=c/MhayssYSEpEhJFfD4NExHaxpwopuCo3xwJwvudW7o=;
+ b=EqwAGPKaeBGG6aLiAlYIHx8lIZNL/oWYaUp9aFRwl6on2FsFsyh+FQLXCc90Wm9geK
+ cfk3twqavF+yHwn78loXIj/eIZomgBWUnrPmmSYoe8iZbXhR8Kmv9oiz3EScSJsSZ11D
+ 2k427YJLzASl0ZeaqotDNjv/B0Cw7YGt2pWma4RcUccFn2C1NVukAE/yLd4Tifz80wLd
+ UhL6MH5N795qJIErpIGJdYl3MRIWBFNjLGI0Sn+mCsQ7xND3B3GJGE3zWR34WrRQf2ve
+ hqEmtpYaUlHJnAibPvbkUFgY2prtCO6sCNHXNVE2KqRVMZMIfSuWz/EzeYhYn4Th8tY9
+ QuMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688480997; x=1691072997;
+ d=1e100.net; s=20221208; t=1688481810; x=1691073810;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XEsfGONhUXyIvqAMq1pA305psYj/evf+95AVezYLCWQ=;
- b=N3taJX3Eb1KD9Db5JXtXxQ34/UWc188s/hnD4yTwuGEnTlJF/SzkLxMOtLSwqbvEt7
- BvSEGOJNDTuERjQMskavKwEPYPvJZQvQNpXjf/3l9n7JJ9oR/noK5n2cRtNqL3GkSjQK
- n+qm7SJ+cjAItqeJTcpxgqvFQ3tTkmSWFmp1dahR6cTyXX/Z91Mx4HLvDTnrcC5Lq/zz
- /rdfseJ8zUMPHvjyEa3USSPC08Rk0s//oswf1jh2MgO1XNxclz6XbUI+Kcxe4gORdn18
- 4U+ZUG2b3FqgKOYHMMLzWuhPV6HiLSydbauGgtDW4Le8EyxjAsXKzvGBuo1MaPZ+ybAK
- NScA==
-X-Gm-Message-State: AC+VfDwFbNpKMoJCV5uo0PHbfTeEjSbdFfClqRC+perF9l2Jl/9XwXGA
- Wk0QpE2vV+yeEmo5M9XCZz8miQ==
-X-Received: by 2002:a7b:cbd8:0:b0:3fb:acbe:da5d with SMTP id
- n24-20020a7bcbd8000000b003fbacbeda5dmr12301579wmi.4.1688480997149; 
- Tue, 04 Jul 2023 07:29:57 -0700 (PDT)
+ bh=c/MhayssYSEpEhJFfD4NExHaxpwopuCo3xwJwvudW7o=;
+ b=hduNfFAPnTixFR1xlZjP7m1Maa/1e82S5FPIyzGppbqhMpXY+ccJd9FgClcG66MP6l
+ 6mMhvBOSBMG8Xv/CemYtW58Q0EhOnmBcn75ao6Fx+aJ0bsxh+98Z5henqTNmtDymlEne
+ eYuL+hTFofCefmatHgFnIrzrTiGyZE13+VQgF7pYtKbajE+Q9lg2rwbi2HRwTBWSJ3vl
+ azuA+m4ugF3q4TvadrK+DmTawYxMODW/96I21gfmPKHi8Kd3Xya4TO7rtSUiGbDDJV7D
+ LVLrte0FUnoYNPVSBBYISTHjiU6OyeUk+gzyZpVkYnX2NxwhifoM3E1ELejuDEVdWuOx
+ Ht4Q==
+X-Gm-Message-State: AC+VfDxkajvybs/UFPDZdRckmSTEZBLTbW/jz56DgS3UkUeo32chUELT
+ RNvXPxDqMBPkiEXNG4MIQaUTKA==
+X-Received: by 2002:a7b:c315:0:b0:3f4:d18f:b2fb with SMTP id
+ k21-20020a7bc315000000b003f4d18fb2fbmr13125226wmj.8.1688481810616; 
+ Tue, 04 Jul 2023 07:43:30 -0700 (PDT)
 Received: from [192.168.1.102] ([176.176.157.122])
  by smtp.gmail.com with ESMTPSA id
- r3-20020adfda43000000b0030ae3a6be4asm28624066wrl.72.2023.07.04.07.29.56
+ y9-20020a7bcd89000000b003fbb5506e54sm16852184wmj.29.2023.07.04.07.43.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Jul 2023 07:29:56 -0700 (PDT)
-Message-ID: <ab63c24a-db11-9e2b-1f26-29ea7bac2b60@linaro.org>
-Date: Tue, 4 Jul 2023 16:29:55 +0200
+ Tue, 04 Jul 2023 07:43:30 -0700 (PDT)
+Message-ID: <a986f942-a49f-032a-a50b-ae9dca3996c6@linaro.org>
+Date: Tue, 4 Jul 2023 16:43:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH 12/15] hw/timer/arm_timer: Pass timer output IRQ as
- parameter to arm_timer_new
+Subject: Re: [PATCH 03/15] hw/timer/arm_timer: Add missing sp804_unrealize()
+ handler
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org, Sergey Kambalin <serg.oker@gmail.com>
 References: <20230531203559.29140-1-philmd@linaro.org>
- <20230531203559.29140-13-philmd@linaro.org>
- <CAFEAcA_BSA8s6_8BbMZG9wGWMg78u-k-GQ8ZG8n-MUCRNeEUDA@mail.gmail.com>
+ <20230531203559.29140-4-philmd@linaro.org>
+ <CAFEAcA8ZXZ1x9ruh5DuFF+xMM+75W-dcjHJQXQLBcqi0i-peHQ@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_BSA8s6_8BbMZG9wGWMg78u-k-GQ8ZG8n-MUCRNeEUDA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8ZXZ1x9ruh5DuFF+xMM+75W-dcjHJQXQLBcqi0i-peHQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -129,24 +129,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1zuqt3FdNBK4
+X-TUID: JgOebuAiCpmt
 
-On 8/6/23 17:00, Peter Maydell wrote:
-> On Wed, 31 May 2023 at 21:37, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+On 8/6/23 16:41, Peter Maydell wrote:
+> On Wed, 31 May 2023 at 21:36, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
->> Both SP804State/IcpPitState peek at ArmTimerState internal state.
->> This is fine so far but we want to convert ArmTimerState to QOM
->> where peeking at QOM state internal should be avoided.
->> ArmTimerState's IRQ is just a pointer, so we can pass/set it via
->> argument, avoiding accessing ArmTimerState internal state except
->> from the arm_timer_*() methods.
+>> Release the IRQs allocated in sp804_realize() in the
+>> corresponding sp804_unrealize() handler.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/timer/arm_timer.c | 10 ++++++++++
+>>   1 file changed, 10 insertions(+)
+
+
+>> +static void sp804_unrealize(DeviceState *dev)
+>> +{
+>> +    SP804State *s = SP804(dev);
+>> +
+>> +    for (unsigned i = 0; i < ARRAY_SIZE(s->timer); i++) {
+>> +        qemu_free_irq(s->timer[i]->irq);
+>> +    }
+>> +}
 > 
-> If we convert ArmTimerState to QOM then shouldn't the
-> irq become a sysbus IRQ on the ArmTimerState object,
-> and the looking at the internals go away automatically?
+> I don't really see the purpose in this. It doesn't actually
+> avoid a leak if we ever destroy an SP804, because
+> s->timer[i] itself is memory allocated by arm_timer_init()
+> which we don't clean up (the arm_timer_state not being
+> a qdev). If we did convert arm_timer_state to qdev
+> then these interrupts should turn into being sysbus irqs
+> and gpio inputs on the relevant devices. (In fact if you
+> were willing to take the migration-compat hit you
+> could just have the sp804 create a 2 input OR gate and
+> wire the arm_timer irqs up to it and use the output
+> of the OR gate as the sp804 outbound interrupt line.)
 
-This is what happen two patches later in "hw/timer/arm_timer:
-QOM'ify ARM_TIMER" (which is hard to split).
+Thank for the suggestion, I didn't notice the OR.
 
-At this step ArmTimerState is not yet a QOM object (neither
-SysBus), so we can not create a SysBus IRQ.

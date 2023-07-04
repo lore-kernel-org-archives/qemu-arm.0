@@ -1,51 +1,145 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a15-20020adffacf000000b0031434c08bb7sm6587679wrs.105.2023.07.04.06.45.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Jul 2023 06:45:34 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A34251FFBB;
-	Tue,  4 Jul 2023 14:45:33 +0100 (BST)
-References: <20230704130647.2842917-1-peter.maydell@linaro.org>
- <20230704130647.2842917-2-peter.maydell@linaro.org>
-User-agent: mu4e 1.11.8; emacs 29.0.92
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 1/2] target/arm: Suppress more TCG unimplemented
- features in ID registers
-Date: Tue, 04 Jul 2023 14:45:28 +0100
-In-reply-to: <20230704130647.2842917-2-peter.maydell@linaro.org>
-Message-ID: <87wmzfg58i.fsf@linaro.org>
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2961078ejy;
+        Tue, 4 Jul 2023 07:55:15 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEcGLRZnoblbd5flrpWKeWY+z7BITiZKukqpuTXoRBrVQn1SPTNkgAoqt7yZxrKdrdNLf91
+X-Received: by 2002:a05:6214:202c:b0:635:e696:b33b with SMTP id 12-20020a056214202c00b00635e696b33bmr16630145qvf.32.1688482515399;
+        Tue, 04 Jul 2023 07:55:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688482515; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ek/TW0q7/EgFINQ7Ry8cPsXru72Z2H83Um9VpcHp7a5PMsZD13TJqZ+ultuboA4P7B
+         LYVkFDNxEdQo7z5oSJfg1gSgO+MQ4ymNfSSLEY9RFxnkBZsOeec8oumH1IyDNCkdqRfq
+         l0c522GM/UwkXWS1zhfCkKFaNtov5AMT6/MmqJkOxbdN/oSyNuZrzIVlGLHPhawY/nzG
+         ZYNGS14jVxEs5bOa6g7t+4lo0/VD8YMrfyrOg0tjNaUwT1xvyWfB8gSH4phrJRuqtvxO
+         etGqiD0r3lLikL9gV2sHpVqvTEkAjKFOTB3m8/8xI3MTh6TrI1dXXHDVHCRre4U5EZX0
+         8xZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:to:content-language:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=mDL60JMltsMt/Rtg+5wTG42zz2rVVDC3HXHwPSfEEGk=;
+        fh=8rLPBVc4PtVCrSBJYguK/uz3ToBAIUZs50XXHZUFlVA=;
+        b=AukfqVAJYbJvsSh8Tb4XXrB0pSeV7yRQs8BMoOd/e3f+1ntmFN6j9+KnqYcRX0kHAa
+         KhdvrQE/n7WSNw1ZlcEBgdsm2kImctZ8zkYqfCUTYD//VD0wzYCKkVfspkY25v5mUdEB
+         nLf6XwEOoOdZr1Dv1yXhl87jiTIWt4fhAgoiAPaRw9OeaujTCrvP/9suGzMid/PnDQ0w
+         5LbOcIhy0Op8qGAQSE283y5SjDsWVR9j/1PwV1o4HtQ/R4MSM9YXxm95XnH/Mm21nzca
+         TC6xj0dRxB7Xhpta9pVDaWjx/CMQst+MOPUUX7AwNr37wo0+2OsYIxq5US3SyuEq9YvO
+         ibhw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=guhz6rDv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o6-20020a0562140e4600b0062613bf8357si13184845qvc.173.2023.07.04.07.55.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 04 Jul 2023 07:55:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=guhz6rDv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qGhQm-0001cs-2z; Tue, 04 Jul 2023 10:55:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhQk-0001Yd-8z
+ for qemu-devel@nongnu.org; Tue, 04 Jul 2023 10:55:02 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qGhQi-0004E0-LH
+ for qemu-devel@nongnu.org; Tue, 04 Jul 2023 10:55:01 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-3fbc54caad5so52702685e9.2
+ for <qemu-devel@nongnu.org>; Tue, 04 Jul 2023 07:54:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688482498; x=1691074498;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mDL60JMltsMt/Rtg+5wTG42zz2rVVDC3HXHwPSfEEGk=;
+ b=guhz6rDvWjuaIhSJ4DIGVbzCkamwJcvl6uEMHn53jeIR8UCf4ilZOydQohvYacoN2+
+ SSelyymUEntGuaAYrWzYd/nP1LqkAvHNSsvvcXzWimeVz9ttZ7CgX4aPLFHE8gejQoCL
+ nfNIcb4nj4C0+3I7yE0YOZVwea9wjuuALErqeb0EZGrQS+OB/2s2QdVztuldIr3biF9n
+ 5BQvm6INnlmK46zhaeFt28y0EYJB1MBdP5OCRxLoo4SVxOhq7Xvdqq/mi3//Muyrl5zm
+ WIxvWKIf5atcrzo2jrKxG2WN311NFjhcAtw86u0ycLYyrOE9synZwkhK/ZjWrHgiTblB
+ NFDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688482498; x=1691074498;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mDL60JMltsMt/Rtg+5wTG42zz2rVVDC3HXHwPSfEEGk=;
+ b=LXwTTjVcA7nvEkBy0QJrajaBWpL/u+knb9CTJz3dVYodbftCS4hdFMFDs/aDXQw0Jb
+ A8V0czDmgd1m8hjx55pWFN+0AKafe+hj+fite9zLIN+QApv1C/Fo4ALFwO9gcauMoAh/
+ tPyss6yyL9umqtST5Sd/MbF/IN7O38BUn+V51s9wVfDdltO8A6houtGje5IaF6m47fTF
+ dfw1uki1oAAkrWcGATmQ41Sk2RBF6cqyKDuUDNqy9gFPwO4QGuOUFX7xAmwT7cRWtnjF
+ ZA9ltjGRkQoKw08LkjGXH1bu1peZlyMXUkDMQzT/N6f9bVLRrjLD1rT5GCb3y5ErVu3W
+ 5dhA==
+X-Gm-Message-State: AC+VfDyJBmgF5rjQGO+OZCC/GfZW4kKJHBtBnG6h1RyEYd8PTPocTHNW
+ bfBxksO2Xte13dJmzQ4Xy8WvYg==
+X-Received: by 2002:a05:600c:3787:b0:3fb:ac73:f7d9 with SMTP id
+ o7-20020a05600c378700b003fbac73f7d9mr10543879wmr.32.1688482498454; 
+ Tue, 04 Jul 2023 07:54:58 -0700 (PDT)
+Received: from [192.168.1.102] ([176.176.157.122])
+ by smtp.gmail.com with ESMTPSA id
+ p5-20020a5d68c5000000b00314283a525bsm10145016wrw.93.2023.07.04.07.54.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Jul 2023 07:54:58 -0700 (PDT)
+Message-ID: <488ca2a9-8e1a-3a62-8487-fefaed69ca8b@linaro.org>
+Date: Tue, 4 Jul 2023 16:54:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2d1dyGwuAflZ
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH 0/2] target/arm: Implement Cortex Neoverse-V1
+Content-Language: en-US
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20230704130647.2842917-1-peter.maydell@linaro.org>
+ <81e6bf97-b6c6-e09d-51b5-445bdc3a47bb@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <81e6bf97-b6c6-e09d-51b5-445bdc3a47bb@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kT+aCOa80VnR
 
+On 4/7/23 15:35, Marcin Juszkiewicz wrote:
+> W dniu 4.07.2023 o 15:06, Peter Maydell pisze:
+> 
+>> This patchset implements the Cortex Neoverse-V1 CPU type, as a
+>> representative Armv8.3 (+ some extras from 8.4) CPU matching real
+>> hardware.  The main thing we were waiting for to be able to define
+>> this was FEAT_LSE2, and that is now supported.
+> 
+> Now I can add "reach SBSA level 4" to todo list as it requires v8.3 cpu 
+> (I do not count 'max' cpu type).
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Do we need to introduce machine variants, such sbsa-lvl3-ref and
+sbsa-lvl4-ref? Or simply sbsa-level3/sbsa-level4?
 
-> We already squash the ID register field for FEAT_SPE (the Statistical
-> Profiling Extension) because TCG does not implement it and if we
-> advertise it to the guest the guest will crash trying to look at
-> non-existent system registers.  Do the same for some other features
-> which a real hardware Neoverse-V1 implements but which TCG doesn't:
->  * FEAT_TRF (Self-hosted Trace Extension)
->  * Trace Macrocell system register access
->  * Memory mapped trace
->  * FEAT_AMU (Activity Monitors Extension)
->  * FEAT_MPAM (Memory Partitioning and Monitoring Extension)
->  * FEAT_NV (Nested Virtualization)
->
-> Most of these, like FEAT_SPE, are "introspection/trace" type features
-> which QEMU is unlikely to ever implement.  The odd-one-out here is
-> FEAT_NV -- we could implement that and at some point we probably
-> will.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

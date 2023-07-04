@@ -1,102 +1,107 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2901179ejy;
-        Tue, 4 Jul 2023 06:15:54 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFC+1dHLi+O35d2hV2tghZYVeiZhG+fQJYcTqKLxznGEbD7Fd9PQgRBZRHfpbdEf5L7t/u9
-X-Received: by 2002:ad4:46cf:0:b0:620:a1be:c74d with SMTP id pm15-20020ad446cf000000b00620a1bec74dmr10676655qvb.37.1688476554266;
-        Tue, 04 Jul 2023 06:15:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688476554; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp2894450ejy;
+        Tue, 4 Jul 2023 06:07:33 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFGD+npHwck6lgAFSI8xhqCSzFGtjFUfkc852UWIFjLTKXe8UGt/8GkS2XdtpcAMKR0XKqw
+X-Received: by 2002:a05:6214:501b:b0:637:a75:247a with SMTP id jo27-20020a056214501b00b006370a75247amr5025301qvb.23.1688476052939;
+        Tue, 04 Jul 2023 06:07:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688476052; cv=none;
         d=google.com; s=arc-20160816;
-        b=gz57JhX9pNqXN45Xy+F/ktSCzndQ5XN/Mtvxm+gljhltuW2vtif0x6iM3nsHea6z4l
-         y/ya9USWfeLgN3mPc69Xc4Bd2290WDXISXAywcCvFxqX5XmGAk/lHTsU0kdGzq041iWG
-         beZOKLGoG9DmoW3gnCw9MinuUG7kbHfsMPyaebNZm9yeF30GOFVf6HgFIGJM6Uo6aNp2
-         V9syimY7QEg8mAFqIZBzT2cUtvf9woM0ayq+TrBfU0YgH5XVEPYOC+jKz7v1L6BF7hC8
-         gMk1qbyQjs4mxlJfwGQrXCNjv2zus1f5++Z1/0rAhRfga5m+c9T2dGcAfu1IbtjO0FjB
-         a+PA==
+        b=0gsSqdo9QHJHD1iO4ts9L6B/3EPRD4OuleMOWyTstE6MLu8nzKS8HaxwJuj2U03gdT
+         JWRb1C/8+aaTuJB/lrDYvuIzkd5uQhn4Yb9+Q3Dqd6CHamG3tncX2TIlbfTfFcnZDWAg
+         SsChELUisnxXOLFL/pME+idaKOKoYXYyX2m1CRSK7jPnMReVz8T0uXZP0HZaMq1Esn8H
+         /d/s9w2gIV9NK1c0tUmYLBQlLi3ge9y32imxgSsVKEif5zHKJTXPEz+JEeV7X/053KPx
+         qNbW7YpTF7hUlmIuWlL0g0fRpJoS7JBX39lryBfqX7TR+x+bTOvlNswhWxv3GLSFIRWd
+         a0sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=duSIobqmJ+6xDh9LXiA95cPbM3Ke85YlO7/s8EEKSn8=;
-        fh=AQXGUBcT0N97EA8iSl2gNjTGS0e2RNq/3s69kTQvUng=;
-        b=jOctnbKNIkFL90/UoDdt5Ljnt0WLnHipve/EFxrTu/u/eE5XHTvI6JtyMOelV4V0SV
-         ET9hY+c/f7OzXZB6xrMuC6LN8DidumpL3Z2HbaeBR26JdUP7kJ9GieGBGEFn43xa5By8
-         guOe5S8vzTyS29H5H28Dv1w3ol51p5Muf0KOzP6R9u+F5uHJstmev/metXlG82NZuODR
-         NYEmxW9kujkf87Hbw73EU/SLJN1VQ05LpZ4Aw6pBJ64d2XBr9Jxdm3UEDYZHq3x6xtob
-         OkqngjGVGVDYZ77JDEgAteGEMY6c8j3izbWNFI3oZpjMas5IadWGOQaEKJyJ3qGb/mZ7
-         7W1g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=72OiX3Zm/JYZBpPMQQv+TlFgGKVlYsjEoawtRhhrRGU=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=YYal8lONuKJK97wrtSFB797HGsLwlc4peJ0gklpSVUaZaus/Cl1V8ubFqUm0y1KlO/
+         /MCjHsDqMNk3dRS5BWl5hCA88Sh8fLSf6lSVAnG05e/y43UGkrUOnHIhkZYjIYig4SCL
+         kkxygiYDWzQ2K1VtdYS+IukmoTFdOR1jdu6RWDmsixVD+s2zViyyTtTs2t30bGLzqgC+
+         MrEfrv+Hu6x//TdcgSCoqv/90ePFIVd+iMSoccm12jNuKZWaaPJkFAcEmnmgSWwAMu1l
+         9+G3z4tqY8Ol3pksBKbFdQ/OcGorD99CjQcV+4zljvFYglnm9YztRLuZAYhURJH+H5vm
+         UwlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JeKvD9om;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GLLc/0I+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gy12-20020a056214242c00b0063218553782si12425517qvb.614.2023.07.04.06.15.54
+        by mx.google.com with ESMTPS id gm2-20020a056214268200b006306926d01bsi824825qvb.296.2023.07.04.06.07.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jul 2023 06:15:54 -0700 (PDT)
+        Tue, 04 Jul 2023 06:07:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JeKvD9om;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GLLc/0I+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qGfsf-0006Gf-E4; Tue, 04 Jul 2023 09:15:45 -0400
+	id 1qGfk9-0001S6-36; Tue, 04 Jul 2023 09:06:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qGfsc-0006B3-BL
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:15:44 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1qGfk7-0001Rd-Hs
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:06:55 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qGfsZ-0006F1-SN
- for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:15:42 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-51d5569e4d1so5379386a12.2
- for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 06:15:39 -0700 (PDT)
+ id 1qGfk5-0003Un-13
+ for qemu-arm@nongnu.org; Tue, 04 Jul 2023 09:06:55 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-313f61890fbso6055372f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 04 Jul 2023 06:06:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688476538; x=1691068538;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=duSIobqmJ+6xDh9LXiA95cPbM3Ke85YlO7/s8EEKSn8=;
- b=JeKvD9omZveW6guUMQ09RNC/lqx62bG80WzBpLm3l5hdJ0YVu+FPX9FDqrUGvVZFZX
- Y+R5jzPYUmrcpSp1RTCaOPOOgZhNjhMtx5qHrWjI4ZcZQDpGnkbfSjxwAd4VfHygCChW
- enKpZeUcloDHDR02Pn06Lw3A0TV+8uZbzn9/DPKoAdO/5B4eH5tMz3lufUUpGLMkUlRp
- rzBElOUqxdShNvN6LU2/91Ls1XDVDR6RxAklLeHzdaakdEKh5i3D1rZGKpEZzcepUgOU
- EG0veGBaiuX9miN4QWRF2DG24/x2RJvGYsq9n5DLVWGQFGzGf9h3oNrp010AWvMrZSXY
- HjWA==
+ d=linaro.org; s=google; t=1688476011; x=1691068011;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=72OiX3Zm/JYZBpPMQQv+TlFgGKVlYsjEoawtRhhrRGU=;
+ b=GLLc/0I+xIHy9hA7VyX5GNms7xbDhgKZl68wGH+TlN9hFOqr476xVRyCOOW1gX+vzQ
+ HWu850xE5v797niiIsDtpK0ay5LoNeO1Xhn7OiDL3k2Pims1NdDHdO4zBFT2IOXfDkWg
+ 6PswGtnwASZv7AFvM9jX8zGuuGPs6V6vxaQmHHGcRAG5u77y4oUziaTpMfY0jZBtX3RO
+ pYMVzXIzpASLqquXNQVsDa754UUiJjxDC0O2qk4RzSzSI7O5FiXjYCcLFTNGu2kjnS+Z
+ 7r1W3HjJSe2Wbdm0TBkypFBOQBomZInAyM9kcAHJfclhaF5NFi5aNsUafvn/V6BdKJfC
+ 135Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688476538; x=1691068538;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=duSIobqmJ+6xDh9LXiA95cPbM3Ke85YlO7/s8EEKSn8=;
- b=DsQC2e5rB01Ivi4x9geUbgN0NmqyIe0qgaFXIeNdllJU5ZGWcd4OEkaPw5QFKP+4Jv
- RvqExTs+oDjyItl/zvZkLlOX/Vlkzev6bcvyDnRX9f3HHJqawl/x1hLnHbsWNmZkOUpp
- FFazAIY2UgYreVucv/vIwcao84g6KCYfFTjclExuMy85WOymybSiHgR6rzc2fiLWDUNj
- veYf55BxsOlYXOxQCoY81GMZza8YmrqQWWXQBOi991mQapqeFh5KFo1ULPAZTfeljy6m
- CBz69+LP6+82Gro9gWopqXslQge35DtM4vGMSj3+QPPBpS7EGCq2aDXr3RQ7RkNzH90x
- kuEw==
-X-Gm-Message-State: ABy/qLbCzWqfXbFjoaBUaxmFWrXpuRfZRITf1K2pH5jFSDppHdijRyxh
- ewtae0YJdl9x1/9w0M0BqFkidDC5nXdy1QCKCztWAw==
-X-Received: by 2002:a05:6402:b2d:b0:51e:1a3c:e72e with SMTP id
- bo13-20020a0564020b2d00b0051e1a3ce72emr2163270edb.19.1688476537808; Tue, 04
- Jul 2023 06:15:37 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230628164821.16771-1-farosas@suse.de>
-In-Reply-To: <20230628164821.16771-1-farosas@suse.de>
+ d=1e100.net; s=20221208; t=1688476011; x=1691068011;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=72OiX3Zm/JYZBpPMQQv+TlFgGKVlYsjEoawtRhhrRGU=;
+ b=T75TbFu0MGTcDpQ5VLfEPFY5uZ6FmlqzSLTT+4RFNcc/DT+juH3Fv9LGZOTuflg9zb
+ yhV2SPdqdUjHm5I2i3RxZTlJNCq2QkAWXU04DP3w2275I1WT7wBvIhsh1XKwIQRc6mV1
+ iM3t6ywM4oKzmoBQbTjx1kqZOimAu/AlQlsVlP+wU/JcjeBNXg/EPPGJPFoOVX1NRf10
+ Y1I69L/JeUSPb8cEWpyIKUBspdSIP0nth73ifaJHysugXxCqrheb1eio0yLYGnIEnqUE
+ PNKPZrIAsjJIGCqrlZygI7YeXrRS++7xPni2yoNBOS7uBloujSmWtRAjktq4GygXOKeL
+ bvNQ==
+X-Gm-Message-State: ABy/qLYChfU7sDu2hihPZEWS4oNbaAP+fYaqJ33XeF+VQO80N1Wd6v5t
+ ModrvQ6hNBYVBz6L9+ooiq/NbtWgAe3tu1T86I0=
+X-Received: by 2002:adf:fe8f:0:b0:314:183f:7ac0 with SMTP id
+ l15-20020adffe8f000000b00314183f7ac0mr11251869wrr.43.1688476011636; 
+ Tue, 04 Jul 2023 06:06:51 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ a10-20020adfeeca000000b00314103d6daesm15834737wrp.47.2023.07.04.06.06.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Jul 2023 06:06:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Jul 2023 14:15:26 +0100
-Message-ID: <CAFEAcA-Z+ThrYO7ycQxc7eVZzF5f+OinL7R=_Cm-SfQ3U8P6_Q@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: gdbstub: Guard M-profile code with CONFIG_TCG
-To: Fabiano Rosas <farosas@suse.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 2/2] target/arm: Define neoverse-v1
+Date: Tue,  4 Jul 2023 14:06:47 +0100
+Message-Id: <20230704130647.2842917-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230704130647.2842917-1-peter.maydell@linaro.org>
+References: <20230704130647.2842917-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,27 +123,223 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HI1V978E2qjB
+X-TUID: c2BE2kiMP/Ms
 
-On Wed, 28 Jun 2023 at 17:48, Fabiano Rosas <farosas@suse.de> wrote:
->
-> This code is only relevant when TCG is present in the build. Building
-> with --disable-tcg --enable-xen on an x86 host we get:
->
-> $ ../configure --target-list=x86_64-softmmu,aarch64-softmmu --disable-tcg --enable-xen
-> $ make -j$(nproc)
-> ...
-> libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub.c.o: in function `m_sysreg_ptr':
->  ../target/arm/gdbstub.c:358: undefined reference to `arm_v7m_get_sp_ptr'
->  ../target/arm/gdbstub.c:361: undefined reference to `arm_v7m_get_sp_ptr'
->
-> libqemu-aarch64-softmmu.fa.p/target_arm_gdbstub.c.o: in function `arm_gdb_get_m_systemreg':
-> ../target/arm/gdbstub.c:405: undefined reference to `arm_v7m_mrs_control'
->
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Now that we have implemented support for FEAT_LSE2, we can define
+a CPU model for the Neoverse-V1, and enable it for the virt and
+sbsa-ref boards.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+If you're checking the values against the TRM, note that the
+summary tables differ from the register description in the TRM
+for ID_AA64DFR0_EL1, ID_AA64ZFR0_EL1 and ID_PFR0_EL1: we
+trust the versions in the register descriptions. Also the
+MIDR value in the r1p2 TRM isn't updated from r1p1.
+The CCSIDR_EL1 values in the TRM unfortunately seem to be wrong:
+the comment in the patch describes how I've calculated the
+values used here.
 
+I've stuck with the existing approach for aarch64_add_*_properties
+in the interests of getting this in before softfreeze, though
+there does seem like there ought to be a workable refactoring
+there somewhere.
+---
+ docs/system/arm/virt.rst |   1 +
+ hw/arm/sbsa-ref.c        |   1 +
+ hw/arm/virt.c            |   1 +
+ target/arm/tcg/cpu64.c   | 128 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 131 insertions(+)
 
-Applied to target-arm.next, thanks.
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 1cab33f02e3..51cdac68410 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -61,6 +61,7 @@ Supported guest CPU types:
+ - ``a64fx`` (64-bit)
+ - ``host`` (with KVM only)
+ - ``neoverse-n1`` (64-bit)
++- ``neoverse-v1`` (64-bit)
+ - ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
+ 
+ Note that the default is ``cortex-a15``, so for an AArch64 guest you must
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 0639f97dd5f..f0857198983 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -150,6 +150,7 @@ static const char * const valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+     ARM_CPU_TYPE_NAME("cortex-a72"),
+     ARM_CPU_TYPE_NAME("neoverse-n1"),
++    ARM_CPU_TYPE_NAME("neoverse-v1"),
+     ARM_CPU_TYPE_NAME("max"),
+ };
+ 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9b9f7d9c687..20b134fe477 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -213,6 +213,7 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("cortex-a76"),
+     ARM_CPU_TYPE_NAME("a64fx"),
+     ARM_CPU_TYPE_NAME("neoverse-n1"),
++    ARM_CPU_TYPE_NAME("neoverse-v1"),
+ #endif
+     ARM_CPU_TYPE_NAME("cortex-a53"),
+     ARM_CPU_TYPE_NAME("cortex-a57"),
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 6fec2d8a57a..6b8e8461f54 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -502,6 +502,31 @@ static void define_neoverse_n1_cp_reginfo(ARMCPU *cpu)
+     define_arm_cp_regs(cpu, neoverse_n1_cp_reginfo);
+ }
+ 
++static const ARMCPRegInfo neoverse_v1_cp_reginfo[] = {
++    { .name = "CPUECTLR2_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 15, .crm = 1, .opc2 = 5,
++      .access = PL1_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUPPMCR_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 0,
++      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUPPMCR2_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 1,
++      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "CPUPPMCR3_EL3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 2, .opc2 = 6,
++      .access = PL3_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++};
++
++static void define_neoverse_v1_cp_reginfo(ARMCPU *cpu)
++{
++    /*
++     * The Neoverse V1 has all of the Neoverse N1's IMPDEF
++     * registers and a few more of its own.
++     */
++    define_arm_cp_regs(cpu, neoverse_n1_cp_reginfo);
++    define_arm_cp_regs(cpu, neoverse_v1_cp_reginfo);
++}
++
+ static void aarch64_neoverse_n1_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -573,6 +598,108 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
+     define_neoverse_n1_cp_reginfo(cpu);
+ }
+ 
++static void aarch64_neoverse_v1_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    cpu->dtb_compatible = "arm,neoverse-v1";
++    set_feature(&cpu->env, ARM_FEATURE_V8);
++    set_feature(&cpu->env, ARM_FEATURE_NEON);
++    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
++    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
++    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
++    set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
++
++    /* Ordered by 3.2.4 AArch64 registers by functional group */
++    cpu->clidr = 0x82000023;
++    cpu->ctr = 0xb444c004; /* With DIC and IDC set */
++    cpu->dcz_blocksize = 4;
++    cpu->id_aa64afr0 = 0x00000000;
++    cpu->id_aa64afr1 = 0x00000000;
++    cpu->isar.id_aa64dfr0  = 0x000001f210305519ull;
++    cpu->isar.id_aa64dfr1 = 0x00000000;
++    cpu->isar.id_aa64isar0 = 0x1011111110212120ull; /* with FEAT_RNG */
++    cpu->isar.id_aa64isar1 = 0x0111000001211032ull;
++    cpu->isar.id_aa64mmfr0 = 0x0000000000101125ull;
++    cpu->isar.id_aa64mmfr1 = 0x0000000010212122ull;
++    cpu->isar.id_aa64mmfr2 = 0x0000000000001011ull;
++    cpu->isar.id_aa64pfr0  = 0x1101110120111112ull; /* GIC filled in later */
++    cpu->isar.id_aa64pfr1  = 0x0000000000000020ull;
++    cpu->id_afr0       = 0x00000000;
++    cpu->isar.id_dfr0  = 0x15011099;
++    cpu->isar.id_isar0 = 0x02101110;
++    cpu->isar.id_isar1 = 0x13112111;
++    cpu->isar.id_isar2 = 0x21232042;
++    cpu->isar.id_isar3 = 0x01112131;
++    cpu->isar.id_isar4 = 0x00010142;
++    cpu->isar.id_isar5 = 0x11011121;
++    cpu->isar.id_isar6 = 0x01100111;
++    cpu->isar.id_mmfr0 = 0x10201105;
++    cpu->isar.id_mmfr1 = 0x40000000;
++    cpu->isar.id_mmfr2 = 0x01260000;
++    cpu->isar.id_mmfr3 = 0x02122211;
++    cpu->isar.id_mmfr4 = 0x01021110;
++    cpu->isar.id_pfr0  = 0x21110131;
++    cpu->isar.id_pfr1  = 0x00010000; /* GIC filled in later */
++    cpu->isar.id_pfr2  = 0x00000011;
++    cpu->midr = 0x411FD402;          /* r1p2 */
++    cpu->revidr = 0;
++
++    /*
++     * The Neoverse-V1 r1p2 TRM lists 32-bit format CCSIDR_EL1 values,
++     * but also says it implements CCIDX, which means they should be
++     * 64-bit format. So we here use values which are based on the textual
++     * information in chapter 2 of the TRM (and on the fact that
++     * sets * associativity * linesize == cachesize).
++     *
++     * The 64-bit CCSIDR_EL1 format is:
++     *   [55:32] number of sets - 1
++     *   [23:3]  associativity - 1
++     *   [2:0]   log2(linesize) - 4
++     *           so 0 == 16 bytes, 1 == 32 bytes, 2 == 64 bytes, etc
++     *
++     * L1: 4-way set associative 64-byte line size, total size 64K,
++     * so sets is 256.
++     *
++     * L2: 8-way set associative, 64 byte line size, either 512K or 1MB.
++     * We pick 1MB, so this has 2048 sets.
++     *
++     * L3: No L3 (this matches the CLIDR_EL1 value).
++     */
++    cpu->ccsidr[0] = 0x000000ff0000001aull; /* 64KB L1 dcache */
++    cpu->ccsidr[1] = 0x000000ff0000001aull; /* 64KB L1 icache */
++    cpu->ccsidr[2] = 0x000007ff0000003aull; /* 1MB L2 cache */
++
++    /* From 3.2.115 SCTLR_EL3 */
++    cpu->reset_sctlr = 0x30c50838;
++
++    /* From 3.4.8 ICC_CTLR_EL3 and 3.4.23 ICH_VTR_EL2 */
++    cpu->gic_num_lrs = 4;
++    cpu->gic_vpribits = 5;
++    cpu->gic_vprebits = 5;
++    cpu->gic_pribits = 5;
++
++    /* From 3.5.1 AdvSIMD AArch64 register summary */
++    cpu->isar.mvfr0 = 0x10110222;
++    cpu->isar.mvfr1 = 0x13211111;
++    cpu->isar.mvfr2 = 0x00000043;
++
++    /* From 3.7.5 ID_AA64ZFR0_EL1 */
++    cpu->isar.id_aa64zfr0 = 0x0000100000100000;
++    cpu->sve_vq.supported = (1 << 0)  /* 128bit */
++                            | (1 << 1);  /* 256bit */
++
++    /* From 5.5.1 AArch64 PMU register summary */
++    cpu->isar.reset_pmcr_el0 = 0x41213000;
++
++    define_neoverse_v1_cp_reginfo(cpu);
++
++    aarch64_add_pauth_properties(obj);
++    aarch64_add_sve_properties(obj);
++}
++
+ /*
+  * -cpu max: a CPU with as many features enabled as our emulation supports.
+  * The version of '-cpu max' for qemu-system-arm is defined in cpu32.c;
+@@ -763,6 +890,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
+     { .name = "a64fx",              .initfn = aarch64_a64fx_initfn },
+     { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
++    { .name = "neoverse-v1",        .initfn = aarch64_neoverse_v1_initfn },
+ };
+ 
+ static void aarch64_cpu_register_types(void)
+-- 
+2.34.1
 
--- PMM

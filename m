@@ -1,283 +1,197 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp3464230ejy;
-        Wed, 5 Jul 2023 03:14:20 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEPT6t7ToACTDlKWP3IfqK4ajKQFFSb3VnYtONAfsbR3YcXnnbUdxKPcIF5E8Lv4d7OplBQ
-X-Received: by 2002:a05:6214:da9:b0:635:e242:e4bb with SMTP id h9-20020a0562140da900b00635e242e4bbmr22283730qvh.59.1688552060320;
-        Wed, 05 Jul 2023 03:14:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1688552060; cv=pass;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp3504658ejy;
+        Wed, 5 Jul 2023 04:33:28 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGr/Gj0XrRY6W6gi6zuwNV8PVVVBPBh9cuQ3DwHVju+djlnsgM78lo6xFmrSnMscgbLpz/v
+X-Received: by 2002:a05:6214:c69:b0:616:5f27:b96a with SMTP id t9-20020a0562140c6900b006165f27b96amr18687931qvj.27.1688556808609;
+        Wed, 05 Jul 2023 04:33:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688556808; cv=none;
         d=google.com; s=arc-20160816;
-        b=yYtdpTpQ2rk3MXjwO0tbsrI25L4MvBTSicUILoBEpbI9W66dPezXOOQdsalPbvBzE7
-         +Fz+OODNvB6/ep9MRtpTiudfw83dJUlmCWILUzmMQBOA5lwunkevv6R2Y1nZds4qa8oI
-         5eXzLZ2r5emld98c3H9fa3uAiu7VMlydNTbZRh8Detza3YkAgEiXSws+4dEIAwdb+yQe
-         IZwPWxpofIhOd3yyS4zySg23Dpmd5W6+HdwspSBzIfjegPk+LvPbfnIQNlM010kuTxzV
-         lns1Z0oP2Y5WLFZjwG4DC2fkwKTRUq2X7oFCbokKtiwyDzy+5cctbakbiuQ1M9nWXOhI
-         qFoA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=bDb8ZZOkJ6sWGuyDVfuugAgTYfp02iXWTuGaxQeQm5NO8k3ttpeCcmW9Wr3y2Sq2A/
+         Wl/l/FylT2j8GtOum+VbgvlD8jbv1ylIbl/c2zZAK8ydUiZdU9TzG+4HQ1ilK81P9vjn
+         tf3wqq8NZFyJep+JxOgtnUzHhZS60BSVL37cKnrW2uUdNzwPdCMCRxTiQS0UdrB3ssxw
+         x/rOcbtm5nSUedWl+nP3XbFuSbgBYx4oLx2vSQ+rTKulYTh/27mz2kXmwcqSthKce/tJ
+         JT53xCGdh/GF82Vl+e/dfBz7tzRT6NR/yKOiDmhAS2DNWGAVwzluRGjfsuf4tv94xSU7
+         NFZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=MST4AztR3Dw7p3lBwBlN9HEYaK3nVHjeiXsT0COJLZU=;
-        fh=yryFfGw2DcIlHvO5OsHsVZSFXIn1ZAKiNKHLiVwc4ek=;
-        b=zX1KZMQEtq+w0fHB90bUCiujzZUF5B20IU63Vuaitm4ZUezvN4/dq+/HW78KlXJ/bV
-         sb0ASRlcn5LKo/B3M+jAJpnThdQDQTDCaBUs98oaWycrvTM+L01hD8cuMMGcVPdgdMtT
-         oeWDHmHLVazskF9Yn/84BNdcNlGLB1d/d0+lBS2kaTYwSeBfXwfEqh5dPq9QSx292cRL
-         Hk5YumsM4Cx1gF7YsIEwIcC1eQTLsKdlJRM7lzcPMSPB7g4HBjWnPdyDvbXoaIWznAfH
-         GcF7oH236nbBTqClskmj9z3Gu+PqOiRwkpZIqWgFog35cWg8FwKgkoBK5YyZbvCB/jdU
-         CBIg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="QqSZtQ/f";
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=d9OeV4Azz5FNN4zDVHuiAiDcX7+Unc+PeJIK+IFYXfI=;
+        fh=P7TP2qU81eUsOrjfkMl52Bolmj6Hkb0k1aZzEx3Z4bM=;
+        b=QnG/m1LE0KlJMKPUGd/ULTzWXltGVZJnS2ch8cRG32PpTWbam2bltqzjmPH2rqzicb
+         oRjjQxaCUhRMrdO5SrEPjHyMiq5gcuDi8odd91LtgfNc0AEGgE7vCZDfc3Mk5Duxm23k
+         aHJgQCwH/eIZiFS0CCfivsogzdnHQr2mRgz1+Hftum4/Z6M3freyZZpnBDfR3GN0IX/S
+         NdX+9JQzVxNoFZ9tdTgdfLA4fgLMoTIT+DrVVBQRHbs0jm9ruYUX/J4l8w/2lP2lf3Wx
+         oUIUvV40MIfm9DX3skILmt1/j9YOl0T4pmzRabWkXldbL59U9P0NlDvlyi29gumsV0Rf
+         DaCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aw7QOlkw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a9-20020ad45c49000000b0062df6aef2ebsi14391919qva.142.2023.07.05.03.14.20
+        by mx.google.com with ESMTPS id js9-20020a0562142aa900b006216ee5bc63si14816123qvb.241.2023.07.05.04.33.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Jul 2023 03:14:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Jul 2023 04:33:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="QqSZtQ/f";
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=aw7QOlkw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qGzVp-0005Ie-Ru; Wed, 05 Jul 2023 06:13:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qH0l1-0005qJ-Uh; Wed, 05 Jul 2023 07:33:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1qGzVk-0005ID-E9; Wed, 05 Jul 2023 06:13:24 -0400
-Received: from mga07.intel.com ([134.134.136.100])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1qGzVh-0006vY-Iq; Wed, 05 Jul 2023 06:13:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688552001; x=1720088001;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=0xeJOFLG4z5G1N3g8jqxe6XYJL//Xohvac2HCfporpc=;
- b=QqSZtQ/ftTCl0W9IYM+Md9ae5Wm3/+20WjIFjBklaxO7A59br9MfRGw/
- xBu9fDI0wySxaw0aRP7R2ebZ60RFc0pNnXdUZfRAbyLiADSsXE3SS9HCN
- e945KutBJWFHeVQRu3u4lAUVt9JwjtSvtG2t1ZM6HfWi0bkRu2o7gOQSF
- CfE/iyg+7ADaXKxYEiwjn9OmCBHMhfSOgO8MK9DdkOYyBJSthpmX8iFNR
- E/s5DKxRKKSld9Rer4h1Xgo9dMtKgZh4u+p8qbV2ulzb74HEQ6Gseq93R
- uGXJQdAFEfH1T3pQ+R/3kSEE039SXJa3JKS/8f+4z03g8LzHSjmJAcd+s g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10761"; a="429336885"
-X-IronPort-AV: E=Sophos;i="6.01,182,1684825200"; d="scan'208";a="429336885"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2023 03:13:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10761"; a="696403142"
-X-IronPort-AV: E=Sophos;i="6.01,182,1684825200"; d="scan'208";a="696403142"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga006.jf.intel.com with ESMTP; 05 Jul 2023 03:13:14 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Wed, 5 Jul 2023 03:13:14 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Wed, 5 Jul 2023 03:13:13 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Wed, 5 Jul 2023 03:13:13 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.173)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Wed, 5 Jul 2023 03:13:13 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NU1GSBnM84i228v+HHPFfswcY7IytC7BktaztEC3ZYaxPwvGricirUq3rT2/bNndowAFTbOvzHsckwU0CsPtZlJ9I7GxVU8+kbcMPV/8kKuazXWjzSXmmDr9XyKJOvZX7+y70sXGWnEkcG7+yN3zwoaol/JphJMgPryZ4CVnHwiLTvSm8/DUjj2aXpQ8FoRZs0XXP0blnJjGlzy2ji8Ce9uCQ5e6At8NAPOhZz4VAwqEZI8smpyDaCXxyOVYVEzLQNweSl0YSz4ROO49QEqUq91JeGuiGMCiMQcYs1RlgZZ8VvmmGWBlBko/EyEVRo/YLqVe1hpI4tLZP1A6a1XvFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MST4AztR3Dw7p3lBwBlN9HEYaK3nVHjeiXsT0COJLZU=;
- b=ERmYBZnHLTxaz0LMzJDTIA8+lLSkgINPFZLlCwXq1OjGWVBJ6LmlVDa/Rq6Q0w0CGuNoLQmnK8yK/M5gaYi4G5xaaTRAvrgM7P/kM+cZNY9ZWMjspNWasy5auVEX0mMKj+sV31ES7Zus8h61ZLtSHrtgZvwxSQYqV/jaIUrpjzfWI/hRr410tayRt1jcrlsKUbJolqtGeBLOIHBUlmqkaK4B/4K/7EigfXBkOzl9ySWkgB35iQuwuy+klBi3xEsUSgVQaioffKjoCwcgyPI0z721Ax5j6v9cLQvYXmYhCe5Vb0m1ewVCiz4ACQIfqtq0JSqkfJuzPmIO2XHMRKD/MA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
- by DS7PR11MB7740.namprd11.prod.outlook.com (2603:10b6:8:e0::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6544.24; Wed, 5 Jul
- 2023 10:13:11 +0000
-Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::f580:d6a6:47a1:95f0]) by SJ0PR11MB6744.namprd11.prod.outlook.com
- ([fe80::f580:d6a6:47a1:95f0%6]) with mapi id 15.20.6544.024; Wed, 5 Jul 2023
- 10:13:11 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-CC: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
- <mst@redhat.com>, "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "clg@redhap.com" <clg@redhap.com>, "bharat.bhushan@nxp.com"
- <bharat.bhushan@nxp.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>
-Subject: RE: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO device
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qH0l0-0005pH-Fa
+ for qemu-arm@nongnu.org; Wed, 05 Jul 2023 07:33:14 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1qH0ky-0000wQ-1U
+ for qemu-arm@nongnu.org; Wed, 05 Jul 2023 07:33:14 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-313f1085ac2so7277846f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 05 Jul 2023 04:33:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688556786; x=1691148786;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=d9OeV4Azz5FNN4zDVHuiAiDcX7+Unc+PeJIK+IFYXfI=;
+ b=aw7QOlkwo9IIPYXRIjhjkLhU6ktiv0/Q5ydkkhLMCM+IBzSZXAyM2AsPvAOzLLL6X/
+ fTGBgck6ykk1HyimJSxeuioEjTuVdU//F8+5xlMPueVSQIWQBJjgmxoe7nCdUdLNAAst
+ +dK0TisJR4U9C3gKExC/lApCNpZqskaKAPY1Mt3KnBAJQ43C2MOGSXOuLnyoTHLRIJmA
+ 8KE0CR7ecoNyOAB3nUg3ylkCHZa3Gbi7LlLRaDX7LGRz9sWGfrc/F0aJ16/fq+Ay8Ctk
+ 9XCEe+GKgjPIbiSZUv1Qmlv6B/SRVDdtrvcH/3fGATAz4qQ4mkvtADSzdSWmcQbXkYbt
+ B3KQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688556786; x=1691148786;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=d9OeV4Azz5FNN4zDVHuiAiDcX7+Unc+PeJIK+IFYXfI=;
+ b=i4q2kczSlOOPqH09E34sZWfZGpsxAZbXPBH+0gtZ3HWkD5vGJnKdB4XqHM0FQm9EnV
+ DGbFJqbObVZsusVOeNX2O5KHBzdNVBhFyJKkPtR2QuCr234NoEoenHihUQeDonWs+rtB
+ KWXK/Q3YQkb8f7u/ZndIPPo6QbepDliAh2MmHn3DPXHkWJDjPifSOANIkhVx7sFk0YgZ
+ a+3Hi6UuAZd2FGwpYqynqCUHg5nnv7Y35tX92mqknvdXxj3TtX6uR+Ei03gYGvq18Ama
+ oTngGqQeGI90lkUPyfDM+PAEHtye5iUt+ACtnrBQFks70NKtM2Rx4okaxTbKF6750dPe
+ X/EQ==
+X-Gm-Message-State: AC+VfDzOsPseBc37AXXo2xPt16n73xdzkGiJ2P/OGTN6JWv36SKAbklD
+ UfaQe17l7WgBOwuRrUIHRZSIxw==
+X-Received: by 2002:a1c:720f:0:b0:3f7:a552:2ec7 with SMTP id
+ n15-20020a1c720f000000b003f7a5522ec7mr12790316wmc.33.1688556786579; 
+ Wed, 05 Jul 2023 04:33:06 -0700 (PDT)
+Received: from myrica ([2.219.138.198]) by smtp.gmail.com with ESMTPSA id
+ u4-20020a5d5144000000b0031444673643sm2568202wrt.57.2023.07.05.04.33.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 05 Jul 2023 04:33:06 -0700 (PDT)
+Date: Wed, 5 Jul 2023 12:33:05 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "clg@redhap.com" <clg@redhap.com>,
+ "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+Subject: Re: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO device
  assignment
-Thread-Topic: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO device
- assignment
-Thread-Index: AQHZrmjiQzWi8iDMQE285Hu7NzFLv6+qlagQgABDBwCAABlkcA==
-Date: Wed, 5 Jul 2023 10:13:11 +0000
-Message-ID: <SJ0PR11MB674426C1F9AB893C82E371A4922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
+Message-ID: <20230705113305.GA2267040@myrica>
 References: <20230704111527.3424992-1-eric.auger@redhat.com>
  <20230704111527.3424992-2-eric.auger@redhat.com>
  <SJ0PR11MB674435F2BA42A8925ABA336F922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
  <20230705082902.GA2234638@myrica>
-In-Reply-To: <20230705082902.GA2234638@myrica>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|DS7PR11MB7740:EE_
-x-ms-office365-filtering-correlation-id: 61281176-e8d7-42fb-42a7-08db7d406fea
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: LTDZJkpE2xY0PJRF/LyaIetz2ZObZ1e+N8kj0b1aONWU8uJk9g8TY0a2svPMVIx3D9pL3VjEBPeEQvY4OOs+mlzHXTRbeVVMSaOV5+FtKFo+8O+Bej9jRQRi90AOF+E4HRkRl65t9rljOlQXyJDyJ4vaggMS6WchOHnu3ak34NN803KjAp9E+xt8qNuuoFrpt/qeaW3aR3BJRuO3fNiaAUPHuzYXCJolAnPStgzHiLbw5/+dVTUjDFwIw3oTvP8A9Vm5XagiWIOzePz1s/wJ5i9CnTdd4FSBowFZOl+O4fGeTD1LNsrCHvmRUbKdIChgH6MY6njL+kMc+ntDjU6mMmp8UwOD/Jbzc6Jc1XX3upcLmu3g/r5oO8aObaUiYKq9AiAgYzreet86jA27e4UwxCNRAdCFQ2nQb0jubtqrEVhu2CghZbzDDTR8Rg/ThVdcsIPS8IAQAabastU8+jmdd53ffErDHUzcZYDo01hT2G376ictamK3aqkKW9q/K+rpGlp/ajG+iD1jFst0npZYbbXz3SCnanDcDvl53Vl7DnuB6oKBZdWAYAEexksh4OfnINKHiva8Eir/o6DyQLYXe+JDrfCT6joY+5OVPpPurTA=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(376002)(136003)(39860400002)(396003)(366004)(451199021)(83380400001)(54906003)(86362001)(41300700001)(8676002)(7416002)(2906002)(5660300002)(52536014)(33656002)(8936002)(66946007)(6916009)(64756008)(66556008)(66476007)(76116006)(38070700005)(66446008)(478600001)(316002)(71200400001)(7696005)(55016003)(38100700002)(122000001)(4326008)(82960400001)(6506007)(26005)(9686003)(186003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?aw0ROs+E46GCXzPA8YsGLzBcAJWtCR9cewhXPHM1SeFXYe1SyQF7eo2kNwMX?=
- =?us-ascii?Q?bjcxxpCtcNmugWUrETB6NuHLfl+Y5Jeqctym+GwCaGR457w1DNQSfx81od5p?=
- =?us-ascii?Q?E6c533WzqRCzaOCCZDu9+Jq+shqIdlU8oFdE8fn6BuNUHSxQpD+rpwqBsvWf?=
- =?us-ascii?Q?aQIJzcTPIecRGBoERufRBjs5SzrN62Hfee85/syYoVxqY8f8bGRqTXiKfGE2?=
- =?us-ascii?Q?lq9AnvS7ZpuoeUjpo7+GnRQ8uQFrsZ9BsQPJsk0/zttSRQF1xj2hEacm8k0q?=
- =?us-ascii?Q?6kBhknAM+p5tNMUJ+WxhAtp73zAza0FBPwMni11hi6kzhJjt5GoMQjlj09AW?=
- =?us-ascii?Q?z+N+cb/IAI0qe0mIC0DgbnjeQVoEmjo+9gj077St3WTsB2jULv9FLEXMLh5B?=
- =?us-ascii?Q?+W9NUIXDn0VPpD+Pu227wDa9umv+x5IZ5mBDLn/friCgJRdyozjYvIxf7VX4?=
- =?us-ascii?Q?IHUQE5LbOGWPkLvYzBayoCoLmwzZ9urh6VK1fagX7TLIo6Hsfqg66nOM/o5X?=
- =?us-ascii?Q?BULGUKZVh0m0OY4C3iYhItfC1Aux+ah8wDQOYZe4g9Y4nua9mT1fAHePOYAc?=
- =?us-ascii?Q?Td6sX33z0rM1EbglzaH7gJkmm1jwD0cWFxViBBhkOyyoaoK6vbb1B/7dIC7v?=
- =?us-ascii?Q?pwgD4WNgyJ8RCiDMnXPqv19mirbCLpyTJspEeGSIs/1ZU6BT+b7B5CnPoZWA?=
- =?us-ascii?Q?O+X3760yESoCEV+xf4OOXlqozJ++zADOIL/1EhWIgvwMR+K6f2V87AFuG2o/?=
- =?us-ascii?Q?W2KPsRyI8fhGU7BBldF3STvHU35pdziCgpHmvespfcWN0PS0PILgYoFmLqaK?=
- =?us-ascii?Q?bKvkQVdcV0Z54KjkVuDWUClMGwzNmGZ8VX2ZWXAhJg1QF5u65MBX2cS+y9S2?=
- =?us-ascii?Q?kFTdGghG8DFeIc76felIJp+B5f799vK5H99475+35YgHaFOS1czE3rHFZfLq?=
- =?us-ascii?Q?Chvh9TSlGNPc3vwKgaR/NJtZmgLIducbIgPVT9TxR78ulXCSrR14GBNi5cgK?=
- =?us-ascii?Q?/K5UrHgff2i6fIlJJ5e5QXpIhXljPHJ0fbRf9rZwGTsZJhYU95D8yPrpN+gZ?=
- =?us-ascii?Q?2kLexeC5ZH0zV6RPeVvI1WU14oYXzSq9kT6ZMqcqOYTx/371s+l22ABdlQNV?=
- =?us-ascii?Q?Nr0RGcEI2lB5unVtoCqnP9xj+tehr9wE1k01gMjxuxFg1F5fvi5OEQJJpT20?=
- =?us-ascii?Q?b4apZq+3bp82iFSwLaQmLv1sItHHjLMDL8OfVdQxnwRNzg3iGo5Pi8m/UMaR?=
- =?us-ascii?Q?JFA6VSVWs+kHTAwKVJ80IeIQLSCJ8N12SXuJ5y2f/MatNG0Ysf0PheLWSXVK?=
- =?us-ascii?Q?/vtuVKD7zBWzmpXrKfYvN5VNohGVq3g7c8HfP+91zHmJyHhrQIDBETnFxLiN?=
- =?us-ascii?Q?8G3Urc/iU2J+lWVBFnU2KxMD4qVx1XuSvy+hVcOthTc76iP3ey/1wxyf2D5j?=
- =?us-ascii?Q?la8h39e823AALwkqG0zLerAV9uxHitct6I0eAa/PAv1HRAIaCQYIhMeRFY2R?=
- =?us-ascii?Q?9ryNna2D5ySOp5f33SMddcaq/9QBhsi9xBbBwjlGL48kBYGSmG5gz9ZC4/ny?=
- =?us-ascii?Q?WqRPJ70NiG+RxnCxqq2xnnxOiubba+/pQJ+r2mSe?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <SJ0PR11MB674426C1F9AB893C82E371A4922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 61281176-e8d7-42fb-42a7-08db7d406fea
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jul 2023 10:13:11.1816 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MLOOwOStQRez9R9jFK1Qj2XVBcY93nNpPxU2m03HvS12eRpBB7434UWBYQ8DAtYaNxhJ51ucEhqGUsldkICX+G/CgJhJqgMEQdff3kfcnZ4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB7740
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=134.134.136.100;
- envelope-from=zhenzhong.duan@intel.com; helo=mga07.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <SJ0PR11MB674426C1F9AB893C82E371A4922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5k+NtHDs0FB7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0OoDov+dlM+s
 
->-----Original Message-----
->From: Jean-Philippe Brucker <jean-philippe@linaro.org>
->Sent: Wednesday, July 5, 2023 4:29 PM
->Subject: Re: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO device
->assignment
->
->On Wed, Jul 05, 2023 at 04:52:09AM +0000, Duan, Zhenzhong wrote:
->> Hi Eric,
->>
->> >-----Original Message-----
->> >From: Eric Auger <eric.auger@redhat.com>
->> >Sent: Tuesday, July 4, 2023 7:15 PM
->> >Subject: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO
->> >device assignment
->> >
->> >When running on a 64kB page size host and protecting a VFIO device
->> >with the virtio-iommu, qemu crashes with this kind of message:
->> >
->> >qemu-kvm: virtio-iommu page mask 0xfffffffffffff000 is incompatible
->> >with mask 0x20010000
->>
->> Does 0x20010000 mean only  512MB and 64KB super page mapping is
->> supported for host iommu hw? 4KB mapping not supported?
->
->It's not a restriction by the HW IOMMU, but the host kernel. An Arm SMMU
->can implement 4KB, 16KB and/or 64KB granules, but the host kernel only
->advertises through VFIO the granule corresponding to host PAGE_SIZE. This
->restriction is done by arm_lpae_restrict_pgsizes() in order to choose a pa=
-ge
->size when a device is driven by the host.
+On Wed, Jul 05, 2023 at 10:13:11AM +0000, Duan, Zhenzhong wrote:
+> >-----Original Message-----
+> >From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> >Sent: Wednesday, July 5, 2023 4:29 PM
+> >Subject: Re: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO device
+> >assignment
+> >
+> >On Wed, Jul 05, 2023 at 04:52:09AM +0000, Duan, Zhenzhong wrote:
+> >> Hi Eric,
+> >>
+> >> >-----Original Message-----
+> >> >From: Eric Auger <eric.auger@redhat.com>
+> >> >Sent: Tuesday, July 4, 2023 7:15 PM
+> >> >Subject: [PATCH 1/2] virtio-iommu: Fix 64kB host page size VFIO
+> >> >device assignment
+> >> >
+> >> >When running on a 64kB page size host and protecting a VFIO device
+> >> >with the virtio-iommu, qemu crashes with this kind of message:
+> >> >
+> >> >qemu-kvm: virtio-iommu page mask 0xfffffffffffff000 is incompatible
+> >> >with mask 0x20010000
+> >>
+> >> Does 0x20010000 mean only  512MB and 64KB super page mapping is
+> >> supported for host iommu hw? 4KB mapping not supported?
+> >
+> >It's not a restriction by the HW IOMMU, but the host kernel. An Arm SMMU
+> >can implement 4KB, 16KB and/or 64KB granules, but the host kernel only
+> >advertises through VFIO the granule corresponding to host PAGE_SIZE. This
+> >restriction is done by arm_lpae_restrict_pgsizes() in order to choose a page
+> >size when a device is driven by the host.
+> 
+> Just curious why not advertises the Arm SMMU implemented granules to VFIO
+> Eg:4KB, 16KB or 64KB granules?
 
-Just curious why not advertises the Arm SMMU implemented granules to VFIO
-Eg:4KB, 16KB or 64KB granules? But arm_lpae_restrict_pgsizes() restricted o=
-nes,
-Eg: for SZ_4K, (SZ_4K | SZ_2M | SZ_1G).
-(SZ_4K | SZ_2M | SZ_1G) looks not real hardware granules of Arm SMMU.
+That's possible, but the difficulty is setting up the page table
+configuration afterwards. At the moment the host installs the HW page
+tables early, when QEMU sets up the VFIO container. That initializes the
+page size bitmap because configuring the HW page tables requires picking
+one of the supported granules (setting TG0 in the SMMU Context
+Descriptor).
 
->
->>
->> There is a check in guest kernel side hint only 4KB is supported, with
->> this patch we force viommu->pgsize_bitmap to 0x20010000 and fail below
->> check? Does this device work in guest?
->> Please correct me if I understand wrong.
->
->Right, a guest using 4KB pages under a host that uses 64KB is not supporte=
-d,
->because if the guest attempts to dma_map a 4K page, the IOMMU cannot
->create a mapping small enough, the mapping would have to spill over
->neighbouring guest memory.
->
->One possible solution would be supporting multiple page granules. If we
->added a page granule negotiation through VFIO and virtio-iommu then the
->guest could pick the page size it wants. But this requires changes to Linu=
-x UAPI
->so isn't a priority at the moment, because we're trying to enable nesting =
-which
->would support 64K-host/4K-guest as well.
->
->See also the discussion on the patch that introduced the guest check
->https://lore.kernel.org/linux-iommu/20200318114047.1518048-1-jean-
->philippe@linaro.org/
+If the guest could pick a granule via an ATTACH request, then QEMU would
+need to tell the host kernel to install page tables with the desired
+granule at that point. That would require a new interface in VFIO to
+reconfigure a live container and replace the existing HW page tables
+configuration (before ATTACH, the container must already be configured
+with working page tables in order to implement boot-bypass, I think).
 
-Clear, thanks for sharing the history.
+> But arm_lpae_restrict_pgsizes() restricted ones,
+> Eg: for SZ_4K, (SZ_4K | SZ_2M | SZ_1G).
+> (SZ_4K | SZ_2M | SZ_1G) looks not real hardware granules of Arm SMMU.
 
-Regards
-Zhenzhong
+Yes, the granule here is 4K, and other bits only indicate huge page sizes,
+so the user can try to optimize large mappings to use fewer TLB entries
+where possible.
+
+Thanks,
+Jean

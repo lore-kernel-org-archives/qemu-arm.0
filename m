@@ -1,123 +1,173 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp3626990ejy;
-        Wed, 5 Jul 2023 07:45:24 -0700 (PDT)
-X-Received: by 2002:a05:6512:3b0f:b0:4f8:5ade:44b5 with SMTP id f15-20020a0565123b0f00b004f85ade44b5mr13426545lfv.53.1688568324278;
-        Wed, 05 Jul 2023 07:45:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688568324; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp3631435ejy;
+        Wed, 5 Jul 2023 07:53:22 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlG2BVrKaUCCatkZH0hvnRqxBYvsmS+JsxmAtFn0hN3wPhXRQ/PeUiJG3HPwu+N9lZKIBizo
+X-Received: by 2002:a0c:ebc1:0:b0:635:ea31:5219 with SMTP id k1-20020a0cebc1000000b00635ea315219mr13934300qvq.51.1688568801869;
+        Wed, 05 Jul 2023 07:53:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688568801; cv=none;
         d=google.com; s=arc-20160816;
-        b=TV+VwceIxTM4xZLOeZFb1V23bHpxKgjykva0Rvjdb1r+edbkqJNuJcRKzmBdJmhsX3
-         jFS3bIPyGaSq+yIZ6SEKKc67Mg6203Ih0gEPovhZsqbnhFXggru+W0t+erTiCW4h250h
-         qy89kPMW3NGjFs63pqRcrrJFi1Ghi5thF7g6I6pbLmXoVXKasGZBZwZOWDwl6W9UZxe8
-         sqAQ7mz1F5cinOln4UvJXGcuxQIY0XnGavlz24Im6KO9ZF6/jNaNQOQLsgyF1RLp1IED
-         B4THJmT6OHg4CixD1MCF7CoRcGgIJxixWj8rV3JBRxNOhibVr8jej46mnGr2jLn4g7+J
-         DrWA==
+        b=rz6Pxqdf3tT5jZr9LBt52XAVVEk0YpK0rpbqhPjfwZhGx7zFgpHlWB7VU8w9MxcePh
+         dwqf6T2MVGoUjq3AD7Jz4gE+z7txr6Qvdqt57yNgV//ieROoLg0oVwL2Il9T2Mnsb/mI
+         oQqIOKsMERT5GKA75Fz+X99pUHY8dSu8Z1+gf8G+/ZxwEjK0G0XcgKca/Pn6BB8aC1Xf
+         i4r63E2m5fjKJbui1AGX0/maR1aRhbWyoNR2zg+l+GFxrQUGDX5Uhf3vaMldL6DxA4SW
+         Z7pb2BnOCq/7zn8TfholAcXiQDWdYU4P/uHSeqYRY7pX+PtsKzHEr6gYmQwYgy7k+5Bn
+         /D5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=Tl2AskdNCf03W6dDZ14SDintwMW6XEoJs3CByzgxNoA=;
-        fh=IyHxBIV1HNtY9DtLymvZmkrRiEQad8bLsCFl9C45SM4=;
-        b=Ccct/pbgkzDEMTPtquHEp/OYVreM6ICUhQpWev/zw0alWxsIfZZS6lL8fQnsHvwTtk
-         J4SOSD3zagrbVYZkKH5SK0+toRrDXg3p4yggVSiEyMnp2/+06titexZpmMlNpWh9gnA6
-         mHAfI1dVT4sQJskwZrOBRjVCkzR5io5Xqn+mCdGqfRmgpxA0OlkBRUJjpfutRqdxwq4h
-         BHjNVcPkZtSCj8kttImuWK+JFs7ugq32DwP+zzZlhtmPX6p8B21QRbpqwXNC++KXZRV+
-         jU6huSsN+2xdOObUZMPnyju8VUx/prA+X6SV6kokDEAgHTtl3zl6Dti1KON7C49odjGj
-         eKRQ==
+        bh=qoD0IKqZFNg5UJEkGM8ZutbqmL7lFXLn0sznVUvQ8fY=;
+        fh=e6CsQ6lfTLBgnLAZ3p2Hw4EoYnhDtanOYPfOcnUSyG8=;
+        b=J11tN8OYy8iTweOIDAilMRX+/10o8V/pYrM7ap7xc1PEp84KBy5XAxjeoGrVUtTdy3
+         Z9y5/yBMsWKaT2dgK76jdQ1W9qblQ0F4K6XjSCqfJaf9iKmntnS6ZSfNrLwo4ij5AQhs
+         cgDOmrRFyDwPZAl6HajFnbit5X+XO2swJEUmdxFJwYObS/UrfZ7Gy5cIAFu9xbYMMJp1
+         M3EQgiGdlcY2/uRIOaUVL0cNKGQHZsB4JLAYHt6yZDGcmMSS9tZyjBGim4RUsmyu1enQ
+         sO4DXuYQ4MQHkTwM1OqDWLZE2OwxR/j5l3XbJYJue1xkP2g2/WvW5u67igFq/E+uC8Dk
+         MuTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v4UVc4AQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i6-20020ac25b46000000b004f870f42c3dsor9473970lfp.8.2023.07.05.07.45.24
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VnUTrSCa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q13-20020a05621419ed00b00634020f4717si14395880qvc.556.2023.07.05.07.53.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 05 Jul 2023 07:45:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Jul 2023 07:53:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=v4UVc4AQ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1688568324; x=1691160324;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Tl2AskdNCf03W6dDZ14SDintwMW6XEoJs3CByzgxNoA=;
-        b=v4UVc4AQ/ovoSV9touIg4srcKrE/2pOcu1he4jvAKSbHz7j9BxWjXH1Vat2ZWsdkrx
-         hyk8jusKVdvT57v2/Q+29HxFqJYRdM0obszObGjPL4YnhD4aGWO7r0wdKS2yABdn7Y68
-         2jZyIgpcGypy23hGdEpERhHmmmSqWZb9aAH12tdXF8mNVqai2Xr8c9M3lfyxA3n+mZov
-         Vsxwy3vSLGVlRqjuYwcx70Ue13lLppVbPk5dv/VFeBNEiAWdy+Di4n8sDfTge1FgeYyT
-         cVQN7JpUb9NIFwOEK2NU7Wt2lEU/aRXhJVuSbACbdzocYL8sFbUTaQRtxRSNE0+p354Z
-         kwfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1688568324; x=1691160324;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tl2AskdNCf03W6dDZ14SDintwMW6XEoJs3CByzgxNoA=;
-        b=iu567W3ATXVAWAHu4u6LR2QSDtYVe2PHYrTxtCzBZZ6I3U99ZXUBSEVUTTCIiDFm3x
-         OzoDp//0bN0L21hmLIr+n/wJCbEJPnyPBuJD8BTYIS9z26aHv8YLHAVNB47N/BNogjJU
-         bi7heJOA4Kjsski1drOPcH3/tJMWicGWmkM44Cfaz1o5+rdkqP7fTHniqhiNHcMhQgYF
-         nlUMLpbun2IW8dpwYqUAOogTsviF4cstJhKtfjgMgMwI3Wb5+FdC0K+DR0MPKkhCiCbr
-         MXTRyFpGPr8JOQ4JXhTOYAI/O6LOCPg0yvzPv3sc2XhaaoKva3sErBe6C1s2k6cor6ci
-         h71w==
-X-Gm-Message-State: ABy/qLYC1H1xrJs8xhqpfsXhynQWVt9o/KNSsTsR0hYY5WsOxaCEP5/n
-	VcZgvGC5ptGtaFo5LW4uB45aZEavqPX8yMK2skg6KdaW
-X-Google-Smtp-Source: APBJJlGu/tGi8FN4Awg8+1+xOn2/b4sUy4lEpOir/9O5QHsU1SEJJr+9i1Xepexq7Cydo4bMc8oxRg==
-X-Received: by 2002:a05:6512:2386:b0:4fb:8987:734e with SMTP id c6-20020a056512238600b004fb8987734emr13394389lfv.68.1688568323807;
-        Wed, 05 Jul 2023 07:45:23 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.82.227] ([91.223.100.51])
-        by smtp.gmail.com with ESMTPSA id o10-20020ac2494a000000b004fbac2646e3sm2473663lfi.195.2023.07.05.07.45.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Jul 2023 07:45:23 -0700 (PDT)
-Message-ID: <c90fd4c8-59a4-e4b9-544b-8eb6cd03b4d3@linaro.org>
-Date: Wed, 5 Jul 2023 16:45:18 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VnUTrSCa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qH3sG-00084t-KA; Wed, 05 Jul 2023 10:52:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qH3sF-00084I-Cq
+ for qemu-arm@nongnu.org; Wed, 05 Jul 2023 10:52:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1qH3sD-0004m4-Mp
+ for qemu-arm@nongnu.org; Wed, 05 Jul 2023 10:52:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1688568772;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qoD0IKqZFNg5UJEkGM8ZutbqmL7lFXLn0sznVUvQ8fY=;
+ b=VnUTrSCa8ZRWAXvPFVYVE2F/WBDeFY8NO5Sjs0JZYIxS2ZBCnROcvcRL+WRPoaVKPytrg5
+ 3L88VdZwx66whgkRPCNBXidQsyyTw4TDDyK5MQJsPVWIkx2cZqVAfqwRFBHWkhHgi0m0Ai
+ jQOZSbHiMgESIoDX+AapsLFohnaRnlc=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-468-ztpa71oENpSTTEX9tRr1ZA-1; Wed, 05 Jul 2023 10:52:51 -0400
+X-MC-Unique: ztpa71oENpSTTEX9tRr1ZA-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 717E83815EEE;
+ Wed,  5 Jul 2023 14:52:50 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.145])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 46161492C13;
+ Wed,  5 Jul 2023 14:52:48 +0000 (UTC)
+Date: Wed, 5 Jul 2023 15:52:46 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Laurent Vivier <lvivier@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Amit Shah <amit@kernel.org>,
+ qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/4] io/channel: Explicit QIOChannel doc is based on
+ GLib's IOChannel
+Message-ID: <ZKWDvoVgxBpxTs75@redhat.com>
+References: <20230705133139.54419-1-philmd@linaro.org>
+ <20230705133139.54419-2-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] target/arm: Avoid over-length shift in
- arm_cpu_sve_finalize() error case
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20230704154332.3014896-1-peter.maydell@linaro.org>
- <87jzvffywd.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <87jzvffywd.fsf@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: 7A2cX518fxQE
+In-Reply-To: <20230705133139.54419-2-philmd@linaro.org>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VC80y9smyYgX
 
-On 7/4/23 18:00, Alex Bennée wrote:
+On Wed, Jul 05, 2023 at 03:31:36PM +0200, Philippe Mathieu-Daudé wrote:
+> One can get lost looking for "public API docs". Explicit
+> we are referring to GLib IOChannel documentation.
 > 
-> Peter Maydell <peter.maydell@linaro.org> writes:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/io/channel.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->> If you build QEMU with the clang sanitizer enabled, you can see it
->> fire when running the arm-cpu-features test:
->>
->> $ QTEST_QEMU_BINARY=./build/arm-clang/qemu-system-aarch64 ./build/arm-clang/tests/qtest/arm-cpu-features
->> [...]
->> ../../target/arm/cpu64.c:125:19: runtime error: shift exponent 64 is too large for 64-bit type 'unsigned long long'
->> [...]
->>
->> This happens because the user can specify some incorrect SVE
->> properties that result in our calculating a max_vq of 0.  We catch
->> this and error out, but before we do that we calculate
->>
->>   vq_mask = MAKE_64BIT_MASK(0, max_vq);$
->>
->> and the MAKE_64BIT_MASK() call is only valid for lengths that are
->> greater than zero, so we hit the undefined behaviour.
+> diff --git a/include/io/channel.h b/include/io/channel.h
+> index 229bf36910..998718b470 100644
+> --- a/include/io/channel.h
+> +++ b/include/io/channel.h
+> @@ -97,7 +97,7 @@ struct QIOChannel {
+>   * The first five callbacks are mandatory to support, others
+>   * provide additional optional features.
+>   *
+> - * Consult the corresponding public API docs for a description
+> + * Consult the corresponding GLib IOChannel public API docs for a description
+
+This is refering to the public API docs in this very file.
+
+ie for io_writev callback, the qio_channel_io_writev docs define
+semantics.
+
+>   * of the semantics of each callback. io_shutdown in particular
+>   * must be thread-safe, terminate quickly and must not block.
+>   */
+> -- 
+> 2.38.1
 > 
-> Hmm that does make me worry we could have more land mines waiting to be
-> found. Would converting MAKE_64BIT_MASK into an inline function and
-> asserting be a better solution?
 
-I'd be tempted to keep a macro, and use __builtin_constant_p to make sure this expands to 
-a constant if possible.  Ideally constants would be diagnosed at compile-time and runtime 
-values get runtime asserts.
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
-
-r~

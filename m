@@ -1,244 +1,155 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp4119597ejy;
-        Thu, 6 Jul 2023 01:17:32 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHL9AY8teDT97NW89pBZoNC50t2bNTAtx3yCMv/U6ngnG7Hp39cwuiBu+iKJwff77iiZ60r
-X-Received: by 2002:a05:622a:1a06:b0:400:82b1:ad05 with SMTP id f6-20020a05622a1a0600b0040082b1ad05mr5415100qtb.7.1688631452344;
-        Thu, 06 Jul 2023 01:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688631452; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp4178823ejy;
+        Thu, 6 Jul 2023 03:27:37 -0700 (PDT)
+X-Received: by 2002:aa7:c654:0:b0:51e:1af0:3a90 with SMTP id z20-20020aa7c654000000b0051e1af03a90mr1289260edr.37.1688639257248;
+        Thu, 06 Jul 2023 03:27:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688639257; cv=none;
         d=google.com; s=arc-20160816;
-        b=lkkz7O7HZn/PMkJ2pUZTwr4stzkX5SxrqtSnQib9L8WP3ZsV5ZUaC/JVUX2rdiJeQ9
-         4nJZXiyHaUa2ydXIVBiqjAPVXxXTt4DOgdOid8tGv0dBTwcrJw9dhByyoNoc3DGXHwzM
-         Ec4BUDCLt1hngMnyT4HA4t3Kyt0DcOWGtL+M0C++7+y9uM18GSXyRoZI3Yb2Wle7Efro
-         GHdoolos6Z/Uva+KvQbef3jfLT3vL6r19DpFFiNA1CM5kQUE5DdVm3ZrSxNNthY3/xYU
-         oG2s5SvOAn4Q7G4Te2ANkIgQRLfU4j78Xlicd2LBpHWb5FCBpNqJEmfQc9dj8J9wZL7F
-         1tiw==
+        b=lr1Gr/zpLno3Az0yRKXtYSruhC+15WPo/mbsaMAR377TXDK+5SNlWEehHFVk+LFpH+
+         Uxq3F//gkPHPTnRjeuMAi51yLwBDkhVNi/jDBEMd3gOU3KrL5JJEsFYca6YmKwj+8ElK
+         9yDbrcRogkiRlWxVtMmZIHZjGF3BZMCfGREkOKdKipKSqYI5EQ+IzqIpcM45pIn1WENU
+         iPbMIM+HnmdPY8V72/6ozLibRKNQTtui2AjGX8f54IlFprY3EA2pi+ti9H0HoXl8qKf8
+         4CrHYZJEIS0OzWwerBtBDs2ig1moSNR//1fV6Daqix8nzMfdRWYxtptOjg6k4ljTFrbT
+         uNvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=ak63oS2wbQ//CZ4bFZf9UUgZgbNOOrgNyyi0Qi15lYM=;
-        fh=8pVspvbGxvMAjW7+/hfX0lcXtPufnD5I4M5xrP30EgA=;
-        b=i4p4oP2PmGe1Msr6EkkCleXT+BLh/tcqXqFeuf1CTT6Du/+trGeIQq+NaIOKT+/HVq
-         Lo7gAhn/xZjVjD0MBk03THBKlN4IuOr+Y5U3vDjhpk4XL9fJ4LQFbuQLY5KHpM4ohuT8
-         7qCV9R66eo+3gemMCNJeX+UuYHhQbQf9hscXIr60JWwHnR5hROOBn3iwxfBhtF3a7LxH
-         pPQJR4aAzV8F8AGK8edmHFeLOMrOfa1lwagJ5Jjr8gUooVY1c7RXo7zwiICwIMLJwrt7
-         tTsCHAmVkyB+lNF9+W/D3BYRjkxFAVJUC366qeZUd2io4kCmYq7MRidYv99gs/uooI8f
-         BTwA==
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=TjI5VncEJUo131PC1BdfMM1kZk+v4da39H8MLcFrQag=;
+        fh=tDxx41Tih1V/d5KDeQ4fYywVQ3l4fbvfCAHNYXgcdmI=;
+        b=T+xOcNuBgO+1jbrgTKEHHp+XUUarDX2wEkaXPNo4cBIYhybbN/1H3mcXYbQzzZE/sv
+         +2DOjWWhZ8kfC0NNyWXUA+OKn7/C7ABfnpahD0lB6XwwLT+IT2gcb8Z3qYJcGiLYj0dd
+         B0zj5aS5lt4Na8JKBvHc0s5JD7kvKhJ8RfhtdLY3eLDpVN07KpOdfHFo0FPRXRvZRhBn
+         Z/ycKuVB/0xJpL+OUoPM8o/mQw6wDCGIkDWUwu44AADQykIXupnt1DSVQinc+eQejx82
+         GaytM3JLaknAak/YANLIQ26cOI3lzk1K/5Etjh29gBE1vQ1e5c+fH5t5jJvRuzY5KBIj
+         xmxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GaZlC38I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2-20020ac87fc2000000b0040357726f32si496540qtk.808.2023.07.06.01.17.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=QOpc0g+i;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g10-20020a50d0ca000000b0051e24fa1640sor433794edf.5.2023.07.06.03.27.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jul 2023 01:17:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 06 Jul 2023 03:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GaZlC38I;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qHKAu-0002BW-EA; Thu, 06 Jul 2023 04:17:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1qHKAs-0002AX-PF
- for qemu-arm@nongnu.org; Thu, 06 Jul 2023 04:17:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1qHKAp-0007cq-69
- for qemu-arm@nongnu.org; Thu, 06 Jul 2023 04:17:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688631427;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ak63oS2wbQ//CZ4bFZf9UUgZgbNOOrgNyyi0Qi15lYM=;
- b=GaZlC38I0hRdz3HmpIRGS7Xk0kt3wj/CJWCBflJLgEoV6rei79GJb9m4osaW2pVOsCF0PL
- DqAopEFj4n3ClmY82SMVY/TW4d4n3ISnwF6h4vULXcjisj1irTR+r75WnvjPUMy3PoX8vw
- WHB01XMFThwF1TS+8Z39e/gIE18PQkY=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-633-4HlrXQWbNAm46c9IJAsqAg-1; Thu, 06 Jul 2023 04:17:06 -0400
-X-MC-Unique: 4HlrXQWbNAm46c9IJAsqAg-1
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-62fe5abe808so3622906d6.1
- for <qemu-arm@nongnu.org>; Thu, 06 Jul 2023 01:17:06 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=QOpc0g+i;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1688639257; x=1691231257;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TjI5VncEJUo131PC1BdfMM1kZk+v4da39H8MLcFrQag=;
+        b=QOpc0g+iGdf+RTxPB4yMSBchXmqviaoFQrimRwvWWCJ9bdsOL4ntqKaJtll1tyqoa+
+         QiLFcMm2ZgEOejCw/sVbK4/YVurHCJ03PaApn1hp73inF4nkF9sf8441IDAuKb/82diO
+         PhS7+ApY3hzTc/WEn4iqdxBQ2TWpRTnMB2VFCPSok7hgXyM2F9cYWvDCH7MyvTZHnOd8
+         wGSmvJCUWCYcjnGlwUYdMYxlgm/4IPZhQYuKH+ZQ3tS4kqtMa0ePVHpVdqNmSxmMlbw0
+         NIPSLFkJ3iOy+Y1u3biRqIyVVZp2sFLsixSN+yNkYGR7Q4JL7gF9NrIuhUz4eST7n48I
+         yXDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688631426; x=1691223426;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ak63oS2wbQ//CZ4bFZf9UUgZgbNOOrgNyyi0Qi15lYM=;
- b=crB30xVhVJEcDtEfBF2BhGSJ0bKKNKbNoE+7FTVUwBKiCmBUKj2O0TKfoVaU/U2+7k
- ghMIS7ufzI8YlPkVq46mAf8NChu0c7dcH7Uk9E5dT+zvug/U5LSvu/ee+Ib9567gdmUJ
- ivj0nqERdi2Ih0jvWNUkF+0Vd9qoLHAdONy/IdP1/Ua+nQi5nNMTb7Bkg8c8T9GhYD9L
- RGSW6RZR7CanfMn24KEGAH2oTlRuZiWlX59ML9+6GKaiXlwT2+zCSQpPSYgLa9w2DgEq
- ZBwCEcbwmPQbejD2bcAuoaXJOPIcWliK4mNPiOIfgtfkSwT0k/3QBZYewuNZbQ3efLWM
- 2Azg==
-X-Gm-Message-State: ABy/qLa0m/nTFJj0AAv8+hidTJmYmR8DxDbBwtmA/R030MOO+acTJNnJ
- eZrxW10RJdfMdEltR1ODMsgj5jTvfbM26JJxoh3vy3VLvJTnlC2E91CGfA/gnXNQKpnoEBDC4v9
- LKvyyyhCnwIWZ
-X-Received: by 2002:a05:6214:242a:b0:62d:e73b:c4ab with SMTP id
- gy10-20020a056214242a00b0062de73bc4abmr6032394qvb.1.1688631426302; 
- Thu, 06 Jul 2023 01:17:06 -0700 (PDT)
-X-Received: by 2002:a05:6214:242a:b0:62d:e73b:c4ab with SMTP id
- gy10-20020a056214242a00b0062de73bc4abmr6032372qvb.1.1688631425966; 
- Thu, 06 Jul 2023 01:17:05 -0700 (PDT)
-Received: from [192.168.1.91] (176-152-201-187.abo.bbox.fr. [176.152.201.187])
- by smtp.gmail.com with ESMTPSA id
- a25-20020a0ca999000000b0063645f62bdasm592176qvb.80.2023.07.06.01.17.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Jul 2023 01:17:05 -0700 (PDT)
-Message-ID: <acb446c4-dddb-30f6-5faf-e976fbe0c605@redhat.com>
-Date: Thu, 6 Jul 2023 10:16:56 +0200
+        d=1e100.net; s=20221208; t=1688639257; x=1691231257;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TjI5VncEJUo131PC1BdfMM1kZk+v4da39H8MLcFrQag=;
+        b=Ethq+y5T0MKpVME0OFA2cZTXi9noUnck7fMgr7/3xnUy4/bOPgL6sQMmM5gTdCGCyW
+         p36Vsp4gSDWU9uTZTiDN1VTOQ1yJ5ZvZpK8Ar7hJjwKKwoMj41OEkweQjg/B4tgjA4sX
+         sf7qqqhtXRl2TBJ7C00/ufton33h790UGWDrystxzSzF4ixE1S9SiYsWUk/7LADkIDoe
+         tcibXfsVgQwtcX0cJLnXwilyeIuukJpP2XxDR2uwVTPi9erRsko1jL/hAADGMrp7lTlV
+         4P3fshm+o/nE0Og0+KGfjByzQGjWkOMmunx1sHeCJGzUPxADayH3AzFVlEjdlTV2UYID
+         MrYQ==
+X-Gm-Message-State: ABy/qLY1HqxaNPLrf+Q06h9JiF1ZhTC/MiW+Zo2+fT1rFLWoHx2y+nmw
+	IPyL7rwy8KZNX5mwsv4tDNskpOTg
+X-Google-Smtp-Source: APBJJlGPjYL0hxBofJhy+PuqZnONHGPqgm66Q/cu1PD5WUCJ3P5SRdkVG3deMQ2luqgjzUKTfdDrtA==
+X-Received: by 2002:a05:6402:184e:b0:514:9929:1b01 with SMTP id v14-20020a056402184e00b0051499291b01mr1154620edy.8.1688639256875;
+        Thu, 06 Jul 2023 03:27:36 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.115] ([176.187.199.225])
+        by smtp.gmail.com with ESMTPSA id r6-20020aa7d146000000b0051df54c6a27sm604480edo.56.2023.07.06.03.27.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Jul 2023 03:27:36 -0700 (PDT)
+Message-ID: <d26ae819-2152-ad85-efd6-425f0f9987af@linaro.org>
+Date: Thu, 6 Jul 2023 12:27:35 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [RFC PATCH 4/5] target/arm: enable feature ARM_FEATURE_EL2 if EL2
- is supported
-To: Miguel Luis <miguel.luis@oracle.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>,
- Andrew Jones <drjones@redhat.com>, Marc Zyngier <maz@kernel.org>
-References: <20230227163718.62003-1-miguel.luis@oracle.com>
- <20230227163718.62003-5-miguel.luis@oracle.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20230227163718.62003-5-miguel.luis@oracle.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH] target/arm: Avoid over-length shift in
+ arm_cpu_sve_finalize() error case
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BgWFYMhINt2h
+To: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20230704154332.3014896-1-peter.maydell@linaro.org>
+ <87jzvffywd.fsf@linaro.org> <c90fd4c8-59a4-e4b9-544b-8eb6cd03b4d3@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <c90fd4c8-59a4-e4b9-544b-8eb6cd03b4d3@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: s1wsgAChf2cf
 
-Hi Miguel,
-
-On 2/27/23 17:37, Miguel Luis wrote:
-> From: Haibo Xu <haibo.xu@linaro.org>
+On 5/7/23 16:45, Richard Henderson wrote:
+> On 7/4/23 18:00, Alex Bennée wrote:
+>>
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>>> If you build QEMU with the clang sanitizer enabled, you can see it
+>>> fire when running the arm-cpu-features test:
+>>>
+>>> $ QTEST_QEMU_BINARY=./build/arm-clang/qemu-system-aarch64 
+>>> ./build/arm-clang/tests/qtest/arm-cpu-features
+>>> [...]
+>>> ../../target/arm/cpu64.c:125:19: runtime error: shift exponent 64 is 
+>>> too large for 64-bit type 'unsigned long long'
+>>> [...]
+>>>
+>>> This happens because the user can specify some incorrect SVE
+>>> properties that result in our calculating a max_vq of 0.  We catch
+>>> this and error out, but before we do that we calculate
+>>>
+>>>   vq_mask = MAKE_64BIT_MASK(0, max_vq);$
+>>>
+>>> and the MAKE_64BIT_MASK() call is only valid for lengths that are
+>>> greater than zero, so we hit the undefined behaviour.
+>>
+>> Hmm that does make me worry we could have more land mines waiting to be
+>> found. Would converting MAKE_64BIT_MASK into an inline function and
+>> asserting be a better solution?
 > 
-> KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
-> EL2 bits on ID_AA64PFR0 state unsupported on the value 0b0000.
-> 
-> Ref: https://lore.kernel.org/qemu-devel/b7c2626e6c720ccc43e57197dff3dac72d613640.1616052890.git.haibo.xu@linaro.org/
-> 
-> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> [Miguel Luis: use of ID_AA64PFR0 for cpu features]
-> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
-> ---
->  target/arm/cpu.h   |  2 +-
->  target/arm/kvm64.c | 16 ++++++++++++++++
->  2 files changed, 17 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 9aeed3c848..de2a88b43e 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3961,7 +3961,7 @@ static inline bool isar_feature_aa64_aa32_el1(const ARMISARegisters *id)
->  
->  static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) >= 2;
-> +    return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, EL2) != 0;
->  }
->  
->  static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index be8144a2b5..f7ebd731aa 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -505,6 +505,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->       */
->      int fdarray[3];
->      bool sve_supported;
-> +    bool el2_supported;
->      bool pmu_supported = false;
->      uint64_t features = 0;
->      int err;
-> @@ -535,6 +536,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->          init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
->      }
->  
-> +    /*
-> +     * Ask for EL2 if supported.
-> +     */
-> +    el2_supported = kvm_arm_el2_supported();
-> +    if (el2_supported) {
-> +        init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-This doesn't work if your host both supports SVE & NV.
+> I'd be tempted to keep a macro, and use __builtin_constant_p to make 
+> sure this expands to a constant if possible.  Ideally constants would be 
+> diagnosed at compile-time and runtime values get runtime asserts.
 
-The error output by qemu is not straightforward
+Indeed inlined function doesn't work because MAKE_64BIT_MASK() is
+used in static const value definitions:
 
-qemu-system-aarch64: can't apply global host-arm-cpu.sve=off: Property
-'host-arm-cpu.sve' not found
+include/hw/cxl/cxl_component.h:52:1: error: expression is not an integer 
+constant expression
+CXLx_CAPABILITY_HEADER(LINK, 0x8)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/hw/cxl/cxl_component.h:50:9: note: expanded from macro 
+'CXLx_CAPABILITY_HEADER'
+         FIELD(CXL_##type##_CAPABILITY_HEADER, PTR, 20, 12)
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/hw/registerfields.h:46:41: note: expanded from macro 'FIELD'
+                                         MAKE_64BIT_MASK(shift, length)};
+                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The problem is that we create a scratch VM with a CPU featuring both SVE
-and NV and this fails at kernel level, I think on vcpu reset.
+This builds however:
 
-The trouble is that we do that even if sve=off at qemu level. So I think
-this is a more generic issue related to the way we validate host cpu
-features.
+-- >8 --
+--- a/include/qemu/bitops.h
++++ b/include/qemu/bitops.h
+@@ -28,3 +28,5 @@
+  #define MAKE_64BIT_MASK(shift, length) \
+-    (((~0ULL) >> (64 - (length))) << (shift))
++    ((__builtin_constant_p(length) && !(length)) \
++     ? 0 \
++     : (((~0ULL) >> (64 - (length))) << (shift)))
 
-Thanks
+---
 
-Eric
-
-
-> +    }
-> +
->      /*
->       * Ask for Pointer Authentication if supported, so that we get
->       * the unsanitized field values for AA64ISAR1_EL1.
-> @@ -714,6 +723,10 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->      features |= 1ULL << ARM_FEATURE_PMU;
->      features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
->  
-> +    if (el2_supported) {
-> +        features |= 1ULL << ARM_FEATURE_EL2;
-> +    }
-> +
->      ahcf->features = features;
->  
->      return true;
-> @@ -881,6 +894,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          assert(kvm_arm_sve_supported());
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
->      }
-> +    if (cpu_isar_feature(aa64_aa32_el2, cpu)) {
-> +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-> +    }
->      if (cpu_isar_feature(aa64_pauth, cpu)) {
->          cpu->kvm_init_features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
->                                        1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
-
+But then UB is still present at runtime.

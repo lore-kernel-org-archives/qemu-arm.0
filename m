@@ -1,163 +1,110 @@
-Received: by 2002:a05:7022:6292:b0:68:2721:5dd0 with SMTP id e18csp1939105dle;
-        Wed, 5 Jul 2023 09:52:18 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlH+MmDlR2jpG3IRl6E6G4HogWgPZwReV1pKTvZX8+dVKpQDqg0Tsa8OJTSP8dK2zieqFvdl
-X-Received: by 2002:a0c:a70a:0:b0:61b:65f4:2a15 with SMTP id u10-20020a0ca70a000000b0061b65f42a15mr3004140qva.12.1688575938122;
-        Wed, 05 Jul 2023 09:52:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688575938; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp4435278ejy;
+        Thu, 6 Jul 2023 10:09:26 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlElcGE1xS7asJmu3KTDk2n7meDGlsbmzh6IyE4MOAtAVh6gjyaMnNGyIJfmvviYHxgGB0bE
+X-Received: by 2002:a0c:e254:0:b0:635:df49:719c with SMTP id x20-20020a0ce254000000b00635df49719cmr2560021qvl.22.1688663366033;
+        Thu, 06 Jul 2023 10:09:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688663366; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gx5E3SQoPX5tKg3q8owUp0MN2hMnspxpGwEH79e4A19tL7SpjCmjy4MrnW33DB9Zal
-         noC114cgghDUMXMJSgnmW2Js8TkFbEFhTh18DO7aufmNrklMph7LWfprxmJUn0x0jFi6
-         uYVwRhZwpZAv+NyupEA7qQN9roSnLwd/sPBnUBeh0FnqtVkRW6N7/mTuRRMI6U/GZS8s
-         lnh5Qf10ZAT7oTOeGB6+fa+zwIiNemDLLqFbUFNYiRUqVeoBnsTrXhPmOV8lfjXKidLR
-         9C5cmGfR0eOI4eaOMffTjI+tYuPXIZaXL9ABqNXcC3lwAvW+f0vi4+ydSUdd+qUnNCQt
-         y/gA==
+        b=gSjfkBQYk+cOgaIlKzt1ev/xoFPSXRn04PC2ctfhmWMqD8Cq0wBlKstVm05I6i70Yk
+         BTwkP6nBOGUnWVrIaINMuz1u82BdH0xx9KTMULdQPr69Q8uID4OP3RLRjRiR2+ZVNF5t
+         3/prhMfbuRss3JwBYb/MwPWOzun+gijhiYnIpsv1ashPwGFoD7V6NjXQkTxDPZvGeFPi
+         IOdLXWbRndrqIpgzpG2UII9ribnisok3y+SoKhzcnHYDclJhDyOMLinh9buG7vVAf39n
+         gQMPSMz0cjMkk1nf7TjVIOxB3U/pUXEa99hfC/8BAKDt3UDzewELyyFhRgvBGwjZjvzr
+         0Iug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QxrJgGAUPxrDvz/ICUiyQnyZKNR4wEOMv3qXXRyyO8k=;
-        fh=5eD6j/FRNhiOVLdkQejPYFOxzIUKNOsVEWKd9nlc1ic=;
-        b=b4FpDCAhxpgGgyfc/z0sBRpbVrR/ErL+Nkw0yn8pTwwO8KtSmIfH/bdyIso9iS2vEJ
-         g+IggLUg7tCY5teVmgNOGY79mXfaH12CbQr9Z3Cm1XQuK2UZ1nleNkmQKcxaT3FuDvMA
-         spFJlFqa++LX3+6DP6rXi/vhOx2zrX5nwFO7vVO23UvD+zq17gyOA5bJpquWkgROn3mh
-         YyF1JJOljyuii40PCO2/r9Vfbonoh4mOYenSVrmkV+wcXSF0zXrFA1V5Wt7DmoXYDOa/
-         e5Yw8bze/Hv5RzgVyYGQtZeImPXKxmBFrlRS/+IZtkjq0FtglMed8LuqZsJqLy3xs82A
-         a1Yg==
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=qC/u4zuYGuDcIM2yt5VnHbMIZOg+fAB8iyX/XNkh1s4=;
+        fh=tMq2s3ZMyBTGjqldGfNY7FohCKrR0WyYi9EeR7LqRRc=;
+        b=OHDsvyo9Lny9k2TmJZDQe5zob20R4/34H4ZJoUGVAsKRr9wb61n2vtVbsWcflXkIA7
+         yqAVGWYiQ4BuOIToisL9TWIVc0dkmcz1LzvIMSdsaWzbuEhF6aCuuPkv1NibQY1aEDCx
+         2DsyVyk1MFZFI/pe/95+6tfgXs6UF4N487bM28AjNvu21JU1AggDQdkjg9+2a2BYdAl9
+         ZWRPL9V5EdxGs21hl46Hxm/BUE5vBsgLTjGgMODuHlkZVmRKu++z1DjLgZI3DU917Apk
+         qZVwPFXvB1RUYpL4Zk76YQQT/6fvX8b+JeUHgCWaLcStcCDGZxYTXwHei2DOGI1tmvZq
+         JSRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I5Bgahii;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o14-20020ad45c8e000000b006287923b3e7si10885615qvh.40.2023.07.05.09.52.18
+        by mx.google.com with ESMTPS id h18-20020a0cf212000000b0063020a21b85si1239970qvk.174.2023.07.06.10.09.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Jul 2023 09:52:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Jul 2023 10:09:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I5Bgahii;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qH5j8-0002H3-PZ; Wed, 05 Jul 2023 12:51:38 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qHSTX-0000LH-DZ; Thu, 06 Jul 2023 13:09:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qH5j6-0002Fz-Tp
- for qemu-arm@nongnu.org; Wed, 05 Jul 2023 12:51:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qHSTV-0000Kc-Ky; Thu, 06 Jul 2023 13:09:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1qH5j4-0006lG-Nu
- for qemu-arm@nongnu.org; Wed, 05 Jul 2023 12:51:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688575893;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=QxrJgGAUPxrDvz/ICUiyQnyZKNR4wEOMv3qXXRyyO8k=;
- b=I5BgahiilZFwXrq/6Ik10m9UreX9U6L9uG+w3NJAp1tWDdxwCbarxEUpZUaoNvJyBjWBrC
- PV0wstwQcFbAODhLvTzDyuptdW0A3Uvu8GB5bg03016XVWqQWAnJxcxl7loNrCE7rpNLEr
- j/7kG0f+f70Bs4gzP41+6zgifiTbpy4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-216-FZo84VQwNvKDDMn0k1vXqQ-1; Wed, 05 Jul 2023 12:51:30 -0400
-X-MC-Unique: FZo84VQwNvKDDMn0k1vXqQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C6679810BB4;
- Wed,  5 Jul 2023 16:51:29 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4254A1121314;
- Wed,  5 Jul 2023 16:51:27 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- zhenzhong.duan@intel.com
-Cc: alex.williamson@redhat.com, clg@redhat.com, bharat.bhushan@nxp.com,
- peter.maydell@linaro.org
-Subject: [PATCH v2 0/2] VIRTIO-IOMMU/VFIO page size related fixes
-Date: Wed,  5 Jul 2023 18:51:16 +0200
-Message-Id: <20230705165118.28194-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qHSTT-0003ul-Or; Thu, 06 Jul 2023 13:09:01 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8211412195;
+ Thu,  6 Jul 2023 20:08:57 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 847BC134CD;
+ Thu,  6 Jul 2023 20:08:56 +0300 (MSK)
+Message-ID: <dca5c64d-e973-ea7b-89a4-31d73de3bf70@tls.msk.ru>
+Date: Thu, 6 Jul 2023 20:08:56 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] hw/arm/virt-acpi-build.c: Add missing header
+Content-Language: en-US
+To: Peng Liang <tcx4c70@gmail.com>, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, shannon.zhaosl@gmail.com, peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20230706150839.1180137-1-tcx4c70@gmail.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20230706150839.1180137-1-tcx4c70@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -69
+X-Spam_score: -7.0
+X-Spam_bar: -------
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PYRAalpmVu1X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gk8ERx1sfSCF
 
-When assigning a host device and protecting it with the virtio-iommu we may
-end up with qemu crashing with
+06.07.2023 18:08, Peng Liang wrote:
+> virt-acpi-build.c uses warn_report. However, it doesn't include
+> qemu/error-report.h directly, it include qemu/error-report.h via trace.h
+> if we enable log trace backend. But if we disable the log trace backend
+> (e.g., --enable-trace-backends=nop), then virt-acpi-build.c will not
+> include qemu/error-report.h any more and it will lead to build errors.
+> Include qemu/error-report.h directly in virt-acpi-build.c to avoid the
+> errors.
 
-    qemu-kvm: virtio-iommu page mask 0xfffffffffffff000 is incompatible
-    with mask 0x20010000
-    qemu: hardware error: vfio: DMA mapping failed, unable to continue
+Applied to my trivial-patches tree, moving it higher as suggested by Ani
+(to sort more alphabetically) and adding the Fixes: line as suggested
+by Philippe.
 
-This happens if the host features a 64kB page size and constraints
-the physical IOMMU to use a 64kB page size. By default 4kB granule is used
-by the qemu virtio-iommu device and this latter becomes aware of the 64kB
-requirement too late, after the machine init, when the vfio device domain is
-attached. virtio_iommu_set_page_size_mask() fails and this causes
-vfio_listener_region_add() to end up with hw_error(). Currently the
-granule is global to all domains.
+Thanks!
 
-To work around this issue, despite the IOMMU MR may be bypassed, we
-transiently enable it on machine init done to get vfio_listener_region_add
-and virtio_iommu_set_page_size_mask called ealier, before the domain
-attach. That way the page size requirement can be taken into account
-before the guest gets started.
-
-Also get benefit of this series to do some cleanups in some traces
-which may confuse the end user.
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/virtio-iommu-page-size-v2
-
-History:
-v1 -> v2:
-- test bypass is set before transiently enabling the IOMMU MRs
-- add Zhenzhong's R-b
-
-Eric Auger (2):
-  virtio-iommu: Fix 64kB host page size VFIO device assignment
-  virtio-iommu: Rework the traces in virtio_iommu_set_page_size_mask()
-
- include/hw/virtio/virtio-iommu.h |  2 ++
- hw/virtio/virtio-iommu.c         | 50 +++++++++++++++++++++++---------
- hw/virtio/trace-events           |  1 +
- 3 files changed, 39 insertions(+), 14 deletions(-)
-
--- 
-2.38.1
-
+/mjt

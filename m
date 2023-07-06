@@ -1,149 +1,267 @@
-Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp4423310ejy;
-        Thu, 6 Jul 2023 09:51:31 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlH6zpHghlvIrIpiCXzRXV5p39Pz5o1UjTa5cNlfHT+4zXNbSM9sOb0XyixslAHWjx7ALrNh
-X-Received: by 2002:a05:620a:298a:b0:767:1e66:5511 with SMTP id r10-20020a05620a298a00b007671e665511mr7076134qkp.38.1688662290906;
-        Thu, 06 Jul 2023 09:51:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688662290; cv=none;
+Received: by 2002:a17:906:b10c:b0:992:abd5:50eb with SMTP id u12csp4494045ejy;
+        Thu, 6 Jul 2023 11:53:32 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFx9eVTRqwxdwRHiNNaHuxF4p+zL8zHDV5hBufN4EMG9+C2VlHlsZHgPUu7RcXkILPzjmwd
+X-Received: by 2002:a0c:f0c1:0:b0:636:47a5:4bc5 with SMTP id d1-20020a0cf0c1000000b0063647a54bc5mr2466057qvl.62.1688669611817;
+        Thu, 06 Jul 2023 11:53:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688669611; cv=none;
         d=google.com; s=arc-20160816;
-        b=gvKJk24oPfJ8QZbwNZDmAHK0An9HGOXRc3YNAiaqmeVwmXTnbwv/HEYpKNeKgk95am
-         BMjSTHFRZhiMb9N1IlfuS3Gd3owtx2Y2txErkfr9A+OmcLGVX8C2OMd/WgCLQHcBZn56
-         +UKWfaSx1rn4s74kU7gywqo9xLuwv40PMmpwky6/ldL25UwvUlLOBoFX2upFzi2+lBGy
-         UzQEAYx6j+d2cxYbVhLsGL0lRT660vdkN1i6rGMazmPUmO6OMEdxJawzTsh/OXhLLUz4
-         LyazrMggfuIZs2eZhNh3mzIIvql46pftSsaIDX2cCAX+vyeXACUthaVPcCB11J+QCMIU
-         eg9A==
+        b=THUr1/qJy9VQmW//b7zg1RpeiKcy1rAbS1ytQld26GxtLqvNzHwN0716tZtN29zfLd
+         iBMLP+HYqRZt+d26xX7iWJ5zryvxcBIP0cCpReGxveh24y2QxGOpVU6wyO5ndh6DSlPu
+         GA3RPfCyDtICUUQ7kr6HOn2CpqnbufTsaq4RYuFk1coSjyt7juHUbfw0R7QeF9wQW7PI
+         Kg+xahZGTlljbzMzv38udwECglZAyqiJhrVTiRatRYxiQtF/brJJ2CqHrV7JAQcH1bp1
+         pf3PsyByNV+wlV5Pv00Qhxjl7uhzPUVylb1MLdDuMfIHM1Y8taeWDu60DCAGpqpoHr+5
+         HbGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Xz5uFkMVAHreoQsP7qWUQ7Nk5ICo8gFm0Z5UxHN3DYM=;
-        fh=XVcWgw4+SbdzKaG2li9RFR+eldaXkgyU65MKYe7tzYg=;
-        b=jb9i0OzZAbAFNVNPw72dt20YXJ4bQW+VW4ujLn4mZ5zPxNI3Rz9U1YZUZHV0mmgBhq
-         tL7tATAUKogbkQgBEQl26L/BJun0GiCarfEeJcx4RS60r0Ftm2dVacs/VgF661FDHtzg
-         M5YUnVxRNmqnf73aYTgLKkvI0OqhN9JNK5aV0Vq7rte1MVjMPboTqppWBErZ3edCDa2x
-         PXutdOCP5eN661jXKsYxmBCgCtBErRSdNbgI3ON9nRTvkxvxfK/szwlPhQL/cZgKLvvl
-         y1c6DYT9oSyP6N5vQmdBYMuZI/EHZuARkXtNwIz81LqO9xkdBENEjFinhp4h/o2whwxz
-         I5aQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=oyb1Eugswk0N8xQj1J2WKT9qenfubXqukG75R08xjmw=;
+        fh=C0DffGIM0qSpFqjwJqrNZbKklyQ0P3uE9Vq5zZYW/5U=;
+        b=tN43Aco7fDFPxrfia3+IcTrp7DQX3AGjsQNj0g5jyToNNLDomWF7M2N70H9MgXvZgk
+         n0hoTQF7h/7/aoOufkjUBpukb+Noo5UXc3u7Ypx5HGkd0q3LY6s41hEJ6zL45Vn5fP2X
+         /enYLwgSewG7tPeKrImc/R3nB6tikHqJWiH92PhoDRv9NUipzK0PrWgjWf8wtmosuFgj
+         KZdAhB1gU3EDSxvouffJimpa4LTj7519iufQ8QvEwiKJ6CzlddVPl2AZ1+QwSOMYS/UP
+         P7GPhjsvNJ6oy/skYNySszljkC26DLyDByOM3Eyjv87xY10FePpXVcYYhpNrKV1vu1wQ
+         Li0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O9DU5yRo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E0tK+x9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ou5-20020a05620a620500b0076770e82424si1338179qkn.18.2023.07.06.09.51.30
+        by mx.google.com with ESMTPS id g14-20020a0cdf0e000000b00626009daf22si1367829qvl.431.2023.07.06.11.53.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jul 2023 09:51:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Jul 2023 11:53:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=O9DU5yRo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E0tK+x9W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qHSCH-0002qo-9t; Thu, 06 Jul 2023 12:51:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qHU6D-0007Ts-6v; Thu, 06 Jul 2023 14:53:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHSC9-0002q5-BT
- for qemu-devel@nongnu.org; Thu, 06 Jul 2023 12:51:08 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHSC5-00009Z-8A
- for qemu-devel@nongnu.org; Thu, 06 Jul 2023 12:51:04 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-992e22c09edso109260466b.2
- for <qemu-devel@nongnu.org>; Thu, 06 Jul 2023 09:51:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688662259; x=1691254259;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Xz5uFkMVAHreoQsP7qWUQ7Nk5ICo8gFm0Z5UxHN3DYM=;
- b=O9DU5yRoGcUpnn4ec/qHb8Nr9a5nBpuuP32GE4LsyDwg2kA1/cJZVL/l9EFQ/boiPO
- KZFee4mlDbTMSd+z4UTxzI2B8yZuqUSeYslw3nEHDs4c2uesl2whELy7XiYerLZGMwQA
- l8oFS86+A9ZQT8m/5OzH/NNIQtmn0ukLB7uKFZuP47u6ciVkst+C/EdlvQG13Uumgaxo
- cymRbsTDjECBYhWpeGqe2ym9glUrAXJpRRf0o/oKchmh/wo4kRnL0Ou67pcrP1ZAxUfJ
- RgbXXBtENgg+GKmUOgEt8IyjfeXF4K+41F3qrKvUPPb96nVkqceh51CYmpPGM71XY4Ll
- YwhQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qHU69-0007Sy-R1
+ for qemu-arm@nongnu.org; Thu, 06 Jul 2023 14:53:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qHU68-0005It-4i
+ for qemu-arm@nongnu.org; Thu, 06 Jul 2023 14:53:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1688669566;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oyb1Eugswk0N8xQj1J2WKT9qenfubXqukG75R08xjmw=;
+ b=E0tK+x9W5q+l6MgtQp2IYPUjgKIX3qBLWFF6n91vwLVPXwZf0yPhXnXfX5wQanDTKBSt8t
+ FV8TT6vAovWyO/y0XA/e843S0z20KI34vnOGAGm5LPy+h5uln+evuabdsWaL0pc43qSFhU
+ sba9wsJAji5ZUToqRpGD67EZQ02WCSc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-21-LAU2sxNDPrml9Y8MVr3Rjg-1; Thu, 06 Jul 2023 14:52:44 -0400
+X-MC-Unique: LAU2sxNDPrml9Y8MVr3Rjg-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3141a98a29aso561891f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 06 Jul 2023 11:52:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688662259; x=1691254259;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Xz5uFkMVAHreoQsP7qWUQ7Nk5ICo8gFm0Z5UxHN3DYM=;
- b=DuFdyPaliRE2gURdIgL0/EsmVs6UMVYi5ariErTEJ+O+k65hVTH0IWoTnPYIdBPPBB
- OQhXHhUU+quMUXtOjqXe276zRDq7ZAoHaD4svQYlgfLLEI1JnV83AS2Jg3umWHga4bg2
- 6f49sbWw9CWcMGs2pFkpM47D4pnB9j9L4069zFtudu45pPIy0fKc8vwptOLasH1ECz7p
- WOdAk8Rh3H2u+vUSxCrWwj8Ouu+++Cljx7pbj3/dqIm2MjEWz0TFDoksT2cDD592ETcZ
- PxmQKdxEqcMAAE6uIMFuyOlYAHosMRgiOXn54MW/pEsZ6hZoYGllpq4XweIMjxIxwU59
- 82vQ==
-X-Gm-Message-State: ABy/qLY9p1A+s49IHlOXzHTiR7SxDI68ietxXVa7ZvOjCchzUDT+/gNg
- op9NoQboFKKDUUvl3PuT0E0EVw==
-X-Received: by 2002:a17:906:20e:b0:992:8a4a:6811 with SMTP id
- 14-20020a170906020e00b009928a4a6811mr2313658ejd.15.1688662259675; 
- Thu, 06 Jul 2023 09:50:59 -0700 (PDT)
-Received: from [192.168.1.102] ([176.187.199.225])
- by smtp.gmail.com with ESMTPSA id
- m10-20020a17090607ca00b00989257be620sm1017322ejc.200.2023.07.06.09.50.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Jul 2023 09:50:59 -0700 (PDT)
-Message-ID: <c03209e3-c0e3-3fb0-c627-478bd820fc89@linaro.org>
-Date: Thu, 6 Jul 2023 18:50:57 +0200
+ d=1e100.net; s=20221208; t=1688669563; x=1691261563;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oyb1Eugswk0N8xQj1J2WKT9qenfubXqukG75R08xjmw=;
+ b=g61GC7x0zk7n0RKpXOV9byMlXaHdCmNBCL8abuxcP41K8N0pcSJYIXBLxLCO0tWPvI
+ TlwEONOofN95mYB6wQHfL6voNfZ9BL5t9n5uT3HJvCsR1P0jMMdasghfz2yHJZBfBk6f
+ dWZ7wT6tsdD+eF/gAy5fsBXhZJdmG/p1OX1wwpcZprI93ItaSE0pQUoEgftzXO1Il0bq
+ 3zi8xv/GJE/L1NcgxKoAfTLS/648c750uJLfCh6THjt0uYfni+T6r9ECkDUR3U6oAndc
+ 8DVN+P8dVxR92WKHe3hI4fydqQ/pfgXk+zhT6wyCtIiOArG/pYNR8vEIW9l9p0TbMZrc
+ kwjQ==
+X-Gm-Message-State: ABy/qLbX3qCQhKV8ld9ne/EfWFLVgI0+QlN0xTT91sZgNXUKGcqaKsCY
+ 1PhrKxvy3Z3WJIgV6GF7477oohZ2PTgplJW21KPvqP54eBafULdkY122vrUu44CghegM6gKoGql
+ hRPbEqDHU2ThA
+X-Received: by 2002:a5d:4ec6:0:b0:313:e391:e492 with SMTP id
+ s6-20020a5d4ec6000000b00313e391e492mr2726179wrv.17.1688669563481; 
+ Thu, 06 Jul 2023 11:52:43 -0700 (PDT)
+X-Received: by 2002:a5d:4ec6:0:b0:313:e391:e492 with SMTP id
+ s6-20020a5d4ec6000000b00313e391e492mr2726163wrv.17.1688669562977; 
+ Thu, 06 Jul 2023 11:52:42 -0700 (PDT)
+Received: from redhat.com ([2.52.13.33]) by smtp.gmail.com with ESMTPSA id
+ o2-20020a5d4742000000b0031434936f0dsm2511835wrs.68.2023.07.06.11.52.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Jul 2023 11:52:42 -0700 (PDT)
+Date: Thu, 6 Jul 2023 14:52:39 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "clg@redhap.com" <clg@redhap.com>,
+ "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+Subject: Re: [PATCH 2/2] virtio-iommu: Rework the trace in
+ virtio_iommu_set_page_size_mask()
+Message-ID: <20230706145221-mutt-send-email-mst@kernel.org>
+References: <20230704111527.3424992-1-eric.auger@redhat.com>
+ <20230704111527.3424992-3-eric.auger@redhat.com>
+ <SJ0PR11MB6744FA4E41101F7EED607E9C922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
+ <SJ0PR11MB6744AEDC41BE576A59908A30922FA@SJ0PR11MB6744.namprd11.prod.outlook.com>
+ <a11b8c79-9efc-6686-6405-863abb8824ae@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH] hw/arm/virt-acpi-build.c: Add missing header
-Content-Language: en-US
-To: Peng Liang <tcx4c70@gmail.com>, mst@redhat.com, imammedo@redhat.com,
- anisinha@redhat.com, shannon.zhaosl@gmail.com, peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230706150839.1180137-1-tcx4c70@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230706150839.1180137-1-tcx4c70@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+In-Reply-To: <a11b8c79-9efc-6686-6405-863abb8824ae@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q7UYa3r0y1LK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 6XHO4lQc0hpC
 
-On 6/7/23 17:08, Peng Liang wrote:
-> virt-acpi-build.c uses warn_report. However, it doesn't include
-> qemu/error-report.h directly, it include qemu/error-report.h via trace.h
-> if we enable log trace backend. But if we disable the log trace backend
-> (e.g., --enable-trace-backends=nop), then virt-acpi-build.c will not
-> include qemu/error-report.h any more and it will lead to build errors.
-> Include qemu/error-report.h directly in virt-acpi-build.c to avoid the
-> errors.
+On Wed, Jul 05, 2023 at 03:16:31PM +0200, Eric Auger wrote:
+> Hi Zhenghong,
 > 
+> On 7/5/23 10:17, Duan, Zhenzhong wrote:
+> >
+> >> -----Original Message-----
+> >> From: Duan, Zhenzhong
+> >> Sent: Wednesday, July 5, 2023 12:56 PM
+> >> Subject: RE: [PATCH 2/2] virtio-iommu: Rework the trace in
+> >> virtio_iommu_set_page_size_mask()
+> >>
+> >>
+> >>
+> >>> -----Original Message-----
+> >>> From: Eric Auger <eric.auger@redhat.com>
+> >>> Sent: Tuesday, July 4, 2023 7:15 PM
+> >>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> >>> devel@nongnu.org; qemu-arm@nongnu.org; mst@redhat.com; jean-
+> >>> philippe@linaro.org; Duan, Zhenzhong <zhenzhong.duan@intel.com>
+> >>> Cc: alex.williamson@redhat.com; clg@redhap.com;
+> >> bharat.bhushan@nxp.com;
+> >>> peter.maydell@linaro.org
+> >>> Subject: [PATCH 2/2] virtio-iommu: Rework the trace in
+> >>> virtio_iommu_set_page_size_mask()
+> >>>
+> >>> The current error messages in virtio_iommu_set_page_size_mask() sound
+> >>> quite similar for different situations and miss the IOMMU memory region
+> >>> that causes the issue.
+> >>>
+> >>> Clarify them and rework the comment.
+> >>>
+> >>> Also remove the trace when the new page_size_mask is not applied as the
+> >>> current frozen granule is kept. This message is rather confusing for
+> >>> the end user and anyway the current granule would have been used by the
+> >>> driver
+> >>>
+> >>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>> ---
+> >>> hw/virtio/virtio-iommu.c | 19 +++++++------------
+> >>> 1 file changed, 7 insertions(+), 12 deletions(-)
+> >>>
+> >>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c index
+> >>> 1eaf81bab5..0d9f7196fe 100644
+> >>> --- a/hw/virtio/virtio-iommu.c
+> >>> +++ b/hw/virtio/virtio-iommu.c
+> >>> @@ -1101,29 +1101,24 @@ static int
+> >>> virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
+> >>>                                           new_mask);
+> >>>
+> >>>     if ((cur_mask & new_mask) == 0) {
+> >>> -        error_setg(errp, "virtio-iommu page mask 0x%"PRIx64
+> >>> -                   " is incompatible with mask 0x%"PRIx64, cur_mask, new_mask);
+> >>> +        error_setg(errp, "virtio-iommu %s reports a page size mask 0x%"PRIx64
+> >>> +                   " incompatible with currently supported mask 0x%"PRIx64,
+> >>> +                   mr->parent_obj.name, new_mask, cur_mask);
+> >>>         return -1;
+> >>>     }
+> >>>
+> >>>     /*
+> >>>      * Once the granule is frozen we can't change the mask anymore. If by
+> >>>      * chance the hotplugged device supports the same granule, we can still
+> >>> -     * accept it. Having a different masks is possible but the guest will use
+> >>> -     * sub-optimal block sizes, so warn about it.
+> >>> +     * accept it.
+> >>>      */
+> >>>     if (s->granule_frozen) {
+> >>> -        int new_granule = ctz64(new_mask);
+> >>>         int cur_granule = ctz64(cur_mask);
+> >>>
+> >>> -        if (new_granule != cur_granule) {
+> >>> -            error_setg(errp, "virtio-iommu page mask 0x%"PRIx64
+> >>> -                       " is incompatible with mask 0x%"PRIx64, cur_mask,
+> >>> -                       new_mask);
+> >>> +        if (!(BIT(cur_granule) & new_mask)) {
+> > Sorry, I read this piece code again and got a question, if new_mask has finer
+> > granularity than cur_granule, should we allow it to pass even though
+> > BIT(cur_granule) is not set?
+> I think this should work but this is not straightforward to test.
+> virtio-iommu would use the current granule for map/unmap. In map/unmap
+> notifiers, this is split into pow2 ranges and cascaded to VFIO through
+> vfio_dma_map/unmap. The iova and size are aligned with the smaller
+> supported granule.
 
-Fixes: 451b157041 ("acpi: Align the size to 128k")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> Signed-off-by: Peng Liang <tcx4c70@gmail.com>
-> ---
->   hw/arm/virt-acpi-build.c | 1 +
->   1 file changed, 1 insertion(+)
+Maybe add a comment down the road. Not urgent.
+
+> Jean, do you share this understanding or do I miss something.
+> 
+> Nevertheless the current code would have rejected that case and nobody
+> complained at that point ;-)
+> 
+> thanks
+> 
+> Eric
+> 
+> >
+> > Thanks
+> > Zhenzhong
+> >
+> >> Good catch.
+> >>
+> >> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> >>
+> >> Thanks
+> >> Zhenzhong
+> >>
+> >>> +            error_setg(errp, "virtio-iommu %s does not support frozen
+> >>> + granule
+> >>> 0x%"PRIx64,
+> >>> +                       mr->parent_obj.name, BIT(cur_granule));
+> >>>             return -1;
+> >>> -        } else if (new_mask != cur_mask) {
+> >>> -            warn_report("virtio-iommu page mask 0x%"PRIx64
+> >>> -                        " does not match 0x%"PRIx64, cur_mask, new_mask);
+> >>>         }
+> >>>         return 0;
+> >>>     }
+> >>> --
+> >>> 2.38.1
 

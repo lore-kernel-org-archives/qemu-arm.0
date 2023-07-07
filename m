@@ -1,150 +1,100 @@
-Received: by 2002:a17:906:b1d4:b0:98d:b2f5:1316 with SMTP id bv20csp781565ejb;
-        Fri, 7 Jul 2023 15:04:35 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlH6DbcH8/ycVzLYJ4UqRaH8VgZKrpCGj5HcRMXOPX6H8AxGT3I4k4cKmeRQN6h/ZFAbLgbc
-X-Received: by 2002:a0c:ab14:0:b0:636:34e2:fae1 with SMTP id h20-20020a0cab14000000b0063634e2fae1mr5675496qvb.20.1688767475621;
-        Fri, 07 Jul 2023 15:04:35 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1688767475; cv=pass;
+Received: by 2002:a17:906:b1d4:b0:98d:b2f5:1316 with SMTP id bv20csp824811ejb;
+        Fri, 7 Jul 2023 16:54:56 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHKZX1ezCZTv8ng4eKYbJtUdcY/3123HyE+4hS2kQ6Q2jU20gTjl74JXUIUmlMQ4VuRv9/k
+X-Received: by 2002:a05:620a:c19:b0:765:7c13:134f with SMTP id l25-20020a05620a0c1900b007657c13134fmr5600050qki.69.1688774096482;
+        Fri, 07 Jul 2023 16:54:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688774096; cv=none;
         d=google.com; s=arc-20160816;
-        b=EThNnxydUmW+WKj2T7RspFEppvZNbZPCZxlciUHulR0uALIAUsonhv20u4L6xwlTTV
-         mtQ+Zm7dQGGv3FVaSZNOPefOWQi1mf0MY8QUaK9elVX450kp9pOEnTSAX3YlubMOFAng
-         e6GeZuU7u13E6DaLAkYrK71DDyMqiwsPamVZOp5Kos2xiQqNldeeseALgwQ3LnOBXl1+
-         3zuATlofekEvqu2FaGBUkxo+ytS34Hp4du7p05TK+VIHdocoimkGYDRvSDqrALVc7535
-         G0300fFJHRsMpqlOcaGmds4/pNK6xLNlJOYxnGCTBCxp9uJPJaBDELcHG870LKRP1x97
-         kTiA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=K7h5+1s21/M3Rx8k9+WsaQsadIemEMzG1Eecf1ocsYP12TjPIHy5JwsUTsPAC3ai1L
+         8WC/iwHlyJkdbxliO/zi9/NSnBtMhjd+/ojTNdyyKbRcIPScR2dmE39SQ2wfaSnCJP4L
+         n/34zaPATNgj60mm9bPvFQvObQrXq9aIqHv0HiXC1RmXHNa+i03x02yfkg8zSZLhM1WY
+         GewFgqvAbxJCW5IBzcspw1qn3Gdw6iCQ6XfzBgMSzqSjbt1556vgoxZn1ZGGfBh5hG0F
+         5DvyF4Ni++skQIM5fUxM0iNnrIVv6K6r+iEi3ZWDMaofKGU9TyYMRLJ9Q+4q4NAptdvm
+         nL6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tHhFU9n68Xxnl6tJ029TeOOKXjypEuE9xWwuXZ8fmBs=;
-        fh=RrVfDwSbeUgr5aTbFp5c3f8uK1ed1Dt6we3jlsuM2yE=;
-        b=EvXyPdr5m+a/XXHAs9NTLIZs6jXhurL1jQQpV+aKwuTnS4ETb6Al+tpbOf6L9B9YCE
-         J9CdFnT8NlMhSrTR+nEw8wE95a8vWHm14ltcUXo+88blpAJrT9B3Q9b+wU7GkypJrFBz
-         /xJzamihFSgG/sd6+EmBkL+CvW65XUNPj2h6BTiM8jvdUGEnMp0V8SFP1f4qKEbFIVr7
-         RE7z/lFiWdMpjrolC1/VzRcSc4B08FHbKxCEzV7newaZhBw3+6jpdh7yWpcRQ46BmTUQ
-         bbs/Hvh9PEtr4C4GuMIKxBTpI2dx1/BdlHLXkboj6Q7/UsyXgqRns2zGuillEUhQ3dFx
-         XkEA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=Hy5mqgR9;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:cc:to:from:date
+         :dkim-signature;
+        bh=tfq5Xuz7yb+wnDorBe8eQ9BJWECfpWLOBnyB9mlI5J8=;
+        fh=qbIObOIBE5B8kuTBsGkrZT27804ckYsOvngIK4E9aZ4=;
+        b=oQjY7nX0j3VFBI7uQnMGNiejM8WWpcxEhRIY8n5VcqAGyCb/nUID9DscwhWyBWRD8Z
+         6s3nk9xiisSXsqcP8gOx81smJ5zl/ljUuOaXMShD0M+ox+GT5PUQu5eha1v8AVll4xot
+         dPXjWPS1HcdFgW3L6S52ewUmtGO7DasAeG2cZ4eHgtpd9kv+BXtxINCV8yFNpCnAPvAR
+         D6C5a5zUb0cfqAZbu+iPuTcaBcwwQ5BtLywSSQE/EX9NBgJfYt/AhPg889mMOVRB4gzn
+         JEHQNKG377whGUNSahKMCsXI+VbEGVA/xG6INFrDoSgRyli+2Auy5EfygD8WctkBQuLB
+         tEFg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fGHVLB0K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26-20020a0c8b1a000000b006259adfabbcsi3346851qva.283.2023.07.07.15.04.35
+        by mx.google.com with ESMTPS id 1-20020a05620a078100b0076781e2a202si3440102qka.779.2023.07.07.16.54.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jul 2023 15:04:35 -0700 (PDT)
+        Fri, 07 Jul 2023 16:54:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=Hy5mqgR9;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fGHVLB0K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qHtYp-000094-UU; Fri, 07 Jul 2023 18:04:20 -0400
+	id 1qHvHP-0006AC-4o; Fri, 07 Jul 2023 19:54:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qHtYo-00008X-IU; Fri, 07 Jul 2023 18:04:18 -0400
-Received: from mail-dm6nam11on20600.outbound.protection.outlook.com
- ([2a01:111:f400:7eaa::600]
- helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1qHvHN-00069m-O3; Fri, 07 Jul 2023 19:54:25 -0400
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vikram.garhwal@amd.com>)
- id 1qHtYl-0003Sn-Iv; Fri, 07 Jul 2023 18:04:17 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PszV35NqOzZSXoRynJAlz2dLzOiAphxGc989xnM0qpBOCvwjweN5MgnQXbXjsxEgpKICV4dyOw4fV2maGpV9L+XCEik0jzE4oxU7kl9rz0Pwi+iOlB7pHwQBL4ELIS4AzT9ooZ2Rj0Nj/uksXegZjggEZYymxhYRl9+FrhBvN0PMUi7NksUSzXWNZWvdsdZcDuqPUhNT963mhnUmlZf0aYL70eBUHIJs2XFztysqgZYS0x8g5Yq797wrpeSJrQsGaKuUubH2A4vhN4KzBQx1MD02N/Airimcck1T2zbSPy3U//6stPJpWLzRB1vBQsdWfUGHyw21G9yT7pzhyHL0Qg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tHhFU9n68Xxnl6tJ029TeOOKXjypEuE9xWwuXZ8fmBs=;
- b=GDPTjq0RscRDErjhbC+cE0H7rsLZzfMAO5DLHJxw8Qfx5G9HTrNxZeO8h5v4jjxoEp7rQG9wSqfyqGbddAqJ2BxOHR+bsgegKP9OfZPBDWUDBAtjNdT7Fre5Al2V4Ht4wHUav1neQSg3nT2XoHDw7XpdNQcAjnGFpXWpFOmnwacyeAnr1X8DtaWESR4bySLg0aUg5EmYR6E8jAyPNUlY4EtK4XpbLSJt3eqydoAFAnpxnCv+LlQtoOvYZrkE6AKwKqeDc1NA2X/c38M+gz9w7HWBaZqXRv4yPlENYm8dclKWFwTseFGsSCUp7EvsKusmM9PSC3nV42Jo17gNKlWiCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tHhFU9n68Xxnl6tJ029TeOOKXjypEuE9xWwuXZ8fmBs=;
- b=Hy5mqgR9IYooB72QiEqwbK2RuFMfLFfTHsjAPtfYpsnr1PIdXHwhtzKkceJTQijg0/j29DneOcAmG8Uh301ghROl9SsYAmM8B80mNBgWc5jCFQQwAGCw5+7mLqBk+huImHHo4yqDu14ESeKUx+hXIcYHG+YkZtIeDin/GiI2RfI=
-Received: from BN8PR15CA0040.namprd15.prod.outlook.com (2603:10b6:408:80::17)
- by PH8PR12MB7026.namprd12.prod.outlook.com (2603:10b6:510:1bd::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.25; Fri, 7 Jul
- 2023 22:04:11 +0000
-Received: from BN8NAM11FT034.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:80:cafe::2f) by BN8PR15CA0040.outlook.office365.com
- (2603:10b6:408:80::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6565.25 via Frontend
- Transport; Fri, 7 Jul 2023 22:04:10 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BN8NAM11FT034.mail.protection.outlook.com (10.13.176.139) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6521.45 via Frontend Transport; Fri, 7 Jul 2023 22:04:10 +0000
-Received: from SATLEXMB07.amd.com (10.181.41.45) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.23; Fri, 7 Jul
- 2023 17:04:10 -0500
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB07.amd.com
- (10.181.41.45) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.6; Fri, 7 Jul 2023
- 15:04:10 -0700
-Received: from xsjfnuv50.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.23 via Frontend
- Transport; Fri, 7 Jul 2023 17:04:09 -0500
-From: Vikram Garhwal <vikram.garhwal@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <sstabellini@kernel.org>, <vikram.garhwal@amd.com>, Oleksandr Tyshchenko
- <oleksandr_tyshchenko@epam.com>, Peter Maydell <peter.maydell@linaro.org>,
+ (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
+ id 1qHvHL-0001P9-SK; Fri, 07 Jul 2023 19:54:25 -0400
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id C855D61AC1;
+ Fri,  7 Jul 2023 23:54:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57684C433C7;
+ Fri,  7 Jul 2023 23:54:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1688774053;
+ bh=RW2S9upzfXkfAXnXepYERJxv4cTYcGMyd9C31IJsVto=;
+ h=Date:From:To:cc:Subject:In-Reply-To:References:From;
+ b=fGHVLB0KOTFGifeAUiKec1zRwb2DwozlNIhvt3kz10z0yS3WWdb9trHySgSOULx1p
+ PjQf3rrueB8xELQRPtft+IctYab7WJ6x5xmWeZ3MXlC35EW9pa7Nr1OuzXZwbwxnDl
+ fxi2vkvCWnxtBGaNiDkSa78MyVH/K4Bv8vDV3zDLQI622i3x9nkgk9ffSQvvl46DDT
+ V7pvdCftJhQ/VoIrc1u/cqzy6kjXlRi8Xh2RN4XMrQ0MclMlzvrN8CgNNEAC/BTif1
+ GjiCS+I6r6kSpZjZ5LUd8oaXqy40pxp6dKqGakO36OiaEVvsp8o00SqM9BXoF/BIW2
+ dI7k23eXww4qA==
+Date: Fri, 7 Jul 2023 16:54:10 -0700 (PDT)
+From: Stefano Stabellini <sstabellini@kernel.org>
+X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
+To: Vikram Garhwal <vikram.garhwal@amd.com>
+cc: qemu-devel@nongnu.org, sstabellini@kernel.org, 
+ Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: [QEMU][PATCH v2 2/2] xen_arm: Initialize RAM and add hi/low memory
- regions
-Date: Fri, 7 Jul 2023 15:03:58 -0700
-Message-ID: <20230707220358.920-3-vikram.garhwal@amd.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20230707220358.920-1-vikram.garhwal@amd.com>
+Subject: Re: [QEMU][PATCH v2 1/2] xen_arm: Create virtio-mmio devices during
+ initialization
+In-Reply-To: <20230707220358.920-2-vikram.garhwal@amd.com>
+Message-ID: <alpine.DEB.2.22.394.2307071654030.761183@ubuntu-linux-20-04-desktop>
 References: <20230707220358.920-1-vikram.garhwal@amd.com>
+ <20230707220358.920-2-vikram.garhwal@amd.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT034:EE_|PH8PR12MB7026:EE_
-X-MS-Office365-Filtering-Correlation-Id: f9663d88-1d7e-4850-74ea-08db7f3617c1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: FTeGs4yM88EjJucL5+IzWmLw2mBFpjPdAWsOMihBKJd+X4fF4IIrB/AC27ugzxmc2yqh4x/9t/NKhoaUIKNxCSh2l+UWX5Rh9DCrh7cNzruWmKgN1qO9a5yAkra4uwU+eXEoXqPDTvk9/803OVhCFTChnJSJAsuYCalLqZcCBdC6m977WmbhykZcX1u9OE6KzCtGNOPaHJeykEhxgTIOt9vq4CRVC+xoPKJbaKKqP3pR/M9ydLiQw2J/YDDe7nOcwZT0glspPqq3DSNTzx3tOMb0ozcWbG8Va9YYZ5YqUo+otMy3lI+P43kBs9h8bWkCfx5DBDzspeLJ0/jAAfVbrTaVsyyXa+cJ1ZxCgDHoMi+fRU5GuwjegzPH+lQ3AVe4MGNVlV2e5hd8H604CLC2I9+EuB+8T4KxFEM+GPP4avw82sKfz+b3ntXYttx4sl5ZVCicQUTE/VF+k3cPn0j6lN1p7qfgtL/wQ72j3gEv7Tz7NpUd3LK0coAW9wRs3y5Pse4jsfaO8+up/bg3kgSptuCJbJR2cr1oemiUsglQO5LMPGs8b58bxS/lV5tfBEvQSwyzQ2C3dDWTNunB0I1etE0wUsuwaCyxK2fh8aFzweYaTR28w7ne+sV5BDMsFyWxBzhp1tJLQEbm772qySpdt32hxZGm85b6DVeyBDSo2ES9UR2UEfvfxvEXnKWcoc9uPAuWk48J0uEdI0x8Py67evmb2vo7TuHd6z9h0X/XMQsXS3pShTYulzGD0lyn3otW7ewgU2CJqJxSE4kmOVcWsg==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230028)(4636009)(39860400002)(346002)(396003)(136003)(376002)(451199021)(40470700004)(46966006)(36840700001)(44832011)(316002)(36756003)(70586007)(4326008)(6916009)(70206006)(5660300002)(8936002)(2906002)(41300700001)(8676002)(40460700003)(40480700001)(47076005)(54906003)(86362001)(36860700001)(82310400005)(478600001)(82740400003)(336012)(186003)(26005)(83380400001)(6666004)(1076003)(356005)(426003)(2616005)(81166007)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2023 22:04:10.6104 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f9663d88-1d7e-4850-74ea-08db7f3617c1
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT034.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7026
-Received-SPF: softfail client-ip=2a01:111:f400:7eaa::600;
- envelope-from=vikram.garhwal@amd.com;
- helo=NAM11-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=sstabellini@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,106 +109,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WDbMaV2SJjo3
+X-TUID: 1uCCOyfFIvyn
 
-From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+On Fri, 7 Jul 2023, Vikram Garhwal wrote:
+> From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+> 
+> In order to use virtio backends we need to allocate virtio-mmio
+> parameters (irq and base) and register corresponding buses.
+> 
+> Use the constants defined in public header arch-arm.h to be
+> aligned with the toolstack. So the number of current supported
+> virtio-mmio devices is 10.
+> 
+> For the interrupts triggering use already existing on Arm
+> device-model hypercall.
+> 
+> The toolstack should then insert the same amount of device nodes
+> into guest device-tree.
+> 
+> Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+> Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
 
-In order to use virtio backends we need to initialize RAM for the
-xen-mapcache (which is responsible for mapping guest memory using foreign
-mapping) to work. Calculate and add hi/low memory regions based on
-machine->ram_size.
+Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 
-Use the constants defined in public header arch-arm.h to be aligned with the xen
-toolstack.
 
-While using this machine, the toolstack should then pass real ram_size using
-"-m" arg. If "-m" is not given, create a QEMU machine without IOREQ and other
-emulated devices like TPM and VIRTIO. This is done to keep this QEMU machine
-usable for /etc/init.d/xencommons.
-
-Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
-Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
----
- hw/arm/xen_arm.c | 45 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
-
-diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-index e700829654..ec8de00cf5 100644
---- a/hw/arm/xen_arm.c
-+++ b/hw/arm/xen_arm.c
-@@ -60,6 +60,8 @@ struct XenArmState {
-     } cfg;
- };
- 
-+static MemoryRegion ram_lo, ram_hi;
-+
- /*
-  * VIRTIO_MMIO_DEV_SIZE is imported from tools/libs/light/libxl_arm.c under Xen
-  * repository.
-@@ -92,6 +94,39 @@ static void xen_create_virtio_mmio_devices(XenArmState *xam)
-     }
- }
- 
-+static void xen_init_ram(MachineState *machine)
-+{
-+    MemoryRegion *sysmem = get_system_memory();
-+    ram_addr_t block_len, ram_size[GUEST_RAM_BANKS];
-+
-+    if (machine->ram_size <= GUEST_RAM0_SIZE) {
-+        ram_size[0] = machine->ram_size;
-+        ram_size[1] = 0;
-+        block_len = GUEST_RAM0_BASE + ram_size[0];
-+    } else {
-+        ram_size[0] = GUEST_RAM0_SIZE;
-+        ram_size[1] = machine->ram_size - GUEST_RAM0_SIZE;
-+        block_len = GUEST_RAM1_BASE + ram_size[1];
-+    }
-+
-+    memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
-+                           &error_fatal);
-+
-+    memory_region_init_alias(&ram_lo, NULL, "xen.ram.lo", &ram_memory,
-+                             GUEST_RAM0_BASE, ram_size[0]);
-+    memory_region_add_subregion(sysmem, GUEST_RAM0_BASE, &ram_lo);
-+    DPRINTF("Initialized region xen.ram.lo: base 0x%llx size 0x%lx\n",
-+            GUEST_RAM0_BASE, ram_size[0]);
-+
-+    if (ram_size[1] > 0) {
-+        memory_region_init_alias(&ram_hi, NULL, "xen.ram.hi", &ram_memory,
-+                                 GUEST_RAM1_BASE, ram_size[1]);
-+        memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
-+        DPRINTF("Initialized region xen.ram.hi: base 0x%llx size 0x%lx\n",
-+                GUEST_RAM1_BASE, ram_size[1]);
-+    }
-+}
-+
- void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
- {
-     hw_error("Invalid ioreq type 0x%x\n", req->type);
-@@ -141,6 +176,14 @@ static void xen_arm_init(MachineState *machine)
- 
-     xam->state =  g_new0(XenIOState, 1);
- 
-+    if (machine->ram_size == 0) {
-+        DPRINTF("ram_size not specified. QEMU machine started without IOREQ"
-+                "(no emulated devices including Virtio)\n");
-+        return;
-+    }
-+
-+    xen_init_ram(machine);
-+
-     xen_register_ioreq(xam->state, machine->smp.cpus, xen_memory_listener);
- 
-     xen_create_virtio_mmio_devices(xam);
-@@ -188,6 +231,8 @@ static void xen_arm_machine_class_init(ObjectClass *oc, void *data)
-     mc->init = xen_arm_init;
-     mc->max_cpus = 1;
-     mc->default_machine_opts = "accel=xen";
-+    /* Set explicitly here to make sure that real ram_size is passed */
-+    mc->default_ram_size = 0;
- 
- #ifdef CONFIG_TPM
-     object_class_property_add(oc, "tpm-base-addr", "uint64_t",
--- 
-2.25.1
-
+> ---
+>  hw/arm/xen_arm.c | 35 +++++++++++++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+> 
+> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+> index 044093fec7..e700829654 100644
+> --- a/hw/arm/xen_arm.c
+> +++ b/hw/arm/xen_arm.c
+> @@ -26,6 +26,7 @@
+>  #include "qapi/qapi-commands-migration.h"
+>  #include "qapi/visitor.h"
+>  #include "hw/boards.h"
+> +#include "hw/irq.h"
+>  #include "hw/sysbus.h"
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/tpm_backend.h"
+> @@ -59,6 +60,38 @@ struct XenArmState {
+>      } cfg;
+>  };
+>  
+> +/*
+> + * VIRTIO_MMIO_DEV_SIZE is imported from tools/libs/light/libxl_arm.c under Xen
+> + * repository.
+> + *
+> + * Origin: git://xenbits.xen.org/xen.git 2128143c114c
+> + */
+> +#define VIRTIO_MMIO_DEV_SIZE   0x200
+> +
+> +#define NR_VIRTIO_MMIO_DEVICES   \
+> +   (GUEST_VIRTIO_MMIO_SPI_LAST - GUEST_VIRTIO_MMIO_SPI_FIRST)
+> +
+> +static void xen_set_irq(void *opaque, int irq, int level)
+> +{
+> +    xendevicemodel_set_irq_level(xen_dmod, xen_domid, irq, level);
+> +}
+> +
+> +static void xen_create_virtio_mmio_devices(XenArmState *xam)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < NR_VIRTIO_MMIO_DEVICES; i++) {
+> +        hwaddr base = GUEST_VIRTIO_MMIO_BASE + i * VIRTIO_MMIO_DEV_SIZE;
+> +        qemu_irq irq = qemu_allocate_irq(xen_set_irq, NULL,
+> +                                         GUEST_VIRTIO_MMIO_SPI_FIRST + i);
+> +
+> +        sysbus_create_simple("virtio-mmio", base, irq);
+> +
+> +        DPRINTF("Created virtio-mmio device %d: irq %d base 0x%lx\n",
+> +                i, GUEST_VIRTIO_MMIO_SPI_FIRST + i, base);
+> +    }
+> +}
+> +
+>  void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+>  {
+>      hw_error("Invalid ioreq type 0x%x\n", req->type);
+> @@ -110,6 +143,8 @@ static void xen_arm_init(MachineState *machine)
+>  
+>      xen_register_ioreq(xam->state, machine->smp.cpus, xen_memory_listener);
+>  
+> +    xen_create_virtio_mmio_devices(xam);
+> +
+>  #ifdef CONFIG_TPM
+>      if (xam->cfg.tpm_base_addr) {
+>          xen_enable_tpm(xam);
+> -- 
+> 2.25.1
+> 

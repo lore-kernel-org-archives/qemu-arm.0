@@ -1,116 +1,118 @@
-Received: by 2002:a17:906:b1d4:b0:98d:b2f5:1316 with SMTP id bv20csp570209ejb;
-        Fri, 7 Jul 2023 08:25:49 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEjg+LFZ3rD9FFSiq/AIc8JsfOW8oTy8uscuAfNixvB4ujkcmCVnI1OBSfBc6c/ldNBl9jB
-X-Received: by 2002:a05:620a:2884:b0:765:8f07:da2a with SMTP id j4-20020a05620a288400b007658f07da2amr4652143qkp.48.1688743549283;
-        Fri, 07 Jul 2023 08:25:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688743549; cv=none;
+Received: by 2002:a17:906:b1d4:b0:98d:b2f5:1316 with SMTP id bv20csp650277ejb;
+        Fri, 7 Jul 2023 10:31:29 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFhw5KY5p01wr69pv0osq2BdC/1JQt/ZjdUv4F9pNGcBz4MeueoRfP4i5NuHlERhPyTeU/E
+X-Received: by 2002:a05:620a:b5b:b0:765:6dd3:3c58 with SMTP id x27-20020a05620a0b5b00b007656dd33c58mr5300748qkg.21.1688751089466;
+        Fri, 07 Jul 2023 10:31:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688751089; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4BJK+R7EAlkv2Y6detC7tk5qy947Ddeq+gXJkRQqCryTScqHxjVjOQHdLCer5wiQi
-         49Yo+ddaDq+nXjysmu30W2WKQsitIh1g5lWhn28O5Zdxcm7up3sVGhxLjxhitO08fbmZ
-         AqPaUymd7m/bANF3beA1xK8Jh0hPdmZ+59ujrw5QYdmIr79GyDVfSorU1oKe+q6vOtl9
-         YSE29brtIqMRj8Mi+kAGboy+rBBq22dI1F8HnMvQYT3UPdl7T+0/YntGVgf/p0/BfaS6
-         i6YXK8byCvRo1pMnmbj06sZgfuTSTF9qcjxHv+pnfyTscxbn+IXsIZTAcVMLiGfAQzeQ
-         AOGg==
+        b=dr9oIGk0tCzCiNv9aUg3Z0ML1wBq78tRnmPmrCBFkYP3SrQcgc2xhjfC0Z37f1+wm4
+         mfq5iXzLzS/iQlCEeTNaoJIx227HH36GFxq/JLhtHI6ncjoWBCKlPJQz0w31v4ehJfwq
+         V+Ev7905bdedY7xrCdGG+PXLIlrutyIkzDdkW31x8Y7FPB5weykKFqO71UNQaz032rDl
+         0JBLZtvht3gFhGS/OQ45Dejx6zM4efUy9Rsn1K1M/iCaGFy9ZrtOSrNSMd0Y1rg6l2rP
+         8MCY9KfwiLoJaWpx53+SQKakszEs1OeDRHmLtYmA3f8WshyoJeGgsSMbDG82UUW0LAkN
+         NlPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=pq5rOSjo84qNYMYnGvkPqfDjHSVDoIcIKZWcz6gNrYk=;
-        fh=/7EjQ5v2xYMT85I+VdVGrkRV05Ll5rz5vDGTt8hbELI=;
-        b=d4SAuCZnwGmyeUxugOaUTQkWp6KwujhsLVzTQAmaesnBtd7d1JvPdcL/x2EPRMXFZB
-         kP2EB7DTmcffCTqVYKCW2D8Zp8rrQ/PAiTvj22YPLw7AQBECpeZFVBWmBSHaMuIQAmVQ
-         yLpZWAlPgcNeT3i/VVFkTtrT6TCD16T0JL+h/d4o5oIAjXFZmCPlflgYO7Z5tIoBDUrq
-         Ri00hayM18P63lCX5+Lud9MAkglrDIqnSGbxIl4/F8A4oaEvmOwJjVGrhg5o46pFjTmx
-         RbM2QYriAWVydWIQcJBIMmibmr7ikCQLzGpJePJsp81bvfWIotuuImqmNghdo7HqstEv
-         PO/g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Ro2y0r/QNRLndcI33sQFq/jxZa1D5XfJ/O354DqgYN0=;
+        fh=CyRrhfNMyKn0Whe06dA6Cz+z02lRCMr9L0VXQ48G2t0=;
+        b=L7JASOWQhYbByoby0nlg2B5uHmfYgzbO55zT2L/UYJlCAKMJ+s7rT9QxzkbIYm8pN6
+         pPkqJOZssydO/sj+16Tfp32WEbZNtqhxWOtyVb14kS3uG52vHI1J6cfY0yCzpn026lrZ
+         vKe9xCaMVV92Tc7uryCh4KY6C0G9nMDraY0P7TYgsb7aZzr1ZjBujnXrxrfZwduHGjuK
+         5xAVKwuWdZQZFcvbJWfwZDfHyHUWyeqVVH8KhnySLPzaU9rzKQ5HZRWXPX8Lvst+oXEZ
+         ht4MoROaR3YUqjDqgSxvbuZrr02hAiFqzEEfxcLfxjQorNZvdNJ/FIuaG9PMTMK/jbXW
+         fBTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rkXTpIQt;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=eqE9Ul9H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dc33-20020a05620a522100b00765e579f0f3si2783413qkb.694.2023.07.07.08.25.49
+        by mx.google.com with ESMTPS id v11-20020a05620a440b00b00767b7c58ac4si1002574qkp.605.2023.07.07.10.31.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jul 2023 08:25:49 -0700 (PDT)
+        Fri, 07 Jul 2023 10:31:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rkXTpIQt;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=eqE9Ul9H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qHnKa-00083M-Bd; Fri, 07 Jul 2023 11:25:12 -0400
+	id 1qHpIH-0007c0-5h; Fri, 07 Jul 2023 13:30:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qHnKY-00082s-MC
- for qemu-arm@nongnu.org; Fri, 07 Jul 2023 11:25:10 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1qHpIE-0007Zo-Ps; Fri, 07 Jul 2023 13:30:54 -0400
+Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qHnKX-0004hl-2T
- for qemu-arm@nongnu.org; Fri, 07 Jul 2023 11:25:10 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-313e742a787so1766230f8f.1
- for <qemu-arm@nongnu.org>; Fri, 07 Jul 2023 08:25:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
+ id 1qHpIC-00028I-TQ; Fri, 07 Jul 2023 13:30:54 -0400
+Received: by mail-oo1-xc2a.google.com with SMTP id
+ 006d021491bc7-565f2567422so1537145eaf.2; 
+ Fri, 07 Jul 2023 10:30:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688743507; x=1691335507;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=pq5rOSjo84qNYMYnGvkPqfDjHSVDoIcIKZWcz6gNrYk=;
- b=rkXTpIQtwSWCQHzdlgyLdKQtEgkmQnNMyMZUxfvxwUjj5R8zx2JjIWeYmzdB3zVJle
- werOUJ5Kpr/p315V/2iYqga4HLt8yd9lhiglq9DZGgp61E4skCQwlxY+a5peHYbqfJLP
- 4jbUSSJCjQz9Ouzon4PJZsPRCr056JDdKNd92eAAVskwGBpXorDYqeS/wvaq8Pdat20x
- fO3eepyFV0Axx3rwELB/iCCd6QaYhpKRzKycxwBJfjLNE0G44dePyJbkPrTbPcf7Shvd
- RJwIVUpAhUqcbD+zeh6NN86B5wup5RPGDb1Kc2R/uUAy3IZX5mlgu2NIGTk0WSwPPvGC
- qhCQ==
+ d=gmail.com; s=20221208; t=1688751051; x=1691343051;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Ro2y0r/QNRLndcI33sQFq/jxZa1D5XfJ/O354DqgYN0=;
+ b=eqE9Ul9HfgMuPLkMGV3g1L6TIrjqJblbaP4EuCpNj844Bayhxhe/HxEcu4fZmyLR/D
+ vZP5BGH+afySQHzoCN6dsW+9eY6NsBtSLcCOgMdwRp9ViCzgJzwAkIDMBs16OawtC+no
+ uAogmXkL0FKzUYpu6KDjez9qUCk1CTr7en6dz7MafK3KAoHbR3Dj+HinzqZpL3AwRCn8
+ s/u7rr+qIvYO3JPFA97fx2/i/dom+GPHQhgmbMxOuL+dUKBzm+L3wtI11u+06BQbQMED
+ 0woRXrKaSIp/dNI8T6OTyyipR1I6Uog5tdcMNggBM/1MYj1EsyIFjA2I/zvLxDDP2TUY
+ et8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688743507; x=1691335507;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=pq5rOSjo84qNYMYnGvkPqfDjHSVDoIcIKZWcz6gNrYk=;
- b=XgBshVS7qqS2KejhUS3zD+jueW6W6eJjS4uwSovys24w4qupx0X3TITwhgFonIo9Lm
- S3mPc+C3kEfHMJw4jhzg5cWN1Al6mEsV+JOyJRzQgkxAEE/q3LvWhJuZ7tuZJrzGak6r
- 0Z3hTOu4h/1/MaxEqLDWORloY2ng0Pu4p0NziFfx02hntezTVUh8oap8tpyvtmHoKpod
- o5MpTpfD6RO4BpYcBsWthhB3xuDYLIrc9oL5LIuPAoKKQlf3BvfXIC13f0EL2mNFS2bV
- pkOcm4U29o+B02OrLOwXzfMqPJanJjvE2MLZMSdKSwfMQVBzMjgKzWI/+3NG1vnbI62t
- TbjA==
-X-Gm-Message-State: ABy/qLZxBdydtb7Eyum7H38u0ihmBR0UAe9Ll+ZCiT03K0CtmFHo0QpZ
- lIJFzpcjNmHkFVTjhCA+zResbA==
-X-Received: by 2002:adf:f08f:0:b0:314:1f0:5846 with SMTP id
- n15-20020adff08f000000b0031401f05846mr7621310wro.19.1688743506817; 
- Fri, 07 Jul 2023 08:25:06 -0700 (PDT)
-Received: from myrica ([2.219.138.198]) by smtp.gmail.com with ESMTPSA id
- f19-20020a7bcc13000000b003fa973e6612sm2743921wmh.44.2023.07.07.08.25.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jul 2023 08:25:06 -0700 (PDT)
-Date: Fri, 7 Jul 2023 16:25:06 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- mst@redhat.com, zhenzhong.duan@intel.com,
- alex.williamson@redhat.com, clg@redhat.com, bharat.bhushan@nxp.com,
- peter.maydell@linaro.org
-Subject: Re: [PATCH v2 0/2] VIRTIO-IOMMU/VFIO page size related fixes
-Message-ID: <20230707152506.GB4060098@myrica>
-References: <20230705165118.28194-1-eric.auger@redhat.com>
+ d=1e100.net; s=20221208; t=1688751051; x=1691343051;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ro2y0r/QNRLndcI33sQFq/jxZa1D5XfJ/O354DqgYN0=;
+ b=BNUTVag5J6VDnc/Qdhm2cKWvO4BEP73fEupwHgi9O/s/oCb0Asua47zE4Qh/c/JjD+
+ n+LmnwxVjHqnj+PTegL8/NRp8eEAKmKPNWA3USmKP5EqQvI/hyMI4QW/e+FbHzDs3m8e
+ 4Gz8LYhbX58YWVsmBld7V863uIafyzmtXZEJE8Ifi4d/dSh2EXNzYyaEZav3mCmKXWwl
+ kBv0r8wAPxHBtccDMUMLNWgsf7CtoNqSd/SLYoEzyKP5E/lo6q4vHyv0xzF5mGIyrQOv
+ gJXNfueCxr3baVXcF5wwxlIEk7aJ9XexaKLmDNfX+xMoJp2ehA9r0w3oXrZvTskW7SQD
+ khrQ==
+X-Gm-Message-State: ABy/qLbofDOUNKlzh97dVUx42/Ne7VFgEtf2zRwyiiWJdWkXa4+Im0oT
+ xLvqwUxa0rvu9OcelxNngSk=
+X-Received: by 2002:a05:6808:c6:b0:398:2c02:20a2 with SMTP id
+ t6-20020a05680800c600b003982c0220a2mr5251626oic.17.1688751050691; 
+ Fri, 07 Jul 2023 10:30:50 -0700 (PDT)
+Received: from [192.168.68.107] (201-69-66-19.dial-up.telesp.net.br.
+ [201.69.66.19]) by smtp.gmail.com with ESMTPSA id
+ y26-20020a544d9a000000b003a09db4a54bsm1942574oix.48.2023.07.07.10.30.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Jul 2023 10:30:50 -0700 (PDT)
+Message-ID: <9877c1f7-a923-1457-071d-b08d0d816ca2@gmail.com>
+Date: Fri, 7 Jul 2023 14:30:47 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230705165118.28194-1-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH v4 00/37] crypto: Provide aes-round.h and host accel
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, pbonzini@redhat.com,
+ eduardo@habkost.net, alistair.francis@wdc.com
+References: <20230703100520.68224-1-richard.henderson@linaro.org>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+In-Reply-To: <20230703100520.68224-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2a;
+ envelope-from=danielhb413@gmail.com; helo=mail-oo1-xc2a.google.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.092,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,35 +127,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EadesFnooEGm
+X-TUID: w+FlMkT4Fhks
 
-On Wed, Jul 05, 2023 at 06:51:16PM +0200, Eric Auger wrote:
-> When assigning a host device and protecting it with the virtio-iommu we may
-> end up with qemu crashing with
-> 
->     qemu-kvm: virtio-iommu page mask 0xfffffffffffff000 is incompatible
->     with mask 0x20010000
->     qemu: hardware error: vfio: DMA mapping failed, unable to continue
-> 
-> This happens if the host features a 64kB page size and constraints
-> the physical IOMMU to use a 64kB page size. By default 4kB granule is used
-> by the qemu virtio-iommu device and this latter becomes aware of the 64kB
-> requirement too late, after the machine init, when the vfio device domain is
-> attached. virtio_iommu_set_page_size_mask() fails and this causes
-> vfio_listener_region_add() to end up with hw_error(). Currently the
-> granule is global to all domains.
-> 
-> To work around this issue, despite the IOMMU MR may be bypassed, we
-> transiently enable it on machine init done to get vfio_listener_region_add
-> and virtio_iommu_set_page_size_mask called ealier, before the domain
-> attach. That way the page size requirement can be taken into account
-> before the guest gets started.
-> 
-> Also get benefit of this series to do some cleanups in some traces
-> which may confuse the end user.
+Richard,
 
-For both patches:
+On 7/3/23 07:04, Richard Henderson wrote:
+> Inspired by Ard Biesheuvel's RFC patches for accelerating AES
+> under emulation, provide a set of primitives that maps between
+> the guest and host fragments.
+> 
+> Changes for v4:
+>    * Fix typo in AESState (Max Chou)
+>    * Define AES_SH/ISH as macros (Ard Biesheuvel)
+>    * Group patches by subsystem.
+> 
+> Patches lacking review:
+>    12-host-include-i386-Implement-aes-round.h.patch
+>    13-host-include-aarch64-Implement-aes-round.h.patch
+>    21-target-i386-Use-aesdec_IMC.patch
+>    22-target-i386-Use-aesenc_SB_SR_MC_AK.patch
+>    23-target-i386-Use-aesdec_ISB_ISR_IMC_AK.patch
+>    25-target-arm-Use-aesenc_SB_SR_AK.patch
+>    26-target-arm-Use-aesdec_ISB_ISR_AK.patch
+>    27-target-arm-Use-aesenc_MC.patch
+>    28-target-arm-Use-aesdec_IMC.patch
+>    29-target-riscv-Use-aesenc_SB_SR_AK.patch
+>    30-target-riscv-Use-aesdec_ISB_ISR_AK.patch
+>    31-target-riscv-Use-aesdec_IMC.patch
+>    32-target-riscv-Use-aesenc_SB_SR_MC_AK.patch
+>    33-target-riscv-Use-aesdec_ISB_ISR_IMC_AK.patch
+> 
+> Daniel(s), I could push the set that has been reviewed
+> (crypto/, DPB; target/ppc/, DHB) through tcg-next if you like,
+> just to reduce the outstanding set.  Perhaps smaller patch sets
+> would help getting the other targets reviewed...
+> 
 
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Sorry for the delay reacting to my name drop.
 
+You're more than welcome in posting the target/ppc bits via tcg-next. I was
+kind of expecting you to do it but failed to mention explicitly back then.
+Go ahead.
+
+By the way I sent the PowerPC PR earlier today (you're probably already saw it).
+So ... yeah, I'm counting on you into pushing this ppc code via the tcg queue,
+in any format you find appropriate (smaller series, big series, single patch
+per PR ... your call).
+
+
+Thanks,
+
+
+Daniel
+
+
+
+> 
+> r~
+> 
+> 
+> Richard Henderson (37):
+>    util: Add cpuinfo-ppc.c
+>    tests/multiarch: Add test-aes
+>    target/arm: Move aesmc and aesimc tables to crypto/aes.c
+>    crypto/aes: Add AES_SH, AES_ISH macros
+>    crypto: Add aesenc_SB_SR_AK
+>    crypto: Add aesdec_ISB_ISR_AK
+>    crypto: Add aesenc_MC
+>    crypto: Add aesdec_IMC
+>    crypto: Add aesenc_SB_SR_MC_AK
+>    crypto: Add aesdec_ISB_ISR_IMC_AK
+>    crypto: Add aesdec_ISB_ISR_AK_IMC
+>    host/include/i386: Implement aes-round.h
+>    host/include/aarch64: Implement aes-round.h
+>    host/include/ppc: Implement aes-round.h
+>    target/ppc: Use aesenc_SB_SR_AK
+>    target/ppc: Use aesdec_ISB_ISR_AK
+>    target/ppc: Use aesenc_SB_SR_MC_AK
+>    target/ppc: Use aesdec_ISB_ISR_AK_IMC
+>    target/i386: Use aesenc_SB_SR_AK
+>    target/i386: Use aesdec_ISB_ISR_AK
+>    target/i386: Use aesdec_IMC
+>    target/i386: Use aesenc_SB_SR_MC_AK
+>    target/i386: Use aesdec_ISB_ISR_IMC_AK
+>    target/arm: Demultiplex AESE and AESMC
+>    target/arm: Use aesenc_SB_SR_AK
+>    target/arm: Use aesdec_ISB_ISR_AK
+>    target/arm: Use aesenc_MC
+>    target/arm: Use aesdec_IMC
+>    target/riscv: Use aesenc_SB_SR_AK
+>    target/riscv: Use aesdec_ISB_ISR_AK
+>    target/riscv: Use aesdec_IMC
+>    target/riscv: Use aesenc_SB_SR_MC_AK
+>    target/riscv: Use aesdec_ISB_ISR_IMC_AK
+>    crypto: Remove AES_shifts, AES_ishifts
+>    crypto: Implement aesdec_IMC with AES_imc_rot
+>    crypto: Remove AES_imc
+>    crypto: Unexport AES_*_rot, AES_TeN, AES_TdN
+> 
+>   MAINTAINERS                                  |   1 +
+>   meson.build                                  |   9 +
+>   host/include/aarch64/host/cpuinfo.h          |   1 +
+>   host/include/aarch64/host/crypto/aes-round.h | 205 +++++
+>   host/include/generic/host/crypto/aes-round.h |  33 +
+>   host/include/i386/host/cpuinfo.h             |   1 +
+>   host/include/i386/host/crypto/aes-round.h    | 152 ++++
+>   host/include/ppc/host/cpuinfo.h              |  30 +
+>   host/include/ppc/host/crypto/aes-round.h     | 182 +++++
+>   host/include/ppc64/host/cpuinfo.h            |   1 +
+>   host/include/ppc64/host/crypto/aes-round.h   |   1 +
+>   host/include/x86_64/host/crypto/aes-round.h  |   1 +
+>   include/crypto/aes-round.h                   | 164 ++++
+>   include/crypto/aes.h                         |  30 -
+>   target/arm/helper.h                          |   2 +
+>   target/i386/ops_sse.h                        |  60 +-
+>   tcg/ppc/tcg-target.h                         |  16 +-
+>   target/arm/tcg/sve.decode                    |   4 +-
+>   crypto/aes.c                                 | 780 ++++++++++++-------
+>   target/arm/tcg/crypto_helper.c               | 249 ++----
+>   target/arm/tcg/translate-a64.c               |  13 +-
+>   target/arm/tcg/translate-neon.c              |   4 +-
+>   target/arm/tcg/translate-sve.c               |   8 +-
+>   target/ppc/int_helper.c                      |  50 +-
+>   target/riscv/crypto_helper.c                 | 138 +---
+>   tests/tcg/aarch64/test-aes.c                 |  58 ++
+>   tests/tcg/i386/test-aes.c                    |  68 ++
+>   tests/tcg/ppc64/test-aes.c                   | 116 +++
+>   tests/tcg/riscv64/test-aes.c                 |  76 ++
+>   util/cpuinfo-aarch64.c                       |   2 +
+>   util/cpuinfo-i386.c                          |   3 +
+>   util/cpuinfo-ppc.c                           |  64 ++
+>   tcg/ppc/tcg-target.c.inc                     |  44 +-
+>   tests/tcg/multiarch/test-aes-main.c.inc      | 183 +++++
+>   tests/tcg/aarch64/Makefile.target            |   4 +
+>   tests/tcg/i386/Makefile.target               |   4 +
+>   tests/tcg/ppc64/Makefile.target              |   1 +
+>   tests/tcg/riscv64/Makefile.target            |  13 +
+>   util/meson.build                             |   2 +
+>   39 files changed, 2049 insertions(+), 724 deletions(-)
+>   create mode 100644 host/include/aarch64/host/crypto/aes-round.h
+>   create mode 100644 host/include/generic/host/crypto/aes-round.h
+>   create mode 100644 host/include/i386/host/crypto/aes-round.h
+>   create mode 100644 host/include/ppc/host/cpuinfo.h
+>   create mode 100644 host/include/ppc/host/crypto/aes-round.h
+>   create mode 100644 host/include/ppc64/host/cpuinfo.h
+>   create mode 100644 host/include/ppc64/host/crypto/aes-round.h
+>   create mode 100644 host/include/x86_64/host/crypto/aes-round.h
+>   create mode 100644 include/crypto/aes-round.h
+>   create mode 100644 tests/tcg/aarch64/test-aes.c
+>   create mode 100644 tests/tcg/i386/test-aes.c
+>   create mode 100644 tests/tcg/ppc64/test-aes.c
+>   create mode 100644 tests/tcg/riscv64/test-aes.c
+>   create mode 100644 util/cpuinfo-ppc.c
+>   create mode 100644 tests/tcg/multiarch/test-aes-main.c.inc
+> 

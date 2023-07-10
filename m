@@ -1,128 +1,117 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1099622eje;
-        Mon, 10 Jul 2023 04:11:34 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE8cr7IyxYO15eCLlcaFaMqkSfflWRl48Z8mz8H6IvuIM0pRMmwTXVoPsUjU/zqe6FJwWqY
-X-Received: by 2002:a05:6358:71c5:b0:130:faea:a81f with SMTP id u5-20020a05635871c500b00130faeaa81fmr3471512rwu.28.1688987494561;
-        Mon, 10 Jul 2023 04:11:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1688987494; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1105785eje;
+        Mon, 10 Jul 2023 04:22:50 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFZE3GZHDOWt6PDefOnqv2giW9zA1ROV6S6d5idH5vn9tyxIAfJ0ShyE4qW8NldHlzM1ePU
+X-Received: by 2002:a05:622a:1a99:b0:3f3:8dff:68fc with SMTP id s25-20020a05622a1a9900b003f38dff68fcmr15486478qtc.22.1688988170347;
+        Mon, 10 Jul 2023 04:22:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1688988170; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tu/opR0JleI+0R5YWc/SpxKKRc5LI/FZrXJV0Ls1i99+zo9T781UDZoJhv5m4TbaPK
-         Z3FrRzGktdhT/5bHNjorc2Oeqn9aya+sJ6bNC8QriSjRPduFKPtHTGVBCAhClvdEUNzh
-         SF/fYweaq7ek9GPQEvO+qWr6ctxRTBX37aoAturSM1XQsPhdgSPb1pCKyL2o/+UxNTbs
-         4e0ftNJdG0itHn9WVZvDdO5Cohakrc+BhPR4BczHP/egMBx6mYXDNhB9BFTsb4eaOouj
-         chsfM9GR7kEaOSnH0R7n8hLbDTypDSVaqSygI+018Ay8bM9ys0sy1mLwCAiX/gfjRz5Z
-         1PnA==
+        b=JsI1tzQevl341F6VgqN85ylMM1+csz0mj9ufzoNav6f9fRUnKlIo2uWGeX4A2bMPd7
+         Qsc89bwywsUjzwciwklkOs1s1w6g8J1xQo1Yn++ToQtXj7gLySFp/CQgbD4EMvNYHyQP
+         eVlKpJIPEG/BsaL/wxhRplGiFEJenP9b/EeNqjK/SdR8YsQrbIZa0a9DwBAVHAt8FWk7
+         fF1yx7n+3yBfQPJ3PUibNjCPqVSXqY9q8lsoj98mzIG0XcUPVxPWT8hNsx24byfxL2v9
+         eTFFlZoyiRdV6xK68U+L/RIH7g8Fg4RvjeNogZirerlj383w+Jd0Uv1QuEbJsncZs0WQ
+         XMEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/Q65nz3su02HpAugcKZK5cPX61qA+KCE+tRUgxH0yb4=;
-        fh=dhvAILzDfZkivO6t6GYsPFqS5Uq9rqWGB6hQqhhyVls=;
-        b=HrDKg7Uxn8zmIP8ZZNQbbbcsIiJ547TYUhO/YR7eUtMNNTfA0rT4LGTiNyZqTsqxxN
-         Ru03GzutyxgK54IXHOxRayiZx+F773kNy89aoHUGPIoJoF7X7/Jwj92Fq2xVVf9vFqnt
-         WJrRS25/hotzbP8Hd8ts9ikQFb+dgckpEDf8vt5GzdZ8lVIlfU1iQLbAptHUzt2PxSo9
-         xWIvhsgM/TQAFGRzg83g3/8sFE8w+NwkN6sGnp4h49XGgK2LVf6Ndh0z+T5PhxOLbG/9
-         x3GaKG3QapeYkxhRAde/EAM1CY7pAYSSLG8vg8sw6oQn7o7Ce+ZaPigyjAfXKhShijUq
-         VVOw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=gUvbCVY/317D3QeuSshcE0x5zBgLgj5qT7WR3kC5t/k=;
+        fh=DK8KHmxoPgptsm+PwNG3JFynZLnRigv8Cfzpwk7qKJ4=;
+        b=qsDEebyk3YKj13Fl5jzbjTP6p+deluADtkcsmesPlBFgLBjPPQyQbddDNSyesduxPJ
+         153J4QkfXiVTbR9pEVskmuAVM17nAskmr9nqketlGh0DIQqcInbpkyjs0Rb9tSsbxO+8
+         WD2NBAWQ7/Zi81JK7s63hLS0guLJe/FoaUDn1IpjxzJYpj19iZpJpnH5o2ld2fgps750
+         QSr87pQ+Nhb41wxpVdXacP2lSnxrSc/aA/Bu7yrMt55gEBphyHq8/iTe62vsMclSZPk8
+         b919a1ve63xySKQKt+vjBMN/9CVQXggJTBJk9RcRPjECer0P1LzD/8IvzvB70uEoV0bi
+         AIYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q7wUft0f;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Um27WrSP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m9-20020a05622a118900b00403acbce109si1057869qtk.465.2023.07.10.04.11.34
+        by mx.google.com with ESMTPS id w6-20020a05622a134600b003f6b1c7c0fcsi5281549qtk.475.2023.07.10.04.22.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jul 2023 04:11:34 -0700 (PDT)
+        Mon, 10 Jul 2023 04:22:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q7wUft0f;
+       dkim=pass header.i=@gmail.com header.s=20221208 header.b=Um27WrSP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qIonQ-0002ex-F9; Mon, 10 Jul 2023 07:11:12 -0400
+	id 1qIoyW-0000FS-6p; Mon, 10 Jul 2023 07:22:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qIonP-0002eR-O6
- for qemu-arm@nongnu.org; Mon, 10 Jul 2023 07:11:11 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qIoyT-0000EN-Pb; Mon, 10 Jul 2023 07:22:37 -0400
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qIonN-0003fh-Pl
- for qemu-arm@nongnu.org; Mon, 10 Jul 2023 07:11:11 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-3fbf1b82de7so31767645e9.1
- for <qemu-arm@nongnu.org>; Mon, 10 Jul 2023 04:11:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qIoyS-0007pB-AW; Mon, 10 Jul 2023 07:22:37 -0400
+Received: by mail-qk1-x732.google.com with SMTP id
+ af79cd13be357-7679d444210so332343985a.2; 
+ Mon, 10 Jul 2023 04:22:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688987468; x=1691579468;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/Q65nz3su02HpAugcKZK5cPX61qA+KCE+tRUgxH0yb4=;
- b=Q7wUft0fsbjzi0natv9S6Y/xJFjiAX6Wx1dxkl3lpaanELOpy9N8aOM8cK4/3uxiek
- AZHzbyVEzswKX6jkFz9Q6S9vp4+U0jt16nOzQmFs4KucTLP2p8fW1YkQNB+I4LIBNal8
- NGgS0dfJO7AD3DjYJQfnRJbCS3ARe6fH7EcRGLJkzCh66yA8vRb3N3hp6T2dUGkDfdZS
- HQL9+lndkdQIf2RhGkTo0QCnGFXqkr4fw4sK1Ae19NFZmmQyjXXOSuYMJpXL1Jh+sCrs
- XLSnugGzZ3emcKEKHKEu5uYwvMlvjg8ufZVKwLxYG+duA1o9sMwiRBSkxO7f/5gviCZN
- Nd2g==
+ d=gmail.com; s=20221208; t=1688988154; x=1691580154;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=gUvbCVY/317D3QeuSshcE0x5zBgLgj5qT7WR3kC5t/k=;
+ b=Um27WrSPHbNEafzMAvzJhRAnxv1ZF+D+9dh11lsLvlil51+KIJsleElmDwzsdB/JS7
+ qx/N63CgXeahtWlodxIlVL7zFJev5nQr/C6GMCQAnJ5TXjzb5dHDhfC283Rc/7LvVssJ
+ 1pXX5oZ0iJhvBjpTaJ4hByf67VpX2iL+iIfGtHH+H7qe6i9CTH/pksPCxTKks2BdC6Jm
+ WfxHS8uLLPFDh0X3w96YQslQbZNkVb8QVoFMh9KIldFaB/68Rdxb/pqFpa9GNR8lIVuO
+ 043dg4RjMGEN2pTQmAAjZvJZVrQAaoJP0jo3d5chj8hjR1IImGVeX7h4IbEADrqaUCbZ
+ LDfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688987468; x=1691579468;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/Q65nz3su02HpAugcKZK5cPX61qA+KCE+tRUgxH0yb4=;
- b=WrMeXFODfVhKfQVev3VzbC+1W1Nn6gWuZ7DABT5/aNRfoAryGD33d7N4kIbSrUviSJ
- WuFJRPw158Or1a9TCpTiWUeDI9vEFBRS1ujVGUgGFPC6nZH5pCSN1i6ZhfvCEbiU0Bnl
- CQAlSw6+ixL7m2H+kiIdUn7/8zyYkSHGU6Z9AkihNAcoNzOg15z+7nlPKNkplukq9XHv
- Y6fsNR3BB4Ml9iRKHQdxT55ziwjkH3uTHSI1YH6MmCRbY+NrREyYhKsBWbo9P7ei0V4G
- ReM5l6G1je/YHy8nsm4f71ANNjoGCrf/ORoIUwh/kdJJqSTTiiwLj57QzlKfiWKePYrx
- B3QA==
-X-Gm-Message-State: ABy/qLZftDqVKUW8TT+Y+5RBnZ4Ylfhp9MAlgBgF1sLauSbqCwdZPDTM
- 6/kUjBEhe8UAAHgQMMllXGIx2w==
-X-Received: by 2002:a05:600c:a6a2:b0:3fa:955a:9291 with SMTP id
- ip34-20020a05600ca6a200b003fa955a9291mr13908957wmb.9.1688987468296; 
- Mon, 10 Jul 2023 04:11:08 -0700 (PDT)
-Received: from [192.168.69.115] (mst45-h01-176-184-47-225.dsl.sta.abo.bbox.fr.
- [176.184.47.225]) by smtp.gmail.com with ESMTPSA id
- t4-20020a5d5344000000b0031417fd473csm11465115wrv.78.2023.07.10.04.11.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Jul 2023 04:11:07 -0700 (PDT)
-Message-ID: <61904add-5dc5-6e17-f306-7fd3cc4b5f5c@linaro.org>
-Date: Mon, 10 Jul 2023 13:11:05 +0200
+ d=1e100.net; s=20221208; t=1688988154; x=1691580154;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gUvbCVY/317D3QeuSshcE0x5zBgLgj5qT7WR3kC5t/k=;
+ b=WFicDaU1C72wqv/JZj0o3m16H1Jnw5LwFuPo75jhw7H8Av6pP+QuwOM/Vw9zF0PuK+
+ GR/J9XHVWjaPk4dkIhIk5DSlb393cpuV1ZNRT7YXe9iqO/+uQFJF+QEDgsgqiAjTRBc1
+ RAgyXeSIKe7SGkpDn7BJfx+PcfU7CiDyT3jBWUx+atQLrqOfdNyL8FKO+hjQn9AO2kUi
+ npTCWMhcuY3gQda3CymUUM1iF/4c125fjMESkkxh7pioZcXkoomwjPfgvyfkntAorKUY
+ YXTuvLUGN+L8LQFJPP95rPkufZXifIMOpM85G4Xa8iQCz90/MLOgP8hpJZ2ibJ55BPtQ
+ mhLA==
+X-Gm-Message-State: ABy/qLY28hz62Gw/3YiLwWNysFXG8KSuzHwM1KXqXrOOaz89zZQL0zDa
+ kYytbBz+GuA5nC7HPt4zaCp4zMCYC7XQoubMwsw=
+X-Received: by 2002:a05:620a:290d:b0:767:250d:f083 with SMTP id
+ m13-20020a05620a290d00b00767250df083mr13847203qkp.78.1688988154493; Mon, 10
+ Jul 2023 04:22:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH 0/4] chardev/char-fe: Document FEWatchFunc and use
- G_SOURCE_CONTINUE/REMOVE
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Markus Armbruster <armbru@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Laurent Vivier <lvivier@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Amit Shah <amit@kernel.org>,
- qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
 References: <20230705133139.54419-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230705133139.54419-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <20230705133139.54419-4-philmd@linaro.org>
+In-Reply-To: <20230705133139.54419-4-philmd@linaro.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Mon, 10 Jul 2023 15:22:23 +0400
+Message-ID: <CAJ+F1CKeWVD=ZF_J6X7SJzXD3PBPEV7EXoXhNVQ7cXPJYo7+Qw@mail.gmail.com>
+Subject: Re: [PATCH 3/4] chardev/char-fe: Document FEWatchFunc typedef
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Laurent Vivier <lvivier@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Amit Shah <amit@kernel.org>,
+ qemu-riscv@nongnu.org, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000fa829f06002032a3"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::732;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qk1-x732.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.101,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,19 +126,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lK4DduwfaUTZ
+X-TUID: PkvlT9y6fQp3
 
-Hi Paolo & Marc-André,
+--000000000000fa829f06002032a3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 5/7/23 15:31, Philippe Mathieu-Daudé wrote:
-> Improve qio and chardev frontend documentation,
-> have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE.
-> 
-> Philippe Mathieu-Daudé (4):
->    io/channel: Explicit QIOChannel doc is based on GLib's IOChannel
->    chardev/char-fe: Clarify qemu_chr_fe_add_watch 'condition' arg is a
->      mask
->    chardev/char-fe: Document FEWatchFunc typedef
->    hw/char: Have FEWatchFunc handlers return G_SOURCE_CONTINUE/REMOVE
+Hi
 
-Could you Ack patches 2-4?
+On Wed, Jul 5, 2023 at 5:33=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd@=
+linaro.org>
+wrote:
+
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  include/chardev/char-fe.h | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
+> index 309960046a..ec3f706a14 100644
+> --- a/include/chardev/char-fe.h
+> +++ b/include/chardev/char-fe.h
+> @@ -175,6 +175,20 @@ void qemu_chr_fe_printf(CharBackend *be, const char
+> *fmt, ...)
+>      G_GNUC_PRINTF(2, 3);
+>
+>
+> +/**
+> + * FEWatchFunc: a #GSourceFunc called when any conditions requested by
+> + *              qemu_chr_fe_add_watch() is satisfied.
+> + * @do_not_use: depending on the underlying chardev, a GIOChannel or a
+> + *              QIOChannel. DO NOT USE!
+> + * @cond: bitwise combination of conditions watched and satisfied
+> + *              before calling this callback.
+> + * @data: user data passed at creation to qemu_chr_fe_add_watch(). Can
+> + *              be NULL.
+> + *
+> + * Returns: G_SOURCE_REMOVE if the GSource should be removed from the
+> + *              main loop, or G_SOURCE_CONTINUE to leave the GSource in
+> + *              the main loop.
+> + */
+>  typedef gboolean (*FEWatchFunc)(void *do_not_use, GIOCondition condition=
+,
+> void *data);
+>
+>  /**
+> --
+> 2.38.1
+>
+>
+>
+Acked-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+--=20
+Marc-Andr=C3=A9 Lureau
+
+--000000000000fa829f06002032a3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi<br></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 5, 2023 at 5:33=E2=80=
+=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">=
+philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex">Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
+mailto:philmd@linaro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
+---<br>
+=C2=A0include/chardev/char-fe.h | 14 ++++++++++++++<br>
+=C2=A01 file changed, 14 insertions(+)<br>
+<br>
+diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h<br>
+index 309960046a..ec3f706a14 100644<br>
+--- a/include/chardev/char-fe.h<br>
++++ b/include/chardev/char-fe.h<br>
+@@ -175,6 +175,20 @@ void qemu_chr_fe_printf(CharBackend *be, const char *f=
+mt, ...)<br>
+=C2=A0 =C2=A0 =C2=A0G_GNUC_PRINTF(2, 3);<br>
+<br>
+<br>
++/**<br>
++ * FEWatchFunc: a #GSourceFunc called when any conditions requested by<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_chr_fe_add_watch()=
+ is satisfied.<br>
++ * @do_not_use: depending on the underlying chardev, a GIOChannel or a<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 QIOChannel. DO NOT USE!=
+<br>
++ * @cond: bitwise combination of conditions watched and satisfied<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 before calling this cal=
+lback.<br>
++ * @data: user data passed at creation to qemu_chr_fe_add_watch(). Can<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 be NULL.<br>
++ *<br>
++ * Returns: G_SOURCE_REMOVE if the GSource should be removed from the<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 main loop, or G_SOURCE_=
+CONTINUE to leave the GSource in<br>
++ *=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 the main loop.<br>
++ */<br>
+=C2=A0typedef gboolean (*FEWatchFunc)(void *do_not_use, GIOCondition condit=
+ion, void *data);<br>
+<br>
+=C2=A0/**<br>
+-- <br>
+2.38.1<br>
+<br>
+<br>
+</blockquote></div><div><br></div><div>Acked-by: Marc-Andr=C3=A9 Lureau &lt=
+;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lureau@redhat.com=
+</a>&gt;</div><br><span class=3D"gmail_signature_prefix">-- </span><br><div=
+ dir=3D"ltr" class=3D"gmail_signature">Marc-Andr=C3=A9 Lureau<br></div></di=
+v>
+
+--000000000000fa829f06002032a3--

@@ -1,75 +1,75 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1351463eje;
-        Mon, 10 Jul 2023 10:51:46 -0700 (PDT)
-X-Received: by 2002:a5d:6b47:0:b0:314:152d:f8db with SMTP id x7-20020a5d6b47000000b00314152df8dbmr10112251wrw.58.1689011506694;
-        Mon, 10 Jul 2023 10:51:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689011506; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1351520eje;
+        Mon, 10 Jul 2023 10:51:52 -0700 (PDT)
+X-Received: by 2002:a5d:595e:0:b0:313:df09:acfb with SMTP id e30-20020a5d595e000000b00313df09acfbmr12151087wri.11.1689011512366;
+        Mon, 10 Jul 2023 10:51:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689011512; cv=none;
         d=google.com; s=arc-20160816;
-        b=duPi32Q2sW5cvfZNMR97iogLCAXoKQOL1UfeTYQmEeUMrykrIPE2KhEGTe33XrDOSz
-         a9H7DHdUeWJItSpw6GgTlOxW/ez5vdNs75K14vIPmahhvgVF2JIQQUQ1Me0hyxwn3Vuo
-         p0UwV+AK+3dQumBkcMd9n7LYxzwF9gWEqeOqLDOnlFnO3/dHQvTRQVaIV0rzVsmvYHlL
-         kAYk8+NelIg1XxSgFR+I8OBp5R2j77kAUKODyV+xhgj3X4B/WkV7ZhjujcPibvQLT5TR
-         8WvJ49hBi9OpEjgq4DgWyhVB5pNahtB0greenmuLLCOXkbUiRj8WXweFnlM6lNk9/w7O
-         2+KQ==
+        b=bv4UKjMVsgnXwKCZ0V1xNvyPV+Rhhf3ozNvSq+5E20j9uX80Igni79ESOb8q2+/M+y
+         amfk/fim6J5GtGfdJ5zE1CD3C5veZptZyxTQoxj+U+INGY7ij9EVIS/nM/FZMCpxkqFt
+         +2xCdBtnHEKsEy1Qbg9f2pQukezh8Vp+V5OZmDlpG5nBMVawILd4A0vB6VsKX0PBwkoU
+         l9nEBVIZ81EmZu4A4x6S6vWrJ3cRVi/XbvnL/QsaBCjMm/37Zd/0vNcc9BWRya/LDMlk
+         bHimOkegucNB7OPPx4r2bXAz5FMVpJkeBd61g9HkpeLGH44vXs7BYmCe6bojp+wM+AuE
+         KpGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OE5HK+6QzUc16kbWLHpwXHz/gljwcqm0t8YsiPIa+LE=;
+        bh=lXGp8ZoE5V8TDGBHBusqjmtpGceSTb5WuIHztmt2l2Q=;
         fh=4TWVGTMFk+XB48cTX7H3L2FEUZf3X6lSQ5h15kr1III=;
-        b=VPtgusECxIPivp5i49dYWEc3N1ymGJ9eAXWifz7YAHkr49mVBHfcp/ycsMXTEUc9bC
-         dMD2r/yvZ0r6afC4XyrHYe/zChTLJdOf/vH+iTGbCJO5Wbal0l87Gh7hkBHptqzOzdVn
-         vhcjRJ8Gm5B3CA0RwhqGt3UYtIeDaknmtf/8aId+s3iLpBx0pAZoj5wLflX9FEFQCp9c
-         bVSVGwEvkXI1w2Er688gfCVvo+NPoyxWS4k6iJmWN0SC31NBxhM/c6w9EbK8Z8QYd8Ss
-         MGY38aoLwLO67XSQnJVRuEA/35efEZOxfoz/QRtu/JATDPnAKvoLDQj5uVsYXSVRT1/t
-         iWJA==
+        b=NMByDKj9yKM1NPnfWi2clKX6mYDqx3XvSHLHXcw/IHQSXHnRVwLumaxSE4Bgy3C3ao
+         bxg/U69E4pfpZ3kbipMcKqRni32CC8Z8UP4Ul8Ao8WMImE5O//odrtOA5+mzdEFr4+Jp
+         2Tk3Xm7bSISBWc33Cu23eVfGRlzx7OgR1qCM3EHPZKrQR3K1Iq9IubSFUUhU6GLNjegv
+         mIVkA+T+JauLYKS8xUMxquP06qsa5aKu5+JmH81Au0iDxYFCOqB9eW+V5mSGn8jDKQP6
+         HgeWaEz12NVLlIVO4E5e8ZcEq/8wJHHiKRxJub0rmFR7sP152uqvQfv6jft/Mkgds/eT
+         TGzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tsYQMg2N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vKiyNgJX;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t10-20020a1c770a000000b003fbe356b600sor74209wmi.0.2023.07.10.10.51.46
+        by mx.google.com with SMTPS id q26-20020adfab1a000000b003159ec59f0asor149005wrc.4.2023.07.10.10.51.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 10 Jul 2023 10:51:46 -0700 (PDT)
+        Mon, 10 Jul 2023 10:51:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tsYQMg2N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vKiyNgJX;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1689011506; x=1691603506;
+        d=linaro.org; s=google; t=1689011512; x=1691603512;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OE5HK+6QzUc16kbWLHpwXHz/gljwcqm0t8YsiPIa+LE=;
-        b=tsYQMg2NbC33ht6evJmCGeSa7UL/wN88thUqyVnXUKJhrqDGOgovZaK9R1khey0t0V
-         PyoJRqKvVn/Yd+cPopI/5dvF2h0qS5Ezd/Im1smwkUbk3OpqrpR/tvk+ug/CPleCD2jn
-         y7HspVdPfjr3jxxW0PKb706nk6VeyCqGidMkvB8pZg1HmAr7Runxp9kYODIH9pRBPijk
-         1ye/EBtVY9Q3/iQoNRVFuJG2wpbpVmTtigFlfhCCHW8XjN3GJLKryA6px8DXBb79ley3
-         0UqHyj1HLgdz1Den5lROTV5lGe0ApSKERlghFJHMykkaTtvmVczV0Al6RPPofYkiu2uA
-         XjxA==
+        bh=lXGp8ZoE5V8TDGBHBusqjmtpGceSTb5WuIHztmt2l2Q=;
+        b=vKiyNgJX8iIZv4oA1W4xd1oYOrqQOsoO5tqSA9CABYVhIW6zZyNKUmqjhn1swM08lS
+         aSd7VCYY/aq6YA2U/HS2n1il0FLcNdR/O2R5UkSFxFGMqEdiP2VmAE3Z1zmfSBBj8EkW
+         pLt/flTjj6ZUPlo7PT0E6OWR6+IbfGw4L+b5HaEMp5FpRmjojp8KB6vD8ozcsto7qBSM
+         B4twRqzXqJHdtOEyvbOnqUFa+p2BL4bPxb7eFfpAcO5Yv3a4XNOxexder47xsZDfirmr
+         RFOwFO/d8RXLDbWSZLrj1nEhduoXN+iXvWPKmaWjnfak97IeL5wTJ4/yCiy4TKJrPkFS
+         v7ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689011506; x=1691603506;
+        d=1e100.net; s=20221208; t=1689011512; x=1691603512;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OE5HK+6QzUc16kbWLHpwXHz/gljwcqm0t8YsiPIa+LE=;
-        b=RwK5WNWVEeEd5LYY0TTKrHJe3uUZMuZzN67WtByqVKoJOLH/r4FZ1Suc8ZFXUK6PKm
-         AfGRoVZaGLPo7pmMLslc1/hY6hxkHAJ4pcPblBdvw4vOH1XmLDgK4XNVNqac8KnJp1JW
-         NU6YdxgE8sLIhEOuXKOU8Hkx67JytSLjffYSLNrPz0e+qo7DXSOfeq6tbnoam0MUe29t
-         PssmEcTU6PARK1d1KNcraewNtByPsccwsto38HIDiKSAdtMgoKIl91+XvVCOZ3z/ap7q
-         mtWPwnRlWPEIhnOSpovIpdT68UDM3aN9ATSU+FhWnH+q+BQE9FPpV+EkNJwBUmbNbUJn
-         WL6A==
-X-Gm-Message-State: ABy/qLaTRFcYDKEgnQYIGpR5JZ6/Nj4qGYq4x5+YNL4jmggUCy4D7Zb2
-	Agj6EpipLhBto/p5zntcCSUpg0p4
-X-Google-Smtp-Source: APBJJlGTvuvn6A71yE7i5fL3LrX5XO9YvpLbbataZS1IeAugak+MoNlv7E7GWVtCndLHD/YCKFEzhQ==
-X-Received: by 2002:a7b:c5d0:0:b0:3fb:b008:1ff6 with SMTP id n16-20020a7bc5d0000000b003fbb0081ff6mr10921652wmk.0.1689011506342;
-        Mon, 10 Jul 2023 10:51:46 -0700 (PDT)
+        bh=lXGp8ZoE5V8TDGBHBusqjmtpGceSTb5WuIHztmt2l2Q=;
+        b=b1UlYoftQ0O534gu04Oj1Q629AHqAs5Mon2j6xSCCUsiLLKirvXq7gmqvlUxRIFOrA
+         IGSbrsr6Qzz/ezm6wkkTm8llCpWuZWzZyw+NLHHh6GhMA5/nn5TOZgqOk/Ed9uTqFk+5
+         Q8PwOZUuCKTCX5XCpnev+peVkjiKvybVZUZ+oLz5kz6AmD8H56oHKXPAQAXADnhY7ktb
+         qn+ecn+4nSwIEe38K6aWBiHw4HMsaCGGExYphOzCVYkZJQx+tXdKwA36l7zPzLw5z+Bh
+         MdVnmh9CQj8QOeq6PsJAVvtELXyF7XVx4WJ5usglltaNpTofE1W23JitOyeMQcOhuW8S
+         E+Nw==
+X-Gm-Message-State: ABy/qLa/1z4RGiM9k6MVeGWq+JqCG/EtaaeWs3wJjR7A5s77u29bJCsL
+	cJmi5RSCmYYzW7quYd6EmKQ0F2pB
+X-Google-Smtp-Source: APBJJlFSo5owCaQU5SUO/RjRm30UfKsYGg/wMRGZEz3ZkmY/mC0kvVV7xXXhg6u4lcFMHP64asqVFQ==
+X-Received: by 2002:a5d:4703:0:b0:314:3e96:bd7e with SMTP id y3-20020a5d4703000000b003143e96bd7emr15193783wrq.4.1689011512134;
+        Mon, 10 Jul 2023 10:51:52 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (mst45-h01-176-184-47-225.dsl.sta.abo.bbox.fr. [176.184.47.225])
-        by smtp.gmail.com with ESMTPSA id k12-20020a7bc30c000000b003fba92fad35sm10908860wmj.26.2023.07.10.10.51.44
+        by smtp.gmail.com with ESMTPSA id l3-20020a1ced03000000b003fc0062f0f8sm489126wmh.9.2023.07.10.10.51.50
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 10 Jul 2023 10:51:46 -0700 (PDT)
+        Mon, 10 Jul 2023 10:51:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -80,84 +80,56 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 07/11] hw/char/pl011: Extract pl011_read_rxdata() from pl011_read()
-Date: Mon, 10 Jul 2023 19:50:58 +0200
-Message-Id: <20230710175102.32429-8-philmd@linaro.org>
+Subject: [PATCH v2 08/11] hw/char/pl011: Warn when using disabled transmitter
+Date: Mon, 10 Jul 2023 19:50:59 +0200
+Message-Id: <20230710175102.32429-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230710175102.32429-1-philmd@linaro.org>
 References: <20230710175102.32429-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rY+vbnix1ZaH
+X-TUID: grYcDBV8Egry
 
-To keep MemoryRegionOps read/write handlers with similar logic,
-factor pl011_read_txdata() out of pl011_read(), similar to the
-previous commit did to pl011_write().
+We shouldn't transmit characters when the full UART or its
+transmitter is disabled. However we don't want to break the
+possibly incomplete "my first bare metal assembly program"s,
+so we choose to simply display a warning when this occurs.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/char/pl011.c | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+ hw/char/pl011.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 7bc7819d8b..e2e3d48b91 100644
+index e2e3d48b91..03dce0a1ec 100644
 --- a/hw/char/pl011.c
 +++ b/hw/char/pl011.c
-@@ -160,31 +160,37 @@ static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int length)
-     pl011_update(s);
- }
+@@ -76,6 +76,10 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
+ #define LCR_FEN     (1 << 4)
+ #define LCR_BRK     (1 << 0)
  
-+static uint32_t pl011_read_rxdata(PL011State *s)
-+{
-+    uint32_t c;
++/* Control Register, UARTCR */
++#define CR_TXE      (1 << 8)
++#define CR_UARTEN   (1 << 0)
 +
-+    s->flags &= ~PL011_FLAG_RXFF;
-+    c = s->read_fifo[s->read_pos];
-+    if (s->read_count > 0) {
-+        s->read_count--;
-+        s->read_pos = (s->read_pos + 1) & (pl011_get_fifo_depth(s) - 1);
-+    }
-+    if (s->read_count == 0) {
-+        s->flags |= PL011_FLAG_RXFE;
-+    }
-+    if (s->read_count == s->read_trigger - 1)
-+        s->int_level &= ~ INT_RX;
-+    trace_pl011_read_fifo(s->read_count);
-+    s->rsr = c >> 8;
-+    pl011_update(s);
-+    qemu_chr_fe_accept_input(&s->chr);
-+    return c;
-+}
-+
- static uint64_t pl011_read(void *opaque, hwaddr offset,
-                            unsigned size)
+ static const unsigned char pl011_id_arm[8] =
+   { 0x11, 0x10, 0x14, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
+ static const unsigned char pl011_id_luminary[8] =
+@@ -151,7 +155,12 @@ static inline void pl011_reset_tx_fifo(PL011State *s)
+ 
+ static void pl011_write_txdata(PL011State *s, const uint8_t *buf, int length)
  {
-     PL011State *s = (PL011State *)opaque;
--    uint32_t c;
-     uint64_t r;
+-    /* ??? Check if transmitter is enabled.  */
++    if (!(s->cr & CR_UARTEN)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "PL011 write data but UART disabled\n");
++    }
++    if (!(s->cr & CR_TXE)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "PL011 write data but TX disabled\n");
++    }
  
-     switch (offset >> 2) {
-     case 0: /* UARTDR */
--        s->flags &= ~PL011_FLAG_RXFF;
--        c = s->read_fifo[s->read_pos];
--        if (s->read_count > 0) {
--            s->read_count--;
--            s->read_pos = (s->read_pos + 1) & (pl011_get_fifo_depth(s) - 1);
--        }
--        if (s->read_count == 0) {
--            s->flags |= PL011_FLAG_RXFE;
--        }
--        if (s->read_count == s->read_trigger - 1)
--            s->int_level &= ~ INT_RX;
--        trace_pl011_read_fifo(s->read_count);
--        s->rsr = c >> 8;
--        pl011_update(s);
--        qemu_chr_fe_accept_input(&s->chr);
--        r = c;
-+        r = pl011_read_rxdata(s);
-         break;
-     case 1: /* UARTRSR */
-         r = s->rsr;
+     /* XXX this blocks entire thread. Rewrite to use
+      * qemu_chr_fe_write and background I/O callbacks */
 -- 
 2.38.1

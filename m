@@ -1,142 +1,116 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1311829eje;
-        Mon, 10 Jul 2023 09:44:30 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlEMu9Dewj/diQlBtH/P+wFYojBEF8LPuBNXjylivYg57+v156AXbOfDA2TNT4MW9Dk1F7gC
-X-Received: by 2002:a0c:b295:0:b0:636:abd2:3b57 with SMTP id r21-20020a0cb295000000b00636abd23b57mr9448623qve.20.1689007469996;
-        Mon, 10 Jul 2023 09:44:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689007469; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1351220eje;
+        Mon, 10 Jul 2023 10:51:12 -0700 (PDT)
+X-Received: by 2002:adf:ed43:0:b0:314:14be:1004 with SMTP id u3-20020adfed43000000b0031414be1004mr12865536wro.63.1689011472247;
+        Mon, 10 Jul 2023 10:51:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689011472; cv=none;
         d=google.com; s=arc-20160816;
-        b=sRvGfCBD8Z1kArfOsJ389RSkEkri6VaTGaElHbc8JYYyPqW1uNa1SBquUb0uhdkk9R
-         vwou5civi+wfa+qugFdo7K4gJLUo952M7sCL8eoRKIe0pL0BMyrpj/MxnUqGGOyiF4iu
-         2hjhCDLUMGk2BpBKKNweyDfSHKIGocJgPKULUKFKL1EFmGhG5I7qZ5fyDHt3dTZ6D6CW
-         Y/nzP68KNG4rf6CtCZ/8vJ9n7VZM0pBn2RQL/rMVC0o02z/21Gzvw+bn0mgcqHn7Yfa1
-         RkRWnVjv48hre9FPdIvrUjq1zbYjrYnkmPI0gFV8wltUBTp899/sR8dnhYS2LoZA5L30
-         oEZg==
+        b=zaOEautn2EhOf5XCcIdwsrgE+hgQfuPE4NkX1WHGORSLTY1hjVRPTDiyqDEFphu8U4
+         4sFwgOpBTQS9LDpqN12RoNoQj6+Ya4DXuwv+htcmS6h+e0+QQWSvKl6XvzkWNrWc9unY
+         cVY6Q/Wc6NnHBNXPimlEHzcFa0QU9SDIyQOvqVQiqxyP7fO5HgmH69ruDT/2BgFa0r6h
+         cwjOuyr4MUcG3A9wc2uA1zCzKoDI380nDgVzWnVaK+mns56E5HfXTiocOf6WrjS+arIf
+         XqFcNwZHbbdl+jaJCtmYkC09d7MtYC80WU1ofdJUfw8ITGXCOMiEj7Kp9GPtGcYg1X3G
+         eT7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=xb1StjqhEoChGl9o/gMdYYZN1gH8eJF6tw+EWRq+/g4=;
-        fh=IKZt+3BXVpmJF6B7A6sCn0BVK2ZE8WtwCYkhqm/ri50=;
-        b=yFCpPJps4pxMFE3/qk5FLDyh0uPv5k1vbmONNszON1VTI98hwq6OKSZaAjnDkRk6QH
-         75/OJRk4dM45deDSiSKGRC2yF7KSi5A5YRmd10IqayGCFp2LCAmMMIpxE4nCsVNsIsdQ
-         v14ZRY3nkpmoKAqpHk5lLl2ADTKd9MNj97GmNxsyUZRHH4GzO7Qug6Rz+DHTJgKxFgN7
-         SiTsV/I4pOxE5QV5Z1nUNbPjuv2TGskuahS0u/NBqPVSHkkrQi7yJYXA06zAMWDcR17C
-         YXUJJryyJZ4dl16dE0vbjzDJ04+v8BlUe5CYxiNuYpmgCONa+oxpNtzVdwGxcnu/4GfS
-         +fNQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=3N6F5aMrOUR9NN4jQ1KnUxsit6lU8XCjQJ4gcKL1MRw=;
+        fh=4TWVGTMFk+XB48cTX7H3L2FEUZf3X6lSQ5h15kr1III=;
+        b=umg7aJVSnqM+I9638PASqMY08kaqcjUxuntd+vtWVAQ46T4/dy899bXwjUl3g6hIG7
+         gwxVSio0joOGk6Sruwf19MQlVQzhYbiv0WxKHUsQFgnnyepnZG1CIdEZNPQOYgYLYXgg
+         wTKK6oTXqKiupdWPjb3v6nk4TI9wyptUc9jc1Ue2TZNfZ5Pxq5eSPY9KD6ALHuHW3AaL
+         dgHLFblJIFpe5c69eRVc06Bc/BB8HGDjMfFFuipe/8OhxEAxsSIQ6oIVzbfKm2EAird/
+         TtqJXSycfh9l+GVjr4ZiNZPTkv1uxQKrkL0Dx9B/z5pScPAPDQsKA7PcCzymAsoYMtu6
+         RR9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UWyn5Mq6;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id t5-20020a0ce2c5000000b006259b105384si5738983qvl.515.2023.07.10.09.44.29
+       dkim=pass header.i=@linaro.org header.s=google header.b=V6m1EVPS;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g10-20020adfa48a000000b003145603b062sor10996wrb.9.2023.07.10.10.51.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Jul 2023 09:44:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Mon, 10 Jul 2023 10:51:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UWyn5Mq6;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1689007469;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xb1StjqhEoChGl9o/gMdYYZN1gH8eJF6tw+EWRq+/g4=;
-	b=UWyn5Mq673G+WSkYGv9vze2eny4xygg/3uSRGHHsZDaVBUPkC6Jf/PCHXhXw0AHEZTyE2i
-	NW6MIZZ6dFcPpg6cnj0OU4rituOrMhKIqI0xXxdyXVRWtqM+GghNPY7qtcWBAN6VNbhw9r
-	Db1wwybLefF3DwQROXPw6M1jLjT94yc=
-Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
- [209.85.167.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-546-Srb3Mu4yNW2B55aTm4kaow-1; Mon, 10 Jul 2023 12:44:28 -0400
-X-MC-Unique: Srb3Mu4yNW2B55aTm4kaow-1
-Received: by mail-oi1-f198.google.com with SMTP id 5614622812f47-39ecef7a101so3916770b6e.2
-        for <alex.bennee@linaro.org>; Mon, 10 Jul 2023 09:44:28 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=V6m1EVPS;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1689011472; x=1691603472;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3N6F5aMrOUR9NN4jQ1KnUxsit6lU8XCjQJ4gcKL1MRw=;
+        b=V6m1EVPSeqCVWicO+/rHjnCcNpkhEL/iqv2RogAXrTB1U7YrydIjf4GrICKB95LUt6
+         dmVndOyKeDp9ipw3v14498l33bPCm18TdAV8oJWPCi9dIma6Fzsmje4pWLuZ9RA1vUQt
+         hoH80iBQYE48fJzeou89Wpv28rCzjlWI7V+affJwiV9sdxBF8Kwgr65ZBePTaUsXtzBS
+         LFmTrOxCTe79GlNIc0732nFXNZHb7UYGoaE/nYjlBX40LNxDrsUfWx8rVPxy2s4nWbT+
+         SqMREOy02GAhdeHXABjkj7SI84cNaYIKdV8iauriivt6oBlRo6k9VPxPBYym7qw2j8VF
+         pzKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1689007468; x=1691599468;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xb1StjqhEoChGl9o/gMdYYZN1gH8eJF6tw+EWRq+/g4=;
-        b=N/Mjs4aMHlucRP0gu+kG/L0DfUmuYJ7zYYX3mahrik4mo0/r1PRLmubd2Mtwewut4r
-         x20rCgY5Cc7ospOozuW2x9LbqfOPkpKmFllSCSJCG7mbxlClGT9p0jn1tfpIu3800wrO
-         fFtzlpZtLwA9obds6hohc908lUS8P4HHh9SpJ99X8oK8Qd1FrNUSrRAwfVYhotzzgvAR
-         wWd5axkeDTT4HlquuBnm4I545PhPFe9OLpt/XeDr8OXlz0zqX+rldeWLFndVWdEVnGmI
-         JJsZ7Isf9OLDY1aN7Kih2VlQ/nDU2ln0Hd7zBSzDpkD/+IEi8Y9YRBQCnX/2pu7+R+oo
-         3qUQ==
-X-Gm-Message-State: ABy/qLag3LODlpebhf9EJ2fiUI/h0EKWN9MoYhvIe7P60Qxx/d1/f1jL
-	3G23xHDck2ToNfmFcr8kpS+NNo3P3MC+daX+x96vleEQj3wi5BfCc0CyOZr4lm2dOdejxqB7Fma
-	7FFNkFZkjhdWSPzH1
-X-Received: by 2002:a05:6808:1689:b0:3a3:64a3:b5a1 with SMTP id bb9-20020a056808168900b003a364a3b5a1mr11958696oib.7.1689007468037;
-        Mon, 10 Jul 2023 09:44:28 -0700 (PDT)
-X-Received: by 2002:a05:6808:1689:b0:3a3:64a3:b5a1 with SMTP id bb9-20020a056808168900b003a364a3b5a1mr11958679oib.7.1689007467770;
-        Mon, 10 Jul 2023 09:44:27 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.8.101] (tmo-097-99.customers.d1-online.com. [80.187.97.99])
-        by smtp.gmail.com with ESMTPSA id k6-20020ac86046000000b0040372a5968csm90191qtm.28.2023.07.10.09.44.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 10 Jul 2023 09:44:27 -0700 (PDT)
-Message-ID: <0c70e8f3-586f-5683-7ef2-0aa3138d7832@redhat.com>
-Date: Mon, 10 Jul 2023 18:44:23 +0200
+        d=1e100.net; s=20221208; t=1689011472; x=1691603472;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3N6F5aMrOUR9NN4jQ1KnUxsit6lU8XCjQJ4gcKL1MRw=;
+        b=AZQoeH8jMMeTKMMfxdOMXVfEtuqJp6PJxOlX2XBmHPhVaEuBOaoiJelx0WWi1Q4enm
+         jbHkZr8h4AaU4q2fDY7+4TkhVwVcxzDQjQvmBYVk+EM01iIJVLZ/C9qSxOYDcz1KzLs/
+         GM87/tlRlAmFDe6ZXoLzXaw6hC8o9wLYl94MEsJbJmN3cy5E6plwmSHAPR2l05abgMKu
+         OYEeHaWMOcFqyOEfP0rEM/VER81WOKQ5duD/JcLSMNKT+89lmbt5Gm5YHJqHH4GGj4rd
+         itDpSVLdhIYUQlbSOI8J+1J9gmHYAwgwGwDGk8mtxIPA+uz3NMuLgWh9+ARHev8yc0kD
+         Izdw==
+X-Gm-Message-State: ABy/qLZfKRQ2HKHf7Hut5WvIrZ/7/Jsl81a/O2dbEV1lebXPIMhz4PpJ
+	IB/PS7eWJpYq67NG8obxkloorJs1
+X-Google-Smtp-Source: APBJJlEMKhigl9zNVvFziIhj5wOws/JGU3Th/RSu6I2YRCeySmK5ZXEtsWfqvzp6SIW6Npv5GvbNFQ==
+X-Received: by 2002:adf:f602:0:b0:314:34f3:10af with SMTP id t2-20020adff602000000b0031434f310afmr13287777wrp.14.1689011471834;
+        Mon, 10 Jul 2023 10:51:11 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (mst45-h01-176-184-47-225.dsl.sta.abo.bbox.fr. [176.184.47.225])
+        by smtp.gmail.com with ESMTPSA id f14-20020adfe90e000000b0030647449730sm18811wrm.74.2023.07.10.10.51.10
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 10 Jul 2023 10:51:11 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Evgeny Iakovlev <eiakovlev@linux.microsoft.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gavin Shan <gshan@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 01/11] hw/char/pl011: Restrict MemoryRegionOps implementation access sizes
+Date: Mon, 10 Jul 2023 19:50:52 +0200
+Message-Id: <20230710175102.32429-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20230710175102.32429-1-philmd@linaro.org>
+References: <20230710175102.32429-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] tests/avocado: Disable the test_sbsaref_edk2_firmware in
- the gitlab-CI
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>, Beraldo Leal <bleal@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20230710144348.239441-1-thuth@redhat.com>
- <CAFEAcA_QTRJwtQxh1FRHtwjSARAptF-j1ZeyGen8xBfrhq7tww@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <CAFEAcA_QTRJwtQxh1FRHtwjSARAptF-j1ZeyGen8xBfrhq7tww@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: YHcOAIv3F5BT
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: uT1mcwe+JMBS
 
-On 10/07/2023 16.54, Peter Maydell wrote:
-> On Mon, 10 Jul 2023 at 15:43, Thomas Huth <thuth@redhat.com> wrote:
->>
->> The test fails occasionally, see e.g.:
->>
->>   https://gitlab.com/thuth/qemu/-/jobs/4196177756#L489
->>   https://gitlab.com/thuth/qemu/-/jobs/4623296271#L290
->>
->> Disable it at least in the gitlab-CI to avoid failing CI
->> pipelines due to this problem.
-> 
-> I'm not really a fan of disabling flaky tests only in the
-> gitlab CI. It means that plain "make check-avocado"
-> is useless to the average developer because it can
-> have all manner of broken or flaky tests in it that
-> never get tested by our CI. In fact I've had to develop
-> the habit of running "GITLAB_CI=1 make check-avocado"
-> so I can run the CI tests that we think work and not
-> get distracted by intermittent failures.
-> 
-> If we want "disable this test except for if you're
-> trying to investigate why it's flaky" then we should
-> have the test be opt-in, not opt-out, the same way
-> we do with QEMU_TEST_FLAKY_TESTS in the qtests.
+The pl011_read() and pl011_write() handlers shift the offset
+argument by 2, so are implemented on a 32-bit boundary.
 
-Agreed, this makes perfectly sense. Actually, I was looking for something 
-like this in the tests/avocado directory, but I did not find anything 
-similar, so I went for the GITLAB_CI variable ...
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/char/pl011.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I'll send a v2 with QEMU_TEST_FLAKY_TESTS instead (and document it in the 
-docs directory).
-
-  Thomas
-
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 77bbc2a982..73f1a3aea2 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -358,6 +358,8 @@ static const MemoryRegionOps pl011_ops = {
+     .read = pl011_read,
+     .write = pl011_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
+ };
+ 
+ static bool pl011_clock_needed(void *opaque)
+-- 
+2.38.1

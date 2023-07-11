@@ -1,115 +1,124 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1791806eje;
-        Tue, 11 Jul 2023 04:05:57 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGa9YQgGBySIgCrGKyf5q/hXTY95tbZlH58LTOzifX0nFKWPwm2CCIlTa1fMIzTXgCRMkeo
-X-Received: by 2002:a05:622a:1c7:b0:401:e052:2c9a with SMTP id t7-20020a05622a01c700b00401e0522c9amr17833863qtw.15.1689073557141;
-        Tue, 11 Jul 2023 04:05:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689073557; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1923548eje;
+        Tue, 11 Jul 2023 07:20:35 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFLdAPBai1lFwKZnsd8dCSTClQph728MyPZq4784nDZN0lSMpJIrZTBHsz5s130vcIaQ98d
+X-Received: by 2002:a05:622a:5c9:b0:400:9605:f975 with SMTP id d9-20020a05622a05c900b004009605f975mr20097840qtb.12.1689085235498;
+        Tue, 11 Jul 2023 07:20:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689085235; cv=none;
         d=google.com; s=arc-20160816;
-        b=e+8AYQy1l4Q1IFiIgaN3UQe9jhu+7TOsdgeEkZwW384UebHPB2+kbopv88EM9lH/d2
-         SZdY8BDRGLZQVU/3rJQu4Um9+YkV3d+FbYx9LAdNrvg4oHbX3rJptD/JqY48cQY8NEZl
-         xzFQw4Qa6EjMkgpWZ1SisiyksCVIH0XRhZcUYjLd+82YdFUz8x6zQ7UKiZvM0xznbK8O
-         No+/NfJ4SBvmconWjI8hbrh7bIlVL2jqUI66xMlRMkTfPailA4KHDr5lBnsINHP8qDDF
-         rEND3GTl+tgaiO09kzfA7ryMhdvR/Fd+dZQyQu9r1l3dH1d+cTu8pSRwVpi77whRe7K7
-         fZPQ==
+        b=ftafPE/MD23SS/sXsELbWjhtRHhWMBQnQoS16vsLhNQQ7s8RhxHO8XvigOf7SjCJ7P
+         3JAcyOJj9N8ieW2OrE10++NITLykYWrwy/0eZMSBkFIowq/8PJU9g04Mg5T9ybpHdptc
+         pu+AKsdED/gbNLxrG4o4Oryt9m/PacRbhtHqYRdmroBFM+wUSpAAA8WytrtFBgiD+27h
+         UqphYTeugIIJkNpygcQSv2Fo1mntyWYQS0VvK7T5qX/Sp1epskvym5xb+U/ViU/Mp3Vc
+         mZ4ZcNSShSjBt70xAswRMh6I/ds1LyeZx9OaxT64NkzYHsTVPvK03XK6SxfagiJMEcxI
+         NBzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=VC4By7XtJAhNMlzzeJnWM3UmwzNBCdO6Wa8WUY/BA5U=;
-        fh=eeiNS6NTPu+JaaqpHJDdRVql/45IkQ6NT18ZM8EPOUE=;
-        b=W7dkDlozsTVOiBLZNypX9gW/3ZD95+U0iOkZ7YNGO8kETYTyqlY2bCpt6DrV3Ug1+0
-         AwddLbtsjpr/tKuP9ospQQxxcfLafROjkwaDwtZURP7oXAWQVmEQmjd3yM9tH3F+I+kR
-         ySCGTHYZgIDlTfL13rVEo20ZfPUcmLxAvgg0T8u+4QRwJ7p/kgnb9i97uWekpey9OXUQ
-         Be15hZh25dK7kUlkfW6mCobHXwfPzAAIDkdNbX2adZ0V6Oeq36KTUZSp8OS++JB1CZ+8
-         wlKUXQ+D7x2pcEZTCOV3UP7/58yn+b5/yNdVe390wGuSJw28MPgyfg4y022VsMnjipTf
-         X6hw==
+        bh=YqmkekmoG6/keFALgzR4safhPNaxOvsdD6Ucs2CjxfE=;
+        fh=6mgGOeqzgN9Dto/QWKvdiVsjfC9eGmOzwulaf9cW2yY=;
+        b=H2BIcAIGsKp/xIztTRJlHV8Zm2+53WmRGgST7Vpzh6fxDO+aQuANAVQSHYzC4jut02
+         VQWoB00UxzNCfER2rfWqijk3UX1YORxzfs0aVoWinkYsc5z2G+X7yXaYnBDkDBPSKBsm
+         y9wvGt8s2UyKPiuMyXlon9PB/uBiFPRTw2ToFgoD8hoWXkKNIHyvRJmXTXgIvgiG7lXz
+         Igk0jFDMsnDzZeGOvYzhDjuPfOf/JqwYwntvS3yBzJy1j0+Z+oXjgO1LJM7cFYlRrzQB
+         yEm5Zl80t8/hYwPoP5FZKPKFWn8W4+66MizUVBudBY5rsuSa3BN/mmi6PM514NaK2F8g
+         v7CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j6wfynPP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DIOrrajU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z14-20020ac87f8e000000b003fdeb6b4fd5si731149qtj.766.2023.07.11.04.05.56
+        by mx.google.com with ESMTPS id b3-20020ac87fc3000000b0040389c4cebesi856986qtk.174.2023.07.11.07.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jul 2023 04:05:57 -0700 (PDT)
+        Tue, 11 Jul 2023 07:20:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j6wfynPP;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DIOrrajU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qJBBZ-0007rO-TV; Tue, 11 Jul 2023 07:05:37 -0400
+	id 1qJEDh-0003Qv-M6; Tue, 11 Jul 2023 10:20:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qJBBY-0007qZ-2C
- for qemu-devel@nongnu.org; Tue, 11 Jul 2023 07:05:36 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1qJBBW-0008VK-4R
- for qemu-devel@nongnu.org; Tue, 11 Jul 2023 07:05:35 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-3fbea147034so56133925e9.0
- for <qemu-devel@nongnu.org>; Tue, 11 Jul 2023 04:05:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689073532; x=1691665532;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=VC4By7XtJAhNMlzzeJnWM3UmwzNBCdO6Wa8WUY/BA5U=;
- b=j6wfynPPvngXjj2YnafkHlLNE6kWtXZO0jisf6BCLiGqFlcLcZO8garNVvsgCaxS6w
- MkveB+iujpfAl8u8O3hM44lgD2shVcGhlN0l/xwoM2rfmsX2F+RxCeL0cxvnbEH5B5fV
- RZq2n7oF787LoHUpdRz67LmJWkLyubKBqNuCHU/R+2ieDdHmII/bPZ3mIgUp0HemM0s4
- ftQzTCDMBcJqIFZepxrwnDV2Hy/Ozc0Hf4Sa+nXW++Dr7aXxXocsc/wZZs0QllTfjyhT
- GxPTnSf0s66tFdooqawzPrBuQebsfsBVusASxVKG0gTs1tMQteGZyfugyS1z+NYJEVBV
- ilQA==
+ (Exim 4.90_1) (envelope-from <mcasquer@redhat.com>)
+ id 1qJEDg-0003Pm-3W
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 10:20:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mcasquer@redhat.com>)
+ id 1qJEDe-0004Ab-JG
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 10:19:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689085197;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YqmkekmoG6/keFALgzR4safhPNaxOvsdD6Ucs2CjxfE=;
+ b=DIOrrajUVohsX7loHSrAnD8Q08ztx2ZmY22/JtZwyRVFOEz9RyKzVHQ3zv4o/q6nbFI4AL
+ uxN5edXZjml42qxhhKP1OXjcLdU9Oad9XudOlHQD1G19wxsevUwGAnyV8LyrxwGy7fUL/C
+ E/rZj2t+EPRuvY4Vd4/swPOFKVJbXtY=
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-227-HC0i39vnPvafWR3jUK88fw-1; Tue, 11 Jul 2023 10:19:54 -0400
+X-MC-Unique: HC0i39vnPvafWR3jUK88fw-1
+Received: by mail-lj1-f199.google.com with SMTP id
+ 38308e7fff4ca-2b698377ed7so57271011fa.3
+ for <qemu-devel@nongnu.org>; Tue, 11 Jul 2023 07:19:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689073532; x=1691665532;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VC4By7XtJAhNMlzzeJnWM3UmwzNBCdO6Wa8WUY/BA5U=;
- b=N1yFSMCA4e8Ph91GvLiRQXQtfUhascwmjYcZuGRL/54V47Ik3gL8K0oD/45ylf66If
- RAFSgq9qZqCC5MfiHaOi0HHFcKc6zHuoyc3tgDa/SRTDPnQ07Ez+7lzd+FvIHsDnhJUu
- aGI6s6KTTBZwhGv0OU7BZaMuQuxuYYx/Lcae1MWL9Ck9bJe8T0KMBEfbrTEVepI3FClv
- WYXrelFNEZwG6xOFigu9XEK8ofA+CqfY1kLsSxTk+XHZWe2KG3+nrJZo2nX2N7zXMxun
- s/8zQqmbp80qpaZSZ6boQpMSKaCAPta1Yx6jFSMm0zrxDKdtbSuT3tb+PKvhm88vcas7
- 9Vzw==
-X-Gm-Message-State: ABy/qLaRXGbb+kw+UVTnyYBQs/IlmBPqYIagpBjFuLiIH1ej7GmUB0X8
- r8ctSNgikCs1a1uXZferWgaoMg==
-X-Received: by 2002:a05:600c:3644:b0:3fc:627:ea31 with SMTP id
- y4-20020a05600c364400b003fc0627ea31mr9227415wmq.38.1689073532149; 
- Tue, 11 Jul 2023 04:05:32 -0700 (PDT)
-Received: from myrica ([2.219.138.198]) by smtp.gmail.com with ESMTPSA id
- h25-20020a1ccc19000000b003fbcf032c55sm12812935wmb.7.2023.07.11.04.05.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jul 2023 04:05:31 -0700 (PDT)
-Date: Tue, 11 Jul 2023 12:05:31 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH for-8.1 2/3] target/arm: Fix S1_ptw_translate() debug path
-Message-ID: <20230711110531.GA201871@myrica>
-References: <20230710152130.3928330-1-peter.maydell@linaro.org>
- <20230710152130.3928330-3-peter.maydell@linaro.org>
+ d=1e100.net; s=20221208; t=1689085174; x=1691677174;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YqmkekmoG6/keFALgzR4safhPNaxOvsdD6Ucs2CjxfE=;
+ b=j2WXJWVwnNVG/xCJPvqWMe3mPwU8byoagu7BAC2YqiKvkl+OKa+L/ppCLUgkVgPZQJ
+ iZQSp+FyQjEYaXMWrL+KYNg30aXlQqeHTbyFgc5XSVRV8ZtLrCPjkYuE1eYyEF1kUkg8
+ Y7ieQrlz8RiZcLPkG6VGtFUwMX/tjZ0JFav9BvDx8G6bmr6XHIy0hmTHoCtrBtuAARFP
+ ydvaj7faPytbc40OvI/jfwQV3qL7+1tCodLN4/xgMCcOfcTTmqz8iPM6aGLnuTIsRF1l
+ k22p46tzLVtDDgoL6/4KYp83LJJG+XgoRGSiTWTQodAgTngHMfaDC0nRHImrChbHM40d
+ nHcw==
+X-Gm-Message-State: ABy/qLan6cURIt5QguTtMAuqOMP5MdilaX95W0LACOEH0OCihzBH7/kh
+ QdTB8ojLb2ddki9Y+jud3LB9/de1cm+hRj8l6IaC5XbeyuTE41lkLOa+a7duq3vbbm3ypIOKuSD
+ ktf98qpVkcq0zLpsW37+UfcuGwaoat08=
+X-Received: by 2002:a2e:9196:0:b0:2b6:de52:35a with SMTP id
+ f22-20020a2e9196000000b002b6de52035amr14597286ljg.9.1689085174068; 
+ Tue, 11 Jul 2023 07:19:34 -0700 (PDT)
+X-Received: by 2002:a2e:9196:0:b0:2b6:de52:35a with SMTP id
+ f22-20020a2e9196000000b002b6de52035amr14597261ljg.9.1689085173734; Tue, 11
+ Jul 2023 07:19:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230710152130.3928330-3-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32e.google.com
+References: <20230710100714.228867-1-david@redhat.com>
+In-Reply-To: <20230710100714.228867-1-david@redhat.com>
+From: Mario Casquero <mcasquer@redhat.com>
+Date: Tue, 11 Jul 2023 16:19:22 +0200
+Message-ID: <CAMXpfWsD9_UvB6cez9oKZt9PREkVALhX0sQ=Qyok78juME78jQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/7] virtio-mem: Device unplug support
+To: David Hildenbrand <david@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org, 
+ Gavin Shan <gshan@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mcasquer@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,96 +133,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Lzoo5F3hpZXt
+X-TUID: 0tW3Fo2AYDKh
 
-On Mon, Jul 10, 2023 at 04:21:29PM +0100, Peter Maydell wrote:
-> In commit XXX we rearranged the logic in S1_ptw_translate() so that
-> the debug-access "call get_phys_addr_*" codepath is used both when S1
-> is doing ptw reads from stage 2 and when it is doing ptw reads from
-> physical memory.  However, we didn't update the calculation of
-> s2ptw->in_space and s2ptw->in_secure to account for the "ptw reads
-> from physical memory" case.  This meant that debug accesses when in
-> Secure state broke.
-> 
-> Create a new function S2_security_space() which returns the
-> correct security space to use for the ptw load, and use it to
-> determine the correct .in_secure and .in_space fields for the
-> stage 2 lookup for the ptw load.
-> 
-> Reported-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Fixes: fe4a5472ccd6 ("target/arm: Use get_phys_addr_with_struct in S1_ptw_translate")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+This series has been successfully tested by QE. Start a VM, plug a
+virtio-mem device, resize the device (adding memory) and verify that
+the virtio-mem device cannot be unplugged. Finally, resize the device
+(removing all the memory) and check that it can be unplugged
+seamlessly.
 
-Thanks, this fixes tf-a boot with semihosting
+Tested-by: Mario Casquero <mcasquer@redhat.com>
 
-Tested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+On Mon, Jul 10, 2023 at 12:07=E2=80=AFPM David Hildenbrand <david@redhat.co=
+m> wrote:
+>
+> Any further comments? IMHO this is pretty straight forward. I'll wait
+> a bit longer for more feedback.
+>
+>
+> One limitation of virtio-mem is that we cannot currently unplug virtio-me=
+m
+> devices that have all memory unplugged from the VM.
+>
+> Let's properly handle forced unplug (as can be triggered by the VM) and
+> add support for ordinary unplug (requests) of virtio-mem devices that are
+> in a compatible state (no legacy mode, no plugged memory, no plug request=
+).
+>
+> Briefly tested on both, x86_64 and aarch64.
+>
+> v2 -> v3:
+> - "virtio-md-pci: New parent type for virtio-mem-pci and virtio-pmem-pci"
+>  -> Add MAINTAINERS entry
+>
+> v1 -> v2:
+> - Reduce code duplication and implement it in a cleaner way using a
+>   new abstract virtio-md-pci parent class
+> - "virtio-md-pci: New parent type for virtio-mem-pci and virtio-pmem-pci"
+>  -> Added, use a new aprent type like virtio-input-pci
+> - "pc: Factor out (un)plug handling of virtio-md-pci devices"
+>  -> Added, factor it cleanly out
+> - "arm/virt: Use virtio-md-pci (un)plug functions"
+>  -> Added, reduce code duplciation
+> - "virtio-md-pci: Handle unplug of virtio based memory devices"
+>  -> More generic without any device-specifics
+> - "virtio-md-pci: Support unplug requests for compatible devices"
+>  -> More generic without any device-specifics
+> - "virtio-mem: Prepare for device unplug support"
+>  -> Use callback, separated from virtio-mem-pci device change
+> - "virtio-mem-pci: Device unplug support"
+>  -> Use callback, separated from virtio-mem device change
+>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Eduardo Habkost <eduardo@habkost.net>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: qemu-arm@nongnu.org
+> Cc: Gavin Shan <gshan@redhat.com>
+> Cc: Mario Casquero <mcasquer@redhat.com>
+>
+> David Hildenbrand (7):
+>   virtio-md-pci: New parent type for virtio-mem-pci and virtio-pmem-pci
+>   pc: Factor out (un)plug handling of virtio-md-pci devices
+>   arm/virt: Use virtio-md-pci (un)plug functions
+>   virtio-md-pci: Handle unplug of virtio based memory devices
+>   virtio-md-pci: Support unplug requests for compatible devices
+>   virtio-mem: Prepare for device unplug support
+>   virtio-mem-pci: Device unplug support
+>
+>  MAINTAINERS                       |   6 ++
+>  hw/arm/virt.c                     |  81 +++-------------
+>  hw/i386/pc.c                      |  90 +++---------------
+>  hw/virtio/Kconfig                 |   8 +-
+>  hw/virtio/meson.build             |   1 +
+>  hw/virtio/virtio-md-pci.c         | 151 ++++++++++++++++++++++++++++++
+>  hw/virtio/virtio-mem-pci.c        |  54 +++++++++--
+>  hw/virtio/virtio-mem-pci.h        |   6 +-
+>  hw/virtio/virtio-mem.c            |  25 +++++
+>  hw/virtio/virtio-pmem-pci.c       |   5 +-
+>  hw/virtio/virtio-pmem-pci.h       |   6 +-
+>  include/hw/virtio/virtio-md-pci.h |  44 +++++++++
+>  include/hw/virtio/virtio-mem.h    |   1 +
+>  13 files changed, 311 insertions(+), 167 deletions(-)
+>  create mode 100644 hw/virtio/virtio-md-pci.c
+>  create mode 100644 include/hw/virtio/virtio-md-pci.h
+>
+> --
+> 2.41.0
+>
 
-> ---
->  target/arm/ptw.c | 37 ++++++++++++++++++++++++++++++++-----
->  1 file changed, 32 insertions(+), 5 deletions(-)
-> 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 21749375f97..c0b9cee5843 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -485,11 +485,39 @@ static bool S2_attrs_are_device(uint64_t hcr, uint8_t attrs)
->      }
->  }
->  
-> +static ARMSecuritySpace S2_security_space(ARMSecuritySpace s1_space,
-> +                                          ARMMMUIdx s2_mmu_idx)
-> +{
-> +    /*
-> +     * Return the security space to use for stage 2 when doing
-> +     * the S1 page table descriptor load.
-> +     */
-> +    if (regime_is_stage2(s2_mmu_idx)) {
-> +        /*
-> +         * The security space for ptw reads is almost always the same
-> +         * as that of the security space of the stage 1 translation.
-> +         * The only exception is when stage 1 is Secure; in that case
-> +         * the ptw read might be to the Secure or the NonSecure space
-> +         * (but never Realm or Root), and the s2_mmu_idx tells us which.
-> +         * Root translations are always single-stage.
-> +         */
-> +        if (s1_space == ARMSS_Secure) {
-> +            return arm_secure_to_space(s2_mmu_idx == ARMMMUIdx_Stage2_S);
-> +        } else {
-> +            assert(s2_mmu_idx != ARMMMUIdx_Stage2_S);
-> +            assert(s1_space != ARMSS_Root);
-> +            return s1_space;
-> +        }
-> +    } else {
-> +        /* ptw loads are from phys: the mmu idx itself says which space */
-> +        return arm_phys_to_space(s2_mmu_idx);
-> +    }
-> +}
-> +
->  /* Translate a S1 pagetable walk through S2 if needed.  */
->  static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
->                               hwaddr addr, ARMMMUFaultInfo *fi)
->  {
-> -    ARMSecuritySpace space = ptw->in_space;
->      bool is_secure = ptw->in_secure;
->      ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
->      ARMMMUIdx s2_mmu_idx = ptw->in_ptw_idx;
-> @@ -502,13 +530,12 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
->           * From gdbstub, do not use softmmu so that we don't modify the
->           * state of the cpu at all, including softmmu tlb contents.
->           */
-> +        ARMSecuritySpace s2_space = S2_security_space(ptw->in_space, s2_mmu_idx);
->          S1Translate s2ptw = {
->              .in_mmu_idx = s2_mmu_idx,
->              .in_ptw_idx = ptw_idx_for_stage_2(env, s2_mmu_idx),
-> -            .in_secure = s2_mmu_idx == ARMMMUIdx_Stage2_S,
-> -            .in_space = (s2_mmu_idx == ARMMMUIdx_Stage2_S ? ARMSS_Secure
-> -                         : space == ARMSS_Realm ? ARMSS_Realm
-> -                         : ARMSS_NonSecure),
-> +            .in_secure = arm_space_is_secure(s2_space),
-> +            .in_space = s2_space,
->              .in_debug = true,
->          };
->          GetPhysAddrResult s2 = { };
-> -- 
-> 2.34.1
-> 

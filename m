@@ -1,175 +1,222 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1982917eje;
-        Tue, 11 Jul 2023 08:38:33 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFqX46V5uuruK+2q+h7240w3kfN/HwUqId+wP+nthQdXvg1GX0oK8GLbGm5+88vCaDAQcD5
-X-Received: by 2002:a0c:a89a:0:b0:631:f384:2859 with SMTP id x26-20020a0ca89a000000b00631f3842859mr12636015qva.38.1689089913342;
-        Tue, 11 Jul 2023 08:38:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689089913; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1983282eje;
+        Tue, 11 Jul 2023 08:39:05 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHmdxvbHZCNX6lYvKnzzVndVI286E1W6ck3FzixlI8DSl57BwVE8MfV1T0dkvCEKijKiybz
+X-Received: by 2002:a05:620a:2b05:b0:765:51a0:2df7 with SMTP id do5-20020a05620a2b0500b0076551a02df7mr14973573qkb.42.1689089944735;
+        Tue, 11 Jul 2023 08:39:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689089944; cv=none;
         d=google.com; s=arc-20160816;
-        b=fRI3pix2478gTEbVS1w5V+jJICdpfy7blv9XCmFsMaUy0JzUgv7ycEM9XQhzSnECby
-         owBb2h6x7DJRce7Kr9XckrBbrhSW66CjBoRQkDgs79FYpMOO9WJHL3SpWfzxcWISvkKC
-         +eueRY5CJ3jYTwItBT3FypgrqkUn3c8AAki+INUCSDz2Zij/zZi6v710MU1jSz5FLThG
-         bccEglJn+ZprvEcW8zZ4raRQJCtJDrOT50VZ5ojJ9B/Z7r/SVfuM7x4uWJ3t26IZGOd5
-         jFQ7afkAsnIhksAJISKjG3iiIMGKrogpbxvO6SsWMbSmbWT/CHNNueBWc+4qsBUoWVMC
-         7DvQ==
+        b=zFxyyX+4MenZaxSgEz6dkKrDGKwNA8m+vfD8Gv+6JPpYjr5HXysU4iIwTmooGc1zAy
+         /6gGyaxt5HSwDz2QxOtlYU6wNOq9JenTzXABR3AjO3gN67bZybj2bH45H4cNKopcmUwE
+         BcaqlHMoO+8qQ2PKhi3hmv68oeiA616VxEX0oSQyDusc0aJRFiy/3VyNEeYqyvNo5e6R
+         +Xc4jzLz7sKlWhF82lJRY8TETyoa2A3TBH7XSOSaeY21b4n/ZQjf6lduBrGr9Rrk+p0e
+         BmV5A452xpX9jUeGTY0/M2z0GR9352+Kefk+JGO9P4rVPxP4lIs9vBofMp1pC2NQcL5U
+         DOIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=OLvHdrvh5NgLCo+BEJ+it3y42RFQYgoan0DilXLSV50=;
-        fh=ISZhyQQp034M2RdAlfkN9fpebr+p+xs3V6UF0eurX1c=;
-        b=ECdYh7D/k2wk24xUEVx5avvjy9HoDD/Gx3Scdj6LJgkWQALIombQn5r4gBZ4jFikC5
-         Y37BqHOZX2B4zMchzukBO8kQtvtuACRVZRRY9W/6U1JI8SAh9jG0qIokoVq/8M4cHlOV
-         IAZyXtLKXQNgTSiL6ABjzonKljBxyj0Hfd4wahwRx6e+F9dsbxGNMGM6rTFMIGEK+cAi
-         HSc2DiXH1uvKRe+cHpys2K3tuVilLUt/EuldIL0vtbIeO+6cAi/S23d92WIKqmQ9dEWu
-         LpPgYrHxcrS5nhOFph9BDT9WkNzRs9GqFjVBOQtn710tbdqSQ/58Bj5QYpkd6YyJjtyb
-         YdPA==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Fi7JfruppMfky0aOjE2GJMkpq4aLQborK4itS9FQ3VQ=;
+        fh=he34ucSNOi56U9wkr/s+M3ZTDgBY7iRqVjLgddG0i4w=;
+        b=XjUMCv9toNzfLP+58H5H2bV91IINHmJsexHTBn9N2lA5EPml82XHUYtMQ2a6Oc4jRB
+         iKl2tSRNfQ04mhm3zh2zxrpTxKEDgL+atYGBz+atMoWXGzkEo+UfZYE26rs5Qt6A7jWV
+         G1orEy0dym+HwXfO+HPWuL/elp21vmFnAmTbnZkHwoQxpuDYxbDW/cX+raTwQh+x4l50
+         uxDfXDXqz5AD0rOvi9aWQw58tHZaLXTZtlyrkCenNsJoXi1ZU3I+PCSV5M6c60RjNHan
+         +ZhqBas3FILMON3kU07KLczrC2kerZqKQAd7PQBmxgKGiX0y1/DNQa/FW2RYCT5tbvgo
+         qyKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqHfjsvQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F9d7uyHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22-20020a05620a28d600b00767d49d0ff4si917783qkp.196.2023.07.11.08.38.33
+        by mx.google.com with ESMTPS id z24-20020a05620a261800b00767124154a4si910585qko.262.2023.07.11.08.39.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jul 2023 08:38:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Jul 2023 08:39:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MqHfjsvQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F9d7uyHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJFRg-0005Id-HQ; Tue, 11 Jul 2023 11:38:32 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qJFS0-0005fu-1Y; Tue, 11 Jul 2023 11:38:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRV-0005Bm-LA
- for qemu-arm@nongnu.org; Tue, 11 Jul 2023 11:38:22 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRy-0005fI-MP
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 11:38:50 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRT-0006jw-Lp
- for qemu-arm@nongnu.org; Tue, 11 Jul 2023 11:38:21 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRx-00071D-6L
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 11:38:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689089899;
+ s=mimecast20190719; t=1689089926;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OLvHdrvh5NgLCo+BEJ+it3y42RFQYgoan0DilXLSV50=;
- b=MqHfjsvQzNg5y09ygr4IcPqf9/JeGMQ+sf8N5zrchjlF7L3qpnmrdBmZ875IxMrjCKtu93
- amEdGNVkiqrjpL8OkzlPNsy9MmvuYyeQnrwrWT5FbJFWktmegnEptvzpI6EL89TDcF7ZbE
- 1qj4ml8QRtxU26RkC7o6dX+YuKeg/y4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-675-Xtf6_EZeM3y5Z2RT7Pl8tA-1; Tue, 11 Jul 2023 11:38:15 -0400
-X-MC-Unique: Xtf6_EZeM3y5Z2RT7Pl8tA-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-3fbefe1b402so36619035e9.1
- for <qemu-arm@nongnu.org>; Tue, 11 Jul 2023 08:38:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689089894; x=1691681894;
- h=content-transfer-encoding:in-reply-to:organization:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=OLvHdrvh5NgLCo+BEJ+it3y42RFQYgoan0DilXLSV50=;
- b=hy+MQsi9RmDCJuYmXzuCDX1NYs1PPZSst+YNvtFN2NrY18UEaRx0JtbJRws1DXLiUV
- UvccWwCgcYmLTpPyI9mIf/aBZQ66ESLxQHsR8nl9Oa2rleY5pwWrhPeI/xcmjbaJASWR
- HKe5eOLMlsro5enbSg/9ALxDOm9vBUAVn/GhKP8Bg88gAZGrgbeqhnTnpxiaqbf4tsJq
- JFo7SFnX2KhxZJm745zrtFy00XtqPjuPq/r8P34+s4BBtez/KMpw5JeMyHwooXly/XPU
- sLtyS8ZV0qP5h97e7xjUA+tR3RwMldFNaMD9WFXbwb6rd55B/tlD9Tz61oPfHOlpLZxB
- fwHQ==
-X-Gm-Message-State: ABy/qLads+MSOxZCMb6HO92oNN6PXWozoeqWIG/edNETa8T/MG7qcOgV
- 7wUFq06cVQSrot3l2FlDEh4l3paUuWBO4k3BULd//NHnhK2spo1pUn79WEXRaQ7SN1cD2k0dfnF
- oBxLoFPgPm4Eg
-X-Received: by 2002:a7b:cd96:0:b0:3fc:443:3773 with SMTP id
- y22-20020a7bcd96000000b003fc04433773mr9863627wmj.30.1689089894680; 
- Tue, 11 Jul 2023 08:38:14 -0700 (PDT)
-X-Received: by 2002:a7b:cd96:0:b0:3fc:443:3773 with SMTP id
- y22-20020a7bcd96000000b003fc04433773mr9863605wmj.30.1689089894380; 
- Tue, 11 Jul 2023 08:38:14 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c745:4000:13ad:ed64:37e6:115d?
- (p200300cbc745400013aded6437e6115d.dip0.t-ipconnect.de.
- [2003:cb:c745:4000:13ad:ed64:37e6:115d])
- by smtp.gmail.com with ESMTPSA id
- n2-20020a05600c294200b003fbe791a0e8sm2910555wmd.0.2023.07.11.08.38.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Jul 2023 08:38:13 -0700 (PDT)
-Message-ID: <78c1cd8a-eabe-698d-69b1-d9df4d5f5c4b@redhat.com>
-Date: Tue, 11 Jul 2023 17:38:12 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v4 0/7] virtio-mem: Device unplug support
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ bh=Fi7JfruppMfky0aOjE2GJMkpq4aLQborK4itS9FQ3VQ=;
+ b=F9d7uyHR9sfYjGduBKk3h1uFKsMU77GbLRXD7Quq5+amaG41X0PF2Eecfww3ROKINZLBsP
+ JNaAnClLGzq9sXiMO3EqAS0/+qXm9yWLM/4Sjw4+WZpE/W3mfmVvsEEYvV0XVbmX+SpDp1
+ xFbcBEhYITNXYXLWSXzKrIWhJIOjCJQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-553-Y1486YujMdiPyXoyhC5OvQ-1; Tue, 11 Jul 2023 11:35:31 -0400
+X-MC-Unique: Y1486YujMdiPyXoyhC5OvQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 658B5185A794;
+ Tue, 11 Jul 2023 15:35:08 +0000 (UTC)
+Received: from t14s.redhat.com (unknown [10.39.194.218])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DAEFDC51488;
+ Tue, 11 Jul 2023 15:35:05 +0000 (UTC)
+From: David Hildenbrand <david@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
  Gavin Shan <gshan@redhat.com>, Mario Casquero <mcasquer@redhat.com>
+Subject: [PATCH v4 7/7] virtio-mem-pci: Device unplug support
+Date: Tue, 11 Jul 2023 17:34:45 +0200
+Message-ID: <20230711153445.514112-8-david@redhat.com>
+In-Reply-To: <20230711153445.514112-1-david@redhat.com>
 References: <20230711153445.514112-1-david@redhat.com>
- <20230711113716-mutt-send-email-mst@kernel.org>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230711113716-mutt-send-email-mst@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pObM9hMqYfkc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zjtYtUdb7rhQ
 
-On 11.07.23 17:37, Michael S. Tsirkin wrote:
-> On Tue, Jul 11, 2023 at 05:34:38PM +0200, David Hildenbrand wrote:
->> One limitation of virtio-mem is that we cannot currently unplug virtio-mem
->> devices that have all memory unplugged from the VM.
->>
->> Let's properly handle forced unplug (as can be triggered by the VM) and
->> add support for ordinary unplug (requests) of virtio-mem devices that are
->> in a compatible state (no legacy mode, no plugged memory, no plug request).
->>
->> Briefly tested on both, x86_64 and aarch64.
-> 
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> 
-> feel free to merge.
+Let's support device unplug by forwarding the unplug_request_check()
+callback to the virtio-mem device.
 
-Will queue tomorrow (and send a PR soonish) if there is no more 
-feedback, thanks!
+Further, disallow changing the requested-size once an unplug request is
+pending.
 
+Disallowing requested-size changes handles corner cases such as
+(1) pausing the VM (2) requesting device unplug and (3) adjusting the
+requested size. If the VM would plug memory (due to the requested size
+change) before processing the unplug request, we would be in trouble.
+
+Tested-by: Mario Casquero <mcasquer@redhat.com>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+ hw/virtio/virtio-mem-pci.c | 49 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 46 insertions(+), 3 deletions(-)
+
+diff --git a/hw/virtio/virtio-mem-pci.c b/hw/virtio/virtio-mem-pci.c
+index 2ef0f07630..c4597e029e 100644
+--- a/hw/virtio/virtio-mem-pci.c
++++ b/hw/virtio/virtio-mem-pci.c
+@@ -93,12 +93,53 @@ static void virtio_mem_pci_size_change_notify(Notifier *notifier, void *data)
+     g_free(qom_path);
+ }
+ 
++static void virtio_mem_pci_unplug_request_check(VirtIOMDPCI *vmd, Error **errp)
++{
++    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(vmd);
++    VirtIOMEM *vmem = &pci_mem->vdev;
++    VirtIOMEMClass *vpc = VIRTIO_MEM_GET_CLASS(vmem);
++
++    vpc->unplug_request_check(vmem, errp);
++}
++
++static void virtio_mem_pci_get_requested_size(Object *obj, Visitor *v,
++                                              const char *name, void *opaque,
++                                              Error **errp)
++{
++    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
++
++    object_property_get(OBJECT(&pci_mem->vdev), name, v, errp);
++}
++
++static void virtio_mem_pci_set_requested_size(Object *obj, Visitor *v,
++                                              const char *name, void *opaque,
++                                              Error **errp)
++{
++    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
++    DeviceState *dev = DEVICE(obj);
++
++    /*
++     * If we passed virtio_mem_pci_unplug_request_check(), making sure that
++     * the requested size is 0, don't allow modifying the requested size
++     * anymore, otherwise the VM might end up hotplugging memory before
++     * handling the unplug request.
++     */
++    if (dev->pending_deleted_event) {
++        error_setg(errp, "'%s' cannot be changed if the device is in the"
++                   " process of unplug", name);
++        return;
++    }
++
++    object_property_set(OBJECT(&pci_mem->vdev), name, v, errp);
++}
++
+ static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
+     PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
+     MemoryDeviceClass *mdc = MEMORY_DEVICE_CLASS(klass);
++    VirtIOMDPCIClass *vmdc = VIRTIO_MD_PCI_CLASS(klass);
+ 
+     k->realize = virtio_mem_pci_realize;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+@@ -111,6 +152,8 @@ static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
+     mdc->get_memory_region = virtio_mem_pci_get_memory_region;
+     mdc->fill_device_info = virtio_mem_pci_fill_device_info;
+     mdc->get_min_alignment = virtio_mem_pci_get_min_alignment;
++
++    vmdc->unplug_request_check = virtio_mem_pci_unplug_request_check;
+ }
+ 
+ static void virtio_mem_pci_instance_init(Object *obj)
+@@ -135,9 +178,9 @@ static void virtio_mem_pci_instance_init(Object *obj)
+                               OBJECT(&dev->vdev), VIRTIO_MEM_BLOCK_SIZE_PROP);
+     object_property_add_alias(obj, VIRTIO_MEM_SIZE_PROP, OBJECT(&dev->vdev),
+                               VIRTIO_MEM_SIZE_PROP);
+-    object_property_add_alias(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP,
+-                              OBJECT(&dev->vdev),
+-                              VIRTIO_MEM_REQUESTED_SIZE_PROP);
++    object_property_add(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP, "size",
++                        virtio_mem_pci_get_requested_size,
++                        virtio_mem_pci_set_requested_size, NULL, NULL);
+ }
+ 
+ static const VirtioPCIDeviceTypeInfo virtio_mem_pci_info = {
 -- 
-Cheers,
-
-David / dhildenb
+2.41.0
 

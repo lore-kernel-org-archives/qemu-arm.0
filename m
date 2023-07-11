@@ -1,108 +1,121 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp1983282eje;
-        Tue, 11 Jul 2023 08:39:05 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHmdxvbHZCNX6lYvKnzzVndVI286E1W6ck3FzixlI8DSl57BwVE8MfV1T0dkvCEKijKiybz
-X-Received: by 2002:a05:620a:2b05:b0:765:51a0:2df7 with SMTP id do5-20020a05620a2b0500b0076551a02df7mr14973573qkb.42.1689089944735;
-        Tue, 11 Jul 2023 08:39:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689089944; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2041276eje;
+        Tue, 11 Jul 2023 10:03:18 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFwKwLv3hl9N3g4MZUpRdpsM2Bpt29imwTSl7o3lZ0KndqrZnd08MCJysKWziO3hpMcAxNs
+X-Received: by 2002:ac8:7d49:0:b0:403:b474:7b2c with SMTP id h9-20020ac87d49000000b00403b4747b2cmr5344382qtb.23.1689094998021;
+        Tue, 11 Jul 2023 10:03:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689094997; cv=none;
         d=google.com; s=arc-20160816;
-        b=zFxyyX+4MenZaxSgEz6dkKrDGKwNA8m+vfD8Gv+6JPpYjr5HXysU4iIwTmooGc1zAy
-         /6gGyaxt5HSwDz2QxOtlYU6wNOq9JenTzXABR3AjO3gN67bZybj2bH45H4cNKopcmUwE
-         BcaqlHMoO+8qQ2PKhi3hmv68oeiA616VxEX0oSQyDusc0aJRFiy/3VyNEeYqyvNo5e6R
-         +Xc4jzLz7sKlWhF82lJRY8TETyoa2A3TBH7XSOSaeY21b4n/ZQjf6lduBrGr9Rrk+p0e
-         BmV5A452xpX9jUeGTY0/M2z0GR9352+Kefk+JGO9P4rVPxP4lIs9vBofMp1pC2NQcL5U
-         DOIw==
+        b=Tj0IMzRWUVljtyDFIJq7o7tQHk5e2LhfFTOo/+VDoCTa6R82xbLeZlrgRg6Feifr7X
+         lcQZ//zsetbYBGFP4NB6hHLNBpOP+Kz1qYvG0g5WAksr71SxMTho7JmpMM0kScy+yK7N
+         s8n6SkKKtHsbofVDPE7kJxH6utIpHMU6naCtPxRiykGeQ+9CdvoHagyC4Dvw2+qeE3Wk
+         Hn7YNrs4Bz4k04zWDEnkKlD7K9nK22T5pFiPXIGHWATVA//M6akNqlKm0Nqk6+cPeSaJ
+         vzC+AFnLbRw1+DtGeuwzB/2g4Ti4684NHLcy14nQCDqBC1gRj9rSsUrAQeci43tHQAsP
+         c0Xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Fi7JfruppMfky0aOjE2GJMkpq4aLQborK4itS9FQ3VQ=;
-        fh=he34ucSNOi56U9wkr/s+M3ZTDgBY7iRqVjLgddG0i4w=;
-        b=XjUMCv9toNzfLP+58H5H2bV91IINHmJsexHTBn9N2lA5EPml82XHUYtMQ2a6Oc4jRB
-         iKl2tSRNfQ04mhm3zh2zxrpTxKEDgL+atYGBz+atMoWXGzkEo+UfZYE26rs5Qt6A7jWV
-         G1orEy0dym+HwXfO+HPWuL/elp21vmFnAmTbnZkHwoQxpuDYxbDW/cX+raTwQh+x4l50
-         uxDfXDXqz5AD0rOvi9aWQw58tHZaLXTZtlyrkCenNsJoXi1ZU3I+PCSV5M6c60RjNHan
-         +ZhqBas3FILMON3kU07KLczrC2kerZqKQAd7PQBmxgKGiX0y1/DNQa/FW2RYCT5tbvgo
-         qyKQ==
+        bh=1oZkJQHplNAwH2l91ru6TjT43Lp7+mYRxhkqeBvjMeE=;
+        fh=SBbgPDDOXmzM9hrsLCjiK7w/SncHURaPmx5au+cvDDM=;
+        b=gT5FKxL/spcTjPqu2i7cYLc/qGsUV+fFrPKhKhwacRfrl4kvDqYw33hjWWkii3cLu+
+         d2hKw41TKYVdl+tWvHzeddKKC8dn3AK+WW8tCx2980T9LcxYEi45C9CzNQO8La4gF62i
+         b1UiY1+pySOOqRbeBRYeOLLO5HHLay4MuHdqyCpceb6F+fYtJcVyiNiXFro7a3Omheun
+         6Nsxdl7mcqkRN4s67o88VzrUF7CBk0BryULj12Z58wwiwnbOKA1lhLvVd7LVx4euD90r
+         vTrnNZ3NHMdzQl9264Pp+YRgA+2K46Nzutw4ckBawa5TaW22fxhTzFx9MU5a7tJdRD49
+         AdPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F9d7uyHR;
+       dkim=pass header.i=@sifive.com header.s=google header.b=kEl1JFeM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z24-20020a05620a261800b00767124154a4si910585qko.262.2023.07.11.08.39.04
+        by mx.google.com with ESMTPS id t10-20020a05622a180a00b004034c415f93si1073710qtc.124.2023.07.11.10.03.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jul 2023 08:39:04 -0700 (PDT)
+        Tue, 11 Jul 2023 10:03:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F9d7uyHR;
+       dkim=pass header.i=@sifive.com header.s=google header.b=kEl1JFeM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qJFS0-0005fu-1Y; Tue, 11 Jul 2023 11:38:52 -0400
+	id 1qJGl4-0004gz-P2; Tue, 11 Jul 2023 13:02:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRy-0005fI-MP
- for qemu-devel@nongnu.org; Tue, 11 Jul 2023 11:38:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJFRx-00071D-6L
- for qemu-devel@nongnu.org; Tue, 11 Jul 2023 11:38:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689089926;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Fi7JfruppMfky0aOjE2GJMkpq4aLQborK4itS9FQ3VQ=;
- b=F9d7uyHR9sfYjGduBKk3h1uFKsMU77GbLRXD7Quq5+amaG41X0PF2Eecfww3ROKINZLBsP
- JNaAnClLGzq9sXiMO3EqAS0/+qXm9yWLM/4Sjw4+WZpE/W3mfmVvsEEYvV0XVbmX+SpDp1
- xFbcBEhYITNXYXLWSXzKrIWhJIOjCJQ=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-553-Y1486YujMdiPyXoyhC5OvQ-1; Tue, 11 Jul 2023 11:35:31 -0400
-X-MC-Unique: Y1486YujMdiPyXoyhC5OvQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 658B5185A794;
- Tue, 11 Jul 2023 15:35:08 +0000 (UTC)
-Received: from t14s.redhat.com (unknown [10.39.194.218])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DAEFDC51488;
- Tue, 11 Jul 2023 15:35:05 +0000 (UTC)
-From: David Hildenbrand <david@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
+ id 1qJGjw-0003yk-49
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 13:01:30 -0400
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
+ id 1qJGju-0001N3-MN
+ for qemu-devel@nongnu.org; Tue, 11 Jul 2023 13:01:27 -0400
+Received: by mail-pg1-x52d.google.com with SMTP id
+ 41be03b00d2f7-55be1ce1669so3037084a12.1
+ for <qemu-devel@nongnu.org>; Tue, 11 Jul 2023 10:01:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1689094885; x=1691686885;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1oZkJQHplNAwH2l91ru6TjT43Lp7+mYRxhkqeBvjMeE=;
+ b=kEl1JFeMm7RGmr4ukiUPTXcW1KPBW+XprAjv4agfVO74rKbVlbUh3qKfgvT1FXvjoF
+ 4p3B+s4mPfhFHSe3m4yQeMR8sQjtul9yIAgpYfJuPqxk7lYhiwmivABRSLVoLPPrxQbc
+ CmONXiKOGLsiAOOGE/5zuxApESMG4e+lilmPMg9QRH9wCnPfUhkJAXSv76rnPVD69Lxp
+ ola4w3CRdWTQhQjWqIodupyraS904xE+F1gUuv5J15DX6UAfOQVUJHrmYjb5XQ2Vqrtr
+ MHcKIvPDr5Uy6Umgipwzl6C9T0yA/SwmKOKpxCeK3oOd+PVUTp2MGLicG2iCVhLO6G2V
+ 4ePA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689094885; x=1691686885;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1oZkJQHplNAwH2l91ru6TjT43Lp7+mYRxhkqeBvjMeE=;
+ b=IXIuTTSZMp1wBy9+WbfMUFpdAQhuw97A5HIjDR3qAlVvM6ZOq7OQB2gfuI59hZGl7R
+ ZPvEBbbl+NwqEzNspleeFBJRVUQS53Ot0Kj0yles+SlsP5gadiVQWjvGPXBf9hkC7PXE
+ KJe0HdhIV7R4u5MqfZ2vGXGvWp7seBZjOEmMOuMWaED62X3vTQ54QG6DHoSNUgke6hkl
+ ahfHyAILzpKw8rppY9AVhdZg023BO9sBbziJALZhRbLKcMpMXIb8oQkrKiEonnqxhTuX
+ HYxHLKayjWBZy/I1fOp62MEguLN47xRPpMD04eALDdJxszyYhU5Z69a1Vwoir/jqbZe/
+ rkKg==
+X-Gm-Message-State: ABy/qLangsmSKwAGeGQJBsuryP1cW3UeN/N+ADb7MrwgQR70M0xCXm6P
+ CwXhBjC5YX+kgFmkvnrptDrXr+6bv4rfRVtpyO0BTpscp2h/RwxUxOKeC9CyYFA99c36Uq7f5oz
+ 6dcPxJkLWWurGvPYN2Kq/ay3akIj4RhpJ/i1ZZHJlsU2ne7Kh4levpI2IqKPEkEsu7kJW89gifY
+ 5foFQ=
+X-Received: by 2002:a17:90a:6fe1:b0:265:8184:5903 with SMTP id
+ e88-20020a17090a6fe100b0026581845903mr10043581pjk.40.1689094884969; 
+ Tue, 11 Jul 2023 10:01:24 -0700 (PDT)
+Received: from duncan.localdomain (125-228-20-175.hinet-ip.hinet.net.
+ [125.228.20.175]) by smtp.gmail.com with ESMTPSA id
+ gw10-20020a17090b0a4a00b00262fc84b931sm8381793pjb.44.2023.07.11.10.01.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Jul 2023 10:01:24 -0700 (PDT)
+From: Max Chou <max.chou@sifive.com>
+To: qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: dbarboza@ventanamicro.com, alistair23@gmail.com,
+ Max Chou <max.chou@sifive.com>, Frank Chang <frank.chang@sifive.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Gavin Shan <gshan@redhat.com>, Mario Casquero <mcasquer@redhat.com>
-Subject: [PATCH v4 7/7] virtio-mem-pci: Device unplug support
-Date: Tue, 11 Jul 2023 17:34:45 +0200
-Message-ID: <20230711153445.514112-8-david@redhat.com>
-In-Reply-To: <20230711153445.514112-1-david@redhat.com>
-References: <20230711153445.514112-1-david@redhat.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v8 13/15] crypto: Create sm4_subword
+Date: Wed, 12 Jul 2023 00:59:12 +0800
+Message-Id: <20230711165917.2629866-14-max.chou@sifive.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230711165917.2629866-1-max.chou@sifive.com>
+References: <20230711165917.2629866-1-max.chou@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=max.chou@sifive.com; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -118,105 +131,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zjtYtUdb7rhQ
+X-TUID: pvbJPcVumdrb
 
-Let's support device unplug by forwarding the unplug_request_check()
-callback to the virtio-mem device.
+Allows sharing of sm4_subword between different targets.
 
-Further, disallow changing the requested-size once an unplug request is
-pending.
-
-Disallowing requested-size changes handles corner cases such as
-(1) pausing the VM (2) requesting device unplug and (3) adjusting the
-requested size. If the VM would plug memory (due to the requested size
-change) before processing the unplug request, we would be in trouble.
-
-Tested-by: Mario Casquero <mcasquer@redhat.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
+Signed-off-by: Max Chou <max.chou@sifive.com>
+Reviewed-by: Frank Chang <frank.chang@sifive.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Max Chou <max.chou@sifive.com>
 ---
- hw/virtio/virtio-mem-pci.c | 49 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 46 insertions(+), 3 deletions(-)
+ include/crypto/sm4.h           |  8 ++++++++
+ target/arm/tcg/crypto_helper.c | 10 ++--------
+ 2 files changed, 10 insertions(+), 8 deletions(-)
 
-diff --git a/hw/virtio/virtio-mem-pci.c b/hw/virtio/virtio-mem-pci.c
-index 2ef0f07630..c4597e029e 100644
---- a/hw/virtio/virtio-mem-pci.c
-+++ b/hw/virtio/virtio-mem-pci.c
-@@ -93,12 +93,53 @@ static void virtio_mem_pci_size_change_notify(Notifier *notifier, void *data)
-     g_free(qom_path);
- }
+diff --git a/include/crypto/sm4.h b/include/crypto/sm4.h
+index 9bd3ebc62e8..de8245d8a71 100644
+--- a/include/crypto/sm4.h
++++ b/include/crypto/sm4.h
+@@ -3,4 +3,12 @@
  
-+static void virtio_mem_pci_unplug_request_check(VirtIOMDPCI *vmd, Error **errp)
+ extern const uint8_t sm4_sbox[256];
+ 
++static inline uint32_t sm4_subword(uint32_t word)
 +{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(vmd);
-+    VirtIOMEM *vmem = &pci_mem->vdev;
-+    VirtIOMEMClass *vpc = VIRTIO_MEM_GET_CLASS(vmem);
-+
-+    vpc->unplug_request_check(vmem, errp);
++    return sm4_sbox[word & 0xff] |
++           sm4_sbox[(word >> 8) & 0xff] << 8 |
++           sm4_sbox[(word >> 16) & 0xff] << 16 |
++           sm4_sbox[(word >> 24) & 0xff] << 24;
 +}
 +
-+static void virtio_mem_pci_get_requested_size(Object *obj, Visitor *v,
-+                                              const char *name, void *opaque,
-+                                              Error **errp)
-+{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
-+
-+    object_property_get(OBJECT(&pci_mem->vdev), name, v, errp);
-+}
-+
-+static void virtio_mem_pci_set_requested_size(Object *obj, Visitor *v,
-+                                              const char *name, void *opaque,
-+                                              Error **errp)
-+{
-+    VirtIOMEMPCI *pci_mem = VIRTIO_MEM_PCI(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    /*
-+     * If we passed virtio_mem_pci_unplug_request_check(), making sure that
-+     * the requested size is 0, don't allow modifying the requested size
-+     * anymore, otherwise the VM might end up hotplugging memory before
-+     * handling the unplug request.
-+     */
-+    if (dev->pending_deleted_event) {
-+        error_setg(errp, "'%s' cannot be changed if the device is in the"
-+                   " process of unplug", name);
-+        return;
-+    }
-+
-+    object_property_set(OBJECT(&pci_mem->vdev), name, v, errp);
-+}
-+
- static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
-     PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
-     MemoryDeviceClass *mdc = MEMORY_DEVICE_CLASS(klass);
-+    VirtIOMDPCIClass *vmdc = VIRTIO_MD_PCI_CLASS(klass);
+ #endif
+diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
+index fdd70abbfd6..7cadd61e124 100644
+--- a/target/arm/tcg/crypto_helper.c
++++ b/target/arm/tcg/crypto_helper.c
+@@ -614,10 +614,7 @@ static void do_crypto_sm4e(uint64_t *rd, uint64_t *rn, uint64_t *rm)
+             CR_ST_WORD(d, (i + 3) % 4) ^
+             CR_ST_WORD(n, i);
  
-     k->realize = virtio_mem_pci_realize;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-@@ -111,6 +152,8 @@ static void virtio_mem_pci_class_init(ObjectClass *klass, void *data)
-     mdc->get_memory_region = virtio_mem_pci_get_memory_region;
-     mdc->fill_device_info = virtio_mem_pci_fill_device_info;
-     mdc->get_min_alignment = virtio_mem_pci_get_min_alignment;
-+
-+    vmdc->unplug_request_check = virtio_mem_pci_unplug_request_check;
- }
+-        t = sm4_sbox[t & 0xff] |
+-            sm4_sbox[(t >> 8) & 0xff] << 8 |
+-            sm4_sbox[(t >> 16) & 0xff] << 16 |
+-            sm4_sbox[(t >> 24) & 0xff] << 24;
++        t = sm4_subword(t);
  
- static void virtio_mem_pci_instance_init(Object *obj)
-@@ -135,9 +178,9 @@ static void virtio_mem_pci_instance_init(Object *obj)
-                               OBJECT(&dev->vdev), VIRTIO_MEM_BLOCK_SIZE_PROP);
-     object_property_add_alias(obj, VIRTIO_MEM_SIZE_PROP, OBJECT(&dev->vdev),
-                               VIRTIO_MEM_SIZE_PROP);
--    object_property_add_alias(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP,
--                              OBJECT(&dev->vdev),
--                              VIRTIO_MEM_REQUESTED_SIZE_PROP);
-+    object_property_add(obj, VIRTIO_MEM_REQUESTED_SIZE_PROP, "size",
-+                        virtio_mem_pci_get_requested_size,
-+                        virtio_mem_pci_set_requested_size, NULL, NULL);
- }
+         CR_ST_WORD(d, i) ^= t ^ rol32(t, 2) ^ rol32(t, 10) ^ rol32(t, 18) ^
+                             rol32(t, 24);
+@@ -651,10 +648,7 @@ static void do_crypto_sm4ekey(uint64_t *rd, uint64_t *rn, uint64_t *rm)
+             CR_ST_WORD(d, (i + 3) % 4) ^
+             CR_ST_WORD(m, i);
  
- static const VirtioPCIDeviceTypeInfo virtio_mem_pci_info = {
+-        t = sm4_sbox[t & 0xff] |
+-            sm4_sbox[(t >> 8) & 0xff] << 8 |
+-            sm4_sbox[(t >> 16) & 0xff] << 16 |
+-            sm4_sbox[(t >> 24) & 0xff] << 24;
++        t = sm4_subword(t);
+ 
+         CR_ST_WORD(d, i) ^= t ^ rol32(t, 13) ^ rol32(t, 23);
+     }
 -- 
-2.41.0
+2.34.1
 

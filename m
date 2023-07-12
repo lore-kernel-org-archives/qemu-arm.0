@@ -1,136 +1,125 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2412989eje;
-        Wed, 12 Jul 2023 00:29:04 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGgMg/QHpCOKRovVcmWmYuau8SMn3y4sZGMlLR5cebTnrKVnaUdSOd82zrp/azbHF4w9vHK
-X-Received: by 2002:adf:d0c3:0:b0:314:323b:9d3b with SMTP id z3-20020adfd0c3000000b00314323b9d3bmr823659wrh.32.1689146944271;
-        Wed, 12 Jul 2023 00:29:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689146944; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2740964eje;
+        Wed, 12 Jul 2023 09:40:24 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlG0uFB20hkHNmzY+8njkBHn/10ZrSLx5EMoOStqM72kxoL4Ohd1HW3RDXfOHg+onaSzG4SW
+X-Received: by 2002:a0c:f4c9:0:b0:632:25c5:6fb8 with SMTP id o9-20020a0cf4c9000000b0063225c56fb8mr17019100qvm.31.1689180024297;
+        Wed, 12 Jul 2023 09:40:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689180024; cv=none;
         d=google.com; s=arc-20160816;
-        b=E37hiSWZadFDbO4Q44e1FO2IA/R2xrE/uYUBjkhZxh/drmqC3uvERgT8H2HrSUpR/b
-         amBIF49z6xmPKioTBe6lxFgHQtYdXazkx5omND/SuUHhxGgP0Bk71VJfe+GBbHTN6IvM
-         5paATZcVNyJcC6ObLYzEZRyOzqyn3hsMdmXlpHSkRpZtFTLIdp+tSg/P5TboDZbXmLrx
-         l2OrhYEsH/sR4595xH7FsakHMvbdI1RtAgXZ3p6uen4hv2NXfur3v5hQTuv9z5wZOyNv
-         ERfIcDu8le80S4KvHL+95IcCUoQ9whTdtzXfTnPpIiezNt03gGV5cZcLQOiOKU3iU5Za
-         M7Ag==
+        b=QKtkvc/p/lAMmXWplCxUjgg9viIMfrYXiL8Ek2he1c5qE0wflR+6+7ptE4Qm+JDKyb
+         wLrwIJHrQthVxbOuZs1Sc9fbImHz1gxclyTQeY2tXEDXGPuoxjp9wG0KpU2bRzAlb+qx
+         bUYt2eqzCyVlz9kp/i/upCcWJQN9xg9d+9pi//j+sJ8u8U4Ex0CWBHUo14KcB5zXYYmc
+         3wV7P9fFTedB10+Kx0531M5ViOsQxb/5k/3wXmLzhn5sdLHI9pM6GFf19OH36xN4q360
+         RJL6TwK/vspauWNlBPNSPdODqC5OGj6gWctIx6vTeBn2nCgDRQ+g/vPOKHcE0WsHPxBr
+         gxhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:organization:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=xvK4HTLBwNIYDQlqUppsOq5aMRVvzlPzY1paTVdKXIE=;
-        fh=sftjbdlV8xbfixci2skt2muq7L2agGiYTCVZ2fDXY9E=;
-        b=Ds27kLuY4YQ+lXZdrQmzPD9JhqCLHUHvaxZF4AfowHq5pCU1x0UH6UCDgAjUBe/+ij
-         YxzZpv0LYl9dhfUkMUne0SEgX/TLDgWurxFjbjRwxh256FfT1CwsLffhENbjvuV9TR/A
-         cp6znQ1OwTu25SMOJBDyTdet0+Ce72577eZmmbSKnhLPwOAi/ALQdIkAjZMLdvoK95nb
-         w9bMHR1wGS8duf6sjjro5OrmF/28qUqnrcoaEzXmwzDBJLh0L9CGZW+sDx5q90vOSlQm
-         2BZ0ba2LkzG7BVd1fiNpr63zy89Xv9kJ/Ovq6R4D/G8KpRLwpkV2h7gsnE70pPayp5gP
-         rw8w==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=YO6q94z1b55DMhCVDxdVi8lkeoDHIzdqcZLtLcOPdJs=;
+        fh=QsSyH/XJB0d/FRsyBb/wvDqny4l1zc3rGbeONrDGr3Y=;
+        b=OR211HerNgCBSaQidXzBe2dx6yjdPFd//xptI+qsBC1zyBKkTHx9w8Mb0l0zs73c2J
+         ht6Q1jJ3TmAioiuLLIRJTN+Q/3gGCNCzFDmh5FSOnHJh/tc2mQt2CN13h2EZzFvm4vNB
+         8QVYYLnkRK07jnnAktqgCPkFuDelzkrpkEiL/5AA8gUQV+XOINsmnpQ/ZYy03KyEmjt2
+         TYtqCGeOTPZXKZac+nW0gBRYFQrzKmhnZUkyU99N3P9O5NxsWdGz/cMTk3rGIqQAISt/
+         veoeGuT2lFaRQnjTzEyZ8RhQyy8pVQJzi014VNods6TEBpKH9fADfSkSFe/Y506zzs2X
+         8ENg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwcRjKUd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=btUPRI8K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3-20020a5d49c3000000b003141e61ba97si2065374wrs.384.2023.07.12.00.29.04
+        by mx.google.com with ESMTPS id j18-20020a0cf512000000b006362fa5fd83si1884434qvm.266.2023.07.12.09.40.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jul 2023 00:29:04 -0700 (PDT)
+        Wed, 12 Jul 2023 09:40:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QwcRjKUd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=btUPRI8K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJUHE-0002Mc-5z; Wed, 12 Jul 2023 03:28:45 -0400
+	id 1qJcsy-0003mC-FB; Wed, 12 Jul 2023 12:40:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJUH7-0002M8-KO
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 03:28:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1qJUH6-0000zE-25
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 03:28:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689146915;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xvK4HTLBwNIYDQlqUppsOq5aMRVvzlPzY1paTVdKXIE=;
- b=QwcRjKUda64GGx02zEJYh65wGoG5fzHaDChVuAe7cqd/KVVvyQRezuBWFNd0rX+SX2h+Sg
- i4SF12YFC3LhX7AYo3YM6HGtbnsuSDjNpvXDcqHBjX/kc2+0VTDimzNKywWk36X8KbzhOH
- BP9gqVs0Kz2k4W+AWzeaMFonXxNYuuI=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-675-WSbFdbE4P3GI11p0GrFeEA-1; Wed, 12 Jul 2023 03:27:54 -0400
-X-MC-Unique: WSbFdbE4P3GI11p0GrFeEA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-313e6020882so159873f8f.1
- for <qemu-arm@nongnu.org>; Wed, 12 Jul 2023 00:27:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qJcsw-0003kT-Sz
+ for qemu-arm@nongnu.org; Wed, 12 Jul 2023 12:40:14 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1qJcsu-0004py-8Z
+ for qemu-arm@nongnu.org; Wed, 12 Jul 2023 12:40:14 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-1b8ad8383faso52970785ad.0
+ for <qemu-arm@nongnu.org>; Wed, 12 Jul 2023 09:40:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1689180010; x=1691772010;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YO6q94z1b55DMhCVDxdVi8lkeoDHIzdqcZLtLcOPdJs=;
+ b=btUPRI8Khsv6HQrYeB6fzInd9HNRhJxxY1bxtWZlHdUb/UizeJnNLClGcJo2gsWwcE
+ n6BFgJWYn5Scc04JJH/F867EjfHW/rlN2t9q2Yj4ytcKmg/uT2XEK1YFFn+IyjereWb6
+ 4+bP5bzflafFRBeH1t18AJcDcChOv75rKxpDxcncmK3XF/FIUgsGXXFJIaG6yMfG2uHf
+ /3mFXp3ekEWq7+XhMeFVIAPFSxC6veajxN57D8HYL1N5xH7ziuQw3fbYAuSr5z3eG+Pf
+ YSxXy7IYwJpkNGsCuU0uZYdVp5yGmBC1INmbdhrM42uxWsi2BWUB+5GyzHVJQCxPH5I9
+ WS/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689146873; x=1691738873;
- h=content-transfer-encoding:in-reply-to:organization:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xvK4HTLBwNIYDQlqUppsOq5aMRVvzlPzY1paTVdKXIE=;
- b=jOxcgYUoLs+kV4bqGdSoHYHTTPxqTAS91NwPlvUsmzZ6eUcUcjs6+PS0cMdpPgL90O
- QQRKaXujDPAGpe50kBtEGltFLkEwwDOw4UvvaErR4ynMsdBm1zCw/tzNt0rAaXiXGv4d
- 0cjOkvksF3cXMmUjDfdXnWfrji42JPTrnM6V2VquVdCUL4dCL5PFC8eS0zmmyl0xpQbh
- mf1hfVYyj6QyXzBoN4w8es5wnoS0q1AjrcmzgvVauV3QUhRjQ/biMGQdoNeCnVmoBNLK
- ZmCzdjEQA3Mf6n6gS1eCev+Wo6m3L0ii6c9CNX3Tr8voS3JVwA/SH+Hm+rPeUOaIWc07
- 6ymg==
-X-Gm-Message-State: ABy/qLbnV8sJu3ZPv/42CHZuCGuHye/miDZ7Gt8aevaA/7U9TXqztuyb
- 4NoQlOSUTAwXN0LDYzo6PXhLkRu411JtJnEwK9sFV92Xb66xyYR+HBbuOjZTypysZXp+08HeYq/
- UO0TQIzXK8KfH
-X-Received: by 2002:adf:f9c6:0:b0:313:f000:5de6 with SMTP id
- w6-20020adff9c6000000b00313f0005de6mr898451wrr.16.1689146873224; 
- Wed, 12 Jul 2023 00:27:53 -0700 (PDT)
-X-Received: by 2002:adf:f9c6:0:b0:313:f000:5de6 with SMTP id
- w6-20020adff9c6000000b00313f0005de6mr898417wrr.16.1689146872886; 
- Wed, 12 Jul 2023 00:27:52 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c707:3700:3eea:ace6:5bde:4478?
- (p200300cbc70737003eeaace65bde4478.dip0.t-ipconnect.de.
- [2003:cb:c707:3700:3eea:ace6:5bde:4478])
+ d=1e100.net; s=20221208; t=1689180010; x=1691772010;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YO6q94z1b55DMhCVDxdVi8lkeoDHIzdqcZLtLcOPdJs=;
+ b=PUgdL1zbbgKMlGTrDR9Ztzt3HFgsFEEsrsNV98t/t+VbGo3xRCJXX+liQfjsVCCnXI
+ ENPT+A9Uz83m1VjJR03k6ZN1zKZCJmjUiUqQj520MzwzCTzmYBa99Bm+cwH56pOFSQrn
+ jSjRM59PNow2l+fbTQ+OFIT0gcEiMOdxMsLNlFTi9iAoZpG3sJ68rCXPSI8boJJNiHz3
+ tcRk46mXngTrRpG1JHDWd5liFS0ECk0YWnu6g66KUdAF/WWp9XTohZrKMd78Z6hNMU+p
+ dfFOCnuJW1tTMaoHG0jAwvcnCv5X0PDOIacZpDXjlN0dHP51EOGwVitb8Tn0BSjYbviP
+ lohQ==
+X-Gm-Message-State: ABy/qLbErDQJMA8uhrMmRhZNa6a0m61zumehYtdY9lfMQNoB+f9Jyg9F
+ FX8+26grjPL+6IaD/m6QUjU1RQ==
+X-Received: by 2002:a17:902:ecc2:b0:1b6:6e3a:77fb with SMTP id
+ a2-20020a170902ecc200b001b66e3a77fbmr26321110plh.2.1689180010652; 
+ Wed, 12 Jul 2023 09:40:10 -0700 (PDT)
+Received: from sunil-pc.Dlink ([106.51.190.25])
  by smtp.gmail.com with ESMTPSA id
- h25-20020a1ccc19000000b003fbcf032c55sm14900674wmb.7.2023.07.12.00.27.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jul 2023 00:27:52 -0700 (PDT)
-Message-ID: <5be74bef-8a0d-af77-85eb-edbc07c8fff7@redhat.com>
-Date: Wed, 12 Jul 2023 09:27:51 +0200
+ a18-20020a1709027d9200b001ac7f583f72sm4172824plm.209.2023.07.12.09.40.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Jul 2023 09:40:10 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Anup Patel <apatel@ventanamicro.com>, Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH 04/10] hw/riscv: virt: Add PCIe HIGHMEM in memmap
+Date: Wed, 12 Jul 2023 22:09:37 +0530
+Message-Id: <20230712163943.98994-5-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230712163943.98994-1-sunilvl@ventanamicro.com>
+References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v4 0/7] virtio-mem: Device unplug support
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
- Gavin Shan <gshan@redhat.com>, Mario Casquero <mcasquer@redhat.com>
-References: <20230711153445.514112-1-david@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Organization: Red Hat
-In-Reply-To: <20230711153445.514112-1-david@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.089, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,24 +134,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qy09pokxd+2E
+X-TUID: +1Te2GJRfQIA
 
-On 11.07.23 17:34, David Hildenbrand wrote:
-> One limitation of virtio-mem is that we cannot currently unplug virtio-mem
-> devices that have all memory unplugged from the VM.
-> 
-> Let's properly handle forced unplug (as can be triggered by the VM) and
-> add support for ordinary unplug (requests) of virtio-mem devices that are
-> in a compatible state (no legacy mode, no plugged memory, no plug request).
-> 
-> Briefly tested on both, x86_64 and aarch64.
+PCIe High MMIO base is actually dynamic and fixed at
+run time based on the RAM configured. Currently, this is
+not part of the memmap and kept in separate static variable
+in virt.c. However, ACPI code also needs this information
+to populate DSDT. So, once the base is discovered, merge
+this into the final memmap which can be used to create
+ACPI tables later.
 
-Queued to
+Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+---
+ hw/riscv/virt.c         | 31 ++++++++++++++++++++++++++++++-
+ include/hw/riscv/virt.h |  9 +++++++--
+ 2 files changed, 37 insertions(+), 3 deletions(-)
 
-https://github.com/davidhildenbrand/qemu.git mem-next
-
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index f6067db8ec..7aee06f021 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -84,6 +84,22 @@ static const MemMapEntry virt_memmap[] = {
+ 
+ static MemMapEntry virt_high_pcie_memmap;
+ 
++/*
++ * virt_memmap doesn't include floating High Mem IO address entry. To enable
++ * code organization in multiple files (ex: ACPI), it is better to have single
++ * memmap which has complete information.
++ *
++ * VIRT_HIGH_PCIE_MMIO is always greater than the last memmap entry and hence
++ * full_virt_memmap is capable of holding both virt_memmap and
++ * VIRT_HIGH_PCIE_MMIO entry.
++ *
++ * The values for these floating entries will be updated when top of RAM is
++ * discovered.
++ */
++static MemMapEntry full_virt_memmap[] = {
++    [VIRT_HIGH_PCIE_MMIO] =     { 0x0, 0 },
++};
++
+ #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
+ 
+ static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
+@@ -1444,7 +1460,20 @@ static void virt_machine_init(MachineState *machine)
+             ROUND_UP(virt_high_pcie_memmap.base, virt_high_pcie_memmap.size);
+     }
+ 
+-    s->memmap = virt_memmap;
++    /*
++     * Initialize the floating values in full memory map
++     */
++    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].base = virt_high_pcie_memmap.base;
++    full_virt_memmap[VIRT_HIGH_PCIE_MMIO].size = virt_high_pcie_memmap.size;
++
++    s->memmap = full_virt_memmap;
++    /*
++     * Copy the base virt_memmap entries to full memmap
++     */
++    for (i = 0; i < ARRAY_SIZE(virt_memmap); i++) {
++        s->memmap[i] = virt_memmap[i];
++    }
++
+ 
+     /* register system main memory (actual RAM) */
+     memory_region_add_subregion(system_memory, memmap[VIRT_DRAM].base,
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index 00c22492a7..1d7ddf5df0 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -60,7 +60,7 @@ struct RISCVVirtState {
+     char *oem_id;
+     char *oem_table_id;
+     OnOffAuto acpi;
+-    const MemMapEntry *memmap;
++    MemMapEntry *memmap;
+     PCIBus *bus;
+ };
+ 
+@@ -84,7 +84,12 @@ enum {
+     VIRT_PCIE_MMIO,
+     VIRT_PCIE_PIO,
+     VIRT_PLATFORM_BUS,
+-    VIRT_PCIE_ECAM
++    VIRT_PCIE_ECAM,
++    VIRT_LAST_MEMMAP /* Keep this entry always last */
++};
++
++enum {
++    VIRT_HIGH_PCIE_MMIO = VIRT_LAST_MEMMAP,
+ };
+ 
+ enum {
 -- 
-Cheers,
-
-David / dhildenb
+2.39.2
 

@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2864009eje;
-        Wed, 12 Jul 2023 13:19:23 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlE7E9S/nBANLaSyC4yI0kJRHSDoVWnjDpK+swCBIDgPbJujfNOBkHg0GpDUXkavvM3TmQsH
-X-Received: by 2002:a05:622a:14c9:b0:403:cbe8:13f8 with SMTP id u9-20020a05622a14c900b00403cbe813f8mr1058737qtx.12.1689193163681;
-        Wed, 12 Jul 2023 13:19:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689193163; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2865393eje;
+        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHfiQeLCOKTHmvUwz9HcmFse0rMy3JxYUky5cCGc+EDn8dm9foAJElqfwNkQA1zwYOgHadR
+X-Received: by 2002:ae9:d604:0:b0:75d:529f:5e28 with SMTP id r4-20020ae9d604000000b0075d529f5e28mr20401501qkk.14.1689193311540;
+        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689193311; cv=none;
         d=google.com; s=arc-20160816;
-        b=dy7rK3F5RA5J6BUVmBKhlSRfrBiqAyJxR5iB6lND//jNN1M09x5/PrUR+0qAMCgVJg
-         YKNf2AFalM5TIWo4QfgmSkhRLSLga28gTnjL/cWbKJ8PYsynrHh8lHkHUlfRcTvqY+XY
-         Eql2us+PW03OltIf0nthoGjT/zE5Vx9VWEvoiF4A+l6/wn8plrAYBER2KFyiSb1gh/El
-         ytt333XYqVz2XMDeCkDO3AMVIjHokbSlyfL6OHhlrCMAbLqfTxmwwpCHfNFD+wWkY/UH
-         6RIsjV+Wrgg769pJc1x0SF8QKUIUaEj3Duf4QLZprcBGQXOFUCu99iYsiQY1VXparLjx
-         UxkA==
+        b=K1FPu6WNt2nYglHfZ735EfIC+8V32YzK5DMTG/cmgzZehfk/1EeRtKLG0DJZQQ3ns1
+         K3xcEv9WkKcc8/FjROZTIzCoMr9BeNDFAyX7X9D+I1BJEGBewCzu7XhCi77yihxfvp54
+         5tA5Chbfy9WFF2xSoYC14QFwk8YnbORWvoOseIvOi/RCu0W5ihDOXx4UDPn26stLitr/
+         D0bxZIJ3dPBaGPSvb1nID0ait3IcaqCPCmer+2lJ2PkqEtLdfj4VjQs0ul3FwzeZWBUK
+         hJsGiC+QB7tt0SskDvtrJLIYiFmjmElqvVNzsvwnOBvUMC1usJ6ksHwfRehFpyc19E1h
+         EdZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:references:cc:to:content-language:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pCdyffSB1FqsQckbymkIKQDwVd/IodO3mw5qNKITyEA=;
+        bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
         fh=NddmdC0H7Yvd15BYzKWOWZBS0FBdcJ9zE0BWGJ3GxJc=;
-        b=DK1tE+IevWPQ4uau50VVkRd2wQEyDpg59lFze8LVo7/d/KjTEUcPix+/C66uNYhU0s
-         thsOT1KmzmvN+2+vvKn1dunXitPYF0zYVOlnjLB7NovNNzicThB+q/fuk+MwYKsOihOF
-         a41fAmZhAnh+9HpZUuiFC5D0T73P3IpBcGUpw2cLF5Pcfk/zmnTLiDIYBb9dq+bYswHT
-         Gsw1esJA4BZ2FdGNq0rQ0MftEu7tQ/Szq5VM+Yvoohnzs65Y956b2VSWfqKg0jLHjwYY
-         fD+GyyANviffO/jSYYSdNoEiXA1Fgn/ZosKezsTCf/IgeWOpftkJXf3AxQiv4yKra8h6
-         5vJg==
+        b=0JzYDDnXGXtc0nfSR+bF0XGHRk2yz9FEHiAzi2a4qRfsQTqh+EgDP+Ynrt8WrWkx72
+         w0uxW0lVkf7GDQi1k+W+ZYAJpvhWG9hhjt7EQmmmPV8usPeoTKsELG24Xw+F4lR16vrN
+         3L4+qfUouA8Svu1Uu3qvsyL8nAtlLdn04F8MzKR5GqbUDpQAHc24i2KIyxiVcefNjOh+
+         4ezcSed0ATYmCurQHYtjiP8d9wPRXcUkmCWhmDCao6JTWIaw+RemlHeg3mvXLsC3Jrbw
+         Sd5JkG9ChhLlf1o6Jy9F1WNJ5ga9boe2nfRBv0GTeV7tk+9KiF/7dKKA43WAQ+WV/G2t
+         ey+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=SvqTgI3O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UAlWshDB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5-20020ac85705000000b004031b235567si2107949qtw.16.2023.07.12.13.19.23
+        by mx.google.com with ESMTPS id s126-20020a372c84000000b007671d2985ebsi2092725qkh.279.2023.07.12.13.21.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jul 2023 13:19:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=SvqTgI3O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UAlWshDB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJgId-0000df-DO; Wed, 12 Jul 2023 16:18:59 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qJgL7-0001gS-KM; Wed, 12 Jul 2023 16:21:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJgIY-0000d0-PG
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 16:18:54 -0400
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+ id 1qJgL4-0001gI-Pk
+ for qemu-devel@nongnu.org; Wed, 12 Jul 2023 16:21:30 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJgIV-0004Al-Vo
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 16:18:54 -0400
-Received: by mail-oi1-x231.google.com with SMTP id
- 5614622812f47-3909756b8b1so4060628b6e.1
- for <qemu-arm@nongnu.org>; Wed, 12 Jul 2023 13:18:51 -0700 (PDT)
+ id 1qJgL2-0005je-Dr
+ for qemu-devel@nongnu.org; Wed, 12 Jul 2023 16:21:30 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ 46e09a7af769-6b708b97418so6471141a34.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Jul 2023 13:21:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1689193130; x=1691785130;
+ d=ventanamicro.com; s=google; t=1689193285; x=1691785285;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=pCdyffSB1FqsQckbymkIKQDwVd/IodO3mw5qNKITyEA=;
- b=SvqTgI3OgPwXQsxQpvLWKVnEZZP74I4QbfN7BpiXG0zJTpr+6GldvS9lRKv7eUMwer
- dM+gykCI3Iqf/JTGXvMAZ7H4Inv4T6SAaka0iFg6T9y1yVprTe3n0HErOR/ccQ12IZV4
- IqpSvEId4uKHdjodO/q9xREMQUyT5ZJxYyPfCk3T1OUqHVSzWDRLQElqAgwMg2WI+bWk
- AN0Ae6vps04W4SGtMJ0OqRqY2MyToZSKrweC+mtMHMqkkRjMYUB5LMtALkX5OU54mFvR
- ujIvs5LC3dzCKGis3sVDZxmd/sfV9blAKvUB8+amXdoYLtevo+wlKZkwgGKApb+UkLc5
- dv8Q==
+ bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
+ b=UAlWshDBIq2D6up6XLmuRFtvDYNLS9VsAuVp2/RK2ZAY3W4b1SFi3Pvjp19bD0aMjk
+ NDpf9WG+GdvzccqhTsRM/9+uP8Q0Y+QGGgzxZBsECQtROxlRmX53gcDqH7L38xuRy67G
+ Or/wdswjj/KrzkHQkh6NRTuY0jHSMiR2oJiaT1ezLYnvmZuAgSYUoRGej1kdgqj2duG7
+ 2xGQ2S51vJeZfDq4CFE5+BIeEJPgGiMS8J10LqrMred6nM3owi+S73tPHAsfaDM3LE3u
+ TBJWJH0TWWR3Zq6ktgrcpNmbIKwCZmAPwrtofhxUDBuy7leDQMTQ4dVPoJmLJFBxIj2o
+ QswQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689193130; x=1691785130;
+ d=1e100.net; s=20221208; t=1689193285; x=1691785285;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pCdyffSB1FqsQckbymkIKQDwVd/IodO3mw5qNKITyEA=;
- b=f8x2cwWZb7b9Azz7wzPDjullFDDvz1Z0N0vtOxnRP9VDYvMDmyOx5ksfykHMOyD0kI
- IRM4B9uXbr8Y8RF2EkODy3UiRgkTbRqw6SJGNCuSM/bKuXYLi5c/Kh0SV46AFHS5f5mF
- dLVZfv9SEFOM8yQB2BKz6TuwI7K1zbw6P5P2YF7w8tgatMJFGsT+QBMnM8P/FNcnlnBy
- hI77cDAO1oPJjKSH5H8vOKU5plZVtltn3dEbxW1dvfOnPByVkQ6z5FbTWARpAcHaJNpF
- I/RgwsW/YAWVVEjkEj64QTAHah7B02HBuwQYsMq8wFOpQNv+KimErGCiP6HsxqxVxJcz
- QODw==
-X-Gm-Message-State: ABy/qLZAYFPPLdBg4odukQLKNPj8r4pVdGL1kOPS5tFGoxM6O/9Xrwqg
- B3TQOe6wq6pz/9zd4hsssJZ3lnzcE6eARpN2I6I=
-X-Received: by 2002:a54:4618:0:b0:3a3:9ae0:efe1 with SMTP id
- p24-20020a544618000000b003a39ae0efe1mr13570297oip.6.1689193130656; 
- Wed, 12 Jul 2023 13:18:50 -0700 (PDT)
+ bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
+ b=IWiKEONNfYBpQ4bBpUHemqFVDsZ9IfWShbw/5JU2OwhQ2tPNiNXq0NyKfdr42auHQg
+ WAEkxjHYKgh4R5bwi/G8jLaL7E3EmEhcp+aGBKIL//TfSTxXZgFWP7vKkQaOfcGGpEkX
+ b4Fv6ov4/pnytQrFC7Y9LxRJr5PuRGe08GEDSLD2RoQA9XWIa4ng46atvcqRR7CBYXun
+ DGhgATRpe6lAsmYM/yFVyl1BGSRIFtaLJCyEcrcxBJv6i9jYcx8RX0DtaDUoxtnuC7BM
+ TJnrjbVailM6uVIumzWUBWI2dDhjbhja1utCgjxFhbe5xIZH3kJOrYeY+I0Dj+oQRSDI
+ YAGQ==
+X-Gm-Message-State: ABy/qLbOp3oRrgYDOsOL3z2qH+KywDNrw6J2RGWC2l5sNdlupvKyO4D1
+ y11ZOYZZVZjAlAGNIncYaEgXBg==
+X-Received: by 2002:a05:6830:2044:b0:6b9:57cb:8c42 with SMTP id
+ f4-20020a056830204400b006b957cb8c42mr10341206otp.13.1689193285333; 
+ Wed, 12 Jul 2023 13:21:25 -0700 (PDT)
 Received: from [192.168.68.107] (201-69-66-19.dial-up.telesp.net.br.
  [201.69.66.19]) by smtp.gmail.com with ESMTPSA id
- d5-20020a05680813c500b003a409a977c0sm2293519oiw.4.2023.07.12.13.18.46
+ m15-20020a0568301e6f00b006b94fb2762asm2267472otr.23.2023.07.12.13.21.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jul 2023 13:18:50 -0700 (PDT)
-Message-ID: <d7376261-7af8-aa42-8eb3-6af3f58f32a8@ventanamicro.com>
-Date: Wed, 12 Jul 2023 17:18:44 -0300
+ Wed, 12 Jul 2023 13:21:25 -0700 (PDT)
+Message-ID: <bb779bc2-876e-e1d4-0624-844a2f5d6299@ventanamicro.com>
+Date: Wed, 12 Jul 2023 17:21:18 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH 02/10] hw/riscv: virt: Add PCI bus reference in
- RISCVVirtState
+Subject: Re: [PATCH 03/10] hw/riscv: virt: Make few IMSIC macros and functions
+ public
 Content-Language: en-US
 To: Sunil V L <sunilvl@ventanamicro.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, qemu-riscv@nongnu.org
@@ -108,98 +108,140 @@ Cc: "Michael S . Tsirkin" <mst@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Andrew Jones <ajones@ventanamicro.com>, Anup Patel <apatel@ventanamicro.com>
 References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-3-sunilvl@ventanamicro.com>
+ <20230712163943.98994-4-sunilvl@ventanamicro.com>
 From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20230712163943.98994-3-sunilvl@ventanamicro.com>
+In-Reply-To: <20230712163943.98994-4-sunilvl@ventanamicro.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-oi1-x231.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x32a.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.11,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G8AC+SWT9Vzr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T9SwcIcpUoy1
 
 
 
 On 7/12/23 13:39, Sunil V L wrote:
-> The PCI bus information is needed in RISCVVirtState so that other
-> files like virt-acpi-build.c can make use of it. Add new field in
-> RISCVVirtState so that ACPI code can use it.
+> Some macros and static function related to IMSIC are defined
+> in virt.c. They are required in virt-acpi-build.c. So, make them
+> public.
 > 
 > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 > ---
->   hw/riscv/virt.c         | 6 ++++--
->   include/hw/riscv/virt.h | 1 +
->   2 files changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index d90286dc46..46d3341113 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -1073,7 +1073,8 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
->                                             hwaddr high_mmio_base,
->                                             hwaddr high_mmio_size,
->                                             hwaddr pio_base,
-> -                                          DeviceState *irqchip)
-> +                                          DeviceState *irqchip,
-> +                                          RISCVVirtState *s)
->   {
->       DeviceState *dev;
->       MemoryRegion *ecam_alias, *ecam_reg;
-> @@ -1113,6 +1114,7 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
->           gpex_set_irq_num(GPEX_HOST(dev), i, PCIE_IRQ + i);
->       }
->   
-> +    s->bus = PCI_HOST_BRIDGE(dev)->bus;
->       return dev;
->   }
->   
-> @@ -1502,7 +1504,7 @@ static void virt_machine_init(MachineState *machine)
->                      virt_high_pcie_memmap.base,
->                      virt_high_pcie_memmap.size,
->                      memmap[VIRT_PCIE_PIO].base,
-> -                   pcie_irqchip);
-> +                   pcie_irqchip, s);
-
-I wonder whether we could use 's' inside gpex_pcie_init() to avoid passing all
-this memmap stuff to the function. It seems that most, if not all these values,
-can be derived from s->memmap[]. A work for another day perhaps.
-
 
 Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-
+>   hw/riscv/virt.c         | 25 +------------------------
+>   include/hw/riscv/virt.h | 25 +++++++++++++++++++++++++
+>   2 files changed, 26 insertions(+), 24 deletions(-)
+> 
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index 46d3341113..f6067db8ec 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -37,7 +37,6 @@
+>   #include "hw/riscv/numa.h"
+>   #include "hw/intc/riscv_aclint.h"
+>   #include "hw/intc/riscv_aplic.h"
+> -#include "hw/intc/riscv_imsic.h"
+>   #include "hw/intc/sifive_plic.h"
+>   #include "hw/misc/sifive_test.h"
+>   #include "hw/platform-bus.h"
+> @@ -53,28 +52,6 @@
+>   #include "hw/acpi/aml-build.h"
+>   #include "qapi/qapi-visit-common.h"
 >   
->       create_platform_bus(s, mmio_irqchip);
+> -/*
+> - * The virt machine physical address space used by some of the devices
+> - * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
+> - * number of CPUs, and number of IMSIC guest files.
+> - *
+> - * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
+> - * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
+> - * of virt machine physical address space.
+> - */
+> -
+> -#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+> -#if VIRT_IMSIC_GROUP_MAX_SIZE < \
+> -    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+> -#error "Can't accomodate single IMSIC group in address space"
+> -#endif
+> -
+> -#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+> -                                        VIRT_IMSIC_GROUP_MAX_SIZE)
+> -#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+> -#error "Can't accomodate all IMSIC groups in address space"
+> -#endif
+> -
+>   static const MemMapEntry virt_memmap[] = {
+>       [VIRT_DEBUG] =        {        0x0,         0x100 },
+>       [VIRT_MROM] =         {     0x1000,        0xf000 },
+> @@ -505,7 +482,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
+>       g_free(plic_cells);
+>   }
+>   
+> -static uint32_t imsic_num_bits(uint32_t count)
+> +uint32_t imsic_num_bits(uint32_t count)
+>   {
+>       uint32_t ret = 0;
 >   
 > diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-> index e5c474b26e..4ef1f660ab 100644
+> index 4ef1f660ab..00c22492a7 100644
 > --- a/include/hw/riscv/virt.h
 > +++ b/include/hw/riscv/virt.h
-> @@ -60,6 +60,7 @@ struct RISCVVirtState {
->       char *oem_table_id;
->       OnOffAuto acpi;
->       const MemMapEntry *memmap;
-> +    PCIBus *bus;
->   };
+> @@ -23,6 +23,7 @@
+>   #include "hw/riscv/riscv_hart.h"
+>   #include "hw/sysbus.h"
+>   #include "hw/block/flash.h"
+> +#include "hw/intc/riscv_imsic.h"
 >   
->   enum {
+>   #define VIRT_CPUS_MAX_BITS             9
+>   #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
+> @@ -128,4 +129,28 @@ enum {
+>   
+>   bool virt_is_acpi_enabled(RISCVVirtState *s);
+>   void virt_acpi_setup(RISCVVirtState *vms);
+> +uint32_t imsic_num_bits(uint32_t count);
+> +
+> +/*
+> + * The virt machine physical address space used by some of the devices
+> + * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
+> + * number of CPUs, and number of IMSIC guest files.
+> + *
+> + * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
+> + * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
+> + * of virt machine physical address space.
+> + */
+> +
+> +#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+> +#if VIRT_IMSIC_GROUP_MAX_SIZE < \
+> +    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+> +#error "Can't accomodate single IMSIC group in address space"
+> +#endif
+> +
+> +#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+> +                                        VIRT_IMSIC_GROUP_MAX_SIZE)
+> +#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+> +#error "Can't accomodate all IMSIC groups in address space"
+> +#endif
+> +
+>   #endif

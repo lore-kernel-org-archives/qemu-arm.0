@@ -1,189 +1,180 @@
-Received: by 2002:a05:7022:629e:b0:68:46be:293d with SMTP id e30csp2711180dle;
-        Thu, 13 Jul 2023 06:17:09 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGhKsa8HQ09fMK86vcWJfn7WDHWeBw0+WHWqUGuxmVt0piZep4SueBUWs5yBT+C+HLUI/nV
-X-Received: by 2002:a05:6808:10d2:b0:3a3:eab8:8ba5 with SMTP id s18-20020a05680810d200b003a3eab88ba5mr2718772ois.27.1689254228975;
-        Thu, 13 Jul 2023 06:17:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689254228; cv=none;
+Received: by 2002:a05:7022:629e:b0:68:46be:293d with SMTP id e30csp2798055dle;
+        Thu, 13 Jul 2023 08:32:40 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlE/fLuBJ7ZC+N+3xsYRX6aMaWDEATvY86oqW7keTyW2G8XQkTVcV8OSz7Qrr/gohJqhVrr7
+X-Received: by 2002:a05:622a:1c5:b0:403:a923:bf5c with SMTP id t5-20020a05622a01c500b00403a923bf5cmr2523393qtw.33.1689262360199;
+        Thu, 13 Jul 2023 08:32:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689262360; cv=none;
         d=google.com; s=arc-20160816;
-        b=R0YJHDJdcxLq80BZZg+mw/NFVccu1Gp8JWScD32EW7jxYH/q3c4+IZie7bJc5X4hSM
-         CrXe/mIibecqSE/1wTP7vmrzoUGPg+ZGSEKi6Wru6yWGgoruQu/2bXnqvY+WJD47wfio
-         QM/xPKUuW3Us1nNnNKChy661UctWZhn2E1y8SAgz7B8PeIflmKEU0+k29N9y4mmXLwZn
-         umqnIBmef7Pf+wVTb9Vlu6da2TclJOfJ7nZL8nzueNBPb7QgOwXI40JUY+tVooLXg5ty
-         obbWcW3DY/sDtYv8p8wkExjmqnEKxqZml2lTNbxT/wsZJM3Rpxelrtx/Vg5TeveWr+Nc
-         a2RQ==
+        b=CsllFRrYtKCtQVhj/sJuMZiARhJB67xitOwonWle3rKDsEyhYseiRVHBy5pnUWnE5b
+         wMjOezUhLv253Ude53Rc8YFbvy3MBkCnTqsKnWOmBwgbtxOmuCh0pf+tykqdtqqtcni0
+         gtmLR8fYnf1Tx9cEYOPSKnR6ixGMoxVDdnQcZsZIjVxQem+j4riP9KXbfCWNOJh9M0Ga
+         qd9oZbKShwirZ8YYPSt2RCW4PXSQmSwMXSTSnbfsJkR6QeZi47SgJ+HDMPUiUTfTu57I
+         rLIqRYpsXebpbJDqyLLJO6tIOZUMBEMmOiZHv9d1mmHnvhOGHVQrSj0id+H/29sTCWwC
+         Yzhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8eVRSo2tSIKZgDQQHtb1nILbj8XZwK9dV3+NgNbNYkQ=;
-        fh=EZxuAsAfOqSnSng6QUWjbVyHctHj3zqOW0Uab6f6+Sg=;
-        b=C1eGX2NXPp7Ok7DBdmzGBnzkYVrvBSlHdDY8wDqzmPiFN4xSAJLE+/3JppBNrUrNOY
-         fUAmtGp103qAWU3hdXDFkgG+Ufqn60sJ6CU03q5+Be+dSGDiocrZLsDLntKBgRHR0KDi
-         fvBElJ6Ud/OwBwF47bJF3u7SlYDZWCxoDUKGBrDV6UszTp1z6KZIATfSlt2PsSinP81k
-         UVy5ejEHkP2YrtuPZ3Y6/TfeQ6becO8ysPWAkQK+dOwSZoOxURStkYNLhMM8vT60mxCY
-         ZBJVCBf2fKb73uOydjiUDYuK4YRhsV6PLMK2i+RltwJb08czjgQxazXYC0waoC9t4sXj
-         N+Lw==
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=XmtRfAaCOEvHnZJlQJO9UyKPNDs6p09uMlOOyI7uQBk=;
+        fh=LUYnbnkgYtpPzNQZTmn8BxyF0ZxlmpBDbfYNVO8YMLQ=;
+        b=Sgw4+sGBYtcw1nBAGN7xY2m7WwBp0Cdm0om2LNwzsugcngCvykOLGExHPDmF/1nh+u
+         5C/3Wq1xRsXjAsLYVOeb1cXs31ikl0JBCPLEzFcHryJwR1CGx0x9woRmpiiwcoi4XzXe
+         9hrkPjEvY0EPerCSPFQbj2CCmv3rGKVDdSDMgK2d49cOeYgzJF4gBIjtgssWkPtHKoac
+         CO+X5CdOZf0UURQDKP6EN6pVm1niCkiigh5wtYNa+o4lWM0NfGiJqx0sdEsU2eXGf1n1
+         yv2355jDemcU44gnwF6f4ewpMraPwNnvEEVC1ndWVx82ZsU54xaz2J2XkcPPJL2H/3z3
+         KuKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=be9miU5E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=c3L2j7z9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c10-20020a05622a024a00b00403a26c5b61si3040879qtx.57.2023.07.13.06.17.08
+        by mx.google.com with ESMTPS id a18-20020ac85b92000000b00403c2e9e72bsi2323783qta.106.2023.07.13.08.32.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jul 2023 06:17:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Jul 2023 08:32:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=be9miU5E;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=c3L2j7z9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJwBb-0001c3-JZ; Thu, 13 Jul 2023 09:16:48 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qJyIZ-0005hD-K3; Thu, 13 Jul 2023 11:32:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJwBZ-0001b8-Hj
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 09:16:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJwBX-0004WR-NN
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 09:16:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689254202;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8eVRSo2tSIKZgDQQHtb1nILbj8XZwK9dV3+NgNbNYkQ=;
- b=be9miU5EEL8NeMkfk19cjn6qly9Wto4WjsIwxgpvo9Ceekzmaci68AUUnPb5YG1PwB0KCf
- qh50wgm7SM6sz7m8lnsQ4gkfBcPmHkKJoIyFFBSuvDqnvfUGh7cjKiE1Pz2lDCKqLoWqwr
- DW+TShH9LTAGODWqzdT8UYlVwf9/MI8=
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-346-E6avAs00Pr-BxnbEtDvMSw-1; Thu, 13 Jul 2023 09:16:39 -0400
-X-MC-Unique: E6avAs00Pr-BxnbEtDvMSw-1
-Received: by mail-pf1-f200.google.com with SMTP id
- d2e1a72fcca58-66700a28586so313294b3a.2
- for <qemu-arm@nongnu.org>; Thu, 13 Jul 2023 06:16:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qJyIU-0005ft-H8
+ for qemu-devel@nongnu.org; Thu, 13 Jul 2023 11:32:02 -0400
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qJyIS-0002dP-Sb
+ for qemu-devel@nongnu.org; Thu, 13 Jul 2023 11:32:02 -0400
+Received: by mail-lf1-x129.google.com with SMTP id
+ 2adb3069b0e04-4f96d680399so1462756e87.0
+ for <qemu-devel@nongnu.org>; Thu, 13 Jul 2023 08:31:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1689262318; x=1691854318;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=XmtRfAaCOEvHnZJlQJO9UyKPNDs6p09uMlOOyI7uQBk=;
+ b=c3L2j7z9Nk8a+4RupE7dqWGo3JoNChMcfhVHvmSkk6PNIuSPDgKQrRQEwV/AwgJEbC
+ /uxUf/LZ0j/H0yiPcplLaNcGioSZYH01ZEqxHj590HZTPfJztKZ4ieN219tIz8Lcc8YM
+ YVtmGnU3F3QT4/4fttbdzew2nQprjBmOVeuV0L8CgSzV6KbZAjeW8drXL4ZGtt/tJNZC
+ NlhWXGubgE6hHvcb23ILbn39ZSh2SC8NB3Oeywh1JTPq0VeGECl0y1Aja4Udp7bgTWer
+ LJoEBXtrFlVEJ0px0r/EJ7LUKRl9vmdj4YgoDDtVf0EmhwLQsJITbyzMpKPlDTBtjcc8
+ mkcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689254198; x=1691846198;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8eVRSo2tSIKZgDQQHtb1nILbj8XZwK9dV3+NgNbNYkQ=;
- b=iDx1384ay0Kid7YPQhMYYdWtcTuzptgrz2WYhHEk7q4xGtmJWQvjcH4u+vrEG0IJsq
- d1FqfI3OCjLKSo00p3Se/cP3tYS8tjtbqf/TRHtv1s0h4ua9HMtHnO7gLDwlUqhRF9Pc
- OeRHrvbSunFB3fbU/OBvZsOn5BLaDdaRzu54HihWavJWTZpm8QaPH4fqKJGfSZUj29aS
- 43ZIt9NagYDraifpvjlomxGbwoT8YJSeH5vGV8HZton9LV2dEdSVKCEu4CF9gwqSqmMx
- HW0AE6AEDanIoLAtHGUPE8OlQYDxqR5fgWNIqKLfe+mWMtcW5RBvA21Ewk+pBEyygg8B
- se7w==
-X-Gm-Message-State: ABy/qLbVpqLIBReRi8nTVrrGvThXl5xA+D/tNtTcVhVR1CNttSsvjg4y
- CamwIUmAnlebivr/Qvu1xZcN9cgoxKxG6oIaKY5LtEFIAOESZhEjSIf/BnfcdWoOd7kjuyRWila
- JwuhCwmCyd7gp
-X-Received: by 2002:a05:6a20:7348:b0:133:6e6e:2b11 with SMTP id
- v8-20020a056a20734800b001336e6e2b11mr788156pzc.2.1689254198518; 
- Thu, 13 Jul 2023 06:16:38 -0700 (PDT)
-X-Received: by 2002:a05:6a20:7348:b0:133:6e6e:2b11 with SMTP id
- v8-20020a056a20734800b001336e6e2b11mr788131pzc.2.1689254198212; 
- Thu, 13 Jul 2023 06:16:38 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
- by smtp.gmail.com with ESMTPSA id
- ff24-20020a056a002f5800b00682562bf477sm5414090pfb.82.2023.07.13.06.16.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jul 2023 06:16:37 -0700 (PDT)
-Message-ID: <d735c41b-d835-8c35-bb03-6a7a4462210d@redhat.com>
-Date: Thu, 13 Jul 2023 23:16:29 +1000
+ d=1e100.net; s=20221208; t=1689262318; x=1691854318;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XmtRfAaCOEvHnZJlQJO9UyKPNDs6p09uMlOOyI7uQBk=;
+ b=Y3dUetYbt1nP23qhl2rRcKVEYt5FFkPhRmZNK4bMTACRMNMRPtwFqCGddoKbkr+cQc
+ EyY5qcSjtPgiUw1VJJI64jPzu2Guh2ITC0kFhyMwK9UC+s3Hftt8z9uB2GYo3vEV9JXG
+ oAL6Tnzky3ldz7H+lddYHBbF3k/sYULrY2WEThKQV4RHc61gT3+8RboarRNUhrs3wRxZ
+ 1IsgjeUZlnyb5Juo910164TIdKRXF6C+UfuPnApXqUyyRmJnnoQAHM7EiF4JdFOybalu
+ SJasffSYxadNthr7t9ywjMJ6fGTCauH3nmXayfqFjxlr9b9RTRFuvHJtNXTb5C9fNc4v
+ iimQ==
+X-Gm-Message-State: ABy/qLYOYIFZAJ8Vm/ta3UmFDAPnHwEuIiM0pRcek5YWrZdAPnum86gr
+ DkWvWSesrHlUIEf0wrxiCCLeQ19qhuvYRNWKStMu0g==
+X-Received: by 2002:a05:6512:53b:b0:4fb:89bb:bcc5 with SMTP id
+ o27-20020a056512053b00b004fb89bbbcc5mr1659168lfc.50.1689262318116; Thu, 13
+ Jul 2023 08:31:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH 3/3] hw/arm/virt: Support host CPU type only when KVM or
- HVF is configured
-To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net,
- peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, philmd@linaro.org,
- wangyanan55@huawei.com, shan.gavin@gmail.com
-References: <20230713054502.410911-1-gshan@redhat.com>
- <20230713054502.410911-4-gshan@redhat.com> <87o7kgq8rq.fsf@redhat.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <87o7kgq8rq.fsf@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20230713035232.48406-1-j@getutm.app>
+ <20230713035232.48406-8-j@getutm.app>
+In-Reply-To: <20230713035232.48406-8-j@getutm.app>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Jul 2023 16:31:47 +0100
+Message-ID: <CAFEAcA_hKao=-kadeKjZMGOugtSGLHzhzTLiva5aZP7PHQN3xQ@mail.gmail.com>
+Subject: Re: [PATCH 07/11] hw/arm/virt: add plug handler for TPM on SysBus
+To: Joelle van Dyne <j@getutm.app>
+Cc: qemu-devel@nongnu.org, "open list:Virt" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.096, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sdj/ZUbi4g1u
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FFIondVg17zE
 
-Hi Connie,
+On Thu, 13 Jul 2023 at 04:52, Joelle van Dyne <j@getutm.app> wrote:
+>
+> TPM needs to know its own base address in order to generate its DSDT
+> device entry.
+>
+> Signed-off-by: Joelle van Dyne <j@getutm.app>
+> ---
+>  hw/arm/virt.c | 37 +++++++++++++++++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7d9dbc2663..432148ef47 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2732,6 +2732,37 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+>                           dev, &error_abort);
+>  }
+>
+> +#ifdef CONFIG_TPM
+> +static void virt_tpm_plug(VirtMachineState *vms, TPMIf *tpmif)
+> +{
+> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> +    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> +    SysBusDevice *sbdev = SYS_BUS_DEVICE(tpmif);
+> +    MemoryRegion *sbdev_mr;
+> +    hwaddr tpm_base;
+> +    uint64_t tpm_size;
+> +
+> +    if (!sbdev || !object_dynamic_cast(OBJECT(sbdev), TYPE_SYS_BUS_DEVICE)) {
+> +        return;
+> +    }
+> +
+> +    tpm_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+> +    assert(tpm_base != -1);
+> +
+> +    tpm_base += pbus_base;
+> +
+> +    sbdev_mr = sysbus_mmio_get_region(sbdev, 0);
+> +    tpm_size = memory_region_size(sbdev_mr);
+> +
+> +    if (object_property_find(OBJECT(sbdev), "baseaddr")) {
+> +        object_property_set_uint(OBJECT(sbdev), "baseaddr", tpm_base, NULL);
+> +    }
+> +    if (object_property_find(OBJECT(sbdev), "size")) {
+> +        object_property_set_uint(OBJECT(sbdev), "size", tpm_size, NULL);
+> +    }
+> +}
+> +#endif
 
-On 7/13/23 22:46, Cornelia Huck wrote:
-> On Thu, Jul 13 2023, Gavin Shan <gshan@redhat.com> wrote:
-> 
->> The CPU type 'host-arm-cpu' class won't be registered until KVM or
->> HVF is configured in target/arm/cpu64.c. Support the corresponding
->> CPU type only when KVM or HVF is configured.
->>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/arm/virt.c | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 43d7772ffd..ad28634445 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -217,7 +217,9 @@ static const char *valid_cpu_types[] = {
->>   #endif
->>       ARM_CPU_TYPE_NAME("cortex-a53"),
->>       ARM_CPU_TYPE_NAME("cortex-a57"),
->> +#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
->>       ARM_CPU_TYPE_NAME("host"),
->> +#endif
->>       ARM_CPU_TYPE_NAME("max"),
->>       NULL
->>   };
-> 
-> Doesn't the check in parse_cpu_option() already catch the case where
-> the "host" cpu model isn't registered? I might be getting lost in the
-> code flow, though.
-> 
+I do not like the "platform bus" at all -- it is a nasty hack.
+If the virt board needs a memory mapped TPM device it should probably
+just create one, the same way we create our other memory mapped
+devices. But...
 
-Right, it's guranteed that the needed CPU type (class) is registered by parse_cpu_option().
-However, we have different story here. The CPU type invalidation intends to limit the CPU type
-(class) into a range for the specific machine (board). Taking "cortex-a8-arm-cpu" as an example,
-it's not expected by hw/arm/virt machines even it has been registered when we have CONFIG_TCG=y.
-the list of supported CPU type (class) will be dumped by hw/core/machine.c::validate_cpu_type()
-in PATCH[1], "host" is obviously invalid when we have CONFIG_KVM=n and CONFIG_HVF=n. We can't
-tell user that "host" is supported, to confuse user.
+How are TPM devices typically set up/visible to the guest on
+real Arm server hardware ? Should this be a sysbus device at all?
 
-Thanks,
-Gavin
-
+thanks
+-- PMM

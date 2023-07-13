@@ -1,247 +1,268 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2865393eje;
-        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHfiQeLCOKTHmvUwz9HcmFse0rMy3JxYUky5cCGc+EDn8dm9foAJElqfwNkQA1zwYOgHadR
-X-Received: by 2002:ae9:d604:0:b0:75d:529f:5e28 with SMTP id r4-20020ae9d604000000b0075d529f5e28mr20401501qkk.14.1689193311540;
-        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689193311; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2980229eje;
+        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHS7hen57EjPfsqqxOuGe4AbDPFLPVXTLnSqfI/ZlpCwlDaxRiAomWbTzQ80O6SRsk7+w15
+X-Received: by 2002:ac8:5bd3:0:b0:400:79c0:cb69 with SMTP id b19-20020ac85bd3000000b0040079c0cb69mr130590qtb.58.1689208130173;
+        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689208130; cv=none;
         d=google.com; s=arc-20160816;
-        b=K1FPu6WNt2nYglHfZ735EfIC+8V32YzK5DMTG/cmgzZehfk/1EeRtKLG0DJZQQ3ns1
-         K3xcEv9WkKcc8/FjROZTIzCoMr9BeNDFAyX7X9D+I1BJEGBewCzu7XhCi77yihxfvp54
-         5tA5Chbfy9WFF2xSoYC14QFwk8YnbORWvoOseIvOi/RCu0W5ihDOXx4UDPn26stLitr/
-         D0bxZIJ3dPBaGPSvb1nID0ait3IcaqCPCmer+2lJ2PkqEtLdfj4VjQs0ul3FwzeZWBUK
-         hJsGiC+QB7tt0SskDvtrJLIYiFmjmElqvVNzsvwnOBvUMC1usJ6ksHwfRehFpyc19E1h
-         EdZA==
+        b=qPr/YvwugdRv9cylDC5/egshPRvopJnMpDmyS5zKP6ogWsaP7WjDV7EIJ3KZUdLQOo
+         hNJwZTkzmAMlIMnd7aTW3kr20ojwK3A90zNDPAJzlhwgtIkpT45WvSk+5GxwmqcWIIG1
+         2+CfIS9tVVM1gZZkmfLq5pvit7Bi+nzPu6UVgFi9o7x+JjRrwFyPs563I6+qRVRxqYS/
+         eSHM9AZtsLS15rRSu/tZCNWg2+9KSUPeRjiGaCOFPA6PTWgJ8Q9JynJ2GDRSlWPBWlyX
+         nmS7c/JE9YRvTqTmuGmBRLbiYwJ/zWNwNnDqgaxS5u/XsxkSrBPLZZzXHxzpAZZeCxyB
+         5q6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
+         :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
-        fh=NddmdC0H7Yvd15BYzKWOWZBS0FBdcJ9zE0BWGJ3GxJc=;
-        b=0JzYDDnXGXtc0nfSR+bF0XGHRk2yz9FEHiAzi2a4qRfsQTqh+EgDP+Ynrt8WrWkx72
-         w0uxW0lVkf7GDQi1k+W+ZYAJpvhWG9hhjt7EQmmmPV8usPeoTKsELG24Xw+F4lR16vrN
-         3L4+qfUouA8Svu1Uu3qvsyL8nAtlLdn04F8MzKR5GqbUDpQAHc24i2KIyxiVcefNjOh+
-         4ezcSed0ATYmCurQHYtjiP8d9wPRXcUkmCWhmDCao6JTWIaw+RemlHeg3mvXLsC3Jrbw
-         Sd5JkG9ChhLlf1o6Jy9F1WNJ5ga9boe2nfRBv0GTeV7tk+9KiF/7dKKA43WAQ+WV/G2t
-         ey+g==
+        bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
+        fh=0i3RqAlJIgOm7IXbA9mONbXyitXAhS4Ah70v5qRUg2k=;
+        b=gWmfDDvPwhkzXmgT0t5xPT3RXvIW1OxktImFSeb1SwZaszh93fvcR3ceF3f3kaWKAp
+         rdmNINIe/iWRETAMHUXB9gf2KPWnDmxgq7vwAVFVljYOteTCq3/q3wjWXS0DiMaUQIZr
+         35+sBWspXzP7N0C0hTItEjC4knDXKXgiQS7wjALvc/wYjK86v5g4gymuYeAkCDBFUaV6
+         QL/2DBoTccdd1VdxPE04hspfEQFAhg3QpYr2xTAE+ZfenXZ6v1hkzdbk8HjOFS+BQ+Xd
+         GIWPtRuINObBr8nGhOcWq2oQABL9HiIOfYbBoJ8+dT0oW7vB3BIOm/yR+454BrAwYp7F
+         TaEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UAlWshDB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RqeFULAx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s126-20020a372c84000000b007671d2985ebsi2092725qkh.279.2023.07.12.13.21.51
+        by mx.google.com with ESMTPS id a17-20020a05622a065100b00403c6a9fa74si1062646qtb.350.2023.07.12.17.28.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jul 2023 13:21:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=UAlWshDB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RqeFULAx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1qJgL7-0001gS-KM; Wed, 12 Jul 2023 16:21:33 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1qJkC3-0002Hf-Cp; Wed, 12 Jul 2023 20:28:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJgL4-0001gI-Pk
- for qemu-devel@nongnu.org; Wed, 12 Jul 2023 16:21:30 -0400
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJgL2-0005je-Dr
- for qemu-devel@nongnu.org; Wed, 12 Jul 2023 16:21:30 -0400
-Received: by mail-ot1-x32a.google.com with SMTP id
- 46e09a7af769-6b708b97418so6471141a34.3
- for <qemu-devel@nongnu.org>; Wed, 12 Jul 2023 13:21:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1689193285; x=1691785285;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
- b=UAlWshDBIq2D6up6XLmuRFtvDYNLS9VsAuVp2/RK2ZAY3W4b1SFi3Pvjp19bD0aMjk
- NDpf9WG+GdvzccqhTsRM/9+uP8Q0Y+QGGgzxZBsECQtROxlRmX53gcDqH7L38xuRy67G
- Or/wdswjj/KrzkHQkh6NRTuY0jHSMiR2oJiaT1ezLYnvmZuAgSYUoRGej1kdgqj2duG7
- 2xGQ2S51vJeZfDq4CFE5+BIeEJPgGiMS8J10LqrMred6nM3owi+S73tPHAsfaDM3LE3u
- TBJWJH0TWWR3Zq6ktgrcpNmbIKwCZmAPwrtofhxUDBuy7leDQMTQ4dVPoJmLJFBxIj2o
- QswQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJkC1-0002HU-CP
+ for qemu-arm@nongnu.org; Wed, 12 Jul 2023 20:28:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJkBq-0000ls-G1
+ for qemu-arm@nongnu.org; Wed, 12 Jul 2023 20:28:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689208093;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
+ b=RqeFULAxFgM2qeDeuhG+nz7csBaO4sKHVQbvjsCl9CXGK8S2uRUnDGaHAMMSd0MBP+Uxz6
+ iEezETnsD4jyBDVIKoAPu6hcY0u3QSPHANxZ8/WXnL2xlmKllCavEfuTwVxXXMJy0h2JoJ
+ 3VXc+QrYT40YP+dd3gC9ZOjAjiXxMIs=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-382-R7c2KadfMY2SSVn6eWQ4hw-1; Wed, 12 Jul 2023 20:28:06 -0400
+X-MC-Unique: R7c2KadfMY2SSVn6eWQ4hw-1
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-1b9e8ebe767so1359025ad.0
+ for <qemu-arm@nongnu.org>; Wed, 12 Jul 2023 17:28:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689193285; x=1691785285;
+ d=1e100.net; s=20221208; t=1689208085; x=1691800085;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cwWRQyoKQ6bJh6p2PGoxiQUawKtyviak6FVWrh1tluw=;
- b=IWiKEONNfYBpQ4bBpUHemqFVDsZ9IfWShbw/5JU2OwhQ2tPNiNXq0NyKfdr42auHQg
- WAEkxjHYKgh4R5bwi/G8jLaL7E3EmEhcp+aGBKIL//TfSTxXZgFWP7vKkQaOfcGGpEkX
- b4Fv6ov4/pnytQrFC7Y9LxRJr5PuRGe08GEDSLD2RoQA9XWIa4ng46atvcqRR7CBYXun
- DGhgATRpe6lAsmYM/yFVyl1BGSRIFtaLJCyEcrcxBJv6i9jYcx8RX0DtaDUoxtnuC7BM
- TJnrjbVailM6uVIumzWUBWI2dDhjbhja1utCgjxFhbe5xIZH3kJOrYeY+I0Dj+oQRSDI
- YAGQ==
-X-Gm-Message-State: ABy/qLbOp3oRrgYDOsOL3z2qH+KywDNrw6J2RGWC2l5sNdlupvKyO4D1
- y11ZOYZZVZjAlAGNIncYaEgXBg==
-X-Received: by 2002:a05:6830:2044:b0:6b9:57cb:8c42 with SMTP id
- f4-20020a056830204400b006b957cb8c42mr10341206otp.13.1689193285333; 
- Wed, 12 Jul 2023 13:21:25 -0700 (PDT)
-Received: from [192.168.68.107] (201-69-66-19.dial-up.telesp.net.br.
- [201.69.66.19]) by smtp.gmail.com with ESMTPSA id
- m15-20020a0568301e6f00b006b94fb2762asm2267472otr.23.2023.07.12.13.21.20
+ bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
+ b=GhWGOVQgZkjErHaJRuh/uKRVY7C+AspQHGaHKoOyH4F0u4lPVBBHuLe5xmEeFEKcd8
+ R56/6CemJ3Hrifnpi30zTZnIHuOhPeI93IAqgXO/cO407UG2EwGLw6QSU68vKe2k5Ne/
+ W665F2rX3Q22dxh8FyKyOlYP9j7qa3RA7XUdTFsUIpSiL8JHtewwpBQ8dPwHcORi9YuH
+ qeZhOCBE72GgQwPLNAeLEAt/j9MjYxXQopHuFtMZNPyz8MiFwbuLOpbxE+rc7c9D6GIR
+ 7uL6RIOyXEQabTc1H8Qj7f8Fafgw4f8nWRC5YKHR0/V0+K9akeMzxjF8GBWsUeNEcU0Q
+ bhMg==
+X-Gm-Message-State: ABy/qLZReEwBe0lPLUEOX/86HR4ElKIazOn1Fbkg9474ooyax1dKYHKf
+ vmzh+HBexC3JuEg5v0kdIB2BTjAll1cGUcyWJCNrdThtSPoMyQgGFYsHOEzH2G0/nxAF3+Hh/Ka
+ KBl3gzobNK75D
+X-Received: by 2002:a17:902:f68c:b0:1b5:91:4693 with SMTP id
+ l12-20020a170902f68c00b001b500914693mr266228plg.1.1689208085443; 
+ Wed, 12 Jul 2023 17:28:05 -0700 (PDT)
+X-Received: by 2002:a17:902:f68c:b0:1b5:91:4693 with SMTP id
+ l12-20020a170902f68c00b001b500914693mr266210plg.1.1689208084952; 
+ Wed, 12 Jul 2023 17:28:04 -0700 (PDT)
+Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
+ ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+ by smtp.gmail.com with ESMTPSA id
+ io12-20020a17090312cc00b001b9dfa24523sm4531541plb.213.2023.07.12.17.27.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jul 2023 13:21:25 -0700 (PDT)
-Message-ID: <bb779bc2-876e-e1d4-0624-844a2f5d6299@ventanamicro.com>
-Date: Wed, 12 Jul 2023 17:21:18 -0300
+ Wed, 12 Jul 2023 17:28:03 -0700 (PDT)
+Message-ID: <7f524e2a-e773-4de0-09ed-b18eaec8ff16@redhat.com>
+Date: Thu, 13 Jul 2023 10:27:57 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH 03/10] hw/riscv: virt: Make few IMSIC macros and functions
- public
+Subject: Re: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
+To: Salil Mehta <salil.mehta@huawei.com>, Shaoqin Huang
+ <shahuang@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "james.morse@arm.com" <james.morse@arm.com>,
+ Cornelia Huck <cohuck@redhat.com>, "kvm@vger.kernel.org"
+ <kvm@vger.kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Salil Mehta <salil.mehta@opnsrc.net>
+References: <20230626064910.1787255-1-shahuang@redhat.com>
+ <9df973ede74e4757b510f26cd5786036@huawei.com>
+ <fb5e8d4d-2388-3ab0-aaac-a1dd91e74b08@redhat.com>
+ <539e6a25b89a45839de37fe92b27d0d3@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <539e6a25b89a45839de37fe92b27d0d3@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Sunil V L <sunilvl@ventanamicro.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-Cc: "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Andrew Jones <ajones@ventanamicro.com>, Anup Patel <apatel@ventanamicro.com>
-References: <20230712163943.98994-1-sunilvl@ventanamicro.com>
- <20230712163943.98994-4-sunilvl@ventanamicro.com>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20230712163943.98994-4-sunilvl@ventanamicro.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x32a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.11,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.11, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T9SwcIcpUoy1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AJ5dJWWr04HB
 
+Hi Salil,
 
+On 7/4/23 19:58, Salil Mehta wrote:
 
-On 7/12/23 13:39, Sunil V L wrote:
-> Some macros and static function related to IMSIC are defined
-> in virt.c. They are required in virt-acpi-build.c. So, make them
-> public.
 > 
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
->   hw/riscv/virt.c         | 25 +------------------------
->   include/hw/riscv/virt.h | 25 +++++++++++++++++++++++++
->   2 files changed, 26 insertions(+), 24 deletions(-)
+> Latest Qemu Prototype (Pre RFC V2) (Not in the final shape of the patches)
+> https://github.com/salil-mehta/qemu.git   virt-cpuhp-armv8/rfc-v1-port11052023.dev-1
 > 
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index 46d3341113..f6067db8ec 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -37,7 +37,6 @@
->   #include "hw/riscv/numa.h"
->   #include "hw/intc/riscv_aclint.h"
->   #include "hw/intc/riscv_aplic.h"
-> -#include "hw/intc/riscv_imsic.h"
->   #include "hw/intc/sifive_plic.h"
->   #include "hw/misc/sifive_test.h"
->   #include "hw/platform-bus.h"
-> @@ -53,28 +52,6 @@
->   #include "hw/acpi/aml-build.h"
->   #include "qapi/qapi-visit-common.h"
->   
-> -/*
-> - * The virt machine physical address space used by some of the devices
-> - * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
-> - * number of CPUs, and number of IMSIC guest files.
-> - *
-> - * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
-> - * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
-> - * of virt machine physical address space.
-> - */
-> -
-> -#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
-> -#if VIRT_IMSIC_GROUP_MAX_SIZE < \
-> -    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
-> -#error "Can't accomodate single IMSIC group in address space"
-> -#endif
-> -
-> -#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
-> -                                        VIRT_IMSIC_GROUP_MAX_SIZE)
-> -#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
-> -#error "Can't accomodate all IMSIC groups in address space"
-> -#endif
-> -
->   static const MemMapEntry virt_memmap[] = {
->       [VIRT_DEBUG] =        {        0x0,         0x100 },
->       [VIRT_MROM] =         {     0x1000,        0xf000 },
-> @@ -505,7 +482,7 @@ static void create_fdt_socket_plic(RISCVVirtState *s,
->       g_free(plic_cells);
->   }
->   
-> -static uint32_t imsic_num_bits(uint32_t count)
-> +uint32_t imsic_num_bits(uint32_t count)
->   {
->       uint32_t ret = 0;
->   
-> diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-> index 4ef1f660ab..00c22492a7 100644
-> --- a/include/hw/riscv/virt.h
-> +++ b/include/hw/riscv/virt.h
-> @@ -23,6 +23,7 @@
->   #include "hw/riscv/riscv_hart.h"
->   #include "hw/sysbus.h"
->   #include "hw/block/flash.h"
-> +#include "hw/intc/riscv_imsic.h"
->   
->   #define VIRT_CPUS_MAX_BITS             9
->   #define VIRT_CPUS_MAX                  (1 << VIRT_CPUS_MAX_BITS)
-> @@ -128,4 +129,28 @@ enum {
->   
->   bool virt_is_acpi_enabled(RISCVVirtState *s);
->   void virt_acpi_setup(RISCVVirtState *vms);
-> +uint32_t imsic_num_bits(uint32_t count);
-> +
-> +/*
-> + * The virt machine physical address space used by some of the devices
-> + * namely ACLINT, PLIC, APLIC, and IMSIC depend on number of Sockets,
-> + * number of CPUs, and number of IMSIC guest files.
-> + *
-> + * Various limits defined by VIRT_SOCKETS_MAX_BITS, VIRT_CPUS_MAX_BITS,
-> + * and VIRT_IRQCHIP_MAX_GUESTS_BITS are tuned for maximum utilization
-> + * of virt machine physical address space.
-> + */
-> +
-> +#define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
-> +#if VIRT_IMSIC_GROUP_MAX_SIZE < \
-> +    IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
-> +#error "Can't accomodate single IMSIC group in address space"
-> +#endif
-> +
-> +#define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
-> +                                        VIRT_IMSIC_GROUP_MAX_SIZE)
-> +#if 0x4000000 < VIRT_IMSIC_MAX_SIZE
-> +#error "Can't accomodate all IMSIC groups in address space"
-> +#endif
-> +
->   #endif
+> 
+> should work against below kernel changes as confirmed by James,
+> 
+> Latest Kernel Prototype (Pre RFC V2 = RFC V1 + Fixes)
+> https://git.gitlab.arm.com/linux-arm/linux-jm.git   virtual_cpu_hotplug/rfc/v2
+> 
+
+I think it'd better to have the discussions through maillist. The threads and all
+follow-up replies can be cached somewhere to avoid lost. Besides, other people may
+be intrested in the same points and can join the discussion directly.
+
+I got a chance to give the RFC patchsets some tests. Not all cases are working
+as expected. I know the patchset is being polished. I'm summarize them as below:
+
+(1) coredump is triggered when the topology is out of range. It's the issue we
+     discussed in private. Here I'm just recapping in case other people also blocked
+     by the issue.
+
+     (a) start VM with the following command lines
+      /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64       \
+      -accel kvm -machine virt,gic-version=host,nvdimm=on -cpu host \
+      -smp cpus=1,maxcpus=2,sockets=1,clusters=1,cores=1,threads=2  \
+      -m 512M,slots=16,maxmem=64G                                   \
+      -object memory-backend-ram,id=mem0,size=512M                  \
+      -numa node,nodeid=0,cpus=0-1,memdev=mem0                      \
+
+     (b) hot add CPU whose topology is out of range
+     (qemu) device_add driver=host-arm-cpu,id=cpu1,core-id=1
+
+
+     It's actually caused by typos in hw/arm/virt.c::virt_cpu_pre_plug() where
+     'ms->possible_cpus->len' needs to be replaced with 'ms->smp.cores'. With this,
+     the hot-added CPU object will be rejected.
+
+(2) I don't think TCG has been tested since it seems not working at all.
+
+     (a) start VM with the following command lines
+     /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64     \
+     -machine virt,gic-version=3 -cpu max -m 1024                    \
+     -smp maxcpus=2,cpus=1,sockets=1,clusters=1,cores=1,threads=2    \
+
+     (b) failure while hot-adding CPU
+     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
+     Error: cpu(id1=0:0:0:1) with arch-id 1 exists
+
+     The error message is printed by hw/arm/virt.c::virt_cpu_pre_plug() where the
+     specific CPU has been presented. For KVM case, the disabled CPUs are detached
+     from 'ms->possible_cpu->cpus[1].cpu' and destroyed. I think we need to do similar
+     thing for TCG case in hw/arm/virt.c::virt_cpu_post_init(). I'm able to add CPU
+     with the following hunk of changes.
+
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2122,6 +2122,18 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
+                  exit(1);
+              }
+          }
++
++#if 1
++        for (n = 0; n < possible_cpus->len; n++) {
++            cpu = qemu_get_possible_cpu(n);
++            if (!qemu_enabled_cpu(cpu)) {
++                CPUArchId *cpu_slot;
++                cpu_slot = virt_find_cpu_slot(ms, cpu->cpu_index);
++                cpu_slot->cpu = NULL;
++                object_unref(OBJECT(cpu));
++            }
++        }
++#endif
+      }
+  }
+
+(3) Assertion on following the sequence of hot-add, hot-remove and hot-add when TCG mode is enabled.
+
+     (a) Include the hack from (2) and start VM with the following command lines
+     /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64     \
+     -machine virt,gic-version=3 -cpu max -m 1024                    \
+     -smp maxcpus=2,cpus=1,sockets=1,clusters=1,cores=1,threads=2    \
+
+     (b) assertion on the sequence of hot-add, hot-remove and hot-add
+     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
+     (qemu) device_del cpu1
+     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
+     **
+     ERROR:../tcg/tcg.c:669:tcg_register_thread: assertion failed: (n < tcg_max_ctxs)
+     Bail out! ERROR:../tcg/tcg.c:669:tcg_register_thread: assertion failed: (n < tcg_max_ctxs)
+     Aborted (core dumped)
+
+     I'm not sure if x86 has similar issue. It seems the management for TCG contexts, corresponding
+     to variable @tcg_max_ctxs and @tcg_ctxs need some improvements for better TCG context registration
+     and unregistration to accomodate CPU hotplug.
+
+
+Apart from what have been found in the tests, I've started to look into the code changes. I may
+reply with more specific comments. However, it would be ideal to comment on the specific changes
+after the patchset is posted for review. Salil, the plan may have been mentioned by you somewhere.
+As I understood, the QEMU patchset will be posted after James's RFCv2 kernel series is posted.
+Please let me know if my understanding is correct. Again, thanks for your efforts to make vCPU
+hotplug to be supported :)
+
+Thanks,
+Gavin
+
+
+
+     
+
+     
+         
+

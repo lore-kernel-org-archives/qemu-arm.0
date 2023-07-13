@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3259956eje;
-        Thu, 13 Jul 2023 04:39:49 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlH2R39H+l/ibWg1ecg3IlrCvtYgp1Duy+MT1m3QXWq1hf3ByEzLM/Es7ZwKqj9BTbI/6MrN
-X-Received: by 2002:a05:620a:4308:b0:767:671b:250f with SMTP id u8-20020a05620a430800b00767671b250fmr1304582qko.52.1689248388813;
-        Thu, 13 Jul 2023 04:39:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689248388; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3262909eje;
+        Thu, 13 Jul 2023 04:45:20 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHhremVi9M09cBdDLwgSfNdPYEas6TIEmN7gggWPfgqK413SrdWY71IEfn7L28QXerdz/DU
+X-Received: by 2002:a67:f716:0:b0:443:77be:9fc7 with SMTP id m22-20020a67f716000000b0044377be9fc7mr850068vso.25.1689248720229;
+        Thu, 13 Jul 2023 04:45:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689248720; cv=none;
         d=google.com; s=arc-20160816;
-        b=Paxf6kv1JrF0EAeEaaSu5NQ77kMrihpu2YRbbCUWv2B444ZvgD4LhoYZbR9+7NE1PZ
-         Fmqeqmlv5rdvIcTYLDhRUTTHemg6X+FMgz2GXWs4EIxbj200cuBz0EujCB4OsnFj/QK8
-         kKJOsBDCBVcPcGZb9jUpv7W+dP4sst0653rbW8vdCQFdY05caERp1CVzDU69Ni674zj0
-         THACG9D2hMNK/6+hsL8XaRtFpumHBECxUgct7YI1zMUG6/odsP8h9Jd6JVKNibkCrddw
-         lhHo2zjxukKbiNcUJlDtrDYtqUkVeIfA7qzPf3HranpBbcvlRo9w86MFHiuFFbhWW6wd
-         Rn2Q==
+        b=UvUFHn1vasMOktychhiw4whleKItMQIncc8XSGWf3zAjEnS+az58fOq9bD/DK0/2Jf
+         cfJGjY0IFHK+6Xh+GIMciUAHG+6sQVf51fb6tYFyBQxd0cCtar0yaIwYl6Beq1bNiquf
+         Yo88rj7y+QTDT8nbVsizj57o1kh9F6m5jCdarEn8UtD4OJxb99k7eA+T23uv89IJuCxW
+         jc6iuM9GdpfQRPiq8LbdizZ4DUTbAt7IjEIz5AohpgVHcHzaIti/lubivKrmqH31bvS/
+         p9a5zQuAnraH6sZVpY0HmHNfQqEjutkfEW9EaO3mwEfh+UrHjr8824FVuqV3jJ04wuZB
+         XqLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=bHuTsab/o2e0GzLe6p+rgYVT0c4HeA2lxQd7Sqvhyqc=;
-        fh=JY/n1blFe7W2WfeCfBkL/4Ua7TCpaxW5eotazm4kk+I=;
-        b=lp83N8Ow0bRcqmQF4Ie41qaK6X/cyjOL10Bl+Y+o6B5g3cuOXKBceRC5hYPbQq2n1I
-         6pTZiaUJwnujUoOGKzonHx9Zg8jiCuQB9/FcneJncwCmB/h8i3pGy7JY12iwk1cd2p1j
-         4AVcljYi2jeKdWDuz7QqQsy3VzDXnvX5z9ytc1EnH4vBqT6H01YrhJo/gYKjl8KI5nWR
-         fcGCgv4tjvsOgEDqLSdav7NpwfMfA8pqIPvRvSyvcoZEbpO2t9Vauv+XxlIUNK6F2HKM
-         iQGcG5nKGW/Ctsxn5PZeaE7S8IVGNzuUY+pPMgPf2CpWxy1NNZc+JYv2M7RKI3cjXRu3
-         P+NA==
+        bh=rTNUKy4QVti3eVyce8T/CM16Hk1RMV7WxqXGOsUbJOQ=;
+        fh=7ErPhB4lWFsykEBpE+TT4Sb8sOg9iH5S6h6tEfGzQbo=;
+        b=X3YiWKR50OIhF1LWbbcktoVLIVsrcpjx+KbQQMH5yPjUiDaW3lQXOFEEuWs5vlKfml
+         EdmQYTi+jv+4su7e4WYQRCoKL1L7I46xxpLhK8LZ07uJOFgb8Elhl3KkOYUgOuT2qHND
+         qB2EJIsly4d2s7sHDyuMc9n0RSTx513t62COBOrhtI8qqCt8gc/ecKfT8kBxm79IoqHB
+         4ateljQ866HzlHrFFaNw3T027mlRGjjM/mf4Z8SKiEqT2SARK3XUfZV8uUDDqqiPnumU
+         oRdNw1MwK6+al0RaFPHqc9x0atRcBFezBNhI0HJSyX0wDU6jGE+dBWCpDxTA0xxnnm4Z
+         zqSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lHbTDPUA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wdKBoT1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay10-20020a05620a178a00b00767e7fb7bdbsi2245854qkb.171.2023.07.13.04.39.48
+        by mx.google.com with ESMTPS id p13-20020a0ccb8d000000b00637306e4513si2881772qvk.506.2023.07.13.04.45.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jul 2023 04:39:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Jul 2023 04:45:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lHbTDPUA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=wdKBoT1e;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJufU-0001zU-Nd; Thu, 13 Jul 2023 07:39:34 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1qJukr-00044w-64; Thu, 13 Jul 2023 07:45:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qJufL-0001xO-V0
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 07:39:24 -0400
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ id 1qJukp-00044K-74
+ for qemu-devel@nongnu.org; Thu, 13 Jul 2023 07:45:03 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qJufJ-0005Lq-PW
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 07:39:23 -0400
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-2b7430a07b7so8864501fa.1
- for <qemu-arm@nongnu.org>; Thu, 13 Jul 2023 04:39:19 -0700 (PDT)
+ id 1qJukn-0007O9-Je
+ for qemu-devel@nongnu.org; Thu, 13 Jul 2023 07:45:02 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-51f90f713b2so761671a12.1
+ for <qemu-devel@nongnu.org>; Thu, 13 Jul 2023 04:45:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689248357; x=1691840357;
+ d=linaro.org; s=google; t=1689248700; x=1691840700;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bHuTsab/o2e0GzLe6p+rgYVT0c4HeA2lxQd7Sqvhyqc=;
- b=lHbTDPUAnZjTWDyEc3je1GJ3j+JMvuHnDo5zKwuIi/mRJCjnn5JMIYU7IBNG9hiPuT
- 2ZNyaQQ8kZKU8H0Kqs1K9lNCPg5aXuPhXJJJ9B7SFxgqbQkkSyOrvp64/6H0FYJjaB5/
- uqGzkI8k1kEs8/MZDZKeexyaM8/OAECxR4jugjkGBGEu0lUZzSimEQcWPjqhB0EyUbQq
- sDHEChsbIPc9/GAYR9+nwe88KFz7asjactLLN2XoKCWvfL0SePW0Aj7Y5U8u4ogT/SVw
- Vt9vAzXQp4Lmc40W+zwG6/3vAB7swOrQyT7mUGSGl4xSqTWBcHRB4JLeKOE9QxyAV89h
- cprw==
+ bh=rTNUKy4QVti3eVyce8T/CM16Hk1RMV7WxqXGOsUbJOQ=;
+ b=wdKBoT1e2PrdByc7sIDhnlfnyY2K0wyZi+ORi/m1TccwQHAAqSZ+3XFdAQdLmnKIUK
+ Ne11ifb1E2u6fktjNp7Kcpex4Y9ORrMMn/+KVAuucIv6b51K6lP0x/P7z9bXtuDftPO6
+ PAowo5r8X2YD89QMvaz9yfv5Fjpbn5GswM7c09Aa8aahD0i/BIL0/4vzuAduOpSyZD6A
+ FfRP4K/jQ6Sgz5qJpaUjUHRw6RCaZ90REnOSlaHZI+wdR6DsIPMM/2l5VRybo1iusz9v
+ yyvZIHDRuW+u/puSbXnIxxtleSU8jn4DXj6/zmpfkPT3yyhD5Vf9gF33JPY/Xxf7bKLi
+ GmMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689248357; x=1691840357;
+ d=1e100.net; s=20221208; t=1689248700; x=1691840700;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bHuTsab/o2e0GzLe6p+rgYVT0c4HeA2lxQd7Sqvhyqc=;
- b=Fdi2hbdmFF6B57nR++MPXvWMaAEp+qZH4KZ84Yuw0L4DefnURn0w5+xkXL68MaqKvk
- POaB+oqpdP6srdmw0w40HeVSF0ZQKs64i5LmoaNO/fhNgaGZb1d5xXzIIRNTTEqdg2IY
- BqXNwOGQsWfzJ7l+9a9isXqu5U+Sc+ERNB6TBfQdrg1ThaTGf0buqjkG3sSpd/jwbC18
- 0+jutUZfnXTURUHxwDZylFQrUZWbkbASZYrXQUX5jP6BnVV1EA7vQ+Qovj/0nRTmRPr7
- OSPzAxnocWJzJpmgEv7N+NHU10W4D2F1WnZAPQEXa4Kc1ZqO6b57g1GaAZpgrK/mkn1J
- 8ZMg==
-X-Gm-Message-State: ABy/qLbpIVI0qMgoo9XhGAzP/8Ave4v/VE+Wa4BZlIC2TpKpIw11K3sN
- +yNFi2hJkTOUx1UNf84wgdEdXD7JEc7ar27a+Ve78g==
-X-Received: by 2002:a05:6512:1327:b0:4f8:5600:9e5e with SMTP id
- x39-20020a056512132700b004f856009e5emr1108853lfu.47.1689248357547; Thu, 13
- Jul 2023 04:39:17 -0700 (PDT)
+ bh=rTNUKy4QVti3eVyce8T/CM16Hk1RMV7WxqXGOsUbJOQ=;
+ b=Z0nB1d70M3k4PUvz80HS2CijN/Zes8O0TnXv+rtDUUGR4AjzBNTuzV6hgVhwgPWKeC
+ YEZiNRg3hbdhOOTQnSliAVT3tUUTryzNeH/xa2PepKkX9rAmi+nbbyu1ZjZayRDzStdE
+ vYGgDhpcFuHqPxymX7IASBXBPuFilkEtZGkurhn4KjcHpinU37AMoP58sggnClATiQ9Y
+ M9X1x8wmhch88cZmowJbxxEyKS5cHEOJ6qTGELxrTUniNJCvMP+v9LaSJ4K9r0yZ3nmp
+ lKoXoeQ3LVYRqpWk/1WjNnJVYX4bfE5vCiZrQ3c2KD934f8SXwerixRC/uiLiPC2ObL7
+ fCgg==
+X-Gm-Message-State: ABy/qLYTD3IIlcIjwij2ZFB4b2k75PQwAQs+81ZMI00PGHIaVke39pEG
+ xXGuhMuiyMqMXvXt3DoduZIRpsZ+n4ObQvxh22Xw0A==
+X-Received: by 2002:a05:6402:715:b0:51d:dbb0:fb86 with SMTP id
+ w21-20020a056402071500b0051ddbb0fb86mr1735973edx.11.1689248699865; Thu, 13
+ Jul 2023 04:44:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20230710063750.473510-1-wangyuquan1236@phytium.com.cn>
-In-Reply-To: <20230710063750.473510-1-wangyuquan1236@phytium.com.cn>
+References: <20230713054502.410911-1-gshan@redhat.com>
+In-Reply-To: <20230713054502.410911-1-gshan@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Jul 2023 12:39:06 +0100
-Message-ID: <CAFEAcA_1oRpRKzTYeboxVzkiVErZAgFQRw9sVunXnWUMSf_SOw@mail.gmail.com>
-Subject: Re: [PATCH 0/1] hw/arm/sbsa-ref: set 'slots' property of xhci
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Cc: rad@semihalf.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org, 
- chenbaozi@phytium.com.cn
+Date: Thu, 13 Jul 2023 12:44:49 +0100
+Message-ID: <CAFEAcA8197FCwfNZrnxfO-87RveOko0Ju-KcTJOEi0vfjVtDKg@mail.gmail.com>
+Subject: Re: [PATCH 0/3] hw/arm/virt: Use generic CPU invalidation
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com, 
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, shan.gavin@gmail.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x229.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,35 +105,61 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: udxWLlRqsb1X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9AvsA4wqsZzF
 
-On Mon, 10 Jul 2023 at 07:38, Yuquan Wang <wangyuquan1236@phytium.com.cn> wrote:
+On Thu, 13 Jul 2023 at 06:45, Gavin Shan <gshan@redhat.com> wrote:
 >
-> As the default xhci_sysbus just supports only one usb slot, it can not
-> meet the working requirement of this bord. Therefore, we extend the
-> slots of xhci to 64.
+> There is a generic CPU type invalidation in machine_run_board_init()
+> and we needn't a same and private invalidation for hw/arm/virt machines.
+> This series intends to use the generic CPU type invalidation on the
+> hw/arm/virt machines.
 >
-> Yuquan Wang (1):
->   hw/arm/sbsa-ref: set 'slots' property of xhci
+> PATCH[1] factors the CPU type invalidation logic in machine_run_board_init()
+>          to a helper validate_cpu_type().
+> PATCH[2] uses the generic CPU type invalidation for hw/arm/virt machines
+> PATCH[3] support "host-arm-cpu" CPU type only when KVM or HVF is visible
 >
->  hw/arm/sbsa-ref.c | 1 +
->  1 file changed, 1 insertion(+)
+> Testing
+> =======
+>
+> With the following command lines, the output messages are varied before
+> and after the series is applied.
+>
+>   /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64 \
+>   -accel tcg -machine virt,gic-version=3,nvdimm=on            \
+>   -cpu cortex-a8 -smp maxcpus=2,cpus=1                        \
+>     :
+>
+> Before the series is applied:
+>
+>   qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+>
+> After the series is applied:
+>
+>   qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+>   The valid types are: cortex-a7-arm-cpu, cortex-a15-arm-cpu, \
+>   cortex-a35-arm-cpu, cortex-a55-arm-cpu, cortex-a72-arm-cpu, \
+>   cortex-a76-arm-cpu, a64fx-arm-cpu, neoverse-n1-arm-cpu,     \
+>   neoverse-v1-arm-cpu, cortex-a53-arm-cpu, cortex-a57-arm-cpu, \
+>   max-arm-cpu
 
-
-
-Applied to target-arm.next, thanks.
+I see this isn't a change in this patch, but given that
+what the user specifies is not "cortex-a8-arm-cpu" but
+"cortex-a8", why do we include the "-arm-cpu" suffix in
+the error messages? It's not valid syntax to say
+"-cpu cortex-a8-arm-cpu", so it's a bit misleading...
 
 -- PMM

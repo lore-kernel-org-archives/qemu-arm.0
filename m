@@ -1,137 +1,98 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp2980229eje;
-        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHS7hen57EjPfsqqxOuGe4AbDPFLPVXTLnSqfI/ZlpCwlDaxRiAomWbTzQ80O6SRsk7+w15
-X-Received: by 2002:ac8:5bd3:0:b0:400:79c0:cb69 with SMTP id b19-20020ac85bd3000000b0040079c0cb69mr130590qtb.58.1689208130173;
-        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689208130; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp3055707eje;
+        Wed, 12 Jul 2023 20:53:54 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEIJJ6fmcgSaUGLfnWEhT7dlcgsYTtLTKNDTcKbDb//vs1A+BUPaxwYtBME0f+IhBjjmqDY
+X-Received: by 2002:a05:622a:1302:b0:3ff:24a8:4f26 with SMTP id v2-20020a05622a130200b003ff24a84f26mr867671qtk.16.1689220434497;
+        Wed, 12 Jul 2023 20:53:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689220434; cv=none;
         d=google.com; s=arc-20160816;
-        b=qPr/YvwugdRv9cylDC5/egshPRvopJnMpDmyS5zKP6ogWsaP7WjDV7EIJ3KZUdLQOo
-         hNJwZTkzmAMlIMnd7aTW3kr20ojwK3A90zNDPAJzlhwgtIkpT45WvSk+5GxwmqcWIIG1
-         2+CfIS9tVVM1gZZkmfLq5pvit7Bi+nzPu6UVgFi9o7x+JjRrwFyPs563I6+qRVRxqYS/
-         eSHM9AZtsLS15rRSu/tZCNWg2+9KSUPeRjiGaCOFPA6PTWgJ8Q9JynJ2GDRSlWPBWlyX
-         nmS7c/JE9YRvTqTmuGmBRLbiYwJ/zWNwNnDqgaxS5u/XsxkSrBPLZZzXHxzpAZZeCxyB
-         5q6A==
+        b=LcGYDbyTJpectpEWiLSmCx0nrPk9SWEn7yVBeDLhtdNvLmxh6nMGiqcsp7Mb057L++
+         VQ4Db6yiO8zA9JV2FL7kVKNu9A9b86SVvjEjdXpGJAf2Dv7Bu+CZKCTgODF25sqlMfs/
+         cdxhAEMWeivc1k3kx3mt13fsCyYi8PgcJJ0svD4BVXNizNz5qdQTMA7Ub06WPRcsWFkE
+         i+LjCVQJjvVTV47XpMYxQtpRpWKSiBgLQGAi1LQJHHGLyOGjAHh2xo6VyXi7tY/DrIzZ
+         bxyTPCQuof9i0hCoDGonBnR/CxnqmhyJOHCAwjcPomI/+5OftJoGkycIp5D3I+xNZu1f
+         ZCBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
-        fh=0i3RqAlJIgOm7IXbA9mONbXyitXAhS4Ah70v5qRUg2k=;
-        b=gWmfDDvPwhkzXmgT0t5xPT3RXvIW1OxktImFSeb1SwZaszh93fvcR3ceF3f3kaWKAp
-         rdmNINIe/iWRETAMHUXB9gf2KPWnDmxgq7vwAVFVljYOteTCq3/q3wjWXS0DiMaUQIZr
-         35+sBWspXzP7N0C0hTItEjC4knDXKXgiQS7wjALvc/wYjK86v5g4gymuYeAkCDBFUaV6
-         QL/2DBoTccdd1VdxPE04hspfEQFAhg3QpYr2xTAE+ZfenXZ6v1hkzdbk8HjOFS+BQ+Xd
-         GIWPtRuINObBr8nGhOcWq2oQABL9HiIOfYbBoJ8+dT0oW7vB3BIOm/yR+454BrAwYp7F
-         TaEg==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=+HQxHeYSCFt0gaxwSBu2iS2jS4+U9yok4dHEixFy53s=;
+        fh=h7XMjZ+e+xKUPDdR7kC9prmVooLNagtTzwVYB/B/ZFI=;
+        b=e/XeYwoinvwM5T+8pImafNiIqBQyMVMkXieP5XIkLgEsUIeanK2DEsTvbCdXVQcZUM
+         Y/fLuXGjyPGIPPlNA9+jFy43da0FsEJa8bp3wrDifwhjrAmre2gbaZ1tkX/0kN6aJm6Y
+         i6thsMIuQIKZgBrUr/QTTWwX+94QU6KN6hP70fy1sdZJxbumKMTX+p1EzR6uGTdB+B2I
+         Ta9N6ZCPqvpn+AUK2081nainUH8gtbzM6ru7YYlh66ONYlQMEYd4ZJHhWqVoMNNHL6r0
+         EtHBalesfE/8Ft0C6WMIcip+ChedAsrp/8swq18epVEJaziDEf9GunFUItPPW5MejrjC
+         EjiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RqeFULAx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17-20020a05622a065100b00403c6a9fa74si1062646qtb.350.2023.07.12.17.28.49
+        by mx.google.com with ESMTPS id z3-20020a05622a028300b00403b21c69c3si2589438qtw.214.2023.07.12.20.53.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jul 2023 17:28:50 -0700 (PDT)
+        Wed, 12 Jul 2023 20:53:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RqeFULAx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJkC3-0002Hf-Cp; Wed, 12 Jul 2023 20:28:27 -0400
+	id 1qJnOB-0005RP-Pe; Wed, 12 Jul 2023 23:53:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJkC1-0002HU-CP
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 20:28:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJkBq-0000ls-G1
- for qemu-arm@nongnu.org; Wed, 12 Jul 2023 20:28:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689208093;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
- b=RqeFULAxFgM2qeDeuhG+nz7csBaO4sKHVQbvjsCl9CXGK8S2uRUnDGaHAMMSd0MBP+Uxz6
- iEezETnsD4jyBDVIKoAPu6hcY0u3QSPHANxZ8/WXnL2xlmKllCavEfuTwVxXXMJy0h2JoJ
- 3VXc+QrYT40YP+dd3gC9ZOjAjiXxMIs=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-382-R7c2KadfMY2SSVn6eWQ4hw-1; Wed, 12 Jul 2023 20:28:06 -0400
-X-MC-Unique: R7c2KadfMY2SSVn6eWQ4hw-1
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-1b9e8ebe767so1359025ad.0
- for <qemu-arm@nongnu.org>; Wed, 12 Jul 2023 17:28:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1qJnO1-0005PK-UY; Wed, 12 Jul 2023 23:53:01 -0400
+Received: from mail-pg1-f171.google.com ([209.85.215.171])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1qJnNs-0004cV-H9; Wed, 12 Jul 2023 23:53:01 -0400
+Received: by mail-pg1-f171.google.com with SMTP id
+ 41be03b00d2f7-55ae2075990so204404a12.0; 
+ Wed, 12 Jul 2023 20:52:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689208085; x=1691800085;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=voWVlpmm7MeCDv7tg7yl30rZqUK9Zw54JqfyPKuCRLo=;
- b=GhWGOVQgZkjErHaJRuh/uKRVY7C+AspQHGaHKoOyH4F0u4lPVBBHuLe5xmEeFEKcd8
- R56/6CemJ3Hrifnpi30zTZnIHuOhPeI93IAqgXO/cO407UG2EwGLw6QSU68vKe2k5Ne/
- W665F2rX3Q22dxh8FyKyOlYP9j7qa3RA7XUdTFsUIpSiL8JHtewwpBQ8dPwHcORi9YuH
- qeZhOCBE72GgQwPLNAeLEAt/j9MjYxXQopHuFtMZNPyz8MiFwbuLOpbxE+rc7c9D6GIR
- 7uL6RIOyXEQabTc1H8Qj7f8Fafgw4f8nWRC5YKHR0/V0+K9akeMzxjF8GBWsUeNEcU0Q
- bhMg==
-X-Gm-Message-State: ABy/qLZReEwBe0lPLUEOX/86HR4ElKIazOn1Fbkg9474ooyax1dKYHKf
- vmzh+HBexC3JuEg5v0kdIB2BTjAll1cGUcyWJCNrdThtSPoMyQgGFYsHOEzH2G0/nxAF3+Hh/Ka
- KBl3gzobNK75D
-X-Received: by 2002:a17:902:f68c:b0:1b5:91:4693 with SMTP id
- l12-20020a170902f68c00b001b500914693mr266228plg.1.1689208085443; 
- Wed, 12 Jul 2023 17:28:05 -0700 (PDT)
-X-Received: by 2002:a17:902:f68c:b0:1b5:91:4693 with SMTP id
- l12-20020a170902f68c00b001b500914693mr266210plg.1.1689208084952; 
- Wed, 12 Jul 2023 17:28:04 -0700 (PDT)
-Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
- ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
+ d=1e100.net; s=20221208; t=1689220369; x=1691812369;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+HQxHeYSCFt0gaxwSBu2iS2jS4+U9yok4dHEixFy53s=;
+ b=MRSvrKeJLBpIN2xe5dfTEkhjQjzNQqaDNqWbEaZ+NT6joqkyg8jtZoxvHSdlYH/V+R
+ CgBxwJM1LRLmET/UqkXA8VjqOQ0Og75doizXlr8a54vPysJevUmvYYgVtyKgy7z3aYdY
+ O9NuJGAInezBeJ8EAQ+owndk8jLPMjTzBzs3rt5O38evBaHU+p9CSkceLiNXtr+E5049
+ USHWUi5ERHn8T3bpaemnkG6UyC9h9bZRVXM3ZZMgok5GVxf/DL22dSmY/lWE1h2BsqTZ
+ TfefezRcWphCdUcs9bcL8b2CdzJrPB3zQZkL4ZVeFYuWbYUU+KtjL7CgSH3JGwxgf8L6
+ lmyQ==
+X-Gm-Message-State: ABy/qLY1cEwsjvfPo+RVLWgCDHsMAj9oaXZgGXHsEIJv9R9M6cfecci0
+ DqkX5x64Hh+8SOXCFMYVFa/CD06cyybBFQ==
+X-Received: by 2002:a17:903:124a:b0:1b8:b433:7fa with SMTP id
+ u10-20020a170903124a00b001b8b43307famr292425plh.13.1689220369431; 
+ Wed, 12 Jul 2023 20:52:49 -0700 (PDT)
+Received: from localhost.localdomain ([2607:fb90:8b82:587c:b800:84d:31b7:313d])
  by smtp.gmail.com with ESMTPSA id
- io12-20020a17090312cc00b001b9dfa24523sm4531541plb.213.2023.07.12.17.27.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jul 2023 17:28:03 -0700 (PDT)
-Message-ID: <7f524e2a-e773-4de0-09ed-b18eaec8ff16@redhat.com>
-Date: Thu, 13 Jul 2023 10:27:57 +1000
+ x6-20020a1709027c0600b001b8a37ffb5asm4756199pll.4.2023.07.12.20.52.48
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 12 Jul 2023 20:52:49 -0700 (PDT)
+From: Joelle van Dyne <j@getutm.app>
+To: qemu-devel@nongnu.org
+Cc: Joelle van Dyne <j@getutm.app>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PATCH 07/11] hw/arm/virt: add plug handler for TPM on SysBus
+Date: Wed, 12 Jul 2023 20:51:12 -0700
+Message-ID: <20230713035232.48406-8-j@getutm.app>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230713035232.48406-1-j@getutm.app>
+References: <20230713035232.48406-1-j@getutm.app>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH v1 0/5] target/arm: Handle psci calls in userspace
-To: Salil Mehta <salil.mehta@huawei.com>, Shaoqin Huang
- <shahuang@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Cc: "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "james.morse@arm.com" <james.morse@arm.com>,
- Cornelia Huck <cohuck@redhat.com>, "kvm@vger.kernel.org"
- <kvm@vger.kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Salil Mehta <salil.mehta@opnsrc.net>
-References: <20230626064910.1787255-1-shahuang@redhat.com>
- <9df973ede74e4757b510f26cd5786036@huawei.com>
- <fb5e8d4d-2388-3ab0-aaac-a1dd91e74b08@redhat.com>
- <539e6a25b89a45839de37fe92b27d0d3@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <539e6a25b89a45839de37fe92b27d0d3@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.11, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=209.85.215.171; envelope-from=osy86dev@gmail.com;
+ helo=mail-pg1-f171.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,123 +107,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AJ5dJWWr04HB
+X-TUID: BQCuAO9XcD9G
 
-Hi Salil,
+TPM needs to know its own base address in order to generate its DSDT
+device entry.
 
-On 7/4/23 19:58, Salil Mehta wrote:
+Signed-off-by: Joelle van Dyne <j@getutm.app>
+---
+ hw/arm/virt.c | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-> 
-> Latest Qemu Prototype (Pre RFC V2) (Not in the final shape of the patches)
-> https://github.com/salil-mehta/qemu.git   virt-cpuhp-armv8/rfc-v1-port11052023.dev-1
-> 
-> 
-> should work against below kernel changes as confirmed by James,
-> 
-> Latest Kernel Prototype (Pre RFC V2 = RFC V1 + Fixes)
-> https://git.gitlab.arm.com/linux-arm/linux-jm.git   virtual_cpu_hotplug/rfc/v2
-> 
-
-I think it'd better to have the discussions through maillist. The threads and all
-follow-up replies can be cached somewhere to avoid lost. Besides, other people may
-be intrested in the same points and can join the discussion directly.
-
-I got a chance to give the RFC patchsets some tests. Not all cases are working
-as expected. I know the patchset is being polished. I'm summarize them as below:
-
-(1) coredump is triggered when the topology is out of range. It's the issue we
-     discussed in private. Here I'm just recapping in case other people also blocked
-     by the issue.
-
-     (a) start VM with the following command lines
-      /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64       \
-      -accel kvm -machine virt,gic-version=host,nvdimm=on -cpu host \
-      -smp cpus=1,maxcpus=2,sockets=1,clusters=1,cores=1,threads=2  \
-      -m 512M,slots=16,maxmem=64G                                   \
-      -object memory-backend-ram,id=mem0,size=512M                  \
-      -numa node,nodeid=0,cpus=0-1,memdev=mem0                      \
-
-     (b) hot add CPU whose topology is out of range
-     (qemu) device_add driver=host-arm-cpu,id=cpu1,core-id=1
-
-
-     It's actually caused by typos in hw/arm/virt.c::virt_cpu_pre_plug() where
-     'ms->possible_cpus->len' needs to be replaced with 'ms->smp.cores'. With this,
-     the hot-added CPU object will be rejected.
-
-(2) I don't think TCG has been tested since it seems not working at all.
-
-     (a) start VM with the following command lines
-     /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64     \
-     -machine virt,gic-version=3 -cpu max -m 1024                    \
-     -smp maxcpus=2,cpus=1,sockets=1,clusters=1,cores=1,threads=2    \
-
-     (b) failure while hot-adding CPU
-     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
-     Error: cpu(id1=0:0:0:1) with arch-id 1 exists
-
-     The error message is printed by hw/arm/virt.c::virt_cpu_pre_plug() where the
-     specific CPU has been presented. For KVM case, the disabled CPUs are detached
-     from 'ms->possible_cpu->cpus[1].cpu' and destroyed. I think we need to do similar
-     thing for TCG case in hw/arm/virt.c::virt_cpu_post_init(). I'm able to add CPU
-     with the following hunk of changes.
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7d9dbc2663..432148ef47 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2122,6 +2122,18 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-                  exit(1);
-              }
-          }
+@@ -2732,6 +2732,37 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+                          dev, &error_abort);
+ }
+ 
++#ifdef CONFIG_TPM
++static void virt_tpm_plug(VirtMachineState *vms, TPMIf *tpmif)
++{
++    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
++    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
++    SysBusDevice *sbdev = SYS_BUS_DEVICE(tpmif);
++    MemoryRegion *sbdev_mr;
++    hwaddr tpm_base;
++    uint64_t tpm_size;
 +
-+#if 1
-+        for (n = 0; n < possible_cpus->len; n++) {
-+            cpu = qemu_get_possible_cpu(n);
-+            if (!qemu_enabled_cpu(cpu)) {
-+                CPUArchId *cpu_slot;
-+                cpu_slot = virt_find_cpu_slot(ms, cpu->cpu_index);
-+                cpu_slot->cpu = NULL;
-+                object_unref(OBJECT(cpu));
-+            }
-+        }
++    if (!sbdev || !object_dynamic_cast(OBJECT(sbdev), TYPE_SYS_BUS_DEVICE)) {
++        return;
++    }
++
++    tpm_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    assert(tpm_base != -1);
++
++    tpm_base += pbus_base;
++
++    sbdev_mr = sysbus_mmio_get_region(sbdev, 0);
++    tpm_size = memory_region_size(sbdev_mr);
++
++    if (object_property_find(OBJECT(sbdev), "baseaddr")) {
++        object_property_set_uint(OBJECT(sbdev), "baseaddr", tpm_base, NULL);
++    }
++    if (object_property_find(OBJECT(sbdev), "size")) {
++        object_property_set_uint(OBJECT(sbdev), "size", tpm_size, NULL);
++    }
++}
 +#endif
-      }
-  }
-
-(3) Assertion on following the sequence of hot-add, hot-remove and hot-add when TCG mode is enabled.
-
-     (a) Include the hack from (2) and start VM with the following command lines
-     /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64     \
-     -machine virt,gic-version=3 -cpu max -m 1024                    \
-     -smp maxcpus=2,cpus=1,sockets=1,clusters=1,cores=1,threads=2    \
-
-     (b) assertion on the sequence of hot-add, hot-remove and hot-add
-     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
-     (qemu) device_del cpu1
-     (qemu) device_add driver=max-arm-cpu,id=cpu1,thread-id=1
-     **
-     ERROR:../tcg/tcg.c:669:tcg_register_thread: assertion failed: (n < tcg_max_ctxs)
-     Bail out! ERROR:../tcg/tcg.c:669:tcg_register_thread: assertion failed: (n < tcg_max_ctxs)
-     Aborted (core dumped)
-
-     I'm not sure if x86 has similar issue. It seems the management for TCG contexts, corresponding
-     to variable @tcg_max_ctxs and @tcg_ctxs need some improvements for better TCG context registration
-     and unregistration to accomodate CPU hotplug.
-
-
-Apart from what have been found in the tests, I've started to look into the code changes. I may
-reply with more specific comments. However, it would be ideal to comment on the specific changes
-after the patchset is posted for review. Salil, the plan may have been mentioned by you somewhere.
-As I understood, the QEMU patchset will be posted after James's RFCv2 kernel series is posted.
-Please let me know if my understanding is correct. Again, thanks for your efforts to make vCPU
-hotplug to be supported :)
-
-Thanks,
-Gavin
-
-
-
-     
-
-     
-         
++
+ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+                                             DeviceState *dev, Error **errp)
+ {
+@@ -2803,6 +2834,12 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         vms->virtio_iommu_bdf = pci_get_bdf(pdev);
+         create_virtio_iommu_dt_bindings(vms);
+     }
++
++#ifdef CONFIG_TPM
++    if (object_dynamic_cast(OBJECT(dev), TYPE_TPM_IF)) {
++        virt_tpm_plug(vms, TPM_IF(dev));
++    }
++#endif
+ }
+ 
+ static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
+-- 
+2.39.2 (Apple Git-143)
 

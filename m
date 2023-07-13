@@ -1,122 +1,120 @@
-Received: by 2002:a05:7022:629e:b0:68:46be:293d with SMTP id e30csp2684623dle;
-        Thu, 13 Jul 2023 05:34:51 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFJT4JwkYBkF+bnkZ36FoMLd9mrZFGDuOkz9bSjma7cO6kcbVaiI0juGg8crehe/7KaKyrY
-X-Received: by 2002:ac8:4e92:0:b0:403:be2b:5aaa with SMTP id 18-20020ac84e92000000b00403be2b5aaamr1604497qtp.9.1689251691517;
-        Thu, 13 Jul 2023 05:34:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689251691; cv=none;
+Received: by 2002:a05:7022:629e:b0:68:46be:293d with SMTP id e30csp2688989dle;
+        Thu, 13 Jul 2023 05:43:38 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHXbBYI/EADK5IZ1uiOXOLOMFoY7+jWX2nIamWnsZHUsRuTB0xf4DhWbjZ/kz1kanGYD2XB
+X-Received: by 2002:a05:6870:4626:b0:1b7:14bb:66fe with SMTP id z38-20020a056870462600b001b714bb66femr2122767oao.16.1689252218303;
+        Thu, 13 Jul 2023 05:43:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689252218; cv=none;
         d=google.com; s=arc-20160816;
-        b=vV3DpL4ZyyltSAbrMJXsWrsoYIg6qtkhtbqJB81WdE+l8Cji44ihm3AmTqyvNa5U6B
-         w/9kghne/dzWgunAI2XhHEzQ7p3YIFz2RqXwpBvigUXwfnWOXDJIEihiVFQSbdDEIazX
-         6NOtOOhSmaIdxkfOAefhugUSsFCM3bravqa7aNUrZ27g+M7CN5kAn5JZrrraBjjtGHln
-         MQGa9AwZNtddv7WW/0O7/lKpB8kIWXG8FHtixozRGZkxp8gkxZwPnmZXSZHJwncxo2Kp
-         DBhOvNAaRMNreKfaNbXcArSgxwKJTXCGSCueGDJ4920QfT8+iEkwgl5oy4TFHVpKXCzQ
-         PJIw==
+        b=JBa/aAUwohDPUS1CuVI1h51eHqx1dscjqV41l1Gq0o4Y1RtMWL9Lo0b0oyHVj4uWTc
+         UyCCo6x9WVRf0XzAIKACr30/Nomu7EHoG6pVnvxJwAQrvf2qvG8BG4X72DyyTcJzLOfE
+         NcgAczgrvoAgmEp+FXJxZLWjLnxYLzuzp1LqBRnJpmQbD8/BaVKhXXNhjJCpFVq62dHh
+         IUKL3Rlqmqj6E2zAvFn+Od3KD6X56Esr9qedhqaXjNHtCLFmRqdZ4dbj3LRxNXuZ6pjd
+         +stAJ0JXg4l+GTX7ryWs1ivkb8s7XUaFhYOs9aw0OmOrZr71YtI/FD8b9WnA7qvLAwU1
+         scGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:from:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ru889PnU6EePW+KiYUQ9HktIo2vzu02KCYfTEVGWW8Q=;
-        fh=pn3LlZhgu+sbT94yItJDJiGB6vU2uVMcI/rtlc9RJ5o=;
-        b=d4b7fSUZsFY6To/sXWhmBMaOWDc1UcpXBgjFeXRacwKWvEnthuJYMWcx1bQsWhFgTt
-         X3QJYuVB+SjgmDvB1KHP6nl/J2YzUomjpWBg242oJYoABJfV6NtfeOH2fbKo8EOGIwSz
-         f42V7dUQDh7iBdo8XJt2NNjmEReTBVGoRssHfvO+gvkeZzkQRbPuK7RKZRkvbI6Pm0VS
-         A3Hi6zDWO0JBQdhS41JEVnBfQ4Mtfk0WxouWDoN81kVBK3e3XLuKoZGBiIGifUxX3iWo
-         +glEdR4NL740qGwcrFRsE2drD27bU7w4OyA+RjCWSl874tnm+2pksREb7f67QC2E7mMh
-         YXiw==
+        bh=NVgw3E/WrgewRYmyVCLpW8vORIcS2V+7DSFXSdXabwA=;
+        fh=byp2tQv/zN7RRmcv3pTYXUc1uhFaViprR2I36m1RR+k=;
+        b=htMrBHuVdKw2OnnbFm7KHnaAc04saSskG+gNYrTCp1yBfpwWcraJpQDoWZodofITaz
+         UEsWpIWdLyEdXuAb+l05O8Xms9lJJq90wqZbH7xrJmIukzRv4IQ/nJx5oeiPYDRniA8P
+         WJ7RzgdtnNEAOrLYzCY76VIWpfJXfLhGP7E5TFIo4MAQ7mv09+f1bqytG0Ml9fKvIq64
+         OYTrj+2joC77bwAv5eTM4ZDolWVf+L3wnNhPRG3ieF7NGHZowQQbJtlrxd7NPlNhl7at
+         c7q36UxBXnVM7HNiaxQWBr20YFryfXWMzsjkr34XugIcnfrsiO9JHBvQTOBtKMRyTzwp
+         YUQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UWX5Su4k;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UqQUZ2yU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7-20020a05622a180700b00403be80cfbasi2431389qtc.68.2023.07.13.05.34.51
+        by mx.google.com with ESMTPS id g14-20020a05620a218e00b00767d0d016b2si2937467qka.581.2023.07.13.05.43.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jul 2023 05:34:51 -0700 (PDT)
+        Thu, 13 Jul 2023 05:43:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UWX5Su4k;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UqQUZ2yU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qJvWj-0000zI-IR; Thu, 13 Jul 2023 08:34:33 -0400
+	id 1qJvfA-0004pm-HT; Thu, 13 Jul 2023 08:43:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJvWi-0000z9-MM
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 08:34:32 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJvf8-0004p9-DG
+ for qemu-arm@nongnu.org; Thu, 13 Jul 2023 08:43:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJvWh-0005VI-4V
- for qemu-arm@nongnu.org; Thu, 13 Jul 2023 08:34:32 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1qJvf5-00089e-6n
+ for qemu-arm@nongnu.org; Thu, 13 Jul 2023 08:43:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689251670;
+ s=mimecast20190719; t=1689252189;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ru889PnU6EePW+KiYUQ9HktIo2vzu02KCYfTEVGWW8Q=;
- b=UWX5Su4kXyWTNR5PRaiC4P7fzbr86TN7IcKCjM85buyn5l1sC7xSKGwhKPDUeArHKGGyYg
- fd4UrfQt18+0bkJmVenltShbh+ADXT9e0auXbKuEaZskFRb+3tryA+bwCzoQIHpKaoe9DQ
- X/PfPCGVGiaWdKY1exs8Mf2fAESUM9g=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=NVgw3E/WrgewRYmyVCLpW8vORIcS2V+7DSFXSdXabwA=;
+ b=UqQUZ2yUmjW35T9oW+bZBuap7D7IQauVnWuotQvSH7yvno/0KKDi8u9QIjGMV5mYzb0xdW
+ H73sGVGy0mweXa3bTVJjuyi3qiOpe9DfMWzI7aAbRNAspknf90m/JxLGZwkO52eq2Gb8md
+ JeCUJ8Jf7DuoAI+S3t3SFrWuHS0jyd4=
+Received: from mail-oa1-f71.google.com (mail-oa1-f71.google.com
+ [209.85.160.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-297-xPCkqVAYN_y2Sil8yiHv7w-1; Thu, 13 Jul 2023 08:34:28 -0400
-X-MC-Unique: xPCkqVAYN_y2Sil8yiHv7w-1
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-262e2cb725eso486336a91.0
- for <qemu-arm@nongnu.org>; Thu, 13 Jul 2023 05:34:28 -0700 (PDT)
+ us-mta-539-w8UfxcJXMwCjYSn6iCvhnw-1; Thu, 13 Jul 2023 08:43:05 -0400
+X-MC-Unique: w8UfxcJXMwCjYSn6iCvhnw-1
+Received: by mail-oa1-f71.google.com with SMTP id
+ 586e51a60fabf-1b773df6216so1100724fac.1
+ for <qemu-arm@nongnu.org>; Thu, 13 Jul 2023 05:43:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689251668; x=1691843668;
+ d=1e100.net; s=20221208; t=1689252184; x=1691844184;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ru889PnU6EePW+KiYUQ9HktIo2vzu02KCYfTEVGWW8Q=;
- b=ZKFPumZ8BW1xomQKInVm/oSn4A6hgM7cfYbUHbO6y4P5Kl914Xan4Iipqxp/OCBxlN
- YUcskaAcnRpqPjk+kdoo97KOL/qZYdTFxfZiuUX4a1BXhDQCvRaCz33M1GzYkdBI58Vv
- yyLC2nJRlGDbZeYfm/QWWf5AFtQ47WoCtaQhTolOywFzksuewvPqSo99uMt3QIOiNlFF
- 4+S25wrwjJskbRu84E3pXs9YpS3zmK2MtXqrjpWVwqVjbPrzEkFlCZfDOV/Mnb9wy+pj
- xRPUXyyU9nHAiAA/mxjdJb/QC3FgenXJ3iP0n2G2mnoRwlY0PT9EZnTNn9O8GyPeCOt7
- gnzA==
-X-Gm-Message-State: ABy/qLZ8vrjCUeBgSDhwB3pkythJWoBqMVomaGfu/1GxJ/XHq0bzanyz
- ZrNPUxs7RRz8BWByvDiUyR+F7pbU7jdTWB2HevQS5QIIOm1uEghQ8L6+dM6iZl7h0f3de1gx0I4
- 6W9EHKgaHEQTu
-X-Received: by 2002:a17:90b:1b4b:b0:262:e697:f367 with SMTP id
- nv11-20020a17090b1b4b00b00262e697f367mr6465126pjb.15.1689251667705; 
- Thu, 13 Jul 2023 05:34:27 -0700 (PDT)
-X-Received: by 2002:a17:90b:1b4b:b0:262:e697:f367 with SMTP id
- nv11-20020a17090b1b4b00b00262e697f367mr6465100pjb.15.1689251667325; 
- Thu, 13 Jul 2023 05:34:27 -0700 (PDT)
+ bh=NVgw3E/WrgewRYmyVCLpW8vORIcS2V+7DSFXSdXabwA=;
+ b=cwI3RKHArr8PwWYFB17+aDfjcn9GrdCtX4UmVyIGwSLZSSDtX4leg8avaSv4u+hgLA
+ JoIoKQntCllteg6N0MpvUptVqalNRuLfijnLvcPchHPMOdcP5p42UfXXkHQPC9V3uyVb
+ +R2kElX6YqlAguomugGeLq0b0Rd0WjogZD5jVHaeM1AluGDvULqmvkJj0vDbPY+UwCnr
+ 8rW3syHfADvOIjYCASPHxuevozqlt/rVavLFSduttFdsZRR9d0qnHIlToaAtouIWTkQE
+ g73G8Hgt1LnLEKZKtnGz81j5Bfjo/HKIPdJZ184EH22poO5rWdasihvP3tfMUsEBO44w
+ 9O2g==
+X-Gm-Message-State: ABy/qLbDd4CeJpb7UbtB4i/iUh/k2Sx9Tb2uTxpWQXTK7zWOyLv1ISH3
+ +vTP/zIsiGQPVUqVy//hyYLdXD9jwvMfGqwwLoaMPlomWS5ovBSAU5y7nzNE8muMfgrlfupPTMS
+ qb9jerhcMpfv9
+X-Received: by 2002:a05:6871:1cd:b0:1b7:4b56:fe68 with SMTP id
+ q13-20020a05687101cd00b001b74b56fe68mr2060693oad.3.1689252184526; 
+ Thu, 13 Jul 2023 05:43:04 -0700 (PDT)
+X-Received: by 2002:a05:6871:1cd:b0:1b7:4b56:fe68 with SMTP id
+ q13-20020a05687101cd00b001b74b56fe68mr2060678oad.3.1689252184270; 
+ Thu, 13 Jul 2023 05:43:04 -0700 (PDT)
 Received: from ?IPV6:2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5?
  ([2001:8003:e5b0:9f00:dbbc:1945:6e65:ec5])
  by smtp.gmail.com with ESMTPSA id
- l2-20020a17090270c200b001b8307c81c8sm5846498plt.121.2023.07.13.05.34.23
+ s24-20020a17090aba1800b0026302348ee4sm11911677pjr.30.2023.07.13.05.43.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jul 2023 05:34:26 -0700 (PDT)
-Message-ID: <3a392615-5aca-f384-197f-84beb3086a29@redhat.com>
-Date: Thu, 13 Jul 2023 22:34:21 +1000
+ Thu, 13 Jul 2023 05:43:03 -0700 (PDT)
+Message-ID: <08a313fd-ddf8-538d-df51-03e28aee0d97@redhat.com>
+Date: Thu, 13 Jul 2023 22:42:57 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
 Subject: Re: [PATCH 0/3] hw/arm/virt: Use generic CPU invalidation
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, pbonzini@redhat.com,
  eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
  wangyanan55@huawei.com, shan.gavin@gmail.com
 References: <20230713054502.410911-1-gshan@redhat.com>
  <CAFEAcA8197FCwfNZrnxfO-87RveOko0Ju-KcTJOEi0vfjVtDKg@mail.gmail.com>
- <2d21e89f-c965-e8f1-3705-dfea8367fc7e@linaro.org>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <2d21e89f-c965-e8f1-3705-dfea8367fc7e@linaro.org>
+In-Reply-To: <CAFEAcA8197FCwfNZrnxfO-87RveOko0Ju-KcTJOEi0vfjVtDKg@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
@@ -141,129 +139,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w/wq0FG/OzXX
+X-TUID: Bj3peIqJKame
 
-Hi Peter and Marcin,
+Hi Peter,
 
-On 7/13/23 21:52, Marcin Juszkiewicz wrote:
-> W dniu 13.07.2023 o 13:44, Peter Maydell pisze:
+On 7/13/23 21:44, Peter Maydell wrote:
+> On Thu, 13 Jul 2023 at 06:45, Gavin Shan <gshan@redhat.com> wrote:
+>>
+>> There is a generic CPU type invalidation in machine_run_board_init()
+>> and we needn't a same and private invalidation for hw/arm/virt machines.
+>> This series intends to use the generic CPU type invalidation on the
+>> hw/arm/virt machines.
+>>
+>> PATCH[1] factors the CPU type invalidation logic in machine_run_board_init()
+>>           to a helper validate_cpu_type().
+>> PATCH[2] uses the generic CPU type invalidation for hw/arm/virt machines
+>> PATCH[3] support "host-arm-cpu" CPU type only when KVM or HVF is visible
+>>
+>> Testing
+>> =======
+>>
+>> With the following command lines, the output messages are varied before
+>> and after the series is applied.
+>>
+>>    /home/gshan/sandbox/src/qemu/main/build/qemu-system-aarch64 \
+>>    -accel tcg -machine virt,gic-version=3,nvdimm=on            \
+>>    -cpu cortex-a8 -smp maxcpus=2,cpus=1                        \
+>>      :
+>>
+>> Before the series is applied:
+>>
+>>    qemu-system-aarch64: mach-virt: CPU type cortex-a8-arm-cpu not supported
+>>
+>> After the series is applied:
+>>
+>>    qemu-system-aarch64: Invalid CPU type: cortex-a8-arm-cpu
+>>    The valid types are: cortex-a7-arm-cpu, cortex-a15-arm-cpu, \
+>>    cortex-a35-arm-cpu, cortex-a55-arm-cpu, cortex-a72-arm-cpu, \
+>>    cortex-a76-arm-cpu, a64fx-arm-cpu, neoverse-n1-arm-cpu,     \
+>>    neoverse-v1-arm-cpu, cortex-a53-arm-cpu, cortex-a57-arm-cpu, \
+>>    max-arm-cpu
 > 
->> I see this isn't a change in this patch, but given that
->> what the user specifies is not "cortex-a8-arm-cpu" but
->> "cortex-a8", why do we include the "-arm-cpu" suffix in
->> the error messages? It's not valid syntax to say
->> "-cpu cortex-a8-arm-cpu", so it's a bit misleading...
-> 
-> Internally those cpu names are "max-{TYPE_ARM_CPU}" and similar for other architectures.
-> 
-> I like the change but it (IMHO) needs to cut "-{TYPE_*_CPU}" string from names:
-> 
-> 13:37 marcin@applejack:qemu$ ./build/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-r5
-> qemu-system-aarch64: Invalid CPU type: cortex-r5-arm-cpu
-> The valid types are: cortex-a7-arm-cpu, cortex-a15-arm-cpu, cortex-a35-arm-cpu, cortex-a55-arm-cpu, cortex-a72-arm-cpu, cortex-a76-arm-cpu, a64fx-arm-cpu, neoverse-n1-arm-cpu, neoverse-v1-arm-cpu, cortex-a53-arm-cpu, cortex-a57-arm-cpu, host-arm-cpu, max-arm-cpu
-> 
-> 13:37 marcin@applejack:qemu$ ./build/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a57-arm-cpu
-> qemu-system-aarch64: unable to find CPU model 'cortex-a57-arm-cpu'
-> 
-
-The suffix of CPU types are provided in hw/arm/virt.c::valid_cpu_types in PATCH[2].
-In the generic validation, the complete CPU type is used. The error message also
-have complete CPU type there.
-
-Peter and Marcin, how about to split the CPU types to two fields, as below? In this
-way, the complete CPU type will be used for validation and the 'internal' names will
-be used for the error messages.
-
-struct MachineClass {
-     const char *valid_cpu_type_suffix;
-     const char **valid_cpu_types;
-};
-
-hw/arm/virt.c
--------------
-
-static const char *valid_cpu_types[] = {
-#ifdef CONFIG_TCG
-     "cortex-a7",
-     "cortex-a15",
-     "cortex-a35",
-     "cortex-a55",
-     "cortex-a72",
-     "cortex-a76",
-     "a64fx",
-     "neoverse-n1",
-     "neoverse-v1",
-#endif
-     "cortex-a53",
-     "cortex-a57",
-     "host",
-     "max",
-     NULL
-};
-
-static void virt_machine_class_init(ObjectClass *oc, void *data)
-{
-     mc->valid_cpu_type_suffix = TYPE_ARM_CPU;
-     mc->valid_cpu_types = valid_cpu_types;
-}
-
-hw/core/machine.c
------------------
-
-static void validate_cpu_type(MachineState *machine)
-{
-     ObjectClass *oc = object_class_by_name(machine->cpu_type), *ret = NULL;
-     CPUClass *cc = CPU_CLASS(oc);
-     char *cpu_type;
-     int i;
-
-     if (!machine->cpu_type || !machine_class->valid_cpu_types) {
-         goto out_no_check;
-     }
-
-     for (i = 0; machine_class->valid_cpu_types[i]; i++) {
-         /* The class name is the combination of prefix + suffix */
-         if (machine_class->valid_cpu_type_suffix) {
-             cpu_type = g_strdup_printf("%s-%s", machine_class->valid_cpu_types[i], machine_class->valid_cpu_type_suffix);
-         } else {
-             cpu_type = g_strdup(machine_class->valid_cpu_types[i]);
-         }
-
-         ret = object_class_dynamic_cast(oc, cpu_type));
-         g_free(cpu_type);
-         if (ret) {
-             break;
-         }
-     }
-
-     if (!machine_class->valid_cpu_types[i]) {
-         /* The user-specified CPU type is invalid */
-         /**** the prefix is used in the error messages ********/
-         error_report("Invalid CPU type: %s", machine->cpu_type);
-         error_printf("The valid types are: %s",
-                      machine_class->valid_cpu_types[0]);
-         for (i = 1; machine_class->valid_cpu_types[i]; i++) {
-             error_printf(", %s", machine_class->valid_cpu_types[i]);
-         }
-         error_printf("\n");
-
-         exit(1);
-     }
-
-     /* Check if CPU type is deprecated and warn if so */
-out_no_check:
-     if (cc && cc->deprecation_note) {
-         warn_report("CPU model %s is deprecated -- %s",
-                     machine->cpu_type, cc->deprecation_note);
-     }
-}
-
-> 
-> I can change sbsa-ref to follow that change but let it be userfriendly.
+> I see this isn't a change in this patch, but given that
+> what the user specifies is not "cortex-a8-arm-cpu" but
+> "cortex-a8", why do we include the "-arm-cpu" suffix in
+> the error messages? It's not valid syntax to say
+> "-cpu cortex-a8-arm-cpu", so it's a bit misleading...
 > 
 
-Yes, sbsa-ref needs an extra patch to use the generic invalidation. I can add
-one patch on the top for that in next revision if you agree, Marcin.
+Good point. Right, the complete CPU type names are provided by board (hw/arm/virt).
+The compelte CPU type names are used in hw/core/machine.c to search the object
+class. In the error messages in the same source file, the complete CPU type names
+are also used. Actually, we need 'internal' names like 'cortex-a8' to be shown in the
+error messages.
+
+For the solution, I've suggested to split the MachineClass::valid_cpu_types to
+two fields (valid_cpu_types and valid_cpu_type_suffix). Their combination is
+the complete CPU type name and 'valid_cpu_types[i]' corresponds to the 'internal'
+name, to be used in the error messages. Please take a look on that thread and reply
+to it.
 
 Thanks,
 Gavin

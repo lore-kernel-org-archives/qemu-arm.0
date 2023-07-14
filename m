@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4133980eje;
-        Fri, 14 Jul 2023 08:49:46 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHmL8Is4p5mv3g6e1+XCE8GAY6IOmhIpTUWDYA6jKnol5ZEQNqxhEff8Ljmza+fDqIZDyfd
-X-Received: by 2002:a05:620a:240a:b0:767:e57e:fdc9 with SMTP id d10-20020a05620a240a00b00767e57efdc9mr5643311qkn.37.1689349786776;
-        Fri, 14 Jul 2023 08:49:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689349786; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4134528eje;
+        Fri, 14 Jul 2023 08:50:51 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEaR4xiGetTcZRZG1UCdorb+d0sl16YpBXbZ+zCn8eM47SKDfbnrzgma0lxqCu2wlGB8pa/
+X-Received: by 2002:ac8:5791:0:b0:400:aabe:a334 with SMTP id v17-20020ac85791000000b00400aabea334mr6590038qta.7.1689349850991;
+        Fri, 14 Jul 2023 08:50:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689349850; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ved1akfSTC0x0amBlx1UWj9pUz7SxGGVmSUBYOl9YjzlNcYhobnWzZ0qK+CzzVDu0W
-         P0yO5OMUob/sCBcHiK0IThUNN1h7OT6PKGI0cm5ov+DKbW6H6QplTYwmvCHGYTFU1aAK
-         Xbgor5ccDQ1twnJR8Y/3JqOQWuFjDThR3P2TgTqxOokOTCpzYZVqU4rV5PJIhPAh0u+n
-         h+dSdmtR9kYxlarJC4p37/YTM+h6f9rOuRwBdCSpxZhkP55K7MTTwfhv/+JeoYRgfjLw
-         B0PK2IPwmUzLP54mdLZaS9vtygZhuwjj3SXu4cwz9j92HdomacY0x0ElNbTQPDrbZ31c
-         Zozw==
+        b=LSmBlm+LwnlqyCY2XsmlJWR9xr08xNzF28IlQ7WzPb/PxuJfprJKFQ6fggGl3BA21t
+         gPGC9gRs37/dKznTAx/OdCZ0bribB5B2HXXxl6rUxyACVnWLFDzCwCS+tu2bXKHkVScF
+         jazyTrR8MEK0EFGufo/QNOVGZy2+KO0KkhxNnRgxTez88nrzyI4GKtoC0cX1RBiZq2xW
+         UqQCGkCHknNMhZP5K+QOVlW0r1TowOEK7RKSYv5xQQGXdPsmx8hSo0P9WixfRHiyYfXP
+         gZOERulez4LaJYTsxd+McH5/KkjwH/vR/K3v3XlF9fr063qrxme/WSV0Scobia287soe
+         kWHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=eumrElobNKY7spGfBeTnnGIQlpKlfLkNgQIpTApqm4A=;
+        bh=ZJ5X1Cn1l4/BJNDm0G2PsxEkjY7Sczg3wp18DaMO6sk=;
         fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
-        b=Bi8CHycxGFx5jWKvwCtiASQlycdB/H7MLIXBpHcWx1LYxZELMTyQRWjzS5qc6i1WeZ
-         dV58Q+AjaGLmb6mZyNI0xdx9OlL2qiE5Qfb3aXGNUN1cKGwKoRjU7yaS1EXN6pCPR/pS
-         a2X7gcVbSzTdJkqZ3FVQ/6642W04ZUZp/SgMyW7U6y8Aflkpkbi9Ecit6uiP9YMP+eRL
-         qgYCAcN4TZCfzetHJ/AMZnNWmKt7j1cjHy3xgRXbCKfYOJCDhoPhU/5R2SlAtdBTUZEI
-         8/Kzd3N+Mr39R6L6BX84VRE+tBIVvdJI/390xIpKUZQomT7I6Dw+oVqsrqcUJNstF1PN
-         R+Zg==
+        b=ZeORQ/dYqw1LKK5xWLwJdeGExF8S1p/TN4pBgaTBmTN2q6L0FRve3GTtTRkExb0ean
+         GV2XEGdBwk9Faqqdv90BoWprybsb7cs5/GjNvcVmj8bnn6/zAHoIQG9ptN1sJjZmk70m
+         JIQGzpdk+gK3eqwMlUuZSc5+gl5Dx0YQtckDnJK6QzSaYtTkw4jm1DeEOcaH3POek/fk
+         Pkry2vbGEiNwRh7SCQ8bwwDd4UztKFq01JZGNsGtZ3sanb2Zu1BLnonhPgedAkc5XQ/c
+         8kFJFDhFjJHRMaJTpy3n4JifU9fc6u3B0Ir+doVB6R2kG0OTGOLEEyKHbvM3JSoVx7oA
+         QvIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cOMxZxTZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YG86nj2B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8-20020a05620a25c800b00765ad978f97si4660991qko.517.2023.07.14.08.49.46
+        by mx.google.com with ESMTPS id y15-20020a05622a164f00b00403a87c0b41si4685405qtj.770.2023.07.14.08.50.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 08:49:46 -0700 (PDT)
+        Fri, 14 Jul 2023 08:50:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cOMxZxTZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YG86nj2B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKL0U-0007DM-Et; Fri, 14 Jul 2023 11:46:58 -0400
+	id 1qKL0X-0007FP-0c; Fri, 14 Jul 2023 11:47:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0S-0007Af-FE
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:56 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1qKL0V-0007DQ-62
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:59 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0P-00074z-Ik
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:56 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-31427ddd3fbso2180215f8f.0
- for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:53 -0700 (PDT)
+ id 1qKL0R-00075m-Hx
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:58 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-3fbc59de009so18882855e9.3
+ for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689349612; x=1691941612;
+ d=linaro.org; s=google; t=1689349614; x=1691941614;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=eumrElobNKY7spGfBeTnnGIQlpKlfLkNgQIpTApqm4A=;
- b=cOMxZxTZSusyAN7gU2a2FwtyDh6UbYDuXmLaARWxcgFkn6B9v6aDW5s0o5CXNlOzzb
- XyiUh6M7HwiUkVwGEawzRPjpEfsJHKivHo6hYemogucxjX5l0UtkN/ViMCkbFoIMQpIQ
- NSqFxTENp3cg9IQNo+BDhjW1Qb1lezkmSDUNNbv1f+gxCeIsnkIOewXz+Fqf7HdM8y5g
- BmtEFyeMaZPP9xAGvcOeDyDeURLMvoW5pg2drDZzxn/dc0sI8A9vUqj5O2VYGI3ArN7F
- e7xd8/xBJpLOWzQ0KcB5ebnLn7Ersu6dMJWVVa7ZWdWdg4T8qV12yn6ILHTMngrS/OEb
- ZJcw==
+ :reply-to; bh=ZJ5X1Cn1l4/BJNDm0G2PsxEkjY7Sczg3wp18DaMO6sk=;
+ b=YG86nj2BPvHiITTp/JcuvLzObZnUKdGuFbwlLvEK1cJ0AUR7ZkzpVOF55vNYwoIlPK
+ I1huFhFvtuzfL+Lk/w8wEl23gq2whaNl4k23M0VINVHvjiWOZ269n7qmu1g/dImZ3Xy0
+ /Tkor88EPnKidTP3BpIgKL67HzJ3s72+KyOTenFNcbp38H1ozlyEWkF9sHb7CiBwpe9M
+ AuOBIRoXu4N5DvktbOJ1IzlgQy/ZZEWH+MHztLIYsKjalZ54+AEtBPvfG+dMqWNJaNco
+ L4O3acOvHNLHhEwa8zfIh6wfEbDx2wmFZe58dzQHQs1m9xsdYUZR1BvC6P6rUg17OeKJ
+ pgGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689349612; x=1691941612;
+ d=1e100.net; s=20221208; t=1689349614; x=1691941614;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eumrElobNKY7spGfBeTnnGIQlpKlfLkNgQIpTApqm4A=;
- b=D0o2JMmMIddxD0/nXy9igidIh+yQxY0l/rZNMZ4ZS7N8Ve4WxGaJcHX2VrZQrvfevy
- FCmFr3dLUK0WO3/6lVRq9ujAW3dD1X6PwdSs4WrMJHOBBXckXk9Gp5AJrr9nUwP6rooZ
- OUSuEl1UOpBVqqGgisDc8RKChG0DwDvfa3LRJr4EIM+Le/H7zfhz5Bd+fwb/et6PK+S0
- MdJMm36vNFTOIUG2431zxKg14JFal2uKPM+ab3vwro8oPkC6n0yxbHGwveqy8IjiPj5g
- Gv5oQ01tDWr01x6yaCkroeM5diDlX1b5b+3bvVFi3mBui1Ah1bn6L+YYJ2bDBd/+WeEI
- ICrw==
-X-Gm-Message-State: ABy/qLaPGN8tCRyOUZfswV6qprLAHQk8afLfY/ZVTwrjSGxp9LMu45/a
- 3AG7V7R/OFV4PG+9CKZCUyOCUwTolHc7/IqnV24=
-X-Received: by 2002:adf:e8cb:0:b0:313:e146:1816 with SMTP id
- k11-20020adfe8cb000000b00313e1461816mr4235335wrn.24.1689349611852; 
- Fri, 14 Jul 2023 08:46:51 -0700 (PDT)
+ bh=ZJ5X1Cn1l4/BJNDm0G2PsxEkjY7Sczg3wp18DaMO6sk=;
+ b=QFgJQH3D9XzfM4kcQ7WfsakOrPZpGqgsKjm+E69w1C9zIP5Kxnt0+/572soOoj5Loy
+ 3D7rrrbcrI9JTNHrcgTsjsL1iWkkSMDRzogtPDxywbVBJqYWOnVo9b/QdOxm/5lUd2Od
+ IJmIeXoth2CSDEV1mKY4P6TaR5MXp9vbRdbPZUEMslo/MSg2KgGKtMXKDWnd6YKrrZJM
+ 1JmeqSIfNO2TG17HvI/nUOau4gjYy97b72o4im0W06OeU+DmMKRvWyhL+vfIGxHytZwA
+ QPBE8kKdcqpqH2/QLh3SrF3OTML1fygpR2s8iqiFtkTLO3shmkb3Dfh4w4U6eH+uWY0N
+ yqew==
+X-Gm-Message-State: ABy/qLYV7zeUz3pTIASE17DEacJDaBnFNzHqGCfruRHse35MWuzZWWYP
+ XmkG9xVQnTXQIndfbfXJHWftg/kkiD6HHbBL50w=
+X-Received: by 2002:adf:f08b:0:b0:316:cbb4:4e46 with SMTP id
+ n11-20020adff08b000000b00316cbb44e46mr4467148wro.3.1689349614273; 
+ Fri, 14 Jul 2023 08:46:54 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.51
+ t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Jul 2023 08:46:51 -0700 (PDT)
+ Fri, 14 Jul 2023 08:46:54 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/14] target/arm/ptw: Don't report GPC faults on stage 1 ptw
- as stage2 faults
-Date: Fri, 14 Jul 2023 16:46:36 +0100
-Message-Id: <20230714154648.327466-3-peter.maydell@linaro.org>
+Subject: [PATCH 07/14] target/arm/ptw: Only fold in NSTable bit effects in
+ Secure state
+Date: Fri, 14 Jul 2023 16:46:41 +0100
+Message-Id: <20230714154648.327466-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230714154648.327466-1-peter.maydell@linaro.org>
 References: <20230714154648.327466-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,56 +124,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /yoxM4ULvW2K
+X-TUID: iQByGcZhuCN5
 
-In S1_ptw_translate() we set up the ARMMMUFaultInfo if the attempt to
-translate the page descriptor address into a physical address fails.
-This used to only be possible if we are doing a stage 2 ptw for that
-descriptor address, and so the code always sets fi->stage2 and
-fi->s1ptw to true.  However, with FEAT_RME it is also possible for
-the lookup of the page descriptor address to fail because of a
-Granule Protection Check fault.  These should not be reported as
-stage 2, otherwise arm_deliver_fault() will incorrectly set
-HPFAR_EL2.  Similarly the s1ptw bit should only be set for stage 2
-faults on stage 1 translation table walks, i.e.  not for GPC faults.
+When we do a translation in Secure state, the NSTable bits in table
+descriptors may downgrade us to NonSecure; we update ptw->in_secure
+and ptw->in_space accordingly.  We guard that check correctly with a
+conditional that means it's only applied for Secure stage 1
+translations.  However, later on in get_phys_addr_lpae() we fold the
+effects of the NSTable bits into the final descriptor attributes
+bits, and there we do it unconditionally regardless of the CPU state.
+That means that in Realm state (where in_secure is false) we will set
+bit 5 in attrs, and later use it to decide to output to non-secure
+space.
 
-Add a comment to the the other place where we might detect a
-stage2-fault-on-stage-1-ptw, in arm_casq_ptw(), noting why we know in
-that case that it must really be a stage 2 fault and not a GPC fault.
+We don't in fact need to do this folding in at all any more (since
+commit 2f1ff4e7b9f30c): if an NSTable bit was set then we have
+already set ptw->in_space to ARMSS_NonSecure, and in that situation
+we don't look at attrs bit 5.  The only thing we still need to deal
+with is the real NS bit in the final descriptor word, so we can just
+drop the code that ORed in the NSTable bit.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/ptw.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ target/arm/ptw.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index bafeb876ad7..eb57ebd897b 100644
+index 9e45160e1ba..c30d3fe69a0 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -600,8 +600,8 @@ static bool S1_ptw_translate(CPUARMState *env, S1Translate *ptw,
-         fi->type = ARMFault_GPCFOnWalk;
-     }
-     fi->s2addr = addr;
--    fi->stage2 = true;
--    fi->s1ptw = true;
-+    fi->stage2 = regime_is_stage2(s2_mmu_idx);
-+    fi->s1ptw = fi->stage2;
-     fi->s1ns = !is_secure;
-     return false;
- }
-@@ -719,6 +719,12 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
-         env->tlb_fi = NULL;
- 
-         if (unlikely(flags & TLB_INVALID_MASK)) {
-+            /*
-+             * We know this must be a stage 2 fault because the granule
-+             * protection table does not separately track read and write
-+             * permission, so all GPC faults are caught in S1_ptw_translate():
-+             * we only get here for "readable but not writeable".
-+             */
-             assert(fi->type != ARMFault_None);
-             fi->s2addr = ptw->out_virt;
-             fi->stage2 = true;
+@@ -1884,11 +1884,10 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+      * Extract attributes from the (modified) descriptor, and apply
+      * table descriptors. Stage 2 table descriptors do not include
+      * any attribute fields. HPD disables all the table attributes
+-     * except NSTable.
++     * except NSTable (which we have already handled).
+      */
+     attrs = new_descriptor & (MAKE_64BIT_MASK(2, 10) | MAKE_64BIT_MASK(50, 14));
+     if (!regime_is_stage2(mmu_idx)) {
+-        attrs |= !ptw->in_secure << 5; /* NS */
+         if (!param.hpd) {
+             attrs |= extract64(tableattrs, 0, 2) << 53;     /* XN, PXN */
+             /*
 -- 
 2.34.1
 

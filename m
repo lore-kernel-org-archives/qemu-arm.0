@@ -1,108 +1,103 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4018015eje;
-        Fri, 14 Jul 2023 05:56:55 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFtovtrhXtwW3XyaNeo6oRyPov1f2qfvGqyTklVYs/fSoKuChEGopc744p9JlFlVNfmfsec
-X-Received: by 2002:a0c:e246:0:b0:635:ddc7:a0fe with SMTP id x6-20020a0ce246000000b00635ddc7a0femr2776018qvl.9.1689339415756;
-        Fri, 14 Jul 2023 05:56:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689339415; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4132595eje;
+        Fri, 14 Jul 2023 08:47:13 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHzr8e//V/q7p1SQX4xQVPV8VoevUMi33rcpyQm1zRaI4V1VjWCEJJJ70xa+wZqRXBxuhzC
+X-Received: by 2002:a05:622a:18a7:b0:400:797e:d690 with SMTP id v39-20020a05622a18a700b00400797ed690mr7145081qtc.1.1689349633729;
+        Fri, 14 Jul 2023 08:47:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689349633; cv=none;
         d=google.com; s=arc-20160816;
-        b=W86w1hHWRr5wymOnsm3Ss5mFZ/jy8jSru6V26rWmmqx4TYsQFM7GkBKv7q8NXp4GYF
-         GRp1nI350SpnyKtLVbd0LIVdfd7imzWatEGpH/c76UU8ommRAWkPp7z0zEMmgBssFmxK
-         LYX5z4PV/vJoNrAsPm+K9RpKrn85+Hl70682oUdofg/Wlj1WEFb99g7w3k70sJo1RnFg
-         mEljh+vVHM5+Dr6VGUxjHuHTHscQYuPjVqsswNyPTOWThN8yqA7EJ1WAGr8/kCFoMEzJ
-         VBJCWOAObJraMjUODhXTCJMsuUe3g/SInXP0OV2Yd8Go4sytMO/VXsF69I/07Zp+d2jD
-         jpFQ==
+        b=VI5nDxoXXvlC0cB3zeTkdc3Iis2kWAr+WdZLzfhzRUFuouMAzkX9VEYh7jr5tF7iEj
+         oHo1GvSPy2SWbNE0SW8Zh377XY2atIHQqMHTmlRNDwCfE23d8v4YkAa4I/gOcK1cVLEq
+         HlG88bQQVK2T26GGrNzMUGHsJeqEqDG4vawemz/tOeBsANFWXJvexM1g9MKNKcGosZIo
+         +D1Meq2KNzTHTCejVTl6PafxajQVhl6i86otsezPBeDCcHYjBdObdUG6j8x6Jbw9Se2C
+         XOaftxPdqSp5L8igL4YCXTzjHh593KwKWIvhtUtcC/qpKQjyqTAZSqhLZULQEJKy8kRF
+         pVhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZzPAS+JpxoI5nrbnmh94HbU/MkQCQUh9XpTOg5be4Lc=;
-        fh=Q2Hwr8+ckrphC15rkX3HMSCIBPUDglUhBbFKCvy4/7A=;
-        b=Lqg4SCjeqHF5Zr9h3ywcrshjzoTMOpeiIMPsd1IkVkb0glMW1r82KCViXZ0aVn1IYu
-         V2MxfpY+UYwJcF+0+Wf6iOI49Xnaetu4efLMNCYREkC3oCxslPjYo5OY8R8YSSbYDpUh
-         7IQu+xS7UmQPWdYpe+j6CgL9kuX8AGI1sFgX624oA7hOIEynUkNORDLCNqxEH96WXLZE
-         8OSNuZWTwcIHLNCtOQmHULFRzElo2rrJgt7xUXIM+6IoXZoXnGxIfNDK4bkbAHD7oRjB
-         EdsjuCGKrfi1RnLvKpI/LHmKI1Nba7oB9QGOB6fIcKkjsEa52NWK1M9yCQVE/ulEPPPq
-         +gEw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=e/EJg2t+NohoMxOA2O/a5DEFZTUDueNlOq7nEQNzI7k=;
+        fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
+        b=zLy4QQmoeHyaqYWUtaGAFFmEROP3aCJCraZqAhZfuUcpBuwBZWfbJdOwE5lldIlos4
+         jrufHEF/bA83rZQsjP3Sx+JCI4xeVEN2lCfXVZmAodqjTlyRLgT0g4LTrnFQRyStuqHY
+         FefhklbSy6DQPCyenTs7SWxM/W6iZ8AFgENEKVdCbLHFWObeqw0xy8tMLDWbTvQXg/Df
+         V7myt/6KfSpHvxW84RrAaGQUHqB6Pj9+MFNTOGq8NWwv/CfgthqrQ/HcjelUqNRGI0Tx
+         2VZWAV8trDLw3Nfy6oKln8geYZYWxgU9O2KkG86xW/WzTTEk7myqYlIq7snEXb2iGofJ
+         kXLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Atk10F0a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tJv+EczJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y2-20020a0cf142000000b00636659edf25si4395672qvl.67.2023.07.14.05.56.55
+        by mx.google.com with ESMTPS id b2-20020ac87fc2000000b00403a4483ec6si4604115qtk.757.2023.07.14.08.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 05:56:55 -0700 (PDT)
+        Fri, 14 Jul 2023 08:47:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Atk10F0a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tJv+EczJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKILL-0002bQ-0V; Fri, 14 Jul 2023 08:56:19 -0400
+	id 1qKL0S-0007B7-Jq; Fri, 14 Jul 2023 11:46:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKILI-0002at-MG
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 08:56:16 -0400
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ id 1qKL0Q-0007AM-VE
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:54 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKILG-000775-O0
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 08:56:16 -0400
-Received: by mail-lf1-x130.google.com with SMTP id
- 2adb3069b0e04-4fb5bcb9a28so3096096e87.3
- for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 05:56:13 -0700 (PDT)
+ id 1qKL0P-00074w-BP
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:54 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-307d20548adso2119294f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689339372; x=1691931372;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZzPAS+JpxoI5nrbnmh94HbU/MkQCQUh9XpTOg5be4Lc=;
- b=Atk10F0aTIXdQVYmh/s5qzbPVhpOpXX0sBwrjZGEHoQ9r+CuwDvbod6abr5TUTUAZM
- sQUXiNgSLZx/+sS1idTW1oZTlu2FVtKreksYJhePeK8Nuwcj2t02zE/+az3XC2IL25bu
- SC5fcO2lVLQ5YpCtxUKHpvgaaddjCGhFVsZmfJSkA6M2daoghh6WqQDiESnoe66dtXlM
- EHhWNH1iHgenEHvRoaD4fLSMNUKjE1VZPPHOZ2HJsdXBl/sua+Nn9valvTJceFMPsbvq
- nKtbMQJ1a8pPpRdteiUgGWBG1ncQpk/vHcVr5JCtqm3zxoyBbq/9/jh+sM2g7tBCWoBj
- xT+Q==
+ d=linaro.org; s=google; t=1689349611; x=1691941611;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=e/EJg2t+NohoMxOA2O/a5DEFZTUDueNlOq7nEQNzI7k=;
+ b=tJv+EczJol1fQAcGCVyIz44Ukac7ek/zW9YqYGlQ8JMGoOfyhgOb3i0RO/nn0lNdDF
+ ffpC+EpZN4p39s6u2GpHgo7DQE00cc4DcSO5GePbGzgvmcHCVGMMLB0X8sgtcaUyBtJL
+ jR+Q6Ingft46lkwDfjPJi2CamtqnPhdFJ91sPkfmlV2+5iKyqVOqIlZqOzOhGv8Xrf2C
+ U98Czwzn/hStPdhakSNFpSy/eveaUy49qp82iopF9YYeFGkXKhM7M3hhS72FIa7ktFYb
+ 91rPO2gV+3LWypF7QydSJZCLI8yC6v65q9nUA96noP1y4tYyjb0hOrJEZu452UNRBPAw
+ lqxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689339372; x=1691931372;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZzPAS+JpxoI5nrbnmh94HbU/MkQCQUh9XpTOg5be4Lc=;
- b=Vri0u1hDG+jJGnSaYWB9KOf8khH4eWtX0L9AYNKk6zzPTVXUTjJ6hY37IR9T1opqXA
- AZ8RqPW4ODNbJH6I5Hv88iyuIpeELklUVCmZAc0C2Fo1sdYk99f/ALvbRUb7Bw9pGzpk
- PYmMiL8xuvKkxVG45eBK7Mo+dDSwgUxJoHXAOEim1/Vm1cHAoRkvlBmAGUTyawSUer9F
- qqvsHWR1cLSr13jKSwV1+KAMGqVRHisqBuFufmS7OOtIrr+Y9qpq/tfztZO81fk2cojq
- 82lG7t5c2kZ4Bu3gBBVGajpUnvhD0eBGXP+HmTru3vW3mtHn7syET1hT67paHmeK1IXT
- tA3A==
-X-Gm-Message-State: ABy/qLa7Sw/VnZeUktsShGWrntFVSBIO6j/qRTLeDvHi/i8FfXhrP1B5
- thhnb2FkzkiTb6ALITHHeWvF+aBfdBEz8lQ8X3zp/deFJOSpiS8N
-X-Received: by 2002:a05:6512:2083:b0:4f9:571d:c50e with SMTP id
- t3-20020a056512208300b004f9571dc50emr3204963lfr.36.1689339371694; Fri, 14 Jul
- 2023 05:56:11 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230713054502.410911-1-gshan@redhat.com>
- <CAFEAcA8197FCwfNZrnxfO-87RveOko0Ju-KcTJOEi0vfjVtDKg@mail.gmail.com>
- <2d21e89f-c965-e8f1-3705-dfea8367fc7e@linaro.org>
- <CAFEAcA-XK0U0bPuAf4K7avdJqnmcibFX_swY1Weo_Tn3wHJ1fw@mail.gmail.com>
- <20230714135004.230c05b2@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20230714135004.230c05b2@imammedo.users.ipa.redhat.com>
+ d=1e100.net; s=20221208; t=1689349611; x=1691941611;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=e/EJg2t+NohoMxOA2O/a5DEFZTUDueNlOq7nEQNzI7k=;
+ b=aJFEjIDxOiGutG4xfXN4/zWgmaOW69RuPF4ZYIWafRyEqVwWpsEjtADTID7SyUK1au
+ mo9Qf67a+CWCJFytbHcOBeraVFYFShNjYFuJonJ0aQY0SYeJme1/FO2gZbiUZ/j2y/M/
+ qLBEO5bdaXjLk8tnr9hZikzd7PRMRFE/PZQ0aNvaPVvunJxrY3m+XynTKJ6q59qTvnzY
+ J5ls1G8ZdJ5A1vRQFfFc5P9cXYvi5d1VIhpmQhadYJ7hNs78/KrOxHoituPOBLiNxdwp
+ 5/7pClWk3Ou11/DkOYvmBymKfpOuoXrLzdMR9jPYH/1yVJetDzfzgr+bU3na4D1KXsPq
+ GIvg==
+X-Gm-Message-State: ABy/qLYAHq2acEd+za2vkqWh06itrXvJCXDxzBrdxnTMcJ8RoQJXWgeW
+ QLx/nuV2tVbwfoU6G4n5P4jqUw0KB699T8OuSI4=
+X-Received: by 2002:a05:6000:1cce:b0:309:1532:8287 with SMTP id
+ bf14-20020a0560001cce00b0030915328287mr4136703wrb.19.1689349610961; 
+ Fri, 14 Jul 2023 08:46:50 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Jul 2023 08:46:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Jul 2023 13:56:00 +0100
-Message-ID: <CAFEAcA92QFxN0at+5rk7yrfk1sj3tX-GcfZYYY5_=210np_j4g@mail.gmail.com>
-Subject: Re: [PATCH 0/3] hw/arm/virt: Use generic CPU invalidation
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, pbonzini@redhat.com, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com, 
- shan.gavin@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x130.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 00/14] target/arm/ptw: Cleanups and a few bugfixes
+Date: Fri, 14 Jul 2023 16:46:34 +0100
+Message-Id: <20230714154648.327466-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,57 +119,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /mCDmOQjhvN3
+X-TUID: xZ90tIobDLVB
 
-On Fri, 14 Jul 2023 at 12:50, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Thu, 13 Jul 2023 12:59:55 +0100
-> Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > On Thu, 13 Jul 2023 at 12:52, Marcin Juszkiewicz
-> > <marcin.juszkiewicz@linaro.org> wrote:
-> > >
-> > > W dniu 13.07.2023 o 13:44, Peter Maydell pisze:
-> > >
-> > > > I see this isn't a change in this patch, but given that
-> > > > what the user specifies is not "cortex-a8-arm-cpu" but
-> > > > "cortex-a8", why do we include the "-arm-cpu" suffix in
-> > > > the error messages? It's not valid syntax to say
-> > > > "-cpu cortex-a8-arm-cpu", so it's a bit misleading...
-> > >
-> > > Internally those cpu names are "max-{TYPE_ARM_CPU}" and similar for
-> > > other architectures.
-> >
-> > Yes; my question is "why are we not using the user-facing
-> > string rather than the internal type name?".
->
-> With other targets full CPU type name can also be valid
-> user-facing string. Namely we use it with -device/device_add
-> interface. Considering we would like to have CPU hotplug
-> on ARM as well, we shouldn't not outlaw full type name.
-> (QMP/monitor interface also mostly uses full type names)
+Based-on: 20230710152130.3928330-1-peter.maydell@linaro.org
+("target/arm: Fix ptw bugs introduced by FEAT_RME changes")
 
-You don't seem to be able to use the full type name on
-x86-64 either:
+While I was fixing the ptw bug in the series above, I noticed
+that we had a somewhat confusing mix of ptw->in_space and
+ptw->in_secure, where in theory the two are supposed to be
+in sync and you can figure out the in_secure state from the
+in_space. This patch series' principal aim is to clean that
+up by removing the in_secure and out_secure fields in the
+S1Translate struct.
 
-$ ./build/all/qemu-system-x86_64 -cpu pentium-x86_64-cpu
-qemu-system-x86_64: unable to find CPU model 'pentium-x86_64-cpu'
+The first three patches are fixes for (minor) bugs I noticed
+while I was trying to do this refactoring because they're
+in or around places that were using in_secure.
+The next three are basically plumbing: passing ARMSecurityState
+arguments instead of boolean is_secure arguments.
+The next four patches then can get rid of uses of the
+in_secure and out_secure fields and drop them entirely.
+Finally, the last four patches are minor bug fixes for
+various corner cases that I noticed while I was testing this.
 
-and '-cpu help' does not list them with the suffix.
-
-> Instead it might be better to consolidate on what has
-> been done on making CPU '-device' compatible and
-> allow to use full CPU type name with '-cpu' on arm machines.
->
-> Then later call suffix-less legacy => deprecate/drop it from
-> user-facing side including cleanup of all the infra we've
-> invented to keep mapping between cpu_model and typename.
-
-This seems to me like a worsening of the user interface,
-and in practice there is not much likelihood of being
-able to deprecate-and-drop the nicer user-facing names,
-because they are baked into so many command lines and
-scripts.
+I don't expect to land this series until we reopen for
+8.2 development, but I might as well put it out on the
+list for review, since I've written it.
 
 thanks
 -- PMM
+
+Peter Maydell (14):
+  target/arm/ptw: Don't set fi->s1ptw for UnsuppAtomicUpdate fault
+  target/arm/ptw: Don't report GPC faults on stage 1 ptw as stage2
+    faults
+  target/arm/ptw: Set s1ns bit in fault info more consistently
+  target/arm/ptw: Pass ptw into get_phys_addr_pmsa*() and
+    get_phys_addr_disabled()
+  target/arm/ptw: Pass ARMSecurityState to regime_translation_disabled()
+  target/arm/ptw: Pass an ARMSecuritySpace to arm_hcr_el2_eff_secstate()
+  target/arm/ptw: Only fold in NSTable bit effects in Secure state
+  target/arm/ptw: Remove last uses of ptw->in_secure
+  target/arm/ptw: Remove S1Translate::in_secure
+  target/arm/ptw: Drop S1Translate::out_secure
+  target/arm/ptw: Set attributes correctly for MMU disabled data
+    accesses
+  target/arm/ptw: Check for block descriptors at invalid levels
+  target/arm/ptw: Report stage 2 fault level for stage 2 faults on stage
+    1 ptw
+  target/arm: Adjust PAR_EL1.SH for Device and Normal-NC memory types
+
+ target/arm/cpu.h    |   2 +-
+ target/arm/helper.c |  22 ++++-
+ target/arm/ptw.c    | 190 +++++++++++++++++++++++++++-----------------
+ 3 files changed, 135 insertions(+), 79 deletions(-)
+
+-- 
+2.34.1
+

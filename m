@@ -1,115 +1,115 @@
-Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4133408eje;
-        Fri, 14 Jul 2023 08:48:37 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGG4g0DeW9qH8TgBe/8NQb9IS0Ok/mcRbUEzxlUsGi+/HvWw5n7B3zonwejNRuOv0qGmNSN
-X-Received: by 2002:a05:620a:390f:b0:765:467e:133a with SMTP id qr15-20020a05620a390f00b00765467e133amr3436563qkn.23.1689349717757;
-        Fri, 14 Jul 2023 08:48:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1689349717; cv=none;
+Received: by 2002:a17:906:1917:b0:98d:b2f5:1316 with SMTP id a23csp4133413eje;
+        Fri, 14 Jul 2023 08:48:38 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlHMFLxvmbeIAmzsQq+/ePyQWSMWpwpofpoAsRxTu7sv2VysnLdtlgk+i+TKvHvYOZJd1FmJ
+X-Received: by 2002:a0c:b399:0:b0:636:34e2:fada with SMTP id t25-20020a0cb399000000b0063634e2fadamr4042768qve.23.1689349718141;
+        Fri, 14 Jul 2023 08:48:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1689349718; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sa3M+GGfxzSkj9hA7/IOeK3QS2l0H/DC0+JrSYPppcGonc0O/IFmbfMg7f73guxFPY
-         ejyaL998j2DCL6G4u+3GrnTX2LwYd0Z9Lh943abHR/IFGZfGRE/dcZq6lk7alf2v8f1s
-         eBBbjnw2Tu1OFF0B/rZ01giKpfDOvCX+Cte3pooBe6ihmxdy66AROGcR+QloDT5T1v/6
-         1a58A9IVbAKDV3grlSPFshgbwqKnW6QPr/jMwzaIgxjd3EyTeQ/wOaf7mK6jYPywXI8h
-         ehX+IOqYY6fDGlHjJ6In9yujaTWGST3CCOvyBpwg6eL3yfeq2F69NUYJeGRqcwpnOebG
-         Cjkg==
+        b=pJwtPZxujMu606bg9QRlcgUdaH+Y4hHsJ9v78a9rW/XyADo6djw0BqWX0nhfhkIi3B
+         UZvbSBjJr1df+rWfmKjFmdtUEmm5DEb77zknvYYHlijEx9il8UBMnTltphfTBsHGKZMI
+         T6dUGPnew/xZnGpmaJ7GtLZC9xB08IOJ3WCyGw0PLuJwVldGIUReuZE0PCq3VtYmOJ5X
+         7M7d3ttu1yRlCoQ1XPJvxr1L5Mgk+B/Tl1AJOQx+dKqnAfD4BKPL/FCpWNfI0O28dWCI
+         1duzsLNA4RPnMjelm9K4v2pOtklG/OZHdfZhq1Os4TkBRlHsqJcnRVxHE+2KdaX0FnwD
+         WW1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=q234a2QZpJLMfs9OiY+sBy9QxJhtbu9OJpiuspwmwC0=;
+        bh=CiH9E7mBgPKZNIpdmx/tPxEyFtaNkc5RvSs8kkQDWdc=;
         fh=jvpdohKmRoZMO537s6xMKXXtj7EZws1LOMQI/oP4vXs=;
-        b=ZojCf3f9Im6YvK4FN9NBhd19PesXJkUeyumcLmsziMxsJV5Y9vjOVCQnaSs64XHVyt
-         kceKa5Z3oKPSbbA/tYVLlEPDCSzXZG+v7oe9lFQYzSvOcr1hJ+j5/NQ8mCFx1m9zWrIS
-         YnGjn0vv2pem2MQc4qtoTEwXNDoPWzisp/eQRRu8gb8jhw5qmvsKUARPdzL8VnX9BSt7
-         WbutrUFhJMwPb4Hwnq963RIbNQRqtqgGhvLT+Ep34cq+7/jsyw84oKEMp4u4lB9Jpl5c
-         auy8UWduHY0jU0Rcha2ZXAJC3RZoLq+/3DCl2Gx4B7331VVgu6nv+gn/eAe4h6nW6RJa
-         RMhg==
+        b=xpZs7CCoa6AYwc4q/wPEAMAbGlyq8aPPD+rN/JyoK3bXBpC5uuEiQYnRO4QycE6vKS
+         w51Ve8CKQcGVOHvUrgcWs/Bs5iQ1PIWETseV2MJ2pdqHdrhc5HROCnWudXpgKqiPT/lF
+         J2wGsH59X0xSFPWQVvyAP/wwi6JhRPX/ArZPZNtJYYIrsr2Kgn5N+GqfHTjGoho43GEb
+         kEHm02PBsU+N/eE/cp1TEbJZwfXXKAa9kDRmliHu7wDP3m4o/nkkS7TM6BmK7j96njBj
+         Fm7C6vFLdNtAzYKlx1XJFSH/iDlqm8a8gKLEUECfv5+IkGcSmgKp6GofY9rLxqV1m97a
+         hyig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d2aC1z2Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tpB8rFst;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6-20020a05620a268600b00767d4caabd7si4749905qkp.271.2023.07.14.08.48.37
+        by mx.google.com with ESMTPS id u11-20020a0cb40b000000b00625ad2b66f6si4613996qve.84.2023.07.14.08.48.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jul 2023 08:48:37 -0700 (PDT)
+        Fri, 14 Jul 2023 08:48:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d2aC1z2Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tpB8rFst;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1qKL0V-0007DP-1V; Fri, 14 Jul 2023 11:46:59 -0400
+	id 1qKL0T-0007Bq-JX; Fri, 14 Jul 2023 11:46:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0T-0007C4-Si
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:57 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1qKL0S-0007Ac-CO
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:56 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKL0Q-00075V-Qv
- for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:57 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3159da54e95so2075046f8f.3
- for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:54 -0700 (PDT)
+ id 1qKL0P-000752-Hy
+ for qemu-arm@nongnu.org; Fri, 14 Jul 2023 11:46:56 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-3fc0aecf107so19222475e9.2
+ for <qemu-arm@nongnu.org>; Fri, 14 Jul 2023 08:46:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689349613; x=1691941613;
+ d=linaro.org; s=google; t=1689349612; x=1691941612;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=q234a2QZpJLMfs9OiY+sBy9QxJhtbu9OJpiuspwmwC0=;
- b=d2aC1z2ZaBNfrHagpI5ykhHUHfLkGTs7pI7ZAVr4J6GYf+GMKRE3csszuOfAMlLI/8
- WBqYtP/2M2/QAOash/c6f/XJv0e1pjdkCmHPk3xVYdwhjnijme8wlDpda+NR43ZfRSv4
- 45aNRH1yfc1gwv6xxPdJiVChYWt8j0eMjVmROb+atuC5KA760pZXurrRpY7AWCpBA23x
- XTSUqFQ0zt0hbWfK8C7lLHvEI8Eai71WTJ3HhcN6EjivEja6Fl3Bg9AsfycK2wpTlc8v
- szBpPiNQ2SSEUQHO2BFv6ZjvBGXv+73wA1U916TGSOzvUU3vXajomy6/qKHGCXlaXgQa
- 8BjA==
+ :reply-to; bh=CiH9E7mBgPKZNIpdmx/tPxEyFtaNkc5RvSs8kkQDWdc=;
+ b=tpB8rFstuTaj78dYKDrQspXQtsizJgJ7WV8QOo2zvitmtF1J9ZH66aMCgaSA2AkKh2
+ dS6mEpwAN633lp2na70fjxlvG7zHv+ZmKDo5ByWGOvZOv2bjvaRJmJZHGEeY4rXY0eSw
+ aW/Drf/wwutJP5GsWx+oM1Eh5HrJqL2Y4mbbaSGBeavhH2F90k4lIzVyIOQbxhlwZTKd
+ F4Y/v4r6HIvlL1ETInKGNlW8P7jYj07omVAgRWkN7+OkHSFDAOVQdNn67Cq68TRTYeox
+ RrPihxoH929hsils3WgrhsaeKNZ8K1jKQJTKy0KLl9zmwZFvIQ2U54WN8nSeNSrMfD7q
+ 6u0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689349613; x=1691941613;
+ d=1e100.net; s=20221208; t=1689349612; x=1691941612;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=q234a2QZpJLMfs9OiY+sBy9QxJhtbu9OJpiuspwmwC0=;
- b=O2CL2WJz7HKX0fd8CoguTiDS8a2HsP9AEE55daYKCLCSzbh73bttSdy+VHuBw+kK5g
- AXU35B3i50NJewxfNzK9784uMOJPeDdGzlveyFsWVDFksxCuOK1JTCYCvqasERQ/Rz8W
- HqgRRLrimgwNpxXRYgSxh0389gvd3ml7a+WsXDYHjgFZ0PEmFjzktkMl/tArzhONZHB3
- nSTyS2/arul+Yci9F03epYYn+D8KFy86tnf5eGmwdsvGktNz3JyTtOXpNu5HQ7zsA4bG
- 0xQCutF3oPP2pqTTQSsbVMAHXohDsEHCicTJS9Z1BH6FyFTQRfrOng/JYAuy3193fWC4
- aSSQ==
-X-Gm-Message-State: ABy/qLYJdA9ud9xobRh2TjKlzg/sn7CVAUrW+cpGmh7Q4YSnquIn5MZ+
- zTdu+Kv1boCZjgdCIrIT8vfm/GyzudBeOoMoDBM=
-X-Received: by 2002:a5d:6046:0:b0:313:ef08:c83b with SMTP id
- j6-20020a5d6046000000b00313ef08c83bmr4859404wrt.56.1689349613385; 
- Fri, 14 Jul 2023 08:46:53 -0700 (PDT)
+ bh=CiH9E7mBgPKZNIpdmx/tPxEyFtaNkc5RvSs8kkQDWdc=;
+ b=iwVhhtuwmgEwcTPyqcXNbv48uxQJJJmcAeMWEc8HnT/SMk0C8sROgX9Mj8/I4O7w+M
+ Eq3UyLJJL+v6GaNm+aGd4VLSM90seeB6VhwqcZ8fU2FtnYKMCGN6gbgve9p5Dwcz3cpT
+ /a6RlWoB8/LuTcksMIq+fm1Am1rFtYumKGq7WYxxumVqo7odwopNmCC2FuTLgtV1cETm
+ XSAHO2FXQxtH0aQHTsaYwXoNvwNRBCdJuughbWHTaGKIwdvmbRDCn+wcwIR3uYsS7PPe
+ y0gDF3hAlITbp3QPiXthV2P32aCqspLYUF56v4Bl21NWMWUqrlYUw8n666tqNesbFHRY
+ uTqQ==
+X-Gm-Message-State: ABy/qLb/jWB7ImIVSIma/ZOmFJSQ9SWb82nEgYRuBx1lsrIY5DISQ9Xl
+ xZHm6/abrJEnvxJG5m6RUuspID0BIDZfckDMW/A=
+X-Received: by 2002:adf:de12:0:b0:314:30ed:9b55 with SMTP id
+ b18-20020adfde12000000b0031430ed9b55mr4580983wrm.15.1689349611418; 
+ Fri, 14 Jul 2023 08:46:51 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.52
+ t16-20020a5d49d0000000b003143bb5ecd5sm11214025wrs.69.2023.07.14.08.46.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Jul 2023 08:46:53 -0700 (PDT)
+ Fri, 14 Jul 2023 08:46:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 05/14] target/arm/ptw: Pass ARMSecurityState to
- regime_translation_disabled()
-Date: Fri, 14 Jul 2023 16:46:39 +0100
-Message-Id: <20230714154648.327466-6-peter.maydell@linaro.org>
+Subject: [PATCH 01/14] target/arm/ptw: Don't set fi->s1ptw for
+ UnsuppAtomicUpdate fault
+Date: Fri, 14 Jul 2023 16:46:35 +0100
+Message-Id: <20230714154648.327466-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230714154648.327466-1-peter.maydell@linaro.org>
 References: <20230714154648.327466-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,80 +124,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UXeS8WSxrGzr
+X-TUID: gmPonPKbGIGU
 
-Plumb the ARMSecurityState through to regime_translation_disabled()
-rather than just a bool is_secure.
+For an Unsupported Atomic Update fault where the stage 1 translation
+table descriptor update can't be done because it's to an unsupported
+memory type, this is a stage 1 abort (per the Arm ARM R_VSXXT).  This
+means we should not set fi->s1ptw, because this will cause the code
+in the get_phys_addr_lpae() error-exit path to mark it as stage 2.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/ptw.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ target/arm/ptw.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index a873fbe0239..63dd8e3cbe1 100644
+index 8f94100c61f..bafeb876ad7 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -206,9 +206,10 @@ static uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx, int ttbrn)
+@@ -701,7 +701,6 @@ static uint64_t arm_casq_ptw(CPUARMState *env, uint64_t old_val,
  
- /* Return true if the specified stage of address translation is disabled */
- static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
--                                        bool is_secure)
-+                                        ARMSecuritySpace space)
- {
-     uint64_t hcr_el2;
-+    bool is_secure = arm_space_is_secure(space);
- 
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         switch (env->v7m.mpu_ctrl[is_secure] &
-@@ -2057,9 +2058,8 @@ static bool get_phys_addr_pmsav5(CPUARMState *env,
-     uint32_t base;
-     ARMMMUIdx mmu_idx = ptw->in_mmu_idx;
-     bool is_user = regime_is_user(env, mmu_idx);
--    bool is_secure = arm_space_is_secure(ptw->in_space);
- 
--    if (regime_translation_disabled(env, mmu_idx, is_secure)) {
-+    if (regime_translation_disabled(env, mmu_idx, ptw->in_space)) {
-         /* MPU disabled.  */
-         result->f.phys_addr = address;
-         result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-@@ -2231,7 +2231,7 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
-     result->f.lg_page_size = TARGET_PAGE_BITS;
-     result->f.prot = 0;
- 
--    if (regime_translation_disabled(env, mmu_idx, secure) ||
-+    if (regime_translation_disabled(env, mmu_idx, ptw->in_space) ||
-         m_is_ppb_region(env, address)) {
-         /*
-          * MPU disabled or M profile PPB access: use default memory map.
-@@ -2475,7 +2475,8 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-      * are done in arm_v7m_load_vector(), which always does a direct
-      * read using address_space_ldl(), rather than going via this function.
-      */
--    if (regime_translation_disabled(env, mmu_idx, secure)) { /* MPU disabled */
-+    if (regime_translation_disabled(env, mmu_idx, arm_secure_to_space(secure))) {
-+        /* MPU disabled */
-         hit = true;
-     } else if (m_is_ppb_region(env, address)) {
-         hit = true;
-@@ -3303,7 +3304,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-          */
-         ptw->in_mmu_idx = mmu_idx = s1_mmu_idx;
-         if (arm_feature(env, ARM_FEATURE_EL2) &&
--            !regime_translation_disabled(env, ARMMMUIdx_Stage2, is_secure)) {
-+            !regime_translation_disabled(env, ARMMMUIdx_Stage2, ptw->in_space)) {
-             return get_phys_addr_twostage(env, ptw, address, access_type,
-                                           result, fi);
-         }
-@@ -3362,7 +3363,7 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
- 
-     /* Definitely a real MMU, not an MPU */
- 
--    if (regime_translation_disabled(env, mmu_idx, is_secure)) {
-+    if (regime_translation_disabled(env, mmu_idx, ptw->in_space)) {
-         return get_phys_addr_disabled(env, ptw, address, access_type,
-                                       result, fi);
+     if (unlikely(!host)) {
+         fi->type = ARMFault_UnsuppAtomicUpdate;
+-        fi->s1ptw = true;
+         return 0;
      }
+ 
 -- 
 2.34.1
 
